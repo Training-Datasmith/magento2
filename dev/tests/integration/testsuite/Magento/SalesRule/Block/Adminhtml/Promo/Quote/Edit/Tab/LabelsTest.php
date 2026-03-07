@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab;
 
 /**
@@ -19,7 +22,7 @@ class LabelsTest extends \PHPUnit\Framework\TestCase
             )->evaluate(
                 [
                     'name' => 'block',
-                    'value' => \Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Labels::class
+                    'value' => \Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Labels::class,
                 ]
             )
         );

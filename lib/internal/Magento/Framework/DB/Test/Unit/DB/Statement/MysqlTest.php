@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All rights reserved.
@@ -53,7 +54,7 @@ class MysqlTest extends TestCase
             ->getMock();
         $this->adapterMock->method('getConnection')->willReturn($this->pdoMock);
         $this->adapterMock->method('getProfiler')->willReturn($this->zendDbProfilerMock);
-        $this->adapterMock->method('quote')->willReturnCallback(fn($v) => "'$v'");
+        $this->adapterMock->method('quote')->willReturnCallback(fn ($v) => "'$v'");
 
         (function () {
             $this->_profiler = $this->getProfiler();

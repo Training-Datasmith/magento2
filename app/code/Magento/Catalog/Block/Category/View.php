@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Category;
 
 use Magento\Catalog\Block\Breadcrumbs;
-use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Helper\Category as CategoryHelper;
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Resolver;
-use Magento\Framework\App\ObjectManager;
 use Magento\Cms\Block\Block;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;

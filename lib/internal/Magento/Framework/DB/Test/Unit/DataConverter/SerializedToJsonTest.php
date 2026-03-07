@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\DB\Test\Unit\DataConverter;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\Serialize;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SerializedToJsonTest extends TestCase
 {
@@ -48,7 +49,7 @@ class SerializedToJsonTest extends TestCase
     {
         return [
             1 => ['serializedData' => 'a:1:{i:0;d:0.12345678901234568;}', 'expectedJson' => '[0.12345678901234568]'],
-            2 => ['serializedData' => 'a:1:{i:0;d:2.2029999999999998;}', 'expectedJson' => '[2.2029999999999998]']
+            2 => ['serializedData' => 'a:1:{i:0;d:2.2029999999999998;}', 'expectedJson' => '[2.2029999999999998]'],
         ];
     }
 }

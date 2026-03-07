@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Attribute\Backend;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\AbstractModel;
 use Magento\Catalog\Model\Attribute\Backend\DefaultBackend;
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use Magento\Eav\Model\Entity\Attribute as BasicAttribute;
+use Magento\Eav\Model\Entity\Attribute\Exception as AttributeException;
 use Magento\Framework\DataObject;
 use Magento\Framework\Validation\ValidationException;
 use Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Entity\Attribute as BasicAttribute;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
-use Magento\Eav\Model\Entity\Attribute\Exception as AttributeException;
 
 class DefaultBackendTest extends TestCase
 {
@@ -35,7 +36,7 @@ class DefaultBackendTest extends TestCase
             'invalid-html-attribute' => [false, false, false, 'html', 'value', false, true, true],
             'valid-html-attribute' => [false, true, false, 'html', 'value', false, true, false],
             'changed-invalid-html-attribute' => [false, false, true, 'html', 'value', true, true, true],
-            'changed-valid-html-attribute' => [false, true, true, 'html', 'value', true, true, false]
+            'changed-valid-html-attribute' => [false, true, true, 'html', 'value', true, true, false],
         ];
     }
 

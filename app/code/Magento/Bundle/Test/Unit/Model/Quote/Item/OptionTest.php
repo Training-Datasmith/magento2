@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Quote\Item;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Option as BundleOption;
 use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Model\Product\Type;
@@ -16,9 +16,10 @@ use Magento\Bundle\Model\ResourceModel\Option\Collection as OptionsCollection;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection as SelectionsCollection;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -93,19 +94,19 @@ class OptionTest extends TestCase
         return [
             [
                 [],
-                []
+                [],
             ],
             [
                 [
                     'bundle_option_ids' => '[1,2]',
                 ],
-                []
+                [],
             ],
             [
                 [
                     'bundle_selection_ids' => '[11,21]',
                 ],
-                []
+                [],
             ],
             [
                 [
@@ -118,17 +119,17 @@ class OptionTest extends TestCase
                     11 => [
                         [
                             'code' => 'bundle_selection_attributes',
-                            'value' => '{"price":110,"qty":2,"option_label":"Option 1","option_id":1}'
-                        ]
+                            'value' => '{"price":110,"qty":2,"option_label":"Option 1","option_id":1}',
+                        ],
                     ],
                     21 => [
                         [
                             'code' => 'bundle_selection_attributes',
-                            'value' => '{"price":210,"qty":3,"option_label":"Option 2","option_id":2}'
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => '{"price":210,"qty":3,"option_label":"Option 2","option_id":2}',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -144,7 +145,7 @@ class OptionTest extends TestCase
             $customOptions[$code] = $this->createConfiguredMock(
                 OptionInterface::class,
                 [
-                    'getValue' => $value
+                    'getValue' => $value,
                 ]
             );
         }

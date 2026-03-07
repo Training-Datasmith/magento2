@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,12 +9,12 @@
 namespace Magento\Customer\Controller\Adminhtml\Cart\Product\Composite;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\ResourceModel\QuoteItemRetriever;
-use Magento\Framework\AuthorizationInterface;
 
 /**
  * Catalog composite product configuration controller

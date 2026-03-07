@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -130,7 +131,7 @@ class FlagTest extends TestCase
                 'resource' => $resourceMock,
                 'data' => $data,
                 'json' => new Json(),
-                'serialize' => new Serialize()
+                'serialize' => new Serialize(),
             ]
         );
     }

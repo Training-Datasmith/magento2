@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Framework\Authorization\Test\Unit\Policy;
 
 use Laminas\Permissions\Acl\Exception\InvalidArgumentException;
+use Magento\Framework\Acl as FrameworkAcl;
 use Magento\Framework\Acl\Builder;
 use Magento\Framework\Acl\Role\CurrentRoleContext;
 use Magento\Framework\Authorization\Policy\Acl;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Acl as FrameworkAcl;
 
 class AclTest extends TestCase
 {

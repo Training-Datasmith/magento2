@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ abstract class Cache extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Backend::cache';
+    public const ADMIN_RESOURCE = 'Magento_Backend::cache';
 
     /**
      * @var \Magento\Framework\App\Cache\TypeListInterface

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Catalog\Block\Product\NewProduct;
 use Magento\CatalogSearch\Block\Result;
@@ -34,7 +36,7 @@ return [
                 'table' => 'table',
                 'field' => 'field',
                 'to' => '<reference><block class="Magento\CatalogSearch\Block\Result" /></reference>',
-                'from' => ['`field` = ?' => '<reference><block class="catalogSearch/result" /></reference>']
+                'from' => ['`field` = ?' => '<reference><block class="catalogSearch/result" /></reference>'],
             ],
         ],
         'aliases_map' => [
@@ -43,5 +45,5 @@ return [
                 'catalogSearch/result' => Result::class,
             ],
         ],
-    ]
+    ],
 ];

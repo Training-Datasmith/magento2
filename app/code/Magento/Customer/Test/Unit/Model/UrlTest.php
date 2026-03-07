@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for \Magento\Customer\Model\Url
@@ -66,7 +67,7 @@ class UrlTest extends TestCase
         $this->customerSessionMock = $this->createPartialMockWithReflection(
             Session::class,
             [
-                'getNoReferer'
+                'getNoReferer',
             ]
         );
         $this->urlBuilderMock = $this->createMock(UrlInterface::class);
@@ -77,7 +78,7 @@ class UrlTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'request' => $this->requestMock,
                 'customerSession' => $this->customerSessionMock,
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
     }

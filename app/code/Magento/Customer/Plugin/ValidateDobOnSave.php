@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Plugin;
 
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Eav\Model\Config as EavConfig;
 use Magento\Framework\Exception\InputException;
+use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\Framework\Locale\ResolverInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

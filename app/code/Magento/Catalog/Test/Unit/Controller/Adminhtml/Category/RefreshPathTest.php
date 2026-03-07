@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class RefreshPathTest extends TestCase
      *
      * @return void
      */
-    private function setObjectProperty($object, string $propertyName, $value) : void
+    private function setObjectProperty($object, string $propertyName, $value): void
     {
         $reflectionClass = new \ReflectionClass($object);
         $reflectionProperty = $reflectionClass->getProperty($propertyName);
@@ -66,7 +67,7 @@ class RefreshPathTest extends TestCase
     /**
      * @return void
      */
-    public function testExecute() : void
+    public function testExecute(): void
     {
         $value = ['id' => 3, 'path' => '1/2/3', 'parentId' => 2, 'level' => 2];
         $result = '{"id":3,"path":"1/2/3","parentId":"2","level":"2"}';
@@ -80,8 +81,8 @@ class RefreshPathTest extends TestCase
         $objects = [
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
-            ]
+                $this->createMock(StoreManagerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -120,7 +121,7 @@ class RefreshPathTest extends TestCase
                         'id' => $categoryId,
                         'path' => $category->getPath(),
                         'parentId' => (string)$category->getParentId(),
-                        'level' => (string)$value['level']
+                        'level' => (string)$value['level'],
                     ];
                     return $jsonResultMock->setData($data);
                 }
@@ -134,7 +135,7 @@ class RefreshPathTest extends TestCase
     /**
      * @return void
      */
-    public function testExecuteWithoutCategoryId() : void
+    public function testExecuteWithoutCategoryId(): void
     {
         $requestMock = $this->createMock(RequestInterface::class);
         $requestMock->expects($this->any())->method('getParam')->with('id')->willReturn(null);

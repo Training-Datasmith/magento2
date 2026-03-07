@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Price Info factory
  */
+
 namespace Magento\Framework\Pricing\PriceInfo;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -82,7 +85,7 @@ class Factory
             $priceCollection,
             [
                 'saleableItem' => $arguments['saleableItem'],
-                'quantity' => $quantity
+                'quantity' => $quantity,
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product\View\Options\Type;
 
 use DateTimeZone;
@@ -95,8 +98,8 @@ class Date extends \Magento\Catalog\Block\Product\View\Options\AbstractOptions
 
         $fieldsSeparator = '/';
         $fieldsOrder = $this->_catalogProductOptionTypeDate->getConfigData('date_fields_order') ?? '';
-        $fieldsOrder = str_replace(",", $fieldsSeparator, $fieldsOrder);
-        $dateFormat = $fieldsOrder !== "m/d/y" ? $fieldsOrder : $this->_localeDate->getDateFormatWithLongYear();
+        $fieldsOrder = str_replace(',', $fieldsSeparator, $fieldsOrder);
+        $dateFormat = $fieldsOrder !== 'm/d/y' ? $fieldsOrder : $this->_localeDate->getDateFormatWithLongYear();
         /** Escape RTL characters which are present in some locales and corrupt formatting */
         $escapedDateFormat = preg_replace('/[^MmDdYy\/\.\-]/', '', $dateFormat);
         $value = null;
@@ -171,7 +174,7 @@ class Date extends \Magento\Catalog\Block\Product\View\Options\AbstractOptions
             )->setOptions(
                 [
                     'am' => $this->escapeHtml(__('AM')),
-                    'pm' => $this->escapeHtml(__('PM'))
+                    'pm' => $this->escapeHtml(__('PM')),
                 ]
             )->getHtml();
         }

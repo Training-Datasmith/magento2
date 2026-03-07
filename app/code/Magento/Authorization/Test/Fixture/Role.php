@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -31,11 +32,11 @@ class Role implements RevertibleDataFixtureInterface
         'gws_is_all' => 1,
         'gws_websites' => null,
         'gws_store_groups' => null,
-        'resources' => self::RESOURCES
+        'resources' => self::RESOURCES,
     ];
 
     private const RESOURCES = [
-        'Magento_Backend::all'
+        'Magento_Backend::all',
     ];
 
     /**

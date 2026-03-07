@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class ValidateTest extends AttributeTest
             ->willReturnMap(
                 [
                     [Attribute::class, [], $this->attributeMock],
-                    [AttributeSet::class, [], $this->attributeSetMock]
+                    [AttributeSet::class, [], $this->attributeSetMock],
                 ]
             );
         $this->attributeMock->expects($this->once())
@@ -198,7 +199,7 @@ class ValidateTest extends AttributeTest
             ->willReturnMap(
                 [
                     [Attribute::class, [], $this->attributeMock],
-                    [AttributeSet::class, [], $this->attributeSetMock]
+                    [AttributeSet::class, [], $this->attributeSetMock],
                 ]
             );
         $this->attributeMock->expects($this->once())
@@ -251,7 +252,7 @@ class ValidateTest extends AttributeTest
             ->willReturnMap(
                 [
                     ['frontend_label', null, null],
-                    ['attribute_code', null, "test_attribute_code"],
+                    ['attribute_code', null, 'test_attribute_code'],
                     ['new_attribute_set_name', null, 'test_attribute_set_name'],
                     ['message_key', null, Validate::DEFAULT_MESSAGE_KEY],
                     ['serialized_options', '[]', $serializedOptions],
@@ -303,76 +304,76 @@ class ValidateTest extends AttributeTest
                 [
                     'option' => [
                         'delete' => [
-                            "option_0" => "",
-                            "option_1" => "",
-                            "option_2" => "",
+                            'option_0' => '',
+                            'option_1' => '',
+                            'option_2' => '',
                         ],
                     ],
-                ], false
+                ], false,
             ],
             'valid options' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [1, 0],
-                            "option_1" => [2, 0],
-                            "option_2" => [3, 0],
+                            'option_0' => [1, 0],
+                            'option_1' => [2, 0],
+                            'option_2' => [3, 0],
                         ],
                         'delete' => [
-                            "option_0" => "",
-                            "option_1" => "",
-                            "option_2" => "",
+                            'option_0' => '',
+                            'option_1' => '',
+                            'option_2' => '',
                         ],
                     ],
-                ], false
+                ], false,
             ],
             'duplicate options' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [1, 0],
-                            "option_1" => [1, 0],
-                            "option_2" => [3, 0],
+                            'option_0' => [1, 0],
+                            'option_1' => [1, 0],
+                            'option_2' => [3, 0],
                         ],
                         'delete' => [
-                            "option_0" => "",
-                            "option_1" => "",
-                            "option_2" => "",
+                            'option_0' => '',
+                            'option_1' => '',
+                            'option_2' => '',
                         ],
                     ],
-                ], true
+                ], true,
             ],
             'duplicate and deleted' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [1, 0],
-                            "option_1" => [1, 0],
-                            "option_2" => [3, 0],
+                            'option_0' => [1, 0],
+                            'option_1' => [1, 0],
+                            'option_2' => [3, 0],
                         ],
                         'delete' => [
-                            "option_0" => "",
-                            "option_1" => "1",
-                            "option_2" => "",
+                            'option_0' => '',
+                            'option_1' => '1',
+                            'option_2' => '',
                         ],
                     ],
-                ], false
+                ], false,
             ],
             'empty and deleted' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [1, 0],
-                            "option_1" => [2, 0],
-                            "option_2" => ["", ""],
+                            'option_0' => [1, 0],
+                            'option_1' => [2, 0],
+                            'option_2' => ['', ''],
                         ],
                         'delete' => [
-                            "option_0" => "",
-                            "option_1" => "",
-                            "option_2" => "1",
+                            'option_0' => '',
+                            'option_1' => '',
+                            'option_2' => '1',
                         ],
                     ],
-                ], false
+                ], false,
             ],
         ];
     }
@@ -393,7 +394,7 @@ class ValidateTest extends AttributeTest
                 [
                     ['frontend_label', null, null],
                     ['frontend_input', 'select', 'multipleselect'],
-                    ['attribute_code', null, "test_attribute_code"],
+                    ['attribute_code', null, 'test_attribute_code'],
                     ['new_attribute_set_name', null, 'test_attribute_set_name'],
                     ['message_key', Validate::DEFAULT_MESSAGE_KEY, 'message'],
                     ['serialized_options', '[]', $serializedOptions],
@@ -444,32 +445,32 @@ class ValidateTest extends AttributeTest
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [''],
+                            'option_0' => [''],
                         ],
                     ],
                 ],
                 (object) [
                     'error' => true,
                     'message' => 'The value of Admin scope can\'t be empty.',
-                ]
+                ],
             ],
             'not empty admin scope options' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => ['asdads'],
+                            'option_0' => ['asdads'],
                         ],
                     ],
                 ],
                 (object) [
                     'error' => false,
-                ]
+                ],
             ],
             'empty admin scope options and deleted' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [''],
+                            'option_0' => [''],
                         ],
                         'delete' => [
                             'option_0' => '1',
@@ -484,7 +485,7 @@ class ValidateTest extends AttributeTest
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [''],
+                            'option_0' => [''],
                         ],
                         'delete' => [
                             'option_0' => '0',
@@ -516,7 +517,7 @@ class ValidateTest extends AttributeTest
                 [
                     ['frontend_label', null, null],
                     ['frontend_input', 'select', 'multipleselect'],
-                    ['attribute_code', null, "test_attribute_code"],
+                    ['attribute_code', null, 'test_attribute_code'],
                     ['new_attribute_set_name', null, 'test_attribute_set_name'],
                     ['message_key', Validate::DEFAULT_MESSAGE_KEY, 'message'],
                     ['serialized_options', '[]', $serializedOptions],
@@ -567,32 +568,32 @@ class ValidateTest extends AttributeTest
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [' '],
+                            'option_0' => [' '],
                         ],
                     ],
                 ],
                 (object) [
                     'error' => true,
                     'message' => 'The value of Admin scope can\'t be empty.',
-                ]
+                ],
             ],
             'not empty admin scope options' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => ['asdads'],
+                            'option_0' => ['asdads'],
                         ],
                     ],
                 ],
                 (object) [
                     'error' => false,
-                ]
+                ],
             ],
             'whitespace admin scope options and deleted' => [
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [' '],
+                            'option_0' => [' '],
                         ],
                         'delete' => [
                             'option_0' => '1',
@@ -607,7 +608,7 @@ class ValidateTest extends AttributeTest
                 [
                     'option' => [
                         'value' => [
-                            "option_0" => [' '],
+                            'option_0' => [' '],
                         ],
                         'delete' => [
                             'option_0' => '0',
@@ -629,7 +630,7 @@ class ValidateTest extends AttributeTest
     {
         $serializedOptions = '{"key":"value"}';
         $message = "The attribute couldn't be validated due to an error. Verify your information and try again. "
-            . "If the error persists, please try again later.";
+            . 'If the error persists, please try again later.';
         $this->requestMock->expects($this->any())
             ->method('getParam')
             ->willReturnMap(
@@ -653,7 +654,7 @@ class ValidateTest extends AttributeTest
             ->willReturnMap(
                 [
                     [Attribute::class, [], $this->attributeMock],
-                    [AttributeSet::class, [], $this->attributeSetMock]
+                    [AttributeSet::class, [], $this->attributeSetMock],
                 ]
             );
 
@@ -676,7 +677,7 @@ class ValidateTest extends AttributeTest
                 json_encode(
                     [
                         'error' => true,
-                        'message' => $message
+                        'message' => $message,
                     ]
                 )
             )
@@ -713,7 +714,7 @@ class ValidateTest extends AttributeTest
             ->expects($this->once())
             ->method('unserialize')
             ->with($serializedOptions)
-            ->willReturn(["key" => "value"]);
+            ->willReturn(['key' => 'value']);
 
         $this->objectManagerMock->expects($this->once())
             ->method('create')
@@ -759,8 +760,8 @@ class ValidateTest extends AttributeTest
                 (object) [
                     'error' => true,
                     'message' => 'Invalid Attribute Code.',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

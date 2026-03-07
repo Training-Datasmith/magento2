@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\RequireJs\Test\Unit\Model;
 
@@ -169,14 +169,14 @@ class FileManagerTest extends TestCase
             ->method('getRelativePath')
             ->willReturnMap([
                 ['path/to/bundle1.js'],
-                ['path/to/bundle2.js']
+                ['path/to/bundle2.js'],
             ]);
         $assetRepo
             ->expects($this->exactly(2))
             ->method('createArbitrary')
             ->willReturnMap([
                 [$this->asset],
-                [$this->asset]
+                [$this->asset],
             ]);
 
         $assetRepo

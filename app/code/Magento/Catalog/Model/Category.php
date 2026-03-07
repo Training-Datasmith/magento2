@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -133,7 +136,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
         'custom_layout_update',
         'custom_apply_to_products',
         'custom_layout_update_file',
-        'custom_use_parent_settings'
+        'custom_use_parent_settings',
     ];
 
     /**
@@ -617,7 +620,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
                     UrlRewrite::ENTITY_ID => $this->getId(),
                     UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE,
                     UrlRewrite::STORE_ID => $this->getStoreId(),
-                    UrlRewrite::REDIRECT_TYPE => 0
+                    UrlRewrite::REDIRECT_TYPE => 0,
                 ]
             );
             if ($rewrite) {

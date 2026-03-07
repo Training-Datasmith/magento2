@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,11 +85,11 @@ QUERY;
 
         $this->assertEquals($newEmail, $response['updateCustomerEmail']['customer']['email']);
 
-/*        $this->updateCustomerAccount->execute(
-            $this->customerRepository->get($newEmail),
-            ['email' => $currentEmail, 'password' => $currentPassword],
-            $this->storeRepository->getById(1)
-        );*/
+        /*        $this->updateCustomerAccount->execute(
+                    $this->customerRepository->get($newEmail),
+                    ['email' => $currentEmail, 'password' => $currentPassword],
+                    $this->storeRepository->getById(1)
+                );*/
     }
 
     /**

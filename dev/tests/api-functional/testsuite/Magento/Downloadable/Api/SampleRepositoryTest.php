@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Downloadable\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Model\Sample;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * API tests for Magento\Downloadable\Model\SampleRepository.
@@ -491,8 +493,8 @@ class SampleRepositoryTest extends WebapiAbstract
             'fields' => [
                 'title' => 'Downloadable Product Sample Title',
                 'sort_order' => 0,
-                'sample_type' => 'file'
-            ]
+                'sample_type' => 'file',
+            ],
         ];
 
         return [

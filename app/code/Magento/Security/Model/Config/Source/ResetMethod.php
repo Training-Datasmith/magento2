@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,10 +14,10 @@ namespace Magento\Security\Model\Config\Source;
  */
 class ResetMethod implements \Magento\Framework\Option\ArrayInterface
 {
-    const OPTION_BY_IP_AND_EMAIL = 1;
-    const OPTION_BY_IP = 2;
-    const OPTION_BY_EMAIL = 3;
-    const OPTION_NONE = 0;
+    public const OPTION_BY_IP_AND_EMAIL = 1;
+    public const OPTION_BY_IP = 2;
+    public const OPTION_BY_EMAIL = 3;
+    public const OPTION_NONE = 0;
 
     /**
      * Options getter

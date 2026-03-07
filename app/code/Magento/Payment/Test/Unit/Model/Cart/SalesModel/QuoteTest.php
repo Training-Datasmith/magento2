@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -159,7 +160,7 @@ class QuoteTest extends TestCase
             [0, 'getBaseShippingAmount'],
             [1, 'getBaseShippingAmount'],
             [0, 'getBaseDiscountAmount'],
-            [1, 'getBaseDiscountAmount']
+            [1, 'getBaseDiscountAmount'],
         ];
     }
 }

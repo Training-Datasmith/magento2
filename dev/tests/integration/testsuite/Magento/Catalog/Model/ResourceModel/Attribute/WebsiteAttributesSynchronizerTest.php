@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,11 +20,11 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class WebsiteAttributesSynchronizerTest extends \PHPUnit\Framework\TestCase
 {
-    const PRODUCT_ID = 333;
-    const PRODUCT_NOT_EDIT_MODE = false;
-    const FIRST_STORE_CODE = 'customstoreview1';
-    const SECOND_STORE_CODE = 'customstoreview2';
-    const PRODUCT_FORCE_RELOAD = true;
+    public const PRODUCT_ID = 333;
+    public const PRODUCT_NOT_EDIT_MODE = false;
+    public const FIRST_STORE_CODE = 'customstoreview1';
+    public const SECOND_STORE_CODE = 'customstoreview2';
+    public const PRODUCT_FORCE_RELOAD = true;
 
     /**
      * @var ObjectManagerInterface

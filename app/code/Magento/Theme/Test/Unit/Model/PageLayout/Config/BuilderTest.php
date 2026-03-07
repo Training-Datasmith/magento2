@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme page layout config model
  */
+
 namespace Magento\Theme\Test\Unit\Model\PageLayout\Config;
 
 use Magento\Framework\App\Cache\Type\Layout;
@@ -124,7 +126,7 @@ class BuilderTest extends TestCase
             ->willReturnMap(
                 [
                     [$theme1, 'layouts.xml', $files1],
-                    [$theme2, 'layouts.xml', $files2]
+                    [$theme2, 'layouts.xml', $files2],
                 ]
             );
 

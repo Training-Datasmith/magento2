@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Queue;
 
 use Magento\Framework\View\Element\AbstractBlock;
@@ -110,7 +113,7 @@ class Edit extends \Magento\Backend\Block\Template
                 'onclick' => "window.location.href = '" . $this->getUrl(
                     $this->getTemplateId() ? '*/template' : '*/*'
                 ) . "'",
-                'class' => 'action-back'
+                'class' => 'action-back',
             ]
         );
 
@@ -134,7 +137,7 @@ class Edit extends \Magento\Backend\Block\Template
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#queue_edit_form']],
-                ]
+                ],
             ]
         );
         if ($this->getCanResume()) {
@@ -152,7 +155,7 @@ class Edit extends \Magento\Backend\Block\Template
                                 'eventData' => ['action' => ['args' => ['_resume' => 1]]],
                             ],
                         ],
-                    ]
+                    ],
                 ]
             );
         }

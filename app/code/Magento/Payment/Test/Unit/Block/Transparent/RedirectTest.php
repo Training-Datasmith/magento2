@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Payment\Test\Unit\Block\Transparent;
 
 use Magento\Payment\Block\Transparent\Redirect;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class RedirectTest extends TestCase
 {
@@ -80,7 +81,7 @@ class RedirectTest extends TestCase
                     'BILLTOZIP' => '90016',
                     'BILLTOLASTNAME' => 'Ãtienne',
                     'BILLTOFIRSTNAME' => 'Ãillin',
-                ]
+                ],
             ],
             [
                 [
@@ -96,8 +97,8 @@ class RedirectTest extends TestCase
                     'BILLTOZIP' => '90016',
                     'BILLTOLASTNAME' => 'Ãtienne',
                     'BILLTOFIRSTNAME' => 'Ãillin',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

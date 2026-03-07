@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication\Config\Reader;
 
-use Magento\Framework\Communication\Config\Reader\EnvReader\Validator;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\Communication\Config\Reader\EnvReader\Validator;
 
 /**
  * Communication configuration reader. Reads data from env.php.
  */
 class EnvReader implements \Magento\Framework\Config\ReaderInterface
 {
-    const ENV_COMMUNICATION = 'communication';
+    public const ENV_COMMUNICATION = 'communication';
 
     /**
      * @var DeploymentConfig

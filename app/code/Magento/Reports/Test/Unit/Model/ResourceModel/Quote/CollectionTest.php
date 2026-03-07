@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class CollectionTest extends TestCase
                 'resource' => $this->resourceMock,
                 'fetchStrategy' => $this->fetchStrategyMock,
                 'entityFactory' => $this->entityFactoryMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

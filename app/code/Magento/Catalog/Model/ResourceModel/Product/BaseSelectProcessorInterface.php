@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Framework\DB\Select;
@@ -18,7 +21,7 @@ interface BaseSelectProcessorInterface
     /**
      * Product table alias
      */
-    const PRODUCT_TABLE_ALIAS = 'child';
+    public const PRODUCT_TABLE_ALIAS = 'child';
 
     /**
      * Process the select statement

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Block\Adminhtml\Product\Edit;
 
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element;
@@ -77,14 +80,14 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
     protected function _prepareForm()
     {
         $showUseDefault = ((int) $this->getProduct()->getStoreId()) !== Store::DEFAULT_STORE_ID;
-        
+
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create([
             'data' => [
                 'id' => 'new_video_form',
                 'class' => 'admin__scope-old',
                 'enctype' => 'multipart/form-data',
-            ]
+            ],
         ]);
         $form->setUseContainer($this->getUseContainer());
         $form->addField('new_video_messages', 'note', []);
@@ -136,7 +139,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'name' => 'video_title',
                 'scope_label' => __('[STORE VIEW]'),
-                ...($showUseDefault ? ['use_default' => false] : [])
+                ...($showUseDefault ? ['use_default' => false] : []),
             ]
         )->setRenderer($this->getFieldRenderer('text'));
         $fieldset->addField(
@@ -148,7 +151,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Description'),
                 'name' => 'video_description',
                 'scope_label' => __('[STORE VIEW]'),
-                ...($showUseDefault ? ['use_default' => false] : [])
+                ...($showUseDefault ? ['use_default' => false] : []),
             ],
         )->setRenderer($this->getFieldRenderer('textarea'));
         $fieldset->addField(
@@ -177,7 +180,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => 'Get Video Information',
                 'name' => 'new_video_get',
                 'value' => __('Get Video Information'),
-                'class' => 'action-default'
+                'class' => 'action-default',
             ]
         );
         $this->addMediaRoleAttributes($fieldset);
@@ -190,7 +193,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Hide from Product Page'),
                 'name' => 'disabled',
                 'scope_label' => __('[STORE VIEW]'),
-                ...($showUseDefault ? ['use_default' => false] : [])
+                ...($showUseDefault ? ['use_default' => false] : []),
             ]
         )->setRenderer($this->getFieldRenderer('checkbox'));
         $this->setForm($form);
@@ -222,7 +225,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                 'saveRemoteVideoUrl' => $this->getUrl('product_video/product_gallery/retrieveImage'),
                 'htmlId' => $this->getHtmlId(),
                 'youTubeApiKey' => $this->mediaHelper->getYouTubeApiKey(),
-                'videoSelector' => $this->videoSelector
+                'videoSelector' => $this->videoSelector,
             ]
         );
     }
@@ -248,7 +251,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
      */
     protected function addMediaRoleAttributes(Fieldset $fieldset)
     {
-        
+
         $fieldset = $fieldset->addFieldset('media_roles_fieldset', []);
         $fieldset->addField('role-label', 'note', ['text' => __('Role')]);
         $mediaRoles = $this->getProduct()->getMediaAttributes();
@@ -270,7 +273,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                         ScopedAttributeInterface::SCOPE_WEBSITE => __('[WEBSITE]'),
                         default => __('[STORE VIEW]')
                     },
-                    ...($showUseDefault ? ['use_default' => false] : [])
+                    ...($showUseDefault ? ['use_default' => false] : []),
                 ]
             )->setRenderer($this->getFieldRenderer('checkbox'));
         }
@@ -306,7 +309,7 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
             'adminhtml/system_config/edit',
             [
                 'section' => 'catalog',
-                '_fragment' => self::PATH_ANCHOR_PRODUCT_VIDEO
+                '_fragment' => self::PATH_ANCHOR_PRODUCT_VIDEO,
             ]
         );
     }
@@ -327,8 +330,8 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                     [
                         'data' => [
                             'template' =>
-                                'Magento_ProductVideo::product/edit/slideout/form/renderer/fieldset/element.phtml'
-                        ]
+                                'Magento_ProductVideo::product/edit/slideout/form/renderer/fieldset/element.phtml',
+                        ],
                     ]
                 ),
                 'checkbox' => $this->getLayout()->createBlock(
@@ -337,8 +340,8 @@ class NewVideo extends \Magento\Backend\Block\Widget\Form\Generic
                     [
                         'data' => [
                             'template' =>
-                                'Magento_ProductVideo::product/edit/slideout/form/renderer/fieldset/switcher.phtml'
-                        ]
+                                'Magento_ProductVideo::product/edit/slideout/form/renderer/fieldset/switcher.phtml',
+                        ],
                     ]
                 ),
             };

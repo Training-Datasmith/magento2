@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'data' => [
                     'id' => 'edit_form',
                     'action' => $this->getData('action'),
-                    'method' => 'post'
-                ]
+                    'method' => 'post',
+                ],
             ]
         );
         $fieldset = $form->addFieldset('main_fieldset', ['legend' => __('New Encryption Key')]);
@@ -50,8 +51,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'onchange' => "var cryptKey = jQuery('#crypt_key'); var cryptKeyBlock = cryptKey.parent().parent(); ".
                     "cryptKey.prop('disabled', this.value === '1'); " .
                     "if (cryptKey.prop('disabled')) { cryptKeyBlock.hide() } " .
-                    "else { cryptKeyBlock.show() }",
-                'note' => __('The generated key will be displayed after changing.')
+                    'else { cryptKeyBlock.show() }',
+                'note' => __('The generated key will be displayed after changing.'),
             ]
         );
         $fieldset->addField(
@@ -63,7 +64,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'style' => 'width:32em;',
                 'maxlength' => 32,
                 'required' => true,
-                'class' => 'required-entry'
+                'class' => 'required-entry',
             ]
         );
         $form->setUseContainer(true);

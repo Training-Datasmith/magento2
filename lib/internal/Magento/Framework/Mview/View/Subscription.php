@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All rights reserved.
@@ -270,11 +272,11 @@ class Subscription implements SubscriptionInterface, SubscriptionTriggersInterfa
             ->getView($changelog->getViewId())['subscriptions'][$this->getTableName()];
         $columns = [
             'column_names' => [
-                'entity_id' => $this->connection->quoteIdentifier($changelog->getColumnName())
+                'entity_id' => $this->connection->quoteIdentifier($changelog->getColumnName()),
             ],
             'column_values' => [
-                'entity_id' => $this->getEntityColumn($prefix, $view)
-            ]
+                'entity_id' => $this->getEntityColumn($prefix, $view),
+            ],
         ];
 
         if (!empty($subscriptionData['additional_columns'])) {
@@ -297,7 +299,7 @@ class Subscription implements SubscriptionInterface, SubscriptionTriggersInterfa
      */
     protected function buildStatement(string $event, ViewInterface $view): string
     {
-        $trigger = "%sINSERT INTO %s (%s) VALUES (%s);";
+        $trigger = '%sINSERT INTO %s (%s) VALUES (%s);';
         $changelog = $view->getChangelog();
 
         switch ($event) {
@@ -324,7 +326,7 @@ class Subscription implements SubscriptionInterface, SubscriptionTriggersInterfa
                             );
                         }
                         $trigger = sprintf(
-                            "IF (%s) THEN %s END IF;",
+                            'IF (%s) THEN %s END IF;',
                             implode(' OR ', $columns),
                             $trigger
                         );

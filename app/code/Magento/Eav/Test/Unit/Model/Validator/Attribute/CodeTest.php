@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,13 @@ declare(strict_types=1);
 /**
  * Test for \Magento\Eav\Model\Validator\Attribute\Code
  */
+
 namespace Magento\Eav\Test\Unit\Model\Validator\Attribute;
 
 use Magento\Eav\Model\Validator\Attribute\Code;
 use Magento\Framework\Validator\ValidateException;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CodeTest extends TestCase
 {
@@ -40,25 +42,25 @@ class CodeTest extends TestCase
         return [
             [
                 'Attribute_code',
-                true
+                true,
             ], [
                 'attribute_1',
-                true
+                true,
             ],[
                 'Attribute_1',
-                true
+                true,
             ], [
                 '_attribute_code',
-                false
+                false,
             ], [
                 'attribute.code',
-                false
+                false,
             ], [
                 '1attribute_code',
-                false
+                false,
             ], [
                 'more_than_60_chars_more_than_60_chars_more_than_60_chars_more',
-                false
+                false,
             ], [
                 'container_attribute',
                 false,

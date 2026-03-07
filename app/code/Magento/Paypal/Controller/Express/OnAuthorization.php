@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,24 +8,24 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Controller\Express;
 
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Customer\Model\Url as CustomerUrl;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Paypal\Model\Config as PayPalConfig;
-use Magento\Paypal\Model\Express\Checkout as PayPalCheckout;
-use Magento\Paypal\Model\Api\ProcessableException as ApiProcessableException;
-use Magento\Framework\App\Action\Context;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Checkout\Model\Session as CheckoutSession;
-use Magento\Sales\Model\OrderFactory;
-use Magento\Paypal\Model\Express\Checkout\Factory as CheckoutFactory;
 use Magento\Framework\Session\Generic as PayPalSession;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
-use Magento\Customer\Model\Url as CustomerUrl;
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Framework\UrlInterface;
+use Magento\Paypal\Model\Api\ProcessableException as ApiProcessableException;
+use Magento\Paypal\Model\Config as PayPalConfig;
+use Magento\Paypal\Model\Express\Checkout as PayPalCheckout;
+use Magento\Paypal\Model\Express\Checkout\Factory as CheckoutFactory;
+use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\GuestCartRepositoryInterface;
+use Magento\Sales\Model\OrderFactory;
 
 /**
  * Processes data after returning from PayPal
@@ -146,7 +147,7 @@ class OnAuthorization extends AbstractExpress implements HttpPostActionInterface
                     'checkout_submit_all_after',
                     [
                         'order' => $order,
-                        'quote' => $quote
+                        'quote' => $quote,
                     ]
                 );
 
@@ -154,7 +155,7 @@ class OnAuthorization extends AbstractExpress implements HttpPostActionInterface
                     'paypal_express_place_order_success',
                     [
                         'order' => $order,
-                        'quote' => $quote
+                        'quote' => $quote,
                     ]
                 );
                 $responseContent['redirectUrl'] = $this->urlBuilder->getUrl('checkout/onepage/success/');

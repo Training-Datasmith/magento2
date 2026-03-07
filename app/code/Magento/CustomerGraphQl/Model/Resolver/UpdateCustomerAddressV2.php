@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CustomerGraphQl\Model\Resolver;
 
 use Magento\CustomerGraphQl\Model\Customer\Address\ExtractCustomerAddressData;
-use Magento\CustomerGraphQl\Model\Customer\Address\UpdateCustomerAddress;
 use Magento\CustomerGraphQl\Model\Customer\Address\GetCustomerAddressV2;
+use Magento\CustomerGraphQl\Model\Customer\Address\UpdateCustomerAddress;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;

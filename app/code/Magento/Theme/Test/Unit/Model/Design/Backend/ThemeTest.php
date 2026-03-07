@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\DesignInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Theme\Model\Design\Backend\Theme;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ThemeTest extends TestCase
 {
@@ -105,13 +106,13 @@ class ThemeTest extends TestCase
                         Theme::XML_PATH_INVALID_CACHES,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        ['block_html' => 1, 'layout' => 1, 'translate' => 1]
+                        ['block_html' => 1, 'layout' => 1, 'translate' => 1],
                     ],
                     [
                         null,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        $oldValue
+                        $oldValue,
                     ],
 
                 ]
@@ -139,7 +140,7 @@ class ThemeTest extends TestCase
     {
         return [
             [null, ''],
-            ['value', 'value']
+            ['value', 'value'],
         ];
     }
 
@@ -164,13 +165,13 @@ class ThemeTest extends TestCase
                         Theme::XML_PATH_INVALID_CACHES,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        ['block_html' => 1, 'layout' => 1, 'translate' => 1]
+                        ['block_html' => 1, 'layout' => 1, 'translate' => 1],
                     ],
                     [
                         null,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        'old_value'
+                        'old_value',
                     ],
 
                 ]

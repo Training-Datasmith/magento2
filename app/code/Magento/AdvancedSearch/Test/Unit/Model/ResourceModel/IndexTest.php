@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\AdvancedSearch\Model\ResourceModel\Index;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
 use Magento\Framework\App\ResourceConnection;
@@ -20,6 +19,8 @@ use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Traversable;
@@ -143,8 +144,8 @@ class IndexTest extends TestCase
         $this->adapterMock->expects($this->any())->method('fetchAll')->with($selectMock)->willReturn([$testData]);
         $expectedData = [
             $testData['entity_id'] => [
-                $testData['customer_group_id'] => round((float) $testData['min_price'], 2)
-            ]
+                $testData['customer_group_id'] => round((float) $testData['min_price'], 2),
+            ],
         ];
 
         $this->assertEquals($this->model->getPriceIndexData([1], 1), $expectedData);
@@ -161,33 +162,33 @@ class IndexTest extends TestCase
                    'website_id' => 1,
                    'entity_id' => 1,
                    'customer_group_id' => 1,
-                   'min_price' => '12.12'
-               ]
+                   'min_price' => '12.12',
+               ],
             ],
             [
                 [
                     'website_id' => 1,
                     'entity_id' => 2,
                     'customer_group_id' => 2,
-                    'min_price' => null
-                ]
+                    'min_price' => null,
+                ],
             ],
             [
                 [
                     'website_id' => 1,
                     'entity_id' => 3,
                     'customer_group_id' => 3,
-                    'min_price' => 12.12
-                ]
+                    'min_price' => 12.12,
+                ],
             ],
             [
                 [
                     'website_id' => 1,
                     'entity_id' => 3,
                     'customer_group_id' => 3,
-                    'min_price' => ''
-                ]
-            ]
+                    'min_price' => '',
+                ],
+            ],
         ];
     }
 }

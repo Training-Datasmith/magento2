@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
-use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
+use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 class Attribute implements RevertibleDataFixtureInterface
 {
@@ -32,7 +33,7 @@ class Attribute implements RevertibleDataFixtureInterface
         'source_model' => null,
         'default_value' => null,
         'is_unique' => '0',
-        'frontend_class' => null
+        'frontend_class' => null,
     ];
 
     /**
@@ -83,7 +84,7 @@ class Attribute implements RevertibleDataFixtureInterface
                 __(
                     '"%field" value is required to create an attribute',
                     [
-                        'field' => 'entity_type_id'
+                        'field' => 'entity_type_id',
                     ]
                 )
             );
@@ -93,7 +94,7 @@ class Attribute implements RevertibleDataFixtureInterface
 
         $this->serviceFactory->create(AttributeRepositoryInterface::class, 'save')->execute(
             [
-                'attribute' => $mergedData
+                'attribute' => $mergedData,
             ]
         );
 

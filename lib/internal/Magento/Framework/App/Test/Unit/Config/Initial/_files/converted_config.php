@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,5 +25,5 @@ return [
     'metadata' => [
         'payment/payment_method/login' => ['backendModel' => 'Custom_Backend_Model_Config_Backend_Encrypted'],
         'payment/payment_method/trans_key' => ['backendModel' => 'Custom_Backend_Model_Config_Backend_Encrypted'],
-    ]
+    ],
 ];

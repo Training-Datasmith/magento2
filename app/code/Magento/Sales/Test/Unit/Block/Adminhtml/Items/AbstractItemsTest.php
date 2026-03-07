@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Backend\Block\Template\Context;
 use Magento\CatalogInventory\Model\Configuration;
 use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Model\StockRegistry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Layout;
 use Magento\Sales\Block\Adminhtml\Items\AbstractItems;
@@ -18,10 +20,9 @@ use Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer;
 use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * TODO refactor me PLEASE
@@ -128,7 +129,7 @@ class AbstractItemsTest extends TestCase
                 'context' => $this->objectManagerHelper->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 
@@ -245,7 +246,7 @@ class AbstractItemsTest extends TestCase
         $block = $this->objectManagerHelper->getObject(
             AbstractItems::class,
             [
-                'stockConfiguration' => $stockConfiguration
+                'stockConfiguration' => $stockConfiguration,
             ]
         );
         $result = $block->canReturnItemToStock();
@@ -261,7 +262,7 @@ class AbstractItemsTest extends TestCase
             [true, ['has_can_return_to_stock' => true], true],
             [false, ['has_can_return_to_stock' => true], false],
             [false, ['has_can_return_to_stock' => false, 'product_id' => 2, 'manage_stock' => false], false],
-            [true, ['has_can_return_to_stock' => false, 'product_id' => 2, 'manage_stock' => true], true]
+            [true, ['has_can_return_to_stock' => false, 'product_id' => 2, 'manage_stock' => true], true],
         ];
     }
 }

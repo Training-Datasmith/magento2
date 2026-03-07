@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
@@ -20,7 +23,7 @@ class StoreCookieManager implements StoreCookieManagerInterface
     /**
      * @var string
      */
-    const COOKIE_NAME = 'store';
+    public const COOKIE_NAME = 'store';
 
     /**
      * @var CookieMetadataFactory

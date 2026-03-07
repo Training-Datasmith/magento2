@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Renderer;
 
 use Magento\Framework\Data\Form\Element\AbstractElement;
@@ -150,7 +153,7 @@ class Region implements \Magento\Framework\Data\Form\Element\Renderer\RendererIn
                 '" ' .
                 $element->serialize(
                     $htmlAttributes
-                ) . "/>" . "\n";
+                ) . '/>' . "\n";
             $html .= '<input type="hidden" name="' . $regionIdHtmlName . '" id="' . $regionIdHtmlId . '" value=""/>';
             $html .= '</div>' . "\n";
         }

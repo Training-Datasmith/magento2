@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class RequestTest extends TestCase
             Request::class,
             [
                 'localeResolver' => $this->localeResolverMock,
-                'taxData' => $this->taxData
+                'taxData' => $this->taxData,
             ]
         );
     }
@@ -129,7 +130,7 @@ class RequestTest extends TestCase
         ]);
         return [
             [$billing, $shipping, 'CA', 'olala', 'US'],
-            [$billing2, $shipping2, 'CA', 'ShipCity', 'US']
+            [$billing2, $shipping2, 'CA', 'ShipCity', 'US'],
         ];
     }
 
@@ -148,7 +149,7 @@ class RequestTest extends TestCase
             'showBillingPhone' => 'false',
             'showCustomerName' => 'false',
             'showCardInfo' => 'true',
-            'showHostedThankyouPage' => 'false'
+            'showHostedThankyouPage' => 'false',
         ];
         $paymentMethodMock = $this->createMock(Hostedpro::class);
         $paymentMethodMock->expects($this->once())
@@ -208,7 +209,7 @@ class RequestTest extends TestCase
             'total' => $total,
             'tax' => $tax,
             'shipping' => $shipping,
-            'discount' => abs((float) $discount)
+            'discount' => abs((float) $discount),
         ];
 
         static::assertFalse($this->taxData->priceIncludesTax());
@@ -261,7 +262,7 @@ class RequestTest extends TestCase
             'total' => $total,
             'tax' => $tax,
             'shipping' => $shipping,
-            'discount' => abs((float) $discount)
+            'discount' => abs((float) $discount),
         ];
 
         static::assertFalse($this->taxData->priceIncludesTax());
@@ -310,7 +311,7 @@ class RequestTest extends TestCase
         $this->taxData = $this->helper->getObject(
             Data::class,
             [
-                'taxConfig' => $config
+                'taxConfig' => $config,
             ]
         );
 
@@ -318,7 +319,7 @@ class RequestTest extends TestCase
             Request::class,
             [
                 'localeResolver' => $this->localeResolverMock,
-                'taxData' => $this->taxData
+                'taxData' => $this->taxData,
             ]
         );
 
@@ -328,7 +329,7 @@ class RequestTest extends TestCase
 
         $expectation = [
             'amount' => $amount,
-            'subtotal' => $amount
+            'subtotal' => $amount,
         ];
 
         $payment = $this->createMock(Payment::class);

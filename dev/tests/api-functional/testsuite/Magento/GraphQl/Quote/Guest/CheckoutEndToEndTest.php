@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Guest;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Framework\Registry;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
-use Magento\Framework\Registry;
 use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory as QuoteCollectionFactory;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * End to checkout tests for guest
@@ -95,7 +96,7 @@ class CheckoutEndToEndTest extends GraphQlAbstract
      * Validates that null values in street array are properly filtered and don't cause errors
      */
     #[
-        Config("checkout/options/guest_checkout", "1", "store", "default"),
+        Config('checkout/options/guest_checkout', '1', 'store', 'default'),
         DataFixture(
             ProductFixture::class,
             ['price' => 1, 'name' => 'simple1', 'sku' => 'simple1'],

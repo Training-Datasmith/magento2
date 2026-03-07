@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Wysiwyg\Images;
 
 /**
@@ -172,11 +175,11 @@ class Tree extends \Magento\Backend\Block\Template
     public function getTreeWidgetOptions()
     {
         return [
-            "folderTree" => [
-                "rootName" => $this->getRootNodeName(),
-                "url" => $this->getTreeLoaderUrl(),
-                "currentPath" => array_reverse($this->getTreeCurrentPath()),
-            ]
+            'folderTree' => [
+                'rootName' => $this->getRootNodeName(),
+                'url' => $this->getTreeLoaderUrl(),
+                'currentPath' => array_reverse($this->getTreeCurrentPath()),
+            ],
         ];
     }
 }

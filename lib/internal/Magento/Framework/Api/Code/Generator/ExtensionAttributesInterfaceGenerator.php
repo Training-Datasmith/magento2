@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Code\Generator;
 
 use Magento\Framework\Code\Generator\DefinedClasses;
@@ -13,9 +16,9 @@ use Magento\Framework\Code\Generator\Io;
  */
 class ExtensionAttributesInterfaceGenerator extends \Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator
 {
-    const ENTITY_TYPE = 'extensionInterface';
+    public const ENTITY_TYPE = 'extensionInterface';
 
-    const EXTENSION_INTERFACE_SUFFIX = 'ExtensionInterface';
+    public const EXTENSION_INTERFACE_SUFFIX = 'ExtensionInterface';
 
     /**
      * Initialize dependencies.

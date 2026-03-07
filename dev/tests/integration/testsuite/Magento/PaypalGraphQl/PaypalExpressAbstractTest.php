@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl;
 
+use Magento\Config\Model\Config;
 use Magento\Customer\Helper\Address;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\RegionFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedExceptionFactory;
 use Magento\Framework\HTTP\Adapter\CurlFactory;
 use Magento\Framework\Locale\ResolverInterface;
@@ -17,21 +20,19 @@ use Magento\Framework\Math\Random;
 use Magento\GraphQl\Controller\GraphQl;
 use Magento\GraphQl\Service\GraphQlRequest;
 use Magento\Payment\Model\Method\Logger;
+use Magento\Paypal\Model\Api\AbstractApi;
 use Magento\Paypal\Model\Api\Nvp;
 use Magento\Paypal\Model\Api\NvpFactory;
 use Magento\Paypal\Model\Api\PayflowNvp;
-use Magento\Paypal\Model\Api\AbstractApi;
 use Magento\Paypal\Model\Api\ProcessableExceptionFactory;
+use Magento\Paypal\Model\Api\Type\Factory as ApiFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Paypal\Model\Api\Type\Factory as ApiFactory;
 use Psr\Log\LoggerInterface;
-use Magento\Config\Model\Config;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Abstract class with common logic for Paypal GraphQl tests
@@ -72,7 +73,7 @@ abstract class PaypalExpressAbstractTest extends TestCase
             ->willReturnMap(
                 [
                     [Nvp::class, [], $this->getNvpMock(Nvp::class)],
-                    [PayflowNvp::class, [], $this->getNvpMock(PayflowNvp::class)]
+                    [PayflowNvp::class, [], $this->getNvpMock(PayflowNvp::class)],
                 ]
             );
 
@@ -131,7 +132,7 @@ abstract class PaypalExpressAbstractTest extends TestCase
         $paypalMethods = [
             'paypal_express',
             'payflow_express',
-            'payflow_link'
+            'payflow_link',
         ];
         $config = $this->objectManager->get(Config::class);
         $config->setScope(ScopeConfigInterface::SCOPE_TYPE_DEFAULT);
@@ -167,7 +168,7 @@ abstract class PaypalExpressAbstractTest extends TestCase
             if ($nvpClass === PayflowNvp::class) {
                 $constructorArgs += [
                     'mathRandom' => $this->objectManager->get(Random::class),
-                    'nvpFactory' => $this->objectManager->get(NvpFactory::class)
+                    'nvpFactory' => $this->objectManager->get(NvpFactory::class),
                 ];
             }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -105,14 +106,14 @@ class Delete extends Action implements HttpPostActionInterface
                 $message = __(
                     'The asset "%title" has been successfully deleted.',
                     [
-                        'title' => current($assets)->getTitle()
+                        'title' => current($assets)->getTitle(),
                     ]
                 );
             } else {
                 $message = __(
                     '%count assets have been successfully deleted.',
                     [
-                        'count' => count($imageIds)
+                        'count' => count($imageIds),
                     ]
                 );
             }

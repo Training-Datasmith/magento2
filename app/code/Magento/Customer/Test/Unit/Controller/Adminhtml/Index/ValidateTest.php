@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ValidateTest extends TestCase
 {
-
     /**
      * @var MockObject|RequestInterface
      */
@@ -141,7 +141,7 @@ class ValidateTest extends TestCase
                 'customerAccountManagement' => $this->customerAccountManagement,
                 'resultJsonFactory' => $this->resultJsonFactory,
                 'dataObjectHelper' => $this->dataObjectHelper,
-                'customerStore' => $customerStoreMock
+                'customerStore' => $customerStoreMock,
             ]
         );
     }
@@ -154,7 +154,7 @@ class ValidateTest extends TestCase
             ->with('customer')
             ->willReturn([
                 'entity_id' => $customerEntityId,
-                'website_id' => 1
+                'website_id' => 1,
             ]);
 
         $this->customer->expects($this->once())

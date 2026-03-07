@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -123,7 +124,7 @@ class Redirect extends Action implements HttpGetActionInterface, HttpPostActionI
                     [
                         'fromStore' => $fromStore,
                         'targetStore' => $targetStore,
-                        'redirectUrl' => $this->_redirect->getRedirectUrl()
+                        'redirectUrl' => $this->_redirect->getRedirectUrl(),
                     ]
                 )
             );
@@ -137,7 +138,7 @@ class Redirect extends Action implements HttpGetActionInterface, HttpPostActionI
             ];
             $arguments = [
                 '_nosid' => true,
-                '_query' => $query
+                '_query' => $query,
             ];
 
             $this->_redirect->redirect($this->_response, 'stores/store/switch', $arguments);

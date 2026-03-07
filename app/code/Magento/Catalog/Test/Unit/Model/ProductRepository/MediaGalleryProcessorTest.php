@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -76,18 +77,18 @@ class MediaGalleryProcessorTest extends TestCase
     {
         $initialExitingEntry = [
             'value_id' => 5,
-            "label" => "new_label_text",
+            'label' => 'new_label_text',
             'file' => 'filename1',
             'position' => 10,
             'disabled' => false,
-            'types' => ['image', 'small_image']
+            'types' => ['image', 'small_image'],
         ];
         $newEntriesData = [
             'images' => [
                 $initialExitingEntry,
                 [
                     'value_id' => null,
-                    'label' => "label_text",
+                    'label' => 'label_text',
                     'position' => 10,
                     'disabled' => false,
                     'types' => ['image', 'small_image'],
@@ -95,30 +96,30 @@ class MediaGalleryProcessorTest extends TestCase
                         'data' => [
                             ImageContentInterface::NAME => 'filename',
                             ImageContentInterface::TYPE => 'image/jpeg',
-                            ImageContentInterface::BASE64_ENCODED_DATA => 'encoded_content'
-                        ]
+                            ImageContentInterface::BASE64_ENCODED_DATA => 'encoded_content',
+                        ],
                     ],
-                    'media_type' => 'media_type'
-                ]
-            ]
+                    'media_type' => 'media_type',
+                ],
+            ],
         ];
         $newExitingEntriesData = [
             'images' => [
                 $initialExitingEntry,
                 [
                     'value_id' => 6,
-                    "label" => "label_text2",
+                    'label' => 'label_text2',
                     'file' => 'filename2',
                     'position' => 10,
                     'disabled' => false,
-                    'types' => ['image', 'small_image']
-                ]
-            ]
+                    'types' => ['image', 'small_image'],
+                ],
+            ],
         ];
         $this->productMock->setData('media_gallery', $newExitingEntriesData);
         $this->productMock->setData(
             'media_attributes',
-            ["image" => "imageAttribute", "small_image" => "small_image_attribute"]
+            ['image' => 'imageAttribute', 'small_image' => 'small_image_attribute']
         );
         $mediaTmpPath = '/tmp';
         $absolutePath = '/a/b/filename.jpg';

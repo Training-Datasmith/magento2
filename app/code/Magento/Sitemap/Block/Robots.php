@@ -1,10 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Block;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Context;
@@ -13,7 +17,6 @@ use Magento\Sitemap\Helper\Data as SitemapHelper;
 use Magento\Sitemap\Model\ResourceModel\Sitemap\CollectionFactory;
 use Magento\Sitemap\Model\Sitemap;
 use Magento\Sitemap\Model\SitemapConfigReader;
-use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\StoreResolver;
 

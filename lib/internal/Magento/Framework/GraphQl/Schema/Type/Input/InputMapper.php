@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class InputMapper
      * @return array
      * @throws GraphQlInputException
      */
-    public function getRepresentation(Argument $argument) : array
+    public function getRepresentation(Argument $argument): array
     {
         $typeName = $argument->getTypeName();
         if ($this->scalarTypes->isScalarType($typeName)) {
@@ -67,7 +68,7 @@ class InputMapper
 
         $calculatedArgument = [
             'type' => $instance,
-            'description' => $argument->getDescription()
+            'description' => $argument->getDescription(),
         ];
 
         if ($this->scalarTypes->isScalarType($typeName) && $argument->hasDefaultValue()) {

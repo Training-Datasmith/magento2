@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -136,7 +137,7 @@ class DynamicTest extends TestCase
                 'hits' => [
                     [
                         '_id' => 1,
-                    ]
+                    ],
                 ],
             ],
             'aggregations' => [],

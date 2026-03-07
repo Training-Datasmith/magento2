@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store\Delete;
 
 use Magento\Backup\Helper\Data as BackupHelper;
@@ -79,7 +82,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Create DB Backup'),
                 'name' => 'create_backup',
                 'options' => $backupOptions,
-                'value' => $backupSelected
+                'value' => $backupSelected,
             ]
         );
 

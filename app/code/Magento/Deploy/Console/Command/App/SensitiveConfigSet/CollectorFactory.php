@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,12 +19,12 @@ class CollectorFactory
     /**
      * Constant for interactive collector type
      */
-    const TYPE_INTERACTIVE = 'interactive';
+    public const TYPE_INTERACTIVE = 'interactive';
 
     /**
      * Constant for simple collector type
      */
-    const TYPE_SIMPLE = 'simple';
+    public const TYPE_SIMPLE = 'simple';
 
     /**
      * Object Manager instance

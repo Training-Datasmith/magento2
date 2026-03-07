@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Price;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Pricing\Price\TierPrice;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Api\GroupManagementInterface;
@@ -22,6 +21,8 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -74,7 +75,7 @@ class TierPriceTest extends TestCase
             ['getPriceInfo', 'getResource']
         );
         $this->product->method('getPriceInfo')->willReturn($this->priceInfo);
-        
+
         // Configure getResource to return a mock with getAttribute method
         $resource = $this->createMock(\Magento\Catalog\Model\ResourceModel\Product::class);
         $resource->method('getAttribute')->willReturn(
@@ -94,7 +95,7 @@ class TierPriceTest extends TestCase
                 'saleableItem' => $this->product,
                 'calculator' => $this->calculator,
                 'priceCurrency' => $this->priceCurrencyMock,
-                'groupManagement' => $this->groupManagement
+                'groupManagement' => $this->groupManagement,
             ]
         );
     }
@@ -135,37 +136,37 @@ class TierPriceTest extends TestCase
                         'price'         => '1.3',
                         'website_price' => '1.3',
                         'price_qty'     => '1.',
-                        'cust_group'    => 999
+                        'cust_group'    => 999,
                     ],
                     [
                         'price'         => '50.',
                         'website_price' => '50.',
                         'price_qty'     => '2.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '25.',
                         'website_price' => '25.',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '15.',
                         'website_price' => '15.',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '30.',
                         'website_price' => '30.',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '8.',
                         'website_price' => '8.',
                         'price_qty'     => '11.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                 ],
                 'basePrice' => 20.,
@@ -174,16 +175,16 @@ class TierPriceTest extends TestCase
                         'price'         => '15.',
                         'website_price' => '15.',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '8.',
                         'website_price' => '8.',
                         'price_qty'     => '11.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

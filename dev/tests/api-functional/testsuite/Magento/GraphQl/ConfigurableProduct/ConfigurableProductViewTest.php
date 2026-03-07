@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -237,7 +238,7 @@ QUERY;
                     $metadataPool->getMetadata(
                         ProductInterface::class
                     )->getIdentifierField()
-                )
+                ),
             ],
             ['response_field' => 'name', 'expected_value' => $product->getName()],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
@@ -249,25 +250,25 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => $minimalPriceAmount->getValue(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => $maximalPriceAmount->getValue(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => $regularPriceAmount->getValue(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -325,13 +326,13 @@ QUERY;
             $this->assertCount(
                 1,
                 $mediaGalleryEntries,
-                "Precondition failed since there are incorrect number of media gallery entries"
+                'Precondition failed since there are incorrect number of media gallery entries'
             );
             $this->assertIsArray($actualResponse['variants'][$variantKey]['product']['media_gallery_entries']);
             $this->assertCount(
                 1,
                 $actualResponse['variants'][$variantKey]['product']['media_gallery_entries'],
-                "there must be 1 record in the media gallery"
+                'there must be 1 record in the media gallery'
             );
             $mediaGalleryEntry = $mediaGalleryEntries[0];
             $this->assertResponseFields(
@@ -342,19 +343,19 @@ QUERY;
                     'id' => $mediaGalleryEntry->getId(),
                     'label' => $mediaGalleryEntry->getLabel(),
                     'media_type' => $mediaGalleryEntry->getMediaType(),
-                    'position' => $mediaGalleryEntry->getPosition()
+                    'position' => $mediaGalleryEntry->getPosition(),
                 ]
             );
             $videoContent = $mediaGalleryEntry->getExtensionAttributes()->getVideoContent();
             $this->assertResponseFields(
                 $actualResponse['variants'][$variantKey]['product']['media_gallery_entries'][0]['video_content'],
                 [
-                    'media_type' =>$videoContent->getMediaType(),
+                    'media_type' => $videoContent->getMediaType(),
                     'video_description' => $videoContent->getVideoDescription(),
-                    'video_metadata' =>$videoContent->getVideoMetadata(),
+                    'video_metadata' => $videoContent->getVideoMetadata(),
                     'video_provider' => $videoContent->getVideoProvider(),
                     'video_title' => $videoContent->getVideoTitle(),
-                    'video_url' => $videoContent->getVideoUrl()
+                    'video_url' => $videoContent->getVideoUrl(),
                 ]
             );
             unset($variantArray['product']['media_gallery_entries']);
@@ -370,23 +371,23 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => $childProduct->getFinalPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => $childProduct->getFinalPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => $childProduct->getFinalPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                 ],
                 $variantArray['product']['price']

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -47,13 +48,13 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'store_id' => '$store2.id$',
             'website_id' => '$website2.id$',
-            'addresses' => [[]]
+            'addresses' => [[]],
         ],
         as: 'customer'
     ),
     DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote1', scope: 'store2'),
     DataFixture(AddProductToCartFixture::class, [
-        'cart_id' => '$quote1.id$', 'product_id' => '$product.id$', 'qty' => 1
+        'cart_id' => '$quote1.id$', 'product_id' => '$product.id$', 'qty' => 1,
     ]),
     DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote1.id$']),
     DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$quote1.id$']),
@@ -62,7 +63,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
     DataFixture(PlaceOrderFixture::class, ['cart_id' => '$quote1.id$'], 'order1'),
     DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote2', scope: 'store3'),
     DataFixture(AddProductToCartFixture::class, [
-        'cart_id' => '$quote2.id$', 'product_id' => '$product.id$', 'qty' => 1
+        'cart_id' => '$quote2.id$', 'product_id' => '$product.id$', 'qty' => 1,
     ]),
     DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote2.id$']),
     DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$quote2.id$']),
@@ -228,7 +229,7 @@ class DateOfFirstOrderResolverTest extends GraphQlAbstract
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
         DataFixture(AddProductToCartFixture::class, [
-            'cart_id' => '$quote.id$', 'product_id' => '$product.id$', 'qty' => 1
+            'cart_id' => '$quote.id$', 'product_id' => '$product.id$', 'qty' => 1,
         ]),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
         DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -306,10 +307,10 @@ query {
 }
 QUERY;
 
-        $query = str_replace("{{scope}}", isset($scope) ? "scope: $scope" : '', $query);
+        $query = str_replace('{{scope}}', isset($scope) ? "scope: $scope" : '', $query);
 
         return str_replace(
-            "{{date}}",
+            '{{date}}',
             isset($duration) ? date('Y-m-d', strtotime($duration)) : date('Y-m-d'),
             $query
         );

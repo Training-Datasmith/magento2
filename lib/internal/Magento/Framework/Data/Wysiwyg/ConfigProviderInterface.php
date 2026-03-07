@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,5 +20,5 @@ interface ConfigProviderInterface
      * @return \Magento\Framework\DataObject
      * @since 102.0.0
      */
-    public function getConfig(\Magento\Framework\DataObject $config) : \Magento\Framework\DataObject;
+    public function getConfig(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject;
 }

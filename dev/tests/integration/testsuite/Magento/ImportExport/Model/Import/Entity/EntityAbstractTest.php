@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\ImportExport\Model\Import\Entity;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportExport\Model\Import\Source\Csv;
 
 /**
  * Test class for \Magento\ImportExport\Model\Import\AbstractEntity
@@ -23,7 +24,7 @@ class EntityAbstractTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function testSaveValidatedBunches() : void
+    public function testSaveValidatedBunches(): void
     {
         $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
         $filesystem = $objectManager->create(\Magento\Framework\Filesystem::class);

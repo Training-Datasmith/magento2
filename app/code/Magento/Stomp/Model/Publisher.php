@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Stomp\Model;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\Framework\MessageQueue\MessageEncoder;
 use Magento\Framework\MessageQueue\MessageValidator;
@@ -87,14 +87,14 @@ class Publisher implements PublisherInterface
                     // md5() here is not for cryptographic use.
                     // phpcs:ignore Magento2.Security.InsecureFunction
                     'message_id' => md5(gethostname() . microtime(true) . uniqid($topicName, true)),
-                    'destination-type' => 'ANYCAST'
-                ]
+                    'destination-type' => 'ANYCAST',
+                ],
             ]
         );
 
         $publisher = $this->publisherConfig->getPublisher($topicName);
         $connectionName = $publisher->getConnection()->getName();
-        $queueName = $publisher->getQueue() ? $publisher->getQueue(): $topicName;
+        $queueName = $publisher->getQueue() ? $publisher->getQueue() : $topicName;
         $queue = $this->queueRepository->get($connectionName, $queueName);
 
         $queue->push($envelope);

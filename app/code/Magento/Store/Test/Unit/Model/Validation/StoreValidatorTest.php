@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -92,12 +93,12 @@ class StoreValidatorTest extends TestCase
             'true' => [
                 new \Magento\Framework\DataObject(['field1' => 'value1', 'field2' => 'value2']),
                 true,
-                []
+                [],
             ],
             'false' => [
                 new \Magento\Framework\DataObject(),
                 false,
-                ['store is not valid']
+                ['store is not valid'],
             ],
         ];
     }

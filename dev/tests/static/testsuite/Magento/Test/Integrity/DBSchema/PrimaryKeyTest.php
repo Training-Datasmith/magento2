@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -38,16 +39,16 @@ class PrimaryKeyTest extends TestCase
                 $message = '';
                 if (!empty($tableSchemaDeclaration['modules'])) {
                     $message = "It is declared in the following modules: \n" . implode(
-                            "\t\n",
-                            $tableSchemaDeclaration['modules']
-                        );
+                        "\t\n",
+                        $tableSchemaDeclaration['modules']
+                    );
                 }
                 $errorMessage .= 'Table ' . $tableName . ' does not have primary key. ' . $message . "\n";
-                $failedTableCtr ++;
+                $failedTableCtr++;
             }
         }
         if (!empty($errorMessage)) {
-            $errorMessage .= "\n\nTotal " . $failedTableCtr . " tables failed";
+            $errorMessage .= "\n\nTotal " . $failedTableCtr . ' tables failed';
             $this->fail($errorMessage);
         }
     }
@@ -108,7 +109,7 @@ class PrimaryKeyTest extends TestCase
                     [
                         'table' => [
                             $tableName => $tableDeclaration,
-                        ]
+                        ],
                     ]
                 );
             }

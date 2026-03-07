@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Wishlist\Helper\Data;
@@ -24,7 +26,6 @@ use Magento\Wishlist\Model\ItemCarrier;
 use Magento\Wishlist\Model\LocaleQuantityProcessor;
 use Magento\Wishlist\Model\ResourceModel\Item\Collection;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -142,7 +143,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
         /** @var Item|MockObject $itemTwoMock */
@@ -155,7 +156,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
 
@@ -329,7 +330,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
         /** @var Item|MockObject $itemTwoMock */
@@ -342,7 +343,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
 
@@ -422,7 +423,7 @@ class ItemCarrierTest extends TestCase
             ->willReturnMap(
                 [
                     [$qtys[$itemOneId], $qtys[$itemOneId]],
-                    [$qtys[$itemTwoId], $qtys[$itemTwoId]]
+                    [$qtys[$itemTwoId], $qtys[$itemTwoId]],
                 ]
             );
         $itemOneMock->expects($this->once())
@@ -532,7 +533,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
         /** @var Item|MockObject $itemTwoMock */
@@ -545,7 +546,7 @@ class ItemCarrierTest extends TestCase
                 'addToCart',
                 'delete',
                 'getProductUrl',
-                'unsProduct'
+                'unsProduct',
             ]
         );
 

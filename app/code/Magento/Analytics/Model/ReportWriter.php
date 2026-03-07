@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,47 +19,20 @@ class ReportWriter implements ReportWriterInterface
 {
     /**
      * File name for error reporting file in archive
-     *
-     * @var string
      */
-    private $errorsFileName = 'errors.csv';
-
-    /**
-     * @var Config
-     */
-    private $config;
-
-    /**
-     * @var ProviderFactory
-     */
-    private $providerFactory;
-
-    /**
-     * @var ReportValidator
-     */
-    private $reportValidator;
+    private string $errorsFileName = 'errors.csv';
 
     /**
      * ReportWriter constructor.
-     *
-     * @param ConfigInterface $config
-     * @param ReportValidator $reportValidator
-     * @param ProviderFactory $providerFactory
      */
-    public function __construct(
-        ConfigInterface $config,
-        ReportValidator $reportValidator,
-        ProviderFactory $providerFactory
-    ) {
-        $this->config = $config;
-        $this->reportValidator = $reportValidator;
-        $this->providerFactory = $providerFactory;
+    public function __construct(private readonly ConfigInterface $config, private readonly ReportValidator $reportValidator, private readonly ProviderFactory $providerFactory)
+    {
     }
 
     /**
      * @inheritdoc
      */
-    public function write(WriteInterface $directory, $path)
+    public function write(WriteInterface $directory, $path): bool
     {
         $errorsList = [];
         foreach ($this->config->get() as $file) {
@@ -88,13 +62,9 @@ class ReportWriter implements ReportWriterInterface
     /**
      * Prepare report data
      *
-     * @param array $provider
-     * @param WriteInterface $directory
-     * @param string $path
-     * @return void
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    private function prepareData(array $provider, WriteInterface $directory, string $path)
+    private function prepareData(array $provider, WriteInterface $directory, string $path): void
     {
         /** @var  $providerObject */
         $providerObject = $this->providerFactory->create($provider['class']);
@@ -124,11 +94,6 @@ class ReportWriter implements ReportWriterInterface
 
     /**
      * Write data to file
-     *
-     * @param \Traversable $fileData
-     * @param FileWriteInterface $stream
-     * @param bool $writeHeaders
-     * @return void
      */
     private function doWrite(\Traversable $fileData, FileWriteInterface $stream, bool $writeHeaders = true): void
     {
@@ -148,8 +113,6 @@ class ReportWriter implements ReportWriterInterface
      * Strip backslashes before double quotes so they will be properly escaped in the generated csv
      *
      * @see fputcsv()
-     * @param array $row
-     * @return array
      */
     private function prepareRow(array $row): array
     {

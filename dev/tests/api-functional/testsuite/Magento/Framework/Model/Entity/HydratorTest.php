@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\Entity;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -33,7 +36,7 @@ class HydratorTest extends \Magento\TestFramework\TestCase\WebapiAbstract
      */
     protected $dataObjectProcessor;
 
-    const PASSWORD = 'test@123';
+    public const PASSWORD = 'test@123';
 
     protected function setUp(): void
     {
@@ -52,7 +55,7 @@ class HydratorTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/TestModuleDefaultHydrator',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
         $requestData = ['customer' => $this->generateCustomerData(), 'password' => self::PASSWORD];
         $expectedData = $this->_webApiCall($serviceInfo, $requestData);
@@ -74,7 +77,7 @@ class HydratorTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             'rest' => [
                 'resourcePath' => "/V1/TestModuleDefaultHydrator/{$fixtureCustomerId}",
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         $expectedData = $this->_webApiCall($serviceInfo, ['customer' => $this->generateCustomerData()]);
@@ -92,7 +95,7 @@ class HydratorTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/TestModuleDefaultHydrator/' . $fixtureCustomerId,
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE,
-            ]
+            ],
         ];
 
         $isDeleted = $this->_webApiCall($serviceInfo);
@@ -170,7 +173,7 @@ class HydratorTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/TestModuleDefaultHydrator/' . $customerId,
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-            ]
+            ],
         ];
         $customerData = $this->_webApiCall($serviceInfo);
         return $customerData;

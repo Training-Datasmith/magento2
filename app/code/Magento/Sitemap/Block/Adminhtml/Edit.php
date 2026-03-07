@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Block\Adminhtml;
 
 /**
@@ -55,7 +58,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                         ],
                     ],
                 ],
-                'class' => 'add'
+                'class' => 'add',
             ]
         );
     }

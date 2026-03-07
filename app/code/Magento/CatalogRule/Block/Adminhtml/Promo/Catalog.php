@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CatalogRule\Block\Adminhtml\Promo;
 
 /**
@@ -33,7 +36,7 @@ class Catalog extends \Magento\Backend\Block\Widget\Grid\Container
             [
                 'label' => __('Apply Rules'),
                 'onclick' => "location.href='" . $this->getUrl('catalog_rule/*/applyRules') . "'",
-                'class' => 'apply'
+                'class' => 'apply',
             ]
         );
     }

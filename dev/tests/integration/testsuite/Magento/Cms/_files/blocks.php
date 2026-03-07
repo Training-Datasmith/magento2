@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ $block = $blockFactory->create([
             ',
         BlockInterface::IS_ACTIVE => 1,
         'store_id' => [$storeId],
-    ]
+    ],
 ]);
 $blockRepository->save($block);
 
@@ -47,6 +48,6 @@ $block = $blockFactory->create([
             ',
         BlockInterface::IS_ACTIVE => 0,
         'store_id' => [$storeId],
-    ]
+    ],
 ]);
 $blockRepository->save($block);

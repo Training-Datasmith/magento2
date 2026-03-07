@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Quote\Test\Unit\Model;
 
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\CouponManagement;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Store\Model\Store;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -61,7 +62,7 @@ class CouponManagementTest extends TestCase
                 'getStoreId',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->quoteAddressMock = $this->createPartialMockWithReflection(

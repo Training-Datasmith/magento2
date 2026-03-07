@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Store\Model;
 
+use Magento\Framework\App\Config;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\App\Config;
 
 /**
  * Information Expert in stores handling
@@ -69,7 +71,7 @@ class StoreRepository implements \Magento\Store\Api\StoreRepositoryInterface
 
         $storeData = $this->getAppConfig()->get('scopes', "stores/$code", []);
         $store = $this->storeFactory->create([
-            'data' => $storeData
+            'data' => $storeData,
         ]);
 
         if ($store->getId() === null) {
@@ -106,7 +108,7 @@ class StoreRepository implements \Magento\Store\Api\StoreRepositoryInterface
 
         $storeData = $this->getAppConfig()->get('scopes', "stores/$id", []);
         $store = $this->storeFactory->create([
-            'data' => $storeData
+            'data' => $storeData,
         ]);
 
         if ($store->getId() === null) {
@@ -141,10 +143,10 @@ class StoreRepository implements \Magento\Store\Api\StoreRepositoryInterface
         if ($this->allLoaded) {
             return $this->entities;
         }
-        $stores = $this->getAppConfig()->get('scopes', "stores", []);
+        $stores = $this->getAppConfig()->get('scopes', 'stores', []);
         foreach ($stores as $data) {
             $store = $this->storeFactory->create([
-                'data' => $data
+                'data' => $data,
             ]);
             $this->entities[$store->getCode()] = $store;
             $this->entitiesById[$store->getId()] = $store;

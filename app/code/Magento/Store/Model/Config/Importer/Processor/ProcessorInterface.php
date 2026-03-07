@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config\Importer\Processor;
 
 use Magento\Framework\Exception\RuntimeException;

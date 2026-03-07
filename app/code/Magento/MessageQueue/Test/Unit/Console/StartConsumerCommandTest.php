@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class StartConsumerCommandTest extends TestCase
             ->with(StartConsumerCommand::ARGUMENT_CONSUMER)
             ->willReturn($consumerName);
         $input->expects($this->exactly(6))->method('getOption')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [StartConsumerCommand::OPTION_NUMBER_OF_MESSAGES] => $numberOfMessages,
                 [StartConsumerCommand::OPTION_BATCH_SIZE] => $batchSize,
                 [StartConsumerCommand::OPTION_AREACODE] => $areaCode,

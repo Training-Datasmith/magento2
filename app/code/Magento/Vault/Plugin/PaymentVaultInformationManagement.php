@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Vault\Plugin;
 use Magento\Checkout\Api\PaymentInformationManagementInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
-use Magento\Vault\Api\PaymentMethodListInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Vault\Api\PaymentMethodListInterface;
 
 /**
  * Payment vault information management process

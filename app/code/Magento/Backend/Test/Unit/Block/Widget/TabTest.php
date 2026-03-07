@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class TabTest extends TestCase
             'getTabClass' => ['getTabClass', 'class', 'test classes', 'test classes'],
             'getTabClass (default)' => ['getTabClass', 'empty', 'test classes', null],
             'getTabUrl' => ['getTabUrl', 'url', 'test url', 'test url'],
-            'getTabUrl (default)' => ['getTabUrl', 'empty', 'test url', '#']
+            'getTabUrl (default)' => ['getTabUrl', 'empty', 'test url', '#'],
         ];
     }
 }

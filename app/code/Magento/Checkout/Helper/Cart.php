@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Helper;
 
 /**
@@ -15,17 +18,17 @@ class Cart extends \Magento\Framework\Url\Helper\Data
     /**
      * Path to controller to delete item from cart
      */
-    const DELETE_URL = 'checkout/cart/delete';
+    public const DELETE_URL = 'checkout/cart/delete';
 
     /**
      * Path for redirect to cart
      */
-    const XML_PATH_REDIRECT_TO_CART = 'checkout/cart/redirect_to_cart';
+    public const XML_PATH_REDIRECT_TO_CART = 'checkout/cart/redirect_to_cart';
 
     /**
      * Maximal coupon code length according to database table definitions (longer codes are truncated)
      */
-    const COUPON_CODE_MAX_LENGTH = 255;
+    public const COUPON_CODE_MAX_LENGTH = 255;
 
     /**
      * @var \Magento\Checkout\Model\Cart
@@ -74,7 +77,7 @@ class Cart extends \Magento\Framework\Url\Helper\Data
     public function getAddUrl($product, $additional = [])
     {
         if (isset($additional['useUencPlaceholder'])) {
-            $uenc = "%uenc%";
+            $uenc = '%uenc%';
             unset($additional['useUencPlaceholder']);
         } else {
             $uenc = $this->urlEncoder->encode($this->_urlBuilder->getCurrentUrl());
@@ -85,7 +88,7 @@ class Cart extends \Magento\Framework\Url\Helper\Data
         $routeParams = [
             $urlParamName => $uenc,
             'product' => $product->getEntityId(),
-            '_secure' => $this->_getRequest()->isSecure()
+            '_secure' => $this->_getRequest()->isSecure(),
         ];
 
         if (!empty($additional)) {

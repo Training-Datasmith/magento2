@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class PriceBoxTagsTest extends TestCase
                 'dateTime' => $this->timezoneInterface,
                 'scopeResolver' => $this->scopeResolverInterface,
                 'customerSession' => $this->session,
-                'taxCalculation' => $this->taxCalculation
+                'taxCalculation' => $this->taxCalculation,
             ]
         );
     }
@@ -113,7 +114,7 @@ class PriceBoxTagsTest extends TestCase
                 $date,
                 $scopeId,
                 $customerGroupId,
-                implode('_', $rateIds)
+                implode('_', $rateIds),
             ]
         );
 
@@ -126,13 +127,13 @@ class PriceBoxTagsTest extends TestCase
         $dateTime = $this->createPartialMock(\DateTime::class, ['format']);
         $this->timezoneInterface->expects($this->any())->method('scopeDate')->with($scopeId)->willReturn($dateTime);
         $dateTime->expects($this->any())->method('format')->with('Ymd')->willReturn($date);
-        
+
         $this->session->expects($this->once())->method('getCustomerGroupId')->willReturn($customerGroupId);
         $this->session->expects($this->once())->method('getDefaultTaxBillingAddress')->willReturn($billingAddress);
         $this->session->expects($this->once())->method('getDefaultTaxShippingAddress')->willReturn($shippingAddress);
         $this->session->expects($this->once())->method('getCustomerTaxClassId')->willReturn($customerTaxClassId);
         $this->session->expects($this->once())->method('getCustomerId')->willReturn($customerId);
-        
+
         $rateRequest = $this->createMock(DataObject::class);
         $this->taxCalculation->expects($this->once())->method('getRateRequest')->with(
             new DataObject($shippingAddress),

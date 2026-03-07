@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Coupon;
 
 class Codegenerator extends \Magento\Framework\DataObject implements CodegeneratorInterface
@@ -10,22 +13,22 @@ class Codegenerator extends \Magento\Framework\DataObject implements Codegenerat
     /**
      * The minimum length of the default
      */
-    const DEFAULT_LENGTH_MIN = 16;
+    public const DEFAULT_LENGTH_MIN = 16;
 
     /**
      * The maximal length of the default
      */
-    const DEFAULT_LENGTH_MAX = 32;
+    public const DEFAULT_LENGTH_MAX = 32;
 
     /**
      * Collection of the default symbols
      */
-    const SYMBOLS_COLLECTION = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    public const SYMBOLS_COLLECTION = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     /**
      * Delimiter default
      */
-    const DEFAULT_DELIMITER = '-';
+    public const DEFAULT_DELIMITER = '-';
 
     /**
      * Retrieve generated code

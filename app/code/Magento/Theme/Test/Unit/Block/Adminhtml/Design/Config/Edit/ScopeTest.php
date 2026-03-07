@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class ScopeTest extends TestCase
     {
         $this->objectManager = new ObjectManager($this);
         $this->objectManager->prepareObjectManager();
-        
+
         $this->initContext();
 
         $this->scopeResolverPool = $this->getMockBuilder(ScopeResolverPool::class)

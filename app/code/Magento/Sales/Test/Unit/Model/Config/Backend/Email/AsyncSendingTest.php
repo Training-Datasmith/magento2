@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Event\Manager\Proxy;
 use Magento\Framework\Model\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Config\Backend\Email\AsyncSending;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test of backend model for global configuration value
@@ -59,7 +60,7 @@ class AsyncSendingTest extends TestCase
             AsyncSending::class,
             [
                 'config' => $this->config,
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }
@@ -98,7 +99,7 @@ class AsyncSendingTest extends TestCase
             [0, 0, null],
             [1, 1, null],
             [0, 1, 'config_data_sales_email_general_async_sending_disabled'],
-            [1, 0, 'config_data_sales_email_general_async_sending_enabled']
+            [1, 0, 'config_data_sales_email_general_async_sending_enabled'],
         ];
     }
 }

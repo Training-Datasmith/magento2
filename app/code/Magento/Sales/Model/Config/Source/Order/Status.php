@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Order Statuses source model
  */
+
 namespace Magento\Sales\Model\Config\Source\Order;
 
 /**
@@ -16,7 +19,7 @@ namespace Magento\Sales\Model\Config\Source\Order;
  */
 class Status implements \Magento\Framework\Option\ArrayInterface
 {
-    const UNDEFINED_OPTION_LABEL = '-- Please Select --';
+    public const UNDEFINED_OPTION_LABEL = '-- Please Select --';
 
     /**
      * @var string[]

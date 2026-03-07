@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class ProductRenderListTest extends TestCase
         $searchResult->expects($this->once())
             ->method('setItems')
             ->with([
-                1 => $productRender
+                1 => $productRender,
             ]);
         $searchResult->expects($this->once())
             ->method('setTotalCount')

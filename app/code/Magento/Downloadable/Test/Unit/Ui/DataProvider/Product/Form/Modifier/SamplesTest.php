@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class SamplesTest extends TestCase
                 'downloadable' => [
                     'sample' => $samplesData,
                 ],
-            ]
+            ],
         ];
 
         $this->locatorMock->expects($this->once())

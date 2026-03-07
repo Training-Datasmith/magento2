@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\Search\Request;
 
+use InvalidArgumentException;
 use Magento\CatalogSearch\Model\Search\Request\ModifierComposite;
 use Magento\CatalogSearch\Model\Search\Request\ModifierInterface;
 use Magento\Framework\DataObject;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use InvalidArgumentException;
 
 /**
  * Test composite search requests modifier
@@ -45,7 +46,7 @@ class ModifierCompositeTest extends TestCase
         $this->model = new ModifierComposite(
             [
                 $this->modifier1,
-                $this->modifier2
+                $this->modifier2,
             ]
         );
     }
@@ -80,7 +81,7 @@ class ModifierCompositeTest extends TestCase
         $this->expectExceptionObject($exception);
         $this->model = new ModifierComposite(
             [
-                new DataObject()
+                new DataObject(),
             ]
         );
     }

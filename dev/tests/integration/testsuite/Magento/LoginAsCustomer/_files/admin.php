@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,15 +7,15 @@
 
 declare(strict_types=1);
 
-use Magento\Authorization\Model\RoleFactory;
-use Magento\Authorization\Model\Role;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\User\Model\User;
-use Magento\Authorization\Model\RulesFactory;
-use Magento\Authorization\Model\Rules;
 use Magento\Authorization\Model\ResourceModel\Role as RoleResource;
 use Magento\Authorization\Model\ResourceModel\Rules as RulesResource;
+use Magento\Authorization\Model\Role;
+use Magento\Authorization\Model\RoleFactory;
+use Magento\Authorization\Model\Rules;
+use Magento\Authorization\Model\RulesFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\User\Model\ResourceModel\User as UserResource;
+use Magento\User\Model\User;
 
 //Creating a new admin user with a custom role to safely change role settings without affecting the main user's role.
 /** @var Role $role */
@@ -40,8 +41,8 @@ $rulesResource->saveRel($rules);
 
 /** @var User $user */
 $user = Bootstrap::getObjectManager()->create(User::class);
-$user->setFirstname("John")
-    ->setLastname("Doe")
+$user->setFirstname('John')
+    ->setLastname('Doe')
     ->setUsername('TestAdmin1')
     ->setPassword(\Magento\TestFramework\Bootstrap::ADMIN_PASSWORD)
     ->setEmail('testadmin1@gmail.com')

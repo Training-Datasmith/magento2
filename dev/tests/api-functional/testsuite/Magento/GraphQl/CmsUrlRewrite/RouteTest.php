@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\CmsUrlRewrite;
 
+use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Cms\Model\Page;
 use Magento\CmsUrlRewrite\Model\CmsPageUrlPathGenerator;
 use Magento\CmsUrlRewrite\Model\CmsPageUrlRewriteGenerator;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Cms\Helper\Page as PageHelper;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Test the GraphQL endpoint's route query to verify URL route information is correctly returned.

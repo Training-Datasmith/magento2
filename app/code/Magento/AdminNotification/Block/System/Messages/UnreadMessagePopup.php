@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Block\System\Messages;
 
 use Magento\Framework\Notification\MessageInterface;
@@ -23,25 +26,15 @@ class UnreadMessagePopup extends \Magento\Backend\Block\Template
         MessageInterface::SEVERITY_MAJOR => 'warning',
     ];
 
-    /**
-     * System Message list
-     *
-     * @var \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection
-     */
-    protected $_messages;
-
-    /**
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $messages
-     * @param array $data
-     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $messages,
+        /**
+         * System Message list
+         */
+        protected \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $_messages,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_messages = $messages;
     }
 
     /**
@@ -84,7 +77,6 @@ class UnreadMessagePopup extends \Magento\Backend\Block\Template
     /**
      * Retrieve item class by severity
      *
-     * @param MessageInterface $message
      * @return string
      */
     public function getItemClass(MessageInterface $message)

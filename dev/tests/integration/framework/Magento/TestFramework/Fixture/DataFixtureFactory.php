@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class DataFixtureFactory
             $result = $this->objectManager->create(
                 CallableDataFixture::class,
                 [
-                    'callback' => $fixture
+                    'callback' => $fixture,
                 ]
             );
         } elseif (class_exists($fixture)) {

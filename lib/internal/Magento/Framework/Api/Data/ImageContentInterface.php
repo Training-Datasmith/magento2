@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +16,9 @@ namespace Magento\Framework\Api\Data;
  */
 interface ImageContentInterface
 {
-    const BASE64_ENCODED_DATA = 'base64_encoded_data';
-    const TYPE = 'type';
-    const NAME = 'name';
+    public const BASE64_ENCODED_DATA = 'base64_encoded_data';
+    public const TYPE = 'type';
+    public const NAME = 'name';
 
     /**
      * Retrieve media data (base64 encoded content)

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product\Validator;
 
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
@@ -111,7 +114,7 @@ class Media extends AbstractImportValidator implements RowValidatorInterface
                             sprintf(
                                 $this->context->retrieveMessageTemplate(self::ERROR_INVALID_MEDIA_URL_OR_PATH),
                                 $attribute
-                            )
+                            ),
                         ]
                     );
                     $valid = false;
@@ -132,7 +135,7 @@ class Media extends AbstractImportValidator implements RowValidatorInterface
                             sprintf(
                                 $this->context->retrieveMessageTemplate(self::ERROR_INVALID_MEDIA_URL_OR_PATH),
                                 self::ADDITIONAL_IMAGES
-                            )
+                            ),
                         ]
                     );
                     $valid = false;

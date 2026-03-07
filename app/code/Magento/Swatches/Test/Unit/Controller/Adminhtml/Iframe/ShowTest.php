@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\MediaStorage\Model\File\Uploader;
 use Magento\MediaStorage\Model\File\UploaderFactory;
 use Magento\Swatches\Controller\Adminhtml\Iframe\Show;
 use Magento\Swatches\Helper\Media;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class to show swatch image and save it on disk
@@ -169,7 +170,7 @@ class ShowTest extends TestCase
                     'size' => 43233,
                     'file' => '/m/a/magento.png.tmp',
                     'url' => 'http://domain.com/tpm_dir/m/a/magento.png',
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,8 +15,8 @@ use Magento\Sales\Model\Order;
  */
 class RefundOrderTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_READ_NAME = 'salesRefundOrderV1';
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_READ_NAME = 'salesRefundOrderV1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -113,7 +115,7 @@ class RefundOrderTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 
         $expectedComment = [
             'comment' => 'Test Comment',
-            'is_visible_on_front' => 1
+            'is_visible_on_front' => 1,
         ];
 
         $expectedShippingAmount = 15;
@@ -129,8 +131,8 @@ class RefundOrderTest extends \Magento\TestFramework\TestCase\WebapiAbstract
                 'arguments' => [
                     'shipping_amount' => $expectedShippingAmount,
                     'adjustment_positive' => $expectedAdjustmentPositive,
-                    'adjustment_negative' => $expectedAdjustmentNegative
-                ]
+                    'adjustment_negative' => $expectedAdjustmentNegative,
+                ],
             ]
         );
 
@@ -287,7 +289,7 @@ class RefundOrderTest extends \Magento\TestFramework\TestCase\WebapiAbstract
                 'service' => self::SERVICE_READ_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::SERVICE_READ_NAME . 'execute',
-            ]
+            ],
         ];
     }
 

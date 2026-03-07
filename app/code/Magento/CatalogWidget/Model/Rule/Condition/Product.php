@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * CatalogWidget Rule Product Condition data model
  */
+
 namespace Magento\CatalogWidget\Model\Rule\Condition;
 
 use Magento\Catalog\Model\ProductCategoryList;
@@ -147,7 +150,7 @@ class Product extends \Magento\Rule\Model\Condition\Product\AbstractProduct impl
                 $this->getRule()->setCollectedAttributes($attributes);
             }
         } else {
-            $this->joinedAttributes['price'] ='price_index.min_price';
+            $this->joinedAttributes['price'] = 'price_index.min_price';
         }
 
         return $this;
@@ -245,7 +248,7 @@ class Product extends \Magento\Rule\Model\Condition\Product\AbstractProduct impl
         if (isset($fromPart[$aliasStore]['joinType'])
             && isset($fromPart[$aliasDefault]['joinType'])
         ) {
-            $conditionCheck = $connection->quoteIdentifier($aliasStore . '.value_id') . " > 0";
+            $conditionCheck = $connection->quoteIdentifier($aliasStore . '.value_id') . ' > 0';
             $conditionTrue = $connection->quoteIdentifier($aliasStore . '.value');
             $conditionFalse = $connection->quoteIdentifier($aliasDefault . '.value');
             $joinedAttribute = $collection->getSelect()->getConnection()->getCheckSql(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,19 +9,19 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Customer;
 
 use Exception;
+use Magento\Authorization\Test\Fixture\Role;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Test\Fixture\Customer;
 use Magento\Integration\Api\AdminTokenServiceInterface;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Bootstrap as TestBootstrap;
-use Magento\Authorization\Test\Fixture\Role;
-use Magento\Customer\Test\Fixture\Customer;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\User\Test\Fixture\User;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\User\Test\Fixture\User;
 
 /**
  * GraphQl tests for @see \Magento\CustomerGraphQl\Model\Customer\GetCustomer.
@@ -63,8 +64,8 @@ class GetCustomerTest extends GraphQlAbstract
                 'customer' => [
                     'firstname' => 'John',
                     'lastname' => 'Smith',
-                    'email' => $customerEmail
-                ]
+                    'email' => $customerEmail,
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerQuery(),

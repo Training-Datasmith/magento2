@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Captcha\Model\Checkout;
 
 /**
@@ -53,7 +56,7 @@ class ConfigProvider implements \Magento\Checkout\Model\ConfigProviderInterface
                 'imageSrc' => $this->getImageSrc($formId),
                 'refreshUrl' => $this->getRefreshUrl(),
                 'isRequired' => $this->isRequired($formId),
-                'timestamp' => time()
+                'timestamp' => time(),
             ];
         }
         return $config;

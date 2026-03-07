@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver;
 
+use Magento\Checkout\Helper\Data as CheckoutHelper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\Checkout\Helper\Data as CheckoutHelper;
+use Magento\Framework\Validation\ValidationException;
 use Magento\PaypalGraphQl\Model\Provider\Checkout as CheckoutProvider;
 use Magento\PaypalGraphQl\Model\Provider\Config as ConfigProvider;
-use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 use Magento\PaypalGraphQl\Model\Resolver\Store\Url;
+use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\Framework\Validation\ValidationException;
 
 /**
  * Resolver for generating Paypal token
@@ -109,7 +110,7 @@ class PaypalExpressToken implements ResolverInterface
             );
         } else {
             if (!$this->checkoutHelper->isAllowedGuestCheckout($cart)) {
-                throw new GraphQlInputException(__("Guest checkout is disabled."));
+                throw new GraphQlInputException(__('Guest checkout is disabled.'));
             }
         }
 
@@ -136,8 +137,8 @@ class PaypalExpressToken implements ResolverInterface
             'token' => $token,
             'paypal_urls' => [
                 'start' => $checkout->getRedirectUrl(),
-                'edit' => $config->getExpressCheckoutEditUrl($token)
-            ]
+                'edit' => $config->getExpressCheckoutEditUrl($token),
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,7 +110,7 @@ class AdminTokenServiceTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'Check for empty credentials' => ['', ''],
-            'Check for null credentials' => [null, null]
+            'Check for null credentials' => [null, null],
         ];
     }
 

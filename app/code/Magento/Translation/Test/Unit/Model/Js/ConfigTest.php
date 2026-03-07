@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ConfigTest extends TestCase
             Config::class,
             [
                 'scopeConfig' => $this->scopeMock,
-                'patterns' => $this->patterns
+                'patterns' => $this->patterns,
             ]
         );
     }

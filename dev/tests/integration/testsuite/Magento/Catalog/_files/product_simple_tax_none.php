@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ $product->setTypeId('simple')
         [
             'use_config_manage_stock' => 1,
             'qty' => 100,
-            'is_in_stock' => 1
+            'is_in_stock' => 1,
         ]
     );
 

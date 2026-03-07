@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class RuleTest extends TestCase
         $this->rule = $this->objectManager->getObject(
             Rule::class,
             [
-                'conditionsFactory' => $this->combineFactory
+                'conditionsFactory' => $this->combineFactory,
             ]
         );
     }

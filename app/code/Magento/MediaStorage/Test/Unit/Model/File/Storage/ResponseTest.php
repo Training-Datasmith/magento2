@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\MediaStorage\Test\Unit\Model\File\Storage;
 use Laminas\Http\Headers;
 use Magento\Framework\File\Transfer\Adapter\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\MediaStorage\Model\File\Storage\Response;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\MediaStorage\Model\File\Storage\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -38,8 +39,8 @@ class ResponseTest extends TestCase
         $objects = [
             [
                 Context::class,
-                $this->createMock(Context::class)
-            ]
+                $this->createMock(Context::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 

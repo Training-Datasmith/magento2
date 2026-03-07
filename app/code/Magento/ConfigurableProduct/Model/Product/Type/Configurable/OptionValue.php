@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class OptionValue extends \Magento\Framework\Model\AbstractExtensibleModel imple
     /**#@+
      * Constants for field names
      */
-    const KEY_VALUE_INDEX = 'value_index';
+    public const KEY_VALUE_INDEX = 'value_index';
     /**#@-*/
 
     //@codeCoverageIgnoreStart

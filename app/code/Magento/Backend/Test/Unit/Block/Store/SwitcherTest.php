@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 namespace Magento\Backend\Test\Unit\Block\Store;
 
 use Magento\Backend\Block\Store\Switcher;
+use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Store\Model\StoreFactory;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\WebsiteFactory;
-use Magento\Store\Model\Website;
-use Magento\Backend\Block\Template\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Store\Model\Website;
+use Magento\Store\Model\WebsiteFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SwitcherTest extends TestCase
@@ -83,7 +84,7 @@ class SwitcherTest extends TestCase
             Context::class,
             [
                 'storeManager' => $this->storeManagerMock,
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
 
@@ -93,7 +94,7 @@ class SwitcherTest extends TestCase
                 'context' => $context,
                 'data' => ['get_data_from_request' => 1],
                 'websiteFactory' => $this->websiteFactoryMock,
-                'storeFactory' => $this->storeFactoryMock
+                'storeFactory' => $this->storeFactoryMock,
             ]
         );
     }
@@ -151,13 +152,13 @@ class SwitcherTest extends TestCase
             'test storeName with valid requested store' =>
                 [
                     ['store' => 'test store'],
-                    'base store'
+                    'base store',
                 ],
             'test storeName with invalid requested store' =>
                 [
                     ['store' => 'test store'],
-                    'test store'
-                ]
+                    'test store',
+                ],
         ];
     }
 
@@ -194,13 +195,13 @@ class SwitcherTest extends TestCase
             'test websiteName with valid requested website' =>
                 [
                     ['website' => 'test website'],
-                    'base website'
+                    'base website',
                 ],
             'test websiteName with invalid requested website' =>
                 [
                     ['website' => 'test website'],
-                    'test website'
-                ]
+                    'test website',
+                ],
         ];
     }
 }

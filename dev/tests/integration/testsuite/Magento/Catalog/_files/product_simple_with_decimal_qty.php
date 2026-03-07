@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -78,7 +80,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->setSku('simple_with_decimal_qty')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setTierPrices($tierPrices)
     ->setDescription('Description with <b>html tag</b>')

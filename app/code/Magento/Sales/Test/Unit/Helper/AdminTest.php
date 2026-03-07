@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,18 +14,18 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Sales\Helper\Admin;
 use Magento\Sales\Model\Config;
 use Magento\Sales\Model\Order;
-use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Sales\Model\Order\Item;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -91,7 +92,7 @@ class AdminTest extends TestCase
                 'storeManager' => $this->storeManagerMock,
                 'salesConfig' => $this->salesConfigMock,
                 'priceCurrency' => $this->priceCurrency,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
 
@@ -129,17 +130,17 @@ class AdminTest extends TestCase
         $strong = false,
         $separator = '<br/>'
     ) {
-         $this->orderMock->expects($this->any())
-            ->method('isCurrencyDifferent')
-            ->willReturn($isCurrencyDifferent);
-         $storeMock = $this->createMock(Store::class);
-         $this->storeManagerMock->expects($this->any())
-            ->method('getStore')
-            ->willReturn($storeMock);
-         $this->priceCurrency->expects($this->any())
-            ->method('format')
-            ->willReturn('storeFormattedPrice');
-         $dataObject = $this->orderMock;
+        $this->orderMock->expects($this->any())
+           ->method('isCurrencyDifferent')
+           ->willReturn($isCurrencyDifferent);
+        $storeMock = $this->createMock(Store::class);
+        $this->storeManagerMock->expects($this->any())
+           ->method('getStore')
+           ->willReturn($storeMock);
+        $this->priceCurrency->expects($this->any())
+           ->method('format')
+           ->willReturn('storeFormattedPrice');
+        $dataObject = $this->orderMock;
         if (!$dataObjectIsOrder) {
             $returnRes = false;
             if ($magentoDataObjectHasOrder) {
@@ -150,12 +151,12 @@ class AdminTest extends TestCase
                ->willReturn($returnRes);
             $dataObject = $this->magentoObjectMock;
         }
-         $basePrice = 10.00;
-         $price = 15.00;
-         $this->assertEquals(
-             $expected,
-             $this->adminHelper->displayPrices($dataObject, $basePrice, $price, $strong, $separator)
-         );
+        $basePrice = 10.00;
+        $price = 15.00;
+        $this->assertEquals(
+            $expected,
+            $this->adminHelper->displayPrices($dataObject, $basePrice, $price, $strong, $separator)
+        );
     }
 
     /**
@@ -175,17 +176,17 @@ class AdminTest extends TestCase
         $strong = false,
         $separator = '<br/>'
     ) {
-         $this->orderMock->expects($this->any())
-            ->method('isCurrencyDifferent')
-            ->willReturn($isCurrencyDifferent);
-         $storeMock = $this->createMock(Store::class);
-         $this->storeManagerMock->expects($this->any())
-            ->method('getStore')
-            ->willReturn($storeMock);
-         $this->priceCurrency->expects($this->any())
-            ->method('format')
-            ->willReturn('storeFormattedPrice');
-         $dataObject = $this->orderMock;
+        $this->orderMock->expects($this->any())
+           ->method('isCurrencyDifferent')
+           ->willReturn($isCurrencyDifferent);
+        $storeMock = $this->createMock(Store::class);
+        $this->storeManagerMock->expects($this->any())
+           ->method('getStore')
+           ->willReturn($storeMock);
+        $this->priceCurrency->expects($this->any())
+           ->method('format')
+           ->willReturn('storeFormattedPrice');
+        $dataObject = $this->orderMock;
         if (!$dataObjectIsOrder) {
             $returnRes = false;
             if ($magentoDataObjectHasOrder) {
@@ -199,10 +200,10 @@ class AdminTest extends TestCase
                ->willReturn('data');
             $dataObject = $this->magentoObjectMock;
         }
-         $this->assertEquals(
-             $expected,
-             $this->adminHelper->displayPriceAttribute($dataObject, 'code', $strong, $separator)
-         );
+        $this->assertEquals(
+            $expected,
+            $this->adminHelper->displayPriceAttribute($dataObject, 'code', $strong, $separator)
+        );
     }
 
     /**

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
 {
@@ -31,7 +34,7 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                     'inputRequired' => false,
                     'isSecure' => false,
                     'resources' => [
-                        'Magento_Customer::manage'
+                        'Magento_Customer::manage',
                     ],
                     'documentation' => 'Activate a customer account using a key that was sent in a confirmation email.',
                     'interface' => [
@@ -40,29 +43,29 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                                 'email' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
+                                    'documentation' => null,
                                 ],
                                 'confirmationKey' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
-                                ]
-                            ]
+                                    'documentation' => null,
+                                ],
+                            ],
                         ],
                         'out' => [
                             'parameters' => [
                                 'result' => [
                                     'type' => 'CustomerDataCustomerInterface',
                                     'required' => true,
-                                    'documentation' => ''
-                                ]
+                                    'documentation' => '',
+                                ],
                             ],
                             'throws' => [
-                                '\\' . LocalizedException::class
-                            ]
-                        ]
-                    ]
-                ]
+                                '\\' . LocalizedException::class,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class' => AccountManagementInterface::class,
             'description' => 'Interface for managing customers accounts.',
@@ -80,7 +83,7 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                     'inputRequired' => false,
                     'isSecure' => false,
                     'resources' => [
-                        'Magento_Customer::manage'
+                        'Magento_Customer::manage',
                     ],
                     'documentation' => 'Activate a customer account using a key that was sent in a confirmation email.',
                     'interface' => [
@@ -89,29 +92,29 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                                 'email' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
+                                    'documentation' => null,
                                 ],
                                 'confirmationKey' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
-                                ]
-                            ]
+                                    'documentation' => null,
+                                ],
+                            ],
                         ],
                         'out' => [
                             'parameters' => [
                                 'result' => [
                                     'type' => 'CustomerDataCustomerInterface',
                                     'required' => true,
-                                    'documentation' => ''
-                                ]
+                                    'documentation' => '',
+                                ],
                             ],
                             'throws' => [
-                                '\\' . LocalizedException::class
-                            ]
-                        ]
-                    ]
-                ]
+                                '\\' . LocalizedException::class,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class' => AccountManagementInterface::class,
             'description' => 'Interface for managing customers accounts.',
@@ -122,12 +125,12 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                         'parameters' => [
                             'customerId' => [
                                 'force' => true,
-                                'value' => '%customer_id%'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'value' => '%customer_id%',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $actual = $this->serviceMetadata->getRouteMetadata('customerAccountManagementV1');
         $this->assertEquals(array_replace_recursive($actual, $expected), $actual);

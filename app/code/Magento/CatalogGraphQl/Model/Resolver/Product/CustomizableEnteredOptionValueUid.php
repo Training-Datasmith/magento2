@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class CustomizableEnteredOptionValueUid implements ResolverInterface
 
         $optionDetails = [
             self::OPTION_TYPE,
-            $value['option_id']
+            $value['option_id'],
         ];
 
         $content = implode('/', $optionDetails);

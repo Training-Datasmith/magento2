@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class Topmenu
             if ($categoryId === null) {
                 continue;
             }
-            
+
             $categoryParentId = $category->getParentId();
             if (!isset($mapping[$categoryParentId])) {
                 $parentIds = $category->getParentIds();
@@ -142,7 +143,7 @@ class Topmenu
             'id' => 'category-node-' . $categoryId,
             'url' => $this->catalogCategory->getCategoryUrl($category),
             'is_category' => true,
-            'is_parent_active' => $isParentActive
+            'is_parent_active' => $isParentActive,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\BundleImportExport\Plugin\Import\Product;
 
-use Magento\CatalogImportExport\Model\StockItemImporterInterface;
 use Magento\Bundle\Model\Inventory\ChangeParentStockStatus;
+use Magento\CatalogImportExport\Model\StockItemImporterInterface;
 
 /**
  * Update bundle products stock item status based on children products stock status after import

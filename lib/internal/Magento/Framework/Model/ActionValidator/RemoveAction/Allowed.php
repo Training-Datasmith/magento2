@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Action validator for remove action
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\ActionValidator\RemoveAction;
 
 class Allowed extends \Magento\Framework\Model\ActionValidator\RemoveAction

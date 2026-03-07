@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,14 +12,13 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Filesystem\DriverInterface;
+use Magento\MediaGalleryMetadata\Model\MetadataFactory;
+use Magento\MediaGalleryMetadata\Model\Png\ReadFile;
+use Magento\MediaGalleryMetadata\Model\Png\Segment\ReadXmp;
+use Magento\MediaGalleryMetadata\Model\Png\Segment\WriteXmp;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\MediaGalleryMetadata\Model\Png\Segment\WriteXmp;
-use Magento\MediaGalleryMetadata\Model\Png\Segment\ReadXmp;
-use Magento\MediaGalleryMetadata\Model\Png\ReadFile;
-use Magento\MediaGalleryMetadata\Model\MetadataFactory;
 
 /**
  * Test for Xmp reader and writer
@@ -105,7 +105,7 @@ class XmpTest extends TestCase
             $this->metadataFactory->create([
                 'title' => $title,
                 'description' => $description,
-                'keywords' => $keywords
+                'keywords' => $keywords,
             ])
         );
 
@@ -131,7 +131,7 @@ class XmpTest extends TestCase
                 [
                     'magento2',
                     'mediagallery',
-                ]
+                ],
             ],
             [
                 'itxt_with_empty_xmp_image.png',
@@ -140,7 +140,7 @@ class XmpTest extends TestCase
                 [
                     'magento2',
                     'mediagallery',
-                ]
+                ],
             ],
         ];
     }

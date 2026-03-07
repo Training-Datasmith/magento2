@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class StatusTest extends TestCase
 {
-
     /**
      * @var Status|MockObject
      */
@@ -57,7 +57,7 @@ class StatusTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'resource' => $this->resourceMock,
-                'data' => ['status' => 'test_status']
+                'data' => ['status' => 'test_status'],
             ]
         );
     }

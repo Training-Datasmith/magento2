@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Api\Data;
 
 /**
@@ -14,7 +17,7 @@ namespace Magento\Eav\Api\Data;
  */
 interface AttributeDefaultValueInterface
 {
-    const DEFAULT_VALUE = "default_value";
+    public const DEFAULT_VALUE = 'default_value';
 
     /**
      * @param string $defaultValue

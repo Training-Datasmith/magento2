@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Paypal\Model;
 use Magento\Checkout\Helper\Data;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Locale\ResolverInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Paypal\Model\Config as PaypalConfig;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Provides configuration values for PayPal in-context checkout
@@ -93,7 +94,7 @@ class SmartButtonConfig
             'dataAttributes' => [
                 'data-partner-attribution-id' => $this->paypalConfig->getBuildNotationCode(),
                 'data-csp-nonce' => $this->paypalConfig->getCspNonce(),
-            ]
+            ],
         ];
     }
 
@@ -133,7 +134,7 @@ class SmartButtonConfig
             'en_MX' => 'mx',
             'es_MX' => 'mx',
             'en_BR' => 'br',
-            'pt_BR' => 'br'
+            'pt_BR' => 'br',
         ];
 
         // Credit label cannot be used with any custom color option or vertical layout.

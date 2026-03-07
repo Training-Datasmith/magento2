@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class AbstractMethodTest extends TestCase
             [
                 'scopeConfig' => $this->scopeConfigMock,
                 'context' => $contextMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -130,7 +131,7 @@ class AbstractMethodTest extends TestCase
         $eventData = [
             AbstractDataAssignObserver::METHOD_CODE => $this,
             AbstractDataAssignObserver::MODEL_CODE => $paymentInfo,
-            AbstractDataAssignObserver::DATA_CODE => $data
+            AbstractDataAssignObserver::DATA_CODE => $data,
         ];
 
         $this->eventManagerMock->expects(static::exactly(2))
@@ -139,12 +140,12 @@ class AbstractMethodTest extends TestCase
                 [
                     [
                         'payment_method_assign_data_' . Stub::STUB_CODE,
-                        $eventData
+                        $eventData,
                     ],
                     [
                         'payment_method_assign_data',
-                        $eventData
-                    ]
+                        $eventData,
+                    ],
                 ]
             );
 
@@ -158,10 +159,10 @@ class AbstractMethodTest extends TestCase
     {
         return [
             [
-                'result' => true
+                'result' => true,
             ],
             [
-                'result' => false
+                'result' => false,
             ],
         ];
     }

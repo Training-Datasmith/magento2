@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -9,6 +10,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\AdminNotification\Block\Grid\Renderer\Actions
  */
+
 namespace Magento\AdminNotification\Test\Unit\Block\Grid\Renderer;
 
 use Magento\AdminNotification\Block\Grid\Renderer\Severity;
@@ -44,7 +46,7 @@ class SeverityTest extends TestCase
         $this->sut = new Severity($contextMock, $inboxMock);
     }
 
-    public function testShouldRenderSeverity() : void
+    public function testShouldRenderSeverity(): void
     {
         /** @var Column|MockObject $columnMock */
         $columnMock = $this->createPartialMockWithReflection(Column::class, ['getIndex']);

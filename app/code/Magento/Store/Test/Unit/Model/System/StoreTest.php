@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Store\Test\Unit\Model\System;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\System\Store as sysStore;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Store\Model\System\Store as sysStore;
 
 class StoreTest extends TestCase
 {
@@ -140,7 +141,7 @@ class StoreTest extends TestCase
                 'storeIds' => [0],
                 'groupIds' => [0],
                 'websiteIds' => [0],
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'allAndWebsiteAndGroupAndStore' => [
                 'isAll' => true,
@@ -163,12 +164,12 @@ class StoreTest extends TestCase
                                 'value' => $groupId,
                                 'label' => $groupName,
                                 'children' => [
-                                    $storeId => ['value' => $storeId, 'label' => $storeName]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    $storeId => ['value' => $storeId, 'label' => $storeName],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'allAndWebsiteWithoutStores' => [
                 'isAll' => true,
@@ -182,8 +183,8 @@ class StoreTest extends TestCase
                 'groupIds' => [$groupId],
                 'websiteIds' => [$websiteId],
                 'expectedResult' => [
-                    ['value' => 0, 'label' => __('All Store Views')]
-                ]
+                    ['value' => 0, 'label' => __('All Store Views')],
+                ],
             ],
 
         ];
@@ -255,9 +256,9 @@ class StoreTest extends TestCase
                 'storeName' => $storeName,
                 'groupName' => $groupName,
                 'websiteName' => $websiteName,
-                'storeGroupId' => $groupId+1,
+                'storeGroupId' => $groupId + 1,
                 'groupWebsiteId' => $websiteId,
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'showNothing2' => [
                 'empty' => false,
@@ -269,8 +270,8 @@ class StoreTest extends TestCase
                 'groupName' => $groupName,
                 'websiteName' => $websiteName,
                 'storeGroupId' => $groupId,
-                'groupWebsiteId' => $websiteId+1,
-                'expectedResult' => []
+                'groupWebsiteId' => $websiteId + 1,
+                'expectedResult' => [],
             ],
             'showEmptyAndAllAndWebsiteAndGroup' => [
                 'empty' => true,
@@ -290,11 +291,11 @@ class StoreTest extends TestCase
                     [
                         'label' => str_repeat($nonEscapableNbspChar, 4) . $groupName,
                         'value' => [
-                            ['label' => str_repeat($nonEscapableNbspChar, 4) . $storeName, 'value' => $storeId]
+                            ['label' => str_repeat($nonEscapableNbspChar, 4) . $storeName, 'value' => $storeId],
                         ],
-                        '__disableTmpl' => true
+                        '__disableTmpl' => true,
                     ],
-                ]
+                ],
             ],
         ];
     }

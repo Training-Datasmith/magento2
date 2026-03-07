@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Tax\Model\Sales\Order;
 
-use Magento\Tax\Api\Data\OrderTaxDetailsAppliedTaxInterfaceFactory as TaxDetailsDataObjectFactory;
-use Magento\Tax\Api\Data\OrderTaxDetailsAppliedTaxInterface as AppliedTax;
 use Magento\Sales\Model\Order\Tax\Item;
+use Magento\Tax\Api\Data\OrderTaxDetailsAppliedTaxInterface as AppliedTax;
+use Magento\Tax\Api\Data\OrderTaxDetailsAppliedTaxInterfaceFactory as TaxDetailsDataObjectFactory;
 
 class TaxManagement implements \Magento\Tax\Api\OrderTaxManagementInterface
 {

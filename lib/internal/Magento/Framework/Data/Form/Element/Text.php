@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -64,7 +66,7 @@ class Text extends AbstractElement
             'data-form-part',
             'data-role',
             'data-validation-params',
-            'data-action'
+            'data-action',
         ];
     }
 }

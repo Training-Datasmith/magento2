@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ $optionValuesByType = [
         'hour' => '2',
         'minute' => '15',
         'day_part' => 'am',
-        'date_internal' => '2020-09-30 02:15:00'
+        'date_internal' => '2020-09-30 02:15:00',
     ],
     'drop_down' => '3-1-select',
     'radio' => '4-1-radio',
@@ -51,7 +52,7 @@ $optionsDate = [
         'option_type' => 'date',
         'option_value' => '2020-03-05 00:00:00',
         'custom_view' => '',
-    ]
+    ],
 ];
 
 $requestInfo = ['options' => []];

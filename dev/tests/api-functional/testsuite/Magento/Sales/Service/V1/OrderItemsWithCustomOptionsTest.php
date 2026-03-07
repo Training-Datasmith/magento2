@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -384,7 +385,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH_GUEST_CART,
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
 
         return (string)$this->_webApiCall($serviceInfo);
@@ -426,7 +427,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             if ($optionData !== null) {
                 $customOptions[] = [
                     'option_id' => $option->getId(),
-                    'option_value' => $optionData
+                    'option_value' => $optionData,
                 ];
             }
         }
@@ -490,7 +491,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH_GUEST_CART . '/' . $cartId . '/items',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
 
         $requestData = [
@@ -500,10 +501,10 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
                 'qty' => 1,
                 'product_option' => [
                     'extension_attributes' => [
-                        'custom_options' => $customOptions
-                    ]
-                ]
-            ]
+                        'custom_options' => $customOptions,
+                    ],
+                ],
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $requestData);
@@ -521,7 +522,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/guest-carts/' . $cartId . '/shipping-information',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
 
         $addressData = [
@@ -535,7 +536,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'firstname' => 'John',
             'lastname' => 'Doe',
             'email' => 'john.doe@example.com',
-            'telephone' => '555-1234'
+            'telephone' => '555-1234',
         ];
 
         $requestData = [
@@ -543,8 +544,8 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
                 'shipping_address' => $addressData,
                 'billing_address' => $addressData,
                 'shipping_carrier_code' => 'flatrate',
-                'shipping_method_code' => 'flatrate'
-            ]
+                'shipping_method_code' => 'flatrate',
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $requestData);
@@ -562,13 +563,13 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/guest-carts/' . $cartId . '/order',
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         $requestData = [
             'paymentMethod' => [
-                'method' => 'checkmo'
-            ]
+                'method' => 'checkmo',
+            ],
         ];
 
         return (int)$this->_webApiCall($serviceInfo, $requestData);
@@ -586,7 +587,7 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH_ORDERS . '/' . $orderId,
                 'httpMethod' => Request::HTTP_METHOD_GET,
-            ]
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo);
@@ -669,19 +670,19 @@ class OrderItemsWithCustomOptionsTest extends WebapiAbstract
                             [
                                 'field' => 'order_id',
                                 'value' => (string)$orderId,
-                                'condition_type' => 'eq'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'condition_type' => 'eq',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH_ORDER_ITEMS . '?' . http_build_query($searchCriteria),
                 'httpMethod' => Request::HTTP_METHOD_GET,
-            ]
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $searchCriteria);

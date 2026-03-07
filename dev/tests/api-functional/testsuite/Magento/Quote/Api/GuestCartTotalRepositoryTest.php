@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
-use Magento\Quote\Model\Cart\Totals;
-use Magento\Quote\Model\Cart\Totals\Item as ItemTotals;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Quote\Model\Cart\Totals;
+use Magento\Quote\Model\Cart\Totals\Item as ItemTotals;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 

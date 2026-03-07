@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
      *
      * @return string
      */
-    private static function getRandomColor() : string
+    private static function getRandomColor(): string
     {
         return '#' . str_pad(dechex(random_int(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
@@ -51,13 +52,13 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
      * @param int $optionsCount
      * @return array
      */
-    private static function getSwatchVisualDataSet(int $optionsCount) : array
+    private static function getSwatchVisualDataSet(int $optionsCount): array
     {
         $optionsData = [];
         $expectedOptionsLabels = [];
         for ($i = 0; $i < $optionsCount; $i++) {
             $expectedOptionLabelOnStoreView = 'value_' . $i .'_store_1';
-            $expectedOptionsLabels[$i+1] = $expectedOptionLabelOnStoreView;
+            $expectedOptionsLabels[$i + 1] = $expectedOptionLabelOnStoreView;
             $optionId = 'option_' .$i;
             $optionRowData = [];
             $optionRowData['optionvisual']['order'][$optionId] = $i + 1;
@@ -79,11 +80,11 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
                 ],
                 self::getAttributePreset(),
                 [
-                    'frontend_input' => 'swatch_visual'
+                    'frontend_input' => 'swatch_visual',
                 ]
             ),
             'expectedOptionsCount' => $optionsCount + 1,
-            'expectedLabels' => $expectedOptionsLabels
+            'expectedLabels' => $expectedOptionsLabels,
         ];
     }
 
@@ -93,21 +94,21 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
      * @param int $optionsCount
      * @return array
      */
-    private static function getSwatchTextDataSet(int $optionsCount) : array
+    private static function getSwatchTextDataSet(int $optionsCount): array
     {
         $optionsData = [];
         $expectedOptionsLabels = [];
         for ($i = 0; $i < $optionsCount; $i++) {
             $expectedOptionLabelOnStoreView = 'value_' . $i . '_store_1';
-            $expectedOptionsLabels[$i+1] = $expectedOptionLabelOnStoreView;
+            $expectedOptionsLabels[$i + 1] = $expectedOptionLabelOnStoreView;
             $optionId = 'option_' . $i;
             $optionRowData = [];
             $optionRowData['optiontext']['order'][$optionId] = $i + 1;
             $optionRowData['defaulttext'][] = $optionId;
             $optionRowData['swatchtext']['value'][$optionId][] = 'x' . $i ;
             $optionRowData['optiontext']['value'][$optionId][0] = 'value_' . $i . '_admin';
-            $optionRowData['optiontext']['value'][$optionId][1]= $expectedOptionLabelOnStoreView;
-            $optionRowData['optiontext']['delete'][$optionId]='';
+            $optionRowData['optiontext']['value'][$optionId][1] = $expectedOptionLabelOnStoreView;
+            $optionRowData['optiontext']['delete'][$optionId] = '';
             $optionsData[] = http_build_query($optionRowData);
         }
         return [
@@ -121,11 +122,11 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
                 ],
                 self::getAttributePreset(),
                 [
-                    'frontend_input' => 'swatch_text'
+                    'frontend_input' => 'swatch_text',
                 ]
             ),
             'expectedOptionsCount' => $optionsCount + 1,
-            'expectedLabels' => $expectedOptionsLabels
+            'expectedLabels' => $expectedOptionsLabels,
         ];
     }
 
@@ -134,7 +135,7 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
      *
      * @return array
      */
-    private static function getAttributePreset() : array
+    private static function getAttributePreset(): array
     {
         return [
             'form_key' => 'XxtpPYjm2YPYUlAt',
@@ -174,13 +175,13 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
      *
      * @return array
      */
-    public static function getLargeSwatchesAmountAttributeData() : array
+    public static function getLargeSwatchesAmountAttributeData(): array
     {
         $swatchVisualOptionsCount = 2000;
         $swatchTextOptionsCount = 2000;
         return [
             'visual swatches' => self::getSwatchVisualDataSet($swatchVisualOptionsCount),
-            'text swatches' => self::getSwatchTextDataSet($swatchTextOptionsCount)
+            'text swatches' => self::getSwatchTextDataSet($swatchTextOptionsCount),
         ];
     }
 
@@ -196,7 +197,7 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
         array $attributeData,
         int $expectedOptionsCount,
         array $expectedLabels
-    ) : void {
+    ): void {
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($attributeData);
         $this->getRequest()->setPostValue('form_key', $this->formKey->getFormKey());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Cache\CacheConstants;
 use Magento\Framework\Cache\Frontend\Decorator\Bare;
 use Magento\Framework\Cache\Frontend\Decorator\TagScope;
 use Magento\Framework\Cache\FrontendInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CacheTest extends TestCase
@@ -84,7 +85,7 @@ class CacheTest extends TestCase
                 ->setConstructorArgs(
                     [
                         $this->createMock(FrontendInterface::class), '
-                        FIXTURE_TAG'
+                        FIXTURE_TAG',
                     ]
                 )
                 ->getMock();
@@ -181,7 +182,7 @@ class CacheTest extends TestCase
                 'test_id',
                 ['test_tag'],
             ],
-            'non-string data' => [1234567890, 'test_id', [], '1234567890', 'test_id', []]
+            'non-string data' => [1234567890, 'test_id', [], '1234567890', 'test_id', []],
         ];
     }
 

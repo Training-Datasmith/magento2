@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductOptionExtensionInterface;
 use Magento\Catalog\Api\Data\ProductOptionInterface;
 use Magento\Downloadable\Api\Data\DownloadableOptionInterface;
@@ -17,6 +17,7 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\DataObject\Factory as DataObjectFactory;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -11,15 +12,14 @@ use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\Config\ValidationStateInterface;
 use PHPUnit\Framework\AssertionFailedError;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for validation rules implemented by XSD schema for sales PDF rendering configuration
  */
 class XsdTest extends TestCase
 {
-
     /**
      * @var string
      */
@@ -122,7 +122,7 @@ class XsdTest extends TestCase
             [
                 [
                     "Element 'total': Missing child element(s). Expected is one of ( source_field, " .
-                    "title_source_field, font_size, display_zero, sort_order, model, amount_prefix ).The xml was: " .
+                    'title_source_field, font_size, display_zero, sort_order, model, amount_prefix ).The xml was: ' .
                     "\n0:<?xml version=\"1.0\"?>\n1:<config><totals><total name=\"i1\"><title>Title</title></total>" .
                     "</totals></config>\n2:\n",
                     false,
@@ -253,8 +253,8 @@ class XsdTest extends TestCase
                     [
                         "Element 'total': Duplicate key-sequence ['i1'] in unique identity-constraint " .
                         "'uniqueTotalItem'.The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total " .
-                        "name=\"i1\"><title>Title1</title><source_field>src_fld1</source_field></total><total " .
-                        "name=\"i1\"><title>Title2</title><source_field>src_fld2</source_field></total></totals>" .
+                        'name="i1"><title>Title1</title><source_field>src_fld1</source_field></total><total ' .
+                        'name="i1"><title>Title2</title><source_field>src_fld2</source_field></total></totals>' .
                         "</config>\n2:\n",
                         false,
                     ],
@@ -278,7 +278,7 @@ class XsdTest extends TestCase
                         "allowed minimum length of '1'.The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals>" .
                         "<total name=\"i1\"><title/><source_field>foo</source_field></total></totals></config>\n2:\n",
                         false,
-                    ]
+                    ],
                 ],
             ],
             'non-valid totals empty source_field' => [
@@ -299,7 +299,7 @@ class XsdTest extends TestCase
                     [
                         "Element 'title_source_field': [facet 'pattern'] The value '' is not accepted by the " .
                         "pattern '[a-z0-9_]+'.The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total " .
-                        "name=\"i1\"><title>Title</title><source_field>foo</source_field><title_source_field/>" .
+                        'name="i1"><title>Title</title><source_field>foo</source_field><title_source_field/>' .
                         "</total></totals></config>\n2:\n",
                         false,
                     ],
@@ -312,7 +312,7 @@ class XsdTest extends TestCase
                     [
                         "/Element \'model\': .*\'a model\' is not (a valid value|accepted).*/",
                         true,
-                    ]
+                    ],
                 ],
             ],
             'valid totals title_source_field' => [
@@ -337,10 +337,10 @@ class XsdTest extends TestCase
                     [
                         "Element 'font_size': '0' is not a valid value of the atomic type 'xs:positiveInteger'.The " .
                         "xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total name=\"i1\"><title>Title" .
-                        "</title><source_field>foo</source_field><font_size>0</font_size></total></totals>" .
+                        '</title><source_field>foo</source_field><font_size>0</font_size></total></totals>' .
                         "</config>\n2:\n",
                         false,
-                    ]
+                    ],
                 ],
             ],
             'non-valid totals font_size' => [
@@ -350,10 +350,10 @@ class XsdTest extends TestCase
                     [
                         "Element 'font_size': 'A' is not a valid value of the atomic type 'xs:positiveInteger'.The " .
                         "xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total name=\"i1\"><title>Title" .
-                        "</title><source_field>foo</source_field><font_size>A</font_size></total></totals></config>" .
+                        '</title><source_field>foo</source_field><font_size>A</font_size></total></totals></config>' .
                         "\n2:\n",
                         false,
-                    ]
+                    ],
                 ],
             ],
             'valid totals display_zero' => [
@@ -373,7 +373,7 @@ class XsdTest extends TestCase
                     [
                         "Element 'display_zero': 'A' is not a valid value of the atomic type 'xs:boolean'." .
                         "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total name=\"i1\">" .
-                        "<title>Title</title><source_field>foo</source_field><display_zero>A</display_zero>" .
+                        '<title>Title</title><source_field>foo</source_field><display_zero>A</display_zero>' .
                         "</total></totals></config>\n2:\n",
                         false,
                     ],
@@ -396,7 +396,7 @@ class XsdTest extends TestCase
                     [
                         "Element 'sort_order': 'A' is not a valid value of the atomic type 'xs:nonNegativeInteger'." .
                         "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total name=\"i1\"><title>Title" .
-                        "</title><source_field>foo</source_field><sort_order>A</sort_order></total></totals>" .
+                        '</title><source_field>foo</source_field><sort_order>A</sort_order></total></totals>' .
                         "</config>\n2:\n",
                         false,
                     ],
@@ -414,12 +414,12 @@ class XsdTest extends TestCase
                     [
                         "Element 'title', attribute 'translate': 'unknown' is not a valid value of the atomic type " .
                         "'xs:boolean'.The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><totals><total " .
-                        "name=\"i1\"><title translate=\"unknown\">Title</title><source_field>foo</source_field>" .
+                        'name="i1"><title translate="unknown">Title</title><source_field>foo</source_field>' .
                         "</total></totals></config>\n2:\n",
                         false,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

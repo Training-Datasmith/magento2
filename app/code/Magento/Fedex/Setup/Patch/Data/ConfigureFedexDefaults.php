@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Fedex\Setup\Patch\Data;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -84,7 +85,7 @@ class ConfigureFedexDefaults implements DataPatchInterface, PatchVersionInterfac
                 'carriers/fedex/packaging',
                 'carriers/fedex/dropoff',
                 'carriers/fedex/free_method',
-                'carriers/fedex/allowed_methods'
+                'carriers/fedex/allowed_methods',
             ]
         );
         $mapsOld = $conn->fetchAll($select);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -60,7 +62,7 @@ $options = [
         'price' => 20.0,
         'price_type' => 'percent',
         'sku' => 'sku2',
-        'max_characters' => 20
+        'max_characters' => 20,
     ],
     [
         'title' => 'file option',
@@ -72,7 +74,7 @@ $options = [
         'sku' => 'sku3',
         'file_extension' => 'jpg, png, gif',
         'image_size_x' => 10,
-        'image_size_y' => 20
+        'image_size_y' => 20,
 
     ],
     [
@@ -170,7 +172,7 @@ $options = [
         'price_type' => 'fixed',
         'sku' => 'date option sku',
         'is_require' => true,
-        'sort_order' => 8
+        'sort_order' => 8,
     ],
     [
         'title' => 'date_time option',
@@ -179,7 +181,7 @@ $options = [
         'price_type' => 'fixed',
         'is_require' => true,
         'sort_order' => 9,
-        'sku' => 'date_time option sku'
+        'sku' => 'date_time option sku',
     ],
     [
         'title' => 'time option',
@@ -188,8 +190,8 @@ $options = [
         'price_type' => 'fixed',
         'is_require' => true,
         'sku' => 'time option sku',
-        'sort_order' => 10
-    ]
+        'sort_order' => 10,
+    ],
 ];
 
 $customOptions = [];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -143,7 +144,7 @@ class CollectionTest extends TestCase
                     [
                         'col2' => [],
                         'col3' => [],
-                    ]
+                    ],
                 ],
                 [
                     null,
@@ -152,7 +153,7 @@ class CollectionTest extends TestCase
                         'col2' => [],
                         'col3' => [],
                         'col4' => [],
-                    ]
+                    ],
                 ],
             ]);
         $this->connectionMock->expects($this->any())->method('_quote')->willReturnArgument(0);
@@ -175,7 +176,7 @@ class CollectionTest extends TestCase
                 'eavConfig' => $this->eavConfigMock,
                 'storeManager' => $this->storeManagerMock,
                 'connection' => $this->connectionMock,
-                'resource' => $this->resourceMock
+                'resource' => $this->resourceMock,
             ]
         );
 
@@ -197,7 +198,7 @@ class CollectionTest extends TestCase
             ],
             'additional_table_expression' => [
                 'col3', '2',
-            ]
+            ],
         ];
     }
 }

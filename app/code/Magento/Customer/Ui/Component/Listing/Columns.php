@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing;
 
+use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Api\Data\AttributeMetadataInterface as AttributeMetadata;
+use Magento\Customer\Ui\Component\ColumnFactory;
+use Magento\Customer\Ui\Component\Listing\Column\InlineEditUpdater;
 use Magento\Customer\Ui\Component\Listing\Filter\FilterConfigProviderInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Customer\Ui\Component\ColumnFactory;
-use Magento\Customer\Api\Data\AttributeMetadataInterface as AttributeMetadata;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Customer\Ui\Component\Listing\Column\InlineEditUpdater;
-use Magento\Customer\Api\CustomerMetadataInterface;
 
 /**
  * Columns component
@@ -172,7 +175,7 @@ class Columns extends \Magento\Ui\Component\Listing\Columns
                     [
                         'name' => $newAttributeCode,
                         'dataType' => $attributeData[AttributeMetadata::FRONTEND_INPUT],
-                        'visible' => (bool)$attributeData[AttributeMetadata::IS_VISIBLE_IN_GRID]
+                        'visible' => (bool)$attributeData[AttributeMetadata::IS_VISIBLE_IN_GRID],
                     ]
                 );
                 if ($attributeData[AttributeMetadata::IS_FILTERABLE_IN_GRID]) {
@@ -273,7 +276,7 @@ class Columns extends \Magento\Ui\Component\Listing\Columns
     private function getFilterConfig(array $attributeData, string $filterType): array
     {
         $filterConfig = [
-            'filterType' => $filterType
+            'filterType' => $filterType,
         ];
         if (isset($this->filterConfigProviders[$filterType])) {
             $filterConfigProvider = $this->filterConfigProviders[$filterType];

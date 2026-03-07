@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Checkout\Setup\Patch\Data;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -144,7 +145,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'label' => 'checkout_onepage_register',
                 'is_system' => 1,
                 'theme' => '',
-                'store_id' => 0
+                'store_id' => 0,
             ]
         );
         $formTypeId = $connection->lastInsertId($this->moduleDataSetup->getTable('eav_form_type'));
@@ -166,7 +167,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'prefix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -176,7 +177,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'firstname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showMiddlename) {
@@ -186,7 +187,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'middlename'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -196,7 +197,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'lastname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showSuffix) {
@@ -206,7 +207,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'suffix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -216,7 +217,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'company'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -225,7 +226,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'email'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -234,7 +235,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'street'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -243,7 +244,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'city'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -252,7 +253,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'region'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -261,7 +262,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'postcode'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -270,7 +271,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'country_id'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -279,7 +280,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'telephone'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -288,7 +289,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'fax'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showDob) {
@@ -298,7 +299,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'dob'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -309,7 +310,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'taxvat'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -327,7 +328,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'label' => 'checkout_onepage_register_guest',
                 'is_system' => 1,
                 'theme' => '',
-                'store_id' => 0
+                'store_id' => 0,
             ]
         );
         $formTypeId = $connection->lastInsertId($this->moduleDataSetup->getTable('eav_form_type'));
@@ -349,7 +350,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'prefix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -359,7 +360,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'firstname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showMiddlename) {
@@ -369,7 +370,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'middlename'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -379,7 +380,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'lastname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showSuffix) {
@@ -389,7 +390,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'suffix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -399,7 +400,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'company'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -408,7 +409,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'email'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -417,7 +418,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'street'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -426,7 +427,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'city'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -435,7 +436,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'region'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -444,7 +445,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'postcode'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -453,7 +454,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'country_id'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -462,7 +463,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'telephone'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -471,7 +472,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'fax'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showDob) {
@@ -481,7 +482,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'dob'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -492,7 +493,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($customerEntityTypeId, 'taxvat'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -510,7 +511,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'label' => 'checkout_onepage_billing_address',
                 'is_system' => 1,
                 'theme' => '',
-                'store_id' => 0
+                'store_id' => 0,
             ]
         );
         $formTypeId = $connection->lastInsertId($this->moduleDataSetup->getTable('eav_form_type'));
@@ -528,7 +529,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'prefix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -538,7 +539,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'firstname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showMiddlename) {
@@ -548,7 +549,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'middlename'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -558,7 +559,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'lastname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showSuffix) {
@@ -568,7 +569,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'suffix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -578,7 +579,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'company'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -587,7 +588,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'street'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -596,7 +597,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'city'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -605,7 +606,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'region'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -614,7 +615,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'postcode'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -623,7 +624,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'country_id'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -632,7 +633,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'telephone'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -641,7 +642,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'fax'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
 
@@ -658,7 +659,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'label' => 'checkout_onepage_shipping_address',
                 'is_system' => 1,
                 'theme' => '',
-                'store_id' => 0
+                'store_id' => 0,
             ]
         );
         $formTypeId = $connection->lastInsertId($this->moduleDataSetup->getTable('eav_form_type'));
@@ -676,7 +677,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'prefix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -686,7 +687,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'firstname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showMiddlename) {
@@ -696,7 +697,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'middlename'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -706,7 +707,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'lastname'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         if ($showSuffix) {
@@ -716,7 +717,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                     'type_id' => $formTypeId,
                     'fieldset_id' => null,
                     'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'suffix'),
-                    'sort_order' => $elementSort++
+                    'sort_order' => $elementSort++,
                 ]
             );
         }
@@ -726,7 +727,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'company'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -735,7 +736,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'street'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -744,7 +745,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'city'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -753,7 +754,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'region'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -762,7 +763,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'postcode'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -771,7 +772,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'country_id'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -780,7 +781,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'telephone'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
         $connection->insert(
@@ -789,7 +790,7 @@ class PrepareInitialCheckoutConfiguration implements DataPatchInterface, PatchVe
                 'type_id' => $formTypeId,
                 'fieldset_id' => null,
                 'attribute_id' => $eavSetup->getAttributeId($addressEntityTypeId, 'fax'),
-                'sort_order' => $elementSort++
+                'sort_order' => $elementSort++,
             ]
         );
 

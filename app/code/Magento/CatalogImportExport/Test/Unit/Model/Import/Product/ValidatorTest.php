@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product;
 
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\Type\Simple;
 use Magento\CatalogImportExport\Model\Import\Product\UniqueAttributeValidator;
 use Magento\CatalogImportExport\Model\Import\Product\Validator;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\Media;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\Website;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\ImportExport\Model\Import;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -63,7 +64,7 @@ class ValidatorTest extends TestCase
                 'retrieveMessageTemplate',
                 'getBehavior',
                 'getMultipleValueSeparator',
-                'getEmptyAttributeValueConstant'
+                'getEmptyAttributeValueConstant',
             ]
         );
         $this->context->method('retrieveProductTypeByName')->willReturn($entityTypeModel);
@@ -148,108 +149,108 @@ class ValidatorTest extends TestCase
                 [],
                 ['product_type' => 'any'],
                 false,
-                Product::COL_SKU
+                Product::COL_SKU,
             ],
             [
                 'any_behavior',
                 ['type' => 'varchar'],
                 ['product_type' => 'any', 'sku' => 'sku_value'],
                 true,
-                Product::COL_SKU
+                Product::COL_SKU,
             ],
             [
                 'any_behavior',
                 ['is_required' => true, 'type' => 'varchar'],
                 ['product_type' => 'any', 'attribute_code' => 'value'],
-                true
+                true,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'varchar'],
                 ['product_type' => 'any', 'attribute_code' => ''],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'int'],
                 ['product_type' => 'any', 'attribute_code' => 'not-int'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'int'],
                 ['product_type' => 'any', 'attribute_code' => '1'],
-                true
+                true,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'decimal'],
                 ['product_type' => 'any', 'price' => ''],
                 true,
-                'price'
+                'price',
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'boolean', 'options' => ['yes' => 0, 'no' => 1]],
                 ['product_type' => 'any', 'attribute_code' => 'some-value'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'boolean', 'options' => ['yes' => 0, 'no' => 1]],
                 ['product_type' => 'any', 'attribute_code' => 'Yes'],
-                true
+                true,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'multiselect', 'options' => ['option 1' => 0, 'option 2' => 1]],
                 ['product_type' => 'any', 'attribute_code' => 'Option 1|Option 2|Option 3'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'multiselect', 'options' => ['option 1' => 0, 'option 2' => 1]],
                 ['product_type' => 'any', 'attribute_code' => 'Option 1|Option 2'],
-                true
+                true,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'multiselect',
                     'options' => ['option 1' => 0, 'option 2' => 1, 'option 3']],
                 ['product_type' => 'any', 'attribute_code' => 'Option 1|Option 2|Option 1'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'multiselect',
                     'options' => ['option 1' => 0, 'option 2' => 1, 'option 3']],
                 ['product_type' => 'any', 'attribute_code' => 'Option 3|Option 3|Option 3|Option 1'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'multiselect', 'options' => ['option 1' => 0]],
                 ['product_type' => 'any', 'attribute_code' => 'Option 1|Option 1|Option 1|Option 1'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'datetime'],
                 ['product_type' => 'any', 'attribute_code' => '1/1/15 12am'],
-                true
+                true,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'datetime'],
                 ['product_type' => 'any', 'attribute_code' => '1/1/15 13am'],
-                false
+                false,
             ],
             [
                 Import::BEHAVIOR_APPEND,
                 ['is_required' => true, 'type' => 'varchar', 'is_unique' => true],
                 ['product_type' => 'any', 'unique_attribute' => 'unique-value', Product::COL_SKU => 'sku-0'],
                 true,
-                'unique_attribute'
+                'unique_attribute',
             ],
             [
                 Import::BEHAVIOR_APPEND,
@@ -257,7 +258,7 @@ class ValidatorTest extends TestCase
                 ['product_type' => 'any', 'unique_attribute' => 'unique-value', Product::COL_SKU => 'sku-0'],
                 false,
                 'unique_attribute',
-                false
+                false,
             ],
             [
                 'any_behavior',
@@ -310,7 +311,7 @@ class ValidatorTest extends TestCase
         $attributeParams = ['is_required' => true];
         $rowData = [
             'product_type' => 'simple',
-            'required_multiselect_attribute' => ['option1', 'option2']
+            'required_multiselect_attribute' => ['option1', 'option2'],
         ];
         $result = $this->validator->isRequiredAttributeValid($attrCode, $attributeParams, $rowData);
         $this->assertTrue($result);

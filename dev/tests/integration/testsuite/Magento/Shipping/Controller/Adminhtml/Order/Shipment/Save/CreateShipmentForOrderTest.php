@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save;
 
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Escaper;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\AbstractShipmentControllerTest;
-use Magento\Framework\Escaper;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -205,7 +206,7 @@ class CreateShipmentForOrderTest extends AbstractShipmentControllerTest
             'shipment' =>
                 [
                     'items' => [
-                        678678 => 4
+                        678678 => 4,
                     ],
                 ],
         ];

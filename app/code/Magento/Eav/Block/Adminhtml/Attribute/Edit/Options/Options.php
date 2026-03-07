@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Eav\Block\Adminhtml\Attribute\Edit\Options;
 
-use Magento\Store\Model\ResourceModel\Store\Collection;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Store\Model\ResourceModel\Store\Collection;
 
 /**
  * Attribute add/edit form options tab

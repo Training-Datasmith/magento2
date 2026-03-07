@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Export;
 
 use Magento\Catalog\Model\Product as ProductEntity;
@@ -236,7 +239,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
      */
     protected $_fieldsMap = [
         'image' => 'base_image',
-        'image_label' => "base_image_label",
+        'image_label' => 'base_image_label',
         'thumbnail' => 'thumbnail_image',
         'thumbnail_label' => 'thumbnail_image_label',
         self::COL_MEDIA_IMAGE => 'additional_images',
@@ -276,7 +279,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
         'news_from_date',
         'news_to_date',
         'custom_design_from',
-        'custom_design_to'
+        'custom_design_to',
     ];
 
     /**
@@ -576,7 +579,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
             ['mgvte' => $this->_resourceModel->getTableName('catalog_product_entity_media_gallery_value_to_entity')],
             [
                 "mgvte.$productEntityJoinField",
-                'mgvte.value_id'
+                'mgvte.value_id',
             ]
         )->joinLeft(
             ['mg' => $this->_resourceModel->getTableName('catalog_product_entity_media_gallery')],
@@ -678,7 +681,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
                 'cpe.sku',
                 'cpl.link_type_id',
                 'position' => 'cplai.value',
-                'default_qty' => 'cplad.value'
+                'default_qty' => 'cplad.value',
             ]
         )->joinLeft(
             ['cpe' => $this->_resourceModel->getTableName('catalog_product_entity')],
@@ -793,7 +796,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
     protected function setHeaderColumns($customOptionsData, $stockItemRows)
     {
         $exportAttributes = (
-            array_key_exists("skip_attr", $this->_parameters) && count($this->_parameters["skip_attr"])
+            array_key_exists('skip_attr', $this->_parameters) && count($this->_parameters['skip_attr'])
         ) ?
             array_intersect(
                 $this->_getExportMainAttrCodes(),
@@ -827,7 +830,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
                     'additional_images',
                     'additional_image_labels',
                     'hide_from_product_page',
-                    'custom_options'
+                    'custom_options',
                 ]
             );
         }
@@ -874,12 +877,12 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
             switch ($lastMemoryLimitLetter) {
                 case 'g':
                     $memoryLimit *= 1024;
-                // fall-through intentional
-                // no break
+                    // fall-through intentional
+                    // no break
                 case 'm':
                     $memoryLimit *= 1024;
-                // fall-through intentional
-                // no break
+                    // fall-through intentional
+                    // no break
                 case 'k':
                     $memoryLimit *= 1024;
                     break;
@@ -901,7 +904,7 @@ class Product extends \Magento\ImportExport\Model\Export\Entity\AbstractEntity
             $this->currentMemoryUsage = memory_get_usage(true);
 
             $this->_itemsPerPage = (int)(
-            ($this->currentMaxAllowedMemoryUsage - $this->currentMemoryUsage)  / $memoryPerProduct
+                ($this->currentMaxAllowedMemoryUsage - $this->currentMemoryUsage)  / $memoryPerProduct
             );
 
             $this->_itemsPerPage = $this->adjustItemsPerPageByAttributeOptions(

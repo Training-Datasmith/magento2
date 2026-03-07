@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -18,11 +20,11 @@ $data =
         'condition_name' => 'package_qty',
         'condition_value' => 1,
         'price' => 10,
-        'cost' => 10
+        'cost' => 10,
     ];
 $connection->query(
     "INSERT INTO {$entityTable} (`website_id`,  `dest_country_id`, `dest_region_id`, `dest_zip`, `condition_name`,"
-    . "`condition_value`, `price`, `cost`) VALUES (:website_id,  :dest_country_id, :dest_region_id, :dest_zip,"
-    . " :condition_name, :condition_value, :price, :cost);",
+    . '`condition_value`, `price`, `cost`) VALUES (:website_id,  :dest_country_id, :dest_region_id, :dest_zip,'
+    . ' :condition_name, :condition_value, :price, :cost);',
     $data
 );

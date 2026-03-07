@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Catalog\Category;
 
 /**
@@ -84,7 +87,7 @@ class Edit extends \Magento\UrlRewrite\Block\Edit
             [
                 'item_url' => $this->_adminhtmlData->getUrl('adminhtml/*/*') . 'category',
                 'item_name' => $this->_getCategory()->getName(),
-                'label' => __('Category:')
+                'label' => __('Category:'),
             ]
         );
     }

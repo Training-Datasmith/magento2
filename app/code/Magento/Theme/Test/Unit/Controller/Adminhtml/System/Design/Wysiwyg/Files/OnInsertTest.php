@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class OnInsertTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'view' => $this->view,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }

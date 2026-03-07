@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,13 +26,13 @@ use PHPUnit\Framework\TestCase;
 class NewsletterTest extends TestCase
 {
     private const LABEL_XPATH = "//form[contains(@class, 'form-newsletter-manage')]"
-    . "//span[contains(text(), 'Subscription option')]";
+        . "//span[contains(text(), 'Subscription option')]";
     private const CHECKBOX_XPATH = "//form[contains(@class, 'form-newsletter-manage')]"
-    . "//input[@type='checkbox' and @name='is_subscribed']";
+        . "//input[@type='checkbox' and @name='is_subscribed']";
     private const CHECKBOX_TITLE_XPATH = "//form[contains(@class, 'form-newsletter-manage')]"
-    . "//label/span[contains(text(), 'General Subscription')]";
+        . "//label/span[contains(text(), 'General Subscription')]";
     private const SAVE_BUTTON_XPATH = "//form[contains(@class, 'form-newsletter-manage')]"
-    . "//button[@type='submit']/span[contains(text(), 'Save')]";
+        . "//button[@type='submit']/span[contains(text(), 'Save')]";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

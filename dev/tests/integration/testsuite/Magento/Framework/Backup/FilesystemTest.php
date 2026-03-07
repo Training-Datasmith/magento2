@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Backup;
 
-use \Magento\TestFramework\Helper\Bootstrap;
-use \Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class FilesystemTest extends \PHPUnit\Framework\TestCase
 {

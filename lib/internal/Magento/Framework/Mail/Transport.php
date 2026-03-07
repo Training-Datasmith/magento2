@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Framework\Mail;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Phrase;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\SendmailTransport;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Psr\Log\LoggerInterface;
 
 /**
  * Mail transport

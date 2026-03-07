@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
@@ -15,7 +18,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
  */
 class Data extends AbstractHelper
 {
-    const XML_PATH_USE_CUSTOM_ADMIN_URL = 'admin/url/use_custom';
+    public const XML_PATH_USE_CUSTOM_ADMIN_URL = 'admin/url/use_custom';
 
     /**
      * @var string

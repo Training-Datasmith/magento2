@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,9 +16,9 @@ return [
         [
             Bootstrap::INIT_PARAM_FILESYSTEM_DIR_PATHS => [
                 DirectoryList::ROOT => [
-                    DirectoryList::PATH => BP
-                ]
-            ]
+                    DirectoryList::PATH => BP,
+                ],
+            ],
         ]
-    )
+    ),
 ];

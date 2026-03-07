@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class ProductUrlRewrite extends UrlRewrite
     private const DEFAULT_DATA = [
         UrlRewriteDataModel::ENTITY_TYPE => 'category',
         UrlRewriteDataModel::REDIRECT_TYPE => 0,
-        UrlRewriteDataModel::STORE_ID => 1
+        UrlRewriteDataModel::STORE_ID => 1,
     ];
 
     /**

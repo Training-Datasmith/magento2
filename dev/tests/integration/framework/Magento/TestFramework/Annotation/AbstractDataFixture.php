@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ abstract class AbstractDataFixture
             ->create(
                 \Magento\TestFramework\Annotation\Parser\Composite::class,
                 [
-                    'parsers' => $this->getParsers()
+                    'parsers' => $this->getParsers(),
                 ]
             );
 

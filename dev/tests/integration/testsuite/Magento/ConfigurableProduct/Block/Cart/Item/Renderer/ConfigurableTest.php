@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Cart\Item\Renderer;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -54,8 +57,8 @@ class ConfigurableTest extends \PHPUnit\Framework\TestCase
             [
                 'data' => [
                     'price_render_handle' => 'catalog_product_prices',
-                    'use_link_for_as_low_as' => true
-                ]
+                    'use_link_for_as_low_as' => true,
+                ],
             ]
         );
 

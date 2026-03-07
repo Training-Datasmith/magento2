@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Webapi;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product\Webapi\ProductOutputProcessor;
 use Magento\Framework\Webapi\Request;
 use Magento\Framework\Webapi\Rest\Request\DeserializerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ProductOutputProcessorTest extends TestCase
@@ -82,30 +83,30 @@ class ProductOutputProcessorTest extends TestCase
                             'sku' => 'MH01',
                             'status' => 1,
                             'product_links' => [],
-                            'tier_prices' => []
-                        ]
-                    ]
+                            'tier_prices' => [],
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
-                ]
+                    'tier_prices' => [],
+                ],
             ],
             'request object contains `product_links`' => [
                 'request' => [
@@ -113,59 +114,59 @@ class ProductOutputProcessorTest extends TestCase
                         'product' => [
                             'sku' => 'MH01',
                             'status' => 1,
-                            'product_links' => []
-                        ]
-                    ]
+                            'product_links' => [],
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
-                    'product_links' => []
-                ]
+                    'product_links' => [],
+                ],
             ],
             'request object SKU does not match with product object SKU' => [
                 'request' => [
                     [
                         'product' => [
                             'sku' => 'MH01',
-                            'status' => 1
-                        ]
-                    ]
+                            'status' => 1,
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH03',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
-                ]
+                    'tier_prices' => [],
+                ],
             ],
             'request object does not contain `sku`' => [
                 'request' => [
@@ -173,87 +174,87 @@ class ProductOutputProcessorTest extends TestCase
                         'product' => [
                             'status' => 1,
                             'product_links' => [],
-                            'tier_prices' => []
-                        ]
-                    ]
+                            'tier_prices' => [],
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
-                ]
+                    'tier_prices' => [],
+                ],
             ],
             'request object has empty product' => [
                 'request' => [
                     [
-                        'product' => []
-                    ]
+                        'product' => [],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
-                ]
+                    'tier_prices' => [],
+                ],
             ],
             'request object does not contain product' => [
                 'request' => [
                     [
                         'order' => [
                             'order_id' => 1,
-                            'order_details' => 'test'
-                        ]
-                    ]
+                            'order_details' => 'test',
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
+                    'tier_prices' => [],
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => [],
-                    'tier_prices' => []
-                ]
+                    'tier_prices' => [],
+                ],
             ],
             'request object contains `product_links` is null and `tier_prices` is null' => [
                 'request' => [
@@ -262,30 +263,30 @@ class ProductOutputProcessorTest extends TestCase
                             'sku' => 'MH01',
                             'status' => 1,
                             'product_links' => null,
-                            'tier_prices' => null
-                        ]
-                    ]
+                            'tier_prices' => null,
+                        ],
+                    ],
                 ],
                 'product' => static fn (self $testCase) => $testCase->setProductInformation(
                     [
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => null,
-                    'tier_prices' => null
+                    'tier_prices' => null,
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
                     'status' => 1,
                     'product_links' => null,
-                    'tier_prices' => null
-                ]
+                    'tier_prices' => null,
+                ],
             ],
             'request object has empty array' => [
                 'request' => [],
@@ -294,18 +295,18 @@ class ProductOutputProcessorTest extends TestCase
                         'sku' => 'MH01',
                         'status' => 1,
                         'product_links' => [],
-                        'tier_prices' => []
+                        'tier_prices' => [],
                     ]
                 ),
                 'result' => [
                     'sku' => 'MH01',
-                    'status' => 1
+                    'status' => 1,
                 ],
                 'expectedResult' => [
                     'sku' => 'MH01',
-                    'status' => 1
-                ]
-            ]
+                    'status' => 1,
+                ],
+            ],
         ];
     }
 

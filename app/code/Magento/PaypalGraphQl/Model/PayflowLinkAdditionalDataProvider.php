@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\PaypalGraphQl\Model;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Paypal\Model\Config;
-use Magento\QuoteGraphQl\Model\Cart\Payment\AdditionalDataProviderInterface;
 use Magento\PaypalGraphQl\Model\Resolver\Store\Url;
+use Magento\QuoteGraphQl\Model\Cart\Payment\AdditionalDataProviderInterface;
 
 /**
  * Get payment additional data for Paypal Payflow Link payment method

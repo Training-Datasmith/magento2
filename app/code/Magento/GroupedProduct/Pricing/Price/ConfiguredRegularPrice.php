@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\GroupedProduct\Pricing\Price;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
-use Magento\Framework\Pricing\Price\AbstractPrice;
 use Magento\Catalog\Pricing\Price\ConfiguredPriceInterface;
+use Magento\Framework\Pricing\Price\AbstractPrice;
 
 /**
  * Configured regular price model.
@@ -20,7 +21,7 @@ class ConfiguredRegularPrice extends AbstractPrice implements ConfiguredPriceInt
     /**
      * Price type configured
      */
-    const PRICE_CODE = ConfiguredPriceInterface::CONFIGURED_REGULAR_PRICE_CODE;
+    public const PRICE_CODE = ConfiguredPriceInterface::CONFIGURED_REGULAR_PRICE_CODE;
 
     /**
      * @var null|ItemInterface

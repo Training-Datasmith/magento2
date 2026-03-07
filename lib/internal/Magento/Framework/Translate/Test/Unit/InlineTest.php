@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\Translate\Inline\ParserInterface;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Framework\Translate\Inline.
@@ -143,7 +144,7 @@ class InlineTest extends TestCase
             [true, true, true, Area::AREA_CRONTAB, false],
             [true, true, true, Area::AREA_WEBAPI_REST, false],
             [true, true, true, Area::AREA_WEBAPI_SOAP, false],
-            [true, true, true, Area::AREA_GRAPHQL, false]
+            [true, true, true, Area::AREA_GRAPHQL, false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -157,8 +158,8 @@ class MergeTest extends TestCase
     public function testNoSaveToCacheWhenCachePresent()
     {
         $cacheValue = [
-            "pageLayout" => "1column",
-            "layout"     => "<body></body>"
+            'pageLayout' => '1column',
+            'layout'     => '<body></body>',
         ];
 
         $this->scope->expects($this->once())->method('getId')->willReturn(1);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -38,11 +39,10 @@ $requestInfo = new \Magento\Framework\DataObject(
         'selected_configurable_option' => 1,
         'qty' => 1,
         'super_attribute' => [
-            $attribute->getId() => $option->getId()
-        ]
+            $attribute->getId() => $option->getId(),
+        ],
     ]
 );
-
 
 $quote = $quoteFactory->create();
 $quoteResource->load($quote, 'test_quote', 'reserved_order_id');

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,8 @@
 
 namespace Magento\Framework\MessageQueue;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\MessageQueue\MessageEncoder;
 use Magento\Framework\Communication\Config;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -91,7 +91,7 @@ class MessageEncoderTest extends \PHPUnit\Framework\TestCase
         );
         $this->assertEquals('Some Group Code', $decodedCustomerObject->getExtensionAttributes()->getTestGroupCode());
         $addresses = $decodedCustomerObject->getAddresses();
-        $this->assertCount(1, $addresses, "Address was not decoded.");
+        $this->assertCount(1, $addresses, 'Address was not decoded.');
         $this->assertInstanceOf(
             \Magento\Customer\Api\Data\AddressInterface::class,
             $addresses[0]
@@ -113,7 +113,7 @@ class MessageEncoderTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Magento\Framework\Exception\LocalizedException::class);
         $this->expectExceptionMessage('Error occurred during message decoding');
 
-        $this->encoder->decode('customer.created', "{");
+        $this->encoder->decode('customer.created', '{');
     }
 
     /**
@@ -134,7 +134,7 @@ class MessageEncoderTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Magento\Framework\Exception\LocalizedException::class);
         $this->expectExceptionMessage('Error occurred during message decoding');
 
-        $this->encoder->decode('customer.created', "{");
+        $this->encoder->decode('customer.created', '{');
     }
 
     /**

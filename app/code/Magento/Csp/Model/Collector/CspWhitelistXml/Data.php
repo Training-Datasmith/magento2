@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Collector\CspWhitelistXml;
 
-use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\Data\Scoped;
 use Magento\Framework\Config\ScopeInterface;
-use Magento\Framework\Config\CacheInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Provides CSP whitelist configuration

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Deploy\Package\Processor\PostProcessor;
 
-use Magento\Framework\Filesystem;
-use Magento\Deploy\Package\Package;
-use Magento\Csp\Model\SubresourceIntegrityFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Csp\Model\SubresourceIntegrityCollector;
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Magento\Deploy\Package\Processor\ProcessorInterface;
 use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
+use Magento\Csp\Model\SubresourceIntegrityCollector;
+use Magento\Csp\Model\SubresourceIntegrityFactory;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
+use Magento\Deploy\Package\Package;
+use Magento\Deploy\Package\Processor\ProcessorInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Filesystem;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -88,15 +89,15 @@ class Integrity implements ProcessorInterface
         );
 
         foreach ($package->getFiles() as $file) {
-            if (strtolower($file->getExtension()) === "js") {
+            if (strtolower($file->getExtension()) === 'js') {
                 $integrity = $this->integrityFactory->create(
                     [
-                        "data" => [
+                        'data' => [
                             'hash' => $this->hashGenerator->generate(
                                 $staticDir->readFile($file->getSourcePath())
                             ),
-                            'path' => $file->getDeployedFilePath()
-                        ]
+                            'path' => $file->getDeployedFilePath(),
+                        ],
                     ]
                 );
 

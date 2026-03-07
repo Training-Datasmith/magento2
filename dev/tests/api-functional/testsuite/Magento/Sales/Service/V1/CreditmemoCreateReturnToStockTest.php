@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -91,28 +92,28 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         ConfigFixture('carriers/flatrate/active', '1'),
         DataFixture(ProductFixture::class, [
             'price' => 10.00,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], as: 'product'),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, [
             'cart_id' => '$cart.id$',
-            'email' => 'guest@example.com'
+            'email' => 'guest@example.com',
         ]),
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ]),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetDeliveryMethodFixture::class, [
             'cart_id' => '$cart.id$',
             'carrier_code' => 'flatrate',
-            'method_code' => 'flatrate'
+            'method_code' => 'flatrate',
         ]),
         DataFixture(SetPaymentMethodFixture::class, [
             'cart_id' => '$cart.id$',
-            'method' => 'checkmo'
+            'method' => 'checkmo',
         ]),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], as: 'order'),
         DataFixture(InvoiceFixture::class, ['order_id' => '$order.id$'], as: 'invoice'),
@@ -167,35 +168,35 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
             'price' => 10.00,
             'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
             'type_id' => 'simple',
-            'attribute_set_id' => 4
+            'attribute_set_id' => 4,
         ], as: 'child_product'),
         DataFixture(ConfigurableAttributeFixture::class, as: 'attribute'),
         DataFixture(ConfigurableProductFixture::class, [
             'price' => 20.00,
             'type_id' => 'configurable',
             '_options' => ['$attribute$'],
-            '_links' => ['$child_product$']
+            '_links' => ['$child_product$'],
         ], as: 'configurable_product'),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, [
             'cart_id' => '$cart.id$',
-            'email' => 'guest@example.com'
+            'email' => 'guest@example.com',
         ]),
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$child_product.id$',
-            'qty' => 3
+            'qty' => 3,
         ]),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetDeliveryMethodFixture::class, [
             'cart_id' => '$cart.id$',
             'carrier_code' => 'flatrate',
-            'method_code' => 'flatrate'
+            'method_code' => 'flatrate',
         ]),
         DataFixture(SetPaymentMethodFixture::class, [
             'cart_id' => '$cart.id$',
-            'method' => 'checkmo'
+            'method' => 'checkmo',
         ]),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], as: 'order'),
         DataFixture(InvoiceFixture::class, ['order_id' => '$order.id$'], as: 'invoice'),
@@ -216,11 +217,11 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         ConfigFixture('carriers/flatrate/active', '1'),
         DataFixture(ProductFixture::class, [
             'price' => 20,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], 'product1'),
         DataFixture(ProductFixture::class, [
             'price' => 10,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], 'product2'),
         DataFixture(BundleSelectionFixture::class, ['sku' => '$product1.sku$', 'price' => 15], 'selection1'),
         DataFixture(BundleSelectionFixture::class, ['sku' => '$product2.sku$', 'price' => 8], 'selection2'),
@@ -238,7 +239,7 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, [
             'cart_id' => '$cart.id$',
-            'email' => 'guest@example.com'
+            'email' => 'guest@example.com',
         ]),
         DataFixture(
             AddBundleProductToCart::class,
@@ -246,7 +247,7 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -254,11 +255,11 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         DataFixture(SetDeliveryMethodFixture::class, [
             'cart_id' => '$cart.id$',
             'carrier_code' => 'flatrate',
-            'method_code' => 'flatrate'
+            'method_code' => 'flatrate',
         ]),
         DataFixture(SetPaymentMethodFixture::class, [
             'cart_id' => '$cart.id$',
-            'method' => 'checkmo'
+            'method' => 'checkmo',
         ]),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], as: 'order'),
         DataFixture(InvoiceFixture::class, ['order_id' => '$order.id$'], as: 'invoice'),
@@ -285,11 +286,11 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         ConfigFixture('carriers/flatrate/active', '1'),
         DataFixture(ProductFixture::class, [
             'price' => 20,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], 'product1'),
         DataFixture(ProductFixture::class, [
             'price' => 10,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], 'product2'),
         DataFixture(BundleSelectionFixture::class, ['sku' => '$product1.sku$'], 'selection1'),
         DataFixture(BundleSelectionFixture::class, ['sku' => '$product2.sku$'], 'selection2'),
@@ -301,14 +302,14 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 'sku' => 'bundle-product-dynamic-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90
+                'special_price' => 90,
             ],
             'bundle_product_1'
         ),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, [
             'cart_id' => '$cart.id$',
-            'email' => 'guest@example.com'
+            'email' => 'guest@example.com',
         ]),
         DataFixture(
             AddBundleProductToCart::class,
@@ -316,7 +317,7 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -324,11 +325,11 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
         DataFixture(SetDeliveryMethodFixture::class, [
             'cart_id' => '$cart.id$',
             'carrier_code' => 'flatrate',
-            'method_code' => 'flatrate'
+            'method_code' => 'flatrate',
         ]),
         DataFixture(SetPaymentMethodFixture::class, [
             'cart_id' => '$cart.id$',
-            'method' => 'checkmo'
+            'method' => 'checkmo',
         ]),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], as: 'order'),
         DataFixture(InvoiceFixture::class, ['order_id' => '$order.id$'], as: 'invoice'),
@@ -369,9 +370,9 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
             'items' => $allOrderItems,
             'arguments' => [
                 'extension_attributes' => [
-                    'return_to_stock_items' => $itemIds
-                ]
-            ]
+                    'return_to_stock_items' => $itemIds,
+                ],
+            ],
         ]);
         $this->assertProductQty($expectedQtyAfterRefund, $product1->getSku());
         $this->assertProductQty($expectedQtyAfterRefund, $product2->getSku());
@@ -393,7 +394,7 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 $itemIds[] = (int)$item->getItemId();
                 $items[] = [
                     'order_item_id' => (int)$item->getItemId(),
-                    'qty' => (float) $item->getQtyOrdered()
+                    'qty' => (float) $item->getQtyOrdered(),
                 ];
                 foreach ($order->getAllItems() as $childItem) {
                     if ($childItem->getParentItemId() === $item->getItemId() &&
@@ -405,7 +406,7 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 $itemIds[] = (int)$item->getItemId();
                 $items[] = [
                     'order_item_id' => (int)$item->getItemId(),
-                    'qty' => (float) $item->getQtyOrdered()
+                    'qty' => (float) $item->getQtyOrdered(),
                 ];
             }
         }
@@ -425,45 +426,45 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                 'requestData' => [
                     'include_items' => true,
                     'include_return_to_stock' => true,
-                    'use_correct_item_ids' => true
+                    'use_correct_item_ids' => true,
                 ],
-                'expectedFinalQty' => 100.0
+                'expectedFinalQty' => 100.0,
             ],
             'without_order_item_id_but_with_return_to_stock' => [
                 'requestData' => [
                     'include_items' => false,
                     'include_return_to_stock' => true,
-                    'use_correct_item_ids' => true
+                    'use_correct_item_ids' => true,
                 ],
-                'expectedFinalQty' => 100.0
+                'expectedFinalQty' => 100.0,
             ],
             'with_incorrect_order_item_id' => [
                 'requestData' => [
                     'include_items' => true,
                     'include_return_to_stock' => true,
                     'use_correct_item_ids' => false,
-                    'incorrect_item_ids' => [123]
+                    'incorrect_item_ids' => [123],
                 ],
                 'expectedFinalQty' => 99.0,
                 'expectedException' => 'The return to stock argument contains product item '
-                    . 'that is not part of the original order'
+                    . 'that is not part of the original order',
             ],
             'without_return_to_stock_items' => [
                 'requestData' => [
                     'include_items' => false,
-                    'include_return_to_stock' => false
+                    'include_return_to_stock' => false,
                 ],
-                'expectedFinalQty' => 99.0
+                'expectedFinalQty' => 99.0,
             ],
             'invoice_refund_with_order_item_id_and_return_to_stock' => [
                 'requestData' => [
                     'include_items' => true,
                     'include_return_to_stock' => true,
                     'use_correct_item_ids' => true,
-                    'use_invoice_endpoint' => true
+                    'use_invoice_endpoint' => true,
                 ],
                 'expectedFinalQty' => 99.0,
-                'expectedException' => "We can't create creditmemo for the invoice"
+                'expectedException' => "We can't create creditmemo for the invoice",
             ],
             'invoice_refund_with_incorrect_order_item_id' => [
                 'requestData' => [
@@ -471,20 +472,20 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
                     'include_return_to_stock' => true,
                     'use_correct_item_ids' => false,
                     'incorrect_item_ids' => [123],
-                    'use_invoice_endpoint' => true
+                    'use_invoice_endpoint' => true,
                 ],
                 'expectedFinalQty' => 99.0,
-                'expectedException' => "We can't create creditmemo for the invoice"
+                'expectedException' => "We can't create creditmemo for the invoice",
             ],
             'invoice_refund_without_params' => [
                 'requestData' => [
                     'include_items' => false,
                     'include_return_to_stock' => false,
-                    'use_invoice_endpoint' => true
+                    'use_invoice_endpoint' => true,
                 ],
                 'expectedFinalQty' => 99.0,
-                'expectedException' => "We can't create creditmemo for the invoice"
-            ]
+                'expectedException' => "We can't create creditmemo for the invoice",
+            ],
         ];
     }
 
@@ -514,14 +515,14 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
             'items' => [
                 [
                     'order_item_id' => $orderItemId,
-                    'qty' => (float) $refundQty
-                ]
+                    'qty' => (float) $refundQty,
+                ],
             ],
             'arguments' => [
                 'extension_attributes' => [
-                    'return_to_stock_items' => [$orderItemId]
-                ]
-            ]
+                    'return_to_stock_items' => [$orderItemId],
+                ],
+            ],
         ]);
         $this->assertProductQty($expectedQtyAfterRefund, $product->getSku());
     }
@@ -584,8 +585,8 @@ class CreditmemoCreateReturnToStockTest extends WebapiAbstract
             }
             $requestData['arguments'] = [
                 'extension_attributes' => [
-                    'return_to_stock_items' => $itemIds
-                ]
+                    'return_to_stock_items' => $itemIds,
+                ],
             ];
         }
 

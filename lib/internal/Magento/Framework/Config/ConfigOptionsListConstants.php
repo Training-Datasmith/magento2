@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -131,7 +132,7 @@ class ConfigOptionsListConstants
 
     /**#@+
      * Array keys for database driver options configurations
-     * 
+     *
      * PHP 8.4+ deprecated PDO::MYSQL_ATTR_SSL_* constants in favor of Pdo\Mysql::ATTR_SSL_*
      * PHP 8.5+ removed the deprecated constants entirely
      * We use the new constants if available (PHP 8.4+), otherwise fall back to legacy constants

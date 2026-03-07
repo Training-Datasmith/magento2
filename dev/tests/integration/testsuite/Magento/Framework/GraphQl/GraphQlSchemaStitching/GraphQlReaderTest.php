@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,9 +14,6 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Config\FileResolverInterface;
-use Magento\Framework\Config\FileIterator;
-use Magento\Framework\Component\ComponentRegistrar;
 
 /**
  * Test of the stitching of graphql schemas together

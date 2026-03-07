@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Search;
 
-use Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\DataProvider\ProductCollection;
 use Magento\Framework\App\ObjectManager;
+use Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\DataProvider\ProductCollection;
 
 /**
  * Adminhtml sales order create search products block
@@ -177,7 +180,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => true,
                 'header_css_class' => 'col-id',
                 'column_css_class' => 'col-id',
-                'index' => 'entity_id'
+                'index' => 'entity_id',
             ]
         );
         $this->addColumn(
@@ -185,7 +188,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('Product'),
                 'renderer' => \Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\Renderer\Product::class,
-                'index' => 'name'
+                'index' => 'name',
             ]
         );
         $this->addColumn('sku', ['header' => __('SKU'), 'index' => 'sku']);
@@ -198,7 +201,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'currency_code' => $this->getStore()->getCurrentCurrencyCode(),
                 'rate' => $this->getStore()->getBaseCurrency()->getRate($this->getStore()->getCurrentCurrencyCode()),
                 'index' => 'price',
-                'renderer' => \Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\Renderer\Price::class
+                'renderer' => \Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\Renderer\Price::class,
             ]
         );
 
@@ -212,7 +215,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'entity_id',
                 'sortable' => false,
                 'header_css_class' => 'col-select',
-                'column_css_class' => 'col-select'
+                'column_css_class' => 'col-select',
             ]
         );
 
@@ -227,7 +230,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'inline_css' => 'qty',
                 'type' => 'input',
                 'validate_class' => 'validate-number',
-                'index' => 'qty'
+                'index' => 'qty',
             ]
         );
 

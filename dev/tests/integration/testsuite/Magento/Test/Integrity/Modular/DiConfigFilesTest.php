@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Modular;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -116,7 +119,7 @@ class DiConfigFilesTest extends \PHPUnit\Framework\TestCase
     public function testMergedDiConfig(array $files)
     {
         $mapperMock = $this->createMock(\Magento\Framework\ObjectManager\Config\Mapper\Dom::class);
-        
+
         // Use MockCreationTrait to create a mock with both the interface method and a non-existent method
         $fileResolverMock = $this->createPartialMockWithReflection(
             FileResolverInterface::class,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class WebsiteTest extends TestCase
             ResourceConnection::class,
             [
                 'getConnection',
-                'getTableName'
+                'getTableName',
             ]
         );
         $this->connectionMock = $this->createPartialMockWithReflection(
@@ -58,7 +59,7 @@ class WebsiteTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             Website::class,
             [
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
     }
@@ -66,8 +67,8 @@ class WebsiteTest extends TestCase
     public function testReadAllWebsites()
     {
         $data = [
-            "admin" => ["website_id" => "0", "code" => "admin", "name" => "Admin"],
-            "base" => ["website_id" => "1", "code" => "base", "name" => "Main Website"]
+            'admin' => ['website_id' => '0', 'code' => 'admin', 'name' => 'Admin'],
+            'base' => ['website_id' => '1', 'code' => 'base', 'name' => 'Main Website'],
         ];
         $mainTable = 'store_website';
 
@@ -121,7 +122,7 @@ class WebsiteTest extends TestCase
 
         $this->resourceMock->expects($this->atLeastOnce())
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$storeWebsiteTable] => $storeWebsiteTable,
                 [$storeGroupTable] => $storeGroupTable
             });

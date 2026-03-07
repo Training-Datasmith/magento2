@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Rule;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -22,7 +25,7 @@ class Edit extends \Magento\Tax\Controller\Adminhtml\Rule implements HttpGetActi
         if ($taxRuleId) {
             try {
                 $taxRule = $this->ruleService->get($taxRuleId);
-                $pageTitle = sprintf("%s", $taxRule->getCode());
+                $pageTitle = sprintf('%s', $taxRule->getCode());
             } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
                 $backendSession->unsRuleData();
                 $this->messageManager->addError(__('This rule no longer exists.'));

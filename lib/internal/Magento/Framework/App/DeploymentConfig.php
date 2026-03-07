@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
 use Magento\Framework\Config\ConfigOptionsListConstants;
@@ -168,7 +171,7 @@ class DeploymentConfig
      *
      * @return array
      */
-    private function getEnvOverride() : array
+    private function getEnvOverride(): array
     {
         $env = getenv(self::OVERRIDE_KEY);
         return !empty($env) ? (json_decode($env, true) ?? []) : [];

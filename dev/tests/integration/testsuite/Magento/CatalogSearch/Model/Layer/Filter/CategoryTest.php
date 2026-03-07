@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -155,7 +157,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(
             [
                 4 => 2,
-                13 => 2
+                13 => 2,
             ],
             $actual
         );

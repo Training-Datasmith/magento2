@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Sales\Model\ResourceModel\Order\Invoice;
 
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationInterface;
-use Magento\Sales\Model\ResourceModel\Order\Invoice\Item as InvoiceItemResource;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Comment as InvoiceCommentResource;
+use Magento\Sales\Model\ResourceModel\Order\Invoice\Item as InvoiceItemResource;
 
 /**
  * Class Relation

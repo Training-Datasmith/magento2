@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\Name;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -57,15 +58,15 @@ class NameTest extends TestCase
         return [
             [
                 false,
-                ['name' => null, 'store_view_code' => '', 'sku' => 'sku']
+                ['name' => null, 'store_view_code' => '', 'sku' => 'sku'],
             ],
             [
                 true,
-                ['name' => 'anything goes here', 'store_view_code' => 'en', 'sku' => 'sku']
+                ['name' => 'anything goes here', 'store_view_code' => 'en', 'sku' => 'sku'],
             ],
             [
                 false,
-                ['name' => null, 'store_view_code' => 'en', 'sku' => 'sku']
+                ['name' => null, 'store_view_code' => 'en', 'sku' => 'sku'],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,11 +40,11 @@ class ConfigSourceAggregatedTest extends TestCase
         $sources = [
             [
                 'source' => $this->sourceMockTwo,
-                'sortOrder' => 100
+                'sortOrder' => 100,
             ],
             [
                 'source' => $this->sourceMock,
-                'sortOrder' => 10
+                'sortOrder' => 10,
             ],
 
         ];
@@ -65,7 +66,7 @@ class ConfigSourceAggregatedTest extends TestCase
         $this->assertEquals(
             [
                 'test' => false,
-                'key' => 'value2'
+                'key' => 'value2',
             ],
             $this->source->get($path)
         );

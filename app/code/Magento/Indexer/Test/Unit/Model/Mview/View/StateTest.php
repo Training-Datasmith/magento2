@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -122,26 +123,26 @@ class StateTest extends TestCase
                 'setStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_WORKING,
                 'getStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_WORKING,
                 'lock' => 'lock',
-                'isLocked' => true
+                'isLocked' => true,
             ],
             [
                 'setStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_WORKING,
                 'getStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_IDLE,
                 'lock' => 'lock',
-                'isLocked' => false
+                'isLocked' => false,
             ],
             [
                 'setStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_IDLE,
                 'getStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_IDLE,
                 'lock' => 'unlock',
-                'isLocked' => false
+                'isLocked' => false,
             ],
             [
                 'setStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_SUSPENDED,
                 'getStatus' => \Magento\Framework\Mview\View\StateInterface::STATUS_SUSPENDED,
                 'lock' => 'unlock',
-                'isLocked' => false
-            ]
+                'isLocked' => false,
+            ],
         ];
     }
 

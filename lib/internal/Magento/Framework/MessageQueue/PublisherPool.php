@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\MessageQueue;
 
-use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
+use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
 
 /**
@@ -18,18 +20,18 @@ use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
  */
 class PublisherPool implements PublisherInterface, BulkPublisherInterface
 {
-    const MODE_SYNC = 'sync';
-    const MODE_ASYNC = 'async';
+    public const MODE_SYNC = 'sync';
+    public const MODE_ASYNC = 'async';
 
     /**
      * @deprecated
      */
-    const TYPE = 'type';
+    public const TYPE = 'type';
 
     /**
      * @deprecated
      */
-    const CONNECTION_NAME = 'connectionName';
+    public const CONNECTION_NAME = 'connectionName';
 
     /**
      * Publisher objects pool.

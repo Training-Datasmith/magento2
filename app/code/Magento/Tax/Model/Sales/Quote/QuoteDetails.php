@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Sales\Quote;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,12 +19,12 @@ class QuoteDetails extends AbstractExtensibleModel implements QuoteDetailsInterf
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_BILLING_ADDRESS        = 'billing_address';
-    const KEY_SHIPPING_ADDRESS       = 'shipping_address';
-    const KEY_CUSTOMER_TAX_CLASS_KEY = 'customer_tax_class_key';
-    const KEY_ITEMS                  = 'items';
-    const KEY_CUSTOMER_TAX_CLASS_ID  = 'customer_tax_class_id';
-    const KEY_CUSTOMER_ID            = 'customer_id';
+    public const KEY_BILLING_ADDRESS        = 'billing_address';
+    public const KEY_SHIPPING_ADDRESS       = 'shipping_address';
+    public const KEY_CUSTOMER_TAX_CLASS_KEY = 'customer_tax_class_key';
+    public const KEY_ITEMS                  = 'items';
+    public const KEY_CUSTOMER_TAX_CLASS_ID  = 'customer_tax_class_id';
+    public const KEY_CUSTOMER_ID            = 'customer_id';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,11 +21,10 @@ class TierPriceType extends AbstractImportValidator
     /**
      * Validate tier price type.
      *
-     * @param array $value
      *
      * @return bool
      */
-    public function isValid($value)
+    public function isValid(array $value)
     {
         $isValid = true;
 

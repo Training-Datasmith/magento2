@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Framework\Module\Setup\Migration;
 
@@ -33,5 +35,5 @@ return [
                 'catalogrule/rule_condition_combine' => 'Magento\CatalogRule\Model\Rule\Condition\Combine',
             ],
         ],
-    ]
+    ],
 ];

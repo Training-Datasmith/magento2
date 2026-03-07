@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class SortItems
                 $indexedItem = [];
                 foreach ($items as $key => $itemData) {
                     foreach ($itemData as $itemKey => $item) {
-                        $indexedItem[] = ['parent'=>$key, 'key' => $itemKey, 'item' => $item];
+                        $indexedItem[] = ['parent' => $key, 'key' => $itemKey, 'item' => $item];
                     }
                 }
 

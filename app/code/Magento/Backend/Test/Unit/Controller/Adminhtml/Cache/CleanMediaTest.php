@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Framework\Message\ExceptionMessageLookupFactory;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Session\SessionManager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Asset\MergeService;
 use PHPUnit\Framework\TestCase;
 
@@ -66,7 +67,7 @@ class CleanMediaTest extends TestCase
                 'objectManager' => $objectManager,
                 'helper' => $backendHelper,
                 'request' => $request,
-                'messageManager' => $messageManager
+                'messageManager' => $messageManager,
             ]
         );
         $context = $this->getMockBuilder(Context::class)
@@ -88,7 +89,7 @@ class CleanMediaTest extends TestCase
         $controller = $helper->getObject(
             CleanMedia::class,
             [
-                'context' => $context
+                'context' => $context,
             ]
         );
 

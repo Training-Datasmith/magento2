@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class Converter implements ConverterInterface
      * @param \DOMDocument $source
      * @return array
      */
-    public function convert($source) : array
+    public function convert($source): array
     {
         $result = [];
 

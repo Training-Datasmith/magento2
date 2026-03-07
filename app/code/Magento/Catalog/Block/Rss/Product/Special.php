@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Rss\Product;
 
 use Magento\Customer\Model\Context;
@@ -134,7 +137,7 @@ class Special extends \Magento\Framework\View\Element\AbstractBlock implements D
 
             $this->_eventManager->dispatch('rss_catalog_special_xml_callback', [
                 'row' => $item->getData(),
-                'product' => $item
+                'product' => $item,
             ]);
 
             if (!$item->getAllowedInRss()) {
@@ -199,7 +202,7 @@ class Special extends \Magento\Framework\View\Element\AbstractBlock implements D
         return [
             'title' => $item->getName(),
             'link' => $item->getProductUrl(),
-            'description' => $description
+            'description' => $description,
         ];
     }
 

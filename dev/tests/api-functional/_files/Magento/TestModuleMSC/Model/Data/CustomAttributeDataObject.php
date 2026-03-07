@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\TestModuleMSC\Model\Data;
 
-use Magento\TestModuleMSC\Api\Data\CustomAttributeDataObjectInterface;
 use Magento\Framework\Api\AbstractExtensibleObject;
+use Magento\TestModuleMSC\Api\Data\CustomAttributeDataObjectInterface;
 
 /**
  * Class CustomAttributeDataObject

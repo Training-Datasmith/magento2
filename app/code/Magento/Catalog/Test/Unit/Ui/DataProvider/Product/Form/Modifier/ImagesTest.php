@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -32,14 +33,14 @@ class ImagesTest extends AbstractModifierTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->defaultValueProcessorMock = $this->createMock(DefaultValueProcessor::class);
         $this->scopeOverriddenValueMock = $this->createMock(ScopeOverriddenValue::class);
-        
+
         // Mock defaultValueProcessor to return the input data unchanged
         $this->defaultValueProcessorMock->method('process')
             ->willReturnArgument(1);
-        
+
         // Mock scopeOverriddenValue to return false (value not overridden)
         $this->scopeOverriddenValueMock->method('containsValue')
             ->willReturn(false);
@@ -61,7 +62,7 @@ class ImagesTest extends AbstractModifierTestCase
     {
         $this->productMock->setId(2051);
         $actualResult = $this->getModel()->modifyData($this->getSampleData());
-        $this->assertSame("", $actualResult[2051]['product']['media_gallery']['images'][0]['label']);
+        $this->assertSame('', $actualResult[2051]['product']['media_gallery']['images'][0]['label']);
     }
 
     public function testModifyMeta()
@@ -71,8 +72,8 @@ class ImagesTest extends AbstractModifierTestCase
                 'children' => [],
                 'label' => __('Images'),
                 'sortOrder' => '20',
-                'componentType' => 'fieldset'
-            ]
+                'componentType' => 'fieldset',
+            ],
         ];
 
         $this->assertSame([], $this->getModel()->modifyMeta($meta));
@@ -89,12 +90,12 @@ class ImagesTest extends AbstractModifierTestCase
                     'media_gallery' => [
                         'images' => [
                             [
-                                'label' => null
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'label' => null,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,16 +10,16 @@ namespace Magento\Framework\View\Test\Unit\Result;
 
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\ProcessorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Framework\View\Result\Layout
@@ -124,13 +125,13 @@ class LayoutTest extends TestCase
         $setHeaderCount
     ) {
         // Convert string expectations to matchers
-        $setHttpResponseCodeCount = is_string($setHttpResponseCodeCount) 
-            ? $this->createInvocationMatcher($setHttpResponseCodeCount) 
+        $setHttpResponseCodeCount = is_string($setHttpResponseCodeCount)
+            ? $this->createInvocationMatcher($setHttpResponseCodeCount)
             : $setHttpResponseCodeCount;
-        $setHeaderCount = is_string($setHeaderCount) 
-            ? $this->createInvocationMatcher($setHeaderCount) 
+        $setHeaderCount = is_string($setHeaderCount)
+            ? $this->createInvocationMatcher($setHeaderCount)
             : $setHeaderCount;
-        
+
         $layoutOutput = 'output';
 
         $this->layout->expects($this->once())->method('getOutput')->willReturn($layoutOutput);
@@ -174,7 +175,7 @@ class LayoutTest extends TestCase
     {
         return [
             [200, 'content-type', 'text/html', true, 'once', 'once'],
-            [0, '', '', false, 'never', 'never']
+            [0, '', '', false, 'never', 'never'],
         ];
     }
 

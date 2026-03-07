@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -21,7 +22,6 @@ use PHPUnit\Framework\TestCase;
 
 class LoadQuoteByIdMutexTest extends TestCase
 {
-
     /**
      * @var QuoteResourceModel|MockObject
      */

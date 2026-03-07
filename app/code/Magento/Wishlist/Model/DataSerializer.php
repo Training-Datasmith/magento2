@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Model;
 
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\Math\Random;
+use Magento\Framework\Serialize\SerializerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 

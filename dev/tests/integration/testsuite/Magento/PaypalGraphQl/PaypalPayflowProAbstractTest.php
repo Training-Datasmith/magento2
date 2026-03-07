@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl;
 
+use Magento\Config\Model\Config;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\GraphQl\Controller\GraphQl;
 use Magento\GraphQl\Service\GraphQlRequest;
+use Magento\Payment\Model\Method\Online\GatewayInterface;
 use Magento\Paypal\Model\Payflow\Service\Gateway;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Config\Model\Config;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
-use Magento\Payment\Model\Method\Online\GatewayInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Abstract class with common logic for Paypal GraphQl tests

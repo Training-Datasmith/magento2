@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element\DataType;
 
 /**
@@ -10,7 +13,7 @@ namespace Magento\Ui\Component\Form\Element\DataType;
  */
 class Email extends AbstractDataType
 {
-    const NAME = 'email';
+    public const NAME = 'email';
 
     /**
      * Get component name

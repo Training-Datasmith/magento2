@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -18,5 +19,5 @@ interface CookieDisablerInterface
      * @param bool $disabled
      * @return void
      */
-    public function setCookiesDisabled(bool $disabled) : void;
+    public function setCookiesDisabled(bool $disabled): void;
 }

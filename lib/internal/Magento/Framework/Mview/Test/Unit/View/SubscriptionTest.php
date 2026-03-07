@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -124,9 +125,9 @@ class SubscriptionTest extends TestCase
             ->willReturn([
                 'subscriptions' => [
                     $this->tableName => [
-                        'processor' => DefaultProcessor::class
-                    ]
-                ]
+                        'processor' => DefaultProcessor::class,
+                    ],
+                ],
             ]);
         $statementPostprocessorMock = $this->createMock(SubscriptionStatementPostprocessorInterface::class);
         $statementPostprocessorMock->method('process')
@@ -201,11 +202,11 @@ class SubscriptionTest extends TestCase
             ->method('addStatement')
             ->willReturnCallback(
                 function ($arg1) use ($triggerMock) {
-                    if ($arg1 == "INSERT IGNORE INTO test_view_cl (entity_id) VALUES (NEW.columnName);") {
+                    if ($arg1 == 'INSERT IGNORE INTO test_view_cl (entity_id) VALUES (NEW.columnName);') {
                         return $triggerMock;
-                    } elseif ($arg1 == "INSERT IGNORE INTO other_test_view_cl (entity_id) VALUES (NEW.columnName);") {
+                    } elseif ($arg1 == 'INSERT IGNORE INTO other_test_view_cl (entity_id) VALUES (NEW.columnName);') {
                         return $triggerMock;
-                    } elseif ($arg1 == "INSERT IGNORE INTO test_view_cl (entity_id) VALUES (OLD.columnName);") {
+                    } elseif ($arg1 == 'INSERT IGNORE INTO test_view_cl (entity_id) VALUES (OLD.columnName);') {
                         return $triggerMock;
                     }
                 }
@@ -268,7 +269,7 @@ class SubscriptionTest extends TestCase
             ->willReturn(
                 [
                     $this->tableName => ['name' => $this->tableName, 'column' => 'columnName'],
-                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName']
+                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName'],
                 ]
             );
         $otherViewMock->expects($this->atLeastOnce())
@@ -297,7 +298,7 @@ class SubscriptionTest extends TestCase
             ->willReturn(
                 [
                     $this->tableName => ['name' => $this->tableName, 'column' => 'columnName'],
-                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName']
+                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName'],
                 ]
             );
 
@@ -370,7 +371,7 @@ class SubscriptionTest extends TestCase
             ->willReturn(
                 [
                     $this->tableName => ['name' => $this->tableName, 'column' => 'columnName'],
-                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName']
+                    'otherTableName' => ['name' => 'otherTableName', 'column' => 'columnName'],
                 ]
             );
 
@@ -411,9 +412,9 @@ class SubscriptionTest extends TestCase
             $viewId => [
                 $tableName => [
                     $ignoredColumnName => true,
-                    $notIgnoredColumnName => false
-                ]
-            ]
+                    $notIgnoredColumnName => false,
+                ],
+            ],
         ];
         $mviewConfigMock = $this->createMock(Config::class);
         $mviewConfigMock->expects($this->any())
@@ -421,9 +422,9 @@ class SubscriptionTest extends TestCase
             ->willReturn([
                 'subscriptions' => [
                     $tableName => [
-                        'processor' => DefaultProcessor::class
-                    ]
-                ]
+                        'processor' => DefaultProcessor::class,
+                    ],
+                ],
             ]);
         $statementPostprocessorMock = $this->createMock(SubscriptionStatementPostprocessorInterface::class);
         $statementPostprocessorMock->method('process')
@@ -442,7 +443,7 @@ class SubscriptionTest extends TestCase
                 'stock_id' => ['COLUMN_NAME' => 'stock_id'],
                 'qty' => ['COLUMN_NAME' => 'qty'],
                 $ignoredColumnName => ['COLUMN_NAME' => $ignoredColumnName],
-                $notIgnoredColumnName => ['COLUMN_NAME' => $notIgnoredColumnName]
+                $notIgnoredColumnName => ['COLUMN_NAME' => $notIgnoredColumnName],
             ]);
 
         $otherChangelogMock = $this->createMock(ChangelogInterface::class);
@@ -459,7 +460,7 @@ class SubscriptionTest extends TestCase
             ->willReturn(
                 [
                     $this->tableName => ['name' => $this->tableName, 'column' => 'columnName'],
-                    'cataloginventory_stock_item' => ['name' => 'otherTableName', 'column' => 'columnName']
+                    'cataloginventory_stock_item' => ['name' => 'otherTableName', 'column' => 'columnName'],
                 ]
             );
         $this->viewMock->expects($this->atLeastOnce())

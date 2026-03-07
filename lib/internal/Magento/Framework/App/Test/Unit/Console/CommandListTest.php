@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class CommandListTest extends TestCase
     {
         $this->testCommand = new Command('Test');
         $commands = [
-            $this->testCommand
+            $this->testCommand,
         ];
 
         $this->commandList = new CommandList($commands);

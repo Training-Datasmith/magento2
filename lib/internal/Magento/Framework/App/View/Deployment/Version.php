@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -86,7 +88,7 @@ class Version
             ) {
                 $this->getLogger()->critical('Can not load static content version.');
                 throw new \UnexpectedValueException(
-                    "Unable to retrieve deployment version of static files from the file system."
+                    'Unable to retrieve deployment version of static files from the file system.'
                 );
             }
             $result = $this->generateVersion();

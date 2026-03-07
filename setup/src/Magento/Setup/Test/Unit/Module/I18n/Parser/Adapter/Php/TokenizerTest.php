@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,13 +105,13 @@ class TokenizerTest extends TestCase
     public function testIsEndOfLoop(): void
     {
         $this->parseFile();
-        
+
         // PHP < 8.0: 27 total tokens in objectsCode.php file (excluding whitespaces)
         for ($i = 0; $i < 27; $i++) {
             $this->assertFalse($this->tokenizer->isEndOfLoop());
             $this->tokenizer->getNextRealToken();
         }
-        
+
         $this->assertTrue($this->tokenizer->isEndOfLoop());
     }
 
@@ -127,13 +128,13 @@ class TokenizerTest extends TestCase
     public function testIsEndOfLoopWhenNamespaceIsSingleToken(): void
     {
         $this->parseFile();
-        
+
         // PHP >= 8.0: 18 tokens (namespaces as single T_NAME_FULLY_QUALIFIED tokens)
         for ($i = 0; $i < 18; $i++) {
             $this->assertFalse($this->tokenizer->isEndOfLoop());
             $this->tokenizer->getNextRealToken();
         }
-        
+
         $this->assertTrue($this->tokenizer->isEndOfLoop());
     }
 

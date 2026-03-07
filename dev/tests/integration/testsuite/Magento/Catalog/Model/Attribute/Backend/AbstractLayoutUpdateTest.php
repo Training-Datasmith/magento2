@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Attribute\Backend;
 
-use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\CategoryFactory;
+use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 
 /**
  * Test 'custom layout file' attribute.
@@ -58,8 +59,8 @@ class AbstractLayoutUpdateTest extends TestCase
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Category\Attribute\LayoutUpdateManager::class
-                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class
-            ]
+                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class,
+            ],
         ]);
         $this->categoryFactory = Bootstrap::getObjectManager()->get(CategoryFactory::class);
         $this->recreateCategory();

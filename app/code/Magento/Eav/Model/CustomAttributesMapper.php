@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model;
 
 use Magento\Eav\Api\AttributeRepositoryInterface;
@@ -88,7 +91,7 @@ class CustomAttributesMapper implements MapperInterface
             if (isset($data[$attribute->getAttributeCode()])) {
                 $data[CustomAttributesDataInterface::CUSTOM_ATTRIBUTES][] = [
                     AttributeInterface::ATTRIBUTE_CODE => $attribute->getAttributeCode(),
-                    AttributeInterface::VALUE => $data[$attribute->getAttributeCode()]
+                    AttributeInterface::VALUE => $data[$attribute->getAttributeCode()],
                 ];
             }
         }

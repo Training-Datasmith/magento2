@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 /**
@@ -14,12 +17,12 @@ interface ScopeInterface
     /**#@+
      * Scope types
      */
-    const SCOPE_STORES = 'stores';
-    const SCOPE_GROUPS   = 'groups';
-    const SCOPE_WEBSITES = 'websites';
+    public const SCOPE_STORES = 'stores';
+    public const SCOPE_GROUPS   = 'groups';
+    public const SCOPE_WEBSITES = 'websites';
 
-    const SCOPE_STORE   = 'store';
-    const SCOPE_GROUP   = 'group';
-    const SCOPE_WEBSITE = 'website';
+    public const SCOPE_STORE   = 'store';
+    public const SCOPE_GROUP   = 'group';
+    public const SCOPE_WEBSITE = 'website';
     /**#@-*/
 }

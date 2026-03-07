@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\Translate;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -43,14 +46,14 @@ class MethodCollectorTest extends \PHPUnit\Framework\TestCase
                 'phrase' => '\'Some string\'',
                 'arguments' => 0,
                 'file' => $file,
-                'line' => 4
+                'line' => 4,
             ],
             [
                 'phrase' => '\'One more string\'',
                 'arguments' => 0,
                 'file' => $file,
-                'line' => 5
-            ]
+                'line' => 5,
+            ],
         ];
         $this->assertEquals($expectation, $this->methodCollector->getPhrases());
     }

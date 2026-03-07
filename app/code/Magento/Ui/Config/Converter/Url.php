@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
 use Magento\Framework\ObjectManager\Config\Reader\Dom;
@@ -50,7 +53,7 @@ class Url implements ConverterInterface
     {
         $result[Converter::NAME_ATTRIBUTE_KEY] = $this->converterUtils->getComponentName($node);
         if ($node->localName != 'param') {
-             $result[Dom::TYPE_ATTRIBUTE] = 'url';
+            $result[Dom::TYPE_ATTRIBUTE] = 'url';
         }
         if ($this->hasChildNodes($node)) {
             $result = array_merge($result, $this->processChildNodes($node));

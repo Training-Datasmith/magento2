@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\Price;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -131,17 +134,17 @@ class AlgorithmBaseTest extends \PHPUnit\Framework\TestCase
      * @param array $testCases
      * @return array
      */
-    private static function getUnSkippedTestCases(array $testCases) : array
+    private static function getUnSkippedTestCases(array $testCases): array
     {
         // TO DO UnSkip skipped test cases and remove this function
         $SkippedTestCases = [];
         $UnSkippedTestCases = [];
         foreach ($testCases as $testCase) {
             if (array_key_exists('incomplete_reason', $testCase)) {
-                if ($testCase['incomplete_reason'] === " ") {
+                if ($testCase['incomplete_reason'] === ' ') {
                     $UnSkippedTestCases [] = $testCase;
                 } else {
-                    if ($testCase['incomplete_reason'] != " ") {
+                    if ($testCase['incomplete_reason'] != ' ') {
                         $SkippedTestCases [] = $testCase;
                     }
                 }

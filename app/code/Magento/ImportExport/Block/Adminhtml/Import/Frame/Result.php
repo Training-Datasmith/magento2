@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\ImportExport\Block\Adminhtml\Import\Frame;
 
-use Magento\Framework\View\Element\Template;
+namespace Magento\ImportExport\Block\Adminhtml\Import\Frame;
 
 /**
  * Import frame result block.

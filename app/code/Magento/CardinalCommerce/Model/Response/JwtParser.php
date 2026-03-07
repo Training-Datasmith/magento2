@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\CardinalCommerce\Model\Response;
 
-use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\CardinalCommerce\Model\Config;
+use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\Framework\Exception\LocalizedException;
-use Psr\Log\LoggerInterface;
 use Magento\Payment\Model\Method\Logger as PaymentLogger;
+use Psr\Log\LoggerInterface;
 
 /**
  * Parses content of CardinalCommerce response JWT.

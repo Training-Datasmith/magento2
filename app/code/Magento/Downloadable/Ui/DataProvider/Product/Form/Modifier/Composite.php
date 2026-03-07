@@ -1,26 +1,28 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Model\Locator\LocatorInterface;
-use Magento\Downloadable\Model\Product\Type as DownloadableType;
 use Magento\Catalog\Model\Product\Type as CatalogType;
-use Magento\Ui\DataProvider\Modifier\ModifierInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
+use Magento\Downloadable\Model\Product\Type as DownloadableType;
 use Magento\Ui\DataProvider\Modifier\ModifierFactory;
+use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 
 /**
  * Customize Downloadable panel
  */
 class Composite extends AbstractModifier
 {
-
-    const CHILDREN_PATH = 'downloadable/children';
-    const CONTAINER_LINKS = 'container_links';
-    const CONTAINER_SAMPLES = 'container_samples';
+    public const CHILDREN_PATH = 'downloadable/children';
+    public const CONTAINER_LINKS = 'container_links';
+    public const CONTAINER_SAMPLES = 'container_samples';
 
     /**
      * @var ModifierFactory
@@ -95,7 +97,7 @@ class Composite extends AbstractModifier
         $productTypes = [
             DownloadableType::TYPE_DOWNLOADABLE,
             CatalogType::TYPE_SIMPLE,
-            CatalogType::TYPE_VIRTUAL
+            CatalogType::TYPE_VIRTUAL,
         ];
 
         return in_array($this->locator->getProduct()->getTypeId(), $productTypes);

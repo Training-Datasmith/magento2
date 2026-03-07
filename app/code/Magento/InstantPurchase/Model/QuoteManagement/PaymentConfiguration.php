@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\QuoteManagement;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -19,7 +22,7 @@ use Magento\Vault\Model\Ui\VaultConfigProvider;
  */
 class PaymentConfiguration
 {
-    const MARKER = 'instant-purchase';
+    public const MARKER = 'instant-purchase';
 
     /**
      * @var IntegrationsManager

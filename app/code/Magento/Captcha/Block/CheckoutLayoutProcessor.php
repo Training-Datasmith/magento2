@@ -1,14 +1,16 @@
 <?php
+
 /**
  * Copyright 2025 Adobe.
  * All Rights Reserved.
  */
 
 declare(strict_types=1);
+
 namespace Magento\Captcha\Block;
 
-use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
 use Magento\Captcha\Helper\Data as HelperCaptcha;
+use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
 
 class CheckoutLayoutProcessor implements LayoutProcessorInterface
 {
@@ -33,7 +35,7 @@ class CheckoutLayoutProcessor implements LayoutProcessorInterface
                 'component' => 'Magento_Captcha/js/view/checkout/loginCaptcha',
                 'displayArea'   => 'additional-login-form-fields',
                 'formId' => 'user_login',
-                'configSource' => 'checkoutConfig'
+                'configSource' => 'checkoutConfig',
             ];
             $jsLayout['components']['checkout']['children']['authentication']['children']['captcha'] = $captcha;
             $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\PageCache;
 
-use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Store\Test\Fixture\Store;
-use Magento\Directory\Model\Currency;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Catalog\Test\Fixture\Product;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\Config as ConfigFixture;
-use Magento\PageCache\Model\Config;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Test\Fixture\Product;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Test\Fixture\Customer;
+use Magento\Directory\Model\Currency;
+use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
+use Magento\PageCache\Model\Config;
+use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Test\Fixture\Store;
+use Magento\TestFramework\Fixture\Config as ConfigFixture;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 
 /**
  * Test that caching works properly for Varnish when using the X-Magento-Cache-Id
@@ -61,7 +62,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
         ConfigFixture(Config::XML_PAGECACHE_TYPE, Config::VARNISH),
         DataFixture(Store::class, [
             'code' => 'fixture_second_store',
-            'name' => 'fixture_second_store'
+            'name' => 'fixture_second_store',
         ], 'fixture_second_store'),
         DataFixture(Product::class, as: 'product')
     ]
@@ -99,7 +100,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
                 '',
                 [
                     CacheIdCalculator::CACHE_ID_HEADER => $defaultStoreCacheId,
-                    'Store' => $store->getName()
+                    'Store' => $store->getName(),
                 ]
             );
             $secondStoreCacheId = $secondStoreResponse['headers'][CacheIdCalculator::CACHE_ID_HEADER];
@@ -107,13 +108,13 @@ class VarnishTest extends GraphQLPageCacheAbstract
             // Verify we obtain a cache MISS the first time we search by this X-Magento-Cache-Id
             $this->assertCacheMissAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $store->getName()
+                'Store' => $store->getName(),
             ]);
 
             // Verify we obtain a cache HIT the second time around with the Store header
             $this->assertCacheHitAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $store->getName()
+                'Store' => $store->getName(),
             ]);
 
             // Verify we still obtain a cache HIT for the default store
@@ -162,7 +163,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
                 [],
                 '',
                 [
-                    'Content-Currency' => 'USD'
+                    'Content-Currency' => 'USD',
                 ]
             );
             $secondCurrencyCacheId = $secondCurrencyResponse['headers'][CacheIdCalculator::CACHE_ID_HEADER];
@@ -170,13 +171,13 @@ class VarnishTest extends GraphQLPageCacheAbstract
             // Verify we obtain a cache MISS the first time we search by this X-Magento-Cache-Id
             $this->assertCacheMissAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondCurrencyCacheId,
-                'Content-Currency' => 'USD'
+                'Content-Currency' => 'USD',
             ]);
 
             // Verify we obtain a cache HIT the second time around with the changed currency header
             $this->assertCacheHitAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondCurrencyCacheId,
-                'Content-Currency' => 'USD'
+                'Content-Currency' => 'USD',
             ]);
 
             // Verify we still obtain a cache HIT for the default currency ( no Content-Currency header)
@@ -194,7 +195,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
         ConfigFixture(Config::XML_PAGECACHE_TYPE, Config::VARNISH),
         DataFixture(Store::class, [
             'code' => 'fixture_second_store',
-            'name' => 'fixture_second_store'
+            'name' => 'fixture_second_store',
         ], 'fixture_second_store'),
         DataFixture(Product::class, as: 'product')
     ]
@@ -224,7 +225,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
                 '',
                 [
                     CacheIdCalculator::CACHE_ID_HEADER => $defaultCacheId,
-                    'Store' => $store->getName()
+                    'Store' => $store->getName(),
                 ]
             );
             $storeCacheId = $responseWithStore['headers'][CacheIdCalculator::CACHE_ID_HEADER];
@@ -233,19 +234,19 @@ class VarnishTest extends GraphQLPageCacheAbstract
             // doesn't match the cache id from response
             $this->assertCacheMissAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $defaultCacheId,
-                'Store' => $store->getName()
+                'Store' => $store->getName(),
             ]);
 
             // Verify we get a cache MISS first time with the updated cache id
             $this->assertCacheMissAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $storeCacheId,
-                'Store' => $store->getName()
+                'Store' => $store->getName(),
             ]);
 
             // Verify we obtain a cache HIT second time around with the updated cache id
             $this->assertCacheHitAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $storeCacheId,
-                'Store' => $store->getName()
+                'Store' => $store->getName(),
             ]);
         }
     }
@@ -258,7 +259,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
         DataFixture(Product::class, as: 'product'),
         DataFixture(Customer::class, [
             'email' => 'customer@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ], 'customer')
     ]
     public function testCacheResultForCustomer()
@@ -287,7 +288,7 @@ class VarnishTest extends GraphQLPageCacheAbstract
             [],
             '',
             [
-                'Authorization' => 'Bearer ' . $customerToken
+                'Authorization' => 'Bearer ' . $customerToken,
             ]
         );
         $this->assertArrayHasKey(CacheIdCalculator::CACHE_ID_HEADER, $productResponse['headers']);
@@ -299,13 +300,13 @@ class VarnishTest extends GraphQLPageCacheAbstract
             // Verify we obtain cache MISS the first time we search by this X-Magento-Cache-Id
             $this->assertCacheMissAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $cacheIdForProducts,
-                'Authorization' => 'Bearer ' . $customerToken
+                'Authorization' => 'Bearer ' . $customerToken,
             ]);
 
             // Verify we obtain cache HIT second time using the same X-Magento-Cache-Id
             $this->assertCacheHitAndReturnResponse($query, [
                 CacheIdCalculator::CACHE_ID_HEADER => $cacheIdForProducts,
-                'Authorization' => 'Bearer ' . $customerToken
+                'Authorization' => 'Bearer ' . $customerToken,
             ]);
             $revokeTokenQuery = $this->revokeCustomerToken();
 

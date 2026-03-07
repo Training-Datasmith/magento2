@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -18,17 +21,17 @@ interface TransactionInterface extends \Magento\Framework\Api\ExtensibleDataInte
      * Supported transaction types
      * @var string
      */
-    const TYPE_PAYMENT = 'payment';
+    public const TYPE_PAYMENT = 'payment';
 
-    const TYPE_ORDER = 'order';
+    public const TYPE_ORDER = 'order';
 
-    const TYPE_AUTH = 'authorization';
+    public const TYPE_AUTH = 'authorization';
 
-    const TYPE_CAPTURE = 'capture';
+    public const TYPE_CAPTURE = 'capture';
 
-    const TYPE_VOID = 'void';
+    public const TYPE_VOID = 'void';
 
-    const TYPE_REFUND = 'refund';
+    public const TYPE_REFUND = 'refund';
 
     /**#@-*/
 
@@ -38,55 +41,55 @@ interface TransactionInterface extends \Magento\Framework\Api\ExtensibleDataInte
     /*
      * Transaction ID.
      */
-    const TRANSACTION_ID = 'transaction_id';
+    public const TRANSACTION_ID = 'transaction_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Order ID.
      */
-    const ORDER_ID = 'order_id';
+    public const ORDER_ID = 'order_id';
     /*
      * Payment ID.
      */
-    const PAYMENT_ID = 'payment_id';
+    public const PAYMENT_ID = 'payment_id';
     /*
      * Transaction business ID.
      */
-    const TXN_ID = 'txn_id';
+    public const TXN_ID = 'txn_id';
     /*
      * Parent transaction ID.
      */
-    const PARENT_TXN_ID = 'parent_txn_id';
+    public const PARENT_TXN_ID = 'parent_txn_id';
     /*
      * Transaction type.
      */
-    const TXN_TYPE = 'txn_type';
+    public const TXN_TYPE = 'txn_type';
     /*
      * Is closed flag.
      */
-    const IS_CLOSED = 'is_closed';
+    public const IS_CLOSED = 'is_closed';
     /*
      * Additional information.
      */
-    const ADDITIONAL_INFORMATION = 'additional_information';
+    public const ADDITIONAL_INFORMATION = 'additional_information';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
     /*
      * Method.
      */
-    const METHOD = 'method';
+    public const METHOD = 'method';
     /*
      * Increment ID.
      */
-    const INCREMENT_ID = 'increment_id';
+    public const INCREMENT_ID = 'increment_id';
     /*
      * Child transactions.
      */
-    const CHILD_TRANSACTIONS = 'child_transactions';
+    public const CHILD_TRANSACTIONS = 'child_transactions';
 
     /**
      * Gets the transaction ID for the transaction.

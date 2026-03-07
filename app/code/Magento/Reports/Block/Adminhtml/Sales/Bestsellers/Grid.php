@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Sales\Bestsellers;
 
 /**
@@ -56,7 +59,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'totals_label' => __('Total'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -68,7 +71,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'type' => 'string',
                 'sortable' => false,
                 'header_css_class' => 'col-product',
-                'column_css_class' => 'col-product'
+                'column_css_class' => 'col-product',
             ]
         );
 
@@ -87,7 +90,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'sortable' => false,
                 'rate' => $this->getRate($currencyCode),
                 'header_css_class' => 'col-price',
-                'column_css_class' => 'col-price'
+                'column_css_class' => 'col-price',
             ]
         );
 
@@ -100,7 +103,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 

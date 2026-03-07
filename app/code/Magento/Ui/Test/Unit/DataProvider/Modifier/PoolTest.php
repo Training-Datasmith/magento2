@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class PoolTest extends TestCase
                     'class' => 'DataProviderMockOne',
                     'sortOrder' => 10,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertSame($expectedData, $model->getModifiersInstances());
@@ -97,7 +98,7 @@ class PoolTest extends TestCase
                     'class' => 'DataProviderMockTwo',
                     'sortOrder' => 20,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertSame($expectedData, $model->getModifiersInstances());
@@ -114,7 +115,7 @@ class PoolTest extends TestCase
                 [
                     'class' => 'DataProviderMockOne',
                 ],
-            ]
+            ],
         ]);
 
         $model->getModifiersInstances();
@@ -131,7 +132,7 @@ class PoolTest extends TestCase
                 [
                     'sortOrder' => 10,
                 ],
-            ]
+            ],
         ]);
 
         $model->getModifiersInstances();
@@ -147,7 +148,7 @@ class PoolTest extends TestCase
         /** @var Pool $model */
         $model = $this->objectManager->getObject(Pool::class, [
             'factory' => $this->factoryMock,
-            'modifiers' => $modifiers
+            'modifiers' => $modifiers,
         ]);
 
         $this->assertSame($model->getModifiers(), $expectedResult);
@@ -162,11 +163,11 @@ class PoolTest extends TestCase
             [
                 [
                     ['class' => 'DataProviderMockTwo', 'sortOrder' => 20],
-                    ['class' => 'DataProviderMockOne', 'sortOrder' => 10]
+                    ['class' => 'DataProviderMockOne', 'sortOrder' => 10],
                 ],
                 [
                     ['class' => 'DataProviderMockOne', 'sortOrder' => 10],
-                    ['class' => 'DataProviderMockTwo', 'sortOrder' => 20]
+                    ['class' => 'DataProviderMockTwo', 'sortOrder' => 20],
                 ],
             ],
             [

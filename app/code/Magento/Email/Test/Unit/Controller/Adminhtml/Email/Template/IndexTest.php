@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -126,7 +127,7 @@ class IndexTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'view' => $this->viewMock
+                'view' => $this->viewMock,
             ]
         );
         $this->indexController = $objectManager->getObject(
@@ -168,7 +169,7 @@ class IndexTest extends TestCase
             ->with('Email Templates');
         $this->layoutMock
             ->method('getBlock')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['menu'] => $this->menuBlockMock,
                 ['breadcrumbs'] => $this->breadcrumbsBlockMock
             });

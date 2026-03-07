@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Theme\Test\Unit\Model\Design\Config;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Mail\TemplateInterface;
 use Magento\Framework\Mail\TemplateInterfaceFactory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Theme\Api\Data\DesignConfigExtensionInterface;
 use Magento\Theme\Api\Data\DesignConfigInterface;
 use Magento\Theme\Model\Data\Design\Config\Data;
@@ -69,7 +70,7 @@ class ValidatorTest extends TestCase
             DesignConfigInterface::class,
             [
                 'getScope', 'getScopeId', 'setScope', 'setScopeId',
-                'getExtensionAttributes', 'setExtensionAttributes'
+                'getExtensionAttributes', 'setExtensionAttributes',
             ]
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Model\Export;
 
 use Magento\Framework\Api\Search\DocumentInterface;
@@ -152,7 +155,7 @@ class ConvertToXml
         $excel = $this->excelFactory->create(
             [
                 'iterator' => $searchResultIterator,
-                'rowCallback'=> [$this, 'getRowData'],
+                'rowCallback' => [$this, 'getRowData'],
             ]
         );
 
@@ -169,7 +172,7 @@ class ConvertToXml
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true,  // can delete file after use
         ];
     }
 

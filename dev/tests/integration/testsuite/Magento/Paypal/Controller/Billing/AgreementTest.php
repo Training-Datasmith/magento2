@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -40,9 +41,9 @@ class AgreementTest extends AbstractController
      */
     public function testReturnWizardAction(): void
     {
-        $paymentMethod = "paypal_express";
-        $token = "token_value";
-        $referenceId = "Reference-id-1";
+        $paymentMethod = 'paypal_express';
+        $token = 'token_value';
+        $referenceId = 'Reference-id-1';
 
         $objectManager = Bootstrap::getObjectManager();
 
@@ -53,7 +54,7 @@ class AgreementTest extends AbstractController
             ->willReturnMap(
                 [
                     ['payment_method', null, $paymentMethod],
-                    ['token', null, $token]
+                    ['token', null, $token],
                 ]
             );
 
@@ -97,7 +98,7 @@ class AgreementTest extends AbstractController
             Context::class,
             [
                 'objectManager' => $objectManagerMock,
-                'request' => $requestMock
+                'request' => $requestMock,
             ]
         );
         /** @var \Magento\Paypal\Controller\Billing\Agreement $billingAgreementController */
@@ -122,8 +123,8 @@ class AgreementTest extends AbstractController
         );
         /** @var \Magento\Paypal\Model\Billing\Agreement $createdBillingAgreement */
         $createdBillingAgreement = $billingAgreementCollection->getLastItem();
-        $this->assertEquals($fixtureCustomerId, $createdBillingAgreement->getCustomerId(), "Customer ID is invalid.");
-        $this->assertEquals($referenceId, $createdBillingAgreement->getReferenceId(), "Reference ID is invalid.");
-        $this->assertEquals($paymentMethod, $createdBillingAgreement->getMethodCode(), "Method code is invalid.");
+        $this->assertEquals($fixtureCustomerId, $createdBillingAgreement->getCustomerId(), 'Customer ID is invalid.');
+        $this->assertEquals($referenceId, $createdBillingAgreement->getReferenceId(), 'Reference ID is invalid.');
+        $this->assertEquals($paymentMethod, $createdBillingAgreement->getMethodCode(), 'Method code is invalid.');
     }
 }

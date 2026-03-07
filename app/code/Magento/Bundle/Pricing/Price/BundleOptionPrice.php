@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class BundleOptionPrice extends AbstractPrice implements BundleOptionPriceInterf
     /**
      * Price model code
      */
-    const PRICE_CODE = 'bundle_option';
+    public const PRICE_CODE = 'bundle_option';
 
     /**
      * @var BundleCalculatorInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\NewsletterGraphQl\Model\Resolver;
 
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;

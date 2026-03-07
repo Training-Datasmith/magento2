@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Swatches\Block\Adminhtml\Attribute\Edit\Options;
 
-use \Magento\Swatches\Model\Swatch as SwatchModel;
+namespace Magento\Swatches\Block\Adminhtml\Attribute\Edit\Options;
 
 /**
  * Backend swatch abstract block

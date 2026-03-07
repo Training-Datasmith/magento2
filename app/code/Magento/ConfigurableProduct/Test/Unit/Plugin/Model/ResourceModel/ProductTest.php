@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Plugin\Model\ResourceModel;
 
+use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\Product as ModelProduct;
 use Magento\Catalog\Model\Product\Type;
@@ -16,16 +18,14 @@ use Magento\Catalog\Model\ResourceModel\Product as ResourceModelProduct;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute as ConfigurableAttribute;
 use Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Product as PluginResourceModelProduct;
-use Magento\Framework\Api\ExtensionAttributesInterface;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Indexer\ActionInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -90,7 +90,7 @@ class ProductTest extends TestCase
                 'productIndexer' => $this->actionMock,
                 'productAttributeRepository' => $this->productAttributeRepositoryMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'filterBuilder' => $this->filterBuilderMock
+                'filterBuilder' => $this->filterBuilderMock,
             ]
         );
     }
@@ -106,7 +106,7 @@ class ProductTest extends TestCase
                 'getTypeId',
                 'getTypeInstance',
                 'getExtensionAttributes',
-                'setData'
+                'setData',
             ]
         );
         $type = $this->createPartialMock(
@@ -188,7 +188,7 @@ class ProductTest extends TestCase
             ModelProduct::class,
             [
                 'getTypeId',
-                'getTypeInstance'
+                'getTypeInstance',
             ]
         );
         $object->expects($this->once())

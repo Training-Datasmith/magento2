@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\EncryptionKey\Block\Adminhtml\Crypt\Key;
 
 /**
@@ -44,7 +47,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                 'class' => 'save primary save-encryption-key',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#edit_form']],
-                ]
+                ],
             ],
             1
         );

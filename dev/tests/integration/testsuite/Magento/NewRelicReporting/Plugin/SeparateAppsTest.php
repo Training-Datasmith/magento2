@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\NewRelicReporting\Plugin;
 
 use Magento\Framework\App\State;
 use Magento\NewRelicReporting\Model\NewRelicWrapper;
-use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\ObjectManager;
 
 /**
  * Class SeparateAppsTest

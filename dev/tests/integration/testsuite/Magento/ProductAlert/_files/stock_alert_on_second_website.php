@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -34,7 +35,6 @@ $stockResource = $objectManager->get(StockResource::class);
 /** @var CustomerRepositoryInterface $customerRepository */
 $customerRepository = $objectManager->get(CustomerRepositoryInterface::class);
 $customer = $customerRepository->get('customer_second_ws_with_addr@example.com', (int)$secondWebsite->getId());
-
 
 $product = $productFactory->create();
 $product

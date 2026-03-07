@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns\P
 use Magento\Directory\Model\Currency as CurrencyModel;
 use Magento\Framework\Currency;
 use Magento\Framework\Locale\CurrencyInterface as LocaleCurrency;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\Processor as UiElementProcessor;
 use Magento\Store\Api\Data\StoreInterface;
@@ -96,7 +97,7 @@ class PriceTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'localeCurrency' => $this->localeCurrencyMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }
@@ -111,17 +112,17 @@ class PriceTest extends TestCase
                 'items' => [
                     [
                         'id' => '1',
-                        $fieldName => 3
+                        $fieldName => 3,
                     ],
                     [
-                        'id' => '2'
+                        'id' => '2',
                     ],
                     [
                         'id' => '3',
                         $fieldName => 4.55,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
         $result = [
             'data' => [
@@ -130,19 +131,19 @@ class PriceTest extends TestCase
                         'id' => '1',
                         $fieldName => '3.00$',
                         'price_number' => '3.00',
-                        'price_currency' => $currencySymbol
+                        'price_currency' => $currencySymbol,
                     ],
                     [
-                        'id' => '2'
+                        'id' => '2',
                     ],
                     [
                         'id' => '3',
                         $fieldName => '4.55$',
                         'price_number' => '4.55',
-                        'price_currency' => $currencySymbol
-                    ]
-                ]
-            ]
+                        'price_currency' => $currencySymbol,
+                    ],
+                ],
+            ],
         ];
 
         $this->contextMock->expects($this->any())
@@ -165,7 +166,7 @@ class PriceTest extends TestCase
                     ['3.000000', ['display' => false], '3.00'],
                     ['4.550000', ['display' => false], '4.55'],
                     ['3.000000', [], '3.00$'],
-                    ['4.550000', [], '4.55$']
+                    ['4.550000', [], '4.55$'],
                 ]
             );
         $this->storeMock->setBaseCurrency($this->currencyModelMock);

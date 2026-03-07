@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class SaveHandlerTest extends TestCase
     {
         $entityData = [
             'row_id' => 2,
-            'rule_id' => 1
+            'rule_id' => 1,
         ];
 
         $className = EntityMetadata::class;
@@ -94,7 +95,7 @@ class SaveHandlerTest extends TestCase
             'row_id' => 2,
             'rule_id' => 1,
             'website_ids' => $websites,
-            'customer_group_ids' => $customers
+            'customer_group_ids' => $customers,
         ];
 
         $className = EntityMetadata::class;
@@ -124,7 +125,7 @@ class SaveHandlerTest extends TestCase
             'row_id' => 1,
             'rule_id' => 1,
             'website_ids' => $websites,
-            'customer_group_ids' => $customers
+            'customer_group_ids' => $customers,
         ];
 
         $className = EntityMetadata::class;

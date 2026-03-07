@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Queue;
 
 /**
@@ -16,7 +19,7 @@ class Preview extends \Magento\Newsletter\Block\Adminhtml\Template\Preview
     /**
      * @var string
      */
-    protected $profilerName = "newsletter_queue_proccessing";
+    protected $profilerName = 'newsletter_queue_proccessing';
 
     /**
      * @var \Magento\Newsletter\Model\QueueFactory

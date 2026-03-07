@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Unit Test for \Magento\Framework\Profiler
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Test\Unit;
 
 use Magento\Framework\Profiler;
@@ -378,7 +381,7 @@ class ProfilerTest extends TestCase
         return [
             'no tags' => ['timer', null],
             'no expected tags' => ['timer', ['tag' => 'value']],
-            'no expected tag value' => ['timer', ['type' => 'db']]
+            'no expected tag value' => ['timer', ['type' => 'db']],
         ];
     }
 
@@ -406,7 +409,7 @@ class ProfilerTest extends TestCase
     {
         return [
             'one expected tag' => ['timer', ['type' => 'test']],
-            'more than one tag with expected' => ['timer', ['tag' => 'value', 'type' => 'test']]
+            'more than one tag with expected' => ['timer', ['tag' => 'value', 'type' => 'test']],
         ];
     }
 
@@ -485,23 +488,23 @@ class ProfilerTest extends TestCase
                     'driverConfigs' => [],
                     'driverFactory' => $driverFactory,
                     'tagFilters' => [],
-                    'baseDir' => null
-                ]
+                    'baseDir' => null,
+                ],
             ],
             'Full configuration' => [
                 [
                     'drivers' => [['type' => 'foo']],
                     'driverFactory' => $otherDriverFactory,
                     'tagFilters' => ['key' => 'value'],
-                    'baseDir' => '/custom/base/dir'
+                    'baseDir' => '/custom/base/dir',
                 ],
                 false,
                 [
                     'driverConfigs' => [['type' => 'foo', 'baseDir' => '/custom/base/dir']],
                     'driverFactory' => $otherDriverFactory,
                     'tagFilters' => ['key' => 'value'],
-                    'baseDir' => '/custom/base/dir'
-                ]
+                    'baseDir' => '/custom/base/dir',
+                ],
             ],
             'Driver configuration with type in index' => [
                 ['drivers' => ['foo' => 1]],
@@ -510,8 +513,8 @@ class ProfilerTest extends TestCase
                     'driverConfigs' => [['type' => 'foo']],
                     'driverFactory' => $driverFactory,
                     'tagFilters' => [],
-                    'baseDir' => null
-                ]
+                    'baseDir' => null,
+                ],
             ],
             'Driver configuration with type in value' => [
                 ['drivers' => ['foo']],
@@ -520,8 +523,8 @@ class ProfilerTest extends TestCase
                     'driverConfigs' => [['type' => 'foo']],
                     'driverFactory' => $driverFactory,
                     'tagFilters' => [],
-                    'baseDir' => null
-                ]
+                    'baseDir' => null,
+                ],
             ],
             'Driver ignored configuration' => [
                 ['drivers' => ['foo' => 0]],
@@ -530,8 +533,8 @@ class ProfilerTest extends TestCase
                     'driverConfigs' => [],
                     'driverFactory' => $driverFactory,
                     'tagFilters' => [],
-                    'baseDir' => null
-                ]
+                    'baseDir' => null,
+                ],
             ],
             'Non ajax call' => [
                 1,
@@ -540,9 +543,9 @@ class ProfilerTest extends TestCase
                     'driverConfigs' => [['output' => 'html']],
                     'driverFactory' => $driverFactory,
                     'tagFilters' => [],
-                    'baseDir' => ''
-                ]
-            ]
+                    'baseDir' => '',
+                ],
+            ],
         ];
     }
 }

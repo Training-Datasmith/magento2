@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class ExportCouponsXmlTest extends TestCase
             ExportCouponsXml::class,
             [
                 'fileFactory' => $this->fileFactoryMock,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
     }

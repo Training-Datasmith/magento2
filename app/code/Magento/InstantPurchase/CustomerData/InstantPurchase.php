@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\CustomerData;
 
 use Magento\Customer\CustomerData\SectionSourceInterface;
@@ -92,7 +95,7 @@ class InstantPurchase implements SectionSourceInterface
         $customer = $this->customerSession->getCustomer();
         $instantPurchaseOption = $this->instantPurchase->getOption($store, $customer);
         $data = [
-            'available' => $instantPurchaseOption->isAvailable()
+            'available' => $instantPurchaseOption->isAvailable(),
         ];
         if (!$instantPurchaseOption->isAvailable()) {
             return $data;
@@ -119,7 +122,7 @@ class InstantPurchase implements SectionSourceInterface
                 'carrier' => $shippingMethod->getCarrierCode(),
                 'method' => $shippingMethod->getMethodCode(),
                 'summary' => $this->shippingMethodFormatter->format($shippingMethod),
-            ]
+            ],
         ];
 
         return $data;

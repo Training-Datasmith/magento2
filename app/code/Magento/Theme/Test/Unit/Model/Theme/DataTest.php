@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Framework\View\Design\Theme\Validator;
 use Magento\Theme\Model\Config\Customization;
 use Magento\Theme\Model\ResourceModel\Theme\Collection;
 use Magento\Theme\Model\Theme\Data;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -69,7 +69,7 @@ class DataTest extends TestCase
                 'domainFactory' => $domainFactory,
                 'validator' => $validator,
                 'appState' => $appState,
-                'themeModelFactory' => $themeModelFactory
+                'themeModelFactory' => $themeModelFactory,
             ]
         );
 

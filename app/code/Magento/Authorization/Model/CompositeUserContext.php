@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -33,7 +35,6 @@ class CompositeUserContext implements \Magento\Authorization\Model\UserContextIn
     /**
      * Register user contexts.
      *
-     * @param CompositeHelper $compositeHelper
      * @param UserContextInterface[] $userContexts
      */
     public function __construct(CompositeHelper $compositeHelper, $userContexts = [])
@@ -46,11 +47,8 @@ class CompositeUserContext implements \Magento\Authorization\Model\UserContextIn
 
     /**
      * Add user context.
-     *
-     * @param UserContextInterface $userContext
-     * @return CompositeUserContext
      */
-    protected function add(UserContextInterface $userContext)
+    protected function add(UserContextInterface $userContext): static
     {
         $this->userContexts[] = $userContext;
         return $this;
@@ -59,7 +57,7 @@ class CompositeUserContext implements \Magento\Authorization\Model\UserContextIn
     /**
      * @inheritDoc
      */
-    public function getUserId()
+    public function getUserId(): ?int
     {
         return $this->getUserContext() ? ((int) $this->getUserContext()->getUserId()) : null;
     }

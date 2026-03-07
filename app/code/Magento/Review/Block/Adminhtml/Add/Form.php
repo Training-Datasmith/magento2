@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml\Add;
 
 use Magento\Framework\App\ObjectManager;
@@ -79,7 +82,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'text' => '<div id="rating_detail">' . $this->getLayout()->createBlock(
                     \Magento\Review\Block\Adminhtml\Rating\Detailed::class
-                )->toHtml() . '</div>'
+                )->toHtml() . '</div>',
             ]
         );
 
@@ -90,7 +93,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Status'),
                 'required' => true,
                 'name' => 'status_id',
-                'values' => $this->_reviewData->getReviewStatusesOptionArray()
+                'values' => $this->_reviewData->getReviewStatusesOptionArray(),
             ]
         );
 
@@ -105,7 +108,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Visibility'),
                     'required' => true,
                     'name' => 'select_stores[]',
-                    'values' => $this->_systemStore->getStoreValuesForForm()
+                    'values' => $this->_systemStore->getStoreValuesForForm(),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -122,7 +125,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Nickname'),
                 'label' => __('Nickname'),
                 'maxlength' => '50',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -134,7 +137,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Summary of Review'),
                 'label' => __('Summary of Review'),
                 'maxlength' => '255',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -145,7 +148,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'detail',
                 'title' => __('Review'),
                 'label' => __('Review'),
-                'required' => true
+                'required' => true,
             ]
         );
 

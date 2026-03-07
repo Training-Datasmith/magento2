@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface
@@ -16,7 +19,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
         return [
             'credit_cards' => $this->convertCreditCards($xpath),
             'groups' => $this->convertGroups($xpath),
-            'methods' => $this->convertMethods($xpath)
+            'methods' => $this->convertMethods($xpath),
         ];
     }
 

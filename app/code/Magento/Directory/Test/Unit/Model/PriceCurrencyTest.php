@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class PriceCurrencyTest extends TestCase
             PriceCurrency::class,
             [
                 'storeManager' => $this->storeManager,
-                'currencyFactory' => $this->currencyFactory
+                'currencyFactory' => $this->currencyFactory,
             ]
         );
     }

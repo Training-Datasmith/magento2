@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +12,8 @@ use Magento\TestFramework\Helper\Bootstrap;
 
 class AddressRepositoryTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SOAP_SERVICE_NAME = 'customerAddressRepositoryV1';
-    const SOAP_SERVICE_VERSION = 'V1';
+    public const SOAP_SERVICE_NAME = 'customerAddressRepositoryV1';
+    public const SOAP_SERVICE_VERSION = 'V1';
 
     /** @var \Magento\Customer\Api\AddressRepositoryInterface */
     protected $addressRepository;
@@ -88,7 +90,7 @@ class AddressRepositoryTest extends \Magento\TestFramework\TestCase\WebapiAbstra
         $this->assertEquals(
             $this->getFirstFixtureAddressData(),
             $addressData,
-            "Address data is invalid."
+            'Address data is invalid.'
         );
     }
 

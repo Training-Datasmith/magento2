@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryApi\Api\Data\AssetInterface;
 use Magento\MediaGalleryApi\Api\Data\KeywordInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
-use Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsKeywordsInterface;
+use Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for SynchronizeFiles.
@@ -111,7 +112,7 @@ class SynchronizeFilesTest extends TestCase
                 '/magento.jpg',
                 'magento',
                 null,
-                null
+                null,
             ],
             [
                 '/magento_metadata.jpg',
@@ -119,9 +120,9 @@ class SynchronizeFilesTest extends TestCase
                 'Description of the magento image',
                 [
                     'magento',
-                    'mediagallerymetadata'
-                ]
-            ]
+                    'mediagallerymetadata',
+                ],
+            ],
         ];
     }
 

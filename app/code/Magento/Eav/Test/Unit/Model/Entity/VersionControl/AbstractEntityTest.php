@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\UniversalFactory as Factory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Test for version control abstract entity model.
@@ -124,19 +125,19 @@ class AbstractEntityTest extends \Magento\Eav\Test\Unit\Model\Entity\AbstractEnt
                 'data' => [
                     'type' => $entityType,
                     'entityTable' => 'entityTable',
-                    'attributesByCode' => $attributes
-                ]
+                    'attributesByCode' => $attributes,
+                ],
             ]
         );
         $objects = [
             [
                 Factory::class,
-                $this->createMock(UniqueValidationInterface::class)
+                $this->createMock(UniqueValidationInterface::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(AttributeLoaderInterface::class)
-            ]
+                $this->createMock(AttributeLoaderInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class SpecialTest extends TestCase
             Special::class,
             [
                 'productFactory' => $this->productFactory,
-                'storeManager' => $this->storeManager
+                'storeManager' => $this->storeManager,
             ]
         );
     }

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Msrp\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Msrp\Model\Config as MsrpConfig;
 use Magento\Framework\Stdlib\ArrayManager;
+use Magento\Msrp\Model\Config as MsrpConfig;
 
 /**
  * Class Msrp
@@ -18,8 +21,8 @@ class Msrp extends AbstractModifier
     /**#@+
      * Field names
      */
-    const FIELD_MSRP = 'msrp';
-    const FIELD_MSRP_DISPLAY_ACTUAL_PRICE = 'msrp_display_actual_price_type';
+    public const FIELD_MSRP = 'msrp';
+    public const FIELD_MSRP_DISPLAY_ACTUAL_PRICE = 'msrp_display_actual_price_type';
     /**#@-*/
 
     /**#@-*/

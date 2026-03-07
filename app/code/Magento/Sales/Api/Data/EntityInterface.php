@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -15,12 +18,12 @@ interface EntityInterface
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
 
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
 
     /**
      * Gets the created-at timestamp for the invoice.

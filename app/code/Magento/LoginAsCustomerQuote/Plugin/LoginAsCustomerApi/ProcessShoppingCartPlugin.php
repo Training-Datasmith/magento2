@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\LoginAsCustomerQuote\Plugin\LoginAsCustomerApi;
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\LoginAsCustomerApi\Api\AuthenticateCustomerBySecretInterface;
+use Magento\Quote\Api\CartRepositoryInterface;
 
 /**
  * Remove all items from guest shopping cart and mark cart as not-guest

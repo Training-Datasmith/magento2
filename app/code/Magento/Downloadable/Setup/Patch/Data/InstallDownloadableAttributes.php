@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -73,7 +75,7 @@ class InstallDownloadableAttributes implements DataPatchInterface, PatchVersionI
                 'visible_on_front' => false,
                 'unique' => false,
                 'apply_to' => 'downloadable',
-                'used_in_product_listing' => true
+                'used_in_product_listing' => true,
             ]
         );
 
@@ -98,7 +100,7 @@ class InstallDownloadableAttributes implements DataPatchInterface, PatchVersionI
                 'comparable' => false,
                 'visible_on_front' => false,
                 'unique' => false,
-                'apply_to' => 'downloadable'
+                'apply_to' => 'downloadable',
             ]
         );
         $eavSetup->addAttribute(
@@ -122,7 +124,7 @@ class InstallDownloadableAttributes implements DataPatchInterface, PatchVersionI
                 'comparable' => false,
                 'visible_on_front' => false,
                 'unique' => false,
-                'apply_to' => 'downloadable'
+                'apply_to' => 'downloadable',
             ]
         );
         $eavSetup->addAttribute(
@@ -147,7 +149,7 @@ class InstallDownloadableAttributes implements DataPatchInterface, PatchVersionI
                 'visible_on_front' => false,
                 'unique' => false,
                 'apply_to' => 'downloadable',
-                'used_in_product_listing' => 1
+                'used_in_product_listing' => 1,
             ]
         );
         $fieldList = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ConfigPluginTest extends TestCase
         $product = $productRepository->get('simple-special-price');
         $finalPrice = Bootstrap::getObjectManager()->create(FinalPrice::class, [
             'saleableItem' => $product,
-            'quantity' => null
+            'quantity' => null,
         ]);
         $rendererPool = Bootstrap::getObjectManager()->create(RendererPool::class);
         $rendererPool->setData(
@@ -62,7 +63,7 @@ class ConfigPluginTest extends TestCase
         $finalPriceBox = Bootstrap::getObjectManager()->create(FinalPriceBox::class, [
             'saleableItem' => $product,
             'price' => $finalPrice,
-            'rendererPool' => $rendererPool
+            'rendererPool' => $rendererPool,
         ]);
         $finalPriceBox->setTemplate('Magento_Catalog::product/price/final_price.phtml');
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,10 +51,10 @@ class TextTest extends TestCase
                 'option_values' => [
                     new DataObject(['value' => 6, 'label' => 'red']),
                     new DataObject(['value' => 6, 'label' => 'blue']),
-                ]
+                ],
             ],
             'expectedResult' => '{"attributesData":[{"value":6,"label":"red"},{"value":6,"label":"blue"}],' .
-                '"isSortable":0,"isReadOnly":1}'
+                '"isSortable":0,"isReadOnly":1}',
 
         ];
 
@@ -72,10 +73,10 @@ class TextTest extends TestCase
                 'option_values' => [
                     new DataObject(['value' => 6, 'label' => 'red']),
                     new DataObject(['value' => 6, 'label' => 'blue']),
-                ]
+                ],
             ],
             'expectedResult' => '{"attributesData":[{"value":6,"label":"red"},{"value":6,"label":"blue"}],' .
-                '"isSortable":1,"isReadOnly":0}'
+                '"isSortable":1,"isReadOnly":0}',
 
         ];
 

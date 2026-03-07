@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_register_address']
+                'used_in_forms' => ['customer_register_address'],
             ],
             'attribute_1'
         ),
@@ -56,7 +57,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_address_edit']
+                'used_in_forms' => ['customer_address_edit'],
             ],
             'attribute_2'
         )
@@ -88,10 +89,10 @@ QRY;
                     'errors' => [
                         [
                             'type' => 'ENTITY_NOT_FOUND',
-                            'message' => 'Form "adminhtml_customer" could not be found.'
-                        ]
-                    ]
-                ]
+                            'message' => 'Form "adminhtml_customer" could not be found.',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(sprintf(self::QUERY, 'adminhtml_customer'))
         );
@@ -106,10 +107,10 @@ QRY;
                     'errors' => [
                         [
                             'type' => 'ENTITY_NOT_FOUND',
-                            'message' => 'Form "not_existing_form" could not be found.'
-                        ]
-                    ]
-                ]
+                            'message' => 'Form "not_existing_form" could not be found.',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(sprintf(self::QUERY, 'not_existing_form'))
         );

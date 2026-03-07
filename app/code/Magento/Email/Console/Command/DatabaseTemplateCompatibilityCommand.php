@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Email\Console\Command;
 use Magento\Email\Model\AbstractTemplate;
 use Magento\Email\Model\ResourceModel\Template\CollectionFactory;
 use Magento\Email\Model\Template\VariableCompatibilityChecker;
+use Magento\Framework\Console\Cli;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\Console\Cli;
 
 /**
  * Scan DB templates for directive incompatibilities

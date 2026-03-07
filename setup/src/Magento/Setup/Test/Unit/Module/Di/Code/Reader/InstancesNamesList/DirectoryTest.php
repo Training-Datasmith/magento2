@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Phrase;
 use Magento\Setup\Module\Di\Code\Reader\ClassesScanner;
 use Magento\Setup\Module\Di\Code\Reader\Decorator\Directory;
 use Magento\Setup\Module\Di\Compiler\Log\Log;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -95,7 +96,7 @@ class DirectoryTest extends TestCase
 
         $parents = [
             ['NameSpace1\ClassName1', ['Parent_Class_Name', 'Interface_1', 'Interface_2']],
-            ['NameSpace1\ClassName2', ['Parent_Class_Name', 'Interface_1', 'Interface_2']]
+            ['NameSpace1\ClassName2', ['Parent_Class_Name', 'Interface_1', 'Interface_2']],
         ];
 
         $this->classReaderMock->expects(
@@ -119,7 +120,7 @@ class DirectoryTest extends TestCase
 
         $expected = [
             $classes[0] => $parents[0][1],
-            $classes[1] => $parents[1][1]
+            $classes[1] => $parents[1][1],
         ];
 
         $this->assertEquals($result, $expected);
@@ -138,7 +139,7 @@ class DirectoryTest extends TestCase
 
         $parents = [
             ['NameSpace1\ClassName1', ['Parent_Class_Name', 'Interface_1', 'Interface_2']],
-            ['NameSpace1\ClassName2', ['Parent_Class_Name', 'Interface_1', 'Interface_2']]
+            ['NameSpace1\ClassName2', ['Parent_Class_Name', 'Interface_1', 'Interface_2']],
         ];
 
         $this->classReaderMock->expects($this->exactly(count($classes)))
@@ -158,7 +159,7 @@ class DirectoryTest extends TestCase
 
         $expected = [
             $classes[0] => $parents[0][1],
-            $classes[1] => $parents[1][1]
+            $classes[1] => $parents[1][1],
         ];
 
         $this->assertEquals($result, $expected);
@@ -206,7 +207,7 @@ class DirectoryTest extends TestCase
     {
         return [
             [new ValidatorException(new Phrase('Not Valid!'))],
-            [new \ReflectionException('Not Valid!')]
+            [new \ReflectionException('Not Valid!')],
         ];
     }
 

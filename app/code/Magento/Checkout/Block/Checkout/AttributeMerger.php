@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Checkout;
 
 use Magento\Customer\Api\CustomerRepositoryInterface as CustomerRepository;
@@ -219,7 +222,7 @@ class AttributeMerger
             $element['deps'] = [$providerName];
             $element['imports'] = [
                 'initialOptions' => 'index = ' . $providerName . ':dictionaries.' . $attributeCode,
-                'setOptions' => 'index = ' . $providerName . ':dictionaries.' . $attributeCode
+                'setOptions' => 'index = ' . $providerName . ':dictionaries.' . $attributeCode,
             ];
         }
 
@@ -289,13 +292,13 @@ class AttributeMerger
         for ($lineIndex = 0; $lineIndex < (int)$attributeConfig['size']; $lineIndex++) {
             $isFirstLine = $lineIndex === 0;
             $line = [
-                'label' => __("%1: Line %2", $attributeConfig['label'], $lineIndex + 1),
+                'label' => __('%1: Line %2', $attributeConfig['label'], $lineIndex + 1),
                 'component' => 'Magento_Ui/js/form/element/abstract',
                 'config' => [
                     // customScope is used to group elements within a single form e.g. they can be validated separately
                     'customScope' => $dataScopePrefix,
                     'template' => 'ui/form/field',
-                    'elementTmpl' => 'ui/form/element/input'
+                    'elementTmpl' => 'ui/form/element/input',
                 ],
                 'dataScope' => $lineIndex,
                 'provider' => $providerName,
@@ -306,7 +309,7 @@ class AttributeMerger
                         $attributeConfig['validation']
                     )
                     : $attributeConfig['validation'],
-                'additionalClasses' => $isFirstLine ? 'field' : 'additional'
+                'additionalClasses' => $isFirstLine ? 'field' : 'additional',
 
             ];
             if ($isFirstLine && isset($attributeConfig['default']) && $attributeConfig['default'] != null) {
@@ -324,7 +327,7 @@ class AttributeMerger
             'type' => 'group',
             'config' => [
                 'template' => 'ui/group/group',
-                'additionalClasses' => $attributeCode
+                'additionalClasses' => $attributeCode,
             ],
             'children' => $lines,
         ];

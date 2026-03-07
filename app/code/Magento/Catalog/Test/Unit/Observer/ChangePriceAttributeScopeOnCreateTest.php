@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class ChangePriceAttributeScopeOnCreateTest extends TestCase
         $this->observer = $this->objectManager->getObject(
             ChangePriceAttributeScopeOnCreate::class,
             [
-                'catalogData' => $this->catalogDataMock
+                'catalogData' => $this->catalogDataMock,
             ]
         );
     }

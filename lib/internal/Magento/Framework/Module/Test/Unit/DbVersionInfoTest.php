@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Module\DbVersionInfo;
 use Magento\Framework\Module\ModuleListInterface;
 use Magento\Framework\Module\Output\ConfigInterface;
 use Magento\Framework\Module\ResourceInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DbVersionInfoTest extends TestCase
 {
@@ -118,17 +119,17 @@ class DbVersionInfoTest extends TestCase
             'version in config < version in db' => [
                 'Module_One',
                 '2',
-                false
+                false,
             ],
             'version in config > version in db' => [
                 'Module_Two',
                 '1',
-                false
+                false,
             ],
             'no version in db' => [
                 'Module_One',
                 false,
-                false
+                false,
             ],
         ];
     }
@@ -154,7 +155,7 @@ class DbVersionInfoTest extends TestCase
                 DbVersionInfo::KEY_CURRENT => '2',
                 DbVersionInfo::KEY_REQUIRED => '1',
                 DbVersionInfo::KEY_TYPE => 'data',
-            ]
+            ],
         ];
         $this->assertEquals($expectedErrors, $this->dbVersionInfo->getDbVersionErrors());
     }

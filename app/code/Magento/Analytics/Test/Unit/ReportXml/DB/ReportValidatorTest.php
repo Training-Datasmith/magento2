@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Analytics\ReportXml\QueryFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ReportValidatorTest extends TestCase
@@ -72,7 +73,7 @@ class ReportValidatorTest extends TestCase
             ReportValidator::class,
             [
                 'connectionFactory' => $this->connectionFactoryMock,
-                'queryFactory' => $this->queryFactoryMock
+                'queryFactory' => $this->queryFactoryMock,
             ]
         );
     }
@@ -96,7 +97,7 @@ class ReportValidatorTest extends TestCase
             ->willReturn($this->connectionMock);
         $this->queryMock->expects($this->atLeastOnce())->method('getSelect')->willReturn($this->selectMock);
         $this->selectMock->expects($this->once())->method('limit')->with(0);
-        
+
         // Configure query mock based on stub type
         if ($stubType === 'returnValue') {
             $this->connectionMock->expects($this->once())
@@ -109,7 +110,7 @@ class ReportValidatorTest extends TestCase
                 ->with($this->selectMock)
                 ->willThrowException($stubValue);
         }
-        
+
         $this->assertEquals($result, $this->reportValidator->validate($reportName));
     }
 
@@ -127,14 +128,14 @@ class ReportValidatorTest extends TestCase
                 $reportName,
                 [],
                 'returnValue',
-                null
+                null,
             ],
             [
                 $reportName,
                 [$reportName, $errorMessage],
                 'throwException',
-                new \Zend_Db_Statement_Exception($errorMessage)
-            ]
+                new \Zend_Db_Statement_Exception($errorMessage),
+            ],
         ];
     }
 }

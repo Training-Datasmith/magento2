@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,5 +22,5 @@ interface ItemCollectionProviderInterface
      *
      * @return Collection
      */
-    public function getCollection() : Collection;
+    public function getCollection(): Collection;
 }

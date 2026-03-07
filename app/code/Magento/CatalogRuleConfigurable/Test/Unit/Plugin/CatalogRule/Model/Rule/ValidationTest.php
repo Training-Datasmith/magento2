@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRuleConfigurable\Test\Unit\Plugin\CatalogRule\Model\Rule;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogRule\Model\Rule;
 use Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\Rule\Validation;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Rule\Model\Condition\Combine;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

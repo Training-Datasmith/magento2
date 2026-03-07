@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model\Acl\Role;
 
 /**
@@ -14,5 +17,5 @@ class Group extends \Magento\Authorization\Model\Acl\Role\Generic
      * All the group roles are prepended by G
      *
      */
-    const ROLE_TYPE = 'G';
+    public const ROLE_TYPE = 'G';
 }

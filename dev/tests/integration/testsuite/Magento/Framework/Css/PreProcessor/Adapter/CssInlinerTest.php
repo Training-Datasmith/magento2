@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Css\PreProcessor\Adapter;
 
 use Pelago\Emogrifier\CssInliner as EmogrifierCssInliner;
@@ -50,15 +53,15 @@ class CssInlinerTest extends \PHPUnit\Framework\TestCase
     {
         $fixtureDir = dirname(dirname(__DIR__));
         return [
-            'noSpacesCss'=>[
-                $fixtureDir . "/_files/css/test-input.html",
-                $fixtureDir . "/_files/css/test-css-no-spaces.css",
-                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;'
+            'noSpacesCss' => [
+                $fixtureDir . '/_files/css/test-input.html',
+                $fixtureDir . '/_files/css/test-css-no-spaces.css',
+                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;',
             ],
-            'withSpacesCss'=>[
-                $fixtureDir . "/_files/css/test-input.html",
-                $fixtureDir . "/_files/css/test-css-with-spaces.css",
-                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;'
+            'withSpacesCss' => [
+                $fixtureDir . '/_files/css/test-input.html',
+                $fixtureDir . '/_files/css/test-css-with-spaces.css',
+                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;',
             ],
         ];
     }
@@ -89,11 +92,11 @@ class CssInlinerTest extends \PHPUnit\Framework\TestCase
     {
         $fixtureDir = dirname(dirname(__DIR__));
         return [
-            'noSpacesCss'=>[
-                $fixtureDir . "/_files/css/test-input.html",
-                $fixtureDir . "/_files/css/test-css-no-spaces.css",
-                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;'
-            ]
+            'noSpacesCss' => [
+                $fixtureDir . '/_files/css/test-input.html',
+                $fixtureDir . '/_files/css/test-css-no-spaces.css',
+                'vertical-align: top; padding: 10px 10px 10px 0; width: 50%;',
+            ],
         ];
     }
 }

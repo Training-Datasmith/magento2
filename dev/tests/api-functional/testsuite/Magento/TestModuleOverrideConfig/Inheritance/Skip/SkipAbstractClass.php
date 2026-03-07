@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,5 +17,4 @@ use Magento\TestModuleOverrideConfig\AbstractOverridesTest;
  */
 abstract class SkipAbstractClass extends AbstractOverridesTest
 {
-
 }

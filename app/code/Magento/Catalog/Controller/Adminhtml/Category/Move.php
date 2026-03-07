@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -89,7 +92,7 @@ class Move extends \Magento\Catalog\Controller\Adminhtml\Category implements Htt
 
         return $resultJson->setData([
             'messages' => $block->getGroupedHtml(),
-            'error' => $error
+            'error' => $error,
         ]);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Customer\Block\Adminhtml\Edit\Tab;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Controller\RegistryConstants;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\View\LayoutInterface;
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractCartTest extends TestCase
 {
-    const CUSTOMER_ID_VALUE = 1234;
+    public const CUSTOMER_ID_VALUE = 1234;
 
     /** @var Registry */
     private $registry;

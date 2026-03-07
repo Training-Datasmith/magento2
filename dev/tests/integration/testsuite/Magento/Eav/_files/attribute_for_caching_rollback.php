@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Set;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Registry;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 $registry = $objectManager->get(Registry::class);

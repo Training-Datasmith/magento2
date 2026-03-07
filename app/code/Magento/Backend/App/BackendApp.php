@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,19 +15,10 @@ namespace Magento\Backend\App;
  */
 class BackendApp
 {
-    /**
-     * @var null
-     */
     private $cookiePath;
 
-    /**
-     * @var null
-     */
     private $startupPage;
 
-    /**
-     * @var null
-     */
     private $aclResourceName;
 
     /**

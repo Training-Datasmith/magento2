@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Sales\Test\Unit\Model;
 
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Sales\Model\RtlTextHandler;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RtlTextHandlerTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,26 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver;
 
+use Magento\Framework\DataObjectFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\Stdlib\Parameters;
 use Magento\Paypal\Model\Payflow\Service\Response\Transaction;
 use Magento\Paypal\Model\Payflow\Service\Response\Validator\ResponseValidator;
-use Magento\Sales\Api\PaymentFailuresInterface;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Paypal\Model\Payflow\Transparent;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\Framework\Stdlib\Parameters;
-use Magento\Framework\DataObjectFactory;
+use Magento\Sales\Api\PaymentFailuresInterface;
 
 /**
  * Resolver for handling PayflowPro response
  */
 class PayflowProResponse implements ResolverInterface
 {
-
     /**
      * @var Transaction
      */

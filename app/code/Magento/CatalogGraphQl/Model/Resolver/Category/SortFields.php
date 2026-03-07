@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\CatalogGraphQl\Model\Resolver\Category;
 
 use Magento\Catalog\Model\Category\Attribute\Source\Sortby;
 use Magento\Catalog\Model\Config;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * Retrieves the sort fields data

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
@@ -13,14 +14,14 @@ $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
 
 /** @var $userModelNotExpired \Magento\User\Model\User */
 $userModelNotExpired = $objectManager->create(\Magento\User\Model\User::class);
-$userModelNotExpired->setFirstName("John")
-    ->setLastName("Doe")
+$userModelNotExpired->setFirstName('John')
+    ->setLastName('Doe')
     ->setUserName('adminUserNotExpired')
     ->setPassword(\Magento\TestFramework\Bootstrap::ADMIN_PASSWORD)
     ->setEmail('adminUserNotExpired@example.com')
     ->setRoleType('G')
     ->setResourceId('Magento_Adminhtml::all')
-    ->setPrivileges("")
+    ->setPrivileges('')
     ->setAssertId(0)
     ->setRoleId(1)
     ->setPermission('allow')
@@ -38,14 +39,14 @@ $notExpiredRecord
 $pastDate = new \DateTime();
 $pastDate->modify('-10 days');
 $userModelExpired = $objectManager->create(\Magento\User\Model\User::class);
-$userModelExpired->setFirstName("John")
-    ->setLastName("Doe")
+$userModelExpired->setFirstName('John')
+    ->setLastName('Doe')
     ->setUserName('adminUserExpired')
     ->setPassword(\Magento\TestFramework\Bootstrap::ADMIN_PASSWORD)
     ->setEmail('adminUserExpired@example.com')
     ->setRoleType('G')
     ->setResourceId('Magento_Adminhtml::all')
-    ->setPrivileges("")
+    ->setPrivileges('')
     ->setAssertId(0)
     ->setRoleId(1)
     ->setPermission('allow')

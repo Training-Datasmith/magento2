@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -31,36 +32,36 @@ class TextFilterConfigProviderTest extends TestCase
                 [],
                 [
                     'conditionType' => 'like',
-                    'valueExpression' => '%%%s%%'
-                ]
+                    'valueExpression' => '%%%s%%',
+                ],
             ],
             [
                 [
-                    'grid_filter_condition_type' => 0
+                    'grid_filter_condition_type' => 0,
                 ],
                 [
                     'conditionType' => 'like',
-                    'valueExpression' => '%%%s%%'
-                ]
+                    'valueExpression' => '%%%s%%',
+                ],
             ],
             [
                 [
-                    'grid_filter_condition_type' => 1
+                    'grid_filter_condition_type' => 1,
                 ],
                 [
                     'conditionType' => 'like',
                     'valueExpression' => '%s%%',
-                ]
+                ],
             ],
             [
                 [
-                    'grid_filter_condition_type' => 2
+                    'grid_filter_condition_type' => 2,
                 ],
                 [
                     'conditionType' => 'eq',
-                    'valueExpression' => null
-                ]
-            ]
+                    'valueExpression' => null,
+                ],
+            ],
         ];
     }
 }

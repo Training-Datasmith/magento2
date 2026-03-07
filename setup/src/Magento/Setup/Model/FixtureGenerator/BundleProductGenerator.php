@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\FixtureGenerator;
 
 use Magento\Framework\App\ObjectManager;
@@ -28,7 +31,7 @@ class BundleProductGenerator
      */
     private $sequenceValues = [
         'sequence_product_bundle_option' => null,
-        'sequence_product_bundle_selection' => null
+        'sequence_product_bundle_selection' => null,
     ];
 
     /**
@@ -171,7 +174,7 @@ class BundleProductGenerator
                         return $binds;
                     },
                 ],
-            ]
+            ],
         ])->generate($products, $fixtureMap);
     }
 

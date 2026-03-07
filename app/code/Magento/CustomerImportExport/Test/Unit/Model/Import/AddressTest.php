@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -11,27 +12,22 @@ use Magento\Customer\Model\Address\Validator\Postcode;
 use Magento\Customer\Model\AddressFactory;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Indexer\Processor;
-use Magento\Customer\Model\ResourceModel\Address\Attribute as AddressAttribute;
-use Magento\CustomerImportExport\Model\Import\CountryWithWebsites;
 use Magento\CustomerImportExport\Model\Import\Address;
+use Magento\CustomerImportExport\Model\Import\CountryWithWebsites;
 use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\Storage;
 use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\StorageFactory;
 use Magento\Directory\Model\ResourceModel\Region\CollectionFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
-use Magento\Eav\Model\Entity\TypeFactory;
-use Magento\Eav\Model\ResourceModel\Helper;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
-use Magento\Framework\Model\Context;
-use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\Validator\UniversalFactory;
 use Magento\ImportExport\Model\Export\Factory;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator;
@@ -42,7 +38,6 @@ use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Tests Magento\CustomerImportExport\Model\Import\Address.

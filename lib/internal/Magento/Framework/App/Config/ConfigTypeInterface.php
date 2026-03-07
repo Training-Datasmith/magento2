@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application configuration object. Used to access configuration when application is initialized and installed.
  *
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 /**

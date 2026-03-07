@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\Code\Generator;
 
 class Factory extends \Magento\Framework\Code\Generator\EntityAbstract
 {
-    const ENTITY_TYPE = 'factory';
+    public const ENTITY_TYPE = 'factory';
 
     /**
      * Retrieve class properties
@@ -53,7 +56,7 @@ class Factory extends \Magento\Framework\Code\Generator\EntityAbstract
                     ],
                     ['name' => 'param', 'description' => 'string $instanceName'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -77,7 +80,7 @@ class Factory extends \Magento\Framework\Code\Generator\EntityAbstract
                     ['name' => 'param', 'description' => 'array $data'],
                     [
                         'name' => 'return',
-                        'description' => $this->getSourceClassName()
+                        'description' => $this->getSourceClassName(),
                     ],
                 ],
             ],

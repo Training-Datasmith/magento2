@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class Audience implements ClaimInterface
     public function __construct(array $value, bool $duplicate = false)
     {
         if (!$value) {
-            throw new \InvalidArgumentException("Audience list cannot be empty");
+            throw new \InvalidArgumentException('Audience list cannot be empty');
         }
         $this->value = $value;
         $this->duplicate = $duplicate;

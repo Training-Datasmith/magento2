@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter;
 
 use Magento\Setup\Module\I18n\Dictionary\Phrase;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,8 +58,8 @@ $quote = $objectManager->create(
             'store_id' => $store->getId(),
             'reserved_order_id' => '0000032134',
             'is_active' => true,
-            'is_multishipping' => false
-        ]
+            'is_multishipping' => false,
+        ],
     ]
 );
 $quote->setShippingAddress($shippingAddress)

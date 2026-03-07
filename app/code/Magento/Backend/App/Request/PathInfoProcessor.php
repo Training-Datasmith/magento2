@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\App\Request;
 
-use Magento\Framework\App\Request\PathInfoProcessorInterface;
 use Magento\Backend\Helper\Data as HelperData;
-use Magento\Store\App\Request\PathInfoProcessor as AppPathInfoProcessor;
+use Magento\Framework\App\Request\PathInfoProcessorInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Store\App\Request\PathInfoProcessor as AppPathInfoProcessor;
 
 /**
  * Prevents path info processing for admin store

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -215,7 +216,7 @@ class DeployStaticContentTest extends TestCase
                     'no-html-minify' => false,
                     'refresh-content-version-only' => false,
                 ],
-                null // content version value should not be asserted in this case
+                null, // content version value should not be asserted in this case
             ],
             [
                 [
@@ -226,15 +227,15 @@ class DeployStaticContentTest extends TestCase
                     'refresh-content-version-only' => false,
                     'content-version' =>  '123456',
                 ],
-                '123456'
+                '123456',
             ],
             [
                 [
                     'refresh-content-version-only' => true,
                     'content-version' =>  '654321',
                 ],
-                '654321'
-            ]
+                '654321',
+            ],
         ];
     }
 
@@ -260,7 +261,7 @@ class DeployStaticContentTest extends TestCase
                     'maxExecTime'          => 100,
                     'maxProcesses'         => 3,
                     'options'              => $options,
-                    'deployPackageService' => null
+                    'deployPackageService' => null,
                 ]
             )
             ->willReturn($queueMock);

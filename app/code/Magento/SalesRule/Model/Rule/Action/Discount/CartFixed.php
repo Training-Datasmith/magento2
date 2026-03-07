@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Action\Discount;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\SalesRule\Helper\CartFixedDiscount;
 use Magento\SalesRule\Model\DeltaPriceRound;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Validator;
-use Magento\Quote\Model\Quote\Item;
 
 /**
  * Calculates discount for cart item if fixed discount applied on whole cart.

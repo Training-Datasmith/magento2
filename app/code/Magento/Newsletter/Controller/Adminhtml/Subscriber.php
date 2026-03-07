@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Controller\Adminhtml;
 
 /**
@@ -15,7 +18,7 @@ abstract class Subscriber extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Newsletter::subscriber';
+    public const ADMIN_RESOURCE = 'Magento_Newsletter::subscriber';
 
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory

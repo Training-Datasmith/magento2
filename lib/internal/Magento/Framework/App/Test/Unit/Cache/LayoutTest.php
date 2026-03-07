@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\App\Test\Unit\Cache;
 use Magento\Framework\App\Cache\Type\FrontendPool;
 use Magento\Framework\App\Cache\Type\Layout;
 use Magento\Framework\Cache\FrontendInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class LayoutTest extends TestCase
@@ -109,7 +110,7 @@ class LayoutTest extends TestCase
         $this->cacheFrontendMock->method('load')
             ->willReturnMap([
                 [$identifier, $firstLoadReturn],
-                [$firstLoadReturn, $secondLoadReturn]
+                [$firstLoadReturn, $secondLoadReturn],
             ]);
 
         $result = $this->layoutCacheType->load($identifier);

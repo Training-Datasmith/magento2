@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,9 +36,9 @@ class ColumnsTest extends TestCase
         $dataProvider = $objectManager->create(
             ProductDataProvider::class,
             [
-                'name' => "product_listing_data_source",
-                'primaryFieldName' => "entity_id",
-                'requestFieldName' => "id",
+                'name' => 'product_listing_data_source',
+                'primaryFieldName' => 'entity_id',
+                'requestFieldName' => 'id',
             ]
         );
         $context = $objectManager->create(ContextInterface::class);

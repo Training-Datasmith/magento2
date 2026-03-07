@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Eav\Model\Attribute\DataProvider;
 
-use Magento\Store\Model\Store;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Store\Model\Store;
 
 /**
  * Base POST data for create attribute.
@@ -63,43 +64,43 @@ abstract class AbstractBaseAttributeData
     {
         static::$defaultAttributePostData['frontend_input'] = static::getFrontendInput();
         return [
-            "{static::getFrontendInput()}_with_required_fields" => [
+            '{static::getFrontendInput()}_with_required_fields' => [
                 static::$defaultAttributePostData,
             ],
-            "{static::getFrontendInput()}_with_store_view_scope" => [
+            '{static::getFrontendInput()}_with_store_view_scope' => [
                 static::$defaultAttributePostData,
             ],
-            "{static::getFrontendInput()}_with_global_scope" => [
+            '{static::getFrontendInput()}_with_global_scope' => [
                 array_merge(static::$defaultAttributePostData, ['is_global' => ScopedAttributeInterface::SCOPE_GLOBAL]),
             ],
-            "{static::getFrontendInput()}_with_website_scope" => [
+            '{static::getFrontendInput()}_with_website_scope' => [
                 array_merge(static::$defaultAttributePostData, ['is_global' => ScopedAttributeInterface::SCOPE_WEBSITE]),
             ],
-            "{static::getFrontendInput()}_with_attribute_code" => [
+            '{static::getFrontendInput()}_with_attribute_code' => [
                 array_merge(static::$defaultAttributePostData, ['attribute_code' => 'test_custom_attribute_code']),
             ],
-            "{static::getFrontendInput()}_with_default_value" => [
+            '{static::getFrontendInput()}_with_default_value' => [
                 array_merge(static::$defaultAttributePostData, ['default_value_text' => 'Default attribute value']),
             ],
-            "{static::getFrontendInput()}_without_default_value" => [
+            '{static::getFrontendInput()}_without_default_value' => [
                 static::$defaultAttributePostData,
             ],
-            "{static::getFrontendInput()}_with_unique_value" => [
+            '{static::getFrontendInput()}_with_unique_value' => [
                 array_merge(static::$defaultAttributePostData, ['is_unique' => '1']),
             ],
-            "{static::getFrontendInput()}_without_unique_value" => [
+            '{static::getFrontendInput()}_without_unique_value' => [
                 static::$defaultAttributePostData,
             ],
-            "{static::getFrontendInput()}_with_enabled_add_to_column_options" => [
+            '{static::getFrontendInput()}_with_enabled_add_to_column_options' => [
                 array_merge(static::$defaultAttributePostData, ['is_used_in_grid' => '1']),
             ],
-            "{static::getFrontendInput()}_without_enabled_add_to_column_options" => [
+            '{static::getFrontendInput()}_without_enabled_add_to_column_options' => [
                 array_merge(static::$defaultAttributePostData, ['is_used_in_grid' => '0']),
             ],
-            "{static::getFrontendInput()}_with_enabled_use_in_filter_options" => [
+            '{static::getFrontendInput()}_with_enabled_use_in_filter_options' => [
                 static::$defaultAttributePostData,
             ],
-            "{static::getFrontendInput()}_without_enabled_use_in_filter_options" => [
+            '{static::getFrontendInput()}_without_enabled_use_in_filter_options' => [
                 array_merge(static::$defaultAttributePostData, ['is_filterable_in_grid' => '0']),
             ],
         ];
@@ -117,13 +118,13 @@ abstract class AbstractBaseAttributeData
         $wrongAttributeCode .= '(0-9) or underscore (_) in this field, and the first character should be a letter.';
 
         return [
-            "{static::getFrontendInput()}_with_wrong_frontend_input" => [
+            '{static::getFrontendInput()}_with_wrong_frontend_input' => [
                 array_merge(static::$defaultAttributePostData, ['frontend_input' => 'wrong_input_type']),
-                (string)__('Input type "wrong_input_type" not found in the input types list.')
+                (string)__('Input type "wrong_input_type" not found in the input types list.'),
             ],
-            "{static::getFrontendInput()}_with_wrong_attribute_code" => [
+            '{static::getFrontendInput()}_with_wrong_attribute_code' => [
                 array_merge(static::$defaultAttributePostData, ['attribute_code' => '????']),
-                (string)__($wrongAttributeCode)
+                (string)__($wrongAttributeCode),
             ],
         ];
     }
@@ -139,77 +140,77 @@ abstract class AbstractBaseAttributeData
         return array_merge_recursive(
             static::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_required_fields" => [
+                '{static::getFrontendInput()}_with_required_fields' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_store_view_scope" => [
+                '{static::getFrontendInput()}_with_store_view_scope' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_global' => ScopedAttributeInterface::SCOPE_STORE,
                     ],
                 ],
-                "{static::getFrontendInput()}_with_global_scope" => [
+                '{static::getFrontendInput()}_with_global_scope' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                     ],
                 ],
-                "{static::getFrontendInput()}_with_website_scope" => [
+                '{static::getFrontendInput()}_with_website_scope' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_global' => ScopedAttributeInterface::SCOPE_WEBSITE,
                     ],
                 ],
-                "{static::getFrontendInput()}_with_attribute_code" => [
+                '{static::getFrontendInput()}_with_attribute_code' => [
                     [
                         'attribute_code' => 'test_custom_attribute_code',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'default_value' => 'Default attribute value',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_default_value" => [
+                '{static::getFrontendInput()}_without_default_value' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'default_value_text' => '',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_unique_value" => [
+                '{static::getFrontendInput()}_with_unique_value' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_unique' => '1',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_unique_value" => [
+                '{static::getFrontendInput()}_without_unique_value' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_unique' => '0',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_enabled_add_to_column_options" => [
+                '{static::getFrontendInput()}_with_enabled_add_to_column_options' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_used_in_grid' => '1',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_enabled_add_to_column_options" => [
+                '{static::getFrontendInput()}_without_enabled_add_to_column_options' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_used_in_grid' => false,
                     ],
                 ],
-                "{static::getFrontendInput()}_with_enabled_use_in_filter_options" => [
+                '{static::getFrontendInput()}_with_enabled_use_in_filter_options' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_filterable_in_grid' => '1',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_enabled_use_in_filter_options" => [
+                '{static::getFrontendInput()}_without_enabled_use_in_filter_options' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'is_filterable_in_grid' => false,
@@ -328,7 +329,7 @@ abstract class AbstractBaseAttributeData
                         'default' => 'Default Store Update',
                         'fixture_second_store' => 'Second Store Update',
                         'fixture_third_store' => 'Third Store Update',
-                    ]
+                    ],
                 ],
                 'expectedData' => [
                     'frontend_label' => 'Test Attribute Update',
@@ -346,7 +347,7 @@ abstract class AbstractBaseAttributeData
                         'default' => 'Default Store Update',
                         'fixture_second_store' => '',
                         'fixture_third_store' => '',
-                    ]
+                    ],
                 ],
                 'expectedData' => [
                     'frontend_label' => 'Test Attribute Update',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Model\Resolver;
 
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
@@ -18,9 +19,9 @@ use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\Quote\Api\ShipmentEstimationInterface;
+use Magento\Quote\Model\Cart\ShippingMethodConverter;
 use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
 use Magento\Quote\Model\Quote\AddressFactory;
-use Magento\Quote\Model\Cart\ShippingMethodConverter;
 use Magento\QuoteGraphQl\Model\ErrorMapper;
 use Magento\QuoteGraphQl\Model\FormatMoneyTypeData;
 
@@ -65,7 +66,7 @@ class EstimateShippingMethods implements ResolverInterface
                 __(
                     'Could not find a cart with ID "%masked_id"',
                     [
-                        'masked_id' => $args['input']['cart_id']
+                        'masked_id' => $args['input']['cart_id'],
                     ]
                 ),
                 $ex,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class DictionaryTest extends TestCase
         $this->componentRegistrar->expects($this->once())->method('getPaths')->willReturn(['foo/en_us']);
         $this->componentRegistrar->expects($this->once())->method('getPath')->willReturn('foo/en_us');
 
-        $this->readFactory->expects($this->any())->method("create")->willReturn($readMock);
+        $this->readFactory->expects($this->any())->method('create')->willReturn($readMock);
 
         $languageConfig = $this->createMock(Config::class);
         $languageConfig->expects($this->any())->method('getCode')->willReturn('en_US');
@@ -98,7 +99,7 @@ class DictionaryTest extends TestCase
 
         $this->configFactory->expects($this->any())->method('create')->willReturn($languageConfig);
 
-        $result = $this->model->getDictionary("en_US");
+        $result = $this->model->getDictionary('en_US');
         $this->assertSame($expected, $result);
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Analytics\ReportXml\DB\Assembler;
 
 use Magento\Analytics\ReportXml\DB\ColumnsResolver;
-use Magento\Analytics\ReportXml\DB\SelectBuilder;
 use Magento\Analytics\ReportXml\DB\NameResolver;
+use Magento\Analytics\ReportXml\DB\SelectBuilder;
 use Magento\Framework\App\ResourceConnection;
 
 /**
@@ -16,44 +18,16 @@ use Magento\Framework\App\ResourceConnection;
  */
 class FromAssembler implements AssemblerInterface
 {
-    /**
-     * @var NameResolver
-     */
-    private $nameResolver;
-
-    /**
-     * @var ColumnsResolver
-     */
-    private $columnsResolver;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @param NameResolver $nameResolver
-     * @param ColumnsResolver $columnsResolver
-     * @param ResourceConnection $resourceConnection
-     */
-    public function __construct(
-        NameResolver $nameResolver,
-        ColumnsResolver $columnsResolver,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->nameResolver = $nameResolver;
-        $this->columnsResolver = $columnsResolver;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(private readonly NameResolver $nameResolver, private readonly ColumnsResolver $columnsResolver, private readonly ResourceConnection $resourceConnection)
+    {
     }
 
     /**
      * Assembles FROM condition
      *
-     * @param SelectBuilder $selectBuilder
      * @param array $queryConfig
-     * @return SelectBuilder
      */
-    public function assemble(SelectBuilder $selectBuilder, $queryConfig)
+    public function assemble(SelectBuilder $selectBuilder, $queryConfig): SelectBuilder
     {
         $selectBuilder->setFrom(
             [

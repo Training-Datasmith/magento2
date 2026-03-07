@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\View\LayoutInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DwstreeTest extends TestCase
@@ -80,8 +81,8 @@ class DwstreeTest extends TestCase
         $objects = [
             [
                 Dwstree::class,
-                $this->createMock(Dwstree::class)
-            ]
+                $this->createMock(Dwstree::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->object = $objectManager->getObject(
@@ -132,7 +133,7 @@ class DwstreeTest extends TestCase
             [
                 'default',
                 'website_' . $website['actual']['code'],
-                'store_' . $store['actual']['code']
+                'store_' . $store['actual']['code'],
             ],
             $this->object->getTabsIds()
         );

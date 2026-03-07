@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Service;
 
 use Magento\Framework\App\ObjectManager;
@@ -318,7 +321,7 @@ class OrderService implements OrderManagementInterface
                 'state'     => $state,
                 'status'    => $status,
                 'comment'   => $comment,
-                'is_customer_notified'    => $isCustomerNotified
+                'is_customer_notified'    => $isCustomerNotified,
             ]
         );
 

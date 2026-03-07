@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class AddressTest extends TestCase
             [
                 'resource' => $this->appResourceMock,
                 'validator' => $this->validatorMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

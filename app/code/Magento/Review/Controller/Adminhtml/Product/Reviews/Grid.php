@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product\Reviews;
 
 use Magento\Backend\App\Action;
@@ -15,7 +18,7 @@ class Grid extends Action
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Magento_Review::reviews_all';
+    public const ADMIN_RESOURCE = 'Magento_Review::reviews_all';
 
     /**
      * @var \Magento\Catalog\Controller\Adminhtml\Product\Builder

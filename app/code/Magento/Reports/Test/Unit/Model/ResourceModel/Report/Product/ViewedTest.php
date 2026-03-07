@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\Reports\Model\FlagFactory;
 use Magento\Reports\Model\ResourceModel\Helper;
 use Magento\Reports\Model\ResourceModel\Report\Product\Viewed;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -125,7 +126,7 @@ class ViewedTest extends TestCase
                     '__toString',
                     'from',
                     'joinInner',
-                    'joinLeft'
+                    'joinLeft',
                 ]
             )->getMock();
         $this->selectMock->expects($this->any())->method('from')->willReturnSelf();
@@ -200,7 +201,7 @@ class ViewedTest extends TestCase
                 'localeDate' => $this->timezoneMock,
                 'reportsFlagFactory' => $this->flagFactoryMock,
                 'productResource' => $this->productMock,
-                'resourceHelper' => $this->helperMock
+                'resourceHelper' => $this->helperMock,
             ]
         );
     }
@@ -281,14 +282,14 @@ class ViewedTest extends TestCase
                 'from' => new \DateTime('+3 day'),
                 'to' => new \DateTime('-3 day'),
                 'truncateCount' => 'never',
-                'deleteCount' => 'once'
+                'deleteCount' => 'once',
             ],
             [
                 'from' => null,
                 'to' => null,
                 'truncateCount' => 'once',
-                'deleteCount' => 'never'
-            ]
+                'deleteCount' => 'never',
+            ],
         ];
     }
 }

@@ -1,10 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model;
 
+use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Cms\Model\Page\CustomLayout\CustomLayoutRepository;
@@ -15,7 +19,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Validation\ValidationException;
 use Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface;
-use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 
 /**
  * Cms Page Model
@@ -32,19 +35,19 @@ class Page extends AbstractModel implements PageInterface, IdentityInterface
     /**
      * Page ID for the 404 page.
      */
-    const NOROUTE_PAGE_ID = 'no-route';
+    public const NOROUTE_PAGE_ID = 'no-route';
 
     /**#@+
      * Page's Statuses
      */
-    const STATUS_ENABLED = 1;
-    const STATUS_DISABLED = 0;
+    public const STATUS_ENABLED = 1;
+    public const STATUS_DISABLED = 0;
     /**#@-*/
 
     /**
      * CMS page cache tag
      */
-    const CACHE_TAG = 'cms_p';
+    public const CACHE_TAG = 'cms_p';
 
     /**
      * @var string

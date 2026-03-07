@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,18 +11,17 @@ namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\CreditmemoInterface;
-use Magento\Sales\Api\Data\CreditmemoItemInterface;
-use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
-use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Creditmemo;
+use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Creditmemo\RefundOperation;
+use Magento\Sales\Model\Order\Payment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for refund operation.
@@ -76,7 +76,7 @@ class RefundOperationTest extends TestCase
                 'getBaseDiscountTaxCompensationAmount', 'getDiscountTaxCompensationAmount',
                 'getBaseShippingTaxAmount', 'getShippingTaxAmount', 'getAdjustmentPositive',
                 'getBaseAdjustmentPositive', 'getAdjustmentNegative', 'getBaseAdjustmentNegative',
-                'getDiscountAmount', 'getBaseDiscountAmount'
+                'getDiscountAmount', 'getBaseDiscountAmount',
             ]
         );
 
@@ -135,7 +135,7 @@ class RefundOperationTest extends TestCase
     {
         return [
             [Creditmemo::STATE_OPEN],
-            [Creditmemo::STATE_CANCELED]
+            [Creditmemo::STATE_CANCELED],
         ];
     }
 
@@ -391,8 +391,8 @@ class RefundOperationTest extends TestCase
                     'result' => 7,
                     'order' => ['method' => 'getBaseTotalInvoicedCost', 'amount' => 18],
                     'creditmemo' => ['method' => 'getBaseCost', 'amount' => 11],
-                ]
-            ]]
+                ],
+            ]],
         ];
     }
 

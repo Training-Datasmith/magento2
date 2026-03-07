@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class DataFixtureTest extends TestCase
                     'name' => null,
                     'factory' => 'path/to/fixture2.php',
                     'data' => [],
-                ]
+                ],
             ],
             $this->model->parse($this, 'method')
         );

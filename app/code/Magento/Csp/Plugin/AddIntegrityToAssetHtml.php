@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
-use Magento\Framework\App\State;
-use Magento\Deploy\Package\Package;
-use Magento\Framework\View\Page\Config\Renderer;
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Magento\Framework\App\Request\Http;
 use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
+use Magento\Deploy\Package\Package;
+use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\State;
 use Magento\Framework\Escaper;
+use Magento\Framework\View\Page\Config\Renderer;
 
 /**
  * Plugin to add integrity attributes to merged file asset script tags during rendering

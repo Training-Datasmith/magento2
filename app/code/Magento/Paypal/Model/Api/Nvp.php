@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -692,7 +694,7 @@ class Nvp extends \Magento\Paypal\Model\Api\AbstractApi
     protected $_requiredResponseParams = [
         self::DO_DIRECT_PAYMENT => ['ACK', 'CORRELATIONID', 'AMT'],
         self::DO_EXPRESS_CHECKOUT => ['ACK'],
-        self::DO_EXPRESS_CHECKOUT_PAYMENT => ['ACK']
+        self::DO_EXPRESS_CHECKOUT_PAYMENT => ['ACK'],
     ];
 
     /**

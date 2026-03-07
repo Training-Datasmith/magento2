@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class Start extends \Magento\Framework\App\Action\Action
             'paypal',
             [
                 'bml' => 1,
-                'button' => $this->getRequest()->getParam('button')
+                'button' => $this->getRequest()->getParam('button'),
             ]
         );
     }

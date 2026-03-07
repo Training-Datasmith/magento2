@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,8 +74,8 @@ class InterpretationStrategyTest extends TestCase
         $messageConfiguration = [
             'renderer' => 'Third apostle from the left',
             'data' => [
-                'Blessed are the birds...'
-            ]
+                'Blessed are the birds...',
+            ],
         ];
         $renderedMessage = 'Script';
 
@@ -134,8 +135,8 @@ class InterpretationStrategyTest extends TestCase
         $messageConfiguration = [
             'renderer' => 'Third apostle from the left',
             'data' => [
-                'Blessed are the birds...'
-            ]
+                'Blessed are the birds...',
+            ],
         ];
 
         $this->messageMock->expects(static::once())

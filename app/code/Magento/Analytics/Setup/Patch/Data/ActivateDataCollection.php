@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -19,39 +20,10 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
  */
 class ActivateDataCollection implements DataPatchInterface
 {
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
+    private string $analyticsCollectionTimeConfigPath = 'analytics/general/collection_time';
 
-    /**
-     * @var SubscriptionStatusProvider
-     */
-    private $subscriptionStatusProvider;
-
-    /**
-     * @var string
-     */
-    private $analyticsCollectionTimeConfigPath = 'analytics/general/collection_time';
-
-    /**
-     * @var CollectionTime
-     */
-    private $collectionTimeBackendModel;
-
-    /**
-     * @param ScopeConfigInterface $scopeConfig
-     * @param SubscriptionStatusProvider $subscriptionStatusProvider
-     * @param CollectionTime $collectionTimeBackendModel
-     */
-    public function __construct(
-        ScopeConfigInterface $scopeConfig,
-        SubscriptionStatusProvider $subscriptionStatusProvider,
-        CollectionTime $collectionTimeBackendModel
-    ) {
-        $this->scopeConfig = $scopeConfig;
-        $this->subscriptionStatusProvider = $subscriptionStatusProvider;
-        $this->collectionTimeBackendModel = $collectionTimeBackendModel;
+    public function __construct(private readonly ScopeConfigInterface $scopeConfig, private readonly SubscriptionStatusProvider $subscriptionStatusProvider, private readonly CollectionTime $collectionTimeBackendModel)
+    {
     }
 
     /**
@@ -59,7 +31,7 @@ class ActivateDataCollection implements DataPatchInterface
      *
      * @throws LocalizedException
      */
-    public function apply()
+    public function apply(): static
     {
         $subscriptionStatus = $this->subscriptionStatusProvider->getStatus();
         $isCollectionProcessActivated = $this->scopeConfig->getValue(CollectionTime::CRON_SCHEDULE_PATH);
@@ -78,7 +50,7 @@ class ActivateDataCollection implements DataPatchInterface
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }
@@ -86,7 +58,7 @@ class ActivateDataCollection implements DataPatchInterface
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [
             PrepareInitialConfig::class,

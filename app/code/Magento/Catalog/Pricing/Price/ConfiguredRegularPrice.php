@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class ConfiguredRegularPrice extends RegularPrice implements ConfiguredPriceInte
      * @param ItemInterface $item
      * @return $this
      */
-    public function setItem(ItemInterface $item) : ConfiguredRegularPrice
+    public function setItem(ItemInterface $item): ConfiguredRegularPrice
     {
         $this->item = $item;
 

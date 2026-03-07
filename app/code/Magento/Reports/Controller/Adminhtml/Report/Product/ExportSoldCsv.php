@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Reports\Controller\Adminhtml\Report\Product;
 
 use Magento\Backend\Block\Widget\Grid\ExportInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Reports\Controller\Adminhtml\Report\Product;
 
 class ExportSoldCsv extends Product implements HttpGetActionInterface

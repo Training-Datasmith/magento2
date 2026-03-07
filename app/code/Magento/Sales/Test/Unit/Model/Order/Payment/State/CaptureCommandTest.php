@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Payment\State;
 
 use Magento\Directory\Model\Currency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\State\CaptureCommand;
 use Magento\Sales\Model\Order\StatusResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @see CaptureCommand
@@ -52,14 +53,14 @@ class CaptureCommandTest extends TestCase
         $expectedStatus,
         $expectedMessage
     ) {
-         $actualReturn = (new CaptureCommand($this->getStatusResolver()))->execute(
-             $this->getPayment($isTransactionPending, $isFraudDetected),
-             $this->amount,
-             $this->getOrder()
-         );
+        $actualReturn = (new CaptureCommand($this->getStatusResolver()))->execute(
+            $this->getPayment($isTransactionPending, $isFraudDetected),
+            $this->amount,
+            $this->getOrder()
+        );
 
-         $this->assertOrderStateAndStatus($this->getOrder(), $expectedState, $expectedStatus);
-         self::assertEquals(__($expectedMessage, $this->amount), $actualReturn);
+        $this->assertOrderStateAndStatus($this->getOrder(), $expectedState, $expectedStatus);
+        self::assertEquals(__($expectedMessage, $this->amount), $actualReturn);
     }
 
     /**
@@ -73,14 +74,14 @@ class CaptureCommandTest extends TestCase
                 false,
                 Order::STATE_PROCESSING,
                 self::$newOrderStatus,
-                'Captured amount of %1 online.'
+                'Captured amount of %1 online.',
             ],
             [
                 true,
                 false,
                 Order::STATE_PAYMENT_REVIEW,
                 self::$newOrderStatus,
-                'An amount of %1 will be captured after being approved at the payment gateway.'
+                'An amount of %1 will be captured after being approved at the payment gateway.',
             ],
             [
                 false,
@@ -88,7 +89,7 @@ class CaptureCommandTest extends TestCase
                 Order::STATE_PAYMENT_REVIEW,
                 Order::STATUS_FRAUD,
                 'Captured amount of %1 online.' .
-                ' Order is suspended as its capturing amount %1 is suspected to be fraudulent.'
+                ' Order is suspended as its capturing amount %1 is suspected to be fraudulent.',
             ],
             [
                 true,
@@ -96,7 +97,7 @@ class CaptureCommandTest extends TestCase
                 Order::STATE_PAYMENT_REVIEW,
                 Order::STATUS_FRAUD,
                 'An amount of %1 will be captured after being approved at the payment gateway.' .
-                ' Order is suspended as its capturing amount %1 is suspected to be fraudulent.'
+                ' Order is suspended as its capturing amount %1 is suspected to be fraudulent.',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,6 +18,7 @@ use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Wishlist\Controller\Index\Update;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
@@ -24,7 +26,6 @@ use Magento\Wishlist\Helper\Data;
 use Magento\Wishlist\Model\Item;
 use Magento\Wishlist\Model\LocaleQuantityProcessor;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -130,7 +131,7 @@ class UpdateTest extends TestCase
                 'context' => $this->contextMock,
                 '_formKeyValidator' => $this->formKeyValidatorMock,
                 'wishlistProvider' => $this->wishlistProviderMock,
-                'quantityProcessor' => $this->quantityProcessorMock
+                'quantityProcessor' => $this->quantityProcessorMock,
             ]
         );
     }
@@ -157,7 +158,7 @@ class UpdateTest extends TestCase
                 'getId',
                 'setQty',
                 'save',
-                'getProduct'
+                'getProduct',
             ]
         );
         $dataMock = $this->createMock(Data::class);
@@ -283,13 +284,13 @@ class UpdateTest extends TestCase
             [
                 [
                     [
-                        'id' => self::STUB_ITEM_ID
+                        'id' => self::STUB_ITEM_ID,
                     ],
                     [
                         'qty' => [self::STUB_ITEM_ID => self::STUB_WISHLIST_PRODUCT_QTY],
-                        'description' => [self::STUB_ITEM_ID => 'Description for item_id 1']
-                    ]
-                ]
+                        'description' => [self::STUB_ITEM_ID => 'Description for item_id 1'],
+                    ],
+                ],
             ];
     }
 }

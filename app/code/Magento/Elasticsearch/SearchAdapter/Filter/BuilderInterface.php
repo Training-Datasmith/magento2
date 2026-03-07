@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter\Filter;
 
 use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
@@ -13,11 +16,11 @@ use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
  */
 interface BuilderInterface
 {
-    const FILTER_QUERY_CONDITION_MUST = 'must';
+    public const FILTER_QUERY_CONDITION_MUST = 'must';
 
-    const FILTER_QUERY_CONDITION_SHOULD = 'should';
+    public const FILTER_QUERY_CONDITION_SHOULD = 'should';
 
-    const FILTER_QUERY_CONDITION_MUST_NOT = 'must_not';
+    public const FILTER_QUERY_CONDITION_MUST_NOT = 'must_not';
 
     /**
      * @param RequestFilterInterface $filter

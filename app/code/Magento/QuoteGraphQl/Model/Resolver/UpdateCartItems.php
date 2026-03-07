@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,13 +12,12 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
+use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
-use Magento\QuoteGraphQl\Model\CartItem\DataProvider\UpdateCartItems as  UpdateCartItemsProvider;
-use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
+use Magento\QuoteGraphQl\Model\CartItem\DataProvider\UpdateCartItems as UpdateCartItemsProvider;
 
 /**
  * @inheritdoc
@@ -65,7 +65,7 @@ class UpdateCartItems implements ResolverInterface
             $message = 'Required parameter "cart_items" is missing.';
             $errors[] = [
                 'message' => __($message),
-                'code' => $this->getErrorCode($message)
+                'code' => $this->getErrorCode($message),
             ];
         }
 
@@ -84,7 +84,7 @@ class UpdateCartItems implements ResolverInterface
                 : $e->getMessage();
             $errors[] = [
                 'message' => __($message),
-                'code' => $this->getErrorCode($e->getMessage())
+                'code' => $this->getErrorCode($e->getMessage()),
             ];
         }
 

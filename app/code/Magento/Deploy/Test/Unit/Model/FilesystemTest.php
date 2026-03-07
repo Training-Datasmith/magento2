@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class FilesystemTest extends TestCase
                 'fr_FR' => 'France',
                 'de_DE' => 'Germany',
                 'nl_NL' => 'Netherlands',
-                'en_US' => 'USA'
+                'en_US' => 'USA',
             ]);
         $locale = $objectManager->getObject(Locale::class, ['lists' => $lists]);
 
@@ -115,7 +116,7 @@ class FilesystemTest extends TestCase
                 'shell' => $this->shell,
                 'filesystem' => $this->filesystem,
                 'userCollection' => $this->userCollection,
-                'locale' => $locale
+                'locale' => $locale,
             ]
         );
 
@@ -145,7 +146,7 @@ class FilesystemTest extends TestCase
                 if ($arg == $cacheFlushCmd ||
                     $arg == $setupDiCompileCmd ||
                     $arg == $staticContentDeployCmd) {
-                    return "Compilation complete";
+                    return 'Compilation complete';
                 }
             });
 
@@ -190,7 +191,7 @@ class FilesystemTest extends TestCase
                 if ($arg == $cacheFlushCmd ||
                     $arg == $setupDiCompileCmd ||
                     $arg == $staticContentDeployCmd) {
-                    return "Compilation complete";
+                    return 'Compilation complete';
                 }
             });
 
@@ -224,7 +225,7 @@ class FilesystemTest extends TestCase
                 if ($arg == $cacheFlushCmd ||
                     $arg == $setupDiCompileCmd ||
                     $arg == $staticContentDeployCmd) {
-                    return "Compilation complete";
+                    return 'Compilation complete';
                 }
             });
 

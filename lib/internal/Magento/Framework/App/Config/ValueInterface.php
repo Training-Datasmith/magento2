@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Value interface
  *
@@ -22,7 +23,7 @@ interface ValueInterface
      *
      * @deprecated since it is not used
      */
-    const ENTITY = 'config_data';
+    public const ENTITY = 'config_data';
 
     /**
      * Check if config data value was changed

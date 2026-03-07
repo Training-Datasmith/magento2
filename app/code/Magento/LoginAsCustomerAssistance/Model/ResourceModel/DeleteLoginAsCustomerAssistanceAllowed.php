@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class DeleteLoginAsCustomerAssistanceAllowed
         $connection->delete(
             $tableName,
             [
-                'customer_id = ?' => $customerId
+                'customer_id = ?' => $customerId,
             ]
         );
     }

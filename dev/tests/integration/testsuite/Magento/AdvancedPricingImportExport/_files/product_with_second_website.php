@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Customer\Model\Group;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Store\Api\WebsiteRepositoryInterface;
 
 Resolver::getInstance()->requireDataFixture('Magento/Store/_files/website.php');
 Resolver::getInstance()->requireDataFixture('Magento/AdvancedPricingImportExport/_files/create_products.php');
@@ -38,8 +39,8 @@ $productModel->setTierPrice(
             'website_id' => $website->getId(),
             'cust_group' => Group::CUST_GROUP_ALL,
             'price_qty'  => 3,
-            'price'      => 5
-        ]
+            'price'      => 5,
+        ],
     ]
 );
 $productRepository->save($productModel);

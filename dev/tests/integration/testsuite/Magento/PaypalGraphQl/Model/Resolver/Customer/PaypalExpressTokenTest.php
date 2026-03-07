@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Customer;
 
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Paypal\Model\Api\Nvp;
 use Magento\PaypalGraphQl\PaypalExpressAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -76,7 +77,7 @@ class PaypalExpressTokenTest extends PaypalExpressAbstractTest
         $paypalResponse = [
             'TOKEN' => 'EC-TOKEN1234',
             'CORRELATIONID' => 'c123456789',
-            'ACK' => 'Success'
+            'ACK' => 'Success',
         ];
 
         $this->nvpMock
@@ -91,7 +92,7 @@ class PaypalExpressTokenTest extends PaypalExpressAbstractTest
 
         $requestHeaders = [
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
 
         $response = $this->graphQlRequest->send($query, [], '', $requestHeaders);

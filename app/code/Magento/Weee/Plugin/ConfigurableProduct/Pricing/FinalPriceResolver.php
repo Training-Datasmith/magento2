@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class FinalPriceResolver
         ConfigurableProductFinalPriceResolver $subject,
         float $result,
         SaleableInterface $product
-    ):float {
+    ): float {
         return $this->weeePriceDisplay()
             ? (float)$product->getPriceInfo()->getPrice(CatalogFinalPrice::PRICE_CODE)
                 ->getAmount()->getValue(Adjustment::ADJUSTMENT_CODE)
@@ -56,7 +57,7 @@ class FinalPriceResolver
      *
      * @return bool
      */
-    private function weeePriceDisplay():bool
+    private function weeePriceDisplay(): bool
     {
         return $this->weeeHelperData->isDisplayIncl() || $this->weeeHelperData->isDisplayInclDesc();
     }

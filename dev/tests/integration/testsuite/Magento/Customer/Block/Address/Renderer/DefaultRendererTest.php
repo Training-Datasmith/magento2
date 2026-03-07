@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Address\Renderer;
 
 use Magento\Eav\Model\AttributeDataFactory;
@@ -55,18 +58,18 @@ class DefaultRendererTest extends \PHPUnit\Framework\TestCase
             [
                 $addressAttributes,
                 AttributeDataFactory::OUTPUT_FORMAT_PDF,
-                "John Smith|\n\nGreen str, 67|\n\n\n\nCityM, Alabama, 75477|\nUnited States|\nT: 3468676|\n|\n|"
+                "John Smith|\n\nGreen str, 67|\n\n\n\nCityM, Alabama, 75477|\nUnited States|\nT: 3468676|\n|\n|",
             ],
             [
                 $addressAttributes,
                 AttributeDataFactory::OUTPUT_FORMAT_ONELINE,
-                "John Smith, Green str, 67, CityM, Alabama 75477, United States"
+                'John Smith, Green str, 67, CityM, Alabama 75477, United States',
             ],
             [
                 $addressAttributes,
                 AttributeDataFactory::OUTPUT_FORMAT_TEXT,
-                "John Smith\n\nGreen str, 67\n\n\n\n\nCityM,  Alabama, 75477\nUnited States\nT: 3468676\n\n"
-            ]
+                "John Smith\n\nGreen str, 67\n\n\n\n\nCityM,  Alabama, 75477\nUnited States\nT: 3468676\n\n",
+            ],
         ];
     }
 
@@ -110,19 +113,19 @@ United States<br />\nT: <a href=\"tel:3468676\">3468676</a>\n\n",
                 $address,
                 AttributeDataFactory::OUTPUT_FORMAT_PDF,
                 "John Smith|\n\nGreen str, 67|\n\n\n\nCityM, Alabama, 75477|
-United States|\nT: 3468676|\n|\n|"
+United States|\nT: 3468676|\n|\n|",
             ],
             [
                 $address,
                 AttributeDataFactory::OUTPUT_FORMAT_ONELINE,
-                "John Smith, Green str, 67, CityM, Alabama 75477, United States"
+                'John Smith, Green str, 67, CityM, Alabama 75477, United States',
             ],
             [
                 $address,
                 AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 "John Smith\n\nGreen str, 67\n\n\n\n\nCityM,  Alabama, 75477
-United States\nT: 3468676\n\n"
-            ]
+United States\nT: 3468676\n\n",
+            ],
         ];
     }
 }

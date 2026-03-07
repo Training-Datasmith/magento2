@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,22 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Ui\DataProvider\Product\Form\Modifier\Data;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type as ProductType;
-use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Downloadable\Helper\File as DownloadableFile;
 use Magento\Downloadable\Model\Link as LinkModel;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Data\Links;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
@@ -262,21 +261,21 @@ class LinksTest extends TestCase
                 'typeId' => Type::TYPE_DOWNLOADABLE,
                 'storeId' => 1,
                 'links' => [$linkMock1],
-                'expectedLinksData' => $productData1
+                'expectedLinksData' => $productData1,
             ],
             'test case for downloadable product for all store' => [
                 'productTypeMock' => static fn (self $testCase) => $testCase->createMock(Type::class),
                 'typeId' => Type::TYPE_DOWNLOADABLE,
                 'storeId' => 0,
                 'links' => [$linkMock2],
-                'expectedLinksData' => $productData2
+                'expectedLinksData' => $productData2,
             ],
             'test case for simple product for default store' => [
                 'productTypeMock' => static fn (self $testCase) => $testCase->createMock(Type::class),
                 'typeId' => ProductType::TYPE_SIMPLE,
                 'storeId' => 1,
                 'links' => [$linkMock3],
-                'expectedLinksData' => []
+                'expectedLinksData' => [],
             ],
         ];
     }
@@ -298,7 +297,7 @@ class LinksTest extends TestCase
             LinkModel::class,
             [
                 'getId', 'getTitle', 'getPrice', 'getNumberOfDownloads', 'getIsShareable', 'getSortOrder',
-                'getLinkType', 'getLinkUrl', 'getSampleType', 'getSampleUrl', 'getWebsitePrice', 'getStoreTitle'
+                'getLinkType', 'getLinkUrl', 'getSampleType', 'getSampleUrl', 'getWebsitePrice', 'getStoreTitle',
             ]
         );
         $linkMock->method('getId')->willReturn($productData['link_id']);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -103,7 +104,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'currentUrlRewritesRegenerator' => $this->currentUrlRewritesRegenerator,
                 'storeViewService' => $this->storeViewService,
                 'categoryRepository' => $this->categoryRepository,
-                'mergeDataProviderFactory' => $mergeDataProviderFactory
+                'mergeDataProviderFactory' => $mergeDataProviderFactory,
             ]
         );
     }
@@ -149,7 +150,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'category-1_1' => $canonical,
                 'category-2_2' => $children1,
                 'category-22_2' => $children2,
-                'category-3_3' => $current
+                'category-3_3' => $current,
             ],
             $this->categoryUrlRewriteGenerator->generate($this->category, false, $categoryId)
         );

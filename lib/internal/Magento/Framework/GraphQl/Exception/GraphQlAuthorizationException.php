@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\GraphQl\Exception;
 
 use GraphQL\Error\ClientAware;
 use GraphQL\Error\ProvidesExtensions;
-use Magento\Framework\Phrase;
 use Magento\Framework\Exception\AuthorizationException;
+use Magento\Framework\Phrase;
 
 /**
  * Exception for GraphQL to be thrown when authorization fails
@@ -43,7 +44,7 @@ class GraphQlAuthorizationException extends AuthorizationException implements Cl
     /**
      * @inheritdoc
      */
-    public function isClientSafe() : bool
+    public function isClientSafe(): bool
     {
         return $this->isSafe;
     }
@@ -51,7 +52,7 @@ class GraphQlAuthorizationException extends AuthorizationException implements Cl
     /**
      * @inheritdoc
      */
-    public function getCategory() : string
+    public function getCategory(): string
     {
         return self::EXCEPTION_CATEGORY;
     }

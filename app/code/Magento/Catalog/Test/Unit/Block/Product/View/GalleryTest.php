@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class GalleryTest extends TestCase
             Context::class,
             [
                 'getRegistry' => $this->registry,
-                'getScopeConfig' => $this->_scopeConfig
+                'getScopeConfig' => $this->_scopeConfig,
             ]
         );
 
@@ -106,7 +107,7 @@ class GalleryTest extends TestCase
             'arrayUtils' => $this->arrayUtils,
             'jsonEncoder' => $this->jsonEncoderMock,
             'urlBuilder' => $this->urlBuilder,
-            'imagesConfigFactory' => $this->imagesConfigFactoryMock
+            'imagesConfigFactory' => $this->imagesConfigFactoryMock,
         ]);
     }
 
@@ -255,18 +256,18 @@ class GalleryTest extends TestCase
             new DataObject([
                 'image_id' => 'product_page_image_small',
                 'data_object_key' => 'small_image_url',
-                'json_object_key' => 'thumb'
+                'json_object_key' => 'thumb',
             ]),
             new DataObject([
                 'image_id' => 'product_page_image_medium',
                 'data_object_key' => 'medium_image_url',
-                'json_object_key' => 'img'
+                'json_object_key' => 'img',
             ]),
             new DataObject([
                 'image_id' => 'product_page_image_large',
                 'data_object_key' => 'large_image_url',
-                'json_object_key' => 'full'
-            ])
+                'json_object_key' => 'full',
+            ]),
         ];
     }
 
@@ -283,7 +284,7 @@ class GalleryTest extends TestCase
                 'label' => ($hasLabel ? 'test_label' : ''),
                 'position' => '2',
                 'media_type' => 'external-test_media_type',
-                "video_url" => 'test_video_url'
+                'video_url' => 'test_video_url',
             ]),
         ];
 

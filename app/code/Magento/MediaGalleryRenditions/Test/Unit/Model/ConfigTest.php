@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -69,9 +70,9 @@ class ConfigTest extends TestCase
             ->willReturn([
                 'system' => [
                     'media_gallery_renditions' => [
-                        'width' => $expectedWidth
-                    ]
-                ]
+                        'width' => $expectedWidth,
+                    ],
+                ],
             ]);
         $result = $this->config->getWidth();
         $this->assertEquals($expectedWidth, $result);
@@ -106,9 +107,9 @@ class ConfigTest extends TestCase
             ->willReturn([
                 'system' => [
                     'media_gallery_renditions' => [
-                        'height' => $expectedHeight
-                    ]
-                ]
+                        'height' => $expectedHeight,
+                    ],
+                ],
             ]);
         $result = $this->config->getHeight();
         $this->assertEquals($expectedHeight, $result);

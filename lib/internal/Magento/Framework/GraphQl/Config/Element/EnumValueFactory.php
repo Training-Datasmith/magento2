@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class EnumValueFactory
                 'name' => $name,
                 'value' => $value,
                 'description' => $description,
-                'deprecationReason' => $deprecationReason
+                'deprecationReason' => $deprecationReason,
             ]
         );
     }

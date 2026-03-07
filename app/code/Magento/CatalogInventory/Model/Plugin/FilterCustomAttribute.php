@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\Plugin;
 
-use Magento\Catalog\Model\Product\Attribute\Repository;
 use Magento\Catalog\Model\FilterProductCustomAttribute as Filter;
+use Magento\Catalog\Model\Product\Attribute\Repository;
 
 class FilterCustomAttribute
 {

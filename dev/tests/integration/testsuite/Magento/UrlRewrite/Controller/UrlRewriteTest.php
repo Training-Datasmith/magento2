@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\UrlRewrite\Controller;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

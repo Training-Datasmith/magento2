@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Framework\Controller\Result;
 
 use Magento\Framework\App;
 use Magento\Framework\App\Response\HttpInterface as HttpResponseInterface;
-use Magento\Framework\Controller\AbstractResult;
 use Magento\Framework\App\Response\RedirectInterface;
+use Magento\Framework\Controller\AbstractResult;
 use Magento\Framework\UrlInterface;
 
 /**
@@ -21,7 +23,6 @@ use Magento\Framework\UrlInterface;
  */
 class Redirect extends AbstractResult
 {
-
     /**
      * @var RedirectInterface
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class StockTest extends TestCase
                     'scopeConfig' => $this->scopeConfigMock,
                     'dateTime' => $this->dateTimeMock,
                     'stockConfiguration' => $this->stockConfigurationMock,
-                    'storeManager' => $this->storeManagerMock
+                    'storeManager' => $this->storeManagerMock,
                 ]
             )->getMock();
     }
@@ -216,24 +217,24 @@ class StockTest extends TestCase
                 [
                     1 => ['product_id' => 1],
                     2 => ['product_id' => 2],
-                    3 => ['product_id' => 3]
+                    3 => ['product_id' => 3],
                 ],
                 [
                     1 => [
                         'product_id' => 1,
-                        'type_id' => 'simple'
+                        'type_id' => 'simple',
                     ],
                     2 => [
                         'product_id' => 2,
-                        'type_id' => 'simple'
+                        'type_id' => 'simple',
                     ],
                     3 => [
                         'product_id' => 3,
-                        'type_id' => 'simple'
+                        'type_id' => 'simple',
                     ],
                 ],
-                [['item_id' => 1], ['item_id' => 2], ['item_id' => 3]]
-            ]
+                [['item_id' => 1], ['item_id' => 2], ['item_id' => 3]],
+            ],
         ];
     }
 }

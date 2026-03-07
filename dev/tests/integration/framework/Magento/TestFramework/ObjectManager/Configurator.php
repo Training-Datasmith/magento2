@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\ObjectManager;
 
+use Magento\Backend\App\Config as BackendConfig;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Stdlib\CookieManagerInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\MutableScopeConfig;
 use Magento\Framework\App\ReinitableConfig;
-use Magento\Backend\App\Config as BackendConfig;
+use Magento\Framework\Stdlib\CookieManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\ScopeSwitcherInterface;
 
 /**
@@ -42,10 +45,10 @@ class Configurator implements \Magento\Framework\ObjectManager\DynamicConfigInte
                 'arguments' => [
                     'storeManager' => [
                         // @phpstan-ignore-next-line
-                        'instance' => \Magento\Store\Model\StoreManagerInterface\Proxy::class
-                    ]
-                ]
-            ]
+                        'instance' => \Magento\Store\Model\StoreManagerInterface\Proxy::class,
+                    ],
+                ],
+            ],
         ];
     }
 }

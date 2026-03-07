@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Model\Indexer;
 
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\PriceModifierInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructure;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\PriceModifierInterface;
 use Magento\CatalogRule\Model\ResourceModel\Rule\Product\Price;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\ResourceConnection;
 
 /**
  * Class for adding catalog rule prices to price index table.
@@ -51,7 +52,7 @@ class ProductPriceIndexModifier implements PriceModifierInterface
     /**
      * @inheritdoc
      */
-    public function modifyPrice(IndexTableStructure $priceTable, array $entityIds = []) : void
+    public function modifyPrice(IndexTableStructure $priceTable, array $entityIds = []): void
     {
         $connection = $this->resourceConnection->getConnection($this->connectionName);
 

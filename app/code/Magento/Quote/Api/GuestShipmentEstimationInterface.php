@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 /**
@@ -12,5 +15,4 @@ namespace Magento\Quote\Api;
  */
 interface GuestShipmentEstimationInterface extends ShipmentEstimationInterface
 {
-
 }

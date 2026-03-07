@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class WebapiRoleLocatorTest extends TestCase
             WebapiRoleLocator::class,
             [
                 'userContext' => $this->userContext,
-                'roleCollectionFactory' => $this->roleCollectionFactory
+                'roleCollectionFactory' => $this->roleCollectionFactory,
             ]
         );
     }

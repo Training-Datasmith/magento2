@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -240,11 +241,11 @@ QUERY;
         return [
             'missed_cart_id' => [
                 'cart_id: "", payment_method: {code: "' . Checkmo::PAYMENT_METHOD_CHECKMO_CODE . '"}',
-                'Required parameter "cart_id" is missing.'
+                'Required parameter "cart_id" is missing.',
             ],
             'missed_payment_method_code' => [
                 'cart_id: "cart_id_value", payment_method: {code: ""}',
-                'Required parameter "code" for "payment_method" is missing.'
+                'Required parameter "code" for "payment_method" is missing.',
             ],
         ];
     }
@@ -284,7 +285,7 @@ QUERY;
     private function getQuery(
         string $maskedQuoteId,
         string $methodCode
-    ) : string {
+    ): string {
         return <<<QUERY
 mutation {
   setPaymentMethodOnCart(input: {

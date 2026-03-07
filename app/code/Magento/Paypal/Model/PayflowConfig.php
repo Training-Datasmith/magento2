@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Payment\Model\Method\AbstractMethod;
@@ -18,9 +21,9 @@ class PayflowConfig extends Config
     /**#@+
      * Payment transaction types
      */
-    const TRXTYPE_AUTH_ONLY = 'A';
+    public const TRXTYPE_AUTH_ONLY = 'A';
 
-    const TRXTYPE_SALE = 'S';
+    public const TRXTYPE_SALE = 'S';
 
     /**#@-*/
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Verify that there are no files in the old locations of web and php libraries
  */
+
 namespace Magento\Test\Legacy;
 
 class LibraryLocationTest extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Model\Data\ReEncryptorList;
 
-use Throwable;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\HandlerInterface;
 use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\Handler\Error;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\HandlerInterface;
+use Throwable;
 
 /**
  * Generic re-encryptor.

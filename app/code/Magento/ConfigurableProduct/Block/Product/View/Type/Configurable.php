@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Product\View\Type;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -237,7 +240,7 @@ class Configurable extends \Magento\Catalog\Block\Product\View\AbstractView
             'images' => $this->getOptionImages(),
             'index' => isset($options['index']) ? $options['index'] : [],
             'salable' => $options['salable'] ?? [],
-            'canDisplayShowOutOfStockStatus' => $options['canDisplayShowOutOfStockStatus'] ?? false
+            'canDisplayShowOutOfStockStatus' => $options['canDisplayShowOutOfStockStatus'] ?? false,
         ];
 
         if ($currentProduct->hasPreconfiguredValues() && !empty($attributesData['defaultValues'])) {

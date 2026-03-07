@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ return [
                         'instance' => ItemPluginSimple::class,
                     ],
                 ],
-            ]
+            ],
         ],
     ],
     [
@@ -37,7 +39,7 @@ return [
                         'instance' => ItemPluginSimple::class,
                     ],
                 ],
-            ]
+            ],
         ],
     ],
     [
@@ -66,8 +68,8 @@ return [
                         'instance' => Plugin::class,
                     ],
                 ],
-            ]
-        ]
+            ],
+        ],
     ],
     [
         'frontend',
@@ -75,8 +77,8 @@ return [
             Item::class => [
                 'plugins' => [
                     'simple_plugin' => [
-                        'disabled' => true
-                    ]
+                        'disabled' => true,
+                    ],
                 ],
             ],
             Enhanced::class => [
@@ -98,13 +100,13 @@ return [
                 'plugins' => [
                     'simple_plugin' => [],
                 ],
-            ]
-        ]
+            ],
+        ],
     ],
     [
         'emptyscope',
         [
 
-        ]
-    ]
+        ],
+    ],
 ];

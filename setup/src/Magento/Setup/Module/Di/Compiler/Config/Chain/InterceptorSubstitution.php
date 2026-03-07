@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\Compiler\Config\Chain;
 
 use Magento\Setup\Module\Di\Compiler\Config\ModificationInterface;
@@ -20,7 +23,7 @@ class InterceptorSubstitution implements ModificationInterface
         $configKeys = [
             'arguments',
             'preferences',
-            'instanceTypes'
+            'instanceTypes',
         ];
         if ($configKeys != array_keys($config)) {
             return $config;

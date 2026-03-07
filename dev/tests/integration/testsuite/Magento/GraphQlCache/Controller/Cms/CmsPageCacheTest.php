@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class CmsPageCacheTest extends AbstractGraphqlCacheTest
         );
         $this->assertCmsPageCacheTags($pageId, $response);
     }
-    
+
     private function assertCmsPageCacheTags(string $pageId, HttpResponse $response): void
     {
         $requestedCacheTags = explode(',', $response->getHeader('X-Magento-Tags')->getFieldValue());

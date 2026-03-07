@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class OptionsTest extends TestCase
             ProductOption::class,
             ['resource' => $this->_optionResource, 'optionValueFactory' => $optionFactoryMock]
         );
-        
+
         $dateBlock = $this->createPartialMockWithReflection(
             Text::class,
             ['setProduct', 'setOption']
@@ -95,7 +96,7 @@ class OptionsTest extends TestCase
                 'jsonEncoder' => $this->createMock(EncoderInterface::class),
                 'option' => $option,
                 'registry' => $this->createMock(Registry::class),
-                'arrayUtils' => $this->createMock(ArrayUtils::class)
+                'arrayUtils' => $this->createMock(ArrayUtils::class),
             ]
         );
 
@@ -118,7 +119,7 @@ class OptionsTest extends TestCase
                     'itemOptionFactory' => $itemOptFactoryMock,
                     'stockItemFactory' => $stockItemFactoryMock,
                     'productFactory' => $productFactoryMock,
-                    'categoryFactory' => $categoryFactoryMock
+                    'categoryFactory' => $categoryFactoryMock,
                 ]
             )
         );

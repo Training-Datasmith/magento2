@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -615,7 +616,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }]',
-                'Region is required.'
+                'Region is required.',
             ],
             'missed_postal_code' => [
                 'cart_id: "cart_id_value"
@@ -632,7 +633,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }]',
-                '"postcode" is required. Enter and try again.'
+                '"postcode" is required. Enter and try again.',
             ],
             'wrong_required_region' => [
                 'cart_id: "cart_id_value"
@@ -650,7 +651,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }]',
-                'The region_id does not match the selected country or region'
+                'The region_id does not match the selected country or region',
             ],
             'wrong_required_region_name' => [
                 'cart_id: "cart_id_value"
@@ -668,7 +669,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }]',
-                'The region_id does not match the selected country or region'
+                'The region_id does not match the selected country or region',
             ],
         ];
     }
@@ -1207,8 +1208,8 @@ QUERY;
         $cartResponse = $response['setShippingAddressesOnCart']['cart'];
         $this->assertArrayHasKey('shipping_addresses', $cartResponse);
         $shippingAddressResponse = current($cartResponse['shipping_addresses']);
-        $expectedRegionCode = "AE";
-        $expectedRegionLabel = "Armed Forces Middle East";
+        $expectedRegionCode = 'AE';
+        $expectedRegionLabel = 'Armed Forces Middle East';
         $this->assertEquals($expectedRegionCode, $shippingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $shippingAddressResponse['region']['label']);
         $this->assertEquals(10, $shippingAddressResponse['region']['region_id']);
@@ -1275,8 +1276,8 @@ QUERY;
         $cartResponse = $response['setShippingAddressesOnCart']['cart'];
         $this->assertArrayHasKey('shipping_addresses', $cartResponse);
         $shippingAddressResponse = current($cartResponse['shipping_addresses']);
-        $expectedRegionCode = "Some";
-        $expectedRegionLabel = "Some";
+        $expectedRegionCode = 'Some';
+        $expectedRegionLabel = 'Some';
         $this->assertEquals($expectedRegionCode, $shippingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $shippingAddressResponse['region']['label']);
         $this->assertEquals(null, $shippingAddressResponse['region']['region_id']);
@@ -1528,8 +1529,8 @@ QUERY;
         $cartResponse = $response['setShippingAddressesOnCart']['cart'];
         $this->assertArrayHasKey('shipping_addresses', $cartResponse);
         $shippingAddressResponse = current($cartResponse['shipping_addresses']);
-        $expectedRegionCode = "TX";
-        $expectedRegionLabel = "Texas";
+        $expectedRegionCode = 'TX';
+        $expectedRegionLabel = 'Texas';
         $this->assertEquals($expectedRegionCode, $shippingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $shippingAddressResponse['region']['label']);
     }
@@ -1544,7 +1545,7 @@ QUERY;
         $newAddress = [
             'region' => [
                 'region_code' => 'NY',
-                'region_id' => 43
+                'region_id' => 43,
             ],
             'country_code' => 'US',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -1553,7 +1554,7 @@ QUERY;
             'postcode' => '10019',
             'city' => 'Manhattan',
             'firstname' => 'Adam',
-            'lastname' => 'Phillis'
+            'lastname' => 'Phillis',
         ];
 
         $mutation
@@ -1601,7 +1602,7 @@ MUTATION;
         $this->assertEquals(null, $response['createCustomerAddress']['customer_id']);
         $this->assertArrayHasKey('id', $response['createCustomerAddress']);
         $id = $response['createCustomerAddress']['id'];
-        $this->assertEquals(43, $response["createCustomerAddress"]["region"]["region_id"]);
+        $this->assertEquals(43, $response['createCustomerAddress']['region']['region_id']);
 
         $maskedQuoteId = $this->getMaskedQuoteIdByReservedOrderId->execute('test_quote');
 
@@ -1636,10 +1637,10 @@ QUERY;
             '',
             $this->getHeaderMap($userName, $password)
         );
-        $cartResponse = $shippingAddressesResponse["setShippingAddressesOnCart"]["cart"]["shipping_addresses"][0];
+        $cartResponse = $shippingAddressesResponse['setShippingAddressesOnCart']['cart']['shipping_addresses'][0];
         $this->assertEquals(
             43,
-            $cartResponse["region"]["region_id"]
+            $cartResponse['region']['region_id']
         );
     }
 
@@ -1897,7 +1898,7 @@ QUERY;
             ['response_field' => 'telephone', 'expected_value' => '88776655'],
             ['response_field' => 'country', 'expected_value' => ['code' => 'US', 'label' => 'US']],
             ['response_field' => '__typename', 'expected_value' => 'ShippingCartAddress'],
-            ['response_field' => 'customer_notes', 'expected_value' => 'Test note']
+            ['response_field' => 'customer_notes', 'expected_value' => 'Test note'],
         ];
 
         $this->assertResponseFields($shippingAddressResponse, $assertionMap);
@@ -1919,7 +1920,7 @@ QUERY;
             ['response_field' => 'postcode', 'expected_value' => '20816'],
             ['response_field' => 'telephone', 'expected_value' => '3273581975'],
             ['response_field' => 'region', 'expected_value' => ['code' => '58', 'label' => 'Nièvre']],
-            ['response_field' => 'country', 'expected_value' => ['code' => 'FR', 'label' => 'FR']]
+            ['response_field' => 'country', 'expected_value' => ['code' => 'FR', 'label' => 'FR']],
         ];
 
         $this->assertResponseFields($shippingAddressResponse, $assertionMap);
@@ -1939,7 +1940,7 @@ QUERY;
             ['response_field' => 'street', 'expected_value' => [0 => 'Green str, 67']],
             ['response_field' => 'city', 'expected_value' => 'CityM'],
             ['response_field' => 'postcode', 'expected_value' => '75477'],
-            ['response_field' => 'telephone', 'expected_value' => '3468676']
+            ['response_field' => 'telephone', 'expected_value' => '3468676'],
         ];
 
         $this->assertResponseFields($shippingAddressResponse, $assertionMap);
@@ -2021,7 +2022,7 @@ QUERY;
     private function getSetPaymentMethodQuery(
         string $maskedQuoteId,
         string $methodCode
-    ) : string {
+    ): string {
         return <<<QUERY
 mutation {
   setPaymentMethodOnCart(input: {
@@ -2145,7 +2146,7 @@ QUERY;
             ['response_field' => 'postcode', 'expected_value' => '887766'],
             ['response_field' => 'telephone', 'expected_value' => ''],
             ['response_field' => 'country', 'expected_value' => ['code' => 'US', 'label' => 'US']],
-            ['response_field' => '__typename', 'expected_value' => 'ShippingCartAddress']
+            ['response_field' => '__typename', 'expected_value' => 'ShippingCartAddress'],
         ];
 
         $this->assertResponseFields($addressResponse, $assertionMap);
@@ -2158,7 +2159,7 @@ QUERY;
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ]),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
     ]

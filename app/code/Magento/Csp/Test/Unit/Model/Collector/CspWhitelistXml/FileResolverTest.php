@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Test\Unit\Model\Collector\CspWhitelistXml;
 
+use Magento\Csp\Model\Collector\CspWhitelistXml\FileResolver;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Config\CompositeFileIteratorFactory;
+use Magento\Framework\Config\FileResolverInterface;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\View\Design\Theme\CustomizationInterface;
+use Magento\Framework\View\Design\Theme\CustomizationInterfaceFactory;
 use Magento\Framework\View\Design\ThemeInterface;
+use Magento\Framework\View\DesignInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Config\FileResolverInterface;
-use Magento\Csp\Model\Collector\CspWhitelistXml\FileResolver;
-use Magento\Framework\View\DesignInterface;
-use Magento\Framework\Config\CompositeFileIteratorFactory;
-use Magento\Framework\View\Design\Theme\CustomizationInterfaceFactory;
-use Magento\Framework\Filesystem\Directory\ReadInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
 
 class FileResolverTest extends TestCase
 {
@@ -139,7 +140,7 @@ class FileResolverTest extends TestCase
             ->with(
                 [
                     'paths' => array_reverse([$themeFilesPath.'/etc/'.$fileName]),
-                    'existingIterator' => $fileList
+                    'existingIterator' => $fileList,
                 ]
             )
             ->willReturn($fileList);
@@ -177,8 +178,8 @@ class FileResolverTest extends TestCase
             [
                 'global',
                 'csp_whitelist.xml',
-                ['anyvendor/anymodule/etc/csp_whitelist.xml']
-            ]
+                ['anyvendor/anymodule/etc/csp_whitelist.xml'],
+            ],
         ];
     }
 
@@ -194,14 +195,14 @@ class FileResolverTest extends TestCase
                 'frontend',
                 'csp_whitelist.xml',
                 ['themevendor/theme/etc/csp_whitelist.xml'],
-                'themevendor/theme'
+                'themevendor/theme',
             ],
             [
                 'adminhtml',
                 'csp_whitelist.xml',
                 ['adminthemevendor/admintheme/etc/csp_whitelist.xml'],
-                'adminthemevendor/admintheme'
-            ]
+                'adminthemevendor/admintheme',
+            ],
         ];
     }
 }

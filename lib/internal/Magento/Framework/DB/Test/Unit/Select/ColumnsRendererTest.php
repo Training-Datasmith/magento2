@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\ColumnsRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ColumnsRendererTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Indexer\Test\Unit\Console\Command;
 
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Mview\View;
 use Magento\Framework\Mview\View\Changelog;
 use Magento\Indexer\Console\Command\IndexerStatusCommand;
 use Magento\Indexer\Model\Mview\View\State;
-use Magento\Framework\Event\ManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Tester\CommandTester;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -44,7 +45,7 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
 
         $changelog->expects($this->any())
             ->method('getList')
-            ->willReturn(range(0, $data['view']['changelog']['list_size']-1));
+            ->willReturn(range(0, $data['view']['changelog']['list_size'] - 1));
 
         /** @var State|MockObject $stateMock */
         $stateMock = $this->getStateMock();
@@ -135,9 +136,9 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
             . '---------------------+';
 
         $this->assertCount(8, $linesOutput, 'There should be 8 lines output. 3 Spacers, 1 header, 4 content.');
-        $this->assertEquals($linesOutput[0], $spacer, "Lines 0, 2, 7 should be spacer lines");
-        $this->assertEquals($linesOutput[2], $spacer, "Lines 0, 2, 7 should be spacer lines");
-        $this->assertEquals($linesOutput[7], $spacer, "Lines 0, 2, 7 should be spacer lines");
+        $this->assertEquals($linesOutput[0], $spacer, 'Lines 0, 2, 7 should be spacer lines');
+        $this->assertEquals($linesOutput[2], $spacer, 'Lines 0, 2, 7 should be spacer lines');
+        $this->assertEquals($linesOutput[7], $spacer, 'Lines 0, 2, 7 should be spacer lines');
 
         $headerValues = array_values(array_filter(explode('|', $linesOutput[1])));
         $this->assertEquals('ID', trim($headerValues[0]));
@@ -199,9 +200,9 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
                                 'updated' => '2017-01-01 11:11:11',
                             ],
                             'changelog' => [
-                                'list_size' => 10
-                            ]
-                        ]
+                                'list_size' => 10,
+                            ],
+                        ],
                     ],
                     'indexer_2' => [
                         'indexer_id' => 'indexer_2',
@@ -214,9 +215,9 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
                                 'updated' => '2017-01-01 11:11:11',
                             ],
                             'changelog' => [
-                                'list_size' => 99999999
-                            ]
-                        ]
+                                'list_size' => 99999999,
+                            ],
+                        ],
                     ],
                     'indexer_3' => [
                         'indexer_id' => 'indexer_3',
@@ -229,9 +230,9 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
                                 'updated' => '2017-01-01 11:11:11',
                             ],
                             'changelog' => [
-                                'list_size' => 100
-                            ]
-                        ]
+                                'list_size' => 100,
+                            ],
+                        ],
                     ],
                     'indexer_4' => [
                         'indexer_id' => 'indexer_4',
@@ -244,9 +245,9 @@ class IndexerStatusCommandTest extends AbstractIndexerCommandCommonSetup
                                 'updated' => '2017-01-01 11:11:11',
                             ],
                             'changelog' => [
-                                'list_size' => 20
-                            ]
-                        ]
+                                'list_size' => 20,
+                            ],
+                        ],
                     ],
                 ],
             ],

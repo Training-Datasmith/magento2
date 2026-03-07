@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\ImportExport\Controller\Adminhtml\Export\File;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\ValidatorException;
-use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
-use Magento\Framework\Filesystem;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Exception\ValidatorException;
+use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteFactory;
+use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 
 /**
  * Controller that delete file by name.
@@ -25,7 +26,7 @@ class Delete extends ExportController implements HttpPostActionInterface
     /**
      * Url to this controller
      */
-    const URL = 'adminhtml/export_file/delete';
+    public const URL = 'adminhtml/export_file/delete';
 
     /**
      * @var Filesystem

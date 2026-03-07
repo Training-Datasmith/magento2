@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,5 +14,5 @@ return [
                 'code_one_two' => ['code' => 'code_one_two', 'locked' => false],
             ],
         ],
-    ]
+    ],
 ];

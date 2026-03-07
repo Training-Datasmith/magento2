@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class Details extends Action implements HttpGetActionInterface
             $responseCode = self::HTTP_OK;
             $responseContent = [
                 'success' => true,
-                'imageDetails' => $details
+                'imageDetails' => $details,
             ];
         } catch (LocalizedException $exception) {
             $responseCode = self::HTTP_BAD_REQUEST;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Multishipping\Block\DataProviders;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Checkout\Model\CompositeConfigProvider;
 use Magento\Customer\Model\Address\Config as AddressConfig;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Quote\Model\Quote\Address;
 
 /**

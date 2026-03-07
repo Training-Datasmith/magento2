@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\UseCase;
 
+use Magento\Framework\MessageQueue\PublisherInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\MessageQueue\PublisherInterface;
-use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
+use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 
 /**
  * Base test case for message queue tests.
@@ -53,14 +56,14 @@ class QueueTestCaseAbstract extends \PHPUnit\Framework\TestCase
     protected function setUp(): void
     {
         $this->objectManager = Bootstrap::getObjectManager();
-        $this->logFilePath = TESTS_TEMP_DIR . "/MessageQueueTestLog.txt";
+        $this->logFilePath = TESTS_TEMP_DIR . '/MessageQueueTestLog.txt';
         $this->publisherConsumerController = $this->objectManager->create(
             PublisherConsumerController::class,
             [
                 'consumers' => $this->consumers,
                 'logFilePath' => $this->logFilePath,
                 'maxMessages' => $this->maxMessages,
-                'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams()
+                'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams(),
             ]
         );
 

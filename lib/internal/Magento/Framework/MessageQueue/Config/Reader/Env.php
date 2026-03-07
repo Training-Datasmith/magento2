@@ -1,25 +1,28 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Config\Reader;
 
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\MessageQueue\Config\Reader\Env\Converter\Publisher as PublisherConverter;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\MessageQueue\Config\Reader\Env\Converter\Publisher as PublisherConverter;
 
 /**
  * Communication configuration reader. Reads data from env.php.
  */
 class Env implements \Magento\Framework\Config\ReaderInterface
 {
-    const ENV_QUEUE  = 'queue';
-    const ENV_PUBLISHERS  = 'publishers';
-    const ENV_TOPICS = 'topics';
-    const ENV_CONSUMERS = 'consumers';
-    const ENV_CONSUMER_CONNECTION = 'connection';
-    const ENV_CONSUMER_MAX_MESSAGES = 'max_messages';
+    public const ENV_QUEUE  = 'queue';
+    public const ENV_PUBLISHERS  = 'publishers';
+    public const ENV_TOPICS = 'topics';
+    public const ENV_CONSUMERS = 'consumers';
+    public const ENV_CONSUMER_CONNECTION = 'connection';
+    public const ENV_CONSUMER_MAX_MESSAGES = 'max_messages';
 
     /**
      * @var DeploymentConfig

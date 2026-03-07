@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,12 +33,12 @@ class HiddenTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $escaper = $objectManager->getObject(
@@ -46,7 +47,7 @@ class HiddenTest extends TestCase
         $this->element = $objectManager->getObject(
             Hidden::class,
             [
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
     }

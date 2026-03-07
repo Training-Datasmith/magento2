@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class CustomerAddressDataProviderTest extends TestCase
      * @return void
      */
     #[DataProvider('createAddressesDataProvider')]
-    public function testGetAddressDataByCustomerForAllowedCountries($customerId, $allowedCountries) : void
+    public function testGetAddressDataByCustomerForAllowedCountries($customerId, $allowedCountries): void
     {
         /** @var ConfigInterface $config */
         $config = $this->objectManager->get(ConfigInterface::class);

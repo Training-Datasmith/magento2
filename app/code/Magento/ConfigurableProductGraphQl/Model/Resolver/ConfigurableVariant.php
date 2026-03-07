@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProductGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Attributes\Collection as AttributeCollection;
+use Magento\CatalogGraphQl\Model\Resolver\Products\Query\FieldSelection;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as Type;
 use Magento\ConfigurableProductGraphQl\Model\Options\Collection as OptionCollection;
 use Magento\ConfigurableProductGraphQl\Model\Variant\Collection;
@@ -18,7 +19,7 @@ use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\Resolver\ValueFactory;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\CatalogGraphQl\Model\Resolver\Products\Query\FieldSelection;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * @inheritdoc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\RemoteStorage\Console\Command;
 
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\RemoteStorage\Model\Config;
 use Magento\RemoteStorage\Model\Synchronizer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\RemoteStorage\Model\Config;
 
 /**
  * Synchronizes local storage with remote storage.

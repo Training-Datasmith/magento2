@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -186,8 +187,8 @@ class ConfigOptionsListTest extends TestCase
                     'virtualhost' => 'virtual host',
                     'ssl' => 'ssl',
                     'ssl_options' => ['ssl_option' => 'test'],
-                ]
-                ]
+                ],
+                ],
                 ],
             ],
             [
@@ -208,8 +209,8 @@ class ConfigOptionsListTest extends TestCase
                     'virtualhost' => 'virtual host',
                     'ssl' => 'ssl',
                     'ssl_options' => ['ssl_option' => 'test'],
-                ]
-                ]
+                ],
+                ],
                 ],
             ],
             [
@@ -219,7 +220,7 @@ class ConfigOptionsListTest extends TestCase
                     ConfigOptionsList::INPUT_KEY_QUEUE_AMQP_USER => ConfigOptionsList::DEFAULT_AMQP_USER,
                     ConfigOptionsList::INPUT_KEY_QUEUE_AMQP_PASSWORD => ConfigOptionsList::DEFAULT_AMQP_PASSWORD,
                     ConfigOptionsList::INPUT_KEY_QUEUE_AMQP_SSL => ConfigOptionsList::DEFAULT_AMQP_SSL,
-                    ConfigOptionsList::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST => ConfigOptionsList::DEFAULT_AMQP_VIRTUAL_HOST
+                    ConfigOptionsList::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST => ConfigOptionsList::DEFAULT_AMQP_VIRTUAL_HOST,
                 ],
                 [],
             ],

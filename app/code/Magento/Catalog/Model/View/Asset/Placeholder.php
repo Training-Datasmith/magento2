@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Catalog\Model\View\Asset;
 
+use Magento\Catalog\Model\Product\Media\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
@@ -15,7 +18,6 @@ use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\File\NotFoundException;
 use Magento\Framework\View\Asset\LocalInterface;
 use Magento\Framework\View\Asset\Repository;
-use Magento\Catalog\Model\Product\Media\ConfigInterface;
 
 /**
  * A locally available image placeholder file asset that can be referred with a file type

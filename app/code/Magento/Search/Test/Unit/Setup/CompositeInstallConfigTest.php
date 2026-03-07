@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -48,8 +49,8 @@ class CompositeInstallConfigTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'installConfigList' => [
                     'first' => $this->firstInstallConfigMock,
-                    'second' => $this->secondInstallConfigMock
-                ]
+                    'second' => $this->secondInstallConfigMock,
+                ],
             ]
         );
     }
@@ -58,7 +59,7 @@ class CompositeInstallConfigTest extends TestCase
     {
         $testInput = [
             'search-engine' => 'second',
-            'test-option' => 'testValue'
+            'test-option' => 'testValue',
         ];
 
         $this->firstInstallConfigMock->expects($this->never())->method('configure');

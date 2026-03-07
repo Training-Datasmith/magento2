@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\RegisterProductSaleInterface;
 use Magento\CatalogInventory\Api\RevertProductSaleInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockManagementInterface;
 use Magento\CatalogInventory\Model\ResourceModel\QtyCounterInterface;
-use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\CatalogInventory\Model\ResourceModel\Stock as ResourceStock;
+use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
@@ -101,7 +104,7 @@ class StockManagement implements StockManagementInterface, RegisterProductSaleIn
     public function registerProductsSale($items, $websiteId = null)
     {
         //if (!$websiteId) {
-            $websiteId = $this->stockConfiguration->getDefaultScopeId();
+        $websiteId = $this->stockConfiguration->getDefaultScopeId();
         //}
         $this->getResource()->beginTransaction();
         $lockedItems = $this->getResource()->lockProductsStock(array_keys($items), $websiteId);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\ConfigurableProduct\Model\Product\Type\VariationMatrix;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class VariationMatrixTest extends TestCase
@@ -59,7 +60,7 @@ class VariationMatrixTest extends TestCase
                                 'value_index' => '3',
                                 'pricing_value' => '',
                                 'is_percent' => '0',
-                                'include' => '1'
+                                'include' => '1',
                             ],
                         ],
                     ],
@@ -71,7 +72,7 @@ class VariationMatrixTest extends TestCase
                                 'value_index' => '4',
                                 'pricing_value' => '',
                                 'is_percent' => '0',
-                                'include' => '1'
+                                'include' => '1',
                             ],
                         ],
                     ],
@@ -84,28 +85,28 @@ class VariationMatrixTest extends TestCase
                                 'value_index' => '3',
                                 'pricing_value' => '',
                                 'is_percent' => '0',
-                                'include' => '1'
+                                'include' => '1',
                             ],
                             [
                                 'value_index' => '4',
                                 'pricing_value' => '',
                                 'is_percent' => '0',
-                                'include' => '1'
+                                'include' => '1',
                             ],
                         ],
                         'attribute_id' => '130',
                         'options' => [
                             [
                                 'value' => '3',
-                                'label' => 'red'
+                                'label' => 'red',
                             ],
                             ['value' => '4',
-                                'label' => 'blue'
-                            ]
+                                'label' => 'blue',
+                            ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

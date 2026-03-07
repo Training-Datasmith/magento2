@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\EntityManager;
 
 /**
@@ -23,7 +26,7 @@ class TypeResolver
         // phpstan:ignore "Class Magento\SalesRule\Model\Rule\Interceptor not found."
         \Magento\SalesRule\Model\Rule\Interceptor::class => \Magento\SalesRule\Api\Data\RuleInterface::class,
         // phpstan:ignore "Class Magento\SalesRule\Model\Rule\Proxy not found."
-        \Magento\SalesRule\Model\Rule\Proxy::class => \Magento\SalesRule\Api\Data\RuleInterface::class
+        \Magento\SalesRule\Model\Rule\Proxy::class => \Magento\SalesRule\Api\Data\RuleInterface::class,
     ];
 
     /**

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Helper for EAV functionality in integration tests.
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Helper;
 
 class Eav

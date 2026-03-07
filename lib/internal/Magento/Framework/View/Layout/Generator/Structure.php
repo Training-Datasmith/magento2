@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Generator;
 
-use Magento\Framework\View\Layout\Pool as LayoutPool;
-use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\Element\UiComponent\LayoutInterface;
+use Magento\Framework\View\Element\UiComponentInterface;
+use Magento\Framework\View\Layout\Pool as LayoutPool;
 
 /**
  * Class Structure

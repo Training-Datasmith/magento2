@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class Scheduler
                     'topic_name' => self::TOPIC_NAME,
                     'serialized_data' => $this->serializer->serialize(['store_id' => $storeId]),
                     'status' => OperationInterface::STATUS_TYPE_OPEN,
-                ]
+                ],
             ]
         );
         $bulkDescription = __('Synchronize website specific attributes values');

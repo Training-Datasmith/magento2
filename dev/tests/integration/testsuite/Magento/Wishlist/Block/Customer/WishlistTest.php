@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ use PHPUnit\Framework\TestCase;
 class WishlistTest extends TestCase
 {
     private const ITEMS_COUNT_XPATH = "//div[contains(@class, 'pager')]//span[contains(@class, 'toolbar-number')"
-    . " and contains(text(), '%s Item')]";
+        . " and contains(text(), '%s Item')]";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

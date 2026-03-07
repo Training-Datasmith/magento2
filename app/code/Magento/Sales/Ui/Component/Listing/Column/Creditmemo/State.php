@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Ui\Component\Listing\Column\Creditmemo;
 
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
+use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
  * Class State

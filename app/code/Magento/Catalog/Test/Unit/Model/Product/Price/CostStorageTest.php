@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ use Magento\Catalog\Model\Product\Price\Validation\InvalidSkuProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\Result;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Exception\InputException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -118,13 +119,13 @@ class CostStorageTest extends TestCase
             [
                 'row_id' => 1,
                 'value' => 15,
-                'store_id' => 1
+                'store_id' => 1,
             ],
             [
                 'row_id' => 2,
                 'value' => 35,
-                'store_id' => 1
-            ]
+                'store_id' => 1,
+            ],
         ];
         $this->invalidSkuProcessor
             ->expects($this->once())
@@ -185,8 +186,8 @@ class CostStorageTest extends TestCase
         $sku = 'sku_1';
         $idsBySku = [
             'sku_1' => [
-                1 => Type::TYPE_VIRTUAL
-            ]
+                1 => Type::TYPE_VIRTUAL,
+            ],
         ];
         $this->costInterface->expects($this->atLeastOnce())->method('getSku')->willReturn($sku);
         $this->invalidSkuProcessor
@@ -214,8 +215,8 @@ class CostStorageTest extends TestCase
             [
                 'store_id' => 1,
                 'row_id' => 1,
-                'value' => 15
-            ]
+                'value' => 15,
+            ],
         ];
         $this->pricePersistence->expects($this->once())->method('update')->with($formattedPrices);
         $this->validationResult

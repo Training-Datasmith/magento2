@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class PackageTest extends TestCase
 {
-    const SAMPLE_DATA =
+    public const SAMPLE_DATA =
         '{"foo":"1","bar":"2","baz":["3","4"],"nested":{"one":"5","two":"6",
         "magento/theme-adminhtml-backend":7, "magento/theme-frontend-luma":8}}';
 

@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Source;
 
 use Magento\Deploy\Package\Package;
+use Magento\Deploy\Package\PackageFileFactory;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Deploy\Package\PackageFileFactory;
 
 /**
  * Collect files eligible for deployment from library
@@ -70,7 +73,7 @@ class Lib implements SourceInterface
                 'locale' => null,
                 'module' => null,
                 'fileName' => $fileName,
-                'sourcePath' => $fullPath
+                'sourcePath' => $fullPath,
             ];
             $files[] = $this->packageFileFactory->create($params);
         }

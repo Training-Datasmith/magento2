@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -14,42 +16,8 @@ use Magento\Store\Model\Store;
  */
 class Baseurl implements \Magento\Framework\Notification\MessageInterface
 {
-    /**
-     * @var \Magento\Framework\UrlInterface
-     */
-    protected $_urlBuilder;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $_config;
-
-    /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
-     * @var \Magento\Framework\App\Config\ValueFactory
-     */
-    protected $_configValueFactory;
-
-    /**
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\UrlInterface $urlBuilder
-     * @param \Magento\Framework\App\Config\ValueFactory $configValueFactory
-     */
-    public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $config,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\UrlInterface $urlBuilder,
-        \Magento\Framework\App\Config\ValueFactory $configValueFactory
-    ) {
-        $this->_urlBuilder = $urlBuilder;
-        $this->_config = $config;
-        $this->_storeManager = $storeManager;
-        $this->_configValueFactory = $configValueFactory;
+    public function __construct(protected \Magento\Framework\App\Config\ScopeConfigInterface $_config, protected \Magento\Store\Model\StoreManagerInterface $_storeManager, protected \Magento\Framework\UrlInterface $_urlBuilder, protected \Magento\Framework\App\Config\ValueFactory $_configValueFactory)
+    {
     }
 
     /**
@@ -97,10 +65,8 @@ class Baseurl implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Retrieve unique message identity
-     *
-     * @return string
      */
-    public function getIdentity()
+    public function getIdentity(): string
     {
         // md5() here is not for cryptographic use.
         // phpcs:ignore Magento2.Security.InsecureFunction
@@ -109,10 +75,8 @@ class Baseurl implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Check whether
-     *
-     * @return bool
      */
-    public function isDisplayed()
+    public function isDisplayed(): bool
     {
         return (bool)$this->_getConfigUrl();
     }
@@ -134,10 +98,8 @@ class Baseurl implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Retrieve message severity
-     *
-     * @return int
      */
-    public function getSeverity()
+    public function getSeverity(): int
     {
         return self::SEVERITY_CRITICAL;
     }

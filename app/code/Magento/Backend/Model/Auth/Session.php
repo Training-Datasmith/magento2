@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Backend\Model\Auth;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\CookieManagerInterface;
-use Magento\Framework\Message\ManagerInterface;
 
 /**
  * Backend Auth session model

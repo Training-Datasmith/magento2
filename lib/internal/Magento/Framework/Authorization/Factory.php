@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Factory class for \Magento\Framework\Authorization
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Authorization;
 
 use Magento\Framework\Authorization;
@@ -15,7 +18,7 @@ class Factory
     /**
      * Entity class name
      */
-    const CLASS_NAME = \Magento\Framework\Authorization::class;
+    public const CLASS_NAME = \Magento\Framework\Authorization::class;
 
     /**
      * Object Manager instance

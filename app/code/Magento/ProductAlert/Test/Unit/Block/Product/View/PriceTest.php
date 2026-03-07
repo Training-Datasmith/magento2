@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class PriceTest extends TestCase
         return [
             'price alert is not allowed' => [false, true],
             'no product price' => [true, false],
-            'price alert is not allowed and no product price' => [false, false]
+            'price alert is not allowed and no product price' => [false, false],
         ];
     }
 

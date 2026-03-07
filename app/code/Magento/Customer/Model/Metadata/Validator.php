@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata;
 
 class Validator extends \Magento\Eav\Model\Validator\Attribute\Data

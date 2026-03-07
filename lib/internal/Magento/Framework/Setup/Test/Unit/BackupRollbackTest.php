@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class BackupRollbackTest extends TestCase
             ->method('get')
             ->willReturnMap([
                 [
-                    State::class, $this->createMock(State::class)
+                    State::class, $this->createMock(State::class),
                 ],
                 [ConfigLoaderInterface::class, $configLoader],
             ]);

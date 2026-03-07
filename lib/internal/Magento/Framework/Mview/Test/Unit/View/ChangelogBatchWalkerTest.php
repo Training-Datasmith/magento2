@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\DB\Query\Generator;
 use Magento\Framework\DB\Select;
-use Magento\Framework\Mview\View\ChangelogInterface;
 use Magento\Framework\Mview\View\ChangelogBatchWalker;
 use Magento\Framework\Mview\View\ChangelogBatchWalker\IdsContext;
 use Magento\Framework\Mview\View\ChangelogBatchWalker\IdsSelectBuilderInterface;
 use Magento\Framework\Mview\View\ChangelogBatchWalker\IdsTableBuilderInterface;
+use Magento\Framework\Mview\View\ChangelogInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

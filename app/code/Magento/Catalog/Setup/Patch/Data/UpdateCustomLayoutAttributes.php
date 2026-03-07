@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Setup\Patch\Data;
 
-use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Setup\CategorySetup;
 use Magento\Catalog\Setup\CategorySetupFactory;
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Category;
+use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
 
 /**
  * Add new custom layout related attributes.
@@ -81,7 +82,7 @@ class UpdateCustomLayoutAttributes implements DataPatchInterface
                 'group' => 'Design',
                 'is_used_in_grid' => false,
                 'is_visible_in_grid' => false,
-                'is_filterable_in_grid' => false
+                'is_filterable_in_grid' => false,
             ]
         );
 
@@ -100,7 +101,7 @@ class UpdateCustomLayoutAttributes implements DataPatchInterface
                 'group' => 'Custom Design',
                 'is_used_in_grid' => false,
                 'is_visible_in_grid' => false,
-                'is_filterable_in_grid' => false
+                'is_filterable_in_grid' => false,
             ]
         );
 

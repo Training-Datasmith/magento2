@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ImageTest extends \PHPUnit\Framework\TestCase
             'entityTypeCode' => 'customer_address',
             'formCode' => 'customer_address_edit',
             'isAjax' => false,
-            'value' => $imageFile
+            'value' => $imageFile,
         ];
 
         $expectedPath = $this->mediaDirectory->getAbsolutePath('customer_address' . $this->expectedFileName);
@@ -116,7 +117,7 @@ class ImageTest extends \PHPUnit\Framework\TestCase
             'entityTypeCode' => $entityTypeCode,
             'formCode' => 'customer_edit',
             'isAjax' => false,
-            'value' => $imageFile
+            'value' => $imageFile,
         ];
 
         /** @var Image $image */
@@ -154,7 +155,7 @@ class ImageTest extends \PHPUnit\Framework\TestCase
             'entityTypeCode' => $entityTypeCode,
             'formCode' => 'customer_edit',
             'isAjax' => false,
-            'value' => $imageFile
+            'value' => $imageFile,
         ];
 
         /** @var Image $image */
@@ -183,7 +184,7 @@ class ImageTest extends \PHPUnit\Framework\TestCase
             'entityTypeCode' => $entityTypeCode,
             'formCode' => 'customer_edit',
             'isAjax' => false,
-            'value' => $imageFile
+            'value' => $imageFile,
         ];
 
         $image = $this->objectManager->create(\Magento\Customer\Model\Metadata\Form\Image::class, $params);

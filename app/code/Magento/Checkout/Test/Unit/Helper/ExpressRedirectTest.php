@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Url\Helper\Data;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ExpressRedirectTest extends TestCase
 {
@@ -95,7 +96,7 @@ class ExpressRedirectTest extends TestCase
                     'getResponse',
                     'getCustomerBeforeAuthUrl',
                     'getLoginUrl',
-                    'getRedirectActionName'
+                    'getRedirectActionName',
                 ]
             )->getMock();
         $expressRedirectMock->method('getActionFlagList')->willReturn(
@@ -184,7 +185,7 @@ class ExpressRedirectTest extends TestCase
         return [
             [[], 'beforeCustomerUrl', 'beforeCustomerUrlDEFAULT'],
             [['actionKey' => true], null, 'beforeCustomerUrlDEFAULT'],
-            [[], 'beforeCustomerUrl', null]
+            [[], 'beforeCustomerUrl', null],
         ];
     }
 }

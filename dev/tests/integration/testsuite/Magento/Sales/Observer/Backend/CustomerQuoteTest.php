@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Observer\Backend;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -38,11 +41,11 @@ class CustomerQuoteTest extends \PHPUnit\Framework\TestCase
             ->setCustomerGroupId($customer->getGroupId())
             ->save();
 
-        $this->assertNotNull($customer->getGroupId(), "Precondition failed: Customer group is not set.");
+        $this->assertNotNull($customer->getGroupId(), 'Precondition failed: Customer group is not set.');
         $this->assertEquals(
             $customer->getGroupId(),
             $quote->getCustomerGroupId(),
-            "Precondition failed: Customer group in quote is invalid."
+            'Precondition failed: Customer group in quote is invalid.'
         );
 
         /**

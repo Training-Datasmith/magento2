@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ class AbstractActionTest extends TestCase
 
         $this->assertEmpty(
             $found,
-            "The following new controller(s) extend " . AbstractAction::class . "\r\n"
-            . "All new controller classes must implement " . ActionInterface::class . " instead.\r\n"
+            'The following new controller(s) extend ' . AbstractAction::class . "\r\n"
+            . 'All new controller classes must implement ' . ActionInterface::class . " instead.\r\n"
             . print_r($found, true)
         );
     }

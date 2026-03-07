@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class RemoveProductWeeData
         int $attributeSetId
     ) {
         if ($object->getFrontendInput() == 'weee') {
-            $select =$this->resourceConnection->getConnection()->select()
+            $select = $this->resourceConnection->getConnection()->select()
                 ->from(['b' => $this->resourceConnection->getTableName('weee_tax')])
                 ->join(
                     ['e' => $object->getEntity()->getEntityTable()],

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +30,7 @@ class Factory
     /**
      * Default strategy key
      */
-    const DEFAULT_STRATEGY = \Magento\Framework\App\View\Asset\MaterializationStrategy\Copy::class;
+    public const DEFAULT_STRATEGY = \Magento\Framework\App\View\Asset\MaterializationStrategy\Copy::class;
 
     /**
      * @param ObjectManagerInterface $objectManager

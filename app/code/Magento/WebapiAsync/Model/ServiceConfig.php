@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\WebapiAsync\Model;
 
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Webapi\Model\Cache\Type\Webapi as WebapiCache;
-use Magento\WebapiAsync\Model\ServiceConfig\Converter;
 use Magento\WebapiAsync\Model\ServiceConfig\Reader;
 
 /**
@@ -21,7 +21,7 @@ use Magento\WebapiAsync\Model\ServiceConfig\Reader;
  */
 class ServiceConfig
 {
-    const CACHE_ID = 'webapi_async_service_config';
+    public const CACHE_ID = 'webapi_async_service_config';
 
     /**
      * @var WebapiCache

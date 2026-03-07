@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -25,15 +27,15 @@ use Magento\Tax\Model\ResourceModel\Calculation\Rate\CollectionFactory;
  */
 class TaxRulesFixture extends Fixture
 {
-    const DEFAULT_CUSTOMER_TAX_CLASS_ID = 3;
+    public const DEFAULT_CUSTOMER_TAX_CLASS_ID = 3;
 
-    const DEFAULT_PRODUCT_TAX_CLASS_ID = 2;
+    public const DEFAULT_PRODUCT_TAX_CLASS_ID = 2;
 
-    const DEFAULT_TAX_MODE = 'VAT';
+    public const DEFAULT_TAX_MODE = 'VAT';
 
-    const DEFAULT_TAX_RATE = 5;
+    public const DEFAULT_TAX_RATE = 5;
 
-    const DEFAULT_TAX_COUNTRY = 'US';
+    public const DEFAULT_TAX_COUNTRY = 'US';
 
     /**
      * @var array config paths and values for tax modes
@@ -55,7 +57,7 @@ class TaxRulesFixture extends Fixture
             Config::XML_PATH_DISPLAY_CART_SUBTOTAL => Config::DISPLAY_TYPE_INCLUDING_TAX,
             Config::XML_PATH_DISPLAY_CART_SHIPPING => Config::DISPLAY_TYPE_INCLUDING_TAX,
             Custom::XML_PATH_TAX_WEEE_ENABLE => 1,
-        ]
+        ],
     ];
 
     /**

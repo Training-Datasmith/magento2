@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test for filesystem themes collection
  */
+
 namespace Magento\Theme\Model\Theme;
 
 use Magento\Framework\App\Area;
@@ -84,7 +87,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                     'preview_image' => null,
                     'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_PHYSICAL,
                 ],
-            ]
+            ],
         ];
     }
 

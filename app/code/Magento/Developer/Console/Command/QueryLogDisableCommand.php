@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class QueryLogDisableCommand extends Command
 {
     public const COMMAND_NAME = 'dev:query-log:disable';
 
-    public const SUCCESS_MESSAGE = "DB query logging disabled.";
+    public const SUCCESS_MESSAGE = 'DB query logging disabled.';
 
     /**
      * @var Writer
@@ -60,7 +62,7 @@ class QueryLogDisableCommand extends Command
         $data = [LoggerProxy::PARAM_ALIAS => LoggerProxy::LOGGER_ALIAS_DISABLED];
         $this->deployConfigWriter->saveConfig([ConfigFilePool::APP_ENV => [LoggerProxy::CONF_GROUP_NAME => $data]]);
 
-        $output->writeln("<info>". self::SUCCESS_MESSAGE . "</info>");
+        $output->writeln('<info>'. self::SUCCESS_MESSAGE . '</info>');
 
         return Cli::RETURN_SUCCESS;
     }

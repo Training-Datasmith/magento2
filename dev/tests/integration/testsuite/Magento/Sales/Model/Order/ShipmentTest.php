@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -241,16 +242,22 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 'data' => [
                     'order' => $order,
                     'shipment' => $shipment,
-                ]
+                ],
             ]
         );
 
         $tracks = $block->getShipment()->getTracksCollection()->getItems();
-        $this->assertEquals(1, count($tracks),
-            'There should be only one Tracking item in collection');
+        $this->assertEquals(
+            1,
+            count($tracks),
+            'There should be only one Tracking item in collection'
+        );
 
         $track = array_pop($tracks);
-        $this->assertEquals($shipment->getId(), $track->getParentId(),
-            'Check that the Tracking belongs to the Shipment');
+        $this->assertEquals(
+            $shipment->getId(),
+            $track->getParentId(),
+            'Check that the Tracking belongs to the Shipment'
+        );
     }
 }

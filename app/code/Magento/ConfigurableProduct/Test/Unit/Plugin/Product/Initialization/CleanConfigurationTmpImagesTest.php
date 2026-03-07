@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class CleanConfigurationTmpImagesTest extends TestCase
                 'fileStorageDb' => $this->fileStorageDb,
                 'mediaConfig' => $this->mediaConfig,
                 'filesystem' => $this->filesystem,
-                'serializer' => $this->serializer
+                'serializer' => $this->serializer,
             ]
         );
     }
@@ -108,7 +109,7 @@ class CleanConfigurationTmpImagesTest extends TestCase
         return [
             [
                 'newProduct' => true,
-                'id' => 'product1'
+                'id' => 'product1',
             ],
             [
                 'newProduct' => false,
@@ -121,7 +122,7 @@ class CleanConfigurationTmpImagesTest extends TestCase
                 'weight' => '5.55',
                 'media_gallery' => [
                     'images' => [
-                        ['file' => 'test']
+                        ['file' => 'test'],
                     ],
                 ],
                 'swatch_image' => 'simple2_swatch_image',
@@ -158,7 +159,7 @@ class CleanConfigurationTmpImagesTest extends TestCase
             ->willReturnMap(
                 [
                     ['store', 0, 0],
-                    ['configurable-matrix-serialized', "[]", json_encode($configurableMatrix)]
+                    ['configurable-matrix-serialized', '[]', json_encode($configurableMatrix)],
                 ]
             );
 

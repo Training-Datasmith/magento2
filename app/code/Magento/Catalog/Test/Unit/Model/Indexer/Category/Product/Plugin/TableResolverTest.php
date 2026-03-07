@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Category\Product\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Category\Product\Plugin\TableResolver;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class TableResolverTest extends TestCase
@@ -59,12 +60,12 @@ class TableResolverTest extends TestCase
             [
                 'storeId' => 1,
                 'tableName' => 'catalog_category_product_index',
-                'expected' => 'catalog_category_product_index_store1'
+                'expected' => 'catalog_category_product_index_store1',
             ],
             [
                 'storeId' => 0,
                 'tableName' => 'catalog_category_product_index',
-                'expected' => 'catalog_category_product_index'
+                'expected' => 'catalog_category_product_index',
             ],
         ];
     }

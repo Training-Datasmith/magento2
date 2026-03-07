@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ $orderItems = [
         'base_price' => 90,
         'price' => 90,
         'row_total' => 92,
-        'product_type' => 'configurable'
+        'product_type' => 'configurable',
     ],
     [
         'product_id' => 1,
@@ -29,7 +31,7 @@ $orderItems = [
         'order_id' => $order->getId(),
         'price' => 100,
         'row_total' => 102,
-        'product_type' => 'configurable'
+        'product_type' => 'configurable',
     ],
     [
         'product_id' => 12,
@@ -37,7 +39,7 @@ $orderItems = [
         'order_id' => $order->getId(),
         'price' => 110,
         'row_total' => 112,
-        'product_type' => 'virtual'
+        'product_type' => 'virtual',
     ],
     [
         'product_id' => 13,
@@ -45,8 +47,8 @@ $orderItems = [
         'order_id' => $order->getId(),
         'price' => 123,
         'row_total' => 126,
-        'product_type' => 'simple'
-    ]
+        'product_type' => 'simple',
+    ],
 ];
 
 /** @var array $orderItemData */

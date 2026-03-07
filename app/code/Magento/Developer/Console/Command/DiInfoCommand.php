@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,6 +9,8 @@
 namespace Magento\Developer\Console\Command;
 
 use Magento\Developer\Model\Di\Information;
+use Magento\Framework\App\Area;
+use Magento\Framework\App\AreaList;
 use Magento\Framework\ObjectManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -14,8 +18,6 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\AreaList;
-use Magento\Framework\App\Area;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -79,7 +81,7 @@ class DiInfoCommand extends Command
             ->setDescription('Provides information on Dependency Injection configuration for the Command.')
             ->setDefinition([
                 new InputArgument(self::CLASS_NAME, InputArgument::REQUIRED, 'Class name'),
-                new InputArgument(self::AREA_CODE, InputArgument::OPTIONAL, 'Area Code')
+                new InputArgument(self::AREA_CODE, InputArgument::OPTIONAL, 'Area Code'),
             ]);
 
         parent::configure();
@@ -109,7 +111,7 @@ class DiInfoCommand extends Command
      */
     private function printConstructorArguments($className, $output)
     {
-        $output->writeln("Constructor Parameters:");
+        $output->writeln('Constructor Parameters:');
         $paramsTable = new Table($output);
         $paramsTable
             ->setHeaders(['Name', 'Requested Type', 'Configured Value']);
@@ -137,7 +139,7 @@ class DiInfoCommand extends Command
         $virtualTypes = $this->diInformation->getVirtualTypes($className);
         if (!empty($virtualTypes)) {
             $output->writeln('');
-            $output->writeln("Virtual Types:");
+            $output->writeln('Virtual Types:');
             foreach ($this->diInformation->getVirtualTypes($className) as $virtualType) {
                 $output->writeln('   ' . $virtualType);
             }

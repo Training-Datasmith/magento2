@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\Ui;
 
 use Magento\Quote\Api\Data\ShippingMethodInterface;
@@ -20,7 +23,7 @@ class ShippingMethodFormatter
      * @return string
      * @since 100.2.0
      */
-    public function format(ShippingMethodInterface $shippingMethod) : string
+    public function format(ShippingMethodInterface $shippingMethod): string
     {
         $data = [
             $shippingMethod->getCarrierTitle(),

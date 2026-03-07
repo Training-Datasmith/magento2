@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,13 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Sitemap\Model;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Sitemap\Model\Sitemap;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Request;
-use Laminas\Stdlib\Parameters;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class FixedProductTaxAttributeTest extends TestCase
                 'value' => '5',
                 'website_id' => $this->baseWebsiteId,
                 'state' => '',
-            ]
+            ],
         ];
         $this->productCollection = $this->objectManager->create(Collection::class);
     }
@@ -270,7 +271,7 @@ class FixedProductTaxAttributeTest extends TestCase
                     'value' => '5',
                     'website_id' => $secondStore->getWebsiteId(),
                     'state' => '',
-                ]
+                ],
             ];
             $this->storeManager->setCurrentStore($secondStore);
             $product = $this->updateProduct('simple-on-two-websites', $taxData);
@@ -311,7 +312,7 @@ class FixedProductTaxAttributeTest extends TestCase
                 'value' => '15',
                 'website_id' => $this->baseWebsiteId,
                 'state' => 1,
-            ]
+            ],
         ];
         $this->loginCustomerByEmail($email);
         $product = $this->updateProduct('simple2', $taxData);

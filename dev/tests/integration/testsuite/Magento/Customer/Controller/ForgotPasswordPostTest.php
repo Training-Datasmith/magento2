@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,20 +10,22 @@ namespace Magento\Customer\Controller;
 
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Config\Model\ResourceModel\Config as CoreConfig;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\Customer\Model\ResourceModel\Customer as CustomerResource;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Http;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\AuthenticationException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Intl\DateTimeFactory;
 use Magento\Framework\Math\Random;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -37,8 +40,6 @@ use Magento\TestFramework\Helper\Xpath;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
 use Magento\TestFramework\Request;
 use Magento\TestFramework\TestCase\AbstractController;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Theme\Controller\Result\MessagePlugin;
 
 /**
@@ -436,7 +437,7 @@ class ForgotPasswordPostTest extends AbstractController
 
         return [
             'token' => $token,
-            'customerId' => $customerId
+            'customerId' => $customerId,
         ];
     }
 
@@ -498,7 +499,7 @@ class ForgotPasswordPostTest extends AbstractController
             $this->equalTo(
                 [
                     "If there is an account associated with {$email} you will receive an email with a link "
-                    . "to reset your password."
+                    . 'to reset your password.',
                 ]
             ),
             MessageInterface::TYPE_SUCCESS

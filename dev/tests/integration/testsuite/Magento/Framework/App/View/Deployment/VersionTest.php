@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\View\Deployment;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -34,7 +37,7 @@ class VersionTest extends \PHPUnit\Framework\TestCase
             File::class,
             [
                 'directoryCode' => DirectoryList::STATIC_VIEW,
-                'fileName' => $this->fileName
+                'fileName' => $this->fileName,
             ]
         );
         /** @var \Magento\TestFramework\App\Filesystem $filesystem */
@@ -52,13 +55,13 @@ class VersionTest extends \PHPUnit\Framework\TestCase
         $appState = ObjectManager::getInstance()->create(
             State::class,
             [
-                'mode' => $mode
+                'mode' => $mode,
             ]
         );
         return ObjectManager::getInstance()->create(
             Version::class,
             [
-                'appState' => $appState
+                'appState' => $appState,
             ]
         );
     }

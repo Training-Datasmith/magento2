@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 /**
  * Test to ensure that readme file present in specified directories
  */
+
 namespace Magento\Test\Integrity;
 
-use Magento\Framework\App\Utility\Files;
-use \Magento\Framework\App\Bootstrap;
+use Magento\Framework\App\Bootstrap;
 
 class TestPlacementTest extends \PHPUnit\Framework\TestCase
 {

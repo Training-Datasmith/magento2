@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,14 +12,13 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
 use Magento\Catalog\Pricing\Price\ConfiguredPriceInterface;
 use Magento\Catalog\Pricing\Price\FinalPrice as CatalogFinalPrice;
-use Magento\Framework\Pricing\Amount\AmountInterface;
 
 class ConfiguredPrice extends CatalogFinalPrice implements ConfiguredPriceInterface
 {
     /**
      * Price type configured
      */
-    const PRICE_CODE = self::CONFIGURED_PRICE_CODE;
+    public const PRICE_CODE = self::CONFIGURED_PRICE_CODE;
 
     /**
      * @var null|ItemInterface

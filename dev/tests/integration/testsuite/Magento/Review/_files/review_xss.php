@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ $review->setEntityId(
     [
         \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
             \Magento\Store\Model\StoreManagerInterface::class
-        )->getStore()->getId()
+        )->getStore()->getId(),
     ]
 )->setNickname(
     'Nickname'

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier\AbstractModifierTestCase;
-use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
+use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Ui\DataProvider\Product\Form\Modifier\AdvancedInventory;
 use Magento\Framework\Serialize\JsonValidator;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class AdvancedInventoryTest extends AbstractModifierTestCase
 {
@@ -60,7 +61,7 @@ class AdvancedInventoryTest extends AbstractModifierTestCase
                 'getIsInStock',
                 'setIsInStock',
                 'hasStockStatusChangedAutomaticallyFlag',
-                'setHasStockStatusChangedAutomaticallyFlag'
+                'setHasStockStatusChangedAutomaticallyFlag',
             ]
         );
         $this->stockRegistryMock->expects($this->any())
@@ -156,7 +157,7 @@ class AdvancedInventoryTest extends AbstractModifierTestCase
     {
         return [
             [1, 1, 1],
-            [1, 1, '{"36000":2}', ['36000' => 2], 1, 1]
+            [1, 1, '{"36000":2}', ['36000' => 2], 1, 1],
         ];
     }
 }

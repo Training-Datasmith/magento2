@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -183,14 +184,14 @@ class DataProviderTest extends TestCase
         return [
             [
                 [
-                    'option1'
+                    'option1',
                 ],
                 [
-                    'option1'
+                    'option1',
                 ],
                 [
-                    'scope' => 'default'
-                ]
+                    'scope' => 'default',
+                ],
             ],
             [
                 [
@@ -206,11 +207,11 @@ class DataProviderTest extends TestCase
                                     ],
                                     'head_head' => [
 
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'other_settings' => [
@@ -223,9 +224,9 @@ class DataProviderTest extends TestCase
                                                 'config' => [
                                                     'disabled' => true,
                                                     'is_disable_inheritance' => true,
-                                                ]
-                                            ]
-                                        ]
+                                                ],
+                                            ],
+                                        ],
                                     ],
                                     'head_logo' => [
 
@@ -236,20 +237,20 @@ class DataProviderTest extends TestCase
                                                 'config' => [
                                                     'disabled' => true,
                                                     'is_disable_inheritance' => true,
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'scope' => 'stores',
-                    'scope_id' => 1
-                ]
-            ]
+                    'scope_id' => 1,
+                ],
+            ],
         ];
     }
 }

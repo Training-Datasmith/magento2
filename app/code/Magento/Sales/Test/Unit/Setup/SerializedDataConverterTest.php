@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class SerializedDataConverterTest extends TestCase
             SerializedDataConverter::class,
             [
                 'serialize' => $this->serializeMock,
-                'json' => $this->jsonMock
+                'json' => $this->jsonMock,
             ]
         );
     }
@@ -58,8 +59,8 @@ class SerializedDataConverterTest extends TestCase
         $data = [
             'info_buyRequest' => [
                 'product' => 1,
-                'qty' => 2
-            ]
+                'qty' => 2,
+            ],
         ];
         $this->serializeMock->expects($this->once())
             ->method('unserialize')
@@ -88,28 +89,28 @@ class SerializedDataConverterTest extends TestCase
         $data = [
             'info_buyRequest' => [
                 'product' => 1,
-                'qty' => 2
+                'qty' => 2,
             ],
-            'bundle_selection_attributes' => $serializedBundleAttributes
+            'bundle_selection_attributes' => $serializedBundleAttributes,
         ];
         $dataWithJsonEncodedBundleAttributes = [
             'info_buyRequest' => [
                 'product' => 1,
-                'qty' => 2
+                'qty' => 2,
             ],
-            'bundle_selection_attributes' => $jsonEncodedBundleAttributes
+            'bundle_selection_attributes' => $jsonEncodedBundleAttributes,
         ];
         $this->serializeMock
             ->method('unserialize')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$serializedData] => $data,
                 [$serializedBundleAttributes] => $bundleAttributes
             });
         $this->jsonMock
             ->method('serialize')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleAttributes] => $jsonEncodedBundleAttributes,
-                [$dataWithJsonEncodedBundleAttributes] =>$jsonEncodedData
+                [$dataWithJsonEncodedBundleAttributes] => $jsonEncodedData
             });
         $this->assertEquals(
             $jsonEncodedData,
@@ -130,46 +131,46 @@ class SerializedDataConverterTest extends TestCase
         $data = [
             'info_buyRequest' => [
                 'product' => 1,
-                'qty' => 2
+                'qty' => 2,
             ],
             'options' => [
                 [
                     'option_type' => 'file',
-                    'option_value' => $serializedOptionValue
+                    'option_value' => $serializedOptionValue,
                 ],
                 [
                     'option_type' => 'text',
-                    'option_value' => 'option 2'
-                ]
-            ]
+                    'option_value' => 'option 2',
+                ],
+            ],
         ];
         $dataWithJsonEncodedOptionValue = [
             'info_buyRequest' => [
                 'product' => 1,
-                'qty' => 2
+                'qty' => 2,
             ],
             'options' => [
                 [
                     'option_type' => 'file',
-                    'option_value' => $jsonEncodedOptionValue
+                    'option_value' => $jsonEncodedOptionValue,
                 ],
                 [
                     'option_type' => 'text',
-                    'option_value' => 'option 2'
-                ]
-            ]
+                    'option_value' => 'option 2',
+                ],
+            ],
         ];
         $this->serializeMock
             ->method('unserialize')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$serializedData] => $data,
-                [$serializedOptionValue] =>$optionValue
+                [$serializedOptionValue] => $optionValue
             });
         $this->jsonMock
             ->method('serialize')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$optionValue] => $jsonEncodedOptionValue,
-                [$dataWithJsonEncodedOptionValue] =>$jsonEncodedData
+                [$dataWithJsonEncodedOptionValue] => $jsonEncodedData
             });
         $this->assertEquals(
             $jsonEncodedData,

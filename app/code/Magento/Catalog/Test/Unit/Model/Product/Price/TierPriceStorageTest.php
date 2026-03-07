@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Catalog\Model\Product\Price\Validation\Result as PriceValidationResu
 use Magento\Catalog\Model\Product\Price\Validation\TierPriceValidator;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Customer\Model\ResourceModel\Group\GetCustomerGroupCodesByIds;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\Exception\InputException;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class TierPriceStorageTest extends TestCase
@@ -98,7 +99,7 @@ class TierPriceStorageTest extends TestCase
                 'qty' => 2.0000,
                 'value' => 2.0000,
                 'percentage_value' => null,
-                'website_id' => 0
+                'website_id' => 0,
             ],
             [
                 'value_id' => 2,
@@ -108,7 +109,7 @@ class TierPriceStorageTest extends TestCase
                 'qty' => 3.0000,
                 'value' => 3.0000,
                 'percentage_value' => null,
-                'website_id' => 0
+                'website_id' => 0,
             ],
             [
                 'value_id' => 3,
@@ -118,8 +119,8 @@ class TierPriceStorageTest extends TestCase
                 'qty' => 3.0000,
                 'value' => 3.0000,
                 'percentage_value' => null,
-                'website_id' => 0
-            ]
+                'website_id' => 0,
+            ],
         ];
         $this->tierPriceValidator
             ->expects($this->once())
@@ -146,7 +147,7 @@ class TierPriceStorageTest extends TestCase
                 $expectedArgs = [
                     [$rawPricesData[0], 'simple'],
                     [$rawPricesData[1] + ['customer_group_code' => 'General'], 'virtual'],
-                    [$rawPricesData[2] + ['customer_group_code' => 'Wholesale'], 'virtual']
+                    [$rawPricesData[2] + ['customer_group_code' => 'Wholesale'], 'virtual'],
                 ];
                 $returnValue = $price;
                 $index++;
@@ -209,7 +210,7 @@ class TierPriceStorageTest extends TestCase
                     'qty' => 2,
                     'value' => 3,
                     'percentage_value' => null,
-                    'website_id' => 0
+                    'website_id' => 0,
                 ]
             );
         $this->tierPricePersistence->expects($this->once())
@@ -224,8 +225,8 @@ class TierPriceStorageTest extends TestCase
                         'qty' => 2.0000,
                         'value' => 2.0000,
                         'percentage_value' => null,
-                        'website_id' => 0
-                    ]
+                        'website_id' => 0,
+                    ],
                 ]
             );
         $this->tierPricePersistence->expects($this->once())
@@ -273,7 +274,7 @@ class TierPriceStorageTest extends TestCase
                     'qty' => 3,
                     'value' => 7,
                     'percentage_value' => null,
-                    'website_id' => 0
+                    'website_id' => 0,
                 ]
             );
         $this->tierPricePersistence->expects($this->once())
@@ -318,8 +319,8 @@ class TierPriceStorageTest extends TestCase
                         'qty' => 5.0000,
                         'value' => 6.0000,
                         'percentage_value' => null,
-                        'website_id' => 0
-                    ]
+                        'website_id' => 0,
+                    ],
                 ]
             );
         $this->tierPriceFactory->expects($this->once())
@@ -331,7 +332,7 @@ class TierPriceStorageTest extends TestCase
                     'qty' => 3,
                     'value' => 7,
                     'percentage_value' => null,
-                    'website_id' => 0
+                    'website_id' => 0,
                 ]
             );
         $this->tierPricePersistence->expects($this->once())

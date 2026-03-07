@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogWidget\Controller\Adminhtml\Product\Widget;
 
 use Magento\Backend\App\Action\Context;
+use Magento\CatalogWidget\Controller\Adminhtml\Product\Widget;
 use Magento\CatalogWidget\Model\Rule;
 use Magento\Rule\Model\Condition\AbstractCondition;
-use Magento\CatalogWidget\Controller\Adminhtml\Product\Widget;
 
 /**
  * @SuppressWarnings(PHPMD.AllPurposeAction)

@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Contact\Model;
 
+use Magento\Framework\App\Area;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\Area;
 
 class Mail implements MailInterface
 {
@@ -72,7 +75,7 @@ class Mail implements MailInterface
                 ->setTemplateOptions(
                     [
                         'area' => Area::AREA_FRONTEND,
-                        'store' => $this->storeManager->getStore()->getId()
+                        'store' => $this->storeManager->getStore()->getId(),
                     ]
                 )
                 ->setTemplateVars($variables)

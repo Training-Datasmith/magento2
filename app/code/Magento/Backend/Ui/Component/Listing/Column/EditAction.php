@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
@@ -57,8 +60,8 @@ class EditAction extends Column
                             'href' => $this->urlBuilder->getUrl($editUrlPath, [
                                 $item['id_field_name'] => $item[$item['id_field_name']],
                             ]),
-                            'label' => __('Edit')
-                        ]
+                            'label' => __('Edit'),
+                        ],
                     ];
                     unset($item);
                 }

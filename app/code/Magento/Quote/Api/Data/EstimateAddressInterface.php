@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,13 +18,13 @@ interface EstimateAddressInterface extends \Magento\Framework\Api\CustomAttribut
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_COUNTRY_ID = 'country_id';
+    public const KEY_COUNTRY_ID = 'country_id';
 
-    const KEY_REGION_ID = 'region_id';
+    public const KEY_REGION_ID = 'region_id';
 
-    const KEY_REGION = 'region';
+    public const KEY_REGION = 'region';
 
-    const KEY_POSTCODE = 'postcode';
+    public const KEY_POSTCODE = 'postcode';
 
     /**#@-*/
 

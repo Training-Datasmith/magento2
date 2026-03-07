@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 /**
  * Copyright 2019 Adobe
@@ -14,8 +15,8 @@ namespace Magento\AdminNotification\Test\Unit\Block\Grid\Renderer;
 
 use Magento\AdminNotification\Block\Grid\Renderer\Actions;
 use Magento\Backend\Block\Context;
-use Magento\Framework\DataObject;
 use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\Url\Helper\Data;
 use Magento\Framework\UrlInterface;
@@ -61,7 +62,7 @@ class ActionsTest extends TestCase
         $this->sut = new Actions($contextMock, $urlHelperMock);
     }
 
-    public function testShouldRenderMessageWhenUrlIsGiven() : void
+    public function testShouldRenderMessageWhenUrlIsGiven(): void
     {
         $dataObject = new DataObject();
         $dataObject->setdata('url', 'https://magento.com');

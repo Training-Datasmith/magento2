@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,34 +21,8 @@ use Magento\Framework\Model\ResourceModel\Type\Db\ConnectionFactoryInterface;
  */
 class ConnectionFactory
 {
-    /**
-     * @var ResourceConfigInterface
-     */
-    private $resourceConfig;
-
-    /**
-     * @var DeploymentConfig
-     */
-    private $deploymentConfig;
-
-    /**
-     * @var ConnectionFactoryInterface
-     */
-    private $connectionFactory;
-
-    /**
-     * @param ResourceConfigInterface $resourceConfig
-     * @param DeploymentConfig $deploymentConfig
-     * @param ConnectionFactoryInterface $connectionFactory
-     */
-    public function __construct(
-        ResourceConfigInterface $resourceConfig,
-        DeploymentConfig $deploymentConfig,
-        ConnectionFactoryInterface $connectionFactory
-    ) {
-        $this->resourceConfig = $resourceConfig;
-        $this->deploymentConfig = $deploymentConfig;
-        $this->connectionFactory = $connectionFactory;
+    public function __construct(private readonly ResourceConfigInterface $resourceConfig, private readonly DeploymentConfig $deploymentConfig, private readonly ConnectionFactoryInterface $connectionFactory)
+    {
     }
 
     /**
@@ -63,8 +39,7 @@ class ConnectionFactory
         );
         $configData['use_buffered_query'] = false;
         unset($configData['persistent']);
-        $connection = $this->connectionFactory->create($configData);
 
-        return $connection;
+        return $this->connectionFactory->create($configData);
     }
 }

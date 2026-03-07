@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -141,7 +142,7 @@ class HtmlTest extends TestCase
                 'file' => $this->testFile,
                 'line' => '',
                 'quote' => '',
-            ]
+            ],
         ];
 
         $this->model->parse($this->testFile);

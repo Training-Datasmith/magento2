@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class TaxTest extends TestCase
                 'getWeeeAttributes',
                 'setWeeeAttributes',
                 'getWeeeAdjustment',
-                'setWeeeAdjustment'
+                'setWeeeAdjustment',
             ]
         );
 

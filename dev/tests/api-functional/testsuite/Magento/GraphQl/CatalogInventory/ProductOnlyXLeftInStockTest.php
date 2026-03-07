@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,14 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\CatalogInventory;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\CatalogInventory\Model\Configuration;
 use Magento\Config\Model\ResourceModel\Config;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\DataObject;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask as QuoteMaskFixture;
@@ -25,7 +27,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\CatalogInventory\Model\Configuration;
 
 /**
  * Test for the product only x left in stock
@@ -230,7 +231,7 @@ QUERY;
     {
         return [
             ['0', null],
-            ['200', 100]
+            ['200', 100],
         ];
     }
 

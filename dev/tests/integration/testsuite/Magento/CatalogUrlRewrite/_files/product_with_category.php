@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,8 +17,8 @@ use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\UrlRewrite\Model\UrlRewrite;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\UrlRewrite\Model\UrlRewrite;
 
 Resolver::getInstance()->requireDataFixture('Magento/Store/_files/store.php');
 

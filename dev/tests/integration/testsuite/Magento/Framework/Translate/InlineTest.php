@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -122,7 +124,7 @@ class InlineTest extends \PHPUnit\Framework\TestCase
         return [
             'plain text' => ['text with no translations and tags', 'text with no translations and tags'],
             'html string' => [$originalText, $expectedText],
-            'html array' => [[$originalText], [$expectedText]]
+            'html array' => [[$originalText], [$expectedText]],
         ];
     }
 }

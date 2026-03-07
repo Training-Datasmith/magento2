@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class CssTest extends TestCase
                 'objectManager' => $this->_objectManager,
                 'uploaderService' => $this->createMock(Service::class),
                 'urlBuilder' => $this->urlBuilder,
-                'urlCoder' => $this->urlCoder
+                'urlCoder' => $this->urlCoder,
             ]
         );
 

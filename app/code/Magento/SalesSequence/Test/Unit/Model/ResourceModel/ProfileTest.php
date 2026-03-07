@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class ProfileTest extends TestCase
         $profileId = 20;
         $profileData = [
             'profile_id' => 20,
-            'meta_id' => 1
+            'meta_id' => 1,
         ];
         $this->profileFactory->expects($this->once())->method('create')->willReturn($this->profile);
         $this->resourceMock->expects($this->any())

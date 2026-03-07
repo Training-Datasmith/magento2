@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class Dom extends \Magento\Framework\Config\Dom
     public function merge($xml)
     {
         $dom = $this->_initDom($xml);
-        if ($dom->documentElement->getElementsByTagName('section')->length >0) {
+        if ($dom->documentElement->getElementsByTagName('section')->length > 0) {
             $this->_mergeNode($dom->documentElement, '');
         }
     }

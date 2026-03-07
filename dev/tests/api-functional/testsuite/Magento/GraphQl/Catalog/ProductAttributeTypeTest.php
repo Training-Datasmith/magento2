@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -62,14 +63,14 @@ QUERY;
             'status',
             'special_price',
             'disable_auto_group_change',
-            'special_price'
+            'special_price',
         ];
         $entityType = [
             'catalog_product',
             'catalog_product',
             'catalog_product',
             'customer',
-            \Magento\Catalog\Api\Data\ProductInterface::class
+            \Magento\Catalog\Api\Data\ProductInterface::class,
         ];
         $attributeTypes = ['String', 'Int', 'Float','Boolean', 'Float'];
         $inputTypes = ['textarea', 'select', 'price', 'boolean', 'price'];
@@ -144,7 +145,7 @@ QUERY;
             'quantity_and_stock_status',
             'default_billing',
             'region',
-            'media_gallery'
+            'media_gallery',
         ];
         $entityTypes = [
             'catalog_category',
@@ -153,7 +154,7 @@ QUERY;
             'catalog_product',
             'customer',
             'customer_address',
-            'catalog_product'
+            'catalog_product',
         ];
         $attributeTypes = [
             'String',
@@ -162,7 +163,7 @@ QUERY;
             'CatalogInventoryDataStockItemInterface[]',
             'CustomerDataAddressInterface',
             'CustomerDataRegionInterface',
-            'ProductMediaGallery'
+            'ProductMediaGallery',
         ];
         $inputTypes = [
             'select',
@@ -171,7 +172,7 @@ QUERY;
             'select',
             'text',
             'text',
-            'gallery'
+            'gallery',
         ];
         $this->assertComplexAttributeType(
             $attributeTypes,
@@ -226,9 +227,9 @@ QUERY;
             $this->assertResponseFields(
                 $attributeMetaData[$itemsIndex][0],
                 [
-                  "attribute_code" => $expectedAttributeCodes[$itemsIndex],
-                  "attribute_type" =>$attributeTypes[0],
-                  "entity_type" => $entityTypes[$itemsIndex]
+                  'attribute_code' => $expectedAttributeCodes[$itemsIndex],
+                  'attribute_type' => $attributeTypes[0],
+                  'entity_type' => $entityTypes[$itemsIndex],
                 ]
             );
         }
@@ -253,20 +254,20 @@ QUERY;
 
         foreach ($attributeMetaDataItems as $itemIndex => $itemArray) {
             if ($itemArray[0]['entity_type'] === 'catalog_category'
-                || $itemArray[0]['entity_type'] ==='catalog_product') {
+                || $itemArray[0]['entity_type'] === 'catalog_product') {
                 $this->assertResponseFields(
                     $attributeMetaDataItems[$itemIndex][0],
                     [
-                        "attribute_code" => $expectedAttributeCodes[$itemIndex],
-                        "attribute_type" => $attributeTypes[$itemIndex],
-                        "entity_type" => $entityTypes[$itemIndex],
-                        "input_type" => $inputTypes[$itemIndex],
-                        "storefront_properties" => [
+                        'attribute_code' => $expectedAttributeCodes[$itemIndex],
+                        'attribute_type' => $attributeTypes[$itemIndex],
+                        'entity_type' => $entityTypes[$itemIndex],
+                        'input_type' => $inputTypes[$itemIndex],
+                        'storefront_properties' => [
                             'use_in_product_listing' => false,
                             'use_in_layered_navigation' => 'NO',
                             'use_in_search_results_layered_navigation' => false,
                             'visible_on_catalog_pages' => false,
-                        ]
+                        ],
                     ]
                 );
             } else {
@@ -277,10 +278,10 @@ QUERY;
                 $this->assertResponseFields(
                     $attributeMetaDataItems[$itemIndex][0],
                     [
-                        "attribute_code" => $expectedAttributeCodes[$itemIndex],
-                        "attribute_type" => $attributeTypes[$itemIndex],
-                        "entity_type" => $entityTypes[$itemIndex],
-                        "input_type" => $inputTypes[$itemIndex]
+                        'attribute_code' => $expectedAttributeCodes[$itemIndex],
+                        'attribute_type' => $attributeTypes[$itemIndex],
+                        'entity_type' => $entityTypes[$itemIndex],
+                        'input_type' => $inputTypes[$itemIndex],
                     ]
                 );
 
@@ -307,15 +308,15 @@ QUERY;
         $attributeMetaDataItems = array_map(null, $actualResponse['customAttributeMetadata']['items'], $attributeTypes);
 
         foreach ($attributeMetaDataItems as $itemIndex => $itemArray) {
-                $this->assertResponseFields(
-                    $attributeMetaDataItems[$itemIndex][0],
-                    [
-                        "attribute_code" => $expectedAttributeCodes[$itemIndex],
-                        "attribute_type" => $attributeTypes[$itemIndex],
-                        "entity_type" => $entityTypes[$itemIndex],
-                        "input_type" => $inputTypes[$itemIndex]
-                    ]
-                );
+            $this->assertResponseFields(
+                $attributeMetaDataItems[$itemIndex][0],
+                [
+                    'attribute_code' => $expectedAttributeCodes[$itemIndex],
+                    'attribute_type' => $attributeTypes[$itemIndex],
+                    'entity_type' => $entityTypes[$itemIndex],
+                    'input_type' => $inputTypes[$itemIndex],
+                ]
+            );
         }
     }
 }

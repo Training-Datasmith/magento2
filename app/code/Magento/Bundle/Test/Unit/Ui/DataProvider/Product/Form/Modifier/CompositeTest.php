@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class CompositeTest extends TestCase
             [
                 'locator' => $this->locatorMock,
                 'objectManager' => $this->objectManagerMock,
-                'modifiers' => ['mod' => $this->modifierClass]
+                'modifiers' => ['mod' => $this->modifierClass],
             ]
         );
     }
@@ -97,7 +98,7 @@ class CompositeTest extends TestCase
             [
                 'locator' => $this->locatorMock,
                 'objectManager' => $this->objectManagerMock,
-                'modifiers' => []
+                'modifiers' => [],
             ]
         );
         $this->productMock->expects($this->once())

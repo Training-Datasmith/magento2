@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -113,12 +114,12 @@ class QueueTest extends TestCase
         $objects = [
             [
                 TimezoneInterface::class,
-                $this->createMock(TimezoneInterface::class)
+                $this->createMock(TimezoneInterface::class),
             ],
             [
                 LocalizedDateToUtcConverterInterface::class,
-                $this->createMock(LocalizedDateToUtcConverterInterface::class)
-            ]
+                $this->createMock(LocalizedDateToUtcConverterInterface::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->queue = $this->objectManager->getObject(
@@ -130,7 +131,7 @@ class QueueTest extends TestCase
                 'problemFactory' => $this->problemFactoryMock,
                 'subscriberCollectionFactory' => $this->subscribersCollectionFactoryMock,
                 'transportBuilder' => $this->transportBuilderMock,
-                'resource' => $this->queueResourseModelMock
+                'resource' => $this->queueResourseModelMock,
             ]
         );
     }
@@ -203,7 +204,7 @@ class QueueTest extends TestCase
             'template_id' => 'id',
             'queue_status' => 'status',
             'queue_start_at' => 'start_at',
-            'queue_finish_at' => 'finish_at'
+            'queue_finish_at' => 'finish_at',
         ];
         $this->queue->setTemplateId('id');
         $this->queue->setQueueStatus('status');

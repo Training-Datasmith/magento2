@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Indexer\Model\ResourceModel\Mview\View;
 
 class State extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb

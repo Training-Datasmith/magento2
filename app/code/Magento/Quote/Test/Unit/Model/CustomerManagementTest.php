@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,7 +14,10 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Api\Data\RegionInterface;
+use Magento\Customer\Api\Data\RegionInterfaceFactory;
 use Magento\Customer\Model\AddressFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Validator;
 use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Validator\Factory;
@@ -22,9 +26,6 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Customer\Api\Data\RegionInterfaceFactory;
-use Magento\Customer\Api\Data\RegionInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -108,7 +109,7 @@ class CustomerManagementTest extends TestCase
                 'setCustomer',
                 'getCustomerIsGuest',
                 'getPasswordHash',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->quoteAddressMock = $this->createMock(Address::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class AbstractProductTest extends TestCase
      */
     public function testValidateAttributeEqualCategoryId()
     {
-        $product = $this->createPartialMockWithReflection(AbstractModel::class, ["getAttribute"]);
+        $product = $this->createPartialMockWithReflection(AbstractModel::class, ['getAttribute']);
         $this->_condition->setAttribute('category_ids');
         $this->_condition->setValueParsed('1');
         $this->_condition->setOperator('{}');
@@ -211,7 +212,7 @@ class AbstractProductTest extends TestCase
             [
                 1 => ['Dec. 1979 17:30'],
                 2 => ['Dec. 1979 17:30'],
-                3 => ['Dec. 1979 17:30']
+                3 => ['Dec. 1979 17:30'],
             ]
         );
         $this->assertFalse($this->_condition->validate($product));
@@ -255,7 +256,7 @@ class AbstractProductTest extends TestCase
             [
                 1 => [''],
                 2 => ['option1,option2,option3'],
-                3 => ['option1,option2,option3']
+                3 => ['option1,option2,option3'],
             ]
         );
 
@@ -416,8 +417,8 @@ class AbstractProductTest extends TestCase
                 ],
                 [
                     'value1' => 'Label for value 1',
-                    'value2' => 'Label for value 2'
-                ]
+                    'value2' => 'Label for value 2',
+                ],
             ],
             [
                 [
@@ -437,8 +438,8 @@ class AbstractProductTest extends TestCase
                 ],
                 [
                     'value3' => 'Label for value 3',
-                    'value4' => 'Label for value 4'
-                ]
+                    'value4' => 'Label for value 4',
+                ],
             ],
             [
                 [
@@ -458,8 +459,8 @@ class AbstractProductTest extends TestCase
                 ],
                 [
                     'value5' => 'Label for value 5',
-                    'value6' => 'Label for value 6'
-                ]
+                    'value6' => 'Label for value 6',
+                ],
             ],
             [
                 [],
@@ -502,21 +503,21 @@ class AbstractProductTest extends TestCase
                 [
                     ['value' => 'value7', 'label' => 'Label for value 7'],
                     ['value' => 'value8', 'label' => 'Label for value 8'],
-                    ['value' => 'default', 'label' => 'Default Option']
+                    ['value' => 'default', 'label' => 'Default Option'],
                 ],
                 null,
                 true,
                 [
                     ['value' => 'value7', 'label' => 'Label for value 7'],
                     ['value' => 'value8', 'label' => 'Label for value 8'],
-                    ['value' => 'default', 'label' => 'Default Option']
+                    ['value' => 'default', 'label' => 'Default Option'],
                 ],
                 [
                     'value7' => 'Label for value 7',
                     'value8' => 'Label for value 8',
-                    'default' => 'Default Option'
+                    'default' => 'Default Option',
                 ],
-            ]
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -19,9 +21,9 @@ class Pro
     /**
      * Possible payment review actions (for FMF only)
      */
-    const PAYMENT_REVIEW_ACCEPT = 'accept';
+    public const PAYMENT_REVIEW_ACCEPT = 'accept';
 
-    const PAYMENT_REVIEW_DENY = 'deny';
+    public const PAYMENT_REVIEW_DENY = 'deny';
 
     /**
      * Config instance

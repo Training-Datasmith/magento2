@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Obsolete constants
  *
@@ -563,7 +565,7 @@ return [
     ],
     ['DI_DIR',
         '\Magento\Framework\App\Filesystem',
-        '\Magento\Framework\App\Filesystem\DirectoryList::GENERATED_METADATA'
+        '\Magento\Framework\App\Filesystem\DirectoryList::GENERATED_METADATA',
     ],
     ['GENERATION_DIR',
         '\Magento\Framework\App\Filesystem',
@@ -732,7 +734,7 @@ return [
     [
         'XML_PATH_MINIFICATION_ENABLED',
         'Magento\Framework\View\Asset\Config',
-        'Magento\Framework\View\Asset\Minification::XML_PATH_MINIFICATION_ENABLED'
+        'Magento\Framework\View\Asset\Minification::XML_PATH_MINIFICATION_ENABLED',
     ],
     ['XML_PATH_MINIFICATION_ADAPTER', 'Magento\Framework\View\Asset\Config'],
     ['ERROR_INVALID_PRICE_CORRECTION', 'Magento\ConfigurableImportExport\Model\Import\Product\Type\Configurable'],
@@ -741,7 +743,7 @@ return [
     [
         'CONFIG_PATH_DEFINITION_FORMAT',
         'Magento\Framework\Config\ConfigOptionsListConstants',
-        'Magento\Framework\App\ObjectManagerFactory::CONFIG_PATH_DEFINITION_FORMAT'
+        'Magento\Framework\App\ObjectManagerFactory::CONFIG_PATH_DEFINITION_FORMAT',
     ],
     [
         'CONFIG_PATH_INSTALL_DATE',
@@ -856,47 +858,47 @@ return [
     [
         'SESSION_SAVE_DB',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::SESSION_SAVE_DB'
+        'Magento\Framework\Config\ConfigOptionsListConstants::SESSION_SAVE_DB',
     ],
     [
         'KEY_SAVE',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_SAVE'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_SAVE',
     ],
     [
         'KEY_HOST',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_HOST'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_HOST',
     ],
     [
         'KEY_NAME',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_NAME'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_NAME',
     ],
     [
         'KEY_USER',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_USER'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_USER',
     ],
     [
         'KEY_PASSWORD',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_PASSWORD'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_PASSWORD',
     ],
     [
         'KEY_ENGINE',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_ENGINE'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_ENGINE',
     ],
     [
         'KEY_PREFIX',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_PREFIX'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_PREFIX',
     ],
     [
         'KEY_MODEL',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODEL'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODEL',
     ],
     [
         'KEY_INIT_STATEMENTS',
@@ -906,7 +908,7 @@ return [
     [
         'KEY_ACTIVE',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_ACTIVE'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_ACTIVE',
     ],
     ['KEY_DB', 'Magento\Setup\Model\ConfigOptionsList', 'Magento\Framework\Config\ConfigOptionsListConstants::KEY_DB'],
     [
@@ -917,39 +919,39 @@ return [
     [
         'KEY_RESOURCE',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_RESOURCE'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_RESOURCE',
     ],
     [
         'KEY_MODULES',
         'Magento\Setup\Model\ConfigOptionsList',
-        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODULES'
+        'Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODULES',
     ],
     [
         'SAMPLE_FILES_DIRECTORY',
         'Magento\ImportExport\Controller\Adminhtml\Import\Download',
-        'Magento\ImportExport\Controller\Adminhtml\Import\Download::SAMPLE_FILES_MODULE'
+        'Magento\ImportExport\Controller\Adminhtml\Import\Download::SAMPLE_FILES_MODULE',
     ],
     [
         'MODULES',
-        'Magento\Framework\App\Filesystem\DirectoryList'
+        'Magento\Framework\App\Filesystem\DirectoryList',
     ],
     [
         'LOCALE',
-        'Magento\Framework\App\Filesystem\DirectoryList'
+        'Magento\Framework\App\Filesystem\DirectoryList',
     ],
     [
         'THEMES',
-        'Magento\Framework\App\Filesystem\DirectoryList'
+        'Magento\Framework\App\Filesystem\DirectoryList',
     ],
     [
         'DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR',
         'Magento\CatalogImportExport\Model\Import\Product',
-        'Magento\ImportExport\Model\Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR'
+        'Magento\ImportExport\Model\Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR',
     ],
     ['TAB_GENERAL_CODE', 'Magento\Eav\Model\ResourceModel\Entity\Attribute\Group'],
     ['TAB_IMAGE_MANAGEMENT_CODE', 'Magento\Eav\Model\ResourceModel\Entity\Attribute\Group'],
     [
         'CALLBACK',
-        'Magento\Framework\MessageQueue\ConsumerConfiguration'
+        'Magento\Framework\MessageQueue\ConsumerConfiguration',
     ],
 ];

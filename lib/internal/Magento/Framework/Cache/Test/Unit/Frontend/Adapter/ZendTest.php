@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ZendTest extends TestCase
      * @param array $expectedParams
      * @param mixed $expectedResult
      */
-     #[DataProvider('proxyMethodDataProvider')]
+    #[DataProvider('proxyMethodDataProvider')]
     public function testProxyMethod($method, $params, $expectedParams, $expectedResult)
     {
         if (is_callable($expectedResult)) {
@@ -103,7 +104,7 @@ class ZendTest extends TestCase
                 [],
                 [],
                 static fn (self $testCase) => $testCase->createZendCacheBackendMock(),
-            ]
+            ],
         ];
     }
 
@@ -116,7 +117,7 @@ class ZendTest extends TestCase
      * @param string $cleaningMode
      * @param string $expectedErrorMessage
      */
-     #[DataProvider('cleanExceptionDataProvider')]
+    #[DataProvider('cleanExceptionDataProvider')]
     public function testCleanException($cleaningMode, $expectedErrorMessage)
     {
         $this->expectException('InvalidArgumentException');
@@ -146,7 +147,7 @@ class ZendTest extends TestCase
             'non-existing cleaning mode' => [
                 'nonExisting',
                 "Magento cache frontend does not support the cleaning mode 'nonExisting'.",
-            ]
+            ],
         ];
     }
 

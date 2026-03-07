@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class MinifyTemplatesTest extends TestCase
      */
     public function testMinifyTemplates()
     {
-        $templateMock = "template.phtml";
+        $templateMock = 'template.phtml';
         $templatesMock = [$templateMock];
 
         $this->filesUtils->expects($this->once())

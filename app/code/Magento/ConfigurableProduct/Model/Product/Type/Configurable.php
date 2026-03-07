@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\Product\Type;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
@@ -815,7 +818,8 @@ class Configurable extends \Magento\Catalog\Model\Product\Type\AbstractType impl
                     $attributeData['attribute_id'] = $configurableAttribute->getAttributeId();
                 } elseif (!empty($attributeData['attribute_id']) && !$configurableAttribute->getId()) {
                     $attribute = $this->_eavConfig->getAttribute(
-                        \Magento\Catalog\Model\Product::ENTITY, $attributeData['attribute_id']
+                        \Magento\Catalog\Model\Product::ENTITY,
+                        $attributeData['attribute_id']
                     );
                     $attributeData['attribute_id'] = $attribute->getId();
                     if (!$this->canUseAttribute($attribute)) {
@@ -1008,7 +1012,7 @@ class Configurable extends \Magento\Catalog\Model\Product\Type\AbstractType impl
                         'label' => $label,
                         'value' => $value,
                         'option_id' => $attributeId,
-                        'option_value' => $attributeValue
+                        'option_value' => $attributeValue,
                     ];
                 }
             }
@@ -1442,7 +1446,7 @@ class Configurable extends \Magento\Catalog\Model\Product\Type\AbstractType impl
             __METHOD__,
             $product->getData($metadata->getLinkField()),
             $product->getStoreId(),
-            $this->getCustomerSession()->getCustomerGroupId()
+            $this->getCustomerSession()->getCustomerGroupId(),
         ];
         $cacheKey = $this->getUsedProductsCacheKey($keyParts);
 
@@ -1540,7 +1544,7 @@ class Configurable extends \Magento\Catalog\Model\Product\Type\AbstractType impl
                     \Magento\Catalog\Model\Category::CACHE_TAG,
                     \Magento\Catalog\Model\Product::CACHE_TAG,
                     'price',
-                    self::TYPE_CODE . '_' . $product->getData($metadata->getLinkField())
+                    self::TYPE_CODE . '_' . $product->getData($metadata->getLinkField()),
                 ]
             )
         );
@@ -1622,7 +1626,7 @@ class Configurable extends \Magento\Catalog\Model\Product\Type\AbstractType impl
         ];
 
         $usedAttributes = array_map(
-            function($attr) {
+            function ($attr) {
                 return $attr->getAttributeCode();
             },
             $this->getUsedProductAttributes($product)

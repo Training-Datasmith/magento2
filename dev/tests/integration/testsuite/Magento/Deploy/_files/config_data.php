@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -31,17 +33,17 @@ $configData = [
         'web/test/test_environment7' => 'some_value7',
         'web/test/test_environment8' => 'some_value8',
         'web/test/test_environment9' => 'some_value9',
-        DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/blank')->getThemeId()
+        DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/blank')->getThemeId(),
     ],
     'stores' => [
         'default' => [
-            DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/luma')->getThemeId()
-        ]
+            DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/luma')->getThemeId(),
+        ],
     ],
     'websites' => [
         'base' => [
-            DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/luma')->getThemeId()
-        ]
+            DesignInterface::XML_PATH_THEME_ID => $themeList->getThemeByFullPath('frontend/Magento/luma')->getThemeId(),
+        ],
     ],
 ];
 

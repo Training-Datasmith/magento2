@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Payflowpro;
 
 use Magento\Checkout\Model\Session;
@@ -11,7 +14,6 @@ use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Config;
 use Magento\Paypal\Model\Payflow\Transparent;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Vault\Model\VaultPaymentInterface;
 
 class CcForm extends \Magento\Payment\Block\Transparent\Form

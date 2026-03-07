@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\GenericFactorPro
  */
 class IsLoggedIn implements GenericFactorProviderInterface
 {
-    private const NAME = "IS_LOGGED_IN";
+    private const NAME = 'IS_LOGGED_IN';
 
     /**
      * @inheritdoc
@@ -30,6 +31,6 @@ class IsLoggedIn implements GenericFactorProviderInterface
      */
     public function getFactorValue(ContextInterface $context): string
     {
-        return $context->getExtensionAttributes()->getIsCustomer() ? "true" : "false";
+        return $context->getExtensionAttributes()->getIsCustomer() ? 'true' : 'false';
     }
 }

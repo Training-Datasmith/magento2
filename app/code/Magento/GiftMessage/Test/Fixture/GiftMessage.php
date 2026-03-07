@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\GiftMessage\Test\Fixture;
 
 use Magento\Framework\DataObject;
-use Magento\TestFramework\Fixture\Api\DataMerger;
-use Magento\GiftMessage\Model\ResourceModel\Message;
 use Magento\GiftMessage\Model\MessageFactory;
+use Magento\GiftMessage\Model\ResourceModel\Message;
+use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 class GiftMessage implements RevertibleDataFixtureInterface

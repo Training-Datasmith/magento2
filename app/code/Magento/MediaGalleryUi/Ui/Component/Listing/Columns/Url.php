@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\MediaGalleryUi\Ui\Component\Listing\Columns;
 use Magento\Backend\Model\UrlInterface;
 use Magento\Cms\Helper\Wysiwyg\Images;
 use Magento\Cms\Model\Wysiwyg\Images\Storage;
+use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\AuthorizationInterface;
 
 /**
  * Overlay column
@@ -26,7 +27,7 @@ class Url extends Column
         'image-details' => 'Magento_Cms::media_gallery',
         'insert' => 'Magento_MediaGalleryUiApi::insert_assets',
         'delete' => 'Magento_MediaGalleryUiApi::delete_assets',
-        'edit' => 'Magento_MediaGalleryUiApi::edit_assets'
+        'edit' => 'Magento_MediaGalleryUiApi::edit_assets',
     ];
 
     /**

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\ResourceModel;
 
-use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
+use Magento\Framework\Model\ResourceModel\Db\Context;
 
 /**
  * Country Resource Model

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Isolation of the current working directory changes between tests
  */
+
 namespace Magento\TestFramework\Isolation;
 
 class WorkingDirectory

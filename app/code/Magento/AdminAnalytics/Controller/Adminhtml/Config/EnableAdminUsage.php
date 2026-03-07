@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,56 +8,32 @@ declare(strict_types=1);
 
 namespace Magento\AdminAnalytics\Controller\Adminhtml\Config;
 
-use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\AdminAnalytics\Model\ResourceModel\Viewer\Logger as NotificationLogger;
-use Magento\Framework\App\ProductMetadataInterface;
-use Magento\Framework\Controller\ResultInterface;
+use Magento\Backend\App\Action;
 use Magento\Config\Model\Config\Factory;
+use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Controller to record that the current admin user has responded to Admin Analytics notice
  */
 class EnableAdminUsage extends Action implements HttpPostActionInterface
 {
-    /**
-     * @var Factory
-     */
-    private $configFactory;
-
-    /**
-     * @var ProductMetadataInterface
-     */
-    private $productMetadata;
-
-    /**
-     * @var NotificationLogger
-     */
-    private $notificationLogger;
-
-    /**
-     * @param Action\Context $context
-     * @param ProductMetadataInterface $productMetadata
-     * @param NotificationLogger $notificationLogger
-     * @param Factory $configFactory
-     */
     public function __construct(
         Action\Context $context,
-        ProductMetadataInterface $productMetadata,
-        NotificationLogger $notificationLogger,
-        Factory $configFactory
+        private readonly ProductMetadataInterface $productMetadata,
+        private readonly NotificationLogger $notificationLogger,
+        private readonly Factory $configFactory
     ) {
         parent::__construct($context);
-        $this->configFactory = $configFactory;
-        $this->productMetadata = $productMetadata;
-        $this->notificationLogger = $notificationLogger;
     }
 
     /**
      * Change the value of config/admin/usage/enabled
      */
-    private function enableAdminUsage()
+    private function enableAdminUsage(): void
     {
         $configModel = $this->configFactory->create();
         $configModel->setDataByPath('admin/usage/enabled', 1);
@@ -65,8 +42,6 @@ class EnableAdminUsage extends Action implements HttpPostActionInterface
 
     /**
      * Log information about the last user response
-     *
-     * @return ResultInterface
      */
     private function markUserNotified(): ResultInterface
     {
@@ -74,7 +49,7 @@ class EnableAdminUsage extends Action implements HttpPostActionInterface
             'success' => $this->notificationLogger->log(
                 $this->productMetadata->getVersion()
             ),
-            'error_message' => ''
+            'error_message' => '',
         ];
 
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
@@ -83,10 +58,8 @@ class EnableAdminUsage extends Action implements HttpPostActionInterface
 
     /**
      * Log information about the last shown advertisement
-     *
-     * @return \Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    public function execute(): \Magento\Framework\Controller\ResultInterface
     {
         $this->enableAdminUsage();
         return $this->markUserNotified();

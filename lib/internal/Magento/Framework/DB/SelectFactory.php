@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\DB;
 
-use Magento\Framework\DB\Select\SelectRenderer;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Select\SelectRenderer;
 
 /**
  * Class SelectFactory

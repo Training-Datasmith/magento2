@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -91,9 +92,9 @@ class EmptyGroupCategoryTest extends TestCase
         $this->urlBuilderMock->expects($this->exactly(2))
             ->method('getUrl')
             ->willReturnCallback(function ($arg1, $arg2) {
-                if ($arg1== 'adminhtml/system_store/editGroup' && $arg2['group_id'] == 1) {
+                if ($arg1 == 'adminhtml/system_store/editGroup' && $arg2['group_id'] == 1) {
                     return 'http://url1.com';
-                } elseif ($arg1== 'adminhtml/system_store/editGroup' && $arg2['group_id'] == 2) {
+                } elseif ($arg1 == 'adminhtml/system_store/editGroup' && $arg2['group_id'] == 2) {
                     return 'http://url2.com';
                 }
             });
@@ -141,12 +142,12 @@ class EmptyGroupCategoryTest extends TestCase
         return [
             [
                 false,
-                []
+                [],
             ],
             [
                 true,
-                ['test']
-            ]
+                ['test'],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class GetPaginatedCartItems
         if (!$cart->getId()) {
             return [
                 'total' => 0,
-                'items' => []
+                'items' => [],
             ];
         }
         /** @var \Magento\Framework\Data\Collection $itemCollection */
@@ -63,7 +64,7 @@ class GetPaginatedCartItems
 
         return [
             'total' => $itemCollection->getSize() - $itemDeletedCount,
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

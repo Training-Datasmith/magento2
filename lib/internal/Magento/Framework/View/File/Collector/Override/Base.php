@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\File\Collector\Override;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
-use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\File\CollectorInterface;
@@ -100,7 +102,7 @@ class Base implements CollectorInterface
         $files = $themeDir->search($searchPattern);
         $result = [];
         $pattern = "#(?<moduleName>[^/]+)/{$this->subDir}"
-            . $this->pathPatternHelper->translatePatternFromGlob($filePath) . "$#i";
+            . $this->pathPatternHelper->translatePatternFromGlob($filePath) . '$#i';
         foreach ($files as $file) {
             $filename = $themeDir->getAbsolutePath($file);
             if (!preg_match($pattern, $filename, $matches)) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class EnumValue implements ConfigElementInterface
      *
      * @return string
      */
-    public function getValue() : string
+    public function getValue(): string
     {
         return $this->value;
     }
@@ -73,7 +74,7 @@ class EnumValue implements ConfigElementInterface
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -83,7 +84,7 @@ class EnumValue implements ConfigElementInterface
      *
      * @return string
      */
-    public function getDeprecatedReason() : string
+    public function getDeprecatedReason(): string
     {
         return $this->deprecationReason;
     }

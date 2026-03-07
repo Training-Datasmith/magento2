@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Message;
 
 /**
@@ -16,27 +19,27 @@ interface MessageInterface
     /**
      * Default identifier
      */
-    const DEFAULT_IDENTIFIER = 'default_message_identifier';
+    public const DEFAULT_IDENTIFIER = 'default_message_identifier';
 
     /**
      * Error type
      */
-    const TYPE_ERROR = 'error';
+    public const TYPE_ERROR = 'error';
 
     /**
      * Warning type
      */
-    const TYPE_WARNING = 'warning';
+    public const TYPE_WARNING = 'warning';
 
     /**
      * Notice type
      */
-    const TYPE_NOTICE = 'notice';
+    public const TYPE_NOTICE = 'notice';
 
     /**
      * Success type
      */
-    const TYPE_SUCCESS = 'success';
+    public const TYPE_SUCCESS = 'success';
 
     /**
      * Getter message type

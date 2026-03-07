@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,18 +53,18 @@ class HashMapPoolTest extends TestCase
                     [
                         DataCategoryHashMap::class,
                         ['category' => 1],
-                        $dataCategoryMapMock
+                        $dataCategoryMapMock,
                     ],
                     [
                         DataProductHashMap::class,
                         ['category' => 1],
-                        $dataProductMapMock
+                        $dataProductMapMock,
                     ],
                     [
                         DataCategoryUsedInProductsHashMap::class,
                         ['category' => 2],
-                        $dataProductMapMockOtherCategory
-                    ]
+                        $dataProductMapMockOtherCategory,
+                    ],
                 ]
             );
         $this->assertSame($dataCategoryMapMock, $this->model->getDataMap(DataCategoryHashMap::class, 1));

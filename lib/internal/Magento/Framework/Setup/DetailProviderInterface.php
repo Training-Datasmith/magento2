@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -27,5 +28,5 @@ interface DetailProviderInterface
      *
      * @return array
      */
-    public function getDetails() : array;
+    public function getDetails(): array;
 }

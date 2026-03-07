@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\TestModuleUps\Model;
 
 use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\Module\Dir;
 use Magento\Framework\Filesystem\Io\File;
+use Magento\Framework\Module\Dir;
 
 /**
  * Load mock response body for UPS rate request

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model;
 
 class ThemeTest extends \PHPUnit\Framework\TestCase
@@ -38,7 +41,7 @@ class ThemeTest extends \PHPUnit\Framework\TestCase
             'is_featured' => false,
             'theme_path' => 'default/space',
             'preview_image' => 'images/preview.png',
-            'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL
+            'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL,
         ];
     }
 

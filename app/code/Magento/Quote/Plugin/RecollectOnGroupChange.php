@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Plugin;
 
-use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Customer\Model\ResourceModel\Customer as CustomerResource;
 use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\ResourceModel\Customer as CustomerResource;
 use Magento\Framework\Model\AbstractModel;
+use Magento\Quote\Api\CartRepositoryInterface;
 
 /**
  * Recollect quote totals after change customer group

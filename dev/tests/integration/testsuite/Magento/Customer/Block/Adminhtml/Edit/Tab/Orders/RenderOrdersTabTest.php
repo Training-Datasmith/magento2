@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class RenderOrdersTabTest extends TestCase
     private const PATHS_TO_TABLE_BODY = [
         "//div[contains(@data-grid-id, 'customer_orders_grid')]",
         "//table[contains(@class, 'data-grid')]",
-        "//tbody",
+        '//tbody',
     ];
 
     /**
@@ -228,7 +229,7 @@ class RenderOrdersTabTest extends TestCase
         $this->assertEquals(
             1,
             Xpath::getElementsCountForXpath($checkStoreViewsXPath, $html),
-            sprintf("Some store view label not found. Labels: %s. Html: %s", implode(', ', $storeViewLabels), $html)
+            sprintf('Some store view label not found. Labels: %s. Html: %s', implode(', ', $storeViewLabels), $html)
         );
     }
 
@@ -399,7 +400,7 @@ class RenderOrdersTabTest extends TestCase
      */
     private function prepareGrandTotal(string $grandTotal, ?string $orderCurrencyCode = null): string
     {
-        $resultGrandTotal = sprintf("%f", (float)$grandTotal * 1.0);
+        $resultGrandTotal = sprintf('%f', (float)$grandTotal * 1.0);
         $orderCurrencyCode = $orderCurrencyCode ?:
             $this->scopeConfig->getValue(Currency::XML_PATH_CURRENCY_BASE, 'default');
 

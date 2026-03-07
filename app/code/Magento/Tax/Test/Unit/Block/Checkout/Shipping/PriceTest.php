@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class PriceTest extends TestCase
     {
         $shippingPrice = 5;
         $shippingPriceExclTax = 4.5;
-        $convertedPrice = "$4.50";
+        $convertedPrice = '$4.50';
 
         $shippingRateMock = $this->setupShippingRate($shippingPrice);
 
@@ -135,7 +136,7 @@ class PriceTest extends TestCase
     {
         $shippingPrice = 5;
         $shippingPriceInclTax = 5.5;
-        $convertedPrice = "$5.50";
+        $convertedPrice = '$5.50';
 
         $shippingRateMock = $this->setupShippingRate($shippingPrice);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class CustomerGroupTest extends TestCase
 {
-
     /**
      * @var CustomerGroup
      */
@@ -51,9 +51,9 @@ class CustomerGroupTest extends TestCase
         $dataSource = [
             'data' => [
                 'items' => [
-                    [$itemName => $oldItemValue]
-                ]
-            ]
+                    [$itemName => $oldItemValue],
+                ],
+            ],
         ];
 
         $group = $this->createMock(GroupInterface::class);

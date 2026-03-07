@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,20 +9,19 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Customer;
 
 use Exception;
+use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AttributeMetadataInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Test\Fixture\CustomerAttribute;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
 use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Eav\Test\Fixture\AttributeOption as AttributeOptionFixture;
+use Magento\Framework\Registry;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Api\CustomerMetadataInterface;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Customer\Test\Fixture\CustomerAttribute;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Registry;
 
 /**
  * Tests for create customer V2
@@ -34,7 +34,7 @@ use Magento\Framework\Registry;
             'attribute_set_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_group_id' => 1,
             'attribute_code' => 'random_attribute',
-            'sort_order' => 2
+            'sort_order' => 2,
         ],
         'random_attribute',
     ),
@@ -48,7 +48,7 @@ use Magento\Framework\Registry;
             'backend_model' => ArrayBackend::class,
             'attribute_code' => 'multiselect_attribute',
             'frontend_input' => 'multiselect',
-            'sort_order' => 1
+            'sort_order' => 1,
         ],
         'multiselect_attribute',
     ),
@@ -58,7 +58,7 @@ use Magento\Framework\Registry;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'line 1',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'multiselect_attribute_option1'
     ),
@@ -68,7 +68,7 @@ use Magento\Framework\Registry;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'option 2',
-            'sort_order' => 30
+            'sort_order' => 30,
         ],
         'multiselect_attribute_option2'
     ),
@@ -78,7 +78,7 @@ use Magento\Framework\Registry;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'option 3',
-            'sort_order' => 10
+            'sort_order' => 10,
         ],
         'multiselect_attribute_option3'
     )
@@ -185,7 +185,7 @@ QUERY;
                 $this->random_attribute->getAttributeCode(),
                 'new_value_for_attribute',
                 $this->multiselect_attribute->getAttributeCode(),
-                $this->option2->getValue() . "," . $this->option3->getValue()
+                $this->option2->getValue() . ',' . $this->option3->getValue()
             )
         );
 
@@ -206,19 +206,19 @@ QUERY;
                                     'selected_options' => [
                                         [
                                             'label' => $this->option3->getLabel(),
-                                            'value' => $this->option3->getValue()
+                                            'value' => $this->option3->getValue(),
                                         ],
                                         [
                                             'label' => $this->option2->getLabel(),
-                                            'value' => $this->option2->getValue()
-                                        ]
-                                    ]
+                                            'value' => $this->option2->getValue(),
+                                        ],
+                                    ],
                                 ],
                             1 =>
                                 [
                                     'code' => $this->random_attribute->getAttributeCode(),
                                     'value' => 'new_value_for_attribute',
-                                ]
+                                ],
                         ],
                     ],
                 ],
@@ -269,7 +269,7 @@ QUERY;
                         'firstname' => 'John',
                         'lastname' => 'Doe',
                         'email' => 'john@doe.com',
-                        'custom_attributes' => []
+                        'custom_attributes' => [],
                     ],
                 ],
             ],

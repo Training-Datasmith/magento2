@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Controller\Adminhtml\System\Design\Theme;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Escaper;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Registry;
@@ -80,7 +83,7 @@ class DownloadCss extends Theme implements HttpGetActionInterface
                 $relPath,
                 [
                     'type'  => 'filename',
-                    'value' => $relPath
+                    'value' => $relPath,
                 ],
                 DirectoryList::ROOT
             );

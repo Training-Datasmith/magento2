@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\TestFramework\Fixture\ParserInterface;
@@ -124,8 +127,8 @@ class Cache
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\Cache::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\Cache::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\Cache::class),
+                    ],
                 ]
             );
         return $parsers->parse($test, ParserInterface::SCOPE_METHOD)

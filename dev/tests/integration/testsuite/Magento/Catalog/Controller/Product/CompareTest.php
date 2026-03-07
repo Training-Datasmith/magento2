@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -92,7 +94,7 @@ class CompareTest extends AbstractController
             $this->equalTo(
                 [
                     'You added product Simple Product 1 Name to the ' .
-                    '<a href="http://localhost/index.php/catalog/product_compare/">comparison list</a>.'
+                    '<a href="http://localhost/index.php/catalog/product_compare/">comparison list</a>.',
                 ]
             ),
             MessageInterface::TYPE_SUCCESS
@@ -275,7 +277,7 @@ class CompareTest extends AbstractController
         $this->_requireVisitorWithTwoProducts();
         $removedProduct = $this->productRepository->get('simple_product_1');
         $redirectUrl = 'http://localhost/index.php/catalog/product_compare/index';
-        $this->assertTrue($this->deleteProduct($removedProduct), "The product must be removed.");
+        $this->assertTrue($this->deleteProduct($removedProduct), 'The product must be removed.');
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setParams(['product' => $removedProduct->getId()]);

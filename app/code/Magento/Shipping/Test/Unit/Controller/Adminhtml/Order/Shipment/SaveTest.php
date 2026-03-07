@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,6 +21,7 @@ use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\DB\Transaction;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Helper\Data as SalesData;
 use Magento\Sales\Model\Order;
@@ -31,7 +33,6 @@ use Magento\Sales\Model\ValidatorResultInterface;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\Save;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
 use Magento\Shipping\Model\Shipping\LabelGenerator;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -149,7 +150,7 @@ class SaveTest extends TestCase
         $this->context = $this->createPartialMock(Context::class, [
             'getRequest', 'getResponse', 'getMessageManager', 'getRedirect',
             'getObjectManager', 'getSession', 'getActionFlag', 'getHelper',
-            'getResultRedirectFactory', 'getFormKeyValidator'
+            'getResultRedirectFactory', 'getFormKeyValidator',
         ]);
         $this->response = $this->createMock(ResponseInterface::class);
         $this->request = $this->createMock(Http::class);
@@ -229,7 +230,7 @@ class SaveTest extends TestCase
                 'request' => $this->request,
                 'response' => $this->response,
                 'shipmentValidator' => $this->shipmentValidatorMock,
-                'salesData' => $this->salesData
+                'salesData' => $this->salesData,
             ]
         );
     }
@@ -290,7 +291,7 @@ class SaveTest extends TestCase
                         ['order_id', null, $orderId],
                         ['shipment_id', null, $shipmentId],
                         ['shipment', null, $shipmentData],
-                        ['tracking', null, $tracking]
+                        ['tracking', null, $tracking],
                     ]
                 );
 
@@ -333,7 +334,7 @@ class SaveTest extends TestCase
                 ->getMock();
             $saveTransaction
                 ->method('addObject')
-                ->willReturnCallback(fn($param) => match ([$param]) {
+                ->willReturnCallback(fn ($param) => match ([$param]) {
                     [$shipment] => $saveTransaction,
                     [$order] => $saveTransaction
                 });
@@ -398,7 +399,7 @@ class SaveTest extends TestCase
                 ['order_id', null, $orderId],
                 ['shipment_id', null, $shipmentId],
                 ['shipment', null, $shipmentData],
-                ['tracking', null, []]
+                ['tracking', null, []],
             ]);
 
         $order = $this->createPartialMock(Order::class, ['setCustomerNoteNotify', 'getStoreId', '__wakeup']);

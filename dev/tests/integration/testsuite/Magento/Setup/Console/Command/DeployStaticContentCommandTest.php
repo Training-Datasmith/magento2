@@ -1,10 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
+use Magento\Deploy\Console\ConsoleLogger;
+use Magento\Deploy\Console\ConsoleLoggerFactory;
 use Magento\Deploy\Console\DeployStaticOptions;
 use Magento\Framework\App\DeploymentConfig\FileReader;
 use Magento\Framework\App\DeploymentConfig\Writer;
@@ -14,12 +19,10 @@ use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Filesystem;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Setup\Model\ObjectManagerProvider;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Symfony\Component\Console\Tester\CommandTester;
-use Magento\Deploy\Console\ConsoleLoggerFactory;
-use Magento\Setup\Model\ObjectManagerProvider;
-use Magento\Deploy\Console\ConsoleLogger;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -201,7 +204,7 @@ class DeployStaticContentCommandTest extends \PHPUnit\Framework\TestCase
             DeployStaticContentCommand::class,
             [
                 'consoleLoggerFactory' => $consoleLoggerFactoryMock,
-                'objectManagerProvider' => $objectManagerProviderMock
+                'objectManagerProvider' => $objectManagerProviderMock,
             ]
         );
 

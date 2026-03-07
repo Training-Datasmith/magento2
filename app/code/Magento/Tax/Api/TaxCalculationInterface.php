@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,9 +18,9 @@ interface TaxCalculationInterface
     /**#@+
      * Type of calculation used
      */
-    const CALC_UNIT_BASE = 'UNIT_BASE_CALCULATION';
-    const CALC_ROW_BASE = 'ROW_BASE_CALCULATION';
-    const CALC_TOTAL_BASE = 'TOTAL_BASE_CALCULATION';
+    public const CALC_UNIT_BASE = 'UNIT_BASE_CALCULATION';
+    public const CALC_ROW_BASE = 'ROW_BASE_CALCULATION';
+    public const CALC_TOTAL_BASE = 'TOTAL_BASE_CALCULATION';
     /**#@-*/
 
     /**

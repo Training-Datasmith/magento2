@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\DB\Sequence\SequenceInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 use Magento\Sales\Model\Order;
 use Magento\SalesSequence\Model\Manager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,7 +48,7 @@ class CheckoutAgreementsList implements \Magento\CheckoutAgreements\Api\Checkout
     /**
      * {@inheritdoc}
      */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria) : array
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria): array
     {
         /** @var $collection \Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Collection */
         $collection = $this->collectionFactory->create();

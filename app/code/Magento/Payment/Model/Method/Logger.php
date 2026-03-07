@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Method;
 
 use Magento\Payment\Gateway\ConfigInterface;
@@ -16,7 +19,7 @@ use Psr\Log\LoggerInterface;
  */
 class Logger
 {
-    const DEBUG_KEYS_MASK = '****';
+    public const DEBUG_KEYS_MASK = '****';
 
     /**
      * @var LoggerInterface

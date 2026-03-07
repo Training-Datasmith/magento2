@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -51,9 +54,9 @@ class CcConfigProvider implements ConfigProviderInterface
         return [
             'payment' => [
                 'ccform' => [
-                    'icons' => $this->getIcons()
-                ]
-            ]
+                    'icons' => $this->getIcons(),
+                ],
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class GridTest extends TestCase
                 'context' => $this->context,
                 'backendHelper' => $this->backendHelperMock,
                 'collectionFactory' => $this->collectionFactoryMock,
-                'tablerate' => $this->tablerateMock
+                'tablerate' => $this->tablerateMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ContactFormTest extends TestCase
         $this->contactForm = (new ObjectManagerHelper($this))->getObject(
             ContactForm::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }

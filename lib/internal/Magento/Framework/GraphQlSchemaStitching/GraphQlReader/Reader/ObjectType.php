@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching\GraphQlReader\Reader;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\FieldMetaReader;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\ImplementsReader;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\CacheAnnotationReader;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DeprecatedAnnotationReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\FieldMetaReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\ImplementsReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 
 /**
  * Composite configuration reader to handle the object type meta
@@ -73,7 +74,7 @@ class ObjectType implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         if ($typeMeta instanceof \GraphQL\Type\Definition\ObjectType) {
             $typeName = $typeMeta->name;
@@ -87,7 +88,7 @@ class ObjectType implements TypeMetaReaderInterface
             foreach ($interfacesNames as $interfaceName) {
                 $result['implements'][$interfaceName] = [
                     'interface' => $interfaceName,
-                    'copyFields' => true
+                    'copyFields' => true,
                 ];
             }
 
@@ -124,7 +125,7 @@ class ObjectType implements TypeMetaReaderInterface
     public function isInInterfaceTypeInList(
         \GraphQL\Type\Definition\InterfaceType  $interfacesType,
         array $interfacesNames
-    ) : bool {
+    ): bool {
         if (in_array($interfacesType->name, $interfacesNames)) {
             return true;
         } else {

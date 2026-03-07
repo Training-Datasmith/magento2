@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +24,7 @@ class IndexersStatesApplyFixture extends Fixture
     public function execute()
     {
         $indexers = $this->fixtureModel->getValue('indexers', []);
-        if (!isset($indexers["indexer"]) || empty($indexers["indexer"])) {
+        if (!isset($indexers['indexer']) || empty($indexers['indexer'])) {
             return;
         }
 
@@ -30,9 +32,9 @@ class IndexersStatesApplyFixture extends Fixture
         $indexerRegistry = $this->fixtureModel->getObjectManager()
             ->create(\Magento\Framework\Indexer\IndexerRegistry::class);
 
-        foreach ($indexers["indexer"] as $indexerConfig) {
+        foreach ($indexers['indexer'] as $indexerConfig) {
             $indexer = $indexerRegistry->get($indexerConfig['id']);
-            $indexer->setScheduled($indexerConfig['set_scheduled'] == "true");
+            $indexer->setScheduled($indexerConfig['set_scheduled'] == 'true');
         }
 
         $this->fixtureModel->getObjectManager()->get(\Magento\Framework\App\CacheInterface::class)

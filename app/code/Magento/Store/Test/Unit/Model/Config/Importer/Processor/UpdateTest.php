@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -268,7 +269,7 @@ class UpdateTest extends TestCase
                     'sort_order' => '0',
                     'default_group_id' => '2',
                     'is_default' => '0',
-                ]
+                ],
             ],
             ScopeInterface::SCOPE_GROUPS => [
                 2 => [
@@ -289,7 +290,7 @@ class UpdateTest extends TestCase
                     'name' => 'Changed Test Store View',
                     'sort_order' => '0',
                     'is_active' => '1',
-                ]
+                ],
             ],
         ];
     }
@@ -300,7 +301,7 @@ class UpdateTest extends TestCase
         $this->expectExceptionMessage('Some exception');
         $data = [
             ScopeInterface::SCOPE_GROUPS => [],
-            ScopeInterface::SCOPE_STORES => []
+            ScopeInterface::SCOPE_STORES => [],
         ];
 
         $this->dataDifferenceCalculatorMock->expects($this->once())

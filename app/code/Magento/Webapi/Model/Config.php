@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Webapi\Model;
 
-use Magento\Webapi\Model\Cache\Type\Webapi as WebapiCache;
-use Magento\Webapi\Model\Config\Reader;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Webapi\Model\Cache\Type\Webapi as WebapiCache;
+use Magento\Webapi\Model\Config\Reader;
 
 /**
  * This class gives access to consolidated web API configuration from <Module_Name>/etc/webapi.xml files.
@@ -19,14 +21,14 @@ use Magento\Framework\Serialize\SerializerInterface;
  */
 class Config implements ConfigInterface
 {
-    const CACHE_ID = 'webapi_config';
+    public const CACHE_ID = 'webapi_config';
 
     /**
      * Pattern for Web API interface name.
      */
-    const SERVICE_CLASS_PATTERN = '/^(.+?)\\\\(.+?)\\\\Service\\\\(V\d+)+(\\\\.+)Interface$/';
+    public const SERVICE_CLASS_PATTERN = '/^(.+?)\\\\(.+?)\\\\Service\\\\(V\d+)+(\\\\.+)Interface$/';
 
-    const API_PATTERN = '/^(.+?)\\\\(.+?)\\\\Api(\\\\.+)Interface$/';
+    public const API_PATTERN = '/^(.+?)\\\\(.+?)\\\\Api(\\\\.+)Interface$/';
 
     /**
      * @var WebapiCache

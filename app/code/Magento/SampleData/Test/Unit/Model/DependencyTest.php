@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\SampleData\Test\Unit\Model;
 
@@ -94,7 +95,7 @@ class DependencyTest extends TestCase
                     'app/code/LocalModule',
                     'app/code/LocalModuleWithoutComposerJson',
                     'vendor/company/module',
-                    'vendor/company2/module/src'
+                    'vendor/company2/module/src',
                 ],
                 'composerJsonGenerator' => function (DependencyTest $test) {
                     return [
@@ -105,15 +106,15 @@ class DependencyTest extends TestCase
                                 [
                                     'name' => 'local/module',
                                     'suggest' => [
-                                        'local/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '0.1.0'
-                                    ]
+                                        'local/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '0.1.0',
+                                    ],
                                 ]
-                            )
+                            ),
                         ],
                         [
                             'app/code/LocalModuleWithoutComposerJson',
                             DriverPool::FILE,
-                            $test->stubFileNotFoundReader()
+                            $test->stubFileNotFoundReader(),
                         ],
                         [
                             'vendor/company/module',
@@ -122,10 +123,10 @@ class DependencyTest extends TestCase
                                 [
                                     'name' => 'company/module',
                                     'suggest' => [
-                                        'company/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '1.0.0-beta'
-                                    ]
+                                        'company/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '1.0.0-beta',
+                                    ],
                                 ]
-                            )
+                            ),
                         ],
                         [
                             'vendor/company2/module/src/..',
@@ -134,30 +135,30 @@ class DependencyTest extends TestCase
                                 [
                                     'name' => 'company2/module',
                                     'suggest' => [
-                                        'company2/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '1.10'
-                                    ]
+                                        'company2/module-sample-data' => Dependency::SAMPLE_DATA_SUGGEST . '1.10',
+                                    ],
                                 ]
-                            )
+                            ),
                         ],
                         [
                             'vendor/company2/module/src',
                             DriverPool::FILE,
-                            $test->stubFileNotFoundReader()
+                            $test->stubFileNotFoundReader(),
                         ],
                         [
                             'vendor/company/module/..',
                             DriverPool::FILE,
-                            $test->stubFileNotFoundReader()
+                            $test->stubFileNotFoundReader(),
                         ],
                         [
                             'app/code/LocalModuleWithoutComposerJson/..',
                             DriverPool::FILE,
-                            $test->stubFileNotFoundReader()
+                            $test->stubFileNotFoundReader(),
                         ],
                         [
                             'app/code/LocalModule/..',
                             DriverPool::FILE,
-                            $test->stubFileNotFoundReader()
+                            $test->stubFileNotFoundReader(),
                         ],
                     ];
                 },
@@ -172,8 +173,8 @@ class DependencyTest extends TestCase
                     'local/module-sample-data' => '0.1.0',
                     'company/module-sample-data' => '1.0.0-beta',
                     'company2/module-sample-data' => '1.10',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

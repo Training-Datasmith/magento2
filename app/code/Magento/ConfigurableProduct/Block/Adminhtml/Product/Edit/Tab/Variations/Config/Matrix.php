@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\Tab\Variations\Config;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -261,7 +264,7 @@ class Matrix extends \Magento\Backend\Block\Template
                             $attribute,
                             $product->getData($attribute->getAttributeCode())
                         ),
-                        'attribute' => $attribute
+                        'attribute' => $attribute,
                     ];
             }
         }
@@ -374,7 +377,7 @@ class Matrix extends \Magento\Backend\Block\Template
             'id' => $attribute->getAttributeId(),
             'position' => $configurableAttributes[$attribute->getAttributeId()]['position'],
             'chosen' => [],
-            '__disableTmpl' => true
+            '__disableTmpl' => true,
         ];
 
         foreach ($attribute->getOptions() as $option) {
@@ -479,7 +482,7 @@ class Matrix extends \Magento\Backend\Block\Template
         return [
             'productId' => $product->getId(),
             'images' => [
-                'preview' => $this->image->init($product, 'product_thumbnail_image')->getUrl()
+                'preview' => $this->image->init($product, 'product_thumbnail_image')->getUrl(),
             ],
             'sku' => $product->getSku(),
             'name' => $product->getName(),

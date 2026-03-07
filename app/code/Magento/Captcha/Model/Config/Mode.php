@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Captcha\Model\Config;
 
 class Mode implements \Magento\Framework\Option\ArrayInterface
@@ -24,8 +27,8 @@ class Mode implements \Magento\Framework\Option\ArrayInterface
             ['label' => __('Always'), 'value' => \Magento\Captcha\Helper\Data::MODE_ALWAYS],
             [
                 'label' => __('After number of attempts to login'),
-                'value' => \Magento\Captcha\Helper\Data::MODE_AFTER_FAIL
-            ]
+                'value' => \Magento\Captcha\Helper\Data::MODE_AFTER_FAIL,
+            ],
         ];
     }
 }

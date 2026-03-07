@@ -1,22 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Helper;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Data\Customer as CustomerData;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\Framework\Webapi\Rest\Request as RestRequest;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class Customer extends WebapiAbstract
 {
     public const RESOURCE_PATH = '/V1/customers';
     public const SERVICE_NAME = 'customerAccountManagementV1';
-    public const CUSTOMER_REPOSITORY_SERVICE_NAME = "customerCustomerRepositoryV1";
+    public const CUSTOMER_REPOSITORY_SERVICE_NAME = 'customerCustomerRepositoryV1';
     public const SERVICE_VERSION = 'V1';
 
     public const CONFIRMATION = 'a4fg7h893e39d';
@@ -153,7 +155,7 @@ class Customer extends WebapiAbstract
     {
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/" . $customerId,
+                'resourcePath' => self::RESOURCE_PATH . '/' . $customerId,
                 'httpMethod' => RestRequest::HTTP_METHOD_PUT,
             ],
             'soap' => [

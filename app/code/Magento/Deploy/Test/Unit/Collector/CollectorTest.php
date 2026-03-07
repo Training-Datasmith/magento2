@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Deploy\Test\Unit\Collector;
 
 use Magento\Deploy\Collector\Collector;
-use Magento\Deploy\Source\SourcePool;
 use Magento\Deploy\Package\PackageFactory;
-use Magento\Deploy\Source\SourceInterface;
 use Magento\Deploy\Package\PackageFile;
+use Magento\Deploy\Source\SourceInterface;
+use Magento\Deploy\Source\SourcePool;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Asset\PreProcessor\FileNameResolver;
 use PHPUnit\Framework\MockObject\MockObject;

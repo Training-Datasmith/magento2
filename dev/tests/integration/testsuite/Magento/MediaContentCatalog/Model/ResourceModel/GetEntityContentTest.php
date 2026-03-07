@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\MediaContentCatalog\Model\ResourceModel;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 use Magento\MediaContentApi\Api\Data\ContentIdentityInterfaceFactory;
+use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -88,7 +89,7 @@ class GetEntityContentTest extends TestCase
         $this->assertEquals(
             [
                 '<p>Product base description</p>',
-                '<p>Product second description</p>'
+                '<p>Product second description</p>',
             ],
             $this->getContent->execute($contentIdentity)
         );

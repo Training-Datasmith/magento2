@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class InstallSchema implements InstallSchemaInterface
     /**
      * The name of the main table of Module9.
      */
-    const MAIN_TABLE = 'module9_test_main_table';
+    public const MAIN_TABLE = 'module9_test_main_table';
 
     /**
      * @inheritdoc
@@ -86,7 +87,7 @@ class InstallSchema implements InstallSchemaInterface
                     'primary' => true,
                     'identity' => true,
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ],
                 'Entity ID'
             )->addColumn(
@@ -95,7 +96,7 @@ class InstallSchema implements InstallSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Is Guest'
             )->addColumn(
@@ -103,7 +104,7 @@ class InstallSchema implements InstallSchemaInterface
                 Table::TYPE_INTEGER,
                 null,
                 [
-                    'unsigned' => true
+                    'unsigned' => true,
                 ],
                 'Guest ID'
             )

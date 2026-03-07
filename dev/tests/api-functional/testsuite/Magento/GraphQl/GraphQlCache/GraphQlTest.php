@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,18 +9,17 @@ declare(strict_types=1);
 namespace Magento\GraphQl\GraphQlCache;
 
 use Magento\Customer\Test\Fixture\Customer;
-use Magento\Framework\Registry;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Framework\App\FrontControllerInterface;
 use Magento\Framework\App\Request\Http;
-use Magento\Framework\App\Response\Http as ResponseHttp;
+use Magento\Framework\Registry;
 use Magento\GraphQl\Controller\HttpRequestProcessor;
 use Magento\GraphQlCache\Controller\Plugin\GraphQl;
 use Magento\GraphQlCache\Model\CacheableQuery;
 use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
 use Magento\PageCache\Model\Config;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 

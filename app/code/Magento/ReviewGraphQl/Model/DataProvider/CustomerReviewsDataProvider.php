@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\ReviewGraphQl\Model\DataProvider;
 
 use Magento\Review\Model\ResourceModel\Review\Collection as ReviewsCollection;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory as ReviewsCollectionFactory;
-use Magento\Review\Model\Review;
 
 /**
  * Provides customer reviews

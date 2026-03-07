@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
                 'discount_amount' => self::DISCOUNT_AMOUNT,
                 'simple_action' => 'by_percent',
                 'stop_rules_processing' => false,
-                'is_advanced' => 1
+                'is_advanced' => 1,
             ],
             as: 'sales_rule'
         ),
@@ -74,7 +75,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'price' => 100.00,
-                'sku' => 'test-product-coupon'
+                'sku' => 'test-product-coupon',
             ],
             as: 'product'
         ),
@@ -85,14 +86,14 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'coupon_codes' => [self::COUPON_CODE]
+                'coupon_codes' => [self::COUPON_CODE],
             ]
         ),
         DataFixture(SetBillingAddress::class, ['cart_id' => '$cart.id$']),
@@ -144,7 +145,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
         $this->assertArrayHasKey('applied_to', $discount);
         $this->assertEquals('ITEM', $discount['applied_to']);
     }
-    
+
     /**
      * Test that applied_to field returns correct value for shipping discounts
      *
@@ -161,7 +162,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
                 'simple_action' => 'by_percent',
                 'apply_to_shipping' => 1,
                 'stop_rules_processing' => false,
-                'is_advanced' => 1
+                'is_advanced' => 1,
             ],
             as: 'sales_rule'
         ),
@@ -169,7 +170,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'price' => 100.00,
-                'sku' => 'test-product-coupon'
+                'sku' => 'test-product-coupon',
             ],
             as: 'product'
         ),
@@ -180,7 +181,7 @@ class OrderItemDiscountAppliedToTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(SetBillingAddress::class, ['cart_id' => '$cart.id$']),
@@ -303,7 +304,7 @@ MUTATION;
     {
         return [
             'Authorization' => 'Bearer ' . $token,
-            'Store' => 'default'
+            'Store' => 'default',
         ];
     }
 }

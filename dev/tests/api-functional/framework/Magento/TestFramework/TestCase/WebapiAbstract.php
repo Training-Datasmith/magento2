@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Webapi\Exception as WebapiException;
-use Magento\Webapi\Model\Soap\Fault;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Webapi\Model\Soap\Fault;
 
 /**
  * Test case for Web API functional tests for REST and SOAP.
@@ -188,7 +191,7 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
     protected function _markTestAsSoapOnly($message = null)
     {
         if (TESTS_WEB_API_ADAPTER != self::ADAPTER_SOAP) {
-            $this->markTestSkipped($message ? $message : "The test is intended to be executed for SOAP adapter only.");
+            $this->markTestSkipped($message ? $message : 'The test is intended to be executed for SOAP adapter only.');
         }
     }
 
@@ -200,7 +203,7 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
     protected function _markTestAsRestOnly($message = null)
     {
         if (TESTS_WEB_API_ADAPTER != self::ADAPTER_REST) {
-            $this->markTestSkipped($message ? $message : "The test is intended to be executed for REST adapter only.");
+            $this->markTestSkipped($message ? $message : 'The test is intended to be executed for REST adapter only.');
         }
     }
 
@@ -261,7 +264,7 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
      * @return void
      * //phpcs:disable
      */
-    public static function callModelDelete($model, $secure = false) : void
+    public static function callModelDelete($model, $secure = false): void
     {
         //phpcs:enable
         if ($model instanceof \Magento\Framework\Model\AbstractModel && $model->getId()) {
@@ -598,14 +601,14 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
         $this->assertStringContainsString(
             $expectedMessage,
             $soapFault->getMessage(),
-            "Fault message is invalid."
+            'Fault message is invalid.'
         );
 
         $errorDetailsNode = 'GenericFault';
         $errorDetails = isset($soapFault->detail->$errorDetailsNode) ? $soapFault->detail->$errorDetailsNode : null;
         if (!empty($expectedErrorParams) || !empty($expectedWrappedErrors)) {
             /** Check SOAP fault details */
-            $this->assertNotNull($errorDetails, "Details must be present.");
+            $this->assertNotNull($errorDetails, 'Details must be present.');
             $this->_checkFaultParams($expectedErrorParams, $errorDetails);
             $this->_checkWrappedErrors($expectedWrappedErrors, $errorDetails);
         }
@@ -624,13 +627,13 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
                     'Trace Information is incorrect.'
                 );
             } else {
-                $this->assertNull($errorDetails, "Details are not expected.");
+                $this->assertNull($errorDetails, 'Details are not expected.');
             }
         }
 
         /** Check SOAP fault code */
-        $this->assertNotNull($soapFault->faultcode, "Fault code must not be empty.");
-        $this->assertEquals($expectedFaultCode, $soapFault->faultcode, "Fault code is invalid.");
+        $this->assertNotNull($soapFault->faultcode, 'Fault code must not be empty.');
+        $this->assertEquals($expectedFaultCode, $soapFault->faultcode, 'Fault code is invalid.');
     }
 
     /**
@@ -660,10 +663,10 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 $expectedErrorParams,
                 $actualParams,
-                "Parameters in fault details are invalid."
+                'Parameters in fault details are invalid.'
             );
         } else {
-            $this->assertFalse(isset($errorDetails->$paramsNode), "Parameters are not expected in fault details.");
+            $this->assertFalse(isset($errorDetails->$paramsNode), 'Parameters are not expected in fault details.');
         }
     }
 
@@ -692,12 +695,12 @@ abstract class WebapiAbstract extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 $expectedWrappedErrors,
                 $actualWrappedErrors,
-                "Wrapped errors in fault details are invalid."
+                'Wrapped errors in fault details are invalid.'
             );
         } else {
             $this->assertFalse(
                 isset($errorDetails->$wrappedErrorsNode),
-                "Wrapped errors are not expected in fault details."
+                'Wrapped errors are not expected in fault details.'
             );
         }
     }

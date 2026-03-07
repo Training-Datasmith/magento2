@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Element\UiComponent\DataProvider;
 
 use Magento\Framework\View\Element\UiComponent\DataProvider\Sanitizer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test sanitizer for different kind of scenarios.
@@ -40,19 +41,19 @@ class SanitizerTest extends TestCase
         return [
             'simpleSet' => [
                 ['foo' => '${\'bar\'}', 'xyz' => 42],
-                ['foo' => '${\'bar\'}', 'xyz' => 42, '__disableTmpl' => ['foo' => true]]
+                ['foo' => '${\'bar\'}', 'xyz' => 42, '__disableTmpl' => ['foo' => true]],
             ],
             'configuredSet' => [
                 ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => true],
-                ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => true]
+                ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => true],
             ],
             'partiallyConfiguredSet' => [
                 ['foo' => '${\'bar\'}', 'xyz' => '${\'zyx\'}', '__disableTmpl' => ['foo' => false]],
-                ['foo' => '${\'bar\'}', 'xyz' => '${\'zyx\'}', '__disableTmpl' => ['foo' => false, 'xyz' => true]]
+                ['foo' => '${\'bar\'}', 'xyz' => '${\'zyx\'}', '__disableTmpl' => ['foo' => false, 'xyz' => true]],
             ],
             'enabledSet' => [
                 ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => false],
-                ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => false]
+                ['foo' => 'bar', 'xyz' => '${\'zyx\'}', '__disableTmpl' => false],
             ],
             'complexSet' => [
                 [
@@ -66,11 +67,11 @@ class SanitizerTest extends TestCase
                             'fooSub' => [
                                 'foo' => '${\'bar\'}',
                                 '__disableTmpl' => false,
-                                'subSubSub1' => ['field' => '${\'value\'}']
-                            ]
+                                'subSubSub1' => ['field' => '${\'value\'}'],
+                            ],
                         ],
-                        'subSub4' => [['foo' => '${\'bar\'}'], ['foo' => '${\'bar\'}', 'xyz' => '${\'zyx\'}']]
-                    ]
+                        'subSub4' => [['foo' => '${\'bar\'}'], ['foo' => '${\'bar\'}', 'xyz' => '${\'zyx\'}']],
+                    ],
                 ],
                 [
                     'foo' => 'bar',
@@ -83,21 +84,21 @@ class SanitizerTest extends TestCase
                             'fooSub' => [
                                 'foo' => '${\'bar\'}',
                                 '__disableTmpl' => false,
-                                'subSubSub1' => ['field' => '${\'value\'}', '__disableTmpl' => ['field' => true]]
-                            ]
+                                'subSubSub1' => ['field' => '${\'value\'}', '__disableTmpl' => ['field' => true]],
+                            ],
                         ],
                         'subSub4' => [
                             ['foo' => '${\'bar\'}', '__disableTmpl' => ['foo' => true]],
                             [
                                 'foo' => '${\'bar\'}',
                                 'xyz' => '${\'zyx\'}',
-                                '__disableTmpl' => ['foo' => true, 'xyz' => true]
-                            ]
+                                '__disableTmpl' => ['foo' => true, 'xyz' => true],
+                            ],
                         ],
-                        '__disableTmpl' => ['field' => true]
-                    ]
-                ]
-            ]
+                        '__disableTmpl' => ['field' => true],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -126,15 +127,15 @@ class SanitizerTest extends TestCase
                     'arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}', 'xyz' => 42]]],
                     'children' => [
                         'child_component' => [
-                            'arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}', 'xyz' => '${\'xyz\'}']]]
-                        ]
-                    ]
+                            'arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}', 'xyz' => '${\'xyz\'}']]],
+                        ],
+                    ],
                 ],
                 [
                     'arguments' => [
                         'data' => [
-                            'config' => ['foo' => '${\'bar\'}', 'xyz' => 42,  '__disableTmpl' => ['foo' => true]]
-                        ]
+                            'config' => ['foo' => '${\'bar\'}', 'xyz' => 42,  '__disableTmpl' => ['foo' => true]],
+                        ],
                     ],
                     'children' => [
                         'child_component' => [
@@ -143,17 +144,17 @@ class SanitizerTest extends TestCase
                                     'config' => [
                                         'foo' => '${\'bar\'}',
                                         'xyz' => '${\'xyz\'}',
-                                        '__disableTmpl' => ['foo' => true, 'xyz' => true]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        '__disableTmpl' => ['foo' => true, 'xyz' => true],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'argumentsOnly' => [
                 ['arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}']]]],
-                ['arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}', '__disableTmpl' => ['foo' => true]]]]]
+                ['arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}', '__disableTmpl' => ['foo' => true]]]]],
             ],
             'childrenOnly' => [
                 ['children' => ['child1' => ['arguments' => ['data' => ['config' => ['foo' => '${\'bar\'}']]]]]],
@@ -161,12 +162,12 @@ class SanitizerTest extends TestCase
                     'children' => [
                         'child1' => [
                             'arguments' => [
-                                'data' => ['config' => ['foo' => '${\'bar\'}', '__disableTmpl' => ['foo' => true]]]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'data' => ['config' => ['foo' => '${\'bar\'}', '__disableTmpl' => ['foo' => true]]],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 

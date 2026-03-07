@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Api\ExtensionAttribute;
 
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Customer\Api\Data\CustomerExtensionInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 
 /**
  * Class to test the automatic generation of extension attributes object.

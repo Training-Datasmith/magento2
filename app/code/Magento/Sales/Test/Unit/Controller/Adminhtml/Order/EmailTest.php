@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,16 +18,16 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\Manager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Controller\Adminhtml\Order\Email;
 use Magento\Sales\Model\Order;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -121,7 +122,7 @@ class EmailTest extends TestCase
             'getSession',
             'getActionFlag',
             'getHelper',
-            'getResultRedirectFactory'
+            'getResultRedirectFactory',
         ]);
         $this->orderManagementMock = $this->getMockBuilder(OrderManagementInterface::class)
             ->getMock();
@@ -170,7 +171,7 @@ class EmailTest extends TestCase
                 'response' => $this->response,
                 'orderManagement' => $this->orderManagementMock,
                 'orderRepository' => $this->orderRepositoryMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

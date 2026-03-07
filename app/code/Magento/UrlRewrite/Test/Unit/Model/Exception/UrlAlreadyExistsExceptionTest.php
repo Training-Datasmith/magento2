@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class UrlAlreadyExistsExceptionTest extends TestCase
         $expectedCode = 42;
         $urls = ['someUrl.html'];
         $localizedException = new UrlAlreadyExistsException(
-            new Phrase("message %1", ['test']),
+            new Phrase('message %1', ['test']),
             new \Exception(),
             $expectedCode,
             $urls

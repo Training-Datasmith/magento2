@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Block\System\Variable\Edit;
 
 /**
@@ -45,7 +48,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Variable Code'),
                 'title' => __('Variable Code'),
                 'required' => true,
-                'class' => 'validate-xml-identifier'
+                'class' => 'validate-xml-identifier',
             ]
         );
 
@@ -67,7 +70,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Use Default Variable Values'),
                     'title' => __('Use Default Variable Values'),
                     'onchange' => 'toggleValueElement(this);',
-                    'values' => [0 => __('No'), 1 => __('Yes')]
+                    'values' => [0 => __('No'), 1 => __('Yes')],
                 ]
             );
         }
@@ -79,7 +82,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'html_value',
                 'label' => __('Variable HTML Value'),
                 'title' => __('Variable HTML Value'),
-                'disabled' => $useDefault
+                'disabled' => $useDefault,
             ]
         );
 
@@ -90,7 +93,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'plain_value',
                 'label' => __('Variable Plain Value'),
                 'title' => __('Variable Plain Value'),
-                'disabled' => $useDefault
+                'disabled' => $useDefault,
             ]
         );
 

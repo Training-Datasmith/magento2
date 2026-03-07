@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,20 +18,20 @@ interface StateInterface
     /**#@+
      * View modes
      */
-    const MODE_ENABLED = 'enabled';
+    public const MODE_ENABLED = 'enabled';
 
-    const MODE_DISABLED = 'disabled';
+    public const MODE_DISABLED = 'disabled';
 
     /**#@-*/
 
     /**#@+
      * View statuses
      */
-    const STATUS_IDLE = 'idle';
+    public const STATUS_IDLE = 'idle';
 
-    const STATUS_WORKING = 'working';
+    public const STATUS_WORKING = 'working';
 
-    const STATUS_SUSPENDED = 'suspended';
+    public const STATUS_SUSPENDED = 'suspended';
 
     /**#@-*/
 

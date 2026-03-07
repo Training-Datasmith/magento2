@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Deploy\Console\Command;
 
+use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\State;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -69,7 +71,7 @@ class SetModeCommand extends Command
                     InputOption::VALUE_NONE,
                     'Skips the clearing and regeneration of static content (generated code, preprocessed CSS, '
                     . 'and assets in pub/static/)'
-                )
+                ),
             ]);
         parent::configure();
     }

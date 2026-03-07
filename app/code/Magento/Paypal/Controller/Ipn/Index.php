@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class Index extends \Magento\Framework\App\Action\Action implements CsrfAwareAct
                 $this->_eventManager->dispatch(
                     'paypal_checkout_success',
                     [
-                        'order' => $this->orderFactory->create()->loadByIncrementId($incrementId)
+                        'order' => $this->orderFactory->create()->loadByIncrementId($incrementId),
                     ]
                 );
             }

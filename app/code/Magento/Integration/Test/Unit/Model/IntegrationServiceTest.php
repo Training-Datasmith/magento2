@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +67,7 @@ class IntegrationServiceTest extends TestCase
             Integration::class,
             [
                 'getData', 'getId', 'load', 'save', 'delete', '__wakeup',
-                'getName', 'getEmail', 'getEndpoint', 'loadByName'
+                'getName', 'getEmail', 'getEndpoint', 'loadByName',
             ]
         );
         $this->_integrationData = [
@@ -108,7 +110,7 @@ class IntegrationServiceTest extends TestCase
             Integration::class,
             [
                 'getData', 'getId', 'load', 'save', 'delete', '__wakeup',
-                'getName', 'getEmail', 'getEndpoint', 'loadByName'
+                'getName', 'getEmail', 'getEndpoint', 'loadByName',
             ]
         );
         $this->_emptyIntegrationMock->expects($this->any())->method('getId')->willReturn(null);
@@ -506,7 +508,7 @@ class IntegrationServiceTest extends TestCase
             Integration::class,
             [
                 'getData', 'getId', 'load', 'save', 'delete', '__wakeup',
-                'getName', 'getEmail', 'getEndpoint', 'loadByName'
+                'getName', 'getEmail', 'getEndpoint', 'loadByName',
             ]
         );
         $integrationMock->expects($this->any())->method('getId')->willReturn($integrationId);

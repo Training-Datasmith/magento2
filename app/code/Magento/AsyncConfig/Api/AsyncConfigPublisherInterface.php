@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ interface AsyncConfigPublisherInterface
     /**
      * Save Configuration Data
      *
-     * @param array $configData
      * @return void
      * @throws FileSystemException
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class AddDataForMexico implements DataPatchInterface, PatchVersionInterface
             ['MX', 'TLA', 'Tlaxcala'],
             ['MX', 'VER', 'Veracruz'],
             ['MX', 'YUC', 'Yucatán'],
-            ['MX', 'ZAC', 'Zacatecas']
+            ['MX', 'ZAC', 'Zacatecas'],
         ];
     }
 

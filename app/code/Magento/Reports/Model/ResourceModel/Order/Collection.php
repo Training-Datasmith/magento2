@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Reports\Model\ResourceModel\Order;
 
-use Magento\Framework\DB\Select;
 use DateTimeZone;
+use Magento\Framework\DB\Select;
 
 /**
  * Reports orders collection
@@ -932,7 +934,7 @@ class Collection extends \Magento\Sales\Model\ResourceModel\Order\Collection
         $countSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
         $countSelect->reset(\Magento\Framework\DB\Select::GROUP);
         $countSelect->reset(\Magento\Framework\DB\Select::HAVING);
-        $countSelect->columns("COUNT(DISTINCT main_table.entity_id)");
+        $countSelect->columns('COUNT(DISTINCT main_table.entity_id)');
 
         return $countSelect;
     }
@@ -971,7 +973,7 @@ class Collection extends \Magento\Sales\Model\ResourceModel\Order\Collection
             $fieldToFilter,
             [
                 'from' => $from->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT),
-                'to' => $to->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT)
+                'to' => $to->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT),
             ]
         );
 

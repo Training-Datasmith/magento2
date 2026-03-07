@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Creditmemo;
 
 /**
@@ -61,7 +64,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Cancel'),
                     'class' => 'delete',
-                    'onclick' => 'setLocation(\'' . $this->getCancelUrl() . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getCancelUrl() . '\')',
                 ]
             );
         }
@@ -75,7 +78,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Send Email'),
                     'class' => 'send-email',
-                    'onclick' => 'confirmSetLocation(\'' . $confirmMessage . '\', \'' . $this->getEmailUrl() . '\')'
+                    'onclick' => 'confirmSetLocation(\'' . $confirmMessage . '\', \'' . $this->getEmailUrl() . '\')',
                 ]
             );
         }
@@ -86,7 +89,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Refund'),
                     'class' => 'refund',
-                    'onclick' => 'setLocation(\'' . $this->getRefundUrl() . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getRefundUrl() . '\')',
                 ]
             );
         }
@@ -97,7 +100,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Void'),
                     'class' => 'void',
-                    'onclick' => 'setLocation(\'' . $this->getVoidUrl() . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getVoidUrl() . '\')',
                 ]
             );
         }
@@ -108,7 +111,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Print'),
                     'class' => 'print',
-                    'onclick' => 'setLocation(\'' . $this->getPrintUrl() . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getPrintUrl() . '\')',
                 ]
             );
         }
@@ -160,7 +163,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
             'sales/order/view',
             [
                 'order_id' => $this->getCreditmemo() ? $this->getCreditmemo()->getOrderId() : null,
-                'active_tab' => 'order_creditmemos'
+                'active_tab' => 'order_creditmemos',
             ]
         );
     }
@@ -206,7 +209,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
             'sales/*/email',
             [
                 'creditmemo_id' => $this->getCreditmemo()->getId(),
-                'order_id' => $this->getCreditmemo()->getOrderId()
+                'order_id' => $this->getCreditmemo()->getOrderId(),
             ]
         );
     }

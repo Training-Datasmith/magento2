@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ $firstChildSimpleProduct
             'position' => 1,
             'label' => 'Image Alt Text',
             'disabled' => 0,
-            'media_type' => 'image'
+            'media_type' => 'image',
         ],
     ]])
     ->save();

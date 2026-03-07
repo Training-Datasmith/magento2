@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class DataTest extends TestCase
             HelperData::class,
             [
                 'context' => $this->contextMock,
-                'layout' => $this->layoutMock
+                'layout' => $this->layoutMock,
             ]
         );
         $this->helper->setProduct($productMock);
@@ -110,7 +111,7 @@ class DataTest extends TestCase
                 'productalert/add/' . $type,
                 [
                     'product_id' => 1,
-                    'uenc' => $uenc
+                    'uenc' => $uenc,
                 ]
             )
             ->willReturn($expected);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\CacheInvalidate\Model\SocketFactory;
 use Magento\Framework\Cache\InvalidateLogger;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\Cache\Server;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class PurgeCacheTest extends TestCase
@@ -65,7 +66,7 @@ class PurgeCacheTest extends TestCase
                 'cacheServer' => $this->cacheServer,
                 'socketAdapterFactory' => $socketFactoryMock,
                 'logger' => $this->loggerMock,
-                'maxHeaderSize' => 256
+                'maxHeaderSize' => 256,
             ]
         );
     }
@@ -126,7 +127,7 @@ class PurgeCacheTest extends TestCase
             '(^|,)cat_p_95(,|$)', '(^|,)cat_p_96(,|$)', '(^|,)cat_p_97(,|$)', '(^|,)cat_p_98(,|$)',
             '(^|,)cat_p_99(,|$)', '(^|,)cat_p_100(,|$)', '(^|,)cat_p_10038(,|$)', '(^|,)cat_p_142985(,|$)',
             '(^|,)cat_p_199(,|$)', '(^|,)cat_p_300(,|$)', '(^|,)cat_p_12038(,|$)', '(^|,)cat_p_152985(,|$)',
-            '(^|,)cat_p_299(,|$)', '(^|,)cat_p_400(,|$)', '(^|,)cat_p_13038(,|$)', '(^|,)cat_p_162985(,|$)'
+            '(^|,)cat_p_299(,|$)', '(^|,)cat_p_400(,|$)', '(^|,)cat_p_13038(,|$)', '(^|,)cat_p_162985(,|$)',
         ];
 
         $tagsSplitA = array_slice($tags, 0, 12);
@@ -159,7 +160,7 @@ class PurgeCacheTest extends TestCase
                             $arg4['X-Magento-Tags-Pattern'] === implode('|', $tagsSplitA) &&
                             isset($arg4['Host']) &&
                             $arg4['Host'] === $uri->getHost()) {
-                             return null;
+                            return null;
                         }
                         break;
                     case 2:
@@ -190,15 +191,15 @@ class PurgeCacheTest extends TestCase
     {
         return [
             [
-                [['host' => '127.0.0.1', 'port' => 8080]]
+                [['host' => '127.0.0.1', 'port' => 8080]],
             ],
             [
                 [
                     ['host' => '127.0.0.1', 'port' => 8080],
                     ['host' => '127.0.0.2', 'port' => 1234],
-                    ['host' => 'host']
-                ]
-            ]
+                    ['host' => 'host'],
+                ],
+            ],
         ];
     }
 

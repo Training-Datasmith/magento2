@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Customer\Test\Unit\Plugin;
 use Magento\AsynchronousOperations\Model\MassSchedule;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Plugin\AsyncRequestCustomerGroupAuthorization;
 use Magento\Framework\Authorization;
 use Magento\Framework\Exception\AuthorizationException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Customer\Plugin\AsyncRequestCustomerGroupAuthorization;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -51,7 +52,7 @@ class AsyncRequestCustomerGroupAuthorizationTest extends TestCase
         $objectManager = new ObjectManager($this);
         $this->authorizationMock = $this->createMock(Authorization::class);
         $this->plugin = $objectManager->getObject(AsyncRequestCustomerGroupAuthorization::class, [
-            'authorization' => $this->authorizationMock
+            'authorization' => $this->authorizationMock,
         ]);
         $this->massScheduleMock = $this->createMock(MassSchedule::class);
         $this->customerRepository = $this->createMock(CustomerRepositoryInterface::class);
@@ -81,7 +82,7 @@ class AsyncRequestCustomerGroupAuthorizationTest extends TestCase
         $customer->method('getId')->willReturn($customerId);
         $this->customerRepository->method('getById')->with($customerId)->willReturn($customer);
         $entitiesArray = [
-            [$customer, 'Password1', '']
+            [$customer, 'Password1', ''],
         ];
         $this->authorizationMock
             ->method('isAllowed')
@@ -103,7 +104,7 @@ class AsyncRequestCustomerGroupAuthorizationTest extends TestCase
     {
         return [
             [3, 1, false, 1],
-            [3, 1, true, 0]
+            [3, 1, true, 0],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class DropTest extends AbstractBackendController
             'form_key' => $formKey->getFormKey(),
             'type' => Template::TYPE_HTML,
             'preview_store_id' => $storeId,
-            'text' => 'Template {{var this.template_id}}:{{var this.getData(template_id)}} Text'
+            'text' => 'Template {{var this.template_id}}:{{var this.getData(template_id)}} Text',
         ];
         $this->getRequest()->setPostValue($post);
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);

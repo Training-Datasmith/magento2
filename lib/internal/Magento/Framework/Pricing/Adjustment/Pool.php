@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class Pool
     /**
      * Default adjustment sort order
      */
-    const DEFAULT_SORT_ORDER = -1;
+    public const DEFAULT_SORT_ORDER = -1;
 
     /**
      * @var AdjustmentFactory
@@ -103,7 +105,7 @@ class Pool
         return $this->adjustmentFactory->create(
             $adjustmentData['className'],
             [
-                'sortOrder' => $sortOrder
+                'sortOrder' => $sortOrder,
             ]
         );
     }

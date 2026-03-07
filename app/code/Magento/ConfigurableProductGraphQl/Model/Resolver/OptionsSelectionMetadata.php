@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class OptionsSelectionMetadata implements ResolverInterface
             'variant' => $this->variantFormatter->format($options, $selectedOptions, $variants),
             'model' => $product,
             'options_available_for_selection' => $optionsAvailableForSelection['options_available_for_selection'],
-            'availableSelectionProducts' => $optionsAvailableForSelection['availableSelectionProducts']
+            'availableSelectionProducts' => $optionsAvailableForSelection['availableSelectionProducts'],
         ];
     }
 }

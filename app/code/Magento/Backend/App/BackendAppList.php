@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,26 +15,8 @@ namespace Magento\Backend\App;
  */
 class BackendAppList
 {
-    /**
-     * @var BackendApp[]
-     */
-    private $backendApps = [];
-
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @param \Magento\Framework\App\Request\Http $request
-     * @param array $backendApps
-     */
-    public function __construct(
-        \Magento\Framework\App\Request\Http $request,
-        array $backendApps = []
-    ) {
-        $this->backendApps = $backendApps;
-        $this->request = $request;
+    public function __construct(private readonly \Magento\Framework\App\Request\Http $request, private array $backendApps = [])
+    {
     }
 
     /**
@@ -57,9 +41,6 @@ class BackendAppList
      */
     public function getBackendApp($appName)
     {
-        if (isset($this->backendApps[$appName])) {
-            return $this->backendApps[$appName];
-        }
-        return null;
+        return $this->backendApps[$appName] ?? null;
     }
 }

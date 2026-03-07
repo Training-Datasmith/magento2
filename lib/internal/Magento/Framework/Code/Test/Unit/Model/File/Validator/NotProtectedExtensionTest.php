@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Model\File\Validator;
 
-use PHPUnit\Framework\TestCase;
-use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\Phrase;
+use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
+use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class NotProtectedExtensionTest extends TestCase
 {

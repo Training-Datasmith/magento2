@@ -46,7 +46,7 @@ class DataTest extends TestCase
         $this->helper = $objectManager->getObject(
             HelperData::class,
             [
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -85,7 +85,7 @@ class DataTest extends TestCase
         return [
             ['GA-XXXX', true, true],
             ['GA-XXXX', false, false],
-            ['', true, false]
+            ['', true, false],
         ];
     }
 
@@ -115,7 +115,7 @@ class DataTest extends TestCase
     {
         return [
             ['value' => '1', 'result' => true],
-            ['value' => '0', 'result' => false]
+            ['value' => '0', 'result' => false],
         ];
     }
 }

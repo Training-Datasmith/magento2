@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Model\Validator;
 
-use Magento\Customer\Model\Address;
 use Magento\Framework\Validator\AbstractValidator;
 
 /**
@@ -38,7 +38,7 @@ class Telephone extends AbstractValidator
     {
         if (!$this->isValidTelephone((string)$value->getTelephone())) {
             parent::_addMessages([[
-                'telephone' => "Invalid Phone Number. Please use 0-9, +, -, (, ), ., / and space."
+                'telephone' => 'Invalid Phone Number. Please use 0-9, +, -, (, ), ., / and space.',
             ]]);
         }
 

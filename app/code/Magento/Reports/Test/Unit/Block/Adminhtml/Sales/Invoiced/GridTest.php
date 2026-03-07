@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,27 +10,27 @@ namespace Magento\Reports\Test\Unit\Block\Adminhtml\Sales\Invoiced;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Directory\Model\Currency;
+use Magento\Framework\App\Request\Http;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Math\Random;
-use Magento\Framework\App\Request\Http;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Reports\Block\Adminhtml\Sales\Grid\Column\Renderer\Date;
+use Magento\Reports\Block\Adminhtml\Sales\Invoiced\Grid;
 use Magento\Reports\Helper\Data;
 use Magento\Reports\Model\Grouped\CollectionFactory;
 use Magento\Reports\Model\ResourceModel\Report\Collection\Factory;
-use Magento\Reports\Block\Adminhtml\Sales\Invoiced\Grid;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -141,7 +142,7 @@ class GridTest extends TestCase
             $this->reportsData,
             [
                 'filter_data' => $filterData,
-                'id' => 'test'
+                'id' => 'test',
             ]
         );
     }
@@ -233,7 +234,7 @@ class GridTest extends TestCase
                 'totals_label' => __('Total'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ],
             [
                 'header' => __('Orders'),
@@ -242,7 +243,7 @@ class GridTest extends TestCase
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ],
             [
                 'header' => __('Invoiced Orders'),
@@ -251,7 +252,7 @@ class GridTest extends TestCase
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-invoiced',
-                'column_css_class' => 'col-invoiced'
+                'column_css_class' => 'col-invoiced',
             ],
             [
                 'header' => __('Total Invoiced'),
@@ -263,7 +264,7 @@ class GridTest extends TestCase
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced',
                 'column_css_class' => 'col-total-invoiced',
-                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class
+                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
             ],
             [
                 'header' => __('Paid Invoices'),
@@ -275,7 +276,7 @@ class GridTest extends TestCase
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced-paid',
                 'column_css_class' => 'col-total-invoiced-paid',
-                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class
+                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
             ],
             [
                 'header' => __('Unpaid Invoices'),
@@ -287,8 +288,8 @@ class GridTest extends TestCase
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced-not-paid',
                 'column_css_class' => 'col-total-invoiced-not-paid',
-                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class
-            ]
+                'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
+            ],
         ];
     }
 

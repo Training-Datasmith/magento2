@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 /**
@@ -11,27 +14,19 @@ namespace Magento\Analytics\Model;
 class EncodedContext
 {
     /**
-     * Encrypted string.
-     *
-     * @var string
-     */
-    private $content;
-
-    /**
-     * Initialization vector that was used for encryption.
-     *
-     * @var string
-     */
-    private $initializationVector;
-
-    /**
      * @param string $content
      * @param string $initializationVector
      */
-    public function __construct($content, $initializationVector = '')
-    {
-        $this->content = $content;
-        $this->initializationVector = $initializationVector;
+    public function __construct(
+        /**
+         * Encrypted string.
+         */
+        private $content,
+        /**
+         * Initialization vector that was used for encryption.
+         */
+        private $initializationVector = ''
+    ) {
     }
 
     /**

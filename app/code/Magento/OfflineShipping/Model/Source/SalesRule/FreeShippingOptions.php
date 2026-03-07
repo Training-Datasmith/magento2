@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\OfflineShipping\Model\Source\SalesRule;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -24,16 +27,16 @@ class FreeShippingOptions implements OptionSourceInterface
         return [
             [
                 'value' => 0,
-                'label' => __('No')
+                'label' => __('No'),
             ],
             [
                 'value' => Rule::FREE_SHIPPING_ITEM,
-                'label' => __('For matching items only')
+                'label' => __('For matching items only'),
             ],
             [
                 'value' => Rule::FREE_SHIPPING_ADDRESS,
-                'label' => __('For shipment with matching items')
-            ]
+                'label' => __('For shipment with matching items'),
+            ],
         ];
     }
 }

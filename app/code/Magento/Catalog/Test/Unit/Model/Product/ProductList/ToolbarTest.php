@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\ProductList;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
@@ -121,7 +122,7 @@ class ToolbarTest extends TestCase
     public static function stringParamProvider()
     {
         return [
-            ['stringParam']
+            ['stringParam'],
         ];
     }
 
@@ -132,7 +133,7 @@ class ToolbarTest extends TestCase
     {
         return [
             ['2'],
-            [3]
+            [3],
         ];
     }
 }

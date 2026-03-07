@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\WebapiAsync\Plugin;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Webapi\Model\ServiceMetadata;
 use Magento\WebapiAsync\Controller\Rest\AsynchronousSchemaRequestProcessor;
 use Magento\WebapiAsync\Controller\Rest\AsynchronousSchemaRequestProcessorMock;
@@ -23,8 +26,8 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
         $objectManager = Bootstrap::getObjectManager();
         $objectManager->configure([
             'preferences' => [
-                AsynchronousSchemaRequestProcessor::class => AsynchronousSchemaRequestProcessorMock::class
-            ]
+                AsynchronousSchemaRequestProcessor::class => AsynchronousSchemaRequestProcessorMock::class,
+            ],
         ]);
 
         $this->serviceMetadata = $objectManager->create(ServiceMetadata::class);
@@ -39,7 +42,7 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                     'inputRequired' => false,
                     'isSecure' => false,
                     'resources' => [
-                        'Magento_Customer::manage'
+                        'Magento_Customer::manage',
                     ],
                     'documentation' => 'Activate a customer account using a key that was sent in a confirmation email.',
                     'interface' => [
@@ -48,14 +51,14 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                                 'email' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
+                                    'documentation' => null,
                                 ],
                                 'confirmationKey' => [
                                     'type' => 'string',
                                     'required' => true,
-                                    'documentation' => null
-                                ]
-                            ]
+                                    'documentation' => null,
+                                ],
+                            ],
                         ],
                         'out' => [
                             'parameters' => [
@@ -66,14 +69,14 @@ class ServiceMetadataTest extends \PHPUnit\Framework\TestCase
                                     'response_codes' => [
                                         'success' => [
                                             'code' => '202',
-                                            'description' => '202 Accepted.'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'description' => '202 Accepted.',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class' => AccountManagementInterface::class,
             'description' => 'Interface for managing customers accounts.',

@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator\Test\Unit;
 
 use Magento\Framework\App\Arguments\ValidationState;
@@ -20,8 +23,8 @@ use Magento\Framework\Validator\Constraint\Option;
 use Magento\Framework\Validator\Constraint\Option\Callback;
 use Magento\Framework\Validator\Test\Unit\Test\NotEmpty;
 use Magento\Framework\Validator\UniversalFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -93,8 +96,8 @@ class ConfigTest extends TestCase
                 ValidationState::class => [
                     'arguments' => [
                         'appMode' => 'developer',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $this->_config = $this->_objectManager->getObject(
@@ -103,7 +106,7 @@ class ConfigTest extends TestCase
                 'configFiles' => $configFiles,
                 'builderFactory' => $universalFactory,
                 'domFactory' => new DomFactory($appObjectManager),
-                'urnResolver' => $urnResolverMock
+                'urnResolver' => $urnResolverMock,
             ]
         );
     }
@@ -289,7 +292,7 @@ class ConfigTest extends TestCase
                     ],
                 ],
                 'property' => 'int',
-                'type' => 'property'
+                'type' => 'property',
             ],
         ];
         $this->assertAttributeEquals($expected, '_constraints', $builder);
@@ -328,7 +331,7 @@ class ConfigTest extends TestCase
             [__DIR__ . '/_files/validation/negative/invalid_entity_callback.xml'],
             [__DIR__ . '/_files/validation/negative/invalid_child_for_option.xml'],
             [__DIR__ . '/_files/validation/negative/invalid_content_for_callback.xml'],
-            [__DIR__ . '/_files/validation/negative/multiple_callback_in_argument.xml']
+            [__DIR__ . '/_files/validation/negative/multiple_callback_in_argument.xml'],
         ];
     }
 

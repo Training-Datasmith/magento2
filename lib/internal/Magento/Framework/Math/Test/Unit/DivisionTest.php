@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Math\Test\Unit;
 
 use Magento\Framework\Math\Division;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DivisionTest extends TestCase
 {
@@ -37,7 +38,7 @@ class DivisionTest extends TestCase
             [7.7, 2 , 1.7],
             [17.8, 3.2 , 1.8],
             [11.7, 1.7 , 1.5],
-            [8, 2, 0]
+            [8, 2, 0],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -305,7 +306,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'billingAddressList' => [
                     'component' => 'Magento_Checkout/js/view/billing-address/list',
                     'displayArea' => 'billing-address-list',
-                    'template' => 'Magento_Checkout/billing-address/list'
+                    'template' => 'Magento_Checkout/billing-address/list',
                 ],
                 'form-fields' => [
                     'component' => 'uiComponent',

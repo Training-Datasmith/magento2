@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class PaymentMethodTest extends TestCase
 {
-
     /**
      * @var PaymentMethod
      */
@@ -51,9 +51,9 @@ class PaymentMethodTest extends TestCase
         $dataSource = [
             'data' => [
                 'items' => [
-                    [$itemName => $oldItemValue]
-                ]
-            ]
+                    [$itemName => $oldItemValue],
+                ],
+            ],
         ];
 
         $payment = $this->createMock(MethodInterface::class);

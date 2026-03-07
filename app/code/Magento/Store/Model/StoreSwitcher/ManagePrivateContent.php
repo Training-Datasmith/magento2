@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Store\Model\StoreSwitcher;
 
-use Magento\Store\Model\StoreSwitcherInterface;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\StoreSwitcherInterface;
 
 /**
  * Set private content cookie to have actual local storage data on target store after store switching.

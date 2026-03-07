@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class VatValidatorTest extends TestCase
             [
                 'getVatIsValid', 'getVatRequestId', 'getVatRequestDate', 'getVatRequestSuccess',
                 'getCountryId', 'getVatId', 'getValidatedCountryCode', 'getValidatedVatNumber',
-                'save', 'getAddressType'
+                'save', 'getAddressType',
             ]
         );
 

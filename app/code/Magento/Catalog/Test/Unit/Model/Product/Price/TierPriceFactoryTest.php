@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\TierPriceInterfaceFactory;
 use Magento\Catalog\Model\Product\Price\TierPrice;
 use Magento\Catalog\Model\Product\Price\TierPriceFactory;
@@ -16,6 +16,7 @@ use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -90,7 +91,7 @@ class TierPriceFactoryTest extends TestCase
                 'qty' => 2.0000,
                 'value' => 2.0000,
                 'percentage_value' => null,
-                'website_id' => 0
+                'website_id' => 0,
             ],
             $rawData
         );
@@ -101,7 +102,7 @@ class TierPriceFactoryTest extends TestCase
                 'price_type' => TierPrice::PRICE_TYPE_FIXED,
                 'website_id' => 0,
                 'quantity' => 2.000,
-                'customer_group' => 'all groups'
+                'customer_group' => 'all groups',
             ],
             $expected
         );
@@ -135,7 +136,7 @@ class TierPriceFactoryTest extends TestCase
         return [
             [
                 [],
-                []
+                [],
             ],
             [
                 [
@@ -143,8 +144,8 @@ class TierPriceFactoryTest extends TestCase
                     'customer_group_id' => 1,
                 ],
                 [
-                    'customer_group' => 'NOT LOGGED IN'
-                ]
+                    'customer_group' => 'NOT LOGGED IN',
+                ],
             ],
             [
                 [
@@ -153,9 +154,9 @@ class TierPriceFactoryTest extends TestCase
                     'customer_group_code' => 'custom',
                 ],
                 [
-                    'customer_group' => 'custom'
-                ]
-            ]
+                    'customer_group' => 'custom',
+                ],
+            ],
         ];
     }
 }

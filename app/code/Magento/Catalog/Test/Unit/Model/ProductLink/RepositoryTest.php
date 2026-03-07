@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class RepositoryTest extends TestCase
                 'metadataPool' => $this->metadataPoolMock,
                 'hydratorPool' => $this->hydratorPoolMock,
                 'linkTypeProvider' => $this->linkTypeProvider,
-                'linkResource' => $this->linkResourceMock
+                'linkResource' => $this->linkResourceMock,
             ]
         );
     }
@@ -141,7 +142,7 @@ class RepositoryTest extends TestCase
             ->with($productMock)
             ->willReturn(['linkField' => $parentId]);
         $this->linkResourceMock->expects($this->once())->method('saveProductLinks')->with($parentId, [
-            $linkedProductId => ['product_id' => $linkedProductId]
+            $linkedProductId => ['product_id' => $linkedProductId],
         ], $typeId);
         $entityMock->expects($this->once())->method('__toArray')->willReturn([]);
         $linkedProductMock->expects($this->exactly(2))->method('getId')->willReturn($linkedProductId);
@@ -173,7 +174,7 @@ class RepositoryTest extends TestCase
             ->with($productMock)
             ->willReturn(['linkField' => $parentId]);
         $this->linkResourceMock->expects($this->once())->method('saveProductLinks')->with($parentId, [
-            $linkedProductId => ['product_id' => $linkedProductId]
+            $linkedProductId => ['product_id' => $linkedProductId],
         ], $typeId)->willThrowException(new \Exception());
         $entityMock->expects($this->once())->method('__toArray')->willReturn([]);
         $linkedProductMock->expects($this->exactly(2))->method('getId')->willReturn($linkedProductId);

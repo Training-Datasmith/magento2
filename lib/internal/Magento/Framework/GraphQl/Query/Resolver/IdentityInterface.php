@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ namespace Magento\Framework\GraphQl\Query\Resolver;
  */
 interface IdentityInterface
 {
-
     /**
      * Get identity tags from resolved data.
      *

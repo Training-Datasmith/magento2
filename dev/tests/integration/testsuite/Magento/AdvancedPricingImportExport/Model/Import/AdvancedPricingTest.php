@@ -1,10 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedPricingImportExport\Model\Import;
 
+use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
+use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Test\Fixture\SelectAttribute;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -13,11 +18,9 @@ use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
-use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
-use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\AppArea;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -61,53 +64,53 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
                     'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                     'value'             => '300.000000',
                     'qty'               => '10.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => '1',
                     'value'             => '11.000000',
                     'qty'               => '11.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => '3',
                     'value'             => '14.000000',
                     'qty'               => '14.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                     'value'             => 160.5,
                     'qty'               => '20.0000',
-                    'percentage_value'  => '50.00'
-                ]
+                    'percentage_value'  => '50.00',
+                ],
             ],
             'AdvancedPricingSimple 2' => [
                 [
                     'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                     'value'             => '1000000.000000',
                     'qty'               => '100.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => '0',
                     'value'             => '12.000000',
                     'qty'               => '12.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => '2',
                     'value'             => '13.000000',
                     'qty'               => '13.0000',
-                    'percentage_value'  => null
+                    'percentage_value'  => null,
                 ],
                 [
                     'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                     'value'             => 327.0,
                     'qty'               => '200.0000',
-                    'percentage_value'  => '50.00'
-                ]
-            ]
+                    'percentage_value'  => '50.00',
+                ],
+            ],
         ];
     }
 
@@ -140,7 +143,7 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
                 $tierPriceData = $tierPrice->getData();
                 unset($tierPriceData['extension_attributes']);
                 $this->assertContains($tierPriceData, $this->expectedTierPrice[$sku]);
-                $index ++;
+                $index++;
             }
         }
     }
@@ -253,7 +256,7 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
                 $tierPriceData = $tierPrice->getData();
                 unset($tierPriceData['extension_attributes']);
                 $this->assertContains($tierPriceData, $this->expectedTierPrice[$sku]);
-                $index ++;
+                $index++;
             }
         }
     }
@@ -349,14 +352,14 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
             Csv::class,
             [
                 'file' => $file,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->model->setSource($source)
             ->setParameters(
                 [
                     'behavior' => $behavior,
-                    'entity' => $entity
+                    'entity' => $entity,
                 ]
             )
             ->validateData();
@@ -442,7 +445,7 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
                 'attribute_code' => 'size',
                 'default_frontend_label' => 'Size',
                 'scope' => 'global',
-                'options' => [28,29,30,31,32,33,34,36,38]
+                'options' => [28,29,30,31,32,33,34,36,38],
             ],
             'attr1'
         ),
@@ -452,7 +455,7 @@ class AdvancedPricingTest extends \PHPUnit\Framework\TestCase
                 'attribute_code' => 'colors',
                 'default_frontend_label' => 'Colors',
                 'scope' => 'global',
-                'options' => ["Red","Green","Yellow","Blue","Orange"]
+                'options' => ['Red','Green','Yellow','Blue','Orange'],
             ]
         ),
         AppArea('adminhtml')

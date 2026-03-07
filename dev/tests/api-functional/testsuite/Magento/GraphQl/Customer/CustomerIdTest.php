@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -71,8 +72,8 @@ class CustomerIdTest extends GraphQlAbstract
                     'id' => $this->idEncoder->encode((string)$customer->getId()),
                     'firstname' => $customer->getFirstname(),
                     'lastname' => $customer->getLastname(),
-                    'email' => $customer->getEmail()
-                ]
+                    'email' => $customer->getEmail(),
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerQuery(),
@@ -134,7 +135,7 @@ class CustomerIdTest extends GraphQlAbstract
                 'id' => $customerUid,
                 'firstname' => $firstname,
                 'lastname' => $lastname,
-                'email' => $email
+                'email' => $email,
             ],
             $response['createCustomer']['customer']
         );
@@ -171,9 +172,9 @@ class CustomerIdTest extends GraphQlAbstract
                     'id' => $this->idEncoder->encode((string)$customer->getId()),
                     'firstname' => $newFirstname,
                     'lastname' => $newLastname,
-                    'email' => $customer->getEmail()
-                ]
-            ]
+                    'email' => $customer->getEmail(),
+                ],
+            ],
         ], $this->graphQlMutation(
             $this->getUpdateCustomerMutation($newFirstname, $newLastname),
             [],
@@ -273,7 +274,7 @@ class CustomerIdTest extends GraphQlAbstract
             'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken(
                 $email,
                 'password'
-            )
+            ),
         ];
     }
 }

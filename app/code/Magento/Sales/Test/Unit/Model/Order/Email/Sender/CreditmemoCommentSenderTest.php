@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,8 +92,8 @@ class CreditmemoCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -136,8 +137,8 @@ class CreditmemoCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -184,8 +185,8 @@ class CreditmemoCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');

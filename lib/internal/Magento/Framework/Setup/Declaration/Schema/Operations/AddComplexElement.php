@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ class AddComplexElement implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'add_complex_element';
+    public const OPERATION_NAME = 'add_complex_element';
 
     /**
      * @var DefinitionAggregator

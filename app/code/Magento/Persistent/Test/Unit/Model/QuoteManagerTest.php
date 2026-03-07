@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Customer\Model\GroupManagement;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Data;
+use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Persistent\Model\QuoteManager;
 use Magento\Persistent\Model\Session as PersistentSession;
-use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartExtensionFactory;
 use Magento\Quote\Api\Data\CartExtensionInterface;
@@ -25,7 +26,6 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\ShippingAssignment\ShippingAssignmentProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -104,7 +104,7 @@ class QuoteManagerTest extends TestCase
                 'clearQuote',
                 'clearStorage',
                 'getQuote',
-                'removePersistentCookie'
+                'removePersistentCookie',
             ]
         );
         $this->persistentDataMock = $this->createMock(Data::class);
@@ -140,7 +140,7 @@ class QuoteManagerTest extends TestCase
                 'setExtensionAttributes',
                 '__wakeup',
                 'setCustomer',
-                'getCustomer'
+                'getCustomer',
             ]
         );
 

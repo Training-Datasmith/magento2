@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Cron;
 
-use Magento\Integration\Model\ResourceModel\Oauth\Token as TokenResourceModel;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Integration\Helper\Oauth\Data as OauthHelper;
+use Magento\Integration\Model\ResourceModel\Oauth\Token as TokenResourceModel;
 
 /**
  * Cron class for deleting expired OAuth tokens.

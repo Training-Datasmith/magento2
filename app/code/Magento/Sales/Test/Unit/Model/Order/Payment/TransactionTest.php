@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 class TransactionTest extends TestCase
 {
-
     /** @var  Transaction */
     protected $transaction;
 
@@ -47,7 +47,7 @@ class TransactionTest extends TestCase
         $this->transaction = $this->objectManagerHelper->getObject(
             Transaction::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }

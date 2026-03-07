@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\ImportExport\Model\Import\AbstractEntity
  */
+
 namespace Magento\ImportExport\Model\Import;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -42,11 +45,11 @@ class EntityAbstractTest extends \PHPUnit\Framework\TestCase
                 $objectManager->get(\Magento\Framework\App\ResourceConnection::class),
                 $objectManager->get(
                     \Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface::class
-                )
+                ),
             ])
             ->onlyMethods(['getMasterAttributeCode', 'validateRow', 'getEntityTypeCode', '_importData'])
             ->getMock();
-        $model->expects($this->any())->method('getMasterAttributeCode')->willReturn("email");
+        $model->expects($this->any())->method('getMasterAttributeCode')->willReturn('email');
         $model->expects($this->any())->method('validateRow')->willReturn(true);
         $model->expects($this->any())->method('getEntityTypeCode')->willReturn('customer');
 

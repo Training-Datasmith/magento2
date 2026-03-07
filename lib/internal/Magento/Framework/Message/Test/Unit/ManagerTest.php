@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ use Magento\Framework\Message\Factory;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\Message\Session;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * \Magento\Framework\Message\Manager test case
@@ -275,7 +276,7 @@ class ManagerTest extends TestCase
             'error' => [MessageInterface::TYPE_ERROR, 'addError'],
             'warning' => [MessageInterface::TYPE_WARNING, 'addWarning'],
             'notice' => [MessageInterface::TYPE_NOTICE, 'addNotice'],
-            'success' => [MessageInterface::TYPE_SUCCESS, 'addSuccess']
+            'success' => [MessageInterface::TYPE_SUCCESS, 'addSuccess'],
         ];
     }
 
@@ -312,8 +313,8 @@ class ManagerTest extends TestCase
             ],
             'message_text_already_exists' => [
                 new TestingMessage('text'),
-                'never'
-            ]
+                'never',
+            ],
         ];
     }
 
@@ -344,7 +345,7 @@ class ManagerTest extends TestCase
     {
         return [
             'messages_are_text' => [['message']],
-            'messages_are_empty' => [[]]
+            'messages_are_empty' => [[]],
         ];
     }
 

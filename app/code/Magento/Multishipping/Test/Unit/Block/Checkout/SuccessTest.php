@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class SuccessTest extends TestCase
         $this->model = $objectManager->getObject(
             Success::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }

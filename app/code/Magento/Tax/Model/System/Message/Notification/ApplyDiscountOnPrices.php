@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\System\Message\Notification;
 
 use Magento\Tax\Model\Config;
@@ -92,7 +95,7 @@ class ApplyDiscountOnPrices implements \Magento\Tax\Model\System\Message\Notific
                 'Click on the link to <a href="%1">ignore this notification</a>',
                 $this->urlBuilder->getUrl('tax/tax/ignoreTaxNotification', ['section' => 'apply_discount'])
             );
-            $messageDetails .= "</p>";
+            $messageDetails .= '</p>';
         }
 
         return $messageDetails;

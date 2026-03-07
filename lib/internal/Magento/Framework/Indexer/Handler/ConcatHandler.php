@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer\Handler;
 
-use Magento\Framework\Indexer\HandlerInterface;
 use Magento\Framework\App\ResourceConnection\SourceProviderInterface;
+use Magento\Framework\Indexer\HandlerInterface;
 
 class ConcatHandler implements HandlerInterface
 {

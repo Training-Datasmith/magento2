@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class DiscountsTest extends TestCase
         $this->discounts = $this->objectManagerHelper->getObject(
             Discounts::class,
             [
-                'collectionFactory' => $this->collectionFactory
+                'collectionFactory' => $this->collectionFactory,
             ]
         );
     }
@@ -53,7 +54,7 @@ class DiscountsTest extends TestCase
             'addWebsiteGroupDateFilter',
             'addFieldToFilter',
             'setOrder',
-            'load'
+            'load',
         ]);
         $this->collectionFactory->expects($this->once())->method('create')->willReturn($ruleCollection);
         $ruleCollection->expects($this->once())->method('addWebsiteGroupDateFilter')->willReturnSelf();

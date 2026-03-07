@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Theme\Model\ResourceModel\Theme\Collection;
 use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 use Magento\Theme\Model\Theme\StoreDefaultThemeResolver;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -97,20 +98,20 @@ class StoreDefaultThemeResolverTest extends TestCase
         return [
             [
                 null,
-                []
+                [],
             ],
             [
                 '1',
-                [1]
+                [1],
             ],
             [
                 'Magento/blank',
-                [2]
+                [2],
             ],
             [
                 'Magento/theme',
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

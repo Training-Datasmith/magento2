@@ -1,15 +1,17 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Product\Website\Link;
 use Magento\Catalog\Model\ResourceModel\ProductWebsiteAssignmentHandler;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +38,7 @@ class ProductWebsiteAssignmentHandlerTest extends TestCase
         $this->handler = $objectManager->getObject(
             ProductWebsiteAssignmentHandler::class,
             [
-                'productLink' => $this->productLinkMock
+                'productLink' => $this->productLinkMock,
             ]
         );
     }
@@ -69,10 +71,10 @@ class ProductWebsiteAssignmentHandlerTest extends TestCase
                         'entity_id' => '12345',
                         'website_ids' => ['1', '2', '3'],
                         'name' => 'test-1',
-                        'sku' => 'test-1'
-                    ]
+                        'sku' => 'test-1',
+                    ],
                 ],
-                true
+                true,
             ],
             [
                 [
@@ -81,10 +83,10 @@ class ProductWebsiteAssignmentHandlerTest extends TestCase
                         'entity_id' => null,
                         'website_ids' => ['1', '2', '3'],
                         'name' => 'test-1',
-                        'sku' => 'test-1'
-                    ]
+                        'sku' => 'test-1',
+                    ],
                 ],
-                false
+                false,
             ],
             [
                 [
@@ -93,11 +95,11 @@ class ProductWebsiteAssignmentHandlerTest extends TestCase
                         'entity_id' => '12345',
                         'website_ids' => [null],
                         'name' => 'test-1',
-                        'sku' => 'test-1'
-                    ]
+                        'sku' => 'test-1',
+                    ],
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

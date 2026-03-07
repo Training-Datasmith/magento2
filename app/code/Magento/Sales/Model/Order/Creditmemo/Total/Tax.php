@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Creditmemo\Total;
 
 use Magento\Framework\App\ObjectManager;
@@ -231,7 +234,7 @@ class Tax extends AbstractTotal
     {
         $invoice = $creditMemo->getInvoice();
         $order = $creditMemo->getOrder();
-        if ($invoice!== null) {
+        if ($invoice !== null) {
             $invoiceTaxAvailable = $invoice->getTaxAmount()
                 - $this->calculateInvoiceRefundedAmount($invoice, CreditmemoInterface::TAX_AMOUNT);
             $orderTaxAvailable = $order->getTaxInvoiced() - $order->getTaxRefunded();
@@ -254,7 +257,7 @@ class Tax extends AbstractTotal
         $invoice = $creditMemo->getInvoice();
         $order = $creditMemo->getOrder();
 
-        if ($invoice!== null) {
+        if ($invoice !== null) {
             $invoiceTaxAvailable = $invoice->getBaseTaxAmount()
                 - $this->calculateInvoiceRefundedAmount($invoice, CreditmemoInterface::BASE_TAX_AMOUNT);
             $orderTaxAvailable = $order->getBaseTaxInvoiced() - $order->getBaseTaxRefunded();

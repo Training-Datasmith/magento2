@@ -1,16 +1,17 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Sales\Api\OrderAddressRepositoryInterface;
 use Magento\Sales\Api\Data\OrderAddressInterface;
-use Magento\Eav\Api\AttributeRepositoryInterface;
+use Magento\Sales\Api\OrderAddressRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $attributeCodes = [
     'fixture_address_multiselect_attribute',

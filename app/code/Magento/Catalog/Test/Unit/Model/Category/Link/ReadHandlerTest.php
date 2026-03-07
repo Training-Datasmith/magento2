@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class ReadHandlerTest extends TestCase
     {
         $categoryLinks = [
             ['category_id' => 3, 'position' => 10],
-            ['category_id' => 4, 'position' => 20]
+            ['category_id' => 4, 'position' => 20],
         ];
 
         $dtoCategoryLinks = [];
@@ -83,7 +84,7 @@ class ReadHandlerTest extends TestCase
             ->willReturnCallback(function (...$dataObjHelperWithArgs) {
                 return null;
             });
-        
+
         $this->categoryLinkFactory
             ->method('create')
             ->willReturnOnConsecutiveCalls(...$categoryLinkFactoryWillReturnArgs);

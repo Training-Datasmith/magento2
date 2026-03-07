@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\ConfigurableProduct\Model\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable as ConfigurableResource;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Tests for \Magento\ConfigurableProduct\Model\Product\SaveHandler.

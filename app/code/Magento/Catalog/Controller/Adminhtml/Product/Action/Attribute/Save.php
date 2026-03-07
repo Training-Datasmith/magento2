@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
+use Magento\Backend\App\Action;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Product\Filter\DateTime as DateTimeFilter;
 use Magento\Catalog\Model\ProductFactory;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Eav\Model\Config;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Backend\App\Action;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\DateTime;
@@ -268,7 +271,7 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product\Action\Attribut
         $storeId,
         $websiteId,
         $productIds
-    ):void {
+    ): void {
         $productIdsChunks = array_chunk($productIds, $this->bulkSize);
         $bulkUuid = $this->identityService->generateId();
         $bulkDescription = __('Update attributes for ' . count($productIds) . ' selected products');
@@ -277,7 +280,7 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product\Action\Attribut
             if ($websiteRemoveData || $websiteAddData) {
                 $dataToUpdate = [
                     'website_assign' => $websiteAddData,
-                    'website_detach' => $websiteRemoveData
+                    'website_detach' => $websiteRemoveData,
                 ];
                 $operations[] = $this->makeOperation(
                     'Update website assign',
@@ -345,7 +348,7 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product\Action\Attribut
             'product_ids' => $productIds,
             'store_id' => $storeId,
             'website_id' => $websiteId,
-            'attributes' => $dataToUpdate
+            'attributes' => $dataToUpdate,
         ];
         $data = [
             'data' => [
@@ -353,7 +356,7 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Product\Action\Attribut
                 'topic_name' => $queue,
                 'serialized_data' => $this->serializer->serialize($dataToEncode),
                 'status' => \Magento\Framework\Bulk\OperationInterface::STATUS_TYPE_OPEN,
-            ]
+            ],
         ];
 
         return $this->operationFactory->create($data);

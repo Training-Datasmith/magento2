@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 class SetupTest extends TestCase
 {
-    const CONNECTION_NAME = 'connection';
+    public const CONNECTION_NAME = 'connection';
 
     /**
      * @var AdapterInterface|MockObject

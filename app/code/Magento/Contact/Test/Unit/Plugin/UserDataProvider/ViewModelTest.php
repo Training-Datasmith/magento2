@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Contact\Test\Unit\Plugin\UserDataProvider;
 
 use Magento\Contact\Plugin\UserDataProvider\ViewModel as ViewModelPlugin;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for the ViewModelPlugin class
@@ -75,7 +76,7 @@ class ViewModelTest extends TestCase
             'view model was pre-installed before' => [
                 'hasDataResult' => true,
                 'setDataExpects' => 'never',
-            ]
+            ],
         ];
     }
 }

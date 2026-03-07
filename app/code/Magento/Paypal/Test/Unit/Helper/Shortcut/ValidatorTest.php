@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ValidatorTest extends TestCase
                 'paypalConfigFactory' => $this->_paypalConfigFactory,
                 'registry' => $this->_registry,
                 'productTypeConfig' => $this->_productTypeConfig,
-                'paymentData' => $this->_paymentData
+                'paymentData' => $this->_paymentData,
             ]
         );
     }
@@ -86,7 +87,7 @@ class ValidatorTest extends TestCase
     {
         return [
             [false, false],
-            [true, true]
+            [true, true],
         ];
     }
 
@@ -135,7 +136,7 @@ class ValidatorTest extends TestCase
             [false, null, null, true],
             [true, 0, false, false],
             [true, 10, false, true],
-            [true, 0, true, true]
+            [true, 0, true, true],
         ];
     }
 
@@ -167,7 +168,7 @@ class ValidatorTest extends TestCase
     {
         return [
             [true, true],
-            [false, false]
+            [false, false],
         ];
     }
 }

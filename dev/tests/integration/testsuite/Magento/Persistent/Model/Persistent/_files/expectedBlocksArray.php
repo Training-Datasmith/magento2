@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,5 +17,5 @@ return [
         'class' => \Magento\PersistentHistory\Model\Observer::class,
         'method' => 'emulateViewedProductsBlock',
         'block_type' => \Magento\Sales\Block\Reorder\Sidebar::class,
-    ]
+    ],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\NotationResolver\Module;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ImportTest extends TestCase
 {

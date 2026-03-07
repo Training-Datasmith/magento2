@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Block\Order\Create;
 
 use Magento\Backend\Model\Session\Quote;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Quote\Model\Quote as QuoteModel;
-use Magento\Quote\Model\Quote\Address;
-use Magento\Sales\Block\Adminhtml\Order\Create\Totals;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\Quote as QuoteModel;
+use Magento\Sales\Block\Adminhtml\Order\Create\Totals;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class TotalsTest extends TestCase
 {
@@ -63,7 +64,7 @@ class TotalsTest extends TestCase
             QuoteModel::class,
             [
                 'collectTotals', 'getTotals', 'isVirtual', 'getBillingAddress', 'getShippingAddress',
-                'setTotalsCollectedFlag'
+                'setTotalsCollectedFlag',
             ]
         );
         $this->shippingAddressMock = $this->createMock(Address::class);
@@ -107,7 +108,7 @@ class TotalsTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 }

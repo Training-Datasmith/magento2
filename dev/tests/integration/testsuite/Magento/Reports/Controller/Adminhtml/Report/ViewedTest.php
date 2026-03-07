@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report;
 
 use Magento\Backend\Block\Dashboard\Tab\Products\Viewed as ViewedProductsTabBlock;
@@ -12,7 +15,6 @@ use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
-use function PHPUnit\Framework\assertEquals;
 
 /**
  * @magentoAppArea frontend

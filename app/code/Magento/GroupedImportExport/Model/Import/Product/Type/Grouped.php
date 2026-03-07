@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedImportExport\Model\Import\Product\Type;
 
 use Magento\Catalog\Model\ProductTypes\ConfigInterface;
@@ -98,7 +101,7 @@ class Grouped extends \Magento\CatalogImportExport\Model\Import\Product\Type\Abs
                 'attr_product_ids' => [],
                 'position' => [],
                 'qty' => [],
-                'relation' => []
+                'relation' => [],
             ];
             foreach ($bunch as $rowNum => $rowData) {
                 if ($this->_type != $rowData[Product::COL_TYPE]) {
@@ -142,13 +145,13 @@ class Grouped extends \Magento\CatalogImportExport\Model\Import\Product\Type\Abs
                     $linksData['attr_product_ids'][$productId] = true;
                     $linksData['position']["{$productId} {$linkedProductId}"] = [
                         'product_link_attribute_id' => $attributes['position']['id'],
-                        'value' => $position
+                        'value' => $position,
                     ];
                     if ($qty) {
                         $linksData['attr_product_ids'][$productId] = true;
                         $linksData['qty']["{$productId} {$linkedProductId}"] = [
                             'product_link_attribute_id' => $attributes['qty']['id'],
-                            'value' => $qty
+                            'value' => $qty,
                         ];
                     }
                 }

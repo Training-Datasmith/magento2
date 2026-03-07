@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Attribute\Source;
 
 /**
@@ -16,7 +19,7 @@ class Boolean extends \Magento\Eav\Model\Entity\Attribute\Source\Boolean
     /**
      * Value of 'Use Config' option
      */
-    const VALUE_USE_CONFIG = 2;
+    public const VALUE_USE_CONFIG = 2;
 
     /**
      * Retrieve all attribute options

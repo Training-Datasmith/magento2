@@ -1,15 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\Profiler\Driver\Standard\Output\Csvfile
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Test\Unit\Driver\Standard\Output;
 
 use Magento\Framework\Profiler\Driver\Standard\Output\Csvfile;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CsvfileTest extends TestCase
 {
@@ -51,7 +54,7 @@ class CsvfileTest extends TestCase
                 'expectedFilePath' => '/var/www/project/log/example.csv',
                 'expectedDelimiter' => "\t",
                 'expectedEnclosure' => '"',
-            ]
+            ],
         ];
     }
 }

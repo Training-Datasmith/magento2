@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface
@@ -29,7 +32,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
             foreach ($entity->getElementsByTagName('attribute') as $entityAttribute) {
                 $attributeFields = [];
                 foreach ($entityAttribute->getElementsByTagName('field') as $fieldData) {
-                    $locked = $fieldData->attributes->getNamedItem('locked')->nodeValue == "true" ? true : false;
+                    $locked = $fieldData->attributes->getNamedItem('locked')->nodeValue == 'true' ? true : false;
                     $attributeFields[$fieldData->attributes->getNamedItem(
                         'code'
                     )->nodeValue] = [

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Rating;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Review\Controller\Adminhtml\Rating as RatingController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Review\Controller\Adminhtml\Rating as RatingController;
 
 /**
  * Class Save
@@ -48,7 +51,7 @@ class Save extends RatingController implements HttpPostActionInterface
                     $i = 1;
                     foreach ($options as $key => $optionCode) {
                         $optionModel = $this->_objectManager->create(\Magento\Review\Model\Rating\Option::class);
-                        if (!preg_match("/^add_([0-9]*?)$/", $key)) {
+                        if (!preg_match('/^add_([0-9]*?)$/', $key)) {
                             $optionModel->setId($key);
                         }
 

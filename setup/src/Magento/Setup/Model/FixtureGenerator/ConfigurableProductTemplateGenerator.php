@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -102,12 +104,12 @@ class ConfigurableProductTemplateGenerator implements TemplateEntityGeneratorInt
                     'use_config_manage_stock' => 1,
                     'qty' => 100500,
                     'is_qty_decimal' => 0,
-                    'is_in_stock' => 1
+                    'is_in_stock' => 1,
                 ],
                 // Need for set "has_options" field
                 'can_save_configurable_attributes' => true,
                 'configurable_attributes_data' => $this->fixture['_attributes'],
-            ]
+            ],
         ]);
 
         $attributes = [];
@@ -117,7 +119,7 @@ class ConfigurableProductTemplateGenerator implements TemplateEntityGeneratorInt
                 $attributeValues[] = [
                     'label' => $attribute['name'],
                     'attribute_id' => $attribute['id'],
-                    'value_index' => $value
+                    'value_index' => $value,
                 ];
             }
             $attributes[] = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class ReportTest extends TestCase
             Report::class,
             [
                 '_eventManager' => $this->eventManagerMock,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
     }

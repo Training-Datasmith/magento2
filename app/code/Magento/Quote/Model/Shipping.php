@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +15,8 @@ use Magento\Quote\Api\Data\ShippingInterface;
  */
 class Shipping extends \Magento\Framework\Model\AbstractExtensibleModel implements ShippingInterface
 {
-    const ADDRESS = 'address';
-    const METHOD = 'method';
+    public const ADDRESS = 'address';
+    public const METHOD = 'method';
 
     /**
      * @inheritDoc

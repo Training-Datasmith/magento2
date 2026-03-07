@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +103,7 @@ class Cart extends \Magento\Framework\DataObject implements SectionSourceInterfa
             'extra_actions' => $this->layout->createBlock(\Magento\Catalog\Block\ShortcutButtons::class)->toHtml(),
             'isGuestCheckoutAllowed' => $this->isGuestCheckoutAllowed(),
             'website_id' => $this->getQuote()->getStore()->getWebsiteId(),
-            'storeId' => $this->getQuote()->getStore()->getStoreId()
+            'storeId' => $this->getQuote()->getStore()->getStoreId(),
         ];
     }
 

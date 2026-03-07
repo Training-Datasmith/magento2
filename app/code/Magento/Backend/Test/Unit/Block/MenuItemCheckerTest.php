@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Backend\Test\Unit\Block;
 use Magento\Backend\Block\MenuItemChecker;
 use Magento\Backend\Model\Menu;
 use Magento\Backend\Model\Menu\Item;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class MenuItemCheckerTest extends TestCase

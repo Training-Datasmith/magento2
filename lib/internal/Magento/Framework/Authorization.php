@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento Authorization component. Can be used to add authorization facility to any application
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 class Authorization implements \Magento\Framework\AuthorizationInterface

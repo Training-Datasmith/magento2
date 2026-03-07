@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Form;
 
 use Magento\Backend\Block\Widget\Context;
@@ -99,7 +102,7 @@ class Container extends \Magento\Backend\Block\Widget\Container
             [
                 'label' => __('Back'),
                 'onclick' => 'setLocation(\'' . $this->getBackUrl() . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ],
             -1
         );
@@ -122,7 +125,7 @@ class Container extends \Magento\Backend\Block\Widget\Container
                 [
                     'label' => __('Delete'),
                     'class' => 'delete',
-                    'onclick' => $deleteOnClick
+                    'onclick' => $deleteOnClick,
                 ]
             );
         }
@@ -134,7 +137,7 @@ class Container extends \Magento\Backend\Block\Widget\Container
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#edit_form']],
-                ]
+                ],
             ],
             1
         );

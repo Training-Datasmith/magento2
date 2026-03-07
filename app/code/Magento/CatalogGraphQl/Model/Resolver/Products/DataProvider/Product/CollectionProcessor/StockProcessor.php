@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\Co
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessorInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\Status as StockStatusResource;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
 
 /**

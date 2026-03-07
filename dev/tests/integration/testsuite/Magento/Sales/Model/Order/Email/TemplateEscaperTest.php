@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -11,14 +12,14 @@ namespace Magento\Sales\Model\Order\Email;
 use Magento\Framework\Escaper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
 use Magento\Sales\Model\Order\Email\Sender\OrderSender;
 use Magento\Sales\Model\Order\Invoice\Sender\EmailSender as InvoiceEmailSender;
 use Magento\Sales\Model\Order\Shipment\Sender\EmailSender as ShipmentEmailSender;
-use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Constraint\StringContains;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test that custom file option values are not double-escaped in email templates.

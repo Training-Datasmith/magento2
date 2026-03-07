@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -72,7 +74,7 @@ class StatementFactory
             'tableName' => $tableName,
             'resource' => $resource,
             'type' => $type,
-            'statement' => $statement
+            'statement' => $statement,
         ]);
     }
 }

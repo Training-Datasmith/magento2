@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Psr\Log\LoggerInterface;
 use Magento\Sales\Controller\Adminhtml\Order as OrderAction;
+use Psr\Log\LoggerInterface;
 
 /**
  * Comments History tab, needs to be accessible by POST because of tabs mechanism.

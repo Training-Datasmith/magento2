@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ServiceFactory
             Service::class,
             [
                 'className' => $className,
-                'methodName' => $methodName
+                'methodName' => $methodName,
             ]
         );
     }

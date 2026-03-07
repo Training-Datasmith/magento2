@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,9 +9,8 @@
 /**
  * Implementation of the @magentoSchemaFixture DocBlock annotation.
  */
-namespace Magento\TestFramework\Annotation;
 
-use PHPUnit\Util\Test as TestUtil;
+namespace Magento\TestFramework\Annotation;
 
 /**
  * Represents following construction handling:

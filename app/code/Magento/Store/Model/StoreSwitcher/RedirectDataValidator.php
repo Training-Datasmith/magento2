@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class RedirectDataValidator
                 $redirectData->getData(),
                 $timeStamp,
                 $context->getFromStore()->getCode(),
-                $context->getTargetStore()->getCode()
+                $context->getTargetStore()->getCode(),
             ]
         );
         return time() - $timeStamp <= self::TIMEOUT

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ abstract class AbstractCacheManageCommand extends AbstractCacheCommand
     /**
      * Input argument types
      */
-    const INPUT_KEY_TYPES = 'types';
+    public const INPUT_KEY_TYPES = 'types';
 
     /**
      * {@inheritdoc}
@@ -54,7 +56,7 @@ abstract class AbstractCacheManageCommand extends AbstractCacheCommand
             if ($unsupportedTypes) {
                 throw new \InvalidArgumentException(
                     "The following requested cache types are not supported: '" . join("', '", $unsupportedTypes)
-                    . "'." . PHP_EOL . 'Supported types: ' . join(", ", $availableTypes)
+                    . "'." . PHP_EOL . 'Supported types: ' . join(', ', $availableTypes)
                 );
             }
             return array_values(array_intersect($availableTypes, $requestedTypes));

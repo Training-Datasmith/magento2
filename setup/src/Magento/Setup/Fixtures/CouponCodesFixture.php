@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -156,7 +158,7 @@ class CouponCodesFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'coupon_codes' => 'Coupon Codes'
+            'coupon_codes' => 'Coupon Codes',
         ];
     }
 }

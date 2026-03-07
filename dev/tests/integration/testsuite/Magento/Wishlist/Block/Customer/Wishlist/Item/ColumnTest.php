@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -96,9 +97,9 @@ class ColumnTest extends TestCase
     public function testWishListItemButtons(): void
     {
         $buttons = [
-            "Add to Cart button" => "//button[contains(@class, 'tocart')]/span[contains(text(), 'Add to Cart')]",
-            "Edit button" => "//a[contains(@class, 'edit')]/span[contains(text(), 'Edit')]",
-            "Remove item button" => "//a[contains(@class, 'delete')]/span[contains(text(), 'Remove item')]",
+            'Add to Cart button' => "//button[contains(@class, 'tocart')]/span[contains(text(), 'Add to Cart')]",
+            'Edit button' => "//a[contains(@class, 'edit')]/span[contains(text(), 'Edit')]",
+            'Remove item button' => "//a[contains(@class, 'delete')]/span[contains(text(), 'Remove item')]",
         ];
         $item = $this->getWishlistItemsByCustomerId->getItemBySku(1, 'simple');
         $this->assertNotNull($item);

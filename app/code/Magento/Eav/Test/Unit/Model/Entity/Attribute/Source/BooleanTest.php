@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class BooleanTest extends TestCase
         $attributeMock->expects($this->once())->method('getEntity')->willReturn($entity);
 
         $selectMock = $this->createMock(Select::class);
-        
+
         // Track joined tables to allow production code to build order expression
         $joinedTables = [];
         $selectMock
@@ -102,7 +103,7 @@ class BooleanTest extends TestCase
                 $joinedTables = array_merge($joinedTables, array_keys($table));
                 return $selectMock;
             });
-        
+
         $selectMock
             ->method('getPart')
             ->with(Select::FROM)
@@ -134,59 +135,59 @@ class BooleanTest extends TestCase
                 'isScopeGlobal' => false,
                 'expectedJoinCondition' => [
                     0 => [
-                        'requisites' => ['code_t1' => "table"],
+                        'requisites' => ['code_t1' => 'table'],
                         'condition' => "e.entity_id=code_t1.entity_id AND code_t1.attribute_id='123'"
-                            . " AND code_t1.store_id='0'"
+                            . " AND code_t1.store_id='0'",
                     ],
                     1 => [
-                        'requisites' => ['code_t2' => "table"],
+                        'requisites' => ['code_t2' => 'table'],
                         'condition' => "e.entity_id=code_t2.entity_id AND code_t2.attribute_id='123'"
-                            . " AND code_t2.store_id='12'"
+                            . " AND code_t2.store_id='12'",
                     ],
                 ],
-                'expectedOrder' => 'IF(code_t2.value_id > 0, code_t2.value, code_t1.value) ASC'
+                'expectedOrder' => 'IF(code_t2.value_id > 0, code_t2.value, code_t1.value) ASC',
             ],
             [
                 'direction' => 'DESC',
                 'isScopeGlobal' => false,
                 'expectedJoinCondition' => [
                     0 => [
-                        'requisites' => ['code_t1' => "table"],
+                        'requisites' => ['code_t1' => 'table'],
                         'condition' => "e.entity_id=code_t1.entity_id AND code_t1.attribute_id='123'"
-                            . " AND code_t1.store_id='0'"
+                            . " AND code_t1.store_id='0'",
                     ],
                     1 => [
-                        'requisites' => ['code_t2' => "table"],
+                        'requisites' => ['code_t2' => 'table'],
                         'condition' => "e.entity_id=code_t2.entity_id AND code_t2.attribute_id='123'"
-                            . " AND code_t2.store_id='12'"
-                    ]
+                            . " AND code_t2.store_id='12'",
+                    ],
                 ],
-                'expectedOrder' => 'IF(code_t2.value_id > 0, code_t2.value, code_t1.value) DESC'
+                'expectedOrder' => 'IF(code_t2.value_id > 0, code_t2.value, code_t1.value) DESC',
             ],
             [
                 'direction' => 'DESC',
                 'isScopeGlobal' => true,
                 'expectedJoinCondition' => [
                     0 => [
-                        'requisites' => ['code_t' => "table"],
+                        'requisites' => ['code_t' => 'table'],
                         'condition' => "e.entity_id=code_t.entity_id AND code_t.attribute_id='123'"
-                            . " AND code_t.store_id='0'"
-                    ]
+                            . " AND code_t.store_id='0'",
+                    ],
                 ],
-                'expectedOrder' => 'code_t.value DESC'
+                'expectedOrder' => 'code_t.value DESC',
             ],
             [
                 'direction' => 'ASC',
                 'isScopeGlobal' => true,
                 'expectedJoinCondition' => [
                     0 => [
-                        'requisites' => ['code_t' => "table"],
+                        'requisites' => ['code_t' => 'table'],
                         'condition' => "e.entity_id=code_t.entity_id AND code_t.attribute_id='123'"
-                            . " AND code_t.store_id='0'"
-                    ]
+                            . " AND code_t.store_id='0'",
+                    ],
                 ],
-                'expectedOrder' => 'code_t.value ASC'
-            ]
+                'expectedOrder' => 'code_t.value ASC',
+            ],
         ];
     }
 
@@ -201,7 +202,7 @@ class BooleanTest extends TestCase
         );
 
         $connectionMock = $this->createMock(Mysql::class);
-        
+
         // Configure getCheckSql to return the IF expression expected by production code
         $connectionMock->expects($this->any())
             ->method('getCheckSql')

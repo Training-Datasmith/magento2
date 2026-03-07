@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\MessageQueue;
 
-use Magento\Framework\MessageQueue\EnvelopeInterface;
+namespace Magento\Framework\MessageQueue;
 
 class Envelope implements EnvelopeInterface
 {

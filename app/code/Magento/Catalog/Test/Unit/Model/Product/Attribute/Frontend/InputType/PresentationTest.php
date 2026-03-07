@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Attribute\Frontend\InputType;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Attribute\Frontend\Inputtype\Presentation;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -75,16 +76,16 @@ class PresentationTest extends TestCase
             [['key' => 'value'], ['key' => 'value']],
             [
                 ['frontend_input' => 'texteditor'],
-                ['frontend_input' => 'textarea', 'is_wysiwyg_enabled' => 1]
+                ['frontend_input' => 'textarea', 'is_wysiwyg_enabled' => 1],
             ],
             [
                 ['frontend_input' => 'textarea'],
-                ['frontend_input' => 'textarea', 'is_wysiwyg_enabled' => 0]
+                ['frontend_input' => 'textarea', 'is_wysiwyg_enabled' => 0],
             ],
             [
                 ['frontend_input' => 'input'],
-                ['frontend_input' => 'input']
-            ]
+                ['frontend_input' => 'input'],
+            ],
         ];
     }
 }

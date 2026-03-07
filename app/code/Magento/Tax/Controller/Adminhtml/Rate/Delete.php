@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Rate;
 
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class Delete extends \Magento\Tax\Controller\Adminhtml\Rate implements HttpPostActionInterface
 {
@@ -25,12 +28,12 @@ class Delete extends \Magento\Tax\Controller\Adminhtml\Rate implements HttpPostA
                 $this->_taxRateRepository->deleteById($rateId);
 
                 $this->messageManager->addSuccess(__('You deleted the tax rate.'));
-                return $resultRedirect->setPath("*/*/");
+                return $resultRedirect->setPath('*/*/');
             } catch (NoSuchEntityException $e) {
                 $this->messageManager->addError(
                     __('We can\'t delete this rate because of an incorrect rate ID.')
                 );
-                return $resultRedirect->setPath("tax/*/");
+                return $resultRedirect->setPath('tax/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
@@ -40,7 +43,7 @@ class Delete extends \Magento\Tax\Controller\Adminhtml\Rate implements HttpPostA
             if ($this->getRequest()->getServer('HTTP_REFERER')) {
                 $resultRedirect->setRefererUrl();
             } else {
-                $resultRedirect->setPath("*/*/");
+                $resultRedirect->setPath('*/*/');
             }
             return $resultRedirect;
         }

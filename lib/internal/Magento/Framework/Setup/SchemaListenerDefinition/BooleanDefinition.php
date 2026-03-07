@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class BooleanDefinition implements DefinitionConverterInterface
             'xsi:type' => $definition['type'],
             'name' => $definition['name'],
             'nullable' => $definition['nullable'] ?? true,
-            'default' => isset($definition['default']) ? (bool) $definition['default'] : null
+            'default' => isset($definition['default']) ? (bool) $definition['default'] : null,
         ];
     }
 }

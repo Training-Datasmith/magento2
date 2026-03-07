@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,18 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order;
 
-use Magento\Sales\Api\Data\ShippingAssignmentInterface;
-use Magento\Sales\Api\Data\ShippingAssignmentInterfaceFactory;
-use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Sales\Api\Data\ShippingAssignmentInterfaceFactory;
 use Magento\Sales\Model\Order\ShippingAssignmentBuilder;
 use Magento\Sales\Model\Order\ShippingBuilderFactory;
+use Magento\Sales\Model\OrderFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ShippingAssignmentBuilderTest extends TestCase
 {
-
     /**
      * @var ShippingAssignmentBuilder
      */
@@ -59,7 +58,7 @@ class ShippingAssignmentBuilderTest extends TestCase
      *
      * @return void
      */
-    public function testCreateWithOrder() : void
+    public function testCreateWithOrder(): void
     {
         $order = $this->getMockBuilder(OrderInterface::class)
             ->getMock();

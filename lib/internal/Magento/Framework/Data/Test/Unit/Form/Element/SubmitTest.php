@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Submit
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
@@ -32,7 +34,7 @@ class SubmitTest extends TestCase
      */
     protected $_model;
 
-        /**
+    /**
      * @var \Magento\Framework\ObjectManagerInterface|null
      */
     private $originalObjectManager;

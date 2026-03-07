@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\ShippingAddressChoose;
 
-use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\Address;
+use Magento\Customer\Model\Customer;
 
 /**
  * Shipping address chooser implementation to choose customer default shipping address.

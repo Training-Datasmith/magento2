@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product\Type;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -43,7 +46,7 @@ class AbstractTest extends \PHPUnit\Framework\TestCase
                 $this->objectManager->get(
                     \Magento\Framework\App\ResourceConnection::class
                 ),
-                $params
+                $params,
             ])
             ->onlyMethods([])
             ->getMock();
@@ -120,7 +123,7 @@ class AbstractTest extends \PHPUnit\Framework\TestCase
                     'short_description' => 'a',
                     'visibility' => 1,
                     'options_container' => 'container2',
-                    'msrp_display_actual_price_type' => 0
+                    'msrp_display_actual_price_type' => 0,
                 ],
             ],
             'Adding new product with attributes that have default values' => [
@@ -152,7 +155,7 @@ class AbstractTest extends \PHPUnit\Framework\TestCase
                     'short_description' => 'a',
                     'visibility' => 2,
                     'options_container' => 'container2',
-                    'msrp_display_actual_price_type' => 2
+                    'msrp_display_actual_price_type' => 2,
                 ],
             ],
             'Adding new product with empty attribute value for attribute_type = select' => [

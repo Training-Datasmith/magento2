@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Reflection\TypeCaster;
 use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MethodsMapTest extends TestCase
 {
@@ -108,7 +109,7 @@ class MethodsMapTest extends TestCase
                 'type' => 'array',
                 'isRequired' => true,
                 'description' => null,
-                'parameterCount' => 2
+                'parameterCount' => 2,
             ],
             'isMethodValidForDataField' => [
                 'type' => 'bool',
@@ -147,7 +148,7 @@ class MethodsMapTest extends TestCase
                 $expectedResult = false;
             }
         }
-        
+
         $this->assertEquals($this->object->isMethodValidForDataField($type, $methodName), $expectedResult);
     }
 
@@ -187,7 +188,7 @@ class MethodsMapTest extends TestCase
                 $expectedResult = false;
             }
         }
-        
+
         $this->assertEquals($this->object->isMethodValidForDataField($type, $methodName), $expectedResult);
     }
 

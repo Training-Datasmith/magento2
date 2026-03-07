@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -52,7 +55,7 @@ class HeaderTest extends \PHPUnit\Framework\TestCase
             ],
             'No store' => [$customerIdFromFixture, null, 'Create New Order for John Smith'],
             'No customer' => [null, $defaultStoreView, 'Create New Order in Default Store View'],
-            'No customer, no store' => [null, null, 'Create New Order for New Customer']
+            'No customer, no store' => [null, null, 'Create New Order for New Customer'],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\AsynchronousOperations\Model;
 
-use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\Bulk\BulkSummaryInterface;
+use Magento\Framework\Bulk\OperationInterface;
 
 /**
  * Class StatusMapper
@@ -16,11 +18,8 @@ class StatusMapper
 {
     /**
      * Map operation status to bulk summary status
-     *
-     * @param int $operationStatus
-     * @return null|int
      */
-    public function operationStatusToBulkSummaryStatus($operationStatus)
+    public function operationStatusToBulkSummaryStatus(int $operationStatus): ?int
     {
         $statusMapping = [
             OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED => BulkSummaryInterface::FINISHED_WITH_FAILURE,
@@ -28,37 +27,28 @@ class StatusMapper
             OperationInterface::STATUS_TYPE_REJECTED => BulkSummaryInterface::FINISHED_WITH_FAILURE,
             OperationInterface::STATUS_TYPE_COMPLETE => BulkSummaryInterface::FINISHED_SUCCESSFULLY,
             OperationInterface::STATUS_TYPE_OPEN => BulkSummaryInterface::IN_PROGRESS,
-            BulkSummaryInterface::NOT_STARTED => BulkSummaryInterface::NOT_STARTED
+            BulkSummaryInterface::NOT_STARTED => BulkSummaryInterface::NOT_STARTED,
         ];
-
-        if (isset($statusMapping[$operationStatus])) {
-            return $statusMapping[$operationStatus];
-        }
-        return null;
+        return $statusMapping[$operationStatus] ?? null;
     }
 
     /**
      * Map bulk summary status to operation status
      *
-     * @param int $bulkStatus
      * @return int|null
      */
-    public function bulkSummaryStatusToOperationStatus($bulkStatus)
+    public function bulkSummaryStatusToOperationStatus(int $bulkStatus): array|int|null
     {
         $statusMapping = [
             BulkSummaryInterface::FINISHED_WITH_FAILURE => [
                 OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
                 OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
-                OperationInterface::STATUS_TYPE_REJECTED
+                OperationInterface::STATUS_TYPE_REJECTED,
             ],
             BulkSummaryInterface::FINISHED_SUCCESSFULLY => OperationInterface::STATUS_TYPE_COMPLETE,
             BulkSummaryInterface::IN_PROGRESS => OperationInterface::STATUS_TYPE_OPEN,
-            BulkSummaryInterface::NOT_STARTED => BulkSummaryInterface::NOT_STARTED
+            BulkSummaryInterface::NOT_STARTED => BulkSummaryInterface::NOT_STARTED,
         ];
-
-        if (isset($statusMapping[$bulkStatus])) {
-            return $statusMapping[$bulkStatus];
-        }
-        return null;
+        return $statusMapping[$bulkStatus] ?? null;
     }
 }

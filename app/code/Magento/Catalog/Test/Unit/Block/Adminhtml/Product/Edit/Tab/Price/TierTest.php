@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class TierTest extends TestCase
                 'groupManagement' => $this->groupManagementMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'localeCurrency' => $this->localeCurrencyMock,
-                'jsonHelper' => $this->jsonHelperMock
+                'jsonHelper' => $this->jsonHelperMock,
             ]
         );
     }
@@ -155,7 +156,7 @@ class TierTest extends TestCase
                 'groupManagement' => $this->groupManagementMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'localeCurrency' => $this->localeCurrencyMock,
-                'jsonHelper' => $jsonHelperMock
+                'jsonHelper' => $jsonHelperMock,
             ]
         );
 
@@ -202,7 +203,7 @@ class TierTest extends TestCase
     {
         $data = [
             ['website_id' => 1, 'cust_group' => 0, 'price_qty' => 10],
-            ['website_id' => 0, 'cust_group' => 1, 'price_qty' => 5]
+            ['website_id' => 0, 'cust_group' => 1, 'price_qty' => 5],
         ];
 
         // Use reflection to call protected method
@@ -226,38 +227,38 @@ class TierTest extends TestCase
                 'item1' => ['website_id' => 2, 'cust_group' => 0, 'price_qty' => 10],
                 'item2' => ['website_id' => 1, 'cust_group' => 0, 'price_qty' => 10],
                 'needsGroupMock' => false,
-                'expectedResult' => 1
+                'expectedResult' => 1,
             ],
             'returns negative when first website ID is smaller' => [
                 'item1' => ['website_id' => 1, 'cust_group' => 0, 'price_qty' => 10],
                 'item2' => ['website_id' => 2, 'cust_group' => 0, 'price_qty' => 10],
                 'needsGroupMock' => false,
-                'expectedResult' => -1
+                'expectedResult' => -1,
             ],
             'sorts by customer group when website IDs are equal' => [
                 'item1' => ['website_id' => 1, 'cust_group' => 2, 'price_qty' => 10],
                 'item2' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 10],
                 'needsGroupMock' => true,
-                'expectedResult' => 1
+                'expectedResult' => 1,
             ],
             'sorts by price quantity when website and group are equal - first larger' => [
                 'item1' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 20],
                 'item2' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 10],
                 'needsGroupMock' => true,
-                'expectedResult' => 1
+                'expectedResult' => 1,
             ],
             'returns negative when first price quantity is smaller' => [
                 'item1' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 5],
                 'item2' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 10],
                 'needsGroupMock' => true,
-                'expectedResult' => -1
+                'expectedResult' => -1,
             ],
             'returns zero when all values are equal' => [
                 'item1' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 10],
                 'item2' => ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 10],
                 'needsGroupMock' => true,
-                'expectedResult' => 0
-            ]
+                'expectedResult' => 0,
+            ],
         ];
     }
 
@@ -317,7 +318,7 @@ class TierTest extends TestCase
             ->with([
                 'label' => __('Add Price'),
                 'onclick' => 'return tierPriceControl.addItem()',
-                'class' => 'add'
+                'class' => 'add',
             ])
             ->willReturnSelf();
 
@@ -352,7 +353,7 @@ class TierTest extends TestCase
         $data = [
             ['website_id' => 2, 'cust_group' => 1, 'price_qty' => 20, 'price' => 100.00],
             ['website_id' => 1, 'cust_group' => 0, 'price_qty' => 10, 'price' => 50.00],
-            ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 5, 'price' => 75.00]
+            ['website_id' => 1, 'cust_group' => 1, 'price_qty' => 5, 'price' => 75.00],
         ];
 
         // Use reflection to call protected method

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Framework;
 
+use Magento\Framework\Interception\Code\InterfaceValidator;
 use ReflectionClass;
 use ReflectionParameter;
-use Magento\Framework\Interception\Code\InterfaceValidator;
 
 /**
  * Returns a reflection parameter's class if possible.
@@ -32,7 +34,7 @@ trait GetParameterClassTrait
         }
 
         // get $parameterType package name
-        $parameterPackage = strstr(trim((string)$parameterType), "\\", true);
+        $parameterPackage = strstr(trim((string)$parameterType), '\\', true);
 
         if ($parameterType
             && !$parameterType->isBuiltin()

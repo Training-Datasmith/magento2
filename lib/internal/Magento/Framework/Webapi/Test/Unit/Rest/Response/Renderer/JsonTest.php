@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test JSON Renderer for REST.
  *

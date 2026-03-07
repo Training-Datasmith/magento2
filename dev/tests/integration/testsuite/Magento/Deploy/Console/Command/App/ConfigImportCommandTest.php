@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console\Command\App;
 
 use Magento\Config\Model\Config\Backend\Currency\Cron;
@@ -378,14 +381,14 @@ class ConfigImportCommandTest extends \PHPUnit\Framework\TestCase
                         'import' => [
                             'enabled' => '1',
                             'service' => 'fixerio',
-                            'time' => sprintf("%02d", $hour) . ',' . sprintf("%02d", $min) . ',00',
+                            'time' => sprintf('%02d', $hour) . ',' . sprintf('%02d', $min) . ',00',
                             'frequency' => 'D',
                             'error_email_identity' => 'general',
                             'error_email_template' => 'currency_import_error_email_template',
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         $this->writeConfig(

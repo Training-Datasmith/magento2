@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code;
 
 use Magento\Framework\Code\Generator\DefinedClasses;
 use Magento\Framework\Code\Generator\EntityAbstract;
 use Magento\Framework\Code\Generator\Io;
+use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\ObjectManager\ConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
-use Magento\Framework\Filesystem\Driver\File;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -19,11 +22,11 @@ use Psr\Log\LoggerInterface;
  */
 class Generator
 {
-    const GENERATION_SUCCESS = 'success';
+    public const GENERATION_SUCCESS = 'success';
 
-    const GENERATION_ERROR = 'error';
+    public const GENERATION_ERROR = 'error';
 
-    const GENERATION_SKIP = 'skip';
+    public const GENERATION_SKIP = 'skip';
 
     /**
      * @var Io
@@ -196,8 +199,8 @@ class Generator
     {
         if (!($this->objectManager instanceof ObjectManagerInterface)) {
             throw new \LogicException(
-                "Object manager was expected to be set using setObjectManger() "
-                . "before getObjectManager() invocation."
+                'Object manager was expected to be set using setObjectManger() '
+                . 'before getObjectManager() invocation.'
             );
         }
         return $this->objectManager;

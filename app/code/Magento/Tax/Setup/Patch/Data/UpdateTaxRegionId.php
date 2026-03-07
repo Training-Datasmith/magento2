@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +10,9 @@ namespace Magento\Tax\Setup\Patch\Data;
 
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\Api\Search\SearchCriteriaFactory;
-use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\Tax\Setup\TaxSetupFactory;
+use Magento\Tax\Api\TaxRateRepositoryInterface;
 
 class UpdateTaxRegionId implements DataPatchInterface, PatchVersionInterface
 {
@@ -87,7 +87,7 @@ class UpdateTaxRegionId implements DataPatchInterface, PatchVersionInterface
     public static function getDependencies()
     {
         return [
-            UpdateTaxClassAttributeVisibility::class
+            UpdateTaxClassAttributeVisibility::class,
         ];
     }
 

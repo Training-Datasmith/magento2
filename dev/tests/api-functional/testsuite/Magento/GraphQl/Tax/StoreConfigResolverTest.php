@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\GraphQl\Tax;
 
 use Magento\Directory\Helper\Data;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Tax\Model\Config;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Tax\Model\Config;
 
 /**
  * Test the GraphQL endpoint's StoreConfigs query

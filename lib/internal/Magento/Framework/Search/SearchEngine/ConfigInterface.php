@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ interface ConfigInterface
     /**
      * Search engine feature: synonyms
      */
-    const SEARCH_ENGINE_FEATURE_SYNONYMS = 'synonyms';
+    public const SEARCH_ENGINE_FEATURE_SYNONYMS = 'synonyms';
 
     /**
      * Get declared features of a search engine

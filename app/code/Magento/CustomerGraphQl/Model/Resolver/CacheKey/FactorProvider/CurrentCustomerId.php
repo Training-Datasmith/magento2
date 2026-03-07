@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class CurrentCustomerId implements GenericFactorProviderInterface
     /**
      * Factor name.
      */
-    private const NAME = "CUSTOMER_ID";
+    private const NAME = 'CUSTOMER_ID';
 
     /**
      * @inheritdoc

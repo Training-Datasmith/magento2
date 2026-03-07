@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class LoadTest extends TestCase
 
         $this->httpRequestMock->expects($this->exactly(2))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['sections'] => $sectionNames,
                 ['force_new_section_timestamp'] => $forceNewSectionTimestamp
             });
@@ -119,14 +120,14 @@ class LoadTest extends TestCase
             ->with($sectionNamesAsArray, $forceNewTimestamp)
             ->willReturn([
                 'message' => 'some message',
-                'someKey' => 'someValue'
+                'someKey' => 'someValue',
             ]);
 
         $this->resultJsonMock->expects($this->once())
             ->method('setData')
             ->with([
                 'message' => 'some message',
-                'someKey' => 'someValue'
+                'someKey' => 'someValue',
             ])
             ->willReturn($this->resultJsonMock);
 
@@ -143,19 +144,19 @@ class LoadTest extends TestCase
                 'sectionNames' => 'sectionName1,sectionName2,sectionName3',
                 'forceNewSectionTimestamp' => 'forceNewSectionTimestamp',
                 'sectionNamesAsArray' => ['sectionName1', 'sectionName2', 'sectionName3'],
-                'forceNewTimestamp' => true
+                'forceNewTimestamp' => true,
             ],
             [
                 'sectionNames' => null,
                 'forceNewSectionTimestamp' => null,
                 'sectionNamesAsArray' => null,
-                'forceNewTimestamp' => false
+                'forceNewTimestamp' => false,
             ],
             [
                 'sectionNames' => ['sectionName1', 'sectionName2', 'sectionName3'],
                 'forceNewSectionTimestamp' => 'forceNewSectionTimestamp',
                 'sectionNamesAsArray' => ['sectionName1', 'sectionName2', 'sectionName3'],
-                'forceNewTimestamp' => true
+                'forceNewTimestamp' => true,
             ],
         ];
     }

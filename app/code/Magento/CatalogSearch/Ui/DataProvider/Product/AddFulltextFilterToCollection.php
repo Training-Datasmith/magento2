@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Ui\DataProvider\Product;
 
 use Magento\CatalogSearch\Model\ResourceModel\Search\Collection as SearchCollection;

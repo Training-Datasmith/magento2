@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,12 +10,10 @@ namespace Magento\SalesRule\Test\Unit\Model;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\ExtensionAttributesInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
@@ -30,6 +29,7 @@ use Magento\SalesRule\Model\Rule\Action\Discount\DiscountInterface;
 use Magento\SalesRule\Model\RulesApplier;
 use Magento\SalesRule\Model\SelectRuleCoupon;
 use Magento\SalesRule\Model\Utility;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -93,8 +93,8 @@ class RulesApplierTest extends TestCase
         $objects = [
             [
                 RuleDiscountInterfaceFactory::class,
-                $this->createMock(RuleDiscountInterfaceFactory::class)
-            ]
+                $this->createMock(RuleDiscountInterfaceFactory::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->calculatorFactory = $this->createMock(
@@ -259,7 +259,7 @@ class RulesApplierTest extends TestCase
     {
         return [
             ['isChildren' => true, 'isContinue' => false],
-            ['isChildren' => false, 'isContinue' => true]
+            ['isChildren' => false, 'isContinue' => true],
         ];
     }
 
@@ -290,7 +290,7 @@ class RulesApplierTest extends TestCase
                 'getChildren',
                 'getExtensionAttributes',
                 'getProduct',
-                'getQuote'
+                'getQuote',
             ]
         );
         $itemExtension = $this->createPartialMockWithReflection(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Checkout\Test\Unit\Plugin;
 
 use Magento\Checkout\Plugin\Model\Quote\ResetQuoteAddresses;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Class ResetQuoteAddressesTest
@@ -191,16 +192,16 @@ class ResetQuoteAddressesTest extends TestCase
         return [
             'Test case with virtual quote' => [
                 true,
-                []
+                [],
             ],
             'Test case with a non virtual quote without extension attributes' => [
                 false,
-                []
+                [],
             ],
             'Test case with a non virtual quote with shipping assignments' => [
                 false,
-                [1]
-            ]
+                [1],
+            ],
         ];
     }
 
@@ -214,16 +215,16 @@ class ResetQuoteAddressesTest extends TestCase
         return [
             'Test case with a virtual quote and no shipping assignments' => [
                 true,
-                []
+                [],
             ],
             'Test case with a virtual quote and with shipping assignments' => [
                 true,
-                [1]
+                [1],
             ],
             'Test case with none virtual quote and with shipping assignments' => [
                 false,
-                [1]
-            ]
+                [1],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class Street extends AbstractValidator
         foreach ($customer->getStreet() as $street) {
             if (!$this->isValidStreet($street)) {
                 parent::_addMessages([[
-                    'street' => "Invalid Street Address. Please use A-Z, a-z, 0-9, , - . ' ’ ` & spaces"
+                    'street' => "Invalid Street Address. Please use A-Z, a-z, 0-9, , - . ' ’ ` & spaces",
                 ]]);
             }
         }

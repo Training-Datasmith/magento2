@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -55,14 +56,14 @@ class UnionFactory implements ConfigElementFactoryInterface
     public function create(
         array $unionData,
         array $types
-    ) : UnionType {
+    ): UnionType {
         return $this->objectManager->create(
             UnionType::class,
             [
                 'name' => $unionData['name'],
                 'typeResolver' => $unionData['typeResolver'],
                 'types' => $types,
-                'description' => isset($unionData['description']) ? $unionData['description'] : ''
+                'description' => isset($unionData['description']) ? $unionData['description'] : '',
             ]
         );
     }

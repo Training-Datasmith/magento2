@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model;
 
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
@@ -62,7 +65,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $object = new DataObject(
             [
                 'attribute_set_id' => $attributeSetId,
-                'store_id' => 0
+                'store_id' => 0,
             ]
         );
         $entityAttributeCodes1 = $this->config->getEntityAttributeCodes($entityType, $object);

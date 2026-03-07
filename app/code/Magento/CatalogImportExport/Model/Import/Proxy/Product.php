@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Import proxy product model
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Proxy;
 
 class Product extends \Magento\Catalog\Model\Product

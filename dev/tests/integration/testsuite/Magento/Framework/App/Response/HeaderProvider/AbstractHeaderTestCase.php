@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Response\HeaderProvider;
 
 use Laminas\Http\Header\HeaderInterface;
@@ -27,8 +30,8 @@ abstract class AbstractHeaderTestCase extends \Magento\TestFramework\TestCase\Ab
         $this->_objectManager->configure(
             [
                 'preferences' => [
-                        HttpResponse::class => 'Magento\Framework\App\Response\Http\Interceptor'
-                    ]
+                        HttpResponse::class => 'Magento\Framework\App\Response\Http\Interceptor',
+                    ],
             ]
         );
         $this->interceptedResponse = $this->_objectManager->create(HttpResponse::class);

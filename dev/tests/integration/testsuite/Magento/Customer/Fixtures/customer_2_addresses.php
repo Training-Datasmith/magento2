@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface;
+use Magento\Customer\Model\CustomerRegistry;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Customer\Model\CustomerRegistry;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 

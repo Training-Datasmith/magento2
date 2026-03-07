@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Controller\Index;
 
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ActionInterface;
-use Magento\Framework\Data\Form\FormKey;
-use Magento\Framework\Data\Form\FormKey\Validator;
-use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Response\RedirectInterface;
+use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Data\Form\FormKey\Validator;
+use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Wishlist\Model\AuthenticationStateInterface;

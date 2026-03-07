@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -10,9 +13,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CouponRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'salesRuleCouponRepositoryV1';
-    const RESOURCE_PATH = '/V1/coupons';
-    const SERVICE_VERSION = "V1";
+    public const SERVICE_NAME = 'salesRuleCouponRepositoryV1';
+    public const RESOURCE_PATH = '/V1/coupons';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -211,7 +214,7 @@ class CouponRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

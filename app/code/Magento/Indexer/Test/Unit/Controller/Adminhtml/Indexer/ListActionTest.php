@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,13 +14,13 @@ use Magento\Backend\Model\Menu\Item;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Result\Page;
 use Magento\Indexer\Controller\Adminhtml\Indexer\ListAction;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -98,7 +99,7 @@ class ListActionTest extends TestCase
             'getRequest',
             'getResponse',
             'getObjectManager',
-            'getMessageManager'
+            'getMessageManager',
         ]);
 
         $response = $this->createPartialMockWithReflection(
@@ -124,7 +125,7 @@ class ListActionTest extends TestCase
                 'setIsLayoutLoaded',
                 'isLayoutLoaded',
                 'getConfig',
-                'getTitle'
+                'getTitle',
             ]
         );
 
@@ -142,8 +143,8 @@ class ListActionTest extends TestCase
             ['getParentItems']
         );
 
-        $this->contextMock->expects($this->any())->method("getRequest")->willReturn($request);
-        $this->contextMock->expects($this->any())->method("getResponse")->willReturn($response);
+        $this->contextMock->expects($this->any())->method('getRequest')->willReturn($request);
+        $this->contextMock->expects($this->any())->method('getResponse')->willReturn($response);
         $this->contextMock->expects($this->any())->method('getView')->willReturn($this->view);
 
         $this->page = $this->createPartialMock(Page::class, ['getConfig']);

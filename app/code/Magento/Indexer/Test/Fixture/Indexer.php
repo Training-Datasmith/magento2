@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Indexer\Test\Fixture;
 
 use Magento\Framework\DataObject;
-use Magento\TestFramework\Fixture\DataFixtureInterface;
 use Magento\Indexer\Model\Indexer as IndexerModel;
 use Magento\Indexer\Model\Indexer\Collection;
+use Magento\TestFramework\Fixture\DataFixtureInterface;
 
 class Indexer implements DataFixtureInterface
 {

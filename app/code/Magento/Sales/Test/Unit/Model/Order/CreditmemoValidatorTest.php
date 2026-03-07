@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order\CreditmemoValidator;
 use Magento\Sales\Model\Order\Item;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for creditmemo factory class.
@@ -68,7 +69,7 @@ class CreditmemoValidatorTest extends TestCase
     {
         $orderItemQtys = [
             2 => 0,
-            3 => 0
+            3 => 0,
         ];
         $invoiceQtysRefundLimits = [];
 

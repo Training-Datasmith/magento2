@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +37,7 @@ class RegionProvider
         DataHelper $directoryHelper,
         JsonSerializer $jsonSerializer
     ) {
-        $this->directoryHelper= $directoryHelper;
+        $this->directoryHelper = $directoryHelper;
         $this->jsonSerializer = $jsonSerializer;
     }
 
@@ -55,7 +57,7 @@ class RegionProvider
      *
      * @return array
      */
-    private function getRegions() : array
+    private function getRegions(): array
     {
         if (!$this->regions) {
             $regions = $this->directoryHelper->getRegionData();
@@ -66,7 +68,7 @@ class RegionProvider
                     $this->regions[$countryCode][] = [
                         'id'   => $regionId,
                         'name' => $regionData['name'],
-                        'code' => $regionData['code']
+                        'code' => $regionData['code'],
                     ];
                 }
             }

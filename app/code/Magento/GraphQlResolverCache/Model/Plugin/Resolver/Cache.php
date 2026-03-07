@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -134,8 +135,8 @@ class Cache
         } catch (CalculationException $e) {
             $this->logger->warning(
                 sprintf(
-                    "Unable to obtain cache key for %s resolver results, proceeding to invoke resolver."
-                    . "Original exception message: %s ",
+                    'Unable to obtain cache key for %s resolver results, proceeding to invoke resolver.'
+                    . 'Original exception message: %s ',
                     get_class($subject),
                     $e->getMessage()
                 )

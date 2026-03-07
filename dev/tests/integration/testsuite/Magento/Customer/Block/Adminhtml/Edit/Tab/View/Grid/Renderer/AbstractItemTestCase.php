@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -104,11 +105,11 @@ abstract class AbstractItemTestCase extends TestCase
         foreach ($options as $key => $option) {
             $options[$key]['xpath'] = "//dl[contains(@class, 'item-options')]"
                 . "/dt[contains(text(), '{$option['label']}')]"
-                . "/following-sibling::dd[1]";
+                . '/following-sibling::dd[1]';
 
             if (isset($option['option_type'])
                 && $option['option_type'] == ProductCustomOptionInterface::OPTION_GROUP_FILE) {
-                $value = explode(" ", $option['print_value']);
+                $value = explode(' ', $option['print_value']);
                 $options[$key]['xpath'] .= "[contains(text(), '{$value[0]}')]";
             } else {
                 $options[$key]['xpath'] .= "[contains(text(), '{$option['value']}')]";

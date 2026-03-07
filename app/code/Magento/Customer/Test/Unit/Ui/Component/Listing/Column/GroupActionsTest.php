@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -108,9 +109,9 @@ class GroupActionsTest extends TestCase
                 'escaper' => $this->escaperMock,
                 'components' => [],
                 'data' => [
-                    'name' => 'name'
+                    'name' => 'name',
                 ],
-                'groupManagement' => $this->groupManagementMock
+                'groupManagement' => $this->groupManagementMock,
             ]
         );
     }
@@ -175,13 +176,13 @@ class GroupActionsTest extends TestCase
                     [
                         static::STUB_GENERAL_CUSTOMER_GROUP_NAME,
                         null,
-                        static::STUB_GENERAL_CUSTOMER_GROUP_NAME
+                        static::STUB_GENERAL_CUSTOMER_GROUP_NAME,
                     ],
                     [
                         static::STUB_NOT_LOGGED_IN_CUSTOMER_GROUP_NAME,
                         null,
-                        static::STUB_NOT_LOGGED_IN_CUSTOMER_GROUP_NAME
-                    ]
+                        static::STUB_NOT_LOGGED_IN_CUSTOMER_GROUP_NAME,
+                    ],
                 ]
             );
         $this->urlBuilderMock->expects($this->any())
@@ -216,8 +217,8 @@ class GroupActionsTest extends TestCase
                                 'customer_group_id' => static::STUB_GENERAL_CUSTOMER_GROUP_ID,
                                 'customer_group_code' => static::STUB_GENERAL_CUSTOMER_GROUP_NAME,
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 false,
                 [
@@ -240,15 +241,15 @@ class GroupActionsTest extends TestCase
                                             'message' => __(
                                                 'Are you sure you want to delete a %1 record?',
                                                 'General'
-                                            )
+                                            ),
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

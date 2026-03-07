@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Customer;
 
 use Magento\Review\Model\ResourceModel\Review\Product\Collection;

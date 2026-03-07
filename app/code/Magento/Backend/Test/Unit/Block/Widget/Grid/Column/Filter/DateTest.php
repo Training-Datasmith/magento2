@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Math\Random;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Asset\Repository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -136,7 +137,7 @@ class DateTest extends TestCase
         $value = [
             'locale' => 'en_US',
             'from' => $yesterday->getTimestamp(),
-            'to' => $tomorrow->getTimestamp()
+            'to' => $tomorrow->getTimestamp(),
         ];
         $params = ['_secure' => false];
         $fileId = 'Magento_Theme::calendar.png';
@@ -168,7 +169,7 @@ class DateTest extends TestCase
 
     public function testGetEscapedValueEscapeString()
     {
-        $value = "\"><img src=x onerror=alert(2) />";
+        $value = '"><img src=x onerror=alert(2) />';
         $array = [
             'orig_from' => $value,
             'from' => $value,

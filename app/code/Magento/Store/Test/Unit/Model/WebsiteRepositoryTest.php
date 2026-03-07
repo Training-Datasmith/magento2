@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class WebsiteRepositoryTest extends TestCase
             WebsiteRepository::class,
             [
                 'factory' => $this->websiteFactoryMock,
-                'websiteCollectionFactory' => $this->websiteCollectionFactoryMock
+                'websiteCollectionFactory' => $this->websiteCollectionFactoryMock,
             ]
         );
         $this->appConfigMock = $this->getMockBuilder(Config::class)
@@ -91,12 +92,12 @@ class WebsiteRepositoryTest extends TestCase
             ->willReturn([
                 'some_code' => [
                     'code' => 'some_code',
-                    'is_default' => 1
+                    'is_default' => 1,
                 ],
                 'some_code_2' => [
                     'code' => 'some_code_2',
-                    'is_default' => 0
-                ]
+                    'is_default' => 0,
+                ],
             ]);
         $this->websiteFactoryMock
             ->method('create')
@@ -120,19 +121,19 @@ class WebsiteRepositoryTest extends TestCase
             ->willReturn([
                 'some_code' => [
                     'code' => 'some_code',
-                    'is_default' => 1
+                    'is_default' => 1,
                 ],
                 'some_code_2' => [
                     'code' => 'some_code_2',
-                    'is_default' => 1
-                ]
+                    'is_default' => 1,
+                ],
             ]);
         $this->websiteFactoryMock->expects($this->any())->method('create')->willReturn($websiteMock);
 
         $this->model->getDefault();
 
         $this->expectExceptionMessage(
-            "The default website is invalid. Make sure no more than one default is defined and try again."
+            'The default website is invalid. Make sure no more than one default is defined and try again.'
         );
     }
 
@@ -150,12 +151,12 @@ class WebsiteRepositoryTest extends TestCase
             ->willReturn([
                 'some_code' => [
                     'code' => 'some_code',
-                    'is_default' => 0
+                    'is_default' => 0,
                 ],
                 'some_code_2' => [
                     'code' => 'some_code_2',
-                    'is_default' => 0
-                ]
+                    'is_default' => 0,
+                ],
             ]);
         $this->websiteFactoryMock->expects($this->any())->method('create')->willReturn($websiteMock);
 

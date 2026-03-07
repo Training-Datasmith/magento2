@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
@@ -147,11 +150,11 @@ class ActionTest extends \PHPUnit\Framework\TestCase
         return [
             [
                 'status' => 2,
-                'productsCount' => 0
+                'productsCount' => 0,
             ],
             [
                 'status' => 1,
-                'productsCount' => 1
+                'productsCount' => 1,
             ],
         ];
     }

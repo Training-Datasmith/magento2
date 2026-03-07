@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -74,7 +76,7 @@ class CollectionTest extends TestCase
      */
     public function testAddFieldToFilter(): void
     {
-        $filterDate = "2021-01-26 00:00:00";
+        $filterDate = '2021-01-26 00:00:00';
         /** @var TimezoneInterface $timeZone */
         $timeZone = Bootstrap::getObjectManager()
             ->get(TimezoneInterface::class);

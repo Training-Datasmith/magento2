@@ -1,16 +1,18 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Model\Indexer\Category\Product\Plugin;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Catalog\Model\Indexer\Category\Product\AbstractAction;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Framework\Search\Request\Dimension;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class that replace catalog_category_product_index table name on the table name segmented per store
@@ -67,7 +69,7 @@ class TableResolver
             $tableName = $this->tableResolver->resolve(
                 AbstractAction::MAIN_INDEX_TABLE,
                 [
-                    $catalogCategoryProductDimension
+                    $catalogCategoryProductDimension,
                 ]
             );
             return $tableName;

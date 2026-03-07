@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Theme;
 
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\ResourceModel\Theme\Collection as ThemeCollection;
-use Magento\TestFramework\Helper\CacheCleaner;
+use Magento\Theme\Model\Theme;
 
 class ThemeProviderTest extends \PHPUnit\Framework\TestCase
 {

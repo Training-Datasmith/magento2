@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +68,7 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
             // Third case with circular inheritance, when two packages depend on each other
             'a case with circular inheritance' => self::getDataCircularInheritance(),
             // Fourth case with multiple inheritance from dev docs
-            'a case with multiple inheritance from dev docs' => self::getDataMultipleInheritanceFromDevDocs()
+            'a case with multiple inheritance from dev docs' => self::getDataMultipleInheritanceFromDevDocs(),
         ];
     }
 
@@ -88,7 +90,7 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
                 'four and 75/100' => '4.75',
                 'five' => '5.0',
                 'six' => '6.0',
-            ]
+            ],
         ];
     }
 
@@ -105,7 +107,7 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
                 'one' => '1.0',
                 'two' => '2',
                 'three' => '3',
-            ]
+            ],
         ];
     }
 
@@ -123,7 +125,7 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
                 'two' => '2',
                 'three' => '3',
                 'four' => '4',
-            ]
+            ],
         ];
     }
 
@@ -167,7 +169,7 @@ class DictionaryTest extends \PHPUnit\Framework\TestCase
                 'seven' => 'en_ak_seven',
                 'eight' => 'en_ak_eight',
                 'nine' => 'en_ak_nine',
-            ]
+            ],
         ];
     }
 }

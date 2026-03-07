@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -72,8 +73,8 @@ class DefaultCreditmemo extends \Magento\Sales\Model\Order\Pdf\Items\AbstractIte
             [
                 // phpcs:ignore Magento2.Functions.DiscouragedFunction
                 'text' => $this->string->split(html_entity_decode($item->getName()), 35, true, true),
-                'feed' => 35
-            ]
+                'feed' => 35,
+            ],
         ];
 
         // draw SKU

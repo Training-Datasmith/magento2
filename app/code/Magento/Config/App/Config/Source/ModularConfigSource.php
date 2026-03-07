@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\App\Config\Source;
 
 use Magento\Framework\App\Config\ConfigSourceInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\App\Config\Initial\Reader;
+use Magento\Framework\DataObject;
 
 /**
  * Class for retrieving initial configuration from modules

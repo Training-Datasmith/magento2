@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\_files;
 
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
@@ -12,7 +15,6 @@ use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
  */
 class MultiselectSourceMock extends AbstractSource
 {
-
     public function getAllOptions()
     {
         return [

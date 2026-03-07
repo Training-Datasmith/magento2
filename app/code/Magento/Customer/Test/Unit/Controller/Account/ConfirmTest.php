@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Controller\Account\Confirm;
 use Magento\Customer\Helper\Address;
-use Magento\Customer\Model\Logger as CustomerLogger;
 use Magento\Customer\Model\Log;
+use Magento\Customer\Model\Logger as CustomerLogger;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
 use Magento\Framework\App\Action\Context;
@@ -27,9 +28,6 @@ use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\Framework\Phrase;
-use Magento\Framework\Stdlib\Cookie\CookieMetadata;
-use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PhpCookieManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlFactory;
@@ -319,7 +317,7 @@ class ConfirmTest extends TestCase
             ->willReturnMap(
                 [
                     ['id', 0, $customerId],
-                    ['key', false, $key]
+                    ['key', false, $key],
                 ]
             );
 
@@ -356,7 +354,7 @@ class ConfirmTest extends TestCase
             ->method('getUrl')
             ->willReturnMap([
                 ['customer/address/edit', null, 'http://store.web/customer/address/edit'],
-                ['*/*/admin', ['_secure' => true], 'http://store.web/back']
+                ['*/*/admin', ['_secure' => true], 'http://store.web/back'],
             ]);
 
         $this->logMock->expects($vatValidationEnabled ? $this->never() : $this->once())
@@ -402,7 +400,7 @@ class ConfirmTest extends TestCase
                     'If you are a registered VAT customer, please click <a href="%1">here</a>'
                     . ' to enter your billing address for proper VAT calculation.',
                     'http://store.web/customer/address/edit'
-                )
+                ),
             ],
             [
                 1,
@@ -414,7 +412,7 @@ class ConfirmTest extends TestCase
                     'If you are a registered VAT customer, please click <a href="%1">here</a>'
                     . ' to enter your shipping address for proper VAT calculation.',
                     'http://store.web/customer/address/edit'
-                )
+                ),
             ],
         ];
     }
@@ -451,7 +449,7 @@ class ConfirmTest extends TestCase
                 [
                     ['id', 0, $customerId],
                     ['key', false, $key],
-                    ['back_url', false, $backUrl]
+                    ['back_url', false, $backUrl],
                 ]
             );
 
@@ -486,7 +484,7 @@ class ConfirmTest extends TestCase
             ->willReturnMap([
                 ['customer/address/edit', null, 'http://store.web/customer/address/edit'],
                 ['*/*/admin', ['_secure' => true], 'http://store.web/back'],
-                ['*/*/index', ['_secure' => true], $successUrl]
+                ['*/*/index', ['_secure' => true], $successUrl],
             ]);
 
         $this->logMock->expects($this->once())
@@ -562,7 +560,7 @@ class ConfirmTest extends TestCase
                 false,
                 'some data',
                 null,
-            ]
+            ],
         ];
     }
 }

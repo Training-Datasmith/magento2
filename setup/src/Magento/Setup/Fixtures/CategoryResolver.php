@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -90,8 +92,8 @@ class CategoryResolver
                             'position' => 1,
                             'is_active' => true,
                             'available_sort_by' => ['position', 'name'],
-                            'url_key' => $categoryName . '-' . $websiteId
-                        ]
+                            'url_key' => $categoryName . '-' . $websiteId,
+                        ],
                     ]
                 );
                 $category = $this->categoryRepository->save($category);

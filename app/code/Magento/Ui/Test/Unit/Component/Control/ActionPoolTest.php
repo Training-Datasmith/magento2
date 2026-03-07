@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class ActionPoolTest extends TestCase
     /**
      * Actions toolbar block name
      */
-    const ACTIONS_PAGE_TOOLBAR = 'page.actions.toolbar';
+    public const ACTIONS_PAGE_TOOLBAR = 'page.actions.toolbar';
 
     /**
      * @var ActionPool
@@ -112,7 +113,7 @@ class ActionPoolTest extends TestCase
                     'data' => [
                         'button_item' => $this->items[$this->key],
                         'context' => $this->uiComponentInterfaceMock,
-                    ]
+                    ],
                 ]
             )
             ->willReturn($toolbarContainerMock);

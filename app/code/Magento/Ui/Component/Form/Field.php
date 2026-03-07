@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Ui\Component\Form;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Ui\Component\AbstractComponent;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Ui\Component\AbstractComponent;
 
 /**
  * Class Field
@@ -19,7 +21,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
  */
 class Field extends AbstractComponent
 {
-    const NAME = 'field';
+    public const NAME = 'field';
 
     /**
      * Wrapped component

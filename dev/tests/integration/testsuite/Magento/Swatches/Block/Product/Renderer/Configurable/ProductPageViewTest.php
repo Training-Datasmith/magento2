@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class ProductPageViewTest extends TestCase
                             'value' => 'Swatch 2',
                             'label' => 'Option 2',
                         ],
-                        'additional_data' => "{\"swatch_input_type\":\"text\"}",
+                        'additional_data' => '{"swatch_input_type":"text"}',
                     ],
 
                 ],
@@ -175,7 +176,7 @@ class ProductPageViewTest extends TestCase
                             'value' => '#ffffff',
                             'label' => 'option 3',
                         ],
-                        'additional_data' => "{\"swatch_input_type\":\"visual\"}",
+                        'additional_data' => '{"swatch_input_type":"visual"}',
                     ],
                 ],
             ],
@@ -281,7 +282,7 @@ class ProductPageViewTest extends TestCase
                             'value' => '#ffffff',
                             'label' => 'option 3',
                         ],
-                        'additional_data' => "{\"swatch_input_type\":\"visual\"}",
+                        'additional_data' => '{"swatch_input_type":"visual"}',
                     ],
                     Swatch::SWATCH_INPUT_TYPE_TEXT => [
                         [
@@ -299,7 +300,7 @@ class ProductPageViewTest extends TestCase
                             'value' => 'Swatch 2',
                             'label' => 'Option 2',
                         ],
-                        'additional_data' => "{\"swatch_input_type\":\"text\"}",
+                        'additional_data' => '{"swatch_input_type":"text"}',
                     ],
                 ],
             ],

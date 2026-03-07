@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order\Webapi;
 
+use Magento\Bundle\Model\Product\Type;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn;
 use Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer;
-use Magento\Bundle\Model\Product\Type;
 
 /**
  * Class for changing row total in response.

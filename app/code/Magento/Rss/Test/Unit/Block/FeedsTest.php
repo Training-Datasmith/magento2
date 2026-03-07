@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class FeedsTest extends TestCase
             Feeds::class,
             [
                 'context' => $this->context,
-                'rssManager' => $this->rssManagerInterface
+                'rssManager' => $this->rssManagerInterface,
             ]
         );
     }

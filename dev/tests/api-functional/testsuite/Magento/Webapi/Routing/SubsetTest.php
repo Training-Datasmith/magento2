@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Class to test routing based on a Service that exposes subset of operations
  */
+
 namespace Magento\Webapi\Routing;
 
 class SubsetTest extends \Magento\Webapi\Routing\BaseService

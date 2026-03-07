@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Model\Config\Source;
 
 class Frequency implements \Magento\Framework\Option\ArrayInterface
@@ -19,7 +22,7 @@ class Frequency implements \Magento\Framework\Option\ArrayInterface
             ['value' => 'weekly', 'label' => __('Weekly')],
             ['value' => 'monthly', 'label' => __('Monthly')],
             ['value' => 'yearly', 'label' => __('Yearly')],
-            ['value' => 'never', 'label' => __('Never')]
+            ['value' => 'never', 'label' => __('Never')],
         ];
     }
 }

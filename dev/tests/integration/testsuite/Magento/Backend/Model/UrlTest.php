@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model;
 
 use Magento\Framework\App\RequestInterface;
@@ -83,12 +86,12 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             [
                 'routePath' => 'adminhtml/auth/login',
                 'requestParams' => [],
-                'expectedResult'=> 'admin/auth/login/key/',
+                'expectedResult' => 'admin/auth/login/key/',
             ],
             [
                 'routePath' => 'adminhtml/auth/login',
                 'requestParams' => [],
-                'expectedResult'=> '/param1/a1==/',
+                'expectedResult' => '/param1/a1==/',
                 'routeParams' => [
                     '_escape_params' => false,
                     'param1' => 'a1==',
@@ -97,7 +100,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             [
                 'routePath' => 'adminhtml/auth/login',
                 'requestParams' => [],
-                'expectedResult'=> '/param1/a1==/',
+                'expectedResult' => '/param1/a1==/',
                 'routeParams' => [
                     '_escape_params' => false,
                     'param1' => 'a1==',
@@ -106,7 +109,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             [
                 'routePath' => 'adminhtml/auth/login',
                 'requestParams' => ['param2' => 'a2=='],
-                'expectedResult'=> '/param2/a2==/',
+                'expectedResult' => '/param2/a2==/',
                 'routeParams' => [
                     '_current' => true,
                     '_escape_params' => false,

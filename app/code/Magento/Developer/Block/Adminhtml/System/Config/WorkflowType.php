@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -22,7 +24,7 @@ class WorkflowType extends \Magento\Config\Block\System\Config\Form\Field
                 [
                     'can_use_website_value' => false,
                     'can_use_default_value' => false,
-                    'can_restore_to_default' => false
+                    'can_restore_to_default' => false,
                 ]
             );
         }

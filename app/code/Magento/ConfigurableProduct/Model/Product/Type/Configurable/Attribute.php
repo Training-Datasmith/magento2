@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -22,12 +25,12 @@ class Attribute extends \Magento\Framework\Model\AbstractExtensibleModel impleme
     /**
      * Constants for field names
      */
-    const KEY_ATTRIBUTE_ID = 'attribute_id';
-    const KEY_LABEL = 'label';
-    const KEY_POSITION = 'position';
-    const KEY_IS_USE_DEFAULT = 'is_use_default';
-    const KEY_VALUES = 'values';
-    const KEY_PRODUCT_ID = 'product_id';
+    public const KEY_ATTRIBUTE_ID = 'attribute_id';
+    public const KEY_LABEL = 'label';
+    public const KEY_POSITION = 'position';
+    public const KEY_IS_USE_DEFAULT = 'is_use_default';
+    public const KEY_VALUES = 'values';
+    public const KEY_PRODUCT_ID = 'product_id';
 
     /**
      * @var MetadataPool|\Magento\Framework\EntityManager\MetadataPool

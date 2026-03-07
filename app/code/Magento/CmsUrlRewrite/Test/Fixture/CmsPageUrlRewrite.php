@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class CmsPageUrlRewrite extends UrlRewrite
     private const DEFAULT_DATA = [
         UrlRewriteDataModel::ENTITY_TYPE => 'cms-page',
         UrlRewriteDataModel::REDIRECT_TYPE => 0,
-        UrlRewriteDataModel::STORE_ID => 1
+        UrlRewriteDataModel::STORE_ID => 1,
     ];
 
     /**

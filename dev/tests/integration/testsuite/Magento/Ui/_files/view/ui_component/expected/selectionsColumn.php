@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,7 +47,7 @@ return [
                                             'name' => 0,
                                             'xsi:type' => 'boolean',
                                             'value' => 'true',
-                                            'active' => 'false'
+                                            'active' => 'false',
                                         ],
                                     ],
                                 ],

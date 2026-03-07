@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,14 +13,13 @@ use Magento\Catalog\Api\Data\ProductRender\ImageInterface;
 use Magento\Catalog\Api\Data\ProductRender\ImageInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductRenderInterface;
 use Magento\Catalog\Helper\ImageFactory;
-use Magento\Catalog\Model\Product\Image\NotLoadInfoImageException;
 use Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
+use Magento\Framework\View\DesignLoader;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\View\DesignLoader;
 
 /**
  * Collect enough information about image rendering on front
@@ -30,7 +31,7 @@ use Magento\Framework\View\DesignLoader;
 class Image implements ProductRenderCollectorInterface
 {
     /** Key for image information access to, when render product */
-    public const KEY = "images";
+    public const KEY = 'images';
 
     /**
      * @var ImageFactory
@@ -115,7 +116,7 @@ class Image implements ProductRenderCollectorInterface
             $helper = $this->state
                 ->emulateAreaCode(
                     'frontend',
-                    [$this, "emulateImageCreating"],
+                    [$this, 'emulateImageCreating'],
                     [$product, $imageCode, (int) $productRender->getStoreId(), $image]
                 );
 

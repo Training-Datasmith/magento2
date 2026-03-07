@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class HtmlContentFactoryTest extends TestCase
             $this->htmlContentFactory->create(
                 $bundleComponents,
                 [
-                    'context' => $this->context
+                    'context' => $this->context,
                 ]
             )
         );

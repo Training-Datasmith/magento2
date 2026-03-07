@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\User\Model\User;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -139,7 +140,7 @@ class AuthenticationTest extends TestCase
 
         $requestParams = [
             ['isIframe', null, $isIFrameParam],
-            ['isAjax', null, $isAjaxParam]
+            ['isAjax', null, $isAjaxParam],
         ];
 
         $setterCalls = $isForwardedFlag ? 0 : 1;
@@ -166,7 +167,7 @@ class AuthenticationTest extends TestCase
             'iFrame' => [true, false, false],
             'Ajax' => [false, true, false],
             'Neither iFrame nor Ajax' => [false, false, false],
-            'Forwarded request' => [true, true, true]
+            'Forwarded request' => [true, true, true],
         ];
     }
 }

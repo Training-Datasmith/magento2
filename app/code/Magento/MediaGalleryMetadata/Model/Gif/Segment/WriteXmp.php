@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class WriteXmp implements WriteMetadataInterface
         if (empty($xmpGifSegments)) {
             return $this->fileFactory->create([
                 'path' => $file->getPath(),
-                'segments' => $this->insertXmpGifSegment($gifSegments, $this->createXmpSegment($metadata))
+                'segments' => $this->insertXmpGifSegment($gifSegments, $this->createXmpSegment($metadata)),
             ]);
         }
 
@@ -94,7 +95,7 @@ class WriteXmp implements WriteMetadataInterface
 
         return $this->fileFactory->create([
             'path' => $file->getPath(),
-            'segments' => $gifSegments
+            'segments' => $gifSegments,
         ]);
     }
 
@@ -140,7 +141,7 @@ class WriteXmp implements WriteMetadataInterface
     {
         $xmpData = $this->xmpTemplate->get();
 
-        $xmpSegment = pack("C", ord("!")) . pack("C", 255) . pack("C", 11) .
+        $xmpSegment = pack('C', ord('!')) . pack('C', 255) . pack('C', 11) .
                     self::XMP_SEGMENT_NAME . $this->addXmpMetadata->execute($xmpData, $metadata) . "\x01";
 
         /**
@@ -148,13 +149,13 @@ class WriteXmp implements WriteMetadataInterface
          */
         $i = 255;
         while ($i > 0) {
-            $xmpSegment .= pack("C", $i);
+            $xmpSegment .= pack('C', $i);
             $i--;
         }
 
         return $this->segmentFactory->create([
             'name' => self::XMP_SEGMENT_NAME,
-            'data' => $xmpSegment . "\0\0"
+            'data' => $xmpSegment . "\0\0",
         ]);
     }
 
@@ -174,7 +175,7 @@ class WriteXmp implements WriteMetadataInterface
 
         return $this->segmentFactory->create([
             'name' => $segment->getName(),
-            'data' => $start . $this->addXmpMetadata->execute($xmpData, $metadata) . $end
+            'data' => $start . $this->addXmpMetadata->execute($xmpData, $metadata) . $end,
         ]);
     }
 

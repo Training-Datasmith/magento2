@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Indexer\Model;
 
-use Magento\Indexer\Model\Indexer\StateFactory;
 use Magento\Framework\Indexer\StateInterface;
+use Magento\Indexer\Model\Indexer\StateFactory;
 
 /**
  * Provide actual working status of the indexer
@@ -35,7 +36,7 @@ class WorkingStateProvider
      * @param string $indexerId
      * @return bool
      */
-    public function isWorking(string $indexerId) : bool
+    public function isWorking(string $indexerId): bool
     {
         $state = $this->stateFactory->create();
         $state->loadByIndexer($indexerId);

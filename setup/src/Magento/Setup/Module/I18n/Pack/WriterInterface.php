@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Pack;
 
 use Magento\Setup\Module\I18n\Dictionary;
@@ -16,9 +19,9 @@ interface WriterInterface
     /**#@+
      * Save pack modes
      */
-    const MODE_REPLACE = 'replace';
+    public const MODE_REPLACE = 'replace';
 
-    const MODE_MERGE = 'merge';
+    public const MODE_MERGE = 'merge';
 
     /**#@-*/
 

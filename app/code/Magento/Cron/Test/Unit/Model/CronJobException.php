@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ declare(strict_types=1);
  * Class CronJobException used to check that cron handles execution exception
  * Please see \Magento\Cron\Test\Unit\Model\ObserverTest
  */
+
 namespace Magento\Cron\Test\Unit\Model;
 
 class CronJobException

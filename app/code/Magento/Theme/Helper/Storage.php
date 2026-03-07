@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Theme storage helper
  */
+
 namespace Magento\Theme\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -282,7 +285,7 @@ class Storage extends \Magento\Framework\App\Helper\AbstractHelper
     public function getThumbnailDirectory($path)
     {
         return sprintf(
-            "%s/%s",
+            '%s/%s',
             $this->file->getPathInfo($path)['dirname'],
             \Magento\Theme\Model\Wysiwyg\Storage::THUMBNAIL_DIRECTORY
         );
@@ -304,7 +307,7 @@ class Storage extends \Magento\Framework\App\Helper\AbstractHelper
             throw new \InvalidArgumentException('The image not found.');
         }
         return sprintf(
-            "%s/%s",
+            '%s/%s',
             $this->getThumbnailDirectory($imagePath),
             $this->file->getPathInfo($imageName)['basename']
         );
@@ -323,7 +326,7 @@ class Storage extends \Magento\Framework\App\Helper\AbstractHelper
         return [
             self::PARAM_THEME_ID => $themeId,
             self::PARAM_CONTENT_TYPE => $contentType,
-            self::PARAM_NODE => $node
+            self::PARAM_NODE => $node,
         ];
     }
 

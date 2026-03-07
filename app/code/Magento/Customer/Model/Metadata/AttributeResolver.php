@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata;
 
+use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Customer\Model\Attribute;
 use Magento\Customer\Model\AttributeMetadataDataProvider;
-use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class AttributeResolver
@@ -51,7 +54,7 @@ class AttributeResolver
                         'fieldName' => 'entityType',
                         'fieldValue' => $entityType,
                         'field2Name' => 'attributeCode',
-                        'field2Value' => $attribute->getAttributeCode()
+                        'field2Value' => $attribute->getAttributeCode(),
                     ]
                 )
             );

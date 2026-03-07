@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model;
 
+use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
+use Magento\AdvancedSearch\Model\Client\ClientResolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
-use Magento\AdvancedSearch\Model\Client\ClientResolver;
 
 /**
  * Elasticsearch config model
@@ -21,22 +24,22 @@ class Config implements ClientOptionsInterface
     /**
      * Search engine name
      */
-    const ENGINE_NAME = 'elasticsearch';
+    public const ENGINE_NAME = 'elasticsearch';
 
     /**
      * Elasticsearch Entity type
      */
-    const ELASTICSEARCH_TYPE_DOCUMENT = 'document';
+    public const ELASTICSEARCH_TYPE_DOCUMENT = 'document';
 
     /**
      * Elasticsearch default Entity type
      */
-    const ELASTICSEARCH_TYPE_DEFAULT = 'product';
+    public const ELASTICSEARCH_TYPE_DEFAULT = 'product';
 
     /**
      * Default Elasticsearch server timeout
      */
-    const ELASTICSEARCH_DEFAULT_TIMEOUT = 15;
+    public const ELASTICSEARCH_DEFAULT_TIMEOUT = 15;
 
     /**
      * @var ScopeConfigInterface
@@ -101,7 +104,7 @@ class Config implements ClientOptionsInterface
             'enableAuth' => $this->getElasticsearchConfigData('enable_auth'),
             'username' => $this->getElasticsearchConfigData('username'),
             'password' => $this->getElasticsearchConfigData('password'),
-            'timeout' => $this->getElasticsearchConfigData('server_timeout') ? : self::ELASTICSEARCH_DEFAULT_TIMEOUT,
+            'timeout' => $this->getElasticsearchConfigData('server_timeout') ?: self::ELASTICSEARCH_DEFAULT_TIMEOUT,
         ];
         $options = array_merge($defaultOptions, $options);
         $allowedOptions = array_merge(array_keys($defaultOptions), ['engine']);

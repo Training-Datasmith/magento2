@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
 use Symfony\Component\Console\Tester\CommandTester;
@@ -91,7 +94,7 @@ class I18nPackCommandTest extends \PHPUnit\Framework\TestCase
                 'source' => BP . '/dev/tests/integration/testsuite/Magento/Setup/Console/Command/_files/i18n.csv',
                 'locale' => 'de_DE',
                 '--allow-duplicates' => true,
-                '--mode' => 'invalid'
+                '--mode' => 'invalid',
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\View\Helper;
 
 use Magento\Framework\View\Helper\SecureHtmlRender\TagData;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for the secure HTML helper.
@@ -43,16 +44,16 @@ class SecureHtmlRendererTest extends TestCase
         return [
             [
                 new TagData('div', ['style' => 'display: none;', 'width' => '20px'], 'some <text>', true),
-                '<div style="display&#x3A;&#x20;none&#x3B;" width="20px">some &lt;text&gt;</div>'
+                '<div style="display&#x3A;&#x20;none&#x3B;" width="20px">some &lt;text&gt;</div>',
             ],
             [
                 new TagData('div', [], 'some <b>HTML</b>', false),
-                '<div>some <b>HTML</b></div>'
+                '<div>some <b>HTML</b></div>',
             ],
             [
                 new TagData('img', ['src' => 'https://magento.com/img.jpg'], null, true),
-                '<img src="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;img.jpg"/>'
-            ]
+                '<img src="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;img.jpg"/>',
+            ],
         ];
     }
 

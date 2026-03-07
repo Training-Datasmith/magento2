@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class StoreManagerTest extends TestCase
                 'cache' => $this->cache,
                 'scopeConfig' => $this->scopeConfig,
                 'websiteRepository' => $this->websiteRepository,
-                'groupRepository' => $this->groupRepository
+                'groupRepository' => $this->groupRepository,
             ]
         );
     }
@@ -181,25 +182,25 @@ class StoreManagerTest extends TestCase
                 'storesList' => [$defaultStoreMock, $storeMock],
                 'withDefault' => false,
                 'codeKey' => false,
-                'expectedStores' =>  [1 => $storeMock]
+                'expectedStores' =>  [1 => $storeMock],
             ],
             'withoutDefaultAndCodeKey' => [
                 'storesList' => [$defaultStoreMock,$storeMock],
                 'withDefault' => false,
                 'codeKey' => true,
-                'expectedStores' =>  ['first_store' => $storeMock]
+                'expectedStores' =>  ['first_store' => $storeMock],
             ],
             'withDefaultAndId' => [
                 'storesList' => [$defaultStoreMock,$storeMock],
                 'withDefault' => true,
                 'codeKey' => false,
-                'expectedStores' =>  [0 => $defaultStoreMock, 1 => $storeMock]
+                'expectedStores' =>  [0 => $defaultStoreMock, 1 => $storeMock],
             ],
             'withDefaultAndCodeKey' => [
                 'storesList' => [$defaultStoreMock,$storeMock],
                 'withDefault' => true,
                 'codeKey' => true,
-                'expectedStores' =>  ['default' => $defaultStoreMock, 'first_store' => $storeMock]
+                'expectedStores' =>  ['default' => $defaultStoreMock, 'first_store' => $storeMock],
             ],
         ];
     }

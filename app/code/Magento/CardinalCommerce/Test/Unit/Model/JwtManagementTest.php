@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\CardinalCommerce\Test\Unit\Model;
 
 use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\Framework\Serialize\Serializer\Json;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests JWT encode and decode.
@@ -166,10 +167,10 @@ class JwtManagementTest extends TestCase
                 'OrderDetails' => [
                     'OrderNumber' => '125',
                     'Amount' => '1500',
-                    'CurrencyCode' => 'USD'
-                ]
+                    'CurrencyCode' => 'USD',
+                ],
             ],
-            'ObjectifyPayload' => true
+            'ObjectifyPayload' => true,
         ];
     }
 }

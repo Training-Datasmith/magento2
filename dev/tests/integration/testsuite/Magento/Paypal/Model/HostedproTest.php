@@ -1,16 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Framework\DataObject;
 use Magento\Paypal\Model\Api\Nvp;
-use Magento\Paypal\Model\Config;
-use Magento\Paypal\Model\Hostedpro;
-use Magento\Paypal\Model\Hostedpro\RequestFactory;
-use Magento\Paypal\Model\ProFactory;
 use Magento\Sales\Model\Order;
 use Magento\TestFramework\Helper\Bootstrap;
 
@@ -48,7 +47,7 @@ class HostedproTest extends \PHPUnit\Framework\TestCase
 
         $this->model = $this->objectManager
             ->create(Hostedpro::class, [
-                'proFactory' => $proFactory
+                'proFactory' => $proFactory,
             ]);
     }
 
@@ -68,7 +67,7 @@ class HostedproTest extends \PHPUnit\Framework\TestCase
         $this->api->expects(static::once())
             ->method('call')
             ->willReturn([
-                'EMAILLINK' => 'https://securepayments.sandbox.paypal.com/webapps/HostedSoleSolutionApp/webflow/'
+                'EMAILLINK' => 'https://securepayments.sandbox.paypal.com/webapps/HostedSoleSolutionApp/webflow/',
             ]);
 
         $state = $this->objectManager->create(DataObject::class);

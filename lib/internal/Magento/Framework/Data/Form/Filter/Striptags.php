@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Form Input/Output Strip HTML tags Filter
  */
+
 namespace Magento\Framework\Data\Form\Filter;
 
 class Striptags implements \Magento\Framework\Data\Form\Filter\FilterInterface

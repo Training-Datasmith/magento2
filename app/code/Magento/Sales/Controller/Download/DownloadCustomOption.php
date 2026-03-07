@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Controller\Download;
 
+use Magento\Catalog\Model\Product\Type\AbstractType;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\Action\Context;
-use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Framework\Controller\Result\ForwardFactory;
 
 class DownloadCustomOption extends \Magento\Framework\App\Action\Action implements HttpGetActionInterface

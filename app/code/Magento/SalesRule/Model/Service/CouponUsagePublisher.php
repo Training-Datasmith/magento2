@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Service;
 
-use Magento\Framework\Bulk\BulkManagementInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\Authorization\Model\UserContextInterface;
+use Magento\Framework\Bulk\BulkManagementInterface;
+use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\Bulk\OperationInterface;
-use Magento\Authorization\Model\UserContextInterface;
 use Magento\SalesRule\Model\Coupon\Usage\UpdateInfo;
 
 /**
@@ -85,7 +86,7 @@ class CouponUsagePublisher
                 'topic_name' => self::TOPIC_NAME,
                 'serialized_data' => $this->serializer->serialize($updateInfo->getData()),
                 'status' => OperationInterface::STATUS_TYPE_OPEN,
-            ]
+            ],
         ];
         $operation = $this->operationFactory->create($data);
 

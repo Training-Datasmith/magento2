@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Quote\Item;
 
-use Magento\Quote\Model\Quote\Item\CartItemProcessorInterface;
-use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Framework\DataObject\Factory as DataObjectFactory;
+use Magento\Quote\Api\Data\CartItemInterface;
+use Magento\Quote\Model\Quote\Item\CartItemProcessorInterface;
 
 class CartItemProcessor implements CartItemProcessorInterface
 {
@@ -95,7 +98,7 @@ class CartItemProcessor implements CartItemProcessorInterface
         $this->dataObjectHelper->populateWithArray(
             $downloadableOption,
             [
-                'downloadable_links' => $downloadableLinkIds
+                'downloadable_links' => $downloadableLinkIds,
             ],
             \Magento\Downloadable\Api\Data\DownloadableOptionInterface::class
         );

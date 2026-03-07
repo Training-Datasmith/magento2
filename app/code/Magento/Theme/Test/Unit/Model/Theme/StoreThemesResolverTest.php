@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Theme\Test\Unit\Model\Theme;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Theme\Model\Theme\StoreThemesResolver;
 use Magento\Theme\Model\Theme\StoreThemesResolverInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -58,7 +59,7 @@ class StoreThemesResolverTest extends TestCase
         );
         $this->model = new StoreThemesResolver(
             [
-                $resolver
+                $resolver,
             ]
         );
     }
@@ -91,26 +92,26 @@ class StoreThemesResolverTest extends TestCase
                 [
                     [],
                     [],
-                    []
+                    [],
                 ],
-                []
+                [],
             ],
             [
                 [
                     ['1'],
                     [],
-                    ['1']
+                    ['1'],
                 ],
-                ['1']
+                ['1'],
             ],
             [
                 [
                     ['1'],
                     ['2'],
-                    ['1']
+                    ['1'],
                 ],
-                ['1', '2']
-            ]
+                ['1', '2'],
+            ],
         ];
     }
 }

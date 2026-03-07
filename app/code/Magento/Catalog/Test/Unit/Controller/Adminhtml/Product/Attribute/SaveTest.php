@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Product\Attribute;
 
 use Magento\Backend\Model\Session;
 use Magento\Backend\Model\View\Result\Redirect as ResultRedirect;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Controller\Adminhtml\Product\Attribute\Save;
 use Magento\Catalog\Helper\Product as ProductHelper;
 use Magento\Catalog\Model\Entity\Attribute;
@@ -23,26 +23,25 @@ use Magento\Catalog\Test\Unit\Controller\Adminhtml\Product\AttributeTest;
 use Magento\Eav\Api\Data\AttributeSetInterface;
 use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\Validator as InputTypeValidator;
 use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\ValidatorFactory;
+use Magento\Eav\Model\Entity\Attribute\Group as AttributeGroup;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\Collection as AttributeGroupCollection;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\CollectionFactory;
 use Magento\Eav\Model\Validator\Attribute\Code as AttributeCodeValidator;
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Json as ResultJson;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Filter\FilterManager;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\FormData;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutFactory;
-use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Exception\AlreadyExistsException;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\Collection as AttributeGroupCollection;
-use Magento\Eav\Model\Entity\Attribute\Group as AttributeGroup;
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -157,7 +156,7 @@ class SaveTest extends AttributeTest
         $this->redirectMock = $this->createMock(ResultRedirect::class);
         $this->jsonResultMock = $this->createMock(ResultJson::class);
         $this->productAttributeMock = $this->createMock(Attribute::class);
-           
+
         $this->buildFactoryMock->expects($this->any())
             ->method('create')
             ->willReturn($this->builderMock);
@@ -189,7 +188,7 @@ class SaveTest extends AttributeTest
             'formDataSerializer' => $this->formDataSerializerMock,
             'attributeCodeValidator' => $this->attributeCodeValidatorMock,
             'presentation' => $this->presentationMock,
-            '_session' => $this->sessionMock
+            '_session' => $this->sessionMock,
         ]);
     }
 
@@ -279,7 +278,7 @@ class SaveTest extends AttributeTest
                 // Intentionally omit 'formDataSerializer' to trigger fallback
                 'formDataSerializer' => null,
                 'presentation' => $this->presentationMock,
-                '_session' => $this->sessionMock
+                '_session' => $this->sessionMock,
             ]);
 
             $this->assertInstanceOf(ResultRedirect::class, $model->execute());
@@ -411,7 +410,7 @@ class SaveTest extends AttributeTest
             ->method('getParam')
             ->willReturnMap([
                 ['set', null, 1],
-                ['attribute_code', null, 'test_attribute_code']
+                ['attribute_code', null, 'test_attribute_code'],
             ]);
         $this->inputTypeValidatorMock->expects($this->once())
             ->method('getMessages')
@@ -427,7 +426,7 @@ class SaveTest extends AttributeTest
     {
         $serializedOptions = '{"key":"value"}';
         $message = "The attribute couldn't be saved due to an error. Verify your information and try again. "
-            . "If the error persists, please try again later.";
+            . 'If the error persists, please try again later.';
 
         $this->requestMock->expects($this->any())
             ->method('getParam')
@@ -631,7 +630,7 @@ class SaveTest extends AttributeTest
             'layoutFactory' => $this->layoutFactoryMock,
             'formDataSerializer' => $this->formDataSerializerMock,
             'presentation' => $this->presentationMock,
-            '_session' => $this->sessionMock
+            '_session' => $this->sessionMock,
         ]);
 
         $this->assertInstanceOf(ResultRedirect::class, $controller->execute());
@@ -972,7 +971,7 @@ class SaveTest extends AttributeTest
                 'save',
                 'setEntityTypeId',
                 'setIsUserDefined',
-                'getId'
+                'getId',
             ]
         );
         $attributeModel->method('getDefaultValueByInput')->with('text')->willReturn(null);
@@ -997,7 +996,7 @@ class SaveTest extends AttributeTest
                 'addFieldToFilter',
                 'setPageSize',
                 'load',
-                'getFirstItem'
+                'getFirstItem',
             ]
         );
         $groupMock = $this->createPartialMock(AttributeGroup::class, ['getId','save']);
@@ -1032,7 +1031,7 @@ class SaveTest extends AttributeTest
             'layoutFactory' => $this->layoutFactoryMock,
             'formDataSerializer' => $this->formDataSerializerMock,
             'presentation' => $this->presentationMock,
-            '_session' => $this->sessionMock
+            '_session' => $this->sessionMock,
         ]);
     }
 }

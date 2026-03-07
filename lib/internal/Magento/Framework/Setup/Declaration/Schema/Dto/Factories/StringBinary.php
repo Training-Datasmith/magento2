@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -17,7 +20,7 @@ class StringBinary implements FactoryInterface
     /**
      * Default data length.
      */
-    const DEFAULT_TEXT_LENGTH = 255;
+    public const DEFAULT_TEXT_LENGTH = 255;
 
     /**
      * @var ObjectManagerInterface

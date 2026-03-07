@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Paypal\Block\Adminhtml\System\Config\Fieldset;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
+namespace Magento\Paypal\Block\Adminhtml\System\Config\Fieldset;
 
 /**
  * Fieldset renderer which expanded by default

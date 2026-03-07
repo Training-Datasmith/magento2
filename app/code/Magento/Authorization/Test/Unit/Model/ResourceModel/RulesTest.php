@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -168,7 +169,7 @@ class RulesTest extends TestCase
     public function testLocalizedExceptionOccurrence()
     {
         $this->expectException(LocalizedException::class);
-        $this->expectExceptionMessage("TestException");
+        $this->expectExceptionMessage('TestException');
 
         $exceptionPhrase = $this->getMockBuilder(Phrase::class)
             ->disableOriginalConstructor()

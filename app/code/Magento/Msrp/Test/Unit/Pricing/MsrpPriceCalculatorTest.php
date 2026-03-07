@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,9 +47,9 @@ class MsrpPriceCalculatorTest extends TestCase
                 'msrpPriceCalculators' => [
                     [
                         'productType' => GroupedType::TYPE_CODE,
-                        'priceCalculator' => $this->msrpGroupedCalculatorMock
-                    ]
-                ]
+                        'priceCalculator' => $this->msrpGroupedCalculatorMock,
+                    ],
+                ],
             ]
         );
     }
@@ -81,13 +82,13 @@ class MsrpPriceCalculatorTest extends TestCase
             'Get Mrsp Price with product and msrp calculator and the same product type' => [
                 23.50,
                 static fn (self $testCase) => $testCase->createProductMock(GroupedType::TYPE_CODE, 0),
-                23.50
+                23.50,
             ],
             'Get Mrsp Price with product and msrp calculator and the different product type' => [
                 24.88,
                 static fn (self $testCase) => $testCase->createProductMock(ProductType::TYPE_SIMPLE, 24.88),
-                24.88
-            ]
+                24.88,
+            ],
         ];
     }
 

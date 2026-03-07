@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Data;
 
-use Magento\Framework\Data\Structure as DataStructure;
 use Magento\Framework\App\State;
+use Magento\Framework\Data\Structure as DataStructure;
 
 /**
  * An associative data structure, that features "nested set" parent-child relations

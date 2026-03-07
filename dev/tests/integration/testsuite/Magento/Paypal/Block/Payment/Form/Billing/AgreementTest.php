@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Paypal\Block\Payment\Form\Billing\Agreement
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Payment\Form\Billing;
 
 class AgreementTest extends \PHPUnit\Framework\TestCase

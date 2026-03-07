@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,28 +9,28 @@ declare(strict_types=1);
 
 namespace Magento\Backend\App\Request;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Backend\App\AbstractAction;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Auth;
+use Magento\Backend\Model\UrlInterface as BackendUrl;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\Framework\App\Response\HttpFactory as HttpResponseFactory;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Phrase;
+use Magento\TestFramework\Bootstrap as TestBootstrap;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Request;
 use Magento\TestFramework\Response;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Bootstrap as TestBootstrap;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\App\Response\Http as HttpResponse;
-use Laminas\Stdlib\Parameters;
-use Magento\Backend\Model\UrlInterface as BackendUrl;
-use Magento\Framework\App\Response\HttpFactory as HttpResponseFactory;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -92,7 +93,7 @@ class BackendValidatorTest extends TestCase
      */
     private function createUnawareAction(): ActionInterface
     {
-        return new class implements ActionInterface {
+        return new class () implements ActionInterface {
             /**
              * @inheritDoc
              */
@@ -111,8 +112,7 @@ class BackendValidatorTest extends TestCase
         $l = self::AWARE_LOCATION_VALUE;
         $p = self::AWARE_VALIDATION_PARAM;
 
-        return new class($l, $p) extends AbstractAction{
-
+        return new class ($l, $p) extends AbstractAction {
             /**
              * @var string
              */
@@ -134,7 +134,7 @@ class BackendValidatorTest extends TestCase
                 parent::__construct(
                     Bootstrap::getObjectManager()->get(Context::class)
                 );
-                $this->locationValue= $locationValue;
+                $this->locationValue = $locationValue;
                 $this->param = $param;
             }
 
@@ -174,7 +174,6 @@ class BackendValidatorTest extends TestCase
         $m = self::CSRF_AWARE_MESSAGE;
 
         return new class ($r, $m) implements CsrfAwareActionInterface {
-
             /**
              * @var ResponseInterface
              */
@@ -405,7 +404,7 @@ class BackendValidatorTest extends TestCase
         );
         $this->request->setParams([
             BackendUrl::SECRET_KEY_PARAM_NAME => 'invalid',
-            'isAjax' => '1'
+            'isAjax' => '1',
         ]);
 
         /** @var InvalidRequestException|null $caught */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class ReindexRuleProductTest extends TestCase
         $productIds = [
             4 => [$websiteId => 1],
             5 => [$websiteId => 1],
-            6 => [$websiteId => 1]
+            6 => [$websiteId => 1],
         ];
 
         $this->prepareResourceMock();
@@ -147,7 +148,7 @@ class ReindexRuleProductTest extends TestCase
         $this->localeDateMock->method('getConfigTimezone')
             ->willReturnMap([
                 [ScopeInterface::SCOPE_WEBSITE, self::ADMIN_WEBSITE_ID, $this->adminTimeZone],
-                [ScopeInterface::SCOPE_WEBSITE, $websiteId, $this->websiteTz]
+                [ScopeInterface::SCOPE_WEBSITE, $websiteId, $this->websiteTz],
             ]);
 
         $batchRows = [
@@ -161,7 +162,7 @@ class ReindexRuleProductTest extends TestCase
                 'action_operator' => 'simple_action',
                 'action_amount' => 43,
                 'action_stop' => true,
-                'sort_order' => 1
+                'sort_order' => 1,
             ],
             [
                 'rule_id' => 100,
@@ -173,8 +174,8 @@ class ReindexRuleProductTest extends TestCase
                 'action_operator' => 'simple_action',
                 'action_amount' => 43,
                 'action_stop' => true,
-                'sort_order' => 1
-            ]
+                'sort_order' => 1,
+            ],
         ];
 
         $rowsNotInBatch = [
@@ -188,8 +189,8 @@ class ReindexRuleProductTest extends TestCase
                 'action_operator' => 'simple_action',
                 'action_amount' => 43,
                 'action_stop' => true,
-                'sort_order' => 1
-            ]
+                'sort_order' => 1,
+            ],
         ];
 
         $this->connectionMock
@@ -213,7 +214,7 @@ class ReindexRuleProductTest extends TestCase
         $productIds = [
             4 => [$websiteId => 1],
             5 => [$websiteId => 1],
-            6 => [$websiteId => 1]
+            6 => [$websiteId => 1],
         ];
 
         $this->prepareResourceMock();
@@ -222,7 +223,7 @@ class ReindexRuleProductTest extends TestCase
         $this->localeDateMock->method('getConfigTimezone')
             ->willReturnMap([
                 [ScopeInterface::SCOPE_WEBSITE, self::ADMIN_WEBSITE_ID, $this->adminTimeZone],
-                [ScopeInterface::SCOPE_WEBSITE, $websiteId, $this->websiteTz]
+                [ScopeInterface::SCOPE_WEBSITE, $websiteId, $this->websiteTz],
             ]);
 
         $this->connectionMock->expects($this->exactly(2))->method('insertMultiple');
@@ -255,7 +256,7 @@ class ReindexRuleProductTest extends TestCase
                 [ScopeInterface::SCOPE_WEBSITE, self::ADMIN_WEBSITE_ID, $this->adminTimeZone],
                 [ScopeInterface::SCOPE_WEBSITE, 1, $this->websiteTz],
                 [ScopeInterface::SCOPE_WEBSITE, 2, $this->websiteTz],
-                [ScopeInterface::SCOPE_WEBSITE, 3, $this->websiteTz]
+                [ScopeInterface::SCOPE_WEBSITE, 3, $this->websiteTz],
             ]);
 
         $this->connectionMock
@@ -277,7 +278,7 @@ class ReindexRuleProductTest extends TestCase
                 [
                     1 => [1 => 1],
                     2 => [2 => 1],
-                    3 => [3 => 1]
+                    3 => [3 => 1],
                 ],
                 [
                     [
@@ -290,7 +291,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -302,7 +303,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -314,7 +315,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -326,16 +327,16 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
-                    ]
-                ]
+                        'sort_order' => 1,
+                    ],
+                ],
             ],
             [
                 [1, 2, 3],
                 [
                     1 => [1 => true],
                     2 => [2 => 'true'],
-                    3 => [3 => 0]
+                    3 => [3 => 0],
                 ],
                 [
                     [
@@ -348,7 +349,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -360,16 +361,16 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
-                    ]
-                ]
+                        'sort_order' => 1,
+                    ],
+                ],
             ],
             [
                 [1, 2, 3],
                 [
                     1 => [1 => true],
                     2 => [2 => true],
-                    3 => [3 => null]
+                    3 => [3 => null],
                 ],
                 [
                     [
@@ -382,7 +383,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -394,16 +395,16 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
-                    ]
-                ]
+                        'sort_order' => 1,
+                    ],
+                ],
             ],
             [
                 [1, 2, 3],
                 [
                     1 => [1 => true],
                     2 => [2 => true],
-                    3 => []
+                    3 => [],
                 ],
                 [
                     [
@@ -416,7 +417,7 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
+                        'sort_order' => 1,
                     ],
                     [
                         'rule_id' => 100,
@@ -428,16 +429,16 @@ class ReindexRuleProductTest extends TestCase
                         'action_operator' => 'simple_action',
                         'action_amount' => 43,
                         'action_stop' => true,
-                        'sort_order' => 1
-                    ]
-                ]
+                        'sort_order' => 1,
+                    ],
+                ],
                 ],
                 [
                     [1, 2, 3],
                     [
                         1 => [1 => true],
                         2 => [2 => true],
-                        3 => [3 => false]
+                        3 => [3 => false],
                     ],
                     [
                         [
@@ -450,7 +451,7 @@ class ReindexRuleProductTest extends TestCase
                             'action_operator' => 'simple_action',
                             'action_amount' => 43,
                             'action_stop' => true,
-                            'sort_order' => 1
+                            'sort_order' => 1,
                         ],
                         [
                             'rule_id' => 100,
@@ -462,10 +463,10 @@ class ReindexRuleProductTest extends TestCase
                             'action_operator' => 'simple_action',
                             'action_amount' => 43,
                             'action_stop' => true,
-                            'sort_order' => 1
-                        ]
-                    ]
-                ]
+                            'sort_order' => 1,
+                        ],
+                    ],
+                ],
         ];
     }
 
@@ -483,7 +484,7 @@ class ReindexRuleProductTest extends TestCase
             ->willReturn($this->connectionMock);
         $this->resourceMock
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['catalogrule_product'] => 'catalogrule_product',
                 ['catalogrule_product_replica'] => 'catalogrule_product_replica'
             });

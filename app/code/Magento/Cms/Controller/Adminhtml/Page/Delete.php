@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Page;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -17,7 +20,7 @@ class Delete extends \Magento\Backend\App\Action implements HttpPostActionInterf
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::page_delete';
+    public const ADMIN_RESOURCE = 'Magento_Cms::page_delete';
 
     /**
      * Delete action
@@ -30,26 +33,26 @@ class Delete extends \Magento\Backend\App\Action implements HttpPostActionInterf
         $id = $this->getRequest()->getParam('page_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
-        
+
         if ($id) {
-            $title = "";
+            $title = '';
             try {
                 // init model and delete
                 $model = $this->_objectManager->create(\Magento\Cms\Model\Page::class);
                 $model->load($id);
-                
+
                 $title = $model->getTitle();
                 $model->delete();
-                
+
                 // display success message
                 $this->messageManager->addSuccessMessage(__('The page has been deleted.'));
-                
+
                 // go to grid
                 $this->_eventManager->dispatch('adminhtml_cmspage_on_delete', [
                     'title' => $title,
-                    'status' => 'success'
+                    'status' => 'success',
                 ]);
-                
+
                 return $resultRedirect->setPath('*/*/');
             } catch (\Exception $e) {
                 $this->_eventManager->dispatch(
@@ -62,10 +65,10 @@ class Delete extends \Magento\Backend\App\Action implements HttpPostActionInterf
                 return $resultRedirect->setPath('*/*/edit', ['page_id' => $id]);
             }
         }
-        
+
         // display error message
         $this->messageManager->addErrorMessage(__('We can\'t find a page to delete.'));
-        
+
         // go to grid
         return $resultRedirect->setPath('*/*/');
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Customer\Observer;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\CustomerRegistry;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Model\CustomerRegistry;
 
 /**
  * Class observer UpgradeCustomerPasswordObserver to upgrade customer password hash when customer has logged in

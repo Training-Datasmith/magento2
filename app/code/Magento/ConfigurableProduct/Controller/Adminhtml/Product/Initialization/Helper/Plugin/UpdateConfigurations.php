@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin;
 
-use \Magento\Catalog\Model\Product\Edit\WeightResolver;
+use Magento\Catalog\Model\Product\Edit\WeightResolver;
 
 /**
  * Update Configurations for configurable product
@@ -96,8 +99,8 @@ class UpdateConfigurations
     protected function getConfigurations()
     {
         $result = [];
-        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', "[]");
-        if (isset($configurableMatrix) && $configurableMatrix != "") {
+        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', '[]');
+        if (isset($configurableMatrix) && $configurableMatrix != '') {
             $configurableMatrix = json_decode($configurableMatrix, true);
 
             foreach ($configurableMatrix as $item) {

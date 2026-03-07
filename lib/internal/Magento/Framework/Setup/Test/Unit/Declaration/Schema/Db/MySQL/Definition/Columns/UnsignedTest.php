@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class UnsignedTest extends TestCase
     public function testFromDefinition()
     {
         $data = [
-            'definition' => 'NOT NULL UNSIGNED'
+            'definition' => 'NOT NULL UNSIGNED',
         ];
         $expectedData = $data;
         $expectedData['unsigned'] = true;
@@ -87,7 +88,7 @@ class UnsignedTest extends TestCase
     public function testFromDefinitionSigned()
     {
         $data = [
-            'definition' => 'NOT NULL'
+            'definition' => 'NOT NULL',
         ];
         $expectedData = $data;
         $expectedData['unsigned'] = false;

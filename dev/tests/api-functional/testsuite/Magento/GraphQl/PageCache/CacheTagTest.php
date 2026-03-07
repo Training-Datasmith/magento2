@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class CacheTagTest extends GraphQLPageCacheAbstract
      */
     public function testCacheInvalidationForProducts()
     {
-        $productSku='simple2';
+        $productSku = 'simple2';
         $query
             = <<<QUERY
  {
@@ -87,7 +88,7 @@ QUERY;
         $firstProduct = $productRepository->get($firstProductSku, false, null, true);
 
         $product1Query = $this->getProductQuery($firstProductSku);
-        $product2Query =$this->getProductQuery($secondProductSku);
+        $product2Query = $this->getProductQuery($secondProductSku);
         $categoryQuery = $this->getCategoryQuery();
 
         // cache-debug header value should be a MISS when category is loaded first time
@@ -258,10 +259,10 @@ QUERY;
 
     private function getBlockWidget(int $blockId): string
     {
-        return "{{widget type=\"Magento\\Cms\\Block\\Widget\\Block\" " .
-            "template=\"widget/static_block/default.phtml\" " .
+        return '{{widget type="Magento\\Cms\\Block\\Widget\\Block" ' .
+            'template="widget/static_block/default.phtml" ' .
             "block_id=\"$blockId\" " .
-            "type_name=\"CMS Static Block\"}}";
+            'type_name="CMS Static Block"}}';
     }
 
     private function getCategoriesQuery(int $categoryId): string

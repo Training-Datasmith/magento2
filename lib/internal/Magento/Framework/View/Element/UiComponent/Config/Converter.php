@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config;
 
 use Magento\Framework\Config\ConverterInterface;
@@ -16,22 +19,22 @@ class Converter implements ConverterInterface
     /**
      * The key attributes of a node
      */
-    const DATA_ATTRIBUTES_KEY = '@attributes';
+    public const DATA_ATTRIBUTES_KEY = '@attributes';
 
     /**
      * The key for the data arguments
      */
-    const DATA_ARGUMENTS_KEY = '@arguments';
+    public const DATA_ARGUMENTS_KEY = '@arguments';
 
     /**
      * The key of the argument node
      */
-    const ARGUMENT_KEY = 'argument';
+    public const ARGUMENT_KEY = 'argument';
 
     /**
      * Key name attribute value
      */
-    const NAME_ATTRIBUTE_KEY = 'name';
+    public const NAME_ATTRIBUTE_KEY = 'name';
 
     /**
      * @var Parser

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model\Directory\Config;
 
+use Magento\Framework\Config\SchemaLocatorInterface;
 use Magento\Framework\Module\Dir;
 use Magento\Framework\Module\Dir\Reader;
-use Magento\Framework\Config\SchemaLocatorInterface;
 
 /**
  * Media gallery directory config schema locator

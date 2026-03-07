@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -212,7 +213,7 @@ class AttributeTest extends TestCase
                 'reservedAttributeList' => $this->reservedAttributeListMock,
                 'resolver' => $this->resolverMock,
                 'dateTimeFormatter' => $this->dateTimeFormatter,
-                'resource' => $this->resourceMock
+                'resource' => $this->resourceMock,
             ]
         );
     }

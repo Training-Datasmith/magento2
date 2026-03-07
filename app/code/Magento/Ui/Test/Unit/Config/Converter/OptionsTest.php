@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -63,15 +64,15 @@ class OptionsTest extends TestCase
                         ],
                     ],
                 ],
-                '//listing/columns/column/settings/options[1]'
+                '//listing/columns/column/settings/options[1]',
             ],
             [
                 [
                     'value' => 'Magento\Test\OptionsProvider',
                     'name' => 'options',
-                    'xsi:type' => 'object'
+                    'xsi:type' => 'object',
                 ],
-                '//listing/columns/column/settings/options[2]'
+                '//listing/columns/column/settings/options[2]',
             ],
         ];
     }

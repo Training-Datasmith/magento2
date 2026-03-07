@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  *  JSON Renderer allows to format array or object as JSON document.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi\Rest\Response\Renderer;
 
 class Json implements \Magento\Framework\Webapi\Rest\Response\RendererInterface
@@ -12,7 +15,7 @@ class Json implements \Magento\Framework\Webapi\Rest\Response\RendererInterface
     /**
      * Adapter mime type.
      */
-    const MIME_TYPE = 'application/json';
+    public const MIME_TYPE = 'application/json';
 
     /**
      * @var \Magento\Framework\Json\Encoder
@@ -26,7 +29,7 @@ class Json implements \Magento\Framework\Webapi\Rest\Response\RendererInterface
      */
     public function __construct(\Magento\Framework\Json\Encoder $encoder)
     {
-        $this->encoder= $encoder;
+        $this->encoder = $encoder;
     }
 
     /**

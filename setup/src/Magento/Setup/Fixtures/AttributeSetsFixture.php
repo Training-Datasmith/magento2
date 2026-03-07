@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ namespace Magento\Setup\Fixtures;
 class AttributeSetsFixture extends Fixture
 {
     /** Name of generated attribute set */
-    const PRODUCT_SET_NAME = 'Product Set ';
+    public const PRODUCT_SET_NAME = 'Product Set ';
 
     /**
      * @var int
@@ -105,7 +107,7 @@ class AttributeSetsFixture extends Fixture
     {
         return [
             'attribute_sets' => 'Attribute Sets (Default)',
-            'product_attribute_sets' => 'Attribute Sets (Extra)'
+            'product_attribute_sets' => 'Attribute Sets (Extra)',
         ];
     }
 }

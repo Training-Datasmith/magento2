@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -170,7 +171,7 @@ class ImageTest extends TestCase
             'png image' => ['category_image.png'],
             'gif image' => ['category_image.gif'],
             'image with path' => ['subfolder/category_image.jpg'],
-            'image with special chars' => ['category-image_01.jpg']
+            'image with special chars' => ['category-image_01.jpg'],
         ];
     }
 }

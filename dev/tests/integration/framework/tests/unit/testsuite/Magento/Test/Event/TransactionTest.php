@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Event\Transaction.
  */
+
 namespace Magento\Test\Event;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -128,7 +131,7 @@ class TransactionTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'method "startTest"' => ['startTest', 'startTestTransactionRequest'],
-            'method "endTest"' => ['endTest', 'endTestTransactionRequest']
+            'method "endTest"' => ['endTest', 'endTestTransactionRequest'],
         ];
     }
 

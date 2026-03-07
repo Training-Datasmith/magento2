@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -162,7 +163,7 @@ class TokensConfigProviderTest extends TestCase
             $this->storeManager,
             $this->dateTimeFactory,
             [
-                self::VAULT_PROVIDER_CODE => $this->tokenComponentProvider
+                self::VAULT_PROVIDER_CODE => $this->tokenComponentProvider,
             ]
         );
 
@@ -238,7 +239,7 @@ class TokensConfigProviderTest extends TestCase
         $date = $this->createMock(\DateTime::class);
         $this->dateTimeFactory->expects(static::once())
             ->method('create')
-            ->with("now", new \DateTimeZone('UTC'))
+            ->with('now', new \DateTimeZone('UTC'))
             ->willReturn($date);
         $date->expects(static::once())
             ->method('format')
@@ -322,7 +323,7 @@ class TokensConfigProviderTest extends TestCase
         $date = $this->createMock(\DateTime::class);
         $this->dateTimeFactory->expects(static::once())
             ->method('create')
-            ->with("now", new \DateTimeZone('UTC'))
+            ->with('now', new \DateTimeZone('UTC'))
             ->willReturn($date);
         $date->expects(static::once())
             ->method('format')

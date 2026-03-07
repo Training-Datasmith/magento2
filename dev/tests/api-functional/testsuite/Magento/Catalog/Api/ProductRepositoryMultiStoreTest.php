@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,24 +14,24 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductRepositoryMultiStoreTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products';
-    const STORE_CODE_FROM_FIXTURE = 'fixturestore';
-    const STORE_NAME_FROM_FIXTURE = 'Fixture Store';
+    public const SERVICE_NAME = 'catalogProductRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products';
+    public const STORE_CODE_FROM_FIXTURE = 'fixturestore';
+    public const STORE_NAME_FROM_FIXTURE = 'Fixture Store';
 
     private $productData = [
         [
             Product::SKU => 'simple',
             Product::NAME => 'Simple Related Product',
             Product::TYPE_ID => 'simple',
-            Product::PRICE => 10
+            Product::PRICE => 10,
         ],
         [
             Product::SKU => 'simple_with_cross',
             Product::NAME => 'Simple Product With Related Product',
             Product::TYPE_ID => 'simple',
-            Product::PRICE => 10
+            Product::PRICE => 10,
         ],
     ];
 
@@ -58,13 +60,13 @@ class ProductRepositoryMultiStoreTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '/' . $sku,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'get'
-            ]
+                'operation' => self::SERVICE_NAME . 'get',
+            ],
         ];
 
         $requestData = ['id' => $sku, 'sku' => $sku];

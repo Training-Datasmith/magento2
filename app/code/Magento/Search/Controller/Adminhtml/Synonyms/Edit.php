@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller\Adminhtml\Synonyms;
 
 class Edit extends \Magento\Backend\App\Action
@@ -12,7 +15,7 @@ class Edit extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Search::synonyms';
+    public const ADMIN_RESOURCE = 'Magento_Search::synonyms';
 
     /**
      * @var \Magento\Framework\Registry $registry
@@ -64,10 +67,10 @@ class Edit extends \Magento\Backend\App\Action
 
         // 2. Initial checking
         if ($groupId && (!$synGroup->getGroupId())) {
-                $this->messageManager->addErrorMessage(__('This synonyms group no longer exists.'));
-                /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-                $resultRedirect = $this->resultRedirectFactory->create();
-                return $resultRedirect->setPath('*/*/');
+            $this->messageManager->addErrorMessage(__('This synonyms group no longer exists.'));
+            /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+            $resultRedirect = $this->resultRedirectFactory->create();
+            return $resultRedirect->setPath('*/*/');
         }
 
         // 3. Set entered data if was error when we do save

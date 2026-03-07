@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Controller\Adminhtml\Index\InlineEdit;
 use Magento\Customer\Model\Address\Mapper;
 use Magento\Customer\Model\AddressRegistry;
+use Magento\Customer\Model\Customer\Mapper as CustomerMapper;
 use Magento\Customer\Model\EmailNotificationInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\RequestInterface;
@@ -27,11 +29,10 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Collection;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Message\MessageInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Customer\Model\Customer\Mapper as CustomerMapper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -42,7 +43,6 @@ use Psr\Log\LoggerInterface;
  */
 class InlineEditTest extends TestCase
 {
-
     use MockCreationTrait;
     /**
      * @var InlineEdit
@@ -217,7 +217,7 @@ class InlineEditTest extends TestCase
                 'addressRepository' => $this->addressRepository,
                 'logger' => $this->logger,
                 'addressRegistry' => $this->addressRegistry,
-                'escaper' => $this->escaper
+                'escaper' => $this->escaper,
             ]
         );
         $reflection = new \ReflectionClass(get_class($this->controller));
@@ -227,8 +227,8 @@ class InlineEditTest extends TestCase
         $this->items = [
             14 => [
                 'email' => 'test@test.ua',
-                'billing_postcode' => '07294'
-            ]
+                'billing_postcode' => '07294',
+            ],
         ];
     }
 
@@ -337,9 +337,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        'Error text'
+                        'Error text',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -363,7 +363,7 @@ class InlineEditTest extends TestCase
                         if ($arg1 == $this->address && $arg2 == [
                                 'postcode' => '07294',
                                 'firstname' => 'Firstname',
-                                'lastname' => 'Lastname'
+                                'lastname' => 'Lastname',
                             ] && $arg3 == AddressInterface::class) {
                             return null;
                         }
@@ -371,7 +371,7 @@ class InlineEditTest extends TestCase
                     case 2:
                         if ($arg1 == $this->customerData && $arg2 == [
                                 'name' => 'Firstname Lastname',
-                                'email' => 'test@test.ua'
+                                'email' => 'test@test.ua',
                             ] && $arg3 == CustomerInterface::class) {
                             return null;
                         }
@@ -421,9 +421,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        __('Please correct the data sent.')
+                        __('Please correct the data sent.'),
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -444,7 +444,7 @@ class InlineEditTest extends TestCase
             ->willReturnCallback(function ($arg1, $arg2, $arg3) {
                 if ($arg1 === $this->customerData && $arg2 === [
                         'name' => 'Firstname Lastname',
-                        'email' => 'test@test.ua'
+                        'email' => 'test@test.ua',
                     ] && $arg3 === CustomerInterface::class) {
                     return null;
                 }
@@ -486,7 +486,7 @@ class InlineEditTest extends TestCase
             ->willReturnCallback(function ($arg1, $arg2, $arg3) {
                 if ($arg1 == $this->customerData && $arg2 === [
                         'name' => 'Firstname Lastname',
-                        'email' => 'test@test.ua'
+                        'email' => 'test@test.ua',
                     ] && $arg3 === CustomerInterface::class) {
                     return null;
                 }

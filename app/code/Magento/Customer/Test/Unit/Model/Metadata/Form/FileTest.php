@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -146,7 +147,7 @@ class FileTest extends AbstractFormTestCase
             'no_file' => [[]],
             'delete' => [['delete' => true], '', true],
             'file_delete' => [['attributeCodeValue', 'delete' => true], 'attributeCode', true],
-            'file_!delete' => [['attributeCodeValue'], 'attributeCode', false]
+            'file_!delete' => [['attributeCodeValue'], 'attributeCode', false],
         ];
     }
 
@@ -176,7 +177,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -201,13 +202,13 @@ class FileTest extends AbstractFormTestCase
             'mainScope' => [
                 ['fileKey' => 'attributeValue'],
                 'mainScope',
-                ['fileKey' => ['attributeCode' => 'attributeValue']]
+                ['fileKey' => ['attributeCode' => 'attributeValue']],
             ],
             'mainScope/scopeName' => [
                 ['fileKey' => 'attributeValue'],
                 'mainScope/scopeName',
-                ['fileKey' => ['scopeName' => ['attributeCode' => 'attributeValue']]]
-            ]
+                ['fileKey' => ['scopeName' => ['attributeCode' => 'attributeValue']]],
+            ],
         ];
     }
 
@@ -236,7 +237,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => $isAjax,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -252,7 +253,7 @@ class FileTest extends AbstractFormTestCase
             'emptyValue' => [true, [], true],
             'someValue' => [true, ['some value']],
             'delete_someValue' => [true, ['delete' => true, 'some value'], false, false],
-            'null' => [['"attributeLabel" is a required value.'], null]
+            'null' => [['"attributeLabel" is a required value.'], null],
         ];
     }
 
@@ -289,7 +290,7 @@ class FileTest extends AbstractFormTestCase
             ->method('getStat')
             ->willReturn([
                 'extension' => $value['extension'],
-                'basename' => $value['basename']
+                'basename' => $value['basename'],
             ]);
 
         $this->fileProcessorMock->expects($this->any())
@@ -319,9 +320,9 @@ class FileTest extends AbstractFormTestCase
                     'tmp_name' => 'tempName_0001.bin',
                     'name' => 'realFileName.bin',
                     'extension' => 'bin',
-                    'basename' => 'realFileName.bin'
+                    'basename' => 'realFileName.bin',
                 ],
-                ['valid' => false]
+                ['valid' => false],
             ],
             'notUploaded' => [
                 ['"realFileName.bin" is not a valid file.'],
@@ -329,9 +330,9 @@ class FileTest extends AbstractFormTestCase
                     'tmp_name' => 'tempName_0001.bin',
                     'name' => 'realFileName.bin',
                     'extension' => 'bin',
-                    'basename' => 'realFileName.bin'
+                    'basename' => 'realFileName.bin',
                 ],
-                ['uploaded' => false]
+                ['uploaded' => false],
             ],
             'isValid' => [
                 true,
@@ -339,9 +340,9 @@ class FileTest extends AbstractFormTestCase
                     'tmp_name' => 'tempName_0001.txt',
                     'name' => 'realFileName.txt',
                     'extension' => 'txt',
-                    'basename' => 'realFileName.txt'
-                ]
-            ]
+                    'basename' => 'realFileName.txt',
+                ],
+            ],
         ];
     }
 
@@ -354,7 +355,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => 'value',
                 'isAjax' => true,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -372,7 +373,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => 'value',
                 'isAjax' => false,
-                'entityTypeCode' => Customer::ENTITY
+                'entityTypeCode' => Customer::ENTITY,
             ]
         );
 
@@ -462,7 +463,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => null,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -480,7 +481,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -498,7 +499,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => 'value',
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -515,7 +516,7 @@ class FileTest extends AbstractFormTestCase
             ElementFactory::OUTPUT_FORMAT_ARRAY => [ElementFactory::OUTPUT_FORMAT_ARRAY],
             ElementFactory::OUTPUT_FORMAT_HTML => [ElementFactory::OUTPUT_FORMAT_HTML],
             ElementFactory::OUTPUT_FORMAT_ONELINE => [ElementFactory::OUTPUT_FORMAT_ONELINE],
-            ElementFactory::OUTPUT_FORMAT_PDF => [ElementFactory::OUTPUT_FORMAT_PDF]
+            ElementFactory::OUTPUT_FORMAT_PDF => [ElementFactory::OUTPUT_FORMAT_PDF],
         ];
     }
 
@@ -541,7 +542,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -592,9 +593,9 @@ class FileTest extends AbstractFormTestCase
                     return [
                         $attributeCode => [
                             [
-                                'file' => $fileName
-                            ]
-                        ]
+                                'file' => $fileName,
+                            ],
+                        ],
                     ];
                 }
             });
@@ -603,7 +604,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => 'value',
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -624,7 +625,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => false,
-                'entityTypeCode' => Customer::ENTITY
+                'entityTypeCode' => Customer::ENTITY,
             ]
         );
 
@@ -647,7 +648,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $value,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -660,14 +661,14 @@ class FileTest extends AbstractFormTestCase
     public function testCompactValueUiComponent(): void
     {
         $value = [
-            'file' => 'filename'
+            'file' => 'filename',
         ];
 
         $model = $this->initialize(
             [
                 'value' => null,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -686,7 +687,7 @@ class FileTest extends AbstractFormTestCase
     {
         $value = [
             'name' => 'filename.ext1',
-            'tmp_name' => 'tmpfilename.ext1'
+            'tmp_name' => 'tmpfilename.ext1',
         ];
 
         $absolutePath = 'absolute_path';
@@ -740,7 +741,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => null,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -754,7 +755,7 @@ class FileTest extends AbstractFormTestCase
     {
         $value = [
             'name' => 'filename.ext1',
-            'tmp_name' => 'tmpfilename.ext1'
+            'tmp_name' => 'tmpfilename.ext1',
         ];
 
         $originValue = 'origin';
@@ -807,7 +808,7 @@ class FileTest extends AbstractFormTestCase
             [
                 'value' => $originValue,
                 'isAjax' => false,
-                'entityTypeCode' => self::ENTITY_TYPE
+                'entityTypeCode' => self::ENTITY_TYPE,
             ]
         );
 
@@ -821,7 +822,7 @@ class FileTest extends AbstractFormTestCase
     {
         $value = [
             'name' => 'filename.php',
-            'tmp_name' => 'tmpfilename.php'
+            'tmp_name' => 'tmpfilename.php',
         ];
 
         $originValue = 'origin';
@@ -849,7 +850,7 @@ class FileTest extends AbstractFormTestCase
         $this->fileValidatorMock->expects($this->once())
             ->method('getMessages')
             ->willReturn([
-                'php' => __('File with an extension php is protected and cannot be uploaded')
+                'php' => __('File with an extension php is protected and cannot be uploaded'),
             ]);
 
         $model = $this->initialize([

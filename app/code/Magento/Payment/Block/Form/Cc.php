@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Block\Form;
 
 /**
@@ -139,7 +142,7 @@ class Cc extends \Magento\Payment\Block\Form
     public function getSsStartYears()
     {
         $years = [];
-        $first = date("Y");
+        $first = date('Y');
 
         for ($index = 5; $index >= 0; $index--) {
             $year = $first - $index;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -18,14 +19,14 @@ class DeprecatedAnnotationReader
      * @param \GraphQL\Language\AST\NodeList $directives
      * @return array
      */
-    public function read(\GraphQL\Language\AST\NodeList $directives) : array
+    public function read(\GraphQL\Language\AST\NodeList $directives): array
     {
         $argumentsMap = [];
         foreach ($directives as $directive) {
             if ($directive->name->value == 'deprecated') {
                 foreach ($directive->arguments as $directiveArgument) {
                     if ($directiveArgument->name->value == 'reason') {
-                        $argumentsMap = ["reason" => $directiveArgument->value->value];
+                        $argumentsMap = ['reason' => $directiveArgument->value->value];
                     }
                 }
             }

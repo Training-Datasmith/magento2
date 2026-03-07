@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class MediaGalleryAssetDeleteByPath
         DeleteAssetsByPathsInterface $subject,
         \Closure $proceed,
         array $paths
-    ) : void {
+    ): void {
         $assets = $this->getByPaths->execute($paths);
 
         $proceed($paths);

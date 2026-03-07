@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class SuggestTest extends TestCase
             ->willReturnMap(
                 [
                     [ResultFactory::TYPE_REDIRECT, [], $this->resultRedirectMock],
-                    [ResultFactory::TYPE_JSON, [], $this->resultJsonMock]
+                    [ResultFactory::TYPE_JSON, [], $this->resultJsonMock],
                 ]
             );
 
@@ -99,14 +100,14 @@ class SuggestTest extends TestCase
             Suggest::class,
             [
                 'context' => $this->context,
-                'autocomplete' => $this->autocomplete
+                'autocomplete' => $this->autocomplete,
             ]
         );
     }
 
     public function testExecute()
     {
-        $searchString = "simple";
+        $searchString = 'simple';
         $firstItemMock =  $this->getMockBuilder(Item::class)
             ->disableOriginalConstructor()
             ->setMockClassName('FirstItem')

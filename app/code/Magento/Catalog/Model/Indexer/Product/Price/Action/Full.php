@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Price\Action;
 
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Indexer\Product\Price\AbstractAction;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
 use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
@@ -16,21 +18,20 @@ use Magento\Catalog\Model\ResourceModel\Indexer\ActiveTableSwitcher;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Factory;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\PriceInterface;
+use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\PriceInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Query\BatchIterator;
 use Magento\Framework\DB\Query\Generator as QueryGenerator;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\BatchProviderInterface;
 use Magento\Framework\Indexer\DimensionalIndexerInterface;
-use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Indexer\Model\ProcessManager;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -450,7 +452,7 @@ class Grid extends \Magento\Backend\Block\Widget
                 [
                     'label' => __('Reset Filter'),
                     'onclick' => $this->getJsObjectName() . '.resetFilter()',
-                    'class' => 'action-reset action-tertiary'
+                    'class' => 'action-reset action-tertiary',
                 ]
             )->setDataAttribute(['action' => 'grid-filter-reset'])
         );
@@ -772,7 +774,7 @@ class Grid extends \Magento\Backend\Block\Widget
      */
     public function getJsObjectName()
     {
-        return preg_replace("~[^a-z0-9_]*~i", '', $this->getId()) . 'JsObject';
+        return preg_replace('~[^a-z0-9_]*~i', '', $this->getId()) . 'JsObject';
     }
 
     /**

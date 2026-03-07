@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class SaveTest extends TestCase
                 'redirect' => $this->redirectMock,
                 'customerSession' => $this->customerSessionMock,
                 'formKeyValidator' => $this->formKeyValidatorMock,
-                'customerRepository' => $this->customerRepositoryMock
+                'customerRepository' => $this->customerRepositoryMock,
             ]
         );
     }

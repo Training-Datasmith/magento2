@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\DB\Test\Unit\Ddl;
 
 use Magento\Framework\DB\Ddl\Sequence;
 use Magento\Framework\DB\Ddl\Table;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SequenceTest extends TestCase
 {
@@ -49,25 +50,25 @@ class SequenceTest extends TestCase
         return [
             [
                 [
-                    'name' => 'someName'
+                    'name' => 'someName',
                 ],
                 'CREATE TABLE someName (
                      sequence_value integer UNSIGNED NOT NULL AUTO_INCREMENT,
                      PRIMARY KEY (sequence_value)
-                ) AUTO_INCREMENT = 1 ENGINE = INNODB'
+                ) AUTO_INCREMENT = 1 ENGINE = INNODB',
             ],
             [
                 [
                     'name' => 'someName',
                     'startNumber' => 123,
                     'columnType' => Table::TYPE_BIGINT,
-                    'unsigned' => false
+                    'unsigned' => false,
                 ],
                 'CREATE TABLE someName (
                      sequence_value bigint NOT NULL AUTO_INCREMENT,
                      PRIMARY KEY (sequence_value)
-                ) AUTO_INCREMENT = 123 ENGINE = INNODB'
-            ]
+                ) AUTO_INCREMENT = 123 ENGINE = INNODB',
+            ],
         ];
     }
 }

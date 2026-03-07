@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Downloadable\Api;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Model\Link;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -960,8 +961,8 @@ class LinkRepositoryTest extends WebapiAbstract
                 'number_of_downloads' => 15,
                 'sample_type' => 'file',
                 'link_file' => '/j/e/jellyfish_2_4.jpg',
-                'link_type' => 'file'
-            ]
+                'link_type' => 'file',
+            ],
         ];
 
         return [

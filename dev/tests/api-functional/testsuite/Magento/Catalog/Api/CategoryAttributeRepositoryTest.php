@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 class CategoryAttributeRepositoryTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogCategoryAttributeRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/categories/attributes';
+    public const SERVICE_NAME = 'catalogCategoryAttributeRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/categories/attributes';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/category_attribute.php

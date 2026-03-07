@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\ResourceModel\Option;
 
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
@@ -53,7 +56,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 [
                     'main_table.option_id = option_value_default.option_id',
                     'main_table.parent_id = option_value_default.parent_product_id',
-                    'option_value_default.store_id = 0'
+                    'option_value_default.store_id = 0',
                 ]
             ),
             []
@@ -77,7 +80,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                         [
                             'main_table.option_id = option_value.option_id',
                             'main_table.parent_id = option_value.parent_product_id',
-                            'option_value.store_id = ?'
+                            'option_value.store_id = ?',
                         ]
                     ),
                     $storeId
@@ -103,7 +106,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             'cpe.'.$linkField.' = main_table.parent_id',
             []
         )->where(
-            "cpe.entity_id = ?",
+            'cpe.entity_id = ?',
             $productId
         );
 

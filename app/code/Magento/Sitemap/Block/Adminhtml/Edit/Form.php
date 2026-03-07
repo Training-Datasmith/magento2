@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Block\Adminhtml\Edit;
 
 /**
@@ -74,7 +77,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'note' => __('example: sitemap.xml'),
                 'value' => $model->getSitemapFilename(),
-                'class' => 'validate-length maximum-length-32'
+                'class' => 'validate-length maximum-length-32',
             ]
         );
 
@@ -86,7 +89,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'sitemap_path',
                 'required' => true,
                 'note' => __('example: "/media/sitemap/" for base path (path must be writeable)'),
-                'value' => $model->getSitemapPath()
+                'value' => $model->getSitemapPath(),
             ]
         );
 
@@ -100,7 +103,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'store_id',
                     'required' => true,
                     'value' => $model->getStoreId(),
-                    'values' => $this->_systemStore->getStoreValuesForForm()
+                    'values' => $this->_systemStore->getStoreValuesForForm(),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(

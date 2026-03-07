@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 use Magento\Framework\Amqp\Config as AmqpConfig;
@@ -85,8 +88,8 @@ class Publisher implements PublisherInterface
                     'delivery_mode' => 2,
                     // md5() here is not for cryptographic use.
                     // phpcs:ignore Magento2.Security.InsecureFunction
-                    'message_id' => md5(gethostname() . microtime(true) . uniqid($topicName, true))
-                ]
+                    'message_id' => md5(gethostname() . microtime(true) . uniqid($topicName, true)),
+                ],
             ]
         );
         $connectionName = $this->getPublisherConfig()->getPublisher($topicName)->getConnection()->getName();

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -69,12 +72,12 @@ class EditTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 ['store_type' => 'group', 'store_data' => \Magento\Store\Model\Store::class],
-                \Magento\Backend\Block\System\Store\Edit\Form\Group::class
+                \Magento\Backend\Block\System\Store\Edit\Form\Group::class,
             ],
             [
                 ['store_type' => 'store', 'store_data' => \Magento\Store\Model\Store::class],
-                \Magento\Backend\Block\System\Store\Edit\Form\Store::class
-            ]
+                \Magento\Backend\Block\System\Store\Edit\Form\Store::class,
+            ],
         ];
     }
 
@@ -119,24 +122,24 @@ class EditTest extends \PHPUnit\Framework\TestCase
                     'store_data' => \Magento\Store\Model\Website::class,
                     'store_action' => 'edit',
                 ],
-                'Edit Web Site'
+                'Edit Web Site',
             ],
             [
                 ['store_type' => 'group', 'store_data' => \Magento\Store\Model\Store::class, 'store_action' => 'add'],
-                'New Store'
+                'New Store',
             ],
             [
                 ['store_type' => 'group', 'store_data' => \Magento\Store\Model\Store::class, 'store_action' => 'edit'],
-                'Edit Store'
+                'Edit Store',
             ],
             [
                 ['store_type' => 'store', 'store_data' => \Magento\Store\Model\Store::class, 'store_action' => 'add'],
-                'New Store View'
+                'New Store View',
             ],
             [
                 ['store_type' => 'store', 'store_data' => \Magento\Store\Model\Store::class, 'store_action' => 'edit'],
-                'Edit Store View'
-            ]
+                'Edit Store View',
+            ],
         ];
     }
 }

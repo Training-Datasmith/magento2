@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\SalesRule\Test\Unit\Model\Coupon\Usage;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Lock\LockManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Api\CouponRepositoryInterface;
 use Magento\SalesRule\Api\Data\CouponSearchResultInterface;
 use Magento\SalesRule\Model\Coupon;
@@ -18,7 +20,6 @@ use Magento\SalesRule\Model\Coupon\Usage\UpdateInfo;
 use Magento\SalesRule\Model\ResourceModel\Coupon\Usage;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Rule\Customer;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Model\Rule\CustomerFactory;
 use Magento\SalesRule\Model\RuleFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -146,7 +147,7 @@ class ProcessorTest extends TestCase
                 'getTimesUsed',
                 'setTimesUsed',
                 'setCustomerId',
-                'setRuleId'
+                'setRuleId',
             ]
         );
         $customerRuleMock->expects($this->once())->method('loadByCustomerRule')->with($customerId, $ruleId)
@@ -186,7 +187,7 @@ class ProcessorTest extends TestCase
             [true, 1],
             [true, 0],
             [false, 1],
-            [false, 0]
+            [false, 0],
         ];
     }
 }

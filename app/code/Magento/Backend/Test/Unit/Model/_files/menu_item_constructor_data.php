@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ return [
             'toolTip' => 'Item tooltip',
             'title' => 'Item Title',
             'sub_menu' => null,
-            'target' => null
+            'target' => null,
         ],
     ],
     'data without submenu to constructor' => [
@@ -78,7 +79,7 @@ return [
             'toolTip' => '',
             'title' => null,
             'sub_menu' => ['submenuArray'],
-            'target' => null
+            'target' => null,
         ],
     ],
     'data with submenu to constructor' => [
@@ -131,7 +132,7 @@ return [
             'toolTip' => '',
             'title' => null,
             'sub_menu' => ['submenuArray'],
-            'target' => null
+            'target' => null,
         ],
-    ]
+    ],
 ];

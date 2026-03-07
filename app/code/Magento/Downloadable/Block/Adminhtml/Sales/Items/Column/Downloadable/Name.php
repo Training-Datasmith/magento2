@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Downloadable\Block\Adminhtml\Sales\Items\Column\Downloadable;
 
+use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\Downloadable\Model\Link;
 use Magento\Downloadable\Model\Link\Purchased;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Catalog\Helper\Data as CatalogHelper;
 
 /**
  * Sales Order downloadable items name column renderer

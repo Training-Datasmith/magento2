@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Model\Resolver;
 
+use Magento\Downloadable\Model\Product\Type;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
@@ -15,7 +17,6 @@ use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Quote\Model\Cart\Totals;
 use Magento\Quote\Model\Quote\Item;
-use Magento\Downloadable\Model\Product\Type;
 use Magento\QuoteGraphQl\Model\Cart\TotalsCollector;
 use Magento\QuoteGraphQl\Model\GetDiscounts;
 use Magento\QuoteGraphQl\Model\GetOptionsRegularPrice;
@@ -173,7 +174,7 @@ class CartItemPrices implements ResolverInterface, ResetAfterRequestInterface
                 $price += $option->getRegularPrice();
             } else {
                 $price += $this->getOptionsRegularPrice
-                    ->execute(explode(",", $optionValueIds->getValue()), $option);
+                    ->execute(explode(',', $optionValueIds->getValue()), $option);
             }
         }
 
@@ -198,7 +199,7 @@ class CartItemPrices implements ResolverInterface, ResetAfterRequestInterface
 
         return array_reduce(
             $downloadableLinks,
-            fn(float $total, $link) => isset($selectedLinks[$link->getId()]) ?
+            fn (float $total, $link) => isset($selectedLinks[$link->getId()]) ?
                 $total + (float) $link->getPrice() : $total,
             0.0
         );

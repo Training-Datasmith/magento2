@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -223,7 +224,7 @@ class UploadTest extends AbstractBackendController
                     'errorcode' => 0,
                     'tmp_media_path' => '/m/w/magento_wrong.png',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -269,7 +270,7 @@ class UploadTest extends AbstractBackendController
     {
         $tmpDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::SYS_TMP);
         $filePath = $tmpDirectory->getAbsolutePath($name);
-        $file = fopen($filePath, "wb");
+        $file = fopen($filePath, 'wb');
         fwrite($file, 'some text');
 
         $_FILES['image'] = [

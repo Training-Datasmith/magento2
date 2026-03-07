@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ class IndexTableRowSizeEstimator implements \Magento\Framework\Indexer\IndexTabl
     /**
      * Calculated memory size for one record in catalog_product_index_price table
      */
-    const MEMORY_SIZE_FOR_ONE_ROW = 200;
+    public const MEMORY_SIZE_FOR_ONE_ROW = 200;
 
     /**
      * @var \Magento\Store\Api\WebsiteManagementInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class LayoutTest extends TestCase
         $this->model = $helper->getObject(
             Layout::class,
             [
-                'pageLayoutBuilder' => $this->getMockedPageLayoutBuilder()
+                'pageLayoutBuilder' => $this->getMockedPageLayoutBuilder(),
             ]
         );
     }

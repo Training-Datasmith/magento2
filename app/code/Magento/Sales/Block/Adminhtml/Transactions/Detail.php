@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -100,7 +102,7 @@ class Detail extends \Magento\Backend\Block\Widget\Container
     public function getHeaderText()
     {
         return __(
-            "Transaction # %1 | %2",
+            'Transaction # %1 | %2',
             $this->_txn->getTxnId(),
             $this->formatDate(
                 $this->_txn->getCreatedAt(),

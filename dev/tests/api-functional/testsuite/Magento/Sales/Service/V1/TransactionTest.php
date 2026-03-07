@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,17 +21,17 @@ class TransactionTest extends WebapiAbstract
     /**
      * Service read name
      */
-    const SERVICE_READ_NAME = 'salesTransactionRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesTransactionRepositoryV1';
 
     /**
      * Resource path for REST
      */
-    const RESOURCE_PATH = '/V1/transactions';
+    public const RESOURCE_PATH = '/V1/transactions';
 
     /**
      * Service version
      */
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -225,7 +227,7 @@ class TransactionTest extends WebapiAbstract
                     $filterBuilder->setField('created_at')->setValue('2020-12-12 00:00:00')
                         ->setConditionType('lteq')->create(),
                 ],
-            ]
+            ],
         ];
     }
 }

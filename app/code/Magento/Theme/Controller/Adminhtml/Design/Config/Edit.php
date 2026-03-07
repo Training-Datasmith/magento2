@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Controller\Adminhtml\Design\Config;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Page as ResultPage;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ScopeResolverPool;
 use Magento\Framework\App\ScopeValidatorInterface as ScopeValidator;
 use Magento\Framework\Controller\Result\Redirect as ResultRedirect;
 use Magento\Framework\View\Result\PageFactory as ResultPageFactory;
-use Magento\Framework\App\ScopeResolverPool;
 
 /**
  * Edit action controller

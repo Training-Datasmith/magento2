@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -139,7 +141,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
      * @var string[]
      */
     protected $_debugReplacePrivateDataKeys = [
-        'USERID'
+        'USERID',
     ];
 
     /**
@@ -297,7 +299,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
 
                         return $this->getResult();
                     }
-                )
+                ),
             ]
         );
     }
@@ -675,7 +677,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
 
                             return $this->_parseXmlResponse($responseBody);
                         }
-                    )
+                    ),
                 ]
             );
         }
@@ -869,7 +871,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 '4096' => __('Ground Advantage™ Cubic HAZMAT'),
                 '1096' => __('Ground Advantage™ Cubic'),
                 '2096' => __('Ground Advantage™ Cubic Hold for pickup'),
-                '6096' => __('Ground Advantage™ Cubic Parcel locker')
+                '6096' => __('Ground Advantage™ Cubic Parcel locker'),
             ],
             'rest_method' => $this->shippingMethodManager->getMethodCodesWithTitles(),
             'service_to_code' => [
@@ -992,7 +994,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                 'PRIORITY_MAIL_MACHINABLE_SINGLE-PIECE',
                                 'PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE',
                                 'MEDIA_MAIL_MACHINABLE_5-DIGIT',
-                                'USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE'
+                                'USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE',
                             ],
                         ],
                         'from_us' => [
@@ -1006,7 +1008,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                 'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_SMALL_FLAT_RATE_BOX',
                                 'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_FLAT_RATE_ENVELOPE',
                                 'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_SINGLE-PIECE',
-                                'FIRST-CLASS_PACKAGE_INTERNATIONAL_SERVICE_MACHINABLE_ISC_SINGLE-PIECE'
+                                'FIRST-CLASS_PACKAGE_INTERNATIONAL_SERVICE_MACHINABLE_ISC_SINGLE-PIECE',
                             ],
                         ],
                     ],
@@ -1020,24 +1022,24 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         ],
                         'from_us' => [
                             'method' => ['INT_16', 'INT_24',
-                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_SMALL_FLAT_RATE_BOX'
+                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_SMALL_FLAT_RATE_BOX',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['MD FLAT RATE BOX'],
                     'filters' => [
                         'within_us' => [
-                            'method' => ['17', '57', 'PRIORITY_MAIL_MACHINABLE_MEDIUM_FLAT_RATE_BOX'
+                            'method' => ['17', '57', 'PRIORITY_MAIL_MACHINABLE_MEDIUM_FLAT_RATE_BOX',
                             ],
                         ],
                         'from_us' => [
                             'method' => ['INT_9', 'INT_24',
-                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_MEDIUM_FLAT_RATE_BOX'
+                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_MEDIUM_FLAT_RATE_BOX',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['LG FLAT RATE BOX'],
@@ -1047,10 +1049,10 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         ],
                         'from_us' => [
                             'method' => ['INT_11', 'INT_24', 'INT_25',
-                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_LARGE_FLAT_RATE_BOX'
+                                'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_LARGE_FLAT_RATE_BOX',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['SM FLAT RATE ENVELOPE'],
@@ -1061,7 +1063,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'from_us' => [
                             'method' => ['INT_20'],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['WINDOW FLAT RATE ENVELOPE'],
@@ -1072,7 +1074,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'from_us' => [
                             'method' => ['INT_19'],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['GIFT CARD FLAT RATE ENVELOPE'],
@@ -1083,7 +1085,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'from_us' => [
                             'method' => ['INT_18'],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['PADDED FLAT RATE ENVELOPE'],
@@ -1091,16 +1093,16 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'within_us' => [
                             'method' => ['62', '63', '64', '46', '29',
                                 'PRIORITY_MAIL_EXPRESS_PADDED_FLAT_RATE_ENVELOPE',
-                                'PRIORITY_MAIL_PADDED_FLAT_RATE_ENVELOPE'
+                                'PRIORITY_MAIL_PADDED_FLAT_RATE_ENVELOPE',
                             ],
                         ],
                         'from_us' => [
                             'method' => ['INT_27', 'INT_23',
                                         'PRIORITY_MAIL_INTERNATIONAL_MACHINABLE_ISC_PADDED_FLAT_RATE_ENVELOPE',
-                                        'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_PADDED_FLAT_RATE_ENVELOPE'
+                                        'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_PADDED_FLAT_RATE_ENVELOPE',
                                     ],
                             ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['LEGAL FLAT RATE ENVELOPE'],
@@ -1108,16 +1110,16 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'within_us' => [
                             'method' => ['44', '45', '30', '31', '32',
                                 'PRIORITY_MAIL_EXPRESS_LEGAL_FLAT_RATE_ENVELOPE',
-                                'PRIORITY_MAIL_LEGAL_FLAT_RATE_ENVELOPE'
+                                'PRIORITY_MAIL_LEGAL_FLAT_RATE_ENVELOPE',
                             ],
                         ],
                         'from_us' => [
                             'method' => ['INT_17', 'INT_22',
                                 'PRIORITY_MAIL_INTERNATIONAL_ISC_LEGAL_FLAT_RATE_ENVELOPE',
-                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_LEGAL_FLAT_RATE_ENVELOPE'
+                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_LEGAL_FLAT_RATE_ENVELOPE',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['FLAT RATE ENVELOPE'],
@@ -1125,17 +1127,17 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'within_us' => [
                             'method' => ['16', '13', '27', '16', '15', '37', '42', '43', '25', '62',
                                 'PRIORITY_MAIL_FLAT_RATE_ENVELOPE',
-                                'PRIORITY_MAIL_EXPRESS_FLAT_RATE_ENVELOPE'
+                                'PRIORITY_MAIL_EXPRESS_FLAT_RATE_ENVELOPE',
                             ],
                         ],
                         'from_us' => [
                             'method' => [
                                 'INT_10', 'INT_8', 'INT_14', 'INT_20', 'INT_17', 'INT_18', 'INT_19', 'INT_22', 'INT_27',
                                 'PRIORITY_MAIL_INTERNATIONAL_ISC_FLAT_RATE_ENVELOPE',
-                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_FLAT_RATE_ENVELOPE'
+                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_FLAT_RATE_ENVELOPE',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['RECTANGULAR'],
@@ -1146,7 +1148,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                 'MEDIA_MAIL_MACHINABLE_5-DIGIT',
                                 'USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE',
                                 'PRIORITY_MAIL_MACHINABLE_SINGLE-PIECE',
-                                'PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE'
+                                'PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE',
                             ],
                         ],
                         'from_us' => [
@@ -1154,10 +1156,10 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                 'INT_21', 'INT_22', 'INT_23', 'INT_24', 'INT_25', 'INT_27',
                                 'FIRST-CLASS_PACKAGE_INTERNATIONAL_SERVICE_MACHINABLE_ISC_SINGLE-PIECE',
                                 'PRIORITY_MAIL_INTERNATIONAL_ISC_SINGLE-PIECE',
-                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_SINGLE-PIECE'
+                                'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_SINGLE-PIECE',
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['NONRECTANGULAR'],
@@ -1168,7 +1170,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                         'MEDIA_MAIL_MACHINABLE_5-DIGIT',
                                         'USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE',
                                         'PRIORITY_MAIL_MACHINABLE_SINGLE-PIECE',
-                                        'PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE'
+                                        'PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE',
                                     ],
                         ],
                         'from_us' => [
@@ -1183,12 +1185,12 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                                         'PRIORITY_MAIL_EXPRESS_INTERNATIONAL_ISC_SINGLE-PIECE',
                                     ],
                         ],
-                    ]
+                    ],
                 ],
             ],
             'size' => ['REGULAR' => __('Regular'), 'LARGE' => __('Large')],
             'machinable' => ['true' => __('Yes'), 'false' => __('No')],
-            'delivery_confirmation_types' => ['True' => __('Not Required'), 'False' => __('Required')]
+            'delivery_confirmation_types' => ['True' => __('Not Required'), 'False' => __('Required')],
         ];
 
         if (!isset($codes[$type])) {
@@ -2140,7 +2142,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
             $client->setParameterGet(
                 [
                     'API' => $api,
-                    'XML' => $requestXml
+                    'XML' => $requestXml,
                 ]
             );
             $response = $client->send()->getBody();
@@ -2269,7 +2271,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 'GIFT' => __('Gift'),
                 'DOCUMENTS' => __('Documents'),
                 'RETURN' => __('Return'),
-                'OTHER' => __('Other')
+                'OTHER' => __('Other'),
             ];
         }
 
@@ -2373,7 +2375,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
     {
         if (empty($packages)) {
             $dividedWeight = $this->getTotalNumOfBoxes($totalWeight);
-            for ($i=0; $i < $this->_numBoxes; $i++) {
+            for ($i = 0; $i < $this->_numBoxes; $i++) {
                 $packages[$i]['weight_pounds'] = floor($dividedWeight);
                 $ounces = ($dividedWeight - floor($dividedWeight)) * self::OUNCES_POUND;
                 $packages[$i]['weight_ounces'] = sprintf('%.' . self::$weightPrecision . 'f', $ounces);
@@ -2437,7 +2439,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
      * @param string|null $endpoint
      * @return string
      */
-    public function getUrl(?string $endpoint = null) : string
+    public function getUrl(?string $endpoint = null): string
     {
         $url = $this->getConfigFlag('mode')
             ? $this->getConfigData('gateway_rest_prod_url')

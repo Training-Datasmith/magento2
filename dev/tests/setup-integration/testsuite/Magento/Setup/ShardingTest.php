@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,9 +13,9 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\TestFramework\Deploy\CliCommand;
 use Magento\TestFramework\Deploy\DescribeTable;
 use Magento\TestFramework\Deploy\ShardingConfig;
+use Magento\TestFramework\Deploy\TestModuleManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\SetupTestCase;
-use Magento\TestFramework\Deploy\TestModuleManager;
 
 /**
  * The purpose of this test is verifying declarative installation works with different shard.
@@ -52,7 +54,7 @@ class ShardingTest extends SetupTestCase
 
     protected function setUp(): void
     {
-        $objectManager= Bootstrap::getObjectManager();
+        $objectManager = Bootstrap::getObjectManager();
         $this->cliCommand = $objectManager->get(CliCommand::class);
         $this->resourceConnection = $objectManager->get(ResourceConnection::class);
         $this->deploymentConfig = $objectManager->get(DeploymentConfig::class);

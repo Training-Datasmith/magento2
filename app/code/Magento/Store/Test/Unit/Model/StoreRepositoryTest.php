@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -182,11 +183,11 @@ class StoreRepositoryTest extends TestCase
             ->method('get')
             ->willReturn([
                 [
-                    'code' => 'some_code'
+                    'code' => 'some_code',
                 ],
                 [
-                    'code' => 'some_code_2'
-                ]
+                    'code' => 'some_code_2',
+                ],
             ]);
         $this->storeFactory
             ->method('create')

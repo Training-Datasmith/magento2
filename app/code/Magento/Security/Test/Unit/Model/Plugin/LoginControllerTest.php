@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class LoginControllerTest extends TestCase
             [
                 'messageManager' => $this->messageManagerMock,
                 'sessionsManager' => $this->adminSessionsManagerMock,
-                'securityCookie' => $this->securityCookieMock
+                'securityCookie' => $this->securityCookieMock,
             ]
         );
     }

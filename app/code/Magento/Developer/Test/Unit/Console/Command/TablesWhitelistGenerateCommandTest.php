@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -95,8 +96,8 @@ class TablesWhitelistGenerateCommandTest extends TestCase
             ],
             [
                 'Module_Name',
-                Cli::RETURN_SUCCESS
-            ]
+                Cli::RETURN_SUCCESS,
+            ],
         ];
     }
 
@@ -112,26 +113,26 @@ class TablesWhitelistGenerateCommandTest extends TestCase
                 'all',
                 Cli::RETURN_FAILURE,
                 new ConfigException(__('Configuration Exception Message')),
-                self::CONFIG_EXCEPTION_MESSAGE
+                self::CONFIG_EXCEPTION_MESSAGE,
             ],
             [
                 'Module_Name',
                 Cli::RETURN_FAILURE,
                 new ConfigException(__('Configuration Exception Message')),
-                self::CONFIG_EXCEPTION_MESSAGE
+                self::CONFIG_EXCEPTION_MESSAGE,
             ],
             [
                 'all',
                 Cli::RETURN_FAILURE,
                 new \Exception(self::EXCEPTION_MESSAGE),
-                self::EXCEPTION_MESSAGE
+                self::EXCEPTION_MESSAGE,
             ],
             [
                 'Module_Name',
                 Cli::RETURN_FAILURE,
                 new \Exception(self::EXCEPTION_MESSAGE),
-                self::EXCEPTION_MESSAGE
-            ]
+                self::EXCEPTION_MESSAGE,
+            ],
         ];
     }
 

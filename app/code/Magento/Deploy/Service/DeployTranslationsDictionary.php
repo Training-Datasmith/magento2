@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
 use Magento\Framework\App\State;
@@ -68,7 +71,7 @@ class DeployTranslationsDictionary
                         'fileName' => $this->jsTranslationConfig->getDictionaryFileName(),
                         'area' => $area,
                         'theme' => $theme,
-                        'locale' => $locale
+                        'locale' => $locale,
                     ]
                 );
             });

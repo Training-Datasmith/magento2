@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class NotAvailableMessageTest extends GraphQlAbstract
     }
 
     #[
-        ConfigFixture('cataloginventory/options/enable_inventory_check', false, "store", "default"),
-        ConfigFixture('cataloginventory/options/not_available_message', true, "store", "default"),
+        ConfigFixture('cataloginventory/options/enable_inventory_check', false, 'store', 'default'),
+        ConfigFixture('cataloginventory/options/not_available_message', true, 'store', 'default'),
         DataFixture(ProductFixture::class, as: 'product'),
         DataFixture(GuestCart::class, as: 'cart'),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask'),
@@ -40,7 +41,7 @@ class NotAvailableMessageTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         )
     ]
@@ -50,8 +51,8 @@ class NotAvailableMessageTest extends GraphQlAbstract
     }
 
     #[
-        ConfigFixture('cataloginventory/options/enable_inventory_check', true, "store", "default"),
-        ConfigFixture('cataloginventory/options/not_available_message', true, "store", "default"),
+        ConfigFixture('cataloginventory/options/enable_inventory_check', true, 'store', 'default'),
+        ConfigFixture('cataloginventory/options/not_available_message', true, 'store', 'default'),
         DataFixture(ProductFixture::class, as: 'product'),
         DataFixture(GuestCart::class, as: 'cart'),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask'),
@@ -60,7 +61,7 @@ class NotAvailableMessageTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         )
     ]
@@ -78,10 +79,10 @@ class NotAvailableMessageTest extends GraphQlAbstract
                         'items' => [
                             [
                                 'not_available_message' => null,
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())

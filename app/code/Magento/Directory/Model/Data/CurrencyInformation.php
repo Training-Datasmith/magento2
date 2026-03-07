@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\Data;
 
 /**
@@ -13,12 +16,12 @@ namespace Magento\Directory\Model\Data;
 class CurrencyInformation extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\Directory\Api\Data\CurrencyInformationInterface
 {
-    const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
-    const KEY_BASE_CURRENCY_SYMBOL = 'base_currency_symbol';
-    const KEY_DEFAULT_DISPLAY_CURRENCY_CODE = 'default_display_currency_code';
-    const KEY_DEFAULT_DISPLAY_CURRENCY_SYMBOL = 'default_display_currency_symbol';
-    const KEY_AVAILABLE_CURRENCY_CODES = 'available_currency_codes';
-    const KEY_EXCHANGE_RATES = 'exchange_rates';
+    public const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
+    public const KEY_BASE_CURRENCY_SYMBOL = 'base_currency_symbol';
+    public const KEY_DEFAULT_DISPLAY_CURRENCY_CODE = 'default_display_currency_code';
+    public const KEY_DEFAULT_DISPLAY_CURRENCY_SYMBOL = 'default_display_currency_symbol';
+    public const KEY_AVAILABLE_CURRENCY_CODES = 'available_currency_codes';
+    public const KEY_EXCHANGE_RATES = 'exchange_rates';
 
     /**
      * @inheritDoc

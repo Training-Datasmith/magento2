@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class IntegerDefinition implements DefinitionConverterInterface
         'smallint' => 6,
         'mediumint' => 8,
         'int' => 11,
-        'bigint' => 20
+        'bigint' => 20,
     ];
 
     /**
@@ -68,7 +70,7 @@ class IntegerDefinition implements DefinitionConverterInterface
             'identity' => $definition['identity'] ?? false,
             'default' => isset($definition['default']) && $definition['default'] !== false ?
                 (int) $definition['default'] : null,
-            'primary' => $definition['primary'] ?? false
+            'primary' => $definition['primary'] ?? false,
         ];
     }
 }

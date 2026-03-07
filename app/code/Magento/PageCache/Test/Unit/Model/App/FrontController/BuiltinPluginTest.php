@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Framework\App\State;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\PageCache\Model\App\FrontController\BuiltinPlugin;
 use Magento\PageCache\Model\Config;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class BuiltinPluginTest extends TestCase
@@ -292,7 +293,7 @@ class BuiltinPluginTest extends TestCase
     {
         return [
             'developer_mode' => [State::MODE_DEVELOPER],
-            'production' => [State::MODE_PRODUCTION]
+            'production' => [State::MODE_PRODUCTION],
         ];
     }
 }

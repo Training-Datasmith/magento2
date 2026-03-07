@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver;
 
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
-use Magento\Paypal\Model\Payflow\Service\Request\SecureToken;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\PaypalGraphQl\Model\Resolver\Store\Url;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Framework\Validation\ValidationException;
+use Magento\Paypal\Model\Payflow\Service\Request\SecureToken;
+use Magento\PaypalGraphQl\Model\Resolver\Store\Url;
+use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
+use Magento\Store\Api\Data\StoreInterface;
 
 /**
  * Resolver for generating PayflowProToken
@@ -86,11 +87,11 @@ class PayflowProToken implements ResolverInterface
         }
 
         return [
-            'result'=> $tokenDataObject->getData("result"),
-            'secure_token' => $tokenDataObject->getData("securetoken"),
-            'secure_token_id' => $tokenDataObject->getData("securetokenid"),
-            'response_message' => $tokenDataObject->getData("respmsg"),
-            'result_code' =>$tokenDataObject->getData("result_code")
+            'result' => $tokenDataObject->getData('result'),
+            'secure_token' => $tokenDataObject->getData('securetoken'),
+            'secure_token_id' => $tokenDataObject->getData('securetokenid'),
+            'response_message' => $tokenDataObject->getData('respmsg'),
+            'result_code' => $tokenDataObject->getData('result_code'),
         ];
     }
 

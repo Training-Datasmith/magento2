@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -46,13 +47,13 @@ class UpdateEntityRowTest extends TestCase
         $linkField = 'test_table_2';
         $describeTable = [
             [
-                'DEFAULT' => 'CURRENT_TIMESTAMP'
+                'DEFAULT' => 'CURRENT_TIMESTAMP',
             ],
             [
                 'DEFAULT' => 'NOT_CURRENT_TIMESTAMP',
                 'IDENTITY' => false,
-                'COLUMN_NAME' => 'test_column_name'
-            ]
+                'COLUMN_NAME' => 'test_column_name',
+            ],
         ];
         $data = [$linkField => $linkField, 'test_column_name' => 'test_column_name'];
         $output['test_column_name'] = 'test_column_name';

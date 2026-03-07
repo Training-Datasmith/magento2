@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Search\Model\SearchEngine\Validator;
 use Magento\Search\Setup\CompositeInstallConfig;
 use Magento\Setup\Model\SearchConfig;
 use Magento\Setup\Model\SearchConfigOptionsList;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SearchConfigTest extends TestCase
@@ -54,7 +55,7 @@ class SearchConfigTest extends TestCase
             [
                 'searchConfigOptionsList' => $this->searchConfigOptionsList,
                 'searchValidator' => $this->searchEngineValidatorMock,
-                'installConfig' => $this->installConfigMock
+                'installConfig' => $this->installConfigMock,
             ]
         );
     }
@@ -157,8 +158,8 @@ class SearchConfigTest extends TestCase
                     'elasticsearch-enable-auth' => false,
                     'elasticsearch-index-prefix' => 'magento2',
                     'elasticsearch-timeout' => 15,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

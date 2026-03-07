@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Test\Unit\Console\Command;
 
+use Magento\EncryptionKey\Console\Command\ListReEncryptorsCommand;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList;
-use Magento\EncryptionKey\Console\Command\ListReEncryptorsCommand;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor;
 
 /**
  * Test for the 'encryption:data:list-re-encryptors' CLI command.
@@ -43,8 +44,8 @@ class ListReEncryptorsCommandTest extends TestCase
             ->method('getReEncryptors')
             ->willReturn(
                 [
-                    "test_one" => $reEncryptorOneMock,
-                    "test_two" => $reEncryptorTwoMock
+                    'test_one' => $reEncryptorOneMock,
+                    'test_two' => $reEncryptorTwoMock,
                 ]
             );
 
@@ -63,9 +64,9 @@ class ListReEncryptorsCommandTest extends TestCase
         $this->assertEquals(
             sprintf(
                 "%-40s %s\n%-40s %s\n",
-                "test_one",
+                'test_one',
                 "Re-encrypts 'test' column in the 'test_one' DB table.",
-                "test_two",
+                'test_two',
                 "Re-encrypts 'test' column in the 'test_two' DB table."
             ),
             $this->commandTester->getDisplay()

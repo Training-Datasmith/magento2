@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Model\ResourceModel\CustomerRepository;
 use Magento\Backend\App\ConfigInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Encryption\EncryptorInterface as Encryptor;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;

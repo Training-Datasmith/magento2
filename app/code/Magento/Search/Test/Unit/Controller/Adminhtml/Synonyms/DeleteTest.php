@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class DeleteTest extends TestCase
             Delete::class,
             [
                 'context' => $this->contextMock,
-                'synGroupRepository' => $this->repository
+                'synGroupRepository' => $this->repository,
             ]
         );
     }

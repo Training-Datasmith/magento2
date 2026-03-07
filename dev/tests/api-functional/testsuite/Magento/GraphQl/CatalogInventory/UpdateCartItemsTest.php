@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class UpdateCartItemsTest extends GraphQlAbstract
 
         $responseError = $response['updateCartItems']['errors'][0];
         $this->assertEquals(
-            "Could not update the product with SKU simple_product: The fewest you may purchase is 1.",
+            'Could not update the product with SKU simple_product: The fewest you may purchase is 1.',
             $responseError['message']
         );
         $this->assertEquals('INVALID_PARAMETER_VALUE', $responseError['code']);
@@ -79,7 +80,7 @@ class UpdateCartItemsTest extends GraphQlAbstract
 
         $responseError = $response['updateCartItems']['errors'][0];
         $this->assertEquals(
-            "Could not update the product with SKU simple_product: Not enough items for sale",
+            'Could not update the product with SKU simple_product: Not enough items for sale',
             $responseError['message']
         );
         $this->assertEquals('INSUFFICIENT_STOCK', $responseError['code']);

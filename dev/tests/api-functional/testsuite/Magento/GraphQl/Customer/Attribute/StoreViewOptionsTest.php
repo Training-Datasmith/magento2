@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -30,19 +31,19 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'frontend_labels' => [
                 [
                     'store_id' => 0,
-                    'label' => 'height'
+                    'label' => 'height',
                 ],
                 [
                     'store_id' => '$store_1.id$',
-                    'label' => 'hair'
+                    'label' => 'hair',
                 ],
                 [
                     'store_id' => '$store_2.id$',
-                    'label' => 'eyes'
+                    'label' => 'eyes',
                 ],
             ],
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-            'frontend_input' => 'select'
+            'frontend_input' => 'select',
         ],
         'attribute'
     ),
@@ -55,16 +56,16 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'store_labels' => [
                 [
                     'store_id' => 0,
-                    'label' => 'tall'
+                    'label' => 'tall',
                 ],
                 [
                     'store_id' => '$store_1.id$',
-                    'label' => 'red'
+                    'label' => 'red',
                 ],
                 [
                     'store_id' => '$store_2.id$',
-                    'label' => 'green'
-                ]
+                    'label' => 'green',
+                ],
             ],
         ],
         'option1'
@@ -78,16 +79,16 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'store_labels' => [
                 [
                     'store_id' => 0,
-                    'label' => 'short'
+                    'label' => 'short',
                 ],
                 [
                     'store_id' => '$store_1.id$',
-                    'label' => 'brown'
+                    'label' => 'brown',
                 ],
                 [
                     'store_id' => '$store_2.id$',
-                    'label' => 'blue'
-                ]
+                    'label' => 'blue',
+                ],
             ],
         ],
         'option2'
@@ -143,16 +144,16 @@ QRY;
                             'is_unique' => false,
                             'options' => [
                                 [
-                                    'label' => $option1->getLabel()
+                                    'label' => $option1->getLabel(),
                                 ],
                                 [
-                                    'label' => $option2->getLabel()
+                                    'label' => $option2->getLabel(),
                                 ],
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $this->graphQlQuery(
                 sprintf(
@@ -189,16 +190,16 @@ QRY;
                             'is_unique' => false,
                             'options' => [
                                 [
-                                    'label' => 'red'
+                                    'label' => 'red',
                                 ],
                                 [
-                                    'label' => 'brown'
+                                    'label' => 'brown',
                                 ],
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $this->graphQlQuery(
                 sprintf(
@@ -226,16 +227,16 @@ QRY;
                             'is_unique' => false,
                             'options' => [
                                 [
-                                    'label' => 'green'
+                                    'label' => 'green',
                                 ],
                                 [
-                                    'label' => 'blue'
+                                    'label' => 'blue',
                                 ],
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $this->graphQlQuery(
                 sprintf(

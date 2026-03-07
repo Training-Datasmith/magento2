@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ foreach ($options as $option) {
             'use_config_manage_stock' => 1,
             'qty' => 100,
             'is_qty_decimal' => 0,
-            'is_in_stock' => StockStatusInterface::STATUS_OUT_OF_STOCK
+            'is_in_stock' => StockStatusInterface::STATUS_OUT_OF_STOCK,
         ]);
     $product = $productRepository->save($product);
 
@@ -100,6 +101,6 @@ $product->setTypeId(Configurable::TYPE_CODE)
     ->setStockData([
         'use_config_manage_stock' => 1,
         'qty' => 100,
-        'is_in_stock' => StockStatusInterface::STATUS_IN_STOCK
+        'is_in_stock' => StockStatusInterface::STATUS_IN_STOCK,
     ]);
 $productRepository->save($product);

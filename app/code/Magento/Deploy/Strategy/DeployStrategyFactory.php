@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Strategy;
 
 use Magento\Framework\Exception\InputException;
@@ -16,17 +19,17 @@ class DeployStrategyFactory
     /**
      * Standard deploy strategy
      */
-    const DEPLOY_STRATEGY_STANDARD = 'standard';
+    public const DEPLOY_STRATEGY_STANDARD = 'standard';
 
     /**
      * Quick deploy strategy
      */
-    const DEPLOY_STRATEGY_QUICK = 'quick';
+    public const DEPLOY_STRATEGY_QUICK = 'quick';
 
     /**
      * Standard deploy strategy
      */
-    const DEPLOY_STRATEGY_COMPACT = 'compact';
+    public const DEPLOY_STRATEGY_COMPACT = 'compact';
 
     /**
      * @var ObjectManagerInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Framework\Webapi\Test\Unit\Backpressure;
 
 use Magento\Framework\Webapi\Backpressure\BackpressureRequestTypeExtractorInterface;
+use Magento\Framework\Webapi\Backpressure\CompositeRequestTypeExtractor;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Webapi\Backpressure\CompositeRequestTypeExtractor;
 
 /**
  * Tests the CompositeRequestTypeExtractor class

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Asset;
 
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Asset\ContextInterface;
@@ -22,10 +24,9 @@ use Magento\Framework\View\Asset\Source;
 use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for Magento\Framework\View\Asset\Repository
@@ -146,7 +147,7 @@ class RepositoryTest extends TestCase
                 [
                     'themeModel' => $this->getThemeMock(),
                     'area' => 'area',
-                    'locale' => 'locale'
+                    'locale' => 'locale',
                 ]
             );
 
@@ -161,7 +162,7 @@ class RepositoryTest extends TestCase
                 'fileFactory' => $this->fileFactoryMock,
                 'fallbackContextFactory' => $this->fallbackFactoryMock,
                 'contextFactory' => $this->contextFactoryMock,
-                'remoteFactory' => $this->remoteFactoryMock
+                'remoteFactory' => $this->remoteFactoryMock,
             ]
         );
     }
@@ -254,10 +255,10 @@ class RepositoryTest extends TestCase
                 ['area' => 'AREA'],
                 [
                     'area' => 'AREA',
-                    'themeModel' => static fn(self $testCase) => $testCase->getThemeMock(),
+                    'themeModel' => static fn (self $testCase) => $testCase->getThemeMock(),
                     'module' => false,
-                    'locale' => 'locale'
-                ]
+                    'locale' => 'locale',
+                ],
             ],
             [
                 ['themeId' => 'ThemeID'],
@@ -266,9 +267,9 @@ class RepositoryTest extends TestCase
                     'themeId' => 'ThemeID',
                     'themeModel' => 'ThemeID',
                     'module' => false,
-                    'locale' => 'locale'
-                ]
-            ]
+                    'locale' => 'locale',
+                ],
+            ],
         ];
     }
 
@@ -294,7 +295,7 @@ class RepositoryTest extends TestCase
                     'baseUrl' => null,
                     'areaType' => 'area',
                     'themePath' => 'Default',
-                    'localeCode' => 'locale'
+                    'localeCode' => 'locale',
                 ]
             )
             ->willReturn($fallbackContextMock);
@@ -312,7 +313,7 @@ class RepositoryTest extends TestCase
                     'context' => $fallbackContextMock,
                     'filePath' => 'test/file.js',
                     'module' => 'Test',
-                    'contentType' => ''
+                    'contentType' => '',
                 ]
             )
             ->willReturn($assetMock);
@@ -336,7 +337,7 @@ class RepositoryTest extends TestCase
                 [
                     'themeModel' => $themeMock,
                     'area' => 'area',
-                    'locale' => 'locale'
+                    'locale' => 'locale',
                 ]
             );
         $this->themeProvider
@@ -359,7 +360,7 @@ class RepositoryTest extends TestCase
                     'baseUrl' => '',
                     'areaType' => 'area',
                     'themePath' => '',
-                    'localeCode' => 'locale'
+                    'localeCode' => 'locale',
                 ]
             )
             ->willReturn($fallbackContextMock);
@@ -400,7 +401,7 @@ class RepositoryTest extends TestCase
                     'context' => $originalContextMock,
                     'filePath' => $resultFilePath,
                     'module' => $module,
-                    'contentType' => ''
+                    'contentType' => '',
                 ]
             )
             ->willReturn($assetMock);
@@ -436,7 +437,7 @@ class RepositoryTest extends TestCase
                 [
                     'baseUrl' => '',
                     'baseDirType' => 'dirType',
-                    'contextPath' => 'dir/path'
+                    'contextPath' => 'dir/path',
                 ]
             )
             ->willReturn($contextMock);
@@ -454,7 +455,7 @@ class RepositoryTest extends TestCase
                     'context' => $contextMock,
                     'filePath' => 'test/file.js',
                     'module' => '',
-                    'contentType' => ''
+                    'contentType' => '',
                 ]
             )
             ->willReturn($assetMock);
@@ -478,7 +479,7 @@ class RepositoryTest extends TestCase
                 [
                     'themeModel' => $themeMock,
                     'area' => 'area',
-                    'locale' => 'locale'
+                    'locale' => 'locale',
                 ]
             );
 
@@ -499,7 +500,7 @@ class RepositoryTest extends TestCase
                     'context' => '',
                     'filePath' => 'test/file.js',
                     'module' => '',
-                    'contentType' => ''
+                    'contentType' => '',
                 ]
             )
             ->willReturn($assetMock);

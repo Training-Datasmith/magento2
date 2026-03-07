@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -14,9 +16,9 @@ use Magento\Backend\Model\UrlInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
+use Magento\Framework\Encryption\Helper\Security;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\View\Element\AbstractBlock;
-use Magento\Framework\Encryption\Helper\Security;
 
 /**
  * Generic backend controller
@@ -100,9 +102,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     protected $_formKeyValidator;
 
-    /**
-     * @param Context $context
-     */
     public function __construct(Context $context)
     {
         parent::__construct($context);
@@ -119,7 +118,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     /**
      * Dispatches the Action
      *
-     * @param RequestInterface $request
      * @return \Magento\Framework\App\ResponseInterface
      */
     public function dispatch(RequestInterface $request)
@@ -269,7 +267,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     /**
      * Adds block to `content` block
      *
-     * @param AbstractBlock $block
      * @return $this
      */
     protected function _addContent(AbstractBlock $block)
@@ -280,7 +277,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     /**
      * Moves Block to `left` container
      *
-     * @param AbstractBlock $block
      * @return $this
      */
     protected function _addLeft(AbstractBlock $block)
@@ -291,7 +287,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     /**
      * Adds Block to `js` container
      *
-     * @param AbstractBlock $block
      * @return $this
      */
     protected function _addJs(AbstractBlock $block)
@@ -302,11 +297,9 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
     /**
      * Set specified block as an anonymous child to specified container.
      *
-     * @param AbstractBlock $block
-     * @param string $containerName
      * @return $this
      */
-    private function _moveBlockToContainer(AbstractBlock $block, $containerName)
+    private function _moveBlockToContainer(AbstractBlock $block, string $containerName): static
     {
         $this->_view->getLayout()->setChild($containerName, $block->getNameInLayout(), '');
         return $this;
@@ -332,7 +325,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      */
     protected function _processLocaleSettings()
     {
-        $forceLocale = $this->getRequest()->getParam('locale', null);
+        $forceLocale = $this->getRequest()->getParam('locale');
         if ($this->_objectManager->get(\Magento\Framework\Validator\Locale::class)->isValid($forceLocale)) {
             $this->_getSession()->setSessionLocale($forceLocale);
         }
@@ -366,7 +359,6 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
      * @param string $action
      * @param string|null $controller
      * @param string|null $module
-     * @param array|null $params
      * @return void
      */
     protected function _forward($action, $controller = null, $module = null, ?array $params = null)
@@ -386,7 +378,7 @@ abstract class AbstractAction extends \Magento\Framework\App\Action\Action
             return true;
         }
 
-        $secretKey = $this->getRequest()->getParam(UrlInterface::SECRET_KEY_PARAM_NAME, null);
+        $secretKey = $this->getRequest()->getParam(UrlInterface::SECRET_KEY_PARAM_NAME);
         if (!$secretKey || !Security::compareStrings($secretKey, $this->_backendUrl->getSecretKey())) {
             return false;
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Module\Manager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AbstractElementTest extends TestCase
@@ -161,12 +162,12 @@ class AbstractElementTest extends TestCase
             ],
             [
                 ['showInDefault' => 0, 'showInStore' => 1, 'showInWebsite' => 0],
-                ScopeInterface::SCOPE_STORE
+                ScopeInterface::SCOPE_STORE,
             ],
             [
                 ['showInDefault' => 0, 'showInStore' => 0, 'showInWebsite' => 1],
-                ScopeInterface::SCOPE_WEBSITE
-            ]
+                ScopeInterface::SCOPE_WEBSITE,
+            ],
         ];
     }
 
@@ -193,12 +194,12 @@ class AbstractElementTest extends TestCase
             ],
             [
                 ['showInDefault' => 1, 'showInStore' => 0, 'showInWebsite' => 1],
-                ScopeInterface::SCOPE_STORE
+                ScopeInterface::SCOPE_STORE,
             ],
             [
                 ['showInDefault' => 1, 'showInStore' => 1, 'showInWebsite' => 0],
-                ScopeInterface::SCOPE_WEBSITE
-            ]
+                ScopeInterface::SCOPE_WEBSITE,
+            ],
         ];
     }
 

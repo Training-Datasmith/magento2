@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Controller\Adminhtml\Index;
 
 class MassDelete extends \Magento\Backup\Controller\Adminhtml\Index

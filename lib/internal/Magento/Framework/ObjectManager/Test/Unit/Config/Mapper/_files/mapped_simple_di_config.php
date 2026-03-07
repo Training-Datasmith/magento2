@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Framework\App\Cache;
 
@@ -39,5 +41,5 @@ return [
     'customOverriddenInstance' => [
         'shared' => false,
         'arguments' => [],
-    ]
+    ],
 ];

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\Code\Validator;
 use Magento\Framework\Code\ValidatorInterface;
-use \Magento\Framework\Code\Validator;
+use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {

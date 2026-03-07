@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\Stdlib\Cookie\SensitiveCookieMetadata;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test SensitiveCookieMetaData
@@ -239,9 +240,9 @@ class SensitiveCookieMetadataTest extends TestCase
     public static function getMethodData()
     {
         return [
-            "getDomain" => ["setDomain", 'getDomain', "example.com"],
-            "getPath" => ["setPath", 'getPath', "path"],
-            "getSameSite" => ["setSameSite", 'getSameSite', 'Lax']
+            'getDomain' => ['setDomain', 'getDomain', 'example.com'],
+            'getPath' => ['setPath', 'getPath', 'path'],
+            'getSameSite' => ['setSameSite', 'getSameSite', 'Lax'],
         ];
     }
 }

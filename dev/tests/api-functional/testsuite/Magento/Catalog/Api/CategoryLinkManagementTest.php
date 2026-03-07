@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CategoryLinkManagementTest extends WebapiAbstract
 {
-    const SERVICE_WRITE_NAME = 'catalogCategoryLinkManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH_SUFFIX = '/V1/categories';
-    const RESOURCE_PATH_PREFIX = 'products';
+    public const SERVICE_WRITE_NAME = 'catalogCategoryLinkManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH_SUFFIX = '/V1/categories';
+    public const RESOURCE_PATH_PREFIX = 'products';
 
     private $modelId = 333;
 

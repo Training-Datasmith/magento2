@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Config\Block\System\Config\Form;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
@@ -134,7 +136,7 @@ class Field extends \Magento\Backend\Block\Template implements
             ' />';
         $html .= /* @noEscape */ $this->secureRenderer->renderEventListenerAsTag(
             'onclick',
-            "toggleValueElements(this, Element.previous(this.parentNode))",
+            'toggleValueElements(this, Element.previous(this.parentNode))',
             'input#' . $htmlId . '_inherit'
         );
         $html .= '<label for="' . $htmlId . '_inherit" class="inherit">' . $this->_getInheritCheckboxLabel(
@@ -205,7 +207,7 @@ class Field extends \Magento\Backend\Block\Template implements
             $html .= '<div class="hint"><div id="hint_' . $element->getHtmlId() . '">' .
                 $element->getHint() . '</div></div>';
             $html .= /* @noEscape */ $this->secureRenderer->renderStyleAsTag(
-                "display: none;",
+                'display: none;',
                 'div#hint_' . $element->getHtmlId()
             );
         }

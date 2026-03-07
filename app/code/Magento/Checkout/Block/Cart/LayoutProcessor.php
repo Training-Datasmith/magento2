@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart;
 
 class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcessorInterface
@@ -89,28 +92,28 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
                 'visible' => $this->isCityActive(),
                 'formElement' => 'input',
                 'label' => __('City'),
-                'value' =>  null
+                'value' =>  null,
             ],
             'country_id' => [
                 'visible' => true,
                 'formElement' => 'select',
                 'label' => __('Country'),
                 'options' => [],
-                'value' => null
+                'value' => null,
             ],
             'region_id' => [
                 'visible' => true,
                 'formElement' => 'select',
                 'label' => __('State/Province'),
                 'options' => [],
-                'value' => null
+                'value' => null,
             ],
             'postcode' => [
                 'visible' => true,
                 'formElement' => 'input',
                 'label' => __('Zip/Postal Code'),
-                'value' => null
-            ]
+                'value' => null,
+            ],
         ];
 
         if (!isset($jsLayout['components']['checkoutProvider']['dictionaries'])) {

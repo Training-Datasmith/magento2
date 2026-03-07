@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Multishipping\Controller\Checkout;
 
-use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 
 class Billing extends \Magento\Multishipping\Controller\Checkout
 {

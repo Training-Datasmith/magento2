@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
@@ -19,7 +22,7 @@ abstract class Rating extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Review::ratings';
+    public const ADMIN_RESOURCE = 'Magento_Review::ratings';
 
     /**
      * Core registry

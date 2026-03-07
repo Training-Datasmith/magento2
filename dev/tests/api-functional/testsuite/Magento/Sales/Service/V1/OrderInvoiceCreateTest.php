@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 /**
@@ -10,8 +13,8 @@ namespace Magento\Sales\Service\V1;
  */
 class OrderInvoiceCreateTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_READ_NAME = 'salesInvoiceOrderV1';
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_READ_NAME = 'salesInvoiceOrderV1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -129,8 +132,8 @@ class OrderInvoiceCreateTest extends \Magento\TestFramework\TestCase\WebapiAbstr
             'items' => [
                 [
                     'order_item_id' => -1,
-                    'qty' => 1
-                ]
+                    'qty' => 1,
+                ],
             ],
             'comment' => [
                 'comment' => 'Test offline',
@@ -179,8 +182,8 @@ class OrderInvoiceCreateTest extends \Magento\TestFramework\TestCase\WebapiAbstr
             'items' => [
                 [
                     'order_item_id' => -1,
-                    'qty' => 1
-                ]
+                    'qty' => 1,
+                ],
             ],
             'comment' => [
                 'comment' => 'Test offline',

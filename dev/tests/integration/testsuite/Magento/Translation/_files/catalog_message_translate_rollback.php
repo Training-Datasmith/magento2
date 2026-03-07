@@ -10,4 +10,4 @@ declare(strict_types=1);
 $translateString = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
     \Magento\Translation\Model\ResourceModel\StringUtils::class
 );
-$translateString->deleteTranslate('currentPage value must be greater than 0.', "nl_NL", 0);
+$translateString->deleteTranslate('currentPage value must be greater than 0.', 'nl_NL', 0);

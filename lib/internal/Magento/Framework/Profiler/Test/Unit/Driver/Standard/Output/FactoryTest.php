@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,13 @@
  *
  * Test class for \Magento\Framework\Profiler\Driver\Standard\Output\Factory
  */
+
 namespace Magento\Framework\Profiler\Test\Unit\Driver\Standard\Output;
 
 use Magento\Framework\Profiler\Driver\Standard\Output\Factory;
 use Magento\Framework\Profiler\Driver\Standard\OutputInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
 {
@@ -82,17 +85,17 @@ class FactoryTest extends TestCase
         return [
             'Prefix and concrete type' => [
                 ['type' => 'test'],
-                static fn(self $testCase) => $testCase->getOutputClassTestMock()
+                static fn (self $testCase) => $testCase->getOutputClassTestMock(),
             ],
             'Prefix and default type' => [
                 [],
-                static fn(self $testCase) => $testCase->getOutputClassDefaultMock()
+                static fn (self $testCase) => $testCase->getOutputClassDefaultMock(),
             ],
             'Concrete class' => [
                 ['type' => 'Magento_Framework_Profiler_Driver_Standard_Output_Test_Test_Foo'],
-                static fn(self $testCase) => $testCase->getOutputClassTestMock(
+                static fn (self $testCase) => $testCase->getOutputClassTestMock(
                     'Magento_Framework_Profiler_Driver_Standard_Output_Test_Test_Foo'
-                )
+                ),
             ],
         ];
     }

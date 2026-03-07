@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -124,7 +126,7 @@ class XmlCatalogGenerateCommandTest extends TestCase
         $commandTester->execute(
             [
                 '--' . XmlCatalogGenerateCommand::IDE_OPTION => 'vscode',
-                XmlCatalogGenerateCommand::IDE_FILE_PATH_ARGUMENT => 'test'
+                XmlCatalogGenerateCommand::IDE_FILE_PATH_ARGUMENT => 'test',
             ]
         );
         $this->assertEquals('', $commandTester->getDisplay());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class FactoryTest extends TestCase
                 [
                     Sample::class,
                     null,
-                    $this->ioGenerator
+                    $this->ioGenerator,
                 ]
             )
             ->getMock();

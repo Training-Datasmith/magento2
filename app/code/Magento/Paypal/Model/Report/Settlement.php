@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Paypal\Model\Report;
 
 use DateTime;
-use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\DirectoryList;
 
 /**
@@ -31,27 +32,27 @@ class Settlement extends \Magento\Framework\Model\AbstractModel
     /**
      * Default PayPal SFTP host
      */
-    const REPORTS_HOSTNAME = "reports.paypal.com";
+    public const REPORTS_HOSTNAME = 'reports.paypal.com';
 
     /**
      * Default PayPal SFTP host for sandbox mode
      */
-    const SANDBOX_REPORTS_HOSTNAME = "reports.sandbox.paypal.com";
+    public const SANDBOX_REPORTS_HOSTNAME = 'reports.sandbox.paypal.com';
 
     /**
      * PayPal SFTP path
      */
-    const REPORTS_PATH = "/ppreports/outgoing";
+    public const REPORTS_PATH = '/ppreports/outgoing';
 
     /**
      * Original charset of old report files
      */
-    const FILES_IN_CHARSET = "UTF-16";
+    public const FILES_IN_CHARSET = 'UTF-16';
 
     /**
      * Target charset of report files to be parsed
      */
-    const FILES_OUT_CHARSET = "UTF-8";
+    public const FILES_OUT_CHARSET = 'UTF-8';
 
     /**
      * Reports rows storage

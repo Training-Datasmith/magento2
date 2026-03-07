@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -13,16 +15,16 @@ use Magento\Customer\Model\Config\Share;
 use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
 use Magento\Customer\Model\ResourceModel\Customer as ResourceCustomer;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\EmailNotConfirmedException;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;
+use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\StateInterface;
+use Magento\Framework\Math\Random;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Math\Random;
-use Magento\Framework\Indexer\IndexerInterface;
 
 /**
  * Customer model
@@ -316,7 +318,7 @@ class Customer extends \Magento\Framework\Model\AbstractModel implements ResetAf
      *
      * @return IndexerInterface
      */
-    private function getIndexer() : IndexerInterface
+    private function getIndexer(): IndexerInterface
     {
         if ($this->indexer === null) {
             $this->indexer = $this->indexerRegistry->get(self::CUSTOMER_GRID_INDEXER_ID);
@@ -1220,7 +1222,7 @@ class Customer extends \Magento\Framework\Model\AbstractModel implements ResetAf
         /* If an email was used to start the registration process and it is the same email as the one
            used to register, then this can skip confirmation.
            */
-        $skipConfirmationIfEmail = $this->_registry->registry("skip_confirmation_if_email");
+        $skipConfirmationIfEmail = $this->_registry->registry('skip_confirmation_if_email');
         if (!$skipConfirmationIfEmail) {
             return false;
         }

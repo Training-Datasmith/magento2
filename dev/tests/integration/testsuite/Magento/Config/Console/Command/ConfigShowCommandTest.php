@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -22,8 +24,8 @@ use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
@@ -211,7 +213,7 @@ class ConfigShowCommandTest extends TestCase
                         'carriers/fedex/account - ******',
                         'paypal/fetch_reports/ftp_password - ******',
                     ],
-                ]
+                ],
             ],
             [
                 ScopeInterface::SCOPE_WEBSITES,
@@ -242,7 +244,7 @@ class ConfigShowCommandTest extends TestCase
                         'web/test2/test_value_3 - value3.config.website_base.test',
                         'web/test2/test_value_4 - value4.env.website_base.test',
                     ],
-                ]
+                ],
             ],
             [
                 ScopeInterface::SCOPE_STORES,
@@ -273,7 +275,7 @@ class ConfigShowCommandTest extends TestCase
                         'web/test2/test_value_3 - value3.config.store_default.test',
                         'web/test2/test_value_4 - value4.env.store_default.test',
                     ],
-                ]
+                ],
             ],
             [
                 null,
@@ -281,9 +283,9 @@ class ConfigShowCommandTest extends TestCase
                 Cli::RETURN_FAILURE,
                 [
                     'web/test/test_wrong_value' => [
-                        'The "web/test/test_wrong_value" path doesn\'t exist. Verify and try again.'
+                        'The "web/test/test_wrong_value" path doesn\'t exist. Verify and try again.',
                     ],
-                ]
+                ],
             ],
             [
                 'default',
@@ -291,9 +293,9 @@ class ConfigShowCommandTest extends TestCase
                 Cli::RETURN_FAILURE,
                 [
                     'web/test/test_wrong_value' => [
-                        'The "web/test/test_wrong_value" path doesn\'t exist. Verify and try again.'
+                        'The "web/test/test_wrong_value" path doesn\'t exist. Verify and try again.',
                     ],
-                ]
+                ],
             ],
             [
                 'default',
@@ -301,9 +303,9 @@ class ConfigShowCommandTest extends TestCase
                 Cli::RETURN_FAILURE,
                 [
                     'web/test/test_wrong_value' => [
-                        'The "default" scope can\'t include a scope code. Try again without entering a scope code.'
+                        'The "default" scope can\'t include a scope code. Try again without entering a scope code.',
                     ],
-                ]
+                ],
             ],
             [
                 'some_scope',
@@ -311,9 +313,9 @@ class ConfigShowCommandTest extends TestCase
                 Cli::RETURN_FAILURE,
                 [
                     'web/test/test_wrong_value' => [
-                        'The "some_scope" value doesn\'t exist. Enter another value and try again.'
+                        'The "some_scope" value doesn\'t exist. Enter another value and try again.',
                     ],
-                ]
+                ],
             ],
             [
                 'websites',
@@ -321,9 +323,9 @@ class ConfigShowCommandTest extends TestCase
                 Cli::RETURN_FAILURE,
                 [
                     'web/test/test_wrong_value' => [
-                        'The "scope_code" value doesn\'t exist. Enter another value and try again.'
+                        'The "scope_code" value doesn\'t exist. Enter another value and try again.',
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -360,65 +362,65 @@ class ConfigShowCommandTest extends TestCase
                 null,
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['env.default.test']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['env.default.test'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_STORES,
                 'default',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_default.test']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_default.test'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_WEBSITES,
                 'SecondWebsite',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['env.website_secondwebsite.test']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['env.website_secondwebsite.test'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_STORES,
                 'SecondStore',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_secondstore.test']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_secondstore.test'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_WEBSITES,
                 'THIRD_WEBSITE',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['local_config.website_third_website.tes']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['local_config.website_third_website.tes'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_STORES,
                 'THIRD_STORE',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['env.store_third_store.tes']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['env.store_third_store.tes'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_WEBSITES,
                 'fourthWebsite',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['local_config.website_fourthwebsite.test']
-                ]
+                    'camelCase/UPPERCASE/snake_case' => ['local_config.website_fourthwebsite.test'],
+                ],
             ],
             [
                 ScopeInterface::SCOPE_STORES,
                 'fourthStore',
                 Cli::RETURN_SUCCESS,
                 [
-                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_fourthstore.test']
-                ]
-            ]
+                    'camelCase/UPPERCASE/snake_case' => ['local_config.store_fourthstore.test'],
+                ],
+            ],
         ];
     }
 
@@ -451,7 +453,7 @@ class ConfigShowCommandTest extends TestCase
     {
         foreach ($configs as $inputPath => $configValue) {
             $arguments = [
-                ConfigShowCommand::INPUT_ARGUMENT_PATH => $inputPath
+                ConfigShowCommand::INPUT_ARGUMENT_PATH => $inputPath,
             ];
 
             if ($scope !== null) {

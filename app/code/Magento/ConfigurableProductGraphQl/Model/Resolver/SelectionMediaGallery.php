@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class SelectionMediaGallery implements ResolverInterface
      * @param string $initialIndex
      * @return string
      */
-    private function prepareIndex(array $entryData, string $initialIndex) : string
+    private function prepareIndex(array $entryData, string $initialIndex): string
     {
         $index = $initialIndex;
         if (isset($entryData['media_type'])) {

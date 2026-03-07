@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -22,23 +23,12 @@ class Config
     public const PATH_PREFIX = 'remote_storage/prefix';
     public const PATH_PATH_STYLE = 'remote_storage/path_style';
 
-    /**
-     * @var DeploymentConfig
-     */
-    private $config;
-
-    /**
-     * @param DeploymentConfig $config
-     */
-    public function __construct(DeploymentConfig $config)
+    public function __construct(private readonly DeploymentConfig $config)
     {
-        $this->config = $config;
     }
 
     /**
      * Retrieves endpoint.
-     *
-     * @return string
      */
     public function getEndpoint(): string
     {
@@ -47,8 +37,6 @@ class Config
 
     /**
      * Retrieves region.
-     *
-     * @return string
      */
     public function getRegion(): string
     {
@@ -57,8 +45,6 @@ class Config
 
     /**
      * Retrieves bucket.
-     *
-     * @return string
      */
     public function getBucket(): string
     {
@@ -67,8 +53,6 @@ class Config
 
     /**
      * Retrieves access key.
-     *
-     * @return string
      */
     public function getAccessKey(): string
     {
@@ -77,8 +61,6 @@ class Config
 
     /**
      * Retrieves secret key.
-     *
-     * @return string
      */
     public function getSecretKey(): string
     {
@@ -87,8 +69,6 @@ class Config
 
     /**
      * Retrieves prefix.
-     *
-     * @return string
      */
     public function getPrefix(): string
     {
@@ -97,8 +77,6 @@ class Config
 
     /**
      * Retrieves endpoint.
-     *
-     * @return string
      */
     public function getPathStyle(): string
     {

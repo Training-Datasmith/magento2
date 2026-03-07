@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
 
 declare(strict_types=1);
+
 namespace Magento\Stomp\Model;
 
 use Magento\AsynchronousOperations\Model\ConfigInterface as AsyncConfig;
@@ -102,15 +104,15 @@ class MassPublisher implements PublisherInterface
                         'topic_name' => $topicName,
                         'persistent' => 'true',
                         'message_id' => $this->messageIdGenerator->generate($topicName),
-                        'destination-type' => 'ANYCAST'
-                    ]
+                        'destination-type' => 'ANYCAST',
+                    ],
                 ]
             );
         }
 
         $publisher = $this->publisherConfig->getPublisher($topicName);
         $connectionName = $publisher->getConnection()->getName();
-        $queueName = $publisher->getQueue() ? $publisher->getQueue(): $topicName;
+        $queueName = $publisher->getQueue() ? $publisher->getQueue() : $topicName;
         $queue = $this->queueRepository->get($connectionName, $queueName);
         $bulkQueue = $this->bulkQueueRepository->get($connectionName, $queueName);
         $bulkQueue->push($queue, $topicName, $envelopes);

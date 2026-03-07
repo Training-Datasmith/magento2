@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -71,14 +72,14 @@ class DbSchemaReader implements DbSchemaReaderInterface
                 [
                     'engine' => 'ENGINE',
                     'comment' => 'TABLE_COMMENT',
-                    'collation' => 'TABLE_COLLATION'
+                    'collation' => 'TABLE_COLLATION',
                 ]
             )
             ->joinInner(
                 ['charset_applicability' => 'information_schema.COLLATION_CHARACTER_SET_APPLICABILITY'],
                 'i_tables.table_collation = '.$collationNameColumn,
                 [
-                    'charset' => 'charset_applicability.CHARACTER_SET_NAME'
+                    'charset' => 'charset_applicability.CHARACTER_SET_NAME',
                 ]
             )
             ->where('TABLE_SCHEMA = ?', $dbName)
@@ -111,7 +112,7 @@ class DbSchemaReader implements DbSchemaReaderInterface
                     'extra' => 'EXTRA',
                     'comment' => new Expression('IF(COLUMN_COMMENT="", NULL, COLUMN_COMMENT)'),
                     'charset' => 'CHARACTER_SET_NAME',
-                    'collation' => 'COLLATION_NAME'
+                    'collation' => 'COLLATION_NAME',
                 ]
             )
             ->where('TABLE_SCHEMA = ?', $dbName)

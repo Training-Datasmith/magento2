@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Attribute\Backend;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -286,7 +289,7 @@ class PriceTest extends \PHPUnit\Framework\TestCase
         $rate = $this->objectManager->create(\Magento\Directory\Model\ResourceModel\Currency::class);
         $rate->saveRates([
             'USD' => ['EUR' => 2],
-            'EUR' => ['USD' => 0.5]
+            'EUR' => ['USD' => 0.5],
         ]);
 
         $globalStoreId = $store->load('admin')->getId();
@@ -412,7 +415,7 @@ class PriceTest extends \PHPUnit\Framework\TestCase
                     $connection->getTableName('catalog_product_index_eav_decimal'),
                     [
                         'store_id',
-                        'value'
+                        'value',
                     ]
                 )
                 ->where(
@@ -450,9 +453,9 @@ class PriceTest extends \PHPUnit\Framework\TestCase
                     ],
                     'attr3' => [
                         'store3' => 15,
-                    ]
+                    ],
                 ],
-                'expectedValues' =>[
+                'expectedValues' => [
                     'attr1' => [
                         'admin' => 9,
                         'default' => 9,
@@ -470,7 +473,7 @@ class PriceTest extends \PHPUnit\Framework\TestCase
                         'default' => null,
                         'store2' => 15,
                         'store3' => 15,
-                    ]
+                    ],
                 ],
                 'expectedIndexValues' => [
                     'attr1' => [
@@ -486,9 +489,9 @@ class PriceTest extends \PHPUnit\Framework\TestCase
                     'attr3' => [
                         'store2' => 15,
                         'store3' => 15,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

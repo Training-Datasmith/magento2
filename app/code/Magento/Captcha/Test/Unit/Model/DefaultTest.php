@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,10 +16,9 @@ use Magento\Captcha\Model\ResourceModel\Log;
 use Magento\Captcha\Model\ResourceModel\LogFactory;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Math\Random;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Session\SessionStartChecker;
 use Magento\Framework\Session\Storage;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\Session\SessionStartChecker;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -55,7 +55,7 @@ class DefaultTest extends TestCase
         'always_for' => [
             'user_create' => '1',
             'user_forgotpassword' => '1',
-            'contact_us' => '1'
+            'contact_us' => '1',
         ],
     ];
 
@@ -223,8 +223,8 @@ class DefaultTest extends TestCase
             'user_create_word' => [
                 'data' => 'AbCdEf5',
                 'words' => 'AbCdEf5',
-                'expires' => time() + self::EXPIRE_FRAME
-            ]
+                'expires' => time() + self::EXPIRE_FRAME,
+            ],
         ];
         $this->_object->getSession()->setData($sessionData);
         self::$_defaultConfig['case_sensitive'] = '0';
@@ -281,8 +281,8 @@ class DefaultTest extends TestCase
         $objects = [
             [
                 SessionStartChecker::class,
-                $this->createMock(SessionStartChecker::class)
-            ]
+                $this->createMock(SessionStartChecker::class),
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
         $sessionArgs = $this->objectManagerHelper->getConstructArguments(
@@ -300,8 +300,8 @@ class DefaultTest extends TestCase
                 'user_create_word' => [
                     'data' => 'AbCdEf5',
                     'words' => 'AbCdEf5',
-                    'expires' => time() + self::EXPIRE_FRAME
-                ]
+                    'expires' => time() + self::EXPIRE_FRAME,
+                ],
             ]
         );
         return $session;
@@ -417,7 +417,7 @@ class DefaultTest extends TestCase
         return [
             [true, 'contact_us'],
             [false, 'user_create'],
-            [false, 'user_forgotpassword']
+            [false, 'user_forgotpassword'],
         ];
     }
 
@@ -450,7 +450,7 @@ class DefaultTest extends TestCase
         return [
             ['ABC123'],
             ['1234567890'],
-            ['The quick brown fox jumps over the lazy dog.']
+            ['The quick brown fox jumps over the lazy dog.'],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\OfflinePayments\Model\Checkmo;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
 use Magento\Sales\Api\Data\OrderItemInterface;
+use Magento\Sales\Api\Data\OrderItemInterfaceFactory;
 use Magento\Sales\Api\Data\OrderPaymentInterfaceFactory;
 use Magento\Sales\Api\InvoiceManagementInterface;
-use Magento\Sales\Api\Data\OrderItemInterfaceFactory;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;

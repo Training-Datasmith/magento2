@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -75,8 +76,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
             'data' => [
                 'error' => 'phpVersionError',
-                'message' => 'Cannot determine required PHP version: '
-            ]
+                'message' => 'Cannot determine required PHP version: ',
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpVersion());
     }
@@ -100,8 +101,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_SUCCESS,
             'data' => [
                 'required' => 1.0,
-                'current' => PHP_VERSION
-            ]
+                'current' => PHP_VERSION,
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpVersion());
     }
@@ -125,8 +126,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
             'data' => [
                 'required' => 1.0,
-                'current' => PHP_VERSION
-            ]
+                'current' => PHP_VERSION,
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpVersion());
     }
@@ -159,8 +160,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_SUCCESS,
             'data' => [
                 'required' => 1.0,
-                'current' => PHP_VERSION
-            ]
+                'current' => PHP_VERSION,
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpVersion());
     }
@@ -184,8 +185,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
             'data' => [
                 'required' => 1.0,
-                'current' => PHP_VERSION
-            ]
+                'current' => PHP_VERSION,
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpVersion());
     }
@@ -210,14 +211,14 @@ class PhpReadinessCheckTest extends TestCase
             'data' => [
                 'xdebug_max_nesting_level' => [
                     'message' => $xdebugMessage,
-                    'error' => false
+                    'error' => false,
                 ],
                 'missed_function_imagecreatefromjpeg' => [
                     'message' => 'You must have installed GD library with --with-jpeg-dir=DIR option.',
                     'helpUrl' => 'http://php.net/manual/en/image.installation.php',
-                    'error' => false
-                ]
-            ]
+                    'error' => false,
+                ],
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpSettings());
     }
@@ -242,14 +243,14 @@ class PhpReadinessCheckTest extends TestCase
             'data' => [
                 'xdebug_max_nesting_level' => [
                     'message' => $xdebugMessage,
-                    'error' => true
+                    'error' => true,
                 ],
                 'missed_function_imagecreatefromjpeg' => [
                     'message' => 'You must have installed GD library with --with-jpeg-dir=DIR option.',
                     'helpUrl' => 'http://php.net/manual/en/image.installation.php',
-                    'error' => false
-                ]
-            ]
+                    'error' => false,
+                ],
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpSettings());
     }
@@ -263,13 +264,13 @@ class PhpReadinessCheckTest extends TestCase
 
         $expected = [
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_SUCCESS,
-            'data' => []
+            'data' => [],
         ];
 
         $expected['data']['missed_function_imagecreatefromjpeg'] = [
             'message' => 'You must have installed GD library with --with-jpeg-dir=DIR option.',
             'helpUrl' => 'http://php.net/manual/en/image.installation.php',
-            'error' => false
+            'error' => false,
         ];
 
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpSettings());
@@ -284,7 +285,7 @@ class PhpReadinessCheckTest extends TestCase
             [
                 ['512M', 512],
                 ['756M', 756],
-                ['2G', 2048]
+                ['2G', 2048],
             ]
         );
 
@@ -298,7 +299,7 @@ class PhpReadinessCheckTest extends TestCase
         $expected['memory_limit'] = [
             'message' => $rawPostMessage,
             'error' => true,
-            'warning' => false
+            'warning' => false,
         ];
 
         $this->assertEquals($expected, $this->phpReadinessCheck->checkMemoryLimit());
@@ -316,8 +317,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
             'data' => [
                 'error' => 'phpExtensionError',
-                'message' => 'Cannot determine required PHP extensions: '
-            ]
+                'message' => 'Cannot determine required PHP extensions: ',
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpExtensions());
     }
@@ -337,8 +338,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_SUCCESS,
             'data' => [
                 'required' => ['a', 'b', 'c'],
-                'missing' => []
-            ]
+                'missing' => [],
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpExtensions());
     }
@@ -358,8 +359,8 @@ class PhpReadinessCheckTest extends TestCase
             'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
             'data' => [
                 'required' => ['a', 'b', 'c'],
-                'missing' => ['c']
-            ]
+                'missing' => ['c'],
+            ],
         ];
         $this->assertEquals($expected, $this->phpReadinessCheck->checkPhpExtensions());
     }

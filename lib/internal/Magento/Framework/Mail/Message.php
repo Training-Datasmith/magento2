@@ -1,15 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mail;
 
-use Magento\Framework\Mail\MimeInterface;
 use Symfony\Component\Mime\Message as SymfonyMessage;
-use Symfony\Component\Mime\Part\TextPart;
-use Symfony\Component\Mime\Part\HtmlPart;
 use Symfony\Component\Mime\Part\AbstractPart;
+use Symfony\Component\Mime\Part\TextPart;
 
 /**
  * Class Message for email transportation

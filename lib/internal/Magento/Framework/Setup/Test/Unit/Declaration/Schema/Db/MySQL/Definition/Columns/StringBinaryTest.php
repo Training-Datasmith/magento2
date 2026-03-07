@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\Nulla
 use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\StringBinary;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Columns\StringBinary as StringBinaryColumn;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for StringBinary class.
@@ -66,7 +67,7 @@ class StringBinaryTest extends TestCase
             [
                 'nullable' => $this->nullableMock,
                 'comment' => $this->commentMock,
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }

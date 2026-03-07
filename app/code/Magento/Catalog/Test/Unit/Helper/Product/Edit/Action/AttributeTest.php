@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class AttributeTest extends TestCase
         $this->attribute = $objectManager->getObject(
             Attribute::class,
             [
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\Framework\View\Test\Unit\File\Collector;
 use Magento\Framework\Component\ComponentFile;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\DirSearch;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\File;
 use Magento\Framework\View\File\Collector\Base;
 use Magento\Framework\View\File\Factory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class BaseTest extends TestCase
 {
@@ -79,7 +80,7 @@ class BaseTest extends TestCase
             ->willReturnMap(
                 [
                     [ComponentRegistrar::MODULE, 'view/base/layout/*.xml', $files['shared']],
-                    [ComponentRegistrar::MODULE, 'view/frontend/layout/*.xml', $files['theme']]
+                    [ComponentRegistrar::MODULE, 'view/frontend/layout/*.xml', $files['theme']],
                 ]
             );
         $this->fileFactoryMock->expects($this->atLeastOnce())

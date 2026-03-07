@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\GraphQl\Query\Resolver\Argument\Validator;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\Resolver\Argument\ValidatorInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\Resolver\Argument\ValidatorInterface;
 
 /**
  * Validate with multiple validators
@@ -30,7 +31,7 @@ class CompositeValidator implements ValidatorInterface
     {
         foreach ($validators as $validator) {
             if (!$validator instanceof ValidatorInterface) {
-                throw new GraphQlInputException(__("Validators must implement " . ValidatorInterface::class));
+                throw new GraphQlInputException(__('Validators must implement ' . ValidatorInterface::class));
             }
         }
         $this->validators = $validators;

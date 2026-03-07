@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -51,13 +53,13 @@ if (!$secondAttribute->getId()) {
                     'second_option_0' => ['Second Option 1'],
                     'second_option_1' => ['Second Option 2'],
                     'second_option_2' => ['Second Option 3'],
-                    'second_option_3' => ['Second Option 4']
+                    'second_option_3' => ['Second Option 4'],
                 ],
                 'order' => [
                     'second_option_0' => 1,
                     'second_option_1' => 2,
                     'second_option_2' => 3,
-                    'second_option_3' => 4
+                    'second_option_3' => 4,
                 ],
             ],
         ]

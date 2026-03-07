@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Security\Setup\Patch\Data;
 
 use Magento\Framework\DB\Adapter\Pdo\Mysql;

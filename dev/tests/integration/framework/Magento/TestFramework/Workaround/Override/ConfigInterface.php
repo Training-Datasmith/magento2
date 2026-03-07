@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,16 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Workaround\Override;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Config\Reader\Filesystem;
-use Magento\Framework\View\File\Collector\Decorator\ModuleDependency;
-use Magento\Framework\View\File\Collector\Decorator\ModuleOutput;
-use Magento\TestFramework\Workaround\Override\Config\Converter;
-use Magento\TestFramework\Workaround\Override\Config\FileCollector;
-use Magento\TestFramework\Workaround\Override\Config\FileResolver;
-use Magento\TestFramework\Workaround\Override\Config\Dom;
-use Magento\TestFramework\Workaround\Override\Config\SchemaLocator;
-use Magento\TestFramework\Workaround\Override\Config\ValidationState;
 use PHPUnit\Framework\TestCase;
 
 /**

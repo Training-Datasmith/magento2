@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\CatalogGraphQl;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\Tax\Test\Fixture\ProductTaxClass;
 use Magento\Tax\Test\Fixture\TaxRate as TaxRateFixture;
@@ -17,7 +19,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 
 /**
  * Test class to verify catalog price rule is applied for
@@ -46,7 +47,7 @@ class PriceRangeTest extends GraphQlAbstract
      * @magentoApiDataFixture Magento/ConfigurableProduct/_files/product_configurable_in_multiple_websites.php
      * @magentoApiDataFixture Magento/ConfigurableProduct/_files/product_configurable_in_multiple_websites_with_special_price.php
      */
-    public function testMinimalPriceForConfigurableProductWithSpecialPrice() : void
+    public function testMinimalPriceForConfigurableProductWithSpecialPrice(): void
     {
         $headerMapFirstStore['Store'] = 'default';
         $headerMapSecondStore['Store'] = 'fixture_second_store';
@@ -281,7 +282,7 @@ class PriceRangeTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -290,7 +291,7 @@ class PriceRangeTest extends GraphQlAbstract
             [
                 'sku' => 'simple',
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
 
             ],
@@ -377,7 +378,7 @@ QUERY;
      * @param string $productSku
      * @return string
      */
-    private function getProductsBySkuQuery() : string
+    private function getProductsBySkuQuery(): string
     {
         return <<<QUERY
 query getProductsBySku {

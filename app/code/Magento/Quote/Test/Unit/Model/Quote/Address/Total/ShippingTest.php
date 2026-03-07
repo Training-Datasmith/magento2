@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,9 @@ namespace Magento\Quote\Test\Unit\Model\Quote\Address\Total;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
@@ -20,8 +22,6 @@ use Magento\Quote\Model\Quote\Address\FreeShippingInterface;
 use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Quote\Model\Quote\Address\Total;
 use Magento\Quote\Model\Quote\Address\Total\Shipping;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -99,7 +99,7 @@ class ShippingTest extends TestCase
             Shipping::class,
             [
                 'freeShipping' => $this->freeShipping,
-                'priceCurrency' => $this->priceCurrency
+                'priceCurrency' => $this->priceCurrency,
             ]
         );
 
@@ -118,7 +118,7 @@ class ShippingTest extends TestCase
                 'getRowWeight', 'setRowWeight', 'getItemId', 'setItemId', 'getSku', 'setSku', 'getProductType',
                 'setProductType', 'getQuoteId', 'setQuoteId', 'getPrice', 'setPrice', 'getName', 'setName',
                 'getProductOption', 'setProductOption', 'getExtensionAttributes', 'setExtensionAttributes',
-                'setFreeShipping', 'getFreeShipping'
+                'setFreeShipping', 'getFreeShipping',
             ]
         );
         $this->rate = $this->createPartialMockWithReflection(Rate::class, ['getCode', 'getPrice']);
@@ -135,7 +135,7 @@ class ShippingTest extends TestCase
         $expectedResult = [
             'code' => 'shipping',
             'value' => 100,
-            'title' => __('Shipping & Handling (%1)', $shippingDescription)
+            'title' => __('Shipping & Handling (%1)', $shippingDescription),
         ];
 
         $quoteMock = $this->createMock(Quote::class);

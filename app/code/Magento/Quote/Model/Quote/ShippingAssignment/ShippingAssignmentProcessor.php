@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\ShippingAssignment;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Quote\Api\Data\CartInterface;
-use Magento\Quote\Api\Data\ShippingAssignmentInterface;
-use Magento\Framework\Exception\InputException;
-use Magento\Quote\Model\ShippingAssignmentFactory;
-use Magento\Quote\Model\Quote\Item\CartItemPersister;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Api\Data\CartInterface;
+use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Model\Quote\Item\CartItemPersister;
+use Magento\Quote\Model\ShippingAssignmentFactory;
 
 class ShippingAssignmentProcessor
 {

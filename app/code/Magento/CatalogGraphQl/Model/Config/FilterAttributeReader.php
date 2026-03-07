@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Config;
 
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\GraphQl\Schema\Type\Entity\MapperInterface;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 
 /**
  * Adds custom/eav attributes to product filter type in the GraphQL config.
@@ -71,7 +72,7 @@ class FilterAttributeReader implements ReaderInterface
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function read($scope = null) : array
+    public function read($scope = null): array
     {
         $typeNames = $this->mapper->getMappedTypes(self::ENTITY_TYPE);
         $config = [];
@@ -85,7 +86,7 @@ class FilterAttributeReader implements ReaderInterface
                     'type' => $this->getFilterType($attribute),
                     'arguments' => [],
                     'required' => false,
-                    'description' => sprintf('Attribute label: %s', $attribute->getDefaultFrontendLabel())
+                    'description' => sprintf('Attribute label: %s', $attribute->getDefaultFrontendLabel()),
                 ];
             }
         }

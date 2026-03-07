@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Ui\Api\Data\BookmarkInterface;
 use Magento\Ui\Api\Data\BookmarkSearchResultsInterface;
 use Magento\Ui\Model\BookmarkManagement;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class BookmarkManagementTest extends TestCase
@@ -57,7 +57,7 @@ class BookmarkManagementTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['create'])
             ->getMock();
-        $this->searchCriteriaBuilder =$this->createMock(SearchCriteriaBuilder::class);
+        $this->searchCriteriaBuilder = $this->createMock(SearchCriteriaBuilder::class);
         $this->userContext = $this->createMock(UserContextInterface::class);
         $this->bookmarkManagement = new BookmarkManagement(
             $this->bookmarkRepository,
@@ -81,14 +81,14 @@ class BookmarkManagementTest extends TestCase
             [
                 Filter::KEY_FIELD => 'user_id',
                 Filter::KEY_VALUE => $userId,
-                Filter::KEY_CONDITION_TYPE => 'eq'
+                Filter::KEY_CONDITION_TYPE => 'eq',
             ]
         );
         $fieldNamespace = new Filter(
             [
                 Filter::KEY_FIELD => 'namespace',
                 Filter::KEY_VALUE => $namespace,
-                Filter::KEY_CONDITION_TYPE => 'eq'
+                Filter::KEY_CONDITION_TYPE => 'eq',
             ]
         );
         $searchCriteria = $this->createMock(SearchCriteriaInterface::class);
@@ -121,7 +121,7 @@ class BookmarkManagementTest extends TestCase
     {
         $userId = 1;
         $namespace = 'some_namespace';
-        $identifier ='current';
+        $identifier = 'current';
         $this->userContext->expects($this->once())
             ->method('getUserId')
             ->willReturn($userId);
@@ -129,21 +129,21 @@ class BookmarkManagementTest extends TestCase
             [
                 Filter::KEY_FIELD => 'user_id',
                 Filter::KEY_VALUE => $userId,
-                Filter::KEY_CONDITION_TYPE => 'eq'
+                Filter::KEY_CONDITION_TYPE => 'eq',
             ]
         );
         $fieldIdentifier = new Filter(
             [
                 Filter::KEY_FIELD => 'identifier',
                 Filter::KEY_VALUE => $identifier,
-                Filter::KEY_CONDITION_TYPE => 'eq'
+                Filter::KEY_CONDITION_TYPE => 'eq',
             ]
         );
         $fieldNamespace = new Filter(
             [
                 Filter::KEY_FIELD => 'namespace',
                 Filter::KEY_VALUE => $namespace,
-                Filter::KEY_CONDITION_TYPE => 'eq'
+                Filter::KEY_CONDITION_TYPE => 'eq',
             ]
         );
         $bookmarkId = 1;

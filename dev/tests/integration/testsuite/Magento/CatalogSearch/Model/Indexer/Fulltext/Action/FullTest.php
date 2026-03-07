@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Indexer\Fulltext\Action;
 
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\CatalogSearch\Model\ResourceModel\EngineInterface as Engine;
-use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Store\Model\Store;
-use Magento\Catalog\Model\Product;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**
@@ -22,7 +25,7 @@ class FullTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {
-        $this->markTestSkipped("MC-18332: Mysql Search Engine is deprecated and will be removed");
+        $this->markTestSkipped('MC-18332: Mysql Search Engine is deprecated and will be removed');
     }
     /**
      * Testing fulltext index rebuild
@@ -93,36 +96,36 @@ class FullTest extends \PHPUnit\Framework\TestCase
                 $nameId => 'Configurable Product | Configurable OptionOption 2',
                 $taxClassId => 'Taxable Goods | Taxable Goods',
                 $statusId => 'Enabled | Enabled',
-                $urlKeyId => 'configurable-product | configurable-optionoption-2'
+                $urlKeyId => 'configurable-product | configurable-optionoption-2',
             ],
             'index_enabled' => [
                 $skuId => 'index_enabled',
                 $nameId => 'index enabled',
                 $taxClassId => 'Taxable Goods',
                 $statusId => 'Enabled',
-                $urlKeyId => 'index-enabled'
+                $urlKeyId => 'index-enabled',
             ],
             'index_visible_search' => [
                 $skuId => 'index_visible_search',
                 $nameId => 'index visible search',
                 $taxClassId => 'Taxable Goods',
                 $statusId => 'Enabled',
-                $urlKeyId => 'index-visible-search'
+                $urlKeyId => 'index-visible-search',
             ],
             'index_visible_category' => [
                 $skuId => 'index_visible_category',
                 $nameId => 'index visible category',
                 $taxClassId => 'Taxable Goods',
                 $statusId => 'Enabled',
-                $urlKeyId => 'index-visible-category'
+                $urlKeyId => 'index-visible-category',
             ],
             'index_visible_both' => [
                 $skuId => 'index_visible_both',
                 $nameId => 'index visible both',
                 $taxClassId => 'Taxable Goods',
                 $statusId => 'Enabled',
-                $urlKeyId => 'index-visible-both'
-            ]
+                $urlKeyId => 'index-visible-both',
+            ],
         ];
     }
 
@@ -143,7 +146,7 @@ class FullTest extends \PHPUnit\Framework\TestCase
 
         $expected = [
             $simpleProductId,
-            $configProductId
+            $configProductId,
         ];
         $storeIndexDataSimple = $actionFull->rebuildStoreIndex($storeId, [$simpleProductId]);
         $storeIndexDataExpected = $actionFull->rebuildStoreIndex($storeId, $expected);

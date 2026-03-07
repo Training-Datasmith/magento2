@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Shipping\Model\Shipping;
 
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\Order\Address;
+use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Model\Shipment\Request;
 use Magento\Store\Model\ScopeInterface;
 use Magento\User\Model\User;
@@ -141,7 +143,7 @@ class Labels extends \Magento\Shipping\Model\Shipping
             throw new LocalizedException(
                 __(
                     "Shipping labels can't be created. "
-                    . "Verify that the store information and settings are complete and try again."
+                    . 'Verify that the store information and settings are complete and try again.'
                 )
             );
         }

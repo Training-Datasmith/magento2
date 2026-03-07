@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class SingleObject implements FlagSetterInterface
     {
         $value[ValueProcessorInterface::VALUE_PROCESSING_REFERENCE_KEY] = [
             'cacheKey' => $flagValue,
-            'index' => 0
+            'index' => 0,
         ];
     }
 

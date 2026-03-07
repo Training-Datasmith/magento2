@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\Tierprice;
 use Magento\Catalog\Model\Product\Gallery\ReadHandler;
 use Magento\Catalog\Model\Product\OptionFactory;
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Catalog\Model\ResourceModel\Helper;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\GroupPrice\AbstractGroupPrice;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitation;
 use Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitationFactory;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 use Magento\Catalog\Model\ResourceModel\Url;
 use Magento\Customer\Api\GroupManagementInterface;
@@ -38,12 +39,11 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\UniversalFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -124,12 +124,12 @@ class CollectionTest extends TestCase
         $eavEntityFactory = $this->createMock(EavEntityFactory::class);
         $resourceHelper = $this->createMock(Helper::class);
         $universalFactory = $this->createMock(UniversalFactory::class);
-        
+
         $this->storeManager = $this->createPartialMockWithReflection(
             StoreManager::class,
             ['getStore', 'getId', 'getWebsiteId']
         );
-        
+
         // Configure getStore() to return self (so getStore()->getId() works as storeManager->getId())
         $this->storeManager->expects($this->any())->method('getStore')->willReturnSelf();
         $this->storeManager->expects($this->any())->method('getId')->willReturn(1);
@@ -188,7 +188,7 @@ class CollectionTest extends TestCase
                 'connection' => $this->connectionMock,
                 'productLimitationFactory' => $productLimitationFactoryMock,
                 'metadataPool' => $this->metadataPoolMock,
-                '_isCollectionLoaded' => true
+                '_isCollectionLoaded' => true,
             ]
         );
         $this->collection->setConnection($this->connectionMock);
@@ -209,8 +209,8 @@ class CollectionTest extends TestCase
         $condition = ['in' => [1, 2]];
         $values = [1, 2];
         $conditionType = 'nin';
-        $preparedSql = "category_id IN(1,2)";
-        $tableName = "catalog_category_product";
+        $preparedSql = 'category_id IN(1,2)';
+        $tableName = 'catalog_category_product';
         $this->connectionMock->expects($this->exactly(2))->method('prepareSqlCondition')
             ->willReturnCallback(function ($arg1, $arg2) use ($preparedSql, $conditionType, $condition) {
                 if ($arg1 == 'cat.category_id' && $arg2 == $condition) {

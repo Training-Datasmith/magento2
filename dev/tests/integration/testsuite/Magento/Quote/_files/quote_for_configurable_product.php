@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
         'is_qty_decimal' => 0,
         'is_in_stock' => 1,
         'use_config_max_sale_qty' => 0,
-        'max_sale_qty' => 2
+        'max_sale_qty' => 2,
     ]);
 $product = $productRepository->save($product);
 
@@ -85,6 +86,6 @@ $configurableProduct->setTypeId(Configurable::TYPE_CODE)
         'use_config_manage_stock' => 0,
         'is_in_stock' => 1,
         'use_config_max_sale_qty' => 0,
-        'max_sale_qty' => 2
+        'max_sale_qty' => 2,
     ]);
 $productRepository->save($configurableProduct);

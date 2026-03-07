@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CustomerImportExport\Test\Unit\Model\Import\Customer;
 
-use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\Storage;
-use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
-use Magento\Customer\Model\ResourceModel\Customer\Collection;
 use Magento\Customer\Model\Config\Share;
+use Magento\Customer\Model\ResourceModel\Customer\Collection;
+use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\Storage;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -103,7 +104,7 @@ class StorageTest extends TestCase
                         1 => 1,
                         2 => 2,
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -231,11 +232,11 @@ class StorageTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['getPart', 'where'])
             ->getMock();
-        
+
         $selectMock->expects($this->atLeastOnce())
             ->method('getPart')
             ->willReturn(['main_table' => 'customer_entity']);
-        
+
         $selectMock->method('where')
             ->willReturnSelf();
 
@@ -268,11 +269,11 @@ class StorageTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['getPart', 'where'])
             ->getMock();
-        
+
         $selectMock->expects($this->atLeastOnce())
             ->method('getPart')
             ->willReturn(['main_table' => 'customer_entity']);
-        
+
         $selectMock->method('where')
             ->willReturnSelf();
 

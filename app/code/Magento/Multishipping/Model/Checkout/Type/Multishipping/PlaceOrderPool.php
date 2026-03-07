@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class PlaceOrderPool
         $this->services = $tmapFactory->createSharedObjectsMap(
             [
                 'array' => $services,
-                'type' => PlaceOrderInterface::class
+                'type' => PlaceOrderInterface::class,
             ]
         );
     }

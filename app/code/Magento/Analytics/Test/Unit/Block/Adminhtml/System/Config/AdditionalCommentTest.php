@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class AdditionalCommentTest extends TestCase
@@ -62,14 +63,14 @@ class AdditionalCommentTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
-            ]
+                $this->createMock(SecureHtmlRenderer::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->additionalComment = $objectManager->getObject(
             AdditionalComment::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -85,11 +86,11 @@ class AdditionalCommentTest extends TestCase
             ->willReturn('Comment label');
         $html = $this->additionalComment->render($this->abstractElementMock);
         $this->assertMatchesRegularExpression(
-            "/New comment/",
+            '/New comment/',
             $html
         );
         $this->assertMatchesRegularExpression(
-            "/Comment label/",
+            '/Comment label/',
             $html
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ namespace Magento\Framework\Indexer\Table;
  */
 interface StrategyInterface
 {
-    const IDX_SUFFIX = '_idx';
+    public const IDX_SUFFIX = '_idx';
 
-    const TMP_SUFFIX = '_tmp';
+    public const TMP_SUFFIX = '_tmp';
 
     /**
      * Get IDX table usage flag

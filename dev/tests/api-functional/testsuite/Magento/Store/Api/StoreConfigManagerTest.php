@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class StoreConfigManagerTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'storeStoreConfigManagerV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/store/storeConfigs';
+    public const SERVICE_NAME = 'storeStoreConfigManagerV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/store/storeConfigs';
 
     /**
      * Test getStoreConfigs
@@ -56,7 +58,7 @@ class StoreConfigManagerTest extends WebapiAbstract
             'secure_base_url',
             'secure_base_link_url',
             'secure_base_static_url',
-            'secure_base_media_url'
+            'secure_base_media_url',
         ];
         $this->assertEquals($expectedKeys, array_keys($storeConfigs[0]));
     }

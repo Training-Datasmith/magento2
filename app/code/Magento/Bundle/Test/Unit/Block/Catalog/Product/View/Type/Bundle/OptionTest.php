@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,13 +11,12 @@ namespace Magento\Bundle\Test\Unit\Block\Catalog\Product\View\Type\Bundle;
 use Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option;
 use Magento\Bundle\Pricing\Price\BundleOptionPrice;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\DataObject;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\Render;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\Exception;
@@ -89,7 +89,7 @@ class OptionTest extends TestCase
         // Create selection mock with getSelectionId method
         $selection = $this->createPartialMockWithReflection(Product::class, ['getSelectionId']);
         $selection->method('getSelectionId')->willReturn($selectionId);
-        
+
         $otherOption->method('getSelectionById')->willReturn($selection);
         $option->method('getSelectionById')->with(315)->willReturn($selection);
 

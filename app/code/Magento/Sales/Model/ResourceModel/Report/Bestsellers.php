@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Report;
 
 use Magento\Catalog\Model\ResourceModel\Product;
@@ -251,12 +254,12 @@ class Bestsellers extends AbstractReport
             'order_item.parent_item_id = order_item_parent.item_id',
             []
         )->where(
-            "source_table.entity_id IN (SELECT entity_id FROM " . $this->getTable('sales_order') .
-            " WHERE store_id = " . $storeId .
+            'source_table.entity_id IN (SELECT entity_id FROM ' . $this->getTable('sales_order') .
+            ' WHERE store_id = ' . $storeId .
             " AND state != '" . \Magento\Sales\Model\Order::STATE_CANCELED . "'" .
             ($subSelect !== null ?
-                " AND " . $whereCondition :
-                '') . ")"
+                ' AND ' . $whereCondition :
+                '') . ')'
         )->where(
             'order_item.product_type NOT IN(?)',
             $this->ignoredProductTypes

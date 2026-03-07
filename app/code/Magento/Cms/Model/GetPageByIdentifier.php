@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,7 +42,7 @@ class GetPageByIdentifier implements GetPageByIdentifierInterface
     /**
      * @inheritdoc
      */
-    public function execute(string $identifier, int $storeId) : PageInterface
+    public function execute(string $identifier, int $storeId): PageInterface
     {
         $page = $this->pageFactory->create();
         $page->setStoreId($storeId);

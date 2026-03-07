@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -99,11 +100,11 @@ class CustomerScopeDataTest extends TestCase
                             'Magento_Customer/js/invalidation-rules/website-rule' => [
                                 'scopeConfig' => [
                                     'websiteId' => 1,
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 

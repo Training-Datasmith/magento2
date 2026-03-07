@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -29,7 +31,7 @@ class DeveloperTest extends AbstractFactoryRuntimeDefinitionsTestCases
     {
         $runtimeDiConfig = [
             'preferences' => [
-                TestAssetInterface::class => InterfaceImplementation::class
+                TestAssetInterface::class => InterfaceImplementation::class,
             ],
             'Alias' => [
                 'type' => HasOptionalParameters::class,
@@ -40,13 +42,13 @@ class DeveloperTest extends AbstractFactoryRuntimeDefinitionsTestCases
                     'optionalObjectParameter' => ['instance' => Basic::class],
                     'optionalStringParameter' => self::ALIAS_OVERRIDDEN_STRING,
                     'optionalIntegerParameter' => self::ALIAS_OVERRIDDEN_INT,
-                ]
+                ],
             ],
             DependsOnAlias::class => [
                 'arguments' => [
-                    'object' => ['instance' => 'Alias']
-                ]
-            ]
+                    'object' => ['instance' => 'Alias'],
+                ],
+            ],
         ];
 
         $runtimeConfig = new \Magento\Framework\Interception\ObjectManager\Config\Developer();

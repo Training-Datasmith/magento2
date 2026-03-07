@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,49 +69,49 @@ class RequestGeneratorTest extends TestCase
                 [
                     'quick_search_container' => ['queries' => 1, 'filters' => 0, 'aggregations' => 0],
                     'advanced_search_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0]
+                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                 ],
-                ['sku', 'static', 0, 0, 1 ]
+                ['sku', 'static', 0, 0, 1 ],
             ],
             [
                 [
                     'quick_search_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                     'advanced_search_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0]
+                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                 ],
-                ['price', 'static', 1, 0 ,1]
+                ['price', 'static', 1, 0 ,1],
             ],
             [
                 [
                     'quick_search_container' => ['queries' => 1, 'filters' => 0, 'aggregations' => 0],
                     'advanced_search_container' => ['queries' => 2, 'filters' => 0, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0]
+                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                 ],
-                ['name', 'text', 0, 0, 1]
+                ['name', 'text', 0, 0, 1],
             ],
             [
                 [
                     'quick_search_container' => ['queries' => 1, 'filters' => 0, 'aggregations' => 0],
                     'advanced_search_container' => ['queries' => 2, 'filters' => 0, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0]
+                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                 ],
-                ['name2', 'text', 0, 0, 1]
+                ['name2', 'text', 0, 0, 1],
             ],
             [
                 [
                     'quick_search_container' => ['queries' => 3, 'filters' => 1, 'aggregations' => 1],
                     'advanced_search_container' => ['queries' => 2, 'filters' => 1, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 2, 'filters' => 1, 'aggregations' => 1]
+                    'catalog_view_container' => ['queries' => 2, 'filters' => 1, 'aggregations' => 1],
                 ],
-                ['date', 'decimal', 1, 1, 1]
+                ['date', 'decimal', 1, 1, 1],
             ],
             [
                 [
                     'quick_search_container' => ['queries' => 3, 'filters' => 1, 'aggregations' => 1],
                     'advanced_search_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
-                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0]
+                    'catalog_view_container' => ['queries' => 0, 'filters' => 0, 'aggregations' => 0],
                 ],
-                ['attr_int', 'int', 0, 1, 0]
+                ['attr_int', 'int', 0, 1, 0],
             ],
             [
                 [

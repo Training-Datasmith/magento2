@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Config;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -33,7 +36,7 @@ class ConfigFactory implements ConfigFactoryInterface
     public function create($paymentCode = null, $pathPattern = null)
     {
         $arguments = [
-            'methodCode' => $paymentCode
+            'methodCode' => $paymentCode,
         ];
 
         if ($pathPattern !== null) {

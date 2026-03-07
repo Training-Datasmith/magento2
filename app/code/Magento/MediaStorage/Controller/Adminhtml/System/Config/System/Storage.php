@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml account controller
  */
+
 namespace Magento\MediaStorage\Controller\Adminhtml\System\Config\System;
 
 abstract class Storage extends \Magento\Backend\App\Action

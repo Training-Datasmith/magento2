@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -142,7 +144,7 @@ class RefundOrder implements RefundOrderInterface
                 $notify,
                 $appendComment,
                 $comment,
-                $arguments
+                $arguments,
             ]
         );
     }

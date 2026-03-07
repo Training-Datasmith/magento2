@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -60,7 +62,7 @@ class RemoveAction
      */
     protected function getBaseClassName($object)
     {
-        $className = ltrim(get_class($object), "\\");
+        $className = ltrim(get_class($object), '\\');
         $className = str_replace(['\Interceptor', '\Proxy'], [''], $className);
 
         return $className;

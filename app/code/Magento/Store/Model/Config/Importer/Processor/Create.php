@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -181,7 +183,7 @@ class Create implements ProcessorInterface
             if (!isset($groupData['root_category_id'])) {
                 $groupData['root_category_id'] = 0;
             }
-            
+
             $group->setData($groupData);
 
             $group->getResource()->save($group);

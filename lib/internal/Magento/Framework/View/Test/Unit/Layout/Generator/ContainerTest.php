@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\View\Layout\Generator\Container;
 use Magento\Framework\View\Layout\Generator\Context;
 
 use Magento\Framework\View\Layout\ScheduledStructure;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ContainerTest extends TestCase
 {
@@ -117,7 +118,7 @@ class ContainerTest extends TestCase
                                 Container::CONTAINER_OPT_HTML_TAG   => 'dd',
                                 Container::CONTAINER_OPT_HTML_CLASS => 'dd_class',
                                 Container::CONTAINER_OPT_HTML_ID    => 'dd_id',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -138,7 +139,7 @@ class ContainerTest extends TestCase
                                 Container::CONTAINER_OPT_HTML_TAG   => 'dd',
                                 Container::CONTAINER_OPT_HTML_CLASS => 'dd_class',
                                 Container::CONTAINER_OPT_HTML_ID    => 'dd_id',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -158,7 +159,7 @@ class ContainerTest extends TestCase
                                 Container::CONTAINER_OPT_HTML_TAG   => 'article',
                                 Container::CONTAINER_OPT_HTML_CLASS => 'article_class',
                                 Container::CONTAINER_OPT_HTML_ID    => 'article_id',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -168,7 +169,7 @@ class ContainerTest extends TestCase
                     ['first_container', Container::CONTAINER_OPT_HTML_ID, 'article_id'],
                 ],
                 'setAttributeCalls' => 3,
-            ]
+            ],
         ];
     }
 
@@ -204,7 +205,7 @@ class ContainerTest extends TestCase
                             'attributes' => [
                                 Container::CONTAINER_OPT_LABEL   => 'label',
                                 Element::CONTAINER_OPT_HTML_TAG => 'custom_tag',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -217,7 +218,7 @@ class ContainerTest extends TestCase
                             'attributes' => [
                                 Container::CONTAINER_OPT_LABEL   => 'label',
                                 Element::CONTAINER_OPT_HTML_ID => 'html_id',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -230,7 +231,7 @@ class ContainerTest extends TestCase
                             'attributes' => [
                                 Container::CONTAINER_OPT_LABEL   => 'label',
                                 Element::CONTAINER_OPT_HTML_CLASS => 'html_class',
-                            ]
+                            ],
                         ],
                     ],
                 ],

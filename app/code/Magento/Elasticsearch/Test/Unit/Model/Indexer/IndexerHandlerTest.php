@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,23 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Test\Unit\Model\Indexer;
 
-use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor;
 use Magento\AdvancedSearch\Model\Client\ClientInterface;
+use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor;
 use Magento\Elasticsearch\Model\Adapter\Elasticsearch;
 use Magento\Elasticsearch\Model\Adapter\Index\IndexNameResolver;
 use Magento\Elasticsearch\Model\Indexer\IndexerHandler;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ScopeInterface;
 use Magento\Framework\App\ScopeResolverInterface;
+use Magento\Framework\Indexer\CacheContext;
 use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexStructureInterface;
 use Magento\Framework\Indexer\SaveHandler\Batch;
 use Magento\Framework\Search\Request\Dimension;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Indexer\CacheContext;
 
 /**
  * Test for \Magento\Elasticsearch\Model\Indexer\IndexerHandler

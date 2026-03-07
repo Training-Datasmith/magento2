@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,10 +81,10 @@ class TokensConfigProviderTest extends TestCase
                 'vault' => [
                     $vaultProviderCode . '_' . '0' => [
                         'config' => ['token_code' => 'code'],
-                        'component' => 'Vendor_Module/js/vault_component'
-                    ]
-                ]
-            ]
+                        'component' => 'Vendor_Module/js/vault_component',
+                    ],
+                ],
+            ],
         ];
 
         $token = $this->createMock(PaymentTokenInterface::class);
@@ -129,7 +130,7 @@ class TokensConfigProviderTest extends TestCase
             $this->storeManager,
             $this->customerTokenManagement,
             [
-                $vaultProviderCode => $tokenUiComponentProvider
+                $vaultProviderCode => $tokenUiComponentProvider,
             ]
         );
         $this->objectManager->setBackwardCompatibleProperty(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product;
 
 use Magento\Framework\Indexer\CacheContext;
@@ -67,7 +70,7 @@ class Flat implements \Magento\Framework\Indexer\ActionInterface, \Magento\Frame
         $this->getCacheContext()->registerTags(
             [
                 \Magento\Catalog\Model\Category::CACHE_TAG,
-                \Magento\Catalog\Model\Product::CACHE_TAG
+                \Magento\Catalog\Model\Product::CACHE_TAG,
             ]
         );
     }

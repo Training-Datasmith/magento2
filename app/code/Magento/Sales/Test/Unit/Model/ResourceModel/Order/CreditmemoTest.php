@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\Order\Creditmemo;
@@ -64,7 +64,7 @@ class CreditmemoTest extends TestCase
                 'getInvoiceId', 'setInvoiceId', 'getInvoice',
                 'setBillingAddressId', 'beforeSave', 'afterSave',
                 'validateBeforeSave', 'hasDataChanges', 'getStore',
-                'getEntityId', 'getIncrementId', 'setIncrementId', 'getEntityType'
+                'getEntityId', 'getIncrementId', 'setIncrementId', 'getEntityType',
             ]
         );
         $this->order = $this->createPartialMock(Order::class, ['getId', 'getBillingAddress', 'getStore']);

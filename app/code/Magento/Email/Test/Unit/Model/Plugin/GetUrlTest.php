@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Email\Test\Unit\Model\Plugin;
 
+use Magento\Email\Model\AbstractTemplate;
 use Magento\Email\Model\Plugin\GetUrl;
 use Magento\Store\Model\Store;
-use Magento\Email\Model\AbstractTemplate;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

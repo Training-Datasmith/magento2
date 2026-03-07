@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,20 +24,20 @@ class Storage extends AbstractModel
     /**
      * Storage systems ids
      */
-    const STORAGE_MEDIA_FILE_SYSTEM = 0;
+    public const STORAGE_MEDIA_FILE_SYSTEM = 0;
 
-    const STORAGE_MEDIA_DATABASE = 1;
+    public const STORAGE_MEDIA_DATABASE = 1;
 
     /**
      * Config paths for storing storage configuration
      */
-    const XML_PATH_STORAGE_MEDIA = 'system/media_storage_configuration/media_storage';
+    public const XML_PATH_STORAGE_MEDIA = 'system/media_storage_configuration/media_storage';
 
-    const XML_PATH_STORAGE_MEDIA_DATABASE = 'system/media_storage_configuration/media_database';
+    public const XML_PATH_STORAGE_MEDIA_DATABASE = 'system/media_storage_configuration/media_database';
 
-    const XML_PATH_MEDIA_RESOURCE_WHITELIST = 'system/media_storage_configuration/allowed_resources';
+    public const XML_PATH_MEDIA_RESOURCE_WHITELIST = 'system/media_storage_configuration/allowed_resources';
 
-    const XML_PATH_MEDIA_UPDATE_TIME = 'system/media_storage_configuration/configuration_update_time';
+    public const XML_PATH_MEDIA_UPDATE_TIME = 'system/media_storage_configuration/configuration_update_time';
 
     /**
      * Prefix of model events names
@@ -299,7 +301,7 @@ class Storage extends AbstractModel
         $config['media_directory'] = $this->localMediaDirectory->getAbsolutePath();
 
         $allowedResources = $this->_coreConfig->getValue(self::XML_PATH_MEDIA_RESOURCE_WHITELIST, 'default');
-        array_walk_recursive($allowedResources, function($value, $key) use (&$resources) {
+        array_walk_recursive($allowedResources, function ($value, $key) use (&$resources) {
             $resources[] = $value;
         }, $resources);
         $config['allowed_resources'] = $resources;

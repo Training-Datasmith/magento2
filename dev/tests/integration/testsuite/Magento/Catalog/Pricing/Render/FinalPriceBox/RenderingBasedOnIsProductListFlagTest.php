@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Pricing\Render\FinalPriceBox;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -45,7 +48,7 @@ class RenderingBasedOnIsProductListFlagTest extends \PHPUnit\Framework\TestCase
         $this->product = $productRepository->get('simple');
         $this->finalPrice = Bootstrap::getObjectManager()->create(FinalPrice::class, [
             'saleableItem' => $this->product,
-            'quantity' => null
+            'quantity' => null,
         ]);
         $this->rendererPool = Bootstrap::getObjectManager()->create(RendererPool::class);
         $this->rendererPool->setData(

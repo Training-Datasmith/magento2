@@ -11,10 +11,10 @@ namespace Magento\CatalogUrlRewrite\Model\Storage;
 
 use Magento\Catalog\Model\ResourceModel\ProductFactory;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator;
+use Magento\CatalogUrlRewrite\Model\ResourceModel\Category\Product;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ResourceConnection;
-use Magento\CatalogUrlRewrite\Model\ResourceModel\Category\Product;
 use Magento\Store\Model\ScopeInterface;
 use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\UrlRewrite\Model\Storage\DbStorage as BaseDbStorage;
@@ -71,7 +71,7 @@ class DynamicStorage extends BaseDbStorage
         $select = $this->connection->select();
         $select->from(
             [
-                'url_rewrite' => $this->resource->getTableName(self::TABLE_NAME)
+                'url_rewrite' => $this->resource->getTableName(self::TABLE_NAME),
             ]
         );
         $select->joinLeft(

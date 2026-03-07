@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\DirectoryGraphQl\Model\Cache\Tag\Strategy\Config;
 
 use Magento\DirectoryGraphQl\Model\Resolver\Currency\Identity;
 use Magento\Framework\App\Config\ValueInterface;
+use Magento\Store\Model\Config\Cache\Tag\Strategy\TagGeneratorInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Store\Model\Config\Cache\Tag\Strategy\TagGeneratorInterface;
 
 /**
  * Generator that generates cache tags for currency configuration
@@ -25,7 +26,7 @@ class CurrencyTagGenerator implements TagGeneratorInterface
         'currency/options/base',
         'currency/options/default',
         'currency/options/allow',
-        'currency/options/customsymbol'
+        'currency/options/customsymbol',
     ];
 
     /**

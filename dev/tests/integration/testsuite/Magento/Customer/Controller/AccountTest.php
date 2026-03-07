@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Customer\Controller;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Http;
@@ -16,8 +17,6 @@ use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\CookieManagerInterface;
-use Magento\Store\Model\StoreManager;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Xpath;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
@@ -379,7 +378,7 @@ class AccountTest extends AbstractController
                     'lastname' => 'Doe',
                     'email' => 'johndoe@email.com',
                     'change_email' => 1,
-                    'current_password' => 'password'
+                    'current_password' => 'password',
                 ]
             );
 
@@ -499,7 +498,7 @@ class AccountTest extends AbstractController
         $this->assertRedirect($this->stringContains('customer/account/edit/'));
         // Not sure if its the most secure message. Not changing the behavior for now in the new AccountManagement APIs.
         $this->assertSessionMessages(
-            $this->equalTo(["The password doesn&#039;t match this account. Verify the password and try again."]),
+            $this->equalTo(['The password doesn&#039;t match this account. Verify the password and try again.']),
             MessageInterface::TYPE_ERROR
         );
     }
@@ -607,7 +606,7 @@ class AccountTest extends AbstractController
             $this->equalTo(
                 [
                     "If there is an account associated with {$email} you will receive an email with a link "
-                    . "to reset your password."
+                    . 'to reset your password.',
                 ]
             ),
             MessageInterface::TYPE_SUCCESS
@@ -652,7 +651,7 @@ class AccountTest extends AbstractController
             $this->equalTo(
                 [
                     'The account sign-in was incorrect or your account is disabled temporarily. '
-                    . 'Please wait and try again later.'
+                    . 'Please wait and try again later.',
                 ]
             ),
             MessageInterface::TYPE_ERROR

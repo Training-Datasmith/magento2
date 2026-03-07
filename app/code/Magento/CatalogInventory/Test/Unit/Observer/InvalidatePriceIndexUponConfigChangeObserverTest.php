@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class InvalidatePriceIndexUponConfigChangeObserverTest extends TestCase
         $this->priceIndexProcessorMock = $this->createMock(Processor::class);
         $this->indexerMock = $this->createMock(IndexerInterface::class);
         $this->observerMock = $this->createMock(Observer::class);
-        
+
         $this->eventMock = new Event();
 
         $this->observer = new InvalidatePriceIndexUponConfigChangeObserver(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config;
 
 use Magento\Framework\Config\ReaderInterface;
@@ -13,25 +16,10 @@ use Magento\Framework\Config\ReaderInterface;
 class Reader implements ReaderInterface
 {
     /**
-     * @var ReaderInterface[]
-     */
-    private $readers;
-
-    /**
-     * @var Mapper
-     */
-    private $mapper;
-
-    /**
-     * @param Mapper $mapper
      * @param ReaderInterface[] $readers
      */
-    public function __construct(
-        Mapper $mapper,
-        $readers = []
-    ) {
-        $this->mapper = $mapper;
-        $this->readers = $readers;
+    public function __construct(private readonly Mapper $mapper, private $readers = [])
+    {
     }
 
     /**

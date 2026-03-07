@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Category\Product\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Category\Product;
 use Magento\Catalog\Model\Indexer\Category\Product\Plugin\MviewState;
 use Magento\Catalog\Model\Indexer\Product\Category;
 use Magento\Framework\Mview\View\ChangelogInterface;
 use Magento\Framework\Mview\View\StateInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class MviewStateTest extends TestCase
@@ -168,7 +169,7 @@ class MviewStateTest extends TestCase
             ['working', 'working'],
             ['suspended', 'suspended'],
             ['idle', 'working'],
-            ['working', 'idle']
+            ['working', 'idle'],
         ];
     }
 

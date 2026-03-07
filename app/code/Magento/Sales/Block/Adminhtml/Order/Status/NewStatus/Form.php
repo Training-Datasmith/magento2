@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Status\NewStatus;
 
 /**
@@ -46,7 +49,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'status',
                 'label' => __('Status Code'),
                 'class' => 'required-entry validate-code',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -97,7 +100,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'required' => false,
                     'label' => $store->getName(),
                     'value' => isset($labels[$store->getId()]) ? $labels[$store->getId()] : '',
-                    'fieldset_html_class' => 'store'
+                    'fieldset_html_class' => 'store',
                 ]
             );
             return;
@@ -133,7 +136,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                             'required' => false,
                             'label' => $store->getName(),
                             'value' => isset($labels[$store->getId()]) ? $labels[$store->getId()] : '',
-                            'fieldset_html_class' => 'store'
+                            'fieldset_html_class' => 'store',
                         ]
                     );
                 }

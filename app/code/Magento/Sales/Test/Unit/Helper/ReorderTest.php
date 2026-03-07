@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Sales\Helper\Reorder;
 use Magento\Sales\Model\Order;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ReorderTest extends TestCase
 {
@@ -104,7 +105,7 @@ class ReorderTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 
@@ -183,7 +184,7 @@ class ReorderTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 }

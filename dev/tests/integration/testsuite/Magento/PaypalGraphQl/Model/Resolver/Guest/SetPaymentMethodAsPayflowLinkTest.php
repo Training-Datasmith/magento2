@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -105,15 +106,15 @@ QUERY;
 
         $payment = $quote->getPayment();
         $this->assertEquals(
-            "paypal/payflow/link/cancel",
+            'paypal/payflow/link/cancel',
             $payment->getAdditionalInformation('cancel_url')
         );
         $this->assertEquals(
-            "paypal/payflow/link/success",
+            'paypal/payflow/link/success',
             $payment->getAdditionalInformation('return_url')
         );
         $this->assertEquals(
-            "paypal/payflow/link/error",
+            'paypal/payflow/link/error',
             $payment->getAdditionalInformation('error_url')
         );
     }
@@ -165,7 +166,7 @@ QUERY;
         $responseData = $this->json->unserialize($response->getContent());
 
         $this->assertArrayHasKey('errors', $responseData);
-        $expectedExceptionMessage = "Invalid Url.";
+        $expectedExceptionMessage = 'Invalid Url.';
         $actualError = $responseData['errors'][0];
         $this->assertEquals($expectedExceptionMessage, $actualError['message']);
         $this->assertEquals(GraphQlInputException::EXCEPTION_CATEGORY, $actualError['extensions']['category']);

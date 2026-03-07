@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Block\System;
 
 use Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized;
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context as TemplateContext;
-use Magento\Framework\Json\Helper\Data as JsonDataHelper;
 use Magento\Framework\Notification\MessageInterface;
 use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 
@@ -17,43 +19,21 @@ use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
  */
 class Messages extends Template
 {
-    /**
-     * Synchronized Message collection
-     *
-     * @var Synchronized
-     */
-    protected $_messages;
-
-    /**
-     * @var JsonDataHelper
-     * @deprecated 100.3.0
-     * @see \Magento\Framework\Serialize\Serializer\Json
-     */
-    protected $jsonHelper;
-
-    /**
-     * @var JsonSerializer
-     */
-    private $serializer;
-
-    /**
-     * @param TemplateContext $context
-     * @param Synchronized $messages
-     * @param JsonDataHelper $jsonHelper
-     * @param JsonSerializer $serializer
-     * @param array $data
-     */
     public function __construct(
         TemplateContext $context,
-        Synchronized $messages,
-        JsonDataHelper $jsonHelper,
-        JsonSerializer $serializer,
+        /**
+         * Synchronized Message collection
+         */
+        protected \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $_messages,
+        /**
+         * @deprecated 100.3.0
+         * @see \Magento\Framework\Serialize\Serializer\Json
+         */
+        protected \Magento\Framework\Json\Helper\Data $jsonHelper,
+        private readonly JsonSerializer $serializer,
         array $data = []
     ) {
-        $this->jsonHelper = $jsonHelper;
         parent::__construct($context, $data);
-        $this->_messages = $messages;
-        $this->serializer = $serializer;
     }
 
     /**
@@ -74,7 +54,7 @@ class Messages extends Template
      *
      * @return MessageInterface[]|null
      */
-    public function getLastCritical()
+    public function getLastCritical(): ?\Magento\Framework\DataObject
     {
         $items = array_values($this->_messages->getItems());
 
@@ -106,10 +86,8 @@ class Messages extends Template
 
     /**
      * Check whether system messages are present
-     *
-     * @return bool
      */
-    public function hasMessages()
+    public function hasMessages(): bool
     {
         return (bool)count($this->_messages->getItems());
     }
@@ -136,7 +114,7 @@ class Messages extends Template
                 'systemMessageDialog' => [
                     'buttons' => [],
                     'modalClass' => 'ui-dialog-active ui-popup-message modal-system-messages',
-                    'ajaxUrl' => $this->_getMessagesUrl()
+                    'ajaxUrl' => $this->_getMessagesUrl(),
                 ],
             ]
         );

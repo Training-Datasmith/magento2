@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model;
 
 use Magento\Framework\Exception\SecurityViolationException;
@@ -22,7 +25,7 @@ class SecurityManager
     /**
      * Security control records time life
      */
-    const SECURITY_CONTROL_RECORDS_LIFE_TIME =  86400;
+    public const SECURITY_CONTROL_RECORDS_LIFE_TIME =  86400;
 
     /**
      * @var ConfigInterface

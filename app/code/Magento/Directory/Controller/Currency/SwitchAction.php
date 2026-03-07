@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Controller\Currency;
 
 class SwitchAction extends \Magento\Framework\App\Action\Action

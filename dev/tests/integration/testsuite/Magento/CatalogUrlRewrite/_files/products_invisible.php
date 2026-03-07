@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Setup\CategorySetup;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 \Magento\TestFramework\Helper\Bootstrap::getInstance()

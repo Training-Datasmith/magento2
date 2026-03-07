@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -195,7 +196,7 @@ class UrlTest extends TestCase
         return [
             'without_port' => ['example.com', 'http://example.com/fancy_uri'],
             'default_port' => ['example.com:80', 'http://example.com/fancy_uri'],
-            'custom_port' => ['example.com:8080', 'http://example.com:8080/fancy_uri']
+            'custom_port' => ['example.com:8080', 'http://example.com:8080/fancy_uri'],
         ];
     }
 
@@ -207,7 +208,7 @@ class UrlTest extends TestCase
         $model = $this->getUrlModel(
             [
                 'scopeResolver' => $this->scopeResolverMock,
-                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory()
+                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             ]
         );
 
@@ -251,7 +252,7 @@ class UrlTest extends TestCase
                 'queryParamsResolver' => $this->queryParamsResolverMock,
                 'request' => $requestMock,
                 'routeConfig' => $routeConfigMock,
-                'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock
+                'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock,
             ]
         );
 
@@ -281,7 +282,7 @@ class UrlTest extends TestCase
             '_escape' => 1,
             '_query' => $query,
             '_nosid' => 0,
-            'id' => 100
+            'id' => 100,
         ]);
         $this->assertEquals($returnUri, $url);
     }
@@ -314,7 +315,7 @@ class UrlTest extends TestCase
         $model = $this->getUrlModel([
             'scopeResolver' => $this->scopeResolverMock,
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
-            'request' => $this->getRequestMock()
+            'request' => $this->getRequestMock(),
         ]);
         $model->setData('route_name', 'catalog');
 
@@ -335,7 +336,7 @@ class UrlTest extends TestCase
         $model = $this->getUrlModel([
             'scopeResolver' => $this->scopeResolverMock,
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
-            'request' => $this->getRequestMock()
+            'request' => $this->getRequestMock(),
         ]);
 
         $this->scopeResolverMock->expects($this->any())
@@ -363,7 +364,7 @@ class UrlTest extends TestCase
             'scopeResolver' => $this->scopeResolverMock,
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             'request' => $request,
-            'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock
+            'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock,
         ]);
 
         $this->scopeResolverMock->expects($this->any())
@@ -382,18 +383,18 @@ class UrlTest extends TestCase
             'string query' => [
                 'foo=bar',
                 'foo=bar',
-                'http://localhost/index.php/catalog/product/view/id/100/?foo=bar#anchor'
+                'http://localhost/index.php/catalog/product/view/id/100/?foo=bar#anchor',
             ],
             'array query' => [
                 ['foo' => 'bar'],
                 'foo=bar',
-                'http://localhost/index.php/catalog/product/view/id/100/?foo=bar#anchor'
+                'http://localhost/index.php/catalog/product/view/id/100/?foo=bar#anchor',
             ],
             'without query' => [
                 false,
                 '',
-                'http://localhost/index.php/catalog/product/view/id/100/#anchor'
-            ]
+                'http://localhost/index.php/catalog/product/view/id/100/#anchor',
+            ],
         ];
     }
 
@@ -409,7 +410,7 @@ class UrlTest extends TestCase
                 'scopeResolver' => $this->scopeResolverMock,
                 'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
                 'queryParamsResolver' => $this->queryParamsResolverMock,
-                'request' => $requestMock, 'routeConfig' => $routeConfigMock
+                'request' => $requestMock, 'routeConfig' => $routeConfigMock,
             ]
         );
 
@@ -450,7 +451,7 @@ class UrlTest extends TestCase
                 'queryParamsResolver' => $this->queryParamsResolverMock,
                 'request' => $requestMock,
                 'routeConfig' => $routeConfigMock,
-                'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock
+                'routeParamsPreprocessor' => $this->routeParamsPreprocessorMock,
             ]
         );
 
@@ -489,7 +490,7 @@ class UrlTest extends TestCase
             'sidResolver' => $this->sidResolverMock,
             'scopeResolver' => $this->scopeResolverMock,
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(false),
-            'queryParamsResolver' => $this->queryParamsResolverMock
+            'queryParamsResolver' => $this->queryParamsResolverMock,
         ]);
 
         $this->queryParamsResolverMock->expects($this->once())->method('getQuery')
@@ -535,7 +536,7 @@ class UrlTest extends TestCase
                 'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(false),
                 'session' => $this->sessionMock,
                 'sidResolver' => $this->sidResolverMock,
-                'queryParamsResolver' => $this->queryParamsResolverMock
+                'queryParamsResolver' => $this->queryParamsResolverMock,
             ]
         );
 
@@ -559,16 +560,16 @@ class UrlTest extends TestCase
         return [
             'with port' => [
                 'https://example.com:88/index.php/catalog/index/view?query=123#hash',
-                'https://example.com:88/index.php/catalog/index/view?query=123#hash'
+                'https://example.com:88/index.php/catalog/index/view?query=123#hash',
             ],
             'without port' => [
                 'https://example.com/index.php/catalog/index/view?query=123#hash',
-                'https://example.com/index.php/catalog/index/view?query=123#hash'
+                'https://example.com/index.php/catalog/index/view?query=123#hash',
             ],
             'http' => [
                 'http://example.com/index.php/catalog/index/view?query=123#hash',
-                'http://example.com/index.php/catalog/index/view?query=123#hash'
-            ]
+                'http://example.com/index.php/catalog/index/view?query=123#hash',
+            ],
         ];
     }
 
@@ -612,7 +613,7 @@ class UrlTest extends TestCase
     {
         return [
             'is origin url' => [true, 'http://localhost/'],
-            'is not origin url' => [false, 'http://example.com/']
+            'is not origin url' => [false, 'http://example.com/'],
         ];
     }
 
@@ -633,7 +634,7 @@ class UrlTest extends TestCase
             'urlSecurityInfo' => $urlSecurityInfoMock,
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             'scopeResolver' => $this->scopeResolverMock,
-            'scopeConfig' => $this->scopeConfig
+            'scopeConfig' => $this->scopeConfig,
         ]);
 
         $this->scopeConfig->expects($this->any())
@@ -678,8 +679,8 @@ class UrlTest extends TestCase
                 'web/unsecure/base_url_unsecure',
                 false,
                 1,
-                'base_url_unsecure'
-            ]
+                'base_url_unsecure',
+            ],
         ];
     }
 
@@ -691,7 +692,7 @@ class UrlTest extends TestCase
         $model = $this->getUrlModel([
             'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             'scopeResolver' => $this->scopeResolverMock,
-            'scopeConfig' => $this->scopeConfig
+            'scopeConfig' => $this->scopeConfig,
         ]);
 
         $this->scopeConfig->expects($this->any())
@@ -729,7 +730,7 @@ class UrlTest extends TestCase
                 'request' => $requestMock,
                 'sidResolver' => $this->sidResolverMock,
                 'scopeResolver' => $this->scopeResolverMock,
-                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory()
+                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             ]
         );
 
@@ -760,7 +761,7 @@ class UrlTest extends TestCase
                 'request' => $requestMock,
                 'sidResolver' => $this->sidResolverMock,
                 'scopeResolver' => $this->scopeResolverMock,
-                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory()
+                'routeParamsResolverFactory' => $this->getRouteParamsResolverFactory(),
             ]
         );
 
@@ -790,20 +791,20 @@ class UrlTest extends TestCase
         return [
             [
                 '<a href="http://example.com/?___SID=U?SID=session-id">www.example.com</a>',
-                '<a href="http://example.com/?SID=session-id">www.example.com</a>'
+                '<a href="http://example.com/?SID=session-id">www.example.com</a>',
             ],
             [
                 '<a href="http://example.com/?___SID=U&SID=session-id">www.example.com</a>',
-                '<a href="http://example.com/?SID=session-id">www.example.com</a>'
+                '<a href="http://example.com/?SID=session-id">www.example.com</a>',
             ],
             [
                 '<a href="http://example.com/?foo=bar&___SID=U?SID=session-id">www.example.com</a>',
-                '<a href="http://example.com/?foo=bar?SID=session-id">www.example.com</a>'
+                '<a href="http://example.com/?foo=bar?SID=session-id">www.example.com</a>',
             ],
             [
                 '<a href="http://example.com/?foo=bar&___SID=U&SID=session-id">www.example.com</a>',
-                '<a href="http://example.com/?foo=bar&SID=session-id">www.example.com</a>'
-            ]
+                '<a href="http://example.com/?foo=bar&SID=session-id">www.example.com</a>',
+            ],
         ];
     }
 

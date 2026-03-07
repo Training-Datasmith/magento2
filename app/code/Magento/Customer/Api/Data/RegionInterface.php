@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -17,9 +20,9 @@ interface RegionInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array. Identical to the getters in snake case
      */
-    const REGION_CODE = 'region_code';
-    const REGION = 'region';
-    const REGION_ID = 'region_id';
+    public const REGION_CODE = 'region_code';
+    public const REGION = 'region';
+    public const REGION_ID = 'region_id';
     /**#@-*/
 
     /**

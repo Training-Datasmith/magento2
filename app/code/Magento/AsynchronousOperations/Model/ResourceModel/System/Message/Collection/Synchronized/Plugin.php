@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model\ResourceModel\System\Message\Collection\Synchronized;
 
 /**
@@ -17,76 +20,29 @@ class Plugin
     private $messageFactory;
 
     /**
-     * @var \Magento\Framework\Bulk\BulkStatusInterface
-     */
-    private $bulkStatus;
-
-    /**
-     * @var \Magento\Authorization\Model\UserContextInterface
-     */
-    private $userContext;
-
-    /**
-     * @var \Magento\AsynchronousOperations\Model\Operation\Details
-     */
-    private $operationDetails;
-
-    /**
-     * @var \Magento\AsynchronousOperations\Model\BulkNotificationManagement
-     */
-    private $bulkNotificationManagement;
-
-    /**
-     * @var \Magento\Framework\AuthorizationInterface
-     */
-    private $authorization;
-
-    /**
-     * @var \Magento\AsynchronousOperations\Model\StatusMapper
-     */
-    private $statusMapper;
-
-    /**
      * Plugin constructor.
-     *
-     * @param \Magento\AdminNotification\Model\System\MessageFactory $messageFactory
-     * @param \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus
-     * @param \Magento\AsynchronousOperations\Model\BulkNotificationManagement $bulkNotificationManagement
-     * @param \Magento\Authorization\Model\UserContextInterface $userContext
-     * @param \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails
-     * @param \Magento\Framework\AuthorizationInterface $authorization
-     * @param \Magento\AsynchronousOperations\Model\StatusMapper $statusMapper
      */
     public function __construct(
         \Magento\AdminNotification\Model\System\MessageFactory $messageFactory,
-        \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus,
-        \Magento\AsynchronousOperations\Model\BulkNotificationManagement $bulkNotificationManagement,
-        \Magento\Authorization\Model\UserContextInterface $userContext,
-        \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails,
-        \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\AsynchronousOperations\Model\StatusMapper $statusMapper
+        private readonly \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus,
+        private readonly \Magento\AsynchronousOperations\Model\BulkNotificationManagement $bulkNotificationManagement,
+        private readonly \Magento\Authorization\Model\UserContextInterface $userContext,
+        private readonly \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails,
+        private readonly \Magento\Framework\AuthorizationInterface $authorization,
+        private readonly \Magento\AsynchronousOperations\Model\StatusMapper $statusMapper
     ) {
         $this->messageFactory = $messageFactory;
-        $this->bulkStatus = $bulkStatus;
-        $this->userContext = $userContext;
-        $this->operationDetails = $operationDetails;
-        $this->bulkNotificationManagement = $bulkNotificationManagement;
-        $this->authorization = $authorization;
-        $this->statusMapper = $statusMapper;
     }
 
     /**
      * Adding bulk related messages to notification area
      *
-     * @param \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $collection
-     * @param array $result
-     * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterToArray(
         \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection\Synchronized $collection,
-        $result
-    ) {
+        array $result
+    ): array {
         if (!$this->authorization->isAllowed('Magento_Logging::system_magento_logging_bulk_operations')) {
             return $result;
         }
@@ -117,8 +73,8 @@ class Plugin
                             'identity' => md5('bulk' . $bulkUuid),
                             'uuid' => $bulkUuid,
                             'status' => $bulkStatus,
-                            'created_at' => $bulk->getStartTime()
-                        ]
+                            'created_at' => $bulk->getStartTime(),
+                        ],
                     ];
                     $messagesCount++;
                 }
@@ -137,10 +93,9 @@ class Plugin
     /**
      * Get Bulk notification message
      *
-     * @param array $operationDetails
      * @return \Magento\Framework\Phrase|string
      */
-    private function getText($operationDetails)
+    private function getText(array $operationDetails)
     {
         if (0 == $operationDetails['operations_successful'] && 0 == $operationDetails['operations_failed']) {
             return __('%1 item(s) have been scheduled for update.', $operationDetails['operations_total']);
@@ -166,9 +121,8 @@ class Plugin
      * Get array with acknowledgedBulksUuid
      *
      * @param array $acknowledgedBulks
-     * @return array
      */
-    private function getAcknowledgedBulksUuid($acknowledgedBulks)
+    private function getAcknowledgedBulksUuid($acknowledgedBulks): array
     {
         $acknowledgedBulksArray = [];
         foreach ($acknowledgedBulks as $bulk) {

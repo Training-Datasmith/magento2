@@ -31,7 +31,7 @@ use PHPUnit\Framework\TestCase;
 class ImageTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /**
      * Base URL for media files
      */
@@ -134,8 +134,8 @@ class ImageTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->secureRenderer
-            ]
+                $this->secureRenderer,
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -147,7 +147,7 @@ class ImageTest extends TestCase
                 'escaper' => $this->escaper,
                 'urlBuilder' => $this->urlBuilder,
                 'data' => [],
-                'secureRenderer' => $this->secureRenderer
+                'secureRenderer' => $this->secureRenderer,
             ]
         );
     }
@@ -195,23 +195,23 @@ class ImageTest extends TestCase
             'with_value' => [
                 'value' => self::TEST_IMAGE,
                 'shouldCallGetBaseUrl' => true,
-                'expectedResult' => null // result will be calculated in test
+                'expectedResult' => null, // result will be calculated in test
             ],
             'without_value' => [
                 'value' => null,
                 'shouldCallGetBaseUrl' => false,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             'empty_value' => [
                 'value' => '',
                 'shouldCallGetBaseUrl' => false,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             'nested_path' => [
                 'value' => 'a/b/image.jpg',
                 'shouldCallGetBaseUrl' => true,
-                'expectedResult' => null // result will be calculated in test
-            ]
+                'expectedResult' => null, // result will be calculated in test
+            ],
         ];
     }
 
@@ -282,14 +282,14 @@ class ImageTest extends TestCase
                 'htmlId' => null,
                 'imageValue' => null,
                 'expectsHiddenField' => false,
-                'expectedContains' => []
+                'expectedContains' => [],
             ],
             'no_attribute' => [
                 'isRequired' => null,
                 'htmlId' => null,
                 'imageValue' => null,
                 'expectsHiddenField' => false,
-                'expectedContains' => []
+                'expectedContains' => [],
             ],
             'required_with_value' => [
                 'isRequired' => true,
@@ -301,8 +301,8 @@ class ImageTest extends TestCase
                     'class="required-entry"',
                     '_hidden',
                     self::TEST_IMAGE,
-                    'text/x-magento-template'
-                ]
+                    'text/x-magento-template',
+                ],
             ],
             'required_with_empty_value' => [
                 'isRequired' => true,
@@ -312,8 +312,8 @@ class ImageTest extends TestCase
                 'expectedContains' => [
                     'type="hidden"',
                     '_hidden',
-                    'text/x-magento-template'
-                ]
+                    'text/x-magento-template',
+                ],
             ],
             'required_different_html_id' => [
                 'isRequired' => true,
@@ -323,9 +323,9 @@ class ImageTest extends TestCase
                 'expectedContains' => [
                     '_hidden"',
                     'type="hidden"',
-                    'text/x-magento-template'
-                ]
-            ]
+                    'text/x-magento-template',
+                ],
+            ],
         ];
     }
 
@@ -383,7 +383,7 @@ class ImageTest extends TestCase
                 'escaper' => $this->escaper,
                 'urlBuilder' => $this->urlBuilder,
                 'data' => ['html_id' => 'test_id'],
-                'secureRenderer' => $this->secureRenderer
+                'secureRenderer' => $this->secureRenderer,
             ]
         );
 

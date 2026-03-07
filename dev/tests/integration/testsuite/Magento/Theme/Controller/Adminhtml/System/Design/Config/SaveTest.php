@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -119,7 +121,7 @@ class SaveTest extends AbstractBackendController
     {
         $this->getRequest()->setParams(
             [
-                'form_key' => $this->formKey->getFormKey()
+                'form_key' => $this->formKey->getFormKey(),
             ]
         );
 

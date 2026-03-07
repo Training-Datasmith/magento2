@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Fieldset renderer for PayPal solutions group
  */
+
 namespace Magento\Paypal\Block\Adminhtml\System\Config\Fieldset;
 
 class Group extends \Magento\Config\Block\System\Config\Form\Fieldset

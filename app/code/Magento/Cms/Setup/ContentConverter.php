@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Setup;
 
 use Magento\Framework\Data\Wysiwyg\Normalizer;
 use Magento\Framework\DB\DataConverter\DataConversionException;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
+use Magento\Framework\Filter\Template\Tokenizer\ParameterFactory;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\Serialize;
-use Magento\Framework\Filter\Template\Tokenizer\ParameterFactory;
 
 /**
  * Convert conditions_encoded part of cms block content data from serialized to JSON format

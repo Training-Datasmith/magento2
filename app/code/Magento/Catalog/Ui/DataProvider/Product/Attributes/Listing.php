@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,9 +8,8 @@
 
 namespace Magento\Catalog\Ui\DataProvider\Product\Attributes;
 
-use Magento\Catalog\Model\AttributeHandler;
-use Magento\Framework\App\RequestInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
+use Magento\Framework\App\RequestInterface;
 
 /**
  * DataProvider for product attributes listing
@@ -58,7 +59,7 @@ class Listing extends \Magento\Ui\DataProvider\AbstractDataProvider
 
         return [
             'totalRecords' => $this->collection->getSize(),
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

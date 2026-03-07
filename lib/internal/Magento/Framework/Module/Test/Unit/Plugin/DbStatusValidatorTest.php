@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Framework\Module\DbVersionInfo;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Module\ModuleListInterface;
 use Magento\Framework\Module\Plugin\DbStatusValidator;
-use PHPUnit\Framework\MockObject\MockObject;
-
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class DbStatusValidatorTest extends TestCase
 {
@@ -76,7 +77,7 @@ class DbStatusValidatorTest extends TestCase
         );
         $this->dbVersionInfoMock = $this->createMock(DbVersionInfo::class);
 
-        $this->deploymentConfig =$this->getMockBuilder(DeploymentConfig::class)
+        $this->deploymentConfig = $this->getMockBuilder(DeploymentConfig::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -157,8 +158,8 @@ class DbStatusValidatorTest extends TestCase
                         DbVersionInfo::KEY_MODULE => 'Module_One',
                         DbVersionInfo::KEY_TYPE => 'schema',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
-                    ]
+                        DbVersionInfo::KEY_REQUIRED => '1',
+                    ],
                 ],
             ],
             'data is outdated' => [
@@ -167,8 +168,8 @@ class DbStatusValidatorTest extends TestCase
                         DbVersionInfo::KEY_MODULE => 'Module_Two',
                         DbVersionInfo::KEY_TYPE => 'data',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
-                    ]
+                        DbVersionInfo::KEY_REQUIRED => '1',
+                    ],
                 ],
             ],
             'both schema and data are outdated' => [
@@ -177,26 +178,26 @@ class DbStatusValidatorTest extends TestCase
                         DbVersionInfo::KEY_MODULE => 'Module_One',
                         DbVersionInfo::KEY_TYPE => 'schema',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
+                        DbVersionInfo::KEY_REQUIRED => '1',
                     ],
                     [
                         DbVersionInfo::KEY_MODULE => 'Module_Two',
                         DbVersionInfo::KEY_TYPE => 'schema',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
+                        DbVersionInfo::KEY_REQUIRED => '1',
                     ],
                     [
                         DbVersionInfo::KEY_MODULE => 'Module_One',
                         DbVersionInfo::KEY_TYPE => 'data',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
+                        DbVersionInfo::KEY_REQUIRED => '1',
                     ],
                     [
                         DbVersionInfo::KEY_MODULE => 'Module_Two',
                         DbVersionInfo::KEY_TYPE => 'data',
                         DbVersionInfo::KEY_CURRENT => 'none',
-                        DbVersionInfo::KEY_REQUIRED => '1'
-                    ]
+                        DbVersionInfo::KEY_REQUIRED => '1',
+                    ],
                 ],
             ],
         ];

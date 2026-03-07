@@ -120,12 +120,12 @@ class ConfigTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->secureRenderer
+                $this->secureRenderer,
             ],
             [
                 Random::class,
-                $randomMock
-            ]
+                $randomMock,
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -150,7 +150,7 @@ class ConfigTest extends TestCase
                 'factoryCollection' => $this->factoryCollection,
                 'escaper' => $this->escaper,
                 'data' => [],
-                'secureRenderer' => $this->secureRenderer
+                'secureRenderer' => $this->secureRenderer,
             ]
         );
 
@@ -172,7 +172,7 @@ class ConfigTest extends TestCase
                 'factoryCollection' => $this->factoryCollection,
                 'escaper' => $this->escaper,
                 'data' => ['html_id' => 'test_id'],
-                'secureRenderer' => $this->secureRenderer
+                'secureRenderer' => $this->secureRenderer,
             ]
         );
 
@@ -231,9 +231,9 @@ class ConfigTest extends TestCase
                     'use_config_test_element',
                     'checked="checked"',
                     'Use Config Settings',
-                    'type="checkbox"'
+                    'type="checkbox"',
                 ],
-                'expectedNotContains' => []
+                'expectedNotContains' => [],
             ],
             'with_value_unchecked_checkbox' => [
                 'value' => 'some_value',
@@ -241,19 +241,19 @@ class ConfigTest extends TestCase
                 'expectedContains' => [
                     'use_config_test_element',
                     'Use Config Settings',
-                    'type="checkbox"'
+                    'type="checkbox"',
                 ],
-                'expectedNotContains' => ['checked="checked"']
+                'expectedNotContains' => ['checked="checked"'],
             ],
             'readonly_disabled_checkbox' => [
                 'value' => '',
                 'readonly' => true,
                 'expectedContains' => [
                     'disabled="disabled"',
-                    'use_config_test_element'
+                    'use_config_test_element',
                 ],
-                'expectedNotContains' => []
-            ]
+                'expectedNotContains' => [],
+            ],
         ];
     }
 
@@ -313,35 +313,35 @@ class ConfigTest extends TestCase
                 'testCallback' => true,
                 'expectedContains' => [
                     'use_config_test_element',
-                    'text/x-magento-template'
-                ]
+                    'text/x-magento-template',
+                ],
             ],
             'checkbox_name' => [
                 'testCallback' => false,
                 'expectedContains' => [
-                    'name="product[use_config_test_element]"'
-                ]
+                    'name="product[use_config_test_element]"',
+                ],
             ],
             'checkbox_value' => [
                 'testCallback' => false,
                 'expectedContains' => [
-                    'value="1"'
-                ]
+                    'value="1"',
+                ],
             ],
             'checkbox_label' => [
                 'testCallback' => false,
                 'expectedContains' => [
-                    'Use Config Settings'
-                ]
+                    'Use Config Settings',
+                ],
             ],
             'secure_renderer_tags' => [
                 'testCallback' => false,
                 'expectedContains' => [
                     'text/x-magento-template',
                     'test_script',
-                    'test_listener'
-                ]
-            ]
+                    'test_listener',
+                ],
+            ],
         ];
     }
 }

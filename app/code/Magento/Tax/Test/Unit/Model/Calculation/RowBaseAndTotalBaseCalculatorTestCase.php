@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -182,23 +183,23 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
                 [
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'getCode',
-                    self::MOCK_VALUE => self::CODE
+                    self::MOCK_VALUE => self::CODE,
                 ],
                 [
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'getType',
-                    self::MOCK_VALUE => self::TYPE
+                    self::MOCK_VALUE => self::TYPE,
                 ],
                 [
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'getUnitPrice',
-                    self::MOCK_VALUE => self::UNIT_PRICE
+                    self::MOCK_VALUE => self::UNIT_PRICE,
                 ],
                 [
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'getIsTaxIncluded',
-                    self::MOCK_VALUE => $isTaxIncluded
-                ]
+                    self::MOCK_VALUE => $isTaxIncluded,
+                ],
             ]
         );
     }
@@ -216,7 +217,7 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'applyTaxAfterDiscount',
                     self::MOCK_VALUE => true,
-                ]
+                ],
             ]
         );
     }
@@ -232,7 +233,7 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
             [
                 self::ONCE => false,
                 self::MOCK_METHOD_NAME => 'getRate',
-                self::MOCK_VALUE => self::RATE
+                self::MOCK_VALUE => self::RATE,
             ],
             [
                 self::ONCE => false,
@@ -249,7 +250,7 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -257,7 +258,7 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
             $mockValues[] = [
                 self::ONCE => false,
                 self::MOCK_METHOD_NAME => 'getStoreRate',
-                self::MOCK_VALUE => self::STORE_RATE
+                self::MOCK_VALUE => self::STORE_RATE,
             ];
         }
 
@@ -287,7 +288,7 @@ class RowBaseAndTotalBaseCalculatorTestCase extends TestCase
                     self::ONCE => false,
                     self::MOCK_METHOD_NAME => 'create',
                     self::MOCK_VALUE => $this->mockAppliedTax,
-                ]
+                ],
             ]
         );
     }

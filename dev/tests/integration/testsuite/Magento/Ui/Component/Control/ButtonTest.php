@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class ButtonTest extends TestCase
                 'element_name' => 'some-name',
                 'value' => 'Press a button',
                 'data-style' => 'width: 100px',
-                'style' => 'height: 200px'
+                'style' => 'height: 200px',
             ]
         );
 

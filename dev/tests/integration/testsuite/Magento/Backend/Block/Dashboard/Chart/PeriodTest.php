@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class PeriodTest extends TestCase
         $this->objectManager = Bootstrap::getObjectManager();
         $this->layout = $this->objectManager->get(LayoutInterface::class);
         $this->block = $this->layout->createBlock(Template::class);
-        $this->block->setTemplate("Magento_Backend::dashboard/chart/period.phtml");
+        $this->block->setTemplate('Magento_Backend::dashboard/chart/period.phtml');
         $this->block->setData('view_model', $this->objectManager->get(ChartsPeriod::class));
     }
 
@@ -57,7 +58,7 @@ class PeriodTest extends TestCase
             __('Last 7 Days'),
             __('Current Month'),
             __('YTD'),
-            __('2YTD')
+            __('2YTD'),
         ];
         foreach ($dropDownList as $item) {
             $xPath = "//select[@id='dashboard_chart_period']/option[normalize-space(text())='{$item}']";

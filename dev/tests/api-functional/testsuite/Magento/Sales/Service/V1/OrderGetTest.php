@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,9 +58,9 @@ class OrderGetTest extends WebapiAbstract
                 // metadata
                 1 => json_encode([
                     'type' => 'free',
-                    'fraudulent' => false
-                ])
-            ]
+                    'fraudulent' => false,
+                ]),
+            ],
         ];
         $expectedBillingAddressNotEmpty = [
             'city',
@@ -76,7 +77,7 @@ class OrderGetTest extends WebapiAbstract
             'city' => 'Los Angeles',
             'email' => 'customer@example.com',
             'postcode' => '11111',
-            'region' => 'CA'
+            'region' => 'CA',
         ];
 
         $result = $this->makeServiceCall(self::ORDER_INCREMENT_ID);
@@ -122,7 +123,7 @@ class OrderGetTest extends WebapiAbstract
     {
         $expectedTax = [
             'code' => 'US-NY-*-Rate 1',
-            'type' => 'shipping'
+            'type' => 'shipping',
         ];
 
         $result = $this->makeServiceCall(self::ORDER_INCREMENT_ID);
@@ -162,10 +163,10 @@ class OrderGetTest extends WebapiAbstract
                     [
                         'option_id' => 1,
                         'option_selections' => [1],
-                        'option_qty' => 1
-                    ]
-                ]
-            ]
+                        'option_qty' => 1,
+                    ],
+                ],
+            ],
         ];
         $result = $this->makeServiceCall(self::ORDER_INCREMENT_ID);
 

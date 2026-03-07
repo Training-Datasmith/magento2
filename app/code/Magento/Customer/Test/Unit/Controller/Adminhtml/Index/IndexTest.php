@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Backend\Model\View\Result\Forward;
 use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Customer\Controller\Adminhtml\Index\Index;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
@@ -20,14 +22,12 @@ use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @covers \Magento\Customer\Controller\Adminhtml\Index\Index
  */
 class IndexTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -117,7 +117,7 @@ class IndexTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'session' => $this->sessionMock
+                'session' => $this->sessionMock,
             ]
         );
         $this->indexController = $objectManager->getObject(
@@ -125,7 +125,7 @@ class IndexTest extends TestCase
             [
                 'context' => $this->context,
                 'resultForwardFactory' => $this->resultForwardFactoryMock,
-                'resultPageFactory' => $this->resultPageFactoryMock
+                'resultPageFactory' => $this->resultPageFactoryMock,
             ]
         );
     }

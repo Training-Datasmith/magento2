@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -21,7 +22,6 @@ use Magento\Security\Model\UserExpiration as UserExpirationModel;
  */
 class UserExpiration extends AbstractDb
 {
-
     /**
      * Flag that notifies whether Primary key of table is auto-incremented
      *

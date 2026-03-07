@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Model\ResourceModel\Rating;
 
 /**
@@ -208,7 +211,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 'vote_count' => new \Zend_Db_Expr('COUNT(vote.vote_id)'),
                 'vote_value_sum' => new \Zend_Db_Expr('SUM(vote.value)'),
                 'app_vote_count' => new \Zend_Db_Expr("COUNT({$appVoteCountCond})"),
-                'app_vote_value_sum' => new \Zend_Db_Expr("SUM({$appVoteValueSumCond})")
+                'app_vote_value_sum' => new \Zend_Db_Expr("SUM({$appVoteValueSumCond})"),
             ]
         )->join(
             ['review' => $this->_reviewTable],

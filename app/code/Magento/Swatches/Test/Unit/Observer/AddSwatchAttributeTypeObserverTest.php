@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Module\Manager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Observer\AddSwatchAttributeTypeObserver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Observer test
@@ -80,15 +81,15 @@ class AddSwatchAttributeTypeObserverTest extends TestCase
                 [
                     'isOutputEnabled' => true,
                     'methods_count' => 1,
-                    'outputArray' => []
-                ]
+                    'outputArray' => [],
+                ],
             ],
             [
                 [
                     'isOutputEnabled' => false,
                     'methods_count' => 0,
-                    'outputArray' => []
-                ]
+                    'outputArray' => [],
+                ],
             ],
         ];
     }

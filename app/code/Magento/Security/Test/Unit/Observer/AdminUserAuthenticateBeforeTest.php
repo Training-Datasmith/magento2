@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class AdminUserAuthenticateBeforeTest extends TestCase
                 'setUserId',
                 'setExpiresAt',
                 'getExtensionAttributes',
-                'setExtensionAttributes'
+                'setExtensionAttributes',
             ]
         );
     }

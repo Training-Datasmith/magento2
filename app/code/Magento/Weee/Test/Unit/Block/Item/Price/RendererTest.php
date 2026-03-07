@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -178,7 +179,7 @@ class RendererTest extends TestCase
             'weee_enabled_showdetail_string_zero_false' => [
                 'isWeeeEnabled' => true,
                 'showWeeeDetails' => true,
-                'hasWeeeAmount' => "0.0000",
+                'hasWeeeAmount' => '0.0000',
                 'expectedValue' => false,
             ],
             'weee_enabled_showdetail_false' => [
@@ -808,7 +809,7 @@ class RendererTest extends TestCase
                 'getRowTotal',
                 'getTaxAmount',
                 'getDiscountTaxCompensationAmount',
-                'getDiscountAmount'
+                'getDiscountAmount',
             ]
         );
 
@@ -853,7 +854,7 @@ class RendererTest extends TestCase
                 'getBaseRowTotal',
                 'getBaseTaxAmount',
                 'getBaseDiscountTaxCompensationAmount',
-                'getBaseDiscountAmount'
+                'getBaseDiscountAmount',
             ]
         );
 

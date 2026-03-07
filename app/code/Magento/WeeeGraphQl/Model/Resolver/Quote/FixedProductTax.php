@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class FixedProductTax implements ResolverInterface
                         'value' => $amount,
                         'currency' => $value['price']['currency'],
                     ],
-                    'label' => $tax['title']
+                    'label' => $tax['title'],
                 ];
             }
         }

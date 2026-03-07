@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -115,7 +116,7 @@ class ShippingAssignmentProcessorTest extends TestCase
                 'shippingAssignmentFactory' => $this->shippingAssignmentFactoryMock,
                 'shippingProcessor' => $this->shippingProcessorMock,
                 'cartItemPersister' => $this->cartItemPersisterMock,
-                'addressRepository' => $this->addressRepositoryMock
+                'addressRepository' => $this->addressRepositoryMock,
             ]
         );
     }

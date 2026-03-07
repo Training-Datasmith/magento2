@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,64 +90,64 @@ class CreditmemoTest extends GraphQlAbstract
         $expectedCreditMemoData = [
             [
                 'comments' => [
-                    ['message' => 'some_comment']
+                    ['message' => 'some_comment'],
                 ],
                 'items' => [
                     [
                         'product_name' => 'Simple Related Product',
                         'product_sku' => 'simple',
                         'product_sale_price' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'discounts' => [],
-                        'quantity_refunded' => 1
+                        'quantity_refunded' => 1,
                     ],
                     [
                         'product_name' => 'Simple Product With Related Product',
                         'product_sku' => 'simple_with_cross',
                         'product_sale_price' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'discounts' => [],
-                        'quantity_refunded' => 1
-                    ]
+                        'quantity_refunded' => 1,
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
-                        'value' => 20
+                        'value' => 20,
                     ],
                     'grand_total' => [
                         'value' => 20,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 10,
-                        'currency' => 'EUR'
+                        'currency' => 'EUR',
                     ],
                     'total_shipping' => [
-                        'value' => 0
+                        'value' => 0,
                     ],
                     'total_tax' => [
-                        'value' => 0
+                        'value' => 0,
                     ],
                     'shipping_handling' => [
                         'amount_including_tax' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
                         'amount_excluding_tax' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
                         'total_amount' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
                         'taxes' => [],
                         'discounts' => [],
                     ],
                     'adjustment' => [
-                        'value' => 1.23
-                    ]
-                ]
-            ]
+                        'value' => 1.23,
+                    ],
+                ],
+            ],
         ];
 
         $firstOrderItem = current($response['customer']['orders']['items'] ?? []);
@@ -190,7 +191,7 @@ class CreditmemoTest extends GraphQlAbstract
         $creditMemo->setBaseGrandTotal(23);
         $creditMemo->setGrandTotal(23);
         $creditMemo->setAdjustment(-2.00);
-        $creditMemo->addComment("Test comment for partial refund", false, true);
+        $creditMemo->addComment('Test comment for partial refund', false, true);
         $creditMemo->save();
 
         $this->creditMemoService->refund($creditMemo, true);
@@ -202,7 +203,7 @@ class CreditmemoTest extends GraphQlAbstract
                         'product_name' => 'Bundle Product With Two dropdown options',
                         'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2',
                         'product_sale_price' => [
-                            'value' => 15
+                            'value' => 15,
                         ],
                         'discounts' => [],
                         'bundle_options' => [
@@ -213,9 +214,9 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product1',
                                         'product_sku' => 'simple1',
                                         'quantity' => 1,
-                                        'price' => ['value' => 1, 'currency' => 'USD']
-                                    ]
-                                ]
+                                        'price' => ['value' => 1, 'currency' => 'USD'],
+                                    ],
+                                ],
                             ],
                             [
                                 'label' => 'Drop Down Option 2',
@@ -224,28 +225,28 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product2',
                                         'product_sku' => 'simple2',
                                         'quantity' => 2,
-                                        'price' => ['value' => 2, 'currency' => 'USD']
-                                    ]
-                                ]
-                            ]
+                                        'price' => ['value' => 2, 'currency' => 'USD'],
+                                    ],
+                                ],
+                            ],
                         ],
-                        'quantity_invoiced' => 2
+                        'quantity_invoiced' => 2,
                     ],
 
-                ]
-            ]
+                ],
+            ],
         ];
         $expectedCreditMemoData = [
             [
                 'comments' => [
-                    ['message' => 'Test comment for partial refund']
+                    ['message' => 'Test comment for partial refund'],
                 ],
                 'items' => [
                     [
                         'product_name' => 'Bundle Product With Two dropdown options',
                         'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2',
                         'product_sale_price' => [
-                            'value' => 15
+                            'value' => 15,
                         ],
                         'discounts' => [],
                         'bundle_options' => [
@@ -256,9 +257,9 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product1',
                                         'product_sku' => 'simple1',
                                         'quantity' => 1,
-                                        'price' => ['value' => 1, 'currency' => 'USD']
-                                    ]
-                                ]
+                                        'price' => ['value' => 1, 'currency' => 'USD'],
+                                    ],
+                                ],
                             ],
                             [
                                 'label' => 'Drop Down Option 2',
@@ -267,51 +268,51 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product2',
                                         'product_sku' => 'simple2',
                                         'quantity' => 2,
-                                        'price' => ['value' => 2, 'currency' => 'USD']
-                                    ]
-                                ]
-                            ]
+                                        'price' => ['value' => 2, 'currency' => 'USD'],
+                                    ],
+                                ],
+                            ],
                         ],
-                        'quantity_refunded' => 1
+                        'quantity_refunded' => 1,
                     ],
 
                 ],
                 'total' => [
                     'subtotal' => [
-                        'value' => 15
+                        'value' => 15,
                     ],
                     'grand_total' => [
                         'value' => 23,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 23,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
-                        'value' => 10
+                        'value' => 10,
                     ],
                     'total_tax' => [
-                        'value' => 0
+                        'value' => 0,
                     ],
                     'shipping_handling' => [
                         'amount_including_tax' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'amount_excluding_tax' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'total_amount' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'taxes' => [],
                         'discounts' => [],
                     ],
                     'adjustment' => [
-                        'value' => 2
-                    ]
-                ]
-            ]
+                        'value' => 2,
+                    ],
+                ],
+            ],
         ];
         $firstOrderItem = current($response['customer']['orders']['items'] ?? []);
 
@@ -363,7 +364,7 @@ class CreditmemoTest extends GraphQlAbstract
         $creditMemo->setAdjustment(0.00);
         $creditMemo->setDiscountAmount(-2.5);
         $creditMemo->setDiscountDescription('Discount Label for 10% off');
-        $creditMemo->addComment("Test comment for refund with taxes and discount", false, true);
+        $creditMemo->addComment('Test comment for refund with taxes and discount', false, true);
         $creditMemo->save();
 
         $this->creditMemoService->refund($creditMemo, true);
@@ -371,23 +372,23 @@ class CreditmemoTest extends GraphQlAbstract
         $expectedCreditMemoData = [
             [
                 'comments' => [
-                    ['message' => 'Test comment for refund with taxes and discount']
+                    ['message' => 'Test comment for refund with taxes and discount'],
                 ],
                 'items' => [
                     [
                         'product_name' => 'Bundle Product With Two dropdown options',
                         'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2',
                         'product_sale_price' => [
-                            'value' => 15
+                            'value' => 15,
                         ],
                         'discounts' => [
                             [
                                 'amount' => [
                                     'value' => 3,
-                                    'currency' => "USD"
+                                    'currency' => 'USD',
                                 ],
-                                'label' => 'Discount Label for 10% off'
-                            ]
+                                'label' => 'Discount Label for 10% off',
+                            ],
                         ],
                         'bundle_options' => [
                             [
@@ -397,9 +398,9 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product1',
                                         'product_sku' => 'simple1',
                                         'quantity' => 1,
-                                        'price' => ['value' => 1, 'currency' => 'USD']
-                                    ]
-                                ]
+                                        'price' => ['value' => 1, 'currency' => 'USD'],
+                                    ],
+                                ],
                             ],
                             [
                                 'label' => 'Drop Down Option 2',
@@ -408,61 +409,61 @@ class CreditmemoTest extends GraphQlAbstract
                                         'product_name' => 'Simple Product2',
                                         'product_sku' => 'simple2',
                                         'quantity' => 2,
-                                        'price' => ['value' => 2, 'currency' => 'USD']
-                                    ]
-                                ]
-                            ]
+                                        'price' => ['value' => 2, 'currency' => 'USD'],
+                                    ],
+                                ],
+                            ],
                         ],
-                        'quantity_refunded' => 1
+                        'quantity_refunded' => 1,
                     ],
 
                 ],
                 'total' => [
                     'subtotal' => [
-                        'value' => 15
+                        'value' => 15,
                     ],
                     'grand_total' => [
                         'value' => 24.19,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 24.19,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
-                        'value' => 10
+                        'value' => 10,
                     ],
                     'total_tax' => [
-                        'value'=> 1.69
+                        'value' => 1.69,
                     ],
                     'shipping_handling' => [
                         'amount_including_tax' => [
-                            'value' => 10.75
+                            'value' => 10.75,
                         ],
                         'amount_excluding_tax' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
                         'total_amount' => [
-                            'value' => 10
+                            'value' => 10,
                         ],
-                        'taxes'=> [
+                        'taxes' => [
                             0 => [
                                 'amount' => ['value' => 0.67],
                                 'title' => 'US-TEST-*-Rate-1',
-                                'rate' => 7.5
-                            ]
+                                'rate' => 7.5,
+                            ],
                         ],
                         'discounts' => [
                             [
-                                'amount'=> ['value'=> 1]
-                            ]
+                                'amount' => ['value' => 1],
+                            ],
                         ],
                     ],
                     'adjustment' => [
-                        'value' => 0
-                    ]
-                ]
-            ]
+                        'value' => 0,
+                    ],
+                ],
+            ],
         ];
         $firstOrderItem = current($response['customer']['orders']['items'] ?? []);
         $this->assertArrayHasKey('credit_memos', $firstOrderItem);

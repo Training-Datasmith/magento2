@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Ui\Component\Form\Element;
  */
 class ActionDelete extends AbstractElement
 {
-    const NAME = 'actionDelete';
+    public const NAME = 'actionDelete';
 
     /**
      * {@inheritdoc}

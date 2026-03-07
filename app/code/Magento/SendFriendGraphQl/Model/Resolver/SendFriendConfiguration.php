@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class SendFriendConfiguration implements ResolverInterface
 
         return [
             'enabled_for_customers' => $this->sendFriendHelper->isEnabled($storeId),
-            'enabled_for_guests' => $this->sendFriendHelper->isAllowForGuest($storeId)
+            'enabled_for_guests' => $this->sendFriendHelper->isAllowForGuest($storeId),
         ];
     }
 }

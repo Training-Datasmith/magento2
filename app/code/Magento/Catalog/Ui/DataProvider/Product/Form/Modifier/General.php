@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -188,7 +190,7 @@ class General extends AbstractModifier
             'prefer' => 'toggle',
             'valueMap' => [
                 'true' => '1',
-                'false' => '2'
+                'false' => '2',
             ],
         ];
 
@@ -216,7 +218,7 @@ class General extends AbstractModifier
                 [
                     'dataScope' => ProductAttributeInterface::CODE_WEIGHT,
                     'validation' => [
-                        'validate-zero-or-greater' => true
+                        'validate-zero-or-greater' => true,
                     ],
                     'additionalClasses' => 'admin__field-small',
                     'sortOrder' => 0,
@@ -225,7 +227,7 @@ class General extends AbstractModifier
                         'disabled' => '!${$.provider}:' . self::DATA_SCOPE_PRODUCT
                             . '.product_has_weight:value',
                         '__disableTmpl' => ['disabled' => false],
-                    ]
+                    ],
                 ]
             );
 
@@ -260,11 +262,11 @@ class General extends AbstractModifier
                     'options' => [
                         [
                             'label' => __('This item has weight'),
-                            'value' => 1
+                            'value' => 1,
                         ],
                         [
                             'label' => __('This item has no weight'),
-                            'value' => 0
+                            'value' => 0,
                         ],
                     ],
                     'value' => (int)$this->locator->getProduct()->getTypeInstance()->hasWeight(),
@@ -353,7 +355,7 @@ class General extends AbstractModifier
         ];
         $textListeners = [
             ProductAttributeInterface::CODE_SEO_FIELD_META_KEYWORD,
-            ProductAttributeInterface::CODE_SEO_FIELD_META_DESCRIPTION
+            ProductAttributeInterface::CODE_SEO_FIELD_META_DESCRIPTION,
         ];
 
         foreach ($listeners as $listener) {
@@ -379,7 +381,7 @@ class General extends AbstractModifier
             $meta,
             [
                 'autoImportIfEmpty' => true,
-                'validation' => ['no-marginal-whitespace' => true]
+                'validation' => ['no-marginal-whitespace' => true],
             ]
         );
 
@@ -388,7 +390,7 @@ class General extends AbstractModifier
             $namePath . static::META_CONFIG_PATH,
             $meta,
             [
-                'valueUpdate' => 'keyup'
+                'valueUpdate' => 'keyup',
             ]
         );
 
@@ -411,7 +413,7 @@ class General extends AbstractModifier
                     'The URL key should consist of lowercase characters with hyphens to separate words.'
                 ),
             ],
-            'scopeLabel' => __($scopeLabel)
+            'scopeLabel' => __($scopeLabel),
         ];
 
         $urkKeyPath = $this->arrayManager->findPath(

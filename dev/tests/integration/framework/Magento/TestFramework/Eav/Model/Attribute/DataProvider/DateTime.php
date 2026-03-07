@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -32,12 +33,12 @@ class DateTime extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'default_value_text' => '',
                         'default_value_datetime' => '02/4/2020 6:30 AM',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
     }
@@ -50,7 +51,7 @@ class DateTime extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeDataWithCheckArray(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     1 => [
                         'default_value' => '2020-02-04 06:30:00',
                     ],

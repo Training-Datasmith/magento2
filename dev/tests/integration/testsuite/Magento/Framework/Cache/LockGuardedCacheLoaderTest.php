@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class LockGuardedCacheLoaderTest extends \PHPUnit\Framework\TestCase
             ->create(
                 LockGuardedCacheLoader::class,
                 [
-                    'locker' => $this->om->get(Database::class)
+                    'locker' => $this->om->get(Database::class),
                 ]
             );
     }

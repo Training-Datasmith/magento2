@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\Theme\Test\Unit\Model\Design\Config\Plugin;
 
 use Magento\Config\App\Config\Source\DumpConfigSourceAggregated;
 use Magento\Framework\Stdlib\ArrayManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\ListInterface;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Model\Design\Config\Plugin\Dump;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DumpTest extends TestCase
 {

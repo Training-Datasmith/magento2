@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Layer filter factory
  */
+
 namespace Magento\Catalog\Model\Layer\Filter;
 
 class Factory

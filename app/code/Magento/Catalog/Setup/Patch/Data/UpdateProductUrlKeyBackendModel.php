@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class UpdateProductUrlKeyBackendModel implements DataPatchInterface, PatchRevert
             \Magento\Catalog\Model\Product::ENTITY,
             'url_key',
             [
-                'backend_model' => Url::class
+                'backend_model' => Url::class,
             ]
         );
         return $this;
@@ -81,7 +82,7 @@ class UpdateProductUrlKeyBackendModel implements DataPatchInterface, PatchRevert
             \Magento\Catalog\Model\Product::ENTITY,
             'url_key',
             [
-                'backend_model' => ''
+                'backend_model' => '',
             ]
         );
         return $this;

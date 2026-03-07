@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -287,7 +288,7 @@ class StringUtils extends AbstractDb
                     'locale' => $locale,
                     'string' => $string,
                     'translate' => $translate,
-                    'crc_string' => crc32($string)
+                    'crc_string' => crc32($string),
                 ]
             );
         }

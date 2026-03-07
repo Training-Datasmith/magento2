@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Source model of customer address types
  */
+
 namespace Magento\Customer\Model\Config\Source\Address;
 
 class Type implements \Magento\Framework\Option\ArrayInterface
@@ -20,7 +23,7 @@ class Type implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             \Magento\Customer\Model\Address\AbstractAddress::TYPE_BILLING => __('Billing Address'),
-            \Magento\Customer\Model\Address\AbstractAddress::TYPE_SHIPPING => __('Shipping Address')
+            \Magento\Customer\Model\Address\AbstractAddress::TYPE_SHIPPING => __('Shipping Address'),
         ];
     }
 }

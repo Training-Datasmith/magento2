@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mview\View;
 
 use Magento\Framework\App\ResourceConnection;
@@ -208,8 +211,8 @@ class ChangelogTest extends \PHPUnit\Framework\TestCase
         $actual = $this->connection->fetchAll($select);
         $this->assertEquals(
             [
-                'entity_id' => "12",
-                'test_additional_column' => "13"
+                'entity_id' => '12',
+                'test_additional_column' => '13',
             ],
             reset($actual)
         );

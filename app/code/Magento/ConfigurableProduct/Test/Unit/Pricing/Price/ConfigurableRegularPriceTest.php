@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\ConfigurableProduct\Test\Unit\Pricing\Price;
 
 use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Model\ConfigurableMaxPriceCalculator;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsProviderInterface;
 use Magento\ConfigurableProduct\Pricing\Price\ConfigurableRegularPrice;
 use Magento\ConfigurableProduct\Pricing\Price\LowestPriceOptionsProviderInterface;
@@ -19,7 +21,6 @@ use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfoInterface;
 use Magento\Framework\Pricing\SaleableInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -423,7 +424,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, null],
-                ['max_price', null, null]
+                ['max_price', null, null],
             ]);
 
         $productMock->expects($this->once())
@@ -468,7 +469,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, '50.00'],
-                ['max_price', null, '50.00']
+                ['max_price', null, '50.00'],
             ]);
 
         $productMock->expects($this->once())
@@ -499,7 +500,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, '50.00'],
-                ['max_price', null, '80.00']
+                ['max_price', null, '80.00'],
             ]);
 
         $productMock->expects($this->once())
@@ -538,7 +539,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, null],
-                ['max_price', null, null]
+                ['max_price', null, null],
             ]);
 
         $typeInstanceMock = $this->createMock(Configurable::class);
@@ -637,7 +638,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, null],
-                ['max_price', null, null]
+                ['max_price', null, null],
             ]);
 
         $typeInstanceMock = $this->createMock(Configurable::class);
@@ -724,7 +725,7 @@ class ConfigurableRegularPriceTest extends TestCase
             ->willReturnMap([
                 ['_children_final_prices_equal_store_1', null, null],
                 ['minimal_price', null, null],
-                ['max_price', null, null]
+                ['max_price', null, null],
             ]);
 
         $typeInstanceMock = $this->createMock(Configurable::class);

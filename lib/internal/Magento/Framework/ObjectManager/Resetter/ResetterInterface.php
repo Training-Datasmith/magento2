@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ interface ResetterInterface extends ResetAfterRequestInterface
      * @param object $instance
      * @return void
      */
-    public function addInstance(object $instance) : void;
+    public function addInstance(object $instance): void;
 
     /**
      * Sets object manager
@@ -29,5 +30,5 @@ interface ResetterInterface extends ResetAfterRequestInterface
      * @param ObjectManagerInterface $objectManager
      * @return void
      */
-    public function setObjectManager(ObjectManagerInterface $objectManager) : void;
+    public function setObjectManager(ObjectManagerInterface $objectManager): void;
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +10,8 @@ namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
-use Magento\AsynchronousOperations\Model\BulkStatus;
-use Magento\AsynchronousOperations\Model\OperationManagement;
-use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\EntityManager\EntityManager;
 use Magento\TestFramework\Helper\Bootstrap;
 
 class OperationManagementTest extends \PHPUnit\Framework\TestCase
@@ -73,8 +73,8 @@ class OperationManagementTest extends \PHPUnit\Framework\TestCase
         $connection = $this->connection->getConnection();
         $select = $connection->select()
             ->from($table)
-            ->where("bulk_uuid = ?", 'bulk-uuid-5')
-            ->where("operation_key = ?", $operationId);
+            ->where('bulk_uuid = ?', 'bulk-uuid-5')
+            ->where('operation_key = ?', $operationId);
         $updatedOperation = $connection->fetchRow($select);
 
         $this->assertEquals(OperationInterface::STATUS_TYPE_OPEN, $updatedOperation['status']);

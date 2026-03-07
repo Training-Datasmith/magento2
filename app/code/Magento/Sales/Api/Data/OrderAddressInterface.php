@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -19,132 +22,132 @@ interface OrderAddressInterface extends \Magento\Framework\Api\ExtensibleDataInt
     /**
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
 
     /**
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
 
     /**
      * Customer address ID.
      */
-    const CUSTOMER_ADDRESS_ID = 'customer_address_id';
+    public const CUSTOMER_ADDRESS_ID = 'customer_address_id';
 
     /**
      * Region ID.
      */
-    const REGION_ID = 'region_id';
+    public const REGION_ID = 'region_id';
 
     /**
      * Region code.
      */
-    const KEY_REGION_CODE = 'region_code';
+    public const KEY_REGION_CODE = 'region_code';
 
     /**
      * Customer ID.
      */
-    const CUSTOMER_ID  = 'customer_id';
+    public const CUSTOMER_ID  = 'customer_id';
 
     /**
      * Fax.
      */
-    const FAX = 'fax';
+    public const FAX = 'fax';
 
     /**
      * Region.
      */
-    const REGION = 'region';
+    public const REGION = 'region';
 
     /**
      * Postal code.
      */
-    const POSTCODE = 'postcode';
+    public const POSTCODE = 'postcode';
 
     /**
      * Last name.
      */
-    const LASTNAME = 'lastname';
+    public const LASTNAME = 'lastname';
 
     /**
      * Street.
      */
-    const STREET = 'street';
+    public const STREET = 'street';
 
     /**
      * City.
      */
-    const CITY = 'city';
+    public const CITY = 'city';
 
     /**
      * Email address.
      */
-    const EMAIL = 'email';
+    public const EMAIL = 'email';
 
     /**
      * Telephone number.
      */
-    const TELEPHONE = 'telephone';
+    public const TELEPHONE = 'telephone';
 
     /**
      * Country ID.
      */
-    const COUNTRY_ID = 'country_id';
+    public const COUNTRY_ID = 'country_id';
 
     /**
      * First name.
      */
-    const FIRSTNAME = 'firstname';
+    public const FIRSTNAME = 'firstname';
 
     /**
      * Address type.
      */
-    const ADDRESS_TYPE = 'address_type';
+    public const ADDRESS_TYPE = 'address_type';
 
     /**
      * Prefix.
      */
-    const PREFIX = 'prefix';
+    public const PREFIX = 'prefix';
 
     /**
      * Middle name.
      */
-    const MIDDLENAME = 'middlename';
+    public const MIDDLENAME = 'middlename';
 
     /**
      * Suffix.
      */
-    const SUFFIX = 'suffix';
+    public const SUFFIX = 'suffix';
 
     /**
      * Company.
      */
-    const COMPANY = 'company';
+    public const COMPANY = 'company';
 
     /**
      * Value-added tax (VAT) ID.
      */
-    const VAT_ID = 'vat_id';
+    public const VAT_ID = 'vat_id';
 
     /**
      * VAT-is-valid flag.
      */
-    const VAT_IS_VALID = 'vat_is_valid';
+    public const VAT_IS_VALID = 'vat_is_valid';
 
     /**
      * VAT request ID.
      */
-    const VAT_REQUEST_ID = 'vat_request_id';
+    public const VAT_REQUEST_ID = 'vat_request_id';
 
     /**
      * VAT request date.
      */
-    const VAT_REQUEST_DATE = 'vat_request_date';
+    public const VAT_REQUEST_DATE = 'vat_request_date';
 
     /**
      * VAT-request-success flag.
      */
-    const VAT_REQUEST_SUCCESS = 'vat_request_success';
+    public const VAT_REQUEST_SUCCESS = 'vat_request_success';
 
     /**
      * Gets the address type for the order address.

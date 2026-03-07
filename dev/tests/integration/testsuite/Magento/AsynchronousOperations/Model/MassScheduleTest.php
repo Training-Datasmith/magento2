@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test services for name collisions.
  *
@@ -9,22 +11,23 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Model\ResourceModel\Bulk\Collection as BulkCollection;
-use Magento\Framework\MessageQueue\BulkPublisherInterface;
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\Exception\BulkException;
+use Magento\Framework\MessageQueue\BulkPublisherInterface;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\Webapi\Exception;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -82,14 +85,14 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
         $this->objectManager = Bootstrap::getObjectManager();
         $this->registry = $this->objectManager->get(Registry::class);
         $this->massSchedule = $this->objectManager->create(MassSchedule::class);
-        $this->logFilePath = TESTS_TEMP_DIR . "/MessageQueueTestLog.txt";
+        $this->logFilePath = TESTS_TEMP_DIR . '/MessageQueueTestLog.txt';
         $this->collection = $this->objectManager->create(Collection::class);
         $this->productRepository = $this->objectManager->create(ProductRepositoryInterface::class);
         /** @var PublisherConsumerController publisherConsumerController */
         $this->publisherConsumerController = $this->objectManager->create(PublisherConsumerController::class, [
             'consumers' => $this->consumers,
             'logFilePath' => $this->logFilePath,
-            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams()
+            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams(),
         ]);
 
         try {
@@ -122,7 +125,7 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
                 [$this->skus, count($this->skus)]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Not all products were created");
+            $this->fail('Not all products were created');
         }
     }
 
@@ -232,7 +235,7 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
             ->getSize();
 
         if ($size > 0) {
-            throw new Exception(new Phrase("Collection size after clearing the products: %size", ['size' => $size]));
+            throw new Exception(new Phrase('Collection size after clearing the products: %size', ['size' => $size]));
         }
     }
 
@@ -259,13 +262,13 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
             $errors = $e->getErrors();
             $this->assertInstanceOf(\Magento\Framework\Exception\LocalizedException::class, $errors[0]);
 
-            $this->assertEquals("Error processing 1 element of input data", $errors[0]->getMessage());
+            $this->assertEquals('Error processing 1 element of input data', $errors[0]->getMessage());
 
             $reasonException = $errors[0]->getPrevious();
 
-            $expectedErrorMessage = "Data item corresponding to \"product\" " .
-                "must be specified in the message with topic " .
-                "\"async.magento.catalog.api.productrepositoryinterface.save.post\".";
+            $expectedErrorMessage = 'Data item corresponding to "product" ' .
+                'must be specified in the message with topic ' .
+                '"async.magento.catalog.api.productrepositoryinterface.save.post".';
             $this->assertEquals(
                 $expectedErrorMessage,
                 $reasonException->getMessage()
@@ -294,7 +297,7 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
                 [$this->skus, count($this->skus)]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Not all products were created");
+            $this->fail('Not all products were created');
         }
     }
 
@@ -330,14 +333,14 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
                     ['product' => self::getProduct()
                         ->setName('Simple Product 3')
                         ->setSku('unique-simple-product3')
-                        ->setMetaTitle('meta title 3')
+                        ->setMetaTitle('meta title 3'),
                     ],
                     ['product' => self::getProduct()
                         ->setName('Simple Product 2')
                         ->setSku('unique-simple-product2')
-                        ->setMetaTitle('meta title 2')
-                    ]
-                ]
+                        ->setMetaTitle('meta title 2'),
+                    ],
+                ],
             ],
         ];
     }
@@ -351,8 +354,8 @@ class MassScheduleTest extends \PHPUnit\Framework\TestCase
             'multiple_products' => [
                 [
                     ['product' => self::getProduct()],
-                    ['customer' => self::getProduct()]
-                ]
+                    ['customer' => self::getProduct()],
+                ],
             ],
         ];
     }

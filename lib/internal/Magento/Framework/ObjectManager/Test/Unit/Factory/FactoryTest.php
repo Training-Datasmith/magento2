@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\ObjectManager\Test\Unit\Factory\Fixture\Polymorphous;
 use Magento\Framework\ObjectManager\Test\Unit\Factory\Fixture\SemiVariadic;
 use Magento\Framework\ObjectManager\Test\Unit\Factory\Fixture\Two;
 use Magento\Framework\ObjectManager\Test\Unit\Factory\Fixture\Variadic;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FactoryTest extends TestCase
 {
@@ -76,8 +77,8 @@ class FactoryTest extends TestCase
                     'string',
                     true,
                     'default_val',
-                    false
-                ]
+                    false,
+                ],
             ]
         );
 
@@ -158,7 +159,7 @@ class FactoryTest extends TestCase
         return [
             ["{$prefix}CircularOne", "{$prefix}CircularThree"],
             ["{$prefix}CircularTwo", "{$prefix}CircularOne"],
-            ["{$prefix}CircularThree", "{$prefix}CircularTwo"]
+            ["{$prefix}CircularThree", "{$prefix}CircularTwo"],
         ];
     }
 
@@ -247,7 +248,7 @@ class FactoryTest extends TestCase
                     OneScalar::class,
                     false,
                     [],
-                    true
+                    true,
                 ],
             ]
         );
@@ -285,14 +286,14 @@ class FactoryTest extends TestCase
             ],
             'with_empty_args_value' => [
                 [
-                    'oneScalars' => []
+                    'oneScalars' => [],
                 ],
                 null,
                 null,
             ],
             'with_single_arg' => [
                 [
-                    'oneScalars' => $oneScalar1
+                    'oneScalars' => $oneScalar1,
                 ],
                 $oneScalar1,
                 null,
@@ -302,7 +303,7 @@ class FactoryTest extends TestCase
                     'oneScalars' => [
                         $oneScalar1,
                         $oneScalar2,
-                    ]
+                    ],
                 ],
                 $oneScalar1,
                 $oneScalar2,
@@ -326,8 +327,8 @@ class FactoryTest extends TestCase
                         'oneScalars' => [
                             $oneScalar1,
                             $oneScalar2,
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ]
         );
@@ -386,14 +387,14 @@ class FactoryTest extends TestCase
                     null,
                     false,
                     SemiVariadic::DEFAULT_FOO_VALUE,
-                    false
+                    false,
                 ],
                 [
                     'oneScalars',
                     OneScalar::class,
                     false,
                     [],
-                    true
+                    true,
                 ],
             ]
         );
@@ -434,7 +435,7 @@ class FactoryTest extends TestCase
             ],
             'only_with_foo_value' => [
                 [
-                    'foo' => 'baz'
+                    'foo' => 'baz',
                 ],
                 'baz',
                 null,
@@ -442,7 +443,7 @@ class FactoryTest extends TestCase
             ],
             'only_with_oneScalars_empty_value' => [
                 [
-                    'oneScalars' => []
+                    'oneScalars' => [],
                 ],
                 SemiVariadic::DEFAULT_FOO_VALUE,
                 null,
@@ -450,7 +451,7 @@ class FactoryTest extends TestCase
             ],
             'only_with_oneScalars_single_value' => [
                 [
-                    'oneScalars' => $oneScalar1
+                    'oneScalars' => $oneScalar1,
                 ],
                 SemiVariadic::DEFAULT_FOO_VALUE,
                 $oneScalar1,
@@ -461,7 +462,7 @@ class FactoryTest extends TestCase
                     'oneScalars' => [
                         $oneScalar1,
                         $oneScalar2,
-                    ]
+                    ],
                 ],
                 SemiVariadic::DEFAULT_FOO_VALUE,
                 $oneScalar1,
@@ -473,7 +474,7 @@ class FactoryTest extends TestCase
                     'oneScalars' => [
                         $oneScalar1,
                         $oneScalar2,
-                    ]
+                    ],
                 ],
                 'baz',
                 $oneScalar1,

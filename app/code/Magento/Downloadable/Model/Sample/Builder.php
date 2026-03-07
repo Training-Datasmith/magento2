@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Downloadable\Model\Sample;
 
-use Magento\Downloadable\Api\Data\SampleInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Downloadable\Api\Data\SampleInterface;
 use Magento\Downloadable\Helper\File;
 use Magento\Downloadable\Model\Sample;
 use Magento\Downloadable\Model\SampleFactory;

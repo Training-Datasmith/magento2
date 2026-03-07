@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View;
 
 /**
@@ -16,7 +19,7 @@ interface ConfigInterface
     /**
      * Filename of view configuration
      */
-    const CONFIG_FILE_NAME = 'etc/view.xml';
+    public const CONFIG_FILE_NAME = 'etc/view.xml';
 
     /**
      * Render view config object for current package and theme

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Customer attribute resource model
  */
+
 namespace Magento\Customer\Model\ResourceModel;
 
 class Attribute extends \Magento\Eav\Model\ResourceModel\Attribute

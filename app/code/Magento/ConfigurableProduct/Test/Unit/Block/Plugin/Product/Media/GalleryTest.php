@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\ConfigurableProduct\Test\Unit\Block\Plugin\Product\Media;
 use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Block\Plugin\Product\Media\Gallery;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
-use Magento\Framework\DataObject;
 use Magento\Framework\Data\Collection as DataCollection;
+use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -34,9 +35,9 @@ class GalleryTest extends TestCase
                 [
                     'mediaType' => 'type',
                     'videoUrl' => 'url',
-                    'isBase' => true
-                ]
-            ]
+                    'isBase' => true,
+                ],
+            ],
         ];
         $image = new DataObject(
             ['media_type' => 'type', 'video_url' => 'url', 'file' => 'image.jpg']
@@ -59,7 +60,7 @@ class GalleryTest extends TestCase
         $plugin = $helper->getObject(
             Gallery::class,
             [
-                'json' => $jsonMock
+                'json' => $jsonMock,
             ]
         );
         $result = $plugin->afterGetOptionsMediaGalleryDataJson($galleryMock, $resultJson);

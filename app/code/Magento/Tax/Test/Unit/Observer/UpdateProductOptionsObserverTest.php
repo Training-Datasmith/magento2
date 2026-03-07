@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,18 +34,18 @@ class UpdateProductOptionsObserverTest extends TestCase
         bool $priceIncludesTax,
         bool $displayPriceExcludingTax
     ): void {
-        $frameworkObject= new DataObject();
+        $frameworkObject = new DataObject();
         $frameworkObject->setAdditionalOptions([]);
 
-        $product=$this->createMock(Product::class);
+        $product = $this->createMock(Product::class);
 
-        $registry=$this->createMock(Registry::class);
+        $registry = $this->createMock(Registry::class);
         $registry->expects($this->any())
             ->method('registry')
             ->with('current_product')
             ->willReturn($product);
 
-        $taxData=$this->createMock(Data::class);
+        $taxData = $this->createMock(Data::class);
         $taxData->expects($this->any())
             ->method('getCalculationAlgorithm')
             ->willReturn('TOTAL_BASE_CALCULATION');
@@ -69,7 +70,7 @@ class UpdateProductOptionsObserverTest extends TestCase
             ->method('getResponseObject')
             ->willReturn($frameworkObject);
 
-        $observerObject=$this->createMock(Observer::class);
+        $observerObject = $this->createMock(Observer::class);
 
         $observerObject->expects($this->any())
             ->method('getEvent')

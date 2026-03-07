@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\Framework\Api\SearchResults;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CustomAttributesMapperTest extends TestCase
@@ -56,7 +56,7 @@ class CustomAttributesMapperTest extends TestCase
             [
                 'entityTableName' => 'test',
                 'identifierField' => 'entity_id',
-                'eavEntityType' => 'customer_address'
+                'eavEntityType' => 'customer_address',
             ]
         );
 
@@ -94,7 +94,7 @@ class CustomAttributesMapperTest extends TestCase
             ->getObject(CustomAttributesMapper::class, [
                 'attributeRepository' => $attributeRepository,
                 'metadataPool' => $metadataPool,
-                'searchCriteriaBuilder' => $searchCriteriaBuilder
+                'searchCriteriaBuilder' => $searchCriteriaBuilder,
             ]);
 
         $actual = $customAttributesMapper->entityToDatabase(
@@ -103,31 +103,31 @@ class CustomAttributesMapperTest extends TestCase
                 CustomAttributesDataInterface::CUSTOM_ATTRIBUTES => [
                     'test' => [
                         AttributeInterface::ATTRIBUTE_CODE => 'test',
-                        AttributeInterface::VALUE => 'test'
+                        AttributeInterface::VALUE => 'test',
                     ],
                     'test1' => [
                         AttributeInterface::ATTRIBUTE_CODE => 'test4',
-                        AttributeInterface::VALUE => 'test4'
+                        AttributeInterface::VALUE => 'test4',
                     ],
                     'test2' => [
                         AttributeInterface::ATTRIBUTE_CODE => 'test2',
-                        AttributeInterface::VALUE => 'test2'
-                    ]
-                ]
+                        AttributeInterface::VALUE => 'test2',
+                    ],
+                ],
             ]
         );
         $expected = [
             CustomAttributesDataInterface::CUSTOM_ATTRIBUTES => [
                 'test1' => [
                     AttributeInterface::ATTRIBUTE_CODE => 'test4',
-                    AttributeInterface::VALUE => 'test4'
+                    AttributeInterface::VALUE => 'test4',
                 ],
                 'test2' => [
                     AttributeInterface::ATTRIBUTE_CODE => 'test2',
-                    AttributeInterface::VALUE => 'test2'
+                    AttributeInterface::VALUE => 'test2',
                 ],
             ],
-            'test' => 'test'
+            'test' => 'test',
         ];
         $this->assertEquals($expected, $actual);
     }
@@ -155,7 +155,7 @@ class CustomAttributesMapperTest extends TestCase
             [
                 'entityTableName' => 'test',
                 'identifierField' => 'entity_id',
-                'eavEntityType' => 'customer_address'
+                'eavEntityType' => 'customer_address',
             ]
         );
 
@@ -187,14 +187,14 @@ class CustomAttributesMapperTest extends TestCase
             ->getObject(CustomAttributesMapper::class, [
                 'attributeRepository' => $attributeRepository,
                 'metadataPool' => $metadataPool,
-                'searchCriteriaBuilder' => $searchCriteriaBuilder
+                'searchCriteriaBuilder' => $searchCriteriaBuilder,
             ]);
         $actual = $customAttributesMapper->databaseToEntity(
             CustomAttributesDataInterface::class,
             [
                 'test' => 'test',
                 'test4' => 'test4',
-                'test2' => 'test2'
+                'test2' => 'test2',
             ]
         );
         $expected = [
@@ -203,10 +203,10 @@ class CustomAttributesMapperTest extends TestCase
             CustomAttributesDataInterface::CUSTOM_ATTRIBUTES => [
                 [
                     AttributeInterface::ATTRIBUTE_CODE => 'test',
-                    AttributeInterface::VALUE => 'test'
-                ]
+                    AttributeInterface::VALUE => 'test',
+                ],
             ],
-            'test' => 'test'
+            'test' => 'test',
         ];
         $this->assertEquals($expected, $actual);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Catalog\Helper\Data as CatalogData;
 use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
+use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType as CatalogImportExportAbstractType;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory as AttributeSetCollectionFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
@@ -19,7 +21,6 @@ use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\ImportExport\Model\Import;
 use Magento\Store\Model\Store;
-use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType as CatalogImportExportAbstractType;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -579,8 +580,13 @@ class Bundle extends CatalogImportExportAbstractType implements
                     if ($productId == $existingSelection['product_id']) {
                         foreach (array_keys($existingSelection) as $origKey) {
                             $key = $this->_bundleFieldMapping[$origKey] ?? $origKey;
-                            $this->setCacheOptionSelection($existingSelection, (string) $optionTitle,
-                                (string) $selectIndex, (string) $key, (string) $origKey);
+                            $this->setCacheOptionSelection(
+                                $existingSelection,
+                                (string) $optionTitle,
+                                (string) $selectIndex,
+                                (string) $key,
+                                (string) $origKey
+                            );
                         }
                         break;
                     }
@@ -763,7 +769,7 @@ class Bundle extends CatalogImportExportAbstractType implements
                 }
             }
         }
-        
+
         return $selectionPrices;
     }
 
@@ -787,7 +793,7 @@ class Bundle extends CatalogImportExportAbstractType implements
                     'selection_price_type' => match ($priceType) {
                         self::VALUE_FIXED => self::SELECTION_PRICE_TYPE_FIXED,
                         default => self::SELECTION_PRICE_TYPE_PERCENT,
-                    }
+                    },
                 ];
             }
         }

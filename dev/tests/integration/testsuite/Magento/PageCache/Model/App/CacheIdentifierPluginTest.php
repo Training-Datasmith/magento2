@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -105,7 +106,7 @@ class CacheIdentifierPluginTest extends TestCase
         $storeCode = $this->fixtures->get('store')->getCode();
         $serverParams = [
             StoreManager::PARAM_RUN_TYPE => 'store',
-            StoreManager::PARAM_RUN_CODE => $storeCode
+            StoreManager::PARAM_RUN_CODE => $storeCode,
         ];
         $this->request->setServer(new \Laminas\Stdlib\Parameters($serverParams));
 

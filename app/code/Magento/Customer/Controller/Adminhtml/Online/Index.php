@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Online;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Backend\App\Action implements HttpGetActionInterface
@@ -16,7 +19,7 @@ class Index extends \Magento\Backend\App\Action implements HttpGetActionInterfac
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::online';
+    public const ADMIN_RESOURCE = 'Magento_Customer::online';
 
     /**
      * @var PageFactory

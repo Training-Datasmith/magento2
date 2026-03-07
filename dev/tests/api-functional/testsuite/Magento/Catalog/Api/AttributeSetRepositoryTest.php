@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -169,7 +172,7 @@ class AttributeSetRepositoryTest extends WebapiAbstract
             'searchCriteria' => [
                 'filter_groups' => [],
                 'current_page' => 1,
-                'page_size' => 2
+                'page_size' => 2,
             ],
         ];
 

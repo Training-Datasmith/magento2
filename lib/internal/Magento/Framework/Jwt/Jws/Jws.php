@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,5 +11,4 @@ namespace Magento\Framework\Jwt\Jws;
 
 class Jws extends AbstractJws implements JwsInterface
 {
-
 }

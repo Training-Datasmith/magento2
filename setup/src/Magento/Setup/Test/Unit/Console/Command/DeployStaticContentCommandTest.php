@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Console\Command\DeployStaticContentCommand;
 use Magento\Setup\Model\ObjectManagerProvider;
-use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -89,7 +90,7 @@ class DeployStaticContentCommandTest extends TestCase
             'consoleLoggerFactory' => $this->consoleLoggerFactory,
             'options' => new DeployStaticOptions(),
             'appState' => $this->appState,
-            'objectManagerProvider' => $objectManagerProvider
+            'objectManagerProvider' => $objectManagerProvider,
         ]);
     }
 
@@ -126,11 +127,11 @@ class DeployStaticContentCommandTest extends TestCase
     {
         return [
             'No options' => [
-                []
+                [],
             ],
             'With static content version option' => [
-                ['--content-version' => '123456']
-            ]
+                ['--content-version' => '123456'],
+            ],
         ];
     }
 

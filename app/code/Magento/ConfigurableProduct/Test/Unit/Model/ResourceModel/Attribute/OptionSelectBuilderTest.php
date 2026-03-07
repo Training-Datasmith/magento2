@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -121,7 +122,7 @@ class OptionSelectBuilderTest extends TestCase
                     ['catalog_product_entity', 'catalog_product_entity value'],
                     ['catalog_product_super_attribute_label', 'catalog_product_super_attribute_label value'],
                     ['eav_attribute_option', 'eav_attribute_option value'],
-                    ['eav_attribute_option_value', 'eav_attribute_option_value value']
+                    ['eav_attribute_option_value', 'eav_attribute_option_value value'],
                 ]
             );
 
@@ -162,7 +163,7 @@ class OptionSelectBuilderTest extends TestCase
                     ['eav_attribute', 'eav_attribute value'],
                     ['catalog_product_entity', 'catalog_product_entity value'],
                     ['catalog_product_super_attribute_label', 'catalog_product_super_attribute_label value'],
-                    ['eav_attribute_option', 'eav_attribute_option value']
+                    ['eav_attribute_option', 'eav_attribute_option value'],
                 ]
             );
 

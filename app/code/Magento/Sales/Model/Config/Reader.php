@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Sales configuration filesystem loader. Loads all totals (incl. creditmemo, invoice)
  * configuration from XML file
  */
+
 namespace Magento\Sales\Model\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem

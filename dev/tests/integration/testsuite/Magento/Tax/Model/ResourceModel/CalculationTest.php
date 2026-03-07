@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\ResourceModel;
 
 use Magento\Framework\DataObject;
@@ -82,7 +85,7 @@ class CalculationTest extends TestCase
             [
                 'customer_tax_class_ids' => ['$c1.id$'],
                 'product_tax_class_ids' => ['$p1.id$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         )

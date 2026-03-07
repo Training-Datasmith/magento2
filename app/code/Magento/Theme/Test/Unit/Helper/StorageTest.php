@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,12 +14,11 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\Framework\View\Design\Theme\Customization;
 use Magento\Framework\View\Design\Theme\FlyweightFactory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\Filesystem\Io\File;
 use Magento\Theme\Helper\Storage;
 use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\Wysiwyg\Storage as WysiwygStorage;
@@ -219,7 +219,7 @@ class StorageTest extends TestCase
             [
                     WysiwygStorage::TYPE_IMAGE,
                     WysiwygStorage::THUMBNAIL_DIRECTORY,
-                    $image
+                    $image,
                 ]
         );
 
@@ -244,7 +244,7 @@ class StorageTest extends TestCase
         $withArgs = [
             [Storage::PARAM_THEME_ID],
             [Storage::PARAM_CONTENT_TYPE],
-            [Storage::PARAM_NODE]
+            [Storage::PARAM_NODE],
         ];
         $willReturnArgs = [6, 'image', 'node'];
         $this->resetRequestMock($withArgs, $willReturnArgs);
@@ -252,7 +252,7 @@ class StorageTest extends TestCase
         $expectedResult = [
             Storage::PARAM_THEME_ID => 6,
             Storage::PARAM_CONTENT_TYPE => WysiwygStorage::TYPE_IMAGE,
-            Storage::PARAM_NODE => 'node'
+            Storage::PARAM_NODE => 'node',
         ];
         $this->assertEquals($expectedResult, $this->helper->getRequestParams());
     }
@@ -264,11 +264,11 @@ class StorageTest extends TestCase
     {
         $withArgs = [
             [Storage::PARAM_CONTENT_TYPE],
-            [Storage::PARAM_CONTENT_TYPE]
+            [Storage::PARAM_CONTENT_TYPE],
         ];
         $willReturnArgs = [
             WysiwygStorage::TYPE_FONT,
-            WysiwygStorage::TYPE_IMAGE
+            WysiwygStorage::TYPE_IMAGE,
         ];
         $this->resetRequestMock($withArgs, $willReturnArgs);
 
@@ -305,9 +305,9 @@ class StorageTest extends TestCase
             ->willReturnMap([
                 [Storage::PARAM_THEME_ID, null, 6],
                 [Storage::PARAM_CONTENT_TYPE, null, WysiwygStorage::TYPE_IMAGE],
-                [Storage::PARAM_NODE, null, $node]
+                [Storage::PARAM_NODE, null, $node],
             ]);
-        
+
         $this->helper = new Storage(
             $this->contextHelper,
             $this->filesystem,
@@ -412,7 +412,7 @@ class StorageTest extends TestCase
     {
         return [
             'font' => [WysiwygStorage::TYPE_FONT, Storage::FONTS],
-            'image' => [WysiwygStorage::TYPE_IMAGE, Storage::IMAGES]
+            'image' => [WysiwygStorage::TYPE_IMAGE, Storage::IMAGES],
         ];
     }
 
@@ -524,7 +524,7 @@ class StorageTest extends TestCase
             'non-existent directory should default to the base path' => [$rootPath, $rootPath . '/foo'],
             'requested path that resolves to a bad path should default to root' =>
                 [$rootPath, $rootPath . '/something', true, null, '/bar'],
-            'real path should resolve to relative path' => ['foo/', $rootPath . '/foo', true, 'foo/']
+            'real path should resolve to relative path' => ['foo/', $rootPath . '/foo', true, 'foo/'],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Captcha\CustomerData;
 
+use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\Captcha\Model\DefaultModel;
 use Magento\Customer\CustomerData\SectionSourceInterface;
 use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Captcha\Model\DefaultModel;
-use Magento\Captcha\Helper\Data as CaptchaHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 
@@ -72,7 +73,7 @@ class Captcha extends DataObject implements SectionSourceInterface
             $required =  $captchaModel->isRequired($login);
             $data[$formId] = [
                 'isRequired' => $required,
-                'timestamp' => time()
+                'timestamp' => time(),
             ];
         }
 

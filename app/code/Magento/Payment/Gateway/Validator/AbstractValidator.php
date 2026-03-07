@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ abstract class AbstractValidator implements ValidatorInterface
             [
                 'isValid' => (bool)$isValid,
                 'failsDescription' => $fails,
-                'errorCodes' => $errorCodes
+                'errorCodes' => $errorCodes,
             ]
         );
     }

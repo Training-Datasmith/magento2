@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,17 +48,17 @@ class TypeListTest extends TestCase
     /**
      * Type key for type list
      */
-    const TYPE_KEY = 'type';
+    public const TYPE_KEY = 'type';
 
     /**
      * Expectation for type cache
      */
-    const IS_CACHE_ENABLED = true;
+    public const IS_CACHE_ENABLED = true;
 
     /**
      * Expected cache type
      */
-    const CACHE_TYPE = TagScope::class;
+    public const CACHE_TYPE = TagScope::class;
 
     /**
      * @var SerializerInterface|MockObject

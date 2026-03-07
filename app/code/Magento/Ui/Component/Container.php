@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Ui\Component;
  */
 class Container extends AbstractComponent
 {
-    const NAME = 'container';
+    public const NAME = 'container';
 
     /**
      * Get component name
@@ -21,6 +24,6 @@ class Container extends AbstractComponent
     public function getComponentName()
     {
         $type = $this->getData('type');
-        return static::NAME . ($type ? ('.' . $type): '');
+        return static::NAME . ($type ? ('.' . $type) : '');
     }
 }

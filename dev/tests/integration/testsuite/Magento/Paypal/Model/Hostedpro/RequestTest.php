@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Hostedpro;
 
-use Magento\Paypal\Model\Hostedpro\Request;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Sales\Model\Order;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Class RequestTest

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,15 +11,15 @@ namespace Magento\ConfigurableProductGraphQl\Model\Variant;
 use Exception;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionPostProcessor;
+use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessorInterface;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\Collection as ChildCollection;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\CollectionFactory;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessorInterface;
-use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionPostProcessor;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 
 /**
  * Collection for fetching configurable child product data.
@@ -93,7 +94,7 @@ class Collection implements ResetAfterRequestInterface
      * @return void
      * @throws Exception
      */
-    public function addParentProduct(Product $product) : void
+    public function addParentProduct(Product $product): void
     {
         $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
         $productId = $product->getData($linkField);
@@ -114,7 +115,7 @@ class Collection implements ResetAfterRequestInterface
      * @param array $attributeCodes
      * @return void
      */
-    public function addEavAttributes(array $attributeCodes) : void
+    public function addEavAttributes(array $attributeCodes): void
     {
         $this->attributeCodes = array_replace($this->attributeCodes, $attributeCodes);
     }
@@ -127,7 +128,7 @@ class Collection implements ResetAfterRequestInterface
      * @param array $attributeCodes
      * @return array
      */
-    public function getChildProductsByParentId(int $id, ContextInterface $context, array $attributeCodes) : array
+    public function getChildProductsByParentId(int $id, ContextInterface $context, array $attributeCodes): array
     {
         $childrenMap = $this->fetch($context, $attributeCodes);
 
@@ -146,7 +147,7 @@ class Collection implements ResetAfterRequestInterface
      * @return array
      * @throws Exception
      */
-    private function fetch(ContextInterface $context, array $attributeCodes) : array
+    private function fetch(ContextInterface $context, array $attributeCodes): array
     {
         if (empty($this->parentProducts) || !empty($this->childrenMap)) {
             return $this->childrenMap;
@@ -161,7 +162,7 @@ class Collection implements ResetAfterRequestInterface
         $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
         $childCollection->getSelect()->group('e.' . $linkField);
         $childCollection->getSelect()->columns([
-            'parent_ids' => new \Zend_Db_Expr('GROUP_CONCAT(link_table.parent_id)')
+            'parent_ids' => new \Zend_Db_Expr('GROUP_CONCAT(link_table.parent_id)'),
         ]);
 
         $attributeCodes = array_unique(array_merge($this->attributeCodes, $attributeCodes));

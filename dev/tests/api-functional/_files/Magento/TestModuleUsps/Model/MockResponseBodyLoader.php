@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\TestModuleUsps\Model;
 
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\Module\Dir;
-use Magento\Framework\Filesystem\Io\File;
 
 /**
  * Load mock response body for USPS rate request

@@ -14,6 +14,6 @@ $translateString = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->
 $translateString->saveTranslate(
     'currentPage value must be greater than 0.',
     'currentPage-waarde moet groter zijn dan 0.',
-    "nl_NL",
+    'nl_NL',
     0
 );

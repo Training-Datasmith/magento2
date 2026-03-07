@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Bulk;
 
 /**
@@ -15,20 +18,20 @@ interface BulkSummaryInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const BULK_ID = 'uuid';
-    const DESCRIPTION = 'description';
-    const START_TIME = 'start_time';
-    const USER_ID = 'user_id';
-    const OPERATION_COUNT = 'operation_count';
+    public const BULK_ID = 'uuid';
+    public const DESCRIPTION = 'description';
+    public const START_TIME = 'start_time';
+    public const USER_ID = 'user_id';
+    public const OPERATION_COUNT = 'operation_count';
     /**#@-*/
 
     /**#@+
      * Bulk statuses constants
      */
-    const NOT_STARTED = 0;
-    const IN_PROGRESS = 1;
-    const FINISHED_SUCCESSFULLY = 2;
-    const FINISHED_WITH_FAILURE = 3;
+    public const NOT_STARTED = 0;
+    public const IN_PROGRESS = 1;
+    public const FINISHED_SUCCESSFULLY = 2;
+    public const FINISHED_WITH_FAILURE = 3;
     /**#@-*/
 
     /**

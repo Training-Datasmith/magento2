@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Plugin;
 
 use Magento\Analytics\Model\Config\Backend\Baseurl\SubscriptionUpdateHandler;
@@ -15,32 +18,19 @@ use Magento\Store\Model\Store;
  */
 class BaseUrlConfigPlugin
 {
-    /**
-     * @var SubscriptionUpdateHandler
-     */
-    private $subscriptionUpdateHandler;
-
-    /**
-     * @param SubscriptionUpdateHandler $subscriptionUpdateHandler
-     */
-    public function __construct(
-        SubscriptionUpdateHandler $subscriptionUpdateHandler
-    ) {
-        $this->subscriptionUpdateHandler = $subscriptionUpdateHandler;
+    public function __construct(private readonly SubscriptionUpdateHandler $subscriptionUpdateHandler)
+    {
     }
 
     /**
      * Add additional handling after config value was saved.
      *
-     * @param Value $subject
-     * @param Value $result
-     * @return Value
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterAfterSave(
         Value $subject,
         Value $result
-    ) {
+    ): Value {
         if ($this->isPluginApplicable($result)) {
             $this->subscriptionUpdateHandler->processUrlUpdate($result->getOldValue());
         }
@@ -50,11 +40,8 @@ class BaseUrlConfigPlugin
 
     /**
      * Check is need to apply the plugin logic
-     *
-     * @param Value $result
-     * @return bool
      */
-    private function isPluginApplicable(Value $result)
+    private function isPluginApplicable(Value $result): bool
     {
         return $result->isValueChanged()
             && ($result->getPath() === Store::XML_PATH_SECURE_BASE_URL)

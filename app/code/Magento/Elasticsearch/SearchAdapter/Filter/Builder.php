@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter\Filter;
 
-use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
-use Magento\Framework\Search\Request\Query\BoolExpression;
 use Magento\Elasticsearch\SearchAdapter\Filter\Builder\FilterInterface;
 use Magento\Elasticsearch\SearchAdapter\Filter\Builder\Range;
 use Magento\Elasticsearch\SearchAdapter\Filter\Builder\Term;
 use Magento\Elasticsearch\SearchAdapter\Filter\Builder\Wildcard;
+use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
+use Magento\Framework\Search\Request\Query\BoolExpression;
 
 /**
  * Class Builder to build Elasticsearch filter
@@ -67,7 +70,7 @@ class Builder implements BuilderInterface
             $query = [
                 'bool' => [
                     $conditionType => $this->filters[$filter->getType()]->buildFilter($filter),
-                ]
+                ],
             ];
         }
 

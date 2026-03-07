@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleAnalytics\Helper;
 
-use Magento\Store\Model\Store;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
 
 /**
  * GoogleAnalytics data helper
@@ -19,11 +22,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Config paths for using throughout the code
      */
-    const XML_PATH_ACTIVE = 'google/analytics/active';
+    public const XML_PATH_ACTIVE = 'google/analytics/active';
 
-    const XML_PATH_ACCOUNT = 'google/analytics/account';
+    public const XML_PATH_ACCOUNT = 'google/analytics/account';
 
-    const XML_PATH_ANONYMIZE = 'google/analytics/anonymize';
+    public const XML_PATH_ANONYMIZE = 'google/analytics/anonymize';
 
     /**
      * Whether GA is ready to use

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -21,7 +22,6 @@ use PHPUnit\Framework\TestCase;
 
 class CanRefundTest extends TestCase
 {
-
     /**
      * @var Invoice|MockObject
      */
@@ -53,8 +53,8 @@ class CanRefundTest extends TestCase
         $objects = [
             [
                 ScopeConfigInterface::class,
-                $this->createMock(ScopeConfigInterface::class)
-            ]
+                $this->createMock(ScopeConfigInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->invoiceMock = $this->createMock(Invoice::class);

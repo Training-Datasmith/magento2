@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use Magento\Framework\App\ViewInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\BlockInterface;
-use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -117,7 +117,7 @@ abstract class AbstractControllerTestCase extends TestCase
             [
                 ['breadcrumbs', $this->breadcrumbsBlockMock],
                 ['menu', $this->menuBlockMock],
-                ['store_switcher', $this->switcherBlockMock]
+                ['store_switcher', $this->switcherBlockMock],
             ]
         );
         $this->layoutMock->expects($this->any())->method('getChildBlock')->willReturn($this->abstractBlockMock);

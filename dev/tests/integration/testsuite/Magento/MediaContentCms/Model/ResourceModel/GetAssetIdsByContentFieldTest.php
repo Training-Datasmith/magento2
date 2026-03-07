@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\MediaContentCms\Model\ResourceModel;
 use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\MediaContentApi\Api\GetAssetIdsByContentFieldInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for GetAssetIdsByContentFieldTest

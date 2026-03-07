@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory;
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\Framework\MessageQueue\BulkPublisherInterface;
-use Magento\Framework\EntityManager\MetadataPool;
+use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\AsynchronousOperations\Model\ResourceModel\Operation\CollectionFactory;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\EntityManager\EntityManager;
-use Magento\AsynchronousOperations\Model\ResourceModel\Operation\CollectionFactory;
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory;
-use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\MessageQueue\BulkPublisherInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -45,7 +48,7 @@ class BulkManagementTest extends \PHPUnit\Framework\TestCase
         $this->model = $this->objectManager->create(
             BulkManagement::class,
             [
-                'publisher' => $this->publisherMock
+                'publisher' => $this->publisherMock,
             ]
         );
     }

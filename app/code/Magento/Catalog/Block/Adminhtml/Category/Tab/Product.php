@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product in category grid
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Tab;
 
 use Magento\Backend\Block\Template\Context;
@@ -147,7 +150,7 @@ class Product extends Extended
                 'sku',
                 'visibility',
                 'status',
-                'price'
+                'price',
             ],
             'left'
         );
@@ -190,7 +193,7 @@ class Product extends Extended
                     'values' => $this->_getSelectedProducts(),
                     'index' => 'entity_id',
                     'header_css_class' => 'col-select col-massaction',
-                    'column_css_class' => 'col-select col-massaction'
+                    'column_css_class' => 'col-select col-massaction',
                 ]
             );
         }
@@ -202,7 +205,7 @@ class Product extends Extended
                 'sortable' => true,
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
         $this->addColumn('name', ['header' => __('Name'), 'index' => 'name']);
@@ -215,7 +218,7 @@ class Product extends Extended
                 'type' => 'options',
                 'options' => $this->visibility->getOptionArray(),
                 'header_css_class' => 'col-visibility',
-                'column_css_class' => 'col-visibility'
+                'column_css_class' => 'col-visibility',
             ]
         );
 
@@ -225,7 +228,7 @@ class Product extends Extended
                 'header' => __('Status'),
                 'index' => 'status',
                 'type' => 'options',
-                'options' => $this->status->getOptionArray()
+                'options' => $this->status->getOptionArray(),
             ]
         );
 
@@ -238,7 +241,7 @@ class Product extends Extended
                     \Magento\Directory\Model\Currency::XML_PATH_CURRENCY_BASE,
                     \Magento\Store\Model\ScopeInterface::SCOPE_STORE
                 ),
-                'index' => 'price'
+                'index' => 'price',
             ]
         );
         $this->addColumn(
@@ -247,7 +250,7 @@ class Product extends Extended
                 'header' => __('Position'),
                 'type' => 'number',
                 'index' => 'position',
-                'editable' => !$this->getCategory()->getProductsReadonly()
+                'editable' => !$this->getCategory()->getProductsReadonly(),
             ]
         );
 

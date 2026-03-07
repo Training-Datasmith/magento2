@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,5 +17,4 @@ use Magento\User\Model\Spi\NotificationExceptionInterface;
  */
 class NotificatorException extends MailException implements NotificationExceptionInterface
 {
-
 }

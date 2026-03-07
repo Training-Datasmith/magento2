@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Page\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -28,12 +31,12 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                 'targetName' => 'cms_page_form.cms_page_form',
                                 'actionName' => 'save',
                                 'params' => [
-                                    false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),
@@ -63,13 +66,13 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                     'params' => [
                                         true,
                                         [
-                                            'back' => 'duplicate'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'back' => 'duplicate',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
@@ -83,14 +86,14 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                     'targetName' => 'cms_page_form.cms_page_form',
                                     'actionName' => 'save',
                                     'params' => [
-                                        true
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        true,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
 
         return $options;

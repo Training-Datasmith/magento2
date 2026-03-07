@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\Filter\VariableResolver\StrictResolver;
 use Magento\Framework\Filter\VariableResolverInterface;
-use PHPUnit\Framework\TestCase;
-
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\TestCase;
 
 class VarDirectiveTest extends TestCase
 {
@@ -79,12 +80,12 @@ class VarDirectiveTest extends TestCase
             [
                 'foo.getBar().baz|foofilter|nl2br',
                 ['foo' => new DataObject(['bar' => ['baz' => "foo\nbar"]])],
-                "RAB<br />\nOOF"
+                "RAB<br />\nOOF",
             ],
             [
                 'foo.getBar().baz|foofilter:myparam|nl2br|doesntexist|nl2br',
                 ['foo' => new DataObject(['bar' => ['baz' => "foo\nbar"]])],
-                "MARAPYMRAB<br /><br />\nOOF"
+                "MARAPYMRAB<br /><br />\nOOF",
             ],
         ];
     }

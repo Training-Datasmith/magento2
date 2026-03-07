@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Setup\Patch\Data;
 
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
 /**
  * Update manufacturer attribute if it's presented in system.

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Report Products Review collection
  */
+
 namespace Magento\Reports\Model\ResourceModel\Review\Product;
 
 use Magento\Framework\DB\Select;
@@ -53,7 +56,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
             'e.entity_id = r.entity_pk_value',
             [
                 'review_cnt' => new \Zend_Db_Expr(sprintf('(%s)', $subSelect)),
-                'last_review' => 'MAX(r.created_at)'
+                'last_review' => 'MAX(r.created_at)',
             ]
         )->group(
             'e.entity_id'
@@ -64,7 +67,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
             $this->getConnection()->quoteInto('table_rating.store_id > ?', 0),
         ];
 
-        $sumPercentField = new \Zend_Db_Expr("SUM(table_rating.percent)");
+        $sumPercentField = new \Zend_Db_Expr('SUM(table_rating.percent)');
         $sumPercentApproved = new \Zend_Db_Expr('SUM(table_rating.percent_approved)');
         $countRatingId = new \Zend_Db_Expr('COUNT(table_rating.rating_id)');
 
@@ -73,7 +76,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
             implode(' AND ', $joinCondition),
             [
                 'avg_rating' => new \Zend_Db_Expr(sprintf('%s/%s', $sumPercentField, $countRatingId)),
-                'avg_rating_approved' => new \Zend_Db_Expr(sprintf('%s/%s', $sumPercentApproved, $countRatingId))
+                'avg_rating_approved' => new \Zend_Db_Expr(sprintf('%s/%s', $sumPercentApproved, $countRatingId)),
             ]
         );
 
@@ -144,7 +147,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
         /* @var Select $countSelect */
         $countSelect = clone $select;
         $countSelect->reset();
-        $countSelect->from($select, "COUNT(*)");
+        $countSelect->from($select, 'COUNT(*)');
 
         return $countSelect;
     }

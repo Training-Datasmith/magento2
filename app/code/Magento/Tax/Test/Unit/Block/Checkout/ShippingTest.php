@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,8 +68,8 @@ class ShippingTest extends TestCase
     public static function displayShippingDataProvider(): array
     {
         return [
-            ["flatrate_flatrate", true],
-            [null, false]
+            ['flatrate_flatrate', true],
+            [null, false],
         ];
     }
 }

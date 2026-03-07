@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class RangeTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             RangeFilterBuilder::class,
             [
-                'fieldMapper' => $this->fieldMapper
+                'fieldMapper' => $this->fieldMapper,
             ]
         );
     }

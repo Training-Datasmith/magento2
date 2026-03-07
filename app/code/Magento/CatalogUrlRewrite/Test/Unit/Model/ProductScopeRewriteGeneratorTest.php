@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Category;
@@ -28,6 +28,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\MergeDataProvider;
 use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -151,7 +152,7 @@ class ProductScopeRewriteGeneratorTest extends TestCase
                 'mergeDataProviderFactory' => $mergeDataProviderFactory,
                 'config' => $this->configMock,
                 'categoryRepository' => $this->categoryRepositoryMock,
-                'productRepository' =>$this->productRepositoryMock
+                'productRepository' => $this->productRepositoryMock,
             ]
         );
         $this->categoryMock = $this->getMockBuilder(Category::class)
@@ -197,7 +198,7 @@ class ProductScopeRewriteGeneratorTest extends TestCase
                 'category-1_1' => $canonical,
                 'category-2_2' => $categories,
                 'category-3_3' => $current,
-                'category-4_4' => $anchorCategories
+                'category-4_4' => $anchorCategories,
             ],
             $this->productScopeGenerator->generateForGlobalScope([$this->categoryMock], $product, 1)
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class AsyncGridWithAutoInvoiceTest extends TestCase
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -95,14 +96,14 @@ class AsyncGridWithAutoInvoiceTest extends TestCase
             [
                 'cart_id' => '$cart.id$',
                 'carrier_code' => 'freeshipping',
-                'method_code' => 'freeshipping'
+                'method_code' => 'freeshipping',
             ]
         ),
         DataFixture(
             SetPaymentMethodFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'method' => 'free'
+                'method' => 'free',
             ]
         ),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], 'order')

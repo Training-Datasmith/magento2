@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Config\Model\Config\Source\Admin\Page
  */
+
 namespace Magento\Config\Test\Unit\Model\Config\Source\Admin;
 
 use Magento\Backend\Model\Menu;

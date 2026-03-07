@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Block\Adminhtml\System\Config;
 
 /**
@@ -22,20 +25,15 @@ class Vertical extends \Magento\Config\Block\System\Config\Form\Field
 
     /**
      * Decorates row HTML for custom element style
-     *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
-     * @param string $html
-     * @return string
      */
-    private function decorateRowHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element, $html)
+    private function decorateRowHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element, string $html): string
     {
         $rowHtml = sprintf('<tr><td colspan="4">%s</td></tr>', $html);
-        $rowHtml .= sprintf(
+        return $rowHtml . sprintf(
             '<tr id="row_%s"><td class="label config-vertical-label">%s</td><td class="value">%s</td></tr>',
             $element->getHtmlId(),
-            $element->getLabelHtml($element->getHtmlId(), "[WEBSITE]"),
+            $element->getLabelHtml($element->getHtmlId(), '[WEBSITE]'),
             $element->getElementHtml()
         );
-        return $rowHtml;
     }
 }

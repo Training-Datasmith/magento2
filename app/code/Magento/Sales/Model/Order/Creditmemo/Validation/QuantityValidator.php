@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,8 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order\Creditmemo\Validation;
 
+use Magento\Framework\Phrase;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Sales\Api\Data\CreditmemoInterface;
+use Magento\Sales\Api\Data\CreditmemoItemInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
@@ -16,8 +19,6 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\ValidatorInterface;
-use Magento\Sales\Api\Data\CreditmemoItemInterface;
-use Magento\Framework\Phrase;
 
 /**
  * Creditmemo QuantityValidator

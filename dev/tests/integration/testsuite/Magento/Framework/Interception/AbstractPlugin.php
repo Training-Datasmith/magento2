@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -113,7 +116,7 @@ abstract class AbstractPlugin extends \PHPUnit\Framework\TestCase
             \Magento\Framework\Interception\ConfigLoaderInterface::class         => $configLoader,
             \Psr\Log\LoggerInterface::class                                      => $logger,
             \Magento\Framework\App\Filesystem\DirectoryList::class               => $directoryList,
-            \Magento\Framework\App\ObjectManager\ConfigWriterInterface::class    => $configWriter
+            \Magento\Framework\App\ObjectManager\ConfigWriterInterface::class    => $configWriter,
         ];
         $this->_objectManager = new \Magento\Framework\ObjectManager\ObjectManager(
             $factory,
@@ -129,7 +132,7 @@ abstract class AbstractPlugin extends \PHPUnit\Framework\TestCase
                     \Magento\Framework\Interception\PluginListInterface::class =>
                         \Magento\Framework\Interception\PluginList\PluginList::class,
                     \Magento\Framework\Interception\ConfigWriterInterface::class =>
-                        \Magento\Framework\Interception\PluginListGenerator::class
+                        \Magento\Framework\Interception\PluginListGenerator::class,
                 ],
             ]
         );

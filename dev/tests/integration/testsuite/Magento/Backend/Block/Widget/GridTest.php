@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ use Magento\Backend\Model\Widget\Grid\Totals;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Json\Helper\Data;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @magentoAppArea adminhtml
@@ -107,12 +108,12 @@ class GridTest extends TestCase
                             'filesystem' => $objectManager->create(
                                 Filesystem::class,
                                 ['directoryList' => $directoryList]
-                            )
+                            ),
                         ]
                     ),
                     $objectManager->create(UrlGeneratorFactory::class),
                     $objectManager->create(SubTotals::class),
-                    $objectManager->create(Totals::class)
+                    $objectManager->create(Totals::class),
                 ]
             )
             ->getMock();

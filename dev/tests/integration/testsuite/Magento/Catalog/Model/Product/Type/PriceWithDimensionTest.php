@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Type;
 
+use Magento\Catalog\Model\Indexer\Product\Price\PriceTableResolver;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductRepository;
+use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
-use Magento\Catalog\Model\Indexer\Product\Price\PriceTableResolver;
 use Magento\Framework\Indexer\DimensionFactory;
 use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
-use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**
@@ -56,7 +57,7 @@ class PriceWithDimensionTest extends \PHPUnit\Framework\TestCase
         $dimensionFactory = Bootstrap::getObjectManager()->create(DimensionFactory::class);
         $dimension = [
             $dimensionFactory->create(CustomerGroupDimensionProvider::DIMENSION_NAME, (string)0),
-            $dimensionFactory->create(WebsiteDimensionProvider::DIMENSION_NAME, (string)1)
+            $dimensionFactory->create(WebsiteDimensionProvider::DIMENSION_NAME, (string)1),
         ];
         $connection = $resourceConnection->getConnection();
         $priceTable = $connection->getTableName(

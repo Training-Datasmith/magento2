@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class FilesTest extends TestCase
         $fileUtilities = $objectManager->getObject(
             Files::class,
             [
-                'dirSearch' => $this->dirSearchMock
+                'dirSearch' => $this->dirSearchMock,
             ]
         );
         Files::setInstance($fileUtilities);

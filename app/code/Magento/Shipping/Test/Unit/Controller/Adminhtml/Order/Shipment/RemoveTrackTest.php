@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\View;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
@@ -21,7 +23,6 @@ use Magento\Sales\Model\Order\Shipment\Track;
 use Magento\Shipping\Block\Adminhtml\Order\Tracking;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\RemoveTrack;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -168,8 +169,8 @@ class RemoveTrackTest extends TestCase
             ->willReturn($trackId);
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                ['track_id'] =>$trackId,
+            ->willReturnCallback(fn ($param) => match ([$param]) {
+                ['track_id'] => $trackId,
                 ['order_id'] => $orderId,
                 ['shipment_id'] => $shipmentId,
                 ['shipment'] => $shipment,

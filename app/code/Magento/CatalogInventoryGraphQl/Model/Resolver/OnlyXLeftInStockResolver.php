@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Model\Configuration;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -26,7 +27,7 @@ class OnlyXLeftInStockResolver implements ResolverInterface
     /**
      * Configurable product type code
      */
-    private const PRODUCT_TYPE_CONFIGURABLE = "configurable";
+    private const PRODUCT_TYPE_CONFIGURABLE = 'configurable';
 
     /**
      * @param ScopeConfigInterface $scopeConfig

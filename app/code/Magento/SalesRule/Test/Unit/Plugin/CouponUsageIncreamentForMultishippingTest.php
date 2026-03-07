@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\SalesRule\Test\Unit\Plugin;
 
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Quote\Model\Quote;
+use Magento\Multishipping\Model\Checkout\Type\Multishipping\PlaceOrderDefault;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Model\Quote;
+use Magento\Sales\Model\Order;
+use Magento\SalesRule\Model\Coupon\Quote\UpdateCouponUsages;
+use Magento\SalesRule\Plugin\CouponUsagesIncrementMultishipping;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\SalesRule\Model\Coupon\Quote\UpdateCouponUsages;
-use Magento\Multishipping\Model\Checkout\Type\Multishipping\PlaceOrderDefault;
-use Magento\Sales\Model\Order;
-use Magento\SalesRule\Plugin\CouponUsagesIncrementMultishipping;
 
 class CouponUsageIncreamentForMultishippingTest extends TestCase
 {
@@ -52,14 +53,14 @@ class CouponUsageIncreamentForMultishippingTest extends TestCase
     protected function setUp(): void
     {
         $this->subjectMock = $this->createMock(PlaceOrderDefault::class);
-        
+
         $this->updateCouponUsagesMock = $this->getMockBuilder(UpdateCouponUsages::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['execute'])
             ->getMock();
-        
+
         $this->cartRepositoryInterfaceMock = $this->createMock(CartRepositoryInterface::class);
-        
+
         $this->orderMock = $this->getMockBuilder(Order::class)
             ->onlyMethods(['getQuoteId'])
             ->disableOriginalConstructor()

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Controller\Adminhtml;
 
 /**
@@ -15,5 +18,5 @@ abstract class Problem extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Newsletter::problem';
+    public const ADMIN_RESOURCE = 'Magento_Newsletter::problem';
 }

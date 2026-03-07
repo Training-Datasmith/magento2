@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Items;
 
 use Magento\Sales\Model\Order;
@@ -19,7 +22,7 @@ class AbstractItems extends \Magento\Backend\Block\Template
     /**
      * Block alias fallback
      */
-    const DEFAULT_TYPE = 'default';
+    public const DEFAULT_TYPE = 'default';
 
     /**
      * Renderers for other column with column name key

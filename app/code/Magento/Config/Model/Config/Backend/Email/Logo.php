@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Config\Model\Config\Backend\Email;
 
 /**
@@ -19,7 +22,7 @@ class Logo extends \Magento\Config\Model\Config\Backend\Image
     /**
      * The tail part of directory path for uploading
      */
-    const UPLOAD_DIR = 'email/logo';
+    public const UPLOAD_DIR = 'email/logo';
 
     /**
      * Upload max file size in kilobytes

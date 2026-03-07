@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -85,7 +86,8 @@ class HttpMethodValidator implements ValidatorInterface
             //the action has HTTP method limitations and doesn't allow the
             //received one then the request is invalid.
             if (!array_key_exists($method, $map)
-                || (array_intersect($map, class_implements($action, true))
+                || (
+                    array_intersect($map, class_implements($action, true))
                     && !$action instanceof $map[$method]
                 )
             ) {

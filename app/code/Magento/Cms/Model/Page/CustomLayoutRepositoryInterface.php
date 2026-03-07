@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Framework\Exception\NoSuchEntityException;
  */
 interface CustomLayoutRepositoryInterface
 {
-
     /**
      * Save layout file to be used when rendering given page.
      *

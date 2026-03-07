@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +25,6 @@ use Psr\Log\LoggerInterface;
  */
 class UpdateItemQty extends Action implements HttpPostActionInterface
 {
-
     /**
      * @var RequestQuantityProcessor
      */
@@ -105,13 +105,13 @@ class UpdateItemQty extends Action implements HttpPostActionInterface
                     } catch (LocalizedException $e) {
                         $response[] = [
                             'error' => $e->getMessage(),
-                            'itemId' => $itemId
+                            'itemId' => $itemId,
                         ];
                     }
                 }
             }
 
-            $this->jsonResponse(count($response)? json_encode($response) : '');
+            $this->jsonResponse(count($response) ? json_encode($response) : '');
         } catch (\Exception $e) {
             $this->logger->critical($e->getMessage());
             $this->jsonResponse('Something went wrong while saving the page. Please refresh the page and try again.');

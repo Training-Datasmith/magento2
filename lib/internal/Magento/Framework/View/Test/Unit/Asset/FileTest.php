@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\Minification;
 use Magento\Framework\View\Asset\Source;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FileTest extends TestCase
 {

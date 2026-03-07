@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Mview;
 
+use Exception;
 use InvalidArgumentException;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
@@ -15,7 +17,6 @@ use Magento\Framework\Mview\View\ChangelogBatchWalkerFactory;
 use Magento\Framework\Mview\View\ChangelogBatchWalkerInterface;
 use Magento\Framework\Mview\View\ChangelogTableNotExistsException;
 use Magento\Framework\Mview\View\SubscriptionFactory;
-use Exception;
 use Magento\Framework\Mview\View\SubscriptionInterface;
 
 /**

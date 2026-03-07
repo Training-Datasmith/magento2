@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaStorage\Controller\Adminhtml\System\Config\System\Storage;
 
 class Status extends \Magento\MediaStorage\Controller\Adminhtml\System\Config\System\Storage
@@ -94,6 +97,7 @@ class Status extends \Magento\MediaStorage\Controller\Adminhtml\System\Config\Sy
                         }
                     }
                     // fall-through intentional
+                    // no break
                 case \Magento\MediaStorage\Model\File\Storage\Flag::STATE_FINISHED:
                 case \Magento\MediaStorage\Model\File\Storage\Flag::STATE_NOTIFIED:
                     $flagData = $flag->getFlagData();

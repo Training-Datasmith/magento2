@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -78,7 +80,7 @@ class ChangelogBatchWalker implements ChangelogBatchWalkerInterface
         $changelogTableName = $this->resourceConnection->getTableName($changelog->getName());
 
         if (!$connection->isTableExists($changelogTableName)) {
-            throw new ChangelogTableNotExistsException(new Phrase("Table %1 does not exist", [$changelogTableName]));
+            throw new ChangelogTableNotExistsException(new Phrase('Table %1 does not exist', [$changelogTableName]));
         }
 
         $processID = getmypid();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class UpdateProductUrlKey implements DataPatchInterface, PatchVersionInterface
             \Magento\Catalog\Model\Product::ENTITY,
             'url_key',
             [
-                'frontend_class' => 'validate-trailing-hyphen'
+                'frontend_class' => 'validate-trailing-hyphen',
             ]
         );
         return $this;
@@ -66,7 +67,7 @@ class UpdateProductUrlKey implements DataPatchInterface, PatchVersionInterface
     {
         return [
             UpdateProductAttributes::class,
-            \Magento\CatalogUrlRewrite\Setup\Patch\Data\CreateUrlAttributes::class
+            \Magento\CatalogUrlRewrite\Setup\Patch\Data\CreateUrlAttributes::class,
         ];
     }
 

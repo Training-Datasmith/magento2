@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class UnionRendererTest extends TestCase
 
         $parts = [
             [$selectPart, 'type1'],
-            [$selectPart, 'type2']
+            [$selectPart, 'type2'],
         ];
         $select->expects($this->any())
             ->method('getPart')

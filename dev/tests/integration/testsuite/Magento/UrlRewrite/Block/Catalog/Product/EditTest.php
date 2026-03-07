@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -417,7 +418,7 @@ class EditTest extends TestCase
                     'form' => false,
                     'products_grid' => true,
                     'categories_tree' => false,
-                    'skip_categories' => false
+                    'skip_categories' => false,
                 ],
             ],
             [ // Creating URL rewrite when product selected and category tree active
@@ -433,8 +434,8 @@ class EditTest extends TestCase
                     'form' => false,
                     'products_grid' => false,
                     'categories_tree' => true,
-                    'skip_categories' => true
-                ]
+                    'skip_categories' => true,
+                ],
             ],
             [ // Creating URL rewrite when product selected and category tree inactive
                 ['product' => $product, 'url_rewrite' => $urlRewrite],
@@ -449,8 +450,8 @@ class EditTest extends TestCase
                     'form' => true,
                     'products_grid' => false,
                     'categories_tree' => false,
-                    'skip_categories' => false
-                ]
+                    'skip_categories' => false,
+                ],
             ],
             [ // Creating URL rewrite when product selected and category selected
                 ['product' => $product, 'category' => $category, 'url_rewrite' => $urlRewrite],
@@ -465,8 +466,8 @@ class EditTest extends TestCase
                     'form' => true,
                     'products_grid' => false,
                     'categories_tree' => false,
-                    'skip_categories' => false
-                ]
+                    'skip_categories' => false,
+                ],
             ],
             [ // Editing existing URL rewrite with product and category
                 ['product' => $product, 'category' => $category, 'url_rewrite' => $existingUrlRewrite],
@@ -480,9 +481,9 @@ class EditTest extends TestCase
                     'form' => true,
                     'products_grid' => false,
                     'categories_tree' => false,
-                    'skip_categories' => false
-                ]
-            ]
+                    'skip_categories' => false,
+                ],
+            ],
         ];
     }
 }

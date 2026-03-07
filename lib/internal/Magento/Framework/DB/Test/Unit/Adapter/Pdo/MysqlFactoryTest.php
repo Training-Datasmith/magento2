@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\DB\LoggerInterface;
 use Magento\Framework\DB\SelectFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MysqlFactoryTest extends TestCase
 {
@@ -36,7 +37,7 @@ class MysqlFactoryTest extends TestCase
         $this->mysqlFactory = $objectManager->getObject(
             MysqlFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }
@@ -85,29 +86,29 @@ class MysqlFactoryTest extends TestCase
                 [
                     'config' => ['foo' => 'bar'],
                     'logger' => 'loggerMock',
-                    'selectFactory' => 'selectFactoryMock'
+                    'selectFactory' => 'selectFactoryMock',
                 ],
                 ['foo' => 'bar'],
                 'loggerMock',
-                'selectFactoryMock'
+                'selectFactoryMock',
             ],
             [
                 [
                     'config' => ['foo' => 'bar'],
-                    'logger' => 'loggerMock'
+                    'logger' => 'loggerMock',
                 ],
                 ['foo' => 'bar'],
                 'loggerMock',
-                null
+                null,
             ],
             [
                 [
                     'config' => ['foo' => 'bar'],
-                    'selectFactory' => 'selectFactoryMock'
+                    'selectFactory' => 'selectFactoryMock',
                 ],
                 ['foo' => 'bar'],
                 null,
-                'selectFactoryMock'
+                'selectFactoryMock',
             ],
         ];
     }

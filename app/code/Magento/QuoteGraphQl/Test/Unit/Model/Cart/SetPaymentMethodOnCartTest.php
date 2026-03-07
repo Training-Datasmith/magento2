@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\QuoteGraphQl\Test\Unit\Model\Cart;
 
 use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
 use Magento\Checkout\Api\PaymentSavingRateLimiterInterface;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\QuoteGraphQl\Model\Cart\SetPaymentMethodOnCart;

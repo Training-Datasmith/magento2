@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Attributes configuration converter
  *

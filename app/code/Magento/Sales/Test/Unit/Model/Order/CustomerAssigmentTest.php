@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,16 +14,15 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order\CustomerAssignment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for Magento\Sales\Model\Order\CustomerAssignment class.
  */
 class CustomerAssigmentTest extends TestCase
 {
-
     /**
      * @var CustomerAssignment
      */
@@ -63,7 +63,7 @@ class CustomerAssigmentTest extends TestCase
             'sales_order_customer_assign_after',
             [
                 'order' => $this->orderMock,
-                'customer' => $this->customerMock
+                'customer' => $this->customerMock,
             ]
         );
 
@@ -108,7 +108,7 @@ class CustomerAssigmentTest extends TestCase
             CustomerAssignment::class,
             [
                 'eventManager' => $this->eventManagerMock,
-                'orderRepository' => $this->orderRepositoryMock
+                'orderRepository' => $this->orderRepositoryMock,
             ]
         );
     }

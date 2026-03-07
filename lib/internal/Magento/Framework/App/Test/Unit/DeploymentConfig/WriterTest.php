@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class WriterTest extends TestCase
     public function testSaveConfig()
     {
         $configFiles = [
-            ConfigFilePool::APP_CONFIG => 'config.php'
+            ConfigFilePool::APP_CONFIG => 'config.php',
         ];
         $testSetExisting = [
             ConfigFilePool::APP_CONFIG => [
@@ -114,15 +115,15 @@ class WriterTest extends TestCase
                 'key' => 'value',
                 'baz' => [
                     'test' => 'value',
-                    'test1' => 'value1'
-                ]
+                    'test1' => 'value1',
+                ],
             ],
         ];
         $testSetUpdate = [
             ConfigFilePool::APP_CONFIG => [
                 'baz' => [
-                    'test' => 'value2'
-                ]
+                    'test' => 'value2',
+                ],
             ],
         ];
         $testSetExpected = [
@@ -131,13 +132,13 @@ class WriterTest extends TestCase
                 'key' => 'value',
                 'baz' => [
                     'test' => 'value2',
-                    'test1' => 'value1'
-                ]
+                    'test1' => 'value1',
+                ],
             ],
         ];
         $testComments = [
             'baz' => 'Baz comment2',
-            'bar' => 'Bar comment'
+            'bar' => 'Bar comment',
         ];
         $existedComments = [
             'foo' => 'Foo comment',
@@ -146,7 +147,7 @@ class WriterTest extends TestCase
         $expectedComments = [
             'foo' => 'Foo comment',
             'baz' => 'Baz comment2',
-            'bar' => 'Bar comment'
+            'bar' => 'Bar comment',
         ];
 
         $this->deploymentConfig->expects($this->once())
@@ -192,20 +193,20 @@ class WriterTest extends TestCase
     public function testSaveConfigOverride()
     {
         $configFiles = [
-            ConfigFilePool::APP_CONFIG => 'config.php'
+            ConfigFilePool::APP_CONFIG => 'config.php',
         ];
         $testSetUpdate = [
             ConfigFilePool::APP_CONFIG => [
                 'baz' => [
-                    'test' => 'value2'
-                ]
+                    'test' => 'value2',
+                ],
             ],
         ];
         $testSetExpected = [
             ConfigFilePool::APP_CONFIG => [
                 'baz' => [
                     'test' => 'value2',
-                ]
+                ],
             ],
         ];
 

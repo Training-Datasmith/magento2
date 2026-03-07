@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Ui\Component\Listing\Column\Invoice\State;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -47,7 +50,7 @@ class Options implements OptionSourceInterface
             foreach ($this->invoiceRepository->create()->getStates() as $id => $state) {
                 $this->options[] = [
                     'value' => $id,
-                    'label' => $state->render()
+                    'label' => $state->render(),
                 ];
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Test\Unit\Plugin;
 
-use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\TestCase;
+use Magento\Paypal\Plugin\CustomerManagementPlugin;
 use Magento\Quote\Model\CustomerManagement;
 use Magento\Quote\Model\Quote;
-use Magento\Paypal\Plugin\CustomerManagementPlugin;
 use Magento\Quote\Model\Quote\Payment;
+use PHPUnit\Framework\MockObject\Exception;
+use PHPUnit\Framework\TestCase;
 
 class CustomerManagementPluginTest extends TestCase
 {

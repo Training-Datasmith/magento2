@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Quote\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Quote\Api\Data\AddressInterface;
@@ -17,6 +18,7 @@ use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -108,7 +110,7 @@ class GuestBillingAddressManagementTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $response = $this->_webApiCall($serviceInfo, $requestData);
 
         asort($data);
@@ -158,7 +160,7 @@ class GuestBillingAddressManagementTest extends WebapiAbstract
         $requestData = [
             'cartId' => $cartId,
             'address' => $addressData,
-            'useForShipping' => $useForShipping
+            'useForShipping' => $useForShipping,
         ];
 
         $addressId = $this->_webApiCall($serviceInfo, $requestData);
@@ -201,7 +203,7 @@ class GuestBillingAddressManagementTest extends WebapiAbstract
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 

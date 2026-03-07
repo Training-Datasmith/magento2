@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml customers group page content block
  */
+
 namespace Magento\Customer\Block\Adminhtml;
 
 /**

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\Onepage;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -30,7 +33,7 @@ class Success extends \Magento\Checkout\Controller\Onepage implements HttpGetAct
             'checkout_onepage_controller_success_action',
             [
                 'order_ids' => [$session->getLastOrderId()],
-                'order' => $session->getLastRealOrder()
+                'order' => $session->getLastRealOrder(),
             ]
         );
         return $resultPage;

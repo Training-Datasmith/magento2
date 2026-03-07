@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +32,7 @@ class Collection extends AbstractCollection
     /**
      * Value of fetched from DB of rules per cycle
      */
-    const TAX_RULES_CHUNK_SIZE = 1000;
+    public const TAX_RULES_CHUNK_SIZE = 1000;
 
     /**
      * @var StoreManagerInterface
@@ -135,7 +137,7 @@ class Collection extends AbstractCollection
                 ' AND ',
                 [
                     "main_table.tax_calculation_rate_id = {$tableAlias}.tax_calculation_rate_id",
-                    $this->getConnection()->quoteInto($tableAlias . '.store_id = ?', $store->getId())
+                    $this->getConnection()->quoteInto($tableAlias . '.store_id = ?', $store->getId()),
                 ]
             );
             $this->_select->joinLeft(

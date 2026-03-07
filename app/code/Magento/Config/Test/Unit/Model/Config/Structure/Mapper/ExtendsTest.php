@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class ExtendsTest extends TestCase
             self::_emptySectionsNodeData(),
             self::_extendFromASiblingData(),
             self::_extendFromNodeOnHigherLevelData(),
-            self::_extendWithMerge()
+            self::_extendWithMerge(),
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * System config email field backend model
  */
+
 namespace Magento\Config\Model\Config\Backend\Email;
 
 use Magento\Framework\App\Config\Value;

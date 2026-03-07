@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -23,10 +24,10 @@ use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -175,7 +176,7 @@ class SaveTest extends TestCase
                     ['tax_class', null, $taxClass],
                     ['id', null, $groupId],
                     ['code', null, null],
-                    ['customer_group_excluded_websites', null, '']
+                    ['customer_group_excluded_websites', null, ''],
                 ]
             );
         $this->groupExtensionFactoryMock->expects(self::once())

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class BackslashTrim implements ModificationInterface
      */
     private const RECURSIVE_ARGUMENT_KEYS = [
         '_i_' => true, // shared instance of a class or interface
-        '_ins_' => true // non-shared instance of a class or interface
+        '_ins_' => true, // non-shared instance of a class or interface
     ];
 
     /**

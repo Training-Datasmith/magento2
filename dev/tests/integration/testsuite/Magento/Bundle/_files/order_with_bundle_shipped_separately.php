@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ $product->setTypeId(Type::TYPE_CODE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
             [
@@ -91,7 +92,7 @@ $product->setTypeId(Type::TYPE_CODE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
         ],
@@ -188,7 +189,7 @@ $orderItem->setProductType($product->getTypeId());
 $orderItem->setSku($product->getSku());
 $orderItem->setProductOptions([
     'info_buyRequest' => $requestInfo,
-    'shipment_type' => AbstractType::SHIPMENT_SEPARATELY
+    'shipment_type' => AbstractType::SHIPMENT_SEPARATELY,
 ]);
 
 $orderItems[] = $orderItem;
@@ -208,7 +209,7 @@ foreach ($optionsData as $optionId => $productId) {
     $orderItem->setSku($selectedProduct->getSku());
     $orderItem->setProductOptions([
         'info_buyRequest' => $requestInfo,
-        'shipment_type' => AbstractType::SHIPMENT_SEPARATELY
+        'shipment_type' => AbstractType::SHIPMENT_SEPARATELY,
     ]);
     $orderItem->setParentItem($orderItems[0]);
     $orderItems[] = $orderItem;

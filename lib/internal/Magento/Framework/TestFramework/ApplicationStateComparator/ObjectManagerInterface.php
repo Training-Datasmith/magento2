@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,12 +22,12 @@ interface ObjectManagerInterface extends FrameworkObjectManagerInterface, ResetA
      *
      * @return ResetterInterface
      */
-    public function getResetter() : ResetterInterface;
+    public function getResetter(): ResetterInterface;
 
     /**
      * Returns shared instances
      *
      * @return object[]
      */
-    public function getSharedInstances() : array;
+    public function getSharedInstances(): array;
 }

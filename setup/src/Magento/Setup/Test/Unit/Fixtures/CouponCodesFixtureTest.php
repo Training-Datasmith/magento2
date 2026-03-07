@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class CouponCodesFixtureTest extends TestCase
             ->willReturn($storeManagerMock);
 
         $valueMap = [
-            ['coupon_codes', 0, 1]
+            ['coupon_codes', 0, 1],
         ];
 
         $this->fixtureModelMock

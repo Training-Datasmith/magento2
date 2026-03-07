@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class BuilderCompositeTest extends TestCase
             ->with(
                 [
                     'array' => [],
-                    'type' => BuilderInterface::class
+                    'type' => BuilderInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -56,7 +57,7 @@ class BuilderCompositeTest extends TestCase
             ->willReturn(
                 [
                     'user' => $expected['user'],
-                    'address' => $expected['address']
+                    'address' => $expected['address'],
                 ]
             );
         $productBuilder->expects(static::once())
@@ -67,7 +68,7 @@ class BuilderCompositeTest extends TestCase
                     'currency' => $expected['currency'],
                     'item' => $expected['item'],
                     'quantity' => $expected['quantity'],
-                    'options' => ['product' => $expected['options']['product']]
+                    'options' => ['product' => $expected['options']['product']],
                 ]
             );
         $magentoBuilder->expects(static::once())
@@ -75,7 +76,7 @@ class BuilderCompositeTest extends TestCase
             ->willReturn(
                 [
                     'url' => $expected['url'],
-                    'options' => ['magento' => $expected['options']['magento']]
+                    'options' => ['magento' => $expected['options']['magento']],
                 ]
             );
 
@@ -86,9 +87,9 @@ class BuilderCompositeTest extends TestCase
                     'array' => [
                         'customer' => BuilderInterface::class,
                         'product' => BuilderInterface::class,
-                        'magento' => BuilderInterface::class
+                        'magento' => BuilderInterface::class,
                     ],
-                    'type' => BuilderInterface::class
+                    'type' => BuilderInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -101,7 +102,7 @@ class BuilderCompositeTest extends TestCase
             [
                 'customer' => BuilderInterface::class,
                 'product' => BuilderInterface::class,
-                'magento' => BuilderInterface::class
+                'magento' => BuilderInterface::class,
             ]
         );
 

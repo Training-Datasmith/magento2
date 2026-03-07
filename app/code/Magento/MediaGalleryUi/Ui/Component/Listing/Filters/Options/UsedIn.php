@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -22,24 +23,24 @@ class UsedIn implements OptionSourceInterface
         return [
             'cms_page' => [
                 'value' => 'cms_page',
-                'label' => 'Pages'
+                'label' => 'Pages',
             ],
             'catalog_category' => [
                 'value' => 'catalog_category',
-                'label' => 'Categories'
+                'label' => 'Categories',
             ],
             'cms_block' => [
                 'value' => 'cms_block',
-                'label' => 'Blocks'
+                'label' => 'Blocks',
             ],
             'catalog_product' => [
                 'value' => 'catalog_product',
-                'label' => 'Products'
+                'label' => 'Products',
             ],
             'not_used' => [
                 'value' => 'not_used',
-                'label' => 'Not used anywhere'
-            ]
+                'label' => 'Not used anywhere',
+            ],
         ];
     }
 }

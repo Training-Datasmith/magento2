@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class DataTest extends TestCase
             'weeeConfig' => $weeeConfig,
             'weeeTax' => $this->weeeTax,
             'taxData' => $this->taxData,
-            'serializer' => $this->serializerMock
+            'serializer' => $this->serializerMock,
         ];
         $helper = new ObjectManager($this);
         $this->helperData = $helper->getObject(WeeeHelper::class, $arguments);
@@ -126,7 +127,7 @@ class DataTest extends TestCase
                 WeeeHelper::KEY_WEEE_AMOUNT_REFUNDED => self::ROW_AMOUNT_REFUNDED,
                 WeeeHelper::KEY_BASE_WEEE_AMOUNT_REFUNDED => self::BASE_ROW_AMOUNT_REFUNDED,
                 WeeeHelper::KEY_WEEE_TAX_AMOUNT_REFUNDED => self::TAX_AMOUNT_REFUNDED,
-                WeeeHelper::KEY_BASE_WEEE_TAX_AMOUNT_REFUNDED => self::BASE_TAX_AMOUNT_REFUNDED
+                WeeeHelper::KEY_BASE_WEEE_TAX_AMOUNT_REFUNDED => self::BASE_TAX_AMOUNT_REFUNDED,
             ],
             [
                 WeeeHelper::KEY_WEEE_AMOUNT_INVOICED => self::ROW_AMOUNT_INVOICED,
@@ -136,7 +137,7 @@ class DataTest extends TestCase
                 WeeeHelper::KEY_WEEE_AMOUNT_REFUNDED => self::ROW_AMOUNT_REFUNDED,
                 WeeeHelper::KEY_BASE_WEEE_AMOUNT_REFUNDED => self::BASE_ROW_AMOUNT_REFUNDED,
                 WeeeHelper::KEY_WEEE_TAX_AMOUNT_REFUNDED => self::TAX_AMOUNT_REFUNDED,
-                WeeeHelper::KEY_BASE_WEEE_TAX_AMOUNT_REFUNDED => self::BASE_TAX_AMOUNT_REFUNDED
+                WeeeHelper::KEY_BASE_WEEE_TAX_AMOUNT_REFUNDED => self::BASE_TAX_AMOUNT_REFUNDED,
             ],
         ];
 
@@ -255,7 +256,7 @@ class DataTest extends TestCase
                 'code' => $fptCode1,
                 'amount' => '15.00',
                 'amount_excl_tax' => '15.0000',
-                'tax_amount' => '1'
+                'tax_amount' => '1',
             ]
         );
         $weeeObject2 = new DataObject(
@@ -263,7 +264,7 @@ class DataTest extends TestCase
                 'code' => $fptCode2,
                 'amount' => '10.00',
                 'amount_excl_tax' => '10.0000',
-                'tax_amount' => '5'
+                'tax_amount' => '5',
             ]
         );
         $expectedObject1 = new DataObject(
@@ -271,7 +272,7 @@ class DataTest extends TestCase
                 'code' => $fptCode1,
                 'amount' => $expectedAmount[0],
                 'amount_excl_tax' => '15.0000',
-                'tax_amount' => '1'
+                'tax_amount' => '1',
             ]
         );
         $expectedObject2 = new DataObject(
@@ -279,7 +280,7 @@ class DataTest extends TestCase
                 'code' => $fptCode2,
                 'amount' => $expectedAmount[1],
                 'amount_excl_tax' => '10.0000',
-                'tax_amount' => '5'
+                'tax_amount' => '5',
             ]
         );
 
@@ -307,7 +308,7 @@ class DataTest extends TestCase
             ->method('getSelectionsCollection')
             ->willReturn([$productSimple]);
 
-        $store=$this->createMock(Store::class);
+        $store = $this->createMock(Store::class);
         /** @var Product $product */
         $product = $this->createPartialMock(
             Product::class,
@@ -342,12 +343,12 @@ class DataTest extends TestCase
     public static function dataProviderGetWeeeAttributesForBundle(): array
     {
         return [
-            [2, false, ["16.00", "15.00"]],
-            [2, true, ["15.00", "10.00"]],
-            [1, false, ["15.00", "10.00"]],
-            [1, true, ["15.0000", "10.0000"]],
-            [3, false, ["16.00", "15.00"]],
-            [3, true, ["15.00", "10.00"]]
+            [2, false, ['16.00', '15.00']],
+            [2, true, ['15.00', '10.00']],
+            [1, false, ['15.00', '10.00']],
+            [1, true, ['15.0000', '10.0000']],
+            [3, false, ['16.00', '15.00']],
+            [3, true, ['15.00', '10.00']],
         ];
     }
 

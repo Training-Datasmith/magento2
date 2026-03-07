@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Analytics\ReportXml\DB\ReportValidator;
 use Magento\Analytics\ReportXml\ReportProvider;
 use Magento\Framework\Filesystem\Directory\WriteInterface as DirectoryWriteInterface;
 use Magento\Framework\Filesystem\File\WriteInterface as FileWriteInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 use PHPUnit\Framework\TestCase;
 
@@ -203,8 +204,8 @@ class ReportWriterTest extends TestCase
                             'name' => 'testProvider',
                             'class' => 'Magento\Analytics\Provider',
                             'parameters' => ['name' => 'testReport'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ];

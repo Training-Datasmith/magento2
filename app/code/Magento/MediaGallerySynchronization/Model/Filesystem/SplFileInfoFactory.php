@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class SplFileInfoFactory
      * @param string $fileName
      * @return \SplFileInfo
      */
-    public function create(string $fileName) : \SplFileInfo
+    public function create(string $fileName): \SplFileInfo
     {
         return new \SplFileInfo($fileName);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Validator\Ip;
 use Magento\Framework\View\Element\Js\Cookie;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template\File\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CookieTest extends TestCase
 {

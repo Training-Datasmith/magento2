@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,12 +61,10 @@ class LocaleResolverTest extends TestCase
         $this->resolver->method('getLocale')
             ->willReturn($locale);
         $this->config->method('getValue')->willReturnMap(
-
-                [
+            [
                     ['in_context', null, false],
                     ['supported_locales', null, 'zh_CN,zh_HK,zh_TW,fr_FR'],
                 ]
-
         );
         $this->assertEquals($expectedLocale, $this->model->getLocale());
     }
@@ -93,12 +92,10 @@ class LocaleResolverTest extends TestCase
         $this->resolver->method('getLocale')
             ->willReturn('zh_Hans_CN');
         $this->config->method('getValue')->willReturnMap(
-
-                [
+            [
                     ['in_context', null, true],
                     ['smart_buttons_supported_locales', null, 'zh_CN,zh_HK,zh_TW,fr_FR'],
                 ]
-
         );
         $this->assertEquals('zh_CN', $this->model->getLocale());
     }

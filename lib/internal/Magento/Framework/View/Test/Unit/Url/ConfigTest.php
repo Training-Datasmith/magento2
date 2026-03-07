@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\View\Test\Unit\Url;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Url\Config;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConfigTest extends TestCase
 {
@@ -63,7 +64,7 @@ class ConfigTest extends TestCase
             ['some/valid/path1', 'someValue'],
             ['some/valid/path2', 2],
             ['some/valid/path3', false],
-            ['some/invalid/path3', null]
+            ['some/invalid/path3', null],
         ];
     }
 }

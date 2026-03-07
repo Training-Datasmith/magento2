@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class EnabledTest extends TestCase
         return [
             [['allow_multiple_address' => 1], true],
             [['allow_multiple_address' => 0], false],
-            [['no_flag' => 0], false]
+            [['no_flag' => 0], false],
         ];
     }
 }

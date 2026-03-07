@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Resolver\Products\Query\Search;
 
-use Magento\Framework\Stdlib\StringUtils as StdlibString;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Stdlib\StringUtils as StdlibString;
 use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Search\Model\QueryFactory;
 
@@ -50,7 +51,7 @@ class QueryPopularity
      * @throws NoSuchEntityException
      * @throws LocalizedException
      */
-    public function execute(ContextInterface $context, string $queryText, int $numResults) : void
+    public function execute(ContextInterface $context, string $queryText, int $numResults): void
     {
         $query = $this->queryFactory->create();
         $maxQueryLength = (int) $query->getMaxQueryLength();

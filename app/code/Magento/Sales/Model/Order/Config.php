@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\App\Area;
@@ -56,8 +59,8 @@ class Config implements ResetAfterRequestInterface
     protected $maskStatusesMapping = [
         Area::AREA_FRONTEND => [
             \Magento\Sales\Model\Order::STATUS_FRAUD => \Magento\Sales\Model\Order::STATUS_FRAUD,
-            \Magento\Sales\Model\Order::STATE_PAYMENT_REVIEW => \Magento\Sales\Model\Order::STATE_PROCESSING
-        ]
+            \Magento\Sales\Model\Order::STATE_PAYMENT_REVIEW => \Magento\Sales\Model\Order::STATE_PROCESSING,
+        ],
     ];
 
     /**

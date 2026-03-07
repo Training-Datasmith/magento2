@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -31,7 +33,7 @@ $row =
                     'value' => '1',
                     'is_value_processed' => null,
                     'aggregator' => 'all',
-                ]
+                ],
         ],
         'actions' => [
             1 => [
@@ -49,10 +51,10 @@ $row =
                         'operator' => '==',
                         'value' => '3',
                         'is_value_processed' => false,
-                        'attribute_scope' => ''
-                    ]
-                ]
-            ]
+                        'attribute_scope' => '',
+                    ],
+                ],
+            ],
         ],
         'is_advanced' => 1,
         'simple_action' => 'by_percent',
@@ -69,8 +71,8 @@ $row =
         'website_ids' => [
             $objectManager->get(
                 StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ];
 $salesRule->loadPost($row);
 $salesRule->save();

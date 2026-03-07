@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\Config;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\App\Test\Unit\Action\Stub\ActionStub;
 use Magento\Framework\Module\Manager as ModuleManager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\Config as PageCacheConfig;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
@@ -119,7 +120,7 @@ class ContextPluginTest extends TestCase
                 'getDefaultTaxBillingAddress',
                 'getDefaultTaxShippingAddress',
                 'getCustomerTaxClassId',
-                'getWebsiteId'
+                'getWebsiteId',
             ]
         );
 
@@ -142,7 +143,7 @@ class ContextPluginTest extends TestCase
                 'moduleManager' => $this->moduleManagerMock,
                 'cacheConfig' => $this->cacheConfigMock,
                 'storeManager' => $this->storeManagerMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -191,13 +192,13 @@ class ContextPluginTest extends TestCase
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_COUNTRY,
                         ScopeInterface::SCOPE_STORE,
-                        null
+                        null,
                     ],
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_REGION,
                         ScopeInterface::SCOPE_STORE,
-                        null
-                    ]
+                        null,
+                    ],
                 ];
                 $returnValue = ['US',0];
                 $index++;
@@ -295,13 +296,13 @@ class ContextPluginTest extends TestCase
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_COUNTRY,
                         ScopeInterface::SCOPE_STORE,
-                        null
+                        null,
                     ],
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_REGION,
                         ScopeInterface::SCOPE_STORE,
-                        null
-                    ]
+                        null,
+                    ],
                 ];
                 $returnValue = ['US',0];
                 $index++;
@@ -371,13 +372,13 @@ class ContextPluginTest extends TestCase
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_COUNTRY,
                         ScopeInterface::SCOPE_STORE,
-                        null
+                        null,
                     ],
                     [
                         TaxConfig::CONFIG_XML_PATH_DEFAULT_REGION,
                         ScopeInterface::SCOPE_STORE,
-                        null
-                    ]
+                        null,
+                    ],
                 ];
                 $returnValue = ['US',0];
                 $index++;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\LoginAsCustomerAssistance\Model;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerExtensionFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\LoginAsCustomerAssistance\Api\IsAssistanceEnabledInterface;
 use Magento\LoginAsCustomerAssistance\Model\ResourceModel\GetLoginAsCustomerAssistanceAllowed;
 

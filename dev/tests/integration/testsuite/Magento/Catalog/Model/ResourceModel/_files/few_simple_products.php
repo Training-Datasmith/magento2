@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var Magento\Framework\ObjectManagerInterface $objcetManager */
 $objectManager = Bootstrap::getObjectManager();
@@ -28,9 +29,9 @@ for ($i = 1; $i <= $productsAmount; $i++) {
             'sku' => "Product{$i}",
             'price' => 100,
             'attribute_set_id' => 4,
-            'website_ids' => [1]
-        ]
+            'website_ids' => [1],
+        ],
     ];
-    
+
     $productRepository->save($productFactory->create($productArray));
 }

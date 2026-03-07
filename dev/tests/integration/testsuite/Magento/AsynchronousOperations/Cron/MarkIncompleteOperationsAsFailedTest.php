@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class MarkIncompleteOperationsAsFailedTest extends TestCase
                 OperationInterface::ID => 3,
                 OperationInterface::STATUS => OperationInterface::STATUS_TYPE_OPEN,
                 'started_at' => null,
-            ]
+            ],
         ];
         $operationFactory = $objectManager->get(OperationInterfaceFactory::class);
         $operations = [];

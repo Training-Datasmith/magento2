@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Resolver;
 
-use Magento\Catalog\Api\Data\CategoryInterface;
-use Magento\CatalogGraphQl\Model\Category\Filter\SearchCriteria;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\CatalogGraphQl\Model\Category\CategoryFilter;
+use Magento\CatalogGraphQl\Model\Category\Filter\SearchCriteria;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\CategoryTree;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\ExtractDataFromCategoryTree;
 use Magento\Framework\Exception\InputException;
@@ -21,6 +19,7 @@ use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\GraphQl\Model\Query\ContextInterface;
 
 /**
  * Category List resolver, used for GraphQL category data request processing.
@@ -115,7 +114,7 @@ class CategoryList implements ResolverInterface
         array $processedArgs,
         array $attributeNames,
         ContextInterface $context
-    ) : array {
+    ): array {
         // pagination must be applied to top level category results, children categories are not paginated
         $processedArgs['pageSize'] = 0;
         $searchCriteria = $this->searchCriteria->buildCriteria(

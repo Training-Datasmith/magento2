@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Ui\Component\Listing\Column;
 
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Escaper;
 
 /**
  * Class to build edit and delete link for each item.
@@ -69,24 +72,24 @@ class BlockActions extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'block_id' => $item['block_id']
+                                    'block_id' => $item['block_id'],
                                 ]
                             ),
-                            'label' => __('Edit')
+                            'label' => __('Edit'),
                         ],
                         'delete' => [
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'block_id' => $item['block_id']
+                                    'block_id' => $item['block_id'],
                                 ]
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
                                 'title' => __('Delete %1', $title),
-                                'message' => __('Are you sure you want to delete a %1 record?', $title)
+                                'message' => __('Are you sure you want to delete a %1 record?', $title),
                             ],
-                            'post' => true
+                            'post' => true,
                         ],
                     ];
                 }

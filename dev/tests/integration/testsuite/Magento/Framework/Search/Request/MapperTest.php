@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Request;
 
 use Magento\Framework\Search\Request\Aggregation\DynamicBucket;
-use Magento\Framework\Search\Request\BucketInterface;
 
 class MapperTest extends \PHPUnit\Framework\TestCase
 {

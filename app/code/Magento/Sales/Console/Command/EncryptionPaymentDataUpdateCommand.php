@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Console\Command;
 
+use Magento\Framework\Console\Cli;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
-use Magento\Framework\Console\Cli;
 
 /**
  * Command for updating encrypted credit card data to the latest cipher

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -87,13 +88,13 @@ class ApplicationDumpCommandTest extends TestCase
                     'namespace' => 'system',
                     'source' => $this->source,
                     'pool' => ConfigFilePool::APP_CONFIG,
-                    'comment' => $this->commentMock
+                    'comment' => $this->commentMock,
                 ],
                 [
                     'namespace' => 'system',
                     'source' => $this->sourceEnv,
-                    'pool' => ConfigFilePool::APP_ENV
-                ]
+                    'pool' => ConfigFilePool::APP_ENV,
+                ],
             ],
             $this->configHashMock
         );
@@ -102,7 +103,7 @@ class ApplicationDumpCommandTest extends TestCase
     public function testExport()
     {
         $dump = [
-            'system' => ['systemDATA']
+            'system' => ['systemDATA'],
         ];
         $this->configHashMock->expects($this->once())
             ->method('regenerate');

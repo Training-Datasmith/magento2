@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Framework\Setup\Declaration\Schema\Operations;
 
-use Magento\Framework\Setup\Declaration\Schema\Db\AdapterMediator;
 use Magento\Framework\Setup\Declaration\Schema\Db\DbSchemaWriterInterface;
 use Magento\Framework\Setup\Declaration\Schema\Db\DefinitionAggregator;
 use Magento\Framework\Setup\Declaration\Schema\Dto\ElementInterface;
@@ -24,7 +25,7 @@ class DropElement implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'drop_element';
+    public const OPERATION_NAME = 'drop_element';
 
     /**
      * @var DbSchemaWriterInterface
@@ -82,7 +83,7 @@ class DropElement implements OperationInterface
                 $element->getName(),
                 $element->getTable()->getName(),
                 $element->getType()
-            )
+            ),
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Option\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Config\Source\Product\Options\Price;
 use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Model\Product\Option\Validator\DefaultValidator;
@@ -15,6 +15,7 @@ use Magento\Catalog\Model\ProductOptions\ConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -64,7 +65,7 @@ class DefaultValidatorTest extends TestCase
                         'name' => 'name 2.2',
                         'disabled' => true,
                     ],
-                ]
+                ],
             ],
         ];
         $configMock->expects($this->once())->method('getAll')->willReturn($config);
@@ -160,7 +161,7 @@ class DefaultValidatorTest extends TestCase
             ['option_title', 'name 1.1', 'fixed', -12, new DataObject(['store_id' => 1])],
             ['option_title', 'name 1.1', 'fixed', -12, new DataObject(['store_id' => 0])],
             ['option_title', 'name 1.1', 'fixed', 12, new DataObject(['store_id' => 1])],
-            ['option_title', 'name 1.1', 'fixed', 12, new DataObject(['store_id' => 0])]
+            ['option_title', 'name 1.1', 'fixed', 12, new DataObject(['store_id' => 0])],
         ];
     }
 

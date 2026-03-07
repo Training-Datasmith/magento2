@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -88,7 +89,7 @@ class TreeTest extends TestCase
                 'cmsWysiwygImages' => $this->cmsWysiwygImagesMock,
                 'registry' => $this->coreRegistryMock,
                 'serializer' => $serializerMock,
-                '_filesystem' => $this->fileSystemMock
+                '_filesystem' => $this->fileSystemMock,
             ]
         );
     }

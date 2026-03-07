@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -417,7 +418,7 @@ class Product extends AbstractDb
                 new DataObject([
                     'collection' => $imagesCollection,
                     'title' => $product->getName(),
-                    'thumbnail' => $thumbnailUrl
+                    'thumbnail' => $thumbnailUrl,
                 ])
             );
         }

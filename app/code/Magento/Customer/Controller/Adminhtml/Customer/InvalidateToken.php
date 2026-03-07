@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,16 +8,16 @@
 
 namespace Magento\Customer\Controller\Adminhtml\Customer;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Model\Address\Mapper;
-use Magento\Framework\DataObjectFactory;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\DataObjectFactory;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 
 /**
  * Class to invalidate tokens for customers
@@ -32,7 +34,7 @@ class InvalidateToken extends \Magento\Customer\Controller\Adminhtml\Index imple
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::invalidate_tokens';
+    public const ADMIN_RESOURCE = 'Magento_Customer::invalidate_tokens';
 
     /**
      * @var CustomerTokenServiceInterface

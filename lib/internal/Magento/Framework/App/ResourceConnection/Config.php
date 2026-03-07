@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\ResourceConnection;
 
 use Magento\Framework\Config\ConfigOptionsListConstants;
@@ -63,7 +66,7 @@ class Config extends \Magento\Framework\Config\Data\Scoped implements ConfigInte
     {
         $this->initConnections();
         $connectionName = \Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION;
- 
+
         if (!isset($this->_connectionNames[$resourceName])) {
             $resourcesConfig = $this->get();
             $pointerResourceName = $resourceName;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Pricing\Price;
 
 /**
@@ -16,7 +19,7 @@ interface CustomOptionPriceInterface
     /**
      * Flag to indicate the price is for configuration option of a product
      */
-    const CONFIGURATION_OPTION_FLAG = 'configuration_option_flag';
+    public const CONFIGURATION_OPTION_FLAG = 'configuration_option_flag';
 
     /**
      * Return calculated options

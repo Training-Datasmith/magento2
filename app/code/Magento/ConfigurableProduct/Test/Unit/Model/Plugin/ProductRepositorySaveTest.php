@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Plugin;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
@@ -15,12 +17,11 @@ use Magento\ConfigurableProduct\Api\Data\OptionInterface;
 use Magento\ConfigurableProduct\Model\Plugin\ProductRepositorySave;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Test\Unit\Model\Product\ProductExtensionAttributes;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Exception\InputException;
 
 /**
  * Test for ProductRepositorySave plugin
@@ -91,7 +92,7 @@ class ProductRepositorySaveTest extends TestCase
                 'getConfigurableProductOptions',
                 'setConfigurableProductOptions',
                 'getConfigurableProductLinks',
-                'setConfigurableProductLinks'
+                'setConfigurableProductLinks',
             ]
         );
 
@@ -103,7 +104,7 @@ class ProductRepositorySaveTest extends TestCase
             ProductRepositorySave::class,
             [
                 'productAttributeRepository' => $this->productAttributeRepository,
-                'productRepository' => $this->productRepository
+                'productRepository' => $this->productRepository,
             ]
         );
     }

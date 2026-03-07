@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ QRY;
                 'default_value' => '2023-03-22 00:00:00',
                 'input_filter' => 'DATE',
                 'validate_rules' =>
-                    '{"DATE_RANGE_MIN":"1679443200","DATE_RANGE_MAX":"1679875200","INPUT_VALIDATION":"DATE"}'
+                    '{"DATE_RANGE_MIN":"1679443200","DATE_RANGE_MAX":"1679875200","INPUT_VALIDATION":"DATE"}',
             ],
             'attribute'
         ),
@@ -90,11 +91,11 @@ QRY;
                             'default_value' => $attribute->getDefaultValue(),
                             'is_unique' => false,
                             'input_filter' => $attribute->getInputFilter(),
-                            'validate_rules' => $formattedValidationRules
-                        ]
+                            'validate_rules' => $formattedValidationRules,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

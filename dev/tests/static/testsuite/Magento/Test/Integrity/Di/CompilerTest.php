@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Compiler test. Check compilation of DI definitions and code generation
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Di;
 
+use Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator;
+use Magento\Framework\Api\Code\Generator\ExtensionAttributesInterfaceGenerator;
 use Magento\Framework\Api\Code\Generator\Mapper;
 use Magento\Framework\Api\Code\Generator\SearchResults;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Interception\Code\InterfaceValidator;
 use Magento\Framework\ObjectManager\Code\Generator\Converter;
 use Magento\Framework\ObjectManager\Code\Generator\Factory;
 use Magento\Framework\ObjectManager\Code\Generator\Repository;
-use Magento\Framework\Api\Code\Generator\ExtensionAttributesInterfaceGenerator;
-use Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator;
-use Magento\Framework\App\Utility\Files;
 use Magento\TestFramework\Integrity\PluginValidator;
 
 /**
@@ -336,7 +339,7 @@ class CompilerTest extends \PHPUnit\Framework\TestCase
                 ExtensionAttributesInterfaceGenerator::ENTITY_TYPE =>
                     \Magento\Framework\Api\Code\Generator\ExtensionAttributesInterfaceGenerator::class,
                 ExtensionAttributesGenerator::ENTITY_TYPE =>
-                    \Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator::class
+                    \Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator::class,
             ]
         );
         $generationAutoloader = new \Magento\Framework\Code\Generator\Autoloader($generator);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Csp\Model\Policy\Renderer;
 
 use Magento\Csp\Model\Policy\FetchPolicy;
+use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\Response\Http as HttpResponse;
 
 /**
  * Test that rendering policies via headers works.

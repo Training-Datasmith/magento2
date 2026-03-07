@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class MailTest extends TestCase
                 'contactsConfig' => $this->configMock,
                 'transportBuilder' => $this->transportBuilderMock,
                 'inlineTranslation' => $this->inlineTranslationMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config\Reader\Source\Dynamic;
 
+use Magento\Framework\App\Config\Reader\Source\SourceInterface;
 use Magento\Framework\App\Config\Scope\Converter;
 use Magento\Store\Model\ResourceModel\Config\Collection\ScopedFactory;
-use Magento\Framework\App\Config\Reader\Source\SourceInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\WebsiteFactory;
 

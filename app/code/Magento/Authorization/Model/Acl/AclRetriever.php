@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,15 +8,11 @@
 
 namespace Magento\Authorization\Model\Acl;
 
-use Magento\Authorization\Model\ResourceModel\Role\CollectionFactory as RoleCollectionFactory;
-use Magento\Authorization\Model\ResourceModel\Rules\CollectionFactory as RulesCollectionFactory;
 use Magento\Authorization\Model\Role;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Acl\Role\CurrentRoleContext;
-use Magento\Framework\Acl\Builder as AclBuilder;
 use Magento\Framework\Exception\AuthorizationException;
 use Magento\Framework\Exception\LocalizedException;
-use Psr\Log\LoggerInterface as Logger;
 
 /**
  * Permission tree retriever
@@ -26,50 +24,20 @@ class AclRetriever
     public const PERMISSION_SELF = 'self';
 
     /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @var \Magento\Authorization\Model\ResourceModel\Rules\CollectionFactory
-     */
-    protected $rulesCollectionFactory;
-
-    /**
-     * @var \Magento\Framework\Acl\Builder
-     */
-    protected $aclBuilder;
-
-    /**
-     * @var \Magento\Authorization\Model\ResourceModel\Role\CollectionFactory
-     */
-    protected $roleCollectionFactory;
-
-    /**
      * @var CurrentRoleContext
      */
     private $currentRoleContext;
 
     /**
      * Initialize dependencies.
-     *
-     * @param AclBuilder $aclBuilder
-     * @param RoleCollectionFactory $roleCollectionFactory
-     * @param RulesCollectionFactory $rulesCollectionFactory
-     * @param Logger $logger
-     * @param ?CurrentRoleContext $currentRoleContext
      */
     public function __construct(
-        AclBuilder $aclBuilder,
-        RoleCollectionFactory $roleCollectionFactory,
-        RulesCollectionFactory $rulesCollectionFactory,
-        Logger $logger,
+        protected \Magento\Framework\Acl\Builder $aclBuilder,
+        protected \Magento\Authorization\Model\ResourceModel\Role\CollectionFactory $roleCollectionFactory,
+        protected \Magento\Authorization\Model\ResourceModel\Rules\CollectionFactory $rulesCollectionFactory,
+        protected \Psr\Log\LoggerInterface $logger,
         ?CurrentRoleContext $currentRoleContext = null
     ) {
-        $this->logger = $logger;
-        $this->rulesCollectionFactory = $rulesCollectionFactory;
-        $this->aclBuilder = $aclBuilder;
-        $this->roleCollectionFactory = $roleCollectionFactory;
         $this->currentRoleContext = $currentRoleContext ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(CurrentRoleContext::class);
     }
@@ -87,7 +55,8 @@ class AclRetriever
     {
         if ($userType == UserContextInterface::USER_TYPE_GUEST) {
             return [self::PERMISSION_ANONYMOUS];
-        } elseif ($userType == UserContextInterface::USER_TYPE_CUSTOMER) {
+        }
+        if ($userType == UserContextInterface::USER_TYPE_CUSTOMER) {
             return [self::PERMISSION_SELF];
         }
         try {
@@ -170,9 +139,8 @@ class AclRetriever
      * Roles can be created for integrations and admin users only.
      *
      * @param int $userType
-     * @return bool
      */
-    protected function _canRoleBeCreatedForUserType($userType)
+    protected function _canRoleBeCreatedForUserType($userType): bool
     {
         return ($userType == UserContextInterface::USER_TYPE_INTEGRATION)
             || ($userType == UserContextInterface::USER_TYPE_ADMIN);

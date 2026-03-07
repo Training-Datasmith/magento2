@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class Search extends Action implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::block';
+    public const ADMIN_RESOURCE = 'Magento_Cms::block';
 
     /**
      * @var JsonFactory
@@ -65,7 +66,7 @@ class Search extends Action implements HttpGetActionInterface
      *
      * @return ResultInterface
      */
-    public function execute() : ResultInterface
+    public function execute(): ResultInterface
     {
         $searchKey = $this->getRequest()->getParam('searchKey');
         $currentPage = (int) $this->getRequest()->getParam('page');
@@ -85,13 +86,13 @@ class Search extends Action implements HttpGetActionInterface
                 'value' => $id,
                 'label' => $block->getTitle(),
                 'is_active' => $block->isActive(),
-                'optgroup' => false
+                'optgroup' => false,
             ];
         }
 
         return $this->resultJsonFactory->create()->setData([
             'options' => $options,
-            'total' => $searchResult->getTotalCount()
+            'total' => $searchResult->getTotalCount(),
         ]);
     }
 }

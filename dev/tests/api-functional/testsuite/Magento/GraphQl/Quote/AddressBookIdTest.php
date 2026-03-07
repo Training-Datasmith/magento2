@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -70,12 +71,12 @@ class AddressBookIdTest extends GraphQlAbstract
 
         $this->assertEquals(
             [
-                "customerCart" => [
-                    "shipping_addresses" => [
-                        ["id" => (int)$customerAddress->getId()]
+                'customerCart' => [
+                    'shipping_addresses' => [
+                        ['id' => (int)$customerAddress->getId()],
                     ],
-                    "billing_address" => ["id" => (int)$customerAddress->getId()]
-                ]
+                    'billing_address' => ['id' => (int)$customerAddress->getId()],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getCustomerCartQuery(),
@@ -101,12 +102,12 @@ class AddressBookIdTest extends GraphQlAbstract
     {
         $this->assertEquals(
             [
-                "customerCart" => [
-                    "shipping_addresses" => [
-                        ["id" => ""]
+                'customerCart' => [
+                    'shipping_addresses' => [
+                        ['id' => ''],
                     ],
-                    "billing_address" => ["id" => ""]
-                ]
+                    'billing_address' => ['id' => ''],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getCustomerCartQuery(),
@@ -181,7 +182,7 @@ class AddressBookIdTest extends GraphQlAbstract
             'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken(
                 $customerEmail,
                 'password'
-            )
+            ),
         ];
     }
 }

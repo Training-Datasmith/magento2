@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Model\Indexer\Fulltext\Plugin;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
 use Magento\AdvancedSearch\Model\Indexer\Fulltext\Plugin\CustomerGroup as CustomerGroupPlugin;
 use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
@@ -16,8 +15,10 @@ use Magento\Customer\Model\Group as CustomerGroupModel;
 use Magento\Customer\Model\ResourceModel\Group as CustomerGroupResourceModel;
 use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass(CustomerGroupPlugin::class)]
 class CustomerGroupTest extends TestCase

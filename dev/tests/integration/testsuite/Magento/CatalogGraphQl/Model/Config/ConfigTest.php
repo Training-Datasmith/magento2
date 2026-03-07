@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
      * @param $objectManager
      * @return void
      */
-    private function resetStateProductsAttributesCollection($objectManager) : void
+    private function resetStateProductsAttributesCollection($objectManager): void
     {
         /** @var ProductsAttributesCollection $productsAttributesCollection */
         $productsAttributesCollection = $objectManager->get(ProductsAttributesCollection::class);

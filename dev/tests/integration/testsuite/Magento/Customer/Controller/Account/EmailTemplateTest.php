@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -152,7 +153,7 @@ class EmailTemplateTest extends AbstractController
             'form_key' => $this->formKey->getFormKey(),
             'firstname' => self::FIXTURE_CUSTOMER_FIRSTNAME,
             'lastname' => self::FIXTURE_CUSTOMER_LASTNAME,
-            'current_password' => self::FIXTURE_CUSTOMER_PASSWORD
+            'current_password' => self::FIXTURE_CUSTOMER_PASSWORD,
         ];
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST)

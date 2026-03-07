@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class StockTest extends TestCase
             Product::class,
             ['getId', 'setIsSalable']
         );
-        
+
         $productMock->setIsSalable($status);
         $this->assertNull($this->stock->assignStatusToProduct($productMock));
     }
@@ -128,10 +129,10 @@ class StockTest extends TestCase
             Product::class,
             ['getId', 'setIsSalable']
         );
-        
+
         $productMock->setIsSalable($status);
         $productMock->setId($productId);
-        
+
         $stockStatusMock = $this->createMock(StockStatusInterface::class);
         $stockStatusMock->expects($this->once())
             ->method('getStockStatus')
@@ -156,7 +157,7 @@ class StockTest extends TestCase
     #[DataProvider('filterProvider')]
     public function testAddInStockFilterToCollection($configMock)
     {
-        if ($configMock!=null) {
+        if ($configMock != null) {
             $configMock = $configMock($this);
         }
 

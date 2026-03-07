@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Lock\Backend;
 
-use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\Exception\RuntimeException;
+use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\Phrase;
 
 /**
@@ -63,7 +64,7 @@ class Zookeeper implements LockManagerInterface
      *
      * @var array
      */
-    private $acl = [['perms'=>\Zookeeper::PERM_ALL, 'scheme' => 'world', 'id' => 'anyone']];
+    private $acl = [['perms' => \Zookeeper::PERM_ALL, 'scheme' => 'world', 'id' => 'anyone']];
 
     /**
      * The mapping list of the lock name with the full lock path
@@ -75,7 +76,7 @@ class Zookeeper implements LockManagerInterface
     /**
      * The default path to storage locks
      */
-    const DEFAULT_PATH = '/magento/locks';
+    public const DEFAULT_PATH = '/magento/locks';
 
     /**
      * @param string $host The host to connect to Zookeeper

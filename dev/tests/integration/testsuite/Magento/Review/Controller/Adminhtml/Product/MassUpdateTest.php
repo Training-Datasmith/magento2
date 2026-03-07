@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Review\Controller\Adminhtml\Product;
 
-use Magento\Review\Model\Review;
-use Magento\TestFramework\TestCase\AbstractBackendController;
+use Laminas\Http\Request;
 use Magento\Framework\Acl\Builder;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\UrlInterface;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory;
-use Laminas\Http\Request;
+use Magento\Review\Model\Review;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\AbstractBackendController;
 
 /**
  * Test Mass Update action.

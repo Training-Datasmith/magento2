@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class DomTest extends TestCase
             [
                 include __DIR__ . '/_files/converted_valid_acl.php',
                 file_get_contents(__DIR__ . '/_files/valid_acl.xml'),
-            ]
+            ],
         ];
     }
 
@@ -68,8 +69,8 @@ class DomTest extends TestCase
         return [
             'resource without "id" attribute' => [
                 'xml' => '<?xml version="1.0"?><config><acl>' .
-                    '<resources><resource/></resources></acl></config>'
-            ]
+                    '<resources><resource/></resources></acl></config>',
+            ],
         ];
     }
 }

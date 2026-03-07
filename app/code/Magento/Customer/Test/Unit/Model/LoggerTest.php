@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class LoggerTest extends TestCase
             Logger::class,
             [
                 'resource' => $this->resource,
-                'logFactory' => $this->logFactory
+                'logFactory' => $this->logFactory,
             ]
         );
     }
@@ -127,7 +128,7 @@ class LoggerTest extends TestCase
             'customerId' => $data['customer_id'],
             'lastLoginAt' => $data['last_login_at'],
             'lastLogoutAt' => $data['last_logout_at'],
-            'lastVisitAt' => $data['last_visit_at']
+            'lastVisitAt' => $data['last_visit_at'],
         ];
 
         $select = $this->createMock(Select::class);
@@ -175,7 +176,7 @@ class LoggerTest extends TestCase
                     'last_login_at' => '2015-03-04 12:00:00',
                     'last_visit_at' => '2015-03-04 12:01:00',
                     'last_logout_at' => '2015-03-04 12:05:00',
-                ]
+                ],
             ],
             [
                 235,
@@ -184,7 +185,7 @@ class LoggerTest extends TestCase
                     'last_login_at' => '2015-03-04 12:00:00',
                     'last_visit_at' => '2015-03-04 12:01:00',
                     'last_logout_at' => null,
-                ]
+                ],
             ],
             [
                 235,
@@ -193,7 +194,7 @@ class LoggerTest extends TestCase
                     'last_login_at' => null,
                     'last_visit_at' => null,
                     'last_logout_at' => null,
-                ]
+                ],
             ],
         ];
     }

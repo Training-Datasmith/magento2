@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -165,15 +166,15 @@ abstract class AbstractMeasure
             if (is_array($this->units[$this->getType()][0])) {
                 foreach ($this->units[$this->getType()][0] as $key => $found) {
                     switch ($key) {
-                        case "/":
+                        case '/':
                             if ($found != 0) {
                                 $value = $this->div($value, $found, 25);
                             }
                             break;
-                        case "+":
+                        case '+':
                             $value = $this->add($value, $found, 25);
                             break;
-                        case "-":
+                        case '-':
                             $value = $this->sub($value, $found, 25);
                             break;
                         default:
@@ -187,13 +188,13 @@ abstract class AbstractMeasure
             if (is_array($this->units[$type][0])) {
                 foreach (array_reverse($this->units[$type][0]) as $key => $found) {
                     switch ($key) {
-                        case "/":
+                        case '/':
                             $value = $this->mul($value, $found, 25);
                             break;
-                        case "+":
+                        case '+':
                             $value = $this->sub($value, $found, 25);
                             break;
-                        case "-":
+                        case '-':
                             $value = $this->add($value, $found, 25);
                             break;
                         default:

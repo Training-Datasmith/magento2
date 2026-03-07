@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -351,7 +352,7 @@ class CategoryTest extends TestCase
                 'resource' => $this->resource,
                 'indexerRegistry' => $this->indexerRegistry,
                 'metadataService' => $this->metadataServiceMock,
-                'customAttributeFactory' => $this->attributeValueFactory
+                'customAttributeFactory' => $this->attributeValueFactory,
             ]
         );
     }
@@ -365,7 +366,7 @@ class CategoryTest extends TestCase
             'set 1' => [false, false, 1, 1],
             'set 2' => [true,  false, 0, 1],
             'set 3' => [false, true,  1, 0],
-            'set 4' => [true,  true,  0, 0]
+            'set 4' => [true,  true,  0, 0],
         ];
     }
 
@@ -384,7 +385,7 @@ class CategoryTest extends TestCase
         $expectedFlatReindexCalls,
         $expectedProductReindexCall
     ): void {
-        $affectedProductIds = ["1", "2"];
+        $affectedProductIds = ['1', '2'];
         $this->category->setAffectedProductIds($affectedProductIds);
         $pathIds = ['path/1/2', 'path/2/3'];
         $this->category->setData('path_ids', $pathIds);
@@ -406,7 +407,7 @@ class CategoryTest extends TestCase
 
         $this->indexerRegistry
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [State::INDEXER_ID] => $this->flatIndexer,
                 [Product::INDEXER_ID] => $this->productIndexer
             });
@@ -422,12 +423,12 @@ class CategoryTest extends TestCase
             [false, null, null, null, null, null, 0],
             [true, null, null, null, null, null,  0],
             [false, [], null, null, null, null, 0],
-            [false, ["1", "2"], null, null, null, null, 1],
+            [false, ['1', '2'], null, null, null, null, 1],
             [false, null, 1, null, null, null, 1],
-            [false, ["1", "2"], 0, 1, null, null,  1],
+            [false, ['1', '2'], 0, 1, null, null,  1],
             [false, null, 1, 1, null, null, 0],
-            [false, ["1", "2"], null, null, 0, 1,  1],
-            [false, ["1", "2"], null, null, 1, 0,  1]
+            [false, ['1', '2'], null, null, 0, 1,  1],
+            [false, ['1', '2'], null, null, 1, 0,  1],
         ];
     }
 
@@ -537,7 +538,7 @@ class CategoryTest extends TestCase
     {
         return [
             ['testimage', 'http://www.example.com/catalog/category/testimage'],
-            [false, false]
+            [false, false],
         ];
     }
 
@@ -564,7 +565,7 @@ class CategoryTest extends TestCase
         $model = $this->objectManager->getObject(
             Category::class,
             [
-                'storeManager' => $storeManager
+                'storeManager' => $storeManager,
             ]
         );
 
@@ -592,7 +593,7 @@ class CategoryTest extends TestCase
 
         /** @var Category $model */
         $model = $this->objectManager->getObject(Category::class, [
-            'storeManager' => $storeManager
+            'storeManager' => $storeManager,
         ]);
 
         $model->setData('image', 'myimage');

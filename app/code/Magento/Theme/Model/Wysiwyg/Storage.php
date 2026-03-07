@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -177,7 +179,7 @@ class Storage
             return false;
         }
         $thumbnailDir = $this->_helper->getThumbnailDirectory($source);
-        $thumbnailPath = sprintf("%s/%s", $thumbnailDir, $this->file->getPathInfo($source)['basename']);
+        $thumbnailPath = sprintf('%s/%s', $thumbnailDir, $this->file->getPathInfo($source)['basename']);
         try {
             $this->mediaWriteDirectory->isExist($thumbnailDir);
             $image = $this->_imageFactory->create();
@@ -227,7 +229,7 @@ class Storage
             'name' => $name,
             'short_name' => $this->_helper->getShortFilename($name),
             'path' => str_replace($this->_helper->getStorageRoot(), '', $newPath),
-            'id' => $this->_helper->convertPathToId($newPath)
+            'id' => $this->_helper->convertPathToId($newPath),
         ];
 
         return $result;
@@ -326,7 +328,7 @@ class Storage
                     20
                 ),
                 'id' => $this->_helper->convertPathToId($path),
-                'cls' => 'folder'
+                'cls' => 'folder',
             ];
         }
         return $resultArray;

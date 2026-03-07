@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -121,8 +122,8 @@ class NewCategoryTest extends TestCase
             ->with([
                 'data' => [
                     'id' => 'new_category_form',
-                    'class' => 'admin__scope-old'
-                ]
+                    'class' => 'admin__scope-old',
+                ],
             ])
             ->willReturn($form);
 
@@ -146,7 +147,7 @@ class NewCategoryTest extends TestCase
 
         $this->setupCategoryCollectionMock([
             1 => $category1,
-            2 => $category2
+            2 => $category2,
         ]);
 
         $fieldset->expects($this->exactly(2))
@@ -229,28 +230,28 @@ class NewCategoryTest extends TestCase
             'two_categories_returns_second' => [
                 'categoryData' => [
                     1 => 'Root',
-                    2 => 'Default Category'
+                    2 => 'Default Category',
                 ],
-                'expectedResult' => [2 => 'Default Category']
+                'expectedResult' => [2 => 'Default Category'],
             ],
             'three_categories_returns_empty' => [
                 'categoryData' => [
                     1 => 'Root',
                     2 => 'Default Category',
-                    3 => 'Custom Category'
+                    3 => 'Custom Category',
                 ],
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'one_category_returns_empty' => [
                 'categoryData' => [
-                    1 => 'Root'
+                    1 => 'Root',
                 ],
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'no_categories_returns_empty' => [
                 'categoryData' => [],
-                'expectedResult' => []
-            ]
+                'expectedResult' => [],
+            ],
         ];
     }
 

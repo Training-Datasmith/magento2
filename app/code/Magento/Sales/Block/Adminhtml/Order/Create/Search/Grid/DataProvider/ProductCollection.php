@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\DataProvider;
 
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Store\Model\Store;
 
 /**
@@ -36,7 +37,7 @@ class ProductCollection
      * @param Store $store
      * @return Collection
      */
-    public function getCollectionForStore(Store $store):Collection
+    public function getCollectionForStore(Store $store): Collection
     {
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();

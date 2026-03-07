@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,32 +21,32 @@ class InputException extends AbstractAggregateException
     /**
      * @deprecated
      */
-    const DEFAULT_MESSAGE = 'One or more input exceptions have occurred.';
+    public const DEFAULT_MESSAGE = 'One or more input exceptions have occurred.';
 
     /**
      * @deprecated
      */
-    const INVALID_FIELD_RANGE = 'The %fieldName value of "%value" must be between %minValue and %maxValue';
+    public const INVALID_FIELD_RANGE = 'The %fieldName value of "%value" must be between %minValue and %maxValue';
 
     /**
      * @deprecated
      */
-    const INVALID_FIELD_MIN_VALUE = 'The %fieldName value of "%value" must be greater than or equal to %minValue.';
+    public const INVALID_FIELD_MIN_VALUE = 'The %fieldName value of "%value" must be greater than or equal to %minValue.';
 
     /**
      * @deprecated
      */
-    const INVALID_FIELD_MAX_VALUE = 'The %fieldName value of "%value" must be less than or equal to %maxValue.';
+    public const INVALID_FIELD_MAX_VALUE = 'The %fieldName value of "%value" must be less than or equal to %maxValue.';
 
     /**
      * @deprecated
      */
-    const INVALID_FIELD_VALUE = 'Invalid value of "%value" provided for the %fieldName field.';
-    
+    public const INVALID_FIELD_VALUE = 'Invalid value of "%value" provided for the %fieldName field.';
+
     /**
      * @deprecated
      */
-    const REQUIRED_FIELD = '"%fieldName" is required. Enter and try again.';
+    public const REQUIRED_FIELD = '"%fieldName" is required. Enter and try again.';
 
     /**
      * Initialize the input exception.

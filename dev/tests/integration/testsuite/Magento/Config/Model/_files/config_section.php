@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,5 +35,5 @@ return [
                 'dev/debug/template_hints_blocks' => '0',
             ],
         ],
-    ]
+    ],
 ];

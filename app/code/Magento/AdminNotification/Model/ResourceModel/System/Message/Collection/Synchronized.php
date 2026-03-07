@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\System\Message\Collection;
 
 /**
@@ -23,7 +26,7 @@ class Synchronized extends \Magento\AdminNotification\Model\ResourceModel\System
      *
      * @return $this|\Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
-    public function _afterLoad()
+    public function _afterLoad(): static
     {
         $messages = $this->_messageList->asArray();
         $persisted = [];

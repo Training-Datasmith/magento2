@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Escaper;
+use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\LayoutInterface;
@@ -20,14 +22,13 @@ use Magento\ImportExport\Block\Adminhtml\Import\Frame\Result;
 use Magento\ImportExport\Controller\Adminhtml\Import\Validate;
 use Magento\ImportExport\Helper\Report;
 use Magento\ImportExport\Model\History;
+use Magento\ImportExport\Model\Import;
+use Magento\ImportExport\Model\Import\AbstractSource;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\ImportExport\Model\Import\RenderErrorMessages;
 use Magento\ImportExport\Model\Report\ReportProcessorInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\ImportExport\Model\Import;
-use Magento\ImportExport\Model\Import\AbstractSource;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -95,12 +96,12 @@ class ValidateTest extends TestCase
         $objects = [
             [
                 Escaper::class,
-                $this->createMock(Escaper::class)
+                $this->createMock(Escaper::class),
             ],
             [
                 RenderErrorMessages::class,
-                $this->createMock(RenderErrorMessages::class)
-            ]
+                $this->createMock(RenderErrorMessages::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 

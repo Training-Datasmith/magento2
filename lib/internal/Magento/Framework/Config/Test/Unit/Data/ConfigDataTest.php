@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Config\Test\Unit\Data;
 
 use Magento\Framework\Config\Data\ConfigData;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ConfigDataTest extends TestCase
 {
@@ -22,8 +23,8 @@ class ConfigDataTest extends TestCase
                     'value1' => 'val1',
                     'value2' => 'val4',
                     'value3' => 'val3',
-                ]
-            ]
+                ],
+            ],
         ];
         $configData = new ConfigData($fileKey);
 
@@ -57,16 +58,16 @@ class ConfigDataTest extends TestCase
         return [
             'segment is empty' => [
                 '/test/test/test',
-                "Path '/test/test/test' is invalid. It cannot be empty nor start or end with '/'"
+                "Path '/test/test/test' is invalid. It cannot be empty nor start or end with '/'",
             ],
             'key is empty' => [
                 '',
-                "Path '' is invalid. It cannot be empty nor start or end with '/'"
+                "Path '' is invalid. It cannot be empty nor start or end with '/'",
             ],
             'access by empty value key' => [
                 'test/',
-                "Path 'test/' is invalid. It cannot be empty nor start or end with '/'"
-            ]
+                "Path 'test/' is invalid. It cannot be empty nor start or end with '/'",
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Payflow\Advanced;
 
 /**
@@ -12,5 +15,4 @@ namespace Magento\Paypal\Block\Payflow\Advanced;
  */
 class Info extends \Magento\Paypal\Block\Payflow\Link\Info
 {
-
 }

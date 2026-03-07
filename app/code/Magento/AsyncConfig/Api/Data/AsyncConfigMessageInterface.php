@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ interface AsyncConfigMessageInterface
     /**
      * Set Configuration data
      *
-     * @param string $data
      * @return void
      */
     public function setConfigData(string $data);

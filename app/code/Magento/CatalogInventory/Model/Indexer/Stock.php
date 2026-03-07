@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved
  */
+
 namespace Magento\CatalogInventory\Model\Indexer;
 
-use Magento\Framework\Indexer\CacheContext;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Indexer\CacheContext;
 
 class Stock implements \Magento\Framework\Indexer\ActionInterface, \Magento\Framework\Mview\ActionInterface
 {
@@ -71,7 +74,7 @@ class Stock implements \Magento\Framework\Indexer\ActionInterface, \Magento\Fram
         $this->getCacheContext()->registerTags(
             [
                 \Magento\Catalog\Model\Category::CACHE_TAG,
-                \Magento\Catalog\Model\Product::CACHE_TAG
+                \Magento\Catalog\Model\Product::CACHE_TAG,
             ]
         );
     }

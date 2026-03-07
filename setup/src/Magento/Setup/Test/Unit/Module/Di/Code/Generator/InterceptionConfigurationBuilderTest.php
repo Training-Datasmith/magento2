@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\ObjectManager\InterceptableValidator;
 use Magento\Setup\Module\Di\Code\Generator\InterceptionConfigurationBuilder;
 use Magento\Setup\Module\Di\Code\Generator\PluginList;
 use Magento\Setup\Module\Di\Code\Reader\Type;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class InterceptionConfigurationBuilderTest extends TestCase
@@ -134,7 +135,7 @@ class InterceptionConfigurationBuilderTest extends TestCase
             [[
                 'plugin'  => ['instance' => 'stdClass'],
                 'plugin1' => ['instance' => 'stdClass'],
-                'plugin2' => ['instance' => 'virtualTypeClass']
+                'plugin2' => ['instance' => 'virtualTypeClass'],
             ]],
             [['plugin' => ['instance' => 'virtualTypeClass']]],
         ];

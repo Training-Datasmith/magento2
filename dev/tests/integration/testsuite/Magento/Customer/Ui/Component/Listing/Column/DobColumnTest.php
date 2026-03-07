@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Ui\Component\Listing\Column;
 
+use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Component\ComponentRegistrar;
 
 class DobColumnTest extends TestCase
 {

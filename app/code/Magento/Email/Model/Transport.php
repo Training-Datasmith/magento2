@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,24 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Email\Model;
 
-use Magento\Framework\Mail\EmailMessageInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\Mailer;
-use Symfony\Component\Mailer\Transport\NativeTransportFactory;
-use Symfony\Component\Mailer\Transport\Dsn;
-use Symfony\Component\Mailer\Transport\TransportInterface as SymfonyTransportInterface;
-use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
-use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
-use Symfony\Component\Mailer\Transport\Smtp\Auth\PlainAuthenticator;
-use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransportFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\EmailMessageInterface;
 use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Phrase;
-use Symfony\Component\Mime\Message as SymfonyMessage;
 use Magento\Store\Model\ScopeInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport\Dsn;
+use Symfony\Component\Mailer\Transport\NativeTransportFactory;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\LoginAuthenticator;
+use Symfony\Component\Mailer\Transport\Smtp\Auth\PlainAuthenticator;
+use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransportFactory;
+use Symfony\Component\Mailer\Transport\TransportInterface as SymfonyTransportInterface;
+use Symfony\Component\Mime\Message as SymfonyMessage;
 
 /**
  * Class that responsible for filling some message data before transporting it.

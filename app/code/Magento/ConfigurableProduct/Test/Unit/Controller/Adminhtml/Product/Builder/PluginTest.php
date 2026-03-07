@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\ConfigurableProduct\Test\Unit\Controller\Adminhtml\Product\Bui
 
 use Magento\Catalog\Controller\Adminhtml\Product\Builder;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\ConfigurableProduct\Controller\Adminhtml\Product\Builder\Plugin;
@@ -98,7 +98,7 @@ class PluginTest extends TestCase
             Configurable::class,
             [
                 'setStoreId', 'load', 'setTypeId', 'getTypeInstance',
-                'getSetAttributes', 'getIdFieldName', 'getData', 'getWebsiteIds'
+                'getSetAttributes', 'getIdFieldName', 'getData', 'getWebsiteIds',
             ]
         );
         $this->frontendAttrMock = $this->createMock(

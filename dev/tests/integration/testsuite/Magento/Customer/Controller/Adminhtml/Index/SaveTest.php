@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -125,9 +126,9 @@ class SaveTest extends AbstractBackendController
         $defaultCustomerData = self::getDefaultCustomerData();
         $expectedCustomerData = self::getExpectedCustomerData($defaultCustomerData);
         return [
-            "fill_all_fields" => [
+            'fill_all_fields' => [
                 'postData' => $defaultCustomerData,
-                'expectedData' => $expectedCustomerData
+                'expectedData' => $expectedCustomerData,
             ],
             'only_require_fields' => [
                 'postData' => array_replace_recursive(
@@ -244,7 +245,7 @@ class SaveTest extends AbstractBackendController
                 'expectedMessage' => [
                     (string)__('The email address is required to create a customer account.'),
                 ],
-            ]
+            ],
         ];
     }
 
@@ -331,7 +332,7 @@ class SaveTest extends AbstractBackendController
                 CustomerData::EMAIL => 'customer@example.com',
                 CustomerData::FIRSTNAME => 'test firstname',
                 CustomerData::LASTNAME => 'test lastname',
-                'sendemail_store_id' => '1'
+                'sendemail_store_id' => '1',
             ],
             'subscription_status' => [$customerData->getWebsiteId() => '0'],
             'subscription_store' => [$customerData->getWebsiteId() => $defaultStore->getId()],
@@ -387,8 +388,8 @@ class SaveTest extends AbstractBackendController
                 'sendemail' => '1',
                 CustomerData::CREATED_AT => '2000-01-01 00:00:00',
                 CustomerData::DEFAULT_SHIPPING => '1',
-                CustomerData::DEFAULT_BILLING => '1'
-            ]
+                CustomerData::DEFAULT_BILLING => '1',
+            ],
         ];
         $this->dispatchCustomerSave($postData);
 
@@ -500,7 +501,7 @@ class SaveTest extends AbstractBackendController
                 CustomerData::GENDER => Bootstrap::getObjectManager()->get(AttributeRepositoryInterface::class)
                     ->get(CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER, 'gender')->getSource()->getOptionId('Male'),
                 'sendemail_store_id' => '1',
-            ]
+            ],
         ];
     }
 
@@ -605,7 +606,7 @@ class SaveTest extends AbstractBackendController
         array $sender,
         int $customerId,
         $newEmail = null
-    ) : MockObject {
+    ): MockObject {
         $area = Area::AREA_FRONTEND;
         $customer = $this->customerRepository->getById($customerId);
         $storeId = $customer->getStoreId();

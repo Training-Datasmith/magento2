@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class BmlPositionTest extends TestCase
     {
         $expectedResult = [
             '0' => __('Header (center)'),
-            '1' => __('Sidebar (right)')
+            '1' => __('Sidebar (right)'),
         ];
         $this->assertEquals($expectedResult, $this->model->getBmlPositionsHP());
     }
@@ -33,7 +34,7 @@ class BmlPositionTest extends TestCase
     {
         $expectedResult = [
             '0' => __('Header (center)'),
-            '1' => __('Sidebar (right)')
+            '1' => __('Sidebar (right)'),
         ];
         $this->assertEquals($expectedResult, $this->model->getBmlPositionsCCP());
     }
@@ -42,7 +43,7 @@ class BmlPositionTest extends TestCase
     {
         $expectedResult = [
             '0' => __('Header (center)'),
-            '1' => __('Near PayPal Credit checkout button')
+            '1' => __('Near PayPal Credit checkout button'),
         ];
         $this->assertEquals($expectedResult, $this->model->getBmlPositionsCPP());
     }
@@ -51,7 +52,7 @@ class BmlPositionTest extends TestCase
     {
         $expectedResult = [
             '0' => __('Header (center)'),
-            '1' => __('Near PayPal Credit checkout button')
+            '1' => __('Near PayPal Credit checkout button'),
         ];
         $this->assertEquals($expectedResult, $this->model->getBmlPositionsCheckout());
     }

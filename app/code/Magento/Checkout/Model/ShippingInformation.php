@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Model;
 
-use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
+use Magento\Framework\Model\AbstractExtensibleModel;
 
 /**
  * @codeCoverageIgnoreStart

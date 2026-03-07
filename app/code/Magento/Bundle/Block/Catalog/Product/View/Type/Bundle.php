@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Catalog\Product\View\Type;
 
 use Magento\Bundle\Model\Option;
@@ -208,7 +211,7 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
 
         //pass the return array encapsulated in an object for the other modules to be able to alter it eg: weee
         $this->_eventManager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $configObj]);
-        $config=$configObj->getConfig();
+        $config = $configObj->getConfig();
 
         if ($preConfiguredFlag && !empty($defaultValues)) {
             $config['defaultValues'] = $defaultValues;
@@ -304,14 +307,14 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
 
             $tierPriceInfo['prices'] = [
                 'oldPrice' => [
-                    'amount' => $priceBaseAmount
+                    'amount' => $priceBaseAmount,
                 ],
                 'basePrice' => [
-                    'amount' => $priceBaseAmount
+                    'amount' => $priceBaseAmount,
                 ],
                 'finalPrice' => [
-                    'amount' => $priceValue
-                ]
+                    'amount' => $priceValue,
+                ],
             ];
         }
         return $tierPrices;
@@ -356,7 +359,7 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
             'selections' => $this->getSelections($option, $product),
             'title' => $option->getTitle(),
             'isMulti' => in_array($option->getType(), ['multi', 'checkbox']),
-            'position' => $position
+            'position' => $position,
         ];
     }
 
@@ -389,14 +392,14 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
             'priceFormat' => $this->localeFormat->getPriceFormat(),
             'prices' => [
                 'oldPrice' => [
-                    'amount' => $isFixedPrice ? $baseProductAmount->getValue() : 0
+                    'amount' => $isFixedPrice ? $baseProductAmount->getValue() : 0,
                 ],
                 'basePrice' => [
-                    'amount' => $isFixedPrice ? $productAmount->getBaseAmount() : 0
+                    'amount' => $isFixedPrice ? $productAmount->getBaseAmount() : 0,
                 ],
                 'finalPrice' => [
-                    'amount' => $isFixedPrice ? $productAmount->getValue() : 0
-                ]
+                    'amount' => $isFixedPrice ? $productAmount->getValue() : 0,
+                ],
             ],
             'priceType' => $product->getPriceType(),
             'isFixedPrice' => $isFixedPrice,

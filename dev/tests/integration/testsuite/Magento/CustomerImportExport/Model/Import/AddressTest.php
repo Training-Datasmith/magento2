@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\CustomerImportExport\Model\Import\Address
  */
+
 namespace Magento\CustomerImportExport\Model\Import;
 
 use Magento\Catalog\Model\ResourceModel\Product;
@@ -20,18 +23,17 @@ use Magento\Customer\Model\ResourceModel\Address\Collection;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\ImportExport\Model\Import as ImportModel;
 use Magento\ImportExport\Model\Import\Adapter as ImportAdapter;
+use Magento\ImportExport\Model\Import as ImportModel;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\ImportExport\Model\ResourceModel\Helper;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Indexer\StateInterface;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -69,7 +71,7 @@ class AddressTest extends TestCase
             'update' => '19107',  // address with updates
             'new' => '85034',  // new address
             'no_customer' => '33602',  // there is no customer with this primary key (email+website)
-            'new_no_address_id' => '32301'// new address without address id
+            'new_no_address_id' => '32301',// new address without address id
         ],
         'update' => [ // this data is changed in CSV file
             '19107' => [
@@ -188,7 +190,7 @@ class AddressTest extends TestCase
      */
     public function testSaveAddressAttributes()
     {
-        $this->markTestSkipped("to test _saveAddressAttributes attribute need to add custom address attribute");
+        $this->markTestSkipped('to test _saveAddressAttributes attribute need to add custom address attribute');
         // get attributes list
         $attributesReflection = new \ReflectionProperty($this->_testClassName, '_attributes');
         $attributes = $attributesReflection->getValue($this->_entityAdapter);

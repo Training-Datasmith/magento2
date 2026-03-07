@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cron\Model\Config\Source;
 
 class Frequency implements \Magento\Framework\Option\ArrayInterface
@@ -12,11 +15,11 @@ class Frequency implements \Magento\Framework\Option\ArrayInterface
      */
     protected static $_options;
 
-    const CRON_DAILY = 'D';
+    public const CRON_DAILY = 'D';
 
-    const CRON_WEEKLY = 'W';
+    public const CRON_WEEKLY = 'W';
 
-    const CRON_MONTHLY = 'M';
+    public const CRON_MONTHLY = 'M';
 
     /**
      * @return array

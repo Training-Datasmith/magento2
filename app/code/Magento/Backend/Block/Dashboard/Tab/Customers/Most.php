@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Dashboard\Tab\Customers;
 
 /**
@@ -87,7 +90,7 @@ class Most extends \Magento\Backend\Block\Dashboard\Grid
                 'index' => 'orders_count',
                 'type' => 'number',
                 'header_css_class' => 'col-orders',
-                'column_css_class' => 'col-orders'
+                'column_css_class' => 'col-orders',
             ]
         );
 
@@ -104,7 +107,7 @@ class Most extends \Magento\Backend\Block\Dashboard\Grid
                 'currency_code' => $baseCurrencyCode,
                 'index' => 'orders_avg_amount',
                 'header_css_class' => 'col-avg',
-                'column_css_class' => 'col-avg'
+                'column_css_class' => 'col-avg',
             ]
         );
 
@@ -117,7 +120,7 @@ class Most extends \Magento\Backend\Block\Dashboard\Grid
                 'currency_code' => $baseCurrencyCode,
                 'index' => 'orders_sum_amount',
                 'header_css_class' => 'col-total',
-                'column_css_class' => 'col-total'
+                'column_css_class' => 'col-total',
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Db\MySQL;
 
 use Magento\Framework\App\ResourceConnection;
@@ -108,7 +111,7 @@ class DbSchemaWriterTest extends \PHPUnit\Framework\TestCase
             'non auto increment field' => [
                 'options' => ['unsigned' => true, 'nullable' => false,],
                 'expected' => 'AUTO_INCREMENT = 1',
-            ]
+            ],
         ];
     }
 }

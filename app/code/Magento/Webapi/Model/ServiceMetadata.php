@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -225,7 +226,7 @@ class ServiceMetadata
     public function getServiceName($interfaceName, $version, $preserveVersion = true)
     {
         if ($interfaceName && !preg_match(Config::SERVICE_CLASS_PATTERN, $interfaceName, $matches)) {
-            $apiClassPattern = "#^(.+?)\\\\(.+?)\\\\Api\\\\(.+?)(Interface)?$#";
+            $apiClassPattern = '#^(.+?)\\\\(.+?)\\\\Api\\\\(.+?)(Interface)?$#';
             preg_match($apiClassPattern, $interfaceName, $matches);
         }
 

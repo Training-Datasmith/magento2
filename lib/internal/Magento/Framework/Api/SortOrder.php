@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,10 +19,10 @@ use Magento\Framework\Phrase;
  */
 class SortOrder extends AbstractSimpleObject
 {
-    const FIELD = 'field';
-    const DIRECTION = 'direction';
-    const SORT_ASC = 'ASC';
-    const SORT_DESC = 'DESC';
+    public const FIELD = 'field';
+    public const DIRECTION = 'direction';
+    public const SORT_ASC = 'ASC';
+    public const SORT_DESC = 'DESC';
 
     /**
      * Initialize object and validate sort direction

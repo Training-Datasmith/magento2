@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Category;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -183,7 +186,6 @@ class ProductTest extends TestCase
             );
         }
     }
-
 
     /**
      * Verify that indexer still valid after deleting inactive category

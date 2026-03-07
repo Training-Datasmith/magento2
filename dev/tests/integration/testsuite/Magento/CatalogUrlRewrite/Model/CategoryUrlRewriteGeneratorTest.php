@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -21,9 +23,9 @@ use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\UrlRewrite\Model\Storage\DbStorage;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppArea adminhtml
@@ -59,7 +61,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $categoryFilter = [
             UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [3, 4, 5]
+            UrlRewrite::ENTITY_ID => [3, 4, 5],
         ];
         $actualResults = $this->getActualResults($categoryFilter);
         $categoryExpectedResult = [
@@ -77,7 +79,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $productFilter = [
             UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [$productForTest]
+            UrlRewrite::ENTITY_ID => [$productForTest],
         ];
         $actualResults = $this->getActualResults($productFilter);
         $productExpectedResult = [
@@ -85,26 +87,26 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest,
                 1,
-                0
+                0,
             ],
             [
                 'new-url/category-1-1/category-1-1-1/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/5',
                 1,
-                0
+                0,
             ],
             [
                 'new-url/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/3',
                 1,
-                0
+                0,
             ],
             [
                 'new-url/category-1-1/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/4',
                 1,
-                0
-            ]
+                0,
+            ],
         ];
 
         $this->assertResults($productExpectedResult, $actualResults);
@@ -127,7 +129,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $categoryFilter = [
             UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [3, 4, 5]
+            UrlRewrite::ENTITY_ID => [3, 4, 5],
         ];
         $actualResults = $this->getActualResults($categoryFilter);
         $categoryExpectedResult = [
@@ -140,7 +142,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'category-1/category-1-1/category-1-1-1.html',
                 'new-url/category-1-1/category-1-1-1.html',
                 0,
-                OptionProvider::PERMANENT
+                OptionProvider::PERMANENT,
             ],
         ];
 
@@ -153,7 +155,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $productFilter = [
             UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [$productForTest]
+            UrlRewrite::ENTITY_ID => [$productForTest],
         ];
         $actualResults = $this->getActualResults($productFilter);
         $productExpectedResult = [
@@ -161,43 +163,43 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest,
                 1,
-                0
+                0,
             ],
             [
                 'new-url/category-1-1/category-1-1-1/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/5',
                 1,
-                0
+                0,
             ],
             [
                 'category-1/category-1-1/category-1-1-1/simple-product-two.html',
                 'new-url/category-1-1/category-1-1-1/simple-product-two.html',
                 0,
-                OptionProvider::PERMANENT
+                OptionProvider::PERMANENT,
             ],
             [
                 'new-url/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/3',
                 1,
-                0
+                0,
             ],
             [
                 'new-url/category-1-1/simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest . '/category/4',
                 1,
-                0
+                0,
             ],
             [
                 'category-1/simple-product-two.html',
                 'new-url/simple-product-two.html',
                 0,
-                OptionProvider::PERMANENT
+                OptionProvider::PERMANENT,
             ],
             [
                 'category-1/category-1-1/simple-product-two.html',
                 'new-url/category-1-1/simple-product-two.html',
                 0,
-                OptionProvider::PERMANENT
+                OptionProvider::PERMANENT,
             ],
         ];
 
@@ -232,7 +234,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
     {
         return [
             ['#'],
-            ['//']
+            ['//'],
         ];
     }
 
@@ -250,7 +252,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 $url->getRequestPath(),
                 $url->getTargetPath(),
                 (int)$url->getIsAutogenerated(),
-                $url->getRedirectType()
+                $url->getRedirectType(),
             ];
         }
         return $actualResults;
@@ -273,7 +275,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $categoryFilter = [
             UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [3, 4, 5]
+            UrlRewrite::ENTITY_ID => [3, 4, 5],
         ];
         $actualResults = $this->getActualResults($categoryFilter);
         $categoryExpectedResult = [
@@ -299,7 +301,7 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
 
         $productFilter = [
             UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
-            UrlRewrite::ENTITY_ID => [$productForTest]
+            UrlRewrite::ENTITY_ID => [$productForTest],
         ];
         $actualResults = $this->getActualResults($productFilter);
         $productExpectedResult = [
@@ -307,8 +309,8 @@ class CategoryUrlRewriteGeneratorTest extends TestCase
                 'simple-product-two.html',
                 'catalog/product/view/id/' . $productForTest,
                 1,
-                0
-            ]
+                0,
+            ],
         ];
 
         $this->assertResults($productExpectedResult, $actualResults);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -78,8 +79,8 @@ class RuleProductPricesPersistorTest extends TestCase
                 'product_id' => 1,
                 'rule_date' => '2017-05-01',
                 'latest_start_date' => '2017-05-10',
-                'earliest_end_date' => '2017-05-20'
-            ]
+                'earliest_end_date' => '2017-05-20',
+            ],
         ];
         $tableName = 'catalogrule_product_price_replica';
 
@@ -92,8 +93,8 @@ class RuleProductPricesPersistorTest extends TestCase
         $this->resourceMock->expects($this->once())->method('getConnection')->willReturn($connectionMock);
         $this->resourceMock
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                ['catalogrule_product_price'] =>'catalogrule_product_price',
+            ->willReturnCallback(fn ($param) => match ([$param]) {
+                ['catalogrule_product_price'] => 'catalogrule_product_price',
                 [$tableName] => $tableName
             });
 
@@ -130,8 +131,8 @@ class RuleProductPricesPersistorTest extends TestCase
                 'product_id' => 1,
                 'rule_date' => '2017-05-5',
                 'latest_start_date' => '2017-05-10',
-                'earliest_end_date' => '2017-05-22'
-            ]
+                'earliest_end_date' => '2017-05-22',
+            ],
         ];
         $tableName = 'catalogrule_product_price_replica';
 
@@ -163,8 +164,8 @@ class RuleProductPricesPersistorTest extends TestCase
         $this->resourceMock->expects($this->once())->method('getConnection')->willReturn($connectionMock);
         $this->resourceMock
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                ['catalogrule_product_price'] =>'catalogrule_product_price',
+            ->willReturnCallback(fn ($param) => match ([$param]) {
+                ['catalogrule_product_price'] => 'catalogrule_product_price',
                 [$tableName] => $tableName
             });
 

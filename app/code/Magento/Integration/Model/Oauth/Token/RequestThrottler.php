@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Integration\Model\Oauth\Token;
 
+use Magento\Framework\Exception\AuthenticationException;
+use Magento\Integration\Model\Oauth\Token\RequestLog\Config as RequestLogConfig;
 use Magento\Integration\Model\Oauth\Token\RequestLog\ReaderInterface as RequestLogReader;
 use Magento\Integration\Model\Oauth\Token\RequestLog\WriterInterface as RequestLogWriter;
-use Magento\Integration\Model\Oauth\Token\RequestLog\Config as RequestLogConfig;
-use Magento\Framework\Exception\AuthenticationException;
 
 /**
  * Model for OAuth admin/customer token requests throttling.
@@ -19,8 +21,8 @@ class RequestThrottler
     /**#@+
      * Web API user type
      */
-    const USER_TYPE_CUSTOMER = 2;
-    const USER_TYPE_ADMIN = 3;
+    public const USER_TYPE_CUSTOMER = 2;
+    public const USER_TYPE_ADMIN = 3;
     /**#@-*/
 
     /**#@-*/

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class NoAlphaMode implements ModeInterface
             'showInitial' => false,
             'showPalette' => true,
             'showAlpha' => false,
-            'showSelectionPalette' => true
+            'showSelectionPalette' => true,
         ];
     }
 }

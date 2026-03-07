@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -390,7 +392,7 @@ class File implements DriverInterface
                     [
                         $source,
                         $destination,
-                        $this->getWarningMessage()
+                        $this->getWarningMessage(),
                     ]
                 )
             );
@@ -423,7 +425,7 @@ class File implements DriverInterface
                     [
                         $source,
                         $destination,
-                        $this->getWarningMessage()
+                        $this->getWarningMessage(),
                     ]
                 )
             );

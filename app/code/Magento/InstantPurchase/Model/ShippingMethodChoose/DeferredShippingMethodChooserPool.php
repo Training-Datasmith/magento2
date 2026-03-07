@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\ShippingMethodChoose;
 
 /**
@@ -37,7 +40,7 @@ class DeferredShippingMethodChooserPool
      * @return DeferredShippingMethodChooserInterface
      * @since 100.2.0
      */
-    public function get($type) : DeferredShippingMethodChooserInterface
+    public function get($type): DeferredShippingMethodChooserInterface
     {
         if (!isset($this->choosers[$type])) {
             throw new \InvalidArgumentException(sprintf(

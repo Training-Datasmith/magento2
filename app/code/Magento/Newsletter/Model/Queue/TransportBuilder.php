@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Newsletter\Model\Queue;
 
 use Magento\Email\Model\AbstractTemplate;
 use Magento\Framework\Exception\MailException;
-use Magento\Framework\Mail\EmailMessageInterfaceFactory;
 use Magento\Framework\Mail\AddressConverter;
+use Magento\Framework\Mail\EmailMessageInterfaceFactory;
 use Magento\Framework\Mail\MessageInterface;
 use Magento\Framework\Mail\MessageInterfaceFactory;
 use Magento\Framework\Mail\MimeMessageInterfaceFactory;

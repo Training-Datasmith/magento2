@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 class StatusTest extends TestCase
 {
-
     public function testPrepareDataSource()
     {
         $itemName = 'itemName';
@@ -27,9 +27,9 @@ class StatusTest extends TestCase
         $dataSource = [
             'data' => [
                 'items' => [
-                    [$itemName => $oldItemValue]
-                ]
-            ]
+                    [$itemName => $oldItemValue],
+                ],
+            ],
         ];
         $collection = $this->createMock(Collection::class);
         $collection->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class DataTest extends TestCase
             VariableDataModel::class,
             [
                 'collectionFactory' => $this->variableCollectionFactoryMock,
-                'storesVariables' => $this->storesVariablesMock
+                'storesVariables' => $this->storesVariablesMock,
             ]
         );
     }
@@ -68,25 +69,25 @@ class DataTest extends TestCase
             [
                 'value' => 'test 1',
                 'label' => 'Test Label 1',
-                'group_label' => 'Group Label 1'
+                'group_label' => 'Group Label 1',
             ],
             [
                 'value' => 'test 2',
                 'label' => 'Test Label 2',
-                'group_label' => 'Group Label 2'
-            ]
+                'group_label' => 'Group Label 2',
+            ],
         ];
         $expectedResult = [
             [
                 'code' => 'test 1',
                 'variable_name' => 'Group Label 1 / Test Label 1',
-                'variable_type' => StoreVariables::DEFAULT_VARIABLE_TYPE
+                'variable_type' => StoreVariables::DEFAULT_VARIABLE_TYPE,
             ],
             [
                 'code' => 'test 2',
                 'variable_name' => 'Group Label 2 / Test Label 2',
-                'variable_type' => StoreVariables::DEFAULT_VARIABLE_TYPE
-            ]
+                'variable_type' => StoreVariables::DEFAULT_VARIABLE_TYPE,
+            ],
         ];
         $this->storesVariablesMock->expects($this->any())->method('getData')->willReturn($storesVariablesData);
 
@@ -101,24 +102,24 @@ class DataTest extends TestCase
         $customVariables = [
             [
                 'code' => 'test 1',
-                'name' => 'Test 1'
+                'name' => 'Test 1',
             ],
             [
                 'code' => 'test 2',
-                'name' => 'Test 2'
-            ]
+                'name' => 'Test 2',
+            ],
         ];
         $expectedResult = [
             [
                 'code' => 'test 1',
                 'variable_name' => 'Custom Variable / Test 1',
-                'variable_type' => StoreVariables::CUSTOM_VARIABLE_TYPE
+                'variable_type' => StoreVariables::CUSTOM_VARIABLE_TYPE,
             ],
             [
                 'code' => 'test 2',
                 'variable_name' => 'Custom Variable / Test 2',
-                'variable_type' => StoreVariables::CUSTOM_VARIABLE_TYPE
-            ]
+                'variable_type' => StoreVariables::CUSTOM_VARIABLE_TYPE,
+            ],
         ];
         $variableCollectionMock = $this->createMock(VariableCollection::class);
         $this->variableCollectionFactoryMock->expects($this->once())->method('create')

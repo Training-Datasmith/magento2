@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -134,7 +135,7 @@ class HelperTest extends TestCase
             ['type' => 'year', 'result' => $mResult],
             ['type' => 'month', 'result' => $mResult],
             ['type' => 'day', 'result' => $dResult],
-            ['type' => null, 'result' => $mResult]
+            ['type' => null, 'result' => $mResult],
         ];
     }
 }

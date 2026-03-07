@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,7 +13,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class RegionProvider implements ArgumentInterface
 {
-
     /**
      * @var DirectoryRegionProvider
      */

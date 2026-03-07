@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesSequence\Model;
 
 use Magento\Framework\App\ResourceConnection as AppResource;
@@ -51,7 +54,7 @@ class Builder implements ResetAfterRequestInterface
      */
     protected $required = [
         'entityType',
-        'storeId'
+        'storeId',
     ];
 
     /**
@@ -244,10 +247,10 @@ class Builder implements ResetAfterRequestInterface
                     array_flip(
                         [
                             'prefix', 'suffix', 'start_value', 'step', 'max_value', 'warning_value',
-                            'is_active', 'active_profile'
+                            'is_active', 'active_profile',
                         ]
                     )
-                )
+                ),
             ]
         );
         $profile->setHasDataChanges(true);
@@ -257,7 +260,7 @@ class Builder implements ResetAfterRequestInterface
                 'data' => array_intersect_key(
                     $this->data,
                     array_flip(['entity_type', 'store_id', 'sequence_table', 'active_profile'])
-                )
+                ),
             ]
         );
         $metadata->setHasDataChanges(true);

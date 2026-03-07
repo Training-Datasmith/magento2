@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -117,14 +118,14 @@ class IndexerShowDimensionsModeCommandTest extends AbstractIndexerCommandCommonS
     public function testExecuteWithOptionalIndexers()
     {
         $this->optionalIndexers = ['indexer_3'];
-        $this->indexers = ['indexer_3'=> 'indexer_3'];
+        $this->indexers = ['indexer_3' => 'indexer_3'];
         $this->command = $this->objectManagerHelper->getObject(
             IndexerShowDimensionsModeCommand::class,
             [
                 'objectManagerFactory' => $this->objectManagerFactory,
                 'configReader'         => $this->configReaderMock,
                 'indexers'             => $this->indexers,
-                'optionalIndexers'     => $this->optionalIndexers
+                'optionalIndexers'     => $this->optionalIndexers,
             ]
         );
         $command = ['indexer' => ['indexer_3']];

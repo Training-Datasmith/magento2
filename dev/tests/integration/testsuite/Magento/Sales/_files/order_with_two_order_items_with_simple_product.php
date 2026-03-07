@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Model\CustomerRegistry;
 use Magento\Sales\Api\Data\OrderAddressInterfaceFactory;
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
 use Magento\Sales\Api\Data\OrderItemInterfaceFactory;
@@ -14,9 +16,8 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Customer\Model\CustomerRegistry;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/products.php');
@@ -54,7 +55,7 @@ $payment->setMethod('checkmo')->setAdditionalInformation(
         'metadata' => [
             'type' => 'free',
             'fraudulent' => false,
-        ]
+        ],
     ]
 );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\Session;
 
 use Magento\Backend\App\Area\FrontNameResolver;
@@ -20,7 +23,7 @@ class AdminConfig extends Config
     /**
      * Configuration for admin session name
      */
-    const SESSION_NAME_ADMIN = 'admin';
+    public const SESSION_NAME_ADMIN = 'admin';
 
     /**
      * @var FrontNameResolver

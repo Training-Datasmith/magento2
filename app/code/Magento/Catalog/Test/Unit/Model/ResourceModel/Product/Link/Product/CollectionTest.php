@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -174,7 +175,7 @@ class CollectionTest extends TestCase
                 'customerSession' => $this->sessionMock,
                 'dateTime' => $this->dateTimeMock,
                 'productLimitationFactory' => $productLimitationFactoryMock,
-                'metadataPool' => $metadataPoolMock
+                'metadataPool' => $metadataPoolMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class InfoLanguageListCommandTest extends TestCase
     public function testExecute()
     {
         $languages = [
-            'LNG' => 'Language description'
+            'LNG' => 'Language description',
         ];
 
         $table = $this->createMock(Table::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\View\Page\Config
  */
+
 namespace Magento\Framework\View\Test\Unit\Page;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -26,9 +28,9 @@ use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\FaviconInterface;
 use Magento\Framework\View\Page\Title;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Framework\View\Page\Config
@@ -130,7 +132,7 @@ class ConfigTest extends TestCase
                     'scopeConfig' => $this->scopeConfig,
                     'favicon' => $this->favicon,
                     'localeResolver' => $this->localeMock,
-                    'escaper' => $escaper
+                    'escaper' => $escaper,
                 ]
             );
 
@@ -184,7 +186,7 @@ class ConfigTest extends TestCase
             'robots' => null,
             'title' => null,
             'name' => 'test_value',
-            'html_encoded' => '&lt;title&gt;&lt;span class=&quot;test&quot;&gt;Test&lt;/span&gt;&lt;/title&gt;'
+            'html_encoded' => '&lt;title&gt;&lt;span class=&quot;test&quot;&gt;Test&lt;/span&gt;&lt;/title&gt;',
         ];
         $this->model->setMetadata('name', 'test_value');
         $this->model->setMetadata('html_encoded', '<title><span class="test">Test</span></title>');
@@ -396,14 +398,14 @@ class ConfigTest extends TestCase
                 'test.php',
                 ['one', 'two', 3],
                 'test_name',
-                'test_name'
+                'test_name',
             ],
             [
                 'filename',
                 [],
                 null,
-                'filename'
-            ]
+                'filename',
+            ],
         ];
     }
 
@@ -439,15 +441,15 @@ class ConfigTest extends TestCase
                 '<body><context>some content</context></body>',
                 ['one', 'two', 3],
                 'test_name',
-                'test_name'
+                'test_name',
             ],
             [
                 'http://test.com',
                 '',
                 [],
                 null,
-                'http://test.com'
-            ]
+                'http://test.com',
+            ],
         ];
     }
 
@@ -502,18 +504,18 @@ class ConfigTest extends TestCase
             [
                 'head',
                 'class',
-                'test'
+                'test',
             ],
             [
                 'body',
                 'class',
-                'value'
+                'value',
             ],
             [
                 Config::ELEMENT_TYPE_HTML,
                 Config::HTML_ATTRIBUTE_LANG,
-                str_replace('_', '-', Resolver::DEFAULT_LOCALE)
-            ]
+                str_replace('_', '-', Resolver::DEFAULT_LOCALE),
+            ],
         ];
     }
 
@@ -540,18 +542,18 @@ class ConfigTest extends TestCase
             [
                 'test',
                 'class',
-                'test'
+                'test',
             ],
             [
                 '',
                 '',
-                ''
+                '',
             ],
             [
                 null,
                 null,
-                null
-            ]
+                null,
+            ],
         ];
     }
 
@@ -579,9 +581,9 @@ class ConfigTest extends TestCase
                 'html',
                 [
                     'context' => 'value',
-                    Config::HTML_ATTRIBUTE_LANG => str_replace('_', '-', Resolver::DEFAULT_LOCALE)
-                ]
-            ]
+                    Config::HTML_ATTRIBUTE_LANG => str_replace('_', '-', Resolver::DEFAULT_LOCALE),
+                ],
+            ],
         ];
     }
 
@@ -603,19 +605,19 @@ class ConfigTest extends TestCase
     {
         return [
             [
-                'test'
+                'test',
             ],
             [
-                ''
+                '',
             ],
             [
-                null
+                null,
             ],
             [
                 [
-                    'test'
-                ]
-            ]
+                    'test',
+                ],
+            ],
         ];
     }
 
@@ -655,7 +657,7 @@ class ConfigTest extends TestCase
                     'scopeConfig' => $this->scopeConfig,
                     'favicon' => $this->favicon,
                     'localeResolver' => $this->localeMock,
-                    'isIncludesAvailable' => $isAvailable
+                    'isIncludesAvailable' => $isAvailable,
                 ]
             );
 
@@ -676,9 +678,9 @@ class ConfigTest extends TestCase
                 true,
                 '<script type="text/javascript">
                     Fieldset.addToPrefix(1);
-                </script>'
+                </script>',
             ],
-            [false, null]
+            [false, null],
         ];
     }
 }

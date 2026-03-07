@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class AttributeOptions
 
             $optionsData[] = [
                 'label' => $option->getLabel(),
-                'value' => $option->getValue()
+                'value' => $option->getValue(),
             ];
         }
         return $optionsData;

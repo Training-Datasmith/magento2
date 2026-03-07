@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Page\Widget;
 
 /**
@@ -159,7 +162,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('ID'),
                 'index' => 'page_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -169,7 +172,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Title'),
                 'index' => 'title',
                 'header_css_class' => 'col-title',
-                'column_css_class' => 'col-title'
+                'column_css_class' => 'col-title',
             ]
         );
 
@@ -179,7 +182,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('URL Key'),
                 'index' => 'identifier',
                 'header_css_class' => 'col-url',
-                'column_css_class' => 'col-url'
+                'column_css_class' => 'col-url',
             ]
         );
 
@@ -191,7 +194,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => $this->pageLayoutBuilder->getPageLayoutsConfig()->getOptions(),
                 'header_css_class' => 'col-layout',
-                'column_css_class' => 'col-layout'
+                'column_css_class' => 'col-layout',
             ]
         );
 
@@ -203,7 +206,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => $this->_cmsPage->getAvailableStatuses(),
                 'header_css_class' => 'col-status',
-                'column_css_class' => 'col-status'
+                'column_css_class' => 'col-status',
             ]
         );
 

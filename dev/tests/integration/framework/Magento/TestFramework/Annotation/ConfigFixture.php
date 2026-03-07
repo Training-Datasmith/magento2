@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,13 +9,13 @@
 /**
  * Implementation of the @magentoConfigFixture DocBlock annotation
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Model\ScopeInterface;
-use Magento\TestFramework\Annotation\TestCaseAnnotation;
 use Magento\TestFramework\Event\Magento;
 use Magento\TestFramework\Fixture\Parser\Config as ConfigFixtureParser;
 use Magento\TestFramework\Fixture\ParserInterface;

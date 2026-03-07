@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,8 +42,8 @@ $salesRule->setData(
         'website_ids' => [
             \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
                 \Magento\Store\Model\StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ]
 );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +31,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ViewfileTest extends TestCase
 {
-
     /**
      * @var RawFactory|MockObject
      */
@@ -143,7 +143,7 @@ class ViewfileTest extends TestCase
             ->willReturnMap(
                 [
                     [Filesystem::class, $this->fileSystemMock],
-                    [Storage::class, $this->storage]
+                    [Storage::class, $this->storage],
                 ]
             );
 
@@ -163,7 +163,7 @@ class ViewfileTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'urlDecoder' => $this->urlDecoderMock,
-                'fileFactory' => $fileFactoryMock
+                'fileFactory' => $fileFactoryMock,
             ]
         );
         $controller->execute();
@@ -193,7 +193,7 @@ class ViewfileTest extends TestCase
             ->willReturnMap(
                 [
                     [Filesystem::class, $this->fileSystemMock],
-                    [Storage::class, $this->storage]
+                    [Storage::class, $this->storage],
                 ]
             );
 
@@ -222,7 +222,7 @@ class ViewfileTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'urlDecoder' => $this->urlDecoderMock,
-                'resultRawFactory' => $this->resultRawFactoryMock
+                'resultRawFactory' => $this->resultRawFactoryMock,
             ]
         );
         $this->assertSame($this->resultRawMock, $controller->execute());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -201,7 +202,7 @@ QUERY;
         //Check base category children
         $expectedBaseCategoryChildren = [
             ['name' => 'Category 1.1', 'description' => 'Category 1.1 description.'],
-            ['name' => 'Category 1.2', 'description' => 'Its a description of Test Category 1.2']
+            ['name' => 'Category 1.2', 'description' => 'Its a description of Test Category 1.2'],
         ];
         $this->assertCategoryChildren($baseCategory, $expectedBaseCategoryChildren);
 
@@ -211,10 +212,10 @@ QUERY;
         $this->assertEquals('Category 1.1 description.', $firstChildCategory['description']);
         $firstChildCategoryExpectedProducts = [
             ['sku' => '12345', 'name' => 'Simple Product Two'],
-            ['sku' => 'simple', 'name' => 'Simple Product']
+            ['sku' => 'simple', 'name' => 'Simple Product'],
         ];
         $this->assertCategoryProducts($firstChildCategory, $firstChildCategoryExpectedProducts);
-        $firstChildCategoryChildren = [['name' =>'Category 1.1.1']];
+        $firstChildCategoryChildren = [['name' => 'Category 1.1.1']];
         $this->assertCategoryChildren($firstChildCategory, $firstChildCategoryChildren);
         //Check second child category
         $secondChildCategory = $baseCategory['children'][1];
@@ -222,7 +223,7 @@ QUERY;
         $this->assertEquals('Its a description of Test Category 1.2', $secondChildCategory['description']);
         $firstChildCategoryExpectedProducts = [
             ['sku' => 'simple-4', 'name' => 'Simple Product Three'],
-            ['sku' => 'simple', 'name' => 'Simple Product']
+            ['sku' => 'simple', 'name' => 'Simple Product'],
         ];
         $this->assertCategoryProducts($secondChildCategory, $firstChildCategoryExpectedProducts);
         $firstChildCategoryChildren = [];
@@ -289,12 +290,12 @@ QUERY;
         $expectedBaseCategoryProducts = [
             ['sku' => 'simple', 'name' => 'Simple Product'],
             ['sku' => 'simple-4', 'name' => 'Simple Product Three'],
-            ['sku' => '12345', 'name' => 'Simple Product Two']
+            ['sku' => '12345', 'name' => 'Simple Product Two'],
         ];
         $this->assertCategoryProducts($baseCategory, $expectedBaseCategoryProducts);
         //Check base category children
         $expectedBaseCategoryChildren = [
-            ['name' => 'Category 1.2', 'description' => 'Its a description of Test Category 1.2']
+            ['name' => 'Category 1.2', 'description' => 'Its a description of Test Category 1.2'],
         ];
         $this->assertCategoryChildren($baseCategory, $expectedBaseCategoryChildren);
 
@@ -305,7 +306,7 @@ QUERY;
 
         $firstChildCategoryExpectedProducts = [
             ['sku' => 'simple-4', 'name' => 'Simple Product Three'],
-            ['sku' => 'simple', 'name' => 'Simple Product']
+            ['sku' => 'simple', 'name' => 'Simple Product'],
         ];
         $this->assertCategoryProducts($firstChildCategory, $firstChildCategoryExpectedProducts);
         $firstChildCategoryChildren = [];
@@ -432,7 +433,7 @@ QUERY;
         $storeManager = Bootstrap::getObjectManager()->get(StoreManagerInterface::class);
         $storeBaseUrl = $storeManager->getStore()->getBaseUrl('media');
 
-        $expected = "catalog/category/magento_long_image_name_magento_long_image_name_magento_long_image_name.jpg";
+        $expected = 'catalog/category/magento_long_image_name_magento_long_image_name_magento_long_image_name.jpg';
         $expectedImageUrl = rtrim($storeBaseUrl, '/') . '/' . $expected;
 
         $response = $this->graphQlQuery($query);
@@ -582,8 +583,8 @@ QUERY;
                     'url_path' => 'category-1/category-1-1',
                     'children_count' => '1',
                     'path' => '1/2/3/4',
-                    'position' => '1'
-                ]
+                    'position' => '1',
+                ],
             ],
             [
                 'category_uid',
@@ -597,8 +598,8 @@ QUERY;
                     'url_path' => 'category-1/category-1-1',
                     'children_count' => '1',
                     'path' => '1/2/3/4',
-                    'position' => '1'
-                ]
+                    'position' => '1',
+                ],
             ],
             [
                 'parent_id',
@@ -611,8 +612,8 @@ QUERY;
                     'url_path' => 'category-1/category-1-1/category-1-1-1',
                     'children_count' => '0',
                     'path' => '1/2/3/4/5',
-                    'position' => '1'
-                ]
+                    'position' => '1',
+                ],
             ],
             [
                 'parent_category_uid',
@@ -625,8 +626,8 @@ QUERY;
                     'url_path' => 'category-1/category-1-1/category-1-1-1',
                     'children_count' => '0',
                     'path' => '1/2/3/4/5',
-                    'position' => '1'
-                ]
+                    'position' => '1',
+                ],
             ],
             [
                 'name',
@@ -640,8 +641,8 @@ QUERY;
                     'url_path' => 'movable-position-2',
                     'children_count' => '0',
                     'path' => '1/2/10',
-                    'position' => '6'
-                ]
+                    'position' => '6',
+                ],
             ],
             [
                 'url_key',
@@ -655,8 +656,8 @@ QUERY;
                     'url_path' => 'category-1/category-1-1/category-1-1-1',
                     'children_count' => '0',
                     'path' => '1/2/3/4/5',
-                    'position' => '1'
-                ]
+                    'position' => '1',
+                ],
             ],
         ];
     }
@@ -681,7 +682,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1',
                         'children_count' => '1',
                         'path' => '1/2/3/4',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '9',
@@ -690,7 +691,7 @@ QUERY;
                         'url_path' => 'movable-position-1',
                         'children_count' => '0',
                         'path' => '1/2/9',
-                        'position' => '5'
+                        'position' => '5',
                     ],
                     [
                         'id' => '10',
@@ -699,9 +700,9 @@ QUERY;
                         'url_path' => 'movable-position-2',
                         'children_count' => '0',
                         'path' => '1/2/10',
-                        'position' => '6'
-                    ]
-                ]
+                        'position' => '6',
+                    ],
+                ],
             ],
             //Filter by multiple UIDs
             [
@@ -717,7 +718,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1',
                         'children_count' => '1',
                         'path' => '1/2/3/4',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '9',
@@ -727,7 +728,7 @@ QUERY;
                         'url_path' => 'movable-position-1',
                         'children_count' => '0',
                         'path' => '1/2/9',
-                        'position' => '5'
+                        'position' => '5',
                     ],
                     [
                         'id' => '10',
@@ -737,9 +738,9 @@ QUERY;
                         'url_path' => 'movable-position-2',
                         'children_count' => '0',
                         'path' => '1/2/10',
-                        'position' => '6'
-                    ]
-                ]
+                        'position' => '6',
+                    ],
+                ],
             ],
             // Filter by multiple parent IDs
             [
@@ -754,7 +755,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1',
                         'children_count' => '1',
                         'path' => '1/2/3/4',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '5',
@@ -763,7 +764,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1/category-1-1-1',
                         'children_count' => '0',
                         'path' => '1/2/3/4/5',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '13',
@@ -772,9 +773,9 @@ QUERY;
                         'url_path' => 'category-1/category-1-2',
                         'children_count' => '0',
                         'path' => '1/2/3/13',
-                        'position' => '2'
-                    ]
-                ]
+                        'position' => '2',
+                    ],
+                ],
             ],
             // Filter by multiple parent UIDs
             [
@@ -789,7 +790,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1',
                         'children_count' => '1',
                         'path' => '1/2/3/4',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '5',
@@ -798,7 +799,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-1/category-1-1-1',
                         'children_count' => '0',
                         'path' => '1/2/3/4/5',
-                        'position' => '1'
+                        'position' => '1',
                     ],
                     [
                         'id' => '13',
@@ -807,9 +808,9 @@ QUERY;
                         'url_path' => 'category-1/category-1-2',
                         'children_count' => '0',
                         'path' => '1/2/3/13',
-                        'position' => '2'
-                    ]
-                ]
+                        'position' => '2',
+                    ],
+                ],
             ],
             //Filter by multiple url keys
             [
@@ -825,7 +826,7 @@ QUERY;
                         'url_path' => 'category-1/category-1-2',
                         'children_count' => '0',
                         'path' => '1/2/3/13',
-                        'position' => '2'
+                        'position' => '2',
                     ],
                     [
                         'id' => '7',
@@ -835,9 +836,9 @@ QUERY;
                         'url_path' => 'movable',
                         'children_count' => '0',
                         'path' => '1/2/7',
-                        'position' => '3'
-                    ]
-                ]
+                        'position' => '3',
+                    ],
+                ],
             ],
             //Filter by matching multiple names
             [
@@ -853,7 +854,7 @@ QUERY;
                         'url_path' => 'movable-position-1',
                         'children_count' => '0',
                         'path' => '1/2/9',
-                        'position' => '5'
+                        'position' => '5',
                     ],
                     [
                         'id' => '10',
@@ -863,7 +864,7 @@ QUERY;
                         'url_path' => 'movable-position-2',
                         'children_count' => '0',
                         'path' => '1/2/10',
-                        'position' => '6'
+                        'position' => '6',
                     ],
                     [
                         'id' => '11',
@@ -873,10 +874,10 @@ QUERY;
                         'url_path' => 'movable-position-3',
                         'children_count' => '0',
                         'path' => '1/2/11',
-                        'position' => '7'
-                    ]
-                ]
-            ]
+                        'position' => '7',
+                    ],
+                ],
+            ],
         ];
     }
 

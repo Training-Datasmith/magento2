@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -331,7 +334,7 @@ class Template extends AbstractBlock
             $this->_storeManager->getStore()->getCode(),
             $this->getTemplateFile(),
             'base_url' => $this->getBaseUrl(),
-            'template' => $this->getTemplate()
+            'template' => $this->getTemplate(),
         ];
     }
 

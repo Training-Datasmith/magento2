@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Model\Map;
 
-use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Catalog\Model\ResourceModel\Category;
@@ -49,7 +49,7 @@ class DataCategoryHashMapTest extends TestCase
             DataCategoryHashMap::class,
             [
                 'categoryRepository' => $this->categoryRepository,
-                'categoryResourceFactory' => $this->categoryResourceFactory
+                'categoryResourceFactory' => $this->categoryResourceFactory,
             ]
         );
     }
@@ -83,7 +83,7 @@ class DataCategoryHashMapTest extends TestCase
             ->willReturnSelf();
         $selectMock->method('where')
             ->willReturnSelf();
-        
+
         $callCount = 0;
         $connectionAdapterMock->method('fetchCol')
             ->willReturnCallback(function () use (&$callCount, $categoryIds, $categoryIdsOther) {

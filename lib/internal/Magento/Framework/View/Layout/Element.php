@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 /**
@@ -16,46 +19,46 @@ class Element extends \Magento\Framework\Simplexml\Element
     /**#@+
      * Supported layout directives
      */
-    const TYPE_RENDERER = 'renderer';
+    public const TYPE_RENDERER = 'renderer';
 
-    const TYPE_TEMPLATE = 'template';
+    public const TYPE_TEMPLATE = 'template';
 
-    const TYPE_DATA = 'data';
+    public const TYPE_DATA = 'data';
 
-    const TYPE_BLOCK = 'block';
+    public const TYPE_BLOCK = 'block';
 
-    const TYPE_CONTAINER = 'container';
+    public const TYPE_CONTAINER = 'container';
 
-    const TYPE_ACTION = 'action';
+    public const TYPE_ACTION = 'action';
 
-    const TYPE_ARGUMENTS = 'arguments';
+    public const TYPE_ARGUMENTS = 'arguments';
 
-    const TYPE_ARGUMENT = 'argument';
+    public const TYPE_ARGUMENT = 'argument';
 
-    const TYPE_REFERENCE_BLOCK = 'referenceBlock';
+    public const TYPE_REFERENCE_BLOCK = 'referenceBlock';
 
-    const TYPE_REFERENCE_CONTAINER = 'referenceContainer';
+    public const TYPE_REFERENCE_CONTAINER = 'referenceContainer';
 
-    const TYPE_REMOVE = 'remove';
+    public const TYPE_REMOVE = 'remove';
 
-    const TYPE_MOVE = 'move';
+    public const TYPE_MOVE = 'move';
 
-    const TYPE_UI_COMPONENT = 'uiComponent';
+    public const TYPE_UI_COMPONENT = 'uiComponent';
 
-    const TYPE_HEAD = 'head';
+    public const TYPE_HEAD = 'head';
 
     /**#@-*/
 
     /**#@+
      * Names of container options in layout
      */
-    const CONTAINER_OPT_HTML_TAG = 'htmlTag';
+    public const CONTAINER_OPT_HTML_TAG = 'htmlTag';
 
-    const CONTAINER_OPT_HTML_CLASS = 'htmlClass';
+    public const CONTAINER_OPT_HTML_CLASS = 'htmlClass';
 
-    const CONTAINER_OPT_HTML_ID = 'htmlId';
+    public const CONTAINER_OPT_HTML_ID = 'htmlId';
 
-    const CONTAINER_OPT_LABEL = 'label';
+    public const CONTAINER_OPT_LABEL = 'label';
 
     /**#@-*/
 

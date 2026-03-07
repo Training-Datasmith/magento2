@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -23,5 +25,5 @@ return [
             'method' => 'emulateComparedProductsBlock',
             'block_type' => \Magento\Reports\Block\Product\Compared::class,
         ],
-    ]
+    ],
 ];

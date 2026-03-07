@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Controller\Download;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Model\Session;
 use Magento\Downloadable\Controller\Download\Link;
@@ -23,6 +23,7 @@ use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -118,16 +119,16 @@ class LinkTest extends TestCase
                 'clearBody',
                 'setHeader',
                 'sendHeaders',
-                'sendResponse'
+                'sendResponse',
             ]
         );
         $this->session = $this->createPartialMock(Session::class, [
             'getCustomerId',
             'authenticate',
-            'setBeforeAuthUrl'
+            'setBeforeAuthUrl',
         ]);
         $this->helperData = $this->createPartialMock(Data::class, [
-            'getIsShareable'
+            'getIsShareable',
         ]);
         $this->downloadHelper = $this->createPartialMock(Download::class, [
             'setResource',
@@ -135,7 +136,7 @@ class LinkTest extends TestCase
             'getContentType',
             'getFileSize',
             'getContentDisposition',
-            'output'
+            'output',
         ]);
         $this->product = $this->createMock(Product::class);
         $this->linkPurchasedItem = $this->createPartialMockWithReflection(
@@ -153,14 +154,14 @@ class LinkTest extends TestCase
                 'setStatus',
                 'load',
                 'getId',
-                'save'
+                'save',
             ]
         );
         $this->linkPurchased = $this->createPartialMockWithReflection(
             Purchased::class,
             [
                 'load',
-                'getCustomerId'
+                'getCustomerId',
             ]
         );
         $this->messageManager = $this->createMock(ManagerInterface::class);
@@ -168,7 +169,7 @@ class LinkTest extends TestCase
         $this->urlInterface = $this->createMock(UrlInterface::class);
         $this->objectManager = $this->createPartialMock(\Magento\Framework\ObjectManager\ObjectManager::class, [
             'create',
-            'get'
+            'get',
         ]);
         $this->link = $this->objectManagerHelper->getObject(
             Link::class,
@@ -177,7 +178,7 @@ class LinkTest extends TestCase
                 'request' => $this->request,
                 'response' => $this->response,
                 'messageManager' => $this->messageManager,
-                'redirect' => $this->redirect
+                'redirect' => $this->redirect,
             ]
         );
     }
@@ -482,16 +483,16 @@ class LinkTest extends TestCase
             ->willReturnMap([
                 [
                     Session::class,
-                    $this->session
+                    $this->session,
                 ],
                 [
                     Data::class,
-                    $this->helperData
+                    $this->helperData,
                 ],
                 [
                     Download::class,
-                    $this->downloadHelper
-                ]
+                    $this->downloadHelper,
+                ],
             ]);
 
         $this->request->expects($this->once())->method('getParam')->with('id', 0)->willReturn('some_id');
@@ -562,7 +563,7 @@ class LinkTest extends TestCase
             ['addNotice', 'expired', 'The link has expired.'],
             ['addNotice', 'pending', 'The link is not available.'],
             ['addNotice', 'payment_review', 'The link is not available.'],
-            ['addErrorMessage', 'wrong_status', 'Something went wrong while getting the requested content.']
+            ['addErrorMessage', 'wrong_status', 'Something went wrong while getting the requested content.'],
         ];
     }
 
@@ -573,7 +574,7 @@ class LinkTest extends TestCase
     {
         return [
             ['mimeType' => 'text/html',  'disposition' => Mime::DISPOSITION_ATTACHMENT],
-            ['mimeType' => 'image/jpeg', 'disposition' => Mime::DISPOSITION_INLINE]
+            ['mimeType' => 'image/jpeg', 'disposition' => Mime::DISPOSITION_INLINE],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework;
 
 use Magento\Framework\App\DeploymentConfig;
@@ -116,7 +119,7 @@ class ObjectManagerFactory extends \Magento\Framework\App\ObjectManagerFactory
             $this->_primaryConfigData = array_replace(
                 parent::_loadPrimaryConfig($directoryList, $driverPool, $argumentMapper, $appMode),
                 [
-                    'default_setup' => ['type' => ConnectionAdapter::class]
+                    'default_setup' => ['type' => ConnectionAdapter::class],
                 ]
             );
             $diPreferences = $this->readCustomConfig('preferences');

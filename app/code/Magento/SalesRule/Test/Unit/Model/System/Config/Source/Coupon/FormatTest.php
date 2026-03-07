@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class FormatTest extends TestCase
         $this->model = $objectManager->getObject(
             Format::class,
             [
-                'salesRuleCoupon' => $this->salesRuleCoupon
+                'salesRuleCoupon' => $this->salesRuleCoupon,
             ]
         );
     }

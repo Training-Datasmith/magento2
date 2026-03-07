@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -60,7 +62,7 @@ class ImageMagick extends AbstractAdapter
     {
         if ($color) {
             if (is_array($color)) {
-                $color = "rgb(" . join(',', $color) . ")";
+                $color = 'rgb(' . join(',', $color) . ')';
             }
 
             $pixel = new \ImagickPixel();
@@ -134,7 +136,7 @@ class ImageMagick extends AbstractAdapter
      * @param string $filename
      * @return bool
      */
-    private function validateURLScheme(string $filename) : bool
+    private function validateURLScheme(string $filename): bool
     {
         $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
         $url = parse_url($filename);
@@ -267,7 +269,7 @@ class ImageMagick extends AbstractAdapter
         // compatibility with GD2 adapter
         $angle = 360 - $angle;
         $pixel = new \ImagickPixel();
-        $pixel->setColor("rgb(" . $this->imageBackgroundColor . ")");
+        $pixel->setColor('rgb(' . $this->imageBackgroundColor . ')');
 
         $this->_imageHandler->rotateImage($pixel, $angle);
         $this->refreshImageDimensions();

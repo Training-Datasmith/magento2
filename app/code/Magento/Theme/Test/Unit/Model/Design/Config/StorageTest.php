@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class StorageTest extends TestCase
                 'value' => 'value',
                 'scope' => $scope,
                 'scopeId' => $scopeId,
-                'config' => ['path' => 'design/head/default_title']
+                'config' => ['path' => 'design/head/default_title'],
             ])
             ->willReturn($this->backendModelMock);
         $this->valueCheckerMock->expects($this->once())
@@ -232,7 +233,7 @@ class StorageTest extends TestCase
                 'value' => 'value',
                 'scope' => $scope,
                 'scopeId' => $scopeId,
-                'config' => []
+                'config' => [],
             ])
             ->willReturn($backendModel);
         $this->transactionMock->expects($this->once())

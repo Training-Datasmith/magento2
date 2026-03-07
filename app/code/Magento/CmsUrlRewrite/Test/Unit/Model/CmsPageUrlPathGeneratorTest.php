@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ namespace Magento\CmsUrlRewrite\Test\Unit\Model;
 use Magento\Cms\Api\Data\PageInterface;
 use Magento\CmsUrlRewrite\Model\CmsPageUrlPathGenerator;
 use Magento\Framework\Filter\FilterManager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -49,7 +50,7 @@ class CmsPageUrlPathGeneratorTest extends TestCase
         $this->model = $this->objectManager->getObject(
             CmsPageUrlPathGenerator::class,
             [
-                'filterManager' => $this->filterManagerMock
+                'filterManager' => $this->filterManagerMock,
             ]
         );
     }
@@ -94,7 +95,7 @@ class CmsPageUrlPathGeneratorTest extends TestCase
          */
         $page = [
             'identifier' => null,
-            'title' => 'CMS Cookie'
+            'title' => 'CMS Cookie',
         ];
 
         /* @var PageInterface $cmsPageMock*/
@@ -126,7 +127,7 @@ class CmsPageUrlPathGeneratorTest extends TestCase
          */
         $page = [
             'identifier' => 'home',
-            'title' => 'Home Page'
+            'title' => 'Home Page',
         ];
 
         /* @var PageInterface $cmsPageMock*/

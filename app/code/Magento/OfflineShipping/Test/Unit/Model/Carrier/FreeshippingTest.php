@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\OfflineShipping\Test\Unit\Model\Carrier;
 
 use Magento\Framework\App\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\OfflineShipping\Model\Carrier\Freeshipping;
 use Magento\Quote\Model\Quote\Address\RateRequest;
@@ -18,10 +20,8 @@ use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -84,7 +84,7 @@ class FreeshippingTest extends TestCase
             [
                 'scopeConfig' => $this->scopeConfigMock,
                 '_rateResultFactory' => $this->resultFactoryMock,
-                '_rateMethodFactory' => $this->methodFactoryMock
+                '_rateMethodFactory' => $this->methodFactoryMock,
             ]
         );
     }
@@ -116,7 +116,7 @@ class FreeshippingTest extends TestCase
                 'getPackageQty',
                 'getFreeShipping',
                 'getBaseSubtotalWithDiscountInclTax',
-                'getPackageValueWithDiscount'
+                'getPackageValueWithDiscount',
             ]
         );
         $item = $this->getMockBuilder(QuoteItem::class)
@@ -151,7 +151,7 @@ class FreeshippingTest extends TestCase
                 'setMethod',
                 'setMethodTitle',
                 'setCost',
-                'setPrice'
+                'setPrice',
             ]
         );
         $resultModel = $this->getMockBuilder(Result::class)
@@ -188,7 +188,7 @@ class FreeshippingTest extends TestCase
                 'minOrderAmount' => 10,
                 'packageValueWithDiscount' => 8,
                 'baseSubtotalWithDiscountInclTax' => 15,
-                'expectedCallAppend' => 'once'
+                'expectedCallAppend' => 'once',
 
             ],
             [
@@ -196,7 +196,7 @@ class FreeshippingTest extends TestCase
                 'minOrderAmount' => 20,
                 'packageValueWithDiscount' => 8,
                 'baseSubtotalWithDiscountInclTax' => 15,
-                'expectedCallAppend' => 'never'
+                'expectedCallAppend' => 'never',
 
             ],
             [
@@ -204,9 +204,9 @@ class FreeshippingTest extends TestCase
                 'minOrderAmount' => 10,
                 'packageValueWithDiscount' => 8,
                 'baseSubtotalWithDiscountInclTax' => 15,
-                'expectedCallAppend' => 'never'
+                'expectedCallAppend' => 'never',
 
-            ]
+            ],
         ];
     }
 }

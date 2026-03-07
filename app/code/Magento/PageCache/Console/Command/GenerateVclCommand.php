@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,9 +14,9 @@ use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\HTTP\PhpEnvironment\Request;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\PageCache\Model\VclGeneratorInterfaceFactory;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Model\Varnish\VclTemplateLocator;
+use Magento\PageCache\Model\VclGeneratorInterfaceFactory;
 use Magento\Store\Model\ScopeInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

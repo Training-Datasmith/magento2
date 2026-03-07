@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax report resource model with aggregation by created at
  */
+
 namespace Magento\Tax\Model\ResourceModel\Report\Tax;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Backend\Test\Unit\Model\Menu\Item;
 
 use Magento\Backend\Model\Menu\Item\Validator;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
@@ -131,7 +132,7 @@ class ValidatorTest extends TestCase
             ['dependsOnConfig', '1a'],
             ['dependsOnConfig', '12b|'],
             ['toolTip', 'a'],
-            ['toolTip', '123456789012345678901234567890123456789012345678901']
+            ['toolTip', '123456789012345678901234567890123456789012345678901'],
         ];
     }
 
@@ -177,14 +178,14 @@ class ValidatorTest extends TestCase
                         'id' => 'item2',
                         'title' => 'Item 2',
                         'action' => 'adminhtml/controller/item2',
-                        'resource' => 'Namespace_Module::item2'
+                        'resource' => 'Namespace_Module::item2',
                     ],
                 ],
                 [
                     'id' => 'item1',
                     'title' => 'Item 1',
                     'action' => 'adminhtml/controller/item1',
-                    'resource' => 'Namespace_Module::item1'
+                    'resource' => 'Namespace_Module::item1',
                 ],
             ],
             [
@@ -199,16 +200,16 @@ class ValidatorTest extends TestCase
                         'id' => 'Namespace_Module::item2',
                         'title' => 'Item 2',
                         'action' => 'adminhtml/controller/item2',
-                        'resource' => 'Namespace_Module::item1'
+                        'resource' => 'Namespace_Module::item1',
                     ],
                 ],
                 [
                     'id' => 'Namespace_Module::item1',
                     'title' => 'Item 1',
                     'action' => 'adminhtml/controller/item1',
-                    'resource' => 'Namespace_Module::item1'
-                ]
-            ]
+                    'resource' => 'Namespace_Module::item1',
+                ],
+            ],
         ];
     }
 
@@ -224,7 +225,7 @@ class ValidatorTest extends TestCase
             $result = $this->_model->validateParam('toolTip', null);
             $this->assertNull($result);
         } catch (\Exception $e) {
-            $this->fail("Non required null values should not be validated");
+            $this->fail('Non required null values should not be validated');
         }
     }
 

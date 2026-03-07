@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,9 +16,9 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface ProductAttributeTypeInterface extends ExtensibleDataInterface
 {
-    const VALUE = 'value';
+    public const VALUE = 'value';
 
-    const LABEL = 'label';
+    public const LABEL = 'label';
 
     /**
      * Get value

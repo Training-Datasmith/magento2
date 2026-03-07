@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -122,7 +123,7 @@ class CatalogCategoryAndProductResolverOnSingleStoreMode
             [
                 'store_id = ?' => Store::DEFAULT_STORE_ID,
                 AttributeInterface::ATTRIBUTE_ID. ' IN(?)' => $attributeIds,
-                $linkField.' IN(?)' => $linkFieldIds
+                $linkField.' IN(?)' => $linkFieldIds,
             ]
         );
     }

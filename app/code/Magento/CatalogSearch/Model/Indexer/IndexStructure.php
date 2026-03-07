@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,7 +60,7 @@ class IndexStructure implements IndexStructureInterface
     ) {
         $this->resource = $resource;
         $this->indexScopeResolver = $indexScopeResolver;
-        $this->indexStructureFactory = $indexStructureFactory ? : ObjectManager::getInstance()
+        $this->indexStructureFactory = $indexStructureFactory ?: ObjectManager::getInstance()
             ->get(IndexStructureFactory::class);
     }
 

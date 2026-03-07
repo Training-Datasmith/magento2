@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -28,6 +29,6 @@ $quoteResource->load($quote, 'test_quote', 'reserved_order_id');
 $payment = $paymentFactory->create([
     'data' => [
         PaymentInterface::KEY_METHOD => Checkmo::PAYMENT_METHOD_CHECKMO_CODE,
-    ]
+    ],
 ]);
 $paymentMethodManagement->set($quote->getId(), $payment);

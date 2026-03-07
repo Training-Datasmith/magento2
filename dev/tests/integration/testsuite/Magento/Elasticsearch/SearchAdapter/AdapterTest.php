@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter;
 
 use Magento\Catalog\Model\Product;
@@ -422,7 +425,7 @@ class AdapterTest extends \PHPUnit\Framework\TestCase
             ['shorts', 'green', ['from' => '12', 'to' => '22'], 3],
             //Search with empty fields/values
             ['white', '  ', ['from' => '12', 'to' => '22'], 1],
-            ['  ', 'green', ['from' => '12', 'to' => '22'], 2]
+            ['  ', 'green', ['from' => '12', 'to' => '22'], 2],
         ];
     }
 
@@ -695,13 +698,13 @@ class AdapterTest extends \PHPUnit\Framework\TestCase
                 [
                     // Make sure "wildcard" feature works.
                     'sku' => 'simple_product',
-                ]
+                ],
             ],
             'catalog_view_container' => [
                 'catalog_view_container',
                 [
-                    'category_ids' => 2
-                ]
+                    'category_ids' => 2,
+                ],
             ],
             'quick search by date' => [
                 'quick_search_container',

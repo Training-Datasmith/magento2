@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * MySQL platform database handler
  */
+
 namespace Magento\TestFramework\Db;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -122,7 +125,7 @@ class Mysql extends \Magento\TestFramework\Db\AbstractDb
                 $this->_host,
                 $this->_port,
                 $this->_schema,
-                "DROP DATABASE `{$this->_schema}`; CREATE DATABASE `{$this->_schema}`"
+                "DROP DATABASE `{$this->_schema}`; CREATE DATABASE `{$this->_schema}`",
             ]
         );
     }
@@ -179,7 +182,7 @@ class Mysql extends \Magento\TestFramework\Db\AbstractDb
                 $this->_host,
                 $this->_port,
                 $this->_schema,
-                $this->getSetupDbDumpFilename()
+                $this->getSetupDbDumpFilename(),
             ]
         );
     }
@@ -193,7 +196,7 @@ class Mysql extends \Magento\TestFramework\Db\AbstractDb
     {
         $this->ensureDefaultsExtraFile();
         if (!$this->isDbDumpExists()) {
-            throw new \LogicException("DB dump file does not exist: " . $this->getSetupDbDumpFilename());
+            throw new \LogicException('DB dump file does not exist: ' . $this->getSetupDbDumpFilename());
         }
 
         $dbCommand = $this->getDbCommand();
@@ -225,7 +228,7 @@ class Mysql extends \Magento\TestFramework\Db\AbstractDb
             $extraConfig = [
                 '[client]',
                 'user=' . $this->_user,
-                'password="' . $this->_password . '"'
+                'password="' . $this->_password . '"',
             ];
             file_put_contents($this->_defaultsExtraFile, implode(PHP_EOL, $extraConfig));
             chmod($this->_defaultsExtraFile, 0640);
@@ -266,7 +269,7 @@ class Mysql extends \Magento\TestFramework\Db\AbstractDb
                         $this->_defaultsExtraFile,
                         $this->_host,
                         $this->_port,
-                        $this->_schema
+                        $this->_schema,
                     ]
                 );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Link;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Downloadable\Helper\Download;
 use Magento\Downloadable\Helper\File;
@@ -18,6 +18,7 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\DataObject\Copy;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -75,7 +76,7 @@ class BuilderTest extends TestCase
                 'downloadableFile' => $this->downloadFileMock,
                 'objectCopyService' => $this->objectCopyServiceMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
-                'componentFactory' => $this->mockComponentFactory
+                'componentFactory' => $this->mockComponentFactory,
             ]
         );
     }
@@ -189,8 +190,8 @@ class BuilderTest extends TestCase
             'type' => 'file',
             'sample' => [
                 'file' => 'cXVlIHRhbA==',
-                'type' => 'file'
-            ]
+                'type' => 'file',
+            ],
         ];
         $downloadableData = ['sort_order' => 1];
         $this->objectCopyServiceMock->expects($this->once())->method('getDataFromFieldset')
@@ -226,19 +227,19 @@ class BuilderTest extends TestCase
         $expectedPrice = 0;
         return [
             'price_0' => [
-                "data" => [
+                'data' => [
                     'file' => 'cXVlIHRhbA==',
                     'type' => 'file',
                     'use_default_title' => '1',
                     'sample' => [
                         'file' => 'cXVlIHRhbA==',
-                        'type' => 'file'
-                    ]
+                        'type' => 'file',
+                    ],
                 ],
-                'expectedPrice' => $expectedPrice
+                'expectedPrice' => $expectedPrice,
             ],
             'price_declared' => [
-                "data" => [
+                'data' => [
                     'file' => 'cXVlIHRhbA==',
                     'type' => 'file',
                     'price' => 150,
@@ -246,11 +247,11 @@ class BuilderTest extends TestCase
                     'is_unlimited' => true,
                     'sample' => [
                         'file' => 'cXVlIHRhbA==',
-                        'type' => 'file'
-                    ]
+                        'type' => 'file',
+                    ],
                 ],
-                'expectedPrice' => 150
-            ]
+                'expectedPrice' => 150,
+            ],
         ];
     }
 }

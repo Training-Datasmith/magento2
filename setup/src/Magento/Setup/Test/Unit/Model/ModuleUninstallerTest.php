@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,13 +109,13 @@ class ModuleUninstallerTest extends TestCase
             ->willReturnMap(
                 [
                     [ModuleResource::class, $resource],
-                    [PatchApplier::class, $this->patchApplierMock]
+                    [PatchApplier::class, $this->patchApplierMock],
                 ]
             );
         $this->patchApplierMock->expects($this->exactly(2))->method('revertDataPatches')->willReturnMap(
             [
                 ['moduleA'],
-                ['moduleB']
+                ['moduleB'],
             ]
         );
         $this->uninstaller->uninstallData($this->output, ['moduleA', 'moduleB']);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class SubscriptionHandlerTest extends TestCase
         $this->configWriterMock
             ->expects($this->once())
             ->method('save')
-            ->with(SubscriptionHandler::CRON_STRING_PATH, "0 * * * *");
+            ->with(SubscriptionHandler::CRON_STRING_PATH, '0 * * * *');
         $this->flagManagerMock
             ->expects($this->once())
             ->method('saveFlag')

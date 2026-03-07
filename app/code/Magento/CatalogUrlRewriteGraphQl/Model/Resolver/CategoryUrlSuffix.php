@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewriteGraphQl\Model\Resolver;
 
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Returns the url suffix for category

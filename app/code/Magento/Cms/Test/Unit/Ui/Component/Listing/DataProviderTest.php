@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Test\Unit\Ui\Component\Listing;
 
+use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Ui\Component\DataProvider;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
@@ -18,7 +20,6 @@ use Magento\Framework\View\Element\UiComponent\DataProvider\Reporting;
 use Magento\Ui\Component\Container;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Cms\Api\Data\PageInterface;
 
 class DataProviderTest extends TestCase
 {
@@ -75,7 +76,7 @@ class DataProviderTest extends TestCase
         PageInterface::CUSTOM_THEME,
         PageInterface::CUSTOM_THEME_FROM,
         PageInterface::CUSTOM_THEME_TO,
-        PageInterface::CUSTOM_ROOT_TEMPLATE
+        PageInterface::CUSTOM_ROOT_TEMPLATE,
     ];
 
     protected function setUp(): void
@@ -128,13 +129,13 @@ class DataProviderTest extends TestCase
                     'data' => [
                         'config' => [
                             'editorConfig' => [
-                                'enabled' => false
+                                'enabled' => false,
                             ],
-                            'componentType' => Container::NAME
-                        ]
-                    ]
-                ]
-            ]
+                            'componentType' => Container::NAME,
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         foreach ($this->pageLayoutColumns as $column) {
@@ -143,12 +144,12 @@ class DataProviderTest extends TestCase
                     'data' => [
                         'config' => [
                             'editor' => [
-                                'editorType' => false
+                                'editorType' => false,
                             ],
-                            'componentType' => Container::NAME
-                        ]
-                    ]
-                ]
+                            'componentType' => Container::NAME,
+                        ],
+                    ],
+                ],
             ];
         }
 

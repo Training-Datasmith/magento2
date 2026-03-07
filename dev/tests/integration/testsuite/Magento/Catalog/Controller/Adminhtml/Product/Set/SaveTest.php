@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -164,7 +165,7 @@ class SaveTest extends AbstractBackendController
             [
                 'gotoEdit' => '1',
                 'skeleton_set' => $this->getCatalogProductDefaultAttributeSetId(),
-                'attribute_set_name' => ''
+                'attribute_set_name' => '',
             ]
         );
         $this->dispatch('backend/catalog/product_set/save/');
@@ -195,7 +196,7 @@ class SaveTest extends AbstractBackendController
                         ['ynode-418', 'attribute-group-name', 1],
                     ],
                     'attributes' => [
-                        ['9999', 'ynode-418', 1, null]
+                        ['9999', 'ynode-418', 1, null],
                     ],
                     'not_attributes' => [],
                     'removeGroups' => [],
@@ -234,7 +235,7 @@ class SaveTest extends AbstractBackendController
         $this->attributeRepository->get('country_of_manufacture')->setIsUserDefined(true);
         $this->attributeManagement->unassign($attributeSet->getId(), 'country_of_manufacture');
         $productData = [
-            'country_of_manufacture' => 'Angola'
+            'country_of_manufacture' => 'Angola',
         ];
         $this->dataObjectHelper->populateWithArray($product, $productData, ProductInterface::class);
         $this->productRepository->save($product);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class PhpTest extends TestCase
      */
     public function testVariablesAvailable(): void
     {
-        $block = new class implements BlockInterface {
+        $block = new class () implements BlockInterface {
             /**
              * @inheritDoc
              */

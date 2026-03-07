@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class ProductProcessUrlRewriteRemovingObserverTest extends TestCase
         $this->observer = $this->objectManager->getObject(
             ProductProcessUrlRewriteRemovingObserver::class,
             [
-                'urlPersist' => $this->urlPersistMock
+                'urlPersist' => $this->urlPersistMock,
             ]
         );
     }

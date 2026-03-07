@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Block\Media;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Image\Adapter\UploadConfigInterface;
 use Magento\Backend\Model\Image\UploadResizeConfigInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Image\Adapter\UploadConfigInterface;
+use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * Adminhtml media library uploader

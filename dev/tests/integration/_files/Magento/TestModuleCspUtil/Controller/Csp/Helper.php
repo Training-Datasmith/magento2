@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\TestModuleCspUtil\Controller\Csp;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\View\Result\PageFactory;
 
 /**
  * .phtml templates utilizes CSP helper.

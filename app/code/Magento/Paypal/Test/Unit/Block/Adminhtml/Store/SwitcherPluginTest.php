@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class SwitcherPluginTest extends TestCase
     {
         return [
             ['any value', [ConfigStructurePlugin::REQUEST_PARAM_COUNTRY => null]],
-            [null, []]
+            [null, []],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class CookieManager
     /**
      * @var string
      */
-    const COOKIE_NAME = 'section_data_clean';
+    public const COOKIE_NAME = 'section_data_clean';
 
     /**
      * @var CookieMetadataFactory

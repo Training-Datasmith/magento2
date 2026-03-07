@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Adapter\Pdo;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\TestFramework\Helper\CacheCleaner;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -291,7 +293,7 @@ class MysqlTest extends \PHPUnit\Framework\TestCase
             'non auto increment field' => [
                 'options' => ['unsigned' => true, 'nullable' => false,],
                 'expected' => false,
-            ]
+            ],
         ];
     }
 }

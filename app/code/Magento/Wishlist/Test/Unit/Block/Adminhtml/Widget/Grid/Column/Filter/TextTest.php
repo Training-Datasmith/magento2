@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Wishlist\Test\Unit\Block\Adminhtml\Widget\Grid\Column\Filter;
 
@@ -38,8 +38,8 @@ class TextTest extends TestCase
 
     public function testGetCondition()
     {
-        $value = "test";
+        $value = 'test';
         $this->textFilterBlock->setValue($value);
-        $this->assertSame(["like" => $value], $this->textFilterBlock->getCondition());
+        $this->assertSame(['like' => $value], $this->textFilterBlock->getCondition());
     }
 }

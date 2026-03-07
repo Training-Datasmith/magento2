@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\MediaContent\Model;
 
-use Magento\MediaContentApi\Model\SearchPatternConfigInterface;
 use Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface;
+use Magento\MediaContentApi\Model\SearchPatternConfigInterface;
 use Magento\MediaGalleryApi\Api\Data\AssetInterface;
 use Magento\MediaGalleryApi\Model\Asset\Command\GetByPathInterface;
 use Psr\Log\LoggerInterface;

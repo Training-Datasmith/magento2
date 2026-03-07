@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      */
     protected $_idAttributes = [
         '/services/service' => ['class', 'method'],
-        '/services/route'   => ['url', 'method']
+        '/services/route'   => ['url', 'method'],
     ];
 
     /**

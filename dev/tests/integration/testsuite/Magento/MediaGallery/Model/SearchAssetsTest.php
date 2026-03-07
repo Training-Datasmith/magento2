@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Api\Search\FilterGroupBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\MediaGalleryApi\Api\SearchAssetsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Verify SearchAssets By searchCriteria
@@ -90,11 +91,11 @@ class SearchAssetsTest extends TestCase
                 ['field' =>  'title', 'conditionType' => 'fulltext', 'value' => 'Img'],
             ],
             [
-                ['field' =>  'content_type', 'conditionType' => 'eq', 'value' => 'image']
+                ['field' =>  'content_type', 'conditionType' => 'eq', 'value' => 'image'],
             ],
             [
-                ['field' =>  'description', 'conditionType' => 'fulltext', 'value' => 'description']
-            ]
+                ['field' =>  'description', 'conditionType' => 'fulltext', 'value' => 'description'],
+            ],
         ];
     }
 }

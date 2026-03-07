@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class ShipmentDocumentFactoryTest extends TestCase
     {
         $order = $this->order->loadByIncrementId('100000001');
         $argumentsExtensionAttributes = $this->shipmentCreationArgumentsExtensionInterfaceFactory->create([
-            'data' => ['test_attribute_value' => 'test_value']
+            'data' => ['test_attribute_value' => 'test_value'],
         ]);
         $this->shipmentCreationArgumentsInterface->setExtensionAttributes($argumentsExtensionAttributes);
         $shipment = $this->shipmentDocumentFactory->create(

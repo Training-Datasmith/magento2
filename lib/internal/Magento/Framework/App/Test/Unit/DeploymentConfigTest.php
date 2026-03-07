@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\DeploymentConfig\Reader;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\RuntimeException;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DeploymentConfigTest extends TestCase
@@ -54,7 +55,7 @@ class DeploymentConfigTest extends TestCase
      */
     private static $flattenedFixtureSecond
         = [
-            'test_override' => 'overridden2'
+            'test_override' => 'overridden2',
         ];
 
     /**
@@ -260,7 +261,7 @@ class DeploymentConfigTest extends TestCase
 
     public function testNoEnvVariables(): void
     {
-        $this->readerMock->expects($this->once())->method('load')->willReturn(['a'=>'b']);
+        $this->readerMock->expects($this->once())->method('load')->willReturn(['a' => 'b']);
         $this->assertSame('b', $this->deploymentConfig->get('a'));
     }
 
@@ -273,7 +274,7 @@ class DeploymentConfigTest extends TestCase
 
     public function testEnvVariablesWithNoBaseConfig(): void
     {
-        $this->readerMock->expects($this->once())->method('load')->willReturn(['a'=>'b']);
+        $this->readerMock->expects($this->once())->method('load')->willReturn(['a' => 'b']);
         putenv('MAGENTO_DC_A=c');
         putenv('MAGENTO_DC_B__B__B=D');
         putenv('MAGENTO_DC_C=false');
@@ -288,9 +289,9 @@ class DeploymentConfigTest extends TestCase
             ->method('load')
             ->willReturn(
                 [
-                    'a'=>'#env(MAGENTO_DC____A)',
-                    'b'=>'#env(MAGENTO_DC____B, "test")',
-                    'c'=>'#env(MAGENTO_DC____D, "e$%^&")'
+                    'a' => '#env(MAGENTO_DC____A)',
+                    'b' => '#env(MAGENTO_DC____B, "test")',
+                    'c' => '#env(MAGENTO_DC____D, "e$%^&")',
                 ]
             );
         putenv('MAGENTO_DC____A=c');
@@ -329,7 +330,7 @@ class DeploymentConfigTest extends TestCase
     /**
      * @return void
      */
-    public function testShouldntLoadMultipleTimes() : void
+    public function testShouldntLoadMultipleTimes(): void
     {
         $this->readerMock->expects($this->once())->method('load')
             ->willReturn(['a' => ['a' => ['a' => 1]]]);
@@ -344,7 +345,7 @@ class DeploymentConfigTest extends TestCase
     /**
      * @return void
      */
-    public function testShouldReloadPreviouslyUnsetKeysAfterReset() : void
+    public function testShouldReloadPreviouslyUnsetKeysAfterReset(): void
     {
         $testValue = 42;
         $loadReturn = ['a' => ['a' => ['a' => 1]]];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Block\Adminhtml\Category\Checkboxes;
 
 use Magento\Catalog\Helper\DefaultCategory;
-use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\ObjectManagerInterface;
@@ -97,7 +98,7 @@ class TreeTest extends TestCase
         $categoryCollection = $this->objectManager->create(
             Collection::class,
             [
-                'resource' => $resourceConnection
+                'resource' => $resourceConnection,
             ]
         );
 
@@ -107,7 +108,7 @@ class TreeTest extends TestCase
         $treeObject = $this->objectManager->create(
             Tree::class,
             [
-                'categoryFactory' => $categoryFactoryMock
+                'categoryFactory' => $categoryFactoryMock,
             ]
         );
 

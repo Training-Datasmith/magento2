@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ interface FakeRegionInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array
      */
-    const REGION_CODE = 'region_code';
-    const REGION = 'region';
-    const REGION_ID = 'region_id';
+    public const REGION_CODE = 'region_code';
+    public const REGION = 'region';
+    public const REGION_ID = 'region_id';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class LocaleResolver
     /**
      * Parameter to force deploying certain languages for the admin, without any users having configured them yet.
      */
-    const ADMIN_LOCALES_FOR_DEPLOY = 'admin_locales_for_deploy';
+    public const ADMIN_LOCALES_FOR_DEPLOY = 'admin_locales_for_deploy';
 
     /**
      * @var StoreView

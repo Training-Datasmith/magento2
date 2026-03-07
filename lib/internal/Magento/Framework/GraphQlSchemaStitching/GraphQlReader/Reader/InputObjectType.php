@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching\GraphQlReader\Reader;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\TypeMetaWrapperReader;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\CacheAnnotationReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\TypeMetaWrapperReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 
 /**
  * Composite configuration reader to handle the input object type meta
@@ -53,14 +54,14 @@ class InputObjectType implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         if ($typeMeta instanceof \GraphQL\Type\Definition\InputObjectType) {
             $typeName = $typeMeta->name;
             $result = [
                 'name' => $typeName,
                 'type' => self::GRAPHQL_INPUT,
-                'fields' => [] // Populated later
+                'fields' => [], // Populated later
             ];
             $fields = $typeMeta->getFields();
             foreach ($fields as $fieldName => $fieldMeta) {
@@ -86,14 +87,14 @@ class InputObjectType implements TypeMetaReaderInterface
      * @param \GraphQL\Type\Definition\InputObjectField $fieldMeta
      * @return array
      */
-    private function readInputObjectFieldMeta(\GraphQL\Type\Definition\InputObjectField $fieldMeta) : array
+    private function readInputObjectFieldMeta(\GraphQL\Type\Definition\InputObjectField $fieldMeta): array
     {
         $fieldName = $fieldMeta->name;
         $typeMeta = $fieldMeta->getType();
         $result = [
             'name' => $fieldName,
             'required' => false,
-            'arguments' => []
+            'arguments' => [],
         ];
 
         $result = array_merge(
@@ -102,7 +103,7 @@ class InputObjectType implements TypeMetaReaderInterface
         );
 
         if ($this->docReader->read($fieldMeta->astNode->directives)) {
-                $result['description'] = $this->docReader->read($fieldMeta->astNode->directives);
+            $result['description'] = $this->docReader->read($fieldMeta->astNode->directives);
         }
 
         return $result;

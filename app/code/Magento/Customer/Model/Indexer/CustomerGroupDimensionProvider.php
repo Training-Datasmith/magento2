@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class CustomerGroupDimensionProvider implements DimensionProviderInterface
      * Name for customer group dimension for multidimensional indexer
      * 'cg' - stands for 'customer_group'
      */
-    const DIMENSION_NAME = 'cg';
+    public const DIMENSION_NAME = 'cg';
 
     /**
      * @var CustomerGroupCollectionFactory

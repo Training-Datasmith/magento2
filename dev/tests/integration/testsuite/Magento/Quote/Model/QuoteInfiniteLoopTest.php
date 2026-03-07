@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,11 +57,11 @@ class QuoteInfiniteLoopTest extends \PHPUnit\Framework\TestCase
         $originalQuote = $this->generateQuote($triggerRecollect);
         $quoteId = $originalQuote->getId();
 
-        $this->assertGreaterThan(0, $quoteId, "The quote should have a database id");
+        $this->assertGreaterThan(0, $quoteId, 'The quote should have a database id');
         $this->assertEquals(
             $triggerRecollect,
             $originalQuote->getTriggerRecollect(),
-            "trigger_recollect failed to be set"
+            'trigger_recollect failed to be set'
         );
 
         if ($observerEnabled) {
@@ -73,8 +74,8 @@ class QuoteInfiniteLoopTest extends \PHPUnit\Framework\TestCase
         $session->setQuoteId($quoteId);
 
         $quote = $session->getQuote();
-        $this->assertEquals($quoteId, $quote->getId(), "The loaded quote should have the same ID as the initial quote");
-        $this->assertEquals(0, $quote->getTriggerRecollect(), "trigger_recollect should be unset after a quote reload");
+        $this->assertEquals($quoteId, $quote->getId(), 'The loaded quote should have the same ID as the initial quote');
+        $this->assertEquals(0, $quote->getTriggerRecollect(), 'trigger_recollect should be unset after a quote reload');
     }
 
     /**
@@ -102,8 +103,8 @@ class QuoteInfiniteLoopTest extends \PHPUnit\Framework\TestCase
         $originalQuote = $this->generateQuote();
         $quoteId = $originalQuote->getId();
 
-        $this->assertGreaterThan(0, $quoteId, "The quote should have a database id");
-        $this->assertEquals(1, $originalQuote->getTriggerRecollect(), "The quote has trigger_recollect set");
+        $this->assertGreaterThan(0, $quoteId, 'The quote should have a database id');
+        $this->assertEquals(1, $originalQuote->getTriggerRecollect(), 'The quote has trigger_recollect set');
 
         // Enable an observer which gets the quote from the session
         // The observer hooks into part of the collect totals process for an easy demonstration of the loop.

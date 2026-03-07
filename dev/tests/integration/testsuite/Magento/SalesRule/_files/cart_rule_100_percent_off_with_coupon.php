@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\SalesRule\Api\CouponRepositoryInterface;
 use Magento\SalesRule\Model\Coupon;
 use Magento\SalesRule\Model\Rule;
-use Magento\SalesRule\Api\CouponRepositoryInterface;
 
 $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
 /** @var Magento\Framework\Registry $registry */

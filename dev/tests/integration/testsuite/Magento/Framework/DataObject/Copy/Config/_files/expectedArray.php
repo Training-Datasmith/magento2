@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,5 +12,5 @@ return [
             'street_full' => ['to_order_address' => 'street'],
             'street' => ['to_customer_address' => '*'],
         ],
-    ]
+    ],
 ];

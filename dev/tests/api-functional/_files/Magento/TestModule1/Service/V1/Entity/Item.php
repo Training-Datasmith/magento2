@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule1\Service\V1\Entity;
 
 class Item extends \Magento\Framework\Api\AbstractExtensibleObject
@@ -10,9 +13,9 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject
     /**#@+
      * Custom attribute code constants
      */
-    const CUSTOM_ATTRIBUTE_1 = 'custom_attribute1';
-    const CUSTOM_ATTRIBUTE_2 = 'custom_attribute2';
-    const CUSTOM_ATTRIBUTE_3 = 'custom_attribute3';
+    public const CUSTOM_ATTRIBUTE_1 = 'custom_attribute1';
+    public const CUSTOM_ATTRIBUTE_2 = 'custom_attribute2';
+    public const CUSTOM_ATTRIBUTE_3 = 'custom_attribute3';
     /**#@-*/
 
     /**

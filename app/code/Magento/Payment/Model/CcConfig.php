@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Asset\Repository;
-use Psr\Log\LoggerInterface;
 use Magento\Payment\Model\Config as PaymentConfig;
+use Psr\Log\LoggerInterface;
 
 /**
  * Credit card configuration model
@@ -75,7 +78,7 @@ class CcConfig
     public function getSsStartYears()
     {
         $years = [];
-        $first = date("Y");
+        $first = date('Y');
 
         for ($index = 5; $index >= 0; $index--) {
             $year = $first - $index;

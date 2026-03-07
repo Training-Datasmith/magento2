@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\AdminAnalytics\ViewModel;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\AdminAnalytics\Model\Condition\CanViewNotification as AdminAnalyticsNotification;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\ReleaseNotification\Model\Condition\CanViewNotification as ReleaseNotification;
 
 /**
@@ -16,32 +17,12 @@ use Magento\ReleaseNotification\Model\Condition\CanViewNotification as ReleaseNo
  */
 class Notification implements ArgumentInterface
 {
-    /**
-     * @var AdminAnalyticsNotification
-     */
-    private $canViewNotificationAnalytics;
-
-    /**
-     * @var ReleaseNotification
-     */
-    private $canViewNotificationRelease;
-
-    /**
-     * @param AdminAnalyticsNotification $canViewNotificationAnalytics
-     * @param ReleaseNotification $canViewNotificationRelease
-     */
-    public function __construct(
-        AdminAnalyticsNotification $canViewNotificationAnalytics,
-        ReleaseNotification $canViewNotificationRelease
-    ) {
-        $this->canViewNotificationAnalytics = $canViewNotificationAnalytics;
-        $this->canViewNotificationRelease = $canViewNotificationRelease;
+    public function __construct(private readonly AdminAnalyticsNotification $canViewNotificationAnalytics, private readonly ReleaseNotification $canViewNotificationRelease)
+    {
     }
 
     /**
      * Determine if the analytics popup is visible
-     *
-     * @return bool
      */
     public function isAnalyticsVisible(): bool
     {
@@ -50,8 +31,6 @@ class Notification implements ArgumentInterface
 
     /**
      * Determine if the release popup is visible
-     *
-     * @return bool
      */
     public function isReleaseVisible(): bool
     {

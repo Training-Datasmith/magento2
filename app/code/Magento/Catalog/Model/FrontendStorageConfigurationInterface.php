@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ interface FrontendStorageConfigurationInterface
      * Lifetime is not mandatory attribute for each frontend storage configuration scope. However in some cases
      * (e.g. when we need to flush deprecated frontend actions) we need to have default lifetime
      */
-    const DEFAULT_LIFETIME = 1000;
+    public const DEFAULT_LIFETIME = 1000;
 
     /**
      * Prepare dynamic data which will be used in Storage Configuration (e.g. data from App/Config)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,12 +22,12 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -109,7 +110,7 @@ class SaveTest extends TestCase
         $this->addressRepositoryMock = $this->createMock(AddressRepositoryInterface::class);
         $this->formFactoryMock = $this->createMock(FormFactory::class);
         $this->customerRepositoryMock = $this->createMock(CustomerRepositoryInterface::class);
-        $this->dataObjectHelperMock = $this->createMock(DataObjectHelper ::class);
+        $this->dataObjectHelperMock = $this->createMock(DataObjectHelper::class);
         $this->addressDataFactoryMock = $this->createMock(AddressInterfaceFactory::class);
         $this->loggerMock = $this->createMock(LoggerInterface::class);
         $this->requestMock = $this->createMock(RequestInterface::class);
@@ -241,8 +242,8 @@ class SaveTest extends TestCase
                     'messages' => __('Customer address has been updated.'),
                     'error' => false,
                     'data' => [
-                        'entity_id' => $addressId
-                    ]
+                        'entity_id' => $addressId,
+                    ],
                 ]
             )->willReturnSelf();
 

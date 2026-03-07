@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Usps\Model;
 
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
-use Magento\Shipping\Model\Shipment\Request;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -78,7 +78,7 @@ class UspsAuthTest extends TestCase
             'Accept' => 'application/json',
             'client_id' => $clientId,
             'client_secret' => $clientSecret,
-            'grant_type' => 'client_credentials'
+            'grant_type' => 'client_credentials',
         ];
 
         $this->asyncHttpClientMock->nextResponses(
@@ -87,7 +87,7 @@ class UspsAuthTest extends TestCase
                     200,
                     $headers,
                     $responseData
-                )
+                ),
             ]
         );
 

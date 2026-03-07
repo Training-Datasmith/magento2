@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,26 +8,26 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Price\Action;
 
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Search\Request\Dimension;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Directory\Model\CurrencyFactory;
-use Magento\Catalog\Model\Product\Type;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Factory;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\TierPrice;
+use Magento\Catalog\Model\Indexer\Product\Price\Action\Row;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
 use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
-use Magento\Catalog\Model\Indexer\Product\Price\Action\Row;
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Factory;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\TierPrice;
+use Magento\Directory\Model\CurrencyFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Stdlib\DateTime;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\MultiDimensionProvider;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\Search\Request\Dimension;
+use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -172,7 +173,7 @@ class RowDefaultPriceIndexerTest extends TestCase
             ->method('getTypesByPriority')
             ->willReturn(
                 [
-                    'simple' => ['price_indexer' => '\Price\Indexer']
+                    'simple' => ['price_indexer' => '\Price\Indexer'],
                 ]
             );
         $this->indexerPriceFactory->expects($this->exactly(1))
@@ -189,7 +190,7 @@ class RowDefaultPriceIndexerTest extends TestCase
             ->willReturn('');
         $adapter->expects($this->exactly(2))
             ->method('getIndexList')
-            ->willReturn(['entity_id'=>['COLUMNS_LIST'=>['test']]]);
+            ->willReturn(['entity_id' => ['COLUMNS_LIST' => ['test']]]);
         $adapter->expects($this->exactly(2))
             ->method('getPrimaryKeyName')
             ->willReturn('entity_id');

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,7 +15,6 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Invoice\Item;
 use Magento\Sales\Model\Order\Invoice\ItemFactory;
-use Magento\Sales\Model\Order\InvoiceFactory;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,15 +8,15 @@
 
 namespace Magento\Sales\Controller\Adminhtml\Order\Invoice;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
-use Magento\Sales\Model\Service\InvoiceService;
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Sales\Controller\Adminhtml\Invoice\AbstractInvoice\View as AbstractView;
+use Magento\Sales\Model\Service\InvoiceService;
 
 /**
  * Class UpdateQty to update invoice items qty

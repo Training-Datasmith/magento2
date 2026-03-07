@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,9 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\OrderCancellation;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
+use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Exception\AuthenticationException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\OrderRepository;
@@ -17,23 +28,13 @@ use Magento\Sales\Test\Fixture\Creditmemo as CreditmemoFixture;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
 use Magento\Sales\Test\Fixture\Shipment as ShipmentFixture;
 use Magento\Store\Test\Fixture\Store;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Framework\Exception\AuthenticationException;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Fixture\Config;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
-use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test coverage for cancel order mutation
@@ -46,7 +47,7 @@ use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
         Customer::class,
         [
             'email' => 'customer@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ],
         'customer'
     ),
@@ -92,7 +93,7 @@ class CancelOrderTest extends GraphQlAbstract
     public function testAttemptToCancelOrderWhenMissingReason()
     {
         $this->expectException(ResponseContainsErrorsException::class);
-        $this->expectExceptionMessage("Field CancelOrderInput.reason of required type String! was not provided.");
+        $this->expectExceptionMessage('Field CancelOrderInput.reason of required type String! was not provided.');
 
         $this->graphQlMutation(
             <<<MUTATION
@@ -129,15 +130,15 @@ MUTATION,
             [
                 'cancelOrder' => [
                     'errorV2' => [
-                        'message' => 'Order cancellation is not enabled for requested store.'
+                        'message' => 'Order cancellation is not enabled for requested store.',
                     ],
-                    'order' => null
-                ]
+                    'order' => null,
+                ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2(
                     $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId()),
-                    "Other"
+                    'Other'
                 ),
                 [],
                 '',
@@ -157,7 +158,7 @@ MUTATION,
     public function testAttemptToCancelOrderWhenMissingOrderId()
     {
         $this->expectException(ResponseContainsErrorsException::class);
-        $this->expectExceptionMessage("Field CancelOrderInput.order_id of required type ID! was not provided.");
+        $this->expectExceptionMessage('Field CancelOrderInput.order_id of required type ID! was not provided.');
 
         $this->graphQlMutation(
             <<<MUTATION
@@ -195,11 +196,11 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'error' => "The entity that was requested doesn't exist. Verify the entity and try again.",
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation(
-                $this->getCancelOrderMutation("MTAwMDA="),
+                $this->getCancelOrderMutation('MTAwMDA='),
                 [],
                 '',
                 $this->getCustomerAuthHeaders()
@@ -213,7 +214,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -221,7 +222,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'another@example.com',
-                'password' => 'pa55w0rd'
+                'password' => 'pa55w0rd',
             ],
             'another'
         ),
@@ -241,9 +242,9 @@ MUTATION,
             [
                 'cancelOrder' =>
                     [
-                        'error' => "Current user is not authorized to cancel this order",
-                        'order' => null
-                    ]
+                        'error' => 'Current user is not authorized to cancel this order',
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutation(
@@ -276,12 +277,12 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order already closed, complete, cancelled or on hold'
+                            'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => $expectedStatus
-                        ]
-                    ]
+                            'status' => $expectedStatus,
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2($this->idEncoder->encode((string)$order->getEntityId())),
@@ -303,7 +304,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -326,12 +327,12 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order already closed, complete, cancelled or on hold'
+                            'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => 'Complete'
-                        ]
-                    ]
+                            'status' => 'Complete',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2(
@@ -355,7 +356,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -366,7 +367,7 @@ MUTATION,
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -379,7 +380,7 @@ MUTATION,
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product.id$', 'qty' => 1]],
             ]
         ),
         Config('sales/cancellation/enabled', 1)
@@ -391,12 +392,12 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order with one or more items shipped cannot be cancelled'
+                            'message' => 'Order with one or more items shipped cannot be cancelled',
                         ],
                         'order' => [
-                            'status' => 'Processing'
-                        ]
-                    ]
+                            'status' => 'Processing',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2(
@@ -420,7 +421,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -430,7 +431,7 @@ MUTATION,
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -449,12 +450,12 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order already closed, complete, cancelled or on hold'
+                            'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => 'Closed'
-                        ]
-                    ]
+                            'status' => 'Closed',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2(
@@ -473,7 +474,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -497,9 +498,9 @@ MUTATION,
                     [
                         'errorV2' => null,
                         'order' => [
-                            'status' => 'Canceled'
-                        ]
-                    ]
+                            'status' => 'Canceled',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2($this->idEncoder->encode((string)$order->getEntityId())),
@@ -512,7 +513,7 @@ MUTATION,
         $comments = $order->getStatusHistories();
 
         $comment = array_pop($comments);
-        $this->assertEquals("Order cancellation notification email was sent.", $comment->getComment());
+        $this->assertEquals('Order cancellation notification email was sent.', $comment->getComment());
 
         $comment = array_pop($comments);
         $this->assertEquals('Other', $comment->getComment());
@@ -537,9 +538,9 @@ MUTATION,
                     [
                         'errorV2' => null,
                         'order' => [
-                            'status' => 'Closed'
-                        ]
-                    ]
+                            'status' => 'Closed',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2($this->idEncoder->encode((string)$order->getEntityId())),
@@ -552,10 +553,10 @@ MUTATION,
         $comments = $order->getStatusHistories();
 
         $comment = array_pop($comments);
-        $this->assertEquals("We refunded $15.00 offline.", $comment->getComment());
+        $this->assertEquals('We refunded $15.00 offline.', $comment->getComment());
 
         $comment = array_pop($comments);
-        $this->assertEquals("Order cancellation notification email was sent.", $comment->getComment());
+        $this->assertEquals('Order cancellation notification email was sent.', $comment->getComment());
 
         $comment = array_pop($comments);
         $this->assertEquals('Other', $comment->getComment());
@@ -573,7 +574,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -584,7 +585,7 @@ MUTATION,
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -597,7 +598,7 @@ MUTATION,
             CreditmemoFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['qty' => 1, 'product_id' => '$product.id$']]
+                'items' => [['qty' => 1, 'product_id' => '$product.id$']],
             ],
             'creditmemo'
         ),
@@ -613,9 +614,9 @@ MUTATION,
                     [
                         'errorV2' => null,
                         'order' => [
-                            'status' => 'Closed'
-                        ]
-                    ]
+                            'status' => 'Closed',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2($this->idEncoder->encode((string)$order->getEntityId())),
@@ -628,13 +629,13 @@ MUTATION,
         $comments = $order->getAllStatusHistory();
 
         $comment = array_pop($comments);
-        $this->assertEquals("We refunded $25.00 offline.", $comment->getComment());
+        $this->assertEquals('We refunded $25.00 offline.', $comment->getComment());
 
         $comment = array_pop($comments);
-        $this->assertEquals("We refunded $20.00 offline.", $comment->getComment());
+        $this->assertEquals('We refunded $20.00 offline.', $comment->getComment());
 
         $comment = array_pop($comments);
-        $this->assertEquals("Order cancellation notification email was sent.", $comment->getComment());
+        $this->assertEquals('Order cancellation notification email was sent.', $comment->getComment());
 
         $comment = array_pop($comments);
         $this->assertEquals('Other', $comment->getComment());
@@ -658,15 +659,15 @@ MUTATION,
                 'cancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order cancellation reason is invalid.'
+                            'message' => 'Order cancellation reason is invalid.',
                         ],
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2(
                     $this->idEncoder->encode((string)$order->getEntityId()),
-                    "<script>while(true){alert(666);}</script>"
+                    '<script>while(true){alert(666);}</script>'
                 ),
                 [],
                 '',
@@ -681,7 +682,7 @@ MUTATION,
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -699,7 +700,7 @@ MUTATION,
             InvoiceFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => ['$product1.sku$']
+                'items' => ['$product1.sku$'],
             ],
             'invoice'
         ),
@@ -715,9 +716,9 @@ MUTATION,
                     [
                         'errorV2' => null,
                         'order' => [
-                            'status' => 'Canceled'
-                        ]
-                    ]
+                            'status' => 'Canceled',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getCancelOrderMutationWithErrorV2($this->idEncoder->encode((string)$order->getEntityId())),
@@ -730,10 +731,10 @@ MUTATION,
         $comments = $order->getStatusHistories();
 
         $comment = array_pop($comments);
-        $this->assertEquals("We refunded $20.00 offline.", $comment->getComment());
+        $this->assertEquals('We refunded $20.00 offline.', $comment->getComment());
 
         $comment = array_pop($comments);
-        $this->assertEquals("Order cancellation notification email was sent.", $comment->getComment());
+        $this->assertEquals('Order cancellation notification email was sent.', $comment->getComment());
 
         $comment = array_pop($comments);
         $this->assertEquals('Other', $comment->getComment());
@@ -772,7 +773,7 @@ MUTATION;
      * @param string $reason
      * @return string
      */
-    private function getCancelOrderMutationWithErrorV2(string $orderId, string $reason = "Other"): string
+    private function getCancelOrderMutationWithErrorV2(string $orderId, string $reason = 'Other'): string
     {
         return <<<MUTATION
         mutation {
@@ -813,20 +814,20 @@ MUTATION;
         return [
             'On Hold status' => [
                 Order::STATE_HOLDED,
-                'On Hold'
+                'On Hold',
             ],
             'Canceled status' => [
                 Order::STATE_CANCELED,
-                'Canceled'
+                'Canceled',
             ],
             'Closed status' => [
                 Order::STATE_CLOSED,
-                'Closed'
+                'Closed',
             ],
             'Complete status' => [
                 Order::STATE_COMPLETE,
-                'Complete'
-            ]
+                'Complete',
+            ],
         ];
     }
 }

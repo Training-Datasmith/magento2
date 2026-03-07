@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -150,11 +151,11 @@ class ProductList
         $defaultLimit = $this->scopeConfig->getValue($xmlConfigPath, ScopeInterface::SCOPE_STORE);
 
         $availableLimits = $this->getAvailableLimit($viewMode);
-        
+
         if ($defaultLimit !== null && isset($availableLimits[$defaultLimit])) {
             return (int)$availableLimits[$defaultLimit];
         }
-        
+
         return (int)current($availableLimits);
     }
 }

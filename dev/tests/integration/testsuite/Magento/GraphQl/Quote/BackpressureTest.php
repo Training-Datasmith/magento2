@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -14,12 +15,12 @@ use Magento\Framework\App\Backpressure\SlidingWindow\LimitConfigManagerInterface
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\GraphQl\Model\Backpressure\BackpressureContextFactory;
 use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
+use Magento\QuoteGraphQl\Model\Resolver\PlaceOrder;
 use Magento\QuoteGraphQl\Model\Resolver\SetPaymentAndPlaceOrder;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\QuoteGraphQl\Model\Resolver\PlaceOrder;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BackpressureTest extends TestCase
 {
@@ -65,14 +66,14 @@ class BackpressureTest extends TestCase
                 ContextInterface::IDENTITY_TYPE_IP,
                 '127.0.0.1',
                 SetPaymentAndPlaceOrder::class,
-                50
+                50,
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
                 '42',
                 PlaceOrder::class,
-                100
-            ]
+                100,
+            ],
         ];
     }
 

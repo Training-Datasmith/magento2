@@ -1,16 +1,21 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Sales\Model\Reorder;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -23,11 +28,8 @@ use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Helper\Reorder as ReorderHelper;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\OrderFactory;
-use Magento\Framework\App\ObjectManager;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Sales\Model\ResourceModel\Order\Item\Collection as ItemCollection;
-use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**

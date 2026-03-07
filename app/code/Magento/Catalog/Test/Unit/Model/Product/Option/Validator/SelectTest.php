@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Option\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Config\Source\Product\Options\Price;
 use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Model\Product\Option\Validator\Select;
 use Magento\Catalog\Model\ProductOptions\ConfigInterface;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -62,7 +63,7 @@ class SelectTest extends TestCase
                         'name' => 'name 2.2',
                         'disabled' => true,
                     ],
-                ]
+                ],
             ],
         ];
         $configMock->expects($this->once())->method('getAll')->willReturn($config);
@@ -108,13 +109,13 @@ class SelectTest extends TestCase
                     'price_type' => 'fixed',
                     'price' => '10',
                     'title' => 'Some Title',
-                ]
+                ],
             ],
             [
                 true,
                 [
                     'title' => 'Some Title',
-                ]
+                ],
             ],
             [
                 true,
@@ -122,7 +123,7 @@ class SelectTest extends TestCase
                     'title' => 'Some Title',
                     'price_type' => 'fixed',
                     'price' => -10,
-                ]
+                ],
             ],
         ];
     }
@@ -199,7 +200,7 @@ class SelectTest extends TestCase
     {
         return [
             'invalid_price_type' => ['some_value', '10', 'Title'],
-            'empty_title' => ['fixed', 10, null]
+            'empty_title' => ['fixed', 10, null],
         ];
     }
 }

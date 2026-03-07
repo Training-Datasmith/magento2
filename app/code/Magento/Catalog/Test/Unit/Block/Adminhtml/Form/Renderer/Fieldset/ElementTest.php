@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ElementTest extends TestCase
         $this->formDataObject = new DataObject([
             'data_object' => $this->dataObjectMock,
             'html_id_prefix' => '',
-            'html_id_suffix' => ''
+            'html_id_suffix' => '',
         ]);
 
         // Attach form and attribute to the element via real methods/data
@@ -255,7 +256,7 @@ class ElementTest extends TestCase
                 'defaultValue' => false,
                 'isRequired' => false,
                 'expected' => false,
-            ]
+            ],
         ];
     }
 

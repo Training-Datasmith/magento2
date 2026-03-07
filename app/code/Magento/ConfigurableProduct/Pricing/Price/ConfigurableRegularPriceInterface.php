@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\ConfigurableProduct\Pricing\Price;
 
-use Magento\Catalog\Model\Product;
 use Magento\Framework\Pricing\Price\BasePriceProviderInterface;
 
 /**

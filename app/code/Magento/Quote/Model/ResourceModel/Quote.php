@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -224,9 +226,9 @@ class Quote extends AbstractDb
         }
         $connection = $this->getConnection();
         $subSelect = $connection->select();
-        $conditionCheck = $connection->quoteIdentifier('q.items_count') . " > 0";
+        $conditionCheck = $connection->quoteIdentifier('q.items_count') . ' > 0';
         $conditionTrue = $connection->quoteIdentifier('q.items_count') . ' - 1';
-        $ifSql = "IF (" . $conditionCheck . "," . $conditionTrue . ", 0)";
+        $ifSql = 'IF (' . $conditionCheck . ',' . $conditionTrue . ', 0)';
 
         $subSelect->from(
             false,
@@ -244,7 +246,7 @@ class Quote extends AbstractDb
                 [
                     'q.entity_id = qi.quote_id',
                     'qi.parent_item_id IS NULL',
-                    $connection->quoteInto('qi.product_id = ?', $productId)
+                    $connection->quoteInto('qi.product_id = ?', $productId),
                 ]
             ),
             []

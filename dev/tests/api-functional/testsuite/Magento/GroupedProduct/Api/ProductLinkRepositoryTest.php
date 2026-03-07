@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,11 +17,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductLinkRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductLinkRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products/';
-    const SERVICE_NAME_SEARCH = 'searchV1';
-    const RESOURCE_PATH_SEARCH = '/V1/search/';
+    public const SERVICE_NAME = 'catalogProductLinkRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products/';
+    public const SERVICE_NAME_SEARCH = 'searchV1';
+    public const RESOURCE_PATH_SEARCH = '/V1/search/';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -199,7 +200,6 @@ class ProductLinkRepositoryTest extends WebapiAbstract
 
         self::assertFalse($this->isProductInStock($productSku));
     }
-
 
     /**
      * Check product stock status.

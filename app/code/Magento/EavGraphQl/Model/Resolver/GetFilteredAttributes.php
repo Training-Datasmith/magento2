@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class GetFilteredAttributes
                         (string)__(
                             'Cannot filter by "%filter" as that field does not belong to "%entity".',
                             ['filter' => $field, 'entity' => $entityType]
-                        )
+                        ),
                 ];
             }
         }
@@ -81,7 +82,7 @@ class GetFilteredAttributes
 
         return [
             'items' => $attributesList,
-            'errors' => $errors
+            'errors' => $errors,
         ];
     }
 }

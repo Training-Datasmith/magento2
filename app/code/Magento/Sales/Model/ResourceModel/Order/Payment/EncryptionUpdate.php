@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ namespace Magento\Sales\Model\ResourceModel\Order\Payment;
  */
 class EncryptionUpdate
 {
-    const LEGACY_PATTERN = '^[[:digit:]]+:[^%s]:.*$';
+    public const LEGACY_PATTERN = '^[[:digit:]]+:[^%s]:.*$';
 
     /**
      * @var \Magento\Sales\Model\ResourceModel\Order\Payment
@@ -52,7 +53,7 @@ class EncryptionUpdate
             )->limit(1000);
 
         while ($attributeValues = $connection->fetchPairs($select)) {
-                // save new values
+            // save new values
             foreach ($attributeValues as $valueId => $value) {
                 $connection->update(
                     $table,

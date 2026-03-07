@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\CatalogCustomer;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 class TierPricesForCustomersTest extends GraphQlAbstract
 {
@@ -41,13 +42,13 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $productSku = 'simple';
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
         $product = $productRepository->get($productSku, false, null, true);
-        $tierPriceData =[
+        $tierPriceData = [
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 8
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 8,
+            ],
         ];
 
         $this->saveTierPrices($product, $tierPriceData);
@@ -60,10 +61,10 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $expectedResponse = [
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 8
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 8,
+            ],
         ];
         $this->assertResponseFields($response['products']['items'][0]['tier_prices'], $expectedResponse);
         $this->assertCount(1, $response['products']['items'][0]['tier_prices']);
@@ -81,16 +82,16 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 3,
-                'value'=> 6
+                'percentage_value' => null,
+                'qty' => 3,
+                'value' => 6,
             ],
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 6,
-                'value'=> 7
-            ]
+                'percentage_value' => null,
+                'qty' => 6,
+                'value' => 7,
+            ],
         ];
 
         $this->saveTierPrices($product, $tierPriceData);
@@ -103,16 +104,16 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $expectedResponse = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 3,
-                'value'=> 6
+                'percentage_value' => null,
+                'qty' => 3,
+                'value' => 6,
             ],
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 6,
-                'value'=> 7
-            ]
+                'percentage_value' => null,
+                'qty' => 6,
+                'value' => 7,
+            ],
         ];
         $this->assertResponseFields($response['products']['items'][0]['tier_prices'], $expectedResponse);
         $this->assertCount(2, $response['products']['items'][0]['tier_prices']);
@@ -130,10 +131,10 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
-                'percentage_value'=> null,
-                'qty'=> 4,
-                'value'=> 6
-            ]
+                'percentage_value' => null,
+                'qty' => 4,
+                'value' => 6,
+            ],
         ];
 
         $this->saveTierPrices($product, $tierPriceData);
@@ -158,16 +159,16 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
-                'percentage_value'=> null,
-                'qty'=> 7,
-                'value'=> 6.5
+                'percentage_value' => null,
+                'qty' => 7,
+                'value' => 6.5,
             ],
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 6,
-                'value'=> 5
-            ]
+                'percentage_value' => null,
+                'qty' => 6,
+                'value' => 5,
+            ],
         ];
 
         $this->saveTierPrices($product, $tierPriceData);
@@ -180,10 +181,10 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $expectedResponse = [
             [
                 'customer_group_id' => 1,
-                'percentage_value'=> null,
-                'qty'=> 6,
-                'value'=> 5
-            ]
+                'percentage_value' => null,
+                'qty' => 6,
+                'value' => 5,
+            ],
         ];
         $this->assertResponseFields($response['products']['items'][0]['tier_prices'], $expectedResponse);
         $this->assertCount(1, $response['products']['items'][0]['tier_prices']);
@@ -201,9 +202,9 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 4,
-                'value'=> 6
+                'percentage_value' => null,
+                'qty' => 4,
+                'value' => 6,
             ],
 
         ];
@@ -218,10 +219,10 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $expectedResponse = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 4,
-                'value'=> 6
-            ]
+                'percentage_value' => null,
+                'qty' => 4,
+                'value' => 6,
+            ],
         ];
         $this->assertResponseFields($response['products']['items'][0]['tier_prices'], $expectedResponse);
         $this->assertCount(1, $response['products']['items'][0]['tier_prices']);
@@ -240,15 +241,15 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 8
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 8,
             ],
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
-                'percentage_value'=> null,
-                'qty'=> 4,
-                'value'=> 6.5
+                'percentage_value' => null,
+                'qty' => 4,
+                'value' => 6.5,
             ],
         ];
 
@@ -262,10 +263,10 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         $expectedResponse = [
             [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 8
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 8,
+            ],
         ];
         $this->assertResponseFields($response['products']['items'][0]['tier_prices'], $expectedResponse);
         $this->assertCount(1, $response['products']['items'][0]['tier_prices']);
@@ -284,7 +285,7 @@ class TierPricesForCustomersTest extends GraphQlAbstract
         foreach ($tierPriceData as $tierPrice) {
             $tierPrices[] = $tierPriceFactory->create(
                 [
-                'data' => $tierPrice
+                'data' => $tierPrice,
                 ]
             );
         }

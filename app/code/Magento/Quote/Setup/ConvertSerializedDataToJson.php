@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Setup;
 
 use Magento\Framework\DB\AggregatedFieldDataConverter;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
 use Magento\Framework\DB\FieldToConvert;
-use Magento\Framework\DB\Select\QueryModifierFactory;
 use Magento\Framework\DB\Query\Generator;
+use Magento\Framework\DB\Select\QueryModifierFactory;
 
 /**
  * Convert serialized data in quote tables to JSON
@@ -76,8 +79,8 @@ class ConvertSerializedDataToJson
                         'bundle_option_ids',
                         'bundle_selection_ids',
                         'bundle_selection_attributes',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $this->aggregatedFieldConverter->convert(
@@ -135,8 +138,8 @@ class ConvertSerializedDataToJson
                 'in',
                 [
                     'values' => [
-                        'code' => $codes
-                    ]
+                        'code' => $codes,
+                    ],
                 ]
             );
             $this->aggregatedFieldConverter->convert(

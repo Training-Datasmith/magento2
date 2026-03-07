@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -48,7 +51,7 @@ class TMapFactory
                 [
                     'objectCreationStrategy' => function (ObjectManagerInterface $om, $objectName) {
                         return $om->get($objectName);
-                    }
+                    },
                 ]
             )
         );

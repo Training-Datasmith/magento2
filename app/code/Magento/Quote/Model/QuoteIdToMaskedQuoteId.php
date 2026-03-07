@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class QuoteIdToMaskedQuoteId implements QuoteIdToMaskedQuoteIdInterface
                     'No such entity with %fieldName = %fieldValue',
                     [
                         'fieldName' => 'quoteId',
-                        'fieldValue' => $quoteId
+                        'fieldValue' => $quoteId,
                     ]
                 )
             );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class CookieSameSiteValidator extends \Magento\Framework\Validator\AbstractValid
     private const SAME_SITE_ALLOWED_VALUES = [
         'strict',
         'lax',
-        'none'
+        'none',
     ];
 
     /**

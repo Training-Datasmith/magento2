@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Tax\Test\Unit\Observer;
 
-use Magento\Bundle\Model\ResourceModel\Selection\Collection;
 use Magento\Bundle\Model\Product\Type as BundleProductType;
+use Magento\Bundle\Model\ResourceModel\Selection\Collection;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Pricing\Price\BasePrice;
@@ -182,7 +183,7 @@ class GetPriceConfigurationObserverTest extends TestCase
     public static function getPriceConfigurationProvider(): array
     {
         return [
-            "basic" => [
+            'basic' => [
                 'testArray' => [
                     [
                         [

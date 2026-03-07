@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder;
 
 use Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\AttributeOptionProvider;
+use Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Formatter\LayerFormatter;
 use Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\LayerBuilderInterface;
+use Magento\Config\Model\Config\Source\Yesno;
 use Magento\Framework\Api\Search\AggregationInterface;
 use Magento\Framework\Api\Search\AggregationValueInterface;
 use Magento\Framework\Api\Search\BucketInterface;
-use Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Formatter\LayerFormatter;
-use Magento\Config\Model\Config\Source\Yesno;
 
 /**
  * @inheritdoc
@@ -49,7 +50,7 @@ class Attribute implements LayerBuilderInterface
      */
     private $bucketNameFilter = [
         self::PRICE_BUCKET,
-        self::CATEGORY_BUCKET
+        self::CATEGORY_BUCKET,
     ];
 
     /**

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,7 +17,6 @@ use Magento\Checkout\Model\ResourceModel\Cart as CartResourceModel;
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Module\Manager;
-use Magento\Framework\View\Element\AbstractBlock;
 
 /**
  * Catalog product related items block

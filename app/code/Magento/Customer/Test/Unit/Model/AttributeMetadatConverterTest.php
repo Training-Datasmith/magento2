@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class AttributeMetadatConverterTest extends TestCase
     {
         return [
             'one' => 'numeric',
-            'two' => 'alphanumeric'
+            'two' => 'alphanumeric',
         ];
     }
 
@@ -106,13 +107,13 @@ class AttributeMetadatConverterTest extends TestCase
             [
                 'label' => 'few_values',
                 'value' => [
-                    [1], [2]
-                ]
+                    [1], [2],
+                ],
             ],
             [
                 'label' => 'one_value',
-                'value' => 1
-            ]
+                'value' => 1,
+            ],
         ];
     }
 

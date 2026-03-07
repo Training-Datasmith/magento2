@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax rate resource model
  */
+
 namespace Magento\Tax\Model\ResourceModel\Calculation;
 
 class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb

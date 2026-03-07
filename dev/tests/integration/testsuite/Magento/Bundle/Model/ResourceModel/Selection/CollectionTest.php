@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -54,8 +55,8 @@ class CollectionTest extends \Magento\Bundle\Model\Product\BundlePriceAbstract
         return [
             'Dynamic bundle product with three Simple products' => [
                 'strategy' => self::getBundleConfiguration(),
-                'expectedCount' => 1
-            ]
+                'expectedCount' => 1,
+            ],
         ];
     }
 
@@ -85,14 +86,14 @@ class CollectionTest extends \Magento\Bundle\Model\Product\BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }

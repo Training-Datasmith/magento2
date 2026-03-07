@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ declare(strict_types=1);
 namespace Magento\CustomerImportExport\Model\Import;
 
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\ImportExport\Model\Import\Source\CsvFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;

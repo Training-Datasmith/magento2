@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Api\Data;
 
 /**
@@ -12,5 +15,5 @@ namespace Magento\Downloadable\Api\Data;
  */
 interface ProductAttributeInterface extends \Magento\Catalog\Api\Data\ProductAttributeInterface
 {
-    const CODE_IS_DOWNLOADABLE = 'is_downloadable';
+    public const CODE_IS_DOWNLOADABLE = 'is_downloadable';
 }

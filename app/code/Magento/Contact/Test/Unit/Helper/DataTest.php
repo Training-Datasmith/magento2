@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class DataTest extends TestCase
             [
                 'context' => $contextMock,
                 'customerSession' => $this->customerSessionMock,
-                'customerViewHelper' => $this->customerViewHelperMock
+                'customerViewHelper' => $this->customerViewHelperMock,
             ]
         );
     }
@@ -178,7 +179,7 @@ class DataTest extends TestCase
     {
         $postDataStub = [
             'name' => 'Some Name',
-            'email' => 'Some Email'
+            'email' => 'Some Email',
         ];
 
         $dataPersistorMock = $this->createMock(DataPersistorInterface::class);

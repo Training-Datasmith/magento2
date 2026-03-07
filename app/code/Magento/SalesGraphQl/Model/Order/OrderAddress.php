@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class OrderAddress
                 'telephone' => $orderAddress->getTelephone(),
                 'vat_id' => $orderAddress->getVatId(),
                 'region_id' => $orderAddress->getRegionId(),
-                'region' => $orderAddress->getRegion()
+                'region' => $orderAddress->getRegion(),
             ];
     }
 }

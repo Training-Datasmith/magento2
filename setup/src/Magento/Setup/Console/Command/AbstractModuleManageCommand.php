@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
-use Magento\Framework\Code\GeneratedFiles;
-use Magento\Setup\Model\ObjectManagerProvider;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Module\Status;
+use Magento\Framework\Code\GeneratedFiles;
 use Magento\Framework\Console\Cli;
+use Magento\Framework\Module\Status;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class AbstractModuleManageCommand extends AbstractModuleCommand
 {
@@ -93,7 +95,7 @@ abstract class AbstractModuleManageCommand extends AbstractModuleCommand
                 $constraints = $this->getStatus()->checkConstraints($isEnable, $modulesToChange);
                 if ($constraints) {
                     $output->writeln(
-                        "<error>Unable to change status of modules because of the following constraints:</error>"
+                        '<error>Unable to change status of modules because of the following constraints:</error>'
                     );
                     $output->writeln('<error>' . implode("</error>\n<error>", $constraints) . '</error>');
                     // we must have an exit code higher than zero to indicate something was wrong

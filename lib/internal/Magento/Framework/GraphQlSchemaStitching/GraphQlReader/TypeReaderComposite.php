@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class TypeReaderComposite implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         foreach ($this->typeReaders as $typeReader) {
             $result = $typeReader->read($typeMeta);

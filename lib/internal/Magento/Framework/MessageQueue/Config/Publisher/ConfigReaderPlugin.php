@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Config\Publisher;
 
 use Magento\Framework\MessageQueue\ConfigInterface;
@@ -59,9 +62,9 @@ class ConfigReaderPlugin
                 'connection' => [
                     'name' => $this->config->getConnectionByTopic($topic),
                     'exchange' => $bindingConfig['exchange'],
-                    'disabled' => false
+                    'disabled' => false,
                 ],
-                'disabled' => false
+                'disabled' => false,
             ];
         }
 

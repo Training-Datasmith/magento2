@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Swatches\Test\Unit\Model;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
-use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Swatches\Helper\Data;
 use Magento\Swatches\Model\AttributesList;
@@ -85,8 +85,8 @@ class AttributesListTest extends TestCase
                 'label' => 'label',
                 'code' => 'code',
                 'options' => ['options'],
-                'canCreateOption' => false
-            ]
+                'canCreateOption' => false,
+            ],
         ];
 
         $this->collectionMock

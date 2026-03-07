@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Tax\Test\Unit\Controller\Adminhtml\Rate;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\ManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Backend\App\Action\Context;
-use PHPUnit\Framework\TestCase;
-use Magento\Tax\Controller\Adminhtml\Rate\MassDelete;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
+use Magento\Tax\Controller\Adminhtml\Rate\MassDelete;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class MassDeleteTest extends TestCase

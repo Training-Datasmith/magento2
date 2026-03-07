@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,18 +8,15 @@
 
 namespace Magento\AsynchronousOperations\Model;
 
+use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory;
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\AsynchronousOperations\Api\SaveMultipleOperationsInterface;
-use Magento\AsynchronousOperations\Model\BulkStatus;
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory;
 use Magento\Framework\EntityManager\EntityManager;
 
 class SaveMultipleOperationsTest extends \PHPUnit\Framework\TestCase
 {
-
-    private const BULK_UUID = "bulk-uuid-multiple-0";
+    private const BULK_UUID = 'bulk-uuid-multiple-0';
 
     /**
      * @var BulkStatus
@@ -77,7 +76,7 @@ class SaveMultipleOperationsTest extends \PHPUnit\Framework\TestCase
         $bulkSummary = $this->bulkSummaryFactory->create();
         $this->entityManager->load($bulkSummary, self::BULK_UUID);
         $bulkSummary->setBulkId(self::BULK_UUID);
-        $bulkSummary->setDescription("Test Bulk");
+        $bulkSummary->setDescription('Test Bulk');
         $bulkSummary->setUserId(1);
         $bulkSummary->setUserType(1);
         $bulkSummary->setOperationCount(count($operations));
@@ -100,14 +99,14 @@ class SaveMultipleOperationsTest extends \PHPUnit\Framework\TestCase
             'entity_link'      => '',
             'meta_information' => json_encode([
                 'entity_id' => 5,
-                'meta_information' => 'Test'
-            ])
+                'meta_information' => 'Test',
+            ]),
         ];
 
         $data = [
             'data' => [
                 OperationInterface::BULK_ID         => self::BULK_UUID,
-                OperationInterface::TOPIC_NAME      => "topic-4",
+                OperationInterface::TOPIC_NAME      => 'topic-4',
                 OperationInterface::SERIALIZED_DATA => json_encode($serializedData),
                 OperationInterface::STATUS          => OperationInterface::STATUS_TYPE_OPEN,
             ],

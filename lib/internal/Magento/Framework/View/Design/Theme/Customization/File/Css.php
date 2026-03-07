@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme\Customization\File;
 
 /**
@@ -13,9 +16,9 @@ class Css extends \Magento\Framework\View\Design\Theme\Customization\AbstractFil
     /**#@+
      * CSS file customization types
      */
-    const TYPE = 'css';
+    public const TYPE = 'css';
 
-    const CONTENT_TYPE = 'css';
+    public const CONTENT_TYPE = 'css';
 
     /**#@-*/
 

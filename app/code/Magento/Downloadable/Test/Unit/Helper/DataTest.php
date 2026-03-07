@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Helper\Data;
 use Magento\Downloadable\Model\Link;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

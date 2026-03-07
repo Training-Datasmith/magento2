@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class DepthCalculatorTest extends TestCase
         $inlineFragmentNode->selectionSet = $selectionSetNode;
         return new NodeList([
             $this->getNewFieldNode(),
-            $inlineFragmentNode
+            $inlineFragmentNode,
         ]);
     }
 
@@ -109,7 +110,7 @@ class DepthCalculatorTest extends TestCase
         $inlineFragmentNode->selectionSet = $selectionSetNode;
         return new NodeList([
             $newFieldNode,
-            $inlineFragmentNode
+            $inlineFragmentNode,
         ]);
     }
 

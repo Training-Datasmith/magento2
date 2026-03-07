@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Shipment view form
  */
+
 namespace Magento\Shipping\Block\Adminhtml\View;
 
 use Magento\Framework\App\ObjectManager;
@@ -94,7 +97,7 @@ class Form extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder
             [
                 'label' => __('Create Shipping Label...'),
                 'onclick' => 'packaging.showWindow();',
-                'class' => 'action-create-label'
+                'class' => 'action-create-label',
             ]
         )->toHtml();
     }

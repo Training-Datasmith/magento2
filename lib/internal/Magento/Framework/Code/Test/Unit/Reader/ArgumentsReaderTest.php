@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Reader;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Code\Reader\ArgumentsReader;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/_files/ClassesForArgumentsReader.php';
 class ArgumentsReaderTest extends TestCase
@@ -266,7 +269,7 @@ class ArgumentsReaderTest extends TestCase
             $class,
             [
                 'stdClassObject' => ['type' => '\stdClass'],
-                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType']
+                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType'],
             ]
         );
         $expectedResult = [
@@ -274,13 +277,13 @@ class ArgumentsReaderTest extends TestCase
                 'name' => 'stdClassObject',
                 'position' => 0,
                 'type' => '\stdClass',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
             [
                 'name' => 'secondClass',
                 'position' => 1,
                 'type' => '\ClassExtendsDefaultPhpType',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
@@ -293,7 +296,7 @@ class ArgumentsReaderTest extends TestCase
             $class,
             [
                 'stdClassObject' => ['type' => '\stdClass'],
-                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType']
+                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType'],
             ]
         );
         $expectedResult = [
@@ -306,7 +309,7 @@ class ArgumentsReaderTest extends TestCase
                 'name' => 'stdClassObject',
                 'position' => 1,
                 'type' => '\stdClass',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
@@ -319,7 +322,7 @@ class ArgumentsReaderTest extends TestCase
             $class,
             [
                 'stdClassObject' => ['type' => '\stdClass'],
-                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType']
+                'secondClass' => ['type' => '\ClassExtendsDefaultPhpType'],
             ]
         );
         $expectedResult = [
@@ -327,13 +330,13 @@ class ArgumentsReaderTest extends TestCase
                 'name' => 'stdClassObject',
                 'position' => 0,
                 'type' => '\stdClass',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
             [
                 'name' => 'secondClass',
                 'position' => 1,
                 'type' => '\ClassExtendsDefaultPhpType',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
@@ -346,7 +349,7 @@ class ArgumentsReaderTest extends TestCase
             $class,
             [
                 'stdClassObject' => ['type' => '\stdClass'],
-                'runeTimeException' => ['type' => '\ClassExtendsDefaultPhpType']
+                'runeTimeException' => ['type' => '\ClassExtendsDefaultPhpType'],
             ]
         );
         $expectedResult = [
@@ -354,13 +357,13 @@ class ArgumentsReaderTest extends TestCase
                 'name' => 'stdClassObject',
                 'position' => 0,
                 'type' => '\stdClass',
-                'isNamedArgument' => true
+                'isNamedArgument' => true,
             ],
             [
                 'name' => 'runeTimeException',
                 'position' => 1,
                 'type' => '\ClassExtendsDefaultPhpType',
-                'isNamedArgument' => true
+                'isNamedArgument' => true,
             ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
@@ -373,7 +376,7 @@ class ArgumentsReaderTest extends TestCase
             $class,
             [
                 'stdClassObject' => ['type' => '\stdClass'],
-                'runeTimeException' => ['type' => '\ClassExtendsDefaultPhpType']
+                'runeTimeException' => ['type' => '\ClassExtendsDefaultPhpType'],
             ]
         );
         $expectedResult = [
@@ -381,13 +384,13 @@ class ArgumentsReaderTest extends TestCase
                 'name' => 'stdClassObject',
                 'position' => 0,
                 'type' => '\stdClass',
-                'isNamedArgument' => false
+                'isNamedArgument' => false,
             ],
             [
                 'name' => 'runeTimeException',
                 'position' => 1,
                 'type' => '\ClassExtendsDefaultPhpType',
-                'isNamedArgument' => true
+                'isNamedArgument' => true,
             ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
@@ -415,7 +418,7 @@ class ArgumentsReaderTest extends TestCase
             [null, null, true],
             [null, 'array', true],
             ['\ClassWithAllArgumentTypes', '\ClassWithoutOwnConstruct', true],
-            ['\ClassWithoutOwnConstruct', '\ClassWithAllArgumentTypes', false]
+            ['\ClassWithoutOwnConstruct', '\ClassWithAllArgumentTypes', false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ExistingValidate extends ValidatorChain
         $result = true;
         $fileInfo = null;
         if ($originalName) {
-            $fileInfo = ['name' => $originalName, 'tmp_name'=> $value];
+            $fileInfo = ['name' => $originalName, 'tmp_name' => $value];
         }
         $messagesArray = $errorsArray = [];
 

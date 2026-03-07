@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\SalesRule\Test\Unit\Block\Adminhtml\Promo\Quote\Edit;
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Escaper;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\DeleteButton;
 use Magento\SalesRule\Model\RegistryConstants;
@@ -83,7 +83,7 @@ class DeleteButtonTest extends TestCase
         $ruleMock->expects($this->once())
             ->method('getId')
             ->willReturn($ruleId);
-        
+
         $this->registryMock->expects($this->once())
             ->method('registry')
             ->with(RegistryConstants::CURRENT_SALES_RULE)
@@ -124,13 +124,13 @@ class DeleteButtonTest extends TestCase
         $contextMockForTest = $this->createMock(Context::class);
         $contextMockForTest->expects($this->any())->method('getUrlBuilder')->willReturn($this->urlBuilderMock);
         $contextMockForTest->expects($this->once())->method('getEscaper')->willReturn($this->escaperMock);
-        
+
         // Test that the constructor calls context->getEscaper()
         $deleteButton = new DeleteButton(
             $contextMockForTest,
             $this->registryMock
         );
-        
+
         // Verify the button was created successfully
         $this->assertInstanceOf(DeleteButton::class, $deleteButton);
     }

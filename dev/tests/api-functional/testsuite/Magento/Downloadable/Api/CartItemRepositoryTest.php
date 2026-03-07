@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CartItemRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCartItemRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCartItemRepositoryV1';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -58,10 +61,10 @@ class CartItemRepositoryTest extends WebapiAbstract
                 'product_option' => [
                     'extension_attributes' => [
                         'downloadable_option' => [
-                            'downloadable_links' => [$linkId]
-                        ]
-                    ]
-                ]
+                            'downloadable_links' => [$linkId],
+                        ],
+                    ],
+                ],
             ],
         ];
         $response = $this->_webApiCall($serviceInfo, $requestData);
@@ -115,10 +118,10 @@ class CartItemRepositoryTest extends WebapiAbstract
                 'product_option' => [
                     'extension_attributes' => [
                         'downloadable_option' => [
-                            'downloadable_links' => [$linkId]
-                        ]
-                    ]
-                ]
+                            'downloadable_links' => [$linkId],
+                        ],
+                    ],
+                ],
             ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
@@ -161,10 +164,10 @@ class CartItemRepositoryTest extends WebapiAbstract
                 'product_option' => [
                     'extension_attributes' => [
                         'downloadable_option' => [
-                            'downloadable_links' => [$linkId]
-                        ]
-                    ]
-                ]
+                            'downloadable_links' => [$linkId],
+                        ],
+                    ],
+                ],
             ],
         ];
         $response = $this->_webApiCall($serviceInfo, $requestData);
@@ -219,10 +222,10 @@ class CartItemRepositoryTest extends WebapiAbstract
                 'product_option' => [
                     'extension_attributes' => [
                         'downloadable_option' => [
-                            'downloadable_links' => [$linkId]
-                        ]
-                    ]
-                ]
+                            'downloadable_links' => [$linkId],
+                        ],
+                    ],
+                ],
             ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
@@ -255,10 +258,10 @@ class CartItemRepositoryTest extends WebapiAbstract
             'product_option' => [
                 'extension_attributes' => [
                     'downloadable_option' => [
-                        'downloadable_links' => [$linkId]
-                    ]
-                ]
-            ]
+                        'downloadable_links' => [$linkId],
+                    ],
+                ],
+            ],
         ]];
 
         $serviceInfo = [
@@ -273,7 +276,7 @@ class CartItemRepositoryTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $this->assertEquals($expectedResult, $this->_webApiCall($serviceInfo, $requestData));
     }
 

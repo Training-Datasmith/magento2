@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Payment\Model\Method\Specification\Composite;
 use Magento\Payment\Model\Method\Specification\Factory;
 use Magento\Payment\Model\Method\SpecificationInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CompositeTest extends TestCase
 {
@@ -85,7 +86,7 @@ class CompositeTest extends TestCase
 
         $this->factoryMock
             ->method('create')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['SpecificationFirst'] =>  $specificationFirst,
                 ['SpecificationSecond'] => $specificationSecond
             });
@@ -108,7 +109,7 @@ class CompositeTest extends TestCase
             [true, true, true],
             [true, false, false],
             [false, true, false],
-            [false, false, false]
+            [false, false, false],
         ];
     }
 }

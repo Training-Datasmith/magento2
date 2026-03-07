@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,6 @@ use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Block\Qtyincrements;
 use Magento\CatalogInventory\Model\Stock\Item;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Template\Context;
@@ -55,18 +54,18 @@ class QtyincrementsTest extends TestCase
     protected function setUp(): void
     {
         $contextMock = $this->createMock(Context::class);
-        
+
         $this->registryMock = $this->createMock(Registry::class);
-        
+
         $this->stockItem = $this->createPartialMockWithReflection(
             Item::class,
             ['getStockItem', 'getQtyIncrements', 'setQtyIncrements']
         );
-        
+
         // Implement stateful behavior for QtyIncrements
         $qtyIncrements = null;
         $stockItemMock = $this->stockItem;
-        
+
         $this->stockItem->method('setQtyIncrements')->willReturnCallback(
             function ($val) use (&$qtyIncrements, $stockItemMock) {
                 $qtyIncrements = $val;
@@ -76,7 +75,7 @@ class QtyincrementsTest extends TestCase
         $this->stockItem->method('getQtyIncrements')->willReturnCallback(function () use (&$qtyIncrements) {
             return $qtyIncrements;
         });
-        
+
         $this->stockRegistry = $this->createMock(StockRegistryInterface::class);
         $this->stockRegistry->method('getStockItem')->willReturn($this->stockItem);
 

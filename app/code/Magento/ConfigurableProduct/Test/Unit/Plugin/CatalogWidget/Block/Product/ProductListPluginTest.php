@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,23 +10,23 @@ namespace Magento\ConfigurableProduct\Test\Unit\Plugin\CatalogWidget\Block\Produ
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Config;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogWidget\Block\Product\ProductsList;
 use Magento\ConfigurableProduct\Plugin\CatalogWidget\Block\Product\ProductsListPlugin;
+use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\DB\Select;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -167,7 +168,7 @@ class ProductListPluginTest extends TestCase
         $this->resource->expects($this->once())->method('getConnection')->willReturn($connection);
         $this->resource->expects($this->exactly(5))
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['catalog_product_entity'] => 'catalog_product_entity',
                 ['catalog_product_super_link'] => 'catalog_product_super_link',
                 default => $param

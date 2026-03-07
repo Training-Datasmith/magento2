@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class SaveHandlerTest extends TestCase
         $entityData = [
             $linkedField => $entityId,
             'website_ids' => $websiteIds,
-            'customer_group_ids' => $customerGroupIds
+            'customer_group_ids' => $customerGroupIds,
         ];
 
         $metadataMock = $this->createPartialMock(
@@ -77,9 +78,9 @@ class SaveHandlerTest extends TestCase
             ->willReturnCallback(function ($arg1, $arg2, $arg3) use ($entityId, $websiteIds, $customerGroupIds) {
                 $websiteIds = explode(',', (string) $websiteIds);
                 $customerGroupIds = explode(',', (string)$customerGroupIds);
-                if ($arg1== $entityId && $arg2== $websiteIds && $arg3 == 'website') {
+                if ($arg1 == $entityId && $arg2 == $websiteIds && $arg3 == 'website') {
                     return $this->resourceMock;
-                } elseif ($arg1== $entityId && $arg2== $customerGroupIds && $arg3 == 'customer_group') {
+                } elseif ($arg1 == $entityId && $arg2 == $customerGroupIds && $arg3 == 'customer_group') {
                     return $this->resourceMock;
                 }
             });

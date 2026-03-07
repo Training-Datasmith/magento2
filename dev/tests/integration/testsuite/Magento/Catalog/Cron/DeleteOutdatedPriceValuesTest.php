@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Cron;
 
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Observer\SwitchPriceAttributeScopeOnConfigChange;
 use Magento\Framework\App\Config\MutableScopeConfigInterface;

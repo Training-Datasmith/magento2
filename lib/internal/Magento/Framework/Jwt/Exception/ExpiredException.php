@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class ExpiredException extends JwtException
     public function __construct(
         ?int $expiresAt = null,
         ?int $activeFrom = null,
-        $message = "JWT has expired/not active yet",
+        $message = 'JWT has expired/not active yet',
         ?\Throwable $previous = null
     ) {
         parent::__construct($message, 0, $previous);

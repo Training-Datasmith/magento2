@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Downloadable\Test\Fixture;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Test\Fixture\Product;
+use Magento\Downloadable\Api\DomainManagerInterface;
 use Magento\Downloadable\Model\Link;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -19,7 +21,6 @@ use Magento\Framework\Filesystem\Io\File;
 use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
-use Magento\Downloadable\Api\DomainManagerInterface;
 
 class DownloadableProduct extends Product
 {
@@ -40,7 +41,7 @@ class DownloadableProduct extends Product
                 'is_in_stock' => true,
             ],
             'downloadable_product_links' => [],
-            'downloadable_product_samples' => null
+            'downloadable_product_samples' => null,
         ],
     ];
 
@@ -167,7 +168,7 @@ class DownloadableProduct extends Product
                 $subDir
             );
             $this->file->checkAndCreateFolder($mediaPath);
-            $this->file->write(sprintf('%s/%s', $mediaPath, $fileName), "This is a temporary text file.");
+            $this->file->write(sprintf('%s/%s', $mediaPath, $fileName), 'This is a temporary text file.');
 
             return sprintf('/%s/%s', $subDir, $fileName);
         } catch (FileSystemException $e) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class VarcharAttributeTest extends AbstractEavTest
             'scopeLabel' => '[GLOBAL]',
             'globalScope' => true,
             'sortOrder' => '__placeholder__',
-            'componentType' => 'field'
+            'componentType' => 'field',
         ];
     }
 }

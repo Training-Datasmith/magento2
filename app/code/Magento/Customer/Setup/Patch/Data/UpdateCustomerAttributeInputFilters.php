@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,24 +49,24 @@ class UpdateCustomerAttributeInputFilters implements DataPatchInterface, PatchVe
         $entityAttributes = [
             'customer_address' => [
                 'firstname' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
                 'lastname' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
                 'middlename' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
             ],
             'customer' => [
                 'firstname' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
                 'lastname' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
                 'middlename' => [
-                    'input_filter' => 'trim'
+                    'input_filter' => 'trim',
                 ],
             ],
         ];

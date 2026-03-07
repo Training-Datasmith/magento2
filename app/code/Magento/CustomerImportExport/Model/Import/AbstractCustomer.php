@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\CustomerImportExport\Model\Import;
 
+use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\Storage;
 use Magento\Framework\Validator\EmailAddress;
 use Magento\Framework\Validator\ValidateException;
 use Magento\Framework\Validator\ValidatorChain;
 use Magento\ImportExport\Model\Import;
-use Magento\CustomerImportExport\Model\ResourceModel\Import\Customer\Storage;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**

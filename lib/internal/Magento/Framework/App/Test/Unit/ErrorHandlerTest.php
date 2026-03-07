@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ErrorHandlerTest extends TestCase
     {
         return [
             [0, 'DateTimeZone::__construct', 0, false],
-            [0, 0, 0, false]
+            [0, 0, 0, false],
         ];
     }
 
@@ -79,7 +80,7 @@ class ErrorHandlerTest extends TestCase
             [E_RECOVERABLE_ERROR, 'Recoverable Error'],
             [E_DEPRECATED, 'Deprecated Functionality'],
             [E_USER_DEPRECATED, 'User Deprecated Functionality'],
-            ['42', 'Unknown error (42)']
+            ['42', 'Unknown error (42)'],
         ];
     }
 }

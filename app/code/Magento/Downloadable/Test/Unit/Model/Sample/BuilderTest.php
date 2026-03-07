@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class BuilderTest extends TestCase
                 'downloadableFile' => $this->downloadFileMock,
                 'objectCopyService' => $this->objectCopyServiceMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
-                'componentFactory' => $this->mockComponentFactory
+                'componentFactory' => $this->mockComponentFactory,
             ]
         );
     }
@@ -83,7 +84,7 @@ class BuilderTest extends TestCase
         $data = [
             'file' => 'cXVlIHRhbA==',
             'use_default_title' => '1',
-            'type' => 'file'
+            'type' => 'file',
         ];
         $downloadableData = ['sort_order' => 1];
         $baseTmpPath = 'l/2/e/f/gm';

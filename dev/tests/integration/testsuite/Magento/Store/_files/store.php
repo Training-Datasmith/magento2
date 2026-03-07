@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Create fixture store with code test
  *

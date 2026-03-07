@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class CollectionProvider implements \Magento\Catalog\Model\Layer\ItemCollectionP
      * @return Collection
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getCollection(\Magento\Catalog\Model\Category $category) : Collection
+    public function getCollection(\Magento\Catalog\Model\Category $category): Collection
     {
         if (!$this->collection) {
             $this->collection = $this->collectionFactory->create();

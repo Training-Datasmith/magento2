@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +10,10 @@ namespace Magento\Weee\Pricing;
 
 use Magento\Catalog\Pricing\Price\CustomOptionPriceInterface;
 use Magento\Framework\Pricing\Adjustment\AdjustmentInterface;
-use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Weee\Helper\Data as WeeeHelper;
+use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Tax\Helper\Data as TaxHelper;
+use Magento\Weee\Helper\Data as WeeeHelper;
 
 /**
  * Weee tax pricing adjustment
@@ -21,7 +23,7 @@ class TaxAdjustment implements AdjustmentInterface
     /**
      * Adjustment code weee
      */
-    const ADJUSTMENT_CODE = 'weee_tax';
+    public const ADJUSTMENT_CODE = 'weee_tax';
 
     /**
      * Weee helper

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\JwtUserToken\Model\ResourceModel;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\JwtUserToken\Api\RevokedRepositoryInterface;
 use Magento\JwtUserToken\Api\Data\Revoked;
+use Magento\JwtUserToken\Api\RevokedRepositoryInterface;
 
 /**
  * DB repo.

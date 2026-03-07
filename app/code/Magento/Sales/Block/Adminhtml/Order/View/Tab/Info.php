@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\View\Tab;
 
 /**
@@ -44,7 +47,7 @@ class Info extends \Magento\Sales\Block\Adminhtml\Order\AbstractOrder implements
         return [
             'can_display_total_due' => true,
             'can_display_total_paid' => true,
-            'can_display_total_refunded' => true
+            'can_display_total_refunded' => true,
         ];
     }
 

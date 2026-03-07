@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Url;
 
 use Magento\Framework\View\Url\CssResolver;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CssResolverTest extends TestCase
 {
@@ -57,7 +58,7 @@ class CssResolverTest extends TestCase
         return [
             'empty' => ['', ''],
             'data without patterns' => [$sourceNoImport, $sourceNoImport],
-            'data with patterns' => [$source, $result]
+            'data with patterns' => [$source, $result],
         ];
     }
 
@@ -86,7 +87,7 @@ class CssResolverTest extends TestCase
         return [
             'empty' => ['', '\Magento\Framework\View\Test\Unit\Url\CssResolverTest::doNothing', ''],
             'data without patterns' => [$sourceNoPatterns, $callback, $sourceNoPatterns],
-            'data with patterns' => [$source, $callback, $result]
+            'data with patterns' => [$source, $callback, $result],
         ];
     }
 

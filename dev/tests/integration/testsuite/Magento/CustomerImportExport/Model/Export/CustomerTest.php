@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,18 +8,18 @@
 
 namespace Magento\CustomerImportExport\Model\Export;
 
-use Magento\Framework\Locale\ResolverInterface as LocaleResolver;
 use Magento\Customer\Model\Attribute;
-use Magento\ImportExport\Model\Export;
-use Magento\ImportExport\Model\Import;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\ImportExport\Model\Export\Adapter\Csv;
 use Magento\Customer\Model\Customer as CustomerModel;
 use Magento\Customer\Model\ResourceModel\Attribute\Collection;
 use Magento\Customer\Model\ResourceModel\Customer\Collection as CustomerCollection;
+use Magento\Framework\Locale\ResolverInterface as LocaleResolver;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\ImportExport\Model\Export;
+use Magento\ImportExport\Model\Export\Adapter\Csv;
+use Magento\ImportExport\Model\Import;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

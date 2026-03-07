@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class GuestCouponManagementTest extends TestCase
         //phpcs:disable
         $this->httpClient->nextResponses(
             [
-                new Response(200, [], file_get_contents(__DIR__ . '/../Fixtures/rates_response.xml'))
+                new Response(200, [], file_get_contents(__DIR__ . '/../Fixtures/rates_response.xml')),
             ]
         );
         //phpcs:enable

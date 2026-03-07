@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Framework\Amqp;
 
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\MessageQueue\EnvelopeInterface;
 use Magento\Framework\MessageQueue\ExchangeInterface;
-use PhpAmqpLib\Message\AMQPMessage;
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfigInterface;
 use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
 use Magento\Framework\MessageQueue\Rpc\ResponseQueueNameBuilder;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * Class message exchange.
@@ -22,7 +24,7 @@ use Magento\Framework\MessageQueue\Rpc\ResponseQueueNameBuilder;
  */
 class Exchange implements ExchangeInterface
 {
-    const RPC_CONNECTION_TIMEOUT = 30;
+    public const RPC_CONNECTION_TIMEOUT = 30;
 
     /**
      * @var Config
@@ -119,8 +121,8 @@ class Exchange implements ExchangeInterface
                 } catch (\PhpAmqpLib\Exception\AMQPTimeoutException $e) {
                     throw new LocalizedException(
                         new \Magento\Framework\Phrase(
-                            "The RPC (Remote Procedure Call) failed. The connection timed out after %time_out. "
-                            . "Please try again later.",
+                            'The RPC (Remote Procedure Call) failed. The connection timed out after %time_out. '
+                            . 'Please try again later.',
                             ['time_out' => $this->rpcConnectionTimeout]
                         )
                     );

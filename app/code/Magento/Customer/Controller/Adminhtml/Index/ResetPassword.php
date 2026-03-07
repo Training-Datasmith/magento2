@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
@@ -21,7 +24,7 @@ class ResetPassword extends \Magento\Customer\Controller\Adminhtml\Index impleme
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::reset_password';
+    public const ADMIN_RESOURCE = 'Magento_Customer::reset_password';
 
     /**
      * Reset password handler

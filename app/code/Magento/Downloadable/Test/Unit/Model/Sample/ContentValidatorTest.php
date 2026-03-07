@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Sample;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Api\Data\File\ContentInterface;
 use Magento\Downloadable\Api\Data\SampleInterface;
 use Magento\Downloadable\Helper\File;
 use Magento\Downloadable\Model\Sample\ContentValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

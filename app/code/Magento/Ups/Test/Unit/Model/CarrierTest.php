@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,8 +21,6 @@ use Magento\Quote\Model\Quote\Address\RateResult\Error;
 use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
-use Magento\Shipping\Model\Simplexml\Element;
-use Magento\Shipping\Model\Simplexml\ElementFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Ups\Helper\Config;
 use Magento\Ups\Model\Carrier;
@@ -160,7 +159,7 @@ class CarrierTest extends TestCase
                 'rateFactory' => $rateFactory,
                 'logger' => $this->logger,
                 'httpClientFactory' => $httpClientFactory,
-                'configHelper' => $this->configHelper
+                'configHelper' => $this->configHelper,
             ]
         );
     }
@@ -183,7 +182,7 @@ class CarrierTest extends TestCase
             'carriers/ups/min_package_weight' => 2,
             'carriers/ups/debug' => 1,
             'carriers/ups/username' => 'user',
-            'carriers/ups/password' => 'pass'
+            'carriers/ups/password' => 'pass',
         ];
 
         return $pathMap[$path] ?? null;
@@ -250,7 +249,7 @@ class CarrierTest extends TestCase
             [3, self::PAID_METHOD_NAME, true, 0, 3],
             [3, self::PAID_METHOD_NAME, true, 0, 3],
             [3, self::PAID_METHOD_NAME, false, 0, 3],
-            [3, self::PAID_METHOD_NAME, false, 0, 3]
+            [3, self::PAID_METHOD_NAME, false, 0, 3],
         ];
     }
 
@@ -317,7 +316,7 @@ class CarrierTest extends TestCase
                     'dest_region_code' => 'NY',
                     'dest_postal' => '11236',
                     'dest_country' => 'US',
-                ]
+                ],
             ],
             [
                 [
@@ -335,7 +334,7 @@ class CarrierTest extends TestCase
                     'dest_region_code' => 'PR',
                     'dest_postal' => '00968',
                     'dest_country' => 'PR',
-                ]
+                ],
             ],
             [
                 [
@@ -353,7 +352,7 @@ class CarrierTest extends TestCase
                     'dest_region_code' => 'CA',
                     'dest_postal' => '90230',
                     'dest_country' => 'US',
-                ]
+                ],
             ],
         ];
     }
@@ -414,7 +413,7 @@ class CarrierTest extends TestCase
                     'shipper_address_state_or_province_code' => 'NY',
                     'shipper_address_postal_code' => '11236',
                     'shipper_address_country_code' => 'US',
-                ]
+                ],
             ],
             [
                 [
@@ -432,7 +431,7 @@ class CarrierTest extends TestCase
                     'shipper_address_state_or_province_code' => 'PR',
                     'shipper_address_postal_code' => '00968',
                     'shipper_address_country_code' => 'US',
-                ]
+                ],
             ],
             [
                 [
@@ -450,7 +449,7 @@ class CarrierTest extends TestCase
                     'shipper_address_state_or_province_code' => 'CA',
                     'shipper_address_postal_code' => '90230',
                     'shipper_address_country_code' => 'US',
-                ]
+                ],
             ],
         ];
     }
@@ -462,7 +461,7 @@ class CarrierTest extends TestCase
     public function getCountryById(?string $id): Country
     {
         $countries = [
-            'US' => 'US'
+            'US' => 'US',
         ];
         $countryMock = $this->getMockBuilder(Country::class)
             ->disableOriginalConstructor()
@@ -501,20 +500,20 @@ class CarrierTest extends TestCase
                         'carriers/ups/allowed_methods',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $allowedMethods
+                        $allowedMethods,
                     ],
                     [
                         'carriers/ups/type',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $carrierType
+                        $carrierType,
                     ],
                     [
                         'carriers/ups/origin_shipment',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        'Shipments Originating in United States'
-                    ]
+                        'Shipments Originating in United States',
+                    ],
                 ]
             );
         $this->configHelper->method('getCode')
@@ -536,7 +535,7 @@ class CarrierTest extends TestCase
                 '1DM',
                 'Next Day Air Early AM',
                 '',
-                []
+                [],
             ],
             [
                 'UPS',
@@ -544,7 +543,7 @@ class CarrierTest extends TestCase
                 '1DM',
                 'Next Day Air Early AM',
                 '1DM,1DML,1DA',
-                ['1DM' => 'Next Day Air Early AM']
+                ['1DM' => 'Next Day Air Early AM'],
             ],
             [
                 'UPS_XML',
@@ -552,7 +551,7 @@ class CarrierTest extends TestCase
                 '01',
                 'UPS Next Day Air',
                 '01,02,03',
-                ['01' => 'UPS Next Day Air']
+                ['01' => 'UPS Next Day Air'],
             ],
             [
                 'UPS_REST',
@@ -560,8 +559,8 @@ class CarrierTest extends TestCase
                 '03',
                 'UPS Ground',
                 '01,02,03',
-                ['03' => 'UPS Ground']
-            ]
+                ['03' => 'UPS Ground'],
+            ],
         ];
     }
 

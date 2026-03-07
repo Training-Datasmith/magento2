@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class TypeMetaWrapperReader
      * @param string $parameterType Argument|OutputField|InputField
      * @return array
      */
-    public function read(Type $meta, string $parameterType) : array
+    public function read(Type $meta, string $parameterType): array
     {
         $result = [];
         if ($meta instanceof NonNull) {

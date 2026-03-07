@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,7 +22,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
 use Magento\Tax\Helper\Data;
 use Magento\Tax\Model\Calculation;
@@ -191,7 +191,7 @@ class TaxTest extends TestCase
 
         $attribute->expects($this->once())
             ->method('getAttributeCodesByFrontendType')
-            ->willReturn(['0'=>'fpt']);
+            ->willReturn(['0' => 'fpt']);
 
         $this->storeManager->expects($this->any())
             ->method('getWebsite')
@@ -251,7 +251,7 @@ class TaxTest extends TestCase
             ->method('fetchWeeeTaxCalculationsByEntity')
             ->willReturn(
                 [
-                0 => $weeeTaxCalculationsByEntity
+                0 => $weeeTaxCalculationsByEntity,
                 ]
             );
 
@@ -281,10 +281,10 @@ class TaxTest extends TestCase
         $product->expects($this->any())->method('getPriceType')->willReturn($productPriceType);
         $weeeDataHelper1 = new DataObject();
         $weeeDataHelper1->setData('amount_excl_tax', 10);
-        
+
         $weeeDataHelper2 = new DataObject();
         $weeeDataHelper2->setData('amount_excl_tax', 30);
-        
+
         $tax = $this->createPartialMock(Tax::class, ['getProductWeeeAttributes']);
         $tax->expects($this->once())->method('getProductWeeeAttributes')
             ->willReturn([$weeeDataHelper1, $weeeDataHelper2]);
@@ -318,31 +318,31 @@ class TaxTest extends TestCase
                     'weee_value' => 1,
                     'label_value' => 'fpt_label',
                     'frontend_label' => 'fpt_label_frontend',
-                    'attribute_code' => 'fpt_code'
+                    'attribute_code' => 'fpt_code',
                 ],
                 'websitePassed' => 1,
-                'expectedFptLabel' => 'fpt_label'
+                'expectedFptLabel' => 'fpt_label',
             ],
             'store_label_not_defined' => [
                 'weeeTaxCalculationsByEntity' => [
                     'weee_value' => 1,
                     'label_value' => '',
                     'frontend_label' => 'fpt_label_frontend',
-                    'attribute_code' => 'fpt_code'
+                    'attribute_code' => 'fpt_code',
                 ],
                 'websitePassed' => 1,
-                'expectedFptLabel' => 'fpt_label_frontend'
+                'expectedFptLabel' => 'fpt_label_frontend',
             ],
             'website_not_passed' => [
                 'weeeTaxCalculationsByEntity' => [
                     'weee_value' => 1,
                     'label_value' => '',
                     'frontend_label' => 'fpt_label_frontend',
-                    'attribute_code' => 'fpt_code'
+                    'attribute_code' => 'fpt_code',
                 ],
                 'websitePassed' => null,
-                'expectedFptLabel' => 'fpt_label_frontend'
-            ]
+                'expectedFptLabel' => 'fpt_label_frontend',
+            ],
         ];
     }
 
@@ -353,14 +353,14 @@ class TaxTest extends TestCase
     {
         return [
             [
-                'bundle', 1
+                'bundle', 1,
             ],
             [
-                'simple', 0
+                'simple', 0,
             ],
             [
-                'simple', 1
-            ]
+                'simple', 1,
+            ],
         ];
     }
 }

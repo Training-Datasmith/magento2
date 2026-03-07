@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test for abstract export model
  */
+
 namespace Magento\ImportExport\Model\Export;
 
 class EntityAbstractTest extends \PHPUnit\Framework\TestCase
@@ -30,7 +33,7 @@ class EntityAbstractTest extends \PHPUnit\Framework\TestCase
                 $objectManager->get(\Magento\Framework\App\Config\ScopeConfigInterface::class),
                 $objectManager->get(\Magento\Store\Model\StoreManager::class),
                 $objectManager->get(\Magento\ImportExport\Model\Export\Factory::class),
-                $objectManager->get(\Magento\ImportExport\Model\ResourceModel\CollectionByPagesIteratorFactory::class)
+                $objectManager->get(\Magento\ImportExport\Model\ResourceModel\CollectionByPagesIteratorFactory::class),
             ])
             ->onlyMethods(['export', 'exportItem', 'getEntityTypeCode', '_getHeaderColumns', '_getEntityCollection'])
             ->getMock();

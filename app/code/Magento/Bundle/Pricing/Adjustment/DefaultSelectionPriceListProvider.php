@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,13 +9,13 @@
 namespace Magento\Bundle\Pricing\Adjustment;
 
 use Magento\Bundle\Model\Option;
-use Magento\Bundle\Pricing\Price\BundleSelectionFactory;
-use Magento\Catalog\Model\Product;
 use Magento\Bundle\Model\Product\Price;
+use Magento\Bundle\Pricing\Price\BundleSelectionFactory;
 use Magento\Catalog\Helper\Data as CatalogData;
+use Magento\Catalog\Model\Product;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Provide lightweight implementation which uses price index

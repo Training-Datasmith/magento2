@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -109,10 +110,10 @@ class GetCustomerAddressesV2Test extends GraphQlAbstract
                     'page_info' => [
                         'page_size' => 1,
                         'current_page' => 1,
-                        'total_pages' => 3
+                        'total_pages' => 3,
                     ],
-                    'total_count' => 3
-                ]
+                    'total_count' => 3,
+                ],
             ],
             'scenario_2' => [
                 'pageSize' => 2,
@@ -122,10 +123,10 @@ class GetCustomerAddressesV2Test extends GraphQlAbstract
                     'page_info' => [
                         'page_size' => 2,
                         'current_page' => 1,
-                        'total_pages' => 2
+                        'total_pages' => 2,
                     ],
-                    'total_count' => 3
-                ]
+                    'total_count' => 3,
+                ],
             ],
             'scenario_3' => [
                 'pageSize' => 2,
@@ -135,10 +136,10 @@ class GetCustomerAddressesV2Test extends GraphQlAbstract
                     'page_info' => [
                         'page_size' => 2,
                         'current_page' => 2,
-                        'total_pages' => 2
+                        'total_pages' => 2,
                     ],
-                    'total_count' => 3
-                ]
+                    'total_count' => 3,
+                ],
             ],
             'scenario_4' => [
                 'pageSize' => 3,
@@ -148,11 +149,11 @@ class GetCustomerAddressesV2Test extends GraphQlAbstract
                     'page_info' => [
                         'page_size' => 3,
                         'current_page' => 1,
-                        'total_pages' => 1
+                        'total_pages' => 1,
                     ],
-                    'total_count' => 3
-                ]
-            ]
+                    'total_count' => 3,
+                ],
+            ],
         ];
     }
 

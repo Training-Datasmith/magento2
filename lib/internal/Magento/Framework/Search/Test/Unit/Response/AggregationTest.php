@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class AggregationTest extends TestCase
     public function testGetIterator()
     {
         foreach ($this->aggregation as $bucket) {
-            $this->assertEquals($bucket->getName(), "1");
+            $this->assertEquals($bucket->getName(), '1');
             $this->assertEquals($bucket->getValues(), 1);
         }
     }

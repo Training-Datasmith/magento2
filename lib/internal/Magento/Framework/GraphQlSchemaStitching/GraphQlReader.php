@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching;
 
-use GraphQL\Type\Definition\ScalarType;
 use GraphQL\Utils\BuildSchema;
 use Magento\Framework\Config\FileResolverInterface;
 use Magento\Framework\Config\ReaderInterface;
@@ -161,7 +161,7 @@ class GraphQlReader implements ReaderInterface
         $totalKnownSymbolsCount = count($typesToRedoBatch) + count($types);
 
         $typesToUse = $typesToRedoBatch;
-        for ($i=0; $i < $totalKnownSymbolsCount; $i++) {
+        for ($i = 0; $i < $totalKnownSymbolsCount; $i++) {
             $changesMade = false;
             $schemaContent = implode("\n", $typesToUse);
             foreach ($types as $type => $schema) {
@@ -189,7 +189,7 @@ class GraphQlReader implements ReaderInterface
 
         $graphQlSchemaContent = $this->addPlaceHolderInSchema($graphQlSchemaContent);
 
-        $schema = BuildSchema::build($graphQlSchemaContent, null, ['assumeValid'=> true, 'assumeValidSDL' => true]);
+        $schema = BuildSchema::build($graphQlSchemaContent, null, ['assumeValid' => true, 'assumeValidSDL' => true]);
 
         foreach ($schema->getTypeMap() as $typeName => $typeMeta) {
             // Only process custom types and skip built-in object types
@@ -354,7 +354,7 @@ class GraphQlReader implements ReaderInterface
                 if (!empty($implementationsMatches)) {
                     $annotationString = ' @implements(interfaces: [';
                     foreach ($implementationsMatches[0] as $interfaceName) {
-                        $annotationString.= "\"{$interfaceName}\", ";
+                        $annotationString .= "\"{$interfaceName}\", ";
                     }
                     $annotationString = rtrim($annotationString, ', ');
                     $annotationString .= ']) ';

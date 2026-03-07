@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +9,12 @@
 /**
  * Test Skipped Subscriber
  */
+
 namespace Magento\TestFramework\Event;
 
-use PHPUnit\Event\Test\SkippedSubscriber;
-use PHPUnit\Event\Test\Skipped;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Event\Test\Skipped;
+use PHPUnit\Event\Test\SkippedSubscriber;
 
 class TestSkippedSubscriber implements SkippedSubscriber
 {

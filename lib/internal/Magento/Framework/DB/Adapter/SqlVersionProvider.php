@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class SqlVersionProvider
 
     public const MARIA_DB_11_4_VERSION = '11.4.';
 
-    public const MARIA_DB = "mariadb";
+    public const MARIA_DB = 'mariadb';
 
     /**#@-*/
 
@@ -114,7 +115,7 @@ class SqlVersionProvider
         if (empty($match)) {
             throw new ConnectionException(
                 sprintf(
-                    "Current version of RDBMS is not supported. Used Version: %s. Supported versions: %s",
+                    'Current version of RDBMS is not supported. Used Version: %s. Supported versions: %s',
                     $sqlVersionOutput,
                     implode(', ', array_keys($this->supportedVersionPatterns))
                 )

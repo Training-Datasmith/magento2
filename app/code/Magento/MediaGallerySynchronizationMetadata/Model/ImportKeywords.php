@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class ImportKeywords implements ImportFilesInterface
         foreach ($assets as $asset) {
             $assetKeywords[] = $this->assetKeywordsFactory->create([
                 'assetId' => $asset->getId(),
-                'keywords' => $keywords[$asset->getPath()]
+                'keywords' => $keywords[$asset->getPath()],
             ]);
         }
 
@@ -124,7 +125,7 @@ class ImportKeywords implements ImportFilesInterface
         foreach ($metadataKeywords as $keyword) {
             $keywords[] = $this->keywordFactory->create(
                 [
-                    'keyword' => $keyword
+                    'keyword' => $keyword,
                 ]
             );
         }

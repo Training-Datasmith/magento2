@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,15 +10,14 @@ namespace Magento\Indexer\Setup\Patch\Data;
 
 use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\Framework\Indexer\ConfigInterface;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Json\EncoderInterface;
-use Magento\Framework\Indexer\ConfigInterface;
-use Magento\Indexer\Model\ResourceModel\Indexer\State\CollectionFactory;
-use Magento\Indexer\Model\Indexer\State;
-use Magento\Indexer\Model\Indexer\StateFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Indexer\Model\Indexer\State;
+use Magento\Indexer\Model\Indexer\StateFactory;
+use Magento\Indexer\Model\ResourceModel\Indexer\State\CollectionFactory;
 
 /**
  * Class InitializeIndexerState

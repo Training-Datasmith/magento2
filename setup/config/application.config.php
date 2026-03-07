@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ return [
         ],
     ],
     'listeners' => [
-        InitParamListener::class
+        InitParamListener::class,
     ],
     'service_manager' => [
         'factories' => [
@@ -30,5 +32,5 @@ return [
             \Magento\Deploy\Console\InputValidator::class => MagentoDiFactory::class,
             \Magento\Framework\App\State::class => MagentoDiFactory::class,
         ],
-    ]
+    ],
 ];

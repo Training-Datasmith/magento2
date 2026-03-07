@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Observer\CmsPage;
 
 use Magento\Framework\Event\Observer;
@@ -36,7 +39,7 @@ class SaveGoogleExperimentScriptObserver extends \Magento\GoogleOptimizer\Observ
             'entity_type' => \Magento\GoogleOptimizer\Model\Code::ENTITY_TYPE_PAGE,
             'entity_id' => $this->_page->getId(),
             'store_id' => 0,
-            'experiment_script' => $this->_params['experiment_script']
+            'experiment_script' => $this->_params['experiment_script'],
         ];
     }
 }

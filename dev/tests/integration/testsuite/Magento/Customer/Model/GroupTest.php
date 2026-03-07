@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -95,18 +96,18 @@ class GroupTest extends TestCase
             'multibyte characters' => [
                 $multibyteString,
                 $multibyteString,
-                32
+                32,
             ],
             'normal characters' => [
                 $normalString,
                 $normalTruncatedString,
-                32
+                32,
             ],
             'mixed characters' => [
                 $mixedString,
                 $mixedString,
-                20
-            ]
+                20,
+            ],
         ];
     }
 }

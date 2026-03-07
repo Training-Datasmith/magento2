@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,7 +11,6 @@ namespace Magento\Theme\Setup\Patch\Data;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
 use Magento\Framework\DB\FieldDataConverterFactory;
 use Magento\Framework\DB\Select\QueryModifierFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -66,7 +67,7 @@ class ConvertSerializedData implements DataPatchInterface, PatchVersionInterface
     public static function getDependencies()
     {
         return [
-            RegisterThemes::class
+            RegisterThemes::class,
         ];
     }
 
@@ -98,8 +99,8 @@ class ConvertSerializedData implements DataPatchInterface, PatchVersionInterface
                 'values' => [
                     'path' => [
                         'design/theme/ua_regexp',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $fieldDataConverter->convert(

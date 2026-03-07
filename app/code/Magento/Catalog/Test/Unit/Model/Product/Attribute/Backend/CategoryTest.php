@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class CategoryTest extends TestCase
         $model->setAttribute($categoryAttribute);
 
         $model->afterLoad($product);
-        
+
         // Verify that the product data was set correctly
         $this->assertEquals($categoryIds, $product->getData('category_ids'));
     }

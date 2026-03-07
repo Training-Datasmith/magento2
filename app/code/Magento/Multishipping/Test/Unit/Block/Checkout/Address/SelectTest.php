@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class SelectTest extends TestCase
                 'multishipping' => $this->multishippingMock,
                 'addressRepository' => $this->addressRepositoryMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'filterBuilder' => $this->filterBuilderMock
+                'filterBuilder' => $this->filterBuilderMock,
             ]
         );
     }
@@ -175,9 +176,9 @@ class SelectTest extends TestCase
                 'addressRepository' => $this->addressRepositoryMock,
                 'filterBuilder' => $this->filterBuilderMock,
                 'data' => [
-                    'address_collection' => [$this->addressMock
-                    ]
-                ]
+                    'address_collection' => [$this->addressMock,
+                    ],
+                ],
             ]
         );
         $this->filterBuilderMock->expects($this->never())->method('setField');

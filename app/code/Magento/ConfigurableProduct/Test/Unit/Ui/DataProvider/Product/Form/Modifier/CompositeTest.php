@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -84,9 +85,9 @@ class CompositeTest extends TestCase
                 'attributes' => $productAttributesIds,
                 'attribute_codes' => $productAttributesCodes,
                 'product' => [
-                    'configurable_attributes_data' => null
-                ]
-            ]
+                    'configurable_attributes_data' => null,
+                ],
+            ],
         ];
 
         $this->productMock->expects(static::any())
@@ -152,7 +153,7 @@ class CompositeTest extends TestCase
             ->willReturnMap(
                 [
                     ['modifier1', $this->createModifierMock($initialMeta, ['modifier1_meta'])],
-                    ['modifier2', $this->createModifierMock(['modifier1_meta'], $resultMeta)]
+                    ['modifier2', $this->createModifierMock(['modifier1_meta'], $resultMeta)],
                 ]
             );
 
@@ -197,7 +198,7 @@ class CompositeTest extends TestCase
                 'objectManager' => $this->objectManagerMock,
                 'associatedProducts' => $this->associatedProductsMock,
                 'allowedProductTypes' => $this->allowedProductTypesMock,
-                'modifiers' => $modifiers
+                'modifiers' => $modifiers,
             ]
         );
     }

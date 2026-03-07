@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AggregateCountTest extends TestCase
 {
-
     /**
      * @var AggregateCount
      */

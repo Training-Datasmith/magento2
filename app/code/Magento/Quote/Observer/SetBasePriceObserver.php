@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Observer;
 
+use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Quote\Model\Quote\Item;
-use Magento\Catalog\Helper\Data as CatalogHelper;
 
 class SetBasePriceObserver implements ObserverInterface
 {

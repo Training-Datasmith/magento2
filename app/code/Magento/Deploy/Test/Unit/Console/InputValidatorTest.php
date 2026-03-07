@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class InputValidatorTest extends TestCase
             InputValidator::class,
             [
                 'localeValidator' => $localeObjectMock,
-                'versionValidatorFactory' => $regexFactoryMock
+                'versionValidatorFactory' => $regexFactoryMock,
             ]
         );
     }
@@ -93,7 +94,7 @@ class InputValidatorTest extends TestCase
                     [Options::THEME, ['all']],
                     [Options::EXCLUDE_THEME, ['none']],
                     [Options::EXCLUDE_LANGUAGE, ['none']],
-                    [Options::CONTENT_VERSION, '12345']
+                    [Options::CONTENT_VERSION, '12345'],
                 ]
             );
 
@@ -108,7 +109,7 @@ class InputValidatorTest extends TestCase
     {
         $options = [
             new InputOption(Options::AREA, null, 4, '', ['test']),
-            new InputOption(Options::EXCLUDE_AREA, null, 4, '', ['test'])
+            new InputOption(Options::EXCLUDE_AREA, null, 4, '', ['test']),
         ];
 
         $inputDefinition = new InputDefinition($options);
@@ -135,7 +136,7 @@ class InputValidatorTest extends TestCase
             new InputOption(Options::AREA, null, 4, '', ['all']),
             new InputOption(Options::EXCLUDE_AREA, null, 4, '', ['none']),
             new InputOption(Options::THEME, null, 4, '', ['blank']),
-            new InputOption(Options::EXCLUDE_THEME, null, 4, '', ['luma'])
+            new InputOption(Options::EXCLUDE_THEME, null, 4, '', ['luma']),
         ];
 
         $inputDefinition = new InputDefinition($options);
@@ -161,7 +162,7 @@ class InputValidatorTest extends TestCase
             new InputOption(Options::THEME, null, 4, '', ['all']),
             new InputOption(Options::EXCLUDE_THEME, null, 4, '', ['none']),
             new InputArgument(Options::LANGUAGES_ARGUMENT, 2, '', ['en_US']),
-            new InputOption(Options::EXCLUDE_LANGUAGE, null, 4, '', ['all'])
+            new InputOption(Options::EXCLUDE_LANGUAGE, null, 4, '', ['all']),
         ];
 
         $inputDefinition = new InputDefinition($options);
@@ -189,7 +190,7 @@ class InputValidatorTest extends TestCase
             new InputOption(Options::EXCLUDE_THEME, null, 4, '', ['none']),
             new InputArgument(Options::LANGUAGES_ARGUMENT, 2, '', ['en_US']),
             new InputOption(Options::EXCLUDE_LANGUAGE, null, 4, '', ['none']),
-            new InputOption(Options::CONTENT_VERSION, null, 4, '', '/*!#')
+            new InputOption(Options::CONTENT_VERSION, null, 4, '', '/*!#'),
         ];
 
         $inputDefinition = new InputDefinition($options);

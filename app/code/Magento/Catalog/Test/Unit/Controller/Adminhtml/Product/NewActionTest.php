@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\Model\View\Result\Forward;
 use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Backend\Model\View\Result\Page;
@@ -17,10 +17,11 @@ use Magento\Catalog\Controller\Adminhtml\Product\NewAction;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Test\Unit\Controller\Adminhtml\ProductTestCase;
 use Magento\Framework\RegexValidator;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\Regex;
 use Magento\Framework\Validator\RegexFactory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Result\PageFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class NewActionTest extends ProductTestCase
@@ -141,7 +142,7 @@ class NewActionTest extends ProductTestCase
     {
         return [
             'execute-with-exception' => ['simple\' and true()]|*[self%3a%3ahandle%20or%20self%3a%3alayout',true],
-            'execute-without-exception' => ['catalog_product_new',false]
+            'execute-without-exception' => ['catalog_product_new',false],
         ];
     }
 }

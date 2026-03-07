@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Invoice\Total;
 
-use Magento\Sales\Model\Order\Invoice\Total\Discount;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;
+use Magento\Sales\Model\Order\Invoice\Total\Discount;
 use Magento\Sales\Model\Order\Item as OrderItem;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -60,7 +61,7 @@ class DiscountTest extends TestCase
             'getGrandTotal',
             'getBaseGrandTotal',
             'setGrandTotal',
-            'setBaseGrandTotal'
+            'setBaseGrandTotal',
         ]);
     }
 

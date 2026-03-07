@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Block\Adminhtml\Attribute\Edit;
 
 /**
@@ -17,7 +20,7 @@ class Js extends \Magento\Backend\Block\Template
      *
      * @var string
      */
-  
+
     protected $_template = 'Magento_Eav::attribute/edit/js.phtml';
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -59,12 +60,12 @@ class RuleTest extends TestCase implements TestProvidesServiceInterface
                     'website' => [
                         'associations_table' => 'catalogrule_website',
                         'rule_id_field' => 'rule_id',
-                        'entity_id_field' => 'website_id'
+                        'entity_id_field' => 'website_id',
                     ],
                     'customer_group' => [
                         'associations_table' => 'catalogrule_customer_group',
                         'rule_id_field' => 'rule_id',
-                        'entity_id_field' => 'customer_group_id'
+                        'entity_id_field' => 'customer_group_id',
                     ],
                 ]
         );

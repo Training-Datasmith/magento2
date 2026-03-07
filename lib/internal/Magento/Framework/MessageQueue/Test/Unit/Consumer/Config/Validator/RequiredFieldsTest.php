@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Consumer\Config\Validator;
 
 use Magento\Framework\MessageQueue\Consumer\Config\Validator\RequiredFields as RequiredFieldsValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RequiredFieldsTest extends TestCase
 {
@@ -53,10 +54,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
-                ]
-            ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -89,10 +90,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'name' field must be specified for consumer 'consumer1'"
+                "'name' field must be specified for consumer 'consumer1'",
             ],
             'missing queue' => [
                 [
@@ -104,10 +105,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'queue' field must be specified for consumer 'consumer1'"
+                "'queue' field must be specified for consumer 'consumer1'",
             ],
             'missing consumerInstance' => [
                 [
@@ -119,10 +120,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'consumerInstance' field must be specified for consumer 'consumer1'"
+                "'consumerInstance' field must be specified for consumer 'consumer1'",
             ],
             'missing connection' => [
                 [
@@ -134,10 +135,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'connection' field must be specified for consumer 'consumer1'"
+                "'connection' field must be specified for consumer 'consumer1'",
             ],
             'missing handlers' => [
                 [
@@ -149,10 +150,10 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'handlers' field must be specified for consumer 'consumer1'"
+                "'handlers' field must be specified for consumer 'consumer1'",
             ],
             'missing maxMessages' => [
                 [
@@ -164,10 +165,10 @@ class RequiredFieldsTest extends TestCase
                         'connection' => 'connection1',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'maxMessages' field must be specified for consumer 'consumer1'"
+                "'maxMessages' field must be specified for consumer 'consumer1'",
             ],
             'missing maxIdleTime' => [
                 [
@@ -179,10 +180,10 @@ class RequiredFieldsTest extends TestCase
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'maxIdleTime' field must be specified for consumer 'consumer1'"
+                "'maxIdleTime' field must be specified for consumer 'consumer1'",
             ],
             'missing sleep' => [
                 [
@@ -194,10 +195,10 @@ class RequiredFieldsTest extends TestCase
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
-                "'sleep' field must be specified for consumer 'consumer1'"
+                "'sleep' field must be specified for consumer 'consumer1'",
             ],
             'missing onlySpawnWhenMessageAvailable' => [
                 [
@@ -210,9 +211,9 @@ class RequiredFieldsTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                    ]
+                    ],
                 ],
-                "'onlySpawnWhenMessageAvailable' field must be specified for consumer 'consumer1'"
+                "'onlySpawnWhenMessageAvailable' field must be specified for consumer 'consumer1'",
             ],
         ];
     }

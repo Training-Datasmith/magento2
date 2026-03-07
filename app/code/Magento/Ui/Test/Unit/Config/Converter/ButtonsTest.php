@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,11 +46,11 @@ class ButtonsTest extends TestCase
             'param' => [
                 'first' => [
                     'name' => 'first',
-                    'value' => 'first_value'
+                    'value' => 'first_value',
                 ],
                 'second' => [
                     'name' => 'second',
-                    'value' => 'second_value'
+                    'value' => 'second_value',
                 ],
 
             ],
@@ -86,7 +87,7 @@ class ButtonsTest extends TestCase
                         'custom_param' => [
                             'name' => 'custom_param',
                             'xsi:type' => 'string',
-                            'value' => 'custom_value'
+                            'value' => 'custom_value',
                         ],
                         'name' => [
                             'name' => 'name',
@@ -110,7 +111,7 @@ class ButtonsTest extends TestCase
         $expectedResult = [
             'name' => 'buttons',
             'xsi:type' => 'array',
-            'item' => []
+            'item' => [],
         ];
 
         $this->assertEquals($expectedResult, $this->converter->convert($buttons));

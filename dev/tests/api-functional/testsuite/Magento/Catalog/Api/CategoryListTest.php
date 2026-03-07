@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CategoryListTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/categories/list';
-    const SERVICE_NAME = 'catalogCategoryListV1';
+    public const RESOURCE_PATH = '/V1/categories/list';
+    public const SERVICE_NAME = 'catalogCategoryListV1';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/category_tree.php

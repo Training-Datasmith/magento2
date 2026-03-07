@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Structure\Element\Dependency;
 
 /**
@@ -40,7 +43,7 @@ class Field
      * @param array $fieldData
      * @param string $fieldPrefix
      */
-    public function __construct(array $fieldData = [], $fieldPrefix = "")
+    public function __construct(array $fieldData = [], $fieldPrefix = '')
     {
         if (isset($fieldData['separator'])) {
             $this->_values = isset($fieldData['value']) ? explode($fieldData['separator'], $fieldData['value']) : [''];

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Sales\Api\InvoiceRepositoryInterface;
-use Magento\Sales\Model\ResourceModel\Metadata;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\InvoiceSearchResultInterfaceFactory as SearchResultFactory;
+use Magento\Sales\Api\InvoiceRepositoryInterface;
+use Magento\Sales\Model\ResourceModel\Metadata;
 
 /**
  * Class InvoiceRepository

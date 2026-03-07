@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,13 +9,12 @@ declare(strict_types=1);
 namespace Magento\QuoteGraphQl\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Quote\Api\ErrorInterface;
+use Magento\Quote\Model\Cart\AddProductsToCart as AddProductsToCartService;
 use Magento\Quote\Model\Cart\Data\AddProductsToCartOutput;
 use Magento\Quote\Model\Cart\Data\CartItemFactory;
-use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Quote\Model\Cart\AddProductsToCart as AddProductsToCartService;
 use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 use Magento\QuoteGraphQl\Model\CartItem\PrecursorInterface;
 
@@ -69,11 +69,11 @@ class AddProductsToCart
                         'code' => $error->getCode(),
                         'message' => $error->getMessage(),
                         'path' => [$error->getCartItemPosition()],
-                        'quantity' => $this->isStockItemMessageEnabled() ? $error->getQuantity() : null
+                        'quantity' => $this->isStockItemMessageEnabled() ? $error->getQuantity() : null,
                     ];
                 },
                 array_merge($addProductsToCartOutput->getErrors(), $this->cartItemPrecursor->getErrors())
-            )
+            ),
         ];
     }
 

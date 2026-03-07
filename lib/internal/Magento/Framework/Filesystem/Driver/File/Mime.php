@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class Mime
     private $genericMimeTypes = [
         'application/x-empty',
         'inode/x-empty',
-        'application/octet-stream'
+        'application/octet-stream',
     ];
 
     /**

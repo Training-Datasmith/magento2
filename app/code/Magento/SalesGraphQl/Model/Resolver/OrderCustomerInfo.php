@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -32,11 +33,11 @@ class OrderCustomerInfo implements ResolverInterface
         $order = $value['model'];
 
         return [
-            "firstname" => $order->getCustomerFirstname(),
-            "lastname" => $order->getCustomerLastname() ?? null,
-            "middlename" => $order->getCustomerMiddlename() ?? null,
-            "prefix" => $order->getCustomerPrefix() ?? null,
-            "suffix" => $order->getCustomerSuffix() ?? null
+            'firstname' => $order->getCustomerFirstname(),
+            'lastname' => $order->getCustomerLastname() ?? null,
+            'middlename' => $order->getCustomerMiddlename() ?? null,
+            'prefix' => $order->getCustomerPrefix() ?? null,
+            'suffix' => $order->getCustomerSuffix() ?? null,
         ];
     }
 }

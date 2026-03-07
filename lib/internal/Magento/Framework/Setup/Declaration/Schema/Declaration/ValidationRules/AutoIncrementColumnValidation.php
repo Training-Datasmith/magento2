@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationRules;
 
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationInterface;
@@ -20,12 +23,12 @@ class AutoIncrementColumnValidation implements ValidationInterface
     /**
      * Error code.
      */
-    const ERROR_TYPE = 'auto_increment_column_is_valid';
+    public const ERROR_TYPE = 'auto_increment_column_is_valid';
 
     /**
      * Error message, that will be shown.
      */
-    const ERROR_MESSAGE = 'Auto Increment column do not have index. Column - "%s", table - "%s"';
+    public const ERROR_MESSAGE = 'Auto Increment column do not have index. Column - "%s", table - "%s"';
 
     /**
      * @inheritdoc
@@ -54,7 +57,7 @@ class AutoIncrementColumnValidation implements ValidationInterface
 
                     $errors[] = [
                         'column' => $column->getName(),
-                        'message' => sprintf(self::ERROR_MESSAGE, $column->getName(), $table->getName())
+                        'message' => sprintf(self::ERROR_MESSAGE, $column->getName(), $table->getName()),
                     ];
                 }
             }

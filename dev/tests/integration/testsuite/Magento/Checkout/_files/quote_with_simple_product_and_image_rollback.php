@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Rollback for quote_with_simple_product_and_image.php fixture.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Weee\Api\Data\ProductRender\WeeeAdjustmentAttributeInterface;
 use Magento\Weee\Api\Data\ProductRender\WeeeAdjustmentAttributeInterfaceFactory;
 use Magento\Weee\Helper\Data;
 use Magento\Weee\Model\ProductRender\WeeeAdjustmentAttribute;
@@ -139,24 +139,24 @@ class WeeeTest extends TestCase
             ->method('getData')
             ->willReturnCallback(
                 function ($arg) {
-                     static $callCount = 0;
-                    if ($callCount==0) {
+                    static $callCount = 0;
+                    if ($callCount == 0) {
                         $callCount++;
                         return [
                             'amount' => 12.1,
                             'tax_amount' => 12,
-                            'amount_excl_tax' => 71
+                            'amount_excl_tax' => 71,
                         ];
-                    } elseif ($callCount==1 && $arg == 'amount') {
+                    } elseif ($callCount == 1 && $arg == 'amount') {
                         $callCount++;
                         return 12.1;
-                    } elseif ($callCount==2 && $arg == 'tax_amount') {
+                    } elseif ($callCount == 2 && $arg == 'tax_amount') {
                         $callCount++;
                         return 12.1;
-                    } elseif ($callCount==3 && $arg == 'amount_excl_tax') {
+                    } elseif ($callCount == 3 && $arg == 'amount_excl_tax') {
                         $callCount++;
                         return 12.1;
-                    } elseif ($callCount==4) {
+                    } elseif ($callCount == 4) {
                         $callCount++;
                         return 12.1;
                     }

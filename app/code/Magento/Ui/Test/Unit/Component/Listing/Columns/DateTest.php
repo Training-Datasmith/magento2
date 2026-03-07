@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class DateTest extends TestCase
 {
-    const TEST_TIME = '2000-04-12 16:34:12';
+    public const TEST_TIME = '2000-04-12 16:34:12';
 
     /**
      * @var MockObject
@@ -66,14 +67,14 @@ class DateTest extends TestCase
                 'context' => $this->contextMock,
                 'data' => [
                     'js_config' => [
-                        'extends' => 'test_config_extends'
+                        'extends' => 'test_config_extends',
                     ],
                     'config' => [
-                        'dataType' => 'testType'
+                        'dataType' => 'testType',
                     ],
                     'name' => 'field_name',
                 ],
-                'timezone' => $this->timezoneMock
+                'timezone' => $this->timezoneMock,
             ]
         );
     }

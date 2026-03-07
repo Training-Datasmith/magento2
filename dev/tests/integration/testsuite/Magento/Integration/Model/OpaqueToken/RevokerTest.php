@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Model\CustomUserContext;
 use Magento\Integration\Model\UserToken\UserTokenParameters;
+use Magento\Integration\Model\UserToken\UserTokenParametersFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\User\Model\User as UserModel;
 use PHPUnit\Framework\TestCase;
-use Magento\Integration\Model\UserToken\UserTokenParametersFactory;
 
 class RevokerTest extends TestCase
 {

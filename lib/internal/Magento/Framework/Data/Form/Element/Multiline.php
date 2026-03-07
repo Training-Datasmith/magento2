@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
 /**
  * Form multiline text elements
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Escaper;
@@ -49,7 +52,7 @@ class Multiline extends AbstractElement
             'maxlength',
             'data-form-part',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Console\Command;
 
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Catalog\Api\Data\ProductInterface;
 
 /**
  * Console command for cleaning up unused product attributes from database tables
@@ -99,14 +102,14 @@ class ProductAttributesCleanUp extends \Symfony\Component\Console\Command\Comman
             }
             $this->attributeResource->commit();
 
-            $output->writeln("");
-            $output->writeln("<info>Unused product attributes successfully cleaned up:</info>");
-            $output->writeln("<comment>  " . implode("\n  ", $attributeTables) . "</comment>");
+            $output->writeln('');
+            $output->writeln('<info>Unused product attributes successfully cleaned up:</info>');
+            $output->writeln('<comment>  ' . implode("\n  ", $attributeTables) . '</comment>');
             return \Magento\Framework\Console\Cli::RETURN_SUCCESS;
         } catch (\Exception $exception) {
             $this->attributeResource->rollBack();
 
-            $output->writeln("");
+            $output->writeln('');
             $output->writeln("<error>{$exception->getMessage()}</error>");
             // we must have an exit code higher than zero to indicate something was wrong
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;

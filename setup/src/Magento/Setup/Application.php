@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup;
 
-use Magento\Framework\Setup\Mvc\MvcApplication as NativeApplication;
 use Laminas\ServiceManager\ServiceManager;
+use Magento\Framework\Setup\Mvc\MvcApplication as NativeApplication;
 
 /**
  * This class is wrapper on native Application

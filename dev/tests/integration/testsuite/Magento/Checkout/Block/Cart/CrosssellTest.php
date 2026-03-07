@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class CrosssellTest extends AbstractLinksTest
 
     /** @var string */
     private $addToCartSubmitXpath = "//div[contains(@class, 'actions-primary')]"
-    . "/form[@data-product-sku='%s']/button[@type='submit']";
+        . "/form[@data-product-sku='%s']/button[@type='submit']";
 
     /** @var string */
     private $addToLinksXpath = "//div[contains(@class, 'actions-secondary')]";

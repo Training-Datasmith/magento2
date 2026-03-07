@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Block\Catalog\Product\View\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Bundle\Block\Catalog\Product\View\Type\Bundle as BundleBlock;
 use Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Checkbox;
 use Magento\Bundle\Model\Option;
@@ -31,8 +30,10 @@ use Magento\Framework\Json\Encoder;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -114,7 +115,7 @@ class BundleTest extends TestCase
                 'productPrice' => $this->bundleProductPriceFactory,
                 'catalogProduct' => $this->catalogProduct,
                 'escaper' => $this->escaperMock,
-                'priceCurrency' => $this->priceCurrency
+                'priceCurrency' => $this->priceCurrency,
             ]
         );
 
@@ -136,7 +137,7 @@ class BundleTest extends TestCase
         $option = $this->createPartialMock(Option::class, ['getType']);
         $option->method('getType')->willReturn('checkbox');
         $this->escaperMock->expects($this->once())->method('escapeHtml')->willReturn('checkbox');
-        $expected='There is no defined renderer for "checkbox" option type.';
+        $expected = 'There is no defined renderer for "checkbox" option type.';
         $layout = $this->createPartialMock(Layout::class, ['getChildName', 'getBlock']);
         $layout->method('getChildName')->willReturn(false);
         $this->bundleBlock->setLayout($layout);
@@ -176,9 +177,9 @@ class BundleTest extends TestCase
                 'getPriceWithoutOption' => new DataObject(
                     [
                         'value' => 100,
-                        'base_amount' => 100
+                        'base_amount' => 100,
                     ]
-                )
+                ),
             ]
         );
         $regularPriceMock = $this->getPriceMock(
@@ -186,14 +187,14 @@ class BundleTest extends TestCase
                 'getAmount' => new DataObject(
                     [
                         'value' => 110,
-                        'base_amount' => 110
+                        'base_amount' => 110,
                     ]
-                )
+                ),
             ]
         );
         $prices = [
             FinalPrice::PRICE_CODE => $finalPriceMock,
-            RegularPrice::PRICE_CODE => $regularPriceMock
+            RegularPrice::PRICE_CODE => $regularPriceMock,
         ];
         $priceInfo = $this->getPriceInfoMock($prices);
 
@@ -225,17 +226,17 @@ class BundleTest extends TestCase
                 [
                     ['price' => new DataObject(
                         ['base_amount' => $baseAmount, 'value' => $basePriceValue]
-                    )]
+                    )],
                 ],
                 true,
                 true
-            )
+            ),
         ];
         $bundleProductPrice = $this->createPartialMock(Price::class, ['getLowestPrice']);
         $this->product->setLowestPriceCallback(function ($arg1, $arg2) use ($baseAmount, $basePriceValue) {
-            if ($arg1 == $this->product && $arg2==$baseAmount) {
+            if ($arg1 == $this->product && $arg2 == $baseAmount) {
                 return 999;
-            } elseif ($arg1 == $this->product && $arg2==$basePriceValue) {
+            } elseif ($arg1 == $this->product && $arg2 == $basePriceValue) {
                 return 888;
             }
             return null;
@@ -249,9 +250,9 @@ class BundleTest extends TestCase
                 'getPriceWithoutOption' => new DataObject(
                     [
                         'value' => 100,
-                        'base_amount' => 100
+                        'base_amount' => 100,
                     ]
-                )
+                ),
             ]
         );
         $regularPriceMock = $this->getPriceMock(
@@ -259,9 +260,9 @@ class BundleTest extends TestCase
                 'getAmount' => new DataObject(
                     [
                         'value' => 110,
-                        'base_amount' => 110
+                        'base_amount' => 110,
                     ]
-                )
+                ),
             ]
         );
 
@@ -278,18 +279,18 @@ class BundleTest extends TestCase
             'bundle_option' => $bundleOptionPriceMock,
             'bundle_option_regular_price' => $bundleOptionPriceMock,
             FinalPrice::PRICE_CODE => $finalPriceMock,
-            RegularPrice::PRICE_CODE => $regularPriceMock
+            RegularPrice::PRICE_CODE => $regularPriceMock,
         ];
         $priceInfo = $this->getPriceInfoMock($prices);
         $this->product->setHasPreconfiguredValues(true);
         $preconfiguredValues = new DataObject(
             [
                 'bundle_option' => [
-                    $optionId => [123123111]
+                    $optionId => [123123111],
                 ],
                 'bundle_option_qty' => [
-                    $optionId => $optionQty
-                ]
+                    $optionId => $optionQty,
+                ],
             ]
         );
         $this->product->setPreconfiguredValues($preconfiguredValues);
@@ -523,7 +524,7 @@ class BundleTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 

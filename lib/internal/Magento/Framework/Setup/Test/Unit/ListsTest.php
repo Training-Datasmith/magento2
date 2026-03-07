@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ListsTest extends TestCase
         'uk_UA' => 'Ukrainian (Ukraine)',
         'de_DE' => 'German (Germany)',
         'sr_Cyrl_RS' => 'Serbian (Cyrillic, Serbia)',
-        'sr_Latn_RS' => 'Serbian (Latin, Serbia)'
+        'sr_Latn_RS' => 'Serbian (Latin, Serbia)',
     ];
 
     private function getExpectedTimezones($timeZone): array

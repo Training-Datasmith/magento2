@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,13 +14,12 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Validation\CanRefund;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CanRefundTest extends TestCase
 {
-
     /**
      * @var CanRefund|MockObject
      */
@@ -46,8 +46,8 @@ class CanRefundTest extends TestCase
         $objects = [
             [
                 ScopeConfigInterface::class,
-                $this->createMock(ScopeConfigInterface::class)
-            ]
+                $this->createMock(ScopeConfigInterface::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->orderMock = $this->createPartialMock(
@@ -116,7 +116,7 @@ class CanRefundTest extends TestCase
             ->willReturn(15);
         $this->assertEquals(
             [
-                __('The order does not allow a creditmemo to be created.')
+                __('The order does not allow a creditmemo to be created.'),
             ],
             $this->model->validate($this->orderMock)
         );

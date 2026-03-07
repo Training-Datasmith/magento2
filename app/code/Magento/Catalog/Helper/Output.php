@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,6 +7,8 @@
 declare(strict_types=1);
 
 namespace Magento\Catalog\Helper;
+
+use function is_object;
 
 use Magento\Catalog\Model\Category as ModelCategory;
 use Magento\Catalog\Model\Product as ModelProduct;
@@ -16,7 +19,7 @@ use Magento\Framework\Escaper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\Phrase;
-use function is_object;
+
 use function method_exists;
 use function preg_match;
 use function strtolower;

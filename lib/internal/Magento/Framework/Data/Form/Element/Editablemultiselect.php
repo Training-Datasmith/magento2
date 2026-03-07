@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,6 +12,7 @@
  *
  * Element allows inline modification of textual data within select
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\App\ObjectManager;

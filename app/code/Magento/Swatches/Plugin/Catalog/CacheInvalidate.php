@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Plugin\Catalog;
 
-use \Magento\Framework\App\Cache\Type\Block;
-use \Magento\Framework\App\Cache\Type\Collection;
+use Magento\Framework\App\Cache\Type\Block;
+use Magento\Framework\App\Cache\Type\Collection;
 
 class CacheInvalidate
 {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\System\Message\Media;
 
 /**
@@ -29,11 +32,8 @@ abstract class AbstractSynchronization implements \Magento\Framework\Notificatio
      *
      * @var bool
      */
-    protected $_isDisplayed = null;
+    protected $_isDisplayed;
 
-    /**
-     * @param \Magento\MediaStorage\Model\File\Storage\Flag $fileStorage
-     */
     public function __construct(\Magento\MediaStorage\Model\File\Storage\Flag $fileStorage)
     {
         $this->_syncFlag = $fileStorage->loadSelf();

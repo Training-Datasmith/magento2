@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -15,18 +18,18 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface RuleInterface extends ExtensibleDataInterface
 {
-    const FREE_SHIPPING_NONE = 'NONE';
-    const FREE_SHIPPING_MATCHING_ITEMS_ONLY = 'MATCHING_ITEMS_ONLY';
-    const FREE_SHIPPING_WITH_MATCHING_ITEMS = 'FREE_WITH_MATCHING_ITEMS';
+    public const FREE_SHIPPING_NONE = 'NONE';
+    public const FREE_SHIPPING_MATCHING_ITEMS_ONLY = 'MATCHING_ITEMS_ONLY';
+    public const FREE_SHIPPING_WITH_MATCHING_ITEMS = 'FREE_WITH_MATCHING_ITEMS';
 
-    const DISCOUNT_ACTION_BY_PERCENT = 'by_percent';
-    const DISCOUNT_ACTION_FIXED_AMOUNT = 'by_fixed';
-    const DISCOUNT_ACTION_FIXED_AMOUNT_FOR_CART = 'cart_fixed';
-    const DISCOUNT_ACTION_BUY_X_GET_Y = 'buy_x_get_y';
+    public const DISCOUNT_ACTION_BY_PERCENT = 'by_percent';
+    public const DISCOUNT_ACTION_FIXED_AMOUNT = 'by_fixed';
+    public const DISCOUNT_ACTION_FIXED_AMOUNT_FOR_CART = 'cart_fixed';
+    public const DISCOUNT_ACTION_BUY_X_GET_Y = 'buy_x_get_y';
 
-    const COUPON_TYPE_NO_COUPON = 'NO_COUPON';
-    const COUPON_TYPE_SPECIFIC_COUPON = 'SPECIFIC_COUPON';
-    const COUPON_TYPE_AUTO = 'AUTO';
+    public const COUPON_TYPE_NO_COUPON = 'NO_COUPON';
+    public const COUPON_TYPE_SPECIFIC_COUPON = 'SPECIFIC_COUPON';
+    public const COUPON_TYPE_AUTO = 'AUTO';
 
     /**
      * Return rule id

@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\SampleData;
 
-use \Magento\Framework\File\Csv;
+use Magento\Framework\File\Csv;
 
 /**
  * Constructor modification point for Magento\Framework\Setup\SampleData.

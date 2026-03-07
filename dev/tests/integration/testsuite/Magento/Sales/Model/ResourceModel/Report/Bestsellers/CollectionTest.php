@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Report\Bestsellers;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -80,43 +83,43 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'period'    => 'month',
                 'expectedTable'     => 'sales_bestsellers_aggregated_monthly',
                 'dateFrom' => null,
-                'dateTo'   => null
+                'dateTo'   => null,
             ],
             [
                 'period'    => 'day',
                 'expectedTable'     => 'sales_bestsellers_aggregated_daily',
                 'dateFrom' => null,
-                'dateTo'   => null
+                'dateTo'   => null,
             ],
             [
                 'period'    => 'undefinedPeriod',
                 'expectedTable'     => 'sales_bestsellers_aggregated_daily',
                 'dateFrom' => null,
-                'dateTo'   => null
+                'dateTo'   => null,
             ],
             [
                 'period'    => null,
                 'expectedTable'     => 'sales_bestsellers_aggregated_daily',
                 'dateFrom' => $dateYearAgo,
-                'dateTo'   => $dateNow
+                'dateTo'   => $dateNow,
             ],
             [
                 'period'    => null,
                 'expectedTable'     => 'sales_bestsellers_aggregated_daily',
                 'dateFrom' => $dateNow,
-                'dateTo'   => $dateNow
+                'dateTo'   => $dateNow,
             ],
             [
                 'period'    => null,
                 'expectedTable'     => 'sales_bestsellers_aggregated_daily',
                 'dateFrom' => $dateYearAgo,
-                'dateTo'   => $dateYearAgo
+                'dateTo'   => $dateYearAgo,
             ],
             [
                 'period'    => null,
                 'expectedTable'     => 'sales_bestsellers_aggregated_yearly',
                 'dateFrom' => null,
-                'dateTo'   => null
+                'dateTo'   => null,
             ],
         ];
     }

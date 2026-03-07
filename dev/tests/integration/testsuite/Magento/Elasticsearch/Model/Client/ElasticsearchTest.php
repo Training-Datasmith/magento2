@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Client;
 
 use Magento\AdvancedSearch\Model\Client\ClientInterface;
-use Magento\Indexer\Model\Indexer;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
 use Magento\Elasticsearch\Model\Config;
+use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
 use Magento\Elasticsearch\SearchAdapter\SearchIndexNameResolver;
-use Magento\TestModuleCatalogSearch\Model\SearchEngineVersionReader;
 use Magento\Framework\Search\EngineResolverInterface;
+use Magento\Indexer\Model\Indexer;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestModuleCatalogSearch\Model\SearchEngineVersionReader;
 
 /**
  * @magentoDbIsolation enabled

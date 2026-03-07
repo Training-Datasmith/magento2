@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class PriceTest extends TestCase
                 'string' => $this->stringMock,
                 'mathRandom' => $this->mathRandomMock,
                 'registry' => $this->registryMock,
-                'catalogData' => $catalogDataMock
+                'catalogData' => $catalogDataMock,
             ]
         );
     }

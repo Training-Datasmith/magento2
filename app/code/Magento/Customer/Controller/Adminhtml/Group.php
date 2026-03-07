@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml;
 
 use Magento\Customer\Api\Data\GroupInterfaceFactory;
@@ -18,7 +21,7 @@ abstract class Group extends \Magento\Backend\App\Action
      *
      * @see \Magento\Backend\App\Action\_isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::group';
+    public const ADMIN_RESOURCE = 'Magento_Customer::group';
 
     /**
      * Core registry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class CheckoutValidatorTest extends TestCase
             [
                 'checkoutSession' => $this->sessionMock,
                 'shortcutValidator' => $this->paypalShortcutHelperMock,
-                'paymentData' => $this->paymentHelperMock
+                'paymentData' => $this->paymentHelperMock,
             ]
         );
     }

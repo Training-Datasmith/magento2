@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cookie\Controller\Index;
 
 class NoCookies extends \Magento\Framework\App\Action\Action

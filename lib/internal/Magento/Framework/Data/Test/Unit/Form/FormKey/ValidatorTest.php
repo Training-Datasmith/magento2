@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Data\Test\Unit\Form\FormKey;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Data\Form\FormKey\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ValidatorTest extends TestCase
 {
@@ -65,7 +66,7 @@ class ValidatorTest extends TestCase
     {
         return [
             'formKeyExist' => ['formKey', true],
-            'formKeyNotEqualToFormKeyInSession' => ['formKeySession', false]
+            'formKeyNotEqualToFormKeyInSession' => ['formKeySession', false],
         ];
     }
 }

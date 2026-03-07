@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Consumer\Config\Xml;
 
-use Magento\Framework\MessageQueue\DefaultValueProvider;
-use Magento\Framework\MessageQueue\ConsumerInterface;
 use Magento\Framework\Communication\Config\ConfigParser;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
+use Magento\Framework\MessageQueue\ConsumerInterface;
+use Magento\Framework\MessageQueue\DefaultValueProvider;
 
 /**
  * Converts MessageQueue consumers config from \DOMDocument to array
@@ -75,7 +78,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                 'maxIdleTime' => $this->getAttributeValue($consumerNode, 'maxIdleTime'),
                 'sleep' => $this->getAttributeValue($consumerNode, 'sleep'),
                 'onlySpawnWhenMessageAvailable' =>
-                    $onlySpawnWhenMessageAvailable === null ? null : boolval($onlySpawnWhenMessageAvailable)
+                    $onlySpawnWhenMessageAvailable === null ? null : boolval($onlySpawnWhenMessageAvailable),
             ];
         }
         return $result;
@@ -106,7 +109,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
         $parseServiceMethod = $this->configParser->parseServiceMethod($handler);
         return [
             CommunicationConfig::HANDLER_TYPE => $parseServiceMethod[ConfigParser::TYPE_NAME],
-            CommunicationConfig::HANDLER_METHOD => $parseServiceMethod[ConfigParser::METHOD_NAME]
+            CommunicationConfig::HANDLER_METHOD => $parseServiceMethod[ConfigParser::METHOD_NAME],
         ];
     }
 }

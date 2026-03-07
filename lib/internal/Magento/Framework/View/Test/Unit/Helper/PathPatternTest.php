@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\View\Test\Unit\Helper;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Helper\PathPattern;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class PathPatternTest extends TestCase
 {
@@ -50,24 +51,24 @@ class PathPatternTest extends TestCase
         return [
             [
                 'path' => '*.xml',
-                'expectedPattern' => '[^/]*\\.xml'
+                'expectedPattern' => '[^/]*\\.xml',
             ],
             [
                 'path' => 'd??.*',
-                'expectedPattern' => 'd[^/][^/]\\.[^/]*'
+                'expectedPattern' => 'd[^/][^/]\\.[^/]*',
             ],
             [
                 'path' => '[!0-9]?-[a-fA-F0-9].php',
-                'expectedPattern' => '[^0-9][^/]\\-[a-fA-F0-9]\\.php'
+                'expectedPattern' => '[^0-9][^/]\\-[a-fA-F0-9]\\.php',
             ],
             [
                 'path' => 'config.{php,json,xml}',
-                'expectedPattern' => 'config\\.(?:php|json|xml)'
+                'expectedPattern' => 'config\\.(?:php|json|xml)',
             ],
             [
                 'path' => 'c?nf[aio]g{-,}[!0-9/]*.{p,}html',
-                'expectedPattern' => 'c[^/]nf[aio]g(?:\\-|)[^0-9/][^/]*\\.(?:p|)html'
-            ]
+                'expectedPattern' => 'c[^/]nf[aio]g(?:\\-|)[^0-9/][^/]*\\.(?:p|)html',
+            ],
         ];
     }
 }

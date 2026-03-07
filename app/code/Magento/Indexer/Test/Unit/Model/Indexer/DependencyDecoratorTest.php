@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class DependencyDecoratorTest extends TestCase
     {
         return [
             ['getData', [], ['field_id' => 'field_value']],
-            ['setId', ['newId'], true]
+            ['setId', ['newId'], true],
         ];
     }
 
@@ -213,8 +214,8 @@ class DependencyDecoratorTest extends TestCase
             [
                 'setState',
                 [
-                    static fn (self $testCase) => $testCase->getMockForStateInterfaceClass()
-                ]
+                    static fn (self $testCase) => $testCase->getMockForStateInterfaceClass(),
+                ],
             ],
             ['load', ['indexer_1']],
         ];

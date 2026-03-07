@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Theme\Controller\Adminhtml\System\Design\Wysiwyg\Files;
 use Magento\Theme\Controller\Adminhtml\System\Design\Wysiwyg\Files\DeleteFolder;
 use Magento\Theme\Helper\Storage;
+use Magento\Theme\Model\Wysiwyg\Storage as WysiwygStorage;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Theme\Model\Wysiwyg\Storage as WysiwygStorage;
 
 class DeleteFolderTest extends TestCase
 {
@@ -61,7 +62,7 @@ class DeleteFolderTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'response' => $this->response,
-                'storage' => $this->storageHelper
+                'storage' => $this->storageHelper,
             ]
         );
     }
@@ -88,7 +89,7 @@ class DeleteFolderTest extends TestCase
 
         $this->objectManager
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [WysiwygStorage::class] => $this->storage,
                 [Data::class] => $jsonData
             });

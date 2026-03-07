@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,8 @@ class ProcessorFactoryTest extends TestCase
     {
         $this->_objectManager = $this->createMock(ObjectManagerInterface::class);
         $this->_model = new ProcessorFactory($this->_objectManager);
-        $this->_processorMock = $this->createMock(ProcessorInterface::class
+        $this->_processorMock = $this->createMock(
+            ProcessorInterface::class
         );
     }
 

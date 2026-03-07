@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Customer\Setup;
 
+use Magento\Customer\Model\Customer;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Customer\Model\Customer;
 
 /**
  * Upgrade registered themes.
@@ -51,7 +53,7 @@ class RecurringData implements InstallDataInterface
      * @param ModuleDataSetupInterface $setup
      * @return bool
      */
-    private function isNeedToDoReindex(ModuleDataSetupInterface $setup) : bool
+    private function isNeedToDoReindex(ModuleDataSetupInterface $setup): bool
     {
         return !$setup->tableExists('customer_grid_flat')
             || $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID)

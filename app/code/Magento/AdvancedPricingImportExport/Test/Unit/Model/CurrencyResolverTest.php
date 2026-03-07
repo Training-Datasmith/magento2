@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class CurrencyResolverTest extends TestCase
                 Website::class,
                 [
                     'getCode' => $websiteCode,
-                    'getBaseCurrencyCode' => $currencyCode
+                    'getBaseCurrencyCode' => $currencyCode,
                 ]
             );
         }

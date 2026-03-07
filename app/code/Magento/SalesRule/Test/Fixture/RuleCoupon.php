@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\SalesRule\Test\Fixture;
 
 use Magento\Framework\DataObject;
+use Magento\SalesRule\Api\Data\CouponInterface;
+use Magento\SalesRule\Model\CouponFactory;
 use Magento\SalesRule\Model\Spi\CouponResourceInterface;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
-use Magento\SalesRule\Model\CouponFactory;
-use Magento\SalesRule\Api\Data\CouponInterface;
 
 class RuleCoupon implements RevertibleDataFixtureInterface
 {
@@ -20,7 +21,7 @@ class RuleCoupon implements RevertibleDataFixtureInterface
         'code' => null,
         'usage_limit' => false,
         'usage_per_customer' => false,
-        'type' => CouponInterface::TYPE_MANUAL
+        'type' => CouponInterface::TYPE_MANUAL,
     ];
 
     /**

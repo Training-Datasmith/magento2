@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav;
 
 use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Catalog Product Eav Attributes abstract indexer resource model
@@ -182,7 +184,7 @@ abstract class AbstractEav extends \Magento\Catalog\Model\ResourceModel\Product\
             []
         )->join(
             ['sw' => $this->getTable('store_website')],
-            "cs.website_id = sw.website_id",
+            'cs.website_id = sw.website_id',
             []
         )->join(
             ['cpw' => $this->getTable('catalog_product_website')],
@@ -196,7 +198,7 @@ abstract class AbstractEav extends \Magento\Catalog\Model\ResourceModel\Product\
                 'attribute_id' => 'i.attribute_id',
                 'store_id' => 'i.store_id',
                 'value' => 'i.value',
-                'source_id' => 'l.child_id'
+                'source_id' => 'l.child_id',
             ]
         );
         if ($parentIds !== null) {
@@ -256,7 +258,7 @@ abstract class AbstractEav extends \Magento\Catalog\Model\ResourceModel\Product\
             'ca.is_visible_in_advanced_search > 0',
             'ca.is_filterable > 0',
             // Visibility is attribute that isn't used by search, but required to determine is product should be shown
-            "ea.attribute_code = 'visibility'"
+            "ea.attribute_code = 'visibility'",
         ];
 
         return implode(' OR ', $conditions);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class UrlResolverTest extends GraphQlAbstract
 QUERY;
 
         $this->expectExceptionMessage(
-            "No such entity found with matching URL key: " . $urlPath
+            'No such entity found with matching URL key: ' . $urlPath
         );
         $this->graphQlQuery($query);
     }
@@ -110,14 +111,14 @@ QUERY;
     {
         return [
             [
-                'simple-product-in-stock.html'
+                'simple-product-in-stock.html',
             ],
             [
-                'category-1.html'
+                'category-1.html',
             ],
             [
-                'page100'
-            ]
+                'page100',
+            ],
         ];
     }
 
@@ -155,7 +156,7 @@ QUERY;
         $entitiesRequestPaths = [
             'simple-product-in-stock.html',
             'category-1.html',
-            'page100'
+            'page100',
         ];
 
         // create custom url rewrite
@@ -217,7 +218,7 @@ QUERY;
         $urlRewriteService = $urlFinder->findOneByData(
             [
                 'request_path' => $requestPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
 

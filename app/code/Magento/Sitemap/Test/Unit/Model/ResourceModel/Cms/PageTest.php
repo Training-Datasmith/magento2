@@ -119,7 +119,7 @@ class PageTest extends TestCase
                 [
                     'page_id' => $pageId,
                     'url' => $url,
-                    'updated_at' => $updatedAt
+                    'updated_at' => $updatedAt,
                 ],
                 false
             );

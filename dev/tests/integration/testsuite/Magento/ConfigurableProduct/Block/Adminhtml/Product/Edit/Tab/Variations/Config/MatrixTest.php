@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\Tab\Variations\Config;
 
 /**
@@ -10,8 +13,8 @@ namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\Tab\Variation
  */
 class MatrixTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
-    const ATTRIBUTE_LABEL = 'New Attribute Label';
-    const ATTRIBUTE_POSITION = 42;
+    public const ATTRIBUTE_LABEL = 'New Attribute Label';
+    public const ATTRIBUTE_POSITION = 42;
 
     /**
      * @magentoAppIsolation enabled

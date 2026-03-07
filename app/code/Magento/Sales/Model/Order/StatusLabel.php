@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
-use Magento\Sales\Model\Order\StatusFactory;
 
 /**
  * Class StatusLabel is responsible for retrieving order status labels based on store of order

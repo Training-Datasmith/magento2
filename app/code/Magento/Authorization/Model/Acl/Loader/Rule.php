@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,9 +11,8 @@ namespace Magento\Authorization\Model\Acl\Loader;
 use Magento\Framework\Acl;
 use Magento\Framework\Acl\Data\CacheInterface;
 use Magento\Framework\Acl\LoaderInterface;
-use Magento\Framework\Acl\RootResource;
 use Magento\Framework\Acl\Role\CurrentRoleContext;
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\Acl\RootResource;
 use Magento\Framework\Serialize\Serializer\Json;
 
 /**
@@ -30,30 +30,7 @@ class Rule implements LoaderInterface
      */
     private const ALLOW_EVERYTHING = 'Magento_Backend::all';
 
-    /**
-     * @var ResourceConnection
-     */
-    protected $_resource;
-
-    /**
-     * @var RootResource
-     */
-    private $_rootResource;
-
-    /**
-     * @var CacheInterface
-     */
-    private $aclDataCache;
-
-    /**
-     * @var Json
-     */
-    private $serializer;
-
-    /**
-     * @var string
-     */
-    private $cacheKey;
+    private readonly string $cacheKey;
 
     /**
      * @var CurrentRoleContext
@@ -61,28 +38,19 @@ class Rule implements LoaderInterface
     private $roleContext;
 
     /**
-     * @param RootResource $rootResource
-     * @param ResourceConnection $resource
-     * @param CacheInterface $aclDataCache
-     * @param Json $serializer
      * @param array $data
      * @param string $cacheKey
-     * @param CurrentRoleContext|null $roleContext
      * @SuppressWarnings(PHPMD.UnusedFormalParameter):
      */
     public function __construct(
-        RootResource        $rootResource,
-        ResourceConnection  $resource,
-        CacheInterface      $aclDataCache,
-        Json                $serializer,
+        private readonly RootResource        $_rootResource,
+        protected \Magento\Framework\App\ResourceConnection  $_resource,
+        private readonly CacheInterface      $aclDataCache,
+        private readonly Json                $serializer,
         ?array              $data = [],
         ?string             $cacheKey = self::ACL_RULE_CACHE_KEY,
         ?CurrentRoleContext $roleContext = null
     ) {
-        $this->_rootResource = $rootResource;
-        $this->_resource = $resource;
-        $this->aclDataCache = $aclDataCache;
-        $this->serializer = $serializer;
         $this->cacheKey = $cacheKey ?? self::ACL_RULE_CACHE_KEY;
 
         $this->roleContext = $roleContext ?? \Magento\Framework\App\ObjectManager::getInstance()
@@ -91,11 +59,8 @@ class Rule implements LoaderInterface
 
     /**
      * Populate ACL with rules from external storage
-     *
-     * @param Acl $acl
-     * @return void
      */
-    public function populateAcl(Acl $acl)
+    public function populateAcl(Acl $acl): void
     {
         $roleId = $this->roleContext->getRoleId();
         $result = ($roleId)
@@ -106,10 +71,6 @@ class Rule implements LoaderInterface
 
     /**
      * Apply permissions for a specific role
-     *
-     * @param Acl $acl
-     * @param int $roleId
-     * @return array
      */
     private function applyPermissionsForRole(Acl $acl, int $roleId): array
     {
@@ -125,7 +86,6 @@ class Rule implements LoaderInterface
     /**
      * Apply ACL with rules
      *
-     * @param Acl $acl
      * @return array[]
      */
     private function applyPermissionsAccordingToRules(Acl $acl): array
@@ -145,15 +105,11 @@ class Rule implements LoaderInterface
      * For all rules that were not regenerated in authorization_rule table,
      * when adding a new module and without re-saving all roles,
      * consider not present rules with deny permissions
-     *
-     * @param Acl $acl
-     * @param array $appliedRolePermissionsPerResource
-     * @return void
      */
     private function denyPermissionsForMissingRules(
         Acl   $acl,
         array $appliedRolePermissionsPerResource,
-    ) {
+    ): void {
         $consolidatedDeniedRoleIds = array_unique(
             array_merge(
                 ...array_column($appliedRolePermissionsPerResource, 'deny')
@@ -217,9 +173,6 @@ class Rule implements LoaderInterface
 
     /**
      * Get application ACL rules array for a specific role.
-     *
-     * @param int $roleId
-     * @return array
      */
     private function getRulesArrayForRole(int $roleId): array
     {
@@ -246,9 +199,6 @@ class Rule implements LoaderInterface
 
     /**
      * Resolve the group role id for a given role id
-     *
-     * @param int $roleId
-     * @return int
      */
     private function resolveGroupRoleId(int $roleId): int
     {
@@ -270,11 +220,6 @@ class Rule implements LoaderInterface
 
     /**
      * Apply rule to ACL and return applied permissions per resource
-     *
-     * @param array $rule
-     * @param Acl $acl
-     * @param array $appliedRolePermissionsPerResource
-     * @return array
      */
     private function getAppliedRolePermissionsPerResource(
         array $rule,
@@ -283,14 +228,12 @@ class Rule implements LoaderInterface
     ): array {
         $role = $rule['role_id'];
         $resource = $rule['resource_id'];
-        $privileges = !empty($rule['privileges']) ? explode(',', $rule['privileges']) : null;
+        $privileges = !empty($rule['privileges']) ? explode(',', (string) $rule['privileges']) : null;
 
         if ($acl->hasResource($resource)) {
 
-            $appliedRolePermissionsPerResource[$resource]['allow'] =
-                $appliedRolePermissionsPerResource[$resource]['allow'] ?? [];
-            $appliedRolePermissionsPerResource[$resource]['deny'] =
-                $appliedRolePermissionsPerResource[$resource]['deny'] ?? [];
+            $appliedRolePermissionsPerResource[$resource]['allow'] ??= [];
+            $appliedRolePermissionsPerResource[$resource]['deny'] ??= [];
 
             if ($rule['permission'] == 'allow') {
                 if ($resource === $this->_rootResource->getId()) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Email\ViewModel\Template\Preview\Form;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Email\ViewModel\Template\Preview\Form
@@ -37,7 +38,7 @@ class FormTest extends TestCase
 
         $this->form = $objectManagerHelper->getObject(
             Form::class,
-            ['request'=> $this->requestMock]
+            ['request' => $this->requestMock]
         );
     }
 
@@ -96,11 +97,11 @@ class FormTest extends TestCase
             'get_request_valid' => [
                 'httpMethod' => 'GET',
                 'httpParams' => [
-                    ['id', null, 1]
+                    ['id', null, 1],
                 ],
                 'expectedFields' => [
-                    'id' => 1
-                ]
+                    'id' => 1,
+                ],
             ],
             'get_request_valid_ignore_params' => [
                 'httpMethod' => 'GET',
@@ -108,25 +109,25 @@ class FormTest extends TestCase
                     ['id', null, 1],
                     ['text', null, 'Hello World'],
                     ['type', null, 2],
-                    ['styles', null, '']
+                    ['styles', null, ''],
                 ],
                 'expectedFields' => [
-                    'id' => 1
-                ]
+                    'id' => 1,
+                ],
             ],
             'post_request_valid' => [
                 'httpMethod' => 'POST',
                 'httpParams' => [
                     ['text', null, 'Hello World'],
                     ['type', null, 2],
-                    ['styles', null, '']
+                    ['styles', null, ''],
                 ],
                 'expectedFields' => [
                     'text' => 'Hello World',
                     'type' => 2,
-                    'styles' => ''
-                ]
-            ]
+                    'styles' => '',
+                ],
+            ],
         ];
     }
 
@@ -141,16 +142,16 @@ class FormTest extends TestCase
                 'httpParams' => [
                     ['text', null, 'Hello World'],
                     ['type', null, 2],
-                    ['styles', null, '']
-                ]
+                    ['styles', null, ''],
+                ],
             ],
             'post_request_missing_text' => [
                 'httpMethod' => 'POST',
                 'httpParams' => [
                     ['type', null, 2],
-                    ['styles', null, '']
-                ]
-            ]
+                    ['styles', null, ''],
+                ],
+            ],
         ];
     }
 }

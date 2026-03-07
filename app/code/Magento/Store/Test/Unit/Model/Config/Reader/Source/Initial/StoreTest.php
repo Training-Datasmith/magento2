@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -29,9 +30,9 @@ class StoreTest extends TestCase
             ->willReturn([
                 'general' => [
                     'locale' => [
-                        'code'=> 'en_US'
-                    ]
-                ]
+                        'code' => 'en_US',
+                    ],
+                ],
             ]);
         $websiteSource = $this->getMockBuilder(Website::class)
             ->disableOriginalConstructor()
@@ -42,9 +43,9 @@ class StoreTest extends TestCase
             ->willReturn([
                 'general' => [
                     'locale' => [
-                        'code'=> 'ru_RU'
-                    ]
-                ]
+                        'code' => 'ru_RU',
+                    ],
+                ],
             ]);
         $storeManager = $this->createMock(StoreManagerInterface::class);
         $store = $this->getMockBuilder(\Magento\Store\Model\Store::class)
@@ -72,9 +73,9 @@ class StoreTest extends TestCase
             [
                 'general' => [
                     'locale' => [
-                        'code'=> 'en_US'
-                    ]
-                ]
+                        'code' => 'en_US',
+                    ],
+                ],
             ],
             $storeSource->get($scopeCode)
         );

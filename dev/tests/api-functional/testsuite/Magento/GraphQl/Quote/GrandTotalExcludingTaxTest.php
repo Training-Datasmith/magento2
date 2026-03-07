@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
                 'uses_per_customer' => 1,
                 'discount_amount' => 10,
                 'stop_rules_processing' => false,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(ProductTaxClassFixture::class, as: 'product_tax_class'),
@@ -77,7 +78,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -85,7 +86,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -110,20 +111,20 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
                 'cart' => [
                     'prices' => [
                         'grand_total' => [
-                            'value' => 19.8
+                            'value' => 19.8,
                         ],
                         'grand_total_excluding_tax' => [
-                            'value' => 18
+                            'value' => 18,
                         ],
                         'applied_taxes' => [
                             [
                                 'amount' => [
-                                    'value' => 1.8
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'value' => 1.8,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -146,7 +147,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -154,7 +155,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -179,20 +180,20 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
                 'cart' => [
                     'prices' => [
                         'grand_total' => [
-                            'value' => 22
+                            'value' => 22,
                         ],
                         'grand_total_excluding_tax' => [
-                            'value' => 20
+                            'value' => 20,
                         ],
                         'applied_taxes' => [
                             [
                                 'amount' => [
-                                    'value' => 2
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'value' => 2,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -214,7 +215,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -222,7 +223,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -246,23 +247,23 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
                         'prices' => [
                             'grand_total' => [
                                 'value' => 16,
-                                'currency' => 'USD'
+                                'currency' => 'USD',
                             ],
                             'grand_total_excluding_tax' => [
                                 'value' => 15,
-                                'currency' => 'USD'
+                                'currency' => 'USD',
                             ],
                             'applied_taxes' => [
                                 [
                                     'amount' => [
                                         'value' => 1,
-                                        'currency' => 'USD'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'currency' => 'USD',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -284,7 +285,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -292,7 +293,7 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -315,16 +316,16 @@ class GrandTotalExcludingTaxTest extends GraphQlAbstract
                         'prices' => [
                             'grand_total' => [
                                 'value' => 15,
-                                'currency' => 'USD'
+                                'currency' => 'USD',
                             ],
                             'grand_total_excluding_tax' => [
                                 'value' => 15,
-                                'currency' => 'USD'
+                                'currency' => 'USD',
                             ],
-                            'applied_taxes' => []
-                        ]
-                    ]
-                ]
+                            'applied_taxes' => [],
+                        ],
+                    ],
+                ],
             ],
             $response
         );

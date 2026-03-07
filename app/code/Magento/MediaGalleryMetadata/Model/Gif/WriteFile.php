@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryMetadata\Model\SegmentNames;
 use Magento\MediaGalleryMetadataApi\Model\FileInterface;
-use Magento\MediaGalleryMetadataApi\Model\WriteFileInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterface;
+use Magento\MediaGalleryMetadataApi\Model\WriteFileInterface;
 
 /**
  * File segments writer
@@ -82,7 +83,7 @@ class WriteFile implements WriteFileInterface
                 $segment->getData()
             );
         }
-        $this->getDriver()->fileWrite($resource, pack("C", ord(";")));
+        $this->getDriver()->fileWrite($resource, pack('C', ord(';')));
     }
 
     /**

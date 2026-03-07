@@ -1,22 +1,23 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace Magento\WishlistGraphQl\Model\CartItems;
 
-use Magento\Wishlist\Model\Item;
 use Magento\Framework\GraphQl\Query\Uid;
+use Magento\Wishlist\Model\Item;
 
 /**
  * Data provider for configurable product cart item request
  */
 class ConfigurableDataProvider implements CartItemsRequestDataProviderInterface
 {
-    /** 
-     * @var Uid 
+    /**
+     * @var Uid
      */
     private $uidEncoder;
 

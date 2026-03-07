@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -173,7 +174,7 @@ class SignUpCommandTest extends TestCase
             'access-token' => 'thisisaccesstoken',
             'integration-token' => 'thisisintegrationtoken',
             'method' => Request::METHOD_POST,
-            'body'=> ['token' => 'thisisintegrationtoken','url' => 'http://www.mystore.com'],
+            'body' => ['token' => 'thisisintegrationtoken','url' => 'http://www.mystore.com'],
         ];
     }
 }

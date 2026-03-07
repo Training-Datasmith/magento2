@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class Collector
         string $compareType,
         int $recursionLevel,
         int $arrayRecursionLevel = 100
-    ) : array {
+    ): array {
         return array_map(
             function ($element) use (
                 $compareType,
@@ -136,7 +137,7 @@ class Collector
         $objectManager = $this->objectManager;
         if (!($objectManager instanceof StateObjectManagerInterface)) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception("Not the correct type of ObjectManager");
+            throw new \Exception('Not the correct type of ObjectManager');
         }
         // Calling _resetState helps us avoid adding skip/filter for these classes.
         $objectManager->_resetState();

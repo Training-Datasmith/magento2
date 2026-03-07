@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\TemplateEngine\Xhtml\Compiler\Element;
 
 use Magento\Framework\DataObject;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\TemplateEngine\Xhtml\CompilerInterface;
 use Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Element\ElementInterface;
+use Magento\Framework\View\TemplateEngine\Xhtml\CompilerInterface;
 
 /**
  * Class Content

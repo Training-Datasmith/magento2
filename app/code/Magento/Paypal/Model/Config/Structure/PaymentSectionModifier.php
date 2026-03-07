@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -101,8 +103,8 @@ class PaymentSectionModifier
                 $section => [
                     'parent' => $data['displayIn'],
                     'section' => $section,
-                    'data' => $data
-                ]
+                    'data' => $data,
+                ],
             ];
         }
 

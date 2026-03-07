@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -152,12 +153,11 @@ class BaseTest extends \PHPUnit\Framework\TestCase
         $requestMock->expects($this->atLeastOnce())->method('getModuleName')->willReturn($moduleFrontName);
         $requestMock->expects($this->atLeastOnce())->method('getControllerName')->willReturn($actionPath);
         $requestMock->expects($this->atLeastOnce())->method('getActionName')->willReturn($actionName);
-        if ($moduleFrontName!=null && $moduleFrontName!='') {
+        if ($moduleFrontName != null && $moduleFrontName != '') {
             $requestMock->expects($this->atLeastOnce())
                 ->method('getPathInfo')
                 ->willReturn($moduleFrontName . '/' . $actionPath . '/' . $actionName . '/key/val/key2/val2/');
-        }
-        else {
+        } else {
             $requestMock->expects($this->atLeastOnce())->method('getPathInfo')->willReturn('');
         }
 
@@ -192,15 +192,24 @@ class BaseTest extends \PHPUnit\Framework\TestCase
         $moduleName = 'module_name';
 
         $requestMock = static fn (self $testCase) => $testCase->getMockForHttpClass(
-            $moduleFrontName, $actionPath, $actionName, false
+            $moduleFrontName,
+            $actionPath,
+            $actionName,
+            false
         );
 
         $emptyRequestMock = static fn (self $testCase) => $testCase->getMockForHttpClass(
-            '', '', '', false
+            '',
+            '',
+            '',
+            false
         );
 
         $emptyRequestMock2 = static fn (self $testCase) => $testCase->getMockForHttpClass(
-            '', '', '', true
+            '',
+            '',
+            '',
+            true
         );
 
         return [
@@ -210,7 +219,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
                 $moduleFrontName,
                 $actionPath,
                 $actionName,
-                $moduleName
+                $moduleName,
             ],
             [
                 $emptyRequestMock,
@@ -218,7 +227,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
                 $moduleFrontName,
                 $actionPath,
                 $actionName,
-                $moduleName
+                $moduleName,
             ],
             [
                 $emptyRequestMock2,
@@ -226,7 +235,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
                 $moduleFrontName,
                 $actionPath,
                 $actionName,
-                $moduleName
+                $moduleName,
             ],
         ];
     }
@@ -277,12 +286,11 @@ class BaseTest extends \PHPUnit\Framework\TestCase
             $requestMock->expects($this->atLeastOnce())->method('getControllerName')->willReturn($actionPath);
             $requestMock->expects($this->atLeastOnce())->method('getActionName')->willReturn($actionName);
         }
-        if ($moduleFrontName!='') {
+        if ($moduleFrontName != '') {
             $requestMock->expects($this->atLeastOnce())
                 ->method('getPathInfo')
                 ->willReturn($moduleFrontName . '/' . $actionPath . '/' . $actionName . '/');
-        }
-        else {
+        } else {
             $requestMock->expects($this->atLeastOnce())->method('getPathInfo')->willReturn('0');
         }
 
@@ -296,15 +304,24 @@ class BaseTest extends \PHPUnit\Framework\TestCase
         $actionName = 'action_name';
 
         $requestMock1 = static fn (self $testCase) => $testCase->getMockForHttpClassTwo(
-            $moduleFrontName, $actionPath, $actionName, true
+            $moduleFrontName,
+            $actionPath,
+            $actionName,
+            true
         );
 
         $requestMock2 = static fn (self $testCase) => $testCase->getMockForHttpClassTwo(
-            $moduleFrontName, $actionPath, $actionName, false
+            $moduleFrontName,
+            $actionPath,
+            $actionName,
+            false
         );
 
         $requestMock3 = static fn (self $testCase) => $testCase->getMockForHttpClassTwo(
-            '', '', '', false
+            '',
+            '',
+            '',
+            false
         );
 
         return [
@@ -330,7 +347,7 @@ class BaseTest extends \PHPUnit\Framework\TestCase
                 '0',
                 null,
                 null,
-                null
+                null,
             ],
         ];
     }

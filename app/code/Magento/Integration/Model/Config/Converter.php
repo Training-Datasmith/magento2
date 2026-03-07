@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Config;
 
 /**
@@ -15,11 +18,11 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     /**#@+
      * Array keys for config internal representation.
      */
-    const KEY_EMAIL = 'email';
+    public const KEY_EMAIL = 'email';
 
-    const KEY_AUTHENTICATION_ENDPOINT_URL = 'endpoint_url';
+    public const KEY_AUTHENTICATION_ENDPOINT_URL = 'endpoint_url';
 
-    const KEY_IDENTITY_LINKING_URL = 'identity_link_url';
+    public const KEY_IDENTITY_LINKING_URL = 'identity_link_url';
 
     /**#@-*/
 

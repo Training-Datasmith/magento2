@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\I18n\Dictionary\Writer\Csv;
 use Magento\Setup\Module\I18n\Dictionary\Writer\Csv\Stdo;
 use Magento\Setup\Module\I18n\Factory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
 {
@@ -52,15 +53,15 @@ class FactoryTest extends TestCase
             ],
             [
                 Csv::class,
-                TESTS_TEMP_DIR . '/filename'
+                TESTS_TEMP_DIR . '/filename',
             ],
             [
                 Csv::class,
-                TESTS_TEMP_DIR . '/filename.csv'
+                TESTS_TEMP_DIR . '/filename.csv',
             ],
             [
                 Stdo::class,
-                ''
+                '',
             ],
         ];
     }

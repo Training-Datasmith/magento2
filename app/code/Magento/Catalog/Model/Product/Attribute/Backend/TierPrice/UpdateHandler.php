@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\Product\Attribute\Backend\TierPrice;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
+use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\Customer\Api\GroupManagementInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
 
 /**
  * Process tier price data for handled existing product.
@@ -129,15 +130,16 @@ class UpdateHandler extends AbstractHandler
     {
         $isChanged = false;
         foreach ($valuesToUpdate as $key => $value) {
-            if ((($value['value'])!== null
+            if ((
+                ($value['value']) !== null
                     && (float)$oldValues[$key]['price'] !== $this->localeFormat->getNumber($value['value'])
-                ) || $this->getPercentage($oldValues[$key]) !== $this->getPercentage($value)
+            ) || $this->getPercentage($oldValues[$key]) !== $this->getPercentage($value)
             ) {
                 $price = new \Magento\Framework\DataObject(
                     [
                         'value_id' => $oldValues[$key]['price_id'],
                         'value' => $value['value'],
-                        'percentage_value' => $this->getPercentage($value)
+                        'percentage_value' => $this->getPercentage($value),
                     ]
                 );
                 $this->tierPriceResource->savePriceData($price);

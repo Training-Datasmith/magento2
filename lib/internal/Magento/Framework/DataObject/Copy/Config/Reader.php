@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Fieldset configuration reader
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DataObject\Copy\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem

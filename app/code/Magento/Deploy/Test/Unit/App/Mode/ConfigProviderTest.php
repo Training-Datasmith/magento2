@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ class ConfigProviderTest extends TestCase
     public function testGetConfigs()
     {
         $expectedValue = [
-            '{{setting_path}}' => '{{setting_value}}'
+            '{{setting_path}}' => '{{setting_value}}',
         ];
         $configProvider = new ConfigProvider(
             [
                 'developer' => [
-                    'production' => $expectedValue
-                ]
+                    'production' => $expectedValue,
+                ],
             ]
         );
         $this->assertEquals($expectedValue, $configProvider->getConfigs('developer', 'production'));

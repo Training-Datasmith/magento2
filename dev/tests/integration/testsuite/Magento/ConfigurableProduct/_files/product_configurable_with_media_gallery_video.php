@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,8 +29,8 @@ $imageContentFactory = $objectManager->get(\Magento\Framework\Api\Data\ImageCont
 $imageContent = $imageContentFactory->create();
 $testImagePath = __DIR__ .'/magento_image.jpg';
 $imageContent->setBase64EncodedData(base64_encode(file_get_contents($testImagePath)));
-$imageContent->setType("image/jpeg");
-$imageContent->setName("1.jpg");
+$imageContent->setType('image/jpeg');
+$imageContent->setName('1.jpg');
 
 $video = $mediaGalleryEntryFactory->create();
 $video->setDisabled(false);

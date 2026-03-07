@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,15 +7,15 @@
 declare(strict_types=1);
 
 use Magento\Bundle\Api\Data\LinkInterfaceFactory;
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Catalog\Model\Product\Visibility;
-use Magento\CatalogInventory\Model\Stock\Item;
-use Magento\Catalog\Model\Product\Type;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Bundle\Api\Data\OptionInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\Product\Visibility;
+use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture(
     'Magento/Catalog/_files/multiple_products_with_disabled_virtual_product.php'
@@ -79,7 +80,7 @@ $product->setTypeId(Type::TYPE_BUNDLE)
                 'required' => 1,
                 'position' => 2,
                 'delete' => '',
-            ]
+            ],
         ]
     )->setBundleSelectionsData(
         [
@@ -89,29 +90,29 @@ $product->setTypeId(Type::TYPE_BUNDLE)
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 102,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 103,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 104,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
-                ]
+                    'option_id' => 1,
+                ],
             ],
             [
                 [
@@ -119,23 +120,23 @@ $product->setTypeId(Type::TYPE_BUNDLE)
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 2
+                    'option_id' => 2,
                 ],
                 [
                     'product_id' => 102,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 2
+                    'option_id' => 2,
                 ],
                 [
                     'product_id' => 103,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 2
-                ]
-            ]
+                    'option_id' => 2,
+                ],
+            ],
         ]
     );
 $productRepository = $objectManager->create(ProductRepositoryInterface::class);

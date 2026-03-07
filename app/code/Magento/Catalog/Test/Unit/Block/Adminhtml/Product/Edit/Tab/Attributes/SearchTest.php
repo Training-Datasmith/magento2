@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -121,7 +122,7 @@ class SearchTest extends TestCase
                 'resourceHelper' => $this->resourceHelperMock,
                 'collectionFactory' => $this->collectionFactoryMock,
                 'registry' => $this->registryMock,
-                'jsonHelper' => $this->jsonHelperMock
+                'jsonHelper' => $this->jsonHelperMock,
             ]
         );
     }
@@ -138,7 +139,7 @@ class SearchTest extends TestCase
             'minLength key exists' => ['minLength'],
             'ajaxOptions key exists' => ['ajaxOptions'],
             'template key exists' => ['template'],
-            'data key exists' => ['data']
+            'data key exists' => ['data'],
         ];
     }
 
@@ -156,7 +157,7 @@ class SearchTest extends TestCase
         $groupId = 10;
         $suggestedAttributes = [
             ['id' => 1, 'label' => 'Color', 'code' => 'color'],
-            ['id' => 2, 'label' => 'Size', 'code' => 'size']
+            ['id' => 2, 'label' => 'Size', 'code' => 'size'],
         ];
 
         $this->setupProductRegistryMock($templateId);
@@ -283,7 +284,7 @@ class SearchTest extends TestCase
         $templateId = 4;
         $suggestedAttributes = [
             ['id' => 1, 'label' => 'Color', 'code' => 'color'],
-            ['id' => 2, 'label' => 'Size', 'code' => 'size']
+            ['id' => 2, 'label' => 'Size', 'code' => 'size'],
         ];
 
         $this->setupProductRegistryMock($templateId);
@@ -311,8 +312,8 @@ class SearchTest extends TestCase
                 'templateId' => 4,
                 'expectedAttributes' => [
                     ['id' => 1, 'label' => 'Color', 'code' => 'color'],
-                    ['id' => 2, 'label' => 'Column', 'code' => 'column']
-                ]
+                    ['id' => 2, 'label' => 'Column', 'code' => 'column'],
+                ],
             ],
             'with empty label part' => [
                 'labelPart' => '',
@@ -321,9 +322,9 @@ class SearchTest extends TestCase
                 'expectedAttributes' => [
                     ['id' => 1, 'label' => 'Color', 'code' => 'color'],
                     ['id' => 2, 'label' => 'Size', 'code' => 'size'],
-                    ['id' => 3, 'label' => 'Material', 'code' => 'material']
-                ]
-            ]
+                    ['id' => 3, 'label' => 'Material', 'code' => 'material'],
+                ],
+            ],
         ];
     }
 
@@ -371,7 +372,7 @@ class SearchTest extends TestCase
         $escapedLabelPart = '%test%';
         $templateId = 5;
         $expectedAttributes = [
-            ['id' => 10, 'label' => 'Test Attribute', 'code' => 'test_attribute']
+            ['id' => 10, 'label' => 'Test Attribute', 'code' => 'test_attribute'],
         ];
 
         // Mock resource helper

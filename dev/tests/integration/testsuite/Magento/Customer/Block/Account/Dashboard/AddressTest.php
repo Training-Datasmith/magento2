@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -107,7 +109,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         return [
             '0' => [0, 'You have not set a default shipping address.'],
             '1' => [1, $expected],
-            '5' => [5, 'You have not set a default shipping address.']
+            '5' => [5, 'You have not set a default shipping address.'],
         ];
     }
 

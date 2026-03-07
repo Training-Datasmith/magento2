@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,5 +36,5 @@ return [
             'sample_url' => 'sample_url',
             'sort_order' => 'sort_order',
         ],
-    ]
+    ],
 ];

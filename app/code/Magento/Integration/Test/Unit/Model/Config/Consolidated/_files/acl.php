@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ return [
                                 'id' => 'Magento_Customer::manageChild2',
                                 'title' => 'Edit Customer',
                                 'sortOrder' => '10',
-                                'children' => []
+                                'children' => [],
                             ],
                         ],
                     ],
@@ -55,7 +56,7 @@ return [
                                 'id' => 'Magento_SalesRule::quoteChild2',
                                 'title' => 'Edit Customer',
                                 'sortOrder' => '10',
-                                'children' => []
+                                'children' => [],
                             ],
                         ],
                     ],
@@ -64,8 +65,8 @@ return [
             [
                 'id' => 'Magento_Sales::sales',
                 'title' => 'Magento Webapi',
-                'children' => []
-            ]
-        ]
-    ]
+                'children' => [],
+            ],
+        ],
+    ],
 ];

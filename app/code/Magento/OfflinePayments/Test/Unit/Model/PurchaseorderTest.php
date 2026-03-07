@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class PurchaseorderTest extends TestCase
     public function testAssignData()
     {
         $data = new DataObject([
-            'po_number' => '12345'
+            'po_number' => '12345',
         ]);
 
         $instance = $this->createMock(PaymentInfo::class);

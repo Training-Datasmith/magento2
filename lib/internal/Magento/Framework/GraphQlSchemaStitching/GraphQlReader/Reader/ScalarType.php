@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching\GraphQlReader\Reader;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 
 /**
  * Composite configuration reader to handle the enum type meta
@@ -34,7 +35,7 @@ class ScalarType implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         if ($typeMeta instanceof \GraphQL\Type\Definition\ScalarType) {
             $result = [
@@ -63,7 +64,7 @@ class ScalarType implements TypeMetaReaderInterface
      * @param \GraphQL\Type\Definition\Type $interfaceTypeMeta
      * @return string
      */
-    private function getTypeResolver(\GraphQL\Type\Definition\Type $interfaceTypeMeta) : string
+    private function getTypeResolver(\GraphQL\Type\Definition\Type $interfaceTypeMeta): string
     {
         /** @var \GraphQL\Language\AST\NodeList $directives */
         $directives = $interfaceTypeMeta->astNode->directives;

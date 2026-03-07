@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ class Provider implements ProviderInterface
     /**
      * Cache key for ACL roles cache
      */
-    const ACL_RESOURCES_CACHE_KEY = 'provider_acl_resources_cache';
+    public const ACL_RESOURCES_CACHE_KEY = 'provider_acl_resources_cache';
 
     /**
      * @var \Magento\Framework\Config\ReaderInterface

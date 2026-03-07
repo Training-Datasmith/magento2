@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Console\Command;
 
 use Magento\Framework\App\MaintenanceMode;

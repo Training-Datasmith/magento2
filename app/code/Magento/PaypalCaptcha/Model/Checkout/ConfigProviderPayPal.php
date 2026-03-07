@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class ConfigProviderPayPal implements ConfigProviderInterface
             'imageSrc' => $this->getImageSrc(self::$formId),
             'refreshUrl' => $this->getRefreshUrl(),
             'isRequired' => $this->isRequired(self::$formId),
-            'timestamp' => time()
+            'timestamp' => time(),
         ];
 
         return $config;

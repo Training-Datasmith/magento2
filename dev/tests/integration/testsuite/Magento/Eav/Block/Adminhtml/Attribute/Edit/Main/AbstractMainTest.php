@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\Eav\Block\Adminhtml\Attribute\Edit\Main\AbstractMain
  */
+
 namespace Magento\Eav\Block\Adminhtml\Attribute\Edit\Main;
 
 /**
@@ -40,7 +43,7 @@ class AbstractMainTest extends \PHPUnit\Framework\TestCase
                 $objectManager->get(\Magento\Eav\Helper\Data::class),
                 $objectManager->get(\Magento\Config\Model\Config\Source\YesnoFactory::class),
                 $objectManager->get(\Magento\Eav\Model\Adminhtml\System\Config\Source\InputtypeFactory::class),
-                $objectManager->get(\Magento\Eav\Block\Adminhtml\Attribute\PropertyLocker::class)
+                $objectManager->get(\Magento\Eav\Block\Adminhtml\Attribute\PropertyLocker::class),
             ])
             ->onlyMethods(['_prepareForm'])     // list at least one abstract method
             ->getMock();

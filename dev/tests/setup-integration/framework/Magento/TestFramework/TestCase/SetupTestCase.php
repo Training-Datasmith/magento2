@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class SetupTestCase extends \PHPUnit\Framework\TestCase implements MutableDataIn
         }
 
         $this->dbKey = DataProviderFromFile::FALLBACK_VALUE;
-        
+
         try {
             foreach (DataProviderFromFile::POSSIBLE_SUFFIXES as $possibleVersion => $suffix) {
                 if ($this->getSqlVersionProvider()->isMysqlGte8029()) {

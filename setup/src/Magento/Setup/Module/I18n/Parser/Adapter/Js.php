@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter;
 
 use Magento\Framework\Exception\FileSystemException;
@@ -58,11 +61,11 @@ class Js extends AbstractAdapter
             while (($line = $this->fileReadLine($fileHandle, 0)) !== false) {
                 $lineNumber++;
                 $fileRow = preg_replace('/"\s+\+"|"\s+\+\s+\"|"\+\s+\"|"\+"/', '', $line);
-                $fileRow = preg_replace("/'\s+\+'|'\s+\+\s+\'|'\+\s+\'|'\+'/", "", $fileRow);
+                $fileRow = preg_replace("/'\s+\+'|'\s+\+\s+\'|'\+\s+\'|'\+'/", '', $fileRow);
                 $results = [];
                 $regexes = [
                     static::REGEX_MAGE_TRANSLATE,
-                    static::REGEX_TRANSLATE_FUNCTION
+                    static::REGEX_TRANSLATE_FUNCTION,
                 ];
 
                 foreach ($regexes as $regex) {

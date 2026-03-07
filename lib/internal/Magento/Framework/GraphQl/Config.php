@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class Config implements ConfigInterface
     /**
      * @inheritdoc
      */
-    public function getConfigElement(string $configElementName) : ConfigElementInterface
+    public function getConfigElement(string $configElementName): ConfigElementInterface
     {
         $data = $this->configData->get($configElementName);
         if (!isset($data['type'])) {
@@ -74,7 +75,7 @@ class Config implements ConfigInterface
     /**
      * @inheritdoc
      */
-    public function getDeclaredTypes() : array
+    public function getDeclaredTypes(): array
     {
         $types = [];
         foreach ($this->configData->get(null) as $item) {

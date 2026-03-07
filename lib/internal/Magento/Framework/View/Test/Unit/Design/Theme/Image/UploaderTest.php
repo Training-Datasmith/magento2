@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,17 +9,18 @@ declare(strict_types=1);
 /**
  * Test for theme image uploader
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme\Image;
 
-use Magento\Framework\File\Http;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\File\Http;
 use Magento\Framework\File\UploaderFactory;
 use Magento\Framework\Filesystem;
 use Magento\Framework\HTTP\Adapter\FileTransferFactory;
 use Magento\Framework\View\Design\Theme\Image\Uploader;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class UploaderTest extends TestCase
 {
@@ -99,7 +101,7 @@ class UploaderTest extends TestCase
                 'checkExtension' => true,
                 'save' => true,
                 'result' => false,
-                'exception' => null
+                'exception' => null,
             ],
             [
                 'isUploaded' => true,
@@ -107,7 +109,7 @@ class UploaderTest extends TestCase
                 'checkExtension' => true,
                 'save' => true,
                 'result' => false,
-                'exception' => LocalizedException::class
+                'exception' => LocalizedException::class,
             ],
             [
                 'isUploaded' => true,
@@ -115,7 +117,7 @@ class UploaderTest extends TestCase
                 'checkExtension' => false,
                 'save' => true,
                 'result' => false,
-                'exception' => LocalizedException::class
+                'exception' => LocalizedException::class,
             ],
             [
                 'isUploaded' => true,
@@ -123,8 +125,8 @@ class UploaderTest extends TestCase
                 'checkExtension' => true,
                 'save' => false,
                 'result' => false,
-                'exception' => LocalizedException::class
-            ]
+                'exception' => LocalizedException::class,
+            ],
         ];
     }
 

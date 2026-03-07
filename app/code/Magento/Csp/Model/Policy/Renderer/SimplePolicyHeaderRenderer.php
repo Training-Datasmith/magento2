@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Policy\Renderer;
 
-use Magento\Csp\Api\Data\ModeConfiguredInterface;
 use Magento\Csp\Api\Data\PolicyInterface;
 use Magento\Csp\Api\ModeConfigManagerInterface;
 use Magento\Csp\Api\PolicyRendererInterface;
@@ -50,8 +50,8 @@ class SimplePolicyHeaderRenderer implements PolicyRendererInterface
                 'group' => 'report-endpoint',
                 'max_age' => 10886400,
                 'endpoints' => [
-                    ['url' => $config->getReportUri()]
-                ]
+                    ['url' => $config->getReportUri()],
+                ],
             ];
             $value .= ' report-uri ' .$config->getReportUri() .';';
             $value .= ' report-to '. $reportToData['group'] .';';

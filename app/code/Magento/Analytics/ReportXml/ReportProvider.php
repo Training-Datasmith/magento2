@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,25 +15,7 @@ use PDO;
  */
 class ReportProvider implements BatchReportProviderInterface
 {
-    /**
-     * @var QueryFactory
-     */
-    private $queryFactory;
-
-    /**
-     * @var ConnectionFactory
-     */
-    private $connectionFactory;
-
-    /**
-     * @var IteratorFactory
-     */
-    private $iteratorFactory;
-
-    /**
-     * @var int
-     */
-    private $currentPosition = 0;
+    private int $currentPosition = 0;
 
     /**
      * @var int
@@ -60,25 +44,14 @@ class ReportProvider implements BatchReportProviderInterface
 
     /**
      * ReportProvider constructor.
-     *
-     * @param QueryFactory $queryFactory
-     * @param ConnectionFactory $connectionFactory
-     * @param IteratorFactory $iteratorFactory
      */
-    public function __construct(
-        QueryFactory $queryFactory,
-        ConnectionFactory $connectionFactory,
-        IteratorFactory $iteratorFactory
-    ) {
-        $this->queryFactory = $queryFactory;
-        $this->connectionFactory = $connectionFactory;
-        $this->iteratorFactory = $iteratorFactory;
+    public function __construct(private readonly QueryFactory $queryFactory, private readonly ConnectionFactory $connectionFactory, private readonly IteratorFactory $iteratorFactory)
+    {
     }
 
     /**
      * Returns custom iterator name for report. Null for default
      *
-     * @param Query $query
      * @return string|null
      */
     private function getIteratorName(Query $query)
@@ -145,21 +118,21 @@ class ReportProvider implements BatchReportProviderInterface
     {
         $config = $this->dataSelect->getConfig();
         $tableName = $config['source']['name'] ?? null;
-        $analyticTables = ["customer_entity", "sales_order", "sales_order_address", "quote", "catalog_product_entity"];
-        if ($tableName) {
-            if (in_array($tableName, $analyticTables)) {
-                return "entity_id";
-            } elseif ($tableName == "sales_order_item") {
-                return "item_id";
-            }
+        $analyticTables = ['customer_entity', 'sales_order', 'sales_order_address', 'quote', 'catalog_product_entity'];
+        if (!$tableName) {
+            return null;
+        }
+        if (in_array($tableName, $analyticTables)) {
+            return 'entity_id';
+        }
+        if ($tableName == 'sales_order_item') {
+            return 'item_id';
         }
         return null;
     }
 
     /**
      * Fallback to offset-based pagination when cursor column cannot be detected
-     *
-     * @return \IteratorIterator
      */
     private function getBatchReportWithOffset(): \IteratorIterator
     {

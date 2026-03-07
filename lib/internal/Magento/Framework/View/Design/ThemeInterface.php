@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design;
 
 /**
@@ -16,27 +19,27 @@ interface ThemeInterface
     /**
      * Separator between theme_path elements
      */
-    const PATH_SEPARATOR = '/';
+    public const PATH_SEPARATOR = '/';
 
     /**
      * Separator between parts of full theme code (package and theme code)
      */
-    const CODE_SEPARATOR = '/';
+    public const CODE_SEPARATOR = '/';
 
     /**
      * Physical theme type
      */
-    const TYPE_PHYSICAL = 0;
+    public const TYPE_PHYSICAL = 0;
 
     /**
      * Virtual theme type
      */
-    const TYPE_VIRTUAL = 1;
+    public const TYPE_VIRTUAL = 1;
 
     /**
      * Staging theme type
      */
-    const TYPE_STAGING = 2;
+    public const TYPE_STAGING = 2;
 
     /**
      * Retrieve code of an area a theme belongs to

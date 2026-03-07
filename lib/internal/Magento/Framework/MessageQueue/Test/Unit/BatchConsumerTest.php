@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -122,7 +123,7 @@ class BatchConsumerTest extends TestCase
                 'mergerFactory' => $this->mergerFactory,
                 'resource' => $this->resource,
                 'batchSize' => $this->batchSize,
-                'messageProcessorLoader' => $this->messageProcessorLoader
+                'messageProcessorLoader' => $this->messageProcessorLoader,
             ]
         );
 

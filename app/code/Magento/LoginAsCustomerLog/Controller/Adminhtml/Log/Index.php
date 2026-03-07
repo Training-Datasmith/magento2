@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ use Magento\LoginAsCustomerApi\Api\ConfigInterface;
  */
 class Index extends Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Magento_LoginAsCustomerLog::login_log';
+    public const ADMIN_RESOURCE = 'Magento_LoginAsCustomerLog::login_log';
 
     /**
      * @var ConfigInterface

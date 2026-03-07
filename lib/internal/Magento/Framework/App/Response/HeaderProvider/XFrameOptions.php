@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Response\HeaderProvider;
 
-use \Magento\Framework\App\Response\Http;
+use Magento\Framework\App\Response\Http;
 
 /**
  * Adds an X-FRAME-OPTIONS header to HTTP responses to safeguard against click-jacking.
@@ -13,10 +16,10 @@ use \Magento\Framework\App\Response\Http;
 class XFrameOptions extends \Magento\Framework\App\Response\HeaderProvider\AbstractHeaderProvider
 {
     /** Deployment config key for frontend x-frame-options header value */
-    const DEPLOYMENT_CONFIG_X_FRAME_OPT = 'x-frame-options';
+    public const DEPLOYMENT_CONFIG_X_FRAME_OPT = 'x-frame-options';
 
     /** Always send SAMEORIGIN in backend x-frame-options header */
-    const BACKEND_X_FRAME_OPT = 'SAMEORIGIN';
+    public const BACKEND_X_FRAME_OPT = 'SAMEORIGIN';
 
     /**
      * x-frame-options Header name

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -441,7 +442,7 @@ class Http extends Request implements
         $this->setPost(new Parameters([]));
         $this->setFiles(new Parameters([]));
         $this->module = null;
-        $this->controller= null;
+        $this->controller = null;
         $this->action = null;
         $this->pathInfo = '';
         $this->requestString = '';

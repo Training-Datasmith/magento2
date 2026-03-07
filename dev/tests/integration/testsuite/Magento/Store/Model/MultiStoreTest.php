@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class MultiStoreTest extends \PHPUnit\Framework\TestCase
             [
                 'store_id' => '$store2.id$',
                 'website_id' => '$website2.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             as: 'customer1'
         ),
@@ -79,19 +80,19 @@ class MultiStoreTest extends \PHPUnit\Framework\TestCase
             [
                 'store_id' => '$store3.id$',
                 'website_id' => '$website3.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             as: 'customer2'
         ),
     ]
-    public function testStoreSpecificEmailInFromHeader() :void
+    public function testStoreSpecificEmailInFromHeader(): void
     {
         $customerOne = $this->fixtures->get('customer1');
         $storeOne = $this->fixtures->get('store2');
         $customerOneData = [
             'email' => $customerOne->getDataByKey('email'),
             'storeId' => $storeOne->getData('store_id'),
-            'storeEmail' => 'store_one@example.com'
+            'storeEmail' => 'store_one@example.com',
         ];
 
         $this->subscribeNewsLetterAndAssertFromHeader($customerOneData);
@@ -101,7 +102,7 @@ class MultiStoreTest extends \PHPUnit\Framework\TestCase
         $customerTwoData = [
             'email' => $customerTwo->getDataByKey('email'),
             'storeId' => $storeTwo->getData('store_id'),
-            'storeEmail' => 'store_two@example.com'
+            'storeEmail' => 'store_two@example.com',
         ];
 
         $this->subscribeNewsLetterAndAssertFromHeader($customerTwoData);
@@ -115,7 +116,7 @@ class MultiStoreTest extends \PHPUnit\Framework\TestCase
      */
     private function subscribeNewsLetterAndAssertFromHeader(
         $customerData
-    ) :void {
+    ): void {
         /** @var Subscriber $subscriber */
         $subscriber = $this->objectManager->create(Subscriber::class);
         $subscriber->subscribe($customerData['email']);
@@ -130,12 +131,12 @@ class MultiStoreTest extends \PHPUnit\Framework\TestCase
             ],
         ])->setTemplateOptions([
             'area' => Area::AREA_FRONTEND,
-            'store' => (int) $customerData['storeId']
+            'store' => (int) $customerData['storeId'],
         ])
         ->setFromByScope(
             [
                 'email' => $customerData['storeEmail'],
-                'name' => 'Store Email Name'
+                'name' => 'Store Email Name',
             ],
             (int) $customerData['storeId']
         )

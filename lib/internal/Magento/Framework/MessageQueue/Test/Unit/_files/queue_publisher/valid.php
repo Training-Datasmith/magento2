@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ return [
         'connections' => [
             '' => ['name' => null,
             'exchange' => 'magento',
-            'disabled' => false
-            ]
-        ]
+            'disabled' => false,
+            ],
+        ],
     ],
     'top02' => [
         'topic' => 'top02',
@@ -24,9 +25,9 @@ return [
         'connections' => [
             '' => ['name' => null,
                 'exchange' => 'magento',
-                'disabled' => false
-            ]
-        ]
+                'disabled' => false,
+            ],
+        ],
     ],
     'top03' => [
         'topic' => 'top03',
@@ -35,17 +36,17 @@ return [
         'connections' => [
             '' => ['name' => null,
                 'exchange' => 'magento',
-                'disabled' => false
-            ]
-        ]
+                'disabled' => false,
+            ],
+        ],
     ],
     'top04' => [
         'topic' => 'top04',
         'queue' => null,
         'disabled' => false,
         'connections' => [
-            'amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false]
-        ]
+            'amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false],
+        ],
     ],
     'top05' => [
         'topic' => 'top05',
@@ -54,7 +55,7 @@ return [
         'connections' => [
             'amqp' => ['name' => 'amqp', 'exchange' => 'exch01', 'disabled' => false],
             'db' => ['name' => 'db', 'exchange' => 'exch02', 'disabled' => true],
-        ]
+        ],
     ],
     'top06' => [
         'topic' => 'top06',
@@ -62,7 +63,7 @@ return [
         'disabled' => true,
         'connections' => [
             'amqp' => ['name' => 'amqp', 'exchange' => 'exch01', 'disabled' => false],
-            'db' => ['name' => 'db', 'exchange' => 'exch02', 'disabled' => true]
-        ]
+            'db' => ['name' => 'db', 'exchange' => 'exch02', 'disabled' => true],
+        ],
     ],
 ];

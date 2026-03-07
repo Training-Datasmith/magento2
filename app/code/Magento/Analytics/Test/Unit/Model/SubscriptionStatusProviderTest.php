@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Analytics\Model\SubscriptionStatusProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\FlagManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SubscriptionStatusProviderTest extends TestCase
@@ -96,13 +97,13 @@ class SubscriptionStatusProviderTest extends TestCase
             'Subscription update doesn\'t active' => [
                 'flagManagerData' => [
                     [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE, null],
-                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null]
+                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null],
                 ],
             ],
             'Subscription update is active' => [
                 'flagManagerData' => [
                     [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE, 'http://store.com'],
-                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null]
+                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null],
                 ],
             ],
         ];
@@ -136,21 +137,21 @@ class SubscriptionStatusProviderTest extends TestCase
             'Subscription update doesn\'t active and the token does not exist' => [
                 'flagManagerData' => [
                     [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE, null],
-                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, 45]
+                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, 45],
                 ],
                 'isTokenExist' => false,
             ],
             'Subscription update is active and the token does not exist' => [
                 'flagManagerData' => [
                     [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE, 'http://store.com'],
-                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, 45]
+                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, 45],
                 ],
                 'isTokenExist' => false,
             ],
             'Subscription update is active and token exist' => [
                 'flagManagerData' => [
                     [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE, 'http://store.com'],
-                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null]
+                    [SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE, null],
                 ],
                 'isTokenExist' => true,
             ],

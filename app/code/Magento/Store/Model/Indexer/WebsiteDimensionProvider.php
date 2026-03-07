@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Store\Model\Indexer;
 
 use Magento\Framework\Indexer\Dimension;
-use Magento\Store\Model\ResourceModel\Website\CollectionFactory as WebsiteCollectionFactory;
 use Magento\Framework\Indexer\DimensionFactory;
 use Magento\Framework\Indexer\DimensionProviderInterface;
+use Magento\Store\Model\ResourceModel\Website\CollectionFactory as WebsiteCollectionFactory;
 use Magento\Store\Model\Store;
 
 class WebsiteDimensionProvider implements DimensionProviderInterface
@@ -19,7 +20,7 @@ class WebsiteDimensionProvider implements DimensionProviderInterface
      * Name for website dimension for multidimensional indexer
      * 'ws' - stands for 'website_store'
      */
-    const DIMENSION_NAME = 'ws';
+    public const DIMENSION_NAME = 'ws';
 
     /**
      * @var WebsiteCollectionFactory

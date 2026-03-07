@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product;
 
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Controller\Adminhtml\Product\Builder;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Catalog\Controller\Adminhtml\Product\Builder;
-use Magento\Backend\App\Action\Context;
 
 /**
  * Class Wizard
@@ -22,7 +25,7 @@ class Wizard extends Action implements HttpPostActionInterface, HttpGetActionInt
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var Builder

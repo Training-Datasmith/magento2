@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector;
 
 use Laminas\Http\Request;
@@ -19,71 +22,16 @@ use Psr\Log\LoggerInterface;
  */
 class UpdateCommand implements CommandInterface
 {
-    /**
-     * @var string
-     */
-    private $updateUrlPath = 'analytics/url/update';
+    private string $updateUrlPath = 'analytics/url/update';
 
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @var Http\ClientInterface
-     */
-    private $httpClient;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $config;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * @var ResponseResolver
-     */
-    private $responseResolver;
-
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param Http\ClientInterface $httpClient
-     * @param ScopeConfigInterface $config
-     * @param LoggerInterface $logger
-     * @param FlagManager $flagManager
-     * @param ResponseResolver $responseResolver
-     */
-    public function __construct(
-        AnalyticsToken $analyticsToken,
-        Http\ClientInterface $httpClient,
-        ScopeConfigInterface $config,
-        LoggerInterface $logger,
-        FlagManager $flagManager,
-        ResponseResolver $responseResolver
-    ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->httpClient = $httpClient;
-        $this->config = $config;
-        $this->logger = $logger;
-        $this->flagManager = $flagManager;
-        $this->responseResolver = $responseResolver;
+    public function __construct(private readonly AnalyticsToken $analyticsToken, private readonly Http\ClientInterface $httpClient, private readonly ScopeConfigInterface $config, private readonly LoggerInterface $logger, private readonly FlagManager $flagManager, private readonly ResponseResolver $responseResolver)
+    {
     }
 
     /**
      * Executes update request to MBI api in case store url was changed
-     *
-     * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
         $result = false;
         if ($this->analyticsToken->isTokenExist()) {
@@ -91,10 +39,10 @@ class UpdateCommand implements CommandInterface
                 Request::METHOD_PUT,
                 $this->config->getValue($this->updateUrlPath),
                 [
-                    "url" => $this->flagManager
+                    'url' => $this->flagManager
                         ->getFlagData(SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE),
-                    "new-url" => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
-                    "access-token" => $this->analyticsToken->getToken(),
+                    'new-url' => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
+                    'access-token' => $this->analyticsToken->getToken(),
                 ]
             );
             $result = $this->responseResolver->getResult($response);

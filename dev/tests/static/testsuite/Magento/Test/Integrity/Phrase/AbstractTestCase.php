@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Abstract class for phrase testing
  */
+
 namespace Magento\Test\Integrity\Phrase;
 
 use Magento\Framework\Component\ComponentRegistrar;

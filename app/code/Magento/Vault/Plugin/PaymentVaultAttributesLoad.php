@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Vault\Plugin;
 
+use Magento\Sales\Api\Data\OrderPaymentExtensionFactory;
 use Magento\Sales\Api\Data\OrderPaymentExtensionInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
-use Magento\Vault\Api\PaymentTokenManagementInterface;
-use Magento\Sales\Api\Data\OrderPaymentExtensionFactory;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
+use Magento\Vault\Api\PaymentTokenManagementInterface;
 
 /**
  * Plugin for loading vault payment extension attribute to order/payment entity

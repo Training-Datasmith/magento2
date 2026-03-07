@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,9 +17,9 @@ use Magento\Framework\Filter\DirectiveProcessor\IfDirective;
 use Magento\Framework\Filter\DirectiveProcessor\LegacyDirective;
 use Magento\Framework\Filter\DirectiveProcessor\TemplateDirective;
 use Magento\Framework\Filter\DirectiveProcessor\VarDirective;
-use Magento\Framework\Stdlib\StringUtils;
-use Magento\Framework\Filter\Template\SignatureProvider;
 use Magento\Framework\Filter\Template\FilteringDepthMeter;
+use Magento\Framework\Filter\Template\SignatureProvider;
+use Magento\Framework\Stdlib\StringUtils;
 
 /**
  * Template constructions filter
@@ -276,7 +278,7 @@ class Template implements FilterInterface
 
                     $result = [
                         'directive' => $construction[0],
-                        'output' => $replacedValue
+                        'output' => $replacedValue,
                     ];
 
                     if (count($this->afterFilterCallbacks) > 0) {
@@ -345,7 +347,7 @@ class Template implements FilterInterface
             '(' => ')',
             '{' => '}',
             '[' => ']',
-            '<' => '>'
+            '<' => '>',
         ];
 
         $closingDelimiter = $openingDelimiter = substr(trim($pattern), 0, 1);

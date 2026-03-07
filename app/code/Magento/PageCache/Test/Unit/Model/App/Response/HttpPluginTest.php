@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\PageCache\Test\Unit\Model\App\Response;
 
 use Magento\Framework\App\Http\Context;
-use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\MediaStorage\Model\File\Storage\Response as FileResponse;
 use Magento\PageCache\Model\App\Response\HttpPlugin;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**

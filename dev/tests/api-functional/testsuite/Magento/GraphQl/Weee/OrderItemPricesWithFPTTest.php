@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Weee;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
@@ -30,6 +30,7 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Weee\Test\Fixture\Attribute as FptAttributeFixture;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for guestOrder.items.prices.fixed_product_taxes
@@ -119,7 +120,7 @@ class OrderItemPricesWithFPTTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -127,7 +128,7 @@ class OrderItemPricesWithFPTTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'fpt_attr' => [['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => self::P1_FPT_PRICE]],
-                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
             ],
             'product1'
         ),
@@ -135,7 +136,7 @@ class OrderItemPricesWithFPTTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'fpt_attr' => [['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => self::P2_FPT_PRICE]],
-                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
             ],
             'product2'
         ),
@@ -187,26 +188,26 @@ class OrderItemPricesWithFPTTest extends GraphQlAbstract
                                     'fixed_product_taxes' => [
                                         0 => [
                                             'amount' => [
-                                                'value' => self::P1_FPT_PRICE
-                                            ]
-                                        ]
-                                    ]
-                                ]
+                                                'value' => self::P1_FPT_PRICE,
+                                            ],
+                                        ],
+                                    ],
+                                ],
                             ],
                             1 => [
                                 'prices' => [
                                     'fixed_product_taxes' => [
                                         0 => [
                                             'amount' => [
-                                                'value' => self::P2_FPT_PRICE
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                                'value' => self::P2_FPT_PRICE,
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'with_tax' => [
                 'taxDisplayType' => 2,
@@ -218,29 +219,29 @@ class OrderItemPricesWithFPTTest extends GraphQlAbstract
                                     'fixed_product_taxes' => [
                                         0 => [
                                             'amount' => [
-                                                'value' => 0.33
+                                                'value' => 0.33,
                                                 //self::P2_FPT_PRICE(0.3) with self::TAX_PERCENTAGE(10) percentage tax
-                                            ]
-                                        ]
-                                    ]
-                                ]
+                                            ],
+                                        ],
+                                    ],
+                                ],
                             ],
                             1 => [
                                 'prices' => [
                                     'fixed_product_taxes' => [
                                         0 => [
                                             'amount' => [
-                                                'value' => 0.88
+                                                'value' => 0.88,
                                                 //self::P2_FPT_PRICE(0.8) with self::TAX_PERCENTAGE(10) percentage tax
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 

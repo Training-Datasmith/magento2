@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\ResourceModel;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -44,7 +47,7 @@ class Fulltext extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         ?MetadataPool $metadataPool = null
     ) {
         $this->_eventManager = $eventManager;
-        $this->metadataPool = $metadataPool ? : ObjectManager::getInstance()->get(MetadataPool::class);
+        $this->metadataPool = $metadataPool ?: ObjectManager::getInstance()->get(MetadataPool::class);
         parent::__construct($context, $connectionName);
     }
 

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Api;
 
-use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Downloadable\Api\Data\LinkInterface;
 
 /**
  * Interface LinkRepositoryInterface

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter templates grid block
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Template;
 
 use Magento\Backend\Block\Widget\Grid as WidgetGrid;
@@ -61,7 +64,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('ID'),
                 'index' => 'template_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
         $this->addColumn(
@@ -70,7 +73,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Template'),
                 'index' => 'template_code',
                 'header_css_class' => 'col-template',
-                'column_css_class' => 'col-template'
+                'column_css_class' => 'col-template',
             ]
         );
 
@@ -82,7 +85,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'gmtoffset' => true,
                 'type' => 'datetime',
                 'header_css_class' => 'col-added col-date',
-                'column_css_class' => 'col-added col-date'
+                'column_css_class' => 'col-added col-date',
             ]
         );
 
@@ -94,7 +97,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'gmtoffset' => true,
                 'type' => 'datetime',
                 'header_css_class' => 'col-updated col-date',
-                'column_css_class' => 'col-updated col-date'
+                'column_css_class' => 'col-updated col-date',
             ]
         );
 
@@ -104,7 +107,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Subject'),
                 'index' => 'template_subject',
                 'header_css_class' => 'col-subject',
-                'column_css_class' => 'col-subject'
+                'column_css_class' => 'col-subject',
             ]
         );
 
@@ -115,7 +118,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'template_sender_email',
                 'renderer' => \Magento\Newsletter\Block\Adminhtml\Template\Grid\Renderer\Sender::class,
                 'header_css_class' => 'col-sender',
-                'column_css_class' => 'col-sender'
+                'column_css_class' => 'col-sender',
             ]
         );
 
@@ -130,7 +133,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     TemplateTypesInterface::TYPE_TEXT => 'text',
                 ],
                 'header_css_class' => 'col-type',
-                'column_css_class' => 'col-type'
+                'column_css_class' => 'col-type',
             ]
         );
 
@@ -144,7 +147,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'no_link' => true,
                 'renderer' => \Magento\Newsletter\Block\Adminhtml\Template\Grid\Renderer\Action::class,
                 'header_css_class' => 'col-actions',
-                'column_css_class' => 'col-actions'
+                'column_css_class' => 'col-actions',
             ]
         );
 

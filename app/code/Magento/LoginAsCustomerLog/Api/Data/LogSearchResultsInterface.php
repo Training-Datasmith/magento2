@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\LoginAsCustomerLog\Api\Data;
 
-use \Magento\Framework\Api\SearchResultsInterface;
+use Magento\Framework\Api\SearchResultsInterface;
 
 /**
  * Login as customer log entity search results interface.

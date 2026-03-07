@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,7 +13,6 @@ namespace Magento\Reports\Model\ResourceModel\Product\Lowstock;
  */
 class CollectionTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var \Magento\Reports\Model\ResourceModel\Product\Lowstock\Collection
      */

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\ImportExport\Model\Import;
 
-use Magento\ImportExport\Model\Import\AbstractEntity;
+namespace Magento\ImportExport\Model\Import;
 
 // phpcs:disable Magento2.Classes.AbstractApi
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class SynonymsTest extends TestCase
         $this->synonymPreprocessor = $objectManager->getObject(
             Synonyms::class,
             [
-                'synonymsAnalyzer' => $this->synonymAnalyzer
+                'synonymsAnalyzer' => $this->synonymAnalyzer,
             ]
         );
     }
@@ -55,18 +56,18 @@ class SynonymsTest extends TestCase
             'oneWord' => [
                 'big',
                 [['big', 'huge']],
-                'big huge'
+                'big huge',
             ],
             'twoWords' => [
                 'big universe',
                 [['big', 'huge'], ['universe', 'cosmos']],
-                'big huge universe cosmos'
+                'big huge universe cosmos',
             ],
             'noSynonyms' => [
                 'no synonyms',
                 [['no'], ['synonyms']],
-                'no synonyms'
-            ]
+                'no synonyms',
+            ],
         ];
     }
 

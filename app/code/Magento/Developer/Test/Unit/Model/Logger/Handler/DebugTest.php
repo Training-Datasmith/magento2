@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Test\Unit\Model\Logger\Handler;
 
 use Magento\Config\Setup\ConfigOptionsList;
@@ -14,7 +17,6 @@ use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Level;
-use Monolog\Logger;
 use Monolog\LogRecord;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -83,7 +85,7 @@ class DebugTest extends TestCase
             'filesystem' => $this->filesystemMock,
             'state' => $this->stateMock,
             'scopeConfig' => $this->scopeConfigMock,
-            'deploymentConfig' => $this->deploymentConfigMock
+            'deploymentConfig' => $this->deploymentConfigMock,
         ]);
         $this->model->setFormatter($this->formatterMock);
 

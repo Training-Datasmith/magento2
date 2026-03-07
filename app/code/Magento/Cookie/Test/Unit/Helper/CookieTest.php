@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,8 +75,8 @@ class CookieTest extends TestCase
                 'storeManger' => $storeMangerMock,
                 'data' => [
                     'current_store' => $storeMock,
-                    'website' => $websiteMock
-                ]
+                    'website' => $websiteMock,
+                ],
             ]
         );
     }

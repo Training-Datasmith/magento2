@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Validation;
 
 use Magento\Sales\Api\Data\CreditmemoInterface;
@@ -75,14 +78,14 @@ class RefundOrder implements RefundOrderInterface
         $orderValidationResult = $this->orderValidator->validate(
             $order,
             [
-                CanRefund::class
+                CanRefund::class,
             ]
         );
         $creditmemoValidationResult = $this->creditmemoValidator->validate(
             $creditmemo,
             [
                 QuantityValidator::class,
-                TotalsValidator::class
+                TotalsValidator::class,
             ]
         );
 

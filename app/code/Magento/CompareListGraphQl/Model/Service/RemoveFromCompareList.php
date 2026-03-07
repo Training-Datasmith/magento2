@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CompareListGraphQl\Model\Service;
 
 use Magento\Catalog\Model\Product\Compare\Item;
-use Magento\Catalog\Model\ResourceModel\Product\Compare\Item as CompareItemResource;
 use Magento\Catalog\Model\Product\Compare\ItemFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Compare\Item as CompareItemResource;
 
 /**
  *  Remove product from compare list

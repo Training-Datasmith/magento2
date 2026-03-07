@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -27,7 +29,7 @@ class CreateTable implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'create_table';
+    public const OPERATION_NAME = 'create_table';
 
     /**
      * @var DbSchemaWriterInterface
@@ -105,7 +107,7 @@ class CreateTable implements OperationInterface
                 if ($trigger->isApplicable((string) $column->getOnCreate())) {
                     $elementHistory = $this->elementHistoryFactory->create([
                         'new' => $column,
-                        'old' => $column
+                        'old' => $column,
                     ]);
                     $createTableStatement->addTrigger(
                         $trigger->getCallback($elementHistory)
@@ -128,7 +130,7 @@ class CreateTable implements OperationInterface
             if ($trigger->isApplicable((string) $table->getOnCreate())) {
                 $elementHistory = $this->elementHistoryFactory->create([
                     'new' => $table,
-                    'old' => $table
+                    'old' => $table,
                 ]);
                 $createTableStatement->addTrigger(
                     $trigger->getCallback($elementHistory)
@@ -148,7 +150,7 @@ class CreateTable implements OperationInterface
         $data = [
             Column::TYPE => $table->getColumns(),
             Constraint::TYPE => $table->getConstraints(),
-            Index::TYPE => $table->getIndexes()
+            Index::TYPE => $table->getIndexes(),
         ];
 
         foreach ($data as $type => $elements) {

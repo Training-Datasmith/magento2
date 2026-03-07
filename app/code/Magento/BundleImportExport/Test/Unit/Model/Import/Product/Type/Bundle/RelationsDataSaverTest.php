@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class RelationsDataSaverTest extends TestCase
             RelationsDataSaver::class,
             [
                 'resource' => $this->resourceMock,
-                'productRelation' => $this->productRelationMock
+                'productRelation' => $this->productRelationMock,
             ]
         );
     }
@@ -56,7 +57,7 @@ class RelationsDataSaverTest extends TestCase
     public function testSaveOptions()
     {
         $options = [1, 2];
-        $table_name= 'catalog_product_bundle_option';
+        $table_name = 'catalog_product_bundle_option';
         $this->resourceMock->expects($this->once())->method('getConnection')->willReturn($this->connectionMock);
         $this->resourceMock->expects($this->once())
             ->method('getTableName')
@@ -70,7 +71,7 @@ class RelationsDataSaverTest extends TestCase
                 [
                     'required',
                     'position',
-                    'type'
+                    'type',
                 ]
             );
 
@@ -80,7 +81,7 @@ class RelationsDataSaverTest extends TestCase
     public function testSaveOptionValues()
     {
         $optionsValues = [1, 2];
-        $table_name= 'catalog_product_bundle_option_value';
+        $table_name = 'catalog_product_bundle_option_value';
 
         $this->resourceMock->expects($this->once())->method('getConnection')->willReturn($this->connectionMock);
         $this->resourceMock->expects($this->once())
@@ -101,7 +102,7 @@ class RelationsDataSaverTest extends TestCase
     public function testSaveSelections()
     {
         $selections = [1, 2];
-        $table_name= 'catalog_product_bundle_selection';
+        $table_name = 'catalog_product_bundle_selection';
 
         $this->resourceMock->expects($this->once())->method('getConnection')->willReturn($this->connectionMock);
         $this->resourceMock->expects($this->once())
@@ -121,7 +122,7 @@ class RelationsDataSaverTest extends TestCase
                     'selection_price_type',
                     'selection_price_value',
                     'selection_qty',
-                    'selection_can_change_qty'
+                    'selection_can_change_qty',
                 ]
             );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class ConfigurableTest extends TestCase
                 'scopeResolver' => $scopeResolver,
                 'attributeOptionProvider' => $this->attributeOptionProvider,
                 'optionProvider' => $this->optionProvider,
-                'context' => $context
+                'context' => $context,
             ]
         );
     }

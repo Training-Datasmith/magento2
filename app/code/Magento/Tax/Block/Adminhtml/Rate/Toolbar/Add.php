@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Admin tax class product toolbar
  */
+
 namespace Magento\Tax\Block\Adminhtml\Rate\Toolbar;
 
 /**
@@ -77,7 +80,7 @@ class Add extends \Magento\Backend\Block\Template implements \Magento\Backend\Bl
             [
                 'label' => __('Add New Tax Rate'),
                 'onclick' => 'window.location.href=\'' . $this->getUrl('tax/rate/add') . '\'',
-                'class' => 'add primary add-tax-rate'
+                'class' => 'add primary add-tax-rate',
             ]
         );
 

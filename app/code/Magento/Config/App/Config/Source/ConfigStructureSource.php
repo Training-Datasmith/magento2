@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ConfigStructureSource implements ConfigSourceInterface
     private function addPathToConfig(array $config, string $path): array
     {
         if (strpos($path, '/') !== false) {
-            list ($key, $subPath) = explode('/', $path, 2);
+            list($key, $subPath) = explode('/', $path, 2);
             $config[$key] = $this->addPathToConfig(
                 $config[$key] ?? [],
                 $subPath

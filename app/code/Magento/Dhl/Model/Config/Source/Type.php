@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class Type implements OptionSourceInterface
     {
         return [
             ['value' => 'DHL_XML', 'label' => __('DHL XML')],
-            ['value' => 'DHL_REST', 'label' => __('DHL REST')]
+            ['value' => 'DHL_REST', 'label' => __('DHL REST')],
         ];
     }
 }

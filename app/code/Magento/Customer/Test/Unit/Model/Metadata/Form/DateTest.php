@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Unit\Model\Metadata\Form;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Customer\Api\Data\ValidationRuleInterface;
 use Magento\Customer\Model\Metadata\Form\Date;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class DateTest extends AbstractFormTestCase
 {
@@ -198,7 +199,7 @@ class DateTest extends AbstractFormTestCase
                 [],
                 false,
                 ['dateInvalidDate' => '"Space Date" is not a valid date.'],
-            ]
+            ],
         ];
     }
 
@@ -222,7 +223,7 @@ class DateTest extends AbstractFormTestCase
             [false, false],
             [null, null],
             ['test', 'test'],
-            [['element1', 'element2'], ['element1', 'element2']]
+            [['element1', 'element2'], ['element1', 'element2']],
         ];
     }
 

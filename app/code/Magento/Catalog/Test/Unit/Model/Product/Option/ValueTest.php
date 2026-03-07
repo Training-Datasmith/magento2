@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Magento\Catalog\Model\Product\Option\Value;
 use Magento\Catalog\Model\ResourceModel\Product\Option\Value as OptionValue;
 use Magento\Catalog\Model\ResourceModel\Product\Option\Value\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Option\Value\CollectionFactory;
+use Magento\Catalog\Pricing\Price\CustomOptionPriceCalculator;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceInfoInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Pricing\Price\CustomOptionPriceCalculator;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for \Magento\Catalog\Model\Product\Option\Value class.
@@ -53,7 +54,7 @@ class ValueTest extends TestCase
             [
                 'resource' => $mockedResource,
                 'valueCollectionFactory' => $mockedCollectionFactory,
-                'customOptionPriceCalculator' => $this->customOptionPriceCalculatorMock
+                'customOptionPriceCalculator' => $this->customOptionPriceCalculatorMock,
             ]
         );
         $this->model->setOption($this->getMockedOption());
@@ -199,7 +200,7 @@ class ValueTest extends TestCase
             OptionValue::class,
             [
                 'duplicate', 'getIdFieldName', 'deleteValues', 'deleteValue', 'beginTransaction',
-                'delete', 'commit', 'save', 'addCommitCallback'
+                'delete', 'commit', 'save', 'addCommitCallback',
             ]
         );
 

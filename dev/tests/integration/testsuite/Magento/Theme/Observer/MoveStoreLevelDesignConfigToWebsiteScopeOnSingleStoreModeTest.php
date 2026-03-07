@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -35,9 +36,9 @@ class MoveStoreLevelDesignConfigToWebsiteScopeOnSingleStoreModeTest extends Test
                 'data' => [
                     [
                         'path' => self::XML_PATH_DESIGN_FOOTER_ABSOLUTE_FOOTER,
-                        'value' => self::INITIAL_FOOTER_TEXT_WEBSITES
-                    ]
-                ]
+                        'value' => self::INITIAL_FOOTER_TEXT_WEBSITES,
+                    ],
+                ],
             ]
         ),
         DataFixture(
@@ -48,9 +49,9 @@ class MoveStoreLevelDesignConfigToWebsiteScopeOnSingleStoreModeTest extends Test
                 'data' => [
                     [
                         'path' => self::XML_PATH_DESIGN_FOOTER_ABSOLUTE_FOOTER,
-                        'value' => self::INITIAL_FOOTER_TEXT_STORES
-                    ]
-                ]
+                        'value' => self::INITIAL_FOOTER_TEXT_STORES,
+                    ],
+                ],
             ]
         ),
         Config(StoreManager::XML_PATH_SINGLE_STORE_MODE_ENABLED, 1),
@@ -74,7 +75,7 @@ class MoveStoreLevelDesignConfigToWebsiteScopeOnSingleStoreModeTest extends Test
                 'website' => '',
                 'store' => '',
                 'changed_paths' => [
-                    StoreManager::XML_PATH_SINGLE_STORE_MODE_ENABLED
+                    StoreManager::XML_PATH_SINGLE_STORE_MODE_ENABLED,
                 ],
             ]
         );

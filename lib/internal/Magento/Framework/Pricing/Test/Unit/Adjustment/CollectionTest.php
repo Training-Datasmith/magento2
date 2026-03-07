@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Pricing\Test\Unit\Adjustment;
 use Magento\Framework\Pricing\Adjustment\AdjustmentInterface;
 use Magento\Framework\Pricing\Adjustment\Collection;
 use Magento\Framework\Pricing\Adjustment\Pool;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CollectionTest extends TestCase
 {
@@ -91,7 +92,7 @@ class CollectionTest extends TestCase
             [['adj1'], ['adj1']],
             [['adj4'], ['adj4']],
             [['adj1', 'adj4'], ['adj1', 'adj4']],
-            [['adj1', 'adj2', 'adj3', 'adj4'], ['adj3', 'adj1', 'adj2', 'adj4']]
+            [['adj1', 'adj2', 'adj3', 'adj4'], ['adj3', 'adj1', 'adj2', 'adj4']],
         ];
     }
 

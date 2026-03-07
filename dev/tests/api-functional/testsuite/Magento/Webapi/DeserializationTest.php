@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +49,7 @@ class DeserializationTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Response does not contain expected message."
+                'Response does not contain expected message.'
             );
         }
     }
@@ -74,7 +76,7 @@ class DeserializationTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Response does not contain expected message."
+                'Response does not contain expected message.'
             );
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Quote\Test\Unit\Model\Cart;
 
 use Magento\Directory\Model\Currency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\ShippingMethodInterfaceFactory;
 use Magento\Quote\Model\Cart\ShippingMethod;
@@ -18,7 +20,6 @@ use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Tax\Helper\Data;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -93,7 +94,7 @@ class ShippingMethodConverterTest extends TestCase
             [
                 'shippingMethodDataFactory' => $this->shippingMethodDataFactoryMock,
                 'storeManager' => $this->storeManagerMock,
-                'taxHelper' => $this->taxHelper
+                'taxHelper' => $this->taxHelper,
             ]
         );
     }
@@ -183,8 +184,7 @@ class ShippingMethodConverterTest extends TestCase
 
         $this->taxHelper
             ->method('getShippingPrice')
-            ->willReturnCallback(function ($arg1, $arg2, $arg3, $arg4)
- use ($price, $addressMock, $customerTaxClassId, $shippingPriceExclTax, $shippingPriceInclTax) {
+            ->willReturnCallback(function ($arg1, $arg2, $arg3, $arg4) use ($price, $addressMock, $customerTaxClassId, $shippingPriceExclTax, $shippingPriceInclTax) {
                 if ($arg1 == $price && $arg2 == false && $arg3 == $addressMock && $arg4 == $customerTaxClassId) {
                     return $shippingPriceExclTax;
                 } elseif ($arg1 == $price && $arg2 == true && $arg3 == $addressMock &&

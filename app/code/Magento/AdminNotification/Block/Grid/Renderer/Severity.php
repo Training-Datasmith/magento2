@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Block\Grid\Renderer;
 
-use Magento\AdminNotification\Model\Inbox;
 use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\DataObject;
@@ -18,29 +19,15 @@ use Magento\Framework\Notification\MessageInterface;
  */
 class Severity extends AbstractRenderer
 {
-    /**
-     * @var \Magento\AdminNotification\Model\Inbox
-     */
-    protected $_notice;
-
-    /**
-     * @param \Magento\Backend\Block\Context $context
-     * @param \Magento\AdminNotification\Model\Inbox $notice
-     * @param array $data
-     */
-    public function __construct(Context $context, Inbox $notice, array $data = [])
+    public function __construct(Context $context, protected \Magento\AdminNotification\Model\Inbox $_notice, array $data = [])
     {
         parent::__construct($context, $data);
-        $this->_notice = $notice;
     }
 
     /**
      * Renders grid column
-     *
-     * @param   \Magento\Framework\DataObject $row
-     * @return  string
      */
-    public function render(DataObject $row)
+    public function render(DataObject $row): string
     {
         $class = '';
         $value = '';

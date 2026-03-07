@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -90,7 +91,7 @@ class NoCookiesObserverTest extends TestCase
             NoCookiesObserver::class,
             [
                 'cmsPage' => $this->cmsPageMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -153,7 +154,7 @@ class NoCookiesObserverTest extends TestCase
     {
         return [
             'url IS empty' => ['pageUrl' => ''],
-            'url NOT empty' => ['pageUrl' => '/some/url']
+            'url NOT empty' => ['pageUrl' => '/some/url'],
         ];
     }
 }

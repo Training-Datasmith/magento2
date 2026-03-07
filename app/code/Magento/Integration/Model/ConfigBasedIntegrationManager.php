@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model;
 
-use Magento\Integration\Model\Config\Converter;
 use Magento\Authorization\Model\Acl\AclRetriever;
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Integration\Model\Config\Converter;
 
 /**
  * Class to manage integrations installed from config file
@@ -180,7 +183,7 @@ class ConfigBasedIntegrationManager
             Integration::ENDPOINT,
             Integration::IDENTITY_LINK_URL,
             Integration::SETUP_TYPE,
-            Integration::CONSUMER_ID
+            Integration::CONSUMER_ID,
         ];
         foreach ($fields as $field) {
             if ($integration->getOrigData($field) != $integration->getData($field)) {

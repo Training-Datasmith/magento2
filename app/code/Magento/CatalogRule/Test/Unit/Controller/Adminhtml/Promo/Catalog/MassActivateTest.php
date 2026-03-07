@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Test\Unit\Controller\Adminhtml\Promo\Catalog;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
+use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
+use Magento\CatalogRule\Api\Data\RuleInterface;
+use Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog\MassActivate;
+use Magento\CatalogRule\Model\Rule;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\ManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Backend\App\Action\Context;
 use PHPUnit\Framework\TestCase;
-use Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog\MassActivate;
-use Magento\CatalogRule\Api\Data\RuleInterface;
-use Magento\CatalogRule\Model\Rule;
-use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
 
 class MassActivateTest extends TestCase
 {

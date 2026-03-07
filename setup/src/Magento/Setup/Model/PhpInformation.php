@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +15,10 @@ namespace Magento\Setup\Model;
  */
 class PhpInformation
 {
-
     /**
      * Allowed XDebug nested level
      */
-    const XDEBUG_NESTED_LEVEL = 200;
+    public const XDEBUG_NESTED_LEVEL = 200;
 
     /**
      * List of currently installed extensions

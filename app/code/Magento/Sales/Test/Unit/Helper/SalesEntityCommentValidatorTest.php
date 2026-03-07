@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Helper;
 
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Helper\SalesEntityCommentValidator;
-use Magento\Authorization\Model\UserContextInterface;
 use Magento\Sales\Model\Order\Invoice\Comment as InvoiceComment;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases of sales entity comment validator test
@@ -50,7 +51,7 @@ class SalesEntityCommentValidatorTest extends TestCase
         $this->helper = $objectManager->getObject(
             SalesEntityCommentValidator::class,
             [
-                'userContext' => $this->userContextMock
+                'userContext' => $this->userContextMock,
             ]
         );
     }
@@ -87,11 +88,11 @@ class SalesEntityCommentValidatorTest extends TestCase
     {
         return [
             [
-                1,2,5,false
+                1,2,5,false,
             ],
             [
-                0,1,1,true
-            ]
+                0,1,1,true,
+            ],
         ];
     }
 }

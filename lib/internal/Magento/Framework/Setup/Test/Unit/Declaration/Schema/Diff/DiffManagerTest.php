@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class DiffManagerTest extends TestCase
         $this->model = $this->objectManagerHelper->getObject(
             DiffManager::class,
             [
-                'comparator' => $this->comparatorMock
+                'comparator' => $this->comparatorMock,
             ]
         );
     }

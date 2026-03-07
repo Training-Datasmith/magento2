@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\Filters;
 use Magento\Ui\Component\Listing\Columns\ColumnInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -74,7 +75,7 @@ class FiltersTest extends TestCase
                 'getName', 'getComponentName', 'getConfiguration', 'render', 'addComponent',
                 'getComponent', 'getChildComponents', 'getTemplate', 'getContext',
                 'renderChildComponent', 'setData', 'getData', 'prepare', 'prepareDataSource',
-                'getDataSourceData', 'toHtml'
+                'getDataSourceData', 'toHtml',
             ]
         );
         $columnInterface->expects($this->atLeastOnce())
@@ -93,7 +94,7 @@ class FiltersTest extends TestCase
                 'getName', 'getComponentName', 'getConfiguration', 'render', 'addComponent',
                 'getComponent', 'getChildComponents', 'getTemplate', 'getContext',
                 'renderChildComponent', 'setData', 'getData', 'prepare', 'prepareDataSource',
-                'getDataSourceData', 'toHtml'
+                'getDataSourceData', 'toHtml',
             ]
         );
         $filterComponent->expects($this->once())->method('setData')->with('config', $componentConfig)

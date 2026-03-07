@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -34,9 +35,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -207,7 +208,7 @@ class IndexTest extends TestCase
 
         $resource = $this->createPartialMock(ResourceConnection::class, [
             'getConnection',
-            'getTableName'
+            'getTableName',
         ]);
         $resource->expects($this->any())
             ->method('getConnection')
@@ -217,7 +218,7 @@ class IndexTest extends TestCase
         $this->tableResolver = $objectManager->getObject(
             IndexScopeResolver::class,
             [
-                'resource' => $resource
+                'resource' => $resource,
             ]
         );
 
@@ -432,7 +433,7 @@ class IndexTest extends TestCase
         $this->product->expects($this->once())
             ->method('getData')
             ->willReturn([
-                'name' => 'Product Name'
+                'name' => 'Product Name',
             ]);
 
         $this->eavConfig->expects($this->once())
@@ -476,7 +477,7 @@ class IndexTest extends TestCase
         $this->assertIsArray($this->model->getFullProductIndexData(
             1,
             [
-                1 => $indexData
+                1 => $indexData,
             ]
         ));
     }
@@ -548,7 +549,7 @@ class IndexTest extends TestCase
                 [
                     1 => 1,
                 ],
-            ]
+            ],
         ];
     }
 }

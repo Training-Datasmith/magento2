@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -108,12 +109,12 @@ class ImageTest extends \PHPUnit\Framework\TestCase
                 'value' => [
                     [
                         'file' => $invalidFileName,
-                    ]
+                    ],
                 ],
             ]
         );
         $expectedPathInfo = [
-            'extension' => 'invalidExtension'
+            'extension' => 'invalidExtension',
         ];
         $this->ioFileSystem
             ->expects($this->any())

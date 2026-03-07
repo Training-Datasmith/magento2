@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\MediaGalleryRenditions\Model\Config;
 use Magento\MediaGalleryRenditionsApi\Api\GenerateRenditionsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\MediaGalleryRenditions\Model\Config;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -184,12 +185,12 @@ class GenerateRenditionsTest extends TestCase
         return [
             'rendition_image_not_generated' => [
                 'path' => 'magento_medium_image.jpg',
-                'renditionPath' => ".renditions/" . self::TEST_DIR . "/magento_medium_image.jpg"
+                'renditionPath' => '.renditions/' . self::TEST_DIR . '/magento_medium_image.jpg',
             ],
             'rendition_image_generated' => [
                 'path' => 'magento_large_image.jpg',
-                'renditionPath' => ".renditions/" . self::TEST_DIR . "/magento_large_image.jpg"
-            ]
+                'renditionPath' => '.renditions/' . self::TEST_DIR . '/magento_large_image.jpg',
+            ],
         ];
     }
 }

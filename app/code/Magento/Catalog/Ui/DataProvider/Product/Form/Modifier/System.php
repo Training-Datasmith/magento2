@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
@@ -16,9 +19,9 @@ use Magento\Framework\UrlInterface;
  */
 class System extends AbstractModifier
 {
-    const KEY_SUBMIT_URL = 'submit_url';
-    const KEY_VALIDATE_URL = 'validate_url';
-    const KEY_RELOAD_URL = 'reloadUrl';
+    public const KEY_SUBMIT_URL = 'submit_url';
+    public const KEY_VALIDATE_URL = 'validate_url';
+    public const KEY_RELOAD_URL = 'reloadUrl';
 
     /**
      * @var LocatorInterface
@@ -39,7 +42,7 @@ class System extends AbstractModifier
     protected $productUrls = [
         self::KEY_SUBMIT_URL => 'catalog/product/save',
         self::KEY_VALIDATE_URL => 'catalog/product/validate',
-        self::KEY_RELOAD_URL => 'catalog/product/reload'
+        self::KEY_RELOAD_URL => 'catalog/product/reload',
     ];
 
     /**
@@ -78,7 +81,7 @@ class System extends AbstractModifier
                 'popup' => 1,
                 'componentJson' => 1,
                 'prev_set_id' => $attributeSetId,
-                'type' => $this->locator->getProduct()->getTypeId()
+                'type' => $this->locator->getProduct()->getTypeId(),
             ]
         );
 
@@ -93,7 +96,7 @@ class System extends AbstractModifier
                     self::KEY_SUBMIT_URL => $submitUrl,
                     self::KEY_VALIDATE_URL => $validateUrl,
                     self::KEY_RELOAD_URL => $reloadUrl,
-                ]
+                ],
             ]
         );
     }

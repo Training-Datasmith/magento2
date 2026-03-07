@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Condition;
 
 /**
@@ -67,13 +70,13 @@ class Combine extends \Magento\Rule\Model\Condition\Combine
                 ],
                 [
                     'value' => \Magento\SalesRule\Model\Rule\Condition\Product\Subselect::class,
-                    'label' => __('Products subselection')
+                    'label' => __('Products subselection'),
                 ],
                 [
                     'value' => \Magento\SalesRule\Model\Rule\Condition\Combine::class,
-                    'label' => __('Conditions combination')
+                    'label' => __('Conditions combination'),
                 ],
-                ['label' => __('Cart Attribute'), 'value' => $attributes]
+                ['label' => __('Cart Attribute'), 'value' => $attributes],
             ]
         );
 

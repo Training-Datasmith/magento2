@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -34,13 +35,13 @@ class CancelTest extends GenericTest
                                 [
                                     'targetName' => 'product_form.product_form.add_attribute_modal'
                                         . '.create_new_attribute_modal',
-                                    'actionName' => 'toggleModal'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'actionName' => 'toggleModal',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'on_click' => ''
+                'on_click' => '',
             ],
             $this->getModel()->getButtonData()
         );

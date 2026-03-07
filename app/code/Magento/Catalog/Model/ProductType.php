@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model;
 
 use Magento\Catalog\Api\Data\ProductTypeInterface;
@@ -15,8 +18,8 @@ class ProductType extends \Magento\Framework\Api\AbstractExtensibleObject implem
     /**#@+
      * Constants
      */
-    const KEY_NAME = 'name';
-    const KEY_LABEL = 'label';
+    public const KEY_NAME = 'name';
+    public const KEY_LABEL = 'label';
     /**#@-*/
 
     /**

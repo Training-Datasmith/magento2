@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Observer\BeforeAddressSaveObserver;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class BeforeAddressSaveObserverTest extends TestCase
 {

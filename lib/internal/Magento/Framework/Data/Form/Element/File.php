@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Form file element
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 class File extends \Magento\Framework\Data\Form\Element\AbstractElement

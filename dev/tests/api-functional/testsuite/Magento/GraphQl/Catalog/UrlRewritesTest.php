@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Catalog;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Eav\Model\Config as EavConfig;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteDTO;
-use Magento\Eav\Model\Config as EavConfig;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Test of getting URL rewrites data from products
@@ -69,7 +70,7 @@ QUERY;
             [
                 UrlRewriteDTO::ENTITY_ID => $product->getId(),
                 UrlRewriteDTO::ENTITY_TYPE => $entityTypeCode,
-                UrlRewriteDTO::STORE_ID => $storeId
+                UrlRewriteDTO::STORE_ID => $storeId,
             ]
         );
 
@@ -83,8 +84,8 @@ QUERY;
         $this->assertResponseFields(
             $response['products']['items'][0]['url_rewrites'][0],
             [
-                "url" => $urlRewrite->getRequestPath(),
-                "parameters" => $this->getUrlParameters($urlRewrite->getTargetPath())
+                'url' => $urlRewrite->getRequestPath(),
+                'parameters' => $this->getUrlParameters($urlRewrite->getTargetPath()),
             ]
         );
     }
@@ -138,7 +139,7 @@ QUERY;
             [
                 UrlRewriteDTO::ENTITY_ID => $product->getId(),
                 UrlRewriteDTO::ENTITY_TYPE => $entityTypeCode,
-                UrlRewriteDTO::STORE_ID => $storeId
+                UrlRewriteDTO::STORE_ID => $storeId,
             ]
         );
 
@@ -152,8 +153,8 @@ QUERY;
             $this->assertResponseFields(
                 $response['products']['items'][0]['url_rewrites'][$index],
                 [
-                    "url" => $urlRewrite->getRequestPath(),
-                    "parameters" => $this->getUrlParameters($urlRewrite->getTargetPath())
+                    'url' => $urlRewrite->getRequestPath(),
+                    'parameters' => $this->getUrlParameters($urlRewrite->getTargetPath()),
                 ]
             );
         }
@@ -174,7 +175,7 @@ QUERY;
         for ($index = 3; $index < $count; $index += 2) {
             $urlParameters[] = [
                 'name' => $targetPathParts[$index],
-                'value' => $targetPathParts[$index + 1]
+                'value' => $targetPathParts[$index + 1],
             ];
         }
 

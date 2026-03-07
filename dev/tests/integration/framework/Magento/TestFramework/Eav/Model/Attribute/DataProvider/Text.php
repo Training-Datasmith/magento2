@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -33,10 +34,10 @@ class Text extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_input_validation" => [
+                '{static::getFrontendInput()}_with_input_validation' => [
                     array_merge(static::$defaultAttributePostData, ['frontend_class' => 'validate-alpha']),
                 ],
-                "{static::getFrontendInput()}_without_input_validation" => [
+                '{static::getFrontendInput()}_without_input_validation' => [
                     static::$defaultAttributePostData,
                 ],
             ]
@@ -51,13 +52,13 @@ class Text extends AbstractBaseAttributeData
         return array_merge_recursive(
             parent::getAttributeDataWithCheckArray(),
             [
-                "{static::getFrontendInput()}_with_input_validation" => [
+                '{static::getFrontendInput()}_with_input_validation' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'frontend_class' => 'validate-alpha',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_input_validation" => [
+                '{static::getFrontendInput()}_without_input_validation' => [
                     [
                         'attribute_code' => 'test_attribute_name',
                         'frontend_class' => '',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -29,12 +30,12 @@ class GridTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
     }

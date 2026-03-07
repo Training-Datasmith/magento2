@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\OpenSearch\SearchAdapter\Mapper;
 use Magento\Search\Model\Search\PageSizeProvider;
 use OpenSearch\Common\Exceptions\BadRequest400Exception;
 use OpenSearch\Common\Exceptions\Missing404Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -122,15 +123,15 @@ class AdapterTest extends TestCase
         return [
             'missing_exception' => [
                 'exception' => Missing404Exception::class,
-                'throws' => EmptyRequestDataException::class
+                'throws' => EmptyRequestDataException::class,
             ],
             'bad_request_exception' => [
                 'exception' => BadRequest400Exception::class,
-                'throws' => EmptyRequestDataException::class
+                'throws' => EmptyRequestDataException::class,
             ],
             'client_exception' => [
                 'exception' => \Exception::class,
-                'throws' => ClientException::class
+                'throws' => ClientException::class,
             ],
         ];
     }

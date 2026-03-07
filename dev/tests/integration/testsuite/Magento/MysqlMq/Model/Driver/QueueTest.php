@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model\Driver;
 
-use Magento\MysqlMq\Model\Driver\Queue;
 use Magento\MysqlMq\Model\ResourceModel\MessageCollection;
 
 /**

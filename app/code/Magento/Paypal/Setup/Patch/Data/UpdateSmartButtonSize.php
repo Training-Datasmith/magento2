@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class UpdateSmartButtonSize implements DataPatchInterface
         'paypal/style/checkout_page_button_size',
         'paypal/style/cart_page_button_size',
         'paypal/style/mini_cart_page_button_size',
-        'paypal/style/checkout_page_button_size'
+        'paypal/style/checkout_page_button_size',
     ];
 
     /**
@@ -51,7 +52,7 @@ class UpdateSmartButtonSize implements DataPatchInterface
             ['value' => 'responsive'],
             [
                 'path IN (?)' => $this->sizeSettingsToUpdate,
-                'value NOT IN (?) ' => ['responsive']
+                'value NOT IN (?) ' => ['responsive'],
             ]
         );
         return $this->moduleDataSetup->getConnection()->endSetup();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Framework\App\Http\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\PageCache\Identifier;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\Response\Http;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\PageCache\Model\App\Request\Http\IdentifierForSave;
 use Magento\PageCache\Model\App\Request\Http\IdentifierStoreReader;
-use Magento\Framework\App\Response\Http;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -160,7 +161,7 @@ class IdentifierForSaveTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         '',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),
@@ -220,7 +221,7 @@ class IdentifierForSaveTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         'a=1&b=2',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),
@@ -269,7 +270,7 @@ class IdentifierForSaveTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         'abc=123',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),
@@ -339,19 +340,19 @@ class IdentifierForSaveTest extends TestCase
                 'cookie_vary_value',
                 'context_vary_value',
                 'cookie_vary_value',
-                false
+                false,
             ],
             'fallback to context when cookie is null' => [
                 null,
                 'context_vary_value',
                 'context_vary_value',
-                true
+                true,
             ],
             'fallback to context when cookie is empty' => [
                 '',
                 'context_vary_value',
                 'context_vary_value',
-                true
+                true,
             ],
         ];
     }

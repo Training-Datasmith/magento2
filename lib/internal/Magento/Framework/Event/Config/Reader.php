@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Event observers configuration filesystem loader. Loads event observers configuration from XML files, split by scopes
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Event\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem

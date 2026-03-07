@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Controller\Adminhtml\Promo\Catalog;
 
+use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
+use Magento\CatalogRule\Test\Fixture\Rule as CatalogRuleFixture;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager as FixtureManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\CatalogRule\Test\Fixture\Rule as CatalogRuleFixture;
-use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
 
 #[
     AppArea('adminhtml')

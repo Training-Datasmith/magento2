@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Plugin\Catalog\Block\Adminhtml\Category\Tab;
 
 use Magento\Catalog\Model\Category\DataProvider;
@@ -36,7 +39,7 @@ class AttributesTest extends \PHPUnit\Framework\TestCase
             [
                 'name' => 'category_form_data_source',
                 'primaryFieldName' => 'entity_id',
-                'requestFieldName' => 'id'
+                'requestFieldName' => 'id',
             ]
         );
 

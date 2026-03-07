@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Request\Query;
 
 use Magento\Framework\Search\Request\QueryInterface;
@@ -14,9 +17,9 @@ use Magento\Framework\Search\Request\QueryInterface;
  */
 class BoolExpression implements QueryInterface
 {
-    const QUERY_CONDITION_MUST = 'must';
-    const QUERY_CONDITION_SHOULD = 'should';
-    const QUERY_CONDITION_NOT = 'not';
+    public const QUERY_CONDITION_MUST = 'must';
+    public const QUERY_CONDITION_SHOULD = 'should';
+    public const QUERY_CONDITION_NOT = 'not';
 
     /**
      * Boost

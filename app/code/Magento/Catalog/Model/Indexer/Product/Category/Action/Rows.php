@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Category\Action;
 
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Config;
+use Magento\Catalog\Model\Indexer\Category\Product as CategoryProductIndexer;
+use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
+use Magento\Catalog\Model\Indexer\Product\Category as ProductCategoryIndexer;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Query\Generator as QueryGenerator;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Indexer\CacheContext;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\Catalog\Model\Indexer\Product\Category as ProductCategoryIndexer;
-use Magento\Catalog\Model\Indexer\Category\Product as CategoryProductIndexer;
-use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
 use Magento\Indexer\Model\WorkingStateProvider;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Category rows indexer.
@@ -158,7 +161,7 @@ class Rows extends \Magento\Catalog\Model\Indexer\Category\Product\AbstractActio
      *
      * @return bool
      */
-    private function isWorkingState() : bool
+    private function isWorkingState(): bool
     {
         $indexer = $this->indexerRegistry->get(CategoryProductIndexer::INDEXER_ID);
         $sharedIndexer = $this->indexerRegistry->get(ProductCategoryIndexer::INDEXER_ID);

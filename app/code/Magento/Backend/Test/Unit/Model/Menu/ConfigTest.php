@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Backend\Model\MenuFactory;
 use Magento\Framework\App\Cache\Type\Config;
 use Magento\Framework\App\State;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -90,7 +91,7 @@ class ConfigTest extends TestCase
                 'configReader' => $this->configReaderMock,
                 'configCacheType' => $this->cacheInstanceMock,
                 'logger' => $this->logger,
-                'appState' => $appState
+                'appState' => $appState,
             ]
         );
     }
@@ -166,7 +167,7 @@ class ConfigTest extends TestCase
         return [
             'InvalidArgumentException' => ['InvalidArgumentException'],
             'BadMethodCallException' => ['BadMethodCallException'],
-            'OutOfRangeException' => ['OutOfRangeException']
+            'OutOfRangeException' => ['OutOfRangeException'],
         ];
     }
 

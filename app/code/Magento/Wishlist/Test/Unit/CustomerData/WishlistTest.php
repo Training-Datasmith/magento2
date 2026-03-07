@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Pricing\Render;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Wishlist\Block\Customer\Sidebar;
 use Magento\Wishlist\CustomerData\Wishlist;
@@ -25,7 +27,6 @@ use Magento\Wishlist\Model\Item;
 use Magento\Wishlist\Model\ResourceModel\Item\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Store\Api\Data\WebsiteInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -153,7 +154,7 @@ class WishlistTest extends TestCase
                 ],
             ],
             'websiteId' => 1,
-            'storeId' => 1
+            'storeId' => 1,
         ];
 
         /** @var Item|MockObject $itemMock */
@@ -364,7 +365,7 @@ class WishlistTest extends TestCase
                 ],
             ],
             'websiteId' => 1,
-            'storeId' => 1
+            'storeId' => 1,
         ];
 
         $this->wishlistHelperMock->expects($this->once())
@@ -514,8 +515,8 @@ class WishlistTest extends TestCase
         $result = [
             'counter' =>  null,
             'items' => [],
-            'websiteId' =>null,
-            'storeId' => null
+            'websiteId' => null,
+            'storeId' => null,
         ];
 
         $this->wishlistHelperMock->expects($this->once())

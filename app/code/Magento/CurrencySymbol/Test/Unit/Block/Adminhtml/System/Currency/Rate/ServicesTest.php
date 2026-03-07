@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Backend\Model\Session;
 use Magento\CurrencySymbol\Block\Adminhtml\System\Currency\Rate\Services;
 use Magento\Directory\Model\Currency\Import\Source\Service;
 use Magento\Directory\Model\Currency\Import\Source\ServiceFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Html\Select;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ServicesTest extends TestCase
 {
@@ -75,7 +76,7 @@ class ServicesTest extends TestCase
             Services::class,
             [
                 'srcCurrencyFactory' => $sourceServiceFactoryMock,
-                'backendSession' => $backendSessionMock
+                'backendSession' => $backendSessionMock,
             ]
         );
         $block->setLayout($layoutMock);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Category;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Controller\Category\View;
@@ -17,15 +17,15 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Catalog\Model\Product\ProductList\ToolbarMemorizer;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Response\RedirectInterface;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\ProcessorInterface;
 use Magento\Framework\View\Page\Config;
@@ -33,6 +33,7 @@ use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -212,7 +213,7 @@ class ViewTest extends TestCase
                 'storeManager' => $this->storeManager,
                 'resultPageFactory' => $resultPageFactory,
                 'categoryHelper' => $this->categoryHelper,
-                'toolbarMemorizer' => $this->toolbarMemorizer
+                'toolbarMemorizer' => $this->toolbarMemorizer,
             ]
         );
     }
@@ -224,7 +225,7 @@ class ViewTest extends TestCase
         $this->request->expects($this->any())->method('getParam')->willReturnMap(
             [
                 [Action::PARAM_NAME_URL_ENCODED],
-                ['id', false, $categoryId]
+                ['id', false, $categoryId],
             ]
         );
         $this->categoryRepository->expects($this->any())->method('get')->with($categoryId)
@@ -267,7 +268,7 @@ class ViewTest extends TestCase
         $this->request->expects($this->any())->method('getParam')->willReturnMap(
             [
                 [Action::PARAM_NAME_URL_ENCODED],
-                ['id', false, $categoryId]
+                ['id', false, $categoryId],
             ]
         );
         $this->request->method('getParams')->willReturn([]);
@@ -326,23 +327,23 @@ class ViewTest extends TestCase
                 'expectedData' => [
                     [['type' => 'default'], null, false],
                     [['type' => 'default_without_children'], null, false],
-                    [['displaymode' => 'products'], null, false]
-                ]
+                    [['displaymode' => 'products'], null, false],
+                ],
             ],
             [
                 'expectedData' => [
                     [['type' => 'default'], null, false],
                     [['type' => 'default_without_children'], null, false],
-                    [['displaymode' => 'page'], null, false]
-                ]
+                    [['displaymode' => 'page'], null, false],
+                ],
             ],
             [
                 'expectedData' => [
                     [['type' => 'default'], null, false],
                     [['type' => 'default'], null, false],
-                    [['displaymode' => 'poducts_and_page'], null, false]
-                ]
-            ]
+                    [['displaymode' => 'poducts_and_page'], null, false],
+                ],
+            ],
         ];
     }
 }

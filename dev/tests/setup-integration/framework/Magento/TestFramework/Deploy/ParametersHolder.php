@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Deploy;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Shell;
-use Magento\Setup\Console\Command\InstallCommand;
 
 /**
  * The purpose of this class is enable/disable module and upgrade commands execution.

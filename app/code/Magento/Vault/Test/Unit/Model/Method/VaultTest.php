@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Vault\Test\Unit\Model\Method;
 
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Payment\Gateway\Command\CommandManagerInterface;
 use Magento\Payment\Gateway\Command\CommandManagerPoolInterface;
@@ -20,7 +22,6 @@ use Magento\Quote\Api\Data\CartInterface;
 use Magento\Sales\Api\Data\OrderPaymentExtensionInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Model\Order\Payment;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenManagementInterface;
 use Magento\Vault\Model\Method\Vault;
@@ -119,7 +120,7 @@ class VaultTest extends TestCase
             ->willReturn(
                 [
                     PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
                 ]
             );
         $tokenManagement->expects(static::once())
@@ -131,7 +132,7 @@ class VaultTest extends TestCase
         $model = $this->objectManager->getObject(
             Vault::class,
             [
-                'tokenManagement' => $tokenManagement
+                'tokenManagement' => $tokenManagement,
             ]
         );
         $model->authorize($paymentModel, 0);
@@ -174,7 +175,7 @@ class VaultTest extends TestCase
             ->willReturn(
                 [
                     PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
                 ]
             );
         $tokenManagement->expects(static::once())
@@ -200,7 +201,7 @@ class VaultTest extends TestCase
                 VaultPaymentInterface::VAULT_AUTHORIZE_COMMAND,
                 $paymentModel,
                 [
-                    'amount' => $amount
+                    'amount' => $amount,
                 ]
             );
 
@@ -293,7 +294,7 @@ class VaultTest extends TestCase
             ->willReturn(
                 [
                     PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
                 ]
             );
         $paymentModel->expects(static::once())
@@ -325,7 +326,7 @@ class VaultTest extends TestCase
                 VaultPaymentInterface::VAULT_SALE_COMMAND,
                 $paymentModel,
                 [
-                    'amount' => $amount
+                    'amount' => $amount,
                 ]
             );
 
@@ -378,7 +379,7 @@ class VaultTest extends TestCase
             Vault::class,
             [
                 'config' => $config,
-                'vaultProvider' => $this->vaultProvider
+                'vaultProvider' => $this->vaultProvider,
             ]
         );
         $actual = $model->isAvailable($quote);
@@ -425,7 +426,7 @@ class VaultTest extends TestCase
             Vault::class,
             [
                 'config' => $config,
-                'vaultProvider' => $this->vaultProvider
+                'vaultProvider' => $this->vaultProvider,
             ]
         );
         static::assertFalse($model->isAvailable($quote));

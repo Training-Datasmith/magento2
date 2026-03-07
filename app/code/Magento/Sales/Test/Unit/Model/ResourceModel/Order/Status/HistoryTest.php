@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,11 +15,11 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order\Status\History as StatusHistory;
 use Magento\Sales\Model\Order\Status\History\Validator;
 use Magento\Sales\Model\ResourceModel\Order\Status\History;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Model\Order\Status\History as StatusHistory;
 
 class HistoryTest extends TestCase
 {
@@ -85,7 +86,7 @@ class HistoryTest extends TestCase
             [
                 'context' => $contextMock,
                 'validator' => $this->validatorMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

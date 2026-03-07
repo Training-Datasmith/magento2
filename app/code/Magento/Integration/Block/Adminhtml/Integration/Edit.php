@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Integration;
 
 use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
@@ -89,7 +92,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                                 ],
                             ],
                         ],
-                    ]
+                    ],
                 ]
             );
         }

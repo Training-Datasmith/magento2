@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,10 +16,9 @@ use Magento\Framework\Jwt\Claim\PrivateClaim;
 use Magento\Framework\Jwt\Header\PrivateHeaderParameter;
 use Magento\Framework\Jwt\Jwe\JweEncryptionSettingsInterface;
 use Magento\Framework\Jwt\Jwk;
-use Magento\Framework\Jwt\Jws\JwsInterface;
-use Magento\JwtUserToken\Api\ConfigReaderInterface;
+use Magento\Integration\Api\Data\UserTokenParametersInterface;
+use Magento\Integration\Api\Data\UserTokenParametersInterfaceFactory;
 use Magento\JwtUserToken\Api\Data\JwtTokenDataInterface;
-use Magento\JwtUserToken\Model\Config\ConfigReader;
 use Magento\JwtUserToken\Model\Data\JwtTokenParameters;
 use Magento\JwtUserToken\Model\Data\JwtUserContext;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -26,8 +26,6 @@ use Magento\TestFramework\ObjectManager;
 use Magento\User\Model\User as UserModel;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Integration\Api\Data\UserTokenParametersInterface;
-use Magento\Integration\Api\Data\UserTokenParametersInterfaceFactory;
 
 class ReaderTest extends TestCase
 {
@@ -68,11 +66,11 @@ class ReaderTest extends TestCase
             'jws-hs384' => [Jwk::ALGORITHM_HS384, JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM],
             'jwe-a128kw-a128gcm' => [
                 Jwk::ALGORITHM_A128KW,
-                JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
+                JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM,
             ],
             'jwe-a256gcmkw-a192hs384' => [
                 Jwk::ALGORITHM_A256GCMKW,
-                JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192_HS384
+                JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192_HS384,
             ],
         ];
     }

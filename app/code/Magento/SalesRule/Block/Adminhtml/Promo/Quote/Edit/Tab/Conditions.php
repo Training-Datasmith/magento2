@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
+use Magento\Framework\App\ObjectManager;
 use Magento\SalesRule\Model\Rule;
 
 /**
@@ -178,7 +179,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
             [
                 'legend' => __(
                     'Apply the rule only if the following conditions are met (leave blank for all products).'
-                )
+                ),
             ]
         )->setRenderer(
             $renderer
@@ -191,7 +192,7 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'label'          => __('Conditions'),
                 'title'          => __('Conditions'),
                 'required'       => true,
-                'data-form-part' => $formName
+                'data-form-part' => $formName,
             ]
         )->setRule(
             $model

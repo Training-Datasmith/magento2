@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -139,7 +140,7 @@ class SalesEventOrderItemToQuoteItemObserverTest extends TestCase
             SalesEventOrderItemToQuoteItemObserver::class,
             [
                 'messageFactory' => $this->messageFactoryMock,
-                'giftMessageMessage' => $this->giftMessageHelperMock
+                'giftMessageMessage' => $this->giftMessageHelperMock,
             ]
         );
     }

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Theme\Model\Layout\Config\Reader
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Layout\Config;
 
 class ReaderTest extends \PHPUnit\Framework\TestCase

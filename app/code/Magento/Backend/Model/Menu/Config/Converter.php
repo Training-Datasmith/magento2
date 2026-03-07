@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\Menu\Config;
 
 /**
@@ -33,7 +36,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
             'resource',
             'dependsOnModule',
             'dependsOnConfig',
-            'target'
+            'target',
         ];
         $xpath = new \DOMXPath($dom);
         $nodeList = $xpath->query('/config/menu/*');

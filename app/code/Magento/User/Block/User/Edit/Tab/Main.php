@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('User Name'),
                 'id' => 'username',
                 'title' => __('User Name'),
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -106,7 +108,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('First Name'),
                 'id' => 'firstname',
                 'title' => __('First Name'),
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -118,7 +120,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Last Name'),
                 'id' => 'lastname',
                 'title' => __('Last Name'),
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -131,7 +133,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'id' => 'customer_email',
                 'title' => __('User Email'),
                 'class' => 'required-entry validate-email',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -152,7 +154,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Interface Locale'),
                 'title' => __('Interface Locale'),
                 'values' => $this->deployedLocales->getOptionLocales(),
-                'class' => 'select'
+                'class' => 'select',
             ]
         );
 
@@ -166,7 +168,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                     'id' => 'is_active',
                     'title' => __('Account Status'),
                     'class' => 'input-select',
-                    'options' => ['1' => __('Active'), '0' => __('Inactive')]
+                    'options' => ['1' => __('Active'), '0' => __('Inactive')],
                 ]
             );
         }
@@ -186,7 +188,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'id' => self::CURRENT_USER_PASSWORD_FIELD,
                 'title' => __('Your Password'),
                 'class' => 'validate-current-password required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -228,7 +230,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
     ) {
         $requiredFieldClass = $isRequired ? ' required-entry' : '';
         $minLength = $this->getMinimumPasswordLength();
-        
+
         $fieldset->addField(
             'password',
             'password',
@@ -238,7 +240,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'id' => 'customer_pass',
                 'title' => $passwordLabel,
                 'class' => 'input-text validate-admin-password admin-password-min-' . $minLength . $requiredFieldClass,
-                'required' => $isRequired
+                'required' => $isRequired,
             ]
         );
         $fieldset->addField(
@@ -250,7 +252,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic
                 'id' => 'confirmation',
                 'title' => $confirmationLabel,
                 'class' => 'input-text validate-cpassword' . $requiredFieldClass,
-                'required' => $isRequired
+                'required' => $isRequired,
             ]
         );
     }

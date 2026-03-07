@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Creditmemo;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;

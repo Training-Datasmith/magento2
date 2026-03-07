@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Framework\Phrase\RendererInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TranslateInterface;
 use Magento\Framework\View\DesignExceptions;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -30,7 +31,7 @@ use Psr\Log\LoggerInterface;
  */
 class AreaTest extends TestCase
 {
-    const SCOPE_ID = '1';
+    public const SCOPE_ID = '1';
 
     /**
      * @var ObjectManager

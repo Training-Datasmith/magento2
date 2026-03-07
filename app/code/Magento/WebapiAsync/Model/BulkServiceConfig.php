@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\WebapiAsync\Model;
 
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Webapi\Model\Cache\Type\Webapi as WebapiCache;
-use Magento\Webapi\Model\Config\Converter as WebapiConverter;
 use Magento\Webapi\Model\Config;
+use Magento\Webapi\Model\Config\Converter as WebapiConverter;
 
 /**
  * @api
@@ -19,8 +20,8 @@ use Magento\Webapi\Model\Config;
  */
 class BulkServiceConfig implements \Magento\Webapi\Model\ConfigInterface
 {
-    const CACHE_ID = 'webapi_bulk_async_service_config';
-    const URL_PARAM_PREFIX_PLACEHOLDER = 'by';
+    public const CACHE_ID = 'webapi_bulk_async_service_config';
+    public const URL_PARAM_PREFIX_PLACEHOLDER = 'by';
     /**
      * @var WebapiCache
      */

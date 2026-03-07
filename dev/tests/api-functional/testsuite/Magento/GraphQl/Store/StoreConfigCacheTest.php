@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $testStoreResponse['body']);
@@ -149,7 +150,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $testStoreResponseHit['body']);
@@ -203,7 +204,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponse['body']);
@@ -234,7 +235,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponseMiss['body']);
@@ -246,7 +247,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponseHit['body']);
@@ -298,7 +299,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals($defaultLocale, $secondStoreResponse['body']['storeConfig']['locale']);
@@ -317,7 +318,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals($defaultLocale, $thirdStoreResponse['body']['storeConfig']['locale']);
@@ -340,7 +341,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -352,7 +353,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -362,7 +363,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(
@@ -374,7 +375,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -421,7 +422,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals($defaultLocale, $secondStoreResponse['body']['storeConfig']['locale']);
@@ -440,7 +441,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals($defaultLocale, $thirdStoreResponse['body']['storeConfig']['locale']);
@@ -472,7 +473,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -484,7 +485,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -494,7 +495,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(
@@ -506,7 +507,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -556,7 +557,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponse['body']);
@@ -592,7 +593,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponseMiss['body']);
@@ -604,7 +605,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('storeConfig', $secondStoreResponseHit['body']);
@@ -655,7 +656,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $secondStoreGroupName = 'Second store group';
@@ -675,7 +676,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals($secondStoreGroupName, $thirdStoreResponse['body']['storeConfig']['store_group_name']);
@@ -701,7 +702,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -713,7 +714,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -723,7 +724,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(
@@ -735,7 +736,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -781,7 +782,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $secondStoreWebsiteName = 'Second Test Website';
@@ -801,7 +802,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals('Third test Website', $thirdStoreResponse['body']['storeConfig']['website_name']);
@@ -827,7 +828,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -839,7 +840,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -849,7 +850,7 @@ class StoreConfigCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -960,13 +961,13 @@ QUERY;
                 'path' => $path,
                 'value' => $this->configStorage->getValueFromDb($path, $scopeType, $scopeCode),
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         } else {
             $this->notExistingOrigConfigs[] = [
                 'path' => $path,
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         }
         $this->config->setValue($path, $value, $scopeType, $scopeCode);

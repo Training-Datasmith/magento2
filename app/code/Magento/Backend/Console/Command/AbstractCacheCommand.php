@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ abstract class AbstractCacheCommand extends Command
     /**
      * Input option bootstrap
      */
-    const INPUT_KEY_BOOTSTRAP = 'bootstrap';
+    public const INPUT_KEY_BOOTSTRAP = 'bootstrap';
 
     /**
      * CacheManager

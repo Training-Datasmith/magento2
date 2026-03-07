@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit;
 
 use Magento\Customer\Api\AccountManagementInterface;
@@ -52,7 +55,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                 'class' => 'delete',
                 'id' => 'customer-edit-delete-button',
                 'data_attribute' => [
-                    'url' => $this->getDeleteUrl()
+                    'url' => $this->getDeleteUrl(),
                 ],
                 'on_click' => '',
                 'sort_order' => 20,

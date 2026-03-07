@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Payment\Test\Unit\Block\Info;
 
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Block\Info\Cc;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Model\Config;
 use Magento\Payment\Model\Info;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -54,7 +55,7 @@ class CcTest extends TestCase
             Cc::class,
             [
                 'paymentConfig' => $this->paymentConfig,
-                'context' => $context
+                'context' => $context,
             ]
         );
     }
@@ -113,7 +114,7 @@ class CcTest extends TestCase
         return [
             [0, 1, true],
             [1, 0, true],
-            [0, 0, false]
+            [0, 0, false],
         ];
     }
 
@@ -138,7 +139,7 @@ class CcTest extends TestCase
     {
         return [
             [2, '02'],
-            [12, '12']
+            [12, '12'],
         ];
     }
 
@@ -176,7 +177,7 @@ class CcTest extends TestCase
         return [
             [3, 2015],
             [12, 2011],
-            [01, 2036]
+            [01, 2036],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Config\Test\Unit;
 
 use Magento\Framework\Config\CompositeFileIterator;
 use Magento\Framework\Config\FileIterator;
-use Magento\Framework\Filesystem\File\ReadFactory;
 use Magento\Framework\Filesystem\File\Read;
+use Magento\Framework\Filesystem\File\ReadFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -52,11 +53,11 @@ class CompositeFileIteratorTest extends TestCase
         $existingFiles = [
             '/etc/magento/somefile.ext',
             '/etc/magento/somefile2.ext',
-            '/etc/magento/somefile3.ext'
+            '/etc/magento/somefile3.ext',
         ];
         $newFiles = [
             '/etc/magento/some-other-file.ext',
-            '/etc/magento/some-other-file2.ext'
+            '/etc/magento/some-other-file2.ext',
         ];
 
         $existing = new FileIterator($this->readFactoryMock, $existingFiles);

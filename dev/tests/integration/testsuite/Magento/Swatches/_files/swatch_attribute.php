@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ $data = [
     'is_user_defined' => 1,
     'is_filterable_in_search' => 0,
     'frontend_label' => 'Attribute ',
-    'entity_type_id' => 4
+    'entity_type_id' => 4,
 ];
 $optionsPerAttribute = 3;
 

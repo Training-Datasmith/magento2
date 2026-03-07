@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +11,8 @@ namespace Magento\Setup\Model;
 use Magento\Authorization\Model\Acl\Role\Group;
 use Magento\Authorization\Model\Acl\Role\User;
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Encryption\EncryptorInterface;
 
 class AdminAccount
 {
@@ -148,7 +150,7 @@ class AdminAccount
             [
                 'user_id' => $adminId,
                 'password_hash' => $passwordHash,
-                'last_updated' => time()
+                'last_updated' => time(),
             ]
         );
     }
@@ -179,7 +181,7 @@ class AdminAccount
         try {
             $result = $this->connection->fetchRow(
                 "SELECT user_id, username, email FROM {$this->getTableName('admin_user')} "
-                . "WHERE username = :username OR email = :email",
+                . 'WHERE username = :username OR email = :email',
                 ['username' => $this->data[self::KEY_USER], 'email' => $this->data[self::KEY_EMAIL]]
             );
         } catch (\Exception $e) {

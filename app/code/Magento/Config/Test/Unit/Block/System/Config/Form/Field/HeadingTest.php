@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,13 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Field\Heading
  */
+
 namespace Magento\Config\Test\Unit\Block\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\Heading;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class HeadingTest extends TestCase

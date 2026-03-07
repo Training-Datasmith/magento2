@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,21 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\RemoteStorage\Plugin\File\Storage;
 
-use Magento\RemoteStorage\Model\File\Storage\Synchronization;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\MediaStorage\Model\File\Storage\SynchronizationFactory as MediaSynchronizationFactory;
 use Magento\RemoteStorage\Model\Config;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\RemoteStorage\Model\File\Storage\Synchronization;
 
 /**
  * This is a plugin to Magento\MediaStorage\Model\File\Storage\SynchronizationFactory.
  */
 class SynchronizationFactory
 {
-     /**
-     * Object Manager instance
-     *
-     * @var ObjectManagerInterface
-     */
+    /**
+    * Object Manager instance
+    *
+    * @var ObjectManagerInterface
+    */
     private $objectManager = null;
 
     /**

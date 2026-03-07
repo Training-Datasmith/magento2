@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml system template edit form
  */
+
 namespace Magento\Email\Block\Adminhtml\Template\Edit;
 
 use Magento\Framework\App\ObjectManager;
@@ -145,7 +148,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'type' => 'button',
                     'label' => __('Insert Variable...'),
                     'onclick' => 'templateControl.openVariableChooser();return false;',
-                ]
+                ],
             ]
         );
 
@@ -159,7 +162,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Template Content'),
                 'title' => __('Template Content'),
                 'required' => true,
-                'style' => 'height:24em;'
+                'style' => 'height:24em;',
             ]
         );
 
@@ -170,7 +173,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 [
                     'name' => 'template_styles',
                     'label' => __('Template Styles'),
-                    'container_id' => 'field_template_styles'
+                    'container_id' => 'field_template_styles',
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\ResourceModel\Order\Handler;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Address as OrderAddress;
 use Magento\Sales\Model\ResourceModel\Attribute;
 use Magento\Sales\Model\ResourceModel\Order\Address\Collection;
 use Magento\Sales\Model\ResourceModel\Order\Handler\Address;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Sales\Model\Order\Address as OrderAddress;
 
 class AddressTest extends TestCase
 {
@@ -54,7 +55,7 @@ class AddressTest extends TestCase
                 'hasBillingAddressId', 'unsBillingAddressId', 'hasShippingAddressId',
                 'getShippingAddressId', 'setShippingAddressId', 'unsShippingAddressId', 'getAddresses',
                 'save', 'getBillingAddress', 'getShippingAddress', 'getBillingAddressId',
-                'setBillingAddressId'
+                'setBillingAddressId',
             ]
         );
         $this->addressMock = $this->createMock(OrderAddress::class);

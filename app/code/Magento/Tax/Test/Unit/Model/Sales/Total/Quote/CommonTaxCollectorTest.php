@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,16 +12,17 @@ use Magento\Customer\Api\AccountManagementInterface as CustomerAccountManagement
 use Magento\Customer\Api\Data\AddressInterface as CustomerAddress;
 use Magento\Customer\Api\Data\AddressInterfaceFactory as CustomerAddressFactory;
 use Magento\Customer\Api\Data\RegionInterfaceFactory as CustomerAddressRegionFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
-use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
+use Magento\Quote\Model\Quote\Address\Total as QuoteAddressTotal;
+use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Store\Model\Store;
 use Magento\Tax\Api\Data\AppliedTaxInterface;
 use Magento\Tax\Api\Data\AppliedTaxRateInterface;
 use Magento\Tax\Api\Data\QuoteDetailsInterface;
 use Magento\Tax\Api\Data\QuoteDetailsInterfaceFactory;
-use Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterface;
 use Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterfaceFactory;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterface;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterfaceFactory;
@@ -29,9 +31,7 @@ use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
 use Magento\Tax\Api\Data\TaxDetailsInterface;
 use Magento\Tax\Api\Data\TaxDetailsItemInterface;
 use Magento\Tax\Api\TaxCalculationInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Tax\Helper\Data as TaxHelper;
-use \Magento\Quote\Model\Quote\Address\Total as QuoteAddressTotal;
 use Magento\Tax\Model\Config;
 use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -43,7 +43,7 @@ use PHPUnit\Framework\TestCase;
 class CommonTaxCollectorTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /** @var Config|MockObject */
     private $taxConfig;
 
@@ -140,7 +140,7 @@ class CommonTaxCollectorTest extends TestCase
         $this->assertSame(123, $row['item_id']);
         $this->assertSame(CommonTaxCollector::ITEM_TYPE_PRODUCT, $row['item_type']);
         $this->assertSame([
-            ['percent' => 5.0, 'code' => 'CA-STATE', 'title' => 'California']
+            ['percent' => 5.0, 'code' => 'CA-STATE', 'title' => 'California'],
         ], $row['rates']);
     }
 
@@ -213,7 +213,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['mapAddress'])
             ->getMock();
@@ -267,7 +267,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['mapAddress'])
             ->getMock();
@@ -341,7 +341,7 @@ class CommonTaxCollectorTest extends TestCase
                 'setRowTotal', 'setRowTotalInclTax', 'setTaxAmount', 'setTaxPercent',
                 'setDiscountTaxCompensationAmount', 'setBasePrice', 'setBasePriceInclTax', 'setBaseRowTotal',
                 'setBaseRowTotalInclTax', 'setBaseTaxAmount', 'setBaseDiscountTaxCompensationAmount',
-                'setDiscountCalculationPrice', 'setBaseDiscountCalculationPrice'
+                'setDiscountCalculationPrice', 'setBaseDiscountCalculationPrice',
             ]);
 
         $quoteItem->expects($this->atLeastOnce())->method('setPrice')->with(10.00)->willReturnSelf();
@@ -452,8 +452,7 @@ class CommonTaxCollectorTest extends TestCase
         $quoteDetailsItem->method('setDiscountAmount')->willReturnSelf();
         $quoteDetailsItem->method('setParentCode')->willReturnSelf();
 
-        $extension = new class implements \Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterface
-        {
+        $extension = new class () implements \Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterface {
             /**
              * @var float|null
              */
@@ -506,7 +505,7 @@ class CommonTaxCollectorTest extends TestCase
                 'getTaxCalculationItemId',
                 'setTaxCalculationItemId',
                 'getTaxCalculationPrice',
-                'setTaxCalculationPrice'
+                'setTaxCalculationPrice',
             ]
         );
         $item->method('getQuote')->willReturn(null);
@@ -586,7 +585,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['mapItem', 'mapItemExtraTaxables'])
             ->getMock();
@@ -597,7 +596,7 @@ class CommonTaxCollectorTest extends TestCase
             AbstractItem::class,
             [
                 'getQuote', 'getAddress', 'getOptionByCode', 'getParentItem',
-                'isChildrenCalculated', 'getChildren', 'getHasChildren'
+                'isChildrenCalculated', 'getChildren', 'getHasChildren',
             ]
         );
         $parentItem->method('getQuote')->willReturn(null);
@@ -641,7 +640,7 @@ class CommonTaxCollectorTest extends TestCase
         $total = $this->createPartialMockWithReflection(QuoteAddressTotal::class, [
                 'getShippingTaxCalculationAmount', 'setShippingTaxCalculationAmount', 'getShippingAmount',
                 'setBaseShippingTaxCalculationAmount', 'getBaseShippingAmount', 'getShippingDiscountAmount',
-                'getBaseShippingDiscountAmount'
+                'getBaseShippingDiscountAmount',
             ]);
         $total->method('getShippingTaxCalculationAmount')->willReturn(10.0);
         $total->method('getShippingAmount')->willReturn(10.0);
@@ -686,7 +685,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['populateAddressData'])
             ->getMock();
@@ -789,7 +788,7 @@ class CommonTaxCollectorTest extends TestCase
             QuoteAddressTotal::class,
             [
                 'setTotalAmount', 'setBaseTotalAmount', 'setSubtotalInclTax',
-                'setBaseSubtotalTotalInclTax', 'setBaseSubtotalInclTax'
+                'setBaseSubtotalTotalInclTax', 'setBaseSubtotalInclTax',
             ]
         );
         $total->method('setTotalAmount')->willReturnSelf();
@@ -821,7 +820,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['updateItemTaxInfo'])
             ->getMock();
@@ -832,8 +831,8 @@ class CommonTaxCollectorTest extends TestCase
         $method->invoke($sut, $shippingAssignment, [
             'code-xyz' => [
                 CommonTaxCollector::KEY_ITEM => $taxDetail,
-                CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetail
-            ]
+                CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetail,
+            ],
         ], $total);
 
         $this->assertTrue(true);
@@ -847,7 +846,7 @@ class CommonTaxCollectorTest extends TestCase
             SafeArrayObject::class,
             [
                 'getTaxCalculationItemId', 'isDeleted', 'getHasChildren',
-                'isChildrenCalculated', 'getId', 'setAppliedTaxes'
+                'isChildrenCalculated', 'getId', 'setAppliedTaxes',
             ]
         );
         $addressItem->method('getTaxCalculationItemId')->willReturn('code-1');
@@ -891,8 +890,8 @@ class CommonTaxCollectorTest extends TestCase
             CommonTaxCollector::ITEM_TYPE_PRODUCT => [
                 'code-1' => [
                     CommonTaxCollector::KEY_ITEM => $taxDetails,
-                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails]
-            ]
+                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails],
+            ],
         ];
 
         $total = $this->createPartialMockWithReflection(
@@ -972,9 +971,9 @@ class CommonTaxCollectorTest extends TestCase
             'fee' => [
                 'fee-item-code' => [
                     CommonTaxCollector::KEY_ITEM => $taxDetails,
-                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails
-                ]
-            ]
+                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails,
+                ],
+            ],
         ];
 
         $total = $this->createPartialMockWithReflection(
@@ -1044,9 +1043,9 @@ class CommonTaxCollectorTest extends TestCase
             'fee' => [
                 'fee-item-code' => [
                     CommonTaxCollector::KEY_ITEM => $taxDetails,
-                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails
-                ]
-            ]
+                    CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetails,
+                ],
+            ],
         ];
 
         $total = $this->createPartialMockWithReflection(
@@ -1093,7 +1092,7 @@ class CommonTaxCollectorTest extends TestCase
             [
                 'setTotalAmount', 'setBaseTotalAmount', 'addTotalAmount', 'addBaseTotalAmount',
                 'setShippingInclTax', 'setBaseShippingInclTax', 'setShippingTaxAmount',
-                'setBaseShippingTaxAmount', 'setShippingAmountForDiscount', 'setBaseShippingAmountForDiscount'
+                'setBaseShippingTaxAmount', 'setShippingAmountForDiscount', 'setBaseShippingAmountForDiscount',
             ]
         );
 
@@ -1201,7 +1200,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['mapItem', 'mapItemExtraTaxables'])
             ->getMock();
@@ -1210,7 +1209,7 @@ class CommonTaxCollectorTest extends TestCase
             AbstractItem::class,
             [
                 'getQuote', 'getAddress', 'getOptionByCode', 'isChildrenCalculated',
-                'getChildren', 'getParentItem', 'getHasChildren'
+                'getChildren', 'getParentItem', 'getHasChildren',
             ]
         );
         $parentItem->method('getHasChildren')->willReturn(true);
@@ -1266,8 +1265,7 @@ class CommonTaxCollectorTest extends TestCase
     public function testConstructorFallsBackToOmForOptionalDependencies(): void
     {
         $extFactory = $this->createMock(QuoteDetailsItemExtensionInterfaceFactory::class);
-        $ext = new class implements \Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterface
-        {
+        $ext = new class () implements \Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterface {
             /**
              * @var float|null
              */
@@ -1443,7 +1441,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['mapItem', 'mapItemExtraTaxables'])
             ->getMock();
@@ -1477,7 +1475,7 @@ class CommonTaxCollectorTest extends TestCase
             \stdClass::class,
             [
                 'getQuote', 'setBaseTaxAmount', 'setBaseSubtotalTotalInclTax',
-                'setSubtotalInclTax', 'setSubtotal', 'setBaseSubtotal'
+                'setSubtotalInclTax', 'setSubtotal', 'setBaseSubtotal',
             ]
         );
         $quote = $this->createPartialMockWithReflection(\stdClass::class, ['getStore']);
@@ -1500,7 +1498,7 @@ class CommonTaxCollectorTest extends TestCase
             QuoteAddressTotal::class,
             [
                 'setTotalAmount', 'setBaseTotalAmount', 'setSubtotalInclTax',
-                'setBaseSubtotalTotalInclTax', 'setBaseSubtotalInclTax'
+                'setBaseSubtotalTotalInclTax', 'setBaseSubtotalInclTax',
             ]
         );
         $total->method('setTotalAmount')->willReturnSelf();
@@ -1532,7 +1530,7 @@ class CommonTaxCollectorTest extends TestCase
                 $this->customerAddressRegionFactory,
                 $this->taxHelper,
                 $this->quoteDetailsItemExtensionFactory,
-                $this->customerAccountManagement
+                $this->customerAccountManagement,
             ])
             ->onlyMethods(['updateItemTaxInfo'])
             ->getMock();
@@ -1543,8 +1541,8 @@ class CommonTaxCollectorTest extends TestCase
         $method->invoke($sut, $shippingAssignment, [
             'code-skip' => [
                 CommonTaxCollector::KEY_ITEM => $taxDetail,
-                CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetail
-            ]
+                CommonTaxCollector::KEY_BASE_ITEM => $baseTaxDetail,
+            ],
         ], $total);
 
         $this->assertTrue(true);
@@ -1580,7 +1578,7 @@ class CommonTaxCollectorTest extends TestCase
                 'setRowTotal', 'setRowTotalInclTax', 'setTaxAmount', 'setTaxPercent',
                 'setDiscountTaxCompensationAmount', 'setBasePrice', 'setBasePriceInclTax', 'setBaseRowTotal',
                 'setBaseRowTotalInclTax', 'setBaseTaxAmount', 'setBaseDiscountTaxCompensationAmount',
-                'setDiscountCalculationPrice', 'setBaseDiscountCalculationPrice'
+                'setDiscountCalculationPrice', 'setBaseDiscountCalculationPrice',
             ]);
         // Allow most setters to be called without strict expectations
         $quoteItem->method('setPrice')->willReturnSelf();

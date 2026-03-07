@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ConfigTest extends TestCase
         $this->model = $objectManager->getObject(
             Config::class,
             [
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -71,7 +72,7 @@ class ConfigTest extends TestCase
     {
         return [
             [true, true],
-            [false, false]
+            [false, false],
         ];
     }
 

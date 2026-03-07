@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Framework\View\Test\Unit\TemplateEngine;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\TemplateEngine\Php;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test template engine that enables PHP templates to be used for rendering.
@@ -22,7 +23,7 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 class PhpTest extends TestCase
 {
     use MockCreationTrait;
-    const TEST_PROP_VALUE = 'TEST_PROP_VALUE';
+    public const TEST_PROP_VALUE = 'TEST_PROP_VALUE';
 
     /** @var  Php */
     protected $_phpEngine;
@@ -59,7 +60,7 @@ class PhpTest extends TestCase
         $filename = __DIR__ . '/_files/simple.phtml';
         $actualOutput = $this->_phpEngine->render($blockMock, $filename);
 
-//        $this->assertAttributeEquals(null, '_currentBlock', $this->_phpEngine);
+        //        $this->assertAttributeEquals(null, '_currentBlock', $this->_phpEngine);
 
         $expectedOutput = '<html>' . self::TEST_PROP_VALUE . '</html>' . PHP_EOL;
         $this->assertSame($expectedOutput, $actualOutput, 'phtml file did not render correctly');

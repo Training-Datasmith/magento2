@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var \Magento\Framework\ObjectManagerInterface $objectManager */
 $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();

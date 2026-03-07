@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -53,7 +56,7 @@ class Decimal extends AbstractEav
             ->union(
                 [
                     $this->getSelect($attrIds, $entityIds),
-                    $this->getSelect($attrIds, $entityIds, true)
+                    $this->getSelect($attrIds, $entityIds, true),
                 ]
             );
 

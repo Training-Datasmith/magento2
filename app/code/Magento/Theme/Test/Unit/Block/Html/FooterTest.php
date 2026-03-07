@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,11 @@ namespace Magento\Theme\Test\Unit\Block\Html;
 
 use Magento\Cms\Model\Block;
 use Magento\Framework\App\Config;
-use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Theme\Block\Html\Footer;
-use Magento\Theme\Block\Html\Header;
 use PHPUnit\Framework\TestCase;
 
 class FooterTest extends TestCase

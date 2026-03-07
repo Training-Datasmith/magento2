@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -60,8 +61,8 @@ class RealTypesTest extends TestCase
                 [
                     'column' => 'name.float',
                     'message' => 'Real type "precision" must be greater or equal to "scale". ' .
-                        'float(5,10) is invalid in name.float.'
-                ]
+                        'float(5,10) is invalid in name.float.',
+                ],
             ],
             $this->model->validate($schemaMock)
         );

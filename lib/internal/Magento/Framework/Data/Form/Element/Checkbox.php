@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -50,7 +52,7 @@ class Checkbox extends AbstractElement
             'tabindex',
             'data-form-part',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 

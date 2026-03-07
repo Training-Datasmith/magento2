@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -40,7 +42,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'label' => __('Properties'),
                 'title' => __('Properties'),
                 'content' => $this->getChildHtml('main'),
-                'active' => true
+                'active' => true,
             ]
         );
         $this->addTab(
@@ -48,7 +50,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
             [
                 'label' => __('Manage Labels'),
                 'title' => __('Manage Labels'),
-                'content' => $this->getChildHtml('labels')
+                'content' => $this->getChildHtml('labels'),
             ]
         );
         $this->addTab(
@@ -56,7 +58,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
             [
                 'label' => __('Storefront Properties'),
                 'title' => __('Storefront Properties'),
-                'content' => $this->getChildHtml('front')
+                'content' => $this->getChildHtml('front'),
             ]
         );
 

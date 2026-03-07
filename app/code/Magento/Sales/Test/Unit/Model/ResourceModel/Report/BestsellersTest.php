@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class BestsellersTest extends TestCase
         return [
             'from-to interval' => [new \DateTime('yesterday'), new \DateTime(), $randomDates],
             'from interval' => [new \DateTime('yesterday'), null, $randomDates],
-            'from interval no dates' => [new \DateTime('yesterday'), null, []]
+            'from interval no dates' => [new \DateTime('yesterday'), null, []],
         ];
     }
 

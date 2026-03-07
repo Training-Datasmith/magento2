@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class MetaTest extends TestCase
         $metaId = 1;
         $metaData = [
             'meta_id' => 1,
-            'profile_id' => 2
+            'profile_id' => 2,
         ];
         $this->resourceMock->expects($this->any())
             ->method('getConnection')

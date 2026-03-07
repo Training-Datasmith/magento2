@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector\ResponseHandler;
 
 use Magento\Analytics\Model\AnalyticsToken;
@@ -15,40 +18,14 @@ use Magento\Analytics\Model\SubscriptionStatusProvider;
  */
 class ReSignUp implements ResponseHandlerInterface
 {
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-    
-    /**
-     * @var SubscriptionHandler
-     */
-    private $subscriptionHandler;
-
-    /**
-     * @var SubscriptionStatusProvider
-     */
-    private $subscriptionStatusProvider;
-
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param SubscriptionHandler $subscriptionHandler
-     * @param SubscriptionStatusProvider $subscriptionStatusProvider
-     */
-    public function __construct(
-        AnalyticsToken $analyticsToken,
-        SubscriptionHandler $subscriptionHandler,
-        SubscriptionStatusProvider $subscriptionStatusProvider
-    ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->subscriptionHandler = $subscriptionHandler;
-        $this->subscriptionStatusProvider = $subscriptionStatusProvider;
+    public function __construct(private readonly AnalyticsToken $analyticsToken, private readonly SubscriptionHandler $subscriptionHandler, private readonly SubscriptionStatusProvider $subscriptionStatusProvider)
+    {
     }
 
     /**
      * @inheritdoc
      */
-    public function handleResponse(array $responseBody)
+    public function handleResponse(array $responseBody): bool
     {
         if ($this->subscriptionStatusProvider->getStatus() === SubscriptionStatusProvider::ENABLED) {
             $this->analyticsToken->storeToken(null);

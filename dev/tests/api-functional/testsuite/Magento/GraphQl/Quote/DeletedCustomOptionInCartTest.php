@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -93,10 +94,10 @@ class DeletedCustomOptionInCartTest extends GraphQlAbstract
                                 'title' => 'Option Value 2',
                                 'price' => 20.00,
                                 'price_type' => 'fixed',
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'product'
         ),
@@ -292,7 +293,7 @@ class DeletedCustomOptionInCartTest extends GraphQlAbstract
 
         return [
             'optionId' => (int) $optionId,
-            'optionValueId' => (int) $optionValueId
+            'optionValueId' => (int) $optionValueId,
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * System config email sender field backend model
  */
+
 namespace Magento\Config\Model\Config\Backend\Email;
 
 /**
@@ -30,7 +33,7 @@ class Sender extends \Magento\Framework\App\Config\Value
             );
         }
 
-        if (str_contains($value, ":")) {
+        if (str_contains($value, ':')) {
             throw new \Magento\Framework\Exception\LocalizedException(
                 __('The sender name "%1" is not valid. The colon character is not allowed.', $value)
             );

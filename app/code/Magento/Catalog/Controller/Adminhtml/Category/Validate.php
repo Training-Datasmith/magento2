@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
+use Magento\Catalog\Controller\Adminhtml\Category as CategoryAction;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Catalog\Controller\Adminhtml\Category as CategoryAction;
 
 /**
  * Catalog category validate
@@ -42,7 +45,7 @@ class Validate extends CategoryAction implements HttpGetActionInterface, HttpPos
     {
         $resultJson = $this->resultJsonFactory->create();
         $resultJson->setData(['error' => 0]);
-        
+
         return $resultJson;
     }
 }

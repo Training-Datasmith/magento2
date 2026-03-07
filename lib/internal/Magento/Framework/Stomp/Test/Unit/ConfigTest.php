@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Framework\Stomp\Config;
 use Magento\Framework\Stomp\Connection\Factory as ConnectionFactory;
 use Magento\Framework\Stomp\Connection\FactoryOptions;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Stomp\Network\Connection;
 
 class ConfigTest extends TestCase
@@ -52,8 +53,8 @@ class ConfigTest extends TestCase
         $objects = [
             [
                 ConnectionFactory::class,
-                $this->createMock(ConnectionFactory::class)
-            ]
+                $this->createMock(ConnectionFactory::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->deploymentConfigMock = $this->getMockBuilder(DeploymentConfig::class)
@@ -118,7 +119,7 @@ class ConfigTest extends TestCase
                     'ssl' => $expectedSsl,
                     'ssl_options' => $expectedSslOptions,
                     'randomKey' => 'randomValue',
-                ]
+                ],
             ]);
 
         $this->assertEquals($expectedHost, $this->stompConfig->getValue(Config::HOST));
@@ -154,8 +155,8 @@ class ConfigTest extends TestCase
                         'password' => $expectedPassword,
                         'ssl' => $expectedSsl,
                         'randomKey' => 'randomValue',
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         $this->assertEquals($expectedHost, $stompConfig->getValue(Config::HOST));
@@ -178,7 +179,7 @@ class ConfigTest extends TestCase
             ->with(Config::QUEUE_CONFIG)
             ->willReturn(
                 [
-                    Config::STOMP_CONFIG => $config
+                    Config::STOMP_CONFIG => $config,
                 ]
             );
         $this->connectionFactory->expects($this->once())
@@ -206,15 +207,15 @@ class ConfigTest extends TestCase
             [
                 self::DEFAULT_CONFIG,
                 [
-                    'isSslEnabled' => false
-                ]
+                    'isSslEnabled' => false,
+                ],
             ],
             [
                 self::DEFAULT_CONFIG + [Config::SSL => ' true '],
                 [
-                    'isSslEnabled' => true
-                ]
-            ]
+                    'isSslEnabled' => true,
+                ],
+            ],
         ];
     }
 

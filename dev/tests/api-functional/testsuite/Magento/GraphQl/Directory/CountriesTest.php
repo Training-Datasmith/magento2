@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class CountriesTest extends GraphQlAbstract
     {
         $result = $this->graphQlQuery($this->getQuery());
         $count = count($result['countries']);
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $this->assertNotNull($result['countries'][$i]['full_name_locale']);
         }
     }

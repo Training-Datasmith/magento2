@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ArgumentFactory
      */
     public function createFromConfigData(
         array $argumentData
-    ) : Argument {
+    ): Argument {
         return $this->objectManager->create(
             Argument::class,
             [

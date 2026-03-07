@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Integration\Api\OauthServiceInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Authentication\OauthHelper;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class IntegrationTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
@@ -25,7 +28,7 @@ class IntegrationTest extends \Magento\TestFramework\TestCase\WebapiAbstract
             'all_resources' => true,
             'integration_id' => 1,
             'status' => Integration::STATUS_ACTIVE,
-            'name' => 'Test Integration1'
+            'name' => 'Test Integration1',
         ];
         $this->integration = $integrationService->update($params);
         parent::setUp();

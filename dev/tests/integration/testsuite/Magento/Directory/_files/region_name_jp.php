@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ $connection = $resource->getConnection();
 $alabamaOnJP = [
     'locale' => 'JA_jp',
     'region_id' => 1,
-    'name' => 'アラバマ'
+    'name' => 'アラバマ',
 ];
 $connection->insert(
     $resource->getTableName('directory_country_region_name'),

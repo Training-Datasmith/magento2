@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Config\Consolidated;
 
 use Magento\Integration\Model\Config\Consolidated\Reader as ConfigReader;
@@ -36,7 +39,7 @@ class ReaderTest extends \PHPUnit\Framework\TestCase
     {
         $configFiles = [
             file_get_contents(realpath(__DIR__ . '/_files/integrationA.xml')),
-            file_get_contents(realpath(__DIR__ . '/_files/integrationB.xml'))
+            file_get_contents(realpath(__DIR__ . '/_files/integrationB.xml')),
         ];
         $this->fileResolverMock->expects($this->any())->method('get')->willReturn($configFiles);
 

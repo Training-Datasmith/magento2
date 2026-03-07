@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
@@ -16,7 +18,7 @@ $stockDataConfig = [
     'use_config_manage_stock' => 1,
     'qty' => 100,
     'is_qty_decimal' => 0,
-    'is_in_stock' => 1
+    'is_in_stock' => 1,
 ];
 
 /** @var ObjectManagerInterface $objectManager */

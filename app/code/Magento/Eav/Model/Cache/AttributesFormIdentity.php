@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Eav\Model\Cache;
 
+use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\Api\AttributeInterface;
 use Magento\Framework\GraphQl\Query\Resolver\IdentityInterface;
-use Magento\Eav\Model\Entity\Attribute;
 
 /**
  * Cache identity provider for attributes form query
@@ -27,10 +28,10 @@ class AttributesFormIdentity implements IdentityInterface
         }
 
         $identities = [];
-        
+
         if ($resolvedData['formCode'] !== '') {
             $identities[] = sprintf(
-                "%s_%s_FORM",
+                '%s_%s_FORM',
                 self::CACHE_TAG,
                 $resolvedData['formCode'] ?? ''
             );
@@ -39,7 +40,7 @@ class AttributesFormIdentity implements IdentityInterface
         foreach ($resolvedData['items'] as $item) {
             if ($item['attribute'] instanceof AttributeInterface) {
                 $identities[] = sprintf(
-                    "%s_%s",
+                    '%s_%s',
                     Attribute::CACHE_TAG,
                     $item['attribute']->getAttributeId()
                 );

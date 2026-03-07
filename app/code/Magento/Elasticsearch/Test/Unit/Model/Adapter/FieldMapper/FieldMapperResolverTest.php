@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class FieldMapperResolverTest extends TestCase
             FieldMapperResolver::class,
             [
                 'objectManager' => $this->objectManagerMock,
-                'fieldMappers' => $this->fieldMappers
+                'fieldMappers' => $this->fieldMappers,
             ]
         );
     }

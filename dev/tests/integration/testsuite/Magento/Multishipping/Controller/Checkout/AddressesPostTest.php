@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Multishipping\Controller\Checkout;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\MessageInterface;
-use Magento\Quote\Api\Data\CartInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Quote\Api\CartRepositoryInterface as QuoteRepository;
+use Magento\Quote\Api\Data\CartInterface;
 use Magento\TestFramework\TestCase\AbstractController;
 use Psr\Log\LoggerInterface;
 
@@ -60,7 +61,7 @@ class AddressesPostTest extends AbstractController
                         'address' => 1,
                     ],
                 ],
-            ]
+            ],
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($request);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Model;
 
+use Magento\Captcha\Helper\Data as CaptchaHelper;
 use Magento\Captcha\Model\DefaultModel;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
-use Magento\Captcha\Helper\Data as CaptchaHelper;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\TestFramework\ObjectManager;
-use Magento\Customer\Model\Session as CustomerSession;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test CAPTCHA-based rate limiter.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ interface AdapterInterface
     /**
      * Adapter type
      */
-    const ADAPTER_GD2 = 'GD2';
+    public const ADAPTER_GD2 = 'GD2';
 
-    const ADAPTER_IM = 'IMAGEMAGICK';
+    public const ADAPTER_IM = 'IMAGEMAGICK';
 
     /**
      * Returns rgba array of the specified pixel

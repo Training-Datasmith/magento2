@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Sales\Test\Unit\Model;
 use Magento\Backend\Model\Session\Quote;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote as QuoteModel;
 use Magento\Sales\Model\CustomerGroupRetriever;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for class CustomerGroupRetriever.
@@ -55,7 +56,7 @@ class CustomerGroupRetrieverTest extends TestCase
             CustomerGroupRetriever::class,
             [
                 'quoteSession' => $this->quoteSession,
-                'groupManagement' => $this->groupManagement
+                'groupManagement' => $this->groupManagement,
             ]
         );
     }

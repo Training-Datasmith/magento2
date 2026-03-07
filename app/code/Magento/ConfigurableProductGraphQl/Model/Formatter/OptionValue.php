@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class OptionValue
             'is_available' => $this->getIsAvailable($optionIds[$valueIndex] ?? []),
             'is_use_default' => (bool)$attribute->getIsUseDefault(),
             'label' => $optionValue['label'],
-            'value_index' => $optionValue['value_index']
+            'value_index' => $optionValue['value_index'],
         ];
     }
 

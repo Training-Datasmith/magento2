@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class DataProviderTest extends TestCase
         $this->plugin = $objectManager->getObject(
             DataProvider::class,
             [
-                'helper' => $this->helper
+                'helper' => $this->helper,
             ]
         );
     }

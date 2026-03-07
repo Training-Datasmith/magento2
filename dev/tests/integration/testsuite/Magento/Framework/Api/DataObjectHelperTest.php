@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Api\Fixture\DataObjectInterface;
 use Magento\Framework\Api\Fixture\DataObjectFactory;
+use Magento\Framework\Api\Fixture\DataObjectInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -45,7 +46,7 @@ class DataObjectHelperTest extends TestCase
             'first_a_second' => '1',
             'first_at_second' => '1',
             'first_a_t_m_second' => '1',
-            'random_attribute' => 'random'
+            'random_attribute' => 'random',
         ];
         $expectedData = [
             'first_a_second' => '1',

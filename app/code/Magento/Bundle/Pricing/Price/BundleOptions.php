@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Bundle\Pricing\Price;
 
 use Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Framework\Pricing\SaleableInterface;
-use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Pricing\Amount\AmountInterface;
+use Magento\Framework\Pricing\SaleableInterface;
 
 /**
  * Bundle option price calculation model.
@@ -82,7 +83,7 @@ class BundleOptions implements ResetAfterRequestInterface
     public function calculateOptions(
         SaleableInterface $bundleProduct,
         bool $searchMin = true
-    ) : float {
+    ): float {
         $priceList = [];
         /* @var \Magento\Bundle\Model\Option $option */
         foreach ($this->getOptions($bundleProduct) as $option) {
@@ -113,7 +114,7 @@ class BundleOptions implements ResetAfterRequestInterface
         Product $bundleProduct,
         $selection,
         bool $useRegularPrice = false
-    ) : AmountInterface {
+    ): AmountInterface {
         $cacheKey = implode(
             '_',
             [

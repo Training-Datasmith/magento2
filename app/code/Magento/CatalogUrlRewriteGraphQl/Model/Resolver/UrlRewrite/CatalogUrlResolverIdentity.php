@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class CatalogUrlResolverIdentity implements IdentityInterface
      * @param string $entityType
      * @return string
      */
-    private function getTagFromEntityType(string $entityType) : string
+    private function getTagFromEntityType(string $entityType): string
     {
         $selectedCacheTag = '';
         $type = strtolower($entityType);

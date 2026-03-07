@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -23,11 +26,11 @@ interface InvoiceCommentInterface extends ExtensibleDataInterface, CommentInterf
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Is-customer-notified flag.
      */
-    const IS_CUSTOMER_NOTIFIED = 'is_customer_notified';
+    public const IS_CUSTOMER_NOTIFIED = 'is_customer_notified';
 
     /**
      * Gets the is-customer-notified flag value for the invoice.

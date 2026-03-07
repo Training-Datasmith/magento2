@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class DefinitionAggregatorTest extends TestCase
         $this->definitonAggregator = $this->objectManager->getObject(
             DefinitionAggregator::class,
             [
-                'definitionProcessors' => $this->definitonProcessors
+                'definitionProcessors' => $this->definitonProcessors,
             ]
         );
     }
@@ -79,13 +80,13 @@ class DefinitionAggregatorTest extends TestCase
         $this->expectExceptionMessage('Cannot process definition to array for type text');
         $data = [
             'col_int' => [
-                'type' => 'int'
+                'type' => 'int',
             ],
             'col_varchar' => [
-                'type' => 'varchar'
+                'type' => 'varchar',
             ],
             'col_text' => [
-                'type' => 'text'
+                'type' => 'text',
             ],
         ];
         $this->definitonProcessors['int']->expects($this->once())->method('fromDefinition');

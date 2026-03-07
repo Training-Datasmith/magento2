@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Webapi\Rest;
 
-use Magento\Framework\Webapi\Rest\Request\DeserializerInterface;
-use Magento\Framework\Webapi\Rest\Request\DeserializerFactory;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Framework\Webapi\Rest\Request\DeserializerFactory;
+use Magento\Framework\Webapi\Rest\Request\DeserializerInterface;
 
 /**
  * Class RequestTypeBasedDeserializer

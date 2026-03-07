@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\App\Bootstrap;
@@ -278,7 +281,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
         foreach (self::$_listConfigXml as $file) {
             $config = simplexml_load_file($file);
             //phpcs:ignore Generic.PHP.NoSilencedErrors
-            $nodes = @($config->xpath("/config/*/design/theme/full_name") ?: []);
+            $nodes = @($config->xpath('/config/*/design/theme/full_name') ?: []);
             foreach ($nodes as $node) {
                 $defaultThemes[] = (string)$node;
             }
@@ -293,7 +296,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
      */
     protected static function _initRules()
     {
-        $tableToPrimaryModuleMap= self::getTableToPrimaryModuleMap();
+        $tableToPrimaryModuleMap = self::getTableToPrimaryModuleMap();
         $tableToAnyModuleMap = self::getTableToAnyModuleMap();
         // In case primary module declaring the table cannot be identified, use any module referencing this table
         $tableToModuleMap = array_merge($tableToAnyModuleMap, $tableToPrimaryModuleMap);
@@ -513,7 +516,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
                     if (empty($modules)) {
                         continue;
                     }
-                    $result[] = sprintf("%s [%s]", $type, implode(', ', $modules));
+                    $result[] = sprintf('%s [%s]', $type, implode(', ', $modules));
                 }
                 if (!empty($result)) {
                     $this->fail('Module ' . $module . ' has undeclared dependencies: ' . implode(', ', $result));
@@ -587,7 +590,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
                     if (empty($modules)) {
                         continue;
                     }
-                    $result[] = sprintf("%s [%s]", $type, implode(', ', $modules));
+                    $result[] = sprintf('%s [%s]', $type, implode(', ', $modules));
                 }
                 if (!empty($result)) {
                     $this->fail('Module ' . $module . ' has external dependencies: ' . implode(', ', $result));
@@ -817,7 +820,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
         }
 
         if (empty($declaredDependencies)) {
-            $undeclared[$type][] = implode(" || ", $conditionalDependencies);
+            $undeclared[$type][] = implode(' || ', $conditionalDependencies);
         }
     }
 
@@ -1239,12 +1242,12 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
         $allowedDependencies = self::getAllowedDependencies();
 
         $invoker(
-        /**
-         * Check modules dependencies for specified file
-         *
-         * @param string $fileType
-         * @param string $file
-         */
+            /**
+             * Check modules dependencies for specified file
+             *
+             * @param string $fileType
+             * @param string $file
+             */
             function ($fileType, $file) use ($extensionConflictList, $allowedDependencies) {
                 $module = $this->getModuleNameForRelevantFile($file);
                 if (!$module) {

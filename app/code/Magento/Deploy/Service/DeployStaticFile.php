@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\View\Asset\Publisher;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\File\WriteInterface;
 use Magento\Framework\View\Asset\Minification;
-use Magento\Framework\View\Asset\Repository;
-use Magento\Framework\App\View\Asset\Publisher;
 use Magento\Framework\View\Asset\PreProcessor\FileNameResolver;
-use Magento\Framework\Filesystem\Directory\ReadInterface;
+use Magento\Framework\View\Asset\Repository;
 
 /**
  * Deploy static file service

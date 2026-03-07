@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 use Laminas\Http\Exception\RuntimeException;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\DataObject;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\GraphQl\Service\GraphQlRequest;
@@ -148,7 +148,7 @@ QUERY;
             'result' => '0',
             'respmsg' => 'Approved',
             'pnref' => 'V19A3D27B61E',
-            'result_code' => '0'
+            'result_code' => '0',
             ]
         );
         $this->gateway->expects($this->once())
@@ -170,10 +170,10 @@ QUERY;
                             'BUTTONSOURCE' => $button,
                             'tender' => 'C',
                         ],
-                        $this->payflowRequest
+                        $this->payflowRequest,
                     ],
                     ['USER1', 1, $this->payflowRequest],
-                    ['USER2', 'USER2SilentPostHash', $this->payflowRequest]
+                    ['USER2', 'USER2SilentPostHash', $this->payflowRequest],
                 ],
             );
 
@@ -261,7 +261,7 @@ QUERY;
                         'result' => $resultCode,
                         'trxtype' => 'A',
 
-                    ]
+                    ],
                 ]
             )
             ->willReturnSelf();

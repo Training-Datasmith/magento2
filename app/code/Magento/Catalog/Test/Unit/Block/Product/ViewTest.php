@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,14 +27,14 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Locale\FormatInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\Stdlib\StringUtils;
-use Magento\Framework\Url\EncoderInterface as UrlEncoderInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Registry;
+use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\Url\EncoderInterface as UrlEncoderInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -276,12 +278,12 @@ class ViewTest extends TestCase
         $tierPriceList = [
             [
                 'price_qty' => 2,
-                'price' => $priceAmountMock
+                'price' => $priceAmountMock,
             ],
             [
                 'price_qty' => 10,
-                'price' => $priceAmountMock
-            ]
+                'price' => $priceAmountMock,
+            ],
         ];
         $priceInfoBaseMock = $this->createMock(Base::class);
         $tierPriceMock = $this->createMock(TierPrice::class);
@@ -299,7 +301,7 @@ class ViewTest extends TestCase
             ->willReturnMap([
                 ['tier_price', $tierPriceMock],
                 ['regular_price', $regularPriceMock],
-                ['final_price', $finalPriceMock]
+                ['final_price', $finalPriceMock],
             ]);
         $tierPriceMock->expects($this->once())
             ->method('getTierPriceList')
@@ -335,12 +337,12 @@ class ViewTest extends TestCase
         $tierPriceList = [
             [
                 'price_qty' => 2,
-                'price' => $priceAmountMock
+                'price' => $priceAmountMock,
             ],
             [
                 'price_qty' => 10,
-                'price' => $priceAmountMock
-            ]
+                'price' => $priceAmountMock,
+            ],
         ];
         $priceInfoBaseMock = $this->createMock(Base::class);
         $tierPriceMock = $this->createMock(TierPrice::class);
@@ -520,7 +522,7 @@ class ViewTest extends TestCase
     {
         $result = $this->view->getQuantityValidators();
         $this->assertIsArray($result);
-        $this->assertSame(["required-number" => true], $result);
+        $this->assertSame(['required-number' => true], $result);
     }
 
     /**

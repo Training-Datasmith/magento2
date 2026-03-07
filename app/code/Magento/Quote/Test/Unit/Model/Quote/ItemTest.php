@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote;
 
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Framework\DataObject;
@@ -15,8 +15,8 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\Compare;
@@ -147,7 +147,7 @@ class ItemTest extends TestCase
                 'itemOptionFactory' => $this->itemOptionFactory,
                 'quoteItemCompare' => $this->compareHelper,
                 'serializer' => $this->serializer,
-                'itemOptionComparator' => new Comparator()
+                'itemOptionComparator' => new Comparator(),
             ]
         );
     }
@@ -182,7 +182,7 @@ class ItemTest extends TestCase
      */
     public function testSetAndQuote(): void
     {
-        $idValue = "id_value";
+        $idValue = 'id_value';
 
         $quote = $this->getMockBuilder(Quote::class)
             ->onlyMethods(['getId', 'getStoreId', '__wakeup'])
@@ -465,7 +465,7 @@ class ItemTest extends TestCase
                 'toArray',
                 '__wakeup',
                 'getStore',
-                'getStockItem'
+                'getStockItem',
             ]
         );
 
@@ -885,7 +885,7 @@ class ItemTest extends TestCase
                 'getProduct',
                 'save',
                 'setCode',
-                'getCode'
+                'getCode',
             ]
         );
         $optionMock->expects($this->any())

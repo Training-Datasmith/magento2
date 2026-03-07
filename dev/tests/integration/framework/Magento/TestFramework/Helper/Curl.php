@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,6 +26,6 @@ class Curl extends CurlLibrary
      */
     public function delete($uri)
     {
-        $this->makeRequest("DELETE", $uri);
+        $this->makeRequest('DELETE', $uri);
     }
 }

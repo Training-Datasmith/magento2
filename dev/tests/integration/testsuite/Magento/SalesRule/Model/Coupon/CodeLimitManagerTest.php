@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Coupon;
 
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\SalesRule\Api\Exception\CodeRequestLimitException;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Model\Session as CustomerSession;
 
 /**
  * Test for captcha based implementation.

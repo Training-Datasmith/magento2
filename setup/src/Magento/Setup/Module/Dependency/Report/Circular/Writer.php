@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Dependency\Report\Circular;
 
 use Magento\Setup\Module\Dependency\Report\Writer\Csv\AbstractWriter;
@@ -15,7 +18,7 @@ class Writer extends AbstractWriter
     /**
      * Modules chain separator
      */
-    const MODULES_SEPARATOR = '->';
+    public const MODULES_SEPARATOR = '->';
 
     /**
      * Template method. Prepare data step

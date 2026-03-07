@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing;
 
 use Magento\Customer\Api\AddressMetadataInterface;
@@ -139,7 +142,7 @@ class AttributeRepository
                 AttributeMetadataInterface::VALIDATION_RULES => $attribute->getValidationRules(),
                 AttributeMetadataInterface::REQUIRED => $attribute->isRequired(),
                 'entity_type_code' => $entityTypeCode,
-                'grid_filter_condition_type' => $attributeModel->getGridFilterConditionType()
+                'grid_filter_condition_type' => $attributeModel->getGridFilterConditionType(),
             ];
         }
 
@@ -163,7 +166,7 @@ class AttributeRepository
             $option = [
                 'label' => (string)$option->getLabel(),
                 'value' => $value,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ];
         }
         return $options;

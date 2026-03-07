@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class MassDeleteTest extends AbstractMassActionTestCase
             [
                 'context' => $this->contextMock,
                 'filter' => $this->filterMock,
-                'collectionFactory' => $this->collectionFactoryMock
+                'collectionFactory' => $this->collectionFactoryMock,
             ]
         );
     }
@@ -60,7 +61,7 @@ class MassDeleteTest extends AbstractMassActionTestCase
 
         $collection = [
             $this->getBlockMock(),
-            $this->getBlockMock()
+            $this->getBlockMock(),
         ];
 
         $this->collectionFactoryMock->expects($this->once())->method('create')->willReturn($this->blockCollectionMock);

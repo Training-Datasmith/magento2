@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Block\Cart\Item\Renderer\Actions;
 
 use Magento\Checkout\Block\Cart\Item\Renderer\Actions\Generic;

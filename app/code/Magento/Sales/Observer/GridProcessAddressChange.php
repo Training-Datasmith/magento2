@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +9,14 @@
 namespace Magento\Sales\Observer;
 
 use Magento\Framework\Event\Observer as EventObserver;
-use Magento\Sales\Model\ResourceModel\GridPool;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Sales\Model\ResourceModel\GridPool;
 
 /**
  * Class GridProcessAddressChange
  */
 class GridProcessAddressChange implements ObserverInterface
 {
-
     /**
      * @var GridPool
      */
@@ -27,7 +28,7 @@ class GridProcessAddressChange implements ObserverInterface
     public function __construct(
         GridPool $gridPool
     ) {
-        $this->gridPool= $gridPool;
+        $this->gridPool = $gridPool;
     }
 
     /**

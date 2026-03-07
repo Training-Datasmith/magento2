@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,7 +110,7 @@ class ForceAdminPasswordChangeObserver implements ObserverInterface
             'adminhtml_system_account_index',
             'adminhtml_system_account_save',
             'adminhtml_auth_logout',
-            'mui_index_render'
+            'mui_index_render',
         ];
         /** @var \Magento\Framework\App\Action\Action $controller */
         $controller = $observer->getEvent()->getControllerAction();

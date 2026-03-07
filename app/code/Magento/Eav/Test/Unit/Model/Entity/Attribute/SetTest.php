@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Eav\Model\Entity\Attribute\Set
  */
+
 namespace Magento\Eav\Test\Unit\Model\Entity\Attribute;
 
 use Magento\Eav\Model\Entity\Attribute\GroupFactory;
@@ -15,8 +17,8 @@ use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\Entity\AttributeFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SetTest extends TestCase
 {
@@ -76,7 +78,7 @@ class SetTest extends TestCase
     {
         return [
             ['', 'The attribute set name is empty. Enter the name and try again.'],
-            ['existing_name', 'A "existing_name" attribute set name already exists. Create a new name and try again.']
+            ['existing_name', 'A "existing_name" attribute set name already exists. Create a new name and try again.'],
         ];
     }
 }

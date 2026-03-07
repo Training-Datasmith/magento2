@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class DeleteCategoryWithEnabledFlatTest extends AbstractBackendController
     private function checkCategoryIsDeleted(int $categoryId): void
     {
         $this->expectExceptionObject(
-            new NoSuchEntityException(__("No such entity with id = %entityId", ['entityId' => $categoryId]))
+            new NoSuchEntityException(__('No such entity with id = %entityId', ['entityId' => $categoryId]))
         );
         $this->categoryRepository->get($categoryId);
     }

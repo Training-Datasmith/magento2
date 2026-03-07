@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ declare(strict_types=1);
  * @group legacy
  * @group disabled
  */
+
 namespace Magento\Framework\Cache\Test\Unit\Backend\Decorator;
 
 use Magento\Framework\Cache\Backend\Decorator\AbstractDecorator;
@@ -72,7 +74,7 @@ class DecoratorAbstractTest extends TestCase
     /**
      * @param array $options
      */
-     #[DataProvider('constructorExceptionDataProvider')]
+    #[DataProvider('constructorExceptionDataProvider')]
     public function testConstructorException($options)
     {
         if (!empty($options)) {
@@ -94,14 +96,14 @@ class DecoratorAbstractTest extends TestCase
             'empty' => [[]],
             'wrong_class' => [[
                 'concrete_backend' => static fn (self $testCase) => $testCase->getMockBuilder('Test_Class')
-                    ->getMock()
-            ]]
+                    ->getMock(),
+            ]],
         ];
     }
 
     /**
      */
-     #[DataProvider('allMethodsDataProvider')]
+    #[DataProvider('allMethodsDataProvider')]
     public function testAllMethods($methodName)
     {
         $this->_mockBackend->expects($this->once())->method($methodName);

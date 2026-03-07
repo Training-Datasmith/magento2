@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,27 +8,27 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Model\Quote\Item;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
+use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer\Option;
 use Magento\CatalogInventory\Model\Stock\StockItemRepository;
 use Magento\CatalogInventory\Model\StockState;
 use Magento\CatalogInventory\Observer\QuantityValidatorObserver;
+use Magento\Checkout\Model\Session;
 use Magento\Eav\Model\Config;
+use Magento\Framework\DataObject;
+use Magento\Framework\Event;
+use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer\Option;
-use Magento\Framework\Event\Observer;
-use Magento\Framework\Event;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\DataObject;
-use Magento\Checkout\Model\Session;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -88,13 +89,13 @@ class QuantityValidatorTest extends TestCase
             QuantityValidator::class,
             [
                 'optionInitializer' => $this->optionInitializer,
-                'stockState' => $this->stockState
+                'stockState' => $this->stockState,
             ]
         );
         $this->observer = $this->objectManager->create(
             QuantityValidatorObserver::class,
             [
-                'quantityValidator' => $this->quantityValidator
+                'quantityValidator' => $this->quantityValidator,
             ]
         );
 
@@ -229,9 +230,9 @@ class QuantityValidatorTest extends TestCase
                 'product_id' => $product->getId(),
                 'selected_configurable_option' => 1,
                 'super_attribute' => [
-                    $attribute->getAttributeId() => $attribute->getOptions()[1]->getValue()
+                    $attribute->getAttributeId() => $attribute->getOptions()[1]->getValue(),
                 ],
-                'qty' => $quantity
+                'qty' => $quantity,
             ]
         );
 
@@ -261,16 +262,16 @@ class QuantityValidatorTest extends TestCase
         return [
             [
                 'quantity' => 1,
-                'errorMessageRegexp' => '/The fewest you may purchase is 500/'
+                'errorMessageRegexp' => '/The fewest you may purchase is 500/',
             ],
             [
                 'quantity' => 501,
-                'errorMessageRegexp' => $qtyRegexp
+                'errorMessageRegexp' => $qtyRegexp,
             ],
             [
                 'quantity' => 1000,
-                'errorMessageRegexp' => ''
-            ]
+                'errorMessageRegexp' => '',
+            ],
         ];
     }
 

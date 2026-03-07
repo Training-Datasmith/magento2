@@ -1,12 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\Config;
 use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\Config;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/unique_input_attribute.php');
 

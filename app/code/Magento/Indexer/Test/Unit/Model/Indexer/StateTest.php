@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -124,26 +125,26 @@ class StateTest extends TestCase
                 'setStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_WORKING,
                 'getStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_WORKING,
                 'lock' => 'lock',
-                'isLocked' => true
+                'isLocked' => true,
             ],
             [
                 'setStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_WORKING,
                 'getStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_INVALID,
                 'lock' => 'lock',
-                'isLocked' => false
+                'isLocked' => false,
             ],
             [
                 'setStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_INVALID,
                 'getStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_INVALID,
                 'lock' => 'unlock',
-                'isLocked' => false
+                'isLocked' => false,
             ],
             [
                 'setStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_VALID,
                 'getStatus' => \Magento\Framework\Indexer\StateInterface::STATUS_VALID,
                 'lock' => 'unlock',
-                'isLocked' => false
-            ]
+                'isLocked' => false,
+            ],
         ];
     }
 

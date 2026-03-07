@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Model\StockRegistry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Store;
 use Magento\Wishlist\ViewModel\AllowedQuantity;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AllowedQuantityTest extends TestCase
 {
@@ -119,16 +120,16 @@ class AllowedQuantityTest extends TestCase
                 10,
                 [
                     'minAllowed' => 1,
-                    'maxAllowed' => 10
-                ]
+                    'maxAllowed' => 10,
+                ],
             ], [
                 1,
                 0,
                 [
                     'minAllowed' => 1,
-                    'maxAllowed' => 99999999
-                ]
-            ]
+                    'maxAllowed' => 99999999,
+                ],
+            ],
         ];
     }
 }

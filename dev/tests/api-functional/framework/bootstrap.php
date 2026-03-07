@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +36,7 @@ try {
         $exceptionHandler = new \Magento\Framework\Logger\Handler\Exception($filesystem);
         $loggerHandlers = [
             'system'    => new \Magento\Framework\Logger\Handler\System($filesystem, $exceptionHandler),
-            'debug'     => new \Magento\Framework\Logger\Handler\Debug($filesystem)
+            'debug'     => new \Magento\Framework\Logger\Handler\Debug($filesystem),
         ];
         $shell = new \Magento\Framework\Shell(
             new \Magento\Framework\Shell\CommandRenderer(),
@@ -106,7 +108,7 @@ try {
     );
     $overrideConfig->init();
     Magento\TestFramework\Workaround\Override\Fixture\Resolver::setInstance(
-        new  \Magento\TestFramework\WebapiWorkaround\Override\Fixture\Resolver($overrideConfig)
+        new \Magento\TestFramework\WebapiWorkaround\Override\Fixture\Resolver($overrideConfig)
     );
     Magento\TestFramework\Fixture\DataFixtureStorageManager::setStorage(
         new Magento\TestFramework\Fixture\DataFixtureStorage()
@@ -146,10 +148,10 @@ function setCustomErrorHandler()
                     E_USER_DEPRECATED => 'User Deprecated',
                 ];
 
-                $errName = isset($errorNames[$errNo]) ? $errorNames[$errNo] : "";
+                $errName = isset($errorNames[$errNo]) ? $errorNames[$errNo] : '';
 
                 throw new \PHPUnit\Framework\Exception(
-                    sprintf("%s: %s in %s:%s.", $errName, $errStr, $errFile, $errLine),
+                    sprintf('%s: %s in %s:%s.', $errName, $errStr, $errFile, $errLine),
                     $errNo
                 );
             }

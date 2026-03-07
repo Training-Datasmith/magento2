@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,15 +10,15 @@ namespace Magento\Sales\Test\Unit\Block\Order\Email\Items;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Sales\Block\Order\Email\Items\DefaultItems;
 use Magento\Sales\Model\Order\Item as OrderItem;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DefaultItemsTest extends TestCase
 {
@@ -85,8 +86,8 @@ class DefaultItemsTest extends TestCase
                     ['layout' => $this->layoutMock]
                 ),
                 'data' => [
-                    'item' => $this->quoteItemMock
-                ]
+                    'item' => $this->quoteItemMock,
+                ],
             ]
         );
     }
@@ -131,7 +132,7 @@ class DefaultItemsTest extends TestCase
     {
         return [
             'get default item price' => [34.28,'$34.28',1.0],
-            'get item price with quantity 2.0' => [12.00,'$24.00',2.0]
+            'get item price with quantity 2.0' => [12.00,'$24.00',2.0],
         ];
     }
 }

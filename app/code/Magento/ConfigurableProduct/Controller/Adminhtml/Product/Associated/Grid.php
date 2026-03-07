@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Associated;
 
 use Magento\Backend\App\Action;
@@ -16,7 +19,7 @@ class Grid extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var LayoutFactory

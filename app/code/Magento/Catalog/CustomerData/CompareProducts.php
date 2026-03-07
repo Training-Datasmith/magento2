@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\CustomerData;
 
 use Magento\Customer\CustomerData\SectionSourceInterface;
@@ -84,7 +87,7 @@ class CompareProducts implements SectionSourceInterface
             'countCaption' => $count == 1 ? __('1 item') : __('%1 items', $count),
             'listUrl' => $this->urlBuilder->getUrl('catalog/product_compare/index'),
             'items' => $count ? $this->getItems() : [],
-            'storeId' => $this->storeManager->getStore()->getId()
+            'storeId' => $this->storeManager->getStore()->getId(),
         ];
     }
 
@@ -108,7 +111,7 @@ class CompareProducts implements SectionSourceInterface
                 'product_url' => $this->productUrl->getUrl($item),
                 'name' => $this->outputHelper->productAttribute($item, $item->getName(), 'name'),
                 'remove_url' => $this->helper->getPostDataRemove($item),
-                'productScope' => $productsScope
+                'productScope' => $productsScope,
             ];
         }
         return $items;

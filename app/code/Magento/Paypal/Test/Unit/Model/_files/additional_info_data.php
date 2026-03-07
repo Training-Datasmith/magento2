@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ return [
                 'label' => 'Triggered Fraud Filters',
                 'value' => [
                     Info::PAYPAL_FRAUD_FILTERS,
-                    Info::PAYPAL_FRAUD_FILTERS
-                ]
+                    Info::PAYPAL_FRAUD_FILTERS,
+                ],
             ],
             Info::PAYPAL_CORRELATION_ID => [
                 'label' => 'Last Correlation ID',
@@ -78,7 +79,7 @@ return [
             'last_trans_id' => [
                 'label' => 'Last Transaction ID',
                 'value' => null,
-            ]
+            ],
         ],
     ],
     [
@@ -125,7 +126,7 @@ return [
                 'label' => 'Triggered Fraud Filters',
                 'value' => [
                     Info::PAYPAL_FRAUD_FILTERS,
-                    Info::PAYPAL_FRAUD_FILTERS
+                    Info::PAYPAL_FRAUD_FILTERS,
                 ],
             ],
             Info::PAYPAL_CORRELATION_ID => [
@@ -147,7 +148,7 @@ return [
             'last_trans_id' => [
                 'label' => 'Last Transaction ID',
                 'value' => null,
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 ];

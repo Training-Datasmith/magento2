@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class StubWithAnonymousClass
 
     public function getSerializable(): \JsonSerializable
     {
-        return new class() implements \JsonSerializable {
+        return new class () implements \JsonSerializable {
             /**
              * @inheritDoc
              */

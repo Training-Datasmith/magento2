@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Framework\Stdlib\ArrayManager;
 
 /**
@@ -14,7 +17,7 @@ use Magento\Framework\Stdlib\ArrayManager;
  */
 class BundleWeight extends AbstractModifier
 {
-    const CODE_WEIGHT_TYPE = 'weight_type';
+    public const CODE_WEIGHT_TYPE = 'weight_type';
 
     /**
      * @var ArrayManager
@@ -40,11 +43,11 @@ class BundleWeight extends AbstractModifier
             [
                 'valueMap' => [
                     'false' => '1',
-                    'true' => '0'
+                    'true' => '0',
                 ],
                 'validation' => [
-                    'required-entry' => false
-                ]
+                    'required-entry' => false,
+                ],
             ]
         );
 
@@ -58,7 +61,7 @@ class BundleWeight extends AbstractModifier
             $meta,
             [
                 'disabled' => true,
-                'visible' => false
+                'visible' => false,
             ]
         );
 
@@ -74,7 +77,7 @@ class BundleWeight extends AbstractModifier
                 'imports' => [
                     'disabled' => 'ns = ${ $.ns }, index = ' . static::CODE_WEIGHT_TYPE . ':checked',
                     '__disableTmpl' => ['disabled' => false],
-                ]
+                ],
             ]
         );
 

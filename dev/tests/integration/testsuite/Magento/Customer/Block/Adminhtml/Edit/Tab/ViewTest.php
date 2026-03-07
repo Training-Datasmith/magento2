@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Controller\RegistryConstants;
 
 /**
@@ -69,7 +71,7 @@ class ViewTest extends \PHPUnit\Framework\TestCase
             '',
             [
                 'context' => $this->_context,
-                'registry' => $this->_coreRegistry
+                'registry' => $this->_coreRegistry,
             ]
         );
     }

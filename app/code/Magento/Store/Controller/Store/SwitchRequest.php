@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Store\Controller\Store;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ActionInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Store\Model\StoreSwitcher\HashGenerator;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use \Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Url\DecoderInterface;
-use \Magento\Framework\App\ActionInterface;
+use Magento\Store\Model\StoreSwitcher\HashGenerator;
 use Magento\Store\Model\StoreSwitcher\HashGenerator\HashData;
 
 /**
@@ -23,7 +24,6 @@ use Magento\Store\Model\StoreSwitcher\HashGenerator\HashData;
  */
 class SwitchRequest extends \Magento\Framework\App\Action\Action implements HttpGetActionInterface
 {
-
     /**
      * @var customerSession
      */
@@ -82,9 +82,9 @@ class SwitchRequest extends \Magento\Framework\App\Action\Action implements Http
 
         $data = new HashData(
             [
-                "customer_id" => $customerId,
-                "time_stamp" => $timeStamp,
-                "___from_store" => $fromStoreCode
+                'customer_id' => $customerId,
+                'time_stamp' => $timeStamp,
+                '___from_store' => $fromStoreCode,
             ]
         );
 

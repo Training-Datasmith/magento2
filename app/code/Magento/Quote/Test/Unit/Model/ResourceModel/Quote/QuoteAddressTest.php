@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class QuoteAddressTest extends TestCase
             [
                 'resource' => $this->appResourceMock,
                 'entitySnapshot' => $this->entitySnapshotMock,
-                'entityRelationComposite' => $this->relationCompositeMock
+                'entityRelationComposite' => $this->relationCompositeMock,
             ]
         );
     }

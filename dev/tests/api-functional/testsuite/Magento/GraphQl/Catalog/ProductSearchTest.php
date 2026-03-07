@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -172,7 +173,7 @@ QUERY;
             'filter' => [],
             'pageSize' => 24,
             'currentPage' => 1,
-            'sort' => $sort
+            'sort' => $sort,
         ];
 
         $response = $this->graphQlQuery($query, $variables);
@@ -188,19 +189,19 @@ QUERY;
         return [
             [
                 ['price' => 'ASC', 'name' => 'ASC'],
-                ['prod1', 'prod2', 'prod3', 'prod4', 'prod5']
+                ['prod1', 'prod2', 'prod3', 'prod4', 'prod5'],
             ],
             [
                 ['price' => 'DESC', 'name' => 'ASC'],
-                ['prod5', 'prod4', 'prod3', 'prod1', 'prod2']
+                ['prod5', 'prod4', 'prod3', 'prod1', 'prod2'],
             ],
             [
                 ['price' => 'ASC', 'name' => 'DESC'],
-                ['prod2', 'prod1', 'prod3', 'prod4', 'prod5']
+                ['prod2', 'prod1', 'prod3', 'prod4', 'prod5'],
             ],
             [
                 ['price' => 'DESC', 'name' => 'DESC'],
-                ['prod5', 'prod4', 'prod3', 'prod2', 'prod1']
+                ['prod5', 'prod4', 'prod3', 'prod2', 'prod1'],
             ],
         ];
     }
@@ -256,7 +257,7 @@ QUERY;
             [
                 'PARTIAL',
                 ['prod2'],
-                1
+                1,
             ],
         ];
     }
@@ -366,7 +367,7 @@ QUERY;
                 $productItemsInResponse[$itemIndex][0],
                 [
                     'name' => $filteredProducts[$itemIndex]->getName(),
-                    'sku' => $filteredProducts[$itemIndex]->getSku()
+                    'sku' => $filteredProducts[$itemIndex]->getSku(),
                 ]
             );
         }
@@ -411,7 +412,7 @@ QUERY;
                 $productItemsInResponse[$itemIndex][0],
                 [
                     'name' => $filteredProducts[$itemIndex]->getName(),
-                    'sku' => $filteredProducts[$itemIndex]->getSku()
+                    'sku' => $filteredProducts[$itemIndex]->getSku(),
                 ]
             );
         }
@@ -613,13 +614,13 @@ QUERY;
                     [
                         'label' => 'Option 1',
                         'value' => $firstOption,
-                        'count' => '2'
+                        'count' => '2',
                     ],
                     [
                         'label' => 'Option 2',
                         'value' => $secondOption,
-                        'count' => '2'
-                    ]
+                        'count' => '2',
+                    ],
                 ],
             ]
         );
@@ -767,7 +768,7 @@ QUERY;
                 $productItemsInResponse[$itemIndex][0],
                 [
                     'name' => $filteredProducts[$itemIndex]->getName(),
-                    'sku' => $filteredProducts[$itemIndex]->getSku()
+                    'sku' => $filteredProducts[$itemIndex]->getSku(),
                 ]
             );
         }
@@ -785,7 +786,7 @@ QUERY;
                     [
                         'label' => 'Option 3',
                         'count' => 3,
-                        'value' => $optionValue
+                        'value' => $optionValue,
                     ],
                 ],
             ]
@@ -951,12 +952,12 @@ QUERY;
             [
                 [
                     'name' => 'Category',
-                    'request_var' => 'cat'
+                    'request_var' => 'cat',
                 ],
                 [
                     'name' => 'Second Test Configurable',
-                    'request_var' => 'second_test_configurable'
-                ]
+                    'request_var' => 'second_test_configurable',
+                ],
             ];
         $layers = array_map(null, $expectedFilterLayers, $response['products']['filters']);
 
@@ -1012,7 +1013,7 @@ QUERY;
                         'label' => 'Option 3',
                         'value' => $optionValue,
 
-                    ]
+                    ],
 
                 ],
             ]
@@ -1025,7 +1026,7 @@ QUERY;
             [
                 'attribute_code' => 'category_uid',
                 'count' => 7,
-                'label' => 'Category'
+                'label' => 'Category',
             ]
         );
     }
@@ -1104,7 +1105,7 @@ QUERY;
                 $productItemsInResponse[$itemIndex][0],
                 [
                     'name' => $filteredProducts[$itemIndex]->getName(),
-                    'sku' => $filteredProducts[$itemIndex]->getSku()
+                    'sku' => $filteredProducts[$itemIndex]->getSku(),
                 ]
             );
         }
@@ -1122,35 +1123,35 @@ QUERY;
                 [
                     'count' => 2,
                     'label' => 'Category 1',
-                    'value' => '3'
+                    'value' => '3',
                 ],
                 [
                     'count' => 1,
                     'label' => 'Category 1.1',
-                    'value' => '4'
+                    'value' => '4',
 
                 ],
                 [
                     'count' => 1,
                     'label' => 'Movable Position 2',
-                    'value' => '10'
+                    'value' => '10',
 
                 ],
                 [
                     'count' => 1,
                     'label' => 'Movable Position 3',
-                    'value' => '11'
+                    'value' => '11',
                 ],
                 [
                     'count' => 1,
                     'label' => 'Category 12',
-                    'value' => '12'
+                    'value' => '12',
 
                 ],
                 [
                     'count' => 2,
                     'label' => 'Category 1.2',
-                    'value' => '13'
+                    'value' => '13',
                 ],
             ];
         // presort expected and actual results as different search engines have different orders
@@ -1257,7 +1258,7 @@ QUERY;
             [
                 'name' => $product->getName(),
                 'sku' => $product->getSku(),
-                'url_key' => $product->getUrlKey()
+                'url_key' => $product->getUrlKey(),
             ]
         );
         $this->assertEquals('Price', $response['products']['aggregations'][0]['label']);
@@ -1381,7 +1382,7 @@ QUERY;
                 [
                     'name' => $filteredProducts[$itemIndex]->getName(),
                     'sku' => $filteredProducts[$itemIndex]->getSku(),
-                    'url_key' => $filteredProducts[$itemIndex]->getUrlKey()
+                    'url_key' => $filteredProducts[$itemIndex]->getUrlKey(),
                 ]
             );
         }
@@ -1690,9 +1691,9 @@ QUERY;
                     'cat13' => ['prod1', 'prod4', 'prod9', 'prod6'],
                 ],
                 [
-                    'cat11', 'cat12'
+                    'cat11', 'cat12',
                 ],
-                ['prod9', 'prod2', 'prod8', 'prod5', 'prod7', 'prod3', 'prod4', 'prod1']
+                ['prod9', 'prod2', 'prod8', 'prod5', 'prod7', 'prod3', 'prod4', 'prod1'],
             ],
             [
                 [
@@ -1701,9 +1702,9 @@ QUERY;
                     'cat13' => ['prod1', 'prod4', 'prod9', 'prod6'],
                 ],
                 [
-                    'cat11', 'cat12', 'cat13'
+                    'cat11', 'cat12', 'cat13',
                 ],
-                ['prod9', 'prod2', 'prod1', 'prod8', 'prod5', 'prod4', 'prod7', 'prod3', 'prod6']
+                ['prod9', 'prod2', 'prod1', 'prod8', 'prod5', 'prod4', 'prod7', 'prod3', 'prod6'],
             ],
             [
                 [
@@ -1712,9 +1713,9 @@ QUERY;
                     'cat13' => ['prod1', 'prod4', 'prod9', 'prod6'],
                 ],
                 [
-                    'cat1'
+                    'cat1',
                 ],
-                ['prod9', 'prod2', 'prod1', 'prod8', 'prod5', 'prod4', 'prod7', 'prod3', 'prod6']
+                ['prod9', 'prod2', 'prod1', 'prod8', 'prod5', 'prod4', 'prod7', 'prod3', 'prod6'],
             ],
         ];
     }
@@ -1975,7 +1976,7 @@ QUERY;
         $this->assertEquals(
             [
                 ['sku' => $product1->getSku(), 'name' => $product1->getName()],
-                ['sku' => $product2->getSku(), 'name' => $product2->getName()]
+                ['sku' => $product2->getSku(), 'name' => $product2->getName()],
             ],
             $response['products']['items']
         );
@@ -1996,8 +1997,8 @@ QUERY;
                         'label' => '20-30',
                         'value' => '20_30',
                         'count' => 1,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'attribute_code' => 'category_uid',
@@ -2010,7 +2011,7 @@ QUERY;
                         'count' => 2,
                     ],
                 ],
-            ]
+            ],
         ];
         $this->assertEquals($expectedAggregations, $response['products']['aggregations']);
     }
@@ -2020,7 +2021,7 @@ QUERY;
      */
     public function testFilteringForProductsFromMultipleCategories(): void
     {
-        $categoriesIds = ["4","5","12"];
+        $categoriesIds = ['4','5','12'];
         $query
             = <<<QUERY
 {
@@ -2059,7 +2060,7 @@ QUERY;
                 $actualProducts[$linkProduct->getSku()] = $product->getName();
             }
         }
-        $expectedProducts = array_column($response['products']['items'], "name", "sku");
+        $expectedProducts = array_column($response['products']['items'], 'name', 'sku');
         $this->assertEquals($expectedProducts, $actualProducts);
     }
 
@@ -2167,7 +2168,7 @@ QUERY;
      */
     public function testSearchAndSortByRelevance(): void
     {
-        $search_term = "blue";
+        $search_term = 'blue';
         $query
             = <<<QUERY
 {
@@ -2370,10 +2371,10 @@ QUERY;
                         'minimalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getPrice(),
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
                 ]
             );
         }
@@ -2456,10 +2457,10 @@ QUERY;
                         'minimalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getSpecialPrice(),
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
                 ]
             );
         }
@@ -2542,10 +2543,10 @@ QUERY;
                         'minimalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getSpecialPrice(),
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
                 ]
             );
         }
@@ -2765,7 +2766,7 @@ products(
 QUERY;
         $response = $this->graphQlQuery($query);
         $this->assertEquals(0, $response['products']['total_count']);
-        $this->assertEmpty($response['products']['items'], "No items should be returned.");
+        $this->assertEmpty($response['products']['items'], 'No items should be returned.');
     }
 
     /**
@@ -2989,12 +2990,12 @@ QUERY;
                         'minimalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getFinalPrice(),
-                                'currency' => 'USD'
-                            ]
-                        ]
+                                'currency' => 'USD',
+                            ],
+                        ],
                     ],
                     'type_id' => $filteredProducts[$itemIndex]->getTypeId(),
-                    'weight' => $filteredProducts[$itemIndex]->getWeight()
+                    'weight' => $filteredProducts[$itemIndex]->getWeight(),
                 ]
             );
         }
@@ -3021,25 +3022,25 @@ QUERY;
                         'minimalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getSpecialPrice(),
-                                'currency' => 'USD'
-                            ]
+                                'currency' => 'USD',
+                            ],
                         ],
                         'maximalPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getSpecialPrice(),
-                                'currency' => 'USD'
-                            ]
+                                'currency' => 'USD',
+                            ],
                         ],
                         'regularPrice' => [
                             'amount' => [
                                 'value' => $filteredProducts[$itemIndex]->getPrice(),
-                                'currency' => 'USD'
-                            ]
-                        ]
+                                'currency' => 'USD',
+                            ],
+                        ],
 
                     ],
                     'type_id' => $filteredProducts[$itemIndex]->getTypeId(),
-                    'weight' => $filteredProducts[$itemIndex]->getWeight()
+                    'weight' => $filteredProducts[$itemIndex]->getWeight(),
                 ]
             );
         }

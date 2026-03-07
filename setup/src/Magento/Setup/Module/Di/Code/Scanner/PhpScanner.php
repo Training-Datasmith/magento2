@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -203,7 +204,7 @@ class PhpScanner implements ScannerInterface
                 $namespaceParts[] = $tokens[$tokenOffset][1];
             }
             if ($tokens[$tokenOffset][0] === T_STRING) {
-                $namespaceParts[] = "\\";
+                $namespaceParts[] = '\\';
                 $namespaceParts[] = $tokens[$tokenOffset][1];
             } elseif ($tokens[$tokenOffset] === '{' || $tokens[$tokenOffset] === ';') {
                 break;
@@ -221,7 +222,7 @@ class PhpScanner implements ScannerInterface
      * @param array $tokens
      * @return string|null
      */
-    private function fetchClass($namespace, $tokenIterator, $count, $tokens):? string
+    private function fetchClass($namespace, $tokenIterator, $count, $tokens): ?string
     {
         // anonymous classes should be omitted
         if (is_array($tokens[$tokenIterator - 2]) && $tokens[$tokenIterator - 2][0] === T_NEW) {
@@ -233,7 +234,7 @@ class PhpScanner implements ScannerInterface
                 continue;
             }
 
-            return $namespace . "\\" . $tokens[$tokenIterator + 2][1];
+            return $namespace . '\\' . $tokens[$tokenIterator + 2][1];
         }
 
         return null;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class SignUpTest extends TestCase
             SignUp::class,
             [
                 'config' => $this->configMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
     }

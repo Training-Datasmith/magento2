@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,32 +8,19 @@
 
 namespace Magento\AsynchronousOperations\Model\Operation;
 
-use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\Bulk\BulkStatusInterface;
+use Magento\Framework\Bulk\OperationInterface;
 
 class Details
 {
-    /**
-     * @var array
-     */
-    private $operationCache = [];
+    private array $operationCache = [];
 
-    /**
-     * @var \Magento\Framework\Bulk\BulkStatusInterface
-     */
-    private $bulkStatus;
-
-    /**
-     * @var null
-     */
     private $bulkUuid;
 
     /**
      * Map between status codes and human readable indexes
-     *
-     * @var array
      */
-    private $statusMap = [
+    private array $statusMap = [
         OperationInterface::STATUS_TYPE_COMPLETE             => 'operations_successful',
         OperationInterface::STATUS_TYPE_RETRIABLY_FAILED     => 'failed_retriable',
         OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED => 'failed_not_retriable',
@@ -41,15 +30,11 @@ class Details
 
     /**
      * Init dependencies.
-     *
-     * @param \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus
-     * @param null $bulkUuid
      */
     public function __construct(
-        BulkStatusInterface $bulkStatus,
+        private readonly BulkStatusInterface $bulkStatus,
         $bulkUuid = null
     ) {
-        $this->bulkStatus = $bulkStatus;
         $this->bulkUuid = $bulkUuid;
     }
 

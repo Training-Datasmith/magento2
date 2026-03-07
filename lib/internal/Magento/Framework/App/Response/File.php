@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class File extends Http implements NotCacheableInterface
         // Whether to remove the file after it is sent to the client
         'remove' => false,
         // Whether to send the file as attachment
-        'attachment' => true
+        'attachment' => true,
     ];
 
     /**
@@ -90,7 +91,7 @@ class File extends Http implements NotCacheableInterface
         $this->options = array_merge($this->options, $options);
         if (!isset($this->options['filePath'])) {
             if (!isset($this->options['fileName'])) {
-                throw new InvalidArgumentException("File name is required.");
+                throw new InvalidArgumentException('File name is required.');
             }
             $this->options['contentType'] ??= self::DEFAULT_RAW_CONTENT_TYPE;
         }

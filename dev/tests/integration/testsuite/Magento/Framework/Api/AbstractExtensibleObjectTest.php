@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api;
 
-use Magento\TestModuleExtensionAttributes\Model\Data\FakeRegionFactory;
 use Magento\TestModuleExtensionAttributes\Api\Data\FakeRegionExtension;
+use Magento\TestModuleExtensionAttributes\Model\Data\FakeRegionFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -80,20 +83,20 @@ class AbstractExtensibleObjectTest extends \PHPUnit\Framework\TestCase
         return [
             'boolean' => [
                 [true],
-                [false]
+                [false],
             ],
             'integer' => [
                 [1],
-                [2]
+                [2],
             ],
             'string' => [
                 ['test'],
-                ['test test']
+                ['test test'],
             ],
             'array' => [
                 [[1]],
-                [[1, 2]]
-            ]
+                [[1, 2]],
+            ],
         ];
     }
 }

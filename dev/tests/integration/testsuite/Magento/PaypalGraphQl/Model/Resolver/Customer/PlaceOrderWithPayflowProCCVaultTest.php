@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\Integration\Model\Oauth\Token;
 use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
 use Magento\Quote\Api\BillingAddressManagementInterface;
 use Magento\Quote\Api\CartManagementInterface;
@@ -181,7 +181,7 @@ QUERY;
         $requestHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
         $vaultResponse = $this->graphQlRequest->send($secondQuery, [], '', $requestHeaders);
 
@@ -295,7 +295,7 @@ QUERY;
         $requestHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
         $paypalResponse = new DataObject(
             [

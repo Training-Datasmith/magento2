@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Review\Ui\DataProvider\Product;
 
+use Magento\Framework\Api\Filter;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Api\Filter;
 
 /**
  * Test for \Magento\Review\Ui\DataProvider\Product\ReviewDataProvider.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\PageCache\Controller;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\Serializer\Base64Json;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Validator\RegexFactory;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Layout\LayoutCacheKeyInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 abstract class Block extends \Magento\Framework\App\Action\Action
 {

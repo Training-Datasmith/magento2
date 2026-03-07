@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\CatalogGraphQl\Model\ProductDataProvider;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\EavGraphQl\Model\Output\Value\GetAttributeValueInterface;
 use Magento\EavGraphQl\Model\Resolver\GetFilteredAttributes;
-use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\GraphQl\Model\Query\ContextInterface;
 
 /**
  *
@@ -106,7 +107,7 @@ class ProductCustomAttributes implements ResolverInterface
             if (!array_key_exists($attributeCode, $productData)) {
                 continue;
             }
-            $attributeValue = $productData[$attributeCode] ?? "";
+            $attributeValue = $productData[$attributeCode] ?? '';
             if (is_array($attributeValue)) {
                 $attributeValue = (count($attributeValue) != count($attributeValue, COUNT_RECURSIVE))
                     ? json_encode($attributeValue)
@@ -114,7 +115,7 @@ class ProductCustomAttributes implements ResolverInterface
             }
             $customAttributes[] = [
                 'attribute_code' => $attributeCode,
-                'value' => $attributeValue
+                'value' => $attributeValue,
             ];
         }
 
@@ -129,7 +130,7 @@ class ProductCustomAttributes implements ResolverInterface
                 },
                 $customAttributes
             ),
-            'errors' => $productCustomAttributes['errors']
+            'errors' => $productCustomAttributes['errors'],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Test\Unit\Controller\Index;
 
+use Exception;
 use Magento\Catalog\Model\Product;
 use Magento\Checkout\Helper\Cart as CartHelper;
 use Magento\Checkout\Model\Cart;
@@ -17,15 +19,14 @@ use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\Result\Redirect as ResultRedirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Data\Form\FormKey\Validator;
-use Magento\Framework\Message\Manager as FrameworkMessageManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
-use Exception;
+use Magento\Framework\Message\Manager as FrameworkMessageManager;
 use Magento\Framework\Message\Manager as MessageManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Wishlist\Controller\Index\Fromcart;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
 use Magento\Wishlist\Helper\Data as WishlistHelper;
 use Magento\Wishlist\Model\Wishlist;
@@ -262,7 +263,7 @@ class FromcartTest extends TestCase
 
         $this->messageManager->expects($this->once())
             ->method('addSuccessMessage')
-            ->with(__("%1 has been moved to your wish list.", $productName))
+            ->with(__('%1 has been moved to your wish list.', $productName))
             ->willReturnSelf();
 
         $this->resultRedirect->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class BundleSelectionFactoryTest extends TestCase
         $this->bundleSelectionFactory = $this->objectManagerHelper->getObject(
             BundleSelectionFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }

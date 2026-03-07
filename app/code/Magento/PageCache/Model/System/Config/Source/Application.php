@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Used in creating options for Caching Application config value selection
  */
+
 namespace Magento\PageCache\Model\System\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
@@ -27,12 +30,12 @@ class Application implements ArrayInterface
         return [
             [
                 'value' => Config::BUILT_IN,
-                'label' => __('Built-in Cache')
+                'label' => __('Built-in Cache'),
             ],
             [
                 'value' => Config::VARNISH,
-                'label' => __('Varnish Cache (Recommended)')
-            ]
+                'label' => __('Varnish Cache (Recommended)'),
+            ],
         ];
     }
 
@@ -45,7 +48,7 @@ class Application implements ArrayInterface
     {
         return [
             Config::BUILT_IN => __('Built-in Cache'),
-            Config::VARNISH => __('Varnish Cache (Recommended)')
+            Config::VARNISH => __('Varnish Cache (Recommended)'),
         ];
     }
 }

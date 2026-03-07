@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ $options = [
         'price' => 20.0,
         'price_type' => 'percent',
         'sku' => 'sku2',
-        'max_characters' => 20
+        'max_characters' => 20,
     ],
     [
         'title' => 'drop_down option',
@@ -114,8 +115,8 @@ $options = [
         'price_type' => 'fixed',
         'sku' => 'date option sku',
         'is_require' => false,
-        'sort_order' => 6
-    ]
+        'sort_order' => 6,
+    ],
 ];
 
 $customOptions = [];

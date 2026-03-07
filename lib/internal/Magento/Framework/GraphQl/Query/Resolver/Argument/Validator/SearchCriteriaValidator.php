@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class SearchCriteriaValidator implements ValidatorInterface
 
         if (isset($args['pageSize']) && $args['pageSize'] > $max) {
             throw new GraphQlInputException(
-                __("Maximum pageSize is %max", ['max' => $max])
+                __('Maximum pageSize is %max', ['max' => $max])
             );
         }
     }

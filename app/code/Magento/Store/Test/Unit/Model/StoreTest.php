@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,10 +17,7 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Session\Generic as SessionGeneric;
-use Magento\Framework\Session\SessionManager;
 use Magento\Framework\Session\SessionManagerInterface;
-use Magento\Framework\Session\SessionStartChecker;
 use Magento\Framework\Session\SidResolverInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -108,10 +106,10 @@ class StoreTest extends TestCase
                 'start', 'writeClose', 'isSessionExists', 'getSessionId', 'getName', 'setName',
                 'destroy', 'clearStorage', 'getCookieDomain', 'getCookiePath', 'getCookieLifetime',
                 'setSessionId', 'regenerateId', 'expireSessionCookie', 'getSessionIdForHost',
-                'isValidForHost', 'isValidForPath', 'getCurrencyCode'
+                'isValidForHost', 'isValidForPath', 'getCurrencyCode',
             ]
         );
-        
+
         $this->store = $this->objectManagerHelper->getObject(
             Store::class,
             [
@@ -348,49 +346,49 @@ class StoreTest extends TestCase
                 UrlInterface::URL_TYPE_WEB,
                 false,
                 'web/unsecure/base_url',
-                'http://domain.com/web/unsecure/base_url/'
+                'http://domain.com/web/unsecure/base_url/',
             ],
             [
                 UrlInterface::URL_TYPE_LINK,
                 false,
                 'web/unsecure/base_link_url',
-                'http://domain.com/web/unsecure/base_link_url/index.php/'
+                'http://domain.com/web/unsecure/base_link_url/index.php/',
             ],
             [
                 UrlInterface::URL_TYPE_DIRECT_LINK,
                 false,
                 'web/unsecure/base_link_url',
-                'http://domain.com/web/unsecure/base_link_url/index.php/'
+                'http://domain.com/web/unsecure/base_link_url/index.php/',
             ],
             [
                 UrlInterface::URL_TYPE_MEDIA,
                 false,
                 'web/unsecure/base_media_url',
-                'http://domain.com/web/unsecure/base_media_url/'
+                'http://domain.com/web/unsecure/base_media_url/',
             ],
             [
                 UrlInterface::URL_TYPE_STATIC,
                 false,
                 'web/unsecure/base_static_url',
-                'http://domain.com/web/unsecure/base_static_url/'
+                'http://domain.com/web/unsecure/base_static_url/',
             ],
             [
                 UrlInterface::URL_TYPE_MEDIA,
                 false,
                 'web/unsecure/base_url',
-                'http://domain.com/web/unsecure/base_url/'
+                'http://domain.com/web/unsecure/base_url/',
             ],
             [
                 UrlInterface::URL_TYPE_STATIC,
                 false,
                 'web/unsecure/base_url',
-                'http://domain.com/web/unsecure/base_url/'
+                'http://domain.com/web/unsecure/base_url/',
             ],
             [
                 UrlInterface::URL_TYPE_WEB,
                 true,
                 'web/secure/base_url',
-                'http://distro.com/web/secure/base_url/'
+                'http://distro.com/web/secure/base_url/',
             ],
         ];
     }
@@ -420,7 +418,7 @@ class StoreTest extends TestCase
             [
                 'config' => $configMock,
                 'isCustomEntryPoint' => false,
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
         $model->setCode('scopeCode');
@@ -455,7 +453,7 @@ class StoreTest extends TestCase
         $defaultStore = $this->createPartialMock(Store::class, [
             'getId',
             'isCurrentlySecure',
-            '__wakeup'
+            '__wakeup',
         ]);
         $defaultStore->expects($this->atLeastOnce())->method('getId')->willReturn(5);
         $defaultStore->expects($this->atLeastOnce())->method('isCurrentlySecure')->willReturn($secure);
@@ -475,7 +473,7 @@ class StoreTest extends TestCase
             ->method('getRequestString')
             ->willReturn($requestString);
         $this->requestMock->expects($this->atLeastOnce())->method('getQueryValue')->willReturn([
-            'SID' => 'sid'
+            'SID' => 'sid',
         ]);
 
         $urlMock = $this->createMock(UrlInterface::class);
@@ -516,27 +514,27 @@ class StoreTest extends TestCase
                 true,
                 'http://test/url',
                 'http://test/url?SID=sid&___store=scope_code',
-                false
+                false,
             ],
             [
                 true,
                 'http://test/url?SID=sid1&___store=scope',
                 'http://test/url?SID=sid&___store=scope_code',
-                false
+                false,
             ],
             [
                 false,
                 'https://test/url',
                 'https://test/url?SID=sid&___store=scope_code',
-                false
+                false,
             ],
             [
                 true,
                 'http://test/u/u.2?___store=scope_code',
                 'http://test/u/u.2?'
                 . '___store=scope_code&SID=sid&___from_store=old-store',
-                'old-store'
-            ]
+                'old-store',
+            ],
         ];
     }
 
@@ -557,13 +555,13 @@ class StoreTest extends TestCase
                     Currency::XML_PATH_CURRENCY_BASE,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    'USD'
+                    'USD',
                 ],
                 [
                     Currency::XML_PATH_CURRENCY_BASE,
                     ScopeInterface::SCOPE_STORE,
                     'scope_code',
-                    'UAH'
+                    'UAH',
                 ],
             ]);
 
@@ -642,14 +640,14 @@ class StoreTest extends TestCase
                     Store::XML_PATH_SECURE_BASE_URL,
                     ScopeInterface::SCOPE_STORE,
                     2,
-                    $secureBaseUrl
+                    $secureBaseUrl,
                 ],
                 [
                     Store::XML_PATH_SECURE_IN_FRONTEND,
                     ScopeInterface::SCOPE_STORE,
                     2,
-                    $useSecureInFrontend
-                ]
+                    $useSecureInFrontend,
+                ],
             ]);
 
         $this->requestMock->expects($this->any())
@@ -672,7 +670,7 @@ class StoreTest extends TestCase
         if ($expected) {
             $this->assertTrue($model->isCurrentlySecure(), "Was expecting this test to show as secure, but it wasn't");
         } else {
-            $this->assertFalse($model->isCurrentlySecure(), "Was expecting this test to show as not secure!");
+            $this->assertFalse($model->isCurrentlySecure(), 'Was expecting this test to show as not secure!');
         }
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,12 +22,12 @@ $productLinkFactory = Bootstrap::getObjectManager()
 $productConfigs = [
     [
         'id' => '100000001',
-        'stock_config' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_qty_decimal' => 0, 'is_in_stock' => 1]
+        'stock_config' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_qty_decimal' => 0, 'is_in_stock' => 1],
     ],
     [
         'id' => '100000002',
-        'stock_config' =>  ['use_config_manage_stock' => 1, 'qty' => 0, 'is_qty_decimal' => 0, 'is_in_stock' => 0]
-    ]
+        'stock_config' =>  ['use_config_manage_stock' => 1, 'qty' => 0, 'is_qty_decimal' => 0, 'is_in_stock' => 0],
+    ],
 ];
 
 foreach ($productConfigs as $productConfig) {

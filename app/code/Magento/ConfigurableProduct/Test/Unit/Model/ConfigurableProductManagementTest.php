@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class ConfigurableProductManagementTest extends TestCase
                 'someKey' => 'someValue',
                 'options' => [['key' => 'value']],
                 'attribute_code' => 10,
-            ]
+            ],
         ];
 
         $this->productVariationBuilder->expects($this->once())

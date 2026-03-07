@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ class PhpCookieDisabler implements CookieDisablerInterface
     /**
      * @inheritDoc
      */
-    public function setCookiesDisabled(bool $disabled) : void
+    public function setCookiesDisabled(bool $disabled): void
     {
         if ($disabled && !headers_sent()) {
             header_remove('Set-Cookie');

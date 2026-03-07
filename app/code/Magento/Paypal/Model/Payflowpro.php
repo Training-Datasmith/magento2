@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -129,7 +131,7 @@ class Payflowpro extends \Magento\Payment\Model\Method\Cc implements GatewayInte
         'authcode' => 'authcode',
         'hostcode' => 'hostcode',
         'pnref' => 'pnref',
-        'cc_type' => 'cardtype'
+        'cc_type' => 'cardtype',
     ];
 
     /**
@@ -144,7 +146,7 @@ class Payflowpro extends \Magento\Payment\Model\Method\Cc implements GatewayInte
         '2' => 'DI',
         '3' => 'AE',
         '4' => 'DN',
-        '5' => 'JCB'
+        '5' => 'JCB',
     ];
 
     /**
@@ -946,7 +948,7 @@ class Payflowpro extends \Magento\Payment\Model\Method\Cc implements GatewayInte
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -955,7 +957,7 @@ class Payflowpro extends \Magento\Payment\Model\Method\Cc implements GatewayInte
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 

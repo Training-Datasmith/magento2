@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Store\Model\Store;
 use Magento\Sales\Model\Order\Address as OrderAddress;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\Order\Payment;
+use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/default_rollback.php');
@@ -67,7 +69,7 @@ $order->setIncrementId('100000001')
     ->setState(Order::STATE_PROCESSING)
     ->setStatus($order->getConfig()->getStateDefaultStatus(Order::STATE_PROCESSING))
     ->setSubtotal(110)
-    ->setOrderCurrencyCode("USD")
+    ->setOrderCurrencyCode('USD')
     ->setShippingAmount(10.0)
     ->setBaseShippingAmount(10.0)
     ->setTaxAmount(5.0)
@@ -118,7 +120,7 @@ $secondOrder->setIncrementId('100000002')
     ->setState(Order::STATE_PROCESSING)
     ->setStatus($secondOrder->getConfig()->getStateDefaultStatus(Order::STATE_PROCESSING))
     ->setSubtotal(110)
-    ->setOrderCurrencyCode("USD")
+    ->setOrderCurrencyCode('USD')
     ->setShippingAmount(10.0)
     ->setBaseShippingAmount(10.0)
     ->setTaxAmount(5.0)

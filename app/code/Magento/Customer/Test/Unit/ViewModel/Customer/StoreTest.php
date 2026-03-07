@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class StoreTest extends TestCase
                 'systemStore' => $this->systemStore,
                 'configShare' => $this->configShare,
                 'storeManager' => $this->storeManager,
-                'dataPersistor' => $this->dataPersistor
+                'dataPersistor' => $this->dataPersistor,
             ]
         );
     }
@@ -100,7 +101,7 @@ class StoreTest extends TestCase
             $this->dataPersistor->method('get')
                 ->with('customer')
                 ->willReturn([
-                    'account' => ['website_id' => '1']
+                    'account' => ['website_id' => '1'],
                 ]);
         } else {
             $this->storeManager->method('getDefaultStoreView')
@@ -122,10 +123,10 @@ class StoreTest extends TestCase
                         [
                             'label' => '    Default Store View',
                             'value' => '1',
-                        ]
+                        ],
                     ],
                     '__disableTmpl' => true,
-                ]
+                ],
             ]);
 
         $this->assertEquals($options, $this->customerStore->toOptionArray());
@@ -154,11 +155,11 @@ class StoreTest extends TestCase
                                 'label' => '    Default Store View',
                                 'value' => '1',
                                 'website_id' => '1',
-                            ]
+                            ],
                         ],
                         '__disableTmpl' => true,
                         'website_id' => '1',
-                    ]
+                    ],
                 ],
                 'isWebsiteScope' => true,
                 'isCustomerDataInSession' => false,
@@ -178,11 +179,11 @@ class StoreTest extends TestCase
                                 'label' => '    Default Store View',
                                 'value' => '1',
                                 'website_id' => '1',
-                            ]
+                            ],
                         ],
                         '__disableTmpl' => true,
                         'website_id' => '1',
-                    ]
+                    ],
                 ],
                 'isWebsiteScope' => false,
                 'isCustomerDataInSession' => false,
@@ -202,15 +203,15 @@ class StoreTest extends TestCase
                                 'label' => '    Default Store View',
                                 'value' => '1',
                                 'website_id' => '1',
-                            ]
+                            ],
                         ],
                         '__disableTmpl' => true,
                         'website_id' => '1',
-                    ]
+                    ],
                 ],
                 'isWebsiteScope' => false,
                 'isCustomerDataInSession' => true,
-            ]
+            ],
         ];
     }
 }

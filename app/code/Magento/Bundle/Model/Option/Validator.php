@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -53,7 +55,7 @@ class Validator extends \Magento\Framework\Validator\AbstractValidator
         $messages = [];
         $requiredFields = [
             'title' => $value->getTitle(),
-            'type' => $value->getType()
+            'type' => $value->getType(),
         ];
         foreach ($requiredFields as $requiredField => $requiredValue) {
             if (!$this->notEmpty->isValid(trim((string) $requiredValue))) {

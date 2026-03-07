@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Setup\Mvc\Bootstrap;
 
+use Laminas\EventManager\EventManagerInterface;
 use Magento\Framework\App\Bootstrap as AppBootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\State;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Shell\ComplexParameter;
 use Magento\Framework\Setup\Mvc\MvcApplication;
 use Magento\Framework\Setup\Mvc\MvcEvent;
-use Laminas\EventManager\EventManagerInterface;
+use Magento\Framework\Shell\ComplexParameter;
 
 /**
  * A listener that injects relevant Magento initialization parameters and initializes filesystem
@@ -28,7 +29,7 @@ class InitParamListener
     /**
      * A CLI parameter for injecting bootstrap variables
      */
-    const BOOTSTRAP_PARAM = 'magento-init-params';
+    public const BOOTSTRAP_PARAM = 'magento-init-params';
 
     /**
      * Attach listener to events (compatibility method for tests)

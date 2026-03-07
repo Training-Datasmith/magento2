@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Bundle\ViewModel\Sales\Order\Items;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Sales\Model\ResourceModel\Order\Item\CollectionFactory;
 use Magento\Sales\Api\Data\OrderItemInterface;
+use Magento\Sales\Model\ResourceModel\Order\Item\CollectionFactory;
 
 /**
  * ViewModel for Bundle Items
@@ -46,7 +47,7 @@ class Renderer implements ArgumentInterface
             [OrderItemInterface::ITEM_ID, OrderItemInterface::PARENT_ITEM_ID],
             [
                 ['eq' => $parentId],
-                ['eq' => $parentId]
+                ['eq' => $parentId],
             ]
         );
 

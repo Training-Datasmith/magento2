@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,9 +10,8 @@ namespace Magento\Config\Test\Unit\Model\Config\Structure;
 
 use Magento\Config\Model\Config\Structure\ElementVisibilityComposite;
 use Magento\Config\Model\Config\Structure\ElementVisibilityInterface;
-use PHPUnit\Framework\MockObject\Matcher\InvokedCount;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ElementVisibilityCompositeTest extends TestCase
@@ -51,7 +51,7 @@ class ElementVisibilityCompositeTest extends TestCase
             'Magento\Config\Model\Config\Structure\ElementVisibilityInterface is expected'
         ));
         $visibility = [
-            'stdClass' => new \stdClass()
+            'stdClass' => new \stdClass(),
         ];
 
         new ElementVisibilityComposite($visibility);
@@ -71,7 +71,7 @@ class ElementVisibilityCompositeTest extends TestCase
         // Convert string expects to actual matcher
         $firstMatcher = $this->{$firstExpects}();
         $secondMatcher = $this->{$secondExpects}();
-        
+
         $this->firstVisibilityMock->expects($firstMatcher)
             ->method('isDisabled')
             ->with($path)
@@ -98,7 +98,7 @@ class ElementVisibilityCompositeTest extends TestCase
         // Convert string expects to actual matcher
         $firstMatcher = $this->{$firstExpects}();
         $secondMatcher = $this->{$secondExpects}();
-        
+
         $this->firstVisibilityMock->expects($firstMatcher)
             ->method('isHidden')
             ->with($path)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class ProductCategoriesTest extends GraphQlAbstract
             [
                 'sku' => 'in-stock-product',
                 'category_ids' => ['2', '$c11.id$', '$c2.id$', '$c21.id$', '$c211.id$'],
-                'website_ids' => ['1', '$w2.id$']
+                'website_ids' => ['1', '$w2.id$'],
             ],
         ),
     ]
@@ -73,7 +74,7 @@ class ProductCategoriesTest extends GraphQlAbstract
             [
                 'sku' => 'in-stock-product',
                 'category_ids' => ['2', '$c11.id$', '$c2.id$', '$c21.id$', '$c211.id$'],
-                'website_ids' => ['1', '$w2.id$']
+                'website_ids' => ['1', '$w2.id$'],
             ],
         ),
     ]
@@ -116,7 +117,7 @@ class ProductCategoriesTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'sku' => 'in-stock-product',
-                'category_ids' => ['2', '$c11.id$', '$c2.id$', '$c21.id$', '$c211.id$']
+                'category_ids' => ['2', '$c11.id$', '$c2.id$', '$c21.id$', '$c211.id$'],
             ],
         ),
     ]

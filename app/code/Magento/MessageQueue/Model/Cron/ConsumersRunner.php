@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MessageQueue\Model\Cron;
 
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\MessageQueue\ConnectionTypeResolver;
 use Magento\Framework\MessageQueue\Consumer\Config\ConsumerConfigItemInterface;
-use Magento\Framework\ShellInterface;
 use Magento\Framework\MessageQueue\Consumer\ConfigInterface as ConsumerConfigInterface;
-use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\ShellInterface;
+use Magento\MessageQueue\Model\CheckIsAvailableMessagesInQueue;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Process\PhpExecutableFinder;
-use Magento\Framework\Lock\LockManagerInterface;
-use Magento\MessageQueue\Model\CheckIsAvailableMessagesInQueue;
 
 /**
  * Class for running consumers processes by cron
@@ -135,7 +138,7 @@ class ConsumersRunner
                     }
                     $arguments = [
                         $consumer->getName(),
-                        '--multi-process=' . $i
+                        '--multi-process=' . $i,
                     ];
 
                     if ($maxMessages) {
@@ -147,10 +150,10 @@ class ConsumersRunner
 
                     $this->shellBackground->execute($command, $arguments);
                 }
-            } else if (!$this->lockManager->isLocked(md5($consumer->getName()))) { //phpcs:ignore
+            } elseif (!$this->lockManager->isLocked(md5($consumer->getName()))) { //phpcs:ignore
                 $arguments = [
                     $consumer->getName(),
-                    '--single-thread'
+                    '--single-thread',
                 ];
 
                 if ($maxMessages) {
@@ -178,7 +181,7 @@ class ConsumersRunner
         ConsumerConfigItemInterface $consumer,
         int $defaultMaxMessages
     ): array {
-        $consumerMaxMessages =$consumer->getMaxMessages() ?? $defaultMaxMessages;
+        $consumerMaxMessages = $consumer->getMaxMessages() ?? $defaultMaxMessages;
 
         if ($consumerMaxMessages > $defaultMaxMessages) {
             $this->logger->warning(

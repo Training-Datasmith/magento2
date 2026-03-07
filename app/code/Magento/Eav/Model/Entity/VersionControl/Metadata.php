@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\VersionControl;
 
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Metadata as ResourceModelMetaData;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**
  * Class Metadata represents a list of entity fields that are applicable for persistence operations

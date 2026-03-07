@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,13 +7,13 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\DB\Transaction;
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\ShipmentFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Framework\DB\Transaction;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/order_with_customer.php');
 

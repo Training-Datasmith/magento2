@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,17 +54,17 @@ class FulltextGridSearchTest extends AbstractBackendController
             [
                 'query' => 'simple',
                 'expectedRows' => 3,
-                'expectedTitles' => ['simplePage', 'simplePage01', '01simplePage']
+                'expectedTitles' => ['simplePage', 'simplePage01', '01simplePage'],
             ],
             [
                 'query' => 'page01',
                 'expectedRows' => 1,
-                'expectedTitles' => ['simplePage01']
+                'expectedTitles' => ['simplePage01'],
             ],
             [
                 'query' => '01simple',
                 'expectedRows' => 1,
-                'expectedTitles' => ['01simplePage']
+                'expectedTitles' => ['01simplePage'],
             ],
         ];
     }

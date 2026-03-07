@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,11 +35,11 @@ class ItemsUpdaterTest extends TestCase
 
     public function testUpdate()
     {
-        $arguments =[
+        $arguments = [
             'cancel_order' => null,
             'hold_order' => null,
             'unhold_order' => null,
-            'other' => null
+            'other' => null,
         ];
         $this->authorizationMock->expects($this->exactly(3))
             ->method('isAllowed')

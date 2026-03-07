@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Sales\Coupons;
 
 /**
@@ -60,7 +63,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'subtotals_label' => __('Subtotal'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -71,7 +74,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'sortable' => false,
                 'index' => 'coupon_code',
                 'header_css_class' => 'col-code',
-                'column_css_class' => 'col-code'
+                'column_css_class' => 'col-code',
             ]
         );
 
@@ -82,7 +85,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'sortable' => false,
                 'index' => 'rule_name',
                 'header_css_class' => 'col-rule',
-                'column_css_class' => 'col-rule'
+                'column_css_class' => 'col-rule',
             ]
         );
 
@@ -95,7 +98,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'total' => 'sum',
                 'type' => 'number',
                 'header_css_class' => 'col-users',
-                'column_css_class' => 'col-users'
+                'column_css_class' => 'col-users',
             ]
         );
 
@@ -114,7 +117,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'subtotal_amount',
                 'rate' => $rate,
                 'header_css_class' => 'col-sales',
-                'column_css_class' => 'col-sales'
+                'column_css_class' => 'col-sales',
             ]
         );
 
@@ -129,7 +132,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'discount_amount',
                 'rate' => $rate,
                 'header_css_class' => 'col-sales-discount',
-                'column_css_class' => 'col-sales-discount'
+                'column_css_class' => 'col-sales-discount',
             ]
         );
 
@@ -144,7 +147,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'total_amount',
                 'rate' => $rate,
                 'header_css_class' => 'col-total-amount',
-                'column_css_class' => 'col-total-amount'
+                'column_css_class' => 'col-total-amount',
             ]
         );
 
@@ -159,7 +162,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'subtotal_amount_actual',
                 'rate' => $rate,
                 'header_css_class' => 'col-subtotal',
-                'column_css_class' => 'col-subtotal'
+                'column_css_class' => 'col-subtotal',
             ]
         );
 
@@ -174,7 +177,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'discount_amount_actual',
                 'rate' => $rate,
                 'header_css_class' => 'col-discount',
-                'column_css_class' => 'col-discount'
+                'column_css_class' => 'col-discount',
             ]
         );
 
@@ -189,7 +192,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'total_amount_actual',
                 'rate' => $rate,
                 'header_css_class' => 'col-total',
-                'column_css_class' => 'col-total'
+                'column_css_class' => 'col-total',
             ]
         );
 

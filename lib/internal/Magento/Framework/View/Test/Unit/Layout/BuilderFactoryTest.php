@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Layout\Builder;
 use Magento\Framework\View\Layout\BuilderFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BuilderFactoryTest extends TestCase
 {
@@ -47,7 +48,7 @@ class BuilderFactoryTest extends TestCase
                         'type' => 'invalid_type',
                         'class' => BuilderFactory::class,
                     ],
-                ]
+                ],
             ]
         );
     }
@@ -81,7 +82,7 @@ class BuilderFactoryTest extends TestCase
                 'type' => BuilderFactory::TYPE_LAYOUT,
                 'arguments' => ['key' => 'val'],
                 'layoutBuilderClass' => Builder::class,
-            ]
+            ],
         ];
     }
 

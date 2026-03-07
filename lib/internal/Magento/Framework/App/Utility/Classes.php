@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Utility;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -339,7 +342,7 @@ class Classes
                 'serial_number',
                 'entity_pk_value',
                 'currency_code',
-                'unique_key'
+                'unique_key',
             ]
         );
         self::getAllMatches(

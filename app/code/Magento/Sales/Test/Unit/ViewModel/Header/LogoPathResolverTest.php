@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class LogoPathResolverTest extends TestCase
             ->willReturnCallback(function ($arg1, $arg2, $arg3) {
                 if ($arg1 == 'general/single_store_mode/enabled' && $arg2 == ScopeConfigInterface::SCOPE_TYPE_DEFAULT &&
                     $arg3 == null) {
-                    return "1";
+                    return '1';
                 } elseif ($arg1 == 'sales/identity/logo_html' && $arg2 == ScopeInterface::SCOPE_WEBSITE &&
                     $arg3 == 1) {
                     return 'sales_identity_logo_html_value';

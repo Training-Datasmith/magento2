@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,19 +8,19 @@
 
 namespace Magento\SalesRule\Model;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
+use Magento\SalesRule\Api\Data\DiscountAppliedToInterface as DiscountAppliedTo;
+use Magento\SalesRule\Api\Data\DiscountDataInterfaceFactory;
+use Magento\SalesRule\Api\Data\RuleDiscountInterfaceFactory;
 use Magento\SalesRule\Model\Data\RuleDiscount;
 use Magento\SalesRule\Model\Quote\ChildrenValidationLocator;
-use Magento\Framework\App\ObjectManager;
 use Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory;
 use Magento\SalesRule\Model\Rule\Action\Discount\Data;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
-use Magento\SalesRule\Api\Data\RuleDiscountInterfaceFactory;
-use Magento\SalesRule\Api\Data\DiscountDataInterfaceFactory;
-use Magento\SalesRule\Api\Data\DiscountAppliedToInterface as DiscountAppliedTo;
 
 /**
  * Rule applier model
@@ -385,7 +387,7 @@ class RulesApplier
                 'amount' => $discountData->getAmount(),
                 'base_amount' => $discountData->getBaseAmount(),
                 'original_amount' => $discountData->getOriginalAmount(),
-                'base_original_amount' => $discountData->getBaseOriginalAmount()
+                'base_original_amount' => $discountData->getBaseOriginalAmount(),
             ];
             $itemDiscount = $this->discountDataInterfaceFactory->create(['data' => $data]);
             $data = [
@@ -442,7 +444,7 @@ class RulesApplier
             'amount' => $discountData->getAmount(),
             'base_amount' => $discountData->getBaseAmount(),
             'original_amount' => $discountData->getOriginalAmount(),
-            'base_original_amount' => $discountData->getBaseOriginalAmount()
+            'base_original_amount' => $discountData->getBaseOriginalAmount(),
         ];
 
         $discount = $discounts[$rule->getId()] ?? null;
@@ -460,7 +462,7 @@ class RulesApplier
                     'discount' => $this->discountDataInterfaceFactory->create(['data' => $data]),
                     'rule' => $ruleLabel,
                     'rule_id' => $rule->getId(),
-                ]
+                ],
             ]
         );
         $item->getExtensionAttributes()->setDiscounts(array_values($discounts));
@@ -530,7 +532,7 @@ class RulesApplier
                 'address' => $address,
                 'quote' => $quote,
                 'qty' => $qty,
-                'result' => $discountData
+                'result' => $discountData,
             ]
         );
 

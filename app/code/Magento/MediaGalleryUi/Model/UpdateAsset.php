@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
 use Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsInterface;
 use Magento\MediaGalleryMetadataApi\Api\Data\MetadataInterface;
-use Magento\MediaGalleryUi\Model\UpdateAsset\UpdateKeywords;
 use Magento\MediaGalleryUi\Model\UpdateAsset\SaveMetadataToFile;
+use Magento\MediaGalleryUi\Model\UpdateAsset\UpdateKeywords;
 
 class UpdateAsset
 {
@@ -85,7 +86,7 @@ class UpdateAsset
                 'size' => $asset->getSize(),
                 'hash' => $asset->getHash(),
                 'contentType' => $asset->getContentType(),
-                'source' => $asset->getSource()
+                'source' => $asset->getSource(),
             ]
         );
 

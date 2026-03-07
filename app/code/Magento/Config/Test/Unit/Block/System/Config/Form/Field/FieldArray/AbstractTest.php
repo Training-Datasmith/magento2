@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,6 +59,6 @@ class AbstractTest extends TestCase
             ->onlyMethods(['escapeHtml'])
             ->getMock();
 
-        $this->assertEquals("Add", $model->getAddButtonLabel());
+        $this->assertEquals('Add', $model->getAddButtonLabel());
     }
 }

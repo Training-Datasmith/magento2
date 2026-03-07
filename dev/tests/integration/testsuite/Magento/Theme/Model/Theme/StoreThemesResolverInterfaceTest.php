@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,14 +14,14 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 use Magento\Theme\Model\ResourceModel\Theme\Collection;
+use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class StoreThemesResolverInterfaceTest extends TestCase
 {
-    const XML_PATH_THEME_USER_AGENT = 'design/theme/ua_regexp';
+    public const XML_PATH_THEME_USER_AGENT = 'design/theme/ua_regexp';
     /**
      * @var StoreThemesResolverInterface
      */
@@ -120,8 +121,8 @@ class StoreThemesResolverInterfaceTest extends TestCase
                 [
                 ],
                 [
-                    'Magento/luma'
-                ]
+                    'Magento/luma',
+                ],
             ],
             [
                 [
@@ -129,13 +130,13 @@ class StoreThemesResolverInterfaceTest extends TestCase
                         'search' => '\/Chrome\/i',
                         'regexp' => '\/Chrome\/i',
                         'value' => 'Magento/blank',
-                    ]
+                    ],
                 ],
                 [
                     'Magento/luma',
-                    'Magento/blank'
-                ]
-            ]
+                    'Magento/blank',
+                ],
+            ],
         ];
     }
 }

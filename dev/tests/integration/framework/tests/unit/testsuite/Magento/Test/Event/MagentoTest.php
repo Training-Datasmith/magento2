@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Event\Magento.
  */
+
 namespace Magento\Test\Event;
 
 use PHPUnit\Framework\Attributes\DataProvider;

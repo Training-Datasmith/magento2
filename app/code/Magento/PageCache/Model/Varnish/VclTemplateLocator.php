@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,13 +9,13 @@
 namespace Magento\PageCache\Model\Varnish;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Filesystem\Directory\ReadFactory;
+use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\Module\Dir;
 use Magento\Framework\Module\Dir\Reader;
-use Magento\Framework\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\Directory\ReadFactory;
+use Magento\PageCache\Exception\UnsupportedVarnishVersion;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Model\VclTemplateLocatorInterface;
-use Magento\PageCache\Exception\UnsupportedVarnishVersion;
 
 /**
  * Class VclTemplateLocator provides vcl template path

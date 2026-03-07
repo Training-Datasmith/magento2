@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ExtensionAttributesGeneratorTest extends TestCase
                 'typeProcessor' => $this->typeProcessorMock,
                 'sourceClassName' => \Magento\Catalog\Api\Data\Product::class,
                 'resultClassName' => \Magento\Catalog\Api\Data\ProductExtension::class,
-                'classGenerator' => null
+                'classGenerator' => null,
             ]
         );
         parent::setUp();
@@ -110,7 +111,7 @@ class ExtensionAttributesGeneratorTest extends TestCase
             ExtensionAttributesGenerator::class,
             [
                 'sourceClassName' => \Magento\Catalog\Api\Data\Product::class,
-                'resultClassName' => ProductInterface::class
+                'resultClassName' => ProductInterface::class,
             ]
         );
         $reflectionObject = new \ReflectionObject($model);

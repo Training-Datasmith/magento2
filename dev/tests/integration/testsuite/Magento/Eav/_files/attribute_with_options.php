@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -41,6 +42,6 @@ $eavSetup->addAttribute(
         'apply_to' => '',
         'system' => 1,
         'group' => 'General',
-        'option' => ['values' => ["Black", "White", "Red", "Brown", "zzz", "Metallic"]]
+        'option' => ['values' => ['Black', 'White', 'Red', 'Brown', 'zzz', 'Metallic']],
     ]
 );

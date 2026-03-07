@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,9 +81,9 @@ class VaultConfigProviderTest extends TestCase
         $expectedConfiguration = [
             'vault' => [
                 $vaultPaymentCode => [
-                    'is_enabled' => $vaultEnabled
+                    'is_enabled' => $vaultEnabled,
                 ],
-            ]
+            ],
         ];
 
         $this->session->expects(static::once())
@@ -118,12 +119,12 @@ class VaultConfigProviderTest extends TestCase
         return [
             [
                 'customerId' => 1,
-                'vaultEnabled' => true
+                'vaultEnabled' => true,
             ],
             [
                 'customerId' => null,
-                'vaultEnabled' => false
-            ]
+                'vaultEnabled' => false,
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ return [
                                             'required' => true,
                                             'isList' => true,
                                             'itemsRequired' => true,
-                                            'defaultValue' => null
+                                            'defaultValue' => null,
                                         ],
 
                                 ],
@@ -35,8 +36,8 @@ return [
                                 'description' => 'Returns the attribute type, given an attribute code and entity type',
                                 'cache' => [
                                     'cacheIdentity' =>
-                                        Magento\EavGraphQl\Model\Resolver\CustomAttributeMetadata::class
-                                ]
+                                        Magento\EavGraphQl\Model\Resolver\CustomAttributeMetadata::class,
+                                ],
                         ],
                         'products' => [
                         'name' => 'products',
@@ -51,7 +52,7 @@ return [
                                         'required' => false,
                                         'isList' => false,
                                         'itemsRequired' => false,
-                                        'defaultValue' => null
+                                        'defaultValue' => null,
                                     ],
 
                                     'filter' =>
@@ -62,7 +63,7 @@ return [
                                         'required' => false,
                                         'isList' => false,
                                         'itemsRequired' => false,
-                                        'defaultValue' => null
+                                        'defaultValue' => null,
                                     ],
 
                                     'pageSize' =>
@@ -73,7 +74,7 @@ return [
                                         'required' => false,
                                         'isList' => false,
                                         'itemsRequired' => false,
-                                        'defaultValue' => 10
+                                        'defaultValue' => 10,
                                     ],
 
                                     'currentPage' =>
@@ -84,7 +85,7 @@ return [
                                         'required' => false,
                                         'isList' => false,
                                         'itemsRequired' => false,
-                                        'defaultValue' => 1
+                                        'defaultValue' => 1,
                                     ],
                                     'sort' =>
                                     [
@@ -94,15 +95,15 @@ return [
                                         'required' => false,
                                         'isList' => false,
                                         'itemsRequired' => false,
-                                        'defaultValue' => null
-                                    ]
+                                        'defaultValue' => null,
+                                    ],
                             ],
                             'required' => false,
                             'isList' => false,
                             'resolver' => Magento\CatalogGraphQl\Model\Resolver\Products::class,
-                            'description' => 'comment for products fields'
-                        ]
-                ]
+                            'description' => 'comment for products fields',
+                        ],
+                ],
         ],
         'PriceAdjustmentDescriptionEnum' =>
         [
@@ -113,16 +114,16 @@ return [
                         [
                             'name' => 'included',
                             'value' => 'INCLUDED',
-                            'description' => 'price is included'
+                            'description' => 'price is included',
                         ],
                         'EXCLUDED' =>
                         [
                             'name' => 'excluded',
                             'value' => 'EXCLUDED',
-                            'description' => 'price is excluded'
-                        ]
+                            'description' => 'price is excluded',
+                        ],
                 ],
-                'description' => 'Description for enumType PriceAdjustmentDescriptionEnum'
+                'description' => 'Description for enumType PriceAdjustmentDescriptionEnum',
         ],
         'ProductLinks' =>
         [
@@ -194,7 +195,7 @@ return [
                                 'resolver' => '',
                                 'description' => 'The position within the list of product links',
 
-                        ]
+                        ],
                 ],
                 'interfaces' =>
                 [
@@ -204,7 +205,7 @@ return [
                             'copyFields' => true,
                         ],
                 ],
-                'description' => 'ProductLinks is an implementation of ProductLinksInterface.'
+                'description' => 'ProductLinks is an implementation of ProductLinksInterface.',
         ],
         'ProductLinksInterface' =>
         [
@@ -276,9 +277,9 @@ return [
                                 'resolver' => '',
                                 'description' => 'The position within the list of product links',
 
-                        ]
+                        ],
                 ],
                 'typeResolver' => Magento\CatalogGraphQl\Model\ProductLinkTypeResolverComposite::class,
-                'description' => 'description for ProductLinksInterface'
-        ]
+                'description' => 'description for ProductLinksInterface',
+        ],
 ];

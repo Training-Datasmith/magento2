@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -135,7 +136,7 @@ class Option extends AbstractDb
                 $this->getTable('catalog_product_bundle_option_value'),
                 [
                     'option_id = ?' => $object->getId(),
-                    'parent_product_id = ?' => $object->getParentId()
+                    'parent_product_id = ?' => $object->getParentId(),
                 ]
             );
 

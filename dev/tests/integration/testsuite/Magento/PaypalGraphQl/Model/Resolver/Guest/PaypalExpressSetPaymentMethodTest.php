@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Paypal\Model\Api\Nvp;
 use Magento\PaypalGraphQl\PaypalExpressAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -122,7 +123,7 @@ QUERY;
         $paypalResponse = [
             'TOKEN' => $token,
             'CORRELATIONID' => $correlationId,
-            'ACK' => 'Success'
+            'ACK' => 'Success',
         ];
 
         if ($paymentMethod == 'payflow_express') {
@@ -171,7 +172,7 @@ QUERY;
                             'PPREF' => '7RK43642T8939154L',
                             'CORRELATIONID' => $correlationId,
                             'PAYMENTTYPE' => 'instant',
-                            'PENDINGREASON' => 'authorization'
+                            'PENDINGREASON' => 'authorization',
                         ];
                     }
                 }

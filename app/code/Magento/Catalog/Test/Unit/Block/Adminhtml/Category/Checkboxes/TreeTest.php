@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
@@ -7,16 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Category\Checkboxes;
 
-use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Model\Auth\Session;
 use Magento\Catalog\Block\Adminhtml\Category\Checkboxes\Tree as CheckboxesTreeBlock;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category\Tree as CategoryTreeResource;
 use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\Json\EncoderInterface;
-use Magento\Framework\Registry;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Magento\Framework\DB\Helper as DbHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +23,7 @@ use PHPUnit\Framework\TestCase;
 class TreeTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /** @var ObjectManager */
     /** @var EncoderInterface|\PHPUnit\Framework\MockObject\MockObject */
     private $jsonEncoderMock;
@@ -48,7 +44,7 @@ class TreeTest extends TestCase
     private function createCategoryCollectionStub(array $paths)
     {
         // Simple iterable stub with chainable methods
-        return new class($paths) implements \IteratorAggregate, \Countable {
+        return new class ($paths) implements \IteratorAggregate, \Countable {
             /** @var array */
             private $items;
             /** @var array|null */
@@ -57,7 +53,7 @@ class TreeTest extends TestCase
             {
                 $items = [];
                 foreach ($paths as $path) {
-                    $items[] = new class($path) {
+                    $items[] = new class ($path) {
                         /** @var string */
                         private $path;
                         public function __construct(string $path)
@@ -183,7 +179,7 @@ class TreeTest extends TestCase
         $block = $this->buildBlockMock();
 
         // Custom stub that captures the last filter applied
-        $collectionStub = new class() implements \IteratorAggregate, \Countable {
+        $collectionStub = new class () implements \IteratorAggregate, \Countable {
             /** @var array */
             private $items = [];
             /** @var array|null */
@@ -363,7 +359,8 @@ class TreeTest extends TestCase
 
         // Stub category collection
         $block->method('getCategoryCollection')->willReturn(
-            new class() implements \IteratorAggregate, \Countable {
+            new class () implements \IteratorAggregate,
+                \Countable {
                 /** @var array */
                 private $items = [];
                 public function getIterator(): \Traversable

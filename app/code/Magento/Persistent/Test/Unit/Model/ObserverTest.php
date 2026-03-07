@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class ObserverTest extends TestCase
                 'customerRepository' => $this->customerRepositoryMock,
                 'customerViewHelper' => $this->customerViewHelperMock,
                 'escaper' => $this->escaperMock,
-                'layout' => $this->layoutMock
+                'layout' => $this->layoutMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,6 +20,7 @@ use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
@@ -29,7 +31,6 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -72,12 +73,12 @@ class FormTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         /** @var Context|MockObject $context */
@@ -136,7 +137,7 @@ class FormTest extends TestCase
             'currency_symbol' => '$',
             'shipping_method_reseted' => false,
             'payment_method' => 'free',
-            'quote_id' => $quoteId
+            'quote_id' => $quoteId,
         ];
 
         $this->storeManager->method('setCurrentStore')

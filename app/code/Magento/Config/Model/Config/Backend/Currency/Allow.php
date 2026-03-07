@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Config Directory currency backend model
  * Allows dispatching before and after events for each controller action
  */
+
 namespace Magento\Config\Model\Config\Backend\Currency;
 
 /**

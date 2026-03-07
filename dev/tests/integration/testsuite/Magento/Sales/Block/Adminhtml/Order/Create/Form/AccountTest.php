@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test class for \Magento\Sales\Block\Adminhtml\Order\Create\Form\Account
  *
@@ -102,7 +103,7 @@ class AccountTest extends TestCase
 
         $expectedFields = ['group_id', 'email'];
         $form = $this->accountBlock->getForm();
-        $this->assertEquals(1, $form->getElements()->count(), "Form has invalid number of fieldsets");
+        $this->assertEquals(1, $form->getElements()->count(), 'Form has invalid number of fieldsets');
         $fieldset = $form->getElements()[0];
         $content = $form->toHtml();
 
@@ -273,7 +274,7 @@ class AccountTest extends TestCase
             'address_block' . rand(),
             [
                 'context' => $contextMock,
-                'sessionQuote' => $this->session
+                'sessionQuote' => $this->session,
             ]
         );
 
@@ -317,9 +318,9 @@ class AccountTest extends TestCase
                 'orderDetails' => [
                     'account' => [
                         'group_id' => 3,
-                        'email' => 'test@test.com'
-                    ]
-                ]
+                        'email' => 'test@test.com',
+                    ],
+                ],
             ],
             'Validated customer group id when its set in request' => [
                 'defaultCustomerGroupId' => 0,
@@ -343,10 +344,10 @@ class AccountTest extends TestCase
                 'orderDetails' => [
                     'account' => [
                         'group_id' => 3,
-                        'email' => 'test@test.com'
-                    ]
-                ]
-            ]
+                        'email' => 'test@test.com',
+                    ],
+                ],
+            ],
         ];
     }
 

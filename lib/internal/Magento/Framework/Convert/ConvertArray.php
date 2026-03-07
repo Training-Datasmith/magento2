@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -85,7 +87,7 @@ XML;
                         throw new LocalizedException(
                             new \Magento\Framework\Phrase(
                                 "An associative key can't be the same as its parent associative key. "
-                                . "Verify and try again."
+                                . 'Verify and try again.'
                             )
                         );
                     }

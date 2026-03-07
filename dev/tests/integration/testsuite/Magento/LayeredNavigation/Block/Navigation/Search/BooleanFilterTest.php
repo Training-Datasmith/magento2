@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\LayeredNavigation\Block\Navigation\Search;
 
-use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\LayeredNavigation\Block\Navigation\Category\BooleanFilterTest as CategoryBooleanFilterTest;
 use PHPUnit\Framework\Attributes\DataProvider;

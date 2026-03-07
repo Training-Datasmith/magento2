@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Sales\Grid\Column\Renderer;
 
 use Magento\Framework\Locale\Bundle\DataBundle;
@@ -13,7 +16,6 @@ use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
  */
 class Date extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Date
 {
-
     /**
      * @var \Magento\Framework\Locale\ResolverInterface
      */

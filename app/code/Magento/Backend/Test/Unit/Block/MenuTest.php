@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class MenuTest extends TestCase
                 'menuConfig' => $this->menuConfigMock,
                 'localeResolver' => $localeResolverMock,
                 'menuItemChecker' => $this->menuItemCheckerMock,
-                'anchorRenderer' => $anchorRendererMock
+                'anchorRenderer' => $anchorRendererMock,
             ]
         );
     }

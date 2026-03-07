@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * \Magento\Framework\Cache\InvalidateLogger test case
  */
+
 namespace Magento\Framework\Cache\Test\Unit;
 
 use Magento\Framework\App\Request\Http;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -217,7 +218,7 @@ class ExceptionHandlerTest extends TestCase
                 (bool)getenv('MAGE_DEBUG_SHOW_ARGS')
             ),
             'url' => 'some-request-uri',
-            'script_name' => 'some-script-name'
+            'script_name' => 'some-script-name',
         ];
         $this->encryptorInterfaceMock->expects($this->once())
             ->method('getHash')

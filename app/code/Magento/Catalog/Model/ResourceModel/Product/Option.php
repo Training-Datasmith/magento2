@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -170,7 +173,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 new DataObject(
                     [
                         'price' => $price,
-                        'price_type' => $object->getPriceType()
+                        'price_type' => $object->getPriceType(),
                     ]
                 ),
                 $priceTable
@@ -181,7 +184,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $data,
                 [
                     'option_id = ?' => $object->getId(),
-                    'store_id  = ?' => $storeId
+                    'store_id  = ?' => $storeId,
                 ]
             );
         }
@@ -456,7 +459,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $connection->quoteInto(
                     'option_title_default.store_id = ?',
                     Store::DEFAULT_STORE_ID
-                )
+                ),
             ]
         );
 
@@ -464,7 +467,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             ' AND ',
             [
                 'option_title_store.option_id=product_option.option_id',
-                $connection->quoteInto('option_title_store.store_id = ?', (int)$storeId)
+                $connection->quoteInto('option_title_store.store_id = ?', (int)$storeId),
             ]
         );
 
@@ -503,7 +506,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $connection->quoteInto(
                     'option_title_default.store_id = ?',
                     Store::DEFAULT_STORE_ID
-                )
+                ),
             ]
         );
 
@@ -511,7 +514,7 @@ class Option extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             ' AND ',
             [
                 'option_title_store.option_type_id = option_type.option_type_id',
-                $connection->quoteInto('option_title_store.store_id = ?', (int)$storeId)
+                $connection->quoteInto('option_title_store.store_id = ?', (int)$storeId),
             ]
         );
 

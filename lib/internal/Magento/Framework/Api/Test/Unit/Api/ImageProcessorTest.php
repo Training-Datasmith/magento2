@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class ImageProcessorTest extends TestCase
                     'setFilenamesCaseSensitivity',
                     'setAllowRenameFiles',
                     'save',
-                    'getUploadedFileName'
+                    'getUploadedFileName',
                 ]
             )
             ->disableOriginalConstructor()
@@ -113,7 +114,7 @@ class ImageProcessorTest extends TestCase
                 'contentValidator' => $this->contentValidatorMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
                 'logger' => $this->loggerMock,
-                'uploader' => $this->uploaderMock
+                'uploader' => $this->uploaderMock,
             ]
         );
     }

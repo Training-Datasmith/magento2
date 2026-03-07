@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class CacheTest extends TestCase
     {
         $this->keyFactorMock->expects($this->any())
             ->method('getFactorValue')
-            ->willThrowException(new \Exception("Test key factor exception"));
+            ->willThrowException(new \Exception('Test key factor exception'));
 
         $this->graphqlResolverCacheMock->expects($this->never())
             ->method('load');
@@ -122,7 +123,7 @@ class CacheTest extends TestCase
      */
     public function testCachingNotSkippedWhenKeysOk(): void
     {
-        // Allow at most 1 warning - may occur due to test environment specifics  
+        // Allow at most 1 warning - may occur due to test environment specifics
         $this->loggerMock->expects($this->atMost(1))
             ->method('warning');
 
@@ -158,10 +159,10 @@ class CacheTest extends TestCase
                 Calculator::class => [
                     'arguments' => [
                         'factorProviders' => [
-                            'test_failing' => 'TestFailingKeyFactor'
-                        ]
-                    ]
-                ]
+                            'test_failing' => 'TestFailingKeyFactor',
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -171,11 +172,11 @@ class CacheTest extends TestCase
                     'arguments' => [
                         'factorProviders' => [
                             \Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver::class => [
-                                'test_failing' => 'TestFailingKeyFactor'
-                            ]
-                        ]
-                    ]
-                ]
+                                'test_failing' => 'TestFailingKeyFactor',
+                            ],
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -191,10 +192,10 @@ class CacheTest extends TestCase
                 ResolverIdentityClassProvider::class => [
                     'arguments' => [
                         'cacheableResolverClassNameIdentityMap' => [
-                            StoreConfigResolver::class => 'TestIdentityProvider'
-                        ]
-                    ]
-                ]
+                            StoreConfigResolver::class => 'TestIdentityProvider',
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -229,7 +230,7 @@ QUERY;
         $this->objectManager->addSharedInstance(
             $this->objectManager->create(CachePlugin::class, [
                 'logger' => $this->loggerMock,
-                'graphQlResolverCache' => $this->graphqlResolverCacheMock
+                'graphQlResolverCache' => $this->graphqlResolverCacheMock,
             ]),
             CachePlugin::class
         );

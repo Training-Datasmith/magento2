@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,10 +8,6 @@
 
 namespace Magento\Framework\Code\Test\Unit;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Test;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Code\GeneratedFiles;
 use Magento\Framework\Exception\FileSystemException;
@@ -17,6 +15,10 @@ use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Filesystem\Directory\WriteFactory;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Lock\Backend\FileLock;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class GeneratedFilesTest extends TestCase
 {

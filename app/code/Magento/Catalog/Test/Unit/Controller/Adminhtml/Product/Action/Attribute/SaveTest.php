@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,24 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Product\Action\Attribute;
 
+use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute\Save;
 use Magento\Catalog\Helper\Product\Edit\Action\Attribute as AttributeHelper;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Filter\DateTime as DateTimeFilter;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Eav\Model\Config as EavConfig;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Bulk\BulkManagementInterface;
-use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
-use Magento\Framework\DataObject\IdentityGeneratorInterface;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Catalog\Model\Product\Filter\DateTime as DateTimeFilter;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Eav\Model\Entity\Attribute\Exception as EavAttributeException;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
+use Magento\Eav\Model\Entity\Attribute\Exception as EavAttributeException;
+use Magento\Framework\Bulk\BulkManagementInterface;
+use Magento\Framework\DataObject\IdentityGeneratorInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -195,7 +195,7 @@ class SaveTest extends TestCase
             AbstractBackend::class,
             ['validate']
         );
-        
+
         if ($shouldThrowException) {
             $backend->method('validate')->willThrowException(
                 new EavAttributeException(__('Make sure the To Date is later than or the same as the From Date.'))
@@ -203,7 +203,7 @@ class SaveTest extends TestCase
         } else {
             $backend->method('validate')->willReturn(true);
         }
-        
+
         return $backend;
     }
 
@@ -216,11 +216,11 @@ class SaveTest extends TestCase
             AbstractAttribute::class,
             ['setMaxValue', 'getMaxValue', 'getBackend']
         );
-        
+
         $attribute->method('setMaxValue')->willReturnSelf();
         $attribute->method('getMaxValue')->willReturn($maxValue);
         $attribute->method('getBackend')->willReturn($backend);
-        
+
         return $attribute;
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Page\Grid\Renderer;
 
 class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer

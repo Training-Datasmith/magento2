@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,13 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\Address\Total;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type\Price;
 use Magento\CatalogInventory\Model\StockRegistry;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
@@ -24,6 +24,7 @@ use Magento\Quote\Model\Quote\Address\Total;
 use Magento\Quote\Model\Quote\Address\Total\Subtotal;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -86,7 +87,7 @@ class SubtotalTest extends TestCase
             [12, 0, false, 12, 12],
             [0, 10, false, 0, 10],
             [12, 10, true, null, null],
-            [12, 10, false, 12, 10]
+            [12, 10, false, 12, 10],
         ];
     }
 
@@ -120,7 +121,7 @@ class SubtotalTest extends TestCase
             Item::class,
             [
                 'stockRegistry' => $this->stockRegistry,
-                'priceCurrency' => $priceCurrency
+                'priceCurrency' => $priceCurrency,
             ]
         );
         /** @var Address|MockObject $address */
@@ -169,8 +170,7 @@ class SubtotalTest extends TestCase
         $shippingAssignmentMock->expects($this->exactly(2))->method('getShipping')->willReturn($shipping);
         $shippingAssignmentMock->expects($this->once())->method('getItems')->willReturn([$quoteItem]);
 
-        $total = new class extends Total
-        {
+        $total = new class () extends Total {
             public function __construct()
             {
             }
@@ -192,7 +192,7 @@ class SubtotalTest extends TestCase
         $expectedResult = [
             'code' => null,
             'title' => __('Subtotal'),
-            'value' => 100
+            'value' => 100,
         ];
 
         $quoteMock = $this->createMock(Quote::class);
@@ -214,12 +214,12 @@ class SubtotalTest extends TestCase
         $quote = $this->createPartialMock(
             Quote::class,
             [
-                'getItemsCollection'
+                'getItemsCollection',
             ]
         );
         $quote->setData(
             [
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $quoteItem = $this->createPartialMock(
@@ -233,7 +233,7 @@ class SubtotalTest extends TestCase
             Address::class,
             [
                 'removeItem',
-                'getQuote'
+                'getQuote',
             ]
         );
         $address->method('getQuote')

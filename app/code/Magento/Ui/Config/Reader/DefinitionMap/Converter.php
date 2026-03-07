@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Reader\DefinitionMap;
 
 use Magento\Framework\Config\ConverterInterface;
@@ -16,22 +19,22 @@ class Converter implements ConverterInterface
     /**
      * The key of the argument node
      */
-    const ARGUMENT_KEY = 'argument';
+    public const ARGUMENT_KEY = 'argument';
 
     /**
      * The key of the include component
      */
-    const INCLUDE_KEY = 'include';
+    public const INCLUDE_KEY = 'include';
 
     /**
      * The array key sub components
      */
-    const CURRENT_SCHEMA_KEY = 'current';
+    public const CURRENT_SCHEMA_KEY = 'current';
 
     /**
      * Key name attribute value
      */
-    const NAME_ATTRIBUTE_KEY = 'name';
+    public const NAME_ATTRIBUTE_KEY = 'name';
 
     /**
      * @var Parser

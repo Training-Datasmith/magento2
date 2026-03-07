@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\RemoteStorage\Test\Unit\Driver\Adpater\Cache;
 
-use Magento\RemoteStorage\Driver\Adapter\Cache\CacheInterface as AdapterCacheInterface;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\RemoteStorage\Driver\Adapter\Cache\CacheInterface as AdapterCacheInterface;
 use Magento\RemoteStorage\Driver\Adapter\Cache\Generic;
 use Magento\RemoteStorage\Driver\Adapter\PathUtil;
 use PHPUnit\Framework\Attributes\DataProvider;

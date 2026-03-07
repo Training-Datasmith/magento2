@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,22 +8,22 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Customer\Attribute;
 
-use Magento\GraphQl\PageCache\GraphQLPageCacheAbstract;
-use Magento\Eav\Model\AttributeRepository;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Customer\Test\Fixture\CustomerAttribute;
 use Magento\Eav\Api\Data\AttributeInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Fixture\Config as ConfigFixture;
-use Magento\TestFramework\Fixture\DataFixture;
+use Magento\Eav\Model\AttributeRepository;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\GraphQl\PageCache\GraphQLPageCacheAbstract;
+use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
+use Magento\PageCache\Model\Config;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\Store\Test\Fixture\Website as WebsiteFixture;
-use Magento\PageCache\Model\Config;
+use Magento\TestFramework\Fixture\Config as ConfigFixture;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Test caching for attributes form GraphQL query_CUSTOMER_REGISTER_ADDRESS.
@@ -113,7 +114,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_register_address']
+                'used_in_forms' => ['customer_register_address'],
             ],
             'attribute_1'
         )
@@ -153,14 +154,14 @@ QRY;
         DataFixture(
             StoreGroupFixture::class,
             [
-                'website_id' => '$website2.id$'
+                'website_id' => '$website2.id$',
             ],
             'store_group2'
         ),
         DataFixture(
             StoreFixture::class,
             [
-                'store_group_id' => '$store_group2.id$'
+                'store_group_id' => '$store_group2.id$',
             ],
             'store2'
         ),
@@ -168,7 +169,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_register_address']
+                'used_in_forms' => ['customer_register_address'],
             ],
             'attribute_1'
         )
@@ -203,7 +204,7 @@ QRY;
             self::QUERY_CUSTOMER_REGISTER_ADDRESS,
             [
                 'Store' => $store2->getCode(),
-                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2
+                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2,
             ]
         );
 
@@ -215,7 +216,7 @@ QRY;
             self::QUERY_CUSTOMER_REGISTER_ADDRESS,
             [
                 'Store' => $store2->getCode(),
-                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2
+                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2,
             ]
         );
     }
@@ -226,7 +227,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_register_address']
+                'used_in_forms' => ['customer_register_address'],
             ],
             'attribute_1'
         )
@@ -252,7 +253,7 @@ QRY;
 
         /** Modify attribute to invalidate cache */
         $eavAttributeRepo = $this->objectManager->get(AttributeRepository::class);
-        $attribute1->setDefaultValue("default_value");
+        $attribute1->setDefaultValue('default_value');
         $eavAttributeRepo->save($attribute1);
 
         /** Response after the change should be a MISS */
@@ -300,7 +301,7 @@ QRY;
         $attributeCreate = $this->objectManager->get(CustomerAttribute::class);
         $attribute = $attributeCreate->apply([
             'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-            'used_in_forms' => ['customer_register_address']
+            'used_in_forms' => ['customer_register_address'],
         ]);
         $this->attributesToRemove[] = $attribute;
 
@@ -334,7 +335,7 @@ QRY;
             CustomerAttribute::class,
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
-                'used_in_forms' => ['customer_register_address']
+                'used_in_forms' => ['customer_register_address'],
             ],
             'attribute_1'
         )
@@ -499,8 +500,8 @@ QRY;
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'used_in_forms' => [
                     'customer_register_address',
-                    'customer_account_edit'
-                ]
+                    'customer_account_edit',
+                ],
             ],
             'shared_attribute'
         )
@@ -588,8 +589,8 @@ QRY;
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'used_in_forms' => [
-                    'customer_account_edit'
-                ]
+                    'customer_account_edit',
+                ],
             ],
             'non_shared_attribute_2'
         ),
@@ -598,8 +599,8 @@ QRY;
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'used_in_forms' => [
-                    'customer_register_address'
-                ]
+                    'customer_register_address',
+                ],
             ],
             'non_shared_attribute_1'
         )

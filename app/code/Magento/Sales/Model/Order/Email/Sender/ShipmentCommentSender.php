@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Email\Sender;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\DataObject;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Address\Renderer;
 use Magento\Sales\Model\Order\Email\Container\ShipmentCommentIdentity;
 use Magento\Sales\Model\Order\Email\Container\Template;
 use Magento\Sales\Model\Order\Email\NotifySender;
 use Magento\Sales\Model\Order\Shipment;
-use Magento\Sales\Model\Order\Address\Renderer;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\DataObject;
 use Magento\Store\Model\App\Emulation;
 
 class ShipmentCommentSender extends NotifySender
@@ -85,8 +88,8 @@ class ShipmentCommentSender extends NotifySender
             'order_data' => [
                 'customer_name' => $order->getCustomerName(),
                 'is_not_virtual' => $order->getIsNotVirtual(),
-                'frontend_status_label' => $order->getFrontendStatusLabel()
-            ]
+                'frontend_status_label' => $order->getFrontendStatusLabel(),
+            ],
         ];
         $transportObject = new DataObject($transport);
         $this->appEmulation->stopEnvironmentEmulation();

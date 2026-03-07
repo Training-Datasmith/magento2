@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,8 +55,8 @@ class Validator implements ValidatorInterface
         if ($currentEngine !== null && isset($this->excludedEngineList[$currentEngine])) {
             $excludedEngine = $this->excludedEngineList[$currentEngine];
             $errors[] = "Your current search engine, '{$excludedEngine}', is not supported."
-                . " You must install a supported search engine before upgrading."
-                . " See the System Upgrade Guide for more information.";
+                . ' You must install a supported search engine before upgrading.'
+                . ' See the System Upgrade Guide for more information.';
         }
 
         if ($currentEngine !== null && isset($this->engineValidators[$currentEngine])) {

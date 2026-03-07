@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class TransactionWrapperTest extends TestCase
      */
     protected $saveOption = true;
 
-    private const ERROR_MSG = "error occurred";
+    private const ERROR_MSG = 'error occurred';
 
     protected function setUp(): void
     {

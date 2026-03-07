@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -141,7 +142,7 @@ class RoleTest extends TestCase
             ->willReturn(
                 [
                     ['role_id' => 1, 'role_type' => 'G', 'parent_id' => null],
-                    ['role_id' => 2, 'role_type' => 'U', 'parent_id' => 1, 'user_id' => 1]
+                    ['role_id' => 2, 'role_type' => 'U', 'parent_id' => 1, 'user_id' => 1],
                 ]
             );
 
@@ -155,7 +156,7 @@ class RoleTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [$this->anything(), null],
-                    [$this->anything(), '1']
+                    [$this->anything(), '1'],
                 ];
                 $returnValue = null;
                 $index++;
@@ -224,8 +225,8 @@ class RoleTest extends TestCase
                             'role_id' => 1,
                             'role_type' => 'U',
                             'parent_id' => 2,
-                            'user_id' => 3
-                        ]
+                            'user_id' => 3,
+                        ],
                     ]
                 )
             );

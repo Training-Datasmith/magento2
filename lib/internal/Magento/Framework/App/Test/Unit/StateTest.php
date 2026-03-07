@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\App\State;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class StateTest extends TestCase
@@ -169,7 +170,7 @@ class StateTest extends TestCase
         return [
             'default mode' => [State::MODE_DEFAULT],
             'production mode' => [State::MODE_PRODUCTION],
-            'developer mode' => [State::MODE_DEVELOPER]
+            'developer mode' => [State::MODE_DEVELOPER],
         ];
     }
 
@@ -179,7 +180,7 @@ class StateTest extends TestCase
         $this->expectExceptionMessage('Unknown application mode: unknown mode');
         new State(
             $this->getMockBuilder(ScopeInterface::class)->disableOriginalConstructor()->getMock(),
-            "unknown mode"
+            'unknown mode'
         );
     }
 

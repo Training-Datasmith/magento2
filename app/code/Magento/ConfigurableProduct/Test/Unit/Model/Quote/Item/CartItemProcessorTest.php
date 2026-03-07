@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -148,8 +149,8 @@ class CartItemProcessorTest extends TestCase
 
         $requestData = [
             'super_attribute' => [
-                $optionId => $optionValue
-            ]
+                $optionId => $optionValue,
+            ],
         ];
         $buyRequestMock = new DataObject($requestData);
         $this->objectFactoryMock->expects($this->once())

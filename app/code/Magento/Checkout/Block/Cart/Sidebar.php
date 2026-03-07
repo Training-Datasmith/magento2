@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart;
 
 use Magento\Store\Model\ScopeInterface;
@@ -18,12 +21,12 @@ class Sidebar extends AbstractCart
     /**
      * Xml pah to checkout sidebar display value
      */
-    const XML_PATH_CHECKOUT_SIDEBAR_DISPLAY = 'checkout/sidebar/display';
+    public const XML_PATH_CHECKOUT_SIDEBAR_DISPLAY = 'checkout/sidebar/display';
 
     /**
      * Xml pah to checkout sidebar count value
      */
-    const XML_PATH_CHECKOUT_SIDEBAR_COUNT = 'checkout/sidebar/count';
+    public const XML_PATH_CHECKOUT_SIDEBAR_COUNT = 'checkout/sidebar/count';
 
     /**
      * @var \Magento\Catalog\Helper\Image
@@ -85,7 +88,7 @@ class Sidebar extends AbstractCart
             'websiteId' => $this->_storeManager->getStore()->getWebsiteId(),
             'maxItemsToDisplay' => $this->getMaxItemsToDisplay(),
             'storeId' => $this->_storeManager->getStore()->getId(),
-            'storeGroupId' => $this->_storeManager->getStore()->getStoreGroupId()
+            'storeGroupId' => $this->_storeManager->getStore()->getStoreGroupId(),
         ];
     }
 

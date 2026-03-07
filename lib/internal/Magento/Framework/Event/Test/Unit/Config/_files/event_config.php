@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,5 +21,5 @@ return [
     ],
     'some_eventname' => [
         'observer_3' => ['instance' => 'instance_3', 'name' => 'observer_3'],
-    ]
+    ],
 ];

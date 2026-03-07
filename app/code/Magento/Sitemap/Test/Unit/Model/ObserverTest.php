@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class ObserverTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'collectionFactory' => $this->collectionFactoryMock,
                 'appEmulation' => $this->appEmulationMock,
-                'emailNotification' => $this->emailNotificationMock
+                'emailNotification' => $this->emailNotificationMock,
             ]
         );
     }

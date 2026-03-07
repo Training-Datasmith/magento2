@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -21,8 +22,8 @@ use Magento\Quote\Model\Quote\Payment;
  */
 class PayflowProSetCcData extends AbstractDataAssignObserver
 {
-    const XML_PATH_PAYMENT_PAYFLOWPRO_CC_VAULT_ACTIVE = "payment/payflowpro_cc_vault/active";
-    const IS_ACTIVE_PAYMENT_TOKEN_ENABLER = "is_active_payment_token_enabler";
+    public const XML_PATH_PAYMENT_PAYFLOWPRO_CC_VAULT_ACTIVE = 'payment/payflowpro_cc_vault/active';
+    public const IS_ACTIVE_PAYMENT_TOKEN_ENABLER = 'is_active_payment_token_enabler';
 
     /**
      * Core store config

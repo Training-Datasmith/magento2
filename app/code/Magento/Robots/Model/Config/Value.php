@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
-use Magento\Store\Model\StoreResolver;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\StoreResolver;
 
 /**
  * Backend model for design/search_engine_robots/custom_instructions configuration value.
@@ -30,7 +32,7 @@ class Value extends ConfigValue implements IdentityInterface
     /**
      * Cache tag for robots.txt cached data
      */
-    const CACHE_TAG = 'robots';
+    public const CACHE_TAG = 'robots';
 
     /**
      * @inheritdoc

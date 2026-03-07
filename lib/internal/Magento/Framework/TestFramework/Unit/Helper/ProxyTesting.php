@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Helper class for testing the proxy objects
  */
+
 namespace Magento\Framework\TestFramework\Unit\Helper;
 
 use function PHPUnit\Framework\once;

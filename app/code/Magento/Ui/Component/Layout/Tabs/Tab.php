@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Layout\Tabs;
 
 use Magento\Ui\Component\AbstractComponent;
@@ -12,7 +15,7 @@ use Magento\Ui\Component\AbstractComponent;
  */
 class Tab extends AbstractComponent implements TabInterface
 {
-    const NAME = 'tab';
+    public const NAME = 'tab';
 
     /**
      * Get component name

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -22,12 +24,11 @@ class ProxyGenerator implements GeneratorInterface
      */
     public function generate($className)
     {
-        if(!$this->isProxy($className))
-        {
+        if (!$this->isProxy($className)) {
             return false;
         }
 
-        $sourceClassName = str_replace("\Proxy","",$className);
+        $sourceClassName = str_replace("\Proxy", '', $className);
         $generate = new ProxyClassGenerator($sourceClassName, $className);
         return $generate->generate();
     }
@@ -41,13 +42,13 @@ class ProxyGenerator implements GeneratorInterface
     private function isProxy($className)
     {
         //if \Proxy not exist
-        if ($className === null || !str_contains($className, '\Proxy') ) {
+        if ($className === null || !str_contains($className, '\Proxy')) {
             return false;
         }
         // if \Proxy not exist in last
         $classLength = strlen($className);
         $proxyLength = strlen('\Proxy');
-        if (($classLength - $proxyLength) != strpos($className,"\Proxy")){
+        if (($classLength - $proxyLength) != strpos($className, "\Proxy")) {
             return false;
         }
         return true;

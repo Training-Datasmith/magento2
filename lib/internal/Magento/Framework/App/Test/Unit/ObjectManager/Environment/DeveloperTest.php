@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,18 +67,18 @@ class DeveloperTest extends TestCase
             [ScopeInterface::class,
                 $this->getMockBuilder(ScopeInterface::class)
                     ->disableOriginalConstructor()
-                    ->getMock()
+                    ->getMock(),
             ],
             [ConfigCache::class,
                 $this->getMockBuilder(ConfigCache::class)
                     ->disableOriginalConstructor()
-                    ->getMock()
+                    ->getMock(),
             ],
             [Config::class,
                 $this->getMockBuilder(Config::class)
                     ->disableOriginalConstructor()
-                    ->getMock()
-            ]
+                    ->getMock(),
+            ],
         ];
         $objectManagerMock->expects($this->any())->method('get')->willReturnMap($omReturnMap);
 
@@ -86,7 +87,7 @@ class DeveloperTest extends TestCase
 
         $expectedSharedInstances = [
             'class_name' => 'shared_object',
-            ConfigLoaderInterface::class =>  $configLoaderMock
+            ConfigLoaderInterface::class =>  $configLoaderMock,
         ];
         $this->assertSame($expectedSharedInstances, $sharedInstances);
         if (isset($origObjectManager)) {

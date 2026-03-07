@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Api\Data;
 
 /**
@@ -14,19 +17,19 @@ interface ConditionInterface extends \Magento\Framework\Api\CustomAttributesData
     /**#@+
      * Constants defined for keys of data array
      */
-    const TYPE = 'type';
+    public const TYPE = 'type';
 
-    const ATTRIBUTE = 'attribute';
+    public const ATTRIBUTE = 'attribute';
 
-    const OPERATOR = 'operator';
+    public const OPERATOR = 'operator';
 
-    const VALUE = 'value';
+    public const VALUE = 'value';
 
-    const IS_VALUE_PARSED = 'is_value_parsed';
+    public const IS_VALUE_PARSED = 'is_value_parsed';
 
-    const AGGREGATOR = 'aggregator';
+    public const AGGREGATOR = 'aggregator';
 
-    const CONDITIONS = 'conditions';
+    public const CONDITIONS = 'conditions';
     /**#@-*/
 
     /**

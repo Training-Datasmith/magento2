@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class AbstractEavTest extends TestCase
                 'exportItem',
                 'getEntityTypeCode',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ]
         );
 

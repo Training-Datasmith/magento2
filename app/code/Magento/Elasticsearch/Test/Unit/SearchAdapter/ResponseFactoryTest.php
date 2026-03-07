@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class ResponseFactoryTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'documentFactory' => $this->documentFactory,
-                'aggregationFactory' => $this->aggregationFactory
+                'aggregationFactory' => $this->aggregationFactory,
             ]
         );
     }
@@ -76,38 +77,38 @@ class ResponseFactoryTest extends TestCase
                 'title' => 'oneTitle',
                 'description' => 'oneDescription',
                 'fields' => [
-                    '_id' => ['1']
-                ]
+                    '_id' => ['1'],
+                ],
             ],
             [
                 'title' => 'twoTitle',
                 'description' => 'twoDescription',
                 'fields' => [
-                    '_id' => ['2']
-                ]
-            ]
+                    '_id' => ['2'],
+                ],
+            ],
         ];
         $modifiedDocuments = [
             [
                 'title' => 'oneTitle',
                 'description' => 'oneDescription',
-                '_id' => '1'
+                '_id' => '1',
             ],
             [
                 'title' => 'twoTitle',
                 'description' => 'twoDescription',
-                '_id' => '2'
-            ]
+                '_id' => '2',
+            ],
         ];
         $aggregations = [
             'aggregation1' => [
                 'itemOne' => 10,
-                'itemTwo' => 20
+                'itemTwo' => 20,
             ],
             'aggregation2' => [
                 'itemOne' => 5,
-                'itemTwo' => 45
-            ]
+                'itemTwo' => 45,
+            ],
         ];
         $rawResponse = ['documents' => $documents, 'aggregations' => $aggregations, 'total' => 2];
 
@@ -115,29 +116,29 @@ class ResponseFactoryTest extends TestCase
             'documents' => [
                 [
                     ['name' => 'title', 'value' => 'oneTitle'],
-                    ['name' => 'description', 'value' => 'oneDescription']
+                    ['name' => 'description', 'value' => 'oneDescription'],
                 ],
                 [
                     ['name' => 'title', 'value' => 'twoTitle'],
-                    ['name' => 'description', 'value' => 'twoDescription']
+                    ['name' => 'description', 'value' => 'twoDescription'],
                 ],
             ],
             'aggregations' => [
                 'aggregation1' => [
                     'itemOne' => 10,
-                    'itemTwo' => 20
+                    'itemTwo' => 20,
                 ],
                 'aggregation2' => [
                     'itemOne' => 5,
-                    'itemTwo' => 45
+                    'itemTwo' => 45,
                 ],
             ],
-            'total' => 2
+            'total' => 2,
         ];
 
         $this->documentFactory
             ->method('create')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$modifiedDocuments[0]] => 'document1',
                 [$modifiedDocuments[1]] => 'document2',
             });
@@ -153,7 +154,7 @@ class ResponseFactoryTest extends TestCase
                 [
                     'documents' => ['document1', 'document2'],
                     'aggregations' => 'aggregationsData',
-                    'total' => 2
+                    'total' => 2,
                 ]
             )
             ->willReturn('QueryResponseObject');

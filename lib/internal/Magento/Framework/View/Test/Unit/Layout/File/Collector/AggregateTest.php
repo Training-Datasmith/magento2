@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class AggregateTest extends TestCase
             new File('3.xml', 'Module_One', $parentTheme),
             new File('4.xml', 'Module_One', $theme),
             new File('5.xml', 'Module_One', $theme),
-            new File('6.xml', 'Module_One', $theme)
+            new File('6.xml', 'Module_One', $theme),
         ];
 
         $this->_baseFiles->expects($this->once())

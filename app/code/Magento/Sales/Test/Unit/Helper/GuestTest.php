@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -31,8 +32,8 @@ use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -120,7 +121,7 @@ class GuestTest extends TestCase
                 'loadByIncrementId',
                 'getId',
                 'getStoreId',
-                'getBillingAddress'
+                'getBillingAddress',
             ]
         );
         $this->orderRepository = $this->createMock(OrderRepositoryInterface::class);
@@ -159,7 +160,7 @@ class GuestTest extends TestCase
                 'view' => $this->viewInterfaceMock,
                 'orderRepository' => $this->orderRepository,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
-                'resultRedirectFactory' => $resultRedirectFactory
+                'resultRedirectFactory' => $resultRedirectFactory,
             ]
         );
     }
@@ -240,8 +241,8 @@ class GuestTest extends TestCase
                     'oar_type' => 'email',
                     'oar_billing_lastname' => 'White',
                     'oar_email' => 'test@magento-test.com',
-                    'oar_zip' => ''
-                ]
+                    'oar_zip' => '',
+                ],
             ],
             [
                 [
@@ -249,8 +250,8 @@ class GuestTest extends TestCase
                     'oar_type' => 'email',
                     'oar_billing_lastname' => 'Black  ',
                     'oar_email' => '        test1@magento-test.com  ',
-                    'oar_zip' => ''
-                ]
+                    'oar_zip' => '',
+                ],
             ],
             [
                 [
@@ -258,9 +259,9 @@ class GuestTest extends TestCase
                     'oar_type' => 'zip',
                     'oar_billing_lastname' => 'Black  ',
                     'oar_email' => '        test1@magento-test.com  ',
-                    'oar_zip' => '123456  '
-                ]
-            ]
+                    'oar_zip' => '123456  ',
+                ],
+            ],
         ];
     }
 

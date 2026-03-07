@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\ResourceModel;
 
 use Magento\Framework\App\ResourceConnection;
@@ -69,7 +72,7 @@ class StoreWebsiteRelation
                 [
                     'store_group_code' => 'code',
                     'store_group_name' => 'name',
-                    'default_store_id'
+                    'default_store_id',
                 ]
             )
             ->join(
@@ -79,7 +82,7 @@ class StoreWebsiteRelation
                     'website_code' => 'code',
                     'website_name' => 'name',
                     'website_sort_order' => 'sort_order',
-                    'default_group_id'
+                    'default_group_id',
                 ]
             );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class AddDataForIceland implements DataPatchInterface
             ['IS', 'IS-05', 'Norðurland vestra'],
             ['IS', 'IS-06', 'Norðurland eystra'],
             ['IS', 'IS-07', 'Austurland'],
-            ['IS', 'IS-08', 'Suðurland']
+            ['IS', 'IS-08', 'Suðurland'],
         ];
     }
 

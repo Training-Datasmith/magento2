@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * App State class for integration tests framework
  */
+
 namespace Magento\TestFramework\App;
 
 class State extends \Magento\Framework\App\State

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\Validator\RegexFactory;
 
 class RegexValidator extends RegexFactory
 {
-
     /**
      * @var RegexFactory
      */

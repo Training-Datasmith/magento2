@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -19,11 +20,11 @@ use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
 use Magento\SalesRule\Model\Rule as SalesRule;
 use Magento\SalesRule\Test\Fixture\AddressCondition as AddressConditionFixture;
 use Magento\SalesRule\Test\Fixture\Rule as SalesRuleFixture;
-use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -70,7 +71,7 @@ class OrderTotalDiscountsCouponTest extends GraphQlAbstract
             [
                 'attribute' => 'total_qty',
                 'operator' => '>=',
-                'value' => 1
+                'value' => 1,
             ],
             'condition'
         ),
@@ -84,7 +85,7 @@ class OrderTotalDiscountsCouponTest extends GraphQlAbstract
                 'coupon_code' => self::COUPON_CODE,
                 'conditions' => ['$condition$'],
                 'uses_per_customer' => 1,
-                'stop_rules_processing' => true
+                'stop_rules_processing' => true,
             ],
             as: 'rule'
         ),
@@ -96,14 +97,14 @@ class OrderTotalDiscountsCouponTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::TOTAL_QTY
+                'qty' => self::TOTAL_QTY,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'coupon_codes' => [self::COUPON_CODE]
+                'coupon_codes' => [self::COUPON_CODE],
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -123,18 +124,18 @@ class OrderTotalDiscountsCouponTest extends GraphQlAbstract
                                 'discounts' => [
                                     0 => [
                                         'coupon' => [
-                                            'code' => self::COUPON_CODE
+                                            'code' => self::COUPON_CODE,
                                         ],
                                         'label' => self::DISCOUNT_LABEL,
                                         'amount' => [
-                                            'value' => 20
+                                            'value' => 20,
                                         ],
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(),

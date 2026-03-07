@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Block\Sales\Order\Items;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Sales\Model\Order;
 use Magento\Bundle\Block\Sales\Order\Items\Renderer;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Shipment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +37,7 @@ class RendererTest extends TestCase
     protected function setUp(): void
     {
         $this->orderItem = $this->createPartialMockWithReflection(Item::class, [
-            'getParentItem', 'getProductOptions', 'getOrderItem', 'getId', 'getOrderItemId'
+            'getParentItem', 'getProductOptions', 'getOrderItem', 'getId', 'getOrderItemId',
         ]);
         $this->orderItem->method('getOrderItem')->willReturnSelf();
 
@@ -71,18 +72,18 @@ class RendererTest extends TestCase
             [
                 \Magento\Sales\Model\Order\Invoice\Item::class,
                 'getInvoice',
-                Invoice::class
+                Invoice::class,
             ],
             [
                 \Magento\Sales\Model\Order\Shipment\Item::class,
                 'getShipment',
-                Shipment::class
+                Shipment::class,
             ],
             [
                 \Magento\Sales\Model\Order\Creditmemo\Item::class,
                 'getCreditmemo',
-                Creditmemo::class
-            ]
+                Creditmemo::class,
+            ],
         ];
     }
 
@@ -96,7 +97,7 @@ class RendererTest extends TestCase
         } else {
             $this->orderItem->method('getParentItem')->willReturn(null);
         }
-        
+
         $this->orderItem->method('getOrderItemId')->willReturn(2);
         $this->orderItem->method('getId')->willReturn(1);
 
@@ -142,7 +143,7 @@ class RendererTest extends TestCase
         return [
             [['shipment_type' => 1], true],
             [['shipment_type' => 0], false],
-            [[], false]
+            [[], false],
         ];
     }
 
@@ -239,7 +240,7 @@ class RendererTest extends TestCase
             ->method('unserialize')
             ->with($bundleAttributes)
             ->willReturn($unserializedResult);
-        
+
         $this->orderItem->method('getProductOptions')->willReturn($options);
 
         $this->assertEquals($unserializedResult, $this->model->getSelectionAttributes($this->orderItem));
@@ -254,7 +255,7 @@ class RendererTest extends TestCase
         } else {
             $this->orderItem->method('getParentItem')->willReturn(null);
         }
-        
+
         $this->orderItem->method('getProductOptions')->willReturn($productOptions);
         $this->model->setItem($this->orderItem);
 

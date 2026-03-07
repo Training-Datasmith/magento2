@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class SearchResult
      *
      * @return int
      */
-    public function getTotalCount() : int
+    public function getTotalCount(): int
     {
         return $this->data['totalCount'] ?? 0;
     }
@@ -44,7 +45,7 @@ class SearchResult
      *
      * @return array
      */
-    public function getProductsSearchResult() : array
+    public function getProductsSearchResult(): array
     {
         return $this->data['productsSearchResult'] ?? [];
     }
@@ -94,7 +95,7 @@ class SearchResult
      *
      * @return array
      */
-    public function getSuggestions() : array
+    public function getSuggestions(): array
     {
         return $this->data['suggestions'] ?? [];
     }

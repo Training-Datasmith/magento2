@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,15 +27,15 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class AccountManagementCustomAttributesTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'customerAccountManagementV1';
-    const RESOURCE_PATH = '/V1/customers';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'customerAccountManagementV1';
+    public const RESOURCE_PATH = '/V1/customers';
 
     /**
      * Sample values for testing
      */
-    const ATTRIBUTE_CODE = 'attribute_code';
-    const ATTRIBUTE_VALUE = 'attribute_value';
+    public const ATTRIBUTE_CODE = 'attribute_code';
+    public const ATTRIBUTE_VALUE = 'attribute_value';
 
     /**
      * @var AccountManagementInterface
@@ -113,7 +114,7 @@ class AccountManagementCustomAttributesTest extends WebapiAbstract
         $mediaDirectory = $writeFactory->create(DirectoryList::MEDIA);
         $denyListPathValidator = Bootstrap::getObjectManager()
             ->create(DenyListPathValidator::class, ['driver' => $mediaDirectory->getDriver()]);
-        $denyListPathValidator->addException($mediaDirectory->getAbsolutePath() . ".htaccess");
+        $denyListPathValidator->addException($mediaDirectory->getAbsolutePath() . '.htaccess');
         $writeFactoryBypassDenyList = Bootstrap::getObjectManager()
             ->create(WriteFactory::class, ['denyListPathValidator' => $denyListPathValidator]);
         $mediaDirectoryBypassDenyList = $writeFactoryBypassDenyList->create(DirectoryList::MEDIA);
@@ -171,7 +172,7 @@ class AccountManagementCustomAttributesTest extends WebapiAbstract
         ];
         $requestData = [
             'customer' => $customerDataArray,
-            'password' => \Magento\TestFramework\Helper\Customer::PASSWORD
+            'password' => \Magento\TestFramework\Helper\Customer::PASSWORD,
         ];
         $customerData = $this->_webApiCall($serviceInfo, $requestData);
 
@@ -228,7 +229,7 @@ class AccountManagementCustomAttributesTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception message does not match"
+                'Exception message does not match'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -263,7 +264,7 @@ class AccountManagementCustomAttributesTest extends WebapiAbstract
         ];
         $requestData = [
             'customer' => $customerDataArray,
-            'password' => \Magento\TestFramework\Helper\Customer::PASSWORD
+            'password' => \Magento\TestFramework\Helper\Customer::PASSWORD,
         ];
 
         $serviceInfo = [

@@ -41,7 +41,7 @@ class AddressAttributeFilter implements ArgumentInterface
      * @return Collection
      * @throws LocalizedException
      */
-    public function setScopeFilter(Collection $collection, $storeId) : Collection
+    public function setScopeFilter(Collection $collection, $storeId): Collection
     {
         if ($storeId) {
             $allowedCountries = $this->allowedCountryReader->getAllowedCountries(

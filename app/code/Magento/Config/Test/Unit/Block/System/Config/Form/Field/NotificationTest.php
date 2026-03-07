@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Field\Notification
  */
+
 namespace Magento\Config\Test\Unit\Block\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\Notification;
@@ -16,8 +18,8 @@ use Magento\Framework\Locale\Resolver;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatter;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class NotificationTest extends TestCase

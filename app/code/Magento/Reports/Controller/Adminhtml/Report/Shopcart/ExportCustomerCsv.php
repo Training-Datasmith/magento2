@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Reports\Controller\Adminhtml\Report\Shopcart;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Reports\Controller\Adminhtml\Report\Shopcart\Customer as ShopCartCustomer;
 
 /**

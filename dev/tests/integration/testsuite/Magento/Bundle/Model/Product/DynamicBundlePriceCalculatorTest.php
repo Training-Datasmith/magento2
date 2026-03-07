@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -103,8 +105,8 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                     // just price from simple1
                     'minimalPrice' => 10,
                     // just price from simple1
-                    'maximalPrice' => 10
-                ]
+                    'maximalPrice' => 10,
+                ],
             ],
 
             '#2 Testing price for dynamic bundle product with three simples and different qty' => [
@@ -113,8 +115,8 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                     // min price from simples 3*10 or 30
                     'minimalPrice' => 30,
                     // (3 * 10) + (2 * 20) + 30
-                    'maximalPrice' => 100
-                ]
+                    'maximalPrice' => 100,
+                ],
             ],
 
             '#3 Testing price for dynamic bundle product with four simples and different price' => [
@@ -123,8 +125,8 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                     //  10
                     'minimalPrice' => 10,
                     // 10 + 20 + 30
-                    'maximalPrice' => 60
-                ]
+                    'maximalPrice' => 60,
+                ],
             ],
 
             '#4 Testing price for dynamic bundle with two non required options' => [
@@ -133,8 +135,8 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                     // 1 * 10
                     'minimalPrice' => 10,
                     // 3 * 20 + 1 * 10 + 3 * 20
-                    'maximalPrice' => 130
-                ]
+                    'maximalPrice' => 130,
+                ],
             ],
 
             '#5 Testing price for dynamic bundle with two required options' => [
@@ -143,8 +145,8 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                     // 1 * 10 + 1 * 10
                     'minimalPrice' => 20,
                     // 3 * 20 + 1 * 10 + 3 * 20
-                    'maximalPrice' => 130
-                ]
+                    'maximalPrice' => 130,
+                ],
             ],
         ];
     }
@@ -168,14 +170,14 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
+                ],
             ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -211,14 +213,14 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -253,15 +255,15 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'qty' => 1,
                         'price' => 100,
                         'price_type' => 0,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -290,7 +292,7 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -309,14 +311,14 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -345,7 +347,7 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -364,14 +366,14 @@ class DynamicBundlePriceCalculatorTest extends BundlePriceAbstract
                         'price' => 100,
                         'price_type' => 0,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }

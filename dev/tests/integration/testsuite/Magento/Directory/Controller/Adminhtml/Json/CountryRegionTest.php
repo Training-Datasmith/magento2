@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class CountryRegionTest extends AbstractBackendController
     {
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue([
-            'parent' => 'WW'
+            'parent' => 'WW',
         ]);
         $this->dispatch('backend/directory/json/countryRegion');
 

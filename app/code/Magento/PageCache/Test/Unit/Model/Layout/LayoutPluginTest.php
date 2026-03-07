@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\PageCache\Model\Config;
 use Magento\PageCache\Model\Layout\LayoutPlugin;
 use Magento\PageCache\Model\Spi\PageCacheTagsPreprocessorInterface;
 use Magento\PageCache\Test\Unit\Block\Controller\StubBlock;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -69,7 +70,7 @@ class LayoutPluginTest extends TestCase
                 'response' => $this->responseMock,
                 'config' => $this->configMock,
                 'maintenanceMode' => $this->maintenanceModeMock,
-                'pageCacheTagsPreprocessor' => $preprocessor
+                'pageCacheTagsPreprocessor' => $preprocessor,
             ]
         );
     }

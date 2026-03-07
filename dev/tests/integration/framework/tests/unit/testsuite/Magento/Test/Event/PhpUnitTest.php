@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Test class for \Magento\TestFramework\Event\PhpUnit.
  */
+
 namespace Magento\Test\Event;
 
-use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestSuite;
 
 class PhpUnitTest extends \PHPUnit\Framework\TestCase
 {
@@ -68,7 +71,7 @@ class PhpUnitTest extends \PHPUnit\Framework\TestCase
             'method "addError"' => ['addError'],
             'method "addFailure"' => ['addFailure'],
             'method "addIncompleteTest"' => ['addIncompleteTest'],
-            'method "addSkippedTest"' => ['addSkippedTest']
+            'method "addSkippedTest"' => ['addSkippedTest'],
         ];
     }
 

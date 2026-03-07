@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +103,7 @@ foreach ($selectOptions as $option) {
         [$product->getId()],
         [
             $selectAttribute->getAttributeCode() => $option->getId(),
-            $multiselectAttribute->getAttributeCode() => $multiselectOptions->getLastItem()->getId()
+            $multiselectAttribute->getAttributeCode() => $multiselectOptions->getLastItem()->getId(),
         ],
         $product->getStoreId()
     );

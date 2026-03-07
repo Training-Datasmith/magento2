@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class ResolverFactoryTest extends TestCase
         $resolverFactory = $objectManagerHelper->getObject(
             ResolverFactory::class,
             [
-                'resolverClass' => 'stdClass'
+                'resolverClass' => 'stdClass',
             ]
         );
         $resolverFactory->create('some_dir', true);

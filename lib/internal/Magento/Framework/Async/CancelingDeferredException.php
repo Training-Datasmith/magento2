@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,5 +14,4 @@ namespace Magento\Framework\Async;
  */
 class CancelingDeferredException extends \RuntimeException
 {
-
 }

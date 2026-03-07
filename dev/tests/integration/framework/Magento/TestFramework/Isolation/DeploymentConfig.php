@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\TestFramework\Isolation;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\DeploymentConfig\Reader;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * A listener that watches for integrity of deployment configuration
@@ -58,11 +60,11 @@ class DeploymentConfig
     public function endTest(\PHPUnit\Framework\TestCase $test)
     {
         $config = $this->reader->load();
-        
+
         // Normalize configs by removing keys that are legitimately regenerated during tests
         $normalizedInitial = $this->normalizeConfig($this->config);
         $normalizedCurrent = $this->normalizeConfig($config);
-        
+
         if ($normalizedInitial != $normalizedCurrent) {
             $error = "\n\nERROR: deployment configuration is corrupted. The application state is no longer valid.\n"
                 . 'Further tests may fail.'
@@ -71,7 +73,7 @@ class DeploymentConfig
             $test->fail($error);
         }
     }
-    
+
     /**
      * Normalize configuration by removing keys that are expected to change during test execution
      *
@@ -91,29 +93,29 @@ class DeploymentConfig
         if (isset($config['install']['date'])) {
             unset($config['install']['date']);
         }
-        
+
         // Remove crypt key (regenerated during installation)
         if (isset($config['crypt']['key'])) {
             unset($config['crypt']['key']);
         }
-        
+
         // Remove GraphQL cache salt (regenerated during installation)
         if (isset($config['cache']['graphql']['id_salt'])) {
             unset($config['cache']['graphql']['id_salt']);
         }
-        
+
         // Remove downloadable domains (added in setUp, removed in tearDown)
         // The check runs between setUp and tearDown, so we need to ignore these
         if (isset($config['downloadable_domains'])) {
             unset($config['downloadable_domains']);
         }
-        
+
         // Remove cache_types (modified during GraphQL resolver cache tests)
         // Tests properly save/restore this config, but the check runs mid-test
         if (isset($config['cache_types'])) {
             unset($config['cache_types']);
         }
-        
+
         return $config;
     }
 }

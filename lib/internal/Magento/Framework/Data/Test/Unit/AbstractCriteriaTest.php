@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Api\CriteriaInterface;
 use Magento\Framework\Data\Test\Unit\Criteria\Sample;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AbstractCriteriaTest extends TestCase
 {
@@ -209,7 +210,7 @@ class AbstractCriteriaTest extends TestCase
                         'list' => [],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -229,7 +230,7 @@ class AbstractCriteriaTest extends TestCase
                     'test-type',
                 ],
                 'result' => [],
-            ]
+            ],
         ];
     }
 
@@ -250,7 +251,7 @@ class AbstractCriteriaTest extends TestCase
                 ],
                 'name' => 'test-filter-name',
                 'result' => [],
-            ]
+            ],
         ];
     }
 
@@ -268,7 +269,7 @@ class AbstractCriteriaTest extends TestCase
                     'test-field-alias',
                 ],
                 'result' => [],
-            ]
+            ],
         ];
     }
 
@@ -296,7 +297,7 @@ class AbstractCriteriaTest extends TestCase
                 ],
                 'field' => '*',
                 'isAlias' => false,
-                'result' => []
+                'result' => [],
             ],
             [
                 'actualField' => [
@@ -305,8 +306,8 @@ class AbstractCriteriaTest extends TestCase
                 ],
                 'field' => 'test-field-alias',
                 'isAlias' => true,
-                'result' => []
-            ]
+                'result' => [],
+            ],
         ];
     }
 
@@ -322,7 +323,7 @@ class AbstractCriteriaTest extends TestCase
                 'offset' => 99,
                 'size' => 30,
                 'result' => [99, 30],
-            ]
+            ],
         ];
     }
 
@@ -349,7 +350,7 @@ class AbstractCriteriaTest extends TestCase
                 'unShift' => false,
                 'result' => [
                     'test-field-name' => 'ASC',
-                ]
+                ],
             ],
             [
                 'field' => 'test-field-name',
@@ -357,8 +358,8 @@ class AbstractCriteriaTest extends TestCase
                 'unShift' => false,
                 'result' => [
                     'test-field-name' => 'DESC',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -381,7 +382,7 @@ class AbstractCriteriaTest extends TestCase
                     'condition' => 'test-condition',
                     'type' => 'test-type',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -418,21 +419,21 @@ class AbstractCriteriaTest extends TestCase
                     'test-field-name-1' => 'test-field-name-1',
                     'test-field-name-2' => 'test-field-name-2',
                     'test-field-name-3' => 'test-field-name-3',
-                ]
+                ],
             ],
             [
                 'field' => 'test-field-name',
                 'alias' => 'alias-test',
                 'result' => [
                     'alias-test' => 'test-field-name',
-                ]
+                ],
             ],
             [
                 'field' => '*',
                 'alias' => null,
                 'result' => [
                     '*',
-                ]
+                ],
             ],
             [
                 'field' => [
@@ -445,8 +446,8 @@ class AbstractCriteriaTest extends TestCase
                     'alias-1' => 'test-field-name',
                     'alias-2' => 'test-field-name',
                     'alias-3' => 'test-field-name',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -31,7 +33,7 @@ class Add extends \Magento\Backend\Block\Template
                     'class' => 'save primary save-attribute-set',
                     'data_attribute' => [
                         'mage-init' => ['button' => ['event' => 'save', 'target' => '#set-prop-form']],
-                    ]
+                    ],
                 ]
             );
             $this->getToolbar()->addChild(
@@ -40,7 +42,7 @@ class Add extends \Magento\Backend\Block\Template
                 [
                     'label' => __('Back'),
                     'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/') . '\')',
-                    'class' => 'back'
+                    'class' => 'back',
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class BuilderTest extends TestCase
                 'registry' => $this->registryMock,
                 'wysiwygConfig' => $this->wysiwygConfigMock,
                 'storeFactory' => $this->storeFactoryMock,
-                'productRepository' => $this->productRepositoryMock
+                'productRepository' => $this->productRepositoryMock,
             ]
         );
     }

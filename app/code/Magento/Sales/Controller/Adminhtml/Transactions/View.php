@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Transactions;
 
 use Magento\Backend\App\Action;
@@ -27,7 +30,7 @@ class View extends \Magento\Sales\Controller\Adminhtml\Transactions
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Magento_Sales::sales_transactions');
         $resultPage->getConfig()->getTitle()->prepend(__('Transactions'));
-        $resultPage->getConfig()->getTitle()->prepend(sprintf("#%s", $txn->getTxnId()));
+        $resultPage->getConfig()->getTitle()->prepend(sprintf('#%s', $txn->getTxnId()));
 
         return $resultPage;
     }

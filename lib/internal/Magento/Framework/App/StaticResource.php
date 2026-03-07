@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\ObjectManager\ConfigLoaderInterface;
-use Magento\Framework\Filesystem;
 use Magento\Framework\Config\ConfigOptionsListConstants;
+use Magento\Framework\Debug;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Driver\File;
+use Magento\Framework\ObjectManager\ConfigLoaderInterface;
 use Magento\Framework\Validator\Locale;
 use Magento\Framework\View\Design\Theme\ThemePackageList;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Debug;
-use Magento\Framework\Filesystem\Driver\File;
 
 /**
  * Entry point for retrieving static resources like JS, CSS, images by requested public path

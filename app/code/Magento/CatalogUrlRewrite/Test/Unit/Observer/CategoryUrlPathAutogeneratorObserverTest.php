@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Observer;
 
+use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
@@ -25,7 +27,6 @@ use Magento\Store\Model\Store;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 
 /**
  * Unit tests for \Magento\CatalogUrlRewrite\Observer\CategoryUrlPathAutogeneratorObserver class.
@@ -111,7 +112,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
                 'hasChildren',
                 'getData',
                 'getUrlKey',
-                'getUrlPath'
+                'getUrlPath',
             ]
         );
         $this->category->method('getResource')->willReturn($this->categoryResource);
@@ -147,7 +148,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
                 'storeViewService' => $this->storeViewService,
                 'compositeUrlValidator' => $this->compositeUrlValidator,
                 'getDefaultUrlKey' => $this->getDefaultUrlKey,
-                'metadataPool' => $this->metadataPool
+                'metadataPool' => $this->metadataPool,
             ]
         );
     }
@@ -162,7 +163,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
         $expectedUrlKey = 'formatted_url_key';
         $expectedUrlPath = 'generated_url_path';
         $categoryData = ['use_default' => ['url_key' => 0], 'url_key' => 'some_key', 'url_path' => ''];
-        
+
         $urlKeyCallCount = 0;
         $this->category->method('getUrlKey')
             ->willReturnCallback(function () use (&$urlKeyCallCount, $categoryData, $expectedUrlKey) {
@@ -174,7 +175,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
                     default => $expectedUrlKey
                 };
             });
-        
+
         $urlPathCallCount = 0;
         $this->category->method('getUrlPath')
             ->willReturnCallback(function () use (&$urlPathCallCount, $categoryData, $expectedUrlPath) {
@@ -280,7 +281,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
             'use_default' => ['url_key' => 1],
             'url_key' => null,
             'url_path' => 'some_path',
-            'row_id' => 1
+            'row_id' => 1,
         ];
 
         $this->category->setData($categoryData);
@@ -430,7 +431,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends TestCase
                 'getResource',
                 'getStore',
                 'getStoreId',
-                'setStoreId'
+                'setStoreId',
             ]
         );
         $childCategory->method('getResource')->willReturn($childCategoryResource);

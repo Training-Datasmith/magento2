@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
-use Magento\Paypal\Model\SmartButtonConfig;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -111,7 +111,7 @@ class SdkUrlTest extends TestCase
                 [
                     'solution_type',
                     null,
-                    $isPaypalGuestCheckoutEnabled ? Config::EC_SOLUTION_TYPE_SOLE : Config::EC_SOLUTION_TYPE_MARK
+                    $isPaypalGuestCheckoutEnabled ? Config::EC_SOLUTION_TYPE_SOLE : Config::EC_SOLUTION_TYPE_MARK,
                 ],
             ]
         );
@@ -142,10 +142,10 @@ class SdkUrlTest extends TestCase
     private function getDisallowedFundingMap()
     {
         return [
-            "CREDIT" => 'credit',
-            "VENMO" => 'venmo',
-            "CARD" => 'card',
-            "ELV" => 'sepa'
+            'CREDIT' => 'credit',
+            'VENMO' => 'venmo',
+            'CARD' => 'card',
+            'ELV' => 'sepa',
         ];
     }
 
@@ -177,8 +177,8 @@ class SdkUrlTest extends TestCase
     private function getSupportedPaymentMethods()
     {
         return [
-            'venmo'=> 'venmo',
-            'paylater'=> 'paylater',
+            'venmo' => 'venmo',
+            'paylater' => 'paylater',
         ];
     }
 }

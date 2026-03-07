@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\Filter\VariableResolver\StrictResolver;
 use Magento\Framework\Filter\VariableResolverInterface;
-use PHPUnit\Framework\TestCase;
-
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\TestCase;
 
 class ForDirectiveTest extends TestCase
 {
@@ -67,11 +68,11 @@ class ForDirectiveTest extends TestCase
         $items = [
             'ignoreme' => [
                 'a' => 'hello1',
-                'b' => ['world' => new DataObject(['foo' => 'bar1'])]
+                'b' => ['world' => new DataObject(['foo' => 'bar1'])],
             ],
             [
                 'a' => 'hello2',
-                'b' => ['world' => new DataObject(['foo' => 'bar2'])]
+                'b' => ['world' => new DataObject(['foo' => 'bar2'])],
             ],
         ];
         $expect = '0a:hello1,b:bar11a:hello2,b:bar2';
@@ -83,7 +84,7 @@ class ForDirectiveTest extends TestCase
             [
                 '{{for item in foo.getBar().baz}}' . $body . '{{/for}}',
                 ['foo' => new DataObject(['bar' => ['baz' => $items]])],
-                $expect
+                $expect,
             ],
         ];
     }

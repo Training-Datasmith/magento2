@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -75,7 +77,7 @@ class CacheTest extends \Magento\TestFramework\TestCase\AbstractBackendControlle
         $this->getRequest()->setParams(['types' => ['invalid_type_1', 'invalid_type_2', 'config']]);
         $this->dispatch('backend/admin/cache/' . $action);
         $this->assertSessionMessages(
-            $this->containsEqual("These cache type(s) don&#039;t exist: invalid_type_1, invalid_type_2"),
+            $this->containsEqual('These cache type(s) don&#039;t exist: invalid_type_1, invalid_type_2'),
             \Magento\Framework\Message\MessageInterface::TYPE_ERROR
         );
     }
@@ -88,7 +90,7 @@ class CacheTest extends \Magento\TestFramework\TestCase\AbstractBackendControlle
         return [
             'enable' => ['massEnable'],
             'disable' => ['massDisable'],
-            'refresh' => ['massRefresh']
+            'refresh' => ['massRefresh'],
         ];
     }
 }

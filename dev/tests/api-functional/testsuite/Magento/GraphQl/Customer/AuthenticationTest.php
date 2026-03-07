@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -61,8 +62,8 @@ class AuthenticationTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'isEmailAvailable' => [
-                    'is_email_available' => 1
-                ]
+                    'is_email_available' => 1,
+                ],
             ],
             $this->graphQlQuery(self::QUERY_ACCESSIBLE_BY_GUEST)
         );
@@ -74,10 +75,10 @@ class AuthenticationTest extends GraphQlAbstract
         Bootstrap::getObjectManager()->get(CurlClient::class)->get(
             rtrim(TESTS_BASE_URL, '/') . '/graphql',
             [
-                'query' => self::QUERY_ACCESSIBLE_BY_GUEST
+                'query' => self::QUERY_ACCESSIBLE_BY_GUEST,
             ],
             [
-                'Authorization: Bearer invalid_token'
+                'Authorization: Bearer invalid_token',
             ]
         );
     }
@@ -99,15 +100,15 @@ class AuthenticationTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'isEmailAvailable' => [
-                    'is_email_available' => 1
-                ]
+                    'is_email_available' => 1,
+                ],
             ],
             $this->graphQlQuery(
                 self::QUERY_ACCESSIBLE_BY_GUEST,
                 [],
                 '',
                 [
-                    'Authorization' => 'Bearer ' . $token
+                    'Authorization' => 'Bearer ' . $token,
                 ]
             )
         );
@@ -118,10 +119,10 @@ class AuthenticationTest extends GraphQlAbstract
         Bootstrap::getObjectManager()->get(CurlClient::class)->get(
             rtrim(TESTS_BASE_URL, '/') . '/graphql',
             [
-                'query' => self::QUERY_ACCESSIBLE_BY_GUEST
+                'query' => self::QUERY_ACCESSIBLE_BY_GUEST,
             ],
             [
-                'Authorization: Bearer ' . $token
+                'Authorization: Bearer ' . $token,
             ]
         );
     }
@@ -144,15 +145,15 @@ class AuthenticationTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'customer' => [
-                    'email' => $customer->getEmail()
-                ]
+                    'email' => $customer->getEmail(),
+                ],
             ],
             $this->graphQlQuery(
                 self::QUERY_REQUIRE_AUTHENTICATION,
                 [],
                 '',
                 [
-                    'Authorization' => 'Bearer ' . $token
+                    'Authorization' => 'Bearer ' . $token,
                 ]
             )
         );
@@ -163,10 +164,10 @@ class AuthenticationTest extends GraphQlAbstract
         Bootstrap::getObjectManager()->get(CurlClient::class)->get(
             rtrim(TESTS_BASE_URL, '/') . '/graphql',
             [
-                'query' => self::QUERY_REQUIRE_AUTHENTICATION
+                'query' => self::QUERY_REQUIRE_AUTHENTICATION,
             ],
             [
-                'Authorization: Bearer ' . $token
+                'Authorization: Bearer ' . $token,
             ]
         );
     }
@@ -191,9 +192,9 @@ class AuthenticationTest extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'default_billing' => true,
-                        'default_shipping' => true
-                    ]
-                ]
+                        'default_shipping' => true,
+                    ],
+                ],
             ],
             as: 'customerWithAddress'
         ),
@@ -222,7 +223,7 @@ class AuthenticationTest extends GraphQlAbstract
             [
                 'Authorization: Bearer ' . $token,
                 'Accept: application/json',
-                'Content-Type: application/json'
+                'Content-Type: application/json',
             ]
         );
     }

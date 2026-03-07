@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class GenerateRenditions implements GenerateRenditionsInterface
                 __(
                     'Cannot create rendition for media asset paths: %paths',
                     [
-                        'paths' => implode(', ', $failedPaths)
+                        'paths' => implode(', ', $failedPaths),
                     ]
                 )
             );

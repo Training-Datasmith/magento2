@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 /**
@@ -20,7 +23,7 @@ class Radio extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Select
         return [
             ['label' => __('Any'), 'value' => ''],
             ['label' => __('Yes'), 'value' => 1],
-            ['label' => __('No'), 'value' => 0]
+            ['label' => __('No'), 'value' => 0],
         ];
     }
 

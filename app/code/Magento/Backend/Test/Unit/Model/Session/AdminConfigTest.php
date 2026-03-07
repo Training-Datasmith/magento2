@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Backend\Model\Session\AdminConfig
  */
+
 namespace Magento\Backend\Test\Unit\Model\Session;
 
 use Magento\Backend\App\Area\FrontNameResolver;

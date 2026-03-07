@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 
 declare(strict_types=1);
+
 namespace Magento\Catalog\Model\Indexer\Category\Product;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Search\Request\Dimension;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Catalog\Model\Indexer\Category\Product\AbstractAction;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver as TableResolver;
+use Magento\Framework\Search\Request\Dimension;
 
 /**
  * Class encapsulate logic of work with tables per store in Category Product indexer

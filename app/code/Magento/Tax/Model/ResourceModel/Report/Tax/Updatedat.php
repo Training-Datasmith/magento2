@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax report resource model with aggregation by updated at
  */
+
 namespace Magento\Tax\Model\ResourceModel\Report\Tax;
 
 class Updatedat extends \Magento\Tax\Model\ResourceModel\Report\Tax\Createdat

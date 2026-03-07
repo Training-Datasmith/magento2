@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Staging theme model class
  */
+
 namespace Magento\Theme\Model\Theme\Domain;
 
 class Staging implements \Magento\Framework\View\Design\Theme\Domain\StagingInterface

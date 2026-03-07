@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\BundleImportExport\Model;
 
 use Magento\CatalogImportExport\Model\AbstractProductExportImportTestCase;
@@ -29,11 +32,11 @@ class BundleTest extends AbstractProductExportImportTestCase
             */
             'bundle-product-multi-options' => [
                 [
-                    'Magento/Bundle/_files/product_with_multiple_options.php'
+                    'Magento/Bundle/_files/product_with_multiple_options.php',
                 ],
                 [
                     'bundle-product',
-                ]
+                ],
             ],
             // @todo uncomment after MAGETWO-49677 resolved
             /*

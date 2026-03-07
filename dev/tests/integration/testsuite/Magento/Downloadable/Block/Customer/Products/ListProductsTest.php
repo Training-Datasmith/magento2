@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class ListProductsTest extends TestCase
 
     /** @var string */
     private $statusXpath = "//table[@id='my-downloadable-products-table']"
-    . "//td[@data-th='Status' and contains(text(), '%s')]";
+        . "//td[@data-th='Status' and contains(text(), '%s')]";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -67,7 +69,7 @@ class Intercepted extends InterceptedParent implements InterceptedInterface
      */
     public function G($param1)
     {
-        return '<G>' . $param1 . "</G>";
+        return '<G>' . $param1 . '</G>';
     }
 
     /**

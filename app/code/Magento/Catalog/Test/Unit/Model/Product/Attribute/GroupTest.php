@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class GroupTest extends TestCase
         $this->model = $helper->getObject(
             Group::class,
             [
-                'attributeCollectionFactory' => $this->getMockedCollectionFactory()
+                'attributeCollectionFactory' => $this->getMockedCollectionFactory(),
             ]
         );
     }

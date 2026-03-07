@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Reader;
 
 use Magento\Framework\View\Layout;
@@ -12,7 +15,7 @@ class Move implements Layout\ReaderInterface
     /**#@+
      * Supported types
      */
-    const TYPE_MOVE = 'move';
+    public const TYPE_MOVE = 'move';
     /**#@-*/
 
     /**

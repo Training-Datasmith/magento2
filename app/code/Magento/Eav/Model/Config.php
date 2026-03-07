@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model;
 
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -227,7 +230,7 @@ class Config implements ResetAfterRequestInterface
         $this->_cache->clean(
             [
                 \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
             ]
         );
         return $this;
@@ -432,7 +435,7 @@ class Config implements ResetAfterRequestInterface
                 self::ENTITIES_CACHE_ID,
                 [
                     \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                    \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                    \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
                 ]
             );
         }
@@ -526,7 +529,7 @@ class Config implements ResetAfterRequestInterface
                 $cacheKey,
                 [
                     \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                    \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                    \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
                 ]
             );
         }
@@ -708,7 +711,7 @@ class Config implements ResetAfterRequestInterface
                     $cacheKey,
                     [
                         \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
                     ]
                 );
             }
@@ -830,7 +833,7 @@ class Config implements ResetAfterRequestInterface
                     $cacheKey,
                     [
                         \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
                     ]
                 );
             }
@@ -1019,7 +1022,7 @@ class Config implements ResetAfterRequestInterface
      *
      * @return int website id
      */
-    public function getWebsiteId() : int
+    public function getWebsiteId(): int
     {
         $websiteId = $this->_storeManager->getStore()?->getWebsiteId();
         return (int)$websiteId;
@@ -1033,7 +1036,7 @@ class Config implements ResetAfterRequestInterface
      * @param string|Type $entityType
      * @return bool
      */
-    private function isAttributeTypeWebsiteSpecific(string|Type $entityType) : bool
+    private function isAttributeTypeWebsiteSpecific(string|Type $entityType): bool
     {
         if ($entityType instanceof Type) {
             $entityTypeCode = $entityType->getEntityTypeCode();

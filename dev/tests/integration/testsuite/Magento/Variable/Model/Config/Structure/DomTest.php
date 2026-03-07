@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\TestFramework\Helper\Bootstrap;
 
 class DomTest extends \PHPUnit\Framework\TestCase
 {
-
     public function testMerge()
     {
         $availableVariables = new AvailableVariables(
@@ -26,7 +26,7 @@ class DomTest extends \PHPUnit\Framework\TestCase
             \Magento\Variable\Model\Config\Structure\Dom::class,
             [
                 'xml' => '<config/>',
-                'availableVariables' => $availableVariables
+                'availableVariables' => $availableVariables,
             ]
         );
 

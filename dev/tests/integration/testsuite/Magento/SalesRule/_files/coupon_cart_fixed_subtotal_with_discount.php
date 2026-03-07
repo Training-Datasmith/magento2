@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,11 +7,11 @@
 declare(strict_types=1);
 
 use Magento\SalesRule\Model\ResourceModel\Rule as ResourceModel;
+use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 use Magento\SalesRule\Model\Rule\Condition\Address;
 use Magento\SalesRule\Model\Rule\Condition\Combine;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 
 Resolver::getInstance()->requireDataFixture('Magento/SalesRule/_files/coupon_cart_fixed_discount.php');
 
@@ -34,7 +35,7 @@ $salesRule->getConditions()->loadArray(
                     'attribute' => 'base_subtotal_with_discount',
                     'operator' => '>=',
                     'value' => 9,
-                    'is_value_processed' => false
+                    'is_value_processed' => false,
                 ],
             ],
     ]

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filter;
 
 use Exception;
@@ -19,7 +22,7 @@ class NormalizedToLocalized implements FilterInterface
     protected $_options = [
         'locale'      => null,
         'date_format' => null,
-        'precision'   => null
+        'precision'   => null,
     ];
 
     /**

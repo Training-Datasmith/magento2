@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml;
 
 use Magento\Framework\Message\MessageInterface;
@@ -204,7 +207,7 @@ class AuthTest extends \Magento\TestFramework\TestCase\AbstractController
             $this->equalTo(
                 [
                     'The account sign-in was incorrect or your account is disabled temporarily. '
-                    . 'Please wait and try again later.'
+                    . 'Please wait and try again later.',
                 ]
             ),
             MessageInterface::TYPE_ERROR
@@ -243,7 +246,7 @@ class AuthTest extends \Magento\TestFramework\TestCase\AbstractController
                         'password' => \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

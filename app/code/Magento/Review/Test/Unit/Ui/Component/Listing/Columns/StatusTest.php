@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class StatusTest extends AbstractColumnTestCase
                 'items' => [
                     [
                         'status_id' => 1,
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -70,7 +71,7 @@ class StatusTest extends AbstractColumnTestCase
                 'items' => [
                     [
                         'status_id' => __('Approved'),
-                    ]
+                    ],
                 ],
             ],
         ];

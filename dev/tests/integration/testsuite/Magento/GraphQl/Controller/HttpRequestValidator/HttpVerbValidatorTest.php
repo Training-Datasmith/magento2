@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class HttpVerbValidatorTest extends TestCase
             ],
             [
                 'query' => ' ',
-                'needException' => true
+                'needException' => true,
             ],
         ];
     }

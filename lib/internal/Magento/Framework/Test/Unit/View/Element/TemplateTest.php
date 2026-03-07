@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class TemplateTest extends TestCase
             ['-1', '-1'],
             ['0', '0'],
             ['1', '1'],
-            ['Hello <b>world!</b>' , 'Hello world!']
+            ['Hello <b>world!</b>' , 'Hello world!'],
         ];
     }
 }

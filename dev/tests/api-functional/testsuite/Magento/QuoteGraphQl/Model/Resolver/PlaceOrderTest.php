@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -79,7 +80,7 @@ class PlaceOrderTest extends GraphQlAbstract
     ]
     public function testPlaceOrderErrorTranslation()
     {
-        $storeCode = "fixture_second_store";
+        $storeCode = 'fixture_second_store';
         $maskedQuoteId = DataFixtureStorageManager::getStorage()->get('quoteIdMask')->getMaskedId();
         $query = $this->placeOrderQuery($maskedQuoteId);
         try {

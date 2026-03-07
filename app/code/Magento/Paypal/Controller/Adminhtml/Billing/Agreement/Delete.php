@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Billing\Agreement;
 
 class Delete extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
@@ -12,7 +15,7 @@ class Delete extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::actions_manage';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::actions_manage';
 
     /**
      * Delete billing agreement action

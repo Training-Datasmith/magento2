@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class SynchronizationTest extends TestCase
         $dataProperty = $reflection->getProperty('_data');
         $dataProperty->setValue($storageMock, [
             'id' => true,
-            'content' => $content
+            'content' => $content,
         ]);
 
         $storageMock->expects($this->once())->method('loadByFilename');

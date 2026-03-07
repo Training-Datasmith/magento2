@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,9 @@
 
 namespace Magento\Sales\Setup\Patch\Data;
 
-use Magento\Sales\Setup\SalesSetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Sales\Setup\SalesSetupFactory;
 
 /**
  * Class InstallOrderStatusesAndInitialSalesConfig

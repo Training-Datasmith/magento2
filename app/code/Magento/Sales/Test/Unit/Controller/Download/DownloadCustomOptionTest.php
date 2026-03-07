@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,20 +9,20 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Controller\Download;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\Product\Option as ProductOption;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Unserialize\Unserialize;
-use Magento\Catalog\Model\Product\Option as ProductOption;
 use Magento\Quote\Model\Quote\Item\Option;
 use Magento\Sales\Controller\Download\DownloadCustomOption;
 use Magento\Sales\Model\Download;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DownloadCustomOptionTest extends TestCase
 {
@@ -160,7 +161,7 @@ class DownloadCustomOptionTest extends TestCase
                     'resultForwardFactory' => $resultForwardFactoryMock,
                     'download'             => $this->downloadMock,
                     'unserialize'          => $this->createMock(Unserialize::class),
-                    'serializer'           => $this->serializerMock
+                    'serializer'           => $this->serializerMock,
                 ]
             )
             ->getMock();
@@ -234,90 +235,90 @@ class DownloadCustomOptionTest extends TestCase
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
                     self::OPTION_TYPE => self::OPTION_TYPE,
                 ],
-                false
+                false,
             ],
             [ //No Option ID
                 [
                     self::OPTION_ID => false,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [],
-                true
+                true,
             ],
             [ //No Product Option
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [],
-                true
+                true,
             ],
             [ //No Product Option ID
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [
                     self::OPTION_ID => null,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
                     self::OPTION_TYPE => self::OPTION_TYPE,
                 ],
-                true
+                true,
             ],
             [ //Not Matching Product IDs in Inventory Option
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => 'bad_test_product_ID',
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
                     self::OPTION_TYPE => self::OPTION_TYPE,
                 ],
-                true
+                true,
             ],
             [ //Not Matching Product IDs in Product Option
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_PRODUCT_ID => 'bad_test_product_ID',
                     self::OPTION_TYPE => self::OPTION_TYPE,
                 ],
-                true
+                true,
             ],
             [ //Incorrect Option Type
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_CODE => self::OPTION_CODE,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
-                    self::OPTION_VALUE => self::OPTION_VALUE
+                    self::OPTION_VALUE => self::OPTION_VALUE,
                 ],
                 [
                     self::OPTION_ID => self::OPTION_ID,
                     self::OPTION_PRODUCT_ID => self::OPTION_PRODUCT_ID,
                     self::OPTION_TYPE => 'bad_test_option_type',
                 ],
-                true
+                true,
             ],
         ];
     }

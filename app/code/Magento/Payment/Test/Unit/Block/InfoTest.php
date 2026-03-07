@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class InfoTest extends TestCase
             [
                 'storeManager' => $this->_storeManager,
                 'eventManager' => $this->_eventManager,
-                'escaper' => $this->_escaper
+                'escaper' => $this->_escaper,
             ]
         );
         $this->_object = $helper->getObject(Info::class, ['context' => $context]);
@@ -114,7 +115,7 @@ class InfoTest extends TestCase
             [null, false, null, null, true],
             [null, null, false, null, false],
             [null, null, true, 'default', true],
-            [null, null, true, 'admin', false]
+            [null, null, true, 'admin', false],
         ];
     }
 
@@ -183,7 +184,7 @@ class InfoTest extends TestCase
             ['string', true, [0 => 'string']],
             ['string', false, ['string']],
             [['key' => 'v"a!@#%$%^^&&*(*/\'\]l'], true, ['key' => 'v&quot;a!@#%$%^^&amp;&amp;*(*/&#039;\]l']],
-            [['key' => 'val'], false, ['key' => 'val']]
+            [['key' => 'val'], false, ['key' => 'val']],
         ];
     }
 }

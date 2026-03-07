@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Address\Total;
 
 use Magento\Framework\Serialize\SerializerInterface;
@@ -15,7 +18,7 @@ class Collector extends \Magento\Sales\Model\Config\Ordered
     /**
      * Path to sort order values of checkout totals
      */
-    const XML_PATH_SALES_TOTALS_SORT = 'sales/totals_sort';
+    public const XML_PATH_SALES_TOTALS_SORT = 'sales/totals_sort';
 
     /**
      * Total models array ordered for right display sequence

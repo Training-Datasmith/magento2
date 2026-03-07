@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,24 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Controller\Adminhtml;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\LayoutUpdate;
-use Magento\Framework\Acl\Builder;
-use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Framework\Message\Manager;
-use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager;
+use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Catalog\Model\ProductRepositoryFactory;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\Framework\Acl\Builder;
+use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Message\Manager;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
-use Magento\Catalog\Model\Product;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager;
-use Magento\Catalog\Model\Product\Type;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\Category;
-use Magento\Catalog\Model\Product\Attribute\Repository as ProductAttributeRepository;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -63,8 +63,8 @@ class ProductTest extends AbstractBackendController
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 LayoutUpdateManager::class =>
-                    ProductLayoutUpdateManager::class
-            ]
+                    ProductLayoutUpdateManager::class,
+            ],
         ]);
         parent::setUp();
 
@@ -339,8 +339,8 @@ class ProductTest extends AbstractBackendController
                             'thumbnail' => '/m/a//magento_image.jpg.tmp',
                             'swatch_image' => '/m/a//magento_image.jpg.tmp',
                         ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -386,10 +386,10 @@ class ProductTest extends AbstractBackendController
                     'new_variation_attribute_set_id' => '4',
                     'use_default' => [
                         'gift_message_available' => '0',
-                        'gift_wrapping_available' => '0'
+                        'gift_wrapping_available' => '0',
                     ],
                     'configurable_matrix_serialized' => '[]',
-                    'associated_product_ids_serialized' => '[]'
+                    'associated_product_ids_serialized' => '[]',
                 ],
                 'tierPrice' => [
                     [
@@ -401,7 +401,7 @@ class ProductTest extends AbstractBackendController
                         'website_price' => '111.0000',
                         'initialize' => 'true',
                         'record_id' => '1',
-                        'value_type' => 'fixed'
+                        'value_type' => 'fixed',
                     ],
                     [
                         'price_id' => '2',
@@ -412,7 +412,7 @@ class ProductTest extends AbstractBackendController
                         'website_price' => '111.0000',
                         'initialize' => 'true',
                         'record_id' => '2',
-                        'value_type' => 'fixed'
+                        'value_type' => 'fixed',
                     ],
                     [
                         'price_id' => '3',
@@ -423,10 +423,10 @@ class ProductTest extends AbstractBackendController
                         'website_price' => '111.0000',
                         'initialize' => 'true',
                         'record_id' => '3',
-                        'value_type' => 'fixed'
-                    ]
-                ]
-            ]
+                        'value_type' => 'fixed',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -471,11 +471,11 @@ class ProductTest extends AbstractBackendController
                 'new_variation_attribute_set_id' => '4',
                 'use_default' => [
                     'gift_message_available' => '0',
-                    'gift_wrapping_available' => '0'
+                    'gift_wrapping_available' => '0',
                 ],
                 'configurable_matrix_serialized' => '[]',
-                'associated_product_ids_serialized' => '[]'
-            ]
+                'associated_product_ids_serialized' => '[]',
+            ],
         ];
         $uri = 'backend/catalog/product/save';
 
@@ -538,12 +538,12 @@ class ProductTest extends AbstractBackendController
                 'new_variation_attribute_set_id' => '4',
                 'use_default' => [
                     'gift_message_available' => '0',
-                    'gift_wrapping_available' => '0'
+                    'gift_wrapping_available' => '0',
                 ],
                 'configurable_matrix_serialized' => '[]',
                 'associated_product_ids_serialized' => '[]',
-                'options_container' => $optionsContainerDefault
-            ]
+                'options_container' => $optionsContainerDefault,
+            ],
         ];
         $uri = 'backend/catalog/product/save';
 
@@ -587,7 +587,7 @@ class ProductTest extends AbstractBackendController
         unset($productData['options']);
         unset($productData[$product->getIdFieldName()]);
         $requestData = [
-            'product' => $productData
+            'product' => $productData,
         ];
         $uri = 'backend/catalog/product/save';
 
@@ -676,7 +676,7 @@ class ProductTest extends AbstractBackendController
                             'visibility' => '4',
                         ],
                 ],
-            ]
+            ],
         ];
     }
 

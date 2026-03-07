@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\CustomerData;
 
-use Magento\Catalog\Model\Product\Image\NotLoadInfoImageException;
 use Magento\Customer\CustomerData\SectionSourceInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
@@ -86,7 +88,7 @@ class Wishlist implements SectionSourceInterface
             'counter' => $counter,
             'items' => $counter ? $this->getItems() : [],
             'websiteId' => $this->storeManager->getWebsite()->getId(),
-            'storeId' => $this->storeManager->getStore()->getId()
+            'storeId' => $this->storeManager->getStore()->getId(),
         ];
     }
 

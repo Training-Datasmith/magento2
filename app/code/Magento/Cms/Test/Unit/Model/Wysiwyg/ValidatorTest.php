@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Cms\Test\Unit\Model\Wysiwyg;
 
 use Magento\Cms\Model\Wysiwyg\Validator;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Message\Factory as MessageFactory;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\Validation\ValidationException;
@@ -17,7 +19,6 @@ use Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Message\Factory as MessageFactory;
 
 class ValidatorTest extends TestCase
 {
@@ -31,7 +32,7 @@ class ValidatorTest extends TestCase
         return [
             'invalid-exception' => [true, new ValidationException(__('Invalid html')), true, false],
             'invalid-warning' => [false, new \RuntimeException('Invalid html'), false, true],
-            'valid' => [false, null, false, false]
+            'valid' => [false, null, false, false],
         ];
     }
 

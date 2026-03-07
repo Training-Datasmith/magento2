@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -163,7 +164,7 @@ class ServerTest extends TestCase
      */
     public function testGenerateUriWithWsdlParam()
     {
-        $param = "testModule1AllSoapAndRest:V1,testModule2AllSoapNoRest:V1";
+        $param = 'testModule1AllSoapAndRest:V1,testModule2AllSoapNoRest:V1';
         $serviceKey = Server::REQUEST_PARAM_SERVICES;
         $this->_requestMock->expects($this->any())->method('getParam')->willReturn($param);
         $expectedResult = "http://magento.com/soap/storeCode?{$serviceKey}={$param}&wsdl=1";
@@ -176,7 +177,7 @@ class ServerTest extends TestCase
      */
     public function testGenerateUriWithNoWsdlParam()
     {
-        $param = "testModule1AllSoapAndRest:V1,testModule2AllSoapNoRest:V1";
+        $param = 'testModule1AllSoapAndRest:V1,testModule2AllSoapNoRest:V1';
         $serviceKey = Server::REQUEST_PARAM_SERVICES;
         $this->_requestMock->expects($this->any())->method('getParam')->willReturn($param);
         $expectedResult = "http://magento.com/soap/storeCode?{$serviceKey}={$param}";

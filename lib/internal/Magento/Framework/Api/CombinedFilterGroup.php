@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,14 +19,14 @@ class CombinedFilterGroup extends AbstractSimpleObject
     /**
      * Constants defined for keys of  data array
      */
-    const FILTERS = 'filters';
-    const COMBINATION_MODE = 'combination_mode';
+    public const FILTERS = 'filters';
+    public const COMBINATION_MODE = 'combination_mode';
 
     /**
      * Possible aggregation strategies for filters
      */
-    const COMBINED_WITH_AND = 'AND';
-    const COMBINED_WITH_OR = 'OR';
+    public const COMBINED_WITH_AND = 'AND';
+    public const COMBINED_WITH_OR = 'OR';
 
     /**
      * Returns a list of filters in this group

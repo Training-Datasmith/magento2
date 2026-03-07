@@ -1,14 +1,16 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Sales\Model\Reorder;
 
 use Magento\Framework\DataObject;
-use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Sales\Api\Data\OrderItemInterface;
 use Psr\Log\LoggerInterface;
 
 /**

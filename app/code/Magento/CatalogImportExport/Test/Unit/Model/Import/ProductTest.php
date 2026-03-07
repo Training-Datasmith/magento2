@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,20 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import;
 
-use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModelFactory;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory;
-use Magento\Catalog\Model\ResourceModel\Product\LinkFactory;
-use Magento\CatalogImportExport\Model\Import\Proxy\ProductFactory;
-use Magento\CatalogImportExport\Model\Import\UploaderFactory;
-use Magento\CatalogInventory\Model\ResourceModel\Stock\ItemFactory;
-use Magento\CatalogImportExport\Model\Import\Product\OptionFactory;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\Catalog\Model\Product\Url;
+use Magento\Catalog\Model\ResourceModel\Product\LinkFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\CategoryProcessor;
 use Magento\CatalogImportExport\Model\Import\Product\ImageTypeProcessor;
 use Magento\CatalogImportExport\Model\Import\Product\Option;
+use Magento\CatalogImportExport\Model\Import\Product\OptionFactory;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface as ValidatorInterface;
 use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
@@ -30,9 +26,13 @@ use Magento\CatalogImportExport\Model\Import\Product\Type\AbstractType;
 use Magento\CatalogImportExport\Model\Import\Product\Type\Factory;
 use Magento\CatalogImportExport\Model\Import\Product\Validator;
 use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModel;
+use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModelFactory;
+use Magento\CatalogImportExport\Model\Import\Proxy\ProductFactory;
 use Magento\CatalogImportExport\Model\Import\Uploader;
+use Magento\CatalogImportExport\Model\Import\UploaderFactory;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
+use Magento\CatalogInventory\Model\ResourceModel\Stock\ItemFactory;
 use Magento\CatalogInventory\Model\Spi\StockStateProviderInterface;
 use Magento\ConfigurableImportExport\Model\Import\Product\Type\Configurable;
 use Magento\Eav\Model\Config;
@@ -41,6 +41,7 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ResourceConnection;
@@ -61,7 +62,6 @@ use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\ImportExport\Helper\Data as ImportExportHelper;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\Config as ImportConfig;
@@ -70,7 +70,7 @@ use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorI
 use Magento\ImportExport\Model\ResourceModel\Helper;
 use Magento\ImportExport\Model\ResourceModel\Import\Data as ImportData;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
-use phpseclib3\Exception\NoKeyLoadedException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 
@@ -556,7 +556,7 @@ class ProductTest extends AbstractImportTestCase
         $entityTypes = [
             'simple' => [
                 'model' => 'simple_product',
-                'params' => []
+                'params' => [],
             ]];
         $productTypeInstance = $this->createMock(AbstractType::class);
         $productTypeInstance->expects($this->atLeastOnce())
@@ -611,11 +611,11 @@ class ProductTest extends AbstractImportTestCase
                 $testSku => [
                     $attributeId => [
                         $storeId => [
-                            'foo' => 'bar'
-                        ]
-                    ]
-                ]
-            ]
+                            'foo' => 'bar',
+                        ],
+                    ],
+                ],
+            ],
         ];
         $tableData[] = [
             'entity_id' => self::ENTITY_ID,
@@ -732,7 +732,7 @@ class ProductTest extends AbstractImportTestCase
             $this->importProduct,
             '_parameters',
             [
-                Import::FIELD_EMPTY_ATTRIBUTE_VALUE_CONSTANT => $expectedSeparator
+                Import::FIELD_EMPTY_ATTRIBUTE_VALUE_CONSTANT => $expectedSeparator,
             ]
         );
 
@@ -898,7 +898,7 @@ class ProductTest extends AbstractImportTestCase
             $this->importProduct,
             'websitesCache',
             [
-                $productSku => $productValue
+                $productSku => $productValue,
             ]
         );
 
@@ -925,7 +925,7 @@ class ProductTest extends AbstractImportTestCase
             $this->importProduct,
             'categoriesCache',
             [
-                $productSku => $productValue
+                $productSku => $productValue,
             ]
         );
 
@@ -991,12 +991,12 @@ class ProductTest extends AbstractImportTestCase
         return [
             [
                 'storeCode' => null,
-                'expectedResult' => Product::SCOPE_DEFAULT
+                'expectedResult' => Product::SCOPE_DEFAULT,
             ],
             [
                 'storeCode' => 'value',
-                'expectedResult' => 'getStoreCodeToId value'
-            ]
+                'expectedResult' => 'getStoreCodeToId value',
+            ],
         ];
     }
 
@@ -1014,7 +1014,7 @@ class ProductTest extends AbstractImportTestCase
         $rowNum = 0;
         $rowData = [
             Product::COL_SKU => $sku,
-            Product::COL_STORE => ''
+            Product::COL_STORE => '',
         ];
 
         $this->storeResolver->method('getStoreCodeToId')->willReturn(null);
@@ -1078,17 +1078,17 @@ class ProductTest extends AbstractImportTestCase
             $sku => [
                 'entity_id' => 'entity_id_val',
                 'type_id' => 'type_id_val',
-                'attr_set_id' => 'attr_set_id_val'
-            ]
+                'attr_set_id' => 'attr_set_id_val',
+            ],
         ];
 
         $_productTypeModels = [
-            $oldSku[$sku]['type_id'] => 'type_id_val_val'
+            $oldSku[$sku]['type_id'] => 'type_id_val_val',
         ];
         $this->setPropertyValue($importProduct, '_productTypeModels', $_productTypeModels);
 
         $_attrSetIdToName = [
-            $oldSku[$sku]['attr_set_id'] => 'attr_set_code_val'
+            $oldSku[$sku]['attr_set_id'] => 'attr_set_code_val',
         ];
         $this->setPropertyValue($importProduct, '_attrSetIdToName', $_attrSetIdToName);
 
@@ -1128,7 +1128,7 @@ class ProductTest extends AbstractImportTestCase
         ];
         $oldSku = [
             $sku => [
-                'type_id' => 'type_id_val'
+                'type_id' => 'type_id_val',
             ],
         ];
         $importProduct = $this->createModelMockWithErrorAggregator(
@@ -1178,18 +1178,18 @@ class ProductTest extends AbstractImportTestCase
         $rowData = [
             Product::COL_SKU => $sku,
             Product::COL_TYPE => $colType,
-            Product::COL_ATTR_SET => $colAttrSet
+            Product::COL_ATTR_SET => $colAttrSet,
         ];
         $attrSetKey = (string)($rowData[Product::COL_ATTR_SET] ?? '');
         $_attrSetNameToId = [
-            $attrSetKey => $attrSetNameToIdColAttrSet
+            $attrSetKey => $attrSetNameToIdColAttrSet,
         ];
         $typeKey = (string)($rowData[Product::COL_TYPE] ?? '');
         $_productTypeModels = [
-            $typeKey => $productTypeModelsColType
+            $typeKey => $productTypeModelsColType,
         ];
         $oldSku = [
-            $sku => null
+            $sku => null,
         ];
         $importProduct = $this->createModelMockWithErrorAggregator(
             ['addRowError', 'getOptionEntity', 'getNewSku'],
@@ -1220,16 +1220,16 @@ class ProductTest extends AbstractImportTestCase
         $rowData = [
             Product::COL_SKU => $sku,
             Product::COL_TYPE => 'value',
-            Product::COL_ATTR_SET => 'value'
+            Product::COL_ATTR_SET => 'value',
         ];
         $_productTypeModels = [
-            $rowData[Product::COL_TYPE] => 'value'
+            $rowData[Product::COL_TYPE] => 'value',
         ];
         $oldSku = [
-            $sku => null
+            $sku => null,
         ];
         $_attrSetNameToId = [
-            $rowData[Product::COL_ATTR_SET] => 'attr_set_code_val'
+            $rowData[Product::COL_ATTR_SET] => 'attr_set_code_val',
         ];
         $expectedData = [
             'entity_id' => null,
@@ -1237,7 +1237,7 @@ class ProductTest extends AbstractImportTestCase
             //attr_set_id_val
             'attr_set_id' => $_attrSetNameToId[$rowData[Product::COL_ATTR_SET]],
             'attr_set_code' => $rowData[Product::COL_ATTR_SET],//value
-            'row_id' => null
+            'row_id' => null,
         ];
         $importProduct = $this->createModelMockWithErrorAggregator(
             ['addRowError', 'getOptionEntity'],
@@ -1280,21 +1280,21 @@ class ProductTest extends AbstractImportTestCase
         $rowNum = 0;
         $rowData = [
             Product::COL_SKU => $sku,
-            Product::COL_ATTR_SET => 'col_attr_set_val'
+            Product::COL_ATTR_SET => 'col_attr_set_val',
         ];
         $expectedAttrSetCode = 'new_attr_set_code';
         $newSku = [
             'attr_set_code' => $expectedAttrSetCode,
-            'type_id' => 'new_type_id_val'
+            'type_id' => 'new_type_id_val',
         ];
         $expectedRowData = [
             Product::COL_SKU => $sku,
-            Product::COL_ATTR_SET => $newSku['attr_set_code']
+            Product::COL_ATTR_SET => $newSku['attr_set_code'],
         ];
         $oldSku = [
             $sku => [
-                'type_id' => 'type_id_val'
-            ]
+                'type_id' => 'type_id_val',
+            ],
         ];
         $importProduct = $this->createModelMockWithErrorAggregator(['getOptionEntity']);
 
@@ -1309,7 +1309,7 @@ class ProductTest extends AbstractImportTestCase
             $importProduct,
             '_productTypeModels',
             [
-                $newSku['type_id'] => $productType
+                $newSku['type_id'] => $productType,
             ]
         );
 
@@ -1330,12 +1330,12 @@ class ProductTest extends AbstractImportTestCase
         $rowNum = 0;
         $rowData = [
             Product::COL_SKU => $sku,
-            Product::COL_ATTR_SET => 'col_attr_set_val'
+            Product::COL_ATTR_SET => 'col_attr_set_val',
         ];
         $oldSku = [
             $sku => [
-                'type_id' => 'type_id_val'
-            ]
+                'type_id' => 'type_id_val',
+            ],
         ];
         $importProduct = $this->createModelMockWithErrorAggregator(
             ['addRowError', 'getOptionEntity', 'getNewSku'],
@@ -1377,7 +1377,7 @@ class ProductTest extends AbstractImportTestCase
             ['retrieveAttributeFromCache']
         );
         $entityTypeModel->expects($this->exactly(2))->method('retrieveAttributeFromCache')->willReturn([
-            'type' => 'multiselect'
+            'type' => 'multiselect',
         ]);
         $importProduct = $this->createPartialMock(Product::class, ['retrieveProductTypeByName']);
         $importProduct->expects($this->exactly(2))->method('retrieveProductTypeByName')->willReturn($entityTypeModel);
@@ -1418,7 +1418,7 @@ class ProductTest extends AbstractImportTestCase
 
         $attributeCache = [
             'param1' => $attribute1,
-            'param2' => $attribute2
+            'param2' => $attribute2,
         ];
 
         $this->setPropertyValue($this->importProduct, '_attributeCache', $attributeCache);
@@ -1479,7 +1479,7 @@ class ProductTest extends AbstractImportTestCase
                 [
                     ['import', 'import'],
                     ['catalog/product', 'catalog/product'],
-                    ['pub/media', 'pub/media']
+                    ['pub/media', 'pub/media'],
                 ]
             );
 
@@ -1591,7 +1591,7 @@ class ProductTest extends AbstractImportTestCase
             [
                 [
                     'simple_2' => [3 => true],
-                    'simple_5' => [5 => true]
+                    'simple_5' => [5 => true],
                 ],
                 'catalog_category_product',
                 [
@@ -1600,16 +1600,16 @@ class ProductTest extends AbstractImportTestCase
                         [
                             'product_id' => 2,
                             'category_id' => 3,
-                            'position' => -1
+                            'position' => -1,
                         ],
                         [
                             'product_id' => 5,
                             'category_id' => 5,
-                            'position' => -3
-                        ]
-                    ]
-                ]
-            ]
+                            'position' => -3,
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1636,7 +1636,7 @@ class ProductTest extends AbstractImportTestCase
     {
         return [
             ['test1.jpg', false],
-            ['test2.jpg', true]
+            ['test2.jpg', true],
         ];
     }
 
@@ -1648,24 +1648,24 @@ class ProductTest extends AbstractImportTestCase
         return [
             [
                 [],
-                [[], []]
+                [[], []],
             ],
             [
                 [
                     'image' => 'image3.jpg',
                     '_media_image' => 'image1.jpg,image2.png',
-                    '_media_image_label' => 'label1,label2'
+                    '_media_image_label' => 'label1,label2',
                 ],
                 [
                     [
                         'image' => ['image3.jpg'],
-                        '_media_image' => ['image1.jpg', 'image2.png']
+                        '_media_image' => ['image1.jpg', 'image2.png'],
                     ],
                     [
-                        '_media_image' => ['label1', 'label2']
-                    ]
-                ]
-            ]
+                        '_media_image' => ['label1', 'label2'],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1680,29 +1680,29 @@ class ProductTest extends AbstractImportTestCase
                 'productTypeModelsColType' => 'value',
                 'colAttrSet' => null,
                 'attrSetNameToIdColAttrSet' => null,
-                'error' => Validator::ERROR_INVALID_TYPE
+                'error' => Validator::ERROR_INVALID_TYPE,
             ],
             [
                 'colType' => 'value',
                 'productTypeModelsColType' => null,
                 'colAttrSet' => null,
                 'attrSetNameToIdColAttrSet' => null,
-                'error' => Validator::ERROR_INVALID_TYPE
+                'error' => Validator::ERROR_INVALID_TYPE,
             ],
             [
                 'colType' => 'value',
                 'productTypeModelsColType' => 'value',
                 'colAttrSet' => null,
                 'attrSetNameToIdColAttrSet' => 'value',
-                'error' => Validator::ERROR_INVALID_ATTR_SET
+                'error' => Validator::ERROR_INVALID_ATTR_SET,
             ],
             [
                 'colType' => 'value',
                 'productTypeModelsColType' => 'value',
                 'colAttrSet' => 'value',
                 'attrSetNameToIdColAttrSet' => null,
-                'error' => Validator::ERROR_INVALID_ATTR_SET
-            ]
+                'error' => Validator::ERROR_INVALID_ATTR_SET,
+            ],
         ];
     }
 
@@ -1713,14 +1713,14 @@ class ProductTest extends AbstractImportTestCase
     {
         return [
             [
-                'sku' => null
+                'sku' => null,
             ],
             [
-                'sku' => false
+                'sku' => false,
             ],
             [
-                'sku' => 'sku'
-            ]
+                'sku' => 'sku',
+            ],
         ];
     }
 
@@ -1733,29 +1733,29 @@ class ProductTest extends AbstractImportTestCase
             [
                 'rowScope' => Product::SCOPE_DEFAULT,
                 'oldSku' => null,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'rowScope' => null,
                 'oldSku' => null,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'rowScope' => null,
                 'oldSku' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'rowScope' => Product::SCOPE_DEFAULT,
                 'oldSku' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'rowScope' => Product::SCOPE_DEFAULT,
                 'oldSku' => null,
                 'expectedResult' => false,
-                'behaviour' => Import::BEHAVIOR_REPLACE
-            ]
+                'behaviour' => Import::BEHAVIOR_REPLACE,
+            ],
         ];
     }
 
@@ -1778,57 +1778,57 @@ class ProductTest extends AbstractImportTestCase
             ],
             [
                 'attrParams' => [
-                    'type' => 'decimal'
+                    'type' => 'decimal',
                 ],
                 'rowData' => [
-                    'code' => 10
-                ]
+                    'code' => 10,
+                ],
             ],
             [
                 'attrParams' => [
                     'type' => 'select',
-                    'options' => ['code' => 1]
+                    'options' => ['code' => 1],
                 ],
                 'rowData' => [
-                    'code' => 'code'
-                ]
+                    'code' => 'code',
+                ],
             ],
             [
                 'attrParams' => [
                     'type' => 'multiselect',
-                    'options' => ['code' => 1]
+                    'options' => ['code' => 1],
                 ],
                 'rowData' => [
-                    'code' => 'code'
-                ]
+                    'code' => 'code',
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'int'
+                    'type' => 'int',
                 ],
                 'rowData' => [
-                    'code' => 1000
-                ]
+                    'code' => 1000,
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'datetime'
+                    'type' => 'datetime',
                 ],
                 'rowData' => [
-                    'code' => "5 September 2015"
-                ]
+                    'code' => '5 September 2015',
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'rowData' => [
                     'code' => str_repeat(
                         'a',
                         Product::DB_MAX_TEXT_LENGTH - 1
-                    )
-                ]
-            ]
+                    ),
+                ],
+            ],
         ];
     }
 
@@ -1840,68 +1840,68 @@ class ProductTest extends AbstractImportTestCase
         return [
             [
                 'attrParams' => [
-                    'type' => 'varchar'
+                    'type' => 'varchar',
                 ],
                 'rowData' => [
                     'code' => str_repeat(
                         'a',
                         Product::DB_MAX_VARCHAR_LENGTH + 1
-                    )
-                ]
+                    ),
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'decimal'
+                    'type' => 'decimal',
                 ],
                 'rowData' => [
-                    'code' => 'incorrect'
-                ]
+                    'code' => 'incorrect',
+                ],
             ],
             [
                 'attrParams' => [
                     'type' => 'select',
-                    'not options' => null
+                    'not options' => null,
                 ],
                 'rowData' => [
-                    'code' => 'code'
-                ]
+                    'code' => 'code',
+                ],
             ],
             [
                 'attrParams' => [
                     'type' => 'multiselect',
-                    'not options' => null
+                    'not options' => null,
                 ],
                 'rowData' => [
-                    'code' => 'code'
-                ]
+                    'code' => 'code',
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'int'
+                    'type' => 'int',
                 ],
                 'rowData' => [
-                    'code' => 'not int'
-                ]
+                    'code' => 'not int',
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'datetime'
+                    'type' => 'datetime',
                 ],
                 'rowData' => [
-                    'code' => "incorrect datetime"
-                ]
+                    'code' => 'incorrect datetime',
+                ],
             ],
             [
                 'attrParams' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'rowData' => [
                     'code' => str_repeat(
                         'a',
                         Product::DB_MAX_TEXT_LENGTH + 1
-                    )
-                ]
-            ]
+                    ),
+                ],
+            ],
         ];
     }
 
@@ -1917,23 +1917,23 @@ class ProductTest extends AbstractImportTestCase
             [
                 'rowData' => [
                     $colSku => null,
-                    $colStore => 'store'
+                    $colStore => 'store',
                 ],
-                'expectedResult' => Product::SCOPE_STORE
+                'expectedResult' => Product::SCOPE_STORE,
             ],
             [
                 'rowData' => [
                     $colSku => 'sku',
-                    $colStore => null
+                    $colStore => null,
                 ],
-                'expectedResult' => Product::SCOPE_DEFAULT
+                'expectedResult' => Product::SCOPE_DEFAULT,
             ],
             [
                 'rowData' => [
                     $colSku => 'sku',
-                    $colStore => 'store'
+                    $colStore => 'store',
                 ],
-                'expectedResult' => Product::SCOPE_STORE
+                'expectedResult' => Product::SCOPE_STORE,
             ],
         ];
     }
@@ -2097,7 +2097,7 @@ class ProductTest extends AbstractImportTestCase
         $this->importProduct->setParameters(
             [
                 Import::FIELD_FIELD_SEPARATOR => $fieldSeparator,
-                Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => $valueSeparator
+                Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => $valueSeparator,
             ]
         );
         $this->assertEquals(explode($valueSeparator, $value), $this->importProduct->parseMultiselectValues($value));
@@ -2112,33 +2112,33 @@ class ProductTest extends AbstractImportTestCase
             'pipeWithCustomFieldSeparator' => [
                 'value' => 'L|C|D|T|H',
                 'fieldSeparator' => ';',
-                'valueSeparator' => '|'
+                'valueSeparator' => '|',
             ],
             'commaWithCustomFieldSeparator' => [
                 'value' => 'L,C,D,T,H',
                 'fieldSeparator' => ';',
-                'valueSeparator' => ','
+                'valueSeparator' => ',',
             ],
             'pipeWithDefaultFieldSeparator' => [
                 'value' => 'L|C|D|T|H',
                 'fieldSeparator' => ',',
-                'valueSeparator' => '|'
+                'valueSeparator' => '|',
             ],
             'commaWithDefaultFieldSeparator' => [
                 'value' => 'L,C,D,T,H',
                 'fieldSeparator' => ',',
-                'valueSeparator' => ','
+                'valueSeparator' => ',',
             ],
             'anonymousValueSeparatorWithDefaultFieldSeparator' => [
                 'value' => 'L+C+D+T+H',
                 'fieldSeparator' => ',',
-                'valueSeparator' => '+'
+                'valueSeparator' => '+',
             ],
             'anonymousValueSeparatorWithDefaultFieldSeparatorAndSingleValue' => [
                 'value' => 'L',
                 'fieldSeparator' => ',',
-                'valueSeparator' => '*'
-            ]
+                'valueSeparator' => '*',
+            ],
         ];
     }
 
@@ -2213,7 +2213,7 @@ class ProductTest extends AbstractImportTestCase
             ->willReturnCallback(function ($condition, $value) use (&$callIndexSelect, $storeId) {
                 if ($callIndexSelect === 0) {
                     $this->assertEquals('request_path IN (?)', $condition);
-                    $this->assertEquals([$storeId => "adobe.html"], $value);
+                    $this->assertEquals([$storeId => 'adobe.html'], $value);
                 } elseif ($callIndexSelect === 1) {
                     $this->assertEquals('store_id IN (?)', $condition);
                     $this->assertEquals($storeId, $value);
@@ -2283,16 +2283,16 @@ class ProductTest extends AbstractImportTestCase
                         'entity_type' => 'category',
                         'entity_id' => rand(),
                         'url_rewrite_id' => rand(),
-                        'url_entity' => rand()
+                        'url_entity' => rand(),
                     ],
                     'error_message_template' => 'Url key: \'%s\' was already generated for a %s with the ID: %s. ' .
                         'You need to specify the unique URL key manually',
                     'fields' => [
                         'request_path',
                         'store_id',
-                        'entity_type'
-                    ]
-                ]
+                        'entity_type',
+                    ],
+                ],
             ],
             'Record duplicated by product. Should Throw Validation Error' => [
                 'dataProvider' => [
@@ -2308,7 +2308,7 @@ class ProductTest extends AbstractImportTestCase
                         'entity_id' => 42,
                         'url_rewrite_id' => rand(),
                         'url_entity' => rand(),
-                        'sku' => rand()
+                        'sku' => rand(),
                     ],
                     'fields' => [
                         'request_path',
@@ -2316,9 +2316,9 @@ class ProductTest extends AbstractImportTestCase
                         'entity_type',
                     ],
                     'error_message_template' => 'Url key: \'%s\' was already generated for an item with the SKU: ' .
-                        '\'%s\'. You need to specify the unique URL key manually'
-                ]
-            ]
+                        '\'%s\'. You need to specify the unique URL key manually',
+                ],
+            ],
         ];
     }
 

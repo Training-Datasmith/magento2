@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Analytics\Test\Unit\Model\Connector\Http;
 use Magento\Analytics\Model\Connector\Http\JsonConverter;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 
@@ -76,7 +77,7 @@ class JsonConverterTest extends TestCase
     {
         return [
             [null, ['body']],
-            [['unserializedBody'], ['unserializedBody']]
+            [['unserializedBody'], ['unserializedBody']],
         ];
     }
 
@@ -88,6 +89,6 @@ class JsonConverterTest extends TestCase
         $this->serializerMock->expects($this->once())
             ->method('serialize')
             ->willReturn('serializedResult');
-        $this->assertEquals('serializedResult', $this->converter->toBody(["token" => "secret-token"]));
+        $this->assertEquals('serializedResult', $this->converter->toBody(['token' => 'secret-token']));
     }
 }

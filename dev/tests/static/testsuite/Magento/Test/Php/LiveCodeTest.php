@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use Magento\TestFramework\CodingStandard\Tool\CodeMessDetector;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer\Wrapper;
 use Magento\TestFramework\CodingStandard\Tool\CopyPasteDetector;
-use Magento\TestFramework\CodingStandard\Tool\PhpCompatibility;
 use Magento\TestFramework\CodingStandard\Tool\PhpStan;
 use Magento\TestFramework\Utility\AddedFiles;
 use Magento\TestFramework\Utility\FilesSearch;
@@ -286,7 +286,7 @@ class LiveCodeTest extends \PHPUnit\Framework\TestCase
 
         $result = $codeMessDetector->run($fileList);
 
-        $output = "";
+        $output = '';
         if (file_exists($reportFile)) {
             $output = file_get_contents($reportFile);
         }
@@ -295,7 +295,7 @@ class LiveCodeTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(
             $successCode,
             $result,
-            "PHP Code Mess has found error(s):" . PHP_EOL . $output
+            'PHP Code Mess has found error(s):' . PHP_EOL . $output
         );
 
         // delete empty reports
@@ -330,7 +330,7 @@ class LiveCodeTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue(
             $result,
-            "PHP Copy/Paste Detector has found error(s):" . PHP_EOL . $output
+            'PHP Copy/Paste Detector has found error(s):' . PHP_EOL . $output
         );
     }
 
@@ -366,7 +366,7 @@ class LiveCodeTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(
             0,
             $filesMissingStrictTyping,
-            "Following files are missing strict type declaration:"
+            'Following files are missing strict type declaration:'
             . PHP_EOL
             . implode(PHP_EOL, $filesMissingStrictTyping)
         );
@@ -430,7 +430,7 @@ class LiveCodeTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(
             0,
             count($filesWithIncorrectReuse),
-            "The following files incorrectly reuse fixtures:"
+            'The following files incorrectly reuse fixtures:'
             . PHP_EOL
             . implode(PHP_EOL, $filesWithIncorrectReuse)
             . PHP_EOL

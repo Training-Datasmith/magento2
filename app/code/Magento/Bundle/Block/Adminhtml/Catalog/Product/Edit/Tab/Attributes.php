@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -69,7 +71,7 @@ class Attributes extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attri
                     [
                         'validate-greater-than-zero',
                         'validate-number-range',
-                        'number-range-0.00-100.00'
+                        'number-range-0.00-100.00',
                     ]
                 )
             );

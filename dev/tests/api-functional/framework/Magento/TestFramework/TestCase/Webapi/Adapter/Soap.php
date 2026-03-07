@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase\Webapi\Adapter;
 
 use Magento\Framework\Api\SimpleDataObjectConverter;
@@ -14,7 +17,7 @@ use Magento\Webapi\Controller\Soap\Request\Handler as SoapHandler;
  */
 class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
 {
-    const WSDL_BASE_PATH = '/soap';
+    public const WSDL_BASE_PATH = '/soap';
 
     /**
      * SOAP client initialized with different WSDLs.
@@ -111,7 +114,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
         $accessCredentials = $token
             ? $token
             : \Magento\TestFramework\Authentication\OauthHelper::getApiAccessCredentials()['key'];
-        $opts = ['http' => ['header' => "Authorization: Bearer " . $accessCredentials]];
+        $opts = ['http' => ['header' => 'Authorization: Bearer ' . $accessCredentials]];
         $context = stream_context_create($opts);
         $soapClient = new \Laminas\Soap\Client($wsdlUrl);
         $soapClient->setSoapVersion(SOAP_1_2);
@@ -151,7 +154,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
         foreach ($services as $serviceName) {
             $wsdlResourceArray[] = $serviceName;
         }
-        return $wsdlUrl . implode(",", $wsdlResourceArray);
+        return $wsdlUrl . implode(',', $wsdlResourceArray);
     }
 
     /**
@@ -171,7 +174,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
                 $serviceInfo['method']
             );
         } else {
-            throw new \LogicException("SOAP operation cannot be identified.");
+            throw new \LogicException('SOAP operation cannot be identified.');
         }
         return $soapOperation;
     }
@@ -205,7 +208,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
                 //throw new \LogicException("Service interface name is invalid.");
             }
         } else {
-            throw new \LogicException("Service version cannot be identified.");
+            throw new \LogicException('Service version cannot be identified.');
         }
         /** Normalize version */
         $version = 'V' . ltrim($version, 'vV');
@@ -226,7 +229,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
         } elseif (isset($serviceInfo['serviceInterface'])) {
             $serviceName = $this->_soapConfig->getServiceName($serviceInfo['serviceInterface'], false);
         } else {
-            throw new \LogicException("Service name cannot be identified.");
+            throw new \LogicException('Service name cannot be identified.');
         }
         return $serviceName;
     }
@@ -245,7 +248,7 @@ class Soap implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
     {
         $data = [];
         foreach ($objectData as $key => $value) {
-            $key = strtolower(preg_replace("/(?<=\\w)(?=[A-Z])/", "_$1", $key));
+            $key = strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', '_$1', $key));
             if (is_array($value)) {
                 $data[$key] = $this->toSnakeCase($value);
             } else {

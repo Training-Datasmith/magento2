@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\Customer\Ui\Component\Listing\Column;
 
 use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\Escaper;
 
 /**
  * Class GroupActions
@@ -92,7 +93,7 @@ class GroupActions extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
-                                    'id' => $item['customer_group_id']
+                                    'id' => $item['customer_group_id'],
                                 ]
                             ),
                             'label' => __('Edit'),
@@ -104,7 +105,7 @@ class GroupActions extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
-                                    'id' => $item['customer_group_id']
+                                    'id' => $item['customer_group_id'],
                                 ]
                             ),
                             'label' => __('Delete'),
@@ -113,7 +114,7 @@ class GroupActions extends Column
                                 'message' => __(
                                     'Are you sure you want to delete a %1 record?',
                                     $this->escaper->escapeHtml($title)
-                                )
+                                ),
                             ],
                             'post' => true,
                         ];

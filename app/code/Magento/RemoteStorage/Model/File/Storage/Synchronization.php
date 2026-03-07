@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 use Magento\Framework\Filesystem\DriverPool as LocalDriverPool;
-use Magento\RemoteStorage\Model\Config;
+use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 use Magento\RemoteStorage\Filesystem;
+use Magento\RemoteStorage\Model\Config;
 
 /**
  * Synchronize files from remote to local file system.
@@ -46,10 +47,12 @@ class Synchronization
     {
         $this->isEnabled = $config->isEnabled();
         $this->remoteDirectory = $filesystem->getDirectoryWrite(
-            DirectoryList::PUB, RemoteDriverPool::REMOTE
+            DirectoryList::PUB,
+            RemoteDriverPool::REMOTE
         );
         $this->localDirectory = $filesystem->getDirectoryWrite(
-            DirectoryList::PUB, LocalDriverPool::FILE
+            DirectoryList::PUB,
+            LocalDriverPool::FILE
         );
     }
 

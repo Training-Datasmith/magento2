@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,8 +10,7 @@ namespace Magento\OrderCancellation\Model;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Math\Random;
-use Magento\OrderCancellation\Model\ResourceModel\SalesOrderConfirmCancel
-    as SalesOrderConfirmCancelResourceModel;
+use Magento\OrderCancellation\Model\ResourceModel\SalesOrderConfirmCancel as SalesOrderConfirmCancelResourceModel;
 use Magento\Sales\Model\Order;
 
 class GetConfirmationKey

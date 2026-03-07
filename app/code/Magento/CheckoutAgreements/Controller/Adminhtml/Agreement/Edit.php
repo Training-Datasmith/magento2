@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
 
+use Magento\Backend\App\Action\Context;
+use Magento\CheckoutAgreements\Block\Adminhtml\Agreement\Edit as BlockEdit;
 use Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
 use Magento\CheckoutAgreements\Model\AgreementFactory;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
-use Magento\Framework\App\ObjectManager;
-use Magento\CheckoutAgreements\Block\Adminhtml\Agreement\Edit as BlockEdit;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Registry;
 
 class Edit extends Agreement implements HttpGetActionInterface
 {

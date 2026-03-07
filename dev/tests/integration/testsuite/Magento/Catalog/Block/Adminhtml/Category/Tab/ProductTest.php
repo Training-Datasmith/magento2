@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -126,7 +127,7 @@ class ProductTest extends TestCase
                 ],
             ],
             'filter_any' => [
-                'filterColumn' => "",
+                'filterColumn' => '',
                 'categoryId' => 333,
                 'storeId' => 1,
                 'items' => [

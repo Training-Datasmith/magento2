@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -12,10 +15,10 @@ class Edit extends \Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite implemen
     /**#@+
      * Modes
      */
-    const ID_MODE = 'id';
-    const PRODUCT_MODE = 'product';
-    const CATEGORY_MODE = 'category';
-    const CMS_PAGE_MODE = 'cms_page';
+    public const ID_MODE = 'id';
+    public const PRODUCT_MODE = 'product';
+    public const CATEGORY_MODE = 'category';
+    public const CMS_PAGE_MODE = 'cms_page';
     /**#@-*/
 
     /**
@@ -61,7 +64,7 @@ class Edit extends \Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite implemen
                             'product' => $this->_getProduct(),
                             'is_category_mode' => $this->getRequest()->has('category'),
                             'url_rewrite' => $this->_getUrlRewrite(),
-                        ]
+                        ],
                     ]
                 );
                 break;
@@ -70,7 +73,7 @@ class Edit extends \Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite implemen
                     \Magento\UrlRewrite\Block\Catalog\Category\Edit::class,
                     '',
                     [
-                        'data' => ['category' => $this->_getCategory(), 'url_rewrite' => $this->_getUrlRewrite()]
+                        'data' => ['category' => $this->_getCategory(), 'url_rewrite' => $this->_getUrlRewrite()],
                     ]
                 );
                 break;
@@ -79,7 +82,7 @@ class Edit extends \Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite implemen
                     \Magento\UrlRewrite\Block\Cms\Page\Edit::class,
                     '',
                     [
-                        'data' => ['cms_page' => $this->_getCmsPage(), 'url_rewrite' => $this->_getUrlRewrite()]
+                        'data' => ['cms_page' => $this->_getCmsPage(), 'url_rewrite' => $this->_getUrlRewrite()],
                     ]
                 );
                 break;

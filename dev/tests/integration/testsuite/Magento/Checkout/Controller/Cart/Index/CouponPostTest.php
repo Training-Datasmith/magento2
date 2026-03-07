@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ class CouponPostTest extends \Magento\TestFramework\TestCase\AbstractController
         $quote->setData('trigger_recollect', 1)->setTotalsCollectedFlag(true);
         $inputData = [
             'remove' => 0,
-            'coupon_code' => 'test'
+            'coupon_code' => 'test',
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($inputData);
@@ -57,7 +59,7 @@ class CouponPostTest extends \Magento\TestFramework\TestCase\AbstractController
         $couponCode = 'IMPHBR852R61';
         $inputData = [
             'remove' => 0,
-            'coupon_code' => $couponCode
+            'coupon_code' => $couponCode,
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($inputData);

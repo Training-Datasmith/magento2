@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -124,7 +125,7 @@ class TransportTest extends TestCase
         $scopeConfig = $this->createMock(ScopeConfigInterface::class);
         $scopeConfig->expects($this->atLeastOnce())
             ->method('getValue')
-            ->willReturnCallback(fn($path) => $config[$path] ?? null);
+            ->willReturnCallback(fn ($path) => $config[$path] ?? null);
 
         return new Transport($this->createMock(EmailMessage::class), $scopeConfig, $this->loggerMock);
     }
@@ -183,7 +184,7 @@ class TransportTest extends TestCase
         $scopeConfig = $this->createMock(ScopeConfigInterface::class);
         $scopeConfig->expects($this->exactly(2))
             ->method('getValue')
-            ->willReturnCallback(fn($path) => match ($path) {
+            ->willReturnCallback(fn ($path) => match ($path) {
                 Transport::XML_PATH_SENDING_SET_RETURN_PATH => $isSetReturnPath,
                 Transport::XML_PATH_SENDING_RETURN_PATH_EMAIL => $returnPathEmail,
                 default => null
@@ -242,7 +243,7 @@ class TransportTest extends TestCase
     public function testGetTransportReturnsCorrectType(?string $transportType, string $expectedClass): void
     {
         $this->assertInstanceOf($expectedClass, $this->createTransport([
-            'system/smtp/transport' => $transportType
+            'system/smtp/transport' => $transportType,
         ])->getTransport());
     }
 
@@ -421,7 +422,7 @@ class TransportTest extends TestCase
         $scopeConfig = $this->createMock(ScopeConfigInterface::class);
         $scopeConfig->expects($this->atLeastOnce())
             ->method('getValue')
-            ->willReturnCallback(fn($path) => match ($path) {
+            ->willReturnCallback(fn ($path) => match ($path) {
                 'system/smtp/transport' => 'smtp',
                 'system/smtp/host' => 'invalid.host.example',
                 'system/smtp/port' => '587',

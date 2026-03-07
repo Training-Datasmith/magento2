@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,13 +12,13 @@ namespace Magento\JwtUserToken\Model;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Jwt\Claim\PrivateClaim;
+use Magento\Integration\Api\Data\UserTokenParametersInterface;
+use Magento\Integration\Api\Data\UserTokenParametersInterfaceFactory;
 use Magento\JwtUserToken\Model\Data\JwtTokenParameters;
 use Magento\JwtUserToken\Model\Data\JwtUserContext;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\User\Model\User as UserModel;
 use PHPUnit\Framework\TestCase;
-use Magento\Integration\Api\Data\UserTokenParametersInterface;
-use Magento\Integration\Api\Data\UserTokenParametersInterfaceFactory;
 
 class IssuerTest extends TestCase
 {

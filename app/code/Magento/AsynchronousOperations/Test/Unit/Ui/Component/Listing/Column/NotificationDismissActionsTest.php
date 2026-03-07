@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class NotificationDismissActionsTest extends TestCase
                 'context' => $this->context,
                 'uiComponentFactory' => $this->uiComponentFactory,
                 'components' => [],
-                'data' => ['name' => 'actions']
+                'data' => ['name' => 'actions'],
             ]
         );
     }

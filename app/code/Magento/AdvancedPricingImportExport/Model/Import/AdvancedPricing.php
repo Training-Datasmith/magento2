@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedPricingImportExport\Model\Import;
 
 use Magento\AdvancedPricingImportExport\Model\CurrencyResolver;
-use Magento\CatalogImportExport\Model\Import\Product as ImportProduct;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface as ValidatorInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
@@ -37,12 +39,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     public const ENTITY_TYPE_CODE = 'advanced_pricing';
     public const VALIDATOR_MAIN = 'validator';
     public const VALIDATOR_WEBSITE = 'validator_website';
-
-    /**
-     * @deprecated
-     * @see VALIDATOR_TIER_PRICE
-     */
-    private const VALIDATOR_TEAR_PRICE = 'validator_tier_price';
     private const VALIDATOR_TIER_PRICE = 'validator_tier_price';
 
     private const ERROR_DUPLICATE_TIER_PRICE = 'duplicateTierPrice';
@@ -65,7 +61,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
         ValidatorInterface::ERROR_INVALID_ATTRIBUTE_DECIMAL => 'Value for \'%s\' attribute contains incorrect value,' .
             ' acceptable values are in decimal format',
         self::ERROR_DUPLICATE_TIER_PRICE => 'We found a duplicate website, tier price, customer group' .
-            ' and quantity.'
+            ' and quantity.',
     ];
 
     /**
@@ -84,7 +80,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
         self::COL_TIER_PRICE_CUSTOMER_GROUP,
         self::COL_TIER_PRICE_QTY,
         self::COL_TIER_PRICE,
-        self::COL_TIER_PRICE_TYPE
+        self::COL_TIER_PRICE_TYPE,
     ];
 
     /**
@@ -100,26 +96,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     protected $_resourceFactory;
 
     /**
-     * @var \Magento\Catalog\Helper\Data
-     */
-    protected $_catalogData;
-
-    /**
-     * @var \Magento\Catalog\Model\Product
-     */
-    protected $_productModel;
-
-    /**
-     * @var \Magento\CatalogImportExport\Model\Import\Product\StoreResolver
-     */
-    protected $_storeResolver;
-
-    /**
-     * @var ImportProduct
-     */
-    protected $_importProduct;
-
-    /**
      * @var array
      */
     protected $_validators = [];
@@ -132,7 +108,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * @var array
      */
-    protected $_oldSkus = null;
+    protected $_oldSkus;
 
     /**
      * Permanent entity columns.
@@ -147,29 +123,15 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     protected $_catalogProductEntity;
 
     /**
-     * @var \Magento\Framework\Stdlib\DateTime\DateTime
-     */
-    protected $dateTime;
-
-    /**
      * @var string
      */
     private $productEntityLinkField;
 
-    /**
-     * @var array
-     */
-    private $websiteScopeTierPrice = [];
+    private array $websiteScopeTierPrice = [];
 
-    /**
-     * @var array
-     */
-    private $globalScopeTierPrice = [];
+    private array $globalScopeTierPrice = [];
 
-    /**
-     * @var array
-     */
-    private $allProductIds = [];
+    private array $allProductIds = [];
 
     /**
      * @var CurrencyResolver
@@ -178,22 +140,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
 
     /**
      * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
-     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
-     * @param \Magento\ImportExport\Helper\Data $importExportData
-     * @param \Magento\ImportExport\Model\ResourceModel\Import\Data $importData
-     * @param \Magento\Framework\App\ResourceConnection $resource
-     * @param \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper
-     * @param ProcessingErrorAggregatorInterface $errorAggregator
-     * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
-     * @param \Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModelFactory $resourceFactory
-     * @param \Magento\Catalog\Model\Product $productModel
-     * @param \Magento\Catalog\Helper\Data $catalogData
-     * @param ImportProduct\StoreResolver $storeResolver
-     * @param ImportProduct $importProduct
-     * @param AdvancedPricing\Validator $validator
-     * @param AdvancedPricing\Validator\Website $websiteValidator
-     * @param AdvancedPricing\Validator\TierPrice $tierPriceValidator
-     * @param CurrencyResolver|null $currencyResolver
      * @throws \Exception
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
@@ -204,28 +150,23 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
         \Magento\Framework\App\ResourceConnection $resource,
         \Magento\ImportExport\Model\ResourceModel\Helper $resourceHelper,
         ProcessingErrorAggregatorInterface $errorAggregator,
-        \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
+        protected \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         \Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModelFactory $resourceFactory,
-        \Magento\Catalog\Model\Product $productModel,
-        \Magento\Catalog\Helper\Data $catalogData,
-        \Magento\CatalogImportExport\Model\Import\Product\StoreResolver $storeResolver,
-        ImportProduct $importProduct,
+        protected \Magento\Catalog\Model\Product $_productModel,
+        protected \Magento\Catalog\Helper\Data $_catalogData,
+        protected \Magento\CatalogImportExport\Model\Import\Product\StoreResolver $_storeResolver,
+        protected \Magento\CatalogImportExport\Model\Import\Product $_importProduct,
         AdvancedPricing\Validator $validator,
         AdvancedPricing\Validator\Website $websiteValidator,
         AdvancedPricing\Validator\TierPrice $tierPriceValidator,
         ?CurrencyResolver $currencyResolver = null
     ) {
-        $this->dateTime = $dateTime;
         $this->jsonHelper = $jsonHelper;
         $this->_importExportData = $importExportData;
         $this->_resourceHelper = $resourceHelper;
         $this->_dataSourceModel = $importData;
         $this->_connection = $resource->getConnection('write');
         $this->_resourceFactory = $resourceFactory;
-        $this->_productModel = $productModel;
-        $this->_catalogData = $catalogData;
-        $this->_storeResolver = $storeResolver;
-        $this->_importProduct = $importProduct;
         $this->_validators[self::VALIDATOR_MAIN] = $validator->init($this);
         $this->_catalogProductEntity = $this->_resourceFactory->create()->getTable('catalog_product_entity');
         $this->_oldSkus = $this->retrieveOldSkus();
@@ -252,10 +193,8 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
 
     /**
      * Entity type code getter.
-     *
-     * @return string
      */
-    public function getEntityTypeCode()
+    public function getEntityTypeCode(): string
     {
         return 'advanced_pricing';
     }
@@ -263,7 +202,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * Row validation.
      *
-     * @param array $rowData
      * @param int $rowNum
      * @return bool
      */
@@ -307,7 +245,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @throws \Exception
      * @return bool Result of operation.
      */
-    protected function _importData()
+    protected function _importData(): bool
     {
         if (\Magento\ImportExport\Model\Import::BEHAVIOR_DELETE == $this->getBehavior()) {
             $this->deleteAdvancedPricing();
@@ -325,7 +263,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @return $this
      * @throws \Exception
      */
-    public function saveAdvancedPricing()
+    public function saveAdvancedPricing(): static
     {
         $this->saveAndReplaceAdvancedPrices();
         return $this;
@@ -337,7 +275,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @return $this
      * @throws \Exception
      */
-    public function deleteAdvancedPricing()
+    public function deleteAdvancedPricing(): static
     {
         $this->_cachedSkuToDelete = null;
         $listSku = [];
@@ -366,7 +304,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @return $this
      * @throws \Exception
      */
-    public function replaceAdvancedPricing()
+    public function replaceAdvancedPricing(): static
     {
         $this->saveAndReplaceAdvancedPrices();
         return $this;
@@ -380,7 +318,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @throws \Exception
      */
-    protected function saveAndReplaceAdvancedPrices()
+    protected function saveAndReplaceAdvancedPrices(): static
     {
         $behavior = $this->getBehavior();
         if (\Magento\ImportExport\Model\Import::BEHAVIOR_REPLACE == $behavior) {
@@ -413,7 +351,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
                             ? $rowData[self::COL_TIER_PRICE] : 0,
                         'percentage_value' => $rowData[self::COL_TIER_PRICE_TYPE] === self::TIER_PRICE_TYPE_PERCENT
                             ? $rowData[self::COL_TIER_PRICE] : null,
-                        'website_id' => $this->getWebSiteId($rowData[self::COL_TIER_PRICE_WEBSITE])
+                        'website_id' => $this->getWebSiteId($rowData[self::COL_TIER_PRICE_WEBSITE]),
                     ];
                     if (\Magento\ImportExport\Model\Import::BEHAVIOR_APPEND == $behavior) {
                         $bunchTierPrices[$rowSku][] = $tierPrice;
@@ -453,12 +391,11 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * Save product prices.
      *
-     * @param array $priceData
      * @param string $table
      * @return $this
      * @throws \Exception
      */
-    protected function saveProductPrices(array $priceData, $table)
+    protected function saveProductPrices(array $priceData, $table): static
     {
         if ($priceData) {
             $tableName = $this->_resourceFactory->create()->getTable($table);
@@ -485,12 +422,10 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * Deletes tier prices prices.
      *
-     * @param array $listSku
      * @param string $table
-     * @return boolean
      * @throws \Exception
      */
-    protected function deleteProductTierPrices(array $listSku, $table)
+    protected function deleteProductTierPrices(array $listSku, $table): bool
     {
         $tableName = $this->_resourceFactory->create()->getTable($table);
         $productEntityLinkField = $this->getProductEntityLinkField();
@@ -509,7 +444,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
                         $this->_connection->quoteInto($productEntityLinkField . ' IN (?)', $this->_cachedSkuToDelete)
                     );
                     return true;
-                } catch (\Exception $e) {
+                } catch (\Exception) {
                     return false;
                 }
             } else {
@@ -523,10 +458,9 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * Set updated_at for product
      *
-     * @param array $listSku
      * @return $this
      */
-    protected function setUpdatedAt(array $listSku)
+    protected function setUpdatedAt(array $listSku): static
     {
         $updatedAt = $this->dateTime->gmtDate('Y-m-d H:i:s');
         $this->_connection->update(
@@ -545,9 +479,8 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      */
     protected function getWebSiteId($websiteCode)
     {
-        $result = $websiteCode == $this->_getValidator(self::VALIDATOR_WEBSITE)->getAllWebsitesValue() ||
+        return $websiteCode == $this->_getValidator(self::VALIDATOR_WEBSITE)->getAllWebsitesValue() ||
         $this->_catalogData->isPriceGlobal() ? 0 : $this->_storeResolver->getWebsiteCodeToId($websiteCode);
-        return $result;
     }
 
     /**
@@ -589,7 +522,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @return $this
      * @throws \Exception
      */
-    protected function processCountExistingPrices($prices, $table)
+    protected function processCountExistingPrices($prices, $table): static
     {
         $oldSkus = $this->retrieveOldSkus();
         $existProductIds = array_intersect_key($oldSkus, $prices);
@@ -623,10 +556,9 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * Increment counter of updated items
      *
      * @param array $prices
-     * @param array $existingPrice
      * @return void
      */
-    protected function incrementCounterUpdated($prices, $existingPrice)
+    protected function incrementCounterUpdated($prices, array $existingPrice)
     {
         foreach ($prices as $price) {
             if ($existingPrice['all_groups'] == $price['all_groups']
@@ -642,10 +574,9 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
     /**
      * Count new prices
      *
-     * @param array $tierPrices
      * @return $this
      */
-    protected function processCountNewPrices(array $tierPrices)
+    protected function processCountNewPrices(array $tierPrices): static
     {
         foreach ($tierPrices as $productPrices) {
             $this->countItemsCreated += count($productPrices);
@@ -691,7 +622,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
             while ($source->valid()) {
                 try {
                     $rowData = $source->current();
-                } catch (\InvalidArgumentException $exception) {
+                } catch (\InvalidArgumentException) {
                     $source->next();
                     continue;
                 }
@@ -708,8 +639,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      *
      * A row is considered a duplicate if the pair (product_id, all_groups, customer_group_id, qty) exists for
      * both global and website scopes. And the base currency is the same for both global and website scopes.
-     *
-     * @param string $table
      */
     private function validateRowsForDuplicate(string $table): void
     {
@@ -746,11 +675,8 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      *
      * A row is considered a duplicate if the pair (product_id, all_groups, customer_group_id, qty) exists for
      * both global and website scopes. And the base currency is the same for both global and website scopes.
-     *
-     * @param array $rowData
-     * @param int $rowNum
      */
-    private function validateRowForDuplicate(array $rowData, int $rowNum)
+    private function validateRowForDuplicate(array $rowData, int $rowNum): void
     {
         $productId = $this->retrieveOldSkus()[$rowData[self::COL_SKU]] ?? null;
         if ($productId && !$this->_catalogData->isPriceGlobal()) {
@@ -787,10 +713,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
 
     /**
      * Get the unique key of provided price
-     *
-     * @param array $priceData
-     * @param string $baseCurrency
-     * @return string
      */
     private function getUniqueKey(array $priceData, string $baseCurrency): string
     {
@@ -809,7 +731,6 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * Get existing prices in the database
      *
      * @param int[] $productIds
-     * @param string $table
      * @return array
      */
     private function getPrices(array $productIds, string $table)
@@ -824,7 +745,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
                         'all_groups',
                         'customer_group_id',
                         'qty',
-                        'website_id'
+                        'website_id',
                     ]
                 )
                 ->where(

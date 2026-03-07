@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ namespace Magento\Framework\Backup;
  */
 interface SourceFileInterface
 {
-
     /**
      * Check if keep files of backup
      *

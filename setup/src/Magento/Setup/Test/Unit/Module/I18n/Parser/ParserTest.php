@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Setup\Module\I18n\FilesCollector;
 use Magento\Setup\Module\I18n\Parser\AbstractParser;
 use Magento\Setup\Module\I18n\Parser\AdapterInterface;
 use Magento\Setup\Module\I18n\Parser as Parser;
-use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -122,43 +123,43 @@ class ParserTest extends TestCase
                     'php/path1/file11' => [
                         [
                             'phrase' => 'php phrase111',
-                            'quote' => "'"
+                            'quote' => "'",
                         ],
                         [   'phrase' => 'php phrase112',
-                            'quote' => '"'
-                        ]
+                            'quote' => '"',
+                        ],
                     ],
                     'php/path1/file12' => [
                         [
                             'phrase' => 'php phrase121',
-                            'quote' => "'"
+                            'quote' => "'",
                         ],
                         [   'phrase' => 'php phrase122',
-                            'quote' => '"'
-                        ]
+                            'quote' => '"',
+                        ],
                     ],
-                    'php/path2/file21' => []
+                    'php/path2/file21' => [],
                 ],
                 'jsMap' => [
                     'js/path1/file11' => [
                         [
                             'phrase' => 'js phrase111',
-                            'quote' => "'"
+                            'quote' => "'",
                         ],
                         [   'phrase' => 'js phrase112',
-                            'quote' => '"'
-                        ]
+                            'quote' => '"',
+                        ],
                     ],
                     'js/path1/file12' => [
                         [
                             'phrase' => 'js phrase121',
-                            'quote' => "'"
+                            'quote' => "'",
                         ],
                         [   'phrase' => 'js phrase122',
-                            'quote' => '"'
-                        ]
+                            'quote' => '"',
+                        ],
                     ],
-                    'js/path2/file21' => []
+                    'js/path2/file21' => [],
                 ],
                 'phraseFactoryMap' => [
                     [['phrase' => 'php phrase111', 'translation' => 'php phrase111', 'quote' => "'"], $phraseMock1],
@@ -180,7 +181,7 @@ class ParserTest extends TestCase
                     'js phrase121' => $phraseMock7,
                     'js phrase122' => $phraseMock8,
                 ],
-            ]
+            ],
         ];
     }
 

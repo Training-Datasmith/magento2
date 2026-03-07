@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class StatPluginTest extends TestCase
         $objectManager = new ObjectManager($this);
 
         $this->statPlugin = $objectManager->getObject(StatPlugin::class, [
-            'newRelicWrapper' => $this->getNewRelicWrapperMock()
+            'newRelicWrapper' => $this->getNewRelicWrapperMock(),
         ]);
 
         $this->statMock = $this->getMockBuilder(Stat::class)

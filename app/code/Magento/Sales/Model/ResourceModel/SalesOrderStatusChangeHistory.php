@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class SalesOrderStatusChangeHistory
             $this->resourceConnection->getTableName(self::TABLE_NAME),
             [
                 'order_id' => (int)$order->getId(),
-                'status' => $order->getStatus()
+                'status' => $order->getStatus(),
             ]
         );
     }

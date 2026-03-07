@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -8,9 +10,9 @@ namespace Magento\Reports\Block\Adminhtml;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Helper\Data;
-use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Stdlib\Parameters;
+use Magento\Framework\Url\DecoderInterface;
 
 /**
  * Backend report grid block

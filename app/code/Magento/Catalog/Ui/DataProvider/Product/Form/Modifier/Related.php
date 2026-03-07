@@ -1,15 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Api\ProductLinkRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Eav\Api\AttributeSetRepositoryInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Phrase;
@@ -21,8 +26,6 @@ use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\Component\Modal;
-use Magento\Catalog\Helper\Image as ImageHelper;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 
 /**
  * Class for Product Modifier Related
@@ -227,8 +230,8 @@ class Related extends AbstractModifier
             if (!empty($data[$productId]['links'][$dataScope])) {
                 $dataMap = $priceModifier->prepareDataSource([
                     'data' => [
-                        'items' => $data[$productId]['links'][$dataScope]
-                    ]
+                        'items' => $data[$productId]['links'][$dataScope],
+                    ],
                 ]);
                 $data[$productId]['links'][$dataScope] = $dataMap['data']['items'];
             }
@@ -331,7 +334,7 @@ class Related extends AbstractModifier
                         'sortOrder' => 10,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -372,7 +375,7 @@ class Related extends AbstractModifier
                         'sortOrder' => 20,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -413,7 +416,7 @@ class Related extends AbstractModifier
                         'sortOrder' => 30,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -458,7 +461,7 @@ class Related extends AbstractModifier
                                     [
                                         'targetName' => $modalTarget . '.' . $scope . '_product_listing',
                                         'actionName' => 'render',
-                                    ]
+                                    ],
                                 ],
                                 'title' => $buttonTitle,
                                 'provider' => null,
@@ -495,8 +498,8 @@ class Related extends AbstractModifier
                                 [
                                     'text' => __('Cancel'),
                                     'actions' => [
-                                        'closeModal'
-                                    ]
+                                        'closeModal',
+                                    ],
                                 ],
                                 [
                                     'text' => __('Add Selected Products'),
@@ -504,10 +507,10 @@ class Related extends AbstractModifier
                                     'actions' => [
                                         [
                                             'targetName' => 'index = ' . $listingTarget,
-                                            'actionName' => 'save'
+                                            'actionName' => 'save',
                                         ],
-                                        'closeModal'
-                                    ]
+                                        'closeModal',
+                                    ],
                                 ],
                             ],
                         ],
@@ -529,7 +532,7 @@ class Related extends AbstractModifier
                                 'realTimeLink' => true,
                                 'dataLinks' => [
                                     'imports' => false,
-                                    'exports' => true
+                                    'exports' => true,
                                 ],
                                 'behaviourType' => 'simple',
                                 'externalFilterMode' => true,
@@ -542,7 +545,7 @@ class Related extends AbstractModifier
                                     'productId' => '${ $.externalProvider }:params.current_product_id',
                                     'storeId' => '${ $.externalProvider }:params.current_store_id',
                                     '__disableTmpl' => ['productId' => false, 'storeId' => false],
-                                ]
+                                ],
                             ],
                         ],
                     ],

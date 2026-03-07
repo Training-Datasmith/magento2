@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -28,7 +29,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FedexUrlTest extends TestCase
 {
-
     /**
      * @var FedexUrl
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class GetByIdExceptionDuringMediaAssetInitializationTest extends TestCase
         'height' => 240,
         'size' => 12877,
         'created_at' => '2020',
-        'updated_at' => '2020'
+        'updated_at' => '2020',
     ];
 
     /**

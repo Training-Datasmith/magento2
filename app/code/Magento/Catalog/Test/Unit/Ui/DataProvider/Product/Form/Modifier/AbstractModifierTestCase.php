@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -64,7 +65,7 @@ abstract class AbstractModifierTestCase extends TestCase
     {
         $this->objectManager = new ObjectManager($this);
         $this->locatorMock = $this->createMock(LocatorInterface::class);
-        
+
         // Use createPartialMock for Product class to allow method configuration
         // Note: getId/setId are NOT mocked, allowing natural behavior via DataObject
         $this->productMock = $this->createPartialMock(
@@ -78,7 +79,7 @@ abstract class AbstractModifierTestCase extends TestCase
                 'getAttributeSetId',
                 'getOptions',
                 'getStore',
-                'getMediaAttributes'
+                'getMediaAttributes',
             ]
         );
         $this->productMock->method('getCustomAttributesCodes')->willReturn([]);

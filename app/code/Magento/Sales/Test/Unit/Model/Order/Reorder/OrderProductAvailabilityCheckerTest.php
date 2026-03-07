@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class OrderProductAvailabilityCheckerTest extends TestCase
 {
-
     /**
      * @var OrderedProductAvailabilityCheckerInterface[]
      */
@@ -70,7 +70,7 @@ class OrderProductAvailabilityCheckerTest extends TestCase
         $this->checker = $objectManager->getObject(
             OrderedProductAvailabilityChecker::class,
             [
-                'productAvailabilityChecks' => $this->productAvailabilityChecks
+                'productAvailabilityChecks' => $this->productAvailabilityChecks,
             ]
         );
     }

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Block\Wysiwyg;
 
-use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Ui\Model;
 
 /**

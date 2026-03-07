@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class HostedProUrl implements ResolverInterface
         $paymentAdditionalInformation = $payment->getAdditionalInformation();
 
         return [
-            'secure_form_url' => $paymentAdditionalInformation['secure_form_url']
+            'secure_form_url' => $paymentAdditionalInformation['secure_form_url'],
         ];
     }
 

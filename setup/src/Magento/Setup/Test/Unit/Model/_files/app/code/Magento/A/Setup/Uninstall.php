@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 class Uninstall implements \Magento\Framework\Setup\UninstallInterface
 {
-
     /**
      * Uninstall method
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,9 +81,9 @@ class BundleTest extends TestCase
                         'option_id' => 1,
                         'id' => 1,
                         'selection_id' => 1,
-                        'sku' => 'sku-1'
+                        'sku' => 'sku-1',
                     ],
-                ]
+                ],
             ],
             [
                 'option_id' => 2,
@@ -92,10 +93,10 @@ class BundleTest extends TestCase
                         'option_id' => 2,
                         'id' => 2,
                         'selection_id' => 2,
-                        'sku' => 'sku-2'
-                    ]
-                ]
-            ]
+                        'sku' => 'sku-2',
+                    ],
+                ],
+            ],
         ];
         $bundleOptions = array_map(
             fn ($optionData) => $this->createOptionMock(
@@ -124,7 +125,7 @@ class BundleTest extends TestCase
         $duplicate->expects($this->once())
             ->method('getExtensionAttributes')
             ->willReturn($extensionAttributesDuplicate);
-        
+
         $this->model->build($product, $duplicate);
         $this->assertNotEmpty($bundleOptionsClone, 'Bundle options should be set on duplicate product');
 

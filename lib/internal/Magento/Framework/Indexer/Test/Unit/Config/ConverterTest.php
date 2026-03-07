@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Indexer\Test\Unit\Config;
 use Magento\Framework\Exception\ConfigurationMismatchException;
 use Magento\Framework\Indexer\Config\Converter;
 use Magento\Framework\Indexer\Config\Converter\SortingAdjustmentInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConverterTest extends TestCase
 {
@@ -29,7 +30,7 @@ class ConverterTest extends TestCase
     protected function setUp(): void
     {
         $this->sortingAdjustment = $this->createMock(SortingAdjustmentInterface::class);
-        $this->sortingAdjustment->method("adjust")->willReturnCallback(
+        $this->sortingAdjustment->method('adjust')->willReturnCallback(
             function ($arg) {
                 return $arg;
             }
@@ -107,7 +108,7 @@ XML
                     'indexer_5',
                     'indexer_4',
                 ],
-            ]
+            ],
         ];
     }
 

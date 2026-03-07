@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Authentication\Rest;
 
+use Magento\Framework\Oauth\Helper\Utility;
 use Magento\Framework\Oauth\NonceGeneratorInterface;
 use Magento\Framework\Url;
-use Magento\Framework\Oauth\Helper\Utility;
+use Magento\TestFramework\Authentication\Rest\OauthClient\Signature;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Inspection\Exception;
-use Magento\TestFramework\Authentication\Rest\OauthClient\Signature;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -99,8 +102,8 @@ class OauthClient
             'oauth_nonce' => $this->_nonceGenerator->generateNonce(),
             'oauth_timestamp' => (string)$this->_nonceGenerator->generateTimestamp(),
             'oauth_version' => '1.0',
-            "oauth_signature_method" => \Magento\Framework\Oauth\Oauth::SIGNATURE_SHA256,
-            "oauth_callback" => TESTS_BASE_URL
+            'oauth_signature_method' => \Magento\Framework\Oauth\Oauth::SIGNATURE_SHA256,
+            'oauth_callback' => TESTS_BASE_URL,
         ];
         return array_merge($headerParams, $params);
     }
@@ -121,7 +124,7 @@ class OauthClient
                 $authParameters,
                 $this->consumerSecret,
                 $requestUrl
-            )
+            ),
         ];
 
         $responseBody = $this->curlClient->retrieveResponse($requestUrl, [], $headers);
@@ -308,7 +311,7 @@ class OauthClient
     public function buildBearerTokenAuthorizationHeader(?string $token): array
     {
         return [
-            'Authorization: Bearer ' . $token
+            'Authorization: Bearer ' . $token,
         ];
     }
 
@@ -331,7 +334,7 @@ class OauthClient
     ): array {
         $params = ['oauth_consumer_key' => $this->consumerKey];
         $params = $this->getBasicAuthorizationParams($params);
-        $tokenData = ['oauth_token'=> $token, 'oauth_token_secret'=> $tokenSecret];
+        $tokenData = ['oauth_token' => $token, 'oauth_token_secret' => $tokenSecret];
         return [
             'Authorization: ' . $this->buildAuthorizationHeaderForAPIRequest(
                 $params,
@@ -340,7 +343,7 @@ class OauthClient
                 $tokenData,
                 $bodyParams,
                 $method
-            )
+            ),
         ];
     }
 

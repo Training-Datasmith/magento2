@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class ScalarTypes
      * @param string $typeName
      * @return bool
      */
-    public function isScalarType(string $typeName) : bool
+    public function isScalarType(string $typeName): bool
     {
         $standardTypes = \GraphQL\Type\Definition\Type::getStandardTypes();
         return isset($standardTypes[$typeName]);
@@ -31,7 +32,7 @@ class ScalarTypes
      * @return \GraphQL\Type\Definition\ScalarType|\GraphQL\Type\Definition\Type
      * @throws \LogicException
      */
-    public function getScalarTypeInstance(string $typeName) : \GraphQL\Type\Definition\Type
+    public function getScalarTypeInstance(string $typeName): \GraphQL\Type\Definition\Type
     {
         $standardTypes = \GraphQL\Type\Definition\Type::getStandardTypes();
         if ($this->isScalarType($typeName)) {
@@ -47,7 +48,7 @@ class ScalarTypes
      * @param \GraphQL\Type\Definition\ScalarType|\GraphQL\Type\Definition\Type $definedType
      * @return ListOfType
      */
-    public function createList(\GraphQL\Type\Definition\Type $definedType) : ListOfType
+    public function createList(\GraphQL\Type\Definition\Type $definedType): ListOfType
     {
         return new ListOfType($definedType);
     }
@@ -58,7 +59,7 @@ class ScalarTypes
      * @param \GraphQL\Type\Definition\ScalarType|\GraphQL\Type\Definition\Type $definedType
      * @return NonNull
      */
-    public function createNonNull(\GraphQL\Type\Definition\Type $definedType) : NonNull
+    public function createNonNull(\GraphQL\Type\Definition\Type $definedType): NonNull
     {
         return new NonNull($definedType);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class PriceType implements OptionSourceInterface
     {
         return [
             ['value' => 'COMMERCIAL', 'label' => __('Commercial')],
-            ['value' => 'RETAIL', 'label' => __('Retail')]
+            ['value' => 'RETAIL', 'label' => __('Retail')],
         ];
     }
 }

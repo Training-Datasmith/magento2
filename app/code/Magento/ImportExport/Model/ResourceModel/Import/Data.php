@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\ResourceModel\Import;
 
 /**
@@ -276,7 +279,7 @@ class Data extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implemen
     {
         $encodedData = $this->jsonHelper->jsonEncode($data);
 
-        if (json_last_error()!==JSON_ERROR_NONE && empty($encodedData)) {
+        if (json_last_error() !== JSON_ERROR_NONE && empty($encodedData)) {
             throw new \Magento\Framework\Exception\ValidatorException(
                 __('Error in CSV: ' . json_last_error_msg())
             );

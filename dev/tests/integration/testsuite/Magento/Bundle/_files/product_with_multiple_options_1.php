@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -64,7 +66,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_price_value' => 2.75,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 11,
@@ -72,9 +74,9 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_price_value' => 6.75,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
-                ]
-            ]
+                    'option_id' => 1,
+                ],
+            ],
 
             ]
     );

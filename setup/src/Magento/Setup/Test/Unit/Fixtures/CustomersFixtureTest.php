@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class CustomersFixtureTest extends TestCase
             'fixtureModel' => $this->fixtureModelMock,
             'customerGenerator' => $this->customerGeneratorMock,
             'customerDataGeneratorFactory' => $this->customerDataGeneratorFactoryMock,
-            'collectionFactory' => $this->collectionFactoryMock
+            'collectionFactory' => $this->collectionFactoryMock,
         ]);
     }
 
@@ -83,14 +84,14 @@ class CustomersFixtureTest extends TestCase
 
         $customersNumber = 100500;
         $customerConfig = [
-            'some-key' => 'some value'
+            'some-key' => 'some value',
         ];
 
         $callCount = 0;
         $this->fixtureModelMock
             ->expects($this->exactly(2))
             ->method('getValue')
-            ->willReturnCallback(function() use (&$callCount, $customersNumber, $customerConfig) {
+            ->willReturnCallback(function () use (&$callCount, $customersNumber, $customerConfig) {
                 $callCount++;
                 return $callCount === 1 ? $customersNumber : $customerConfig;
             });
@@ -136,7 +137,7 @@ class CustomersFixtureTest extends TestCase
     {
         $this->assertSame(
             [
-                'customers' => 'Customers'
+                'customers' => 'Customers',
             ],
             $this->model->introduceParamLabels()
         );

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -42,7 +44,7 @@ class Images extends AbstractModifier
      * @var DefaultValueProcessor
      */
     private $defaultValueProcessor;
-    
+
     /**
      * @var ScopeOverriddenValue
      */
@@ -91,7 +93,7 @@ class Images extends AbstractModifier
         ) {
             foreach ($data[$modelId][self::DATA_SOURCE_DEFAULT]['media_gallery']['images'] as $index => $image) {
                 if (!isset($image['label'])) {
-                    $data[$modelId][self::DATA_SOURCE_DEFAULT]['media_gallery']['images'][$index]['label'] = "";
+                    $data[$modelId][self::DATA_SOURCE_DEFAULT]['media_gallery']['images'][$index]['label'] = '';
                 }
             }
             $storeId = (int)$this->locator->getStore()->getId();

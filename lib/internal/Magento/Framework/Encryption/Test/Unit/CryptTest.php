@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,11 +9,12 @@ declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Encryption\Crypt
  */
+
 namespace Magento\Framework\Encryption\Test\Unit;
 
 use Magento\Framework\Encryption\Crypt;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CryptTest extends TestCase
 {

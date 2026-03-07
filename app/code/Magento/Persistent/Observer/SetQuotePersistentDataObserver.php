@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -77,9 +80,9 @@ class SetQuotePersistentDataObserver implements ObserverInterface
         }
 
         if ((
-                ($this->_persistentSession->isPersistent())
+            ($this->_persistentSession->isPersistent())
                 && $this->_persistentData->isShoppingCartPersist()
-            )
+        )
             && $this->quoteManager->isPersistent()
         ) {
             //Quote is not actual customer's quote, just persistent

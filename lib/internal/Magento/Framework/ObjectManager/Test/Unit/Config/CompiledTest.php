@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\ObjectManager\Test\Unit\Config;
 
 use Magento\Framework\ObjectManager\Config\Compiled;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CompiledTest extends TestCase
 {
@@ -38,12 +39,12 @@ class CompiledTest extends TestCase
             ],
             'instanceTypes' => [
                 'instanceType1' => 'instanceTypeValue1',
-                'instanceType2' => 'instanceTypeValue2'
+                'instanceType2' => 'instanceTypeValue2',
             ],
             'preferences' => [
                 'preference1' => 'preferenceValue1',
-                'preference2' => 'preferenceValue2'
-            ]
+                'preference2' => 'preferenceValue2',
+            ],
         ];
 
         $this->compiled = $this->objectManager->getObject(
@@ -65,7 +66,7 @@ class CompiledTest extends TestCase
                 'type1' => 'configuration for type1',
                 'type2' => [
                     'argument2_1' => 'newArgumentValue2_1',
-                ]
+                ],
             ],
             'instanceTypes' => [
                 'instanceType2' => 'newInstanceTypeValue2',
@@ -79,7 +80,7 @@ class CompiledTest extends TestCase
             'type1' => 'configuration for type1',
             'type2' => [
                 'argument2_1' => 'newArgumentValue2_1',
-            ]
+            ],
         ];
 
         $this->compiled->extend($configuration);
@@ -96,13 +97,13 @@ class CompiledTest extends TestCase
         $configuration = [
             'instanceTypes' => [
                 'instanceType2' => 'newInstanceTypeValue2',
-                'instanceType3' => 'newInstanceTypeValue3'
+                'instanceType3' => 'newInstanceTypeValue3',
             ],
         ];
         $expectedTypes = [
             'instanceType1' => 'instanceTypeValue1',
             'instanceType2' => 'newInstanceTypeValue2',
-            'instanceType3' => 'newInstanceTypeValue3'
+            'instanceType3' => 'newInstanceTypeValue3',
         ];
         $this->compiled->extend($configuration);
         $this->assertEquals($expectedTypes, $this->compiled->getVirtualTypes());
@@ -115,12 +116,12 @@ class CompiledTest extends TestCase
     {
         $configuration = [
             'preferences' => [
-                'preference1' => 'newPreferenceValue1'
-            ]
+                'preference1' => 'newPreferenceValue1',
+            ],
         ];
         $expectedPreferences = [
             'preference1' => 'newPreferenceValue1',
-            'preference2' => 'preferenceValue2'
+            'preference2' => 'preferenceValue2',
         ];
         $this->compiled->extend($configuration);
         $this->assertEquals($expectedPreferences, $this->compiled->getPreferences());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ class ShipmentIdentity extends Container implements IdentityInterface
     /**
      * Configuration paths
      */
-    const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/shipment/copy_method';
-    const XML_PATH_EMAIL_COPY_TO = 'sales_email/shipment/copy_to';
-    const XML_PATH_EMAIL_IDENTITY = 'sales_email/shipment/identity';
-    const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/shipment/guest_template';
-    const XML_PATH_EMAIL_TEMPLATE = 'sales_email/shipment/template';
-    const XML_PATH_EMAIL_ENABLED = 'sales_email/shipment/enabled';
+    public const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/shipment/copy_method';
+    public const XML_PATH_EMAIL_COPY_TO = 'sales_email/shipment/copy_to';
+    public const XML_PATH_EMAIL_IDENTITY = 'sales_email/shipment/identity';
+    public const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/shipment/guest_template';
+    public const XML_PATH_EMAIL_TEMPLATE = 'sales_email/shipment/template';
+    public const XML_PATH_EMAIL_ENABLED = 'sales_email/shipment/enabled';
 
     /**
      * Is email enabled

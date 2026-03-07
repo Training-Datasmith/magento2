@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class PageSizeProvider
      * @return integer
      * @since 101.0.0
      */
-    public function getMaxPageSize() : int
+    public function getMaxPageSize(): int
     {
         $searchEngine = $this->engineResolver->getCurrentSearchEngine();
 

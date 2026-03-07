@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\CatalogUrlRewrite\Model;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product\Visibility;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\CatalogUrlRewrite\Model\Map\DataProductUrlRewriteDatabaseMap;
 use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Catalog\Model\Product\Visibility;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

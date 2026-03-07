@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Model\Plugin;
 
-use Magento\Persistent\Model\Plugin\LoginAsCustomerCleanUp;
-use Magento\Persistent\Helper\Session as PersistentSession;
-use Magento\Persistent\Model\Session as PersistentSessionModel;
 use Magento\LoginAsCustomerApi\Api\AuthenticateCustomerBySecretInterface;
+use Magento\Persistent\Helper\Session as PersistentSession;
+use Magento\Persistent\Model\Plugin\LoginAsCustomerCleanUp;
+use Magento\Persistent\Model\Session as PersistentSessionModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

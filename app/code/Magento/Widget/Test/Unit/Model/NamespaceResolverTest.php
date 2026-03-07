@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class NamespaceResolverTest extends TestCase
         $this->namespaceResolver = $objectManager->getObject(
             NamespaceResolver::class,
             [
-                'moduleList' => $this->moduleListMock
+                'moduleList' => $this->moduleListMock,
             ]
         );
     }
@@ -68,38 +69,38 @@ class NamespaceResolverTest extends TestCase
                 'namespace' => \Magento\Widget\Test\Unit\Model\NamespaceResolverTest::class,
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => 'Magento_Widget',
-                'asFullModuleName' => true
+                'asFullModuleName' => true,
             ],
             [
                 'namespace' => \Magento\Widget\Test\Unit\Model\NamespaceResolverTest::class,
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => 'magento_widget',
-                'asFullModuleName' => false
+                'asFullModuleName' => false,
             ],
             [
                 'namespace' => 'Widget\Test\Unit\Model\NamespaceResolverTest',
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => 'Magento_Widget',
-                'asFullModuleName' => true
+                'asFullModuleName' => true,
 
             ],
             [
                 'namespace' => 'Widget\Test\Unit\Model\NamespaceResolverTest',
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => 'widget',
-                'asFullModuleName' => false
+                'asFullModuleName' => false,
             ],
             [
                 'namespace' => 'Unit\Model\NamespaceResolverTest',
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => '',
-                'asFullModuleName' => true
+                'asFullModuleName' => true,
             ],
             [
                 'namespace' => 'Unit\Model\NamespaceResolverTest',
                 'modules' => ['Magento_Cms', 'Magento_Catalog', 'Magento_Sales', 'Magento_Widget'],
                 'expected' => '',
-                'asFullModuleName' => false
+                'asFullModuleName' => false,
             ],
         ];
     }

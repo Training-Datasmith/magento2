@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class ProductTest extends \PHPUnit\Framework\TestCase
 {
@@ -25,7 +26,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         $configurableProduct = $productRepository->get('configurable');
         $expectedIdentities = [
             'cat_p_' . $configurableProduct->getId(),
-            'cat_p'
+            'cat_p',
         ];
         $this->assertEquals($expectedIdentities, $configurableProduct->getIdentities());
     }

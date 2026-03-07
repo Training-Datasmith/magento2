@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\CheckoutAgreements\Test\Unit\Model;
 use Magento\CheckoutAgreements\Api\CheckoutAgreementsListInterface;
 use Magento\CheckoutAgreements\Model\Agreement as AgreementModel;
 use Magento\CheckoutAgreements\Model\AgreementFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\CheckoutAgreements\Model\Api\SearchCriteria\ActiveStoreAgreementsFilter;
 use Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository;
 use Magento\CheckoutAgreements\Model\ResourceModel\Agreement;
@@ -18,6 +18,7 @@ use Magento\CheckoutAgreements\Model\ResourceModel\Agreement\CollectionFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessor;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;

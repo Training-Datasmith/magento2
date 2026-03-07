@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api;
 
 use Magento\Framework\Convert\ConvertArray;
@@ -93,7 +96,7 @@ class SimpleDataObjectConverter
     public function convertStdObjectToArray($input, $removeItemNode = false)
     {
         if (!is_object($input) && !is_array($input)) {
-            throw new \InvalidArgumentException("Input argument must be an array or object");
+            throw new \InvalidArgumentException('Input argument must be an array or object');
         }
         // @codingStandardsIgnoreStart
         if ($removeItemNode && (isset($input->item) || isset($input->Map))) {
@@ -172,6 +175,6 @@ class SimpleDataObjectConverter
      */
     public static function camelCaseToSnakeCase($name)
     {
-        return $name !== null ? strtolower(ltrim(preg_replace('/([A-Z])/m', "_$1", $name), '_')) : '';
+        return $name !== null ? strtolower(ltrim(preg_replace('/([A-Z])/m', '_$1', $name), '_')) : '';
     }
 }

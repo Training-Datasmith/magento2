@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Cms\Helper\Wysiwyg\Images as ImagesHelper;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class GetInsertImageContentTest extends TestCase
 {

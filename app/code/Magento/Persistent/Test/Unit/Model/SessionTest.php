@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class SessionTest extends TestCase
                 'delete',
                 'commit',
                 'rollBack',
-                '_construct'
+                '_construct',
             ]
         );
 

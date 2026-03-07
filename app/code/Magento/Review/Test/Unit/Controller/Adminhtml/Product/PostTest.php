@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,13 +13,13 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Review\Controller\Adminhtml\Product\Post;
 use Magento\Review\Model\Rating;
 use Magento\Review\Model\RatingFactory;
 use Magento\Review\Model\Review;
 use Magento\Review\Model\ReviewFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -102,7 +103,7 @@ class PostTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'objectManager' => $this->objectManagerMock,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
         $this->postController = $objectManagerHelper->getObject(
@@ -110,7 +111,7 @@ class PostTest extends TestCase
             [
                 'reviewFactory' => $this->reviewFactoryMock,
                 'ratingFactory' => $this->ratingFactoryMock,
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }
@@ -154,7 +155,7 @@ class PostTest extends TestCase
             ->willReturnMap(
                 [
                     ['product_id', false, 1],
-                    ['ratings', [], ['1' => '1']]
+                    ['ratings', [], ['1' => '1']],
                 ]
             );
         $this->requestMock->expects($this->once())

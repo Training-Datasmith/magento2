@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Tax\Setup\Patch\Data;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Tax\Setup\TaxSetup;
@@ -51,7 +52,7 @@ class UpdateTaxClassAttributeVisibility implements DataPatchInterface, PatchVers
 
         $this->moduleDataSetup->getConnection()->startSetup();
 
-         //Update the tax_class_id attribute in the 'catalog_eav_attribute' table
+        //Update the tax_class_id attribute in the 'catalog_eav_attribute' table
         $taxSetup->updateAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
             'tax_class_id',
@@ -67,7 +68,7 @@ class UpdateTaxClassAttributeVisibility implements DataPatchInterface, PatchVers
     public static function getDependencies()
     {
         return [
-            AddTaxAttributeAndTaxClasses::class
+            AddTaxAttributeAndTaxClasses::class,
         ];
     }
 

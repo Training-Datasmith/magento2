@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,11 +12,12 @@ use Magento\Catalog\Model\Product;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\Http as RequestHttp;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Helper\PostHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\Framework\UrlInterface;
@@ -25,7 +27,6 @@ use Magento\Wishlist\Controller\WishlistProviderInterface;
 use Magento\Wishlist\Helper\Data;
 use Magento\Wishlist\Model\Item as WishlistItem;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -138,7 +139,7 @@ class DataTest extends TestCase
                 'storeManager' => $this->storeManager,
                 'wishlistProvider' => $this->wishlistProvider,
                 'coreRegistry' => $this->coreRegistry,
-                'postDataHelper' => $this->postDataHelper
+                'postDataHelper' => $this->postDataHelper,
             ]
         );
     }

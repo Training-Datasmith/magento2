@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CategoryAttributeOptionManagementInterfaceTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogCategoryAttributeOptionManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/categories/attributes';
+    public const SERVICE_NAME = 'catalogCategoryAttributeOptionManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/categories/attributes';
 
     public function testGetItems()
     {

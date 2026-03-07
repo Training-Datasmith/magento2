@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
-use Magento\Framework\App\ObjectManagerFactory;
 use Magento\Framework\App\Bootstrap as MagentoAppBootstrap;
+use Magento\Framework\App\ObjectManagerFactory;
 
 /**
  * Class Bootstrap

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Directory\TargetDirectory;
 use Magento\Framework\Registry;
 use Magento\ImportExport\Helper\Data;
 use Magento\ImportExport\Model\Import;
@@ -143,7 +143,7 @@ class ProductTestBase extends TestCase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -263,7 +263,7 @@ class ProductTestBase extends TestCase
     {
         $data = ['header' => [], 'data' => []];
 
-        $lines = str_getcsv($content, "\n",'"', '\\');
+        $lines = str_getcsv($content, "\n", '"', '\\');
         foreach ($lines as $index => $line) {
             if ($index == 0) {
                 $data['header'] = str_getcsv($line, ',', '"', '\\');
@@ -295,7 +295,7 @@ class ProductTestBase extends TestCase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/_files/' . $fileName,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
@@ -308,7 +308,7 @@ class ProductTestBase extends TestCase
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
                 'entity' => 'catalog_product',
-                Import::FIELD_NAME_IMG_FILE_DIR => $mediaDirPath . '/import'
+                Import::FIELD_NAME_IMG_FILE_DIR => $mediaDirPath . '/import',
             ]
         );
         $uploader = $this->_model->getUploader();
@@ -388,7 +388,7 @@ class ProductTestBase extends TestCase
             'behavior' => Import::BEHAVIOR_APPEND,
             'entity' => 'catalog_product',
             Import::FIELDS_ENCLOSURE => 1,
-            Import::FIELD_NAME_IMG_FILE_DIR => $this->getMediaDirPath($mediaDirectory) . '/import'
+            Import::FIELD_NAME_IMG_FILE_DIR => $this->getMediaDirPath($mediaDirectory) . '/import',
         ]);
         $this->_model->setSource($source);
         $errors = $this->_model->validateData();

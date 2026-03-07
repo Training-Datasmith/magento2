@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -9,6 +10,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\AdminNotification\Block\Grid\Renderer\Actions
  */
+
 namespace Magento\AdminNotification\Test\Unit\Block\Grid\Renderer;
 
 use Magento\AdminNotification\Block\Grid\Renderer\Notice;
@@ -42,7 +44,7 @@ class NoticeTest extends TestCase
         $this->sut = new Notice($contextMock);
     }
 
-    public function testShouldRenderNotice() : void
+    public function testShouldRenderNotice(): void
     {
         $dataObject = new DataObject();
         $dataObject->setData('title', 'A great Title');

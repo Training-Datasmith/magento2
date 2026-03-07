@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price;
-
-use Magento\Framework\DB\Select;
 
 /**
  * Configurable product options prices aggregator

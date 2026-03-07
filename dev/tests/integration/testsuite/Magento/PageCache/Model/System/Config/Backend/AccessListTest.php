@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class AccessListTest extends TestCase
                 // Suppress any other exceptions during cleanup
             }
         }
-        
+
         parent::tearDown();
     }
 
@@ -90,10 +91,10 @@ class AccessListTest extends TestCase
     public function testValidIpAddresses(string $value): void
     {
         $this->prepareModel($value);
-        
+
         // Should not throw exception
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -128,9 +129,9 @@ class AccessListTest extends TestCase
     public function testValidHostnames(string $value): void
     {
         $this->prepareModel($value);
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -161,9 +162,9 @@ class AccessListTest extends TestCase
     public function testValidCidrNotationIpv4(string $value): void
     {
         $this->prepareModel($value);
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -196,9 +197,9 @@ class AccessListTest extends TestCase
     public function testValidCidrNotationIpv6(string $value): void
     {
         $this->prepareModel($value);
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -228,9 +229,9 @@ class AccessListTest extends TestCase
     public function testValidMultipleValues(string $value): void
     {
         $this->prepareModel($value);
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -258,11 +259,11 @@ class AccessListTest extends TestCase
     public function testValuesWithWhitespace(): void
     {
         $value = '  192.168.1.1  ,  localhost  ,  10.0.0.0/8  ';
-        
+
         $this->prepareModel($value);
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         $this->assertSame($value, $this->model->getValue());
     }
@@ -277,9 +278,9 @@ class AccessListTest extends TestCase
     {
         $this->expectException(LocalizedException::class);
         $this->expectExceptionMessage('is not valid');
-        
+
         $this->prepareModel($value);
-        
+
         $this->model->beforeSave();
     }
 
@@ -310,9 +311,9 @@ class AccessListTest extends TestCase
     {
         $this->expectException(LocalizedException::class);
         $this->expectExceptionMessage('is not valid');
-        
+
         $this->prepareModel($value);
-        
+
         $this->model->beforeSave();
     }
 
@@ -344,9 +345,9 @@ class AccessListTest extends TestCase
     {
         $this->expectException(LocalizedException::class);
         $this->expectExceptionMessage('is not valid');
-        
+
         $this->prepareModel($value);
-        
+
         $this->model->beforeSave();
     }
 
@@ -376,9 +377,9 @@ class AccessListTest extends TestCase
     {
         $this->expectException(LocalizedException::class);
         $this->expectExceptionMessage('is not valid because of item');
-        
+
         $this->prepareModel($value);
-        
+
         $this->model->beforeSave();
     }
 
@@ -413,7 +414,7 @@ class AccessListTest extends TestCase
 
         foreach ($validBoundaries as $value) {
             $this->prepareModel($value);
-            
+
             $result = $this->model->beforeSave();
             $this->assertInstanceOf(AccessList::class, $result, "Failed for CIDR: {$value}");
         }
@@ -427,14 +428,14 @@ class AccessListTest extends TestCase
     public function testModelCanBeSaved(): void
     {
         $value = '192.168.1.0/24, localhost, ::1';
-        
+
         $this->prepareModel($value, 'system/full_page_cache/caching_application/access_list_test');
         $this->model->setScope('default');
         $this->model->setScopeId(0);
-        
+
         // Save the model
         $this->model->save();
-        
+
         // Verify it was saved
         $this->assertNotNull($this->model->getId());
         $this->assertSame($value, $this->model->getValue());
@@ -448,9 +449,9 @@ class AccessListTest extends TestCase
     public function testEmptyValueUsesDefault(): void
     {
         $this->prepareModel('');
-        
+
         $result = $this->model->beforeSave();
-        
+
         $this->assertInstanceOf(AccessList::class, $result);
         // Value should be set to default 'localhost' (from config.xml: system/full_page_cache/default['access_list'])
         $this->assertSame('localhost', $this->model->getValue());

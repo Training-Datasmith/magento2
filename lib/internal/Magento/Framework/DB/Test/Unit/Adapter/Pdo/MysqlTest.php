@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\Setup\SchemaListener;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * \Magento\Framework\DB\Adapter\Pdo\Mysql class test
@@ -108,9 +109,9 @@ class MysqlTest extends TestCase
             [9223372036854775807 + 1, '9223372036854775808'],
             [9223372036854775807, '9223372036854775807'],
             [9223372036854775807.3423424234, '9223372036854775808'],
-            [2147483647 * pow(10, 10)+12, '21474836470000001024'],
-            [9223372036854775807 * pow(10, 10)+12, '92233720368547758080000000000'],
-            [(0.099999999999999999999999995+0.2+0.3+0.4+0.5)*10, '15'],
+            [2147483647 * pow(10, 10) + 12, '21474836470000001024'],
+            [9223372036854775807 * pow(10, 10) + 12, '92233720368547758080000000000'],
+            [(0.099999999999999999999999995 + 0.2 + 0.3 + 0.4 + 0.5) * 10, '15'],
             ['21474836470000000012', '21474836470000001024'],
             [0x5468792130ABCDEF, '6082244480221302255'],
         ];
@@ -159,9 +160,9 @@ class MysqlTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\LocalizedException');
         $this->expectExceptionMessage('Multiple queries can\'t be executed. Run a single query and try again.');
-        $sql = "SELECT COUNT(*) AS _num FROM test; ";
-        $sql .= "INSERT INTO test(id) VALUES (1); ";
-        $sql .= "SELECT COUNT(*) AS _num FROM test; ";
+        $sql = 'SELECT COUNT(*) AS _num FROM test; ';
+        $sql .= 'INSERT INTO test(id) VALUES (1); ';
+        $sql .= 'SELECT COUNT(*) AS _num FROM test; ';
         $this->getMysqlPdoAdapterMockForDdlQueryTest()->query($sql);
     }
 
@@ -400,8 +401,8 @@ class MysqlTest extends TestCase
             'insert' => 'insertValue',
         ];
         $fields = ['select', 'insert'];
-        $sqlQuery = "INSERT  INTO `some_table` (`index`,`row`,`select`,`insert`) VALUES (?, ?, ?, ?) "
-            . "ON DUPLICATE KEY UPDATE `select` = VALUES(`select`), `insert` = VALUES(`insert`)";
+        $sqlQuery = 'INSERT  INTO `some_table` (`index`,`row`,`select`,`insert`) VALUES (?, ?, ?, ?) '
+            . 'ON DUPLICATE KEY UPDATE `select` = VALUES(`select`), `insert` = VALUES(`insert`)';
 
         $stmtMock = $this->createMock(\Zend_Db_Statement_Pdo::class);
         $bind = ['indexValue', 'rowValue', 'selectValue', 'insertValue'];
@@ -451,7 +452,7 @@ class MysqlTest extends TestCase
                 ],
                 'expectedQuery' => 'ALTER TABLE `tableName` ADD COLUMN `columnName` int UNSIGNED '
                     . 'NOT NULL default  auto_increment COMMENT Some field AFTER `Previous field` ',
-            ]
+            ],
         ];
     }
 
@@ -610,8 +611,8 @@ class MysqlTest extends TestCase
                 'keyLists' => [
                     'PRIMARY' => [
                         'INDEX_TYPE' => [
-                            AdapterInterface::INDEX_TYPE_PRIMARY
-                        ]
+                            AdapterInterface::INDEX_TYPE_PRIMARY,
+                        ],
                     ],
                 ],
                 'query' => 'ALTER TABLE `%s` ADD UNIQUE `SOME_UNIQUE_INDEX` (%s)',
@@ -626,13 +627,13 @@ class MysqlTest extends TestCase
                 'keyLists' => [
                     'PRIMARY' => [
                         'INDEX_TYPE' => [
-                            AdapterInterface::INDEX_TYPE_PRIMARY
-                        ]
+                            AdapterInterface::INDEX_TYPE_PRIMARY,
+                        ],
                     ],
                     'SOME_UNIQUE_INDEX' => [
                         'INDEX_TYPE' => [
-                            AdapterInterface::INDEX_TYPE_UNIQUE
-                        ]
+                            AdapterInterface::INDEX_TYPE_UNIQUE,
+                        ],
                     ],
                 ],
                 'query' => 'ALTER TABLE `%s` DROP INDEX `SOME_UNIQUE_INDEX`, ADD UNIQUE `SOME_UNIQUE_INDEX` (%s)',
@@ -647,8 +648,8 @@ class MysqlTest extends TestCase
                 'keyLists' => [
                     'SOME_UNIQUE_INDEX' => [
                         'INDEX_TYPE' => [
-                            AdapterInterface::INDEX_TYPE_UNIQUE
-                        ]
+                            AdapterInterface::INDEX_TYPE_UNIQUE,
+                        ],
                     ],
                 ],
                 'query' => 'ALTER TABLE `%s` ADD PRIMARY KEY (%s)',
@@ -821,32 +822,32 @@ class MysqlTest extends TestCase
               'actual' => [
                       [
                           'DATA_TYPE' => 'int',
-                          'DEFAULT' => ''
+                          'DEFAULT' => '',
                       ],
                       [
                           'DATA_TYPE' => 'timestamp /* mariadb-5.3 */',
-                          'DEFAULT' => 'CURRENT_TIMESTAMP'
+                          'DEFAULT' => 'CURRENT_TIMESTAMP',
                       ],
                       [
                           'DATA_TYPE' => 'varchar',
-                          'DEFAULT' => ''
-                      ]
+                          'DEFAULT' => '',
+                      ],
                   ],
               'expected' => [
                       [
                           'DATA_TYPE' => 'int',
-                          'DEFAULT' => null
+                          'DEFAULT' => null,
                       ],
                       [
                           'DATA_TYPE' => 'timestamp',
-                          'DEFAULT' => 'CURRENT_TIMESTAMP'
+                          'DEFAULT' => 'CURRENT_TIMESTAMP',
                       ],
                       [
                           'DATA_TYPE' => 'varchar',
-                          'DEFAULT' => ''
-                      ]
-                  ]
-              ]
+                          'DEFAULT' => '',
+                      ],
+                  ],
+              ],
         ];
     }
 
@@ -877,53 +878,53 @@ class MysqlTest extends TestCase
                 'actual' => [
                     [
                         'DATA_TYPE' => 'int',
-                        'DEFAULT' => ''
+                        'DEFAULT' => '',
                     ],
-                    '10'
+                    '10',
                 ],
-                'expected' => 10
+                'expected' => 10,
             ],
             [
                 'actual' => [
                     [
                         'DATA_TYPE' => 'datetime /* mariadb-5.3 */',
-                        'DEFAULT' => 'CURRENT_TIMESTAMP'
+                        'DEFAULT' => 'CURRENT_TIMESTAMP',
                     ],
-                    'null'
+                    'null',
                 ],
-                'expected' => new \Zend_Db_Expr('NULL')
+                'expected' => new \Zend_Db_Expr('NULL'),
             ],
             [
                 'actual' => [
                     [
                         'DATA_TYPE' => 'date /* mariadb-5.3 */',
-                        'DEFAULT' => ''
+                        'DEFAULT' => '',
                     ],
-                    'null'
+                    'null',
                 ],
-                'expected' => new \Zend_Db_Expr('NULL')
+                'expected' => new \Zend_Db_Expr('NULL'),
             ],
             [
                 'actual' => [
                     [
                         'DATA_TYPE' => 'timestamp /* mariadb-5.3 */',
-                        'DEFAULT' => 'CURRENT_TIMESTAMP'
+                        'DEFAULT' => 'CURRENT_TIMESTAMP',
                     ],
-                    'null'
+                    'null',
                 ],
-                'expected' => new \Zend_Db_Expr('NULL')
+                'expected' => new \Zend_Db_Expr('NULL'),
             ],
             [
                 'actual' => [
                     [
                         'DATA_TYPE' => 'varchar',
                         'NULLABLE' => false,
-                        'DEFAULT' => ''
+                        'DEFAULT' => '',
                     ],
-                    10
+                    10,
                 ],
-                'expected' => '10'
-            ]
+                'expected' => '10',
+            ],
         ];
     }
 
@@ -950,24 +951,24 @@ class MysqlTest extends TestCase
         return [
             [
                 'actual' => 'int',
-                'expected' => 'int'
+                'expected' => 'int',
             ],
             [
                 'actual' => 'varchar',
-                'expected' => 'varchar'
+                'expected' => 'varchar',
             ],
             [
                 'actual' => 'datetime /* mariadb-5.3 */',
-                'expected' => 'datetime'
+                'expected' => 'datetime',
             ],
             [
                 'actual' => 'date /* mariadb-5.3 */',
-                'expected' => 'date'
+                'expected' => 'date',
             ],
             [
                 'actual' => 'timestamp /* mariadb-5.3 */',
-                'expected' => 'timestamp'
-            ]
+                'expected' => 'timestamp',
+            ],
         ];
     }
 

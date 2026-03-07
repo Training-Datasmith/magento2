@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class Grid extends \Magento\Checkout\Block\Cart
     /**
      * Config settings path to determine when pager on checkout/cart/index will be visible
      */
-    const XPATH_CONFIG_NUMBER_ITEMS_TO_DISPLAY_PAGER = 'checkout/cart/number_items_to_display_pager';
+    public const XPATH_CONFIG_NUMBER_ITEMS_TO_DISPLAY_PAGER = 'checkout/cart/number_items_to_display_pager';
 
     /**
      * @var \Magento\Quote\Model\ResourceModel\Quote\Item\Collection

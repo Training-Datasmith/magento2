@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -277,5 +278,5 @@ return [
         'PRIMARY' => false,
         'PRIMARY_POSITION' => null,
         'IDENTITY' => false,
-    ]
+    ],
 ];

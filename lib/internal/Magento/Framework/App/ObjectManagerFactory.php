@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,13 +11,10 @@ namespace Magento\Framework\App;
 use Magento\Framework\App\Arguments\ArgumentInterpreter;
 use Magento\Framework\App\Arguments\FileResolver\Primary;
 use Magento\Framework\App\Arguments\ValidationState;
-use Magento\Framework\Cache\Frontend\Decorator\Profiler as ProfilerDecorator;
 use Magento\Framework\App\Cache\Frontend\Factory as CacheFrontendFactory;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\EnvironmentFactory;
 use Magento\Framework\App\Filesystem\DirectoryList as AppDirectoryList;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ObjectManager\Environment;
+use Magento\Framework\Cache\Frontend\Decorator\Profiler as ProfilerDecorator;
 use Magento\Framework\Code\GeneratedFiles;
 use Magento\Framework\Code\Generator;
 use Magento\Framework\Config\File\ConfigFilePool;
@@ -199,11 +197,11 @@ class ObjectManagerFactory
                 'parameters' => ['backendPrefixes' => [
                     'Magento\Framework\Cache\Backend\\',
                     'Magento\Framework\Cache\Frontend\Adapter\Symfony\\',
-                    'Cm_Cache_Backend_'
+                    'Cm_Cache_Backend_',
                 ]],
             ];
             $cacheFactoryConfig = [
-                CacheFrontendFactory::class => ['arguments' => $cacheFactoryArguments]
+                CacheFrontendFactory::class => ['arguments' => $cacheFactoryArguments],
             ];
             $diConfig->extend($cacheFactoryConfig);
         }
@@ -364,7 +362,7 @@ class ObjectManagerFactory
                 'relations' => $relations,
                 'definitions' => $definitionFactory->createPluginDefinition(),
                 'omConfig' => $diConfig,
-                'classDefinitions' => null
+                'classDefinitions' => null,
             ]
         );
     }

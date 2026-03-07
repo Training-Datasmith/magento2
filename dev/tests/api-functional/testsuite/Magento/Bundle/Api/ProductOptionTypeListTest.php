@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Api;
 
 class ProductOptionTypeListTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_READ_NAME = 'bundleProductOptionTypeListV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/bundle-products/options/types';
+    public const SERVICE_READ_NAME = 'bundleProductOptionTypeListV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/bundle-products/options/types';
 
     public function testGetTypes()
     {

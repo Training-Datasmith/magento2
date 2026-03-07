@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Media;
 
 use Magento\Catalog\Api\ProductMediaAttributeManagementInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Store\Model\StoreManagerInterface;
 
 class AttributeManagement implements ProductMediaAttributeManagementInterface
 {

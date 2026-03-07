@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -125,7 +126,8 @@ class QuoteManagementWithInventoryCheckDisabledTest extends TestCase
         $stockItemRepository = $this->objectManager->get(StockItemRepositoryInterface::class);
         $stockItemRepository->save($stockItem);
 
-        $orderId = $this->cartManagement->placeOrder($quote->getId());;
+        $orderId = $this->cartManagement->placeOrder($quote->getId());
+        ;
         $order = $this->orderRepository->get($orderId);
         $orderItems = $order->getItems();
         $this->assertCount(1, $orderItems);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\Index\Config;
 
 use Magento\Framework\Config\ConverterInterface;
@@ -19,7 +22,7 @@ class Converter implements ConverterInterface
         foreach ($stemmer as $stemmerItem) {
             foreach ($stemmerItem->childNodes as $childNode) {
                 if ($childNode->nodeType === XML_ELEMENT_NODE) {
-                    $stemmerInfo[$childNode->localName]= $childNode->textContent;
+                    $stemmerInfo[$childNode->localName] = $childNode->textContent;
                 }
             }
         }
@@ -29,7 +32,7 @@ class Converter implements ConverterInterface
         foreach ($stopwords as $stopwordsItem) {
             foreach ($stopwordsItem->childNodes as $childNode) {
                 if ($childNode->nodeType === XML_ELEMENT_NODE) {
-                    $stopwordsInfo[$childNode->localName]= $childNode->textContent;
+                    $stopwordsInfo[$childNode->localName] = $childNode->textContent;
                 }
             }
         }

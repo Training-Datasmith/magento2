@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreSwitcher\ContextInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class RedirectDataPreprocessorTest extends TestCase
 {
@@ -108,19 +109,19 @@ class RedirectDataPreprocessorTest extends TestCase
         return [
             [
                 ['isLoggedIn' => true, 'getQuoteId' => 1],
-                []
+                [],
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => null],
-                []
+                [],
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => 1],
-                []
+                [],
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => 2],
-                ['quote_id' => 2]
+                ['quote_id' => 2],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -69,14 +70,14 @@ class UspsAuth extends AbstractCarrier
         $accessToken = $this->cache->load($cacheKey);
         if (!$accessToken) {
             $headers = [
-                'Content-Type' => self::CONTENT_TYPE_FORM_URLENCODED
+                'Content-Type' => self::CONTENT_TYPE_FORM_URLENCODED,
             ];
 
             $authPayload = http_build_query([
                 'grant_type' => 'client_credentials',
                 'client_id' => $clientId,
                 'client_secret' => $clientSecret,
-                'scope' => 'prices shipments tracking labels payments international-labels'
+                'scope' => 'prices shipments tracking labels payments international-labels',
             ]);
             try {
                 $asyncResponse = $this->httpClient->request(new Request(

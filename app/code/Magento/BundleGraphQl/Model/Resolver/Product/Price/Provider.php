@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\BundleGraphQl\Model\Resolver\Product\Price;
 
+use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Pricing\Price\FinalPrice;
 use Magento\Catalog\Pricing\Price\BasePrice;
-use Magento\Bundle\Model\Product\Price;
 use Magento\Catalog\Pricing\Price\RegularPrice;
 use Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;

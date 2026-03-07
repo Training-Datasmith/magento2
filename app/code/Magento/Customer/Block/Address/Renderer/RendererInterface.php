@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Address\Renderer;
 
-use Magento\Directory\Model\Country\Format;
 use Magento\Customer\Model\Address\AddressModelInterface;
+use Magento\Directory\Model\Country\Format;
 
 /**
  * Address renderer interface

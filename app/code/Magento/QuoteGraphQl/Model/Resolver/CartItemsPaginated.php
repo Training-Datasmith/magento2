@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class CartItemsPaginated implements ResolverInterface
             'page_info' => [
                 'page_size' => $pageSize,
                 'current_page' => $currentPage,
-                'total_pages' => (int) ceil($paginatedCartItems['total'] / $pageSize)
+                'total_pages' => (int) ceil($paginatedCartItems['total'] / $pageSize),
             ],
         ];
     }

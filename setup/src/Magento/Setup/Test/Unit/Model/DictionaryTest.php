@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class DictionaryTest extends TestCase
     private $dictionary = [
         'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing',
         'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore',
-        'et', 'dolore', 'magna', 'aliqua'
+        'et', 'dolore', 'magna', 'aliqua',
     ];
 
     public function testDictionaryFileNotFoundException()

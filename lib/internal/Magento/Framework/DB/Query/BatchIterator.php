@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Query;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -170,7 +173,7 @@ class BatchIterator implements BatchIteratorInterface
             $select,
             [
                 new \Zend_Db_Expr('MAX(' . $this->rangeFieldAlias . ') as max'),
-                new \Zend_Db_Expr('COUNT(*) as cnt')
+                new \Zend_Db_Expr('COUNT(*) as cnt'),
             ]
         );
         $row = $this->connection->fetchRow($wrapperSelect);

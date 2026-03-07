@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 use Magento\Framework\App\ObjectManager;
@@ -125,7 +128,7 @@ class Checkbox extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
         if ($this->getNoObjectId() || $this->getColumn()->getUseIndex()) {
             $v = $value;
         } else {
-            $v = $row->getId() != "" ? $row->getId() : $value;
+            $v = $row->getId() != '' ? $row->getId() : $value;
         }
 
         return $this->_getCheckboxHtml($v, $checked);

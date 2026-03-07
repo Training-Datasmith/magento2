@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,9 +67,9 @@ namespace Magento\Setup\Test\Unit\Model {
     use Magento\Setup\Module\Setup;
     use Magento\Setup\Module\SetupFactory;
     use Magento\Setup\Validator\DbValidator;
+    use PHPUnit\Framework\Attributes\DataProvider;
     use PHPUnit\Framework\MockObject\MockObject;
     use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
     use ReflectionException;
 
     /**
@@ -87,7 +88,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
             ConfigOptionsListConstants::INPUT_KEY_DB_NAME => 'magento',
             ConfigOptionsListConstants::INPUT_KEY_DB_USER => 'magento',
             ConfigOptionsListConstants::INPUT_KEY_ENCRYPTION_KEY => 'encryption_key',
-            ConfigOptionsList::INPUT_KEY_BACKEND_FRONTNAME => 'backend'
+            ConfigOptionsList::INPUT_KEY_BACKEND_FRONTNAME => 'backend',
         ];
 
         /**
@@ -214,8 +215,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 ConfigOptionsListConstants::KEY_HOST => '127.0.0.1',
                 ConfigOptionsListConstants::KEY_NAME => 'magento',
                 ConfigOptionsListConstants::KEY_USER => 'magento',
-                ConfigOptionsListConstants::KEY_PASSWORD => ''
-            ]
+                ConfigOptionsListConstants::KEY_PASSWORD => '',
+            ],
         ];
 
         /**
@@ -255,8 +256,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
             $objects = [
                 [
                     DeploymentConfig::class,
-                    $this->createMock(DeploymentConfig::class)
-                ]
+                    $this->createMock(DeploymentConfig::class),
+                ],
             ];
             $objectManagerHelper->prepareObjectManager($objects);
             $this->filePermissions = $this->createMock(FilePermissions::class);
@@ -355,14 +356,14 @@ use PHPUnit\Framework\Attributes\DataProvider;
          * @param array $logMetaMessages
          * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
          */
-    #[DataProvider('installDataProvider')]
+        #[DataProvider('installDataProvider')]
         public function testInstall(array $request, array $logMessages, array $logMetaMessages)
         {
             $this->moduleList->method('getOne')
                 ->willReturnMap(
                     [
                         ['Foo_One', ['setup_version' => '2.0.0']],
-                        ['Bar_Two', ['setup_version' => null]]
+                        ['Bar_Two', ['setup_version' => null]],
                     ]
                 );
 
@@ -372,7 +373,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     [
                         [ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT, null, true],
                         [ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY, null, true],
-                        ['modules/Magento_User', null, '1']
+                        ['modules/Magento_User', null, '1'],
                     ]
                 );
             $allModules = ['Foo_One' => [], 'Bar_Two' => []];
@@ -443,20 +444,20 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [
                             PatchApplierFactory::class,
                             ['objectManager' => $this->objectManager],
-                            $this->patchApplierFactoryMock
+                            $this->patchApplierFactoryMock,
                         ],
                     ]
                 );
             $this->patchApplierMock->expects($this->exactly(2))->method('applySchemaPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->patchApplierMock->expects($this->exactly(2))->method('applyDataPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->objectManager->expects($this->any())
@@ -470,7 +471,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [SearchConfig::class, $searchConfigMock],
                         [RemoteStorageValidator::class, $remoteStorageValidatorMock],
                         [Collection::class, $this->indexerMock],
-                        [IndexerRegistry::class, $this->indexerRegistryMock]
+                        [IndexerRegistry::class, $this->indexerRegistryMock],
                     ]
                 );
             $this->adminFactory->expects($this->any())->method('create')->willReturn(
@@ -557,7 +558,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         ['Write installation date...'],
                         ['Indexing...'],
                         ['13 indexer(s) are indexed.'],
-                        ['Sample Data is installed with errors. See log file for details']
+                        ['Sample Data is installed with errors. See log file for details'],
                     ],
                     'logMetaMessages' => [
                         ['Starting Magento installation:'],
@@ -601,7 +602,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         AdminAccount::KEY_PASSWORD => '123',
                         AdminAccount::KEY_EMAIL => 'admin@example.com',
                         AdminAccount::KEY_FIRST_NAME => 'John',
-                        AdminAccount::KEY_LAST_NAME => 'Doe'
+                        AdminAccount::KEY_LAST_NAME => 'Doe',
                     ],
                     'logMessages' => [
                         ['File permissions check...'],
@@ -632,7 +633,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         ['Write installation date...'],
                         ['Indexing...'],
                         ['13 indexer(s) are indexed.'],
-                        ['Sample Data is installed with errors. See log file for details']
+                        ['Sample Data is installed with errors. See log file for details'],
                     ],
                     'logMetaMessages' => [
                         ['Starting Magento installation:'],
@@ -680,14 +681,14 @@ use PHPUnit\Framework\Attributes\DataProvider;
          * @throws LocalizedException
          * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
          */
-    #[DataProvider('installWithOrderIncrementPrefixDataProvider')]
+        #[DataProvider('installWithOrderIncrementPrefixDataProvider')]
         public function testInstallWithOrderIncrementPrefix(array $request, array $logMessages, array $logMetaMessages)
         {
             $this->moduleList->method('getOne')
                 ->willReturnMap(
                     [
                         ['Foo_One', ['setup_version' => '2.0.0']],
-                        ['Bar_Two', ['setup_version' => null]]
+                        ['Bar_Two', ['setup_version' => null]],
                     ]
                 );
 
@@ -697,7 +698,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     [
                         [ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT, null, true],
                         [ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY, null, true],
-                        ['modules/Magento_User', null, '1']
+                        ['modules/Magento_User', null, '1'],
                     ]
                 );
             $allModules = ['Foo_One' => [], 'Bar_Two' => []];
@@ -718,7 +719,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
             $connection->expects($this->atLeastOnce())->method('fetchRow')->willReturn([
                 'entity_store_id' => 1,
-                'profile_id' => 1
+                'profile_id' => 1,
             ]);
             $connection->expects($this->exactly(2))->method('update');
 
@@ -781,20 +782,20 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [
                             PatchApplierFactory::class,
                             ['objectManager' => $this->objectManager],
-                            $this->patchApplierFactoryMock
+                            $this->patchApplierFactoryMock,
                         ],
                     ]
                 );
             $this->patchApplierMock->expects($this->exactly(2))->method('applySchemaPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->patchApplierMock->expects($this->exactly(2))->method('applyDataPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->objectManager->expects($this->any())
@@ -808,7 +809,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [SearchConfig::class, $searchConfigMock],
                         [RemoteStorageValidator::class, $remoteStorageValidatorMock],
                         [Collection::class, $this->indexerMock],
-                        [IndexerRegistry::class, $this->indexerRegistryMock]
+                        [IndexerRegistry::class, $this->indexerRegistryMock],
                     ]
                 );
             $this->indexerMock->expects($this->once())->method('getAllIds')->willReturn(
@@ -872,7 +873,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         ConfigOptionsListConstants::INPUT_KEY_DB_USER => 'magento',
                         ConfigOptionsListConstants::INPUT_KEY_ENCRYPTION_KEY => 'encryption_key',
                         ConfigOptionsList::INPUT_KEY_BACKEND_FRONTNAME => 'backend',
-                        InstallCommand::INPUT_KEY_SALES_ORDER_INCREMENT_PREFIX => 'ORD'
+                        InstallCommand::INPUT_KEY_SALES_ORDER_INCREMENT_PREFIX => 'ORD',
                     ],
                     'logMessages' => [
                         ['File permissions check...'],
@@ -903,7 +904,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         ['Write installation date...'],
                         ['Indexing...'],
                         ['13 indexer(s) are indexed.'],
-                        ['Sample Data is installed with errors. See log file for details']
+                        ['Sample Data is installed with errors. See log file for details'],
                     ],
                     'logMetaMessages' => [
                         ['Starting Magento installation:'],
@@ -950,7 +951,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
          * @throws \Magento\Framework\Exception\RuntimeException
          * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
          */
-    #[DataProvider('installWithInvalidRemoteStorageConfigurationDataProvider')]
+        #[DataProvider('installWithInvalidRemoteStorageConfigurationDataProvider')]
         public function testInstallWithInvalidRemoteStorageConfiguration(bool $isDeploymentConfigWritable)
         {
             $request = self::$request;
@@ -991,7 +992,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     [
                         [ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT, null, true],
                         [ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY, null, true],
-                        ['modules/Magento_User', null, '1']
+                        ['modules/Magento_User', null, '1'],
                     ]
                 );
             $this->moduleList->method('getOne')->willReturn(['setup_version' => '2.0.0']);
@@ -1049,11 +1050,11 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 [
                     ConfigFilePool::APP_ENV => [
                         'remote_storage' => [
-                            'driver' => 'file'
-                        ]
-                    ]
+                            'driver' => 'file',
+                        ],
+                    ],
                 ],
-                true
+                true,
             ];
 
             if ($isDeploymentConfigWritable) { // assert remote storage reversion is attempted
@@ -1084,14 +1085,14 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [
                             PatchApplierFactory::class,
                             ['objectManager' => $this->objectManager],
-                            $this->patchApplierFactoryMock
-                        ]
+                            $this->patchApplierFactoryMock,
+                        ],
                     ]
                 );
             $this->patchApplierMock->expects(static::exactly(2))->method('applySchemaPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->objectManager->expects(static::any())
@@ -1103,7 +1104,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [DeclarationInstaller::class, $this->declarationInstallerMock],
                         [Registry::class, $registry],
                         [SearchConfig::class, $searchConfigMock],
-                        [RemoteStorageValidator::class, $remoteStorageValidatorMock]
+                        [RemoteStorageValidator::class, $remoteStorageValidatorMock],
                     ]
                 );
 
@@ -1143,7 +1144,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
         {
             return [
                 [true],
-                [false]
+                [false],
             ];
         }
 
@@ -1171,7 +1172,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     [
                         [ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT, null, true],
                         [ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY, null, true],
-                        ['modules/Magento_User', null, '1']
+                        ['modules/Magento_User', null, '1'],
                     ]
                 );
             $allModules = ['Foo_One' => [], 'Bar_Two' => []];
@@ -1224,11 +1225,11 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 [
                     ConfigFilePool::APP_ENV => [
                         'remote_storage' => [
-                            'driver' => 'file'
-                        ]
-                    ]
+                            'driver' => 'file',
+                        ],
+                    ],
                 ],
-                true
+                true,
             ];
 
             // assert remote storage reversion is never attempted
@@ -1250,20 +1251,20 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [
                             PatchApplierFactory::class,
                             ['objectManager' => $this->objectManager],
-                            $this->patchApplierFactoryMock
-                        ]
+                            $this->patchApplierFactoryMock,
+                        ],
                     ]
                 );
             $this->patchApplierMock->expects(static::exactly(2))->method('applySchemaPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
             $this->patchApplierMock->expects(static::exactly(2))->method('applyDataPatch')->willReturnMap(
                 [
                     ['Bar_Two'],
-                    ['Foo_One']
+                    ['Foo_One'],
                 ]
             );
 
@@ -1273,14 +1274,14 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 2 => [SearchConfig::class, $searchConfigMock],
                 3 => [
                     RemoteStorageValidator::class,
-                    new ReflectionException('Class ' . RemoteStorageValidator::class . ' does not exist')
+                    new ReflectionException('Class ' . RemoteStorageValidator::class . ' does not exist'),
                 ],
                 4 => [\Magento\Framework\App\State::class, $appState],
                 5 => [Registry::class, $registry],
                 6 => [Manager::class, $cacheManager],
                 7 => [Collection::class, $this->indexerMock],
                 8 => [IndexerRegistry::class, $this->indexerRegistryMock],
-                9 => [IndexerRegistry::class, $this->indexerRegistryMock]
+                9 => [IndexerRegistry::class, $this->indexerRegistryMock],
             ];
             $withArgs = $willReturnArgs = [];
 
@@ -1305,8 +1306,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         $returnValue = $willReturnArgs[$callCount] ?? null;
                         $callCount++;
                         if ($withArgs == RemoteStorageValidator::class) {
-                            throw new
-                            ReflectionException('Class ' . RemoteStorageValidator::class . ' does not exist');
+                            throw new ReflectionException('Class ' . RemoteStorageValidator::class . ' does not exist');
                         }
                         return $returnValue;
                     }
@@ -1369,7 +1369,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
          * @throws \Magento\Framework\Exception\RuntimeException
          * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
          */
-    #[DataProvider('installWithInvalidRemoteStorageConfigurationWithEarlyExceptionDataProvider')]
+        #[DataProvider('installWithInvalidRemoteStorageConfigurationWithEarlyExceptionDataProvider')]
         public function testInstallWithInvalidRemoteStorageConfigurationWithEarlyException(\Exception $exception)
         {
             $request = self::$request;
@@ -1397,7 +1397,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     [
                         [ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT, null, true],
                         [ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY, null, true],
-                        ['modules/Magento_User', null, '1']
+                        ['modules/Magento_User', null, '1'],
                     ]
                 );
             $allModules = ['Foo_One' => [], 'Bar_Two' => []];
@@ -1450,11 +1450,11 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 [
                     ConfigFilePool::APP_ENV => [
                         'remote_storage' => [
-                            'driver' => 'file'
-                        ]
-                    ]
+                            'driver' => 'file',
+                        ],
+                    ],
                 ],
-                true
+                true,
             ];
 
             $this->configWriter
@@ -1473,7 +1473,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 ->willReturnMap(
                     [
                         [DeclarationInstaller::class, $this->declarationInstallerMock],
-                        [Registry::class, $registry]
+                        [Registry::class, $registry],
                     ]
                 );
 
@@ -1510,7 +1510,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
         {
             return [
                 [new RuntimeException(__('Remote driver is not available.'))],
-                [new DriverException(__('Bucket and region are required values'))]
+                [new DriverException(__('Bucket and region are required values'))],
             ];
         }
 
@@ -1533,7 +1533,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                         [
                             PatchApplierFactory::class,
                             ['objectManager' => $this->objectManager],
-                            $this->patchApplierFactoryMock
+                            $this->patchApplierFactoryMock,
                         ],
                     ]
                 );
@@ -1613,7 +1613,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
             $this->phpReadinessCheck->expects($this->once())->method('checkPhpExtensions')->willReturn(
                 [
                     'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
-                    'data' => ['required' => ['foo', 'bar'], 'missing' => ['foo']]
+                    'data' => ['required' => ['foo', 'bar'], 'missing' => ['foo']],
                 ]
             );
             $this->object->checkExtensions();
@@ -1635,7 +1635,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
         {
             $this->cleanupFiles->expects($this->once())->method('clearCodeGeneratedFiles')->willReturn(
                 [
-                    "The directory '/generation' doesn't exist - skipping cleanup"
+                    "The directory '/generation' doesn't exist - skipping cleanup",
                 ]
             );
             $installer = $this->prepareForUpdateModulesTests();
@@ -1707,7 +1707,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
             $this->configReader->expects($this->once())->method('getFiles')->willReturn(
                 [
                     'ConfigOne.php',
-                    'ConfigTwo.php'
+                    'ConfigTwo.php',
                 ]
             );
             $configDir = $this->createMock(
@@ -1719,7 +1719,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 ->willReturnMap(
                     [
                         ['ConfigOne.php', '/config/ConfigOne.php'],
-                        ['ConfigTwo.php', '/config/ConfigTwo.php']
+                        ['ConfigTwo.php', '/config/ConfigTwo.php'],
                     ]
                 );
             $this->filesystem
@@ -1740,7 +1740,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
             $this->cleanupFiles->expects($this->once())->method('clearAllFiles')->willReturn(
                 [
                     "The directory '/var' doesn't exist - skipping cleanup",
-                    "The directory '/static' doesn't exist - skipping cleanup"
+                    "The directory '/static' doesn't exist - skipping cleanup",
                 ]
             );
 
@@ -1815,7 +1815,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
             $allModules = [
                 'Foo_One' => [],
                 'Bar_Two' => [],
-                'New_Module' => []
+                'New_Module' => [],
             ];
 
             $cacheManager = $this->createMock(Manager::class);
@@ -1825,7 +1825,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
                 ->method('get')
                 ->willReturnMap(
                     [
-                        [Manager::class, $cacheManager]
+                        [Manager::class, $cacheManager],
                     ]
                 );
             $this->moduleLoader->expects($this->once())->method('load')->willReturn($allModules);
@@ -1835,9 +1835,9 @@ use PHPUnit\Framework\Attributes\DataProvider;
                     'modules' => [
                         'Bar_Two' => 0,
                         'Foo_One' => 1,
-                        'New_Module' => 1
-                    ]
-                ]
+                        'New_Module' => 1,
+                    ],
+                ],
             ];
 
             $this->config->expects($this->atLeastOnce())

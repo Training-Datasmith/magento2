@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Cms\Api\GetPageByIdentifierInterface;
 use Magento\Cms\Block\Widget\Page\Link as PageLink;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Theme\Model\ResourceModel\Theme as ThemeResource;
 use Magento\Theme\Model\ThemeFactory;
 use Magento\Widget\Model\ResourceModel\Widget\Instance as InstanceResource;
 use Magento\Widget\Model\Widget\InstanceFactory;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/second_product_simple.php');
 

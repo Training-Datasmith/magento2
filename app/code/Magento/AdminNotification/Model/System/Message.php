@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\System;
 
 /**
@@ -22,10 +25,8 @@ class Message extends \Magento\Framework\Model\AbstractModel implements \Magento
 
     /**
      * Check whether
-     *
-     * @return bool
      */
-    public function isDisplayed()
+    public function isDisplayed(): bool
     {
         return true;
     }

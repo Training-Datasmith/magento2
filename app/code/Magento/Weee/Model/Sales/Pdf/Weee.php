@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Model\Sales\Pdf;
 
 /**
@@ -72,7 +75,7 @@ class Weee extends \Magento\Sales\Model\Order\Pdf\Total\DefaultTotal
 
         return $totals;
     }
-    
+
     /**
      * Check if we can display Weee total information in PDF
      *

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,6 +18,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Eav\Model\Entity\Attribute;
 
 use Magento\Eav\Model\Entity\Type;
@@ -31,10 +34,10 @@ class Set extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants
      */
-    const KEY_ATTRIBUTE_SET_ID = 'attribute_set_id';
-    const KEY_ATTRIBUTE_SET_NAME = 'attribute_set_name';
-    const KEY_SORT_ORDER = 'sort_order';
-    const KEY_ENTITY_TYPE_ID = 'entity_type_id';
+    public const KEY_ATTRIBUTE_SET_ID = 'attribute_set_id';
+    public const KEY_ATTRIBUTE_SET_NAME = 'attribute_set_name';
+    public const KEY_SORT_ORDER = 'sort_order';
+    public const KEY_ENTITY_TYPE_ID = 'entity_type_id';
     /**#@-*/
 
     /**#@-*/

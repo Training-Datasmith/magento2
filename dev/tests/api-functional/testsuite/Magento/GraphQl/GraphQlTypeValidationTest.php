@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ QUERY;
                 ],
             ],
             'pageSize' => 1,
-            'currentPage' => 1.1
+            'currentPage' => 1.1,
         ];
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Variable "$currentPage" got invalid value 1.1; ' .
@@ -89,7 +90,7 @@ QUERY;
         $variables = [
             'cartId' => $cartId,
             'sku' => $sku,
-            'quantity' => '1.9'
+            'quantity' => '1.9',
         ];
         $response = $this->graphQlMutation($query, $variables);
         $this->assertArrayNotHasKey('errors', $response);
@@ -135,8 +136,8 @@ MUTATION;
         // $itemId expects an integer type, but a string value is provided
         $variables = [
             'cartId' => $cartId,
-            'itemId'=> "{$itemId}",
-             'quantity'=> $quantity
+            'itemId' => "{$itemId}",
+             'quantity' => $quantity,
         ];
         $response = $this->graphQlMutation($query, $variables);
         $this->assertArrayNotHasKey('errors', $response);
@@ -163,7 +164,7 @@ MUTATION;
         $variables = [
             'cartId' => $cartId,
             'sku' => 123.78,
-            'quantity' => '5.60'
+            'quantity' => '5.60',
         ];
         $response = $this->graphQlMutation($query, $variables);
         $this->assertArrayNotHasKey('errors', $response);
@@ -189,7 +190,7 @@ MUTATION;
         $variables = [
             'cartId' => $cartId,
             'sku' => ['123.78'],
-            'quantity' => '5.60'
+            'quantity' => '5.60',
         ];
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Variable "$sku" got invalid value ["123.78"]; ' .
@@ -212,7 +213,7 @@ MUTATION;
         $variables = [
             'cartId' => $cartId,
             'sku' => '123.78',
-            'quantity' => 'ten'
+            'quantity' => 'ten',
         ];
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Variable "$quantity" got invalid value "ten"; ' .
@@ -248,7 +249,7 @@ QUERY;
     /**
      * @return string
      */
-    private function addProductsToCart():string
+    private function addProductsToCart(): string
     {
         return <<<'MUTATION'
 mutation AddItemsToCart($cartId: String!, $sku: String!, $quantity: Float!)

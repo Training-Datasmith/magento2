@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Columns;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -54,7 +57,7 @@ class Date extends Column implements
         return [
             'type' => $this->getType(),
             'nullable' => $this->isNullable(),
-            'comment' => $this->getComment()
+            'comment' => $this->getComment(),
         ];
     }
 

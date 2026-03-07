@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\MediaContentApi\Api\GetAssetIdsByContentIdentityInterface;
 use Magento\MediaContentApi\Api\GetContentByAssetIdsInterface;
 use Magento\MediaContentSynchronizationApi\Api\SynchronizeIdentitiesInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for catalog SynchronizeIdentities.
@@ -72,7 +73,7 @@ class SynchronizeIdentitiesTest extends TestCase
                 [
                     self::ENTITY_TYPE => $mediaContentIdentity[self::ENTITY_TYPE],
                     self::ENTITY_ID => $mediaContentIdentity[self::ENTITY_ID],
-                    self::FIELD => $mediaContentIdentity[self::FIELD]
+                    self::FIELD => $mediaContentIdentity[self::FIELD],
                 ]
             );
         }
@@ -108,15 +109,15 @@ class SynchronizeIdentitiesTest extends TestCase
                     [
                         'entityType' => 'catalog_category',
                         'field' => 'description',
-                        'entityId' => 28767
+                        'entityId' => 28767,
                     ],
                     [
                         'entityType' => 'catalog_product',
                         'field' => 'description',
-                        'entityId' => 1567
-                    ]
-                ]
-            ]
+                        'entityId' => 1567,
+                    ],
+                ],
+            ],
         ];
     }
 }

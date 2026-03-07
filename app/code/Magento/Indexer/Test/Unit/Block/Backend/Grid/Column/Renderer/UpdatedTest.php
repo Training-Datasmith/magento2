@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Indexer\Test\Unit\Block\Backend\Grid\Column\Renderer;
 use Magento\Backend\Block\Context;
 use Magento\Framework\DataObject;
 use Magento\Indexer\Block\Backend\Grid\Column\Renderer\Updated;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class UpdatedTest extends TestCase
 {
@@ -42,7 +43,7 @@ class UpdatedTest extends TestCase
     {
         return [
             ['true', 'true'],
-            ['', __('Never')]
+            ['', __('Never')],
         ];
     }
 }

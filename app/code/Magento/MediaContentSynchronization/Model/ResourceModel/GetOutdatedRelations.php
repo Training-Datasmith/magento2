@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class GetOutdatedRelations
      */
     public function execute(string $entityType): array
     {
-        $contentAssetLinks= [];
+        $contentAssetLinks = [];
         try {
             $entityData = $this->metadataPool->getMetadata($entityType);
             $connection = $this->resourceConnection->getConnection();
@@ -104,13 +105,13 @@ class GetOutdatedRelations
                 [
                     'entityType' => $asset['entity_type'],
                     'entityId' => $asset['entity_id'],
-                    'field' => $asset['field']
+                    'field' => $asset['field'],
                 ]
             );
             $contentAssetLinks[] = $this->contentAssetLinkFactory->create(
                 [
                     'assetId' => $asset['asset_id'],
-                    'contentIdentity' => $contentIdentity
+                    'contentIdentity' => $contentIdentity,
                 ]
             );
         }

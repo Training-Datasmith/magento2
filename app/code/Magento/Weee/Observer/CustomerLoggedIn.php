@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Observer;
 
 use Magento\Customer\Model\Session;
@@ -12,7 +15,6 @@ use Magento\Framework\Module\Manager;
 use Magento\PageCache\Model\Config;
 use Magento\Tax\Api\TaxAddressManagerInterface;
 use Magento\Weee\Helper\Data;
-use Magento\Tax\Helper\Data as TaxHelper;
 
 /**
  * Customer logged in.

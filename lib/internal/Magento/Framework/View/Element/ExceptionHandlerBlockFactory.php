@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element;
 
 /**
@@ -10,7 +13,7 @@ namespace Magento\Framework\View\Element;
  */
 class ExceptionHandlerBlockFactory
 {
-    const DEFAULT_INSTANCE_NAME = \Magento\Framework\View\Element\ExceptionHandlerBlock::class;
+    public const DEFAULT_INSTANCE_NAME = \Magento\Framework\View\Element\ExceptionHandlerBlock::class;
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

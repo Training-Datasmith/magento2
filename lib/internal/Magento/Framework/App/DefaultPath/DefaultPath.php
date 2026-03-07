@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application default url
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\DefaultPath;
 
 class DefaultPath implements \Magento\Framework\App\DefaultPathInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class SaveTest extends AbstractInvoiceControllerTest
     /**
      * @var string
      */
-    protected $resource = "Magento_Sales::invoice";
+    protected $resource = 'Magento_Sales::invoice';
 
     /**
      * @inheritdoc
@@ -77,7 +78,7 @@ class SaveTest extends AbstractInvoiceControllerTest
     {
         $order = $this->getOrder('100000001');
         $itemId = $order->getItemsCollection()->getFirstItem()->getId();
-        $post = $this->hydratePost([$itemId => 2], "", false, "1");
+        $post = $this->hydratePost([$itemId => 2], '', false, '1');
         $this->prepareRequest(
             $post,
             ['order_id' => $order->getEntityId()]

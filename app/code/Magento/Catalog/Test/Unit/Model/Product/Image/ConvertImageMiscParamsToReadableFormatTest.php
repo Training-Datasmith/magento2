@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Image;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Image\ConvertImageMiscParamsToReadableFormat;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +55,7 @@ class ConvertImageMiscParamsToReadableFormatTest extends TestCase
     public static function createDataProvider(): array
     {
         return [
-            self::getTestDataWithAttributes()
+            self::getTestDataWithAttributes(),
         ];
     }
 
@@ -74,7 +75,7 @@ class ConvertImageMiscParamsToReadableFormatTest extends TestCase
                     'keep_frame' => 'frame',
                     'keep_transparency' => 'transparency',
                     'constrain_only' => 'constrainonly',
-                    'background' => [255,255,255]
+                    'background' => [255,255,255],
                 ],
                 'convertImageParamsToReadableFormatWithOutArray' => [],
                 'expectedMiscParamsWithArray' => [
@@ -86,7 +87,7 @@ class ConvertImageMiscParamsToReadableFormatTest extends TestCase
                     'keep_frame' => 'frame',
                     'keep_transparency' => 'transparency',
                     'constrain_only' => 'doconstrainonly',
-                    'background' => 'rgb255,255,255'
+                    'background' => 'rgb255,255,255',
                 ],
                 'expectedMiscParamsWithOutArray' => [
                     'image_height' => 'h:empty',
@@ -97,9 +98,9 @@ class ConvertImageMiscParamsToReadableFormatTest extends TestCase
                     'keep_frame' => 'noframe',
                     'keep_transparency' => 'notransparency',
                     'constrain_only' => 'notconstrainonly',
-                    'background' => 'nobackground'
-                ]
-            ]
+                    'background' => 'nobackground',
+                ],
+            ],
         ];
     }
 }

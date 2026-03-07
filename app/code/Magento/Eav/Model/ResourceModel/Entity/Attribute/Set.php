@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +65,7 @@ class Set extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected function _afterSave(\Magento\Framework\Model\AbstractModel $object)
     {
         $this->saveAttributeGroups($object);
-        
+
         if ($object->getRemoveGroups()) {
             foreach ($object->getRemoveGroups() as $group) {
                 /* @var $group \Magento\Eav\Model\Entity\Attribute\Group */
@@ -178,7 +180,7 @@ class Set extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $connection = $this->getConnection();
         $bind = [
             'attribute_set_name' => $attributeSetName === null ? '' : trim($attributeSetName),
-            'entity_type_id' => $object->getEntityTypeId()
+            'entity_type_id' => $object->getEntityTypeId(),
         ];
         $select = $connection->select()->from(
             $this->getMainTable()
@@ -228,7 +230,7 @@ class Set extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     $cacheKey,
                     [
                         \Magento\Eav\Model\Cache\Type::CACHE_TAG,
-                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG
+                        \Magento\Eav\Model\Entity\Attribute::CACHE_TAG,
                     ]
                 );
             }

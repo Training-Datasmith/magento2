@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,16 +17,16 @@ use Magento\Config\Model\Config\PathValidator;
 use Magento\Config\Model\Config\PathValidatorFactory;
 use Magento\Framework\App\Config\ConfigPathResolver;
 use Magento\Framework\App\Config\ConfigSourceInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\App\Scope\ValidatorInterface;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
 
 /**
  * Test for \Magento\Config\Console\Command\ConfigShowCommand.
@@ -107,7 +108,7 @@ class ConfigShowCommandTest extends TestCase
                 'valueProcessor' => $this->valueProcessorMock,
                 'pathValidatorFactory' => $pathValidatorFactoryMock,
                 'emulatedAreaProcessor' => $this->emulatedAreProcessorMock,
-                'localeEmulator' => $this->localeEmulatorMock
+                'localeEmulator' => $this->localeEmulatorMock,
             ]
         );
     }
@@ -250,7 +251,7 @@ class ConfigShowCommandTest extends TestCase
     private function getConfigShowCommandTester($configPath, $scope = null, $scopeCode = null)
     {
         $arguments = [
-            ConfigShowCommand::INPUT_ARGUMENT_PATH => $configPath
+            ConfigShowCommand::INPUT_ARGUMENT_PATH => $configPath,
         ];
 
         if ($scope !== null) {
@@ -302,7 +303,7 @@ class ConfigShowCommandTest extends TestCase
                 'valueProcessor' => $valueProcessorMock,
                 'pathValidatorFactory' => $pathValidatorFactoryMock,
                 'emulatedAreaProcessor' => $emulatedAreaProcessorMock,
-                'localeEmulator' => $localeEmulatorMock
+                'localeEmulator' => $localeEmulatorMock,
             ]
         );
 
@@ -345,7 +346,7 @@ class ConfigShowCommandTest extends TestCase
 
         $tester = new CommandTester($model);
         $tester->execute([
-            ConfigShowCommand::INPUT_ARGUMENT_PATH => $designPath
+            ConfigShowCommand::INPUT_ARGUMENT_PATH => $designPath,
         ]);
 
         $this->assertEquals(
@@ -369,8 +370,8 @@ class ConfigShowCommandTest extends TestCase
         $arrayConfigValue = [
             'child1' => 'value1',
             'child2' => [
-                'grandchild' => 'value2'
-            ]
+                'grandchild' => 'value2',
+            ],
         ];
 
         $this->scopeValidatorMock->expects($this->once())

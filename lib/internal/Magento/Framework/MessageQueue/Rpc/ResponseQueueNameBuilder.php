@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ class ResponseQueueNameBuilder
     /**
      * Response queue name prefix
      */
-    const RESPONSE_QUEUE_PREFIX = 'responseQueue.';
+    public const RESPONSE_QUEUE_PREFIX = 'responseQueue.';
 
     /**
      * Get response queue name.

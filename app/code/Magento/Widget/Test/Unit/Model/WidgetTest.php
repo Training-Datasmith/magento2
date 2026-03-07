@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -153,7 +154,7 @@ class WidgetTest extends TestCase
             ],
             '1' => [
                 'container_name' => 'content',
-                'template' => ['grid' => 'default', 'list' => 'list']
+                'template' => ['grid' => 'default', 'list' => 'list'],
             ],
         ];
         $this->assertSame($supportedContainersExpected, $resultObject->getSupportedContainers());
@@ -189,8 +190,8 @@ class WidgetTest extends TestCase
                 'type' => Combine::class,
                 'aggregator' => 'all',
                 'value' => '1',
-                'new_child' => ''
-            ]
+                'new_child' => '',
+            ],
         ];
         $params = [
             'title' => 'my "widget"',
@@ -198,7 +199,7 @@ class WidgetTest extends TestCase
             'products_per_page' => '5',
             'products_count' => '10',
             'template' => 'Magento_CatalogWidget::product/widget/content/grid.phtml',
-            'conditions' => $conditions
+            'conditions' => $conditions,
         ];
 
         $this->conditionsHelper->expects($this->once())->method('encode')->with($conditions)
@@ -212,7 +213,7 @@ class WidgetTest extends TestCase
                 ['10', false, '10'],
                 ['Magento_CatalogWidget::product/widget/content/grid.phtml',
                     false,
-                    'Magento_CatalogWidget::product/widget/content/grid.phtml'
+                    'Magento_CatalogWidget::product/widget/content/grid.phtml',
                 ],
                 ['encoded-conditions-string', false, 'encoded-conditions-string'],
             ]);
@@ -252,8 +253,8 @@ class WidgetTest extends TestCase
                 'type' => Combine::class,
                 'aggregator' => 'all',
                 'value' => '1',
-                'new_child' => ''
-            ]
+                'new_child' => '',
+            ],
         ];
         $params = [
             'title' => 'my widget',
@@ -261,7 +262,7 @@ class WidgetTest extends TestCase
             'products_per_page' => '5',
             'products_count' => '0',
             'template' => 'Magento_CatalogWidget::product/widget/content/grid.phtml',
-            'conditions' => $conditions
+            'conditions' => $conditions,
         ];
 
         $this->conditionsHelper->expects($this->once())

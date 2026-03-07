@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Ui\Component\Columns;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\ImportExport\Controller\Adminhtml\Export\File\Download;
 use Magento\ImportExport\Controller\Adminhtml\Export\File\Delete;
+use Magento\ImportExport\Controller\Adminhtml\Export\File\Download;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\UrlInterface;
 
 /**
  * Actions for export grid.
@@ -60,7 +61,7 @@ class ExportGridActions extends Column
                             Download::URL,
                             ['_query' => ['filename' => $item['file_name']]]
                         ),
-                        'label' => __('Download')
+                        'label' => __('Download'),
                     ];
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(
@@ -70,7 +71,7 @@ class ExportGridActions extends Column
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete'),
-                            'message' => __('Are you sure you wan\'t to delete a file?')
+                            'message' => __('Are you sure you wan\'t to delete a file?'),
                         ],
                         'post' => true,
                     ];

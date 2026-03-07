@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\ProductAlert\Test\Fixture;
 
 use Magento\Framework\DataObject;
-use Magento\ProductAlert\Model\StockFactory;
 use Magento\ProductAlert\Model\ResourceModel\Stock;
+use Magento\ProductAlert\Model\StockFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Fixture\DataFixtureInterface;
 

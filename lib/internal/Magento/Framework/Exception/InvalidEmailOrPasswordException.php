@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 /**
@@ -14,5 +17,5 @@ class InvalidEmailOrPasswordException extends AuthenticationException
     /**
      * @deprecated
      */
-    const INVALID_EMAIL_OR_PASSWORD = 'Invalid email or password';
+    public const INVALID_EMAIL_OR_PASSWORD = 'Invalid email or password';
 }

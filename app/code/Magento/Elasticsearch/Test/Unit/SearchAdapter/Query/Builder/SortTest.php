@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class SortTest extends TestCase
             [
                 'field' => 'some_attribute',
                 'direction' => 'DESC',
-            ]
+            ],
         ];
         $request->expects(self::once())
             ->method('getSort')

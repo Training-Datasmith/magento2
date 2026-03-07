@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\MessageQueue\Test\Unit;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\Framework\MessageQueue\MessageValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers Magento\Framework\MessageQueue\MessageValidator
@@ -90,7 +91,7 @@ class MessageValidatorTest extends TestCase
     {
         return [
             CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-            CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class
+            CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class,
         ];
     }
 
@@ -122,7 +123,7 @@ class MessageValidatorTest extends TestCase
                     'is_required' => false,
                     'param_type' => 'string',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -161,130 +162,130 @@ class MessageValidatorTest extends TestCase
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string'
+                    CommunicationConfig::TOPIC_REQUEST => 'string',
                 ],
                 'valid string',
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string'
+                    CommunicationConfig::TOPIC_REQUEST => 'string',
                 ],
                 1,
-                'Data in topic "topic" must be of type "string". "int" given.'
+                'Data in topic "topic" must be of type "string". "int" given.',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'string[]',
                 ],
                 ['string1', 'string2'],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'string[]',
                 ],
                 [10 => 'string1', 20 => 'string2'],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'string[]',
                 ],
                 [],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'string[]',
                 ],
                 'single string',
-                'Data in topic "topic" must be of type "string[]". "string" given.'
+                'Data in topic "topic" must be of type "string[]". "string" given.',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'string[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'string[]',
                 ],
                 ['string1', 2],
-                'Data in topic "topic" must be of type "string". "int" given.'
+                'Data in topic "topic" must be of type "string". "int" given.',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class
+                    CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class,
                 ],
                 $customerMock,
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class
+                    CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class,
                 ],
                 'customer',
-                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface". "string" given.'
+                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface". "string" given.',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 [$customerMock, $customerMockTwo],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 [10 => $customerMock, 20 => $customerMockTwo],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 [],
-                null
+                null,
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 'customer',
-                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface[]". "string" given.'
+                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface[]". "string" given.',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 $customerMock,
-                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface[]". '
+                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface[]". ',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
-                [1=>23, 3=>545],
-                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface".'
+                [1 => 23, 3 => 545],
+                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface".',
             ],
             [
                 [
                     CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]'
+                    CommunicationConfig::TOPIC_REQUEST => 'Magento\Customer\Api\Data\CustomerInterface[]',
                 ],
                 [$customerMock, 545],
-                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface".'
+                'Data in topic "topic" must be of type "Magento\Customer\Api\Data\CustomerInterface".',
             ],
         ];
     }

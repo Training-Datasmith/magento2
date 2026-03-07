@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Category;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Category\FileInfo;
 use Magento\Catalog\Model\Category\Image;
@@ -15,6 +15,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -50,7 +51,7 @@ class ImageTest extends TestCase
             Image::class,
             [
                 'storeManager' => $storeManager,
-                'fileInfo' => $this->getFileInfo()
+                'fileInfo' => $this->getFileInfo(),
             ]
         );
     }
@@ -81,43 +82,43 @@ class ImageTest extends TestCase
             [
                 'testimage',
                 'http://www.example.com/',
-                'http://www.example.com/catalog/category/testimage'
+                'http://www.example.com/catalog/category/testimage',
             ],
             [
                 'testimage',
                 'http://www.example.com/media/',
-                'http://www.example.com/media/catalog/category/testimage'
+                'http://www.example.com/media/catalog/category/testimage',
             ],
             [
                 'testimage',
                 'http://www.example.com/base/path/pub/media/',
-                'http://www.example.com/base/path/pub/media/catalog/category/testimage'
+                'http://www.example.com/base/path/pub/media/catalog/category/testimage',
             ],
             [
                 '/pub/media/catalog/category/testimage',
                 'http://www.example.com/media/',
-                'http://www.example.com/media/catalog/category/testimage'
+                'http://www.example.com/media/catalog/category/testimage',
             ],
             [
                 '/pub/media/catalog/category/testimage',
                 'http://www.example.com/base/path/pub/media/',
-                'http://www.example.com/base/path/pub/media/catalog/category/testimage'
+                'http://www.example.com/base/path/pub/media/catalog/category/testimage',
             ],
             [
                 '/pub/media/posters/testimage',
                 'http://www.example.com/media/',
-                'http://www.example.com/media/posters/testimage'
+                'http://www.example.com/media/posters/testimage',
             ],
             [
                 '/pub/media/posters/testimage',
                 'http://www.example.com/base/path/pub/media/',
-                'http://www.example.com/base/path/pub/media/posters/testimage'
+                'http://www.example.com/base/path/pub/media/posters/testimage',
             ],
             [
                 '',
                 'http://www.example.com/',
-                ''
-            ]
+                '',
+            ],
         ];
     }
 

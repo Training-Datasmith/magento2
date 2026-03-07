@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe.
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class ModelHydratorTest extends TestCase
         $resolverData = [
             'model_id' => 1,
             'model_entity_type' => 'customer',
-            'model_data' => ['id' => 1]
+            'model_data' => ['id' => 1],
         ];
 
         $this->customerFactory
@@ -96,7 +97,7 @@ class ModelHydratorTest extends TestCase
         $resolverData = [
             'model_id' => 1,
             'model_entity_type' => 'customer',
-            'model_data' => ['id' => 1]
+            'model_data' => ['id' => 1],
         ];
 
         $this->customerFactory
@@ -129,13 +130,13 @@ class ModelHydratorTest extends TestCase
         $resolverData1 = [
             'model_id' => 1,
             'model_entity_type' => 'customer',
-            'model_data' => ['id' => 1]
+            'model_data' => ['id' => 1],
         ];
 
         $resolverData2 = [
             'model_id' => 2,
             'model_entity_type' => 'customer',
-            'model_data' => ['id' => 2]
+            'model_data' => ['id' => 2],
         ];
 
         $this->customerFactory

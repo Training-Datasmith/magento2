@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -79,13 +80,13 @@ class ProductTest extends TestCase
                                         new DataObject(
                                             [
                                                 'url' => $storeBaseMediaUrl . 'i/m/image1.png',
-                                                'caption' => 'caption & > title < "'
+                                                'caption' => 'caption & > title < "',
                                             ]
                                         ),
                                         new DataObject(
                                             [
                                                 'url' => $storeBaseMediaUrl . 'i/m/image_no_caption.png',
-                                                'caption' => null
+                                                'caption' => null,
                                             ]
                                         ),
                                     ],
@@ -95,8 +96,8 @@ class ProductTest extends TestCase
                             ),
                         ]
                     ),
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

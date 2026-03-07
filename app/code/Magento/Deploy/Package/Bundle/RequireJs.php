@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Package\Bundle;
 
 use Magento\Deploy\Config\BundleConfig;
 use Magento\Deploy\Package\BundleInterface;
-use Magento\Framework\Filesystem;
-use \Magento\Framework\Filesystem\File\WriteInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\File\WriteInterface;
 use Magento\Framework\View\Asset\Minification;
 
 /**
@@ -68,7 +71,7 @@ class RequireJs implements BundleInterface
      */
     private $contentPools = [
         'js' => 'jsbuild',
-        'html' => 'text'
+        'html' => 'text',
     ];
 
     /**
@@ -78,7 +81,7 @@ class RequireJs implements BundleInterface
      */
     private $files = [
         'jsbuild' => [],
-        'text' => []
+        'text' => [],
     ];
 
     /**
@@ -177,7 +180,7 @@ class RequireJs implements BundleInterface
                     $freeSpace = $this->getBundleFileMaxSize();
                     $freeSpace -= $size;
                     $content = [
-                        $this->minification->addMinifiedSign($filePath) => $fileContent
+                        $this->minification->addMinifiedSign($filePath) => $fileContent,
                     ];
                     $bundleFile = $this->startNewBundleFile($contentPoolName);
                 }
@@ -250,8 +253,8 @@ class RequireJs implements BundleInterface
     {
         if (!isset($this->fileContent[$sourcePath])) {
             $content = $this->staticDir->readFile($this->minification->addMinifiedSign($sourcePath));
-            if (mb_detect_encoding($content) !== "UTF-8") {
-                $content = mb_convert_encoding($content, "UTF-8");
+            if (mb_detect_encoding($content) !== 'UTF-8') {
+                $content = mb_convert_encoding($content, 'UTF-8');
             }
 
             $this->fileContent[$sourcePath] = $content;

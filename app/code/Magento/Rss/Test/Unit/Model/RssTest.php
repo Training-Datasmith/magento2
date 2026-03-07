@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class RssTest extends TestCase
             [
                 'cache' => $this->cacheMock,
                 'feedFactory' => $this->feedFactoryMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }

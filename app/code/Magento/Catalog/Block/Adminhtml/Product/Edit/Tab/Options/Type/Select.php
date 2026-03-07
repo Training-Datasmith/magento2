@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\Type;
 
 class Select extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\Type\AbstractType
@@ -42,7 +45,7 @@ class Select extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\T
             [
                 'label' => __('Add New Row'),
                 'class' => 'add add-select-row',
-                'id' => 'product_option_<%- data.option_id %>_add_select_row'
+                'id' => 'product_option_<%- data.option_id %>_add_select_row',
             ]
         );
 
@@ -52,7 +55,7 @@ class Select extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\T
             [
                 'label' => __('Delete Row'),
                 'class' => 'delete delete-select-row icon-btn',
-                'id' => 'product_option_<%- data.id %>_select_<%- data.select_id %>_delete'
+                'id' => 'product_option_<%- data.id %>_select_<%- data.select_id %>_delete',
             ]
         );
 

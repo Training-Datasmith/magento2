@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,6 +18,7 @@ use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
 use Magento\Framework\Stdlib\CookieManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\Url\HostChecker;
@@ -27,7 +29,6 @@ use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\FrameworkMockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -127,7 +128,7 @@ class RedirectTest extends TestCase
                 'isLoggedIn',
                 'getId',
                 'setBeforeAuthUrl',
-                'setAfterAuthUrl'
+                'setAfterAuthUrl',
             ]
         );
 
@@ -143,7 +144,7 @@ class RedirectTest extends TestCase
                 'getAccountUrl',
                 'getLoginUrl',
                 'getLogoutUrl',
-                'getDashboardUrl'
+                'getDashboardUrl',
             ]
         );
 

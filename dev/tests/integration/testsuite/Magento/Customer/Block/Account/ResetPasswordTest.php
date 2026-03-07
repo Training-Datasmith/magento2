@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class ResetPasswordTest extends TestCase
     private const SET_NEW_PASSWORD_BUTTON_XPATH = "//button/span[contains(text(),'Set a New Password')]";
     private const NEW_PASSWORD_LABEL_XPATH = "//label[@for='password']/span[contains(text(), 'New Password')]";
     private const PASSWORD_CONFIRMATION_LABEL_XPATH = "//label[@for='password-confirmation']"
-    . "/span[contains(text(), 'Confirm New Password')]";
+        . "/span[contains(text(), 'Confirm New Password')]";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

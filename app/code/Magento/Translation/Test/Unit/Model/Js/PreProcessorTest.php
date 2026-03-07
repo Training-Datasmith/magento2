@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\View\Asset\File\FallbackContext;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
 use Magento\Translation\Model\Js\Config;
 use Magento\Translation\Model\Js\PreProcessor;
-use Symfony\Component\Console\Input\ArgvInput;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Input\ArgvInput;
 
 class PreProcessorTest extends TestCase
 {
@@ -123,7 +124,7 @@ class PreProcessorTest extends TestCase
             ->willReturn(new \ArrayIterator(
                 [
                     '~(?s)\$t\(\s*([\'"])(\?\<translate\>.+?)(?<!\\\)\1\s*(*SKIP)\)(?s)~',
-                    '~\$\.mage\.__\(([\'"])(.+?)\1\)~'
+                    '~\$\.mage\.__\(([\'"])(.+?)\1\)~',
                 ],
             ));
         $chain->expects($this->once())

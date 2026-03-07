@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -6,7 +8,7 @@
 
 namespace Magento\Reports\Block\Product;
 
-use \Magento\Framework\DataObject\IdentityInterface;
+use Magento\Framework\DataObject\IdentityInterface;
 
 /**
  * Reports Recently Viewed Products Block

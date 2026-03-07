@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,13 +15,12 @@ use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order\CustomerAssignment;
 use Magento\Sales\Observer\AssignOrderToCustomerObserver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AssignOrderToCustomerObserverTest extends TestCase
 {
-
     /** @var AssignOrderToCustomerObserver */
     protected $sut;
 
@@ -69,7 +69,7 @@ class AssignOrderToCustomerObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['delegate_data', null, ['__sales_assign_order_id' => $orderId]],
-                    ['customer_data_object', null, $customerMock]
+                    ['customer_data_object', null, $customerMock],
                 ]
             );
         $orderMock->expects($this->once())->method('getCustomerId')->willReturn($orderCustomerId);

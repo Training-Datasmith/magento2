@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Integration\Model\Oauth\Token\RequestThrottler;
-use Magento\Framework\Registry;
 use Magento\Customer\Model\Customer;
+use Magento\Framework\Registry;
+use Magento\Integration\Model\Oauth\Token\RequestThrottler;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Model\Address;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Store/_files/websites_different_countries_rollback.php');

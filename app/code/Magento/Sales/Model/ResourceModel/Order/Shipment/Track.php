@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order\Shipment;
 
-use Magento\Sales\Model\ResourceModel\EntityAbstract as SalesResource;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
+use Magento\Sales\Model\ResourceModel\EntityAbstract as SalesResource;
 use Magento\Sales\Model\Spi\ShipmentTrackResourceInterface;
 
 /**

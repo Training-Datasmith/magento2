@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,9 @@ namespace Magento\Directory\Test\Unit\Model;
 
 use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Directory\Model\Currency\Import\Factory;
+use Magento\Directory\Model\Currency\Import\ImportInterface;
 use Magento\Directory\Model\CurrencyFactory;
+use Magento\Directory\Model\Observer;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Mail\TransportInterface;
@@ -18,8 +21,6 @@ use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Directory\Model\Observer;
-use Magento\Directory\Model\Currency\Import\ImportInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -95,7 +96,7 @@ class ObserverTest extends TestCase
                 'transportBuilder' => $this->transportBuilderMock,
                 'storeManager' => $this->storeManagerMock,
                 'currencyFactory' => $this->currencyFactoryMock,
-                'inlineTranslation' => $this->inlineTranslationMock
+                'inlineTranslation' => $this->inlineTranslationMock,
             ]
         );
     }

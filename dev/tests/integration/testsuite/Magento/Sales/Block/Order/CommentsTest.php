@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Order;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -48,12 +51,12 @@ class CommentsTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 \Magento\Sales\Model\Order\Creditmemo::class,
-                \Magento\Sales\Model\ResourceModel\Order\Creditmemo\Comment\Collection::class
+                \Magento\Sales\Model\ResourceModel\Order\Creditmemo\Comment\Collection::class,
             ],
             [
                 \Magento\Sales\Model\Order\Shipment::class,
-                \Magento\Sales\Model\ResourceModel\Order\Shipment\Comment\Collection::class
-            ]
+                \Magento\Sales\Model\ResourceModel\Order\Shipment\Comment\Collection::class,
+            ],
         ];
     }
 

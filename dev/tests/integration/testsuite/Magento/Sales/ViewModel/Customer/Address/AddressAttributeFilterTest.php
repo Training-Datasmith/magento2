@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Tests for customer addresses collection
  */
+
 namespace Magento\Sales\ViewModel\Customer\Address;
 
-use Magento\Customer\Model\ResourceModel\Address\Collection;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Model\ResourceModel\Address\Collection;
 use Magento\Framework\App\Config\ConfigResource\ConfigInterface;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -99,7 +102,7 @@ class AddressAttributeFilterTest extends TestCase
      * @throws NoSuchEntityException
      */
     #[DataProvider('addressesDataProvider')]
-    public function testSetScopeFilter($storeId, $allowedCountries) : void
+    public function testSetScopeFilter($storeId, $allowedCountries): void
     {
         /** @var ConfigInterface $config */
         $config = $this->objectManager->get(ConfigInterface::class);

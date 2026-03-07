@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,11 +18,11 @@ use Magento\Framework\Data\Collection;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const REPORT_PERIOD_TYPE_DAY = 'day';
+    public const REPORT_PERIOD_TYPE_DAY = 'day';
 
-    const REPORT_PERIOD_TYPE_MONTH = 'month';
+    public const REPORT_PERIOD_TYPE_MONTH = 'month';
 
-    const REPORT_PERIOD_TYPE_YEAR = 'year';
+    public const REPORT_PERIOD_TYPE_YEAR = 'year';
 
     /**
      * Item factory

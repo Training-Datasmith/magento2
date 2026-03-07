@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\OrderCancellationGraphQl\Model\ConfirmCancelOrder as ConfirmCancelOrderGuest;
-use Magento\OrderCancellationGraphQl\Model\Validator\ValidateOrder;
 use Magento\OrderCancellationGraphQl\Model\Validator\ValidateConfirmRequest;
+use Magento\OrderCancellationGraphQl\Model\Validator\ValidateOrder;
 use Magento\Sales\Api\OrderRepositoryInterface;
 
 /**
@@ -57,7 +58,7 @@ class ConfirmCancelOrder implements ResolverInterface
 
             if (!$order->getCustomerIsGuest()) {
                 return [
-                    'error' => __('Current user is not authorized to cancel this order')
+                    'error' => __('Current user is not authorized to cancel this order'),
                 ];
             }
 
@@ -69,7 +70,7 @@ class ConfirmCancelOrder implements ResolverInterface
             return $this->confirmCancelOrder->execute($order, $args['input']);
         } catch (LocalizedException $e) {
             return [
-                'error' => __($e->getMessage())
+                'error' => __($e->getMessage()),
             ];
         }
     }

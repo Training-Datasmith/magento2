@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,5 +14,5 @@ return [
     'reason_code' => 'refund',
     'receiver_email' => 'merchant_2012050718_biz@example.com',
     'parent_txn_id' => '84J11393WC835693U',
-    'txn_id' => '1P566839F9694230H'
+    'txn_id' => '1P566839F9694230H',
 ];

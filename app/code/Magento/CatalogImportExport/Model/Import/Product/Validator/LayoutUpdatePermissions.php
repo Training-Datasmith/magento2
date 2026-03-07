@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\CatalogImportExport\Model\Import\Product\Validator;
 
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\AuthorizationInterface;
-use Magento\CatalogImportExport\Model\Import\Product\Validator\AbstractImportValidator;
 
 /**
  * Validator to assert that the current user is allowed to make design updates if a layout is provided in the import
@@ -34,7 +34,7 @@ class LayoutUpdatePermissions extends AbstractImportValidator
      */
     private $allowedUserTypes = [
         UserContextInterface::USER_TYPE_ADMIN,
-        UserContextInterface::USER_TYPE_INTEGRATION
+        UserContextInterface::USER_TYPE_INTEGRATION,
     ];
 
     /**

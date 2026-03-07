@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\MediaGalleryMetadata\Test\Integration\Model\Gif\Segment;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\MediaGalleryMetadata\Model\Gif\Segment\WriteXmp;
-use Magento\MediaGalleryMetadata\Model\Gif\Segment\ReadXmp;
 use Magento\MediaGalleryMetadata\Model\Gif\ReadFile;
+use Magento\MediaGalleryMetadata\Model\Gif\Segment\ReadXmp;
+use Magento\MediaGalleryMetadata\Model\Gif\Segment\WriteXmp;
 use Magento\MediaGalleryMetadata\Model\MetadataFactory;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for XMP reader and writer gif format
@@ -101,7 +102,7 @@ class XmpTest extends TestCase
             $this->metadataFactory->create([
                 'title' => $title,
                 'description' => $description,
-                'keywords' => $keywords
+                'keywords' => $keywords,
             ])
         );
         $updatedGifMetadata = $this->xmpReader->execute($updatedGifFile);
@@ -124,9 +125,9 @@ class XmpTest extends TestCase
                 'Description of the magento image 2',
                 [
                     'magento2',
-                    'community'
-                ]
-            ]
+                    'community',
+                ],
+            ],
         ];
     }
 }

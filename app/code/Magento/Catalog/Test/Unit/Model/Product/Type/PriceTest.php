@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionInterface;
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
@@ -18,12 +18,12 @@ use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Customer\Model\Data\Group;
 use Magento\Customer\Model\GroupManagement;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\RuntimeException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -111,7 +111,7 @@ class PriceTest extends TestCase
                 'config' => $this->scopeConfigMock,
                 'storeManager' => $storeMangerMock,
                 'groupManagement' => $this->groupManagementMock,
-                'tierPriceExtensionFactory' => $this->tierPriceExtensionFactoryMock
+                'tierPriceExtensionFactory' => $this->tierPriceExtensionFactoryMock,
             ]
         );
     }
@@ -139,7 +139,7 @@ class PriceTest extends TestCase
     public static function nullPricesDataProvider(): array
     {
         return [
-            'testGetTierPricesWithNull' => [self::KEY_TIER_PRICE, 'setTierPrices']
+            'testGetTierPricesWithNull' => [self::KEY_TIER_PRICE, 'setTierPrices'],
         ];
     }
 
@@ -150,7 +150,7 @@ class PriceTest extends TestCase
     {
         return [
             'global price scope' => [self::PRICE_SCOPE_GLOBAL, 0],
-            'website price scope' => [self::PRICE_SCOPE_WEBSITE, 2]
+            'website price scope' => [self::PRICE_SCOPE_WEBSITE, 2],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Plugin;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
@@ -34,9 +37,8 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\MessageQueue\PublisherConsumerController;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -123,9 +125,9 @@ class CouponUsagesTest extends TestCase
             PublisherConsumerController::class,
             [
                 'consumers' => $this->consumers,
-                'logFilePath' => TESTS_TEMP_DIR . "/MessageQueueTestLog.txt",
+                'logFilePath' => TESTS_TEMP_DIR . '/MessageQueueTestLog.txt',
                 'maxMessages' => 100,
-                'appInitParams' => Bootstrap::getInstance()->getAppInitParams()
+                'appInitParams' => Bootstrap::getInstance()->getAppInitParams(),
             ]
         );
         try {
@@ -271,10 +273,10 @@ class CouponUsagesTest extends TestCase
 
         return [
             'order placing failure' => [
-                ['orderManagement' => $orderManagement]
+                ['orderManagement' => $orderManagement],
             ],
             'quote validation failure' => [
-                ['submitQuoteValidator' => $submitQuoteValidator]
+                ['submitQuoteValidator' => $submitQuoteValidator],
             ],
         ];
     }
@@ -295,7 +297,7 @@ class CouponUsagesTest extends TestCase
                 'simple_action' => 'by_percent',
                 'discount_amount' => 10,
                 'uses_per_coupon' => 1,
-                'uses_per_customer' => 1
+                'uses_per_customer' => 1,
             ],
             'salesrule'
         ),

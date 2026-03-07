@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Config form fieldset renderer
  */
+
 namespace Magento\Config\Block\System\Config\Form;
 
 use Magento\Framework\App\ObjectManager;

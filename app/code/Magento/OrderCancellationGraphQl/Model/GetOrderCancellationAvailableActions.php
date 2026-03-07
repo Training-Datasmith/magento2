@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\OrderCancellationGraphQl\Model;
 
 use Magento\OrderCancellation\Model\Config\Config;
 use Magento\OrderCancellation\Model\CustomerCanCancel;
-use Magento\SalesGraphQl\Api\OrderAvailableActionProviderInterface;
 use Magento\Sales\Model\Order;
+use Magento\SalesGraphQl\Api\OrderAvailableActionProviderInterface;
 
 class GetOrderCancellationAvailableActions implements OrderAvailableActionProviderInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Type;
 
+use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
+use Magento\Catalog\Model\Pricing\SpecialPriceService;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Store\Model\Store;
-use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
-use Magento\Framework\App\ObjectManager;
 use Magento\Store\Api\Data\WebsiteInterface;
-use Magento\Catalog\Model\Pricing\SpecialPriceService;
+use Magento\Store\Model\Store;
 
 /**
  * Product type price model
@@ -306,7 +307,7 @@ class Price implements ResetAfterRequestInterface
                         'website_price' => $product->getPrice(),
                         'price_qty' => 1,
                         'cust_group' => $allGroupsId,
-                    ]
+                    ],
                 ];
             }
         }
@@ -440,7 +441,7 @@ class Price implements ResetAfterRequestInterface
                 'price' => $price->getValue(),
                 'all_groups' => ($price->getCustomerGroupId() == $allGroupsId),
                 'price_qty' => $price->getQty(),
-                'percentage_value' => $extensionAttributes ? $extensionAttributes->getPercentageValue() : null
+                'percentage_value' => $extensionAttributes ? $extensionAttributes->getPercentageValue() : null,
             ];
         }
         $product->setData('tier_price', $prices);

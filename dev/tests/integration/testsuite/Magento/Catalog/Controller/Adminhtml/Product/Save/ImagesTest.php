@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -116,8 +117,8 @@ class ImagesTest extends AbstractBackendController
                     'small_image' => '/m/a/magento_image.jpg',
                     'thumbnail' => '/m/a/magento_image.jpg',
                     'swatch_image' => '/m/a/magento_image.jpg',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\App\State;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Setup\FilePermissions;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FilePermissionsTest extends TestCase
 {
@@ -82,7 +83,7 @@ class FilePermissionsTest extends TestCase
             BP . '/var',
             BP . '/pub/media',
             BP . '/generated',
-            BP . '/pub/static'
+            BP . '/pub/static',
         ];
 
         $this->assertEquals($expected, $this->filePermissions->getInstallationWritableDirectories());
@@ -101,7 +102,7 @@ class FilePermissionsTest extends TestCase
         $expected = [
             BP . '/app/etc',
             BP . '/var',
-            BP . '/pub/media'
+            BP . '/pub/media',
         ];
 
         $this->assertEquals($expected, $this->filePermissions->getInstallationWritableDirectories());
@@ -171,13 +172,13 @@ class FilePermissionsTest extends TestCase
                     'isExist' => true,
                     'isDirectory' => true,
                     'isReadable' => true,
-                    'isWritable' => false
+                    'isWritable' => false,
                 ],
-                [BP . '/app/etc']
+                [BP . '/app/etc'],
             ],
             [['isExist' => false], []],
             [['isExist' => true, 'isDirectory' => false], []],
-            [['isExist' => true, 'isDirectory' => true, 'isReadable' => true, 'isWritable' => true], []]
+            [['isExist' => true, 'isDirectory' => true, 'isReadable' => true, 'isWritable' => true], []],
         ];
     }
 
@@ -200,7 +201,7 @@ class FilePermissionsTest extends TestCase
             BP . '/var',
             BP . '/pub/media',
             BP . '/generated',
-            BP . '/pub/static'
+            BP . '/pub/static',
         ];
 
         $this->assertEquals(
@@ -227,7 +228,7 @@ class FilePermissionsTest extends TestCase
 
         $expected = [
             BP . '/var',
-            BP . '/pub/media'
+            BP . '/pub/media',
         ];
 
         $this->assertEquals(
@@ -288,7 +289,7 @@ class FilePermissionsTest extends TestCase
     {
         return [
             [['isExist' => true, 'isDirectory' => true, 'isReadable' => true, 'isWritable' => false], []],
-            [['isExist' => false], [BP . '/app/etc']]
+            [['isExist' => false], [BP . '/app/etc']],
         ];
     }
 
@@ -371,7 +372,7 @@ class FilePermissionsTest extends TestCase
     {
         return [
             [State::MODE_DEFAULT],
-            [State::MODE_DEVELOPER]
+            [State::MODE_DEVELOPER],
         ];
     }
 }

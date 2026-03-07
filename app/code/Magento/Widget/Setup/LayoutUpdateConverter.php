@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Setup;
 
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Serialize\Serializer\Serialize;
-use Magento\Framework\Data\Wysiwyg\Normalizer;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Data\Wysiwyg\Normalizer;
 use Magento\Framework\DB\DataConverter\DataConversionException;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
+use Magento\Framework\Escaper;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\Serialize\Serializer\Serialize;
 
 /**
  * Convert conditions_encoded part of layout update data from serialized to JSON format

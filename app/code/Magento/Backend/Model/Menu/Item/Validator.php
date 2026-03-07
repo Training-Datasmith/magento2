@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\Menu\Item;
 
 use Laminas\Validator\Regex;
-use Magento\Framework\Validator\StringLength;
 use Laminas\Validator\ValidatorChain;
+use Magento\Framework\Validator\StringLength;
 
 /**
  * @api
@@ -154,7 +157,7 @@ class Validator
         }
 
         throw new \InvalidArgumentException(
-            "Param " . $param . " doesn't pass validation: " . implode(
+            'Param ' . $param . " doesn't pass validation: " . implode(
                 '; ',
                 $validator->getMessages()
             )

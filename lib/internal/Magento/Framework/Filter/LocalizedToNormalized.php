@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class LocalizedToNormalized implements FilterInterface
         'locale' => null,
         'date_format' => null,
         'precision' => null,
-        'decimal_style' => null
+        'decimal_style' => null,
     ];
 
     /**
@@ -113,18 +115,18 @@ class LocalizedToNormalized implements FilterInterface
         $options = $this->_options;
 
         if (iconv_strpos($options['date_format'], 'd', 0, 'UTF-8') !== false
-            && (!isset($date['day']) || ($date['day'] === ""))
+            && (!isset($date['day']) || ($date['day'] === ''))
         ) {
             return false;
         }
         if (iconv_strpos($options['date_format'], 'M', 0, 'UTF-8') !== false
-            && (!isset($date['month']) || ($date['month'] === ""))
+            && (!isset($date['month']) || ($date['month'] === ''))
         ) {
             return false;
         }
         if ((iconv_strpos($options['date_format'], 'Y', 0, 'UTF-8') !== false
                 || iconv_strpos($options['date_format'], 'y', 0, 'UTF-8') !== false)
-            && (!isset($date['year']) || ($date['year'] === ""))
+            && (!isset($date['year']) || ($date['year'] === ''))
         ) {
             return false;
         }

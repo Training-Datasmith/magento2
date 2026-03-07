@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class AddTransactionCommentAfterCaptureTest extends TestCase
         $transactionMock = $this->createMock(Transaction::class);
         $transactionMock
             ->method('addObject')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$invoiceMock] => $transactionMock,
                 [$orderMock] => $transactionMock
             });

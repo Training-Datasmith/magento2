@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -24,7 +27,7 @@ class Timestamp implements FactoryInterface
     /**
      * Nullable timestamp value.
      */
-    const NULL_TIMESTAMP = 'NULL';
+    public const NULL_TIMESTAMP = 'NULL';
 
     /**
      * @var ObjectManagerInterface

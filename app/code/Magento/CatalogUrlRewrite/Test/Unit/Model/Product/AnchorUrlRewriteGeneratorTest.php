@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class AnchorUrlRewriteGeneratorTest extends TestCase
             [
                 'productUrlPathGenerator' => $this->productUrlPathGenerator,
                 'urlRewriteFactory' => $this->urlRewriteFactory,
-                'categoryRepository' => $this->categoryRepositoryInterface
+                'categoryRepository' => $this->categoryRepositoryInterface,
             ]
         );
     }

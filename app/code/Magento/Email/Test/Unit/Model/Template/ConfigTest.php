@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\View\Design\Theme\ThemePackage;
 use Magento\Framework\View\Design\Theme\ThemePackageList;
 use Magento\Framework\View\FileSystem;
 use Magento\Setup\Module\I18n\Locale;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConfigTest extends TestCase
 {
@@ -128,11 +129,11 @@ class ConfigTest extends TestCase
             'template_two' => ['label' => 'Template 2', 'module' => 'Fixture_ModuleTwo'],
             'template_one/Vendor/custom_theme' => [
                 'label' => 'Template One (Vendor/custom_theme)',
-                'module' => 'Fixture_ModuleOne'
+                'module' => 'Fixture_ModuleOne',
             ],
             'template_two/Vendor/custom_theme' => [
                 'label' => 'Template 2 (Vendor/custom_theme)',
-                'module' => 'Fixture_ModuleTwo'
+                'module' => 'Fixture_ModuleTwo',
             ],
         ];
 

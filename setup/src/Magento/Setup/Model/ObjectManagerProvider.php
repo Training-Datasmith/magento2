@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Setup\Model;
 
-use Symfony\Component\Console\Application;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Magento\Framework\Console\CommandListInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
+use Symfony\Component\Console\Application;
 
 /**
  * Object manager provider

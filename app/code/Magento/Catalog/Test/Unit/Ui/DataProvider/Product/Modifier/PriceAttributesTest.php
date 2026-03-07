@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Ui\DataProvider\Product\Modifier\PriceAttributes;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Monolog\Test\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class PriceAttributesTest extends TestCase
@@ -94,8 +95,8 @@ class PriceAttributesTest extends TestCase
                             'attr1' => '33',
                             'attr2' => '333',
                             'attr3' => '3333',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'items' => [
@@ -116,10 +117,10 @@ class PriceAttributesTest extends TestCase
                             'attr1' => 'formatted',
                             'attr2' => '333',
                             'attr3' => 'formatted',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

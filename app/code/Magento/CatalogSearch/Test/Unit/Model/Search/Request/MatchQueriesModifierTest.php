@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\Search\Request;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogSearch\Model\Search\Request\MatchQueriesModifier;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,7 +43,7 @@ class MatchQueriesModifierTest extends TestCase
                         'name' => [
                             'analyzer' => 'standard',
                             'max_expansions' => 20,
-                        ]
+                        ],
                     ],
                 ],
                 [
@@ -52,7 +53,7 @@ class MatchQueriesModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
+                            ],
                         ],
                         'queries' => [
                             'partial_search' => [
@@ -60,7 +61,7 @@ class MatchQueriesModifierTest extends TestCase
                                 'value' => '$search_term$',
                                 'match' => [
                                     [
-                                        'field' => '*'
+                                        'field' => '*',
                                     ],
                                     [
                                         'field' => 'sku',
@@ -70,9 +71,9 @@ class MatchQueriesModifierTest extends TestCase
                                         'field' => 'name',
                                         'matchCondition' => 'match_phrase_prefix',
                                     ],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'search_2' => [
                         'filters' => [
@@ -80,9 +81,9 @@ class MatchQueriesModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'search_1' => [
@@ -91,7 +92,7 @@ class MatchQueriesModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
+                            ],
                         ],
                         'queries' => [
                             'partial_search' => [
@@ -99,7 +100,7 @@ class MatchQueriesModifierTest extends TestCase
                                 'value' => '$search_term$',
                                 'match' => [
                                     [
-                                        'field' => '*'
+                                        'field' => '*',
                                     ],
                                     [
                                         'field' => 'sku',
@@ -111,9 +112,9 @@ class MatchQueriesModifierTest extends TestCase
                                         'analyzer' => 'standard',
                                         'max_expansions' => 20,
                                     ],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'search_2' => [
                         'filters' => [
@@ -121,11 +122,11 @@ class MatchQueriesModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

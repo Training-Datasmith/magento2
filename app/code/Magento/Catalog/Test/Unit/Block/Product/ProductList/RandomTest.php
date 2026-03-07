@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Block\Product\ProductList;
 
 use Magento\Catalog\Block\Product\ProductList\Random;
+use Magento\Catalog\Helper\Output;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
-use Magento\Catalog\Helper\Output;
 use Magento\Catalog\Pricing\Price\SpecialPriceBulkResolverInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -198,16 +199,16 @@ class RandomTest extends TestCase
         return [
             'with positive numProducts' => [
                 'numProducts' => 10,
-                'expectedPageSize' => 10
+                'expectedPageSize' => 10,
             ],
             'with zero numProducts' => [
                 'numProducts' => 0,
-                'expectedPageSize' => 0
+                'expectedPageSize' => 0,
             ],
             'with null numProducts defaults to zero' => [
                 'numProducts' => null,
-                'expectedPageSize' => 0
-            ]
+                'expectedPageSize' => 0,
+            ],
         ];
     }
 }

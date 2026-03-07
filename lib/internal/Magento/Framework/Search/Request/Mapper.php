@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -143,7 +145,7 @@ class Mapper
                         'name' => $query['name'],
                         'value' => $query['value'],
                         'boost' => $query['boost'] ?? 1,
-                        'matches' => $query['match']
+                        'matches' => $query['match'],
                     ]
                 );
                 break;
@@ -164,7 +166,7 @@ class Mapper
                         'name' => $query['name'],
                         'boost' => $query['boost'] ?? 1,
                         'reference' => $reference,
-                        'referenceType' => $referenceType
+                        'referenceType' => $referenceType,
                     ]
                 );
                 break;
@@ -216,7 +218,7 @@ class Mapper
                     [
                         'name' => $filter['name'],
                         'field' => $filter['field'],
-                        'value' => $filter['value']
+                        'value' => $filter['value'],
                     ]
                 );
                 break;
@@ -227,7 +229,7 @@ class Mapper
                         'name' => $filter['name'],
                         'field' => $filter['field'],
                         'from' => $filter['from'] ?? null,
-                        'to' => $filter['to'] ?? null
+                        'to' => $filter['to'] ?? null,
                     ]
                 );
                 break;
@@ -237,7 +239,7 @@ class Mapper
                     [
                         'name' => $filter['name'],
                         'field' => $filter['field'],
-                        'value' => $filter['value']
+                        'value' => $filter['value'],
                     ]
                 );
                 break;
@@ -400,7 +402,7 @@ class Mapper
                 $metricObjects[] = $this->objectManager->create(
                     Metric::class,
                     [
-                        'type' => $metric['type']
+                        'type' => $metric['type'],
                     ]
                 );
             }
@@ -424,7 +426,7 @@ class Mapper
                     Aggregation\Range::class,
                     [
                         'from' => $range['from'],
-                        'to' => $range['to']
+                        'to' => $range['to'],
                     ]
                 );
             }

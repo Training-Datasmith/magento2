@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class BmlPosition
     {
         return [
             '0' => __('Header (center)'),
-            '1' => __('Sidebar (right)')
+            '1' => __('Sidebar (right)'),
         ];
     }
 
@@ -30,7 +32,7 @@ class BmlPosition
     {
         return [
             '0' => __('Header (center)'),
-            '1' => __('Sidebar (right)')
+            '1' => __('Sidebar (right)'),
         ];
     }
 
@@ -43,7 +45,7 @@ class BmlPosition
     {
         return [
             '0' => __('Header (center)'),
-            '1' => __('Near PayPal Credit checkout button')
+            '1' => __('Near PayPal Credit checkout button'),
         ];
     }
 
@@ -56,7 +58,7 @@ class BmlPosition
     {
         return [
             '0' => __('Header (center)'),
-            '1' => __('Near PayPal Credit checkout button')
+            '1' => __('Near PayPal Credit checkout button'),
         ];
     }
 }

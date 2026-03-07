@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +17,6 @@ Resolver::getInstance()->requireDataFixture(
 );
 
 $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
-
 
 /** @var WebsiteRepositoryInterface $repository */
 $repository = $objectManager->get(WebsiteRepositoryInterface::class);

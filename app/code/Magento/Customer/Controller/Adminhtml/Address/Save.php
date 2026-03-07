@@ -1,23 +1,23 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Address;
 
 use Magento\Backend\App\Action;
 use Magento\Customer\Model\CustomerRegistry;
+use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Message\AbstractMessage;
-use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -210,8 +210,8 @@ class Save extends Action implements HttpPostActionInterface
                 'messages' => $message,
                 'error' => $error,
                 'data' => [
-                    'entity_id' => $addressId
-                ]
+                    'entity_id' => $addressId,
+                ],
             ]
         );
 

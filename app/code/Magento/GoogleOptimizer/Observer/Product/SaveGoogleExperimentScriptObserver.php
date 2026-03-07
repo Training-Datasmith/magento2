@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Observer\Product;
 
 use Magento\Framework\Event\Observer;
@@ -46,7 +49,7 @@ class SaveGoogleExperimentScriptObserver extends \Magento\GoogleOptimizer\Observ
             'entity_type' => \Magento\GoogleOptimizer\Model\Code::ENTITY_TYPE_PRODUCT,
             'entity_id' => $this->_product->getId(),
             'store_id' => $this->_product->getStoreId(),
-            'experiment_script' => $this->_params['experiment_script']
+            'experiment_script' => $this->_params['experiment_script'],
         ];
     }
 }

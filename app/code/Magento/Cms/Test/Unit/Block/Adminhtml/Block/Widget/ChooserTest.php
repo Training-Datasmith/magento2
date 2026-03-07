@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,18 +14,18 @@ use Magento\Cms\Block\Adminhtml\Block\Widget\Chooser;
 use Magento\Cms\Model\Block;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\ResourceModel\Block\CollectionFactory;
-use Magento\Widget\Block\Adminhtml\Widget\Chooser as WidgetChooser;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Escaper;
 use Magento\Framework\Math\Random;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
+use Magento\Widget\Block\Adminhtml\Widget\Chooser as WidgetChooser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Cms\Block\Adminhtml\Block\Widget\Chooser
@@ -105,7 +106,7 @@ class ChooserTest extends TestCase
             ->onlyMethods(
                 [
                     'escapeHtml',
-                    'escapeJs'
+                    'escapeJs',
                 ]
             )
             ->getMock();
@@ -140,7 +141,7 @@ class ChooserTest extends TestCase
                 'setSourceUrl',
                 'setUniqId',
                 'setLabel',
-                'toHtml'
+                'toHtml',
             ]
         );
         $this->backendHelperMock = $this->getMockBuilder(Data::class)
@@ -166,7 +167,7 @@ class ChooserTest extends TestCase
             Chooser::class,
             [
                 'context'      => $this->context,
-                'blockFactory' => $this->blockFactoryMock
+                'blockFactory' => $this->blockFactoryMock,
             ]
         );
     }
@@ -279,7 +280,7 @@ class ChooserTest extends TestCase
             'elementValue IS EMPTY, modelBlockId NEVER REACHED' => [
                 '',  // $elementValue
                 1,   // $modelBlockId
-            ]
+            ],
         ];
     }
 

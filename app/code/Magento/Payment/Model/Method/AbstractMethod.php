@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Payment\Model\Method;
 
+use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Payment\Model\InfoInterface;
@@ -13,7 +16,6 @@ use Magento\Payment\Model\MethodInterface;
 use Magento\Payment\Observer\AbstractDataAssignObserver;
 use Magento\Quote\Api\Data\PaymentMethodInterface;
 use Magento\Sales\Model\Order\Payment;
-use Magento\Directory\Helper\Data as DirectoryHelper;
 
 /**
  * Payment method abstract model
@@ -751,7 +753,7 @@ abstract class AbstractMethod extends \Magento\Framework\Model\AbstractExtensibl
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -760,7 +762,7 @@ abstract class AbstractMethod extends \Magento\Framework\Model\AbstractExtensibl
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -789,7 +791,7 @@ abstract class AbstractMethod extends \Magento\Framework\Model\AbstractExtensibl
             [
                 'result' => $checkResult,
                 'method_instance' => $this,
-                'quote' => $quote
+                'quote' => $quote,
             ]
         );
 

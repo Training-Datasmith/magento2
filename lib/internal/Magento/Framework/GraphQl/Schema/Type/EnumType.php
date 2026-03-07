@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,5 +13,4 @@ namespace Magento\Framework\GraphQl\Schema\Type;
  */
 class EnumType extends \GraphQL\Type\Definition\EnumType implements InputTypeInterface, OutputTypeInterface
 {
-
 }

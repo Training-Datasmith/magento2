@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block\Role\Grid;
 
 use Magento\Backend\Block\Widget\Grid\Column;
@@ -139,7 +142,7 @@ class User extends \Magento\Backend\Block\Widget\Grid\Extended
                 'name' => 'in_role_users',
                 'values' => $this->getUsers(),
                 'align' => 'center',
-                'index' => 'user_id'
+                'index' => 'user_id',
             ]
         );
 
@@ -175,7 +178,7 @@ class User extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'is_active',
                 'align' => 'left',
                 'type' => 'options',
-                'options' => ['1' => __('Active'), '0' => __('Inactive')]
+                'options' => ['1' => __('Active'), '0' => __('Inactive')],
             ]
         );
 

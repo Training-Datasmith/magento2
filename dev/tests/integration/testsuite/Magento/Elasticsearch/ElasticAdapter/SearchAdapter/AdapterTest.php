@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class AdapterTest extends \PHPUnit\Framework\TestCase
             \Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Adapter::class,
             [
                 'connectionManager' => $contentManager,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

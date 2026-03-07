@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +12,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductCustomOptionTypeListTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/products/options/';
+    public const RESOURCE_PATH = '/V1/products/options/';
 
-    const SERVICE_NAME = 'catalogProductCustomOptionTypeListV1';
+    public const SERVICE_NAME = 'catalogProductCustomOptionTypeListV1';
 
     /**
      * @magentoAppIsolation enabled
@@ -21,7 +23,7 @@ class ProductCustomOptionTypeListTest extends WebapiAbstract
     {
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "types",
+                'resourcePath' => self::RESOURCE_PATH . 'types',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [

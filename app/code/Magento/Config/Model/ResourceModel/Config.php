@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\ResourceModel;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -91,7 +94,7 @@ class Config extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implem
             [
                 $connection->quoteInto('path = ?', $path),
                 $connection->quoteInto('scope = ?', $scope),
-                $connection->quoteInto('scope_id = ?', $scopeId)
+                $connection->quoteInto('scope_id = ?', $scopeId),
             ]
         );
         $this->pillPut->put();

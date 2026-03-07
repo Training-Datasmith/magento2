@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ if (!$attribute->getId()) {
                 'value' => ['option_0' => $optionValues, 'option_1' => ['Option 2']],
                 'order' => ['option_0' => 1, 'option_1' => 2],
             ],
-            'default' => ['option_0']
+            'default' => ['option_0'],
         ]
     );
 

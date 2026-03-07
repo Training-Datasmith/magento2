@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
 use Magento\Setup\Model\ConfigOptionsList\Session as SessionConfigOptionsList;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
@@ -117,8 +118,8 @@ class SessionTest extends TestCase
     {
         $expectedConfigData = [
             'session' => [
-                'save' => 'files'
-            ]
+                'save' => 'files',
+            ],
         ];
 
         $options = ['session-save' => 'files'];
@@ -162,8 +163,8 @@ class SessionTest extends TestCase
                     'sentinel_servers' => '',
                     'sentinel_connect_retries' => '',
                     'sentinel_verify_master' => '',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $options = ['session-save' => $backend];
@@ -219,7 +220,7 @@ class SessionTest extends TestCase
                     'sentinel_servers' => '',
                     'sentinel_connect_retries' => '',
                     'sentinel_verify_master' => '',
-                ]
+                ],
             ],
 
         ];
@@ -249,7 +250,7 @@ class SessionTest extends TestCase
         $options = [
             'session-save' => 'files',
             'session-save-redis-host' => 'localhost',
-            'session-save-redis-compression-library' => 'gzip'
+            'session-save-redis-compression-library' => 'gzip',
         ];
 
         $errors = $this->configList->validate($options, $this->deploymentConfigMock);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Catalog\Model\Product\Attribute\Save;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Test\Fixture\Attribute as AttributeFixture;
 use Magento\Eav\Model\Entity\Attribute\Exception;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoDbIsolation enabled

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class BuilderTest extends TestCase
                 'metaFactory' => $this->metaFactory,
                 'profileFactory' => $this->profileFactory,
                 'appResource' => $this->resourceMock,
-                'ddlSequence' => $this->sequence
+                'ddlSequence' => $this->sequence,
             ]
         );
     }
@@ -162,8 +163,8 @@ class BuilderTest extends TestCase
                     'step' => $step,
                     'max_value' => $maxValue,
                     'warning_value' => $warningValue,
-                    'is_active' => 1
-                ]
+                    'is_active' => 1,
+                ],
             ])->willReturn($this->profile);
         $sequenceTable = sprintf('sequence_%s_%s', $entityType, $storeId);
         $this->metaFactory->expects($this->once())
@@ -173,8 +174,8 @@ class BuilderTest extends TestCase
                     'entity_type' => $entityType,
                     'store_id' => $storeId,
                     'sequence_table' => $sequenceTable,
-                    'active_profile' => $this->profile
-                ]
+                    'active_profile' => $this->profile,
+                ],
             ])->willReturn($this->meta);
         $this->resourceSequenceMeta->expects($this->once())->method('save')->willReturn($this->meta);
         $this->stepCreateSequence($sequenceTable, $startValue);
@@ -197,7 +198,7 @@ class BuilderTest extends TestCase
      */
     private function stepCreateSequence($sequenceName, $startNumber)
     {
-        $sql = "some sql";
+        $sql = 'some sql';
         $this->resourceMock->expects($this->atLeastOnce())
             ->method('getTableName');
         $this->resourceMock->expects($this->any())

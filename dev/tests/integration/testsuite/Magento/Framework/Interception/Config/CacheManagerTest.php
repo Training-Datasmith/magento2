@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 class CacheManagerTest extends \PHPUnit\Framework\TestCase
 {
-    const CACHE_ID = 'interceptiontest';
+    public const CACHE_ID = 'interceptiontest';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

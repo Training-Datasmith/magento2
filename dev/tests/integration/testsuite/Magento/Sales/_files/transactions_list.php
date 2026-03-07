@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -48,7 +50,7 @@ $transactions = [
         'order_id' => $order->getId(),
         'payment_id' => $payment->getId(),
         'txn_id' => '--09--',
-    ]
+    ],
 ];
 
 /** @var array $transactionData */

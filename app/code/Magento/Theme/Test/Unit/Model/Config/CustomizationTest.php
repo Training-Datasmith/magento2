@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme customization config model
  */
+
 namespace Magento\Theme\Test\Unit\Model\Config;
 
 use Magento\Framework\App\Area;

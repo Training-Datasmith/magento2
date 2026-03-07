@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -460,8 +461,8 @@ class ScheduledStructureTest extends TestCase
                 ScheduledStructure::ELEMENT_NAME => 'element name',
                 ScheduledStructure::ELEMENT_PARENT_NAME => 'parent name',
                 ScheduledStructure::ELEMENT_OFFSET_OR_SIBLING => 'sibling',
-                ScheduledStructure::ELEMENT_IS_AFTER => false
-            ]
+                ScheduledStructure::ELEMENT_IS_AFTER => false,
+            ],
         ];
     }
 }

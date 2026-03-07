@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -66,8 +69,8 @@ class EntityTest extends \PHPUnit\Framework\TestCase
             'successful CRUD' => ['saveModelSuccessfully'],
             'cleanup on update error' => [
                 'saveModelAndFailOnUpdate',
-                \Magento\Framework\Exception\LocalizedException::class
-            ]
+                \Magento\Framework\Exception\LocalizedException::class,
+            ],
         ];
     }
 

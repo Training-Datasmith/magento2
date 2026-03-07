@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class EditTest extends TestCase
             Edit::class,
             [
                 'context' => $this->context,
-                'resultPageFactory' => $this->resultPageFactory
+                'resultPageFactory' => $this->resultPageFactory,
             ]
         );
     }
@@ -158,7 +159,7 @@ class EditTest extends TestCase
                 ['attribute_id', null, null],
                 ['attribute', null, $attributesData],
                 ['popup', null, '1'],
-                ['product_tab', null, null]
+                ['product_tab', null, null],
             ]
         );
 
@@ -168,7 +169,7 @@ class EditTest extends TestCase
         $this->objectManagerMock->expects($this->any())->method('get')
             ->willReturnMap([
                 [Session::class, $this->session],
-                [Presentation::class, $this->presentation]
+                [Presentation::class, $this->presentation],
             ]);
         $this->eavAttribute->expects($this->once())->method('setEntityTypeId')->willReturnSelf();
         $this->eavAttribute->expects($this->once())->method('addData')->with($attributesData)->willReturnSelf();
@@ -221,7 +222,7 @@ class EditTest extends TestCase
         $this->objectManagerMock->expects($this->any())->method('get')
             ->willReturnMap([
                 [Session::class, $this->session],
-                [Presentation::class, $this->presentation]
+                [Presentation::class, $this->presentation],
             ]);
 
         $this->eavAttribute->expects($this->once())->method('setEntityTypeId')->willReturnSelf();

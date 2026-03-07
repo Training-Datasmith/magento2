@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -178,7 +180,7 @@ class AssignCouponDataAfterOrderCustomerAssignTest extends \PHPUnit\Framework\Te
      * @param Rule $rule
      * @return Rule\Customer
      */
-    private function getSalesruleCustomerUsage(Customer $customer, Rule $rule) : \Magento\SalesRule\Model\Rule\Customer
+    private function getSalesruleCustomerUsage(Customer $customer, Rule $rule): \Magento\SalesRule\Model\Rule\Customer
     {
         $ruleCustomer = $this->ruleCustomerFactory->create();
         return $ruleCustomer->loadByCustomerRule($customer->getId(), $rule->getRuleId());
@@ -187,7 +189,7 @@ class AssignCouponDataAfterOrderCustomerAssignTest extends \PHPUnit\Framework\Te
     /**
      * @return Rule
      */
-    private function prepareSalesRule() : Rule
+    private function prepareSalesRule(): Rule
     {
         /** @var Rule $salesRule */
         $salesRule = $this->objectManager->create(Rule::class);
@@ -225,7 +227,7 @@ class AssignCouponDataAfterOrderCustomerAssignTest extends \PHPUnit\Framework\Te
      * @param Rule $salesRule
      * @return Coupon
      */
-    private function attachSalesruleCoupon(Rule $salesRule) : Coupon
+    private function attachSalesruleCoupon(Rule $salesRule): Coupon
     {
         $coupon = $this->objectManager->create(Coupon::class);
         $coupon->setRuleId($salesRule->getId())
@@ -241,7 +243,7 @@ class AssignCouponDataAfterOrderCustomerAssignTest extends \PHPUnit\Framework\Te
      * @param Coupon $coupon
      * @return Order
      */
-    private function makeOrderWithCouponAsGuest(Coupon $coupon) : Order
+    private function makeOrderWithCouponAsGuest(Coupon $coupon): Order
     {
         $order = Bootstrap::getObjectManager()->create(\Magento\Sales\Model\Order::class);
         $order->loadByIncrementId('100000001')
@@ -268,7 +270,7 @@ class AssignCouponDataAfterOrderCustomerAssignTest extends \PHPUnit\Framework\Te
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\State\InputMismatchException
      */
-    private function registerNewCustomer() : Customer
+    private function registerNewCustomer(): Customer
     {
         $customer = Bootstrap::getObjectManager()->create(
             \Magento\Customer\Api\Data\CustomerInterface::class

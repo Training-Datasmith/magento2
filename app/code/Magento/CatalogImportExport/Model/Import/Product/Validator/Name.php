@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Model\Import\Product\Validator;
 
+use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
-use Magento\CatalogImportExport\Model\Import\Product;
 
 class Name extends AbstractImportValidator implements RowValidatorInterface
 {
@@ -59,7 +60,7 @@ class Name extends AbstractImportValidator implements RowValidatorInterface
                     $this->context->retrieveMessageTemplate(self::ERROR_INVALID_ATTRIBUTE_TYPE),
                     $this->fieldName,
                     'not empty'
-                )
+                ),
             ]
         );
         return false;

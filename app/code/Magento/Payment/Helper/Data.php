@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,20 +14,20 @@ use Magento\Framework\App\Config\Initial;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\LayoutFactory;
+use Magento\Framework\View\LayoutInterface;
+use Magento\Payment\Block\Form;
 use Magento\Payment\Model\Config;
+use Magento\Payment\Model\InfoInterface;
+use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Payment\Model\Method\Factory;
 use Magento\Payment\Model\Method\Free;
+use Magento\Payment\Model\MethodInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
-use Magento\Payment\Block\Form;
-use Magento\Payment\Model\InfoInterface;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\LayoutInterface;
-use Magento\Framework\View\LayoutFactory;
-use Magento\Payment\Model\Method\AbstractMethod;
-use Magento\Payment\Model\MethodInterface;
 use UnexpectedValueException;
 
 /**
@@ -38,7 +39,7 @@ use UnexpectedValueException;
  */
 class Data extends AbstractHelper
 {
-    const XML_PATH_PAYMENT_METHODS = 'payment';
+    public const XML_PATH_PAYMENT_METHODS = 'payment';
 
     /**
      * @var Config

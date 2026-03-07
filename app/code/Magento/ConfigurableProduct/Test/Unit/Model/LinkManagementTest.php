@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,10 +16,8 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Eav\AttributeFactory;
-use Magento\ConfigurableProduct\Api\Data\OptionInterface;
 use Magento\ConfigurableProduct\Helper\Product\Options\Factory;
 use Magento\ConfigurableProduct\Model\LinkManagement;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute as ConfigurableAttribute;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\Collection;
@@ -26,7 +25,7 @@ use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Option;
 use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\Api\ExtensionAttributesInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -88,7 +87,7 @@ class LinkManagementTest extends TestCase
                 'productRepository' => $this->productRepository,
                 'productFactory' => $this->productFactory,
                 'configurableType' => $this->configurableType,
-                'dataObjectHelper' => $this->dataObjectHelperMock
+                'dataObjectHelper' => $this->dataObjectHelperMock,
             ]
         );
     }
@@ -151,7 +150,7 @@ class LinkManagementTest extends TestCase
      */
     public function testGetWithNonConfigurableProduct(): void
     {
-        $productId= 'test';
+        $productId = 'test';
         $product = $this->createMock(Product::class);
         $product->method('getTypeId')->willReturn('simple');
         $this->productRepository->expects($this->any())
@@ -198,7 +197,7 @@ class LinkManagementTest extends TestCase
 
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$productSku] => $configurable,
                 [$childSku] => $simple
             });
@@ -248,7 +247,7 @@ class LinkManagementTest extends TestCase
 
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$productSku] => $configurable,
                 [$childSku] => $simple
             });

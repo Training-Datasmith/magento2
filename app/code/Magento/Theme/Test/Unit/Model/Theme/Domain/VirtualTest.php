@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme virtual model
  */
+
 namespace Magento\Theme\Test\Unit\Model\Theme\Domain;
 
 use Magento\Framework\App\State;
@@ -19,8 +21,8 @@ use Magento\Theme\Model\CopyService;
 use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\Theme\Domain\Virtual;
 use Magento\Theme\Model\ThemeFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class VirtualTest extends TestCase
 {
@@ -77,7 +79,7 @@ class VirtualTest extends TestCase
                 'theme_title' => 'fixture_theme_title',
                 'preview_image' => 'fixture_preview_image',
                 'is_featured' => 'fixture_is_featured',
-                'type' => ThemeInterface::TYPE_VIRTUAL
+                'type' => ThemeInterface::TYPE_VIRTUAL,
             ]
         );
         $appStateProperty->setValue($theme, $appState);
@@ -92,7 +94,7 @@ class VirtualTest extends TestCase
                 'theme_title' => 'fixture_theme_title - Staging',
                 'preview_image' => 'fixture_preview_image',
                 'is_featured' => 'fixture_is_featured',
-                'type' => ThemeInterface::TYPE_STAGING
+                'type' => ThemeInterface::TYPE_STAGING,
             ]);
         $themeStaging
             ->method('save');
@@ -170,7 +172,7 @@ class VirtualTest extends TestCase
         $physicalTheme = static fn (self $testCase) => $testCase->getMockForPhysicalTheme();
         return [
             'empty' => [null],
-            'theme' => [$physicalTheme]
+            'theme' => [$physicalTheme],
         ];
     }
 

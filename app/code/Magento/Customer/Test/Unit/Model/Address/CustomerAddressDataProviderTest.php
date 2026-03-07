@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class CustomerAddressDataProviderTest extends TestCase
             ->willReturn([$viableAddress, $faultyAddress]);
 
         $expectedResult = [
-            '1' => [1]
+            '1' => [1],
         ];
         $this->assertSame($expectedResult, $this->provider->getAddressDataByCustomer($customer, $addressLimit));
     }

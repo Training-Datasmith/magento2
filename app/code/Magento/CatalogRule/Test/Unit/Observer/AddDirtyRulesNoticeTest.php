@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class AddDirtyRulesNoticeTest extends TestCase
         $this->observer = $objectManagerHelper->getObject(
             AddDirtyRulesNotice::class,
             [
-                'messageManager' => $this->messageManagerMock
+                'messageManager' => $this->messageManagerMock,
             ]
         );
     }
@@ -51,13 +52,13 @@ class AddDirtyRulesNoticeTest extends TestCase
      */
     public function testExecute(): void
     {
-        $message = "test";
+        $message = 'test';
         $flagMock = $this->createPartialMock(Flag::class, []);
         $flagMock->setState(1);
         $eventObserverMock = $this->createMock(Observer::class);
         $eventObserverMock
             ->method('getData')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['dirty_rules'] => $flagMock,
                 ['message'] => $message
             });

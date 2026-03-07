@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,6 +14,6 @@ return [
             '--dbname' => 'magento_replica',
             '--username' => 'root',
             '--password' => 'secret',
-        ]
+        ],
     ],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -135,12 +136,12 @@ class PluginTest extends TestCase
             BulkSummary::class,
             ['getStatus', 'getBulkId', 'getDescription', 'getStartTime']
         );
-        $result = ['items' =>[], 'totalRecords' => 1];
+        $result = ['items' => [], 'totalRecords' => 1];
         $userBulks = [$bulkMock];
         $userId = 1;
         $bulkUuid = 2;
         $bulkArray = [
-            'status' => BulkSummaryInterface::NOT_STARTED
+            'status' => BulkSummaryInterface::NOT_STARTED,
         ];
         $bulkMock->expects($this->once())->method('getBulkId')->willReturn($bulkUuid);
         $this->operationsDetailsMock
@@ -175,12 +176,12 @@ class PluginTest extends TestCase
      */
     public function testAfterToWithMessageLimit()
     {
-        $result = ['items' =>[], 'totalRecords' => 1];
+        $result = ['items' => [], 'totalRecords' => 1];
         $messagesCount = self::MESSAGES_LIMIT + 1;
         $userId = 1;
         $bulkUuid = 2;
         $bulkArray = [
-            'status' => BulkSummaryInterface::NOT_STARTED
+            'status' => BulkSummaryInterface::NOT_STARTED,
         ];
 
         $bulkMock = $this->createPartialMockWithReflection(
@@ -196,7 +197,7 @@ class PluginTest extends TestCase
             ->with($bulkUuid)
             ->willReturn([
                 'operations_successful' => 1,
-                'operations_failed' => 0
+                'operations_failed' => 0,
             ]);
         $bulkMock->expects($this->exactly(self::MESSAGES_LIMIT))
             ->method('getDescription')->willReturn('Bulk Description');
@@ -231,15 +232,15 @@ class PluginTest extends TestCase
                 [
                     'operations_successful' => 0,
                     'operations_failed' => 0,
-                    'operations_total' => 10
-                ]
+                    'operations_total' => 10,
+                ],
             ],
             [
                 [
                     'operations_successful' => 1,
                     'operations_failed' => 2,
-                    'operations_total' => 10
-                ]
+                    'operations_total' => 10,
+                ],
             ],
         ];
     }

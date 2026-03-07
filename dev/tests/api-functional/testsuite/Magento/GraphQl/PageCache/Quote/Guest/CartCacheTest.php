@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\PageCache\Quote\Guest;
 
-use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
 use Magento\GraphQl\PageCache\GraphQLPageCacheAbstract;
+use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
 
 /**
  * Test cart queries are not cached

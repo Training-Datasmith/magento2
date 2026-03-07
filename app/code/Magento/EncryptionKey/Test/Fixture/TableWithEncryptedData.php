@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\EncryptionKey\Test\Fixture;
 
 use Magento\Framework\DataObject;
-use Magento\Framework\Module\Setup;
 use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\Framework\Module\Setup;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 /**
@@ -20,7 +21,7 @@ class TableWithEncryptedData implements RevertibleDataFixtureInterface
     /**
      * @var string
      */
-    private const TABLE_NAME = "test_table_with_encrypted_data";
+    private const TABLE_NAME = 'test_table_with_encrypted_data';
 
     /**
      * @var Setup
@@ -87,33 +88,33 @@ class TableWithEncryptedData implements RevertibleDataFixtureInterface
 
         $connection->insertArray(
             $tableName,
-            ["not_enc_column_1", "enc_column_1", "enc_column_2"],
+            ['not_enc_column_1', 'enc_column_1', 'enc_column_2'],
             [
                 [
-                    "Not Encrypted Column Value",
-                    "",
-                    null
+                    'Not Encrypted Column Value',
+                    '',
+                    null,
                 ],
                 [
-                    "Not Encrypted Column Value",
-                    $this->encryptor->encrypt("Encrypted Column Value"),
-                    ""
+                    'Not Encrypted Column Value',
+                    $this->encryptor->encrypt('Encrypted Column Value'),
+                    '',
                 ],
                 [
-                    "Not Encrypted Column Value",
-                    $this->encryptor->encrypt("Encrypted Column Value"),
-                    $this->encryptor->encrypt("Encrypted Column Value")
+                    'Not Encrypted Column Value',
+                    $this->encryptor->encrypt('Encrypted Column Value'),
+                    $this->encryptor->encrypt('Encrypted Column Value'),
                 ],
                 [
-                    "Not Encrypted Column Value",
+                    'Not Encrypted Column Value',
                     substr_replace(
-                        $this->encryptor->encrypt("Encrypted Column Value"),
-                        "9",
+                        $this->encryptor->encrypt('Encrypted Column Value'),
+                        '9',
                         2,
                         1
                     ),
-                    ""
-                ]
+                    '',
+                ],
             ]
         );
 

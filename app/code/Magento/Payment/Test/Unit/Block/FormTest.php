@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class FormTest extends TestCase
             [
                 'storeManager' => $this->_storeManager,
                 'eventManager' => $this->_eventManager,
-                'escaper' => $this->_escaper
+                'escaper' => $this->_escaper,
             ]
         );
         $this->_object = $helper->getObject(Form::class, ['context' => $context]);
@@ -122,8 +123,8 @@ class FormTest extends TestCase
             [
                 'some_field',
                 ['aa', '!@#$%^&*()_#$%@^%&$%^*%&^*', 'cc'],
-                ['aa', '!@#$%^&amp;*()_#$%@^%&amp;$%^*%&amp;^*', 'cc']
-            ]
+                ['aa', '!@#$%^&amp;*()_#$%@^%&amp;$%^*%&amp;^*', 'cc'],
+            ],
         ];
     }
 

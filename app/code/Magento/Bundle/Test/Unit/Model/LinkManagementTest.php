@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Bundle\Test\Unit\Model;
 use Exception;
 use Magento\Bundle\Api\Data\LinkInterface;
 use Magento\Bundle\Api\Data\LinkInterfaceFactory;
+use Magento\Bundle\Model\Link;
 use Magento\Bundle\Model\LinkManagement;
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\Type as BundleProductType;
-use Magento\Bundle\Model\Link;
 use Magento\Bundle\Model\ResourceModel\Bundle;
 use Magento\Bundle\Model\ResourceModel\BundleFactory;
 use Magento\Bundle\Model\ResourceModel\Option\Collection as OptionCollection;
@@ -26,12 +27,12 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
@@ -162,7 +163,7 @@ class LinkManagementTest extends TestCase
             Product::class,
             [
                 'getTypeId', 'getSku', 'getStoreId', 'getData', 'setData',
-                'setTypeInstance', 'getTypeInstance', 'setStoreId'
+                'setTypeInstance', 'getTypeInstance', 'setStoreId',
             ]
         );
         $this->link = $this->createMock(LinkInterface::class);
@@ -198,7 +199,7 @@ class LinkManagementTest extends TestCase
                 'optionCollection' => $this->optionCollectionFactoryMock,
                 'storeManager' => $this->storeManagerMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
-                'metadataPool' => $this->metadataPoolMock
+                'metadataPool' => $this->metadataPoolMock,
             ]
         );
     }
@@ -494,7 +495,7 @@ class LinkManagementTest extends TestCase
             ['option_id' => 1,
                 'product_id' => 12,
                 'parent_product_id' => 'product_id'],
-            ['option_id' => 1, 'product_id' => 13, 'parent_product_id' => 'product_id']
+            ['option_id' => 1, 'product_id' => 13, 'parent_product_id' => 'product_id'],
         ];
         $bundle = $this->createMock(Bundle::class);
         $bundle->expects($this->once())
@@ -630,7 +631,7 @@ class LinkManagementTest extends TestCase
 
         $selections = [
             ['option_id' => 1, 'product_id' => 11],
-            ['option_id' => 1, 'product_id' => 12]
+            ['option_id' => 1, 'product_id' => 12],
         ];
         $bundle = $this->createMock(Bundle::class);
         $bundle->expects($this->once())->method('getSelectionsData')
@@ -688,7 +689,7 @@ class LinkManagementTest extends TestCase
         $linkedProductMock->expects($this->once())->method('isComposite')->willReturn(false);
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleProductSku] => $productMock,
                 ['linked_product_sku'] => $linkedProductMock
             });
@@ -742,7 +743,7 @@ class LinkManagementTest extends TestCase
             ->willReturn(false);
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleProductSku] => $productMock,
                 ['linked_product_sku'] => $linkedProductMock
             });
@@ -795,7 +796,7 @@ class LinkManagementTest extends TestCase
             ->willReturn(false);
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleProductSku] => $productMock,
                 [$linkedProductSku] => $linkedProductMock
             });
@@ -831,7 +832,7 @@ class LinkManagementTest extends TestCase
             ->willReturn(false);
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleProductSku] => $productMock,
                 [$linkedProductSku] => $linkedProductMock
             });
@@ -840,7 +841,7 @@ class LinkManagementTest extends TestCase
             Selection::class,
             [
                 'getId',
-                'load'
+                'load',
             ]
         );
         $selection->expects($this->once())
@@ -877,7 +878,7 @@ class LinkManagementTest extends TestCase
         $linkedProductMock->expects($this->once())->method('isComposite')->willReturn(true);
         $this->productRepository
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$bundleProductSku] => $productMock,
                 [$linkedProductSku] => $linkedProductMock
             });

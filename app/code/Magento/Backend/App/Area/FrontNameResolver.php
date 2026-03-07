@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Backend\App\Area;
 
 use Laminas\Uri\Uri;
-use Magento\Backend\App\Config;
 use Magento\Backend\Setup\ConfigOptionsList;
 use Magento\Framework\App\Area\FrontNameResolverInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -49,21 +50,11 @@ class FrontNameResolver implements FrontNameResolverInterface
     protected $defaultFrontName;
 
     /**
-     * @var \Magento\Backend\App\ConfigInterface
-     */
-    protected $config;
-
-    /**
      * Deployment configuration
      *
      * @var DeploymentConfig
      */
     protected $deploymentConfig;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    private $scopeConfig;
 
     /**
      * @var Uri
@@ -76,22 +67,17 @@ class FrontNameResolver implements FrontNameResolverInterface
     private $request;
 
     /**
-     * @param Config $config
-     * @param DeploymentConfig $deploymentConfig
-     * @param ScopeConfigInterface $scopeConfig
      * @param Uri $uri
      * @param RequestInterface $request
      */
     public function __construct(
-        Config $config,
+        protected \Magento\Backend\App\Config $config,
         DeploymentConfig $deploymentConfig,
-        ScopeConfigInterface $scopeConfig,
+        private readonly ScopeConfigInterface $scopeConfig,
         ?Uri $uri = null,
         ?RequestInterface $request = null
     ) {
-        $this->config = $config;
         $this->defaultFrontName = $deploymentConfig->get(ConfigOptionsList::CONFIG_PATH_BACKEND_FRONTNAME);
-        $this->scopeConfig = $scopeConfig;
         $this->uri = $uri ?: ObjectManager::getInstance()->get(Uri::class);
         $this->request = $request ?: ObjectManager::getInstance()->get(RequestInterface::class);
     }
@@ -153,6 +139,6 @@ class FrontNameResolver implements FrontNameResolverInterface
             $host .= ':' . ($this->uri->getPort() ?: $this->standardPorts[$this->uri->getScheme()]);
         }
 
-        return strcasecmp($configuredHost, $host) === 0;
+        return strcasecmp((string) $configuredHost, (string) $host) === 0;
     }
 }

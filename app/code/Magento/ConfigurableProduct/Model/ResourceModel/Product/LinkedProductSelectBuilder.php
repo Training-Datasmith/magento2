@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Product;
 
 use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
@@ -41,7 +44,7 @@ class LinkedProductSelectBuilder implements LinkedProductSelectBuilderInterface
     /**
      * @inheritdoc
      */
-    public function build(int $productId, int $storeId) : array
+    public function build(int $productId, int $storeId): array
     {
         $selects = $this->linkedProductSelectBuilder->build($productId, $storeId);
 

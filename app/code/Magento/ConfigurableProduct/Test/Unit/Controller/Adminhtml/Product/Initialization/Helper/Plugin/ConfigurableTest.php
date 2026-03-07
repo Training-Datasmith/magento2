@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,8 +86,8 @@ class ConfigurableTest extends TestCase
     {
         $attributes = [
             ['attribute_id' => 90, 'values' => [
-                ['value_index' => 12], ['value_index' => 13]
-            ]]
+                ['value_index' => 12], ['value_index' => 13],
+            ]],
         ];
         $valueMap = [
             ['new-variations-attribute-set-id', null, 24],
@@ -97,7 +98,7 @@ class ConfigurableTest extends TestCase
         $simpleProducts = [
             [
                 'newProduct' => false,
-                'variationKey' => 'simple1'
+                'variationKey' => 'simple1',
             ],
             [
                 'newProduct' => true,
@@ -112,13 +113,13 @@ class ConfigurableTest extends TestCase
                 'swatch_image' => 'simple2_swatch_image',
                 'small_image' => 'simple2_small_image',
                 'thumbnail' => 'simple2_thumbnail',
-                'image' => 'simple2_image'
+                'image' => 'simple2_image',
             ],
             [
                 'newProduct' => true,
                 'variationKey' => 'simple3',
-                'qty' => '3'
-            ]
+                'qty' => '3',
+            ],
         ];
         $variationMatrix = [
             'simple2' => [
@@ -132,14 +133,14 @@ class ConfigurableTest extends TestCase
                 'swatch_image' => 'simple2_swatch_image',
                 'small_image' => 'simple2_small_image',
                 'thumbnail' => 'simple2_thumbnail',
-                'image' => 'simple2_image'
+                'image' => 'simple2_image',
             ],
             'simple3' => [
-                'quantity_and_stock_status' => ['qty' => '3']
-            ]
+                'quantity_and_stock_status' => ['qty' => '3'],
+            ],
         ];
         $paramValueMap = [
-            ['configurable-matrix-serialized', "[]", json_encode($simpleProducts)],
+            ['configurable-matrix-serialized', '[]', json_encode($simpleProducts)],
             ['attributes', null, $attributes],
         ];
 
@@ -188,16 +189,16 @@ class ConfigurableTest extends TestCase
     {
         $attributes = [
             ['attribute_id' => 90, 'values' => [
-                ['value_index' => 12], ['value_index' => 13]
-            ]]
+                ['value_index' => 12], ['value_index' => 13],
+            ]],
         ];
         $valueMap = [
             ['new-variations-attribute-set-id', null, 24],
-            ['associated_product_ids_serialized', "[]", "[]"],
+            ['associated_product_ids_serialized', '[]', '[]'],
             ['product', [], ['configurable_attributes_data' => $attributes]],
         ];
         $paramValueMap = [
-            ['configurable-matrix-serialized', "[]", "[]"],
+            ['configurable-matrix-serialized', '[]', '[]'],
             ['attributes', null, $attributes],
         ];
 

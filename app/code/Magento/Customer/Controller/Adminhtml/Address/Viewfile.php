@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,21 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Controller\Adminhtml\Address;
 
-use Magento\Customer\Api\AddressMetadataInterface;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Framework\Url\DecoderInterface;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Filesystem;
-use Magento\Framework\Controller\Result\Raw;
-use Magento\MediaStorage\Helper\File\Storage;
-use Magento\Framework\App\Response\Http\FileFactory;
-use Magento\Framework\Filesystem\Io\File as IoFile;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Customer\Api\AddressMetadataInterface;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Raw;
+use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Io\File as IoFile;
+use Magento\Framework\Url\DecoderInterface;
+use Magento\MediaStorage\Helper\File\Storage;
 
 /**
  * Class Viewfile serves to show file or image by file/image name provided in request parameters.
@@ -157,7 +158,7 @@ class Viewfile extends Action implements HttpGetActionInterface
      * @return array
      * @throws NotFoundException
      */
-    private function getFileParams() : array
+    private function getFileParams(): array
     {
         $plain = false;
         if ($this->getRequest()->getParam('file', '')) {

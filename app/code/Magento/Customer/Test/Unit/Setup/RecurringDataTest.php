@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -87,7 +88,7 @@ class RecurringDataTest extends TestCase
         $this->recurringData = $this->objectManagerHelper->getObject(
             RecurringData::class,
             [
-                'indexerRegistry' => $this->indexerRegistry
+                'indexerRegistry' => $this->indexerRegistry,
             ]
         );
     }
@@ -115,7 +116,7 @@ class RecurringDataTest extends TestCase
     /**
      * @return array
      */
-    public static function installDataProvider() : array
+    public static function installDataProvider(): array
     {
         return [
             [true, StateInterface::STATUS_INVALID, 1],

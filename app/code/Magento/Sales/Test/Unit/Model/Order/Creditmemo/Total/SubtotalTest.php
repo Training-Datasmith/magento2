@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Total;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Item;
 use Magento\Sales\Model\Order\Creditmemo\Total\Subtotal;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class SubtotalTest extends TestCase
 {
@@ -57,7 +58,7 @@ class SubtotalTest extends TestCase
             Order::class,
             [
                 'isDummy', 'getQtyInvoiced', 'getQty', 'getQtyRefunded', 'getDiscountInvoiced',
-                'getBaseDiscountInvoiced', 'getDiscountRefunded'
+                'getBaseDiscountInvoiced', 'getDiscountRefunded',
             ]
         );
         $this->creditmemoMock = $this->createPartialMockWithReflection(
@@ -66,7 +67,7 @@ class SubtotalTest extends TestCase
                 'setBaseCost', 'getAllItems', 'getOrder', 'getBaseShippingAmount', 'roundPrice',
                 'setDiscountAmount', 'setBaseDiscountAmount', 'setSubtotal', 'setBaseSubtotal',
                 'setSubtotalInclTax', 'setBaseSubtotalInclTax', 'getGrandTotal', 'setGrandTotal',
-                'getBaseGrandTotal', 'setBaseGrandTotal'
+                'getBaseGrandTotal', 'setBaseGrandTotal',
             ]
         );
         $this->creditmemoItemMock = $this->createPartialMockWithReflection(
@@ -74,7 +75,7 @@ class SubtotalTest extends TestCase
             [
                 'getHasChildren', 'getBaseCost', 'getQty', 'getOrderItem', 'setDiscountAmount',
                 'setBaseDiscountAmount', 'isLast', 'getRowTotalInclTax', 'getBaseRowTotalInclTax',
-                'getRowTotal', 'getBaseRowTotal', 'calcRowTotal'
+                'getRowTotal', 'getBaseRowTotal', 'calcRowTotal',
             ]
         );
         $this->total = new Subtotal();

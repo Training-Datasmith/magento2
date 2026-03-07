@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -28,8 +29,8 @@ class ConfigTest extends TestCase
                     'path' => 'path/to/config/method',
                     'value' => 'testScopeMethod',
                     'scopeType' => 'default',
-                    'scopeValue' => null
-                ]
+                    'scopeValue' => null,
+                ],
             ],
             $model->parse($this, ParserInterface::SCOPE_METHOD)
         );
@@ -47,8 +48,8 @@ class ConfigTest extends TestCase
                     'path' => 'path/to/config/class',
                     'value' => 'ConfigTest',
                     'scopeType' => 'default',
-                    'scopeValue' => null
-                ]
+                    'scopeValue' => null,
+                ],
             ],
             $model->parse($this, ParserInterface::SCOPE_CLASS)
         );

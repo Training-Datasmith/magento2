@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -25,7 +26,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 class ResetAfterRequestTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var ObjectManagerInterface
      */
@@ -80,7 +80,7 @@ class ResetAfterRequestTest extends \PHPUnit\Framework\TestCase
             }
         }
         foreach (array_keys(Classes::collectModuleClasses('[A-Z][a-z\d][A-Za-z\d\\\\]+')) as $type) {
-            if (str_contains($type, "_files")) {
+            if (str_contains($type, '_files')) {
                 continue; // We have to skip the fixture files that collectModuleClasses returns;
             }
             try {
@@ -161,7 +161,7 @@ class ResetAfterRequestTest extends \PHPUnit\Framework\TestCase
             ));
         } catch (\Throwable $throwable) {
             throw new \Exception(
-                sprintf("testResetAfterRequestClasses failed on %s", $className),
+                sprintf('testResetAfterRequestClasses failed on %s', $className),
                 0,
                 $throwable
             );
@@ -212,7 +212,7 @@ class ResetAfterRequestTest extends \PHPUnit\Framework\TestCase
             $this->assertEmpty($differences, var_export($differences, true));
         } catch (\Throwable $throwable) {
             throw new \Exception(
-                sprintf("testResetAfterRequestClasses failed on %s", $className),
+                sprintf('testResetAfterRequestClasses failed on %s', $className),
                 0,
                 $throwable
             );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class Websites extends \Magento\Ui\Component\Listing\Columns\Column
                 [
                     $this->websiteNames => new \Zend_Db_Expr(
                         'GROUP_CONCAT(sw.name ORDER BY sw.website_id ASC SEPARATOR \',\')'
-                    )
+                    ),
                 ]
             )->group(
                 'cpw.product_id'

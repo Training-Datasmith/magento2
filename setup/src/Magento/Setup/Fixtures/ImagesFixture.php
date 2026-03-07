@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -176,7 +178,7 @@ class ImagesFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'product-images' => 'Product Images'
+            'product-images' => 'Product Images',
         ];
     }
 
@@ -232,7 +234,7 @@ class ImagesFixture extends Fixture
         /** @var \Magento\Setup\Model\BatchInsert $batchInsert */
         $batchInsert = $this->batchInsertFactory->create([
             'insertIntoTable' => $this->getTable('catalog_product_entity_media_gallery'),
-            'batchSize' => $this->imagesInsertBatchSize
+            'batchSize' => $this->imagesInsertBatchSize,
         ]);
 
         foreach ($this->generateImageFilesGenerator() as $imageName) {
@@ -270,7 +272,7 @@ class ImagesFixture extends Fixture
             $imagePath = $imagesGenerator->generate([
                 'image-width' => 300,
                 'image-height' => 300,
-                'image-name' => $imageName
+                'image-name' => $imageName,
             ]);
 
             $mediaDirectory->renameFile(
@@ -293,19 +295,19 @@ class ImagesFixture extends Fixture
         /** @var \Magento\Setup\Model\BatchInsert $batchInsertCatalogProductEntityVarchar */
         $batchInsertCatalogProductEntityVarchar = $this->batchInsertFactory->create([
             'insertIntoTable' => $this->getTable('catalog_product_entity_varchar'),
-            'batchSize' => $this->imagesInsertBatchSize
+            'batchSize' => $this->imagesInsertBatchSize,
         ]);
 
         /** @var \Magento\Setup\Model\BatchInsert $batchInsertCatalogProductEntityMediaGalleryValue */
         $batchInsertCatalogProductEntityMediaGalleryValue = $this->batchInsertFactory->create([
             'insertIntoTable' => $this->getTable('catalog_product_entity_media_gallery_value'),
-            'batchSize' => $this->imagesInsertBatchSize
+            'batchSize' => $this->imagesInsertBatchSize,
         ]);
 
         /** @var \Magento\Setup\Model\BatchInsert $batchInsertCatalogProductEntityMediaGalleryValueToEntity */
         $batchInsertCatalogProductEntityMediaGalleryValueToEntity = $this->batchInsertFactory->create([
             'insertIntoTable' => $this->getTable('catalog_product_entity_media_gallery_value_to_entity'),
-            'batchSize' => $this->imagesInsertBatchSize
+            'batchSize' => $this->imagesInsertBatchSize,
         ]);
 
         $imageGenerator = $this->getImagesGenerator();
@@ -329,7 +331,7 @@ class ImagesFixture extends Fixture
 
                 $batchInsertCatalogProductEntityMediaGalleryValueToEntity->insert([
                     'value_id' => $image['value_id'],
-                    $this->getProductLinkField() => $productEntity[$this->getProductLinkField()]
+                    $this->getProductLinkField() => $productEntity[$this->getProductLinkField()],
                 ]);
 
                 $batchInsertCatalogProductEntityMediaGalleryValue->insert([
@@ -337,7 +339,7 @@ class ImagesFixture extends Fixture
                     'store_id' => 0,
                     $this->getProductLinkField() => $productEntity[$this->getProductLinkField()],
                     'position' => $image['value_id'],
-                    'disabled' => 0
+                    'disabled' => 0,
                 ]);
             }
         }
@@ -456,8 +458,8 @@ class ImagesFixture extends Fixture
                 ->from(['product_entity' => $this->getTable('catalog_product_entity')], [])
                 ->columns([
                     'count' => $this->expressionFactory->create([
-                        'expression' => 'COUNT(*)'
-                    ])
+                        'expression' => 'COUNT(*)',
+                    ]),
                 ]);
 
             $this->productsCountCache = (int) $this->getDbConnection()->fetchOne($select);
@@ -478,8 +480,8 @@ class ImagesFixture extends Fixture
             ->from(['product_entity' => $this->getTable('catalog_product_entity_media_gallery')], [])
             ->columns([
                 'count' => $this->expressionFactory->create([
-                    'expression' => 'COUNT(*)'
-                ])
+                    'expression' => 'COUNT(*)',
+                ]),
             ])->where('media_type="image"');
 
         return (int) $this->getDbConnection()->fetchOne($select);

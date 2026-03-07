@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class ConfigTest extends TestCase
             $cacheId,
             [
                 Type::CACHE_TAG,
-                Attribute::CACHE_TAG
+                Attribute::CACHE_TAG,
             ]
         );
 
@@ -183,7 +184,7 @@ class ConfigTest extends TestCase
             $cacheId,
             [
                 Type::CACHE_TAG,
-                Attribute::CACHE_TAG
+                Attribute::CACHE_TAG,
             ]
         );
 

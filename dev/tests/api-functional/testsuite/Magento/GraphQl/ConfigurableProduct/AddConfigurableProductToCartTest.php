@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -435,8 +436,8 @@ QUERY;
             'configurable_options' => [
                 [
                     'option_label' => 'Test Configurable',
-                    'value_label' => 'Option 1'
-                ]
+                    'value_label' => 'Option 1',
+                ],
             ],
             'customizable_options' => [
                 [
@@ -445,11 +446,11 @@ QUERY;
                     'values' => [
                         [
                             'label' => 'Option 2',
-                            'value' => $optionValueId
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => $optionValueId,
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertResponseFields($item['configurable_options'], $expectedOptions['configurable_options']);

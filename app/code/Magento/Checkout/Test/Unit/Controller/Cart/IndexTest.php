@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -134,7 +135,7 @@ class IndexTest extends TestCase
                 'checkoutSession' => $this->checkoutSession,
                 'cart' => $this->cart,
                 'scopeConfig' => $this->scopeConfig,
-                'resultPageFactory' => $this->resultPageFactory
+                'resultPageFactory' => $this->resultPageFactory,
             ]
         );
     }

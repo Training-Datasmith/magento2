@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,6 +22,7 @@ use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Result\PageFactory;
@@ -30,7 +32,6 @@ use Magento\Sales\Controller\Adminhtml\Order\CreditmemoLoader;
 use Magento\Sales\Model\Order\Creditmemo;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -153,7 +154,7 @@ class UpdateQtyTest extends TestCase
                     'getHelper',
                     'getActionFlag',
                     'getMessageManager',
-                    'getResultRedirectFactory'
+                    'getResultRedirectFactory',
                 ]
             )
             ->disableOriginalConstructor()
@@ -205,7 +206,7 @@ class UpdateQtyTest extends TestCase
                 'creditmemoLoader' => $this->loaderMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
-                'resultRawFactory' => $this->resultRawFactoryMock
+                'resultRawFactory' => $this->resultRawFactoryMock,
             ]
         );
     }

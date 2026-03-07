@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -299,8 +300,8 @@ class CollectTotalsObserverTest extends TestCase
 
     public function testDispatchWithAddressCustomerVatIdAndCountryId()
     {
-        $customerCountryCode = "BE";
-        $customerVat = "123123123";
+        $customerCountryCode = 'BE';
+        $customerVat = '123123123';
         $defaultShipping = 1;
 
         $customerAddress = $this->createMock(Address::class);
@@ -309,12 +310,12 @@ class CollectTotalsObserverTest extends TestCase
         $customerAddress->method('getCountryId')->willReturn($customerCountryCode);
 
         $this->addressRepository->expects($this->once())
-            ->method("getById")
+            ->method('getById')
             ->with($defaultShipping)
             ->willReturn($customerAddress);
 
         $this->customerMock->expects($this->atLeastOnce())
-            ->method("getDefaultShipping")
+            ->method('getDefaultShipping')
             ->willReturn($defaultShipping);
 
         $this->vatValidatorMock->expects($this->once())
@@ -332,25 +333,25 @@ class CollectTotalsObserverTest extends TestCase
 
     public function testDispatchWithEmptyShippingAddress()
     {
-        $customerCountryCode = "DE";
-        $customerVat = "123123123";
+        $customerCountryCode = 'DE';
+        $customerVat = '123123123';
         $defaultShipping = 1;
         $customerAddress = $this->createMock(AddressInterface::class);
 
         $customerAddress->expects($this->once())
-            ->method("getCountryId")
+            ->method('getCountryId')
             ->willReturn($customerCountryCode);
 
         $customerAddress->expects($this->once())
-            ->method("getVatId")
+            ->method('getVatId')
             ->willReturn($customerVat);
         $this->addressRepository->expects($this->once())
-            ->method("getById")
+            ->method('getById')
             ->with($defaultShipping)
             ->willReturn($customerAddress);
 
         $this->customerMock->expects($this->atLeastOnce())
-            ->method("getDefaultShipping")
+            ->method('getDefaultShipping')
             ->willReturn($defaultShipping);
 
         $this->vatValidatorMock->expects($this->once())
@@ -379,7 +380,7 @@ class CollectTotalsObserverTest extends TestCase
             ->with($customerCountryCode, $validationResult, $this->storeId)
             ->willReturn('customerGroupId');
         $this->customerSession->expects($this->once())
-            ->method("setCustomerGroupId")
+            ->method('setCustomerGroupId')
             ->with('customerGroupId');
 
         $this->vatValidatorMock->expects($this->once())

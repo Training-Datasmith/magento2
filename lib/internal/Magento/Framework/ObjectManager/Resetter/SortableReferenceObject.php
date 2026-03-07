@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\ObjectManager\Resetter;
 
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use WeakReference;
 
 /**
@@ -21,7 +21,7 @@ class SortableReferenceObject
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @phpcs:disable Magento2.CodeAnalysis.EmptyBlock.DetectedFunction
      */
-    public function __construct(readonly WeakReference $reference, readonly int $sort)
+    public function __construct(public readonly WeakReference $reference, public readonly int $sort)
     {
     }
 
@@ -30,7 +30,7 @@ class SortableReferenceObject
      *
      * @return int
      */
-    public function getSort() : int
+    public function getSort(): int
     {
         return $this->sort;
     }
@@ -40,7 +40,7 @@ class SortableReferenceObject
      *
      * @return WeakReference
      */
-    public function getWeakReference() : WeakReference
+    public function getWeakReference(): WeakReference
     {
         return $this->reference;
     }

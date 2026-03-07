@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\TestFramework\TestCase\Webapi\Adapter;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\TestFramework\Authentication\OauthHelper;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Test client for REST API testing.
@@ -133,7 +135,7 @@ class Rest implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
             $resourcePath = $serviceInfo['rest']['resourcePath'];
         }
         if (!isset($resourcePath)) {
-            throw new \Exception("REST endpoint cannot be identified.");
+            throw new \Exception('REST endpoint cannot be identified.');
         }
         return $resourcePath;
     }
@@ -151,7 +153,7 @@ class Rest implements \Magento\TestFramework\TestCase\Webapi\AdapterInterface
             $httpMethod = $serviceInfo['rest']['httpMethod'];
         }
         if (!isset($httpMethod)) {
-            throw new \Exception("REST HTTP method cannot be identified.");
+            throw new \Exception('REST HTTP method cannot be identified.');
         }
         return $httpMethod;
     }

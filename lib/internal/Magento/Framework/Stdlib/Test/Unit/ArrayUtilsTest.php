@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Stdlib\Test\Unit;
 
 use Magento\Framework\DataObject;
 use Magento\Framework\Stdlib\ArrayUtils;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ArrayUtils.
@@ -113,7 +114,7 @@ class ArrayUtilsTest extends TestCase
                     'websites/base/web/unsecure/base_url' => 'http://magento2.local/',
                 ],
                 '',
-                '/'
+                '/',
             ],
             [
                 [
@@ -160,7 +161,7 @@ class ArrayUtilsTest extends TestCase
                 [],
                 '',
                 '/',
-            ]
+            ],
         ];
     }
 
@@ -184,33 +185,33 @@ class ArrayUtilsTest extends TestCase
         return [
             [
                 [
-                    'test' => ['test2' => 2]
+                    'test' => ['test2' => 2],
                 ],
                 [],
                 [
-                    'test' => ['test2' => 2]
-                ]
+                    'test' => ['test2' => 2],
+                ],
             ],
             [
                 [
-                    'test' => ['test2' => 2]
+                    'test' => ['test2' => 2],
                 ],
                 [
-                    'test' => ['test2' => 2]
+                    'test' => ['test2' => 2],
                 ],
-                []
+                [],
             ],
             [
                 [
-                    'test' => ['test2' => ['test3' => 3, 'test4' => 4]]
+                    'test' => ['test2' => ['test3' => 3, 'test4' => 4]],
                 ],
                 [
-                    'test' => ['test3' => 3]
+                    'test' => ['test3' => 3],
                 ],
                 [
-                    'test' => ['test2' => ['test3' => 3, 'test4' => 4]]
-                ]
-            ]
+                    'test' => ['test2' => ['test3' => 3, 'test4' => 4]],
+                ],
+            ],
         ];
     }
 }

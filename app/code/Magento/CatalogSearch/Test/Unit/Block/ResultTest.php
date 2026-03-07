@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Block;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Resolver;
@@ -17,6 +17,7 @@ use Magento\CatalogSearch\Helper\Data;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Search\Model\Query;
 use Magento\Search\Model\QueryFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -135,9 +136,9 @@ class DataTest extends TestCase
                         AllowedCountries::ALLOWED_COUNTRIES_PATH,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        $configValue
+                        $configValue,
                     ],
-                    [Data::XML_PATH_STATES_REQUIRED, ScopeInterface::SCOPE_STORE, null, '']
+                    [Data::XML_PATH_STATES_REQUIRED, ScopeInterface::SCOPE_STORE, null, ''],
                 ]
             );
         $regions = [];
@@ -226,7 +227,7 @@ class DataTest extends TestCase
                         'r3' => [
                             'code' => 'r3-code',
                             'name' => 'r3-name',
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -294,7 +295,7 @@ class DataTest extends TestCase
         return [
             'empty_list' => ['', []],
             'null_list' => [null, []],
-            'normal_list' => ['Country1,Country2', ['Country1', 'Country2']]
+            'normal_list' => ['Country1,Country2', ['Country1', 'Country2']],
         ];
     }
 

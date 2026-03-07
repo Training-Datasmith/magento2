@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class IframeConfigProviderTest extends TestCase
             ['getFrameActionUrl', 'isAvailable']
         );
 
-        $paymentHelper= $this->createMock(Data::class);
+        $paymentHelper = $this->createMock(Data::class);
 
         $payment->expects($this->atLeastOnce())->method('isAvailable')->willReturn(true);
 

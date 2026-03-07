@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote;
 
+use Magento\Catalog\Api\ProductCustomOptionRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Catalog\Api\ProductCustomOptionRepositoryInterface;
 
 /**
  * Add virtual product with custom options to cart testcases
@@ -152,7 +153,7 @@ QUERY;
      * @param string $assignedValue
      * @return array
      */
-    private function buildExpectedValuesArray(string $assignedValue) : array
+    private function buildExpectedValuesArray(string $assignedValue): array
     {
         $assignedOptionsArray = explode(',', trim($assignedValue, '[]'));
         $expectedArray = [];

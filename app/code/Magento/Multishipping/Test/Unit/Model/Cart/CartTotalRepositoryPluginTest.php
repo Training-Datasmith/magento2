@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Multishipping\Test\Unit\Model\Cart;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Multishipping\Model\Cart\CartTotalRepositoryPlugin;
 use Magento\Quote\Api\CartRepositoryInterface;
@@ -14,7 +16,6 @@ use Magento\Quote\Model\Cart\CartTotalRepository;
 use Magento\Quote\Model\Cart\Totals as QuoteTotals;
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
 use Magento\Quote\Model\Quote\Address\Rate as QuoteAddressRate;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -92,7 +93,7 @@ class CartTotalRepositoryPluginTest extends TestCase
         $this->quoteRepositoryMock = $this->createMock(CartRepositoryInterface::class);
         $this->quoteTotalRepositoryMock = $this->createMock(CartTotalRepository::class);
         $this->modelRepository = $objectManager->getObject(CartTotalRepositoryPlugin::class, [
-            'quoteRepository' => $this->quoteRepositoryMock
+            'quoteRepository' => $this->quoteRepositoryMock,
         ]);
     }
 

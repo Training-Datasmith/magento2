@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,13 +24,14 @@ class Curl implements AdapterInterface
      * @var array
      */
     protected $_config = [
-        'protocols' => (CURLPROTO_HTTP
+        'protocols' => (
+            CURLPROTO_HTTP
             | CURLPROTO_HTTPS
             | CURLPROTO_FTP
             | CURLPROTO_FTPS
         ),
         'verifypeer' => true,
-        'verifyhost' => 2
+        'verifyhost' => 2,
     ];
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,15 +14,15 @@ use Magento\Framework\App\ResourceConnection\ConfigInterface;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Model\ResourceModel\Type\Db\ConnectionFactoryInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AclResourceTest extends TestCase
 {
-    const RESOURCE_NAME = ResourceConnection::DEFAULT_CONNECTION;
-    const CONNECTION_NAME = 'connection-name';
-    const TABLE_PREFIX = 'prefix_';
+    public const RESOURCE_NAME = ResourceConnection::DEFAULT_CONNECTION;
+    public const CONNECTION_NAME = 'connection-name';
+    public const TABLE_PREFIX = 'prefix_';
 
     /**
      * @var ConfigInterface|MockObject
@@ -70,13 +71,13 @@ class AclResourceTest extends TestCase
                             'host' => 'localhost',
                             'dbname' => 'magento',
                             'username' => 'username',
-                        ]
+                        ],
                     ],
                     [
                         ConfigOptionsListConstants::CONFIG_PATH_DB_PREFIX,
                         null,
-                        self::TABLE_PREFIX
-                    ]
+                        self::TABLE_PREFIX,
+                    ],
                 ]
             );
 
@@ -126,8 +127,8 @@ class AclResourceTest extends TestCase
             ['tableName', self::TABLE_PREFIX . 'tableName'],
             [['tableName', 'tableSuffix'], self::TABLE_PREFIX . 'tableName_tableSuffix'],
         ];
-    }        
-    
+    }
+
     #[DataProvider('getTableNameMappedDataProvider')]
     public function testGetTableNameMapped($modelEntity, $tableName, $mappedName, $expected)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Page\Config;
@@ -22,9 +24,8 @@ use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Block\Adminhtml\View;
-use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\View as OrderShipmentView;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -158,7 +159,7 @@ class ViewTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'objectManager' => $this->objectManagerMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
         $this->controller = $objectManager->getObject(
@@ -167,7 +168,7 @@ class ViewTest extends TestCase
                 'context' => $context,
                 'shipmentLoader' => $this->shipmentLoaderMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
-                'resultForwardFactory' => $this->resultForwardFactoryMock
+                'resultForwardFactory' => $this->resultForwardFactoryMock,
             ]
         );
     }

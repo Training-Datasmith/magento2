@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -1004,7 +1005,7 @@ class Category extends AbstractResource implements ResetAfterRequestInterface
                         $newPath . '/'
                     ) . ')'
                 ),
-                'level' => new \Zend_Db_Expr($levelField . ' + ' . $levelDisposition)
+                'level' => new \Zend_Db_Expr($levelField . ' + ' . $levelDisposition),
             ],
             [$pathField . ' LIKE ?' => $category->getPath() . '/%']
         );
@@ -1035,9 +1036,9 @@ class Category extends AbstractResource implements ResetAfterRequestInterface
         $currentId = $object->getId();
         $newParentId = $object->getParentId();
         if ($parentPath = $this->getCategoryPathById($newParentId)) {
-            $parentPathIds = explode("/", $parentPath);
+            $parentPathIds = explode('/', $parentPath);
         } else {
-             $parentPathIds = [];
+            $parentPathIds = [];
         }
 
         if ($currentId && !empty($parentPathIds) && in_array($currentId, $parentPathIds)) {

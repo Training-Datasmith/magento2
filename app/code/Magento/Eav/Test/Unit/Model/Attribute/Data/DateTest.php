@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Eav\Model\AttributeDataFactory;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DateTest extends TestCase
 {
@@ -87,7 +88,7 @@ class DateTest extends TestCase
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => false,
                 'callTimes' => 0,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
         ];
     }
@@ -221,7 +222,7 @@ class DateTest extends TestCase
     {
         return [
             ['value' => 'value', 'expectedResult' => 'value'],
-            ['value' => '',  'expectedResult' => null]
+            ['value' => '',  'expectedResult' => null],
         ];
     }
 

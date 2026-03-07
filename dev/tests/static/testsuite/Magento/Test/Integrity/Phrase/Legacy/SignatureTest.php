@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Scan source code for detects invocations of outdated __() method
  */
+
 namespace Magento\Test\Integrity\Phrase\Legacy;
 
 use Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer;

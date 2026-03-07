@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -77,7 +80,7 @@ class PackageInfo
     ) {
         $this->reader = $reader;
         $this->componentRegistrar = $componentRegistrar;
-        $this->serializer = $serializer?: \Magento\Framework\App\ObjectManager::getInstance()
+        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\Magento\Framework\Serialize\Serializer\Json::class);
     }
 
@@ -100,7 +103,7 @@ class PackageInfo
                     } catch (\InvalidArgumentException $e) {
                         throw new \InvalidArgumentException(
                             sprintf(
-                                "%s composer.json error: %s",
+                                '%s composer.json error: %s',
                                 $moduleName,
                                 $e->getMessage()
                             )

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\DriverPool;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ReaderTest extends TestCase
@@ -57,7 +58,7 @@ class ReaderTest extends TestCase
                     [__DIR__ . '/_files/env.php', true],
                     [__DIR__ . '/_files/mergeOne.php', true],
                     [__DIR__ . '/_files/mergeTwo.php', true],
-                    [__DIR__ . '/_files/nonexistent.php', false]
+                    [__DIR__ . '/_files/nonexistent.php', false],
                 ]
             );
         $this->driverPool = $this->createMock(DriverPool::class);
@@ -97,7 +98,7 @@ class ReaderTest extends TestCase
             ->method('getPath')
             ->willReturnMap($files);
         $object = new Reader($this->dirList, $this->driverPool, $this->configFilePool);
-        $this->assertSame(['fooKey' =>'foo', 'barKey' => 'bar', 'envKey' => 'env'], $object->load());
+        $this->assertSame(['fooKey' => 'foo', 'barKey' => 'bar', 'envKey' => 'env'], $object->load());
     }
 
     /**     * @param array $expected
@@ -181,7 +182,7 @@ class ReaderTest extends TestCase
             ->willReturn(
                 [
                     'configKeyOne' => 'config.php',
-                    'testConfig' => 'emptyConfig.php'
+                    'testConfig' => 'emptyConfig.php',
                 ]
             );
         $object = new Reader($this->dirList, $driverPool, $configFilePool);

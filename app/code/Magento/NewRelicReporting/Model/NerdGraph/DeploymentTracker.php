@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -187,8 +188,8 @@ class DeploymentTracker
                 'version' => $version ?: $this->generateVersion(),
                 'description' => $description,
                 'deploymentType' => 'BASIC',
-                'timestamp' => time() * 1000 // NerdGraph expects milliseconds
-            ]
+                'timestamp' => time() * 1000, // NerdGraph expects milliseconds
+            ],
         ];
 
         $this->addOptionalFields($variables, $changelog, $user, $commit, $deepLink, $groupId);
@@ -269,7 +270,7 @@ class DeploymentTracker
                     'deploymentId' => $deploymentData['deploymentId'],
                     'entityGuid' => $deploymentData['entityGuid'],
                     'version' => $deployedVersion,
-                    'description' => $description
+                    'description' => $description,
                 ]
             );
 
@@ -283,7 +284,7 @@ class DeploymentTracker
                 'commit' => $commit,
                 'deepLink' => $deepLink,
                 'groupId' => $groupId,
-                'timestamp' => $variables['deployment']['timestamp']
+                'timestamp' => $variables['deployment']['timestamp'],
             ];
         }
 

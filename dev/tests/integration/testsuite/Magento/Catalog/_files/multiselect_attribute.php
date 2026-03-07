@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -55,7 +57,7 @@ if (!$attributeMultiselect->loadByCode($entityType, 'multiselect_attribute')->ge
                     'option_1' => ['Option 1'],
                     'option_2' => ['Option 2'],
                     'option_3' => ['Option 3'],
-                    'option_4' => ['Option 4 "!@#$%^&*']
+                    'option_4' => ['Option 4 "!@#$%^&*'],
                 ],
                 'order' => [
                     'option_1' => 1,
@@ -71,7 +73,6 @@ if (!$attributeMultiselect->loadByCode($entityType, 'multiselect_attribute')->ge
     /* Assign attribute to attribute set */
     $installer->addAttributeToGroup('catalog_product', 'Default', 'General', $attributeMultiselect->getId());
 }
-
 
 if (!$attributeMultiselectText->loadByCode($entityType, 'multiselect_attribute_text')->getAttributeId()) {
     $attributeMultiselectText->setData(
@@ -99,7 +100,7 @@ if (!$attributeMultiselectText->loadByCode($entityType, 'multiselect_attribute_t
             'backend_model' => \Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend::class,
             'option' => [
                 'value' => $valueOptionArray,
-                'order' => $orderArray
+                'order' => $orderArray,
             ],
         ]
     );

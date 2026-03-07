@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class TableMaintainer extends AbstractIndexerResource
     /**
      * Catalog product price index table name
      */
-    const MAIN_INDEX_TABLE = 'catalog_product_index_price';
+    public const MAIN_INDEX_TABLE = 'catalog_product_index_price';
 
     /**
      * @var TableResolver

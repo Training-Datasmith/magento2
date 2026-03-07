@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -8,17 +9,18 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\CustomerImportExport\Model\Import\AbstractCustomer
  */
+
 namespace Magento\CustomerImportExport\Test\Unit\Model\Import;
 
 use Magento\CustomerImportExport\Model\Import\AbstractCustomer;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @phpstan-ignore-next-line
@@ -96,11 +98,11 @@ class AbstractCustomerTest extends AbstractImportTestCase
                 '_validateRowForDelete',
                 '_importData',
                 'getEntityTypeCode',
-                'setCustomerCollection'
+                'setCustomerCollection',
             ]
         );
         $modelMock->method('getErrorAggregator')->willReturn($this->getErrorAggregatorObject());
-        
+
         // Set customer collection using the helper's setter
         $modelMock->method('setCustomerCollection')->willReturnSelf();
         $modelMock->setCustomerCollection($customerCollection);
@@ -174,7 +176,7 @@ class AbstractCustomerTest extends AbstractImportTestCase
                         [1, AbstractCustomer::COLUMN_WEBSITE],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

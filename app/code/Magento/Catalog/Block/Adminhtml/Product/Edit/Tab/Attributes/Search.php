@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes;
 
 use Magento\Framework\App\ObjectManager;
@@ -83,7 +86,7 @@ class Search extends \Magento\Backend\Block\Widget
             'minLength' => 0,
             'ajaxOptions' => ['data' => ['template_id' => $templateId]],
             'template' => '[data-template-for="product-attribute-search-' . $this->getGroupId() . '"]',
-            'data' => $this->getSuggestedAttributes('', $templateId)
+            'data' => $this->getSuggestedAttributes('', $templateId),
         ];
     }
 

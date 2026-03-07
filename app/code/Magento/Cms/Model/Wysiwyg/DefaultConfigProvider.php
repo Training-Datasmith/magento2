@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class DefaultConfigProvider implements \Magento\Framework\Data\Wysiwyg\ConfigPro
     /**
      * @inheritdoc
      */
-    public function getConfig(DataObject $config) : DataObject
+    public function getConfig(DataObject $config): DataObject
     {
         $config->addData([
             'tinymce' => [
@@ -50,11 +51,11 @@ class DefaultConfigProvider implements \Magento\Framework\Data\Wysiwyg\ConfigPro
                         'table',
                         'code',
                         'help',
-                        'table'
+                        'table',
                     ]
                 ),
-                'content_css' => $this->assetRepo->getUrl('mage/adminhtml/wysiwyg/tiny_mce/themes/ui.css')
-            ]
+                'content_css' => $this->assetRepo->getUrl('mage/adminhtml/wysiwyg/tiny_mce/themes/ui.css'),
+            ],
         ]);
         return $config;
     }

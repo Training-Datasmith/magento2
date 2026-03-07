@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Exception;
 
+use GraphQL\Error\ClientAware;
 use GraphQL\Error\ProvidesExtensions;
 use Magento\Framework\Exception\AggregateExceptionInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
-use GraphQL\Error\ClientAware;
 
 /**
  * Exception for GraphQL to be thrown when user supplies invalid input
@@ -52,7 +53,7 @@ class GraphQlInputException extends LocalizedException implements AggregateExcep
     /**
      * @inheritdoc
      */
-    public function isClientSafe() : bool
+    public function isClientSafe(): bool
     {
         return $this->isSafe;
     }
@@ -60,7 +61,7 @@ class GraphQlInputException extends LocalizedException implements AggregateExcep
     /**
      * @inheritdoc
      */
-    public function getCategory() : string
+    public function getCategory(): string
     {
         return self::EXCEPTION_CATEGORY;
     }

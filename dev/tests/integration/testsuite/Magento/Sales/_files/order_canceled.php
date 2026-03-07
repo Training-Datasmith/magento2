@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,10 +7,10 @@
 declare(strict_types=1);
 
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
+use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Model\Order;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Sales\Api\OrderManagementInterface;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/order.php');
 

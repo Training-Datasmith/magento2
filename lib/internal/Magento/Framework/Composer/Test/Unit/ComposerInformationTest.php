@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Composer\Package\Locker;
 use Composer\Package\RootPackageInterface;
 use Composer\Repository\LockArrayRepository;
 use Magento\Framework\Composer\ComposerInformation;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ComposerInformationTest extends TestCase
 {
@@ -74,7 +75,7 @@ class ComposerInformationTest extends TestCase
             ComposerInformation::class,
             [
                 'composer' => $this->composerMock,
-                'locker' => $this->lockerMock
+                'locker' => $this->lockerMock,
             ]
         );
     }
@@ -85,8 +86,8 @@ class ComposerInformationTest extends TestCase
             'magento/product-test-package-name-edition' => [
                 'name'    => 'magento/product-test-package-name-edition',
                 'type'    => 'metapackage',
-                'version' => '123.456.789'
-            ]
+                'version' => '123.456.789',
+            ],
         ];
         $this->assertEquals($expected, $this->composerInformation->getSystemPackages());
     }

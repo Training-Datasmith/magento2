@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,14 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Helper;
 
+use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Search\EngineResolverInterface;
-use Magento\Framework\App\Helper\AbstractHelper;
 use OpenSearch\Client;
 
 class Data extends AbstractHelper
 {
-
     public const OPENSEARCH = 'opensearch';
     public const MAJOR_VERSION = '2';
 
@@ -23,10 +23,6 @@ class Data extends AbstractHelper
      */
     public $engineResolver;
 
-    /**
-     * @param Context $context
-     * @param EngineResolverInterface $engineResolver
-     */
     public function __construct(
         Context $context,
         EngineResolverInterface $engineResolver
@@ -37,16 +33,15 @@ class Data extends AbstractHelper
 
     /**
      * Check if opensearch v2.x
-     *
-     * @return bool
      */
     public function isClientOpenSearchV2(): bool
     {
         $searchEngine =  $this->engineResolver->getCurrentSearchEngine();
-        if (stripos($searchEngine, self::OPENSEARCH) !== false) {
-            if (substr(Client::VERSION, 0, 1) == self::MAJOR_VERSION) {
-                return true;
-            }
+        if (stripos($searchEngine, self::OPENSEARCH) === false) {
+            return false;
+        }
+        if (substr(Client::VERSION, 0, 1) == self::MAJOR_VERSION) {
+            return true;
         }
         return false;
     }

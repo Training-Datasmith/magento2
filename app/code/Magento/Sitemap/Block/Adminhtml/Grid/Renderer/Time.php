@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Sitemap grid link column renderer
  *
  */
+
 namespace Magento\Sitemap\Block\Adminhtml\Grid\Renderer;
 
 class Time extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer

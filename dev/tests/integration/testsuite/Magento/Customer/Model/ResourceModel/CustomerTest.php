@@ -1,13 +1,15 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Customer\Model\ResourceModel;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Customer\Model\Customer as CustomerModel;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Integration test for @see \Magento\Customer\Model\ResourceModel\Customer
@@ -38,15 +40,15 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
      */
     public function testSave(): void
     {
-        $token='randomstring';
-        $email= uniqid()."@example.com";
+        $token = 'randomstring';
+        $email = uniqid().'@example.com';
 
         $this->customerModel->setData(
             [
                 'email' => $email,
                 'rp_token' => $token,
-                'firstname'=> 'John',
-                'lastname' => 'Doe'
+                'firstname' => 'John',
+                'lastname' => 'Doe',
             ]
         )->save();
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +36,7 @@ class ValidatorPool implements \Magento\Payment\Gateway\Validator\ValidatorPoolI
         $this->validators = $tmapFactory->create(
             [
                 'array' => $validators,
-                'type' => ValidatorInterface::class
+                'type' => ValidatorInterface::class,
             ]
         );
     }

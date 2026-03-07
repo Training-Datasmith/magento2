@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\Api\FilterBuilder;
@@ -16,7 +19,7 @@ use Magento\Framework\View\Element\UiComponentInterface;
  */
 class Form extends AbstractComponent
 {
-    const NAME = 'form';
+    public const NAME = 'form';
 
     /**
      * @var FilterBuilder
@@ -73,7 +76,7 @@ class Form extends AbstractComponent
         $dataKey = $id ?? '';
         if (isset($data[$dataKey])) {
             $dataSource = [
-                'data' => $data[$dataKey]
+                'data' => $data[$dataKey],
             ];
         } elseif (isset($data['items'])) {
             foreach ($data['items'] as $item) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\PageCache\Model\App\FrontController\VarnishPlugin;
 use Magento\PageCache\Model\Config;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -87,7 +88,7 @@ class VarnishPluginTest extends TestCase
             [
                 'config' => $this->configMock,
                 'version' => $this->versionMock,
-                'state' => $this->stateMock
+                'state' => $this->stateMock,
             ]
         );
     }
@@ -167,7 +168,7 @@ class VarnishPluginTest extends TestCase
     {
         return [
             'developer_mode' => [AppState::MODE_DEVELOPER, 1],
-            'production' => [AppState::MODE_PRODUCTION, 0]
+            'production' => [AppState::MODE_PRODUCTION, 0],
         ];
     }
 }

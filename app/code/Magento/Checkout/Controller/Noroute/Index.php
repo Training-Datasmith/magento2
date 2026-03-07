@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\Noroute;
 
-use \Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Exception\NotFoundException;
 
 class Index extends \Magento\Framework\App\Action\Action
 {

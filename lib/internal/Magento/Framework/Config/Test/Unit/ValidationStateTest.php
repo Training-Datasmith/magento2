@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Config\Test\Unit;
 
 use Magento\Framework\App\Arguments\ValidationState;
 use Magento\Framework\App\State;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ValidationStateTest extends TestCase
 {
@@ -32,7 +33,7 @@ class ValidationStateTest extends TestCase
         return [
             [State::MODE_DEVELOPER, true],
             [State::MODE_DEFAULT, false],
-            [State::MODE_PRODUCTION, false]
+            [State::MODE_PRODUCTION, false],
         ];
     }
 }

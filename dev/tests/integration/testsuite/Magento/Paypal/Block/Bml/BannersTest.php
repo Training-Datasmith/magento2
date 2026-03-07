@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Bml;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -59,7 +62,7 @@ class BannersTest extends \PHPUnit\Framework\TestCase
             '',
             [
                 'paypalConfig' => $paypalConfig,
-                'data' => ['position' => $position]
+                'data' => ['position' => $position],
             ]
         );
         $block->setTemplate('bml.phtml');
@@ -114,7 +117,7 @@ class BannersTest extends \PHPUnit\Framework\TestCase
                 'isEmptyHtml' => true,
                 'methodWppBml' => 'paypal_express_bml',
                 'methodWppPeBml' => 'payflow_express_bml',
-            ]
+            ],
         ];
     }
 }

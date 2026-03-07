@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\ResourceModel;
 
 use Magento\Eav\Api\AttributeRepositoryInterface as AttributeRepository;
@@ -15,7 +18,7 @@ use Magento\Framework\EntityManager\MetadataPool;
 class AttributeLoader
 {
     /** Name of ATTRIBUTE_SET_ID field */
-    const ATTRIBUTE_SET_ID = 'attribute_set_id';
+    public const ATTRIBUTE_SET_ID = 'attribute_set_id';
 
     /**
      * @var AttributeRepository

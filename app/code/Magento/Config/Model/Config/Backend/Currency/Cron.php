@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Backend Model for Currency import options
  */
+
 namespace Magento\Config\Model\Config\Backend\Currency;
 
 use Magento\Framework\Exception\LocalizedException;

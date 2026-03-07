@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor;
 
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Api\CombinedFilterGroup;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\CustomConditionInterface;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Search\Adapter\Mysql\ConditionManager;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\CustomConditionProviderInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Phrase;
+use Magento\Framework\Search\Adapter\Mysql\ConditionManager;
 
 /**
  * Collection processor that adds filters to collection based on passed search criteria

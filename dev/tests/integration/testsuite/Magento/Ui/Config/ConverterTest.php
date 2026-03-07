@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Config\FileIterator;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\ReadFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConverterTest extends \PHPUnit\Framework\TestCase
@@ -119,7 +122,7 @@ class ConverterTest extends \PHPUnit\Framework\TestCase
         foreach (['semantic', 'mixed', 'arbitrary'] as $filePath) {
             $realPaths[] = $this->fixturePath . '/' . $filePath . '/' . $componentName . '.xml';
         }
-        return new FileIterator(new ReadFactory(new DriverPool), $realPaths);
+        return new FileIterator(new ReadFactory(new DriverPool()), $realPaths);
     }
 
     /**

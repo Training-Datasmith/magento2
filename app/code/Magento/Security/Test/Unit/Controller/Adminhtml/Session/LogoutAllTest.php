@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class LogoutAllTest extends TestCase
             LogoutAll::class,
             [
                 'context' => $this->contextMock,
-                'sessionsManager' => $this->sessionsManager
+                'sessionsManager' => $this->sessionsManager,
             ]
         );
     }

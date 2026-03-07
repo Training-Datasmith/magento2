@@ -1,17 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\ExtensionAttribute;
 
 use Magento\Framework\Api\ExtensionAttribute\Config\Converter;
 use Magento\Framework\Api\ExtensionAttribute\Config\Reader;
-use Magento\Framework\Api\ExtensionAttribute\JoinData;
-use Magento\Framework\Api\ExtensionAttribute\JoinDataInterfaceFactory;
-use Magento\Framework\Reflection\TypeProcessor;
-use Magento\Framework\App\ResourceConnection as AppResource;
 use Magento\Framework\Api\ExtensionAttributesFactory;
+use Magento\Framework\App\ResourceConnection as AppResource;
+use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
@@ -83,7 +84,7 @@ class JoinProcessorTest extends \PHPUnit\Framework\TestCase
             \Magento\Framework\Api\ExtensionAttribute\JoinProcessorHelper::class,
             [
                 'config' => $this->config,
-                'joinDataInterfaceFactory' => $this->extensionAttributeJoinDataFactory
+                'joinDataInterfaceFactory' => $this->extensionAttributeJoinDataFactory,
             ]
         );
 
@@ -92,7 +93,7 @@ class JoinProcessorTest extends \PHPUnit\Framework\TestCase
             [
                 'objectManager' => $objectManager,
                 'typeProcessor' => $this->typeProcessor,
-                'joinProcessorHelper' => $this->joinProcessorHelper
+                'joinProcessorHelper' => $this->joinProcessorHelper,
             ]
         );
     }
@@ -132,7 +133,7 @@ class JoinProcessorTest extends \PHPUnit\Framework\TestCase
                     'internal_alias' => 'extension_attribute_review_id_db_review_id',
                     'with_db_prefix' => 'extension_attribute_review_id.db_review_id',
                     'setter' => 'setReviewId',
-                ]
+                ],
             ],
             $extensionAttributeJoinData->getSelectFields()
         );
@@ -150,15 +151,15 @@ class JoinProcessorTest extends \PHPUnit\Framework\TestCase
                     Converter::DATA_TYPE => 'string',
                     Converter::RESOURCE_PERMISSIONS => [],
                     Converter::JOIN_DIRECTIVE => [
-                        Converter::JOIN_REFERENCE_TABLE => "reviews",
-                        Converter::JOIN_REFERENCE_FIELD => "product_id",
+                        Converter::JOIN_REFERENCE_TABLE => 'reviews',
+                        Converter::JOIN_REFERENCE_FIELD => 'product_id',
                         Converter::JOIN_FIELDS => [
                             [
-                                Converter::JOIN_FIELD => "review_id",
-                                Converter::JOIN_FIELD_COLUMN => "db_review_id",
+                                Converter::JOIN_FIELD => 'review_id',
+                                Converter::JOIN_FIELD_COLUMN => 'db_review_id',
                             ],
                         ],
-                        Converter::JOIN_ON_FIELD => "id",
+                        Converter::JOIN_ON_FIELD => 'id',
                     ],
                 ],
             ], \Magento\Customer\Api\Data\CustomerInterface::class => [
@@ -166,32 +167,32 @@ class JoinProcessorTest extends \PHPUnit\Framework\TestCase
                     Converter::DATA_TYPE => 'string',
                     Converter::RESOURCE_PERMISSIONS => [],
                     Converter::JOIN_DIRECTIVE => [
-                        Converter::JOIN_REFERENCE_TABLE => "library_account",
+                        Converter::JOIN_REFERENCE_TABLE => 'library_account',
                         Converter::JOIN_FIELDS => [
                             [
-                                Converter::JOIN_FIELD => "library_card_id",
-                                Converter::JOIN_FIELD_COLUMN => "",
+                                Converter::JOIN_FIELD => 'library_card_id',
+                                Converter::JOIN_FIELD_COLUMN => '',
                             ],
                         ],
-                        Converter::JOIN_ON_FIELD => "customer_id",
+                        Converter::JOIN_ON_FIELD => 'customer_id',
                     ],
                 ],
                 'reviews' => [
                     Converter::DATA_TYPE => 'Magento\Reviews\Api\Data\Reviews[]',
                     Converter::RESOURCE_PERMISSIONS => [],
                     Converter::JOIN_DIRECTIVE => [
-                        Converter::JOIN_REFERENCE_TABLE => "reviews",
+                        Converter::JOIN_REFERENCE_TABLE => 'reviews',
                         Converter::JOIN_FIELDS => [
                             [
-                                Converter::JOIN_FIELD => "comment",
-                                Converter::JOIN_FIELD_COLUMN => "",
+                                Converter::JOIN_FIELD => 'comment',
+                                Converter::JOIN_FIELD_COLUMN => '',
                             ],
                             [
-                                Converter::JOIN_FIELD => "rating",
-                                Converter::JOIN_FIELD_COLUMN => "",
+                                Converter::JOIN_FIELD => 'rating',
+                                Converter::JOIN_FIELD_COLUMN => '',
                             ],
                         ],
-                        Converter::JOIN_ON_FIELD => "customer_id",
+                        Converter::JOIN_ON_FIELD => 'customer_id',
                     ],
                 ],
             ],
@@ -319,7 +320,7 @@ EXPECTED_SQL;
         $this->assertArrayNotHasKey(
             'extension_attribute_test_stock_item_qty_qty',
             $products[$firstProductId]->getData(),
-            "Selected extension field should be unset after it is added to extension attributes object."
+            'Selected extension field should be unset after it is added to extension attributes object.'
         );
     }
 
@@ -372,11 +373,11 @@ EXPECTED_SQL;
         $this->assertCount(1, $items, 'Filtration by extension attribute does not work.');
         $expectedGroupCode = 'General';
         $this->assertEquals($expectedGroupCode, $items[0]->getCode(), 'Invalid group loaded.');
-        $this->assertNotNull($items[0]->getExtensionAttributes(), "Extension attributes not loaded");
+        $this->assertNotNull($items[0]->getExtensionAttributes(), 'Extension attributes not loaded');
         $this->assertEquals(
             $joinedExtensionAttributeValue,
             $items[0]->getExtensionAttributes()->getTestDummyAttribute(),
-            "Extension attributes were not loaded correctly"
+            'Extension attributes were not loaded correctly'
         );
     }
 
@@ -398,20 +399,20 @@ EXPECTED_SQL;
         $this->assertCount(1, $items, 'Filtration by extension attribute does not work.');
         $expectedGroupCode = 'General';
         $this->assertEquals($expectedGroupCode, $items[0]->getCode(), 'Invalid group loaded.');
-        $this->assertNotNull($items[0]->getExtensionAttributes(), "Extension attributes not loaded");
+        $this->assertNotNull($items[0]->getExtensionAttributes(), 'Extension attributes not loaded');
         $this->assertNotNull(
             $items[0]->getExtensionAttributes()->getTestComplexDummyAttribute(),
-            "Complex extension attribute not loaded"
+            'Complex extension attribute not loaded'
         );
         $this->assertEquals(
             'user',
             $items[0]->getExtensionAttributes()->getTestComplexDummyAttribute()->getAttributeCode(),
-            "Extension attributes were not loaded correctly"
+            'Extension attributes were not loaded correctly'
         );
         $this->assertEquals(
             $joinedExtensionAttributeValue,
             $items[0]->getExtensionAttributes()->getTestComplexDummyAttribute()->getFrontendLabel(),
-            "Extension attributes were not loaded correctly"
+            'Extension attributes were not loaded correctly'
         );
     }
 
@@ -428,7 +429,7 @@ EXPECTED_SQL;
         /** @var \Magento\Sales\Api\InvoiceRepositoryInterface $invoiceRepository */
         $invoiceRepository = $objectManager->create(\Magento\Sales\Api\InvoiceRepositoryInterface::class);
         $invoices = $invoiceRepository->getList($searchCriteriaBuilder->create())->getItems();
-        $this->assertCount(1, $invoices, "Invalid number of loaded invoices.");
+        $this->assertCount(1, $invoices, 'Invalid number of loaded invoices.');
         $invoice = reset($invoices);
 
         /** @var \Magento\Eav\Model\Entity\Attribute $joinedEntity */
@@ -436,11 +437,11 @@ EXPECTED_SQL;
         $joinedEntity->load($invoice->getId());
         $joinedExtensionAttributeValue = $joinedEntity->getAttributeCode();
 
-        $this->assertNotNull($invoice->getExtensionAttributes(), "Extension attributes not loaded");
+        $this->assertNotNull($invoice->getExtensionAttributes(), 'Extension attributes not loaded');
         $this->assertEquals(
             $joinedExtensionAttributeValue,
             $invoice->getExtensionAttributes()->getTestDummyAttribute(),
-            "Extension attributes were not loaded correctly"
+            'Extension attributes were not loaded correctly'
         );
     }
 }

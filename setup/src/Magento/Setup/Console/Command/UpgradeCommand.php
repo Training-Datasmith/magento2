@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -135,7 +137,7 @@ class UpgradeCommand extends AbstractSetupCommand
                 InputOption::VALUE_OPTIONAL,
                 'Magento Installation will be run in dry-run mode',
                 false
-            )
+            ),
         ];
         $this->setName(self::NAME)
             ->setDescription('Upgrades the Magento application, DB data, and schema')
@@ -151,11 +153,11 @@ class UpgradeCommand extends AbstractSetupCommand
         try {
             $request = $input->getOptions();
             $keepGenerated = $input->getOption(self::INPUT_KEY_KEEP_GENERATED);
-            
+
             // Clean up deprecated 'SET NAMES utf8;' from database connections
             $output->writeln('<info>Cleaning up deprecated SET NAMES utf8 from database connections...</info>');
             $this->dbInitStatementsCleanup->execute();
-            
+
             $installer = $this->installerFactory->create(new ConsoleLogger($output));
             $installer->updateModulesSequence($keepGenerated);
             $searchConfig = $this->searchConfigFactory->create();
@@ -185,7 +187,7 @@ class UpgradeCommand extends AbstractSetupCommand
 
             $output->writeln(
                 "<info>Media files stored outside of 'Media Gallery Allowed' folders"
-                . " will not be available to the media gallery.</info>"
+                . ' will not be available to the media gallery.</info>'
             );
             $output->writeln(
                 '<info>Please refer to Developer Guide for more details.</info>'

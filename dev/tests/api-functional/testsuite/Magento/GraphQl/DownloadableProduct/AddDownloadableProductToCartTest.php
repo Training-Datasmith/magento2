@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -158,7 +159,7 @@ MUTATION;
      * @param string $sku
      * @return array
      */
-    private function getProductsLinks(string $sku) : array
+    private function getProductsLinks(string $sku): array
     {
         $result = [];
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);

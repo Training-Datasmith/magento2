@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Backup object factory.
  */
+
 namespace Magento\Framework\Backup;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -29,27 +32,27 @@ class Factory
     /**
      * Backup type constant for database backup
      */
-    const TYPE_DB = 'db';
+    public const TYPE_DB = 'db';
 
     /**
      * Backup type constant for filesystem backup
      */
-    const TYPE_FILESYSTEM = 'filesystem';
+    public const TYPE_FILESYSTEM = 'filesystem';
 
     /**
      * Backup type constant for full system backup(database + filesystem)
      */
-    const TYPE_SYSTEM_SNAPSHOT = 'snapshot';
+    public const TYPE_SYSTEM_SNAPSHOT = 'snapshot';
 
     /**
      * Backup type constant for media and database backup
      */
-    const TYPE_MEDIA = 'media';
+    public const TYPE_MEDIA = 'media';
 
     /**
      * Backup type constant for full system backup excluding media folder
      */
-    const TYPE_SNAPSHOT_WITHOUT_MEDIA = 'nomedia';
+    public const TYPE_SNAPSHOT_WITHOUT_MEDIA = 'nomedia';
 
     /**
      * List of supported a backup types

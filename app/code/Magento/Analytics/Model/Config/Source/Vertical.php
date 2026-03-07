@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config\Source;
 
 /**
@@ -13,33 +16,27 @@ namespace Magento\Analytics\Model\Config\Source;
  */
 class Vertical implements \Magento\Framework\Option\ArrayInterface
 {
-    /**
-     * The list of possible verticals.
-     *
-     * This list is configured via di.xml and may be extended or changed
-     * in any module if it is needed.
-     *
-     * It is supposed that the list may be changed in each Magento release.
-     *
-     * @var array
-     */
-    private $verticals;
-
-    /**
-     * @param array $verticals
-     */
-    public function __construct(array $verticals)
-    {
-        $this->verticals = $verticals;
+    public function __construct(
+        /**
+         * The list of possible verticals.
+         *
+         * This list is configured via di.xml and may be extended or changed
+         * in any module if it is needed.
+         *
+         * It is supposed that the list may be changed in each Magento release.
+         */
+        private readonly array $verticals
+    ) {
     }
 
     /**
      * @inheritdoc
+     * @return mixed[]
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         $result = [
-            ['value' => '', 'label' => __('--Please Select--')]
+            ['value' => '', 'label' => __('--Please Select--')],
         ];
 
         foreach ($this->verticals as $vertical) {

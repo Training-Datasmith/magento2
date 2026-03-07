@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write as DirectoryWrite;
 use Magento\Framework\Filesystem\File\Write;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\Framework\ZendEscaper;
@@ -30,7 +32,6 @@ use Magento\Sitemap\Model\SitemapConfigReaderInterface;
 use Magento\Sitemap\Model\SitemapItem;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -300,7 +301,7 @@ class SitemapTest extends TestCase
                 [
                     'robotsStart' => '',
                     'robotsFinish' => 'Sitemap: http://store.com/sitemap.xml',
-                    'pushToRobots' => 1
+                    'pushToRobots' => 1,
                 ],
             ], // empty robots file
             [
@@ -309,10 +310,10 @@ class SitemapTest extends TestCase
                 $expectedSingleFile,
                 6,
                 [
-                    'robotsStart' => "User-agent: *",
-                    'robotsFinish' => "User-agent: *" . PHP_EOL . 'Sitemap: http://store.com/sitemap.xml',
-                    'pushToRobots' => 1
-                ]
+                    'robotsStart' => 'User-agent: *',
+                    'robotsFinish' => 'User-agent: *' . PHP_EOL . 'Sitemap: http://store.com/sitemap.xml',
+                    'pushToRobots' => 1,
+                ],
             ], // not empty robots file EOL
             [
                 1,
@@ -322,8 +323,8 @@ class SitemapTest extends TestCase
                 [
                     'robotsStart' => "User-agent: *\r\n",
                     'robotsFinish' => "User-agent: *\r\n\r\nSitemap: http://store.com/sitemap.xml",
-                    'pushToRobots' => 1
-                ]
+                    'pushToRobots' => 1,
+                ],
             ], // not empty robots file WIN
             [
                 50000,
@@ -333,16 +334,16 @@ class SitemapTest extends TestCase
                 [
                     'robotsStart' => "User-agent: *\n",
                     'robotsFinish' => "User-agent: *\n\nSitemap: http://store.com/sitemap.xml",
-                    'pushToRobots' => 1
-                ]
+                    'pushToRobots' => 1,
+                ],
             ], // not empty robots file UNIX
             [
                 50000,
                 10485760,
                 $expectedSingleFile,
                 6,
-                ['robotsStart' => '', 'robotsFinish' => '', 'pushToRobots' => 0]
-            ] // empty robots file
+                ['robotsStart' => '', 'robotsFinish' => '', 'pushToRobots' => 0],
+            ], // empty robots file
         ];
     }
 
@@ -482,14 +483,14 @@ class SitemapTest extends TestCase
             '_afterSave',
             '_getCategoryItemsCollection',
             '_getProductItemsCollection',
-            '_getPageItemsCollection'
+            '_getPageItemsCollection',
         ];
         $methods = [
             '_construct',
             '_getResource',
             '_getBaseDir',
             '_getCurrentDateTime',
-            '_getDocumentRoot'
+            '_getDocumentRoot',
         ];
         if ($mockBeforeSave) {
             $methods[] = 'beforeSave';
@@ -514,7 +515,7 @@ class SitemapTest extends TestCase
                                     new DataObject(
                                         [
                                             'url' => $storeBaseMediaUrl . 'i/m/image1.png',
-                                            'caption' => 'Copyright © caption &trade; & > title < "'
+                                            'caption' => 'Copyright © caption &trade; & > title < "',
                                         ]
                                     ),
                                     new DataObject(
@@ -525,7 +526,7 @@ class SitemapTest extends TestCase
                                 'title' => 'Product & > title < "',
                             ]
                         )
-                    )
+                    ),
                 ]
             );
 
@@ -648,7 +649,7 @@ class SitemapTest extends TestCase
                 'c:\\http\\mage2\\',
                 '/sitemaps/store2',
                 'sitemap.xml',
-                'http://store.com/sitemaps/store2/sitemap.xml'
+                'http://store.com/sitemaps/store2/sitemap.xml',
             ],
             [
                 'http://store.com/builds/regression/ee/',
@@ -656,7 +657,7 @@ class SitemapTest extends TestCase
                 '/opt/builds/regression/ee',
                 '/',
                 'sitemap.xml',
-                'http://store.com/builds/regression/ee/sitemap.xml'
+                'http://store.com/builds/regression/ee/sitemap.xml',
             ],
             [
                 'http://store.com/store2',
@@ -664,7 +665,7 @@ class SitemapTest extends TestCase
                 'c:\\http\\mage2\\store2',
                 '/sitemaps/store2',
                 'sitemap.xml',
-                'http://store.com/store2/sitemaps/store2/sitemap.xml'
+                'http://store.com/store2/sitemaps/store2/sitemap.xml',
             ],
             [
                 'http://store2.store.com',
@@ -672,7 +673,7 @@ class SitemapTest extends TestCase
                 'c:\\http\\mage2\\',
                 '/sitemaps/store2',
                 'sitemap.xml',
-                'http://store2.store.com/sitemaps/store2/sitemap.xml'
+                'http://store2.store.com/sitemaps/store2/sitemap.xml',
             ],
             [
                 'http://store.com',
@@ -680,7 +681,7 @@ class SitemapTest extends TestCase
                 '/var/www/store/',
                 '/',
                 'sitemap.xml',
-                'http://store.com/sitemap.xml'
+                'http://store.com/sitemap.xml',
             ],
             [
                 'http://store.com/store2',
@@ -688,8 +689,8 @@ class SitemapTest extends TestCase
                 '/var/www/store/store2/',
                 '/sitemaps/store2',
                 'sitemap.xml',
-                'http://store.com/store2/sitemaps/store2/sitemap.xml'
-            ]
+                'http://store.com/store2/sitemaps/store2/sitemap.xml',
+            ],
         ];
     }
 

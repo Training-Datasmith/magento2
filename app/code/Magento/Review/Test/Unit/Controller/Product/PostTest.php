@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,17 +22,16 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\Session\Generic;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Review\Controller\Product\Post;
 use Magento\Review\Model\Rating;
 use Magento\Review\Model\RatingFactory;
 use Magento\Review\Model\Review;
-use Magento\Review\Model\ReviewFactory;
 use Magento\Review\Model\Review\Config;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Review\Model\ReviewFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
-use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -163,10 +163,10 @@ class PostTest extends TestCase
             [
                 'setEntityPkValue', 'setStatusId', 'setCustomerId', 'setStoreId', 'setStores',
                 'setData', 'validate', 'setEntityId', 'getEntityIdByCode', 'save',
-                'getId', 'aggregate', 'unsetData'
+                'getId', 'aggregate', 'unsetData',
             ]
         );
-        
+
         $reviewFactory = $this->createPartialMock(ReviewFactory::class, ['create']);
         $reviewFactory->expects($this->once())->method('create')->willReturn($this->review);
         $this->customerSession = $this->createPartialMock(Session::class, ['getCustomerId']);
@@ -200,7 +200,7 @@ class PostTest extends TestCase
             [
                 'request' => $this->request,
                 'resultFactory' => $this->resultFactoryMock,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
         $this->model = $objectManagerHelper->getObject(
@@ -218,7 +218,7 @@ class PostTest extends TestCase
                 'ratingFactory' => $ratingFactory,
                 'storeManager' => $storeManager,
                 'context' => $this->context,
-                'reviewsConfig' => $this->reviewsConfig
+                'reviewsConfig' => $this->reviewsConfig,
             ]
         );
     }
@@ -231,7 +231,7 @@ class PostTest extends TestCase
     {
         $reviewData = [
             'ratings' => [1 => 1],
-            'review_id' => 2
+            'review_id' => 2,
         ];
         $productId = 1;
         $customerId = 1;

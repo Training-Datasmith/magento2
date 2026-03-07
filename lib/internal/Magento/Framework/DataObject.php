@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 /**
@@ -130,13 +133,13 @@ class DataObject implements \ArrayAccess
             return $this->_data;
         }
 
-        if( $key === null) {
+        if ($key === null) {
             return null;
         }
 
         $data = $this->_data[$key] ?? null;
         if ($data === null && $key !== null && strpos($key, '/') !== false) {
-           /* process a/b/c key as ['a']['b']['c'] */
+            /* process a/b/c key as ['a']['b']['c'] */
             $data = $this->getDataByPath($key);
         }
 
@@ -461,7 +464,7 @@ class DataObject implements \ArrayAccess
             trim(
                 preg_replace(
                     '/([A-Z]|[0-9]+)/',
-                    "_$1",
+                    '_$1',
                     lcfirst(
                         substr(
                             $name,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Eav\Model\Entity\Attribute;
 
-use Magento\Framework\DataObject;
 use Magento\Eav\Model\Entity\AbstractEntity;
+use Magento\Framework\DataObject;
 
 /**
  * Interface for unique attribute validator

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class InfoTest extends TestCase
         $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
         $this->objectManagerMock->method('get')
             ->willReturn($jsonHelperMock);
-        
+
         AppObjectManager::setInstance($this->objectManagerMock);
 
         $this->infoBlock = $this->objectManager->getObject(

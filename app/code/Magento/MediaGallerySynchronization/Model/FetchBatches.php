@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class FetchBatches implements FetchBatchesInterface
                 __(
                     'Could not fetch data from %tableName',
                     [
-                        'tableName' => $tableName
+                        'tableName' => $tableName,
                     ]
                 )
             );

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ $configData = [
             'web/test2/test_value_4' => 'value4.db.default.test',
             'carriers/fedex/account' => 'value5.db.hashed.value',
             'paypal/fetch_reports/ftp_password' => 'value6.db.hashed.value',
-        ]
+        ],
     ],
     ScopeInterface::SCOPE_WEBSITES => [
         'base' => [
@@ -26,7 +28,7 @@ $configData = [
             'web/test/test_value_2' => 'value2.db.website_base.test',
             'web/test2/test_value_3' => 'value3.db.website_base.test',
             'web/test2/test_value_4' => 'value4.db.website_base.test',
-        ]
+        ],
     ],
     ScopeInterface::SCOPE_STORES => [
         'default' => [
@@ -34,7 +36,7 @@ $configData = [
             'web/test/test_value_2' => 'value2.db.store_default.test',
             'web/test2/test_value_3' => 'value3.db.store_default.test',
             'web/test2/test_value_4' => 'value4.db.store_default.test',
-        ]
+        ],
     ],
 ];
 

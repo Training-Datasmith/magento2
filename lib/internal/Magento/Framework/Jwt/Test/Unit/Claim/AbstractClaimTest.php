@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Jwt\Test\Unit\Claim;
 
 use Magento\Framework\Jwt\Claim\AbstractClaim;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AbstractClaimTest extends TestCase
 {
@@ -34,7 +35,7 @@ class AbstractClaimTest extends TestCase
     {
         return [
             ['1970-01-01T00:00:00Z', '1970-01-01 00:00:00'],
-            ['1996-12-19T16:39:57-08:00', '1996-12-20 00:39:57']
+            ['1996-12-19T16:39:57-08:00', '1996-12-20 00:39:57'],
         ];
     }
 }

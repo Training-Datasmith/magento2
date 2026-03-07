@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +51,7 @@ class Sftp extends AbstractIo
         if (!$this->_connection->login($args['username'], $args['password'])) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
             throw new Exception(
-                sprintf("Unable to open SFTP connection as %s@%s", $args['username'], $args['host'])
+                sprintf('Unable to open SFTP connection as %s@%s', $args['username'], $args['host'])
             );
         }
     }

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Source;
 
-use Magento\Framework\App\Utility\Files;
 use Magento\Deploy\Package\PackageFileFactory;
+use Magento\Framework\App\Utility\Files;
 
 /**
  * Collect files eligible for deployment from themes
@@ -16,7 +19,7 @@ class Themes implements SourceInterface
     /**
      * Source type code
      */
-    const TYPE = 'themes';
+    public const TYPE = 'themes';
 
     /**
      * @var Files
@@ -58,7 +61,7 @@ class Themes implements SourceInterface
                     'locale' => $locale,
                     'module' => $module,
                     'fileName' => $fileName,
-                    'sourcePath' => $fullPath
+                    'sourcePath' => $fullPath,
                 ];
                 $files[] = $this->packageFileFactory->create($params);
             }

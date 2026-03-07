@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class Xml extends \Magento\Framework\Config\Reader\Filesystem
         '/config/topic' => 'name',
         '/config/bind' => ['queue', 'exchange', 'topic'],
         '/config/broker' => 'topic',
-        '/config/broker/consumer' => 'name'
+        '/config/broker/consumer' => 'name',
     ];
 
     /**

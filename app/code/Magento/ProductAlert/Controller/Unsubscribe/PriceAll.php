@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductAlert\Controller\Unsubscribe;
 
-use Magento\ProductAlert\Controller\Unsubscribe as UnsubscribeController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\ProductAlert\Controller\Unsubscribe as UnsubscribeController;
 
 class PriceAll extends UnsubscribeController
 {

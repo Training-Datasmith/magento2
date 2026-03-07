@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class LayoutCacheTagResolver implements StrategyInterface
         if ($this->isExistingPageLayoutChange($object)) {
             return [
                 'CMS_PAGE_VIEW_ID_'.
-                str_replace('-', '_', strtoupper($object->getIdentifier()))
+                str_replace('-', '_', strtoupper($object->getIdentifier())),
             ];
         }
         return [];

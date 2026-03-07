@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Columns;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -82,7 +85,7 @@ class Boolean extends Column implements
         return [
             'nullable' => $this->isNullable(),
             'default' => $this->getDefault(),
-            'comment' => $this->getComment()
+            'comment' => $this->getComment(),
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Create customer and attach it to custom website with code newwebsite
  *

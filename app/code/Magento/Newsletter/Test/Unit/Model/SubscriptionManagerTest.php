@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -124,7 +125,7 @@ class SubscriptionManagerTest extends TestCase
                 'save',
                 'sendConfirmationRequestEmail',
                 'sendConfirmationSuccessEmail',
-                'sendUnsubscriptionEmail'
+                'sendUnsubscriptionEmail',
             ]
         );
         $subscriber->expects($this->once())
@@ -271,7 +272,7 @@ class SubscriptionManagerTest extends TestCase
                 'save',
                 'sendConfirmationRequestEmail',
                 'sendConfirmationSuccessEmail',
-                'sendUnsubscriptionEmail'
+                'sendUnsubscriptionEmail',
             ]
         );
         $subscriber->expects($this->once())
@@ -525,7 +526,7 @@ class SubscriptionManagerTest extends TestCase
                 'save',
                 'sendConfirmationRequestEmail',
                 'sendConfirmationSuccessEmail',
-                'sendUnsubscriptionEmail'
+                'sendUnsubscriptionEmail',
             ]
         );
         $subscriber->expects($this->once())

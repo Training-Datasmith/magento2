@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class ToOrderTest extends TestCase
                 'orderFactory' => $this->orderDataFactoryMock,
                 'objectCopyService' => $this->objectCopyMock,
                 'eventManager' => $this->eventManagerMock,
-                'dataObjectHelper' => $this->dataObjectHelper
+                'dataObjectHelper' => $this->dataObjectHelper,
             ]
         );
     }

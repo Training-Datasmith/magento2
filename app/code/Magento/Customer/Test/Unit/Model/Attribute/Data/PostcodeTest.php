@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class PostcodeTest extends TestCase
 {
@@ -193,7 +194,7 @@ class PostcodeTest extends TestCase
                 ['"Zip/Postal Code" length must be equal or greater than 5 characters.'],
                 ['input_validation' => 'alphanumeric', 'min_text_length' => 5],
                 'US',
-                false
+                false,
             ],
             // Test max length validation
             [
@@ -201,7 +202,7 @@ class PostcodeTest extends TestCase
                 ['"Zip/Postal Code" length must be equal or less than 6 characters.'],
                 ['input_validation' => 'alphanumeric', 'max_text_length' => 6],
                 'US',
-                false
+                false,
             ],
             // Test valid length
             [
@@ -209,7 +210,7 @@ class PostcodeTest extends TestCase
                 true,
                 ['input_validation' => 'alphanumeric', 'min_text_length' => 5, 'max_text_length' => 6],
                 'US',
-                false
+                false,
             ],
             // Test no validation rules
             [
@@ -217,7 +218,7 @@ class PostcodeTest extends TestCase
                 true,
                 [],
                 'US',
-                false
+                false,
             ],
         ];
     }

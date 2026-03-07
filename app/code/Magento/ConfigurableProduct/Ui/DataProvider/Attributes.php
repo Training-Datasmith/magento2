@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +76,7 @@ class Attributes extends \Magento\Ui\DataProvider\AbstractDataProvider
         }
         return [
             'totalRecords' => $this->collection->getSize(),
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

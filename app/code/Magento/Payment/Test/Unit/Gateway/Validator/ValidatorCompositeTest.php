@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,9 +39,9 @@ class ValidatorCompositeTest extends TestCase
                 [
                     'array' => [
                         'validator1' => ValidatorInterface::class,
-                        'validator2' => ValidatorInterface::class
+                        'validator2' => ValidatorInterface::class,
                     ],
-                    'type' => ValidatorInterface::class
+                    'type' => ValidatorInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -86,7 +87,7 @@ class ValidatorCompositeTest extends TestCase
                 [
                     'isValid' => false,
                     'failsDescription' => ['Fail'],
-                    'errorCodes' => ['abc123']
+                    'errorCodes' => ['abc123'],
                 ]
             )
             ->willReturn($compositeResult);
@@ -96,7 +97,7 @@ class ValidatorCompositeTest extends TestCase
             $tMapFactory,
             [
                 'validator1' => ValidatorInterface::class,
-                'validator2' => ValidatorInterface::class
+                'validator2' => ValidatorInterface::class,
             ]
         );
         static::assertSame($compositeResult, $validatorComposite->validate($validationSubject));
@@ -123,9 +124,9 @@ class ValidatorCompositeTest extends TestCase
                 [
                     'array' => [
                         'validator1' => ValidatorInterface::class,
-                        'validator2' => ValidatorInterface::class
+                        'validator2' => ValidatorInterface::class,
                     ],
-                    'type' => ValidatorInterface::class
+                    'type' => ValidatorInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -166,7 +167,7 @@ class ValidatorCompositeTest extends TestCase
                 [
                     'isValid' => false,
                     'failsDescription' => ['Fail'],
-                    'errorCodes' => ['abc123']
+                    'errorCodes' => ['abc123'],
                 ]
             )
             ->willReturn($compositeResult);
@@ -176,7 +177,7 @@ class ValidatorCompositeTest extends TestCase
             $tMapFactory,
             [
                 'validator1' => ValidatorInterface::class,
-                'validator2' => ValidatorInterface::class
+                'validator2' => ValidatorInterface::class,
             ],
             ['validator1']
         );

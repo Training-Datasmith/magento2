@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ $dataObjectHelper = Bootstrap::getObjectManager()->get(DataObjectHelper::class);
 $ruleLabel = $objectManager->create(RuleLabelInterface::class);
 $ruleLabelFactory = $objectManager->get(RuleLabelFactory::class);
 
-
 /** @var RuleData $salesRule */
 $salesRule = $objectManager->create(RuleData::class);
 /** @var RuleLabelInterface $ruleLabel */
@@ -47,7 +47,7 @@ $ruleData = [
         'discount_qty' => 0,
         'apply_to_shipping' => 1,
         'simple_free_shipping' => 1,
-        'stop_rules_processing' => 0
+        'stop_rules_processing' => 0,
 ];
 $dataObjectHelper->populateWithArray($salesRule, $ruleData, RuleInterface::class);
 $salesRule->setStoreLabels([$ruleLabel]);

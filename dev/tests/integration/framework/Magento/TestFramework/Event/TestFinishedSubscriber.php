@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Event;
 
-use PHPUnit\Event\Test\FinishedSubscriber;
-use PHPUnit\Event\Test\Finished;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Event\Test\Finished;
+use PHPUnit\Event\Test\FinishedSubscriber;
 use PHPUnit\Framework\TestCase;
 
 class TestFinishedSubscriber implements FinishedSubscriber

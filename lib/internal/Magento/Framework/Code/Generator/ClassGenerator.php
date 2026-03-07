@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +54,7 @@ class ClassGenerator extends \Laminas\Code\Generator\ClassGenerator implements
         'abstract' => 'setAbstract',
         'visibility' => 'setVisibility',
         'body' => 'setBody',
-        'returntype' => 'setReturnType'
+        'returntype' => 'setReturnType',
     ];
 
     /**

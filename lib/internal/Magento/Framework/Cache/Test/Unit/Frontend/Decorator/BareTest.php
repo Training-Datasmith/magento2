@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class BareTest extends TestCase
      * @param array $params
      * @param mixed $expectedResult
      */
-     #[DataProvider('proxyMethodDataProvider')]
+    #[DataProvider('proxyMethodDataProvider')]
     public function testProxyMethod($method, $params, $expectedResult)
     {
         if (is_callable($expectedResult)) {

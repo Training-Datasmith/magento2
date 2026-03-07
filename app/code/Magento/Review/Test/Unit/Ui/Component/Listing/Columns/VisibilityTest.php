@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -45,13 +46,13 @@ class VisibilityTest extends AbstractColumnTestCase
             'data' => [
                 'items' => [
                     [
-                        'stores' => [1]
-                    ]
+                        'stores' => [1],
+                    ],
                 ],
             ],
         ];
         $expectedVisibility =
-            "Test Website<br/>&nbsp;&nbsp;&nbsp;Test group<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test store<br/>";
+            'Test Website<br/>&nbsp;&nbsp;&nbsp;Test group<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test store<br/>';
         $expectedDataSource = [
             'data' => [
                 'items' => [
@@ -59,7 +60,7 @@ class VisibilityTest extends AbstractColumnTestCase
                         'stores' => [1],
                         'visibility' => $expectedVisibility,
 
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -75,9 +76,9 @@ class VisibilityTest extends AbstractColumnTestCase
                             'children' => [
                                 [
                                     'label' => 'Test store',
-                                ]
+                                ],
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ]);

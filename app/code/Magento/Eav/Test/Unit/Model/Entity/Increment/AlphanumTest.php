@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Eav\Test\Unit\Model\Entity\Increment;
 
 use Magento\Eav\Model\Entity\Increment\Alphanum;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AlphanumTest extends TestCase
 {
@@ -55,7 +56,7 @@ class AlphanumTest extends TestCase
             [
                 'lastId' => 1,
                 'prefix' => 'prefix',
-                'expectedResult' => 'prefix00000002'
+                'expectedResult' => 'prefix00000002',
             ],
         ];
     }

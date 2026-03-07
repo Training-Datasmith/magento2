@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Model\Template;
 
 use Magento\Email\Model\Template\Config\UnexpectedTemplateFieldNameValueException;
@@ -138,9 +141,9 @@ class Config implements \Magento\Framework\Mail\Template\ConfigInterface
     {
         $parts = [
             'templateId' => $templateId,
-            'theme' => null
+            'theme' => null,
         ];
-        $pattern = "#^(?<templateId>[^/]+)/(?<themeVendor>[^/]+)/(?<themeName>[^/]+)#i";
+        $pattern = '#^(?<templateId>[^/]+)/(?<themeVendor>[^/]+)/(?<themeName>[^/]+)#i';
         if ($templateId !== null && preg_match($pattern, $templateId, $matches)) {
             $parts['templateId'] = $matches['templateId'];
             $parts['theme'] = $matches['themeVendor'] . '/' . $matches['themeName'];
@@ -226,7 +229,7 @@ class Config implements \Magento\Framework\Mail\Template\ConfigInterface
     {
         $data = $this->_dataStorage->get();
         if (!isset($data[$templateId])) {
-            throw new UnexpectedTemplateIdValueException(__("Email template is not defined."));
+            throw new UnexpectedTemplateIdValueException(__('Email template is not defined.'));
         }
         if (!isset($data[$templateId][$fieldName])) {
             throw new UnexpectedTemplateFieldNameValueException(

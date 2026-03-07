@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -151,7 +152,7 @@ class CreateTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods([
                 'getResource', 'getId', 'setData', 'setRootCategoryId',
-                'getDefaultStoreId', 'setDefaultStoreId', 'setWebsite'
+                'getDefaultStoreId', 'setDefaultStoreId', 'setWebsite',
             ])
             ->getMock();
         $this->storeMock = $this->createPartialMockWithReflection(
@@ -210,7 +211,7 @@ class CreateTest extends TestCase
                 'name' => 'Default1',
                 'default_store_id' => '1',
                 'code' => 'default1',
-            ]
+            ],
         ];
         $this->trimmedGroup =
             [
@@ -224,8 +225,8 @@ class CreateTest extends TestCase
                     'name' => 'Default1',
                     'root_category_id' => '0',
                     'code' => 'default1',
-                    'default_store_id' => '1'
-                ]
+                    'default_store_id' => '1',
+                ],
             ];
         $this->stores = [
             'default' => [

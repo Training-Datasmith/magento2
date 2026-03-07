@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\View\Asset\Minification;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for Magento\Framework\View\Asset\Minification
@@ -94,7 +95,7 @@ class MinificationTest extends TestCase
             [false, State::MODE_DEVELOPER, false],
             [true, State::MODE_DEFAULT, true],
             [true, State::MODE_PRODUCTION, true],
-            [true, State::MODE_DEVELOPER, false]
+            [true, State::MODE_DEVELOPER, false],
         ];
     }
 
@@ -128,7 +129,7 @@ class MinificationTest extends TestCase
         return [
             ['test.css', true, 'test.min.css'],
             ['test.css', false, 'test.css'],
-            ['test.min.css', true, 'test.min.css']
+            ['test.min.css', true, 'test.min.css'],
         ];
     }
 
@@ -162,7 +163,7 @@ class MinificationTest extends TestCase
         return [
             ['test.css', true, 'test.css'],
             ['test.min.css', true, 'test.css'],
-            ['test.min.css', false, 'test.min.css']
+            ['test.min.css', false, 'test.min.css'],
         ];
     }
 
@@ -189,7 +190,7 @@ class MinificationTest extends TestCase
             ['test.mincss', false],
             ['testmin.css', false],
             ['test.css', false],
-            ['test.min', false]
+            ['test.min', false],
         ];
     }
 
@@ -206,7 +207,7 @@ class MinificationTest extends TestCase
             ->with('dev/js/minify_exclude')
             ->willReturn([
                 'tiny_mce' => '/tiny_mce/',
-                'some_other_unique_name' => '/tiny_mce2/'
+                'some_other_unique_name' => '/tiny_mce2/',
             ]);
 
         $expected = ['/tiny_mce/', '/tiny_mce2/'];

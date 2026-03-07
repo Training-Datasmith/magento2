@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -65,7 +67,7 @@ $options = getopt(
         'test-suite:',
         'group-size:',
         'configuration:',
-        'isolate-tests::'
+        'isolate-tests::',
     ]
 );
 $requiredOpts = ['test-suite', 'group-size', 'configuration'];

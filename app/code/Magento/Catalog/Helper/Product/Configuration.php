@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Helper\Product;
 
+use Magento\Catalog\Helper\Product\Configuration\ConfigurationInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
+use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Catalog\Helper\Product\Configuration\ConfigurationInterface;
-use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
  * Helper for fetching properties by product configurational item

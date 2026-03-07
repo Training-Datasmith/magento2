@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Model\Plugin;
 
-use Magento\Framework\Webapi\Rest\Request as RestRequest;
-use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Webapi\Rest\Request as RestRequest;
 
 /**
  * Update customer by id from request param

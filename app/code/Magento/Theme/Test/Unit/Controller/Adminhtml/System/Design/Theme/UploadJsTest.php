@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class UploadJsTest extends ThemeTestCase
             [
                 'getFiles', 'getFilesByType', 'getCustomizationPath',
                 'getThemeFilesPath', 'getCustomViewConfigPath', 'reorder', 'delete',
-                'generateFileInfo'
+                'generateFileInfo',
             ]
         );
         $this->customizationJs = $this->createMock(Js::class);
@@ -90,7 +91,7 @@ class UploadJsTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Service::class] => $this->serviceModel,
                 [FlyweightFactory::class] => $this->themeFactory,
                 [Js::class] => $this->customizationJs,
@@ -130,7 +131,7 @@ class UploadJsTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Service::class] => $this->serviceModel,
                 [FlyweightFactory::class] => $this->themeFactory,
                 [Js::class] => $this->customizationJs,
@@ -164,7 +165,7 @@ class UploadJsTest extends ThemeTestCase
                 'setCustomizationService', 'getCustomizationService',
                 'setTheme', 'getTheme', 'setFileName', 'getFileName',
                 'getFullPath', 'getFileInfo', 'getContent', 'save', 'delete',
-                'setData'
+                'setData',
             ]
         );
 
@@ -175,11 +176,11 @@ class UploadJsTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
-                    [Service::class] => $this->serviceModel,
-                    [FlyweightFactory::class] => $this->themeFactory,
-                    [Js::class] => $this->customizationJs,
-                    [Data::class] => $this->jsonHelper
+            ->willReturnCallback(fn ($param) => match ([$param]) {
+                [Service::class] => $this->serviceModel,
+                [FlyweightFactory::class] => $this->themeFactory,
+                [Js::class] => $this->customizationJs,
+                [Data::class] => $this->jsonHelper
             });
 
         $this->themeFactory->expects($this->once())

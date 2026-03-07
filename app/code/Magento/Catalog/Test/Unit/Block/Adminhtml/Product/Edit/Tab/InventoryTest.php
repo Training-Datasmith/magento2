@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Inventory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type\AbstractType;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Model\Source\Backorders;
@@ -95,12 +95,12 @@ class InventoryTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -491,8 +491,8 @@ class InventoryTest extends TestCase
                 'moduleEnabled' => true,
             ],
             [
-                'moduleEnabled' => false
-            ]
+                'moduleEnabled' => false,
+            ],
         ];
     }
 
@@ -512,13 +512,13 @@ class InventoryTest extends TestCase
             [
                 'stockId' => null,
                 'methods' => [],
-                'result' => 'default-result'
+                'result' => 'default-result',
             ],
             [
                 'stockId' => 99,
                 'methods' => [],
-                'result' => 'default-result'
-            ]
+                'result' => 'default-result',
+            ],
         ];
     }
 
@@ -538,13 +538,13 @@ class InventoryTest extends TestCase
             [
                 'stockId' => null,
                 'methods' => [],
-                'result' => 'default-result'
+                'result' => 'default-result',
             ],
             [
                 'stockId' => 99,
                 'methods' => [],
-                'result' => 'default-result'
-            ]
+                'result' => 'default-result',
+            ],
         ];
     }
 
@@ -562,8 +562,8 @@ class InventoryTest extends TestCase
             ],
             [
                 'id' => null,
-                'result' => true
-            ]
+                'result' => true,
+            ],
         ];
     }
 }

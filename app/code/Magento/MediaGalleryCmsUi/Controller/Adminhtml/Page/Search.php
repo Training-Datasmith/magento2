@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class Search extends Action implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::page';
+    public const ADMIN_RESOURCE = 'Magento_Cms::page';
 
     /**
      * @var JsonFactory
@@ -85,13 +86,13 @@ class Search extends Action implements HttpGetActionInterface
                 'value' => $id,
                 'label' => $page->getTitle(),
                 'is_active' => $page->isActive(),
-                'optgroup' => false
+                'optgroup' => false,
             ];
         }
 
         return $this->resultJsonFactory->create()->setData([
             'options' => $options,
-            'total' => $searchResult->getTotalCount()
+            'total' => $searchResult->getTotalCount(),
         ]);
     }
 }

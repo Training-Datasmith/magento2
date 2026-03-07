@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
-use Magento\Catalog\Model\Product;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
@@ -19,8 +21,8 @@ use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
  */
 class UrlRewriteFinder
 {
-    const ENTITY_TYPE_CATEGORY = 'category';
-    const ENTITY_TYPE_PRODUCT = 'product';
+    public const ENTITY_TYPE_CATEGORY = 'category';
+    public const ENTITY_TYPE_PRODUCT = 'product';
 
     /**
      * @var \Magento\CatalogUrlRewrite\Model\Map\DatabaseMapPool
@@ -89,7 +91,7 @@ class UrlRewriteFinder
             [
                 UrlRewrite::STORE_ID => $storeId,
                 UrlRewrite::ENTITY_ID => $entityId,
-                UrlRewrite::ENTITY_TYPE => $entityType
+                UrlRewrite::ENTITY_TYPE => $entityType,
             ]
         );
     }

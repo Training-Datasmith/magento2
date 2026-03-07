@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Mview\Config\Reader;
 use Magento\Framework\Mview\View\State\CollectionInterface;
 use Magento\Framework\Mview\View\StateInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DataTest extends TestCase
 {
@@ -112,7 +113,7 @@ class DataTest extends TestCase
 
         $stateExistent = $this->createPartialMockWithReflection(
             StateInterface::class,
-            ['__wakeup', 'loadByView', 'save', 'delete', 'getViewId', 'getMode', 'setMode', 
+            ['__wakeup', 'loadByView', 'save', 'delete', 'getViewId', 'getMode', 'setMode',
              'getStatus', 'setStatus', 'getVersionId', 'setVersionId', 'getUpdated', 'setUpdated']
         );
         $stateExistent->expects($this->once())->method('getViewId')->willReturn('view1');

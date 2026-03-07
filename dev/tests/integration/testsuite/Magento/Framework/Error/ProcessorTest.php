@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Error;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -53,7 +56,7 @@ class ProcessorTest extends \PHPUnit\Framework\TestCase
         $reportData = [
             0 => $exceptionMessage,
             1 => 'exceptionTrace',
-            'script_name' => 'processor.php'
+            'script_name' => 'processor.php',
         ];
         $reportData['report_id'] = hash('sha256', implode('', $reportData));
         $expectedReportData = array_merge($reportData, ['url' => '']);
@@ -61,7 +64,7 @@ class ProcessorTest extends \PHPUnit\Framework\TestCase
         $processor->saveReport($reportData);
         $reportId = $processor->reportId;
         if (!$reportId) {
-            $this->fail("Failed to generate report id");
+            $this->fail('Failed to generate report id');
         }
         $this->assertEquals($expectedReportData, $processor->reportData);
         $_ENV['MAGE_ERROR_REPORT_DIR_NESTING_LEVEL'] = $logReportDirNestingLevelChanged;

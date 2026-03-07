@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CouponManagementTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCouponManagementV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCouponManagementV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -49,7 +51,7 @@ class CouponManagementTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $this->assertEquals($couponCode, $this->_webApiCall($serviceInfo, $requestData));
     }
 
@@ -73,7 +75,7 @@ class CouponManagementTest extends WebapiAbstract
                 'operation' => self::SERVICE_NAME . 'Remove',
             ],
         ];
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));
         $quote->load('test_order_1', 'reserved_order_id');
         $this->assertEquals('', $quote->getCouponCode());
@@ -107,8 +109,8 @@ class CouponManagementTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "couponCode" => $couponCode,
+            'cartId' => $cartId,
+            'couponCode' => $couponCode,
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);
@@ -143,8 +145,8 @@ class CouponManagementTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "couponCode" => $couponCode,
+            'cartId' => $cartId,
+            'couponCode' => $couponCode,
         ];
 
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));
@@ -243,7 +245,7 @@ class CouponManagementTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "couponCode" => $couponCode,
+            'couponCode' => $couponCode,
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);
@@ -291,7 +293,7 @@ class CouponManagementTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "couponCode" => $couponCode,
+            'couponCode' => $couponCode,
         ];
 
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));

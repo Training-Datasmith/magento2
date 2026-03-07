@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +81,7 @@ class ComposerInformationTest extends \PHPUnit\Framework\TestCase
             ['composerFactory' => $this->composerFactory]
         );
 
-        $this->assertEquals("~8.1.0", $composerInfo->getRequiredPhpVersion());
+        $this->assertEquals('~8.1.0', $composerInfo->getRequiredPhpVersion());
     }
 
     /**

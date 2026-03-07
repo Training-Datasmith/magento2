@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Event regex observer object
  */
+
 namespace Magento\Framework\Event\Observer;
 
 class Regex extends \Magento\Framework\Event\Observer

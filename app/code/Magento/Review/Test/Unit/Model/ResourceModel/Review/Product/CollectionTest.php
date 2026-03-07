@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class CollectionTest extends TestCase
                 'storeManager' => $storeManager,
                 'eavConfig' => $eavConfig,
                 'fetchStrategy' => $fetchStrategy,
-                'productLimitationFactory' => $productLimitationFactoryMock
+                'productLimitationFactory' => $productLimitationFactoryMock,
             ]
         );
     }
@@ -139,7 +140,7 @@ class CollectionTest extends TestCase
             ['rt.status_id'],
             ['rdt.title'],
             ['rdt.nickname'],
-            ['rdt.detail']
+            ['rdt.detail'],
         ];
     }
 
@@ -212,7 +213,7 @@ class CollectionTest extends TestCase
         return [
             [1, ['is' => $exprNull], ['eq' => $defaultStore], true],
             [2, ['gt' => 0], null, false],
-            [null, ['is' => $exprNull], ['neq' => $defaultStore], true]
+            [null, ['is' => $exprNull], ['neq' => $defaultStore], true],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Export\Product\Type;
 
 /**
@@ -36,6 +39,6 @@ class Simple extends \Magento\CatalogImportExport\Model\Export\Product\Type\Abst
         'has_options',
         'is_returnable',
         'required_options',
-        'quantity_and_stock_status'
+        'quantity_and_stock_status',
     ];
 }

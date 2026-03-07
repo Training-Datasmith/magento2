@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class Pager extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const STORAGE_PREFIX = 'search_result_ids';
+    public const STORAGE_PREFIX = 'search_result_ids';
 
     /**
      * Storage id

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\ResourceModel;
 
 /**
@@ -16,10 +19,10 @@ class Helper extends \Magento\Framework\DB\Helper
     /**
      * Constants to be used for DB
      */
-    const DB_MAX_PACKET_SIZE = 1048576;
+    public const DB_MAX_PACKET_SIZE = 1048576;
 
     // Maximal packet length by default in MySQL
-    const DB_MAX_PACKET_COEFFICIENT = 0.85;
+    public const DB_MAX_PACKET_COEFFICIENT = 0.85;
 
     // The coefficient of useful data from maximum packet length
 

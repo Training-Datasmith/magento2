@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Reader;
 
 use Magento\Framework\GetParameterClassTrait;
@@ -16,7 +19,7 @@ class SourceArgumentsReader
      * @deprecated
      * @see \Magento\Framework\Code\Reader\NamespaceResolver::NS_SEPARATOR
      */
-    const NS_SEPARATOR = '\\';
+    public const NS_SEPARATOR = '\\';
 
     /**
      * @var NamespaceResolver

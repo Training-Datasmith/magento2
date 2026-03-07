@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ class CustomerTokenServiceTest extends \PHPUnit\Framework\TestCase
             Customer::class,
             [
                 'email' => 'another@example.com',
-                'confirmation' => 'account_not_confirmed'
+                'confirmation' => 'account_not_confirmed',
             ],
             'customer'
         )
@@ -120,7 +122,7 @@ class CustomerTokenServiceTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'Check for empty credentials' => ['', ''],
-            'Check for null credentials' => [null, null]
+            'Check for null credentials' => [null, null],
         ];
     }
 

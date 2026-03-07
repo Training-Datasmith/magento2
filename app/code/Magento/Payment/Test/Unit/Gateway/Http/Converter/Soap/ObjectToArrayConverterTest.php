@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,11 +25,11 @@ class ObjectToArrayConverterTest extends TestCase
         $output = [
             'property' => [
                 'property3' => [
-                    'property5' => 'bla'
+                    'property5' => 'bla',
                 ],
-                'property4' => 'bla'
+                'property4' => 'bla',
             ],
-            'property2' => 'bla'
+            'property2' => 'bla',
         ];
 
         $converter = new ObjectToArrayConverter();

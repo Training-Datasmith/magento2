@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -87,7 +89,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 110 * 0.5
                     'maximalPrice' => 55,
-                ]
+                ],
             ],
 
             '
@@ -104,7 +106,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 20) + 100
                     'maximalPrice' => 165,
-                ]
+                ],
             ],
 
             '
@@ -121,7 +123,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 110 * 0.2 + 110 * 1)
                     'maximalPrice' => 121,
-                ]
+                ],
             ],
 
             '
@@ -138,7 +140,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 20 + 110 * 1)
                     'maximalPrice' => 120,
-                ]
+                ],
             ],
 
             '
@@ -155,7 +157,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 110 * 0.2) + 100
                     'maximalPrice' => 166,
-                ]
+                ],
             ],
 
             '
@@ -172,7 +174,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 2 * 20) + 100
                     'maximalPrice' => 175,
-                ]
+                ],
             ],
 
             '
@@ -189,7 +191,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 2 * 110 * 0.2 + 1 * 110)
                     'maximalPrice' => 132,
-                ]
+                ],
             ],
 
             '
@@ -207,7 +209,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     // 0.5 * (110 + 2 * 20 + 1 * 110)
                     'maximalPrice' => 130,
 
-                ]
+                ],
             ],
 
             '
@@ -224,7 +226,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 2 * 0.2 * 110) + 100
                     'maximalPrice' => 177,
-                ]
+                ],
             ],
 
             '
@@ -241,7 +243,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 10 + 1 * 40) + 100
                     'maximalPrice' => 190,
-                ]
+                ],
             ],
 
             '
@@ -258,7 +260,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.1 + 1 * 110 * 0.4 + 110 * 1)
                     'maximalPrice' => 148.5,
-                ]
+                ],
             ],
 
             '
@@ -275,7 +277,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 10 + 1 * 40 + 1 * 110)
                     'maximalPrice' => 145,
-                ]
+                ],
             ],
 
             '
@@ -292,7 +294,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.1 + 1 * 110 * 0.4) + 100
                     'maximalPrice' => 193.5,
-                ]
+                ],
             ],
 
             '
@@ -309,7 +311,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 40 + 3 * 15) + 100
                     'maximalPrice' => 197.5,
-                ]
+                ],
             ],
 
             '
@@ -326,7 +328,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 110 * 0.4 + 3 * 110 * 0.15 + 110 * 1)
                     'maximalPrice' => 156.75,
-                ]
+                ],
             ],
 
             '
@@ -343,7 +345,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 40 + 3 * 15 + 1 * 110)
                     'maximalPrice' => 152.5,
-                ]
+                ],
             ],
 
             '
@@ -360,7 +362,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 1 * 110 * 0.4 + 3 * 110 * 0.15) + 100
                     'maximalPrice' => 201.75,
-                ]
+                ],
             ],
 
             '
@@ -377,7 +379,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 15) + 100
                     'maximalPrice' => 177.5,
-                ]
+                ],
             ],
 
             '
@@ -394,7 +396,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.15 + 1 * 110)
                     'maximalPrice' => 134.75,
-                ]
+                ],
             ],
 
             '
@@ -411,7 +413,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 15 + 110 * 1)
                     'maximalPrice' => 132.5,
-                ]
+                ],
             ],
 
             '
@@ -428,7 +430,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.15) + 100
                     'maximalPrice' => 179.75,
-                ]
+                ],
             ],
 
             '
@@ -445,7 +447,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 15 + 1 * 20 + 3 * 10) + 100
                     'maximalPrice' => 202.5,
-                ]
+                ],
             ],
 
             '
@@ -462,7 +464,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.15 + 1 * 110 * 0.2 + 3 * 110 * 0.1 + 110 * 1)
                     'maximalPrice' => 162.25,
-                ]
+                ],
             ],
 
             '
@@ -479,7 +481,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 15 + 1 * 20 + 3 * 10 + 1 * 110)
                     'maximalPrice' => 157.5,
-                ]
+                ],
             ],
 
             '
@@ -496,7 +498,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
 
                     // 0.5 * (110 + 3 * 110 * 0.15 + 1 * 110 * 0.2 + 3 * 110 * 0.1) + 100
                     'maximalPrice' => 207.25,
-                ]
+                ],
             ],
         ];
     }
@@ -511,14 +513,14 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
-            ]
+                'data' => [$tierPriceData],
+            ],
         ];
     }
 
@@ -540,10 +542,10 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 20,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -554,28 +556,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -598,10 +600,10 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'price' => 20,
                         'qty' => 2,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -612,28 +614,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -656,16 +658,16 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 10,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -676,28 +678,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -720,16 +722,16 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -740,28 +742,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -784,16 +786,16 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -804,28 +806,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -848,15 +850,15 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -867,16 +869,16 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 20,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 10,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -887,28 +889,28 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -921,7 +923,7 @@ class FixedBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
     protected function addTierPrice(\Magento\Catalog\Model\Product $product, $tirePriceData)
     {
         $tierPrice = $this->tierPriceFactory->create([
-            'data' => $tirePriceData
+            'data' => $tirePriceData,
         ]);
         $product->setTierPrices([$tierPrice]);
 

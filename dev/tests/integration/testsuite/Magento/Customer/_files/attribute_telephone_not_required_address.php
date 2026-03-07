@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Model\Attribute;
 use Magento\Eav\Model\AttributeRepository;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var Attribute $model */
 $attribute = Bootstrap::getObjectManager()->create(Attribute::class);

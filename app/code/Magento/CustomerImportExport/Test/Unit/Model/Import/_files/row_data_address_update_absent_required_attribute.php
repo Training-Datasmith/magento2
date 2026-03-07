@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,5 +29,5 @@ return [
     'vat_request_id' => '',
     'vat_request_success' => '',
     '_address_default_billing_' => '1',
-    '_address_default_shipping_' => '1'
+    '_address_default_shipping_' => '1',
 ];

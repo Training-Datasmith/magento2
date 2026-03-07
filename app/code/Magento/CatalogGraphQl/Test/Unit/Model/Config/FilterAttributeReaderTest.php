@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Test\Unit\Model\Config;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as AttributeCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\CatalogGraphQl\Model\Config\FilterAttributeReader;
 use Magento\Framework\GraphQl\Schema\Type\Entity\MapperInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -85,7 +86,7 @@ class FilterAttributeReaderTest extends TestCase
         $searchableAttributeCollection->expects(self::once())
             ->method('getItems')
             ->willReturn(array_filter([21 => $searchableAttribute]));
-        
+
         $callCount = 0;
         $this->collectionFactoryMock->expects(self::exactly(2))
             ->method('create')

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class FrontendStorageManagerTest extends TestCase
             FrontendStorageManager::class,
             [
                 'context' => $this->contextMock,
-                'storageConfigurationPool' => $this->frontendStorageConfigurationPoolMock
+                'storageConfigurationPool' => $this->frontendStorageConfigurationPoolMock,
             ]
         );
     }
@@ -51,12 +52,12 @@ class FrontendStorageManagerTest extends TestCase
             'first_key' => [
                 'first' => 'data_before',
             ],
-            'second_key' => []
+            'second_key' => [],
         ];
         $this->model->setData('configuration', $configuration);
         $this->frontendStorageConfigurationPoolMock->expects($this->exactly(2))
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['first_key'] => $dynamicStorage,
                 ['second_key'] => null
             });
@@ -73,7 +74,7 @@ class FrontendStorageManagerTest extends TestCase
                 ],
                 'second_key' => [
                     'allowToSendRequest' => null,
-                ]
+                ],
             ],
             json_decode($this->model->getConfigurationJson(), true)
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\ProductLink;
 
+use Magento\Catalog\Api\Data\ProductLinkExtensionFactory;
+use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
 use Magento\Catalog\Model\ProductLink\Data\ListCriteria;
 use Magento\Catalog\Model\ProductLink\Data\ListResult;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SimpleDataObjectConverter;
-use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
-use Magento\Catalog\Api\Data\ProductLinkExtensionFactory;
 use Magento\Framework\Exception\InputException;
 
 /**

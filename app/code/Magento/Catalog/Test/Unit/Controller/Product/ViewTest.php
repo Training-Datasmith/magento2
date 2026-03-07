@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,12 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Product;
 
-use Magento\Catalog\Helper\Product;
-use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\UrlInterface;
 use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Controller\Product\View;
+use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Helper\Product\View as ViewHelper;
 use Magento\Catalog\Model\Design;
 use Magento\Catalog\Model\ProductRepository;
@@ -20,9 +19,11 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\ForwardFactory;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\DataObject;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\Store;

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Locale\ResolverInterface;
 use Magento\Reports\Model\ResourceModel\Product\Sold\Collection\Initial;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

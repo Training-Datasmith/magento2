@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Usps\Model\UspsPaymentAuthToken;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
@@ -69,9 +69,9 @@ class UspsPaymentAuthTokenTest extends TestCase
                     'roleName' => 'LABEL_OWNER',
                     'CRID' => $accountInfo['CRID'],
                     'MID' => $accountInfo['MID'],
-                    'manifestMID' => $accountInfo['manifestMID']
-                ]
-            ]
+                    'manifestMID' => $accountInfo['manifestMID'],
+                ],
+            ],
         ]);
         $expectedResult = 'payment-authorization-token';
         $headers = [
@@ -186,8 +186,8 @@ class UspsPaymentAuthTokenTest extends TestCase
                     'MID' => '789012',
                     'manifestMID' => '345678',
                     'accountNumber' => '901234',
-                    'accountType' => 'EPS'
-                ]
+                    'accountType' => 'EPS',
+                ],
             ],
             [
                 'token' => 'test_token',
@@ -197,9 +197,9 @@ class UspsPaymentAuthTokenTest extends TestCase
                     'MID' => '429012',
                     'manifestMID' => '345678',
                     'accountNumber' => '901234',
-                    'accountType' => 'PERMIT'
-                ]
-            ]
+                    'accountType' => 'PERMIT',
+                ],
+            ],
         ];
     }
 

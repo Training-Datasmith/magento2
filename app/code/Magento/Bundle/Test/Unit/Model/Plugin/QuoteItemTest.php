@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,10 +44,10 @@ class QuoteItemTest extends TestCase
     protected function setUp(): void
     {
         $this->orderItemMock = $this->createPartialMock(Item::class, [
-            'getProductOptions', 'setProductOptions'
+            'getProductOptions', 'setProductOptions',
         ]);
         $this->quoteItemMock = $this->createPartialMock(AbstractItem::class, [
-            'getProduct', 'getQuote', 'getAddress', 'getOptionByCode'
+            'getProduct', 'getQuote', 'getAddress', 'getOptionByCode',
         ]);
         $this->subjectMock = $this->createMock(ToOrderItem::class);
         $this->productMock = $this->createMock(Product::class);
@@ -58,7 +59,7 @@ class QuoteItemTest extends TestCase
         $attributeValue = 'test_value';
         $productOptions = [
             'option_1' => 'value_1',
-            'option_2' => 'value_2'
+            'option_2' => 'value_2',
         ];
         $expectedOptions = $productOptions + ['bundle_selection_attributes' => $attributeValue];
 

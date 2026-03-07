@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Button;
 
 /**
@@ -22,7 +25,7 @@ class CreateCategory extends Generic
                 'mage-init' => ['button' => ['event' => 'save']],
                 'form-role' => 'save',
             ],
-            'sort_order' => 10
+            'sort_order' => 10,
         ];
     }
 }

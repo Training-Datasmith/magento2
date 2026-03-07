@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -23,10 +25,10 @@ use Magento\Weee\Helper\Data;
 class Weee implements ProductRenderCollectorInterface
 {
     /** Weee attribute key */
-    const KEY = "weee_attributes";
+    public const KEY = 'weee_attributes';
 
     /** Wee adjustment key */
-    const KEY_ADJUSTMENT = "weee_adjustment";
+    public const KEY_ADJUSTMENT = 'weee_adjustment';
 
     /**
      * @var Data

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Catalog\Model\Product\Attribute\DataProvider;
 
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
-use Magento\TestFramework\Eav\Model\Attribute\DataProvider\AbstractBaseAttributeData;
-use Magento\Store\Model\Store;
 use Magento\Catalog\Model\Product\Attribute\Backend\Price as BackendPrice;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Store\Model\Store;
+use Magento\TestFramework\Eav\Model\Attribute\DataProvider\AbstractBaseAttributeData;
 
 /**
  * Product attribute data for attribute with input type weee.
@@ -34,8 +35,8 @@ class Decimal extends AbstractBaseAttributeData
     public static function getAttributeData(): array
     {
         $result = parent::getAttributeData();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }
@@ -46,9 +47,9 @@ class Decimal extends AbstractBaseAttributeData
     public static function getAttributeDataWithCheckArray(): array
     {
         $result = parent::getAttributeDataWithCheckArray();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
-        unset($result["{static::getFrontendInput()}_with_store_view_scope"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
+        unset($result['{static::getFrontendInput()}_with_store_view_scope']);
 
         return $result;
     }

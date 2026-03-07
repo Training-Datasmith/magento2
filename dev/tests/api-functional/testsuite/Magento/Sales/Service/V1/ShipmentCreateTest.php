@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,8 +94,8 @@ class ShipmentCreateTest extends WebapiAbstract
                     'created_at' => null,
                     'updated_at' => null,
                     'qty' => null,
-                    'weight' => null
-                ]
+                    'weight' => null,
+                ],
             ],
             'items' => $items,
             'comments' => [
@@ -102,8 +103,8 @@ class ShipmentCreateTest extends WebapiAbstract
                     'comment' => 'Shipment-related comment.',
                     'is_customer_notified' => null,
                     'is_visible_on_front' => null,
-                    'parent_id' => null
-                ]
+                    'parent_id' => null,
+                ],
             ],
         ];
         $result = $this->_webApiCall($serviceInfo, ['entity' => $data]);

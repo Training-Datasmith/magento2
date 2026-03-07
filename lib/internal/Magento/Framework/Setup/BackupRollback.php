@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -263,7 +265,7 @@ class BackupRollback
             $this->directoryList->getRoot() . '/.grunt',
             $this->directoryList->getRoot() . '/.idea',
             $this->directoryList->getRoot() . '/.svn',
-            $this->directoryList->getRoot() . '/.git'
+            $this->directoryList->getRoot() . '/.git',
         ];
     }
 

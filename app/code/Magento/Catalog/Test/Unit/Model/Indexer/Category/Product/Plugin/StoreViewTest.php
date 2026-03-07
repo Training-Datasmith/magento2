@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,13 +60,13 @@ class StoreViewTest extends TestCase
             [
                 'isObjectNew',
                 'getId',
-                'dataHasChangedFor'
+                'dataHasChangedFor',
             ]
         );
         $this->tableMaintainerMock = $this->createPartialMock(
             TableMaintainer::class,
             [
-                'createTablesForStore'
+                'createTablesForStore',
             ]
         );
 

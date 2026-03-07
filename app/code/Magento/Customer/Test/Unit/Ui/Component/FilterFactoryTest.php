@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -83,8 +84,8 @@ class FilterFactoryTest extends TestCase
             'options' => [
                 [
                     'label' => 'Label',
-                    'value' => 'Value'
-                ]
+                    'value' => 'Value',
+                ],
             ],
             'is_used_in_grid' => true,
             'is_visible_in_grid' => true,

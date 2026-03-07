@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class IdentityTest extends TestCase
     public function testFromDefinition()
     {
         $data = [
-            'extra' => 'NOT NULL AUTO_INCREMENT'
+            'extra' => 'NOT NULL AUTO_INCREMENT',
         ];
         $expectedData = $data;
         $expectedData['identity'] = true;

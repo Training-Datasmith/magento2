@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Oauth\Consumer\Validator;
 
 use Laminas\Validator\StringLength;
@@ -28,7 +31,7 @@ class KeyLength extends StringLength
      * @var array
      */
     protected $messageTemplates = [
-        self::INVALID   => "Invalid type given for %name%. String expected",
+        self::INVALID   => 'Invalid type given for %name%. String expected',
         self::TOO_SHORT => "%name% '%value%' is less than %min% characters long",
         self::TOO_LONG  => "%name% '%value%' is more than %max% characters long",
     ];

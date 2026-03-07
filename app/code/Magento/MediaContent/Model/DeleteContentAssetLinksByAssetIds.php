@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\MediaContent\Model;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\MediaContentApi\Api\DeleteContentAssetLinksByAssetIdsInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\MediaContentApi\Api\DeleteContentAssetLinksByAssetIdsInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -53,7 +54,7 @@ class DeleteContentAssetLinksByAssetIds implements DeleteContentAssetLinksByAsse
             $this->resourceConnection->getConnection()->delete(
                 $this->resourceConnection->getTableName(self::MEDIA_CONTENT_ASSET_TABLE_NAME),
                 [
-                    self::ASSET_ID . ' IN (?)' => $commaSeparatedAssetIds
+                    self::ASSET_ID . ' IN (?)' => $commaSeparatedAssetIds,
                  ]
             );
         } catch (\Exception $exception) {
@@ -61,7 +62,7 @@ class DeleteContentAssetLinksByAssetIds implements DeleteContentAssetLinksByAsse
             $message = __(
                 'Could not remove media content relations for assets ids: %ids',
                 [
-                    'ids' => $commaSeparatedAssetIds
+                    'ids' => $commaSeparatedAssetIds,
                 ]
             );
             throw new CouldNotDeleteException($message, $exception);

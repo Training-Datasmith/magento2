@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 
 namespace Magento\StoreGraphQl\Controller\HttpHeaderProcessor;
 
-use Magento\GraphQl\Controller\HttpHeaderProcessorInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
-use Magento\Store\Api\StoreCookieManagerInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Locale\ResolverInterface;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\Locale\ResolverInterface;
+use Magento\GraphQl\Controller\HttpHeaderProcessorInterface;
+use Magento\Store\Api\StoreCookieManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Process the "Store" header entry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class TierPriceTest extends TestCase
                     null,
                     'children',
                     ArrayManager::DEFAULT_PATH_DELIMITER,
-                    $tierPricePath
+                    $tierPricePath,
                 ],
                 [
                     ProductAttributeInterface::CODE_TIER_PRICE_FIELD_PRICE,
@@ -108,7 +109,7 @@ class TierPriceTest extends TestCase
                     $tierPricePath,
                     null,
                     ArrayManager::DEFAULT_PATH_DELIMITER,
-                    $pricePath
+                    $pricePath,
                 ],
             ]);
         $this->arrayManager
@@ -129,7 +130,7 @@ class TierPriceTest extends TestCase
         $this->arrayManager
             ->expects($this->once())
             ->method('merge')
-            ->with($priceWrapperPath, $meta, $this->callback(fn($arg) => is_array($arg)))
+            ->with($priceWrapperPath, $meta, $this->callback(fn ($arg) => is_array($arg)))
             ->willReturnArgument(2);
 
         $modifiedMeta = $this->tierPrice->modifyMeta($meta);

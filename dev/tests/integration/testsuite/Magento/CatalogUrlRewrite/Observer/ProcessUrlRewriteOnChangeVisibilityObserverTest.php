@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Observer;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -82,19 +85,19 @@ class ProcessUrlRewriteOnChangeVisibilityObserverTest extends \PHPUnit\Framework
 
         $expected = [
             [
-                'request_path' => "product-1.html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => 'product-1.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
                 'store_id' => $firstStore,
             ],
             [
-                'request_path' => "product-1.html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => 'product-1.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
                 'store_id' => $testStore->getId(),
-            ]
+            ],
         ];
 
         $actual = $this->getActualResults($productFilter);
@@ -141,25 +144,25 @@ class ProcessUrlRewriteOnChangeVisibilityObserverTest extends \PHPUnit\Framework
             'catalog_product_attribute_update_before',
             [
                 'attributes_data' => [ ProductInterface::VISIBILITY => Visibility::VISIBILITY_BOTH ],
-                'product_ids' => [$product->getId()]
+                'product_ids' => [$product->getId()],
             ]
         );
 
         $expected = [
             [
-                'request_path' => "product-1.html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => 'product-1.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
                 'store_id' => '1',
             ],
             [
-                'request_path' => "product-1.html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => 'product-1.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
                 'store_id' => $testStore->getId(),
-            ]
+            ],
         ];
 
         $actual = $this->getActualResults($productFilter);
@@ -204,38 +207,38 @@ class ProcessUrlRewriteOnChangeVisibilityObserverTest extends \PHPUnit\Framework
             [
                 'attributes_data' => [ ProductInterface::VISIBILITY => Visibility::VISIBILITY_BOTH ],
                 'product_ids' => [$product->getId()],
-                'store_id' => Store::DEFAULT_STORE_ID
+                'store_id' => Store::DEFAULT_STORE_ID,
             ]
         );
 
         $expected = [
             [
-                'request_path' => $product->getUrlKey() . ".html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => $product->getUrlKey() . '.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
-                'store_id' => (String) Store::DISTRO_STORE_ID
+                'store_id' => (string) Store::DISTRO_STORE_ID,
             ],
             [
-                'request_path' => $category->getUrlKey() . '/' . $product->getUrlKey() . ".html",
-                'target_path' => "catalog/product/view/id/" . $product->getId() . '/category/' . $category->getId(),
+                'request_path' => $category->getUrlKey() . '/' . $product->getUrlKey() . '.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId() . '/category/' . $category->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
-                'store_id' => (String) Store::DISTRO_STORE_ID
+                'store_id' => (string) Store::DISTRO_STORE_ID,
             ],
             [
-                'request_path' => $product->getUrlKey() . ".html",
-                'target_path' => "catalog/product/view/id/" . $product->getId(),
+                'request_path' => $product->getUrlKey() . '.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
-                'store_id' => (String) $store->getId()
+                'store_id' => (string) $store->getId(),
             ],
             [
-                'request_path' => $category->getUrlKey() . '/' . $product->getUrlKey() . ".html",
-                'target_path' => "catalog/product/view/id/" . $product->getId() . '/category/' . $category->getId(),
+                'request_path' => $category->getUrlKey() . '/' . $product->getUrlKey() . '.html',
+                'target_path' => 'catalog/product/view/id/' . $product->getId() . '/category/' . $category->getId(),
                 'is_auto_generated' => 1,
                 'redirect_type' => 0,
-                'store_id' => (String) $store->getId()
+                'store_id' => (string) $store->getId(),
             ],
         ];
 
@@ -264,7 +267,7 @@ class ProcessUrlRewriteOnChangeVisibilityObserverTest extends \PHPUnit\Framework
             'catalog_product_attribute_update_before',
             [
                 'attributes_data' => [ ProductInterface::VISIBILITY => Visibility::VISIBILITY_BOTH ],
-                'product_ids' => $productIds
+                'product_ids' => $productIds,
             ]
         );
     }
@@ -284,7 +287,7 @@ class ProcessUrlRewriteOnChangeVisibilityObserverTest extends \PHPUnit\Framework
                 'target_path' => $url->getTargetPath(),
                 'is_auto_generated' => (int)$url->getIsAutogenerated(),
                 'redirect_type' => $url->getRedirectType(),
-                'store_id' => $url->getStoreId()
+                'store_id' => $url->getStoreId(),
             ];
         }
         return $actualResults;

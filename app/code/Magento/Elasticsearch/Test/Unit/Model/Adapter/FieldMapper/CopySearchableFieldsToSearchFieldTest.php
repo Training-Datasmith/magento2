@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Elasticsearch\Test\Unit\Model\Adapter\FieldMapper;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\CopySearchableFieldsToSearchField;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test mapping preprocessor CopySearchableFieldsToSearchField
@@ -41,22 +42,22 @@ class CopySearchableFieldsToSearchFieldTest extends TestCase
         $model = new CopySearchableFieldsToSearchField();
         $mappingBefore = [
             'sku' => [
-                'type' => 'text'
+                'type' => 'text',
             ],
             'name' => [
-                'type' => 'text'
-            ]
+                'type' => 'text',
+            ],
         ];
         $mappingAfter = [
             'sku' => [
                 'type' => 'text',
                 'copy_to' => [
-                    '_search'
-                ]
+                    '_search',
+                ],
             ],
             'name' => [
-                'type' => 'text'
-            ]
+                'type' => 'text',
+            ],
         ];
         $model->addExclude(['name']);
         $this->assertEquals($mappingAfter, $model->process($mappingBefore));
@@ -71,86 +72,86 @@ class CopySearchableFieldsToSearchFieldTest extends TestCase
             'index text field should be copied' => [
                 [
                     'name' => [
-                        'type' => 'text'
-                    ]
+                        'type' => 'text',
+                    ],
                 ],
                 [
                     'name' => [
                         'type' => 'text',
                         'copy_to' => [
-                            '_search'
-                        ]
-                    ]
-                ]
+                            '_search',
+                        ],
+                    ],
+                ],
             ],
             'non-index text field should not be copied' => [
                 [
                     'name' => [
                         'type' => 'text',
-                        'index' => false
-                    ]
+                        'index' => false,
+                    ],
                 ],
                 [
                     'name' => [
                         'type' => 'text',
-                        'index' => false
-                    ]
-                ]
+                        'index' => false,
+                    ],
+                ],
             ],
             'index keyword field should be copied' => [
                 [
                     'material' => [
-                        'type' => 'keyword'
-                    ]
+                        'type' => 'keyword',
+                    ],
                 ],
                 [
                     'material' => [
                         'type' => 'keyword',
                         'copy_to' => [
-                            '_search'
-                        ]
-                    ]
-                ]
+                            '_search',
+                        ],
+                    ],
+                ],
             ],
             'non-index keyword field should not be copied' => [
                 [
                     'country_of_manufacture' => [
                         'type' => 'keyword',
-                        'index' => false
-                    ]
+                        'index' => false,
+                    ],
                 ],
                 [
                     'country_of_manufacture' => [
                         'type' => 'keyword',
-                        'index' => false
-                    ]
-                ]
+                        'index' => false,
+                    ],
+                ],
             ],
             'index integer field should not be copied' => [
                 [
                     'sale' => [
                         'type' => 'integer',
-                    ]
+                    ],
                 ],
                 [
                     'sale' => [
                         'type' => 'integer',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'non-index integer field should not be copied' => [
                 [
                     'position_category_1' => [
                         'type' => 'integer',
-                        'index' => false
-                    ]
+                        'index' => false,
+                    ],
                 ],
                 [
                     'position_category_1' => [
                         'type' => 'integer',
-                        'index' => false
-                    ]
-                ]
+                        'index' => false,
+                    ],
+                ],
             ],
         ];
     }

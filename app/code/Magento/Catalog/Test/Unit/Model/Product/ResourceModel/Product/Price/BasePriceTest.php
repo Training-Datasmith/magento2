@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class BasePriceTest extends TestCase
             ['store_id' => 0, 'row_id' => 1, 'value' => 15, 'attribute_id' => 5],
             ['store_id' => 0, 'row_id' => 2, 'value' => 20, 'attribute_id' => 5],
             ['store_id' => 1, 'row_id' => 1, 'value' => 15, 'attribute_id' => 5],
-            ['store_id' => 1, 'row_id' => 2, 'value' => 20, 'attribute_id' => 5]
+            ['store_id' => 1, 'row_id' => 2, 'value' => 20, 'attribute_id' => 5],
         ];
 
         $connection = $this->createMock(AdapterInterface::class);
@@ -97,7 +98,7 @@ class BasePriceTest extends TestCase
             ->method('fetchAll')
             ->willReturn([
                 ['value_id' => 1, 'store_id' => 1, 'row_id' => 1, 'attribute_id' => 5],
-                ['value_id' => 2, 'store_id' => 2, 'row_id' => 2, 'attribute_id' => 5]
+                ['value_id' => 2, 'store_id' => 2, 'row_id' => 2, 'attribute_id' => 5],
             ]);
 
         $this->metadataPool->expects($this->atLeastOnce())
@@ -117,7 +118,7 @@ class BasePriceTest extends TestCase
         $this->expectException(CouldNotSaveException::class);
 
         $priceBunches = [
-            ['store_id' => 1, 'row_id' => 1, 'value' => 15, 'attribute_id' => 5]
+            ['store_id' => 1, 'row_id' => 1, 'value' => 15, 'attribute_id' => 5],
         ];
 
         $connection = $this->createMock(AdapterInterface::class);
@@ -151,7 +152,7 @@ class BasePriceTest extends TestCase
             ->method('fetchAll')
             ->willReturn([
                 ['value_id' => 1, 'store_id' => 1, 'row_id' => 1, 'attribute_id' => 5],
-                ['value_id' => 2, 'store_id' => 2, 'row_id' => 2, 'attribute_id' => 5]
+                ['value_id' => 2, 'store_id' => 2, 'row_id' => 2, 'attribute_id' => 5],
             ]);
 
         $this->metadataPool->expects($this->atLeastOnce())

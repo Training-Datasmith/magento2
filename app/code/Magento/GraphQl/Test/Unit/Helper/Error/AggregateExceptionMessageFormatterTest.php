@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -118,7 +119,7 @@ class AggregateExceptionMessageFormatterTest extends TestCase
         );
         $this->assertInstanceOf(GraphQlInputException::class, $exception);
         $this->assertSame($exceptionCode, $exception->getCode());
-        $this->assertSame($messagePrefix . ": " . $exceptionMessage, $exception->getMessage());
+        $this->assertSame($messagePrefix . ': ' . $exceptionMessage, $exception->getMessage());
     }
 
     /**

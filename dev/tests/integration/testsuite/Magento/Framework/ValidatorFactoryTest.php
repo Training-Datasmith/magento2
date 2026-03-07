@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for Magento\Framework\ValidatorFactory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 class ValidatorFactoryTest extends \PHPUnit\Framework\TestCase

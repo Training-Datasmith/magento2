@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,14 +23,14 @@ class License
      *
      * @var string
      */
-    const DEFAULT_LICENSE_FILENAME = 'LICENSE.txt';
+    public const DEFAULT_LICENSE_FILENAME = 'LICENSE.txt';
 
     /**
      * License File location
      *
      * @var string
      */
-    const LICENSE_FILENAME = 'LICENSE_EE.txt';
+    public const LICENSE_FILENAME = 'LICENSE_EE.txt';
 
     /**
      * Directory that contains license file

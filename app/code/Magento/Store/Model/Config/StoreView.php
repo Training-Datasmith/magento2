@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config;
 
 use Magento\Directory\Helper\Data;
@@ -68,7 +71,7 @@ class StoreView
                     Data::XML_PATH_DEFAULT_LOCALE,
                     ScopeInterface::SCOPE_STORE,
                     $code
-                )
+                ),
             ];
         }
 

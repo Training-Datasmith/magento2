@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow;
 
 use Magento\Payment\Api\PaymentVerificationInterface;
@@ -34,7 +37,7 @@ class AvsEmsCodeMapper implements PaymentVerificationInterface
         'YY' => 'Y',
         'NY' => 'A',
         'YN' => 'Z',
-        'NN' => 'N'
+        'NN' => 'N',
     ];
 
     /**

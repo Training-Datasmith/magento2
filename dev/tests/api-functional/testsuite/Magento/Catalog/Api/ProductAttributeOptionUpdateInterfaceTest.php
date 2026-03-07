@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -256,7 +258,7 @@ class ProductAttributeOptionUpdateInterfaceTest extends WebapiAbstract
 
         $newOptionData = [
             AttributeOptionInterface::LABEL => 'New Option',
-            AttributeOptionInterface::VALUE => 'new_option_value'
+            AttributeOptionInterface::VALUE => 'new_option_value',
         ];
         $newOptionId = (int)$this->webApiCallAttributeOptions(
             $testAttributeCode,
@@ -271,7 +273,7 @@ class ProductAttributeOptionUpdateInterfaceTest extends WebapiAbstract
         $newOptionId++;
         $editOptionData = [
             AttributeOptionInterface::LABEL => 'New Option Changed',
-            AttributeOptionInterface::VALUE => $newOptionId
+            AttributeOptionInterface::VALUE => $newOptionId,
         ];
         $this->webApiCallAttributeOptions(
             $testAttributeCode,

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Form select element
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\App\ObjectManager;
@@ -135,7 +138,7 @@ class Multiselect extends AbstractElement
             'tabindex',
             'data-form-part',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 

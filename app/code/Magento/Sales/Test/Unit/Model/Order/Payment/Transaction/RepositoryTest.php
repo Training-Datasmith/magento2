@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class RepositoryTest extends TestCase
                 'sortOrderBuilder' => $this->sortOrderBuilder,
                 'metaData' => $this->metaData,
                 'entityStorageFactory' => $entityStorageFactory,
-                'collectionProcessor' => $this->collectionProcessor
+                'collectionProcessor' => $this->collectionProcessor,
             ]
         );
     }
@@ -148,7 +149,7 @@ class RepositoryTest extends TestCase
      */
     public function testCreate(): void
     {
-        $expected = "expect";
+        $expected = 'expect';
         $this->metaData->expects($this->once())->method('getNewInstance')->willReturn($expected);
         $this->assertEquals($expected, $this->repository->create());
     }
@@ -234,7 +235,7 @@ class RepositoryTest extends TestCase
     public function testGetExistInStorage(): void
     {
         $transactionId = 12;
-        $transaction = "transaction";
+        $transaction = 'transaction';
         $this->entityStorage->method('has')->with($transactionId)->willReturn(true);
         $this->metaData->expects($this->never())->method('getNewInstance')->willReturn($transaction);
         $this->metaData->expects($this->never())->method('getMapper')->willReturn($this->transactionResource);
@@ -261,7 +262,7 @@ class RepositoryTest extends TestCase
      */
     public function testGetByTransactionId(): void
     {
-        $transactionId = "100-refund";
+        $transactionId = '100-refund';
         $paymentId = 1;
         $orderId = 3;
         $cacheStorage = 'txn_id';
@@ -290,7 +291,7 @@ class RepositoryTest extends TestCase
      */
     public function testGetByTransactionIdNotFound(): void
     {
-        $transactionId = "100-refund";
+        $transactionId = '100-refund';
         $paymentId = 1;
         $orderId = 3;
         $cacheStorage = 'txn_id';
@@ -318,11 +319,11 @@ class RepositoryTest extends TestCase
      */
     public function testGetByTransactionIdFromStorage(): void
     {
-        $transactionId = "100-refund";
+        $transactionId = '100-refund';
         $paymentId = 1;
         $orderId = 3;
         $cacheStorage = 'txn_id';
-        $transaction = "transaction";
+        $transaction = 'transaction';
         $identityFieldsForCache = [$transactionId, $paymentId, $orderId];
         $this->entityStorage->method('getByIdentifyingFields')
             ->with($identityFieldsForCache, $cacheStorage)
@@ -360,8 +361,8 @@ class RepositoryTest extends TestCase
             });
         $this->filterBuilder->expects($this->exactly(2))->method('create')->willReturn($this->filter);
 
-        $transactionIdSort = "TransactionIdSort";
-        $createdAtSort = "createdAtSort";
+        $transactionIdSort = 'TransactionIdSort';
+        $createdAtSort = 'createdAtSort';
         $this->sortOrderBuilder->expects($this->exactly(2))->method('setField')
             ->willReturnCallback(function ($arg1) {
                 if ($arg1 == 'transaction_id' || $arg1 ==  'created_at') {
@@ -409,7 +410,7 @@ class RepositoryTest extends TestCase
         $transactionType = Transaction::TYPE_AUTH;
         $paymentId = 1;
         $cacheStorage = 'txn_type';
-        $transaction = "transaction";
+        $transaction = 'transaction';
         $identityFieldsForCache = [$transactionType, $paymentId];
         $this->entityStorage->method('getByIdentifyingFields')
             ->with($identityFieldsForCache, $cacheStorage)

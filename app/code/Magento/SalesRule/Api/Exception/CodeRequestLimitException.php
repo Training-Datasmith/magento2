@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,5 +18,4 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class CodeRequestLimitException extends LocalizedException
 {
-
 }

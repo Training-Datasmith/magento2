@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Shopcart;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Quote\Model\Quote;
+use Magento\TestFramework\Helper\Bootstrap;
 
 abstract class GridTestAbstract extends \PHPUnit\Framework\TestCase
 {

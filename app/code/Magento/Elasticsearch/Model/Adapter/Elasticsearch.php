@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@ namespace Magento\Elasticsearch\Model\Adapter;
 use Elasticsearch\Common\Exceptions\Missing404Exception;
 use Exception;
 use LogicException;
+use Magento\AdvancedSearch\Helper\Data;
 use Magento\AdvancedSearch\Model\Client\ClientInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\StaticField;
@@ -20,7 +23,6 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\ArrayManager;
 use Psr\Log\LoggerInterface;
-use Magento\AdvancedSearch\Helper\Data;
 
 /**
  * Elasticsearch adapter
@@ -124,7 +126,7 @@ class Elasticsearch
      * @var array
      */
     private $responseErrorExceptionList = [
-        'elasticsearchMissing404' => Missing404Exception::class
+        'elasticsearchMissing404' => Missing404Exception::class,
     ];
 
     /**
@@ -353,7 +355,7 @@ class Elasticsearch
         do {
             $newIndexName = $indexPattern . (++$version);
             if ($this->client->indexExists($newIndexName)) {
-                $deleteQueue[]= $newIndexName;
+                $deleteQueue[] = $newIndexName;
                 $indexExists = true;
             } else {
                 $indexExists = false;
@@ -432,16 +434,16 @@ class Elasticsearch
                 $bulkArray['body'][] = [
                     $action => [
                         '_id' => $id,
-                        '_index' => $indexName
-                    ]
+                        '_index' => $indexName,
+                    ],
                 ];
             } else {
                 $bulkArray['body'][] = [
                     $action => [
                         '_id' => $id,
                         '_type' => $this->clientConfig->getEntityType(),
-                        '_index' => $indexName
-                    ]
+                        '_index' => $indexName,
+                    ],
                 ];
             }
             if ($action == self::BULK_ACTION_INDEX) {
@@ -633,7 +635,7 @@ class Elasticsearch
                 'websiteId' => $storeId,
                 // this parameter is introduced to replace 'websiteId' which name does not reflect
                 // the value assigned to it
-                'storeId' => $storeId
+                'storeId' => $storeId,
             ]
         );
         $settings['index']['mapping']['total_fields']['limit'] = $this->getMappingTotalFieldsLimit($allAttributeTypes);

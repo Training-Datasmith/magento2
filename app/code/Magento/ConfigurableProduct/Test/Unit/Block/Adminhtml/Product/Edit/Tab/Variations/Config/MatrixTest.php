@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Block\Adminhtml\Product\Edit\Tab\Variations\Config;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\Block\Template\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Helper\Image;
@@ -27,6 +27,7 @@ use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Store\Model\Store;
 use Magento\Ui\Block\Component\StepsWizard;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -128,7 +129,7 @@ class MatrixTest extends TestCase
 
         $data = [
             'jsonHelper' => $this->createMock(JsonHelper::class),
-            'directoryHelper' => $this->createMock(DirectoryHelper::class)
+            'directoryHelper' => $this->createMock(DirectoryHelper::class),
         ];
         $matrix = new Matrix(
             $this->context,
@@ -158,8 +159,8 @@ class MatrixTest extends TestCase
         $wizardName = 'variation-steps-wizard';
         $blockConfig = [
             'config' => [
-                'nameStepWizard' => $wizardName
-            ]
+                'nameStepWizard' => $wizardName,
+            ],
         ];
 
         $layout = $this->createMock(LayoutInterface::class);
@@ -172,7 +173,7 @@ class MatrixTest extends TestCase
 
         $data = [
             'jsonHelper' => $this->createMock(JsonHelper::class),
-            'directoryHelper' => $this->createMock(DirectoryHelper::class)
+            'directoryHelper' => $this->createMock(DirectoryHelper::class),
         ];
         $matrix = new Matrix(
             $this->context,
@@ -257,8 +258,8 @@ class MatrixTest extends TestCase
                                 'product_super_attribute_id' => '10',
                                 'default_label' => 'attribute_label',
                                 'store_label' => 'attribute_label',
-                                'use_default_value' => true
-                            ]
+                                'use_default_value' => true,
+                            ],
                         ],
                         'attribute_id' => '1',
                         'attribute_code' => 'attribute_code',
@@ -267,10 +268,10 @@ class MatrixTest extends TestCase
                         'options' => [
                             0 => [
                                 'label' => 'attribute_label',
-                                'value' => 'attribute_value'
-                            ]
-                        ]
-                    ]
+                                'value' => 'attribute_value',
+                            ],
+                        ],
+                    ],
                 ]
             );
         $image = $this->createMock(Image::class);
@@ -284,7 +285,7 @@ class MatrixTest extends TestCase
 
         $data = [
             'jsonHelper' => $this->createMock(JsonHelper::class),
-            'directoryHelper' => $this->createMock(DirectoryHelper::class)
+            'directoryHelper' => $this->createMock(DirectoryHelper::class),
         ];
         $matrix = new Matrix(
             $this->context,
@@ -301,7 +302,7 @@ class MatrixTest extends TestCase
             0 => [
                 'productId' => 1,
                 'images' => [
-                    'preview' => 'image_url'
+                    'preview' => 'image_url',
                 ],
                 'sku' => 'sku',
                 'name' => 'name',
@@ -314,13 +315,13 @@ class MatrixTest extends TestCase
                         'id' => 'attribute_value',
                         'label' => 'attribute_label',
                         'value' => 'attribute_value',
-                        '__disableTmpl' => true
-                    ]
+                        '__disableTmpl' => true,
+                    ],
                 ],
                 'weight' => 1,
                 'status' => 1,
-                '__disableTmpl' => true
-            ]
+                '__disableTmpl' => true,
+            ],
         ];
         $this->assertSame($expected, $matrix->getProductMatrix());
     }

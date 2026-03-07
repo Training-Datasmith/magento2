@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\SalesRule\Model\Coupon;
-use Magento\SalesRule\Model\RuleRepository;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
@@ -17,7 +19,7 @@ class RuleRepositoryTest extends WebapiAbstract
 {
     public const SERVICE_NAME = 'salesRuleRuleRepositoryV1';
     public const RESOURCE_PATH = '/V1/salesRules';
-    public const SERVICE_VERSION = "V1";
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -55,8 +57,8 @@ class RuleRepositoryTest extends WebapiAbstract
                         'condition_type' => \Magento\SalesRule\Model\Rule\Condition\Address::class,
                         'operator' => '>',
                         'attribute_name' => 'base_subtotal',
-                        'value' => 800
-                    ]
+                        'value' => 800,
+                    ],
                 ],
                 'aggregator_type' => 'all',
                 'operator' => null,
@@ -64,13 +66,13 @@ class RuleRepositoryTest extends WebapiAbstract
             ],
             'action_condition' => [
                 'condition_type' => \Magento\SalesRule\Model\Rule\Condition\Product\Combine::class,
-                "conditions" => [
+                'conditions' => [
                     [
                         'condition_type' => \Magento\SalesRule\Model\Rule\Condition\Product::class,
                         'operator' => '==',
                         'attribute_name' => 'attribute_set_id',
                         'value' => '4',
-                    ]
+                    ],
                 ],
                 'aggregator_type' => 'all',
                 'operator' => null,
@@ -279,7 +281,7 @@ class RuleRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

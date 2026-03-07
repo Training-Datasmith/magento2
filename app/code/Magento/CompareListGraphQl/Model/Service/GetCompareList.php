@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class GetCompareList
             'uid' => $maskedListId,
             'items' => $comparableItems,
             'attributes' => $this->comparableAttributesService->execute($listId, $context),
-            'item_count' => count($comparableItems)
+            'item_count' => count($comparableItems),
         ];
     }
 }

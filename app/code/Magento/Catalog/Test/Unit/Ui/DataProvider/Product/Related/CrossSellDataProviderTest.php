@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class CrossSellDataProviderTest extends AbstractDataProviderTestCase
             'addFieldStrategies' => [],
             'addFilterStrategies' => [],
             'meta' => [],
-            'data' => []
+            'data' => [],
         ]);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\Model\Category;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
+use Magento\Framework\GraphQl\Query\Uid;
 
 /**
  * Parent Category UID processor class for category uid and category id arguments

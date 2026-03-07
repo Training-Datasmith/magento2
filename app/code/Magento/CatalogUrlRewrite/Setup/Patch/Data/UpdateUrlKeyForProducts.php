@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class UpdateUrlKeyForProducts implements DataPatchInterface, PatchVersionInterfa
      */
     public static function getVersion()
     {
-        return "2.4.0";
+        return '2.4.0';
     }
 
     /**

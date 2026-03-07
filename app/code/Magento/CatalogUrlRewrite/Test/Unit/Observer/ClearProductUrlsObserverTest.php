@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Observer;
 
-use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
 use Magento\CatalogUrlRewrite\Observer\ClearProductUrlsObserver;
 use Magento\Framework\Event;
@@ -68,7 +68,7 @@ class ClearProductUrlsObserverTest extends TestCase
         [
             'sku' => 'SKU5',
             'url_key' => 'value5',
-        ]
+        ],
     ];
     /**
      * @var SkuStorage|MockObject
@@ -124,7 +124,7 @@ class ClearProductUrlsObserverTest extends TestCase
             ->method('deleteByData')
             ->with([
                 'entity_id' => [1, 5],
-                'entity_type' => 'product'
+                'entity_type' => 'product',
             ]);
 
         $this->clearProductUrlsObserver->execute($this->observer);

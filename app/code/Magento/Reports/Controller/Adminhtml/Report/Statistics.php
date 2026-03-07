@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ abstract class Statistics extends \Magento\Backend\App\Action implements HttpGet
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::statistics';
+    public const ADMIN_RESOURCE = 'Magento_Reports::statistics';
 
     /**
      * Admin session model

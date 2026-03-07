@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  *  Theme customization service class for custom css
  */
+
 namespace Magento\Theme\Model\Theme\Customization\File;
 
 class CustomCss extends \Magento\Framework\View\Design\Theme\Customization\AbstractFile
@@ -14,21 +17,21 @@ class CustomCss extends \Magento\Framework\View\Design\Theme\Customization\Abstr
     /**#@+
      * Custom CSS file type customization
      */
-    const TYPE = 'custom_css';
+    public const TYPE = 'custom_css';
 
-    const CONTENT_TYPE = 'css';
+    public const CONTENT_TYPE = 'css';
 
     /**#@-*/
 
     /**
      * Default filename
      */
-    const FILE_NAME = 'custom.css';
+    public const FILE_NAME = 'custom.css';
 
     /**
      * Default order position
      */
-    const SORT_ORDER = 10;
+    public const SORT_ORDER = 10;
 
     /**
      * {@inheritdoc}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\Error;
 
 use Magento\Config\Model\Config\Reader\Source\Deployed\DocumentRoot;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Response\Http;
+use Magento\Framework\Escaper;
+use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * Error processor
@@ -204,7 +205,7 @@ class Processor
         if (isset($_GET['id'])) {
             $this->loadReport($_GET['id']);
         }
-        $response->setMetadata("NotCacheable", true);
+        $response->setMetadata('NotCacheable', true);
     }
 
     /**
@@ -316,7 +317,7 @@ class Processor
      *
      * @return string
      */
-    private function resolveHostName() : string
+    private function resolveHostName(): string
     {
         if (!empty($_SERVER['HTTP_HOST'])) {
             $host = $_SERVER['HTTP_HOST'];
@@ -550,11 +551,11 @@ class Processor
     {
         try {
             if (!$this->isReportIdValid($reportId)) {
-                throw new \RuntimeException("Report Id is invalid");
+                throw new \RuntimeException('Report Id is invalid');
             }
             $reportFile = $this->findReportFile($reportId);
             if (!is_readable($reportFile)) {
-                throw new \RuntimeException("Report file cannot be read");
+                throw new \RuntimeException('Report file cannot be read');
             }
             $this->reportId = $reportId;
             $this->_reportFile = $reportFile;
@@ -587,7 +588,7 @@ class Processor
                 return $reportFile;
             }
         }
-        throw new \RuntimeException("Report file not found");
+        throw new \RuntimeException('Report file not found');
     }
 
     /**
@@ -596,7 +597,7 @@ class Processor
      */
     private function redirectToBaseUrl()
     {
-        header("Location: " . $this->getBaseUrl());
+        header('Location: ' . $this->getBaseUrl());
         die();
     }
 
@@ -637,11 +638,11 @@ class Processor
     {
         $envName = 'MAGE_ERROR_REPORT_DIR_NESTING_LEVEL';
         $value = $_ENV[$envName] ?? getenv($envName);
-        if(false === $value && property_exists($this->_config, 'dir_nesting_level')) {
+        if (false === $value && property_exists($this->_config, 'dir_nesting_level')) {
             $value = $this->_config->dir_nesting_level;
         }
         $value = (int)$value;
-        $maxValue= $this->getMaxReportDirNestingLevel($reportId);
+        $maxValue = $this->getMaxReportDirNestingLevel($reportId);
         return 0 < $value && $maxValue >= $value ? $value : 0;
     }
 

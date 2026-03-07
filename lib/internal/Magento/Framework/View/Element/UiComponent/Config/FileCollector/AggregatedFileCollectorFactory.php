@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config\FileCollector;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -12,7 +15,7 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class AggregatedFileCollectorFactory
 {
-    const INSTANCE_NAME =
+    public const INSTANCE_NAME =
         \Magento\Framework\View\Element\UiComponent\Config\FileCollector\AggregatedFileCollector::class;
 
     /**

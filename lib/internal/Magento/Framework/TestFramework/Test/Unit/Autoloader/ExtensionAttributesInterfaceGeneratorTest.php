@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\TestFramework\Test\Unit\Autoloader;
 
 use Magento\Framework\TestFramework\Unit\Autoloader\ExtensionAttributesInterfaceGenerator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ExtensionAttributesInterfaceGeneratorTest extends TestCase
 {
@@ -26,8 +27,8 @@ class ExtensionAttributesInterfaceGeneratorTest extends TestCase
     public function testGenerateExtensionAttributesInterface()
     {
         $this->assertStringMatchesFormat(
-            "%Anamespace My;%Ainterface SimpleExtensionInterface extends "
-            . "\\Magento\\Framework\\Api\\ExtensionAttributesInterface%A",
+            '%Anamespace My;%Ainterface SimpleExtensionInterface extends '
+            . '\\Magento\\Framework\\Api\\ExtensionAttributesInterface%A',
             $this->subject->generate('\My\SimpleExtensionInterface')
         );
     }

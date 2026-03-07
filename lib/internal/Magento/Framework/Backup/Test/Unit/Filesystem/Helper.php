@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-
 /**
  * Mock Filesystem helper
  */
+
 namespace Magento\Framework\Backup\Test\Unit\Filesystem;
 
 class Helper
@@ -19,7 +20,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_READABLE = 2;
+    public const INFO_READABLE = 2;
 
     /**
      * Constant can be used in getInfo() function as second parameter.
@@ -27,7 +28,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_SIZE = 4;
+    public const INFO_SIZE = 4;
 
     /**
      * Mock Get information (readable, writable, size) about $path

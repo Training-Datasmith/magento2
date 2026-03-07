@@ -1,15 +1,17 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Model\Indexer\Category\Product\Plugin;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Model\AbstractModel;
 use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Website
 {

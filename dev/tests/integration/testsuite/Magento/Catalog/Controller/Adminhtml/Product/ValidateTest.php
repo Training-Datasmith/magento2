@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
-use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Catalog\Model\Product\Type;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\TestFramework\TestCase\AbstractBackendController;
 
 /**
  * @magentoAppArea adminhtml

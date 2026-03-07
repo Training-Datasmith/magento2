@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -209,7 +210,7 @@ class TranslateTest extends TestCase
         return [
             ['adminhtml', false, $cachedData],
             ['frontend', false, $cachedData],
-            [null, false, $cachedData]
+            [null, false, $cachedData],
         ];
     }
 
@@ -245,14 +246,14 @@ class TranslateTest extends TestCase
             'module original' => 'module translated',
             'module theme' => 'module-theme original translated',
             'module pack' => 'module-pack original translated',
-            'module db' => 'module-db original translated'
+            'module db' => 'module-db original translated',
         ];
         $this->modulesReader->expects($this->any())->method('getModuleDir')->willReturn('/app/module');
         $themeData = [
             'theme original' => 'theme translated',
             'module theme' => 'theme translated overwrite',
             'module pack' => 'theme-pack translated overwrite',
-            'module db' => 'theme-db translated overwrite'
+            'module db' => 'theme-db translated overwrite',
         ];
         $this->csvParser->expects($this->any())
             ->method('getDataPairs')
@@ -260,7 +261,7 @@ class TranslateTest extends TestCase
                 [
                     ['/app/module/en_US.csv', 0, 1, $moduleData],
                     ['/app/module/en_GB.csv', 0, 1, $moduleData],
-                    ['/theme.csv', 0, 1, $themeData]
+                    ['/theme.csv', 0, 1, $themeData],
                 ]
             );
         $this->fileDriver->expects($this->any())
@@ -269,7 +270,7 @@ class TranslateTest extends TestCase
                 [
                     ['/app/module/en_US.csv', true],
                     ['/app/module/en_GB.csv', true],
-                    ['/theme.csv', true]
+                    ['/theme.csv', true],
                 ]
             );
 
@@ -304,7 +305,7 @@ class TranslateTest extends TestCase
             'module db' => 'db translated overwrite',
             'theme original' => 'theme translated',
             'pack original' => 'pack translated',
-            'db original' => 'db translated'
+            'db original' => 'db translated',
         ];
         $this->assertEquals($expected, $this->translate->getData());
     }
@@ -320,7 +321,7 @@ class TranslateTest extends TestCase
             ['frontend', true],
             ['frontend', false],
             [null, true],
-            [null, false]
+            [null, false],
         ];
     }
 
@@ -349,7 +350,7 @@ class TranslateTest extends TestCase
         $data = ['original 1' => 'translated 1', 'original 2' => 'translated 2'];
         return [
             [$data, $data],
-            [null, []]
+            [null, []],
         ];
     }
 
@@ -434,7 +435,7 @@ class TranslateTest extends TestCase
             ->willReturnMap(
                 [
                     [null, $scope],
-                    ['admin', $scopeAdmin]
+                    ['admin', $scopeAdmin],
                 ]
             );
         $designTheme = $this->getMockBuilder(Theme::class)

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,7 +12,7 @@
  */
 class ClassWithAllArgumentTypes
 {
-    const DEFAULT_VALUE = 'Const Value';
+    public const DEFAULT_VALUE = 'Const Value';
 
     /**
      * @var stdClass

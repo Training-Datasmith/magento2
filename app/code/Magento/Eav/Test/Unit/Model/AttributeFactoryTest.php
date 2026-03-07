@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Eav\Test\Unit\Model;
 
 use Magento\Eav\Model\AttributeFactory;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class AttributeFactoryTest extends TestCase

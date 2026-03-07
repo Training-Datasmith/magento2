@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Customer\Model\Data\Customer;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\EntityManager\TypeResolver;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class TypeResolverTest extends TestCase
 {
@@ -54,7 +55,7 @@ class TypeResolverTest extends TestCase
             ->method('hasConfiguration')
             ->willReturnMap(
                 [
-                    [$interfaceName, true]
+                    [$interfaceName, true],
                 ]
             );
         $this->assertEquals($interfaceName, $this->resolver->resolve($customerDataObject));
@@ -68,12 +69,12 @@ class TypeResolverTest extends TestCase
         return [
             [
                 Customer::class,
-                CustomerInterface::class
+                CustomerInterface::class,
             ],
             [
                 Category::class,
                 CategoryInterface::class,
-            ]
+            ],
         ];
     }
 }

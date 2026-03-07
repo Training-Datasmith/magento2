@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -89,14 +92,14 @@ class TokensConfigProvider implements ConfigProviderInterface
             $vaultPaymentCode = !empty($config['code']) ? $config['code'] : $paymentCode;
             $vaultPayments[$vaultPaymentCode . '_' . $i] = [
                 'config' => $config,
-                'component' => $component->getName()
+                'component' => $component->getName(),
             ];
         }
 
         return [
             'payment' => [
-                self::$vaultCode => $vaultPayments
-            ]
+                self::$vaultCode => $vaultPayments,
+            ],
         ];
     }
 

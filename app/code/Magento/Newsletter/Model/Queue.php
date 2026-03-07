@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Model;
 
 use Magento\Framework\App\TemplateTypesInterface;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\DateTime\Timezone\LocalizedDateToUtcConverterInterface;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 
 /**
  * Newsletter queue model.
@@ -267,8 +270,8 @@ class Queue extends \Magento\Framework\Model\AbstractModel implements TemplateTy
                 [
                     'subscriber' => $item,
                     'subscriber_data' => [
-                        'unsubscription_link' => $item->getUnsubscriptionLink()
-                    ]
+                        'unsubscription_link' => $item->getUnsubscriptionLink(),
+                    ],
                 ]
             )->setFrom(
                 ['name' => $this->getNewsletterSenderName(), 'email' => $this->getNewsletterSenderEmail()]

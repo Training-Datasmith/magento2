@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class GetIptcMetadata
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => !empty($keywords) ? $keywords : null
+            'keywords' => !empty($keywords) ? $keywords : null,
         ]);
     }
 }

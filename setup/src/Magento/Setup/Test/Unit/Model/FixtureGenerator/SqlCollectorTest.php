@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,11 +9,10 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\FixtureGenerator;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Model\FixtureGenerator\SqlCollector;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -93,7 +93,7 @@ class SqlCollectorTest extends TestCase
             . ' VALUES (?, ?, ?, \'2013-12-11\', ?), (?, ?, ?, \'2013-12-11\', ?)'
         );
         $query->expects($this->once())->method('getQueryParams')->willReturn([
-            4, 'sku_4', 'simple', 4, 5, 'sku_5', 'simple', 12
+            4, 'sku_4', 'simple', 4, 5, 'sku_5', 'simple', 12,
         ]);
         $profiler->expects($this->once())->method('getQueryProfiles')->willReturn([$query]);
 
@@ -117,8 +117,8 @@ class SqlCollectorTest extends TestCase
                             'attribute_set' => 12,
                         ],
                     ],
-                    'catalog_product_entity'
-                ]
+                    'catalog_product_entity',
+                ],
             ],
             $this->unit->getSql()
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,18 +21,18 @@ class AddAttributeTest extends GenericTest
                     'actions' => [
                         [
                             'targetName' => 'product_form.product_form.add_attribute_modal',
-                            'actionName' => 'toggleModal'
+                            'actionName' => 'toggleModal',
                         ],
                         [
                             'targetName' => 'product_form.product_form.add_attribute_modal.product_attributes_grid',
-                            'actionName' => 'render'
-                        ]
-                    ]
-                ]
-            ]
+                            'actionName' => 'render',
+                        ],
+                    ],
+                ],
+            ],
         ],
         'on_click' => '',
-        'sort_order' => 20
+        'sort_order' => 20,
     ];
 
     public function testGetButtonData()

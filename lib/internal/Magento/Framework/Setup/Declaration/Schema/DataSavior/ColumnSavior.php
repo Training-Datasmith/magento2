@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -135,10 +137,10 @@ class ColumnSavior implements DataSaviorInterface
         $dimensions = [
             $column->getTable()->getName(),
             $column->getElementType(),
-            $column->getName()
+            $column->getName(),
         ];
 
-        return implode("_", $dimensions);
+        return implode('_', $dimensions);
     }
 
     /**

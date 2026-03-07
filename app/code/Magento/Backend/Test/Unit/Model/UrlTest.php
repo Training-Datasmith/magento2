@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -192,7 +193,7 @@ class UrlTest extends TestCase
                 'encryptor' => $this->encryptor,
                 'routeParamsResolverFactory' => $this->routeParamsResolverFactoryMock,
                 'hostChecker' => $hostCheckerMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
         $this->requestMock = $this->createMock(Http::class);
@@ -270,7 +271,7 @@ class UrlTest extends TestCase
             [
                 'backendHelper' => $helperMock,
                 'authSession' => $this->authSessionMock,
-                'routeParamsResolverFactory' => $this->routeParamsResolverFactoryMock
+                'routeParamsResolverFactory' => $this->routeParamsResolverFactoryMock,
             ]
         );
         $urlModel->getAreaFrontName();
@@ -364,7 +365,7 @@ class UrlTest extends TestCase
 
         $this->requestMock
             ->method('getBeforeForwardInfo')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['route_name'] => 'adminhtml',
                 ['controller_name'] => 'catalog',
                 ['action_name'] => 'index'

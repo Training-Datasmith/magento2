@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -109,11 +110,11 @@ class ApiMutableScopeConfig implements MutableScopeConfigInterface
                 $pathParts[1] => [
                     'fields' => [
                         $pathParts[2] => [
-                            'value' => $value
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => $value,
+                        ],
+                    ],
+                ],
+            ],
         ];
         if ($scopeType === ScopeInterface::SCOPE_STORE && $scopeCode !== null) {
             $store = $this->storeRepository->get($scopeCode)->getId();

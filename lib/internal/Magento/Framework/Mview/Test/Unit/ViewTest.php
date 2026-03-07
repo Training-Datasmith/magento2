@@ -18,9 +18,9 @@ use Magento\Framework\Mview\View\ChangelogBatchWalkerInterface;
 use Magento\Framework\Mview\View\StateInterface;
 use Magento\Framework\Mview\View\SubscriptionFactory;
 use Magento\Indexer\Model\Mview\View\State;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test Mview functionality
@@ -707,7 +707,7 @@ class ViewTest extends TestCase
             'action_class' => 'Some\Class\Name',
             'group' => 'some_group',
             'subscriptions' => ['some_entity' => ['name' => 'some_entity', 'column' => 'entity_id']],
-            'walker' => ChangelogBatchWalkerInterface::class
+            'walker' => ChangelogBatchWalkerInterface::class,
         ];
     }
 }

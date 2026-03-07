@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Controller\Adminhtml\Edit;
 
 use Magento\Backend\App\AbstractAction;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
 use Magento\Catalog\Model\ProductFactory;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Registry;
+use Psr\Log\LoggerInterface;
 
 class Popup extends AbstractAction
 {
@@ -19,7 +22,7 @@ class Popup extends AbstractAction
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var \Magento\Framework\Registry

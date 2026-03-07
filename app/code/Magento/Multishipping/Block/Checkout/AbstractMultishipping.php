@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Multishipping checkout base abstract block
  */
+
 namespace Magento\Multishipping\Block\Checkout;
 
 class AbstractMultishipping extends \Magento\Framework\View\Element\Template

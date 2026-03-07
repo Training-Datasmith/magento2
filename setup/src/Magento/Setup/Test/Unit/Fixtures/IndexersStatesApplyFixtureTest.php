@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,8 +65,8 @@ class IndexersStatesApplyFixtureTest extends TestCase
                     [
                         'id' => 1,
                         'set_scheduled' => false,
-                    ]
-                ]
+                    ],
+                ],
             ]);
         $this->fixtureModelMock
             ->method('getObjectManager')

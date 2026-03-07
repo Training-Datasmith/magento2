@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -18,12 +19,12 @@ use Magento\Customer\Model\Plugin\SaveCustomerGroupExcludedWebsite;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\IndexerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\System\Store;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -224,28 +225,28 @@ class SaveCustomerGroupExcludedWebsiteTest extends TestCase
         return [
             [
                 [],
-                []
+                [],
             ],
             [
                 ['1', '2'],
-                [1, 2]
+                [1, 2],
             ],
             [
                 [1, 2],
-                [1, 2]
+                [1, 2],
             ],
             [
                 [1, 2],
-                ['1', '2']
+                ['1', '2'],
             ],
             [
                 ['1', 2],
-                ['2', 1]
+                ['2', 1],
             ],
             [
                 ['1', 2],
-                ['2', 1, 3]
-            ]
+                ['2', 1, 3],
+            ],
         ];
     }
 
@@ -260,33 +261,33 @@ class SaveCustomerGroupExcludedWebsiteTest extends TestCase
             [
                 ['2'],
                 [1, 2],
-                2
+                2,
             ],
             [
                 [],
                 [1, 2],
-                2
+                2,
             ],
             [
                 [2],
                 [1, 2],
-                2
+                2,
             ],
             [
                 [1, 2],
                 [],
-                0
+                0,
             ],
             [
                 [1, 2],
                 ['1'],
-                1
+                1,
             ],
             [
                 ['1', 2, 3],
                 ['2', 1],
-                2
-            ]
+                2,
+            ],
         ];
     }
 }

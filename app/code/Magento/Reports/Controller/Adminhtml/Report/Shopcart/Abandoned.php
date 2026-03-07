@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ class Abandoned extends \Magento\Reports\Controller\Adminhtml\Report\Shopcart im
     /**
      * Authorization of an abandoned report
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::abandoned';
+    public const ADMIN_RESOURCE = 'Magento_Reports::abandoned';
 
     /**
      * Abandoned carts action

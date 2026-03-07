@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Cache\Frontend\Adapter;
 
 /**
@@ -95,7 +98,7 @@ class Zend implements \Magento\Framework\Cache\FrontendInterface
             [
                 \Zend_Cache::CLEANING_MODE_ALL,
                 \Zend_Cache::CLEANING_MODE_MATCHING_TAG,
-                \Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG
+                \Zend_Cache::CLEANING_MODE_MATCHING_ANY_TAG,
             ]
         )
         ) {

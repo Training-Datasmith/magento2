@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab;
 
 /**
@@ -74,7 +77,7 @@ class Bundle extends \Magento\Backend\Block\Widget implements \Magento\Backend\B
                 'label' => __('Create New Option'),
                 'class' => 'add',
                 'id' => 'add_new_option',
-                'on_click' => 'bOption.add()'
+                'on_click' => 'bOption.add()',
             ]
         );
 

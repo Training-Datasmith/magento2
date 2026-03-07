@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Wishlist\Model\Product\AttributeValueProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class AttributeValueProviderTest
@@ -80,7 +81,7 @@ class AttributeValueProviderTest extends TestCase
         $productCollection = $this->createPartialMock(
             Collection::class,
             [
-            'addIdFilter', 'addStoreFilter', 'addAttributeToSelect', 'isEnabledFlat', 'getFirstItem'
+            'addIdFilter', 'addStoreFilter', 'addAttributeToSelect', 'isEnabledFlat', 'getFirstItem',
             ]
         );
 
@@ -125,7 +126,7 @@ class AttributeValueProviderTest extends TestCase
             ->method('fetchRow')
             ->willReturn(
                 [
-                $attributeCode => $attributeText
+                $attributeCode => $attributeText,
                 ]
             );
         $this->productMock = $this->createPartialMock(Product::class, ['getData']);
@@ -137,7 +138,7 @@ class AttributeValueProviderTest extends TestCase
         $productCollection = $this->createPartialMock(
             Collection::class,
             [
-            'addIdFilter', 'addStoreFilter', 'addAttributeToSelect', 'isEnabledFlat', 'getConnection'
+            'addIdFilter', 'addStoreFilter', 'addAttributeToSelect', 'isEnabledFlat', 'getConnection',
             ]
         );
 
@@ -172,7 +173,7 @@ class AttributeValueProviderTest extends TestCase
     public static function attributeDataProvider(): array
     {
         return [
-            [1, 'attribute_code', 'Attribute Text']
+            [1, 'attribute_code', 'Attribute Text'],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,6 +12,7 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  * @todo        Needs to be reimplemented to get rid of the copypasted methods
  */
+
 namespace Magento\Catalog\Model\Template;
 
 /**

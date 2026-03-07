@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Framework\Filesystem\Test\Unit\File;
 
@@ -28,7 +28,7 @@ class ExcludeFilterTest extends TestCase
         $iterator = new ExcludeFilter(
             $this->iterator,
             [
-                BP . '/var/session/'
+                BP . '/var/session/',
             ]
         );
 
@@ -48,7 +48,7 @@ class ExcludeFilterTest extends TestCase
         $files = [
             BP . '/var/',
             BP . '/var/session/',
-            BP . '/var/cache/'
+            BP . '/var/cache/',
         ];
 
         foreach ($files as $file) {

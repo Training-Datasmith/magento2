@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer;
 
-use \Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * Batch size manager can be used to ensure that MEMORY table has enough memory for data in batch.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,10 +18,10 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
-use Psr\Log\LoggerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Psr\Log\LoggerInterface;
 
 /**
  * Test for Magento\Eav\Model\Attribute\Data\File class.
@@ -111,13 +112,13 @@ class FileTest extends TestCase
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => 'value',
                 'callTimes' => 0,
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => false,
                 'callTimes' => 0,
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
         ];
     }
@@ -186,7 +187,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => [],
                 'fileIsValid' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => ''],
@@ -195,7 +196,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => [],
                 'fileIsValid' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => ''],
@@ -204,7 +205,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => [],
                 'fileIsValid' => true,
-                'expectedResult' => ['"Label" is a required value.']
+                'expectedResult' => ['"Label" is a required value.'],
             ],
             [
                 'value' => [
@@ -215,7 +216,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => [],
                 'fileIsValid' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => [
@@ -228,7 +229,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => ['file_extensions' => 'txt,png'],
                 'fileIsValid' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => [
@@ -241,7 +242,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => ['file_extensions' => ' txt , png '],
                 'fileIsValid' => true,
-                'expectedResult' => ['"Label" is not a valid file extension.']
+                'expectedResult' => ['"Label" is not a valid file extension.'],
             ],
             [
                 'value' => [
@@ -254,7 +255,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => ['file_extensions' => ''],
                 'fileIsValid' => false,
-                'expectedResult' => ['m1', 'm2']
+                'expectedResult' => ['m1', 'm2'],
             ],
             [
                 'value' => [
@@ -267,7 +268,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => [],
                 'fileIsValid' => true,
-                'expectedResult' => ['"Label" is not a valid file.']
+                'expectedResult' => ['"Label" is not a valid file.'],
             ],
             [
                 'value' => [
@@ -281,7 +282,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => ['max_file_size' => 10],
                 'fileIsValid' => true,
-                'expectedResult' => ['"Label" exceeds the allowed file size.']
+                'expectedResult' => ['"Label" exceeds the allowed file size.'],
             ],
             [
                 'value' => [
@@ -295,7 +296,7 @@ class FileTest extends TestCase
                 'isAjaxRequest' => false,
                 'rules' => ['max_file_size' => 10],
                 'fileIsValid' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
         ];
     }

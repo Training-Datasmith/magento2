@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Api;
 
 /**
@@ -21,5 +24,5 @@ interface GetBlockByIdentifierInterface
      * @return \Magento\Cms\Api\Data\BlockInterface
      * @since 103.0.0
      */
-    public function execute(string $identifier, int $storeId) : \Magento\Cms\Api\Data\BlockInterface;
+    public function execute(string $identifier, int $storeId): \Magento\Cms\Api\Data\BlockInterface;
 }

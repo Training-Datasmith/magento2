@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,9 +36,9 @@ class HandlerChainTest extends TestCase
                 [
                     'array' => [
                         'handler1' => HandlerInterface::class,
-                        'handler2' => HandlerInterface::class
+                        'handler2' => HandlerInterface::class,
                     ],
-                    'type' => HandlerInterface::class
+                    'type' => HandlerInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -58,7 +59,7 @@ class HandlerChainTest extends TestCase
             $tMapFactory,
             [
                 'handler1' => HandlerInterface::class,
-                'handler2' => HandlerInterface::class
+                'handler2' => HandlerInterface::class,
             ]
         );
         $chain->handle($handlingSubject, $response);

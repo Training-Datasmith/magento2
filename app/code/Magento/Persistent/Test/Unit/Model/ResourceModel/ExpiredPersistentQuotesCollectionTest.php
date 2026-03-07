@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Model\ResourceModel;
 
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Persistent\Model\ResourceModel\ExpiredPersistentQuotesCollection;
-use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Quote\Model\ResourceModel\Quote\Collection;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Persistent\Helper\Data;
-use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Persistent\Helper\Data;
+use Magento\Persistent\Model\ResourceModel\ExpiredPersistentQuotesCollection;
+use Magento\Quote\Model\ResourceModel\Quote\Collection;
+use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory;
+use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -125,7 +126,7 @@ class ExpiredPersistentQuotesCollectionTest extends TestCase
             )
             ->willReturnSelf();
         $dbSelectMock2->method('where')
-            ->with('cl2.last_login_at < "' . gmdate("Y-m-d H:i:s", time() - 60) . '"
+            ->with('cl2.last_login_at < "' . gmdate('Y-m-d H:i:s', time() - 60) . '"
         AND (cl2.last_logout_at IS NULL OR cl2.last_login_at > cl2.last_logout_at)')
             ->willReturnSelf();
 

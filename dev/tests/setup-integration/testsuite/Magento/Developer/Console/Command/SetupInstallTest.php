@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class SetupInstallTest extends SetupTestCase
                         '_files',
                         'SetupInstall',
                         str_replace('Magento_', '', $moduleName),
-                        'db_schema.xml'
+                        'db_schema.xml',
                     ]
                 );
             $expectedSchema = $this->getSchemaDocument($expectedSchemaFileName);

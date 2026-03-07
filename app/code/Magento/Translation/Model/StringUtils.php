@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,6 +16,7 @@
  * @method string getLocale()
  * @method \Magento\Translation\Model\StringUtils setLocale(string $value)
  */
+
 namespace Magento\Translation\Model;
 
 class StringUtils extends \Magento\Framework\Model\AbstractModel

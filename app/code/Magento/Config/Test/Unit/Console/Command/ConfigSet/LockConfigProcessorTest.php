@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class LockConfigProcessorTest extends TestCase
         $this->deploymentConfigWriterMock = $this->createMock(Writer::class);
         $this->arrayManagerMock = $this->createMock(ArrayManager::class);
         $this->configPathResolver = $this->createMock(ConfigPathResolver::class);
-        
+
         $this->valueMock = $this->createPartialMockWithReflection(
             Value::class,
             ['setValue', 'getValue', 'validateBeforeSave', 'beforeSave', 'afterSave']
@@ -113,11 +114,11 @@ class LockConfigProcessorTest extends TestCase
                     'default' => [
                         'test' => [
                             'test' => [
-                                'test' => $value
-                            ]
-                        ]
-                    ]
-                ]
+                                'test' => $value,
+                            ],
+                        ],
+                    ],
+                ],
             ]);
         $this->valueMock->expects($this->once())
             ->method('getValue')
@@ -131,12 +132,12 @@ class LockConfigProcessorTest extends TestCase
                             'default' => [
                                 'test' => [
                                     'test' => [
-                                        'test' => $value
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'test' => $value,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 false
             );

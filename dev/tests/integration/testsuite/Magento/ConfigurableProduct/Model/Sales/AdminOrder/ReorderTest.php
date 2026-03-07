@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class ReorderTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManager = Bootstrap::getObjectManager();
-        $this->model =$this->objectManager->get(Create::class);
+        $this->model = $this->objectManager->get(Create::class);
     }
 
     /**
@@ -73,7 +74,7 @@ class ReorderTest extends TestCase
                 [
                     'getGroupId',
                     'getEmail',
-                    '_getExtensionAttributes'
+                    '_getExtensionAttributes',
                 ]
             )->getMock();
         $customerMock->method('getGroupId')

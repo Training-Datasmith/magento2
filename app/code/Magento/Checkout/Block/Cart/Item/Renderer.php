@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart\Item;
 
+use Magento\Catalog\Model\Product\Configuration\Item\ItemResolverInterface;
 use Magento\Catalog\Pricing\Price\ConfiguredPriceInterface;
 use Magento\Checkout\Block\Cart\Item\Renderer\Actions;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Message\InterpretationStrategyInterface;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
-use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Model\Product\Configuration\Item\ItemResolverInterface;
 
 /**
  * Shopping cart item render block
@@ -341,7 +344,7 @@ class Renderer extends \Magento\Framework\View\Element\Template implements
                 /* @var $message \Magento\Framework\Message\MessageInterface */
                 $messages[] = [
                     'text' => $this->messageInterpretationStrategy->interpret($message),
-                    'type' => $message->getType()
+                    'type' => $message->getType(),
                 ];
             }
         }
@@ -376,7 +379,7 @@ class Renderer extends \Magento\Framework\View\Element\Template implements
         $helper = $this->_productConfig;
         $params = [
             'max_length' => 55,
-            'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>'
+            'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>',
         ];
         return $helper->getFormattedOptionValue($optionValue, $params);
     }
@@ -462,7 +465,7 @@ class Renderer extends \Magento\Framework\View\Element\Template implements
                 [
                     'include_container' => true,
                     'display_minimal_price' => true,
-                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
                 ]
             );
         }

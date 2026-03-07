@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Customer\Observer;
 
 use Magento\Customer\Helper\Address as HelperAddress;
-use Magento\Customer\Model\Address\AbstractAddress;
-use Magento\Framework\Registry;
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Customer\Model\Address;
+use Magento\Customer\Model\Address\AbstractAddress;
+use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Registry;
 
 /**
  * Customer Observer Model
@@ -20,7 +22,7 @@ class BeforeAddressSaveObserver implements ObserverInterface
     /**
      * VAT ID validation currently saved address flag
      */
-    const VIV_CURRENTLY_SAVED_ADDRESS = 'currently_saved_address';
+    public const VIV_CURRENTLY_SAVED_ADDRESS = 'currently_saved_address';
 
     /**
      * @var HelperAddress

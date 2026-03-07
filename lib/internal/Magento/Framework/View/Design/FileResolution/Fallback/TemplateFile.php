@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Framework\View\Design\FileResolution\Fallback;
 
+use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\State;
+use Magento\Framework\Config\ConfigOptionsListConstants as Constants;
 use Magento\Framework\View\Asset\ConfigInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\Template\Html\MinifierInterface;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Config\ConfigOptionsListConstants as Constants;
 
 /**
  * Provider of template view files

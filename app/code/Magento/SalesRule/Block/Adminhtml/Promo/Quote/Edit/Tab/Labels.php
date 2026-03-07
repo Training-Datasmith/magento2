@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab;
 
 class Labels extends \Magento\Backend\Block\Widget\Form\Generic implements
@@ -180,7 +183,7 @@ class Labels extends \Magento\Backend\Block\Widget\Form\Generic implements
                             'required' => false,
                             'value' => isset($labels[$store->getId()]) ? $labels[$store->getId()] : '',
                             'fieldset_html_class' => 'store',
-                            'data-form-part' => $this->getData('target_form')
+                            'data-form-part' => $this->getData('target_form'),
                         ]
                     );
                 }

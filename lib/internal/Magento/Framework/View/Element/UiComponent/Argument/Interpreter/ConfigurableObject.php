@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,11 +9,9 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Element\UiComponent\Argument\Interpreter;
 
 use Magento\Framework\Code\Reader\ClassReader;
-use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\ObjectManager\ConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 
 /**
  * Class ConfigurableObject

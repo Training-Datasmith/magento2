@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\Api\FilterBuilder;
@@ -15,7 +18,7 @@ use Magento\Ui\Api\BookmarkRepositoryInterface;
  */
 class Bookmark extends AbstractComponent
 {
-    const NAME = 'bookmark';
+    public const NAME = 'bookmark';
 
     /**
      * @var BookmarkRepositoryInterface

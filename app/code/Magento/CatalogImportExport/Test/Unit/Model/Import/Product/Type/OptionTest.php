@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,21 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Magento\Catalog\Model\Product\Option as ProductOption;
-use Magento\Catalog\Model\ResourceModel\Product\Option\Collection as OptionCollection;
-use Magento\Catalog\Model\ResourceModel\Product\Option\CollectionFactory as OptionCollectionFactory;
-use Magento\Catalog\Model\ResourceModel\Product\Option\Value\CollectionFactory;
-use Magento\Catalog\Model\ProductFactory;
-use Magento\Framework\DataObject;
-use Magento\ImportExport\Model\ResourceModel\CollectionByPagesIterator;
-use Magento\ImportExport\Model\ResourceModel\CollectionByPagesIteratorFactory;
-use Magento\ImportExport\Model\ResourceModel\Import\Data as ImportData;
-use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Data;
+use Magento\Catalog\Model\Product\Option as ProductOption;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Option\CollectionFactory as OptionCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Option\Value\Collection;
+use Magento\Catalog\Model\ResourceModel\Product\Option\Value\CollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\Option;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
@@ -34,15 +27,20 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
+use Magento\ImportExport\Model\ResourceModel\CollectionByPagesIteratorFactory;
 use Magento\ImportExport\Model\ResourceModel\Helper;
+use Magento\ImportExport\Model\ResourceModel\Import\Data as ImportData;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test class for import product options module
@@ -79,7 +77,7 @@ class OptionTest extends AbstractImportTestCase
         'catalog_product_option_type_title' => 'catalog_product_option_type_title',
         'catalog_product_option_type_value' => 'catalog_product_option_type_value',
         'catalog_product_option_type_price' => 'catalog_product_option_type_price',
-        'catalog_product_option_price' => 'catalog_product_option_price'
+        'catalog_product_option_price' => 'catalog_product_option_price',
     ];
 
     /**
@@ -108,7 +106,7 @@ class OptionTest extends AbstractImportTestCase
         ['option_id' => 2, 'store_id' => 0, 'title' => 'Test Field Title'],
         ['option_id' => 3, 'store_id' => 0, 'title' => 'Test Date and Time Title'],
         ['option_id' => 4, 'store_id' => 0, 'title' => 'Test Select'],
-        ['option_id' => 5, 'store_id' => 0, 'title' => 'Test Radio']
+        ['option_id' => 5, 'store_id' => 0, 'title' => 'Test Radio'],
     ];
 
     /**
@@ -118,7 +116,7 @@ class OptionTest extends AbstractImportTestCase
      */
     protected $_expectedPrices = [
         0 => ['option_id' => 2, 'store_id' => 0, 'price_type' => 'fixed', 'price' => 0],
-        1 => ['option_id' => 3, 'store_id' => 0, 'price_type' => 'fixed', 'price' => 2]
+        1 => ['option_id' => 3, 'store_id' => 0, 'price_type' => 'fixed', 'price' => 2],
     ];
 
     /**
@@ -130,7 +128,7 @@ class OptionTest extends AbstractImportTestCase
         ['price' => 3, 'price_type' => 'fixed', 'option_type_id' => 2, 'store_id' => 0],
         ['price' => 3, 'price_type' => 'fixed', 'option_type_id' => 3, 'store_id' => 0],
         ['price' => 3, 'price_type' => 'fixed', 'option_type_id' => 4, 'store_id' => 0],
-        ['price' => 3, 'price_type' => 'fixed', 'option_type_id' => 5, 'store_id' => 0]
+        ['price' => 3, 'price_type' => 'fixed', 'option_type_id' => 5, 'store_id' => 0],
     ];
 
     /**
@@ -142,7 +140,7 @@ class OptionTest extends AbstractImportTestCase
         ['option_type_id' => 2, 'store_id' => 0, 'title' => 'Option 1'],
         ['option_type_id' => 3, 'store_id' => 0, 'title' => 'Option 2'],
         ['option_type_id' => 4, 'store_id' => 0, 'title' => 'Option 1'],
-        ['option_type_id' => 5, 'store_id' => 0, 'title' => 'Option 2']
+        ['option_type_id' => 5, 'store_id' => 0, 'title' => 'Option 2'],
     ];
 
     /**
@@ -168,7 +166,7 @@ class OptionTest extends AbstractImportTestCase
             'product_id' => 1,
             'type' => 'field',
             'is_require' => 1,
-            'sort_order' => 1
+            'sort_order' => 1,
         ],
         [
             'option_id' => 3,
@@ -180,7 +178,7 @@ class OptionTest extends AbstractImportTestCase
             'product_id' => 1,
             'type' => 'date_time',
             'is_require' => 1,
-            'sort_order' => 2
+            'sort_order' => 2,
         ],
         [
             'option_id' => 4,
@@ -192,7 +190,7 @@ class OptionTest extends AbstractImportTestCase
             'product_id' => 1,
             'type' => 'drop_down',
             'is_require' => 1,
-            'sort_order' => 3
+            'sort_order' => 3,
         ],
         [
             'option_id' => 5,
@@ -204,8 +202,8 @@ class OptionTest extends AbstractImportTestCase
             'product_id' => 1,
             'type' => 'radio',
             'is_require' => 1,
-            'sort_order' => 4
-        ]
+            'sort_order' => 4,
+        ],
     ];
 
     /**
@@ -217,7 +215,7 @@ class OptionTest extends AbstractImportTestCase
         ['option_type_id' => 2, 'sort_order' => 0, 'sku' => '3-1-select', 'option_id' => 4],
         ['option_type_id' => 3, 'sort_order' => 1, 'sku' => '3-2-select', 'option_id' => 4],
         ['option_type_id' => 4, 'sort_order' => 0, 'sku' => '4-1-radio', 'option_id' => 5],
-        ['option_type_id' => 5, 'sort_order' => 1, 'sku' => '4-2-radio', 'option_id' => 5]
+        ['option_type_id' => 5, 'sort_order' => 1, 'sku' => '4-2-radio', 'option_id' => 5],
     ];
 
     /**
@@ -321,7 +319,7 @@ class OptionTest extends AbstractImportTestCase
             $this->_getModelDependencies($addExpectations, $deleteBehavior, $doubleOptions),
             $optionValueCollectionFactoryMock,
             $this->createMock(TransactionManagerInterface::class),
-            $this->skuStorageMock
+            $this->skuStorageMock,
         ];
 
         $modelClassName = Option::class;
@@ -402,7 +400,7 @@ class OptionTest extends AbstractImportTestCase
             'resource_helper' => $resourceHelper,
             'is_price_global' => true,
             'stores' => $this->_testStores,
-            'metadata_pool' => $this->metadataPoolMock
+            'metadata_pool' => $this->metadataPoolMock,
         ];
         $sourceData = $this->_getSourceDataMocks($addExpectations, $doubleOptions);
 
@@ -426,7 +424,7 @@ class OptionTest extends AbstractImportTestCase
             \stdClass::class,
             ['getNextUniqueBunch']
         );
-        
+
         if ($addExpectations) {
             $dataSourceModel->method('getNextUniqueBunch')
                 ->willReturnOnConsecutiveCalls($csvData['data'], null);
@@ -443,7 +441,7 @@ class OptionTest extends AbstractImportTestCase
                     'entity_id' => $elementIndex,
                     'product_id' => $elementIndex,
                     'type' => $csvDataRow[Product::COL_TYPE],
-                    'title' => $csvDataRow[Product::COL_NAME]
+                    'title' => $csvDataRow[Product::COL_NAME],
                 ];
             }
         }
@@ -521,7 +519,7 @@ class OptionTest extends AbstractImportTestCase
             'product_entity' => $this->productEntity,
             'option_collection' => $optionCollection,
             'collection_by_pages_iterator' => $collectionIterator,
-            'page_size' => $this->_iteratorPageSize
+            'page_size' => $this->_iteratorPageSize,
         ];
         return $data;
     }
@@ -855,7 +853,7 @@ class OptionTest extends AbstractImportTestCase
                 'rowData' => [
                     'store_view_code' => '',
                     'custom_options' => 'name=Test Field Title,type=field,required=1'
-                        . ';sku=1-text,price=0,price_type=fixed'
+                        . ';sku=1-text,price=0,price_type=fixed',
                 ],
                 'responseData' => [
                     'store_view_code' => '',
@@ -868,16 +866,16 @@ class OptionTest extends AbstractImportTestCase
                                 'sku' => '1-text',
                                 'price' => '0',
                                 'price_type' => 'fixed',
-                                '_custom_option_store' => ''
-                            ]
-                        ]
-                    ]
-                ]
+                                '_custom_option_store' => '',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'without_store_view_code' => [
                 'rowData' => [
                     'custom_options' => 'name=Test Field Title,type=field,required=1'
-                        . ';sku=1-text,price=0,price_type=fixed'
+                        . ';sku=1-text,price=0,price_type=fixed',
                 ],
                 'responseData' => [
                     'custom_options' => [
@@ -888,12 +886,12 @@ class OptionTest extends AbstractImportTestCase
                                 'required' => '1',
                                 'sku' => '1-text',
                                 'price' => '0',
-                                'price_type' => 'fixed'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'price_type' => 'fixed',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -927,7 +925,7 @@ class OptionTest extends AbstractImportTestCase
                 'rowData' => [
                     'custom_options' => 'name=Test Field Title,type=file,required=1,'
                         . 'sku=1-text,price=12,file_extension=png,jpeg,jpg,gif,image_size_x=1024,'
-                        . 'image_size_y=1024,price_type=fixed'
+                        . 'image_size_y=1024,price_type=fixed',
                 ],
                 'responseData' => [
                     'custom_options' => [
@@ -941,16 +939,16 @@ class OptionTest extends AbstractImportTestCase
                                 'file_extension' => 'png,jpeg,jpg,gif',
                                 'image_size_x' => '1024',
                                 'image_size_y' => '1024',
-                                'price_type' => 'fixed'
-                            ]
-                        ]
-                    ]
-                ]
+                                'price_type' => 'fixed',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'drop_down' => [
                 'rowData' => [
                     'custom_options' => 'name=Test Field Title,type=drop_down,required=0,'
-                        . 'sku=1-text,price=10,price_type=fixed'
+                        . 'sku=1-text,price=10,price_type=fixed',
                 ],
                 'responseData' => [
                     'custom_options' => [
@@ -961,16 +959,16 @@ class OptionTest extends AbstractImportTestCase
                                 'required' => '0',
                                 'sku' => '1-text',
                                 'price' => '10',
-                                'price_type' => 'fixed'
-                            ]
-                        ]
-                    ]
-                ]
+                                'price_type' => 'fixed',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'area' => [
                 'rowData' => [
                     'custom_options' => 'name=Test Field Title,type=area,required=1,'
-                        . 'sku=1-text,price=20,max_characters=150,price_type=fixed'
+                        . 'sku=1-text,price=20,max_characters=150,price_type=fixed',
                 ],
                 'responseData' => [
                     'custom_options' => [
@@ -982,16 +980,16 @@ class OptionTest extends AbstractImportTestCase
                                 'sku' => '1-text',
                                 'price' => '20',
                                 'max_characters' => '150',
-                                'price_type' => 'fixed'
-                            ]
-                        ]
-                    ]
-                ]
+                                'price_type' => 'fixed',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'date_time' => [
                 'rowData' => [
                     'custom_options' => 'name=Test Field Title,type=date_time,required=0,'
-                        . 'sku=1-text,price=30,price_type=fixed'
+                        . 'sku=1-text,price=30,price_type=fixed',
                 ],
                 'responseData' => [
                     'custom_options' => [
@@ -1002,12 +1000,12 @@ class OptionTest extends AbstractImportTestCase
                                 'required' => '0',
                                 'sku' => '1-text',
                                 'price' => '30',
-                                'price_type' => 'fixed'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'price_type' => 'fixed',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1022,90 +1020,90 @@ class OptionTest extends AbstractImportTestCase
         return [
             'main_valid' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_valid.php',
-                'errors' => []
+                'errors' => [],
             ],
             'main_invalid_store' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_invalid_store.php',
                 'errors' => [
-                    Option::ERROR_INVALID_STORE => [1]
-                ]
+                    Option::ERROR_INVALID_STORE => [1],
+                ],
             ],
             'main_incorrect_type' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_incorrect_type.php',
                 'errors' => [
-                    Option::ERROR_INVALID_TYPE => [1]
-                ]
+                    Option::ERROR_INVALID_TYPE => [1],
+                ],
             ],
             'main_no_title' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_no_title.php',
                 'errors' => [
-                    Option::ERROR_EMPTY_TITLE => [1]
-                ]
+                    Option::ERROR_EMPTY_TITLE => [1],
+                ],
             ],
             'main_empty_title' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_empty_title.php',
                 'errors' => [
-                    Option::ERROR_EMPTY_TITLE => [1]
-                ]
+                    Option::ERROR_EMPTY_TITLE => [1],
+                ],
             ],
             'main_invalid_price' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_invalid_price.php',
                 'errors' => [
-                    Option::ERROR_INVALID_PRICE => [1]
-                ]
+                    Option::ERROR_INVALID_PRICE => [1],
+                ],
             ],
             'main_invalid_max_characters' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_invalid_max_characters.php',
                 'errors' => [
-                    Option::ERROR_INVALID_MAX_CHARACTERS => [1]
-                ]
+                    Option::ERROR_INVALID_MAX_CHARACTERS => [1],
+                ],
             ],
             'main_max_characters_less_zero' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_max_characters_less_zero.php',
                 'errors' => [
-                    Option::ERROR_INVALID_MAX_CHARACTERS => [1]
-                ]
+                    Option::ERROR_INVALID_MAX_CHARACTERS => [1],
+                ],
             ],
             'main_invalid_sort_order' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_invalid_sort_order.php',
                 'errors' => [
-                    Option::ERROR_INVALID_SORT_ORDER => [1]
-                ]
+                    Option::ERROR_INVALID_SORT_ORDER => [1],
+                ],
             ],
             'main_sort_order_less_zero' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_sort_order_less_zero.php',
                 'errors' => [
-                    Option::ERROR_INVALID_SORT_ORDER => [1]
-                ]
+                    Option::ERROR_INVALID_SORT_ORDER => [1],
+                ],
             ],
             'secondary_valid' => [
                 'rowData' => include __DIR__ . '/_files/row_data_secondary_valid.php',
-                'errors' => []
+                'errors' => [],
             ],
             'secondary_invalid_store' => [
                 'rowData' => include __DIR__ . '/_files/row_data_secondary_invalid_store.php',
                 'errors' => [
-                    Option::ERROR_INVALID_STORE => [1]
-                ]
+                    Option::ERROR_INVALID_STORE => [1],
+                ],
             ],
             'secondary_incorrect_price' => [
                 'rowData' => include __DIR__ . '/_files/row_data_secondary_incorrect_price.php',
                 'errors' => [
-                    Option::ERROR_INVALID_ROW_PRICE => [1]
-                ]
+                    Option::ERROR_INVALID_ROW_PRICE => [1],
+                ],
             ],
             'secondary_incorrect_row_sort' => [
                 'rowData' => include __DIR__ . '/_files/row_data_secondary_incorrect_row_sort.php',
                 'errors' => [
-                    Option::ERROR_INVALID_ROW_SORT => [1]
-                ]
+                    Option::ERROR_INVALID_ROW_SORT => [1],
+                ],
             ],
             'secondary_row_sort_less_zero' => [
                 'rowData' => include __DIR__ . '/_files/row_data_secondary_row_sort_less_zero.php',
                 'errors' => [
-                    Option::ERROR_INVALID_ROW_SORT => [1]
-                ]
-            ]
+                    Option::ERROR_INVALID_ROW_SORT => [1],
+                ],
+            ],
         ];
     }
 
@@ -1120,25 +1118,25 @@ class OptionTest extends AbstractImportTestCase
             'ambiguity_several_input_rows' => [
                 'rowData' => include __DIR__ . '/_files/row_data_main_valid.php',
                 'errors' => [
-                    Option::ERROR_AMBIGUOUS_NEW_NAMES => [2, 2]
+                    Option::ERROR_AMBIGUOUS_NEW_NAMES => [2, 2],
                 ],
                 'behavior' => null,
-                'numberOfValidations' => 2
+                'numberOfValidations' => 2,
             ],
             'ambiguity_different_type' => [
                 'rowData' => include __DIR__ . '/_files/row_data_ambiguity_different_type.php',
                 'errors' => [
-                    Option::ERROR_AMBIGUOUS_TYPES => [1]
+                    Option::ERROR_AMBIGUOUS_TYPES => [1],
                 ],
-                'behavior' => Import::BEHAVIOR_APPEND
+                'behavior' => Import::BEHAVIOR_APPEND,
             ],
             'ambiguity_several_db_rows' => [
                 'rowData' => include __DIR__ . '/_files/row_data_ambiguity_several_db_rows.php',
                 'errors' => [
-                    Option::ERROR_AMBIGUOUS_OLD_NAMES => [1]
+                    Option::ERROR_AMBIGUOUS_OLD_NAMES => [1],
                 ],
-                'behavior' => Import::BEHAVIOR_APPEND
-            ]
+                'behavior' => Import::BEHAVIOR_APPEND,
+            ],
         ];
     }
 
@@ -1156,8 +1154,8 @@ class OptionTest extends AbstractImportTestCase
                 [
                     'sku' => 'simple3',
                     '_custom_option_type' => 'field',
-                    '_custom_option_title' => 'Title'
-                ]
+                    '_custom_option_title' => 'Title',
+                ],
             ],
             null
         );
@@ -1186,8 +1184,8 @@ class OptionTest extends AbstractImportTestCase
                     'collection_by_pages_iterator' => $this->objectManagerHelper->getObject(\stdClass::class),
                     'page_size' => 5000,
                     'stores' => [],
-                    'metadata_pool' => $this->metadataPoolMock
-                ]
+                    'metadata_pool' => $this->metadataPoolMock,
+                ],
             ]
         );
         $reflection = new \ReflectionClass(Option::class);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +32,7 @@ $quote->setCustomerIsGuest(
 )->addProduct(
     $product,
     new \Magento\Framework\DataObject([
-        'links' => array_keys($product->getDownloadableLinks())
+        'links' => array_keys($product->getDownloadableLinks()),
     ])
 );
 $quote->collectTotals();

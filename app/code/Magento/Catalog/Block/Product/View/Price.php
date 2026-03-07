@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Catalog product price block
  */
+
 namespace Magento\Catalog\Block\Product\View;
 
 use Magento\Catalog\Model\Product;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Indexer\Ui\DataProvider\Indexer\DataCollection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DataCollectionTest extends TestCase
 {
@@ -132,7 +133,7 @@ class DataCollectionTest extends TestCase
                         'getDescription' => 'Description_2',
                         'isScheduled' => true,
                         'getStatus' => StateInterface::STATUS_INVALID,
-                        'getLatestUpdated' => '2017/07/01'
+                        'getLatestUpdated' => '2017/07/01',
                     ],
                     'indexer_3' => [
                         'getId' => 'indexer_3',
@@ -140,7 +141,7 @@ class DataCollectionTest extends TestCase
                         'getDescription' => 'Description_3',
                         'isScheduled' => true,
                         'getStatus' => StateInterface::STATUS_VALID,
-                        'getLatestUpdated' => '2017/07/02'
+                        'getLatestUpdated' => '2017/07/02',
                     ],
                     'indexer_1' => [
                         'getId' => 'indexer_1',
@@ -148,10 +149,10 @@ class DataCollectionTest extends TestCase
                         'getDescription' => 'Description_1',
                         'isScheduled' => false,
                         'getStatus' => StateInterface::STATUS_INVALID,
-                        'getLatestUpdated' => '2017/07/03'
+                        'getLatestUpdated' => '2017/07/03',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -40,13 +41,13 @@ class ClauseFactory
         string $fieldName,
         string $clauseType,
         $clauseValue
-    ) : Clause {
+    ): Clause {
         return $this->objectManager->create(
             Clause::class,
             [
                 'fieldName' => $fieldName,
                 'clauseType' => $clauseType,
-                'clauseValue' => $clauseValue
+                'clauseValue' => $clauseValue,
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ $productRepository = $objectManager->create(\Magento\Catalog\Api\ProductReposito
 $categoryLinkRepository = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkRepositoryInterface::class,
     [
-        'productRepository' => $productRepository
+        'productRepository' => $productRepository,
     ]
 );
 
@@ -27,7 +29,7 @@ $categoryLinkManagement = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkManagementInterface::class,
     [
         'productRepository' => $productRepository,
-        'categoryLinkRepository' => $categoryLinkRepository
+        'categoryLinkRepository' => $categoryLinkRepository,
     ]
 );
 

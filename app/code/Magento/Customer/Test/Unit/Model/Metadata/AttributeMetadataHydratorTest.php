@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class AttributeMetadataHydratorTest extends TestCase
                 'attributeMetadataFactory' => $this->attributeMetadataFactoryMock,
                 'optionFactory' => $this->optionFactoryMock,
                 'validationRuleFactory' => $this->validationRuleFactoryMock,
-                'dataObjectProcessor' => $this->dataObjectProcessorMock
+                'dataObjectProcessor' => $this->dataObjectProcessorMock,
             ]
         );
     }
@@ -90,29 +91,29 @@ class AttributeMetadataHydratorTest extends TestCase
     {
         $optionOneData = [
             'label' => 'Label 1',
-            'options' => null
+            'options' => null,
         ];
         $optionThreeData = [
             'label' => 'Label 3',
-            'options' => null
+            'options' => null,
         ];
         $optionFourData = [
             'label' => 'Label 4',
-            'options' => null
+            'options' => null,
         ];
         $optionTwoData = [
             'label' => 'Label 2',
-            'options' => [$optionThreeData, $optionFourData]
+            'options' => [$optionThreeData, $optionFourData],
         ];
         $validationRuleOneData = [
             'name' => 'Name 1',
-            'value' => 'Value 1'
+            'value' => 'Value 1',
         ];
         $attributeMetadataData = [
             'attribute_code' => 'attribute_code',
             'frontend_input' => 'hidden',
             'options' => [$optionOneData, $optionTwoData],
-            'validation_rules' => [$validationRuleOneData]
+            'validation_rules' => [$validationRuleOneData],
         ];
 
         $optionOne = new Option($optionOneData);
@@ -121,7 +122,7 @@ class AttributeMetadataHydratorTest extends TestCase
 
         $optionTwoDataPartiallyConverted = [
             'label' => 'Label 2',
-            'options' => [$optionThree, $optionFour]
+            'options' => [$optionThree, $optionFour],
         ];
         $optionFive = new Option($optionTwoDataPartiallyConverted);
         $this->optionFactoryMock
@@ -135,7 +136,7 @@ class AttributeMetadataHydratorTest extends TestCase
                 $optionFour,
                 $optionTwoDataPartiallyConverted,
                 $optionFive
-) {
+            ) {
                 if ($arg1 == ['data' => $optionOneData]) {
                     return $optionOne;
                 } elseif ($arg1 == ['data' => $optionThreeData]) {
@@ -157,7 +158,7 @@ class AttributeMetadataHydratorTest extends TestCase
             'attribute_code' => 'attribute_code',
             'frontend_input' => 'hidden',
             'options' => [$optionOne, $optionFive],
-            'validation_rules' => [$validationRuleOne]
+            'validation_rules' => [$validationRuleOne],
         ];
 
         $this->attributeMetadataFactoryMock->expects($this->once())

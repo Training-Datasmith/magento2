@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Customer EAV additional attribute resource collection
  */
+
 namespace Magento\Customer\Model\ResourceModel\Attribute;
 
 class Collection extends \Magento\Eav\Model\ResourceModel\Attribute\Collection

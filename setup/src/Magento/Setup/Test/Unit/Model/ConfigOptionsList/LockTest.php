@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Lock\LockBackendFactory;
 use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
 use Magento\Setup\Model\ConfigOptionsList\Lock as LockConfigOptionsList;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class LockTest extends TestCase
@@ -95,7 +96,7 @@ class LockTest extends TestCase
                 'options' => [],
                 'expectedResult' => [
                     'lock' => [
-                        'provider' => LockBackendFactory::LOCK_DB
+                        'provider' => LockBackendFactory::LOCK_DB,
                     ],
                 ],
             ],
@@ -126,7 +127,7 @@ class LockTest extends TestCase
             'Check specific db lock options' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_DB,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'my_prefix'
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'my_prefix',
                 ],
                 'expectedResult' => [
                     'lock' => [
@@ -156,7 +157,7 @@ class LockTest extends TestCase
             'Check specific file lock options' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_FILE,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_FILE_PATH => '/my/path'
+                    LockConfigOptionsList::INPUT_KEY_LOCK_FILE_PATH => '/my/path',
                 ],
                 'expectedResult' => [
                     'lock' => [
@@ -170,18 +171,18 @@ class LockTest extends TestCase
             'Check specific db lock prefix null options' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_DB,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => null
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => null,
                 ],
                 'expectedResult' => [
                     'lock' => [
-                        'provider' => LockBackendFactory::LOCK_DB
+                        'provider' => LockBackendFactory::LOCK_DB,
                     ],
                 ],
             ],
             'Check specific db lock prefix empty options' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_DB,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => ''
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => '',
                 ],
                 'expectedResult' => [
                     'lock' => [
@@ -204,7 +205,7 @@ class LockTest extends TestCase
     {
         $valueMap = [
             [ 'lock/config/prefix', null, 'saved_prefix' ],
-            [ 'lock/provider', 'db', 'db' ]
+            [ 'lock/provider', 'db', 'db' ],
         ];
         $this->deploymentConfigMock
             ->expects($this->any())
@@ -237,7 +238,7 @@ class LockTest extends TestCase
             'Check lock-db-prefix options overrides existing value when parameter is specified' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_DB,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'new_prefix'
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'new_prefix',
                 ],
                 'expectedResult' => [
                     'lock' => [
@@ -250,7 +251,7 @@ class LockTest extends TestCase
             ],
             'Check lock-db-prefix options overrides existing value when only this parameter is specified' => [
                 'options' => [
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'new_prefix'
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => 'new_prefix',
                 ],
                 'expectedResult' => [
                     'lock' => [
@@ -277,7 +278,7 @@ class LockTest extends TestCase
             'Check specific db lock prefix empty options overrides existing value' => [
                 'options' => [
                     LockConfigOptionsList::INPUT_KEY_LOCK_PROVIDER => LockBackendFactory::LOCK_DB,
-                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => ''
+                    LockConfigOptionsList::INPUT_KEY_LOCK_DB_PREFIX => '',
                 ],
                 'expectedResult' => [
                     'lock' => [

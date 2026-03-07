@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class ProductStock implements DataFixtureInterface
     private const DEFAULT_DATA = [
         'prod_id' => null,
         'prod_qty' => 1,
-        'is_in_stock' => 1
+        'is_in_stock' => 1,
     ];
 
     /**

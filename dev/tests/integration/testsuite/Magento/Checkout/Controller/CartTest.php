@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\Checkout\Controller\Cart
  */
+
 namespace Magento\Checkout\Controller;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -15,26 +18,26 @@ use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Customer\Model\ResourceModel\CustomerRepository;
-use Magento\Framework\Data\Form\FormKey;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Model\Quote;
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\QuoteRepository;
 use Magento\Quote\Test\Fixture\AddProductToCart;
 use Magento\Quote\Test\Fixture\GuestCart;
+use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
+use Magento\Sales\Model\ResourceModel\Order\Item\Collection as OrderItemCollection;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Request;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
-use Magento\Sales\Model\ResourceModel\Order\Item\Collection as OrderItemCollection;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -275,7 +278,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(
             $originalQuantity,
             $quoteItem->getQty(),
-            "Precondition failed: invalid quote item quantity"
+            'Precondition failed: invalid quote item quantity'
         );
 
         /** Execute SUT */
@@ -286,7 +289,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $quote = $this->_objectManager->create(\Magento\Quote\Model\Quote::class);
         $quote->load($checkoutSession->getQuote()->getId());
         $quoteItem = $this->_getQuoteItemIdByProductId($quote, $product->getId());
-        $this->assertEquals($updatedQuantity, $quoteItem->getQty(), "Invalid quote item quantity");
+        $this->assertEquals($updatedQuantity, $quoteItem->getQty(), 'Invalid quote item quantity');
     }
 
     /**
@@ -346,7 +349,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
             'product' => '1',
             'custom_price' => 1,
             'form_key' => $formKey->getFormKey(),
-            'isAjax' => 1
+            'isAjax' => 1,
         ];
         \Magento\TestFramework\Helper\Bootstrap::getInstance()->loadArea($area);
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
@@ -373,7 +376,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
     {
         return [
             'frontend' => ['frontend', 'expectedPrice' => 10],
-            'adminhtml' => ['adminhtml', 'expectedPrice' => 1]
+            'adminhtml' => ['adminhtml', 'expectedPrice' => 1],
         ];
     }
 
@@ -525,7 +528,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(
             $originalQuantity + $originalQuantity,
             $quote->getItemsQty(),
-            "Precondition failed:  quote totals does not match."
+            'Precondition failed:  quote totals does not match.'
         );
 
         $response = $this->updatePostRequest($quote, $item1, $item2, $updatedQuantity, $updatedQuantity, true);
@@ -544,7 +547,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(
             $originalQuantity + $updatedQuantity,
             $quote->getItemsQty(),
-            "Precondition failed: quote totals does not match."
+            'Precondition failed: quote totals does not match.'
         );
 
         $response = $this->updatePostRequest($quote, $item1, $item2, $updatedQuantity, $updatedQuantity, false);
@@ -556,7 +559,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(
             $originalQuantity + $updatedQuantity,
             $quote->getItemsQty(),
-            "Precondition failed: quote totals does not match."
+            'Precondition failed: quote totals does not match.'
         );
     }
 
@@ -584,7 +587,7 @@ class CartTest extends \Magento\TestFramework\TestCase\AbstractController
         $request = [
             'cart' => [
                 $item1->getId() => ['qty' => $qty1],
-                $item2->getId() => ['qty' => $qty2]
+                $item2->getId() => ['qty' => $qty2],
             ],
             'update_cart_action' => 'update_qty',
             'form_key' => $formKey->getFormKey(),

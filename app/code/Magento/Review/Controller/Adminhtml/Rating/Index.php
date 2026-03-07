@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Rating;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
-use Magento\Review\Controller\Adminhtml\Rating as RatingController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Review\Controller\Adminhtml\Rating as RatingController;
 
 class Index extends RatingController implements HttpGetActionInterface
 {

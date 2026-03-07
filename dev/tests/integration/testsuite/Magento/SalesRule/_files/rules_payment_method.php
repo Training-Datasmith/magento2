@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -21,8 +23,8 @@ $salesRule->setData(
         'website_ids' => [
             Bootstrap::getObjectManager()->get(
                 \Magento\Store\Model\StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ]
 );
 
@@ -39,7 +41,7 @@ $salesRule->getConditions()->loadArray([
                 'type' => \Magento\SalesRule\Model\Rule\Condition\Address::class,
                 'attribute' => 'payment_method',
                 'operator' => '==',
-                'value' => 'checkmo'
+                'value' => 'checkmo',
             ],
         ],
 ]);

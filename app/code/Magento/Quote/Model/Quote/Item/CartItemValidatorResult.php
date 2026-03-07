@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class CartItemValidatorResult implements CartItemValidatorResultInterface
     public function __construct(array $errors = [])
     {
         $this->errors = array_map(
-            static fn($error) => $error instanceof Phrase ? $error : new Phrase((string)$error),
+            static fn ($error) => $error instanceof Phrase ? $error : new Phrase((string)$error),
             $errors,
         );
     }

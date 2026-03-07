@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,15 +8,15 @@
 
 namespace Magento\UrlRewrite\Model\Message;
 
-use Magento\Framework\Message\ExceptionMessageFactoryInterface;
-use Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException;
-use Magento\Framework\Message\MessageInterface;
-use Magento\Framework\Message\Factory;
 use Magento\Framework\Exception\RuntimeException;
+use Magento\Framework\Message\ExceptionMessageFactoryInterface;
+use Magento\Framework\Message\Factory;
+use Magento\Framework\Message\MessageInterface;
+use Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException;
 
 class UrlRewriteExceptionMessageFactory implements ExceptionMessageFactoryInterface
 {
-    const URL_DUPLICATE_MESSAGE_MAP_ID = 'urlDuplicateMessageMapId';
+    public const URL_DUPLICATE_MESSAGE_MAP_ID = 'urlDuplicateMessageMapId';
 
     /**
      * @var \Magento\Framework\Message\Factory

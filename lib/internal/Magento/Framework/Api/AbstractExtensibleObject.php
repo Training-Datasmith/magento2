@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\Api;
 
-use \Magento\Framework\Api\AttributeValueFactory;
+namespace Magento\Framework\Api;
 
 /**
  * Base Class for extensible data Objects
@@ -22,7 +23,7 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
     /**
      * Array key for custom attributes
      */
-    const CUSTOM_ATTRIBUTES_KEY = 'custom_attributes';
+    public const CUSTOM_ATTRIBUTES_KEY = 'custom_attributes';
 
     /**
      * @var \Magento\Framework\Api\ExtensionAttributesFactory

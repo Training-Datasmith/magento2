@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Authentication exception
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 /**
@@ -16,5 +19,5 @@ class AuthenticationException extends LocalizedException
     /**
      * @deprecated
      */
-    const AUTHENTICATION_ERROR = 'An authentication error occurred. Verify and try again.';
+    public const AUTHENTICATION_ERROR = 'An authentication error occurred. Verify and try again.';
 }

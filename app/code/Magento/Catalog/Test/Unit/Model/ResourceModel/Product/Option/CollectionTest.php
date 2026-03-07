@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -136,7 +137,7 @@ class CollectionTest extends TestCase
             ->willReturn('test_main_table');
         $this->resourceMock->expects($this->exactly(3))
             ->method('getTable')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['test_main_table'] => 'test_main_table',
                 ['catalog_product_entity'] => 'catalog_product_entity'
             });

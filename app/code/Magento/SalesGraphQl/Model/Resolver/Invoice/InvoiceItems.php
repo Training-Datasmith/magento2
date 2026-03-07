@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -118,13 +119,13 @@ class InvoiceItems implements ResolverInterface
             'product_sku' => $invoiceItem->getSku(),
             'product_sale_price' => [
                 'value' => $invoiceItem->getPrice(),
-                'currency' => $order->getOrderCurrencyCode()
+                'currency' => $order->getOrderCurrencyCode(),
             ],
             'quantity_invoiced' => $invoiceItem->getQty(),
             'model' => $invoiceItem,
             'product_type' => $orderItem['product_type'],
             'order_item' => $orderItem,
-            'discounts' => $this->formatDiscountDetails($order, $invoiceItem)
+            'discounts' => $this->formatDiscountDetails($order, $invoiceItem),
         ];
     }
 
@@ -135,7 +136,7 @@ class InvoiceItems implements ResolverInterface
      * @param InvoiceItemInterface $invoiceItem
      * @return array
      */
-    private function formatDiscountDetails(OrderInterface $associatedOrder, InvoiceItemInterface $invoiceItem) : array
+    private function formatDiscountDetails(OrderInterface $associatedOrder, InvoiceItemInterface $invoiceItem): array
     {
         if ($associatedOrder->getDiscountDescription() === null
             && $invoiceItem->getDiscountAmount() == 0
@@ -147,8 +148,8 @@ class InvoiceItems implements ResolverInterface
                 'label' => $associatedOrder->getDiscountDescription() ?? __('Discount'),
                 'amount' => [
                     'value' => abs((float) $invoiceItem->getDiscountAmount()),
-                    'currency' => $associatedOrder->getOrderCurrencyCode()
-                ]
+                    'currency' => $associatedOrder->getOrderCurrencyCode(),
+                ],
             ];
         }
         return $discounts;

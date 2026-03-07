@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model;
 
 use Magento\Tax\Api\Data\TaxClassKeyInterface;
@@ -192,7 +195,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 1,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $weeeProductResults = [
             'subtotal' => 17,
@@ -264,7 +267,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -282,7 +285,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $weeeProductsResults = [
             'subtotal' => 34,
@@ -354,7 +357,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -372,7 +375,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $multiWeeeProducts['items'][] = [
             'code' => 'sequence-2',
@@ -387,7 +390,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-2'
+            'associated_item_code' => 'sequence-2',
         ];
         $multiWeeeProductsResults = [
             'subtotal' => 68,
@@ -511,7 +514,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -1360,7 +1363,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 1,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $weeeProductResults = [
             'subtotal' => 17,
@@ -1432,7 +1435,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -1450,7 +1453,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $weeeProductsResults = [
             'subtotal' => 34,
@@ -1522,7 +1525,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -1540,7 +1543,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-1'
+            'associated_item_code' => 'sequence-1',
         ];
         $multiWeeeProducts['items'][] = [
             'code' => 'sequence-2',
@@ -1555,7 +1558,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
             'quantity' => 2,
             'unit_price' => 7,
             'tax_class_key' => 'WeeeProductClass',
-            'associated_item_code' => 'sequence-2'
+            'associated_item_code' => 'sequence-2',
         ];
         $multiWeeeProductsResults = [
             'subtotal' => 68,
@@ -1679,7 +1682,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -2541,7 +2544,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $weeeTaxRates = $this->taxRuleFixtureFactory->createTaxRates([
-            ['percentage' => 8.25, 'country' => 'US', 'region' => 12] // Default store rate
+            ['percentage' => 8.25, 'country' => 'US', 'region' => 12], // Default store rate
         ]);
 
         $multiTaxRates1 = $this->taxRuleFixtureFactory->createTaxRates([
@@ -2592,7 +2595,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
                 'customer_tax_class_ids' => [$this->taxClassIds['DefaultCustomerClass'], 3],
                 'product_tax_class_ids' => [
                     $this->taxClassIds['MultipleRulesProductClass'],
-                    $this->taxClassIds['WeeeProductClass']
+                    $this->taxClassIds['WeeeProductClass'],
                 ],
                 'tax_rate_ids' => array_values($multiTaxRates1),
                 'sort_order' => 0,
@@ -2673,7 +2676,7 @@ class TaxCalculationTest extends \PHPUnit\Framework\TestCase
         } elseif (is_object($object)) {
             $data = (array)$object;
         } else {
-            throw new \InvalidArgumentException("Provided argument is not an object.");
+            throw new \InvalidArgumentException('Provided argument is not an object.');
         }
         foreach ($data as $key => $value) {
             if (is_object($value)) {

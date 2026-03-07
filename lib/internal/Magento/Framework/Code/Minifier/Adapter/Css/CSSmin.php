@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Minifier\Adapter\Css;
 
-use tubalmartin\CssMin\Minifier as CssMinLibrary;
 use Magento\Framework\Code\Minifier\AdapterInterface;
+use tubalmartin\CssMin\Minifier as CssMinLibrary;
 
 /**
  * Adapter for CSSmin library
@@ -16,7 +19,7 @@ class CSSmin implements AdapterInterface
     /**
      * 'pcre.recursion_limit' value for CSSMin minification
      */
-    const PCRE_RECURSION_LIMIT = 1000;
+    public const PCRE_RECURSION_LIMIT = 1000;
 
     /**
      * @var CssMinLibrary

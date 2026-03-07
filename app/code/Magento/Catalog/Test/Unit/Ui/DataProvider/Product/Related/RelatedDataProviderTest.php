@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class RelatedDataProviderTest extends AbstractDataProviderTestCase
             'addFieldStrategies' => [],
             'addFilterStrategies' => [],
             'meta' => [],
-            'data' => []
+            'data' => [],
         ]);
     }
 }

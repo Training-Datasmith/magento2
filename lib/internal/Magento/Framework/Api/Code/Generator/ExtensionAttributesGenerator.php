@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Code\Generator;
 
+use Magento\Framework\Api\ExtensionAttribute\Config\Converter;
+use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\Code\Generator\DefinedClasses;
 use Magento\Framework\Code\Generator\Io;
-use Magento\Framework\Api\SimpleDataObjectConverter;
-use Magento\Framework\Api\ExtensionAttribute\Config\Converter;
 
 /**
  * Code generator for data object extensions.
@@ -120,18 +123,18 @@ class ExtensionAttributesGenerator extends \Magento\Framework\Code\Generator\Ent
             $methods[] = [
                 'name' => $setterName,
                 'parameters' => [$parameters],
-                'body' => "\$this->setData('{$attributeName}', \${$propertyName});" . PHP_EOL . "return \$this;",
+                'body' => "\$this->setData('{$attributeName}', \${$propertyName});" . PHP_EOL . 'return $this;',
                 'docblock' => [
                     'tags' => [
                         [
                             'name' => 'param',
-                            'description' => "{$attributeType} \${$propertyName}"
+                            'description' => "{$attributeType} \${$propertyName}",
                         ],
                         [
                             'name' => 'return',
-                            'description' => '$this'
-                        ]
-                    ]
+                            'description' => '$this',
+                        ],
+                    ],
                 ],
             ];
         }

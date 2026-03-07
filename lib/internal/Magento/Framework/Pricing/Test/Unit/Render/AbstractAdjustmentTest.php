@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class AbstractAdjustmentTest extends TestCase
             AbstractAdjustment::class,
             [
                 'priceCurrency' => $this->priceCurrency,
-                'data' => $this->data
+                'data' => $this->data,
             ]
         );
         $this->model = $this->getMockBuilder(AbstractAdjustment::class)->setConstructorArgs($constructorArgs)

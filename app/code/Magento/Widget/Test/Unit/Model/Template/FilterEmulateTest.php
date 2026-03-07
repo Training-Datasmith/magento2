@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class FilterEmulateTest extends TestCase
         $construction = [
             '{{widget type="Widget\\Link" anchor_text="Test" template="block.phtml" id_path="p/1"}}',
             'widget',
-            ' type="" anchor_text="Test" template="block.phtml" id_path="p/1"'
+            ' type="" anchor_text="Test" template="block.phtml" id_path="p/1"',
         ];
 
         $this->appStateMock->expects($this->once())

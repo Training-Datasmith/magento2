@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,9 +18,9 @@ interface OptionInterface
     /**#@+
      * Constants for keys of data array
      */
-    const LABEL = 'label';
-    const VALUE = 'value';
-    const OPTIONS = 'options';
+    public const LABEL = 'label';
+    public const VALUE = 'value';
+    public const OPTIONS = 'options';
     /**#@-*/
 
     /**

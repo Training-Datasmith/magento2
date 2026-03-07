@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,16 +69,16 @@ class ResponseValidatorTest extends TestCase
         return [
             [
                 'response' => new DataObject(['result' => Payflowpro::RESPONSE_CODE_APPROVED]),
-                'exactlyCount' => 1
+                'exactlyCount' => 1,
             ],
             [
                 'response' => new DataObject(['result' => Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER]),
-                'exactlyCount' => 1
+                'exactlyCount' => 1,
             ],
             [
                 'response' => new DataObject(['result' => Payflowpro::RESPONSE_CODE_INVALID_AMOUNT]),
-                'exactlyCount' => 0
-            ]
+                'exactlyCount' => 0,
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -29,7 +31,7 @@ class BundleProductsFixture extends Fixture
     /**
      * Bundle sku pattern with entity number and suffix. Suffix equals "{options}-{variations_per_option}"
      */
-    const SKU_PATTERN = 'Bundle Product %s - %s';
+    public const SKU_PATTERN = 'Bundle Product %s - %s';
 
     /**
      * @var int

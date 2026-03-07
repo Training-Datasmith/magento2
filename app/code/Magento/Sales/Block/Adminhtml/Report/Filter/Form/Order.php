@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Report\Filter\Form;
 
 /**
@@ -33,7 +36,7 @@ class Order extends \Magento\Sales\Block\Adminhtml\Report\Filter\Form
                 [
                     'name' => 'show_actual_columns',
                     'options' => ['1' => __('Yes'), '0' => __('No')],
-                    'label' => __('Show Actual Values')
+                    'label' => __('Show Actual Values'),
                 ]
             );
         }

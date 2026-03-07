@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme;
 
 use Laminas\Validator\NotEmpty;
@@ -81,7 +84,7 @@ class Validator
                         \Magento\Framework\View\Design\ThemeInterface::TYPE_STAGING,
                     ],
                 ],
-                'message' => (string)new \Magento\Framework\Phrase('Theme type is invalid')
+                'message' => (string)new \Magento\Framework\Phrase('Theme type is invalid'),
             ],
         ];
 

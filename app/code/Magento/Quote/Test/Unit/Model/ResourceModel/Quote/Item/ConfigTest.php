@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\ResourceModel\Quote\Item;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Quote\Model\Config;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase

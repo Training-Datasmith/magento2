@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\CatalogGraphQl\Model\Resolver\Product;
 
 use Magento\CatalogGraphQl\Model\PriceRangeDataProvider;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**

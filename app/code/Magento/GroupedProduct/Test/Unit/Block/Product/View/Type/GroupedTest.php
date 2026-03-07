@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Block\Product\View\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\LayoutInterface;
 use Magento\GroupedProduct\Block\Product\View\Type\Grouped;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -60,7 +60,7 @@ class GroupedTest extends TestCase
             Grouped::class,
             [
                 'data' => ['product' => $this->productMock],
-                'layout' => $layout
+                'layout' => $layout,
             ]
         );
     }

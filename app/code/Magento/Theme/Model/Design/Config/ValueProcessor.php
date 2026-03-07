@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Config;
 
 use Magento\Theme\Model\Design\BackendModelFactory;
@@ -40,7 +43,7 @@ class ValueProcessor
                 'value' => $value,
                 'field_config' => $fieldConfig,
                 'scope' => $scope,
-                'scope_id' => $scopeId
+                'scope_id' => $scopeId,
             ]
         );
         $backendModel->afterLoad();

@@ -1,16 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\Wysiwyg\Images;
 
-use Magento\Cms\Model\Wysiwyg\Images\Storage\Collection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -142,28 +142,28 @@ class GetThumbnailUrlsTest extends \PHPUnit\Framework\TestCase
             [
                 '/',
                 'image1.png',
-                []
+                [],
             ],
             [
                 '/cms',
                 'image2.png',
-                []
+                [],
             ],
             [
                 '/cms/pages',
                 'image3.png',
-                []
+                [],
             ],
             [
                 '/MagentoCmsModelWysiwygImagesStorageTest',
                 'image2.png',
-                ['/media/.thumbsMagentoCmsModelWysiwygImagesStorageTest/image2.png']
+                ['/media/.thumbsMagentoCmsModelWysiwygImagesStorageTest/image2.png'],
             ],
             [
                 '/MagentoCmsModelWysiwygImagesStorageTest/pages',
                 'image3.png',
-                ['/media/.thumbsMagentoCmsModelWysiwygImagesStorageTest/pages/image3.png']
-            ]
+                ['/media/.thumbsMagentoCmsModelWysiwygImagesStorageTest/pages/image3.png'],
+            ],
         ];
     }
 

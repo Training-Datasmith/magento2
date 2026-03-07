@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class PageTest extends TestCase
             [
                 'entityType' => 'cms_page',
                 'field' => 'content',
-                'entityId' => $pageId
+                'entityId' => $pageId,
             ]
         );
 

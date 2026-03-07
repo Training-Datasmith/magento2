@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 namespace Magento\TestFramework\Catalog\Model\Product\Option\DataProvider\Type;
-
-use Magento\TestFramework\Catalog\Model\Product\Option\DataProvider\Type\AbstractBase;
 
 /**
  * Abstract data provider for options from text group.
@@ -22,7 +21,7 @@ abstract class AbstractText extends AbstractBase
         return array_merge_recursive(
             parent::getDataForCreateOptions(),
             [
-                "type_{static::getType()}_options_with_max_charters_configuration" => [
+                'type_{static::getType()}_options_with_max_charters_configuration' => [
                     [
                         'record_id' => 0,
                         'sort_order' => 1,
@@ -35,7 +34,7 @@ abstract class AbstractText extends AbstractBase
                         'price_type' => 'fixed',
                     ],
                 ],
-                "type_{static::getType()}_options_without_max_charters_configuration" => [
+                'type_{static::getType()}_options_without_max_charters_configuration' => [
                     [
                         'record_id' => 0,
                         'sort_order' => 1,
@@ -59,12 +58,12 @@ abstract class AbstractText extends AbstractBase
         return array_merge_recursive(
             parent::getDataForUpdateOptions(),
             [
-                "type_{static::getType()}_options_with_max_charters_configuration" => [
+                'type_{static::getType()}_options_with_max_charters_configuration' => [
                     [
                         'max_characters' => 0,
                     ],
                 ],
-                "type_{static::getType()}_options_without_max_charters_configuration" => [
+                'type_{static::getType()}_options_without_max_charters_configuration' => [
                     [
                         'max_characters' => 55,
                     ],

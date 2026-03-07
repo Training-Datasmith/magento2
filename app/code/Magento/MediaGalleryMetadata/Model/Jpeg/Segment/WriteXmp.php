@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class WriteXmp implements WriteMetadataInterface
         if (empty($xmpSegments)) {
             return $this->fileFactory->create([
                 'path' => $file->getPath(),
-                'segments' => $this->insertXmpSegment($segments, $this->createXmpSegment($metadata))
+                'segments' => $this->insertXmpSegment($segments, $this->createXmpSegment($metadata)),
             ]);
         }
 
@@ -93,7 +94,7 @@ class WriteXmp implements WriteMetadataInterface
 
         return $this->fileFactory->create([
             'path' => $file->getPath(),
-            'segments' => $segments
+            'segments' => $segments,
         ]);
     }
 
@@ -120,7 +121,7 @@ class WriteXmp implements WriteMetadataInterface
         $xmpData = $this->xmpTemplate->get();
         return $this->segmentFactory->create([
             'name' => self::XMP_SEGMENT_NAME,
-            'data' => self::XMP_SEGMENT_START . $this->addXmpMetadata->execute($xmpData, $metadata)
+            'data' => self::XMP_SEGMENT_START . $this->addXmpMetadata->execute($xmpData, $metadata),
         ]);
     }
 
@@ -138,7 +139,7 @@ class WriteXmp implements WriteMetadataInterface
         $xmpData = substr($data, self::XMP_DATA_START_POSITION);
         return $this->segmentFactory->create([
             'name' => $segment->getName(),
-            'data' => $start . $this->addXmpMetadata->execute($xmpData, $metadata)
+            'data' => $start . $this->addXmpMetadata->execute($xmpData, $metadata),
         ]);
     }
 

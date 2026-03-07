@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class StringLength extends LaminasStringLength implements ValidatorInterface
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID   => "Invalid type given. String expected",
+        self::INVALID   => 'Invalid type given. String expected',
         self::TOO_SHORT => "'%value%' is less than %min% characters long",
         self::TOO_LONG  => "'%value%' is more than %max% characters long",
     ];

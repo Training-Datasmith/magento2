@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class CartTest extends TestCase
                             'name' => 'item 1',
                         ]
                     ),
-                ]
+                ],
             ],
             [
                 [
@@ -129,7 +130,7 @@ class CartTest extends TestCase
                             'original_item' => new DataObject(['base_row_total' => 6.01]),
                         ]
                     ),
-                ]
+                ],
             ],
             [
                 [
@@ -142,8 +143,8 @@ class CartTest extends TestCase
                             'original_item' => new DataObject(['base_row_total' => 2]),
                         ]
                     ),
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -202,8 +203,8 @@ class CartTest extends TestCase
                     'base_discount_amount' => 100,
                     'base_grand_total' => 5.5,
                 ],
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -279,7 +280,7 @@ class CartTest extends TestCase
                 'base_shipping_discount_tax_compensation_amnt' =>
                     $data['base_shipping_discount_tax_compensation_amnt'],
                 'base_shipping_discount_tax_compensation_amount' =>
-                    $data['base_shipping_discount_tax_compensation_amount']
+                    $data['base_shipping_discount_tax_compensation_amount'],
             ]
         );
         $expectedSubtotal = $data['base_subtotal'];

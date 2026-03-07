@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Quote\Model\CartLockedException;
 use Magento\Quote\Model\CartMutex;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -90,7 +91,7 @@ class CartMutexTest extends TestCase
             [
                 'callable' => 'privateMethod',
                 'args' => ['test'],
-                'expectedResult' => 'test'
+                'expectedResult' => 'test',
             ],
         ];
     }

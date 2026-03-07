@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\Cookie\CookieReaderInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
-
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase
 {
@@ -227,8 +228,8 @@ class RequestTest extends TestCase
 
     public function testGetCookie()
     {
-        $key = "cookieName";
-        $default = "defaultValue";
+        $key = 'cookieName';
+        $default = 'defaultValue';
 
         $this->cookieReader
             ->expects($this->once())
@@ -240,8 +241,8 @@ class RequestTest extends TestCase
 
     public function testGetCookieDefault()
     {
-        $key = "cookieName";
-        $default = "defaultValue";
+        $key = 'cookieName';
+        $default = 'defaultValue';
 
         $this->cookieReader
             ->expects($this->once())
@@ -254,9 +255,9 @@ class RequestTest extends TestCase
 
     public function testGetCookieNameExists()
     {
-        $key = "cookieName";
-        $default = "defaultValue";
-        $value = "cookieValue";
+        $key = 'cookieName';
+        $default = 'defaultValue';
+        $value = 'cookieValue';
 
         $this->cookieReader
             ->expects($this->once())
@@ -270,7 +271,7 @@ class RequestTest extends TestCase
     public function testGetCookieNullName()
     {
         $nullKey = null;
-        $default = "defaultValue";
+        $default = 'defaultValue';
 
         $this->cookieReader
             ->expects($this->once())

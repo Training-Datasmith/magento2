@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\Model\View\Result\Forward;
 use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Backend\Model\View\Result\Page;
@@ -24,6 +24,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -100,11 +101,11 @@ class SaveTest extends ProductTestCase
         $additionalParams = ['resultRedirectFactory' => $this->resultRedirectFactory];
 
         $storeManagerInterfaceMock = $this->createMock(StoreManagerInterface::class);
-        
+
         // Create a Store mock with getCode method
         $storeMock = $this->createPartialMock(Store::class, ['getCode']);
         $storeMock->method('getCode')->willReturn('default');
-        
+
         $storeManagerInterfaceMock->method('getStore')->willReturn($storeMock);
 
         $this->action = (new ObjectManagerHelper($this))->getObject(
@@ -117,7 +118,7 @@ class SaveTest extends ProductTestCase
                 'resultForwardFactory' => $resultForwardFactory,
                 'initializationHelper' => $this->initializationHelper,
                 'storeManager' => $storeManagerInterfaceMock,
-                'messageManager' => $this->messageManagerMock
+                'messageManager' => $this->messageManagerMock,
             ]
         );
     }
@@ -151,7 +152,7 @@ class SaveTest extends ProductTestCase
     {
         return [
             [new LocalizedException(__('Message')), 'addExceptionMessage'],
-            [new \Exception('Message'), 'addErrorMessage']
+            [new \Exception('Message'), 'addErrorMessage'],
         ];
     }
 }

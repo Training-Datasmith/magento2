@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\ImageFactory;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Config\CatalogMediaConfig;
@@ -21,6 +21,7 @@ use Magento\Framework\Config\View;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\ConfigInterface;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -304,25 +305,25 @@ class ImageTest extends TestCase
                         'design/watermark/' . $data['type'] . '_image',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $data['watermark']
+                        $data['watermark'],
                     ],
                     [
                         'design/watermark/' . $data['type'] . '_imageOpacity',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $data['watermark_opacity']
+                        $data['watermark_opacity'],
                     ],
                     [
                         'design/watermark/' . $data['type'] . '_position',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $data['watermark_position']
+                        $data['watermark_position'],
                     ],
                     [
                         'design/watermark/' . $data['type'] . '_size',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $data['watermark_size']
+                        $data['watermark_size'],
                     ],
                 ]
             );
@@ -502,14 +503,14 @@ class ImageTest extends TestCase
                     'type' => 'image',
                     'label' => 'test_label',
                 ],
-                "expected" => 'test_label',
+                'expected' => 'test_label',
             ],
             [
                 'data' => [
                     'type' => 'image',
                     'label' => null,
                 ],
-                "expected" => 'test_label',
+                'expected' => 'test_label',
             ],
         ];
     }

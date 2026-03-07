@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class BackpressureTest extends TestCase
                 GuestCartManagementInterface::class,
                 'placeOrder',
                 '/V1/guest-carts/:cartId/order',
-                50
+                50,
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
@@ -74,8 +75,8 @@ class BackpressureTest extends TestCase
                 CartManagementInterface::class,
                 'placeOrder',
                 '/V1/carts/mine/order',
-                100
-            ]
+                100,
+            ],
         ];
     }
 

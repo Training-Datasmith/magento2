@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,13 +14,12 @@ use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\Layout\ProcessorFactory;
 use Magento\Framework\View\Layout\ProcessorInterface;
 use Magento\Theme\Helper\Theme;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ThemeTest extends TestCase
 {
-
     /**
      * @param string $layoutStr
      * @param array $expectedResult

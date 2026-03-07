@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Invoice\AbstractInvoice;
 
 abstract class Grid extends \Magento\Backend\App\Action
@@ -12,7 +15,7 @@ abstract class Grid extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
+    public const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
 
     /**
      * @var \Magento\Framework\View\Result\LayoutFactory

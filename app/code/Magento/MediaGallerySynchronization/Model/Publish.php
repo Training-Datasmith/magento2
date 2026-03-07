@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class Publish
      *
      * @param array $paths
      */
-    public function execute(array $paths = []) : void
+    public function execute(array $paths = []): void
     {
         $this->publisher->publish(
             self::TOPIC_MEDIA_GALLERY_SYNCHRONIZATION,

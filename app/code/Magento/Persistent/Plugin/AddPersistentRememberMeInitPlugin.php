@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Plugin;
 
+use Magento\Customer\Model\Session;
 use Magento\Framework\View\Layout;
 use Magento\Persistent\Block\Header\RememberMeInit;
 use Magento\Persistent\Helper\Data;
-use Magento\Customer\Model\Session;
 
 /**
  * Plugin to add layout handle and block for persistent remember me init

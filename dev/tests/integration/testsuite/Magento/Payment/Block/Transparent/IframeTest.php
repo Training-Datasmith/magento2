@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Block\Transparent;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -32,7 +35,7 @@ class IframeTest extends \PHPUnit\Framework\TestCase
             [
                 'redirect' => $xssString,
                 'redirect_parent' => $xssString,
-                'error_msg' => $xssString
+                'error_msg' => $xssString,
             ]
         );
 
@@ -51,7 +54,7 @@ class IframeTest extends \PHPUnit\Framework\TestCase
             ['</script><script>alert("XSS")</script>'],
             ['javascript%3Aalert%28String.fromCharCode%280x78%29%2BString.fromCharCode%280x73%29%2BString.'
                 . 'fromCharCode%280x73%29%29'],
-            ['javascript:alert(String.fromCharCode(0x78)+String.fromCharCode(0x73)+String.fromCharCode(0x73))']
+            ['javascript:alert(String.fromCharCode(0x78)+String.fromCharCode(0x73)+String.fromCharCode(0x73))'],
         ];
     }
 }

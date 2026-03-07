@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -33,12 +34,12 @@ class Date extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'default_value_text' => '',
                         'default_value_date' => '10/29/2019',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
     }
@@ -52,7 +53,7 @@ class Date extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeDataWithCheckArray(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     1 => [
                         'default_value' => '2019-10-29 00:00:00',
                     ],

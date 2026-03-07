@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -38,8 +39,8 @@ class FormatTest extends TestCase
                 'disabled' => false,
                 'connections' => [
                     'con01' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => true],
-                ]
-            ]
+                ],
+            ],
         ];
         $this->model->validate($configData);
     }
@@ -97,7 +98,7 @@ class FormatTest extends TestCase
             'pub01' => [
                 'topic' => 'pub01',
                 'disabled' => false,
-                'connections' => 'con1'
+                'connections' => 'con1',
             ],
         ];
         $this->model->validate($configData);
@@ -113,7 +114,7 @@ class FormatTest extends TestCase
                 'disabled' => false,
                 'connections' => [
                     'con01' => ['exchange' => 'exchange01', 'disabled' => false],
-                ]
+                ],
             ],
         ];
         $this->model->validate($configData);
@@ -129,7 +130,7 @@ class FormatTest extends TestCase
                 'disabled' => false,
                 'connections' => [
                     'con01' => ['name' => 'con1', 'disabled' => false],
-                ]
+                ],
             ],
         ];
         $this->model->validate($configData);
@@ -145,7 +146,7 @@ class FormatTest extends TestCase
                 'disabled' => false,
                 'connections' => [
                     'con01' => ['name' => 'con1', 'exchange' => 'default'],
-                ]
+                ],
             ],
         ];
         $this->model->validate($configData);

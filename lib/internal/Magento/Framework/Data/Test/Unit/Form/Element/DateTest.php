@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Date
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
@@ -15,10 +17,10 @@ use Magento\Framework\Data\Form\Element\Date;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Escaper;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DateTest extends TestCase
 {
@@ -129,7 +131,7 @@ class DateTest extends TestCase
         return $formMock;
     }
 
-    /** 
+    /**
      * @param string|null $dateFormat
      * @param string|null $format
      * @param string|null $timeFormat
@@ -166,7 +168,7 @@ class DateTest extends TestCase
             [null, 'yy-mm-dd', null, 'yy-mm-dd'],
             ['yyyy-mm-dd', null, null, 'yyyy-mm-dd'],
             ['yyyy-mm-dd', 'yy-mm-dd', 'hh:mm:ss', 'yyyy-mm-dd hh:mm:ss'],
-            ['yyyy-mm-dd', 'yy-mm-dd', null, 'yyyy-mm-dd']
+            ['yyyy-mm-dd', 'yy-mm-dd', null, 'yyyy-mm-dd'],
         ];
     }
 }

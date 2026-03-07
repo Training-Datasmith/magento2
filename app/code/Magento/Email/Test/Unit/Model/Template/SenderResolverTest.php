@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class SenderResolverTest extends TestCase
 {
@@ -40,7 +41,7 @@ class SenderResolverTest extends TestCase
         $this->senderResolver = $objectManager->getObject(
             SenderResolver::class,
             [
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
     }
@@ -62,14 +63,14 @@ class SenderResolverTest extends TestCase
                     'trans_email/ident_' . $sender . '/name',
                     ScopeInterface::SCOPE_STORE,
                     $scopeId,
-                    'Test Name'
+                    'Test Name',
                 ],
                 [
                     'trans_email/ident_' . $sender . '/email',
                     ScopeInterface::SCOPE_STORE,
                     $scopeId,
-                    'test@email.com'
-                ]
+                    'test@email.com',
+                ],
             ]);
 
         $result = $this->senderResolver->resolve($sender);
@@ -103,11 +104,11 @@ class SenderResolverTest extends TestCase
     {
         return [
             [
-                ['name' => 'Name']
+                ['name' => 'Name'],
             ],
             [
-                ['email' => 'test@email.com']
-            ]
+                ['email' => 'test@email.com'],
+            ],
         ];
     }
 }

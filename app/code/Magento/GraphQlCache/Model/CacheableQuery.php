@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class CacheableQuery implements ResetAfterRequestInterface
      *
      * @return bool
      */
-    public function shouldPopulateCacheHeadersWithTags() : bool
+    public function shouldPopulateCacheHeadersWithTags(): bool
     {
         $cacheTags = $this->getCacheTags();
         $isQueryCacheable = $this->isCacheable();

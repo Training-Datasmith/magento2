@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,21 +18,21 @@ interface CurrencyInterface extends \Magento\Framework\Api\ExtensibleDataInterfa
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_GLOBAL_CURRENCY_CODE = 'global_currency_code';
+    public const KEY_GLOBAL_CURRENCY_CODE = 'global_currency_code';
 
-    const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
+    public const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
 
-    const KEY_STORE_CURRENCY_CODE = 'store_currency_code';
+    public const KEY_STORE_CURRENCY_CODE = 'store_currency_code';
 
-    const KEY_QUOTE_CURRENCY_CODE = 'quote_currency_code';
+    public const KEY_QUOTE_CURRENCY_CODE = 'quote_currency_code';
 
-    const KEY_STORE_TO_BASE_RATE = 'store_to_base_rate';
+    public const KEY_STORE_TO_BASE_RATE = 'store_to_base_rate';
 
-    const KEY_STORE_TO_QUOTE_RATE = 'store_to_quote_rate';
+    public const KEY_STORE_TO_QUOTE_RATE = 'store_to_quote_rate';
 
-    const KEY_BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
+    public const KEY_BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
 
-    const KEY_BASE_TO_QUOTE_RATE = 'base_to_quote_rate';
+    public const KEY_BASE_TO_QUOTE_RATE = 'base_to_quote_rate';
 
     /**#@-*/
 

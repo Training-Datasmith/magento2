@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ interface CrontabManagerInterface
     /**#@+
      * Constants for wrapping Magento section in crontab
      */
-    const TASKS_BLOCK_START = '#~ MAGENTO START';
-    const TASKS_BLOCK_END = '#~ MAGENTO END';
+    public const TASKS_BLOCK_START = '#~ MAGENTO START';
+    public const TASKS_BLOCK_END = '#~ MAGENTO END';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 class ConfigurableProductQueryTest extends GraphQlAbstract
 {
-
     /**
      * @magentoApiDataFixture Magento/ConfigurableProduct/_files/product_configurable.php
      */

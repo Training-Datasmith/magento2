@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class SingleChoiceProvider
      * @param Product $product
      * @return bool
      */
-    public function isSingleChoiceAvailable(Product $product) : bool
+    public function isSingleChoiceAvailable(Product $product): bool
     {
         $result = false;
         if ($product->getTypeId() === BundleType::TYPE_BUNDLE) {

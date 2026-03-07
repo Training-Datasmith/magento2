@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Config\App\Config;
 
 use Magento\Config\App\Config\Type\System;

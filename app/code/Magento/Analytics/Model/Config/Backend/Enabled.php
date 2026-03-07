@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config\Backend;
 
 use Magento\Analytics\Model\Config\Backend\Enabled\SubscriptionHandler;
@@ -25,34 +28,19 @@ class Enabled extends Value
      */
     public const XML_ENABLED_CONFIG_STRUCTURE_PATH = 'analytics/general/enabled';
 
-    /**
-     * Service for processing of activation/deactivation MBI subscription.
-     *
-     * @var SubscriptionHandler
-     */
-    private $subscriptionHandler;
-
-    /**
-     * @param Context $context
-     * @param Registry $registry
-     * @param ScopeConfigInterface $config
-     * @param TypeListInterface $cacheTypeList
-     * @param SubscriptionHandler $subscriptionHandler
-     * @param AbstractResource|null $resource
-     * @param AbstractDb|null $resourceCollection
-     * @param array $data
-     */
     public function __construct(
         Context $context,
         Registry $registry,
         ScopeConfigInterface $config,
         TypeListInterface $cacheTypeList,
-        SubscriptionHandler $subscriptionHandler,
+        /**
+         * Service for processing of activation/deactivation MBI subscription.
+         */
+        private readonly SubscriptionHandler $subscriptionHandler,
         ?AbstractResource $resource = null,
         ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
-        $this->subscriptionHandler = $subscriptionHandler;
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
     }
 

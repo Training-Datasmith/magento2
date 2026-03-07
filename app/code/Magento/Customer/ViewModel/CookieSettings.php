@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Customer\ViewModel;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class CookieSettings implements ArgumentInterface
 {

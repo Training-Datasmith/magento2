@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ return [
                 "'xs:boolean'.\nLine: 5\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
                 "1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" .
                 "2:            <type name=\"Some_Name\">\n3:                <arguments>\n" .
-                "4:                    <argument name=\"Param_name\" xsi:type=\"object\" " .
+                '4:                    <argument name="Param_name" xsi:type="object" ' .
                 "shared=\"forbidden\">Object</argument>\n5:                </arguments>\n6:            </type>\n" .
                 "7:        </config>\n8:\n",
                 false,
@@ -139,7 +140,7 @@ return [
                 "The xml was: \n0:<?xml version=\"1.0\"?>\n" .
                 "1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" .
                 "2:            <type name=\"Some_Name\">\n3:                <arguments>\n" .
-                "4:                    <argument name=\"Param_name\" xsi:type=\"object\" " .
+                '4:                    <argument name="Param_name" xsi:type="object" ' .
                 "forbidden=\"text\">Object</argument>\n5:                </arguments>\n6:            </type>\n" .
                 "7:        </config>\n8:\n",
                 false,
@@ -175,7 +176,7 @@ return [
             [
                 "Element 'plugin', attribute 'disabled': 'string' is not a valid value of the atomic type " .
                 "'xs:boolean'.\nLine: 2\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-                "1:<config><type name=\"Some_Name\"><plugin name=\"some_name\" disabled=\"string\"/></type>" .
+                '1:<config><type name="Some_Name"><plugin name="some_name" disabled="string"/></type>' .
                 "</config>\n2:\n",
                 false,
             ],
@@ -188,7 +189,7 @@ return [
             [
                 "Element 'plugin', attribute 'sortOrder': 'string' is not a valid value of the atomic type " .
                 "'xs:int'.\nLine: 2\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-                "1:<config><type name=\"Some_Name\"><plugin name=\"some_name\" sortOrder=\"string\"/></type>" .
+                '1:<config><type name="Some_Name"><plugin name="some_name" sortOrder="string"/></type>' .
                 "</config>\n2:\n",
                 false,
             ],
@@ -301,7 +302,7 @@ return [
                 "1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n" .
                 "2:            <type name=\"Some_Name\">\n3:                <arguments>\n" .
                 "4:                    <argument name=\"sorted_object_list\" xsi:type=\"array\">\n" .
-                "5:                        <item name=\"someObject\" xsi:type=\"object\" sortOrder=\"false\">" .
+                '5:                        <item name="someObject" xsi:type="object" sortOrder="false">' .
                 "Some_Class_Name</item>\n6:                    </argument>\n7:                </arguments>\n" .
                 "8:            </type>\n9:        </config>\n10:\n",
                 false,
@@ -337,7 +338,7 @@ return [
         [
             [
                 "/Element \'virtualType\', attribute \'name\': .*\'777Digits\\\\IsNotAllowed\' is not" .
-                " (a valid value|accepted).*/",
+                ' (a valid value|accepted).*/',
                 true,
             ],
         ],

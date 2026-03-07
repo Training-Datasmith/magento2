@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class QueryTest extends TestCase
                 'select' => $this->selectMock,
                 'connectionName' => $this->connectionName,
                 'selectHydrator' => $this->selectHydratorMock,
-                'config' => []
+                'config' => [],
             ]
         );
     }
@@ -79,7 +80,7 @@ class QueryTest extends TestCase
         $expectedResult = [
             'connectionName' => $this->connectionName,
             'select_parts' => $selectParts,
-            'config' => []
+            'config' => [],
         ];
 
         $this->assertSame($expectedResult, $this->query->jsonSerialize());
@@ -91,7 +92,7 @@ class QueryTest extends TestCase
             Select::ORDER,
             Select::LIMIT_COUNT,
             Select::LIMIT_OFFSET,
-            Select::COLUMNS
+            Select::COLUMNS,
         ];
 
         $this->selectMock

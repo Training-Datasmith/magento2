@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,5 +17,4 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
  */
 class Value extends \GraphQL\Deferred
 {
-
 }

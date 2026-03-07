@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class EditTest extends TestCase
     protected function setUp(): void
     {
         $objectManagerHelper = new ObjectManager($this);
-        
+
         $this->jsonEncoderMock = $this->createMock(EncoderInterface::class);
         $this->authSessionsMock = $this->createMock(Session::class);
         $this->registryMock = $this->createPartialMock(Registry::class, ['registry']);
@@ -63,18 +64,18 @@ class EditTest extends TestCase
                 'getParentName', 'createBlock', 'addBlock', 'addContainer', 'renameElement',
                 'getElementAlias', 'removeOutputElement', 'getMessagesBlock', 'getBlockSingleton',
                 'getElementProperty', 'isBlock', 'isContainer', 'isManipulationAllowed',
-                'setBlock', 'isCacheable', 'setRole', 'setActive', 'getId'
+                'setBlock', 'isCacheable', 'setRole', 'setActive', 'getId',
             ]
         );
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         $this->model = $objectManagerHelper->getObject(
@@ -83,7 +84,7 @@ class EditTest extends TestCase
                 'jsonEncoder' => $this->jsonEncoderMock,
                 'authSession' => $this->authSessionsMock,
                 'registry' => $this->registryMock,
-                'layout' => $this->layoutInterfaceMock
+                'layout' => $this->layoutInterfaceMock,
             ]
         );
     }

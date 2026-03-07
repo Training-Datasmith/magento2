@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Sales\Setup\Patch\Data;
 
 use Magento\Framework\DB\Query\Generator;
@@ -143,7 +145,7 @@ class WishlistDataCleanUp implements DataPatchInterface
     public static function getDependencies()
     {
         return [
-            ConvertSerializedDataToJson::class
+            ConvertSerializedDataToJson::class,
         ];
     }
 

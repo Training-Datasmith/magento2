@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Category;
 
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Backend\Model\Auth\Session;
 use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\Auth\Session;
 use Magento\Catalog\Controller\Adminhtml\Category\Move;
 use Magento\Catalog\Model\Category;
 use Magento\Cms\Model\Wysiwyg\Config;
@@ -26,6 +26,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\LayoutFactory;
 use Magento\Framework\View\LayoutInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -82,20 +83,20 @@ class MoveTest extends TestCase
         $objects = [
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 Registry::class,
-                $this->createMock(Registry::class)
+                $this->createMock(Registry::class),
             ],
             [
                 Config::class,
-                $this->createMock(Config::class)
+                $this->createMock(Config::class),
             ],
             [
                 Session::class,
-                $this->createMock(Session::class)
-            ]
+                $this->createMock(Session::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->resultJsonFactoryMock = $this->createPartialMock(JsonFactory::class, ['create']);
@@ -121,7 +122,7 @@ class MoveTest extends TestCase
                 'getParam', 'getPost',
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getCookie', 'getDistroBaseUrl', 'getRequestUri', 'getScheme',
-                'setParams', 'getParams', 'isSecure'
+                'setParams', 'getParams', 'isSecure',
             ]
         );
         $this->request->method('getModuleName')->willReturn('catalog');
@@ -200,7 +201,7 @@ class MoveTest extends TestCase
             ->with(
                 [
                     'messages' => '<body></body>',
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturn(true);
@@ -260,7 +261,7 @@ class MoveTest extends TestCase
             ->with(
                 [
                     'messages' => '<body></body>',
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturn(true);
@@ -320,7 +321,7 @@ class MoveTest extends TestCase
             ->with(
                 [
                     'messages' => '<body></body>',
-                    'error' => false
+                    'error' => false,
                 ]
             )
             ->willReturn(true);

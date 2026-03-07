@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Customer;
 
+use Magento\Framework\DataObject;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
-use Magento\Framework\DataObject;
 
 /**
  * End to end place order test using payflowpro via graphql endpoint for customer
@@ -136,7 +137,7 @@ QUERY;
         $requestHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
         $paypalResponse = new DataObject(
             [
@@ -171,7 +172,7 @@ QUERY;
                         'expdate' => '0221',
                         'cardtype' => '0',
                         'iavs' => 'N',
-                        'result_code' => '0'
+                        'result_code' => '0',
                     ]
                 )
             );

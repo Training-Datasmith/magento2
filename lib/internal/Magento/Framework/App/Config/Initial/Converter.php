@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Initial configuration data converter. Converts \DOMDocument to array
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config\Initial;
 
 /**

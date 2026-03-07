@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class SearchCriteriaValidatorTest extends TestCase
     public function testInvalidMaxValue()
     {
         $this->expectException(GraphQlInputException::class);
-        $this->expectExceptionMessage("Maximum pageSize is 3");
+        $this->expectExceptionMessage('Maximum pageSize is 3');
 
         $this->configProvider->method('isInputLimitingEnabled')
             ->willReturn(true);
@@ -96,7 +97,7 @@ class SearchCriteriaValidatorTest extends TestCase
     public function testInvalidValueWithConfig()
     {
         $this->expectException(GraphQlInputException::class);
-        $this->expectExceptionMessage("Maximum pageSize is 10");
+        $this->expectExceptionMessage('Maximum pageSize is 10');
 
         $this->configProvider->method('isInputLimitingEnabled')
             ->willReturn(true);

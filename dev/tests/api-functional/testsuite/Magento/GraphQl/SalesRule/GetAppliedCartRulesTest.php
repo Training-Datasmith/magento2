@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -49,12 +50,12 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
             'coupon_type' => SalesRule::COUPON_TYPE_SPECIFIC,
             'coupon_code' => 'COUPON_1',
             'sort_order' => 10,
-            'stop_rules_processing' => false
+            'stop_rules_processing' => false,
         ], as: 'rule1'),
         DataFixture(SalesRuleFixture::class, [
             'coupon_type' => SalesRule::COUPON_TYPE_NO_COUPON,
             'sort_order' => 20,
-            'stop_rules_processing' => false
+            'stop_rules_processing' => false,
         ], as: 'rule2'),
         DataFixture(SalesRuleFixture::class, ['is_active' => 0, 'sort_order' => 30], as: 'rule3'),
         DataFixture(ProductFixture::class, as: 'product'),
@@ -62,7 +63,7 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 10
+            'qty' => 10,
         ]),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
     ]
@@ -87,7 +88,7 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
         DataFixture(GuestCart::class, as: 'cart'),
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
-            'product_id' => '$product.id$'
+            'product_id' => '$product.id$',
         ]),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
     ]
@@ -96,8 +97,8 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'cart' => [
-                    'rules' => null
-                ]
+                    'rules' => null,
+                ],
             ],
             $this->graphQlQuery($this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()))
         );
@@ -112,7 +113,7 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
         DataFixture(GuestCart::class, as: 'cart'),
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
-            'product_id' => '$product.id$'
+            'product_id' => '$product.id$',
         ]),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
     ]
@@ -121,8 +122,8 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'cart' => [
-                    'rules' => []
-                ]
+                    'rules' => [],
+                ],
             ],
             $this->graphQlQuery($this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()))
         );
@@ -139,13 +140,13 @@ class GetAppliedCartRulesTest extends GraphQlAbstract
             'cart' => [
                 'rules' => [
                     [
-                        'uid' => $this->idEncoder->encode($this->fixtures->get('rule1')->getId())
+                        'uid' => $this->idEncoder->encode($this->fixtures->get('rule1')->getId()),
                     ],
                     [
-                        'uid' => $this->idEncoder->encode($this->fixtures->get('rule2')->getId())
-                    ]
-                ]
-            ]
+                        'uid' => $this->idEncoder->encode($this->fixtures->get('rule2')->getId()),
+                    ],
+                ],
+            ],
         ];
     }
 

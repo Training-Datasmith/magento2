@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\NewRelicReporting\Test\Unit\Model\ResourceModel\System;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\NewRelicReporting\Model\System;
 use Magento\NewRelicReporting\Model\ResourceModel\System as SystemResource;
 use Magento\NewRelicReporting\Model\ResourceModel\System\Collection;
+use Magento\NewRelicReporting\Model\System;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;

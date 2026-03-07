@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Cms\Ui\Component\Listing\Column\Cms\Options;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Group;
-use Magento\Store\Model\System\Store;
 use Magento\Store\Model\Store as StoreModelStore;
+use Magento\Store\Model\System\Store;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -69,7 +70,7 @@ class OptionsTest extends TestCase
             Options::class,
             [
                 'systemStore' => $this->systemStoreMock,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }
@@ -83,7 +84,7 @@ class OptionsTest extends TestCase
         $expectedOptions = [
             [
                 'label' => __('All Store Views'),
-                'value' => '0'
+                'value' => '0',
             ],
             [
                 'label' => 'Main Website',
@@ -93,12 +94,12 @@ class OptionsTest extends TestCase
                         'value' => [
                             [
                                 'label' => '        Default Store View',
-                                'value' => '1'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'value' => '1',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->systemStoreMock->expects($this->once())->method('getWebsiteCollection')->willReturn($websiteCollection);
@@ -120,7 +121,7 @@ class OptionsTest extends TestCase
             [
                 ['Default Store View', null, 'Default Store View'],
                 ['Main Website Store', null, 'Main Website Store'],
-                ['Main Website', null, 'Main Website']
+                ['Main Website', null, 'Main Website'],
             ]
         );
 

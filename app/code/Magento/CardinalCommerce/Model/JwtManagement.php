@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CardinalCommerce\Model;
 
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Encryption\Helper\Security;
+use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * JSON Web Token management.

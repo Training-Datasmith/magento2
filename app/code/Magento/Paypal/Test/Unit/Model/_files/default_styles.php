@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,27 +12,27 @@ return [
         'size' => 'responsive',
         'color' => 'gold',
         'shape' => 'rect',
-        'label' =>'paypal'
+        'label' => 'paypal',
     ],
     'cart' => [
         'layout' => 'vertical',
         'size' => 'responsive',
         'color' => 'gold',
         'shape' => 'rect',
-        'label' =>'paypal'
+        'label' => 'paypal',
     ],
     'mini_cart' => [
         'layout' => 'vertical',
         'size' => 'responsive',
         'color' => 'gold',
         'shape' => 'rect',
-        'label' =>'paypal'
+        'label' => 'paypal',
     ],
     'product' => [
         'layout' => 'horizontal',
         'size' => 'responsive',
         'color' => 'gold',
         'shape' => 'pill',
-        'label' =>'buynow'
-    ]
+        'label' => 'buynow',
+    ],
 ];

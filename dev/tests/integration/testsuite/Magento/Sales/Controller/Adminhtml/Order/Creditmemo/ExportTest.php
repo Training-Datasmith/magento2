@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Sales\Controller\Adminhtml\Order\Creditmemo;
 
 use Magento\Sales\Api\Data\CreditmemoInterface;
-use Magento\Sales\Model\ResourceModel\Order\Creditmemo\CollectionFactory;
 use Magento\Sales\Controller\Adminhtml\Order\ExportBase;
+use Magento\Sales\Model\ResourceModel\Order\Creditmemo\CollectionFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

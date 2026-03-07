@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Downloadable\Block\Catalog\Product;
 
-use Magento\Downloadable\Model\ResourceModel\Sample\Collection as SampleCollection;
 use Magento\Downloadable\Api\Data\SampleInterface;
+use Magento\Downloadable\Model\ResourceModel\Sample\Collection as SampleCollection;
 
 /**
  * Downloadable Product Samples part block

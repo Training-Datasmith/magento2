@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Persistent\Test\Unit\Observer;
 
 use Magento\Cron\Model\Schedule;
+use Magento\Persistent\Model\CleanExpiredPersistentQuotes;
 use Magento\Persistent\Model\Session;
 use Magento\Persistent\Model\SessionFactory;
 use Magento\Persistent\Observer\ClearExpiredCronJobObserver;
 use Magento\Store\Model\ResourceModel\Website\Collection;
 use Magento\Store\Model\ResourceModel\Website\CollectionFactory;
-use Magento\Persistent\Model\CleanExpiredPersistentQuotes;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

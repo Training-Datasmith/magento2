@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class ToModelTest extends TestCase
                 'getAttributeName',
                 'getOperator',
                 'getAggregatorType',
-                'getConditions'
+                'getConditions',
             ]
         );
 
@@ -138,7 +139,7 @@ class ToModelTest extends TestCase
                 'getAttributeName',
                 'getOperator',
                 'getAggregatorType',
-                'getConditions'
+                'getConditions',
             ]
         );
 
@@ -152,7 +153,7 @@ class ToModelTest extends TestCase
                 'getAttributeName',
                 'getOperator',
                 'getAggregatorType',
-                'getConditions'
+                'getConditions',
             ]
         );
 
@@ -180,7 +181,7 @@ class ToModelTest extends TestCase
                 'getRuleId',
                 'getCondition',
                 'getActionCondition',
-                'getStoreLabels'
+                'getStoreLabels',
             ]
         );
         $dataModel
@@ -220,12 +221,12 @@ class ToModelTest extends TestCase
         $ruleModel
             ->expects($this->atLeastOnce())
             ->method('getData')
-            ->willReturn(['data_1'=>1]);
+            ->willReturn(['data_1' => 1]);
 
         $this->dataObjectProcessor
             ->expects($this->any())
             ->method('buildOutputDataArray')
-            ->willReturn(['data_2'=>2]);
+            ->willReturn(['data_2' => 2]);
 
         $this->ruleFactory
             ->expects($this->any())
@@ -283,12 +284,12 @@ class ToModelTest extends TestCase
         $ruleModel
             ->expects($this->atLeastOnce())
             ->method('getData')
-            ->willReturn(['data_1'=>1]);
+            ->willReturn(['data_1' => 1]);
 
         $this->dataObjectProcessor
             ->expects($this->any())
             ->method('buildOutputDataArray')
-            ->willReturn(['data_2'=>2]);
+            ->willReturn(['data_2' => 2]);
 
         $this->ruleFactory
             ->expects($this->any())
@@ -330,7 +331,7 @@ class ToModelTest extends TestCase
                     'to_date' => '03/25/2016',
                     'expected_from_date' => '2016-03-24T00:00:00',
                     'expected_to_date' => '2016-03-25T00:00:00',
-                ]
+                ],
             ],
             'yyyy-mm-dd to yyyy-mm-dd' => [
                 [
@@ -338,7 +339,7 @@ class ToModelTest extends TestCase
                     'to_date' => '2016-03-25',
                     'expected_from_date' => '2016-03-24T00:00:00',
                     'expected_to_date' => '2016-03-25T00:00:00',
-                ]
+                ],
             ],
             'yymmdd to yyyy-mm-dd' => [
                 [
@@ -346,7 +347,7 @@ class ToModelTest extends TestCase
                     'to_date' => '20160325',
                     'expected_from_date' => '2016-03-24T00:00:00',
                     'expected_to_date' => '2016-03-25T00:00:00',
-                ]
+                ],
             ],
         ];
     }

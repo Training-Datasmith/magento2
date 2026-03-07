@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class PopupTest extends TestCase
             Context::class,
             [
                 'request' => $this->request,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
         $this->action = $this->objectManager->getObject(
@@ -90,7 +91,7 @@ class PopupTest extends TestCase
             [
                 'context' => $this->context,
                 'factory' => $this->factory,
-                'registry' => $this->registry
+                'registry' => $this->registry,
             ]
         );
     }

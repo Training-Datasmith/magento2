@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Store;
 
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\Url\Validator as UrlValidator;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\Validation\ValidationException;
+use Magento\Store\Api\Data\StoreInterface;
 
 /**
  * Service class for scoped urls and paths
@@ -88,7 +89,7 @@ class Url
             throw new ValidationException(__('Invalid Url.'));
         }
 
-        $params = ["_secure" => $store->isCurrentlySecure()];
+        $params = ['_secure' => $store->isCurrentlySecure()];
         $this->urlInterface->setScope($store);
 
         $baseUrl = $this->urlInterface->getBaseUrl($params);

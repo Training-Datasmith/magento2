@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Persistent\Helper\Data;
  */
 class AddPersistentRememberMeInitObserver implements ObserverInterface
 {
-
     /**
      * @param Data $persistentData
      * @param Session $customerSession

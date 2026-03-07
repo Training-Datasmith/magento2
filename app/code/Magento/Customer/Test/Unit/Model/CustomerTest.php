@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\Customer\Model\Customer testing
  */
+
 namespace Magento\Customer\Test\Unit\Model;
 
 use Magento\Customer\Api\Data\AddressInterface;
@@ -279,8 +282,8 @@ class CustomerTest extends TestCase
     public static function isCustomerLockedDataProvider()
     {
         return [
-            ['lockExpires' => date("F j, Y", strtotime('-1 days')), 'expectedResult' => false],
-            ['lockExpires' => date("F j, Y", strtotime('+1 days')), 'expectedResult' => true]
+            ['lockExpires' => date('F j, Y', strtotime('-1 days')), 'expectedResult' => false],
+            ['lockExpires' => date('F j, Y', strtotime('+1 days')), 'expectedResult' => true],
         ];
     }
 
@@ -371,7 +374,7 @@ class CustomerTest extends TestCase
         $this->_model->updateData($customer);
 
         foreach ($customerDataAttributes as $key => $value) {
-            $expectedResult[strtolower(trim(preg_replace('/([A-Z]|[0-9]+)/', "_$1", $key), '_'))] = $value;
+            $expectedResult[strtolower(trim(preg_replace('/([A-Z]|[0-9]+)/', '_$1', $key), '_'))] = $value;
         }
 
         $expectedResult[$attribute->getAttributeCode()] = $attribute->getValue();
@@ -424,7 +427,7 @@ class CustomerTest extends TestCase
      *
      * @return void
      */
-    public function testGetRandomConfirmationKey() : void
+    public function testGetRandomConfirmationKey(): void
     {
         $this->mathRandom
             ->expects($this->once())

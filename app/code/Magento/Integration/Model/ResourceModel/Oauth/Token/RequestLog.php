@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\ResourceModel\Oauth\Token;
 
+use Magento\Integration\Model\Oauth\Token\RequestLog\Config as RequestLogConfig;
 use Magento\Integration\Model\Oauth\Token\RequestLog\ReaderInterface;
 use Magento\Integration\Model\Oauth\Token\RequestLog\WriterInterface;
-use Magento\Integration\Model\Oauth\Token\RequestLog\Config as RequestLogConfig;
 
 /**
  * Resource model for failed authentication attempts to retrieve admin/customer token.
@@ -62,7 +65,7 @@ class RequestLog extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb im
     {
         $date = (new \DateTime())->setTimestamp($this->dateTime->gmtTimestamp());
         $dateTime = $date->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT);
-        
+
         $select = $this->getConnection()->select();
         $select->from($this->getMainTable(), 'failures_count')
             ->where('user_name = :user_name AND user_type = :user_type AND lock_expires_at > :expiration_time');
@@ -107,11 +110,11 @@ class RequestLog extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb im
                 'user_name' => $userName,
                 'user_type' => $userType,
                 'failures_count' => 1,
-                'lock_expires_at' => $dateTime
+                'lock_expires_at' => $dateTime,
             ],
             [
                 'failures_count' => new \Zend_Db_Expr('failures_count+1'),
-                'lock_expires_at' => new \Zend_Db_Expr("'" . $dateTime . "'")
+                'lock_expires_at' => new \Zend_Db_Expr("'" . $dateTime . "'"),
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,8 +19,8 @@ interface AttributeInterface
     /**#@+
      * Constant used as key into $_data
      */
-    const ATTRIBUTE_CODE = 'attribute_code';
-    const VALUE = 'value';
+    public const ATTRIBUTE_CODE = 'attribute_code';
+    public const VALUE = 'value';
     /**#@-*/
 
     /**

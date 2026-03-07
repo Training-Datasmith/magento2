@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class DataProvider extends UiComponentDataProvider
             return [
                 'items' => [],
                 'totalRecords' => 0,
-                'errorMessage' => $exception->getMessage()
+                'errorMessage' => $exception->getMessage(),
             ];
         }
     }

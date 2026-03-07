@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -130,16 +131,16 @@ class ResolverCacheAbstract extends GraphQlAbstract
                 [ConfigFilePool::APP_ENV => ['cache_types' => $this->originalCacheTypesConfig]],
                 true // override
             );
-            
+
             // Clear DeploymentConfig cache so next test reads the restored env.php
             $this->objectManager->get(DeploymentConfig::class)->resetData();
-            
+
             // CRITICAL: Clear State's in-memory cache and remove shared instance
             // so next test gets a fresh State object that reloads from restored env.php
             $cacheState = $this->objectManager->get(StateInterface::class);
             $cacheState->_resetState();
             $this->objectManager->removeSharedInstance(StateInterface::class);
-            
+
             $this->originalCacheTypesConfig = null;
         }
 
@@ -233,15 +234,15 @@ class ResolverCacheAbstract extends GraphQlAbstract
     {
         /** @var StateInterface $cacheState */
         $cacheState = $this->objectManager->get(StateInterface::class);
-        
+
         // Save original cache_types config before first persist() call
         if ($this->originalCacheTypesConfig === null) {
             $deploymentConfig = $this->objectManager->get(DeploymentConfig::class);
             $this->originalCacheTypesConfig = $deploymentConfig->get('cache_types') ?: [];
         }
-        
+
         $cacheState->setEnabled($cacheType, $enable);
-        
+
         // CRITICAL: For GraphQL cache tests to work, HTTP requests must see the cache enabled
         // We persist to env.php but will restore original state in tearDown()
         $cacheState->persist();

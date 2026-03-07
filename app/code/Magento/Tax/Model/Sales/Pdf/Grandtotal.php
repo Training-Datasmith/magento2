@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Sales\Pdf;
 
 class Grandtotal extends \Magento\Sales\Model\Order\Pdf\Total\DefaultTotal

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class CategoryRepositoryPlugin
 {
     private const ATTRIBUTES_TO_PROCESS = [
         'url_key',
-        'url_path'
+        'url_path',
     ];
 
     /**

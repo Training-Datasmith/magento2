@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,10 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Directory\Setup;
 
-use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Directory\Setup\DataInstaller;
 use Magento\Framework\App\ResourceConnection;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Provide test for DataInstaller

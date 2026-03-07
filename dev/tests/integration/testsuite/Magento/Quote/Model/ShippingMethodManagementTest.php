@@ -1,33 +1,43 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model;
 
+use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Catalog\Test\Fixture\Virtual as VirtualProductFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Vat;
+use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
+use Magento\Customer\Test\Fixture\CustomerGroup as CustomerGroupFixture;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\OfflineShipping\Test\Fixture\TablerateFixture as TablerateFixture;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Api\CouponManagementInterface;
 use Magento\Quote\Api\Data\AddressInterfaceFactory;
 use Magento\Quote\Api\Data\EstimateAddressInterface;
 use Magento\Quote\Api\GuestShippingMethodManagementInterface;
 use Magento\Quote\Api\ShippingMethodManagementInterface;
 use Magento\Quote\Observer\Frontend\Quote\Address\CollectTotalsObserver;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\SalesRule\Test\Fixture\AddressCondition as AddressConditionFixture;
 use Magento\SalesRule\Test\Fixture\Rule as RuleFixture;
 use Magento\Store\Model\ScopeInterface;
@@ -35,6 +45,10 @@ use Magento\Tax\Api\Data\TaxClassInterface;
 use Magento\Tax\Api\TaxClassRepositoryInterface;
 use Magento\Tax\Model\ClassModel;
 use Magento\Tax\Model\Config as TaxConfig;
+use Magento\Tax\Test\Fixture\CustomerTaxClass;
+use Magento\Tax\Test\Fixture\ProductTaxClass;
+use Magento\Tax\Test\Fixture\TaxRate;
+use Magento\Tax\Test\Fixture\TaxRule;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
@@ -42,17 +56,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
 use PHPUnit\Framework\TestCase;
-use Magento\Quote\Api\CouponManagementInterface;
-use Magento\Customer\Model\Session;
-use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
-use Magento\OfflineShipping\Test\Fixture\TablerateFixture as TablerateFixture;
-use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
-use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
-use Magento\Customer\Test\Fixture\CustomerGroup as CustomerGroupFixture;
-use Magento\Tax\Test\Fixture\TaxRate;
-use Magento\Tax\Test\Fixture\TaxRule;
-use Magento\Tax\Test\Fixture\CustomerTaxClass;
-use Magento\Tax\Test\Fixture\ProductTaxClass;
 
 /**
  * Test for shipping methods management
@@ -152,7 +155,7 @@ class ShippingMethodManagementTest extends TestCase
             CategoryFixture::class,
             [
                 'name' => 'Category 1',
-                'parent_id' => 2
+                'parent_id' => 2,
             ],
             'cat3'
         ),
@@ -160,7 +163,7 @@ class ShippingMethodManagementTest extends TestCase
             CategoryFixture::class,
             [
                 'name' => 'Category 2',
-                'parent_id' => 2
+                'parent_id' => 2,
             ],
             'cat6'
         ),
@@ -170,7 +173,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'sku' => 'simple-tablerate-1',
                 'price' => 30,
-                'category_ids' => ['$cat3.id$']
+                'category_ids' => ['$cat3.id$'],
             ],
             'p1'
         ),
@@ -179,7 +182,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'sku' => 'simple-tablerate-2',
                 'price' => 40,
-                'category_ids' => ['$cat6.id$']
+                'category_ids' => ['$cat6.id$'],
             ],
             'p2'
         ),
@@ -188,7 +191,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'sku' => 'simple-tablerate-3',
                 'price' => 50,
-                'category_ids' => ['$cat6.id$']
+                'category_ids' => ['$cat6.id$'],
             ],
             'p3'
         ),
@@ -196,7 +199,7 @@ class ShippingMethodManagementTest extends TestCase
         DataFixture(
             GuestCartFixture::class,
             [
-                'reserved_order_id' => 'tableRate'
+                'reserved_order_id' => 'tableRate',
             ],
             'cart'
         ),
@@ -205,34 +208,34 @@ class ShippingMethodManagementTest extends TestCase
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'product_id' => '$p1.id$'
+                'product_id' => '$p1.id$',
             ]
         ),
         DataFixture(
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'product_id' => '$p2.id$'
+                'product_id' => '$p2.id$',
             ]
         ),
         DataFixture(
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'product_id' => '$p3.id$'
+                'product_id' => '$p3.id$',
             ]
         ),
 
         DataFixture(
             SetBillingAddressFixture::class,
             [
-                'cart_id' => '$cart.id$'
+                'cart_id' => '$cart.id$',
             ]
         ),
         DataFixture(
             SetShippingAddressFixture::class,
             [
-                'cart_id' => '$cart.id$'
+                'cart_id' => '$cart.id$',
             ]
         ),
         DataFixture(
@@ -245,9 +248,9 @@ class ShippingMethodManagementTest extends TestCase
                     [
                         'attribute' => 'category_ids',
                         'operator' => '()',
-                        'value' => '$cat3.id$'
-                    ]
-                ]
+                        'value' => '$cat3.id$',
+                    ],
+                ],
             ]
         ),
         DataFixture(
@@ -255,7 +258,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 0.00,
-                'price' => 15
+                'price' => 15,
             ]
         ),
         DataFixture(
@@ -263,7 +266,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 50.00,
-                'price' => 10
+                'price' => 10,
             ]
         ),
         DataFixture(
@@ -271,7 +274,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 100.00,
-                'price' => 5
+                'price' => 5,
             ]
         )
     ]
@@ -301,7 +304,7 @@ class ShippingMethodManagementTest extends TestCase
         $rate = reset($result);
         $expectedResult = [
             'method_code' => 'bestway',
-            'amount' => 5
+            'amount' => 5,
         ];
         $this->assertEquals($expectedResult['method_code'], $rate->getMethodCode());
         $this->assertEquals($expectedResult['amount'], $rate->getAmount());
@@ -319,7 +322,7 @@ class ShippingMethodManagementTest extends TestCase
                 'discount_amount' => 100,
                 'simple_action' => 'by_percent',
                 'apply_to_shipping' => 1,
-                'simple_free_shipping' => 1
+                'simple_free_shipping' => 1,
             ]
         ),
         DataFixture(ProductFixture::class, as: 'prod'),
@@ -329,7 +332,7 @@ class ShippingMethodManagementTest extends TestCase
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$ccart.id$',
-                'product_id' => '$prod.id$'
+                'product_id' => '$prod.id$',
             ]
         ),
     ]
@@ -366,9 +369,9 @@ class ShippingMethodManagementTest extends TestCase
                 [
                     'attribute' => 'quote_item_price',
                     'operator' => '==',
-                    'value' => '7'
-                ]
-            ]
+                    'value' => '7',
+                ],
+            ],
         ]),
         DataFixture(TablerateFixture::class, ['price' => 0, 'condition_name' => 'package_qty', 'condition_value' => 1]),
     ]
@@ -391,11 +394,11 @@ class ShippingMethodManagementTest extends TestCase
         $cartId = $quoteIdMask->getMaskedId();
         $data = [
             'data' => [
-                'country_id' => "US",
+                'country_id' => 'US',
                 'postcode' => null,
                 'region' => null,
-                'region_id' => null
-            ]
+                'region_id' => null,
+            ],
         ];
         /** @var EstimateAddressInterface $address */
         $address = $objectManager->create(EstimateAddressInterface::class, $data);
@@ -405,7 +408,7 @@ class ShippingMethodManagementTest extends TestCase
         $this->assertNotEmpty($result);
         $expectedResult = [
             'method_code' => 'bestway',
-            'amount' => 0
+            'amount' => 0,
         ];
         foreach ($result as $rate) {
             $this->assertEquals($expectedResult['amount'], $rate->getAmount());
@@ -458,9 +461,9 @@ class ShippingMethodManagementTest extends TestCase
                     [
                         'attribute' => 'quote_item_price',
                         'operator' => '==',
-                        'value' => '7'
-                    ]
-                ]
+                        'value' => '7',
+                    ],
+                ],
             ]
         ),
     ]
@@ -492,9 +495,9 @@ class ShippingMethodManagementTest extends TestCase
                 [
                     'attribute' => 'quote_item_price',
                     'operator' => '==',
-                    'value' => '7'
-                ]
-            ]
+                    'value' => '7',
+                ],
+            ],
         ]),
     ]
     public function testEstimateByAddressWithCartPriceRuleByShipment()
@@ -550,11 +553,11 @@ class ShippingMethodManagementTest extends TestCase
         $cartId = $quoteIdMask->getMaskedId();
         $data = [
             'data' => [
-                'country_id' => "US",
+                'country_id' => 'US',
                 'postcode' => null,
                 'region' => null,
-                'region_id' => null
-            ]
+                'region_id' => null,
+            ],
         ];
         /** @var EstimateAddressInterface $address */
         $address = $objectManager->create(EstimateAddressInterface::class, $data);
@@ -565,12 +568,12 @@ class ShippingMethodManagementTest extends TestCase
         $expectedResult = [
             'tablerate' => [
                 'method_code' => 'bestway',
-                'amount' => $tableRateAmount
+                'amount' => $tableRateAmount,
             ],
             'flatrate' => [
                 'method_code' => 'flatrate',
-                'amount' => $flatRateAmount
-            ]
+                'amount' => $flatRateAmount,
+            ],
         ];
         foreach ($result as $rate) {
             $this->assertEquals($expectedResult[$rate->getCarrierCode()]['amount'], $rate->getAmount());
@@ -603,14 +606,14 @@ class ShippingMethodManagementTest extends TestCase
             'tax_region_id' => 0,
             'tax_postcode' => '*',
             'code' => 'Denmark',
-            'rate' => 21
+            'rate' => 21,
         ], 'tax_rate'),
         DataFixture(TaxRule::class, [
             'customer_tax_class_ids' => ['$customer_tax_class.id$'],
             'product_tax_class_ids' => ['$product_tax_class.id$'],
             'tax_rate_ids' => ['$tax_rate.id$'],
             'priority' => 0,
-            'code' => 'Test Rule'
+            'code' => 'Test Rule',
         ], 'tax_rule'),
 
         // Customer group + customer with DE default shipping address
@@ -626,8 +629,8 @@ class ShippingMethodManagementTest extends TestCase
                 'postcode' => '10178',
                 'telephone' => '1234567890',
                 'default_billing' => true,
-                'default_shipping' => true
-            ]]
+                'default_shipping' => true,
+            ]],
         ], 'customer'),
 
         // Customer cart with reserved order id and one physical item
@@ -635,7 +638,7 @@ class ShippingMethodManagementTest extends TestCase
             CustomerCartFixture::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test01'
+                'reserved_order_id' => 'test01',
             ],
             'cart'
         ),
@@ -704,7 +707,7 @@ class ShippingMethodManagementTest extends TestCase
                 'isCountryInEU',
                 'getCustomerGroupIdBasedOnVatNumber',
                 'getMerchantCountryCode',
-                'getMerchantVatNumber'
+                'getMerchantVatNumber',
             ]
         );
         $customerVat->method('checkVatNumber')->willReturn($gatewayResponse);
@@ -844,7 +847,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 0.00,
-                'price' => 15
+                'price' => 15,
             ]
         ),
         DataFixture(
@@ -852,7 +855,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 50.00,
-                'price' => 10
+                'price' => 10,
             ]
         ),
         DataFixture(
@@ -860,7 +863,7 @@ class ShippingMethodManagementTest extends TestCase
             [
                 'condition_name' => 'package_value_with_discount',
                 'condition_value' => 100.00,
-                'price' => 5
+                'price' => 5,
             ]
         ),
     ]
@@ -894,7 +897,7 @@ class ShippingMethodManagementTest extends TestCase
 
         $expectedResult = [
             'method_code' => 'bestway',
-            'amount' => 0
+            'amount' => 0,
         ];
         $this->assertEquals($expectedResult['method_code'], $rate->getMethodCode());
         $this->assertEquals($expectedResult['amount'], $rate->getAmount());

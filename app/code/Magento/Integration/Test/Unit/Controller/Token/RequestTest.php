@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class RequestTest extends TestCase
                 'setParams',
                 'getParams',
                 'getCookie',
-                'isSecure'
+                'isSecure',
             ]
         );
         $this->response = $this->createMock(Response::class);
@@ -138,7 +139,7 @@ class RequestTest extends TestCase
             \Magento\Integration\Controller\Token\Request::class,
             [
                 'context' => $this->context,
-                'oauthService'=> $this->frameworkOauthSvcMock,
+                'oauthService' => $this->frameworkOauthSvcMock,
                 'helper' => $this->helperMock,
             ]
         );

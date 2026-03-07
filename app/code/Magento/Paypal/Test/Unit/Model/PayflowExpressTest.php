@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class PayflowExpressTest extends TestCase
     /**
      * Payflow pro transaction key
      */
-    const TRANSPORT_PAYFLOW_TXN_ID = 'Payflow pro transaction key';
+    public const TRANSPORT_PAYFLOW_TXN_ID = 'Payflow pro transaction key';
 
     protected function setUp(): void
     {
@@ -46,8 +47,8 @@ class PayflowExpressTest extends TestCase
         $objects = [
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $proFactory = $this->createPartialMock(

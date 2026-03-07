@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Integration\Activate\Permissions;
 
 use Magento\Backend\Block\Widget\Tabs as TabsWidget;

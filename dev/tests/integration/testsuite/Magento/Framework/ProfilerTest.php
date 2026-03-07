@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
-use ReflectionClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionClass;
 
 class ProfilerTest extends \PHPUnit\Framework\TestCase
 {
@@ -111,7 +114,7 @@ class ProfilerTest extends \PHPUnit\Framework\TestCase
                 'expectedDrivers' => [
                     new \Magento\Framework\Profiler\Driver\Standard(['outputs' => [['type' => 'html']]]),
                 ],
-            ]
+            ],
         ];
     }
 }

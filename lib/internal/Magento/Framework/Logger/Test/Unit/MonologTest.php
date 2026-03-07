@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Logger\Test\Unit;
 
-use Exception;
 use Magento\Framework\Logger\Monolog;
 use Monolog\Handler\TestHandler;
 use Monolog\Logger;

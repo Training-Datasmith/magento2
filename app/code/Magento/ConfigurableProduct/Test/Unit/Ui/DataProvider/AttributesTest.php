@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -63,8 +64,8 @@ class AttributesTest extends TestCase
         $expectedResult = [
             'totalRecords' => 1,
             'items' => [
-                0 => ['attribute' => 'color']
-            ]
+                0 => ['attribute' => 'color'],
+            ],
         ];
         $this->collectionMock->expects($this->once())
             ->method('getSelect')

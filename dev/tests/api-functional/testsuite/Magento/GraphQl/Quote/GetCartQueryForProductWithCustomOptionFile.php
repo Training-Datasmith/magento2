@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote;
 
+use Laminas\File\Transfer\Adapter\Http;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
 use Magento\Catalog\Test\Fixture\Product;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\DataObject;
+use Magento\Framework\Filesystem;
+use Magento\Framework\HTTP\Adapter\FileTransferFactory;
+use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Test\Fixture\GuestCart;
 use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Framework\Filesystem;
-use Magento\Framework\HTTP\Adapter\FileTransferFactory;
-use Laminas\File\Transfer\Adapter\Http;
 
 #[
     DataFixture(GuestCart::class, as: 'quote'),
@@ -36,10 +37,10 @@ use Laminas\File\Transfer\Adapter\Http;
                     'values' => [
                         [
                             'title' => 'file',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ],
         'product'
     )
@@ -86,18 +87,18 @@ class GetCartQueryForProductWithCustomOptionFile extends GraphQlAbstract
         );
 
         $expectedResult = [
-            'customizable_options'=>[[
-            'type'=>'file',
+            'customizable_options' => [[
+            'type' => 'file',
             'label' => 'option title',
-            'values'=>[
+            'values' => [
                 [
-                'label'=>'option title',
-                'value' => $items[0]['customizable_options'][0]['values'][0]['value']
-                ]
-            ]
+                'label' => 'option title',
+                'value' => $items[0]['customizable_options'][0]['values'][0]['value'],
+                ],
+            ],
             ]],
-            'product' => ['name' => $product->getName(), 'sku'=>$product->getData('sku')],
-            'quantity' => 1
+            'product' => ['name' => $product->getName(), 'sku' => $product->getData('sku')],
+            'quantity' => 1,
         ];
 
         $this->assertResponseFields($expectedResult, $items[0]);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\Customer\Model\Context;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context as TemplateContext;
 use Magento\Sales\Block\Reorder\Sidebar;
@@ -26,7 +28,6 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  *
@@ -142,7 +143,7 @@ class SidebarTest extends TestCase
                 'orderConfig' => $this->orderConfig,
                 'customerSession' => $this->customerSession,
                 'httpContext' => $this->httpContext,
-                'stockRegistry' => $this->stockRegistry
+                'stockRegistry' => $this->stockRegistry,
             ]
         );
     }

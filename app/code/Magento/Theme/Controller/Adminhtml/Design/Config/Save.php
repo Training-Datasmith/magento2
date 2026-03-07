@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Controller\Adminhtml\Design\Config;
 
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Theme\Model\DesignConfigRepository;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NotFoundException;
 use Magento\Theme\Model\Data\Design\ConfigFactory;
+use Magento\Theme\Model\DesignConfigRepository;
 
 /**
  * Save action controller

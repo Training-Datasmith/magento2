@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\Layout\Argument\Interpreter\Options;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class OptionsTest extends TestCase
 {
@@ -90,7 +91,7 @@ class OptionsTest extends TestCase
                 ['model' => \Magento\Framework\View\Test\Unit\Layout\Argument\Interpreter\OptionsTest::class],
                 '\UnexpectedValueException',
                 'Instance of the options source model is expected',
-            ]
+            ],
         ];
     }
 }

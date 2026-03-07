@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Block\DataProviders;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Backend\Model\Image\UploadResizeConfigInterface;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Provides additional data for image uploader

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Helper\Catalog\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\Option\Collection;
@@ -23,6 +23,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Wishlist\Model\Item as WishlistItem;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -99,7 +100,7 @@ class ConfigurationTest extends TestCase
                 'productConfiguration' => $this->productConfiguration,
                 'escaper' => $this->escaper,
                 'serializer' => $this->serializer,
-                'taxHelper' => $this->taxHelper
+                'taxHelper' => $this->taxHelper,
             ]
         );
     }
@@ -324,7 +325,7 @@ class ConfigurationTest extends TestCase
         $product->method('getName')->willReturn('name');
         $product->method('getPriceModel')->willReturn($priceModel);
         $this->item->method('getProduct')->willReturn($product);
-        $this->item->method('getOptionByCode')->willReturnCallback(fn($param) => match ([$param]) {
+        $this->item->method('getOptionByCode')->willReturnCallback(fn ($param) => match ([$param]) {
             ['bundle_option_ids'] => $itemOption,
             ['bundle_selection_ids'] => $selectionOption
         });
@@ -341,9 +342,9 @@ class ConfigurationTest extends TestCase
                 [
                     'label' => 'title',
                     'value' => [$value],
-                    'has_html' => true
+                    'has_html' => true,
                 ],
-                ['label' => 'title', 'value' => 'value']
+                ['label' => 'title', 'value' => 'value'],
             ],
             $this->helper->getOptions($this->item)
         );
@@ -358,7 +359,7 @@ class ConfigurationTest extends TestCase
     {
         return [
             [null, false],
-            [false, true]
+            [false, true],
         ];
     }
 }

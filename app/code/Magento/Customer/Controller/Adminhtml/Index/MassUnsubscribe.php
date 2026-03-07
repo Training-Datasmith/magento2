@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Config\Share;
+use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Backend\App\Action\Context;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\MassAction\Filter;
-use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 
 /**
  * Class to mass unsubscribe customers by ids

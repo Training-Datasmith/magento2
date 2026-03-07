@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\ValueTransformer;
 
 use Magento\Elasticsearch\SearchAdapter\Query\ValueTransformer\IntegerTransformer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test value transformer
@@ -55,7 +56,7 @@ class IntegerTransformerTest extends TestCase
     {
         return [
             ['12345', 12345],
-            ['3310042623',null]
+            ['3310042623',null],
         ];
     }
 }

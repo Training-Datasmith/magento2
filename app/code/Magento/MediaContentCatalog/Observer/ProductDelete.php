@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\MediaContentCatalog\Observer;
 use Magento\Catalog\Model\Product as CatalogProduct;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\MediaContentApi\Api\Data\ContentIdentityInterfaceFactory;
 use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterfaceFactory;
+use Magento\MediaContentApi\Api\Data\ContentIdentityInterfaceFactory;
 use Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface;
-use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 use Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface;
 use Magento\MediaContentApi\Model\Config;
+use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 
 /**
  * Observe the catalog_product_delete_before event and deletes relation between category content and media asset.
@@ -120,7 +121,7 @@ class ProductDelete implements ObserverInterface
                     $contentAssetLinks[] = $this->contentAssetLinkFactory->create(
                         [
                             'assetId' => $asset->getId(),
-                            'contentIdentity' => $contentIdentity
+                            'contentIdentity' => $contentIdentity,
                         ]
                     );
                 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\Export\Entity;
 
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -321,7 +324,7 @@ abstract class AbstractEav extends \Magento\ImportExport\Model\Export\AbstractEn
      */
     private function getAttributeValueById($attributeCode, $valueId)
     {
-        if ($valueId !== null 
+        if ($valueId !== null
             && isset($this->_attributeValues[$attributeCode])
             && isset($this->_attributeValues[$attributeCode][$valueId])
         ) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class FullTest extends TestCase
             [MetadataPool::class, $metadataPoolMock],
             [BatchProviderInterface::class, $batchProviderMock],
             [BatchSizeManagementInterface::class, $batchSizeManagementMock],
-            [ActiveTableSwitcher::class, $activeTableSwitcherMock]
+            [ActiveTableSwitcher::class, $activeTableSwitcherMock],
         ]);
 
         $model = new Full(

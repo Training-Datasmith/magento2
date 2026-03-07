@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,8 +54,8 @@ class TotalsInformationManagement extends WebapiAbstract
         /** @var PublisherConsumerController publisherConsumerController */
         $this->publisherConsumerController = $objectManager->create(PublisherConsumerController::class, [
             'consumers' => $this->consumers,
-            'logFilePath' => TESTS_TEMP_DIR . "/MessageQueueTestLog.txt",
-            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams()
+            'logFilePath' => TESTS_TEMP_DIR . '/MessageQueueTestLog.txt',
+            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams(),
         ]);
 
         try {
@@ -113,7 +115,7 @@ class TotalsInformationManagement extends WebapiAbstract
                         ->createCustomerAccessToken(
                             self::CUSTOMER_EMAIL,
                             self::CUSTOMER_PASSWORD
-                        )
+                        ),
                 ],
                 'soap' => [
                     'service' => self::SERVICE_NAME,
@@ -124,8 +126,8 @@ class TotalsInformationManagement extends WebapiAbstract
             [
                 'cartId' => $quote->getId(),
                 'addressInformation' => [
-                    'address' => []
-                ]
+                    'address' => [],
+                ],
             ]
         );
         $this->assertNotEmpty($response);
@@ -140,7 +142,7 @@ class TotalsInformationManagement extends WebapiAbstract
      * @return void
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    private function assertQuoteTriggerRecollectIsUpdated(Quote $quote) : void
+    private function assertQuoteTriggerRecollectIsUpdated(Quote $quote): void
     {
         $quoteResource = Bootstrap::getObjectManager()->get(QuoteResourceModel::class);
         $resourceConnection = Bootstrap::getObjectManager()->get(ResourceConnection::class);

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\BundleImportExport\Model\Export;
 
-use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
 use Magento\Bundle\Test\Fixture\Link as BundleSelectionFixture;
+use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
 use Magento\Bundle\Test\Fixture\Product as BundleProductFixture;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Data;
@@ -32,7 +35,7 @@ class RowCustomizerTest extends \PHPUnit\Framework\TestCase
      * @var \Magento\BundleImportExport\Model\Export\RowCustomizer
      */
     private $model;
-    
+
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
@@ -42,12 +45,12 @@ class RowCustomizerTest extends \PHPUnit\Framework\TestCase
      * @var \Magento\Catalog\Api\ProductRepositoryInterface
      */
     private $productRepository;
-    
+
     /**
      * @var StoreManagerInterface
      */
     private $storeManager;
-    
+
     /**
      * @var int
      */
@@ -68,7 +71,7 @@ class RowCustomizerTest extends \PHPUnit\Framework\TestCase
         $this->storeManager = $this->objectManager->get(StoreManagerInterface::class);
         $this->currentStoreId = $this->storeManager->getStore()->getId();
     }
-    
+
     protected function tearDown(): void
     {
         $this->storeManager->setCurrentStore($this->currentStoreId);
@@ -194,9 +197,9 @@ class RowCustomizerTest extends \PHPUnit\Framework\TestCase
         $store = $fixtures->get('store2');
 
         $data['bundle_values'] = "name=$opt1,type=select,required=1,sku=$sku1,price=10.0000" .
-            ",default=0,default_qty=1.0000,price_type=fixed,can_change_qty=0" .
+            ',default=0,default_qty=1.0000,price_type=fixed,can_change_qty=0' .
             "|name=$opt2,type=select,required=1,sku=$sku2,price=20.0000" .
-            ",default=0,default_qty=1.0000,price_type=percent,can_change_qty=0";
+            ',default=0,default_qty=1.0000,price_type=percent,can_change_qty=0';
         $this->assertBundleValues($data, $bundleProduct);
 
         // Update selection prices in second store
@@ -213,10 +216,10 @@ class RowCustomizerTest extends \PHPUnit\Framework\TestCase
         $this->storeManager->setCurrentStore($this->currentStoreId);
 
         $data['bundle_values'] = "name=$opt1,type=select,required=1,sku=$sku1,price=10.0000" .
-            ",default=0,default_qty=1.0000,price_type=fixed,can_change_qty=0" .
+            ',default=0,default_qty=1.0000,price_type=fixed,can_change_qty=0' .
             ",price_website_$websiteCode=40.000000,price_type_website_$websiteCode=percent" .
             "|name=$opt2,type=select,required=1,sku=$sku2,price=20.0000" .
-            ",default=0,default_qty=1.0000,price_type=percent,can_change_qty=0" .
+            ',default=0,default_qty=1.0000,price_type=percent,can_change_qty=0' .
             ",price_website_$websiteCode=50.000000,price_type_website_$websiteCode=percent";
         $this->assertBundleValues($data, $bundleProduct);
     }

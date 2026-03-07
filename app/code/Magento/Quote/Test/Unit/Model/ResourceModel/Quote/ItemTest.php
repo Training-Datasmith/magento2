@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class ItemTest extends TestCase
                     'beginTransaction',
                     'commit',
                     'quoteInto',
-                    'update'
+                    'update',
                 ]
             )
             ->disableOriginalConstructor()
@@ -107,7 +108,7 @@ class ItemTest extends TestCase
             [
                 'context' => $contextMock,
                 'entitySnapshot' => $this->entitySnapshotMock,
-                'entityRelationComposite' => $this->relationCompositeMock
+                'entityRelationComposite' => $this->relationCompositeMock,
             ]
         );
     }

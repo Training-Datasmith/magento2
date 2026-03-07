@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -21,16 +23,16 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 class Tax implements ProductRenderCollectorInterface
 {
     /** adjustment final price key */
-    const KEY_ADJUSTMENT_FINAL_PRICE = "final_price";
+    public const KEY_ADJUSTMENT_FINAL_PRICE = 'final_price';
 
     /** adjustment max price key */
-    const KEY_ADJUSTMENT_MAX_PRICE = "max_price";
+    public const KEY_ADJUSTMENT_MAX_PRICE = 'max_price';
 
     /** adjustment min price key */
-    const KEY_ADJUSTMENT_MIN_PRICE = "minimal_price";
+    public const KEY_ADJUSTMENT_MIN_PRICE = 'minimal_price';
 
     /** adjustment regular price key */
-    const KEY_ADJUSTMENT_REGULAR_PRICE = "regular_price";
+    public const KEY_ADJUSTMENT_REGULAR_PRICE = 'regular_price';
 
     /**
      * @var PriceCurrencyInterface

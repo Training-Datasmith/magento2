@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Theme\Model\Theme;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Magento\Catalog\Model\Design.
@@ -103,7 +104,7 @@ class DesignTest extends TestCase
                 'expectedSetting' => [
                     'page_layout' => '2columns-left',
                     'custom_design' => '2',
-                ]
+                ],
             ],
             'schedule_design_not_applied' => [
                 'designSettings' => [
@@ -115,7 +116,7 @@ class DesignTest extends TestCase
                 'expectedSetting' => [
                     'page_layout' => '3columns',
                     'custom_design' => null,
-                ]
+                ],
             ],
         ];
     }

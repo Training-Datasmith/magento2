@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
-use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
+use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 /**
  * Product fixture
@@ -137,14 +138,14 @@ class Product implements RevertibleDataFixtureInterface
                 'qty' => 100,
                 'is_qty_decimal' => false,
                 'is_in_stock' => true,
-            ]
+            ],
         ],
         'product_links' => [],
         'options' => [],
         'media_gallery_entries' => [],
         'tier_prices' => [],
         'created_at' => null,
-        'updated_at' => null
+        'updated_at' => null,
     ];
 
     private const DEFAULT_PRODUCT_LINK_DATA = [
@@ -231,12 +232,12 @@ class Product implements RevertibleDataFixtureInterface
             $product->addData($this->dataProcessor->process($this, array_diff_key($data, self::DEFAULT_DATA)));
             return $this->productRepository->save($product);
         }
-        
+
         $service = $this->serviceFactory->create(ProductRepositoryInterface::class, 'save');
 
         return $service->execute(
             [
-                'product' => $this->prepareData($data)
+                'product' => $this->prepareData($data),
             ]
         );
     }
@@ -362,14 +363,14 @@ class Product implements RevertibleDataFixtureInterface
                         $value[CustomOptionValue::KEY_TITLE],
                         [
                             '%order%' => $option[CustomOption::KEY_SORT_ORDER],
-                            '%valueorder%' => $value[CustomOptionValue::KEY_SORT_ORDER]
+                            '%valueorder%' => $value[CustomOptionValue::KEY_SORT_ORDER],
                         ]
                     );
                     $value[CustomOptionValue::KEY_SKU] = strtr(
                         $value[CustomOptionValue::KEY_SKU],
                         [
                             '%order%' => $option[CustomOption::KEY_SORT_ORDER],
-                            '%valueorder%' => $value[CustomOptionValue::KEY_SORT_ORDER]
+                            '%valueorder%' => $value[CustomOptionValue::KEY_SORT_ORDER],
                         ]
                     );
                     $option['values'][] = $value;
@@ -418,7 +419,7 @@ class Product implements RevertibleDataFixtureInterface
             $default['types'] = [];
             $placeholders = [
                 '%position%' => $mediaGalleryEntry['position'],
-                '%extension%' => $mimeTypeExtensionMap[$mediaGalleryEntry['content']['type']]
+                '%extension%' => $mimeTypeExtensionMap[$mediaGalleryEntry['content']['type']],
             ];
             $mediaGalleryEntry['label'] = strtr($mediaGalleryEntry['label'], $placeholders);
             $mediaGalleryEntry['content']['name'] = strtr($mediaGalleryEntry['content']['name'], $placeholders);

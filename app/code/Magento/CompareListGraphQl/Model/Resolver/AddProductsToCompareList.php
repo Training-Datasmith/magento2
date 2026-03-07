@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CompareListGraphQl\Model\Resolver;
 
-use Magento\CompareListGraphQl\Model\Service\CompareCookieManager;
 use Magento\Catalog\Helper\Product\Compare;
 use Magento\Catalog\Model\MaskedListIdToCompareListId;
 use Magento\CompareListGraphQl\Model\Service\AddToCompareList;
+use Magento\CompareListGraphQl\Model\Service\CompareCookieManager;
 use Magento\CompareListGraphQl\Model\Service\Customer\GetListIdByCustomerId;
 use Magento\CompareListGraphQl\Model\Service\GetCompareList;
 use Magento\Framework\App\ObjectManager;

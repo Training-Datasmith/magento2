@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\Dependency\Report\Framework;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\Dependency\Report\Framework\Builder;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
@@ -50,7 +51,7 @@ class BuilderTest extends TestCase
                     'write' => [1, 2],
                 ],
             ],
-            [['parse' => ['files_for_parse' => [1, 2]], 'write' => [1, 2]]]
+            [['parse' => ['files_for_parse' => [1, 2]], 'write' => [1, 2]]],
         ];
     }
 }

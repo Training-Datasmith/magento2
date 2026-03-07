@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class SubscriptionStatusLabelTest extends TestCase
@@ -68,7 +69,7 @@ class SubscriptionStatusLabelTest extends TestCase
             SubscriptionStatusLabel::class,
             [
                 'context' => $this->contextMock,
-                'subscriptionStatusProvider' => $this->subscriptionStatusProviderMock
+                'subscriptionStatusProvider' => $this->subscriptionStatusProviderMock,
             ]
         );
     }
@@ -83,7 +84,7 @@ class SubscriptionStatusLabelTest extends TestCase
             ->method('getComment')
             ->willReturn('Subscription status: Enabled');
         $this->assertMatchesRegularExpression(
-            "/Subscription status: Enabled/",
+            '/Subscription status: Enabled/',
             $this->subscriptionStatusLabel->render($this->abstractElementMock)
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -22,228 +25,228 @@ interface OrderPaymentInterface extends \Magento\Framework\Api\ExtensibleDataInt
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Base shipping captured.
      */
-    const BASE_SHIPPING_CAPTURED = 'base_shipping_captured';
+    public const BASE_SHIPPING_CAPTURED = 'base_shipping_captured';
     /*
      * Shipping captured.
      */
-    const SHIPPING_CAPTURED = 'shipping_captured';
+    public const SHIPPING_CAPTURED = 'shipping_captured';
     /*
      * Amount refunded.
      */
-    const AMOUNT_REFUNDED = 'amount_refunded';
+    public const AMOUNT_REFUNDED = 'amount_refunded';
     /*
      * Base amount paid.
      */
-    const BASE_AMOUNT_PAID = 'base_amount_paid';
+    public const BASE_AMOUNT_PAID = 'base_amount_paid';
     /*
      * Amount canceled.
      */
-    const AMOUNT_CANCELED = 'amount_canceled';
+    public const AMOUNT_CANCELED = 'amount_canceled';
     /*
      * Base amount authorized.
      */
-    const BASE_AMOUNT_AUTHORIZED = 'base_amount_authorized';
+    public const BASE_AMOUNT_AUTHORIZED = 'base_amount_authorized';
     /*
      * Base amount paid online.
      */
-    const BASE_AMOUNT_PAID_ONLINE = 'base_amount_paid_online';
+    public const BASE_AMOUNT_PAID_ONLINE = 'base_amount_paid_online';
     /*
      * Base amount refunded online.
      */
-    const BASE_AMOUNT_REFUNDED_ONLINE = 'base_amount_refunded_online';
+    public const BASE_AMOUNT_REFUNDED_ONLINE = 'base_amount_refunded_online';
     /*
      * Base shipping amount.
      */
-    const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
+    public const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
     /*
      * Shipping amount.
      */
-    const SHIPPING_AMOUNT = 'shipping_amount';
+    public const SHIPPING_AMOUNT = 'shipping_amount';
     /*
      * Amount paid.
      */
-    const AMOUNT_PAID = 'amount_paid';
+    public const AMOUNT_PAID = 'amount_paid';
     /*
      * Amount authorized.
      */
-    const AMOUNT_AUTHORIZED = 'amount_authorized';
+    public const AMOUNT_AUTHORIZED = 'amount_authorized';
     /*
      * Base amount ordered.
      */
-    const BASE_AMOUNT_ORDERED = 'base_amount_ordered';
+    public const BASE_AMOUNT_ORDERED = 'base_amount_ordered';
     /*
      * Base shipping refunded.
      */
-    const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
+    public const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
     /*
      * Shipping refunded.
      */
-    const SHIPPING_REFUNDED = 'shipping_refunded';
+    public const SHIPPING_REFUNDED = 'shipping_refunded';
     /*
      * Base amount refunded.
      */
-    const BASE_AMOUNT_REFUNDED = 'base_amount_refunded';
+    public const BASE_AMOUNT_REFUNDED = 'base_amount_refunded';
     /*
      * Amount ordered.
      */
-    const AMOUNT_ORDERED = 'amount_ordered';
+    public const AMOUNT_ORDERED = 'amount_ordered';
     /*
      * Base amount canceled.
      */
-    const BASE_AMOUNT_CANCELED = 'base_amount_canceled';
+    public const BASE_AMOUNT_CANCELED = 'base_amount_canceled';
     /*
      * Quote payment ID.
      */
-    const QUOTE_PAYMENT_ID = 'quote_payment_id';
+    public const QUOTE_PAYMENT_ID = 'quote_payment_id';
     /*
      * Additional data.
      */
-    const ADDITIONAL_DATA = 'additional_data';
+    public const ADDITIONAL_DATA = 'additional_data';
     /*
      * Credit card expiration month.
      */
-    const CC_EXP_MONTH = 'cc_exp_month';
+    public const CC_EXP_MONTH = 'cc_exp_month';
 
     /**
      * Credit card SS start year.
      *
      * @deprecated unused constant
      */
-    const CC_SS_START_YEAR = 'cc_ss_start_year';
+    public const CC_SS_START_YEAR = 'cc_ss_start_year';
     /*
      * eCheck bank name.
      */
-    const ECHECK_BANK_NAME = 'echeck_bank_name';
+    public const ECHECK_BANK_NAME = 'echeck_bank_name';
     /*
      * Payment method.
      */
-    const METHOD = 'method';
+    public const METHOD = 'method';
     /*
      * Credit card debug request body.
      */
-    const CC_DEBUG_REQUEST_BODY = 'cc_debug_request_body';
+    public const CC_DEBUG_REQUEST_BODY = 'cc_debug_request_body';
     /*
      * Credit card secure verify.
      */
-    const CC_SECURE_VERIFY = 'cc_secure_verify';
+    public const CC_SECURE_VERIFY = 'cc_secure_verify';
     /*
      * Protection eligibility.
      */
-    const PROTECTION_ELIGIBILITY = 'protection_eligibility';
+    public const PROTECTION_ELIGIBILITY = 'protection_eligibility';
     /*
      * Credit card approval.
      */
-    const CC_APPROVAL = 'cc_approval';
+    public const CC_APPROVAL = 'cc_approval';
     /*
      * Last four digits of credit card number.
      */
-    const CC_LAST_4 = 'cc_last_4';
+    public const CC_LAST_4 = 'cc_last_4';
     /*
      * Credit card status description.
      */
-    const CC_STATUS_DESCRIPTION = 'cc_status_description';
+    public const CC_STATUS_DESCRIPTION = 'cc_status_description';
     /*
      * eCheck type.
      */
-    const ECHECK_TYPE = 'echeck_type';
+    public const ECHECK_TYPE = 'echeck_type';
     /*
      * Credit card debug response serialized.
      */
-    const CC_DEBUG_RESPONSE_SERIALIZED = 'cc_debug_response_serialized';
+    public const CC_DEBUG_RESPONSE_SERIALIZED = 'cc_debug_response_serialized';
 
     /**
      * Credit card SS start month.
      *
      * @deprecated unused constant
      */
-    const CC_SS_START_MONTH = 'cc_ss_start_month';
+    public const CC_SS_START_MONTH = 'cc_ss_start_month';
     /*
      * eCheck account type.
      */
-    const ECHECK_ACCOUNT_TYPE = 'echeck_account_type';
+    public const ECHECK_ACCOUNT_TYPE = 'echeck_account_type';
     /*
      * Last transaction ID.
      */
-    const LAST_TRANS_ID = 'last_trans_id';
+    public const LAST_TRANS_ID = 'last_trans_id';
     /*
      * Credit card CID status.
      */
-    const CC_CID_STATUS = 'cc_cid_status';
+    public const CC_CID_STATUS = 'cc_cid_status';
     /*
      * Credit card owner.
      */
-    const CC_OWNER = 'cc_owner';
+    public const CC_OWNER = 'cc_owner';
     /*
      * Credit card type.
      */
-    const CC_TYPE = 'cc_type';
+    public const CC_TYPE = 'cc_type';
     /*
      * PO number.
      */
-    const PO_NUMBER = 'po_number';
+    public const PO_NUMBER = 'po_number';
     /*
      * Credit card expiration year.
      */
-    const CC_EXP_YEAR = 'cc_exp_year';
+    public const CC_EXP_YEAR = 'cc_exp_year';
     /*
      * Credit card status.
      */
-    const CC_STATUS = 'cc_status';
+    public const CC_STATUS = 'cc_status';
     /*
      * eCheck routing number.
      */
-    const ECHECK_ROUTING_NUMBER = 'echeck_routing_number';
+    public const ECHECK_ROUTING_NUMBER = 'echeck_routing_number';
     /*
      * Account status.
      */
-    const ACCOUNT_STATUS = 'account_status';
+    public const ACCOUNT_STATUS = 'account_status';
     /*
      * ANET transaction method.
      */
-    const ANET_TRANS_METHOD = 'anet_trans_method';
+    public const ANET_TRANS_METHOD = 'anet_trans_method';
     /*
      * Credit card debug response body.
      */
-    const CC_DEBUG_RESPONSE_BODY = 'cc_debug_response_body';
+    public const CC_DEBUG_RESPONSE_BODY = 'cc_debug_response_body';
 
     /**
      * Credit card SS issue.
      *
      * @deprecated unused constant
      */
-    const CC_SS_ISSUE = 'cc_ss_issue';
+    public const CC_SS_ISSUE = 'cc_ss_issue';
     /*
      * eCheck account name.
      */
-    const ECHECK_ACCOUNT_NAME = 'echeck_account_name';
+    public const ECHECK_ACCOUNT_NAME = 'echeck_account_name';
     /*
      * Credit card AVS status.
      */
-    const CC_AVS_STATUS = 'cc_avs_status';
+    public const CC_AVS_STATUS = 'cc_avs_status';
     /*
      * Encrypted credit card number.
      */
-    const CC_NUMBER_ENC = 'cc_number_enc';
+    public const CC_NUMBER_ENC = 'cc_number_enc';
     /*
      * Credit card transaction ID.
      */
-    const CC_TRANS_ID = 'cc_trans_id';
+    public const CC_TRANS_ID = 'cc_trans_id';
     /*
      * Address status.
      */
-    const ADDRESS_STATUS = 'address_status';
+    public const ADDRESS_STATUS = 'address_status';
     /*
      * Additional information.
      */
-    const ADDITIONAL_INFORMATION = 'additional_information';
+    public const ADDITIONAL_INFORMATION = 'additional_information';
 
     /**
      * Gets the account status for the order payment.

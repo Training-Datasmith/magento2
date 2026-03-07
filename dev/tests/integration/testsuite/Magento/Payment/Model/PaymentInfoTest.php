@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
-use Magento\Sales\Model\Order;
 use Magento\Quote\Model\Quote;
+use Magento\Sales\Model\Order;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 
@@ -56,7 +59,7 @@ class PaymentInfoTest extends \PHPUnit\Framework\TestCase
         /** @var \Magento\Quote\Model\Quote\Payment $paymentQuote */
         $paymentQuote = $quote->getPayment();
         $paymentQuote->unsAdditionalInformation('testing');
-        
+
         $this->assertFalse($paymentOrder->hasAdditionalInformation('testing'));
         $this->assertFalse($paymentQuote->hasAdditionalInformation('testing'));
     }

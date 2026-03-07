@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\AdminNotification\Model\NotificationService
  */
+
 namespace Magento\AdminNotification\Test\Unit\Model;
 
 use Magento\AdminNotification\Model\Inbox;

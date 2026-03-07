@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -77,7 +79,7 @@ class MemoryTest extends \PHPUnit\Framework\TestCase
             'no-break spaces' => ["1\xA0234\xA0K", '1263616'],
             'tab' => ["1\x09234\x09K", '1263616'],
             'coma' => ['1,234K', '1263616'],
-            'dot' => ['1.234 K', '1263616']
+            'dot' => ['1.234 K', '1263616'],
         ];
     }
 
@@ -100,7 +102,7 @@ class MemoryTest extends \PHPUnit\Framework\TestCase
         return [
             'more than one unit of measure' => ['1234KB'],
             'unknown unit of measure' => ['1234Z'],
-            'non-integer value' => ['1,234.56 K']
+            'non-integer value' => ['1,234.56 K'],
         ];
     }
 
@@ -125,7 +127,7 @@ class MemoryTest extends \PHPUnit\Framework\TestCase
         return [
             ['2T', '2199023255552'],
             ['1P', '1125899906842624'],
-            ['2E', '2305843009213693952']
+            ['2E', '2305843009213693952'],
         ];
     }
 

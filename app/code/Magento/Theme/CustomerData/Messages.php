@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,14 +65,14 @@ class Messages implements SectionSourceInterface
             function (array $result, MessageInterface $message) {
                 $result[] = [
                     'type' => $message->getType(),
-                    'text' => $this->interpretationStrategy->interpret($message)
+                    'text' => $this->interpretationStrategy->interpret($message),
                 ];
                 return $result;
             },
             []
         );
         return [
-            'messages' => $messageResponse
+            'messages' => $messageResponse,
         ];
     }
 }

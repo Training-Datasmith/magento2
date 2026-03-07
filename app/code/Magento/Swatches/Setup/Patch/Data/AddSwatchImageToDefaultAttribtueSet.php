@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,9 +8,8 @@
 
 namespace Magento\Swatches\Setup\Patch\Data;
 
-use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\App\ResourceConnection;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -67,7 +68,7 @@ class AddSwatchImageToDefaultAttribtueSet implements DataPatchInterface, PatchVe
     public static function getDependencies()
     {
         return [
-            AddSwatchImageAttribute::class
+            AddSwatchImageAttribute::class,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\Theme\Test\Unit\Controller\Adminhtml\System\Design\Theme;
 
 use Magento\Backend\Block\Menu;
 use Magento\Backend\Model\Menu\Item;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\LocalInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Page;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Tab\Css;
 use Magento\Theme\Helper\Theme;
 use Magento\Theme\Test\Unit\Controller\Adminhtml\System\Design\ThemeTestCase;
@@ -49,7 +50,7 @@ class EditTest extends ThemeTestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'setType', 'load', 'isVisible'
+                'setType', 'load', 'isVisible',
             ]
         );
         $theme->expects($this->once())
@@ -103,7 +104,7 @@ class EditTest extends ThemeTestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'setType', 'load', 'isVisible'
+                'setType', 'load', 'isVisible',
             ]
         );
         $theme->expects($this->once())
@@ -189,7 +190,7 @@ class EditTest extends ThemeTestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'setType', 'load', 'isVisible'
+                'setType', 'load', 'isVisible',
             ]
         );
         $theme->expects($this->once())
@@ -239,7 +240,7 @@ class EditTest extends ThemeTestCase
 
         $layout
             ->method('getBlock')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['theme_edit_tabs_tab_css_tab'] => $tab,
                 ['menu'] => $menu
             });

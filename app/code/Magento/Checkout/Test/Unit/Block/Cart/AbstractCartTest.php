@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\View\Layout;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Sales\Block\Items\AbstractItems;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AbstractCartTest extends TestCase
 {
@@ -72,7 +73,7 @@ class AbstractCartTest extends TestCase
                 'context' => $this->_objectManager->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 
@@ -101,7 +102,7 @@ class AbstractCartTest extends TestCase
                 'context' => $this->_objectManager->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 
@@ -141,7 +142,7 @@ class AbstractCartTest extends TestCase
     {
         return [
             [['billing_totals'], true],
-            [['shipping_totals'], false]
+            [['shipping_totals'], false],
         ];
     }
 }

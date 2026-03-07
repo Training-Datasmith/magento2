@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Oauth\Helper;
 
 use Laminas\Http\Client;
-use Magento\Framework\App\RequestInterface;
 use Laminas\Uri\UriFactory;
+use Magento\Framework\App\RequestInterface;
 
 /**
  * Request helper

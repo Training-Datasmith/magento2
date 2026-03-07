@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -15,58 +18,35 @@ use Magento\Framework\Filesystem\Directory\WriteInterface;
 class FileRecorder
 {
     /**
-     * Resource for managing FileInfo object.
-     *
-     * @var FileInfoManager
-     */
-    private $fileInfoManager;
-
-    /**
      * @var FileInfoFactory
      */
     private $fileInfoFactory;
 
     /**
      * Subdirectory path for an encoded file.
-     *
-     * @var string
      */
-    private $fileSubdirectoryPath = 'analytics/';
+    private string $fileSubdirectoryPath = 'analytics/';
 
     /**
      * File name of an encoded file.
-     *
-     * @var string
      */
-    private $encodedFileName = 'data.tgz';
+    private string $encodedFileName = 'data.tgz';
 
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-
-    /**
-     * @param FileInfoManager $fileInfoManager
-     * @param FileInfoFactory $fileInfoFactory
-     * @param Filesystem $filesystem
-     */
     public function __construct(
-        FileInfoManager $fileInfoManager,
+        /**
+         * Resource for managing FileInfo object.
+         */
+        private readonly FileInfoManager $fileInfoManager,
         FileInfoFactory $fileInfoFactory,
-        Filesystem $filesystem
+        private readonly Filesystem $filesystem
     ) {
-        $this->fileInfoManager = $fileInfoManager;
         $this->fileInfoFactory = $fileInfoFactory;
-        $this->filesystem = $filesystem;
     }
 
     /**
      * Save new encrypted file, register it and remove old registered file.
-     *
-     * @param EncodedContext $encodedContext
-     * @return bool
      */
-    public function recordNewFile(EncodedContext $encodedContext)
+    public function recordNewFile(EncodedContext $encodedContext): bool
     {
         $directory = $this->filesystem->getDirectoryWrite(DirectoryList::MEDIA);
 
@@ -82,10 +62,8 @@ class FileRecorder
 
     /**
      * Return relative path to encoded file.
-     *
-     * @return string
      */
-    private function getFileRelativePath()
+    private function getFileRelativePath(): string
     {
         return $this->fileSubdirectoryPath . hash('sha256', time())
             . '/' . $this->encodedFileName;
@@ -94,11 +72,9 @@ class FileRecorder
     /**
      * Register encoded file.
      *
-     * @param EncodedContext $encodedContext
      * @param string $fileRelativePath
-     * @return bool
      */
-    private function registerFile(EncodedContext $encodedContext, $fileRelativePath)
+    private function registerFile(EncodedContext $encodedContext, $fileRelativePath): bool
     {
         $newFileInfo = $this->fileInfoFactory->create(
             [
@@ -113,12 +89,8 @@ class FileRecorder
 
     /**
      * Remove previously registered file.
-     *
-     * @param FileInfo $fileInfo
-     * @param WriteInterface $directory
-     * @return bool
      */
-    private function removeOldFile(FileInfo $fileInfo, WriteInterface $directory)
+    private function removeOldFile(FileInfo $fileInfo, WriteInterface $directory): bool
     {
         if (!$fileInfo->getPath()) {
             return true;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class RelationTest extends TestCase
                 'getItemsCollection',
                 'getShippingRatesCollection',
                 'itemsCollectionWasSet',
-                'shippingRatesCollectionWasSet'
+                'shippingRatesCollectionWasSet',
             ])
             ->getMock();
         $this->relation = $objectManager->getObject(Relation::class, []);

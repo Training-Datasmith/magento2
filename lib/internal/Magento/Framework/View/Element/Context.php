@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element;
 
-use Magento\Framework\Cache\LockGuardedCacheLoader;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Cache\LockGuardedCacheLoader;
 
 /**
  * Constructor modification point for Magento\Framework\View\Element\AbstractBlock.

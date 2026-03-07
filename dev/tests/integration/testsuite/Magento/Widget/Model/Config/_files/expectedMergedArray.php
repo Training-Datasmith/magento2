@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -78,9 +80,9 @@ return [
                 'type' => 'text',
                 'visible' => '1',
                 'label' => 'Cache Lifetime (Seconds)',
-                'description' => "86400 by default, if not set. To refresh instantly, clear the Blocks HTML
+                'description' => '86400 by default, if not set. To refresh instantly, clear the Blocks HTML
                     Output cache.
-                ",
+                ',
             ],
             'title' => ['type' => 'text', 'visible' => '0', 'label' => 'Anchor Custom Title'],
         ],
@@ -100,8 +102,8 @@ return [
                     'default' => 'default_template',
                     'names_only' => 'list_names',
                     'images_only' => 'list_images',
-                ]
+                ],
             ],
         ],
-    ]
+    ],
 ];

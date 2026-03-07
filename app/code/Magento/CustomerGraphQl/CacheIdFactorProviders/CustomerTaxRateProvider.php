@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ use Magento\Tax\Model\ResourceModel\Calculation as CalculationResource;
  */
 class CustomerTaxRateProvider implements CacheIdFactorProviderInterface
 {
-    const NAME = 'CUSTOMER_TAX_RATE';
+    public const NAME = 'CUSTOMER_TAX_RATE';
 
     /**
      * @var CustomerGroupRepository

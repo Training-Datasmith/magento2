@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\GenericFactorPro
  */
 class Store implements GenericFactorProviderInterface
 {
-    private const NAME = "STORE";
+    private const NAME = 'STORE';
 
     /**
      * @inheritdoc

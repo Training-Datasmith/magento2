@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\DirectoryGraphQl\Controller\HttpHeaderProcessor;
 
-use Magento\GraphQl\Controller\HttpHeaderProcessorInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\Session\SessionManagerInterface;
+use Magento\GraphQl\Controller\HttpHeaderProcessorInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -63,7 +64,7 @@ class CurrencyProcessor implements HttpHeaderProcessorInterface
      * @param string $headerValue
      * @return void
      */
-    public function processHeaderValue(string $headerValue) : void
+    public function processHeaderValue(string $headerValue): void
     {
         try {
             $currentStore = $this->storeManager->getStore();

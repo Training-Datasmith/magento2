@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class ListingTest extends TestCase
             Listing::class,
             [
                 'context' => $this->contextMock,
-                'data' => []
+                'data' => [],
             ]
         );
 
@@ -82,7 +83,7 @@ class ListingTest extends TestCase
         $this->contextMock->expects($this->atLeastOnce())->method('getProcessor')->willReturn($processor);
         $buttons = [
             'button1' => 'button1',
-            'button2' => 'button2'
+            'button2' => 'button2',
         ];
         /** @var Listing $listing */
         $listing = $this->objectManager->getObject(
@@ -92,10 +93,10 @@ class ListingTest extends TestCase
                 'data' => [
                     'js_config' => [
                         'extends' => 'test_config_extends',
-                        'testData' => 'testValue'
+                        'testData' => 'testValue',
                     ],
-                    'buttons' => $buttons
-                ]
+                    'buttons' => $buttons,
+                ],
             ]
         );
 
@@ -130,7 +131,7 @@ class ListingTest extends TestCase
             Listing::class,
             [
                 'context' => $this->contextMock,
-                'contentTypeFactory' => $this->contentTypeFactory
+                'contentTypeFactory' => $this->contentTypeFactory,
             ]
         );
         $this->assertSame($html, $listing->render('html'));
@@ -150,7 +151,7 @@ class ListingTest extends TestCase
         $listing = $this->objectManager->getObject(
             Listing::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
         $this->assertSame($html, $listing->render());

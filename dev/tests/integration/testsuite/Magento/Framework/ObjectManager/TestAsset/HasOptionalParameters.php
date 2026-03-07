@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\TestAsset;
 
 class HasOptionalParameters
 {
-    const CONSTRUCTOR_STRING_PARAM_DEFAULT = 'default';
-    const CONSTRUCTOR_INT_PARAM_DEFAULT = 0;
+    public const CONSTRUCTOR_STRING_PARAM_DEFAULT = 'default';
+    public const CONSTRUCTOR_INT_PARAM_DEFAULT = 0;
 
     /**
      * @var Basic

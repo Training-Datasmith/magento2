@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Button;
 
 /**
@@ -24,18 +27,18 @@ class AddAttribute extends Generic
                         'actions' => [
                             [
                                 'targetName' => 'product_form.product_form.add_attribute_modal',
-                                'actionName' => 'toggleModal'
+                                'actionName' => 'toggleModal',
                             ],
                             [
                                 'targetName' => 'product_form.product_form.add_attribute_modal.product_attributes_grid',
-                                'actionName' => 'render'
-                            ]
-                        ]
-                    ]
-                ]
+                                'actionName' => 'render',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'on_click' => '',
-            'sort_order' => 20
+            'sort_order' => 20,
         ];
     }
 }

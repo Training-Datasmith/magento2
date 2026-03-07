@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -128,7 +129,7 @@ class IframeTest extends TestCase
             ->method('getConfigData')
             ->willReturnMap([
                 ['sandbox_flag', null, false],
-                ['cgi_url', null, $expected]
+                ['cgi_url', null, $expected],
             ]);
         $this->paymentDataMock->expects($this->exactly(2))
             ->method('getMethodInstance')
@@ -156,7 +157,7 @@ class IframeTest extends TestCase
             ->method('getConfigData')
             ->willReturnMap([
                 ['sandbox_flag', null, true],
-                ['cgi_url_test_mode', null, $expected]
+                ['cgi_url_test_mode', null, $expected],
             ]);
         $this->paymentDataMock->expects($this->exactly(2))
             ->method('getMethodInstance')

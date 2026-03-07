@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ class PhpFormatter implements FormatterInterface
     /**
      * 4 space indentation for array formatting.
      */
-    const INDENT = '    ';
+    public const INDENT = '    ';
 
     /**
      * Format deployment configuration.
@@ -54,7 +56,7 @@ class PhpFormatter implements FormatterInterface
                         $elements[] = $prefix . ' * ' . $commentLine;
                     }
 
-                    $elements[] = $prefix . " */";
+                    $elements[] = $prefix . ' */';
                 }
 
                 if (is_array($value)) {

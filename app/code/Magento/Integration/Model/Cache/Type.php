@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Cache;
 
 /**
@@ -13,12 +16,12 @@ class Type extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'config_integration';
+    public const TYPE_IDENTIFIER = 'config_integration';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'INTEGRATION';
+    public const CACHE_TAG = 'INTEGRATION';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool

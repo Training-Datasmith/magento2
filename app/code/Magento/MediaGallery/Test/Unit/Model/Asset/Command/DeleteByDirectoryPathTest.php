@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class DeleteByDirectoryPathTest extends TestCase
     {
         return [
             'Existing path' => [self::DIRECTORY_PATH],
-            'Empty path' => ['']
+            'Empty path' => [''],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config\Backend;
 
 use Magento\Framework\App\Cache\TypeListInterface;
@@ -25,32 +28,16 @@ class CollectionTime extends Value
      */
     public const CRON_SCHEDULE_PATH = 'crontab/analytics/jobs/analytics_collect_data/schedule/cron_expr';
 
-    /**
-     * @var WriterInterface
-     */
-    private $configWriter;
-
-    /**
-     * @param Context $context
-     * @param Registry $registry
-     * @param ScopeConfigInterface $config
-     * @param TypeListInterface $cacheTypeList
-     * @param WriterInterface $configWriter
-     * @param AbstractResource|null $resource
-     * @param AbstractDb|null $resourceCollection
-     * @param array $data
-     */
     public function __construct(
         Context $context,
         Registry $registry,
         ScopeConfigInterface $config,
         TypeListInterface $cacheTypeList,
-        WriterInterface $configWriter,
+        private readonly WriterInterface $configWriter,
         ?AbstractResource $resource = null,
         ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
-        $this->configWriter = $configWriter;
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
     }
 

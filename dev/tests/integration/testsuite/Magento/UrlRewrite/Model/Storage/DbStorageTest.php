@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -137,14 +138,14 @@ class DbStorageTest extends TestCase
         if (!str_starts_with($collation, 'utf8mb4')) {
             $this->markTestSkipped(
                 "Test skipped: Database table uses '{$collation}' which doesn't support 4-byte UTF-8. "
-                . "Requires utf8mb4 collation for emoji support."
+                . 'Requires utf8mb4 collation for emoji support.'
             );
         }
 
         // Query for the URL rewrite
         $data = [
             UrlRewrite::REQUEST_PATH => $requestPath,
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $result = $this->storage->findOneByData($data);
@@ -202,7 +203,7 @@ class DbStorageTest extends TestCase
     ): void {
         $data = [
             UrlRewrite::REQUEST_PATH => $requestPath,
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $result = $this->storage->findOneByData($data);
@@ -251,7 +252,7 @@ class DbStorageTest extends TestCase
         // Verify it was saved correctly
         $data = [
             UrlRewrite::REQUEST_PATH => 'test/🚀/rocket',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $found = $this->storage->findOneByData($data);
@@ -262,7 +263,7 @@ class DbStorageTest extends TestCase
         // Cleanup
         $this->storage->deleteByData([
             UrlRewrite::REQUEST_PATH => ['test/🚀/rocket'],
-            UrlRewrite::STORE_ID => [1]
+            UrlRewrite::STORE_ID => [1],
         ]);
     }
 
@@ -316,7 +317,7 @@ class DbStorageTest extends TestCase
         }
 
         $data = [
-            UrlRewrite::STORE_ID => [1]
+            UrlRewrite::STORE_ID => [1],
         ];
 
         $results = $this->storage->findAllByData($data);
@@ -346,27 +347,27 @@ class DbStorageTest extends TestCase
             [
                 'search/🔎/products',
                 'catalog/search/results',
-                'Magnifying glass emoji (U+1F50E) - 4-byte UTF-8'
+                'Magnifying glass emoji (U+1F50E) - 4-byte UTF-8',
             ],
             [
                 'celebrate/🎉',
                 'cms/party',
-                'Party popper emoji (U+1F389) - 4-byte UTF-8'
+                'Party popper emoji (U+1F389) - 4-byte UTF-8',
             ],
             [
                 'emoji/😀/happy',
                 'cms/happiness',
-                'Grinning face emoji (U+1F600) - 4-byte UTF-8'
+                'Grinning face emoji (U+1F600) - 4-byte UTF-8',
             ],
             [
                 'home/🏠',
                 'cms/index/index',
-                'House emoji (U+1F3E0) - 4-byte UTF-8'
+                'House emoji (U+1F3E0) - 4-byte UTF-8',
             ],
             [
                 'math/𝕳𝖊𝖑𝖑𝖔',
                 'cms/math/hello',
-                'Mathematical alphanumeric symbols - 4-byte UTF-8'
+                'Mathematical alphanumeric symbols - 4-byte UTF-8',
             ],
         ];
     }
@@ -382,12 +383,12 @@ class DbStorageTest extends TestCase
             [
                 'special/café',
                 'cms/cafe',
-                'Accented characters (3-byte UTF-8)'
+                'Accented characters (3-byte UTF-8)',
             ],
             [
                 'chinese/你好',
                 'cms/hello',
-                'Chinese characters (3-byte UTF-8)'
+                'Chinese characters (3-byte UTF-8)',
             ],
         ];
     }

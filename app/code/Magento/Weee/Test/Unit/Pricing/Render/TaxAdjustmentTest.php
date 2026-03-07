@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Weee\Helper\Data;
 use Magento\Weee\Pricing\Adjustment;
 use Magento\Weee\Pricing\Render\TaxAdjustment;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class TaxAdjustmentTest extends TestCase

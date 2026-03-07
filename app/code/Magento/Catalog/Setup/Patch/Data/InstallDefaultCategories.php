@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,8 @@
 
 namespace Magento\Catalog\Setup\Patch\Data;
 
-use Magento\Catalog\Helper\DefaultCategory;
 use Magento\Catalog\Helper\DefaultCategoryFactory;
 use Magento\Catalog\Setup\CategorySetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -181,12 +181,12 @@ class InstallDefaultCategories implements DataPatchInterface, PatchVersionInterf
             [
                 'link_type_id' => \Magento\Catalog\Model\Product\Link::LINK_TYPE_UPSELL,
                 'product_link_attribute_code' => 'position',
-                'data_type' => 'int'
+                'data_type' => 'int',
             ],
             [
                 'link_type_id' => \Magento\Catalog\Model\Product\Link::LINK_TYPE_CROSSSELL,
                 'product_link_attribute_code' => 'position',
-                'data_type' => 'int'
+                'data_type' => 'int',
             ],
         ];
 

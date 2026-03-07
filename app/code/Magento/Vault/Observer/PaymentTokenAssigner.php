@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Observer;
 
 use Magento\Framework\Event\Observer;
@@ -11,7 +14,6 @@ use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenManagementInterface;
-use Magento\Vault\Model\Method\Vault;
 
 class PaymentTokenAssigner extends AbstractDataAssignObserver
 {
@@ -67,7 +69,7 @@ class PaymentTokenAssigner extends AbstractDataAssignObserver
         $paymentModel->setAdditionalInformation(
             [
                 PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                PaymentTokenInterface::PUBLIC_HASH => $tokenPublicHash
+                PaymentTokenInterface::PUBLIC_HASH => $tokenPublicHash,
             ]
         );
     }

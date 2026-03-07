@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Shopcart\Abandoned;
 
 use Magento\Framework\App\ObjectManager;
@@ -136,7 +139,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'customer_name',
                 'sortable' => false,
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'col-name'
+                'column_css_class' => 'col-name',
             ]
         );
 
@@ -147,7 +150,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'email',
                 'sortable' => false,
                 'header_css_class' => 'col-email',
-                'column_css_class' => 'col-email'
+                'column_css_class' => 'col-email',
             ]
         );
 
@@ -159,7 +162,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'sortable' => false,
                 'type' => 'number',
                 'header_css_class' => 'col-number',
-                'column_css_class' => 'col-number'
+                'column_css_class' => 'col-number',
             ]
         );
 
@@ -171,7 +174,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'sortable' => false,
                 'type' => 'number',
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 
@@ -198,7 +201,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
                 'rate' => $this->getRate($currencyCode),
                 'header_css_class' => 'col-subtotal',
-                'column_css_class' => 'col-subtotal'
+                'column_css_class' => 'col-subtotal',
             ]
         );
 
@@ -209,7 +212,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'coupon_code',
                 'sortable' => false,
                 'header_css_class' => 'col-coupon',
-                'column_css_class' => 'col-coupon'
+                'column_css_class' => 'col-coupon',
             ]
         );
 
@@ -222,7 +225,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'filter_index' => 'main_table.created_at',
                 'sortable' => false,
                 'header_css_class' => 'col-created',
-                'column_css_class' => 'col-created'
+                'column_css_class' => 'col-created',
             ]
         );
 
@@ -235,7 +238,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'filter_index' => 'main_table.updated_at',
                 'sortable' => false,
                 'header_css_class' => 'col-updated',
-                'column_css_class' => 'col-updated'
+                'column_css_class' => 'col-updated',
             ]
         );
 
@@ -246,7 +249,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'remote_ip',
                 'sortable' => false,
                 'header_css_class' => 'col-ip',
-                'column_css_class' => 'col-ip'
+                'column_css_class' => 'col-ip',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -254,7 +255,7 @@ class MessageValidatorTest extends TestCase
         $attack = '{{var this.getTempl%0d%0aateFilter().filter(%22ls -al%22)}}' .
                   '{{if this.getTempla%0d%0ateFilter().addAft%0d%0aerFilterCallback(%22SySTeM%22)' .
                   '.filter(%22ls -al%22)}}{{/if}}';
-        
+
         $this->assertFalse($this->validator->isValid($attack));
         $this->assertNotEmpty($this->validator->getMessages());
         $this->assertStringContainsString('Invalid content detected', $this->validator->getMessages()[0]);
@@ -268,11 +269,11 @@ class MessageValidatorTest extends TestCase
     public function testNewValidatorInstanceHasNoMessages(): void
     {
         $validator1 = new MessageValidator();
-        
+
         // First validation fails
         $this->assertFalse($validator1->isValid('{{var test}}'));
         $this->assertNotEmpty($validator1->getMessages());
-        
+
         // New validator instance should have no messages
         $validator2 = new MessageValidator();
         $this->assertTrue($validator2->isValid('Valid message'));
@@ -289,8 +290,8 @@ class MessageValidatorTest extends TestCase
         $message = "Hi! Check out my wishlist :)\n\n" .
                    "I really love these items - especially the one for $49.99!\n" .
                    "Let me know what you think at my@email.com\n\n" .
-                   "Thanks!";
-        
+                   'Thanks!';
+
         $this->assertTrue($this->validator->isValid($message));
         $this->assertEmpty($this->validator->getMessages());
     }
@@ -302,7 +303,7 @@ class MessageValidatorTest extends TestCase
      */
     public function testLegitimateFilterWordIsAllowed(): void
     {
-        $message = "I need a water filter for my home.";
+        $message = 'I need a water filter for my home.';
         $this->assertTrue($this->validator->isValid($message));
         $this->assertEmpty($this->validator->getMessages());
     }
@@ -315,7 +316,7 @@ class MessageValidatorTest extends TestCase
     public function testMultipleForbiddenPatterns(): void
     {
         $message = '{{var test}}<?php echo "test"; ?>';
-        
+
         $this->assertFalse($this->validator->isValid($message));
         $this->assertNotEmpty($this->validator->getMessages());
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,33 +42,33 @@ class ProcessableExceptionTest extends TestCase
             [
                 ProcessableException::API_INTERNAL_ERROR,
                 "I'm sorry - but we were not able to process your payment. "
-                . "Please try another payment method or contact us so we can assist you.",
+                . 'Please try another payment method or contact us so we can assist you.',
             ],
             [
                 ProcessableException::API_UNABLE_PROCESS_PAYMENT_ERROR_CODE,
                 "I'm sorry - but we were not able to process your payment. "
-                . "Please try another payment method or contact us so we can assist you."
+                . 'Please try another payment method or contact us so we can assist you.',
             ],
             [
                 ProcessableException::API_COUNTRY_FILTER_DECLINE,
-                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you."
+                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you.",
             ],
             [
                 ProcessableException::API_MAXIMUM_AMOUNT_FILTER_DECLINE,
-                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you."
+                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you.",
             ],
             [
                 ProcessableException::API_OTHER_FILTER_DECLINE,
-                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you."
+                "I'm sorry - but we are not able to complete your transaction. Please contact us so we can assist you.",
             ],
             [
                 ProcessableException::API_ADDRESS_MATCH_FAIL,
-                'A match of the Shipping Address City, State, and Postal Code failed.'
+                'A match of the Shipping Address City, State, and Postal Code failed.',
             ],
             [
                 self::UNKNOWN_CODE,
-                "We can't place the order."
-            ]
+                "We can't place the order.",
+            ],
         ];
     }
 }

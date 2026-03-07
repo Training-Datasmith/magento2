@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\ImportExport\Model\Import\Entity\AbstractEav
  */
+
 namespace Magento\ImportExport\Test\Unit\Model\Import\Entity;
 
 use Magento\Eav\Model\Config;
@@ -102,7 +104,7 @@ class EavAbstractTest extends AbstractImportTestCase
             $this->_storeManager,
             $this->_collectionFactory,
             $this->_eavConfig,
-            $this->_getModelDependencies()
+            $this->_getModelDependencies(),
         ];
 
         $this->_model->__construct(...$constructorArgs);

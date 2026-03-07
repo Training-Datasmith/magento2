@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\Product;
 
-use Magento\Customer\Api\GroupManagementInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\App\ObjectManager;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
 use Magento\Catalog\Model\Pricing\SpecialPriceService;
+use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 /**
  * Bundle product type price model
@@ -550,7 +553,7 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
                     'website_price' => $product->getPrice(),
                     'price_qty' => 1,
                     'cust_group' => $allCustomersGroupId,
-                ]
+                ],
             ];
         }
 

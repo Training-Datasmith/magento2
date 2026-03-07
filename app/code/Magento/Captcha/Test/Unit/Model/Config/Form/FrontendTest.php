@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class FrontendTest extends TestCase
         $this->model = $this->objectManagerHelper->getObject(
             Frontend::class,
             [
-                'config' => $this->configMock
+                'config' => $this->configMock,
             ]
         );
     }
@@ -75,28 +76,28 @@ class FrontendTest extends TestCase
         return [
             'Empty captcha frontend areas' => [
                 '',
-                []
+                [],
             ],
             'With two captcha frontend area' => [
                 [
                     'product_sendtofriend_form' => [
-                        'label' => 'Send To Friend Form'
+                        'label' => 'Send To Friend Form',
                     ],
                     'sales_rule_coupon_request' => [
-                        'label' => 'Applying coupon code'
-                    ]
+                        'label' => 'Applying coupon code',
+                    ],
                 ],
                 [
                     [
                         'label' => 'Send To Friend Form',
-                        'value' => 'product_sendtofriend_form'
+                        'value' => 'product_sendtofriend_form',
                     ],
                     [
                         'label' => 'Applying coupon code',
-                        'value' => 'sales_rule_coupon_request'
-                    ]
-                ]
-            ]
+                        'value' => 'sales_rule_coupon_request',
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Deploy;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Module\ModuleList;
 use Magento\Framework\Module\ModuleListInterface;
 
@@ -17,7 +19,7 @@ class TestModuleManager
     /**
      * Name of file of DB XML declaration.
      */
-    const DECLARATIVE_FILE_NAME = "db_schema.xml";
+    public const DECLARATIVE_FILE_NAME = 'db_schema.xml';
 
     /**
      * Add test module files to Magento code base.
@@ -28,7 +30,7 @@ class TestModuleManager
      */
     public function addModuleFiles($moduleName)
     {
-        $moduleName = str_replace("Magento_", "", $moduleName);
+        $moduleName = str_replace('Magento_', '', $moduleName);
         $pathToCommittedTestModules = TESTS_MODULES_PATH . '/Magento/' . $moduleName;
         $pathToInstalledMagentoInstanceModules = MAGENTO_MODULES_PATH . $moduleName;
         $iterator = new \RecursiveIteratorIterator(
@@ -74,7 +76,7 @@ class TestModuleManager
      */
     public function addRevision($moduleName, $revisionName, $dir)
     {
-        $modulePath = str_replace("Magento_", "", $moduleName);
+        $modulePath = str_replace('Magento_', '', $moduleName);
         $folder = MAGENTO_MODULES_PATH . $modulePath;
         $desiredPath = $folder . '/' . $dir;
         $revisionPath = $folder . '/revisions/' . $revisionName . '/';
@@ -95,10 +97,10 @@ class TestModuleManager
      */
     public function updateRevision($moduleName, $revisionName, $fileName, $fileDir)
     {
-        $modulePath = str_replace("Magento_", "", $moduleName);
+        $modulePath = str_replace('Magento_', '', $moduleName);
         $folder = MAGENTO_MODULES_PATH . $modulePath;
-        $oldFile = $folder . DIRECTORY_SEPARATOR . $fileDir . "/" . $fileName;
-        $revisionFile = MAGENTO_MODULES_PATH . $modulePath . "/revisions/" .
+        $oldFile = $folder . DIRECTORY_SEPARATOR . $fileDir . '/' . $fileName;
+        $revisionFile = MAGENTO_MODULES_PATH . $modulePath . '/revisions/' .
             $revisionName . DIRECTORY_SEPARATOR . $fileName;
 
         if (!file_exists($oldFile)) {
@@ -113,7 +115,7 @@ class TestModuleManager
             unlink($oldFile);
             copy($revisionFile, $oldFile);
         } else {
-            throw new \InvalidArgumentException("Old File or revision files paths are invalid");
+            throw new \InvalidArgumentException('Old File or revision files paths are invalid');
         }
     }
 
@@ -125,7 +127,7 @@ class TestModuleManager
      */
     public function removeModuleFiles($moduleName)
     {
-        $modulePath = str_replace("Magento_", "", $moduleName);
+        $modulePath = str_replace('Magento_', '', $moduleName);
         $folder = MAGENTO_MODULES_PATH . $modulePath;
 
         //remove test modules from magento codebase

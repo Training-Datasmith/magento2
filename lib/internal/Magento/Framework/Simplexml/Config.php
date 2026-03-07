@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Simplexml;
 
 /**
@@ -34,7 +37,7 @@ class Config
      * @example <allResources extends="/config/modules//resource"/>
      * @var string
      */
-    protected $_xpathExtends = "//*[@extends]";
+    protected $_xpathExtends = '//*[@extends]';
 
     /**
      * Constructor

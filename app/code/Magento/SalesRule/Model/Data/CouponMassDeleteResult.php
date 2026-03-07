@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Data;
 
 /**
@@ -13,8 +16,8 @@ namespace Magento\SalesRule\Model\Data;
 class CouponMassDeleteResult extends \Magento\Framework\Api\AbstractSimpleObject implements
     \Magento\SalesRule\Api\Data\CouponMassDeleteResultInterface
 {
-    const FAILED_ITEMS = 'failed_items';
-    const MISSING_ITEMS = 'missing_items';
+    public const FAILED_ITEMS = 'failed_items';
+    public const MISSING_ITEMS = 'missing_items';
 
     /**
      * {@inheritdoc}

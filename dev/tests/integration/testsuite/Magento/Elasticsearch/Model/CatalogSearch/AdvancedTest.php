@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Model\CatalogSearch;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\CatalogSearch\Model\Advanced;
-use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product\Visibility;
+use Magento\CatalogSearch\Model\Advanced;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Helper\Bootstrap;

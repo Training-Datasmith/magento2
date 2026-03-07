@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -21,133 +23,133 @@ class DeployStaticOptions
     /**
      * Key for area option
      */
-    const AREA = 'area';
+    public const AREA = 'area';
 
     /**
      * Key for exclude area option
      */
-    const EXCLUDE_AREA = 'exclude-area';
+    public const EXCLUDE_AREA = 'exclude-area';
 
     /**
      * Key for theme option
      */
-    const THEME = 'theme';
+    public const THEME = 'theme';
 
     /**
      * Key for exclude theme option
      */
-    const EXCLUDE_THEME = 'exclude-theme';
+    public const EXCLUDE_THEME = 'exclude-theme';
 
     /**
      * Key for languages parameter
      */
-    const LANGUAGE = 'language';
+    public const LANGUAGE = 'language';
 
     /**
      * Key for exclude languages parameter
      */
-    const EXCLUDE_LANGUAGE = 'exclude-language';
+    public const EXCLUDE_LANGUAGE = 'exclude-language';
 
     /**
      * Use specific deployment strategy
      */
-    const STRATEGY = 'strategy';
+    public const STRATEGY = 'strategy';
 
     /**
      * Key for jobs option
      */
-    const JOBS_AMOUNT = 'jobs';
+    public const JOBS_AMOUNT = 'jobs';
 
     /**
      * Key for max execution time option
      */
-    const MAX_EXECUTION_TIME = 'max-execution-time';
+    public const MAX_EXECUTION_TIME = 'max-execution-time';
 
     /**
      * Force run of static deploy
      */
-    const FORCE_RUN = 'force';
+    public const FORCE_RUN = 'force';
 
     /**
      * Symlink locale if it not customized
      */
-    const SYMLINK_LOCALE = 'symlink-locale';
+    public const SYMLINK_LOCALE = 'symlink-locale';
 
     /**
      * Key for javascript option
      */
-    const NO_JAVASCRIPT = 'no-javascript';
+    public const NO_JAVASCRIPT = 'no-javascript';
 
     /**
      * Key for js-bundle option
      */
-    const NO_JS_BUNDLE = 'no-js-bundle';
+    public const NO_JS_BUNDLE = 'no-js-bundle';
 
     /**
      * Key for css option
      */
-    const NO_CSS = 'no-css';
+    public const NO_CSS = 'no-css';
 
     /**
      * Key for fonts option
      */
-    const NO_FONTS = 'no-fonts';
+    public const NO_FONTS = 'no-fonts';
 
     /**
      * Key for images option
      */
-    const NO_IMAGES = 'no-images';
+    public const NO_IMAGES = 'no-images';
 
     /**
      * Key for html option
      */
-    const NO_HTML = 'no-html';
+    public const NO_HTML = 'no-html';
 
     /**
      * Key for html option
      */
-    const NO_HTML_MINIFY = 'no-html-minify';
+    public const NO_HTML_MINIFY = 'no-html-minify';
 
     /**
      * Key for misc option
      */
-    const NO_MISC = 'no-misc';
+    public const NO_MISC = 'no-misc';
 
     /**
      * Key for dry-run option
      *
      * @deprecated since 2.2.0
      */
-    const DRY_RUN = 'dry-run';
+    public const DRY_RUN = 'dry-run';
 
     /**
      * Key for less option
      *
      * @deprecated since 2.2.0
      */
-    const NO_LESS = 'no-less';
+    public const NO_LESS = 'no-less';
 
     /**
      * Key for not compiling parent themes
      */
-    const NO_PARENT = 'no-parent';
+    public const NO_PARENT = 'no-parent';
 
-    const DEFAULT_JOBS_AMOUNT = 0;
+    public const DEFAULT_JOBS_AMOUNT = 0;
 
     /**
      * Key for languages parameter
      */
-    const LANGUAGES_ARGUMENT = 'languages';
+    public const LANGUAGES_ARGUMENT = 'languages';
 
     /**
      * Static content version
      */
-    const CONTENT_VERSION = 'content-version';
+    public const CONTENT_VERSION = 'content-version';
 
     /**
      * Key for refresh content version only mode
      */
-    const REFRESH_CONTENT_VERSION_ONLY = 'refresh-content-version-only';
+    public const REFRESH_CONTENT_VERSION_ONLY = 'refresh-content-version-only';
 
     /**
      * Deploy static command options list

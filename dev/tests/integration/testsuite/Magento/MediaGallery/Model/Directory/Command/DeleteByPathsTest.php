@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -105,14 +106,14 @@ class DeleteByPathsTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [
-                ['../../pub/media']
+                ['../../pub/media'],
             ],
             [
-                ['theme']
+                ['theme'],
             ],
             [
-                ['../../pub/media', 'theme']
-            ]
+                ['../../pub/media', 'theme'],
+            ],
         ];
     }
 

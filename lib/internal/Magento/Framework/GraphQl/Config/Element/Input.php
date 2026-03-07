@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class Input implements TypeInterface
      *
      * @return array
      */
-    public function getDeprecated() : array
+    public function getDeprecated(): array
     {
         return $this->deprecated;
     }

@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Observer;
 
 use Magento\Customer\Model\Logger;
-use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 

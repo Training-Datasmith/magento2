@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class DocReader
      * @param \GraphQL\Language\AST\NodeList $directives
      * @return string
      */
-    public function read(\GraphQL\Language\AST\NodeList $directives) : string
+    public function read(\GraphQL\Language\AST\NodeList $directives): string
     {
         foreach ($directives as $directive) {
             if ($directive->name->value == 'doc') {

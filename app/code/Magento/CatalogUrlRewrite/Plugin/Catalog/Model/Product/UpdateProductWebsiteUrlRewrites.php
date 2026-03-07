@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Catalog\Model\Product\Action as ProductAction;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogUrlRewrite\Model\Products\AppendUrlRewritesToProducts;
 use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
-use Magento\Store\Api\StoreWebsiteRelationInterface;
 use Magento\Store\Model\StoreResolver\GetStoresListByWebsiteIds;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;

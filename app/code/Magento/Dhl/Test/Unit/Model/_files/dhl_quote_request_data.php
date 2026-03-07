@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,5 +47,5 @@ return [
         'ship_date' => '2014-01-09',
         'action' => 'RateEstimate',
         'all_items' => [],
-    ]
+    ],
 ];

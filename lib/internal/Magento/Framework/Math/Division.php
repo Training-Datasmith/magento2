@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Math;
 
 /**
@@ -16,7 +19,7 @@ class Division
     /**
      * Const for correct dividing decimal values
      */
-    const DIVIDE_EPSILON = 10000;
+    public const DIVIDE_EPSILON = 10000;
 
     /**
      * Returns the floating point remainder (modulo) of the division of the arguments

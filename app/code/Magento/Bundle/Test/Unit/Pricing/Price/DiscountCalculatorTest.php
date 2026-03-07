@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Pricing\Price\DiscountCalculator;
 use Magento\Bundle\Pricing\Price\DiscountProviderInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Pricing\Price\FinalPrice;
+use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
-use Magento\Framework\Pricing\Price\PriceInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -140,7 +141,7 @@ class DiscountCalculatorTest extends TestCase
             'test case 1 with discount amount' => [20, 50, 10],
             'test case 2 for null discount amount' => [null, 30, 30],
             'test case 3 with discount amount' => [99, 5.5, 5.45],
-            'test case 4 with null value' => [50, null, 50]
+            'test case 4 with null value' => [50, null, 50],
         ];
     }
 }

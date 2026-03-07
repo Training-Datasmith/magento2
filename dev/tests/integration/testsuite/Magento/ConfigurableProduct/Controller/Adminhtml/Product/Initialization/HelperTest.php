@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class HelperTest extends TestCase
         $this->helper = $this->objectManager->get(Helper::class);
         $this->productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
         $this->productRepository->cleanCache();
-        $this->productResource =$this->objectManager->get(ProductResource::class);
+        $this->productResource = $this->objectManager->get(ProductResource::class);
         $this->productAttributeRepository = $this->objectManager->get(ProductAttributeRepositoryInterface::class);
         $this->jsonSerializer = $this->objectManager->get(SerializerInterface::class);
         $this->searchCriteriaBuilder = $this->objectManager->get(SearchCriteriaBuilder::class);
@@ -360,8 +361,8 @@ class HelperTest extends TestCase
                     'media_gallery',
                     [
                         'images' => [
-                            ['file' => $imageNames[$simpleProduct->getSku()], 'label' => '', 'media_type' => 'image']
-                        ]
+                            ['file' => $imageNames[$simpleProduct->getSku()], 'label' => '', 'media_type' => 'image'],
+                        ],
                     ]
                 );
             $this->productResource->save($simpleProduct);

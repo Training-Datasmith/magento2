@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +21,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class TaxRateRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = "taxTaxRateRepositoryV1";
-    const SERVICE_VERSION = "V1";
-    const RESOURCE_PATH = "/V1/taxRates";
+    public const SERVICE_NAME = 'taxTaxRateRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/taxRates';
 
     /** @var \Magento\Tax\Model\Calculation\Rate[] */
     private $fixtureTaxRates;
@@ -372,7 +374,7 @@ class TaxRateRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -429,7 +431,7 @@ class TaxRateRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -496,7 +498,7 @@ class TaxRateRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }

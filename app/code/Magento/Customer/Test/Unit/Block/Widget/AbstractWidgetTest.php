@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -131,7 +132,7 @@ class AbstractWidgetTest extends TestCase
         return [
             [self::FORMAT_S, 'Id', 'Id', 'is_string'],
             [self::FORMAT_D, '123', '123', 'is_numeric'],
-            [self::FORMAT_D, 'Id', '0', 'is_numeric']
+            [self::FORMAT_D, 'Id', '0', 'is_numeric'],
         ];
     }
 
@@ -160,7 +161,7 @@ class AbstractWidgetTest extends TestCase
         return [
             [self::FORMAT_S, 'Name', 'Name', 'is_string'],
             [self::FORMAT_D, '123', '123', 'is_numeric'],
-            [self::FORMAT_D, 'Name', '0', 'is_numeric']
+            [self::FORMAT_D, 'Name', '0', 'is_numeric'],
         ];
     }
 }

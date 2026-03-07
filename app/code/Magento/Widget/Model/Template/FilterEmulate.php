@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class FilterEmulate extends Filter
      * @return string
      * @throws \Exception
      */
-    public function filterDirective($value) : string
+    public function filterDirective($value): string
     {
         return $this->_appState->emulateAreaCode(
             \Magento\Framework\App\Area::AREA_FRONTEND,

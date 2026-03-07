@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,15 +8,14 @@
 
 namespace Magento\Framework\Code\Test\Unit\Validator;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Code\Validator\ConstructorArgumentTypes;
 use Magento\Framework\Code\Reader\ArgumentsReader;
 use Magento\Framework\Code\Reader\SourceArgumentsReader;
+use Magento\Framework\Code\Validator\ConstructorArgumentTypes;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class ConstructorArgumentTypesTest extends TestCase
 {
-
     /**
      * @var MockObject
      */

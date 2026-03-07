@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Checkout\Api\Data\PaymentDetailsInterface;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Checkout\Api\ShippingInformationManagementInterface;
 use Magento\Checkout\Model\GuestShippingInformationManagement;
-use Magento\Quote\Model\QuoteIdMaskFactory;
-use Magento\Quote\Model\QuoteIdMask;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Quote\Model\QuoteIdMask;
+use Magento\Quote\Model\QuoteIdMaskFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -66,7 +67,7 @@ class GuestShippingInformationManagementTest extends TestCase
         $this->shippingInformationManagementMock->expects($this->once())
             ->method('saveAddressInformation')
             ->with(
-                self::callback(fn($actualQuoteId): bool => (int) $quoteId === $actualQuoteId),
+                self::callback(fn ($actualQuoteId): bool => (int) $quoteId === $actualQuoteId),
                 $addressInformationMock
             )
             ->willReturn($paymentInformationMock);

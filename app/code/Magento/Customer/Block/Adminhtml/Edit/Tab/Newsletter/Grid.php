@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab\Newsletter;
 
 use Magento\Backend\Block\Template\Context;
@@ -124,7 +127,7 @@ class Grid extends Extended
                 'type' => 'datetime',
                 'align' => 'center',
                 'index' => 'queue_start_at',
-                'default' => ' ---- '
+                'default' => ' ---- ',
             ]
         );
 
@@ -136,7 +139,7 @@ class Grid extends Extended
                 'align' => 'center',
                 'index' => 'queue_finish_at',
                 'gmtoffset' => true,
-                'default' => ' ---- '
+                'default' => ' ---- ',
             ]
         );
 
@@ -148,7 +151,7 @@ class Grid extends Extended
                 'align' => 'center',
                 'index' => 'letter_sent_at',
                 'gmtoffset' => true,
-                'default' => ' ---- '
+                'default' => ' ---- ',
             ]
         );
 
@@ -177,7 +180,7 @@ class Grid extends Extended
                 'align' => 'center',
                 'filter' => \Magento\Customer\Block\Adminhtml\Edit\Tab\Newsletter\Grid\Filter\Status::class,
                 'index' => 'queue_status',
-                'renderer' => Status::class
+                'renderer' => Status::class,
             ]
         );
 
@@ -188,7 +191,7 @@ class Grid extends Extended
                 'align' => 'center',
                 'filter' => false,
                 'sortable' => false,
-                'renderer' => Action::class
+                'renderer' => Action::class,
             ]
         );
 

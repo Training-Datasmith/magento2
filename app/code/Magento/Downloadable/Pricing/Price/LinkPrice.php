@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class LinkPrice extends RegularPrice implements LinkPriceInterface
     /**
      * Default price type
      */
-    const PRICE_CODE = 'link_price';
+    public const PRICE_CODE = 'link_price';
 
     /**
      * @param Link $link

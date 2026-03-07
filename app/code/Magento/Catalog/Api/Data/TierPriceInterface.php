@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,14 +18,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /**#@+
      * Constants
      */
-    const PRICE = 'price';
-    const PRICE_TYPE = 'price_type';
-    const WEBSITE_ID = 'website_id';
-    const SKU = 'sku';
-    const CUSTOMER_GROUP = 'customer_group';
-    const QUANTITY = 'quantity';
-    const PRICE_TYPE_FIXED = 'fixed';
-    const PRICE_TYPE_DISCOUNT = 'discount';
+    public const PRICE = 'price';
+    public const PRICE_TYPE = 'price_type';
+    public const WEBSITE_ID = 'website_id';
+    public const SKU = 'sku';
+    public const CUSTOMER_GROUP = 'customer_group';
+    public const QUANTITY = 'quantity';
+    public const PRICE_TYPE_FIXED = 'fixed';
+    public const PRICE_TYPE_DISCOUNT = 'discount';
     /**#@-*/
 
     /**

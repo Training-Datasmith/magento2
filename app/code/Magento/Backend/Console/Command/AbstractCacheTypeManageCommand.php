@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Backend\Console\Command;
 
+use Magento\Framework\App\Cache\Manager;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\Cache\Manager;
 
 /**
  * phpcs:disable Magento2.Classes.AbstractApi

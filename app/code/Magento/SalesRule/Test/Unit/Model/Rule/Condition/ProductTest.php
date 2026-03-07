@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -27,10 +28,10 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\Locale\Format;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Rule\Block\Editable;
 use Magento\Rule\Model\Condition\AbstractCondition;
 use Magento\Rule\Model\Condition\Context;
@@ -182,26 +183,26 @@ class ProductTest extends TestCase
         return [
             'category_ids_without_js_object' => [
                 'category_ids',
-                'sales_rule/promo_widget/chooser/attribute/'
+                'sales_rule/promo_widget/chooser/attribute/',
             ],
             'category_ids_with_js_object' => [
                 'category_ids',
                 'sales_rule/promo_widget/chooser/attribute/',
-                'jsobject'
+                'jsobject',
             ],
             'sku_without_js_object' => [
                 'sku',
                 'sales_rule/promo_widget/chooser/attribute/',
-                'jsobject'
+                'jsobject',
             ],
             'sku_without_with_js_object' => [
                 'sku',
-                'sales_rule/promo_widget/chooser/attribute/'
+                'sales_rule/promo_widget/chooser/attribute/',
             ],
             'none' => [
                 '',
-                ''
-            ]
+                '',
+            ],
         ];
     }
 
@@ -564,7 +565,7 @@ class ProductTest extends TestCase
 
         $this->model->loadArray([
             'type' => SalesRuleProduct::class,
-            'attribute_scope' => 'parent'
+            'attribute_scope' => 'parent',
         ]);
         $this->assertSame('parent', $this->model->getAttributeScope());
     }

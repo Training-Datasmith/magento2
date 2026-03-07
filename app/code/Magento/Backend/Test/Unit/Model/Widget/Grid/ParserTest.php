@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,8 +50,8 @@ class ParserTest extends TestCase
             ['1/2/3', ['1', '2', '/', '3', '/']],
             [
                 '1 * 2 / 3 + 4 * 5 * 6 - 7 - 8',
-                ['1', '2', '*', '3', '/', '4', '5', '*', '6', '*', '+', '7', '-', '8', '-']
-            ]
+                ['1', '2', '*', '3', '/', '4', '5', '*', '6', '*', '+', '7', '-', '8', '-'],
+            ],
         ];
     }
 
@@ -75,7 +76,7 @@ class ParserTest extends TestCase
             ['*', true],
             ['/', true],
             ['0', false],
-            ['aa', false]
+            ['aa', false],
         ];
     }
 }

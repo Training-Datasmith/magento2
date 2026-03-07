@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ use Psr\Log\LoggerInterface;
 class ViewedTest extends AbstractControllerTestCase
 {
     use MockCreationTrait;
-    
+
     /**
      * @var \Magento\Reports\Controller\Adminhtml\Report\Product\Viewed
      */
@@ -200,7 +201,7 @@ class ViewedTest extends AbstractControllerTestCase
             ->willReturnMap(
                 [
                     [LoggerInterface::class, $logMock],
-                    [\Magento\Backend\Model\Auth\Session::class, $sessionMock]
+                    [\Magento\Backend\Model\Auth\Session::class, $sessionMock],
                 ]
             );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Plugin\Wysiwyg\Images;
 
-use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\Cms\Model\Wysiwyg\Images\Storage as StorageSubject;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
+use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -102,7 +103,7 @@ class Storage
         try {
             $this->deleteMediaAssetByPath->execute(
                 [
-                    $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getRelativePath($path)
+                    $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getRelativePath($path),
                 ]
             );
         } catch (\Exception $exception) {

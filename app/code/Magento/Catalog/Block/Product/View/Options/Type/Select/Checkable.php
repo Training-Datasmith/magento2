@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class Checkable extends AbstractOptions
         return parent::_formatPrice(
             [
                 'is_percent' => $value->getPriceType() === 'percent',
-                'pricing_value' => $value->getPrice($value->getPriceType() === 'percent')
+                'pricing_value' => $value->getPrice($value->getPriceType() === 'percent'),
             ]
         );
     }

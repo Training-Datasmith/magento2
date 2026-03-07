@@ -1,18 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\Component\Category\Form\Element;
 
-use Magento\Backend\Block\Widget\Button;
 use Magento\Backend\Helper\Data as DataHelper;
 use Magento\Catalog\Api\CategoryAttributeRepositoryInterface;
-use Magento\Catalog\Model\Category;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Ui\Component\Wysiwyg\ConfigInterface;
 use Magento\Framework\View\LayoutInterface;
+use Magento\Ui\Component\Wysiwyg\ConfigInterface;
 
 /**
  * Catalog Wysiwyg

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved
@@ -181,9 +182,9 @@ class ProductOptionsTest extends ProductTestBase
                                 'price'         => 3,
                                 'sku'           => 'option1value2',
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ]
         ),
     ]
@@ -214,7 +215,7 @@ class ProductOptionsTest extends ProductTestBase
                 foreach ($options as $option) {
                     $optionData = [
                         'type' => $option->getType(),
-                        'title' => $option->getTitle()
+                        'title' => $option->getTitle(),
                     ];
                     $optionData += $this->getOptionData($option);
                     if (in_array($option->getType(), $this->specificTypes)) {
@@ -279,9 +280,9 @@ class ProductOptionsTest extends ProductTestBase
                                 'price'         => 3,
                                 'sku'           => 'option1value2',
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ]
         ),
     ]
@@ -364,8 +365,8 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Select Option 2',
                                         'sku' => '3-2-select',
                                         'price' => '320.000000',
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Checkbox',
@@ -385,8 +386,8 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Checkbox Option 2',
                                         'sku' => '4-2-select',
                                         'price' => '420.000000',
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Radio',
@@ -406,9 +407,9 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Radio Option 2',
                                         'sku' => '5-2-radio',
                                         'price' => '520.000000',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
                         'default' => [
                             [
@@ -425,8 +426,8 @@ class ProductOptionsTest extends ProductTestBase
                                     ],
                                     [
                                         'title' => 'Select Option 2_default',
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Checkbox_default',
@@ -436,8 +437,8 @@ class ProductOptionsTest extends ProductTestBase
                                     ],
                                     [
                                         'title' => 'Checkbox Option 2_default',
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Radio_default',
@@ -447,58 +448,58 @@ class ProductOptionsTest extends ProductTestBase
                                     ],
                                     [
                                         'title' => 'Radio Option 2_default',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
                         'secondstore' => [
                             [
                                 'title' => 'Test Field Title_fixture_second_store',
-                                'price' => '101.000000'
+                                'price' => '101.000000',
                             ],
                             [
                                 'title' => 'Test Date and Time Title_fixture_second_store',
-                                'price' => '201.000000'
+                                'price' => '201.000000',
                             ],
                             [
                                 'title' => 'Test Select_fixture_second_store',
                                 'values' => [
                                     [
                                         'title' => 'Select Option 1_fixture_second_store',
-                                        'price' => '311.000000'
+                                        'price' => '311.000000',
                                     ],
                                     [
                                         'title' => 'Select Option 2_fixture_second_store',
-                                        'price' => '321.000000'
-                                    ]
-                                ]
+                                        'price' => '321.000000',
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Checkbox_second_store',
                                 'values' => [
                                     [
                                         'title' => 'Checkbox Option 1_second_store',
-                                        'price' => '411.000000'
+                                        'price' => '411.000000',
                                     ],
                                     [
                                         'title' => 'Checkbox Option 2_second_store',
-                                        'price' => '421.000000'
-                                    ]
-                                ]
+                                        'price' => '421.000000',
+                                    ],
+                                ],
                             ],
                             [
                                 'title' => 'Test Radio_fixture_second_store',
                                 'values' => [
                                     [
                                         'title' => 'Radio Option 1_fixture_second_store',
-                                        'price' => '511.000000'
+                                        'price' => '511.000000',
                                     ],
                                     [
                                         'title' => 'Radio Option 2_fixture_second_store',
-                                        'price' => '521.000000'
-                                    ]
-                                ]
-                            ]
+                                        'price' => '521.000000',
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                     'newprod2' => [
@@ -655,9 +656,9 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Option 1 Value 2',
                                         'sku' => 'option1value2',
                                         'price' => '1.400000',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
                         'default' => [
                             [
@@ -678,9 +679,9 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Option 1 Value 2 Store1',
                                         'sku' => 'option1value2',
                                         'price' => '1.300000',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
                         'secondstore' => [
                             [
@@ -701,13 +702,13 @@ class ProductOptionsTest extends ProductTestBase
                                         'title' => 'Option 1 Value 2 Store2',
                                         'sku' => 'option1value2',
                                         'price' => '1.200000',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -860,7 +861,7 @@ class ProductOptionsTest extends ProductTestBase
             'id' => $expectedOptionId,
             'options' => $expectedOptions,
             'data' => $expectedData,
-            'values' => $expectedValues
+            'values' => $expectedValues,
         ];
     }
 
@@ -895,7 +896,7 @@ class ProductOptionsTest extends ProductTestBase
             'id' => $actualOptionId,
             'options' => $actualOptions,
             'data' => $actualData,
-            'values' => $actualValues
+            'values' => $actualValues,
         ];
     }
 

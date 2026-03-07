@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\View\File;
 use Magento\Framework\View\File\Collector\Override\Base;
 use Magento\Framework\View\File\Factory;
 use Magento\Framework\View\Helper\PathPattern;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BaseTest extends TestCase
 {
@@ -162,18 +163,18 @@ class BaseTest extends TestCase
                 [
                     ['handle' => '1.xml', 'module' => 'Module_One'],
                     ['handle' => '2.xml', 'module' => 'Module_One'],
-                    ['handle' => '3.xml', 'module' => 'Module_Two']
+                    ['handle' => '3.xml', 'module' => 'Module_Two'],
                 ],
                 '*.xml',
-                '[^/]*\\.xml'
+                '[^/]*\\.xml',
             ],
             [
                 [
                     ['handle' => 'preset/4', 'module' => 'Module_Fourth'],
                 ],
                 'preset/4',
-                'preset/4'
-            ]
+                'preset/4',
+            ],
         ];
     }
 }

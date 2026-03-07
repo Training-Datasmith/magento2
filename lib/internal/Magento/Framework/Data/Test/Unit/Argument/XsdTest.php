@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Data\Test\Unit\Argument;
 
 use Magento\Framework\TestFramework\Unit\Utility\XsdValidator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
 {
@@ -29,7 +30,7 @@ class XsdTest extends TestCase
         if (!function_exists('libxml_set_external_entity_loader')) {
             $this->markTestSkipped('Skipped on HHVM. Will be fixed in MAGETWO-45033');
         }
-        $this->_typesXsdSchema = __DIR__ . "/_files/types_schema.xsd";
+        $this->_typesXsdSchema = __DIR__ . '/_files/types_schema.xsd';
         $this->_xsdValidator = new XsdValidator();
     }
 

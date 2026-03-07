@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class AdminSessionInfoTest extends TestCase
             AdminSessionInfo::class,
             [
                 'resource' => $this->resourceMock,
-                'dateTime' => $this->dateTimeMock
+                'dateTime' => $this->dateTimeMock,
             ]
         );
     }

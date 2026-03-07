@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product;
 
+use Magento\Catalog\Model\Product\Attribute\Backend\Sku;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Validator\AbstractValidator;
-use Magento\Catalog\Model\Product\Attribute\Backend\Sku;
 
 /**
  * Product import model validator
@@ -23,7 +26,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
     /**
      * Filter chain const
      */
-    private const FILTER_CHAIN = "php://filter";
+    private const FILTER_CHAIN = 'php://filter';
 
     /**
      * @var RowValidatorInterface[]|AbstractValidator[]
@@ -135,7 +138,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
                             RowValidatorInterface::ERROR_INVALID_ATTRIBUTE_OPTION
                         ),
                         $attrCode
-                    )
+                    ),
                 ]
             );
             return false;
@@ -165,7 +168,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
                         $this->context->retrieveMessageTemplate(RowValidatorInterface::ERROR_INVALID_ATTRIBUTE_TYPE),
                         $attrCode,
                         $type
-                    )
+                    ),
                 ]
             );
         }
@@ -250,7 +253,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
                             RowValidatorInterface::ERROR_VALUE_IS_REQUIRED
                         ),
                         $attrCode
-                    )
+                    ),
                 ]
             );
             return $valid;
@@ -516,7 +519,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
      * @param string|array $value
      * @return bool
      */
-    private function isCategoriesValid(string|array $value) : bool
+    private function isCategoriesValid(string|array $value): bool
     {
         $result = true;
         if ($value) {

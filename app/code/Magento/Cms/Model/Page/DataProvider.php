@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\Page;
 
 use Magento\Cms\Api\Data\PageInterface;
@@ -169,20 +172,20 @@ class DataProvider extends ModifierPoolDataProvider
                     'arguments' => [
                         'data' => [
                             'config' => [
-                                'disabled' => true
-                            ]
-                        ]
-                    ]
+                                'disabled' => true,
+                            ],
+                        ],
+                    ],
                 ],
                 'custom_design_update' => [
                     'arguments' => [
                         'data' => [
                             'config' => [
-                                'disabled' => true
-                            ]
-                        ]
-                    ]
-                ]
+                                'disabled' => true,
+                            ],
+                        ],
+                    ],
+                ],
             ];
             $meta = array_merge_recursive($meta, $designMeta);
         }
@@ -211,11 +214,11 @@ class DataProvider extends ModifierPoolDataProvider
                 'children' => [
                     'custom_layout_update_select' => [
                         'arguments' => [
-                            'data' => ['options' => $options]
-                        ]
-                    ]
-                ]
-            ]
+                            'data' => ['options' => $options],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $meta = array_merge_recursive($meta, $customLayoutMeta);
 

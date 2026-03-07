@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -28,6 +30,6 @@ $resource->getConnection()->insert(
         'add_date' => $date,
         'send_date' => null,
         'send_count' => 0,
-        'status' => 0
+        'status' => 0,
     ]
 );

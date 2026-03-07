@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -31,7 +33,7 @@ class IndexTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertRedirect($this->stringContains('contact/index'));
         $this->assertSessionMessages(
             $this->containsEqual(
-                "Thanks for contacting us with your comments and questions. We&#039;ll respond to you very soon."
+                'Thanks for contacting us with your comments and questions. We&#039;ll respond to you very soon.'
             ),
             \Magento\Framework\Message\MessageInterface::TYPE_SUCCESS
         );
@@ -69,7 +71,7 @@ class IndexTest extends \Magento\TestFramework\TestCase\AbstractController
                     'email' => 'user@example.com',
                     'hideit' => '',
                 ],
-                "Enter the comment and try again.",  // $expectedMessage
+                'Enter the comment and try again.',  // $expectedMessage
             ],
             'missing_name' => [
                 [  // $params
@@ -78,7 +80,7 @@ class IndexTest extends \Magento\TestFramework\TestCase\AbstractController
                     'email' => 'user@example.com',
                     'hideit' => '',
                 ],
-                "Enter the Name and try again.",  // $expectedMessage
+                'Enter the Name and try again.',  // $expectedMessage
             ],
             'invalid_email' => [
                 [  // $params
@@ -87,7 +89,7 @@ class IndexTest extends \Magento\TestFramework\TestCase\AbstractController
                     'email' => 'invalidemail',
                     'hideit' => '',
                 ],
-                "The email address is invalid. Verify the email address and try again.",  // $expectedMessage
+                'The email address is invalid. Verify the email address and try again.',  // $expectedMessage
             ],
         ];
     }

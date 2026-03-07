@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Catalog\Model\Product\Visibility;
+use Magento\Customer\Model\Group;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Bundle\Model\PrepareBundleLinks;
-use Magento\Customer\Model\Group;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
@@ -82,7 +83,7 @@ $bundleSelectionsData = [
             'selection_price_value' => 0,
             'selection_can_change_qty' => 1,
         ],
-    ]
+    ],
 ];
 $bundleProduct = $prepareBundleLinks->execute($bundleProduct, $bundleOptionsData, $bundleSelectionsData);
 
@@ -91,7 +92,7 @@ $tierPriceExtensionAttribute = $tierPriceExtensionAttributesFactory->create(
         'data' => [
             'website_id' => 0,
             'percentage_value' => 25,
-        ]
+        ],
     ]
 );
 $tierPrices[] = $tierPriceFactory->create(
@@ -99,7 +100,7 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => Group::CUST_GROUP_ALL,
             'qty' => 1,
-        ]
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttribute);
 $bundleProduct->setTierPrices($tierPrices);

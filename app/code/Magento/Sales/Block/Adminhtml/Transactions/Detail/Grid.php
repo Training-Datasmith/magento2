@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Transactions\Detail;
 
 /**
@@ -86,7 +89,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => false,
                 'type' => 'text',
                 'header_css_class' => 'col-key',
-                'column_css_class' => 'col-key'
+                'column_css_class' => 'col-key',
             ]
         );
 
@@ -99,7 +102,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'text',
                 'escape' => true,
                 'header_css_class' => 'col-value',
-                'column_css_class' => 'col-value'
+                'column_css_class' => 'col-value',
             ]
         );
 

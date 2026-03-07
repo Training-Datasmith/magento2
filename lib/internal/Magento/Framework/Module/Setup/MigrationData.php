@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Setup;
 
 /**
@@ -35,7 +38,7 @@ class MigrationData
     ) {
         foreach ($this->_requiredParams as $param) {
             if (!isset($data[$param])) {
-                throw new \InvalidArgumentException("Missing required param " . $param);
+                throw new \InvalidArgumentException('Missing required param ' . $param);
             }
             $this->_patterns[$param] = $data[$param];
         }

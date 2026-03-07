@@ -8,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Mview\Test\Unit;
 
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\DB\Select;
-use Magento\Framework\DB\Ddl\Trigger;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Ddl\Trigger;
+use Magento\Framework\DB\Select;
+use Magento\Framework\Mview\TriggerCleaner;
+use Magento\Framework\Mview\View;
 use Magento\Framework\Mview\View\CollectionFactory;
 use Magento\Framework\Mview\View\CollectionInterface;
 use Magento\Framework\Mview\View\Subscription;
-use Magento\Framework\Mview\View;
 use Magento\Framework\Mview\ViewFactory;
-use Magento\Framework\Mview\TriggerCleaner;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -52,7 +52,7 @@ class TriggerCleanerTest extends TestCase
      * @inheritdoc
      */
     protected function setUp(): void
-    {   
+    {
         $this->resource = $this->createMock(ResourceConnection::class);
         $this->viewCollectionFactory = $this->getMockBuilder(CollectionFactory::class)
             ->disableOriginalConstructor()
@@ -77,8 +77,8 @@ class TriggerCleanerTest extends TestCase
             'trg_catalog_category_entity_int_after_insert' => [
                 'TRIGGER_NAME' => 'trg_catalog_category_entity_int_after_insert',
                 'ACTION_STATEMENT' => 'BEGIN statement; END',
-                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int'
-            ]
+                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int',
+            ],
         ];
 
         $connectionMock = $this->getConnectionMock();
@@ -123,13 +123,13 @@ class TriggerCleanerTest extends TestCase
             'trg_catalog_category_entity_int_after_insert' => [
                 'TRIGGER_NAME' => 'trg_catalog_category_entity_int_after_insert',
                 'ACTION_STATEMENT' => 'BEGIN statement; END',
-                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int'
+                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int',
             ],
             'not_linked_trg_catalog_category_entity_int_after_insert' => [
                 'TRIGGER_NAME' => 'trg_catalog_category_entity_int_after_insert',
                 'ACTION_STATEMENT' => 'BEGIN statement; END',
-                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int'
-            ]
+                'EVENT_OBJECT_TABLE' => 'catalog_category_entity_int',
+            ],
         ];
 
         $connectionMock = $this->getConnectionMock();

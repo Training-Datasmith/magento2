@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi;
 
 use Magento\Framework\App\AreaList;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\HTTP\PhpEnvironment\Request as HttpRequest;
-use Magento\Framework\Stdlib\Cookie\CookieReaderInterface;
 use Magento\Framework\Phrase;
+use Magento\Framework\Stdlib\Cookie\CookieReaderInterface;
 use Magento\Framework\Stdlib\StringUtils;
 
 /**

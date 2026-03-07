@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/product_image.php');
@@ -21,7 +22,7 @@ $imageData = [
     'position' => 1,
     'label' => 'Image Alt Text',
     'disabled' => 0,
-    'media_type' => 'image'
+    'media_type' => 'image',
 ];
 
 /** @var $product Product */

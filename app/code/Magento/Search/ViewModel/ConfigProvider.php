@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Search\ViewModel;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Search\Helper\Data as SearchHelper;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * View model for search

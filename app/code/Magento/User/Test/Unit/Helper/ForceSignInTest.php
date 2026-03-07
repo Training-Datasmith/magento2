@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\User\Test\Unit\Helper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Security\Model\ResourceModel\AdminSessionInfo;
-use PHPUnit\Framework\TestCase;
 use Magento\User\Helper\ForceSignIn;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Revoke user token
@@ -39,7 +40,7 @@ class ForceSignInTest extends TestCase
         $this->forceSignIn = $objectManager->getObject(
             ForceSignIn::class,
             [
-                'adminSessionInfo' => $this->adminSessionInfo
+                'adminSessionInfo' => $this->adminSessionInfo,
             ]
         );
     }

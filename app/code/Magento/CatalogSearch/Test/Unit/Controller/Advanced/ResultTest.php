@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -122,7 +123,7 @@ class ResultTest extends TestCase
 
         $catalogSearchAdvanced->expects($this->once())->method('addFilters')->willThrowException(
             new LocalizedException(
-                new Phrase("Test Exception")
+                new Phrase('Test Exception')
             )
         );
 
@@ -160,7 +161,7 @@ class ResultTest extends TestCase
             ->willReturnSelf();
         $urlMock->expects($this->once())
             ->method('getUrl')
-            ->willReturn("urlstring");
+            ->willReturn('urlstring');
 
         $urlFactoryMock = $this->createMock(UrlFactory::class);
         $urlFactoryMock->expects($this->once())
@@ -175,7 +176,7 @@ class ResultTest extends TestCase
             [
                 'context'               => $contextMock,
                 'catalogSearchAdvanced' => $catalogSearchAdvanced,
-                'urlFactory'            => $urlFactoryMock
+                'urlFactory'            => $urlFactoryMock,
             ]
         );
         $this->assertEquals($redirectResultMock, $instance->execute());

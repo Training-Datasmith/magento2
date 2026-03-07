@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser;
 use Magento\CatalogWidget\Block\Product\Widget\Conditions;
@@ -38,7 +40,7 @@ return [
                 'visible' => '1',
                 'sort_order' => '10',
                 'label' => 'Display a Link to Loading a Spreadsheet',
-                'description' => "Defines whether a link to My Account",
+                'description' => 'Defines whether a link to My Account',
             ],
             'link_text' => [
                 'type' => 'text',
@@ -75,5 +77,5 @@ return [
             '0' => ['container_name' => 'left', 'template' => ['default' => 'default_template']],
             '1' => ['container_name' => 'right', 'template' => ['default' => 'default_template']],
         ],
-    ]
+    ],
 ];

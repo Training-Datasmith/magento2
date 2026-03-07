@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class Type implements OptionSourceInterface
     {
         return [
             ['value' => 'USPS_XML', 'label' => __('USPS Web Tools API')],
-            ['value' => 'USPS_REST', 'label' => __('USPS Rest APIs')]
+            ['value' => 'USPS_REST', 'label' => __('USPS Rest APIs')],
         ];
     }
 }

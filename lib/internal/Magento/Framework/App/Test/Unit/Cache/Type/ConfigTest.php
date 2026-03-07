@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Cache\CacheConstants;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\ProxyTesting;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase
@@ -69,7 +70,7 @@ class ConfigTest extends TestCase
             ['load', ['record_id'], '111'],
             ['remove', ['record_id'], true],
             ['getBackend', [], static fn (self $testCase) => $testCase->createZendCacheBackendMock()],
-            ['getLowLevelFrontend', [], static fn (self $testCase) => $testCase->createZendCacheCoreMock()]
+            ['getLowLevelFrontend', [], static fn (self $testCase) => $testCase->createZendCacheCoreMock()],
         ];
     }
 
@@ -174,7 +175,7 @@ class ConfigTest extends TestCase
             'failure, failure' => [false, false, false],
             'failure, success' => [false, true, true],
             'success, failure' => [true, false, true],
-            'success, success' => [true, true, true]
+            'success, success' => [true, true, true],
         ];
     }
 }

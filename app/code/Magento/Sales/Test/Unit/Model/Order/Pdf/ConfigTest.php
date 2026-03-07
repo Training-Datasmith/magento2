@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ConfigTest extends TestCase
         )->method(
             'get'
         )->with(
-            "renderers/page_type",
+            'renderers/page_type',
             []
         )->willReturn(
             $configuration

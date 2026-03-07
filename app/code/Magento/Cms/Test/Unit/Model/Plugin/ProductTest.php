@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ProductTest extends TestCase
         $this->plugin = $objectManager->getObject(
             Product::class,
             [
-                'page' => $this->page
+                'page' => $this->page,
             ]
         );
     }

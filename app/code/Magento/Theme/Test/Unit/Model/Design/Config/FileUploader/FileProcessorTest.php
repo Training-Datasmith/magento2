@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Theme\Test\Unit\Model\Design\Config\FileUploader;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\UrlInterface;
 use Magento\MediaStorage\Model\File\Uploader;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -89,7 +90,7 @@ class FileProcessorTest extends TestCase
                 'getId', 'setId', 'getCode', 'setCode', 'getName', 'setName',
                 'getWebsiteId', 'setWebsiteId', 'getStoreGroupId', 'setIsActive',
                 'getIsActive', 'setStoreGroupId', 'getExtensionAttributes',
-                'setExtensionAttributes', 'getBaseUrl'
+                'setExtensionAttributes', 'getBaseUrl',
             ]
         );
 
@@ -109,7 +110,7 @@ class FileProcessorTest extends TestCase
         $metadata = [
             $fieldCode => [
                 'path' => $path,
-                'backend_model' => File::class
+                'backend_model' => File::class,
             ],
         ];
         $this->storeManager->expects($this->once())
@@ -167,7 +168,7 @@ class FileProcessorTest extends TestCase
                 'name' => 'file.jpg',
                 'size' => '234234',
                 'type' => 'image/jpg',
-                'url' => 'http://magento2.com/media/tmp/' . FileProcessor::FILE_DIR . '/file.jpg'
+                'url' => 'http://magento2.com/media/tmp/' . FileProcessor::FILE_DIR . '/file.jpg',
             ],
             $this->fileProcessor->saveToTmp($fieldCode)
         );

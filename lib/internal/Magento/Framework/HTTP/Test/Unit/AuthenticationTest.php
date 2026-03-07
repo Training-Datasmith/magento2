@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\HTTP\Test\Unit;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\HTTP\Authentication;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AuthenticationTest extends TestCase
 {
@@ -54,7 +55,7 @@ class AuthenticationTest extends TestCase
                     'PHP_AUTH_PW' => $anotherPassword,
                 ],
                 $anotherLogin,
-                $anotherPassword
+                $anotherPassword,
             ],
             [
                 [
@@ -63,13 +64,13 @@ class AuthenticationTest extends TestCase
                     'PHP_AUTH_PW' => $anotherPassword,
                 ],
                 $anotherLogin,
-                $anotherPassword
+                $anotherPassword,
             ],
             [
                 ['REDIRECT_HTTP_AUTHORIZATION' => $header, 'HTTP_AUTHORIZATION' => $anotherHeader],
                 $anotherLogin,
-                $anotherPassword
-            ]
+                $anotherPassword,
+            ],
         ];
     }
 
@@ -84,7 +85,7 @@ class AuthenticationTest extends TestCase
             Authentication::class,
             [
                 'httpRequest' => $request,
-                'httpResponse' => $response
+                'httpResponse' => $response,
             ]
         );
         $realm = uniqid();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class EngineTest extends TestCase
 {
@@ -71,7 +72,7 @@ class EngineTest extends TestCase
             Engine::class,
             [
                 'catalogProductVisibility' => $this->catalogProductVisibility,
-                'indexScopeResolver' => $this->indexScopeResolver
+                'indexScopeResolver' => $this->indexScopeResolver,
             ]
         );
     }

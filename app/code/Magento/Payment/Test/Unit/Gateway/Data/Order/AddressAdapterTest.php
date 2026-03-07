@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class AddressAdapterTest extends TestCase
     {
         return [
             [['Street Line 1'], 'Street Line 1'], //$street, $expected
-            [null, '']
+            [null, ''],
         ];
     }
 
@@ -85,7 +86,7 @@ class AddressAdapterTest extends TestCase
         return [
             [['Street Line 1', 'Street Line 2'], 'Street Line 2'], //$street, $expected
             [['Street Line 1'], ''],
-            [null, '']
+            [null, ''],
         ];
     }
 

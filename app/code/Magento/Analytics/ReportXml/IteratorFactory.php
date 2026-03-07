@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,25 +16,10 @@ use Magento\Framework\ObjectManagerInterface;
 class IteratorFactory
 {
     /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * @var string
-     */
-    private $defaultIteratorName;
-
-    /**
-     * @param ObjectManagerInterface $objectManager
      * @param string $defaultIteratorName
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        $defaultIteratorName = \IteratorIterator::class
-    ) {
-        $this->objectManager = $objectManager;
-        $this->defaultIteratorName = $defaultIteratorName;
+    public function __construct(private readonly ObjectManagerInterface $objectManager, private $defaultIteratorName = \IteratorIterator::class)
+    {
     }
 
     /**
@@ -43,7 +30,6 @@ class IteratorFactory
      * </report>
      * Uses IteratorIterator by default
      *
-     * @param \Traversable $result
      * @param string|null $iteratorName
      * @return \IteratorIterator
      */
@@ -52,7 +38,7 @@ class IteratorFactory
         return $this->objectManager->create(
             $iteratorName ?: $this->defaultIteratorName,
             [
-                'iterator' => $result
+                'iterator' => $result,
             ]
         );
     }

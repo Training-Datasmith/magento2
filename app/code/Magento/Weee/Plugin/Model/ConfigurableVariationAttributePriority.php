@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ConfigurableVariationAttributePriority
         $website = null,
         $calculateTax = null,
         $round = true
-    ):array {
+    ): array {
         if (empty($result)) {
             foreach ($this->configurable->getParentIdsByChild($product->getId()) as $parentId) {
                 $result = $subject->getProductWeeeAttributes(

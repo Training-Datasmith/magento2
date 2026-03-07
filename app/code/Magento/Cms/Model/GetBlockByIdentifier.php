@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Cms\Model;
 
-use Magento\Cms\Api\GetBlockByIdentifierInterface;
 use Magento\Cms\Api\Data\BlockInterface;
+use Magento\Cms\Api\GetBlockByIdentifierInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
@@ -40,7 +42,7 @@ class GetBlockByIdentifier implements GetBlockByIdentifierInterface
     /**
      * @inheritdoc
      */
-    public function execute(string $identifier, int $storeId) : BlockInterface
+    public function execute(string $identifier, int $storeId): BlockInterface
     {
         $block = $this->blockFactory->create();
         $block->setStoreId($storeId);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class ColumnsTest extends TestCase
         $this->textFilterConfigProvider->method('getConfig')
             ->willReturn(
                 [
-                    'conditionType' => 'like'
+                    'conditionType' => 'like',
                 ]
             );
 
@@ -104,7 +105,7 @@ class ColumnsTest extends TestCase
             [],
             [],
             [
-                'text' => $this->textFilterConfigProvider
+                'text' => $this->textFilterConfigProvider,
             ]
         );
     }
@@ -128,17 +129,17 @@ class ColumnsTest extends TestCase
                         'options' => [
                             [
                                 'label' => 'Label',
-                                'value' => 'Value'
-                            ]
+                                'value' => 'Value',
+                            ],
                         ],
                         'is_used_in_grid' => true,
                         'is_visible_in_grid' => true,
                         'is_filterable_in_grid' => true,
                         'is_searchable_in_grid' => true,
                         'validation_rules' => [],
-                        'required'=> false,
-                        'entity_type_code' => 'customer_address'
-                    ]
+                        'required' => false,
+                        'entity_type_code' => 'customer_address',
+                    ],
                 ]
             );
         $this->columnFactory->expects($this->once())
@@ -165,16 +166,16 @@ class ColumnsTest extends TestCase
             'options' => [
                 [
                     'label' => 'Label',
-                    'value' => 'Value'
-                ]
+                    'value' => 'Value',
+                ],
             ],
             'is_used_in_grid' => true,
             'is_visible_in_grid' => true,
             'is_filterable_in_grid' => true,
             'is_searchable_in_grid' => true,
             'validation_rules' => [],
-            'required'=> false,
-            'entity_type_code' => 'customer'
+            'required' => false,
+            'entity_type_code' => 'customer',
         ];
 
         $this->attributeRepository->expects($this->atLeastOnce())
@@ -200,10 +201,10 @@ class ColumnsTest extends TestCase
                             'options' => [
                                 [
                                     'label' => 'Label',
-                                    'value' => 'Value'
-                                ]
-                            ]
-                        ]
+                                    'value' => 'Value',
+                                ],
+                            ],
+                        ],
                     ]) {
                     return null;
                 }
@@ -216,8 +217,8 @@ class ColumnsTest extends TestCase
                                 'filterType' => 'text',
                                 'conditionType' => 'like',
                             ],
-                            'visible' => true
-                        ]
+                            'visible' => true,
+                        ],
                     ]) {
                     return null;
                 }
@@ -242,16 +243,16 @@ class ColumnsTest extends TestCase
             'options' => [
                 [
                     'label' => 'Label',
-                    'value' => 'Value'
-                ]
+                    'value' => 'Value',
+                ],
             ],
             'is_used_in_grid' => true,
             'is_visible_in_grid' => true,
             'is_filterable_in_grid' => true,
             'is_searchable_in_grid' => true,
             'validation_rules' => [],
-            'required'=> false,
-            'entity_type_code' => 'customer'
+            'required' => false,
+            'entity_type_code' => 'customer',
         ];
         $this->inlineEditUpdater->expects($this->once())
             ->method('applyEditing')
@@ -279,18 +280,18 @@ class ColumnsTest extends TestCase
                         'options' => [
                             [
                                 'label' => 'Label',
-                                'value' => 'Value'
-                            ]
-                        ]
+                                'value' => 'Value',
+                            ],
+                        ],
                     ]) {
                     return null;
                 }
 
                 if ($callCount === 2 && $arg1 === 'config' && $arg2 === [
                         'editor' => 'text',
-                        'visible' => true
+                        'visible' => true,
                     ]) {
-                     return null;
+                    return null;
                 }
             });
 

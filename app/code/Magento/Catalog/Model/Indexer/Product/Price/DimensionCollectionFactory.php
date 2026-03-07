@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class DimensionCollectionFactory
 
         return $this->multiDimensionProviderFactory->create(
             [
-                'dimensionProviders' => $providers
+                'dimensionProviders' => $providers,
             ]
         );
     }

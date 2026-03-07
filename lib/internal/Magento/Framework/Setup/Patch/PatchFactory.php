@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -40,7 +42,7 @@ class PatchFactory
         if (!$patchInstance instanceof PatchInterface) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "%s should implement %s interface",
+                    '%s should implement %s interface',
                     $instanceName,
                     PatchInterface::class
                 )

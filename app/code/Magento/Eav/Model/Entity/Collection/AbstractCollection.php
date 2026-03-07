@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -1285,7 +1287,7 @@ abstract class AbstractCollection extends AbstractDb implements SourceProviderIn
                 "e.{$linkField} = t_d.{$linkField}",
                 ['t_d.attribute_id']
             )->where(
-                " e.entity_id IN (?)",
+                ' e.entity_id IN (?)',
                 array_keys($this->_itemsById),
                 \Zend_Db::INT_TYPE
             )->where(
@@ -1376,7 +1378,7 @@ abstract class AbstractCollection extends AbstractDb implements SourceProviderIn
             // _itemsById[$entityId] is always an array (typically with one element)
             // foreach handles edge cases where multiple objects share the same entity ID
             foreach ($this->_itemsById[$entityId] as $object) {
-                $object->setData($object->getData()+$attributeValues);
+                $object->setData($object->getData() + $attributeValues);
             }
 
         }
@@ -1684,7 +1686,7 @@ abstract class AbstractCollection extends AbstractDb implements SourceProviderIn
      * @return bool
      * @since 102.0.0
      */
-    public function isAttributeAdded($attributeCode) : bool
+    public function isAttributeAdded($attributeCode): bool
     {
         return isset($this->_selectAttributes[$attributeCode]);
     }

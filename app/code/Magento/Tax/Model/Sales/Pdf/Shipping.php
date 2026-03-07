@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Sales\Pdf;
 
 class Shipping extends \Magento\Sales\Model\Order\Pdf\Total\DefaultTotal
@@ -62,7 +65,7 @@ class Shipping extends \Magento\Sales\Model\Order\Pdf\Total\DefaultTotal
                 [
                     'amount' => $this->getAmountPrefix() . $amountInclTax,
                     'label' => __('Shipping (Incl. Tax)') . ':',
-                    'font_size' => $fontSize
+                    'font_size' => $fontSize,
                 ],
             ];
         } elseif ($this->_taxConfig->displaySalesShippingInclTax($store)) {

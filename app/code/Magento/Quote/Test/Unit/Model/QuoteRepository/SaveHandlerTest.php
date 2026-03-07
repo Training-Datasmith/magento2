@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Quote\Test\Unit\Model\QuoteRepository;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Quote\Model\Quote;
@@ -19,7 +21,6 @@ use Magento\Quote\Model\Quote\Item\CartItemPersister;
 use Magento\Quote\Model\Quote\ShippingAssignment\ShippingAssignmentPersister;
 use Magento\Quote\Model\QuoteRepository\SaveHandler;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResourceModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -102,7 +103,7 @@ class SaveHandlerTest extends TestCase
                 'getBillingAddress',
                 'getExtensionAttributes',
                 'isVirtual',
-                'collectTotals'
+                'collectTotals',
             ]
         );
         $this->billingAddressMock = $this->createPartialMockWithReflection(
@@ -126,7 +127,7 @@ class SaveHandlerTest extends TestCase
                 'cartItemPersister' => $this->cartItemPersisterMock,
                 'billingAddressPersister' => $this->billingAddressPersisterMock,
                 'shippingAssignmentPersister' => $this->shippingAssignmentPersisterMock,
-                'addressRepository' => $this->addressRepositoryMock
+                'addressRepository' => $this->addressRepositoryMock,
             ]
         );
     }

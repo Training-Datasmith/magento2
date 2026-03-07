@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -166,7 +167,7 @@ class DeleteTest extends TestCase
                 'userFactory' => $this->userFactoryMock,
                 'rulesFactory' => $this->rulesFactoryMock,
                 'authSession' => $this->authSessionMock,
-                'filterManager' => $this->filterManagerMock
+                'filterManager' => $this->filterManagerMock,
             ]
         );
     }

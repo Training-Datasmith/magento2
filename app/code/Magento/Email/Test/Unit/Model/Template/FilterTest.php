@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,9 +43,9 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Variable\Model\Source\Variables;
 use Magento\Variable\Model\VariableFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -271,7 +272,7 @@ class FilterTest extends TestCase
                     $this->cssInliner,
                     [],
                     $this->directiveProcessors,
-                    $this->storeInformation
+                    $this->storeInformation,
                 ]
             )
             ->onlyMethods($mockedMethods)
@@ -424,7 +425,7 @@ class FilterTest extends TestCase
 
     public function testConfigDirectiveAvailable()
     {
-        $path = "web/unsecure/base_url";
+        $path = 'web/unsecure/base_url';
         $availableConfigs = ['value' => $path];
         $construction = ["{{config path={$path}}}", 'config', " path={$path}"];
         $scopeConfigValue = 'value';
@@ -450,7 +451,7 @@ class FilterTest extends TestCase
 
     public function testConfigDirectiveUnavailable()
     {
-        $path = "web/unsecure/base_url";
+        $path = 'web/unsecure/base_url';
         $availableConfigs = [];
         $construction = ["{{config path={$path}}}", 'config', " path={$path}"];
         $scopeConfigValue = '';
@@ -479,7 +480,7 @@ class FilterTest extends TestCase
      */
     public function testConfigDirectiveGetCountry()
     {
-        $path = "general/store_information/country_id";
+        $path = 'general/store_information/country_id';
         $availableConfigs = ['value' => $path];
         $construction = ["{{config path={$path}}}", 'config', " path={$path}"];
         $expectedCountry = 'United States';
@@ -505,7 +506,7 @@ class FilterTest extends TestCase
      */
     public function testConfigDirectiveGetRegion()
     {
-        $path = "general/store_information/region_id";
+        $path = 'general/store_information/region_id';
         $availableConfigs = ['value' => $path];
         $construction = ["{{config path={$path}}}", 'config', " path={$path}"];
         $expectedRegion = 'Texas';
@@ -538,9 +539,9 @@ class FilterTest extends TestCase
         $this->storeManager->expects($this->once())->method('getStore')->willReturn($storeMock);
 
         $data = [
-            "{{protocol http=\"http://url\" https=\"https://url\"}}",
-            "protocol",
-            " http=\"http://url\" https=\"https://url\""
+            '{{protocol http="http://url" https="https://url"}}',
+            'protocol',
+            ' http="http://url" https="https://url"',
         ];
         $this->assertEquals('https://url', $model->protocolDirective($data));
     }
@@ -560,9 +561,9 @@ class FilterTest extends TestCase
         $this->storeManager->expects($this->once())->method('getStore')->willReturn($storeMock);
 
         $data = [
-            "{{protocol http=\"https://url\" https=\"http://url\"}}",
-            "protocol",
-            " http=\"https://url\" https=\"http://url\""
+            '{{protocol http="https://url" https="http://url"}}',
+            'protocol',
+            ' http="https://url" https="http://url"',
         ];
         $model->protocolDirective($data);
     }
@@ -599,12 +600,12 @@ class FilterTest extends TestCase
         return [
             [
                 UrlInterface::class,
-                0
+                0,
             ],
             [
                 BackendModelUrl::class,
-                1
-            ]
+                1,
+            ],
         ];
     }
 
@@ -656,7 +657,7 @@ class FilterTest extends TestCase
         $construction = [
             '{{block class="Magento\\Framework\\View\\Element\\AbstractBlock"}}',
             'block',
-            ' class="Magento\\Framework\\View\\Element\\AbstractBlock"'
+            ' class="Magento\\Framework\\View\\Element\\AbstractBlock"',
         ];
 
         $filter = $this->getModel();
@@ -675,13 +676,13 @@ class FilterTest extends TestCase
             'block without cache key' => [
                 'hasCacheKey' => false,
                 'expectGetCacheKey' => true,
-                'expectSetData' => true
+                'expectSetData' => true,
             ],
             'block with existing cache key' => [
                 'hasCacheKey' => true,
                 'expectGetCacheKey' => false,
-                'expectSetData' => false
-            ]
+                'expectSetData' => false,
+            ],
         ];
     }
 }

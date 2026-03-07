@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute;
 
 /**
@@ -11,9 +14,9 @@ namespace Magento\Eav\Model\Entity\Attribute;
  */
 interface ScopedAttributeInterface
 {
-    const SCOPE_STORE = 0;
+    public const SCOPE_STORE = 0;
 
-    const SCOPE_GLOBAL = 1;
+    public const SCOPE_GLOBAL = 1;
 
-    const SCOPE_WEBSITE = 2;
+    public const SCOPE_WEBSITE = 2;
 }

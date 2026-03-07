@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute;
 
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
@@ -59,7 +62,7 @@ class InStockOptionSelectBuilder
                 \Magento\CatalogInventory\Model\Stock\Status::STATUS_IN_STOCK
             );
         }
-        
+
         return $select;
     }
 }

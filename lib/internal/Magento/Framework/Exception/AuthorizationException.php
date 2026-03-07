@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Authorization service exception
  *
@@ -17,5 +19,5 @@ class AuthorizationException extends LocalizedException
     /**
      * @deprecated
      */
-    const NOT_AUTHORIZED = "The consumer isn't authorized to access %resources.";
+    public const NOT_AUTHORIZED = "The consumer isn't authorized to access %resources.";
 }

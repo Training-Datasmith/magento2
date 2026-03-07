@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -104,7 +106,7 @@ class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
         $this->_transformActionData($action, $actionCaption, $row);
 
         $htmlAttributes = [
-            'value' => $this->escapeHtmlAttr($this->_jsonEncoder->encode($action), false)
+            'value' => $this->escapeHtmlAttr($this->_jsonEncoder->encode($action), false),
         ];
         $actionAttributes->setData($htmlAttributes);
         return '<option ' . $actionAttributes->serialize() . '>' . $actionCaption . '</option>';

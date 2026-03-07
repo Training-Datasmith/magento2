@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,5 +16,4 @@ namespace Magento\User\Model\Spi;
  */
 interface NotificationExceptionInterface extends \Throwable
 {
-
 }

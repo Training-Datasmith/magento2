@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class ShellTest extends TestCase
             [
                 'output' => $output,
                 'exit_code' => $exitCode,
-                'escaped_command' => $command
+                'escaped_command' => $command,
             ]
         );
         $this->driverMock->expects($this->once())->method('execute')->willReturn($successfulResponse);
@@ -70,7 +71,7 @@ class ShellTest extends TestCase
             [
                 'output' => $output,
                 'exit_code' => $exitCode,
-                'escaped_command' => $command
+                'escaped_command' => $command,
             ]
         );
         $this->driverMock->expects($this->once())->method('execute')->willReturn($response);

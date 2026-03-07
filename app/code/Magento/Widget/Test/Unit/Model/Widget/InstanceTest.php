@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -404,7 +405,7 @@ class InstanceTest extends TestCase
         $widgetParameters = [
             'anchor_text' => 'Test',
             'title' => 'Test',
-            'page_id' => '2'
+            'page_id' => '2',
         ];
         $this->serializer->expects($this->once())
             ->method('serialize')
@@ -505,15 +506,15 @@ class InstanceTest extends TestCase
                             ],
                         'pages' => ['layout_handle' => ''],
                         'page_layouts' => ['layout_handle' => ''],
-                    ]
+                    ],
                 ],
                 'expectedData' =>
                 [
                     'catalog_category_view_id_3',
                     'catalog_category_view_id_5',
                     'catalog_category_view_id_6',
-                    'catalog_category_view_id_7'
-                ]
+                    'catalog_category_view_id_7',
+                ],
             ],
             'test case for page layouts handles' => [
                 'pageGroups' => [
@@ -526,15 +527,15 @@ class InstanceTest extends TestCase
                             'block' => 'page.bottom',
                             'template' => 'default',
                             'is_anchor_only' => '0',
-                            'layout_handle' => 'catalog_category_view_id_3'
-                        ]
-                    ]
+                            'layout_handle' => 'catalog_category_view_id_3',
+                        ],
+                    ],
                 ],
                 'expectedData' =>
                 [
-                    'catalog_category_view_id_3'
-                ]
-            ]
+                    'catalog_category_view_id_3',
+                ],
+            ],
         ];
     }
 }

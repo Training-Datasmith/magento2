@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Fixture for Customer List method.
  *
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;

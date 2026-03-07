@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestSetupDeclarationModule3\Setup\Patch\Data;
 
 use Magento\Framework\App\ResourceConnection;
@@ -53,7 +56,7 @@ class BicPatch implements
      */
     public function apply()
     {
-        throw new \Exception("This patch can`t be applied, as it was created to test BIC");
+        throw new \Exception('This patch can`t be applied, as it was created to test BIC');
     }
 
     public function revert()
@@ -66,7 +69,7 @@ class BicPatch implements
     public static function getDependencies()
     {
         return [
-            RefBicPatch::class
+            RefBicPatch::class,
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model\Cart;
 
+use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Api\ExtensibleDataInterface;
 use Magento\Quote\Api;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CartTotalRepositoryInterface;
-use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Quote\Model\Cart\Totals\ItemConverter;
 use Magento\Quote\Api\CouponManagementInterface;
 use Magento\Quote\Api\Data\TotalsInterface as QuoteTotalsInterface;
+use Magento\Quote\Model\Cart\Totals\ItemConverter;
 
 /**
  * Cart totals data object.

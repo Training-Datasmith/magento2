@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,10 +9,8 @@
 /**
  * Test class for \Magento\TestFramework\Isolation\WorkingDirectory.
  */
-namespace Magento\Test\Isolation;
 
-use Magento\Framework\ObjectManagerInterface;
-use Magento\TestFramework\ObjectManager;
+namespace Magento\Test\Isolation;
 
 class AppConfigTest extends \PHPUnit\Framework\TestCase
 {

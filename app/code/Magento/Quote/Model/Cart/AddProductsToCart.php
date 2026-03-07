@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Quote\Model\Cart\BuyRequest\BuyRequestBuilder;
 use Magento\Quote\Model\Cart\Data\AddProductsToCartOutput;
 use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
 use Magento\Quote\Model\Quote;
-use Magento\Framework\Message\MessageInterface;
 
 /**
  * Unified approach to add products to the Shopping Cart.
@@ -155,7 +155,7 @@ class AddProductsToCart
                     __('Could not find a product with SKU "%sku"', ['sku' => $sku])->render(),
                     $cartItemPosition,
                     $stockItemQuantity
-                )
+                ),
             ];
         }
 

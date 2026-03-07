@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Setup;
 
 use Magento\Catalog\Block\Adminhtml\Category\Helper\Pricestep;
@@ -30,6 +33,7 @@ use Magento\Catalog\Model\Product\Attribute\Frontend\Image as ImageFrontendModel
 use Magento\Catalog\Model\Product\Attribute\Source\Countryofmanufacture;
 use Magento\Catalog\Model\Product\Attribute\Source\Layout as LayoutModel;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Category;
 use Magento\Catalog\Model\ResourceModel\Category\Attribute\Collection;
@@ -45,9 +49,7 @@ use Magento\Eav\Model\Entity\Setup\Context;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\CollectionFactory;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\App\CacheInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Catalog\Model\Product\Type;
 use Magento\Theme\Model\Theme\Source\Theme;
 
 /**
@@ -67,12 +69,12 @@ class CategorySetup extends EavSetup
     /**
      * This should be set explicitly
      */
-    const CATEGORY_ENTITY_TYPE_ID = 3;
+    public const CATEGORY_ENTITY_TYPE_ID = 3;
 
     /**
      * This should be set explicitly
      */
-    const CATALOG_PRODUCT_ENTITY_TYPE_ID = 4;
+    public const CATALOG_PRODUCT_ENTITY_TYPE_ID = 4;
 
     /**
      * Init
@@ -902,7 +904,7 @@ class CategorySetup extends EavSetup
                         'unique' => false,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

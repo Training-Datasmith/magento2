@@ -1,17 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Setup\Fixtures\FixtureConfig;
-use Magento\Setup\Model\Description\DescriptionSentenceGeneratorFactory;
-use Magento\Setup\Model\Description\DescriptionParagraphGeneratorFactory;
 use Magento\Setup\Model\Description\DescriptionGeneratorFactory;
-use Magento\Setup\Model\DictionaryFactory;
-use Magento\Setup\Model\SearchTermManagerFactory;
+use Magento\Setup\Model\Description\DescriptionParagraphGeneratorFactory;
+use Magento\Setup\Model\Description\DescriptionSentenceGeneratorFactory;
 
 /**
  * Search term description generator factory
@@ -113,7 +114,7 @@ class SearchTermDescriptionGeneratorFactory
         }
         return $this->objectManager->create(\Magento\Setup\Model\SearchTermDescriptionGenerator::class, [
             'descriptionGenerator' => $this->buildDescriptionGenerator($descriptionConfig),
-            'searchTermManager' => $this->buildSearchTermManager($searchTermsConfig, $totalProductsCount)
+            'searchTermManager' => $this->buildSearchTermManager($searchTermsConfig, $totalProductsCount),
         ]);
     }
 
@@ -150,20 +151,20 @@ class SearchTermDescriptionGeneratorFactory
     {
         $sentenceGenerator = $this->sentenceGeneratorFactory->create([
             'dictionary' => $this->dictionaryFactory->create([
-                'dictionaryFilePath' => realpath(__DIR__ . '/../Fixtures/_files/dictionary.csv')
+                'dictionaryFilePath' => realpath(__DIR__ . '/../Fixtures/_files/dictionary.csv'),
             ]),
-            'sentenceConfig' => $descriptionConfig['paragraphs']['sentences']
+            'sentenceConfig' => $descriptionConfig['paragraphs']['sentences'],
         ]);
 
         $paragraphGenerator = $this->paragraphGeneratorFactory->create([
             'sentenceGenerator' => $sentenceGenerator,
-            'paragraphConfig' => $descriptionConfig['paragraphs']
+            'paragraphConfig' => $descriptionConfig['paragraphs'],
         ]);
 
         $descriptionGenerator = $this->descriptionGeneratorFactory->create([
             'paragraphGenerator' => $paragraphGenerator,
             'mixinManager' => $this->objectManager->create(\Magento\Setup\Model\Description\MixinManager::class),
-            'descriptionConfig' => $descriptionConfig
+            'descriptionConfig' => $descriptionConfig,
         ]);
 
         return $descriptionGenerator;
@@ -181,7 +182,7 @@ class SearchTermDescriptionGeneratorFactory
         return $this->searchTermManagerFactory->create(
             [
                 'searchTerms' => $searchTermsConfig,
-                'totalProductsCount' => $totalProductsCount
+                'totalProductsCount' => $totalProductsCount,
             ]
         );
     }

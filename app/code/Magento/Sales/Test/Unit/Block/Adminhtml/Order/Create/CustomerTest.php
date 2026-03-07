@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 
 class CustomerTest extends TestCase
 {
-
     public function testGetButtonsHtml()
     {
         $contextMock = $this->createPartialMock(Context::class, ['getAuthorization']);

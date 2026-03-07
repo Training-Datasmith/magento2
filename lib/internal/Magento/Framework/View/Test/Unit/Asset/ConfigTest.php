@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,11 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Asset;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\State;
 use Magento\Framework\TestFramework\Unit\BaseTestCase;
 use Magento\Framework\View\Asset\Config;
 use Magento\Store\Model\ScopeInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Tests Magento\Framework\View\Asset\Config

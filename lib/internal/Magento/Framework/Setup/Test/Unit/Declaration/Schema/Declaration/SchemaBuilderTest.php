@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,6 @@ namespace Magento\Framework\Setup\Test\Unit\Declaration\Schema\Declaration;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\SqlVersionProvider;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Stdlib\BooleanUtils;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Setup\Declaration\Schema\Declaration\SchemaBuilder;
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationComposite;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Columns\Integer;
@@ -23,9 +22,11 @@ use Magento\Framework\Setup\Declaration\Schema\Dto\Index;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Schema;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\Setup\Declaration\Schema\Sharding;
+use Magento\Framework\Stdlib\BooleanUtils;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for SchemaBuilder.
@@ -104,7 +105,7 @@ class SchemaBuilderTest extends TestCase
                 'sharding' => $this->shardingMock,
                 'validationComposite' => $this->validationCompositeMock,
                 'resourceConnection' => $this->resourceConnectionMock,
-                'sqlVersionProvider' => $this->sqlVersionProvider
+                'sqlVersionProvider' => $this->sqlVersionProvider,
             ]
         );
     }
@@ -127,26 +128,26 @@ class SchemaBuilderTest extends TestCase
                                 'type' => 'int',
                                 'padding' => 10,
                                 'identity' => true,
-                                'nullable' => false
+                                'nullable' => false,
                             ],
                             'foreign_column' => [
                                 'name' => 'foreign_column',
                                 'type' => 'int',
                                 'padding' => 10,
-                                'nullable' => false
+                                'nullable' => false,
                             ],
                             'some_disabled_column' => [
                                 'name' => 'some_disabled_column',
                                 'disabled' => 'true',
                                 'type' => 'int',
                                 'padding' => 10,
-                                'nullable' => false
+                                'nullable' => false,
                             ],
                             'second_column' => [
                                 'name' => 'second_column',
                                 'type' => 'timestamp',
                                 'default' => 'CURRENT_TIMESTAMP',
-                                'on_update' => true
+                                'on_update' => true,
                             ],
                         ],
                         'constraint' => [
@@ -156,16 +157,16 @@ class SchemaBuilderTest extends TestCase
                                 'column' => 'foreign_column',
                                 'table' => 'first_table',
                                 'referenceTable' => 'second_table',
-                                'referenceColumn' => 'ref_column'
+                                'referenceColumn' => 'ref_column',
                             ],
                             'PRIMARY' => [
                                 'name' => 'PRIMARY',
                                 'type' => 'primary',
                                 'column' => [
-                                    'first_column'
-                                ]
-                            ]
-                        ]
+                                    'first_column',
+                                ],
+                            ],
+                        ],
                     ],
                     'second_table' => [
                         'name' => 'second_table',
@@ -176,20 +177,20 @@ class SchemaBuilderTest extends TestCase
                                 'name' => 'ref_column',
                                 'type' => 'int',
                                 'padding' => 10,
-                                'nullable' => false
+                                'nullable' => false,
                             ],
                         ],
                         'index' => [
                             'FIRST_INDEX' => [
                                 'name' => 'FIRST_INDEX',
                                 'column' => [
-                                    'ref_column'
-                                ]
-                            ]
+                                    'ref_column',
+                                ],
+                            ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -366,7 +367,7 @@ class SchemaBuilderTest extends TestCase
         $resourceConnectionMock->expects(self::exactly(6))
             ->method('getTableName')
             ->willReturnCallback(
-                function($arg1) {
+                function ($arg1) {
                     if ($arg1 == 'first_table') {
                         return 'first_table';
                     } elseif ($arg1 == 'second_table') {

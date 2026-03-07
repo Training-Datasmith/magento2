@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Product\Widget;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\Context as ProductBlockContext;
 use Magento\Catalog\Block\Product\Widget\Html\Pager;
 use Magento\Catalog\Block\Product\Widget\NewWidget;
@@ -31,6 +31,7 @@ use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\Layout;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -114,7 +115,7 @@ class NewWidgetTest extends TestCase
         $this->context = $this->createPartialMock(ProductBlockContext::class, [
             'getEventManager', 'getScopeConfig', 'getLayout',
             'getRequest', 'getCacheState', 'getCatalogConfig',
-            'getLocaleDate'
+            'getLocaleDate',
         ]);
 
         $this->context->method('getLayout')->willReturn($this->layout);
@@ -123,7 +124,7 @@ class NewWidgetTest extends TestCase
         $this->block = $this->objectManager->getObject(
             NewWidget::class,
             [
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }
@@ -181,16 +182,16 @@ class NewWidgetTest extends TestCase
     {
         return [
             'without-arguments' => [
-                []
+                [],
             ],
             'with-arguments' => [
                 [
                     'zone' => Render::ZONE_ITEM_LIST,
                     'price_id' => 'old-price-6-widget-new-list',
                     'include_container' => true,
-                    'display_minimal_price' => true
-                ]
-            ]
+                    'display_minimal_price' => true,
+                ],
+            ],
         ];
     }
 
@@ -240,7 +241,7 @@ class NewWidgetTest extends TestCase
             ],
             'negative_page' => [
                 'pageNumber' => -5,
-                'expectedResult' => 5
+                'expectedResult' => 5,
             ],
         ];
     }
@@ -311,7 +312,7 @@ class NewWidgetTest extends TestCase
             'setVisibility', 'addMinimalPrice', 'addFinalPrice',
             'addTaxPercents', 'addAttributeToSelect', 'addUrlRewrite',
             'addStoreFilter', 'addAttributeToSort', 'setPageSize',
-            'setCurPage', 'addAttributeToFilter'
+            'setCurPage', 'addAttributeToFilter',
         ]);
         $this->productCollection->expects($this->once())->method('setVisibility')
             ->willReturnSelf();
@@ -361,7 +362,7 @@ class NewWidgetTest extends TestCase
             NewWidget::class,
             [
                 'context' => $this->context,
-                'productCollectionFactory' => $productCollectionFactory
+                'productCollectionFactory' => $productCollectionFactory,
             ]
         );
 
@@ -533,7 +534,7 @@ class NewWidgetTest extends TestCase
             Pager::class,
             [
                 'setShowPerPage', 'setPageVarName', 'setLimit', 'setCollection',
-                'toHtml', 'setUseContainer', 'setShowAmounts', 'setTotalLimit'
+                'toHtml', 'setUseContainer', 'setShowAmounts', 'setTotalLimit',
             ]
         );
 
@@ -611,7 +612,7 @@ class NewWidgetTest extends TestCase
             ->willReturn('serialized-params');
         $httpContext->method('getValue')->willReturnMap([
             [\Magento\Customer\Model\Context::CONTEXT_GROUP, null],
-            [Context::CONTEXT_CURRENCY, null]
+            [Context::CONTEXT_CURRENCY, null],
         ]);
         $currency->method('getCode')->willReturn('USD');
         $store->method('getDefaultCurrency')->willReturn($currency);
@@ -627,7 +628,7 @@ class NewWidgetTest extends TestCase
             [
                 'context' => $this->context,
                 'httpContext' => $httpContext,
-                'serializer' => $serializer
+                'serializer' => $serializer,
             ]
         );
 
@@ -679,16 +680,16 @@ class NewWidgetTest extends TestCase
         return [
             'default_when_not_set' => [
                 'productsPerPage' => null,
-                'expectedResult' => NewWidget::DEFAULT_PRODUCTS_PER_PAGE
+                'expectedResult' => NewWidget::DEFAULT_PRODUCTS_PER_PAGE,
             ],
             'custom_positive_value' => [
                 'productsPerPage' => 7,
-                'expectedResult' => 7
+                'expectedResult' => 7,
             ],
             'explicit_zero_value' => [
                 'productsPerPage' => 0,
-                'expectedResult' => 0
-            ]
+                'expectedResult' => 0,
+            ],
         ];
     }
 }

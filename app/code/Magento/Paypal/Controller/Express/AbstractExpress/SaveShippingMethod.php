@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Express\AbstractExpress;
 
 class SaveShippingMethod extends \Magento\Paypal\Controller\Express\AbstractExpress

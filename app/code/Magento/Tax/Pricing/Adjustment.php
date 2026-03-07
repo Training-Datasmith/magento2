@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class Adjustment implements AdjustmentInterface
     /**
      * Adjustment code tax
      */
-    const ADJUSTMENT_CODE = 'tax';
+    public const ADJUSTMENT_CODE = 'tax';
 
     /**
      * @var TaxHelper

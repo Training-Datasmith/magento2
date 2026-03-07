@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\Event\Observer;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Observer\InvalidateCache;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class InvalidateCacheTest extends TestCase

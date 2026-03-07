@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class SampleRepositoryTest extends \PHPUnit\Framework\TestCase
             'title' => 'Store View Title',
             'sort_order' => 1,
             'sample_url' => 'http://www.sample.example.com/',
-            'sample_type' => 'url'
+            'sample_type' => 'url',
         ];
 
         $sampleFactory = $this->objectManager->create(SampleInterfaceFactory::class);

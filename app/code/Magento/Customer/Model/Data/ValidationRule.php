@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Customer\Model\Data;
 
-use Magento\Customer\Api\Data\ValidationRuleInterface;
+namespace Magento\Customer\Model\Data;
 
 class ValidationRule extends \Magento\Framework\Api\AbstractSimpleObject implements
     \Magento\Customer\Api\Data\ValidationRuleInterface

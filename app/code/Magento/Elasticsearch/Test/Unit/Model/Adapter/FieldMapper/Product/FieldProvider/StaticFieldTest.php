@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,21 +13,16 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeAdapter;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeFieldsMappingProcessorInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface
-    as IndexTypeConverterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ResolverInterface
-    as FieldIndexResolver;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface
-    as FieldNameResolver;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface
-    as FieldTypeConverterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ResolverInterface
-    as FieldTypeResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface as IndexTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ResolverInterface as FieldIndexResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface as FieldNameResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface as FieldTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ResolverInterface as FieldTypeResolver;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\StaticField;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit tests for \Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\StaticField class.
@@ -105,7 +101,7 @@ class StaticFieldTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['getFieldName'])
             ->getMock();
-        
+
         $this->attributeFieldsMappingProcessorMock = $this->createMock(
             AttributeFieldsMappingProcessorInterface::class
         );
@@ -123,7 +119,7 @@ class StaticFieldTest extends TestCase
                 'fieldTypeResolver' => $this->fieldTypeResolver,
                 'fieldNameResolver' => $this->fieldNameResolver,
                 'excludedAttributes' => ['price'],
-                'attributeFieldsMappingProcessor' => $this->attributeFieldsMappingProcessorMock
+                'attributeFieldsMappingProcessor' => $this->attributeFieldsMappingProcessorMock,
             ]
         );
     }
@@ -413,7 +409,7 @@ class StaticFieldTest extends TestCase
                         'index' => 'no',
                     ],
                 ],
-                false
+                false,
             ],
         ];
     }

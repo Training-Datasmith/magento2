@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Config
 {
-    const XML_PATH_REVIEW_ACTIVE = 'catalog/review/active';
+    public const XML_PATH_REVIEW_ACTIVE = 'catalog/review/active';
 
     /**
      * @var ScopeConfigInterface

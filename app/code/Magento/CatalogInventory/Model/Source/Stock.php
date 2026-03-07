@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\Source;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -47,7 +50,7 @@ class Stock extends AbstractSource
     {
         return [
             ['value' => StockModel::STOCK_IN_STOCK, 'label' => __('In Stock')],
-            ['value' => StockModel::STOCK_OUT_OF_STOCK, 'label' => __('Out of Stock')]
+            ['value' => StockModel::STOCK_OUT_OF_STOCK, 'label' => __('Out of Stock')],
         ];
     }
 

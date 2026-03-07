@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class RegionModelsCache implements ResetAfterRequestInterface
      * @param Region $model
      * @return void
      */
-    public function add(string $key, Region $model) : void
+    public function add(string $key, Region $model): void
     {
         $this->regionModels[$key] = $model;
     }
@@ -44,7 +45,7 @@ class RegionModelsCache implements ResetAfterRequestInterface
      * @param string $key
      * @return Region|null
      */
-    public function get(string $key) : ?Region
+    public function get(string $key): ?Region
     {
         return $this->regionModels[$key] ?? null;
     }

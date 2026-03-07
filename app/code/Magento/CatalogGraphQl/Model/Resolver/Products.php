@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Resolver;
 
+use Magento\Catalog\Model\Layer\Resolver;
+use Magento\CatalogGraphQl\DataProvider\Product\SearchCriteriaBuilder;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Query\ProductQueryInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\Catalog\Model\Layer\Resolver;
-use Magento\CatalogGraphQl\DataProvider\Product\SearchCriteriaBuilder;
 use Magento\Framework\GraphQl\Query\Uid;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * Products field resolver, used for GraphQL request processing.
@@ -82,7 +83,7 @@ class Products implements ResolverInterface
             'page_info' => [
                 'page_size' => $searchResult->getPageSize(),
                 'current_page' => $searchResult->getCurrentPage(),
-                'total_pages' => $searchResult->getTotalPages()
+                'total_pages' => $searchResult->getTotalPages(),
             ],
             'search_result' => $searchResult,
             'layer_type' => isset($args['search']) ? Resolver::CATALOG_LAYER_SEARCH : Resolver::CATALOG_LAYER_CATEGORY,

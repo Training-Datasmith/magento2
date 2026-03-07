@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\Framework\View\Test\Unit\Layout\Reader;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Layout\Element;
 use Magento\Framework\View\Layout\Reader\Container;
 use Magento\Framework\View\Layout\Reader\Context;
 use Magento\Framework\View\Layout\ReaderPool;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\ScheduledStructure\Helper;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ContainerTest extends TestCase
 {
@@ -59,7 +60,7 @@ class ContainerTest extends TestCase
             Container::class,
             [
                 'helper' => $this->helperMock,
-                'readerPool' => $this->readerPoolMock
+                'readerPool' => $this->readerPoolMock,
             ]
         );
     }
@@ -84,16 +85,16 @@ class ContainerTest extends TestCase
         $setRemoveCondition
     ) {
         // Convert string expectations to matchers
-        $getStructureCondition = is_string($getStructureCondition) 
-            ? $this->createInvocationMatcher($getStructureCondition) 
+        $getStructureCondition = is_string($getStructureCondition)
+            ? $this->createInvocationMatcher($getStructureCondition)
             : $getStructureCondition;
-        $setStructureCondition = is_string($setStructureCondition) 
-            ? $this->createInvocationMatcher($setStructureCondition) 
+        $setStructureCondition = is_string($setStructureCondition)
+            ? $this->createInvocationMatcher($setStructureCondition)
             : $setStructureCondition;
-        $setRemoveCondition = is_string($setRemoveCondition) 
-            ? $this->createInvocationMatcher($setRemoveCondition) 
+        $setRemoveCondition = is_string($setRemoveCondition)
+            ? $this->createInvocationMatcher($setRemoveCondition)
             : $setRemoveCondition;
-        
+
         /** @var ScheduledStructure|MockObject $scheduledStructureMock */
         $scheduledStructureMock = $this->getMockBuilder(ScheduledStructure::class)
             ->disableOriginalConstructor()
@@ -251,7 +252,7 @@ class ContainerTest extends TestCase
                 'getStructureCondition' => 'once',
                 'setStructureCondition' => 'once',
                 'setRemoveCondition' => 'never',
-            ]
+            ],
         ];
     }
 

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Rate;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
-use Magento\Tax\Model\Calculation\Rate\Converter;
-use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Framework\Escaper;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Escaper;
+use Magento\Framework\Registry;
+use Magento\Tax\Api\TaxRateRepositoryInterface;
+use Magento\Tax\Model\Calculation\Rate\Converter;
 
 /**
  * Tax Rate AjaxSave Controller

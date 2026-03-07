@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class Config extends \Magento\Framework\Config\AbstractXml
         if ($withEmpty) {
             array_unshift($options, [
                 'value' => '',
-                'label' => (string)new \Magento\Framework\Phrase('-- Please Select --')
+                'label' => (string)new \Magento\Framework\Phrase('-- Please Select --'),
             ]);
         }
         return $options;
@@ -135,7 +136,7 @@ class Config extends \Magento\Framework\Config\AbstractXml
     protected function _getIdAttributes()
     {
         return [
-            '/page_layouts/layout' => 'id'
+            '/page_layouts/layout' => 'id',
         ];
     }
 }

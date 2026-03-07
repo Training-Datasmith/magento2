@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart;
 
-use Magento\Checkout\Model\Layout\AbstractTotalsProcessor;
 use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
+use Magento\Checkout\Model\Layout\AbstractTotalsProcessor;
 
 class CartTotalsProcessor extends AbstractTotalsProcessor implements LayoutProcessorInterface
 {

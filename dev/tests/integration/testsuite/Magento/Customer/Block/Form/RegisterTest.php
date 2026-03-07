@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Form;
 
 use Magento\Customer\Block\DataProviders\AddressAttributeData;
 use Magento\Customer\ViewModel\Address\RegionProvider;
-use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\ButtonLockManager;
+use Magento\Framework\View\Element\Template;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**

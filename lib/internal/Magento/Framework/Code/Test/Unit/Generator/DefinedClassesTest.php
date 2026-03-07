@@ -1,14 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 
 // @codingStandardsIgnoreStart
+
 namespace Magento\Framework\Code\Generator {
-    use PHPUnit\Framework\TestCase;
-    use Magento\Framework\Autoload\AutoloaderRegistry;
-    use Magento\Framework\Autoload\AutoloaderInterface;
     use Magento\Framework\Code\Test\Unit\Generator\DefinedClassesTest;
 
     /**
@@ -27,8 +27,8 @@ namespace Magento\Framework\Code\Test\Unit\Generator {
     use Magento\Framework\Autoload\AutoloaderInterface;
     use Magento\Framework\Autoload\AutoloaderRegistry;
     use Magento\Framework\Code\Generator\DefinedClasses;
-    use PHPUnit\Framework\TestCase;
     use PHPUnit\Framework\MockObject\MockObject;
+    use PHPUnit\Framework\TestCase;
 
     // @codingStandardsIgnoreEnd
 

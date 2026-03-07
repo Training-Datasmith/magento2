@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Asset\PreProcessor\Helper;
 
 use Magento\Framework\View\Asset\PreProcessor\Helper\Sort;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
@@ -43,18 +44,18 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // 2
                         'after' => 'name-3',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // 0
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // 1
                         'after' => 'name-2',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                 ],
                 'expected' => [
-                    'name-2', 'name-3', 'name-1'
+                    'name-2', 'name-3', 'name-1',
                 ],
                 'message' => 'variation-1',
             ],
@@ -62,30 +63,30 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // 3
                         'after' => 'name-6',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // 1
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // 6
                         'after' => 'name-5',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-4' => [ // 4
                         'after' => 'name-1',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-5' => [ // 5
                         'after' => 'name-4',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-6' => [ // 2
                         'after' => 'name-2',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                 ],
                 'expected' => [
-                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3'
+                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3',
                 ],
                 'message' => 'variation-2',
             ],
@@ -93,30 +94,30 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // 3
                         'after' => 'name-6',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // 6
                         'after' => 'name-5',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-4' => [ // 4
                         'after' => 'name-1',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-5' => [ // 5
                         'after' => 'name-4',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-6' => [ // 2
                         'after' => 'name-2',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // 1
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                 ],
                 'expected' => [
-                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3'
+                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3',
                 ],
                 'message' => 'variation-3',
             ],
@@ -124,36 +125,36 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // 3
                         'after' => 'name-6',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // 1
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // 6
                         'after' => 'name-5',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-4' => [ // 4
                         'after' => 'name-1',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-5' => [ // 5
                         'after' => 'name-4',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-6' => [ // 2
                         'after' => 'name-2',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-7' => [ // end
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-8' => [ // end
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                 ],
                 'expected' => [
-                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3', 'name-7', 'name-8'
+                    'name-2', 'name-6', 'name-1', 'name-4', 'name-5', 'name-3', 'name-7', 'name-8',
                 ],
                 'message' => 'variation-4',
             ],
@@ -161,15 +162,15 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // xxx
                         'after' => 'name-6',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // 1
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // xxx
                         'after' => 'name-XXX',
-                        'processor' => new \stdClass()
-                    ]
+                        'processor' => new \stdClass(),
+                    ],
                 ],
                 'expected' => ['name-2'],
                 'message' => 'variation-5',
@@ -178,16 +179,16 @@ class SortTest extends TestCase
                 'arrayData' => [
                     'name-1' => [ // xxx
                         'after' => 'name-3',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-2' => [ // xxx
                         'after' => 'name-1',
-                        'processor' => new \stdClass()
+                        'processor' => new \stdClass(),
                     ],
                     'name-3' => [ // xxx
                         'after' => 'name-2',
-                        'processor' => new \stdClass()
-                    ]
+                        'processor' => new \stdClass(),
+                    ],
                 ],
                 'expected' => [],
                 'message' => 'variation-6',

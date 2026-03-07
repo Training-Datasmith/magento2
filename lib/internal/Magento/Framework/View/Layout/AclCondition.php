@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
@@ -15,7 +18,7 @@ class AclCondition implements VisibilityConditionInterface
     /**
      * Unique name.
      */
-    const NAME = 'acl';
+    public const NAME = 'acl';
 
     /**
      * @var \Magento\Framework\AuthorizationInterface

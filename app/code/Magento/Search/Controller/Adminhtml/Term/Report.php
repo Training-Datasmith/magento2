@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller\Adminhtml\Term;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
-use Magento\Reports\Controller\Adminhtml\Index as ReportsIndexController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Reports\Controller\Adminhtml\Index as ReportsIndexController;
 
 class Report extends ReportsIndexController implements HttpGetActionInterface
 {
@@ -16,7 +19,7 @@ class Report extends ReportsIndexController implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::report_search';
+    public const ADMIN_RESOURCE = 'Magento_Reports::report_search';
 
     /**
      * Search terms report action

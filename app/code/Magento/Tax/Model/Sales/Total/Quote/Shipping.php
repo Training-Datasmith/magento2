@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Tax\Model\Sales\Total\Quote;
 
-use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Model\Quote\Address;
 
 class Shipping extends CommonTaxCollector
 {
@@ -76,7 +77,7 @@ class Shipping extends CommonTaxCollector
         if ($total->getShippingInclTax()) {
             return [
                 'code' => 'shipping',
-                'shipping_incl_tax' => $total->getShippingInclTax()
+                'shipping_incl_tax' => $total->getShippingInclTax(),
             ];
         }
         return null;

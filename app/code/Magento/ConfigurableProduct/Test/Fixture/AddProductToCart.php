@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class AddProductToCart extends \Magento\Quote\Test\Fixture\AddProductToCart
             [
                 'cart_id' => $data['cart_id'],
                 'product_id' => $data['product_id'],
-                'buy_request' => $buyRequest
+                'buy_request' => $buyRequest,
             ]
         );
     }

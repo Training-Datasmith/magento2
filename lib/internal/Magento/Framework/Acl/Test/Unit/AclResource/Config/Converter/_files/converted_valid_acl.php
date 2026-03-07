@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ return [
                     'title' => 'Resource Two Title',
                     'sortOrder' => 20,
                     'disabled' => false,
-                    'children' => []
+                    'children' => [],
                 ],
                 [
                     'id' => 'Custom_Module::parent_resource',
@@ -44,9 +45,9 @@ return [
                                 ],
                             ],
                         ],
-                    ]
+                    ],
                 ],
             ],
         ],
-    ]
+    ],
 ];

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\Controller;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Response\HttpInterface as HttpResponseInterface;
+use Magento\Framework\App\ResponseInterface;
 
 abstract class AbstractResult implements ResultInterface
 {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,17 +8,17 @@
 
 namespace Magento\Catalog\Pricing\Render;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Catalog\Pricing\Price\FinalPrice;
-use Magento\Framework\Pricing\Render\RendererPool;
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\Pricing\Render\Amount;
-use Magento\Framework\App\State;
+use Magento\Catalog\Pricing\Price\FinalPrice;
 use Magento\Framework\App\Area;
+use Magento\Framework\App\State;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Pricing\Render\Amount;
+use Magento\Framework\Pricing\Render\RendererPool;
 use Magento\Framework\View\TemplateEngine\Php;
 use Magento\Framework\View\TemplateEnginePool;
-use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -99,8 +101,8 @@ class FinalPriceBoxTest extends \PHPUnit\Framework\TestCase
                 'default' =>
                     [
                         'default_amount_render_class' => Amount::class,
-                        'default_amount_render_template' => 'Magento_Catalog::product/price/amount/default.phtml'
-                    ]
+                        'default_amount_render_template' => 'Magento_Catalog::product/price/amount/default.phtml',
+                    ],
             ]
         );
 
@@ -109,7 +111,7 @@ class FinalPriceBoxTest extends \PHPUnit\Framework\TestCase
             FinalPrice::class,
             [
                 'saleableItem' => $this->saleableItem,
-                'quantity' => null
+                'quantity' => null,
             ]
         );
 
@@ -118,7 +120,7 @@ class FinalPriceBoxTest extends \PHPUnit\Framework\TestCase
             [
                 'saleableItem' => $this->saleableItem,
                 'price' => $this->finalPrice,
-                'rendererPool' => $this->rendererPool
+                'rendererPool' => $this->rendererPool,
             ]
         );
 

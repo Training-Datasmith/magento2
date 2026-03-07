@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class Feed implements FeedInterface
     /**
      * @inheritDoc
      */
-    public function getFormattedContent() : string
+    public function getFormattedContent(): string
     {
         return FeedFactory::factory($this->feeds)->export(FeedFactoryInterface::FORMAT_RSS);
     }

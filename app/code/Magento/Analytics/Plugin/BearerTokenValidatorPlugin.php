@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -17,26 +18,13 @@ use Magento\Integration\Model\Validator\BearerTokenValidator;
  */
 class BearerTokenValidatorPlugin
 {
-    /**
-     * @var ScopeConfigInterface
-     */
-    private ScopeConfigInterface $config;
-
-    /**
-     * @param ScopeConfigInterface $config
-     */
-    public function __construct(ScopeConfigInterface $config)
+    public function __construct(private readonly ScopeConfigInterface $config)
     {
-        $this->config = $config;
     }
 
     /**
      * Always allow access token for analytics to be used as bearer
      *
-     * @param BearerTokenValidator $subject
-     * @param bool $result
-     * @param Integration $integration
-     * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterIsIntegrationAllowedAsBearerToken(

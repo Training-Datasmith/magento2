@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class FileTest extends TestCase
 
         $paths = [
             $destinationDirectory . '/link' . '/directory1',
-            $destinationDirectory . '/link'
+            $destinationDirectory . '/link',
 
         ];
         $actual = $this->driver->readDirectoryRecursively($destinationDirectory);

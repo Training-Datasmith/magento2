@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Result\Layout;
 use Magento\Framework\View\Result\LayoutFactory;
 use Magento\Framework\View\Result\Page;
@@ -23,7 +25,6 @@ use Magento\Sales\Model\ResourceModel\Order\Shipment\Comment as ShipmentCommentR
 use Magento\Shipping\Block\Adminhtml\View\Comments;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\AddComment;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

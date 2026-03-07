@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Model\Dashboard;
 
+use DateTimeZone;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\Stdlib\DateTime;
-use DateTimeZone;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Verify chart data by different period.
@@ -61,7 +62,7 @@ class ChartTest extends TestCase
         $payment->setAdditionalInformation('last_trans_id', '11122');
         $payment->setAdditionalInformation('metadata', [
             'type' => 'free',
-            'fraudulent' => false
+            'fraudulent' => false,
         ]);
 
         $timezoneLocal = $this->objectManager->get(TimezoneInterface::class)->getConfigTimezone();
@@ -106,32 +107,32 @@ class ChartTest extends TestCase
                 2,
                 '24h',
                 'quantity',
-                '100000002'
+                '100000002',
             ],
             [
                 3,
                 '7d',
                 'quantity',
-                '100000003'
+                '100000003',
             ],
             [
                 4,
                 '1m',
                 'quantity',
-                '100000004'
+                '100000004',
             ],
             [
                 5,
                 '1y',
                 'quantity',
-                '100000005'
+                '100000005',
             ],
             [
                 6,
                 '2y',
                 'quantity',
-                '100000006'
-            ]
+                '100000006',
+            ],
         ];
     }
 }

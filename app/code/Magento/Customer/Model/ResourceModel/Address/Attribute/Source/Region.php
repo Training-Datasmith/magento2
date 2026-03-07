@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Customer region attribute source
  */
+
 namespace Magento\Customer\Model\ResourceModel\Address\Attribute\Source;
 
 class Region extends \Magento\Eav\Model\Entity\Attribute\Source\Table

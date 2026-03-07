@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Oauth\Nonce;
 
 use Magento\Framework\Oauth\ConsumerInterface;
@@ -33,7 +36,7 @@ class Generator implements NonceGeneratorInterface
     /**
      * Possible time deviation for timestamp validation in seconds.
      */
-    const TIME_DEVIATION = 600;
+    public const TIME_DEVIATION = 600;
 
     /**
      * @param \Magento\Framework\Oauth\Helper\Oauth $oauthHelper

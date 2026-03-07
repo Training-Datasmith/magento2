@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -37,9 +38,9 @@ $requestInfo = new DataObject(
         'selected_configurable_option' => $downloadableProduct->getId(),
         'qty' => 1,
         'super_attribute' => [
-            $attribute->getId() => $option->getId()
+            $attribute->getId() => $option->getId(),
         ],
-        'links' => array_keys($downloadableProduct->getDownloadableLinks())
+        'links' => array_keys($downloadableProduct->getDownloadableLinks()),
     ]
 );
 $addressData = [

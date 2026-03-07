@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -105,6 +106,6 @@ class DataTest extends TestCase
             ->willReturn($priceInfoMock);
 
         $result = $this->helper->isMinimalPriceLessMsrp($this->productMock);
-        $this->assertTrue($result, "isMinimalPriceLessMsrp returned incorrect value");
+        $this->assertTrue($result, 'isMinimalPriceLessMsrp returned incorrect value');
     }
 }

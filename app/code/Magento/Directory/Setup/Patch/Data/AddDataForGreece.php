@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class AddDataForGreece implements DataPatchInterface
             ['GR', 'GR-H', 'Stereá Elláda'],
             ['GR', 'GR-E', 'Thessalía'],
             ['GR', 'GR-K', 'Vóreio Aigaío'],
-            ['GR', 'GR-69', 'Ágion Óros']
+            ['GR', 'GR-69', 'Ágion Óros'],
 
         ];
     }

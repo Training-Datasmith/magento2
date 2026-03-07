@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class Discount
     {
         return [
             'amount_off' => $this->getPriceDifferenceAsValue($regularPrice, $finalPrice),
-            'percent_off' => $this->getPriceDifferenceAsPercent($regularPrice, $finalPrice)
+            'percent_off' => $this->getPriceDifferenceAsPercent($regularPrice, $finalPrice),
         ];
     }
 
@@ -43,7 +44,7 @@ class Discount
     {
         return [
             'amount_off' => $this->getPercentDiscountAsValue($regularPrice, $percentOff),
-            'percent_off' => $percentOff
+            'percent_off' => $percentOff,
         ];
     }
 

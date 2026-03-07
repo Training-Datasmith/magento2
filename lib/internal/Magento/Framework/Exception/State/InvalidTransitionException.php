@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Invalid state exception
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception\State;
 
 use Magento\Framework\Exception\StateException;

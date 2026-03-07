@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,12 +17,12 @@ use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb as ResourceAbstractDb;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Ui\Component\MassAction\Filter;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -118,7 +119,7 @@ class FilterTest extends TestCase
             [
                 'factory' => $this->uiComponentFactoryMock,
                 'request' => $this->requestMock,
-                'filterBuilder' => $this->filterBuilderMock
+                'filterBuilder' => $this->filterBuilderMock,
             ]
         );
         $this->uiComponentFactoryMock->expects($this->any())
@@ -180,7 +181,7 @@ class FilterTest extends TestCase
             [[1, 2, 3], 'false', 0, 'in'],
             [[1, 2, 3], [1, 2, 3], 1, 'nin'],
             ['false', [1, 2, 3], 1, 'nin'],
-            ['false', 'false', 0, '']
+            ['false', 'false', 0, ''],
         ];
     }
 
@@ -242,7 +243,7 @@ class FilterTest extends TestCase
     #[DataProvider('applySelectionOnTargetProviderDataProvider')]
     public function testGetCollection($selectedIds, $excludedIds, $filterExpected, $conditionExpected): void
     {
-      //  print_r([Filter::SELECTED_PARAM]);
+        //  print_r([Filter::SELECTED_PARAM]);
         $this->setUpApplySelection($filterExpected, $conditionExpected);
         $this->requestMock
             ->method('getParam')
@@ -349,7 +350,7 @@ class FilterTest extends TestCase
             ->method('getDataProvider')
             ->willReturn($this->dataProviderMock);
         $returnArray = [
-            'referer_url' => 'referer_url'
+            'referer_url' => 'referer_url',
         ];
         $this->dataProviderMock->expects($this->once())
             ->method('getConfigData')

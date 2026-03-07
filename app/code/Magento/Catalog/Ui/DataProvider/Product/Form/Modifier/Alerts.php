@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,9 +17,9 @@ use Magento\Ui\Component\Form\Fieldset;
 
 class Alerts extends AbstractModifier
 {
-    const DATA_SCOPE       = 'data';
-    const DATA_SCOPE_STOCK = 'stock';
-    const DATA_SCOPE_PRICE = 'price';
+    public const DATA_SCOPE       = 'data';
+    public const DATA_SCOPE_STOCK = 'stock';
+    public const DATA_SCOPE_PRICE = 'price';
 
     /**
      * @var string
@@ -38,7 +40,7 @@ class Alerts extends AbstractModifier
      * @var LayoutFactory
      */
     private $layoutFactory;
-    
+
     /**
      * Alerts constructor.
      * @param ScopeConfigInterface $scopeConfig
@@ -92,7 +94,7 @@ class Alerts extends AbstractModifier
                     ],
                     'children' => [
                         static::DATA_SCOPE_STOCK => $this->getAlertStockFieldset(),
-                        static::DATA_SCOPE_PRICE => $this->getAlertPriceFieldset()
+                        static::DATA_SCOPE_PRICE => $this->getAlertPriceFieldset(),
                     ],
                 ],
             ]
@@ -137,9 +139,9 @@ class Alerts extends AbstractModifier
                             $this->layoutFactory->create()->createBlock(
                                 Stock::class
                             )->toHtml(),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -162,9 +164,9 @@ class Alerts extends AbstractModifier
                             $this->layoutFactory->create()->createBlock(
                                 Price::class
                             )->toHtml(),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

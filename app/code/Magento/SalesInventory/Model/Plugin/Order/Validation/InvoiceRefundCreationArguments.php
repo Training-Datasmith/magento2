@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesInventory\Model\Plugin\Order\Validation;
 
-use Magento\Sales\Api\Data\InvoiceInterface;
-use Magento\Sales\Model\Order\Validation\RefundInvoiceInterface;
 use Magento\Sales\Api\Data\CreditmemoCreationArgumentsInterface;
 use Magento\Sales\Api\Data\CreditmemoInterface;
+use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\Data\OrderInterface;
-use Magento\SalesInventory\Model\Order\ReturnValidator;
+use Magento\Sales\Model\Order\Validation\RefundInvoiceInterface;
 use Magento\Sales\Model\ValidatorResultInterface;
+use Magento\SalesInventory\Model\Order\ReturnValidator;
 
 /**
  * Class CreditmemoCreationArguments

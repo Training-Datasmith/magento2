@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\Framework\DataObject;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Wishlist\Model\WishlistFactory;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\Wishlist\Model\WishlistFactory;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 Resolver::getInstance()->requireDataFixture(

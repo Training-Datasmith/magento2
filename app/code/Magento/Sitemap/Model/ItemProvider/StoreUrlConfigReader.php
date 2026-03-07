@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,8 +19,8 @@ class StoreUrlConfigReader implements ConfigReaderInterface
     /**#@+
      * Xpath config settings
      */
-    const XML_PATH_CHANGE_FREQUENCY = 'sitemap/store/changefreq';
-    const XML_PATH_PRIORITY = 'sitemap/store/priority';
+    public const XML_PATH_CHANGE_FREQUENCY = 'sitemap/store/changefreq';
+    public const XML_PATH_PRIORITY = 'sitemap/store/priority';
     /**#@-*/
 
     /**

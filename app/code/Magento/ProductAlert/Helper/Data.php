@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductAlert\Helper;
 
 use Magento\Store\Model\Store;
@@ -102,7 +105,7 @@ class Data extends \Magento\Framework\Url\Helper\Data
             'productalert/add/' . $type,
             [
                 'product_id' => $this->getProduct()->getId(),
-                \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl()
+                \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl(),
             ]
         );
     }

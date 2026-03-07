@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Generator;
 
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\Code\Generator\EntityAbstract;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\DataObject;
-use Magento\Framework\Code\Generator\Io;
 use Magento\Framework\Code\Generator\ClassGenerator;
 use Magento\Framework\Code\Generator\DefinedClasses;
+use Magento\Framework\Code\Generator\EntityAbstract;
+use Magento\Framework\Code\Generator\Io;
+use Magento\Framework\DataObject;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class EntityAbstractTest extends TestCase
 {
@@ -144,7 +147,7 @@ class EntityAbstractTest extends TestCase
                 'resultFileExists' => true,
                 'willWriteCode' => false,
             ],
-            'generate_ok' => []
+            'generate_ok' => [],
         ];
     }
 

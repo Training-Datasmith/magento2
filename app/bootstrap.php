@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -10,24 +12,6 @@
 error_reporting(E_ALL);
 if (in_array('phar', \stream_get_wrappers())) {
     stream_wrapper_unregister('phar');
-}
-#ini_set('display_errors', 1);
-
-if (PHP_VERSION_ID < 80100) {
-    if (PHP_SAPI === 'cli') {
-        echo 'Magento supports PHP 8.1.0 or later. ' .
-            'Please read https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/system-requirements.html';
-    } else {
-        echo <<<HTML
-<div style="font:12px/1.35em arial, helvetica, sans-serif;">
-    <p>Magento supports PHP 8.1.0 or later. Please read
-    <a target="_blank" href="https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/system-requirements.html">
-    Magento System Requirements</a>.
-</div>
-HTML;
-    }
-    http_response_code(503);
-    exit(1);
 }
 
 require_once __DIR__ . '/autoload.php';
@@ -42,14 +26,14 @@ umask($mask);
 if (
     (!empty($_SERVER['MAGE_PROFILER']) || file_exists(BP . '/var/profiler.flag'))
     && isset($_SERVER['HTTP_ACCEPT'])
-    && strpos($_SERVER['HTTP_ACCEPT'], 'text/html') !== false
+    && str_contains((string) $_SERVER['HTTP_ACCEPT'], 'text/html')
 ) {
     $profilerConfig = isset($_SERVER['MAGE_PROFILER']) && strlen($_SERVER['MAGE_PROFILER'])
         ? $_SERVER['MAGE_PROFILER']
         : trim(file_get_contents(BP . '/var/profiler.flag'));
 
     if ($profilerConfig) {
-        $profilerConfig = json_decode($profilerConfig, true) ?: $profilerConfig;
+        $profilerConfig = json_decode((string) $profilerConfig, true) ?: $profilerConfig;
     }
 
     Magento\Framework\Profiler::applyConfig(

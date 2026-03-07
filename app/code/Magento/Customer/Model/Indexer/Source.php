@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Indexer;
 
-use Magento\Customer\Model\ResourceModel\Customer\Indexer\CollectionFactory;
 use Magento\Customer\Model\ResourceModel\Customer\Indexer\Collection;
+use Magento\Customer\Model\ResourceModel\Customer\Indexer\CollectionFactory;
 use Magento\Framework\App\ResourceConnection\SourceProviderInterface;
 use Traversable;
 

@@ -1,21 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
-use Magento\Framework\View\Layout\Pool as LayoutPool;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\UiComponent\LayoutInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponent\LayoutInterface;
+use Magento\Framework\View\Layout\Pool as LayoutPool;
 
 /**
  * Class Layout
  */
 class Layout extends AbstractComponent
 {
-    const NAME = 'layout';
+    public const NAME = 'layout';
 
     /**
      * @var LayoutPool

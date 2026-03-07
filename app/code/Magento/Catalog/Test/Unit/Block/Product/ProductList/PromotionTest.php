@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Catalog\Test\Unit\Block\Product\ProductList;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Block\Product\ProductList\Promotion;
+use Magento\Catalog\Helper\Output as OutputHelper;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Resolver as LayerResolver;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
-use Magento\Catalog\Helper\Output as OutputHelper;
 use Magento\Catalog\Pricing\Price\SpecialPriceBulkResolverInterface;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Data\Helper\PostHelper;
@@ -78,24 +79,24 @@ class PromotionTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
+                $this->createMock(DirectoryHelper::class),
             ],
             [
                 SpecialPriceBulkResolverInterface::class,
-                $this->createMock(SpecialPriceBulkResolverInterface::class)
+                $this->createMock(SpecialPriceBulkResolverInterface::class),
             ],
             [
                 OutputHelper::class,
-                $this->createMock(OutputHelper::class)
+                $this->createMock(OutputHelper::class),
             ],
             [
                 CollectionFactory::class,
-                $this->createMock(CollectionFactory::class)
-            ]
+                $this->createMock(CollectionFactory::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -116,7 +117,7 @@ class PromotionTest extends TestCase
                 'layerResolver' => $this->layerResolverMock,
                 'categoryRepository' => $this->createMock(CategoryRepositoryInterface::class),
                 'urlHelper' => $this->createMock(UrlHelper::class),
-                'productCollectionFactory' => $this->productCollectionFactoryMock
+                'productCollectionFactory' => $this->productCollectionFactoryMock,
             ]
         );
     }

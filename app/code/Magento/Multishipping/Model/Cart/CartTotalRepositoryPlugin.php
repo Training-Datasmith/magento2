@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class CartTotalRepositoryPlugin
         CartTotalRepository $subject,
         Totals $quoteTotals,
         $cartId
-    ) : Totals {
+    ): Totals {
         $quote = $this->quoteRepository->getActive($cartId);
         if ($quote->getIsMultiShipping()) {
             $shippingMethod = $quote->getShippingAddress()->getShippingMethod();

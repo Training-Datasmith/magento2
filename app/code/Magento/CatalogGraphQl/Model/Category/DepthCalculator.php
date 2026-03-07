@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Category;
 
-use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\FieldNode;
-use GraphQL\Language\AST\InlineFragmentNode;
+use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\NodeKind;
 use GraphQL\Language\AST\SelectionNode;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
@@ -26,7 +26,7 @@ class DepthCalculator
      * @param FieldNode $fieldNode
      * @return int
      */
-    public function calculate(ResolveInfo $resolveInfo, FieldNode $fieldNode) : int
+    public function calculate(ResolveInfo $resolveInfo, FieldNode $fieldNode): int
     {
         return $this->calculateRecursive($resolveInfo, $fieldNode);
     }
@@ -38,7 +38,7 @@ class DepthCalculator
      * @param Node $node
      * @return int
      */
-    private function calculateRecursive(ResolveInfo $resolveInfo, Node $node) : int
+    private function calculateRecursive(ResolveInfo $resolveInfo, Node $node): int
     {
         if ($node->kind === NodeKind::FRAGMENT_SPREAD) {
             $selections = isset($resolveInfo->fragments[$node->name->value]) ?

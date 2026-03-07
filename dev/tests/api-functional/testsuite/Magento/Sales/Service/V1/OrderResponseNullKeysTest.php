@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,6 +17,8 @@ use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
 use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Sql\Expression;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
@@ -26,12 +29,10 @@ use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Test\Fixture\User;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Sql\Expression;
 
 class OrderResponseNullKeysTest extends WebapiAbstract
 {
@@ -64,28 +65,28 @@ class OrderResponseNullKeysTest extends WebapiAbstract
         ConfigFixture('carriers/flatrate/active', '1'),
         DataFixture(ProductFixture::class, [
             'price' => 10.00,
-            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true]
+            'quantity_and_stock_status' => ['qty' => 100, 'is_in_stock' => true],
         ], as: 'product'),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, [
             'cart_id' => '$cart.id$',
-            'email' => 'guest@example.com'
+            'email' => 'guest@example.com',
         ]),
         DataFixture(AddProductToCartFixture::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ]),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetShippingAddressFixture::class, ['cart_id' => '$cart.id$']),
         DataFixture(SetDeliveryMethodFixture::class, [
             'cart_id' => '$cart.id$',
             'carrier_code' => 'flatrate',
-            'method_code' => 'flatrate'
+            'method_code' => 'flatrate',
         ]),
         DataFixture(SetPaymentMethodFixture::class, [
             'cart_id' => '$cart.id$',
-            'method' => 'checkmo'
+            'method' => 'checkmo',
         ]),
         DataFixture(PlaceOrderFixture::class, ['cart_id' => '$cart.id$'], as: 'order'),
     ]
@@ -101,8 +102,8 @@ class OrderResponseNullKeysTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/orders/' . $orderId,
                 'httpMethod' => 'GET',
-                'token' => $accessToken
-            ]
+                'token' => $accessToken,
+            ],
         ];
         $result = $this->_webApiCall($serviceInfo);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends AbstractController
                 'parent_id' => $category1->getId(),
                 'name' => 'Category 2',
                 'url_key' => 'category-2',
-                'is_active' => true
+                'is_active' => true,
             ]
         );
         $category2 = $this->categoryRepository->save($categoryData2);
@@ -113,7 +114,7 @@ class CategoryUrlPathAutogeneratorObserverTest extends AbstractController
                 'parent_id' => $category2->getId(),
                 'name' => 'Category 3',
                 'url_key' => 'default-store-category3',
-                'is_active' => true
+                'is_active' => true,
             ]
         );
         $category3 = $this->categoryRepository->save($categoryData3);
@@ -130,8 +131,8 @@ class CategoryUrlPathAutogeneratorObserverTest extends AbstractController
                         [
                             $category1->getId(),
                             $category2->getId(),
-                            $category3->getId()
-                        ]
+                            $category3->getId(),
+                        ],
                 ]
             );
 

@@ -1,43 +1,32 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Indexer\Fulltext\Plugin;
 
+use Magento\Catalog\Model\ResourceModel\Attribute;
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\AbstractPlugin;
-use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Customer\Model\ResourceModel\Group;
+use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Model\AbstractModel;
-use Magento\Catalog\Model\ResourceModel\Attribute;
-use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
 
 class CustomerGroup extends AbstractPlugin
 {
-    /**
-     * @var ClientOptionsInterface
-     */
-    protected $clientOptions;
-
-    /**
-     * @param IndexerRegistry $indexerRegistry
-     * @param ClientOptionsInterface $clientOptions
-     */
     public function __construct(
         IndexerRegistry $indexerRegistry,
-        ClientOptionsInterface $clientOptions
+        protected \Magento\AdvancedSearch\Model\Client\ClientOptionsInterface $clientOptions
     ) {
         parent::__construct($indexerRegistry);
-        $this->clientOptions = $clientOptions;
     }
 
     /**
      * Invalidate indexer on customer group save
      *
-     * @param Group $subject
-     * @param \Closure $proceed
-     * @param AbstractModel $group
      * @return Attribute
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */

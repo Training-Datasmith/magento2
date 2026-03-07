@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test services for name collisions.
  *
@@ -9,6 +11,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi;
 
 use Magento\Webapi\Model\Config\Converter;

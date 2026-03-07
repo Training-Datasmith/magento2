@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Controller\Index;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\Controller\Result\Json;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Model\UiComponentTypeResolver;
-use Magento\Framework\Escaper;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\AuthorizationInterface;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\Result\Json;
-use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Is responsible for providing ui components information on store front.
@@ -119,7 +122,7 @@ class Render extends \Magento\Framework\App\Action\Action
                 return $resultJson->setData(
                     [
                         'error' => $this->escaper->escapeHtml('Forbidden'),
-                        'errorcode' => 403
+                        'errorcode' => 403,
                     ]
                 );
             }
@@ -127,7 +130,7 @@ class Render extends \Magento\Framework\App\Action\Action
             $this->logger->critical($e);
             $result = [
                 'error' => $this->escaper->escapeHtml($e->getMessage()),
-                'errorcode' => $this->escaper->escapeHtml($e->getCode())
+                'errorcode' => $this->escaper->escapeHtml($e->getCode()),
             ];
             /** @var \Magento\Framework\Controller\Result\Json $resultJson */
             $resultJson = $this->resultJsonFactory->create();
@@ -142,7 +145,7 @@ class Render extends \Magento\Framework\App\Action\Action
             $this->logger->critical($e);
             $result = [
                 'error' => __('UI component could not be rendered because of system exception'),
-                'errorcode' => $this->escaper->escapeHtml($e->getCode())
+                'errorcode' => $this->escaper->escapeHtml($e->getCode()),
             ];
             /** @var \Magento\Framework\Controller\Result\Json $resultJson */
             $resultJson = $this->resultJsonFactory->create();

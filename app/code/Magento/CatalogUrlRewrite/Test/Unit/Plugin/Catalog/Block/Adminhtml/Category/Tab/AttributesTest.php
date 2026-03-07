@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class AttributesTest extends TestCase
     {
         return [
             'save rewrite history config enabled' => [true, self::STUB_URL_KEY, self::STUB_URL_KEY],
-            'save rewrite history config disabled' => [false, '', 'url_key_777']
+            'save rewrite history config disabled' => [false, '', 'url_key_777'],
         ];
     }
 

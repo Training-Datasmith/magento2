@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -167,14 +168,14 @@ class CartTest extends TestCase
                     'BaseDiscountAmount' => 15.0,
                     'BaseShippingAmount' => 20.0,
                     'BaseSubtotal' => 100.0,
-                    'BaseTaxAmount' => 8.0
+                    'BaseTaxAmount' => 8.0,
                 ],
                 [
                     Cart::AMOUNT_DISCOUNT => 0.0,
                     Cart::AMOUNT_SHIPPING => 0.0,
                     Cart::AMOUNT_SUBTOTAL => 105.0, // = 100.5 + shipping - discount
-                    Cart::AMOUNT_TAX => 8.0
-                ]
+                    Cart::AMOUNT_TAX => 8.0,
+                ],
             ],
             // 2. All transfer flags set to false
             [
@@ -184,14 +185,14 @@ class CartTest extends TestCase
                     'BaseDiscountAmount' => 15.0,
                     'BaseShippingAmount' => 20.0,
                     'BaseSubtotal' => 100.0,
-                    'BaseTaxAmount' => 8.0
+                    'BaseTaxAmount' => 8.0,
                 ],
                 [
                     Cart::AMOUNT_DISCOUNT => 15.0,
                     Cart::AMOUNT_SHIPPING => 20.0,
                     Cart::AMOUNT_SUBTOTAL => 100.0,
-                    Cart::AMOUNT_TAX => 8.0
-                ]
+                    Cart::AMOUNT_TAX => 8.0,
+                ],
             ],
             // 3. Shipping transfer flag set to true, discount to false, sales items are empty (don't affect result)
             [
@@ -201,15 +202,15 @@ class CartTest extends TestCase
                     'BaseDiscountAmount' => 15.0,
                     'BaseShippingAmount' => 20.0,
                     'BaseSubtotal' => 100.0,
-                    'BaseTaxAmount' => 8.0
+                    'BaseTaxAmount' => 8.0,
                 ],
                 [
                     Cart::AMOUNT_DISCOUNT => 15.0,
                     Cart::AMOUNT_SHIPPING => 0.0,
                     Cart::AMOUNT_SUBTOTAL => 120.0,
-                    Cart::AMOUNT_TAX => 8.0
-                ]
-            ]
+                    Cart::AMOUNT_TAX => 8.0,
+                ],
+            ],
         ];
     }
 
@@ -303,7 +304,7 @@ class CartTest extends TestCase
                     'price' => 2.3,
                     'original_item' => $product,
                 ]
-            )
+            ),
         ];
     }
 

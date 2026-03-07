@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\Email\Model\Config\Source;
  */
 class SmtpTransportType implements \Magento\Framework\Data\OptionSourceInterface
 {
-
     /**
      * The possible Transport types
      *

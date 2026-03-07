@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,14 +13,13 @@ use Magento\Catalog\Model\Product\CopyConstructor\UpSell;
 use Magento\Catalog\Model\Product\Link;
 use Magento\Catalog\Model\ResourceModel\Product\Link as ProductLink;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Collection;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class UpSellTest extends TestCase
 {
-
     use MockCreationTrait;
     /**
      * @var UpSell

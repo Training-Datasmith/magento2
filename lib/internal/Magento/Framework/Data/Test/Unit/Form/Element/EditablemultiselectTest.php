@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Framework\Data\Test\Unit\Form\Element;
 use Magento\Framework\Data\Form\Element\Editablemultiselect;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Math\Random;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\TestCase;
 
 class EditablemultiselectTest extends TestCase
 {
@@ -52,7 +53,7 @@ class EditablemultiselectTest extends TestCase
             [
                 'random' => $randomMock,
                 'secureRenderer' => $secureRendererMock,
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
         $values = [

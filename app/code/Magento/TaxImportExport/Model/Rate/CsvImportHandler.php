@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TaxImportExport\Model\Rate;
 
 /**
@@ -88,7 +91,7 @@ class CsvImportHandler
             4 => __('Rate'),
             5 => __('Zip/Post is Range'),
             6 => __('Range From'),
-            7 => __('Range To')
+            7 => __('Range To'),
         ];
     }
 

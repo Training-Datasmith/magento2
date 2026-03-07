@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\BlockFactory;
 use Magento\Framework\View\Layout\Data\Structure;
@@ -20,10 +21,10 @@ use Magento\Framework\View\Layout\Generator\Block;
 use Magento\Framework\View\Layout\Reader\Context;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Framework\View\Layout\Generator\Block
@@ -62,19 +63,19 @@ class BlockTest extends TestCase
         $setIsFlag
     ) {
         // Convert string expectations to matchers
-        $addToParentGroupCount = is_string($addToParentGroupCount) 
-            ? $this->createInvocationMatcher($addToParentGroupCount) 
+        $addToParentGroupCount = is_string($addToParentGroupCount)
+            ? $this->createInvocationMatcher($addToParentGroupCount)
             : $addToParentGroupCount;
-        $setTemplateCount = is_string($setTemplateCount) 
-            ? $this->createInvocationMatcher($setTemplateCount) 
+        $setTemplateCount = is_string($setTemplateCount)
+            ? $this->createInvocationMatcher($setTemplateCount)
             : $setTemplateCount;
-        $setTtlCount = is_string($setTtlCount) 
-            ? $this->createInvocationMatcher($setTtlCount) 
+        $setTtlCount = is_string($setTtlCount)
+            ? $this->createInvocationMatcher($setTtlCount)
             : $setTtlCount;
-        $setIsFlag = is_string($setIsFlag) 
-            ? $this->createInvocationMatcher($setIsFlag) 
+        $setIsFlag = is_string($setIsFlag)
+            ? $this->createInvocationMatcher($setIsFlag)
             : $setIsFlag;
-        
+
         $elementName = 'test_block';
         $methodName = 'setTest';
         $literal = 'block';
@@ -94,7 +95,7 @@ class BlockTest extends TestCase
                                 'config_path',
                                 'scope',
                             ],
-                        ]
+                        ],
                     ],
                 ],
             ]
@@ -110,7 +111,7 @@ class BlockTest extends TestCase
                         'ttl' => $testTtl,
                         'group' => $testGroup,
                     ],
-                    'arguments' => $testArgumentData
+                    'arguments' => $testArgumentData,
                 ],
             ]
         );

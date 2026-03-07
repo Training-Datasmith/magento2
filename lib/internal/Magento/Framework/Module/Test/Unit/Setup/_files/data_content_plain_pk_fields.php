@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Customer\Model\ResourceModel\Attribute\Collection;
 use Magento\Framework\Module\Setup\Migration;
@@ -34,5 +36,5 @@ return [
                 'customer/attribute_collection' => Collection::class,
             ],
         ],
-    ]
+    ],
 ];

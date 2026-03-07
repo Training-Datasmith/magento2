@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class CountryTest extends TestCase
         $directoryHelperMock = $this->createMock(DirectoryHelper::class);
         $objects = [
             [JsonHelper::class, $jsonHelperMock],
-            [DirectoryHelper::class, $directoryHelperMock]
+            [DirectoryHelper::class, $directoryHelperMock],
         ];
         $helper->prepareObjectManager($objects);
 
@@ -106,7 +107,7 @@ class CountryTest extends TestCase
                 'jsHelper' => $this->_jsHelper,
                 'url' => $this->_url,
                 'directoryHelper' => $this->helper,
-                'secureHtmlRenderer' => $secureRendererMock
+                'secureHtmlRenderer' => $secureRendererMock,
             ]
         );
     }
@@ -190,7 +191,7 @@ class CountryTest extends TestCase
             ['IT', 'GB', true, false],
             ['US', 'GB', true, true],
             ['US', 'GB', true, false],
-            ['US', null, true, false]
+            ['US', null, true, false],
         ];
     }
 }

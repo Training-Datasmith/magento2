@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class StockItemTest extends TestCase
                 'quoteItemQtyList' => $this->quoteItemQtyList,
                 'typeConfig' => $this->typeConfig,
                 'stockState' => $this->stockStateMock,
-                'stockStateProvider' => $this->stockStateProviderMock
+                'stockStateProvider' => $this->stockStateProviderMock,
             ]
         );
     }

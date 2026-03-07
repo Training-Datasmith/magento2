@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Order;
 
-use \Magento\Framework\App\ObjectManager;
-use \Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface;
 
 /**
  * Sales order history block

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class CartTotalsProcessorTest extends TestCase
         $configData = [
             'total_1' => 'sort_1',
             'total_2' => 'sort_2',
-            'total_3' => 'sort_3'
+            'total_3' => 'sort_3',
         ];
 
         $jsLayout = [
@@ -44,10 +45,10 @@ class CartTotalsProcessorTest extends TestCase
                     'children' => [
                         'total_1' => ['value' => 'value_1', 'sortOrder' => 0],
                         'total_2' => ['value' => 'value_1', 'sortOrder' => 1],
-                        'total_3' => ['value' => 'value_1', 'sortOrder' => 2]
-                    ]
-                ]
-            ]
+                        'total_3' => ['value' => 'value_1', 'sortOrder' => 2],
+                    ],
+                ],
+            ],
         ];
 
         $expected = [
@@ -56,10 +57,10 @@ class CartTotalsProcessorTest extends TestCase
                     'children' => [
                         'total_1' => ['value' => 'value_1', 'sortOrder' => 'sort_1'],
                         'total_2' => ['value' => 'value_1', 'sortOrder' => 'sort_2'],
-                        'total_3' => ['value' => 'value_1', 'sortOrder' => 'sort_3']
-                    ]
-                ]
-            ]
+                        'total_3' => ['value' => 'value_1', 'sortOrder' => 'sort_3'],
+                    ],
+                ],
+            ],
         ];
 
         $this->scopeConfig->expects($this->once())

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Ui\Component\Form\Element;
  */
 class Textarea extends AbstractElement
 {
-    const NAME = 'textarea';
+    public const NAME = 'textarea';
 
     /**
      * Get component name

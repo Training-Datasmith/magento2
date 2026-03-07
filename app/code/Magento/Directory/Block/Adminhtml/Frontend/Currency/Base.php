@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Backend model for base currency
  */
+
 namespace Magento\Directory\Block\Adminhtml\Frontend\Currency;
 
 class Base extends \Magento\Config\Block\System\Config\Form\Field

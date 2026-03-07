@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\ImportExport\Block\Adminhtml\Export;
 
-use Magento\Eav\Model\Entity\Attribute;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\App\ObjectManager;
 use Magento\ImportExport\Model\ResourceModel\Export\AttributeGridCollectionFactory;
 
@@ -299,7 +301,7 @@ class Filter extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => false,
                 'index' => 'attribute_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id data-grid-checkbox-cell'
+                'column_css_class' => 'col-id data-grid-checkbox-cell',
             ]
         );
         $this->addColumn(
@@ -309,7 +311,7 @@ class Filter extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'frontend_label',
                 'sortable' => false,
                 'header_css_class' => 'col-label',
-                'column_css_class' => 'col-label'
+                'column_css_class' => 'col-label',
             ]
         );
         $this->addColumn(
@@ -318,7 +320,7 @@ class Filter extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Attribute Code'),
                 'index' => 'attribute_code',
                 'header_css_class' => 'col-code',
-                'column_css_class' => 'col-code'
+                'column_css_class' => 'col-code',
             ]
         );
         $this->addColumn(
@@ -327,7 +329,7 @@ class Filter extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Filter'),
                 'sortable' => false,
                 'filter' => false,
-                'frame_callback' => [$this, 'decorateFilter']
+                'frame_callback' => [$this, 'decorateFilter'],
             ]
         );
 
@@ -366,7 +368,7 @@ class Filter extends \Magento\Backend\Block\Widget\Grid\Extended
 
         $code = $row->getAttributeCode();
         if (isset($this->_filterTypeByAttrCode[$code])) {
-            $filterType =$this->_filterTypeByAttrCode[$code];
+            $filterType = $this->_filterTypeByAttrCode[$code];
         } else {
             $filterType = \Magento\ImportExport\Model\Export::getAttributeFilterType($row);
         }

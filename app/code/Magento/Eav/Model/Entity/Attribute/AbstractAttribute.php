@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -942,7 +943,7 @@ abstract class AbstractAttribute extends \Magento\Framework\Model\AbstractExtens
                 }
                 $prop = $describe[$this->getAttributeCode()];
                 $columns[$this->getAttributeCode()] = [
-                    'type'     => $prop['DATA_TYPE'] . ($prop['LENGTH'] ? "({$prop['LENGTH']})" : ""),
+                    'type'     => $prop['DATA_TYPE'] . ($prop['LENGTH'] ? "({$prop['LENGTH']})" : ''),
                     'unsigned' => $prop['UNSIGNED'] ? true : false,
                     'is_null'  => $prop['NULLABLE'],
                     'default'  => $prop['DEFAULT'],
@@ -1437,7 +1438,7 @@ abstract class AbstractAttribute extends \Magento\Framework\Model\AbstractExtens
         $this->_eavTypeFactory = $objectManager->get(\Magento\Eav\Model\Entity\TypeFactory::class);
         $this->_storeManager = $objectManager->get(\Magento\Store\Model\StoreManagerInterface::class);
         $this->_resourceHelper = $objectManager->get(\Magento\Eav\Model\ResourceModel\Helper::class);
-        $this->_universalFactory = $objectManager->get(\Magento\Framework\Validator\UniversalFactory ::class);
+        $this->_universalFactory = $objectManager->get(\Magento\Framework\Validator\UniversalFactory::class);
         $this->optionDataFactory = $objectManager->get(\Magento\Eav\Api\Data\AttributeOptionInterfaceFactory::class);
         $this->dataObjectProcessor = $objectManager->get(\Magento\Framework\Reflection\DataObjectProcessor::class);
         $this->dataObjectHelper = $objectManager->get(\Magento\Framework\Api\DataObjectHelper::class);

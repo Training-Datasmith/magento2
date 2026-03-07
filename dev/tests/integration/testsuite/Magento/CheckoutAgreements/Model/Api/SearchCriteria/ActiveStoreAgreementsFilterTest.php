@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -36,8 +38,8 @@ class ActiveStoreAgreementsFilterTest extends \PHPUnit\Framework\TestCase
                             'field' => 'store_id',
                             'condition_type' => 'eq',
                             'value' => 1,
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'filters' => [
@@ -45,10 +47,10 @@ class ActiveStoreAgreementsFilterTest extends \PHPUnit\Framework\TestCase
                             'field' => 'is_active',
                             'condition_type' => 'eq',
                             'value' => 1,
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
         $searchCriteria = $this->model->buildSearchCriteria();
         $this->assertEquals($expected, $searchCriteria->__toArray());

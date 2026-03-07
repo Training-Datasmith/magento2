@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Price;
 
+use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 use Magento\Framework\Indexer\IndexTableRowSizeEstimatorInterface;
 use Magento\Store\Api\WebsiteManagementInterface;
-use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 
 /**
  * Estimate index memory size for largest composite product in catalog.
@@ -18,7 +20,7 @@ class CompositeProductRowSizeEstimator implements IndexTableRowSizeEstimatorInte
     /**
      * Calculated memory size for one record in catalog_product_index_price table
      */
-    const MEMORY_SIZE_FOR_ONE_ROW = 200;
+    public const MEMORY_SIZE_FOR_ONE_ROW = 200;
 
     /**
      * @var WebsiteManagementInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class AddDataForCzechia implements DataPatchInterface
             $this->moduleDataSetup->getConnection(),
             $this->getDataForCzechia()
         );
-        
+
         return $this;
     }
 

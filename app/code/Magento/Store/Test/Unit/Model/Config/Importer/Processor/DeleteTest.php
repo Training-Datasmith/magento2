@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -164,7 +165,7 @@ class DeleteTest extends TestCase
         $data = [
             ScopeInterface::SCOPE_GROUPS => [],
             ScopeInterface::SCOPE_WEBSITES => [],
-            ScopeInterface::SCOPE_STORES => []
+            ScopeInterface::SCOPE_STORES => [],
         ];
         $deleteData = [
             ScopeInterface::SCOPE_WEBSITES => [
@@ -175,7 +176,7 @@ class DeleteTest extends TestCase
                     'sort_order' => '0',
                     'default_group_id' => '1',
                     'is_default' => '0',
-                ]
+                ],
             ],
             ScopeInterface::SCOPE_GROUPS => [
                 2 => [
@@ -260,7 +261,7 @@ class DeleteTest extends TestCase
         $data = [
             ScopeInterface::SCOPE_GROUPS => [],
             ScopeInterface::SCOPE_WEBSITES => [],
-            ScopeInterface::SCOPE_STORES => []
+            ScopeInterface::SCOPE_STORES => [],
         ];
         $deleteData = [
             ScopeInterface::SCOPE_WEBSITES => [],
@@ -315,7 +316,7 @@ class DeleteTest extends TestCase
         $this->expectExceptionMessage('Some exception');
         $data = [
             ScopeInterface::SCOPE_WEBSITES => [],
-            ScopeInterface::SCOPE_STORES => []
+            ScopeInterface::SCOPE_STORES => [],
         ];
 
         $this->registryMock->expects($this->once())

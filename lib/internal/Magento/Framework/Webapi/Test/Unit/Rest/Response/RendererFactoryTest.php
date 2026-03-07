@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class RendererFactoryTest extends TestCase
         $this->_requestMock->expects($this->once())->method('getHeader')->willReturn('invalid');
         try {
             $this->_factory->get();
-            $this->fail("Exception is expected to be raised");
+            $this->fail('Exception is expected to be raised');
         } catch (Exception $e) {
             $exceptionMessage = 'Server cannot match any of the given Accept HTTP header media type(s) ' .
                 'from the request: "invalid" with media types from the config of response renderer.';

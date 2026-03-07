@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Config\Test\Unit\Model\Placeholder;
 use Magento\Config\Model\Placeholder\Environment;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig;
-use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
 
 class EnvironmentTest extends TestCase
@@ -60,19 +61,19 @@ class EnvironmentTest extends TestCase
                 'web/unsecure/base_url',
                 ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                 null,
-                Environment::PREFIX . 'DEFAULT__WEB__UNSECURE__BASE_URL'
+                Environment::PREFIX . 'DEFAULT__WEB__UNSECURE__BASE_URL',
             ],
             [
                 'web/unsecure/base_url',
                 'web',
                 'test',
-                Environment::PREFIX . 'WEB__TEST__WEB__UNSECURE__BASE_URL'
+                Environment::PREFIX . 'WEB__TEST__WEB__UNSECURE__BASE_URL',
             ],
             [
                 'web/unsecure/base_url',
                 'web',
                 null,
-                Environment::PREFIX . 'WEB__WEB__UNSECURE__BASE_URL'
+                Environment::PREFIX . 'WEB__WEB__UNSECURE__BASE_URL',
             ],
         ];
     }
@@ -101,7 +102,7 @@ class EnvironmentTest extends TestCase
             [Environment::PREFIX . 'TEST_test', true],
             [Environment::PREFIX . '-:A', false],
             [Environment::PREFIX . '_A', false],
-            [Environment::PREFIX . 'A@#$', false]
+            [Environment::PREFIX . 'A@#$', false],
         ];
     }
 

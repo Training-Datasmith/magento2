@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Bootstrap\Memory.
  */
+
 namespace Magento\Test\Bootstrap;
 
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;

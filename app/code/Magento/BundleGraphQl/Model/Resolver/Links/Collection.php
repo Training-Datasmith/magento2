@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\BundleGraphQl\Model\Resolver\Links;
 
-use Magento\Bundle\Model\Selection;
-use Magento\Bundle\Model\ResourceModel\Selection\CollectionFactory;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection as LinkCollection;
+use Magento\Bundle\Model\ResourceModel\Selection\CollectionFactory;
+use Magento\Bundle\Model\Selection;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\RuntimeException;
@@ -74,7 +75,7 @@ class Collection implements ResetAfterRequestInterface
      * @param int $parentId
      * @return void
      */
-    public function addIdFilters(int $optionId, int $parentId) : void
+    public function addIdFilters(int $optionId, int $parentId): void
     {
         if (!in_array($optionId, $this->optionIds)) {
             $this->optionIds[] = $optionId;
@@ -93,7 +94,7 @@ class Collection implements ResetAfterRequestInterface
      * @throws RuntimeException
      * @throws Zend_Db_Select_Exception
      */
-    public function getLinksForOptionId(int $optionId) : array
+    public function getLinksForOptionId(int $optionId): array
     {
         $linksList = $this->fetch();
 
@@ -112,7 +113,7 @@ class Collection implements ResetAfterRequestInterface
      * @throws Zend_Db_Select_Exception
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    private function fetch() : array
+    private function fetch(): array
     {
         if (empty($this->optionIds) || empty($this->parentIds) || !empty($this->links)) {
             return $this->links;

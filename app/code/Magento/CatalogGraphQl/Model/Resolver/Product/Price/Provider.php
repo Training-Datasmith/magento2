@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class Provider implements ProviderInterface, ResetAfterRequestInterface
      */
     private $minimalPrice = [
         FinalPrice::PRICE_CODE => [],
-        RegularPrice::PRICE_CODE => []
+        RegularPrice::PRICE_CODE => [],
     ];
 
     /**
@@ -31,7 +32,7 @@ class Provider implements ProviderInterface, ResetAfterRequestInterface
      */
     private $maximalPrice = [
         FinalPrice::PRICE_CODE => [],
-        RegularPrice::PRICE_CODE => []
+        RegularPrice::PRICE_CODE => [],
     ];
 
     /**

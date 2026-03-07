@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class ReadHandlerTest extends TestCase
             ->willReturn($productId);
         $websiteIds = [1,2];
         $this->websiteLinkMock->expects($this->once())
-            ->method("getWebsiteIdsByProductId")
+            ->method('getWebsiteIdsByProductId')
             ->with($productId)
             ->willReturn($websiteIds);
         $product->expects($this->exactly(2))

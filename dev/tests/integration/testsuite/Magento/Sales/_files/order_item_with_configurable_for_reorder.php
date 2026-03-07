@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -28,7 +30,6 @@ $productRepository = $objectManager->get(ProductRepositoryInterface::class);
 $product = $productRepository->getById(1);
 /** @var \Magento\Catalog\Model\Product $productSimple */
 $simpleProduct = $productRepository->getById(20);
-
 
 /** @var $attribute \Magento\Catalog\Model\ResourceModel\Eav\Attribute */
 $eavConfig = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(\Magento\Eav\Model\Config::class);

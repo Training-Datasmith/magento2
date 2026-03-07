@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\GraphQl\Review;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Registry;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
@@ -19,7 +21,6 @@ use Magento\Review\Model\Review\SummaryFactory;
 use Magento\Review\Test\Fixture\Review as ReviewFixture;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
-use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
@@ -86,64 +87,64 @@ QUERY;
                 'values' => [
                     [
                         'value_id' => 'MTE=',
-                        'value' => "1"
+                        'value' => '1',
                     ],[
                         'value_id' => 'MTI=',
-                        'value' => "2"
+                        'value' => '2',
                     ],[
                         'value_id' => 'MTM=',
-                        'value' => "3"
+                        'value' => '3',
                     ],[
                         'value_id' => 'MTQ=',
-                        'value' => "4"
+                        'value' => '4',
                     ],[
                         'value_id' => 'MTU=',
-                        'value' => "5"
-                    ]
-                ]
+                        'value' => '5',
+                    ],
+                ],
             ], [
                 'id' => 'MQ==',
                 'name' => 'Quality',
                 'values' => [
                     [
                         'value_id' => 'MQ==',
-                        'value' => "1"
+                        'value' => '1',
                     ],[
                         'value_id' => 'Mg==',
-                        'value' => "2"
+                        'value' => '2',
                     ],[
                         'value_id' => 'Mw==',
-                        'value' => "3"
+                        'value' => '3',
                     ],[
                         'value_id' => 'NA==',
-                        'value' => "4"
+                        'value' => '4',
                     ],[
                         'value_id' => 'NQ==',
-                        'value' => "5"
-                    ]
-                ]
+                        'value' => '5',
+                    ],
+                ],
             ], [
                 'id' => 'Mg==',
                 'name' => 'Value',
                 'values' => [
                     [
                         'value_id' => 'Ng==',
-                        'value' => "1"
+                        'value' => '1',
                     ],[
                         'value_id' => 'Nw==',
-                        'value' => "2"
+                        'value' => '2',
                     ],[
                         'value_id' => 'OA==',
-                        'value' => "3"
+                        'value' => '3',
                     ],[
                         'value_id' => 'OQ==',
-                        'value' => "4"
+                        'value' => '4',
                     ],[
                         'value_id' => 'MTA=',
-                        'value' => "5"
-                    ]
-                ]
-            ]
+                        'value' => '5',
+                    ],
+                ],
+            ],
         ];
         $response = $this->graphQlQuery($query);
         self::assertArrayHasKey('productReviewRatingsMetadata', $response);
@@ -239,12 +240,12 @@ QUERY;
             'ratings_breakdown' => [
                 [
                     'name' => 'Quality',
-                    'value' => 2
+                    'value' => 2,
                 ],[
                     'name' => 'Value',
-                    'value' => 2
-                ]
-            ]
+                    'value' => 2,
+                ],
+            ],
         ];
         $response = $this->graphQlQuery($query, [], '', $this->getHeaderMap());
 
@@ -298,12 +299,12 @@ QUERY;
         DataFixture(ProductFixture::class, ['sku' => 'product1'], 'product1'),
         DataFixture(ReviewFixture::class, [
             'entity_pk_value' => '$product1.id$',
-            'customer_id' => '$customer.entity_id$'
+            'customer_id' => '$customer.entity_id$',
         ]),
         DataFixture(ReviewFixture::class, [
             'entity_pk_value' => '$product1.id$',
             'store_id' => '$store2.id$',
-            'customer_id' => '$customer.entity_id$'
+            'customer_id' => '$customer.entity_id$',
         ]),
     ]
     /**

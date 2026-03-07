@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,12 +23,12 @@ class UpgradeSchema implements UpgradeSchemaInterface
     /**
      * The name of the main table of the Module8.
      */
-    const UPDATE_TABLE = 'module8_test_update_table';
+    public const UPDATE_TABLE = 'module8_test_update_table';
 
     /**
      * The name of the temporary table of the Module8.
      */
-    const TEMP_TABLE = 'module8_test_temp_table';
+    public const TEMP_TABLE = 'module8_test_temp_table';
 
     /**
      * @inheritdoc
@@ -98,7 +99,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 [
                     'primary' => true,
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ],
                 'Entity ID'
             )->addColumn(
@@ -107,7 +108,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ]
             )->addColumn(
                 'module8_is_guest',
@@ -115,7 +116,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Is Guest'
             )->addColumn(
@@ -124,7 +125,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Guest Browser ID'
             )->addColumn(
@@ -133,7 +134,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'For remove'
             );
@@ -161,7 +162,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             ->addIndex(
                 'MODULE8_UPDATE_IS_GUEST_INDEX',
                 [
-                    'module8_is_guest'
+                    'module8_is_guest',
                 ]
             )->addIndex(
                 'MODULE8_UPDATE_UNIQUE_INDEX_TEMP',
@@ -175,7 +176,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 'MODULE8_UPDATE_TEMP_INDEX',
                 [
                     'module8_column_for_remove',
-                    'module8_guest_browser_id'
+                    'module8_guest_browser_id',
                 ]
             );
     }
@@ -233,7 +234,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 [
                     'unsigned' => true,
                     'nullable' => true,
-                    'default' => 100
+                    'default' => 100,
                 ],
                 'Counter'
             );

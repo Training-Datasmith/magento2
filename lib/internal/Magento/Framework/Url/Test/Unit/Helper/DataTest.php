@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\Framework\Url\Helper\Data;
 use Magento\Framework\UrlInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DataTest extends TestCase
 {
@@ -135,7 +136,7 @@ class DataTest extends TestCase
             'object' => [
                 ['object' => new DataObject()],
                 'http://example.com',
-            ]
+            ],
         ];
     }
 

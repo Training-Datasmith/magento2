@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing\Column\Online\Type;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -33,7 +36,7 @@ class Options implements OptionSourceInterface
                 [
                     'value' => \Magento\Customer\Model\Visitor::VISITOR_TYPE_CUSTOMER,
                     'label' => __('Customer'),
-                ]
+                ],
             ];
         }
         return $this->options;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Reports\Model\ResourceModel\Helper as ReportsResourceHelper;
 use Magento\Sales\Model\ResourceModel\Helper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Reports\Model\ResourceModel\Helper as ReportsResourceHelper;
 
 class HelperTest extends TestCase
 {
@@ -55,7 +56,7 @@ class HelperTest extends TestCase
             Helper::class,
             [
                 'resource' => $this->appResource,
-                'reportsResourceHelper' => $this->resourceHelper
+                'reportsResourceHelper' => $this->resourceHelper,
             ]
         );
     }

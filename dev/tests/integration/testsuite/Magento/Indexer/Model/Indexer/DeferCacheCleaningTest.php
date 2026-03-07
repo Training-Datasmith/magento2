@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class DeferCacheCleaningTest extends TestCase
                 'test_tag_ent_2_9',
                 'test_tag_1',
                 'test_tag_2',
-                'test_tag_3'
+                'test_tag_3',
             ],
             $cacheContext->getIdentities()
         );

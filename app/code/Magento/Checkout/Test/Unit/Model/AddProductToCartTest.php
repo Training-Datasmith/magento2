@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Checkout\Model\AddProductToCart;
 use Magento\Checkout\Model\Cart;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Quote\Api\CartRepositoryInterfaceFactory;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Api\CartRepositoryInterfaceFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteMutexInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -143,7 +144,7 @@ class AddProductToCartTest extends \PHPUnit\Framework\TestCase
                 ['getOrigData' => null],
                 ['getUpdatedAt' => null],
                 true,
-                fn ($ids, $callback) => $callback()
+                fn ($ids, $callback) => $callback(),
             ],
             'quote is not reloaded - 1' => [
                 ['getUpdatedAt' => null],

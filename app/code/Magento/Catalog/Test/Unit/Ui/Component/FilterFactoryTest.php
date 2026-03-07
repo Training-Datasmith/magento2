@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\Component;
 
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Ui\Component\FilterFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\SourceInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -35,8 +35,8 @@ class FilterFactoryTest extends TestCase
             [
                 'value' => 2,
                 'label' => 'White',
-            ]
-        ]
+            ],
+        ],
     ];
 
     /**
@@ -61,7 +61,7 @@ class FilterFactoryTest extends TestCase
         $this->filterFactory = $objectManager->getObject(
             FilterFactory::class,
             [
-                'componentFactory' => $this->componentFactoryMock
+                'componentFactory' => $this->componentFactoryMock,
             ]
         );
     }
@@ -80,7 +80,7 @@ class FilterFactoryTest extends TestCase
                 'usesSource',
                 'getSourceModel',
                 'getFrontendInput',
-                'getSource'
+                'getSource',
             ]
         );
         $attributeMock->method('getAttributeCode')->willReturn(self::STUB_ATTRIBUTE['attribute_code']);
@@ -101,9 +101,9 @@ class FilterFactoryTest extends TestCase
                         'caption' => (string)__('Select...'),
                         'dataScope' => self::STUB_ATTRIBUTE['attribute_code'],
                         'label' => self::STUB_ATTRIBUTE['default_frontend_label'],
-                    ]
+                    ],
                 ],
-                'context' => $contextMock
+                'context' => $contextMock,
             ]);
 
         $this->filterFactory->create($attributeMock, $contextMock);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class CheckoutCartAddProductObserverTest extends TestCase
             CheckoutCartAddProductObserver::class,
             [
                 'eventSaver' => $this->eventSaverMock,
-                'reportStatus' => $this->reportStatusMock
+                'reportStatus' => $this->reportStatusMock,
             ]
         );
     }

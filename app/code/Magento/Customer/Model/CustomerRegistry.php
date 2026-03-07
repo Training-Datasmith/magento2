@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -130,7 +131,7 @@ class CustomerRegistry implements ResetAfterRequestInterface
                         'fieldName' => 'email',
                         'fieldValue' => $customerEmail,
                         'field2Name' => 'websiteId',
-                        'field2Value' => $websiteId
+                        'field2Value' => $websiteId,
                     ]
                 )
             );

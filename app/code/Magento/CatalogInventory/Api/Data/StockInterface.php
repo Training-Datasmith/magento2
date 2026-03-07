@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -18,9 +21,9 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface StockInterface extends ExtensibleDataInterface
 {
-    const STOCK_ID = 'stock_id';
+    public const STOCK_ID = 'stock_id';
 
-    const STOCK_NAME = 'stock_name';
+    public const STOCK_NAME = 'stock_name';
 
     /**
      * Retrieve stock identifier

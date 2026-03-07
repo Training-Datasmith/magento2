@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class GetAttributeData implements GetAttributeDataInterface
             'default_value' => $attribute->getDefaultValue(),
             'is_unique' => $attribute->getIsUnique(),
             'options' => $this->getOptions($attribute),
-            'attribute' => $attribute
+            'attribute' => $attribute,
         ];
     }
 
@@ -80,7 +81,7 @@ class GetAttributeData implements GetAttributeDataInterface
     private function getFrontendInput(AttributeInterface $attribute): string
     {
         if ($attribute->getFrontendInput() === null) {
-            return "UNDEFINED";
+            return 'UNDEFINED';
         }
         return $this->enumLookup->getEnumValueFromField(
             'AttributeFrontendInputEnum',
@@ -115,7 +116,7 @@ class GetAttributeData implements GetAttributeDataInterface
                         'label' => $label,
                         'value' => $value,
                         'is_default' => $attribute->getDefaultValue() &&
-                            $this->isDefault($value, $attribute->getDefaultValue())
+                            $this->isDefault($value, $attribute->getDefaultValue()),
                     ];
                 },
                 $attribute->getOptions()

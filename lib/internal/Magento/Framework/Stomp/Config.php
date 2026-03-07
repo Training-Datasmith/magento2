@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -169,7 +170,7 @@ class Config implements ResetAfterRequestInterface
      * @return Connection
      * @throws \LogicException\
      */
-    public function getConnection() : Connection
+    public function getConnection(): Connection
     {
         if (!isset($this->connection)) {
             $this->connection = $this->createConnection();

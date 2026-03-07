@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Observer;
 
-use Magento\Paypal\Helper\Shortcut\Factory;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Paypal\Model\Config as PaypalConfig;
 use Magento\Framework\Event\Observer as EventObserver;
+use Magento\Framework\Event\ObserverInterface;
 use Magento\Paypal\Block\Express\InContext\Minicart\SmartButton as MinicartSmartButton;
 use Magento\Paypal\Block\Express\InContext\SmartButton as SmartButton;
+use Magento\Paypal\Helper\Shortcut\Factory;
+use Magento\Paypal\Model\Config as PaypalConfig;
 
 /**
  * PayPal module observer
@@ -64,7 +67,7 @@ class AddPaypalShortcutsObserver implements ObserverInterface
             // @phpstan-ignore-next-line - this is a virtual type defined in di.xml
             \Magento\Paypal\Block\PayflowExpress\Shortcut::class => PaypalConfig::METHOD_WPP_PE_EXPRESS,
             // @phpstan-ignore-next-line - this is a virtual type defined in di.xml
-            \Magento\Paypal\Block\Payflow\Bml\Shortcut::class => PaypalConfig::METHOD_WPP_PE_EXPRESS
+            \Magento\Paypal\Block\Payflow\Bml\Shortcut::class => PaypalConfig::METHOD_WPP_PE_EXPRESS,
         ];
         foreach ($blocks as $blockInstanceName => $paymentMethodCode) {
             if (!$this->paypalConfig->isMethodAvailable($paymentMethodCode)) {

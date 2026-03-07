@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,19 +10,19 @@ namespace Magento\Theme\Model\PageLayout\Config;
 
 use Magento\Framework\App\Cache\Type\Layout;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\View\Model\PageLayout\Config\BuilderInterface;
 use Magento\Framework\View\PageLayout\ConfigFactory;
 use Magento\Framework\View\PageLayout\File\Collector\Aggregated;
 use Magento\Theme\Model\ResourceModel\Theme\Collection;
 use Magento\Theme\Model\Theme\Data;
-use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Page layout config builder
  */
 class Builder implements BuilderInterface
 {
-    const CACHE_KEY_LAYOUTS = 'THEME_LAYOUTS_FILES_MERGED';
+    public const CACHE_KEY_LAYOUTS = 'THEME_LAYOUTS_FILES_MERGED';
 
     /**
      * @var ConfigFactory

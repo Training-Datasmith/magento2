@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,6 +20,7 @@ use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
@@ -28,7 +30,6 @@ use Magento\Ui\Controller\Adminhtml\Index\Render;
 use Magento\Ui\Model\UiComponentTypeResolver;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -190,7 +191,7 @@ class RenderTest extends TestCase
                 'contentTypeResolver' => $this->uiComponentTypeResolverMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
                 'logger' => $this->loggerMock,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }
@@ -319,7 +320,7 @@ class RenderTest extends TestCase
                 ->method('setData')
                 ->with([
                     'error' => 'Forbidden',
-                    'errorcode' => 403
+                    'errorcode' => 403,
                 ])
                 ->willReturn($jsonResultMock);
 
@@ -380,17 +381,17 @@ class RenderTest extends TestCase
         return [
             [
                 'dataProviderConfig' => ['aclResource' => $aclResource],
-                'isAllowed' => true
+                'isAllowed' => true,
             ],
             [
                 'dataProviderConfig' => ['aclResource' => $aclResource],
-                'isAllowed' => false
+                'isAllowed' => false,
             ],
             [
                 'dataProviderConfig' => [],
                 'isAllowed' => null,
-                'authCallCount' => 0
-            ]
+                'authCallCount' => 0,
+            ],
         ];
     }
 }

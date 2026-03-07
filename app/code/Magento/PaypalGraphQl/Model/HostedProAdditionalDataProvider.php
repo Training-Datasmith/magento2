@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\PaypalGraphQl\Model;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\PaypalGraphQl\Model\Resolver\Store\Url as UrlService;
 use Magento\Paypal\Model\Config;
+use Magento\PaypalGraphQl\Model\Resolver\Store\Url as UrlService;
 use Magento\QuoteGraphQl\Model\Cart\Payment\AdditionalDataProviderInterface;
 
 /**

@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\System\Store;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\ForwardFactory;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\Cache\TypeListInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Store\Model\Group as StoreGroup;
 use Magento\Store\Model\Store;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class Save

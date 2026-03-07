@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
 use Magento\Sales\Controller\Adminhtml\Order\Invoice\PrintAction;
@@ -22,7 +24,6 @@ use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Pdf\Invoice as InvoicePdf;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -105,7 +106,7 @@ class PrintActionTest extends TestCase
             PrintAction::class,
             [
                 'context' => $contextMock,
-                'fileFactory' => $this->fileFactory
+                'fileFactory' => $this->fileFactory,
             ]
         );
     }
@@ -142,7 +143,7 @@ class PrintActionTest extends TestCase
 
         $this->objectManagerMock
             ->method('create')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [InvoiceRepositoryInterface::class] => $invoiceRepository,
                 [InvoicePdf::class] => $pdfMock
             });

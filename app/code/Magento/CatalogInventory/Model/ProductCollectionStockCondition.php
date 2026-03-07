@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
-use Magento\Catalog\Model\CollectionConditionInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Data\CollectionModifierInterface;
 

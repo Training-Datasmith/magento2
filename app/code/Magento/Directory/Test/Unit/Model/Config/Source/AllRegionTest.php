@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class AllRegionTest extends TestCase
             Allregion::class,
             [
                 'countryCollectionFactory' => $countryCollectionFactory,
-                'regionCollectionFactory' => $regionCollectionFactory
+                'regionCollectionFactory' => $regionCollectionFactory,
             ]
         );
     }
@@ -123,7 +124,7 @@ class AllRegionTest extends TestCase
                     self::generateCountry('France', 'fr'),
                 ],
                 [
-                    static fn (self $testCase) => $testCase->generateRegion('fr', 1, 'Paris')
+                    static fn (self $testCase) => $testCase->generateRegion('fr', 1, 'Paris'),
                 ],
                 [
                     [
@@ -137,8 +138,8 @@ class AllRegionTest extends TestCase
                                 'label' => 'Paris',
                                 'value' => 1,
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
             [
@@ -148,7 +149,7 @@ class AllRegionTest extends TestCase
                 ],
                 [
                     static fn (self $testCase) => $testCase->generateRegion('fr', 1, 'Paris'),
-                    static fn (self $testCase) => $testCase->generateRegion('fr', 2, 'Marseille')
+                    static fn (self $testCase) => $testCase->generateRegion('fr', 2, 'Marseille'),
                 ],
                 [
                     [
@@ -160,11 +161,11 @@ class AllRegionTest extends TestCase
                             ],
                             [
                                 'label' => 'Marseille',
-                                'value' => 2
+                                'value' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 true,
@@ -174,7 +175,7 @@ class AllRegionTest extends TestCase
                 ],
                 [
                     static fn (self $testCase) => $testCase->generateRegion('fr', 1, 'Paris'),
-                    static fn (self $testCase) => $testCase->generateRegion('de', 2, 'Berlin')
+                    static fn (self $testCase) => $testCase->generateRegion('de', 2, 'Berlin'),
                 ],
                 [
                     [
@@ -193,9 +194,9 @@ class AllRegionTest extends TestCase
                                 'label' => 'Berlin',
                                 'value' => 2,
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
         ];
     }
@@ -211,7 +212,7 @@ class AllRegionTest extends TestCase
     {
         return [
             'label' => $countryLabel,
-            'value' => $countryValue
+            'value' => $countryValue,
         ];
     }
 

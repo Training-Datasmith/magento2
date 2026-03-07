@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\Co
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessorInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface as SearchCriteriaApplier;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
 
 /**

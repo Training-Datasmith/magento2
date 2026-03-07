@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filter;
 
 use Magento\Framework\DataObject;
-use Magento\Store\Model\Store;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -44,8 +46,8 @@ class TemplateTest extends \PHPUnit\Framework\TestCase
                 'sku' => 'ABC123',
                 'name' => 'Product ABC',
                 'price' => '123',
-                'ordered_qty' => '2'
-            ]
+                'ordered_qty' => '2',
+            ],
         ];
         $order->setAllVisibleItems($visibleItems);
         return $order;
@@ -57,7 +59,7 @@ class TemplateTest extends \PHPUnit\Framework\TestCase
             ['name' => 'Richard', 'age' => 24],
             ['name' => 'Jane', 'age' => 12],
             ['name' => 'Spot', 'age' => 7],
-            ['name' => 'Bill', 'age' => '25']
+            ['name' => 'Bill', 'age' => '25'],
         ];
     }
 
@@ -122,12 +124,12 @@ EXPECTED_RESULT;
         return [
             [
                 $expectedResult,
-                $template
+                $template,
             ],
             [
                 $expectedResult2,
-                $template2
-            ]
+                $template2,
+            ],
         ];
     }
 
@@ -163,12 +165,12 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => new class {
+                'address' => new class () {
                     public function format($type)
                     {
                         return '<foo>' . $type . '</foo>';
                     }
-                }
+                },
             ]
         );
 
@@ -181,12 +183,12 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => new class {
+                'address' => new class () {
                     public function format()
                     {
                         throw new \Exception('Should not run');
                     }
-                }
+                },
             ]
         );
 
@@ -198,13 +200,13 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => new class {
+                'address' => new class () {
                     public function format($a, $b, $c)
                     {
                         return $a . ' ' . $b . ' ' . $c['param1'];
                     }
                 },
-                'arg1' => 'foo'
+                'arg1' => 'foo',
             ]
         );
 
@@ -218,13 +220,13 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => new class extends DataObject {
+                'address' => new class () extends DataObject {
                     public function getFoo($a, $b, $c)
                     {
                         return $a . ' ' . $b . ' ' . $c['param1'];
                     }
                 },
-                'arg1' => 'foo'
+                'arg1' => 'foo',
             ]
         );
 
@@ -237,7 +239,7 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => new class {
+                'address' => new class () {
                     public function format($type)
                     {
                         return '<foo>' . $type . '</foo>';
@@ -272,8 +274,8 @@ EXPECTED_RESULT;
                     'name' => 'John Doe',
                     'address' => [
                         'street' => ['easy'],
-                        'zip' => new DataObject(['bar' => 'yay'])
-                    ]
+                        'zip' => new DataObject(['bar' => 'yay']),
+                    ],
                 ],
                 'myint' => 123,
                 'myfloat' => 1.23,
@@ -301,7 +303,7 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => '11501 Domain Dr.' . "\n" . 'Austin, TX 78758'
+                'address' => '11501 Domain Dr.' . "\n" . 'Austin, TX 78758',
             ]
         );
 
@@ -315,7 +317,7 @@ EXPECTED_RESULT;
     {
         $this->templateFilter->setVariables(
             [
-                'address' => '11501 Domain Dr.' . "\n" . 'Austin, TX 78758'
+                'address' => '11501 Domain Dr.' . "\n" . 'Austin, TX 78758',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Query\Resolver\Argument;
 
-use GraphQL\Language\AST\ListValueNode;
-use GraphQL\Language\AST\NodeList;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\ClauseFactory;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\Connective;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\ConnectiveFactory;
@@ -56,7 +55,7 @@ class AstConverter
      * @return array
      * @throws \LogicException
      */
-    public function getClausesFromAst(string $fieldName, array $arguments) : array
+    public function getClausesFromAst(string $fieldName, array $arguments): array
     {
         $attributes = $this->fieldEntityAttributesPool->getEntityAttributesForEntityFromField($fieldName);
         $conditions = [];

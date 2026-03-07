@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model;
 
-use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Bundle\Api\Data\BundleOptionInterface;
+use Magento\Framework\Model\AbstractExtensibleModel;
 
 class BundleOption extends AbstractExtensibleModel implements BundleOptionInterface
 {
     /**#@+
      * Constants
      */
-    const OPTION_ID = 'option_id';
-    const OPTION_QTY = 'option_qty';
-    const OPTION_SELECTIONS = 'option_selections';
+    public const OPTION_ID = 'option_id';
+    public const OPTION_QTY = 'option_qty';
+    public const OPTION_SELECTIONS = 'option_selections';
     /**#@-*/
 
     /**

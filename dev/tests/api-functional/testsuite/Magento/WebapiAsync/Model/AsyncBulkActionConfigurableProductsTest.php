@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ declare(strict_types=1);
 namespace Magento\WebapiAsync\Model;
 
 use Magento\Eav\Model\AttributeRepository;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Check async request for configurable products creation service
@@ -64,11 +65,11 @@ class AsyncBulkActionConfigurableProductsTest extends WebapiAbstract
                     'is_use_default' => true,
                     'values' => [
                         [
-                            'value_index' => $attribute->getOptions()[1]->getValue()
-                        ]
-                    ]
-                ]
-            ]
+                            'value_index' => $attribute->getOptions()[1]->getValue(),
+                        ],
+                    ],
+                ],
+            ],
         ];
         $response = $this->saveConfigurableProductsBySku($requestData, 'options');
         $this->assertArrayHasKey(self::BULK_UUID_KEY, $response);

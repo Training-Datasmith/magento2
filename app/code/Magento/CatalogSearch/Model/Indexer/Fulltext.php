@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,13 +12,13 @@ use Magento\CatalogSearch\Model\Indexer\Fulltext\Action\FullFactory;
 use Magento\CatalogSearch\Model\Indexer\Scope\State;
 use Magento\CatalogSearch\Model\Indexer\Scope\StateFactory;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext as FulltextResource;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Indexer\DimensionProviderInterface;
-use Magento\Framework\Indexer\SaveHandler\StackedActionsIndexerInterface;
 use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
-use Magento\Store\Model\StoreDimensionProvider;
+use Magento\Framework\Indexer\SaveHandler\StackedActionsIndexerInterface;
 use Magento\Indexer\Model\ProcessManager;
-use Magento\Framework\App\DeploymentConfig;
+use Magento\Store\Model\StoreDimensionProvider;
 
 /**
  * Provide functionality for Fulltext Search indexing.
@@ -213,7 +215,7 @@ class Fulltext implements
         IndexerInterface $saveHandler,
         array $dimensions,
         array $entityIds
-    ) : void {
+    ): void {
         $storeId = $dimensions[StoreDimensionProvider::DIMENSION_NAME]->getValue();
         $productIds = array_unique(
             array_merge($entityIds, $this->fulltextResource->getRelationsByChild($entityIds))

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -70,7 +72,7 @@ class Textarea extends AbstractElement
             'tabindex',
             'data-form-part',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 
@@ -85,7 +87,7 @@ class Textarea extends AbstractElement
         $html = '<textarea id="' . $this->getHtmlId() . '" name="' . $this->getName() . '" '
             . $this->serialize($this->getHtmlAttributes()) . $this->_getUiId() . ' >';
         $html .= $this->getEscapedValue();
-        $html .= "</textarea>";
+        $html .= '</textarea>';
         $html .= $this->getAfterElementHtml();
         return $html;
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Model;
 
 use Magento\ProductVideo\Helper\Media;
@@ -12,7 +15,7 @@ class VideoExtractor implements \Magento\Framework\View\Xsd\Media\TypeDataExtrac
     /**
      * Media Entry type code
      */
-    const MEDIA_TYPE_CODE = 'video';
+    public const MEDIA_TYPE_CODE = 'video';
 
     /**
      * Extract configuration data of videos from the DOM structure

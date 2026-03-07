@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,11 +11,11 @@ namespace Magento\Wishlist\Controller\Index;
 use Magento\Checkout\Helper\Cart as CartHelper;
 use Magento\Checkout\Model\Cart as CheckoutCart;
 use Magento\Framework\App\Action;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Escaper;
-use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\NotFoundException;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
 use Magento\Wishlist\Helper\Data as WishlistHelper;
 
@@ -121,7 +123,7 @@ class Fromcart extends \Magento\Wishlist\Controller\AbstractIndex implements Act
             $wishlist->save();
 
             $this->messageManager->addSuccessMessage(__(
-                "%1 has been moved to your wish list.",
+                '%1 has been moved to your wish list.',
                 $this->escaper->escapeHtml($item->getProduct()->getName())
             ));
         } catch (LocalizedException $e) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Eav\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-
 use Magento\TestFramework\Helper\Bootstrap;
+
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class TypeLocatorTest extends \PHPUnit\Framework\TestCase
 {
@@ -108,10 +110,10 @@ class TypeLocatorTest extends \PHPUnit\Framework\TestCase
                     'links_exist' => 'int',
                     'gift_message_available' => 'string',
                     'swatch_image' => 'string',
-                    'tax_class_id' => 'int'
-                ]
+                    'tax_class_id' => 'int',
+                ],
             ],
-            'customer'=> [
+            'customer' => [
                 'customer',
                 [
                     'confirmation' => 'string',
@@ -139,7 +141,7 @@ class TypeLocatorTest extends \PHPUnit\Framework\TestCase
                     'rp_token' => 'string',
                     'rp_token_created_at' => 'string',
                     'lock_expires' => 'string',
-                ]
+                ],
             ],
             'customer address' => [
                 'customer_address',
@@ -163,7 +165,7 @@ class TypeLocatorTest extends \PHPUnit\Framework\TestCase
                     'vat_request_date' => 'string',
                     'vat_request_success' => 'string',
                     'vat_id' => 'string',
-                ]
+                ],
             ],
             'category' => [
                 'catalog_category',
@@ -198,12 +200,12 @@ class TypeLocatorTest extends \PHPUnit\Framework\TestCase
                     'default_sort_by' => 'string',
                     'filter_price_range' => 'double',
                     'custom_layout_update' => 'string',
-                ]
+                ],
             ],
             'undefined attributes' => [
                 'catalog_product',
-                ['media_gallery' => 'anyType', 'undefine_attribute' => 'anyType']
-            ]
+                ['media_gallery' => 'anyType', 'undefine_attribute' => 'anyType'],
+            ],
         ];
     }
 

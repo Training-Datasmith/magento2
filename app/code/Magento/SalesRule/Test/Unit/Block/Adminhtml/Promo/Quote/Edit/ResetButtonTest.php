@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ResetButtonTest extends TestCase
             ResetButton::class,
             [
                 'context' => $contextMock,
-                'registry' => $this->registryMock
+                'registry' => $this->registryMock,
             ]
         );
     }

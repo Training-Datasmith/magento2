@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class ForwardTest extends TestCase
         $this->forward = $this->objectManagerHelper->getObject(
             Forward::class,
             [
-                'request' => $this->requestInterface
+                'request' => $this->requestInterface,
             ]
         );
     }

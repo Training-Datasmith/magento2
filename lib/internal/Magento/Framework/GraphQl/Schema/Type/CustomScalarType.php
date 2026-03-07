@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,5 +15,4 @@ class CustomScalarType extends \GraphQL\Type\Definition\CustomScalarType impleme
     InputTypeInterface,
     OutputTypeInterface
 {
-
 }

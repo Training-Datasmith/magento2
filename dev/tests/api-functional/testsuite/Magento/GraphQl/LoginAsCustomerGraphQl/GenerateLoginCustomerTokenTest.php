@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\LoginAsCustomerGraphQl;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Integration\Api\AdminTokenServiceInterface as AdminTokenService;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * API-functional tests cases for generateCustomerToken mutation
@@ -21,7 +22,6 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 class GenerateLoginCustomerTokenTest extends GraphQlAbstract
 {
-
     /**
      * @var CustomerTokenServiceInterface
      */
@@ -74,7 +74,7 @@ class GenerateLoginCustomerTokenTest extends GraphQlAbstract
     public function testGenerateCustomerValidTokenLoginAsCustomerDisabled()
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Login as Customer is disabled.");
+        $this->expectExceptionMessage('Login as Customer is disabled.');
 
         $customerEmail = 'customer@example.com';
 
@@ -155,15 +155,15 @@ class GenerateLoginCustomerTokenTest extends GraphQlAbstract
                 \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD,
                 'customer@example.com',
                 'The account sign-in was incorrect or your account is disabled temporarily. ' .
-                'Please wait and try again later.'
+                'Please wait and try again later.',
             ],
             'invalid_admin_password' => [
                 'TestAdmin1',
                 'invalid_password',
                 'customer@example.com',
                 'The account sign-in was incorrect or your account is disabled temporarily. ' .
-                'Please wait and try again later.'
-            ]
+                'Please wait and try again later.',
+            ],
         ];
     }
 
@@ -171,7 +171,7 @@ class GenerateLoginCustomerTokenTest extends GraphQlAbstract
      * @param string $customerEmail
      * @return string
      */
-    private function getQuery(string $customerEmail) : string
+    private function getQuery(string $customerEmail): string
     {
         return <<<MUTATION
 mutation{

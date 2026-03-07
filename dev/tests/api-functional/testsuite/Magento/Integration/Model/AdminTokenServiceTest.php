@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,14 +8,13 @@
 
 namespace Magento\Integration\Model;
 
-use Magento\Framework\Exception\InputException;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 use Magento\Integration\Model\Oauth\Token as TokenModel;
+use Magento\Integration\Model\Oauth\Token\RequestLog\Config as TokenThrottlerConfig;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Model\User as UserModel;
-use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
-use Magento\Integration\Model\Oauth\Token\RequestLog\Config as TokenThrottlerConfig;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * api-functional test for \Magento\Integration\Model\AdminTokenService.
@@ -21,9 +22,9 @@ use Magento\Integration\Model\Oauth\Token\RequestLog\Config as TokenThrottlerCon
  */
 class AdminTokenServiceTest extends WebapiAbstract
 {
-    public const SERVICE_NAME = "integrationAdminTokenServiceV1";
-    public const SERVICE_VERSION = "V1";
-    public const RESOURCE_PATH_ADMIN_TOKEN = "/V1/integration/admin/token";
+    public const SERVICE_NAME = 'integrationAdminTokenServiceV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH_ADMIN_TOKEN = '/V1/integration/admin/token';
 
     /**
      * @var \Magento\Integration\Api\AdminTokenServiceInterface
@@ -90,7 +91,7 @@ class AdminTokenServiceTest extends WebapiAbstract
     {
         return [
             'Check for empty credentials' => ['', ''],
-            'Check for null credentials' => [null, null]
+            'Check for null credentials' => [null, null],
         ];
     }
 
@@ -112,7 +113,7 @@ class AdminTokenServiceTest extends WebapiAbstract
             $this->assertInputExceptionMessages($exception);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+            $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
         }
     }
 
@@ -135,7 +136,7 @@ class AdminTokenServiceTest extends WebapiAbstract
             $this->assertInvalidCredentialsException($exception);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+            $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
         }
     }
 
@@ -163,8 +164,8 @@ class AdminTokenServiceTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/store/storeConfigs',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $accessToken
-            ]
+                'token' => $accessToken,
+            ],
         ];
         $requestData = [
             'storeCodes' => ['default'],
@@ -173,15 +174,15 @@ class AdminTokenServiceTest extends WebapiAbstract
         $this->assertNotNull($storeConfigs);
 
         $adminUser = $this->userModel->loadByUsername($adminUserNameFromFixture);
-        $adminUser->setData("is_active", 0);
+        $adminUser->setData('is_active', 0);
         $adminUser->save();
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/store/storeConfigs',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $accessToken
-            ]
+                'token' => $accessToken,
+            ],
         ];
         $requestData = [
             'storeCodes' => ['default'],
@@ -195,7 +196,7 @@ class AdminTokenServiceTest extends WebapiAbstract
             $this->assertUnauthorizedAccessException($exception);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown when provided token is expired.");
+            $this->fail('Exception was expected to be thrown when provided token is expired.');
         }
     }
 
@@ -232,7 +233,7 @@ class AdminTokenServiceTest extends WebapiAbstract
         }
         if ($noExceptionOccurred) {
             $this->fail(
-                "Precondition failed: exception should have occurred when token was requested with invalid credentials."
+                'Precondition failed: exception should have occurred when token was requested with invalid credentials.'
             );
         }
 
@@ -273,7 +274,7 @@ class AdminTokenServiceTest extends WebapiAbstract
                 $this->assertInvalidCredentialsException($exception);
             }
             if ($noExceptionOccurred) {
-                $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+                $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
             }
         }
 
@@ -285,7 +286,7 @@ class AdminTokenServiceTest extends WebapiAbstract
             $this->assertInvalidCredentialsException($exception);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown because account should have been locked at this point.");
+            $this->fail('Exception was expected to be thrown because account should have been locked at this point.');
         }
     }
 
@@ -311,7 +312,7 @@ class AdminTokenServiceTest extends WebapiAbstract
                     'message' => '"%fieldName" is required. Enter and try again.',
                     'parameters' => [
                         'fieldName' => 'password',
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -328,14 +329,14 @@ class AdminTokenServiceTest extends WebapiAbstract
         $this->assertEquals(
             HTTPExceptionCodes::HTTP_UNAUTHORIZED,
             $exception->getCode(),
-            "Response HTTP code is invalid."
+            'Response HTTP code is invalid.'
         );
         $exceptionData = $this->processRestExceptionResult($exception);
         $expectedExceptionData = [
             'message' => 'The account sign-in was incorrect or your account is disabled temporarily. '
-                . 'Please wait and try again later.'
+                . 'Please wait and try again later.',
         ];
-        $this->assertEquals($expectedExceptionData, $exceptionData, "Exception message is invalid.");
+        $this->assertEquals($expectedExceptionData, $exceptionData, 'Exception message is invalid.');
     }
 
     /**
@@ -348,16 +349,16 @@ class AdminTokenServiceTest extends WebapiAbstract
         $this->assertEquals(
             HTTPExceptionCodes::HTTP_UNAUTHORIZED,
             $exception->getCode(),
-            "Response HTTP code is invalid."
+            'Response HTTP code is invalid.'
         );
         $exceptionData = $this->processRestExceptionResult($exception);
         $expectedExceptionData = [
             'message' => "The consumer isn't authorized to access %resources.",
             'parameters' => [
-                'resources' => 'Magento_Backend::store'
-            ]
+                'resources' => 'Magento_Backend::store',
+            ],
         ];
-        $this->assertEquals($expectedExceptionData, $exceptionData, "Exception message is invalid.");
+        $this->assertEquals($expectedExceptionData, $exceptionData, 'Exception message is invalid.');
     }
 
     /**

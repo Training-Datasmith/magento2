@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGalleryUi\Ui\Component\Control;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Upload Image button
  */
 class UploadAssets implements ButtonProviderInterface
 {
-    private const ACL_UPLOAD_ASSETS= 'Magento_MediaGalleryUiApi::upload_assets';
+    private const ACL_UPLOAD_ASSETS = 'Magento_MediaGalleryUiApi::upload_assets';
 
     /**
      * @var AuthorizationInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class IndexerBuilderInScheduledModeTest extends \PHPUnit\Framework\TestCase
      * @param int $productId
      * @return DataObject
      */
-    private function getProductFromCollection(int $productId) : DataObject
+    private function getProductFromCollection(int $productId): DataObject
     {
         $productCollection = $this->productCollectionFactory->create();
         $productCollection->addIdFilter($productId);

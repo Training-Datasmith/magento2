@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Model\Plugin;
 
 /**
@@ -13,12 +16,12 @@ class WindowsSmtpConfig
     /**
      * host config path
      */
-    const XML_SMTP_HOST = 'system/smtp/host';
+    public const XML_SMTP_HOST = 'system/smtp/host';
 
     /**
      * port config path
      */
-    const XML_SMTP_PORT = 'system/smtp/port';
+    public const XML_SMTP_PORT = 'system/smtp/port';
 
     /**
      * @var \Magento\Framework\App\Config\ReinitableConfigInterface

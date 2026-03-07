@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Catalog\Model\Product\Gallery;
 
 use Magento\Framework\Api\Data\ImageContentInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Catalog product Media Gallery attribute processor.
@@ -226,8 +228,8 @@ class Processor
                     ImageContentInterface::NAME => $imageName,
                     ImageContentInterface::BASE64_ENCODED_DATA => $imageBase64,
                     ImageContentInterface::TYPE => $imageMimeType,
-                ]
-            ]
+                ],
+            ],
         ];
 
         $product->setData($attrCode, $mediaGalleryData);

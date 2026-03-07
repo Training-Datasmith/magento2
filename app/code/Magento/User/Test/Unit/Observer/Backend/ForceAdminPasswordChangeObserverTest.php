@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class ForceAdminPasswordChangeObserverTest extends TestCase
                 'unsPciAdminUserIsPasswordExpired',
                 'getPciAdminUserIsPasswordExpired',
                 'isLoggedIn',
-                'clearStorage'
+                'clearStorage',
             ]
         );
         $this->actionFlagMock = $this->createMock(ActionFlag::class);
@@ -89,7 +90,7 @@ class ForceAdminPasswordChangeObserverTest extends TestCase
         $this->observerConfig = $helper->getObject(
             ObserverConfig::class,
             [
-                'backendConfig' => $this->configInterfaceMock
+                'backendConfig' => $this->configInterfaceMock,
             ]
         );
 

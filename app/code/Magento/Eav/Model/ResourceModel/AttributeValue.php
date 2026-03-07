@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class AttributeValue
      * @param array $attributeCodes
      * @return array
      */
-    private function prepareAttributeTables(string $entityType, array $attributeCodes) : array
+    private function prepareAttributeTables(string $entityType, array $attributeCodes): array
     {
         $attributeTables = [];
         $attributes = [];
@@ -136,7 +137,7 @@ class AttributeValue
         array $entityIds,
         array $attributeCodes = [],
         array $storeIds = []
-    ) : array {
+    ): array {
         $metadata = $this->metadataPool->getMetadata($entityType);
         $connection = $metadata->getEntityConnection();
         $selects = [];
@@ -224,7 +225,7 @@ class AttributeValue
             $connection->delete(
                 $attributeTable,
                 [
-                    'value_id IN (?)' => $valueIds
+                    'value_id IN (?)' => $valueIds,
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Customer\Model\Address\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\BlockFactory;
 use Magento\Framework\View\Element\BlockInterface;
@@ -25,7 +27,6 @@ use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -122,7 +123,7 @@ class AddressTest extends TestCase
     #[DataProvider('getRendererDataProvider')]
     public function testGetRenderer($renderer, $blockFactory, $result)
     {
-        if ($renderer!="some_test_block") {
+        if ($renderer != 'some_test_block') {
             $renderer = $renderer($this);
         }
         $blockFactory = $blockFactory($this);
@@ -392,7 +393,7 @@ class AddressTest extends TestCase
         $renderer = static fn (self $testCase) => $testCase->getMockForRendererClass();
         return [
             ['valid_code', $renderer],
-            ['invalid_code', null]
+            ['invalid_code', null],
         ];
     }
 
@@ -426,7 +427,7 @@ class AddressTest extends TestCase
     {
         return [
             ['valid_code', ['key' => 'value']],
-            ['invalid_code', '']
+            ['invalid_code', ''],
         ];
     }
 
@@ -458,7 +459,7 @@ class AddressTest extends TestCase
     {
         return [
             ['fax', true],
-            ['invalid_code', false]
+            ['invalid_code', false],
         ];
     }
 
@@ -471,7 +472,7 @@ class AddressTest extends TestCase
     {
         return [
             ['fax', true],
-            ['invalid_code', false]
+            ['invalid_code', false],
         ];
     }
 }

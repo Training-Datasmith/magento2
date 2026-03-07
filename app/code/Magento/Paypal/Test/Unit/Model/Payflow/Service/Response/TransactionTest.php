@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class TransactionTest extends TestCase
             Transaction::class,
             [
                 'transparent' => $this->getTransparentObject(),
-                'logger' => $this->getLoggerMock()
+                'logger' => $this->getLoggerMock(),
             ]
         );
 
@@ -56,7 +57,7 @@ class TransactionTest extends TestCase
         $transactionService = (new ObjectManager($this))->getObject(
             Transaction::class,
             [
-                'quoteRepository' => $this->getCartRepositoryMock()
+                'quoteRepository' => $this->getCartRepositoryMock(),
             ]
         );
 
@@ -69,9 +70,9 @@ class TransactionTest extends TestCase
     public static function gatewayResponseInvariants()
     {
         return [
-            "Input data is a string" => ['testInput'],
-            "Input data is an object" => [new \stdClass()],
-            "Input data is an array" => [['test' => 'input']]
+            'Input data is a string' => ['testInput'],
+            'Input data is an object' => [new \stdClass()],
+            'Input data is an array' => [['test' => 'input']],
         ];
     }
 
@@ -83,7 +84,7 @@ class TransactionTest extends TestCase
         $this->assertInstanceOf(
             DataObject::class,
             $output,
-            "Method must return instance of \\Magento\\Framework\\DataObject."
+            'Method must return instance of \\Magento\\Framework\\DataObject.'
         );
     }
 

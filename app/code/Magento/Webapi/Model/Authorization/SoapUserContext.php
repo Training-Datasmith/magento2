@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,10 +11,10 @@ namespace Magento\Webapi\Model\Authorization;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Webapi\Request;
+use Magento\Integration\Api\IntegrationServiceInterface;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory;
-use Magento\Integration\Api\IntegrationServiceInterface;
-use Magento\Framework\Webapi\Request;
 use Magento\Integration\Model\Validator\BearerTokenValidator;
 
 /**
@@ -117,7 +119,7 @@ class SoapUserContext implements UserContextInterface, ResetAfterRequestInterfac
             $this->isRequestProcessed = true;
             return;
         }
-        $headerPieces = explode(" ", $authorizationHeaderValue);
+        $headerPieces = explode(' ', $authorizationHeaderValue);
         if (count($headerPieces) !== 2) {
             $this->isRequestProcessed = true;
             return;

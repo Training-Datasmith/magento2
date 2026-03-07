@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class SubresourceIntegrityRepositoryPool
         if (!isset($this->repositories[$context])) {
             $this->repositories[$context] = $this->integrityRepositoryFactory->create(
                 [
-                    "context" => $context
+                    'context' => $context,
                 ]
             );
         }

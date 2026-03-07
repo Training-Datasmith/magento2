@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Condition\Product;
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
@@ -67,7 +70,7 @@ class Combine extends \Magento\Rule\Model\Condition\Combine
                     'label' => __('Conditions Combination'),
                 ],
                 ['label' => __('Cart Item Attribute'), 'value' => $iAttributes],
-                ['label' => __('Product Attribute'), 'value' => $pAttributes]
+                ['label' => __('Product Attribute'), 'value' => $pAttributes],
             ]
         );
         return $conditions;

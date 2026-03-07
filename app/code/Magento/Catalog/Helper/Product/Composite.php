@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Helper\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\App\Helper\Context;
-use Magento\Framework\View\Result\LayoutFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Catalog\Helper\Product;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Controller\RegistryConstants;
+use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Registry;
+use Magento\Framework\View\Result\LayoutFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Adminhtml catalog product composite helper

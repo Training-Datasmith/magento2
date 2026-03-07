@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Option;
 
-use Magento\Framework\Validator\ValidateException;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Option\Validator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\NotEmpty;
 use Magento\Framework\Validator\NotEmptyFactory;
+use Magento\Framework\Validator\ValidateException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -83,9 +84,9 @@ class ValidatorTest extends TestCase
                 false,
                 [
                     'type' => '"type" is required. Enter and try again.',
-                    'title' => '"title" is required. Enter and try again.'
-                ]
-            ]
+                    'title' => '"title" is required. Enter and try again.',
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
         \Magento\Webapi\Model\Rest\Config::HTTP_METHOD_POST,
         \Magento\Webapi\Model\Rest\Config::HTTP_METHOD_PUT,
         \Magento\Webapi\Model\Rest\Config::HTTP_METHOD_DELETE,
-        \Magento\Webapi\Model\Rest\Config::HTTP_METHOD_PATCH
+        \Magento\Webapi\Model\Rest\Config::HTTP_METHOD_PATCH,
     ];
 
     /**
@@ -80,7 +81,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
         $result[self::KEY_SERVICES][$serviceClass][self::KEY_METHODS][$serviceMethod] = array_merge(
             $result[self::KEY_SERVICES][$serviceClass][self::KEY_METHODS][$serviceMethod],
             [
-                self::KEY_SYNCHRONOUS_INVOCATION_ONLY => $this->isSynchronousMethodInvocationOnly($service)
+                self::KEY_SYNCHRONOUS_INVOCATION_ONLY => $this->isSynchronousMethodInvocationOnly($service),
             ]
         );
     }
@@ -205,7 +206,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
             $routeUrl = $this->getRouteUrl($route);
             $routeMethod = $this->getRouteMethod($route);
             $routeAlias = $this->getRouteAlias($route);
-            $inputArraySizeLimit =$this->getInputArraySizeLimit($route);
+            $inputArraySizeLimit = $this->getInputArraySizeLimit($route);
             if ($routeUrl && $routeMethod && $routeAlias) {
                 if (!isset($customRoutes[$routeAlias])) {
                     $customRoutes[$routeAlias] = [];

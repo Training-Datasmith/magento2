@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@ namespace Magento\Sales\Model\Order;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Payment\Model\SaleOperationInterface;
+use Magento\Sales\Api\CreditmemoManagementInterface as CreditmemoManager;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
@@ -16,7 +19,6 @@ use Magento\Sales\Model\Order\Payment\Info;
 use Magento\Sales\Model\Order\Payment\Operations\SaleOperation;
 use Magento\Sales\Model\Order\Payment\Transaction;
 use Magento\Sales\Model\Order\Payment\Transaction\ManagerInterface;
-use Magento\Sales\Api\CreditmemoManagementInterface as CreditmemoManager;
 
 /**
  * Order payment information
@@ -34,13 +36,13 @@ class Payment extends Info implements OrderPaymentInterface
      *
      * @var string
      */
-    const REVIEW_ACTION_ACCEPT = 'accept';
+    public const REVIEW_ACTION_ACCEPT = 'accept';
 
-    const REVIEW_ACTION_DENY = 'deny';
+    public const REVIEW_ACTION_DENY = 'deny';
 
-    const REVIEW_ACTION_UPDATE = 'update';
+    public const REVIEW_ACTION_UPDATE = 'update';
 
-    const PARENT_TXN_ID = 'parent_transaction_id';
+    public const PARENT_TXN_ID = 'parent_transaction_id';
 
     /**
      * Order model object

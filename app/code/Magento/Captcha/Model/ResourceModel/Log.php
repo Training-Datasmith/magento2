@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Captcha\Model\ResourceModel;
 
 use PhpDb\Sql\Expression;
@@ -75,7 +78,7 @@ class Log extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     'type' => self::TYPE_LOGIN,
                     'value' => $login,
                     'count' => 1,
-                    'updated_at' => $this->_coreDate->gmtDate()
+                    'updated_at' => $this->_coreDate->gmtDate(),
                 ],
                 ['count' => new Expression('count+1'), 'updated_at']
             );
@@ -88,7 +91,7 @@ class Log extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     'type' => self::TYPE_REMOTE_ADDRESS,
                     'value' => $ip,
                     'count' => 1,
-                    'updated_at' => $this->_coreDate->gmtDate()
+                    'updated_at' => $this->_coreDate->gmtDate(),
                 ],
                 ['count' => new Expression('count+1'), 'updated_at']
             );

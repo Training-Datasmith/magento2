@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class CreateTest extends TestCase
                 'registration' => $this->registrationMock,
                 'redirect' => $this->redirectMock,
                 'resultRedirectFactory' => $this->redirectFactoryMock,
-                'resultPageFactory' => $this->pageFactoryMock
+                'resultPageFactory' => $this->pageFactoryMock,
             ]
         );
     }

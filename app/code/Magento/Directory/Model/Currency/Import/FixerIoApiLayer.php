@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Exception;
 use Laminas\Http\Request;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\HTTP\LaminasClientFactory as HttpClientFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\HTTP\LaminasClient;
 
 /**
  * Currency rate import model (https://apilayer.com/marketplace/fixer-api)
@@ -22,7 +23,7 @@ class FixerIoApiLayer implements ImportInterface
 {
     private const CURRENCY_CONVERTER_HOST = 'https://api.apilayer.com';
     private const CURRENCY_CONVERTER_URL_PATH = '/fixer/latest?'
-    . 'apikey={{ACCESS_KEY}}&base={{CURRENCY_FROM}}&symbols={{CURRENCY_TO}}';
+        . 'apikey={{ACCESS_KEY}}&base={{CURRENCY_FROM}}&symbols={{CURRENCY_TO}}';
 
     /**
      * @var array

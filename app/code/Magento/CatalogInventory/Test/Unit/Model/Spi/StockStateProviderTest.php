@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\CatalogInventory\Test\Unit\Model\Spi;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductFactory;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Model\Spi\StockStateProviderInterface;
 use Magento\CatalogInventory\Model\Stock\Item as StockItem;
 use Magento\CatalogInventory\Model\StockStateProvider;
@@ -93,7 +93,7 @@ class StockStateProviderTest extends TestCase
         'getIsSaleable',
         'getOrderedItems',
         'setOrderedItems',
-        'getProductName'
+        'getProductName',
     ];
 
     /**
@@ -159,7 +159,7 @@ class StockStateProviderTest extends TestCase
                 'localeFormat' => $this->localeFormat,
                 'objectFactory' => $this->objectFactory,
                 'productFactory' => $this->productFactory,
-                'qtyCheckApplicable' => $this->qtyCheckApplicable
+                'qtyCheckApplicable' => $this->qtyCheckApplicable,
             ]
         );
     }
@@ -523,8 +523,8 @@ class StockStateProviderTest extends TestCase
                     '_product_' => 'Test product Name',
                 ],
                 'results' => [
-                    'checkQty' => false
-                ]
+                    'checkQty' => false,
+                ],
             ],
             [
                 'values' => [
@@ -544,9 +544,9 @@ class StockStateProviderTest extends TestCase
                     '_product_' => 'Test product Name',
                 ],
                 'results' => [
-                    'checkQty' => false
-                ]
-            ]
+                    'checkQty' => false,
+                ],
+            ],
         ];
     }
 

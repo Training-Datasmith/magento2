@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Items\Column;
 
+use Magento\Quote\Model\Quote\Item\AbstractItem as QuoteItem;
 use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;
 use Magento\Sales\Model\Order\Item;
-use Magento\Quote\Model\Quote\Item\AbstractItem as QuoteItem;
-use Magento\Store\Model\Store;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
 use Magento\Tax\Model\Config;
 
 /**

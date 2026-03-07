@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,6 @@ namespace Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Valid
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
-use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
-use Magento\CatalogImportExport\Model\Import\Product\Validator\AbstractImportValidator;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\AbstractPrice;
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -20,33 +19,19 @@ use Magento\Framework\Exception\LocalizedException;
 
 class TierPrice extends AbstractPrice
 {
-    /**
-     * @var StoreResolver
-     */
-    protected $storeResolver;
-
-    /**
-     * @var array
-     */
-    private $_tierPriceColumns = [
+    private array $_tierPriceColumns = [
         AdvancedPricing::COL_TIER_PRICE_WEBSITE,
         AdvancedPricing::COL_TIER_PRICE_CUSTOMER_GROUP,
         AdvancedPricing::COL_TIER_PRICE_QTY,
         AdvancedPricing::COL_TIER_PRICE,
-        AdvancedPricing::COL_TIER_PRICE_TYPE
+        AdvancedPricing::COL_TIER_PRICE_TYPE,
     ];
 
-    /**
-     * @param GroupRepositoryInterface $groupRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
-     * @param StoreResolver $storeResolver
-     */
     public function __construct(
         GroupRepositoryInterface $groupRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
-        StoreResolver $storeResolver
+        protected \Magento\CatalogImportExport\Model\Import\Product\StoreResolver $storeResolver
     ) {
-        $this->storeResolver = $storeResolver;
         parent::__construct($groupRepository, $searchCriteriaBuilder);
     }
 
@@ -55,10 +40,9 @@ class TierPrice extends AbstractPrice
      *
      * @param Product $context
      *
-     * @return RowValidatorInterface|AbstractImportValidator|void
      * @throws LocalizedException
      */
-    public function init($context)
+    public function init($context): void
     {
         foreach ($this->groupRepository->getList($this->searchCriteriaBuilder->create())->getItems() as $group) {
             $code = $group->getCode();
@@ -85,7 +69,7 @@ class TierPrice extends AbstractPrice
                         RowValidatorInterface::ERROR_INVALID_ATTRIBUTE_DECIMAL
                     ),
                     $attribute
-                )
+                ),
             ]
         );
     }
@@ -111,7 +95,7 @@ class TierPrice extends AbstractPrice
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
      */
-    public function isValid($value)
+    public function isValid(array $value)
     {
         $this->_clearMessages();
         if (!$this->customerGroups) {
@@ -153,7 +137,6 @@ class TierPrice extends AbstractPrice
     /**
      * Check if at list one value and length are valid
      *
-     * @param array $value
      *
      * @return bool
      */
@@ -171,7 +154,6 @@ class TierPrice extends AbstractPrice
     /**
      * Check if value has empty columns
      *
-     * @param array $value
      *
      * @return bool
      */
@@ -179,7 +161,7 @@ class TierPrice extends AbstractPrice
     {
         $hasEmptyValues = false;
         foreach ($this->_tierPriceColumns as $column) {
-            if (!strlen($value[$column])) {
+            if (!strlen((string) $value[$column])) {
                 $hasEmptyValues = true;
             }
         }

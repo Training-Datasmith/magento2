@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Constraints;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -19,7 +22,7 @@ class Internal extends Constraint implements ElementDiffAwareInterface
     /**
      * As we can have only one primary key. It name should be always PRIMARY/
      */
-    const PRIMARY_NAME = "PRIMARY";
+    public const PRIMARY_NAME = 'PRIMARY';
 
     /**
      * @var array
@@ -78,7 +81,7 @@ class Internal extends Constraint implements ElementDiffAwareInterface
     {
         return [
             'type' => $this->getType(),
-            'columns' => $this->getColumnNames()
+            'columns' => $this->getColumnNames(),
         ];
     }
 }

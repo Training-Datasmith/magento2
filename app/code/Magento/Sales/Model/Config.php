@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Sales total nodes config model
  */
+
 namespace Magento\Sales\Model;
 
 class Config implements \Magento\Sales\Model\ConfigInterface

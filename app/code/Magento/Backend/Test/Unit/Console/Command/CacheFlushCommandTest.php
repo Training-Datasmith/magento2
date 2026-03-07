@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class CacheFlushCommandTest extends AbstractCacheManageCommandTestCase
     public function testExecute($param, $types, $shouldDispatch, $output)
     {
         $this->cacheManagerMock->expects($this->once())->method('getAvailableTypes')->willReturn([
-            'A', 'B', 'C', 'full_page'
+            'A', 'B', 'C', 'full_page',
         ]);
         $this->cacheManagerMock->expects($this->once())->method('flush')->with($types);
 

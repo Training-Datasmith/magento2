@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,15 +16,15 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\Pricing\PriceInfo\Base as BasePriceInfo;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Framework\Pricing\PriceInfo\Base as BasePriceInfo;
 use Magento\Msrp\Api\Data\ProductRender\MsrpPriceInfoInterface;
 use Magento\Msrp\Api\Data\ProductRender\MsrpPriceInfoInterfaceFactory;
 use Magento\Msrp\Helper\Data;
 use Magento\Msrp\Model\Config;
-use Magento\Msrp\Ui\DataProvider\Product\Listing\Collector\MsrpPrice;
 use Magento\Msrp\Pricing\Price\MsrpPrice as MsrpPriceModel;
+use Magento\Msrp\Ui\DataProvider\Product\Listing\Collector\MsrpPrice;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -97,7 +98,7 @@ class MsrpPriceTest extends TestCase
                 'config' => $this->configMock,
                 'msrpPriceInfoFactory' => $this->msrpPriceInfoFactory,
                 'priceInfoExtensionFactory' => $this->priceInfoExtensionFactory,
-                'adjustmentCalculator' => $this->adjustmentCalculator
+                'adjustmentCalculator' => $this->adjustmentCalculator,
             ]
         );
     }
@@ -128,7 +129,7 @@ class MsrpPriceTest extends TestCase
                 'getWeeeAttributes',
                 'setWeeeAttributes',
                 'getWeeeAdjustment',
-                'setWeeeAdjustment'
+                'setWeeeAdjustment',
             ]
         );
 
@@ -147,7 +148,7 @@ class MsrpPriceTest extends TestCase
                 'setMsrpPrice',
                 'getMsrpPrice',
                 'getExtensionAttributes',
-                'setExtensionAttributes'
+                'setExtensionAttributes',
             ]
         );
         $amountInterface = $this->createMock(AmountInterface::class);
@@ -168,7 +169,7 @@ class MsrpPriceTest extends TestCase
         $price = $this->getMockBuilder(MsrpPriceModel::class)
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         // Product's PriceInfo needs getPrice method
         $priceInfo = $this->createPartialMockWithReflection(
             BasePriceInfo::class,

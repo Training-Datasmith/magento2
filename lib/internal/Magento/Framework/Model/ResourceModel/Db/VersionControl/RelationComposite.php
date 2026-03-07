@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\ResourceModel\Db\VersionControl;
 
-use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Event\ManagerInterface as EventManager;
+use Magento\Framework\Model\AbstractModel;
 
 /**
  * Class RelationComposite
@@ -50,7 +53,7 @@ class RelationComposite
         $this->eventManager->dispatch(
             $object->getEventPrefix(). '_process_relation',
             [
-                'object' => $object
+                'object' => $object,
             ]
         );
     }

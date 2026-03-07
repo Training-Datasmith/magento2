@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model\ResourceModel;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
-use Magento\Framework\App\ResourceConnection;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -84,7 +85,7 @@ class GetAssetsByPaths implements GetAssetsByPathsInterface
                 __(
                     'Could not get media assets for paths: %paths',
                     [
-                        'paths' => implode(' ,', $paths)
+                        'paths' => implode(' ,', $paths),
                     ]
                 )
             );

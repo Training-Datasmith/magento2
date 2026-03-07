@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\Stock;
 
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
@@ -20,11 +23,11 @@ class Status extends AbstractExtensibleModel implements StockStatusInterface
     /**#@+
      * Field name
      */
-    const KEY_PRODUCT_ID = 'product_id';
-    const KEY_WEBSITE_ID = 'website_id';
-    const KEY_STOCK_ID = 'stock_id';
-    const KEY_QTY = 'qty';
-    const KEY_STOCK_STATUS = 'stock_status';
+    public const KEY_PRODUCT_ID = 'product_id';
+    public const KEY_WEBSITE_ID = 'website_id';
+    public const KEY_STOCK_ID = 'stock_id';
+    public const KEY_QTY = 'qty';
+    public const KEY_STOCK_STATUS = 'stock_status';
     /**#@-*/
 
     /**

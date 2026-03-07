@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\GraphQlCache\Model\CacheId\CacheIdFactorProviderInterface;
  */
 class IsLoggedInProvider implements CacheIdFactorProviderInterface
 {
-    const NAME = "IS_LOGGED_IN";
+    public const NAME = 'IS_LOGGED_IN';
 
     /**
      * @inheritdoc
@@ -30,6 +31,6 @@ class IsLoggedInProvider implements CacheIdFactorProviderInterface
      */
     public function getFactorValue(ContextInterface $context): string
     {
-        return $context->getExtensionAttributes()->getIsCustomer() ? "true" : "false";
+        return $context->getExtensionAttributes()->getIsCustomer() ? 'true' : 'false';
     }
 }

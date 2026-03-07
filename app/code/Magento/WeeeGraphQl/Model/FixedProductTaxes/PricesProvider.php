@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class PricesProvider
                     'value' => $displayInclTaxes ? $price['amount_incl_tax'] : $price['amount'],
                     'currency' => $currency,
                 ],
-                'label' => $price['title']
+                'label' => $price['title'],
             ];
         }
 

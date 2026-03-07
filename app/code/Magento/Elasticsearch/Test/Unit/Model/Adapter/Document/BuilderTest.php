@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class BuilderTest extends TestCase
     {
         $document = [
             'fieldNameOne' => 'fieldValueOne',
-            'fieldNameTwo' => 'fieldValueTwo'
+            'fieldNameTwo' => 'fieldValueTwo',
         ];
 
         $fieldOne = 'fieldNameOne';
@@ -77,7 +78,7 @@ class BuilderTest extends TestCase
             'fieldNameOne' => 'fieldValueOne',
             'fieldNameTwo' => 'changedFieldValueTwo',
             'fieldThree' => 'fieldValueThree',
-            'fieldFour' => 'fieldValueFour'
+            'fieldFour' => 'fieldValueFour',
         ];
         $this->builder->addField('fieldNameOne', 'fieldValueOne');
         $this->builder->addField('fieldNameTwo', 'fieldValueTwo');
@@ -101,8 +102,8 @@ class BuilderTest extends TestCase
     {
         $document = [
             'nameOfField' => [
-                'value1','value2'
-            ]
+                'value1','value2',
+            ],
         ];
         $field = 'nameOfField';
         $values = ['value1', 'value2'];
@@ -119,7 +120,7 @@ class BuilderTest extends TestCase
     public function testBuildWithEmptyArrayField()
     {
         $document = [
-            'nameOfField' => []
+            'nameOfField' => [],
         ];
         $field = 'nameOfField';
         $values = [];
@@ -137,11 +138,11 @@ class BuilderTest extends TestCase
     {
         $documentOne = [
             'docOneFieldOne' => 'docOneValueOne',
-            'docOneFieldTwo' => 'docOneValueTwo'
+            'docOneFieldTwo' => 'docOneValueTwo',
         ];
         $documentTwo = [
             'docTwoFieldOne' => 'docTwoValueOne',
-            'docTwoFieldTwo' => 'docTwoValueTwo'
+            'docTwoFieldTwo' => 'docTwoValueTwo',
         ];
 
         $docOneFieldOne = 'docOneFieldOne';

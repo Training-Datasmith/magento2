@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Marketplace\Controller\Adminhtml;
 
 abstract class Index extends \Magento\Backend\App\Action
@@ -12,5 +15,5 @@ abstract class Index extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Marketplace::index';
+    public const ADMIN_RESOURCE = 'Magento_Marketplace::index';
 }

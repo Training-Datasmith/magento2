@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -101,12 +102,12 @@ class UrlBuilderTest extends TestCase
                     'path' => 'test/view',
                     'params' => [
                         '_current' => false,
-                        '_nosid' => true
-                    ]
+                        '_nosid' => true,
+                    ],
                 ],
                 'http://domain.com/test/view/',
-                'en'
-            ]
+                'en',
+            ],
         ];
     }
 
@@ -157,12 +158,12 @@ class UrlBuilderTest extends TestCase
         return [
             [
                 ['test1/index1', 'stores/store/switch'],
-                ['http://domain.com/test1', 'http://domain.com/test1/index1']
+                ['http://domain.com/test1', 'http://domain.com/test1/index1'],
             ],
             [
                 ['fr/test2/index2', 'stores/store/switch'],
-                ['http://domain.com/fr/test2', 'http://domain.com/fr/test2/index2']
-            ]
+                ['http://domain.com/fr/test2', 'http://domain.com/fr/test2/index2'],
+            ],
         ];
     }
 }

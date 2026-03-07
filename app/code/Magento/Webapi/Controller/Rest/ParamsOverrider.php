@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Webapi\Controller\Rest;
 
+use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Webapi\Rest\Request\ParamOverriderInterface;
 use Magento\Webapi\Model\Config\Converter;
-use Magento\Framework\Reflection\MethodsMap;
-use Magento\Framework\Api\SimpleDataObjectConverter;
 
 /**
  * Override parameter values

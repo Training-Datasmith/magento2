@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Catalog\Block\Adminhtml\Category\Tab\Product as ProductGridBlock;
 use Magento\Catalog\Model\Category;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Json\EncoderInterface;
-use Magento\Framework\Registry;
-use Magento\Framework\View\LayoutInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

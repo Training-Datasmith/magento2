@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,17 +16,17 @@ class UploadResizeConfig implements UploadResizeConfigInterface
     /**
      * Config path for the maximal image width value
      */
-    const XML_PATH_MAX_WIDTH_IMAGE = 'system/upload_configuration/max_width';
+    public const XML_PATH_MAX_WIDTH_IMAGE = 'system/upload_configuration/max_width';
 
     /**
      * Config path for the maximal image height value
      */
-    const XML_PATH_MAX_HEIGHT_IMAGE = 'system/upload_configuration/max_height';
+    public const XML_PATH_MAX_HEIGHT_IMAGE = 'system/upload_configuration/max_height';
 
     /**
      * Config path for the maximal image height value
      */
-    const XML_PATH_ENABLE_RESIZE = 'system/upload_configuration/enable_resize';
+    public const XML_PATH_ENABLE_RESIZE = 'system/upload_configuration/enable_resize';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,14 +12,12 @@ use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\DB\Select;
 
 /**
  * Custom filter to filter collection by duplicated hash values
  */
 class Duplicated implements CustomFilterInterface
 {
-
     /**
      * @var ResourceConnection
      */

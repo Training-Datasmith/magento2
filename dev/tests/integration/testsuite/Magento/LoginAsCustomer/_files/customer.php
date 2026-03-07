@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,8 +7,8 @@
 
 declare(strict_types=1);
 
-use Magento\Customer\Model\CustomerRegistry;
 use Magento\Customer\Api\Data\CustomerExtensionFactory;
+use Magento\Customer\Model\CustomerRegistry;
 
 $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
 /** @var $repository \Magento\Customer\Api\CustomerRepositoryInterface */

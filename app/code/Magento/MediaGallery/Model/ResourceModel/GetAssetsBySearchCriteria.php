@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,14 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model\ResourceModel;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\ResourceConnection;
-use Psr\Log\LoggerInterface;
+use Magento\Framework\Api\Search\SearchResultFactory;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Api\Search\SearchResultFactory;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Select;
-use Magento\MediaGalleryApi\Api\Data\AssetInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Get assets data  by searchCriteria
@@ -64,7 +63,7 @@ class GetAssetsBySearchCriteria
         $searchResult = $this->searchResultFactory->create();
         $fields = [];
         $conditions = [];
-       
+
         foreach ($searchCriteria->getFilterGroups() as $filterGroup) {
             foreach ($filterGroup->getFilters() as $filter) {
                 $condition = $filter->getConditionType() ? $filter->getConditionType() : 'eq';
@@ -78,7 +77,7 @@ class GetAssetsBySearchCriteria
                 $conditions[] = [$condition => $filter->getValue()];
             }
         }
-        
+
         if ($fields) {
             $resultCondition = $this->getResultCondition($fields, $conditions);
             $select = $this->resourceConnection->getConnection()->select()
@@ -93,13 +92,13 @@ class GetAssetsBySearchCriteria
                     $searchCriteria->getCurrentPage() * $searchCriteria->getPageSize()
                 );
             }
-        
+
             $data = $this->resourceConnection->getConnection()->fetchAll($select);
         }
-        
+
         $searchResult->setSearchCriteria($searchCriteria);
         $searchResult->setItems($data);
-       
+
         return $searchResult;
     }
 

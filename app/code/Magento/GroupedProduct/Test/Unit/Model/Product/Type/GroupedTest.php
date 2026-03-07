@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Model\Product\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type\AbstractType;
@@ -18,11 +18,12 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\GroupedProduct\Model\ResourceModel\Product\Link;
 use Magento\MediaStorage\Helper\File\Storage\Database;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -94,7 +95,7 @@ class GroupedTest extends TestCase
                 'productFactory' => $productFactoryMock,
                 'catalogProductLink' => $this->catalogProductLink,
                 'catalogProductStatus' => $this->productStatusMock,
-                'serializer' => $this->serializer
+                'serializer' => $this->serializer,
             ]
         );
     }
@@ -356,7 +357,7 @@ class GroupedTest extends TestCase
     {
         return [
             'positive' => [[1, 2, 3], ['super_group' => [1, 2, 3]]],
-            'negative' => [false, ['super_group' => []]]
+            'negative' => [false, ['super_group' => []]],
         ];
     }
 
@@ -386,7 +387,7 @@ class GroupedTest extends TestCase
     {
         $this->product = $this->createMock(Product::class);
         $buyRequest = new DataObject();
-        $expectedMsg = "Please specify the quantity of product(s).";
+        $expectedMsg = 'Please specify the quantity of product(s).';
 
         $productCollection = $this->createMock(
             Collection::class
@@ -424,7 +425,7 @@ class GroupedTest extends TestCase
             ->willReturnSelf();
         $items = [
             $this->createMock(Product::class),
-            $this->createMock(Product::class)
+            $this->createMock(Product::class),
         ];
         $productCollection
             ->expects($this->atLeastOnce())
@@ -472,7 +473,7 @@ class GroupedTest extends TestCase
     {
         $buyRequest = new DataObject();
         $buyRequest->setSuperGroup([0 => 0]);
-        $expectedMsg = "Please specify the quantity of product(s).";
+        $expectedMsg = 'Please specify the quantity of product(s).';
 
         $cached = true;
         $associatedProducts = [];
@@ -534,7 +535,7 @@ class GroupedTest extends TestCase
             AbstractType::class,
             ['_prepareProduct', 'deleteTypeSpecificData']
         );
-        $associatedPrepareResult = "";
+        $associatedPrepareResult = '';
         $typeMock->expects($this->once())->method('_prepareProduct')->willReturn($associatedPrepareResult);
 
         $associatedProduct->expects($this->once())->method('getTypeInstance')->willReturn($typeMock);
@@ -565,7 +566,7 @@ class GroupedTest extends TestCase
      */
     public function testPrepareForCartAdvancedWithProductsStrictFalseEmptyArrayResult(): void
     {
-        $expectedMsg = "Cannot process the item.";
+        $expectedMsg = 'Cannot process the item.';
         $associatedProduct = $this->createMock(Product::class);
         $associatedId = 9384;
         $associatedProduct->expects($this->atLeastOnce())->method('getId')->willReturn($associatedId);
@@ -614,7 +615,7 @@ class GroupedTest extends TestCase
             ['_prepareProduct', 'deleteTypeSpecificData']
         );
         $associatedPrepareResult = [
-            $this->createMock(Product::class)
+            $this->createMock(Product::class),
         ];
         $typeMock->expects($this->once())->method('_prepareProduct')->willReturn($associatedPrepareResult);
 
@@ -681,7 +682,7 @@ class GroupedTest extends TestCase
      */
     public function testPrepareForCartAdvancedZeroQtyAndSoldOutOption(): void
     {
-        $expectedMsg = "Please specify the quantity of product(s).";
+        $expectedMsg = 'Please specify the quantity of product(s).';
         $associatedId = 91;
         $associatedProduct = $this->createMock(Product::class);
         $associatedProduct->expects($this->atLeastOnce())->method('getId')->willReturn(90);
@@ -727,72 +728,72 @@ class GroupedTest extends TestCase
                     [
                         'getId' => 1,
                         'getQty' => 100,
-                        'isSalable' => true
+                        'isSalable' => true,
                     ],
                     [
                         'getId' => 2,
                         'getQty' => 200,
-                        'isSalable' => true
-                    ]
+                        'isSalable' => true,
+                    ],
                 ],
                 [
                     1 => 2,
                     2 => 1,
                 ],
-                [1, 2]
+                [1, 2],
             ],
             [
                 [
                     [
                         'getId' => 1,
                         'getQty' => 100,
-                        'isSalable' => true
+                        'isSalable' => true,
                     ],
                     [
                         'getId' => 2,
                         'getQty' => 0,
-                        'isSalable' => false
-                    ]
+                        'isSalable' => false,
+                    ],
                 ],
                 [
                     1 => 2,
                 ],
-                [1]
+                [1],
             ],
             [
                 [
                     [
                         'getId' => 1,
                         'getQty' => 0,
-                        'isSalable' => true
+                        'isSalable' => true,
                     ],
                     [
                         'getId' => 2,
                         'getQty' => 0,
-                        'isSalable' => false
-                    ]
+                        'isSalable' => false,
+                    ],
                 ],
                 [
                 ],
-                'Please specify the quantity of product(s).'
+                'Please specify the quantity of product(s).',
             ],
             [
                 [
                     [
                         'getId' => 1,
                         'getQty' => 0,
-                        'isSalable' => false
+                        'isSalable' => false,
                     ],
                     [
                         'getId' => 2,
                         'getQty' => 0,
-                        'isSalable' => false
-                    ]
+                        'isSalable' => false,
+                    ],
                 ],
                 [
                 ],
-                'Please specify the quantity of product(s).'
-            ]
+                'Please specify the quantity of product(s).',
+            ],
         ];
     }
 

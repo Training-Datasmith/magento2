@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class MethodListTest extends TestCase
             MethodList::class,
             [
                 'specificationFactory' => $this->specificationFactoryMock,
-                'additionalChecks' => $this->additionalChecks
+                'additionalChecks' => $this->additionalChecks,
             ]
         );
 
@@ -115,7 +116,7 @@ class MethodListTest extends TestCase
                         AbstractMethod::CHECK_USE_CHECKOUT,
                         AbstractMethod::CHECK_USE_FOR_COUNTRY,
                         AbstractMethod::CHECK_USE_FOR_CURRENCY,
-                        AbstractMethod::CHECK_ORDER_TOTAL_MIN_MAX
+                        AbstractMethod::CHECK_ORDER_TOTAL_MIN_MAX,
                     ],
                     $this->additionalChecks
                 )

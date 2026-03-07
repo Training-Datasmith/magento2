@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\GuestCart;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\GuestCart\GuestShippingAddressManagement;
-use Magento\Quote\Model\QuoteIdMask;
-use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\GuestCart\GuestShippingAddressManagementInterface;
 use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\QuoteIdMask;
+use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\ShippingAddressManagementInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -69,19 +70,19 @@ class GuestShippingAddressManagementTest extends TestCase
         $this->cartId = 123;
 
         // Create QuoteIdMask mock
-        $this->quoteIdMaskMock = $this->createPartialMockWithReflection(QuoteIdMask::class, ["load", "getQuoteId"]);
-        $this->quoteIdMaskMock->method("load")->willReturnSelf();
-        $this->quoteIdMaskMock->method("getQuoteId")->willReturn($this->cartId);
-        
+        $this->quoteIdMaskMock = $this->createPartialMockWithReflection(QuoteIdMask::class, ['load', 'getQuoteId']);
+        $this->quoteIdMaskMock->method('load')->willReturnSelf();
+        $this->quoteIdMaskMock->method('getQuoteId')->willReturn($this->cartId);
+
         // Create QuoteIdMaskFactory mock
         $this->quoteIdMaskFactoryMock = $this->createMock(QuoteIdMaskFactory::class);
-        $this->quoteIdMaskFactoryMock->method("create")->willReturn($this->quoteIdMaskMock);
+        $this->quoteIdMaskFactoryMock->method('create')->willReturn($this->quoteIdMaskMock);
 
         $this->model = $objectManager->getObject(
             GuestShippingAddressManagement::class,
             [
                 'shippingAddressManagement' => $this->shippingAddressManagementMock,
-                'quoteIdMaskFactory' => $this->quoteIdMaskFactoryMock
+                'quoteIdMaskFactory' => $this->quoteIdMaskFactoryMock,
             ]
         );
     }

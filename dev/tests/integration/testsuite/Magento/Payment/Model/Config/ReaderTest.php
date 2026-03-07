@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Payment\Model\Config\Reader
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Config;
 
 class ReaderTest extends \PHPUnit\Framework\TestCase

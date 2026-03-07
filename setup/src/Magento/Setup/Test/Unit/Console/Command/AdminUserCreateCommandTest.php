@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,16 +15,16 @@ use Magento\Setup\Model\Installer;
 use Magento\Setup\Model\InstallerFactory;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
 use Magento\User\Model\UserValidationRules;
-use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\QuestionHelper;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -78,7 +79,7 @@ class AdminUserCreateCommandTest extends TestCase
             '--' . AdminAccount::KEY_PASSWORD => '123123q',
             '--' . AdminAccount::KEY_EMAIL => 'test@test.com',
             '--' . AdminAccount::KEY_FIRST_NAME => 'John',
-            '--' . AdminAccount::KEY_LAST_NAME => 'Doe'
+            '--' . AdminAccount::KEY_LAST_NAME => 'Doe',
         ];
         $data = [
             AdminAccount::KEY_USER => 'user',
@@ -86,7 +87,7 @@ class AdminUserCreateCommandTest extends TestCase
             AdminAccount::KEY_EMAIL => 'test@test.com',
             AdminAccount::KEY_FIRST_NAME => 'John',
             AdminAccount::KEY_LAST_NAME => 'Doe',
-            InitParamListener::BOOTSTRAP_PARAM => null
+            InitParamListener::BOOTSTRAP_PARAM => null,
         ];
         $commandTester = new CommandTester($this->command);
         $installerMock = $this->createMock(Installer::class);
@@ -126,7 +127,7 @@ class AdminUserCreateCommandTest extends TestCase
             'version' => false,
             'ansi' => null,
             'no-interaction' => false,
-            'silent' => false
+            'silent' => false,
         ];
 
         $installerMock->expects($this->once())->method('installAdminUser')->with($expectedData);
@@ -166,12 +167,12 @@ class AdminUserCreateCommandTest extends TestCase
         return [
             [
                 'mode' => InputOption::VALUE_REQUIRED,
-                'description' => '(Required) Admin email'
+                'description' => '(Required) Admin email',
             ],
             [
                 'mode' => InputOption::VALUE_OPTIONAL,
-                'description' => 'Admin email'
-            ]
+                'description' => 'Admin email',
+            ],
         ];
     }
 
@@ -212,7 +213,7 @@ class AdminUserCreateCommandTest extends TestCase
         return [
             [
                 [null, 'Doe', 'admin', 'test@test.com', '123123q', '123123q'],
-                ['"First Name" is required. Enter and try again.']
+                ['"First Name" is required. Enter and try again.'],
             ],
             [
                 ['John', null, null, 'test@test.com', '123123q', '123123q'],
@@ -221,56 +222,56 @@ class AdminUserCreateCommandTest extends TestCase
             [['John', 'Doe', 'admin', null, '123123q', '123123q'], ['Please enter a valid email.']],
             [
                 ['John', 'Doe', 'admin', 'test', '123123q', '123123q'],
-                ["'test' is not a valid email address in the basic format local-part@hostname"]
+                ["'test' is not a valid email address in the basic format local-part@hostname"],
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '', ''],
                 [
                     'Password is required field.',
                     'Your password must be at least 7 characters.',
-                    'Your password must include both numeric and alphabetic characters.'
-                ]
+                    'Your password must include both numeric and alphabetic characters.',
+                ],
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '123123', '123123'],
                 [
                     'Your password must be at least 7 characters.',
-                    'Your password must include both numeric and alphabetic characters.'
-                ]
+                    'Your password must include both numeric and alphabetic characters.',
+                ],
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '1231231', '1231231'],
-                ['Your password must include both numeric and alphabetic characters.']
+                ['Your password must include both numeric and alphabetic characters.'],
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '123123q', '123123q'],
-                []
+                [],
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '123123q', '123123q'],
                 [
                     'Your password must be at least 12 characters.',
                 ],
-                12
+                12,
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', 'password123', 'password123'],
                 [
                     'Your password must be at least 12 characters.',
                 ],
-                12
+                12,
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', 'password1234', 'password1234'],
                 [],
-                12
+                12,
             ],
             [
                 ['John', 'Doe', 'admin', 'test@test.com', '123456789012', '123456789012'],
                 [
-                    'Your password must include both numeric and alphabetic characters.'
+                    'Your password must include both numeric and alphabetic characters.',
                 ],
-                12
+                12,
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,6 +39,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Error;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
@@ -45,7 +47,6 @@ use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Newsletter\Model\SubscriberFactory;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -58,7 +59,6 @@ use PHPUnit\Framework\TestCase;
  */
 class SaveTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -310,7 +310,7 @@ class SaveTest extends TestCase
                 'addressRepository' => $this->customerAddressRepositoryMock,
                 'addressMapper' => $this->customerAddressMapperMock,
                 'subscriptionManager' => $this->subscriptionManager,
-                'customerStore' => $customerStoreMock
+                'customerStore' => $customerStoreMock,
             ]
         );
 
@@ -354,7 +354,7 @@ class SaveTest extends TestCase
             'coolness' => false,
             'disable_auto_group_change' => 'false',
             CustomerInterface::DEFAULT_BILLING => 2,
-            CustomerInterface::DEFAULT_SHIPPING => 2
+            CustomerInterface::DEFAULT_SHIPPING => 2,
         ];
         $savedData = [
             'entity_id' => $customerId,
@@ -452,7 +452,7 @@ class SaveTest extends TestCase
                         false,
                         Form::DONT_IGNORE_INVISIBLE,
                         [],
-                        $customerFormMock
+                        $customerFormMock,
                     ],
                 ]
             );
@@ -477,7 +477,7 @@ class SaveTest extends TestCase
                     [
                         $customerMock,
                         $mergedData, CustomerInterface::class,
-                        $this->dataHelperMock
+                        $this->dataHelperMock,
                     ],
                 ]
             );
@@ -640,7 +640,7 @@ class SaveTest extends TestCase
                         false,
                         Form::DONT_IGNORE_INVISIBLE,
                         [],
-                        $customerFormMock
+                        $customerFormMock,
                     ],
                 ]
             );
@@ -658,7 +658,7 @@ class SaveTest extends TestCase
                     [
                         $customerMock,
                         $mergedData, CustomerInterface::class,
-                        $this->dataHelperMock
+                        $this->dataHelperMock,
                     ],
                 ]
             );

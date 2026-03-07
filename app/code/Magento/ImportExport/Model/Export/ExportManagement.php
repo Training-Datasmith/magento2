@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\ImportExport\Model\Export;
 
 use Magento\Framework\EntityManager\HydratorInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\ImportExport\Api\Data\ExportInfoInterface;
 use Magento\ImportExport\Api\ExportManagementInterface;
 use Magento\ImportExport\Model\ExportFactory;
-use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * ExportManagementInterface implementation.

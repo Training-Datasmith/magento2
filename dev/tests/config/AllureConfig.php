@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -28,6 +29,6 @@ function getAllureConfig(string $outputDirectory): array
                     unlink($filePath);
                 }
             }
-        }
+        },
     ];
 }

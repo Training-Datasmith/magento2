@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\Cart;
 
+use Magento\Checkout\Model\Cart as CustomerCart;
 use Magento\Framework;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Checkout\Model\Cart as CustomerCart;
 
 class EstimatePost extends \Magento\Checkout\Controller\Cart implements HttpPostActionInterface
 {

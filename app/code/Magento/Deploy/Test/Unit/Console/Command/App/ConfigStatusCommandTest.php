@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 class ConfigStatusCommandTest extends TestCase
 {
-
     /**
      * @var ConfigStatusCommand
      */
@@ -69,7 +69,7 @@ class ConfigStatusCommandTest extends TestCase
             'Config is up to date' => [
                 false,
                 'Config files are up to date.' . PHP_EOL,
-                Cli::RETURN_SUCCESS
+                Cli::RETURN_SUCCESS,
             ],
             'Config needs update' => [
                 true,

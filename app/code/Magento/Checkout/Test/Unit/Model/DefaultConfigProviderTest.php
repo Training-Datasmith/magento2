@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Captcha\Api\CaptchaConfigPostProcessorInterface;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Helper\Product\ConfigurationPool;
@@ -28,24 +28,25 @@ use Magento\Eav\Api\AttributeOptionManagementInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Escaper;
 use Magento\Framework\Locale\FormatInterface as LocaleFormat;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\Quote\Api\CartItemRepositoryInterface as QuoteItemRepository;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CartTotalRepositoryInterface;
 use Magento\Quote\Api\PaymentMethodManagementInterface;
 use Magento\Quote\Api\ShippingMethodManagementInterface as ShippingMethodManager;
+use Magento\Quote\Model\Cart\Totals as QuoteCartTotals;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Shipping\Model\Config;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Escaper;
-use Magento\Quote\Model\Cart\Totals as QuoteCartTotals;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -253,57 +254,57 @@ class DefaultConfigProviderTest extends TestCase
             [
                 [],
                 [],
-                []
+                [],
             ],
             [
                 [
-                    'firstname' => 'John'
+                    'firstname' => 'John',
                 ],
                 [
-                    'firstname' => 'Jack'
+                    'firstname' => 'Jack',
                 ],
                 [
                     'isShippingAddressFromDataValid' => true,
                     'shippingAddressFromData' => [
-                        'firstname' => 'John'
+                        'firstname' => 'John',
                     ],
                     'isBillingAddressFromDataValid' => true,
                     'billingAddressFromData' => [
-                        'firstname' => 'Jack'
-                    ]
-                ]
+                        'firstname' => 'Jack',
+                    ],
+                ],
             ],
             [
                 [
-                    'lastname' => 'John'
+                    'lastname' => 'John',
                 ],
                 [
-                    'lastname' => 'Jack'
+                    'lastname' => 'Jack',
                 ],
                 [
                     'isShippingAddressFromDataValid' => false,
                     'shippingAddressFromData' => [
-                        'lastname' => 'John'
+                        'lastname' => 'John',
                     ],
                     'isBillingAddressFromDataValid' => false,
                     'billingAddressFromData' => [
-                        'lastname' => 'Jack'
-                    ]
-                ]
+                        'lastname' => 'Jack',
+                    ],
+                ],
             ],
             [
                 [
-                    'firstname' => 'John'
+                    'firstname' => 'John',
                 ],
                 [
-                    'firstname' => 'John'
+                    'firstname' => 'John',
                 ],
                 [
                     'isShippingAddressFromDataValid' => true,
                     'shippingAddressFromData' => [
-                        'firstname' => 'John'
+                        'firstname' => 'John',
                     ],
-                ]
+                ],
             ],
         ];
     }

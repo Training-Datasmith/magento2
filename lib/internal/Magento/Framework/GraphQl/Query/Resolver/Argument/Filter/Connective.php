@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class Connective
      *
      * @return Operator
      */
-    public function getOperator() : Operator
+    public function getOperator(): Operator
     {
         return $this->operator;
     }

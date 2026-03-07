@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Theme\Model;
 
+use Magento\Framework\App\Config\ReinitableConfigInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Theme\Api\Data\DesignConfigInterface;
 use Magento\Theme\Api\DesignConfigRepositoryInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Theme\Model\Data\Design\Config as DesignConfig;
 use Magento\Theme\Model\Design\Config\Storage as ConfigStorage;
 
@@ -63,7 +65,7 @@ class DesignConfigRepository implements DesignConfigRepositoryInterface
     private function getValidator()
     {
         if (null === $this->validator) {
-            $this->validator =\Magento\Framework\App\ObjectManager::getInstance()->get(
+            $this->validator = \Magento\Framework\App\ObjectManager::getInstance()->get(
                 \Magento\Theme\Model\Design\Config\Validator::class
             );
         }

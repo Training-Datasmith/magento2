@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@
 declare(strict_types=1);
 
 namespace Magento\MediaGalleryUi\Model;
-
-use Magento\MediaGalleryUi\Model\InsertImageDataExtensionInterface;
 
 /**
  * Class responsible to provide insert image details

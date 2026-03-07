@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,21 +11,21 @@ namespace Magento\Sales\Test\Unit\Controller\Adminhtml\Order\Create;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Session\Quote;
 use Magento\Backend\Model\View\Result\ForwardFactory;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Sales\Controller\Adminhtml\Order\Create\ConfigureProductToAdd;
-use Magento\Framework\View\Result\Layout;
-use Magento\Store\Model\Store;
+use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Helper\Product\Composite;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\DataObject;
+use Magento\Framework\Escaper;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Catalog\Helper\Product;
-use Magento\Framework\Escaper;
+use Magento\Framework\View\Result\Layout;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\DataObject;
+use Magento\Sales\Controller\Adminhtml\Order\Create\ConfigureProductToAdd;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for \Magento\Sales\Controller\Adminhtml\Order\Create\ConfigureProductToAdd
@@ -108,7 +109,7 @@ class ConfigureProductToAddTest extends TestCase
         // Initialize ObjectManager to avoid "ObjectManager isn't initialized" errors
         $objectManagerHelper = new ObjectManager($this);
         $objectManagerHelper->prepareObjectManager();
-        
+
         $this->requestMock = $this->createMock(RequestInterface::class);
         $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
         $this->contextMock = $this->getMockBuilder(Context::class)
@@ -173,7 +174,7 @@ class ConfigureProductToAddTest extends TestCase
             ->willReturn($productId);
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Quote::class] => $this->quoteSessionMock,
                 [Composite::class] => $this->compositeHelperMock
             });

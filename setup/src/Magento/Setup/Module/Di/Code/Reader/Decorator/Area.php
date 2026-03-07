@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Setup\Module\Di\Code\Reader\Decorator;
 
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Setup\Module\Di\Code\Reader\ClassesScanner;
 use Magento\Setup\Module\Di\Code\Reader\ClassReaderDecorator;
-use Magento\Framework\Exception\FileSystemException;
 
 class Area implements \Magento\Setup\Module\Di\Code\Reader\ClassesScannerInterface
 {

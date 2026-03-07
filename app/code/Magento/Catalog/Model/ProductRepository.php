@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 namespace Magento\Catalog\Model;
 
 use Magento\Catalog\Api\CategoryLinkManagementInterface;
+use Magento\Catalog\Api\Data\EavAttributeInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductExtension;
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -33,7 +36,6 @@ use Magento\Framework\Exception\TemporaryState\CouldNotSaveException as Temporar
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Store\Model\Store;
-use Magento\Catalog\Api\Data\EavAttributeInterface;
 
 /**
  * @inheritdoc
@@ -533,7 +535,7 @@ class ProductRepository implements \Magento\Catalog\Api\ProductRepositoryInterfa
 
         if (!$product->getSku()) {
             throw new CouldNotSaveException(
-                __("The \"%1\" attribute value is empty. Set the attribute and try again.", "sku")
+                __('The "%1" attribute value is empty. Set the attribute and try again.', 'sku')
             );
         }
 
@@ -730,7 +732,7 @@ class ProductRepository implements \Magento\Catalog\Api\ProductRepositoryInterfa
                 $this->getCacheKey(
                     [
                         false,
-                        $product->getStoreId()
+                        $product->getStoreId(),
                     ]
                 ),
                 $product
@@ -746,7 +748,7 @@ class ProductRepository implements \Magento\Catalog\Api\ProductRepositoryInterfa
      * @param Collection $collection
      * @return Collection
      */
-    private function addExtensionAttributes(Collection $collection) : Collection
+    private function addExtensionAttributes(Collection $collection): Collection
     {
         foreach ($collection->getItems() as $item) {
             $this->readExtensions->execute($item);

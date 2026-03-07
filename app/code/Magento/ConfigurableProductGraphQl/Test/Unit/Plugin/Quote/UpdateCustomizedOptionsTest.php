@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,22 +8,22 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProductGraphQl\Test\Unit\Plugin\Quote;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProductGraphQl\Model\Cart\BuyRequest\SuperAttributeDataProvider;
+use Magento\ConfigurableProductGraphQl\Plugin\Quote\UpdateCustomizedOptions;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\ConfigurableProductGraphQl\Plugin\Quote\UpdateCustomizedOptions;
 use Magento\Quote\Model\Quote as Quote;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -82,7 +83,7 @@ class UpdateCustomizedOptionsTest extends TestCase
             UpdateCustomizedOptions::class,
             [
                 'productRepository' => $this->productRepositoryMock,
-                'superAttributeDataProvider' => $this->superAttributeDataProviderMock
+                'superAttributeDataProvider' => $this->superAttributeDataProviderMock,
             ]
         );
     }
@@ -159,7 +160,7 @@ class UpdateCustomizedOptionsTest extends TestCase
                 [],
                 new DataObject([]),
                 false,
-                5
+                5,
             ],
             'test customized options for configurable product' => [
                 ['1' => 14, '5' => 10],
@@ -169,8 +170,8 @@ class UpdateCustomizedOptionsTest extends TestCase
                 ['option1'],
                 new DataObject(['sku' => 'child1']),
                 true,
-                7
-            ]
+                7,
+            ],
         ];
     }
 }

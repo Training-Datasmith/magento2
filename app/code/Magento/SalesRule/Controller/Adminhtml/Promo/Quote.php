@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Controller\Adminhtml\Promo;
 
 abstract class Quote extends \Magento\Backend\App\Action
@@ -12,7 +15,7 @@ abstract class Quote extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_SalesRule::quote';
+    public const ADMIN_RESOURCE = 'Magento_SalesRule::quote';
 
     /**
      * Core registry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Framework\Setup\Test\Unit\Mvc;
 
 use Laminas\EventManager\EventManager;
 use Magento\Framework\Setup\Mvc\ModuleManager;
-use Magento\Framework\Setup\Mvc\TestModule;
 use PHPUnit\Framework\TestCase;
 
 class ModuleManagerTest extends TestCase

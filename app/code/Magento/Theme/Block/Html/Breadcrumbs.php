@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Html;
 
 use Magento\Framework\Serialize\Serializer\Json;
@@ -98,7 +101,7 @@ class Breadcrumbs extends \Magento\Framework\View\Element\Template
         if ($this->_cacheKeyInfo === null) {
             $this->_cacheKeyInfo = parent::getCacheKeyInfo() + [
                 'crumbs' => base64_encode($this->serializer->serialize($this->_crumbs)),
-                'name' => $this->getNameInLayout()
+                'name' => $this->getNameInLayout(),
             ];
         }
         return $this->_cacheKeyInfo;

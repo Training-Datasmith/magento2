@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ class HtmlFormConverterTest extends TestCase
         $expectedResult = [
             'parameter1' => 'val1',
             'parameter2' => 'val2',
-            'parameter3' => 'val3'
+            'parameter3' => 'val3',
         ];
 
         $converter = new HtmlFormConverter();

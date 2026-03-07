@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class SpecialPriceRealtimeReindexTest extends \PHPUnit\Framework\TestCase
     private $indexersNeededInRealTime = [
         'catalogrule_rule',
         'catalogrule_product',
-        'catalog_product_price'
+        'catalog_product_price',
     ];
 
     protected function setUp(): void
@@ -117,7 +118,7 @@ class SpecialPriceRealtimeReindexTest extends \PHPUnit\Framework\TestCase
         ], 'cr1'),
         DataFixture(
             ProductFixture::class,
-            ['sku' => 'simple', 'price'=> 100, 'special_price' => 100, 'website_ids' => [1]]
+            ['sku' => 'simple', 'price' => 100, 'special_price' => 100, 'website_ids' => [1]]
         ),
     ]
     public function testSpecialPriceChange()

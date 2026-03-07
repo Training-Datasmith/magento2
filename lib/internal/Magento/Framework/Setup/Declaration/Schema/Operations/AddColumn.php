@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -27,12 +29,12 @@ class AddColumn implements OperationInterface
     /**
      * The name of the operation.
      */
-    const OPERATION_NAME = 'add_column';
+    public const OPERATION_NAME = 'add_column';
 
     /**
      * This key is service key and need only for migration of data on auto_increment field.
      */
-    const TEMPORARY_KEY = 'AUTO_INCREMENT_TEMPORARY_KEY';
+    public const TEMPORARY_KEY = 'AUTO_INCREMENT_TEMPORARY_KEY';
 
     /**
      * @var DefinitionAggregator
@@ -112,7 +114,7 @@ class AddColumn implements OperationInterface
                 'name' => self::TEMPORARY_KEY,
                 'column' => [$column->getName()],
                 'columns' => [$column],
-                'table' => $column->getTable()
+                'table' => $column->getTable(),
             ]
         );
         return $this->elementHistoryFactory->create(['new' => $index]);

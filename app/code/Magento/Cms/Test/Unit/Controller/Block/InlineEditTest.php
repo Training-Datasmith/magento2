@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class InlineEditTest extends TestCase
         $this->context = $helper->getObject(
             Context::class,
             [
-                'request' => $this->request
+                'request' => $this->request,
             ]
         );
         $this->blockRepository = $this->createMock(
@@ -95,8 +96,8 @@ class InlineEditTest extends TestCase
         $postData = [
             1 => [
                 'title' => 'Catalog Events Lister',
-                'identifier' => 'Catalog Events Lister'
-            ]
+                'identifier' => 'Catalog Events Lister',
+            ],
         ];
 
         $this->request
@@ -118,13 +119,13 @@ class InlineEditTest extends TestCase
         $this->cmsBlock->expects($this->once())
             ->method('getData')
             ->willReturn([
-                'identifier' => 'test-identifier'
+                'identifier' => 'test-identifier',
             ]);
         $this->cmsBlock->expects($this->once())
             ->method('setData')
             ->with([
                 'title' => 'Catalog Events Lister',
-                'identifier' => 'Catalog Events Lister'
+                'identifier' => 'Catalog Events Lister',
             ]);
         $this->jsonFactory->expects($this->once())
             ->method('create')
@@ -146,7 +147,7 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => ['[Block ID: 1] Exception'],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -176,7 +177,7 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => ['Please correct the data sent.'],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CurrencySymbol\Observer;
 
-use Magento\Framework\Locale\Currency;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Locale\Currency;
 
 class CurrencyDisplayOptions implements ObserverInterface
 {

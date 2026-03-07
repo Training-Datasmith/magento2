@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter;
 
 /**
@@ -13,7 +16,7 @@ namespace Magento\Catalog\Model\Layer\Filter;
  */
 abstract class AbstractFilter extends \Magento\Framework\DataObject implements FilterInterface
 {
-    const ATTRIBUTE_OPTIONS_ONLY_WITH_RESULTS = 1;
+    public const ATTRIBUTE_OPTIONS_ONLY_WITH_RESULTS = 1;
 
     /**
      * Request variable name with filter value

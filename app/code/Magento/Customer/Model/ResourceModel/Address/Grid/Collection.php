@@ -1,14 +1,16 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\ResourceModel\Address\Grid;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\Search\AggregationInterface;
+use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
@@ -245,7 +247,7 @@ class Collection extends AbstractCollection implements SearchResultInterface
         $locale = $this->localeResolver->getLocale();
         $connection = $this->getConnection();
         $regionIdField = $connection->quoteIdentifier('main_table.region_id');
-        $localeCondition = $connection->quoteInto("rnt.locale=?", $locale);
+        $localeCondition = $connection->quoteInto('rnt.locale=?', $locale);
 
         $this->getSelect()
             ->joinLeft(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -21,7 +24,7 @@ class EngineResolver implements EngineResolverInterface
      * MySQL search engine
      * @deprecated Use config.xml for default setting
      */
-    const CATALOG_SEARCH_MYSQL_ENGINE = 'mysql';
+    public const CATALOG_SEARCH_MYSQL_ENGINE = 'mysql';
 
     /**
      * @var ScopeConfigInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class SetShippingAddress implements DataFixtureInterface
         $service->execute(
             [
                 'cartId' => $data['cart_id'],
-                'address' => array_merge(self::DEFAULT_DATA, $data['address'] ?? [])
+                'address' => array_merge(self::DEFAULT_DATA, $data['address'] ?? []),
             ]
         );
         return null;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class ConfigTest extends TestCase
             ->willReturn('[[],[],[],[]]');
 
         $sortItemsMock = $this->createMock(SortItems::class);
-        $config =$this->objectManagerHelper->getObject(
+        $config = $this->objectManagerHelper->getObject(
             Config::class,
             [
                 'relations' => null,

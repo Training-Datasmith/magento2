@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Invoice\AbstractInvoice;
 
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\Ui\Component\MassAction\Filter;
-use Magento\Sales\Model\Order\Pdf\Invoice;
-use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Sales\Model\Order\Pdf\Invoice;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\CollectionFactory;
+use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -25,7 +28,7 @@ abstract class Pdfinvoices extends \Magento\Sales\Controller\Adminhtml\Order\Abs
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
+    public const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
 
     /**
      * @var FileFactory

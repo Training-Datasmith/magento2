@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Usps\Test\Unit\Model;
 
 use Magento\Framework\App\Cache\Type\Config as Cache;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
@@ -18,7 +20,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 
 class UspsAuthTest extends TestCase
 {
@@ -205,7 +206,7 @@ class UspsAuthTest extends TestCase
     public static function clientCredentialsDataProvider(): array
     {
         return [
-            ['clientId', 'clientSecret', 'oauthTokenUrl']
+            ['clientId', 'clientSecret', 'oauthTokenUrl'],
         ];
     }
 

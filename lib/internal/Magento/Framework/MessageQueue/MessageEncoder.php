@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
-use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\Phrase;
 use Magento\Framework\Webapi\ServicePayloadConverterInterface;
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 
 /**
  * Class which provides encoding and decoding capabilities for MessageQueue messages.
@@ -18,8 +21,8 @@ use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
  */
 class MessageEncoder
 {
-    const DIRECTION_ENCODE = 'encode';
-    const DIRECTION_DECODE = 'decode';
+    public const DIRECTION_ENCODE = 'encode';
+    public const DIRECTION_DECODE = 'decode';
 
     /**
      * @var \Magento\Framework\Webapi\ServiceOutputProcessor
@@ -99,7 +102,7 @@ class MessageEncoder
         try {
             $decodedMessage = $this->jsonDecoder->decode($message);
         } catch (\Exception $e) {
-            throw new LocalizedException(new Phrase("Error occurred during message decoding."));
+            throw new LocalizedException(new Phrase('Error occurred during message decoding.'));
         }
         return $this->convertMessage($topic, $decodedMessage, self::DIRECTION_DECODE, $requestType);
     }
@@ -121,14 +124,14 @@ class MessageEncoder
         if ($requestType) {
             return [
                 'schema_type' => $topicConfig[CommunicationConfig::TOPIC_REQUEST_TYPE],
-                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_REQUEST]
+                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_REQUEST],
             ];
         } else {
             return [
                 'schema_type' => isset($topicConfig[CommunicationConfig::TOPIC_RESPONSE])
                     ? CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS
                     : null,
-                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_RESPONSE]
+                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_RESPONSE],
             ];
         }
     }
@@ -193,7 +196,7 @@ class MessageEncoder
                             . 'in the message with topic "%topic".',
                             [
                                 'topic' => $topic,
-                                'param' => $paramName
+                                'param' => $paramName,
                             ]
                         )
                     );

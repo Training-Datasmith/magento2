@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class BuilderTest extends TestCase
                 'config' => $this->config,
                 'objectManager' => $this->objectManager,
                 'binder' => $this->binder,
-                'cleaner' => $this->cleaner
+                'cleaner' => $this->cleaner,
             ]
         );
     }
@@ -134,7 +135,7 @@ class BuilderTest extends TestCase
             'dimensions' => [
                 'scope' => [
                     'name' => 'scope',
-                    'value' => 'default'
+                    'value' => 'default',
                 ],
             ],
             'queries' => [
@@ -144,14 +145,14 @@ class BuilderTest extends TestCase
                     'queryReference' => [
                         [
                             'clause' => 'must',
-                            'ref' => 'fulltext_search_query'
+                            'ref' => 'fulltext_search_query',
                         ],
                         [
                             'clause' => 'must',
-                            'ref' => 'fulltext_search_query2'
+                            'ref' => 'fulltext_search_query2',
                         ],
                     ],
-                    'type' => 'boolQuery'
+                    'type' => 'boolQuery',
                 ],
                 'fulltext_search_query' => [
                     'name' => 'fulltext_search_query',
@@ -160,20 +161,20 @@ class BuilderTest extends TestCase
                     'match' => [
                         [
                             'field' => 'data_index',
-                            'boost' => '2'
+                            'boost' => '2',
                         ],
                     ],
-                    'type' => 'matchQuery'
+                    'type' => 'matchQuery',
                 ],
                 'fulltext_search_query2' => [
                     'name' => 'fulltext_search_query2',
                     'filterReference' => [
                         [
-                            'ref' => 'pid'
-                        ]
+                            'ref' => 'pid',
+                        ],
                     ],
-                    'type' => 'filteredQuery'
-                ]
+                    'type' => 'filteredQuery',
+                ],
             ],
             'filters' => [
                 'pid' => [
@@ -181,34 +182,34 @@ class BuilderTest extends TestCase
                     'filterReference' => [
                         [
                             'clause' => 'should',
-                            'ref' => 'pidm'
+                            'ref' => 'pidm',
                         ],
                         [
                             'clause' => 'should',
-                            'ref' => 'pidsh'
+                            'ref' => 'pidsh',
                         ],
                     ],
-                    'type' => 'boolFilter'
+                    'type' => 'boolFilter',
                 ],
                 'pidm' => [
                     'name' => 'pidm',
                     'field' => 'product_id',
                     'type' => 'rangeFilter',
                     'from' => '$pidm_from$',
-                    'to' => '$pidm_to$'
+                    'to' => '$pidm_to$',
                 ],
                 'pidsh' => [
                     'name' => 'pidsh',
                     'field' => 'product_id',
                     'type' => 'termFilter',
-                    'value' => '$pidsh$'
+                    'value' => '$pidsh$',
                 ],
             ],
             'from' => '10',
             'size' => '10',
             'query' => 'one_match_filters',
             'index' => 'catalogsearch_fulltext',
-            'aggregations' => []
+            'aggregations' => [],
         ];
         $requestName = 'rn';
         $this->requestBuilder->bind('fulltext_search_query', 'socks');

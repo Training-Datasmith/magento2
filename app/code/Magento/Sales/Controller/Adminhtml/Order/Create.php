@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
 use Magento\Backend\App\Action;
+use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Sales\Model\Order\Create\ValidateCoupon;
 
 /**
@@ -298,7 +299,7 @@ abstract class Create extends \Magento\Backend\App\Action
                                     continue;
                                 }
                             }
-                        //phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+                            //phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
                         } catch (\Throwable $e) {
                             // Intentionally swallow any exception during pre-check to allow normal add flow.
                         }
@@ -350,7 +351,7 @@ abstract class Create extends \Magento\Backend\App\Action
         $eventData = [
             'order_create_model' => $this->_getOrderCreateModel(),
             'request' => $this->getRequest()->getPostValue(),
-            'shipping_method' => $shippingMethod
+            'shipping_method' => $shippingMethod,
         ];
 
         $this->_eventManager->dispatch('adminhtml_sales_order_create_process_data', $eventData);

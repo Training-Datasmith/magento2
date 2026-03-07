@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\GraphQl\OrderCancellation;
 
 use Magento\Store\Test\Fixture\Store;
-use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**

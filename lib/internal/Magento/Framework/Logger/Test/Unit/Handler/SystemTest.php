@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,13 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Logger\Test\Unit\Handler;
 
-use DateTime;
 use Exception;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Logger\Handler\Exception as ExceptionHandler;
 use Magento\Framework\Logger\Handler\System;
 use Monolog\Level;
-use Monolog\Logger;
 use Monolog\LogRecord;
 use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;

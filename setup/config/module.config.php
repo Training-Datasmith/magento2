@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,5 +14,5 @@ return [
         'template_path_stack' => [
             'setup' => __DIR__ . '/../view',
         ],
-    ]
+    ],
 ];

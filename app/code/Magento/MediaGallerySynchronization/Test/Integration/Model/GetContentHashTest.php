@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGallerySynchronization\Model\GetContentHash;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for GetContentHash.
@@ -67,13 +68,13 @@ class GetContentHashTest extends TestCase
             [
                 'magento.jpg',
                 'magento_2.jpg',
-                true
+                true,
             ],
             [
                 'magento.jpg',
                 'magento_3.png',
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -103,7 +104,7 @@ class GetContentHashTest extends TestCase
                 DIRECTORY_SEPARATOR,
                 [
                     '_files',
-                    $filename
+                    $filename,
                 ]
             );
     }

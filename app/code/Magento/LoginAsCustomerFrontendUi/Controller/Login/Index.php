@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\LoginAsCustomerFrontendUi\Controller\Login;
 
+use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Customer\Model\Session;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\LoginAsCustomerApi\Api\AuthenticateCustomerBySecretInterface;
 use Psr\Log\LoggerInterface;
-use Magento\Checkout\Model\Session as CheckoutSession;
 
 /**
  * Login as Customer storefront login action

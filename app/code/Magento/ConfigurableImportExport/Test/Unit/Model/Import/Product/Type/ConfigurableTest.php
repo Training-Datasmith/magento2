@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,24 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableImportExport\Test\Unit\Model\Import\Product\Type;
 
-use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ProductTypes\ConfigInterface;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
-use Magento\ConfigurableImportExport;
+use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
 use Magento\ConfigurableImportExport\Model\Import\Product\Type\Configurable;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
 
@@ -130,7 +130,7 @@ class ConfigurableTest extends AbstractImportTestCase
             [
             'id' => 1,
             'attribute_set_name' => 'Default',
-            '_attribute_set' => 'Default'
+            '_attribute_set' => 'Default',
             ]
         );
 
@@ -175,7 +175,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 'getConnection',
                 'getAttrSetIdToName',
                 'getErrorAggregator',
-                'getAttributeOptions'
+                'getAttributeOptions',
             ]
         );
         $this->skuStorage = $this->createMock(SkuStorage::class);
@@ -183,7 +183,7 @@ class ConfigurableTest extends AbstractImportTestCase
 
         $this->params = [
             0 => $this->_entityModel,
-            1 => 'configurable'
+            1 => 'configurable',
         ];
 
         $this->select = $this->createPartialMock(
@@ -192,7 +192,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 'from',
                 'where',
                 'joinLeft',
-                'getConnection'
+                'getConnection',
             ]
         );
 
@@ -200,7 +200,7 @@ class ConfigurableTest extends AbstractImportTestCase
             Mysql::class,
             [
                 'setTestData', 'select', 'fetchAll', 'quoteInto', 'setQuoteIdentifierCallback',
-                'insert', 'insertOnDuplicate', 'delete'
+                'insert', 'insertOnDuplicate', 'delete',
             ]
         );
         $this->_connection->setTestData('select', $this->select);
@@ -224,7 +224,7 @@ class ConfigurableTest extends AbstractImportTestCase
             ResourceConnection::class,
             [
                 'getConnection',
-                'getTableName'
+                'getTableName',
                 ]
         );
         $this->resource->expects($this->any())->method('getConnection')->willReturn(
@@ -249,9 +249,9 @@ class ConfigurableTest extends AbstractImportTestCase
 
         $products = [];
         $testProducts = [
-            ['id' => 1, 'attribute_set_id' => 4, 'testattr2'=> 1, 'testattr3'=> 1],
-            ['id' => 2, 'attribute_set_id' => 4, 'testattr2'=> 1, 'testattr3'=> 1],
-            ['id' => 20, 'attribute_set_id' => 4, 'testattr2'=> 1, 'testattr3'=> 1]
+            ['id' => 1, 'attribute_set_id' => 4, 'testattr2' => 1, 'testattr3' => 1],
+            ['id' => 2, 'attribute_set_id' => 4, 'testattr2' => 1, 'testattr3' => 1],
+            ['id' => 20, 'attribute_set_id' => 4, 'testattr2' => 1, 'testattr3' => 1],
         ];
         foreach ($testProducts as $product) {
             $item = $this->createMock(DataObject::class);
@@ -280,7 +280,7 @@ class ConfigurableTest extends AbstractImportTestCase
             'testattr3v1' => '4',
             'testattr30v1' => '4',
             'testattr3v2' => '5',
-            'testattr3v3' => '6'
+            'testattr3v3' => '6',
         ]);
 
         $metadataPoolMock = $this->createMock(MetadataPool::class);
@@ -310,7 +310,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 'resourceHelper' => $resourceHelper,
                 'productColFac' => $this->productCollectionFactory,
                 'metadataPool' => $metadataPoolMock,
-                'skuStorage' => $this->skuStorage
+                'skuStorage' => $this->skuStorage,
             ]
         );
     }
@@ -342,7 +342,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'testSimple',
@@ -354,7 +354,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'simple',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'testSimpleToSkip',
@@ -366,7 +366,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'simple',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'configurableskuI22withoutLabels',
@@ -384,7 +384,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'configurableskuI22withoutVariations',
@@ -396,7 +396,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'configurableskuI22Duplicated',
@@ -424,7 +424,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             [
                 'sku' => 'testSimpleOld',
@@ -436,8 +436,8 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'simple',
-                '_product_websites' => 'website_1'
-            ]
+                '_product_websites' => 'website_1',
+            ],
         ];
     }
 
@@ -466,8 +466,8 @@ class ConfigurableTest extends AbstractImportTestCase
                 'options' => [
                     'attr2val1' => '6',
                     'attr2val2' => '7',
-                    'attr2val3' => '8'
-                ]
+                    'attr2val3' => '8',
+                ],
             ],
             'testattr3' => [
                 'id' => '132',
@@ -486,9 +486,9 @@ class ConfigurableTest extends AbstractImportTestCase
                 'options' => [
                     'testattr3v1' => '9',
                     'testattr3v2' => '10',
-                    'testattr3v3' => '11'
-                ]
-            ]
+                    'testattr3v3' => '11',
+                ],
+            ],
         ];
     }
 
@@ -504,52 +504,52 @@ class ConfigurableTest extends AbstractImportTestCase
             'configurableskuI22' => [
                 $this->productEntityLinkField => 1,
                 'type_id' => 'configurable',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'testconf2-attr2val1-testattr3v1' => [
                 $this->productEntityLinkField => 2,
                 'type_id' => 'simple',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'testconf2-attr2val1-testattr30v1' => [
                 $this->productEntityLinkField => 20,
                 'type_id' => 'simple',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'testconf2-attr2val1-testattr3v2' => [
                 $this->productEntityLinkField => 3,
                 'type_id' => 'simple',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'testSimple' => [
                 $this->productEntityLinkField => 4,
-                'type_id' => 'simple', 'attr_set_code' => 'Default'
+                'type_id' => 'simple', 'attr_set_code' => 'Default',
             ],
             'testSimpleToSkip' => [
                 $this->productEntityLinkField => 5,
                 'type_id' => 'simple',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'configurableskuI22withoutLabels' => [
                 $this->productEntityLinkField => 6,
                 'type_id' => 'configurable',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'configurableskuI22withoutVariations' => [
                 $this->productEntityLinkField => 7,
                 'type_id' => 'configurable',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'configurableskuI22Duplicated' => [
                 $this->productEntityLinkField => 8,
                 'type_id' => 'configurable',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
             'configurableskuI22BadPrice' => [
                 $this->productEntityLinkField => 9,
                 'type_id' => 'configurable',
-                'attr_set_code' => 'Default'
-            ]
+                'attr_set_code' => 'Default',
+            ],
         ]);
         $this->_entityModel->expects($this->any())
             ->method('getNewSku')
@@ -589,9 +589,9 @@ class ConfigurableTest extends AbstractImportTestCase
 
                 ['attribute_id' => 132, 'product_id' => 3, 'option_id' => 3, 'product_super_attribute_id' => 132],
                 ['attribute_id' => 132, 'product_id' => 4, 'option_id' => 4, 'product_super_attribute_id' => 132],
-                ['attribute_id' => 132, 'product_id' => 5, 'option_id' => 5, 'product_super_attribute_id' => 132]
+                ['attribute_id' => 132, 'product_id' => 5, 'option_id' => 5, 'product_super_attribute_id' => 132],
             ],
-            [] // Second call returns empty array
+            [], // Second call returns empty array
         ]);
 
         $bunch = $this->_getBunch();
@@ -606,7 +606,7 @@ class ConfigurableTest extends AbstractImportTestCase
             'testsimpleold' => [
                 $this->productEntityLinkField => 10,
                 'type_id' => 'simple',
-                'attr_set_code' => 'Default'
+                'attr_set_code' => 'Default',
             ],
         ];
         $this->_entityModel->expects($this->never())->method('getOldSku');
@@ -727,19 +727,19 @@ class ConfigurableTest extends AbstractImportTestCase
                         '_store' => null,
                         '_attribute_set' => 'Default',
                         '_type' => 'configurable',
-                        '_product_websites' => 'website_1'
+                        '_product_websites' => 'website_1',
                     ],
                     'super_attributes' => [
                         'testattr2' => ['options' => ['attr2val1' => 1]],
                         'testattr3' => [
                             'options' => [
                                 'testattr3v2' => 1,
-                                'testattr3v1=sx=sl' => 1
+                                'testattr3v1=sx=sl' => 1,
                             ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -762,8 +762,8 @@ class ConfigurableTest extends AbstractImportTestCase
                 'testattr2' => [
                     'options' => [
                         'attr2val1' => 1,
-                        'attr2val2' => 2
-                    ]
+                        'attr2val2' => 2,
+                    ],
                 ],
             ]
         );
@@ -804,7 +804,7 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
+                '_product_websites' => 'website_1',
             ],
             'nonDuplicateProduct' => [
                 'sku' => 'configurableNumericalSkuNonDuplicateVariation',
@@ -822,8 +822,8 @@ class ConfigurableTest extends AbstractImportTestCase
                 '_store' => null,
                 '_attribute_set' => 'Default',
                 '_type' => 'configurable',
-                '_product_websites' => 'website_1'
-            ]
+                '_product_websites' => 'website_1',
+            ],
         ];
     }
 

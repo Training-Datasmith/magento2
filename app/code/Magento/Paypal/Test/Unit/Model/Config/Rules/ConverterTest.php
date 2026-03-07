@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class ConverterTest extends TestCase
                                     [
                                         'event' => 'event0',
                                         'argument' => [],
-                                    ]
+                                    ],
                                 ],
                             ],
                             'payment_test_2' => [
@@ -96,7 +97,7 @@ class ConverterTest extends TestCase
                                     [
                                         'event' => 'event1',
                                         'argument' => [],
-                                    ]
+                                    ],
                                 ],
                                 'test-two' => [
                                     [
@@ -105,7 +106,7 @@ class ConverterTest extends TestCase
                                             'argument1' => 'argument1',
                                             'argument2' => 'argument2',
                                         ],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -139,7 +140,7 @@ class ConverterTest extends TestCase
                                     [
                                         'event' => 'event0',
                                         'argument' => [],
-                                    ]
+                                    ],
                                 ],
                             ],
                             'payment_test_2' => [
@@ -147,7 +148,7 @@ class ConverterTest extends TestCase
                                     [
                                         'event' => 'event1',
                                         'argument' => [],
-                                    ]
+                                    ],
                                 ],
                                 'test-two' => [
                                     [
@@ -163,13 +164,13 @@ class ConverterTest extends TestCase
                                             'argument1' => 'argument1',
                                             'argument2' => 'argument2',
                                         ],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

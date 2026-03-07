@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class LowLevelFrontendTest extends TestCase
         $expectedMetadata = [
             'expire' => 1234567890,
             'tags' => ['tag1', 'tag2'],
-            'mtime' => 1234567000
+            'mtime' => 1234567000,
         ];
 
         $symfonyMock = $this->createPartialMockWithReflection(

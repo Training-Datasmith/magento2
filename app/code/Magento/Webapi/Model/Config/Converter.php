@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -177,7 +178,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      */
     protected function convertVersion($url)
     {
-        return substr($url, 1, strpos($url, '/', 1)-1);
+        return substr($url, 1, strpos($url, '/', 1) - 1);
     }
 
     /**

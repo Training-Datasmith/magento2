@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class ClearWishlist implements ResolverInterface
                 },
                 $wishlistOutput->getErrors()
             ),
-            'wishlist' => $this->wishlistDataMapper->map($wishlistOutput->getWishlist())
+            'wishlist' => $this->wishlistDataMapper->map($wishlistOutput->getWishlist()),
         ];
     }
 

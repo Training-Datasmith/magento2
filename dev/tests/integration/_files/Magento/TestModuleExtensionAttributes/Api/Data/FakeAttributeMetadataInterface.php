@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ interface FakeAttributeMetadataInterface extends \Magento\Framework\Api\Metadata
     /**#@+
      * Constants used as keys of data array
      */
-    const ATTRIBUTE_CODE = 'attribute_code';
-    const STORE_LABEL = 'store_label';
-    const FRONTEND_LABEL = 'frontend_label';
-    const NOTE = 'note';
+    public const ATTRIBUTE_CODE = 'attribute_code';
+    public const STORE_LABEL = 'store_label';
+    public const FRONTEND_LABEL = 'frontend_label';
+    public const NOTE = 'note';
     /**#@-*/
 
     /**

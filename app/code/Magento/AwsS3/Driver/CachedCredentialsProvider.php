@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,17 +12,8 @@ use Aws\Credentials\CredentialProvider;
 
 class CachedCredentialsProvider
 {
-    /**
-     * @var CredentialsCache
-     */
-    private $magentoCacheAdapter;
-
-    /**
-     * @param CredentialsCache $magentoCacheAdapter
-     */
-    public function __construct(CredentialsCache $magentoCacheAdapter)
+    public function __construct(private readonly CredentialsCache $magentoCacheAdapter)
     {
-        $this->magentoCacheAdapter = $magentoCacheAdapter;
     }
 
     /**
@@ -29,7 +21,7 @@ class CachedCredentialsProvider
      *
      * @return callable
      */
-    public function get()
+    public function get(): mixed
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         return call_user_func(

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Tax\Model;
 
-use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\Api\AbstractServiceCollection;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Tax\Api\Data\TaxRuleInterface;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -30,25 +31,25 @@ class BundleSkuTest extends AbstractModifierTestCase
         $sourceMeta = [
             'bundle-items' => [
                 'children' => [
-                    BundleSku::CODE_SKU_TYPE => []
-                ]
-            ]
+                    BundleSku::CODE_SKU_TYPE => [],
+                ],
+            ],
         ];
         $skuTypeParams = [
             'valueMap' => [
                 'false' => '1',
-                'true' => '0'
+                'true' => '0',
             ],
             'validation' => [
-                'required-entry' => false
-            ]
+                'required-entry' => false,
+            ],
         ];
         $skuTypeMeta = [
             'bundle-items' => [
                 'children' => [
-                    BundleSku::CODE_SKU_TYPE => $skuTypeParams
-                ]
-            ]
+                    BundleSku::CODE_SKU_TYPE => $skuTypeParams,
+                ],
+            ],
         ];
 
         $this->arrayManagerMock->expects(static::any())
@@ -61,8 +62,8 @@ class BundleSkuTest extends AbstractModifierTestCase
                         null,
                         'children',
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $skuTypePath
-                    ]
+                        $skuTypePath,
+                    ],
                 ]
             );
         $this->arrayManagerMock->expects($this->once())

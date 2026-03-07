@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Laminas\Validator\ValidatorInterface;
  */
 interface HttpInterface
 {
-
     /**
      * Validates the uploaded files.
      *

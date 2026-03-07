@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -106,10 +107,10 @@ class ProductCustomAttributesTest extends TestCase
         $productId = 1;
         $attributeCode1 = 'description';
         $attributeCode2 = 'color';
-        
+
         $attributeMock1 = $this->createMock(AttributeInterface::class);
         $attributeMock1->method('getAttributeCode')->willReturn($attributeCode1);
-        
+
         $attributeMock2 = $this->createMock(AttributeInterface::class);
         $attributeMock2->method('getAttributeCode')->willReturn($attributeCode2);
 
@@ -121,7 +122,7 @@ class ProductCustomAttributesTest extends TestCase
             ->with([], ProductAttributeInterface::ENTITY_TYPE_CODE)
             ->willReturn([
                 'items' => [$attributeMock1, $attributeMock2],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
@@ -136,7 +137,7 @@ class ProductCustomAttributesTest extends TestCase
             ->with($productId)
             ->willReturn([
                 $attributeCode1 => 'Product description',
-                $attributeCode2 => 'Red'
+                $attributeCode2 => 'Red',
             ]);
 
         $this->getAttributeValueMock
@@ -145,7 +146,7 @@ class ProductCustomAttributesTest extends TestCase
             ->willReturnCallback(function ($entityType, $code, $value) {
                 return [
                     'code' => $code,
-                    'value' => $value
+                    'value' => $value,
                 ];
             });
 
@@ -174,7 +175,7 @@ class ProductCustomAttributesTest extends TestCase
     {
         $productId = 1;
         $attributeCode = 'category_ids';
-        
+
         $attributeMock = $this->createMock(AttributeInterface::class);
         $attributeMock->method('getAttributeCode')->willReturn($attributeCode);
 
@@ -184,7 +185,7 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'items' => [$attributeMock],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
@@ -195,14 +196,14 @@ class ProductCustomAttributesTest extends TestCase
             ->method('getProductDataById')
             ->with($productId)
             ->willReturn([
-                $attributeCode => ['2', '3', '4']
+                $attributeCode => ['2', '3', '4'],
             ]);
 
         $this->getAttributeValueMock
             ->method('execute')
             ->willReturn([
                 'code' => $attributeCode,
-                'value' => '2,3,4'
+                'value' => '2,3,4',
             ]);
 
         $result = $this->resolver->resolve(
@@ -228,7 +229,7 @@ class ProductCustomAttributesTest extends TestCase
     {
         $productId = 1;
         $attributeCode = 'gift_card_amounts';
-        
+
         $attributeMock = $this->createMock(AttributeInterface::class);
         $attributeMock->method('getAttributeCode')->willReturn($attributeCode);
 
@@ -238,7 +239,7 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'items' => [$attributeMock],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
@@ -251,21 +252,21 @@ class ProductCustomAttributesTest extends TestCase
                 'value_id' => 1,
                 'website_id' => 0,
                 'value' => 50.0000,
-                'website_value' => 50
+                'website_value' => 50,
             ],
             [
                 'value_id' => 2,
                 'website_id' => 0,
                 'value' => 100.0000,
-                'website_value' => 100
-            ]
+                'website_value' => 100,
+            ],
         ];
 
         $this->productDataProviderMock
             ->method('getProductDataById')
             ->with($productId)
             ->willReturn([
-                $attributeCode => $multiDimensionalArray
+                $attributeCode => $multiDimensionalArray,
             ]);
 
         $this->getAttributeValueMock
@@ -273,7 +274,7 @@ class ProductCustomAttributesTest extends TestCase
             ->willReturnCallback(function ($entityType, $code, $value) {
                 return [
                     'code' => $code,
-                    'value' => $value
+                    'value' => $value,
                 ];
             });
 
@@ -287,7 +288,7 @@ class ProductCustomAttributesTest extends TestCase
 
         $this->assertArrayHasKey('items', $result);
         $this->assertCount(1, $result['items']);
-        
+
         // The multi-dimensional array should be flattened to: 1,0,50,50,2,0,100,100
         $this->assertIsString($result['items'][0]['value']);
         $this->assertStringContainsString('1', $result['items'][0]['value']);
@@ -304,7 +305,7 @@ class ProductCustomAttributesTest extends TestCase
         $productId = 1;
         $attributeCode = 'custom_attribute';
         $filters = ['is_visible_on_front' => true];
-        
+
         $attributeMock = $this->createMock(AttributeInterface::class);
         $attributeMock->method('getAttributeCode')->willReturn($attributeCode);
 
@@ -316,7 +317,7 @@ class ProductCustomAttributesTest extends TestCase
             ->with($filters, ProductAttributeInterface::ENTITY_TYPE_CODE)
             ->willReturn([
                 'items' => [$attributeMock],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
@@ -326,14 +327,14 @@ class ProductCustomAttributesTest extends TestCase
         $this->productDataProviderMock
             ->method('getProductDataById')
             ->willReturn([
-                $attributeCode => 'test_value'
+                $attributeCode => 'test_value',
             ]);
 
         $this->getAttributeValueMock
             ->method('execute')
             ->willReturn([
                 'code' => $attributeCode,
-                'value' => 'test_value'
+                'value' => 'test_value',
             ]);
 
         $result = $this->resolver->resolve(
@@ -358,10 +359,10 @@ class ProductCustomAttributesTest extends TestCase
         $productId = 1;
         $existingAttributeCode = 'description';
         $nonExistentAttributeCode = 'non_existent';
-        
+
         $attributeMock1 = $this->createMock(AttributeInterface::class);
         $attributeMock1->method('getAttributeCode')->willReturn($existingAttributeCode);
-        
+
         $attributeMock2 = $this->createMock(AttributeInterface::class);
         $attributeMock2->method('getAttributeCode')->willReturn($nonExistentAttributeCode);
 
@@ -371,20 +372,20 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'items' => [$attributeMock1, $attributeMock2],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
             ->method('execute')
             ->willReturn([
                 $existingAttributeCode => 0,
-                $nonExistentAttributeCode => 1
+                $nonExistentAttributeCode => 1,
             ]);
 
         $this->productDataProviderMock
             ->method('getProductDataById')
             ->willReturn([
-                $existingAttributeCode => 'Product description'
+                $existingAttributeCode => 'Product description',
                 // non_existent attribute is not in product data
             ]);
 
@@ -393,7 +394,7 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'code' => $existingAttributeCode,
-                'value' => 'Product description'
+                'value' => 'Product description',
             ]);
 
         $result = $this->resolver->resolve(
@@ -419,8 +420,8 @@ class ProductCustomAttributesTest extends TestCase
         $errors = [
             [
                 'type' => 'ATTRIBUTE_NOT_FOUND',
-                'message' => 'Attribute not found'
-            ]
+                'message' => 'Attribute not found',
+            ],
         ];
 
         $this->productMock->method('getId')->willReturn($productId);
@@ -429,7 +430,7 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'items' => [],
-                'errors' => $errors
+                'errors' => $errors,
             ]);
 
         $this->filterCustomAttributeMock
@@ -461,7 +462,7 @@ class ProductCustomAttributesTest extends TestCase
     {
         $productId = 1;
         $attributeCode = 'empty_attribute';
-        
+
         $attributeMock = $this->createMock(AttributeInterface::class);
         $attributeMock->method('getAttributeCode')->willReturn($attributeCode);
 
@@ -471,7 +472,7 @@ class ProductCustomAttributesTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'items' => [$attributeMock],
-                'errors' => []
+                'errors' => [],
             ]);
 
         $this->filterCustomAttributeMock
@@ -481,14 +482,14 @@ class ProductCustomAttributesTest extends TestCase
         $this->productDataProviderMock
             ->method('getProductDataById')
             ->willReturn([
-                $attributeCode => null // Empty value
+                $attributeCode => null, // Empty value
             ]);
 
         $this->getAttributeValueMock
             ->method('execute')
             ->willReturn([
                 'code' => $attributeCode,
-                'value' => ''
+                'value' => '',
             ]);
 
         $result = $this->resolver->resolve(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class PreviewTest extends TestCase
                 'setDesignConfig',
                 'getDesignConfig',
                 'getProcessedTemplate',
-                'revertDesign'
+                'revertDesign',
             ]
         );
 
@@ -129,7 +130,7 @@ class PreviewTest extends TestCase
         $appState = $this->getMockBuilder(State::class)
             ->setConstructorArgs(
                 [
-                    $scopeConfig
+                    $scopeConfig,
                 ]
             )
             ->onlyMethods(['emulateAreaCode'])
@@ -156,12 +157,12 @@ class PreviewTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
 
@@ -171,7 +172,7 @@ class PreviewTest extends TestCase
             [
                 'context' => $context,
                 'maliciousCode' => $this->maliciousCode,
-                'emailFactory' => $emailFactory
+                'emailFactory' => $emailFactory,
             ]
         );
     }

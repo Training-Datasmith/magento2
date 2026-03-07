@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -29,5 +30,5 @@ interface ProductReaderInterface
      * @param string $sku
      * @return ProductInterface
      */
-    public function getProductBySku(string $sku) : ?ProductInterface;
+    public function getProductBySku(string $sku): ?ProductInterface;
 }

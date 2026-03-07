@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Model\ProductLink;
 
-use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductLink\Data\ListCriteria;
 use Magento\Catalog\Model\ProductLink\ProductLinkQuery;
 use Magento\Catalog\Model\ProductRepository;
@@ -63,7 +63,7 @@ class GroupedProductLinkQueryTest extends TestCase
         /** @var ListCriteria[] $criteriaList */
         $criteriaList = [
             new ListCriteria($sku, ['associated']),
-            new ListCriteria($sku, ['related'])
+            new ListCriteria($sku, ['related']),
         ];
 
         //Finding the list

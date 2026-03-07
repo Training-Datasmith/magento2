@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\System\Config\Fieldset;
 
 use Magento\Backend\Block\Template;

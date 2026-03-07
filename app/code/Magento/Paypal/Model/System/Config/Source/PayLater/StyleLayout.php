@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class StyleLayout implements OptionSourceInterface
     {
         return [
             ['value' => 'text', 'label' => __('Text')],
-            ['value' => 'flex', 'label' => __('Flex')]
+            ['value' => 'flex', 'label' => __('Flex')],
         ];
     }
 }

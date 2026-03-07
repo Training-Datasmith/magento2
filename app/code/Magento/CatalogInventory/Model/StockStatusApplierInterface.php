@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ namespace Magento\CatalogInventory\Model;
  */
 interface StockStatusApplierInterface
 {
-
     /**
      * Set flag, if the request is originated from SearchResultApplier
      *
@@ -32,5 +32,5 @@ interface StockStatusApplierInterface
      * @deprecated
      * @see \Magento\InventoryCatalog\Plugin\Catalog\Model\ResourceModel\Product\CollectionPlugin::beforeSetOrder
      */
-    public function hasSearchResultApplier() : bool;
+    public function hasSearchResultApplier(): bool;
 }

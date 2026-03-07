@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ItemLinks implements ResolverInterface
     ) {
         if (!$value['itemModel'] instanceof ItemInterface) {
             throw new LocalizedException(__('"itemModel" should be a "%instance" instance', [
-                'instance' => ItemInterface::class
+                'instance' => ItemInterface::class,
             ]));
         }
         /** @var ItemInterface $wishlistItem */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -9,19 +10,19 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Controller\Rest;
 
+use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
+use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterfaceFactory;
+use Magento\AsynchronousOperations\Model\ConfigInterface as WebApiAsyncConfig;
+use Magento\AsynchronousOperations\Model\MassSchedule;
 use Magento\Framework\Exception\BulkException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Webapi\Exception;
 use Magento\Framework\Webapi\Rest\Request;
-use Magento\Webapi\Controller\Rest\RequestProcessorInterface;
 use Magento\Framework\Webapi\Rest\Response as RestResponse;
+use Magento\Webapi\Controller\Rest\RequestProcessorInterface;
 use Magento\WebapiAsync\Controller\Rest\Asynchronous\InputParamsResolver;
-use Magento\AsynchronousOperations\Model\MassSchedule;
-use Magento\AsynchronousOperations\Model\ConfigInterface as WebApiAsyncConfig;
-use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterfaceFactory;
-use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
 
 /**
  * Responsible for dispatching single and bulk requests.
@@ -30,7 +31,7 @@ use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
  */
 class AsynchronousRequestProcessor implements RequestProcessorInterface
 {
-    public const PROCESSOR_PATH = "/^\\/async(\\/V.+)/";
+    public const PROCESSOR_PATH = '/^\\/async(\\/V.+)/';
     public const BULK_PROCESSOR_PATH = "/^\\/async\/bulk(\\/V.+)/";
 
     /**
@@ -97,7 +98,7 @@ class AsynchronousRequestProcessor implements RequestProcessorInterface
     public function process(Request $request)
     {
         $path = $request->getPathInfo();
-        $path = preg_replace($this->processorPath, "$1", $path);
+        $path = preg_replace($this->processorPath, '$1', $path);
         $request->setPathInfo(
             $path
         );

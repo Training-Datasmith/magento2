@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,13 +14,13 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\CustomerGraphQl\Model\Resolver\Customer as CustomerResolver;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\NewsletterGraphQl\Model\Resolver\IsSubscribed;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\ProviderInterface;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\Type as GraphQlResolverCache;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
+use Magento\NewsletterGraphQl\Model\Resolver\IsSubscribed;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
@@ -29,7 +30,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\ResolverCacheAbstract;
-use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -227,7 +227,7 @@ class CustomerTest extends ResolverCacheAbstract
         $cacheKeyParts = [
             GraphQlResolverCache::CACHE_TAG,
             $cacheKeyFactor,
-            sha1($cacheKeyQueryPayloadMetadata)
+            sha1($cacheKeyQueryPayloadMetadata),
         ];
         // strtoupper is called in \Magento\Framework\Cache\Frontend\Adapter\Zend::_unifyId
         return strtoupper(implode('_', $cacheKeyParts));
@@ -464,7 +464,7 @@ class CustomerTest extends ResolverCacheAbstract
             [
                 'firstname' => 'Customer1',
                 'email' => 'same_email@example.com',
-                'store_id' => '1' // default store
+                'store_id' => '1', // default store
             ]
         ),
         DataFixture(
@@ -666,7 +666,7 @@ class CustomerTest extends ResolverCacheAbstract
                 function (CustomerInterface $customer, $tokenString) {
                     // create new address because default billing address cannot be deleted
                     $this->graphQlMutation(
-                        $this->getCreateAddressMutation("4000 Polk St"),
+                        $this->getCreateAddressMutation('4000 Polk St'),
                         [],
                         '',
                         ['Authorization' => 'Bearer ' . $tokenString]
@@ -703,13 +703,13 @@ class CustomerTest extends ResolverCacheAbstract
 
                     $addressId = $result['customer']['addresses'][0]['id'];
                     $result = $this->graphQlMutation(
-                        $this->getUpdateAddressStreetMutation($addressId, "8000 New St"),
+                        $this->getUpdateAddressStreetMutation($addressId, '8000 New St'),
                         [],
                         '',
                         ['Authorization' => 'Bearer ' . $tokenString]
                     );
                     $this->assertEquals($addressId, $result['updateCustomerAddress']['id']);
-                    $this->assertEquals("8000 New St", $result['updateCustomerAddress']['street'][0]);
+                    $this->assertEquals('8000 New St', $result['updateCustomerAddress']['street'][0]);
                 },
             ],
         ];
@@ -822,7 +822,7 @@ MUTATIONDELETE;
         $cacheKeyParts = [
             GraphQlResolverCache::CACHE_TAG,
             $cacheKeyFactor,
-            sha1($cacheKeyQueryPayloadMetadata)
+            sha1($cacheKeyQueryPayloadMetadata),
         ];
 
         // strtoupper is called in \Magento\Framework\Cache\Frontend\Adapter\Zend::_unifyId

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -51,7 +53,7 @@ if (!$firstAttribute->getId()) {
                     'first_option_0' => ['First Option 1'],
                     'first_option_1' => ['First Option 2'],
                     'first_option_2' => ['First Option 3'],
-                    'first_option_3' => ['First Option 4']
+                    'first_option_3' => ['First Option 4'],
                 ],
                 'order' => ['first_option_0' => 1, 'first_option_1' => 2, 'first_option_2' => 3, 'first_option_3' => 4],
             ],

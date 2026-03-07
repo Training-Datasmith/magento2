@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Grid\Renderer;
 
 use Magento\Framework\App\ObjectManager;
@@ -14,7 +17,6 @@ use Magento\Framework\View\Helper\SecureHtmlRenderer;
  */
 class Multiaction extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Action
 {
-
     /**
      * @var SecureHtmlRenderer
      */

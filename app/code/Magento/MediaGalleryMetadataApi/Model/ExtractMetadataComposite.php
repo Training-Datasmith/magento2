@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ExtractMetadataComposite implements ExtractMetadataInterface
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => empty($keywords) ? null : array_unique($keywords)
+            'keywords' => empty($keywords) ? null : array_unique($keywords),
         ]);
     }
 }

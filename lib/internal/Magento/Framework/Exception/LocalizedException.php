@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Localized Exception
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;

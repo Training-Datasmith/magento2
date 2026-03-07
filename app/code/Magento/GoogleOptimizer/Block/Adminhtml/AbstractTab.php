@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Block\Adminhtml;
 
 abstract class AbstractTab extends \Magento\Backend\Block\Widget\Form implements

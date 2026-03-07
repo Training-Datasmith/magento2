@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Helper\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Helper\Product\ConfigurationPool;
 use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ConfigurationPoolTest extends TestCase
@@ -50,11 +51,11 @@ class ConfigurationPoolTest extends TestCase
         return [
             [
                 'productType' => 'simple',
-                'expectedResult' => 'simple'
+                'expectedResult' => 'simple',
             ],
             [
                 'productType' => 'custom',
-                'expectedResult' => 'default'
+                'expectedResult' => 'default',
             ],
         ];
     }

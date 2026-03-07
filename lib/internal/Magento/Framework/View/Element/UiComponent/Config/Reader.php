@@ -1,15 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config;
 
-use Magento\Framework\Filesystem;
 use Magento\Framework\Config\ConverterInterface;
-use Magento\Framework\Config\FileIteratorFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\Directory\ReadInterface;
 
 /**
  * Class Reader

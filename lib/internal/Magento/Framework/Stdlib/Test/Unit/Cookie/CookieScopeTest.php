@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class CookieScopeTest extends TestCase
     {
         $cookieScope = $this->createCookieScope();
         $expected = [
-            PublicCookieMetadata::KEY_SAME_SITE => 'Lax'
+            PublicCookieMetadata::KEY_SAME_SITE => 'Lax',
         ];
         $this->assertEquals($expected, $cookieScope->getPublicCookieMetadata()->__toArray());
     }
@@ -93,7 +94,7 @@ class CookieScopeTest extends TestCase
     {
         $cookieScope = $this->createCookieScope();
         $expected = [
-            CookieMetadata::KEY_SAME_SITE => 'Lax'
+            CookieMetadata::KEY_SAME_SITE => 'Lax',
         ];
         $this->assertEquals($expected, $cookieScope->getPublicCookieMetadata()->__toArray());
     }
@@ -124,7 +125,7 @@ class CookieScopeTest extends TestCase
                 SensitiveCookieMetadata::KEY_DOMAIN => 'default domain',
                 SensitiveCookieMetadata::KEY_HTTP_ONLY => true,
                 SensitiveCookieMetadata::KEY_SECURE => true,
-                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax'
+                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax',
             ],
             $cookieScope->getSensitiveCookieMetadata()->__toArray()
         );
@@ -141,7 +142,7 @@ class CookieScopeTest extends TestCase
             PublicCookieMetadata::KEY_DURATION => 'default duration',
             PublicCookieMetadata::KEY_HTTP_ONLY => 'default http',
             PublicCookieMetadata::KEY_SECURE => 'default secure',
-            SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax'
+            SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax',
         ];
         $public = $this->createPublicMetadata($defaultValues);
         $cookieScope = $this->createCookieScope(
@@ -156,7 +157,7 @@ class CookieScopeTest extends TestCase
             [
                 SensitiveCookieMetadata::KEY_HTTP_ONLY => true,
                 SensitiveCookieMetadata::KEY_SECURE => true,
-                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax'
+                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax',
             ],
             $cookieScope->getSensitiveCookieMetadata()->__toArray()
         );
@@ -216,7 +217,7 @@ class CookieScopeTest extends TestCase
                 SensitiveCookieMetadata::KEY_DOMAIN => 'override domain',
                 SensitiveCookieMetadata::KEY_HTTP_ONLY => true,
                 SensitiveCookieMetadata::KEY_SECURE => true,
-                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax'
+                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax',
             ],
             $cookieScope->getSensitiveCookieMetadata($override)->__toArray()
         );
@@ -240,7 +241,7 @@ class CookieScopeTest extends TestCase
             PublicCookieMetadata::KEY_DURATION => 'override duration',
             PublicCookieMetadata::KEY_HTTP_ONLY => 'override http',
             PublicCookieMetadata::KEY_SECURE => 'override secure',
-            PublicCookieMetadata::KEY_SAME_SITE => 'Strict'
+            PublicCookieMetadata::KEY_SAME_SITE => 'Strict',
         ];
         $public = $this->createPublicMetadata($defaultValues);
         $cookieScope = $this->createCookieScope(
@@ -281,7 +282,7 @@ class CookieScopeTest extends TestCase
             [
                 SensitiveCookieMetadata::KEY_HTTP_ONLY => true,
                 SensitiveCookieMetadata::KEY_SECURE => true,
-                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax'
+                SensitiveCookieMetadata::KEY_SAME_SITE => 'Lax',
             ],
             $cookieScope->getSensitiveCookieMetadata($this->createSensitiveMetadata())->__toArray()
         );

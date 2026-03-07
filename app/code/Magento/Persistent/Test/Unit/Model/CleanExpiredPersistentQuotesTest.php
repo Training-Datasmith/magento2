@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,14 +14,14 @@ use Magento\Persistent\Model\CleanExpiredPersistentQuotes;
 use Magento\Persistent\Model\ResourceModel\ExpiredPersistentQuotesCollection;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteRepository;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Quote\Model\ResourceModel\Quote\Collection;
+use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Store\Model\Website;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

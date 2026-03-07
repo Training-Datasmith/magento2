@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CatalogRule\Block\Adminhtml\Promo\Widget\Chooser;
 
 use Magento\Backend\Block\Widget\Grid;
@@ -154,7 +157,7 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
                 'values' => $this->_getSelectedProducts(),
                 'align' => 'center',
                 'index' => 'sku',
-                'use_index' => true
+                'use_index' => true,
             ]
         );
 
@@ -170,7 +173,7 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '60px',
                 'index' => 'type_id',
                 'type' => 'options',
-                'options' => $this->_catalogType->getOptionArray()
+                'options' => $this->_catalogType->getOptionArray(),
             ]
         );
 
@@ -185,7 +188,7 @@ class Sku extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '100px',
                 'index' => 'attribute_set_id',
                 'type' => 'options',
-                'options' => $sets
+                'options' => $sets,
             ]
         );
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax totals modification block. Can be used just as subblock of \Magento\Sales\Block\Order\Totals
  */
+
 namespace Magento\Tax\Block\Sales\Order;
 
 use Magento\Sales\Model\Order;
@@ -366,7 +369,7 @@ class Tax extends \Magento\Framework\View\Element\Template
      */
     private function getCouponDescription(): string
     {
-        $couponDescription = "";
+        $couponDescription = '';
 
         /** @var \Magento\Sales\Block\Order\Totals $parent */
         $parent = $this->getParentBlock();

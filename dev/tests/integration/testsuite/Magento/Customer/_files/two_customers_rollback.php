@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fixture for Customer List method.
  *

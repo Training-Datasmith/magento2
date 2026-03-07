@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +10,9 @@ namespace Magento\Downloadable\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException as CoreException;
 use Magento\Framework\File\Mime;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Exception\LocalizedException as CoreException;
 
 /**
  * Downloadable Products Download Helper

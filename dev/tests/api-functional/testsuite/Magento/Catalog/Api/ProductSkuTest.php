@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class ProductSkuTest extends WebapiAbstract
     #[
         DataFixture(ProductFixture::class, [
             'sku' => 'SKU:@&=$\,;1234',
-            'name' => 'Test product 1'
+            'name' => 'Test product 1',
         ])
     ]
     public function testGetProductDetailsWithSpecialCharsSKUAndQueryParams(): void
@@ -30,7 +31,7 @@ class ProductSkuTest extends WebapiAbstract
 
         $sku = 'SKU:@&=$\,;1234';
         $requestData = [
-            'assetId' => 'urn:aaid:aeme47fc635-c87e-4a7e-8eb1-f74b4b77866c' . $sku
+            'assetId' => 'urn:aaid:aeme47fc635-c87e-4a7e-8eb1-f74b4b77866c' . $sku,
         ];
         $serviceInfo = [
             'rest' => [

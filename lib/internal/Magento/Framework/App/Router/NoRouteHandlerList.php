@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * No route handlers retriever
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Router;
 
 class NoRouteHandlerList

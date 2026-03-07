@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Quote;
 
-use Magento\Quote\Api\Data\TotalSegmentExtensionFactory;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\App\ObjectManager;
+use Magento\Quote\Api\Data\TotalSegmentExtensionFactory;
 
 class GrandTotalDetailsPlugin
 {

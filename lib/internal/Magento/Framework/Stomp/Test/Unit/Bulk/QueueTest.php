@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -48,12 +49,12 @@ class QueueTest extends TestCase
         $this->stompClientFactory
             ->method('create')
             ->willReturn($this->stompClient);
-            
+
         $this->communicationConfig
             ->method('getTopic')
             ->with('some.topic')
             ->willReturn([
-                CommunicationConfigInterface::TOPIC_IS_SYNCHRONOUS => false
+                CommunicationConfigInterface::TOPIC_IS_SYNCHRONOUS => false,
             ]);
     }
 
@@ -61,7 +62,7 @@ class QueueTest extends TestCase
     {
         $envelopes = [
             $this->createEnvelopeMock('{"bulk": 1}', ['persistent' => true]),
-            $this->createEnvelopeMock('{"bulk": 2}', ['persistent' => true])
+            $this->createEnvelopeMock('{"bulk": 2}', ['persistent' => true]),
         ];
 
         $callHistory = [];
@@ -73,7 +74,7 @@ class QueueTest extends TestCase
                 $callHistory[] = [
                     'queue' => $queueName,
                     'body' => $message->getBody(),
-                    'headers' => $message->getHeaders()
+                    'headers' => $message->getHeaders(),
                 ];
             });
 

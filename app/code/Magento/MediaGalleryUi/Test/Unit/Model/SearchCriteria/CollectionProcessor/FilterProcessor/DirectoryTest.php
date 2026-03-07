@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Api\Filter;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\DB\Select;
 use Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\Directory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -144,32 +145,32 @@ class DirectoryTest extends TestCase
         return [
             'lowercase_directory' => [
                 'directoryValue' => 'testing',
-                'expectedRegexPattern' => '^testing/[^\/]*$'
+                'expectedRegexPattern' => '^testing/[^\/]*$',
             ],
             'uppercase_directory' => [
                 'directoryValue' => 'TESTING',
-                'expectedRegexPattern' => '^TESTING/[^\/]*$'
+                'expectedRegexPattern' => '^TESTING/[^\/]*$',
             ],
             'mixed_case_directory' => [
                 'directoryValue' => 'Testing',
-                'expectedRegexPattern' => '^Testing/[^\/]*$'
+                'expectedRegexPattern' => '^Testing/[^\/]*$',
             ],
             'directory_with_numbers' => [
                 'directoryValue' => 'Test123',
-                'expectedRegexPattern' => '^Test123/[^\/]*$'
+                'expectedRegexPattern' => '^Test123/[^\/]*$',
             ],
             'directory_with_special_chars' => [
                 'directoryValue' => 'Test-Dir_001',
-                'expectedRegexPattern' => '^Test-Dir_001/[^\/]*$'
+                'expectedRegexPattern' => '^Test-Dir_001/[^\/]*$',
             ],
             'nested_directory_path' => [
                 'directoryValue' => 'parent/child',
-                'expectedRegexPattern' => '^parent/child/[^\/]*$'
+                'expectedRegexPattern' => '^parent/child/[^\/]*$',
             ],
             'empty_directory' => [
                 'directoryValue' => '',
-                'expectedRegexPattern' => '^/[^\/]*$'
-            ]
+                'expectedRegexPattern' => '^/[^\/]*$',
+            ],
         ];
     }
 }

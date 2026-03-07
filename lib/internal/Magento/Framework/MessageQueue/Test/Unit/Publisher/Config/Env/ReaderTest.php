@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,16 +47,16 @@ class ReaderTest extends TestCase
             'topics' => [
                 'inventory.counter.updated' => [
                     'disabled' => false,
-                    'publisher' => 'amqp-magento'
+                    'publisher' => 'amqp-magento',
                 ],
             ],
             'publishers' => [
                 'amqp-magento' => [
                     'name' => 'amqp-magento',
                     'connection' => 'db',
-                    'exchange' => 'magento-db'
+                    'exchange' => 'magento-db',
                 ],
-            ]
+            ],
 
         ];
         $reader = $this->getMockBuilder(CompositeReader::class)
@@ -67,7 +68,7 @@ class ReaderTest extends TestCase
             Data::class,
             [
                 'cache' => $cache,
-                'reader' => $reader
+                'reader' => $reader,
             ]
         );
 
@@ -76,7 +77,7 @@ class ReaderTest extends TestCase
             $this->configDataMock,
             [
                 'amqp-magento' => 'amqp',
-                'db-magento-db' => 'db'
+                'db-magento-db' => 'db',
             ]
         );
     }
@@ -102,11 +103,11 @@ class ReaderTest extends TestCase
                     'amqp' => [
                         'name' => 'db',
                         'exchange' => 'magento-db',
-                        'disabled' => false
-                    ]
+                        'disabled' => false,
+                    ],
                 ],
-                'disabled' => false
-            ]
+                'disabled' => false,
+            ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
     }

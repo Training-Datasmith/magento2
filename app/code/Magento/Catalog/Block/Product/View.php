@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -183,7 +186,7 @@ class View extends AbstractProduct implements \Magento\Framework\DataObject\Iden
             $tierPriceData = [
                 'qty' => $tierPrice['price_qty'],
                 'price' => $tierPrice['price']->getValue(),
-                'basePrice' => $tierPrice['price']->getBaseAmount()
+                'basePrice' => $tierPrice['price']->getBaseAmount(),
             ];
             $tierPrices[] = $tierPriceData;
         }
@@ -192,7 +195,7 @@ class View extends AbstractProduct implements \Magento\Framework\DataObject\Iden
             $config = [
                 'productId' => $product->getId(),
                 'priceFormat' => $this->_localeFormat->getPriceFormat(),
-                'tierPrices' => $tierPrices
+                'tierPrices' => $tierPrices,
             ];
             return $this->_jsonEncoder->encode($config);
         }
@@ -203,23 +206,23 @@ class View extends AbstractProduct implements \Magento\Framework\DataObject\Iden
             'prices'      => [
                 'baseOldPrice' => [
                     'amount'      => $priceInfo->getPrice('regular_price')->getAmount()->getBaseAmount() * 1,
-                    'adjustments' => []
+                    'adjustments' => [],
                 ],
                 'oldPrice'   => [
                     'amount'      => $priceInfo->getPrice('regular_price')->getAmount()->getValue() * 1,
-                    'adjustments' => []
+                    'adjustments' => [],
                 ],
                 'basePrice'  => [
                     'amount'      => $priceInfo->getPrice('final_price')->getAmount()->getBaseAmount() * 1,
-                    'adjustments' => []
+                    'adjustments' => [],
                 ],
                 'finalPrice' => [
                     'amount'      => $priceInfo->getPrice('final_price')->getAmount()->getValue() * 1,
-                    'adjustments' => []
-                ]
+                    'adjustments' => [],
+                ],
             ],
             'idSuffix'    => '_clone',
-            'tierPrices'  => $tierPrices
+            'tierPrices'  => $tierPrices,
         ];
 
         $responseObject = new \Magento\Framework\DataObject();

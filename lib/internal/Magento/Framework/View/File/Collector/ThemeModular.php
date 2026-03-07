@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\File\Collector;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -88,7 +91,7 @@ class ThemeModular implements CollectorInterface
         $files = $themeDir->search("{$namespace}_{$module}/{$this->subDir}$filePath");
         $result = [];
         $pattern = "#/(?<moduleName>[^/]+)/{$this->subDir}"
-            . $this->pathPatternHelper->translatePatternFromGlob($filePath) . "$#i";
+            . $this->pathPatternHelper->translatePatternFromGlob($filePath) . '$#i';
         foreach ($files as $file) {
             $filename = $themeDir->getAbsolutePath($file);
             if (!preg_match($pattern, $filename, $matches)) {

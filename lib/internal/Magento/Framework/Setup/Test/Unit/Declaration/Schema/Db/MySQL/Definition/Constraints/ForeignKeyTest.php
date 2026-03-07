@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Constraints\Reference;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for Foreign Key constraint definition.
@@ -48,7 +49,7 @@ class ForeignKeyTest extends TestCase
         $this->foreignKey = $this->objectManager->getObject(
             ForeignKey::class,
             [
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -143,8 +144,8 @@ class ForeignKeyTest extends TestCase
                         'column' => 'col_name',
                         'referenceTable' => 'ref_table',
                         'referenceColumn' => 'ref_col_name',
-                        'onDelete' => 'CASCADE'
-                    ]
+                        'onDelete' => 'CASCADE',
+                    ],
                 ],
             ],
             [
@@ -160,9 +161,9 @@ class ForeignKeyTest extends TestCase
                         'column' => 'col_name',
                         'referenceTable' => 'ref_table',
                         'referenceColumn' => 'ref_col_name',
-                        'onDelete' => 'NO ACTION'
-                    ]
-                ]
+                        'onDelete' => 'NO ACTION',
+                    ],
+                ],
             ],
             [
                 'definition' => 'CREATE TABLE `table_name` ('
@@ -177,9 +178,9 @@ class ForeignKeyTest extends TestCase
                         'column' => 'column_name',
                         'referenceTable' => 'ref_table',
                         'referenceColumn' => 'ref_col_name',
-                        'onDelete' => 'SET DEFAULT'
-                    ]
-                ]
+                        'onDelete' => 'SET DEFAULT',
+                    ],
+                ],
             ],
             [
                 'definition' => 'CREATE TABLE `table_name` ('
@@ -194,9 +195,9 @@ class ForeignKeyTest extends TestCase
                         'column' => 'column_name',
                         'referenceTable' => 'ref_table',
                         'referenceColumn' => 'ref_col_name',
-                        'onDelete' => 'SET NULL'
-                    ]
-                ]
+                        'onDelete' => 'SET NULL',
+                    ],
+                ],
             ],
             [
                 'definition' => 'CREATE TABLE `table_name` ('
@@ -211,9 +212,9 @@ class ForeignKeyTest extends TestCase
                         'column' => 'column_name',
                         'referenceTable' => 'ref_table',
                         'referenceColumn' => 'ref_col_name',
-                        'onDelete' => 'RESTRICT'
-                    ]
-                ]
+                        'onDelete' => 'RESTRICT',
+                    ],
+                ],
             ],
         ];
     }

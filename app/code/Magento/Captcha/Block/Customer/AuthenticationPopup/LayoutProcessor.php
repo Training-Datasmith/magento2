@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Copyright 2025 Adobe.
  * All Rights Reserved.
  */
 
 declare(strict_types=1);
+
 namespace Magento\Captcha\Block\Customer\AuthenticationPopup;
 
 use Magento\Captcha\Helper\Data as HelperCaptcha;
@@ -33,7 +35,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'component' => 'Magento_Captcha/js/view/checkout/loginCaptcha',
                 'displayArea' => 'additional-login-form-fields',
                 'formId' => 'user_login',
-                'configSource' => 'checkout'
+                'configSource' => 'checkout',
             ];
         }
         return $jsLayout;

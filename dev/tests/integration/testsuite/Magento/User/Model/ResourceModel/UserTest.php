@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -131,7 +132,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         $token = 'randomstring';
         $username = $this->random->getRandomString(6);
-        $email = $username . "@example.com";
+        $email = $username . '@example.com';
         $password = uniqid() . $this->random->getRandomString(10);
         $userModel = Bootstrap::getObjectManager()->get(User::class);
 
@@ -142,7 +143,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
                 'firstname' => 'John',
                 'lastname' => 'Doe',
                 'password' => $password,
-                'username' => $username
+                'username' => $username,
             ]
         )->save();
 

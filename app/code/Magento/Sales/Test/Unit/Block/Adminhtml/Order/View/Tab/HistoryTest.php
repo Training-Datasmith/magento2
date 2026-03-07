@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class HistoryTest extends TestCase
                 'adminHelper' => $this->adminHelperMock,
                 'registry' => $this->coreRegistryMock,
                 'context' => $this->contextMock,
-                'localeDate' => $this->localeDateMock
+                'localeDate' => $this->localeDateMock,
             ]
         );
     }
@@ -127,7 +128,7 @@ class HistoryTest extends TestCase
 
     public function testGetItemCreatedAtEmpty()
     {
-        $item = ['title' => "Test" ];
+        $item = ['title' => 'Test' ];
 
         $this->localeDateMock->expects($this->never())->method('formatDateTime');
         $this->assertEquals('', $this->commentsHistory->getItemCreatedAt($item));

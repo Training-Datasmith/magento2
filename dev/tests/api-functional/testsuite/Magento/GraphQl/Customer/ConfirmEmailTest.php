@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -68,9 +69,9 @@ QUERY;
             [
                 'confirmEmail' => [
                     'customer' => [
-                        'email' => 'customer@example.com'
-                    ]
-                ]
+                        'email' => 'customer@example.com',
+                    ],
+                ],
             ],
             $response
         );

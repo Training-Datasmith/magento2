@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesSequence\Model;
 
 /**
@@ -29,7 +32,7 @@ class Config
         'startValue' => 1,
         'step' => 1,
         'warningValue' => 4294966295,
-        'maxValue' => 4294967295
+        'maxValue' => 4294967295,
     ];
 
     /**

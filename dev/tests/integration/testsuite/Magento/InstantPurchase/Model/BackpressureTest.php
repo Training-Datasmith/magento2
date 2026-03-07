@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Framework\App\Backpressure\ContextInterface;
 use Magento\Framework\App\Backpressure\IdentityProviderInterface;
 use Magento\Framework\App\Backpressure\SlidingWindow\LimitConfigManagerInterface;
 use Magento\Framework\App\Request\Backpressure\ContextFactory;
+use Magento\InstantPurchase\Controller\Button\PlaceOrder;
 use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\InstantPurchase\Controller\Button\PlaceOrder;
 
 class BackpressureTest extends TestCase
 {
@@ -62,13 +63,13 @@ class BackpressureTest extends TestCase
             'guest' => [
                 ContextInterface::IDENTITY_TYPE_IP,
                 '127.0.0.1',
-                50
+                50,
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
                 '42',
-                100
-            ]
+                100,
+            ],
         ];
     }
 

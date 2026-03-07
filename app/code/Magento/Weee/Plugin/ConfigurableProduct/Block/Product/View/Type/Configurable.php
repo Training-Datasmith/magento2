@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Weee\Plugin\ConfigurableProduct\Block\Product\View\Type;
 
+use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Block\Product\View\Type\Configurable as ConfigurableBlock;
 use Magento\Framework\Json\DecoderInterface;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Weee\Helper\Data as WeeeHelper;
-use Magento\Catalog\Model\Product;
 
 /**
  * Plugin to add FPT data to configurable product JSON config
@@ -145,10 +146,10 @@ class Configurable
 
         // Format each attribute
         $formattedAttrs = array_map(
-            fn($attr) => [
+            fn ($attr) => [
                 'name' => $attr['name'],
                 'amount' => $attr['amount'],
-                'formatted' => $this->formatPrice($attr['amount'], $priceFormat)
+                'formatted' => $this->formatPrice($attr['amount'], $priceFormat),
             ],
             $weeeData['attributes']
         );

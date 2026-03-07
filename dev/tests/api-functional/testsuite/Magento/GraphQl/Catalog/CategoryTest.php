@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -521,7 +522,7 @@ QUERY;
         /** @var CategoryInterface $category */
         $category = $categoryCollection->getFirstItem();
         $categoryId = $category->getId();
-        $this->assertNotEmpty($categoryId, "Preconditions failed: category is not available.");
+        $this->assertNotEmpty($categoryId, 'Preconditions failed: category is not available.');
         $query = <<<QUERY
 {
   category(id: {$categoryId}) {
@@ -544,10 +545,10 @@ QUERY;
                     'items' => [
                         ['sku' => '12345'],
                         ['sku' => 'simple-4'],
-                        ['sku' => 'simple']
-                    ]
-                ]
-            ]
+                        ['sku' => 'simple'],
+                    ],
+                ],
+            ],
         ];
         $this->assertEquals($expectedResponse, $response);
     }
@@ -563,7 +564,7 @@ QUERY;
         /** @var CategoryInterface $category */
         $category = $categoryCollection->getFirstItem();
         $categoryId = $category->getId();
-        $this->assertNotEmpty($categoryId, "Preconditions failed: category is not available.");
+        $this->assertNotEmpty($categoryId, 'Preconditions failed: category is not available.');
         $query = <<<QUERY
 {
   category(id: {$categoryId}) {
@@ -587,21 +588,21 @@ QUERY;
                     [
                         'category_id' => 3,
                         'category_uid' => base64_encode('3'),
-                        'category_name' => "Category 1",
+                        'category_name' => 'Category 1',
                         'category_level' => 2,
-                        'category_url_key' => "category-1",
-                        'category_url_path' => "category-1"
+                        'category_url_key' => 'category-1',
+                        'category_url_path' => 'category-1',
                     ],
                     [
                         'category_id' => 4,
                         'category_uid' => base64_encode('4'),
-                        'category_name' => "Category 1.1",
+                        'category_name' => 'Category 1.1',
                         'category_level' => 3,
-                        'category_url_key' => "category-1-1",
-                        'category_url_path' => "category-1/category-1-1"
+                        'category_url_key' => 'category-1-1',
+                        'category_url_path' => 'category-1/category-1-1',
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertEquals($expectedResponse, $response);
     }
@@ -725,10 +726,10 @@ QUERY;
                     [
                         'category_id' => 3,
                         'category_uid' => base64_encode('3'),
-                        'category_name' => "Category 1",
-                    ]
-                ]
-            ]
+                        'category_name' => 'Category 1',
+                    ],
+                ],
+            ],
         ];
         $this->assertEquals($expectedResponse, $response);
     }
@@ -785,16 +786,16 @@ QUERY;
     {
         return [
             'default_filename_strategy' => [
-                'imagePrefix' => null
+                'imagePrefix' => null,
             ],
             'just_filename_strategy' => [
-                'imagePrefix' => ''
+                'imagePrefix' => '',
             ],
             'with_pub_media_strategy' => [
-                'imagePrefix' => '/media/catalog/category/'
+                'imagePrefix' => '/media/catalog/category/',
             ],
             'catalog_category_strategy' => [
-                'imagePrefix' => 'catalog/category/'
+                'imagePrefix' => 'catalog/category/',
             ],
         ];
     }
@@ -811,25 +812,25 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
-                ]
+                ],
             ],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
             ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()],
@@ -854,7 +855,7 @@ QUERY;
             'new_from_date',
             'new_to_date',
             'options_container',
-            'special_price'
+            'special_price',
         ];
         foreach ($eavAttributes as $eavAttribute) {
             $this->assertArrayHasKey($eavAttribute, $actualResponse);

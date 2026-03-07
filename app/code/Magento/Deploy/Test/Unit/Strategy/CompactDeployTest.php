@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class CompactDeployTest extends TestCase
     {
         $this->options = [
             'opt1' => '',
-            'opt2' => ''
+            'opt2' => '',
         ];
 
         $virtualPackage = $this->createMock(Package::class);
@@ -85,7 +86,7 @@ class CompactDeployTest extends TestCase
 
         $this->packages = [
             'virtual' => $virtualPackage,
-            'real' => $realPackage
+            'real' => $realPackage,
         ];
         $this->packagePool = $this->createPartialMock(PackagePool::class, ['getPackagesForDeployment']);
         $this->packagePool->expects($this->once())

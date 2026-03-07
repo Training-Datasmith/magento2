@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * \Magento\Framework\DataObject\Copy\Config
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DataObject\Test\Unit\Copy;
 
 use Magento\Framework\DataObject\Copy\Config;

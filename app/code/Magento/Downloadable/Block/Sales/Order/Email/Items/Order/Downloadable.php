@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -103,7 +105,7 @@ class Downloadable extends \Magento\Sales\Block\Order\Email\Items\Order\DefaultO
                 'id' => $item->getLinkHash(),
                 '_scope' => $this->getOrder()->getStore(),
                 '_secure' => true,
-                '_nosid' => true
+                '_nosid' => true,
             ]
         );
         return $url;

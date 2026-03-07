@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Block;
 
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Payment\Model\Config;
-use Magento\Vault\Model\Ui\Adminhtml\TokensConfigProvider;
 use Magento\Payment\Model\CcConfigProvider;
+use Magento\Vault\Model\Ui\Adminhtml\TokensConfigProvider;
 
 /**
  * Class Form

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -35,7 +37,7 @@ class EavSetupTest extends \PHPUnit\Framework\TestCase
      *
      * @param string $attributeCode
      *
-     * 
+     *
      */
     #[DataProvider('addAttributeDataProvider')]
     public function testAddAttribute($attributeCode)
@@ -67,7 +69,7 @@ class EavSetupTest extends \PHPUnit\Framework\TestCase
      *
      * @param string|null $attributeCode
      *
-     * 
+     *
      */
     #[DataProvider('addAttributeThrowExceptionDataProvider')]
     public function testAddAttributeThrowException($attributeCode)
@@ -100,7 +102,7 @@ class EavSetupTest extends \PHPUnit\Framework\TestCase
      *
      * @param string|null $attributeCode
      *
-     * 
+     *
      */
     #[DataProvider('addInvalidAttributeThrowExceptionDataProvider')]
     public function testAddInvalidAttributeThrowException($attributeCode)

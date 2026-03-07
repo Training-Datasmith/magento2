@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,37 +14,26 @@ namespace Magento\AsynchronousOperations\Ui\Component\AdminNotification;
 class Plugin
 {
     /**
-     * @var \Magento\Framework\AuthorizationInterface
-     */
-    private $authorization;
-
-    /**
      * @var bool
      */
     private $isAllowed;
 
     /**
      * Plugin constructor.
-     * @param \Magento\Framework\AuthorizationInterface $authorization
      */
-    public function __construct(
-        \Magento\Framework\AuthorizationInterface $authorization
-    ) {
-        $this->authorization = $authorization;
+    public function __construct(private readonly \Magento\Framework\AuthorizationInterface $authorization)
+    {
     }
 
     /**
      * Prepares Meta
      *
-     * @param \Magento\AdminNotification\Ui\Component\DataProvider\DataProvider $dataProvider
-     * @param array $result
-     * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterGetMeta(
         \Magento\AdminNotification\Ui\Component\DataProvider\DataProvider $dataProvider,
-        $result
-    ) {
+        array $result
+    ): array {
         if (!isset($this->isAllowed)) {
             $this->isAllowed = $this->authorization->isAllowed(
                 'Magento_Logging::system_magento_logging_bulk_operations'

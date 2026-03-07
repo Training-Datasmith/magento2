@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Plugin;
 
-use Magento\Catalog\Model\Product;
-use Magento\Framework\Message\MessageInterface;
-use Magento\Framework\Message\ManagerInterface;
 use Magento\Catalog\Block\Product\ImageFactory;
+use Magento\Catalog\Model\Product;
 use Magento\Framework\App\AreaList;
 use Magento\Framework\App\State;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\Message\MessageInterface;
 
 /**
  * Load necessary design files for GraphQL

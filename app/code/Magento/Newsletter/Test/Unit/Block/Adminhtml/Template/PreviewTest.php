@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,13 +14,10 @@ use Magento\Email\Model\AbstractTemplate;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\State;
-use Magento\Framework\App\TemplateTypesInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Filter\Input\MaliciousCode;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\DesignInterface;
 use Magento\Newsletter\Block\Adminhtml\Template\Preview;
@@ -27,8 +25,9 @@ use Magento\Newsletter\Model\Subscriber;
 use Magento\Newsletter\Model\SubscriberFactory;
 use Magento\Newsletter\Model\Template;
 use Magento\Newsletter\Model\TemplateFactory;
-use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Magento\Newsletter\Block\Adminhtml\Template\Preview
@@ -73,7 +72,7 @@ class PreviewTest extends TestCase
 
     /** @var Session|MockObject */
     protected $backendSessionMock;
-    
+
     /** @var Escaper|MockObject */
     private $escaperMock;
 
@@ -92,17 +91,17 @@ class PreviewTest extends TestCase
             Session::class,
             ['hasPreviewData']
         );
-        
-         $this->templateMock = $this->createPartialMockWithReflection(
-             Template::class,
-             [
-                 'setTemplateType', 'setTemplateText', 'setTemplateStyles', 'isPlain',
-                 'emulateDesign', 'revertDesign', 'getProcessedTemplate', 'load'
-             ]
-         );
+
+        $this->templateMock = $this->createPartialMockWithReflection(
+            Template::class,
+            [
+                'setTemplateType', 'setTemplateText', 'setTemplateStyles', 'isPlain',
+                'emulateDesign', 'revertDesign', 'getProcessedTemplate', 'load',
+            ]
+        );
         $this->escaperMock = $this->createMock(Escaper::class);
         $this->escaperMock->method('escapeHtml')
-            ->willReturnCallback(fn($string) => $string);
+            ->willReturnCallback(fn ($string) => $string);
 
         $eventManager = $this->createMock(ManagerInterface::class);
         $scopeConfig = $this->createMock(ScopeConfigInterface::class);
@@ -193,7 +192,7 @@ class PreviewTest extends TestCase
             [
                 ['id', null, 2],
                 ['store', null, 1],
-                ['subscriber', null, 3]
+                ['subscriber', null, 3],
             ]
         );
         $subscriber = $this->createMock(Subscriber::class);
@@ -207,15 +206,15 @@ class PreviewTest extends TestCase
                 Template::DEFAULT_DESIGN_AREA,
                 [
                     $this->templateMock,
-                    'getProcessedTemplate'
+                    'getProcessedTemplate',
                 ],
                 [
                     [
                         'subscriber' => $subscriber,
                         'subscriber_data' => [
-                            'unsubscription_link' => $subscriber->getUnsubscriptionLink()
-                        ]
-                    ]
+                            'unsubscription_link' => $subscriber->getUnsubscriptionLink(),
+                        ],
+                    ],
                 ]
             )
             ->willReturn(self::PROCESSED_TEMPLATE_TEXT);

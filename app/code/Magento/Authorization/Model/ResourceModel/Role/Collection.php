@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model\ResourceModel\Role;
 
 use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
@@ -32,7 +35,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param string $userType
      * @return $this
      */
-    public function setUserFilter($userId, $userType)
+    public function setUserFilter($userId, $userType): static
     {
         $this->addFieldToFilter('user_id', $userId);
         $this->addFieldToFilter('user_type', $userType);
@@ -44,7 +47,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      *
      * @return $this
      */
-    public function setRolesFilter()
+    public function setRolesFilter(): static
     {
         $this->addFieldToFilter('role_type', RoleGroup::ROLE_TYPE);
         return $this;

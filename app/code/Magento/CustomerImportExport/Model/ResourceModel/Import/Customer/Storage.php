@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CustomerImportExport\Model\ResourceModel\Import\Customer;
 
 use Magento\Customer\Model\Config\Share;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,5 +13,4 @@ use Magento\Framework\Jwt\Jws\AbstractJws;
 
 class UnsecuredJwt extends AbstractJws implements UnsecuredJwtInterface
 {
-
 }

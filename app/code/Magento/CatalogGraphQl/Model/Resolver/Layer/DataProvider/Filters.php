@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\Model\Resolver\Layer\DataProvider;
 
 use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
-use Magento\CatalogGraphQl\Model\Resolver\Layer\FiltersProvider;
 use Magento\Catalog\Model\Layer\Filter\Item;
+use Magento\CatalogGraphQl\Model\Resolver\Layer\FiltersProvider;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
@@ -36,7 +37,7 @@ class Filters
     ) {
         $this->filtersProvider = $filtersProvider;
         $this->mappings = [
-            'Category' => 'category'
+            'Category' => 'category',
         ];
     }
 
@@ -48,7 +49,7 @@ class Filters
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getData(string $layerType, ?array $attributesToFilter = null) : array
+    public function getData(string $layerType, ?array $attributesToFilter = null): array
     {
         $filtersData = [];
         /** @var AbstractFilter $filter */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ declare(strict_types=1);
  * @group legacy
  * @group disabled
  */
+
 namespace Magento\Framework\Cache\Test\Unit\Backend\Decorator;
 
 use Magento\Framework\Cache\Backend\Decorator\Compression;

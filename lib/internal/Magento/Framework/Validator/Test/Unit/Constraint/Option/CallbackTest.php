@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Validator\Test\Unit\Constraint\Option;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Validator\Constraint\Option\Callback;
 use Magento\Framework\Validator\Test\Unit\Test\Callback as TestCallback;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test case for \Magento\Framework\Validator\Constraint\Option\Callback
@@ -23,7 +24,7 @@ class CallbackTest extends TestCase
     /**
      * Value for test
      */
-    const TEST_VALUE = 'test';
+    public const TEST_VALUE = 'test';
 
     /**
      * Test getValue method using data provider
@@ -55,35 +56,35 @@ class CallbackTest extends TestCase
         return [
             [
                 $closure,
-                'Value from closure'
+                'Value from closure',
             ],
             [
                 [
                     static fn (self $testCase) => $testCase->getClassObjectMock()['classObject'],
-                    'getTestValue'
+                    'getTestValue',
                 ],
-                self::TEST_VALUE
+                self::TEST_VALUE,
             ],
             [
                 [__CLASS__, 'getTestValueStatically'],
-                self::TEST_VALUE
+                self::TEST_VALUE,
             ],
             [
                 [
                     static fn (self $testCase) => $testCase->getClassObjectMock()['mock'],
-                    'getValue'
+                    'getValue',
                 ],
-                'Value from mock', ['arg1', 'arg2']
+                'Value from mock', ['arg1', 'arg2'],
             ],
             [
                 [
                     TestCallback::class,
-                    'getId'
+                    'getId',
                 ],
                 TestCallback::ID,
                 null,
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -99,7 +100,7 @@ class CallbackTest extends TestCase
             ->willReturn('Value from mock');
         return [
             'classObject' => $classObject,
-            'mock' => $mock
+            'mock' => $mock,
         ];
     }
 
@@ -144,8 +145,8 @@ class CallbackTest extends TestCase
             ['baz', ['baz']],
             [
                 ['foo', 'bar'],
-                ['foo', 'bar']
-            ]
+                ['foo', 'bar'],
+            ],
         ];
     }
 
@@ -192,25 +193,25 @@ class CallbackTest extends TestCase
             ],
             [
                 [$testObject, 'notExistingMethod'],
-                'Callback does not callable'
+                'Callback does not callable',
             ],
             [
                 ['object' => $testObject, 'method' => 'getTestValue'],
-                'Callback does not callable'
+                'Callback does not callable',
             ],
             [
                 'unknown_function',
-                'Callback does not callable'
+                'Callback does not callable',
             ],
             [
                 new \stdClass(),
-                'Callback does not callable'
+                'Callback does not callable',
             ],
             [
                 [$testObject, 'getTestValue'],
                 'Callable expected to be an array with class name as first element',
-                true
-            ]
+                true,
+            ],
         ];
     }
 

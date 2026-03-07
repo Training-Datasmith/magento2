@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Collector;
 
-use Magento\Deploy\Source\SourcePool;
 use Magento\Deploy\Package\Package;
 use Magento\Deploy\Package\PackageFactory;
 use Magento\Deploy\Package\PackageFile;
+use Magento\Deploy\Source\SourcePool;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Asset\PreProcessor\FileNameResolver;
 
@@ -57,7 +60,7 @@ class Collector implements CollectorInterface
     private $packageDefaultValues = [
         'area' => Package::BASE_AREA,
         'theme' => Package::BASE_THEME,
-        'locale' => Package::BASE_LOCALE
+        'locale' => Package::BASE_LOCALE,
     ];
 
     /**
@@ -123,7 +126,7 @@ class Collector implements CollectorInterface
             'theme' => $file->getTheme(),
             'locale' => $file->getLocale(),
             'module' => $file->getModule(),
-            'isVirtual' => (!$file->getLocale() || !$file->getTheme() || !$file->getArea())
+            'isVirtual' => (!$file->getLocale() || !$file->getTheme() || !$file->getArea()),
         ];
         foreach ($this->packageDefaultValues as $name => $value) {
             if (!isset($params[$name])) {

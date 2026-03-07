@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Block\Widget;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\LayoutFactory;
 use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\View\LayoutFactory;
 
 class Chooser extends \Magento\Backend\App\Action
 {
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
+    public const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
 
     /**
      * @var \Magento\Framework\View\LayoutFactory

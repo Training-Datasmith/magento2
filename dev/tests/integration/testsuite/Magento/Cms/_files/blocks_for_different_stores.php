@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ $block = $blockFactory->create([
             ',
         BlockInterface::IS_ACTIVE => 1,
         'store_id' => [$stores[0]->getId()],
-    ]
+    ],
 ]);
 $blockRepository->save($block);
 
@@ -49,7 +50,7 @@ $block = $blockFactory->create([
             ',
         BlockInterface::IS_ACTIVE => 1,
         'store_id' => [$stores[0]->getId()],
-    ]
+    ],
 ]);
 $blockRepository->save($block);
 
@@ -66,6 +67,6 @@ $block = $blockFactory->create([
             ',
         BlockInterface::IS_ACTIVE => 1,
         'store_id' => [$stores[1]->getId()],
-    ]
+    ],
 ]);
 $blockRepository->save($block);

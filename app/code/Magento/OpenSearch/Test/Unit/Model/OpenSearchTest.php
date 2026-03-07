@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 
 namespace Magento\OpenSearch\Test\Unit\Model;
 
-use OpenSearch\Client;
-use OpenSearch\Namespaces\IndicesNamespace;
-
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\AddDefaultSearchField;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+
 use Magento\OpenSearch\Model\Adapter\DynamicTemplates\IntegerMapper;
 use Magento\OpenSearch\Model\Adapter\DynamicTemplates\PositionMapper;
 use Magento\OpenSearch\Model\Adapter\DynamicTemplates\PriceMapper;
 use Magento\OpenSearch\Model\Adapter\DynamicTemplates\StringMapper;
 use Magento\OpenSearch\Model\Adapter\DynamicTemplatesProvider;
 use Magento\OpenSearch\Model\OpenSearch;
+use OpenSearch\Client;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use OpenSearch\Namespaces\IndicesNamespace;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -59,7 +60,7 @@ class OpenSearchTest extends TestCase
             ->onlyMethods(
                 [
                     'indices',
-                    'search'
+                    'search',
                 ]
             )
             ->disableOriginalConstructor()
@@ -68,7 +69,7 @@ class OpenSearchTest extends TestCase
         $this->indicesMock = $this->getMockBuilder(IndicesNamespace::class)
             ->onlyMethods(
                 [
-                    'putMapping'
+                    'putMapping',
                 ]
             )
             ->disableOriginalConstructor()
@@ -147,7 +148,7 @@ class OpenSearchTest extends TestCase
                             'dynamic_templates' => [
                                 [
                                     'price_mapping' => [
-                                        "match_pattern" => "regex",
+                                        'match_pattern' => 'regex',
                                         'match' => 'price_\\d+_\\d+',
                                         'match_mapping_type' => 'string',
                                         'mapping' => [

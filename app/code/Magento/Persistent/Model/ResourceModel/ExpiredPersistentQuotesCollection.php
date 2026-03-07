@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Model\ResourceModel;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Persistent\Helper\Data;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Quote\Model\ResourceModel\Quote\Collection;
 use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory;
 use Magento\Store\Api\Data\StoreInterface;
@@ -49,7 +50,7 @@ class ExpiredPersistentQuotesCollection
             $store->getWebsiteId()
         );
 
-        $lastLoginCondition = gmdate("Y-m-d H:i:s", time() - $lifetime);
+        $lastLoginCondition = gmdate('Y-m-d H:i:s', time() - $lifetime);
 
         /** @var $quotes Collection */
         $quotes = $this->quoteCollectionFactory->create();
@@ -92,7 +93,7 @@ class ExpiredPersistentQuotesCollection
             ->union(
                 [
                     $select1,
-                    $select2
+                    $select2,
                 ],
                 Select::SQL_UNION_ALL
             );

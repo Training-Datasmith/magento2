@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Report\Shipping\Collection;
 
 /**
@@ -62,7 +65,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                 'orders_count' => 1,
                 'total_shipping' => 36,
                 'total_shipping_actual' => 34,
-                'period' => $shipmentCreatedAtDate
+                'period' => $shipmentCreatedAtDate,
             ],
         ];
         $actualResult = [];

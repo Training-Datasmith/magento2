@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -104,7 +106,7 @@ class RulePool implements ResetAfterRequestInterface
     protected function createLocaleFileRule()
     {
         return $this->themeFactory->create(
-            ['rule' => $this->simpleFactory->create(['pattern' => "<theme_dir>"])]
+            ['rule' => $this->simpleFactory->create(['pattern' => '<theme_dir>'])]
         );
     }
 
@@ -118,18 +120,18 @@ class RulePool implements ResetAfterRequestInterface
         return $this->modularSwitchFactory->create(
             ['ruleNonModular' =>
             $this->themeFactory->create(
-                ['rule' => $this->simpleFactory->create(['pattern' => "<theme_dir>/templates"])]
+                ['rule' => $this->simpleFactory->create(['pattern' => '<theme_dir>/templates'])]
             ),
             'ruleModular' => new Composite(
                 [
                     $this->themeFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<theme_dir>/<module_name>/templates"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<theme_dir>/<module_name>/templates'])]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/<area>/templates"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/<area>/templates'])]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/base/templates"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/base/templates'])]
                     ),
                 ]
             )]
@@ -145,18 +147,18 @@ class RulePool implements ResetAfterRequestInterface
     {
         return $this->modularSwitchFactory->create(
             ['ruleNonModular' => $this->themeFactory->create(
-                ['rule' => $this->simpleFactory->create(['pattern' => "<theme_dir>"])]
+                ['rule' => $this->simpleFactory->create(['pattern' => '<theme_dir>'])]
             ),
             'ruleModular' => new Composite(
                 [
                     $this->themeFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<theme_dir>/<module_name>"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<theme_dir>/<module_name>'])]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/<area>"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/<area>'])]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/base"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/base'])]
                     ),
                 ]
             )]
@@ -180,15 +182,15 @@ class RulePool implements ResetAfterRequestInterface
                             [
                                 $this->simpleFactory
                                     ->create([
-                                        'pattern' => "<theme_dir>/web/i18n/<locale>",
-                                        'optionalParams' => ['locale']
+                                        'pattern' => '<theme_dir>/web/i18n/<locale>',
+                                        'optionalParams' => ['locale'],
                                     ]),
                                 $this->simpleFactory
-                                    ->create(['pattern' => "<theme_dir>/web"]),
+                                    ->create(['pattern' => '<theme_dir>/web']),
                                 $this->simpleFactory
                                     ->create([
-                                        'pattern' => "<theme_pubstatic_dir>",
-                                        'optionalParams' => ['theme_pubstatic_dir']
+                                        'pattern' => '<theme_pubstatic_dir>',
+                                        'optionalParams' => ['theme_pubstatic_dir'],
                                     ]),
                             ]
                         )]
@@ -204,12 +206,12 @@ class RulePool implements ResetAfterRequestInterface
                             [
                                 $this->simpleFactory->create(
                                     [
-                                        'pattern' => "<theme_dir>/<module_name>/web/i18n/<locale>",
+                                        'pattern' => '<theme_dir>/<module_name>/web/i18n/<locale>',
                                         'optionalParams' => ['locale'],
                                     ]
                                 ),
                                 $this->simpleFactory->create(
-                                    ['pattern' => "<theme_dir>/<module_name>/web"]
+                                    ['pattern' => '<theme_dir>/<module_name>/web']
                                 ),
                             ]
                         )]
@@ -217,24 +219,24 @@ class RulePool implements ResetAfterRequestInterface
                     $this->moduleFactory->create(
                         ['rule' => $this->simpleFactory->create(
                             [
-                                'pattern' => "<module_dir>/view/<area>/web/i18n/<locale>",
-                                'optionalParams' => ['locale']
+                                'pattern' => '<module_dir>/view/<area>/web/i18n/<locale>',
+                                'optionalParams' => ['locale'],
                             ]
                         )]
                     ),
                     $this->moduleFactory->create(
                         ['rule' => $this->simpleFactory->create(
                             [
-                                'pattern' => "<module_dir>/view/base/web/i18n/<locale>",
-                                'optionalParams' => ['locale']
+                                'pattern' => '<module_dir>/view/base/web/i18n/<locale>',
+                                'optionalParams' => ['locale'],
                             ]
                         )]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/<area>/web"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/<area>/web'])]
                     ),
                     $this->moduleFactory->create(
-                        ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/base/web"])]
+                        ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/base/web'])]
                     ),
                 ]
             )]
@@ -255,11 +257,11 @@ class RulePool implements ResetAfterRequestInterface
                 $this->themeFactory->create(
                     ['rule' =>
                     $this->simpleFactory->create(
-                        ['pattern' => "<theme_dir>/<module_name>/email"]
+                        ['pattern' => '<theme_dir>/<module_name>/email']
                     )]
                 ),
                 $this->moduleFactory->create(
-                    ['rule' => $this->simpleFactory->create(['pattern' => "<module_dir>/view/<area>/email"])]
+                    ['rule' => $this->simpleFactory->create(['pattern' => '<module_dir>/view/<area>/email'])]
                 ),
             ]
         );

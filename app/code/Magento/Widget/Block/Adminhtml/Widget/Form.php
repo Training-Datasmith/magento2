@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * WYSIWYG widget plugin form
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget;
 
 /**
@@ -64,9 +67,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Widget Type'),
                 'name' => 'widget_type',
                 'required' => true,
-                'onchange' => "wWidget.validateField()",
+                'onchange' => 'wWidget.validateField()',
                 'options' => $this->_getWidgetSelectOptions(),
-                'after_element_html' => $this->_getWidgetSelectAfterHtml()
+                'after_element_html' => $this->_getWidgetSelectAfterHtml(),
             ]
         );
 

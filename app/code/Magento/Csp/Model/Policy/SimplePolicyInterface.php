@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -16,5 +17,4 @@ use Magento\Csp\Api\Data\PolicyInterface;
  */
 interface SimplePolicyInterface extends PolicyInterface
 {
-
 }

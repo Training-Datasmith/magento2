@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class AgreementModeOptionsTest extends TestCase
     {
         $expected = [
             AgreementModeOptions::MODE_AUTO => __('Automatically'),
-            AgreementModeOptions::MODE_MANUAL => __('Manually')
+            AgreementModeOptions::MODE_MANUAL => __('Manually'),
         ];
         $this->assertEquals($expected, $this->model->getOptionsArray());
     }

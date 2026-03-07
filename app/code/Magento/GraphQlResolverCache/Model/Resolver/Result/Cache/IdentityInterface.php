@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\GraphQlResolverCache\Model\Resolver\Result\Cache;
  */
 interface IdentityInterface
 {
-
     /**
      * Get identity tags from resolved and parent resolver result data.
      *

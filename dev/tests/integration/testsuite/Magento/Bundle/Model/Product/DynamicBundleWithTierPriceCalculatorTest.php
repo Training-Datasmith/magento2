@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -79,7 +81,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 5,
                     // 0.5 * 10
                     'maximalPrice' => 5,
-                ]
+                ],
             ],
 
             '
@@ -92,7 +94,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 10,
                     // 0.5 * 2 * 10
                     'maximalPrice' => 10,
-                ]
+                ],
             ],
 
             '
@@ -105,7 +107,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 5,
                     // 0.5 * (1 * 10 + 3 * 20)
                     'maximalPrice' => 35,
-                ]
+                ],
             ],
 
             '
@@ -118,7 +120,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 5,
                     // 0.5 * (1 * 10 + 3 * 20)
                     'maximalPrice' => 35,
-                ]
+                ],
             ],
 
             '
@@ -132,7 +134,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     // 0.5 * 3 * 20
                     'maximalPrice' => 30,
 
-                ]
+                ],
             ],
 
             '
@@ -145,7 +147,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 10,
                     // 0.5 * (3 * 20 + 1 * 10 + 3 * 20)
                     'maximalPrice' => 65,
-                ]
+                ],
             ],
 
             '
@@ -158,7 +160,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 5,
                     // 0.5 * (3 * 20 + 1 * 10 + 3 * 20)
                     'maximalPrice' => 65,
-                ]
+                ],
             ],
 
             '
@@ -171,7 +173,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 5,
                     // 0.5 * (3 * 20 + 1 * 10 + 3 * 20)
                     'maximalPrice' => 65,
-                ]
+                ],
             ],
 
             '
@@ -184,7 +186,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 1.25,
                     // 0.5 * 3 * 20
                     'maximalPrice' => 30,
-                ]
+                ],
             ],
         ];
     }
@@ -205,25 +207,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -244,25 +246,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 2,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -287,25 +289,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -330,25 +332,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -373,25 +375,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -416,7 +418,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -431,25 +433,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -474,7 +476,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -489,25 +491,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -532,7 +534,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -547,25 +549,25 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -590,35 +592,35 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $tierPriceData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
             'value' => 50,
-            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50])
+            'extension_attributes' => new \Magento\Framework\DataObject(['percentage_value' => 50]),
         ];
 
         $tierPriceSimpleProductData = [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 1,
-            'value' => 2.5
+            'value' => 2.5,
         ];
 
         return [
             [
                 'modifierName' => 'addTierPrice',
-                'data' => [$tierPriceData]
+                'data' => [$tierPriceData],
             ],
             [
                 'modifierName' => 'addTierPriceForSimple',
-                'data' => ['simple1', $tierPriceSimpleProductData]
+                'data' => ['simple1', $tierPriceSimpleProductData],
             ],
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -631,7 +633,7 @@ class DynamicBundleWithTierPriceCalculatorTest extends BundlePriceAbstract
     protected function addTierPrice(\Magento\Catalog\Model\Product $product, $tirePriceData)
     {
         $tierPrice = $this->tierPriceFactory->create([
-            'data' => $tirePriceData
+            'data' => $tirePriceData,
         ]);
         $product->setTierPrices([$tierPrice]);
 

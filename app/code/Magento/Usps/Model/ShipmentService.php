@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,20 +10,20 @@ declare(strict_types=1);
 namespace Magento\Usps\Model;
 
 use Exception;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Async\CallbackDeferred;
+use Magento\Framework\DataObject;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\HTTP\AsyncClient\HttpException;
+use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Framework\Measure\Exception\MeasureException;
+use Magento\Framework\Measure\Length;
+use Magento\Framework\Measure\Weight;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Shipping\Helper\Carrier as CarrierHelper;
 use Magento\Shipping\Model\Rate\Result;
-use Magento\Framework\HTTP\AsyncClient\Request;
-use Magento\Framework\HTTP\AsyncClient\HttpException;
-use Magento\Framework\Measure\Length;
-use Magento\Framework\Measure\Weight;
-use Magento\Framework\DataObject;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Shipping\Model\Rate\Result\ProxyDeferredFactory;
 
 /**
@@ -169,7 +170,7 @@ class ShipmentService
      * @param Carrier $carrierModel
      * @return void
      */
-    public function setCarrierModel(Carrier $carrierModel) : void
+    public function setCarrierModel(Carrier $carrierModel): void
     {
         $this->carrierModel = $carrierModel;
     }
@@ -195,22 +196,22 @@ class ShipmentService
         }
         $priceType = $this->carrierModel->getConfigData('price_type');
         $requestParam = [
-            "originZIPCode" => $request->getOrigPostal(),
+            'originZIPCode' => $request->getOrigPostal(),
             'pricingOptions' => [
                 [
-                    "priceType" => $priceType
-                ]
+                    'priceType' => $priceType,
+                ],
             ],
         ];
 
         foreach ($request->getPackages() as $packageData) {
             $requestParam['packageDescription'] = [
-                "weight" => ($packageData['weight_pounds'] ?? 0) ?: 1,
-                "mailClass" => 'ALL'
+                'weight' => ($packageData['weight_pounds'] ?? 0) ?: 1,
+                'mailClass' => 'ALL',
             ];
             $requestParam['packageDescription']['length'] = $request->getLength() ? (int) $request->getLength() : 1;
             $requestParam['packageDescription']['height'] = $request->getHeight() ? (int) $request->getHeight() : 1;
-            $requestParam['packageDescription']['width']  = $request->getWidth()  ? (int) $request->getWidth()  : 1;
+            $requestParam['packageDescription']['width']  = $request->getWidth() ? (int) $request->getWidth() : 1;
 
             if ($request->getContainer() == 'NONRECTANGULAR' || $request->getContainer() == 'VARIABLE') {
                 $requestParam['packageDescription']['girth'] = $request->getGirth() ? (int) $request->getGirth() : 1;
@@ -227,7 +228,7 @@ class ShipmentService
 
         $headers = [
             'Content-Type' => self::CONTENT_TYPE_JSON,
-            'Authorization' => self::AUTHORIZATION_BEARER . $accessToken
+            'Authorization' => self::AUTHORIZATION_BEARER . $accessToken,
         ];
 
         $responseBody = $this->carrierModel->getCachedQuotes(json_encode($requestParam));
@@ -263,7 +264,7 @@ class ShipmentService
 
                             return $this->_parseJsonResponse(json_decode($responseBody, true));
                         }
-                    )
+                    ),
                 ]
             );
         }
@@ -352,7 +353,7 @@ class ShipmentService
             $costArr[$methodCode] = [
                 'price' => $cost,
                 'code' => $methodCode,
-                'productName' => $methodTitle
+                'productName' => $methodTitle,
             ];
         }
     }
@@ -452,10 +453,10 @@ class ShipmentService
                     'mailClass' => $this->shippingMethodManager->getMethodMailClass($shippingMethod),
                     'mailingDate' => date('Y-m-d'),
                     'processingCategory' => $this->shippingMethodManager->getMethodProcessingCategory($shippingMethod),
-                    "destinationEntryFacilityType" => $this->shippingMethodManager
+                    'destinationEntryFacilityType' => $this->shippingMethodManager
                         ->getMethodDestinationEntryFacilityType($shippingMethod),
                     'rateIndicator' => $this->shippingMethodManager->getRateIndicator($shippingMethod),
-                ]
+                ],
             ];
 
             if ($girth > 0) {
@@ -509,7 +510,7 @@ class ShipmentService
                 'countryISOAlpha2Code' => $recipientCountryCode,
                 'firstName' => $request->getRecipientContactPersonFirstName(),
                 'lastName' => $request->getRecipientContactPersonLastName(),
-                'phone' => $request->getRecipientContactPhoneNumber()
+                'phone' => $request->getRecipientContactPhoneNumber(),
             ];
 
             return $requestParam;
@@ -555,7 +556,7 @@ class ShipmentService
             'Content-Type' => self::CONTENT_TYPE_JSON,
             'Accept' => self::ACCEPT_HEADER,
             'Authorization' => self::AUTHORIZATION_BEARER . $accessToken,
-            'X-Payment-Authorization-Token' => $paymentToken
+            'X-Payment-Authorization-Token' => $paymentToken,
         ];
 
         $url = $this->carrierModel->getUrl();
@@ -802,11 +803,11 @@ class ShipmentService
             $ceiledQty = max(1, ceil((int)$item->getQty()));
             list($itemPoundsWeight) = $this->_convertPoundOunces((float)$itemWeight);
             $requestParam['customsForm']['contents'][] = [
-                "itemDescription" => $item->getName(),
-                "itemQuantity" => (int) $ceiledQty,
-                "itemTotalWeight" => $itemPoundsWeight,
-                "itemTotalValue" => (float) sprintf('%.2F', $item->getCustomsValue() * $item->getQty()),
-                "countryofOrigin" => $countryofOrigin
+                'itemDescription' => $item->getName(),
+                'itemQuantity' => (int) $ceiledQty,
+                'itemTotalWeight' => $itemPoundsWeight,
+                'itemTotalValue' => (float) sprintf('%.2F', $item->getCustomsValue() * $item->getQty()),
+                'countryofOrigin' => $countryofOrigin,
             ];
         }
 
@@ -872,16 +873,16 @@ class ShipmentService
         }
 
         $requestParam['packageDescription'] = [
-            "destinationEntryFacilityType" =>
+            'destinationEntryFacilityType' =>
                 $this->shippingMethodManager->getMethodDestinationEntryFacilityType($shippingMethod),
-            "height" => (float)$dimensions['height'],
-            "length" => (float)$dimensions['length'],
-            "width" => (float)$dimensions['width'],
-            "weight" => (float) $packagePoundsWeight,
-            "mailClass" => $this->shippingMethodManager->getMethodMailClass($shippingMethod),
-            "mailingDate" => (new \DateTime())->format('Y-m-d'),
-            "processingCategory" => $this->shippingMethodManager->getMethodProcessingCategory($shippingMethod),
-            "rateIndicator" => $this->shippingMethodManager->getRateIndicator($shippingMethod),
+            'height' => (float)$dimensions['height'],
+            'length' => (float)$dimensions['length'],
+            'width' => (float)$dimensions['width'],
+            'weight' => (float) $packagePoundsWeight,
+            'mailClass' => $this->shippingMethodManager->getMethodMailClass($shippingMethod),
+            'mailingDate' => (new \DateTime())->format('Y-m-d'),
+            'processingCategory' => $this->shippingMethodManager->getMethodProcessingCategory($shippingMethod),
+            'rateIndicator' => $this->shippingMethodManager->getRateIndicator($shippingMethod),
         ];
 
         if ($girth > 0) {
@@ -905,11 +906,11 @@ class ShipmentService
         $accountNumber = $this->carrierModel->getConfigData('account_number');
         $accountType = $this->carrierModel->getConfigData('account_type');
         $accountInfo = [
-            "CRID" => $cridNumber,
-            "MID" => $midNumber,
-            "manifestMID" => $manifestMID,
-            "accountNumber" => $accountNumber,
-            "accountType" => $accountType
+            'CRID' => $cridNumber,
+            'MID' => $midNumber,
+            'manifestMID' => $manifestMID,
+            'accountNumber' => $accountNumber,
+            'accountType' => $accountType,
         ];
 
         $authUrl = $this->carrierModel->getUrl(self::PAYMENT_AUTH_REQUEST_END_POINT);

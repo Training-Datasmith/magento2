@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class UnavailableProductsProviderTest extends TestCase
             UnavailableProductsProvider::class,
             [
                 'salesConfig' => $this->salesConfigMock,
-                'orderedProductAvailabilityChecker' => $this->checkerMock
+                'orderedProductAvailabilityChecker' => $this->checkerMock,
             ]
         );
     }

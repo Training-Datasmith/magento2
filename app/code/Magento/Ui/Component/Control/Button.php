@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Control;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Math\Random;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\UiComponent\Control\ControlInterface;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Widget for standard button.

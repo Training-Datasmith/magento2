@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class AddFixtureTest extends AbstractOverridesTest
     {
         return [
             'first_data_set' => ['overridden config fixture value for method'],
-            'second_data_set' => ['overridden config fixture value for data set']
+            'second_data_set' => ['overridden config fixture value for data set'],
         ];
     }
 }

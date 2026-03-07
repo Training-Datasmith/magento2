@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -177,14 +178,14 @@ class NvpTest extends TestCase
                 [],
                 LocalizedException::class,
                 'PayPal gateway has rejected request. Long Message (#10417: Message).',
-                0
+                0,
             ],
             [
                 "\r\n" . 'ACK=Failure&L_ERRORCODE0=10417&L_SHORTMESSAGE0=Message.&L_LONGMESSAGE0=Long%20Message.',
                 [10417, 10422],
                 ProcessableException::class,
                 'PayPal gateway has rejected request. Long Message (#10417: Message).',
-                10417
+                10417,
             ],
             [
                 "\r\n" . 'ACK[7]=Failure&L_ERRORCODE0[5]=10417'
@@ -192,14 +193,14 @@ class NvpTest extends TestCase
                 [10417, 10422],
                 ProcessableException::class,
                 'PayPal gateway has rejected request. Long Message (#10417: Message).',
-                10417
+                10417,
             ],
             [
                 "\r\n" . 'ACK[7]=Failure&L_ERRORCODE0[5]=10417&L_SHORTMESSAGE0[8]=Message.&L_LONGMESSAGE0[15]=',
                 [10417, 10422],
                 ProcessableException::class,
                 'PayPal gateway has rejected request. #10417: Message.',
-                10417
+                10417,
             ],
         ];
     }
@@ -252,8 +253,8 @@ class NvpTest extends TestCase
                     'city' => 'testCity',
                     'telephone' => '223322',
                     'region' => 'testSTATE',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -287,7 +288,7 @@ class NvpTest extends TestCase
             'authorization_id' => $authorizationId,
             'payment_status' => Info::PAYMENTSTATUS_COMPLETED,
             'pending_reason' => $pendingReason,
-            'protection_eligibility' => $protectionEligibility
+            'protection_eligibility' => $protectionEligibility,
         ];
 
         $this->assertNotContains($protectionEligibilityType, $this->model->getData());
@@ -311,7 +312,7 @@ class NvpTest extends TestCase
     {
         $response =    "\r\n" . 'ACK[7]=Failure&L_ERRORCODE0[5]=10415'
             . '&L_SHORTMESSAGE0[8]=Message.&L_LONGMESSAGE0[15]=Long%20Message.';
-        $processableErrors =[10415];
+        $processableErrors = [10415];
         $this->curl->expects($this->once())
             ->method('read')
             ->willReturn($response);

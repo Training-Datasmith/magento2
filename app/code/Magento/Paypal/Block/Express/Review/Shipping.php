@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Paypal Express Onepage checkout block for Shipping Address
  */
+
 namespace Magento\Paypal\Block\Express\Review;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;

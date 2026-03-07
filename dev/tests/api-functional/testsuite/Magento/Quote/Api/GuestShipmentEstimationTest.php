@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
+use Magento\Quote\Api\Data\AddressInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Api\Data\AddressInterface;
 
 class GuestShipmentEstimationTest extends WebapiAbstract
 {
@@ -36,15 +39,15 @@ class GuestShipmentEstimationTest extends WebapiAbstract
                 'resourcePath' => '/V1/carts/mine/estimate-shipping-methods',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
                 'token' => null,
-            ]
+            ],
         ];
 
         $requestData = [
             'address' => [
-                'country_id' => "US",
+                'country_id' => 'US',
                 'postcode' => null,
                 'region' => null,
-                'region_id' => null
+                'region_id' => null,
             ],
         ];
 
@@ -110,15 +113,15 @@ class GuestShipmentEstimationTest extends WebapiAbstract
 
             $requestData = [
                 'cartId' => $cartId,
-                'address' => $data
+                'address' => $data,
             ];
         } else {
             $requestData = [
                 'address' => [
-                    'country_id' => "US",
+                    'country_id' => 'US',
                     'postcode' => null,
                     'region' => null,
-                    'region_id' => null
+                    'region_id' => null,
                 ],
             ];
         }
@@ -129,7 +132,7 @@ class GuestShipmentEstimationTest extends WebapiAbstract
         $this->assertNotEmpty($result);
         $this->assertCount(1, $result);
         foreach ($result as $rate) {
-            $this->assertEquals("flatrate", $rate['carrier_code']);
+            $this->assertEquals('flatrate', $rate['carrier_code']);
             $this->assertEquals(0, $rate['amount']);
         }
     }

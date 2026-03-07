@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -149,11 +150,11 @@ class CaptchaValidatorTest extends TestCase
         return [
             [
                 true,
-                true
+                true,
             ], [
                 false,
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

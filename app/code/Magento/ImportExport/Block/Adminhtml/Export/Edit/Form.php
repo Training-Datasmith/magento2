@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Export edit form block
  */
+
 namespace Magento\ImportExport\Block\Adminhtml\Export\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
@@ -70,7 +73,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Entity Type'),
                 'required' => false,
                 'onchange' => 'varienExport.getFilter();',
-                'values' => $this->_entityFactory->create()->toOptionArray()
+                'values' => $this->_entityFactory->create()->toOptionArray(),
             ]
         );
         $fieldset->addField(
@@ -81,7 +84,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Export File Format'),
                 'label' => __('Export File Format'),
                 'required' => false,
-                'values' => $this->_formatFactory->create()->toOptionArray()
+                'values' => $this->_formatFactory->create()->toOptionArray(),
             ]
         );
         $fieldset->addField(

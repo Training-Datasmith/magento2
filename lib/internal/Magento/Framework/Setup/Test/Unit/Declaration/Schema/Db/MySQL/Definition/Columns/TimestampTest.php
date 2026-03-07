@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\OnUpd
 use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\Timestamp;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Columns\Boolean as BooleanColumn;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class TimestampTest extends TestCase
 {
@@ -72,7 +73,7 @@ class TimestampTest extends TestCase
                 'onUpdate' => $this->onUpdateMock,
                 'nullable' => $this->nullableMock,
                 'comment' => $this->commentMock,
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -170,7 +171,7 @@ class TimestampTest extends TestCase
                 'onUpdate' => 'CURRENT_TIMESTAMP',
                 'expectedStatement' => '`col` DATETIME NULL DEFAULT CURRENT_TIMESTAMP '
                     . 'ON UPDATE CURRENT_TIMESTAMP COMMENT "Comment"',
-            ]
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Tests to find various obsolete code usage
  * (deprecated and removed Magento 1 legacy methods, properties, classes, etc.)
  */
+
 namespace Magento\Test\Legacy;
 
 use Magento\Framework\App\Utility\AggregateInvoker;

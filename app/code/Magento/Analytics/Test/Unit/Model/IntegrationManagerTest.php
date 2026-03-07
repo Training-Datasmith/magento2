@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,18 +10,17 @@ namespace Magento\Analytics\Test\Unit\Model;
 
 use Magento\Analytics\Model\IntegrationManager;
 use Magento\Config\Model\Config;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Integration\Api\IntegrationServiceInterface;
 use Magento\Integration\Api\OauthServiceInterface;
 use Magento\Integration\Model\Integration;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class IntegrationManagerTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -66,7 +66,7 @@ class IntegrationManagerTest extends TestCase
             [
                 'integrationService' => $this->integrationServiceMock,
                 'oauthService' => $this->oauthServiceMock,
-                'config' => $this->configMock
+                'config' => $this->configMock,
             ]
         );
     }
@@ -84,8 +84,8 @@ class IntegrationManagerTest extends TestCase
             'all_resources' => false,
             'resource' => [
                 'Magento_Analytics::analytics',
-                'Magento_Analytics::analytics_api'
-            ]
+                'Magento_Analytics::analytics_api',
+            ],
         ];
     }
 
@@ -227,7 +227,7 @@ class IntegrationManagerTest extends TestCase
     {
         return [
             [1],
-            [null]
+            [null],
         ];
     }
 }

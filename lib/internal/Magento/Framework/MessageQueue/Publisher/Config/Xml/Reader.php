@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Publisher\Config\Xml;
 
-use \Magento\Framework\MessageQueue\Publisher\Config\ReaderInterface;
+use Magento\Framework\MessageQueue\Publisher\Config\ReaderInterface;
 
 /**
  * Reader for etc/queue_publisher.xml configs.
@@ -17,7 +20,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem implements Read
      */
     protected $_idAttributes = [
         '/config/publisher' => 'topic',
-        '/config/publisher/connection' => 'name'
+        '/config/publisher/connection' => 'name',
     ];
 
     /**

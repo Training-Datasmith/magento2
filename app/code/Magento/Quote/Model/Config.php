@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
  */
 class Config
 {
-    const XML_PATH_INVENTORY_CHECK_ENABLED = 'cataloginventory/options/enable_inventory_check';
+    public const XML_PATH_INVENTORY_CHECK_ENABLED = 'cataloginventory/options/enable_inventory_check';
 
     /** @var ScopeConfigInterface */
     private $config;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,15 +14,14 @@ use Magento\CustomerImportExport\Model\Export\Address;
 use Magento\CustomerImportExport\Model\Export\CustomerFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
-use Magento\Eav\Model\Entity\TypeFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection;
-use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 use Magento\ImportExport\Model\Export\Factory;
@@ -29,7 +29,6 @@ use Magento\ImportExport\Model\ResourceModel\CollectionByPagesIteratorFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -59,8 +58,8 @@ class AddressTest extends TestCase
         [
             'attribute_id' => 1,
             'attribute_code' => self::ATTRIBUTE_CODE,
-            'frontend_input' => 'multiselect'
-        ]
+            'frontend_input' => 'multiselect',
+        ],
     ];
 
     /**
@@ -155,7 +154,7 @@ class AddressTest extends TestCase
         );
         $attributeCollection->method('setEntityTypeCode')->with('customer_address')->willReturnSelf();
         $attributeCollection->method('getEntityTypeCode')->willReturn('customer_address');
-        
+
         $attributes = [];
         foreach ($this->_attributes as $attributeData) {
             $attribute = $this->createPartialMock(
@@ -165,12 +164,12 @@ class AddressTest extends TestCase
 
             $attributeSource = $this->createMock(\Magento\Eav\Model\Entity\Attribute\Source\AbstractSource::class);
             $attribute->expects($this->once())->method('getSource')->willReturn($attributeSource);
-            
+
             // Configure attribute methods to return the test data
             $attribute->method('getAttributeCode')->willReturn($attributeData['attribute_code']);
             $attribute->method('getAttributeId')->willReturn($attributeData['attribute_id']);
             $attribute->method('getFrontendInput')->willReturn($attributeData['frontend_input']);
-            
+
             $attributes[] = $attribute;
         }
         $attributeCollection->method('addItem')->willReturnSelf();
@@ -265,7 +264,7 @@ class AddressTest extends TestCase
             AbstractModel::class,
             ['getData', 'offsetGet', 'getParentId', 'getId', 'getRegionId']
         );
-        
+
         // Support getData() for general data access
         $item->method('getData')->willReturnCallback(function ($key = null) {
             if ($key === null) {
@@ -273,17 +272,17 @@ class AddressTest extends TestCase
             }
             return $this->_addressData[$key] ?? null;
         });
-        
+
         // Support array access: $item['key']
         $item->method('offsetGet')->willReturnCallback(function ($key) {
             return $this->_addressData[$key] ?? null;
         });
-        
+
         // Support specific getter methods
         $item->method('getParentId')->willReturn($this->_addressData['parent_id']);
         $item->method('getId')->willReturn($this->_addressData['id']);
         $item->method('getRegionId')->willReturn(null);
-        
+
         $this->_model->exportItem($item);
     }
 

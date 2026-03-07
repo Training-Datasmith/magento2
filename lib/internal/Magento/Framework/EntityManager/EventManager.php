@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -33,7 +35,7 @@ class EventManager
      */
     private function resolveEntityPrefix($entityType)
     {
-        return $entityType !== null ? strtolower(str_replace("\\", "_", $entityType)) : '';
+        return $entityType !== null ? strtolower(str_replace('\\', '_', $entityType)) : '';
     }
 
     /**

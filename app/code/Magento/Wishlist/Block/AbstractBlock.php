@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Wishlist\Block;
 
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Product\Image\UrlBuilder;
-use Magento\Framework\View\ConfigInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\View\ConfigInterface;
 
 /**
  * Wishlist Product Items abstract Block
@@ -352,7 +354,7 @@ abstract class AbstractBlock extends \Magento\Catalog\Block\Product\AbstractProd
         $priceRender->setItem($item);
         $arguments += [
             'zone'         => $renderZone,
-            'render_block' => $priceRender
+            'render_block' => $priceRender,
         ];
         return $priceRender ? $priceRender->render($priceType, $item->getProduct(), $arguments) : null;
     }

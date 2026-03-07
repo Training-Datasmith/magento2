@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class SetupInfoTest extends TestCase
         return [
             [
                 self::$fixture,
-                '/setup/'
+                '/setup/',
             ],
             [
                 self::$fixture + [SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => 'install'],
@@ -94,12 +95,12 @@ class SetupInfoTest extends TestCase
             [self::$fixture + ['HTTP_HOST' => ''], ''],
             [
                 ['DOCUMENT_ROOT' => '/foo/bar', 'SCRIPT_FILENAME' => '/other/baz.php', 'HTTP_HOST' => 'example.com'],
-                'http://example.com/'
+                'http://example.com/',
             ],
             [self::$fixture + ['HTTP_HOST' => 'example.com'], 'http://example.com/dir/'],
             [
                 ['DOCUMENT_ROOT' => '/foo/bar', 'SCRIPT_FILENAME' => '/foo/bar/baz.php', 'HTTP_HOST' => 'example.com'],
-                'http://example.com/'
+                'http://example.com/',
             ],
         ];
     }
@@ -155,46 +156,46 @@ class SetupInfoTest extends TestCase
         return [
             'root = doc root, but no "setup" sub-directory' => [
                 $server, // it will look for "setup/" sub-directory, but won't find anything
-                false
+                false,
             ],
             'root = doc root, nonexistent sub-directory' => [
                 $server + [SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => 'nonexistent'],
-                false
+                false,
             ],
             'root = doc root, existent sub-directory' => [
                 $server + [SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => '_files'],
-                true
+                true,
             ],
             'root within doc root, existent sub-directory' => [
                 [
                     'DOCUMENT_ROOT' => dirname(__DIR__),
                     'SCRIPT_FILENAME' => __FILE__,
-                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => '_files'
+                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => '_files',
                 ],
-                true
+                true,
             ],
             'root outside of doc root, existent sub-directory' => [
                 [
                     'DOCUMENT_ROOT' => __DIR__,
                     'SCRIPT_FILENAME' => dirname(dirname(__DIR__)) . '/foo.php',
-                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => basename(__DIR__)
+                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => basename(__DIR__),
                 ],
-                false
+                false,
             ],
             'root within doc root, existent sub-directory, trailing slash' => [
                 [
                     'DOCUMENT_ROOT' => dirname(__DIR__) . DIRECTORY_SEPARATOR,
                     'SCRIPT_FILENAME' => __FILE__,
-                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => '_files'
+                    SetupInfo::PARAM_NOT_INSTALLED_URL_PATH => '_files',
                 ],
-                true
+                true,
             ],
             'root within doc root + pub, existent sub-directory' => [
                 [
                     'DOCUMENT_ROOT' => __DIR__ . '/_files/pub/',
                     'SCRIPT_FILENAME' => __DIR__ . '/_files/pub/index.php',
                 ],
-                true
+                true,
             ],
         ];
     }

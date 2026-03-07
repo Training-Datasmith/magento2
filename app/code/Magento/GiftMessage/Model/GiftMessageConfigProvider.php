@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Model;
 
-use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\GiftMessage\Helper\Message as GiftMessageHelper;
-use Magento\Framework\App\Http\Context as HttpContext;
-use Magento\Customer\Model\Context as CustomerContext;
-use Magento\Framework\UrlInterface;
-use Magento\Framework\Locale\FormatInterface as LocaleFormat;
-use Magento\Framework\Data\Form\FormKey;
 use Magento\Catalog\Model\Product\Attribute\Source\Boolean;
+use Magento\Checkout\Model\ConfigProviderInterface;
+use Magento\Customer\Model\Context as CustomerContext;
+use Magento\Framework\App\Http\Context as HttpContext;
+use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Locale\FormatInterface as LocaleFormat;
+use Magento\Framework\UrlInterface;
+use Magento\GiftMessage\Helper\Message as GiftMessageHelper;
 use Magento\Store\Model\ScopeInterface;
 
 /**

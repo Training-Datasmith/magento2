@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price;
 
+use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
 use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BasePriceModifier;
-use Magento\Framework\Indexer\DimensionalIndexerInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructureFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructure;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructureFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Indexer\DimensionalIndexerInterface;
 
 /**
  * Configurable Products Price Indexer Resource model
@@ -157,15 +158,15 @@ class Configurable implements DimensionalIndexerInterface
             $select,
             $temporaryPriceTable->getTableName(),
             [
-                "entity_id",
-                "customer_group_id",
-                "website_id",
-                "tax_class_id",
-                "price",
-                "final_price",
-                "min_price",
-                "max_price",
-                "tier_price",
+                'entity_id',
+                'customer_group_id',
+                'website_id',
+                'tax_class_id',
+                'price',
+                'final_price',
+                'min_price',
+                'max_price',
+                'tier_price',
             ]
         );
 

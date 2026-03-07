@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ namespace Magento\OpenSearch\Model;
 
 class OpenSearch extends SearchClient
 {
-
     /**
      * Add mapping to OpenSearch index
      *

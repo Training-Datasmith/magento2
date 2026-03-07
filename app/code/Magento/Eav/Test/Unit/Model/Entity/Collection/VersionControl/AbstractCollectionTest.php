@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Eav\Test\Unit\Model\Entity\Collection\VersionControl;
 
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Test for version control abstract collection model.
@@ -45,7 +46,7 @@ class AbstractCollectionTest extends \Magento\Eav\Test\Unit\Model\Entity\Collect
             [
                 'entityFactory' => $this->coreEntityFactoryMock,
                 'universalFactory' => $this->validatorFactoryMock,
-                'entitySnapshot' => $this->entitySnapshot
+                'entitySnapshot' => $this->entitySnapshot,
             ]
         );
     }
@@ -80,7 +81,7 @@ class AbstractCollectionTest extends \Magento\Eav\Test\Unit\Model\Entity\Collect
     {
         return [
             [[]],
-            [['attribute' => 'test']]
+            [['attribute' => 'test']],
         ];
     }
 

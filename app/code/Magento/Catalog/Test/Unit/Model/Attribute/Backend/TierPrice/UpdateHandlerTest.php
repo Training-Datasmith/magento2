@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,16 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Attribute\Backend\TierPrice;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\TierPrice\UpdateHandler;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\InputException;
@@ -24,6 +24,7 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -88,7 +89,7 @@ class UpdateHandlerTest extends TestCase
                 'attributeRepository' => $this->attributeRepository,
                 'groupManagement' => $this->groupManagement,
                 'metadataPoll' => $this->metadataPoll,
-                'tierPriceResource' => $this->tierPriceResource
+                'tierPriceResource' => $this->tierPriceResource,
             ]
         );
     }
@@ -135,18 +136,18 @@ class UpdateHandlerTest extends TestCase
         });
         $product->method('setStoreId')->willReturnSelf();
         $product->method('getStoreId')->willReturn(0);
-        
+
         $product->setData('tier_price', $newTierPrices);
         $product->setData('entity_id', $productId);
         $product->setOrigData('tier_price', $originalTierPrices);
         $product->setOrigData('entity_id', $originalProductId);
         $product->setStoreId(0);
         $product->setData('tier_price_changed', 1);
-        
+
         $store = $this->createMock(StoreInterface::class);
         $store->expects($this->atLeastOnce())->method('getWebsiteId')->willReturn(0);
         $this->storeManager->expects($this->atLeastOnce())->method('getStore')->willReturn($store);
-        
+
         /** @var ProductAttributeInterface $attribute */
         $attribute = $this->createPartialMockWithReflection(
             AbstractAttribute::class,
@@ -155,7 +156,7 @@ class UpdateHandlerTest extends TestCase
         $attribute->method('getIsScopeGlobal')->willReturn(true);
         $attribute->method('isScopeGlobal')->willReturn(true);
         $attribute->method('getName')->willReturn('tier_price');
-        
+
         $this->attributeRepository->expects($this->atLeastOnce())->method('get')->with('tier_price')
             ->willReturn($attribute);
         $productMetadata = $this->createMock(EntityMetadataInterface::class);
@@ -180,17 +181,17 @@ class UpdateHandlerTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('Tier prices data should be array, but actually other type is received');
-        
+
         /** @var ProductAttributeInterface $attribute */
         $attribute = $this->createPartialMockWithReflection(
             AbstractAttribute::class,
             ['getName', '_construct']
         );
         $attribute->method('getName')->willReturn('tier_price');
-        
+
         $this->attributeRepository->expects($this->atLeastOnce())->method('get')->with('tier_price')
             ->willReturn($attribute);
-        
+
         /** @var ProductInterface $product */
         $product = $this->createPartialMockWithReflection(
             Product::class,
@@ -222,15 +223,15 @@ class UpdateHandlerTest extends TestCase
                         'website_id' => 0,
                         'price_qty' => 2,
                         'cust_group' => 0,
-                        'price' => 15
+                        'price' => 15,
                     ],
                     [
                         'website_id' => 0,
                         'price_qty' => 3,
                         'cust_group' => 3200,
                         'price' => null,
-                        'percentage_value' => 20
-                    ]
+                        'percentage_value' => 20,
+                    ],
                 ],
                 [
                     [
@@ -244,13 +245,13 @@ class UpdateHandlerTest extends TestCase
                         'website_id' => 0,
                         'price_qty' => 4,
                         'cust_group' => 0,
-                        'price' => 20
+                        'price' => 20,
                     ],
                 ],
                 2,
                 'entity_id',
                 10,
-                11
+                11,
             ],
             [
                 [
@@ -258,15 +259,15 @@ class UpdateHandlerTest extends TestCase
                         'website_id' => 0,
                         'price_qty' => 2,
                         'cust_group' => 0,
-                        'price' => 0
+                        'price' => 0,
                     ],
                     [
                         'website_id' => 0,
                         'price_qty' => 3,
                         'cust_group' => 3200,
                         'price' => null,
-                        'percentage_value' => 20
-                    ]
+                        'percentage_value' => 20,
+                    ],
                 ],
                 [
                     [
@@ -274,21 +275,21 @@ class UpdateHandlerTest extends TestCase
                         'website_id' => 0,
                         'price_qty' => 2,
                         'cust_group' => 0,
-                        'price' => 10
+                        'price' => 10,
                     ],
                     [
                         'price_id' => 2,
                         'website_id' => 0,
                         'price_qty' => 4,
                         'cust_group' => 0,
-                        'price' => 20
+                        'price' => 20,
                     ],
                 ],
                 2,
                 'entity_id',
                 10,
-                11
-            ]
+                11,
+            ],
         ];
     }
 }

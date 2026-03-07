@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -16,10 +19,10 @@ class DbVersionInfo
     /**#@+
      * Constants defined for keys of version info array
      */
-    const KEY_MODULE = 'module';
-    const KEY_TYPE = 'type';
-    const KEY_CURRENT = 'current';
-    const KEY_REQUIRED = 'required';
+    public const KEY_MODULE = 'module';
+    public const KEY_TYPE = 'type';
+    public const KEY_CURRENT = 'current';
+    public const KEY_REQUIRED = 'required';
     /**#@-*/
 
     /**#@-*/
@@ -85,7 +88,7 @@ class DbVersionInfo
             self::KEY_CURRENT => $dbVer,
             self::KEY_REQUIRED => $configVer,
             self::KEY_MODULE => $moduleName,
-            self::KEY_TYPE => 'schema'
+            self::KEY_TYPE => 'schema',
         ];
     }
 
@@ -128,7 +131,7 @@ class DbVersionInfo
             self::KEY_CURRENT => $dataVer,
             self::KEY_REQUIRED => $configVer,
             self::KEY_MODULE => $moduleName,
-            self::KEY_TYPE => 'data'
+            self::KEY_TYPE => 'data',
         ];
     }
 

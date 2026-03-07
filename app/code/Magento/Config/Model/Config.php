@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model;
 
 use Magento\Config\Model\Config\Reader\Source\Deployed\SettingChecker;
-use Magento\Config\Model\Config\Structure\Element\Group;
 use Magento\Config\Model\Config\Structure\Element\Field;
+use Magento\Config\Model\Config\Structure\Element\Group;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ScopeInterface;
 use Magento\Framework\App\ScopeResolverPool;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ declare(strict_types=1);
 namespace Magento\AsynchronousOperations\Api;
 
 use Magento\AsynchronousOperations\Model\MassSchedule;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\Bulk\OperationInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
 
 class OperationRepositoryInterfaceTest extends WebapiAbstract
 {
@@ -150,10 +151,10 @@ class OperationRepositoryInterfaceTest extends WebapiAbstract
     public function testBulkGetListByStartTime()
     {
         $entityArray = [
-            ['customer' => $this->getCustomer(), "password" => "Strong-Password"],
+            ['customer' => $this->getCustomer(), 'password' => 'Strong-Password'],
             [
                 'customer' => $this->getCustomer('customer2@abc.com', 'Second'),
-                "password" => "Strong-Password"
+                'password' => 'Strong-Password',
             ],
         ];
 

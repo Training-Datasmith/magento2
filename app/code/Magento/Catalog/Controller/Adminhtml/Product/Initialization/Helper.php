@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -24,10 +26,10 @@ use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Filter\FilterInput;
 use Magento\Framework\Locale\FormatInterface;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Filter\FilterInput;
 
 /**
  * Product helper

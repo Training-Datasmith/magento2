@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -24,47 +27,47 @@ interface ShipmentTrackInterface extends TrackInterface, ExtensibleDataInterface
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Weight.
      */
-    const WEIGHT = 'weight';
+    public const WEIGHT = 'weight';
     /*
      * Quantity.
      */
-    const QTY = 'qty';
+    public const QTY = 'qty';
     /*
      * Order ID.
      */
-    const ORDER_ID = 'order_id';
+    public const ORDER_ID = 'order_id';
     /*
      * Track number.
      */
-    const TRACK_NUMBER = 'track_number';
+    public const TRACK_NUMBER = 'track_number';
     /*
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
     /*
      * Title.
      */
-    const TITLE = 'title';
+    public const TITLE = 'title';
     /*
      * Carrier code.
      */
-    const CARRIER_CODE = 'carrier_code';
+    public const CARRIER_CODE = 'carrier_code';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
     /*
      * Updated-at timestamp.
      */
-    const UPDATED_AT = 'updated_at';
+    public const UPDATED_AT = 'updated_at';
 
     /**
      * Sets the order_id for the shipment package.

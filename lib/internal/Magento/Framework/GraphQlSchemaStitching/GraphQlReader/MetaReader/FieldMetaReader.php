@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,13 +62,13 @@ class FieldMetaReader
      * @param \GraphQL\Type\Definition\FieldDefinition $fieldMeta
      * @return array
      */
-    public function read(\GraphQL\Type\Definition\FieldDefinition $fieldMeta) : array
+    public function read(\GraphQL\Type\Definition\FieldDefinition $fieldMeta): array
     {
         $fieldName = $fieldMeta->name;
         $fieldTypeMeta = $fieldMeta->getType();
         $result = [
             'name' => $fieldName,
-            'arguments' => []
+            'arguments' => [],
         ];
 
         $fieldResolver = $this->getFieldResolver($fieldMeta);
@@ -129,7 +130,7 @@ class FieldMetaReader
         InputType $typeMeta,
         Argument $argumentMeta,
         array $result
-    ) : array {
+    ): array {
         $argumentName = $argumentMeta->name;
         $result['arguments'][$argumentName]  = array_merge(
             $result['arguments'][$argumentName],
@@ -145,7 +146,7 @@ class FieldMetaReader
      * @param \GraphQL\Type\Definition\FieldDefinition $fieldMeta
      * @return string
      */
-    private function getFieldResolver(\GraphQL\Type\Definition\FieldDefinition $fieldMeta) : string
+    private function getFieldResolver(\GraphQL\Type\Definition\FieldDefinition $fieldMeta): string
     {
         /** @var \GraphQL\Language\AST\NodeList $directives */
         $directives = $fieldMeta->astNode->directives;

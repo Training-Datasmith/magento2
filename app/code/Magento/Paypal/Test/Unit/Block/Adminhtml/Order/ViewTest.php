@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,8 +52,8 @@ class ViewTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $secureRendererMock
-            ]
+                $secureRendererMock,
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SomeModule\Model\Five;
 
 require_once __DIR__ . '/../Three/TestThree.php';

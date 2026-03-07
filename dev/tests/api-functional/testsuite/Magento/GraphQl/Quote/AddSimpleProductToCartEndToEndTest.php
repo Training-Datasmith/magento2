@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class AddSimpleProductToCartEndToEndTest extends GraphQlAbstract
         $expectedItemOptions = [];
         $receivedItemOptions = [
             'entered_options' => [],
-            'selected_options' => []
+            'selected_options' => [],
         ];
 
         foreach ($response['products']['items'][0]['options'] as $option) {
@@ -108,7 +109,7 @@ class AddSimpleProductToCartEndToEndTest extends GraphQlAbstract
 
                 $receivedItemOptions['entered_options'][] = [
                     'uid' => $option['entered_option']['uid'],
-                    'value' => $value
+                    'value' => $value,
                 ];
 
             } elseif (isset($option['selected_option'])) {
@@ -119,7 +120,7 @@ class AddSimpleProductToCartEndToEndTest extends GraphQlAbstract
 
         return [
             'expected_options' => $expectedItemOptions,
-            'received_options' => $receivedItemOptions
+            'received_options' => $receivedItemOptions,
         ];
     }
 

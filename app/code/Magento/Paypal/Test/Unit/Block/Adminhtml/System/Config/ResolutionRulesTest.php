@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ResolutionRulesTest extends TestCase
 
         $objectManager->prepareObjectManager([
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ]);
 
         $this->resolutionRules = new ResolutionRules(
@@ -87,7 +88,7 @@ class ResolutionRulesTest extends TestCase
     {
         return [
             [['test' => 'test-value'], '{"test":"test-value"}'],
-            [[], '{}']
+            [[], '{}'],
         ];
     }
 }

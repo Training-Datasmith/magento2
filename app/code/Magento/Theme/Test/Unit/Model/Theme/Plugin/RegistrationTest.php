@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,16 +12,16 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Theme\Model\ResourceModel\Theme\Collection as ThemeCollectionResourceModel;
 use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\Theme\Collection as ThemeCollection;
 use Magento\Theme\Model\Theme\Plugin\Registration as RegistrationPlugin;
 use Magento\Theme\Model\Theme\Registration as ThemeRegistration;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 class RegistrationTest extends TestCase
@@ -77,7 +78,7 @@ class RegistrationTest extends TestCase
             'themeCollection' => $this->themeCollectionMock,
             'themeLoader' => $this->themeLoaderMock,
             'logger' => $this->loggerMock,
-            'appState' => $this->appStateMock
+            'appState' => $this->appStateMock,
         ]);
     }
 
@@ -95,14 +96,14 @@ class RegistrationTest extends TestCase
             Theme::class,
             [
                 'getThemeTitle',
-                'getArea', 'getThemePath', 'getParentTheme'
+                'getArea', 'getThemePath', 'getParentTheme',
             ]
         );
 
         $themeFromDbMock = $this->createPartialMockWithReflection(
             Theme::class,
             [
-                'save', 'setParentId', 'setThemeTitle'
+                'save', 'setParentId', 'setThemeTitle',
             ]
         );
 

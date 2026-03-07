@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Controller\Adminhtml\Email\Template;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -37,8 +40,8 @@ class Edit extends \Magento\Email\Controller\Adminhtml\Email\Template implements
                 'template_edit',
                 [
                     'data' => [
-                        'email_template' => $template
-                    ]
+                        'email_template' => $template,
+                    ],
                 ]
             )->setEditMode(
                 (bool)$this->getRequest()->getParam('id')

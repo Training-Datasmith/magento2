@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\ResourceModel\Grid;
 
 use Magento\Customer\Model\ResourceModel\Customer;
@@ -144,7 +147,7 @@ class Collection extends SearchResult
         $locale = $this->localeResolver->getLocale();
         $connection = $this->getConnection();
         $regionIdField = $connection->quoteIdentifier('main_table.billing_region_id');
-        $localeCondition = $connection->quoteInto("rnt.locale=?", $locale);
+        $localeCondition = $connection->quoteInto('rnt.locale=?', $locale);
 
         $this->getSelect()
             ->joinLeft(

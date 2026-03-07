@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,12 +9,13 @@
 /**
  * Tax Total Row Renderer
  */
+
 namespace Magento\Tax\Block\Checkout;
 
 use Magento\Checkout\Helper\Data as CheckoutHelper;
 use Magento\Framework\App\ObjectManager;
-use Magento\Tax\Helper\Data as TaxHelper;
 use Magento\Sales\Model\ConfigInterface;
+use Magento\Tax\Helper\Data as TaxHelper;
 
 /**
  * Class for manage tax amount.

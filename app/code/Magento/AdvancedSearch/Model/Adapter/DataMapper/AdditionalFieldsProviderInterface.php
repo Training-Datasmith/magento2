@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Adapter\DataMapper;
 
 /**
@@ -16,7 +19,6 @@ interface AdditionalFieldsProviderInterface
     /**
      * Get additional fields for data mapper during search indexer based on product ids and store id.
      *
-     * @param array $productIds
      * @param int $storeId
      * @return array
      * @since 100.2.0

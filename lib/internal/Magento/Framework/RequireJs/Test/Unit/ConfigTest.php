@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Framework\Filesystem\File\Read;
 use Magento\Framework\Filesystem\File\ReadFactory;
 use Magento\Framework\RequireJs\Config;
 use Magento\Framework\RequireJs\Config\File\Collector\Aggregated;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\Minification;
 use Magento\Framework\View\Asset\Repository;
@@ -21,7 +23,6 @@ use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\File;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -87,7 +88,7 @@ class ConfigTest extends TestCase
                 'getThemePath',
                 'getLocale',
                 'getPath',
-                'getBaseUrl'
+                'getBaseUrl',
             ]
         );
         $repo->expects($this->once())->method('getStaticViewFileContext')->willReturn($this->context);

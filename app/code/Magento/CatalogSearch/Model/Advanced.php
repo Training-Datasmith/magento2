@@ -1,27 +1,30 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model;
 
 use Magento\Catalog\Model\Config;
-use Magento\CatalogSearch\Model\Advanced\ProductCollectionPrepareStrategyProvider;
-use Magento\CatalogSearch\Model\Search\ItemCollectionProviderInterface;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\CatalogSearch\Model\Advanced\ProductCollectionPrepareStrategyProvider;
 use Magento\CatalogSearch\Model\ResourceModel\Advanced\Collection as ProductCollection;
 use Magento\CatalogSearch\Model\ResourceModel\AdvancedFactory;
+use Magento\CatalogSearch\Model\Search\ItemCollectionProviderInterface;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Eav\Model\Entity\Attribute as EntityAttribute;
-use Magento\Framework\Model\Context;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Catalog advanced search model

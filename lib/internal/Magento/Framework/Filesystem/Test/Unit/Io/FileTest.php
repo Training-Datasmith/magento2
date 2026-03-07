@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Test\Unit\Io;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -27,12 +30,12 @@ class FileTest extends TestCase
     public function testReadShouldCopyTheSourceFileToTheGivenFileResource()
     {
         $content = \random_int(0, 1000);
-        $sourceFileName = "source-file.txt";
+        $sourceFileName = 'source-file.txt';
         $tmpDir = $this->getTmpDir();
         \file_put_contents("{$tmpDir}/{$sourceFileName}", $content);
 
         $file = new File();
-        $targetFileName = "target-file.txt";
+        $targetFileName = 'target-file.txt';
         $targetFileHandle = \fopen("{$tmpDir}/{$targetFileName}", 'w');
         $file->cd($tmpDir);
         $file->read($sourceFileName, $targetFileHandle);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -16,7 +19,7 @@ class Cert extends \Magento\Framework\Model\AbstractModel
     /**
      * Certificate base path
      */
-    const BASEPATH_PAYPAL_CERT = 'cert/paypal/';
+    public const BASEPATH_PAYPAL_CERT = 'cert/paypal/';
 
     /**
      * @var WriteInterface

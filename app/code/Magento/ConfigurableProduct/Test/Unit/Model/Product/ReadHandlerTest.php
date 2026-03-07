@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Helper\Product\Options\Loader;
 use Magento\ConfigurableProduct\Model\Product\ReadHandler;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
 
 #[CoversClass(\Magento\ConfigurableProduct\Model\Product\ReadHandler::class)]
 class ReadHandlerTest extends TestCase
@@ -61,13 +62,13 @@ class ReadHandlerTest extends TestCase
     {
         $options = [
             ['value_index' => 12],
-            ['value_index' => 13]
+            ['value_index' => 13],
         ];
         $entityId = 1;
         $ids = [1, 2, 3];
 
         $product = $this->createPartialMock(Product::class, [
-                'getTypeId', 'getId', 'getExtensionAttributes', 'setExtensionAttributes', 'getTypeInstance'
+                'getTypeId', 'getId', 'getExtensionAttributes', 'setExtensionAttributes', 'getTypeInstance',
             ]);
 
         $product->expects(static::once())
@@ -78,7 +79,7 @@ class ReadHandlerTest extends TestCase
             ProductExtensionInterface::class,
             [
                 'getConfigurableProductOptions', 'setConfigurableProductOptions',
-                'getConfigurableProductLinks', 'setConfigurableProductLinks'
+                'getConfigurableProductLinks', 'setConfigurableProductLinks',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class SaveTest extends TestCase
         $_FILES['test_key'] = [];
         $result = [
             'file' => '',
-            'url' => ''
+            'url' => '',
         ];
         $resultJson = '{"file": "", "url": ""}';
 

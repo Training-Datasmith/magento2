@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -69,15 +70,15 @@ class ActivityTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
-        
+
         $jsonHelperMock = $this->createMock(JsonHelper::class);
         $directoryHelperMock = $this->createMock(DirectoryHelper::class);
-        
+
         $this->objectManager->prepareObjectManager([
             [JsonHelper::class, $jsonHelperMock],
-            [DirectoryHelper::class, $directoryHelperMock]
+            [DirectoryHelper::class, $directoryHelperMock],
         ]);
-        
+
         $this->localeDate = $this->createMock(TimezoneInterface::class);
 
         $this->sessionsManager = $this->createPartialMock(
@@ -97,7 +98,7 @@ class ActivityTest extends TestCase
                 'sessionsManager' => $this->sessionsManager,
                 'securityConfig' => $this->securityConfig,
                 'localeDate' => $this->localeDate,
-                'remoteAddress' => $this->remoteAddressMock
+                'remoteAddress' => $this->remoteAddressMock,
             ]
         );
     }
@@ -176,7 +177,7 @@ class ActivityTest extends TestCase
     {
         return [
             ['timeString' => '2015-12-28 13:00:00'],
-            ['timeString' => '2015-12-23 01:10:37']
+            ['timeString' => '2015-12-23 01:10:37'],
         ];
     }
 }

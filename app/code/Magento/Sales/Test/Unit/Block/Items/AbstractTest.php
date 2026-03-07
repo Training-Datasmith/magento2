@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class AbstractTest extends TestCase
 {
-
     /** @var ObjectManager  */
     protected $_objectManager;
 
@@ -53,7 +53,7 @@ class AbstractTest extends TestCase
                 'context' => $this->_objectManager->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 
@@ -92,22 +92,22 @@ class AbstractTest extends TestCase
             [
                 'type1',
                 null,
-                'type 1 renderer'
+                'type 1 renderer',
             ],
             [
                 'type1',
                 'type2',
-                'type 2 renderer'
+                'type 2 renderer',
             ],
             [
                 'type3',
                 null,
-                'default renderer'
+                'default renderer',
             ],
             [
                 'type3',
                 'type1',
-                'type 1 renderer'
+                'type 1 renderer',
             ],
         ];
     }
@@ -158,7 +158,7 @@ class AbstractTest extends TestCase
             Layout::class,
             [
                 'getChildName',
-                'getBlock'
+                'getBlock',
             ]
         );
 

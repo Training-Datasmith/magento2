@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Quote;
 
-use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Quote\Model\Quote\Address\ToOrder as QuoteAddressToOrder;
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
+use Magento\Quote\Model\Quote\Address\ToOrder as QuoteAddressToOrder;
+use Magento\Sales\Api\Data\OrderInterface;
 
 class ToOrderConverter
 {

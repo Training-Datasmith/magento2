@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -29,11 +30,11 @@ class Onepage
     /**
      * Checkout types: Checkout as Guest, Register, Logged In Customer
      */
-    const METHOD_GUEST    = 'guest';
-    const METHOD_REGISTER = 'register';
-    const METHOD_CUSTOMER = 'customer';
-    const USE_FOR_SHIPPING = 1;
-    const NOT_USE_FOR_SHIPPING = 0;
+    public const METHOD_GUEST    = 'guest';
+    public const METHOD_REGISTER = 'register';
+    public const METHOD_CUSTOMER = 'customer';
+    public const USE_FOR_SHIPPING = 1;
+    public const NOT_USE_FOR_SHIPPING = 0;
 
     /**
      * @var \Magento\Customer\Model\Session
@@ -757,7 +758,7 @@ class Onepage
             'checkout_submit_all_after',
             [
                 'order' => $order,
-                'quote' => $this->getQuote()
+                'quote' => $this->getQuote(),
             ]
         );
         return $this;

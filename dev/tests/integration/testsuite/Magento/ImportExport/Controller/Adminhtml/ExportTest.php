@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Controller\Adminhtml;
 
 use Magento\TestFramework\Helper\Xpath;
@@ -88,16 +91,16 @@ class ExportTest extends AbstractBackendController
             'products' => [
                 'entityType' => 'catalog_product',
                 'customerEntityType' => null,
-                'expectedAttributes' => ['category_ids']
+                'expectedAttributes' => ['category_ids'],
             ],
             'customers' => [
-                'entityType' => 'customer'
+                'entityType' => 'customer',
             ],
             // customer entities
             'customers_customer_entities' => [
                 'entityType' => 'customer',
-                'customerEntityType' => 'customer'
-            ]
+                'customerEntityType' => 'customer',
+            ],
         ];
     }
 

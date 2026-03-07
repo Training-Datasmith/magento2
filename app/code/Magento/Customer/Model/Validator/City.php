@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class City extends AbstractValidator
         if (!$this->isValidCity($customer->getCity())) {
             parent::_addMessages([[
                 'city' => "Invalid City. Please use letters, numbers, spaces,
-                and the following characters: - _ ' ’ . , & ( ) /"
+                and the following characters: - _ ' ’ . , & ( ) /",
             ]]);
         }
 

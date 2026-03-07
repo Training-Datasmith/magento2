@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Backend\Model\Session\Quote as SessionQuote;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
@@ -120,7 +123,7 @@ class CreateTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
                 'customer_id' => $customer->getId(),
                 'collect_shipping_rates' => 1,
                 'store_id' => $store->getId(),
-                'json' => true
+                'json' => true,
             ]
         );
         $this->dispatch('backend/sales/order_create/loadBlock/block/shipping_method');
@@ -157,7 +160,7 @@ class CreateTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
             'billing_method' => ['billing_method', '<div id=\"order-billing_method_form\">'],
             'newsletter' => ['newsletter', 'name=\"newsletter:subscribe\"'],
             'search' => ['search', '<div id=\"sales_order_create_search_grid\"'],
-            'search_grid' => ['search', '<div id=\"sales_order_create_search_grid\"']
+            'search_grid' => ['search', '<div id=\"sales_order_create_search_grid\"'],
         ];
     }
 
@@ -276,7 +279,7 @@ class CreateTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
             ['cancel', false, 'Magento_Sales::cancel'],
             ['cancel', true, 'Magento_Sales::reorder'],
             ['', false, 'Magento_Sales::actions'],
-            ['', true, 'Magento_Sales::actions']
+            ['', true, 'Magento_Sales::actions'],
         ];
     }
 
@@ -353,7 +356,7 @@ class CreateTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
             'city' => 'Kyiv',
             'country_id' => 'UA',
             'region' => 'Kyivska',
-            'region_id' => 1
+            'region_id' => 1,
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue(
@@ -362,7 +365,7 @@ class CreateTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
                 'reset_shipping' => 1,
                 'customer_id' => $customer->getId(),
                 'store_id' => 1,
-                'json' => true
+                'json' => true,
             ]
         );
 

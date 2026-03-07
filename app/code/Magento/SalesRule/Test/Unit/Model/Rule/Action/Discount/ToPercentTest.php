@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -226,7 +227,7 @@ class ToPercentTest extends TestCase
                     'originalAmount' => 119,
                     'baseOriginalAmount' => 80.5,
                 ],
-            ]
+            ],
         ];
     }
 }

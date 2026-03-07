@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Class constructor validator. Validates argument types duplication
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Validator;
 
 use Magento\Framework\Code\ValidatorInterface;
@@ -14,9 +17,9 @@ class TypeDuplication implements ValidatorInterface
     /**
      * Name of the suppress warnings annotation.
      */
-    const SUPPRESS_ANNOTATION = 'SuppressWarnings';
+    public const SUPPRESS_ANNOTATION = 'SuppressWarnings';
 
-    const TYPE_DUPLICATIONS = 'Magento.TypeDuplication';
+    public const TYPE_DUPLICATIONS = 'Magento.TypeDuplication';
 
     /**
      * @var \Magento\Framework\Code\Reader\ArgumentsReader
@@ -77,7 +80,7 @@ class TypeDuplication implements ValidatorInterface
                             $class->getName(),
                             $classPath,
                             PHP_EOL,
-                            implode(PHP_EOL, $errors)
+                            implode(PHP_EOL, $errors),
                         ]
                     )
                 );

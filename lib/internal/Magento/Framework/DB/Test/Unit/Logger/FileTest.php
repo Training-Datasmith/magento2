@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\DB\Logger\QueryAnalyzerInterface;
 use Magento\Framework\DB\LoggerInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\File\WriteInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FileTest extends TestCase
 {
@@ -121,20 +122,20 @@ class FileTest extends TestCase
                 LoggerInterface::TYPE_TRANSACTION,
                 'SELECT something',
                 [],
-                '%aTRANSACTION SELECT something%a'
+                '%aTRANSACTION SELECT something%a',
             ],
             [
                 LoggerInterface::TYPE_QUERY,
                 'SELECT something',
                 [],
-                '%aSQL: SELECT something%a'
+                '%aSQL: SELECT something%a',
             ],
             [
                 LoggerInterface::TYPE_QUERY,
                 'SELECT something',
                 ['data'],
-                "%aQUERY%aSQL: SELECT something%aBIND: array (%a0 => 'data',%a)%a"
-            ]
+                "%aQUERY%aSQL: SELECT something%aBIND: array (%a0 => 'data',%a)%a",
+            ],
         ];
     }
 
@@ -167,7 +168,7 @@ class FileTest extends TestCase
     public function testcritical()
     {
         $exception = new \Exception('error message');
-        $expected = "%aEXCEPTION%aException%aerror message%a";
+        $expected = '%aEXCEPTION%aException%aerror message%a';
 
         $this->stream->expects($this->once())
             ->method('write')

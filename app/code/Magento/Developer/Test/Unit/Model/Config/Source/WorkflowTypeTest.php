@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Test\Unit\Model\Config\Source;
 
 use Magento\Developer\Model\Config\Source\WorkflowType;

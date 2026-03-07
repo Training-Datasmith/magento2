@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 
-use \Magento\Framework\App\ObjectManager;
-use \Magento\Framework\FlagManager;
-use \Magento\Catalog\Model\ResourceModel\Attribute\WebsiteAttributesSynchronizer;
+use Magento\Catalog\Model\ResourceModel\Attribute\WebsiteAttributesSynchronizer;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\FlagManager;
 
 /**
  * @var FlagManager $flagManager

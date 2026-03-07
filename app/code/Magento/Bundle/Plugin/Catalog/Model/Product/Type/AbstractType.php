@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Plugin\Catalog\Model\Product\Type;
 
-use Magento\Catalog\Model\Product\Type\AbstractType as Subject;
+use Magento\Bundle\Model\Product\SingleChoiceProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
-use Magento\Bundle\Model\Product\SingleChoiceProvider;
+use Magento\Catalog\Model\Product\Type\AbstractType as Subject;
 
 /**
  * Plugin to add possibility to add bundle product with single option from list

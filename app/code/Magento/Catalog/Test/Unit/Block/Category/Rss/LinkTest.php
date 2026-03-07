@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Category\Rss;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Category\Rss\Link;
 use Magento\Catalog\Model\Category;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -15,6 +15,7 @@ use Magento\Framework\App\Rss\UrlBuilderInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -64,7 +65,7 @@ class LinkTest extends TestCase
                 'rssUrlBuilder' => $this->urlBuilderInterface,
                 'registry' => $this->registry,
                 'scopeConfig' => $this->scopeConfigInterface,
-                'storeManager' => $this->storeManagerInterface
+                'storeManager' => $this->storeManagerInterface,
             ]
         );
     }
@@ -86,7 +87,7 @@ class LinkTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 
@@ -115,7 +116,7 @@ class LinkTest extends TestCase
     {
         return [
             [true, '2'],
-            [false, '1']
+            [false, '1'],
         ];
     }
 

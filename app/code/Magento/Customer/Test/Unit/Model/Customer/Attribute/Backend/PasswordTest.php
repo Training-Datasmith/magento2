@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Customer\Model\Customer\Attribute\Backend\Password;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class PasswordTest extends TestCase
 {
@@ -100,9 +101,9 @@ class PasswordTest extends TestCase
         return [
             [false],
             [1],
-            ["23"],
+            ['23'],
             [null],
-            [""],
+            [''],
             [-1],
             [12.3],
             [true],

@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Bulk\Rpc;
 
-use Magento\Framework\MessageQueue\PublisherInterface;
-use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\Framework\MessageQueue\Bulk\ExchangeRepository;
-use PhpAmqpLib\Message\AMQPMessage;
+use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\Framework\MessageQueue\MessageEncoder;
 use Magento\Framework\MessageQueue\MessageValidator;
 use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
+use Magento\Framework\MessageQueue\PublisherInterface;
 use Magento\Framework\MessageQueue\Rpc\ResponseQueueNameBuilder;
 
 /**
@@ -99,7 +101,7 @@ class Publisher implements PublisherInterface
                         'delivery_mode' => 2,
                         'correlation_id' => rand(),
                         'message_id' => $this->messageIdGenerator->generate($topicName),
-                    ]
+                    ],
                 ]
             );
             $envelopes[] = $envelope;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class BackordersTest extends TestCase
         $this->backorders = $this->backendFactory->create(Backorders::class, [
             'data' => [
                 'path' => Configuration::XML_PATH_BACKORDERS,
-            ]
+            ],
         ]);
         $this->mutableConfig = $this->objectManager->get(MutableScopeConfigInterface::class);
         $this->stockIndexerProcessor = $this->objectManager->get(Processor::class);

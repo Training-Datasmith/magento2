@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Customer;
 
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
 
 /**
  * Test for assigning customer to the guest cart
@@ -121,7 +122,7 @@ class AssignCustomerToGuestCartTest extends GraphQlAbstract
      */
     public function testAssigningCustomerToNonExistentCart(): void
     {
-        $guestQuoteMaskedId = "non_existent_masked_id";
+        $guestQuoteMaskedId = 'non_existent_masked_id';
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage("Could not find a cart with ID \"{$guestQuoteMaskedId}\"");
 

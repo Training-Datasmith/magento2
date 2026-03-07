@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace Magento\WishlistGraphQl\Model\CartItems;
 
 use Magento\Catalog\Api\ProductCustomOptionRepositoryInterface;
-use Magento\Wishlist\Model\Item;
 use Magento\Framework\GraphQl\Query\Uid;
+use Magento\Wishlist\Model\Item;
 
 /**
  * Data provider for custom options for cart item request
@@ -21,8 +22,8 @@ class CustomizableOptionDataProvider implements CartItemsRequestDataProviderInte
      */
     private $productCustomOptionRepository;
 
-    /** 
-     * @var Uid 
+    /**
+     * @var Uid
      */
     private $uidEncoder;
 
@@ -44,7 +45,7 @@ class CustomizableOptionDataProvider implements CartItemsRequestDataProviderInte
     public function execute(Item $wishlistItem, ?string $sku): array
     {
         $buyRequest = $wishlistItem->getBuyRequest();
-        $options = isset($buyRequest['options'])?$buyRequest['options']:[];
+        $options = isset($buyRequest['options']) ? $buyRequest['options'] : [];
         $customOptions = $this->productCustomOptionRepository->getList($sku);
         $selectedOptions = [];
         $enteredOptions = [];

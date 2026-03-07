@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Category;
 
 use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
@@ -254,7 +257,7 @@ class Flat extends \Magento\Indexer\Model\ResourceModel\AbstractResource
                 new \Zend_Db_Expr('main_table.' . $_conn->quoteIdentifier('name')),
                 new \Zend_Db_Expr('main_table.' . $_conn->quoteIdentifier('path')),
                 'is_active',
-                'is_anchor'
+                'is_anchor',
             ]
         )->joinLeft(
             ['url_rewrite' => $this->getTable('url_rewrite')],
@@ -271,7 +274,7 @@ class Flat extends \Magento\Indexer\Model\ResourceModel\AbstractResource
         $select->order('main_table.position');
 
         if ($parentPath) {
-            $select->where($_conn->quoteInto("main_table.path like ?", "{$parentPath}/%"));
+            $select->where($_conn->quoteInto('main_table.path like ?', "{$parentPath}/%"));
         }
         if ($recursionLevel != 0) {
             $levelField = $_conn->quoteIdentifier('level');

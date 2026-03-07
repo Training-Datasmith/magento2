@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -42,8 +43,8 @@ class ConnectionTypeResolverTest extends TestCase
                             'password' => 'guest',
                             'ssl' => '',
                             'randomKey' => 'randomValue',
-                        ]
-                    ]
+                        ],
+                    ],
                 ]
             );
 

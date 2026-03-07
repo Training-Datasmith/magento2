@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -37,7 +39,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
             'e.entity_id = d.product_id',
             [
                 'purchases' => new \Zend_Db_Expr('SUM(d.number_of_downloads_bought)'),
-                'downloads' => new \Zend_Db_Expr('SUM(d.number_of_downloads_used)')
+                'downloads' => new \Zend_Db_Expr('SUM(d.number_of_downloads_used)'),
             ]
         )->joinInner(
             ['l' => $this->getTable('downloadable_link_title')],
@@ -52,7 +54,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
                 ' OR ',
                 [
                     $connection->quoteInto('d.number_of_downloads_bought > ?', 0),
-                    $connection->quoteInto('d.number_of_downloads_used > ?', 0)
+                    $connection->quoteInto('d.number_of_downloads_used > ?', 0),
                 ]
             )
         )->group(

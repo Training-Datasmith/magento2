@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Catalog Rule Combine Condition data model
  */
+
 namespace Magento\CatalogRule\Model\Rule\Condition;
 
 class Combine extends \Magento\Rule\Model\Condition\Combine
@@ -52,7 +55,7 @@ class Combine extends \Magento\Rule\Model\Condition\Combine
                     'value' => \Magento\CatalogRule\Model\Rule\Condition\Combine::class,
                     'label' => __('Conditions Combination'),
                 ],
-                ['label' => __('Product Attribute'), 'value' => $attributes]
+                ['label' => __('Product Attribute'), 'value' => $attributes],
             ]
         );
         return $conditions;

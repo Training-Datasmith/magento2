@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             CustomOptionsModifier::class,
             [
                 'locator' => $this->locatorMock,
-                'arrayManager' => $this->arrayManagerMock
+                'arrayManager' => $this->arrayManagerMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\CustomerGraphQl\Model\Context;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\GraphQl\Model\Query\ContextParametersInterface;
-use Magento\GraphQl\Model\Query\ContextParametersProcessorInterface;
 use Magento\Customer\Model\Group;
 use Magento\Customer\Model\Group\Resolver as CustomerGroupResolver;
+use Magento\GraphQl\Model\Query\ContextParametersInterface;
+use Magento\GraphQl\Model\Query\ContextParametersProcessorInterface;
 
 /**
  * @inheritdoc

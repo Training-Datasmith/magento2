@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Controller\Adminhtml;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\ImportExport\Helper\Report;
+use Magento\ImportExport\Model\History as ModelHistory;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\ImportExport\Model\History as ModelHistory;
-use Magento\Framework\Escaper;
-use Magento\Framework\App\ObjectManager;
 use Magento\ImportExport\Model\Import\RenderErrorMessages;
 use Magento\ImportExport\Model\Report\ReportProcessorInterface;
 

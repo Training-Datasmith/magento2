@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Test\Unit\Locale;
 
-use Magento\Framework\Locale\ResolverInterface as LocalResolverInterface;
 use Magento\Framework\Locale\LocaleFormatter;
+use Magento\Framework\Locale\ResolverInterface as LocalResolverInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

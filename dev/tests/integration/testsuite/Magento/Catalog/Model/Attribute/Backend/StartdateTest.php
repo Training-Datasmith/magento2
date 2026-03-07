@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -85,12 +86,11 @@ class StartdateTest extends TestCase
     public function testValidatePastEndWithNoStart(): void
     {
         $noException = null;
-        try{
+        try {
             $product = $this->productFactory->create();
             $actualResult = $this->startDate->validate($product);
             $this->assertEquals(true, $actualResult);
-        }catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             $noException = $e->getMessage();
         }
         $this->assertNull($noException);

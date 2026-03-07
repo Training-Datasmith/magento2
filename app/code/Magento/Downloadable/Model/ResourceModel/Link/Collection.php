@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\ResourceModel\Link;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -103,7 +106,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 'st.link_id=main_table.link_id AND st.store_id = ' . (int)$storeId,
                 [
                     'store_title' => 'title',
-                    'title' => $ifNullDefaultTitle
+                    'title' => $ifNullDefaultTitle,
                 ]
             )->order('main_table.sort_order ASC')
             ->order('title ASC');

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,9 +10,9 @@ namespace Magento\Framework\View\Page;
 
 use Magento\Framework\App;
 use Magento\Framework\App\Area;
-use Magento\Framework\View;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
+use Magento\Framework\View;
 use Magento\Store\Model\ScopeInterface;
 
 /**

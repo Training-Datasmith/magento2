@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -30,12 +31,12 @@ class ApiMode implements OptionSourceInterface
         return [
             [
                 'value' => self::MODE_V2_REST,
-                'label' => __('v2 REST (Legacy)')
+                'label' => __('v2 REST (Legacy)'),
             ],
             [
                 'value' => self::MODE_NERDGRAPH,
-                'label' => __('NerdGraph (GraphQL) - Recommended')
-            ]
+                'label' => __('NerdGraph (GraphQL) - Recommended'),
+            ],
         ];
     }
 
@@ -48,7 +49,7 @@ class ApiMode implements OptionSourceInterface
     {
         return [
             self::MODE_V2_REST => __('v2 REST (Legacy)'),
-            self::MODE_NERDGRAPH => __('NerdGraph (GraphQL) - Recommended')
+            self::MODE_NERDGRAPH => __('NerdGraph (GraphQL) - Recommended'),
         ];
     }
 }

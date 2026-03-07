@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'multiselect',
-                'source_model' => Table::class
+                'source_model' => Table::class,
             ],
             'attribute'
         ),
@@ -57,7 +58,7 @@ QRY;
             [
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$attribute.attribute_code$',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'option1'
         ),
@@ -67,7 +68,7 @@ QRY;
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$attribute.attribute_code$',
                 'sort_order' => 20,
-                'is_default' => true
+                'is_default' => true,
             ],
             'option2'
         ),
@@ -77,7 +78,7 @@ QRY;
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$attribute.attribute_code$',
                 'sort_order' => 30,
-                'is_default' => true
+                'is_default' => true,
             ],
             'option3'
         ),
@@ -105,12 +106,12 @@ QRY;
                             'options' => [
                                 $this->getOptionData($option1),
                                 $this->getOptionData($option2),
-                                $this->getOptionData($option3)
-                            ]
-                        ]
+                                $this->getOptionData($option3),
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );
@@ -128,7 +129,7 @@ QRY;
         return [
             'label' => $option->getLabel(),
             'value' => $option->getValue(),
-            'is_default' => $option->getIsDefault()
+            'is_default' => $option->getIsDefault(),
         ];
     }
 }

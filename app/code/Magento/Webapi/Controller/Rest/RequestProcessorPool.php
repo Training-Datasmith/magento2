@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\Webapi\Controller\Rest;
  */
 class RequestProcessorPool
 {
-
     /**
      * @var array
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 // @codingStandardsIgnoreStart
+
 namespace Magento\Framework\Reflection\Test\Unit;
 
 use Laminas\Code\Reflection\ClassReflection;
@@ -32,10 +34,10 @@ class NameFinderTest extends TestCase
     {
         $class = new ClassReflection(DataObject::class);
         $setterName = $this->nameFinder->getSetterMethodName($class, 'AttrName');
-        $this->assertEquals("setAttrName", $setterName);
+        $this->assertEquals('setAttrName', $setterName);
 
         $booleanSetterName = $this->nameFinder->getSetterMethodName($class, 'Active');
-        $this->assertEquals("setIsActive", $booleanSetterName);
+        $this->assertEquals('setIsActive', $booleanSetterName);
     }
 
     /**

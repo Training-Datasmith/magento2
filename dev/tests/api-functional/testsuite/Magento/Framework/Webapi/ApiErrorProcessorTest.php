@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Framework\Webapi;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Indexer\Test\Fixture\Indexer as IndexerFixture;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
@@ -16,6 +16,7 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test API error processor for malformed requests/bodies.
@@ -54,7 +55,7 @@ class ApiErrorProcessorTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . $endpoint . '?' . http_build_query($requestData),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-            ]
+            ],
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);
@@ -75,12 +76,12 @@ class ApiErrorProcessorTest extends WebapiAbstract
                             [
                                 'filters' => [
                                     [
-                                        'field' => 'string'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'field' => 'string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'endpoint' => 'coupons/search',
                 'expectedExceptionCode' => 400,
@@ -92,12 +93,12 @@ class ApiErrorProcessorTest extends WebapiAbstract
                             [
                                 'filters' => [
                                     [
-                                        'field' => 'string'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'field' => 'string',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'endpoint' => 'categories/attributes',
                 'expectedExceptionCode' => 400,
@@ -107,14 +108,14 @@ class ApiErrorProcessorTest extends WebapiAbstract
                     'searchCriteria' => [
                         'sortOrders' => [
                             [
-                                'field' => 'string'
-                            ]
-                        ]
-                    ]
+                                'field' => 'string',
+                            ],
+                        ],
+                    ],
                 ],
                 'endpoint' => 'cmsPage/search',
                 'expectedExceptionCode' => 400,
-            ]
+            ],
         ];
     }
 
@@ -148,17 +149,17 @@ class ApiErrorProcessorTest extends WebapiAbstract
             ],
         ];
         $requestData = [
-            "addressInformation" => [
-                "extension_attributes" => [
-                    "discounts" => [
+            'addressInformation' => [
+                'extension_attributes' => [
+                    'discounts' => [
                         [
-                            "discount_data" => [
-                                "amount" => 0
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            'discount_data' => [
+                                'amount' => 0,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
     }
@@ -185,13 +186,13 @@ class ApiErrorProcessorTest extends WebapiAbstract
             ],
         ];
         $requestData = [
-            "product" => [
-                "extension_attributes" => [
-                    "stock_item" => [
-                        "show_default_notification_message" => true
-                    ]
-                ]
-            ]
+            'product' => [
+                'extension_attributes' => [
+                    'stock_item' => [
+                        'show_default_notification_message' => true,
+                    ],
+                ],
+            ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
     }

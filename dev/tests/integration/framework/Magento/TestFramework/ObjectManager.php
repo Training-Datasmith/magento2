@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework;
 
 /**
@@ -17,7 +20,7 @@ class ObjectManager extends \Magento\Framework\App\ObjectManager
      */
     protected $_classesToDestruct = [
         \Magento\Framework\View\Layout::class,
-        \Magento\Framework\Registry::class
+        \Magento\Framework\Registry::class,
     ];
 
     /**

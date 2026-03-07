@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class GetListViews
     public function execute(): array
     {
         return $this->resource->getConnection('backup')->fetchCol(
-            "SHOW FULL TABLES WHERE `Table_type` = ?",
+            'SHOW FULL TABLES WHERE `Table_type` = ?',
             self::TABLE_TYPE
         );
     }

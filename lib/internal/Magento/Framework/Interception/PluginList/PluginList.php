@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception\PluginList;
 
 use Magento\Framework\Config\CacheInterface;
@@ -11,14 +14,14 @@ use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Interception\ConfigLoaderInterface;
 use Magento\Framework\Interception\DefinitionInterface;
+use Magento\Framework\Interception\ObjectManager\ConfigInterface;
 use Magento\Framework\Interception\PluginListGenerator;
 use Magento\Framework\Interception\PluginListInterface as InterceptionPluginList;
-use Magento\Framework\Interception\ObjectManager\ConfigInterface;
-use Magento\Framework\ObjectManager\RelationsInterface;
 use Magento\Framework\ObjectManager\DefinitionInterface as ClassDefinitions;
+use Magento\Framework\ObjectManager\RelationsInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Serialize\Serializer\Serialize;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Plugin config, provides list of plugins for a type
@@ -217,7 +220,7 @@ class PluginList extends Scoped implements InterceptionPluginList
             }
             $this->_scopePriorityScheme[] = $scope;
 
-            $cacheId = implode('|', $this->_scopePriorityScheme) . "|" . $this->_cacheId;
+            $cacheId = implode('|', $this->_scopePriorityScheme) . '|' . $this->_cacheId;
             $configData = $this->configLoader->load($cacheId);
 
             if ($configData) {

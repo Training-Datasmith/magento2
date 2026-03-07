@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,9 +12,9 @@ use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductRender\PriceInfoInterface;
 use Magento\Catalog\Api\Data\ProductRender\PriceInfoInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductRenderInterface;
+use Magento\Catalog\Model\ProductRender\FormattedPriceInfoBuilder;
 use Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Catalog\Model\ProductRender\FormattedPriceInfoBuilder;
 
 /**
  * Collect information about bundle price
@@ -25,7 +27,7 @@ class BundlePrice implements ProductRenderCollectorInterface
     /**
      * Product type code
      */
-    const PRODUCT_TYPE = "bundle";
+    public const PRODUCT_TYPE = 'bundle';
 
     /**
      * @var PriceCurrencyInterface

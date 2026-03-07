@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\Customer;
 
 /**
@@ -56,7 +59,7 @@ class CustomerDataGenerator
         return [
             'customer' => [
                 'email' => sprintf('user_%s@example.com', $customerId),
-                'group_id' => $this->getGroupIdForCustomer($customerId)
+                'group_id' => $this->getGroupIdForCustomer($customerId),
             ],
 
             'addresses' => $this->generateAddresses(),

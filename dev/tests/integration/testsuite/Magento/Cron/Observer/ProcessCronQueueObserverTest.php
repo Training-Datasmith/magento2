@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All rights reserved.
  */
+
 namespace Magento\Cron\Observer;
 
-use Magento\Cron\Observer\ProcessCronQueueObserver;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -74,7 +76,7 @@ class ProcessCronQueueObserverTest extends TestCase
         foreach ($expectedGroupsToRun as $expectedGroupToRun) {
             $expectedLockData[] = [
                 ProcessCronQueueObserver::LOCK_PREFIX . $expectedGroupToRun,
-                ProcessCronQueueObserver::LOCK_TIMEOUT
+                ProcessCronQueueObserver::LOCK_TIMEOUT,
             ];
         }
 
@@ -96,14 +98,14 @@ class ProcessCronQueueObserverTest extends TestCase
             [
                 'group' => $group,
                 'exclude-group' => $excludeGroup,
-                'standaloneProcessStarted' => '1'
+                'standaloneProcessStarted' => '1',
             ]
         );
         $this->_model = Bootstrap::getObjectManager()
             ->create(\Magento\Cron\Observer\ProcessCronQueueObserver::class, [
                 'request' => $request,
                 'lockManager' => $lockManager,
-                'config' => $config
+                'config' => $config,
             ]);
         $this->_model->execute(new \Magento\Framework\Event\Observer());
     }
@@ -117,42 +119,42 @@ class ProcessCronQueueObserverTest extends TestCase
             'no flags runs all groups' => [
                 ['index', 'consumers', 'default'],  // $expectedGroupsToRun
                 null,  // $group
-                null   // $excludeGroup
+                null,   // $excludeGroup
             ],
             '--group=default should run'  => [
                 ['default'],  // $expectedGroupsToRun
                 'default',    // $group
-                null          // $excludeGroup
+                null,          // $excludeGroup
             ],
             '--group=default with --exclude-group=default, nothing should run' => [
                 [],           // $expectedGroupsToRun
                 'default',    // $group
-                ['default']   // $excludeGroup
+                ['default'],   // $excludeGroup
             ],
             '--group=default with --exclude-group=index, default should run' => [
                 ['default'],  // $expectedGroupsToRun
                 'default',    // $group
-                ['index']     // $excludeGroup
+                ['index'],     // $excludeGroup
             ],
             '--group=index with --exclude-group=default, index should run' => [
                 ['index'],    // $expectedGroupsToRun
                 'index',      // $group
-                ['default']   // $excludeGroup
+                ['default'],   // $excludeGroup
             ],
             '--exclude-group=index, all other groups should run' => [
                 ['consumers', 'default'],  // $expectedGroupsToRun
                 null,         // $group
-                ['index']     // $excludeGroup
+                ['index'],     // $excludeGroup
             ],
             '--exclude-group for every group runs nothing' => [
                 [],           // $expectedGroupsToRun
                 null,         // $group
-                ['default', 'consumers', 'index']  // $excludeGroup
+                ['default', 'consumers', 'index'],  // $excludeGroup
             ],
             'exclude all groups but consumers, consumers runs' => [
                 ['consumers'],       // $expectedGroupsToRun
                 null,                // $group
-                ['index', 'default'] // $excludeGroup
+                ['index', 'default'], // $excludeGroup
             ],
         ];
     }

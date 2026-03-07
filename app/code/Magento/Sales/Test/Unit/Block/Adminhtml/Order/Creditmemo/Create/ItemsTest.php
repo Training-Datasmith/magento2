@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Model\StockRegistry;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items;
 use Magento\Sales\Model\Order;
@@ -21,10 +23,9 @@ use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -95,7 +96,7 @@ class ItemsTest extends TestCase
                 'context' => $this->contextMock,
                 'stockRegistry' => $this->stockRegistry,
                 'stockConfiguration' => $this->stockConfiguration,
-                'registry' => $this->registryMock
+                'registry' => $this->registryMock,
             ]
         );
     }

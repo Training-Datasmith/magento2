@@ -11,12 +11,12 @@ namespace Magento\ContactGraphQl\Model\Resolver;
 
 use Magento\Contact\Model\ConfigInterface;
 use Magento\Contact\Model\MailInterface;
+use Magento\ContactGraphQl\Model\ContactUsValidator;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Psr\Log\LoggerInterface;
-use Magento\ContactGraphQl\Model\ContactUsValidator;
 
 class ContactUs implements ResolverInterface
 {
@@ -89,7 +89,7 @@ class ContactUs implements ResolverInterface
         }
 
         return [
-            'status' => true
+            'status' => true,
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class SchemaLocatorTest extends TestCase
         $this->model = $objectManager->getObject(
             SchemaLocator::class,
             [
-                'moduleReader' => $this->moduleReaderMock
+                'moduleReader' => $this->moduleReaderMock,
             ]
         );
     }

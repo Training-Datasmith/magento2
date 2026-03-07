@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Sales\Model\ResourceModel\Attribute;
 use Magento\Sales\Model\ResourceModel\GridPool;
 use Magento\Sales\Model\ResourceModel\Order\Handler\Address as AddressHandler;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Collection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AddressUpdateTest extends TestCase
 {
@@ -116,11 +117,11 @@ class AddressUpdateTest extends TestCase
         return [
             'Do not reindex when async is enabled' => [
                 true,
-                0
+                0,
             ],
             'Reindex when async is disabled' => [
                 false,
-                1
+                1,
             ],
         ];
     }

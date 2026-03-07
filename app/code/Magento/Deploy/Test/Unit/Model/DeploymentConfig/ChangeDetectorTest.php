@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class ChangeDetectorTest extends TestCase
                 'configData' => 'some data',
                 'generatedHash' => '123',
                 'savedHash' => ['section' => '123'],
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'sectionName' => 'section',
@@ -112,7 +113,7 @@ class ChangeDetectorTest extends TestCase
                 'configData' => 'some data',
                 'generatedHash' => '321',
                 'savedHash' => ['section' => '123'],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'sectionName' => null,
@@ -120,7 +121,7 @@ class ChangeDetectorTest extends TestCase
                 'configData' => 'some data',
                 'generatedHash' => '321',
                 'savedHash' => [],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'sectionName' => 'section',
@@ -128,7 +129,7 @@ class ChangeDetectorTest extends TestCase
                 'configData' => null,
                 'generatedHash' => '321',
                 'savedHash' => ['section' => '123'],
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'sectionName' => null,
@@ -136,7 +137,7 @@ class ChangeDetectorTest extends TestCase
                 'configData' => null,
                 'generatedHash' => '321',
                 'savedHash' => [],
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
         ];
     }

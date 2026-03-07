@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,12 +17,12 @@ use Magento\Cms\Model\Block;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as TestFrameworkObjectManager;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as TestFrameworkObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -172,7 +173,7 @@ class SaveTest extends TestCase
                 'context' => $this->contextMock,
                 'dataPersistor' => $this->dataPersistorMock,
                 'blockFactory' => $this->blockFactory,
-                'blockRepository' => $this->blockRepository
+                'blockRepository' => $this->blockRepository,
             ]
         );
     }
@@ -188,7 +189,7 @@ class SaveTest extends TestCase
             'stores' => ['0'],
             'is_active' => true,
             'content' => '"><script>alert("cookie: "+document.cookie)</script>',
-            'back' => 'continue'
+            'back' => 'continue',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -197,7 +198,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, 'continue']
+                    ['back', null, 'continue'],
                 ]
             );
 
@@ -243,7 +244,7 @@ class SaveTest extends TestCase
     {
         $postData = [
             'block_id' => 1,
-            'back' => 'continue'
+            'back' => 'continue',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -252,7 +253,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, false]
+                    ['back', null, false],
                 ]
             );
 
@@ -285,7 +286,7 @@ class SaveTest extends TestCase
             'stores' => ['0'],
             'is_active' => true,
             'content' => '"><script>alert("cookie: "+document.cookie)</script>',
-            'back' => 'duplicate'
+            'back' => 'duplicate',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -294,7 +295,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, true]
+                    ['back', null, true],
                 ]
             );
 
@@ -369,7 +370,7 @@ class SaveTest extends TestCase
             'stores' => ['0'],
             'is_active' => true,
             'content' => '"><script>alert("cookie: "+document.cookie)</script>',
-            'back' => 'close'
+            'back' => 'close',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -378,7 +379,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, 'close']
+                    ['back', null, 'close'],
                 ]
             );
 
@@ -418,7 +419,7 @@ class SaveTest extends TestCase
             'stores' => ['0'],
             'is_active' => true,
             'content' => '',
-            'back' => 'continue'
+            'back' => 'continue',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -427,7 +428,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, true]
+                    ['back', null, true],
                 ]
             );
 
@@ -473,7 +474,7 @@ class SaveTest extends TestCase
             'stores' => ['0'],
             'is_active' => true,
             'content' => '"><script>alert("cookie: "+document.cookie)</script>',
-            'back' => 'continue'
+            'back' => 'continue',
         ];
 
         $this->requestMock->expects($this->any())->method('getPostValue')->willReturn($postData);
@@ -482,7 +483,7 @@ class SaveTest extends TestCase
             ->willReturnMap(
                 [
                     ['block_id', null, 1],
-                    ['back', null, true]
+                    ['back', null, true],
                 ]
             );
 

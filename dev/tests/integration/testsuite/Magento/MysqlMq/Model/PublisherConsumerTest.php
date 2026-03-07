@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ use Magento\MysqlMq\Model\ResourceModel\MessageStatusCollection;
  */
 class PublisherConsumerTest extends QueueTestCaseAbstract
 {
-    const MAX_NUMBER_OF_TRIALS = 3;
+    public const MAX_NUMBER_OF_TRIALS = 3;
 
     /**
      * @var string[]
@@ -28,7 +29,7 @@ class PublisherConsumerTest extends QueueTestCaseAbstract
         'demoConsumerQueueTwo',
         'demoConsumerQueueThree',
         'delayedOperationConsumer',
-        'demoConsumerWithException'
+        'demoConsumerWithException',
     ];
 
     /**
@@ -121,7 +122,7 @@ class PublisherConsumerTest extends QueueTestCaseAbstract
      * @param string $topic
      * @return Message
      */
-    private function getTopicLatestMessage(string $topic) : Message
+    private function getTopicLatestMessage(string $topic): Message
     {
         // Assert message status is error
         $messageCollection = $this->objectManager->create(MessageCollection::class);
@@ -130,7 +131,7 @@ class PublisherConsumerTest extends QueueTestCaseAbstract
         $messageCollection->addFilter('topic_name', $topic);
         $messageCollection->join(
             ['status' => $messageStatusCollection->getMainTable()],
-            "status.message_id = main_table.id"
+            'status.message_id = main_table.id'
         );
         $messageCollection->addOrder('updated_at', MessageCollection::SORT_ORDER_DESC);
 

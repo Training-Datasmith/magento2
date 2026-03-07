@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\JwtFrameworkAdapter\Model;
 
 class JwsManagerTest extends \PHPUnit\Framework\TestCase
@@ -21,16 +24,16 @@ class JwsManagerTest extends \PHPUnit\Framework\TestCase
 
     public function testCreatingJwsWithAlgorithmSetInHeadersDirectly(): void
     {
-        $secret = "ZXF1YXRpb24tS2VudHVja3ktY29udGludWVkLWRpZmZlcmVuY2U";
+        $secret = 'ZXF1YXRpb24tS2VudHVja3ktY29udGludWVkLWRpZmZlcmVuY2U';
         $payload = json_encode([
             'MyCustomClaim' => 'some value', // not important at all
             'nbf' => time(),
             'exp' => time() + 600,
-            'iat' => time()
+            'iat' => time(),
         ]);
         $header = [
             'alg' => 'HS256',
-            'typ' => 'JWT'
+            'typ' => 'JWT',
         ];
 
         /** @var \Magento\Framework\Jwt\JwkFactory $jwkFactory */
@@ -45,7 +48,7 @@ class JwsManagerTest extends \PHPUnit\Framework\TestCase
         $encryptionSettings = $this->objectManager->create(
             \Magento\Framework\Jwt\Jws\JwsSignatureJwks::class,
             [
-                'jwk' => $jwk
+                'jwk' => $jwk,
             ]
         );
 

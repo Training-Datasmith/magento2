@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -203,7 +204,7 @@ class SelectTest extends TestCase
 
         $optionsSets = [
             $this->getOptionsWithSingleQuotes(),
-            $this->getOptionsWithDoubleQuotes()
+            $this->getOptionsWithDoubleQuotes(),
         ];
 
         $expectedResult = '<select name="test[name]" id="testId" class="test class" title="ESCAPED" >'
@@ -239,31 +240,31 @@ class SelectTest extends TestCase
     private function getOptionsWithSingleQuotes()
     {
         return [
-            'id' => "testId",
-            'name' => "test[name]",
-            'class' => "test class",
+            'id' => 'testId',
+            'name' => 'test[name]',
+            'class' => 'test class',
             'title' => "test'Title",
             'options' => [
                 'regular' => [
                     'value' => 'testValue',
                     'label' => "test'Label",
-                    'params' => ['paramKey' => "param'Value"]
+                    'params' => ['paramKey' => "param'Value"],
                 ],
                 'selected' => [
                     'value' => 'selectedValue',
                     'label' => "selected'Label",
-                    'params' => []
+                    'params' => [],
                 ],
                 'optgroup' => [
                     'value' => [
                         'groupElementValue' => "GroupElement'Label",
-                        'selectedGroupElementValue' => "SelectedGroupElement'Label"
+                        'selectedGroupElementValue' => "SelectedGroupElement'Label",
                     ],
                     'label' => "group'Label",
-                    'params' => []
-                ]
+                    'params' => [],
+                ],
             ],
-            'values' => ['selectedValue', 'selectedGroupElementValue']
+            'values' => ['selectedValue', 'selectedGroupElementValue'],
         ];
     }
 
@@ -281,23 +282,23 @@ class SelectTest extends TestCase
                 'regular' => [
                     'value' => 'testValue',
                     'label' => 'test"Label',
-                    'params' => ['paramKey' => 'param"Value']
+                    'params' => ['paramKey' => 'param"Value'],
                 ],
                 'selected' => [
                     'value' => 'selectedValue',
                     'label' => 'selected"Label',
-                    'params' => []
+                    'params' => [],
                 ],
                 'optgroup' => [
                     'value' => [
                         'groupElementValue' => 'GroupElement"Label',
-                        'selectedGroupElementValue' => 'SelectedGroupElement"Label'
+                        'selectedGroupElementValue' => 'SelectedGroupElement"Label',
                     ],
                     'label' => 'group"Label',
-                    'params' => []
-                ]
+                    'params' => [],
+                ],
             ],
-            'values' => ['selectedValue', 'selectedGroupElementValue']
+            'values' => ['selectedValue', 'selectedGroupElementValue'],
         ];
     }
 }

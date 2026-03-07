@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue;
 
 use Magento\Catalog\Model\Product\Option;
-use Magento\Catalog\Model\Product\Option\Type\DefaultType;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
@@ -69,7 +69,7 @@ class Multiple implements CustomizableOptionValueInterface
                 $optionDetails = [
                     self::OPTION_TYPE,
                     $option->getOptionId(),
-                    $optionValue->getOptionTypeId()
+                    $optionValue->getOptionTypeId(),
                 ];
 
                 $selectedOptionValueData[] = [

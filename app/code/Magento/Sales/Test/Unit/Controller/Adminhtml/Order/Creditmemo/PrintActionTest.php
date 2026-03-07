@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
 use Magento\Sales\Controller\Adminhtml\Order\Creditmemo\PrintAction;
@@ -24,7 +26,6 @@ use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Pdf\Creditmemo as CreditmemoPdf;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @covers \Magento\Sales\Controller\Adminhtml\Order\Creditmemo\PrintAction
@@ -137,7 +138,7 @@ class PrintActionTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
         $this->printAction = $objectManager->getObject(
@@ -169,7 +170,7 @@ class PrintActionTest extends TestCase
             ->willReturnMap(
                 [
                     [Creditmemo::class, [], $this->creditmemoMock],
-                    [CreditmemoPdf::class, [], $this->creditmemoPdfMock]
+                    [CreditmemoPdf::class, [], $this->creditmemoPdfMock],
                 ]
             );
         $this->creditmemoRepositoryMock->expects($this->once())
@@ -244,7 +245,7 @@ class PrintActionTest extends TestCase
                     ['order_id', null, $orderId],
                     ['creditmemo_id', null, $creditmemoId],
                     ['creditmemo', null, $creditmemo],
-                    ['invoice_id', null, $invoiceId]
+                    ['invoice_id', null, $invoiceId],
                 ]
             );
         $this->creditmemoLoaderMock->expects($this->once())

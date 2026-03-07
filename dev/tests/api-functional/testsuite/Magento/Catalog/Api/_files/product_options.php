@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -56,7 +58,7 @@ return [
                 'sort_order' => 2,
                 'price' => 20,
                 'price_type' => 'fixed',
-                'sku' => 'drop_down option 2 sku'
+                'sku' => 'drop_down option 2 sku',
             ],
         ],
     ],
@@ -100,7 +102,7 @@ return [
                 'sort_order' => 2,
                 'price' => 20,
                 'price_type' => 'fixed',
-                'sku' => 'checkbox option 2 sku'
+                'sku' => 'checkbox option 2 sku',
             ],
         ],
     ],
@@ -122,7 +124,7 @@ return [
                 'sort_order' => 2,
                 'price' => 20,
                 'price_type' => 'fixed',
-                'sku' => 'multiple option 2 sku'
+                'sku' => 'multiple option 2 sku',
             ],
         ],
     ],

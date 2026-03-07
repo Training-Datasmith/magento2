@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Weee\Model;
 
-use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**

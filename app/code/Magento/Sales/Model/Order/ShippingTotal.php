@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
-use Magento\Sales\Api\Data\TotalInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
+use Magento\Sales\Api\Data\TotalInterface;
 
 class ShippingTotal extends AbstractExtensibleModel implements TotalInterface
 {

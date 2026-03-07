@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class CustomerPlaceOrderWithDownloadable
         $this->createCustomerCart();
         $this->addDownloadableProduct($productData);
         $this->setBillingAddress();
-        $paymentMethodCode ='checkmo';
+        $paymentMethodCode = 'checkmo';
         $this->setPaymentMethod($paymentMethodCode);
         return $this->doPlaceOrder();
     }

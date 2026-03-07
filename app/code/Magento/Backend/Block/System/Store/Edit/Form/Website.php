@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class Website extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Name'),
                 'value' => $websiteModel->getName(),
                 'required' => true,
-                'disabled' => $websiteModel->isReadOnly()
+                'disabled' => $websiteModel->isReadOnly(),
             ]
         );
 
@@ -74,7 +75,7 @@ class Website extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Code'),
                 'value' => $websiteModel->getCode(),
                 'required' => true,
-                'disabled' => $websiteModel->isReadOnly()
+                'disabled' => $websiteModel->isReadOnly(),
             ]
         );
 
@@ -87,7 +88,7 @@ class Website extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'value' => $websiteModel->getSortOrder(),
                 'required' => false,
                 'class' => 'validate-number validate-zero-or-greater',
-                'disabled' => $websiteModel->isReadOnly()
+                'disabled' => $websiteModel->isReadOnly(),
             ]
         );
 
@@ -105,7 +106,7 @@ class Website extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     'value' => $websiteModel->getDefaultGroupId(),
                     'values' => $groups,
                     'required' => false,
-                    'disabled' => $websiteModel->isReadOnly()
+                    'disabled' => $websiteModel->isReadOnly(),
                 ]
             );
         }
@@ -120,7 +121,7 @@ class Website extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     'name' => 'website[is_default]',
                     'label' => __('Set as Default'),
                     'value' => 1,
-                    'disabled' => $websiteModel->isReadOnly()
+                    'disabled' => $websiteModel->isReadOnly(),
                 ]
             );
         } else {

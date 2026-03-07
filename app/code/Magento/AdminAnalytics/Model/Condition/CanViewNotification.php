@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\AdminAnalytics\Model\Condition;
 
 use Magento\AdminAnalytics\Model\ResourceModel\Viewer\Logger;
-use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
 use Magento\Framework\App\CacheInterface;
+use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
 
 /**
  * Dynamic validator for UI admin analytics notification, control UI component visibility.
@@ -18,38 +19,16 @@ class CanViewNotification implements VisibilityConditionInterface
 {
     /**
      * Unique condition name.
-     *
-     * @var string
      */
-    private static $conditionName = 'can_view_admin_usage_notification';
+    private static string $conditionName = 'can_view_admin_usage_notification';
 
     /**
      * Prefix for cache
-     *
-     * @var string
      */
-    private static $cachePrefix = 'admin-usage-notification-popup';
+    private static string $cachePrefix = 'admin-usage-notification-popup';
 
-    /**
-     * @var Logger
-     */
-    private $viewerLogger;
-
-    /**
-     * @var CacheInterface
-     */
-    private $cacheStorage;
-
-    /**
-     * @param Logger $viewerLogger
-     * @param CacheInterface $cacheStorage
-     */
-    public function __construct(
-        Logger $viewerLogger,
-        CacheInterface $cacheStorage
-    ) {
-        $this->viewerLogger = $viewerLogger;
-        $this->cacheStorage = $cacheStorage;
+    public function __construct(private readonly Logger $viewerLogger, private readonly CacheInterface $cacheStorage)
+    {
     }
 
     /**
@@ -74,8 +53,6 @@ class CanViewNotification implements VisibilityConditionInterface
 
     /**
      * Get condition name
-     *
-     * @return string
      */
     public function getName(): string
     {

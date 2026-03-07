@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,17 @@ declare(strict_types=1);
 /**
  * Test theme domain model
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme\Domain;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\Domain\Factory;
 use Magento\Framework\View\Design\Theme\Domain\VirtualInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Theme\Model\Theme;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class FactoryTest extends TestCase
 {

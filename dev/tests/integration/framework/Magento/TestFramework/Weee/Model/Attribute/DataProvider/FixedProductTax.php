@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\TestFramework\Weee\Model\Attribute\DataProvider;
 
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
-use Magento\TestFramework\Eav\Model\Attribute\DataProvider\AbstractBaseAttributeData;
 use Magento\Store\Model\Store;
+use Magento\TestFramework\Eav\Model\Attribute\DataProvider\AbstractBaseAttributeData;
 use Magento\Weee\Model\Attribute\Backend\Weee\Tax;
 
 /**
@@ -33,8 +34,8 @@ class FixedProductTax extends AbstractBaseAttributeData
     {
         static::$defaultAttributePostData['used_for_sort_by'] = '0';
         $result = parent::getAttributeData();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }
@@ -46,8 +47,8 @@ class FixedProductTax extends AbstractBaseAttributeData
     {
         static::$defaultAttributePostData['used_for_sort_by'] = '0';
         $result = parent::getAttributeDataWithCheckArray();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }

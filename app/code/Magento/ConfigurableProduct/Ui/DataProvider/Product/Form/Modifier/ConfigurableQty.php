@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
  */
 class ConfigurableQty extends AbstractModifier
 {
-    const CODE_QUANTITY = 'qty';
-    const CODE_QTY_CONTAINER = 'quantity_and_stock_status_qty';
+    public const CODE_QUANTITY = 'qty';
+    public const CODE_QTY_CONTAINER = 'quantity_and_stock_status_qty';
 
     /**
      * @inheritdoc
@@ -42,7 +43,7 @@ class ConfigurableQty extends AbstractModifier
                                     'data' => [
                                         'config' => [
                                             'component' => 'Magento_ConfigurableProduct/js/' .
-                                                'components/qty-configurable'
+                                                'components/qty-configurable',
                                         ],
                                     ],
                                 ],

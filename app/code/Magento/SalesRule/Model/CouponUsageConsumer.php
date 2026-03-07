@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model;
 
-use Magento\SalesRule\Model\Coupon\Usage\UpdateInfoFactory;
-use Magento\SalesRule\Model\Coupon\Usage\Processor as CouponUsageProcessor;
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\SalesRule\Model\Coupon\Usage\Processor as CouponUsageProcessor;
+use Magento\SalesRule\Model\Coupon\Usage\UpdateInfoFactory;
 use Psr\Log\LoggerInterface;
 
 /**

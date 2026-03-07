@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Framework\View\File\Collector\Decorator;
 
 use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\View\File;
 use Magento\Framework\View\File\CollectorInterface;
 
 /**

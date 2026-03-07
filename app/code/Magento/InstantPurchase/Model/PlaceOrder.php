@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model;
 
 use Magento\Catalog\Model\Product;
@@ -15,7 +18,7 @@ use Magento\InstantPurchase\Model\QuoteManagement\QuoteFilling;
 use Magento\InstantPurchase\Model\QuoteManagement\ShippingConfiguration;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Store\Model\Store;
-use \Throwable;
+use Throwable;
 
 /**
  * Place an order using instant purchase option.
@@ -99,7 +102,7 @@ class PlaceOrder
         InstantPurchaseOption $instantPurchaseOption,
         Product $product,
         array $productRequest
-    ) : int {
+    ): int {
         $quote = $this->quoteCreation->createQuote(
             $store,
             $customer,

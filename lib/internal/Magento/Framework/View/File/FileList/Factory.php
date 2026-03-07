@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class Factory
     /**
      * Default file list collator
      */
-    const FILE_LIST_COLLATOR = \Magento\Framework\View\File\FileList\Collator::class;
+    public const FILE_LIST_COLLATOR = \Magento\Framework\View\File\FileList\Collator::class;
 
     /**
      * Object manager

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Filesystem\Test\Unit\Driver;
 
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\Driver\Http;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Verify HttpTest class.

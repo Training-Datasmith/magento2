@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,16 +14,15 @@ use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\Config;
 use Magento\Framework\App\Config\ValueInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Setup\Fixtures\ConfigsApplyFixture;
 use Magento\Setup\Fixtures\FixtureModel;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ConfigsApplyFixtureTest extends TestCase
 {
     use MockCreationTrait;
-
 
     /**
      * @var MockObject|FixtureModel
@@ -53,7 +53,7 @@ class ConfigsApplyFixtureTest extends TestCase
             ->method('get')
             ->willReturnMap([
                 [CacheInterface::class, $cacheMock],
-                [System::class, $configMock]
+                [System::class, $configMock],
             ]);
 
         $this->fixtureModelMock

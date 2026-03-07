@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -12,9 +13,11 @@ declare(strict_types=1);
  *
  * @see \Magento\Framework\View\LayoutDirectivesTest
  */
+
 namespace Magento\Framework\View;
 
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Text;
@@ -22,7 +25,6 @@ use Magento\Framework\View\Element\Text\ListText;
 use Magento\Framework\View\Layout\Data\Structure;
 use Magento\Framework\View\Layout\Element;
 use Magento\Framework\View\Layout\ProcessorInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Depends;
@@ -241,7 +243,7 @@ class LayoutTest extends TestCase
                 '',
                 ['type' => ListText::class, 'key1' => 'value1'],
                 '/text\\\\list/',
-            ]
+            ],
         ];
     }
 

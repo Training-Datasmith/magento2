@@ -10,19 +10,18 @@ namespace Magento\Sales\Test\Unit\Model;
 
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Payment\Api\Data\PaymentAdditionalInfoInterface;
 use Magento\Payment\Api\Data\PaymentAdditionalInfoInterfaceFactory;
+use Magento\Sales\Api\Data\OrderAddressInterface;
 use Magento\Sales\Api\Data\OrderExtension;
-use Magento\Sales\Api\Data\OrderExtensionInterface;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\Data\OrderSearchResultInterfaceFactory as SearchResultFactory;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipping;
 use Magento\Sales\Model\Order\ShippingAssignment;
 use Magento\Sales\Model\Order\ShippingAssignmentBuilder;
-use Magento\Sales\Api\Data\OrderAddressInterface;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Sales\Model\ResourceModel\Metadata;
 use Magento\Sales\Model\ResourceModel\Order as OrderResource;
@@ -31,7 +30,6 @@ use Magento\Tax\Api\Data\OrderTaxDetailsInterface;
 use Magento\Tax\Api\OrderTaxManagementInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -93,7 +91,7 @@ class OrderRepositoryTest extends TestCase
                 'setAppliedTaxes',
                 'setConvertingFromQuote',
                 'setItemAppliedTaxes',
-                'setPaymentAdditionalInfo'
+                'setPaymentAdditionalInfo',
             ]
         );
     }
@@ -125,7 +123,7 @@ class OrderRepositoryTest extends TestCase
                 'collectionProcessor' => $this->collectionProcessor,
                 'orderTaxManagement' => $this->orderTaxManagementMock,
                 'paymentAdditionalInfoFactory' => $this->paymentAdditionalInfoFactory,
-                'shippingAssignmentBuilder' => $this->shippingAssignmentBuilder
+                'shippingAssignmentBuilder' => $this->shippingAssignmentBuilder,
             ]
         );
     }

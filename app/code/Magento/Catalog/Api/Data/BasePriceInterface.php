@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,9 +18,9 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /**#@+
      * Constants
      */
-    const PRICE = 'price';
-    const STORE_ID = 'store_id';
-    const SKU = 'sku';
+    public const PRICE = 'price';
+    public const STORE_ID = 'store_id';
+    public const SKU = 'sku';
     /**#@-*/
 
     /**

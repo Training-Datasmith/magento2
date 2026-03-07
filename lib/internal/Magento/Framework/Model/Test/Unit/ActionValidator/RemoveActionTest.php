@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\Model\ActionValidator\RemoveAction;
 use Magento\Framework\Registry;
 use Magento\Wishlist\Model\Wishlist;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class RemoveActionTest extends TestCase
 {
@@ -50,9 +51,9 @@ class RemoveActionTest extends TestCase
      */
     public static function isAllowedDataProvider()
     {
-        $productMock = static fn(self $testCase) => $testCase->createProductMock();
-        $bannerMock = static fn(self $testCase) => $testCase->createWishlistMock()['mock'];
-        $bannerMockClass = static fn(self $testCase) => $testCase->createWishlistMock()['class'];
+        $productMock = static fn (self $testCase) => $testCase->createProductMock();
+        $bannerMock = static fn (self $testCase) => $testCase->createWishlistMock()['mock'];
+        $bannerMockClass = static fn (self $testCase) => $testCase->createWishlistMock()['class'];
 
         return [
             [
@@ -65,13 +66,13 @@ class RemoveActionTest extends TestCase
                 'modelToCheck' => $bannerMock,
                 'protectedModel' => $bannerMockClass,
                 'secureArea' => false,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'modelToCheck' => $bannerMock,
                 'protectedModel' => $bannerMockClass,
                 'secureArea' => true,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
         ];
     }
@@ -87,7 +88,7 @@ class RemoveActionTest extends TestCase
         $wishlistMockClass = get_class($wishlistMock);
         return [
             'class' => $wishlistMockClass,
-            'mock' => $wishlistMock
+            'mock' => $wishlistMock,
         ];
     }
 }

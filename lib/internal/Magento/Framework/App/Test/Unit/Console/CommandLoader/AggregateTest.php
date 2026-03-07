@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\App\Test\Unit\Console\CommandLoader;
 
 use Magento\Framework\Console\CommandLoader\Aggregate;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
@@ -37,7 +38,7 @@ class AggregateTest extends TestCase
         $this->aggregateCommandLoader = new Aggregate([$this->firstMockCommandLoader, $this->secondMockCommandLoader]);
     }
 
-        /**
+    /**
      */
     #[DataProvider('provideTestCasesForHas')]
     public function testHas(bool $firstResult, bool $secondResult, bool $overallResult): void
@@ -53,11 +54,11 @@ class AggregateTest extends TestCase
         return [
             [true, false, true],
             [false, true, true],
-            [false, false, false]
+            [false, false, false],
         ];
     }
 
-        /**
+    /**
      */
     #[DataProvider('provideTestCasesForGet')]
     public function testGet(?Command $firstCmd, ?Command $secondCmd): void
@@ -83,12 +84,12 @@ class AggregateTest extends TestCase
         return [
             [
                 new Command(),
-                null
+                null,
             ],
             [
                 null,
-                new Command()
-            ]
+                new Command(),
+            ],
         ];
     }
 

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Mail Template Factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mail\Template;
 
 class Factory implements \Magento\Framework\Mail\Template\FactoryInterface

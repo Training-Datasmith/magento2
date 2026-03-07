@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Robots\Block;
 
 use Magento\Framework\DataObject\IdentityInterface;
@@ -10,8 +13,8 @@ use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Context;
 use Magento\Robots\Model\Config\Value;
 use Magento\Robots\Model\Robots;
-use Magento\Store\Model\StoreResolver;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\StoreResolver;
 
 /**
  * Robots Block Class.

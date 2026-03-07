@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat\Action;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -23,7 +26,7 @@ class Indexer
     /**
      * Maximum size of attributes chunk
      */
-    const ATTRIBUTES_CHUNK_SIZE = 59;
+    public const ATTRIBUTES_CHUNK_SIZE = 59;
 
     /**
      * @var \Magento\Catalog\Helper\Product\Flat\Indexer
@@ -84,7 +87,7 @@ class Indexer
                         [
                             'entity_id' => 'e.entity_id',
                             'attribute_id' => 't.attribute_id',
-                            'value' => 't.value'
+                            'value' => 't.value',
                         ]
                     );
 
@@ -101,7 +104,7 @@ class Indexer
                             array_keys($ids)
                         ) . ' AND ' . $this->_connection->quoteInto('t.store_id IN(?)', [
                                 Store::DEFAULT_STORE_ID,
-                                $storeId
+                                $storeId,
                             ]),
                         []
                     )->where(
@@ -114,7 +117,7 @@ class Indexer
                         if (isset($describe[$valueColumnName])) {
                             $valueColumns[$row['attribute_id']] = [
                                 'value' => $row['value'],
-                                'column_name' => $valueColumnName
+                                'column_name' => $valueColumnName,
                             ];
                         }
                     }
@@ -132,7 +135,7 @@ class Indexer
                         )->where(
                             $this->_connection->quoteInto('t.store_id IN(?)', [
                                 Store::DEFAULT_STORE_ID,
-                                $storeId
+                                $storeId,
                             ])
                         )
                         ->order('t.store_id ASC');

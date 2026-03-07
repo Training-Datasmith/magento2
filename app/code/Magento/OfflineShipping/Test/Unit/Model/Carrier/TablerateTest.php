@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\OfflineShipping\Test\Unit\Model\Carrier;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\OfflineShipping\Model\Carrier\Tablerate;
 use Magento\OfflineShipping\Model\ResourceModel\Carrier\TablerateFactory;
@@ -19,7 +21,6 @@ use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Sales\Model\Order\Item;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Constraint\Callback;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -112,7 +113,7 @@ class TablerateTest extends TestCase
                 'logger' => $this->loggerMock,
                 'rateResultFactory' => $this->resultFactoryMock,
                 'resultMethodFactory' => $this->methodFactoryMock,
-                'tablerateFactory' => $this->tablerateFactoryMock
+                'tablerateFactory' => $this->tablerateFactoryMock,
             ]
         );
     }
@@ -127,7 +128,7 @@ class TablerateTest extends TestCase
     {
         $rate = [
             'price' => 15,
-            'cost' => 2
+            'cost' => 2,
         ];
 
         $request = $this->createPartialMockWithReflection(
@@ -145,7 +146,7 @@ class TablerateTest extends TestCase
                 'getParentItem',
                 'isShipSeparately',
                 'getFreeShipping',
-                'getBaseRowTotal'
+                'getBaseRowTotal',
             ]
         );
 
@@ -185,7 +186,7 @@ class TablerateTest extends TestCase
             $item->expects($this->any())->method('isShipSeparately')->willReturn(1);
             $item->expects($this->any())->method('getChildren')->willReturn([$item]);
         } else {
-            $freeShippingReturnValue = "1";
+            $freeShippingReturnValue = '1';
         }
         $item->expects($this->any())->method('getFreeShipping')->willReturn($freeShippingReturnValue);
         $request->expects($this->any())->method('getAllItems')->willReturn([$item]);
@@ -233,7 +234,7 @@ class TablerateTest extends TestCase
         return [
             ['freeshipping' => true, 'isShipSeparately' => false],
             ['freeshipping' => false, 'isShipSeparately' => false],
-            ['freeshipping' => true, 'isShipSeparately' => true]
+            ['freeshipping' => true, 'isShipSeparately' => true],
         ];
     }
 }

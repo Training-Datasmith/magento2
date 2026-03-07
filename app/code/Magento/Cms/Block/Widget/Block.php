@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Block\Widget;
 
+use Magento\Cms\Model\Block as CmsBlock;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Cms\Model\Block as CmsBlock;
 use Magento\Widget\Block\BlockInterface;
 
 /**

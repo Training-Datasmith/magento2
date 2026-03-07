@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,11 +20,6 @@ use Magento\Framework\DB\Select;
  */
 class SelectBuilder
 {
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
     /**
      * @var string
      */
@@ -65,13 +62,9 @@ class SelectBuilder
 
     /**
      * SelectBuilder constructor.
-     *
-     * @param ResourceConnection $resourceConnection
      */
-    public function __construct(
-        ResourceConnection $resourceConnection
-    ) {
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(private readonly ResourceConnection $resourceConnection)
+    {
     }
 
     /**
@@ -90,7 +83,7 @@ class SelectBuilder
      * @param array $joins
      * @return $this
      */
-    public function setJoins($joins)
+    public function setJoins($joins): static
     {
         $this->joins = $joins;
 
@@ -113,7 +106,7 @@ class SelectBuilder
      * @param string $connectionName
      * @return $this
      */
-    public function setConnectionName($connectionName)
+    public function setConnectionName($connectionName): static
     {
         $this->connectionName = $connectionName;
 
@@ -136,7 +129,7 @@ class SelectBuilder
      * @param array $columns
      * @return $this
      */
-    public function setColumns($columns)
+    public function setColumns($columns): static
     {
         $this->columns = $columns;
 
@@ -159,7 +152,7 @@ class SelectBuilder
      * @param array $filters
      * @return $this
      */
-    public function setFilters($filters)
+    public function setFilters($filters): static
     {
         $this->filters = $filters;
 
@@ -182,7 +175,7 @@ class SelectBuilder
      * @param array $from
      * @return $this
      */
-    public function setFrom($from)
+    public function setFrom($from): static
     {
         $this->from = $from;
 
@@ -191,24 +184,15 @@ class SelectBuilder
 
     /**
      * Process JOIN conditions
-     *
-     * @param Select $select
-     * @param array $joinConfig
-     * @return Select
      */
-    private function processJoin(Select $select, $joinConfig)
+    private function processJoin(Select $select, array $joinConfig): Select
     {
-        switch ($joinConfig['link-type']) {
-            case 'left':
-                $select->joinLeft($joinConfig['table'], $joinConfig['condition'], []);
-                break;
-            case 'inner':
-                $select->joinInner($joinConfig['table'], $joinConfig['condition'], []);
-                break;
-            case 'right':
-                $select->joinRight($joinConfig['table'], $joinConfig['condition'], []);
-                break;
-        }
+        match ($joinConfig['link-type']) {
+            'left' => $select->joinLeft($joinConfig['table'], $joinConfig['condition'], []),
+            'inner' => $select->joinInner($joinConfig['table'], $joinConfig['condition'], []),
+            'right' => $select->joinRight($joinConfig['table'], $joinConfig['condition'], []),
+            default => $select,
+        };
         return $select;
     }
 
@@ -251,7 +235,7 @@ class SelectBuilder
      * @param array $group
      * @return $this
      */
-    public function setGroup($group)
+    public function setGroup($group): static
     {
         $this->group = $group;
 
@@ -274,7 +258,7 @@ class SelectBuilder
      * @param array $params
      * @return $this
      */
-    public function setParams($params)
+    public function setParams($params): static
     {
         $this->params = $params;
 
@@ -297,7 +281,7 @@ class SelectBuilder
      * @param array $having
      * @return $this
      */
-    public function setHaving($having)
+    public function setHaving($having): static
     {
         $this->having = $having;
 

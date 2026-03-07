@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Webapi\Model\Soap\Wsdl;
 
+use Magento\Framework\Exception\AuthorizationException;
+use Magento\Framework\Webapi\Authorization;
 use Magento\Webapi\Model\AbstractSchemaGenerator;
+use Magento\Webapi\Model\ServiceMetadata;
 use Magento\Webapi\Model\Soap\Fault;
 use Magento\Webapi\Model\Soap\Wsdl;
 use Magento\Webapi\Model\Soap\WsdlFactory;
-use Magento\Framework\Webapi\Authorization;
-use Magento\Webapi\Model\ServiceMetadata;
-use Magento\Framework\Exception\AuthorizationException;
 
 /**
  * WSDL generator.
@@ -20,7 +22,7 @@ use Magento\Framework\Exception\AuthorizationException;
 class Generator extends AbstractSchemaGenerator
 {
     /** WSDL name */
-    const WSDL_NAME = 'MagentoWSDL';
+    public const WSDL_NAME = 'MagentoWSDL';
 
     /**
      * WSDL factory instance.
@@ -164,7 +166,7 @@ class Generator extends AbstractSchemaGenerator
             [
                 'messageParameters' => [
                     'element' => Wsdl::TYPES_NS . ':' . $inputMessageName,
-                ]
+                ],
             ]
         );
         return Wsdl::TYPES_NS . ':' . $inputMessageName;
@@ -202,7 +204,7 @@ class Generator extends AbstractSchemaGenerator
             [
                 'messageParameters' => [
                     'element' => Wsdl::TYPES_NS . ':' . $outputMessageName,
-                ]
+                ],
             ]
         );
         return Wsdl::TYPES_NS . ':' . $outputMessageName;
@@ -348,7 +350,7 @@ class Generator extends AbstractSchemaGenerator
             [
                 'messageParameters' => [
                     'element' => Wsdl::TYPES_NS . ':' . $faultMessageName,
-                ]
+                ],
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Group\Edit;
 
 use Magento\Customer\Api\GroupExcludedWebsiteRepositoryInterface;
@@ -123,7 +126,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     \Magento\Customer\Model\GroupManagement::GROUP_CODE_MAX_LENGTH
                 ),
                 'class' => $validateClass,
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -154,7 +157,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => false,
                 'can_be_empty' => true,
                 'values' => $this->systemStore->getWebsiteValuesForForm(),
-                'note' => __('Select websites you want to exclude from this customer group.')
+                'note' => __('Select websites you want to exclude from this customer group.'),
             ]
         );
 
@@ -173,7 +176,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'id' => $customerGroup->getId(),
                     'customer_group_code' => $customerGroup->getCode(),
                     'tax_class_id' => $defaultCustomerTaxClass,
-                    'customer_group_excluded_website_ids' => $customerGroupExcludedWebsites
+                    'customer_group_excluded_website_ids' => $customerGroupExcludedWebsites,
                 ]
             );
         }

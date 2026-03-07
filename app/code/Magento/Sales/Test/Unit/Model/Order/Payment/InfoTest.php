@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Payment;
 
 use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
@@ -17,10 +19,9 @@ use Magento\Payment\Model\Method\Substitution;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order\Payment\Info;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Test for \Magento\Sales\Model\Order\Payment\Info.
@@ -28,7 +29,6 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class InfoTest extends TestCase
 {
-
     /**
      * @var Info
      */
@@ -73,7 +73,7 @@ class InfoTest extends TestCase
                 'context' => $contextMock,
                 'registry' => $registryMock,
                 'paymentData' => $this->paymentHelperMock,
-                'encryptor' => $this->encryptorInterfaceMock
+                'encryptor' => $this->encryptorInterfaceMock,
             ]
         );
         $this->info->setData('order', $this->orderMock);
@@ -112,7 +112,7 @@ class InfoTest extends TestCase
     {
         return [
             ['cc_number', 'cc_number_enc'],
-            ['cc_cid', 'cc_cid_enc']
+            ['cc_cid', 'cc_cid_enc'],
         ];
     }
 
@@ -281,7 +281,7 @@ class InfoTest extends TestCase
     {
         return [
             [['key1' => 'data1', 'key2' => 'data2'], null],
-            ['key', 'data']
+            ['key', 'data'],
         ];
     }
 

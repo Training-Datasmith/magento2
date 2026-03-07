@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Generator;
 
 use Magento\Framework\App\State;
@@ -226,7 +229,7 @@ class Block implements Layout\GeneratorInterface
             $className,
             $elementName,
             [
-                'data' => $this->evaluateArguments($data['arguments'])
+                'data' => $this->evaluateArguments($data['arguments']),
             ]
         );
         if (!empty($attributes['template'])) {

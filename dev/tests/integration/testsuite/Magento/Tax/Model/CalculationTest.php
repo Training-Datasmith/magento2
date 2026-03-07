@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
-use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\GroupRepositoryInterface;
 
 /**
  * Class CalculationTest
@@ -37,9 +40,9 @@ class CalculationTest extends \PHPUnit\Framework\TestCase
      */
     protected $groupRepository;
 
-    const FIXTURE_CUSTOMER_ID = 1;
+    public const FIXTURE_CUSTOMER_ID = 1;
 
-    const FIXTURE_ADDRESS_ID = 1;
+    public const FIXTURE_ADDRESS_ID = 1;
 
     /**
      * @var \Magento\Tax\Model\Calculation

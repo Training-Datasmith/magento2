@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class InvalidSkuProcessorTest extends TestCase
             InvalidSkuProcessor::class,
             [
                 'productIdLocator' => $this->productIdLocator,
-                'productRepository' => $this->productRepository
+                'productRepository' => $this->productRepository,
             ]
         );
     }

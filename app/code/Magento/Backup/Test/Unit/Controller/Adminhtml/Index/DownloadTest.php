@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,11 +22,11 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ImportExport\Model\ResourceModel\Helper;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -160,15 +161,15 @@ class DownloadTest extends TestCase
                 'objectManager' => $this->objectManagerMock,
                 'request' => $this->requestMock,
                 'response' => $this->responseMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
 
         $objects = [
             [
                 Data::class,
-                $this->dataHelperMock
-            ]
+                $this->dataHelperMock,
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -214,7 +215,7 @@ class DownloadTest extends TestCase
             ->willReturnMap(
                 [
                     ['time', null, $time],
-                    ['type', null, $type]
+                    ['type', null, $type],
                 ]
             );
         $this->backupModelFactoryMock->expects($this->once())
@@ -264,7 +265,7 @@ class DownloadTest extends TestCase
             ->willReturnMap(
                 [
                     ['time', null, $time],
-                    ['type', null, $type]
+                    ['type', null, $type],
                 ]
             );
         $this->backupModelFactoryMock->expects($this->once())
@@ -289,7 +290,7 @@ class DownloadTest extends TestCase
         return [
             [1, false, 1],
             [0, true, 0],
-            [0, false, 0]
+            [0, false, 0],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class SaveProcessorTest extends TestCase
         $data = [
             'default' => [
                 'web' => ['unsecure' => ['base_url' => 'http://magento2.local/']],
-                'currency' => ['options' => ['base' => 'EUR']]
+                'currency' => ['options' => ['base' => 'EUR']],
             ],
             'websites' => ['base' => ['web' => ['unsecure' => ['base_url' => 'http://magento3.local/']]]],
         ];
@@ -96,35 +97,35 @@ class SaveProcessorTest extends TestCase
                 [
                     [
                         'web' => ['unsecure' => ['base_url' => 'http://magento2.local/']],
-                        'currency' => ['options' => ['base' => 'EUR']]
+                        'currency' => ['options' => ['base' => 'EUR']],
                     ],
                     '',
                     '/',
                     [
                         'web/unsecure/base_url' => 'http://magento2.local/',
-                        'currency/options/base' => 'EUR'
-                    ]
+                        'currency/options/base' => 'EUR',
+                    ],
                 ],
                 [
                     ['web' => ['unsecure' => ['base_url' => 'http://magento3.local/']]],
                     '',
                     '/',
-                    ['web/unsecure/base_url' => 'http://magento3.local/']
-                ]
+                    ['web/unsecure/base_url' => 'http://magento3.local/'],
+                ],
             ]);
         $this->scopeConfigMock->expects($this->exactly(3))
             ->method('getValue')
             ->willReturnMap([
                 ['web/unsecure/base_url', 'default', null, 'http://magento2.local/'],
                 ['currency/options/base', 'default', null, 'EUR'],
-                ['web/unsecure/base_url', 'websites', 'base', 'http://magento3.local/']
+                ['web/unsecure/base_url', 'websites', 'base', 'http://magento3.local/'],
             ]);
         $this->valueFactoryMock->expects($this->exactly(3))
             ->method('create')
             ->willReturnMap([
                 ['web/unsecure/base_url', 'http://magento2.local/', 'default', null, $value1],
                 ['currency/options/base', 'EUR', 'default', null, $this->currencyValueMock],
-                ['web/unsecure/base_url', 'http://magento3.local/', 'websites', 'base', $value2]
+                ['web/unsecure/base_url', 'http://magento3.local/', 'websites', 'base', $value2],
             ]);
 
         $this->assertNull($this->model->process($data));
@@ -134,7 +135,7 @@ class SaveProcessorTest extends TestCase
     {
         $data = [
             'default' => [
-                'advanced' => ['modules_disable_output' => ['Test_Module' => '1']]
+                'advanced' => ['modules_disable_output' => ['Test_Module' => '1']],
             ],
             'websites' => ['test_website' => ['general' => ['locale' => ['timezone' => 'America/Rio_Branco']]]],
         ];
@@ -143,18 +144,18 @@ class SaveProcessorTest extends TestCase
             ->willReturnMap([
                 [
                     [
-                        'advanced' => ['modules_disable_output' => ['Test_Module' => '1']]
+                        'advanced' => ['modules_disable_output' => ['Test_Module' => '1']],
                     ],
                     '',
                     '/',
-                    ['advanced/modules_disable_output/Test_Module' => '1']
+                    ['advanced/modules_disable_output/Test_Module' => '1'],
                 ],
                 [
                     ['general' => ['locale' => ['timezone' => 'America/Rio_Branco']]],
                     '',
                     '/',
-                    ['general/locale/timezone' => 'America/Rio_Branco']
-                ]
+                    ['general/locale/timezone' => 'America/Rio_Branco'],
+                ],
             ]);
         $this->scopeConfigMock->expects($this->exactly(2))
             ->method('getValue')

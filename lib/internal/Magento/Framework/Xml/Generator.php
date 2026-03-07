@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Xml;
 
 class Generator
@@ -10,7 +13,7 @@ class Generator
     /**
      * This value is used to replace numeric keys while formatting data for xml output.
      */
-    const DEFAULT_ENTITY_ITEM_NAME = 'item';
+    public const DEFAULT_ENTITY_ITEM_NAME = 'item';
 
     /**
      * @var \DOMDocument|null

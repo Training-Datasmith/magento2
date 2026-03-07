@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class PurchasedPriceTest extends TestCase
 {
-
     /**
      * @var Price
      */
@@ -56,10 +56,10 @@ class PurchasedPriceTest extends TestCase
                 'items' => [
                     [
                         $itemName => $oldItemValue,
-                        'order_currency_code' => 'US'
-                    ]
-                ]
-            ]
+                        'order_currency_code' => 'US',
+                    ],
+                ],
+            ],
         ];
 
         $this->currencyMock->expects($this->once())

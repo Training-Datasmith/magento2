@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\ShippingMethodChoose;
 
 use Magento\Quote\Model\Quote\Address;
@@ -35,7 +38,7 @@ class CheapestMethodDeferredChooser implements DeferredShippingMethodChooserInte
      * @param Address $address
      * @return Rate[]
      */
-    private function getShippingRates(Address $address) : array
+    private function getShippingRates(Address $address): array
     {
         if (!empty($shippingRates = $address->getAllShippingRates())) {
             // Favour previously collected rates over recomputing.
@@ -52,7 +55,7 @@ class CheapestMethodDeferredChooser implements DeferredShippingMethodChooserInte
      * @param Rate[] $shippingRates
      * @return Rate
      */
-    private function selectCheapestRate(array $shippingRates) : Rate
+    private function selectCheapestRate(array $shippingRates): Rate
     {
         $rate = array_shift($shippingRates);
         foreach ($shippingRates as $tmpRate) {

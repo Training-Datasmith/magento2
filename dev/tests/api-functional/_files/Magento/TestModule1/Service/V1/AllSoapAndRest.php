@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule1\Service\V1;
 
-use Magento\TestModuleMSC\Model\Data\CustomAttributeDataObjectFactory;
 use Magento\TestModule1\Service\V1\Entity\Item;
 use Magento\TestModule1\Service\V1\Entity\ItemFactory;
+use Magento\TestModuleMSC\Model\Data\CustomAttributeDataObjectFactory;
 
 class AllSoapAndRest implements \Magento\TestModule1\Service\V1\AllSoapAndRestInterface
 {

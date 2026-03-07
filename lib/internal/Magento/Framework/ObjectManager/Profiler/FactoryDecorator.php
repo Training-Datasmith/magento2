@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\Profiler;
 
 class FactoryDecorator implements \Magento\Framework\ObjectManager\FactoryInterface
@@ -10,7 +13,7 @@ class FactoryDecorator implements \Magento\Framework\ObjectManager\FactoryInterf
     /**
      * Name of the class that generates logging wrappers
      */
-    const GENERATOR_NAME = \Magento\Framework\ObjectManager\Profiler\Code\Generator\Logger::class;
+    public const GENERATOR_NAME = \Magento\Framework\ObjectManager\Profiler\Code\Generator\Logger::class;
 
     /**
      * @var \Magento\Framework\ObjectManager\FactoryInterface
@@ -50,7 +53,7 @@ class FactoryDecorator implements \Magento\Framework\ObjectManager\FactoryInterf
         $this->log->startCreating($requestedType);
         $result = $this->subject->create($requestedType, $arguments);
         if ($requestedType !== self::GENERATOR_NAME) {
-            $loggerClassName = get_class($result) . "\\Logger";
+            $loggerClassName = get_class($result) . '\\Logger';
             $wrappedResult = new $loggerClassName($result, $this->log);
             $this->log->stopCreating($result);
             $result = $wrappedResult;

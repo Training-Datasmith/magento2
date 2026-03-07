@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -128,7 +129,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => self::DATA_NAME,
                 'required' => true,
                 'disabled' => $disabled,
-                'maxlength' => '255'
+                'maxlength' => '255',
             ]
         );
         $fieldset->addField(
@@ -139,7 +140,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => self::DATA_EMAIL,
                 'disabled' => $disabled,
                 'class' => 'validate-email',
-                'maxlength' => '254'
+                'maxlength' => '254',
             ]
         );
         $fieldset->addField(
@@ -153,7 +154,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 // @codingStandardsIgnoreStart
                 'note' => __(
                     'Enter URL where Oauth credentials can be sent when using Oauth for token exchange. We strongly recommend using https://.'
-                )
+                ),
                 // @codingStandardsIgnoreEnd
             ]
         );
@@ -167,7 +168,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'class' => 'validate-url',
                 'note' => __(
                     'URL to redirect user to link their 3rd party account with this Magento integration credentials.'
-                )
+                ),
             ]
         );
 
@@ -184,7 +185,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'id' => self::DATA_CONSUMER_PASSWORD,
                 'title' => __('Your Password'),
                 'class' => 'validate-current-password required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
     }

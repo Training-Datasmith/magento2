@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -81,14 +82,14 @@ class CustomerOrderItemProductTest extends GraphQlAbstract
                                     [
                                         'product' => [
                                             'sku' => $this->fixtures->get('product')->getSku(),
-                                            'stock_status' => 'OUT_OF_STOCK'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'stock_status' => 'OUT_OF_STOCK',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class MessagesProvider implements MessagesProviderInterface
      *
      * @return Collection
      */
-    public function getMessages() : Collection
+    public function getMessages(): Collection
     {
         return $this->messageManager->getMessages(true);
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class Converter implements ConverterInterface
             'position' => $product->getPosition(),
             'custom_attributes' => [
                 ['attribute_code' => 'qty', 'value' => $product->getQty()],
-            ]
+            ],
         ];
     }
 }

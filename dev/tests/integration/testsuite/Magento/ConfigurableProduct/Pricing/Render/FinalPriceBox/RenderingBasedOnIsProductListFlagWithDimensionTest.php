@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class RenderingBasedOnIsProductListFlagWithDimensionTest extends \PHPUnit\Framew
         $this->product = $productRepository->get('configurable');
         $this->finalPrice = Bootstrap::getObjectManager()->create(FinalPrice::class, [
             'saleableItem' => $this->product,
-            'quantity' => null
+            'quantity' => null,
         ]);
         $this->rendererPool = Bootstrap::getObjectManager()->create(RendererPool::class);
         $this->rendererPool->setData(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Generator;
 
 use Magento\Framework\Exception\FileSystemException;
@@ -16,7 +19,7 @@ class Io
      * Default code generation directory
      * Should correspond the value from \Magento\Framework\Filesystem
      */
-    const DEFAULT_DIRECTORY = 'generated/code';
+    public const DEFAULT_DIRECTORY = 'generated/code';
 
     /**
      * Path to directory where new file must be created
@@ -94,7 +97,7 @@ class Io
          * multiple processes are attempting to access the generated file simultaneously.
          */
         $content = "<?php\n" . $content;
-        $tmpFile = $fileName . "." . getmypid();
+        $tmpFile = $fileName . '.' . getmypid();
         $this->filesystemDriver->filePutContents($tmpFile, $content);
 
         try {

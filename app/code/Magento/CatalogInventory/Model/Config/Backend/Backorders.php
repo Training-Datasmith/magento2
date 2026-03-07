@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CatalogInventory\Model\Config\Backend;
 
 class Backorders extends AbstractValue
@@ -21,9 +24,9 @@ class Backorders extends AbstractValue
     public function afterSave()
     {
         if ($this->isValueChanged() && (
-                $this->getOldValue() == \Magento\CatalogInventory\Model\Stock::BACKORDERS_NO
+            $this->getOldValue() == \Magento\CatalogInventory\Model\Stock::BACKORDERS_NO
                 || $this->getValue() == \Magento\CatalogInventory\Model\Stock::BACKORDERS_NO
-            )
+        )
         ) {
             $this->_stockIndexerProcessor->markIndexerAsInvalid();
         }

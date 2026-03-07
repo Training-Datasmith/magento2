@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Integration test for \Magento\Framework\Validator\Factory
  *
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator\Test\Unit;
 
 use Magento\Framework\Validator\EmailAddress;
@@ -19,7 +22,7 @@ class EmailAddressTest extends TestCase
     {
         /** @var EmailAddress $emailAddress */
         $emailAddress = new EmailAddress();
-        $this->assertTrue($emailAddress->isValid("user@domain.unknown"));
+        $this->assertTrue($emailAddress->isValid('user@domain.unknown'));
     }
 
     /**
@@ -30,6 +33,6 @@ class EmailAddressTest extends TestCase
         /** @var EmailAddress $emailAddress */
         $emailAddress = new EmailAddress();
         $emailAddress->setValidateTld(true);
-        $this->assertFalse($emailAddress->isValid("user@domain.unknown"));
+        $this->assertFalse($emailAddress->isValid('user@domain.unknown'));
     }
 }

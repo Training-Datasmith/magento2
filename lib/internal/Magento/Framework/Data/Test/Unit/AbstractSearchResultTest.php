@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class AbstractSearchResultTest extends TestCase
                 'query' => $this->query,
                 'entityFactory' => $this->entityFactory,
                 'eventManager' => $this->eventManagerMock,
-                'resultIteratorFactory' => $this->searchResultIteratorMock
+                'resultIteratorFactory' => $this->searchResultIteratorMock,
             ]
         );
     }

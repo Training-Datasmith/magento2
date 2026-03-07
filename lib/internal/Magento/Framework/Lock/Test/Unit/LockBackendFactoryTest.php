@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
 use Magento\Framework\Lock\LockBackendFactory;
 use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class LockBackendFactoryTest extends TestCase
 {

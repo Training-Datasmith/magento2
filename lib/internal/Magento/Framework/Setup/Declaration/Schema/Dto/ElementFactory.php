@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto;
 
-use Magento\Framework\Stdlib\BooleanUtils;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\FactoryInterface;
+use Magento\Framework\Stdlib\BooleanUtils;
 
 /**
  * DTO Element factory.
@@ -82,9 +85,9 @@ class ElementFactory
      * @param array $elementStructuralData
      * @return array
      */
-    private function removeEmptyComments(array $elementStructuralData):array
+    private function removeEmptyComments(array $elementStructuralData): array
     {
-        if (isset($elementStructuralData['comment']) && trim($elementStructuralData['comment']) === "") {
+        if (isset($elementStructuralData['comment']) && trim($elementStructuralData['comment']) === '') {
             unset($elementStructuralData['comment']);
         }
 
@@ -101,7 +104,7 @@ class ElementFactory
     public function create($type, array $elementStructuralData)
     {
         if (!isset($this->typeFactories[$type])) {
-            throw new \InvalidArgumentException(sprintf("Types %s is not declared", $type));
+            throw new \InvalidArgumentException(sprintf('Types %s is not declared', $type));
         }
 
         $elementStructuralData = $this->castGenericAttributes($elementStructuralData);

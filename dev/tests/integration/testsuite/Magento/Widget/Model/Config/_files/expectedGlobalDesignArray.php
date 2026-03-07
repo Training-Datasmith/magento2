@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ return [
                 'visible' => '1',
                 'sort_order' => '10',
                 'label' => 'Display a Link to Loading a Spreadsheet',
-                'description' => "Defines whether a link to My Account",
+                'description' => 'Defines whether a link to My Account',
             ],
             'link_text' => [
                 'type' => 'text',
@@ -81,5 +83,5 @@ return [
             ['container_name' => 'left', 'template' => ['default' => 'default_template']],
             ['container_name' => 'right', 'template' => ['default' => 'default_template']],
         ],
-    ]
+    ],
 ];

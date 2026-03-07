@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
 use Magento\Framework\App\DeploymentConfig;
@@ -97,7 +100,7 @@ class ModuleRegistryUninstaller
         $this->writer->saveConfig(
             [
                 \Magento\Framework\Config\File\ConfigFilePool::APP_CONFIG =>
-                    [\Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODULES => $newModules]
+                    [\Magento\Framework\Config\ConfigOptionsListConstants::KEY_MODULES => $newModules],
             ],
             true
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,6 +23,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Layout;
@@ -29,7 +31,6 @@ use Magento\Framework\View\Result\LayoutFactory;
 use Magento\Newsletter\Model\Subscriber;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for \Magento\Customer\Controller\Adminhtml\Index controller
@@ -38,7 +39,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
  */
 class NewsletterTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -189,7 +189,7 @@ class NewsletterTest extends TestCase
             'getTranslator',
             'getFrontController',
             'getLayoutFactory',
-            'getTitle'
+            'getTitle',
         ];
 
         $contextArgs = [
@@ -202,7 +202,7 @@ class NewsletterTest extends TestCase
             'getEventManager',
             'getRequest',
             'getResponse',
-            'getView'
+            'getView',
         ];
         $allMethods = array_merge($contextArgs, $addContextArgs);
         $contextMock = $this->createPartialMockWithReflection(Context::class, $allMethods);
@@ -257,7 +257,7 @@ class NewsletterTest extends TestCase
         $args = [
             'context' => $contextMock,
             'customerAccountManagement' => $this->customerAccountManagement,
-            'resultLayoutFactory' => $this->resultLayoutFactoryMock
+            'resultLayoutFactory' => $this->resultLayoutFactoryMock,
         ];
 
         $helperObjectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);

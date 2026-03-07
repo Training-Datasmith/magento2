@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax Rate Titles Fieldset
  */
+
 namespace Magento\Tax\Block\Adminhtml\Rate\Title;
 
 class Fieldset extends \Magento\Framework\Data\Form\Element\Fieldset

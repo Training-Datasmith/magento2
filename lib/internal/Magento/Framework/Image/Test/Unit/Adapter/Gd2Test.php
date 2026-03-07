@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ namespace Magento\Framework\Image\Test\Unit\Adapter;
 use Magento\Framework\Image\Adapter\AbstractAdapter;
 use Magento\Framework\Image\Adapter\Gd2;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * \Magento\Framework\Image\Adapter\Gd2 class test

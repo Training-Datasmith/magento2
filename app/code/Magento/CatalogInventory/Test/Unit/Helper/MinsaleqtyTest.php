@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,7 @@ use Magento\CatalogInventory\Model\Configuration;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\Math\Random;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -104,8 +103,8 @@ class MinsaleqtyTest extends TestCase
                 34.2,
                 [
                     1 => 20.5,
-                    2 => 34.2
-                ]
+                    2 => 34.2,
+                ],
             ],
             'valid serialized - general group' => [
                 1,
@@ -114,8 +113,8 @@ class MinsaleqtyTest extends TestCase
                 20.5,
                 [
                     1 => 20.5,
-                    2 => 34.2
-                ]
+                    2 => 34.2,
+                ],
             ],
             // custom group_id matches id in config
             'valid serialized - custom group match' => [
@@ -126,9 +125,9 @@ class MinsaleqtyTest extends TestCase
                 [
                     [
                         'customer_group_id' => 5,
-                        'min_sale_qty' => 40.1
-                    ]
-                ]
+                        'min_sale_qty' => 40.1,
+                    ],
+                ],
             ],
             // scenario where group_id doesn't match an id in the config
             // calls getAllCustomersGroupId method, which will return the all customers group id and match
@@ -140,10 +139,10 @@ class MinsaleqtyTest extends TestCase
                 [
                     [
                         'customer_group_id' => 32000,
-                        'min_sale_qty' => 2.5
-                    ]
-                ]
-            ]
+                        'min_sale_qty' => 2.5,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -174,16 +173,16 @@ class MinsaleqtyTest extends TestCase
                 '20',
                 [
                     'unique_hash' => [
-                        'customer_group_id' => 32000, 'min_sale_qty' => 20.
-                    ]
-                ]
+                        'customer_group_id' => 32000, 'min_sale_qty' => 20.,
+                    ],
+                ],
             ],
             'valid with unserialize' => [
                 '[{"customer_group_id":32000,"min_sale_qty":2.5}]',
                 [
-                    ['customer_group_id' => 32000, 'min_sale_qty' => 2.5]
+                    ['customer_group_id' => 32000, 'min_sale_qty' => 2.5],
                 ],
-                1
+                1,
             ],
         ];
     }
@@ -218,23 +217,23 @@ class MinsaleqtyTest extends TestCase
             'valid no key match' => [
                 ['customer_group_id' => 32000, 'min_sale_qty' => 2.5],
                 '{"customer_group_id":32000,"min_sale_qty":2.5}',
-                1
+                1,
             ],
             'valid key match' => [
                 [['customer_group_id' => 32000, 'min_sale_qty' => 2.5]],
-                '2.5'
+                '2.5',
             ],
             'valid wholesale' => [
                 [['customer_group_id' => 2, 'min_sale_qty' => 2.5]],
                 '{"2":2.5}',
                 1,
-                [2 => 2.5]
+                [2 => 2.5],
             ],
             'invalid - cannot override not logged in group' => [
                 [['min_sale_qty' => 2.5]],
                 '[1]',
                 1,
-                [0 => 1.0]
+                [0 => 1.0],
             ],
             'json value' => ['{"32000":2,"0":1}', '{"32000":2,"0":1}'],
         ];

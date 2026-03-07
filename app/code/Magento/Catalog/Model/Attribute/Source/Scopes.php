@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Attribute\Source;
 
-use \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 
 class Scopes implements \Magento\Framework\Data\OptionSourceInterface
 {

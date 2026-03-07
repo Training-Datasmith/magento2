@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -91,11 +92,11 @@ this is line two',
                             'input_filter' => $attribute->getInputFilter(),
                             'multiline_count' => $attribute->getMultilineCount(),
                             'sort_order' => $attribute->getSortOrder(),
-                            'validate_rules' => $formattedValidationRules
-                        ]
+                            'validate_rules' => $formattedValidationRules,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

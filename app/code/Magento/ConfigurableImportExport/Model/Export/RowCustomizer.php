@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,12 +24,12 @@ class RowCustomizer implements RowCustomizerInterface
     /**
      * Header column for Configurable Product variations
      */
-    const CONFIGURABLE_VARIATIONS_COLUMN = 'configurable_variations';
+    public const CONFIGURABLE_VARIATIONS_COLUMN = 'configurable_variations';
 
     /**
      * Header column for Configurable Product variation labels
      */
-    const CONFIGURABLE_VARIATIONS_LABELS_COLUMN = 'configurable_variation_labels';
+    public const CONFIGURABLE_VARIATIONS_LABELS_COLUMN = 'configurable_variation_labels';
 
     /**
      * @var array
@@ -40,7 +41,7 @@ class RowCustomizer implements RowCustomizerInterface
      */
     private $configurableColumns = [
         self::CONFIGURABLE_VARIATIONS_COLUMN,
-        self::CONFIGURABLE_VARIATIONS_LABELS_COLUMN
+        self::CONFIGURABLE_VARIATIONS_LABELS_COLUMN,
     ];
 
     /**
@@ -102,7 +103,7 @@ class RowCustomizer implements RowCustomizerInterface
                 self::CONFIGURABLE_VARIATIONS_LABELS_COLUMN => implode(
                     Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR,
                     $variationsLabels
-                )
+                ),
             ];
         }
     }

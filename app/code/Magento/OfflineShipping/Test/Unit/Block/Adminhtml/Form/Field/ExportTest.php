@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,12 +13,9 @@ use Magento\Backend\Block\Widget\Button;
 use Magento\Backend\Model\UrlInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form;
-use Magento\Framework\Data\Form\Element\CollectionFactory;
-use Magento\Framework\Data\Form\Element\Factory as ElementFactory;
-use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Layout;
 use Magento\OfflineShipping\Block\Adminhtml\Form\Field\Export;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ExportTest extends TestCase
@@ -37,7 +35,7 @@ class ExportTest extends TestCase
     protected function setUp(): void
     {
         $this->backendUrl = $this->createMock(UrlInterface::class);
-        $this->backendUrl->expects($this->once())->method('getUrl')->with("*/*/exportTablerates", ['website' => 1]);
+        $this->backendUrl->expects($this->once())->method('getUrl')->with('*/*/exportTablerates', ['website' => 1]);
 
         $this->_object = $this->getMockBuilder(Export::class)
             ->disableOriginalConstructor()

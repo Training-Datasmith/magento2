@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -325,7 +326,7 @@ class SampleRepositoryTest extends TestCase
                     [
                         'file' => $sampleFile,
                         'status' => 'old',
-                    ]
+                    ],
                 ]
             )->willReturn($encodedFile);
 
@@ -436,7 +437,7 @@ class SampleRepositoryTest extends TestCase
                 'getSampleUrl',
                 'getSortOrder',
                 'getData',
-                '__wakeup'
+                '__wakeup',
             ]
         );
 

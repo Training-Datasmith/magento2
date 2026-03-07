@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model\ResourceModel\Rules;
 
 /**
@@ -32,7 +35,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param int $roleId
      * @return $this
      */
-    public function getByRoles($roleId)
+    public function getByRoles($roleId): static
     {
         $this->addFieldToFilter('role_id', (int)$roleId);
         return $this;
@@ -43,7 +46,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      *
      * @return $this
      */
-    public function addSortByLength()
+    public function addSortByLength(): static
     {
         $length = $this->getConnection()->getLengthSql('{{resource_id}}');
         $this->addExpressionFieldToSelect('length', $length, 'resource_id');

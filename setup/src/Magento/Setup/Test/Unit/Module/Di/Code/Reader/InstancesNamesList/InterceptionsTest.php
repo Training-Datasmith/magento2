@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Setup\Module\Di\Code\Reader\ClassesScanner;
 use Magento\Setup\Module\Di\Code\Reader\Decorator\Directory;
 use Magento\Setup\Module\Di\Code\Reader\Decorator\Interceptions;
 use Magento\Setup\Module\Di\Compiler\Log\Log;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class InterceptionsTest extends TestCase
@@ -171,7 +172,7 @@ class InterceptionsTest extends TestCase
     {
         return [
             [new ValidatorException(new Phrase('Not Valid!'))],
-            [new \ReflectionException('Not Valid!')]
+            [new \ReflectionException('Not Valid!')],
         ];
     }
 }

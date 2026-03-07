@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class CustomerAddressUidTest extends GraphQlAbstract
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testSetShippingAddressWithCustomerAddressUid(): void
@@ -73,13 +74,13 @@ class CustomerAddressUidTest extends GraphQlAbstract
                                 'postcode' => $address->getPostcode(),
                                 'telephone' => $address->getTelephone(),
                                 'country' => [
-                                    'code' => 'US'
+                                    'code' => 'US',
                                 ],
-                                'customer_address_uid' => $addressId
-                            ]
-                        ]
-                    ]
-                ]
+                                'customer_address_uid' => $addressId,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getSetShippingAddressWithCustomerAddressUidMutation($maskedQuoteId, $addressId),
@@ -102,7 +103,7 @@ class CustomerAddressUidTest extends GraphQlAbstract
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testSetBillingAddressWithCustomerAddressUid(): void
@@ -127,12 +128,12 @@ class CustomerAddressUidTest extends GraphQlAbstract
                             'postcode' => $address->getPostcode(),
                             'telephone' => $address->getTelephone(),
                             'country' => [
-                                'code' => 'US'
+                                'code' => 'US',
                             ],
-                            'customer_address_uid' => $addressId
-                        ]
-                    ]
-                ]
+                            'customer_address_uid' => $addressId,
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getSetBillingAddressWithCustomerAddressUidMutation($maskedQuoteId, $addressId),
@@ -155,7 +156,7 @@ class CustomerAddressUidTest extends GraphQlAbstract
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testCartAddressInterfaceFieldsWithCustomerAddress(): void
@@ -195,9 +196,9 @@ class CustomerAddressUidTest extends GraphQlAbstract
                             'postcode' => $address->getPostcode(),
                             'telephone' => $address->getTelephone(),
                             'country' => [
-                                'code' => 'US'
-                            ]
-                        ]
+                                'code' => 'US',
+                            ],
+                        ],
                     ],
                     'billing_address' => [
                         'id' => (int) $address->getId(),
@@ -209,10 +210,10 @@ class CustomerAddressUidTest extends GraphQlAbstract
                         'postcode' => $address->getPostcode(),
                         'telephone' => $address->getTelephone(),
                         'country' => [
-                            'code' => 'US'
-                        ]
-                    ]
-                ]
+                            'code' => 'US',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartWithAddressesQuery($maskedQuoteId),
@@ -234,7 +235,7 @@ class CustomerAddressUidTest extends GraphQlAbstract
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testCartAddressInterfaceFieldsWithGuestAddress(): void
@@ -260,9 +261,9 @@ class CustomerAddressUidTest extends GraphQlAbstract
                             'postcode' => '12345',
                             'telephone' => '555-0123',
                             'country' => [
-                                'code' => 'US'
-                            ]
-                        ]
+                                'code' => 'US',
+                            ],
+                        ],
                     ],
                     'billing_address' => [
                         'id' => null,
@@ -274,10 +275,10 @@ class CustomerAddressUidTest extends GraphQlAbstract
                         'postcode' => '12345',
                         'telephone' => '555-0123',
                         'country' => [
-                            'code' => 'US'
-                        ]
-                    ]
-                ]
+                            'code' => 'US',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getCartWithAddressesQuery($maskedQuoteId))
         );
@@ -490,7 +491,7 @@ class CustomerAddressUidTest extends GraphQlAbstract
     private function getCustomerAuthHeaders(string $email): array
     {
         return [
-            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password')
+            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password'),
         ];
     }
 }

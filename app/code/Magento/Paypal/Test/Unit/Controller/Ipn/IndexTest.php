@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Paypal\Controller\Ipn\Index;
+use Magento\Paypal\Model\Exception\UnknownIpnException;
 use Magento\Paypal\Model\IpnFactory;
 use Magento\Paypal\Model\IpnInterface;
 use Magento\Sales\Model\Order;
@@ -20,7 +22,6 @@ use Magento\Sales\Model\OrderFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Paypal\Model\Exception\UnknownIpnException;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -72,7 +73,7 @@ class IndexTest extends TestCase
                 'response' => $this->responseMock,
                 'ipnFactory' => $this->ipnFactoryMock,
                 'orderFactory' => $this->orderFactoryMock,
-                'eventManager' => $this->eventManagerMock
+                'eventManager' => $this->eventManagerMock,
             ]
         );
     }
@@ -102,7 +103,7 @@ class IndexTest extends TestCase
         $incrementId = 'incrementId';
         $data = [
             'invoice' => $incrementId,
-            'other' => 'other data'
+            'other' => 'other data',
         ];
         $this->requestMock->expects($this->once())->method('getPostValue')->willReturn($data);
         $ipnMock = $this->createMock(IpnInterface::class);

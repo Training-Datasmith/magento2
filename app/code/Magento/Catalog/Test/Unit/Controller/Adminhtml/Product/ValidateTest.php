@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class ValidateTest extends ProductTestCase
 
         $storeMock = $this->createMock(Store::class);
         $storeMock->method('getCode')->willReturn('default');
-        
+
         $storeManagerInterfaceMock = $this->createMock(StoreManagerInterface::class);
         $storeManagerInterfaceMock->expects($this->any())
             ->method('getStore')->willReturn($storeMock);

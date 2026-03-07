@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class XsdTest extends TestCase
         $messageFormat = '%message%';
         $dom = new Dom($fixtureXml, $validationStateMock, [], null, null, $messageFormat);
         $actualResult = $dom->validate($this->schemaFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
         $this->assertEquals(empty($expectedErrors), empty($actualErrors));
         foreach ($expectedErrors as [$error, $isRegex]) {
             if ($isRegex) {
@@ -59,7 +60,7 @@ class XsdTest extends TestCase
                 }
                 $this->assertTrue($matched, "None of the errors matched: $error");
             } else {
-                $this->assertContains($error, $actualErrors, "Validation errors does not match.");
+                $this->assertContains($error, $actualErrors, 'Validation errors does not match.');
             }
         }
     }
@@ -153,7 +154,7 @@ class XsdTest extends TestCase
                         "'[^@]+@[^\.]+\..+'.The xml was: \n0:<?xml version=\"1.0\"?>\n1:<integrations>\n" .
                         "2:                    <integration name=\"TestIntegration1\">\n3:                        " .
                         "<email/>\n4:                        <endpoint_url>http://endpoint.url</endpoint_url>\n" .
-                        "5:                        <identity_link_url>http://www.example.com/identity" .
+                        '5:                        <identity_link_url>http://www.example.com/identity' .
                         "</identity_link_url>\n6:                    </integration>\n7:                " .
                         "</integrations>\n8:\n",
                         false,
@@ -374,7 +375,7 @@ class XsdTest extends TestCase
                         "<integration name=\"TestIntegration1\">\n3:                        " .
                         "<email>test-integration1@magento.com</email>\n4:                        " .
                         "<endpoint_url>http://endpoint.url</endpoint_url>\n5:                        " .
-                        "<identity_link_url invalid=\"invalid\">http://endpoint.url</identity_link_url>" .
+                        '<identity_link_url invalid="invalid">http://endpoint.url</identity_link_url>' .
                         "\n6:                    </integration>\n7:                </integrations>\n8:\n",
                         false,
                     ],
@@ -395,7 +396,7 @@ class XsdTest extends TestCase
                         "0:<?xml version=\"1.0\"?>\n1:<integrations>\n2:                    <integration>\n" .
                         "3:                        <email>test-integration1@magento.com</email>\n" .
                         "4:                        <endpoint_url>http://endpoint.url</endpoint_url>\n" .
-                        "5:                        <identity_link_url>http://www.example.com/identity" .
+                        '5:                        <identity_link_url>http://www.example.com/identity' .
                         "</identity_link_url>\n6:                    </integration>\n7:                " .
                         "</integrations>\n8:\n",
                         false,
@@ -433,7 +434,7 @@ class XsdTest extends TestCase
                         true,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

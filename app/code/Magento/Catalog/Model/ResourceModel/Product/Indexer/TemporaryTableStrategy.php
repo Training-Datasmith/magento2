@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ class TemporaryTableStrategy implements \Magento\Framework\Indexer\Table\Strateg
     /**
      * Suffix for new temporary table
      */
-    const TEMP_SUFFIX = '_temp';
+    public const TEMP_SUFFIX = '_temp';
 
     /**
      * @var \Magento\Framework\Indexer\Table\Strategy

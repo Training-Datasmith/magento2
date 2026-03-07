@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -47,8 +48,8 @@ class PathValidatorTest extends TestCase
             ->method('getFieldPaths')
             ->willReturn([
                 'test/test/test' => [
-                    'test/test/test'
-                ]
+                    'test/test/test',
+                ],
             ]);
 
         $this->assertTrue($this->model->validate('test/test/test'));

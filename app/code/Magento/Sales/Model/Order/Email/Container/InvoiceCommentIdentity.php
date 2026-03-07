@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ class InvoiceCommentIdentity extends Container implements IdentityInterface
     /**
      * Configuration paths
      */
-    const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/invoice_comment/copy_method';
-    const XML_PATH_EMAIL_COPY_TO = 'sales_email/invoice_comment/copy_to';
-    const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/invoice_comment/guest_template';
-    const XML_PATH_EMAIL_TEMPLATE = 'sales_email/invoice_comment/template';
-    const XML_PATH_EMAIL_IDENTITY = 'sales_email/invoice_comment/identity';
-    const XML_PATH_EMAIL_ENABLED = 'sales_email/invoice_comment/enabled';
+    public const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/invoice_comment/copy_method';
+    public const XML_PATH_EMAIL_COPY_TO = 'sales_email/invoice_comment/copy_to';
+    public const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/invoice_comment/guest_template';
+    public const XML_PATH_EMAIL_TEMPLATE = 'sales_email/invoice_comment/template';
+    public const XML_PATH_EMAIL_IDENTITY = 'sales_email/invoice_comment/identity';
+    public const XML_PATH_EMAIL_ENABLED = 'sales_email/invoice_comment/enabled';
 
     /**
      * Is email enabled

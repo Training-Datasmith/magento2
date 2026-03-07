@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,19 +12,18 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\Observer\ReportProductDeleted;
 use Magento\NewRelicReporting\Model\System;
 use Magento\NewRelicReporting\Model\SystemFactory;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ReportProductDeletedTest extends TestCase
 {
-
     use MockCreationTrait;
-    
+
     /**
      * @var ReportProductDeleted
      */

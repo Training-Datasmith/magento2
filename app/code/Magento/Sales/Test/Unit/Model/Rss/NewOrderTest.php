@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Framework\App\Rss\UrlBuilderInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\LayoutInterface;
@@ -22,7 +24,6 @@ use Magento\Sales\Model\ResourceModel\Order\Collection;
 use Magento\Sales\Model\Rss\NewOrder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -122,7 +123,7 @@ class NewOrderTest extends TestCase
                 'dateTime' => $this->dateTime,
                 'scopeConfig' => $this->scopeConfigInterface,
                 'eventManager' => $this->eventManager,
-                'layout' => $this->layout
+                'layout' => $this->layout,
             ]
         );
     }

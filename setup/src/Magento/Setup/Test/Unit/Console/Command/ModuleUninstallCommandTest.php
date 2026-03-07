@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,8 +29,8 @@ use Magento\Setup\Model\ModuleRegistryUninstaller;
 use Magento\Setup\Model\ModuleUninstaller;
 use Magento\Setup\Model\ObjectManagerProvider;
 use Magento\Setup\Model\UninstallCollector;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Helper\QuestionHelper;
@@ -164,7 +165,7 @@ class ModuleUninstallCommandTest extends TestCase
                 [CleanupFiles::class, $this->cleanupFiles],
                 [
                     State::class,
-                    $this->createMock(State::class)
+                    $this->createMock(State::class),
                 ],
                 [BackupRollbackFactory::class, $this->backupRollbackFactory],
                 [PatchApplier::class, $this->patchApplierMock],
@@ -248,60 +249,60 @@ class ModuleUninstallCommandTest extends TestCase
                 [['Magento_C', 'magento/package-c']],
                 [['Magento_C', true]],
                 ['module' => ['Magento_C']],
-                ['Magento_C is not an installed composer package']
+                ['Magento_C is not an installed composer package'],
             ],
             'one non-composer package, one valid' => [
                 [['Magento_A', 'magento/package-a'], ['Magento_C', 'magento/package-c']],
                 [['Magento_A', true], ['Magento_C', true]],
                 ['module' => ['Magento_A', 'Magento_C']],
-                ['Magento_C is not an installed composer package']
+                ['Magento_C is not an installed composer package'],
             ],
             'two non-composer packages' => [
                 [['Magento_C', 'magento/package-c'], ['Magento_D', 'magento/package-d']],
                 [['Magento_C', true], ['Magento_D', true]],
                 ['module' => ['Magento_C', 'Magento_D']],
-                ['Magento_C, Magento_D are not installed composer packages']
+                ['Magento_C, Magento_D are not installed composer packages'],
             ],
             'one unknown module' => [
                 [['Magento_C', '']],
                 [['Magento_C', false]],
                 ['module' => ['Magento_C']],
-                ['Unknown module(s): Magento_C']
+                ['Unknown module(s): Magento_C'],
             ],
             'two unknown modules' => [
                 [['Magento_C', ''], ['Magento_D', '']],
                 [['Magento_C', false], ['Magento_D', false]],
                 ['module' => ['Magento_C', 'Magento_D']],
-                ['Unknown module(s): Magento_C, Magento_D']
+                ['Unknown module(s): Magento_C, Magento_D'],
             ],
             'one unknown module, one valid' => [
                 [['Magento_C', ''], ['Magento_B', 'magento/package-b']],
                 [['Magento_C', false], ['Magento_B', true]],
                 ['module' => ['Magento_C', 'Magento_B']],
-                ['Unknown module(s): Magento_C']
+                ['Unknown module(s): Magento_C'],
             ],
             'one non-composer package, one unknown module' => [
                 [['Magento_C', 'magento/package-c'], ['Magento_D', '']],
                 [['Magento_C', true], ['Magento_D', false]],
                 ['module' => ['Magento_C', 'Magento_D']],
-                ['Magento_C is not an installed composer package', 'Unknown module(s): Magento_D']
+                ['Magento_C is not an installed composer package', 'Unknown module(s): Magento_D'],
             ],
             'two non-composer package, one unknown module' => [
                 [['Magento_C', 'magento/package-c'], ['Magento_D', ''], ['Magento_E', 'magento/package-e']],
                 [['Magento_C', true], ['Magento_D', false], ['Magento_E', true]],
                 ['module' => ['Magento_C', 'Magento_D', 'Magento_E']],
-                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D']
+                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D'],
             ],
             'two non-composer package, two unknown module' => [
                 [
                     ['Magento_C', 'magento/package-c'],
                     ['Magento_D', ''],
                     ['Magento_E', 'magento/package-e'],
-                    ['Magento_F', '']
+                    ['Magento_F', ''],
                 ],
                 [['Magento_C', true], ['Magento_D', false], ['Magento_E', true], ['Magento_F', false]],
                 ['module' => ['Magento_C', 'Magento_D', 'Magento_E', 'Magento_F']],
-                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D, Magento_F']
+                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D, Magento_F'],
             ],
             'two non-composer package, two unknown module, two valid' => [
                 [
@@ -318,11 +319,11 @@ class ModuleUninstallCommandTest extends TestCase
                     ['Magento_C', true],
                     ['Magento_D', false],
                     ['Magento_E', true],
-                    ['Magento_F', false]
+                    ['Magento_F', false],
                 ],
                 ['module' => ['Magento_A', 'Magento_B', 'Magento_C', 'Magento_D', 'Magento_E', 'Magento_F']],
-                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D, Magento_F']
-            ]
+                ['Magento_C, Magento_E are not installed composer packages', 'Unknown module(s): Magento_D, Magento_F'],
+            ],
         ];
     }
 
@@ -373,29 +374,29 @@ class ModuleUninstallCommandTest extends TestCase
                 ['module' => ['Magento_A']],
                 [
                     "Cannot uninstall module 'Magento_A' because the following module(s) depend on it:" .
-                    PHP_EOL . "\tMagento_D"
-                ]
+                    PHP_EOL . "\tMagento_D",
+                ],
             ],
             [
                 ['Magento_A' => ['Magento_D' => ['Magento_D', 'Magento_A']]],
                 ['module' => ['Magento_A', 'Magento_B']],
                 [
                     "Cannot uninstall module 'Magento_A' because the following module(s) depend on it:" .
-                    PHP_EOL . "\tMagento_D"
-                ]
+                    PHP_EOL . "\tMagento_D",
+                ],
             ],
             [
                 [
                     'Magento_A' => ['Magento_D' => ['Magento_D', 'Magento_A']],
-                    'Magento_B' => ['Magento_E' => ['Magento_E', 'Magento_A']]
+                    'Magento_B' => ['Magento_E' => ['Magento_E', 'Magento_A']],
                 ],
                 ['module' => ['Magento_A', 'Magento_B']],
                 [
                     "Cannot uninstall module 'Magento_A' because the following module(s) depend on it:" .
                     PHP_EOL . "\tMagento_D",
                     "Cannot uninstall module 'Magento_B' because the following module(s) depend on it:" .
-                    PHP_EOL . "\tMagento_E"
-                ]
+                    PHP_EOL . "\tMagento_E",
+                ],
             ],
         ];
     }

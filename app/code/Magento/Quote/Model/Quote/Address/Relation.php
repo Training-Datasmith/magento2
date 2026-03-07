@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Address;
 
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationInterface;

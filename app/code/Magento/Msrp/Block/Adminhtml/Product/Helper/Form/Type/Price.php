@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Msrp\Block\Adminhtml\Product\Helper\Form\Type;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;

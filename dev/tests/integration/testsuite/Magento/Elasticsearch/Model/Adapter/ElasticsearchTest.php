@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -130,15 +131,15 @@ class ElasticsearchTest extends TestCase
             StoreDimensionProvider::DIMENSION_NAME => $dimensionFactory->create(
                 StoreDimensionProvider::DIMENSION_NAME,
                 (string) $storeId
-            )
+            ),
         ];
         $indexHandlerFactory = $this->objectManager->get(IndexerHandlerFactory::class);
         /** @var IndexerHandler $indexHandler */
         $indexHandler = $indexHandlerFactory->create(
             [
                 'data' => [
-                    'indexer_id' => $index
-                ]
+                    'indexer_id' => $index,
+                ],
             ]
         );
         $indexHandler->cleanIndex($dimensions);

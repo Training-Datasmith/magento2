@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Integration;
 
 use Magento\Integration\Controller\Adminhtml\Integration as IntegrationController;
@@ -19,10 +22,10 @@ class Tokens extends \Magento\Backend\Block\Widget\Form\Generic
     /**#@+
      * Form element name.
      */
-    const DATA_TOKEN = 'token';
-    const DATA_TOKEN_SECRET = 'token_secret';
-    const DATA_CONSUMER_KEY = 'consumer_key';
-    const DATA_CONSUMER_SECRET = 'consumer_secret';
+    public const DATA_TOKEN = 'token';
+    public const DATA_TOKEN_SECRET = 'token_secret';
+    public const DATA_CONSUMER_KEY = 'consumer_key';
+    public const DATA_CONSUMER_SECRET = 'consumer_secret';
     /**#@-*/
 
     /**
@@ -78,12 +81,12 @@ class Tokens extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Consumer Secret'),
                     'name' => self::DATA_CONSUMER_SECRET,
                     'readonly' => true,
-                ]
+                ],
             ],
             [
                 'name' => self::DATA_TOKEN,
                 'type' => 'text',
-                'metadata' => ['label' => __('Access Token'), 'name' => self::DATA_TOKEN, 'readonly' => true]
+                'metadata' => ['label' => __('Access Token'), 'name' => self::DATA_TOKEN, 'readonly' => true],
             ],
             [
                 'name' => self::DATA_TOKEN_SECRET,
@@ -92,8 +95,8 @@ class Tokens extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Access Token Secret'),
                     'name' => self::DATA_TOKEN_SECRET,
                     'readonly' => true,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

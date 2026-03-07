@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Config locale allowed currencies backend
  */
+
 namespace Magento\Config\Model\Config\Backend;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;

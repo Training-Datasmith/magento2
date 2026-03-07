@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Email\Model\AbstractTemplate.
  */
+
 namespace Magento\Email\Test\Unit\Model;
 
 use Magento\Email\Model\AbstractTemplate;
@@ -20,17 +22,16 @@ use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\TemplateTypesInterface;
 use Magento\Framework\Filesystem;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\Url;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\DesignInterface;
 use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Url;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -147,7 +148,7 @@ class AbstractTemplateTest extends TestCase
     {
         $allMethods = array_merge($mockedMethods, ['__wakeup', '__sleep', '_init']);
         $mock = $this->createPartialMockWithReflection(Template::class, $allMethods);
-        
+
         $this->addPropertyValue($mock, [
             'design' => $this->design,
             'appEmulation' => $this->appEmulation,
@@ -160,7 +161,7 @@ class AbstractTemplateTest extends TestCase
             'templateFactory' => $this->templateFactory,
             'urlModel' => $this->urlModel,
         ], Template::class);
-        
+
         if (!empty($data)) {
             foreach ($data as $key => $value) {
                 $mock->setData($key, $value);
@@ -169,7 +170,7 @@ class AbstractTemplateTest extends TestCase
                 }
             }
         }
-        
+
         return $mock;
     }
 

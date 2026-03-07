@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,17 +20,17 @@ class FactoryDecoratorTest extends TestCase
     /**
      * Name of the base class to wrap in logger
      */
-    const CLASS_NAME = \Magento\Test\Di\WrappedClass::class;
+    public const CLASS_NAME = \Magento\Test\Di\WrappedClass::class;
 
     /**
      * Name of the wrapper class that does logging
      */
-    const LOGGER_NAME = \Magento\Test\Di\WrappedClass\Logger::class;
+    public const LOGGER_NAME = \Magento\Test\Di\WrappedClass\Logger::class;
 
     /**
      * Name of the class that generates wrappers - should not be wrapped by logger
      */
-    const GENERATOR_NAME = Logger::class;
+    public const GENERATOR_NAME = Logger::class;
 
     /** @var  MockObject|FactoryInterface*/
     private $objectManagerMock;

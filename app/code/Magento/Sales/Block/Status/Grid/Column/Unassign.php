@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Status\Grid\Column;
 
+use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\ObjectManager;
-use \Magento\Backend\Block\Template\Context;
 use Magento\Framework\Serialize\Serializer\Json;
 
 /**
@@ -65,7 +68,7 @@ class Unassign extends \Magento\Backend\Block\Widget\Grid\Column
                 .$this->escapeHtmlAttr(
                     $this->json->serialize([
                         'action' => $url,
-                        'data' => ['status' => $row->getStatus(), 'state' => $row->getState()]
+                        'data' => ['status' => $row->getStatus(), 'state' => $row->getState()],
                     ])
                 )
                 .'">' . $label . '</a>';

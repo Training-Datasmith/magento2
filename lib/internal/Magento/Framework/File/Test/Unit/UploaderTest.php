@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Framework\File\Test\Unit;
 
-use Magento\Framework\File\Uploader;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\File\Uploader;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\TargetDirectory;
 use Magento\Framework\Filesystem\DriverPool;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit Test class for \Magento\Framework\File\Uploader
@@ -33,7 +33,7 @@ class UploaderTest extends TestCase
      */
     private $_allowedMimeTypes = [
         'php' => 'text/plain',
-        'txt' => 'text/plain'
+        'txt' => 'text/plain',
     ];
 
     protected function setUp(): void
@@ -49,7 +49,7 @@ class UploaderTest extends TestCase
         $targetDirectory = $this->createMock(TargetDirectory::class);
 
         $this->uploader = new Uploader(
-            "fileId",
+            'fileId',
             null,
             $directoryList,
             $driverPool,
@@ -86,28 +86,28 @@ class UploaderTest extends TestCase
         return [
             [
                 '^&*&^&*^$$$$()',
-                'file.'
+                'file.',
             ],
             [
                 '^&*&^&*^$$$$().png',
-                'file.png'
+                'file.png',
             ],
             [
                 '_',
-                'file.'
+                'file.',
             ],
             [
                 '_.jpg',
-                'file.jpg'
+                'file.jpg',
             ],
             [
                 'a.' . str_repeat('b', 88),
-                'a.' . str_repeat('b', 88)
+                'a.' . str_repeat('b', 88),
             ],
             [
                 'a.' . str_repeat('b', 256),
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -132,32 +132,32 @@ class UploaderTest extends TestCase
         return [
             [
                 true,
-                'txt'
+                'txt',
             ],
             [
                 false,
-                'png'
+                'png',
             ],
             [
                 false,
-                '$#@$#@$3'
+                '$#@$#@$3',
             ],
             [
                 false,
-                '4324324324txt'
+                '4324324324txt',
             ],
             [
                 false,
-                '$#$#$jpeg..$#2$#@$#@$'
+                '$#$#$jpeg..$#2$#@$#@$',
             ],
             [
                 false,
-                '../../txt'
+                '../../txt',
             ],
             [
                 true,
-                'php'
-            ]
+                'php',
+            ],
         ];
     }
 
@@ -178,7 +178,7 @@ class UploaderTest extends TestCase
                 'tmp_name' => $fileName,
                 'error' => 0,
                 'size' => $fileSize,
-            ]
+            ],
         ];
     }
 }

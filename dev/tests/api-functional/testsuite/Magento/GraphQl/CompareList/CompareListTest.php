@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -95,17 +96,17 @@ MUTATION;
             $response['addProductsToCompareList']['attributes'],
             [
                 [
-                    'code'=> 'sku',
-                    'label'=> 'SKU'
+                    'code' => 'sku',
+                    'label' => 'SKU',
                 ],
                 [
-                    'code'=> 'description',
-                    'label'=> 'Description'
+                    'code' => 'description',
+                    'label' => 'Description',
                 ],
                 [
-                    'code'=> 'short_description',
-                    'label'=> 'Short Description'
-                ]
+                    'code' => 'short_description',
+                    'label' => 'Short Description',
+                ],
             ]
         );
     }

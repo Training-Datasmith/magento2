@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,18 +10,18 @@ namespace Magento\Downloadable\Model;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Downloadable\Api\Data\SampleInterfaceFactory;
-use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Api\Data\File\ContentUploaderInterface;
 use Magento\Downloadable\Api\Data\SampleInterface;
+use Magento\Downloadable\Api\Data\SampleInterfaceFactory;
+use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Model\Product\TypeHandler\Sample as SampleHandler;
 use Magento\Downloadable\Model\Sample\ContentValidator;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
 use Magento\Framework\Json\EncoderInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class SampleRepository

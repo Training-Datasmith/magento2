@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class NameTest extends TestCase
             [
                 'context' => $contextMock,
                 'purchasedFactory' => $this->purchasedFactory,
-                'itemsFactory' => $this->itemsFactory
+                'itemsFactory' => $this->itemsFactory,
             ]
         );
     }

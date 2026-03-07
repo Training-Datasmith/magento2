@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ declare(strict_types=1);
 namespace Magento\Cms\Model\Wysiwyg;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Message\Factory as MessageFactory;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\Validation\ValidationException;
 use Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Message\Factory as MessageFactory;
 
 /**
  * Processes backend validator results.
@@ -89,7 +90,7 @@ class Validator implements WYSIWYGValidatorInterface
                                 'Temporarily allowed to save HTML value that contains restricted elements. %1',
                                 $exception->getMessage()
                             )
-                        )
+                        ),
                     ]
                 );
             }
@@ -102,7 +103,7 @@ class Validator implements WYSIWYGValidatorInterface
                         $this->messageFactory->create(
                             MessageInterface::TYPE_WARNING,
                             (string)__('Invalid HTML provided')
-                        )
+                        ),
                     ]
                 );
                 $this->logger->error($exception);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -21,14 +22,14 @@ class CategoryFilterAttributesForAst implements FieldEntityAttributesInterface
      * @var array
      */
     private $fieldMapping = [
-        'ids' => 'entity_id'
+        'ids' => 'entity_id',
     ];
 
     /**
      * @var array
      */
     private $additionalFields = [
-        'is_active'
+        'is_active',
     ];
 
     /**
@@ -59,12 +60,12 @@ class CategoryFilterAttributesForAst implements FieldEntityAttributesInterface
      *
      * @return array
      */
-    public function getEntityAttributes() : array
+    public function getEntityAttributes(): array
     {
         $categoryFilterType = $this->config->getConfigElement('CategoryFilterInput');
 
         if (!$categoryFilterType) {
-            throw new \LogicException(__("CategoryFilterInput type not defined in schema."));
+            throw new \LogicException(__('CategoryFilterInput type not defined in schema.'));
         }
 
         $fields = [];

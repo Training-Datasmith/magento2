@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Config\Model\Config\Backend\Encrypted;
 
@@ -209,11 +211,11 @@ return [
                                     'showInWebsite' => '1',
                                     'type' => 'text',
                                     '_elementType' => 'field',
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ],

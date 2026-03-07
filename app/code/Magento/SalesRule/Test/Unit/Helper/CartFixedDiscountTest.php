@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Quote\Model\Cart\ShippingMethodConverter;
 use Magento\SalesRule\Helper\CartFixedDiscount;
 use Magento\SalesRule\Model\DeltaPriceRound;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class CartFixedDiscountTest extends TestCase
 {

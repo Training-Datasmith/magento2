@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filter\DirectiveProcessor\Filter;
 
 use Magento\Framework\App\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FilterApplierTest extends TestCase
 {
@@ -44,7 +45,7 @@ class FilterApplierTest extends TestCase
             'params' => [
                 ['nl2br', 'escape:url', 'foofilter'],
                 $standardInput,
-                '12%DLROW62%02%A0%E3%F2%02%RBC3%02%OLLEH'
+                '12%DLROW62%02%A0%E3%F2%02%RBC3%02%OLLEH',
             ],
             'no filters' => [[], $standardInput, $standardInput],
             'bad filters' => [['', false, 0, null], $standardInput, $standardInput],

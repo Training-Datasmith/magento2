@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryUi\Ui\Component;
 
+use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Container;
-use Magento\Framework\AuthorizationInterface;
 
 /**
  * Directories tree component
@@ -18,7 +19,7 @@ use Magento\Framework\AuthorizationInterface;
 class DirectoryTree extends Container
 {
     private const ACL_IMAGE_ACTIONS = [
-        'delete_folder' => 'Magento_MediaGalleryUiApi::delete_folder'
+        'delete_folder' => 'Magento_MediaGalleryUiApi::delete_folder',
     ];
 
     /**
@@ -66,7 +67,7 @@ class DirectoryTree extends Container
                     'allowedActions' => $this->getAllowedActions(),
                     'getDirectoryTreeUrl' => $this->url->getUrl('media_gallery/directories/gettree'),
                     'deleteDirectoryUrl' => $this->url->getUrl('media_gallery/directories/delete'),
-                    'createDirectoryUrl' => $this->url->getUrl('media_gallery/directories/create')
+                    'createDirectoryUrl' => $this->url->getUrl('media_gallery/directories/create'),
                 ]
             )
         );

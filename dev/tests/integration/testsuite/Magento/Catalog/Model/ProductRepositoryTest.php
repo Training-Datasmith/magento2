@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -125,8 +126,8 @@ class ProductRepositoryTest extends TestCase
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager::class =>
-                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class
-            ]
+                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class,
+            ],
         ]);
         $this->objectManager = Bootstrap::getObjectManager();
         $this->productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
@@ -440,9 +441,9 @@ class ProductRepositoryTest extends TestCase
                     [
                         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                         'qty' => 2,
-                        'value' => 7.5
-                    ]
-                ]
+                        'value' => 7.5,
+                    ],
+                ],
             ],
             'product1'
         ),
@@ -454,9 +455,9 @@ class ProductRepositoryTest extends TestCase
                     [
                         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                         'qty' => 4,
-                        'value' => 8
-                    ]
-                ]
+                        'value' => 8,
+                    ],
+                ],
             ],
             'product2'
         ),
@@ -492,12 +493,12 @@ class ProductRepositoryTest extends TestCase
             [
                 'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                 'qty' => 2,
-                'value' => 7.5
+                'value' => 7.5,
             ],
             [
                 'customer_group_id' => $product1->getTierPrices()[0]->getCustomerGroupId(),
                 'qty' => $product1->getTierPrices()[0]->getQty(),
-                'value' => $product1->getTierPrices()[0]->getValue()
+                'value' => $product1->getTierPrices()[0]->getValue(),
             ]
         );
 
@@ -508,12 +509,12 @@ class ProductRepositoryTest extends TestCase
             [
                 'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                 'qty' => 4,
-                'value' => 8
+                'value' => 8,
             ],
             [
                 'customer_group_id' => $product2->getTierPrices()[0]->getCustomerGroupId(),
                 'qty' => $product2->getTierPrices()[0]->getQty(),
-                'value' => $product2->getTierPrices()[0]->getValue()
+                'value' => $product2->getTierPrices()[0]->getValue(),
             ]
         );
     }
@@ -529,7 +530,7 @@ class ProductRepositoryTest extends TestCase
         return $this->objectManager->create(
             ProductInterface::class,
             [
-                'data' => $data
+                'data' => $data,
             ]
         );
     }
@@ -571,11 +572,11 @@ class ProductRepositoryTest extends TestCase
                         'fields' => [
                             $pathParts[2] => [
                                 'value' => $value,
-                                'inherit' => $inherit
-                            ]
-                        ]
-                    ]
-                ]
+                                'inherit' => $inherit,
+                            ],
+                        ],
+                    ],
+                ],
             ];
 
             $configFactory->create(['data' => $configData])->save();

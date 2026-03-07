@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductFactory;
@@ -16,15 +16,15 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\Product\VariationHandler;
 use Magento\Eav\Model\Entity;
 use Magento\Eav\Model\Entity\Attribute;
-use Magento\Eav\Model\Entity\Attribute\Frontend\FrontendInterface;
+use Magento\Eav\Model\Entity\Attribute\Frontend\DefaultFrontend;
 use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\Entity\Attribute\SetFactory;
 use Magento\Eav\Model\EntityFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Entity\Attribute\Frontend\DefaultFrontend;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.LongVariable)
@@ -102,7 +102,7 @@ class VariationHandlerTest extends TestCase
                 'entityFactory' => $this->entityFactoryMock,
                 'attributeSetFactory' => $this->attributeSetFactory,
                 'stockConfiguration' => $this->stockConfiguration,
-                'configurableProduct' => $this->configurableProduct
+                'configurableProduct' => $this->configurableProduct,
             ]
         );
     }
@@ -162,7 +162,7 @@ class VariationHandlerTest extends TestCase
                 'quantity_and_stock_status' => [
                     'qty' => '',
                 ],
-            ]
+            ],
         ];
 
         // Do not add 'weight' attribute if it's value is null!
@@ -175,7 +175,7 @@ class VariationHandlerTest extends TestCase
             'use_config_enable_qty_increments' => '1',
             'use_config_qty_increments' => '1',
             'use_config_manage_stock' => 0,
-            'is_decimal_divided' => 0
+            'is_decimal_divided' => 0,
         ];
 
         $parentProductMock = $this->createPartialMockWithReflection(
@@ -183,14 +183,14 @@ class VariationHandlerTest extends TestCase
             [
                 'getStoreId', 'setStoreId', 'getWebsiteIds', 'setWebsiteIds', 'getCategoryIds', 'setCategoryIds',
                 'getTypeId', 'setTypeId', 'getNewVariationsAttributeSetId', 'getStockData',
-                'getQuantityAndStockStatus', 'getData'
+                'getQuantityAndStockStatus', 'getData',
             ]
         );
         $newSimpleProductMock = $this->createPartialMockWithReflection(
             Product::class,
             [
                 'setStoreId', 'setWebsiteIds', 'setCategoryIds', 'setTypeId', 'setAttributeSetId',
-                'setVisibility', 'setStatus', 'setData', 'setId', 'save', 'getId', 'getTypeInstance', 'addData'
+                'setVisibility', 'setStatus', 'setData', 'setId', 'save', 'getId', 'getTypeInstance', 'addData',
             ]
         );
         $editableAttributeMock = $this->createPartialMockWithReflection(

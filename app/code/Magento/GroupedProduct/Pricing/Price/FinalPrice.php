@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class FinalPrice extends \Magento\Catalog\Pricing\Price\FinalPrice implements Fi
     /**
      * Price type final
      */
-    const PRICE_CODE = 'final_price';
+    public const PRICE_CODE = 'final_price';
 
     /**
      * @var Product

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Customer\Setup\Patch\Data;
 use Exception;
 use Magento\Directory\Model\AllowedCountries;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Migrate store allowed countries to website.
@@ -103,7 +104,7 @@ class MigrateStoresAllowedCountriesToWebsite implements DataPatchInterface, Patc
             $this->moduleDataSetup->getTable('core_config_data'),
             [
                 'path = ?' => AllowedCountries::ALLOWED_COUNTRIES_PATH,
-                'scope = ?' => ScopeInterface::SCOPE_STORES
+                'scope = ?' => ScopeInterface::SCOPE_STORES,
             ]
         );
 
@@ -112,12 +113,12 @@ class MigrateStoresAllowedCountriesToWebsite implements DataPatchInterface, Patc
             $connection->update(
                 $this->moduleDataSetup->getTable('core_config_data'),
                 [
-                    'value' => implode(',', $countries)
+                    'value' => implode(',', $countries),
                 ],
                 [
                     'path = ?' => AllowedCountries::ALLOWED_COUNTRIES_PATH,
                     'scope_id = ?' => $scopeId,
-                    'scope = ?' => ScopeInterface::SCOPE_WEBSITES
+                    'scope = ?' => ScopeInterface::SCOPE_WEBSITES,
                 ]
             );
         }
@@ -162,7 +163,7 @@ class MigrateStoresAllowedCountriesToWebsite implements DataPatchInterface, Patc
     public static function getDependencies()
     {
         return [
-            UpdateAutocompleteOnStorefrontConfigPath::class
+            UpdateAutocompleteOnStorefrontConfigPath::class,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ class CreditmemoIdentity extends Container implements IdentityInterface
     /**
      * Configuration paths
      */
-    const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/creditmemo/copy_method';
-    const XML_PATH_EMAIL_COPY_TO = 'sales_email/creditmemo/copy_to';
-    const XML_PATH_EMAIL_IDENTITY = 'sales_email/creditmemo/identity';
-    const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/creditmemo/guest_template';
-    const XML_PATH_EMAIL_TEMPLATE = 'sales_email/creditmemo/template';
-    const XML_PATH_EMAIL_ENABLED = 'sales_email/creditmemo/enabled';
+    public const XML_PATH_EMAIL_COPY_METHOD = 'sales_email/creditmemo/copy_method';
+    public const XML_PATH_EMAIL_COPY_TO = 'sales_email/creditmemo/copy_to';
+    public const XML_PATH_EMAIL_IDENTITY = 'sales_email/creditmemo/identity';
+    public const XML_PATH_EMAIL_GUEST_TEMPLATE = 'sales_email/creditmemo/guest_template';
+    public const XML_PATH_EMAIL_TEMPLATE = 'sales_email/creditmemo/template';
+    public const XML_PATH_EMAIL_ENABLED = 'sales_email/creditmemo/enabled';
 
     /**
      * Is email enabled

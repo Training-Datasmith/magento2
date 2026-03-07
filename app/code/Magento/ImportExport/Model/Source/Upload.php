@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Model\Source;
 
-use Magento\Framework\File\HttpInterface as Http;
 use Laminas\Validator\File\Upload as FileUploadValidator;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\File\HttpInterface as Http;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\HTTP\Adapter\FileTransferFactory;

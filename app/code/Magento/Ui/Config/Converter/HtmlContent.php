@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
 use Magento\Framework\View\Element\UiComponent\Config\Converter;
@@ -35,7 +38,7 @@ class HtmlContent implements ConverterInterface
         }
         return [
             'xsi:type' => 'array',
-            'item' => $items
+            'item' => $items,
         ];
     }
 }

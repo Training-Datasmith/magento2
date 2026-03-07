@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Generator;
 
 use Laminas\Code\Generator\AbstractMemberGenerator;
@@ -13,8 +16,8 @@ use Laminas\Code\Generator\ParameterGenerator;
 use Laminas\Code\Generator\PropertyGenerator;
 use Laminas\Code\Generator\ValueGenerator;
 use Magento\Framework\Code\Generator\ClassGenerator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Magento\Framework\Code\Generator\ClassGenerator
@@ -24,17 +27,17 @@ class ClassGeneratorTest extends TestCase
     /**#@+
      * Possible flags for assertion
      */
-    const FLAG_CONST = 'const';
+    public const FLAG_CONST = 'const';
 
-    const FLAG_STATIC = 'static';
+    public const FLAG_STATIC = 'static';
 
-    const FLAG_FINAL = 'final';
+    public const FLAG_FINAL = 'final';
 
-    const FLAG_ABSTRACT = 'abstract';
+    public const FLAG_ABSTRACT = 'abstract';
 
-    const FLAG_REFERENCE = 'passedByReference';
+    public const FLAG_REFERENCE = 'passedByReference';
 
-    const FLAG_VARIADIC = 'variadic';
+    public const FLAG_VARIADIC = 'variadic';
 
     /**#@-*/
     /**
@@ -85,7 +88,7 @@ class ClassGeneratorTest extends TestCase
                     'name' => 'data',
                     'type' => 'array',
                     'defaultValue' => [],
-                    'passedByReference' => true
+                    'passedByReference' => true,
                 ],
             ],
             'body' => 'return 1;',

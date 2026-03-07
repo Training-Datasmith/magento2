@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Wishlist\Test\Unit\Observer;
 
 use Magento\Customer\Model\Session;
-use Magento\Wishlist\Observer\CustomerLogout as Observer;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Event\Observer as EventObserver;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Wishlist\Observer\CustomerLogout as Observer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class CustomAttributeMetadataIdentity implements IdentityInterface
             foreach ($resolvedData['items'] as $item) {
                 if (is_array($item)) {
                     $identities[] = sprintf(
-                        "%s_%s_%s",
+                        '%s_%s_%s',
                         EavAttribute::CACHE_TAG,
                         $item['entity_type'],
                         $item['attribute_code']

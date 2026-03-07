@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Test\Unit\Plugin;
 
-use Magento\Csp\Plugin\GenerateAssetIntegrity;
-use Magento\Csp\Model\SubresourceIntegrityFactory;
-use Magento\Csp\Model\SubresourceIntegrityCollector;
-use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
 use Magento\Csp\Model\SubresourceIntegrity;
+use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
+use Magento\Csp\Model\SubresourceIntegrityCollector;
+use Magento\Csp\Model\SubresourceIntegrityFactory;
+use Magento\Csp\Plugin\GenerateAssetIntegrity;
 use Magento\Framework\View\Asset\File;
 use Magento\RequireJs\Model\FileManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for GenerateAssetIntegrity plugin.

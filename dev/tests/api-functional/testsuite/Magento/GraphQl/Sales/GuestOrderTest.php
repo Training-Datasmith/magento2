@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -76,9 +77,9 @@ QUERY;
                     'email' => $order->getBillingAddress()->getEmail(),
                     'billing_address' => [
                         'firstname' => $order->getBillingAddress()->getFirstname(),
-                        'lastname' => $order->getBillingAddress()->getLastname()
-                    ]
-                ]
+                        'lastname' => $order->getBillingAddress()->getLastname(),
+                    ],
+                ],
             ],
             $response
         );

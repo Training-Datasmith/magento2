@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Model\Plugin;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
@@ -19,7 +22,7 @@ use Magento\Swatches\Model\Swatch;
  */
 class EavAttribute
 {
-    const DEFAULT_STORE_ID = 0;
+    public const DEFAULT_STORE_ID = 0;
 
     /**
      * @var SwatchResource
@@ -29,7 +32,7 @@ class EavAttribute
     /**
      * Base option title used for string operations to detect is option already exists or new
      */
-    const BASE_OPTION_TITLE = 'option';
+    public const BASE_OPTION_TITLE = 'option';
 
     /**
      * Prefix added to option value added through API

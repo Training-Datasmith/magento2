@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Customer\Test\Unit\Model;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\ValidationResultsInterfaceFactory;
 use Magento\Customer\Api\SessionCleanerInterface;
 use Magento\Customer\Helper\View;
@@ -51,6 +51,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\Session\SaveHandlerInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Validator\Factory as ValidatorFactory;
 use Magento\Store\Api\Data\StoreInterface;
@@ -59,7 +60,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for validating anonymous request for synchronous operations containing group id.
@@ -298,7 +298,7 @@ class AccountManagementApiTest extends TestCase
                 'addData',
                 'setData',
                 'setRpToken',
-                'setRpTokenCreatedAt'
+                'setRpTokenCreatedAt',
             ]
         );
         $this->dateTimeFactory = $this->createMock(DateTimeFactory::class);
@@ -316,67 +316,67 @@ class AccountManagementApiTest extends TestCase
         $objects = [
             [
                 CredentialsValidator::class,
-                $this->createMock(CredentialsValidator::class)
+                $this->createMock(CredentialsValidator::class),
             ],
             [
                 DateTimeFactory::class,
-                $this->createMock(DateTimeFactory::class)
+                $this->createMock(DateTimeFactory::class),
             ],
             [
                 AccountConfirmation::class,
-                $this->createMock(AccountConfirmation::class)
+                $this->createMock(AccountConfirmation::class),
             ],
             [
                 SearchCriteriaBuilder::class,
-                $this->createMock(SearchCriteriaBuilder::class)
+                $this->createMock(SearchCriteriaBuilder::class),
             ],
             [
                 AddressRegistry::class,
-                $this->createMock(AddressRegistry::class)
+                $this->createMock(AddressRegistry::class),
             ],
             [
                 GetCustomerByToken::class,
-                $this->createMock(GetCustomerByToken::class)
+                $this->createMock(GetCustomerByToken::class),
             ],
             [
                 AllowedCountries::class,
-                $this->createMock(AllowedCountries::class)
+                $this->createMock(AllowedCountries::class),
             ],
             [
                 SessionCleanerInterface::class,
-                $this->createMock(SessionCleanerInterface::class)
+                $this->createMock(SessionCleanerInterface::class),
             ],
             [
                 AuthorizationInterface::class,
-                $this->createMock(AuthorizationInterface::class)
+                $this->createMock(AuthorizationInterface::class),
             ],
             [
                 AuthenticationInterface::class,
-                $this->createMock(AuthenticationInterface::class)
+                $this->createMock(AuthenticationInterface::class),
             ],
             [
                 Backend::class,
-                $this->createMock(Backend::class)
+                $this->createMock(Backend::class),
             ],
             [
                 CustomerLogger::class,
-                $this->createMock(CustomerLogger::class)
+                $this->createMock(CustomerLogger::class),
             ],
             [
                 Authenticate::class,
-                $this->createMock(Authenticate::class)
+                $this->createMock(Authenticate::class),
             ],
             [
                 EmailNotificationInterface::class,
-                $this->createMock(EmailNotificationInterface::class)
+                $this->createMock(EmailNotificationInterface::class),
             ],
             [
                 AddressFactory::class,
-                $this->createMock(AddressFactory::class)
+                $this->createMock(AddressFactory::class),
             ],
             [
                 ValidatorFactory::class,
-                $this->createMock(ValidatorFactory::class)
+                $this->createMock(ValidatorFactory::class),
             ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
@@ -414,7 +414,7 @@ class AccountManagementApiTest extends TestCase
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'addressRegistry' => $this->addressRegistryMock,
                 'allowedCountriesReader' => $this->allowedCountriesReader,
-                'authorization' => $this->authorizationMock
+                'authorization' => $this->authorizationMock,
             ]
         );
         $this->accountManagementMock = $this->createMock(AccountManagement::class);
@@ -491,7 +491,7 @@ class AccountManagementApiTest extends TestCase
     {
         return [
             [3, 1, false, 1],
-            [3, 1, true, 0]
+            [3, 1, true, 0],
         ];
     }
 }

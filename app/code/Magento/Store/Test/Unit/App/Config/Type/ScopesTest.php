@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -70,9 +71,9 @@ class ScopesTest extends TestCase
             'websites' => [
                 'base' => [
                     'website_id' => 0,
-                    'code' => 'base'
-                ]
-            ]
+                    'code' => 'base',
+                ],
+            ],
         ];
         $this->sourceMock->expects($this->any())->method('get')->willReturnMap([
             ['', $initConfigData],
@@ -100,7 +101,7 @@ class ScopesTest extends TestCase
                     'default' => [
                         'website_id' => 1,
                         'code' => 'default',
-                    ]
+                    ],
                 ],
             ],
             [

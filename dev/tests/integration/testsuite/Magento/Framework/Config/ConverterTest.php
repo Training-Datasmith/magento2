@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -64,15 +66,15 @@ XML;
                     'int-1' => '1',
                     'int-0' => '0',
                     'bool-true' => true,
-                    'bool-false' => false
-                ]
-            ]
+                    'bool-false' => false,
+                ],
+            ],
         ];
 
         return [
             [
                 $sourceString,
-                $expectedResult
+                $expectedResult,
             ],
         ];
     }

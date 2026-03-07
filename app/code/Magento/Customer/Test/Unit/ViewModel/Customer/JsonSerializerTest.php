@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class JsonSerializerTest extends TestCase
         $this->assertEquals(
             json_encode(
                 [
-                    'http://example.com/customer/section/load/'
+                    'http://example.com/customer/section/load/',
                 ]
             ),
             $this->model->serialize(['http://example.com/customer/section/load/'])

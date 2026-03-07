@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Express;
 
-use Magento\Quote\Model\QuoteRepository\SaveHandler;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Quote\ProductOptionFactory;
+use Magento\Quote\Model\QuoteRepository\SaveHandler;
 
 /**
  * Plugin for Magento\Quote\Model\QuoteRepository\SaveHandler
@@ -30,7 +33,7 @@ class QuotePlugin
     ) {
         $this->productOptionFactory = $productOptionFactory;
     }
-    
+
     /**
      * Replace cart item product options for disabled quote.
      *

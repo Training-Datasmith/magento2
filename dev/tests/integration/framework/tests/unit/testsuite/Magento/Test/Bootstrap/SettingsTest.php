@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Test class for \Magento\TestFramework\Bootstrap\Settings.
  */
+
 namespace Magento\Test\Bootstrap;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Bootstrap\Settings;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class SettingsTest extends \PHPUnit\Framework\TestCase
 {
@@ -46,7 +49,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
                 'one_xml_or_any_php_file' => '1.xml;?.php',
                 'config_file_with_dist' => '1.xml',
                 'config_file_no_dist' => '2.xml',
-                'no_config_file_dist' => '3.xml'
+                'no_config_file_dist' => '3.xml',
             ]
         );
     }
@@ -86,7 +89,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
             'boolean type' => ['is_in_stock', null, true],
             'non-existing' => ['non_existing', null, null],
             'zero string' => ['zero_value', '1', '0'],
-            'default value' => ['non_existing', 'default', 'default']
+            'default value' => ['non_existing', 'default', 'default'],
         ];
     }
 
@@ -105,7 +108,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
         return [
             'non-enabled string' => ['item_label', false],
             'non-enabled boolean' => ['is_in_stock', false],
-            'enabled string' => ['free_shipping', true]
+            'enabled string' => ['free_shipping', true],
         ];
     }
 
@@ -127,7 +130,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
             'zero value setting' => ['zero_value', 'default_should_be_ignored', self::getFixtureDir(). '0'],
             'empty default value' => ['non_existing_file', '', ''],
             'zero default value' => ['non_existing_file', '0', self::getFixtureDir(). '0'],
-            'default value' => ['non_existing_file', 'metrics.php', self::getFixtureDir(). 'metrics.php']
+            'default value' => ['non_existing_file', 'metrics.php', self::getFixtureDir(). 'metrics.php'],
         ];
     }
 
@@ -161,7 +164,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
                 [self::getFixtureDir(). '1.xml', self::getFixtureDir(). '4.php'],
             ],
             'non-existing setting' => ['non_existing', []],
-            'setting with zero value' => ['zero_value', [self::getFixtureDir(). '0']]
+            'setting with zero value' => ['zero_value', [self::getFixtureDir(). '0']],
         ];
     }
 
@@ -184,7 +187,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
         return [
             'config file & dist file' => ['config_file_with_dist', self::getFixtureDir(). '1.xml'],
             'config file & no dist file' => ['config_file_no_dist', self::getFixtureDir(). '2.xml'],
-            'no config file & dist file' => ['no_config_file_dist', self::getFixtureDir(). '3.xml.dist']
+            'no config file & dist file' => ['no_config_file_dist', self::getFixtureDir(). '3.xml.dist'],
         ];
     }
 
@@ -210,7 +213,7 @@ class SettingsTest extends \PHPUnit\Framework\TestCase
             'non-existing file' => [
                 'item_label',
                 __("Setting 'item_label' specifies the non-existing file '%1Item Label.dist'.", self::getFixtureDir()),
-            ]
+            ],
         ];
     }
 }

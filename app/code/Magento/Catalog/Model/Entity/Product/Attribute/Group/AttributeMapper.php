@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Entity\Product\Attribute\Group;
 
 use Magento\Catalog\Model\Attribute;
@@ -43,7 +46,7 @@ class AttributeMapper implements AttributeMapperInterface
             'leaf' => true,
             'is_user_defined' => $attribute->getIsUserDefined(),
             'is_unassignable' => $isUnassignable,
-            'entity_id' => $attribute->getEntityAttributeId()
+            'entity_id' => $attribute->getEntityAttributeId(),
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe.
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Plugin;
 
+use Magento\Customer\Model\Session;
 use Magento\Framework\View\Layout;
 use Magento\Persistent\Block\Header\RememberMeInit;
 use Magento\Persistent\Helper\Data;
-use Magento\Customer\Model\Session;
 use Magento\Persistent\Plugin\AddPersistentRememberMeInitPlugin;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -58,7 +59,7 @@ class AddPersistentRememberMeInitPluginTest extends TestCase
         $block = $this->createMock(RememberMeInit::class);
         $this->layout->method('getBlock')->willReturnMap([
             ['head.additional', $block],
-            ['persistent_initial_configs', null]
+            ['persistent_initial_configs', null],
         ]);
 
         $this->layout->expects($this->once())

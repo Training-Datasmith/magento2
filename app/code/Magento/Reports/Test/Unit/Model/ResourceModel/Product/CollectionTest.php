@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -33,8 +34,8 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Module\Manager as Manager;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\UniversalFactory;
 use Magento\Quote\Model\ResourceModel\Quote\Collection;
 use Magento\Reports\Model\Event\Type as EventType;
@@ -194,7 +195,7 @@ class CollectionTest extends TestCase
                 'productType' => $productTypeMock,
                 'quoteResource' => $quoteResourceMock,
                 'connection' => $this->connectionMock,
-                'productLimitationFactory' => $productLimitationFactoryMock
+                'productLimitationFactory' => $productLimitationFactoryMock,
             ]
         );
     }

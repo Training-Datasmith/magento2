@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Model\Product\Type\Grouped;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Option;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\GroupedProduct\Model\Product\Type\Grouped\Price;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -118,9 +119,9 @@ class PriceTest extends TestCase
         $this->productMock
             ->method('setFinalPrice')
              ->willReturnCallback(function (...$expectedPriceCallWithArgs) {
-                if (!empty($expectedPriceCallWithArgs)) {
-                    return null;
-                }
+                 if (!empty($expectedPriceCallWithArgs)) {
+                     return null;
+                 }
              });
 
         $this->productMock->expects(
@@ -195,18 +196,18 @@ class PriceTest extends TestCase
                 'associatedProducts' => [],
                 'options' => [[], []],
                 'expectedPriceCall' => 5, /* product call number to check final price formed correctly */
-                'expectedFinalPrice' => 10 /* 10(product price) + 2(options count) * 5(qty) * 5(option price) */
+                'expectedFinalPrice' => 10, /* 10(product price) + 2(options count) * 5(qty) * 5(option price) */
             ],
             'custom_option_exist' => [
                 'associatedProducts' => [static fn (self $testCase) => $testCase->generateAssociatedProducts()],
                 'options' => [
                     ['associated_product_1', false],
                     ['associated_product_2', $optionMock],
-                    ['associated_product_3', $optionMock]
+                    ['associated_product_3', $optionMock],
                 ],
                 'expectedPriceCall' => 15, /* product call number to check final price formed correctly */
-                'expectedFinalPrice' => 35 /* 10(product price) + 2(options count) * 5(qty) * 5(option price) */
-            ]
+                'expectedFinalPrice' => 35, /* 10(product price) + 2(options count) * 5(qty) * 5(option price) */
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Exception;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Info;
 use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
@@ -25,10 +27,9 @@ use Magento\Sales\Model\Order\Email\SenderBuilderFactory;
 use Magento\Sales\Model\Order\Shipment\Sender\EmailSender;
 use Magento\Sales\Model\ResourceModel\Order\Shipment;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -248,36 +249,36 @@ class EmailSenderTest extends TestCase
         bool $emailSendingResult,
         array $orderData
     ): void {
-         $this->globalConfigMock->expects($this->once())
-            ->method('getValue')
-            ->with('sales_email/general/async_sending')
-            ->willReturn($configValue);
+        $this->globalConfigMock->expects($this->once())
+           ->method('getValue')
+           ->with('sales_email/general/async_sending')
+           ->willReturn($configValue);
 
-         $this->orderMock->expects($this->any())
-            ->method('getId')
-            ->willReturn($orderData['order_id']);
-         $this->orderMock->expects($this->any())
-            ->method('getCustomerName')
-            ->willReturn($orderData['customer_name']);
-         $this->orderMock->expects($this->any())
-            ->method('getIsNotVirtual')
-            ->willReturn($orderData['is_not_virtual']);
-         $this->orderMock->expects($this->any())
-            ->method('getEmailCustomerNote')
-            ->willReturn($orderData['email_customer_note']);
-         $this->orderMock->expects($this->any())
-            ->method('getFrontendStatusLabel')
-            ->willReturn($orderData['frontend_status_label']);
+        $this->orderMock->expects($this->any())
+           ->method('getId')
+           ->willReturn($orderData['order_id']);
+        $this->orderMock->expects($this->any())
+           ->method('getCustomerName')
+           ->willReturn($orderData['customer_name']);
+        $this->orderMock->expects($this->any())
+           ->method('getIsNotVirtual')
+           ->willReturn($orderData['is_not_virtual']);
+        $this->orderMock->expects($this->any())
+           ->method('getEmailCustomerNote')
+           ->willReturn($orderData['email_customer_note']);
+        $this->orderMock->expects($this->any())
+           ->method('getFrontendStatusLabel')
+           ->willReturn($orderData['frontend_status_label']);
         if (!$isComment) {
             $this->commentMock = null;
         }
 
-         $this->shipmentMock->expects($this->any())
-            ->method('getId')
-            ->willReturn(self::SHIPMENT_ID);
-         $this->shipmentMock->expects($this->once())
-            ->method('setSendEmail')
-            ->with($emailSendingResult);
+        $this->shipmentMock->expects($this->any())
+           ->method('getId')
+           ->willReturn(self::SHIPMENT_ID);
+        $this->shipmentMock->expects($this->once())
+           ->method('setSendEmail')
+           ->with($emailSendingResult);
 
         if (!$configValue || $forceSyncMode) {
             $transport = [
@@ -295,8 +296,8 @@ class EmailSenderTest extends TestCase
                    'customer_name' => $orderData['customer_name'],
                    'is_not_virtual' => $orderData['is_not_virtual'],
                    'email_customer_note' => $orderData['email_customer_note'],
-                   'frontend_status_label' => $orderData['frontend_status_label']
-               ]
+                   'frontend_status_label' => $orderData['frontend_status_label'],
+               ],
             ];
             $transport = new DataObject($transport);
 
@@ -307,7 +308,7 @@ class EmailSenderTest extends TestCase
                    [
                        'sender' => $this->subject,
                        'transport' => $transport->getData(),
-                       'transportObject' => $transport
+                       'transportObject' => $transport,
                    ]
                );
 
@@ -372,11 +373,11 @@ class EmailSenderTest extends TestCase
             $this->shipmentResourceMock
                ->method('saveAttribute')
                ->willReturnCallback(function ($arg1, $arg2) {
-                if ($arg1 == $this->shipmentMock &&
-                       $arg2 == 'email_sent' ||
-                       $arg2 == 'send_email') {
-                    return null;
-                }
+                   if ($arg1 == $this->shipmentMock &&
+                          $arg2 == 'email_sent' ||
+                          $arg2 == 'send_email') {
+                       return null;
+                   }
                });
 
             $this->assertFalse(
@@ -405,8 +406,8 @@ class EmailSenderTest extends TestCase
                     'customer_name' => 'test customer',
                     'is_not_virtual' => true,
                     'email_customer_note' => 1,
-                    'frontend_status_label' => 'email_sent'
-                ]
+                    'frontend_status_label' => 'email_sent',
+                ],
             ],
             'Successful sync sending without comment' => [
                 0, false, false, true,
@@ -416,8 +417,8 @@ class EmailSenderTest extends TestCase
                     'customer_name' => 'test customer 1',
                     'is_not_virtual' => true,
                     'email_customer_note' => 1,
-                    'frontend_status_label' => 'email_sent'
-                ]
+                    'frontend_status_label' => 'email_sent',
+                ],
             ],
             'Failed sync sending with comment' => [
                 0, false, true, false,
@@ -427,8 +428,8 @@ class EmailSenderTest extends TestCase
                     'customer_name' => 'test customer 2',
                     'is_not_virtual' => true,
                     'email_customer_note' => 1,
-                    'frontend_status_label' => 'send_email'
-                ]
+                    'frontend_status_label' => 'send_email',
+                ],
             ],
             'Successful forced sync sending with comment' => [
                 1, true, true, true,
@@ -438,8 +439,8 @@ class EmailSenderTest extends TestCase
                     'customer_name' => 'test customer 3',
                     'is_not_virtual' => true,
                     'email_customer_note' => 1,
-                    'frontend_status_label' => 'email_sent'
-                ]
+                    'frontend_status_label' => 'email_sent',
+                ],
             ],
             'Async sending' => [
                 1, false, false, false,
@@ -449,9 +450,9 @@ class EmailSenderTest extends TestCase
                     'customer_name' => 'test customer 4',
                     'is_not_virtual' => true,
                     'email_customer_note' => 1,
-                    'frontend_status_label' => 'send_email'
-                ]
-            ]
+                    'frontend_status_label' => 'send_email',
+                ],
+            ],
         ];
     }
 }

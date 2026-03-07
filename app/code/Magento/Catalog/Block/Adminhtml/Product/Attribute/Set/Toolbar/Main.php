@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ class Main extends \Magento\Backend\Block\Template
             [
                 'label' => __('Add Attribute Set'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/add') . '\')',
-                'class' => 'add primary add-set'
+                'class' => 'add primary add-set',
             ]
         );
         return parent::_prepareLayout();

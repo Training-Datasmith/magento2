@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Button;
 
 /**
@@ -26,13 +29,13 @@ class Cancel extends Generic
                             [
                                 'targetName' => 'product_form.product_form.add_attribute_modal'
                                     . '.create_new_attribute_modal',
-                                'actionName' => 'toggleModal'
-                            ]
-                        ]
-                    ]
-                ]
+                                'actionName' => 'toggleModal',
+                            ],
+                        ],
+                    ],
+                ],
             ],
-            'on_click' => ''
+            'on_click' => '',
         ];
     }
 }

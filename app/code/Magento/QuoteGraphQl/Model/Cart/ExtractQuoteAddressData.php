@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -53,12 +54,12 @@ class ExtractQuoteAddressData
             [
                 'country' => [
                     'code' => $address->getCountryId(),
-                    'label' => $address->getCountry()
+                    'label' => $address->getCountry(),
                 ],
                 'region' => [
                     'code' => $address->getRegionCode(),
                     'label' => $address->getRegion(),
-                    'region_id'=> $address->getRegionId()
+                    'region_id' => $address->getRegionId(),
                 ],
                 'uid' => $this->uidEncoder->encode((string)$address->getAddressId()) ,
                 'id' => $customerAddressId,
@@ -75,7 +76,7 @@ class ExtractQuoteAddressData
                         );
                     },
                     $address->getCustomAttributes() ?? []
-                )
+                ),
             ]
         );
 
@@ -93,7 +94,7 @@ class ExtractQuoteAddressData
             $productData['model'] = $addressItem->getProduct();
             $addressData['cart_items'][] = [
                 'cart_item_id' => $itemId,
-                'quantity' => $addressItem->getQty()
+                'quantity' => $addressItem->getQty(),
             ];
             $addressData['cart_items_v2'][] = [
                 'id' => $itemId,

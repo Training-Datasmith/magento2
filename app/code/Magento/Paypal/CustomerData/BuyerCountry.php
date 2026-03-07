@@ -1,4 +1,5 @@
 <?php
+
 /************************************************************************
  *
  * Copyright 2024 Adobe
@@ -12,8 +13,8 @@ namespace Magento\Paypal\CustomerData;
 
 use Magento\Customer\CustomerData\SectionSourceInterface;
 use Magento\Customer\Helper\Session\CurrentCustomer;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\ScopeInterface;
 
 class BuyerCountry implements SectionSourceInterface
@@ -60,7 +61,7 @@ class BuyerCountry implements SectionSourceInterface
         }
 
         return [
-            'code' => $country
+            'code' => $country,
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Bundle\Ui\DataProvider\Product\Listing\Collector\BundlePrice;
@@ -75,8 +78,7 @@ class CreditmemoFactory
         $this->taxConfig = $taxConfig;
         $this->serializer = $serializer ?: ObjectManager::getInstance()->get(JsonSerializer::class);
         $this->localeFormat = $localeFormat ?: ObjectManager::getInstance()->get(FormatInterface::class);
-        $this->creditmemoValidator = $creditmemoValidator ?
-            : ObjectManager::getInstance()->get(CreditmemoValidator::class);
+        $this->creditmemoValidator = $creditmemoValidator ?: ObjectManager::getInstance()->get(CreditmemoValidator::class);
     }
 
     /**

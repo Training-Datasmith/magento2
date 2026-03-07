@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -22,7 +23,7 @@ class PayflowSilentPost
     protected array $allowedOrderStates = [
         Order::STATE_PROCESSING,
         Order::STATE_COMPLETE,
-        Order::STATE_PAYMENT_REVIEW
+        Order::STATE_PAYMENT_REVIEW,
     ];
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class UpdateCustomerEmail implements ResolverInterface
             $customer,
             [
                 'email' => $args['email'] ?? null,
-                'password' => $args['password'] ?? null
+                'password' => $args['password'] ?? null,
             ],
             $context->getExtensionAttributes()->getStore()
         );

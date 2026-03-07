@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\CatalogRule\Model\Indexer;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\CatalogRule\Model\Indexer\IndexBuilder;
 use Magento\CatalogRule\Model\ResourceModel\Rule as RuleResource;
 use Magento\CatalogRule\Test\Fixture\Rule as CatalogRuleFixture;
 use Magento\TestFramework\Fixture\AppArea;
@@ -120,7 +120,7 @@ class DynamicBatchSizingTest extends TestCase
             CatalogRuleFixture::class,
             [
                 'discount_amount' => 10,
-                'simple_action' => 'by_percent'
+                'simple_action' => 'by_percent',
             ],
             'rule'
         )
@@ -147,7 +147,7 @@ class DynamicBatchSizingTest extends TestCase
             CatalogRuleFixture::class,
             [
                 'discount_amount' => 15,
-                'simple_action' => 'by_percent'
+                'simple_action' => 'by_percent',
             ],
             'rule'
         )
@@ -185,7 +185,7 @@ class DynamicBatchSizingTest extends TestCase
             [
                 'discount_amount' => 25,
                 'simple_action' => 'by_percent',
-                'customer_group_ids' => [0, 1, 2, 3] // Multiple customer groups
+                'customer_group_ids' => [0, 1, 2, 3], // Multiple customer groups
             ],
             'rule'
         )

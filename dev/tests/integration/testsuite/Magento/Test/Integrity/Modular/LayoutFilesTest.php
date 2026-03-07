@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Modular;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -97,7 +100,7 @@ class LayoutFilesTest extends \PHPUnit\Framework\TestCase
             [$typeAttr => 'object', 'value' => \Magento\Wishlist\Model\ResourceModel\Item\Collection\Grid::class],
             [
                 $typeAttr => 'object',
-                'value' => \Magento\CustomerSegment\Model\ResourceModel\Segment\Report\Detail\Collection::class
+                'value' => \Magento\CustomerSegment\Model\ResourceModel\Segment\Report\Detail\Collection::class,
             ],
             [$typeAttr => 'options', 'model' => \Magento\Logging\Model\ResourceModel\Grid\ActionsGroup::class],
             [$typeAttr => 'options', 'model' => \Magento\Logging\Model\ResourceModel\Grid\Actions::class],

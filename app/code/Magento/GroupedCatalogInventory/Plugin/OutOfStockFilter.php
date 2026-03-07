@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\GroupedCatalogInventory\Plugin;
 
 use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Api\Data\StockStatusInterface;
-use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Framework\DataObject;
+use Magento\GroupedProduct\Model\Product\Type\Grouped;
 
 /**
  * Removes out of stock products from cart candidates when appropriate.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\I18n\Dictionary\Options\Resolver;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ResolverTest extends TestCase
 {
@@ -44,7 +45,7 @@ class ResolverTest extends TestCase
                 'directory' => $directory,
                 'withContext' => $withContext,
                 'componentRegistrar' => $componentRegistrar,
-                'directoryList' => $directoryList
+                'directoryList' => $directoryList,
             ]
         );
         $this->assertSame($result, $resolver->getOptions());
@@ -67,7 +68,7 @@ class ResolverTest extends TestCase
                         'paths' => [
                             $sourceFirst . '/app/code/module1/',
                             $sourceFirst . '/app/code/module2/',
-                            $sourceFirst . '/app/design/'
+                            $sourceFirst . '/app/design/',
                         ],
                         'fileMask' => '/\.(php|phtml)$/',
                     ],
@@ -76,7 +77,7 @@ class ResolverTest extends TestCase
                         'paths' => [
                             $sourceFirst . '/app/code/module1/',
                             $sourceFirst . '/app/code/module2/',
-                            $sourceFirst . '/app/design/'
+                            $sourceFirst . '/app/design/',
                         ],
                         'fileMask' => '/\.html$/',
                     ],
@@ -89,17 +90,17 @@ class ResolverTest extends TestCase
                             $sourceFirst . '/lib/web/mage/',
                             $sourceFirst . '/lib/web/varien/',
                         ],
-                        'fileMask' => '/\.(js|phtml)$/'
+                        'fileMask' => '/\.(js|phtml)$/',
                     ],
                     [
                         'type' => 'xml',
                         'paths' => [
                             $sourceFirst . '/app/code/module1/',
                             $sourceFirst . '/app/code/module2/',
-                            $sourceFirst . '/app/design/'
+                            $sourceFirst . '/app/design/',
                         ],
-                        'fileMask' => '/\.xml$/'
-                    ]
+                        'fileMask' => '/\.xml$/',
+                    ],
                 ],
             ],
             [
@@ -109,8 +110,8 @@ class ResolverTest extends TestCase
                     ['type' => 'php', 'paths' => [$sourceSecond], 'fileMask' => '/\.(php|phtml)$/'],
                     ['type' => 'html', 'paths' => [$sourceSecond], 'fileMask' => '/\.html/'],
                     ['type' => 'js', 'paths' => [$sourceSecond], 'fileMask' => '/\.(js|phtml)$/'],
-                    ['type' => 'xml', 'paths' => [$sourceSecond], 'fileMask' => '/\.xml$/']
-                ]
+                    ['type' => 'xml', 'paths' => [$sourceSecond], 'fileMask' => '/\.xml$/'],
+                ],
             ],
         ];
     }
@@ -137,7 +138,7 @@ class ResolverTest extends TestCase
                 'directory' => $directory,
                 'withContext' => $withContext,
                 'componentRegistrar' => $componentRegistrar,
-                'directoryList' => $directoryList
+                'directoryList' => $directoryList,
             ]
         );
         $this->expectException('\InvalidArgumentException');

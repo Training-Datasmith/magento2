@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order;
 
-use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Sales\Api\InvoiceManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Invoice model test.

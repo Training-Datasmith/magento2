@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model\Driver;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\MessageQueue\CountableQueueInterface;
+use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\Framework\MessageQueue\EnvelopeInterface;
 use Magento\MysqlMq\Model\QueueManagement;
-use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\MysqlMq\Model\ResourceModel\Queue as QueueResourceModel;
 use Psr\Log\LoggerInterface;
 

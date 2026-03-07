@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -100,10 +101,10 @@ class CreateCustomerTest extends TestCase
                 'data' => [
                     'createCustomer' => [
                         'customer' => [
-                            'email' => $email
-                        ]
-                    ]
-                ]
+                            'email' => $email,
+                        ],
+                    ],
+                ],
             ],
             $responseData
         );
@@ -171,12 +172,12 @@ class CreateCustomerTest extends TestCase
         DataFixture(WebsiteFixture::class, as: 'website2'),
         DataFixture(StoreGroupFixture::class, [
             'name' => 'Test Group',
-            'website_id' => '$website2.id$'
+            'website_id' => '$website2.id$',
         ], 'store_group2'),
         DataFixture(StoreFixture::class, [
             'code' => 'test_store_view',
             'name' => 'Test Store View',
-            'store_group_id' => '$store_group2.id$'
+            'store_group_id' => '$store_group2.id$',
         ])
     ]
     public function testCreateCustomerForStoreSendsEmail(): void
@@ -228,7 +229,7 @@ class CreateCustomerTest extends TestCase
             [
                 'code' => 'test_store_view',
                 'name' => 'Test Store View',
-                'store_group_id' => '$store_group2.id$'
+                'store_group_id' => '$store_group2.id$',
             ]
         ),
         Config('general/locale/code', 'fr_FR', 'store', 'test_store_view'),

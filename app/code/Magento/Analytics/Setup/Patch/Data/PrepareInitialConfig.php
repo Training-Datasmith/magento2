@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,37 +20,16 @@ use Magento\Framework\Setup\Patch\PatchVersionInterface;
  */
 class PrepareInitialConfig implements DataPatchInterface, PatchVersionInterface
 {
-    /**
-     * @var ModuleDataSetupInterface
-     */
-    private $moduleDataSetup;
+    private string $subscriptionEnabledConfigPath = 'analytics/subscription/enabled';
 
-    /**
-     * @var SubscriptionHandler
-     */
-    private $subscriptionHandler;
-
-    /**
-     * @var string
-     */
-    private $subscriptionEnabledConfigPath = 'analytics/subscription/enabled';
-
-    /**
-     * @param ModuleDataSetupInterface $moduleDataSetup
-     * @param SubscriptionHandler $subscriptionHandler
-     */
-    public function __construct(
-        ModuleDataSetupInterface $moduleDataSetup,
-        SubscriptionHandler $subscriptionHandler
-    ) {
-        $this->moduleDataSetup = $moduleDataSetup;
-        $this->subscriptionHandler = $subscriptionHandler;
+    public function __construct(private readonly ModuleDataSetupInterface $moduleDataSetup, private readonly SubscriptionHandler $subscriptionHandler)
+    {
     }
 
     /**
      * @inheritDoc
      */
-    public function apply()
+    public function apply(): static
     {
         $this->moduleDataSetup->getConnection()->insert(
             $this->moduleDataSetup->getTable('core_config_data'),
@@ -67,7 +47,7 @@ class PrepareInitialConfig implements DataPatchInterface, PatchVersionInterface
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
@@ -75,7 +55,7 @@ class PrepareInitialConfig implements DataPatchInterface, PatchVersionInterface
     /**
      * @inheritDoc
      */
-    public static function getVersion()
+    public static function getVersion(): string
     {
         return '2.0.0';
     }
@@ -83,7 +63,7 @@ class PrepareInitialConfig implements DataPatchInterface, PatchVersionInterface
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }

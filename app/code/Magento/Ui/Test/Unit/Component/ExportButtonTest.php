@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -70,12 +71,12 @@ class ExportButtonTest extends TestCase
         $data = [
             'config' => [
                 'options' => [
-                    $option
+                    $option,
                 ],
                 'additionalParams' => [
                     'test_key' => 'test_value',
-                    'test_asterisk' => '*'
-                ]
+                    'test_asterisk' => '*',
+                ],
             ],
         ];
         $expected = $data;

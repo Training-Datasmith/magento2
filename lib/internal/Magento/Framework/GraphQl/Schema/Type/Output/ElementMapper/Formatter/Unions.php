@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\Formatter;
 
-use Magento\Framework\GraphQl\Config\Element\UnionType;
 use Magento\Framework\GraphQl\Config\ConfigElementInterface;
-use Magento\Framework\GraphQl\Schema\Type\OutputTypeInterface;
+use Magento\Framework\GraphQl\Config\Element\UnionType;
 use Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\FormatterInterface;
 use Magento\Framework\GraphQl\Schema\Type\Output\OutputMapper;
+use Magento\Framework\GraphQl\Schema\Type\OutputTypeInterface;
 
 /**
  * Add unions implemented by type if configured.

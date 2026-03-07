@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Store\Model;
 
-use Magento\Store\Model\ScopeInterface;
+namespace Magento\Store\Model;
 
 /**
  * Verifies that the requested URL matches to base URL of store.

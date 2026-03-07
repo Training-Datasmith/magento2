@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class OrderDetailsWithCommentsTest extends GraphQlAbstract
             if ($comment->getIsVisibleOnFront()) {
                 $comments[] = [
                     'message' => $comment->getComment(),
-                    'timestamp' => $comment->getCreatedAt()
+                    'timestamp' => $comment->getCreatedAt(),
                 ];
             }
         }

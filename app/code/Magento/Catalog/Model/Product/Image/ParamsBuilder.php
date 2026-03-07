@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Image;
 
+use Magento\Catalog\Model\Product\Image;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
@@ -15,7 +17,6 @@ use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Catalog\Model\Product\Image;
 
 /**
  * Builds parameters array used to build Image Asset
@@ -208,7 +209,7 @@ class ParamsBuilder
                 'watermark_image_opacity' => $opacity,
                 'watermark_position' => $position,
                 'watermark_width' => $width,
-                'watermark_height' => $height
+                'watermark_height' => $height,
             ];
         }
 
@@ -225,7 +226,7 @@ class ParamsBuilder
         return (bool) $this->viewConfig->getViewConfig(
             [
                 'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
-                'themeModel' => $this->currentTheme
+                'themeModel' => $this->currentTheme,
             ]
         )->getVarValue('Magento_Catalog', 'product_image_white_borders');
     }

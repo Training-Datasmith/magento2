@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -91,14 +92,14 @@ class Option
 
         return [
             'code' => 'bundle_selection_attributes',
-            'value'=> $this->serializer->serialize(
+            'value' => $this->serializer->serialize(
                 [
                     'price' => $this->priceCurrency->convertAndRound($price, $product->getStore()),
                     'qty' => $qty,
                     'option_label' => $bundleOption->getTitle(),
                     'option_id' => $bundleOption->getId(),
                 ]
-            )
+            ),
         ];
     }
 

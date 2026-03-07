@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Catalog\Model\ProductOptions\ConfigInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Stdlib\ArrayManager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -65,11 +66,11 @@ class CustomOptionsTest extends AbstractModifierTestCase
         $this->storeMock = $this->createPartialMock(Store::class, ['getBaseCurrency']);
         $this->storeMock->method('getBaseCurrency')->willReturn($this->priceCurrency);
         $this->storeManagerMock->method('getStore')->willReturn($this->storeMock);
-        
+
         // Configure productMock to handle getOptions properly
         $productState = new \stdClass();
         $productState->options = [];
-        
+
         $this->productMock->productState = $productState;
     }
 
@@ -82,7 +83,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'locator' => $this->locatorMock,
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
-            'storeManager' => $this->storeManagerMock
+            'storeManager' => $this->storeManagerMock,
         ]);
     }
 
@@ -93,9 +94,9 @@ class CustomOptionsTest extends AbstractModifierTestCase
         $originalData = [
             $productId => [
                 CustomOptions::DATA_SOURCE_DEFAULT => [
-                    'title' => 'original'
-                ]
-            ]
+                    'title' => 'original',
+                ],
+            ],
         ];
 
         $options = [
@@ -104,9 +105,9 @@ class CustomOptionsTest extends AbstractModifierTestCase
                 ['title' => 'option2', 'store_title' => null],
                 [
                     $this->getProductOptionMock(['title' => 'value1', 'store_title' => 'Option Value Store Title']),
-                    $this->getProductOptionMock(['title' => 'value2', 'store_title' => null])
+                    $this->getProductOptionMock(['title' => 'value2', 'store_title' => null]),
                 ]
-            )
+            ),
         ];
 
         $resultData = [
@@ -118,7 +119,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         [
                             CustomOptions::FIELD_TITLE_NAME => 'option1',
                             CustomOptions::FIELD_STORE_TITLE_NAME => 'Option Store Title',
-                            CustomOptions::FIELD_IS_USE_DEFAULT => false
+                            CustomOptions::FIELD_IS_USE_DEFAULT => false,
                         ], [
                             CustomOptions::FIELD_TITLE_NAME => 'option2',
                             CustomOptions::FIELD_STORE_TITLE_NAME => null,
@@ -127,23 +128,23 @@ class CustomOptionsTest extends AbstractModifierTestCase
                                 [
                                     CustomOptions::FIELD_TITLE_NAME => 'value1',
                                     CustomOptions::FIELD_STORE_TITLE_NAME => 'Option Value Store Title',
-                                    CustomOptions::FIELD_IS_USE_DEFAULT => false
+                                    CustomOptions::FIELD_IS_USE_DEFAULT => false,
                                 ], [
                                     CustomOptions::FIELD_TITLE_NAME => 'value2',
                                     CustomOptions::FIELD_STORE_TITLE_NAME => null,
-                                    CustomOptions::FIELD_IS_USE_DEFAULT => true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    CustomOptions::FIELD_IS_USE_DEFAULT => true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         // Set product ID and options
         $this->productMock->setId($productId);
         $this->productMock->productState->options = $options;
-        
+
         // Configure getOptions to return from state
         $this->productMock->method('getOptions')->willReturnCallback(function () {
             return $this->productMock->productState->options;
@@ -228,7 +229,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
             'storeManager' => $this->storeManagerMock,
-            'arrayManager' => new ArrayManager()
+            'arrayManager' => new ArrayManager(),
         ]);
 
         $reflection = new \ReflectionClass($model);
@@ -249,64 +250,64 @@ class CustomOptionsTest extends AbstractModifierTestCase
         return [
             'three_decimals' => [
                 'inputValue' => 2.334,
-                'expectedValue' => '2.334'
+                'expectedValue' => '2.334',
             ],
             'four_decimals' => [
                 'inputValue' => 2.3344,
-                'expectedValue' => '2.3344'
+                'expectedValue' => '2.3344',
             ],
             'five_decimals' => [
                 'inputValue' => 10.44435,
-                'expectedValue' => '10.44435'
+                'expectedValue' => '10.44435',
             ],
             'six_decimals' => [
                 'inputValue' => 10.444356,
-                'expectedValue' => '10.444356'
+                'expectedValue' => '10.444356',
             ],
             'seven_decimals_truncated_to_six' => [
                 'inputValue' => 10.4443567,
-                'expectedValue' => '10.444357'
+                'expectedValue' => '10.444357',
             ],
             'two_decimals' => [
                 'inputValue' => 5.25,
-                'expectedValue' => '5.25'
+                'expectedValue' => '5.25',
             ],
             'one_decimal' => [
                 'inputValue' => 5.5,
-                'expectedValue' => '5.50'
+                'expectedValue' => '5.50',
             ],
             'integer_value' => [
                 'inputValue' => 10,
-                'expectedValue' => '10.00'
+                'expectedValue' => '10.00',
             ],
             'string_numeric' => [
                 'inputValue' => '2.334',
-                'expectedValue' => '2.334'
+                'expectedValue' => '2.334',
             ],
             'non_numeric_string' => [
                 'inputValue' => 'not_a_number',
-                'expectedValue' => 'not_a_number'
+                'expectedValue' => 'not_a_number',
             ],
             'null_value' => [
                 'inputValue' => null,
-                'expectedValue' => null
+                'expectedValue' => null,
             ],
             'empty_string' => [
                 'inputValue' => '',
-                'expectedValue' => ''
+                'expectedValue' => '',
             ],
             'zero_value' => [
                 'inputValue' => 0,
-                'expectedValue' => '0.00'
+                'expectedValue' => '0.00',
             ],
             'zero_with_decimals' => [
                 'inputValue' => 0.00,
-                'expectedValue' => '0.00'
+                'expectedValue' => '0.00',
             ],
             'negative_value' => [
                 'inputValue' => -2.334,
-                'expectedValue' => '-2.334'
-            ]
+                'expectedValue' => '-2.334',
+            ],
         ];
     }
 
@@ -328,7 +329,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
             'storeManager' => $this->storeManagerMock,
-            'arrayManager' => new ArrayManager()
+            'arrayManager' => new ArrayManager(),
         ]);
 
         $reflection = new \ReflectionClass($model);
@@ -360,7 +361,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
             'storeManager' => $this->storeManagerMock,
-            'arrayManager' => new ArrayManager()
+            'arrayManager' => new ArrayManager(),
         ]);
 
         $reflection = new \ReflectionClass($model);
@@ -393,7 +394,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
             'storeManager' => $this->storeManagerMock,
-            'arrayManager' => new ArrayManager()
+            'arrayManager' => new ArrayManager(),
         ]);
 
         $reflection = new \ReflectionClass($model);
@@ -415,7 +416,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
         return [
             'empty_options' => [
                 'optionsConfig' => [],
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'single_group_with_enabled_types' => [
                 'optionsConfig' => [
@@ -423,9 +424,9 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         'label' => 'Text',
                         'types' => [
                             ['label' => 'Field', 'name' => 'field', 'disabled' => false],
-                            ['label' => 'Area', 'name' => 'area', 'disabled' => false]
-                        ]
-                    ]
+                            ['label' => 'Area', 'name' => 'area', 'disabled' => false],
+                        ],
+                    ],
                 ],
                 'expectedResult' => [
                     [
@@ -433,10 +434,10 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         'label' => 'Text',
                         'optgroup' => [
                             ['label' => 'Field', 'value' => 'field'],
-                            ['label' => 'Area', 'value' => 'area']
-                        ]
-                    ]
-                ]
+                            ['label' => 'Area', 'value' => 'area'],
+                        ],
+                    ],
+                ],
             ],
             'single_group_with_disabled_type' => [
                 'optionsConfig' => [
@@ -444,19 +445,19 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         'label' => 'Text',
                         'types' => [
                             ['label' => 'Field', 'name' => 'field', 'disabled' => false],
-                            ['label' => 'Area', 'name' => 'area', 'disabled' => true]
-                        ]
-                    ]
+                            ['label' => 'Area', 'name' => 'area', 'disabled' => true],
+                        ],
+                    ],
                 ],
                 'expectedResult' => [
                     [
                         'value' => 0,
                         'label' => 'Text',
                         'optgroup' => [
-                            ['label' => 'Field', 'value' => 'field']
-                        ]
-                    ]
-                ]
+                            ['label' => 'Field', 'value' => 'field'],
+                        ],
+                    ],
+                ],
             ],
             'group_with_all_disabled_types_should_be_excluded' => [
                 'optionsConfig' => [
@@ -464,11 +465,11 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         'label' => 'Text',
                         'types' => [
                             ['label' => 'Field', 'name' => 'field', 'disabled' => true],
-                            ['label' => 'Area', 'name' => 'area', 'disabled' => true]
-                        ]
-                    ]
+                            ['label' => 'Area', 'name' => 'area', 'disabled' => true],
+                        ],
+                    ],
                 ],
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'multiple_groups_with_mixed_types' => [
                 'optionsConfig' => [
@@ -476,41 +477,41 @@ class CustomOptionsTest extends AbstractModifierTestCase
                         'label' => 'Text',
                         'types' => [
                             ['label' => 'Field', 'name' => 'field', 'disabled' => false],
-                            ['label' => 'Area', 'name' => 'area', 'disabled' => true]
-                        ]
+                            ['label' => 'Area', 'name' => 'area', 'disabled' => true],
+                        ],
                     ],
                     [
                         'label' => 'Select',
                         'types' => [
                             ['label' => 'Drop-down', 'name' => 'drop_down', 'disabled' => false],
-                            ['label' => 'Radio Buttons', 'name' => 'radio', 'disabled' => false]
-                        ]
+                            ['label' => 'Radio Buttons', 'name' => 'radio', 'disabled' => false],
+                        ],
                     ],
                     [
                         'label' => 'Date',
                         'types' => [
-                            ['label' => 'Date', 'name' => 'date', 'disabled' => true]
-                        ]
-                    ]
+                            ['label' => 'Date', 'name' => 'date', 'disabled' => true],
+                        ],
+                    ],
                 ],
                 'expectedResult' => [
                     [
                         'value' => 0,
                         'label' => 'Text',
                         'optgroup' => [
-                            ['label' => 'Field', 'value' => 'field']
-                        ]
+                            ['label' => 'Field', 'value' => 'field'],
+                        ],
                     ],
                     [
                         'value' => 1,
                         'label' => 'Select',
                         'optgroup' => [
                             ['label' => 'Drop-down', 'value' => 'drop_down'],
-                            ['label' => 'Radio Buttons', 'value' => 'radio']
-                        ]
-                    ]
-                ]
-            ]
+                            ['label' => 'Radio Buttons', 'value' => 'radio'],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -528,7 +529,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             'productOptionsConfig' => $this->productOptionsConfigMock,
             'productOptionsPrice' => $this->productOptionsPriceMock,
             'storeManager' => $this->storeManagerMock,
-            'arrayManager' => new ArrayManager()
+            'arrayManager' => new ArrayManager(),
         ]);
 
         $reflection = new \ReflectionClass($model);
@@ -549,28 +550,28 @@ class CustomOptionsTest extends AbstractModifierTestCase
         return [
             'null_value_returns_empty_string' => [
                 'inputValue' => null,
-                'expectedValue' => ''
+                'expectedValue' => '',
             ],
             'integer_value' => [
                 'inputValue' => 10,
-                'expectedValue' => '10.00'
+                'expectedValue' => '10.00',
             ],
             'float_with_decimals' => [
                 'inputValue' => 2.334,
-                'expectedValue' => '2.334'
+                'expectedValue' => '2.334',
             ],
             'float_exceeding_max_precision' => [
                 'inputValue' => 10.4443567,
-                'expectedValue' => '10.444357'
+                'expectedValue' => '10.444357',
             ],
             'zero_value' => [
                 'inputValue' => 0,
-                'expectedValue' => '0.00'
+                'expectedValue' => '0.00',
             ],
             'string_numeric' => [
                 'inputValue' => '5.25',
-                'expectedValue' => '5.25'
-            ]
+                'expectedValue' => '5.25',
+            ],
         ];
     }
 }

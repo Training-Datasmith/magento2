@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\App\Task\Operation;
 
-use Magento\Setup\Module\Di\App\Task\OperationInterface;
-use Magento\Framework\Module\Dir\Reader as ModuleReader;
 use Magento\Framework\App\ObjectManager\ConfigWriterInterface;
+use Magento\Framework\Module\Dir\Reader as ModuleReader;
+use Magento\Setup\Module\Di\App\Task\OperationInterface;
 
 /**
  * Pregenerates actions for Magento

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Model;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface as UiComponentContext;
@@ -19,7 +22,7 @@ class UiComponentTypeResolver
     /**
      * @var string
      */
-    const DEFAULT_CONTENT_TYPE = 'text/html';
+    public const DEFAULT_CONTENT_TYPE = 'text/html';
 
     /**
      * @var array

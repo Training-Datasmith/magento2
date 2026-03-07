@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Block\Adminhtml\Template\Grid\Renderer;
 
 /**
@@ -23,7 +26,7 @@ class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Action
         $actions[] = [
             'url' => $this->getUrl('adminhtml/*/preview', ['id' => $row->getId()]),
             'caption' => __('Preview'),
-            'target' => '_blank'
+            'target' => '_blank',
         ];
 
         $this->getColumn()->setActions($actions);

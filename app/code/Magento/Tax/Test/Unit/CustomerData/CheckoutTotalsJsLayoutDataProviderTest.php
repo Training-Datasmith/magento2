@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class CheckoutTotalsJsLayoutDataProviderTest extends TestCase
         $this->dataProvider = $objectManager->getObject(
             CheckoutTotalsJsLayoutDataProvider::class,
             [
-                'taxConfig' => $this->taxConfigMock
+                'taxConfig' => $this->taxConfigMock,
             ]
         );
     }
@@ -87,8 +88,8 @@ class CheckoutTotalsJsLayoutDataProviderTest extends TestCase
                                                 'subtotal.totals' => [
                                                     'config' => [
                                                         'display_cart_subtotal_incl_tax' => 1,
-                                                        'display_cart_subtotal_excl_tax' => 1
-                                                    ]
+                                                        'display_cart_subtotal_excl_tax' => 1,
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -96,8 +97,8 @@ class CheckoutTotalsJsLayoutDataProviderTest extends TestCase
                                 ],
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'Test with settings display cart incl and excl is No' => [
                 '0' ,
@@ -113,8 +114,8 @@ class CheckoutTotalsJsLayoutDataProviderTest extends TestCase
                                                 'subtotal.totals' => [
                                                     'config' => [
                                                         'display_cart_subtotal_incl_tax' => 0,
-                                                        'display_cart_subtotal_excl_tax' => 0
-                                                    ]
+                                                        'display_cart_subtotal_excl_tax' => 0,
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -122,9 +123,9 @@ class CheckoutTotalsJsLayoutDataProviderTest extends TestCase
                                 ],
                             ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

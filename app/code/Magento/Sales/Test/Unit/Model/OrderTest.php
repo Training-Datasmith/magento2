@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model;
 
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Config\Model\Config\Source\Nooptreq;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -21,16 +22,18 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderItemSearchResultInterface;
 use Magento\Sales\Api\Data\OrderStatusHistoryInterface;
 use Magento\Sales\Api\OrderItemRepositoryInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Item;
+use Magento\Sales\Model\Order\Payment as OrderPayment;
 use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory as OrderCollectionFactory;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Collection as OrderInvoiceCollection;
-use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\ResourceModel\Order\Item\Collection as OrderItemCollection;
 use Magento\Sales\Model\ResourceModel\Order\Item\CollectionFactory as OrderItemCollectionFactory;
 use Magento\Sales\Model\ResourceModel\Order\Payment;
@@ -38,12 +41,9 @@ use Magento\Sales\Model\ResourceModel\Order\Payment\Collection as PaymentCollect
 use Magento\Sales\Model\ResourceModel\Order\Payment\CollectionFactory as PaymentCollectionFactory;
 use Magento\Sales\Model\ResourceModel\Order\Status\History\Collection as HistoryCollection;
 use Magento\Sales\Model\ResourceModel\Order\Status\History\CollectionFactory as HistoryCollectionFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Config\Model\Config\Source\Nooptreq;
-use Magento\Sales\Model\Order\Payment as OrderPayment;
 
 /**
  * Test class for \Magento\Sales\Model\Order
@@ -204,7 +204,7 @@ class OrderTest extends TestCase
                 'timezone' => $this->timezone,
                 'itemRepository' => $this->itemRepository,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -274,7 +274,7 @@ class OrderTest extends TestCase
         $this->order->setData(
             OrderInterface::ITEMS,
             [
-                $orderId => $this->item
+                $orderId => $this->item,
             ]
         );
     }
@@ -452,8 +452,8 @@ class OrderTest extends TestCase
                         'middle_name' => null,
                         'expected_name' => 'Guest',
                         'customer_suffix' => 'smith',
-                        'customer_prefix' => 'mr.'
-                    ]
+                        'customer_prefix' => 'mr.',
+                    ],
                 ],
                 [
                     [
@@ -462,8 +462,8 @@ class OrderTest extends TestCase
                         'middle_name' => null,
                         'expected_name' => 'mr. Smith  Carl',
                         'customer_suffix' => 'Carl',
-                        'customer_prefix' => 'mr.'
-                    ]
+                        'customer_prefix' => 'mr.',
+                    ],
                 ],
                 [
                     [
@@ -472,9 +472,9 @@ class OrderTest extends TestCase
                         'middle_name' => 'Middle',
                         'expected_name' => 'mr. John Middle  Carl',
                         'customer_suffix' => 'Carl',
-                        'customer_prefix' => 'mr.'
-                    ]
-                ]
+                        'customer_prefix' => 'mr.',
+                    ],
+                ],
             ];
     }
 
@@ -1041,12 +1041,12 @@ class OrderTest extends TestCase
             [],
             [
                 Order::ACTION_FLAG_UNHOLD => false,
-                Order::ACTION_FLAG_CANCEL => false
+                Order::ACTION_FLAG_CANCEL => false,
             ],
             [
                 Order::ACTION_FLAG_UNHOLD => false,
-                Order::ACTION_FLAG_CANCEL => true
-            ]
+                Order::ACTION_FLAG_CANCEL => true,
+            ],
         ];
     }
 
@@ -1063,7 +1063,7 @@ class OrderTest extends TestCase
             Order::STATE_CANCELED,
             Order::STATE_COMPLETE,
             Order::STATE_CLOSED,
-            Order::STATE_PROCESSING
+            Order::STATE_PROCESSING,
         ];
     }
 
@@ -1120,7 +1120,7 @@ class OrderTest extends TestCase
     {
         return [
             [false],
-            [true]
+            [true],
         ];
     }
 
@@ -1157,7 +1157,7 @@ class OrderTest extends TestCase
                 'getIterator',
                 'toOptionArray',
                 'count',
-                'load'
+                'load',
             ]
         );
 
@@ -1329,7 +1329,7 @@ class OrderTest extends TestCase
         return [
             [Order::STATE_COMPLETE],
             [Order::STATE_CANCELED],
-            [Order::STATE_CLOSED]
+            [Order::STATE_CLOSED],
         ];
     }
 
@@ -1342,7 +1342,7 @@ class OrderTest extends TestCase
             [Order::STATE_HOLDED],
             [Order::STATE_CANCELED],
             [Order::STATE_CLOSED],
-            [Order::STATE_PAYMENT_REVIEW]
+            [Order::STATE_PAYMENT_REVIEW],
         ];
     }
 }

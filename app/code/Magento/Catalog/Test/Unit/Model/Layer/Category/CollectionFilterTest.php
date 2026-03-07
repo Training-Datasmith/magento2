@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Category;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Config;
 use Magento\Catalog\Model\Layer\Category\CollectionFilter;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

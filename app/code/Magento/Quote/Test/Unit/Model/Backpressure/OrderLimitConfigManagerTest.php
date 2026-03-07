@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Backpressure;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\RuntimeException;
-use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
 use Magento\Framework\App\Backpressure\ContextInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\RuntimeException;
+use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

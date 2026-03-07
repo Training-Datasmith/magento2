@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Model\Sales\Order;
 
+use Laminas\Validator\ValidatorInterface;
 use Magento\Bundle\Model\Sales\Order\Shipment\BundleShipmentTypeValidator;
-use \Laminas\Validator\ValidatorInterface;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Phrase;
@@ -64,7 +65,7 @@ class BundleOrderTypeValidator extends BundleShipmentTypeValidator implements Va
         foreach ($value->getItems() as $shipmentItem) {
             $shippingInfo[$shipmentItem->getOrderItemId()] = [
                 'shipment_info' => $shipmentItem,
-                'order_info' => $value->getOrder()->getItemById($shipmentItem->getOrderItemId())
+                'order_info' => $value->getOrder()->getItemById($shipmentItem->getOrderItemId()),
             ];
         }
 

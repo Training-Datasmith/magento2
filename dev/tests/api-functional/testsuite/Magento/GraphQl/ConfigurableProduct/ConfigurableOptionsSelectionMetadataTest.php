@@ -9,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\GraphQl\ConfigurableProduct;
 
 use Magento\ConfigurableProductGraphQl\Model\Options\SelectionUidFormatter;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\AttributeRepository;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test configurable product option selection.

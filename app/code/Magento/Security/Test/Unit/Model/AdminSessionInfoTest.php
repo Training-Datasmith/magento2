@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class AdminSessionInfoTest extends TestCase
             ->willReturn($timestamp);
 
         $this->model->setUpdatedAt(
-            date("Y-m-d H:i:s", $timestamp - 1)
+            date('Y-m-d H:i:s', $timestamp - 1)
         );
 
         $this->assertEquals($expectedResult, $this->model->isSessionExpired());
@@ -120,7 +121,7 @@ class AdminSessionInfoTest extends TestCase
         return [
             ['expectedResult' => true, 'sessionLifetime' => '0'],
             ['expectedResult' => true, 'sessionLifetime' => '1'],
-            ['expectedResult' => false, 'sessionLifetime' => '2']
+            ['expectedResult' => false, 'sessionLifetime' => '2'],
         ];
     }
 

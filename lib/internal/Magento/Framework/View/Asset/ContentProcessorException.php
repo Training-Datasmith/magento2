@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -13,5 +16,4 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class ContentProcessorException extends LocalizedException
 {
-
 }

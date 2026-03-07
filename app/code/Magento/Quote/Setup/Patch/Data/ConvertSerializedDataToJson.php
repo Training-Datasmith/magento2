@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Setup\Patch\Data;
 
-use Magento\Quote\Setup\ConvertSerializedDataToJsonFactory;
-use Magento\Quote\Setup\QuoteSetupFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Quote\Setup\ConvertSerializedDataToJsonFactory;
+use Magento\Quote\Setup\QuoteSetupFactory;
 
 /**
  * Convert quote serialized data to json.
@@ -61,7 +64,7 @@ class ConvertSerializedDataToJson implements DataPatchInterface, PatchVersionInt
     public static function getDependencies()
     {
         return [
-            InstallEntityTypes::class
+            InstallEntityTypes::class,
         ];
     }
 

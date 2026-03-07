@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,20 +19,20 @@ interface CategoryInterface extends \Magento\Framework\Api\CustomAttributesDataI
     /**#@+
      * Constants defined for keys of  data array
      */
-    const KEY_PARENT_ID = 'parent_id';
-    const KEY_NAME = 'name';
-    const KEY_IS_ACTIVE = 'is_active';
-    const KEY_POSITION = 'position';
-    const KEY_LEVEL = 'level';
-    const KEY_UPDATED_AT = 'updated_at';
-    const KEY_CREATED_AT = 'created_at';
-    const KEY_PATH = 'path';
-    const KEY_AVAILABLE_SORT_BY = 'available_sort_by';
-    const KEY_INCLUDE_IN_MENU = 'include_in_menu';
-    const KEY_PRODUCT_COUNT = 'product_count';
-    const KEY_CHILDREN_DATA = 'children_data';
+    public const KEY_PARENT_ID = 'parent_id';
+    public const KEY_NAME = 'name';
+    public const KEY_IS_ACTIVE = 'is_active';
+    public const KEY_POSITION = 'position';
+    public const KEY_LEVEL = 'level';
+    public const KEY_UPDATED_AT = 'updated_at';
+    public const KEY_CREATED_AT = 'created_at';
+    public const KEY_PATH = 'path';
+    public const KEY_AVAILABLE_SORT_BY = 'available_sort_by';
+    public const KEY_INCLUDE_IN_MENU = 'include_in_menu';
+    public const KEY_PRODUCT_COUNT = 'product_count';
+    public const KEY_CHILDREN_DATA = 'children_data';
 
-    const ATTRIBUTES = [
+    public const ATTRIBUTES = [
         'id',
         self::KEY_PARENT_ID,
         self::KEY_NAME,

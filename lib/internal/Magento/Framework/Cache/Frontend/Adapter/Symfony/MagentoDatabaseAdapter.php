@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class MagentoDatabaseAdapter implements AdapterInterface
             'adapter' => $resource->getConnection(),
             'data_table' => $resource->getTableName('cache'),
             'tags_table' => $resource->getTableName('cache_tag'),
-            'store_data' => true
+            'store_data' => true,
         ]);
     }
 
@@ -203,7 +204,7 @@ class MagentoDatabaseAdapter implements AdapterInterface
             'tags' => array_keys($tagVersions), // Tag names for Database backend
             'tag_versions' => $tagVersions,      // Actual tag versions with random bytes
             'mtime' => time(),
-            'expire' => $expiryTime
+            'expire' => $expiryTime,
         ];
 
         // Serialize the complete structure using Magento's serializer
@@ -344,7 +345,7 @@ class MagentoDatabaseAdapter implements AdapterInterface
 
             // Store tag versions exactly as provided (with actual version bytes)
             $metadata = [
-                \Symfony\Component\Cache\CacheItem::METADATA_TAGS => $tagVersions
+                \Symfony\Component\Cache\CacheItem::METADATA_TAGS => $tagVersions,
             ];
             $metadataProperty->setValue($item, $metadata);
         }

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Block;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Cms\Api\BlockRepositoryInterface as BlockRepository;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Cms\Api\Data\BlockInterface;
+use Magento\Framework\Controller\Result\JsonFactory;
 
 class InlineEdit extends \Magento\Backend\App\Action
 {
@@ -17,7 +20,7 @@ class InlineEdit extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::block';
+    public const ADMIN_RESOURCE = 'Magento_Cms::block';
 
     /**
      * @var \Magento\Cms\Api\BlockRepositoryInterface
@@ -80,7 +83,7 @@ class InlineEdit extends \Magento\Backend\App\Action
 
         return $resultJson->setData([
             'messages' => $messages,
-            'error' => $error
+            'error' => $error,
         ]);
     }
 

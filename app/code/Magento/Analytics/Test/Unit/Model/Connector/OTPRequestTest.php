@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class OTPRequestTest extends TestCase
             'url' => 'http://www.mystore.com',
             'access-token' => 'thisisaccesstoken',
             'method' => Request::METHOD_POST,
-            'body'=> ['access-token' => 'thisisaccesstoken','url' => 'http://www.mystore.com'],
+            'body' => ['access-token' => 'thisisaccesstoken','url' => 'http://www.mystore.com'],
         ];
     }
 

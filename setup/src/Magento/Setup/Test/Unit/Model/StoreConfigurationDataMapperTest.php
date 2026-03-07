@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Directory\Helper\Data;
 use Magento\Directory\Model\Currency;
 use Magento\Setup\Model\StoreConfigurationDataMapper;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class StoreConfigurationDataMapperTest extends TestCase
 {

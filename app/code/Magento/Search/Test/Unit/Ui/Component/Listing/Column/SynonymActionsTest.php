@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -55,8 +56,8 @@ class SynonymActionsTest extends TestCase
             [
                 'urlBuilder' => $this->urlBuilderMock,
                 'data' => [
-                    'name' => 'actions'
-                ]
+                    'name' => 'actions',
+                ],
             ]
         );
     }
@@ -67,10 +68,10 @@ class SynonymActionsTest extends TestCase
     public function testPrepareDataSourceWithNoItem()
     {
         $dataSource = [
-            'data' => []
+            'data' => [],
         ];
         $expected = [
-            'data' => []
+            'data' => [],
         ];
         /**
          * Assert Result
@@ -87,10 +88,10 @@ class SynonymActionsTest extends TestCase
             'data' => [
                 'items' => [
                     [
-                        'group_id' => self::STUB_SYNONYM_GROUP_ID
-                    ]
-                ]
-            ]
+                        'group_id' => self::STUB_SYNONYM_GROUP_ID,
+                    ],
+                ],
+            ],
         ];
 
         $expected = [
@@ -110,9 +111,9 @@ class SynonymActionsTest extends TestCase
                                     'message' => (string)__(
                                         'Are you sure you want to delete synonym group with id: %1?',
                                         self::STUB_SYNONYM_GROUP_ID
-                                    )
+                                    ),
                                 ],
-                                'post' => true
+                                'post' => true,
                             ],
                             'edit' => [
                                 'href' => sprintf(
@@ -120,23 +121,23 @@ class SynonymActionsTest extends TestCase
                                     self::STUB_SYNONYM_GROUP_ID
                                 ),
                                 'label' => (string)__('View/Edit'),
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->urlBuilderMock->method('getUrl')->willReturnMap(
             [
                 [
                     SynonymActions::SYNONYM_URL_PATH_DELETE, ['group_id' => self::STUB_SYNONYM_GROUP_ID],
-                    sprintf(self::SYNONYM_GROUP_DELETE_URL, self::STUB_SYNONYM_GROUP_ID)
+                    sprintf(self::SYNONYM_GROUP_DELETE_URL, self::STUB_SYNONYM_GROUP_ID),
                 ],
                 [
                     SynonymActions::SYNONYM_URL_PATH_EDIT, ['group_id' => self::STUB_SYNONYM_GROUP_ID],
-                    sprintf(self::SYNONYM_GROUP_EDIT_URL, self::STUB_SYNONYM_GROUP_ID)
-                ]
+                    sprintf(self::SYNONYM_GROUP_EDIT_URL, self::STUB_SYNONYM_GROUP_ID),
+                ],
             ]
         );
 

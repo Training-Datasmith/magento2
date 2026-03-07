@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class LayoutCacheTagResolver implements StrategyInterface
     {
         if ($this->isExistingCategoryLayoutChange($object)) {
             return [
-                str_replace('{{ID}}', (string) $object->getId(), Instance::SINGLE_CATEGORY_LAYOUT_HANDLE)
+                str_replace('{{ID}}', (string) $object->getId(), Instance::SINGLE_CATEGORY_LAYOUT_HANDLE),
             ];
         }
         return [];

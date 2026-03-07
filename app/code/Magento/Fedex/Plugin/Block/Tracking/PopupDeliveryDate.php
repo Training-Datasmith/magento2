@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Fedex\Plugin\Block\Tracking;
 
-use Magento\Shipping\Block\Tracking\Popup;
 use Magento\Fedex\Model\Carrier;
+use Magento\Shipping\Block\Tracking\Popup;
 use Magento\Shipping\Model\Tracking\Result\Status;
 
 /**

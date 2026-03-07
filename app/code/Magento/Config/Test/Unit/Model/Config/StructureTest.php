@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Config\Model\Config\Structure\Element\FlyweightFactory;
 use Magento\Config\Model\Config\Structure\Element\Iterator\Tab as TabIterator;
 use Magento\Config\Model\Config\Structure\Element\Section;
 use Magento\Config\Model\Config\Structure\ElementInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
@@ -134,7 +135,7 @@ class StructureTest extends TestCase
             'section1_child_id_1' => true,
             'section1_child_id_2' => true,
             'section1_child_id_3' => true,
-            'section2_child_id_1' => true
+            'section2_child_id_1' => true,
         ];
 
         $this->_structureDataMock = $this->createMock(Data::class);
@@ -147,15 +148,15 @@ class StructureTest extends TestCase
                             'children' => [
                                 'child_id_1' => 'child_data',
                                 'child_id_2' => 'child_data',
-                                'child_id_3' => 'child_data'
-                            ]
+                                'child_id_3' => 'child_data',
+                            ],
                         ],
                         'section2' => [
                             'children' => [
-                                'child_id_1' => 'child_data'
-                            ]
+                                'child_id_1' => 'child_data',
+                            ],
                         ],
-                    ]
+                    ],
                 ]
             );
 
@@ -253,7 +254,7 @@ class StructureTest extends TestCase
             ['someSection/group_1/nonexisting_field', 'field', 'nonexisting_field', 'someSection/group_1'],
             ['section_1/group_1/nonexisting_field', 'field', 'nonexisting_field', 'section_1/group_1'],
             ['section_1/nonexisting_group', 'group', 'nonexisting_group', 'section_1'],
-            ['nonexisting_section', 'section', 'nonexisting_section', '']
+            ['nonexisting_section', 'section', 'nonexisting_section', ''],
         ];
     }
 
@@ -449,9 +450,9 @@ class StructureTest extends TestCase
                     'section_1/group_1/field_2',
                     'section_1/group_level_1/group_level_2/group_level_3/field_3_1_1',
                     'section_2/group_3/field_4',
-                ]
+                ],
             ],
-            ['attribute_2', 'test_value_2', ['section_2/group_3/field_4']]
+            ['attribute_2', 'test_value_2', ['section_2/group_3/field_4']],
         ];
     }
 
@@ -481,27 +482,27 @@ class StructureTest extends TestCase
             [
                 [
                     'section/group/field2' => [
-                        'field_2'
+                        'field_2',
                     ],
                     'field_3' => [
                         'field_3',
-                        'field_3'
+                        'field_3',
                     ],
                     'field_3_1' => [
-                        'field_3_1'
+                        'field_3_1',
                     ],
                     'field_3_1_1' => [
-                        'field_3_1_1'
+                        'field_3_1_1',
                     ],
                     'section/group/field4' => [
                         'field_4',
                     ],
                     'field_5' => [
                         'field_5',
-                        'field_5'
-                    ]
-                ]
-            ]
+                        'field_5',
+                    ],
+                ],
+            ],
         ];
     }
 }

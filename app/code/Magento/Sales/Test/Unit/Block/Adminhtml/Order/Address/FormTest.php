@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,6 +19,7 @@ use Magento\Framework\Data\Form\Element\Select;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Block\Adminhtml\Order\Address\Form;
 use Magento\Sales\Model\AdminOrder\Create;
@@ -25,7 +27,6 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -75,12 +76,12 @@ class FormTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->formFactory = $this->createMock(FormFactory::class);
@@ -106,7 +107,7 @@ class FormTest extends TestCase
                 '_coreRegistry' => $this->coreRegistry,
                 'countriesCollection' => $this->countriesCollection,
                 'sessionQuote' => $this->sessionQuote,
-                '_orderCreate' => $this->orderCreate
+                '_orderCreate' => $this->orderCreate,
             ]
         );
 

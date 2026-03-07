@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestSetupDeclarationModule3\Setup\Patch\Data;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Setup\Exception;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Setup\Exception;
 
 /**
  * Class InstallData

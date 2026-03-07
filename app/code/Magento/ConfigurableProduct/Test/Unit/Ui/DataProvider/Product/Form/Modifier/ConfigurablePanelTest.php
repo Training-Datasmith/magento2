@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ConfigurablePanelTest extends TestCase
             ConfigurablePanelModifier::class,
             [
                 'locator' => $this->productLocatorMock,
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
     }

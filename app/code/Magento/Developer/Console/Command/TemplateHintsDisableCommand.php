@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class TemplateHintsDisableCommand extends Command
 {
     public const COMMAND_NAME = 'dev:template-hints:disable';
 
-    public const SUCCESS_MESSAGE = "Template hints disabled. Refresh cache types";
+    public const SUCCESS_MESSAGE = 'Template hints disabled. Refresh cache types';
 
     /**
      * @var ConfigInterface
@@ -54,7 +56,7 @@ class TemplateHintsDisableCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->resourceConfig->saveConfig('dev/debug/template_hints_storefront', 0, 'default', 0);
-        $output->writeln("<info>". self::SUCCESS_MESSAGE . "</info>");
+        $output->writeln('<info>'. self::SUCCESS_MESSAGE . '</info>');
 
         return Cli::RETURN_SUCCESS;
     }

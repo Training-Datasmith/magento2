@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,11 +85,11 @@ class FormTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
-            ]
+                $this->createMock(JsonHelper::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
-        
+
         $this->form = $objectManagerHelper->getObject(
             CatalogEditForm::class,
             [
@@ -97,7 +98,7 @@ class FormTest extends TestCase
                 'categoryFactory' => $this->categoryFactory,
                 'formFactory' => $this->formFactory,
                 'rewriteFactory' => $this->urlRewriteFactory,
-                'data' => ['template' => null]
+                'data' => ['template' => null],
             ]
         );
     }
@@ -137,7 +138,7 @@ class FormTest extends TestCase
                                 'title' => 'Store',
                                 'name' => 'store_id',
                                 'required' => true,
-                                'value' => 0
+                                'value' => 0,
                             ]) {
                             return $storeElement;
                         }

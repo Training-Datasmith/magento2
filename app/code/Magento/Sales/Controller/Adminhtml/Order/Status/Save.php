@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Status;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Framework\Filter\FilterManager;
-use Magento\Sales\Model\Order\Status;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filter\FilterManager;
 use Magento\Sales\Controller\Adminhtml\Order\Status as StatusAction;
+use Magento\Sales\Model\Order\Status;
 
 class Save extends StatusAction implements HttpPostActionInterface
 {

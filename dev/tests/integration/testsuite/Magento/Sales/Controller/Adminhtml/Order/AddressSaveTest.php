@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class AddressSaveTest extends AbstractBackendController
             ],
             'shipping_address' => [
                 AddressType::TYPE_SHIPPING,
-            ]
+            ],
         ];
     }
 

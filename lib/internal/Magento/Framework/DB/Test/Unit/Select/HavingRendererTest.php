@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\DB\Test\Unit\Select;
 use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\HavingRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class HavingRendererTest extends TestCase
 {
@@ -69,7 +70,7 @@ class HavingRendererTest extends TestCase
         $expectedResult = $sql . ' ' . Select::SQL_HAVING . ' having1 having2';
         $mapValues = [
             [Select::FROM, true],
-            [Select::HAVING, ['having1', 'having2']]
+            [Select::HAVING, ['having1', 'having2']],
         ];
         $this->selectMock->expects($this->any())
             ->method('getPart')

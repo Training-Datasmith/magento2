@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\MediaGallery\Model\ResourceModel;
 
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
 use Magento\MediaGalleryApi\Api\Data\AssetInterface;
+use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
+use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsInterface;
-use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for assets operations
@@ -109,9 +110,9 @@ class AssetsTest extends TestCase
                         'contentType' => 'image/jpeg',
                         'width' => 420,
                         'height' => 240,
-                        'size' => 12877
-                    ]
-                ]
+                        'size' => 12877,
+                    ],
+                ],
             ],
             'Two assets' => [
                 'assetsData' => [
@@ -122,7 +123,7 @@ class AssetsTest extends TestCase
                         'contentType' => 'image/jpeg',
                         'width' => 420,
                         'height' => 240,
-                        'size' => 12877
+                        'size' => 12877,
                     ],
                     'asset2' => [
                         'path' => 'image2.jpg',
@@ -131,9 +132,9 @@ class AssetsTest extends TestCase
                         'contentType' => 'image/jpeg',
                         'width' => 420,
                         'height' => 240,
-                        'size' => 12877
-                    ]
-                ]
+                        'size' => 12877,
+                    ],
+                ],
             ],
         ];
     }

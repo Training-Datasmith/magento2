@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Model\Product\Initialization\Helper\ProductLinks\Plugin;
 
-use Magento\Catalog\Api\Data\ProductLinkExtensionInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductLinkExtensionFactory;
+use Magento\Catalog\Api\Data\ProductLinkExtensionInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Initialization\Helper\ProductLinks;
 use Magento\Catalog\Model\Product\Type;
-use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\GroupedProduct\Model\Product\Type\Grouped;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -91,7 +92,7 @@ class GroupedTest extends TestCase
         return [
             [Type::TYPE_SIMPLE],
             [Type::TYPE_BUNDLE],
-            [Type::TYPE_VIRTUAL]
+            [Type::TYPE_VIRTUAL],
         ];
     }
 
@@ -140,7 +141,7 @@ class GroupedTest extends TestCase
     public static function linksDataProvider()
     {
         return [
-            [[5 => ['id' => '2', 'qty' => '100', 'position' => '1']]]
+            [[5 => ['id' => '2', 'qty' => '100', 'position' => '1']]],
         ];
     }
 

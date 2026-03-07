@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,9 +26,9 @@ use Magento\Quote\Model\Quote;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -150,7 +151,7 @@ class CartTest extends TestCase
                 'customerSession' => $this->customerSessionMock,
                 'eventManager' => $this->eventManagerMock,
                 'storeManager' => $this->storeManagerMock,
-                'productRepository' => $this->productRepository
+                'productRepository' => $this->productRepository,
             ]
         );
 
@@ -170,7 +171,7 @@ class CartTest extends TestCase
                 [2, $this->prepareQuoteItemMock(2)],
                 [3, $this->prepareQuoteItemMock(3)],
                 [4, $this->prepareQuoteItemMock(4)],
-                [5, $this->prepareQuoteItemMock(5)]
+                [5, $this->prepareQuoteItemMock(5)],
             ]);
 
         $this->stockState
@@ -186,7 +187,7 @@ class CartTest extends TestCase
                 ['qty' => 3., 'before_suggest_qty' => 3.],
                 ['qty' => 3.5, 'before_suggest_qty' => 3.5],
                 ['qty' => 5],
-                ['qty' => 4]
+                ['qty' => 4],
             ],
             $this->cart->suggestItemsQty($data)
         );
@@ -313,7 +314,7 @@ class CartTest extends TestCase
     {
         return [
             ['useQty' => true],
-            ['useQty' => false]
+            ['useQty' => false],
         ];
     }
 
@@ -457,14 +458,14 @@ class CartTest extends TestCase
             'prod_int_info_array' => [ 4, $data],
             'prod_int_info_object' => [
                 4,
-                $object
+                $object,
             ],
             'prod_obj_info_int' => [null, 4],
             'prod_obj_info_array' => [ null, $data],
             'prod_obj_info_object' => [
                 null,
-                $object
-            ]
+                $object,
+            ],
         ];
     }
 }

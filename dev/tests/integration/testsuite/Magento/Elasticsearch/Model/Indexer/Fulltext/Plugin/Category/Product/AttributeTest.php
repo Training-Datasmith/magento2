@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class AttributeTest extends TestCase
                 'index' => false,
             ],
             'dropdown_attribute_value' => [
-                'type' => 'text'
+                'type' => 'text',
             ],
         ];
 

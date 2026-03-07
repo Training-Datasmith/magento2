@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -76,8 +78,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
 
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
-                AuthorizationInterface::class => \Magento\Backend\Model\Search\AuthorizationMock::class
-            ]
+                AuthorizationInterface::class => \Magento\Backend\Model\Search\AuthorizationMock::class,
+            ],
         ]);
 
         $fileResolverMock = $this->getMockBuilder(FileResolver::class)->disableOriginalConstructor()->getMock();

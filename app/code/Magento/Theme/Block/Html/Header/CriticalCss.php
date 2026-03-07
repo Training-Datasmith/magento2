@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ declare(strict_types=1);
 namespace Magento\Theme\Block\Html\Header;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Asset\File\NotFoundException;
+use Magento\Framework\View\Asset\Repository;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * This ViewModel will add inline critical css in case dev/css/use_css_critical_path is enabled.

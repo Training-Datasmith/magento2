@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class StatusTextTest extends AbstractColumnTestCase
                 'items' => [
                     [
                         ProductInterface::STATUS => self::STATUS_ID,
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -60,7 +61,7 @@ class StatusTextTest extends AbstractColumnTestCase
                     [
                         ProductInterface::STATUS => self::STATUS_ID,
                         '' => self::STATUS_TEXT,
-                    ]
+                    ],
                 ],
             ],
         ];

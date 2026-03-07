@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\QuoteRepository;
 
+use Magento\Quote\Api\Data\CartExtensionFactory;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Quote\ShippingAssignment\ShippingAssignmentProcessor;
-use Magento\Quote\Api\Data\CartExtensionFactory;
 
 class LoadHandler
 {

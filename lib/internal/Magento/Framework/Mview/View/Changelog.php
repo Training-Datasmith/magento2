@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,8 +13,8 @@ use Magento\Framework\DB\Adapter\ConnectionException;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Mview\Config;
 use Magento\Framework\Mview\View\AdditionalColumnsProcessor\ProcessorFactory;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 use Magento\Framework\Phrase;
+use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 
 /**
  * Class Changelog for manipulations with the mview_state table.
@@ -191,7 +193,7 @@ class Changelog implements ChangelogInterface
                     'identity' => true,
                     'unsigned' => true,
                     'primary' => true,
-                    'comment' => 'Version ID'
+                    'comment' => 'Version ID',
                 ]
             );
         }
@@ -235,7 +237,7 @@ class Changelog implements ChangelogInterface
     {
         $changelogTableName = $this->resource->getTableName($this->getName());
         if (!$this->connection->isTableExists($changelogTableName)) {
-            throw new ChangelogTableNotExistsException(new Phrase("Table %1 does not exist", [$changelogTableName]));
+            throw new ChangelogTableNotExistsException(new Phrase('Table %1 does not exist', [$changelogTableName]));
         }
 
         $this->connection->dropTable($changelogTableName);
@@ -252,7 +254,7 @@ class Changelog implements ChangelogInterface
     {
         $changelogTableName = $this->resource->getTableName($this->getName());
         if (!$this->connection->isTableExists($changelogTableName)) {
-            throw new ChangelogTableNotExistsException(new Phrase("Table %1 does not exist", [$changelogTableName]));
+            throw new ChangelogTableNotExistsException(new Phrase('Table %1 does not exist', [$changelogTableName]));
         }
 
         $query = sprintf(
@@ -280,7 +282,7 @@ class Changelog implements ChangelogInterface
     {
         $changelogTableName = $this->resource->getTableName($this->getName());
         if (!$this->connection->isTableExists($changelogTableName)) {
-            throw new ChangelogTableNotExistsException(new Phrase("Table %1 does not exist", [$changelogTableName]));
+            throw new ChangelogTableNotExistsException(new Phrase('Table %1 does not exist', [$changelogTableName]));
         }
 
         $select = $this->connection->select()->distinct(
@@ -310,7 +312,7 @@ class Changelog implements ChangelogInterface
     {
         $changelogTableName = $this->resource->getTableName($this->getName());
         if (!$this->connection->isTableExists($changelogTableName)) {
-            throw new ChangelogTableNotExistsException(new Phrase("Table %1 does not exist", [$changelogTableName]));
+            throw new ChangelogTableNotExistsException(new Phrase('Table %1 does not exist', [$changelogTableName]));
         }
         $select = $this->connection->select()->from($changelogTableName)->order('version_id DESC')->limit(1);
         $row = $this->connection->fetchRow($select);
@@ -321,7 +323,7 @@ class Changelog implements ChangelogInterface
                 return (int)$row['version_id'];
             } else {
                 throw new RuntimeException(
-                    new Phrase("Table status for %1 is incorrect. Can`t fetch version id.", [$changelogTableName])
+                    new Phrase('Table status for %1 is incorrect. Can`t fetch version id.', [$changelogTableName])
                 );
             }
         }

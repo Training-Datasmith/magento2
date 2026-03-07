@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class ActivityTest extends TestCase
         $this->controller = $this->objectManager->getObject(
             Activity::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }

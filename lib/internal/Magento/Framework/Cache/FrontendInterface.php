@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\Cache;
 
-use Magento\Framework\Cache\Backend\BackendInterface;
-use Magento\Framework\Cache\CacheConstants;
+namespace Magento\Framework\Cache;
 
 /**
  * Interface of a cache frontend - an ultimate publicly available interface to an actual cache storage

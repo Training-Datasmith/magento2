@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedPricingImportExport\Test\Unit\Model\Import\AdvancedPricing\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing as AdvancedPricing;
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator\TierPriceType;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class TierPriceTypeTest extends TestCase
@@ -57,24 +58,24 @@ class TierPriceTypeTest extends TestCase
         return [
             [
                 [AdvancedPricing::COL_TIER_PRICE_TYPE => AdvancedPricing::TIER_PRICE_TYPE_FIXED],
-                true
+                true,
             ],
             [
                 [AdvancedPricing::COL_TIER_PRICE_TYPE => AdvancedPricing::TIER_PRICE_TYPE_PERCENT],
-                true
+                true,
             ],
             [
                 [],
-                true
+                true,
             ],
             [
                 [AdvancedPricing::COL_TIER_PRICE_TYPE => null],
-                true
+                true,
             ],
             [
                 [AdvancedPricing::COL_TIER_PRICE_TYPE => 'wrong type'],
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

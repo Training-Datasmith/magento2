@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ class GeneralInput implements InputInterface
     /**
      * @inheritDoc
      */
-    public function doInput(AppInterface $application) : array
+    public function doInput(AppInterface $application): array
     {
-        return ['applicationClass'=> get_class($application)];
+        return ['applicationClass' => $application::class];
     }
 }

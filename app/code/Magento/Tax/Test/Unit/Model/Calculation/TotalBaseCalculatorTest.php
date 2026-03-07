@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class TotalBaseCalculatorTest extends RowBaseAndTotalBaseCalculatorTestCase
                     'calculationTool' => $this->mockCalculationTool,
                     'config' => $this->mockConfig,
                     'storeId' => self::STORE_ID,
-                    'addressRateRequest' => $this->addressRateRequest
+                    'addressRateRequest' => $this->addressRateRequest,
                 ]
             )
             ->getMock();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,9 +40,9 @@ class TranslationTest extends TestCase
         $data = [
             'en_US' => [
                 'default' => [
-                    'hello' => 'bonjour'
-                ]
-            ]
+                    'hello' => 'bonjour',
+                ],
+            ],
         ];
 
         $this->source->expects($this->once())

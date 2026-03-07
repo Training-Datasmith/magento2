@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Backend\App\Action\Context;
-use Magento\Ui\Component\MassAction\Filter;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class AbstractMassStatus
@@ -23,7 +26,7 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::manage';
+    public const ADMIN_RESOURCE = 'Magento_Customer::manage';
 
     /**
      * @var string
@@ -80,7 +83,7 @@ abstract class AbstractMassAction extends \Magento\Backend\App\Action
      */
     protected function getComponentRefererUrl()
     {
-        return $this->filter->getComponentRefererUrl()?: 'customer/*/index';
+        return $this->filter->getComponentRefererUrl() ?: 'customer/*/index';
     }
 
     /**

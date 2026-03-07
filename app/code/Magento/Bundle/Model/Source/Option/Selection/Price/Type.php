@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\Source\Option\Selection\Price;
 
 use Magento\Bundle\Api\Data\LinkInterface;
@@ -22,7 +25,7 @@ class Type implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => LinkInterface::PRICE_TYPE_FIXED, 'label' => __('Fixed')],
-            ['value' => LinkInterface::PRICE_TYPE_PERCENT, 'label' => __('Percent')]
+            ['value' => LinkInterface::PRICE_TYPE_PERCENT, 'label' => __('Percent')],
         ];
     }
 }

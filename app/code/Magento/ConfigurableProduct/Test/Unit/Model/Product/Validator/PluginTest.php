@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -218,7 +218,7 @@ class PluginTest extends TestCase
         $matrix = [
             ['data1', 'data2', 'configurable_attribute' => ['data1']],
             ['data3', 'data4', 'configurable_attribute' => ['data3']],
-            ['data5', 'data6', 'configurable_attribute' => ['data5']]
+            ['data5', 'data6', 'configurable_attribute' => ['data5']],
         ];
 
         $this->productMock->expects($this->any())
@@ -229,7 +229,7 @@ class PluginTest extends TestCase
                     ['code2', null, 'value_code_2'],
                     ['code3', null, 'value_code_3'],
                     ['code4', null, 'value_code_4'],
-                    ['code5', null, 'value_code_5']
+                    ['code5', null, 'value_code_5'],
                 ]
             );
 
@@ -249,12 +249,12 @@ class PluginTest extends TestCase
             $attribute2,
             $attribute3,
             $attribute4,
-            $attribute5
+            $attribute5,
         ];
 
         $requiredAttributes = [
             'code1' => 'value_code_1',
-            'code5' => 'value_code_5'
+            'code5' => 'value_code_5',
         ];
 
         $product1 = $this->createProduct();
@@ -338,7 +338,7 @@ class PluginTest extends TestCase
             [
                 'getAttributeCode',
                 'getIsUserDefined',
-                'getIsRequired'
+                'getIsRequired',
             ]
         );
         $attribute->method('getAttributeCode')->willReturn($attributeCode);

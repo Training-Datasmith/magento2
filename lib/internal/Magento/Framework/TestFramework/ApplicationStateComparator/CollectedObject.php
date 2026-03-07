@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class CollectedObject
      *
      * @return string
      */
-    public function getClassName() : string
+    public function getClassName(): string
     {
         return $this->className;
     }
@@ -53,7 +54,7 @@ class CollectedObject
      *
      * @return array
      */
-    public function getProperties() : array
+    public function getProperties(): array
     {
         return $this->properties;
     }
@@ -63,7 +64,7 @@ class CollectedObject
      *
      * @return int
      */
-    public function getObjectId() : int
+    public function getObjectId(): int
     {
         return $this->objectId;
     }
@@ -73,7 +74,7 @@ class CollectedObject
      *
      * @return WeakReference|null
      */
-    public function getWeakReference() : ?WeakReference
+    public function getWeakReference(): ?WeakReference
     {
         return $this->weakReference;
     }
@@ -83,7 +84,7 @@ class CollectedObject
      *
      * @return CollectedObject
      */
-    public static function getSkippedObject() : CollectedObject
+    public static function getSkippedObject(): CollectedObject
     {
         if (!self::$skippedObject) {
             self::$skippedObject = new CollectedObject('(collected object - skipped)', [], 0, null);
@@ -96,7 +97,7 @@ class CollectedObject
      * @return CollectedObject
      */
 
-    public static function getRecursionEndObject() : CollectedObject
+    public static function getRecursionEndObject(): CollectedObject
     {
         if (!self::$recursionEndObject) {
             self::$recursionEndObject = new CollectedObject(

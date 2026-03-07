@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -85,7 +87,7 @@ class Select extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
                 throw new LocalizedException(
                     __(
                         "The product's required option(s) weren't entered. "
-                        . "Make sure the options are entered and try again."
+                        . 'Make sure the options are entered and try again.'
                     )
                 );
             }

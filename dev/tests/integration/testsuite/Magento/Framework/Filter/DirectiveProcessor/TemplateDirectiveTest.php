@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Filter\DirectiveProcessor;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filter\Template;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class TemplateDirectiveTest extends TestCase
 {
@@ -67,12 +68,12 @@ class TemplateDirectiveTest extends TestCase
         $expect = 'path=varpath/myparamabc/varpath';
 
         return [
-            [$prefix . 'varparam=$foo}}',['foo' => 'abc','path'=>'varpath'], $expect],
-            [$prefix . 'varparam=$foo.bar}}',['foo' => ['bar' => 'abc'],'path'=>'varpath'], $expect],
+            [$prefix . 'varparam=$foo}}',['foo' => 'abc','path' => 'varpath'], $expect],
+            [$prefix . 'varparam=$foo.bar}}',['foo' => ['bar' => 'abc'],'path' => 'varpath'], $expect],
             [
                 $prefix . 'varparam=$foo.getBar().baz}}',
-                ['foo' => new DataObject(['bar' => ['baz' => 'abc']]),'path'=>'varpath'],
-                $expect
+                ['foo' => new DataObject(['bar' => ['baz' => 'abc']]),'path' => 'varpath'],
+                $expect,
             ],
         ];
     }

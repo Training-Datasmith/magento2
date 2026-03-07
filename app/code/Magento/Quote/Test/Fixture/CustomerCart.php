@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ class CustomerCart implements RevertibleDataFixtureInterface
 {
     private const DEFAULT_DATA = [
         'customer_id' => null,
-        'reserved_order_id' => null
+        'reserved_order_id' => null,
     ];
 
     /**

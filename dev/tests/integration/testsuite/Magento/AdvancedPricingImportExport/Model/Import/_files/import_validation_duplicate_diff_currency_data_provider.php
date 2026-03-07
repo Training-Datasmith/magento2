@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,10 +26,10 @@ return [
                 'tier_price_qty' => '5.0000',
                 'tier_price' => '25.0000',
                 'tier_price_value_type' => 'Discount',
-            ]
+            ],
         ],
         \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-        []
+        [],
     ],
     [
         [
@@ -49,10 +50,10 @@ return [
                 'tier_price_qty' => '10.0000',
                 'tier_price' => '30.0000',
                 'tier_price_value_type' => 'Discount',
-            ]
+            ],
         ],
         \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-        []
+        [],
     ],
     [
         [
@@ -62,8 +63,8 @@ return [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                 'qty' => 5,
                 'value' => 300,
-                'percentage_value' => null
-            ]
+                'percentage_value' => null,
+            ],
         ],
         [
             [
@@ -73,10 +74,10 @@ return [
                 'tier_price_qty' => '5.0000',
                 'tier_price' => '25.0000',
                 'tier_price_value_type' => 'Discount',
-            ]
+            ],
         ],
         \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-        []
+        [],
     ],
     [
         [
@@ -86,8 +87,8 @@ return [
                 'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
                 'qty' => 10,
                 'value' => 450,
-                'percentage_value' => null
-            ]
+                'percentage_value' => null,
+            ],
         ],
         [
             [
@@ -97,9 +98,9 @@ return [
                 'tier_price_qty' => '10.0000',
                 'tier_price' => '30.0000',
                 'tier_price_value_type' => 'Discount',
-            ]
+            ],
         ],
         \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-        []
-    ]
+        [],
+    ],
 ];

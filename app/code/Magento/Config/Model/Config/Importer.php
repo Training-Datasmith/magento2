@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config;
 
 use Magento\Config\Model\Config\Importer\SaveProcessor;
@@ -30,7 +33,7 @@ class Importer implements ImporterInterface
     /**
      * Code of the flag to retrieve previously imported config data.
      */
-    const FLAG_CODE = 'system_config_snapshot';
+    public const FLAG_CODE = 'system_config_snapshot';
 
     /**
      * The flag manager.

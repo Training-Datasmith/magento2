@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Plugin;
 
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Cache\FrontendInterface as FrontendCacheInterface;
-use Magento\Framework\Module\DbVersionInfo;
 use Magento\Framework\App\FrontController;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Cache\FrontendInterface as FrontendCacheInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Module\DbVersionInfo;
 use Magento\Framework\Phrase;
 
 /**

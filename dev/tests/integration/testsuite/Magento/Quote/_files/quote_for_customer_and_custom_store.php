@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 
 /** @var ObjectManager $objectManager */
 $objectManager = Bootstrap::getObjectManager();
@@ -37,7 +38,7 @@ $quote = $objectManager->create(
             'store_id' => $store->getId(),
             'reserved_order_id' => 'tsg-123456789',
             'is_active' => true,
-            'is_multishipping' => false
+            'is_multishipping' => false,
         ],
     ]
 );

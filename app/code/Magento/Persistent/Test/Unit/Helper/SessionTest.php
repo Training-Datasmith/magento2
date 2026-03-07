@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class SessionTest extends TestCase
                     'context' => $this->context,
                     'persistentData' => $this->dataHelper,
                     'checkoutSession' => $this->checkoutSession,
-                    'sessionFactory' => $this->sessionFactory
+                    'sessionFactory' => $this->sessionFactory,
                 ]
             )
             ->getMock();
@@ -127,13 +128,13 @@ class SessionTest extends TestCase
             'session_id_and_enable_persistent' => [
                 1,
                 true,
-                true
+                true,
             ],
             'no_session_id_and_enable_persistent' => [
                 null,
                 true,
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -178,29 +179,29 @@ class SessionTest extends TestCase
                 true,
                 true,
                 true,
-                true
+                true,
             ],
             'at_least_once_disabled' => [
                 null,
                 false,
                 true,
                 true,
-                false
+                false,
             ],
             'set_remember_me_checked_false' => [
                 false,
                 true,
                 true,
                 true,
-                false
+                false,
             ],
             'set_remember_me_checked_true' => [
                 true,
                 false,
                 true,
                 true,
-                true
-            ]
+                true,
+            ],
         ];
     }
 }

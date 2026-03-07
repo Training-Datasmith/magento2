@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,13 +19,13 @@ interface BatchIteratorInterface extends \Iterator
      * Constant which determine strategy to create iterator which will to process
      * range field eg. entity_id with unique values.
      */
-    public const UNIQUE_FIELD_ITERATOR = "unique";
+    public const UNIQUE_FIELD_ITERATOR = 'unique';
 
     /**
      * Constant which determine strategy to create iterator which will to process
      * range field with non-unique values.
      */
-    public const NON_UNIQUE_FIELD_ITERATOR = "non_unqiue";
+    public const NON_UNIQUE_FIELD_ITERATOR = 'non_unqiue';
 
     /**
      * Return the current element

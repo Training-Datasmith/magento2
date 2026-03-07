@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class UrlRewriteContext implements \Magento\Framework\Data\OptionSourceInterface
     {
         return [
             ['value' => ProductScopeRewriteGenerator::WEBSITE_URL_REWRITE_SCOPE, 'label' => __('Website')],
-            ['value' => ProductScopeRewriteGenerator::STORE_VIEW_URL_REWRITE_SCOPE, 'label' => __('Store View')]
+            ['value' => ProductScopeRewriteGenerator::STORE_VIEW_URL_REWRITE_SCOPE, 'label' => __('Store View')],
         ];
     }
 }

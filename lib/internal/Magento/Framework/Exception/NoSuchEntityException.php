@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * No such entity service exception
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
@@ -18,12 +21,12 @@ class NoSuchEntityException extends LocalizedException
     /**
      * @deprecated
      */
-    const MESSAGE_SINGLE_FIELD = 'No such entity with %fieldName = %fieldValue';
+    public const MESSAGE_SINGLE_FIELD = 'No such entity with %fieldName = %fieldValue';
 
     /**
      * @deprecated
      */
-    const MESSAGE_DOUBLE_FIELDS = 'No such entity with %fieldName = %fieldValue, %field2Name = %field2Value';
+    public const MESSAGE_DOUBLE_FIELDS = 'No such entity with %fieldName = %fieldValue, %field2Name = %field2Value';
 
     /**
      * @param \Magento\Framework\Phrase $phrase
@@ -52,7 +55,7 @@ class NoSuchEntityException extends LocalizedException
                 'No such entity with %fieldName = %fieldValue',
                 [
                     'fieldName' => $fieldName,
-                    'fieldValue' => $fieldValue
+                    'fieldValue' => $fieldValue,
                 ]
             )
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Weee\Model\Attribute\Backend\Weee;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class with fixed product taxes.

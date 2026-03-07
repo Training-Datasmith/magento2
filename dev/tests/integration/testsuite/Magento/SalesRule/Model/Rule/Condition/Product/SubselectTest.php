@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Rule\Condition\Product;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart;
 use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\SalesRule\Model\Rule\Condition\Product as SalesRuleProduct;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -76,11 +77,11 @@ class SubselectTest extends TestCase
             'value' => 'simple1',
         ]);
         $this->subselectCondition->setConditions([$productCondition]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setStoreId(1)->setIsActive(true)->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertTrue($result);
     }
@@ -116,27 +117,27 @@ class SubselectTest extends TestCase
             'value' => 2,
             'aggregator' => 'any',
         ]);
-        
+
         $condition1 = $this->objectManager->create(SalesRuleProduct::class);
         $condition1->setData([
             'attribute' => 'sku',
             'operator' => '==',
             'value' => 'simple1',
         ]);
-        
+
         $condition2 = $this->objectManager->create(SalesRuleProduct::class);
         $condition2->setData([
             'attribute' => 'sku',
             'operator' => '==',
             'value' => 'simple3', // Non-existent product
         ]);
-        
+
         $this->subselectCondition->setConditions([$condition1, $condition2]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertFalse($result); // Total qty 1 < 2, so should fail
     }
@@ -170,27 +171,27 @@ class SubselectTest extends TestCase
             'value' => 2,
             'aggregator' => 'any',
         ]);
-        
+
         $condition1 = $this->objectManager->create(SalesRuleProduct::class);
         $condition1->setData([
             'attribute' => 'sku',
             'operator' => '==',
             'value' => 'simple1',
         ]);
-        
+
         $condition2 = $this->objectManager->create(SalesRuleProduct::class);
         $condition2->setData([
             'attribute' => 'sku',
             'operator' => '==',
             'value' => 'nonexistent',
         ]);
-        
+
         $this->subselectCondition->setConditions([$condition1, $condition2]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertTrue($result);
     }
@@ -218,20 +219,20 @@ class SubselectTest extends TestCase
             'value' => 2000,
             'aggregator' => 'all',
         ]);
-        
+
         $priceCondition = $this->objectManager->create(SalesRuleProduct::class);
         $priceCondition->setData([
             'attribute' => 'quote_item_price',
             'operator' => '>=',
             'value' => 2000,
         ]);
-        
+
         $this->subselectCondition->setConditions([$priceCondition]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertTrue($result);
     }
@@ -257,7 +258,7 @@ class SubselectTest extends TestCase
             'value' => 1,
             'aggregator' => 'all',
         ]);
-        
+
         // Condition that won't match any items
         $condition = $this->objectManager->create(SalesRuleProduct::class);
         $condition->setData([
@@ -265,13 +266,13 @@ class SubselectTest extends TestCase
             'operator' => '==',
             'value' => 'nonexistent-product',
         ]);
-        
+
         $this->subselectCondition->setConditions([$condition]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertFalse($result); // No items match, so total = 0
     }
@@ -297,14 +298,14 @@ class SubselectTest extends TestCase
             'value' => 1,
             'aggregator' => 'all',
         ]);
-        
+
         // No subselect conditions set
         $this->subselectCondition->setConditions([]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         $this->assertTrue($result); // Should return True when no conditions
     }
@@ -330,20 +331,20 @@ class SubselectTest extends TestCase
             'value' => 250,
             'aggregator' => 'all',
         ]);
-        
+
         $condition = $this->objectManager->create(SalesRuleProduct::class);
         $condition->setData([
             'attribute' => 'sku',
             'operator' => '==',
             'value' => 'taxable',
         ]);
-        
+
         $this->subselectCondition->setConditions([$condition]);
-        
+
         $quote = DataFixtureStorageManager::getStorage()->get('quote');
         $quote->setIsMultiShipping(false);
         $quoteItem = $quote->getAllVisibleItems()[0];
-        
+
         $result = $this->subselectCondition->validate($quoteItem);
         // Result depends on tax calculation, but should work with fixed logic
         $this->assertTrue($result || $this->subselectCondition->validateAttribute(300)); // 3 * 100 = 300

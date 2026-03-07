@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -117,17 +118,17 @@ class CouponTest extends TestCase
             [
                 ['uses_per_coupon' => 1],
                 ['uses_per_coupon' => 0],
-                null
+                null,
             ],
             [
                 ['uses_per_customer' => 1],
                 ['uses_per_customer' => 0],
-                null
+                null,
             ],
             [
                 ['coupon_type' => Rule::COUPON_TYPE_SPECIFIC, 'uses_per_coupon' => 1, 'uses_per_customer' => 1],
                 ['coupon_type' => Rule::COUPON_TYPE_AUTO, 'uses_per_coupon' => 0, 'uses_per_customer' => 0],
-                null
+                null,
             ],
             [
                 ['uses_per_coupon' => 1],

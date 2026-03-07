@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Constraints\I
 use Magento\Framework\Setup\Declaration\Schema\Dto\Constraints\Internal as InternalConstraintDto;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for internal (primary key, unique key) constraint definition.
@@ -47,7 +48,7 @@ class InternalTest extends TestCase
         $this->internal = $this->objectManager->getObject(
             Internal::class,
             [
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -102,13 +103,13 @@ class InternalTest extends TestCase
                 'name' => 'constraint_name_primary',
                 'type' => 'primary',
                 'columns' => ['id', 'parent_id'],
-                'expectedExpression' => "CONSTRAINT  PRIMARY KEY (`id`,`parent_id`)"
+                'expectedExpression' => 'CONSTRAINT  PRIMARY KEY (`id`,`parent_id`)',
             ],
             [
                 'name' => 'constraint_name_unique',
                 'type' => 'unique',
                 'columns' => ['id', 'parent_id'],
-                'expectedExpression' => "CONSTRAINT `constraint_name_unique` UNIQUE KEY (`id`,`parent_id`)"
+                'expectedExpression' => 'CONSTRAINT `constraint_name_unique` UNIQUE KEY (`id`,`parent_id`)',
             ],
         ];
     }

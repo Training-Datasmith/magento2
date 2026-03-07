@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\ReportXml;
 
 use Magento\Framework\Module\Manager as ModuleManager;
@@ -12,21 +15,11 @@ use Magento\Framework\Module\Manager as ModuleManager;
  */
 class ModuleIterator extends \IteratorIterator
 {
-    /**
-     * @var ModuleManager
-     */
-    private $moduleManager;
-
-    /**
-     * @param ModuleManager $moduleManager
-     * @param \Traversable $iterator
-     */
     public function __construct(
-        ModuleManager $moduleManager,
+        private readonly ModuleManager $moduleManager,
         \Traversable $iterator
     ) {
         parent::__construct($iterator);
-        $this->moduleManager = $moduleManager;
     }
 
     /**
@@ -40,7 +33,7 @@ class ModuleIterator extends \IteratorIterator
         $current = parent::current();
         if (is_array($current) && isset($current['module_name'])) {
             $current['status'] =
-                $this->moduleManager->isEnabled($current['module_name']) == 1 ? 'Enabled' : "Disabled";
+                $this->moduleManager->isEnabled($current['module_name']) == 1 ? 'Enabled' : 'Disabled';
         }
         return $current;
     }

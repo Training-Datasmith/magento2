@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class ChangeParentStockStatus
      * @param int $productId
      * @return bool
      */
-    private function isChildrenInStock(int $productId) : bool
+    private function isChildrenInStock(int $productId): bool
     {
         $childrenIsInStock = false;
         $childrenIds = $this->bundleType->getChildrenIds($productId, true);

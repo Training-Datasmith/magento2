@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ class StoreUrl implements ItemProviderInterface
      * @var ConfigReaderInterface
      */
     private $configReader;
-    
+
     /**
      * StoreUrlSitemapItemResolver constructor.
      *

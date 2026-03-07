@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Weee;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Tax\Model\ClassModel as TaxClassModel;
 use Magento\Tax\Model\ResourceModel\TaxClass\CollectionFactory as TaxClassCollectionFactory;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for Product Price With FPT
@@ -50,7 +51,7 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
             'tax/weee/display',
             'tax/defaults/region',
             'tax/weee/apply_vat',
-            'tax/calculation/price_includes_tax'
+            'tax/calculation/price_includes_tax',
         ];
 
         foreach ($currentSettingsArray as $configPath) {
@@ -140,8 +141,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '0',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -197,8 +198,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '1',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -264,8 +265,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '0',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -331,8 +332,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '1',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -389,8 +390,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '1',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '1',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -447,8 +448,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '0',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -521,8 +522,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '0',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '1',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -559,7 +560,7 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
         $product1->setFixedProductAttribute(
             [['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 10, 'delete' => '']]
         );
-            $productRepository->save($product1);
+        $productRepository->save($product1);
 
         $skus = ['simple-with-ftp'];
         $query = $this->getProductQuery($skus);
@@ -578,15 +579,15 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
             [
                 [
                     'amount' => [
-                        'value' => 13.6525
+                        'value' => 13.6525,
                     ],
-                    'label' => 'fpt_for_all_front_label'
+                    'label' => 'fpt_for_all_front_label',
                 ],
                 [
                     'amount' => [
-                        'value' => 10.75
+                        'value' => 10.75,
                     ],
-                    'label' => 'fixed_product_attribute_front_label'
+                    'label' => 'fixed_product_attribute_front_label',
                 ],
             ]
         );
@@ -608,8 +609,8 @@ class ProductPriceWithFPTTest extends GraphQlAbstract
                     'tax/weee/display' => '1',
                     'tax/defaults/region' => '1',
                     'tax/weee/apply_vat' => '1',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

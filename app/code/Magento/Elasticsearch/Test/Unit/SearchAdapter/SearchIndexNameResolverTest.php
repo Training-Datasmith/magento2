@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class SearchIndexNameResolverTest extends TestCase
     {
         $this->clientConfig = $this->createPartialMock(Config::class, [
             'getIndexPrefix',
-            'getEntityType'
+            'getEntityType',
         ]);
 
         $this->clientConfig->expects($this->any())

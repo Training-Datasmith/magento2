@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ReleaseNotification\Model\Condition;
 
-use Magento\ReleaseNotification\Model\ResourceModel\Viewer\Logger;
 use Magento\Backend\Model\Auth\Session;
+use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
-use Magento\Framework\App\CacheInterface;
+use Magento\ReleaseNotification\Model\ResourceModel\Viewer\Logger;
 
 /**
  * Dynamic validator for UI release notification, manage UI component visibility.

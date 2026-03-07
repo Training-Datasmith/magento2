@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,25 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Pricing\Price;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Pricing\Price\FinalPrice;
 use Magento\Catalog\Pricing\Price\TierPrice;
 use Magento\Customer\Api\GroupManagementInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Customer\Model\Group;
 use Magento\Customer\Model\Group\RetrieverInterface;
 use Magento\Customer\Model\GroupManagement;
 use Magento\Customer\Model\Session;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Pricing\Adjustment\Calculator;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -137,7 +138,7 @@ class TierPriceTest extends TestCase
             ->method('convertAndRound')
             ->willReturnCallback(
                 function ($arg) {
-                    return $arg -1;
+                    return $arg - 1;
                 }
             );
         $this->product->setData(TierPrice::PRICE_CODE, $tierPrices);
@@ -165,7 +166,7 @@ class TierPriceTest extends TestCase
                         'website_price' => '10.',
                         'price' => '10.',
                         'price_qty' => '1.',
-                        'cust_group' => Group::CUST_GROUP_ALL
+                        'cust_group' => Group::CUST_GROUP_ALL,
                     ],
                 ],
                 'expectedValue' => 10.,
@@ -177,34 +178,34 @@ class TierPriceTest extends TestCase
                         'website_price' => '10.',
                         'price' => '10.',
                         'price_qty' => '1.',
-                        'cust_group' => self::$customerGroup + 1
+                        'cust_group' => self::$customerGroup + 1,
                     ],
                     // tier is higher than product qty
                     [
                         'website_price' => '10.',
                         'price' => '10.',
                         'price_qty' => '10.',
-                        'cust_group' => Group::CUST_GROUP_ALL
+                        'cust_group' => Group::CUST_GROUP_ALL,
                     ],
                     // higher tier qty already found
                     [
                         'website_price' => '10.',
                         'price' => '10.',
                         'price_qty' => '0.5',
-                        'cust_group' => Group::CUST_GROUP_ALL
+                        'cust_group' => Group::CUST_GROUP_ALL,
                     ],
                     // found tier qty is same as current tier qty but current tier group is ALL_GROUPS
                     [
                         'website_price' => '5.',
                         'price' => '10.',
                         'price_qty' => '1.',
-                        'cust_group' => self::$customerGroup
+                        'cust_group' => self::$customerGroup,
                     ],
                     [
                         'website_price' => '1.',
                         'price' => '10.',
                         'price_qty' => '1.',
-                        'cust_group' => Group::CUST_GROUP_ALL
+                        'cust_group' => Group::CUST_GROUP_ALL,
                     ],
                 ],
                 'expectedValue' => 5.,
@@ -296,32 +297,32 @@ class TierPriceTest extends TestCase
                         'price'         => '21.3',
                         'website_price' => '21.3',
                         'price_qty'     => '1.3',
-                        'cust_group'    => self::$customerGroup + 1
+                        'cust_group'    => self::$customerGroup + 1,
                     ],
                     [
                         'price'         => '20.4',
                         'website_price' => '20.4',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     // cases to calculate save percent
                     [
                         'price'         => '20.1',
                         'website_price' => '20.1',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '30.2',
                         'website_price' => '30.2',
                         'price_qty'     => '5.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                     [
                         'price'         => '8.3',
                         'website_price' => '8.3',
                         'price_qty'     => '2.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                 ],
                 'basePrice' => 20.,
@@ -336,10 +337,10 @@ class TierPriceTest extends TestCase
                         'price'         => '4.15',
                         'website_price' => '4.15',
                         'price_qty'     => '2.',
-                        'cust_group'    => Group::CUST_GROUP_ALL
+                        'cust_group'    => Group::CUST_GROUP_ALL,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -381,7 +382,7 @@ class TierPriceTest extends TestCase
             ['basePrice' => '100', 'tierPrice' => '90', 'savedPercent' => '10'],
             ['basePrice' => '70', 'tierPrice' => '35', 'savedPercent' => '50'],
             ['basePrice' => '50', 'tierPrice' => '35', 'savedPercent' => '30'],
-            ['basePrice' => '20.80', 'tierPrice' => '18.72', 'savedPercent' => '10']
+            ['basePrice' => '20.80', 'tierPrice' => '18.72', 'savedPercent' => '10'],
         ];
     }
 
@@ -418,7 +419,7 @@ class TierPriceTest extends TestCase
             [4, 4],
             [4.5, 4.5],
             ['0.7', 0.7],
-            ['0.0000000', 1]
+            ['0.0000000', 1],
         ];
     }
 }

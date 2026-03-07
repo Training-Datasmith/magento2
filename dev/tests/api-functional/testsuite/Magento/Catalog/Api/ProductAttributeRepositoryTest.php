@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * API tests for \Magento\Catalog\Model\Product\Attribute\Repository.
@@ -101,13 +104,13 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
         $expectedData = [
             'attribute_code' => $attributeCode,
             'is_required' => true,
-            'entity_type_id' => "4",
-            "frontend_input" => "select",
-            "is_visible_on_front" => true,
-            "is_searchable" => true,
-            "is_visible_in_advanced_search" => true,
-            "is_filterable" => true,
-            "is_filterable_in_search" => true,
+            'entity_type_id' => '4',
+            'frontend_input' => 'select',
+            'is_visible_on_front' => true,
+            'is_searchable' => true,
+            'is_visible_in_advanced_search' => true,
+            'is_filterable' => true,
+            'is_filterable_in_search' => true,
         ];
 
         $this->assertEquals('default_label', $attribute['default_frontend_label']);
@@ -144,7 +147,7 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
         $attributeCode = 'test_attribute_code_333';
         try {
             $this->createAttribute($attributeCode);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
             // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
         } catch (\SoapFault $e) {
             //Expects soap exception
@@ -177,35 +180,35 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
                     ['store_id' => 0, 'label' => 'front_lbl_store0_new'],
                     ['store_id' => 1, 'label' => 'front_lbl_store1_new'],
                 ],
-                "options" => [
+                'options' => [
                     //Update existing
                     [
-                        "value" => $attribute['options'][1]['value'],
-                        "label" => "New Label",
-                        "store_labels" => [
+                        'value' => $attribute['options'][1]['value'],
+                        'label' => 'New Label',
+                        'store_labels' => [
                             [
-                                "store_id" => 1,
-                                "label" => "Default Blue Updated"
-                            ]
-                        ]
+                                'store_id' => 1,
+                                'label' => 'Default Blue Updated',
+                            ],
+                        ],
                     ],
                     //Add new option
                     [
-                        "label" => "Green",
-                        "value" => "",
-                        "sort_order" => 200,
-                        "is_default" => true,
-                        "store_labels" => [
+                        'label' => 'Green',
+                        'value' => '',
+                        'sort_order' => 200,
+                        'is_default' => true,
+                        'store_labels' => [
                             [
-                                "store_id" => 0,
-                                "label" => "Admin Green"
+                                'store_id' => 0,
+                                'label' => 'Admin Green',
                             ],
                             [
-                                "store_id" => 1,
-                                "label" => "Default Green"
-                            ]
-                        ]
-                    ]
+                                'store_id' => 1,
+                                'label' => 'Default Green',
+                            ],
+                        ],
+                    ],
                 ],
                 'is_required' => false,
                 'frontend_input' => 'select',
@@ -220,7 +223,7 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
         $this->assertEquals('front_lbl_store1_new', $result['frontend_labels'][0]['label']);
         //New option set as default
         $this->assertEquals($result['options'][3]['value'], $result['default_value']);
-        $this->assertEquals("Default Blue Updated", $result['options'][1]['label']);
+        $this->assertEquals('Default Blue Updated', $result['options'][1]['label']);
     }
 
     /**
@@ -306,20 +309,20 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
                 'frontend_labels' => [
                     ['store_id' => 0, 'label' => 'front_lbl_new'],
                 ],
-                "options" => [
+                'options' => [
                     [
-                        "value" => 'option',
-                        "label" => "New Label",
-                        "store_labels" => [
+                        'value' => 'option',
+                        'label' => 'New Label',
+                        'store_labels' => [
                             [
-                                "store_id" => 1,
-                                "label" => "new label"
-                            ]
-                        ]
+                                'store_id' => 1,
+                                'label' => 'new label',
+                            ],
+                        ],
                     ],
                 ],
                 'frontend_input' => 'select',
-            ]
+            ],
         ];
 
         $output = $this->updateAttribute($attributeCode, $attributeData);
@@ -374,12 +377,12 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
 
         try {
             $this->_webApiCall($serviceInfo, ['attributeCode' => $attributeCode]);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -399,53 +402,53 @@ class ProductAttributeRepositoryTest extends \Magento\TestFramework\TestCase\Web
             'attribute' => [
                 'attribute_code' => $attributeCode,
                 'entity_type_id' => '4',
-                "default_frontend_label" => 'default_label',
+                'default_frontend_label' => 'default_label',
                 'frontend_labels' => [
                     ['store_id' => 0, 'label' => 'front_lbl_store0'],
                     ['store_id' => 1, 'label' => 'front_lbl_store1'],
                 ],
                 'is_required' => true,
-                "default_value" => "",
-                "frontend_input" => "select",
-                "is_visible_on_front" => true,
-                "is_searchable" => true,
-                "is_visible_in_advanced_search" => true,
-                "is_filterable" => true,
-                "is_filterable_in_search" => true,
-                "options" => [
+                'default_value' => '',
+                'frontend_input' => 'select',
+                'is_visible_on_front' => true,
+                'is_searchable' => true,
+                'is_visible_in_advanced_search' => true,
+                'is_filterable' => true,
+                'is_filterable_in_search' => true,
+                'options' => [
                     [
-                        "label" => "Red",
-                        "value" => "",
-                        "sort_order" => 100,
-                        "is_default" => false,
-                        "store_labels" => [
+                        'label' => 'Red',
+                        'value' => '',
+                        'sort_order' => 100,
+                        'is_default' => false,
+                        'store_labels' => [
                             [
-                                "store_id" => 0,
-                                "label" => "Admin Red"
+                                'store_id' => 0,
+                                'label' => 'Admin Red',
                             ],
                             [
-                                "store_id" => 1,
-                                "label" => "Default Red"
-                            ]
-                        ]
+                                'store_id' => 1,
+                                'label' => 'Default Red',
+                            ],
+                        ],
                     ],
                     [
-                        "label" => "Blue",
-                        "value" => "",
-                        "sort_order" => 0,
-                        "is_default" => true,
-                        "store_labels" => [
+                        'label' => 'Blue',
+                        'value' => '',
+                        'sort_order' => 0,
+                        'is_default' => true,
+                        'store_labels' => [
                             [
-                                "store_id" => 0,
-                                "label" => "Admin Blue"
+                                'store_id' => 0,
+                                'label' => 'Admin Blue',
                             ],
                             [
-                                "store_id" => 1,
-                                "label" => "Default Blue"
-                            ]
-                        ]
-                    ]
-                ]
+                                'store_id' => 1,
+                                'label' => 'Default Blue',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 

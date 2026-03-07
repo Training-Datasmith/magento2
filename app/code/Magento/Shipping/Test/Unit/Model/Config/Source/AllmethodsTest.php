@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,11 +9,10 @@ declare(strict_types=1);
 namespace Magento\Shipping\Test\Unit\Model\Config\Source;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
-use Magento\Shipping\Model\Carrier\AbstractCarrierInterface;
 use Magento\Shipping\Model\Config;
 use Magento\Shipping\Model\Config\Source\Allmethods;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -114,22 +114,22 @@ class AllmethodsTest extends TestCase
                     'allowedMethods' => [null => 'method_title'],
                     'expected_result' => ['value' => [], 'label' => null],
                     'getAllCarriers'  => [],
-                    'getActiveCarriers'  => []
-                ]
+                    'getActiveCarriers'  => [],
+                ],
             ],
             'valid_method_code' => [
                 [
                     'allowedMethods' => ['method_code' => 'method_title'],
                     'expected_result' => [
                         'value' => [
-                            ['value' => '0_method_code', 'label' => '[0] method_title']
+                            ['value' => '0_method_code', 'label' => '[0] method_title'],
                         ],
-                        'label' => null
+                        'label' => null,
                     ],
                     'getAllCarriers'  => [],
-                    'getActiveCarriers'  => []
-                ]
-            ]
+                    'getActiveCarriers'  => [],
+                ],
+            ],
         ];
     }
 
@@ -183,7 +183,7 @@ class AllmethodsTest extends TestCase
             [
                 'value' => 'flatrate_fixed',
                 'label' => '[flatrate] Fixed Rate',
-            ]
+            ],
         ], $result['flatrate']['value']);
     }
 

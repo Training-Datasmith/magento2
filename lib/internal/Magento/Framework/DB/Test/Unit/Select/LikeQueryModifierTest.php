@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class LikeQueryModifierTest extends TestCase
     {
         $values = [
             'field1' => 'pattern1',
-            'field2' => 'pattern2'
+            'field2' => 'pattern2',
         ];
         $selectMock = $this->getMockBuilder(Select::class)
             ->disableOriginalConstructor()

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Giftmessage;
 
 use Magento\Framework\Data\Form\Element\Fieldset;
@@ -233,7 +236,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => $this->_getFieldName('sender'),
                 'label' => __('From'),
-                'required' => $this->getMessage()->getMessage() ? true : false
+                'required' => $this->getMessage()->getMessage() ? true : false,
             ]
         );
         $fieldset->addField(
@@ -242,7 +245,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => $this->_getFieldName('recipient'),
                 'label' => __('To'),
-                'required' => $this->getMessage()->getMessage() ? true : false
+                'required' => $this->getMessage()->getMessage() ? true : false,
             ]
         );
 
@@ -252,7 +255,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => $this->_getFieldName('message'),
                 'label' => __('Message'),
-                'class' => 'admin__control-textarea'
+                'class' => 'admin__control-textarea',
             ]
         );
         return $this;

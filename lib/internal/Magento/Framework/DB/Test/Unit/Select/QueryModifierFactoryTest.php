@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -51,8 +52,8 @@ class QueryModifierFactoryTest extends TestCase
             [
                 'objectManager' => $this->objectManagerMock,
                 'queryModifiers' => [
-                    'in' => InQueryModifier::class
-                ]
+                    'in' => InQueryModifier::class,
+                ],
             ]
         );
         $this->objectManagerMock->expects($this->once())
@@ -73,7 +74,7 @@ class QueryModifierFactoryTest extends TestCase
             QueryModifierFactory::class,
             [
                 'objectManager' => $this->objectManagerMock,
-                'queryModifiers' => []
+                'queryModifiers' => [],
             ]
         );
         $this->objectManagerMock->expects($this->never())
@@ -90,8 +91,8 @@ class QueryModifierFactoryTest extends TestCase
             [
                 'objectManager' => $this->objectManagerMock,
                 'queryModifiers' => [
-                    'in' => \stdClass::class
-                ]
+                    'in' => \stdClass::class,
+                ],
             ]
         );
         $this->objectManagerMock->expects($this->once())

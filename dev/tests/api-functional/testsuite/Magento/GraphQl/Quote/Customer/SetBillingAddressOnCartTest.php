@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -742,7 +743,7 @@ QUERY;
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testSetBillingAddressIfCustomerIsNotOwnerOfAddress()
@@ -878,7 +879,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }',
-                'Region is required'
+                'Region is required',
             ],
             'missed_postal_code' => [
                 'cart_id: "cart_id_value"
@@ -894,7 +895,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }',
-                '"postcode" is required. Enter and try again.'
+                '"postcode" is required. Enter and try again.',
             ],
             'wrong_required_region' => [
                 'cart_id: "cart_id_value"
@@ -911,7 +912,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }',
-                '"regionId" is required. Enter and try again'
+                '"regionId" is required. Enter and try again',
             ],
             'wrong_required_region_name' => [
                 'cart_id: "cart_id_value"
@@ -929,7 +930,7 @@ QUERY;
                         telephone: "88776655"
                         }
                     }',
-                'The region_id does not match the selected country or region'
+                'The region_id does not match the selected country or region',
             ],
         ];
     }
@@ -1342,8 +1343,8 @@ QUERY;
         $cartResponse = $response['setBillingAddressOnCart']['cart'];
         $this->assertArrayHasKey('billing_address', $cartResponse);
         $billingAddressResponse = $cartResponse['billing_address'];
-        $expectedRegionCode = "AE";
-        $expectedRegionLabel = "Armed Forces Middle East";
+        $expectedRegionCode = 'AE';
+        $expectedRegionLabel = 'Armed Forces Middle East';
         $this->assertEquals($expectedRegionCode, $billingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $billingAddressResponse['region']['label']);
         $this->assertEquals(10, $billingAddressResponse['region']['region_id']);
@@ -1408,8 +1409,8 @@ QUERY;
         $cartResponse = $response['setBillingAddressOnCart']['cart'];
         $this->assertArrayHasKey('billing_address', $cartResponse);
         $billingAddressResponse = $cartResponse['billing_address'];
-        $expectedRegionCode = "Some";
-        $expectedRegionLabel = "Some";
+        $expectedRegionCode = 'Some';
+        $expectedRegionLabel = 'Some';
         $this->assertEquals($expectedRegionCode, $billingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $billingAddressResponse['region']['label']);
         $this->assertEquals(null, $billingAddressResponse['region']['region_id']);
@@ -1653,8 +1654,8 @@ QUERY;
         $cartResponse = $response['setBillingAddressOnCart']['cart'];
         $this->assertArrayHasKey('billing_address', $cartResponse);
         $billingAddressResponse = $cartResponse['billing_address'];
-        $expectedRegionCode = "TX";
-        $expectedRegionLabel = "Texas";
+        $expectedRegionCode = 'TX';
+        $expectedRegionLabel = 'Texas';
         $this->assertEquals($expectedRegionCode, $billingAddressResponse['region']['code']);
         $this->assertEquals($expectedRegionLabel, $billingAddressResponse['region']['label']);
     }
@@ -1678,7 +1679,7 @@ QUERY;
             ['response_field' => 'postcode', 'expected_value' => '887766'],
             ['response_field' => 'telephone', 'expected_value' => '88776655'],
             ['response_field' => 'country', 'expected_value' => ['code' => 'US', 'label' => 'US']],
-            ['response_field' => '__typename', 'expected_value' => $addressType]
+            ['response_field' => '__typename', 'expected_value' => $addressType],
         ];
 
         $this->assertResponseFields($addressResponse, $assertionMap);
@@ -1705,7 +1706,7 @@ QUERY;
             ['response_field' => 'postcode', 'expected_value' => '75477'],
             ['response_field' => 'telephone', 'expected_value' => 3468676],
             ['response_field' => 'country', 'expected_value' => ['code' => 'US', 'label' => 'US']],
-            ['response_field' => '__typename', 'expected_value' => $addressType]
+            ['response_field' => '__typename', 'expected_value' => $addressType],
         ];
 
         $this->assertResponseFields($addressResponse, $assertionMap);
@@ -1973,7 +1974,7 @@ QUERY;
     private function getSetPaymentMethodQuery(
         string $maskedQuoteId,
         string $methodCode
-    ) : string {
+    ): string {
         return <<<QUERY
 mutation {
   setPaymentMethodOnCart(input: {
@@ -2028,7 +2029,7 @@ QUERY;
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testSetBillingAddressWithEmptyPostcodeAndTelephone()

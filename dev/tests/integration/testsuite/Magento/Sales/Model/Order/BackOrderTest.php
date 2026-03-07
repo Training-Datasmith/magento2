@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order;
 
-use Magento\Quote\Model\Quote;
-use Magento\Sales\Model\Order;
-use Magento\Quote\Model\QuoteIdMask;
-use Magento\Sales\Model\OrderRepository;
-use Magento\Quote\Model\QuoteIdMaskFactory;
-use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Quote\Api\GuestCartManagementInterface;
-use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\QuoteIdMask;
+use Magento\Quote\Model\QuoteIdMaskFactory;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\OrderRepository;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Class BackOrderTest

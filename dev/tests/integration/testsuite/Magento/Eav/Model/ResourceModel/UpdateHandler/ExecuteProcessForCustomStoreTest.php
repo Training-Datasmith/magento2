@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Eav\Model\ResourceModel\UpdateHandler;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-
 use Magento\Catalog\Api\Data\ProductInterface;
+
 use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\ResourceModel\UpdateHandler;
 use Magento\Eav\Model\ResourceModel\UpdateHandlerAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\ResourceModel\UpdateHandler;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppArea adminhtml

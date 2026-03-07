@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +29,6 @@ use Psr\Log\LoggerInterface;
  */
 class CollectionTest extends TestCase
 {
-
     /**
      * @var Collection
      */

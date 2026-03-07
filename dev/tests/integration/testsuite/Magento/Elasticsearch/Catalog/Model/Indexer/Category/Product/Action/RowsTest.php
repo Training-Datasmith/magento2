@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Catalog\Helper\DefaultCategory;
 use Magento\Catalog\Model\Indexer\Category\Product\Action\Rows;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollectionFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Search\EngineResolverInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestModuleCatalogSearch\Model\SearchEngineVersionReader;
-use Magento\Framework\Search\EngineResolverInterface;
 
 /**
  * Test for Magento\Catalog\Model\Indexer\Category\Product\Action\Rows class.

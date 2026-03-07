@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class Account implements OptionSourceInterface
     {
         $configData = [
             'EPS' => __('EPS'),
-            'PERMIT' => __('PERMIT')
+            'PERMIT' => __('PERMIT'),
         ];
 
         $arr = [];

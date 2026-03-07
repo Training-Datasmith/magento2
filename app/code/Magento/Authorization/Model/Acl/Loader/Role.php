@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Authorization\Model\Acl\Role\User as RoleUser;
 use Magento\Authorization\Model\Acl\Role\UserFactory;
 use Magento\Framework\Acl\Data\CacheInterface;
 use Magento\Framework\Acl\LoaderInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Serialize\Serializer\Json;
 
 /**
@@ -24,12 +24,7 @@ class Role implements LoaderInterface
     /**
      * Cache key for ACL roles cache
      */
-    const ACL_ROLES_CACHE_KEY = 'authorization_role_cached_data';
-
-    /**
-     * @var ResourceConnection
-     */
-    protected $_resource;
+    public const ACL_ROLES_CACHE_KEY = 'authorization_role_cached_data';
 
     /**
      * @var GroupFactory
@@ -42,51 +37,24 @@ class Role implements LoaderInterface
     protected $_roleFactory;
 
     /**
-     * @var CacheInterface
-     */
-    private $aclDataCache;
-
-    /**
-     * @var Json
-     */
-    private $serializer;
-
-    /**
-     * @var string
-     */
-    private $cacheKey;
-
-    /**
-     * @param GroupFactory $groupFactory
-     * @param UserFactory $roleFactory
-     * @param ResourceConnection $resource
-     * @param CacheInterface $aclDataCache
-     * @param Json $serializer
      * @param string $cacheKey
      */
     public function __construct(
         GroupFactory $groupFactory,
         UserFactory $roleFactory,
-        ResourceConnection $resource,
-        CacheInterface $aclDataCache,
-        Json $serializer,
-        $cacheKey = self::ACL_ROLES_CACHE_KEY
+        protected \Magento\Framework\App\ResourceConnection $_resource,
+        private readonly CacheInterface $aclDataCache,
+        private readonly Json $serializer,
+        private $cacheKey = self::ACL_ROLES_CACHE_KEY
     ) {
         $this->_groupFactory = $groupFactory;
         $this->_roleFactory = $roleFactory;
-        $this->_resource = $resource;
-        $this->aclDataCache = $aclDataCache;
-        $this->serializer = $serializer;
-        $this->cacheKey = $cacheKey;
     }
 
     /**
      * Populate ACL with roles from external storage
-     *
-     * @param \Magento\Framework\Acl $acl
-     * @return void
      */
-    public function populateAcl(\Magento\Framework\Acl $acl)
+    public function populateAcl(\Magento\Framework\Acl $acl): void
     {
         foreach ($this->getRolesArray() as $role) {
             $parent = $role['parent_id'] > 0 ? $role['parent_id'] : null;

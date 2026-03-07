@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Catalog\Block\Product\ImageFactory;
 use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Helper\ImageFactory as HelperFactory;
 use Magento\Catalog\Model\Product;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -252,38 +253,38 @@ class ImageBuilderTest extends TestCase
             'square image' => [
                 'width' => 100,
                 'height' => 100,
-                'expectedRatio' => 1
+                'expectedRatio' => 1,
             ],
             'landscape image' => [
                 'width' => 200,
                 'height' => 100,
-                'expectedRatio' => 0.5
+                'expectedRatio' => 0.5,
             ],
             'portrait image' => [
                 'width' => 100,
                 'height' => 200,
-                'expectedRatio' => 2
+                'expectedRatio' => 2,
             ],
             'zero width returns 1' => [
                 'width' => 0,
                 'height' => 100,
-                'expectedRatio' => 1
+                'expectedRatio' => 1,
             ],
             'zero height returns 1' => [
                 'width' => 100,
                 'height' => 0,
-                'expectedRatio' => 1
+                'expectedRatio' => 1,
             ],
             'null width returns 1' => [
                 'width' => null,
                 'height' => 100,
-                'expectedRatio' => 1
+                'expectedRatio' => 1,
             ],
             'null height returns 1' => [
                 'width' => 100,
                 'height' => null,
-                'expectedRatio' => 1
-            ]
+                'expectedRatio' => 1,
+            ],
         ];
     }
 
@@ -320,84 +321,84 @@ class ImageBuilderTest extends TestCase
         return [
             'single attribute' => [
                 'attributes' => ['class' => 'product-image'],
-                'expectedResult' => 'class="product-image"'
+                'expectedResult' => 'class="product-image"',
             ],
             'multiple attributes' => [
                 'attributes' => ['class' => 'image', 'alt' => 'Product'],
-                'expectedResult' => 'class="image" alt="Product"'
+                'expectedResult' => 'class="image" alt="Product"',
             ],
             'empty attributes' => [
                 'attributes' => [],
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
             'double quotes in value - not escaped' => [
                 'attributes' => ['alt' => 'Product "Special" Name'],
-                'expectedResult' => 'alt="Product "Special" Name"'
+                'expectedResult' => 'alt="Product "Special" Name"',
             ],
             'single quotes in value - not escaped' => [
                 'attributes' => ['alt' => "Product's Name"],
-                'expectedResult' => 'alt="Product\'s Name"'
+                'expectedResult' => 'alt="Product\'s Name"',
             ],
             'ampersand in value - not escaped' => [
                 'attributes' => ['alt' => 'Product & Description'],
-                'expectedResult' => 'alt="Product & Description"'
+                'expectedResult' => 'alt="Product & Description"',
             ],
             'angle brackets in value - not escaped' => [
                 'attributes' => ['alt' => 'Size <Medium>'],
-                'expectedResult' => 'alt="Size <Medium>"'
+                'expectedResult' => 'alt="Size <Medium>"',
             ],
             'mixed special characters - not escaped' => [
                 'attributes' => ['alt' => 'Item "A" & \'B\' <C>'],
-                'expectedResult' => 'alt="Item "A" & \'B\' <C>"'
+                'expectedResult' => 'alt="Item "A" & \'B\' <C>"',
             ],
             'x-magento-init script injection - not escaped' => [
                 'attributes' => [
-                    'alt' => '<script type="text/x-magento-init">{"test":"xss"}</script>'
+                    'alt' => '<script type="text/x-magento-init">{"test":"xss"}</script>',
                 ],
-                'expectedResult' => 'alt="<script type="text/x-magento-init">{"test":"xss"}</script>"'
+                'expectedResult' => 'alt="<script type="text/x-magento-init">{"test":"xss"}</script>"',
             ],
             'x-magento-template injection - not escaped' => [
                 'attributes' => [
-                    'class' => 'test"><script type="text/x-magento-template">xss</script><div class="'
+                    'class' => 'test"><script type="text/x-magento-template">xss</script><div class="',
                 ],
-                'expectedResult' => 'class="test"><script type="text/x-magento-template">xss</script><div class=""'
+                'expectedResult' => 'class="test"><script type="text/x-magento-template">xss</script><div class=""',
             ],
             'event handler onclick - not escaped' => [
                 'attributes' => [
-                    'onclick' => 'doSomething("param")'
+                    'onclick' => 'doSomething("param")',
                 ],
-                'expectedResult' => 'onclick="doSomething("param")"'
+                'expectedResult' => 'onclick="doSomething("param")"',
             ],
             'breaking out of quotes - not escaped' => [
                 'attributes' => [
-                    'alt' => 'test" onload="handleLoad(1)"'
+                    'alt' => 'test" onload="handleLoad(1)"',
                 ],
-                'expectedResult' => 'alt="test" onload="handleLoad(1)""'
+                'expectedResult' => 'alt="test" onload="handleLoad(1)""',
             ],
             'breaking out with closing tag - not escaped' => [
                 'attributes' => [
-                    'class' => '"><img src=x onerror="handleError()"><div class="'
+                    'class' => '"><img src=x onerror="handleError()"><div class="',
                 ],
-                'expectedResult' => 'class=""><img src=x onerror="handleError()"><div class=""'
+                'expectedResult' => 'class=""><img src=x onerror="handleError()"><div class=""',
             ],
             'HTML entities in value - not escaped' => [
                 'attributes' => [
-                    'alt' => 'Test & "quotes" <brackets>'
+                    'alt' => 'Test & "quotes" <brackets>',
                 ],
-                'expectedResult' => 'alt="Test & "quotes" <brackets>"'
+                'expectedResult' => 'alt="Test & "quotes" <brackets>"',
             ],
             'single quote injection - not escaped' => [
                 'attributes' => [
-                    'alt' => "test' onload='handleLoad(1)'"
+                    'alt' => "test' onload='handleLoad(1)'",
                 ],
-                'expectedResult' => "alt=\"test' onload='handleLoad(1)'\""
+                'expectedResult' => "alt=\"test' onload='handleLoad(1)'\"",
             ],
             'data attribute with json - not escaped' => [
                 'attributes' => [
-                    'data-mage-init' => '{"component":{"config":"<value>"}}'
+                    'data-mage-init' => '{"component":{"config":"<value>"}}',
                 ],
-                'expectedResult' => 'data-mage-init="{"component":{"config":"<value>"}}"'
-            ]
+                'expectedResult' => 'data-mage-init="{"component":{"config":"<value>"}}"',
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mview\View;
 
 class SubscriptionFactory extends AbstractFactory
@@ -10,7 +13,7 @@ class SubscriptionFactory extends AbstractFactory
     /**
      * Instance name
      */
-    const INSTANCE_NAME = SubscriptionInterface::class;
+    public const INSTANCE_NAME = SubscriptionInterface::class;
 
     /**
      * @param array $data

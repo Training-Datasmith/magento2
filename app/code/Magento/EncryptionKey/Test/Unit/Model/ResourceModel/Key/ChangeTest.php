@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class ChangeTest extends TestCase
                 'decrypt',
                 'validateKey',
                 'setNewKey',
-                'exportKeys'
+                'exportKeys',
             ]
         );
         $this->filesystemMock = $this->createMock(Filesystem::class);
@@ -101,7 +102,7 @@ class ChangeTest extends TestCase
             ['getResources']
         );
         $contextMock->method('getResources')->willReturn($this->resourceMock);
-        
+
         $this->model = new Change(
             $contextMock,
             $this->filesystemMock,
@@ -118,7 +119,7 @@ class ChangeTest extends TestCase
         $table = ['item1', 'item2'];
         $values = [
             'key1' => 'value1',
-            'key2' => 'value2'
+            'key2' => 'value2',
         ];
 
         $this->writerMock->expects($this->once())->method('checkIfWritable')->willReturn(true);

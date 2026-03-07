@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Attribute\Data;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Filesystem\Io\File as FileIo;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filesystem\Io\File as FileIo;
 
 /**
  * EAV Entity Attribute File Data Model
@@ -198,7 +201,7 @@ class File extends \Magento\Eav\Model\Attribute\Data\AbstractData
             $fileData = [
                 'size' => $stat['size'],
                 'name' => $value,
-                'tmp_name' => $dir . $value
+                'tmp_name' => $dir . $value,
             ];
         }
 

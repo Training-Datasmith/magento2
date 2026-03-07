@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ namespace Magento\Catalog\Block\Product;
  */
 interface ReviewRendererInterface
 {
-    const SHORT_VIEW = 'short';
-    const FULL_VIEW = 'default';
-    const DEFAULT_VIEW = self::FULL_VIEW;
+    public const SHORT_VIEW = 'short';
+    public const FULL_VIEW = 'default';
+    public const DEFAULT_VIEW = self::FULL_VIEW;
 
     /**
      * Get product review summary html

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -59,7 +61,7 @@ class PrepareShipmentDays implements DataPatchInterface, PatchVersionInterface
                 'value' => implode(
                     ',',
                     array_intersect_key(iterator_to_array($days), array_flip(explode(',', $configRow['value'] ?? '')))
-                )
+                ),
             ];
             $this->moduleDataSetup->getConnection()->update(
                 $this->moduleDataSetup->getTable('core_config_data'),

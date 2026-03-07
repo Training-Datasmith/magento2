@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\UseCase;
 
 use Magento\Framework\MessageQueue\DefaultValueProvider;
@@ -68,7 +71,7 @@ class AsyncMultipleTopicsWithEachQueueTest extends QueueTestCaseAbstract
         foreach ($this->topics as $topic) {
             // phpcs:ignore Magento2.Security.InsecureFunction
             $this->uniqueID[$topic] = md5(uniqid($topic));
-            $this->msgObject->setValue($this->uniqueID[$topic] . "_" . $topic);
+            $this->msgObject->setValue($this->uniqueID[$topic] . '_' . $topic);
             $this->msgObject->setTextFilePath($this->logFilePath);
             $this->publisher->publish($topic, $this->msgObject);
         }
@@ -78,7 +81,7 @@ class AsyncMultipleTopicsWithEachQueueTest extends QueueTestCaseAbstract
         //assertions
         foreach ($this->topics as $item) {
             $this->assertStringContainsString(
-                $this->uniqueID[$item] . "_" . $item,
+                $this->uniqueID[$item] . '_' . $item,
                 file_get_contents($this->logFilePath)
             );
         }

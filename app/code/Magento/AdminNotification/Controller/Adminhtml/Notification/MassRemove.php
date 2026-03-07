@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Controller\Adminhtml\Notification;
 
 use Magento\AdminNotification\Controller\Adminhtml\Notification;
@@ -15,7 +18,6 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
  */
 class MassRemove extends Notification implements HttpPostActionInterface
 {
-
     /**
      * Authorization level of a basic admin session
      *
@@ -23,19 +25,9 @@ class MassRemove extends Notification implements HttpPostActionInterface
      */
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::adminnotification_remove';
 
-    /**
-     * @var InboxModelFactory
-     */
-    private $inboxModelFactory;
-
-    /**
-     * @param Action\Context $context
-     * @param InboxModelFactory $inboxModelFactory
-     */
-    public function __construct(Action\Context $context, InboxModelFactory $inboxModelFactory)
+    public function __construct(Action\Context $context, private readonly InboxModelFactory $inboxModelFactory)
     {
         parent::__construct($context);
-        $this->inboxModelFactory = $inboxModelFactory;
     }
 
     /**

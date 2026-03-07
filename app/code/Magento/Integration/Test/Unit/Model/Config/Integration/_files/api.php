@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,5 +15,5 @@ return [
             'Magento_SalesRule::quote',
         ],
     ],
-    'TestIntegration2' => ['resource' => ['Magento_Catalog::product_read']]
+    'TestIntegration2' => ['resource' => ['Magento_Catalog::product_read']],
 ];

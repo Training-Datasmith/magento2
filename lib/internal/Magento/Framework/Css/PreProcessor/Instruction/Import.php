@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Framework\Css\PreProcessor\Instruction;
 
+use Magento\Framework\Css\PreProcessor\FileGenerator\RelatedGenerator;
 use Magento\Framework\View\Asset\LocalInterface;
 use Magento\Framework\View\Asset\NotationResolver;
-use Magento\Framework\View\Asset\PreProcessorInterface;
-use Magento\Framework\Css\PreProcessor\FileGenerator\RelatedGenerator;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
+use Magento\Framework\View\Asset\PreProcessorInterface;
 
 /**
  * 'import' instruction preprocessor

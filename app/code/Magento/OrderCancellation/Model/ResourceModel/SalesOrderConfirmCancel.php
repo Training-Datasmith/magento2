@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class SalesOrderConfirmCancel
             [
                 'order_id' => $orderId,
                 'confirmation_key' => $confirmationKey,
-                'reason' => $reason
+                'reason' => $reason,
             ],
             ['confirmation_key', 'reason']
         );

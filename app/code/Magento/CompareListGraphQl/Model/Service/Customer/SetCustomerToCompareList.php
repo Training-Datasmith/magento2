@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,9 +12,6 @@ use Magento\Catalog\Model\CompareList;
 use Magento\Catalog\Model\CompareListFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Compare\CompareList as ResourceCompareList;
 use Magento\Catalog\Model\ResourceModel\Product\Compare\Item as ResourceCompareItem;
-use Magento\CompareListGraphQl\Model\Service\Customer\GetListIdByCustomerId;
-use Magento\CompareListGraphQl\Model\Service\Customer\MergeCompareLists;
-use Magento\CompareListGraphQl\Model\Service\Customer\ValidateCustomer;
 use Magento\Framework\GraphQl\Exception\GraphQlAuthenticationException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;

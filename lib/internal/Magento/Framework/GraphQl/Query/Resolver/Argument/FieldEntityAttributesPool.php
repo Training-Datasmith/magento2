@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class FieldEntityAttributesPool
      * @return array
      * @throws \LogicException
      */
-    public function getEntityAttributesForEntityFromField(string $fieldName) : array
+    public function getEntityAttributesForEntityFromField(string $fieldName): array
     {
         if (isset($this->attributesInstances[$fieldName])) {
             return $this->attributesInstances[$fieldName]->getEntityAttributes();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class ConfigFilePoolTest extends TestCase
     protected function setUp(): void
     {
         $newPath = [
-            'new_key' => 'new_config.php'
+            'new_key' => 'new_config.php',
         ];
         $this->configFilePool = new ConfigFilePool($newPath);
     }

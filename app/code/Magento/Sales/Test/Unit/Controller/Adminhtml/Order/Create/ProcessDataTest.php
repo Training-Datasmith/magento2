@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,23 +13,23 @@ use Magento\Backend\Model\Session\Quote;
 use Magento\Backend\Model\View\Result\Forward;
 use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Quote\Model\Quote as QuoteModel;
 use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\Quote as QuoteModel;
 use Magento\Sales\Controller\Adminhtml\Order\Create\ProcessData;
 use Magento\Sales\Model\AdminOrder\Create;
-use PHPUnit\Framework\MockObject\MockObject;
 
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
@@ -146,13 +147,13 @@ class ProcessDataTest extends TestCase
         $paramReturnMap = [
             ['customer_id', null, null],
             ['store_id', null, null],
-            ['currency_id', null, null]
+            ['currency_id', null, null],
         ];
         $this->request->expects($this->atLeastOnce())->method('getParam')->willReturnMap($paramReturnMap);
 
         $objectManagerParamMap = [
             [Create::class, $create],
-            [Quote::class, $this->session]
+            [Quote::class, $this->session],
         ];
         $this->objectManager->expects($this->atLeastOnce())->method('get')->willReturnMap($objectManagerParamMap);
 

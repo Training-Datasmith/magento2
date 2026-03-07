@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -12,19 +13,19 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Framework\Measure\Length;
 use Magento\Framework\Measure\Weight;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote\Address\RateResult\Error;
 use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Shipping\Helper\Carrier as CarrierHelper;
 use Magento\Shipping\Model\Rate\Result;
-use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Shipping\Model\Rate\Result\ProxyDeferredFactory;
+use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Usps\Model\Carrier;
 use Magento\Usps\Model\ShipmentService;
 use Magento\Usps\Model\ShippingMethodManager;
@@ -276,7 +277,7 @@ class ShipmentServiceTest extends TestCase
         $expectedCodes = [
             'PRIORITY_MAIL' => 'Priority Mail',
             'FIRST-CLASS_PACKAGE_SERVICE' => 'First-Class Package Service',
-            'USPS_GROUND_ADVANTAGE' => 'USPS Ground Advantage'
+            'USPS_GROUND_ADVANTAGE' => 'USPS Ground Advantage',
         ];
 
         $this->carrierModelMock->expects($this->once())
@@ -320,9 +321,9 @@ class ShipmentServiceTest extends TestCase
             'error' => [
                 'errors' => [
                     ['detail' => 'Invalid ZIP code'],
-                    ['detail' => 'Invalid weight']
-                ]
-            ]
+                    ['detail' => 'Invalid weight'],
+                ],
+            ],
         ];
 
         $result = $this->shipmentService->handleErrorResponse($response);
@@ -339,9 +340,9 @@ class ShipmentServiceTest extends TestCase
         $response = [
             'error' => [
                 'errors' => [
-                    ['detail' => 'Service temporarily unavailable']
-                ]
-            ]
+                    ['detail' => 'Service temporarily unavailable'],
+                ],
+            ],
         ];
 
         $result = $this->shipmentService->handleErrorResponse($response);
@@ -369,8 +370,8 @@ class ShipmentServiceTest extends TestCase
     {
         $response = [
             'error' => [
-                'message' => 'General error'
-            ]
+                'message' => 'General error',
+            ],
         ];
 
         $result = $this->shipmentService->handleErrorResponse($response);
@@ -384,7 +385,7 @@ class ShipmentServiceTest extends TestCase
     public function testPreparePackageDimensionsNoConversion(): void
     {
         $request = new DataObject([
-            'package_weight' => 5.0
+            'package_weight' => 5.0,
         ]);
 
         $packageParams = new DataObject([
@@ -394,7 +395,7 @@ class ShipmentServiceTest extends TestCase
             'girth' => 30,
             'weight_units' => Weight::POUND,
             'dimension_units' => Length::INCH,
-            'girth_dimension_units' => Length::INCH
+            'girth_dimension_units' => Length::INCH,
         ]);
 
         $result = $this->shipmentService->preparePackageDimensions($request, $packageParams);
@@ -404,7 +405,7 @@ class ShipmentServiceTest extends TestCase
             'width' => 8,
             'length' => 12,
             'girth' => 30,
-            'weight' => 5.0
+            'weight' => 5.0,
         ];
 
         $this->assertEquals($expected, $result);
@@ -416,7 +417,7 @@ class ShipmentServiceTest extends TestCase
     public function testPreparePackageDimensionsWithConversion(): void
     {
         $request = new DataObject([
-            'package_weight' => 2.27 // kg
+            'package_weight' => 2.27, // kg
         ]);
 
         $packageParams = new DataObject([
@@ -426,7 +427,7 @@ class ShipmentServiceTest extends TestCase
             'girth' => 76.2, // cm
             'weight_units' => Weight::KILOGRAM,
             'dimension_units' => Length::CENTIMETER,
-            'girth_dimension_units' => Length::CENTIMETER
+            'girth_dimension_units' => Length::CENTIMETER,
         ]);
 
         // Mock the carrier helper conversion methods
@@ -441,7 +442,7 @@ class ShipmentServiceTest extends TestCase
                 [25.4, Length::CENTIMETER, Length::INCH, 10.0],
                 [20.32, Length::CENTIMETER, Length::INCH, 8.0],
                 [30.48, Length::CENTIMETER, Length::INCH, 12.0],
-                [76.2, Length::CENTIMETER, Length::INCH, 30.0]
+                [76.2, Length::CENTIMETER, Length::INCH, 30.0],
             ]);
 
         $result = $this->shipmentService->preparePackageDimensions($request, $packageParams);
@@ -451,7 +452,7 @@ class ShipmentServiceTest extends TestCase
             'width' => 8,
             'length' => 12,
             'girth' => 30,
-            'weight' => 5.0
+            'weight' => 5.0,
         ];
 
         $this->assertEquals($expected, $result);
@@ -470,15 +471,14 @@ class ShipmentServiceTest extends TestCase
             'girth' => 0,
             'weight_units' => Weight::KILOGRAM,
             'dimension_units' => Length::INCH,
-            'girth_dimension_units' => Length::INCH
+            'girth_dimension_units' => Length::INCH,
         ]);
 
         $this->expectException(LocalizedException::class);
 
         $this->carrierHelperMock->expects($this->once())
             ->method('convertMeasureWeight')
-            ->willThrowException(new
-                \Magento\Framework\Measure\Exception\MeasureException(__('Conversion failed')));
+            ->willThrowException(new \Magento\Framework\Measure\Exception\MeasureException(__('Conversion failed')));
 
         $this->loggerMock->expects($this->once())
             ->method('error')
@@ -503,7 +503,7 @@ class ShipmentServiceTest extends TestCase
             'girth' => 0,
             'weight_units' => Weight::KILOGRAM, // Different units to trigger conversion
             'dimension_units' => Length::INCH,
-            'girth_dimension_units' => Length::INCH
+            'girth_dimension_units' => Length::INCH,
         ]);
 
         // Mock carrier helper to throw a generic exception during weight conversion
@@ -524,7 +524,7 @@ class ShipmentServiceTest extends TestCase
     public function testSetPackageRequestLargePackage(): void
     {
         $request = new DataObject([
-            'shipping_method' => 'Priority Mail'
+            'shipping_method' => 'Priority Mail',
         ]);
         $request->setUspsSize('LARGE');
         $request->setHeight(15);
@@ -552,7 +552,7 @@ class ShipmentServiceTest extends TestCase
     public function testSetPackageRequestFlatRateEnvelope(): void
     {
         $request = new DataObject([
-            'shipping_method' => 'Priority Mail Express Flat Rate Envelope'
+            'shipping_method' => 'Priority Mail Express Flat Rate Envelope',
         ]);
 
         // Set usps_size to null explicitly to trigger config fallback
@@ -565,7 +565,7 @@ class ShipmentServiceTest extends TestCase
                     'size' => 'REGULAR',
                     'height' => 1,
                     'length' => 12,
-                    'width' => 9
+                    'width' => 9,
                 ];
                 return $map[$key] ?? null;
             });
@@ -576,7 +576,7 @@ class ShipmentServiceTest extends TestCase
             ->willReturn([
                 'height' => 0.5,
                 'width' => 9.5,
-                'length' => 12.5
+                'length' => 12.5,
             ]);
 
         $result = $this->shipmentService->setPackageRequest($request);
@@ -610,7 +610,7 @@ class ShipmentServiceTest extends TestCase
             'height' => 10,
             'width' => 8,
             'length' => 12,
-            'girth' => 0
+            'girth' => 0,
         ]);
 
         $request = new DataObject();
@@ -707,10 +707,10 @@ class ShipmentServiceTest extends TestCase
             'package_params' => new DataObject([
                 'weight_units' => Weight::POUND,
                 'dimension_units' => Length::INCH,
-                'girth_dimension_units' => Length::INCH
+                'girth_dimension_units' => Length::INCH,
             ]),
             'shipper_address_postal_code' => '90210',
-            'recipient_address_postal_code' => '10001'
+            'recipient_address_postal_code' => '10001',
         ]);
 
         $this->shippingMethodManagerMock->expects($this->once())
@@ -739,7 +739,7 @@ class ShipmentServiceTest extends TestCase
                 'weight_units' => Weight::POUND,
                 'dimension_units' => Length::INCH,
                 'girth_dimension_units' => Length::INCH,
-                'content_type' => 'MERCHANDISE'
+                'content_type' => 'MERCHANDISE',
             ]),
             'package_weight' => 3.0,
             'package_height' => 12,
@@ -769,10 +769,10 @@ class ShipmentServiceTest extends TestCase
                     'customs_value' => 25.00,
                     'name' => 'Test Product',
                     'weight' => 1.5,
-                    'product_id' => 1
-                ]
+                    'product_id' => 1,
+                ],
             ],
-            'store_id' => 1
+            'store_id' => 1,
         ]);
 
         // Mock product collection
@@ -881,7 +881,7 @@ class ShipmentServiceTest extends TestCase
             'height' => 10,
             'width' => 8,
             'length' => 12,
-            'girth' => 30
+            'girth' => 30,
         ]);
 
         $request = new DataObject();
@@ -892,8 +892,8 @@ class ShipmentServiceTest extends TestCase
                 'customs_value' => 3000.00, // Over $2500 limit
                 'name' => 'Expensive Product',
                 'weight' => 1.0,
-                'product_id' => 1
-            ]
+                'product_id' => 1,
+            ],
         ]);
         $request->setStoreId(1);
         $request->setRecipientAddressCountryCode('GB'); // Non-Canada country for AESITN check
@@ -972,11 +972,11 @@ class ShipmentServiceTest extends TestCase
                 'height' => 10,
                 'width' => 8,
                 'length' => 12,
-                'girth' => 30
+                'girth' => 30,
             ]),
             'package_weight' => 5.0,
             'shipper_address_postal_code' => '90210',
-            'recipient_address_postal_code' => '10001'
+            'recipient_address_postal_code' => '10001',
         ]);
 
         $this->carrierModelMock->expects($this->once())
@@ -1005,7 +1005,7 @@ class ShipmentServiceTest extends TestCase
         $httpResponseMock->method('getStatusCode')->willReturn(200);
         $httpResponseMock->method('getBody')->willReturn(json_encode([
             'labelImage' => base64_encode('fake_label_content'),
-            'trackingNumber' => '1234567890123456'
+            'trackingNumber' => '1234567890123456',
         ]));
 
         $responseMock->method('get')->willReturn($httpResponseMock);
@@ -1060,7 +1060,7 @@ class ShipmentServiceTest extends TestCase
                     'length' => 12,
                     'width' => 9,
                     'container' => 'RECTANGULAR',
-                    'girth' => 0
+                    'girth' => 0,
                 ];
                 return $configMap[$key] ?? null;
             });
@@ -1095,7 +1095,7 @@ class ShipmentServiceTest extends TestCase
         $httpResponseMock->method('getStatusCode')->willReturn(201);
         $httpResponseMock->method('getBody')->willReturn(json_encode([
             'labelImage' => base64_encode('fake_intl_label_content'),
-            'internationalTrackingNumber' => 'INTL1234567890'
+            'internationalTrackingNumber' => 'INTL1234567890',
         ]));
 
         $responseMock->method('get')->willReturn($httpResponseMock);
@@ -1130,7 +1130,7 @@ class ShipmentServiceTest extends TestCase
             'height' => 10,
             'width' => 8,
             'length' => 12,
-            'girth' => 30
+            'girth' => 30,
         ]);
 
         $request = new DataObject();
@@ -1142,8 +1142,8 @@ class ShipmentServiceTest extends TestCase
                 'customs_value' => 50.00,
                 'name' => 'Test Product',
                 'weight' => 1.0,
-                'product_id' => 1
-            ]
+                'product_id' => 1,
+            ],
         ]);
         $request->setStoreId(1);
         $request->setPackageWeight(5.0);
@@ -1175,7 +1175,7 @@ class ShipmentServiceTest extends TestCase
     {
         $request = new DataObject([
             'recipient_address_country_code' => 'US',
-            'shipping_method' => 'PRIORITY_MAIL'
+            'shipping_method' => 'PRIORITY_MAIL',
         ]);
 
         $this->carrierModelMock->expects($this->once())
@@ -1206,11 +1206,11 @@ class ShipmentServiceTest extends TestCase
                 'height' => 10,
                 'width' => 8,
                 'length' => 12,
-                'girth' => 30
+                'girth' => 30,
             ]),
             'package_weight' => 5.0,
             'shipper_address_postal_code' => '90210',
-            'recipient_address_postal_code' => '10001'
+            'recipient_address_postal_code' => '10001',
         ]);
 
         $this->carrierModelMock->method('_isUSCountry')->willReturn(true);
@@ -1227,9 +1227,9 @@ class ShipmentServiceTest extends TestCase
             'error' => [
                 'code' => '400',
                 'errors' => [
-                    ['detail' => 'Invalid request parameters']
-                ]
-            ]
+                    ['detail' => 'Invalid request parameters'],
+                ],
+            ],
         ]));
 
         $responseMock->method('get')->willReturn($httpResponseMock);
@@ -1254,8 +1254,8 @@ class ShipmentServiceTest extends TestCase
         $requestMock = new DataObject();
         $requestMock->setPackages([
             [
-                'weight_ounces' => 8
-            ]
+                'weight_ounces' => 8,
+            ],
         ]);
         $this->getRequestParamMock($requestMock);
     }
@@ -1269,8 +1269,8 @@ class ShipmentServiceTest extends TestCase
         $requestMock->setPackages([
             [
                 'weight_pounds' => 0,
-                'weight_ounces' => 0
-            ]
+                'weight_ounces' => 0,
+            ],
         ]);
         $this->getRequestParamMock($requestMock);
     }
@@ -1284,8 +1284,8 @@ class ShipmentServiceTest extends TestCase
         $requestMock->setPackages([
             [
                 'weight_pounds' => 5,
-                'weight_ounces' => 8
-            ]
+                'weight_ounces' => 8,
+            ],
         ]);
         $capturedRequestParam = $this->getRequestParamHelper($requestMock);
         $this->assertEquals(5, $capturedRequestParam['packageDescription']['weight']);
@@ -1336,7 +1336,7 @@ class ShipmentServiceTest extends TestCase
                 $configMap = [
                     'price_type' => 'RETAIL',
                     'title' => 'USPS',
-                    'specificerrmsg' => 'No rates available'
+                    'specificerrmsg' => 'No rates available',
                 ];
                 return $configMap[$key] ?? null;
             });

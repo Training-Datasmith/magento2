@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
                 'discount_amount' => self::DISCOUNT_AMOUNT,
                 'simple_action' => 'by_percent',
                 'stop_rules_processing' => false,
-                'is_advanced' => 1
+                'is_advanced' => 1,
             ],
             as: 'sales_rule'
         ),
@@ -74,7 +75,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'price' => 100.00,
-                'sku' => 'test-product-coupon'
+                'sku' => 'test-product-coupon',
             ],
             as: 'product'
         ),
@@ -85,14 +86,14 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'coupon_codes' => [self::COUPON_CODE]
+                'coupon_codes' => [self::COUPON_CODE],
             ]
         ),
         DataFixture(SetBillingAddress::class, ['cart_id' => '$cart.id$']),
@@ -159,7 +160,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
         $this->assertArrayHasKey('applied_coupons', $order);
         $this->assertIsArray($order['applied_coupons']);
         $this->assertNotEmpty($order['applied_coupons']);
-        
+
         // Validate applied_coupons is an array of objects (not a single object)
         $this->assertArrayHasKey('code', $order['applied_coupons'][0]);
         $this->assertEquals(self::COUPON_CODE, $order['applied_coupons'][0]['code']);
@@ -179,7 +180,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'price' => 50.00,
-                'sku' => 'test-product-no-coupon'
+                'sku' => 'test-product-no-coupon',
             ],
             as: 'product'
         ),
@@ -190,7 +191,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(SetBillingAddress::class, ['cart_id' => '$cart.id$']),
@@ -242,7 +243,7 @@ class CustomerOrdersCouponTest extends GraphQlAbstract
                 $this->assertNull($discount['coupon']);
             }
         }
-        
+
         // Validate applied_coupons is empty for orders without coupons
         $this->assertArrayHasKey('applied_coupons', $order);
         $this->assertIsArray($order['applied_coupons']);
@@ -327,7 +328,7 @@ MUTATION;
     {
         return [
             'Authorization' => 'Bearer ' . $token,
-            'Store' => 'default'
+            'Store' => 'default',
         ];
     }
 }

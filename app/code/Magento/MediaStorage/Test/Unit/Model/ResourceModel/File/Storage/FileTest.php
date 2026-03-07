@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class FileTest extends TestCase
             [
                 'filesystem' => $this->filesystemMock,
                 'log' => $this->loggerMock,
-                'fileIo' => $this->fileIoMock
+                'fileIo' => $this->fileIoMock,
             ]
         );
     }

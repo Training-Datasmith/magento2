@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Field renderer for hidden fields
  */
+
 namespace Magento\Paypal\Block\Adminhtml\System\Config\Field;
 
 use Magento\Backend\Block\Template\Context;
@@ -43,7 +46,7 @@ class Hidden extends \Magento\Config\Block\System\Config\Form\Field
     {
         return '<tr id="row_' . $element->getHtmlId() . '" >' . $html . '</tr>' .
             /* @noEscape */ $this->secureRenderer->renderStyleAsTag(
-                "display: none;",
+                'display: none;',
                 'tr#row_' . $element->getHtmlId()
             );
     }

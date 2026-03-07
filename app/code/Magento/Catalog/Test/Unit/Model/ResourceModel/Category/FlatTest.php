@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class FlatTest extends TestCase
                     'addIsActiveFilter',
                     'addAttributeToFilter',
                     'addSortedField',
-                    'load'
+                    'load',
                 ]
         );
         $this->categoryCollectionMock->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\GraphQl\Quote;
 use Magento\Catalog\Setup\CategorySetup;
 use Magento\Catalog\Test\Fixture\Attribute;
 use Magento\Catalog\Test\Fixture\MultiselectAttribute;
-use Magento\Catalog\Test\Fixture\SelectAttribute;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Catalog\Test\Fixture\SelectAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
 use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Eav\Test\Fixture\AttributeOption as AttributeOptionFixture;
@@ -48,7 +49,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
             [
                 'entity_type_id' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
                 'attribute_code' => 'product_custom_attribute',
-                'is_visible_on_front' => true
+                'is_visible_on_front' => true,
             ],
             'varchar_custom_attribute'
         ),
@@ -59,7 +60,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'source_model' => Table::class,
                 'backend_model' => ArrayBackend::class,
                 'attribute_code' => 'product_custom_attribute_multiselect',
-                'is_visible_on_front' => true
+                'is_visible_on_front' => true,
             ],
             'multiselect_custom_attribute'
         ),
@@ -69,7 +70,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'entity_type' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
                 'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                 'label' => 'red',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'multiselect_custom_attribute_option_1'
         ),
@@ -80,7 +81,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                 'sort_order' => 10,
                 'label' => 'white',
-                'is_default' => true
+                'is_default' => true,
             ],
             'multiselect_custom_attribute_option_2'
         ),
@@ -90,7 +91,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'custom_attributes' => [
                     [
                         'attribute_code' => '$varchar_custom_attribute.attribute_code$',
-                        'value' => ''
+                        'value' => '',
                     ],
                     [
                         'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
@@ -120,13 +121,13 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                                     'name' => $productName,
                                     'custom_attributesV2' => [
                                         'items' => [],
-                                        'errors' => []
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'errors' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -139,7 +140,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'entity_type_id' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
                 'attribute_code' => 'product_custom_attribute',
                 'is_comparable' => 1,
-                'is_visible_on_front' => 1
+                'is_visible_on_front' => 1,
             ],
             'varchar_custom_attribute'
         ),
@@ -150,7 +151,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'source_model' => Table::class,
                 'backend_model' => ArrayBackend::class,
                 'attribute_code' => 'product_custom_attribute_multiselect',
-                'is_visible_on_front' => 1
+                'is_visible_on_front' => 1,
             ],
             'multiselect_custom_attribute'
         ),
@@ -160,7 +161,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'entity_type' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
                 'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                 'label' => 'red',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'multiselect_custom_attribute_option_1'
         ),
@@ -171,7 +172,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                 'sort_order' => 10,
                 'label' => 'white',
-                'is_default' => true
+                'is_default' => true,
             ],
             'multiselect_custom_attribute_option_2'
         ),
@@ -181,13 +182,13 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'custom_attributes' => [
                     [
                         'attribute_code' => '$varchar_custom_attribute.attribute_code$',
-                        'value' => 'test value'
+                        'value' => 'test value',
                     ],
                     [
                         'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                         'selected_options' => [
                             ['value' => '$multiselect_custom_attribute_option_1.value$'],
-                            ['value' => '$multiselect_custom_attribute_option_2.value$']
+                            ['value' => '$multiselect_custom_attribute_option_2.value$'],
                         ],
                     ],
                 ],
@@ -218,29 +219,29 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                                         'items' => [
                                             0 => [
                                                 'code' => 'product_custom_attribute',
-                                                'value' => 'test value'
+                                                'value' => 'test value',
                                             ],
                                             1 => [
                                                 'code' => 'product_custom_attribute_multiselect',
                                                 'selected_options' => [
                                                     0 => [
                                                         'value' => $multiselectCustomAttrOption2,
-                                                        'label' => 'white'
+                                                        'label' => 'white',
                                                     ],
                                                     1 => [
                                                         'value' => $multiselectCustomAttrOption1,
-                                                        'label' => 'red'
-                                                    ]
-                                                ]
-                                            ]
+                                                        'label' => 'red',
+                                                    ],
+                                                ],
+                                            ],
                                         ],
-                                        'errors' => []
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'errors' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -254,7 +255,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'source_model' => Table::class,
                 'backend_model' => ArrayBackend::class,
                 'attribute_code' => 'product_custom_attribute_select',
-                'is_visible_on_front' => true
+                'is_visible_on_front' => true,
             ],
             'select_custom_attribute'
         ),
@@ -264,7 +265,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'entity_type' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
                 'attribute_code' => '$select_custom_attribute.attribute_code$',
                 'label' => 'red',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'select_custom_attribute_option_1'
         ),
@@ -275,7 +276,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                 'attribute_code' => '$select_custom_attribute.attribute_code$',
                 'sort_order' => 10,
                 'label' => 'white',
-                'is_default' => true
+                'is_default' => true,
             ],
             'select_custom_attribute_option_2'
         ),
@@ -286,7 +287,7 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                     [
                         'attribute_code' => '$select_custom_attribute.attribute_code$',
                         'selected_options' => [
-                            ['value' => '0']
+                            ['value' => '0'],
                         ],
                     ],
                 ],
@@ -315,16 +316,16 @@ class CartItemCustomAttributeTest extends GraphQlAbstract
                                         'items' => [
                                             0 => [
                                                 'code' => 'product_custom_attribute_select',
-                                                'selected_options' => []
-                                            ]
+                                                'selected_options' => [],
+                                            ],
                                         ],
-                                        'errors' => []
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'errors' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );

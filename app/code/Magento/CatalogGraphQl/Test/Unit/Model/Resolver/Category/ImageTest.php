@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -14,14 +15,14 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\Repository;
 use Magento\GraphQl\Model\Query\Context;
 use Magento\GraphQl\Model\Query\ContextExtensionInterface;
 use Magento\Store\Model\Store;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -110,7 +111,7 @@ class ImageTest extends TestCase
         $contextExtensionInterfaceMock->expects($this->once())
             ->method('getStore')
             ->willReturn($storeMock);
-        
+
         $this->categoryMock
             ->expects($this->once())
             ->method('getData')
@@ -162,7 +163,7 @@ class ImageTest extends TestCase
         $contextExtensionInterfaceMock->expects($this->once())
             ->method('getStore')
             ->willReturn($storeMock);
-        
+
         $this->categoryMock
             ->expects($this->once())
             ->method('getData')

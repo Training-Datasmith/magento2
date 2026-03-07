@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class WeeeAttributeProductSort
         array $result,
         int $productId,
         int $storeId
-    ):array {
+    ): array {
         $select = $this->resourceConnection->getConnection()->select();
 
         foreach ($result as $select) {
@@ -51,7 +52,7 @@ class WeeeAttributeProductSort
                 [
                     'weee_min_price' => new \Zend_Db_Expr(
                         '(t.min_price + IFNULL(weee_child.value, IFNULL(weee_parent.value, 0)))'
-                    )
+                    ),
                 ]
             )->joinLeft(
                 ['weee_child' => $this->resourceConnection->getTableName('weee_tax')],

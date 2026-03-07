@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,10 +12,9 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Plugin\Model\AttributeSetRepository\RemoveProducts;
 use Magento\Eav\Api\AttributeSetRepositoryInterface;
-use Magento\Eav\Api\Data\AttributeSetInterface;
 use Magento\Eav\Model\Entity\Attribute\Set as AttributeSet;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

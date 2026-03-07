@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\Paypal\Model\Billing\AgreementFactory;
 use Magento\Customer\Helper\Session\CurrentCustomer;
+use Magento\Paypal\Model\Billing\AgreementFactory;
 use Magento\Paypal\Model\Payment\Method\Billing\AbstractAgreement;
 
 /**
@@ -46,9 +49,9 @@ class BillingAgreementConfigProvider implements ConfigProviderInterface
             'payment' => [
                 'paypalBillingAgreement' => [
                     'agreements' => $this->getBillingAgreements(),
-                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID
-                ]
-            ]
+                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID,
+                ],
+            ],
         ];
 
         return $config;

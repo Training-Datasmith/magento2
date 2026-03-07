@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -312,7 +314,7 @@ class AccountManagementTest extends WebapiAbstract
             [
                 'id' => $customerData[Customer::ID],
                 'addresses' => $customerData[Customer::KEY_ADDRESSES],
-                'confirmation' => CustomerHelper::CONFIRMATION
+                'confirmation' => CustomerHelper::CONFIRMATION,
             ]
         );
 
@@ -330,7 +332,7 @@ class AccountManagementTest extends WebapiAbstract
 
         $requestData = [
             'email' => $customerData[Customer::EMAIL],
-            'confirmationKey' => CustomerHelper::CONFIRMATION
+            'confirmationKey' => CustomerHelper::CONFIRMATION,
         ];
 
         try {
@@ -358,7 +360,7 @@ class AccountManagementTest extends WebapiAbstract
         ];
         $requestData = [
             'email' => $customerData[Customer::EMAIL],
-            'confirmationKey' => CustomerHelper::CONFIRMATION
+            'confirmationKey' => CustomerHelper::CONFIRMATION,
         ];
 
         try {
@@ -427,12 +429,12 @@ class AccountManagementTest extends WebapiAbstract
             } else {
                 $this->_webApiCall($serviceInfo);
             }
-            $this->fail("Expected exception to be thrown.");
+            $this->fail('Expected exception to be thrown.');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception message does not match"
+                'Exception message does not match'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -448,7 +450,7 @@ class AccountManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '/password',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         try {
@@ -469,7 +471,7 @@ class AccountManagementTest extends WebapiAbstract
                         'message' => '"%fieldName" is required. Enter and try again.',
                         'parameters' => [
                             'fieldName' => 'template',
-                        ]
+                        ],
                     ],
                 ],
             ];
@@ -837,7 +839,7 @@ class AccountManagementTest extends WebapiAbstract
         $this->assertEquals(
             $this->getFirstFixtureAddressData(),
             $addressData,
-            "Default billing address data is invalid."
+            'Default billing address data is invalid.'
         );
     }
 
@@ -864,7 +866,7 @@ class AccountManagementTest extends WebapiAbstract
         $this->assertEquals(
             $this->getFirstFixtureAddressData(),
             $addressData,
-            "Default shipping address data is invalid."
+            'Default shipping address data is invalid.'
         );
     }
 
@@ -906,7 +908,7 @@ class AccountManagementTest extends WebapiAbstract
     public function testCreateCustomerWithSubscription()
     {
         $customerData = $this->customerHelper->createSampleCustomer(
-            ["extension_attributes" => ["is_subscribed" => true]]
+            ['extension_attributes' => ['is_subscribed' => true]]
         );
 
         $this->assertNotNull($customerData['id']);
@@ -921,7 +923,7 @@ class AccountManagementTest extends WebapiAbstract
     {
         //Creating customer and subscribe
         $customerData = $this->customerHelper->createSampleCustomer(
-            ["extension_attributes" => ["is_subscribed" => true]]
+            ['extension_attributes' => ['is_subscribed' => true]]
         );
         $this->assertNotNull($customerData['id']);
 
@@ -932,10 +934,10 @@ class AccountManagementTest extends WebapiAbstract
         $this->assertEquals($customerData['id'], $this->subscriber->getCustomerId());
         //Manage customer in order to unsubscribe
         $this->customerHelper->updateSampleCustomer(
-            $customerData["id"],
+            $customerData['id'],
             array_merge(
                 $customerData,
-                ["extension_attributes" => ["is_subscribed" => false]]
+                ['extension_attributes' => ['is_subscribed' => false]]
             )
         );
         $this->initSubscriber();

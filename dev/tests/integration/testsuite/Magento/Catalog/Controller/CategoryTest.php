@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class CategoryTest extends AbstractController
 
         $this->objectManager = Bootstrap::getObjectManager();
         $this->objectManager->configure([
-            'preferences' => [LayoutUpdateManager::class => CategoryLayoutUpdateManager::class]
+            'preferences' => [LayoutUpdateManager::class => CategoryLayoutUpdateManager::class],
         ]);
 
         $this->categoryCollectionFactory = $this->objectManager->create(CollectionFactory::class);
@@ -108,7 +109,7 @@ class CategoryTest extends AbstractController
                     '%a<title>Category 1.1.1 - Category 1.1 - Category 1</title>%a',
                     '%a<h1%a>%SCategory 1.1.1%S</h1>%a',
                     '%aSimple Product Two%a',
-                    '%a$45.67%a'
+                    '%a$45.67%a',
                 ],
             ],
             'anchor category' => [
@@ -122,9 +123,9 @@ class CategoryTest extends AbstractController
                     '%aSimple Product%a',
                     '%a$10.00%a',
                     '%aSimple Product Two%a',
-                    '%a$45.67%a'
+                    '%a$45.67%a',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -239,7 +240,7 @@ class CategoryTest extends AbstractController
         $this->session->setData(ToolbarModel::LIMIT_PARAM_NAME, 16);
         $newPaginationValue = 24;
         $this->getRequest()->setParams([ToolbarModel::LIMIT_PARAM_NAME => $newPaginationValue]);
-        $this->dispatch("catalog/category/view/id/333");
+        $this->dispatch('catalog/category/view/id/333');
         $block = $this->layout->getBlock('product_list_toolbar');
         $this->assertNotFalse($block);
         $this->assertEquals($newPaginationValue, $block->getLimit());

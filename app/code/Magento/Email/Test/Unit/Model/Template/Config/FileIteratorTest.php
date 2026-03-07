@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class FileIteratorTest extends TestCase
         $contents = ['<template 123>', '<template 321>'];
         $expectedResult = [
             '<template module="' . $moduleName . '" 123>',
-            '<template module="' . $moduleName . '" 321>'
+            '<template module="' . $moduleName . '" 321>',
         ];
         $index = 0;
 

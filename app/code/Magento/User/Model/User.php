@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,16 +10,16 @@ namespace Magento\User\Model;
 
 use Laminas\Validator\ValidatorInterface;
 use Magento\Backend\Model\Auth\Credential\StorageInterface;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Validator\DataObject;
 use Magento\User\Api\Data\UserInterface;
 use Magento\User\Model\Spi\NotificationExceptionInterface;
 use Magento\User\Model\Spi\NotificatorInterface;
-use Magento\Framework\App\DeploymentConfig;
 
 /**
  * Admin user model
@@ -250,7 +252,7 @@ class User extends AbstractModel implements StorageInterface, UserInterface
                 'validationRules',
                 'serializer',
                 'deploymentConfig',
-                'notificator'
+                'notificator',
             ]
         );
     }
@@ -975,7 +977,7 @@ class User extends AbstractModel implements StorageInterface, UserInterface
                 'username' => $this->getUserName(),
                 'password' => $passwordString,
                 'user' => $this,
-                'result' => $isCheckSuccessful
+                'result' => $isCheckSuccessful,
             ]
         );
         // Check if lock information has been updated in observers

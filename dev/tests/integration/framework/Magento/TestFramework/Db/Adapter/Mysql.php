@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
 /**
  * See \Magento\TestFramework\Db\Adapter\TransactionInterface
  */
+
 namespace Magento\TestFramework\Db\Adapter;
 
 class Mysql extends \Magento\Framework\DB\Adapter\Pdo\Mysql implements \Magento\TestFramework\Db\Adapter\TransactionInterface

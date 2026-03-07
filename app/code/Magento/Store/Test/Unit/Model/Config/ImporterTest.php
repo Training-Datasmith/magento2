@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class ImporterTest extends TestCase
 
         $this->processorFactoryMock->expects($this->exactly(3))
             ->method('create')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [ProcessorFactory::TYPE_CREATE] => $createProcessorMock,
                 [ProcessorFactory::TYPE_DELETE] => $deleteProcessorMock,
                 [ProcessorFactory::TYPE_UPDATE] => $updateProcessorMock
@@ -141,7 +142,7 @@ class ImporterTest extends TestCase
                 'Stores were processed',
                 'The following new store groups must be associated with a root category: 2 groups, 3 groups. '
                 . PHP_EOL
-                . 'Associate a store group with a root category in the Admin Panel: Stores > Settings > All Stores.'
+                . 'Associate a store group with a root category in the Admin Panel: Stores > Settings > All Stores.',
             ],
             $this->model->import($data)
         );

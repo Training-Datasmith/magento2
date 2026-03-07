@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class UserTest extends TestCase
             '_encryptor',
             '_transportBuilder',
             '_storeManager',
-            '_validatorBeforeSave'
+            '_validatorBeforeSave',
         ];
         $actualResult = $this->model->__sleep();
         $this->assertNotEmpty($actualResult);

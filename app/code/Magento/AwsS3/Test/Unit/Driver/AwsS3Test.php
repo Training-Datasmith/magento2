@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -73,82 +74,82 @@ class AwsS3Test extends TestCase
             [
                 null,
                 'test.png',
-                self::URL . 'test.png'
+                self::URL . 'test.png',
             ],
             [
                 self::URL . 'test/test.png',
                 null,
-                self::URL . 'test/test.png'
+                self::URL . 'test/test.png',
             ],
             [
                 '',
                 'test.png',
-                self::URL . 'test.png'
+                self::URL . 'test.png',
             ],
             [
                 '',
                 '/test/test.png',
-                self::URL . 'test/test.png'
+                self::URL . 'test/test.png',
             ],
             [
                 self::URL . 'test/test.png',
                 self::URL . 'test/test.png',
-                self::URL . 'test/test.png'
+                self::URL . 'test/test.png',
             ],
             [
                 self::URL,
                 self::URL . 'media/catalog/test.png',
-                self::URL . 'media/catalog/test.png'
+                self::URL . 'media/catalog/test.png',
             ],
             [
                 '',
                 self::URL . 'media/catalog/test.png',
-                self::URL . 'media/catalog/test.png'
+                self::URL . 'media/catalog/test.png',
             ],
             [
                 self::URL . 'test/',
                 'test.txt',
-                self::URL . 'test/test.txt'
+                self::URL . 'test/test.txt',
             ],
             [
                 self::URL . 'media/',
                 '/catalog/test.png',
-                self::URL . 'media/catalog/test.png'
+                self::URL . 'media/catalog/test.png',
             ],
             [
                 self::URL,
                 'var/import/images',
-                self::URL . 'var/import/images'
+                self::URL . 'var/import/images',
             ],
             [
                 self::URL . 'export/',
                 null,
-                self::URL . 'export/'
+                self::URL . 'export/',
             ],
             [
                 self::URL . 'var/import/images/product_images/',
                 self::URL . 'var/import/images/product_images/1.png',
-                self::URL . 'var/import/images/product_images/1.png'
+                self::URL . 'var/import/images/product_images/1.png',
             ],
             [
                 '',
                 self::URL . 'media/catalog/test.png',
-                self::URL . 'media/catalog/test.png'
+                self::URL . 'media/catalog/test.png',
             ],
             [
                 self::URL,
                 'var/import/images',
-                self::URL . 'var/import/images'
+                self::URL . 'var/import/images',
             ],
             [
                 self::URL . 'var/import/images/product_images/',
                 self::URL . 'var/import/images/product_images/1.png',
-                self::URL . 'var/import/images/product_images/1.png'
+                self::URL . 'var/import/images/product_images/1.png',
             ],
             [
                 self::URL . 'var/import/images/product_images/1.png',
                 '',
-                self::URL . 'var/import/images/product_images/1.png'
+                self::URL . 'var/import/images/product_images/1.png',
             ],
             [
                 self::URL . 'media/',
@@ -163,8 +164,8 @@ class AwsS3Test extends TestCase
             [
                 self::URL,
                 '',
-                self::URL
-            ]
+                self::URL,
+            ],
         ];
     }
 
@@ -188,17 +189,17 @@ class AwsS3Test extends TestCase
             [
                 '',
                 'test/test.txt',
-                'test/test.txt'
+                'test/test.txt',
             ],
             [
                 '',
                 '/test/test.txt',
-                '/test/test.txt'
+                '/test/test.txt',
             ],
             [
                 self::URL,
                 self::URL . 'test/test.txt',
-                'test/test.txt'
+                'test/test.txt',
             ],
 
         ];
@@ -258,7 +259,7 @@ class AwsS3Test extends TestCase
                 'some_directory',
                 'some_directory',
                 [
-                    'type' => AwsS3::TYPE_DIR
+                    'type' => AwsS3::TYPE_DIR,
                 ],
                 true,
                 new \ArrayIterator(['some_directory']),
@@ -267,7 +268,7 @@ class AwsS3Test extends TestCase
                 self::URL . 'some_directory',
                 'some_directory',
                 [
-                    'type' => AwsS3::TYPE_DIR
+                    'type' => AwsS3::TYPE_DIR,
                 ],
                 true,
                 new \ArrayIterator(['some_directory']),
@@ -276,7 +277,7 @@ class AwsS3Test extends TestCase
                 '',
                 '',
                 [
-                    'type' => AwsS3::TYPE_DIR
+                    'type' => AwsS3::TYPE_DIR,
                 ],
                 true,
                 new \ArrayIterator(['']),
@@ -285,7 +286,7 @@ class AwsS3Test extends TestCase
                 '/',
                 '',
                 [
-                    'type' => AwsS3::TYPE_DIR
+                    'type' => AwsS3::TYPE_DIR,
                 ],
                 true,
                 new \ArrayIterator(['']),
@@ -329,49 +330,49 @@ class AwsS3Test extends TestCase
                 'some_file.txt',
                 false,
                 [],
-                false
+                false,
             ],
             [
                 'some_file.txt/',
                 'some_file.txt',
                 true,
                 [
-                    'type' => AwsS3::TYPE_FILE
+                    'type' => AwsS3::TYPE_FILE,
                 ],
-                true
+                true,
             ],
             [
                 self::URL . 'some_file.txt',
                 'some_file.txt',
                 true,
                 [
-                    'type' => AwsS3::TYPE_FILE
+                    'type' => AwsS3::TYPE_FILE,
                 ],
-                true
+                true,
             ],
             [
                 self::URL . 'some_file.txt/',
                 'some_file.txt',
                 true,
                 [
-                    'type' => AwsS3::TYPE_DIR
+                    'type' => AwsS3::TYPE_DIR,
                 ],
-                false
+                false,
             ],
             [
                 '',
                 '',
                 false,
                 [],
-                false
+                false,
             ],
             [
                 '/',
                 '',
                 false,
                 [],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -393,32 +394,32 @@ class AwsS3Test extends TestCase
         return [
             [
                 self::URL,
-                self::URL
+                self::URL,
             ],
             [
                 'test.txt',
-                'test.txt'
+                'test.txt',
             ],
             [
                 self::URL . 'test/test/../test.txt',
-                self::URL . 'test/test.txt'
+                self::URL . 'test/test.txt',
             ],
             [
                 'test/test/../test.txt',
-                'test/test.txt'
+                'test/test.txt',
             ],
             [
                 'test//test/../test.txt',
-                'test/test.txt'
+                'test/test.txt',
             ],
             [
                 'test1///test2/..//test3//test.txt',
-                'test1/test3/test.txt'
+                'test1/test3/test.txt',
             ],
             [
                 self::URL . '/test1///test2/..//test3//test.txt',
-                self::URL . 'test1/test3/test.txt'
-            ]
+                self::URL . 'test1/test3/test.txt',
+            ],
         ];
     }
 
@@ -431,7 +432,7 @@ class AwsS3Test extends TestCase
         $path = 'path';
         $subPaths = [
             new \League\Flysystem\DirectoryAttributes('path/1/'),
-            new \League\Flysystem\DirectoryAttributes('path/2/')
+            new \League\Flysystem\DirectoryAttributes('path/2/'),
         ];
         $expectedResult = [self::URL . 'path/1/', self::URL . 'path/2/'];
         $this->metadataProviderMock->expects(self::any())->method('getMetadata')
@@ -455,7 +456,7 @@ class AwsS3Test extends TestCase
         $path = 'path';
         $subPaths = [
             new \League\Flysystem\DirectoryAttributes('path/1.jpg'),
-            new \League\Flysystem\DirectoryAttributes('path/2.png')
+            new \League\Flysystem\DirectoryAttributes('path/2.png'),
         ];
         $expectedResult = [self::URL . 'path/1.jpg', self::URL . 'path/2.png'];
         $this->metadataProviderMock->expects(self::atLeastOnce())->method('getMetadata')
@@ -575,17 +576,17 @@ class AwsS3Test extends TestCase
     {
         return [
             [
-                "mode" => "a",
-                "expected" => 3
+                'mode' => 'a',
+                'expected' => 3,
             ],
             [
-                "mode" => "r",
-                "expected" => 0
+                'mode' => 'r',
+                'expected' => 0,
             ],
             [
-                "mode" => "w",
-                "expected" => 0
-            ]
+                'mode' => 'w',
+                'expected' => 0,
+            ],
         ];
     }
 }

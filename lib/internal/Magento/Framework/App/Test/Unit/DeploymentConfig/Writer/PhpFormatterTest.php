@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,20 +35,20 @@ class PhpFormatterTest extends TestCase
             'ns1' => [
                 's1' => [
                     's11',
-                    's12'
+                    's12',
                 ],
                 's2' => [
                     's21',
-                    's22'
+                    's22',
                 ],
             ],
             'ns2' => [
                 's1' => [
-                    's11'
+                    's11',
                 ],
             ],
             'ns3' => 'just text',
-            'ns4' => 'just text'
+            'ns4' => 'just text',
         ];
         $comments1 = ['ns2' => 'comment for namespace 2'];
         $comments2 = [

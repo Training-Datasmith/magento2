@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Response;
 
 use Magento\Framework\ObjectManager\TMap;
@@ -32,7 +35,7 @@ class HandlerChain implements HandlerInterface
         $this->handlers = $tmapFactory->create(
             [
                 'array' => $handlers,
-                'type' => HandlerInterface::class
+                'type' => HandlerInterface::class,
             ]
         );
     }

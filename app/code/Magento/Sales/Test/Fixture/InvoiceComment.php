@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class InvoiceComment implements RevertibleDataFixtureInterface
         CommentInterface::COMMENT => 'Test Comment',
         CommentInterface::IS_VISIBLE_ON_FRONT => 0,
         EntityInterface::ENTITY_ID => 0,
-        EntityInterface::CREATED_AT => "0000-00-00 00:00:00",
+        EntityInterface::CREATED_AT => '0000-00-00 00:00:00',
     ];
 
     /**

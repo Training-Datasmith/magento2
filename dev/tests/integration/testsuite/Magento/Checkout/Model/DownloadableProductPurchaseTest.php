@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -132,14 +133,14 @@ class DownloadableProductPurchaseTest extends TestCase
                 [
                     'title' => 'Example 1',
                     'price' => 0.00,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
                 [
                     'title' => 'Example 2',
                     'price' => 0.00,
-                    'link_type' => 'url'
-                ]
-            ]
+                    'link_type' => 'url',
+                ],
+            ],
         ], as: 'product'),
         DataFixture(GuestCart::class, [], as: 'quote'),
         DataFixture(SetGuestEmailFixture::class, ['cart_id' => '$quote.id$']),
@@ -147,7 +148,7 @@ class DownloadableProductPurchaseTest extends TestCase
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$'], as: 'billingAddress'),

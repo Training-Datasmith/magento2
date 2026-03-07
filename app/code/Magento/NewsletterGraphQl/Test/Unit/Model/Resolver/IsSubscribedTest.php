@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ declare(strict_types=1);
 namespace Magento\NewsletterGraphQl\Test\Unit\Model\Resolver;
 
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\NewsletterGraphQl\Model\Resolver\IsSubscribed;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -18,6 +18,7 @@ use Magento\GraphQl\Model\Query\ContextExtensionInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Newsletter\Model\Subscriber;
 use Magento\Newsletter\Model\SubscriberFactory;
+use Magento\NewsletterGraphQl\Model\Resolver\IsSubscribed;
 use Magento\Store\Api\Data\StoreInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -116,7 +117,7 @@ class IsSubscribedTest extends TestCase
         $this->resolver = $this->objectManager->getObject(
             IsSubscribed::class,
             [
-                'subscriberFactory' => $this->subscriberFactory
+                'subscriberFactory' => $this->subscriberFactory,
             ]
         );
     }

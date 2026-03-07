@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -160,13 +161,13 @@ class DateTest extends TestCase
                 'name' => 'test_date',
                 'showsTime' => false,
                 'filterData' => ['test_date' => ['from' => '11-05-2015', 'to' => null]],
-                'expectedCondition' => ['date' => '2015-05-11 00:00:00', 'type' => 'gteq']
+                'expectedCondition' => ['date' => '2015-05-11 00:00:00', 'type' => 'gteq'],
             ],
             [
                 'name' => 'test_date',
                 'showsTime' => false,
                 'filterData' => ['test_date' => ['from' => null, 'to' => '11-05-2015']],
-                'expectedCondition' => ['date' => '2015-05-11 23:59:59', 'type' => 'lteq']
+                'expectedCondition' => ['date' => '2015-05-11 23:59:59', 'type' => 'lteq'],
             ],
             [
                 'name' => 'test_date',
@@ -174,20 +175,20 @@ class DateTest extends TestCase
                 'filterData' => ['test_date' => ['from' => '11-05-2015', 'to' => '11-05-2015']],
                 'expectedCondition' => [
                     'date_from' => '2015-05-11 00:00:00', 'type_from' => 'gteq',
-                    'date_to' => '2015-05-11 23:59:59', 'type_to' => 'lteq'
-                ]
+                    'date_to' => '2015-05-11 23:59:59', 'type_to' => 'lteq',
+                ],
             ],
             [
                 'name' => 'test_date',
                 'showsTime' => false,
                 'filterData' => ['test_date' => '11-05-2015'],
-                'expectedCondition' => ['date' => '2015-05-11 00:00:00', 'type' => 'eq']
+                'expectedCondition' => ['date' => '2015-05-11 00:00:00', 'type' => 'eq'],
             ],
             [
                 'name' => 'test_date',
                 'showsTime' => false,
                 'filterData' => ['test_date' => ['from' => '', 'to' => '']],
-                'expectedCondition' => null
+                'expectedCondition' => null,
             ],
             [
                 'name' => 'test_date',
@@ -195,9 +196,9 @@ class DateTest extends TestCase
                 'filterData' => ['test_date' => ['from' => '11-05-2015 10:20:00', 'to' => '11-05-2015 18:25:00']],
                 'expectedCondition' => [
                     'date_from' => '2015-05-11 10:20:00', 'type_from' => 'gteq',
-                    'date_to' => '2015-05-11 18:25:00', 'type_to' => 'lteq'
-                ]
-            ]
+                    'date_to' => '2015-05-11 18:25:00', 'type_to' => 'lteq',
+                ],
+            ],
         ];
     }
 

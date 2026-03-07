@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Analytics\Model\Connector\Http\JsonConverter;
 use Magento\Framework\HTTP\Adapter\CurlFactory;
 use Magento\Framework\HTTP\ResponseFactory;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -27,7 +28,6 @@ use Psr\Log\LoggerInterface;
  */
 class CurlTest extends TestCase
 {
-
     /**
      * @var Curl
      */
@@ -80,7 +80,7 @@ class CurlTest extends TestCase
                 'curlFactory' => $curlFactoryMock,
                 'responseFactory' => $this->responseFactoryMock,
                 'converter' => $this->converterMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -96,11 +96,11 @@ class CurlTest extends TestCase
             [
                 'data' => [
                     'version' => '1.1',
-                    'body'=> ['name' => 'value'],
+                    'body' => ['name' => 'value'],
                     'url' => 'http://www.mystore.com',
-                    'method' => Request::METHOD_POST
-                ]
-            ]
+                    'method' => Request::METHOD_POST,
+                ],
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mail Template Transport Builder
  *
@@ -398,7 +399,7 @@ class TransportBuilder
         $mimePart = $this->mimePartInterfaceFactory->create(
             [
                 'content' => $content,
-                'type' => $partType
+                'type' => $partType,
             ]
         );
         $this->messageData['encoding'] = $mimePart->getCharset();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class GetProductChildIdsTest extends TestCase
         $dataProviderMock = $this->createMock(DataProvider::class);
         $indexData = [
             1 => ['data'],
-            2 => ['data']
+            2 => ['data'],
         ];
         $productData = [
             'entity_id' => '1',

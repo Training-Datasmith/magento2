@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ApplicationPerformanceMonitorNewRelic\Profiler\Output;
 
-use Magento\ApplicationPerformanceMonitor\Profiler\Metric;
 use Magento\ApplicationPerformanceMonitor\Profiler\OutputInterface;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\NewRelicReporting\Model\NewRelicWrapper;
@@ -20,10 +20,6 @@ class NewRelicOutput implements OutputInterface
     public const CONFIG_ENABLE_KEY = 'application/performance_monitor/newrelic_output_enable';
     public const CONFIG_VERBOSE_KEY = 'application/performance_monitor/newrelic_output_verbose';
 
-    /**
-     * @param DeploymentConfig $deploymentConfig
-     * @param NewRelicWrapper $newRelicWrapper
-     */
     public function __construct(
         private readonly DeploymentConfig $deploymentConfig,
         private readonly NewRelicWrapper $newRelicWrapper
@@ -39,7 +35,7 @@ class NewRelicOutput implements OutputInterface
             return false;
         }
         return match ($this->deploymentConfig->get(static::CONFIG_ENABLE_KEY)) {
-            0, "0", "false", false => false,
+            0, '0', 'false', false => false,
             default => true,
         };
     }
@@ -47,7 +43,7 @@ class NewRelicOutput implements OutputInterface
     /**
      * @inheritDoc
      */
-    public function doOutput(array $metrics, array $information) : void
+    public function doOutput(array $metrics, array $information): void
     {
         if (!$this->isEnabled()) {
             return;
@@ -66,13 +62,11 @@ class NewRelicOutput implements OutputInterface
 
     /**
      * Is configured to output verbose
-     *
-     * @return bool
      */
     private function isVerbose(): bool
     {
         return match ($this->deploymentConfig->get(static::CONFIG_VERBOSE_KEY)) {
-            1, "1", "true", true => true,
+            1, '1', 'true', true => true,
             default => false,
         };
     }

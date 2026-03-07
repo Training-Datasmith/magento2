@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 
@@ -85,7 +86,7 @@ class LinkProviderTest extends TestCase
             [
                 'linkFactory' => $this->linkInterfaceFactoryMock,
                 'fileInfoManager' => $this->fileInfoManagerMock,
-                'storeManager' => $this->storeManagerInterfaceMock
+                'storeManager' => $this->storeManagerInterfaceMock,
             ]
         );
     }
@@ -103,7 +104,7 @@ class LinkProviderTest extends TestCase
             ->with(
                 [
                     'initializationVector' => base64_encode($fileInitializationVector),
-                    'url' => $baseUrl . $fileInfoPath
+                    'url' => $baseUrl . $fileInfoPath,
                 ]
             )
             ->willReturn($this->linkInterfaceMock);
@@ -156,7 +157,7 @@ class LinkProviderTest extends TestCase
             ['', 'initVector'],
             ['path', ''],
             ['', ''],
-            [null, null]
+            [null, null],
         ];
     }
 }

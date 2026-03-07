@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,12 +9,11 @@ declare(strict_types=1);
 namespace Magento\Sales\Block\Order;
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\View\Element\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Text;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Xpath;
 use PHPUnit\Framework\TestCase;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Pricing\Test\Unit\PriceInfo;
 
 use Magento\Framework\Pricing\Price\Collection;
 use Magento\Framework\Pricing\PriceInfo\Base;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for \Magento\Framework\Pricing\PriceInfo\Base

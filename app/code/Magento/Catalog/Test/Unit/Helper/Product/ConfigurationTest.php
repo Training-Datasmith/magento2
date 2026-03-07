@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
 use Magento\Catalog\Model\Product\OptionFactory;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Escaper;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\StringUtils;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Escaper;
 
 class ConfigurationTest extends TestCase
 {
@@ -79,7 +80,7 @@ class ConfigurationTest extends TestCase
         $itemMock->expects($this->once())->method('getProduct')->willReturn($productMock);
         $itemMock->expects($this->any())->method('getOptionByCode')->willReturnMap([
             ['option_ids', $optionMock],
-            ['additional_options', $additionalOptionMock]
+            ['additional_options', $additionalOptionMock],
         ]);
 
         $this->assertEquals($additionalOptionResult, $this->helper->getCustomOptions($itemMock));

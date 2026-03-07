@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -99,14 +100,14 @@ class Publisher implements PublisherInterface
                         'topic_name' => $topicName,
                         'persistent' => 'true',
                         'message_id' => $this->messageIdGenerator->generate($topicName),
-                    ]
+                    ],
                 ]
             );
         }
 
         $publisher = $this->publisherConfig->getPublisher($topicName);
         $connectionName = $publisher->getConnection()->getName();
-        $queueName = $publisher->getQueue() ? $publisher->getQueue(): $topicName;
+        $queueName = $publisher->getQueue() ? $publisher->getQueue() : $topicName;
         $queue = $this->queueRepository->get($connectionName, $queueName);
         $bulkQueue = $this->bulkQueueRepository->get($connectionName, $queueName);
         $bulkQueue->push($queue, $topicName, $envelopes);

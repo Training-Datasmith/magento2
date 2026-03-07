@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,7 @@ interface HmacInterface
      */
     public const HASH_ALGORITHM_MAP = [
         'HMAC-SHA1' => 'sha1',
-        'HMAC-SHA256' => 'sha256'
+        'HMAC-SHA256' => 'sha256',
     ];
 
     /**

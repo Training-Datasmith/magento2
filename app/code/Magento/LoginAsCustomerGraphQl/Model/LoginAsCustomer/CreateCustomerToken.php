@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\LoginAsCustomerGraphQl\Model\LoginAsCustomer;
 
+use Exception;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Integration\Model\Oauth\TokenFactory;
 use Magento\Store\Api\Data\StoreInterface;
-use Exception;
 
 /**
  * Create customer token from customer email
@@ -38,7 +39,7 @@ class CreateCustomerToken
         CustomerFactory $customerFactory
     ) {
         $this->tokenModelFactory = $tokenModelFactory;
-        $this->customerFactory= $customerFactory;
+        $this->customerFactory = $customerFactory;
     }
 
     /**
@@ -63,8 +64,8 @@ class CreateCustomerToken
 
         try {
             return [
-                "customer_token" => $this->tokenModelFactory->create()
-                    ->createCustomerToken($customer->getId())->getToken()
+                'customer_token' => $this->tokenModelFactory->create()
+                    ->createCustomerToken($customer->getId())->getToken(),
             ];
         } catch (Exception $e) {
             throw new LocalizedException(

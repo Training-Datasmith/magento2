@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class LogoTest extends TestCase
                 'logo',
                 [
                     'data' => [
-                        'logo_size_resolver' => $logoSizeResolver
-                    ]
+                        'logo_size_resolver' => $logoSizeResolver,
+                    ],
                 ]
             );
     }

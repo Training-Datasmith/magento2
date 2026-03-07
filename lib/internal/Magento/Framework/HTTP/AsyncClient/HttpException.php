@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,5 +14,4 @@ namespace Magento\Framework\HTTP\AsyncClient;
  */
 class HttpException extends \RuntimeException
 {
-
 }

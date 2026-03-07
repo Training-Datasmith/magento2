@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config;
 
 use Magento\Config\Model\Config\Export\ExcludeList;
@@ -20,12 +23,12 @@ class TypePool
     /**
      * Sensitive type.
      */
-    const TYPE_SENSITIVE = 'sensitive';
+    public const TYPE_SENSITIVE = 'sensitive';
 
     /**
      * Environment type.
      */
-    const TYPE_ENVIRONMENT = 'environment';
+    public const TYPE_ENVIRONMENT = 'environment';
 
     /**
      * List of sensitive configuration fields paths.

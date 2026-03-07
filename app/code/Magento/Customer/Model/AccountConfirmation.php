@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Customer\Model;
 
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class AccountConfirmation. Checks if email confirmation required for customer.
@@ -130,7 +131,7 @@ class AccountConfirmation
      * @param CustomerInterface $customer
      * @return bool
      */
-    public function isCustomerEmailChangedConfirmRequired(CustomerInterface $customer):bool
+    public function isCustomerEmailChangedConfirmRequired(CustomerInterface $customer): bool
     {
         return $this->getEmailChangedConfirmStatus($customer) === self::ACCOUNT_CONFIRMATION_REQUIRED;
     }
@@ -151,7 +152,7 @@ class AccountConfirmation
         /* If an email was used to start the registration process and it is the same email as the one
            used to register, then this can skip confirmation.
            */
-        $skipConfirmationIfEmail = $this->registry->registry("skip_confirmation_if_email");
+        $skipConfirmationIfEmail = $this->registry->registry('skip_confirmation_if_email');
         if (!$skipConfirmationIfEmail) {
             return false;
         }

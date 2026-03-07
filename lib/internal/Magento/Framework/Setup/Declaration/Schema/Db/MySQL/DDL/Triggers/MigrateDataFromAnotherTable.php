@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class MigrateDataFromAnotherTable implements DDLTriggerInterface
     /**
      * Pattern with which we can match whether we can apply and use this trigger or not.
      */
-    const MATCH_PATTERN = '/migrateDataFromAnotherTable\(([^\)]+)\)/';
+    public const MATCH_PATTERN = '/migrateDataFromAnotherTable\(([^\)]+)\)/';
 
     /**
      * @var ResourceConnection
@@ -41,7 +42,7 @@ class MigrateDataFromAnotherTable implements DDLTriggerInterface
     /**
      * @inheritdoc
      */
-    public function isApplicable(string $statement) : bool
+    public function isApplicable(string $statement): bool
     {
         return (bool) preg_match(self::MATCH_PATTERN, $statement);
     }
@@ -49,7 +50,7 @@ class MigrateDataFromAnotherTable implements DDLTriggerInterface
     /**
      * @inheritdoc
      */
-    public function getCallback(ElementHistory $tableHistory) : callable
+    public function getCallback(ElementHistory $tableHistory): callable
     {
         /** @var Table $table */
         $table = $tableHistory->getNew();

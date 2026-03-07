@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,6 @@ namespace Magento\Tax\Model\Calculation;
 
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Tax\Api\Data\TaxRateInterface;
-use Magento\Tax\Model\Calculation\Rate;
 use Magento\Tax\Model\TaxRuleFixtureFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -399,7 +399,7 @@ class RateRepositoryTest extends \PHPUnit\Framework\TestCase
                 'errorMessages' => [
                     '"percentage_rate" is required. Enter and try again.',
                 ],
-            ]
+            ],
 
         ];
     }

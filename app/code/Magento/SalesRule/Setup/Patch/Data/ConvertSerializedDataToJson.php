@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -64,7 +66,7 @@ class ConvertSerializedDataToJson implements DataPatchInterface, PatchVersionInt
     public static function getDependencies()
     {
         return [
-            PrepareRuleModelSerializedData::class
+            PrepareRuleModelSerializedData::class,
         ];
     }
 

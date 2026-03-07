@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class GetAttributesMetadata
             } catch (LocalizedException $exception) {
                 $errors[] = [
                     'type' => 'ENTITY_NOT_FOUND',
-                    'message' => (string) __('Entity "%entity" could not be found.', ['entity' => $entityType])
+                    'message' => (string) __('Entity "%entity" could not be found.', ['entity' => $entityType]),
                 ];
                 continue;
             }
@@ -90,7 +91,7 @@ class GetAttributesMetadata
             foreach ($notFoundCodes as $notFoundCode) {
                 $errors[] = [
                     'type' => 'ATTRIBUTE_NOT_FOUND',
-                    'message' => (string) __('Attribute code "%code" could not be found.', ['code' => $notFoundCode])
+                    'message' => (string) __('Attribute code "%code" could not be found.', ['code' => $notFoundCode]),
                 ];
             }
             foreach ($attributes as $attribute) {
@@ -103,7 +104,7 @@ class GetAttributesMetadata
 
         return [
             'items' => $items,
-            'errors' => $errors
+            'errors' => $errors,
         ];
     }
 

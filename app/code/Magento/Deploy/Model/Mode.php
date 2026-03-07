@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +8,8 @@
 
 namespace Magento\Deploy\Model;
 
+use Magento\Config\Console\Command\ConfigSet\ProcessorFacadeFactory;
+use Magento\Config\Console\Command\EmulatedAdminhtmlAreaProcessor;
 use Magento\Deploy\App\Mode\ConfigProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Console\MaintenanceModeEnabler;
@@ -13,14 +17,12 @@ use Magento\Framework\App\DeploymentConfig\Reader;
 use Magento\Framework\App\DeploymentConfig\Writer;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\MaintenanceMode;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\State;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Exception\LocalizedException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Config\Console\Command\ConfigSet\ProcessorFacadeFactory;
-use Magento\Config\Console\Command\EmulatedAdminhtmlAreaProcessor;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * A class to manage Magento modes
@@ -219,8 +221,8 @@ class Mode
         $this->saveAppConfigs($mode);
         $data = [
             ConfigFilePool::APP_ENV => [
-                State::PARAM_MODE => $mode
-            ]
+                State::PARAM_MODE => $mode,
+            ],
         ];
         $this->writer->saveConfig($data);
     }

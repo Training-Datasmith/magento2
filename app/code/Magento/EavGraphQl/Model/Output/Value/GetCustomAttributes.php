@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class GetCustomAttributes implements GetAttributeValueInterface
         $result = [
             'entity_type' => $entity,
             'code' => $code,
-            'sort_order' => $attr->getSortOrder() ?? ''
+            'sort_order' => $attr->getSortOrder() ?? '',
         ];
 
         if (in_array($attr->getFrontendInput(), $this->frontendInputs)) {

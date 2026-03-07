@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All rights reserved.
  */
 // @codingStandardsIgnoreStart
+
 namespace {
     $mockPHPFunctions = false;
 }
@@ -348,10 +351,10 @@ namespace Magento\Framework\Session {
         public static function dataConstructor(): array
         {
             return [
-                ['saveMethod' =>'db'],
-                ['saveMethod' =>'redis'],
-                ['saveMethod' =>'memcached'],
-                ['saveMethod' =>'user'],
+                ['saveMethod' => 'db'],
+                ['saveMethod' => 'redis'],
+                ['saveMethod' => 'memcached'],
+                ['saveMethod' => 'user'],
             ];
         }
 
@@ -360,7 +363,7 @@ namespace Magento\Framework\Session {
             $this->model = $this->objectManager->create(
                 \Magento\Framework\Session\SessionManager::class,
                 [
-                    'sidResolver' => $this->sidResolver
+                    'sidResolver' => $this->sidResolver,
                 ]
             );
         }

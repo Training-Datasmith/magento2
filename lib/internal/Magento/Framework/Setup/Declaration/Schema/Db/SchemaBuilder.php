@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Setup\Declaration\Schema\Db;
 
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Config\FileResolverByModule;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Phrase;
+use Magento\Framework\Setup\Declaration\Schema\Declaration\ReaderComposite;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
 use Magento\Framework\Setup\Declaration\Schema\Dto\ElementFactory;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Schema;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\Setup\Declaration\Schema\Sharding;
-use Magento\Framework\Config\FileResolverByModule;
-use Magento\Framework\Setup\Declaration\Schema\Declaration\ReaderComposite;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * This type of builder is responsible for converting ENTIRE data, that comes from db
@@ -144,7 +145,7 @@ class SchemaBuilder
                         'engine' => strtolower($tableOptions['engine'] ?? ''),
                         'comment' => $tableOptions['comment'] === '' ? null : $tableOptions['comment'],
                         'charset' => $tableOptions['charset'],
-                        'collation' => $tableOptions['collation']
+                        'collation' => $tableOptions['collation'],
                     ]
                 );
 
@@ -237,7 +238,7 @@ class SchemaBuilder
     {
         if (!is_array($data['column'])) {
             throw new NotFoundException(
-                new Phrase("Cannot find columns for internal index")
+                new Phrase('Cannot find columns for internal index')
             );
         }
 
@@ -251,7 +252,7 @@ class SchemaBuilder
                         [
                             $columnName,
                             $data['name'],
-                            $tableName
+                            $tableName,
                         ]
                     ),
                     E_USER_WARNING

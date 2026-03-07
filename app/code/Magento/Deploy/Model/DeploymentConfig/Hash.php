@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class Hash
     /**
      * Name of the section where deployment configuration hash is stored.
      */
-    const CONFIG_KEY = 'config_hash';
+    public const CONFIG_KEY = 'config_hash';
 
     /**
      * Hash generator.

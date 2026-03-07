@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\UrlRewrite\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 
 /**
  * Class CompositeUrlFinder

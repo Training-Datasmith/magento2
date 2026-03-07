@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -93,7 +95,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'created_at',
                 'type' => 'datetime',
                 'align' => 'center',
-                'width' => '160'
+                'width' => '160',
             ]
         );
 
@@ -107,7 +109,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'options' => [__('No'), __('Yes')],
                 'renderer' =>
                     \Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons\Grid\Column\Renderer\Used::class,
-                'filter_condition_callback' => [$this->_salesRuleCoupon->create(), 'addIsUsedFilterCallback']
+                'filter_condition_callback' => [$this->_salesRuleCoupon->create(), 'addIsUsedFilterCallback'],
             ]
         );
 
@@ -137,7 +139,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'label' => __('Delete'),
                 'url' => $this->getUrl('sales_rule/*/couponsMassDelete', ['_current' => true]),
                 'confirm' => __('Are you sure you want to delete the selected coupon(s)?'),
-                'complete' => 'refreshCouponCodesGrid'
+                'complete' => 'refreshCouponCodesGrid',
             ]
         );
 

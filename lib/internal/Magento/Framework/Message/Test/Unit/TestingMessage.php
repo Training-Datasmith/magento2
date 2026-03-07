@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +12,7 @@ use Magento\Framework\Message\AbstractMessage;
 
 class TestingMessage extends AbstractMessage
 {
-    const TYPE_TESTING = 'testing';
+    public const TYPE_TESTING = 'testing';
 
     /**
      * Getter message type

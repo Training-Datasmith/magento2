@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,13 +26,13 @@ $fullDiscountIncTax = [
                         [
                             'code' => 'Product Tax Rule',
                             'product_tax_class_ids' => [
-                                    SetupUtil::PRODUCT_TAX_CLASS_1
+                                    SetupUtil::PRODUCT_TAX_CLASS_1,
                                 ],
                         ],
                         [
                             'code' => 'Shipping Tax Rule',
                             'product_tax_class_ids' => [
-                                    SetupUtil::SHIPPING_TAX_CLASS
+                                    SetupUtil::SHIPPING_TAX_CLASS,
                                 ],
                             'tax_rate_ids' => [
                                     SetupUtil::TAX_RATE_SHIPPING,
@@ -51,12 +52,12 @@ $fullDiscountIncTax = [
                             'sku' => 'simple1',
                             'price' => 2542.37,
                             'qty' => 2,
-                        ]
+                        ],
                     ],
                 'shipping_method' => 'free',
                 'shopping_cart_rules' => [
                         [
-                            'discount_amount' => 100
+                            'discount_amount' => 100,
                         ],
                     ],
         ],
@@ -94,7 +95,7 @@ $fullDiscountIncTax = [
                                                     'percent' => 18,
                                                 ],
                                             ],
-                                    ]
+                                    ],
                             ],
                     ],
                 'items_data' => [
@@ -117,5 +118,5 @@ $fullDiscountIncTax = [
                                 'base_discount_tax_compensation_amount' => 0,
                             ],
                     ],
-        ]
+        ],
 ];

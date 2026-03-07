@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -56,4 +57,3 @@ CONSTRAINT  PRIMARY KEY (`patch_id`)
 ) ENGINE=innodb DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_general_ci COMMENT="List of data/schema patches"
 
 '];
-

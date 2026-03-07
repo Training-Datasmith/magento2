@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
-use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -86,7 +89,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
     {
         return [
            'case1' => ['fixturestore', 'http://sample-second.com/index.php/simple-product-one.html'],
-           'case2' => ['default', 'http://sample.com/index.php/simple-product-one.html']
+           'case2' => ['default', 'http://sample.com/index.php/simple-product-one.html'],
         ];
     }
 
@@ -137,7 +140,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
         $rewrites = $urlFinder->findAllByData(
             [
                 UrlRewrite::ENTITY_ID => $product->getId(),
-                UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE
+                UrlRewrite::ENTITY_TYPE => ProductUrlRewriteGenerator::ENTITY_TYPE,
             ]
         );
         $this->assertGreaterThan(1, count($rewrites));

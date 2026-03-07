@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -41,19 +42,19 @@ class ResetMethodTest extends TestCase
         $expected = [
             [
                 'value' => ResetMethod::OPTION_BY_IP_AND_EMAIL,
-                'label' => __('By IP and Email')
+                'label' => __('By IP and Email'),
             ],
             [
                 'value' => ResetMethod::OPTION_BY_IP,
-                'label' => __('By IP')
+                'label' => __('By IP'),
             ],
             [
                 'value' => ResetMethod::OPTION_BY_EMAIL,
-                'label' => __('By Email')
+                'label' => __('By Email'),
             ],
             [
                 'value' => ResetMethod::OPTION_NONE,
-                'label' => __('None')
+                'label' => __('None'),
             ],
         ];
         $this->assertEquals($expected, $this->model->toOptionArray());

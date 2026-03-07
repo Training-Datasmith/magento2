@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Magento\SalesRule\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\SalesRule\Model\Coupon\UpdateCouponUsages;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\SalesRule\Model\Coupon\UpdateCouponUsages;
 
 /**
  * Assign coupon data after order customer assign.

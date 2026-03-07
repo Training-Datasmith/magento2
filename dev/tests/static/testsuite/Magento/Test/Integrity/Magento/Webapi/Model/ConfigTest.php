@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Webapi\Model;
 
 use Magento\TestFramework\Integrity\AbstractConfig;

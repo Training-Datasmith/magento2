@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Module declaration xml converter. Converts declaration DOM Document to internal array representation.
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Declaration\Converter;
 
 class Dom implements \Magento\Framework\Config\ConverterInterface

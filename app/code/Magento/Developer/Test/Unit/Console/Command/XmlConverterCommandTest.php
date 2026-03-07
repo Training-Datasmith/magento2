@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +78,7 @@ class XmlConverterCommandTest extends TestCase
         $commandTester->execute(
             [
                 XmlConverterCommand::XML_FILE_ARGUMENT => 'file.xml',
-                XmlConverterCommand::PROCESSOR_ARGUMENT => 'file.xsl'
+                XmlConverterCommand::PROCESSOR_ARGUMENT => 'file.xsl',
             ]
         );
         $this->assertStringContainsString('result', $commandTester->getDisplay());

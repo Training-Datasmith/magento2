@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Account;
 
 use Magento\Customer\Model\Session;
@@ -28,9 +31,8 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class Redirect
 {
-
     /** URL to redirect user on successful login or registration */
-    const LOGIN_REDIRECT_URL = 'login_redirect';
+    public const LOGIN_REDIRECT_URL = 'login_redirect';
 
     /**
      * @var RequestInterface
@@ -243,7 +245,7 @@ class Redirect
      * @param string $referrer
      * @return bool
      */
-    private function isReferrerValid(string $referrer) : bool
+    private function isReferrerValid(string $referrer): bool
     {
         $result = true;
         if (preg_match('/^(https?|\/\/)/i', $referrer)) {

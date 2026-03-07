@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,7 +15,6 @@ use Magento\Sales\Api\Data\InvoiceCommentCreationInterface;
  */
 class CommentCreation implements InvoiceCommentCreationInterface
 {
-
     /**
      * @var string
      */

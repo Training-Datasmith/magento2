@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\TemporaryTableService;
-use Magento\Framework\DB\Select;
 use Magento\UrlRewrite\Model\MergeDataProvider;
 
 /**
@@ -81,7 +83,7 @@ class DataCategoryUrlRewriteDatabaseMap implements DatabaseMapInterface
                 ['e' => $this->connection->getTableName('url_rewrite')],
                 ['e.*', 'hash_key' => new \Zend_Db_Expr(
                     "CONCAT(e.store_id,'" . MergeDataProvider::SEPARATOR . "', e.entity_id)"
-                )
+                ),
                 ]
             )
             ->where('entity_type = ?', self::ENTITY_TYPE)
@@ -94,7 +96,7 @@ class DataCategoryUrlRewriteDatabaseMap implements DatabaseMapInterface
                                 ->getAllData($categoryId),
                             $this->hashMapPool->getDataMap(DataCategoryHashMap::class, $categoryId)
                                 ->getAllData($categoryId)
-                        )
+                        ),
                     ]
                 )
             );
@@ -104,7 +106,7 @@ class DataCategoryUrlRewriteDatabaseMap implements DatabaseMapInterface
             [
                 'PRIMARY' => ['url_rewrite_id'],
                 'HASHKEY_ENTITY_STORE' => ['hash_key'],
-                'ENTITY_STORE' => ['entity_id', 'store_id']
+                'ENTITY_STORE' => ['entity_id', 'store_id'],
             ]
         );
         return $mapName;

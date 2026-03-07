@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class CustomerGroupConfigTest extends TestCase
             CustomerGroupConfig::class,
             [
                 'config' => $this->configMock,
-                'groupRepository' => $this->groupRepositoryMock
+                'groupRepository' => $this->groupRepositoryMock,
             ]
         );
     }

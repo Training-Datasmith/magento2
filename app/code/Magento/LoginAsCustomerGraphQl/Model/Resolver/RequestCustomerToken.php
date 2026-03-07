@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class RequestCustomerToken implements ResolverInterface
             throw new GraphQlInputException(__('Check input params.'));
         }
 
-        if (empty($args['customer_email']) || !trim($args['customer_email'], " ")) {
+        if (empty($args['customer_email']) || !trim($args['customer_email'], ' ')) {
             throw new GraphQlInputException(__('Specify the "customer email" value.'));
         }
 

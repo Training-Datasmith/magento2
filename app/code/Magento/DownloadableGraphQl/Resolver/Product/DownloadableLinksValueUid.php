@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class DownloadableLinksValueUid implements ResolverInterface
 
         $optionDetails = [
             self::OPTION_TYPE,
-            $value['id']
+            $value['id'],
         ];
 
         $content = implode('/', $optionDetails);

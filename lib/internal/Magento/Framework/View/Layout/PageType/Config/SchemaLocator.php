@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Locator for page_types XSD schemas.
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\PageType\Config;
 
 class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface

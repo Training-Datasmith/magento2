@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,18 +11,17 @@ namespace Magento\AdvancedPricingImportExport\Test\Unit\Model\Export;
 use Magento\AdvancedPricingImportExport\Model\Export\AdvancedPricing;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Option\CollectionFactory as OptionCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\ProductFactory;
 use Magento\CatalogImportExport\Model\Export\Product;
 use Magento\CatalogImportExport\Model\Export\Product\Type\Factory;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
-use Magento\Catalog\Model\ResourceModel\Product\Option\CollectionFactory as OptionCollectionFactory;
 use Magento\CatalogImportExport\Model\Export\RowCustomizer\Composite;
 use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\ItemFactory;
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Eav\Model\Config;
-use Magento\ImportExport\Model\Export\Config as ExportConfig;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory as AttributeSetCollectionFactory;
@@ -30,6 +30,7 @@ use Magento\Framework\Logger\Monolog;
 use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
+use Magento\ImportExport\Model\Export\Config as ExportConfig;
 use Magento\ImportExport\Model\Export\ConfigInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
@@ -217,10 +218,10 @@ class AdvancedPricingTest extends TestCase
             '_initStores',
             'initAttributeSets',
             'initWebsites',
-            'initCategories'
+            'initCategories',
         ];
         $mockAddMethods = [
-            '_headerColumns'
+            '_headerColumns',
         ];
         $mockMethods = array_merge($constructorMethods, [
             '_customHeadersMapping',
@@ -234,7 +235,7 @@ class AdvancedPricingTest extends TestCase
             '_getHeaderColumns',
             '_getWebsiteCode',
             '_getCustomerGroupById',
-            'correctExportData'
+            'correctExportData',
         ]);
         $this->advancedPricing = $this->createPartialMockWithReflection(
             AdvancedPricing::class,
@@ -330,7 +331,7 @@ class AdvancedPricingTest extends TestCase
                 'tier_price_customer_group' => $userGroup,
                 'tier_price_qty' => '2',
                 'tier_price' => '23',
-            ]
+            ],
         ];
         $this->advancedPricing->expects($this->once())->method('getExportData')->willReturn($data);
         $exportData = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class StatusBaseSelectProcessorTest extends TestCase
         $this->statusBaseSelectProcessor =  (new ObjectManager($this))->getObject(StatusBaseSelectProcessor::class, [
             'eavConfig' => $this->eavConfig,
             'metadataPool' => $this->metadataPool,
-            'storeManager' => $this->storeManager
+            'storeManager' => $this->storeManager,
         ]);
     }
 
@@ -121,15 +122,15 @@ class StatusBaseSelectProcessorTest extends TestCase
                     ".{$linkField}"
                     . " AND status_global_attr.attribute_id = {$attributeId}"
                     . ' AND status_global_attr.store_id = ' . Store::DEFAULT_STORE_ID,
-                    []
+                    [],
                 ],
                 [
                     ['status_attr' => $backendTable],
                     "status_attr.{$linkField} = " . BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS . ".{$linkField}"
                     . " AND status_attr.attribute_id = {$attributeId}"
                     . " AND status_attr.store_id = {$currentStoreId}",
-                    []
-                ]
+                    [],
+                ],
                 ];
                 $returnValue = $this->select;
                 $index++;

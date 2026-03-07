@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,7 +16,6 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class RestSessionCookieTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-
     private $moduleManager;
     private $objectManager;
 

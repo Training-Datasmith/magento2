@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Backend\Controller\Adminhtml\Dashboard;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\View\LayoutFactory;
 
 /**

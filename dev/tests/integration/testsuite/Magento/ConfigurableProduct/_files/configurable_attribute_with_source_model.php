@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ $eavSetup->addAttribute(
         'visible_on_front' => false,
         'used_in_product_listing' => true,
         'unique' => false,
-        'apply_to' => ''
+        'apply_to' => '',
     ]
 );
 

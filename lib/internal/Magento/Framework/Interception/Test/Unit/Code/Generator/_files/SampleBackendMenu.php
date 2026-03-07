@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,5 +12,4 @@ use Magento\Backend\Model\Menu;
 
 class SampleBackendMenu extends Menu
 {
-
 }

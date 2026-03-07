@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ use Magento\Framework\MessageQueue\ConsumerConfigurationInterface;
 use Magento\Framework\MessageQueue\ConsumerFactory;
 use Magento\Framework\MessageQueue\ConsumerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ConsumerFactoryTest extends TestCase
 {
@@ -35,9 +36,9 @@ class ConsumerFactoryTest extends TestCase
     /** @var ConsumerConfig|MockObject */
     protected $consumerConfigMock;
 
-    const TEST_CONSUMER_NAME = "test_consumer_name";
-    const TEST_CONSUMER_QUEUE = "test_consumer_queue";
-    const TEST_CONSUMER_METHOD = "test_consumer_method";
+    public const TEST_CONSUMER_NAME = 'test_consumer_name';
+    public const TEST_CONSUMER_QUEUE = 'test_consumer_queue';
+    public const TEST_CONSUMER_METHOD = 'test_consumer_method';
 
     protected function setUp(): void
     {
@@ -74,8 +75,8 @@ class ConsumerFactoryTest extends TestCase
         $consumerTypeValue = \stdClass::class;
         $consumers = [
             [
-                'type' => [$consumerType => $consumerTypeValue]
-            ]
+                'type' => [$consumerType => $consumerTypeValue],
+            ],
         ];
         $consumerFactory = $this->getConsumerFactoryInstance($consumers);
         $consumerInstanceMock = $this->getMockBuilder(\stdClass::class)
@@ -113,8 +114,8 @@ class ConsumerFactoryTest extends TestCase
                 [
                     [
                         CommunicationConfig::TOPIC_NAME => 'topicName',
-                        CommunicationConfig::TOPIC_IS_SYNCHRONOUS => false
-                    ]
+                        CommunicationConfig::TOPIC_IS_SYNCHRONOUS => false,
+                    ],
                 ]
             );
         $this->communicationConfigMock->expects($this->any())
@@ -125,8 +126,8 @@ class ConsumerFactoryTest extends TestCase
                     CommunicationConfig::TOPIC_HANDLERS => [
                         [
                             CommunicationConfig::HANDLER_TYPE => $handlerTypeValue,
-                            CommunicationConfig::HANDLER_METHOD => self::TEST_CONSUMER_METHOD
-                        ]
+                            CommunicationConfig::HANDLER_METHOD => self::TEST_CONSUMER_METHOD,
+                        ],
                     ],
                 ]
             );
@@ -149,7 +150,7 @@ class ConsumerFactoryTest extends TestCase
             ConsumerFactory::class,
             [
                 'objectManager' => $objectManagerMock,
-                'consumers' => $consumers
+                'consumers' => $consumers,
             ]
         );
         $this->objectManager->setBackwardCompatibleProperty(

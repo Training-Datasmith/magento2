@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\App;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
-use Magento\Framework\Exception\SecurityViolationException;
-use Magento\Security\Model\ResourceModel\PasswordResetRequestEvent\Collection as PasswordResetRequestEventCollection;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\SecurityViolationException;
 use Magento\Framework\Registry;
 use Magento\GraphQl\App\State\GraphQlStateDiff;
+use Magento\Security\Model\ResourceModel\PasswordResetRequestEvent\Collection as PasswordResetRequestEventCollection;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -73,7 +74,7 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
         array $authInfo,
         string $operationName,
         string $expected,
-    ) : void {
+    ): void {
         if ($operationName === 'createCustomer') {
             $emails = [$variables['email'], $variables2['email']];
             $this->clearCustomerBeforeTest($emails);
@@ -207,8 +208,8 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
             $query,
             ['currentPassword' => 'password', 'newPassword' => 'new_password123'],
             ['currentPassword' => 'new_password123', 'newPassword' => 'password_new123'],
-            [['email'=>'customer@example.com', 'password' => 'password'],
-            ['email'=>'customer@example.com', 'password' => 'new_password123']],
+            [['email' => 'customer@example.com', 'password' => 'password'],
+            ['email' => 'customer@example.com', 'password' => 'new_password123']],
             'changeCustomerPassword',
             '"data":{"changeCustomerPassword":',
             $this
@@ -307,7 +308,7 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
                 ['allow' => false],
                 ['email' => 'customer@example.com', 'password' => 'password'],
                 'updateCustomer',
-                'allow_remote_shopping_assistance'
+                'allow_remote_shopping_assistance',
             ],
             'Update Customer Address' => [
                 <<<'QUERY'
@@ -363,7 +364,7 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
                 ['addressId' => 1, 'city' => 'Austin'],
                 ['email' => 'customer@example.com', 'password' => 'password'],
                 'updateCustomerAddress',
-                'city'
+                'city',
             ],
             'Update Customer Email' => [
                 <<<'QUERY'
@@ -399,7 +400,7 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
                 ['email' => 'customer@example.com', 'password' => 'password'],
                 [],
                 'generateCustomerToken',
-                'token'
+                'token',
             ],
             'Get Customer' => [
                 <<<'QUERY'
@@ -427,7 +428,7 @@ class GraphQlCustomerMutationsTest extends \PHPUnit\Framework\TestCase
                 [],
                 ['email' => 'customer@example.com', 'password' => 'password'],
                 'getCustomer',
-                '"data":{"customer":{"created_at"'
+                '"data":{"customer":{"created_at"',
             ],
         ];
     }

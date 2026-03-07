@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Analytics\Api\Data\LinkInterfaceFactory;
@@ -21,49 +24,26 @@ class LinkProvider implements LinkProviderInterface
      */
     private $linkFactory;
 
-    /**
-     * @var FileInfoManager
-     */
-    private $fileInfoManager;
-
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
-    /**
-     * @param LinkInterfaceFactory $linkFactory
-     * @param FileInfoManager $fileInfoManager
-     * @param StoreManagerInterface $storeManager
-     */
     public function __construct(
         LinkInterfaceFactory $linkFactory,
-        FileInfoManager $fileInfoManager,
-        StoreManagerInterface $storeManager
+        private readonly FileInfoManager $fileInfoManager,
+        private readonly StoreManagerInterface $storeManager
     ) {
         $this->linkFactory = $linkFactory;
-        $this->fileInfoManager = $fileInfoManager;
-        $this->storeManager = $storeManager;
     }
 
     /**
      * Returns base url to file according to store configuration
-     *
-     * @param FileInfo $fileInfo
-     * @return string
      */
-    private function getBaseUrl(FileInfo $fileInfo)
+    private function getBaseUrl(FileInfo $fileInfo): string
     {
         return $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . $fileInfo->getPath();
     }
 
     /**
      * Verify is requested file ready
-     *
-     * @param FileInfo $fileInfo
-     * @return bool
      */
-    private function isFileReady(FileInfo $fileInfo)
+    private function isFileReady(FileInfo $fileInfo): bool
     {
         return $fileInfo->getPath() && $fileInfo->getInitializationVector();
     }
@@ -80,7 +60,7 @@ class LinkProvider implements LinkProviderInterface
         return $this->linkFactory->create(
             [
                 'url' => $this->getBaseUrl($fileInfo),
-                'initializationVector' => base64_encode($fileInfo->getInitializationVector())
+                'initializationVector' => base64_encode($fileInfo->getInitializationVector()),
             ]
         );
     }

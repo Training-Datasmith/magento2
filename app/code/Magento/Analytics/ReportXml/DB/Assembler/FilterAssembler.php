@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Analytics\ReportXml\DB\Assembler;
 
+use Magento\Analytics\ReportXml\DB\ConditionResolver;
 use Magento\Analytics\ReportXml\DB\NameResolver;
 use Magento\Analytics\ReportXml\DB\SelectBuilder;
-use Magento\Analytics\ReportXml\DB\ConditionResolver;
 
 /**
  * Assembles WHERE conditions
@@ -16,37 +18,18 @@ use Magento\Analytics\ReportXml\DB\ConditionResolver;
 class FilterAssembler implements AssemblerInterface
 {
     /**
-     * @var ConditionResolver
-     */
-    private $conditionResolver;
-
-    /**
-     * @var NameResolver
-     */
-    private $nameResolver;
-
-    /**
      * FilterAssembler constructor.
-     *
-     * @param ConditionResolver $conditionResolver
-     * @param NameResolver $nameResolver
      */
-    public function __construct(
-        ConditionResolver $conditionResolver,
-        NameResolver $nameResolver
-    ) {
-        $this->conditionResolver = $conditionResolver;
-        $this->nameResolver = $nameResolver;
+    public function __construct(private readonly ConditionResolver $conditionResolver, private readonly NameResolver $nameResolver)
+    {
     }
 
     /**
      * Assembles WHERE conditions
      *
-     * @param SelectBuilder $selectBuilder
      * @param array $queryConfig
-     * @return SelectBuilder
      */
-    public function assemble(SelectBuilder $selectBuilder, $queryConfig)
+    public function assemble(SelectBuilder $selectBuilder, $queryConfig): SelectBuilder
     {
         if (!isset($queryConfig['source']['filter'])) {
             return $selectBuilder;

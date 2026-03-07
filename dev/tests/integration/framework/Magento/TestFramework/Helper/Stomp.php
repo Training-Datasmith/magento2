@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class Stomp
             'type' => 'exec',
             'mbean' => 'org.apache.activemq.artemis:broker="0.0.0.0"',
             'operation' => 'listQueues(java.lang.String,int,int)',
-            'arguments' => ["", 1, 100] // All queues, first page, 100 per page
+            'arguments' => ['', 1, 100], // All queues, first page, 100 per page
         ];
 
         $json = json_encode($body);

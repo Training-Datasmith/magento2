@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,7 @@ declare(strict_types=1);
 namespace Magento\Framework\GraphQl;
 
 use Magento\Framework\App\Cache;
-use Magento\Framework\GraphQl\Config\Config;
-use Magento\Framework\GraphQl\Config\Data\Argument;
 use Magento\Framework\GraphQl\Config\Data\Enum;
-use Magento\Framework\GraphQl\Config\Data\Field;
-use Magento\Framework\GraphQl\Config\Data\StructureInterface;
 use Magento\Framework\GraphQl\Config\Data\Type;
 use Magento\Framework\GraphQl\Config\Element\EnumValue;
 use Magento\Framework\GraphQl\Config\Element\InterfaceType;
@@ -40,7 +37,7 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
         $filePath2 = __DIR__ . '/_files/schemaD.graphqls';
         $fileList = [
             $filePath1 => file_get_contents($filePath1),
-            $filePath2 => file_get_contents($filePath2)
+            $filePath2 => file_get_contents($filePath2),
         ];
         $fileResolverMock->expects($this->any())->method('get')->willReturn($fileList);
         $graphQlReader = $objectManager->create(
@@ -48,16 +45,16 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
             ['fileResolver' => $fileResolverMock]
         );
         $reader = $objectManager->create(
-        // phpstan:ignore
+            // phpstan:ignore
             \Magento\Framework\GraphQlSchemaStitching\Reader::class,
             ['readers' => ['graphql_reader' => $graphQlReader]]
         );
         $data = $objectManager->create(
-        // phpstan:ignore
+            // phpstan:ignore
             \Magento\Framework\GraphQl\Config\Data::class,
             ['reader' => $reader]
         );
-        $this->model = $objectManager->create(\Magento\Framework\GraphQl\Config::class, ['data' =>$data]);
+        $this->model = $objectManager->create(\Magento\Framework\GraphQl\Config::class, ['data' => $data]);
     }
 
     /**
@@ -83,8 +80,8 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
                 [
                     'response_field' => 'cache',
                     'expected_value' => $queryFields[$fieldKey]->getCache(),
-                    'optional' => true
-                ]
+                    'optional' => true,
+                ],
             ];
             $this->assertResponseFields($expectedOutputArray['Query']['fields'][$fieldKey], $fieldAssertionMap);
             /** @var \Magento\Framework\GraphQl\Config\Element\Argument[] $queryFieldArguments */
@@ -99,7 +96,7 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
                         ->isRequired()],
                     ['response_field' => 'isList', 'expected_value' => $queryFieldArguments[$argumentKey]->isList()],
                     ['response_field' => 'itemsRequired', 'expected_value' => $queryFieldArguments[$argumentKey]
-                        ->areItemsRequired()]
+                        ->areItemsRequired()],
                 ];
                 $this->assertResponseFields(
                     $expectedOutputArray['Query']['fields'][$fieldKey]['arguments'][$argumentKey],
@@ -155,7 +152,7 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($outputInterface->getName(), $typeThatImplements);
         $outputInterfaceValues = $outputInterface->getInterfaces();
         /** @var \Magento\Framework\GraphQl\Config\Element\Field[] $outputInterfaceFields */
-        $outputInterfaceFields =$outputInterface->getFields();
+        $outputInterfaceFields = $outputInterface->getFields();
         foreach (array_keys($outputInterfaceValues) as $outputInterfaceValue) {
             $this->assertEquals(
                 $expectedOutputArray['ProductLinks']['interfaces'][$outputInterfaceValue]['interface'],
@@ -189,7 +186,7 @@ class GraphQlConfigTest extends \PHPUnit\Framework\TestCase
 
     public function testGraphQlInterfaceConfigElement()
     {
-        $interfaceType ='ProductLinksInterface';
+        $interfaceType = 'ProductLinksInterface';
         /** @var InterfaceType $outputConfigElement */
         $outputConfigElement = $this->model->getConfigElement($interfaceType);
         $expectedOutput = require __DIR__ . '/_files/query_array_output.php';

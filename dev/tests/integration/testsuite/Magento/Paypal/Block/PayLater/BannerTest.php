@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class BannerTest extends TestCase
                 'systemConfig' => [
                     'payment/paypal_paylater/test1page_stylelayout' => 'flex',
                     'payment/paypal_paylater/test1page_ratio' => '20x1',
-                    'payment/paypal_paylater/test1page_color' => 'blue'
+                    'payment/paypal_paylater/test1page_color' => 'blue',
                 ],
                 'blockConfig' => [
                     'placement' => 'test1',
@@ -61,12 +62,12 @@ class BannerTest extends TestCase
                             'payLater' => [
                                 'config' => [
                                     'attributes' => [
-                                        'data-pp-style-ratio' => '1x1'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'data-pp-style-ratio' => '1x1',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                  'expectedConfig' => [
                     'attributes' => [
@@ -77,9 +78,9 @@ class BannerTest extends TestCase
                         'data-pp-style-text-size' => null,
                         'data-pp-style-color' => 'blue',
                         'data-pp-style-ratio' => '1x1',
-                        'data-pp-placement' => 'test1'
-                    ]
-                ]
+                        'data-pp-placement' => 'test1',
+                    ],
+                ],
             ],
             [
                 'systemConfig' => [
@@ -87,7 +88,7 @@ class BannerTest extends TestCase
                     'payment/paypal_paylater/test2page_logotype' => 'primary',
                     'payment/paypal_paylater/test2page_logoposition' => 'left',
                     'payment/paypal_paylater/test2page_textcolor' => 'white',
-                    'payment/paypal_paylater/test2page_textsize' => '10'
+                    'payment/paypal_paylater/test2page_textsize' => '10',
 
                 ],
                 'blockConfig' => [
@@ -97,12 +98,12 @@ class BannerTest extends TestCase
                             'payLater' => [
                                 'config' => [
                                     'attributes' => [
-                                        'data-pp-style-text-color' => 'black'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'data-pp-style-text-color' => 'black',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'expectedConfig' => [
                     'attributes' => [
@@ -113,9 +114,9 @@ class BannerTest extends TestCase
                         'data-pp-style-text-size' => '10',
                         'data-pp-style-color' => null,
                         'data-pp-style-ratio' => null,
-                        'data-pp-placement' => 'test2'
-                    ]
-                ]
+                        'data-pp-placement' => 'test2',
+                    ],
+                ],
             ],
         ];
     }
@@ -146,12 +147,12 @@ class BannerTest extends TestCase
                         'components' => [
                             'payLater' => [
                                 'config' => [
-                                ]
-                            ]
-                        ]
-                    ]
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedUrl' => 'paypal.com/sdk'
+                'expectedUrl' => 'paypal.com/sdk',
             ],
             [
                 'blockConfig' => [
@@ -159,13 +160,13 @@ class BannerTest extends TestCase
                         'components' => [
                             'payLater' => [
                                 'config' => [
-                                    'attributes' => ['test1' => 'value1']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'attributes' => ['test1' => 'value1'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedUrl' => 'paypal.com/sdk'
+                'expectedUrl' => 'paypal.com/sdk',
             ],
             [
                 'blockConfig' => [
@@ -173,14 +174,14 @@ class BannerTest extends TestCase
                         'components' => [
                             'payLater' => [
                                 'config' => [
-                                    'sdkUrl' => 'http://mock.url'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'sdkUrl' => 'http://mock.url',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedUrl' => 'mock.url'
-            ]
+                'expectedUrl' => 'mock.url',
+            ],
         ];
     }
 
@@ -196,11 +197,11 @@ class BannerTest extends TestCase
                 'payment/paypal_paylater/experience_active' => 1,
                 'payment/paypal_paylater/enabled' => 1,
                 'payment/paypal_paylater/test3page_display' => 1,
-                'payment/paypal_paylater/test3page_position' => 'header'
+                'payment/paypal_paylater/test3page_position' => 'header',
         ];
         $blockConfig = [
             'placement' => 'test3',
-            'position' => 'header'
+            'position' => 'header',
         ];
         $this->setConfig($systemConfig);
         $layout = Bootstrap::getObjectManager()->get(LayoutInterface::class);
@@ -230,11 +231,11 @@ class BannerTest extends TestCase
             'payment/paypal_paylater/experience_active' => 1,
             'payment/paypal_paylater/enabled' => 1,
             'payment/paypal_paylater/test4page_display' => 1,
-            'payment/paypal_paylater/test4page_position' => 'near_pp_button'
+            'payment/paypal_paylater/test4page_position' => 'near_pp_button',
         ];
         $enableBlockConfig = [
             'placement' => 'test4',
-            'position' => 'near_pp_button'
+            'position' => 'near_pp_button',
         ];
         //Disable specific system configuration option
         $systemConfig = array_replace($enableSystemConfig, $systemConfig);
@@ -258,27 +259,27 @@ class BannerTest extends TestCase
         return [
             [
                 'systemConfig' => ['payment/paypal_paylater/experience_active' => 0],
-                'blockConfig' => []
+                'blockConfig' => [],
             ],
             [
                 'systemConfig' => ['payment/paypal_paylater/enabled' => 0],
-                'blockConfig' => []
+                'blockConfig' => [],
             ],
             [
                 'systemConfig' => ['payment/paypal_paylater/test4page_display' => 0],
-                'blockConfig' => []
+                'blockConfig' => [],
             ],
             [
                 'systemConfig' => [],
-                'blockConfig' => ['position' => 'header']
+                'blockConfig' => ['position' => 'header'],
             ],
             [
                 'systemConfig' => [sprintf($paymentPath, Config::METHOD_EXPRESS) => 0],
-                'blockConfig' => []
+                'blockConfig' => [],
             ],
             [
                 'systemConfig' => ['paypal/style/disable_funding_options' => 'CREDIT'],
-                'blockConfig' => []
+                'blockConfig' => [],
             ],
         ];
     }

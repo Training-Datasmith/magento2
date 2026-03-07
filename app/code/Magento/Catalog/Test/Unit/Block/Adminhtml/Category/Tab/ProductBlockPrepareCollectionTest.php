@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\DB\Select;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\Math\Random;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class for product collection tests
@@ -146,7 +147,7 @@ class ProductBlockPrepareCollectionTest extends TestCase
 
     public function testPrepareCollectionWithCategoryIdAndNoStore(): void
     {
-        $categoryStub = new class {
+        $categoryStub = new class () {
             public function getId()
             {
                 return 42;
@@ -166,7 +167,7 @@ class ProductBlockPrepareCollectionTest extends TestCase
         $this->collectionMock->expects($this->once())
             ->method('addAttributeToSelect')
             ->with(
-                $this->callback(fn($attrs) =>
+                $this->callback(fn ($attrs) =>
                     is_array($attrs) && in_array('name', $attrs, true) && in_array('price', $attrs, true)),
                 'left'
             )
@@ -194,7 +195,7 @@ class ProductBlockPrepareCollectionTest extends TestCase
 
     public function testPrepareCollectionWithStoreAndReadonly(): void
     {
-        $categoryStub = new class {
+        $categoryStub = new class () {
             public function getId()
             {
                 return null;

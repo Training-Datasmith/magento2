@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Category\Attribute\Frontend;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Catalog\Model\ResourceModel\Category\Attribute\Frontend;
  */
 class Image extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend
 {
-    const IMAGE_PATH_SEGMENT = 'catalog/category/';
+    public const IMAGE_PATH_SEGMENT = 'catalog/category/';
 
     /**
      * Store manager

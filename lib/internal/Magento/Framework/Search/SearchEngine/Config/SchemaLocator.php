@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\SearchEngine\Config;
 
 use Magento\Framework\Config\SchemaLocatorInterface;
 
 class SchemaLocator implements SchemaLocatorInterface
 {
-    const SEARCH_ENGINE_XSD_PATH = 'urn:magento:framework:Search/etc/search_engine.xsd';
+    public const SEARCH_ENGINE_XSD_PATH = 'urn:magento:framework:Search/etc/search_engine.xsd';
 
     /**
      * URN resolver

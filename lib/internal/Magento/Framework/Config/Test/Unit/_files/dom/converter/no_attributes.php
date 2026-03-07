@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,5 +15,5 @@ return [
             ],
             'node_three' => [['__content__' => 'Value4']],
         ],
-    ]
+    ],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,10 +22,9 @@ use Magento\Framework\Validator\Constraint\Property;
 use Magento\Framework\Validator\ConstraintFactory;
 use Magento\Framework\Validator\Test\Unit\Test\StringLength;
 use Magento\Framework\Validator\UniversalFactory;
-use Magento\Framework\Validator\ValidatorInterface;
 use Magento\Framework\ValidatorFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
@@ -72,7 +72,7 @@ class BuilderTest extends TestCase
                 'constraintFactory' => new ConstraintFactory($this->_realObjectManager),
                 'validatorFactory' => new ValidatorFactory($this->_realObjectManager),
                 'oneValidatorFactory' => new UniversalFactory($this->_realObjectManager),
-                'constraints' => $constraints
+                'constraints' => $constraints,
             ]
         );
         /** @var AbstractAdapter $translator */
@@ -114,11 +114,11 @@ class BuilderTest extends TestCase
                         ],
                         'property' => 'name',
                         'type' => 'property',
-                    ]
+                    ],
                 ],
                 'name',
                 1,
-                20
+                20,
             ],
             [
                 [
@@ -133,11 +133,11 @@ class BuilderTest extends TestCase
                         ],
                         'property' => 'description',
                         'type' => 'property',
-                    ]
+                    ],
                 ],
                 'description',
                 10,
-                1000
+                1000,
             ],
             [
                 [
@@ -152,12 +152,12 @@ class BuilderTest extends TestCase
                         ],
                         'property' => 'sku',
                         'type' => 'property',
-                    ]
+                    ],
                 ],
                 'sku',
                 20,
-                100
-            ]
+                100,
+            ],
         ];
     }
 
@@ -274,7 +274,7 @@ class BuilderTest extends TestCase
                         $emptyConstraint,
                         'arguments',
                         ['some_argument' => 'some_value']
-                    )
+                    ),
                 ],
             ],
             'constraint options arguments overwritten by newer arguments' => [
@@ -286,7 +286,7 @@ class BuilderTest extends TestCase
                         $configuredConstraint,
                         'arguments',
                         ['some_argument' => 'some_value']
-                    )
+                    ),
                 ],
             ],
             'methods initialized' => [
@@ -304,7 +304,7 @@ class BuilderTest extends TestCase
                         $configuredConstraint,
                         'methods',
                         [$someMethod, $methodWithArgs]
-                    )
+                    ),
                 ],
             ],
             'callback initialized' => [
@@ -318,7 +318,7 @@ class BuilderTest extends TestCase
                 'current_alias',
                 $callbackConfig,
                 [self::_getExpectedConstraints($configuredConstraint, 'callback', [$callback, $callback])],
-            ]
+            ],
         ];
     }
 
@@ -411,7 +411,7 @@ class BuilderTest extends TestCase
                 ['callback' => ['invalid', 'callback']],
                 'InvalidArgumentException',
                 'Callback must be instance of \Magento\Framework\Validator\Constraint\Option\Callback',
-            ]
+            ],
         ];
     }
 
@@ -431,7 +431,7 @@ class BuilderTest extends TestCase
                 'constraints' => [
                     ['alias' => 'alias', 'class' => 'StdClass', 'options' => null, 'type' => 'entity'],
                 ],
-                'validatorFactory' => new ValidatorFactory($this->_realObjectManager)
+                'validatorFactory' => new ValidatorFactory($this->_realObjectManager),
             ]
         );
         $builder->createValidator();
@@ -472,7 +472,7 @@ class BuilderTest extends TestCase
             ],
             'configuration incorrect configuration' => [
                 ['alias' => [['data' => ['incorrectData']]]],
-            ]
+            ],
         ];
     }
 }

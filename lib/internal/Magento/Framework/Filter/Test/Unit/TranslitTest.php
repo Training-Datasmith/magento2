@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Framework\Filter\Test\Unit;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Filter\Translit;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class TranslitTest extends TestCase
 {
@@ -58,16 +59,16 @@ class TranslitTest extends TestCase
                 'Weiß, Goldmann, Göbel, Weiss, Göthe, Goethe und Götz',
                 'Weiss, Goldmann, Gobel, Weiss, Gothe, Goethe und Gotz',
                 'Weiss, Goldmann, Gobel, Weiss, Gothe, Goethe und Gotz',
-                $isIconv
+                $isIconv,
             ],
             [
                 '❤ ☀ ☆ ☂ ☻ ♞ ☯ ☭ ☢ € → ☎ ❄ ♫ ✂ ▷ ✇ ♎ ⇧ ☮',
                 '❤ ☀ ☆ ☂ ☻ ♞ ☯ ☭ ☢ € → ☎ ❄ ♫ ✂ ▷ ✇ ♎ ⇧ ☮',
                 '         EUR ->         ',
-                $isIconv
+                $isIconv,
             ],
             ['™', 'tm', 'tm', $isIconv],
-            ['লক্ষ্য এনালগ ওয়াচ টি ২০', 'laksoa enaalaga oyaoaca tai 20', 'laksoa enaalaga oyaoaca tai 20', $isIconv]
+            ['লক্ষ্য এনালগ ওয়াচ টি ২০', 'laksoa enaalaga oyaoaca tai 20', 'laksoa enaalaga oyaoaca tai 20', $isIconv],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Block\Adminhtml\Catalog\Product\Edit\Tab\Downloadable;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -119,7 +122,7 @@ class LinksTest extends \PHPUnit\Framework\TestCase
             ['virtual', null, 'Links Title Test'],
             ['virtual', 'Links Title', 'Links Title Test'],
             ['downloadable', null, null],
-            ['downloadable', 'Links Title', 'Links Title']
+            ['downloadable', 'Links Title', 'Links Title'],
         ];
     }
 }

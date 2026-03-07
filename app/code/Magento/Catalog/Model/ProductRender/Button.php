@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,8 @@
 
 namespace Magento\Catalog\Model\ProductRender;
 
-use Magento\Catalog\Api\Data\ProductRender\AddToCartInterface;
-use Magento\Catalog\Api\Data\ProductRender\ButtonInterface;
 use Magento\Catalog\Api\Data\ProductRender\ButtonExtensionInterface;
+use Magento\Catalog\Api\Data\ProductRender\ButtonInterface;
 
 /**
  * @inheritdoc

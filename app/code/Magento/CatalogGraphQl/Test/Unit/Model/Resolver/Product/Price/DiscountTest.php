@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Test\Unit\Model\Resolver\Product\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogGraphQl\Model\Resolver\Product\Price\Discount;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DiscountTest extends TestCase
@@ -56,7 +57,7 @@ class DiscountTest extends TestCase
             [0, 0, 0, 0],
             [0, 10, 0, 0],
             [9.95, 9.95, 0, 0],
-            [21.05, 0, 21.05, 100]
+            [21.05, 0, 21.05, 100],
         ];
     }
 }

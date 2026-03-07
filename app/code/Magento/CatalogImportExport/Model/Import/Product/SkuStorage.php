@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class SkuStorage
             $data['entity_id'],
             $data[$this->getProductEntityLinkField()],
             $this->maskTypeId($data['type_id']),
-            $data['attribute_set_id']
+            $data['attribute_set_id'],
         ]);
     }
 
@@ -211,7 +212,7 @@ class SkuStorage
             'entity_id' => $data[0],
             $this->getProductEntityLinkField() => $data[1],
             'type_id' => $this->unmaskTypeId((int)$data[2]),
-            'attr_set_id' => $data[3]
+            'attr_set_id' => $data[3],
         ];
     }
 }

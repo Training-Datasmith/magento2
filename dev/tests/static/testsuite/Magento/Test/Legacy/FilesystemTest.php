@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Backwards-incompatible changes in file system
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Legacy;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -109,7 +112,7 @@ class FilesystemTest extends \PHPUnit\Framework\TestCase
         foreach ($componentRegistrar->getPaths(ComponentRegistrar::MODULE) as $moduleDir) {
             $pathsToCheck[$moduleDir . "/view/{$areas}/*"] = [
                 'allowed_files' => $allowedFiles,
-                'allowed_dirs' => ['layout', 'page_layout', 'templates', 'web', 'ui_component', 'email']
+                'allowed_dirs' => ['layout', 'page_layout', 'templates', 'web', 'ui_component', 'email'],
             ];
         }
         $errors = [];

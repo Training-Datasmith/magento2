@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template;
 use Magento\MediaStorage\Helper\File\Storage\Database;
@@ -26,7 +28,6 @@ use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  *
@@ -115,7 +116,7 @@ class InvoiceTest extends TestCase
                 'addressRenderer' => $this->addressRendererMock,
                 'string' => new StringUtils(),
                 'paymentData' => $this->paymentDataMock,
-                'appEmulation' => $this->appEmulation
+                'appEmulation' => $this->appEmulation,
             ]
         );
     }
@@ -134,7 +135,7 @@ class InvoiceTest extends TestCase
         )->willReturn(
             [
                 'product_type_one' => 'Renderer_Type_One_Product_One',
-                'product_type_two' => 'Renderer_Type_One_Product_Two'
+                'product_type_two' => 'Renderer_Type_One_Product_Two',
             ]
         );
 
@@ -143,7 +144,7 @@ class InvoiceTest extends TestCase
         $this->assertSame(
             [
                 'product_type_one' => ['model' => 'Renderer_Type_One_Product_One', 'renderer' => null],
-                'product_type_two' => ['model' => 'Renderer_Type_One_Product_Two', 'renderer' => null]
+                'product_type_two' => ['model' => 'Renderer_Type_One_Product_Two', 'renderer' => null],
             ],
             $renderers->getValue($this->model)
         );

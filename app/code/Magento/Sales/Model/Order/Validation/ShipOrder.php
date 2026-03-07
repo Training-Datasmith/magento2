@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Validation;
 
 use Magento\Framework\App\ObjectManager;
@@ -12,10 +15,10 @@ use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
 use Magento\Sales\Api\Data\ShipmentCreationArgumentsInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\ShipmentItemCreationInterface;
-use Magento\Sales\Model\Order\Shipment\ShipmentItemsValidatorInterface;
-use Magento\Sales\Model\Order\Shipment\Validation\QuantityValidator;
 use Magento\Sales\Model\Order\OrderValidatorInterface;
+use Magento\Sales\Model\Order\Shipment\ShipmentItemsValidatorInterface;
 use Magento\Sales\Model\Order\Shipment\ShipmentValidatorInterface;
+use Magento\Sales\Model\Order\Shipment\Validation\QuantityValidator;
 use Magento\Sales\Model\Order\Shipment\Validation\TrackValidator;
 use Magento\Sales\Model\ValidatorResultInterface;
 use Magento\Sales\Model\ValidatorResultMerger;
@@ -92,14 +95,14 @@ class ShipOrder implements ShipOrderInterface
         $orderValidationResult = $this->orderValidator->validate(
             $order,
             [
-                CanShip::class
+                CanShip::class,
             ]
         );
         $shipmentValidationResult = $this->shipmentValidator->validate(
             $shipment,
             [
                 QuantityValidator::class,
-                TrackValidator::class
+                TrackValidator::class,
             ]
         );
 

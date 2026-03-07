@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class CustomerOrdersTest extends GraphQlAbstract
             [
                 'store_id' => '$store2.id$',
                 'website_id' => '$website2.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             as: 'customer'
         ),
@@ -177,7 +178,7 @@ class CustomerOrdersTest extends GraphQlAbstract
             [
                 'store_id' => '$store2.id$',
                 'website_id' => '$website2.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             as: 'customer'
         )
@@ -252,7 +253,7 @@ query {
 	}
 }
 QUERY;
-        $query = str_replace("{{scope}}", isset($scope) ? "scope: $scope" : '', $query);
+        $query = str_replace('{{scope}}', isset($scope) ? "scope: $scope" : '', $query);
         return $query;
     }
 
@@ -263,7 +264,7 @@ QUERY;
      * @param string $password
      * @return string
      */
-    private function generateCustomerToken(string $email, string $password) : string
+    private function generateCustomerToken(string $email, string $password): string
     {
         return <<<MUTATION
 mutation {

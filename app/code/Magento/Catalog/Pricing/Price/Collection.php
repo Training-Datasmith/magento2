@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Catalog\Pricing\Price;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Pricing\SaleableInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Pricing\Price\Factory;
 use Magento\Framework\Pricing\Price\Pool;
+use Magento\Framework\Pricing\SaleableInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Price models collection class.

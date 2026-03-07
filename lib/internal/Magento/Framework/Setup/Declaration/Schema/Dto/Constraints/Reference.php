@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Constraints;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -19,7 +22,7 @@ class Reference extends Constraint implements ElementDiffAwareInterface
      * In case if we will need to change this object: add, modify or drop, we will need
      * to define it by its type.
      */
-    const TYPE = 'reference';
+    public const TYPE = 'reference';
 
     /**
      * @var Column
@@ -133,7 +136,7 @@ class Reference extends Constraint implements ElementDiffAwareInterface
             'referenceTableName' => $this->getReferenceTable()->getName(),
             'tableName' => $this->getTable()->getName(),
             'onDelete' => $this->getOnDelete(),
-            'resource' => $this->getTable()->getResource()
+            'resource' => $this->getTable()->getResource(),
         ];
     }
 }

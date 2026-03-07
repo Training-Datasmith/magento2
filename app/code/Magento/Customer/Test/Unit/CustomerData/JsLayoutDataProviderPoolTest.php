@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,8 +43,8 @@ class JsLayoutDataProviderPoolTest extends TestCase
             JsLayoutDataProviderPool::class,
             [
                 'jsLayoutDataProviders' => [
-                    'checkout_totals' => $this->checkoutTotalsJsLayoutDataProviderMock
-                ]
+                    'checkout_totals' => $this->checkoutTotalsJsLayoutDataProviderMock,
+                ],
             ]
         );
     }
@@ -64,8 +65,8 @@ class JsLayoutDataProviderPoolTest extends TestCase
                                         'subtotal.totals' => [
                                             'config' => [
                                                 'display_cart_subtotal_incl_tax' => 1,
-                                                'display_cart_subtotal_excl_tax' => 1
-                                            ]
+                                                'display_cart_subtotal_excl_tax' => 1,
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -73,7 +74,7 @@ class JsLayoutDataProviderPoolTest extends TestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
         $this->checkoutTotalsJsLayoutDataProviderMock->expects($this->any())
             ->method('getData')

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data\Form\FormKey;
 
 use Magento\Framework\Encryption\Helper\Security;
@@ -35,7 +38,7 @@ class Validator
     public function validate(\Magento\Framework\App\RequestInterface $request)
     {
         $formKey = $request->getParam('form_key', null);
-        
+
         return $formKey && Security::compareStrings($formKey, $this->_formKey->getFormKey());
     }
 }

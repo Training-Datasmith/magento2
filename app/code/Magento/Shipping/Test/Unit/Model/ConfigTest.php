@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Shipping\Test\Unit\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Shipping\Model\CarrierFactory;
+use Magento\Shipping\Model\Config;
 use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Shipping\Model\Config;
 
 /**
  * Test for \Magento\Shipping\Model\Config.
@@ -34,7 +35,7 @@ class ConfigTest extends TestCase
             'active' => '0',
             'name' => 'Table Rate',
             'title' => 'Best Way',
-        ]
+        ],
     ];
 
     /**

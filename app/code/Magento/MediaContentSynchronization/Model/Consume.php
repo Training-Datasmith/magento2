@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class Consume
      * @param OperationInterface $operation
      * @throws LocalizedException
      */
-    public function execute(OperationInterface $operation) : void
+    public function execute(OperationInterface $operation): void
     {
         $identities = $this->serializer->unserialize($operation->getSerializedData());
 
@@ -82,7 +83,7 @@ class Consume
                 [
                     self::ENTITY_TYPE => $identity[self::ENTITY_TYPE],
                     self::ENTITY_ID => $identity[self::ENTITY_ID],
-                    self::FIELD => $identity[self::FIELD]
+                    self::FIELD => $identity[self::FIELD],
                 ]
             );
         }

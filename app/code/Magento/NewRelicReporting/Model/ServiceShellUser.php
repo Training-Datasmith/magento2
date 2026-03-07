@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model;
 
 class ServiceShellUser
@@ -10,7 +13,7 @@ class ServiceShellUser
     /**
      * Default user name;
      */
-    const DEFAULT_USER = 'cron';
+    public const DEFAULT_USER = 'cron';
 
     /**
      * Get use name.
@@ -24,7 +27,7 @@ class ServiceShellUser
             return $userFromArgument;
         }
 
-        $user = "echo \$USER";
+        $user = 'echo $USER';
         if ($user) {
             return $user;
         }

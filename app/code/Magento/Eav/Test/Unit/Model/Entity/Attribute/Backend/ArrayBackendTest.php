@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Eav\Test\Unit\Model\Entity\Attribute\Backend;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
 use Magento\Framework\DataObject;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ArrayBackendTest extends TestCase
 {
@@ -82,33 +83,33 @@ class ArrayBackendTest extends TestCase
             [
                 ['sku' => 'test1', 'attr' => '13,13'],
                 true,
-                '13'
+                '13',
             ],
             [
                 ['sku' => 'test1', 'attr' => '0,1,2,3,4'],
                 true,
-                '0,1,2,3,4'
+                '0,1,2,3,4',
             ],
             'keeps non numeric values from string' => [
                 ['sku' => 'test1', 'attr' => 'foo,bar'],
                 true,
-                'foo,bar'
+                'foo,bar',
             ],
             'keeps non numeric values from array' => [
                 ['sku' => 'test1', 'attr' => ['foo','bar']],
                 true,
-                'foo,bar'
+                'foo,bar',
             ],
             'filters empty values from string' => [
                 ['sku' => 'test1', 'attr' => 'foo,bar,,123'],
                 true,
-                'foo,bar,123'
+                'foo,bar,123',
             ],
             'filters empty values from array' => [
                 ['sku' => 'test1', 'attr' => ['foo','bar','',null,123]],
                 true,
-                'foo,bar,123'
-            ]
+                'foo,bar,123',
+            ],
         ];
     }
 

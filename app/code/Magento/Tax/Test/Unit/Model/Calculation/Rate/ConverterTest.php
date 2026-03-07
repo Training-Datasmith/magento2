@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -116,9 +117,9 @@ class ConverterTest extends TestCase
         $rateTitles = [$this->objectManager->getObject(
             Title::class,
             ['data' => ['store_id' => 1, 'value' => 'texas']]
-        )
+        ),
         ];
-        $dataArray=[
+        $dataArray = [
             'tax_country_id' => 'US',
             'tax_region_id' => 2,
             'tax_postcode' => null,

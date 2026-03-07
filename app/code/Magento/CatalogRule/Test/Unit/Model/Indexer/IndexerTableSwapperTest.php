@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,10 +49,10 @@ class IndexerTableSwapperTest extends TestCase
         $this->adapterInterfaceMock = $this->createMock(AdapterInterface::class);
         $zendDbStatementInterfaceMock = $this->createMock(\Zend_Db_Statement_Interface::class);
         $this->adapterInterfaceMock->method('query')->willReturn($zendDbStatementInterfaceMock);
-        
+
         /** @var \Zend_Db_Statement_Interface $statementInterfaceMock */
         $this->statementInterfaceMock = $this->createMock(\Zend_Db_Statement_Interface::class);
-        
+
         /** @var Table $tableMock */
         $this->tableMock = $this->createMock(Table::class);
         $this->resourceConnectionMock->method('getConnection')->willReturn($this->adapterInterfaceMock);
@@ -135,12 +136,12 @@ class IndexerTableSwapperTest extends TestCase
         $toRename = [
             [
                 'oldName' => $originalTableName,
-                'newName' => $temporaryOriginalTableName
+                'newName' => $temporaryOriginalTableName,
             ],
             [
                 'oldName' => $temporaryTableName,
-                'newName' => $originalTableName
-            ]
+                'newName' => $originalTableName,
+            ],
         ];
 
         $this->resourceConnectionMock

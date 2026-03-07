@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Eav\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-
 use Magento\Framework\EntityManager\MetadataPool;
+
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppIsolation enabled
@@ -34,8 +36,8 @@ class AttributeLoaderTest extends \Magento\TestFramework\Indexer\TestCase
                         'entityTableName' => 'test_entity',
                         'eavEntityType' => 'test',
                         'identifierField' => 'entity_id',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $this->attributeLoader = $objectManager->create(AttributeLoader::class, ['metadataPool' => $metadataPool]);
@@ -72,7 +74,7 @@ class AttributeLoaderTest extends \Magento\TestFramework\Indexer\TestCase
                     'attribute_for_search_1',
                     'attribute_for_search_2',
                     'attribute_for_search_3',
-                ]
+                ],
             ],
             "$attributeSetId" => [
                 [
@@ -80,7 +82,7 @@ class AttributeLoaderTest extends \Magento\TestFramework\Indexer\TestCase
                     'attribute_for_search_2',
                 ],
                 $attributeSetId,
-            ]
+            ],
         ];
     }
 

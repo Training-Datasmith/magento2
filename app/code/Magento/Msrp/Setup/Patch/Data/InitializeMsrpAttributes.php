@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +10,6 @@ namespace Magento\Msrp\Setup\Patch\Data;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\Setup\InstallDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -99,7 +97,7 @@ class InitializeMsrpAttributes implements DataPatchInterface, PatchVersionInterf
                 'input_renderer' => \Magento\Msrp\Block\Adminhtml\Product\Helper\Form\Type\Price::class,
                 'frontend_input_renderer' => \Magento\Msrp\Block\Adminhtml\Product\Helper\Form\Type\Price::class,
                 'visible_on_front' => false,
-                'used_in_product_listing' => true
+                'used_in_product_listing' => true,
             ]
         );
     }

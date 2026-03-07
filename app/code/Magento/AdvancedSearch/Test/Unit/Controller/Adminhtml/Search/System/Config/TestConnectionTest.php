@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Controller\Adminhtml\Search\System\Config;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\AdvancedSearch\Controller\Adminhtml\Search\System\Config\TestConnection;
 use Magento\AdvancedSearch\Model\Client\ClientInterface;
 use Magento\AdvancedSearch\Model\Client\ClientResolver;
@@ -18,6 +18,7 @@ use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Filter\StripTags;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -81,7 +82,7 @@ class TestConnectionTest extends TestCase
                 $helper->getConstructArguments(
                     Context::class,
                     [
-                        'request' => $this->requestMock
+                        'request' => $this->requestMock,
                     ]
                 )
             )

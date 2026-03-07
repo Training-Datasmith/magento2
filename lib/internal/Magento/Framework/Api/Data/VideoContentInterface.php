@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,12 +18,12 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface VideoContentInterface extends ExtensibleDataInterface
 {
-    const TYPE = 'media_type';
-    const PROVIDER = 'video_provider';
-    const URL = 'video_url';
-    const TITLE = 'video_title';
-    const DESCRIPTION = 'video_description';
-    const METADATA = 'video_metadata';
+    public const TYPE = 'media_type';
+    public const PROVIDER = 'video_provider';
+    public const URL = 'video_url';
+    public const TITLE = 'video_title';
+    public const DESCRIPTION = 'video_description';
+    public const METADATA = 'video_metadata';
 
     /**
      * Retrieve MIME type

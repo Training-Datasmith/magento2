@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 class AggregationFactoryTest extends TestCase
 {
-
     /**
      * @var AggregationFactory
      */
@@ -43,7 +43,7 @@ class AggregationFactoryTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             AggregationFactory::class,
             [
-                'objectManager' => $this->objectManager
+                'objectManager' => $this->objectManager,
             ]
         );
     }

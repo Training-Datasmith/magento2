@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Weee\Test\Unit\Observer;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Weee\Model\Tax;
 use Magento\Weee\Observer\SetWeeeRendererInFormObserver;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

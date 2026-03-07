@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class CompositeServiceInputValidator implements ServiceInputValidatorInterface
         foreach ($validators as $validator) {
             if (!$validator instanceof ServiceInputValidatorInterface) {
                 throw new \InvalidArgumentException(
-                    "Validators must implement " . ServiceInputValidatorInterface::class
+                    'Validators must implement ' . ServiceInputValidatorInterface::class
                 );
             }
         }

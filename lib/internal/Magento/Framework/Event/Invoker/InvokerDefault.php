@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Default event invoker
  *
@@ -8,9 +10,9 @@
 
 namespace Magento\Framework\Event\Invoker;
 
+use Magento\Framework\App\State;
 use Magento\Framework\Event\Observer;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\App\State;
 
 /**
  * Default Invoker.

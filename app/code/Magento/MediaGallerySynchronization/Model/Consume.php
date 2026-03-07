@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class Consume
      * @param array $paths
      * @throws LocalizedException
      */
-    public function execute(array $paths) : void
+    public function execute(array $paths): void
     {
         if (!empty($paths)) {
             $this->synchronizeFiles->execute($paths);

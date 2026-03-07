@@ -1,29 +1,32 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterface;
-use Magento\Catalog\Model\Locator\LocatorInterface;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Framework\Phrase;
-use Magento\Ui\Component\Modal;
-use Magento\Ui\Component\Form;
-use Magento\GroupedProduct\Model\Product\Type\Grouped as GroupedProductType;
-use Magento\Framework\UrlInterface;
-use Magento\Ui\Component\DynamicRows;
+use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
 use Magento\Catalog\Api\ProductLinkRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Helper\Image as ImageHelper;
-use Magento\Eav\Api\AttributeSetRepositoryInterface;
+use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Framework\Locale\CurrencyInterface;
-use Magento\GroupedProduct\Model\Product\Link\CollectionProvider\Grouped as GroupedProducts;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
+use Magento\Eav\Api\AttributeSetRepositoryInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
+use Magento\Framework\Locale\CurrencyInterface;
+use Magento\Framework\Phrase;
+use Magento\Framework\UrlInterface;
+use Magento\GroupedProduct\Model\Product\Link\CollectionProvider\Grouped as GroupedProducts;
+use Magento\GroupedProduct\Model\Product\Type\Grouped as GroupedProductType;
+use Magento\Ui\Component\DynamicRows;
+use Magento\Ui\Component\Form;
+use Magento\Ui\Component\Modal;
 
 /**
  * Data provider for Grouped products
@@ -31,11 +34,11 @@ use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
  */
 class Grouped extends AbstractModifier
 {
-    const GROUP_GROUPED = 'grouped';
-    const GROUP_CONTENT = 'content';
-    const DATA_SCOPE_GROUPED = 'grouped';
-    const SORT_ORDER = 20;
-    const LINK_TYPE = 'associated';
+    public const GROUP_GROUPED = 'grouped';
+    public const GROUP_CONTENT = 'content';
+    public const DATA_SCOPE_GROUPED = 'grouped';
+    public const SORT_ORDER = 20;
+    public const LINK_TYPE = 'associated';
 
     /**
      * @var LocatorInterface
@@ -198,7 +201,7 @@ class Grouped extends AbstractModifier
             'id' => $linkedProduct->getId(),
             'name' => $linkedProduct->getName(),
             'sku' => $linkedProduct->getSku(),
-            'price' => $currency->toCurrency(sprintf("%f", $linkedProduct->getPrice())),
+            'price' => $currency->toCurrency(sprintf('%f', $linkedProduct->getPrice())),
             'qty' => $linkedProduct->getQty(),
             'position' => $linkedProduct->getPosition(),
             'positionCalculated' => $linkedProduct->getPosition(),
@@ -270,7 +273,7 @@ class Grouped extends AbstractModifier
                                     ],
                                 ],
                             ],
-                        ]
+                        ],
                     ]
                 );
             }
@@ -335,7 +338,7 @@ class Grouped extends AbstractModifier
                             'buttons' => [
                                 [
                                     'text' => __('Cancel'),
-                                    'actions' => ['closeModal']
+                                    'actions' => ['closeModal'],
                                 ],
                                 [
                                     'text' => __('Add Selected Products'),
@@ -343,9 +346,9 @@ class Grouped extends AbstractModifier
                                     'actions' => [
                                         [
                                             'targetName' => 'index = ' . $this->uiComponentsConfig['listing'],
-                                            'actionName' => 'save'
+                                            'actionName' => 'save',
                                         ],
-                                        'closeModal'
+                                        'closeModal',
                                     ],
                                 ],
                             ],

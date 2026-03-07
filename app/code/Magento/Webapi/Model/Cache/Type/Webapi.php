@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Cache\Type;
 
 use Magento\Authorization\Model\UserContextInterface;
@@ -16,12 +19,12 @@ class Webapi extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'config_webservice';
+    public const TYPE_IDENTIFIER = 'config_webservice';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'WEBSERVICE';
+    public const CACHE_TAG = 'WEBSERVICE';
 
     /**
      * @var StoreManagerInterface

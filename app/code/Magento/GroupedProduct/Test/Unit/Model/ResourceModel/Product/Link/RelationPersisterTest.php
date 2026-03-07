@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class RelationPersisterTest extends TestCase
             RelationPersister::class,
             [
                 'relationProcessor' => $this->relationProcessor,
-                'linkFactory' => $this->linkFactory
+                'linkFactory' => $this->linkFactory,
             ]
         );
     }

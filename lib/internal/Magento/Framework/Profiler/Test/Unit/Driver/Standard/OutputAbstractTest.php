@@ -1,18 +1,20 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\Profiler\Driver\Standard\AbstractOutput
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Test\Unit\Driver\Standard;
 
 use Magento\Framework\Profiler\Driver\Standard\AbstractOutput;
 use Magento\Framework\Profiler\Driver\Standard\Stat;
-use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class OutputAbstractTest extends TestCase
 {
@@ -100,7 +102,7 @@ class OutputAbstractTest extends TestCase
             [10000.123, Stat::TIME, '10,000.123000'],
             [200000.123456789, Stat::AVG, '200,000.123457'],
             [1000000000.12345678, Stat::EMALLOC, '1,000,000,000'],
-            [2000000000.12345678, Stat::REALMEM, '2,000,000,000']
+            [2000000000.12345678, Stat::REALMEM, '2,000,000,000'],
         ];
     }
 

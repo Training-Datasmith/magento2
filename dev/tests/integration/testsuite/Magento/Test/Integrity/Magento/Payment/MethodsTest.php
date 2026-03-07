@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,12 +9,14 @@
 /**
  * Locate all payment methods in the system and verify declaration of their blocks
  */
+
 namespace Magento\Test\Integrity\Magento\Payment;
 
 use Magento\Framework\App\State;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestStatus\TestStatus;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestStatus\TestStatus;
+
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -66,7 +70,7 @@ class MethodsTest extends \PHPUnit\Framework\TestCase
         $this->assertNotEmpty($model->getTitle());
         foreach ([$model->getFormBlockType(), $model->getInfoBlockType()] as $blockClass) {
             if (is_array($blockClass)) {
-                $blockClass=$blockClass['instance'] ?? '';
+                $blockClass = $blockClass['instance'] ?? '';
             }
             $message = "Block class: {$blockClass}";
             /** @var $block \Magento\Framework\View\Element\Template */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class UpdatedIdListProviderTest extends TestCase
             ->with('sales')
             ->willReturn($this->connection);
         $this->resourceConnection->method('getTableName')
-            ->willReturnCallback(static fn(string $table): string => $table);
+            ->willReturnCallback(static fn (string $table): string => $table);
     }
 
     public function testGetIdsUsesPersistedCursorRange(): void

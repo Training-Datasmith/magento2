@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget;
 
 /**
@@ -25,7 +28,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
                 'data' => [
                     \Magento\Backend\Block\Widget\Container::PARAM_CONTROLLER => 'one',
                     \Magento\Backend\Block\Widget\Container::PARAM_HEADER_TEXT => 'two',
-                ]
+                ],
             ]
         );
         $this->assertStringEndsWith('one', $block->getHeaderCssClass());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Weee\Ui\DataProvider\Product\Form\Modifier\Manager;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Directory\Model\Currency;
+use Magento\Framework\App\ObjectManager;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Helper\Data;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class Website
@@ -82,11 +83,12 @@ class Website
             [
                 'value' => 0,
                 'label' => $this->formatLabel(__('All Websites'), $this->directoryHelper->getBaseCurrencyCode()),
-            ]
+            ],
         ];
 
         if ($this->storeManager->hasSingleStore()
-            || ($eavAttribute->getEntityAttribute() && $eavAttribute->getEntityAttribute()->isScopeGlobal()
+            || (
+                $eavAttribute->getEntityAttribute() && $eavAttribute->getEntityAttribute()->isScopeGlobal()
             || $this->catalogHelper->isPriceGlobal()
             )
         ) {
@@ -101,7 +103,7 @@ class Website
                 'label' => $this->formatLabel(
                     $website->getName(),
                     $website->getConfig(Currency::XML_PATH_CURRENCY_BASE)
-                )
+                ),
             ];
         } else {
             /** @var WebsiteInterface $website */
@@ -114,7 +116,7 @@ class Website
                     'label' => $this->formatLabel(
                         $website->getName(),
                         $website->getConfig(Currency::XML_PATH_CURRENCY_BASE)
-                    )
+                    ),
                 ];
             }
         }

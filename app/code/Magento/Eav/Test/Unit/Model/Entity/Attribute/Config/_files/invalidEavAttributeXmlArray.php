@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,7 +11,7 @@ return [
         '<?xml version="1.0"?><config><entity type="type_one" /></config>',
         [
             "Element 'entity': Missing child element(s). Expected is ( attribute ).\nLine: 1\nThe xml was: \n" .
-            "0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"type_one\"/></config>\n2:\n"
+            "0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"type_one\"/></config>\n2:\n",
         ],
     ],
     'field_code_must_be_unique' => [
@@ -19,8 +20,8 @@ return [
         [
             "Element 'field': Duplicate key-sequence ['code_one_one'] in unique identity-constraint " .
             "'uniqueFieldCode'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><entity type=\"type_one\"><attribute code=\"code_one\"><field code=\"code_one_one\" " .
-            "locked=\"true\"/><field code=\"code_one_one\" locked=\"true\"/></attribute></entity></config>\n2:\n"
+            '1:<config><entity type="type_one"><attribute code="code_one"><field code="code_one_one" ' .
+            "locked=\"true\"/><field code=\"code_one_one\" locked=\"true\"/></attribute></entity></config>\n2:\n",
         ],
     ],
     'type_attribute_is_required' => [
@@ -29,7 +30,7 @@ return [
         [
             "Element 'entity': The attribute 'type' is required but missing.\nLine: 1\nThe xml was: \n" .
             "0:<?xml version=\"1.0\"?>\n1:<config><entity><attribute code=\"code_one\"><field " .
-            "code=\"code_one_one\" locked=\"true\"/></attribute></entity></config>\n2:\n"
+            "code=\"code_one_one\" locked=\"true\"/></attribute></entity></config>\n2:\n",
         ],
     ],
     'attribute_without_required_attributes' => [
@@ -38,7 +39,7 @@ return [
         [
             "Element 'attribute': The attribute 'code' is required but missing.\nLine: 1\nThe xml was: \n" .
             "0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"name\"><attribute><field code=\"code_one_one\" " .
-            "locked=\"true\"/></attribute></entity></config>\n2:\n"
+            "locked=\"true\"/></attribute></entity></config>\n2:\n",
         ],
     ],
     'field_node_without_required_attributes' => [
@@ -50,7 +51,7 @@ return [
             "code=\"code_one_one\"/><field locked=\"true\"/></attribute></entity></config>\n2:\n",
             "Element 'field': The attribute 'code' is required but missing.\nLine: 1\nThe xml was: \n" .
             "0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"name\"><attribute code=\"code\"><field " .
-            "code=\"code_one_one\"/><field locked=\"true\"/></attribute></entity></config>\n2:\n"
+            "code=\"code_one_one\"/><field locked=\"true\"/></attribute></entity></config>\n2:\n",
         ],
     ],
     'locked_attribute_with_invalid_value' => [
@@ -59,16 +60,16 @@ return [
         [
             "Element 'field', attribute 'locked': '7' is not a valid value of the atomic type 'xs:boolean'.\n" .
             "Line: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"name\"><attribute " .
-            "code=\"code\"><field code=\"code_one\" locked=\"7\"/><field code=\"code_one\" locked=\"one_one\"/>" .
+            'code="code"><field code="code_one" locked="7"/><field code="code_one" locked="one_one"/>' .
             "</attribute></entity></config>\n2:\n",
             "Element 'field', attribute 'locked': 'one_one' is not a valid value of the atomic type 'xs:boolean'.\n" .
             "Line: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"name\"><attribute " .
-            "code=\"code\"><field code=\"code_one\" locked=\"7\"/><field code=\"code_one\" locked=\"one_one\"/>" .
+            'code="code"><field code="code_one" locked="7"/><field code="code_one" locked="one_one"/>' .
             "</attribute></entity></config>\n2:\n",
             "Element 'field': Duplicate key-sequence ['code_one'] in unique identity-constraint 'uniqueFieldCode'.\n" .
             "Line: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><entity type=\"name\"><attribute " .
-            "code=\"code\"><field code=\"code_one\" locked=\"7\"/><field code=\"code_one\" locked=\"one_one\"/>" .
-            "</attribute></entity></config>\n2:\n"
+            'code="code"><field code="code_one" locked="7"/><field code="code_one" locked="one_one"/>' .
+            "</attribute></entity></config>\n2:\n",
         ],
     ],
     'attribute_with_type_identifierType_with_invalid_value' => [
@@ -77,16 +78,16 @@ return [
         [
             "Element 'entity', attribute 'type': [facet 'pattern'] The value 'Name' is not accepted by the " .
             "pattern '[a-z_]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><entity type=\"Name\"><attribute code=\"code1\"><field code=\"code_one\" locked=\"true\"/>" .
+            '1:<config><entity type="Name"><attribute code="code1"><field code="code_one" locked="true"/>' .
             "<field code=\"code::one\" locked=\"false\"/></attribute></entity></config>\n2:\n",
             "Element 'attribute', attribute 'code': [facet 'pattern'] The value 'code1' is not accepted by the " .
             "pattern '[a-z_]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><entity type=\"Name\"><attribute code=\"code1\"><field code=\"code_one\" locked=\"true\"/>" .
+            '1:<config><entity type="Name"><attribute code="code1"><field code="code_one" locked="true"/>' .
             "<field code=\"code::one\" locked=\"false\"/></attribute></entity></config>\n2:\n",
             "Element 'field', attribute 'code': [facet 'pattern'] The value 'code::one' is not accepted by the " .
             "pattern '[a-z_]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><entity type=\"Name\"><attribute code=\"code1\"><field code=\"code_one\" locked=\"true\"/>" .
-            "<field code=\"code::one\" locked=\"false\"/></attribute></entity></config>\n2:\n"
+            '1:<config><entity type="Name"><attribute code="code1"><field code="code_one" locked="true"/>' .
+            "<field code=\"code::one\" locked=\"false\"/></attribute></entity></config>\n2:\n",
         ],
-    ]
+    ],
 ];

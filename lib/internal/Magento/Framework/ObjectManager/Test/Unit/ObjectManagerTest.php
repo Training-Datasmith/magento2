@@ -6,7 +6,6 @@
  */
 declare(strict_types=1);
 
-
 namespace Magento\Framework\ObjectManager\Test\Unit;
 
 use Magento\Framework\ObjectManager\Config\Config;
@@ -53,7 +52,7 @@ class ObjectManagerTest extends TestCase
             null,
             [
                 'first_param' => 'first_param_value',
-                'second_param' => 'second_param_value'
+                'second_param' => 'second_param_value',
             ]
         );
         $this->_object = new ObjectManager($factory, $config);
@@ -346,7 +345,7 @@ class ObjectManagerTest extends TestCase
         $this->_object->configure(
             [
                 'preferences' => [
-                    DiInterface::class => DiParent::class
+                    DiInterface::class => DiParent::class,
                 ],
                 AggregateParent::class => [
                     'arguments' => [

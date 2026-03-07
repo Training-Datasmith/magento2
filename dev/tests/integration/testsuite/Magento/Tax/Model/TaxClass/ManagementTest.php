@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxClass;
 
 use Magento\Tax\Api\Data\TaxClassInterfaceFactory;
 use Magento\Tax\Api\Data\TaxClassKeyInterface;
 use Magento\Tax\Api\TaxClassManagementInterface;
-use Magento\Tax\Model\TaxClass\Key;
 use Magento\TestFramework\Helper\Bootstrap;
 
 class ManagementTest extends \PHPUnit\Framework\TestCase

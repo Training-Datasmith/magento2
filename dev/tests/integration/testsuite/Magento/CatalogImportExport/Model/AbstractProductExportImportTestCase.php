@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model;
 
 use Magento\CatalogImportExport\Model\Export\Product;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Annotation\DataFixture;
@@ -342,7 +344,7 @@ abstract class AbstractProductExportImportTestCase extends \PHPUnit\Framework\Te
             'row_id',
             'entity_id',
             'tier_price',
-            'media_gallery'
+            'media_gallery',
         ];
         $skippedAttributes = array_merge($replacedAttributes, $skippedAttributes);
         $this->cleanAttributesCache();
@@ -443,7 +445,7 @@ abstract class AbstractProductExportImportTestCase extends \PHPUnit\Framework\Te
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $csvfile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $appParams = \Magento\TestFramework\Helper\Bootstrap::getInstance()->getBootstrap()
@@ -456,7 +458,7 @@ abstract class AbstractProductExportImportTestCase extends \PHPUnit\Framework\Te
         $mediaDirectory->create('import');
         $importModel->setParameters(
             [
-                \Magento\ImportExport\Model\Import::FIELD_NAME_IMG_FILE_DIR => $mediaDir . '/import'
+                \Magento\ImportExport\Model\Import::FIELD_NAME_IMG_FILE_DIR => $mediaDir . '/import',
             ]
         );
         $uploader = $importModel->getUploader();

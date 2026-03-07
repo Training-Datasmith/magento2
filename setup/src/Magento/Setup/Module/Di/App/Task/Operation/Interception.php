@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\App\Task\Operation;
 
 use Magento\Framework\App;
@@ -93,7 +96,7 @@ class Interception implements OperationInterface
                 'ioObject' => $generatorIo,
                 'generatedEntities' => [
                     Interceptor::ENTITY_TYPE => \Magento\Setup\Module\Di\Code\Generator\Interceptor::class,
-                ]
+                ],
             ]
         );
         $configuration = $this->interceptionConfigurationBuilder->getInterceptionConfiguration($classesList);

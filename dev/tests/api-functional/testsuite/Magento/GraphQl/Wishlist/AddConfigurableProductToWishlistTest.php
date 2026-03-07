@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -308,7 +309,7 @@ MUTATION;
         foreach ($options as $id => $value) {
             $output[] = [
                 'uid' => $id,
-                'value' => $value
+                'value' => $value,
             ];
         }
         return 'entered_options: ' . preg_replace('/"([^"]+)"\s*:\s*/', '$1:', json_encode($output));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\MediaGalleryUi\Controller\Adminhtml\Asset;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Cms\Helper\Wysiwyg\Images;
+use Magento\Cms\Model\Wysiwyg\Images\Storage;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface;
-use Magento\Cms\Helper\Wysiwyg\Images;
-use Magento\Cms\Model\Wysiwyg\Images\Storage;
 
 /**
  * Controller to get selected asset for ui-select component
@@ -26,7 +27,7 @@ class GetSelected extends Action implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::media_gallery';
+    public const ADMIN_RESOURCE = 'Magento_Cms::media_gallery';
 
     /**
      * @var JsonFactory
@@ -90,7 +91,7 @@ class GetSelected extends Action implements HttpGetActionInterface
             $options[] = [
                 'value' => (string) $asset->getId(),
                 'label' => $asset->getTitle(),
-                'src' => $assetPath
+                'src' => $assetPath,
             ];
         }
 

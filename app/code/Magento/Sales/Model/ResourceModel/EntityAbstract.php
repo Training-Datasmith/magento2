@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Model\ResourceModel\Db\VersionControl\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\SalesSequence\Model\Manager;
 use Magento\Sales\Model\EntityInterface;
+use Magento\SalesSequence\Model\Manager;
 
 /**
  * Abstract sales entity provides to its children knowledge about eventPrefix and eventObject

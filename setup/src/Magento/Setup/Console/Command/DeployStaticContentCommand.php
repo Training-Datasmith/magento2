@@ -1,25 +1,27 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
-use Magento\Deploy\Console\InputValidator;
 use Magento\Deploy\Console\ConsoleLoggerFactory;
 use Magento\Deploy\Console\DeployStaticOptions as Options;
+use Magento\Deploy\Console\InputValidator;
+use Magento\Deploy\Service\DeployStaticContent;
+use Magento\Framework\App\Cache;
+use Magento\Framework\App\Cache\Type\Dummy as DummyCache;
 use Magento\Framework\App\State;
 use Magento\Framework\Console\Cli;
-use Psr\Log\LogLevel;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Setup\Model\ObjectManagerProvider;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Setup\Model\ObjectManagerProvider;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\Cache;
-use Magento\Framework\App\Cache\Type\Dummy as DummyCache;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Deploy\Service\DeployStaticContent;
 
 /**
  * Command to Deploy Static Content
@@ -132,7 +134,7 @@ class DeployStaticContentCommand extends Command
         try {
             /** @var DeployStaticContent $deployService */
             $deployService = $this->objectManager->create(DeployStaticContent::class, [
-                'logger' => $logger
+                'logger' => $logger,
             ]);
             $deployService->deploy($options);
         } catch (\Throwable $e) {
@@ -141,7 +143,7 @@ class DeployStaticContentCommand extends Command
         }
 
         if (!$refreshOnly) {
-            $logger->notice(PHP_EOL . "Execution time: " . (microtime(true) - $time));
+            $logger->notice(PHP_EOL . 'Execution time: ' . (microtime(true) - $time));
         }
 
         return $exitCode;
@@ -177,8 +179,8 @@ class DeployStaticContentCommand extends Command
     {
         $this->objectManager->configure([
             'preferences' => [
-                Cache::class => DummyCache::class
-            ]
+                Cache::class => DummyCache::class,
+            ],
         ]);
     }
 

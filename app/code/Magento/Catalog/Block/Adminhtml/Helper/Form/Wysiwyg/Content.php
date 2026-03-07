@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -72,7 +74,7 @@ class Content extends Generic
                 'style' => 'width:725px;height:460px',
                 'required' => true,
                 'force_load' => true,
-                'config' => $this->_wysiwygConfig->getConfig($config)
+                'config' => $this->_wysiwygConfig->getConfig($config),
             ]
         );
         $this->setForm($form);

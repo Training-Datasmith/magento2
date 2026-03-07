@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api\Data;
 
 /**
@@ -13,8 +16,8 @@ namespace Magento\SalesRule\Api\Data;
  */
 interface CouponInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const TYPE_MANUAL = 0;
-    const TYPE_GENERATED = 1;
+    public const TYPE_MANUAL = 0;
+    public const TYPE_GENERATED = 1;
 
     /**
      * Get coupon id

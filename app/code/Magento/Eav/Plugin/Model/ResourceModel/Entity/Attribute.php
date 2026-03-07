@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Plugin\Model\ResourceModel\Entity;
 
 use Magento\Eav\Model\Cache\Type;
@@ -17,7 +20,7 @@ class Attribute
     /**
      * Cache key for store label attribute
      */
-    const STORE_LABEL_ATTRIBUTE = 'EAV_STORE_LABEL_ATTRIBUTE';
+    public const STORE_LABEL_ATTRIBUTE = 'EAV_STORE_LABEL_ATTRIBUTE';
 
     /**
      * @var CacheInterface
@@ -73,7 +76,7 @@ class Attribute
                 $cacheId,
                 [
                     Type::CACHE_TAG,
-                    EntityAttribute::CACHE_TAG
+                    EntityAttribute::CACHE_TAG,
                 ]
             );
         }

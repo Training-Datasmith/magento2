@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class MultiselectTest extends AbstractFormTestCase
             'false' => [false, false],
             'int' => [15, [15]],
             'string' => ['some string', ['some string']],
-            'array' => [[1, 2, 3], [1, 2, 3]]
+            'array' => [[1, 2, 3], [1, 2, 3]],
         ];
     }
 
@@ -101,7 +102,7 @@ class MultiselectTest extends AbstractFormTestCase
             'false' => [false, false],
             'int' => [15, 15],
             'string' => ['some string', 'some string'],
-            'array' => [[1, 2, 3], '1,2,3']
+            'array' => [[1, 2, 3], '1,2,3'],
         ];
     }
 
@@ -144,7 +145,7 @@ class MultiselectTest extends AbstractFormTestCase
             'number' => [14, 'fourteen'],
             'string' => ['some key', 'some string'],
             'array' => [[14, 'some key'], 'fourteen, some string'],
-            'unknown' => [[14, 'some key', 'unknown'], 'fourteen, some string, ']
+            'unknown' => [[14, 'some key', 'unknown'], 'fourteen, some string, '],
         ];
     }
 
@@ -174,7 +175,7 @@ class MultiselectTest extends AbstractFormTestCase
             'number' => [14, ['14']],
             'string' => ['some key', ['some key']],
             'array' => [[14, 'some key'], ['14', 'some key']],
-            'unknown' => [[14, 'some key', 'unknown'], ['14', 'some key', 'unknown']]
+            'unknown' => [[14, 'some key', 'unknown'], ['14', 'some key', 'unknown']],
         ];
     }
 

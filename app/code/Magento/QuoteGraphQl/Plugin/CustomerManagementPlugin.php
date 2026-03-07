@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\QuoteGraphQl\Plugin;
 
 use Exception;
+use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\CustomerManagement as Subject;
-use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Quote\Model\Quote;
 
 class CustomerManagementPlugin

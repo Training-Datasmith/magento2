@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Cache;
 
 /**
@@ -40,7 +43,7 @@ class Edit extends \Magento\Backend\Block\Widget
                 'class' => 'save',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#config-edit-form']],
-                ]
+                ],
             ]
         );
         return parent::_prepareLayout();
@@ -115,7 +118,7 @@ class Edit extends \Magento\Backend\Block\Widget
             'rebuild_flat_catalog_product' => [
                 'label' => __('Rebuild Flat Catalog Product'),
                 'buttons' => [['name' => 'rebuild_flat_catalog_product', 'action' => __('Rebuild')]],
-            ]
+            ],
         ];
     }
 }

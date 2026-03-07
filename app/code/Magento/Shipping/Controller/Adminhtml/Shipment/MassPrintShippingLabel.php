@@ -1,20 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Controller\Adminhtml\Shipment;
 
-use Magento\Backend\App\Action;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\Ui\Component\MassAction\Filter;
 use Magento\Backend\App\Action\Context;
-use Magento\Shipping\Model\Shipping\LabelGenerator;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory;
+use Magento\Shipping\Model\Shipping\LabelGenerator;
+use Magento\Ui\Component\MassAction\Filter;
 
 class MassPrintShippingLabel extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
@@ -23,7 +25,7 @@ class MassPrintShippingLabel extends \Magento\Sales\Controller\Adminhtml\Order\A
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::shipment';
+    public const ADMIN_RESOURCE = 'Magento_Sales::shipment';
 
     /**
      * @var LabelGenerator

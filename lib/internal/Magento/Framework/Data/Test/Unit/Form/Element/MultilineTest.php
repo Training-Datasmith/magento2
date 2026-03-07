@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Multiline;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Framework\Data\Form\Element\Multiline
@@ -87,10 +88,10 @@ class MultilineTest extends TestCase
     public static function dataProviderValues()
     {
         return [
-            ["", 0, ""],
-            ["string1", 0, "string1"],
-            ["string1\nstring2", 0, "string1"],
-            ["string1\nstring2", 1, "string2"],
+            ['', 0, ''],
+            ['string1', 0, 'string1'],
+            ["string1\nstring2", 0, 'string1'],
+            ["string1\nstring2", 1, 'string2'],
             ["string1\nstring2", 2, null],
             [null, 0, null],
         ];

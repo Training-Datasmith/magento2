@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ScopedTest extends TestCase
 {
@@ -64,7 +65,7 @@ class ScopedTest extends TestCase
                 'configScope' => $this->_configScopeMock,
                 'cache' => $this->_cacheMock,
                 'cacheId' => 'tag',
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }
@@ -103,9 +104,9 @@ class ScopedTest extends TestCase
             [
                 'key_1',
                 ['key_1.1' => ['key_1.1.1' => 'value_1.1.1'], 'key_1.2' => ['some' => 'arrayValue']],
-                'error'
+                'error',
             ],
-            ['key_1/notExistedKey', 'defaultValue', 'defaultValue']
+            ['key_1/notExistedKey', 'defaultValue', 'defaultValue'],
         ];
     }
 

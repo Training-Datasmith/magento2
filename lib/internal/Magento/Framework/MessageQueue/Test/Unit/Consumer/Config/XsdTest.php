@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Consumer\Config;
 use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\Config\ValidationStateInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
 {
@@ -54,7 +55,7 @@ class XsdTest extends TestCase
         $dom = new Dom($fixtureXml, $validationState, [], null, null, $messageFormat);
         $actualErrors = [];
         $actualResult = $dom->validate($this->schemaFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
         $this->assertExpectedErrors($expectedErrors, $actualErrors);
     }
 
@@ -92,7 +93,7 @@ class XsdTest extends TestCase
                     "3:                    <consumer name=\"consumer1\" queue=\"queue2\" handler=\"handlerClassTwo::handlerMethodTwo\" consumerInstance=\"consumerClass2\" connection=\"db\"/>\n" .
                     "4:                    <consumer name=\"consumer3\" queue=\"queue3\" handler=\"handlerClassThree::handlerMethodThree\" consumerInstance=\"consumerClass3\"/>\n" .
                     "5:                    <consumer name=\"consumer4\" queue=\"queue4\" handler=\"handlerClassFour::handlerMethodFour\"/>\n" .
-                    "6:                    <consumer name=\"consumer5\" queue=\"queue4\"/>\n7:                </config>\n8:\n"
+                    "6:                    <consumer name=\"consumer5\" queue=\"queue4\"/>\n7:                </config>\n8:\n",
                 ],
             ],
             'invalid handler format' => [
@@ -117,7 +118,7 @@ class XsdTest extends TestCase
                     "3:                    <consumer name=\"consumer2\" queue=\"queue2\" handler=\"handlerClassOne2::handler_Method2\" consumerInstance=\"consumerClass2\" connection=\"db\"/>\n" .
                     "4:                    <consumer name=\"consumer3\" queue=\"queue3\" handler=\"handlerClassThree::handlerMethodThree\" consumerInstance=\"consumerClass3\"/>\n" .
                     "5:                    <consumer name=\"consumer4\" queue=\"queue4\" handler=\"handlerClassFour::handlerMethodFour\"/>\n" .
-                    "6:                    <consumer name=\"consumer5\" queue=\"queue4\"/>\n7:                </config>\n8:\n"
+                    "6:                    <consumer name=\"consumer5\" queue=\"queue4\"/>\n7:                </config>\n8:\n",
                 ],
             ],
             'invalid maxMessages format' => [
@@ -246,7 +247,7 @@ class XsdTest extends TestCase
         $dom = new Dom($fixtureXml, $validationState, [], null, null, $messageFormat);
         $actualErrors = [];
         $actualResult = $dom->validate($this->schemaQueueFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
         $this->assertExpectedErrors($expectedErrors, $actualErrors);
     }
 
@@ -286,7 +287,7 @@ class XsdTest extends TestCase
                     "2:                    <broker topic=\"asd\">\n" .
                     "3:                        <queue name=\"queue1\" consumer=\"consumer1\" handler=\"handlerClass_One1::handlerMethod1\" consumerInstance=\"consumerClass1\" maxMessages=\"5\"/>\n" .
                     "4:                        <queue name=\"queue2\" consumer=\"consumer2\" handler=\"handlerClassOne2::handler_Method2\" consumerInstance=\"consumerClass2\" maxMessages=\"5\"/>\n" .
-                    "5:                    </broker>\n6:                </config>\n7:\n"
+                    "5:                    </broker>\n6:                </config>\n7:\n",
                 ],
             ],
             'invalid instance format' => [
@@ -308,7 +309,7 @@ class XsdTest extends TestCase
                     "2:                     <broker topic=\"asd\">\n" .
                     "3:                        <queue name=\"queue1\" consumer=\"consumer1\" handler=\"handlerClassOne1::handlerMethod1\" consumerInstance=\"consumer_Class1\" maxMessages=\"5\"/>\n" .
                     "4:                        <queue name=\"queue2\" consumer=\"consumer2\" handler=\"handlerClassOne2::handlerMethod2\" consumerInstance=\"consumerClass_2\" maxMessages=\"5\"/>\n" .
-                    "5:                    </broker>\n6:                </config>\n7:\n"
+                    "5:                    </broker>\n6:                </config>\n7:\n",
                 ],
             ],
             'invalid maxMessages format' => [
@@ -394,7 +395,7 @@ class XsdTest extends TestCase
                 );
             } else {
                 // For all other errors, use exact match
-                $this->assertContains($error, $actualErrors, "Validation errors does not match.");
+                $this->assertContains($error, $actualErrors, 'Validation errors does not match.');
             }
         }
     }

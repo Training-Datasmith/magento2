@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
 
         // Recreate arrayManagerMock to allow tracking of findPath calls
         $this->arrayManagerMock = $this->createMock(ArrayManager::class);
-        
+
         // Only configure the methods actually used by CustomOptions
         $this->arrayManagerMock->method('remove')
             ->willReturnCallback(function ($path, $data) {
@@ -40,7 +41,7 @@ class CustomOptionsTest extends AbstractModifierTestCase
             CustomOptionsModifier::class,
             [
                 'locator' => $this->locatorMock,
-                'arrayManager' => $this->arrayManagerMock
+                'arrayManager' => $this->arrayManagerMock,
             ]
         );
     }

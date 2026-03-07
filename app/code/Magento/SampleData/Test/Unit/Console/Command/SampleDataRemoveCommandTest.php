@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -85,8 +86,8 @@ class SampleDataRemoveCommandTest extends AbstractSampleDataCommandTestCase
                 ],
                 'appRunResult' => 1,
                 'composerJsonContent' => [
-                    "require" => [
-                        "magento/product-community-edition" => "0.0.1",
+                    'require' => [
+                        'magento/product-community-edition' => '0.0.1',
                     ],
                 ],
                 'expectedMsg' => 'There is an error during remove sample data.' . PHP_EOL,
@@ -97,9 +98,9 @@ class SampleDataRemoveCommandTest extends AbstractSampleDataCommandTestCase
                 ],
                 'appRunResult' => 0,
                 'composerJsonContent' => [
-                    "require" => [
-                        "magento/product-community-edition" => "0.0.1",
-                        "magento/module-cms-sample-data" => "1.0.0-beta",
+                    'require' => [
+                        'magento/product-community-edition' => '0.0.1',
+                        'magento/module-cms-sample-data' => '1.0.0-beta',
                     ],
                 ],
                 'expectedMsg' => '',
@@ -134,7 +135,7 @@ class SampleDataRemoveCommandTest extends AbstractSampleDataCommandTestCase
     protected function expectedComposerArgumentsSampleDataCommands(
         array $sampleDataPackages,
         string $pathToComposerJson
-    ) : array {
+    ): array {
         return [
             'command' => 'remove',
             '--working-dir' => $pathToComposerJson,

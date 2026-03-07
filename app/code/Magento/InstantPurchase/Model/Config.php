@@ -1,21 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Instant purchase configuration.
  */
 class Config
 {
-    const ACTIVE = 'sales/instant_purchase/active';
-    const BUTTON_TEXT = 'sales/instant_purchase/button_text';
+    public const ACTIVE = 'sales/instant_purchase/active';
+    public const BUTTON_TEXT = 'sales/instant_purchase/button_text';
 
     /**
      * @var ScopeConfigInterface

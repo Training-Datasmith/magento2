@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\TemplateEngine\Xhtml;
 
 /**
@@ -10,9 +13,9 @@ namespace Magento\Framework\View\TemplateEngine\Xhtml;
  */
 class Template
 {
-    const XML_VERSION = '1.0';
+    public const XML_VERSION = '1.0';
 
-    const XML_ENCODING = 'UTF-8';
+    public const XML_ENCODING = 'UTF-8';
 
     /**
      * @var \Psr\Log\LoggerInterface
@@ -56,7 +59,7 @@ class Template
      */
     public function append($content)
     {
-        $ownerDocument= $this->templateNode->ownerDocument;
+        $ownerDocument = $this->templateNode->ownerDocument;
         $document = new \DOMDocument();
         $document->loadXml($content, LIBXML_PARSEHUGE);
         $this->templateNode->appendChild(

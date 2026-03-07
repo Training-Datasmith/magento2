@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Test\Less;
 
-use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\Framework\App\Utility\Files;
 use Magento\Test\Php\LiveCodeTest as PHPCodeTest;
+use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer\Wrapper;
 use PHPUnit\Framework\TestCase;
 

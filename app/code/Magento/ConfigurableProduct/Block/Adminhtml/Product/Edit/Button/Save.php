@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\Button;
 
-use Magento\Ui\Component\Control\Container;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Generic;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableType;
+use Magento\Ui\Component\Control\Container;
 
 class Save extends Generic
 {
@@ -31,12 +34,12 @@ class Save extends Generic
                                 'targetName' => $this->getSaveTarget(),
                                 'actionName' => $this->getSaveAction(),
                                 'params' => [
-                                    false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),
@@ -64,13 +67,13 @@ class Save extends Generic
                                 'params' => [
                                     true,
                                     [
-                                        'back' => 'new'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'back' => 'new',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
@@ -88,13 +91,13 @@ class Save extends Generic
                                     'params' => [
                                         true,
                                         [
-                                            'back' => 'duplicate'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'back' => 'duplicate',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ];
         }
@@ -110,12 +113,12 @@ class Save extends Generic
                                 'targetName' => $this->getSaveTarget(),
                                 'actionName' => $this->getSaveAction(),
                                 'params' => [
-                                    true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 

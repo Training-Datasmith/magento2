@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Theme;
 
 use Magento\Framework\Model\AbstractModel;
@@ -174,7 +177,7 @@ class File extends AbstractModel implements FileInterface
         return [
             'id' => $this->getId(),
             'name' => $this->getFileName(),
-            'temporary' => $this->getData('is_temporary') ? $this->getId() : 0
+            'temporary' => $this->getData('is_temporary') ? $this->getId() : 0,
         ];
     }
 

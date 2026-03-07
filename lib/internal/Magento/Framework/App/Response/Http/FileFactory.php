@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -107,8 +108,8 @@ class FileFactory
                 'contentType' => $contentType,
                 'contentLength' => $contentLength,
                 'directoryCode' => $baseDir,
-                'remove' => is_array($content) && !empty($content['rm'])
-            ]
+                'remove' => is_array($content) && !empty($content['rm']),
+            ],
         ]);
     }
 

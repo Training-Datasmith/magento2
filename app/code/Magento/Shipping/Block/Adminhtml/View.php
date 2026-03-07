@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Block\Adminhtml;
 
 /**
@@ -70,7 +73,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Print'),
                     'class' => 'save',
-                    'onclick' => 'setLocation(\'' . $this->getPrintUrl() . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getPrintUrl() . '\')',
                 ]
             );
         }
@@ -121,7 +124,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
             'sales/order/view',
             [
                 'order_id' => $this->getShipment() ? $this->getShipment()->getOrderId() : null,
-                'active_tab' => 'order_shipments'
+                'active_tab' => 'order_shipments',
             ]
         );
     }

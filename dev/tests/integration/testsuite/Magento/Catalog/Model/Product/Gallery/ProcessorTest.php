@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Gallery;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -46,9 +49,9 @@ class ProcessorTest extends \PHPUnit\Framework\TestCase
         $mediaDirectory->create($config->getBaseTmpMediaPath());
         $mediaDirectory->create($config->getBaseMediaPath());
 
-        $mediaDirectory->getDriver()->filePutContents(self::$_mediaTmpDir . "/magento_image.jpg", file_get_contents($fixtureDir . "/magento_image.jpg"));
-        $mediaDirectory->getDriver()->filePutContents(self::$_mediaDir . "/magento_image.jpg", file_get_contents($fixtureDir . "/magento_image.jpg"));
-        $mediaDirectory->getDriver()->filePutContents(self::$_mediaTmpDir . "/magento_small_image.jpg", file_get_contents($fixtureDir . "/magento_small_image.jpg"));
+        $mediaDirectory->getDriver()->filePutContents(self::$_mediaTmpDir . '/magento_image.jpg', file_get_contents($fixtureDir . '/magento_image.jpg'));
+        $mediaDirectory->getDriver()->filePutContents(self::$_mediaDir . '/magento_image.jpg', file_get_contents($fixtureDir . '/magento_image.jpg'));
+        $mediaDirectory->getDriver()->filePutContents(self::$_mediaTmpDir . '/magento_small_image.jpg', file_get_contents($fixtureDir . '/magento_small_image.jpg'));
 
     }
 

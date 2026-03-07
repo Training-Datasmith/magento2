@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\PageCache;
 
 use Magento\Framework\App\ObjectManager;
@@ -59,7 +62,7 @@ class Identifier implements IdentifierInterface
             $baseUrl,
             $query,
             $this->request->get(\Magento\Framework\App\Response\Http::COOKIE_VARY_STRING)
-                ?: $this->context->getVaryString()
+                ?: $this->context->getVaryString(),
         ];
         return sha1($this->serializer->serialize($data));
     }

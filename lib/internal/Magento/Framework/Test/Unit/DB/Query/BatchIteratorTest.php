@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -151,7 +152,7 @@ class BatchIteratorTest extends TestCase
             ['max' => 10, 'cnt' => 10],
             ['max' => 20, 'cnt' => 10],
             ['max' => 25, 'cnt' => 5],
-            ['max' => null, 'cnt' => 0]
+            ['max' => null, 'cnt' => 0],
         ];
 
         $this->connectionMock
@@ -203,7 +204,7 @@ class BatchIteratorTest extends TestCase
             $this->selectMock,
             [
                 new \Zend_Db_Expr('MAX(' . $this->rangeFieldAlias . ') as max'),
-                new \Zend_Db_Expr('COUNT(*) as cnt')
+                new \Zend_Db_Expr('COUNT(*) as cnt'),
             ]
         );
         $this->connectionMock->expects($this->exactly(3))

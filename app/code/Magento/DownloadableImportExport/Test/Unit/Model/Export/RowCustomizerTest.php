@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\DownloadableImportExport\Test\Unit\Model\Export;
 
-use Magento\DownloadableImportExport\Model\Export\RowCustomizer;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Downloadable\Model\LinkRepository;
 use Magento\Downloadable\Model\SampleRepository;
+use Magento\DownloadableImportExport\Model\Export\RowCustomizer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;

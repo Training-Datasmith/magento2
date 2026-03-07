@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,11 @@ declare(strict_types=1);
 /**
  * Test theme domain physical model
  */
+
 namespace Magento\Theme\Test\Unit\Model\Theme\Domain;
 
-use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Theme\Model\CopyService;
 use Magento\Theme\Model\ResourceModel\Theme\Collection;
 use Magento\Theme\Model\Theme;

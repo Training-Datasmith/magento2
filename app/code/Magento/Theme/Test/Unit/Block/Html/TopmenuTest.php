@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ HTML;
                 'urlBuilder' => $this->urlBuilder,
                 'storeManager' => $this->storeManager,
                 'eventManager' => $this->eventManagerMock,
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
     }
@@ -139,17 +140,17 @@ HTML;
                     [
                         'menu' => $treeNode,
                         'block' => $topmenuBlock,
-                        'request' => $this->requestMock
+                        'request' => $this->requestMock,
                     ],
-                    $this->eventManagerMock
+                    $this->eventManagerMock,
                 ],
                 [
                     'page_block_html_topmenu_gethtml_after',
                     [
                         'menu' => $treeNode,
-                        'transportObject' => $transportObject
+                        'transportObject' => $transportObject,
                     ],
-                    $this->eventManagerMock
+                    $this->eventManagerMock,
                 ],
             ]);
 
@@ -175,17 +176,17 @@ HTML;
                     [
                         'menu' => $treeNode,
                         'block' => $topmenuBlock,
-                        'request' => $this->requestMock
+                        'request' => $this->requestMock,
                     ],
-                    $this->eventManagerMock
+                    $this->eventManagerMock,
                 ],
                 [
                     'page_block_html_topmenu_gethtml_after',
                     [
                         'menu' => $treeNode,
-                        'transportObject' => $transportObject
+                        'transportObject' => $transportObject,
                     ],
-                    $this->eventManagerMock
+                    $this->eventManagerMock,
                 ],
             ]);
 
@@ -245,7 +246,7 @@ HTML;
                     'id' => $id,
                     'url' => "http://magento2/category-$i.html",
                     'is_active' => $i == 0 ? $isCurrentItem : false,
-                    'is_current_item' => $i == 0 ? $isCurrentItem : false
+                    'is_current_item' => $i == 0 ? $isCurrentItem : false,
 
                 ]
             );
@@ -296,7 +297,7 @@ HTML;
         $nodeMockData = [
             'data' => [],
             'idField' => 'root',
-            'tree' => $treeMock
+            'tree' => $treeMock,
         ];
 
         $nodeMock = $this->createMock(Node::class);

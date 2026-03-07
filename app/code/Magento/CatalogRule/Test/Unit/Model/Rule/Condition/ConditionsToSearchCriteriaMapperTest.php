@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -435,12 +436,12 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
     public function testMapCombinedConditionWithValueFalse()
     {
         $conditionMock = $this->createSimpleConditionMock('sku', '==', 'test-sku');
-        
+
         $combinedConditionMock = $this->createPartialMockWithReflection(
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         $combinedConditionMock->method('getConditions')->willReturn([$conditionMock]);
         $combinedConditionMock->method('getAggregator')->willReturn('all');
         $combinedConditionMock->method('getValue')->willReturn(false); // This triggers reverse logic
@@ -449,7 +450,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             Filter::class,
             ['getConditionType', 'setConditionType']
         );
-        
+
         $filterMock->method('getConditionType')->willReturn('eq');
         $filterMock->expects($this->once())
             ->method('setConditionType')
@@ -502,7 +503,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             '!{}' => 'nlike',
             '()' => 'in',
             '!()' => 'nin',
-            '<=>' => 'is_null'
+            '<=>' => 'is_null',
         ];
 
         foreach ($operatorMappings as $ruleOp => $sqlOp) {
@@ -567,7 +568,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
     {
         $aggregatorMappings = [
             'all' => 'AND',
-            'any' => 'OR'
+            'any' => 'OR',
         ];
 
         foreach ($aggregatorMappings as $ruleAgg => $sqlAgg) {
@@ -728,12 +729,12 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
         $this->expectExceptionMessage('Undefined SQL operator');
 
         $conditionMock = $this->createSimpleConditionMock('sku', '==', 'test-sku');
-        
+
         $combinedConditionMock = $this->createPartialMockWithReflection(
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         $combinedConditionMock->method('getConditions')->willReturn([$conditionMock]);
         $combinedConditionMock->method('getAggregator')->willReturn('all');
         $combinedConditionMock->method('getValue')->willReturn(false); // Triggers reverse logic
@@ -742,7 +743,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             Filter::class,
             ['getConditionType', 'setConditionType']
         );
-        
+
         // Return an invalid operator that's not in the reversal map
         $filterMock->method('getConditionType')->willReturn('INVALID_SQL_OP');
 
@@ -786,12 +787,12 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
 
         foreach ($reversalMappings as $original => $reversed) {
             $conditionMock = $this->createSimpleConditionMock('sku', '==', 'test-sku');
-            
+
             $combinedConditionMock = $this->createPartialMockWithReflection(
                 CombinedCondition::class,
                 ['getAggregator', 'getConditions', 'getValue']
             );
-            
+
             $combinedConditionMock->method('getConditions')->willReturn([$conditionMock]);
             $combinedConditionMock->method('getAggregator')->willReturn('all');
             $combinedConditionMock->method('getValue')->willReturn(false);
@@ -800,7 +801,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
                 Filter::class,
                 ['getConditionType', 'setConditionType']
             );
-            
+
             $filterMock->method('getConditionType')->willReturn($original);
             $filterMock->expects($this->once())
                 ->method('setConditionType')
@@ -849,7 +850,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         $innerCombined->method('getConditions')->willReturn([$innerCondition]);
         $innerCombined->method('getAggregator')->willReturn('all');
         $innerCombined->method('getValue')->willReturn(true);
@@ -858,7 +859,7 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         $outerCombined->method('getConditions')->willReturn([$innerCombined]);
         $outerCombined->method('getAggregator')->willReturn('all');
         $outerCombined->method('getValue')->willReturn(false); // Triggers reverse logic
@@ -914,13 +915,13 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
     {
         // Create a valid condition and an empty combined condition (which returns null)
         $validCondition = $this->createSimpleConditionMock('sku', '==', 'test-sku');
-        
+
         // Create an empty combined condition that will return null
         $emptyCombinedCondition = $this->createPartialMockWithReflection(
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         $emptyCombinedCondition->method('getConditions')->willReturn([]); // Empty conditions
         $emptyCombinedCondition->method('getAggregator')->willReturn('all');
         $emptyCombinedCondition->method('getValue')->willReturn(true);
@@ -930,11 +931,11 @@ class ConditionsToSearchCriteriaMapperTest extends TestCase
             CombinedCondition::class,
             ['getAggregator', 'getConditions', 'getValue']
         );
-        
+
         // Mix valid condition with empty combined condition
         $mainCombinedCondition->method('getConditions')->willReturn([
             $validCondition,
-            $emptyCombinedCondition  // This will return null and be skipped
+            $emptyCombinedCondition,  // This will return null and be skipped
         ]);
         $mainCombinedCondition->method('getAggregator')->willReturn('all');
         $mainCombinedCondition->method('getValue')->willReturn(true);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product\Type;
 
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as ProductAttributeCollectionFactory;
@@ -98,7 +101,7 @@ abstract class AbstractType
      */
     protected $_genericMessageTemplates = [
         RowValidatorInterface::ERROR_INVALID_WEIGHT => 'Weight value is incorrect',
-        RowValidatorInterface::ERROR_INVALID_WEBSITE => 'Provided Website code doesn\'t exist'
+        RowValidatorInterface::ERROR_INVALID_WEBSITE => 'Provided Website code doesn\'t exist',
     ];
 
     /**

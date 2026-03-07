@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\Layer;
 
 use Magento\Catalog\Model\Config\LayerCategoryConfig;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**

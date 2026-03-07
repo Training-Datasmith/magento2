@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Locks;
 
+use Magento\Backend\App\Action;
 use Magento\Customer\Model\AuthenticationInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Backend\App\Action;
 
 /**
  * Unlock Customer Controller
@@ -20,7 +23,7 @@ class Unlock extends \Magento\Backend\App\Action implements HttpGetActionInterfa
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::manage';
+    public const ADMIN_RESOURCE = 'Magento_Customer::manage';
 
     /**
      * Authentication

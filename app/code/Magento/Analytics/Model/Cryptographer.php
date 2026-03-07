@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -13,33 +16,22 @@ use Magento\Framework\Exception\LocalizedException;
 class Cryptographer
 {
     /**
-     * Resource for handling MBI token value.
-     *
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
      * Cipher method for encryption.
-     *
-     * @var string
      */
-    private $cipherMethod = 'AES-256-CBC';
+    private string $cipherMethod = 'AES-256-CBC';
 
     /**
      * @var EncodedContextFactory
      */
     private $encodedContextFactory;
 
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param EncodedContextFactory $encodedContextFactory
-     */
     public function __construct(
-        AnalyticsToken $analyticsToken,
+        /**
+         * Resource for handling MBI token value.
+         */
+        private readonly AnalyticsToken $analyticsToken,
         EncodedContextFactory $encodedContextFactory
     ) {
-        $this->analyticsToken = $analyticsToken;
         $this->encodedContextFactory = $encodedContextFactory;
     }
 
@@ -55,7 +47,7 @@ class Cryptographer
         if (!is_string($source)) {
             try {
                 $source = (string)$source;
-            } catch (\Exception $e) {
+            } catch (\Exception) {
                 throw new LocalizedException(
                     __(
                         'The data is invalid. '
@@ -71,7 +63,7 @@ class Cryptographer
         }
         $initializationVector = $this->getInitializationVector();
 
-        $encodedContext = $this->encodedContextFactory->create([
+        return $this->encodedContextFactory->create([
             'content' => openssl_encrypt(
                 $source,
                 $this->cipherMethod,
@@ -81,17 +73,14 @@ class Cryptographer
             ),
             'initializationVector' => $initializationVector,
         ]);
-
-        return $encodedContext;
     }
 
     /**
      * Return key for encryption.
      *
-     * @return string
      * @throws LocalizedException
      */
-    private function getKey()
+    private function getKey(): string
     {
         $token = $this->analyticsToken->getToken();
         if (!$token) {
@@ -112,10 +101,8 @@ class Cryptographer
 
     /**
      * Return each time generated random initialization vector which depends on the cipher method.
-     *
-     * @return string
      */
-    private function getInitializationVector()
+    private function getInitializationVector(): string
     {
         $ivSize = openssl_cipher_iv_length($this->getCipherMethod());
         return openssl_random_pseudo_bytes($ivSize);
@@ -125,12 +112,11 @@ class Cryptographer
      * Check that cipher method is allowed for encryption.
      *
      * @param string $cipherMethod
-     * @return bool
      */
-    private function validateCipherMethod($cipherMethod)
+    private function validateCipherMethod($cipherMethod): bool
     {
         $methods = array_map(
-            'strtolower',
+            strtolower(...),
             openssl_get_cipher_methods()
         );
         $cipherMethod = strtolower($cipherMethod);

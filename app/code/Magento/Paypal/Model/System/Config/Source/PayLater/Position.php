@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class Position
     {
         return [
             'header' => __('Header (center)'),
-            'near_pp_button' => __('Under PayPal Checkout buttons')
+            'near_pp_button' => __('Under PayPal Checkout buttons'),
         ];
     }
 
@@ -34,7 +35,7 @@ class Position
     {
         return [
             'header' => __('Header (center)'),
-            'sidebar' => __('Sidebar')
+            'sidebar' => __('Sidebar'),
         ];
     }
 
@@ -46,7 +47,7 @@ class Position
     public function getPositionsCheckout(): array
     {
         return [
-            'near_pp_button' => __('Under PayPal Checkout buttons')
+            'near_pp_button' => __('Under PayPal Checkout buttons'),
         ];
     }
 
@@ -72,7 +73,7 @@ class Position
     {
         return [
             'header' => __('Header (center)'),
-            'near_pp_button' => __('Under PayPal Checkout buttons')
+            'near_pp_button' => __('Under PayPal Checkout buttons'),
         ];
     }
 }

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Model\Config;
 
-use Magento\Framework\Component\DirSearch;
 use Magento\Framework\Component\ComponentRegistrar;
+use Magento\Framework\Component\DirSearch;
 
 class FileResolver implements \Magento\Framework\Config\FileResolverInterface
 {

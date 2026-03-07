@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class FileTest extends TestCase
     public function testSendResponseWithFileThatDoesNotExist(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $directory = $this->createMock(ReadInterface::class);
         $this->filesystemMock->expects($this->once())
@@ -131,10 +132,10 @@ class FileTest extends TestCase
         $fileName = 'file.pdf';
         $fileMimetype = 'application/pdf';
         $stat = [
-            'size' => $fileSize
+            'size' => $fileSize,
         ];
         $options = [
-            'filePath' => $filePath
+            'filePath' => $filePath,
         ];
         $directory = $this->createMock(ReadInterface::class);
         $directory->expects($this->once())
@@ -220,11 +221,11 @@ class FileTest extends TestCase
         $fileName = 'file.pdf';
         $fileMimetype = 'application/pdf';
         $stat = [
-            'size' => $fileSize
+            'size' => $fileSize,
         ];
         $options = [
             'filePath' => $filePath,
-            'remove' => true
+            'remove' => true,
         ];
         $directory = $this->createMock(ReadInterface::class);
         $directory->expects($this->once())
@@ -350,7 +351,7 @@ class FileTest extends TestCase
     public function testSetHeader(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -363,7 +364,7 @@ class FileTest extends TestCase
     public function testGetHeader(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -376,7 +377,7 @@ class FileTest extends TestCase
     public function testClearHeader(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -389,7 +390,7 @@ class FileTest extends TestCase
     public function testSetBody(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -402,7 +403,7 @@ class FileTest extends TestCase
     public function testAppendBody(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -415,7 +416,7 @@ class FileTest extends TestCase
     public function testGetContent(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())
@@ -427,7 +428,7 @@ class FileTest extends TestCase
     public function testSetContent(): void
     {
         $options = [
-            'filePath' => 'path/to/file.pdf'
+            'filePath' => 'path/to/file.pdf',
         ];
         $model = $this->getModel($options);
         $this->responseMock->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Quote\Model;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
+use Magento\Customer\Model\Data\Address as CustomerAddress;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\ExtensibleDataInterface;
 use Magento\Framework\App\ObjectManager;
@@ -27,7 +29,6 @@ use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Quote\Model\Quote\TotalsCollector;
 use Magento\Quote\Model\ResourceModel\Quote\Address as QuoteAddressResource;
-use Magento\Customer\Model\Data\Address as CustomerAddress;
 
 /**
  * Shipping method read service

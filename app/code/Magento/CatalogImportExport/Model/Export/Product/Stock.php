@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class Stock
         );
         $cond = [
             '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=1 AND {{table}}.is_in_stock=1',
-            '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=0'
+            '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=0',
         ];
 
         if ($manageStock) {

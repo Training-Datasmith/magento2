@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,28 +8,28 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Price\Action;
 
+use Magento\Catalog\Model\Indexer\Product\Price\Action\Rows;
+use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
+use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Factory;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\TierPrice;
+use Magento\Directory\Model\CurrencyFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Select;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Indexer\CacheContext;
 use Magento\Framework\Indexer\DimensionalIndexerInterface;
+use Magento\Framework\Indexer\MultiDimensionProvider;
 use Magento\Framework\Search\Request\Dimension;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Directory\Model\CurrencyFactory;
-use Magento\Catalog\Model\Product\Type;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Factory;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\TierPrice;
-use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
-use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
-use Magento\Catalog\Model\Indexer\Product\Price\Action\Rows;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\DB\Select;
-use Magento\Framework\Indexer\MultiDimensionProvider;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test coverage for the rows action
@@ -103,8 +104,8 @@ class RowsTest extends TestCase
         $objects = [
             [
                 CacheContext::class,
-                $this->createMock(CacheContext::class)
-            ]
+                $this->createMock(CacheContext::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         $this->config = $this->createMock(ScopeConfigInterface::class);
@@ -199,7 +200,7 @@ class RowsTest extends TestCase
             ->willReturn('');
         $adapter->expects($this->exactly(2))
             ->method('getIndexList')
-            ->willReturn(['entity_id'=>['COLUMNS_LIST'=>['test']]]);
+            ->willReturn(['entity_id' => ['COLUMNS_LIST' => ['test']]]);
         $adapter->expects($this->exactly(2))
             ->method('getPrimaryKeyName')
             ->willReturn('entity_id');
@@ -258,7 +259,7 @@ class RowsTest extends TestCase
             ->willReturn('');
         $adapter->expects($this->exactly(2))
             ->method('getIndexList')
-            ->willReturn(['entity_id'=>['COLUMNS_LIST'=>['test']]]);
+            ->willReturn(['entity_id' => ['COLUMNS_LIST' => ['test']]]);
         $adapter->expects($this->exactly(2))
             ->method('getPrimaryKeyName')
             ->willReturn('entity_id');

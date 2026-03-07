@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector\Http;
 
 use Laminas\Http\Response;
@@ -21,8 +24,6 @@ interface ClientInterface
      *
      * @param string $method
      * @param string $url
-     * @param array $body
-     * @param array $headers
      * @param string $version
      *
      * @return Response

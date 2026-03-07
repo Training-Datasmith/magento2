@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -268,12 +269,12 @@ class AddSimpleProductToCartSingleMutationTest extends GraphQlAbstract
             [
                 [
                     'sku' => $product1->getSku(),
-                    'quantity' => 2
+                    'quantity' => 2,
                 ],
                 [
                     'sku' => $product2->getSku(),
-                    'quantity' => 3
-                ]
+                    'quantity' => 3,
+                ],
             ]
         );
         $response = $this->graphQlMutation($query);
@@ -317,12 +318,12 @@ class AddSimpleProductToCartSingleMutationTest extends GraphQlAbstract
             [
                 [
                     'sku' => $product1->getSku(),
-                    'quantity' => 1
+                    'quantity' => 1,
                 ],
                 [
                     'sku' => $product3->getSku(),
-                    'quantity' => 1
-                ]
+                    'quantity' => 1,
+                ],
             ]
         );
         $response = $this->graphQlMutation($query);
@@ -368,12 +369,12 @@ class AddSimpleProductToCartSingleMutationTest extends GraphQlAbstract
             [
                 [
                     'sku' => $product1->getSku(),
-                    'quantity' => 2
+                    'quantity' => 2,
                 ],
                 [
                     'sku' => $product2->getSku(),
-                    'quantity' => 3
-                ]
+                    'quantity' => 3,
+                ],
             ]
         );
         $response = $this->graphQlMutation($query);
@@ -413,12 +414,12 @@ class AddSimpleProductToCartSingleMutationTest extends GraphQlAbstract
         return [
             'Non-existent SKU' => [
                 'non-existent',
-                'Could not find a product with SKU "non-existent"'
+                'Could not find a product with SKU "non-existent"',
             ],
             'Empty SKU' => [
                 '',
-                'Could not find a product with SKU ""'
-            ]
+                'Could not find a product with SKU ""',
+            ],
         ];
     }
 
@@ -430,12 +431,12 @@ class AddSimpleProductToCartSingleMutationTest extends GraphQlAbstract
         return [
             'More quantity than in stock' => [
                 101,
-                'Not enough items for sale'
+                'Not enough items for sale',
             ],
             'Quantity equals zero' => [
                 0,
-                'The product quantity should be greater than 0'
-            ]
+                'The product quantity should be greater than 0',
+            ],
         ];
     }
 

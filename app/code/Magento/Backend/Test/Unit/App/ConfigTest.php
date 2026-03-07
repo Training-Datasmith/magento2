@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Backend\App\Config;
 use Magento\Backend\App\Config as BackendConfig;
 use Magento\Framework\App\Config as FrameworkConfig;
 use Magento\Framework\App\Config\Data;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -98,7 +99,7 @@ class ConfigTest extends TestCase
             ['c', '0', false],
             ['d', '', false],
             ['e', 'some string', true],
-            ['f', 1, true]
+            ['f', 1, true],
         ];
     }
 

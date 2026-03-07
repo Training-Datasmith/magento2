@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\System\Message;
 
 /**
@@ -11,42 +14,14 @@ namespace Magento\AdminNotification\Model\System\Message;
  */
 class CacheOutdated implements \Magento\Framework\Notification\MessageInterface
 {
-    /**
-     * @var \Magento\Framework\UrlInterface
-     */
-    protected $_urlBuilder;
-
-    /**
-     * @var \Magento\Framework\AuthorizationInterface
-     */
-    protected $_authorization;
-
-    /**
-     * @var \Magento\Framework\App\Cache\TypeListInterface
-     */
-    protected $_cacheTypeList;
-
-    /**
-     * @param \Magento\Framework\AuthorizationInterface $authorization
-     * @param \Magento\Framework\UrlInterface $urlBuilder
-     * @param \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
-     */
-    public function __construct(
-        \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\Framework\UrlInterface $urlBuilder,
-        \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
-    ) {
-        $this->_authorization = $authorization;
-        $this->_urlBuilder = $urlBuilder;
-        $this->_cacheTypeList = $cacheTypeList;
+    public function __construct(protected \Magento\Framework\AuthorizationInterface $_authorization, protected \Magento\Framework\UrlInterface $_urlBuilder, protected \Magento\Framework\App\Cache\TypeListInterface $_cacheTypeList)
+    {
     }
 
     /**
      * Get array of cache types which require data refresh
-     *
-     * @return array
      */
-    protected function _getCacheTypesForRefresh()
+    protected function _getCacheTypesForRefresh(): array
     {
         $output = [];
         foreach ($this->_cacheTypeList->getInvalidated() as $type) {
@@ -57,10 +32,8 @@ class CacheOutdated implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Retrieve unique message identity
-     *
-     * @return string
      */
-    public function getIdentity()
+    public function getIdentity(): string
     {
         // md5() here is not for cryptographic use.
         // phpcs:ignore Magento2.Security.InsecureFunction
@@ -69,10 +42,8 @@ class CacheOutdated implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Check whether
-     *
-     * @return bool
      */
-    public function isDisplayed()
+    public function isDisplayed(): bool
     {
         return $this->_authorization->isAllowed(
             'Magento_Backend::cache'
@@ -83,16 +54,13 @@ class CacheOutdated implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Retrieve message text
-     *
-     * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         $cacheTypes = implode(', ', $this->_getCacheTypesForRefresh());
         $message = __('One or more of the Cache Types are invalidated: %1. ', $cacheTypes) . ' ';
         $url = $this->_urlBuilder->getUrl('adminhtml/cache');
-        $message .= __('Please go to <a href="%1">Cache Management</a> and refresh cache types.', $url);
-        return $message;
+        return $message . __('Please go to <a href="%1">Cache Management</a> and refresh cache types.', $url);
     }
 
     /**
@@ -107,10 +75,8 @@ class CacheOutdated implements \Magento\Framework\Notification\MessageInterface
 
     /**
      * Retrieve message severity
-     *
-     * @return int
      */
-    public function getSeverity()
+    public function getSeverity(): int
     {
         return \Magento\Framework\Notification\MessageInterface::SEVERITY_CRITICAL;
     }

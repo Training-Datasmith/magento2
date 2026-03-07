@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -184,7 +186,7 @@ class JoinDirectivesTest extends \Magento\TestFramework\TestCase\WebapiAbstract
         return [
             'firstname' => $this->user->getFirstname(),
             'lastname' => $this->user->getLastname(),
-            'email' => $this->user->getEmail()
+            'email' => $this->user->getEmail(),
         ];
     }
 }

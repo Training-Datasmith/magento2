@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Constraint option
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator\Constraint;
 
 class Option implements \Magento\Framework\Validator\Constraint\OptionInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,19 +13,18 @@ use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\AsynchronousOperations\Model\BulkManagement;
 use Magento\AsynchronousOperations\Model\BulkStatus;
-use Magento\Framework\MessageQueue\BulkPublisherInterface;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Model\Indexer\Product\Flat\Processor as FlatProcessor;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceProcessor;
-use Magento\Framework\Bulk\OperationManagementInterface;
 use Magento\Catalog\Model\Product\Action;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\Bulk\OperationManagementInterface;
 use Magento\Framework\EntityManager\EntityManager;
-use Magento\Catalog\Model\Attribute\Backend\Consumer;
+use Magento\Framework\MessageQueue\BulkPublisherInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * Test for Mysql Consumer execution
@@ -76,7 +76,7 @@ class ConsumerTest extends TestCase
         $this->bulkManagement = $this->objectManager->create(
             BulkManagement::class,
             [
-                'publisher' => $this->publisherMock
+                'publisher' => $this->publisherMock,
             ]
         );
         $this->bulkStatus = $this->objectManager->get(BulkStatus::class);
@@ -104,7 +104,7 @@ class ConsumerTest extends TestCase
                 'action' => $actionMock,
                 'logger' => $loggerMock,
                 'serializer' => $this->serializer,
-                'entityManager' => $entityManager
+                'entityManager' => $entityManager,
             ]
         );
 

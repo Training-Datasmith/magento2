@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class BundleProductPriceTest extends TestCase
                 'oldPrice' => ['amount' => 0],
                 'basePrice' => ['amount' => 0],
                 'finalPrice' => ['amount' => 0],
-            ]
+            ],
         ];
         $this->processBundlePriceView('bundle_product', $expectedData);
     }
@@ -122,7 +123,7 @@ class BundleProductPriceTest extends TestCase
                 'oldPrice' => ['amount' => 12.75],
                 'basePrice' => ['amount' => 10],
                 'finalPrice' => ['amount' => 10],
-            ]
+            ],
         ];
         $this->processBundlePriceView('bundle-product', $expectedData);
     }

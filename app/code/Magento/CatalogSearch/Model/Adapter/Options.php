@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class Options implements OptionsInterface
             'max_intervals_number' => (int)$this->scopeConfig->getValue(
                 self::XML_PATH_RANGE_MAX_INTERVALS,
                 ScopeInterface::SCOPE_STORE
-            )
+            ),
         ];
     }
 }

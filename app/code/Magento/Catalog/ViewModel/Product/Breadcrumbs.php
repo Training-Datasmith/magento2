@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Catalog\ViewModel\Product;
 use Magento\Catalog\Helper\Data;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
+use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\Serializer\JsonHexTag;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Framework\Escaper;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -113,8 +114,8 @@ class Breadcrumbs extends DataObject implements ArgumentInterface
                 'breadcrumbs' => [
                     'categoryUrlSuffix' => $this->escaper->escapeHtml($this->getCategoryUrlSuffix()),
                     'useCategoryPathInUrl' => (int)$this->isCategoryUsedInProductUrl(),
-                    'product' => $this->escaper->escapeHtml($this->getProductName())
-                ]
+                    'product' => $this->escaper->escapeHtml($this->getProductName()),
+                ],
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,23 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Attribute\Backend\TierPrice;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\DataObject;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\TierPrice\SaveHandler;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Framework\DataObject;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -88,7 +89,7 @@ class SaveHandlerTest extends TestCase
                 'attributeRepository' => $this->attributeRepository,
                 'groupManagement' => $this->groupManagement,
                 'metadataPoll' => $this->metadataPoll,
-                'tierPriceResource' => $this->tierPriceResource
+                'tierPriceResource' => $this->tierPriceResource,
             ]
         );
     }
@@ -100,7 +101,7 @@ class SaveHandlerTest extends TestCase
     {
         $tierPrices = [
             ['website_id' => 0, 'price_qty' => 2, 'cust_group' => 0, 'price' => 10],
-            ['website_id' => 0, 'price_qty' => 3, 'cust_group' => 3200, 'price' => null, 'percentage_value' => 20]
+            ['website_id' => 0, 'price_qty' => 3, 'cust_group' => 3200, 'price' => null, 'percentage_value' => 20],
         ];
         $linkField = 'entity_id';
         $productId = 10;
@@ -120,16 +121,16 @@ class SaveHandlerTest extends TestCase
         });
         $product->method('setStoreId')->willReturnSelf();
         $product->method('getStoreId')->willReturn(0);
-        
+
         $product->setData('tier_price', $tierPrices);
         $product->setData('entity_id', $productId);
         $product->setStoreId(0);
         $product->setData('tier_price_changed', 1);
-        
+
         $store = $this->createMock(StoreInterface::class);
         $store->expects($this->atLeastOnce())->method('getWebsiteId')->willReturn(0);
         $this->storeManager->expects($this->atLeastOnce())->method('getStore')->willReturn($store);
-        
+
         /** @var ProductAttributeInterface $attribute */
         $attribute = $this->createPartialMockWithReflection(
             AbstractAttribute::class,
@@ -138,7 +139,7 @@ class SaveHandlerTest extends TestCase
         $attribute->method('getIsScopeGlobal')->willReturn(true);
         $attribute->method('isScopeGlobal')->willReturn(true);
         $attribute->method('getName')->willReturn('tier_price');
-        
+
         $this->attributeRepository->expects($this->atLeastOnce())->method('get')->with('tier_price')
             ->willReturn($attribute);
         $productMetadata = $this->createMock(EntityMetadataInterface::class);
@@ -162,17 +163,17 @@ class SaveHandlerTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('Tier prices data should be array, but actually other type is received');
-        
+
         /** @var ProductAttributeInterface $attribute */
         $attribute = $this->createPartialMockWithReflection(
             AbstractAttribute::class,
             ['getName', '_construct']
         );
         $attribute->method('getName')->willReturn('tier_price');
-        
+
         $this->attributeRepository->expects($this->atLeastOnce())->method('get')->with('tier_price')
             ->willReturn($attribute);
-        
+
         /** @var ProductInterface $product */
         $product = $this->createPartialMockWithReflection(
             Product::class,
@@ -221,16 +222,16 @@ class SaveHandlerTest extends TestCase
         });
         $product->method('setStoreId')->willReturnSelf();
         $product->method('getStoreId')->willReturn(0);
-        
+
         $product->setData('tier_price', $tierPrices);
         $product->setData('entity_id', $productId);
         $product->setStoreId(0);
         $product->setData('tier_price_changed', 1);
-        
+
         $store = $this->createMock(StoreInterface::class);
         $store->expects($this->atLeastOnce())->method('getWebsiteId')->willReturn(1);
         $this->storeManager->expects($this->atLeastOnce())->method('getStore')->willReturn($store);
-        
+
         /** @var ProductAttributeInterface $attribute */
         $attribute = $this->createPartialMockWithReflection(
             AbstractAttribute::class,
@@ -239,7 +240,7 @@ class SaveHandlerTest extends TestCase
         $attribute->method('getIsScopeGlobal')->willReturn(false);
         $attribute->method('isScopeGlobal')->willReturn(false);
         $attribute->method('getName')->willReturn('tier_price');
-        
+
         $this->attributeRepository->expects($this->atLeastOnce())->method('get')->with('tier_price')
             ->willReturn($attribute);
         $productMetadata = $this->createMock(EntityMetadataInterface::class);
@@ -258,13 +259,13 @@ class SaveHandlerTest extends TestCase
                 $expectedArgs = [
                     [new DataObject($tierPricesExpected[0])],
                     [new DataObject($tierPricesExpected[1])],
-                    [new DataObject($tierPricesExpected[2])]
+                    [new DataObject($tierPricesExpected[2])],
                 ];
                 $returnValue = $this->tierPriceResource;
                 $index++;
                 return $args === $expectedArgs[$index - 1] ? $returnValue : null;
             });
-        
+
         $this->tierPriceResource
             ->expects($this->atLeastOnce())
             ->method('loadPriceData')
@@ -287,7 +288,7 @@ class SaveHandlerTest extends TestCase
                     'price_qty' => 1,
                     'cust_group' => 0,
                     'price' => 10,
-                    'product_id' => $productId
+                    'product_id' => $productId,
                 ],
                 [
                     'price_id' => 2,
@@ -296,8 +297,8 @@ class SaveHandlerTest extends TestCase
                     'cust_group' => 3200,
                     'price' => null,
                     'percentage_value' => 20,
-                    'product_id' => $productId
-                ]
+                    'product_id' => $productId,
+                ],
             ],
             'tierPricesStored' => [
                 [
@@ -306,8 +307,8 @@ class SaveHandlerTest extends TestCase
                     'price_qty' => 3,
                     'cust_group' => 0,
                     'price' => 30,
-                    'product_id' => $productId
-                ]
+                    'product_id' => $productId,
+                ],
             ],
             'tierPricesExpected' => [
                 [
@@ -317,7 +318,7 @@ class SaveHandlerTest extends TestCase
                     'all_groups' => 0,
                     'value' => 10,
                     'percentage_value' => null,
-                    'entity_id' => $productId
+                    'entity_id' => $productId,
                 ],
                 [
                     'website_id' => 1,
@@ -326,7 +327,7 @@ class SaveHandlerTest extends TestCase
                     'all_groups' => 1,
                     'value' => null,
                     'percentage_value' => 20,
-                    'entity_id' => $productId
+                    'entity_id' => $productId,
                 ],
                 [
                     'website_id' => 1,
@@ -335,9 +336,9 @@ class SaveHandlerTest extends TestCase
                     'all_groups' => 0,
                     'value' => 30,
                     'percentage_value' => null,
-                    'entity_id' => $productId
-                ]
-            ]
+                    'entity_id' => $productId,
+                ],
+            ],
         ]];
     }
 }

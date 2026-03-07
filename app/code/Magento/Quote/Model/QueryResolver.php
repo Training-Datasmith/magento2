@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\App\ResourceConnection\ConfigInterface;
+use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 
 class QueryResolver

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -180,7 +182,7 @@ class DiCompileCommand extends Command
             'application' => $modulePathsEnabled,
             'library' => $libraryPaths,
             'setup' => $setupPath,
-            'generated_helpers' => $generationPath
+            'generated_helpers' => $generationPath,
         ];
 
         $this->excludedPathsList = [
@@ -211,7 +213,7 @@ class DiCompileCommand extends Command
                 \Symfony\Component\Console\Helper\ProgressBar::class,
                 [
                     'output' => $output,
-                    'max' => count($operations)
+                    'max' => count($operations),
                 ]
             );
             $progressBar->setFormat(
@@ -313,7 +315,7 @@ class DiCompileCommand extends Command
     private function getExcludedSetupPaths($setupPath)
     {
         return [
-            '#^(?:' . preg_quote($setupPath, '#') . ')(/[\\w]+)*/Test#'
+            '#^(?:' . preg_quote($setupPath, '#') . ')(/[\\w]+)*/Test#',
         ];
     }
 
@@ -347,33 +349,33 @@ class DiCompileCommand extends Command
                     'arguments' => [
                         'modificationsList' => [
                             'BackslashTrim' => [
-                                'instance' => BackslashTrim::class
+                                'instance' => BackslashTrim::class,
                             ],
                             'PreferencesResolving' => [
-                                'instance' => PreferencesResolving::class
+                                'instance' => PreferencesResolving::class,
                             ],
                             'InterceptorSubstitution' => [
-                                'instance' => InterceptorSubstitution::class
+                                'instance' => InterceptorSubstitution::class,
                             ],
                             'InterceptionPreferencesResolving' => [
-                                'instance' => PreferencesResolving::class
+                                'instance' => PreferencesResolving::class,
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ], PluginList::class => [
                     'arguments' => [
                         'cache' => [
-                            'instance' => CompiledConfig::class
-                        ]
-                    ]
+                            'instance' => CompiledConfig::class,
+                        ],
+                    ],
                 ], ClassesScanner::class => [
                     'arguments' => [
-                        'excludePatterns' => $this->excludedPathsList
-                    ]
+                        'excludePatterns' => $this->excludedPathsList,
+                    ],
                 ], Console::class => [
                     'arguments' => [
                         'output' => $output,
-                    ]
+                    ],
                 ],
             ]
         );

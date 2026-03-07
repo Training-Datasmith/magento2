@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ use Magento\Framework\Webapi\Rest\Request as RestRequest;
  */
 class FieldsFilter
 {
-    const FILTER_PARAMETER = 'fields';
+    public const FILTER_PARAMETER = 'fields';
 
     /**
      * @var \Magento\Framework\Webapi\Rest\Request
@@ -123,7 +125,7 @@ class FieldsFilter
                     $current[array_pop($parent)] = $temp;
                     break;
 
-                //Do nothing on comma. On the next iteration field will be extracted
+                    //Do nothing on comma. On the next iteration field will be extracted
                 case ',':
                     break;
 
@@ -203,7 +205,7 @@ class FieldsFilter
      * @param array $filter
      * @return array
      */
-    private function filterCustomAttributes(array $item, array $filter) : array
+    private function filterCustomAttributes(array $item, array $filter): array
     {
         $fieldResult = [];
         foreach ($item as $key => $field) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class CustomerCartStoreScopeTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         )
     ]
@@ -132,7 +133,7 @@ QUERY;
     private function getCustomerToken(
         string $username,
         string $password
-    ) : string {
+    ): string {
         if (!$this->customerToken) {
             $this->customerToken = $this->customerTokenService->createCustomerAccessToken($username, $password);
         }

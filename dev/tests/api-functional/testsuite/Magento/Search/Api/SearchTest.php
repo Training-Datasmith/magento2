@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class SearchTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'searchV1';
-    const RESOURCE_PATH = '/V1/search/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'searchV1';
+    public const RESOURCE_PATH = '/V1/search/';
 
     /**
      * @var ProductInterface
@@ -88,11 +89,11 @@ class SearchTest extends WebapiAbstract
                             [
                                 'field' => 'search_term',
                                 'value' => $productName,
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -105,13 +106,13 @@ class SearchTest extends WebapiAbstract
         return [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '?' . http_build_query($searchCriteria),
-                'httpMethod' => Request::HTTP_METHOD_GET
+                'httpMethod' => Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'Search'
-            ]
+                'operation' => self::SERVICE_NAME . 'Search',
+            ],
         ];
     }
 }

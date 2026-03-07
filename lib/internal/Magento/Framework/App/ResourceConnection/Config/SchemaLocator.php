@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Resource configuration schema locator
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\ResourceConnection\Config;
 
 class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface

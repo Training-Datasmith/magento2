@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 // phpcs:ignoreFile
+
 namespace Magento\TestSetupDeclarationModule1\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;

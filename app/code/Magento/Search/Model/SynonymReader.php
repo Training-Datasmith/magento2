@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model;
 
 use Magento\Framework\Data\Collection\AbstractDb as DbCollection;
@@ -49,7 +52,7 @@ class SynonymReader extends AbstractModel
      * @param DbCollection $resourceCollection
      * @param array $data
      */
-    public function __construct( //phpcs:ignore Generic.CodeAnalysis.UselessOverridingMethod
+    public function __construct(//phpcs:ignore Generic.CodeAnalysis.UselessOverridingMethod
         \Magento\Framework\Model\Context $context,
         Registry $registry,
         ?AbstractResource $resource = null,

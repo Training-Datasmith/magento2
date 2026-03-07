@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\ResourceModel\Quote;
 
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\AbstractDb;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class ScopeResolverPoolTest extends TestCase
         $scopeResolver = $this->_helper->getObject(
             ScopeResolverPool::class,
             [
-                'scopeResolvers' => ['test' => $scope]
+                'scopeResolvers' => ['test' => $scope],
             ]
         );
         $this->assertSame($scope, $scopeResolver->get('test'));
@@ -48,7 +49,7 @@ class ScopeResolverPoolTest extends TestCase
         $scopeResolver = $this->_helper->getObject(
             ScopeResolverPool::class,
             [
-                'scopeResolvers' => ['test' => new DataObject()]
+                'scopeResolvers' => ['test' => new DataObject()],
             ]
         );
         $scopeResolver->get($scope);

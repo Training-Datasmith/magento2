@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\CatalogRule\Controller\RegistryConstants;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -81,7 +81,7 @@ class DeleteButtonTest extends TestCase
         $ruleId = 42;
         $deleteUrl = 'http://magento.com/admin/catalog_rule/delete/id/42';
         $ruleMock = new DataObject(['id' => $ruleId]);
-        
+
         $this->registryMock->expects($this->once())
             ->method('registry')
             ->with(RegistryConstants::CURRENT_CATALOG_RULE_ID)
@@ -122,13 +122,13 @@ class DeleteButtonTest extends TestCase
         $contextMockForTest = $this->createMock(Context::class);
         $contextMockForTest->expects($this->any())->method('getUrlBuilder')->willReturn($this->urlBuilderMock);
         $contextMockForTest->expects($this->once())->method('getEscaper')->willReturn($this->escaperMock);
-        
+
         // Test that the constructor calls context->getEscaper()
         $deleteButton = new DeleteButton(
             $contextMockForTest,
             $this->registryMock
         );
-        
+
         // Verify the button was created successfully
         $this->assertInstanceOf(DeleteButton::class, $deleteButton);
     }

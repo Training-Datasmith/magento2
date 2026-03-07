@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class BinderTest extends TestCase
                     'from' => 'filter_from',
                     'to' => 'filter_to',
                     'value' => 'filter_value',
-                    'is_bind' => true
+                    'is_bind' => true,
                 ],
                 'zero_value_filter' => [
                     'type' => 'termFilter',
@@ -90,7 +91,7 @@ class BinderTest extends TestCase
                     'field' => 'zero_value',
                     'value' => '0',
                     'is_bind' => true,
-                ]
+                ],
             ],
             'aggregations' => ['price' => ['method' => 'filter_method', 'is_bind' => true]],
             'from' => 1,

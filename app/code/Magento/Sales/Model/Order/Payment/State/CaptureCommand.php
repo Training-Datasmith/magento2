@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Payment\State;
 
 use Magento\Framework\App\ObjectManager;
@@ -27,7 +30,7 @@ class CaptureCommand implements CommandInterface
     public function __construct(?StatusResolver $statusResolver = null)
     {
         $this->statusResolver = $statusResolver
-            ? : ObjectManager::getInstance()->get(StatusResolver::class);
+            ?: ObjectManager::getInstance()->get(StatusResolver::class);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Config\App\Config\Source\EnvironmentConfigSource;
 use Magento\Config\Model\Placeholder\PlaceholderFactory;
 use Magento\Config\Model\Placeholder\PlaceholderInterface;
 use Magento\Framework\Stdlib\ArrayManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class EnvironmentConfigSourceTest extends TestCase
@@ -63,7 +64,7 @@ class EnvironmentConfigSourceTest extends TestCase
         $this->placeholderMock->expects($this->any())
             ->method('isApplicable')
             ->willReturnMap([
-                [$placeholder, true]
+                [$placeholder, true],
             ]);
         $this->placeholderMock->expects($this->once())
             ->method('restore')

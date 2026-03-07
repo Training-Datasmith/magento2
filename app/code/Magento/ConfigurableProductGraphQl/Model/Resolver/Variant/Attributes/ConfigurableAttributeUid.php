@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class ConfigurableAttributeUid implements ResolverInterface
         $optionDetails = [
             self::OPTION_TYPE,
             $value['attribute_id'],
-            $value['value_index']
+            $value['value_index'],
         ];
 
         $content = implode('/', $optionDetails);

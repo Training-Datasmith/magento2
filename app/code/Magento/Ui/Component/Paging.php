@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ namespace Magento\Ui\Component;
  */
 class Paging extends AbstractComponent
 {
-    const NAME = 'paging';
+    public const NAME = 'paging';
 
     /**
      * Default paging options
@@ -24,23 +26,23 @@ class Paging extends AbstractComponent
     private $defaultOptions = [
         '20' => [
             'value' => 20,
-            'label' => 20
+            'label' => 20,
         ],
         '30' => [
             'value' => 30,
-            'label' => 30
+            'label' => 30,
         ],
         '50' => [
             'value' => 50,
-            'label' => 50
+            'label' => 50,
         ],
         '100' => [
             'value' => 100,
-            'label' => 100
+            'label' => 100,
         ],
         '200' => [
             'value' => 200,
-            'label' => 200
+            'label' => 200,
         ],
     ];
 
@@ -58,8 +60,8 @@ class Paging extends AbstractComponent
      */
     protected $_data = [
         'config' => [
-            'current' => 1
-        ]
+            'current' => 1,
+        ],
     ];
 
     /**

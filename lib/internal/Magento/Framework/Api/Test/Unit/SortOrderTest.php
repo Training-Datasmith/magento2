@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class SortOrderTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->sortOrder = new SortOrder([
-            SortOrder::DIRECTION => 'not-asc-or-desc'
+            SortOrder::DIRECTION => 'not-asc-or-desc',
         ]);
     }
 
@@ -96,7 +97,7 @@ class SortOrderTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->sortOrder = new SortOrder([
-            SortOrder::FIELD => 'invalid field (value);'
+            SortOrder::FIELD => 'invalid field (value);',
         ]);
     }
 }

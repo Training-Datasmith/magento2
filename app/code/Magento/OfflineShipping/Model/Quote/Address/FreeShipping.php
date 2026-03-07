@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\OfflineShipping\Model\Quote\Address;
 
 use Magento\OfflineShipping\Model\SalesRule\Calculator;
-use Magento\OfflineShipping\Model\SalesRule\ExtendedCalculator;
 use Magento\Quote\Model\Quote\Address\FreeShippingInterface;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -174,7 +176,7 @@ class AbstractAction
                     'nullable' => $fieldProp['nullable'],
                     'unsigned' => $fieldProp['unsigned'],
                     'default' => $default,
-                    'primary' => isset($fieldProp['primary']) ? $fieldProp['primary'] : false
+                    'primary' => isset($fieldProp['primary']) ? $fieldProp['primary'] : false,
                 ],
                 $fieldProp['comment'] != '' ? $fieldProp['comment'] : ucwords(str_replace('_', ' ', $fieldName))
             );
@@ -242,6 +244,7 @@ class AbstractAction
                         break;
                     }
                     // fall-through intentional
+                    // no break
                 case Table::TYPE_DECIMAL:
                     $options = $column['PRECISION'] . ',' . $column['SCALE'];
                     $isUnsigned = null;
@@ -461,7 +464,7 @@ class AbstractAction
             [$linkField, 'attribute_id']
         )->joinLeft(
             [
-                'e' => $this->connection->getTableName($this->getTableName('catalog_category_entity'))
+                'e' => $this->connection->getTableName($this->getTableName('catalog_category_entity')),
             ],
             "def.{$linkField} = e.{$linkField}"
         )->joinLeft(
@@ -478,10 +481,10 @@ class AbstractAction
                     'store.value_id > 0',
                     $this->connection->quoteIdentifier('store.value'),
                     $this->connection->quoteIdentifier('def.value')
-                )
+                ),
             ]
         )->where(
-            "e.entity_id IN (?)",
+            'e.entity_id IN (?)',
             $entityIds,
             \Zend_Db::INT_TYPE
         )->where(

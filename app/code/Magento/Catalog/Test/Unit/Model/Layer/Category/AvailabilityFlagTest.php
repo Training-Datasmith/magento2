@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Category;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Category\AvailabilityFlag;
 use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
 use Magento\Catalog\Model\Layer\State;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -93,7 +94,7 @@ class AvailabilityFlagTest extends TestCase
                 'itemsCount' => 1,
                 'filters' => ['filter'],
                 'expectedResult' => true,
-            ]
+            ],
         ];
     }
 }

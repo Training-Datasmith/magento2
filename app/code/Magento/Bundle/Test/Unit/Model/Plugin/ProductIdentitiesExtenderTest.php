@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Plugin;
 
-use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\Plugin\ProductIdentitiesExtender as Plugin;
+use Magento\Bundle\Model\Product\Type;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;

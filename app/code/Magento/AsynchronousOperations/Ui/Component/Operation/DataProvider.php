@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,39 +19,22 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     protected $collection;
 
     /**
-     * @var \Magento\AsynchronousOperations\Model\Operation\Details
-     */
-    private $operationDetails;
-
-    /**
-     * @var \Magento\Framework\App\RequestInterface $request,
-     */
-    private $request;
-
-    /**
      * DataProvider constructor.
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollectionFactory
-     * @param \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param array $meta
-     * @param array $data
      */
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
         \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollectionFactory,
-        \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails,
-        \Magento\Framework\App\RequestInterface $request,
+        private readonly \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails,
+        private readonly \Magento\Framework\App\RequestInterface $request,
         array $meta = [],
         array $data = []
     ) {
         $this->collection = $bulkCollectionFactory->create();
-        $this->operationDetails = $operationDetails;
-        $this->request = $request;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->meta = $this->prepareMeta($this->meta);
     }
@@ -60,7 +45,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param array $operationDetails structure is implied as getOperationDetails() result
      * @return string
      */
-    private function getSummaryReport($operationDetails)
+    private function getSummaryReport(array $operationDetails)
     {
         if (0 == $operationDetails['operations_successful'] && 0 == $operationDetails['operations_failed']) {
             return __('Pending, in queue...');
@@ -80,10 +65,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * Bulk summary with operation statistics
-     *
-     * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         $data = [];
         $items = $this->collection->getItems();
@@ -102,11 +85,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 
     /**
      * Prepares Meta
-     *
-     * @param array $meta
-     * @return array
      */
-    public function prepareMeta($meta)
+    public function prepareMeta(array $meta): array
     {
         $requestId = $this->request->getParam($this->requestFieldName);
         $operationDetails = $this->operationDetails->getDetails($requestId);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,21 +9,21 @@ declare(strict_types=1);
 namespace Magento\Deploy\Test\Unit\Service;
 
 use Magento\Deploy\Service\DeployRequireJsConfig;
-use Magento\Framework\Locale\ResolverInterfaceFactory;
 use Magento\Framework\Locale\ResolverInterface;
-use Magento\Framework\View\Asset\ConfigInterface;
-use Magento\RequireJs\Model\FileManagerFactory;
-use Magento\Framework\View\DesignInterfaceFactory;
-use Magento\Framework\View\Design\Theme\ListInterface;
-use Magento\Framework\View\Asset\RepositoryFactory;
-use Magento\Framework\RequireJs\ConfigFactory;
-use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Theme\Model\View\Design;
-use Magento\Framework\View\Asset\Repository;
-use Magento\RequireJs\Model\FileManager;
+use Magento\Framework\Locale\ResolverInterfaceFactory;
 use Magento\Framework\RequireJs\Config;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\RequireJs\ConfigFactory;
+use Magento\Framework\View\Asset\ConfigInterface;
+use Magento\Framework\View\Asset\Repository;
+use Magento\Framework\View\Asset\RepositoryFactory;
+use Magento\Framework\View\Design\Theme\ListInterface;
+use Magento\Framework\View\Design\ThemeInterface;
+use Magento\Framework\View\DesignInterfaceFactory;
+use Magento\RequireJs\Model\FileManager;
+use Magento\RequireJs\Model\FileManagerFactory;
+use Magento\Theme\Model\View\Design;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for DeployRequireJsConfig service.

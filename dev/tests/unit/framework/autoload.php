@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,8 +12,8 @@ use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\TestFramework\Unit\Autoloader\ExtensionAttributesGenerator;
 use Magento\Framework\TestFramework\Unit\Autoloader\ExtensionAttributesInterfaceGenerator;
 use Magento\Framework\TestFramework\Unit\Autoloader\FactoryGenerator;
-use Magento\Framework\TestFramework\Unit\Autoloader\ProxyGenerator;
 use Magento\Framework\TestFramework\Unit\Autoloader\GeneratedClassesAutoloader;
+use Magento\Framework\TestFramework\Unit\Autoloader\ProxyGenerator;
 
 $generatorIo = new Io(
     new File(),
@@ -22,7 +24,7 @@ $generatedCodeAutoloader = new GeneratedClassesAutoloader(
         new ExtensionAttributesGenerator(),
         new ExtensionAttributesInterfaceGenerator(),
         new FactoryGenerator(),
-        new ProxyGenerator()
+        new ProxyGenerator(),
     ],
     $generatorIo
 );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Checkout\Test\Unit\Block\Cart\Item\Renderer\Actions;
 
 use Magento\Catalog\Model\Product;
 use Magento\Checkout\Block\Cart\Item\Renderer\Actions\Generic;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote\Item;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class GenericTest extends TestCase
 {

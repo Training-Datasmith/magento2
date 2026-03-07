@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class VaultEnableAssignerTest extends TestCase
 
         $observer = $this->getPreparedObserverWithMap(
             [
-                [AbstractDataAssignObserver::DATA_CODE, $dataObject]
+                [AbstractDataAssignObserver::DATA_CODE, $dataObject],
             ]
         );
 
@@ -46,8 +47,8 @@ class VaultEnableAssignerTest extends TestCase
         $dataObject = new DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    VaultConfigProvider::IS_ACTIVE_CODE => $activeCode
-                ]
+                    VaultConfigProvider::IS_ACTIVE_CODE => $activeCode,
+                ],
             ]
         );
         $paymentModel = $this->createMock(InfoInterface::class);
@@ -62,7 +63,7 @@ class VaultEnableAssignerTest extends TestCase
         $observer = $this->getPreparedObserverWithMap(
             [
                 [AbstractDataAssignObserver::DATA_CODE, $dataObject],
-                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel]
+                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel],
             ]
         );
 
@@ -82,7 +83,7 @@ class VaultEnableAssignerTest extends TestCase
             ['on', true],
             ['false', false],
             ['0', false],
-            ['off', false]
+            ['off', false],
         ];
     }
 
@@ -90,7 +91,7 @@ class VaultEnableAssignerTest extends TestCase
     {
         $dataObject = new DataObject(
             [
-                PaymentInterface::KEY_ADDITIONAL_DATA => []
+                PaymentInterface::KEY_ADDITIONAL_DATA => [],
             ]
         );
         $paymentModel = $this->createMock(InfoInterface::class);
@@ -101,7 +102,7 @@ class VaultEnableAssignerTest extends TestCase
         $observer = $this->getPreparedObserverWithMap(
             [
                 [AbstractDataAssignObserver::DATA_CODE, $dataObject],
-                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel]
+                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel],
             ]
         );
 

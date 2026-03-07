@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class DataProvider extends UiComponentDataProvider
             return [
                 'items' => [],
                 'totalRecords' => 0,
-                'errorMessage' => $exception->getMessage()
+                'errorMessage' => $exception->getMessage(),
             ];
         }
     }
@@ -142,7 +143,7 @@ class DataProvider extends UiComponentDataProvider
                     'display_mode' => $category->getDisplayMode(),
                     'products' => $category->getProductCount(),
                     'include_in_menu' => $category->getIncludeInMenu(),
-                    'is_active' => $category->getIsActive()
+                    'is_active' => $category->getIsActive(),
                 ]
             );
         }

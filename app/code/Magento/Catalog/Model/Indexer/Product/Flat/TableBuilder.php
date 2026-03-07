@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat;
 
 use Magento\Catalog\Model\Indexer\Product\Flat\Table\BuilderInterfaceFactory;
@@ -139,13 +142,13 @@ class TableBuilder
             $temporaryTableBuilder = $this->tableBuilderFactory->create(
                 [
                     'connection' => $this->_connection,
-                    'tableName' => $tableName
+                    'tableName' => $tableName,
                 ]
             );
             $valueTemporaryTableBuilder = $this->tableBuilderFactory->create(
                 [
                     'connection' => $this->_connection,
-                    'tableName' => $valueTableName
+                    'tableName' => $valueTableName,
                 ]
             );
             $flatColumns = $this->_productIndexerHelper->getFlatColumns();
@@ -154,7 +157,7 @@ class TableBuilder
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                 null,
-                ['unsigned'=>true]
+                ['unsigned' => true]
             );
 
             $temporaryTableBuilder->addColumn('type_id', \Magento\Framework\DB\Ddl\Table::TYPE_TEXT);
@@ -165,7 +168,7 @@ class TableBuilder
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
                 null,
-                ['unsigned'=>true]
+                ['unsigned' => true]
             );
 
             /** @var $attribute \Magento\Catalog\Model\ResourceModel\Eav\Attribute */

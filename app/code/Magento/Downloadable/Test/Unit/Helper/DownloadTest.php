@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Helper\Download as DownloadHelper;
 use Magento\Downloadable\Helper\File as DownloadableFile;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -18,6 +18,7 @@ use Magento\Framework\Filesystem\File\ReadFactory;
 use Magento\Framework\Filesystem\File\ReadInterface as FileReadInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -91,7 +92,7 @@ class DownloadTest extends TestCase
                 'filesystem'       => $this->_filesystemMock,
                 'session'          => $this->sessionManager,
                 'fileReadFactory'  => $this->fileReadFactory,
-                'mime' => $this->mime
+                'mime' => $this->mime,
             ]
         );
     }
@@ -250,7 +251,7 @@ class DownloadTest extends TestCase
     {
         $this->sessionManager
             ->expects($this->once())->method('writeClose');
-        $this->_setupUrlMocks(self::FILE_SIZE, self::URL, ['disposition' => "inline; filename=test.txt"]);
+        $this->_setupUrlMocks(self::FILE_SIZE, self::URL, ['disposition' => 'inline; filename=test.txt']);
         $this->_helper->output();
     }
 }

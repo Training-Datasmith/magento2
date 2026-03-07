@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ $product
             'qty' => 85.5,
             'is_in_stock' => true,
             'manage_stock' => true,
-            'is_qty_decimal' => true
+            'is_qty_decimal' => true,
         ]
     );
 $productRepository->save($product);

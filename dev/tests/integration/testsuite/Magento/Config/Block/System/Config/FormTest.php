@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Block\System\Config;
 
 use Magento\Backend\App\Area\FrontNameResolver;
@@ -277,7 +280,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
             ['test_field', false, ''],
             ['test_field', false, 'value'],
             ['test_field_use_config_module_1', false, 'config value'],
-            ['test_field_use_config_module_0', false, 'config value', 0]
+            ['test_field_use_config_module_0', false, 'config value', 0],
         ];
     }
 

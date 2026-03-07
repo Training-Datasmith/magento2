@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Sales\Model\ResourceModel\Order\Collection;
 use Magento\Framework\Registry;
+use Magento\Sales\Model\ResourceModel\Order\Collection;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 

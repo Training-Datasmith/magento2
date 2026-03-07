@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Address\Validator;
 
 use Magento\Customer\Model\Address\AbstractAddress;
 use Magento\Customer\Model\Address\ValidatorInterface;
 use Magento\Directory\Helper\Data;
 use Magento\Directory\Model\AllowedCountries;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 use Magento\Framework\Validator\NotEmpty;
 use Magento\Framework\Validator\ValidateException;
 use Magento\Framework\Validator\ValidatorChain;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model;
 
 use Magento\Framework\App\ObjectManager;
@@ -158,7 +161,7 @@ class RefundInvoice implements RefundInvoiceInterface
                 $notify,
                 $appendComment,
                 $comment,
-                $arguments
+                $arguments,
             ]
         );
     }

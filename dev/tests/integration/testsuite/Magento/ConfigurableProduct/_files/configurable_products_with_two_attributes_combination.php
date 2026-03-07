@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,11 +19,11 @@ use Magento\ConfigurableProduct\Helper\Product\Options\Factory;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Framework\Api\Data\ImageContentInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Framework\App\Filesystem\DirectoryList;
 
 Resolver::getInstance()->requireDataFixture(
     'Magento/ConfigurableProduct/_files/configurable_attribute_first.php'
@@ -121,17 +123,17 @@ foreach ($firstAttributeOptions as $i => $firstAttributeOption) {
                                         file_get_contents($testImagePath)
                                     ),
                                     ImageContentInterface::NAME => 'simple_' . $firstAttributeOption->getValue() .
-                                        '_' . $secondAttributeOption->getValue() . "_1.jpg",
-                                    ImageContentInterface::TYPE => "image/jpeg"
-                                ]
-                            ]
+                                        '_' . $secondAttributeOption->getValue() . '_1.jpg',
+                                    ImageContentInterface::TYPE => 'image/jpeg',
+                                ],
+                            ],
                         ],
-                    ]
+                    ],
                 ]
             );
         $customAttributes = [
             $firstAttribute->getAttributeCode() => $firstAttributeOption->getValue(),
-            $secondAttribute->getAttributeCode() => $secondAttributeOption->getValue()
+            $secondAttribute->getAttributeCode() => $secondAttributeOption->getValue(),
         ];
         foreach ($customAttributes as $attributeCode => $attributeValue) {
             $product->setCustomAttributes($customAttributes);

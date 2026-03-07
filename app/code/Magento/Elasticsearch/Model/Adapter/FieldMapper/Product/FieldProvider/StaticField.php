@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,14 +13,10 @@ use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeFieldsMappingProcessorInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface
-    as IndexTypeConverterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ResolverInterface
-    as FieldIndexResolver;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface
-    as FieldTypeConverterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ResolverInterface
-    as FieldTypeResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface as IndexTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ResolverInterface as FieldIndexResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface as FieldTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ResolverInterface as FieldTypeResolver;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProviderInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Framework\App\ObjectManager;
@@ -191,7 +188,7 @@ class StaticField implements FieldProviderInterface
             $fieldMapping[$fieldName]['fields'][$keywordFieldName] = [
                 'type' => $this->fieldTypeConverter->convert(
                     FieldTypeConverterInterface::INTERNAL_DATA_TYPE_KEYWORD
-                )
+                ),
             ];
             if ($index) {
                 $fieldMapping[$fieldName]['fields'][$keywordFieldName]['index'] = $index;
@@ -204,7 +201,7 @@ class StaticField implements FieldProviderInterface
                 ['type' => FieldMapperInterface::TYPE_QUERY]
             );
             $fieldMapping[$childFieldName] = [
-                'type' => $this->fieldTypeConverter->convert(FieldTypeConverterInterface::INTERNAL_DATA_TYPE_STRING)
+                'type' => $this->fieldTypeConverter->convert(FieldTypeConverterInterface::INTERNAL_DATA_TYPE_STRING),
             ];
             if ($attributeAdapter->isSortable()) {
                 $sortFieldName = $this->fieldNameResolver->getFieldName(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -133,7 +134,7 @@ class Shipping extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
             return [
                 'code' => $this->getCode(),
                 'title' => $title,
-                'value' => $amount
+                'value' => $amount,
             ];
         } else {
             return [];
@@ -235,7 +236,7 @@ class Shipping extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
         return [
             'addressQty' => $addressQty,
             'addressWeight' => $addressWeight,
-            'freeMethodWeight' => $freeMethodWeight
+            'freeMethodWeight' => $freeMethodWeight,
         ];
     }
 

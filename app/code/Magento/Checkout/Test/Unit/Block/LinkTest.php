@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
 {
@@ -32,12 +33,12 @@ class LinkTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $this->_objectManagerHelper->prepareObjectManager($objects);
     }

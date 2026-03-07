@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Adjustment;
 
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Model\Product\Type;
@@ -19,10 +18,12 @@ use Magento\Bundle\Pricing\Price\BundleSelectionFactory;
 use Magento\Catalog\Helper\Data as CatalogData;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -111,7 +112,7 @@ class DefaultSelectionPriceListProviderTest extends TestCase
             Product::class,
             [
                 'setTypeInstance', 'getTypeInstance', 'setPriceType', 'getPriceType',
-                'setIsSalable', 'getIsSalable', 'isSalable'
+                'setIsSalable', 'getIsSalable', 'isSalable',
             ]
         );
         $this->optionsCollection = $this->createMock(Collection::class);
@@ -263,7 +264,7 @@ class DefaultSelectionPriceListProviderTest extends TestCase
     {
         return [
             'website provided' => [1],
-            'website not provided' => [0]
+            'website not provided' => [0],
         ];
     }
 }

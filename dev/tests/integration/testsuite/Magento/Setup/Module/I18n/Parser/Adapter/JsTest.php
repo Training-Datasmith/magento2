@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter;
 
 /**
@@ -33,20 +36,20 @@ class JsTest extends \PHPUnit\Framework\TestCase
                 'phrase' => 'text double quote',
                 'file' => $file,
                 'line' => 1,
-                'quote' => '"'
+                'quote' => '"',
             ],
             [
                 'phrase' => 'text single quote',
                 'file' => $file,
                 'line' => 1,
-                'quote' => '\''
+                'quote' => '\'',
             ],
             [
                 'phrase' => 'text "some',
                 'file' => $file,
                 'line' => 1,
-                'quote' => '\''
-            ]
+                'quote' => '\'',
+            ],
         ];
         $this->assertEquals($expectation, $this->jsPhraseCollector->getPhrases());
     }

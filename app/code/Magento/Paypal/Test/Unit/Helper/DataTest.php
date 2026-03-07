@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class DataTest extends TestCase
             Data::class,
             [
                 'methodCodes' => ['expressCheckout' => 'paypal_express', 'hostedPro' => 'hosted_pro'],
-                'configFactory' => $configMockFactory
+                'configFactory' => $configMockFactory,
             ]
         );
 
@@ -197,26 +198,26 @@ class DataTest extends TestCase
                 '1',
                 $quoteMock,
                 [
-                    [$methodMock, $agreementMethodInstanceMock]
+                    [$methodMock, $agreementMethodInstanceMock],
                 ],
-                [$agreementMethodInstanceMock]
+                [$agreementMethodInstanceMock],
             ],
             [
                 '1',
                 $quoteMock,
                 [
-                    [$methodMock, $abstractMethodInstanceMock]
+                    [$methodMock, $abstractMethodInstanceMock],
                 ],
-                []
+                [],
             ],
             [
                 '1',
                 $quoteMock,
                 [
-                    [$methodMock, $adapterMethodInstanceMock]
+                    [$methodMock, $adapterMethodInstanceMock],
                 ],
-                []
-            ]
+                [],
+            ],
         ];
     }
 
@@ -271,7 +272,7 @@ class DataTest extends TestCase
     {
         return [
             ['paypal_express'],
-            ['hosted_pro']
+            ['hosted_pro'],
         ];
     }
 

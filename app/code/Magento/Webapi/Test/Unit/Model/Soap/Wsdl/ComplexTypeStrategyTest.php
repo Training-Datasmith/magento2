@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -126,20 +127,20 @@ class ComplexTypeStrategyTest extends TestCase
                         'string_param' => [
                             'type' => 'string',
                             'required' => true,
-                            'documentation' => 'Required string param.'
+                            'documentation' => 'Required string param.',
                         ],
                         'int_param' => [
                             'type' => 'int',
                             'required' => true,
-                            'documentation' => 'Required int param.'
+                            'documentation' => 'Required int param.',
                         ],
                         'bool_param' => [
                             'type' => 'boolean',
                             'required' => false,
-                            'documentation' => 'Optional complex type param.{annotation:test}'
-                        ]
-                    ]
-                ]
+                            'documentation' => 'Optional complex type param.{annotation:test}',
+                        ],
+                    ],
+                ],
             ],
             'type with call info' => [
                 'VendorModuleADataStructure',
@@ -149,14 +150,14 @@ class ComplexTypeStrategyTest extends TestCase
                         'string_param' => [
                             'type' => 'string',
                             'required' => false,
-                            'documentation' => '{callInfo:VendorModuleACreate:requiredInput:conditionally}'
+                            'documentation' => '{callInfo:VendorModuleACreate:requiredInput:conditionally}',
                         ],
                     ],
                     'callInfo' => [
                         'requiredInput' => ['yes' => ['calls' => ['VendorModuleACreate']]],
-                        'returned' => ['always' => ['calls' => ['VendorModuleAGet']]]
-                    ]
-                ]
+                        'returned' => ['always' => ['calls' => ['VendorModuleAGet']]],
+                    ],
+                ],
             ],
             'parameter with call info' => [
                 'VendorModuleADataStructure',
@@ -167,10 +168,10 @@ class ComplexTypeStrategyTest extends TestCase
                             'type' => 'string',
                             'required' => false,
                             'documentation' => '{callInfo:VendorModuleACreate:requiredInput:conditionally}' .
-                            '{callInfo:allCallsExcept(VendorModuleAGet):returned:always}'
-                        ]
-                    ]
-                ]
+                            '{callInfo:allCallsExcept(VendorModuleAGet):returned:always}',
+                        ],
+                    ],
+                ],
             ],
             'parameter with see link' => [
                 'VendorModuleADataStructure',
@@ -180,10 +181,10 @@ class ComplexTypeStrategyTest extends TestCase
                         'string_param' => [
                             'type' => 'string',
                             'required' => false,
-                            'documentation' => '{seeLink:http://google.com/:title:for}'
-                        ]
-                    ]
-                ]
+                            'documentation' => '{seeLink:http://google.com/:title:for}',
+                        ],
+                    ],
+                ],
             ],
             'parameter with doc instructions' => [
                 'VendorModuleADataStructure',
@@ -193,11 +194,11 @@ class ComplexTypeStrategyTest extends TestCase
                         'string_param' => [
                             'type' => 'string',
                             'required' => false,
-                            'documentation' => '{docInstructions:output:noDoc}'
-                        ]
-                    ]
-                ]
-            ]
+                            'documentation' => '{docInstructions:output:noDoc}',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -216,9 +217,9 @@ class ComplexTypeStrategyTest extends TestCase
                 'complex_param' => [
                     'type' => $parameterType,
                     'required' => true,
-                    'documentation' => 'complex type param.'
-                ]
-            ]
+                    'documentation' => 'complex type param.',
+                ],
+            ],
         ];
         $parameterData = [
             'documentation' => 'test',
@@ -226,9 +227,9 @@ class ComplexTypeStrategyTest extends TestCase
                 'string_param' => [
                     'type' => 'ComplexTypeB[]',
                     'required' => true,
-                    'documentation' => 'string param.'
-                ]
-            ]
+                    'documentation' => 'string param.',
+                ],
+            ],
         ];
 
         $this->wsdl
@@ -266,13 +267,13 @@ class ComplexTypeStrategyTest extends TestCase
     {
         $dom = new DOMDocument();
         $this->wsdl->expects($this->any())->method('toDomDocument')->willReturn($dom);
-        $annotationDoc = "test doc";
+        $annotationDoc = 'test doc';
         $complexType = $dom->createElement(Wsdl::XSD_NS . ':complexType');
         $complexType->setAttribute('name', 'testRequest');
         $this->strategy->addAnnotation($complexType, $annotationDoc);
         $this->assertEquals(
             $annotationDoc,
-            $complexType->getElementsByTagName("xsd:documentation")->item(0)->nodeValue
+            $complexType->getElementsByTagName('xsd:documentation')->item(0)->nodeValue
         );
     }
 }

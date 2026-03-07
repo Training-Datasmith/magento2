@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
+use Magento\Framework\App\Config;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\App\Config;
 
 /**
  * Information Expert in store groups handling
@@ -63,7 +66,7 @@ class GroupRepository implements \Magento\Store\Api\GroupRepositoryInterface
         }
 
         $group = $this->groupFactory->create([
-            'data' => $this->getAppConfig()->get('scopes', "groups/$id", [])
+            'data' => $this->getAppConfig()->get('scopes', "groups/$id", []),
         ]);
 
         if (null === $group->getId()) {
@@ -82,7 +85,7 @@ class GroupRepository implements \Magento\Store\Api\GroupRepositoryInterface
             $groups = $this->getAppConfig()->get('scopes', 'groups', []);
             foreach ($groups as $data) {
                 $group = $this->groupFactory->create([
-                    'data' => $data
+                    'data' => $data,
                 ]);
                 $this->entities[$group->getId()] = $group;
             }

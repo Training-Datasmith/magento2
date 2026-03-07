@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Price;
 
-use Magento\Framework\App\Config\ConfigResource\ConfigInterface;
 use Magento\Framework\App\Cache\TypeListInterface;
+use Magento\Framework\App\Config\ConfigResource\ConfigInterface;
 use Magento\Indexer\Model\Indexer;
 
 /**
@@ -16,7 +17,7 @@ use Magento\Indexer\Model\Indexer;
  */
 class ModeSwitcherConfiguration
 {
-    const XML_PATH_PRICE_DIMENSIONS_MODE = 'indexer/catalog_product_price/dimensions_mode';
+    public const XML_PATH_PRICE_DIMENSIONS_MODE = 'indexer/catalog_product_price/dimensions_mode';
 
     /**
      * ConfigInterface

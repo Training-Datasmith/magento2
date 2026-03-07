@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor;
 
 use Magento\Framework\Api\Search\FilterGroup;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -28,7 +29,6 @@ use PHPUnit\Framework\TestCase;
  */
 class GaTest extends TestCase
 {
-
     /**
      * @var Ga|MockObject
      */
@@ -85,7 +85,7 @@ class GaTest extends TestCase
                 'context' => $contextMock,
                 'salesOrderCollection' => $this->salesOrderCollectionMock,
                 'googleAnalyticsData' => $this->googleAnalyticsDataMock,
-                'cookieHelper' => $this->cookieHelperMock
+                'cookieHelper' => $this->cookieHelperMock,
             ]
         );
     }
@@ -158,24 +158,24 @@ class GaTest extends TestCase
                     'affiliation' => 'test',
                     'revenue' => 10.00,
                     'tax' => 2.00,
-                    'shipping' => 2.0
-                ]
+                    'shipping' => 2.0,
+                ],
             ],
             'products' => [
                 [
                     'id' => 'sku0',
                     'name' => 'testName0',
                     'price' => 0.00,
-                    'quantity' => 1
+                    'quantity' => 1,
                 ],
                 [
                     'id' => 'sku1',
                     'name' => 'testName1',
                     'price' => 1.00,
-                    'quantity' => 1.11
-                ]
+                    'quantity' => 1.11,
+                ],
             ],
-            'currency' => 'USD'
+            'currency' => 'USD',
         ];
 
         $this->gaBlock->setOrderIds([1, 2]);
@@ -189,7 +189,7 @@ class GaTest extends TestCase
         $expectedResult = [
             'optPageUrl' => ", '" . $pageName . "'",
             'isAnonymizedIpActive' => true,
-            'accountId' => $accountId
+            'accountId' => $accountId,
         ];
         $this->gaBlock->setData('page_name', $pageName);
         $this->googleAnalyticsDataMock->expects($this->once())->method('isAnonymizedIpActive')->willReturn(true);

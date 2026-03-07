@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,8 +11,8 @@ use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\UrlRewrite\Model\UrlRewrite;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\UrlRewrite\Model\UrlRewrite;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var \Magento\Framework\Registry $registry */
@@ -18,7 +20,6 @@ $registry = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(\Ma
 
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', true);
-
 
 /** @var ProductRepositoryInterface $productRepository */
 $productRepository = $objectManager->get(ProductRepositoryInterface::class);

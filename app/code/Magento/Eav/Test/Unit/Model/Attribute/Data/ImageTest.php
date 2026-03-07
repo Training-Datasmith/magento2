@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class ImageTest extends TestCase
@@ -104,7 +105,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => [],
-                'expectedResult' => ['"Label" is not a valid image format']
+                'expectedResult' => ['"Label" is not a valid image format'],
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.ppp'],
@@ -112,7 +113,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => [],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => [
@@ -123,7 +124,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_file_size' => 2],
-                'expectedResult' => ['"Label" exceeds the allowed file size.']
+                'expectedResult' => ['"Label" exceeds the allowed file size.'],
             ],
             [
                 'value' => [
@@ -134,7 +135,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_file_size' => 20],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.jpg'],
@@ -142,7 +143,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_image_width' => 2],
-                'expectedResult' => ['"Label" width exceeds allowed value of 2 px.']
+                'expectedResult' => ['"Label" width exceeds allowed value of 2 px.'],
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.jpg'],
@@ -150,7 +151,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_image_width' => 2000],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.jpg'],
@@ -158,7 +159,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_image_height' => 2],
-                'expectedResult' => ['"Label" height exceeds allowed value of 2 px.']
+                'expectedResult' => ['"Label" height exceeds allowed value of 2 px.'],
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.jpg'],
@@ -166,7 +167,7 @@ class ImageTest extends TestCase
                 'isRequired' => true,
                 'isAjaxRequest' => false,
                 'rules' => ['max_image_height' => 2000],
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'value' => ['delete' => 'delete', 'tmp_name' => __DIR__ . '/_files/image.jpg', 'name' => 'image.jpg'],
@@ -177,7 +178,7 @@ class ImageTest extends TestCase
                 'expectedResult' => [
                     '"Label" width exceeds allowed value of 2 px.',
                     '"Label" height exceeds allowed value of 2 px.',
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @method array getValues()
  */
+
 namespace Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Form\Element;
 
 class Links extends \Magento\Framework\Data\Form\Element\AbstractElement
@@ -112,7 +115,7 @@ class Links extends \Magento\Framework\Data\Form\Element\AbstractElement
             'onkeypress',
             'onkeyup',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 }

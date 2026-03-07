@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -135,7 +138,7 @@ class Copier
      * @param Product $duplicate
      * @return void
      */
-    private function setDefaultUrl(Product $product, Product $duplicate) : void
+    private function setDefaultUrl(Product $product, Product $duplicate): void
     {
         $duplicate->setStoreId(Store::DEFAULT_STORE_ID);
         $resource = $product->getResource();
@@ -159,7 +162,7 @@ class Copier
      * @return void
      * @throws UrlAlreadyExistsException
      */
-    private function setStoresUrl(Product $product, Product $duplicate) : void
+    private function setStoresUrl(Product $product, Product $duplicate): void
     {
         $storeIds = $duplicate->getStoreIds();
         $productId = $product->getId();
@@ -203,7 +206,7 @@ class Copier
      * @param string $urlKey
      * @return string
      */
-    private function modifyUrl(string $urlKey) : string
+    private function modifyUrl(string $urlKey): string
     {
         return preg_match('/(.*)-(\d+)$/', $urlKey, $matches)
             ? $matches[1] . '-' . ($matches[2] + 1)

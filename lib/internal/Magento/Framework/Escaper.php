@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -122,10 +123,10 @@ class Escaper
                 $this->escapeAttributeValues($domDocument);
 
                 $result = mb_decode_numericentity(
-                // phpcs:ignore Magento2.Functions.DiscouragedFunction
+                    // phpcs:ignore Magento2.Functions.DiscouragedFunction
                     html_entity_decode(
                         $domDocument->saveHTML(),
-                        ENT_QUOTES|ENT_SUBSTITUTE,
+                        ENT_QUOTES | ENT_SUBSTITUTE,
                         'UTF-8'
                     ),
                     $convmap,

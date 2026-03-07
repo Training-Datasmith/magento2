@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception\Code;
 
 use Magento\Framework\Code\Reader\ArgumentsReader;
@@ -36,7 +39,7 @@ class InterfaceValidator
      */
     public static array $optionalPackages = [
         'Swoole',
-        'OpenSwoole'
+        'OpenSwoole',
     ];
 
     /**
@@ -61,7 +64,7 @@ class InterfaceValidator
     public function validate($pluginClass, $interceptedType)
     {
         // check if $interceptedType is a part of optional package
-        $interceptedPackage = strstr(trim((string)$interceptedType), "\\", true);
+        $interceptedPackage = strstr(trim((string)$interceptedType), '\\', true);
         if (in_array($interceptedPackage, self::$optionalPackages)) {
             return;
         }

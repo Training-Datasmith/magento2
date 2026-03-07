@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\EntityManager\Operation;
 
-use Magento\Framework\EntityManager\Operation\CheckIfExistsInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\TypeResolver;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\EntityManager\HydratorPool;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\EntityManager\TypeResolver;
 
 /**
  * Class CheckIfExists

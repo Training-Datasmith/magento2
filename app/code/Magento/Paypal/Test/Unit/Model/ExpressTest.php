@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class ExpressTest extends TestCase
         ApiProcessableException::API_MAXIMUM_AMOUNT_FILTER_DECLINE,
         ApiProcessableException::API_OTHER_FILTER_DECLINE,
         ApiProcessableException::API_ADDRESS_MATCH_FAIL,
-        ApiProcessableException::API_TRANSACTION_HAS_BEEN_COMPLETED
+        ApiProcessableException::API_TRANSACTION_HAS_BEEN_COMPLETED,
     ];
 
     /**
@@ -128,8 +129,8 @@ class ExpressTest extends TestCase
         $objects = [
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->model = $this->helper->getObject(
@@ -221,8 +222,8 @@ class ExpressTest extends TestCase
                     Checkout::PAYMENT_INFO_TRANSPORT_BILLING_AGREEMENT => $transportValue,
                     Checkout::PAYMENT_INFO_TRANSPORT_PAYER_ID => $transportValue,
                     Checkout::PAYMENT_INFO_TRANSPORT_TOKEN => $transportValue,
-                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttribute
-                ]
+                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttribute,
+                ],
             ]
         );
 
@@ -269,7 +270,7 @@ class ExpressTest extends TestCase
         $eventData = [
             AbstractDataAssignObserver::METHOD_CODE => $this,
             AbstractDataAssignObserver::MODEL_CODE => $this->model->getInfoInstance(),
-            AbstractDataAssignObserver::DATA_CODE => $data
+            AbstractDataAssignObserver::DATA_CODE => $data,
         ];
 
         $this->eventManager->expects(static::exactly(2))
@@ -283,7 +284,7 @@ class ExpressTest extends TestCase
                     [
                         'payment_method_assign_data',
                         $eventData,
-                    ]
+                    ],
                 ]
             );
     }

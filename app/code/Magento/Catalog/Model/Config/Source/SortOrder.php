@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ declare(strict_types=1);
  * Catalog Product List Sort Order
  *
  */
+
 namespace Magento\Catalog\Model\Config\Source;
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;

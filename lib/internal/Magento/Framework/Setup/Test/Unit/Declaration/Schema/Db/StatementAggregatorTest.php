@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -125,7 +126,7 @@ class StatementAggregatorTest extends TestCase
             ->willReturn(
                 [
                     function () {
-                    }
+                    },
                 ]
             );
         $this->model->addStatements([$statementOne, $statementTwo, $statementThree]);
@@ -151,7 +152,7 @@ class StatementAggregatorTest extends TestCase
             ->willReturn(
                 [
                     function () {
-                    }
+                    },
                 ]
             );
         $this->model->addStatements([$statementOne, $statementTwo, $statementThree]);

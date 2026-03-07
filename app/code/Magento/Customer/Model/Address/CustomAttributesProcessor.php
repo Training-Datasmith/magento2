@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class CustomAttributesProcessor
      * @throws \Magento\Framework\Exception\InputException
      * @throws \Magento\Framework\Exception\StateException
      */
-    private function getAttributeLabels(array $customAttribute, string $customAttributeCode) : array
+    private function getAttributeLabels(array $customAttribute, string $customAttributeCode): array
     {
         $attributeOptionLabels = [];
 

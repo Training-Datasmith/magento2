@@ -1,4 +1,5 @@
 <?php
+
 /**
  * List of active application modules.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use PHPUnit\Framework\TestCase;
 
 class SchemaLocatorTest extends TestCase
 {
-
     /**
      * @var SchemaLocatorConfig
      */

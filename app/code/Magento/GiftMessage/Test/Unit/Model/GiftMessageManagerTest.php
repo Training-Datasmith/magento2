@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\GiftMessage\Test\Unit\Model;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GiftMessage\Model\GiftMessageManager;
 use Magento\GiftMessage\Model\Message;
 use Magento\GiftMessage\Model\MessageFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote\Address\Item as QuoteAddressItem;
 use Magento\Quote\Model\Quote\Item;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -69,7 +70,7 @@ class GiftMessageManagerTest extends TestCase
             [
                 'setGiftMessageId', 'getGiftMessageId', 'getCustomerId',
                 'save', 'getItemById', 'getAddressById', 'getBillingAddress',
-                'getShippingAddress', '__wakeup'
+                'getShippingAddress', '__wakeup',
             ]
         );
         $this->quoteItemMock = $this->createPartialMockWithReflection(
@@ -101,7 +102,7 @@ class GiftMessageManagerTest extends TestCase
                 'delete',
                 'save',
                 '__wakeup',
-                'load'
+                'load',
             ]
         );
 

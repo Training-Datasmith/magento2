@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Framework\Backup\Archive;
 
 use Magento\Framework\Backup\Filesystem\Iterator\Filter;

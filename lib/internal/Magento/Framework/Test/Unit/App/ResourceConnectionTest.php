@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class ResourceConnectionTest extends TestCase
             [
                 'deploymentConfig' => $this->deploymentConfigMock,
                 'connectionFactory' => $this->connectionFactoryMock,
-                'config' => $this->configMock
+                'config' => $this->configMock,
             ]
         );
     }
@@ -78,7 +79,7 @@ class ResourceConnectionTest extends TestCase
                 'deploymentConfig' => $this->deploymentConfigMock,
                 'connectionFactory' => $this->connectionFactoryMock,
                 'config' => $this->configMock,
-                'tablePrefix' => 'some_prefix'
+                'tablePrefix' => 'some_prefix',
             ]
         );
 
@@ -121,7 +122,7 @@ class ResourceConnectionTest extends TestCase
             ResourceConnection::class,
             [
                 'deploymentConfig' => $this->deploymentConfigMock,
-                'connections' => ['default' => 'existing_connection']
+                'connections' => ['default' => 'existing_connection'],
             ]
         );
         $this->deploymentConfigMock->expects($this->never())->method('get');

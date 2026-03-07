@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Link;
 use Magento\Catalog\Model\Product\LinkFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection;
 use Magento\Checkout\Block\Cart\Crosssell;
@@ -19,15 +21,14 @@ use Magento\Checkout\Model\Session;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Quote\Model\Quote;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
-use Magento\Quote\Model\Quote;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -80,7 +81,7 @@ class CrosssellTest extends TestCase
         $this->context = $objectManager->getObject(
             Context::class,
             [
-                'storeManager' => $this->storeManager
+                'storeManager' => $this->storeManager,
             ]
         );
         $this->checkoutSession = $this->createPartialMockWithReflection(
@@ -184,11 +185,11 @@ class CrosssellTest extends TestCase
         $links = [
             1001 => [
                 1003,
-                1005
+                1005,
             ],
             1006 => [
                 1002,
-            ]
+            ],
         ];
         return [
             [
@@ -201,8 +202,8 @@ class CrosssellTest extends TestCase
                 'expected' => [
                     1002,
                     1003,
-                    1005
-                ]
+                    1005,
+                ],
             ],
             [
                 'productLinks' => $links,
@@ -215,7 +216,7 @@ class CrosssellTest extends TestCase
                     1003,
                     1005,
                     1002,
-                ]
+                ],
             ],
             [
                 'productLinks' => $links,
@@ -225,8 +226,8 @@ class CrosssellTest extends TestCase
                 ],
                 'lastAddedProductId' => null,
                 'expected' => [
-                    1003
-                ]
+                    1003,
+                ],
             ],
             [
                 'productLinks' => $links,
@@ -236,8 +237,8 @@ class CrosssellTest extends TestCase
                 ],
                 'lastAddedProductId' => null,
                 'expected' => [
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -341,7 +342,7 @@ class CrosssellTest extends TestCase
     private function createProductCollection(): MockObject
     {
         $productCollection = $this->createMock(ProductCollection::class);
-        $entityMetadataInterface =$this->createMock(EntityMetadataInterface::class);
+        $entityMetadataInterface = $this->createMock(EntityMetadataInterface::class);
         $entityMetadataInterface->method('getLinkField')
             ->willReturn('entity_id');
         $productCollection->method('getProductEntityMetadata')

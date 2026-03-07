@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class GiftMessageTest extends TestCase
         $this->contextMock = $this->createMock(ContextInterface::class);
         $this->resolverMock = $this->createMock(ResolverInterface::class);
         $this->resolveInfoMock = $this->createMock(ResolveInfo::class);
-        $this->orderRepositoryMock =$this->createMock(OrderRepositoryInterface::class);
+        $this->orderRepositoryMock = $this->createMock(OrderRepositoryInterface::class);
         $logger = $this->createMock(LoggerInterface::class);
         $uidEncoder = $this->createMock(Uid::class);
         $this->messageMock = $this->createMock(MessageInterface::class);
@@ -95,7 +96,7 @@ class GiftMessageTest extends TestCase
      */
     public function testResolve(): void
     {
-        $this->valueMock = ['id' => "111"];
+        $this->valueMock = ['id' => '111'];
         $this->orderRepositoryMock
             ->expects($this->once())
             ->method('get')
@@ -118,7 +119,7 @@ class GiftMessageTest extends TestCase
      */
     public function testResolveWithMessageId(): void
     {
-        $this->valueMock = ['id' => "112"];
+        $this->valueMock = ['id' => '112'];
         $this->orderRepositoryMock
             ->expects($this->once())
             ->method('get')
@@ -133,7 +134,7 @@ class GiftMessageTest extends TestCase
             [
                 'to' => '',
                 'from' => '',
-                'message' =>''
+                'message' => '',
             ],
             $this->giftMessage->resolve($this->fieldMock, $this->contextMock, $this->resolveInfoMock, $this->valueMock)
         );

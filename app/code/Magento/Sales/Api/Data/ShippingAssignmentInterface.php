@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -17,11 +20,11 @@ interface ShippingAssignmentInterface extends ExtensibleDataInterface
     /**#@+
      * Shipping assignment object data keys
      */
-    const KEY_SHIPPING = 'shipping';
+    public const KEY_SHIPPING = 'shipping';
 
-    const KEY_ITEMS = 'items';
+    public const KEY_ITEMS = 'items';
 
-    const KEY_STOCK_ID = 'stock_id';
+    public const KEY_STOCK_ID = 'stock_id';
     /**#@-*/
 
     /**

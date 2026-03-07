@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,16 +12,16 @@ use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\AuthorizationException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\Stdlib\DateTime\DateTime as Date;
+use Magento\Framework\Webapi\Request;
 use Magento\Integration\Api\Exception\UserTokenException;
+use Magento\Integration\Api\IntegrationServiceInterface;
 use Magento\Integration\Api\UserTokenReaderInterface;
 use Magento\Integration\Api\UserTokenValidatorInterface;
+use Magento\Integration\Helper\Oauth\Data as OauthHelper;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory;
-use Magento\Integration\Api\IntegrationServiceInterface;
-use Magento\Framework\Webapi\Request;
-use Magento\Framework\Stdlib\DateTime\DateTime as Date;
-use Magento\Framework\Stdlib\DateTime;
-use Magento\Integration\Helper\Oauth\Data as OauthHelper;
 
 /**
  * A user context determined by tokens in a HTTP request Authorization header.
@@ -138,7 +140,7 @@ class TokenUserContext implements UserContextInterface, ResetAfterRequestInterfa
             return;
         }
 
-        $headerPieces = explode(" ", $authorizationHeaderValue);
+        $headerPieces = explode(' ', $authorizationHeaderValue);
         if (count($headerPieces) !== 2) {
             $this->isRequestProcessed = true;
             return;

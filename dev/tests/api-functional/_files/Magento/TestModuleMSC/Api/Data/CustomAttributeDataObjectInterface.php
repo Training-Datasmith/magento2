@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModuleMSC\Api\Data;
 
 interface CustomAttributeDataObjectInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const NAME = 'name';
+    public const NAME = 'name';
 
     /**
      * @return string

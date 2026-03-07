@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class DisableMultishippingModeTest extends TestCase
     {
         return [
             'check_when_totals_are_collected' => [true],
-            'check_when_totals_are_not_collected' => [false]
+            'check_when_totals_are_not_collected' => [false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\MediaGallery\Model;
 
 use Magento\MediaGalleryApi\Api\IsPathExcludedInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for IsPathExcludedInterface
@@ -54,7 +55,7 @@ class IsExcludedTest extends TestCase
             ['theme', true],
             ['.thumbs', true],
             ['catalog/product/somedir', true],
-            ['catalog/category', false]
+            ['catalog/category', false],
         ];
     }
 }

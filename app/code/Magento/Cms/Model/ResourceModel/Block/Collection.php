@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\ResourceModel\Block;
 
 use Magento\Cms\Api\Data\BlockInterface;
-use \Magento\Cms\Model\ResourceModel\AbstractCollection;
+use Magento\Cms\Model\ResourceModel\AbstractCollection;
 
 /**
  * CMS Block Collection

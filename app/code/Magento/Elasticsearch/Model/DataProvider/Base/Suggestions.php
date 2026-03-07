@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\DataProvider\Base;
 
 use Elasticsearch\Common\Exceptions\BadRequest400Exception;
@@ -75,7 +78,7 @@ class Suggestions implements SuggestedQueriesInterface
      * @var array
      */
     private $responseErrorExceptionList = [
-        'elasticsearchBadRequest404' => BadRequest400Exception::class
+        'elasticsearchBadRequest404' => BadRequest400Exception::class,
     ];
 
     /**
@@ -235,8 +238,8 @@ class Suggestions implements SuggestedQueriesInterface
             'type' => Config::ELASTICSEARCH_TYPE_DEFAULT,
             'body' => [
                 'suggest' => [
-                    'text' => $query->getQueryText()
-                ]
+                    'text' => $query->getQueryText(),
+                ],
             ],
         ];
 
@@ -265,7 +268,7 @@ class Suggestions implements SuggestedQueriesInterface
                         [
                             'field' => $field,
                             'min_word_length' => 3,
-                        ]
+                        ],
                     ],
                 ],
             ];

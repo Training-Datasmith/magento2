@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -24,10 +25,10 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\Module\Manager as ModuleManager;
 use Magento\Framework\Registry;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -136,7 +137,7 @@ class AbstractGroupTest extends TestCase
                 'registry' => $this->registryMock,
                 'groupManagement' => $this->groupManagementMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'localeCurrency' => $this->localeCurrencyMock
+                'localeCurrency' => $this->localeCurrencyMock,
             ]
         );
     }
@@ -382,7 +383,7 @@ class AbstractGroupTest extends TestCase
         $websites = [
             0 => ['name' => 'All Websites'],
             1 => ['name' => 'Main Website'],
-            2 => ['name' => 'Second Website']
+            2 => ['name' => 'Second Website'],
         ];
 
         $blockMock->expects($this->once())
@@ -839,7 +840,7 @@ class AbstractGroupTest extends TestCase
     {
         $cachedWebsites = [
             0 => ['name' => 'All Websites', 'currency' => 'USD'],
-            1 => ['name' => 'Main Website', 'currency' => 'USD']
+            1 => ['name' => 'Main Website', 'currency' => 'USD'],
         ];
 
         // Use reflection to set the private _websites property
@@ -886,7 +887,7 @@ class AbstractGroupTest extends TestCase
         $baseCurrency = 'USD';
         $priceData = [
             ['website_id' => 1, 'price' => 10.50],
-            ['website_id' => 2, 'price' => 20.00]
+            ['website_id' => 2, 'price' => 20.00],
         ];
         $formattedPrice1 = '10.50';
         $formattedPrice2 = '20.00';
@@ -969,7 +970,7 @@ class AbstractGroupTest extends TestCase
         $baseCurrency = 'USD';
         $priceData = [
             ['website_id' => 0, 'price' => 10.00],
-            ['website_id' => 1, 'price' => 15.00]
+            ['website_id' => 1, 'price' => 15.00],
         ];
 
         $currencyMock = $this->createMock(FrameworkCurrency::class);

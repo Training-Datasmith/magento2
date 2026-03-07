@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,15 +10,15 @@ declare(strict_types=1);
 namespace Magento\Cms\Model\Page\CustomLayout;
 
 use Magento\Cms\Model\Page as PageModel;
-use Magento\Cms\Model\PageFactory as PageModelFactory;
-use Magento\Cms\Model\Page\CustomLayout\Data\CustomLayoutSelectedInterface;
 use Magento\Cms\Model\Page\CustomLayout\Data\CustomLayoutSelected;
+use Magento\Cms\Model\Page\CustomLayout\Data\CustomLayoutSelectedInterface;
+use Magento\Cms\Model\Page\CustomLayoutManagerInterface;
 use Magento\Cms\Model\Page\CustomLayoutRepositoryInterface;
 use Magento\Cms\Model\Page\IdentityMap;
+use Magento\Cms\Model\PageFactory as PageModelFactory;
 use Magento\Cms\Model\ResourceModel\Page;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Cms\Model\Page\CustomLayoutManagerInterface;
 
 /**
  * @inheritDoc

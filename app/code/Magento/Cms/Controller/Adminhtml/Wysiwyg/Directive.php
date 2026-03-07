@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,20 +10,20 @@ declare(strict_types=1);
 namespace Magento\Cms\Controller\Adminhtml\Wysiwyg;
 
 use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
 use Magento\Cms\Model\Template\Filter;
 use Magento\Cms\Model\Wysiwyg\Config;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem;
-use Magento\Framework\Image\Adapter\AdapterInterface;
-use Magento\Framework\Image\AdapterFactory;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Url\DecoderInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Driver\File;
+use Magento\Framework\Image\Adapter\AdapterInterface;
+use Magento\Framework\Image\AdapterFactory;
+use Magento\Framework\Url\DecoderInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Process template text for wysiwyg editor.
@@ -32,13 +33,12 @@ use Magento\Framework\Filesystem\Driver\File;
  */
 class Directive extends Action implements HttpGetActionInterface
 {
-
     /**
      * Authorization level of a basic admin session
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::media_gallery';
+    public const ADMIN_RESOURCE = 'Magento_Cms::media_gallery';
 
     /**
      * @var DecoderInterface

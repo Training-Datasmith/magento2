@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,13 +7,13 @@
 declare(strict_types=1);
 
 use Magento\Customer\Model\Address;
+use Magento\Customer\Model\Attribute;
 use Magento\Customer\Model\Customer;
 use Magento\Eav\Model\Config;
+use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Model\Attribute;
-use Magento\Eav\Model\Entity\Attribute\Set;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var $entityType Type */
@@ -39,7 +40,7 @@ $select = Bootstrap::getObjectManager()->create(
             'is_visible' => 1,
             'used_in_forms' => [
                 'customer_address_edit',
-                'adminhtml_customer_address'
+                'adminhtml_customer_address',
             ],
             'attribute_set_id' => $entityType->getDefaultAttributeSetId(),
             'attribute_group_id' => $attributeSet->getDefaultGroupId($entityType->getDefaultAttributeSetId()),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Tax\Block\Item\Price\Renderer;
 use Magento\Tax\Plugin\Checkout\CustomerData\Cart;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -73,13 +73,13 @@ class CartTest extends TestCase
         $input = ['items' => [
             [
                 'item_id' => 1,
-                'product_price' => ''
+                'product_price' => '',
             ],
             [
                 'item_id' => 2,
-                'product_price' => ''
+                'product_price' => '',
             ],
-        ]
+        ],
         ];
 
         $this->checkoutHelper->method('formatPrice')

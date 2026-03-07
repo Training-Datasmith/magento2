@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\Indexer\Fulltext\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Attribute;
@@ -16,6 +16,7 @@ use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Search\Request\Config;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -93,7 +94,7 @@ class AttributeTest extends TestCase
             [
                 'indexerRegistry' => $this->indexerRegistryMock,
                 'config' => $this->config,
-                'eavConfig' => $this->eavConfig
+                'eavConfig' => $this->eavConfig,
             ]
         );
     }
@@ -201,7 +202,7 @@ class AttributeTest extends TestCase
             [
                 'indexerRegistry' => $this->indexerRegistryMock,
                 'config' => $this->config,
-                'deleteNeedInvalidation' => true
+                'deleteNeedInvalidation' => true,
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class ConverterTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             Converter::class,
             [
-                'resourceProvider' => $this->resourceProviderMock
+                'resourceProvider' => $this->resourceProviderMock,
             ]
         );
     }

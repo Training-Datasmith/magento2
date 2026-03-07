@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Source;
 
 class HandlingType implements \Magento\Framework\Option\ArrayInterface
@@ -19,8 +22,8 @@ class HandlingType implements \Magento\Framework\Option\ArrayInterface
             ],
             [
                 'value' => \Magento\Shipping\Model\Carrier\AbstractCarrier::HANDLING_TYPE_PERCENT,
-                'label' => __('Percent')
-            ]
+                'label' => __('Percent'),
+            ],
         ];
     }
 }

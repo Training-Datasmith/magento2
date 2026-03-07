@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Newsletter\Model\ResourceModel\Subscriber\CollectionFactory;
 use Magento\Newsletter\Model\Subscriber;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 
 /**

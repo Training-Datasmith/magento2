@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\CacheInvalidate\Observer\InvalidateVarnishObserver;
 use Magento\Framework\App\Cache\Tag\Resolver;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\Config;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -74,7 +75,7 @@ class InvalidateVarnishObserverTest extends TestCase
             [
                 'config' => $this->configMock,
                 'purgeCache' => $this->purgeCacheMock,
-                'tagResolver' => $this->tagResolverMock
+                'tagResolver' => $this->tagResolverMock,
             ]
         );
     }

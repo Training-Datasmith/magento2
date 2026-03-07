@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\NewRelicReporting\Console\Command;
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\NewRelicReporting\Console\Command\DeployMarker;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -67,7 +67,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => 'Test deployment',
-            'change_log' => 'Test changelog'
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertEquals(1, $exitCode);
@@ -89,7 +89,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => 'Test deployment message',
-            'change_log' => 'Test changelog'
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertTrue(
@@ -161,7 +161,7 @@ class DeployMarkerCommandTest extends TestCase
             'revision' => 'v2.0.0',
             '--commit' => 'abc123',
             '--deep-link' => 'https://github.com/test/releases/v2.0.0',
-            '--group-id' => 'production'
+            '--group-id' => 'production',
         ]);
 
         // Framework integration: Should handle gracefully (success or graceful failure)
@@ -188,7 +188,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => '',
-            "change_log" => "Test changelog"
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertIsInt($exitCode);
@@ -235,7 +235,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => 'v2 rest test',
-            'change_log' => 'Test changelog'
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertTrue(in_array($exitCode, [0, 1], true));
@@ -252,7 +252,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => 'misconfig v2',
-            'change_log' => 'Test changelog'
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertEquals(1, $exitCode);
@@ -270,7 +270,7 @@ class DeployMarkerCommandTest extends TestCase
     {
         $exitCode = $this->commandTester->execute([
             'message' => 'misconfig nerdgraph',
-            'change_log' => 'Test changelog'
+            'change_log' => 'Test changelog',
         ]);
 
         $this->assertEquals(1, $exitCode);

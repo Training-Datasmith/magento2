@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Password
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
-use Magento\Framework\Data\Form\Element\Obscure;
 use Magento\Framework\Data\Form\Element\Password;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
@@ -33,7 +34,7 @@ class PasswordTest extends TestCase
      */
     protected $_model;
 
-        /**
+    /**
      * @var \Magento\Framework\ObjectManagerInterface|null
      */
     private $originalObjectManager;

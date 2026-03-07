@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @category    Magento
  * @package     Magento_Code
@@ -6,6 +8,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Code\Generator;
 
 use Magento\Framework\Code\Generator\EntityAbstract;
@@ -19,13 +22,13 @@ class SearchResults extends EntityAbstract
     /**
      * Entity type
      */
-    const ENTITY_TYPE = 'searchResults';
+    public const ENTITY_TYPE = 'searchResults';
 
     /**
      * Search result default class
      * @deprecated
      */
-    const SEARCH_RESULT = '\\' . \Magento\Framework\Api\SearchResults::class;
+    public const SEARCH_RESULT = '\\' . \Magento\Framework\Api\SearchResults::class;
 
     /**
      * Retrieve class properties
@@ -47,7 +50,7 @@ class SearchResults extends EntityAbstract
         $getItems = [
             'name' => 'getItems',
             'parameters' => [],
-            'body' => "return parent::getItems();",
+            'body' => 'return parent::getItems();',
             'docblock' => [
                 'shortDescription' => 'Returns array of items',
                 'tags' => [

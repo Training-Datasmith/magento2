@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class AwsS3FactoryTest extends TestCase
         $config = [
             'region' => 'us-west-1',
             'bucket' => 'someName',
-            'credentials' => []
+            'credentials' => [],
         ];
         $this->cachedCredsProviderMock->expects($this->once())->method('get');
         $this->invokePrepareConfig($config);
@@ -103,8 +104,8 @@ class AwsS3FactoryTest extends TestCase
         $config = [
             'credentials' => [
                 'key' => 'someKey',
-                'secret' => 'verySecretKey'
-            ]
+                'secret' => 'verySecretKey',
+            ],
         ];
 
         $this->expectException('\Magento\RemoteStorage\Driver\DriverException');

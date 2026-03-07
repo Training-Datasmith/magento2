@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator;
 
 use Laminas\Validator\EmailAddress as LaminasEmailAddress;
@@ -13,13 +16,13 @@ class EmailAddress extends LaminasEmailAddress implements ValidatorInterface
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID => "Invalid type given. String expected",
+        self::INVALID => 'Invalid type given. String expected',
         self::INVALID_FORMAT => "'%value%' is not a valid email address in the basic format local-part@hostname",
         self::INVALID_HOSTNAME => "'%hostname%' is not a valid hostname for email address '%value%'",
         self::INVALID_MX_RECORD  => "'%hostname%' does not appear to have a valid MX record for the email address " .
             " '%value%'",
         self::INVALID_SEGMENT => "'%hostname%' is not in a routable network segment. The email address '%value%' " .
-            " should not be resolved from public network",
+            ' should not be resolved from public network',
         self::DOT_ATOM => "'%localPart%' can not be matched against dot-atom format",
         self::QUOTED_STRING => "'%localPart%' can not be matched against quoted-string format",
         self::INVALID_LOCAL_PART => "'%localPart%' is not a valid local part for email address '%value%'",

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\ResourceModel\Design\Config;
 
 use Magento\Config\Model\ResourceModel\Config\Data\Collection as ConfigCollection;

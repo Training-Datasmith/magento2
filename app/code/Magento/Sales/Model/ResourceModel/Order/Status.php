@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -6,12 +8,7 @@
 
 namespace Magento\Sales\Model\ResourceModel\Order;
 
-use Magento\Framework\App\ResourceConnection;
-use Psr\Log\LoggerInterface as LogWriter;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\SalesSequence\Model\Manager;
-use \Magento\Sales\Model\ResourceModel\EntityAbstract;
-use \Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 
 /**
  * Order status resource model
@@ -144,7 +141,7 @@ class Status extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 'status' => $status,
                 'state' => $state,
                 'is_default' => (int)$isDefault,
-                'visible_on_front' => (int)$visibleOnFront
+                'visible_on_front' => (int)$visibleOnFront,
             ]
         );
         return $this;
@@ -167,7 +164,7 @@ class Status extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $this->stateTable,
                 [
                     'state = ?' => $state,
-                    'status = ?' => $status
+                    'status = ?' => $status,
                 ]
             );
             if ($isStateDefault) {
@@ -178,7 +175,7 @@ class Status extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                         ['is_default' => 1],
                         [
                             'state = ?' => $state,
-                            'status = ?' => $newDefaultStatus
+                            'status = ?' => $newDefaultStatus,
                         ]
                     );
                 }

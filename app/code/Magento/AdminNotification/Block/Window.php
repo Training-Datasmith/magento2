@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Block;
 
 /**
@@ -24,20 +27,6 @@ class Window extends \Magento\Backend\Block\Template
     protected $_severityIconsUrl;
 
     /**
-     * Authentication
-     *
-     * @var \Magento\Backend\Model\Auth\Session
-     */
-    protected $_authSession;
-
-    /**
-     * Critical messages collection
-     *
-     * @var \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection
-     */
-    protected $_criticalCollection;
-
-    /**
      * @var \Magento\AdminNotification\Model\Inbox
      */
     protected $_latestItem;
@@ -50,21 +39,19 @@ class Window extends \Magento\Backend\Block\Template
      */
     protected $_isScopePrivate;
 
-    /**
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Backend\Model\Auth\Session $authSession
-     * @param \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Critical $criticalCollection
-     * @param array $data
-     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Model\Auth\Session $authSession,
-        \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Critical $criticalCollection,
+        /**
+         * Authentication
+         */
+        protected \Magento\Backend\Model\Auth\Session $_authSession,
+        /**
+         * Critical messages collection
+         */
+        protected \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Critical $_criticalCollection,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_authSession = $authSession;
-        $this->_criticalCollection = $criticalCollection;
         $this->_isScopePrivate = true;
     }
 
@@ -106,10 +93,8 @@ class Window extends \Magento\Backend\Block\Template
 
     /**
      * Check whether block should be displayed
-     *
-     * @return bool
      */
-    public function canShow()
+    public function canShow(): bool
     {
         return $this->_authSession->isFirstPageAfterLogin() && $this->_getLatestItem();
     }

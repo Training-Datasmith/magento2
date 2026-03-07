@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@ namespace Magento\Integration\Test\Unit\Model;
 use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\Oauth\Exception;
 use Magento\Framework\Oauth\Helper\Oauth;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Integration\Helper\Oauth\Data;
 use Magento\Integration\Model\Integration;
 use Magento\Integration\Model\Oauth\Consumer;
@@ -18,7 +21,6 @@ use Magento\Integration\Model\Oauth\Token\Provider;
 use Magento\Integration\Model\Oauth\TokenFactory;
 use Magento\Integration\Model\OauthService;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -100,7 +102,7 @@ class OauthServiceTest extends TestCase
             'created_at' => '',
             'updated_at' => '',
             'callback_url' => '',
-            'rejected_callback_url' => ''
+            'rejected_callback_url' => '',
         ];
         $this->_consumerFactory->expects(
             $this->any()
@@ -315,7 +317,7 @@ class OauthServiceTest extends TestCase
             new Exception(
                 __(
                     "The oAuth consumer account couldn't be loaded due to an unexpected error. "
-                    . "Please try again later."
+                    . 'Please try again later.'
                 )
             )
         );
@@ -361,7 +363,7 @@ class OauthServiceTest extends TestCase
             new Exception(
                 __(
                     "The oAuth consumer account couldn't be loaded due to an unexpected error. "
-                    . "Please try again later."
+                    . 'Please try again later.'
                 )
             )
         );

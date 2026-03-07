@@ -1,22 +1,23 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Tax\Api\TaxClassManagementInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Tax\Api\TaxClassRepositoryInterface;
-use Magento\Tax\Api\TaxRuleRepositoryInterface;
-use Magento\Tax\Api\Data\TaxClassInterfaceFactory;
 use Magento\Tax\Api\Data\TaxClassInterface;
-use Magento\Tax\Api\Data\TaxRateInterfaceFactory;
+use Magento\Tax\Api\Data\TaxClassInterfaceFactory;
 use Magento\Tax\Api\Data\TaxRateInterface;
-use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Tax\Api\Data\TaxRateInterfaceFactory;
 use Magento\Tax\Api\Data\TaxRuleInterface;
+use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Tax\Api\TaxClassManagementInterface;
+use Magento\Tax\Api\TaxClassRepositoryInterface;
+use Magento\Tax\Api\TaxRateRepositoryInterface;
+use Magento\Tax\Api\TaxRuleRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var ObjectManagerInterface $objectManager */
 $objectManager = Bootstrap::getObjectManager();

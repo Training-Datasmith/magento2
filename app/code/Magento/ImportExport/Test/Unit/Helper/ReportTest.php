@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,6 +24,7 @@ use Magento\Framework\Phrase;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\Intl\DateFormatterFactory;
 use Magento\Framework\Stdlib\DateTime\Timezone;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\ImportExport\Helper\Data;
 use Magento\ImportExport\Helper\Report;
@@ -33,7 +35,6 @@ use Magento\ImportExport\Model\Import\Config;
 use Magento\ImportExport\Model\Import\Entity\Factory;
 use Magento\ImportExport\Model\LocaleEmulatorInterface;
 use Magento\ImportExport\Model\Source\Upload;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\MediaStorage\Model\File\UploaderFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -140,7 +141,7 @@ class ReportTest extends TestCase
             [
                 'context' => $this->context,
                 'timeZone' => $this->getTimezone(),
-                'filesystem' =>$this->filesystem
+                'filesystem' => $this->filesystem,
             ]
         );
     }
@@ -261,7 +262,7 @@ class ReportTest extends TestCase
         $this->expectExceptionMessage('File not found');
         $this->importHistoryDirectory->expects($this->any())
             ->method('getAbsolutePath')
-            ->will($this->throwException(new ValidatorException(__("Error"))));
+            ->will($this->throwException(new ValidatorException(__('Error'))));
         $this->report->importFileExists($fileName);
     }
 
@@ -339,7 +340,7 @@ class ReportTest extends TestCase
             Timezone::class,
             ['getConfigTimezone', 'diff', 'format']
         );
-        
+
         $timezoneMock->__construct(
             $scopeResolver,
             $localeResolver,

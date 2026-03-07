@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Sample;
 
 use Magento\Downloadable\Api\SampleRepositoryInterface as SampleRepository;

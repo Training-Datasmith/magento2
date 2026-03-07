@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\Description\Mixin;
 
 /**
@@ -13,12 +16,12 @@ class MixinFactory
     /**#@+
      * Constants for existing mixin types
      */
-    const SPAN_MIXIN = 'span';
-    const BOLD_MIXIN = 'b';
-    const BRAKE_MIXIN = 'br';
-    const PARAGRAPH_MIXIN = 'p';
-    const HEADER_MIXIN = 'h1';
-    const ITALIC_MIXIN = 'i';
+    public const SPAN_MIXIN = 'span';
+    public const BOLD_MIXIN = 'b';
+    public const BRAKE_MIXIN = 'br';
+    public const PARAGRAPH_MIXIN = 'p';
+    public const HEADER_MIXIN = 'h1';
+    public const ITALIC_MIXIN = 'i';
     /**#@-*/
 
     /**

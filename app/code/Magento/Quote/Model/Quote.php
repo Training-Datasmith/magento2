@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model;
 
 use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;

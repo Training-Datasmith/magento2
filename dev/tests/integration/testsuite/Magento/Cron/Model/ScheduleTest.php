@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cron\Model;
 
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use \Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Test \Magento\Cron\Model\Schedule
@@ -40,9 +43,9 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
     public function testTryLockJobNoLockedJobsSucceeds()
     {
         for ($i = 1; $i < 6; $i++) {
-            $this->createSchedule("test_job", Schedule::STATUS_PENDING, 60 * $i);
+            $this->createSchedule('test_job', Schedule::STATUS_PENDING, 60 * $i);
         }
-        $schedule = $this->createSchedule("test_job", Schedule::STATUS_PENDING);
+        $schedule = $this->createSchedule('test_job', Schedule::STATUS_PENDING);
 
         $this->assertTrue($schedule->tryLockJob());
     }
@@ -52,7 +55,7 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
      */
     public function testTryLockJobAlreadyLockedFails()
     {
-        $schedule = $this->createSchedule("test_job", Schedule::STATUS_RUNNING);
+        $schedule = $this->createSchedule('test_job', Schedule::STATUS_RUNNING);
 
         $this->assertFalse($schedule->tryLockJob());
     }
@@ -62,18 +65,18 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
      */
     public function testTryLockJobAlreadyLockedSucceeds()
     {
-        $offsetInThePast = 2*24*60*60;
+        $offsetInThePast = 2 * 24 * 60 * 60;
 
         $oldSchedule = $this->scheduleFactory->create()
-            ->setCronExpr("* * * * *")
-            ->setJobCode("test_job")
+            ->setCronExpr('* * * * *')
+            ->setJobCode('test_job')
             ->setStatus(Schedule::STATUS_RUNNING)
             ->setCreatedAt(date('Y-m-d H:i:s', $this->dateTime->gmtTimestamp() - $offsetInThePast))
             ->setScheduledAt(date('Y-m-d H:i', $this->dateTime->gmtTimestamp() - $offsetInThePast + 60))
             ->setExecutedAt(date('Y-m-d H:i', $this->dateTime->gmtTimestamp() - $offsetInThePast + 61));
         $oldSchedule->save();
 
-        $schedule = $this->createSchedule("test_job", Schedule::STATUS_PENDING);
+        $schedule = $this->createSchedule('test_job', Schedule::STATUS_PENDING);
 
         $this->assertTrue($schedule->tryLockJob());
     }
@@ -83,8 +86,8 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
      */
     public function testTryLockJobOtherLockedFails()
     {
-        $this->createSchedule("test_job", Schedule::STATUS_RUNNING);
-        $schedule = $this->createSchedule("test_job", Schedule::STATUS_PENDING, 60);
+        $this->createSchedule('test_job', Schedule::STATUS_RUNNING);
+        $schedule = $this->createSchedule('test_job', Schedule::STATUS_PENDING, 60);
 
         $this->assertTrue($schedule->tryLockJob());
     }
@@ -94,8 +97,8 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
      */
     public function testTryLockJobDifferentJobLocked()
     {
-        $this->createSchedule("test_job_other", Schedule::STATUS_RUNNING);
-        $schedule = $this->createSchedule("test_job", Schedule::STATUS_PENDING);
+        $this->createSchedule('test_job_other', Schedule::STATUS_RUNNING);
+        $schedule = $this->createSchedule('test_job', Schedule::STATUS_PENDING);
 
         $this->assertTrue($schedule->tryLockJob());
     }
@@ -111,7 +114,7 @@ class ScheduleTest extends \PHPUnit\Framework\TestCase
     private function createSchedule($jobCode, $status, $timeOffset = 0)
     {
         $schedule = $this->scheduleFactory->create()
-            ->setCronExpr("* * * * *")
+            ->setCronExpr('* * * * *')
             ->setJobCode($jobCode)
             ->setStatus($status)
             ->setCreatedAt(date('Y-m-d H:i:s', $this->dateTime->gmtTimestamp()))

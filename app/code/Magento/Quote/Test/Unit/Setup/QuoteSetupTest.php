@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class QuoteSetupTest extends TestCase
                 'context' => $this->contextMock,
                 'cache' => $this->cacheMock,
                 'attrGroupCollectionFactory' => $this->collectionFactoryMock,
-                'config' => $this->scopeConfigMock
+                'config' => $this->scopeConfigMock,
             ]
         );
     }

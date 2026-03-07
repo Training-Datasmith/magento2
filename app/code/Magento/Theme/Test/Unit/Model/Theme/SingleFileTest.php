@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Model\Theme;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\Customization\FileInterface;
 use Magento\Framework\View\Design\Theme\CustomizationInterface;
 use Magento\Framework\View\Design\Theme\FileInterface as ThemeFileInterface;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Model\Theme\SingleFile;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -55,7 +56,7 @@ class SingleFileTest extends TestCase
                 'delete', 'save', 'getContent', 'getFileInfo',
                 'getFullPath', 'getFileName', 'setFileName',
                 'getTheme', 'setTheme',
-                'getCustomizationService', 'setCustomizationService'
+                'getCustomizationService', 'setCustomizationService',
             ]
         );
         $theme = $this->createPartialMockWithReflection(
@@ -64,7 +65,7 @@ class SingleFileTest extends TestCase
                 'getCustomization',
                 'getArea', 'getThemePath', 'getFullPath',
                 'getParentTheme', 'getCode', 'isPhysical',
-                'getInheritedThemes', 'getId'
+                'getInheritedThemes', 'getId',
             ]
         );
         $customization = $this->createMock(CustomizationInterface::class);
@@ -110,7 +111,7 @@ class SingleFileTest extends TestCase
                 'delete', 'save', 'getContent', 'getFileInfo',
                 'getFullPath', 'getFileName', 'setFileName',
                 'getTheme', 'setTheme',
-                'getCustomizationService', 'setCustomizationService'
+                'getCustomizationService', 'setCustomizationService',
             ]
         );
         $fileContent = '';
@@ -123,7 +124,7 @@ class SingleFileTest extends TestCase
                 'getCustomization',
                 'getArea', 'getThemePath', 'getFullPath',
                 'getParentTheme', 'getCode', 'isPhysical',
-                'getInheritedThemes', 'getId'
+                'getInheritedThemes', 'getId',
             ]
         );
         $customization = $this->createMock(CustomizationInterface::class);

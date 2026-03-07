@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Data;
 
 /**
@@ -13,8 +16,8 @@ namespace Magento\SalesRule\Model\Data;
 class RuleLabel extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\SalesRule\Api\Data\RuleLabelInterface
 {
-    const KEY_STORE_ID = 'store_id';
-    const KEY_STORE_LABEL = 'store_label';
+    public const KEY_STORE_ID = 'store_id';
+    public const KEY_STORE_LABEL = 'store_label';
 
     /**
      * Get storeId

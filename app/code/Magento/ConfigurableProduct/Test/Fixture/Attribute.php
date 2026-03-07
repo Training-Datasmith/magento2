@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,7 +15,7 @@ class Attribute extends SelectAttribute
 {
     private const DEFAULT_DATA = [
         'scope' => 'global',
-        'backend_type' => 'int'
+        'backend_type' => 'int',
     ];
 
     /**

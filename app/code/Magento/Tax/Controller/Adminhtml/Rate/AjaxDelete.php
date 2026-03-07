@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Rate;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -25,7 +28,7 @@ class AjaxDelete extends \Magento\Tax\Controller\Adminhtml\Rate
         } catch (\Exception $e) {
             $responseContent = [
                 'success' => false,
-                'error_message' => __('We can\'t delete this tax rate right now.')
+                'error_message' => __('We can\'t delete this tax rate right now.'),
             ];
         }
 

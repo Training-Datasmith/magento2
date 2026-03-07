@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\TestFramework\Workaround\Override\Config;
 
 use Magento\Framework\Config\FileResolverInterface;
-use Magento\Framework\View\File\CollectorInterface;
-use Magento\Framework\View\DesignInterface;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
+use Magento\Framework\View\DesignInterface;
+use Magento\Framework\View\File\CollectorInterface;
 
 class FileResolver implements FileResolverInterface
 {

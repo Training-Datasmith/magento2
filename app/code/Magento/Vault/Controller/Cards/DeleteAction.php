@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Controller\Cards;
 
 use Magento\Customer\Model\Session;
@@ -23,11 +26,11 @@ use Magento\Vault\Model\PaymentTokenManagement;
  */
 class DeleteAction extends CardsManagement
 {
-    const WRONG_REQUEST = 1;
+    public const WRONG_REQUEST = 1;
 
-    const WRONG_TOKEN = 2;
+    public const WRONG_TOKEN = 2;
 
-    const ACTION_EXCEPTION = 3;
+    public const ACTION_EXCEPTION = 3;
 
     /**
      * @var array
@@ -79,7 +82,7 @@ class DeleteAction extends CardsManagement
         $this->errorsMap = [
             self::WRONG_TOKEN => __('No token found.'),
             self::WRONG_REQUEST => __('Wrong request.'),
-            self::ACTION_EXCEPTION => __('Deletion failure. Please try again.')
+            self::ACTION_EXCEPTION => __('Deletion failure. Please try again.'),
         ];
     }
 

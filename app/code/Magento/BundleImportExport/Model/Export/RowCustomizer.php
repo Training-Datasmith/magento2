@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\BundleImportExport\Model\Export;
 
 use Magento\Bundle\Model\Option;
+use Magento\Bundle\Model\ResourceModel\Selection\Collection as SelectionCollection;
 use Magento\Bundle\Model\Selection;
 use Magento\Catalog\Helper\Data as CatalogData;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogImportExport\Model\Export\RowCustomizerInterface;
 use Magento\CatalogImportExport\Model\Import\Product as ImportProductModel;
-use Magento\Bundle\Model\ResourceModel\Selection\Collection as SelectionCollection;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\ImportExport\Model\Import as ImportModel;
-use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -53,7 +56,7 @@ class RowCustomizer implements RowCustomizerInterface
      */
     protected $typeMapping = [
         '0' => self::VALUE_DYNAMIC,
-        '1' => self::VALUE_FIXED
+        '1' => self::VALUE_FIXED,
     ];
 
     /**
@@ -63,7 +66,7 @@ class RowCustomizer implements RowCustomizerInterface
      */
     protected $priceViewMapping = [
         '0' => self::VALUE_PRICE_RANGE,
-        '1' => self::VALUE_AS_LOW_AS
+        '1' => self::VALUE_AS_LOW_AS,
     ];
 
     /**
@@ -73,7 +76,7 @@ class RowCustomizer implements RowCustomizerInterface
      */
     protected $priceTypeMapping = [
         '0' => self::VALUE_FIXED,
-        '1' => self::VALUE_PERCENT
+        '1' => self::VALUE_PERCENT,
     ];
 
     /**
@@ -86,7 +89,7 @@ class RowCustomizer implements RowCustomizerInterface
         self::BUNDLE_SKU_TYPE_COL,
         self::BUNDLE_PRICE_VIEW_COL,
         self::BUNDLE_WEIGHT_TYPE_COL,
-        self::BUNDLE_VALUES_COL
+        self::BUNDLE_VALUES_COL,
     ];
 
     /**
@@ -319,13 +322,13 @@ class RowCustomizer implements RowCustomizerInterface
     ): string {
         $data = [
             ...[
-                'name' => $option->getTitle()
+                'name' => $option->getTitle(),
             ],
             ...($optionTitles[$option->getOptionId()] ?? []),
             ...[
                 'type' => $option->getType(),
-                'required' => $option->getRequired()
-            ]
+                'required' => $option->getRequired(),
+            ],
         ];
 
         return $this->serialize($data);
@@ -525,7 +528,7 @@ class RowCustomizer implements RowCustomizerInterface
                                 ...$selectionData,
                                 'price_website_' . $websiteCode => $selection->getSelectionPriceValue(),
                                 'price_type_website_' . $websiteCode =>
-                                    $this->getPriceTypeValue($selection->getSelectionPriceType())
+                                    $this->getPriceTypeValue($selection->getSelectionPriceType()),
                             ];
                         }
                     }

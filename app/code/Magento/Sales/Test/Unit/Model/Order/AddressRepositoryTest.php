@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,9 +23,9 @@ use Magento\Sales\Model\Order\AddressRepository;
 use Magento\Sales\Model\Order\AddressRepository as OrderAddressRepository;
 use Magento\Sales\Model\ResourceModel\Metadata;
 use Magento\Sales\Model\ResourceModel\Order\Address\Collection as OrderAddressCollection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for order address repository class.
@@ -33,7 +34,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 class AddressRepositoryTest extends TestCase
 {
-
     /**
      * Subject of testing.
      *
@@ -117,7 +117,7 @@ class AddressRepositoryTest extends TestCase
                 'metadata' => $this->metadata,
                 'searchResultFactory' => $this->searchResultFactory,
                 'collectionProcessor' => $this->collectionProcessorMock,
-                'attributeMetadataDataProvider' => $this->attributeMetadataDataProvider
+                'attributeMetadataDataProvider' => $this->attributeMetadataDataProvider,
             ]
         );
     }
@@ -183,7 +183,7 @@ class AddressRepositoryTest extends TestCase
         return [
             [null, null],
             [1, null],
-            [1, 1]
+            [1, 1],
         ];
     }
 
@@ -333,45 +333,45 @@ class AddressRepositoryTest extends TestCase
         array $attributeValue,
         string $expected
     ): void {
-         $orderAddress = $this->getMockBuilder(OrderAddress::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods(['getEntityId', 'hasData', 'getData', 'setData'])
-            ->getMock();
+        $orderAddress = $this->getMockBuilder(OrderAddress::class)
+           ->disableOriginalConstructor()
+           ->onlyMethods(['getEntityId', 'hasData', 'getData', 'setData'])
+           ->getMock();
 
-         $orderAddress->expects($this->any())
-            ->method('getEntityId')
-            ->willReturn(1);
+        $orderAddress->expects($this->any())
+           ->method('getEntityId')
+           ->willReturn(1);
 
-         $mapper = $this->createPartialMock(AbstractDb::class, ['save', '_construct']);
-         $mapper->method('save')
-            ->with($orderAddress);
-         $this->metadata->method('getMapper')
-            ->willReturn($mapper);
+        $mapper = $this->createPartialMock(AbstractDb::class, ['save', '_construct']);
+        $mapper->method('save')
+           ->with($orderAddress);
+        $this->metadata->method('getMapper')
+           ->willReturn($mapper);
 
-         $attributeModel = $this->getMockBuilder(Attribute::class)
-            ->onlyMethods(['getFrontendInput', 'getAttributeCode'])
-            ->disableOriginalConstructor()
-            ->getMock();
-         $attributeModel->method('getFrontendInput')->willReturn($attributeType);
-         $attributeModel->method('getAttributeCode')->willReturn($attributeCode);
-         $this->attributesList = [$attributeModel];
+        $attributeModel = $this->getMockBuilder(Attribute::class)
+           ->onlyMethods(['getFrontendInput', 'getAttributeCode'])
+           ->disableOriginalConstructor()
+           ->getMock();
+        $attributeModel->method('getFrontendInput')->willReturn($attributeType);
+        $attributeModel->method('getAttributeCode')->willReturn($attributeCode);
+        $this->attributesList = [$attributeModel];
 
-         $this->subject = $this->objectManager->getObject(
-             AddressRepository::class,
-             [
-                'metadata' => $this->metadata,
-                'searchResultFactory' => $this->searchResultFactory,
-                'collectionProcessor' => $this->collectionProcessorMock,
-                'attributeMetadataDataProvider' => $this->attributeMetadataDataProvider,
-                'attributesList' => $this->attributesList,
-             ]
-         );
+        $this->subject = $this->objectManager->getObject(
+            AddressRepository::class,
+            [
+               'metadata' => $this->metadata,
+               'searchResultFactory' => $this->searchResultFactory,
+               'collectionProcessor' => $this->collectionProcessorMock,
+               'attributeMetadataDataProvider' => $this->attributeMetadataDataProvider,
+               'attributesList' => $this->attributesList,
+            ]
+        );
 
-         $orderAddress->method('hasData')->with($attributeCode)->willReturn(true);
-         $orderAddress->method('getData')->with($attributeCode)->willReturn($attributeValue);
-         $orderAddress->expects($this->once())->method('setData')->with($attributeCode, $expected);
+        $orderAddress->method('hasData')->with($attributeCode)->willReturn(true);
+        $orderAddress->method('getData')->with($attributeCode)->willReturn($attributeValue);
+        $orderAddress->expects($this->once())->method('setData')->with($attributeCode, $expected);
 
-         $this->assertEquals($orderAddress, $this->subject->save($orderAddress));
+        $this->assertEquals($orderAddress, $this->subject->save($orderAddress));
     }
 
     /**

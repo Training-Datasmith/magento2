@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\CacheInvalidate\Observer;
 
 use Magento\CacheInvalidate\Model\PurgeCache;
+use Magento\Framework\App\Cache\Tag\Resolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\App\Cache\Tag\Resolver;
 use Magento\PageCache\Model\Config;
 
 /**

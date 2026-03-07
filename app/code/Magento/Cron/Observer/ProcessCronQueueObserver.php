@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Handling cron jobs
  */
+
 namespace Magento\Cron\Observer;
 
-use Laminas\Http\PhpEnvironment\Request as Environment;
 use Exception;
+use Laminas\Http\PhpEnvironment\Request as Environment;
 use Magento\Cron\Model\DeadlockRetrierInterface;
 use Magento\Cron\Model\ResourceModel\Schedule\Collection as ScheduleCollection;
 use Magento\Cron\Model\Schedule;
@@ -315,7 +318,7 @@ class ProcessCronQueueObserver implements ObserverInterface
         if (!$this->lockManager->lock(self::LOCK_PREFIX . $groupId, self::LOCK_TIMEOUT)) {
             $this->logger->warning(
                 sprintf(
-                    "Could not acquire lock for cron group: %s, skipping run",
+                    'Could not acquire lock for cron group: %s, skipping run',
                     $groupId
                 )
             );
@@ -600,7 +603,7 @@ class ProcessCronQueueObserver implements ObserverInterface
                         ->create()
                         ->getResource()
                         ->getConnection()
-                        ->formatDate($currentTime - $time)
+                        ->formatDate($currentTime - $time),
                 ]
             );
         }
@@ -744,12 +747,12 @@ class ProcessCronQueueObserver implements ObserverInterface
             $scheduleResource->getTable('cron_schedule'),
             [
                 'status' => \Magento\Cron\Model\Schedule::STATUS_ERROR,
-                'messages' => 'Time out'
+                'messages' => 'Time out',
             ],
             [
                 $connection->quoteInto('status = ?', \Magento\Cron\Model\Schedule::STATUS_RUNNING),
                 $connection->quoteInto('job_code IN (?)', array_keys($jobs[$groupId])),
-                'scheduled_at < UTC_TIMESTAMP() - INTERVAL 1 DAY'
+                'scheduled_at < UTC_TIMESTAMP() - INTERVAL 1 DAY',
             ]
         );
     }

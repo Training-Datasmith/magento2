@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GraphQlCache\Model\CacheId;
 
 use Exception;
@@ -103,7 +106,7 @@ class CacheIdCalculator
             $keysString = strtoupper(implode('|', array_values($keys))) . "|$salt";
             return hash('sha256', $keysString);
         } catch (Exception $e) {
-            $this->logger->warning("Unable to obtain " . self::CACHE_ID_HEADER . " value: " . $e->getMessage());
+            $this->logger->warning('Unable to obtain ' . self::CACHE_ID_HEADER . ' value: ' . $e->getMessage());
             return null;
         }
     }

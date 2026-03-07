@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Page\Config\Generator;
 
 use Magento\Framework\View\Layout;
@@ -13,7 +16,7 @@ class Body implements Layout\GeneratorInterface
     /**
      * Type of generator
      */
-    const TYPE = 'body';
+    public const TYPE = 'body';
 
     /**
      * @var \Magento\Framework\View\Page\Config

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\File\CollectorInterface;
 use Magento\Framework\View\File\FileList;
 use Magento\Framework\View\File\FileList\Factory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -172,7 +173,7 @@ class AggregatedTest extends TestCase
     {
         return [
             'all files' => [['file1'], ['file2'], ['file3']],
-            'no library' => [[], ['file1', 'file2'], ['file3']]
+            'no library' => [[], ['file1', 'file2'], ['file3']],
         ];
     }
 }

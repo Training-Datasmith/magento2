@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class BackendAuthenticationTest extends TestCase
         $authorization = $this->createMock(AuthorizationInterface::class);
         $authorization
             ->method('isAllowed')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['Magento_Rss::rss'] => true,
                 ['Magento_Catalog::catalog_inventory'] => false
             });
@@ -72,7 +73,7 @@ class BackendAuthenticationTest extends TestCase
             'feed' => 'Magento_Rss::rss',
             'notifystock' => 'Magento_Catalog::catalog_inventory',
             'new_order' => 'Magento_Sales::actions_view',
-            'review' => 'Magento_Reports::review_product'
+            'review' => 'Magento_Reports::review_product',
         ];
 
         /** @var BackendAuthentication $plugin */
@@ -84,7 +85,7 @@ class BackendAuthenticationTest extends TestCase
                     'httpAuthentication' => $httpAuthentication,
                     'response' => $response,
                     'authorization' => $authorization,
-                    'aclResources' => $aclResources
+                    'aclResources' => $aclResources,
                 ]
             );
         $this->assertSame(

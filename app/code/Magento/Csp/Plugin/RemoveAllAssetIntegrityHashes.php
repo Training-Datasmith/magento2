@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
-use Magento\Framework\App\Area;
-use Magento\Deploy\Package\Package;
-use Magento\Deploy\Console\DeployStaticOptions;
-use Magento\Deploy\Service\DeployStaticContent;
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
 use Magento\Csp\Model\SubresourceIntegrityCollector;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
+use Magento\Deploy\Console\DeployStaticOptions;
+use Magento\Deploy\Package\Package;
+use Magento\Deploy\Service\DeployStaticContent;
+use Magento\Framework\App\Area;
 
 /**
  * Plugin that removes existing integrity hashes for all assets.

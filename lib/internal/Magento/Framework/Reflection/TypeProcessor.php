@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -249,7 +251,7 @@ class TypeProcessor
         $description = $shortDescription !== null ? rtrim($shortDescription) : '';
         $longDescription = $longDescription !== null ? str_replace(["\n", "\r"], '', $longDescription) : '';
         if (!empty($longDescription) && !empty($description)) {
-            $description .= " ";
+            $description .= ' ';
         }
         $description .= ltrim($longDescription);
 
@@ -314,7 +316,7 @@ class TypeProcessor
             'type' => $returnType,
             'isRequired' => !$nullable,
             'description' => $returnAnnotation->getDescription(),
-            'parameterCount' => $methodReflection->getNumberOfRequiredParameters()
+            'parameterCount' => $methodReflection->getNumberOfRequiredParameters(),
         ];
     }
 
@@ -926,7 +928,7 @@ class TypeProcessor
         $methodDocBlock = $methodReflection->getDocBlock();
         if (!$methodDocBlock) {
             throw new \InvalidArgumentException(
-                "Each method must have a doc block. "
+                'Each method must have a doc block. '
                 . "See {$methodReflection->getDeclaringClass()->getName()}::{$methodReflection->getName()}()"
             );
         }

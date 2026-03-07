@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Option;
 
 /**
@@ -13,9 +16,9 @@ class TextConfigOption extends AbstractConfigOption
     /**#@+
      * Frontend input types
      */
-    const FRONTEND_WIZARD_TEXT = 'text';
-    const FRONTEND_WIZARD_PASSWORD = 'password';
-    const FRONTEND_WIZARD_TEXTAREA = 'textarea';
+    public const FRONTEND_WIZARD_TEXT = 'text';
+    public const FRONTEND_WIZARD_PASSWORD = 'password';
+    public const FRONTEND_WIZARD_TEXTAREA = 'textarea';
     /**#@- */
 
     /**

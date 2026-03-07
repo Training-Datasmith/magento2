@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
-use Magento\Ui\Component\AbstractComponent;
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Component\AbstractComponent;
 use Magento\Ui\Component\Filters\FilterModifier;
 
 /**
@@ -21,12 +24,12 @@ abstract class AbstractFilter extends AbstractComponent
     /**
      * Component name
      */
-    const NAME = 'filter';
+    public const NAME = 'filter';
 
     /**
      * Filter variable name
      */
-    const FILTER_VAR = 'filters';
+    public const FILTER_VAR = 'filters';
 
     /**
      * Filter data

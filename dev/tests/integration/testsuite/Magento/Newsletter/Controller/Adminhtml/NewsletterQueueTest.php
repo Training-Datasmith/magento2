@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Controller\Adminhtml;
 
 use Magento\Framework\App\Request\Http as HttpRequest;
@@ -92,8 +95,8 @@ class NewsletterQueueTest extends \Magento\TestFramework\TestCase\AbstractBacken
                     'sender_name' => 'john doe',
                     'subject' => 'test subject',
                     'text' => 'newsletter text',
-                    'start_at' => 0
-                ]
+                    'start_at' => 0,
+                ],
             ],
             'start_at_value_is_string_zero' => [
                 [
@@ -101,8 +104,8 @@ class NewsletterQueueTest extends \Magento\TestFramework\TestCase\AbstractBacken
                     'sender_name' => 'john doe',
                     'subject' => 'test subject',
                     'text' => 'newsletter text',
-                    'start_at' => '0'
-                ]
+                    'start_at' => '0',
+                ],
             ],
             'start_at_value_is_empty_string' => [
                 [
@@ -110,16 +113,16 @@ class NewsletterQueueTest extends \Magento\TestFramework\TestCase\AbstractBacken
                     'sender_name' => 'john doe',
                     'subject' => 'test subject',
                     'text' => 'newsletter text',
-                    'start_at' => ''
-                ]
+                    'start_at' => '',
+                ],
             ],
             'start_at_value_not_provided' => [
                 [
                     'sender_email' => 'johndoe_gieee@unknown-domain.com',
                     'sender_name' => 'john doe',
                     'subject' => 'test subject',
-                    'text' => 'newsletter text'
-                ]
+                    'text' => 'newsletter text',
+                ],
             ],
             'start_at_value_is_date_time_string' => [
                 [
@@ -127,9 +130,9 @@ class NewsletterQueueTest extends \Magento\TestFramework\TestCase\AbstractBacken
                     'sender_name' => 'john doe',
                     'subject' => 'test subject',
                     'text' => 'newsletter text',
-                    'start_at' => date('Y-m-d H:i:s')
-                ]
-            ]
+                    'start_at' => date('Y-m-d H:i:s'),
+                ],
+            ],
         ];
     }
 }

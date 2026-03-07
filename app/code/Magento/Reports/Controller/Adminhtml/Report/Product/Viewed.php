@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report\Product;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -15,7 +18,7 @@ class Viewed extends \Magento\Reports\Controller\Adminhtml\Report\Product implem
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::viewed';
+    public const ADMIN_RESOURCE = 'Magento_Reports::viewed';
 
     /**
      * Most viewed products

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product information tabs
  */
+
 namespace Magento\Catalog\Block\Product\View;
 
 class Tabs extends \Magento\Framework\View\Element\Template

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\Export;
 
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
-use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 use Magento\ImportExport\Model\Export;
+use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 
 /**
  * Export entity abstract model
@@ -22,14 +25,14 @@ abstract class AbstractEntity
     /**#@+
      * Attribute collection name
      */
-    const ATTRIBUTE_COLLECTION_NAME = \Magento\Framework\Data\Collection::class;
+    public const ATTRIBUTE_COLLECTION_NAME = \Magento\Framework\Data\Collection::class;
 
     /**#@-*/
 
     /**#@+
      * XML path to page size parameter
      */
-    const XML_PATH_PAGE_SIZE = '';
+    public const XML_PATH_PAGE_SIZE = '';
 
     /**#@-*/
 

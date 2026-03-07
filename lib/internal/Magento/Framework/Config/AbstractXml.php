@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Configuration XML-files merger
  */
+
 namespace Magento\Framework\Config;
 
 /**
@@ -135,7 +138,7 @@ abstract class AbstractXml
                 [
                     'xml' => $this->_getInitialXml(),
                     'idAttributes' => $this->_getIdAttributes(),
-                    'schemaFile' => $this->getPerFileSchemaFile()
+                    'schemaFile' => $this->getPerFileSchemaFile(),
                 ]
             );
         }

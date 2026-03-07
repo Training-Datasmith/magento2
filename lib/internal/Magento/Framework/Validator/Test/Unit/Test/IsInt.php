@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ class IsInt extends LaminasIsInt implements ValidatorInterface
      * @var string[]
      */
     protected $messageTemplates = [
-        self::INVALID => "Invalid type given. String or integer expected",
+        self::INVALID => 'Invalid type given. String or integer expected',
         self::NOT_INT => "'%value%' does not appear to be an integer",
-        self::NOT_INT_STRICT => 'The input is not strictly an integer'
+        self::NOT_INT_STRICT => 'The input is not strictly an integer',
     ];
 }

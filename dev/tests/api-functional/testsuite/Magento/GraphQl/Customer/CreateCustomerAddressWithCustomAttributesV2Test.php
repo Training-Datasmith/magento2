@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'attribute_code' => 'simple_attribute',
             'sort_order' => 2,
             'is_required' => 1,
-            'frontend_label' => 'simple_attribute'
+            'frontend_label' => 'simple_attribute',
         ],
         'simple_attribute',
     ),
@@ -52,7 +53,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'backend_model' => ArrayBackend::class,
             'attribute_code' => 'multiselect_attribute',
             'frontend_input' => 'multiselect',
-            'sort_order' => 1
+            'sort_order' => 1,
         ],
         'multiselect_attribute',
     ),
@@ -62,7 +63,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'line 1',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'multiselect_attribute_option1'
     ),
@@ -72,7 +73,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'line 2',
-            'sort_order' => 30
+            'sort_order' => 30,
         ],
         'multiselect_attribute_option2'
     ),
@@ -82,7 +83,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'line 3',
-            'sort_order' => 10
+            'sort_order' => 10,
         ],
         'multiselect_attribute_option3'
     ),
@@ -159,9 +160,9 @@ class CreateCustomerAddressWithCustomAttributesV2Test extends GraphQlAbstract
         $response = $this->graphQlMutation(
             $this->getQuery(
                 $this->simple_attribute->getAttributeCode(),
-                "brand new customer address value",
+                'brand new customer address value',
                 $this->multiselect_attribute->getAttributeCode(),
-                $this->option2->getValue() . "," . $this->option3->getValue()
+                $this->option2->getValue() . ',' . $this->option3->getValue()
             ),
             [],
             '',
@@ -174,11 +175,11 @@ class CreateCustomerAddressWithCustomAttributesV2Test extends GraphQlAbstract
                     [
                         'region' => [
                             'region' => 'Arizona',
-                            'region_code' => 'AZ'
+                            'region_code' => 'AZ',
                         ],
                         'country_code' => 'US',
                         'street' => [
-                            '123 Main Street'
+                            '123 Main Street',
                         ],
                         'telephone' => '7777777777',
                         'postcode' => '77777',
@@ -193,19 +194,19 @@ class CreateCustomerAddressWithCustomAttributesV2Test extends GraphQlAbstract
                                         'selected_options' => [
                                             [
                                                 'label' => $this->option3->getLabel(),
-                                                'value' => $this->option3->getValue()
+                                                'value' => $this->option3->getValue(),
                                             ],
                                             [
                                                 'label' => $this->option2->getLabel(),
-                                                'value' => $this->option2->getValue()
-                                            ]
-                                        ]
+                                                'value' => $this->option2->getValue(),
+                                            ],
+                                        ],
                                     ],
                                 1 =>
                                     [
                                         'code' => $this->simple_attribute->getAttributeCode(),
-                                        'value' => 'brand new customer address value'
-                                    ]
+                                        'value' => 'brand new customer address value',
+                                    ],
                             ],
                     ],
             ],
@@ -221,14 +222,14 @@ class CreateCustomerAddressWithCustomAttributesV2Test extends GraphQlAbstract
     public function testAttemptToCreateCustomerAddressPassingNonExistingOption()
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Attribute multiselect_attribute does not contain option with Id 1345");
+        $this->expectExceptionMessage('Attribute multiselect_attribute does not contain option with Id 1345');
 
         $this->graphQlMutation(
             $this->getQuery(
                 $this->simple_attribute->getAttributeCode(),
-                "brand new customer address value",
+                'brand new customer address value',
                 $this->multiselect_attribute->getAttributeCode(),
-                "1345"
+                '1345'
             ),
             [],
             '',
@@ -243,7 +244,7 @@ class CreateCustomerAddressWithCustomAttributesV2Test extends GraphQlAbstract
     public function testAttemptToCreateCustomerAddressNonPassingRequiredCustomAttribute()
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("\"simple_attribute\" is a required value.");
+        $this->expectExceptionMessage('"simple_attribute" is a required value.');
 
         $query = <<<QUERY
 mutation {
@@ -296,7 +297,7 @@ QUERY;
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage(
-            "Field \"selected_options\" is not defined by type \"CustomerAddressAttributeInput\""
+            'Field "selected_options" is not defined by type "CustomerAddressAttributeInput"'
         );
 
         $query = <<<QUERY
@@ -339,7 +340,7 @@ QUERY;
             sprintf(
                 $query,
                 $this->multiselect_attribute->getAttributeCode(),
-                $this->option2->getValue() . "," . $this->option3->getValue()
+                $this->option2->getValue() . ',' . $this->option3->getValue()
             ),
             [],
             '',

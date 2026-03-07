@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test search_request.xsd and xml files.
  *
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Framework\Search;
 
 class RequestConfigTest extends \Magento\TestFramework\Integrity\AbstractConfig

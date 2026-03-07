@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -194,8 +196,8 @@ class ContentTest extends \PHPUnit\Framework\TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'default',
                 [
@@ -209,7 +211,7 @@ class ContentTest extends \PHPUnit\Framework\TestCase
                         'label' => null,
                         'position' => 2,
                     ],
-                ]
+                ],
             ],
             [
                 'fixture_second_store',
@@ -219,8 +221,8 @@ class ContentTest extends \PHPUnit\Framework\TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'fixture_second_store',
                 [
@@ -234,8 +236,8 @@ class ContentTest extends \PHPUnit\Framework\TestCase
                         'label' => 'New Image Alt Text',
                         'position' => 2,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

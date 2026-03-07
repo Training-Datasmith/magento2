@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Mftf\Helper;
 
+use Facebook\WebDriver\Exception\NoSuchWindowException;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Magento\FunctionalTestingFramework\Helper\Helper;
-use Facebook\WebDriver\Exception\NoSuchWindowException;
 
 /**
  * Class for MFTF helpers for Sales module.
@@ -21,7 +22,7 @@ class SalesHelper extends Helper
 
     private const COMPARISON_MATCH_TYPES = [
         self::COMPARISON_PATH_EXACT_MATCH,
-        self::COMPARISON_PATH_SUBSET_MATCH
+        self::COMPARISON_PATH_SUBSET_MATCH,
     ];
 
     /**

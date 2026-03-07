@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,7 +17,6 @@ use Zend_Db_Statement_Exception;
  */
 class ReindexRuleProductsPrice
 {
-
     /**
      * @param StoreManagerInterface $storeManager
      * @param ReindexRuleProductsPriceProcessor $reindexRuleProductsPriceProcessor

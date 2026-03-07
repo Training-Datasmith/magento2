@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -235,48 +236,48 @@ class MassactionTest extends TestCase
         return [
             [
                 'test_id1',
-                ["label" => "Test Item One", "url" => "*/*/test1"],
+                ['label' => 'Test Item One', 'url' => '*/*/test1'],
                 new DataObject(
                     [
-                        "label" => "Test Item One",
-                        "url" => "http://localhost/index.php/backend/admin/test/test1",
-                        "id" => 'test_id1',
+                        'label' => 'Test Item One',
+                        'url' => 'http://localhost/index.php/backend/admin/test/test1',
+                        'id' => 'test_id1',
                     ]
                 ),
             ],
             [
                 'test_id2',
-                new DataObject(["label" => "Test Item Two", "url" => "*/*/test2"]),
+                new DataObject(['label' => 'Test Item Two', 'url' => '*/*/test2']),
                 new DataObject(
                     [
-                        "label" => "Test Item Two",
-                        "url" => "http://localhost/index.php/backend/admin/test/test2",
-                        "id" => 'test_id2',
+                        'label' => 'Test Item Two',
+                        'url' => 'http://localhost/index.php/backend/admin/test/test2',
+                        'id' => 'test_id2',
                     ]
-                )
+                ),
             ],
             [
                 'enabled',
-                new DataObject(["label" => "Test Item Enabled", "url" => "*/*/test2"]),
+                new DataObject(['label' => 'Test Item Enabled', 'url' => '*/*/test2']),
                 new DataObject(
                     [
-                        "label" => "Test Item Enabled",
-                        "url" => "http://localhost/index.php/backend/admin/test/test2",
-                        "id" => 'enabled',
+                        'label' => 'Test Item Enabled',
+                        'url' => 'http://localhost/index.php/backend/admin/test/test2',
+                        'id' => 'enabled',
                     ]
-                )
+                ),
             ],
             [
                 'refresh',
-                new DataObject(["label" => "Test Item Refresh", "url" => "*/*/test2"]),
+                new DataObject(['label' => 'Test Item Refresh', 'url' => '*/*/test2']),
                 new DataObject(
                     [
-                        "label" => "Test Item Refresh",
-                        "url" => "http://localhost/index.php/backend/admin/test/test2",
-                        "id" => 'refresh',
+                        'label' => 'Test Item Refresh',
+                        'url' => 'http://localhost/index.php/backend/admin/test/test2',
+                        'id' => 'refresh',
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 
@@ -304,7 +305,7 @@ class MassactionTest extends TestCase
     {
         return [
             ['', '', []],
-            ['test_id1,test_id2', 'test_id1,test_id2', ['test_id1', 'test_id2']]
+            ['test_id1,test_id2', 'test_id1,test_id2', ['test_id1', 'test_id2']],
         ];
     }
 

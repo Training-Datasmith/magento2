@@ -1,15 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Test \Magento\Framework\Math\Random
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Math\Test\Unit;
 
 use Magento\Framework\Math\Random;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RandomTest extends TestCase
 {
@@ -44,8 +47,8 @@ class RandomTest extends TestCase
                 20,
                 Random::CHARS_LOWERS .
                 Random::CHARS_UPPERS .
-                Random::CHARS_DIGITS
-            ]
+                Random::CHARS_DIGITS,
+            ],
         ];
     }
 
@@ -94,7 +97,7 @@ class RandomTest extends TestCase
             [-1, 0],
             [-100, 0],
             [-1, 1],
-            [-100, 100]
+            [-100, 100],
         ];
     }
 }

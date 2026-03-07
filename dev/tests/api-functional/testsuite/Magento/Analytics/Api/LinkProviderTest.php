@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Api;
 
 use Magento\Analytics\Model\FileInfoManager;
@@ -19,9 +22,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class LinkProviderTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'analyticsLinkProviderV1';
-    const RESOURCE_PATH = '/V1/analytics/link';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'analyticsLinkProviderV1';
+    public const RESOURCE_PATH = '/V1/analytics/link';
 
     /**
      * @var \Magento\TestFramework\ObjectManager

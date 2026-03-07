@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,16 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\QuoteIdMask;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class for payment info in quote for registered customer.
@@ -81,8 +81,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $quoteId = $this->_webApiCall($serviceInfo, ['customerId' => 999]); // customerId 999 will get overridden
@@ -101,8 +101,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'grouped',
-                'qty' => 7
-            ]
+                'qty' => 7,
+            ],
         ];
         $this->_webApiCall($this->getServiceInfoAddToCart($token), $requestData);
 
@@ -138,8 +138,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $quoteId = $this->_webApiCall($serviceInfo, ['customerId' => 999]); // customerId 999 will get overridden
@@ -150,8 +150,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'simple',
-                'qty' => 1
-            ]
+                'qty' => 1,
+            ],
         ];
         $item = $this->_webApiCall($this->getServiceInfoAddToCart($token), $requestData);
         $this->assertNotEmpty($item);
@@ -162,17 +162,17 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine/payment-information',
                 'httpMethod' => Request::HTTP_METHOD_GET,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
         $paymentInfo = $this->_webApiCall($serviceInfoForGettingPaymentInfo);
         $this->assertEquals($paymentInfo['totals']['grand_total'], 10);
 
         $this->createdQuotes[] = $quoteId;
-//        /** @var \Magento\Quote\Model\Quote $quote */
-//        $quote = $this->objectManager->create(\Magento\Quote\Model\Quote::class);
-//        $quote->load($quoteId);
-//        $quote->delete();
+        //        /** @var \Magento\Quote\Model\Quote $quote */
+        //        $quote = $this->objectManager->create(\Magento\Quote\Model\Quote::class);
+        //        $quote->load($quoteId);
+        //        $quote->delete();
     }
 
     /**
@@ -203,8 +203,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $quoteId = $this->_webApiCall($serviceInfo, ['customerId' => 999]); // customerId 999 will get overridden
@@ -216,16 +216,16 @@ class CartAddingItemsTest extends WebapiAbstract
                 'grouped_options' => [
                     ['id' => $firstProductId, 'qty' => $qtyData[$firstProductId]],
                     ['id' => $secondProductId, 'qty' => $qtyData[$secondProductId]],
-                ]
-            ]
+                ],
+            ],
         ];
         $requestData = [
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'grouped',
                 'qty' => 1,
-                'product_option' => $productOptionData
-            ]
+                'product_option' => $productOptionData,
+            ],
         ];
         $response = $this->_webApiCall($this->getServiceInfoAddToCart($token), $requestData);
         $this->assertArrayHasKey('product_option', $response);
@@ -264,7 +264,7 @@ class CartAddingItemsTest extends WebapiAbstract
 
         // Creating empty cart for registered customer.
         $serviceInfo = [
-            'rest' => ['resourcePath' => '/V1/carts/mine', 'httpMethod' => Request::HTTP_METHOD_POST, 'token' => $token]
+            'rest' => ['resourcePath' => '/V1/carts/mine', 'httpMethod' => Request::HTTP_METHOD_POST, 'token' => $token],
         ];
 
         $quoteId = $this->_webApiCall($serviceInfo, ['customerId' => 999]); // customerId 999 will get overridden
@@ -280,10 +280,10 @@ class CartAddingItemsTest extends WebapiAbstract
                     'extension_attributes' => [
                         'grouped_options' => [
                             ['id' => $productId],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->createdQuotes[] = $quoteId;
@@ -306,8 +306,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine/items',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
     }
 
@@ -340,8 +340,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
         $quoteId = $this->_webApiCall($serviceInfo);
         $this->assertGreaterThan(0, $quoteId);
@@ -351,8 +351,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'simple',
-                'qty' => 1
-            ]
+                'qty' => 1,
+            ],
         ];
         $this->_webApiCall($this->getServiceInfoAddToCart($token), $requestData);
 
@@ -361,8 +361,8 @@ class CartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
         /** @var \Magento\Quote\Api\Data\CartInterface $cart */
         $cart = $this->_webApiCall($serviceInfo, [], null, $storeCode);
@@ -380,16 +380,16 @@ class CartAddingItemsTest extends WebapiAbstract
         return [
             'noStoreCodeInRequestPath' => [
                 'Simple Product One',
-                null
+                null,
             ],
             'defaultStoreCodeInRequestPath' => [
                 'Simple Product One',
-                'default'
+                'default',
             ],
             'secondStoreCodeInRequestPath' => [
                 'StoreTitle',
-                'fixturestore'
-            ]
+                'fixturestore',
+            ],
         ];
     }
 }

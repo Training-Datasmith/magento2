@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Session;
 use Magento\Persistent\Model\Session as PersistentSessionModel;
 use Magento\Persistent\Observer\UpdateCustomerCookiesObserver;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,7 +25,6 @@ use PHPUnit\Framework\TestCase;
  */
 class UpdateCustomerCookiesObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**

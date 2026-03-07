@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,8 +14,6 @@ use Magento\Customer\Model\Session as CustomerSession;
 use Magento\CustomerGraphQl\Model\Context\AddUserInfoToContext;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\GraphQl\Controller\GraphQl as GraphQlController;
 
 /**

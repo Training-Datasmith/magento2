@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Symfony\Component\Console\Input\InputArgument;
  */
 class ModeInputArgument extends InputArgument
 {
-
     /**
      * @var callable|null $callableDescription
      */
@@ -36,7 +36,7 @@ class ModeInputArgument extends InputArgument
     /**
      * @inheritDoc
      */
-    public function getDescription():string
+    public function getDescription(): string
     {
         if (null !== $this->callableDescription) {
             $description = ($this->callableDescription)();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ declare(strict_types=1);
  *
  * @todo Fix tests in the scope of https://wiki.magento.com/display/MAGE2/Technical+Debt+%28Team-Donetsk-B%29
  */
+
 namespace Magento\ImportExport\Test\Unit\Model\Import;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -18,11 +20,11 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ImportExport\Model\Import;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\ImportExport\Model\Import\AbstractEntity;
 use Magento\ImportExport\Model\Import\AbstractSource;
 use Magento\ImportExport\Model\ImportFactory;
 use Magento\ImportExport\Model\ResourceModel\Helper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class EntityAbstractTest extends AbstractImportTestCase
@@ -53,8 +55,8 @@ class EntityAbstractTest extends AbstractImportTestCase
         $objects = [
             [
                 Json::class,
-                $this->createMock(Json::class)
-            ]
+                $this->createMock(Json::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
 
@@ -97,7 +99,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                 'max_data_size' => 1,
                 'bunch_size' => 1,
                 'collection_by_pages_iterator' => 'not_used',
-            ]
+            ],
         ];
 
         return $data;
@@ -238,109 +240,109 @@ class EntityAbstractTest extends AbstractImportTestCase
     public static function dataProviderForTestGetBehaviorWithRowData()
     {
         return [
-            "add/update behavior and row with delete in action column" => [
+            'add/update behavior and row with delete in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and row with delete in action column" => [
+            'delete behavior and row with delete in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and row with delete in action column" => [
+            'custom behavior and row with delete in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "add/update behavior and row with update in action column" => [
+            'add/update behavior and row with update in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and row with update in action column" => [
+            'delete behavior and row with update in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and row with update in action column" => [
+            'custom behavior and row with update in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "add/update behavior and row with bogus string in action column" => [
+            'add/update behavior and row with bogus string in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and row with bogus string in action column" => [
+            'delete behavior and row with bogus string in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and row with bogus string in action column" => [
+            'custom behavior and row with bogus string in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
                 ],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "add/update behavior and row with null in action column" => [
+            'add/update behavior and row with null in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => null],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and row with null in action column" => [
+            'delete behavior and row with null in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => null],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and row with null in action column" => [
+            'custom behavior and row with null in action column' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => null],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "add/update behavior and empty row" => [
+            'add/update behavior and empty row' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => null,
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and empty row" => [
+            'delete behavior and empty row' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => null,
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and empty row" => [
+            'custom behavior and empty row' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => null,
                 'expectedBehavior' => Import::BEHAVIOR_CUSTOM,
             ],
-            "add/update behavior and row is empty array" => [
+            'add/update behavior and row is empty array' => [
                 'inputBehavior' => Import::BEHAVIOR_ADD_UPDATE,
                 'rowData' => [],
                 'expectedBehavior' => Import::BEHAVIOR_ADD_UPDATE,
             ],
-            "delete behavior and empty row is empty array" => [
+            'delete behavior and empty row is empty array' => [
                 'inputBehavior' => Import::BEHAVIOR_DELETE,
                 'rowData' => [],
                 'expectedBehavior' => Import::BEHAVIOR_DELETE,
             ],
-            "custom behavior and empty row is empty array" => [
+            'custom behavior and empty row is empty array' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [],
                 'expectedBehavior' => AbstractEntity::getDefaultBehavior(),
             ],
-            "custom behavior and row with delete in action column and empty available behaviors" => [
+            'custom behavior and row with delete in action column and empty available behaviors' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => AbstractEntity::COLUMN_ACTION_VALUE_DELETE,
@@ -348,13 +350,13 @@ class EntityAbstractTest extends AbstractImportTestCase
                 'expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 'availableBehaviors' => [],
             ],
-            "custom behavior and row with update in action column and empty available behaviors" => [
+            'custom behavior and row with update in action column and empty available behaviors' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => 'update'],
                 'expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 'availableBehaviors' => [],
             ],
-            "custom behavior and row with bogus string in action column and empty available behaviors" => [
+            'custom behavior and row with bogus string in action column and empty available behaviors' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [
                     AbstractEntity::COLUMN_ACTION => microtime(true),
@@ -362,12 +364,12 @@ class EntityAbstractTest extends AbstractImportTestCase
                 'expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 'availableBehaviors' => [],
             ],
-            "custom behavior and row with null in action column and empty available behaviors" => [
+            'custom behavior and row with null in action column and empty available behaviors' => [
                 'inputBehavior' => Import::BEHAVIOR_CUSTOM,
                 'rowData' => [AbstractEntity::COLUMN_ACTION => null],
                 'expectedBehavior' => AbstractEntity::getDefaultBehavior(),
                 'availableBehaviors' => [],
-            ]
+            ],
         ];
     }
 
@@ -438,7 +440,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'varchar',
                     'test string',
                     substr($longString, 0, AbstractEntity::DB_MAX_VARCHAR_LENGTH)
-                )
+                ),
             ],
             [
                 self::_getDataSet(
@@ -448,7 +450,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'custom',
                     null,
                     ['test1' => 1, 'test2' => 2, 'test3' => 3]
-                )
+                ),
             ],
             [
                 self::_getDataSet(
@@ -458,7 +460,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'custom',
                     null,
                     ['test1' => 1, 'test2' => 2, 'test3' => 3]
-                )
+                ),
             ],
             [self::_getDataSet('test5', 'int', 100, 'custom')],
             [self::_getDataSet('test6', 'datetime', '2012-06-15 15:50', '2012-30-30')],
@@ -474,7 +476,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'type' => 'datetime',
                     'valid_value' => '2012-02-29',
                     'invalid_value' => '02/29/2012 11:12:67',
-                ]
+                ],
             ],
             [
                 [
@@ -482,7 +484,7 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'type' => 'datetime',
                     'valid_value' => '29.02.2012',
                     'invalid_value' => '11.02.4 11:12:59',
-                ]
+                ],
             ],
             [
                 [
@@ -490,8 +492,8 @@ class EntityAbstractTest extends AbstractImportTestCase
                     'type' => 'datetime',
                     'valid_value' => '02/29/2012',
                     'invalid_value' => '2012-13-29 21:12:59',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

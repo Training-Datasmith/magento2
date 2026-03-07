@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventoryGraphQl\Test\Unit\Model\Resolver;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Catalog\Model\Product;
+use Magento\CatalogInventory\Api\Data\StockItemInterface;
+use Magento\CatalogInventory\Api\Data\StockStatusInterface;
+use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventoryGraphQl\Model\Resolver\OnlyXLeftInStockResolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\CatalogInventory\Api\StockRegistryInterface;
-use Magento\Catalog\Model\Product;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
-use Magento\CatalogInventory\Api\Data\StockStatusInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Magento\CatalogInventoryGraphQl\Model\Resolver\OnlyXLeftInStockResolver
@@ -114,7 +115,7 @@ class OnlyXLeftInStockResolverTest extends TestCase
             OnlyXLeftInStockResolver::class,
             [
                 'scopeConfig' => $this->scopeConfigMock,
-                'stockRegistry' => $this->stockRegistryMock
+                'stockRegistry' => $this->stockRegistryMock,
             ]
         );
     }

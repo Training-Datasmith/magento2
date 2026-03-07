@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\AbstractModel;
 
 abstract class Stub extends \Magento\Catalog\Model\AbstractModel implements \Magento\Catalog\Api\Data\ProductInterface

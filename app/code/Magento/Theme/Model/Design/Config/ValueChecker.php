@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Config;
 
 use Magento\Framework\App\Config as AppConfig;
@@ -64,7 +67,7 @@ class ValueChecker
                     $fieldConfig
                 ),
                 $this->valueProcessor->process(
-                    ($this->appConfig->getValue($fieldConfig['path'], $scope, $scopeId) ?? ""),
+                    ($this->appConfig->getValue($fieldConfig['path'], $scope, $scopeId) ?? ''),
                     $scope,
                     $scopeId,
                     $fieldConfig

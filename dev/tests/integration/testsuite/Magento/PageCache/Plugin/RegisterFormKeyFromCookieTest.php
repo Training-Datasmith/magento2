@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ declare(strict_types=1);
 namespace Magento\PageCache\Plugin;
 
 use Magento\Framework\App\FrontController;
-use Magento\Framework\App\RequestInterface;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 class RegisterFormKeyFromCookieTest extends TestCase
 {

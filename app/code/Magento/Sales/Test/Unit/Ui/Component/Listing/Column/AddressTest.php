@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 class AddressTest extends TestCase
 {
-
     /**
      * @var Address
      */
@@ -53,9 +53,9 @@ class AddressTest extends TestCase
         $dataSource = [
             'data' => [
                 'items' => [
-                    [$itemName => $oldItemValue]
-                ]
-            ]
+                    [$itemName => $oldItemValue],
+                ],
+            ],
         ];
 
         $this->model->setData('name', $itemName);

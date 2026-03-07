@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class FactoryTest extends TestCase
     {
         return [
             [Quote::class, \Magento\Payment\Model\Cart\SalesModel\Quote::class],
-            [Order::class, \Magento\Payment\Model\Cart\SalesModel\Order::class]
+            [Order::class, \Magento\Payment\Model\Cart\SalesModel\Order::class],
         ];
     }
 

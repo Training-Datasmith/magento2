@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Report\Invoiced\Collection;
 
 /**
@@ -62,7 +65,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
             [
                 'orders_count' => 1,
                 'orders_invoiced' => 1,
-                'period' => $invoiceCreatedAtDate
+                'period' => $invoiceCreatedAtDate,
             ],
         ];
         $actualResult = [];
@@ -71,7 +74,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
             $actualResult[] = [
                 'orders_count' => $reportItem->getData('orders_count'),
                 'orders_invoiced' => $reportItem->getData('orders_invoiced'),
-                'period' => $reportItem->getData('period')
+                'period' => $reportItem->getData('period'),
             ];
         }
         $this->assertEquals($expectedResult, $actualResult);

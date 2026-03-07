@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,16 +9,15 @@ declare(strict_types=1);
 namespace Magento\Customer\Test\Unit\Model\ResourceModel\Address;
 
 use Magento\Customer\Model\Customer;
-use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\ResourceModel\Address\DeleteRelation;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DeleteRelationTest extends TestCase
 {
@@ -49,7 +49,7 @@ class DeleteRelationTest extends TestCase
             [
                 'getIsCustomerSaveTransaction',
                 'getId',
-                'getResource'
+                'getResource',
             ]
         );
         /** @var Customer|MockObject $customerModel */
@@ -58,7 +58,7 @@ class DeleteRelationTest extends TestCase
             [
                 'getDefaultBilling',
                 'getDefaultShipping',
-                'getId'
+                'getId',
             ]
         );
 
@@ -72,8 +72,8 @@ class DeleteRelationTest extends TestCase
         $addressModel->expects($this->any())->method('getId')->willReturn($addressId);
         $addressModel->expects($this->any())->method('getIsCustomerSaveTransaction')->willReturn(false);
 
-        $customerModel->expects($this->any())->method("getDefaultBilling")->willReturn($isDefaultBilling);
-        $customerModel->expects($this->any())->method("getDefaultShipping")->willReturn($isDefaultShipping);
+        $customerModel->expects($this->any())->method('getDefaultBilling')->willReturn($isDefaultBilling);
+        $customerModel->expects($this->any())->method('getDefaultShipping')->willReturn($isDefaultShipping);
 
         if ($addressId && ($isDefaultBilling || $isDefaultShipping)) {
             $customerId = 1;

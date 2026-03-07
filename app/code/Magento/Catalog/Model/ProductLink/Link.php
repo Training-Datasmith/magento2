@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,11 +19,11 @@ class Link extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants
      */
-    const KEY_SKU = 'sku';
-    const KEY_LINK_TYPE = 'link_type';
-    const KEY_LINKED_PRODUCT_SKU = 'linked_product_sku';
-    const KEY_LINKED_PRODUCT_TYPE = 'linked_product_type';
-    const KEY_POSITION = 'position';
+    public const KEY_SKU = 'sku';
+    public const KEY_LINK_TYPE = 'link_type';
+    public const KEY_LINKED_PRODUCT_SKU = 'linked_product_sku';
+    public const KEY_LINKED_PRODUCT_TYPE = 'linked_product_type';
+    public const KEY_POSITION = 'position';
     /**#@-*/
 
     /**
@@ -44,7 +46,7 @@ class Link extends \Magento\Framework\Model\AbstractExtensibleModel implements
      */
     public function __toArray()
     {
-     //phpcs:enable
+        //phpcs:enable
         $data = $this->_data;
         $hasToArray = function ($model) {
             return is_object($model) && method_exists($model, '__toArray') && is_callable([$model, '__toArray']);

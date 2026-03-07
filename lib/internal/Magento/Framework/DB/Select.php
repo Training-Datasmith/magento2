@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB;
 
 use Magento\Framework\App\ResourceConnection;
@@ -530,7 +533,7 @@ class Select extends \Zend_Db_Select
             $properties,
             [
                 '_adapter',
-                'selectRenderer'
+                'selectRenderer',
             ]
         );
         return $properties;

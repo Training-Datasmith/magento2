@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -61,7 +64,7 @@ class Price extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
             }
 
             $data = (float) $data * $this->_getRate($row);
-            $data = sprintf("%f", $data);
+            $data = sprintf('%f', $data);
             $data = $this->_localeCurrency->getCurrency($currencyCode)->toCurrency($data);
             return $data;
         }

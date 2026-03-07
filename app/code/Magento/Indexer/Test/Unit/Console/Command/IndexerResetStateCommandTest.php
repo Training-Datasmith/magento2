@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,10 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Indexer\Test\Unit\Console\Command;
 
-use Magento\Backend\App\Area\FrontNameResolver;
-use Magento\Framework\Indexer\StateInterface;
 use Magento\Indexer\Console\Command\IndexerResetStateCommand;
-use Magento\Indexer\Model\Indexer\State;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class IndexerResetStateCommandTest extends AbstractIndexerCommandCommonSetup

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Page\Config\Reader;
 
 use Magento\Framework\View\Layout;
@@ -16,13 +19,13 @@ class Html implements Layout\ReaderInterface
     /**#@+
      * Supported types
      */
-    const TYPE_HTML = 'html';
+    public const TYPE_HTML = 'html';
     /**#@-*/
 
     /**#@+
      * Supported html elements
      */
-    const HTML_ATTRIBUTE = 'attribute';
+    public const HTML_ATTRIBUTE = 'attribute';
     /**#@-*/
 
     /**

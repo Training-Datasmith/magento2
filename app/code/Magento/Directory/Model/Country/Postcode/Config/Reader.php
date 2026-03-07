@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\Country\Postcode\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem

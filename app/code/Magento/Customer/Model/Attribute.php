@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Catalog\Api\Data\EavAttributeInterface;
@@ -20,7 +23,7 @@ class Attribute extends \Magento\Eav\Model\Attribute
     /**
      * Name of the module
      */
-    const MODULE_NAME = 'Magento_Customer';
+    public const MODULE_NAME = 'Magento_Customer';
 
     /**
      * Prefix of model events names

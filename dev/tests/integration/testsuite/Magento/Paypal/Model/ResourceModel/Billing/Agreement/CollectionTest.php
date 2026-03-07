@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\ResourceModel\Billing\Agreement;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -22,7 +25,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
 
         $billingAgreementCollection->addCustomerDetails();
 
-        $this->assertEquals(1, $billingAgreementCollection->count(), "Invalid collection items quantity.");
+        $this->assertEquals(1, $billingAgreementCollection->count(), 'Invalid collection items quantity.');
         /** @var \Magento\Paypal\Model\Billing\Agreement $billingAgreement */
         $billingAgreement = $billingAgreementCollection->getFirstItem();
 

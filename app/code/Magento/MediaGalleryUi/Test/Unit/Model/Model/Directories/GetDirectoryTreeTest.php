@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\MediaGalleryUi\Test\Unit\Model\Model\Directories;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\MediaGalleryApi\Api\IsPathExcludedInterface;
 use Magento\MediaGalleryUi\Model\Directories\GetDirectoryTree;
-use Magento\Framework\Filesystem\Directory\Read;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -53,13 +54,13 @@ class GetDirectoryTreeTest extends TestCase
             ],
             'dir1_3' => [
 
-            ]
+            ],
         ],
         'dir2' => [
             'dir2_1' => [
                 'dir2_1_1' => [
 
-                ]
+                ],
             ],
             'dir2_2' => [
                 'dir2_2_1' => [
@@ -67,17 +68,17 @@ class GetDirectoryTreeTest extends TestCase
                 ],
                 'dir2_2_2' => [
 
-                ]
-            ]
+                ],
+            ],
         ],
         'dir3' => [
             'dir3_1' => [
                 'dir3_1_1' => [
                     'dir3_1_1_1' => [
 
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'dir4' => [
 
@@ -226,10 +227,10 @@ class GetDirectoryTreeTest extends TestCase
                                                     ],
                                             ],
                                         ],
-                                ]
+                                ],
                             ],
                     ],
-                ]
+                ],
 
             ],
             [
@@ -253,7 +254,7 @@ class GetDirectoryTreeTest extends TestCase
                                     'path' => 'dir2/dir2_1/dir2_1_1',
                                     'path_array' => ['dir2', 'dir2_1', 'dir2_1_1'],
                                     'children' => [],
-                                ]
+                                ],
                             ],
                     ],
                     [
@@ -284,9 +285,9 @@ class GetDirectoryTreeTest extends TestCase
                                     'children' => [],
                                 ],
                             ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 

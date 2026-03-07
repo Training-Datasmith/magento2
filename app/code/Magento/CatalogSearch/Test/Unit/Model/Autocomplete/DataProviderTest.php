@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class DataProviderTest extends TestCase
             [
                 'queryFactory' => $queryFactory,
                 'itemFactory' => $this->itemFactory,
-                'scopeConfig' => $scopeConfig
+                'scopeConfig' => $scopeConfig,
             ]
         );
     }
@@ -100,7 +101,7 @@ class DataProviderTest extends TestCase
             ['query_text' => 'string2', 'num_results' => 2],
             ['query_text' => 'string11', 'num_results' => 11],
             ['query_text' => 'string100', 'num_results' => 100],
-            ['query_text' => $queryString, 'num_results' => 100500]
+            ['query_text' => $queryString, 'num_results' => 100500],
         ];
         $this->buildCollection($collection);
         $this->query->expects($this->once())
@@ -111,7 +112,7 @@ class DataProviderTest extends TestCase
             Item::class,
             ['getTitle', 'toArray']
         );
-        
+
         $callCount = 0;
         $titles = [$queryString, 'string1', 'string2', 'string11', 'string100'];
         $itemMock->expects($this->any())

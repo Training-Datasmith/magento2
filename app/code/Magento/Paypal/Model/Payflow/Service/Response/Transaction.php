@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Intl\DateTimeFactory;
 use Magento\Payment\Model\Method\Logger;
 use Magento\Paypal\Model\Payflow\Service\Response\Handler\HandlerInterface;
+use Magento\Paypal\Model\Payflow\Transparent;
 use Magento\Paypal\Model\Payflowpro;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Paypal\Model\Payflow\Transparent;
 use Magento\Quote\Api\PaymentMethodManagementInterface;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
@@ -112,7 +113,7 @@ class Transaction
         $quote = $this->quoteRepository->get($cartId);
         $payment = $this->paymentManagement->get($quote->getId());
         if (!$payment instanceof Payment) {
-            throw new \InvalidArgumentException("Variable must contain instance of \\Quote\\Payment.");
+            throw new \InvalidArgumentException('Variable must contain instance of \\Quote\\Payment.');
         }
 
         $payment->setData(OrderPaymentInterface::CC_TYPE, $response->getData(OrderPaymentInterface::CC_TYPE));

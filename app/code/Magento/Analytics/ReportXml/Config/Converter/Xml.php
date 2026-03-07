@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml\Config\Converter;
 
 use Magento\Framework\Config\ConverterInterface;
@@ -17,7 +20,6 @@ class Xml implements ConverterInterface
     /**
      * Converts XML node into corresponding array.
      *
-     * @param \DOMNode $source
      * @return array|string
      */
     private function convertNode(\DOMNode $source)

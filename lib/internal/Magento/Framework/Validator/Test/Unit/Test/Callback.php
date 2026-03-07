@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ namespace Magento\Framework\Validator\Test\Unit\Test;
  */
 class Callback
 {
-    const ID = 3;
+    public const ID = 3;
 
     /**
      * @return int

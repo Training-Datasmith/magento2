@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class ParentCustomerEntityId implements ParentValueFactorProviderInterface
     /**
      * Factor name.
      */
-    private const NAME = "PARENT_ENTITY_CUSTOMER_ID";
+    private const NAME = 'PARENT_ENTITY_CUSTOMER_ID';
 
     /**
      * @inheritdoc
@@ -39,8 +40,8 @@ class ParentCustomerEntityId implements ParentValueFactorProviderInterface
         } elseif (isset($parentValue['model']) && $parentValue['model'] instanceof CustomerInterface) {
             return (string)$parentValue['model']->getId();
         }
-        throw new \InvalidArgumentException(__CLASS__ . " factor provider requires parent value " .
-            "to contain customer model id or customer model.");
+        throw new \InvalidArgumentException(__CLASS__ . ' factor provider requires parent value ' .
+            'to contain customer model id or customer model.');
     }
 
     /**

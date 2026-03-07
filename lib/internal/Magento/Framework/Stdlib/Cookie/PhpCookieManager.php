@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Stdlib\Cookie;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
-use Magento\Framework\Stdlib\CookieManagerInterface;
-use Magento\Framework\Phrase;
 use Magento\Framework\HTTP\Header as HttpHeader;
+use Magento\Framework\Phrase;
+use Magento\Framework\Stdlib\CookieManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -151,7 +152,7 @@ class PhpCookieManager implements CookieManagerInterface
                 'domain' => $this->extractValue(CookieMetadata::KEY_DOMAIN, $metadataArray, ''),
                 'secure' => $this->extractValue(CookieMetadata::KEY_SECURE, $metadataArray, false),
                 'httponly' => $this->extractValue(CookieMetadata::KEY_HTTP_ONLY, $metadataArray, false),
-                'samesite' => $this->extractValue(CookieMetadata::KEY_SAME_SITE, $metadataArray, 'Lax')
+                'samesite' => $this->extractValue(CookieMetadata::KEY_SAME_SITE, $metadataArray, 'Lax'),
             ]
         );
 
@@ -216,7 +217,7 @@ class PhpCookieManager implements CookieManagerInterface
                 new Phrase('Unable to send the cookie. Maximum number of cookies would be exceeded.'),
                 [
                     'cookies' => array_keys($_COOKIE),
-                    'user-agent' => $this->httpHeader->getHttpUserAgent()
+                    'user-agent' => $this->httpHeader->getHttpUserAgent(),
                 ]
             );
         }

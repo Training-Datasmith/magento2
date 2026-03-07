@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Payment\Operations;
 
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\Operations\ProcessInvoiceOperation;
 use Magento\Sales\Model\Order\Payment\Operations\SaleOperation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class SaleOperationTest extends TestCase
 {
@@ -95,7 +96,7 @@ class SaleOperationTest extends TestCase
     {
         return [
             ['invoice' => static fn (self $testCase) => $testCase->getPaidInvoice()],
-            ['invoice' => static fn (self $testCase) => $testCase->getUnpaidInvoice()]
+            ['invoice' => static fn (self $testCase) => $testCase->getUnpaidInvoice()],
         ];
     }
 

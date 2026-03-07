@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Magento configuration XML DOM utility
  */
+
 namespace Magento\Framework\Config;
 
 use Magento\Framework\Config\Dom\UrnResolver;
@@ -340,7 +343,7 @@ class Dom
         if ($matchedNodes->length > 1) {
             throw new \Magento\Framework\Exception\LocalizedException(
                 new \Magento\Framework\Phrase(
-                    "More than one node matching the query: %1, Xml is: %2",
+                    'More than one node matching the query: %1, Xml is: %2',
                     [$nodePath, $this->dom->saveXML()]
                 )
             );

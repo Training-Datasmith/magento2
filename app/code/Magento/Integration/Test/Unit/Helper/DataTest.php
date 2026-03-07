@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class DataTest extends TestCase
                     Integration::SETUP_TYPE => 0,
                 ],
                 false,
-            ]
+            ],
         ];
     }
 }

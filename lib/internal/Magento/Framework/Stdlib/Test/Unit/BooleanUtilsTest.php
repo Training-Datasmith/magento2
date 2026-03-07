@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Stdlib\Test\Unit;
 
 use Magento\Framework\Stdlib\BooleanUtils;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class BooleanUtilsTest extends TestCase
 {
@@ -54,7 +55,7 @@ class BooleanUtilsTest extends TestCase
             'boolean numeric "1"' => [1, true],
             'boolean numeric "0"' => [0, false],
             'boolean string "1"' => ['1', true],
-            'boolean string "0"' => ['0', false]
+            'boolean string "0"' => ['0', false],
         ];
     }
 
@@ -82,7 +83,7 @@ class BooleanUtilsTest extends TestCase
             'boolean string "TRUE"' => ['TRUE'],
             'boolean string "FALSE"' => ['FALSE'],
             'empty string' => [''],
-            'null' => [null]
+            'null' => [null],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Backend\Test\Unit\Block\Widget\Grid\Column\Renderer;
 use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\DataObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -96,12 +97,12 @@ class AbstractRendererTest extends TestCase
             [
                 'editable' => false,
                 'onlyEdit' => false,
-                'expectedResult' => 'some value'
+                'expectedResult' => 'some value',
             ],
             [
                 'editable' => false,
                 'onlyEdit' => true,
-                'expectedResult' => 'some value'
+                'expectedResult' => 'some value',
             ],
             [
                 'editable' => true,
@@ -109,14 +110,14 @@ class AbstractRendererTest extends TestCase
                 'expectedResult' => '<div class="admin__grid-control">'
                     . '<span class="admin__grid-control-value">some value</span>'
                     . '<input type="text" class="input-text " name="test" value="some value"/>'
-                    . '</div>'
+                    . '</div>',
             ],
             [
                 'editable' => true,
                 'onlyEdit' => true,
                 'expectedResult' => '<div class="admin__grid-control">'
                     . '<input type="text" class="input-text " name="test" value="some value"/>'
-                    . '</div>'
+                    . '</div>',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\Exception;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -106,7 +107,7 @@ class CategoriesTests extends TestCase
         $info = $this->createMock(ResolveInfo::class);
         $info->path = [
             'orders',
-            'customers'
+            'customers',
         ];
         $product = $this->createMock(Product::class);
         $product->expects($this->once())
@@ -114,7 +115,7 @@ class CategoriesTests extends TestCase
             ->willReturn(Visibility::VISIBILITY_NOT_VISIBLE);
         $product->expects($this->once())->method('getCategoryIds')->willReturn([$categoryId]);
         $value = [
-            'model' => $product
+            'model' => $product,
         ];
         $args = [];
         $this->collectionFactory->expects($this->once())->method('create');
@@ -134,7 +135,7 @@ class CategoriesTests extends TestCase
         $info = $this->createMock(ResolveInfo::class);
         $info->path = [
             'orders',
-            'customers'
+            'customers',
         ];
         $product = $this->createMock(Product::class);
         $product->expects($this->once())
@@ -142,7 +143,7 @@ class CategoriesTests extends TestCase
             ->willReturn(Visibility::VISIBILITY_IN_CATALOG);
         $product->expects($this->once())->method('getId')->willReturn([$productId]);
         $value = [
-            'model' => $product
+            'model' => $product,
         ];
         $args = [];
         $store = $this->createMock(StoreInterface::class);

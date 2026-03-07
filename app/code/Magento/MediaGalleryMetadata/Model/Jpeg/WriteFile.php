@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryMetadata\Model\SegmentNames;
 use Magento\MediaGalleryMetadataApi\Model\FileInterface;
-use Magento\MediaGalleryMetadataApi\Model\WriteFileInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterface;
+use Magento\MediaGalleryMetadataApi\Model\WriteFileInterface;
 
 /**
  * File segments reader
@@ -95,7 +96,7 @@ class WriteFile implements WriteFileInterface
                     //phpcs:ignore Magento2.Functions.DiscouragedFunction
                     self::MARKER_IMAGE_PREFIX . chr($this->segmentNames->getSegmentType($segment->getName()))
                 );
-                $this->getDriver()->fileWrite($resource, pack("n", strlen($segment->getData()) + 2));
+                $this->getDriver()->fileWrite($resource, pack('n', strlen($segment->getData()) + 2));
             }
             $this->getDriver()->fileWrite($resource, $segment->getData());
         }

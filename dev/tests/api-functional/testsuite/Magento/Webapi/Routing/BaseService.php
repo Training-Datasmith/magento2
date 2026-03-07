@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Routing;
 
-use Magento\Framework\Exception\AuthorizationException;
 use Magento\Framework\Webapi\Exception as WebapiException;
 
 /**

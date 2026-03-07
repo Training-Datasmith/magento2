@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Filter\Test\Unit;
 
 use Magento\Framework\Filter\TranslitUrl;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class TranslitUrlTest extends TestCase
 {
@@ -53,13 +54,13 @@ class TranslitUrlTest extends TestCase
                 'Weiß, Goldmann, Göbel, Weiss, Göthe, Goethe und Götz',
                 'weiss-goldmann-gobel-weiss-gothe-goethe-und-gotz',
                 'weiss-goldmann-gobel-weiss-gothe-goethe-und-gotz',
-                $isIconv
+                $isIconv,
             ],
             [
                 '❤ ☀ ☆ ☂ ☻ ♞ ☯ ☭ ☢ € → ☎ ❄ ♫ ✂ ▷ ✇ ♎ ⇧ ☮',
                 '',
                 'eur',
-                $isIconv
+                $isIconv,
             ],
             ['™', 'tm', 'tm', $isIconv],
             ['ñandú', 'nandu', 'nandu', $isIconv],

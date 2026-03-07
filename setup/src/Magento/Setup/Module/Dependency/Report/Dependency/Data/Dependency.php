@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Dependency\Report\Dependency\Data;
 
 /**
@@ -13,9 +16,9 @@ class Dependency
     /**#@+
      * Dependencies types
      */
-    const TYPE_HARD = 'hard';
+    public const TYPE_HARD = 'hard';
 
-    const TYPE_SOFT = 'soft';
+    public const TYPE_SOFT = 'soft';
 
     /**#@-*/
 

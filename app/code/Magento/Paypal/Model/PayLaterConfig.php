@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class PayLaterConfig
             $this->configData[$section] = [
                 'display' => (bool)$this->config->getPayLaterConfigValue("{$sectionName}_display"),
                 'position' => $this->config->getPayLaterConfigValue("{$sectionName}_position"),
-                'style' => $this->getConfigStyles($sectionName)
+                'style' => $this->getConfigStyles($sectionName),
             ];
         }
 
@@ -133,7 +134,7 @@ class PayLaterConfig
             'data-pp-style-text-color' => $textColor,
             'data-pp-style-text-size' => $textSize,
             'data-pp-style-color' => $color,
-            'data-pp-style-ratio' => $ratio
+            'data-pp-style-ratio' => $ratio,
         ];
     }
 

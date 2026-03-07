@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\MysqlMq\Setup;
 
+use Magento\Framework\MessageQueue\Topology\ConfigInterface as MessageQueueConfig;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Magento\Framework\MessageQueue\Topology\ConfigInterface as MessageQueueConfig;
 
 /**
  * Class Recurring

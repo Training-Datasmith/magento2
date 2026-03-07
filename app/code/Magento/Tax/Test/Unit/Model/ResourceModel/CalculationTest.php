@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class CalculationTest extends TestCase
             [
                 'resource' => $resource,
                 'taxData' => $taxData,
-                'storeManager' => $storeManager
+                'storeManager' => $storeManager,
             ]
         );
 
@@ -93,7 +94,7 @@ class CalculationTest extends TestCase
         return [
             'USA basic' => ['78729', null],
             'USA zip+4' => ['54321', '12345-6789'],
-            'Poland' => ['05-509', null]
+            'Poland' => ['05-509', null],
         ];
     }
 }

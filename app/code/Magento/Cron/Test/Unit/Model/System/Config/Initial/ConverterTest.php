@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -67,15 +68,15 @@ class ConverterTest extends TestCase
     {
         $groups = [
             'group1' => ['val1' => ['value' => '1']],
-            'group2' => ['val2' => ['value' => '2']]
+            'group2' => ['val2' => ['value' => '2']],
         ];
         $expectedResult['data']['default']['system']['cron'] = [
             'group1' => [
-                'val1' => '1'
+                'val1' => '1',
             ],
             'group2' => [
-                'val2' => '2'
-            ]
+                'val2' => '2',
+            ],
         ];
         $result['data']['default']['system']['cron'] = '1';
 

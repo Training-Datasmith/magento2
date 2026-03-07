@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Config\Controller\Adminhtml\System\Config;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Config\Controller\Adminhtml\System\AbstractConfig;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
@@ -251,7 +253,7 @@ class Save extends AbstractConfig implements HttpPostActionInterface
             'adminhtml/system_config/edit',
             [
                 '_current' => ['section', 'website', 'store'],
-                '_nosid' => true
+                '_nosid' => true,
             ]
         );
     }

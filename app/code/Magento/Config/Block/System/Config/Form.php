@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Block\System\Config;
 
 use Magento\Config\App\Config\Type\System;
@@ -380,7 +383,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'can_use_website_value' => $this->canUseWebsiteValue($field->showInWebsite()),
                 'can_restore_to_default' => $this->isCanRestoreToDefault($field->canRestore()),
                 'disabled' => $isReadOnly,
-                'is_disable_inheritance' => $isReadOnly
+                'is_disable_inheritance' => $isReadOnly,
             ]
         );
         $field->populateInput($formField);
@@ -699,7 +702,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         return [
             'allowspecific' => \Magento\Config\Block\System\Config\Form\Field\Select\Allowspecific::class,
             'image' => \Magento\Config\Block\System\Config\Form\Field\Image::class,
-            'file' => \Magento\Config\Block\System\Config\Form\Field\File::class
+            'file' => \Magento\Config\Block\System\Config\Form\Field\File::class,
         ];
     }
 

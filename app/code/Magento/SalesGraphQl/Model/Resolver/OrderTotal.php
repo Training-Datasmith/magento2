@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use Magento\Tax\Api\OrderTaxManagementInterface;
  */
 class OrderTotal implements ResolverInterface
 {
-
     /**
      * OrderTotal Constructor
      *
@@ -52,7 +52,7 @@ class OrderTotal implements ResolverInterface
         return [
             'base_grand_total' => [
                 'value' => $order->getBaseGrandTotal(),
-                'currency' => $order->getBaseCurrencyCode()
+                'currency' => $order->getBaseCurrencyCode(),
             ],
             'grand_total' => ['value' => $order->getGrandTotal(), 'currency' => $currency],
             'grand_total_excl_tax' => ['value' => $this->getGrandTotalExclTax($order), 'currency' => $currency],
@@ -66,20 +66,20 @@ class OrderTotal implements ResolverInterface
             'shipping_handling' => [
                 'amount_excluding_tax' => [
                     'value' => $order->getShippingAmount(),
-                    'currency' => $order->getOrderCurrencyCode()
+                    'currency' => $order->getOrderCurrencyCode(),
                 ],
                 'amount_including_tax' => [
                     'value' => $order->getShippingInclTax(),
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'total_amount' => [
                     'value' => $order->getShippingAmount(),
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'taxes' => $this->getAppliedShippingTaxesDetails($order),
                 'discounts' => $this->getShippingDiscountDetails($order),
             ],
-            'model' => $order
+            'model' => $order,
         ];
     }
 
@@ -93,7 +93,7 @@ class OrderTotal implements ResolverInterface
     private function getAllAppliedTaxesOnOrders(OrderInterface $order): array
     {
         return array_map(
-            fn($appliedTaxesData) => [
+            fn ($appliedTaxesData) => [
                 'title' => $appliedTaxesData->getTitle(),
                 'percent' => $appliedTaxesData->getPercent(),
                 'amount' => $appliedTaxesData->getAmount(),
@@ -112,13 +112,13 @@ class OrderTotal implements ResolverInterface
     private function getAppliedTaxesDetails(OrderInterface $order): array
     {
         return array_map(
-            fn($appliedTaxes) => [
+            fn ($appliedTaxes) => [
                 'rate' => $appliedTaxes['percent'] ?? 0,
                 'title' => $appliedTaxes['title'] ?? null,
                 'amount' => [
                     'value' => $appliedTaxes['amount'] ?? 0,
-                    'currency' => $order->getOrderCurrencyCode()
-                ]
+                    'currency' => $order->getOrderCurrencyCode(),
+                ],
             ],
             $this->getAllAppliedTaxesOnOrders($order)
         );
@@ -138,9 +138,9 @@ class OrderTotal implements ResolverInterface
                 'label' => $order->getDiscountDescription() ?? __('Discount'),
                 'amount' => [
                     'value' => abs((float) $order->getDiscountAmount()),
-                    'currency' => $order->getOrderCurrencyCode()
+                    'currency' => $order->getOrderCurrencyCode(),
                 ],
-                'order_model' => $order
+                'order_model' => $order,
             ];
         }
         return $orderDiscounts;
@@ -158,13 +158,13 @@ class OrderTotal implements ResolverInterface
         $itemAppliedTaxes = $extensionAttributes->getItemAppliedTaxes() ?? [];
         $appliedShippingTaxesForItems = [];
         foreach ($itemAppliedTaxes as $appliedTaxForItem) {
-            if ($appliedTaxForItem->getType() === "shipping") {
+            if ($appliedTaxForItem->getType() === 'shipping') {
                 foreach ($appliedTaxForItem->getAppliedTaxes() ?? [] as $taxLineItem) {
                     $taxItemIndexTitle = $taxLineItem->getDataByKey('title');
                     $appliedShippingTaxesForItems[$taxItemIndexTitle] = [
                         'title' => $taxLineItem->getDataByKey('title'),
                         'percent' => $taxLineItem->getDataByKey('percent'),
-                        'amount' => $taxLineItem->getDataByKey('amount')
+                        'amount' => $taxLineItem->getDataByKey('amount'),
                     ];
                 }
             }
@@ -189,8 +189,8 @@ class OrderTotal implements ResolverInterface
                 'title' => $appliedShippingTaxes['title'] ?? null,
                 'amount' => [
                     'value' => $appliedShippingTaxes['amount'] ?? 0,
-                    'currency' => $order->getOrderCurrencyCode()
-                ]
+                    'currency' => $order->getOrderCurrencyCode(),
+                ],
             ];
             $shippingTaxes[] = $appliedShippingTaxesArray;
         }
@@ -212,8 +212,8 @@ class OrderTotal implements ResolverInterface
                     'label' => $order->getDiscountDescription() ?? __('Discount'),
                     'amount' => [
                         'value' => abs((float) $order->getShippingDiscountAmount()),
-                        'currency' => $order->getOrderCurrencyCode()
-                    ]
+                        'currency' => $order->getOrderCurrencyCode(),
+                    ],
                 ];
         }
         return $shippingDiscounts;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Coupon;
 
+use Magento\Authorization\Model\UserContextInterface;
+use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\Captcha\Model\DefaultModel as Captcha;
+use Magento\Captcha\Observer\CaptchaStringResolver as CaptchaResolver;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\SalesRule\Api\CouponRepositoryInterface;
 use Magento\SalesRule\Api\Exception\CodeRequestLimitException;
 use Magento\SalesRule\Model\Spi\CodeLimitManagerInterface;
-use Magento\Captcha\Helper\Data as CaptchaHelper;
-use Magento\Captcha\Observer\CaptchaStringResolver as CaptchaResolver;
-use Magento\Captcha\Model\DefaultModel as Captcha;
-use Magento\Authorization\Model\UserContextInterface;
 
 /**
  * @inheritDoc

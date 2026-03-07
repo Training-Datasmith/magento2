@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -37,7 +39,7 @@ $secondProduct->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->setSku($secondProductSku)
     ->setPrice(11)
     ->setWeight(1)
-    ->setShortDescription("Short description 2")
+    ->setShortDescription('Short description 2')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setExtensionAttributes($productExtensionAttributesWebsiteIds)

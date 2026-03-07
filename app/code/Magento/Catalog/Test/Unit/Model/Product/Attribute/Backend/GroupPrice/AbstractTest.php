@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,9 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Model\Product\Attribute\Backend\GroupPrice;
 
 use Magento\Catalog\Helper\Data;
-use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
 use Magento\Catalog\Model\Product\Attribute\Backend\GroupPrice\AbstractGroupPrice;
-use Magento\Catalog\Model\Product\Type;
-use Magento\Customer\Api\GroupManagementInterface;
-use Magento\Directory\Model\CurrencyFactory;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
-use Magento\Framework\Locale\FormatInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -48,15 +42,15 @@ class AbstractTest extends TestCase
         $resource->setMainTable('table');
 
         $this->_model->method('_getResource')->willReturn($resource);
-        
+
         // Mock the getAffectedFields method to return the expected result
         $this->_model->method('getAffectedFields')->willReturnCallback(function ($object) {
             $valueId = 10;
             $attributeId = 42;
             return [
                 'table' => [
-                    ['value_id' => $valueId, 'attribute_id' => $attributeId, 'entity_id' => $object->getId()]
-                ]
+                    ['value_id' => $valueId, 'attribute_id' => $attributeId, 'entity_id' => $object->getId()],
+                ],
             ];
         });
     }
@@ -83,8 +77,8 @@ class AbstractTest extends TestCase
         $this->assertEquals(
             [
                 'table' => [
-                    ['value_id' => $valueId, 'attribute_id' => $attributeId, 'entity_id' => $object->getId()]
-                ]
+                    ['value_id' => $valueId, 'attribute_id' => $attributeId, 'entity_id' => $object->getId()],
+                ],
             ],
             $this->_model->getAffectedFields($object)
         );

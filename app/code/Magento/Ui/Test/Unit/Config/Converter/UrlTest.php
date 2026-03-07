@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class UrlTest extends TestCase
                     'name' => 'first',
                     'value' => 'first_value',
                 ],
-                'second'=> [
+                'second' => [
                     'name' => 'second',
                     'value' => 'second_value',
                 ],

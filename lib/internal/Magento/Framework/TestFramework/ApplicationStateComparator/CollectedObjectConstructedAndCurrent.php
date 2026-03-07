@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use WeakReference;
  */
 class CollectedObjectConstructedAndCurrent
 {
-
     /**
      * @param object $weakReference
      * @param CollectedObject $constructedCollected
@@ -32,7 +32,7 @@ class CollectedObjectConstructedAndCurrent
      *
      * @return WeakReference
      */
-    public function getWeakReference() : WeakReference
+    public function getWeakReference(): WeakReference
     {
         return $this->weakReference;
     }
@@ -42,7 +42,7 @@ class CollectedObjectConstructedAndCurrent
      *
      * @return CollectedObject
      */
-    public function getConstructedCollected() : CollectedObject
+    public function getConstructedCollected(): CollectedObject
     {
         return $this->constructedCollected;
     }
@@ -52,7 +52,7 @@ class CollectedObjectConstructedAndCurrent
      *
      * @return CollectedObject
      */
-    public function getCurrentCollected() : CollectedObject
+    public function getCurrentCollected(): CollectedObject
     {
         return $this->currentCollected;
     }

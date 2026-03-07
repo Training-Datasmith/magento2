@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -260,37 +261,37 @@ class SortingTest extends TestCase
                 'sortBy' => 'price',
                 'direction' => 'asc',
                 'expectation' => ['simple1', 'simple2', 'simple3'],
-                'defaultSortBy' => 'position'
+                'defaultSortBy' => 'position',
             ],
             'default_order_price_desc' => [
                 'sortBy' => 'price',
                 'direction' => 'desc',
                 'expectation' => ['simple3', 'simple2', 'simple1'],
-                'defaultSortBy' => 'position'
+                'defaultSortBy' => 'position',
             ],
             'default_order_position_asc' => [
                 'sortBy' => 'position',
                 'direction' => 'asc',
                 'expectation' => ['simple1', 'simple2', 'simple3'],
-                'defaultSortBy' => 'price'
+                'defaultSortBy' => 'price',
             ],
             'default_order_position_desc' => [
                 'sortBy' => 'position',
                 'direction' => 'desc',
                 'expectation' => ['simple3', 'simple2', 'simple1'],
-                'defaultSortBy' => 'price'
+                'defaultSortBy' => 'price',
             ],
             'default_order_name_asc' => [
                 'sortBy' => 'name',
                 'direction' => 'asc',
                 'expectation' => ['simple1', 'simple2', 'simple3'],
-                'defaultSortBy' => 'price'
+                'defaultSortBy' => 'price',
             ],
             'default_order_name_desc' => [
                 'sortBy' => 'name',
                 'direction' => 'desc',
                 'expectation' => ['simple3', 'simple2', 'simple1'],
-                'defaultSortBy' => 'price'
+                'defaultSortBy' => 'price',
             ],
             'default_order_custom_attribute_asc' => [
                 'sortBy' => 'test_configurable',

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\ProductFrontendAction;
 
 use Magento\Catalog\Api\Data\ProductFrontendActionInterface;
@@ -29,10 +32,10 @@ class Synchronizer
      * Considered that for some action, customer should spent some time (e.g. products comparing or product page visit)
      * This constant used in order to track and filter suspicious actions, that happens frequently than expected
      */
-    const TIME_TO_DO_ONE_ACTION = 1;
+    public const TIME_TO_DO_ONE_ACTION = 1;
 
     /** Flag, which says, can we synchronize product actions with backend or not */
-    const ALLOW_SYNC_WITH_BACKEND_PATH = "catalog/recently_products/synchronize_with_backend";
+    public const ALLOW_SYNC_WITH_BACKEND_PATH = 'catalog/recently_products/synchronize_with_backend';
 
     /**
      * @var Session
@@ -105,7 +108,7 @@ class Synchronizer
             $configuration = $configurationObject->get();
         } else {
             $configuration = [
-                'lifetime' => FrontendStorageConfigurationInterface::DEFAULT_LIFETIME
+                'lifetime' => FrontendStorageConfigurationInterface::DEFAULT_LIFETIME,
             ];
         }
 
@@ -202,8 +205,8 @@ class Synchronizer
                             'customer_id' => $this->session->getCustomerId(),
                             'added_at' => $productData['added_at'],
                             'product_id' => $productData['product_id'],
-                            'type_id' => $typeId
-                        ]
+                            'type_id' => $typeId,
+                        ],
                     ]
                 );
 

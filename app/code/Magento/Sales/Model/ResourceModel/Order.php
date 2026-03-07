@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel;
 
-use Magento\Framework\App\ResourceConnection as AppResource;
 use Magento\Framework\Math\Random;
-use Magento\SalesSequence\Model\Manager;
+use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
+use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Sales\Model\ResourceModel\EntityAbstract as SalesResource;
 use Magento\Sales\Model\ResourceModel\Order\Handler\State as StateHandler;
 use Magento\Sales\Model\Spi\OrderResourceInterface;
-use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
-use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
+use Magento\SalesSequence\Model\Manager;
 
 /**
  * Flat sales order resource

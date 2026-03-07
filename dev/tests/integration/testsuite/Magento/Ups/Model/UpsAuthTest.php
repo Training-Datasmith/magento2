@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Shipping\Model\Shipment\Request;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Ups\Model\UpsAuth;
 use PHPUnit\Framework\TestCase;
 
 class UpsAuthTest extends TestCase
@@ -71,7 +71,7 @@ class UpsAuthTest extends TestCase
             [
                 'Content-Type' => 'application/x-www-form-urlencoded',
                 'x-merchant-id' => 'string',
-                'Authorization' => 'Basic ' . base64_encode("$clientId:$clientSecret")
+                'Authorization' => 'Basic ' . base64_encode("$clientId:$clientSecret"),
             ],
         );
 
@@ -81,7 +81,7 @@ class UpsAuthTest extends TestCase
                     200,
                     [],
                     $responseData
-                )
+                ),
             ]
         );
 

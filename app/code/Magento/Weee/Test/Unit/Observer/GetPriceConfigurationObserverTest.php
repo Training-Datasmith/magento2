@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,18 +55,18 @@ class GetPriceConfigurationObserverTest extends TestCase
             ]
         );
 
-        $weeeHelper=$this->createMock(Data::class);
+        $weeeHelper = $this->createMock(Data::class);
         $weeeHelper->expects($this->any())
             ->method('isEnabled')
             ->willReturn(true);
 
-        $observerObject=$this->createMock(Observer::class);
+        $observerObject = $this->createMock(Observer::class);
         $observerObject->expects($this->any())
             ->method('getData')
             ->with('configObj')
             ->willReturn($configObj);
 
-        $productInstance=$this->createMock(Simple::class);
+        $productInstance = $this->createMock(Simple::class);
 
         $product = $this->createPartialMockWithReflection(
             Type::class,
@@ -81,7 +82,7 @@ class GetPriceConfigurationObserverTest extends TestCase
             ->method('getStoreId')
             ->willReturn(null);
 
-        $registry=$this->createMock(Registry::class);
+        $registry = $this->createMock(Registry::class);
         $registry->expects($this->any())
             ->method('registry')
             ->with('current_product')
@@ -94,8 +95,8 @@ class GetPriceConfigurationObserverTest extends TestCase
                     1 => ['fpt1' => $weeeObject1],
                     2 => [
                         'fpt1' => $weeeObject1,
-                        'fpt2' => $weeeObject2
-                    ]
+                        'fpt2' => $weeeObject2,
+                    ],
                 ]);
         } else {
             $weeeHelper->expects($this->any())
@@ -124,7 +125,7 @@ class GetPriceConfigurationObserverTest extends TestCase
     public static function getPriceConfigurationProvider()
     {
         return [
-            "basic" => [
+            'basic' => [
                 'hasWeeeAttributes' => true,
                 'testArray' => [
                     [
@@ -138,7 +139,7 @@ class GetPriceConfigurationObserverTest extends TestCase
                         [
                             'optionId' => 2,
                             'prices' => [
-                                'finalPrice' =>['amount' => 331.50],
+                                'finalPrice' => ['amount' => 331.50],
                                 'basePrice' => ['amount' => 333.50],
                             ],
                         ],
@@ -158,7 +159,7 @@ class GetPriceConfigurationObserverTest extends TestCase
                         [
                             'optionId' => 2,
                             'prices' => [
-                                'finalPrice' =>['amount' => 331.50],
+                                'finalPrice' => ['amount' => 331.50],
                                 'basePrice' => ['amount' => 333.50],
                                 'weeePrice' => ['amount' => 362.5],
                                 'weeePricefpt1' => ['amount' => 15],
@@ -169,7 +170,7 @@ class GetPriceConfigurationObserverTest extends TestCase
                 ],
             ],
 
-            "layered, with extra keys" => [
+            'layered, with extra keys' => [
                 'hasWeeeAttributes' => true,
                 'testArray' => [
                     [
@@ -183,11 +184,11 @@ class GetPriceConfigurationObserverTest extends TestCase
                             [
                                 [
                                     'prices' => [
-                                        'finalPrice' =>['amount' => 321.50],
+                                        'finalPrice' => ['amount' => 321.50],
                                     ],
                                 ],
                                 'otherkey' => [ 1, 2 , 3],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -204,18 +205,18 @@ class GetPriceConfigurationObserverTest extends TestCase
                             [
                                 [
                                     'prices' => [
-                                        'finalPrice' =>['amount' => 321.50],
+                                        'finalPrice' => ['amount' => 321.50],
                                         'weeePrice' => ['amount' => 321.50],
                                     ],
                                 ],
                                 'otherkey' => [ 1, 2 , 3],
-                            ]
+                            ],
                         ],
                     ],
                 ],
             ],
 
-            "no Weee attributes, expect WeeePrice to be same as FinalPrice" => [
+            'no Weee attributes, expect WeeePrice to be same as FinalPrice' => [
                 'hasWeeeAttributes' => false,
                 'testArray' => [
                     [

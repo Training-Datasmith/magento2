@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class EavTest extends TestCase
             ->with(
                 [
                     Category::CACHE_TAG,
-                    Product::CACHE_TAG
+                    Product::CACHE_TAG,
                 ]
             );
 

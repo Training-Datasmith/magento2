@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Catalog\Model\Entity\Attribute\Set
  */
+
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel;
 
 use Magento\Catalog\Model\Product;
@@ -15,7 +17,6 @@ use Magento\Catalog\Model\ResourceModel\AbstractResource;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class AbstractTest extends TestCase

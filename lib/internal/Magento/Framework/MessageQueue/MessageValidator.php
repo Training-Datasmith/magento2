@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 use InvalidArgumentException;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 
 /**
  * Class MessageValidator to validate message with topic schema.
@@ -47,14 +50,14 @@ class MessageValidator
         if ($requestType) {
             return [
                 'schema_type' => $topicConfig[CommunicationConfig::TOPIC_REQUEST_TYPE],
-                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_REQUEST]
+                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_REQUEST],
             ];
         } else {
             return [
                 'schema_type' => isset($topicConfig[CommunicationConfig::TOPIC_RESPONSE])
                     ? CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS
                     : null,
-                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_RESPONSE]
+                'schema_value' => $topicConfig[CommunicationConfig::TOPIC_RESPONSE],
             ];
         }
     }
@@ -108,7 +111,7 @@ class MessageValidator
      */
     protected function validateMessage($message, $messageType, $topic)
     {
-        if (preg_match_all("/\\\\/", $messageType)) {
+        if (preg_match_all('/\\\\/', $messageType)) {
             $this->validateClassType($message, $messageType, $topic);
         } else {
             $this->validatePrimitiveType($message, $messageType, $topic);
@@ -143,7 +146,7 @@ class MessageValidator
                     [
                         'topic' => $topic,
                         'expectedType' => $messageType,
-                        'actualType' => $this->getRealType($message)
+                        'actualType' => $this->getRealType($message),
                     ]
                 )
             );
@@ -179,7 +182,7 @@ class MessageValidator
                     [
                         'topic' => $topic,
                         'expectedType' => $messageType,
-                        'actualType' => $this->getRealType($origMessage)
+                        'actualType' => $this->getRealType($origMessage),
                     ]
                 )
             );
@@ -197,6 +200,6 @@ class MessageValidator
         $type = is_object($message) ? get_class($message) : gettype($message);
         $type = $type == 'boolean' ? 'bool' : $type;
         $type = $type == 'double' ? 'float' : $type;
-        return $type == "integer" ? "int" : $type;
+        return $type == 'integer' ? 'int' : $type;
     }
 }

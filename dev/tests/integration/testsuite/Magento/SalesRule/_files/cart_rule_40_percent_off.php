@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -21,8 +23,8 @@ $salesRule->setData(
                 'type' => \Magento\SalesRule\Model\Rule\Condition\Address::class,
                 'attribute' => 'base_subtotal',
                 'operator' => '>',
-                'value' => 800
-            ]
+                'value' => 800,
+            ],
         ],
         'simple_action' => 'by_percent',
         'discount_amount' => 40,
@@ -31,8 +33,8 @@ $salesRule->setData(
         'website_ids' => [
             \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
                 \Magento\Store\Model\StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ]
 );
 $salesRule->save();

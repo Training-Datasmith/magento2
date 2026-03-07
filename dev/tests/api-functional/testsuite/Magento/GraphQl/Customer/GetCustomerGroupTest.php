@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,9 +63,9 @@ class GetCustomerGroupTest extends GraphQlAbstract
             [
                 'customer' => [
                     'group' => [
-                        'uid' => $this->idEncoder->encode($customer->getGroupId())
-                    ]
-                ]
+                        'uid' => $this->idEncoder->encode($customer->getGroupId()),
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerGroupQueryForLoggedInCustomer(),
@@ -89,8 +90,8 @@ class GetCustomerGroupTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'customer' => [
-                    'group' => null
-                ]
+                    'group' => null,
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerGroupQueryForLoggedInCustomer(),
@@ -112,8 +113,8 @@ class GetCustomerGroupTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'customerGroup' => [
-                    'uid' => $this->idEncoder->encode($customer->getGroupId())
-                ]
+                    'uid' => $this->idEncoder->encode($customer->getGroupId()),
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerGroupQuery(),
@@ -135,7 +136,7 @@ class GetCustomerGroupTest extends GraphQlAbstract
     {
         $this->expectException(ResponseContainsErrorsException::class);
         $this->expectExceptionMessage(
-            "Sharing customer group information is disabled or not configured."
+            'Sharing customer group information is disabled or not configured.'
         );
         $this->graphQlQuery(
             $this->getCustomerGroupQuery(),
@@ -156,8 +157,8 @@ class GetCustomerGroupTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'customerGroup' => [
-                    'uid' => $this->idEncoder->encode('0')
-                ]
+                    'uid' => $this->idEncoder->encode('0'),
+                ],
             ],
             $this->graphQlQuery($this->getCustomerGroupQuery())
         );
@@ -173,7 +174,7 @@ class GetCustomerGroupTest extends GraphQlAbstract
     {
         $this->expectException(ResponseContainsErrorsException::class);
         $this->expectExceptionMessage(
-            "Sharing customer group information is disabled or not configured."
+            'Sharing customer group information is disabled or not configured.'
         );
         $this->graphQlQuery($this->getCustomerGroupQuery());
     }

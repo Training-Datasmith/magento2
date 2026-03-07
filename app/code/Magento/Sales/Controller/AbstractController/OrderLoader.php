@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\AbstractController;
 
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Registry;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\Registry;
 
 class OrderLoader implements OrderLoaderInterface
 {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,7 +47,7 @@ class Data
             $variables[] = [
                 'code' => $variable['value'],
                 'variable_name' => $variable['group_label'] . ' / ' . $variable['label'],
-                'variable_type' => \Magento\Variable\Model\Source\Variables::DEFAULT_VARIABLE_TYPE
+                'variable_type' => \Magento\Variable\Model\Source\Variables::DEFAULT_VARIABLE_TYPE,
             ];
         }
 
@@ -67,7 +69,7 @@ class Data
             $variables[] = [
                 'code' => $variable['code'],
                 'variable_name' => __('Custom Variable') . ' / ' . $variable['name'],
-                'variable_type' => \Magento\Variable\Model\Source\Variables::CUSTOM_VARIABLE_TYPE
+                'variable_type' => \Magento\Variable\Model\Source\Variables::CUSTOM_VARIABLE_TYPE,
             ];
         }
 

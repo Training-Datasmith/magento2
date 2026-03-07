@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\ObjectManager\Test\Unit\Code\Generator;
 use Composer\Autoload\ClassLoader;
 use Magento\Framework\Code\Generator\Io;
 use Magento\Framework\ObjectManager\Code\Generator\Repository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class GenerateRepositoryTest extends TestCase
 {
@@ -53,7 +54,7 @@ class GenerateRepositoryTest extends TestCase
             ->setConstructorArgs([
                 $sourceClassName,
                 null,
-                $this->ioGenerator
+                $this->ioGenerator,
             ])
             ->getMock();
 
@@ -85,12 +86,12 @@ class GenerateRepositoryTest extends TestCase
             [
                 \Magento\Framework\ObjectManager\Code\Generator\SampleRepository::class,
                 \Magento\Framework\ObjectManager\Code\Generator\Sample::class,
-                'SampleRepository'
+                'SampleRepository',
             ],
             [
                 \Magento\Framework\ObjectManager\Code\Generator\TSampleRepository::class,
                 \Magento\Framework\ObjectManager\Code\Generator\TSample::class,
-                'TSampleRepository'
+                'TSampleRepository',
             ],
         ];
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Utility;
 
 use Magento\Framework\App\Bootstrap;
@@ -76,7 +79,7 @@ class LayoutTest extends \PHPUnit\Framework\TestCase
             'multiple fixture files' => [
                 glob(__DIR__ . '/_files/layout/*.xml'),
                 __DIR__ . '/_files/layout_merged/multiple_handles.xml',
-            ]
+            ],
         ];
     }
 }

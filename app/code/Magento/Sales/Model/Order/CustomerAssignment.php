@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class CustomerAssignment
             'sales_order_customer_assign_after',
             [
                 'order'     => $order,
-                'customer'  => $customer
+                'customer'  => $customer,
             ]
         );
     }

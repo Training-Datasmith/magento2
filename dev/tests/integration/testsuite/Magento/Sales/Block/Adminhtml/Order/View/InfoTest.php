@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\View;
 
 /**
@@ -13,7 +16,7 @@ class InfoTest extends \Magento\TestFramework\TestCase\AbstractBackendController
     /**
      * Value for the user defined custom attribute, which is created by attribute_user_defined_customer.php fixture.
      */
-    const ORDER_USER_DEFINED_ATTRIBUTE_VALUE = 'custom_attr_value';
+    public const ORDER_USER_DEFINED_ATTRIBUTE_VALUE = 'custom_attr_value';
 
     public function testCustomerGridAction()
     {

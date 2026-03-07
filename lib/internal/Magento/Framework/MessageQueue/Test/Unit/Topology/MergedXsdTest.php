@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Topology;
 use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\Config\ValidationStateInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class MergedXsdTest extends TestCase
 {
@@ -43,9 +44,9 @@ class MergedXsdTest extends TestCase
         $dom = new Dom($fixtureXml, $validationState, [], null, null, $messageFormat);
         $actualErrors = [];
         $actualResult = $dom->validate($this->schemaFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
         foreach ($expectedErrors as $error) {
-            $this->assertContains($error, $actualErrors, "Validation errors does not match.");
+            $this->assertContains($error, $actualErrors, 'Validation errors does not match.');
         }
     }
 
@@ -88,7 +89,7 @@ class MergedXsdTest extends TestCase
                     "0:<?xml version=\"1.0\"?>\n1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework-message-queue:etc/topology.xsd\">\n" .
                     "2:                        <exchange name=\"ex01\" type=\"topic\" connection=\"amqp\"/>\n" .
                     "3:                        <exchange name=\"ex01\" type=\"topic\" connection=\"amqp\"/>\n" .
-                    "4:                </config>\n5:\n"
+                    "4:                </config>\n5:\n",
                 ],
             ],
             'non-unique-exchange-binding' => [
@@ -104,7 +105,7 @@ class MergedXsdTest extends TestCase
                         "2:                        <exchange name=\"ex01\" connection=\"amqp\" type=\"topic\">\n" .
                         "3:                            <binding id=\"bind01\" destinationType=\"queue\" destination=\"queue01\" topic=\"top01\" disabled=\"true\"/>\n" .
                         "4:                            <binding id=\"bind01\" destinationType=\"queue\" destination=\"queue01\" topic=\"top01\"/>\n" .
-                        "5:                        </exchange>\n6:                </config>\n7:\n"
+                        "5:                        </exchange>\n6:                </config>\n7:\n",
                 ],
             ],
             'invalid-destination-type-binding' => [
@@ -118,7 +119,7 @@ class MergedXsdTest extends TestCase
                     "0:<?xml version=\"1.0\"?>\n1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework-message-queue:etc/topology.xsd\">\n" .
                     "2:                    <exchange name=\"ex01\" type=\"topic\" connection=\"amqp\">\n" .
                     "3:                        <binding id=\"bind01\" destinationType=\"topic\" destination=\"queue01\" topic=\"top01\"/>\n" .
-                    "4:                    </exchange>\n5:                </config>\n6:\n"
+                    "4:                    </exchange>\n5:                </config>\n6:\n",
                 ],
             ],
             'invalid-exchange-type-binding' => [
@@ -132,7 +133,7 @@ class MergedXsdTest extends TestCase
                     "0:<?xml version=\"1.0\"?>\n1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework-message-queue:etc/topology.xsd\">\n" .
                     "2:                    <exchange name=\"ex01\" type=\"exchange\" connection=\"db\">\n" .
                     "3:                        <binding id=\"bind01\" destinationType=\"queue\" destination=\"queue01\" topic=\"top01\"/>\n" .
-                    "4:                    </exchange>\n5:                </config>\n6:\n"
+                    "4:                    </exchange>\n5:                </config>\n6:\n",
                 ],
             ],
             'missed-required-attributes' => [

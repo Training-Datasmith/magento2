@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Express\InContext\Minicart;
 
+use Magento\Catalog\Block\ShortcutInterface;
 use Magento\Checkout\Model\Session;
+use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
-use Magento\Framework\View\Element\Template;
-use Magento\Catalog\Block\ShortcutInterface;
-use Magento\Framework\Locale\ResolverInterface;
-use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Class Button
@@ -20,15 +23,15 @@ use Magento\Framework\View\Element\Template\Context;
  */
 class Button extends Template implements ShortcutInterface
 {
-    const ALIAS_ELEMENT_INDEX = 'alias';
+    public const ALIAS_ELEMENT_INDEX = 'alias';
 
-    const PAYPAL_BUTTON_ID = 'paypal-express-in-context-checkout-main';
+    public const PAYPAL_BUTTON_ID = 'paypal-express-in-context-checkout-main';
 
-    const BUTTON_ELEMENT_INDEX = 'button_id';
+    public const BUTTON_ELEMENT_INDEX = 'button_id';
 
-    const LINK_DATA_ACTION = 'link_data_action';
+    public const LINK_DATA_ACTION = 'link_data_action';
 
-    const CART_BUTTON_ELEMENT_INDEX = 'add_to_cart_selector';
+    public const CART_BUTTON_ELEMENT_INDEX = 'add_to_cart_selector';
 
     /**
      * @var bool

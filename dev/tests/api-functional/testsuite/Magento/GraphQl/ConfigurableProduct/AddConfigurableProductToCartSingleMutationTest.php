@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -220,7 +221,7 @@ class AddConfigurableProductToCartSingleMutationTest extends GraphQlAbstract
 
         $expectedErrorMessages = [
             'There are no source items with the in stock status',
-            'This product is out of stock.'
+            'This product is out of stock.',
         ];
         self::assertContains(
             $response['addProductsToCart']['user_errors'][0]['message'],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class FactoryTest extends TestCase
         $this->factory = $this->objectManagerHelper->getObject(
             Factory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }

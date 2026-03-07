@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @codeCoverageIgnore
  */
+
 namespace Magento\User\Model\System\Config\Source;
 
 class Password extends \Magento\Framework\DataObject implements \Magento\Framework\Option\ArrayInterface

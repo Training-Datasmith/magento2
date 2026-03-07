@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ class VirtualTest extends TestCase
                         'type' => 'varchar',
                         'default_value' => null,
                         'options' => [],
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
 
@@ -61,12 +62,12 @@ class VirtualTest extends TestCase
             '_attribute_set' => 'Default',
             'sku' => 'downloadablesku1',
             'product_type' => 'virtual',
-            'name' => 'Downloadable Product 1'
+            'name' => 'Downloadable Product 1',
         ];
 
         $expectedResult = [
             'name' => 'Downloadable Product 1',
-            'weight' => null
+            'weight' => null,
         ];
 
         $result = $virtualModelMock->prepareAttributesWithDefaultValueForSave($rowData);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class SampleDataDeployCommandTest extends AbstractSampleDataCommandTestCase
                 'sampleDataPackages' => [],
                 'appRunResult' => 1,
                 'composerJsonContent' => [
-                    'require' => ["magento/product-community-edition" => "0.0.1"],
+                    'require' => ['magento/product-community-edition' => '0.0.1'],
                 ],
                 'expectedMsg' => 'There is no sample data for current set of modules.' . PHP_EOL,
                 'authExist' => true,
@@ -121,7 +122,7 @@ class SampleDataDeployCommandTest extends AbstractSampleDataCommandTestCase
                 ],
                 'appRunResult' => 1,
                 'composerJsonContent' => [
-                    'require' => ["magento/product-community-edition" => "0.0.1"],
+                    'require' => ['magento/product-community-edition' => '0.0.1'],
                 ],
                 'expectedMsg' => 'There is an error during sample data deployment. Composer file will be reverted.'
                     . PHP_EOL,
@@ -133,7 +134,7 @@ class SampleDataDeployCommandTest extends AbstractSampleDataCommandTestCase
                 ],
                 'appRunResult' => 0,
                 'composerJsonContent' => [
-                    'require' => ["magento/product-community-edition" => "0.0.1"],
+                    'require' => ['magento/product-community-edition' => '0.0.1'],
                 ],
                 'expectedMsg' => 'Sample data modules have been added via composer.'
                     . ' Please run bin/magento setup:upgrade'

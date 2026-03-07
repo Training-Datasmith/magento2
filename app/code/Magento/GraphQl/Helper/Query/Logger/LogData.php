@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class LogData
         array $data,
         ?Schema $schema,
         ?HttpResponse $response
-    ) : array {
+    ): array {
         $logData = [];
         $logData = array_merge($logData, $this->gatherRequestInformation($request));
 
@@ -65,7 +66,8 @@ class LogData
             if ($schema) {
                 $logData = array_merge($logData, $this->gatherQueryInformation($schema));
             }
-        } catch (\Exception $exception) {}  //@codingStandardsIgnoreLine
+        } catch (\Exception $exception) {
+        }  //@codingStandardsIgnoreLine
 
         if ($response) {
             $logData = array_merge($logData, $this->gatherResponseInformation($response));
@@ -80,7 +82,7 @@ class LogData
      * @param RequestInterface $request
      * @return array
      */
-    private function gatherRequestInformation(RequestInterface $request) : array
+    private function gatherRequestInformation(RequestInterface $request): array
     {
         $requestInformation[LoggerInterface::HTTP_METHOD] = $request->getMethod();
         $requestInformation[LoggerInterface::STORE_HEADER] = $request->getHeader('Store') ?: '';
@@ -96,7 +98,7 @@ class LogData
      * @param Schema $schema
      * @return array
      */
-    private function gatherQueryInformation(Schema $schema) : array
+    private function gatherQueryInformation(Schema $schema): array
     {
         $schemaConfig = $schema->getConfig();
         $mutationOperations = array_keys($schemaConfig->getMutation()->getFields());
@@ -106,7 +108,7 @@ class LogData
             count($mutationOperations) + count($queryOperations);
         $operationNames = array_merge($mutationOperations, $queryOperations);
         $queryInformation[LoggerInterface::OPERATION_NAMES] =
-            count($operationNames) > 0 ? implode(",", $operationNames) : 'operationNameNotFound';
+            count($operationNames) > 0 ? implode(',', $operationNames) : 'operationNameNotFound';
         return $queryInformation;
     }
 
@@ -116,7 +118,7 @@ class LogData
      * @param HttpResponse $response
      * @return array
      */
-    private function gatherResponseInformation(HttpResponse $response) : array
+    private function gatherResponseInformation(HttpResponse $response): array
     {
         $responseInformation[LoggerInterface::X_MAGENTO_CACHE_ID] =
             $response->getHeader('X-Magento-Cache-Id')
@@ -149,8 +151,8 @@ class LogData
                     'leave' => [
                         NodeKind::FIELD => function (Node $node) use (&$totalFieldCount) {
                             $totalFieldCount++;
-                        }
-                    ]
+                        },
+                    ],
                 ]
             );
             return $totalFieldCount;
@@ -182,8 +184,8 @@ class LogData
                         NodeKind::NAME => function (Node $node) use (&$queryName) {
                             $queryName = $node->value;
                             return Visitor::stop();
-                        }
-                    ]
+                        },
+                    ],
                 ]
             );
             return $queryName;

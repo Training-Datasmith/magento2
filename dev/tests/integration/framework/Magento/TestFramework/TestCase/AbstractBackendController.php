@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase;
 
 use Magento\Framework\Acl\Builder as AclBuilder;
@@ -85,7 +88,7 @@ abstract class AbstractBackendController extends \Magento\TestFramework\TestCase
     {
         return [
             'user' => \Magento\TestFramework\Bootstrap::ADMIN_NAME,
-            'password' => \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD
+            'password' => \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD,
         ];
     }
 

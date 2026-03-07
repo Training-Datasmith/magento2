@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -170,8 +172,8 @@ class InstanceTest extends \PHPUnit\Framework\TestCase
         return [
             # Variation 1
             [
-                ['block_id' => '2']
-            ]
+                ['block_id' => '2'],
+            ],
         ];
     }
 

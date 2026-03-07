@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ declare(strict_types=1);
 namespace Magento\Cms\Command;
 
 use Magento\Cms\Model\Wysiwyg\Validator;
+use Magento\Framework\App\Cache\TypeListInterface as Cache;
+use Magento\Framework\App\Config\ConfigResource\ConfigInterface as ConfigWriter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\Config\ConfigResource\ConfigInterface as ConfigWriter;
-use Magento\Framework\App\Cache\TypeListInterface as Cache;
 
 /**
  * Command to toggle WYSIWYG content validation on/off.

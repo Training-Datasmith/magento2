@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'query_text',
                 'label' => __('Search Query'),
                 'title' => __('Search Query'),
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -100,7 +101,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Store'),
                     'title' => __('Store'),
                     'values' => $this->_systemStore->getStoreValuesForForm(true, false),
-                    'required' => true
+                    'required' => true,
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -122,7 +123,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'title' => __('Number of results (For the last time placed)'),
                     'note' => __('For the last time placed.'),
                     'required' => true,
-                    'class' => 'required-entry validate-digits validate-zero-or-greater'
+                    'class' => 'required-entry validate-digits validate-zero-or-greater',
                 ]
             );
 
@@ -134,7 +135,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Number of Uses'),
                     'title' => __('Number of Uses'),
                     'required' => true,
-                    'class' => 'required-entry validate-digits validate-zero-or-greater'
+                    'class' => 'required-entry validate-digits validate-zero-or-greater',
                 ]
             );
         }
@@ -147,7 +148,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Redirect URL'),
                 'title' => __('Redirect URL'),
                 'class' => 'validate-url',
-                'note' => __('ex. http://domain.com')
+                'note' => __('ex. http://domain.com'),
             ]
         );
 
@@ -158,7 +159,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'display_in_terms',
                 'label' => __('Display in Suggested Terms'),
                 'title' => __('Display in Suggested Terms'),
-                'values' => $yesno
+                'values' => $yesno,
             ]
         );
 

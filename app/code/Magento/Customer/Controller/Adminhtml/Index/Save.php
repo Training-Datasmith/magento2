@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,6 +30,7 @@ use Magento\Customer\Model\EmailNotificationInterface;
 use Magento\Customer\Model\Metadata\Form;
 use Magento\Customer\Model\Metadata\FormFactory;
 use Magento\Customer\Model\SetCustomerStore;
+use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -40,7 +43,6 @@ use Magento\Framework\Exception\AbstractAggregateException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Math\Random;
-use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Registry;
@@ -388,7 +390,7 @@ class Save extends \Magento\Customer\Controller\Adminhtml\Index implements HttpP
                     try {
                         $this->customerAccountManagement->validateCustomerStoreIdByWebsiteId($customer);
                     } catch (LocalizedException $exception) {
-                        throw new LocalizedException(__("The Store View selected for sending Welcome email from" .
+                        throw new LocalizedException(__('The Store View selected for sending Welcome email from' .
                             " is not related to the customer's associated website."));
                     }
                 }

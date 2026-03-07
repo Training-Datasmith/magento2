@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\DataObject;
 use Magento\TestFramework\Bootstrap;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
-use Magento\User\Model\UserFactory;
 use Magento\User\Model\ResourceModel\User as UserResource;
+use Magento\User\Model\UserFactory;
 
 /**
  * Creating a new admin user with variable role
@@ -26,7 +27,7 @@ class User implements RevertibleDataFixtureInterface
         'email' => 'adminuser%uniqid%@example.com',
         'password' => Bootstrap::ADMIN_PASSWORD,
         'interface_locale' => 'en_US',
-        'is_active' => 1
+        'is_active' => 1,
     ];
 
     /**

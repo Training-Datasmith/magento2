@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +25,6 @@ use PHPUnit\Framework\TestCase;
  */
 class PageActionsTest extends TestCase
 {
-
     /**
      * @var UrlInterface|MockObject
      */
@@ -76,7 +76,7 @@ class PageActionsTest extends TestCase
             [
                 'urlBuilder' => $this->urlBuilderMock,
                 'context' => $this->contextMock,
-                'scopeUrlBuilder' => $this->scopeUrlBuilderMock
+                'scopeUrlBuilder' => $this->scopeUrlBuilderMock,
             ]
         );
 
@@ -100,7 +100,7 @@ class PageActionsTest extends TestCase
         string $name,
         array $items,
         array $expectedItems
-    ):void {
+    ): void {
         $this->contextMock->expects($this->never())
             ->method('getProcessor')
             ->willReturn($this->processorMock);
@@ -116,14 +116,14 @@ class PageActionsTest extends TestCase
                     [
                         PageActions::CMS_URL_PATH_EDIT,
                         [
-                            'page_id' => $pageId
+                            'page_id' => $pageId,
                         ],
                         'test/url/edit',
                     ],
                     [
                         PageActions::CMS_URL_PATH_DELETE,
                         [
-                            'page_id' => $pageId
+                            'page_id' => $pageId,
                         ],
                         'test/url/delete',
                     ],
@@ -145,7 +145,7 @@ class PageActionsTest extends TestCase
      *
      * @return array
      */
-    public static function configDataProvider():array
+    public static function configDataProvider(): array
     {
         $pageId = 1;
         $title = 'page title';
@@ -163,10 +163,10 @@ class PageActionsTest extends TestCase
                             [
                                 'page_id' => $pageId,
                                 'title' => $title,
-                                'identifier' => $identifier
-                            ]
-                        ]
-                    ]
+                                'identifier' => $identifier,
+                            ],
+                        ],
+                    ],
                 ],
                 'expectedItems' => [
                     [
@@ -190,12 +190,12 @@ class PageActionsTest extends TestCase
                             'preview' => [
                                 'href' => 'test/url/view',
                                 'label' => __('View'),
-                                'target' => '_blank'
-                            ]
+                                'target' => '_blank',
+                            ],
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

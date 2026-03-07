@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\ConfigurableProduct\Api;
 
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CartItemRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'quoteCartItemRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const CONFIGURABLE_PRODUCT_SKU = 'configurable';
+    public const SERVICE_NAME = 'quoteCartItemRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const CONFIGURABLE_PRODUCT_SKU = 'configurable';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -39,7 +41,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/carts/' . $cartId . '/items',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -85,7 +87,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' =>  '/V1/carts/' . $cartId . '/items',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -125,7 +127,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' =>  '/V1/carts/' . $cartId . '/items/1000',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -174,7 +176,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' =>  '/V1/carts/' . $cartId . '/items/' . $item->getId(),
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -251,7 +253,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' =>  '/V1/carts/' . $cartId . '/items/' . $item->getId(),
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -291,7 +293,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/carts/' . $cartId . '/items',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -352,12 +354,12 @@ class CartItemRepositoryTest extends WebapiAbstract
                         'configurable_item_options' => [
                             [
                                 'option_id' => $attributeId,
-                                'option_value' => $optionId
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'option_value' => $optionId,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

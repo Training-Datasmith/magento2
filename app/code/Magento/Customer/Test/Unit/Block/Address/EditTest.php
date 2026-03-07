@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,13 +19,13 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -93,7 +94,7 @@ class EditTest extends TestCase
 
         $this->customerSessionMock = $this->createPartialMockWithReflection(
             Session::class,
-            ['getAddressFormData', 'getCustomerId'
+            ['getAddressFormData', 'getCustomerId',
                                     ]
         );
 
@@ -123,7 +124,7 @@ class EditTest extends TestCase
                 'pageConfig' => $this->pageConfigMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
                 'addressDataFactory' => $this->addressDataFactoryMock,
-                'currentCustomer' => $this->currentCustomerMock
+                'currentCustomer' => $this->currentCustomerMock,
             ]
         );
     }
@@ -138,7 +139,7 @@ class EditTest extends TestCase
         $title = __('Edit Address');
         $postedData = [
             'region_id' => 1,
-            'region' => 'region'
+            'region' => 'region',
         ];
         $newPostedData = $postedData;
         $newPostedData['region'] = $postedData;

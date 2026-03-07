@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -193,7 +194,7 @@ class CategoryTest extends TestCase
                     'simple1002' => 1,
                     'simple1000' => 2,
                     'simple1001' => 3,
-                ]
+                ],
             ],
             'Add new product' => [
                 [
@@ -201,14 +202,14 @@ class CategoryTest extends TestCase
                     'simple1000' => 2,
                     'simple-1' => 3,
                     'simple1001' => 4,
-                ]
+                ],
             ],
             'Delete product' => [
                 [
                     'simple1002' => 1,
                     'simple1000' => 2,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

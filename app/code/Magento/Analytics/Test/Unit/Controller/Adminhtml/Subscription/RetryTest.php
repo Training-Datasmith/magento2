@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RetryTest extends TestCase
@@ -144,7 +145,7 @@ class RetryTest extends TestCase
             [new LocalizedException(__('TestMessage')), __('TestMessage')],
             [
                 new \Exception('TestMessage'),
-                __('Sorry, there has been an error processing your request. Please try again later.')
+                __('Sorry, there has been an error processing your request. Please try again later.'),
             ],
         ];
     }

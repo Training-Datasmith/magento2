@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -66,7 +67,7 @@ class PayflowSilentPostTest extends AbstractController
             ->setBaseAmountAuthorized(100)
             ->setAdditionalInformation(
                 [
-                    'secure_silent_post_hash' => 'cf7i85d01ed7c92223031afb4rdl2f1f'
+                    'secure_silent_post_hash' => 'cf7i85d01ed7c92223031afb4rdl2f1f',
                 ]
             );
         $order->setPayment($payment);
@@ -117,7 +118,7 @@ class PayflowSilentPostTest extends AbstractController
     {
         return [
             [Payflowlink::RESPONSE_CODE_APPROVED, Order::STATE_COMPLETE, Order::STATE_COMPLETE],
-            [Payflowlink::RESPONSE_CODE_DECLINED, Order::STATE_PENDING_PAYMENT, Order::STATE_PENDING_PAYMENT]
+            [Payflowlink::RESPONSE_CODE_DECLINED, Order::STATE_PENDING_PAYMENT, Order::STATE_PENDING_PAYMENT],
         ];
     }
 
@@ -136,7 +137,7 @@ class PayflowSilentPostTest extends AbstractController
             'USER2' => 'cf7i85d01ed7c92223031afb4rdl2f1f',
             'RESULT' => $resultCode,
             'TYPE' => 'A',
-            'RESPMSG' => 'Approved'
+            'RESPMSG' => 'Approved',
         ];
         $this->getRequest()->setParams($data);
     }
@@ -152,7 +153,7 @@ class PayflowSilentPostTest extends AbstractController
         $response = new DataObject([
             'custref' => $this->orderIncrementId,
             'origresult' => $resultCode,
-            'respmsg' => 'Response message from PayPal gateway'
+            'respmsg' => 'Response message from PayPal gateway',
         ]);
         $this->gateway->method('postRequest')
             ->willReturn($response);
@@ -170,7 +171,7 @@ class PayflowSilentPostTest extends AbstractController
         $filters = [
             $filterBuilder->setField(OrderInterface::INCREMENT_ID)
                 ->setValue($this->orderIncrementId)
-                ->create()
+                ->create(),
         ];
 
         /** @var SearchCriteriaBuilder $searchCriteriaBuilder */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,8 +69,8 @@ class ConfigTest extends TestCase
         $objects = [
             [
                 CspNonceProvider::class,
-                $this->createMock(CspNonceProvider::class)
-            ]
+                $this->createMock(CspNonceProvider::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -293,7 +294,7 @@ class ConfigTest extends TestCase
     {
         return [
             [true, 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=token&useraction=commit'],
-            [false, 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=token']
+            [false, 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=token'],
         ];
     }
 
@@ -329,7 +330,7 @@ class ConfigTest extends TestCase
     {
         return [
             ['head', 'left'],
-            ['checkout', 'top']
+            ['checkout', 'top'],
         ];
     }
 
@@ -350,7 +351,7 @@ class ConfigTest extends TestCase
     {
         return [
             ['head', '125x75'],
-            ['checkout', ['50x50']]
+            ['checkout', ['50x50']],
         ];
     }
 
@@ -436,26 +437,26 @@ class ConfigTest extends TestCase
         return [
             [
                 'en_US', null, null, Config::EC_FLAVOR_DYNAMIC, true, Config::EC_BUTTON_TYPE_SHORTCUT,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png',
             ],
             [
                 'en_GB', null, null, Config::EC_FLAVOR_DYNAMIC, true, Config::EC_BUTTON_TYPE_SHORTCUT,
-                'https://fpdbs.sandbox.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecshortcut&locale=en_GB'
+                'https://fpdbs.sandbox.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecshortcut&locale=en_GB',
             ],
             [
                 'en_GB', null, null, Config::EC_FLAVOR_DYNAMIC, false, Config::EC_BUTTON_TYPE_SHORTCUT,
-                'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecshortcut&locale=en_GB'
+                'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecshortcut&locale=en_GB',
             ],
             [
                 'en_US', null, null, Config::EC_FLAVOR_STATIC, false, Config::EC_BUTTON_TYPE_MARK,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png',
             ],
             [
                 'en_US', null, null, Config::EC_FLAVOR_STATIC, true, Config::EC_BUTTON_TYPE_SHORTCUT,
                 'https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png'],
             [
                 'en_GB', null, null, Config::EC_FLAVOR_STATIC, true, Config::EC_BUTTON_TYPE_SHORTCUT,
-                'https://www.paypal.com/en_GB/i/btn/btn_xpressCheckout.gif'
+                'https://www.paypal.com/en_GB/i/btn/btn_xpressCheckout.gif',
             ],
         ];
     }
@@ -505,31 +506,31 @@ class ConfigTest extends TestCase
         return [
             [
                 'en_US', null, null, 'small', Config::EC_FLAVOR_DYNAMIC, true,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-medium.png',
             ],
             [
                 'en_GB', null, null, 'small', Config::EC_FLAVOR_DYNAMIC, true,
-                'https://fpdbs.sandbox.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecmark&locale=en_GB'
+                'https://fpdbs.sandbox.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecmark&locale=en_GB',
             ],
             [
                 'en_GB', null, null, 'small', Config::EC_FLAVOR_DYNAMIC, false,
-                'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecmark&locale=en_GB'
+                'https://fpdbs.paypal.com/dynamicimageweb?cmd=_dynamic-image&buttontype=ecmark&locale=en_GB',
             ],
             [
                 'en_US', null, null, 'medium', Config::EC_FLAVOR_STATIC, true,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png',
             ],
             [
                 'en_US', null, null, 'medium', Config::EC_FLAVOR_STATIC, true,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png',
             ],
             [
                 'en_US', null, null, 'large', Config::EC_FLAVOR_STATIC, true,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-large.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-large.png',
             ],
             [
                 'en_GB', null, null, 'affected', Config::EC_FLAVOR_STATIC, true,
-                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png'
+                'https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png',
             ],
         ];
     }

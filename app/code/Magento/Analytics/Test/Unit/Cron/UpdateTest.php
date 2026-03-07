@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\FlagManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class UpdateTest extends TestCase
@@ -101,7 +102,7 @@ class UpdateTest extends TestCase
         $this->flagManagerMock
             ->expects($this->exactly(2 * $isExecuted))
             ->method('deleteFlag')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [SubscriptionUpdateHandler::SUBSCRIPTION_UPDATE_REVERSE_COUNTER_FLAG_CODE] => $this->flagManagerMock,
                 [SubscriptionUpdateHandler::PREVIOUS_BASE_URL_FLAG_CODE] => $this->flagManagerMock
             });
@@ -149,7 +150,7 @@ class UpdateTest extends TestCase
     {
         return [
             [null],
-            [0]
+            [0],
         ];
     }
 

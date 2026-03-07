@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,23 +9,23 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Observer;
 
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\StateException;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\StateException;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorage;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for SaveInventoryDataObserver
@@ -86,13 +87,13 @@ class SaveInventoryDataObserverTest extends TestCase
         $product->setExtensionAttributes($attributes);
         $this->productRepository->save($product);
 
-         /** @var ProductInterface $product */
-         $parentProduct = $this->productRepository->get('configurable');
+        /** @var ProductInterface $product */
+        $parentProduct = $this->productRepository->get('configurable');
 
-         $parentProductStockItem = $this->stockItemRepository->get(
-             $parentProduct->getExtensionAttributes()->getStockItem()->getItemId()
-         );
-         $this->assertFalse($parentProductStockItem->getIsInStock());
+        $parentProductStockItem = $this->stockItemRepository->get(
+            $parentProduct->getExtensionAttributes()->getStockItem()->getItemId()
+        );
+        $this->assertFalse($parentProductStockItem->getIsInStock());
     }
 
     /**
@@ -107,9 +108,9 @@ class SaveInventoryDataObserverTest extends TestCase
                 'extension_attributes' => [
                     'stock_item' => [
                         'qty' => 0,
-                        'is_in_stock' => false
-                    ]
-                ]
+                        'is_in_stock' => false,
+                    ],
+                ],
             ],
             'p1'
         ),

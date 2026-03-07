@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Asset\Repository;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Controller\Adminhtml\System\Design\Theme;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -140,7 +141,7 @@ abstract class ThemeTestCase extends TestCase
                 'session' => $this->session,
                 'actionFlag' => $this->actionFlag,
                 'helper' => $this->backendHelper,
-                'coreRegistry' => $this->coreRegistry
+                'coreRegistry' => $this->coreRegistry,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,21 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Validation;
 
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Sales\Model\Order\Creditmemo;
-use Magento\Sales\Api\Data\CreditmemoItemInterface;
-use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Sales\Api\InvoiceRepositoryInterface;
-use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\ExtensionAttributesFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Math\CalculatorFactory;
 use Magento\Framework\Model\Context as ModelContext;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Registry;
+use Magento\Sales\Api\Data\CreditmemoItemInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Sales\Api\InvoiceRepositoryInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface as SalesOrderRepositoryInterface;
+use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\CommentFactory as CreditmemoCommentFactory;
 use Magento\Sales\Model\Order\Creditmemo\Config as CreditmemoConfig;
 use Magento\Sales\Model\Order\Creditmemo\Validation\QuantityValidator;
@@ -31,8 +32,8 @@ use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Comment\CollectionFactory as CommentCollectionFactory;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Item\CollectionFactory as ItemCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -40,7 +41,6 @@ use PHPUnit\Framework\TestCase;
  */
 class QuantityValidatorTest extends TestCase
 {
-
     /**
      * @var OrderRepositoryInterface|MockObject
      */
@@ -99,7 +99,7 @@ class QuantityValidatorTest extends TestCase
             ->willReturn(false);
         $this->assertEquals(
             [
-                __('The credit memo\'s total must be positive.')
+                __('The credit memo\'s total must be positive.'),
             ],
             $this->validator->validate($creditmemoMock)
         );
@@ -178,7 +178,7 @@ class QuantityValidatorTest extends TestCase
             [],
             $this->createMock(InvoiceFactory::class),
             $this->createMock(ScopeConfigInterface::class),
-            $this->createMock(SalesOrderRepositoryInterface::class)
+            $this->createMock(SalesOrderRepositoryInterface::class),
         ];
     }
 
@@ -276,7 +276,7 @@ class QuantityValidatorTest extends TestCase
                 'total' => 15,
                 'expected' => [],
                 'isQtyDecimalAllowed' => false,
-                'isAllowZeroGrandTotal' => true
+                'isAllowZeroGrandTotal' => true,
             ],
             [
                 'orderId' => 1,
@@ -287,7 +287,7 @@ class QuantityValidatorTest extends TestCase
                 'total' => 15,
                 'expected' => [],
                 'isQtyDecimalAllowed' => false,
-                'isAllowZeroGrandTotal' => true
+                'isAllowZeroGrandTotal' => true,
             ],
             [
                 'orderId' => 1,
@@ -300,10 +300,10 @@ class QuantityValidatorTest extends TestCase
                     __(
                         'We found an invalid quantity to refund item "%1".',
                         $sku
-                    )
+                    ),
                 ],
                 'isQtyDecimalAllowed' => false,
-                'isAllowZeroGrandTotal' => true
+                'isAllowZeroGrandTotal' => true,
             ],
             [
                 'orderId' => 1,
@@ -318,10 +318,10 @@ class QuantityValidatorTest extends TestCase
                         . ' for product SKU "%1".',
                         $sku
                     ),
-                    __('The credit memo\'s total must be positive.')
+                    __('The credit memo\'s total must be positive.'),
                 ],
                 'isQtyDecimalAllowed' => false,
-                'isAllowZeroGrandTotal' => false
+                'isAllowZeroGrandTotal' => false,
             ],
             [
                 'orderId' => 1,
@@ -332,8 +332,8 @@ class QuantityValidatorTest extends TestCase
                 'total' => 0,
                 'expected' => [],
                 'isQtyDecimalAllowed' => false,
-                'isAllowZeroGrandTotal' => true
-            ]
+                'isAllowZeroGrandTotal' => true,
+            ],
         ];
     }
 }

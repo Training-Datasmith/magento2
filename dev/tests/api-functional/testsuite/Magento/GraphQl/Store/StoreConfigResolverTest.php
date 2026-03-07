@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,7 +26,6 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 class StoreConfigResolverTest extends GraphQlAbstract
 {
-
     /** @var ObjectManager */
     private $objectManager;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -13,16 +14,16 @@ use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\AttributeRepository;
 use Magento\Eav\Test\Fixture\Attribute;
 use Magento\GraphQl\PageCache\GraphQLPageCacheAbstract;
-use Magento\TestFramework\Fixture\Config as ConfigFixture;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 use Magento\PageCache\Model\Config;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\Store\Test\Fixture\Website as WebsiteFixture;
+use Magento\TestFramework\Fixture\Config as ConfigFixture;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 
 /**
  * Test caching for custom attribute metadata GraphQL query.
@@ -48,7 +49,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'text'
+                'frontend_input' => 'text',
             ],
             'attribute'
         ),
@@ -59,12 +60,12 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
         /** @var AttributeInterface $attribute */
         $attribute = DataFixtureStorageManager::getStorage()->get('attribute');
 
-        $query = $this->getAttributeQuery($attribute->getAttributeCode(), "customer");
+        $query = $this->getAttributeQuery($attribute->getAttributeCode(), 'customer');
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $assertionMap = [
             ['response_field' => 'code', 'expected_value' => $attribute->getAttributeCode()],
             ['response_field' => 'entity_type', 'expected_value' => 'CUSTOMER'],
-            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT']
+            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT'],
         ];
         $this->assertResponseFields($response['body']['customAttributeMetadataV2']['items'][0], $assertionMap);
         $response = $this->assertCacheHitAndReturnResponse($query, []);
@@ -80,7 +81,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'text'
+                'frontend_input' => 'text',
             ],
             'attribute'
         ),
@@ -93,12 +94,12 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
         /** @var AttributeMetadataInterface $attribute */
         $attribute = DataFixtureStorageManager::getStorage()->get('attribute');
 
-        $query = $this->getAttributeQuery($attribute->getAttributeCode(), "customer");
+        $query = $this->getAttributeQuery($attribute->getAttributeCode(), 'customer');
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $assertionMap = [
             ['response_field' => 'code', 'expected_value' => $attribute->getAttributeCode()],
             ['response_field' => 'entity_type', 'expected_value' => 'CUSTOMER'],
-            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT']
+            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT'],
         ];
         $this->assertResponseFields($response['body']['customAttributeMetadataV2']['items'][0], $assertionMap);
         $response = $this->assertCacheHitAndReturnResponse($query, []);
@@ -116,7 +117,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'text'
+                'frontend_input' => 'text',
             ],
             'attribute_1'
         ),
@@ -124,7 +125,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'boolean'
+                'frontend_input' => 'boolean',
             ],
             'attribute_2'
         ),
@@ -138,7 +139,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
         /** @var AttributeInterface $attribute2 */
         $attribute2 = DataFixtureStorageManager::getStorage()->get('attribute_2');
 
-        $query = $this->getAttributeQuery($attribute->getAttributeCode(), "customer");
+        $query = $this->getAttributeQuery($attribute->getAttributeCode(), 'customer');
         // check cache missed on first query
         $this->assertCacheMissAndReturnResponse($query, []);
         // assert cache hit on second query
@@ -161,7 +162,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'text'
+                'frontend_input' => 'text',
             ],
             'attribute'
         ),
@@ -173,14 +174,14 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
         $attribute = DataFixtureStorageManager::getStorage()->get('attribute');
         $attributeCode = $attribute->getAttributeCode();
 
-        $query = $this->getAttributeQuery($attributeCode, "customer");
+        $query = $this->getAttributeQuery($attributeCode, 'customer');
 
         // check cache missed on first query
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $assertionMap = [
             ['response_field' => 'code', 'expected_value' => $attributeCode],
             ['response_field' => 'entity_type', 'expected_value' => 'CUSTOMER'],
-            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT']
+            ['response_field' => 'frontend_input', 'expected_value' => 'TEXT'],
         ];
         $this->assertResponseFields($response['body']['customAttributeMetadataV2']['items'][0], $assertionMap);
 
@@ -194,7 +195,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             ['response_field' => 'message', 'expected_value' => sprintf(
                 'Attribute code "%s" could not be found.',
                 $attributeCode
-            )]
+            )],
         ];
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $this->assertResponseFields($response['body']['customAttributeMetadataV2']['errors'][0], $assertionMap);
@@ -205,7 +206,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'text'
+                'frontend_input' => 'text',
             ],
             'attribute'
         ),
@@ -216,26 +217,26 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
         /** @var AttributeInterface $attribute */
         $attribute = DataFixtureStorageManager::getStorage()->get('attribute');
 
-        $query = $this->getAttributeQueryNoCode("customer");
+        $query = $this->getAttributeQueryNoCode('customer');
         // check cache missed on each query
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing attribute_code for the input entity_type: customer."
+            'Missing attribute_code for the input entity_type: customer.'
         );
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing attribute_code for the input entity_type: customer."
+            'Missing attribute_code for the input entity_type: customer.'
         );
 
         $query = $this->getAttributeQueryNoEntityType($attribute->getAttributeCode());
         // check cache missed on each query
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            sprintf("Missing entity_type for the input attribute_code: %s.", $attribute->getAttributeCode())
+            sprintf('Missing entity_type for the input attribute_code: %s.', $attribute->getAttributeCode())
         );
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            sprintf("Missing entity_type for the input attribute_code: %s.", $attribute->getAttributeCode())
+            sprintf('Missing entity_type for the input attribute_code: %s.', $attribute->getAttributeCode())
         );
     }
 
@@ -279,7 +280,7 @@ class CustomAttributesMetadataV2CacheTest extends GraphQLPageCacheAbstract
      * @param string $entityType
      * @return string
      */
-    private function getAttributeQuery(string $code, string $entityType) : string
+    private function getAttributeQuery(string $code, string $entityType): string
     {
         return <<<QUERY
 {
@@ -313,7 +314,7 @@ QUERY;
      *
      * @return string
      */
-    private function getAttributeQueryNoCode(string $entityType) : string
+    private function getAttributeQueryNoCode(string $entityType): string
     {
         return <<<QUERY
 {
@@ -342,7 +343,7 @@ QUERY;
      *
      * @return string
      */
-    private function getAttributeQueryNoEntityType(string $code) : string
+    private function getAttributeQueryNoEntityType(string $code): string
     {
         return <<<QUERY
 {

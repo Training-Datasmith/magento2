@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class MergeDataProviderTest extends TestCase
     protected function getMockForUrlRewrite($requestPathForMock, $storeIdForMock)
     {
         $urlRewriteMock = $this->createMock(UrlRewrite::class);
-        if ($requestPathForMock!=null && $storeIdForMock!=null) {
+        if ($requestPathForMock != null && $storeIdForMock != null) {
             $urlRewriteMock->expects($this->any())
                 ->method('getRequestPath')
                 ->willReturn($requestPathForMock);
@@ -118,37 +119,37 @@ class MergeDataProviderTest extends TestCase
             [
                 [],
                 [],
-                0
+                0,
             ],
             [
                 [$urlRewriteMock1],
                 [$urlRewriteMock1],
-                1
+                1,
             ],
             [
                 [
                     $urlRewriteMock1,
                     $urlRewriteMock2,
-                    $urlRewriteMock2
-                ],
-                [
-                    $urlRewriteMock1,
-                    $requestPathForMock2 . '_' . $storeIdForMock2 => $urlRewriteMock2
-                ],
-                2
-            ],
-            [
-                [
-                    $urlRewriteMock1,
                     $urlRewriteMock2,
-                    $urlRewriteMock3
                 ],
                 [
                     $urlRewriteMock1,
                     $requestPathForMock2 . '_' . $storeIdForMock2 => $urlRewriteMock2,
-                    $requestPathForMock3 . '_' . $storeIdForMock3 => $urlRewriteMock3
                 ],
-                3
+                2,
+            ],
+            [
+                [
+                    $urlRewriteMock1,
+                    $urlRewriteMock2,
+                    $urlRewriteMock3,
+                ],
+                [
+                    $urlRewriteMock1,
+                    $requestPathForMock2 . '_' . $storeIdForMock2 => $urlRewriteMock2,
+                    $requestPathForMock3 . '_' . $storeIdForMock3 => $urlRewriteMock3,
+                ],
+                3,
             ],
         ];
     }

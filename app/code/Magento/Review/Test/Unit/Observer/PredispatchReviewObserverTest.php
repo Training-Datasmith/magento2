@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Review\Test\Unit\Observer;
 
@@ -12,8 +13,8 @@ use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Review\Observer\PredispatchReviewObserver;
 use Magento\Store\Model\ScopeInterface;
@@ -71,7 +72,7 @@ class PredispatchReviewObserverTest extends TestCase
             PredispatchReviewObserver::class,
             [
                 'scopeConfig' => $this->configMock,
-                'url' => $this->urlMock
+                'url' => $this->urlMock,
             ]
         );
     }
@@ -81,7 +82,7 @@ class PredispatchReviewObserverTest extends TestCase
      *
      * @return void
      */
-    public function testReviewEnabled() : void
+    public function testReviewEnabled(): void
     {
         $observerMock = $this->createPartialMockWithReflection(
             Observer::class,
@@ -108,7 +109,7 @@ class PredispatchReviewObserverTest extends TestCase
      *
      * @return void
      */
-    public function testReviewDisabled() : void
+    public function testReviewDisabled(): void
     {
         $observerMock = $this->createPartialMockWithReflection(
             Observer::class,

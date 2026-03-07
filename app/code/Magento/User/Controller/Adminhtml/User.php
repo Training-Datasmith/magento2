@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Controller\Adminhtml;
 
 abstract class User extends \Magento\Backend\App\AbstractAction
@@ -12,7 +15,7 @@ abstract class User extends \Magento\Backend\App\AbstractAction
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_User::acl_users';
+    public const ADMIN_RESOURCE = 'Magento_User::acl_users';
 
     /**
      * Core registry

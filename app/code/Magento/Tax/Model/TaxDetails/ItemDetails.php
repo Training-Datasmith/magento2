@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxDetails;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,19 +19,19 @@ class ItemDetails extends AbstractExtensibleModel implements TaxDetailsItemInter
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_CODE                 = 'code';
-    const KEY_TYPE                 = 'type';
-    const KEY_TAX_PERCENT          = 'tax_percent';
-    const KEY_PRICE                = 'price';
-    const KEY_PRICE_INCL_TAX       = 'price_incl_tax';
-    const KEY_ROW_TOTAL            = 'row_total';
-    const KEY_ROW_TOTAL_INCL_TAX   = 'row_total_incl_tax';
-    const KEY_ROW_TAX              = 'row_tax';
-    const KEY_TAXABLE_AMOUNT       = 'taxable_amount';
-    const KEY_DISCOUNT_AMOUNT      = 'discount_amount';
-    const KEY_APPLIED_TAXES        = 'applied_taxes';
-    const KEY_ASSOCIATED_ITEM_CODE = 'associated_item_code';
-    const KEY_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const KEY_CODE                 = 'code';
+    public const KEY_TYPE                 = 'type';
+    public const KEY_TAX_PERCENT          = 'tax_percent';
+    public const KEY_PRICE                = 'price';
+    public const KEY_PRICE_INCL_TAX       = 'price_incl_tax';
+    public const KEY_ROW_TOTAL            = 'row_total';
+    public const KEY_ROW_TOTAL_INCL_TAX   = 'row_total_incl_tax';
+    public const KEY_ROW_TAX              = 'row_tax';
+    public const KEY_TAXABLE_AMOUNT       = 'taxable_amount';
+    public const KEY_DISCOUNT_AMOUNT      = 'discount_amount';
+    public const KEY_APPLIED_TAXES        = 'applied_taxes';
+    public const KEY_ASSOCIATED_ITEM_CODE = 'associated_item_code';
+    public const KEY_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,8 +10,6 @@ declare(strict_types=1);
 namespace Magento\Analytics\Cron;
 
 use Magento\Cron\Model\Config as CronConfig;
-use Magento\Framework\App\Config\ReinitableConfigInterface;
-use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 

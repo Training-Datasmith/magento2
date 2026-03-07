@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Block\Advanced;
 
 use Magento\Catalog\Model\Layer\Resolver as LayerResolver;
 use Magento\CatalogSearch\Model\Advanced;
 use Magento\CatalogSearch\Model\ResourceModel\Advanced\Collection;
 use Magento\Framework\UrlFactory;
-use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -75,7 +77,7 @@ class Result extends Template
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             )->addCrumb(
                 'search',

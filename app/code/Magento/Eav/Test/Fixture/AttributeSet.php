@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Eav\Api\AttributeSetManagementInterface;
 use Magento\Eav\Api\AttributeSetRepositoryInterface;
 use Magento\Framework\DataObject;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
-use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
+use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 class AttributeSet implements RevertibleDataFixtureInterface
 {
@@ -63,7 +64,7 @@ class AttributeSet implements RevertibleDataFixtureInterface
         $service = $this->serviceFactory->create(AttributeSetRepositoryInterface::class, 'deleteById');
         $service->execute(
             [
-                'attributeSetId' => $data->getAttributeSetId()
+                'attributeSetId' => $data->getAttributeSetId(),
             ]
         );
     }

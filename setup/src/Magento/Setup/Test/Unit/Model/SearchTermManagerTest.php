@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -28,13 +29,13 @@ class SearchTermManagerTest extends TestCase
     private $searchTermConfiguration = [
         [
             'term' => 'x-wing',
-            'count' => '33'
+            'count' => '33',
         ], [
             'term' => 'tie-fighter',
-            'count' => '100'
+            'count' => '100',
         ], [
             'term' => 'n-1 starfighter',
-            'count' => '42'
+            'count' => '42',
         ],
     ];
 
@@ -43,14 +44,14 @@ class SearchTermManagerTest extends TestCase
      */
     private $searchTermsUsage = [
         'x-wing' => [
-            'used' => 0
+            'used' => 0,
         ],
         'tie-fighter' => [
-            'used' => 0
+            'used' => 0,
         ],
         'n-1 starfighter' => [
-            'used' => 0
-        ]
+            'used' => 0,
+        ],
     ];
 
     protected function setUp(): void
@@ -63,7 +64,7 @@ class SearchTermManagerTest extends TestCase
 
     public function testSearchTermApplied()
     {
-        for ($productIndex=1; $productIndex<=$this->totalProductsCount; $productIndex++) {
+        for ($productIndex = 1; $productIndex <= $this->totalProductsCount; $productIndex++) {
             $description = 'Fleet: ';
             $this->searchTermManager->applySearchTermsToDescription($description, $productIndex);
 

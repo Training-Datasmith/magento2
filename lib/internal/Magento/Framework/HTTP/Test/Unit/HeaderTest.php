@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\HTTP\Header;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class HeaderTest extends TestCase
 {
@@ -125,7 +126,7 @@ class HeaderTest extends TestCase
                 'method' => 'getHttpReferer',
                 'clean' => false,
                 'expectedValue' => 'value',
-            ]
+            ],
         ];
     }
 
@@ -157,7 +158,7 @@ class HeaderTest extends TestCase
     {
         return [
             'getRequestUri clean true' => ['clean' => true, 'expectedValue' => 'converted value'],
-            'getRequestUri clean false' => ['clean' => false, 'expectedValue' => 'value']
+            'getRequestUri clean false' => ['clean' => false, 'expectedValue' => 'value'],
         ];
     }
 

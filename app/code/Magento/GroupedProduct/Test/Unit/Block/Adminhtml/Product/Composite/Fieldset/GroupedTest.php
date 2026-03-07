@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,17 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Block\Adminhtml\Product\Composite\Fieldset;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\Pricing\Helper\Data;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GroupedProduct\Block\Adminhtml\Product\Composite\Fieldset\Grouped;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -66,7 +66,7 @@ class GroupedTest extends TestCase
                 'registry' => $this->registryMock,
                 'storeManager' => $this->storeManagerMock,
                 'pricingHelper' => $this->pricingHelperMock,
-                'data' => ['product' => $this->productMock]
+                'data' => ['product' => $this->productMock],
             ]
         );
     }
@@ -227,7 +227,7 @@ class GroupedTest extends TestCase
     {
         return [
             'case1' => ['options' => false, 'expectedResult' => true],
-            'case2' => ['options' => ['option'], 'expectedResult' => false]
+            'case2' => ['options' => ['option'], 'expectedResult' => false],
         ];
     }
 

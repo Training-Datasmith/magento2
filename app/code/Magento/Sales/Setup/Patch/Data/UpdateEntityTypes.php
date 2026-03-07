@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +9,9 @@
 namespace Magento\Sales\Setup\Patch\Data;
 
 use Magento\Eav\Model\Config;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Sales\Setup\SalesSetupFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Sales\Setup\SalesSetupFactory;
 
 class UpdateEntityTypes implements DataPatchInterface, PatchVersionInterface
 {
@@ -59,7 +60,7 @@ class UpdateEntityTypes implements DataPatchInterface, PatchVersionInterface
     public static function getDependencies()
     {
         return [
-            InstallOrderStatusesAndInitialSalesConfig::class
+            InstallOrderStatusesAndInitialSalesConfig::class,
         ];
     }
 

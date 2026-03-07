@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Button;
 
 use Magento\Ui\Component\Control\Container;
@@ -32,12 +35,12 @@ class Save extends Generic
                                 'targetName' => 'product_form.product_form',
                                 'actionName' => 'save',
                                 'params' => [
-                                    false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),
@@ -64,13 +67,13 @@ class Save extends Generic
                                 'params' => [
                                     true,
                                     [
-                                        'back' => 'new'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'back' => 'new',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
@@ -88,13 +91,13 @@ class Save extends Generic
                                     'params' => [
                                         true,
                                         [
-                                            'back' => 'duplicate'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'back' => 'duplicate',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ];
         }
@@ -110,12 +113,12 @@ class Save extends Generic
                                 'targetName' => 'product_form.product_form',
                                 'actionName' => 'save',
                                 'params' => [
-                                    true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 

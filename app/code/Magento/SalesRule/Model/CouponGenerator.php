@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model;
 
 /**
@@ -26,7 +29,7 @@ class CouponGenerator
      * @var array
      */
     private $keyMap = [
-        'quantity' => 'qty'
+        'quantity' => 'qty',
     ];
 
     /**

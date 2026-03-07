@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Form;
 
 /**
@@ -45,8 +48,8 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
                 'data' => [
                     \Magento\Backend\Block\Widget\Container::PARAM_CONTROLLER => 'user',
                     \Magento\Backend\Block\Widget\Form\Container::PARAM_MODE => 'edit',
-                    \Magento\Backend\Block\Widget\Form\Container::PARAM_BLOCK_GROUP => 'Magento_User'
-                ]
+                    \Magento\Backend\Block\Widget\Form\Container::PARAM_BLOCK_GROUP => 'Magento_User',
+                ],
             ]
         );
         $this->assertInstanceOf(\Magento\User\Block\User\Edit\Form::class, $block->getChildBlock('form'));

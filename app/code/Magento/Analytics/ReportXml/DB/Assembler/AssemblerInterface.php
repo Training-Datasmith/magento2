@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ interface AssemblerInterface
     /**
      * Assemble SQL statement
      *
-     * @param SelectBuilder $selectBuilder
      * @param array $queryConfig
      * @return SelectBuilder
      */

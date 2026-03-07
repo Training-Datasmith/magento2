@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class InputtypeTest extends TestCase
             Inputtype::class,
             [
                 'coreRegistry' => $this->registry,
-                'optionsArray' => $this->getInputTypeSet()
+                'optionsArray' => $this->getInputTypeSet(),
             ]
         );
     }
@@ -42,7 +43,7 @@ class InputtypeTest extends TestCase
     {
         $extraValues = [
             ['value' => 'price', 'label' => 'Price'],
-            ['value' => 'media_image', 'label' => 'Media Image']
+            ['value' => 'media_image', 'label' => 'Media Image'],
         ];
         $inputTypesSet = $this->getInputTypeSet();
         $inputTypesSet = array_merge($inputTypesSet, $extraValues);
@@ -64,7 +65,7 @@ class InputtypeTest extends TestCase
             ['value' => 'date', 'label' => 'Date'],
             ['value' => 'boolean', 'label' => 'Yes/No'],
             ['value' => 'multiselect', 'label' => 'Multiple Select'],
-            ['value' => 'select', 'label' => 'Dropdown']
+            ['value' => 'select', 'label' => 'Dropdown'],
         ];
     }
 }

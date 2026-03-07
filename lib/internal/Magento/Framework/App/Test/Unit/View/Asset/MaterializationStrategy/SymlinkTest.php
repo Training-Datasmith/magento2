@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class SymlinkTest extends TestCase
     {
         return [
             ['path/to/file', true],
-            [DirectoryList::TMP_MATERIALIZATION_DIR . '/path/to/file', false]
+            [DirectoryList::TMP_MATERIALIZATION_DIR . '/path/to/file', false],
         ];
     }
 }

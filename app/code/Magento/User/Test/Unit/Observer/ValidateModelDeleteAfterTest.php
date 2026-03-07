@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\User\Test\Unit\Observer;
 
 use Magento\Framework\Event;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
-use Magento\User\Observer\ValidateModelDeleteAfter;
 use Magento\User\Model\User;
+use Magento\User\Observer\ValidateModelDeleteAfter;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class ValidateModelDeleteAfterTest extends TestCase
 {

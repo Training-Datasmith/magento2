@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Category;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Backend\Model\View\Result\RedirectFactory;
@@ -30,6 +30,7 @@ use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -96,20 +97,20 @@ class SaveTest extends TestCase
         $objects = [
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 Registry::class,
-                $this->createMock(Registry::class)
+                $this->createMock(Registry::class),
             ],
             [
                 Config::class,
-                $this->createMock(Config::class)
+                $this->createMock(Config::class),
             ],
             [
                 Session::class,
-                $this->createMock(Session::class)
-            ]
+                $this->createMock(Session::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -135,7 +136,7 @@ class SaveTest extends TestCase
                 'messageManager' => $this->messageManagerMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
                 'layoutFactory' => $this->layoutFactoryMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
     }
@@ -199,7 +200,7 @@ class SaveTest extends TestCase
                 'toArray',
                 'setAttributeSetId',
                 'getProductsReadonly',
-                'setPostedProducts'
+                'setPostedProducts',
             ]
         );
         /**
@@ -219,7 +220,7 @@ class SaveTest extends TestCase
                 'getId',
                 'setAttributeSetId',
                 'getProductsReadonly',
-                'setPostedProducts'
+                'setPostedProducts',
             ]
         );
         /**
@@ -446,13 +447,13 @@ class SaveTest extends TestCase
             [
                 'categoryId' => false,
                 'storeId' => 7,
-                'parentId' => 123
+                'parentId' => 123,
             ],
             [
                 'categoryId' => false,
                 'storeId' => 7,
-                'parentId' => null
-            ]
+                'parentId' => null,
+            ],
         ];
     }
 
@@ -465,14 +466,14 @@ class SaveTest extends TestCase
             'image' => 'path.jpg',
             'name' => 'category',
             'description' => '',
-            'parent' => 0
+            'parent' => 0,
         ];
         $expectedSameAsDataWithImage = $dataWithImage;
 
         $dataWithoutImage = [
             'name' => 'category',
             'description' => '',
-            'parent' => 0
+            'parent' => 0,
         ];
         $expectedIfDataWithoutImage = $dataWithoutImage;
         $expectedIfDataWithoutImage['image'] = '';
@@ -500,15 +501,15 @@ class SaveTest extends TestCase
         $collection = new DataObject(['attribute_collection' => [
             new DataObject([
                 'attribute_code' => 'image',
-                'backend' => $imageBackendModel
+                'backend' => $imageBackendModel,
             ]),
             new DataObject([
                 'attribute_code' => 'name',
-                'backend' => new DataObject()
+                'backend' => new DataObject(),
             ]),
             new DataObject([
                 'attribute_code' => 'level',
-                'backend' => new DataObject()
+                'backend' => new DataObject(),
             ]),
         ]]);
 
@@ -518,7 +519,7 @@ class SaveTest extends TestCase
             ->willReturn($collection);
 
         $model = $this->objectManager->getObject(Save::class, [
-            'eavConfig' => $eavConfig
+            'eavConfig' => $eavConfig,
         ]);
 
         $result = $model->imagePreprocessing($data);

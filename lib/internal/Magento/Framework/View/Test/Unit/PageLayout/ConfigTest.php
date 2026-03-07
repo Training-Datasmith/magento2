@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class ConfigTest extends TestCase
                     'layouts_one.xml' => file_get_contents(__DIR__ . '/_files/layouts_one.xml'),
                     'layouts_two.xml' => file_get_contents(__DIR__ . '/_files/layouts_two.xml'),
                 ],
-                'domFactory' => $domFactoryMock
+                'domFactory' => $domFactoryMock,
             ]
         );
     }

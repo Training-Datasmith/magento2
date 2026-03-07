@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -111,14 +112,14 @@ class OperationsExecutorTest extends TestCase
             [
                 'operations' => [
                     'create_table' => $this->createTableOperation,
-                    'drop_element' => $this->dropElement
+                    'drop_element' => $this->dropElement,
                 ],
                 'dataSaviorsCollection' => [],
                 'sharding' => $this->shardingMock,
                 'resourceConnection' => $this->resourceConnectionMock,
                 'statementFactory' => $this->statementFactoryMock,
                 'dbSchemaWriter' => $this->dbSchemaWriterMock,
-                'statementAggregatorFactory' => $this->statementAggregatorFactoryMock
+                'statementAggregatorFactory' => $this->statementAggregatorFactoryMock,
             ]
         );
     }
@@ -178,8 +179,8 @@ class OperationsExecutorTest extends TestCase
         $elementHistory = new ElementHistory($this->prepareTable());
         $tablesHistories = [
             'table' => [
-                'create_table' => [$elementHistory]
-            ]
+                'create_table' => [$elementHistory],
+            ],
         ];
         $this->createTableOperation->expects(self::once())
             ->method('doOperation')

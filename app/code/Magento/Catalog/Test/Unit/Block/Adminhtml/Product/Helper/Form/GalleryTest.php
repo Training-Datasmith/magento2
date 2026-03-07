@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class GalleryTest extends TestCase
                 'registry' => $this->registryMock,
                 'form' => $this->formMock,
                 'dataPersistor' => $this->dataPersistorMock,
-                'defaultValueProcessor' => $this->defaultValueProcessorMock
+                'defaultValueProcessor' => $this->defaultValueProcessorMock,
             ]
         );
     }
@@ -87,8 +88,8 @@ class GalleryTest extends TestCase
                     'value_id' => '2',
                     'file' => 'image_2.jpg',
                     'media_type' => 'image',
-                ]
-            ]
+                ],
+            ],
         ];
         $this->defaultValueProcessorMock->expects($this->once())
             ->method('process')
@@ -152,8 +153,8 @@ class GalleryTest extends TestCase
                     ],
                 ],
                 'small' => 'testSmallImage',
-                'thumbnail' => 'testThumbnail'
-            ]
+                'thumbnail' => 'testThumbnail',
+            ],
         ];
         $this->dataPersistorMock->expects($this->once())
             ->method('get')

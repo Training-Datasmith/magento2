@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Product;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\Store;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\Image;
 use Magento\Catalog\Block\Product\ImageFactory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Image\ParamsBuilder;
 use Magento\Catalog\Model\View\Asset\Image as ViewAssetImage;
 use Magento\Catalog\Model\View\Asset\ImageFactory as ViewAssetImageFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Config\View;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\View\ConfigInterface;
+use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,7 @@ class ImageFactoryTest extends TestCase
                 'presentationConfig' => $configInterface,
                 'viewAssetImageFactory' => $this->viewAssetImageFactory,
                 'imageParamsBuilder' => $this->paramsBuilder,
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
     }
@@ -111,7 +112,7 @@ class ImageFactoryTest extends TestCase
         return [
             self::getTestDataWithoutAttributes(),
             self::getTestDataWithAttributes(),
-            self::getTestDataWithoutDimensions()
+            self::getTestDataWithoutDimensions(),
         ];
     }
 
@@ -130,7 +131,7 @@ class ImageFactoryTest extends TestCase
                     'frame' => false,
                     'transparency' => false,
                     'background' => '255,255,255',
-                    'type' => 'image_type' //thumbnail,small_image,image,swatch_image,swatch_thumb
+                    'type' => 'image_type', //thumbnail,small_image,image,swatch_image,swatch_thumb
                 ],
                 'imageParamsBuilder' => [
                     'image_width' => 100,
@@ -142,12 +143,12 @@ class ImageFactoryTest extends TestCase
                     'background' => '255,255,255',
                     'image_type' => 'image_type', //thumbnail,small_image,image,swatch_image,swatch_thumb
                     'quality' => 80, // <===
-                    'angle' => null // <===
+                    'angle' => null, // <===
                 ],
                 'product' => [
                     'image_type_label' => 'test_image_label',
                     'name' => 'test_product_name',
-                    'image_type' => 'test_image_path'
+                    'image_type' => 'test_image_path',
                 ],
                 'url' => 'test_url_1',
                 'frame' => 'test_frame',
@@ -163,7 +164,7 @@ class ImageFactoryTest extends TestCase
                     'ratio' => 1,
                     'custom_attributes' => [],
                     'product_id' => null,
-                    'class' => 'product-image-photo'
+                    'class' => 'product-image-photo',
                 ],
             ],
         ];
@@ -184,7 +185,7 @@ class ImageFactoryTest extends TestCase
                     'frame' => true, // <===
                     'transparency' => false,
                     'background' => '255,255,255',
-                    'type' => 'image_type' //thumbnail,small_image,image,swatch_image,swatch_thumb
+                    'type' => 'image_type', //thumbnail,small_image,image,swatch_image,swatch_thumb
                 ],
                 'imageParamsBuilder' => [
                     'image_width' => 100,
@@ -196,19 +197,19 @@ class ImageFactoryTest extends TestCase
                     'background' => '255,255,255',
                     'image_type' => 'image_type', //thumbnail,small_image,image,swatch_image,swatch_thumb
                     'quality' => 80,
-                    'angle' => null
+                    'angle' => null,
                 ],
                 'product' => [
                     'image_type_label' => null, // <==
                     'name' => 'test_product_name',
-                    'image_type' => 'test_image_path'
+                    'image_type' => 'test_image_path',
                 ],
                 'url' => 'test_url_2',
                 'frame' => 'test_frame',
                 'custom_attributes' => [
                     'name_1' => 'value_1',
                     'name_2' => 'value_2',
-                    'class' => 'my-class'
+                    'class' => 'my-class',
                 ],
             ],
             'expected' => [
@@ -224,7 +225,7 @@ class ImageFactoryTest extends TestCase
                         'name_2' => 'value_2',
                     ],
                     'product_id' => null,
-                    'class' => 'my-class'
+                    'class' => 'my-class',
                 ],
             ],
         ];

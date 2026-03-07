@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Framework\DataObject;
@@ -18,28 +21,28 @@ interface MethodInterface
     /**
      * Different payment actions.
      */
-    const ACTION_ORDER = 'order';
+    public const ACTION_ORDER = 'order';
 
-    const ACTION_AUTHORIZE = 'authorize';
+    public const ACTION_AUTHORIZE = 'authorize';
 
-    const ACTION_AUTHORIZE_CAPTURE = 'authorize_capture';
+    public const ACTION_AUTHORIZE_CAPTURE = 'authorize_capture';
 
     /**
      * Different payment method checks.
      */
-    const CHECK_USE_FOR_COUNTRY = 'country';
+    public const CHECK_USE_FOR_COUNTRY = 'country';
 
-    const CHECK_USE_FOR_CURRENCY = 'currency';
+    public const CHECK_USE_FOR_CURRENCY = 'currency';
 
-    const CHECK_USE_CHECKOUT = 'checkout';
+    public const CHECK_USE_CHECKOUT = 'checkout';
 
-    const CHECK_USE_INTERNAL = 'internal';
+    public const CHECK_USE_INTERNAL = 'internal';
 
-    const CHECK_ORDER_TOTAL_MIN_MAX = 'total';
+    public const CHECK_ORDER_TOTAL_MIN_MAX = 'total';
 
-    const CHECK_ZERO_TOTAL = 'zero_total';
+    public const CHECK_ZERO_TOTAL = 'zero_total';
 
-    const GROUP_OFFLINE = 'offline';
+    public const GROUP_OFFLINE = 'offline';
 
     /**
      * Retrieve payment method code

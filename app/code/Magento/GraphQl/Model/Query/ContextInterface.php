@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Model\Query;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Resolver\ContextInterface as BaseContextInterface;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
 
 /**
  * Resolver Context is used as a shared data extensible object in all resolvers that implement @see ResolverInterface.

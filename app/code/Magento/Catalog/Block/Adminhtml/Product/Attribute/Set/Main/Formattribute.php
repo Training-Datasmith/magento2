@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -36,7 +38,7 @@ class Formattribute extends \Magento\Backend\Block\Widget\Form\Generic
                     \Magento\Backend\Block\Widget\Button::class
                 )->setData(
                     ['label' => __('Add Attribute'), 'onclick' => 'this.form.submit();', 'class' => 'add']
-                )->toHtml()
+                )->toHtml(),
             ]
         );
 

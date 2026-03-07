@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class CategoriesUrlRewriteGeneratorTest extends TestCase
             CategoriesUrlRewriteGenerator::class,
             [
                 'productUrlPathGenerator' => $this->productUrlPathGenerator,
-                'urlRewriteFactory' => $this->urlRewriteFactory
+                'urlRewriteFactory' => $this->urlRewriteFactory,
             ]
         );
     }

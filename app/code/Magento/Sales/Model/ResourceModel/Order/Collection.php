@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order;
 
 use Magento\Sales\Api\Data\OrderSearchResultInterface;
@@ -178,7 +181,7 @@ class Collection extends AbstractCollection implements OrderSearchResultInterfac
                 $billingAliasName . '.firstname',
                 $billingAliasName . '.lastname',
                 $billingAliasName . '.telephone',
-                $billingAliasName . '.postcode'
+                $billingAliasName . '.postcode',
             ]
         )->joinLeft(
             [$shippingAliasName => $joinTable],
@@ -188,7 +191,7 @@ class Collection extends AbstractCollection implements OrderSearchResultInterfac
                 $shippingAliasName . '.firstname',
                 $shippingAliasName . '.lastname',
                 $shippingAliasName . '.telephone',
-                $shippingAliasName . '.postcode'
+                $shippingAliasName . '.postcode',
             ]
         );
         $this->_coreResourceHelper->prepareColumnsList($this->getSelect());

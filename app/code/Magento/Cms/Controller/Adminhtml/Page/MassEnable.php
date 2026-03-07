@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Page;
 
+use Magento\Backend\App\Action\Context;
+use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
-use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
 
 /**
  * Class MassEnable
@@ -21,7 +24,7 @@ class MassEnable extends \Magento\Backend\App\Action implements HttpPostActionIn
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::save';
+    public const ADMIN_RESOURCE = 'Magento_Cms::save';
 
     /**
      * @var Filter

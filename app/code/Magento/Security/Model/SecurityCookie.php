@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model;
 
 use Magento\Framework\Stdlib\Cookie\CookieReaderInterface;
@@ -19,7 +22,7 @@ class SecurityCookie
     /**
      * Cookie name
      */
-    const LOGOUT_REASON_CODE_COOKIE_NAME = 'loggedOutReasonCode';
+    public const LOGOUT_REASON_CODE_COOKIE_NAME = 'loggedOutReasonCode';
 
     /**
      * @var \Magento\Framework\Stdlib\Cookie\PhpCookieManager

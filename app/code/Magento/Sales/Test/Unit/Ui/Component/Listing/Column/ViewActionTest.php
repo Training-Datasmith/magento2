@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,13 +13,12 @@ use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Sales\Ui\Component\Listing\Column\ViewAction;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ViewActionTest extends TestCase
 {
-
     /**
      * @var ViewAction
      */
@@ -55,31 +55,31 @@ class ViewActionTest extends TestCase
         $expectedUrlPath,
         $expectedUrlParam
     ) {
-         $contextMock = $this->getMockBuilder(ContextInterface::class)
-            ->getMock();
-         $processor = $this->createMock(Processor::class);
-         $contextMock->expects($this->never())->method('getProcessor')->willReturn($processor);
-         $this->model = $this->objectManager->getObject(
-             ViewAction::class,
-             [
-                'urlBuilder' => $this->urlBuilder,
-                'data' => $data,
-                'context' => $contextMock,
-             ]
-         );
-
-         $this->urlBuilder->expects($this->once())
-            ->method('getUrl')
-            ->with($expectedUrlPath, $expectedUrlParam)
-            ->willReturn('url');
-
-         $dataSource = [
-            'data' => [
-                'items' => $dataSourceItems
+        $contextMock = $this->getMockBuilder(ContextInterface::class)
+           ->getMock();
+        $processor = $this->createMock(Processor::class);
+        $contextMock->expects($this->never())->method('getProcessor')->willReturn($processor);
+        $this->model = $this->objectManager->getObject(
+            ViewAction::class,
+            [
+               'urlBuilder' => $this->urlBuilder,
+               'data' => $data,
+               'context' => $contextMock,
             ]
-         ];
-         $dataSource = $this->model->prepareDataSource($dataSource);
-         $this->assertEquals($expectedDataSourceItems, $dataSource['data']['items']);
+        );
+
+        $this->urlBuilder->expects($this->once())
+           ->method('getUrl')
+           ->with($expectedUrlPath, $expectedUrlParam)
+           ->willReturn('url');
+
+        $dataSource = [
+           'data' => [
+               'items' => $dataSourceItems,
+           ],
+        ];
+        $dataSource = $this->model->prepareDataSource($dataSource);
+        $this->assertEquals($expectedDataSourceItems, $dataSource['data']['items']);
     }
 
     /**
@@ -94,15 +94,15 @@ class ViewActionTest extends TestCase
                 [['itemName' => '', 'entity_id' => 1]],
                 [['itemName' => ['view' => ['href' => 'url', 'label' => __('View')]], 'entity_id' => 1]],
                 '#',
-                ['entity_id' => 1]
+                ['entity_id' => 1],
             ],
             [
                 ['name' => 'itemName', 'config' => ['viewUrlPath' => 'url_path', 'urlEntityParamName' => 'order_id']],
                 [['itemName' => '', 'entity_id' => 2]],
                 [['itemName' => ['view' => ['href' => 'url', 'label' => __('View')]], 'entity_id' => 2]],
                 'url_path',
-                ['order_id' => 2]
-            ]
+                ['order_id' => 2],
+            ],
         ];
     }
 }

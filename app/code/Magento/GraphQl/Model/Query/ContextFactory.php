@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\GraphQl\Model\Query;
 
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Api\ExtensionAttributesFactory;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\ObjectManagerInterface;

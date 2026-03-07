@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,14 +13,14 @@ use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Serialize\Serializer\Base64Json;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\EntitySpecificHandlesList;
 use Magento\Framework\View\Layout;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Observer\ProcessLayoutRenderElement;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ProcessLayoutRenderElementTest extends TestCase
@@ -258,7 +259,7 @@ class ProcessLayoutRenderElementTest extends TestCase
                 null,
                 '<!-- BLOCK testBlockName -->test output html<!-- /BLOCK testBlockName -->',
             ],
-            'full_page type is disabled, Varnish enabled' => [false, true, false, null, 'test output html']
+            'full_page type is disabled, Varnish enabled' => [false, true, false, null, 'test output html'],
         ];
     }
 }

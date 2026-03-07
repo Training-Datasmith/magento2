@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class BackendModelFactory extends ValueFactory
                 'path' => $data['config']['path'],
                 'scope' => $data['scope'],
                 'scope_id' => $data['scopeId'],
-                'field_config' => $data['config']
+                'field_config' => $data['config'],
             ]
         );
 

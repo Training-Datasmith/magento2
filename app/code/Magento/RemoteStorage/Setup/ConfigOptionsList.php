@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\DriverPool;
-use Magento\RemoteStorage\Driver\DriverFactoryPool;
-use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 use Magento\Framework\Setup\ConfigOptionsListInterface;
 use Magento\Framework\Setup\Option\TextConfigOption;
+use Magento\RemoteStorage\Driver\DriverFactoryPool;
+use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -52,7 +53,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
         self::OPTION_REMOTE_STORAGE_REGION => self::CONFIG_PATH__REMOTE_STORAGE_REGION,
         self::OPTION_REMOTE_STORAGE_ACCESS_KEY => self::CONFIG_PATH__REMOTE_STORAGE_ACCESS_KEY,
         self::OPTION_REMOTE_STORAGE_SECRET_KEY => self::CONFIG_PATH__REMOTE_STORAGE_SECRET_KEY,
-        self::OPTION_REMOTE_STORAGE_PATH_STYLE => self::CONFIG_PATH__REMOTE_STORAGE_PATH_STYLE
+        self::OPTION_REMOTE_STORAGE_PATH_STYLE => self::CONFIG_PATH__REMOTE_STORAGE_PATH_STYLE,
     ];
 
     /**
@@ -133,7 +134,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
                 self::CONFIG_PATH__REMOTE_STORAGE_PATH_STYLE,
                 'Remote storage path style',
                 '0'
-            )
+            ),
         ];
     }
 

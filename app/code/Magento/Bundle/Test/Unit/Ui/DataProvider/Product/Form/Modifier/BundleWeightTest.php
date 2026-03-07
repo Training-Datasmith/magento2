@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,72 +40,72 @@ class BundleWeightTest extends AbstractModifierTestCase
             'product-details' => [
                 'children' => [
                     ProductAttributeInterface::CODE_WEIGHT => [],
-                    ProductAttributeInterface::CODE_HAS_WEIGHT => []
-                ]
+                    ProductAttributeInterface::CODE_HAS_WEIGHT => [],
+                ],
             ],
             'bundle-items' => [
                 'children' => [
-                    BundleWeight::CODE_WEIGHT_TYPE => []
-                ]
-            ]
+                    BundleWeight::CODE_WEIGHT_TYPE => [],
+                ],
+            ],
         ];
         $weightTypeParams = [
             'valueMap' => [
                 'false' => '1',
-                'true' => '0'
+                'true' => '0',
             ],
             'validation' => [
-                'required-entry' => false
-            ]
+                'required-entry' => false,
+            ],
         ];
         $weightParams = [
             'imports' => [
                 'disabled' => 'ns = ${ $.ns }, index = ' . BundleWeight::CODE_WEIGHT_TYPE . ':checked',
                 '__disableTmpl' => ['disabled' => false],
-            ]
+            ],
         ];
         $hasWeightParams = [
             'disabled' => true,
-            'visible' => false
+            'visible' => false,
         ];
         $weightTypeMeta = [
             'product-details' => [
                 'children' => [
                     ProductAttributeInterface::CODE_WEIGHT => [],
-                    ProductAttributeInterface::CODE_HAS_WEIGHT => []
-                ]
+                    ProductAttributeInterface::CODE_HAS_WEIGHT => [],
+                ],
             ],
             'bundle-items' => [
                 'children' => [
-                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams
-                ]
-            ]
+                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams,
+                ],
+            ],
         ];
         $hasWeightMeta = [
             'product-details' => [
                 'children' => [
                     ProductAttributeInterface::CODE_WEIGHT => [],
-                    ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeightParams
-                ]
+                    ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeightParams,
+                ],
             ],
             'bundle-items' => [
                 'children' => [
-                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams
-                ]
-            ]
+                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams,
+                ],
+            ],
         ];
         $weightMeta = [
             'product-details' => [
                 'children' => [
                     ProductAttributeInterface::CODE_WEIGHT => $weightParams,
-                    ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeightParams
-                ]
+                    ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeightParams,
+                ],
             ],
             'bundle-items' => [
                 'children' => [
-                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams
-                ]
-            ]
+                    BundleWeight::CODE_WEIGHT_TYPE => $weightTypeParams,
+                ],
+            ],
         ];
 
         $this->arrayManagerMock->expects(static::any())
@@ -117,7 +118,7 @@ class BundleWeightTest extends AbstractModifierTestCase
                         null,
                         'children',
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $weightTypePath
+                        $weightTypePath,
                     ],
                     [
                         ProductAttributeInterface::CODE_HAS_WEIGHT,
@@ -125,7 +126,7 @@ class BundleWeightTest extends AbstractModifierTestCase
                         null,
                         'children',
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $hasWeightPath
+                        $hasWeightPath,
                     ],
                     [
                         ProductAttributeInterface::CODE_WEIGHT,
@@ -133,8 +134,8 @@ class BundleWeightTest extends AbstractModifierTestCase
                         null,
                         'children',
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $weightPath
-                    ]
+                        $weightPath,
+                    ],
                 ]
             );
         $this->arrayManagerMock->expects($this->exactly(3))
@@ -146,22 +147,22 @@ class BundleWeightTest extends AbstractModifierTestCase
                         $sourceMeta,
                         $weightTypeParams,
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $weightTypeMeta
+                        $weightTypeMeta,
                     ],
                     [
                         $hasWeightConfigPath,
                         $weightTypeMeta,
                         $hasWeightParams,
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $hasWeightMeta
+                        $hasWeightMeta,
                     ],
                     [
                         $weightConfigPath,
                         $hasWeightMeta,
                         $weightParams,
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $weightMeta
-                    ]
+                        $weightMeta,
+                    ],
                 ]
             );
 

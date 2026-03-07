@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,7 +14,9 @@ use Magento\Framework\App\Http\Context;
 use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\Encryption\UrlCoder;
 use Magento\Framework\Interception\InterceptorInterface;
+use Magento\Store\Api\Data\StoreInterfaceFactory;
 use Magento\Store\Api\StoreResolverInterface;
+use Magento\Store\Model\ResourceModel\Store as StoreResource;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\StoreSwitcher\ContextInterface;
@@ -24,8 +27,6 @@ use Magento\Store\Model\StoreSwitcher\RedirectDataPreprocessorInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Store\Api\Data\StoreInterfaceFactory;
-use Magento\Store\Model\ResourceModel\Store as StoreResource;
 
 /**
  * Test for store switch controller.

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml\Grid\Filter;
 
 /**
@@ -21,7 +24,7 @@ class Type extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Select
             ['label' => '', 'value' => ''],
             ['label' => __('Administrator'), 'value' => 1],
             ['label' => __('Customer'), 'value' => 2],
-            ['label' => __('Guest'), 'value' => 3]
+            ['label' => __('Guest'), 'value' => 3],
         ];
     }
 

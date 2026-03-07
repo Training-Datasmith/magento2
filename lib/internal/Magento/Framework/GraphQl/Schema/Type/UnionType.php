@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,5 +13,4 @@ namespace Magento\Framework\GraphQl\Schema\Type;
  */
 class UnionType extends \GraphQL\Type\Definition\UnionType implements OutputTypeInterface
 {
-
 }

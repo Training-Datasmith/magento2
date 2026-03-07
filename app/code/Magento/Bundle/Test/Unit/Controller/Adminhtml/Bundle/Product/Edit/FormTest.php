@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Bundle\Test\Unit\Controller\Adminhtml\Bundle\Product\Edit;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle;
 use Magento\Bundle\Controller\Adminhtml\Bundle\Product\Edit\Form;
 use Magento\Catalog\Controller\Adminhtml\Product\Builder;
 use Magento\Catalog\Controller\Adminhtml\Product\Initialization\Helper;
@@ -96,7 +96,7 @@ class FormTest extends TestCase
             [
                 'context' => $this->context,
                 'productBuilder' => $this->productBuilder,
-                'initializationHelper' => $this->initializationHelper
+                'initializationHelper' => $this->initializationHelper,
             ]
         );
     }

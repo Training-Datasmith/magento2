@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe.
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\State;
+use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
 use Magento\Deploy\Package\Package;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Asset\AssetInterface;
-use Magento\Framework\View\Asset\LocalInterface;
 use Magento\Framework\View\Asset\GroupedCollection;
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Magento\Framework\App\Request\Http;
-use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
+use Magento\Framework\View\Asset\LocalInterface;
 
 /**
  * Plugin to add integrity to assets on page load.

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -36,21 +38,21 @@ $customOptions = [
                 'option_type_id' => null,
                 'title' => 'Option 1 & Value 1"',
                 'price' => '1.00',
-                'price_type' => 'fixed'
+                'price_type' => 'fixed',
             ],
             2 => [
                 'option_type_id' => null,
                 'title' => 'Option 1 & Value 2"',
                 'price' => '2.00',
-                'price_type' => 'fixed'
+                'price_type' => 'fixed',
             ],
             3 => [
                 'option_type_id' => null,
                 'title' => 'Option 1 & Value 3"',
                 'price' => '3.00',
-                'price_type' => 'fixed'
-            ]
-        ]
+                'price_type' => 'fixed',
+            ],
+        ],
     ],
     [
         'title' => 'test_option_code_2',

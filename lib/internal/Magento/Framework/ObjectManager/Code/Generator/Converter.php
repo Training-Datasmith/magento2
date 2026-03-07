@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\Code\Generator;
 
 /**
@@ -14,7 +17,7 @@ class Converter extends \Magento\Framework\Code\Generator\EntityAbstract
     /**
      * Entity type
      */
-    const ENTITY_TYPE = 'converter';
+    public const ENTITY_TYPE = 'converter';
 
     /**
      * Retrieve class properties
@@ -36,7 +39,7 @@ class Converter extends \Magento\Framework\Code\Generator\EntityAbstract
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -75,19 +78,19 @@ class Converter extends \Magento\Framework\Code\Generator\EntityAbstract
                     'type' => $this->_getFactoryClass(),
                 ],
             ],
-            'body' => "\$this->"
+            'body' => '$this->'
                 . $this->_getFactoryPropertyName()
-                . " = \$" . $this->_getFactoryPropertyName() . ';',
+                . ' = $' . $this->_getFactoryPropertyName() . ';',
             'docblock' => [
                 'shortDescription' => ucfirst(static::ENTITY_TYPE) . ' constructor',
                 'tags' => [
                     [
                         'name' => 'param',
                         'description' => $this->getSourceClassName()
-                            . " \$" . $this->_getFactoryPropertyName(),
+                            . ' $' . $this->_getFactoryPropertyName(),
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -120,7 +123,7 @@ class Converter extends \Magento\Framework\Code\Generator\EntityAbstract
                     ],
                     [
                         'name' => 'return',
-                        'description' => $this->getSourceClassName()
+                        'description' => $this->getSourceClassName(),
                     ],
                 ],
             ],

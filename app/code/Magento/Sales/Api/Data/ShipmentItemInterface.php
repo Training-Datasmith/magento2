@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -23,51 +26,51 @@ interface ShipmentItemInterface extends
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Row total.
      */
-    const ROW_TOTAL = 'row_total';
+    public const ROW_TOTAL = 'row_total';
     /*
      * Price.
      */
-    const PRICE = 'price';
+    public const PRICE = 'price';
     /*
      * Weight.
      */
-    const WEIGHT = 'weight';
+    public const WEIGHT = 'weight';
     /*
      * Quantity.
      */
-    const QTY = 'qty';
+    public const QTY = 'qty';
     /*
      * Product ID.
      */
-    const PRODUCT_ID = 'product_id';
+    public const PRODUCT_ID = 'product_id';
     /*
      * Order item ID.
      */
-    const ORDER_ITEM_ID = 'order_item_id';
+    public const ORDER_ITEM_ID = 'order_item_id';
     /*
      * Additional data.
      */
-    const ADDITIONAL_DATA = 'additional_data';
+    public const ADDITIONAL_DATA = 'additional_data';
     /*
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
     /*
      * Name.
      */
-    const NAME = 'name';
+    public const NAME = 'name';
     /*
      * SKU.
      */
-    const SKU = 'sku';
+    public const SKU = 'sku';
 
     /**
      * Gets the additional data for the shipment item.

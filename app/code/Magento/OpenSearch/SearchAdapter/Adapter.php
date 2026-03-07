@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class Adapter implements AdapterInterface
      * @return QueryResponse
      * @throws ClientException
      */
-    public function query(RequestInterface $request) : QueryResponse
+    public function query(RequestInterface $request): QueryResponse
     {
         $client = $this->connectionManager->getConnection();
         $query = $this->mapper->buildQuery($request);
@@ -132,10 +133,10 @@ class Adapter implements AdapterInterface
             $rawResponse = $client->query($query);
         } catch (Missing404Exception|BadRequest400Exception $e) {
             $this->logger->critical($e);
-            throw new EmptyRequestDataException("Could not perform search query.");
+            throw new EmptyRequestDataException('Could not perform search query.');
         } catch (\Exception $e) {
             $this->logger->critical($e);
-            throw new ClientException("Could not perform search query.", $e->getCode(), $e);
+            throw new ClientException('Could not perform search query.', $e->getCode(), $e);
         } finally {
             if (isset($pitId)) {
                 $client->closePointInTime(['body' => ['pit_id' => [$pitId]]]);
@@ -149,7 +150,7 @@ class Adapter implements AdapterInterface
             [
                 'documents' => $rawDocuments,
                 'aggregations' => $aggregations,
-                'total' => $rawResponse['hits']['total']['value'] ?? 0
+                'total' => $rawResponse['hits']['total']['value'] ?? 0,
             ]
         );
         return $queryResponse;

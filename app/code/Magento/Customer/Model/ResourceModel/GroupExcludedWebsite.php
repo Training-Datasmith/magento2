@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Model\ResourceModel;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Model\ResourceModel\Db\VersionControl\AbstractDb;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Customer\Model\Cache\GroupExcludedWebsiteCache;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Model\ResourceModel\Db\Context;
+use Magento\Framework\Model\ResourceModel\Db\VersionControl\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
-use Magento\Framework\Model\ResourceModel\Db\Context;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**
  * Excluded customer group website resource model.
@@ -82,7 +83,7 @@ class GroupExcludedWebsite extends AbstractDb implements ResetAfterRequestInterf
         if ($this->groupExcludedWebsiteCache->isCached($customerGroupId)) {
             return $this->groupExcludedWebsiteCache->getFromCache($customerGroupId);
         }
-        
+
         $connection = $this->getConnection();
         $bind = ['customer_group_id' => $customerGroupId];
 

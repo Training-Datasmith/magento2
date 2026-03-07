@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
@@ -58,11 +61,11 @@ class ViewAction extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 $viewUrlPath,
                                 [
-                                    $urlEntityParamName => $item['entity_id']
+                                    $urlEntityParamName => $item['entity_id'],
                                 ]
                             ),
-                            'label' => __('View')
-                        ]
+                            'label' => __('View'),
+                        ],
                     ];
                 }
             }

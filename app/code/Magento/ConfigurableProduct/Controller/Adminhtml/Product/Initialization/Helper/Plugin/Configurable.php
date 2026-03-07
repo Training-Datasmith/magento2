@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin;
 
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
@@ -49,7 +52,7 @@ class Configurable
         'swatch_image',
         'small_image',
         'thumbnail',
-        'image'
+        'image',
     ];
 
     /**
@@ -151,8 +154,8 @@ class Configurable
     protected function getVariationMatrix()
     {
         $result = [];
-        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', "[]");
-        if (isset($configurableMatrix) && $configurableMatrix != "") {
+        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', '[]');
+        if (isset($configurableMatrix) && $configurableMatrix != '') {
             $configurableMatrix = json_decode($configurableMatrix, true);
 
             foreach ($configurableMatrix as $item) {

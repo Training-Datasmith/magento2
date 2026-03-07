@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Model;
 
 class SwatchAttributeCodesTest extends \PHPUnit\Framework\TestCase
@@ -33,7 +36,7 @@ class SwatchAttributeCodesTest extends \PHPUnit\Framework\TestCase
             ->create(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class)
             ->load('color_swatch', 'attribute_code');
         $expected = [
-            $attribute->getAttributeId() => $attribute->getAttributeCode()
+            $attribute->getAttributeId() => $attribute->getAttributeCode(),
         ];
         $swatchAttributeCodes = $this->swatchAttributeCodes->getCodes();
 

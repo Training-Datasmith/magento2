@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Report Sold Products collection
  */
+
 namespace Magento\Reports\Model\ResourceModel\Product\Sold;
 
 use Magento\Framework\DB\Select;
@@ -71,7 +74,7 @@ class Collection extends \Magento\Reports\Model\ResourceModel\Order\Collection
             [
                 'ordered_qty' => 'order_items.qty_ordered',
                 'order_items_name' => 'order_items.name',
-                'order_items_sku' => 'order_items.sku'
+                'order_items_sku' => 'order_items.sku',
             ]
         )->joinInner(
             ['order' => $this->getTable('sales_order')],

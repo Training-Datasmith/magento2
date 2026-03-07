@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -76,21 +77,21 @@ class PriceTest extends TestCase
                 'final_price' => 5,
                 'min_price' => 5,
                 'max_price' => 9,
-                'tier_price' => null
+                'tier_price' => null,
             ],
             'simple_20' => [
                 'price' => 20,
                 'final_price' => 10,
                 'min_price' => 10,
                 'max_price' => 15,
-                'tier_price' => 15
+                'tier_price' => 15,
             ],
             'configurable' => [
                 'price' => 0,
                 'final_price' => 0,
                 'min_price' => 5,
                 'max_price' => 25,
-                'tier_price' => 15
+                'tier_price' => 15,
             ],
         ];
         $this->assertConfigurableProductPrice(20, 25, $indexPrices);
@@ -108,21 +109,21 @@ class PriceTest extends TestCase
                 'final_price' => 9,
                 'min_price' => 9,
                 'max_price' => 9,
-                'tier_price' => null
+                'tier_price' => null,
             ],
             'simple_20' => [
                 'price' => 20,
                 'final_price' => 15,
                 'min_price' => 15,
                 'max_price' => 15,
-                'tier_price' => 15
+                'tier_price' => 15,
             ],
             'configurable' => [
                 'price' => 0,
                 'final_price' => 0,
                 'min_price' => 9,
                 'max_price' => 30,
-                'tier_price' => 15
+                'tier_price' => 15,
             ],
         ];
         $this->assertConfigurableProductPrice(24, 30, $indexPrices);

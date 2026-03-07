@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter;
 
 /**
@@ -33,38 +36,38 @@ class XmlTest extends \PHPUnit\Framework\TestCase
                 'phrase' => 'Name only',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
+                'quote' => '',
             ],
             [
                 'phrase' => 'Name and title space delimiter',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
+                'quote' => '',
             ],
             [
                 'phrase' => 'title1',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
+                'quote' => '',
             ],
             [
                 'phrase' => 'title2',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
+                'quote' => '',
             ],
             [
                 'phrase' => 'Name only in sub node',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
+                'quote' => '',
             ],
             [
                 'phrase' => 'Text outside of attribute',
                 'file' => $file,
                 'line' => '',
-                'quote' => ''
-            ]
+                'quote' => '',
+            ],
         ];
         $this->assertEquals($expectation, $this->xmlPhraseCollector->getPhrases());
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class GaTest extends AbstractController
     public function testBlockOutputExistsWhenGaIsEnabled()
     {
         $this->assertNotEquals(
-            "",
+            '',
             $this->getGaBlockFromNode('head.additional')->toHtml()
         );
     }

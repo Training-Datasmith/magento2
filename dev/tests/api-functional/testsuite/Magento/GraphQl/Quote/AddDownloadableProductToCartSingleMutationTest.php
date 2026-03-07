@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class AddDownloadableProductToCartSingleMutationTest extends GraphQlAbstract
      * @param string $sku
      * @return array
      */
-    private function getProductsLinks(string $sku) : array
+    private function getProductsLinks(string $sku): array
     {
         $result = [];
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);

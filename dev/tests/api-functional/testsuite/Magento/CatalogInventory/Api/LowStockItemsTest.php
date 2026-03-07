@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * API tests for low stock items endpoint.
@@ -71,9 +74,9 @@ class LowStockItemsTest extends WebapiAbstract
                             'scope_id' => 1,
                             'qty' => 140,
                             'stock_status' => null,
-                            'stock_item' => null
+                            'stock_item' => null,
                         ],
-                    ]
+                    ],
                 ],
             ],
         ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
@@ -151,7 +152,7 @@ class ProcessorTest extends TestCase
                 'name' => 'New Store Group',
                 'root_category_id' => 2,
                 'group_id' => null,
-                'code' => 'newstoregroup'
+                'code' => 'newstoregroup',
             ]
         );
         $storeGroup->save();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Test\Unit\Controller\Index;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Checkout\Controller\Index\Index;
 use Magento\Checkout\Helper\Data;
 use Magento\Checkout\Model\Type\Onepage;
@@ -29,9 +29,9 @@ use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Theme\Block\Html\Header;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker as InvocationMocker;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\InvokedCount as InvokedCount;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -205,7 +205,7 @@ class IndexTest extends TestCase
                 'context' => $this->contextMock,
                 'customerSession' => $this->session,
                 'resultPageFactory' => $resultPageFactoryMock,
-                'resultRedirectFactory' => $resultRedirectFactoryMock
+                'resultRedirectFactory' => $resultRedirectFactoryMock,
             ]
         );
     }
@@ -249,23 +249,23 @@ class IndexTest extends TestCase
             [
                 'secure' => false,
                 'referer' => 'https://test.domain.com/',
-                'expectedCall' => 'once'
+                'expectedCall' => 'once',
             ],
             [
                 'secure' => true,
                 'referer' => null,
-                'expectedCall' => 'once'
+                'expectedCall' => 'once',
             ],
             [
                 'secure' => true,
                 'referer' => 'http://test.domain.com/',
-                'expectedCall' => 'once'
+                'expectedCall' => 'once',
             ],
             // This is the only case in which session regeneration can be skipped
             [
                 'secure' => true,
                 'referer' => 'https://test.domain.com/',
-                'expectedCall' => 'never'
+                'expectedCall' => 'never',
             ],
         ];
     }

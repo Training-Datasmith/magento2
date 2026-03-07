@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class MassDeleteTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'filter' => $this->filterMock,
-                'collectionFactory' => $this->collectionFactoryMock
+                'collectionFactory' => $this->collectionFactoryMock,
             ]
         );
     }
@@ -126,7 +127,7 @@ class MassDeleteTest extends TestCase
         $collection = [
             $this->getUrlRewriteMock(),
             $this->getUrlRewriteMock(),
-            $this->getUrlRewriteMock(true)
+            $this->getUrlRewriteMock(true),
         ];
 
         $this->collectionFactoryMock->expects($this->once())

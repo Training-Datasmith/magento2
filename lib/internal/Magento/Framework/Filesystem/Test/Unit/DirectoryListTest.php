@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filesystem\Test\Unit;
 
 use Magento\Framework\Filesystem\DirectoryList;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DirectoryListTest extends TestCase
 {
@@ -77,7 +78,7 @@ class DirectoryListTest extends TestCase
     {
         return [
             ['getPath'],
-            ['getUrlPath']
+            ['getUrlPath'],
         ];
     }
 
@@ -140,7 +141,7 @@ class DirectoryListTest extends TestCase
             ['one\\two'],
             ['../dir'],
             ['./dir'],
-            ['one/../two']
+            ['one/../two'],
         ];
     }
 }

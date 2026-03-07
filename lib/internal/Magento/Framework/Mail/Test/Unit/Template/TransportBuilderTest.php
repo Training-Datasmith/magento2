@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,9 +23,9 @@ use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Mail\TransportInterfaceFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  *
@@ -108,7 +109,7 @@ class TransportBuilderTest extends TestCase
                 'mailTransportFactory' => $this->mailTransportFactoryMock,
                 'messageFactory' => $this->messageFactoryMock,
                 'emailMessageInterfaceFactory' => $this->emailMessageInterfaceFactoryMock,
-                'mimePartInterfaceFactory' => $this->mimePartFactoryMock
+                'mimePartInterfaceFactory' => $this->mimePartFactoryMock,
             ]
         );
     }
@@ -202,13 +203,13 @@ class TransportBuilderTest extends TestCase
             [
                 TemplateTypesInterface::TYPE_TEXT,
                 'Plain text',
-                null
+                null,
             ],
             [
                 TemplateTypesInterface::TYPE_HTML,
                 '<h1>Html message</h1>',
-                'Test\Namespace\Template'
-            ]
+                'Test\Namespace\Template',
+            ],
         ];
     }
 

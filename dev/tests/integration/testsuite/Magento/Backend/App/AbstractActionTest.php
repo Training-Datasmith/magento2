@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\App;
 
 use Magento\TestFramework\Bootstrap;
@@ -121,7 +124,7 @@ class AbstractActionTest extends \Magento\TestFramework\TestCase\AbstractBackend
     {
         return [
             ['notification_window', 'Magento_AdminNotification::show_toolbar', true],
-            ['notification_window', 'Magento_AdminNotification::show_toolbar', false]
+            ['notification_window', 'Magento_AdminNotification::show_toolbar', false],
         ];
     }
 }

@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\MessageQueue\Consumer\Config;
 
-use Magento\Framework\MessageQueue\Consumer\Config\ValidatorInterface;
-use Magento\Framework\Phrase;
+namespace Magento\Framework\MessageQueue\Consumer\Config;
 
 /**
  * Composite validator for consumer config.

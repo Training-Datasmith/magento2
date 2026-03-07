@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,7 +11,7 @@ namespace Magento\Framework\Webapi\Test\Unit;
 use Magento\Eav\Model\TypeLocator;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\AttributeValueFactory;
-use \Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\App\Cache\Type\Reflection;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\InvalidArgumentException;
@@ -22,10 +23,7 @@ use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Webapi\Exception;
-use Magento\Framework\Webapi\Validator\IOLimit\DefaultPageSizeSetter;
 use Magento\Framework\Webapi\ServiceInputProcessor;
-use Magento\Framework\Webapi\Validator\IOLimit\IOLimitConfigProvider;
-use Magento\Framework\Webapi\Validator\EntityArrayValidator;
 use Magento\Framework\Webapi\ServiceTypeToEntityTypeMap;
 use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\AssociativeArray;
 use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\DataArray;
@@ -35,16 +33,18 @@ use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\Simple;
 use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\SimpleArray;
 use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\SimpleConstructor;
 use Magento\Framework\Webapi\Test\Unit\ServiceInputProcessor\TestService;
-use Magento\Webapi\Test\Unit\Service\Entity\DataArrayData;
+use Magento\Framework\Webapi\Validator\EntityArrayValidator;
+use Magento\Framework\Webapi\Validator\EntityArrayValidator\InputArraySizeLimitValue;
+use Magento\Framework\Webapi\Validator\IOLimit\DefaultPageSizeSetter;
+use Magento\Framework\Webapi\Validator\IOLimit\IOLimitConfigProvider;
+use Magento\Quote\Api\Data\AddressInterface;
+use Magento\Quote\Api\ShipmentEstimationInterface;
 use Magento\Webapi\Test\Unit\Service\Entity\NestedData;
 use Magento\Webapi\Test\Unit\Service\Entity\SimpleArrayData;
 use Magento\Webapi\Test\Unit\Service\Entity\SimpleData;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Webapi\Validator\EntityArrayValidator\InputArraySizeLimitValue;
-use Magento\Quote\Api\ShipmentEstimationInterface;
-use Magento\Quote\Api\Data\AddressInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -105,7 +105,7 @@ class ServiceInputProcessorTest extends TestCase
             ->getMock();
         $objectManagerStatic = [
             SearchCriteriaInterface::class => $this->searchCriteria,
-            AddressInterface::class => $this->addressMock
+            AddressInterface::class => $this->addressMock,
         ];
         $objectManager = new ObjectManager($this);
         $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
@@ -156,7 +156,7 @@ class ServiceInputProcessorTest extends TestCase
                 'cache' => $cache,
                 'typeProcessor' => $typeProcessor,
                 'attributeTypeResolver' => $this->attributeValueFactoryMock->create(),
-                'fieldNamer' => $this->fieldNamer
+                'fieldNamer' => $this->fieldNamer,
             ]
         );
         $serializerMock = $this->createMock(SerializerInterface::class);
@@ -198,7 +198,7 @@ class ServiceInputProcessorTest extends TestCase
                     $inputArraySizeLimitValue
                 ),
                 'defaultPageSizeSetter' => $this->defaultPageSizeSetter,
-                'defaultPageSize' => 123
+                'defaultPageSize' => 123,
             ]
         );
 
@@ -424,7 +424,7 @@ class ServiceInputProcessorTest extends TestCase
             ->with($this->searchCriteria);
 
         $data = [
-            'searchCriteria' => []
+            'searchCriteria' => [],
         ];
         $this->serviceInputProcessor->process(
             TestService::class,
@@ -550,12 +550,12 @@ class ServiceInputProcessorTest extends TestCase
                         'customAttributes' => [
                             [
                                 'attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE,
-                                'value' => TestService::DEFAULT_VALUE
-                            ]
-                        ]
-                    ]
+                                'value' => TestService::DEFAULT_VALUE,
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedObject'=>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
+                'expectedObject' =>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
                     'integer',
                     TestService::DEFAULT_VALUE
                 ),
@@ -567,12 +567,12 @@ class ServiceInputProcessorTest extends TestCase
                         'customAttributes' => [
                             [
                                 'attributeCode' => TestService::CUSTOM_ATTRIBUTE_CODE,
-                                'value' => TestService::DEFAULT_VALUE
-                            ]
-                        ]
-                    ]
+                                'value' => TestService::DEFAULT_VALUE,
+                            ],
+                        ],
+                    ],
                 ],
-                'expectedObject'=>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
+                'expectedObject' =>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
                     'integer',
                     TestService::DEFAULT_VALUE
                 ),
@@ -582,11 +582,11 @@ class ServiceInputProcessorTest extends TestCase
                 'inputData' => [
                     'param' => [
                         'customAttributes' => [
-                            ['attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE, 'value' => ['ids' => [1, 2, 3, 4]]]
-                        ]
-                    ]
+                            ['attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE, 'value' => ['ids' => [1, 2, 3, 4]]],
+                        ],
+                    ],
                 ],
-                'expectedObject'=>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
+                'expectedObject' =>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
                     'SimpleArray',
                     ['ids' => [1, 2, 3, 4]]
                 ),
@@ -599,11 +599,11 @@ class ServiceInputProcessorTest extends TestCase
                             ['attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE, 'value' => [
                                 ['entityId' => 14, 'name' => 'First'],
                                 ['entityId' => 15, 'name' => 'Second'],
-                            ]]
-                        ]
-                    ]
+                            ]],
+                        ],
+                    ],
                 ],
-                'expectedObject'=>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
+                'expectedObject' =>  static fn (self $testCase) => $testCase->getObjectWithCustomAttributes(
                     'Simple[]',
                     [
                         ['entityId' => 14, 'name' => 'First'],
@@ -662,11 +662,11 @@ class ServiceInputProcessorTest extends TestCase
                         AttributeValue::class,
                         ['data' => [
                             'attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE,
-                            'value' => $customAttributeValue
+                            'value' => $customAttributeValue,
+                        ],
                         ]
-                        ]
-                    )
-                ]
+                    ),
+                ],
             ]]
         );
     }
@@ -695,21 +695,21 @@ class ServiceInputProcessorTest extends TestCase
                 'inputData' => [
                     'param' => [
                         'customAttributes' => [
-                            []
-                        ]
-                    ]
-                ]
+                            [],
+                        ],
+                    ],
+                ],
             ],
             [
                 'inputData' => [
                     'param' => [
                         'customAttributes' => [
                             [
-                                'value' => TestService::DEFAULT_VALUE
-                            ]
-                        ]
-                    ]
-                ]
+                                'value' => TestService::DEFAULT_VALUE,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 'inputData' => [
@@ -717,11 +717,11 @@ class ServiceInputProcessorTest extends TestCase
                         'customAttributes' => [
                             [
                                 'attribute_code' => TestService::CUSTOM_ATTRIBUTE_CODE,
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -734,27 +734,27 @@ class ServiceInputProcessorTest extends TestCase
             [
                 [
                     'address' => [
-                        "street" => [
-                            "서울 강북구 한천로166길 2 (-서울 강북구 수유동 269-36)"
+                        'street' => [
+                            '서울 강북구 한천로166길 2 (-서울 강북구 수유동 269-36)',
                         ],
-                        "city." => "pune",
+                        'city.' => 'pune',
                     ],
-                    'cartId' => "30"
+                    'cartId' => '30',
                 ],
-                1
+                1,
             ],
             [
                 [
                     'address' => [
-                        "street" => [
-                            "서울 강북구 한천로166길 2 (-서울 강북구 수유동 269-36)"
+                        'street' => [
+                            '서울 강북구 한천로166길 2 (-서울 강북구 수유동 269-36)',
                         ],
-                        "city" => "pune",
+                        'city' => 'pune',
                     ],
-                    'cartId' => "30"
+                    'cartId' => '30',
                 ],
-                0
-            ]
+                0,
+            ],
         ];
     }
 

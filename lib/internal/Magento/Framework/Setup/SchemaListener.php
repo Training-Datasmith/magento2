@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -160,7 +163,7 @@ class SchemaListener
                 'type' => 'primary',
                 'name' => $primaryKeyName,
                 'disabled' => false,
-                'columns' => [$columnName => $columnName !== null ? strtolower($columnName) : '']
+                'columns' => [$columnName => $columnName !== null ? strtolower($columnName) : ''],
             ];
 
             $this->log($tableName, $dataToLog);
@@ -239,11 +242,11 @@ class SchemaListener
     {
         if ($indexType === 'index') {
             $dataToLog['indexes'][$keyName] = [
-                'disabled' => true
+                'disabled' => true,
             ];
         } else {
             $dataToLog['constraints'][$indexType][$keyName] = [
-                'disabled' => true
+                'disabled' => true,
             ];
         }
 
@@ -259,7 +262,7 @@ class SchemaListener
     public function dropColumn($tableName, $columnName)
     {
         $dataToLog['columns'][strtolower((string)$columnName)] = [
-            'disabled' => true
+            'disabled' => true,
         ];
         $this->log($tableName, $dataToLog);
     }
@@ -370,7 +373,7 @@ class SchemaListener
                 'referenceTable' => $refTableName !== null ? strtolower($refTableName) : '',
                 'referenceColumn' => $refColumnName !== null ? strtolower($refColumnName) : '',
                 'onDelete' => $onDelete,
-                'disabled' => false
+                'disabled' => false,
             ];
         $this->log($tableName, $dataToLog);
     }
@@ -423,7 +426,7 @@ class SchemaListener
                 [
                     'columns' => $this->prepareIndexColumns($fields),
                     'indexType' => $indexType,
-                    'disabled' => false
+                    'disabled' => false,
                 ];
         } else {
             $dataToLog['constraints'][$indexType][$indexName] =

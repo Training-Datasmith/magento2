@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Catalog\Api;
 
+use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 
 class AttributeSetManagementTest extends WebapiAbstract
 {
@@ -183,12 +185,12 @@ class AttributeSetManagementTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($this->createServiceInfo, $arguments);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);

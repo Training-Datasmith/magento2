@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class XmlTest extends TestCase
                                         [
                                             'name' => 'entity_id',
                                             'alias' => 'identifier',
-                                        ]
+                                        ],
                                     ],
                                     'filter' => [
                                         [
@@ -81,13 +82,13 @@ class XmlTest extends TestCase
                                                 [
                                                     'attribute' => 'entity_id',
                                                     'operator' => 'gt',
-                                                    '_value' => '10'
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
+                                                    '_value' => '10',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                         [
                             'name' => 'test_report_2',
@@ -98,8 +99,8 @@ class XmlTest extends TestCase
                                     'alias' => 'customers',
                                     'attribute' => [
                                         [
-                                            'name' => 'email'
-                                        ]
+                                            'name' => 'email',
+                                        ],
                                     ],
                                     'filter' => [
                                         [
@@ -107,17 +108,17 @@ class XmlTest extends TestCase
                                             'condition' => [
                                                 [
                                                     'attribute' => 'dob',
-                                                    'operator' => 'null'
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                                    'operator' => 'null',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $dom->loadXML(file_get_contents(__DIR__ . '/../_files/valid_reports.xml'));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,21 +11,21 @@ namespace Magento\GraphQl\Sales;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\DB\Transaction;
+use Magento\Framework\Registry;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\GraphQl\Sales\Fixtures\CustomerPlaceOrderWithDownloadable;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
+use Magento\Sales\Api\InvoiceManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Creditmemo\ItemFactory;
 use Magento\Sales\Model\Order\CreditmemoFactory;
 use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Collection as CreditmemoCollection;
 use Magento\Sales\Model\Service\CreditmemoService;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Sales\Model\Order\Creditmemo\ItemFactory;
-use Magento\Framework\Registry;
-use Magento\Framework\DB\Transaction;
-use Magento\Sales\Api\InvoiceManagementInterface;
 
 /**
  * Tests downloadable product fields in Orders, Invoices, CreditMemo and Shipments
@@ -77,7 +78,7 @@ class RetrieveOrdersWithDownloadableProductTest extends GraphQlAbstract
     /** @var Transaction  */
     private $transaction;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         $objectManager = Bootstrap::getObjectManager();
         $this->customerAuthenticationHeader = $objectManager->get(GetCustomerAuthenticationHeader::class);
@@ -132,10 +133,10 @@ class RetrieveOrdersWithDownloadableProductTest extends GraphQlAbstract
         $expectedDownloadableLinksData =
             [
                 [
-                    'title' =>'Downloadable Product Link',
+                    'title' => 'Downloadable Product Link',
                     'sort_order' => 1,
-                    'uid'=> base64_encode("downloadable/{$linkId}")
-                ]
+                    'uid' => base64_encode("downloadable/{$linkId}"),
+                ],
             ];
         $this->assertResponseFields($expectedDownloadableLinksData, $downloadableLinksFromResponse);
         // invoices assertions
@@ -156,10 +157,10 @@ class RetrieveOrdersWithDownloadableProductTest extends GraphQlAbstract
         $expectedDownloadableLinksData =
             [
                 [
-                    'title' =>'Downloadable Product Link',
+                    'title' => 'Downloadable Product Link',
                     'sort_order' => 1,
-                    'uid'=> base64_encode("downloadable/{$linkId}")
-                ]
+                    'uid' => base64_encode("downloadable/{$linkId}"),
+                ],
             ];
         $this->assertResponseFields($expectedDownloadableLinksData, $downloadableItemLinks);
     }
@@ -192,7 +193,7 @@ class RetrieveOrdersWithDownloadableProductTest extends GraphQlAbstract
         $creditMemo->setBaseGrandTotal(12);
         $creditMemo->setGrandTotal(12);
         $creditMemo->setAdjustment(-2.00);
-        $creditMemo->addComment("Test comment for downloadable refund", false, true);
+        $creditMemo->addComment('Test comment for downloadable refund', false, true);
         $creditMemo->save();
         $this->creditMemoService->refund($creditMemo, true);
         $response = $this->getCustomerOrderWithCreditMemoQuery();
@@ -203,58 +204,58 @@ class RetrieveOrdersWithDownloadableProductTest extends GraphQlAbstract
         $expectedCreditMemoData = [
             [
                 'comments' => [
-                    ['message' => 'Test comment for downloadable refund']
+                    ['message' => 'Test comment for downloadable refund'],
                 ],
                 'items' => [
                     [
-                        'product_name'=> 'Downloadable Product (Links can be purchased separately)',
+                        'product_name' => 'Downloadable Product (Links can be purchased separately)',
                         'product_sku' => 'downloadable-product-with-purchased-separately-links',
                         'product_sale_price' => ['value' => 12],
                         'discounts' => [],
                         'quantity_refunded' => 1,
                         'downloadable_links' => [
                             [
-                                'uid'=> base64_encode("downloadable/{$linkId}"),
-                                'title' => 'Downloadable Product Link 1']
-                        ]
-                    ]
+                                'uid' => base64_encode("downloadable/{$linkId}"),
+                                'title' => 'Downloadable Product Link 1'],
+                        ],
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
-                        'value' => 12
+                        'value' => 12,
                     ],
                     'grand_total' => [
                         'value' => 12,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 12,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
-                        'value' => 0
+                        'value' => 0,
                     ],
                     'total_tax' => [
-                        'value' => 0
+                        'value' => 0,
                     ],
                     'shipping_handling' => [
                         'amount_including_tax' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
                         'amount_excluding_tax' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
                         'total_amount' => [
-                            'value' => 0
+                            'value' => 0,
                         ],
-                        'taxes' => []
+                        'taxes' => [],
 
                     ],
                     'adjustment' => [
-                        'value' => 2
-                    ]
-                ]
-            ]
+                        'value' => 2,
+                    ],
+                ],
+            ],
         ];
         $firstOrderItem = current($response['customer']['orders']['items'] ?? []);
         $this->assertArrayHasKey('credit_memos', $firstOrderItem);

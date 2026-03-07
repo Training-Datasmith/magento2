@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -36,7 +38,7 @@ $payment->setMethod(Config::METHOD_PAYFLOWLINK)
     ->setBaseAmountAuthorized(100)
     ->setAdditionalInformation(
         [
-        'secure_silent_post_hash' => 'cf7i85d01ed7c92223031afb4rdl2f1f'
+        'secure_silent_post_hash' => 'cf7i85d01ed7c92223031afb4rdl2f1f',
         ]
     );
 

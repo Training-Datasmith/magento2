@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model\ResourceModel\Role\Grid;
 
 use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
@@ -17,7 +20,7 @@ class Collection extends \Magento\Authorization\Model\ResourceModel\Role\Collect
      *
      * @return $this
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         parent::_initSelect();
         $this->addFieldToFilter('role_type', RoleGroup::ROLE_TYPE);

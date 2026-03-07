@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -221,12 +222,12 @@ MUTATION;
         $attributes = [
             [
                 'attribute_code' => 'custom_attribute1',
-                'value'=> '[new-value1,new-value2]'
+                'value' => '[new-value1,new-value2]',
             ],
             [
                 'attribute_code' => 'custom_attribute2',
-                'value'=> '"new-value3"'
-            ]
+                'value' => '"new-value3"',
+            ],
         ];
         $attributesFragment = preg_replace('/"([^"]+)"\s*:\s*/', '$1:', json_encode($attributes));
         $mutation
@@ -280,11 +281,11 @@ MUTATION;
             ['response_field' => 'default_billing', 'expected_value' => (bool)$address->isDefaultBilling()],
         ];
         $this->assertResponseFields($actualResponse, $assertionMap);
-        $this->assertIsArray([$actualResponse['region']], "region field must be of an array type.");
+        $this->assertIsArray([$actualResponse['region']], 'region field must be of an array type.');
         $assertionRegionMap = [
             ['response_field' => 'region', 'expected_value' => $address->getRegion()->getRegion()],
             ['response_field' => 'region_code', 'expected_value' => $address->getRegion()->getRegionCode()],
-            ['response_field' => 'region_id', 'expected_value' => $address->getRegion()->getRegionId()]
+            ['response_field' => 'region_id', 'expected_value' => $address->getRegion()->getRegionId()],
         ];
         $this->assertResponseFields($actualResponse['region'], $assertionRegionMap);
     }
@@ -431,9 +432,9 @@ MUTATION;
             ['', '"input" value must be specified'],
             [
                 'input: ""',
-                'Expected value of type "CustomerAddressInput", found ""'
+                'Expected value of type "CustomerAddressInput", found ""',
             ],
-            ['input: "foo"', 'Expected value of type "CustomerAddressInput", found "foo"']
+            ['input: "foo"', 'Expected value of type "CustomerAddressInput", found "foo"'],
         ];
     }
 
@@ -514,7 +515,7 @@ MUTATION;
             'region' => [
                 'region' => 'Alberta',
                 'region_id' => 66,
-                'region_code' => 'AB'
+                'region_code' => 'AB',
             ],
             'country_code' => 'CA',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -530,7 +531,7 @@ MUTATION;
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => true
+            'default_billing' => true,
         ];
     }
 
@@ -541,8 +542,8 @@ MUTATION;
     private function getMutation(int $addressId): string
     {
         $updateAddress = $this->getAddressData();
-        $defaultShippingText = $updateAddress['default_shipping'] ? "true" : "false";
-        $defaultBillingText = $updateAddress['default_billing'] ? "true" : "false";
+        $defaultShippingText = $updateAddress['default_shipping'] ? 'true' : 'false';
+        $defaultBillingText = $updateAddress['default_billing'] ? 'true' : 'false';
 
         $mutation
             = <<<MUTATION

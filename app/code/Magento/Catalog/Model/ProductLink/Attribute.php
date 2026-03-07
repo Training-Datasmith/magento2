@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,8 +18,8 @@ class Attribute extends \Magento\Framework\Api\AbstractExtensibleObject implemen
     /**#@+
      * Constants
      */
-    const KEY_CODE = 'code';
-    const KEY_TYPE = 'type';
+    public const KEY_CODE = 'code';
+    public const KEY_TYPE = 'type';
     /**#@-*/
 
     /**

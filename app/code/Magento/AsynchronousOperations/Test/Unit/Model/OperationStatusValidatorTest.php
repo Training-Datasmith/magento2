@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -40,14 +41,14 @@ class OperationStatusValidatorTest extends TestCase
         $this->operationStatusValidator = $objectManager->getObject(
             OperationStatusValidator::class,
             [
-                'operationStatusPool' => $this->operationStatusPool
+                'operationStatusPool' => $this->operationStatusPool,
             ]
         );
 
         $this->operation = $objectManager->getObject(
             Operation::class,
             [
-                'operationStatusValidator' => $this->operationStatusValidator
+                'operationStatusValidator' => $this->operationStatusValidator,
             ]
         );
     }
@@ -88,9 +89,9 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => 'Invalid Operation Status.'
+                'expectedResult' => 'Invalid Operation Status.',
             ],
             [
                 'status' => 1,
@@ -99,9 +100,9 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => '1'
+                'expectedResult' => '1',
             ],
             [
                 'status' => 2,
@@ -110,9 +111,9 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => '2'
+                'expectedResult' => '2',
             ],
             [
                 'status' => 3,
@@ -121,9 +122,9 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => '3'
+                'expectedResult' => '3',
             ],
             [
                 'status' => 4,
@@ -132,9 +133,9 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => '4'
+                'expectedResult' => '4',
             ],
             [
                 'status' => 5,
@@ -143,10 +144,10 @@ class OperationStatusValidatorTest extends TestCase
                     'retriablyFailed' => 2,
                     'notRetriablyFailed' => 3,
                     'open' => 4,
-                    'rejected' => 5
+                    'rejected' => 5,
                 ],
-                'expectedResult' => '5'
-            ]
+                'expectedResult' => '5',
+            ],
         ];
     }
 }

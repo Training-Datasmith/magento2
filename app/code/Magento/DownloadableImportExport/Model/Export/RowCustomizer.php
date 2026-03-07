@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\DownloadableImportExport\Model\Export;
 
-use Magento\Downloadable\Model\LinkRepository;
-use Magento\Downloadable\Model\SampleRepository;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\CatalogImportExport\Model\Export\RowCustomizerInterface;
 use Magento\CatalogImportExport\Model\Import\Product as ImportProduct;
+use Magento\Downloadable\Model\LinkRepository;
 use Magento\Downloadable\Model\Product\Type as Type;
+use Magento\Downloadable\Model\SampleRepository;
+use Magento\DownloadableImportExport\Model\Import\Product\Type\Downloadable;
 use Magento\ImportExport\Model\Import;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\DownloadableImportExport\Model\Import\Product\Type\Downloadable;
 
 /**
  * Customizes output during export

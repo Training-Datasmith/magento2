@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Model;
 
 use Magento\CheckoutAgreements\Api\Data\AgreementInterface;
@@ -49,9 +52,9 @@ class Agreement extends \Magento\Framework\Model\AbstractExtensibleModel impleme
 
         $contentHeight = $agreementData->getContentHeight();
         if ($contentHeight !== ''
-            && !preg_match('/^[0-9]*\.*[0-9]+(' . implode("|", $this->allowedCssUnits) . ')?$/', $contentHeight)
+            && !preg_match('/^[0-9]*\.*[0-9]+(' . implode('|', $this->allowedCssUnits) . ')?$/', $contentHeight)
         ) {
-            $errors[] = "Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.";
+            $errors[] = 'Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.';
         }
 
         return (count($errors)) ? $errors : true;
@@ -69,7 +72,7 @@ class Agreement extends \Magento\Framework\Model\AbstractExtensibleModel impleme
         }
 
         if ($this->getContentHeight()
-            && !preg_match('/(' . implode("|", $this->allowedCssUnits) . ')/', $this->getContentHeight())
+            && !preg_match('/(' . implode('|', $this->allowedCssUnits) . ')/', $this->getContentHeight())
         ) {
             $contentHeight = $this->getContentHeight() . 'px'; //setting default units for Content-Height
             $this->setContentHeight($contentHeight);

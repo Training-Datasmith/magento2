@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Controller\Index;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -10,17 +13,17 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\UrlInterface;
-use Magento\Framework\App\Response\RedirectInterface;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
 
 /**
@@ -161,7 +164,7 @@ class Add extends \Magento\Wishlist\Controller\AbstractIndex implements HttpPost
                 'addProductSuccessMessage',
                 [
                     'product_name' => $product->getName(),
-                    'referer' => $referer
+                    'referer' => $referer,
                 ]
             );
             // phpcs:disable Magento2.Exceptions.ThrowCatch

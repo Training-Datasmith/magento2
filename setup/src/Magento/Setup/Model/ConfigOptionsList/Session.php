@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Setup\Model\ConfigOptionsList;
 
-use Magento\Framework\Setup\ConfigOptionsListInterface;
-use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Setup\ConfigOptionsListInterface;
 use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
 
@@ -171,7 +173,7 @@ class Session implements ConfigOptionsListInterface
         ConfigOptionsListConstants::SESSION_SAVE_FILES,
         ConfigOptionsListConstants::SESSION_SAVE_DB,
         ConfigOptionsListConstants::SESSION_SAVE_REDIS,
-        ConfigOptionsListConstants::SESSION_SAVE_VALKEY
+        ConfigOptionsListConstants::SESSION_SAVE_VALKEY,
     ];
 
     /**
@@ -272,7 +274,7 @@ class Session implements ConfigOptionsListInterface
                 ConfigOptionsListConstants::CONFIG_PATH_SESSION_SAVE,
                 'Session save handler',
                 $this->getDefaultConfigValue(ConfigOptionsListConstants::INPUT_KEY_SESSION_SAVE)
-            )
+            ),
         ];
     }
 
@@ -634,12 +636,12 @@ class Session implements ConfigOptionsListInterface
         if (isset($options[self::INPUT_KEY_SESSION_REDIS_COMPRESSION_LIBRARY])
             && !in_array($options[self::INPUT_KEY_SESSION_REDIS_COMPRESSION_LIBRARY], $this->validCompressionLibraries)
         ) {
-            $errors[] = "Invalid Redis compression library "
+            $errors[] = 'Invalid Redis compression library '
                 . "'{$options[self::INPUT_KEY_SESSION_REDIS_COMPRESSION_LIBRARY]}'";
         } elseif (isset($options[self::INPUT_KEY_SESSION_VALKEY_COMPRESSION_LIBRARY])
             && !in_array($options[self::INPUT_KEY_SESSION_VALKEY_COMPRESSION_LIBRARY], $this->validCompressionLibraries)
         ) {
-            $errors[] = "Invalid Valkey compression library "
+            $errors[] = 'Invalid Valkey compression library '
                 . "'{$options[self::INPUT_KEY_SESSION_VALKEY_COMPRESSION_LIBRARY]}'";
         }
 

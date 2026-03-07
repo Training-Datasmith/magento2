@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class DataTest extends TestCase
             [true, 1234, true],
             [true, 'conversionId', false],
             [true, '', false],
-            [false, '', false]
+            [false, '', false],
         ];
     }
 
@@ -119,7 +120,7 @@ class DataTest extends TestCase
             ['some-language', 'some-language'],
             ['zh_TW', 'zh_Hant'],
             ['zh_CN', 'zh_Hans'],
-            ['iw', 'he']
+            ['iw', 'he'],
         ];
     }
 
@@ -198,7 +199,7 @@ class DataTest extends TestCase
             ['getConversionColor', Data::XML_PATH_CONVERSION_COLOR, 'ffffff'],
             ['getConversionLabel', Data::XML_PATH_CONVERSION_LABEL, 'Label'],
             ['getConversionValueType', Data::XML_PATH_CONVERSION_VALUE_TYPE, '1'],
-            ['getConversionValueConstant', Data::XML_PATH_CONVERSION_VALUE, '0']
+            ['getConversionValueConstant', Data::XML_PATH_CONVERSION_VALUE, '0'],
         ];
     }
 
@@ -303,7 +304,7 @@ class DataTest extends TestCase
         $this->_registryMock->expects($this->never())->method('registry');
         $this->_scopeConfigMock
             ->method('getValue')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Data::XML_PATH_CONVERSION_VALUE_TYPE] => Data::CONVERSION_VALUE_TYPE_CONSTANT,
                 [Data::XML_PATH_CONVERSION_VALUE] => $conversionValueConst
             });

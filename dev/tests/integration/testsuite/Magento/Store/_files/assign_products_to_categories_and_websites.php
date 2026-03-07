@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Store\Api\WebsiteRepositoryInterface;
-use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\CategoryLinkManagementInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();

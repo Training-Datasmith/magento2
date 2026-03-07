@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module;
 
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * @api

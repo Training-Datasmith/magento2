@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Image\Adapter\AdapterInterface;
 use Magento\Framework\Image\AdapterFactory;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\DecoderInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -139,7 +140,7 @@ class DirectiveTest extends TestCase
                 'crop',
                 'save',
                 'rotate',
-                'getMimeType'
+                'getMimeType',
             ]
         );
         $this->responseMock = $this->createPartialMockWithReflection(
@@ -190,7 +191,7 @@ class DirectiveTest extends TestCase
                 'logger' => $this->loggerMock,
                 'config' => $this->wysiwygConfigMock,
                 'filter' => $this->templateFilterMock,
-                'filesystem' => $filesystemMock
+                'filesystem' => $filesystemMock,
             ]
         );
     }

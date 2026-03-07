@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Payment\Api\PaymentMethodListInterface;
 use Magento\Payment\Plugin\PaymentConfigurationProcess;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class PaymentConfigurationProcessTest extends TestCase
 {
@@ -60,7 +61,7 @@ class PaymentConfigurationProcessTest extends TestCase
             PaymentConfigurationProcess::class,
             [
                 'paymentMethodList' => $this->paymentMethodList,
-                'storeManager' => $this->storeManager
+                'storeManager' => $this->storeManager,
             ]
         );
     }
@@ -111,9 +112,9 @@ class PaymentConfigurationProcessTest extends TestCase
             'paypal-payments' => [
                 'methods' => [
                     'payflowpro' => [],
-                    'payflow_link' => []
-                ]
-            ]
+                    'payflow_link' => [],
+                ],
+            ],
         ];
         $result1['components']['checkout']['children']['steps']['children']['billing-step']
         ['children']['payment']['children']['renders']['children'] = [];
@@ -122,9 +123,9 @@ class PaymentConfigurationProcessTest extends TestCase
             'paypal-payments' => [
                 'methods' => [
                     'payflowpro' => [],
-                    'payflow_link' => []
-                ]
-            ]
+                    'payflow_link' => [],
+                ],
+            ],
         ];
 
         $payflowproPaymentMethod = static fn (self $testCase) => $testCase->getMockForPaymentMethod('payflowpro');
@@ -132,7 +133,7 @@ class PaymentConfigurationProcessTest extends TestCase
 
         return [
             [$jsLayout, [], $result1],
-            [$jsLayout, [$payflowproPaymentMethod, $payflowproLinkPaymentMethod], $result2]
+            [$jsLayout, [$payflowproPaymentMethod, $payflowproLinkPaymentMethod], $result2],
         ];
     }
 }

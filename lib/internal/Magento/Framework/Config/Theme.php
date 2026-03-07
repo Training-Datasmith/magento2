@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Theme configuration files handler
  */
+
 namespace Magento\Framework\Config;
 
 /**
@@ -18,7 +21,7 @@ class Theme
     /**
      * Is used for separation path of themes
      */
-    const THEME_PATH_SEPARATOR = '/';
+    public const THEME_PATH_SEPARATOR = '/';
 
     /**
      * Data extracted from the configuration file

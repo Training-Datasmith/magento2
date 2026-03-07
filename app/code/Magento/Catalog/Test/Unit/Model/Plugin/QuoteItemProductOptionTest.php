@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class QuoteItemProductOptionTest extends TestCase
     protected function setUp(): void
     {
         $this->subjectMock = $this->createMock(QuoteToOrderItem::class);
-        
+
         $this->quoteItemMock = $this->createPartialMockWithReflection(
             AbstractQuoteItem::class,
             ['setOptions', 'getOptions', 'setProduct', 'getProduct', 'getQuote', 'getAddress', 'getOptionByCode']
@@ -82,7 +83,7 @@ class QuoteItemProductOptionTest extends TestCase
         $this->quoteItemMock->method('getQuote')->willReturn(null);
         $this->quoteItemMock->method('getAddress')->willReturn(null);
         $this->quoteItemMock->method('getOptionByCode')->willReturn(null);
-        
+
         $this->quoteItemOptionMock = $this->createPartialMock(QuoteItemOption::class, []);
         $this->productMock = $this->createMock(Product::class);
 
@@ -115,7 +116,7 @@ class QuoteItemProductOptionTest extends TestCase
             return $code1;
         });
         $optionMock1->setCode('someText_8');
-        
+
         $optionMock2 = $this->createPartialMockWithReflection(
             QuoteItemOption::class,
             ['setCode', 'getCode']
@@ -129,7 +130,7 @@ class QuoteItemProductOptionTest extends TestCase
             return $code2;
         });
         $optionMock2->setCode('not_int_text');
-        
+
         $this->quoteItemMock->setOptions([$optionMock1, $optionMock2]);
         $this->quoteItemMock->expects(static::exactly(2))
             ->method('getOptions')

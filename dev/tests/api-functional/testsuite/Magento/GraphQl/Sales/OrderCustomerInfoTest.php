@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class OrderCustomerInfoTest extends GraphQlAbstract
                 'firstname' => 'First Name',
                 'lastname' => 'Last Name',
                 'middlename' => 'Middle Name',
-                'prefix' => 'MR'
+                'prefix' => 'MR',
             ],
             as: 'customer'
         ),
@@ -93,7 +94,7 @@ class OrderCustomerInfoTest extends GraphQlAbstract
             'lastname' => 'Last Name',
             'prefix' => 'MR',
             'middlename' => 'Middle Name',
-            'suffix' => null
+            'suffix' => null,
         ];
         self::assertEquals($expected, $firstItem['customer_info']);
     }

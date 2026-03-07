@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,5 +14,5 @@ return [
     'payer_status' => 'verified',
     'payment_type' => 'instant',
     'txn_id' => '1P566839F9694230H',
-    'txn_type' => 'cart'
+    'txn_type' => 'cart',
 ];

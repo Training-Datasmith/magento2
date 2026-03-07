@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -245,7 +247,7 @@ class Repository implements ResetAfterRequestInterface
                 'context' => $context,
                 'filePath' => $filePath,
                 'module' => $module,
-                'contentType' => $this->assetSource->getContentType($filePath)
+                'contentType' => $this->assetSource->getContentType($filePath),
             ]
         );
     }
@@ -294,7 +296,7 @@ class Repository implements ResetAfterRequestInterface
                     'baseUrl' => $url,
                     'areaType' => $area,
                     'themePath' => $themePath,
-                    'localeCode' => $locale
+                    'localeCode' => $locale,
                 ]
             );
         }
@@ -320,7 +322,7 @@ class Repository implements ResetAfterRequestInterface
                 'context' => $similarTo->getContext(),
                 'filePath' => $filePath,
                 'module' => $module,
-                'contentType' => $this->assetSource->getContentType($filePath)
+                'contentType' => $this->assetSource->getContentType($filePath),
             ]
         );
     }
@@ -351,7 +353,7 @@ class Repository implements ResetAfterRequestInterface
                 'context' => $context,
                 'filePath' => $filePath,
                 'module' => '',
-                'contentType' => $contentType
+                'contentType' => $contentType,
             ]
         );
     }

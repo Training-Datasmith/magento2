@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class InfoTest extends TestCase
                 'context' => $this->contextMock,
                 'registry' => $this->registryMock,
                 'paymentData' => $this->paymentHelperMock,
-                'encryptor' => $this->encryptorInterfaceMock
+                'encryptor' => $this->encryptorInterfaceMock,
             ]
         );
     }
@@ -114,7 +115,7 @@ class InfoTest extends TestCase
     {
         return [
             ['cc_number', 'cc_number_enc'],
-            ['cc_cid', 'cc_cid_enc']
+            ['cc_cid', 'cc_cid_enc'],
         ];
     }
 
@@ -252,7 +253,7 @@ class InfoTest extends TestCase
     {
         return [
             [['key1' => 'data1', 'key2' => 'data2'], null],
-            ['key', 'data']
+            ['key', 'data'],
         ];
     }
 

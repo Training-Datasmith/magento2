@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Integration\Model\UserToken;
 
 use Magento\Framework\Api\ExtensionAttributesFactory;
-use Magento\Integration\Api\Data\UserTokenParametersInterface;
 use Magento\Integration\Api\Data\UserTokenParametersExtensionInterface;
+use Magento\Integration\Api\Data\UserTokenParametersInterface;
 
 /**
  * @inheritDoc

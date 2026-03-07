@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\ResourceModel\Order\Address;
 
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Sales\Model\Order\Payment;
-use Magento\Sales\Model\Order;
-use Magento\Sales\Api\Data\OrderAddressInterface as OrderAddress;
 use Magento\Backend\Model\Locale\Resolver;
 use Magento\Framework\Locale\ResolverInterface;
+use Magento\Sales\Api\Data\OrderAddressInterface as OrderAddress;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Payment;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -50,7 +51,7 @@ class CollectionTest extends TestCase
             OrderAddress::CITY => 'Montgomery',
             OrderAddress::EMAIL => 'admin@example.com',
             OrderAddress::TELEPHONE => '11111111',
-            OrderAddress::COUNTRY_ID => 'US'
+            OrderAddress::COUNTRY_ID => 'US',
         ];
         $billingAddress = Bootstrap::getObjectManager()->create(OrderAddress::class, ['data' => $addressData]);
         $billingAddress->setAddressType('billing');

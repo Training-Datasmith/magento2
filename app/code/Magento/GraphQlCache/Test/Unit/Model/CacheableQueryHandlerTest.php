@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class CacheableQueryHandlerTest extends TestCase
             [
                 'cacheableQuery' => $this->cacheableQueryMock,
                 'request' => $this->requestMock,
-                'identityPool' => $this->identityPoolMock
+                'identityPool' => $this->identityPoolMock,
             ]
         );
     }
@@ -69,7 +70,7 @@ class CacheableQueryHandlerTest extends TestCase
     ): void {
         $cacheData = [
             'cacheIdentity' => IdentityInterface::class,
-            'cacheTag' => 'cat_p'
+            'cacheTag' => 'cat_p',
         ];
         $mockIdentity = $this->createPartialMock(
             IdentityInterface::class,
@@ -96,14 +97,14 @@ class CacheableQueryHandlerTest extends TestCase
     {
         return [
             [
-                "resolvedData" => [
-                    "id" => 10,
-                    "name" => "TesName",
-                    "sku" => "TestSku"
+                'resolvedData' => [
+                    'id' => 10,
+                    'name' => 'TesName',
+                    'sku' => 'TestSku',
                 ],
-                "identities" => ["cat_p", "cat_p_10"],
-                "expectedCacheTags" => ["cat_p", "cat_p_10"]
-            ]
+                'identities' => ['cat_p', 'cat_p_10'],
+                'expectedCacheTags' => ['cat_p', 'cat_p_10'],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,52 +38,52 @@ class SelectTest extends TestCase
                 'distinct' => [
                     'renderer' => new DistinctRenderer(),
                     'sort' => 100,
-                    'part' => 'distinct'
+                    'part' => 'distinct',
                 ],
                 'columns' => [
                     'renderer' => new ColumnsRenderer($quote),
                     'sort' => 200,
-                    'part' => 'columns'
+                    'part' => 'columns',
                 ],
                 'union' => [
                     'renderer' => new UnionRenderer(),
                     'sort' => 300,
-                    'part' => 'union'
+                    'part' => 'union',
                 ],
                 'from' => [
                     'renderer' => new FromRenderer($quote),
                     'sort' => 400,
-                    'part' => 'from'
+                    'part' => 'from',
                 ],
                 'where' => [
                     'renderer' => new WhereRenderer(),
                     'sort' => 500,
-                    'part' => 'where'
+                    'part' => 'where',
                 ],
                 'group' => [
                     'renderer' => new GroupRenderer($quote),
                     'sort' => 600,
-                    'part' => 'group'
+                    'part' => 'group',
                 ],
                 'having' => [
                     'renderer' => new HavingRenderer(),
                     'sort' => 700,
-                    'part' => 'having'
+                    'part' => 'having',
                 ],
                 'order' => [
                     'renderer' => new OrderRenderer($quote),
                     'sort' => 800,
-                    'part' => 'order'
+                    'part' => 'order',
                 ],
                 'limit' => [
                     'renderer' => new LimitRenderer(),
                     'sort' => 900,
-                    'part' => 'limitcount'
+                    'part' => 'limitcount',
                 ],
                 'for_update' => [
                     'renderer' => new ForUpdateRenderer(),
                     'sort' => 1000,
-                    'part' => 'forupdate'
+                    'part' => 'forupdate',
                 ],
             ]
         );
@@ -104,7 +105,7 @@ class SelectTest extends TestCase
         $this->assertEquals("SELECT `test`.* FROM `test` WHERE (field LIKE '%value?%')", $select->assemble());
 
         $select = new Select($this->_getConnectionMockWithMockedQuote(1, "'1', '2', '4', '8'"), $renderer);
-        $select->from('test')->where("id IN (?)", [1, 2, 4, 8]);
+        $select->from('test')->where('id IN (?)', [1, 2, 4, 8]);
         $this->assertEquals("SELECT `test`.* FROM `test` WHERE (id IN ('1', '2', '4', '8'))", $select->assemble());
     }
 

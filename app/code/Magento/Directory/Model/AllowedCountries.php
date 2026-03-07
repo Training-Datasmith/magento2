@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -96,7 +98,7 @@ class AllowedCountries
             case ScopeInterface::SCOPE_STORES:
                 return [$this->storeManager->getStore()->getId()];
             default:
-                throw new \InvalidArgumentException("Invalid scope is specified");
+                throw new \InvalidArgumentException('Invalid scope is specified');
         }
     }
 

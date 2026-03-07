@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@
 declare(strict_types=1);
 
 use Magento\Cms\Model\Page as PageModel;
-use Magento\Cms\Model\ResourceModel\Page as PageResource;
 use Magento\Cms\Model\PageFactory as PageModelFactory;
+use Magento\Cms\Model\ResourceModel\Page as PageResource;
 use Magento\TestFramework\Cms\Model\CustomLayoutManager;
 use Magento\TestFramework\Helper\Bootstrap;
 
@@ -16,8 +17,8 @@ $objectManager = Bootstrap::getObjectManager();
 $objectManager->configure([
     'preferences' => [
         \Magento\Cms\Model\Page\CustomLayoutManagerInterface::class =>
-            \Magento\TestFramework\Cms\Model\CustomLayoutManager::class
-    ]
+            \Magento\TestFramework\Cms\Model\CustomLayoutManager::class,
+    ],
 ]);
 $pageFactory = $objectManager->get(PageModelFactory::class);
 

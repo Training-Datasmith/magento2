@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,13 +10,12 @@ namespace Magento\Eav\Test\Fixture;
 
 use Magento\Eav\Api\AttributeOptionManagementInterface;
 use Magento\Eav\Api\AttributeRepositoryInterface;
-use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
-use Magento\TestFramework\Fixture\DataFixtureInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
+use Magento\TestFramework\Fixture\DataFixtureInterface;
 
 class AttributeOption implements DataFixtureInterface
 {
@@ -25,7 +25,7 @@ class AttributeOption implements DataFixtureInterface
         'label' => 'Option Label %uniqid%',
         'sort_order' => null,
         'store_labels' => '',
-        'is_default' => false
+        'is_default' => false,
     ];
 
     /**
@@ -76,7 +76,7 @@ class AttributeOption implements DataFixtureInterface
                 __(
                     '"%field" value is required to create an attribute option',
                     [
-                        'field' => 'entity_type_id'
+                        'field' => 'entity_type_id',
                     ]
                 )
             );
@@ -87,7 +87,7 @@ class AttributeOption implements DataFixtureInterface
                 __(
                     '"%field" value is required to create an attribute option',
                     [
-                        'field' => 'attribute_code'
+                        'field' => 'attribute_code',
                     ]
                 )
             );
@@ -108,7 +108,7 @@ class AttributeOption implements DataFixtureInterface
             [
                 'entityType' => $entityType,
                 'attributeCode' => $attributeCode,
-                'option' => $mergedData
+                'option' => $mergedData,
             ]
         );
 

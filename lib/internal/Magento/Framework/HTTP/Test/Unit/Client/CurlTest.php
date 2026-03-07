@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class CurlTest extends TestCase
                 'Normal=OK',
                 'Uppercase=OK',
                 'Lowercase=OK',
-            ]
+            ],
         ], $headers);
 
         // Validate status

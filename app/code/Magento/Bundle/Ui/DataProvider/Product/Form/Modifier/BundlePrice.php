@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Bundle\Model\Product\Price;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
+use Magento\Framework\Stdlib\ArrayManager;
 
 /**
  * Customize Price field
  */
 class BundlePrice extends AbstractModifier
 {
-    const CODE_PRICE_TYPE = 'price_type';
-    const CODE_TAX_CLASS_ID = 'tax_class_id';
+    public const CODE_PRICE_TYPE = 'price_type';
+    public const CODE_TAX_CLASS_ID = 'tax_class_id';
 
     /**
      * @var ArrayManager
@@ -53,11 +56,11 @@ class BundlePrice extends AbstractModifier
                 'disabled' => (bool)$this->locator->getProduct()->getId(),
                 'valueMap' => [
                     'false' => '1',
-                    'true' => '0'
+                    'true' => '0',
                 ],
                 'validation' => [
-                    'required-entry' => false
-                ]
+                    'required-entry' => false,
+                ],
             ]
         );
 
@@ -73,7 +76,7 @@ class BundlePrice extends AbstractModifier
                 'imports' => [
                     'disabled' => 'ns = ${ $.ns }, index = ' . static::CODE_PRICE_TYPE . ':checked',
                     '__disableTmpl' => ['disabled' => false],
-                ]
+                ],
             ]
         );
 
@@ -89,7 +92,7 @@ class BundlePrice extends AbstractModifier
                 'imports' => [
                     'disabled' => 'ns = ${ $.ns }, index = ' . static::CODE_PRICE_TYPE . ':checked',
                     '__disableTmpl' => ['disabled' => false],
-                ]
+                ],
             ]
         );
         if ($this->locator->getProduct()->getPriceType() == Price::PRICE_TYPE_DYNAMIC) {
@@ -103,8 +106,8 @@ class BundlePrice extends AbstractModifier
                 $meta,
                 [
                     'service' => [
-                        'template' => ''
-                    ]
+                        'template' => '',
+                    ],
                 ]
             );
         }

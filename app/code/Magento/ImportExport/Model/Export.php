@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -80,7 +82,7 @@ class Export extends \Magento\ImportExport\Model\AbstractModel
         'decimal' => self::FILTER_TYPE_NUMBER,
         'int' => self::FILTER_TYPE_NUMBER,
         'varchar' => self::FILTER_TYPE_INPUT,
-        'text' => self::FILTER_TYPE_INPUT
+        'text' => self::FILTER_TYPE_INPUT,
     ];
 
     /**

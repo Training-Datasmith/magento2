@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,7 +26,6 @@ interface OperationRepositoryInterface
      * )
      * @param string $groupId
      * @param int $operationId
-     * @return OperationInterface
      */
     public function create($topicName, $entityParams, $groupId, $operationId): OperationInterface;
 }

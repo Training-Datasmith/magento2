@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Controller\Adminhtml\Widget;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -12,7 +15,7 @@ class BuildWidget extends \Magento\Backend\App\Action implements HttpPostActionI
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
+    public const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
 
     /**
      * @var \Magento\Widget\Model\Widget

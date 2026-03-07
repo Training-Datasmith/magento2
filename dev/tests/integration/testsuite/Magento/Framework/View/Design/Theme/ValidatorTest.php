@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test theme data validator
  */
+
 namespace Magento\Framework\View\Design\Theme;
 
 class ValidatorTest extends \PHPUnit\Framework\TestCase
@@ -67,7 +70,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
             'theme_title' => 'Space theme',
             'parent_theme' => null,
             'theme_path' => 'default/space',
-            'preview_image' => 'images/preview.png'
+            'preview_image' => 'images/preview.png',
         ];
     }
 
@@ -83,7 +86,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
             'theme_title' => '',
             'parent_theme' => null,
             'theme_path' => 'default/space',
-            'preview_image' => 'images/preview.png'
+            'preview_image' => 'images/preview.png',
         ];
     }
 }

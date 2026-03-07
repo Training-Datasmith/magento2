@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class FormTest extends TestCase
             [
                 'paypalConfigFactory' => $paypalConfigFactory,
                 'layout' => $layout,
-                'localeResolver' => $localeResolver
+                'localeResolver' => $localeResolver,
             ]
         );
     }

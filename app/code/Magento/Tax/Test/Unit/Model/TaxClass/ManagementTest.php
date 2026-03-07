@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ManagementTest extends TestCase
             [
                 'filterBuilder' => $this->filterBuilder,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
-                'classRepository' => $this->classRepository
+                'classRepository' => $this->classRepository,
             ]
         );
     }

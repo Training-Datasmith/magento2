@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\Eav\Model\Entity\Context;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DataObject;
 use Magento\Framework\DB\Adapter\AdapterInterface as Adapter;
 use Magento\Framework\DB\Select;
-use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -214,7 +215,7 @@ class CategoryTest extends TestCase
             'uniqueValidator' => [$abstractEntityReflection, $uniqueValidatorMock],
             'attributeLoader' => [$abstractEntityReflection, $attributeLoaderMock],
             'connectionName' => [$reflection, 'catalog'],
-            '_categoryProductTable' => [$reflection, null]
+            '_categoryProductTable' => [$reflection, null],
         ];
 
         foreach ($properties as $propertyName => list($reflectionClass, $value)) {
@@ -272,8 +273,8 @@ class CategoryTest extends TestCase
             ->willReturn(
                 [
                     self::STUB_PRIMARY_KEY => [
-                        'COLUMNS_LIST' => ['Column']
-                    ]
+                        'COLUMNS_LIST' => ['Column'],
+                    ],
                 ]
             );
 
@@ -441,7 +442,7 @@ class CategoryTest extends TestCase
     public function testGetCategoryWithChildren(): void
     {
         $this->connectionMock->method('fetchAll')->willReturn([
-            ['entity_id' => 1, 'parent_id' => 0]
+            ['entity_id' => 1, 'parent_id' => 0],
         ]);
 
         $result = $this->category->getCategoryWithChildren(1);
@@ -624,7 +625,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'entity_id' => 3,
             'posted_products' => null,
-            'products_position' => []
+            'products_position' => [],
         ]);
 
         $reflection = new \ReflectionClass(Category::class);
@@ -638,7 +639,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'entity_id' => 3,
             'posted_products' => [1 => 10, 2 => 20],
-            'products_position' => []
+            'products_position' => [],
         ]);
 
         $this->connectionMock->method('delete')->willReturn(1);
@@ -663,7 +664,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'skip_delete_children' => false,
             'path' => '1/2/3',
-            'entity_id' => 3
+            'entity_id' => 3,
         ]);
 
         $collectionMock = $this->createMock(\Magento\Catalog\Model\ResourceModel\Category\Collection::class);
@@ -773,7 +774,7 @@ class CategoryTest extends TestCase
     {
         $categoryMock = new \Magento\Framework\DataObject([
             'is_active' => 1,
-            'deleted_children_ids' => [4, 5]
+            'deleted_children_ids' => [4, 5],
         ]);
 
         $indexerProcessorMock = $this->createMock(Processor::class);
@@ -803,7 +804,7 @@ class CategoryTest extends TestCase
             'position' => 1,
             'path' => '1/2',
             'parent_id' => 2,
-            'created_in' => 1
+            'created_in' => 1,
         ]);
 
         $this->connectionMock->method('update')->willReturn(1);
@@ -826,7 +827,7 @@ class CategoryTest extends TestCase
             'entity_id' => 3,
             'path' => '1/2/3',
             'posted_products' => null,
-            'products_position' => []
+            'products_position' => [],
         ]);
 
         $this->connectionMock->method('update')->willReturn(1);
@@ -941,7 +942,7 @@ class CategoryTest extends TestCase
             'attribute_set_id' => null,
             'position' => null,
             'path' => '1/2',
-            'created_in' => null
+            'created_in' => null,
         ]);
 
         $this->entityType->method('getDefaultAttributeSetId')->willReturn(3);
@@ -967,7 +968,7 @@ class CategoryTest extends TestCase
             'attribute_set_id' => 3,
             'position' => 5,
             'path' => '1/2',
-            'created_in' => 2
+            'created_in' => 2,
         ]);
 
         $this->entityType->method('getDefaultAttributeSetId')->willReturn(3);
@@ -1001,7 +1002,7 @@ class CategoryTest extends TestCase
             $connectionMock->method('fetchOne')->willReturn(45);
             $connectionMock->method('fetchAll')->willReturn([
                 ['entity_id' => 1, 'parent_id' => 0, 'path' => '1', 'is_anchor' => 1],
-                ['entity_id' => 2, 'parent_id' => 1, 'path' => '1/2', 'is_anchor' => 1]
+                ['entity_id' => 2, 'parent_id' => 1, 'path' => '1/2', 'is_anchor' => 1],
             ]);
 
             // Inject connection using reflection
@@ -1093,7 +1094,7 @@ class CategoryTest extends TestCase
     {
         $categoryMock = new \Magento\Framework\DataObject([
             'skip_delete_children' => false,
-            'path' => '1/2'
+            'path' => '1/2',
         ]);
 
         $collectionMock = $this->createMock(\Magento\Catalog\Model\ResourceModel\Category\Collection::class);
@@ -1120,7 +1121,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'path' => '1/2/',
             'entity_id' => 3,
-            'posted_products' => null
+            'posted_products' => null,
         ]);
 
         $this->connectionMock->method('update')->willReturn(1);
@@ -1140,7 +1141,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'entity_id' => 1,
             'posted_products' => [2 => 10, 3 => 20],
-            'products_position' => [3 => 15, 4 => 25]
+            'products_position' => [3 => 15, 4 => 25],
         ]);
 
         $this->connectionMock->expects($this->atLeastOnce())->method('delete');
@@ -1228,11 +1229,11 @@ class CategoryTest extends TestCase
     {
         $categoryMock = new \Magento\Framework\DataObject([
             'parent_id' => 1,
-            'position' => 5
+            'position' => 5,
         ]);
 
         $newParentMock = new \Magento\Framework\DataObject([
-            'entity_id' => 2
+            'entity_id' => 2,
         ]);
 
         $this->connectionMock->method('fetchOne')->willReturn(10);
@@ -1249,11 +1250,11 @@ class CategoryTest extends TestCase
     {
         $categoryMock = new \Magento\Framework\DataObject([
             'parent_id' => 1,
-            'position' => 5
+            'position' => 5,
         ]);
 
         $newParentMock = new \Magento\Framework\DataObject([
-            'entity_id' => 2
+            'entity_id' => 2,
         ]);
 
         $this->connectionMock->method('quoteIdentifier')->willReturnArgument(0);
@@ -1270,7 +1271,7 @@ class CategoryTest extends TestCase
         $categoryMock = new \Magento\Framework\DataObject([
             'path' => '1/2',
             'store_id' => 1,
-            'level' => 2
+            'level' => 2,
         ]);
 
         $attributeMock = $this->createMock(\Magento\Eav\Model\Entity\Attribute::class);
@@ -1299,7 +1300,7 @@ class CategoryTest extends TestCase
         // This method calls $category->getCollection() which is difficult to mock for DataObject
         try {
             $categoryMock = new \Magento\Framework\DataObject([
-                'path_ids' => [1, 2, 3]
+                'path_ids' => [1, 2, 3],
             ]);
             $this->category->getParentDesignCategory($categoryMock);
             $this->assertTrue(true);  // Code executed
@@ -1317,7 +1318,7 @@ class CategoryTest extends TestCase
             'position' => null,  // Will trigger position calculation
             'path' => '1/2',
             'entity_id' => null, // No ID - will append '/'
-            'created_in' => 1    // Will increment children_count
+            'created_in' => 1,    // Will increment children_count
         ]);
 
         $this->entityType->method('getDefaultAttributeSetId')->willReturn(3);
@@ -1344,7 +1345,7 @@ class CategoryTest extends TestCase
             'position' => 10,
             'path' => '1/2',
             'entity_id' => 3,  // Has ID
-            'created_in' => null  // No created_in - should increment
+            'created_in' => null,  // No created_in - should increment
         ]);
 
         $this->entityType->method('getDefaultAttributeSetId')->willReturn(3);
@@ -1367,7 +1368,7 @@ class CategoryTest extends TestCase
         // Test branch where isObjectNew() returns false
         $categoryMock = new \Magento\Framework\DataObject([
             'children_count' => 5,
-            'attribute_set_id' => 3
+            'attribute_set_id' => 3,
         ]);
 
         $this->entityType->method('getDefaultAttributeSetId')->willReturn(3);
@@ -1402,7 +1403,7 @@ class CategoryTest extends TestCase
                 ->willReturnOnConsecutiveCalls($selectMock1, $selectMock2);
             $connectionMock->method('fetchOne')->willReturn(45);
             $connectionMock->method('fetchAll')->willReturn([
-                ['row_id' => 1, 'entity_id' => 1, 'parent_id' => 0, 'path' => '1', 'is_anchor' => 1]
+                ['row_id' => 1, 'entity_id' => 1, 'parent_id' => 0, 'path' => '1', 'is_anchor' => 1],
             ]);
 
             $metadataMock = $this->createMock(\Magento\Framework\EntityManager\EntityMetadataInterface::class);
@@ -1457,7 +1458,7 @@ class CategoryTest extends TestCase
 
         $categoryMock = new \Magento\Framework\DataObject([
             'skip_delete_children' => false,
-            'path' => '1/2'
+            'path' => '1/2',
         ]);
 
         $result = $this->category->deleteChildren($categoryMock);
@@ -1532,7 +1533,7 @@ class CategoryTest extends TestCase
             'setChildrenCount',
             'hasPosition',
             'hasLevel',
-            'hasParentId'
+            'hasParentId',
         ]);
 
         $categoryMock->method('isObjectNew')->willReturn(true);
@@ -1603,7 +1604,7 @@ class CategoryTest extends TestCase
         $this->connectionMock->method('fetchOne')->willReturn(45);
         $this->connectionMock->method('fetchAll')->willReturn([
             ['row_id' => 1, 'entity_id' => 1, 'parent_id' => 0, 'path' => '1', 'is_anchor' => 1],
-            ['row_id' => 2, 'entity_id' => 2, 'parent_id' => 1, 'path' => '1/2', 'is_anchor' => 1]
+            ['row_id' => 2, 'entity_id' => 2, 'parent_id' => 1, 'path' => '1/2', 'is_anchor' => 1],
         ]);
 
         $metadataMock = $this->createMock(\Magento\Framework\EntityManager\EntityMetadataInterface::class);
@@ -1663,7 +1664,7 @@ class CategoryTest extends TestCase
                 'addAttributeToFilter',
                 'setOrder',
                 'load',
-                'getFirstItem'
+                'getFirstItem',
             ])->getMock();
 
         $collectionMock->method('setStore')->willReturnSelf();

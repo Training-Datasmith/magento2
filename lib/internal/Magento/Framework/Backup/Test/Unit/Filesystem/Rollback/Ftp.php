@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-
 /**
  * Mock Rollback worker for rolling back via ftp
  */
+
 namespace Magento\Framework\Backup\Test\Unit\Filesystem\Rollback;
 
 use Magento\Framework\Backup\Filesystem\Rollback\AbstractRollback;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'firstname' => 'John',
                         'lastname' => 'Doe',
                         'default_billing' => true,
-                        'default_shipping' => true
+                        'default_shipping' => true,
                     ],
                     [
                         'country_id' => 'US',
@@ -74,9 +75,9 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'firstname' => 'John',
                         'lastname' => 'Doe',
                         'default_billing' => false,
-                        'default_shipping' => false
-                    ]
-                ]
+                        'default_shipping' => false,
+                    ],
+                ],
             ],
             'customer'
         )
@@ -89,7 +90,7 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
 
         $this->assertEquals(
             [
-                'deleteCustomerAddressV2' => true
+                'deleteCustomerAddressV2' => true,
             ],
             $this->graphQlMutation(
                 $this->getDeleteCustomerAddressV2Mutation(),
@@ -116,9 +117,9 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -151,9 +152,9 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -187,16 +188,16 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer1'
         ),
         DataFixture(
             Customer::class,
             [
-                'email' => 'customer2@example.com'
+                'email' => 'customer2@example.com',
             ],
             'customer2'
         )
@@ -239,9 +240,9 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
                         'firstname' => 'John',
                         'lastname' => 'Doe',
                         'default_billing' => true,
-                        'default_shipping' => true
-                    ]
-                ]
+                        'default_shipping' => true,
+                    ],
+                ],
             ],
             'customer'
         )
@@ -271,7 +272,7 @@ class DeleteCustomerAddressV2Test extends GraphQlAbstract
     private function getCustomerAuthHeaders(string $email): array
     {
         return [
-            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password')
+            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password'),
         ];
     }
 

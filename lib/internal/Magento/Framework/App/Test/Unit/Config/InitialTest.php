@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Cache\Type\Config;
 use Magento\Framework\App\Config\Initial;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class InitialTest extends TestCase
@@ -81,7 +82,7 @@ class InitialTest extends TestCase
         return [
             ['default', ['key' => 'default_value']],
             ['stores|default', ['key' => 'store_value']],
-            ['websites|default', ['key' => 'website_value']]
+            ['websites|default', ['key' => 'website_value']],
         ];
     }
 

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter;
 
-use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
 use Magento\AdvancedSearch\Model\Client\ClientFactoryInterface;
 use Magento\AdvancedSearch\Model\Client\ClientInterface as Elasticsearch;
+use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
 use Psr\Log\LoggerInterface;
 
 /**

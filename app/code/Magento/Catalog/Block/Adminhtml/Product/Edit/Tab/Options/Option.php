@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options;
 
 use Magento\Backend\Block\Widget;
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
@@ -467,7 +468,7 @@ class Option extends Widget
         $containers[] = '$(this).up(1)';
         $containers = implode(',', $containers);
         $localId = $this->getFieldId() . '_' . $id . '_' . $selectIdHtml . $name . '_use_default';
-        $localName = "options_use_default[" . $id . "]" . $selectNameHtml . "[" . $name . "]";
+        $localName = 'options_use_default[' . $id . ']' . $selectNameHtml . '[' . $name . ']';
         $useDefault =
             '<div class="field-service">'
             . '<input type="checkbox" class="use-default-control"'

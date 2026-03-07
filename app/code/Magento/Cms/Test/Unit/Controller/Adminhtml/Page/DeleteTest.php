@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Cms\Controller\Adminhtml\Page\Delete;
 use Magento\Cms\Model\Page;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication\Config\Reader\XmlReader;
 
 use Magento\Framework\Communication\Config\ConfigParser;
@@ -19,7 +22,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      * @deprecated
      * @see ConfigParser::parseServiceMethod
      */
-    const SERVICE_METHOD_NAME_PATTERN = '/^([a-zA-Z\\\\]+)::([a-zA-Z]+)$/';
+    public const SERVICE_METHOD_NAME_PATTERN = '/^([a-zA-Z\\\\]+)::([a-zA-Z]+)$/';
 
     /**
      * @var ReflectionGenerator
@@ -139,8 +142,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                     Config::TOPIC_IS_SYNCHRONOUS => $isSynchronous,
                     Config::TOPIC_REQUEST => $requestSchema,
                     Config::TOPIC_REQUEST_TYPE => Config::TOPIC_REQUEST_TYPE_CLASS,
-                    Config::TOPIC_RESPONSE => ($isSynchronous) ? $responseSchema: null,
-                    Config::TOPIC_HANDLERS => $handlers
+                    Config::TOPIC_RESPONSE => ($isSynchronous) ? $responseSchema : null,
+                    Config::TOPIC_HANDLERS => $handlers,
                 ];
             } elseif ($requestSchema) {
                 $output[$topicName] = [
@@ -149,7 +152,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                     Config::TOPIC_REQUEST => $requestSchema,
                     Config::TOPIC_REQUEST_TYPE => Config::TOPIC_REQUEST_TYPE_CLASS,
                     Config::TOPIC_RESPONSE => null,
-                    Config::TOPIC_HANDLERS => $handlers
+                    Config::TOPIC_HANDLERS => $handlers,
                 ];
             }
         }
@@ -182,7 +185,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                 $this->xmlValidator->validateResponseHandlersType($serviceType, $methodName, $handlerName, $topicName);
                 $handlerNodes[$handlerName] = [
                     Config::HANDLER_TYPE => $serviceType,
-                    Config::HANDLER_METHOD => $methodName
+                    Config::HANDLER_METHOD => $methodName,
                 ];
             }
         }

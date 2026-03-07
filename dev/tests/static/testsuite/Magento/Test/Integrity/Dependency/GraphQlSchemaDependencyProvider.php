@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Test\Integrity\Dependency;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeReaderComposite;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeReaderComposite;
 use Magento\TestFramework\Inspection\Exception as InspectionException;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Customer\Model\Customer\Attribute\Backend\Shipping;
 use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\DataObject;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\TestCase;
 
 class ShippingTest extends TestCase
 {
@@ -61,14 +62,14 @@ class ShippingTest extends TestCase
             [
                 '__wakeup',
                 'getEntity',
-                'getAttributeCode'
+                'getAttributeCode',
             ]
         );
 
         $entity = $this->createPartialMock(
             AbstractEntity::class,
             [
-                'saveAttribute'
+                'saveAttribute',
             ]
         );
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Payment\Gateway\Validator;
 
 use Magento\Framework\ObjectManager\TMap;
 use Magento\Framework\ObjectManager\TMapFactory;
-use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 
 /**
  * Compiles a result using the results of multiple validators
@@ -43,7 +44,7 @@ class ValidatorComposite extends AbstractValidator
         $this->validators = $tmapFactory->create(
             [
                 'array' => $validators,
-                'type' => ValidatorInterface::class
+                'type' => ValidatorInterface::class,
             ]
         );
         $this->chainBreakingValidators = $chainBreakingValidators;

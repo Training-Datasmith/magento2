@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class AttributeTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture Magento/Weee/_files/fixed_product_attribute.php
      * @return void
      */
-    public function testDeleteEntityFixedTax() : void
+    public function testDeleteEntityFixedTax(): void
     {
         /* @var EavAttribute $attribute */
         $attribute = $this->objectManager->get(EavAttribute::class);

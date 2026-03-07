@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder\
 
 use Magento\Catalog\Api\CategoryListInterface;
 use Magento\Catalog\Model\Config\LayerCategoryConfig;
+use Magento\Framework\Api\Search\AggregationInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
@@ -16,7 +18,6 @@ use Magento\Framework\Search\Response\Aggregation;
 use Magento\Framework\Search\Response\AggregationFactory;
 use Magento\Framework\Search\Response\BucketFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Api\Search\AggregationInterface;
 
 /**
  * Class to include only direct subcategories of category in aggregation
@@ -124,7 +125,7 @@ class IncludeDirectChildrenOnly implements ResetAfterRequestInterface
             $categoryBucketResolved = $this->bucketFactory->create(
                 [
                     'name' => self::CATEGORY_BUCKET,
-                    'values' => $bucketValuesFiltered
+                    'values' => $bucketValuesFiltered,
                 ]
             );
             $buckets[self::CATEGORY_BUCKET] = $categoryBucketResolved;

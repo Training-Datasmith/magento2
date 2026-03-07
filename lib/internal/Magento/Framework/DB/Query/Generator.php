@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -109,7 +111,7 @@ class Generator
                 'batchSize' => $batchSize,
                 'correlationName' => $fieldCorrelationName,
                 'rangeField' => $rangeField,
-                'rangeFieldAlias' => $rangeFieldAlias
+                'rangeFieldAlias' => $rangeFieldAlias,
             ]
         );
     }

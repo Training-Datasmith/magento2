@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,12 +58,12 @@ class RestTest extends TestCase
         return [
             [
                 '/rest/all/schema?services=all',
-                null
+                null,
             ],
             [
                 '/rest/test/schema?services=all',
-                'test'
-            ]
+                'test',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class RepositoryTest extends TestCase
                 'searchResultsFactory' => $this->searchResultFactory,
                 'taxClassCollectionFactory' => $this->taxClassCollectionFactory,
                 'joinProcessor' => $this->extensionAttributesJoinProcessorMock,
-                'collectionProcessor' => $this->collectionProcessor
+                'collectionProcessor' => $this->collectionProcessor,
             ]
         );
     }
@@ -291,7 +292,7 @@ class RepositoryTest extends TestCase
             ->willReturn($originTaxClass);
 
         $this->taxClassResourceMock->expects($this->once())->method('save')->with($taxClass)
-            ->willThrowException(new LocalizedException(__("Something went wrong")));
+            ->willThrowException(new LocalizedException(__('Something went wrong')));
         $this->model->save($taxClass);
     }
 
@@ -349,7 +350,7 @@ class RepositoryTest extends TestCase
     {
         return [
             [''],
-            ['ERROR']
+            ['ERROR'],
         ];
     }
 }

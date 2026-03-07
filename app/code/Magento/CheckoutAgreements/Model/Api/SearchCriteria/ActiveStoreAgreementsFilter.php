@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,7 +48,7 @@ class ActiveStoreAgreementsFilter
      *
      * @return \Magento\Framework\Api\SearchCriteriaInterface
      */
-    public function buildSearchCriteria() : \Magento\Framework\Api\SearchCriteriaInterface
+    public function buildSearchCriteria(): \Magento\Framework\Api\SearchCriteriaInterface
     {
         $storeFilter = $this->filterBuilder
             ->setField('store_id')

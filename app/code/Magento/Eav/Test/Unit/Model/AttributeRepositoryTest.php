@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,10 +21,9 @@ use Magento\Eav\Model\ResourceModel\Entity\Attribute\CollectionFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -144,7 +144,7 @@ class AttributeRepositoryTest extends TestCase
                 'joinLeft',
                 'addAttributeGrouping',
                 'getIterator',
-                'getSize'
+                'getSize',
             ]
         );
         $attributeCollectionMock->expects($this->once())
@@ -164,13 +164,13 @@ class AttributeRepositoryTest extends TestCase
                 [
                     ['entity_type' => $eavEntityTypeTable],
                     'main_table.entity_type_id = entity_type.entity_type_id',
-                    []
+                    [],
                 ],
                 [
                     ['additional_table' => $additionalTable],
                     'main_table.attribute_id = additional_table.attribute_id',
-                    []
-                ]
+                    [],
+                ],
             ]);
         $attributeCollectionMock->expects($this->once())
             ->method('joinLeft')

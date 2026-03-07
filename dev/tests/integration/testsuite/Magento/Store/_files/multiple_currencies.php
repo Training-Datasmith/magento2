@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ use Magento\Config\Model\ResourceModel\Config as ConfigResource;
 use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\ResourceModel\Currency as CurrencyResource;
 use Magento\Store\Model\ScopeInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Store\Model\Store;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var Store $store */
@@ -39,6 +40,6 @@ $currencyResource = $objectManager->create(CurrencyResource::class);
 $currencyResource->saveRates(
     [
         'USD' => ['EUR' => 2],
-        'EUR' => ['USD' => 0.5]
+        'EUR' => ['USD' => 0.5],
     ]
 );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Framework\MessageQueue\Test\Unit\Config\Topology;
 
 use Magento\Framework\MessageQueue\Config\Topology\ConfigReaderPlugin as TopologyConfigReaderPlugin;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\MessageQueue\ConfigInterface;
 use Magento\Framework\MessageQueue\Topology\Config\CompositeReader as TopologyConfigCompositeReader;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -62,19 +63,19 @@ class ConfigReaderPluginTest extends TestCase
             [
                 'queue' => 'catalog_product_removed_queue',
                 'exchange' => 'magento-db',
-                'topic' => 'catalog.product.removed'
+                'topic' => 'catalog.product.removed',
             ],
             [
                 'queue' => 'inventory_qty_counter_queue',
                 'exchange' => 'magento',
-                'topic' => 'inventory.counter.updated'
-            ]
+                'topic' => 'inventory.counter.updated',
+            ],
         ];
         $magento = [
             'name' => 'magento',
             'type' => 'topic',
             'connection' => 'amqp',
-            'bindings' => []
+            'bindings' => [],
         ];
         $dbDefaultBinding = [
             'id' => 'defaultBinding',
@@ -94,14 +95,14 @@ class ConfigReaderPluginTest extends TestCase
                 'name' => 'magento-db',
                 'type' => 'topic',
                 'connection' => 'db',
-                'bindings' => ['defaultBinding' => $dbDefaultBinding]
+                'bindings' => ['defaultBinding' => $dbDefaultBinding],
             ],
             'magento--amqp' => [
                 'name' => 'magento',
                 'type' => 'topic',
                 'connection' => 'amqp',
-                'bindings' => ['defaultBinding' => $amqpDefaultBinding]
-            ]
+                'bindings' => ['defaultBinding' => $amqpDefaultBinding],
+            ],
         ];
         $expectedResult = [
             'magento' => $magento,
@@ -116,10 +117,10 @@ class ConfigReaderPluginTest extends TestCase
                         'destination' => 'catalog_product_removed_queue',
                         'disabled' => false,
                         'topic' => 'catalog.product.removed',
-                        'arguments' => []
+                        'arguments' => [],
                     ],
-                    'defaultBinding' => $dbDefaultBinding
-                ]
+                    'defaultBinding' => $dbDefaultBinding,
+                ],
             ],
             'magento--amqp' => [
                 'name' => 'magento',
@@ -132,11 +133,11 @@ class ConfigReaderPluginTest extends TestCase
                         'destination' => 'inventory_qty_counter_queue',
                         'disabled' => false,
                         'topic' => 'inventory.counter.updated',
-                        'arguments' => []
+                        'arguments' => [],
                     ],
-                    'defaultBinding' => $amqpDefaultBinding
-                ]
-            ]
+                    'defaultBinding' => $amqpDefaultBinding,
+                ],
+            ],
         ];
         $this->configMock->expects($this->atLeastOnce())
             ->method('getBinds')
@@ -145,13 +146,13 @@ class ConfigReaderPluginTest extends TestCase
             ->method('getExchangeByTopic')
             ->willReturnMap([
                 ['catalog.product.removed', 'magento-db'],
-                ['inventory.counter.updated', 'magento']
+                ['inventory.counter.updated', 'magento'],
             ]);
         $this->configMock->expects($this->exactly(2))
             ->method('getConnectionByTopic')
             ->willReturnMap([
                 ['catalog.product.removed', 'db'],
-                ['inventory.counter.updated', 'amqp']
+                ['inventory.counter.updated', 'amqp'],
             ]);
         $this->assertEquals($expectedResult, $this->plugin->afterRead($this->subjectMock, $result));
     }

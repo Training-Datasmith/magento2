@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductLinkAttributeInterface;
 use Magento\Catalog\Api\Data\ProductLinkAttributeInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductLinkTypeInterface;
@@ -16,6 +16,7 @@ use Magento\Catalog\Model\Product\Link;
 use Magento\Catalog\Model\Product\LinkFactory;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -72,7 +73,7 @@ class LinkTypeProviderTest extends TestCase
                 'linkTypeFactory' => $this->linkTypeFactoryMock,
                 'linkAttributeFactory' => $this->linkAttributeFactoryMock,
                 'linkFactory' => $this->linkFactoryMock,
-                'linkTypes' => $this->linkTypes
+                'linkTypes' => $this->linkTypes,
             ]
         );
     }
@@ -136,7 +137,7 @@ class LinkTypeProviderTest extends TestCase
     {
         return [
             ['test_product_link_2', ['data' => ['link_type_id' => 'test_code_2']]],
-            ['null_product', ['data' => ['link_type_id' => null]]]
+            ['null_product', ['data' => ['link_type_id' => null]]],
         ];
     }
 }

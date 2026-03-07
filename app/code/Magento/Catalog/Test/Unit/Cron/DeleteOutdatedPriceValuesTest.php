@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Cron;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Cron\DeleteOutdatedPriceValues;
 use Magento\Eav\Api\AttributeRepositoryInterface as AttributeRepository;
@@ -17,6 +17,7 @@ use Magento\Framework\App\Config\MutableScopeConfigInterface as ScopeConfig;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

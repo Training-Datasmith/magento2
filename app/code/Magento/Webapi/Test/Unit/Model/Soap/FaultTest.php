@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Webapi\Exception;
 use Magento\Webapi\Model\Soap\Fault;
 use Magento\Webapi\Model\Soap\Server;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -52,8 +53,8 @@ class FaultTest extends TestCase
             [
                 Escaper::class,
                 $this->getMockBuilder(Escaper::class)
-                ->disableOriginalConstructor()->onlyMethods([])->getMock()
-            ]
+                ->disableOriginalConstructor()->onlyMethods([])->getMock(),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->_requestMock = $this->createMock(RequestInterface::class);
@@ -190,7 +191,7 @@ XML;
                 [
                     Fault::NODE_DETAIL_PARAMETERS => ['key1' => 'value1', 'key2' => 'value2', 'value3'],
                     Fault::NODE_DETAIL_TRACE => 'Trace',
-                    'Invalid' => 'This node should be skipped'
+                    'Invalid' => 'This node should be skipped',
                 ],
                 $expectedXmls['expectedResultArrayDataDetails'],
                 'SOAP fault message with associated array data details is invalid.',
@@ -222,13 +223,13 @@ XML;
                 [Fault::NODE_DETAIL_PARAMETERS => ['key' => ['sub_key' => 'value']]],
                 $expectedXmls['expectedResultComplexDataDetails'],
                 'SOAP fault message with complex data details is invalid.',
-            ]
+            ],
         ];
     }
 
     public function testConstructor()
     {
-        $message = "Soap fault reason.";
+        $message = 'Soap fault reason.';
         $details = ['param1' => 'value1', 'param2' => 2];
         $code = 111;
         $webapiException = new Exception(
@@ -279,7 +280,7 @@ FAULT_XML;
         $this->assertEquals(
             $this->_sanitizeXML($expectedXml),
             $this->_sanitizeXML($actualXml),
-            "Soap fault is invalid."
+            'Soap fault is invalid.'
         );
     }
 

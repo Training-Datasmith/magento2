@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\Config\Reader;
 
 class Dom extends \Magento\Framework\Config\Reader\Filesystem
@@ -10,7 +13,7 @@ class Dom extends \Magento\Framework\Config\Reader\Filesystem
     /**
      * Name of an attribute that stands for data type of node values
      */
-    const TYPE_ATTRIBUTE = 'xsi:type';
+    public const TYPE_ATTRIBUTE = 'xsi:type';
 
     /**
      * @var array

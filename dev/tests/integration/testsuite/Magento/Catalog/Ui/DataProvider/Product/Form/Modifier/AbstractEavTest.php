@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ abstract class AbstractEavTest extends TestCase
             'media_image' => 'image',
             'price' => 'input',
             'weight' => 'input',
-            'gallery' => 'image'
+            'gallery' => 'image',
         ];
         $this->objectManager = Bootstrap::getObjectManager();
         $this->locatorMock = $this->createMock(LocatorInterface::class);

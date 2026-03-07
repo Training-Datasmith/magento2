@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Exception class for validator
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator;
 
 use Magento\Framework\Exception\InputException;
-use Magento\Framework\Phrase;
 use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Message\Error;
+use Magento\Framework\Phrase;
 
 /**
  * Exception to be thrown when data validation fails

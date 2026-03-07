@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,10 @@ declare(strict_types=1);
 /**
  * Test of theme customization model
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\Customization;
 use Magento\Framework\View\Design\Theme\Customization\Path;
 use Magento\Framework\View\Design\Theme\CustomizationInterface;
@@ -17,10 +20,9 @@ use Magento\Framework\View\Design\Theme\FileProviderInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\Theme\File;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CustomizationTest extends TestCase
 {
@@ -159,7 +161,7 @@ class CustomizationTest extends TestCase
         return [
             'physical' => [ThemeInterface::TYPE_PHYSICAL, 'getThemeFilesPath'],
             'virtual' => [ThemeInterface::TYPE_VIRTUAL, 'getCustomizationPath'],
-            'staging' => [ThemeInterface::TYPE_STAGING, 'getCustomizationPath']
+            'staging' => [ThemeInterface::TYPE_STAGING, 'getCustomizationPath'],
         ];
     }
 
@@ -189,8 +191,8 @@ class CustomizationTest extends TestCase
         $type = 'sample-type';
         foreach ($filesContent as $fileContent) {
             $file = $this->createPartialMock(File::class, ['__wakeup', 'save']);
-            $expects = is_string($fileContent['isCalled']) 
-                ? $this->createInvocationMatcher($fileContent['isCalled']) 
+            $expects = is_string($fileContent['isCalled'])
+                ? $this->createInvocationMatcher($fileContent['isCalled'])
                 : $fileContent['isCalled'];
             $file->expects($expects)->method('save')->willReturnSelf();
             $file->setData($fileContent['content']);
@@ -241,7 +243,7 @@ class CustomizationTest extends TestCase
                             'file_path' => 'css/custom_file2.css',
                             'content' => 'css content',
                             'sort_order' => 1,
-                        ]
+                        ],
                     ],
                     [
                         'isCalled' => 'once',
@@ -251,10 +253,10 @@ class CustomizationTest extends TestCase
                             'file_path' => 'css/custom_file3.css',
                             'content' => 'css content',
                             'sort_order' => 5,
-                        ]
+                        ],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

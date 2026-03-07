@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -30,11 +31,6 @@ use Throwable;
 class BulkManagement implements BulkManagementInterface
 {
     /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    /**
      * @var BulkSummaryInterfaceFactory
      */
     private $bulkSummaryFactory;
@@ -45,65 +41,26 @@ class BulkManagement implements BulkManagementInterface
     private $operationCollectionFactory;
 
     /**
-     * @var BulkPublisherInterface
-     */
-    private $publisher;
-
-    /**
-     * @var MetadataPool
-     */
-    private $metadataPool;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var UserContextInterface
-     */
-    private $userContext;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
      * BulkManagement constructor.
-     * @param EntityManager $entityManager
-     * @param BulkSummaryInterfaceFactory $bulkSummaryFactory
-     * @param CollectionFactory $operationCollectionFactory
-     * @param BulkPublisherInterface $publisher
-     * @param MetadataPool $metadataPool
-     * @param ResourceConnection $resourceConnection
-     * @param LoggerInterface $logger
-     * @param UserContextInterface $userContext
      */
     public function __construct(
-        EntityManager $entityManager,
+        private readonly EntityManager $entityManager,
         BulkSummaryInterfaceFactory $bulkSummaryFactory,
         CollectionFactory $operationCollectionFactory,
-        BulkPublisherInterface $publisher,
-        MetadataPool $metadataPool,
-        ResourceConnection $resourceConnection,
-        LoggerInterface $logger,
-        UserContextInterface $userContext
+        private readonly BulkPublisherInterface $publisher,
+        private readonly MetadataPool $metadataPool,
+        private readonly ResourceConnection $resourceConnection,
+        private readonly LoggerInterface $logger,
+        private readonly UserContextInterface $userContext
     ) {
-        $this->entityManager = $entityManager;
-        $this->bulkSummaryFactory= $bulkSummaryFactory;
+        $this->bulkSummaryFactory = $bulkSummaryFactory;
         $this->operationCollectionFactory = $operationCollectionFactory;
-        $this->metadataPool = $metadataPool;
-        $this->resourceConnection = $resourceConnection;
-        $this->publisher = $publisher;
-        $this->logger = $logger;
-        $this->userContext = $userContext;
     }
 
     /**
      * @inheritDoc
      */
-    public function scheduleBulk($bulkUuid, array $operations, $description, $userId = null)
+    public function scheduleBulk($bulkUuid, array $operations, $description, $userId = null): bool
     {
         $userType = $this->userContext->getUserType();
         if ($userType === null) {
@@ -147,7 +104,7 @@ class BulkManagement implements BulkManagementInterface
      * @param array $errorCodes list of corresponding error codes
      * @return int number of affected bulk operations
      */
-    public function retryBulk($bulkUuid, array $errorCodes)
+    public function retryBulk($bulkUuid, array $errorCodes): int
     {
         /** @var Collection $collection */
         $collection = $this->operationCollectionFactory->create();
@@ -161,7 +118,7 @@ class BulkManagement implements BulkManagementInterface
             $operation = reset($retriablyFailedOperations);
             //async consumer expects operations to be in the database
             // thus such operation should not be deleted but reopened
-            $shouldReopen = strpos($operation->getTopicName() ?? '', ConfigInterface::TOPIC_PREFIX) === 0;
+            $shouldReopen = str_starts_with($operation->getTopicName() ?? '', ConfigInterface::TOPIC_PREFIX);
             $metadata = $this->metadataPool->getMetadata(OperationInterface::class);
             $linkField = $metadata->getLinkField();
             $ids = [];
@@ -216,11 +173,8 @@ class BulkManagement implements BulkManagementInterface
 
     /**
      * Publish list of operations to the corresponding message queues.
-     *
-     * @param array $operations
-     * @return void
      */
-    private function publishOperations(array $operations)
+    private function publishOperations(array $operations): void
     {
         $operationsByTopics = [];
         foreach ($operations as $operation) {

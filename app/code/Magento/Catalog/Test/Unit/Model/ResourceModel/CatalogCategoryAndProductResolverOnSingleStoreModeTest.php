@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -54,20 +55,20 @@ class CatalogCategoryAndProductResolverOnSingleStoreModeTest extends TestCase
                 'id' => 1,
                 'name' => 'simple1',
                 'category_id' => '1',
-                'website_id' => '2'
+                'website_id' => '2',
             ],
             [
                 'id' => 2,
                 'name' => 'simple2',
                 'category_id' => '1',
-                'website_id' => '2'
+                'website_id' => '2',
             ],
             [
                 'id' => 3,
                 'name' => 'bundle1',
                 'category_id' => '1',
-                'website_id' => '2'
-            ]
+                'website_id' => '2',
+            ],
         ];
         $connection = $this->getConnection();
         $connection->method('fetchAll')->willReturn($catalogProducts);

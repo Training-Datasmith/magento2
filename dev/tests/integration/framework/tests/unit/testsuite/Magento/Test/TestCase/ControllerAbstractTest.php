@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -23,9 +24,9 @@ use Magento\TestFramework\Request;
 use Magento\TestFramework\Response;
 use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionException;
 
 /**
@@ -103,7 +104,7 @@ class ControllerAbstractTest extends AbstractController
                     [Manager::class, $this->messageManager],
                     [CookieManagerInterface::class, $this->cookieManagerMock],
                     [Json::class, $this->serializerMock],
-                    [InterpretationStrategyInterface::class, $this->interpretationStrategyMock]
+                    [InterpretationStrategyInterface::class, $this->interpretationStrategyMock],
                 ]
             );
     }

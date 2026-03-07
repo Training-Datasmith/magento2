@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Product\Compare;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Compare\Item as CompareItemModel;
 use Magento\Catalog\Model\ResourceModel\Product\Compare\Item as CompareItemResource;
 use Magento\Customer\Model\Config\Share;
@@ -16,6 +16,7 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -115,20 +116,20 @@ class ItemTest extends TestCase
                 'visitorId' => null,
                 'customerId' => 123,
                 'shouldExecuteQueries' => false,
-                'expectedQueryCount' => 0
+                'expectedQueryCount' => 0,
             ],
             'visitor_id_zero' => [
                 'visitorId' => 0,
                 'customerId' => 123,
                 'shouldExecuteQueries' => false,
-                'expectedQueryCount' => 0
+                'expectedQueryCount' => 0,
             ],
             'visitor_id_positive' => [
                 'visitorId' => 456,
                 'customerId' => 123,
                 'shouldExecuteQueries' => true,
-                'expectedQueryCount' => 2
-            ]
+                'expectedQueryCount' => 2,
+            ],
         ];
     }
 
@@ -249,15 +250,15 @@ class ItemTest extends TestCase
                 'product_id' => 101,
                 'store_id' => 1,
                 'customer_id' => null,
-                'visitor_id' => $visitorId
+                'visitor_id' => $visitorId,
             ],
             [
                 'catalog_compare_item_id' => 2,
                 'product_id' => 102,
                 'store_id' => 1,
                 'customer_id' => null,
-                'visitor_id' => $visitorId
-            ]
+                'visitor_id' => $visitorId,
+            ],
         ];
 
         $customerItems = [
@@ -266,8 +267,8 @@ class ItemTest extends TestCase
                 'product_id' => 101,
                 'store_id' => 1,
                 'customer_id' => $customerId,
-                'visitor_id' => 789
-            ]
+                'visitor_id' => 789,
+            ],
         ];
 
         return [$visitorItems, $customerItems];

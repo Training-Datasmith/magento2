@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order\Email\Sender;
 
+use Magento\Framework\DataObject;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Payment\Helper\Data as PaymentHelper;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Address\Renderer;
 use Magento\Sales\Model\Order\Email\Container\OrderIdentity;
 use Magento\Sales\Model\Order\Email\Container\Template;
 use Magento\Sales\Model\Order\Email\Sender;
 use Magento\Sales\Model\ResourceModel\Order as OrderResource;
-use Magento\Sales\Model\Order\Address\Renderer;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\DataObject;
 
 /**
  * Sends order email to the customer.
@@ -141,8 +142,8 @@ class OrderSender extends Sender
                 'customer_name' => $order->getCustomerName(),
                 'is_not_virtual' => $order->getIsNotVirtual(),
                 'email_customer_note' => $order->getEmailCustomerNote(),
-                'frontend_status_label' => $order->getFrontendStatusLabel()
-            ]
+                'frontend_status_label' => $order->getFrontendStatusLabel(),
+            ],
         ];
         $transportObject = new DataObject($transport);
 

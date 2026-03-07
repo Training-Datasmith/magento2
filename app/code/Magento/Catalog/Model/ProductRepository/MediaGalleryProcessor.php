@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\StateException;
-use Magento\Store\Model\Store;
 
 /**
  * Process Media gallery data for ProductRepository before save product.
@@ -84,7 +84,7 @@ class MediaGalleryProcessor
      * @throws LocalizedException
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function processMediaGallery(ProductInterface $product, array $mediaGalleryEntries) :void
+    public function processMediaGallery(ProductInterface $product, array $mediaGalleryEntries): void
     {
         $existingMediaGallery = $product->getMediaGallery('images');
         $newEntries = [];
@@ -123,7 +123,7 @@ class MediaGalleryProcessor
                     $existingEntry['removed'] = true;
                 }
             }
-            $product->setData('media_gallery', ["images" => $existingMediaGallery]);
+            $product->setData('media_gallery', ['images' => $existingMediaGallery]);
         } else {
             $newEntries = $mediaGalleryEntries;
         }
@@ -150,7 +150,7 @@ class MediaGalleryProcessor
     public function processNewMediaGalleryEntry(
         ProductInterface $product,
         array  $newEntry
-    ) :void {
+    ): void {
         /** @var ImageContentInterface $contentDataObject */
         $contentDataObject = $newEntry['content'];
 
@@ -194,7 +194,7 @@ class MediaGalleryProcessor
      * @param array $images
      * @return array
      */
-    private function determineImageRoles(ProductInterface $product, array $images) : array
+    private function determineImageRoles(ProductInterface $product, array $images): array
     {
         $imagesWithRoles = [];
         foreach ($images as $image) {

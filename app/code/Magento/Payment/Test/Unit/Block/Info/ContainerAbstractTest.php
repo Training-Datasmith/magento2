@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Payment\Block\Info\AbstractContainer
  */
+
 namespace Magento\Payment\Test\Unit\Block\Info;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;

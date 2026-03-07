@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -152,7 +153,7 @@ class PageServiceTest extends TestCase
         $expectedLayouts = [
             'layout1.xml',
             'layout2.xml',
-            'custom_layout.xml'
+            'custom_layout.xml',
         ];
 
         $this->customLayoutManagerMock->expects($this->once())

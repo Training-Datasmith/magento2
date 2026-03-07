@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ $objectManager = Bootstrap::getObjectManager();
 
 $rates = [
     'USD' => ['CNY' => '7.0000'],
-    'EUR' => ['CNY' => '7.0000']
+    'EUR' => ['CNY' => '7.0000'],
 ];
 /** @var Currency $currencyModel */
 $currencyModel = $objectManager->create(Currency::class);

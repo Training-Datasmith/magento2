@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class YesnoshortcutTest extends TestCase
     {
         $expectedResult = [
             ['value' => 1, 'label' => __('Yes (PayPal recommends this option)')],
-            ['value' => 0, 'label' => __('No')]
+            ['value' => 0, 'label' => __('No')],
         ];
         $this->assertEquals($expectedResult, $this->_model->toOptionArray());
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Adminhtml\Sales\Order\Items;
 
 use Magento\Catalog\Helper\Data as CatalogHelper;
@@ -255,7 +258,7 @@ class Renderer extends \Magento\Sales\Block\Adminhtml\Items\Renderer\DefaultRend
         if (!$this->isChildCalculated($item)) {
             $attributes = $this->getSelectionAttributes($item);
             if ($attributes) {
-                $result .= " " . $this->getOrderItem()->getOrder()->formatPrice($attributes['price']);
+                $result .= ' ' . $this->getOrderItem()->getOrder()->formatPrice($attributes['price']);
             }
         }
         return $result;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -46,5 +47,5 @@ return [
             'stock_indexer' => 'Instance_Type_Three',
         ],
     ],
-    'composableTypes' => ['type_one' => 'type_one', 'type_three' => 'type_three']
+    'composableTypes' => ['type_one' => 'type_one', 'type_three' => 'type_three'],
 ];

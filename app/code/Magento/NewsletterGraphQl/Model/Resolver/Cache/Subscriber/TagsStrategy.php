@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -20,6 +21,6 @@ class TagsStrategy implements StrategyInterface
      */
     public function getTags($object)
     {
-        return [sprintf('%s_%s', "SUBSCRIBER", $object->getCustomerId())];
+        return [sprintf('%s_%s', 'SUBSCRIBER', $object->getCustomerId())];
     }
 }

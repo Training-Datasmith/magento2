@@ -1,15 +1,17 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
-use Magento\Eav\Model\Entity\Type;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Eav\Model\Entity\Type;
 
 /**
  * Class to retrieve file uploader data for customer and customer address file & image attributes

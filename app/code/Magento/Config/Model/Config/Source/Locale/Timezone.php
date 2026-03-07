@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Locale timezone source
  */
+
 namespace Magento\Config\Model\Config\Source\Locale;
 
 /**
@@ -22,7 +25,7 @@ class Timezone implements \Magento\Framework\Option\ArrayInterface
         'Antarctica/Troll',
         'Asia/Chita',
         'Asia/Srednekolymsk',
-        'Pacific/Bougainville'
+        'Pacific/Bougainville',
     ];
 
     /**

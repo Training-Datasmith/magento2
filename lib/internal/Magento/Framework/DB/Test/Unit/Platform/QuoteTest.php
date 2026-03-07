@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\DB\Test\Unit\Platform;
 use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class QuoteTest extends TestCase
 {
@@ -192,7 +193,7 @@ class QuoteTest extends TestCase
             ['`some string`', null, '```some string```'],
             ['some.string', null, '`some`.`string`'],
             ['`some.string`', null, '```some`.`string```'],
-            [['`some`', '`string`'], null, '```some```.```string```']
+            [['`some`', '`string`'], null, '```some```.```string```'],
         ];
     }
 
@@ -206,7 +207,7 @@ class QuoteTest extends TestCase
             ['string', 'alias', '`string` ' . Select::SQL_AS . ' `alias`'],
             ['alias.string', 'alias', '`alias`.`string` ' . Select::SQL_AS . ' `alias`'],
             ['table.column', 'column', '`table`.`column`'],
-            [['`table`', '`column`'], 'alias', '```table```.```column``` ' . Select::SQL_AS . ' `alias`']
+            [['`table`', '`column`'], 'alias', '```table```.```column``` ' . Select::SQL_AS . ' `alias`'],
         ]);
     }
 }

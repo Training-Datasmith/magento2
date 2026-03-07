@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * System message
  *
@@ -18,13 +20,13 @@ namespace Magento\Framework\Notification;
  */
 interface MessageInterface
 {
-    const SEVERITY_CRITICAL = 1;
+    public const SEVERITY_CRITICAL = 1;
 
-    const SEVERITY_MAJOR = 2;
+    public const SEVERITY_MAJOR = 2;
 
-    const SEVERITY_MINOR = 3;
+    public const SEVERITY_MINOR = 3;
 
-    const SEVERITY_NOTICE = 4;
+    public const SEVERITY_NOTICE = 4;
 
     /**
      * Retrieve unique message identity

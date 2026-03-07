@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Source;
 
 class HandlingAction implements \Magento\Framework\Option\ArrayInterface
@@ -19,8 +22,8 @@ class HandlingAction implements \Magento\Framework\Option\ArrayInterface
             ],
             [
                 'value' => \Magento\Shipping\Model\Carrier\AbstractCarrier::HANDLING_ACTION_PERPACKAGE,
-                'label' => __('Per Package')
-            ]
+                'label' => __('Per Package'),
+            ],
         ];
     }
 }

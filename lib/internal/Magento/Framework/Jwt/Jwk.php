@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -324,7 +325,7 @@ class Jwk
             'x5c' => $this->getX509CertificateChain(),
             'x5t' => $this->getX509Sha1Thumbprint(),
             'x5t#S256' => $this->getX509Sha256Thumbprint(),
-            'kid' => $this->getKeyId()
+            'kid' => $this->getKeyId(),
         ];
         $data = array_merge($this->getAlgoData(), $data);
 

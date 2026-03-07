@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Api\Data;
 
 use Magento\Framework\Api\CustomAttributesDataInterface;
@@ -15,39 +18,39 @@ use Magento\Framework\Api\MetadataObjectInterface;
  */
 interface AttributeInterface extends CustomAttributesDataInterface, MetadataObjectInterface
 {
-    const ATTRIBUTE_ID = 'attribute_id';
+    public const ATTRIBUTE_ID = 'attribute_id';
 
-    const IS_UNIQUE = 'is_unique';
+    public const IS_UNIQUE = 'is_unique';
 
-    const SCOPE = 'scope';
+    public const SCOPE = 'scope';
 
-    const FRONTEND_CLASS = 'frontend_class';
+    public const FRONTEND_CLASS = 'frontend_class';
 
-    const ATTRIBUTE_CODE = 'attribute_code';
+    public const ATTRIBUTE_CODE = 'attribute_code';
 
-    const FRONTEND_INPUT = 'frontend_input';
+    public const FRONTEND_INPUT = 'frontend_input';
 
-    const IS_REQUIRED = 'is_required';
+    public const IS_REQUIRED = 'is_required';
 
-    const OPTIONS = 'options';
+    public const OPTIONS = 'options';
 
-    const IS_USER_DEFINED = 'is_user_defined';
+    public const IS_USER_DEFINED = 'is_user_defined';
 
-    const FRONTEND_LABEL = 'frontend_label';
+    public const FRONTEND_LABEL = 'frontend_label';
 
-    const FRONTEND_LABELS = 'frontend_labels';
+    public const FRONTEND_LABELS = 'frontend_labels';
 
-    const NOTE = 'note';
+    public const NOTE = 'note';
 
-    const BACKEND_TYPE = 'backend_type';
+    public const BACKEND_TYPE = 'backend_type';
 
-    const BACKEND_MODEL = 'backend_model';
+    public const BACKEND_MODEL = 'backend_model';
 
-    const SOURCE_MODEL = 'source_model';
+    public const SOURCE_MODEL = 'source_model';
 
-    const VALIDATE_RULES = 'validate_rules';
+    public const VALIDATE_RULES = 'validate_rules';
 
-    const ENTITY_TYPE_ID = 'entity_type_id';
+    public const ENTITY_TYPE_ID = 'entity_type_id';
 
     /**
      * Retrieve id of the attribute.

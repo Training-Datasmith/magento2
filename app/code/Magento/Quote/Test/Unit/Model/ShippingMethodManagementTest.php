@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,14 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Session;
 use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\AddressInterface as QuoteAddressInterface;
+use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\Quote\Api\Data\ShippingMethodInterfaceFactory;
 use Magento\Quote\Model\Cart\ShippingMethodConverter;
@@ -25,15 +28,12 @@ use Magento\Quote\Model\Quote\TotalsCollector;
 use Magento\Quote\Model\QuoteRepository;
 use Magento\Quote\Model\ResourceModel\Quote\Address as QuoteAddressResource;
 use Magento\Quote\Model\ShippingMethodManagement;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Sales\Api\Data\ShippingAssignmentInterface;
+use Magento\Sales\Api\Data\ShippingInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Quote\Api\Data\CartExtensionInterface;
-use Magento\Sales\Model\Order\ShippingAssignmentBuilder;
-use Magento\Sales\Api\Data\ShippingInterface;
-use Magento\Sales\Api\Data\ShippingAssignmentInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Customer\Model\Session;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -150,7 +150,7 @@ class ShippingMethodManagementTest extends TestCase
                 'save',
                 '__wakeup',
                 'getExtensionAttributes',
-                'getCustomer'
+                'getCustomer',
             ])
             ->getMock();
 

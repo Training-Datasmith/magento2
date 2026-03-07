@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme\Customization;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -17,7 +20,7 @@ class Path
     /**
      * Customization directory name
      */
-    const DIR_NAME = 'theme_customization';
+    public const DIR_NAME = 'theme_customization';
 
     /**
      * File name

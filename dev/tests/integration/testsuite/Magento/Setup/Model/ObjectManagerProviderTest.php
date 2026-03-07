@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,11 @@
 
 namespace Magento\Setup\Model;
 
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Application;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Tests ObjectManagerProvider

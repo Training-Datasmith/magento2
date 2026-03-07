@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Render;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Pricing\Price\FinalPrice;
 use Magento\Bundle\Pricing\Render\FinalPriceBox;
 use Magento\Catalog\Pricing\Price\CustomOptionPrice;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -108,7 +109,7 @@ class FinalPriceBoxTest extends TestCase
                 'optMaxValue' => 45.,
                 'custMinValue' => 0,
                 'custMaxValue' => 0,
-                'expectedShowRange' => true
+                'expectedShowRange' => true,
             ],
 
             'bundle options same boolean, custom options same boolean' => [
@@ -116,7 +117,7 @@ class FinalPriceBoxTest extends TestCase
                 'optMaxValue' => false,
                 'custMinValue' => false,
                 'custMaxValue' => false,
-                'expectedShowRange' => false
+                'expectedShowRange' => false,
             ],
 
             'bundle options same numeric, custom options same' => [
@@ -124,7 +125,7 @@ class FinalPriceBoxTest extends TestCase
                 'optMaxValue' => 45,
                 'custMinValue' => 1.0,
                 'custMaxValue' => 1,
-                'expectedShowRange' => false
+                'expectedShowRange' => false,
             ],
 
             'bundle options same numeric, custom options different' => [
@@ -132,8 +133,8 @@ class FinalPriceBoxTest extends TestCase
                 'optMaxValue' => 45.,
                 'custMinValue' => 0,
                 'custMaxValue' => 1,
-                'expectedShowRange' => true
-            ]
+                'expectedShowRange' => true,
+            ],
         ];
     }
 }

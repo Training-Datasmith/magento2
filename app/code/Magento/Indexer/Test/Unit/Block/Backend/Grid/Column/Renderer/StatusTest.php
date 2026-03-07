@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Backend\Block\Context;
 use Magento\Framework\DataObject;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Indexer\Block\Backend\Grid\Column\Renderer\Status;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class StatusTest extends TestCase
 {
@@ -50,16 +51,16 @@ class StatusTest extends TestCase
         return [
             'set1' => [
                 [StateInterface::STATUS_INVALID],
-                ['class' => 'grid-severity-critical', 'text' => 'Reindex required']
+                ['class' => 'grid-severity-critical', 'text' => 'Reindex required'],
             ],
             'set2' => [
                 [StateInterface::STATUS_VALID],
-                ['class' => 'grid-severity-notice', 'text' => 'Ready']
+                ['class' => 'grid-severity-notice', 'text' => 'Ready'],
             ],
             'set3' => [
                 [StateInterface::STATUS_WORKING],
-                ['class' => 'grid-severity-minor', 'text' => 'Processing']
-            ]
+                ['class' => 'grid-severity-minor', 'text' => 'Processing'],
+            ],
         ];
     }
 }

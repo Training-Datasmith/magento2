@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -283,14 +285,14 @@ class CartPriceRulesFixture extends Fixture
                         'value' => '1',
                         'new_child' => '',
                     ],
-                    '1--1'=> [
+                    '1--1' => [
                         'type' => \Magento\SalesRule\Model\Rule\Condition\Product\Found::class,
                         'aggregator' => 'all',
                         'value' => '1',
                         'new_child' => '',
                     ],
                     '1--1--1' => $firstCondition,
-                    '1--2' => $secondCondition
+                    '1--2' => $secondCondition,
                 ],
                 'actions' => [
                     1 => [
@@ -299,7 +301,7 @@ class CartPriceRulesFixture extends Fixture
                         'value' => '1',
                         'new_child' => '',
                     ],
-                ]
+                ],
             ];
         } else {
             // Shipping Region
@@ -335,7 +337,7 @@ class CartPriceRulesFixture extends Fixture
                         'new_child' => '',
                     ],
                     '1--1' => $firstCondition,
-                    '1--2' => $secondCondition
+                    '1--2' => $secondCondition,
                 ],
                 'actions' => [
                     1 => [
@@ -344,7 +346,7 @@ class CartPriceRulesFixture extends Fixture
                         'value' => '1',
                         'new_child' => '',
                     ],
-                ]
+                ],
             ];
         }
     }
@@ -456,7 +458,7 @@ class CartPriceRulesFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'cart_price_rules' => 'Cart Price Rules'
+            'cart_price_rules' => 'Cart Price Rules',
         ];
     }
 }

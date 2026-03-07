@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ return [
             "2:            <body>\n3:                <block class=\"Magento\Test\Block\" name=\"test.block\">\n" .
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"options\"/>\n6:                    </arguments>\n7:                </block>\n" .
-            "8:            </body>\n9:        </page>\n"
+            "8:            </body>\n9:        </page>\n",
         ],
     ],
     'url without path attribute' => [
@@ -41,7 +42,7 @@ return [
             "2:            <body>\n3:                <block class=\"Magento\Test\Block\" name=\"test.block\">\n" .
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"url\"/>\n6:                    </arguments>\n7:                </block>\n" .
-            "8:            </body>\n9:        </page>\n"
+            "8:            </body>\n9:        </page>\n",
         ],
     ],
     'url without param name' => [
@@ -63,7 +64,7 @@ return [
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"url\" path=\"module/controller/action\">\n6:                            <param/>\n" .
             "7:                        </argument>\n8:                    </arguments>\n9:                </block>\n" .
-            "10:            </body>\n"
+            "10:            </body>\n",
         ],
     ],
     'url with forbidden param attribute' => [
@@ -85,7 +86,7 @@ return [
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"url\" path=\"module/controller/action\">\n6:                            <param " .
             "name=\"paramName\" forbidden=\"forbidden\"/>\n7:                        </argument>\n" .
-            "8:                    </arguments>\n9:                </block>\n10:            </body>\n"
+            "8:                    </arguments>\n9:                </block>\n10:            </body>\n",
         ],
      ],
     'url with forbidden param sub-element' => [
@@ -107,7 +108,7 @@ return [
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"url\" path=\"module/controller/action\">\n6:                            <param " .
             "name=\"paramName\"><forbidden/></param>\n7:                        </argument>\n" .
-            "8:                    </arguments>\n9:                </block>\n10:            </body>\n"
+            "8:                    </arguments>\n9:                </block>\n10:            </body>\n",
         ],
      ],
     'helper without helper attribute' => [
@@ -126,7 +127,7 @@ return [
             "2:            <body>\n3:                <block class=\"Magento\Test\Block\" name=\"test.block\">\n" .
             "4:                    <arguments>\n5:                        <argument name=\"argumentName\" " .
             "xsi:type=\"helper\"/>\n6:                    </arguments>\n7:                </block>\n" .
-            "8:            </body>\n9:        </page>\n"
+            "8:            </body>\n9:        </page>\n",
         ],
      ],
     'helper without param name' => [
@@ -149,7 +150,7 @@ return [
             "xsi:type=\"helper\" helper=\"Magento\Framework\View\Layout\Argument\Handler\TestHelper::testMethod\">\n" .
             "6:                            <param/>\n7:                        </argument>\n" .
             "8:                    </arguments>\n9:                </block>\n10:            </body>\n" .
-            "11:        </page>\n"
+            "11:        </page>\n",
         ],
      ],
     'helper with forbidden param attribute' => [
@@ -169,11 +170,11 @@ return [
             "Element 'param', attribute 'forbidden': The attribute 'forbidden' is not allowed.\nLine: 7\n" .
             "The xml was: \n2:            <body>\n3:                <block class=\"Magento\Test\Block\" " .
             "name=\"test.block\">\n4:                    <arguments>\n5:                        <argument " .
-            "name=\"argumentName\" xsi:type=\"helper\" " .
+            'name="argumentName" xsi:type="helper" ' .
             "helper=\"Magento\Framework\View\Layout\Argument\Handler\TestHelper::testMethod\">\n" .
             "6:                            <param name=\"paramName\" forbidden=\"forbidden\"/>\n" .
             "7:                        </argument>\n8:                    </arguments>\n" .
-            "9:                </block>\n10:            </body>\n11:        </page>\n"
+            "9:                </block>\n10:            </body>\n11:        </page>\n",
         ],
      ],
     'helper with forbidden param sub-element' => [
@@ -196,7 +197,7 @@ return [
             "xsi:type=\"helper\" helper=\"Magento\Framework\View\Layout\Argument\Handler\TestHelper::testMethod\">\n" .
             "6:                            <param name=\"paramName\"><forbidden/></param>\n" .
             "7:                        </argument>\n8:                    </arguments>\n" .
-            "9:                </block>\n10:            </body>\n11:        </page>\n"
+            "9:                </block>\n10:            </body>\n11:        </page>\n",
         ],
      ],
     'action with doubled arguments' => [
@@ -219,7 +220,7 @@ return [
             "5:                            <argument name=\"string\" xsi:type=\"string\">string1</argument>\n" .
             "6:                            <argument name=\"string\" xsi:type=\"string\">string2</argument>\n" .
             "7:                        </action>\n8:                    </block>\n9:                </body>\n" .
-            "10:            </page>\n"
+            "10:            </page>\n",
         ],
     ],
 ];

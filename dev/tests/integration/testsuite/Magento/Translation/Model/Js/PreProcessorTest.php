@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Translation\Model\Js;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\View\FileSystem;
-use Magento\TestFramework\Helper\CacheCleaner;
-use Magento\Framework\Translate;
 use Magento\Framework\App\AreaList;
 use Magento\Framework\Phrase;
 use Magento\Framework\Phrase\RendererInterface;
+use Magento\Framework\Translate;
+use Magento\Framework\View\FileSystem;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -57,7 +57,7 @@ class PreProcessorTest extends \PHPUnit\Framework\TestCase
             PreProcessor::class,
             [
                 'translate' => $translator,
-                'areaList' => $areaList
+                'areaList' => $areaList,
             ]
         );
 
@@ -116,7 +116,7 @@ class PreProcessorTest extends \PHPUnit\Framework\TestCase
             $(el).attr(\'data-translate\', translateAttr);
 
             setText(el, translationData.shown);
-        },'
+        },',
             ],
             'checkTranslationWithWhiteSpaces' => [
                 <<<i18n
@@ -177,7 +177,7 @@ i18n
                         message: \$t(<?= /* @noEscape */ json_encode(\$params['error_msg'])?>)
                     });
 i18n
-            ]
+            ],
         ];
     }
 }

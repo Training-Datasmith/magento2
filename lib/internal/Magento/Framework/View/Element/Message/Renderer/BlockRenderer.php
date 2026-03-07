@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\Message\Renderer;
 
 use Magento\Framework\Message\MessageInterface;
@@ -13,7 +16,7 @@ class BlockRenderer implements RendererInterface
     /**
      * complex_renderer
      */
-    const CODE = 'block_renderer';
+    public const CODE = 'block_renderer';
 
     /**
      * @var array

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class ImportTest extends TestCase
             ['a2', 'b2', 'c2', 'd2', 'e2'],
             ['a3', 'b3', 'c3', 'd3', 'e3'],
             ['a4', 'b4', 'c4', 'd4', 'e4'],
-            ['a5', 'b5', 'c5', 'd5', 'e5']
+            ['a5', 'b5', 'c5', 'd5', 'e5'],
         ];
         $this->rowParserMock->expects($this->any())
             ->method('parse')
@@ -127,15 +128,15 @@ class ImportTest extends TestCase
         $expectedResult = [
             [
                 $lines[1],
-                $lines[2]
+                $lines[2],
             ],
             [
                 $lines[3],
-                $lines[4]
+                $lines[4],
             ],
             [
-                $lines[5]
-            ]
+                $lines[5],
+            ],
         ];
 
         $columnResolver = $this->getMockBuilder(ColumnResolver::class)
@@ -166,7 +167,7 @@ class ImportTest extends TestCase
             ['a1', 'b1', 'c1', 'd1', 'e1'],
             ['a1', 'b1', 'c1', 'd1', 'e1'],
             [],
-            ['a2', 'b2', 'c2', 'd2', 'e2']
+            ['a2', 'b2', 'c2', 'd2', 'e2'],
         ];
         $this->rowParserMock->expects($this->any())
             ->method('parse')
@@ -179,8 +180,8 @@ class ImportTest extends TestCase
         $expectedResult = [
             [
                 $lines[1],
-                $lines[4]
-            ]
+                $lines[4],
+            ],
         ];
 
         $columnResolver = $this->getMockBuilder(ColumnResolver::class)

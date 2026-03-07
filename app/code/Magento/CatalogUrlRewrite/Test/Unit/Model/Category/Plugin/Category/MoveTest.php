@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class MoveTest extends TestCase
                 'getUrlKey',
                 'setUrlPath',
                 'unsUrlPath',
-                'setUrlKey'
+                'setUrlKey',
             ]
         );
         $this->plugin = $this->objectManager->getObject(
@@ -102,7 +103,7 @@ class MoveTest extends TestCase
                 'categoryUrlPathGenerator' => $this->categoryUrlPathGeneratorMock,
                 'childrenCategoriesProvider' => $this->childrenCategoriesProviderMock,
                 'categoryFactory' => $this->categoryFactory,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }

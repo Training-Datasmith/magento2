@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Model\Import;
 
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Component\ComponentRegistrar;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 
 /**
@@ -94,7 +95,7 @@ class SampleFileProvider
         $filePath = $directoryRead->getRelativePath($fileAbsolutePath);
 
         if (!$directoryRead->isFile($filePath)) {
-            throw new NoSuchEntityException(__("There is no file: %file", ['file' => $filePath]));
+            throw new NoSuchEntityException(__('There is no file: %file', ['file' => $filePath]));
         }
 
         return $filePath;

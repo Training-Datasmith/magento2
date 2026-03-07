@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -24,66 +25,12 @@ use Throwable;
  */
 class MessageControllerDecorator
 {
-    /**
-     * @var MessageController
-     */
-    private $messageController;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resource;
-
-    /**
-     * @var MessageValidator
-     */
-    private $messageValidator;
-
-    /**
-     * @var MessageEncoder
-     */
-    private $messageEncoder;
-
-    /**
-     * @var DateTime
-     */
-    private $dateTime;
-
-    /**
-     * @var MetadataPool
-     */
-    private $metadataPool;
-
-    /**
-     * @param ResourceConnection $resource
-     * @param MessageController $messageController
-     * @param MessageValidator $messageValidator
-     * @param MessageEncoder $messageEncoder
-     * @param MetadataPool $metadataPool
-     * @param DateTime $dateTime
-     */
-    public function __construct(
-        ResourceConnection $resource,
-        MessageController $messageController,
-        MessageValidator $messageValidator,
-        MessageEncoder $messageEncoder,
-        MetadataPool $metadataPool,
-        DateTime $dateTime
-    ) {
-        $this->messageController = $messageController;
-        $this->resource = $resource;
-        $this->messageValidator = $messageValidator;
-        $this->messageEncoder = $messageEncoder;
-        $this->metadataPool = $metadataPool;
-        $this->dateTime = $dateTime;
+    public function __construct(private readonly ResourceConnection $resource, private readonly MessageController $messageController, private readonly MessageValidator $messageValidator, private readonly MessageEncoder $messageEncoder, private readonly MetadataPool $metadataPool, private readonly DateTime $dateTime)
+    {
     }
 
     /**
      * Creates lock for provided message and update the operation start time
-     *
-     * @param EnvelopeInterface $envelope
-     * @param string $consumerName
-     * @return LockInterface
      */
     public function lock(EnvelopeInterface $envelope, string $consumerName): LockInterface
     {
@@ -97,11 +44,11 @@ class MessageControllerDecorator
             $connection->update(
                 $metadata->getEntityTable(),
                 [
-                    'started_at' => $connection->formatDate($this->dateTime->gmtTimestamp())
+                    'started_at' => $connection->formatDate($this->dateTime->gmtTimestamp()),
                 ],
                 [
                     'bulk_uuid = ?' => $operation->getBulkUuid(),
-                    'operation_key = ?' => $operation->getId()
+                    'operation_key = ?' => $operation->getId(),
                 ]
             );
             $connection->commit();

@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
 
 namespace Magento\Framework\View\Helper;
-
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class Js help render script.

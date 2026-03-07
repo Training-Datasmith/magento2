@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -546,7 +547,7 @@ class UpdateItemOptionsTest extends TestCase
 
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Data::class] => $helper,
                 [LoggerInterface::class] => $logger
             });

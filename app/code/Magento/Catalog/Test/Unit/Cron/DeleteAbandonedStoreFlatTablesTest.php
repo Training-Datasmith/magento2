@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Cron;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Cron\DeleteAbandonedStoreFlatTables;
 use Magento\Catalog\Helper\Product\Flat\Indexer;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

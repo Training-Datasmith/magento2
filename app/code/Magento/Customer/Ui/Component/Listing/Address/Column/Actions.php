@@ -1,24 +1,26 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing\Address\Column;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\UrlInterface;
 
 /**
  * Prepare actions column for customer addresses grid
  */
 class Actions extends Column
 {
-    const CUSTOMER_ADDRESS_PATH_DELETE = 'customer/address/delete';
-    const CUSTOMER_ADDRESS_PATH_DEFAULT_SHIPPING = 'customer/address/defaultShippingAddress';
-    const CUSTOMER_ADDRESS_PATH_DEFAULT_BILLING = 'customer/address/defaultBillingAddress';
+    public const CUSTOMER_ADDRESS_PATH_DELETE = 'customer/address/delete';
+    public const CUSTOMER_ADDRESS_PATH_DEFAULT_SHIPPING = 'customer/address/defaultShippingAddress';
+    public const CUSTOMER_ADDRESS_PATH_DEFAULT_BILLING = 'customer/address/defaultBillingAddress';
 
     /**
      * @var UrlInterface
@@ -74,7 +76,7 @@ class Actions extends Column
                                 'params' => [
                                     'entity_id' => $item['entity_id'],
                                 ],
-                            ]
+                            ],
                         ],
                         'href' => '#',
                         'label' => __('Edit'),
@@ -90,8 +92,8 @@ class Actions extends Column
                         'isAjax' => true,
                         'confirm' => [
                             'title' => __('Set address as default billing'),
-                            'message' => __('Are you sure you want to set the address as default billing address?')
-                        ]
+                            'message' => __('Are you sure you want to set the address as default billing address?'),
+                        ],
                     ];
 
                     $item[$name]['setDefaultShipping'] = [
@@ -103,8 +105,8 @@ class Actions extends Column
                         'isAjax' => true,
                         'confirm' => [
                             'title' => __('Set address as default shipping'),
-                            'message' => __('Are you sure you want to set the address as default shipping address?')
-                        ]
+                            'message' => __('Are you sure you want to set the address as default shipping address?'),
+                        ],
                     ];
 
                     $item[$name]['delete'] = [
@@ -116,8 +118,8 @@ class Actions extends Column
                         'isAjax' => true,
                         'confirm' => [
                             'title' => __('Delete address'),
-                            'message' => __('Are you sure you want to delete the address?')
-                        ]
+                            'message' => __('Are you sure you want to delete the address?'),
+                        ],
                     ];
                 }
             }

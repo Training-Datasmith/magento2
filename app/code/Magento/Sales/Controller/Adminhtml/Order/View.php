@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Sales\Controller\Adminhtml\Order;
 
-use Magento\Backend\App\Action;
+namespace Magento\Sales\Controller\Adminhtml\Order;
 
 class View extends \Magento\Sales\Controller\Adminhtml\Order
 {
@@ -14,7 +15,7 @@ class View extends \Magento\Sales\Controller\Adminhtml\Order
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::actions_view';
+    public const ADMIN_RESOURCE = 'Magento_Sales::actions_view';
 
     /**
      * View order detail
@@ -35,7 +36,7 @@ class View extends \Magento\Sales\Controller\Adminhtml\Order
                 $resultRedirect->setPath('sales/order/index');
                 return $resultRedirect;
             }
-            $resultPage->getConfig()->getTitle()->prepend(sprintf("#%s", $order->getIncrementId()));
+            $resultPage->getConfig()->getTitle()->prepend(sprintf('#%s', $order->getIncrementId()));
             return $resultPage;
         }
         $resultRedirect->setPath('sales/*/');

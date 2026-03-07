@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,17 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Setup\Console;
 
+use Laminas\ServiceManager\ServiceManager;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Console\Exception\GenerationDirectoryAccessException;
 use Magento\Framework\Console\GenerationDirectoryAccess;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\Driver\File;
-use Magento\Framework\Phrase;
 use Magento\Setup\Console\Command\DiCompileCommand;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
 use Symfony\Component\Console\Input\ArgvInput;
-use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Class prepares folders for code generation

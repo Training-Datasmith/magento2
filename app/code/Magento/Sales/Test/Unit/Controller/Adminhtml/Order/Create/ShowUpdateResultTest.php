@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Catalog\Helper\Product;
 use Magento\Customer\Model\Customer;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
@@ -23,6 +23,7 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
@@ -31,7 +32,6 @@ use Magento\Sales\Model\AdminOrder\Create;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for ShowUpdateResult controller
@@ -246,7 +246,7 @@ class ShowUpdateResultTest extends TestCase
         $compressedData = gzencode($originalContent, 6);
         $sessionData = [
             'compressed' => true,
-            'data' => $compressedData
+            'data' => $compressedData,
         ];
 
         // Session has compressed data
@@ -352,7 +352,7 @@ class ShowUpdateResultTest extends TestCase
     public function testExecuteWithInvalidCompressedData(): void
     {
         $sessionData = [
-            'compressed' => true
+            'compressed' => true,
             // Missing 'data' key
         ];
 
@@ -392,7 +392,7 @@ class ShowUpdateResultTest extends TestCase
     {
         $sessionData = [
             'some' => 'data',
-            'not' => 'compressed'
+            'not' => 'compressed',
         ];
 
         // Session has array data but not in compressed format

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -84,7 +86,7 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
                 [
                     [
                         'sku' => 'simple',
-                        'qty' => 2
+                        'qty' => 2,
                     ],
                 ],
                 [
@@ -144,7 +146,7 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
                 [
                     [
                         'sku' => 'bundle-product',
-                        'qty' => 2
+                        'qty' => 2,
                     ],
                 ],
                 [
@@ -171,7 +173,7 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
                             'row_total' => 20,
                             'row_total_incl_tax' => 21.5,
                             'tax_percent' => 7.5,
-                        ]
+                        ],
                     ],
                 ],
             ],
@@ -208,7 +210,7 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
                 [
                     [
                         'sku' => 'simple',
-                        'qty' => 1
+                        'qty' => 1,
                     ],
                 ],
                 [
@@ -235,7 +237,7 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
                 [
                     [
                         'sku' => 'simple',
-                        'qty' => 2
+                        'qty' => 2,
                     ],
                 ],
                 [
@@ -284,7 +286,6 @@ class SubtotalTest extends \Magento\TestFramework\Indexer\TestCase
         $customerGroup->setTaxClassId($customerTaxClassId)->save();
         $customer->setGroupId($customerGroup->getId())->save();
         $productTaxClassId = $this->getProductTaxClassId();
-
 
         $quoteShippingAddressDataObject = $this->getShippingAddressDataObject($fixtureCustomerId);
 

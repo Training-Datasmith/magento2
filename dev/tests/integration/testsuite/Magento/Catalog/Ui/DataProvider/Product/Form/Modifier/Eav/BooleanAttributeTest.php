@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class BooleanAttributeTest extends AbstractEavTest
             'valueMap' => [
                 'true' => '1',
                 'false' => '0',
-            ]
+            ],
         ];
     }
 }

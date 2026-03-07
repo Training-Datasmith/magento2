@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesSequence\Model;
 
 use Magento\SalesSequence\Model\ResourceModel\Meta as ResourceSequenceMeta;
@@ -52,7 +55,7 @@ class Manager
                 'meta' => $this->resourceSequenceMeta->loadByEntityTypeAndStore(
                     $entityType,
                     $storeId
-                )
+                ),
             ]
         );
     }

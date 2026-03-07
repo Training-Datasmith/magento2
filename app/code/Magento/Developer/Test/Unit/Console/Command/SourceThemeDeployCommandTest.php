@@ -1,14 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Test\Unit\Console\Command;
 
 use Magento\Developer\Console\Command\SourceThemeDeployCommand;
 use Magento\Framework\App\View\Asset\Publisher;
 use Magento\Framework\Filesystem\Io\File;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\Locale;
 use Magento\Framework\View\Asset\File\NotFoundException;
 use Magento\Framework\View\Asset\LocalInterface;
@@ -166,7 +168,7 @@ class SourceThemeDeployCommandTest extends TestCase
             ['area', self::AREA_TEST_VALUE],
             ['locale', self::LOCALE_TEST_VALUE],
             ['theme', self::THEME_INCORRECT_FORMAT_VALUE],
-            ['type', self::TYPE_TEST_VALUE]
+            ['type', self::TYPE_TEST_VALUE],
         ];
 
         $this->sourceThemeDeployCommand->run(
@@ -198,7 +200,7 @@ class SourceThemeDeployCommandTest extends TestCase
                 [
                     'area' => self::AREA_TEST_VALUE,
                     'theme' => self::THEME_NONEXISTING_VALUE,
-                    'locale' => self::LOCALE_TEST_VALUE
+                    'locale' => self::LOCALE_TEST_VALUE,
                 ]
             )->willReturn($assetMock);
 
@@ -211,7 +213,7 @@ class SourceThemeDeployCommandTest extends TestCase
             ['area', self::AREA_TEST_VALUE],
             ['locale', self::LOCALE_TEST_VALUE],
             ['theme', self::THEME_NONEXISTING_VALUE],
-            ['type', self::TYPE_TEST_VALUE]
+            ['type', self::TYPE_TEST_VALUE],
         ];
 
         $this->sourceThemeDeployCommand->run(
@@ -231,7 +233,7 @@ class SourceThemeDeployCommandTest extends TestCase
             ['area', self::AREA_TEST_VALUE],
             ['locale', self::LOCALE_TEST_VALUE],
             ['theme', self::THEME_TEST_VALUE],
-            ['type', self::TYPE_TEST_VALUE]
+            ['type', self::TYPE_TEST_VALUE],
         ];
         $valueMap = empty($valueMap) ? $defaultValueMap : $valueMap;
 

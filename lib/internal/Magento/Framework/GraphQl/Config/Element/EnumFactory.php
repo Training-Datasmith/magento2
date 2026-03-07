@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class EnumFactory implements ConfigElementFactoryInterface
             [
                 'name' => $name,
                 'values' => $values,
-                'description' => $description
+                'description' => $description,
             ]
         );
     }

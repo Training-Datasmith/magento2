@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\PageCache\Model\App\Response;
 
-use Magento\Framework\App\PageCache\NotCacheableInterface;
-use Magento\Framework\App\Response\Http as HttpResponse;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\Http\Context;
+use Magento\Framework\App\PageCache\NotCacheableInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\Response\Http as HttpResponse;
 
 /**
  * HTTP response plugin for frontend.
@@ -36,7 +38,7 @@ class HttpPlugin
     {
         if ($subject instanceof NotCacheableInterface
             || $subject->headersSent()
-            || $subject->getMetadata("NotCacheable")
+            || $subject->getMetadata('NotCacheable')
         ) {
             return;
         }

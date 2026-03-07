@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,13 +21,13 @@ use Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -88,7 +89,7 @@ class TableTest extends TestCase
                 'addFieldToFilter',
                 'setStoreFilter',
                 'load',
-                'toOptionArray'
+                'toOptionArray',
             ]
         );
 
@@ -114,7 +115,7 @@ class TableTest extends TestCase
                 'getId',
                 'getBackend',
                 'getIsRequired',
-                'setPositionOrder'
+                'setPositionOrder',
             ]
         );
 
@@ -122,7 +123,7 @@ class TableTest extends TestCase
             Table::class,
             [
                 'attrOptionCollectionFactory' => $this->collectionFactory,
-                'attrOptionFactory' => $this->attrOptionFactory
+                'attrOptionFactory' => $this->attrOptionFactory,
             ]
         );
         $this->model->setAttribute($this->abstractAttributeMock);
@@ -220,7 +221,7 @@ class TableTest extends TestCase
     {
         return [
             [['1', '2'], true],
-            [[1, 2], false]
+            [[1, 2], false],
         ];
     }
 
@@ -284,7 +285,7 @@ class TableTest extends TestCase
                 ['test label 1', 'test label 2'],
             ],
             ['1', '1', [['label' => 'test label', 'value' => '1']], 'test label'],
-            ['5', '5', [['label' => 'test label', 'value' => '5']], 'test label']
+            ['5', '5', [['label' => 'test label', 'value' => '5']], 'test label'],
         ];
     }
 
@@ -385,7 +386,7 @@ class TableTest extends TestCase
             ->willReturnMap(
                 [
                     ['value', $options],
-                    ['default_value', $optionsDefault]
+                    ['default_value', $optionsDefault],
                 ]
             );
 
@@ -403,14 +404,14 @@ class TableTest extends TestCase
                 false,
                 [['value' => '16', 'label' => 'black'], ['value' => '17', 'label' => 'white']],
                 [['value' => '16', 'label' => 'blck'], ['value' => '17', 'label' => 'wht']],
-                [['value' => '16', 'label' => 'black'], ['value' => '17', 'label' => 'white']]
+                [['value' => '16', 'label' => 'black'], ['value' => '17', 'label' => 'white']],
             ],
             [
                 false,
                 true,
                 [['value' => '16', 'label' => 'black'], ['value' => '17', 'label' => 'white']],
                 [['value' => '16', 'label' => 'blck'], ['value' => '17', 'label' => 'wht']],
-                [['value' => '16', 'label' => 'blck'], ['value' => '17', 'label' => 'wht']]
+                [['value' => '16', 'label' => 'blck'], ['value' => '17', 'label' => 'wht']],
             ],
             [
                 true,
@@ -420,8 +421,8 @@ class TableTest extends TestCase
                 [
                     ['label' => ' ', 'value' => ''],
                     ['value' => '16', 'label' => 'black'],
-                    ['value' => '17', 'label' => 'white']
-                ]
+                    ['value' => '17', 'label' => 'white'],
+                ],
             ],
             [
                 true,
@@ -431,9 +432,9 @@ class TableTest extends TestCase
                 [
                     ['label' => ' ', 'value' => ''],
                     ['value' => '16', 'label' => 'black'],
-                    ['value' => '17', 'label' => 'white']
-                ]
-            ]
+                    ['value' => '17', 'label' => 'white'],
+                ],
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Exception;
@@ -25,7 +28,7 @@ class PublicCodeTest extends TestCase
      * @var array
      */
     private $simpleReturnTypes = [
-        '$this', 'void', 'string', 'int', 'bool', 'boolean', 'integer', 'null'
+        '$this', 'void', 'string', 'int', 'bool', 'boolean', 'integer', 'null',
     ];
 
     /**

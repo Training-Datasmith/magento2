@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -73,16 +75,16 @@ class UpgradeWidgetData implements DataPatchInterface, PatchVersionInterface
             'in',
             [
                 'values' => [
-                    'attribute_id' => $categoryLayoutUpdateAttribute['attribute_id']
-                ]
+                    'attribute_id' => $categoryLayoutUpdateAttribute['attribute_id'],
+                ],
             ]
         );
         $layoutUpdateValueModifier = $this->queryModifierFactory->create(
             'like',
             [
                 'values' => [
-                    'value' => '%conditions_encoded%'
-                ]
+                    'value' => '%conditions_encoded%',
+                ],
             ]
         );
         $categoryLayoutUpdateModifier = $this->queryModifierFactory->create(
@@ -90,8 +92,8 @@ class UpgradeWidgetData implements DataPatchInterface, PatchVersionInterface
             [
                 'queryModifiers' => [
                     $categoryLayoutUpdateAttributeModifier,
-                    $layoutUpdateValueModifier
-                ]
+                    $layoutUpdateValueModifier,
+                ],
             ]
         );
         $productTypeId = $this->eavSetup->getEntityTypeId(\Magento\Catalog\Model\Product::ENTITY);
@@ -100,8 +102,8 @@ class UpgradeWidgetData implements DataPatchInterface, PatchVersionInterface
             'in',
             [
                 'values' => [
-                    'attribute_id' => $productLayoutUpdateAttribute['attribute_id']
-                ]
+                    'attribute_id' => $productLayoutUpdateAttribute['attribute_id'],
+                ],
             ]
         );
         $productLayoutUpdateModifier = $this->queryModifierFactory->create(
@@ -109,8 +111,8 @@ class UpgradeWidgetData implements DataPatchInterface, PatchVersionInterface
             [
                 'queryModifiers' => [
                     $productLayoutUpdateAttributeModifier,
-                    $layoutUpdateValueModifier
-                ]
+                    $layoutUpdateValueModifier,
+                ],
             ]
         );
         $this->aggregatedFieldDataConverter->convert(

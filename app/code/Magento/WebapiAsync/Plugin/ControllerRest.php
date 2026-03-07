@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Plugin;
 
-use Magento\WebapiAsync\Model\ServiceConfig;
-use Magento\Webapi\Controller\PathProcessor;
 use Magento\Framework\App\RequestInterface;
+use Magento\Webapi\Controller\PathProcessor;
+use Magento\WebapiAsync\Model\ServiceConfig;
 use Magento\WebapiAsync\Model\ServiceConfig\Converter;
 
 class ControllerRest

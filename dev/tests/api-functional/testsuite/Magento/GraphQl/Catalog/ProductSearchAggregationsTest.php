@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class ProductSearchAggregationsTest extends GraphQlAbstract
             ['label' => '10-20', 'value' => '10_20', 'count' => '2'],
             ['label' => '20-30', 'value' => '20_30', 'count' => '1'],
             ['label' => '30-40', 'value' => '30_40', 'count' => '1'],
-            ['label' => '40-50', 'value' => '40_50', 'count' => '1']
+            ['label' => '40-50', 'value' => '40_50', 'count' => '1'],
         ];
         $this->assertEquals($expectedOptions, $priceAggregation['options']);
     }
@@ -108,7 +109,7 @@ class ProductSearchAggregationsTest extends GraphQlAbstract
             ['label' => '70-140', 'value' => '70_140', 'count' => '2'],
             ['label' => '140-210', 'value' => '140_210', 'count' => '1'],
             ['label' => '210-280', 'value' => '210_280', 'count' => '1'],
-            ['label' => '280-350', 'value' => '280_350', 'count' => '1']
+            ['label' => '280-350', 'value' => '280_350', 'count' => '1'],
         ];
         $this->assertEquals($expectedOptions, $priceAggregation['options']);
     }
@@ -153,7 +154,7 @@ class ProductSearchAggregationsTest extends GraphQlAbstract
         $this->assertEquals(2, $priceAggregation['count']);
         $expectedOptions = [
             ['label' => '0_1000', 'value' => '0_1000', 'count' => '3'],
-            ['label' => '1000_2000', 'value' => '1000_2000', 'count' => '2']
+            ['label' => '1000_2000', 'value' => '1000_2000', 'count' => '2'],
         ];
         $this->assertEquals($expectedOptions, $priceAggregation['options']);
     }

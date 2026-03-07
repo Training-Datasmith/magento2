@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Product\CopyConstructor;
 
 class Downloadable implements \Magento\Catalog\Model\Product\CopyConstructorInterface

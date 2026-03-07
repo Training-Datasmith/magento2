@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -51,10 +53,10 @@ $payment->setMethod(Config::METHOD_PAYFLOWLINK)
     ->setBaseAmountAuthorized(30)
     ->setAdditionalInformation(
         [
-        'cancel_url'=> $baseUrl . 'paypal/payflow/cancelPayment',
-        'return_url'=> $baseUrl . 'paypal/payflow/returnUrl',
+        'cancel_url' => $baseUrl . 'paypal/payflow/cancelPayment',
+        'return_url' => $baseUrl . 'paypal/payflow/returnUrl',
         'secure_token_id' => 'mysecuretokenId',
-        'secure_token' => 'mysecuretoken'
+        'secure_token' => 'mysecuretoken',
         ]
     );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\ResourceModel\Oauth;
 
 use Magento\Framework\App\ObjectManager;
@@ -10,7 +13,6 @@ use Magento\Framework\Encryption\Encryptor;
 
 class Consumer extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
-
     /**
      * @var Encryptor
      */

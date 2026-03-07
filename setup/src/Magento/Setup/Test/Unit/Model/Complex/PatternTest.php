@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\Complex;
 
 use Magento\Setup\Model\Complex\Pattern;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class PatternTest extends TestCase
 {
@@ -46,10 +47,10 @@ class PatternTest extends TestCase
                         },
                     ],
                     [
-                        'name' => 'xxx %s'
+                        'name' => 'xxx %s',
                     ],
                     [
-                        'name' => 'yyy %s'
+                        'name' => 'yyy %s',
                     ],
                 ],
                 'expectedRowsCount'      => 3,

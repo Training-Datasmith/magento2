@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\MassAction\Group;
 
+use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 use Magento\Framework\Phrase;
 use Magento\Framework\UrlInterface;
-use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 
 /**
  * Class Options for Mass Action Group
@@ -91,7 +94,7 @@ class Options implements \JsonSerializable
                 $this->options[$optionCode['value']] = [
                     'type' => 'customer_group_' . $optionCode['value'],
                     'label' => __($optionCode['label']),
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ];
 
                 if ($this->urlPath && $this->paramName) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\ResourceModel\Selection\Collection;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection\FilterApplier;
 use Magento\Framework\DB\Select;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use Zend_Db_Select_Exception;
@@ -59,10 +60,10 @@ class FilterApplierTest extends TestCase
                         'from',
                         [
                             'selection' => [
-                                'tableName' => $tableName
-                            ]
-                        ]
-                    ]
+                                'tableName' => $tableName,
+                            ],
+                        ],
+                    ],
                 ]
             );
         $select->expects($this->once())
@@ -86,15 +87,15 @@ class FilterApplierTest extends TestCase
                 1,
                 'eq',
                 'selection.id = ?',
-                1
+                1,
             ],
             [
                 'id',
                 [1, 3],
                 'in',
                 'selection.id IN (?)',
-                [1, 3]
-            ]
+                [1, 3],
+            ],
         ];
     }
 }

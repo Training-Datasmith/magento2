@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,23 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product as CatalogProduct;
+use Magento\Catalog\Model\Product\Type\AbstractType as ProductAbstractType;
+use Magento\Framework\DataObject;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\OrderFactory as SalesOrderFactory;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Catalog\Model\Product\Type\AbstractType as ProductAbstractType;
-use Magento\Framework\DataObject;
-use Magento\Catalog\Model\Product as CatalogProduct;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for order item class.
@@ -66,7 +67,7 @@ class ItemTest extends TestCase
 
         $arguments = [
             'orderFactory' => $this->orderFactory,
-            'serializer' => $this->serializerMock
+            'serializer' => $this->serializerMock,
         ];
         $this->model = $this->objectManager->getObject(Item::class, $arguments);
     }
@@ -126,7 +127,7 @@ class ItemTest extends TestCase
         // Create a new model instance with the mock factory
         $testModel = $this->objectManager->getObject(Item::class, [
             'orderFactory' => $mockFactory,
-            'serializer' => $this->serializerMock
+            'serializer' => $this->serializerMock,
         ]);
         $testModel->setOrderId($orderId);
         $this->assertEquals($order, $testModel->getOrder());
@@ -155,14 +156,14 @@ class ItemTest extends TestCase
         $qtyShipped,
         $expectedStatus
     ) {
-         $this->model->setQtyBackordered($qtyBackOrdered);
-         $this->model->setQtyCanceled($qtyCanceled);
-         $this->model->setQtyInvoiced($qtyInvoiced);
-         $this->model->setQtyOrdered($qtyOrdered);
-         $this->model->setQtyRefunded($qtyRefunded);
-         $this->model->setQtyShipped($qtyShipped);
+        $this->model->setQtyBackordered($qtyBackOrdered);
+        $this->model->setQtyCanceled($qtyCanceled);
+        $this->model->setQtyInvoiced($qtyInvoiced);
+        $this->model->setQtyOrdered($qtyOrdered);
+        $this->model->setQtyRefunded($qtyRefunded);
+        $this->model->setQtyShipped($qtyShipped);
 
-         $this->assertEquals($expectedStatus, $this->model->getStatusId());
+        $this->assertEquals($expectedStatus, $this->model->getStatusId());
     }
 
     /**
@@ -182,7 +183,7 @@ class ItemTest extends TestCase
             [null, null, null, 9, 9, null, Item::STATUS_REFUNDED],
             [null, 9, null, 9, null, null, Item::STATUS_CANCELED],
             [1, 10, 70, 100, 10, 79, Item::STATUS_PARTIAL],
-            [0, 10, 70, 100, 10, 79, Item::STATUS_PARTIAL]
+            [0, 10, 70, 100, 10, 79, Item::STATUS_PARTIAL],
         ];
     }
 
@@ -248,7 +249,7 @@ class ItemTest extends TestCase
                 'expectedResult' => [
                     'option1' => 'option 1 value',
                     'option2' => 'option 2 value',
-                ]
+                ],
             ],
             'serialized' => [
                 'options' => json_encode([
@@ -258,8 +259,8 @@ class ItemTest extends TestCase
                 'expectedResult' => [
                     'option1' => 'option 1 value',
                     'option2' => 'option 2 value',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -289,86 +290,86 @@ class ItemTest extends TestCase
             'empty_item' => [
                 'options' => [
                     'qty_ordered' => 0, 'qty_invoiced' => 0, 'qty_refunded' => 0, 'qty_shipped' => 0,
-                    'qty_canceled' => 0
+                    'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0],
             ],
             'ordered_item' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 0, 'qty_refunded' => 0, 'qty_shipped' => 0,
-                    'qty_canceled' => 0
+                    'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 12.0]
+                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 12.0],
             ],
             'partially_invoiced' => [
                 'options' => ['qty_ordered' => 12, 'qty_invoiced' => 4, 'qty_refunded' => 0, 'qty_shipped' => 0,
                     'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 8.0]
+                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 8.0],
             ],
             'completely_invoiced' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 12, 'qty_refunded' => 0, 'qty_shipped' => 0,
                     'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 12.0, 'to_invoice' => 0.0],
             ],
             'partially_invoiced_refunded' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 5, 'qty_refunded' => 5, 'qty_shipped' => 0,
                     'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 7.0, 'to_invoice' => 7.0]
+                'expectedResult' => ['to_ship' => 7.0, 'to_invoice' => 7.0],
             ],
             'partially_refunded' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 12, 'qty_refunded' => 5, 'qty_shipped' => 0,
                     'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 7.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 7.0, 'to_invoice' => 0.0],
             ],
             'partially_shipped' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 0, 'qty_refunded' => 0, 'qty_shipped' => 4,
-                    'qty_canceled' => 0
+                    'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 8.0, 'to_invoice' => 12.0]
+                'expectedResult' => ['to_ship' => 8.0, 'to_invoice' => 12.0],
             ],
             'partially_refunded_partially_shipped' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 12, 'qty_refunded' => 5, 'qty_shipped' => 4,
-                    'qty_canceled' => 0
+                    'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 3.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 3.0, 'to_invoice' => 0.0],
             ],
             'complete' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 12, 'qty_refunded' => 0, 'qty_shipped' => 12,
-                    'qty_canceled' => 0
+                    'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0],
             ],
             'canceled' => [
                 'options' => [
                     'qty_ordered' => 12, 'qty_invoiced' => 0, 'qty_refunded' => 0, 'qty_shipped' => 0,
-                    'qty_canceled' => 12
+                    'qty_canceled' => 12,
                 ],
-                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0]
+                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0],
             ],
             'completely_shipped_using_decimals' => [
                 'options' => [
                     'qty_ordered' => 4.8, 'qty_invoiced' => 0.4, 'qty_refunded' => 0.4, 'qty_shipped' => 4,
                     'qty_canceled' => 0,
                 ],
-                'expectedResult' => ['to_ship' => 0.4, 'to_invoice' => 4.4]
+                'expectedResult' => ['to_ship' => 0.4, 'to_invoice' => 4.4],
             ],
             'completely_invoiced_using_decimals' => [
                 'options' => [
                     'qty_ordered' => 4.4, 'qty_invoiced' => 4, 'qty_refunded' => 0, 'qty_shipped' => 4,
-                    'qty_canceled' => 0.4
+                    'qty_canceled' => 0.4,
                 ],
-                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0]
-            ]
+                'expectedResult' => ['to_ship' => 0.0, 'to_invoice' => 0.0],
+            ],
         ];
     }
 
@@ -415,16 +416,16 @@ class ItemTest extends TestCase
         return [
             'can_invoice' => [
                 'data' => ['qty_ordered' => 10, 'qty_invoiced' => 5, 'qty_canceled' => 0],
-                'expected' => true
+                'expected' => true,
             ],
             'cannot_invoice' => [
                 'data' => ['qty_ordered' => 10, 'qty_invoiced' => 10, 'qty_canceled' => 0],
-                'expected' => false
+                'expected' => false,
             ],
             'nothing_to_invoice' => [
                 'data' => ['qty_ordered' => 10, 'qty_invoiced' => 5, 'qty_canceled' => 5],
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 
@@ -451,16 +452,16 @@ class ItemTest extends TestCase
         return [
             'can_ship' => [
                 'data' => ['qty_ordered' => 10, 'qty_shipped' => 5, 'qty_refunded' => 0, 'qty_canceled' => 0],
-                'expected' => true
+                'expected' => true,
             ],
             'cannot_ship' => [
                 'data' => ['qty_ordered' => 10, 'qty_shipped' => 10, 'qty_refunded' => 0, 'qty_canceled' => 0],
-                'expected' => false
+                'expected' => false,
             ],
             'nothing_to_ship' => [
                 'data' => ['qty_ordered' => 10, 'qty_shipped' => 5, 'qty_refunded' => 3, 'qty_canceled' => 2],
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 
@@ -487,16 +488,16 @@ class ItemTest extends TestCase
         return [
             'can_refund' => [
                 'data' => ['qty_invoiced' => 10, 'qty_refunded' => 5],
-                'expected' => true
+                'expected' => true,
             ],
             'cannot_refund' => [
                 'data' => ['qty_invoiced' => 10, 'qty_refunded' => 10],
-                'expected' => false
+                'expected' => false,
             ],
             'nothing_invoiced' => [
                 'data' => ['qty_invoiced' => 0, 'qty_refunded' => 0],
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 
@@ -523,16 +524,16 @@ class ItemTest extends TestCase
         return [
             'partial_refund' => [
                 'data' => ['qty_invoiced' => 10, 'qty_refunded' => 3],
-                'expected' => 7.0
+                'expected' => 7.0,
             ],
             'full_refund' => [
                 'data' => ['qty_invoiced' => 10, 'qty_refunded' => 10],
-                'expected' => 0.0
+                'expected' => 0.0,
             ],
             'no_refund' => [
                 'data' => ['qty_invoiced' => 10, 'qty_refunded' => 0],
-                'expected' => 10.0
-            ]
+                'expected' => 10.0,
+            ],
         ];
     }
 
@@ -545,7 +546,7 @@ class ItemTest extends TestCase
             'qty_ordered' => 10,
             'qty_invoiced' => 2,
             'qty_shipped' => 3,
-            'qty_canceled' => 0
+            'qty_canceled' => 0,
         ]);
         // Min of getQtyToInvoice (10-2-0=8) and getQtyToShip (10-3-0-0=7) = 7
         $this->assertEquals(7.0, $this->model->getQtyToCancel());
@@ -561,7 +562,7 @@ class ItemTest extends TestCase
             'qty_shipped' => 10,
             'qty_invoiced' => 10,
             'qty_canceled' => 0,
-            'qty_refunded' => 0
+            'qty_refunded' => 0,
         ]);
         $this->assertEquals('Shipped', $this->model->getStatus());
     }
@@ -589,7 +590,7 @@ class ItemTest extends TestCase
             'qty_shipped' => 0,
             'qty_canceled' => 0,
             'base_tax_amount' => 5,
-            'discount_tax_compensation_amount' => 2
+            'discount_tax_compensation_amount' => 2,
         ]);
 
         $this->model->cancel();
@@ -605,7 +606,7 @@ class ItemTest extends TestCase
             'qty_ordered' => 10,
             'qty_canceled' => 10,
             'qty_invoiced' => 0,
-            'qty_shipped' => 0
+            'qty_shipped' => 0,
         ]);
 
         $this->model->cancel();
@@ -637,7 +638,7 @@ class ItemTest extends TestCase
         $options = [
             'option1' => 'value1',
             'option2' => 'value2',
-            'real_product_type' => 'configurable'
+            'real_product_type' => 'configurable',
         ];
         $this->model->setProductOptions($options);
 
@@ -658,8 +659,8 @@ class ItemTest extends TestCase
             'get_non_existent_option' => ['option3', null],
             'get_all_options' => [
                 null,
-                ['option1' => 'value1', 'option2' => 'value2', 'real_product_type' => 'configurable']
-            ]
+                ['option1' => 'value1', 'option2' => 'value2', 'real_product_type' => 'configurable'],
+            ],
         ];
     }
 
@@ -753,24 +754,24 @@ class ItemTest extends TestCase
             'no_parent_calculate_child' => [
                 false,
                 ProductAbstractType::CALCULATE_CHILD,
-                true
+                true,
             ],
             'no_parent_calculate_parent' => [
                 false,
                 ProductAbstractType::CALCULATE_PARENT,
-                false
+                false,
             ],
             'no_parent_no_calculation' => [false, null, false],
             'has_parent_calculate_child' => [
                 true,
                 ProductAbstractType::CALCULATE_CHILD,
-                true
+                true,
             ],
             'has_parent_calculate_parent' => [
                 true,
                 ProductAbstractType::CALCULATE_PARENT,
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -810,24 +811,24 @@ class ItemTest extends TestCase
             'no_parent_ship_separately' => [
                 false,
                 ProductAbstractType::SHIPMENT_SEPARATELY,
-                true
+                true,
             ],
             'no_parent_ship_together' => [
                 false,
                 ProductAbstractType::SHIPMENT_TOGETHER,
-                false
+                false,
             ],
             'no_parent_no_shipment_type' => [false, null, false],
             'has_parent_ship_separately' => [
                 true,
                 ProductAbstractType::SHIPMENT_SEPARATELY,
-                true
+                true,
             ],
             'has_parent_ship_together' => [
                 true,
                 ProductAbstractType::SHIPMENT_TOGETHER,
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -847,7 +848,7 @@ class ItemTest extends TestCase
             $this->model->setProductOptions([
                 'shipment_type' => $setup['ship_separately']
                     ? ProductAbstractType::SHIPMENT_SEPARATELY
-                    : ProductAbstractType::SHIPMENT_TOGETHER
+                    : ProductAbstractType::SHIPMENT_TOGETHER,
             ]);
         }
         if (isset($setup['has_parent'])) {
@@ -857,7 +858,7 @@ class ItemTest extends TestCase
                 $parentItem->setProductOptions([
                     'shipment_type' => $setup['parent_ship_separately']
                         ? ProductAbstractType::SHIPMENT_SEPARATELY
-                        : ProductAbstractType::SHIPMENT_TOGETHER
+                        : ProductAbstractType::SHIPMENT_TOGETHER,
                 ]);
             }
         }
@@ -875,21 +876,21 @@ class ItemTest extends TestCase
         return [
             'has_children_ship_separately' => [
                 ['has_children' => true, 'ship_separately' => true],
-                true
+                true,
             ],
             'has_children_ship_together' => [
                 ['has_children' => true, 'ship_separately' => false],
-                false
+                false,
             ],
             'has_parent_ship_separately' => [
                 ['has_parent' => true, 'parent_ship_separately' => true],
-                false
+                false,
             ],
             'has_parent_ship_together' => [
                 ['has_parent' => true, 'parent_ship_separately' => false],
-                true
+                true,
             ],
-            'simple_item' => [[], false]
+            'simple_item' => [[], false],
         ];
     }
 
@@ -909,7 +910,7 @@ class ItemTest extends TestCase
             $this->model->setProductOptions([
                 'product_calculations' => $setup['children_calculated']
                     ? ProductAbstractType::CALCULATE_CHILD
-                    : ProductAbstractType::CALCULATE_PARENT
+                    : ProductAbstractType::CALCULATE_PARENT,
             ]);
         }
         if (isset($setup['has_parent'])) {
@@ -919,7 +920,7 @@ class ItemTest extends TestCase
                 $parentItem->setProductOptions([
                     'product_calculations' => $setup['parent_children_calculated']
                         ? ProductAbstractType::CALCULATE_CHILD
-                        : ProductAbstractType::CALCULATE_PARENT
+                        : ProductAbstractType::CALCULATE_PARENT,
                 ]);
             }
         }
@@ -937,21 +938,21 @@ class ItemTest extends TestCase
         return [
             'has_children_calculate_child' => [
                 ['has_children' => true, 'children_calculated' => true],
-                true
+                true,
             ],
             'has_children_calculate_parent' => [
                 ['has_children' => true, 'children_calculated' => false],
-                false
+                false,
             ],
             'has_parent_calculate_child' => [
                 ['has_parent' => true, 'parent_children_calculated' => true],
-                false
+                false,
             ],
             'has_parent_calculate_parent' => [
                 ['has_parent' => true, 'parent_children_calculated' => false],
-                true
+                true,
             ],
-            'simple_item' => [[], false]
+            'simple_item' => [[], false],
         ];
     }
 
@@ -961,7 +962,7 @@ class ItemTest extends TestCase
     public function testGetBuyRequest()
     {
         $this->model->setProductOptions([
-            'info_buyRequest' => ['qty' => 5, 'product' => 123]
+            'info_buyRequest' => ['qty' => 5, 'product' => 123],
         ]);
         $this->model->setQtyOrdered(10);
 
@@ -993,7 +994,7 @@ class ItemTest extends TestCase
             'qty_ordered' => 10,
             'qty_shipped' => 3,
             'qty_refunded' => 2,
-            'qty_canceled' => 1
+            'qty_canceled' => 1,
         ]);
 
         $this->assertEquals(4.0, $this->model->getQtyToShip());
@@ -1008,11 +1009,11 @@ class ItemTest extends TestCase
             'qty_ordered' => 10,
             'qty_shipped' => 0,
             'qty_refunded' => 0,
-            'qty_canceled' => 0
+            'qty_canceled' => 0,
         ]);
         $this->model->setHasChildren(true);
         $this->model->setProductOptions([
-            'shipment_type' => ProductAbstractType::SHIPMENT_SEPARATELY
+            'shipment_type' => ProductAbstractType::SHIPMENT_SEPARATELY,
         ]);
 
         // This is a dummy item for shipment (has children + ship separately)
@@ -1027,11 +1028,11 @@ class ItemTest extends TestCase
         $this->model->setData([
             'qty_ordered' => 10,
             'qty_invoiced' => 0,
-            'qty_canceled' => 0
+            'qty_canceled' => 0,
         ]);
         $this->model->setHasChildren(true);
         $this->model->setProductOptions([
-            'product_calculations' => ProductAbstractType::CALCULATE_CHILD
+            'product_calculations' => ProductAbstractType::CALCULATE_CHILD,
         ]);
 
         // This is a dummy item for calculation
@@ -1045,11 +1046,11 @@ class ItemTest extends TestCase
     {
         $this->model->setData([
             'qty_invoiced' => 10,
-            'qty_refunded' => 3
+            'qty_refunded' => 3,
         ]);
         $this->model->setHasChildren(true);
         $this->model->setProductOptions([
-            'product_calculations' => ProductAbstractType::CALCULATE_CHILD
+            'product_calculations' => ProductAbstractType::CALCULATE_CHILD,
         ]);
 
         // This is a dummy item for calculation
@@ -1085,7 +1086,7 @@ class ItemTest extends TestCase
         $testModel = $this->objectManager->getObject(Item::class, [
             'orderFactory' => $this->orderFactory,
             'serializer' => $this->serializerMock,
-            'productRepository' => $productRepository
+            'productRepository' => $productRepository,
         ]);
         $testModel->setProductId($productId);
 
@@ -1111,7 +1112,7 @@ class ItemTest extends TestCase
         $testModel = $this->objectManager->getObject(Item::class, [
             'orderFactory' => $this->orderFactory,
             'serializer' => $this->serializerMock,
-            'productRepository' => $productRepository
+            'productRepository' => $productRepository,
         ]);
         $testModel->setProductId($productId);
 
@@ -1136,7 +1137,7 @@ class ItemTest extends TestCase
         $testModel = $this->objectManager->getObject(Item::class, [
             'orderFactory' => $this->orderFactory,
             'serializer' => $this->serializerMock,
-            'storeManager' => $storeManager
+            'storeManager' => $storeManager,
         ]);
         $testModel->setStoreId($storeId);
 
@@ -1160,7 +1161,7 @@ class ItemTest extends TestCase
         $testModel = $this->objectManager->getObject(Item::class, [
             'orderFactory' => $this->orderFactory,
             'serializer' => $this->serializerMock,
-            'storeManager' => $storeManager
+            'storeManager' => $storeManager,
         ]);
 
         $this->assertSame($store, $testModel->getStore());
@@ -1225,7 +1226,7 @@ class ItemTest extends TestCase
             'qty_shipped' => 2,
             'qty_invoiced' => 5,
             'qty_refunded' => 0,
-            'qty_canceled' => 0
+            'qty_canceled' => 0,
         ]);
 
         // Qty to ship = 10 - 2 - 0 - 0 = 8
@@ -1244,7 +1245,7 @@ class ItemTest extends TestCase
             'qty_shipped' => 5,
             'qty_invoiced' => 5,
             'qty_refunded' => 0,
-            'qty_canceled' => 0
+            'qty_canceled' => 0,
         ]);
 
         // Qty to ship = 10 - 5 - 0 - 0 = 5
@@ -1264,7 +1265,7 @@ class ItemTest extends TestCase
             'qty_canceled' => 0,
             'qty_refunded' => 0,
             'qty_shipped' => 0,
-            'qty_invoiced' => 0
+            'qty_invoiced' => 0,
         ]);
         $this->model->setHasChildren(true);
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +80,7 @@ class Media extends \Magento\Framework\App\Helper\AbstractHelper
             'filename' => basename($path),
             'content' => $dir->readFile($relativePath),
             'update_time' => $this->_date->date(),
-            'directory' => $directory
+            'directory' => $directory,
         ];
     }
 }

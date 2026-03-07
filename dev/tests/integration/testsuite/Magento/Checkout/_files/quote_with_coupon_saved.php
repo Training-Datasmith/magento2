@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Save quote_with_coupon fixture
  *

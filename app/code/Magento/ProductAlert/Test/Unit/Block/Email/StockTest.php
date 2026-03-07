@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\ProductAlert\Test\Unit\Block\Email;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\Image;
 use Magento\Catalog\Block\Product\ImageBuilder;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Filter\Input\MaliciousCode;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ProductAlert\Block\Email\Stock;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -50,7 +51,7 @@ class StockTest extends TestCase
             Stock::class,
             [
                 'maliciousCode' => $this->_filter,
-                'imageBuilder' => $this->imageBuilder
+                'imageBuilder' => $this->imageBuilder,
             ]
         );
     }

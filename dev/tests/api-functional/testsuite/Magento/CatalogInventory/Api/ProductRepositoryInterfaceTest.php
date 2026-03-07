@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Api;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -12,21 +15,21 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductRepositoryInterfaceTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products';
+    public const SERVICE_NAME = 'catalogProductRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products';
 
-    const KEY_EXTENSION_ATTRIBUTES = ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY;
-    const KEY_STOCK_ITEM = StockStatusInterface::STOCK_ITEM;
-    const KEY_QTY = StockStatusInterface::QTY;
-    const KEY_ITEM_ID = 'item_id';
-    const KEY_PRODUCT_ID = StockStatusInterface::PRODUCT_ID;
-    const KEY_CUSTOM_ATTRIBUTES = 'custom_attributes';
-    const KEY_ATTRIBUTE_CODE = \Magento\Eav\Api\Data\AttributeInterface::ATTRIBUTE_CODE;
-    const KEY_IS_IN_STOCK = 'is_in_stock';
+    public const KEY_EXTENSION_ATTRIBUTES = ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY;
+    public const KEY_STOCK_ITEM = StockStatusInterface::STOCK_ITEM;
+    public const KEY_QTY = StockStatusInterface::QTY;
+    public const KEY_ITEM_ID = 'item_id';
+    public const KEY_PRODUCT_ID = StockStatusInterface::PRODUCT_ID;
+    public const KEY_CUSTOM_ATTRIBUTES = 'custom_attributes';
+    public const KEY_ATTRIBUTE_CODE = \Magento\Eav\Api\Data\AttributeInterface::ATTRIBUTE_CODE;
+    public const KEY_IS_IN_STOCK = 'is_in_stock';
 
-    const CODE_QUANTITY_AND_STOCK_STATUS = 'quantity_and_stock_status';
-    const PRODUCT_SKU = 'sku-test-catalog-inventory';
+    public const CODE_QUANTITY_AND_STOCK_STATUS = 'quantity_and_stock_status';
+    public const PRODUCT_SKU = 'sku-test-catalog-inventory';
 
     /**
      * Tests the 'happy path'
@@ -226,7 +229,7 @@ class ProductRepositoryInterfaceTest extends WebapiAbstract
                 [self::KEY_ATTRIBUTE_CODE => 'description', 'value' => 'My Product Description'],
                 [
                     self::KEY_ATTRIBUTE_CODE => self::CODE_QUANTITY_AND_STOCK_STATUS,
-                    'value' => [self::KEY_IS_IN_STOCK => true, 'qty' => $qty]
+                    'value' => [self::KEY_IS_IN_STOCK => true, 'qty' => $qty],
                 ],
             ];
         }
@@ -264,10 +267,10 @@ class ProductRepositoryInterfaceTest extends WebapiAbstract
                 'enable_qty_increments' => false,
                 'use_config_manage_stock' => false,
                 'manage_stock' => true,
-                'low_stock_date' => "0",
+                'low_stock_date' => '0',
                 'is_decimal_divided' => false,
                 'stock_status_changed_auto' => 0,
-            ]
+            ],
         ];
     }
 
@@ -307,11 +310,11 @@ class ProductRepositoryInterfaceTest extends WebapiAbstract
     {
         if (isset($product['custom_attributes'])) {
             $count = count($product['custom_attributes']);
-            for ($i=0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; $i++) {
                 if ($product['custom_attributes'][$i]['attribute_code'] == 'category_ids'
                     && !is_array($product['custom_attributes'][$i]['value'])
                 ) {
-                    $product['custom_attributes'][$i]['value'] = [""];
+                    $product['custom_attributes'][$i]['value'] = [''];
                 }
             }
         }
@@ -341,11 +344,11 @@ class ProductRepositoryInterfaceTest extends WebapiAbstract
     {
         if (isset($product['custom_attributes'])) {
             $count = count($product['custom_attributes']);
-            for ($i=0; $i < $count; $i++) {
+            for ($i = 0; $i < $count; $i++) {
                 if ($product['custom_attributes'][$i]['attribute_code'] == 'category_ids'
                     && !is_array($product['custom_attributes'][$i]['value'])
                 ) {
-                    $product['custom_attributes'][$i]['value'] = [""];
+                    $product['custom_attributes'][$i]['value'] = [''];
                 }
             }
         }
@@ -382,7 +385,7 @@ class ProductRepositoryInterfaceTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => $resourcePath,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

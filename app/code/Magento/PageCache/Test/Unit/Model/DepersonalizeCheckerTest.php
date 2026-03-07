@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Module\Manager;
 use Magento\Framework\View\LayoutInterface;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Model\DepersonalizeChecker;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DepersonalizeCheckerTest extends TestCase

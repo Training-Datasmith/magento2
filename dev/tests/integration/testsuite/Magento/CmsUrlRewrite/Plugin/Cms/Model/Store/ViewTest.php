@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class ViewTest extends TestCase
     {
         $data = [
             UrlRewrite::REQUEST_PATH => $requestPath,
-            UrlRewrite::STORE_ID => $storeId
+            UrlRewrite::STORE_ID => $storeId,
         ];
         $urlRewrites = $this->urlFinder->findAllByData($data);
         $this->assertCount($expectedCount, $urlRewrites);

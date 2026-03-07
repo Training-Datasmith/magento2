@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -101,45 +102,45 @@ class RedirectDataValidatorTest extends TestCase
                 [
                     'elapsedTime' => 1,
                 ],
-                true
+                true,
             ],
             [
                 [
                     'elapsedTime' => 6,
                 ],
-                false
+                false,
             ],
             [
                 [
                     'elapsedTime' => 1,
-                    'data' => '{"customer_id":2}'
+                    'data' => '{"customer_id":2}',
                 ],
-                false
+                false,
             ],
             [
                 [
                     'elapsedTime' => 1,
-                    'fromStoreCode' => 'es'
+                    'fromStoreCode' => 'es',
 
                 ],
-                false
+                false,
             ],
             [
                 [
                     'elapsedTime' => 1,
-                    'targetStoreCode' => 'de'
+                    'targetStoreCode' => 'de',
 
                 ],
-                false
+                false,
             ],
             [
                 [
                     'elapsedTime' => 1,
-                    'signature' => 'abcd1efgh2ijkl3mnop4qrst5uvwx6yz'
+                    'signature' => 'abcd1efgh2ijkl3mnop4qrst5uvwx6yz',
 
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

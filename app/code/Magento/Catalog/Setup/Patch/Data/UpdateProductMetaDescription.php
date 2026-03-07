@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Catalog\Setup\Patch\Data;
 
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -55,7 +56,7 @@ class UpdateProductMetaDescription implements DataPatchInterface, PatchVersionIn
             \Magento\Catalog\Model\Product::ENTITY,
             'meta_description',
             [
-                'note' => 'Maximum 255 chars. Meta Description should optimally be between 150-160 characters'
+                'note' => 'Maximum 255 chars. Meta Description should optimally be between 150-160 characters',
             ]
         );
     }

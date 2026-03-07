@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Consumer\Config\Validator;
 
 use Magento\Framework\MessageQueue\Consumer\Config\ValidatorInterface;
@@ -27,7 +30,7 @@ class RequiredFields implements ValidatorInterface
                 'maxMessages',
                 'maxIdleTime',
                 'sleep',
-                'onlySpawnWhenMessageAvailable'
+                'onlySpawnWhenMessageAvailable',
             ];
             foreach ($requiredFields as $fieldName) {
                 if (!array_key_exists($fieldName, $consumerConfig)) {

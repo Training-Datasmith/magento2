@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use ArrayIterator;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogSearch\Model\ResourceModel\Advanced;
@@ -21,9 +22,9 @@ use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use ArrayIterator;
 
 /**
  * @see \Magento\CatalogSearch\Model\Advanced
@@ -77,7 +78,7 @@ class AdvancedTest extends TestCase
                 'addTaxPercents',
                 'addStoreFilter',
                 'setVisibility',
-                'addFieldsToFilter'
+                'addFieldsToFilter',
             ]
         );
         $this->resource = $this->createPartialMock(
@@ -135,9 +136,9 @@ class AdvancedTest extends TestCase
                             'SKU',
                             'text',
                             'static'
-                        )
+                        ),
                     ],
-                    'values' => ['sku' => 'simple']
+                    'values' => ['sku' => 'simple'],
                 ],
                 'color_multiselect' => [
                     'attributes' => [
@@ -148,11 +149,11 @@ class AdvancedTest extends TestCase
                             'Color',
                             'multiselect',
                             'static'
-                        )
+                        ),
                     ],
                     'values' => ['color' => [100 => 'red', 200 => 'blue']],
                     'currentCurrencyCode' => 'GBP',
-                    'baseCurrencyCode' => 'USD'
+                    'baseCurrencyCode' => 'USD',
                 ],
                 'color_select' => [
                     'attributes' => [
@@ -163,11 +164,11 @@ class AdvancedTest extends TestCase
                             'Color',
                             'select',
                             'static'
-                        )
+                        ),
                     ],
                     'values' => ['color' => 'red'],
                     'currentCurrencyCode' => 'GBP',
-                    'baseCurrencyCode' => 'USD'
+                    'baseCurrencyCode' => 'USD',
                 ],
                 'boolean' => [
                     'attributes' => [
@@ -178,11 +179,11 @@ class AdvancedTest extends TestCase
                             'Is active?',
                             'boolean',
                             'static'
-                        )
+                        ),
                     ],
                     'values' => ['is_active' => 0],
                     'currentCurrencyCode' => 'GBP',
-                    'baseCurrencyCode' => 'USD'
+                    'baseCurrencyCode' => 'USD',
                 ],
             ],
             self::addFiltersPriceDataProvider()
@@ -262,7 +263,7 @@ class AdvancedTest extends TestCase
                 'productCollectionFactory' => $productCollectionFactory,
                 'storeManager' => $this->storeManager,
                 'currencyFactory' => $currencyFactory,
-                'collectionProvider' => null
+                'collectionProvider' => null,
             ]
         );
         $instance->addFilters($values);
@@ -311,11 +312,11 @@ class AdvancedTest extends TestCase
                         'Price',
                         'multiselect',
                         'static'
-                    )
+                    ),
                 ],
                 'values' => ['price' => ['from' => 10, 'to' => 40]],
                 'currentCurrencyCode' => 'GBP',
-                'baseCurrencyCode' => 'USD'
+                'baseCurrencyCode' => 'USD',
             ],
             'price_without_to' => [
                 'attributes' => [
@@ -326,11 +327,11 @@ class AdvancedTest extends TestCase
                         'Price',
                         'multiselect',
                         'static'
-                    )
+                    ),
                 ],
                 'values' => ['price' => ['from' => 10, 'to' => '']],
                 'currentCurrencyCode' => 'GBP',
-                'baseCurrencyCode' => 'USD'
+                'baseCurrencyCode' => 'USD',
             ],
             'price_without_from' => [
                 'attributes' => [
@@ -341,11 +342,11 @@ class AdvancedTest extends TestCase
                         'Price',
                         'multiselect',
                         'static'
-                    )
+                    ),
                 ],
                 'values' => ['price' => ['from' => '', 'to' => 30]],
                 'currentCurrencyCode' => 'GBP',
-                'baseCurrencyCode' => 'USD'
+                'baseCurrencyCode' => 'USD',
             ],
             'price_empty' => [
                 'attributes' => [
@@ -356,11 +357,11 @@ class AdvancedTest extends TestCase
                         'Price',
                         'multiselect',
                         'static'
-                    )
+                    ),
                 ],
                 'values' => ['price' => ['from' => '', 'to' => '']],
                 'currentCurrencyCode' => 'GBP',
-                'baseCurrencyCode' => 'USD'
+                'baseCurrencyCode' => 'USD',
             ],
             'price_with_currency' => [
                 'attributes' => [
@@ -371,12 +372,12 @@ class AdvancedTest extends TestCase
                         'Price',
                         'multiselect',
                         'static'
-                    )
+                    ),
                 ],
                 'values' => ['price' => ['from' => 10, 'to' => 40, 'currency' => 'ASD']],
                 'currentCurrencyCode' => 'GBP',
-                'baseCurrencyCode' => 'USD'
-            ]
+                'baseCurrencyCode' => 'USD',
+            ],
         ];
     }
 
@@ -404,7 +405,7 @@ class AdvancedTest extends TestCase
             'getBackend',
             'getBackendType',
             'getSource',
-            '__wakeup'
+            '__wakeup',
         ]);
         $attribute->method('getBackend')->willReturn($backend);
         $attribute->method('getSource')->willReturn($source);

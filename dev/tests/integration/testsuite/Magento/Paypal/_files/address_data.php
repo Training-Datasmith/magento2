@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,5 +15,5 @@ return [
     'region' => 'CA',
     'postcode' => '1',
     'country_id' => 'US',
-    'telephone' => '1'
+    'telephone' => '1',
 ];

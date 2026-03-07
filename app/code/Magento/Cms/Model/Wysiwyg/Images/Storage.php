@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -258,7 +259,7 @@ class Storage extends \Magento\Framework\DataObject
                 $this->_directory->create($folder);
             } catch (LocalizedException $e) {
                 $this->logger->error(
-                    sprintf("Creating media gallery image folder %s caused error: %s", $folder, $e->getMessage())
+                    sprintf('Creating media gallery image folder %s caused error: %s', $folder, $e->getMessage())
                 );
             }
         }
@@ -435,12 +436,12 @@ class Storage extends \Magento\Framework\DataObject
                         $item->setHeight($size[1]);
                     }
                 } catch (\Error $e) {
-                    $this->logger->notice(sprintf("GetImageSize caused error: %s", $e->getMessage()));
+                    $this->logger->notice(sprintf('GetImageSize caused error: %s', $e->getMessage()));
                 }
             } else {
                 $this->logger->warning(
                     sprintf(
-                        "The image %s is invalid and cannot be displayed in the gallery.",
+                        'The image %s is invalid and cannot be displayed in the gallery.',
                         $item->getBasename()
                     )
                 );
@@ -745,11 +746,11 @@ class Storage extends \Magento\Framework\DataObject
 
         $driver = $this->_directory->getDriver();
         $imageSize = getimagesizefromstring($driver->fileGetContents($source));
-        
+
         // Check if getimagesizefromstring() returned valid data before destructuring
         if ($imageSize !== false) {
             [$imageWidth, $imageHeight] = $imageSize;
-            
+
             if ($imageWidth && $imageHeight) {
                 $imageWidth = $configWidth > $imageWidth ? $imageWidth : $configWidth;
                 $imageHeight = $configHeight > $imageHeight ? $imageHeight : $configHeight;
@@ -757,7 +758,7 @@ class Storage extends \Magento\Framework\DataObject
                 return  [$imageWidth, $imageHeight];
             }
         }
-        
+
         return [$configWidth, $configHeight];
     }
 
@@ -846,7 +847,7 @@ class Storage extends \Magento\Framework\DataObject
             $this->setData('_image_extensions', $this->getAllowedExtensions('image'));
         }
 
-        $ext = "";
+        $ext = '';
         if (array_key_exists('extension', $this->ioFile->getPathInfo($filename))) {
             $ext = strtolower($this->ioFile->getPathInfo($filename)['extension'] ?? '');
         }

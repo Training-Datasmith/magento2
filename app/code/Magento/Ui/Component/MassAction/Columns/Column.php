@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\MassAction\Columns;
 
-use Magento\Ui\Component\AbstractComponent;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
+use Magento\Ui\Component\AbstractComponent;
 use Magento\Ui\Component\Listing\Columns\ColumnInterface;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 /**
  * Class Column
  */
 class Column extends AbstractComponent implements ColumnInterface
 {
-    const NAME = 'column.massaction';
+    public const NAME = 'column.massaction';
 
     /**
      * Wrapped component

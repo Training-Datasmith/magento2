@@ -1,19 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
-use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class GuestShippingMethodManagementTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteGuestShippingMethodManagementV1';
-    const RESOURCE_PATH = '/V1/guest-carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteGuestShippingMethodManagementV1';
+    public const RESOURCE_PATH = '/V1/guest-carts/';
 
     /**
      * @var ObjectManager
@@ -54,7 +56,7 @@ class GuestShippingMethodManagementTest extends WebapiAbstract
         //Use masked cart Id
         $cartId = $quoteIdMask->getMaskedId();
 
-        $this->assertEquals([], $this->_webApiCall($this->getListServiceInfo($cartId), ["cartId" => $cartId]));
+        $this->assertEquals([], $this->_webApiCall($this->getListServiceInfo($cartId), ['cartId' => $cartId]));
     }
 
     /**
@@ -83,7 +85,7 @@ class GuestShippingMethodManagementTest extends WebapiAbstract
 
         $expectedData = $this->convertRates($expectedRates, $quote->getQuoteCurrencyCode());
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
 
         $returnedRates = $this->_webApiCall($this->getListServiceInfo($cartId), $requestData);
         $this->assertEquals($expectedData, $returnedRates);

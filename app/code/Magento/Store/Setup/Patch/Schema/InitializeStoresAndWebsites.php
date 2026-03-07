@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +9,9 @@
 namespace Magento\Store\Setup\Patch\Schema;
 
 use Magento\Catalog\Helper\DefaultCategory;
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Framework\Setup\Patch\SchemaPatchInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
 
 /**
@@ -69,7 +71,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'name' => 'Admin',
                     'sort_order' => 0,
                     'default_group_id' => 0,
-                    'is_default' => 0
+                    'is_default' => 0,
                 ]
             );
             $connection->insertForce(
@@ -80,7 +82,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'name' => 'Main Website',
                     'sort_order' => 0,
                     'default_group_id' => 1,
-                    'is_default' => 1
+                    'is_default' => 1,
                 ]
             );
 
@@ -94,7 +96,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'website_id' => 0,
                     'name' => 'Default',
                     'root_category_id' => 0,
-                    'default_store_id' => 0
+                    'default_store_id' => 0,
                 ]
             );
             $connection->insertForce(
@@ -104,7 +106,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'website_id' => 1,
                     'name' => 'Main Website Store',
                     'root_category_id' => $this->getDefaultCategory()->getId(),
-                    'default_store_id' => 1
+                    'default_store_id' => 1,
                 ]
             );
 
@@ -120,7 +122,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'group_id' => 0,
                     'name' => 'Admin',
                     'sort_order' => 0,
-                    'is_active' => 1
+                    'is_active' => 1,
                 ]
             );
             $connection->insertForce(
@@ -132,7 +134,7 @@ class InitializeStoresAndWebsites implements SchemaPatchInterface, PatchVersionI
                     'group_id' => 1,
                     'name' => 'Default Store View',
                     'sort_order' => 0,
-                    'is_active' => 1
+                    'is_active' => 1,
                 ]
             );
             $this->schemaSetup->endSetup();

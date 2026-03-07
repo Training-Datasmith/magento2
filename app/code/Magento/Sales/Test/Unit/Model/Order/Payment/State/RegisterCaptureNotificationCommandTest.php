@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Payment\State;
 
 use Magento\Directory\Model\Currency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\State\RegisterCaptureNotificationCommand;
 use Magento\Sales\Model\Order\StatusResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @see RegisterCaptureNotificationCommand
@@ -55,15 +56,15 @@ class RegisterCaptureNotificationCommandTest extends TestCase
         string $expectedStatus,
         string $expectedMessage
     ): void {
-         $order = $this->getOrder($currentState);
-         $actualReturn = (new RegisterCaptureNotificationCommand($this->getStatusResolver()))->execute(
-             $this->getPayment($isTransactionPending, $isFraudDetected),
-             $this->amount,
-             $order
-         );
+        $order = $this->getOrder($currentState);
+        $actualReturn = (new RegisterCaptureNotificationCommand($this->getStatusResolver()))->execute(
+            $this->getPayment($isTransactionPending, $isFraudDetected),
+            $this->amount,
+            $order
+        );
 
-         $this->assertOrderStateAndStatus($order, $expectedState, $expectedStatus);
-         self::assertEquals(__($expectedMessage, $this->amount), $actualReturn);
+        $this->assertOrderStateAndStatus($order, $expectedState, $expectedStatus);
+        self::assertEquals(__($expectedMessage, $this->amount), $actualReturn);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -46,13 +47,13 @@ class SearchResultTest extends TestCase
             ->willReturn(2);
 
         $data = [
-            'items' => $this->items
+            'items' => $this->items,
         ];
         $this->objectManager = new ObjectManager($this);
         $this->search = $this->objectManager->getObject(
             SearchResult::class,
             [
-                'data' => $data
+                'data' => $data,
             ]
         );
     }

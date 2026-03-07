@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -18,7 +21,7 @@ class Delete extends \Magento\Customer\Controller\Adminhtml\Index implements Htt
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::delete';
+    public const ADMIN_RESOURCE = 'Magento_Customer::delete';
 
     /**
      * Delete customer action

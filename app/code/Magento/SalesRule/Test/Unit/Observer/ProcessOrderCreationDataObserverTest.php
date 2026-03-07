@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -67,27 +68,27 @@ class ProcessOrderCreationDataObserverTest extends TestCase
     protected function setUp(): void
     {
         $this->observerMock = $this->createMock(Observer::class);
-        
+
         $this->quoteMock = $this->getMockBuilder(Quote::class)
             ->onlyMethods(['isVirtual', 'getShippingAddress'])
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         $this->eventMock = $this->createPartialMockWithReflection(
             Event::class,
             ['getRequest', 'getOrderCreateModel', 'getShippingMethod']
         );
-        
+
         $this->shippingAddressMock = $this->createPartialMockWithReflection(
             Address::class,
             ['setShippingMethod']
         );
-        
+
         $this->orderCreateModelMock = $this->getMockBuilder(Create::class)
             ->onlyMethods(['getQuote'])
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         $this->requestMock = $this->createMock(RequestInterface::class);
         $this->model = new ProcessOrderCreationDataObserver();
     }
@@ -156,7 +157,7 @@ class ProcessOrderCreationDataObserverTest extends TestCase
                     [
                         'order' => ['coupon' => 'coupon_code'],
                         'reset_shipping' => true,
-                        'collect_shipping_rates' => true
+                        'collect_shipping_rates' => true,
                     ],
                 'quoteShippingMethod' => 'flatrate_flatrate',
             ],
@@ -165,7 +166,7 @@ class ProcessOrderCreationDataObserverTest extends TestCase
                 'requestArr' =>
                     [
                         'order' => ['coupon' => 'coupon_code'],
-                        'reset_shipping' => false
+                        'reset_shipping' => false,
                     ],
                 'quoteShippingMethod' => 'freeshipping_freeshipping',
             ],
@@ -174,7 +175,7 @@ class ProcessOrderCreationDataObserverTest extends TestCase
                 'requestArr' =>
                     [
                         'order' => ['coupon' => ''],
-                        'collect_shipping_rates' => true
+                        'collect_shipping_rates' => true,
                     ],
                 'quoteShippingMethod' => null,
             ],
@@ -184,10 +185,10 @@ class ProcessOrderCreationDataObserverTest extends TestCase
                     [
                         'order' => ['coupon' => 'coupon_code'],
                         'reset_shipping' => false,
-                        'collect_shipping_rates' => true
+                        'collect_shipping_rates' => true,
                     ],
-                'quoteShippingMethod' => 'flatrate_flatrate'
-            ]
+                'quoteShippingMethod' => 'flatrate_flatrate',
+            ],
         ];
     }
 }

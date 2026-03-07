@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,19 +9,18 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Total;
 
 use Magento\Directory\Model\Currency;
-use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order as SalesOrder;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Total\Shipping;
 use Magento\Tax\Model\Calculation as TaxCalculation;
 use Magento\Tax\Model\Config;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ShippingTest extends TestCase
 {
@@ -50,7 +50,7 @@ class ShippingTest extends TestCase
             [
                 'hasBaseShippingAmount', 'getOrder', 'getBaseShippingAmount', 'setShippingAmount',
                 'setBaseShippingAmount', 'setShippingInclTax', 'setBaseShippingInclTax',
-                'setGrandTotal', 'setBaseGrandTotal', 'getGrandTotal', 'getBaseGrandTotal'
+                'setGrandTotal', 'setBaseGrandTotal', 'getGrandTotal', 'getBaseGrandTotal',
             ]
         );
 
@@ -102,7 +102,7 @@ class ShippingTest extends TestCase
             [
             'base_shipping_amount' => $orderShippingAmount,
             'base_shipping_refunded' => $orderShippingRefunded,
-            'base_currency' => $currencyMock
+            'base_currency' => $currencyMock,
             ]
         );
 
@@ -549,7 +549,7 @@ class ShippingTest extends TestCase
                 'shipping_tax_refunded' => $shippingTaxRefunded,
                 'base_shipping_tax_amount' => $baseShippingTaxAmount,
                 'base_shipping_tax_refunded' => $baseShippingTaxRefunded,
-                'shipping_discount_amount' => $shippingDiscountAmount
+                'shipping_discount_amount' => $shippingDiscountAmount,
             ]
         );
         $orderCreditMemo = $this->createMock(Creditmemo::class);

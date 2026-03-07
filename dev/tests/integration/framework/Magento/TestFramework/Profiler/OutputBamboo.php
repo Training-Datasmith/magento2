@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Class that used for output Magento Profiler results in format compatible with Bamboo Jmeter plugin
  */
+
 namespace Magento\TestFramework\Profiler;
 
 class OutputBamboo extends \Magento\Framework\Profiler\Driver\Standard\Output\Csvfile

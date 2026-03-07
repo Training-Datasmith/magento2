@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 use Magento\Framework\View\Xsd\Media\TypeDataExtractorPool;
@@ -95,7 +98,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     {
         $result = [];
         for ($varNode = $node->firstChild; $varNode !== null; $varNode = $varNode->nextSibling) {
-            if ($varNode instanceof \DOMElement && $varNode->tagName == "var") {
+            if ($varNode instanceof \DOMElement && $varNode->tagName == 'var') {
                 $varName = $varNode->getAttribute('name');
                 $result[$varName] = $this->parseVarElement($varNode);
             }

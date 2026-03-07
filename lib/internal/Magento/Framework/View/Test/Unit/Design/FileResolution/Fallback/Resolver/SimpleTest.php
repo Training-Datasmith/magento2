@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,10 +17,10 @@ use Magento\Framework\View\Design\Fallback\Rule\RuleInterface;
 use Magento\Framework\View\Design\Fallback\RulePool;
 use Magento\Framework\View\Design\FileResolution\Fallback\Resolver\Simple;
 use Magento\Framework\View\Design\ThemeInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class SimpleTest extends TestCase
 {
@@ -194,7 +195,7 @@ class SimpleTest extends TestCase
         $this->ruleMock->expects($this->once())
             ->method('getPatternDirs')
             ->willReturn([
-                'var/test'
+                'var/test',
             ]);
         $directoryWeb = clone $this->directoryMock;
         $fileRead = clone $this->directoryMock;
@@ -210,7 +211,7 @@ class SimpleTest extends TestCase
             ->willReturnMap([
                 ['var/test', DriverPool::FILE, $this->directoryMock],
                 ['lib_web', DriverPool::FILE, $directoryWeb],
-                [false, DriverPool::FILE, $fileRead]
+                [false, DriverPool::FILE, $fileRead],
             ]);
 
         $this->object->resolve('type', '../file.ext', '', null, '', '');
@@ -221,7 +222,7 @@ class SimpleTest extends TestCase
         $this->ruleMock->expects($this->once())
             ->method('getPatternDirs')
             ->willReturn([
-                'var/test'
+                'var/test',
             ]);
         $directoryWeb = clone $this->directoryMock;
         $fileRead = clone $this->directoryMock;
@@ -237,7 +238,7 @@ class SimpleTest extends TestCase
             ->willReturnMap([
                 ['var/test', DriverPool::FILE, $this->directoryMock],
                 ['lib_web', DriverPool::FILE, $directoryWeb],
-                [false, DriverPool::FILE, $fileRead]
+                [false, DriverPool::FILE, $fileRead],
             ]);
         $directoryWeb->expects($this->once())
             ->method('getAbsolutePath')

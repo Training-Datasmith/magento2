@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class CatalogAttributeSaveAfterObserverTest extends TestCase
         $this->model = $helper->getObject(
             CatalogAttributeSaveAfterObserver::class,
             [
-                'checkSalesRulesAvailability' => $this->checkSalesRulesAvailability
+                'checkSalesRulesAvailability' => $this->checkSalesRulesAvailability,
             ]
         );
     }

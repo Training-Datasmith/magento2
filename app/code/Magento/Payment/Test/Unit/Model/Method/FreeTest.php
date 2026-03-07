@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +20,9 @@ use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Method\Free;
 use Magento\Payment\Model\Method\Logger;
 use Magento\Quote\Model\Quote;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -146,7 +147,7 @@ class FreeTest extends TestCase
             [0.1, true, true, false],
             [0, false, false, false],
             [1, true, false, false],
-            [0, true, false, false]
+            [0, true, false, false],
         ];
     }
 
@@ -157,7 +158,7 @@ class FreeTest extends TestCase
     {
         return [
             ['pending', 'action', null],
-            ['processing', 'payment_action', 'payment_action']
+            ['processing', 'payment_action', 'payment_action'],
         ];
     }
 }

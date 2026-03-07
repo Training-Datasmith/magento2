@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class UrlRewriteTest extends TestCase
     {
         return [
             'no leading slash' => ['correct/request/path'],
-            'leading slash' => ['another/good/request/path/']
+            'leading slash' => ['another/good/request/path/'],
         ];
     }
 
@@ -71,7 +72,7 @@ class UrlRewriteTest extends TestCase
         return [
             'two slashes' => ['request/path/with/two//slashes'],
             'three slashes' => ['request/path/with/three///slashes'],
-            'anchor' => ['request/path/with#anchor']
+            'anchor' => ['request/path/with#anchor'],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class CurrencyValidator implements HttpRequestValidatorInterface
         } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
             $this->storeManager->setCurrentStore(null);
             throw new GraphQlInputException(
-                __("Requested store is not found")
+                __('Requested store is not found')
             );
         }
     }

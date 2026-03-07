@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -75,8 +76,8 @@ class CarrierTest extends TestCase
             [[], ['carrier1' => ['is_online' => 0]]],
             [
                 ['carrier1'],
-                ['carrier1' => ['is_online' => 1], 'carrier2' => ['is_online' => 0]]
-            ]
+                ['carrier1' => ['is_online' => 1], 'carrier2' => ['is_online' => 0]],
+            ],
         ];
     }
 
@@ -108,10 +109,10 @@ class CarrierTest extends TestCase
             'general/country/eu_countries',
             ScopeInterface::SCOPE_STORE
         )->willReturn(
-            "GB"
+            'GB'
         );
 
-        $this->assertTrue($this->helper->isCountryInEU("GB"));
-        $this->assertFalse($this->helper->isCountryInEU("US"));
+        $this->assertTrue($this->helper->isCountryInEU('GB'));
+        $this->assertFalse($this->helper->isCountryInEU('US'));
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Categories tree block
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category;
 
 use Magento\Backend\Block\Template\Context;
@@ -105,7 +108,7 @@ class Tree extends AbstractCategory
      */
     protected function _prepareLayout()
     {
-        $addUrl = $this->getUrl("*/*/add", ['_current' => false, 'id' => null, '_query' => false]);
+        $addUrl = $this->getUrl('*/*/add', ['_current' => false, 'id' => null, '_query' => false]);
         if ($this->getStore()->getId() == Store::DEFAULT_STORE_ID) {
             $this->addChild(
                 'add_sub_button',
@@ -115,7 +118,7 @@ class Tree extends AbstractCategory
                     'onclick' => "addNew('" . $addUrl . "', false)",
                     'class' => 'add',
                     'id' => 'add_subcategory_button',
-                    'style' => $this->canAddSubCategory() ? '' : 'display: none;'
+                    'style' => $this->canAddSubCategory() ? '' : 'display: none;',
                 ]
             );
 
@@ -127,7 +130,7 @@ class Tree extends AbstractCategory
                         'label' => __('Add Root Category'),
                         'onclick' => "addNew('" . $addUrl . "', true)",
                         'class' => 'add',
-                        'id' => 'add_root_category_button'
+                        'id' => 'add_root_category_button',
                     ]
                 );
             }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,7 +91,7 @@ class GeneratePatchCommandTest extends TestCase
         $commandTester->execute(
             [
                 GeneratePatchCommand::MODULE_NAME => 'Vendor_Module',
-                GeneratePatchCommand::INPUT_KEY_PATCH_NAME => 'SomePatch'
+                GeneratePatchCommand::INPUT_KEY_PATCH_NAME => 'SomePatch',
             ]
         );
         $this->assertStringContainsString('successfully generated', $commandTester->getDisplay());
@@ -124,7 +126,7 @@ class GeneratePatchCommandTest extends TestCase
         $commandTester->execute(
             [
                 GeneratePatchCommand::MODULE_NAME => 'Fake_Module',
-                GeneratePatchCommand::INPUT_KEY_PATCH_NAME => 'SomePatch'
+                GeneratePatchCommand::INPUT_KEY_PATCH_NAME => 'SomePatch',
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,5 +19,5 @@ interface PostFetchProcessorInterface
      * @param array $resultData
      * @return array
      */
-    public function process(array $resultData) : array;
+    public function process(array $resultData): array;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class Delete
                         return $rate->getId();
                     },
                     $rates
-                )
+                ),
             ]
         );
     }

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\ResourceModel\Page;
 
 use Magento\Cms\Api\Data\PageInterface;
-use \Magento\Cms\Model\ResourceModel\AbstractCollection;
+use Magento\Cms\Model\ResourceModel\AbstractCollection;
 
 /**
  * CMS page collection

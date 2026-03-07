@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Controller\Adminhtml\Index;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -70,7 +73,7 @@ class Create extends \Magento\Backup\Controller\Adminhtml\Index implements HttpP
                         )
                     );
                     $backupManager->setErrorMessage(
-                        __("Something went wrong while putting your store into maintenance mode.")
+                        __('Something went wrong while putting your store into maintenance mode.')
                     );
                     return $this->getResponse()->representJson($response->toJson());
                 }

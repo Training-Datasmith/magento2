@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel;
 
-use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\CmsUrlRewrite\Model\CmsPageUrlPathGenerator;
 use Magento\CmsUrlRewrite\Model\CmsPageUrlRewriteGenerator;
-use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\UrlRewrite\Model\UrlPersistInterface;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 
 /**
  * Before save and around delete plugin for \Magento\Cms\Model\ResourceModel\Page:

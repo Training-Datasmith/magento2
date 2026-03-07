@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,12 +23,12 @@ class PermissionsDialogTest extends IntegrationTestCase
         $objects = [
             [
                 Factory::class,
-                $this->createMock(Factory::class)
+                $this->createMock(Factory::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(SerializerInterface::class)
-            ]
+                $this->createMock(SerializerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $controller = $this->_createIntegrationController('PermissionsDialog');

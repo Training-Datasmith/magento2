@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Config
 {
-    const XML_PATH_WISHLIST_ACTIVE = 'wishlist/general/active';
+    public const XML_PATH_WISHLIST_ACTIVE = 'wishlist/general/active';
 
     /**
      * @var ScopeConfigInterface

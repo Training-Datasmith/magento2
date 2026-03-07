@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\Entity;
 
 class HydratorTest extends \PHPUnit\Framework\TestCase
 {
-    const CUSTOM_ATTRIBUTE_CODE = 'description';
+    public const CUSTOM_ATTRIBUTE_CODE = 'description';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

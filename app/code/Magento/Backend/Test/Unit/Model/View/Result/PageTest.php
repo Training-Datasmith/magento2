@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class PageTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManagerHelper = new ObjectManagerHelper($this);
-        
+
         $this->layoutMock = $this->createPartialMockWithReflection(
             LayoutInterface::class,
             [
@@ -58,11 +59,11 @@ class PageTest extends TestCase
                 'getGroupChildNames', 'getParentName', 'createBlock', 'addBlock', 'addContainer',
                 'renameElement', 'getElementAlias', 'removeOutputElement', 'getMessagesBlock',
                 'getBlockSingleton', 'getElementProperty', 'isBlock', 'isContainer',
-                'isManipulationAllowed', 'setBlock', 'isCacheable'
+                'isManipulationAllowed', 'setBlock', 'isCacheable',
             ]
         );
         $this->breadcrumbsBlockMock = $this->createMock(Breadcrumbs::class);
-        
+
         $this->context = $this->objectManagerHelper->getObject(
             Context::class,
             ['layout' => $this->layoutMock]

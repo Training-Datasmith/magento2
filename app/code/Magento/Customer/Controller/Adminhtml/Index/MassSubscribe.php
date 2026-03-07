@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
 use Magento\Ui\Component\MassAction\Filter;
-use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
-use Magento\Framework\Controller\ResultFactory;
 
 /**
  * Class to mass subscribe customers by ids

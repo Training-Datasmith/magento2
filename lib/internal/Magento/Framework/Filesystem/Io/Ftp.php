@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,27 +8,27 @@
 
 namespace Magento\Framework\Filesystem\Io;
 
-use Magento\Framework\Phrase;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Phrase;
 
 /**
  * FTP client
  */
 class Ftp extends AbstractIo
 {
-    const ERROR_EMPTY_HOST = 1;
+    public const ERROR_EMPTY_HOST = 1;
 
-    const ERROR_INVALID_CONNECTION = 2;
+    public const ERROR_INVALID_CONNECTION = 2;
 
-    const ERROR_INVALID_LOGIN = 3;
+    public const ERROR_INVALID_LOGIN = 3;
 
-    const ERROR_INVALID_PATH = 4;
+    public const ERROR_INVALID_PATH = 4;
 
-    const ERROR_INVALID_MODE = 5;
+    public const ERROR_INVALID_MODE = 5;
 
-    const ERROR_INVALID_DESTINATION = 6;
+    public const ERROR_INVALID_DESTINATION = 6;
 
-    const ERROR_INVALID_SOURCE = 7;
+    public const ERROR_INVALID_SOURCE = 7;
 
     /**
      * Connection config

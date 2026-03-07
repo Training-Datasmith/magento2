@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
 class Price extends AbstractFilter
 {
     /** Price delta for filter  */
-    const PRICE_DELTA = 0.001;
+    public const PRICE_DELTA = 0.001;
 
     /**
      * @var \Magento\Catalog\Model\Layer\Filter\DataProvider\Price

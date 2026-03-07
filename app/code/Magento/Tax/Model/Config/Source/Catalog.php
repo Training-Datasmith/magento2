@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Config\Source;
 
 class Catalog implements \Magento\Framework\Option\ArrayInterface
@@ -15,7 +18,7 @@ class Catalog implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => 0, 'label' => __('No (price without tax)')],
             ['value' => 1, 'label' => __('Yes (only price with tax)')],
-            ['value' => 2, 'label' => __("Both (without and with tax)")]
+            ['value' => 2, 'label' => __('Both (without and with tax)')],
         ];
     }
 }

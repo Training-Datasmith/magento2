@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,12 +15,10 @@ use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Quote\Model\Quote\Address\RateRequest;
-use Magento\Quote\Model\Quote\Address\RateRequestFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\Error;
 use Magento\Shipping\Model\Shipment\Request;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\HTTP\AsyncClientInterfaceMock;
-use Magento\Ups\Model\UpsAuth;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -164,8 +163,8 @@ class CarrierTest extends TestCase
                     'action' => 'Rate',
                     'unit_measure' => 'KGS',
                     'free_shipping' => '1',
-                    'base_currency' => new DataObject(['code' => 'USD'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'USD']),
+                ],
             ]
         );
 
@@ -175,8 +174,8 @@ class CarrierTest extends TestCase
                 new Response(
                     200,
                     [],
-                    file_get_contents(__DIR__ . "/../_files/ups_rates_response_option5.json")
-                )
+                    file_get_contents(__DIR__ . '/../_files/ups_rates_response_option5.json')
+                ),
             ]
         );
 
@@ -213,8 +212,8 @@ class CarrierTest extends TestCase
                     'product' => '11',
                     'action' => 'Rate',
                     'unit_measure' => 'KGS',
-                    'base_currency' => new DataObject(['code' => 'USD'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'USD']),
+                ],
             ]
         );
         //phpcs:disable Magento2.Functions.DiscouragedFunction
@@ -224,7 +223,7 @@ class CarrierTest extends TestCase
                     200,
                     [],
                     file_get_contents(__DIR__ . "/../_files/ups_rates_response_option$responseId.json")
-                )
+                ),
             ]
         );
         //phpcs:enable Magento2.Functions.DiscouragedFunction
@@ -276,8 +275,8 @@ class CarrierTest extends TestCase
                     'product' => '11',
                     'action' => 'Rate',
                     'unit_measure' => 'KGS',
-                    'base_currency' => new DataObject(['code' => 'GBP'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'GBP']),
+                ],
             ]
         );
         $this->config->setValue('carriers/ups/allowed_methods', '', 'store');
@@ -327,14 +326,14 @@ class CarrierTest extends TestCase
         //phpcs:disable Magento2.Functions.DiscouragedFunction
         $expectedShipmentRequest = str_replace(
             "\n",
-            "",
+            '',
             file_get_contents(__DIR__ . '/../_files/ShipmentConfirmRequest.json')
         );
         $shipmentResponse = file_get_contents(__DIR__ . '/../_files/ShipmentConfirmResponse.json');
         //phpcs:enable Magento2.Functions.DiscouragedFunction
         $this->httpClient->nextResponses(
             [
-                new Response(200, [], $shipmentResponse)
+                new Response(200, [], $shipmentResponse),
             ]
         );
         $this->httpClient->clearRequests();
@@ -377,7 +376,7 @@ class CarrierTest extends TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ]
         );
         $request->setRecipientAddressCountryCode('UK');
@@ -430,8 +429,8 @@ class CarrierTest extends TestCase
                     'product' => '11',
                     'action' => 'Rate',
                     'unit_measure' => 'KGS',
-                    'base_currency' => new DataObject(['code' => 'GBP'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'GBP']),
+                ],
             ]
         );
         $resultRate = $this->carrier->collectRates($request)->getAllRates()[0];
@@ -466,15 +465,15 @@ class CarrierTest extends TestCase
                     'product' => '11',
                     'action' => 'Rate',
                     'unit_measure' => 'LBS',
-                    'base_currency' => new DataObject(['code' => 'USD'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'USD']),
+                ],
             ]
         );
 
         //phpcs:disable Magento2.Functions.DiscouragedFunction
         $this->httpClient->nextResponses(
             [
-                new Response(200, [], file_get_contents(__DIR__ . "/../_files/ups_rates_response_option1.json"))
+                new Response(200, [], file_get_contents(__DIR__ . '/../_files/ups_rates_response_option1.json')),
             ]
         );
         //phpcs:enable Magento2.Functions.DiscouragedFunction
@@ -519,15 +518,15 @@ class CarrierTest extends TestCase
                     'product' => '11',
                     'action' => 'Rate',
                     'unit_measure' => 'LBS',
-                    'base_currency' => new DataObject(['code' => 'USD'])
-                ]
+                    'base_currency' => new DataObject(['code' => 'USD']),
+                ],
             ]
         );
 
         //phpcs:disable Magento2.Functions.DiscouragedFunction
         $this->httpClient->nextResponses(
             [
-                new Response(200, [], file_get_contents(__DIR__ . "/../_files/ups_rates_response_option1.json"))
+                new Response(200, [], file_get_contents(__DIR__ . '/../_files/ups_rates_response_option1.json')),
             ]
         );
         //phpcs:enable Magento2.Functions.DiscouragedFunction

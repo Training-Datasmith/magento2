@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * A custom "Import" adapter for Magento_ImportExport module that allows generating arbitrary data rows
  */
+
 namespace Magento\Setup\Model;
 
 use Magento\ImportExport\Model\Import\AbstractSource;

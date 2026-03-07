@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\SelectRendererTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -170,11 +171,11 @@ class DbTest extends TestCase
             'prepareSqlCondition'
         )->willReturnCallback(
             function ($arg1, $arg2) {
-                if ($arg1 == "`weight`" && $arg2 == ['in' => [1, 3]]) {
+                if ($arg1 == '`weight`' && $arg2 == ['in' => [1, 3]]) {
                     return 'weight in (1, 3)';
-                } elseif ($arg1 == "`name`" && $arg2 == ['like' => 'M%']) {
+                } elseif ($arg1 == '`name`' && $arg2 == ['like' => 'M%']) {
                     return "name like 'M%'";
-                } elseif ($arg1 == "`is_imported`") {
+                } elseif ($arg1 == '`is_imported`') {
                     return 'is_imported = 1';
                 }
             }
@@ -186,7 +187,7 @@ class DbTest extends TestCase
             ->method('select')
             ->willReturn($select);
         $this->collection->setConnection($adapter);
-        $select = $this->collection->getSelect()->from("test");
+        $select = $this->collection->getSelect()->from('test');
 
         $this->collection->addFieldToFilter(
             ['weight', 'name'],
@@ -325,7 +326,7 @@ class DbTest extends TestCase
         return [
             [false, false, 'some_query', ''],
             [true, false, 'some_query', 'some_query'],
-            [false, true, 'some_query', 'some_query']
+            [false, true, 'some_query', 'some_query'],
         ];
     }
 
@@ -370,7 +371,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();
@@ -410,7 +411,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();
@@ -461,7 +462,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();
@@ -491,7 +492,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();
@@ -526,7 +527,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();
@@ -561,7 +562,7 @@ class DbTest extends TestCase
             ->setConstructorArgs(
                 [
                     'adapter' => $adapterMock,
-                    'selectRenderer' => $this->getSelectRenderer($this->objectManager)
+                    'selectRenderer' => $this->getSelectRenderer($this->objectManager),
                 ]
             )
             ->getMock();

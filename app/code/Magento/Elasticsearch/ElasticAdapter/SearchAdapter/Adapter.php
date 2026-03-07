@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\ElasticAdapter\SearchAdapter;
 
 use Magento\AdvancedSearch\Model\Client\ClientException;
@@ -96,7 +99,7 @@ class Adapter implements AdapterInterface
             $rawResponse = $client->query($query);
         } catch (\Exception $e) {
             $this->logger->critical($e);
-            throw new ClientException("Could not perform search query.", $e->getCode(), $e);
+            throw new ClientException('Could not perform search query.', $e->getCode(), $e);
         }
 
         $rawDocuments = isset($rawResponse['hits']['hits']) ? $rawResponse['hits']['hits'] : [];
@@ -104,7 +107,7 @@ class Adapter implements AdapterInterface
             [
                 'documents' => $rawDocuments,
                 'aggregations' => $aggregationBuilder->build($request, $rawResponse),
-                'total' => isset($rawResponse['hits']['total']) ? $rawResponse['hits']['total'] : 0
+                'total' => isset($rawResponse['hits']['total']) ? $rawResponse['hits']['total'] : 0,
             ]
         );
         return $queryResponse;

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test format of layout files
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Layout;
 
 class HandlesTest extends \PHPUnit\Framework\TestCase

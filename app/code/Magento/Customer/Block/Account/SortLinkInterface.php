@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ interface SortLinkInterface
     /**#@+
      * Constant for confirmation status
      */
-    const SORT_ORDER = 'sortOrder';
+    public const SORT_ORDER = 'sortOrder';
     /**#@-*/
 
     /**

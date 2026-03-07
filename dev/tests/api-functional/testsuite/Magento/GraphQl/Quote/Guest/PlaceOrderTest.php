@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,6 +20,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
 use Magento\GiftMessage\Test\Fixture\GiftMessage;
 use Magento\Indexer\Test\Fixture\Indexer;
+use Magento\OfflinePayments\Model\Checkmo;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart;
@@ -34,7 +36,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\OfflinePayments\Model\Checkmo;
 
 /**
  * Test for placing an order for guest
@@ -388,7 +389,7 @@ class PlaceOrderTest extends GraphQlAbstract
             [
                 'prod_id' => '$product.id$',
                 'is_in_stock' => 0,
-                'prod_qty' => 0
+                'prod_qty' => 0,
             ],
             'prodStock'
         ),
@@ -432,7 +433,7 @@ class PlaceOrderTest extends GraphQlAbstract
             [
                 'prod_id' => '$product.id$',
                 'is_in_stock' => 0,
-                'prod_qty' => 0
+                'prod_qty' => 0,
             ],
             'prodStock'
         )
@@ -504,7 +505,7 @@ class PlaceOrderTest extends GraphQlAbstract
             GuestCartFixture::class,
             [
                 'reserved_order_id' => 'test_quote',
-                'message_id' => '$message.id$'
+                'message_id' => '$message.id$',
             ],
             'cart'
         ),

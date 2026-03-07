@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
 use Magento\Framework\App\Console\MaintenanceModeEnabler;
@@ -15,10 +18,10 @@ use Magento\Framework\Module\DependencyChecker;
 use Magento\Framework\Module\FullModuleList;
 use Magento\Framework\Module\PackageInfo;
 use Magento\Framework\Setup\BackupRollbackFactory;
+use Magento\Framework\Setup\Patch\PatchApplier;
 use Magento\Setup\Model\ModuleRegistryUninstaller;
 use Magento\Setup\Model\ModuleUninstaller;
 use Magento\Setup\Model\ObjectManagerProvider;
-use Magento\Framework\Setup\Patch\PatchApplier;
 use Magento\Setup\Model\UninstallCollector;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -198,7 +201,7 @@ class ModuleUninstallCommand extends AbstractModuleCommand
                 null,
                 InputOption::VALUE_NONE,
                 'All modules, that will be past here will be non composer based'
-            )
+            ),
         ];
         $this->setName(self::NAME)
             ->setDescription('Uninstalls modules installed by composer')
@@ -400,7 +403,7 @@ class ModuleUninstallCommand extends AbstractModuleCommand
                 $messages[] =
                     "<error>Cannot uninstall module '$module' because the following module(s) depend on it:</error>" .
                     PHP_EOL . "\t<error>" . implode('</error>' . PHP_EOL . "\t<error>", array_keys($dependingModules)) .
-                    "</error>";
+                    '</error>';
             }
         }
         return $messages;

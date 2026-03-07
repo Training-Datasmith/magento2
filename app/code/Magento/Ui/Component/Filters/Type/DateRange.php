@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
 use Magento\Ui\Component\Form\Element\DataType\Date as DataTypeDate;
@@ -14,7 +17,7 @@ use Magento\Ui\Component\Form\Element\DataType\Date as DataTypeDate;
  */
 class DateRange extends Range
 {
-    const COMPONENT = 'date';
+    public const COMPONENT = 'date';
 
     /**
      * Wrapped component

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class BundlePriceTest extends TestCase
             ->method('getTypeId')
             ->willReturn('bundle');
         $productMock->method('getPriceInfo')->willReturn($basePriceInfo);
-        
+
         $productRender->expects($this->exactly(2))
             ->method('getPriceInfo')
             ->willReturn($priceInfo);

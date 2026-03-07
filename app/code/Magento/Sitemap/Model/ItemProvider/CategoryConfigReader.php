@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ class CategoryConfigReader implements ConfigReaderInterface
     /**#@+
      * Xpath config settings
      */
-    const XML_PATH_CHANGE_FREQUENCY = 'sitemap/category/changefreq';
-    const XML_PATH_PRIORITY = 'sitemap/category/priority';
+    public const XML_PATH_CHANGE_FREQUENCY = 'sitemap/category/changefreq';
+    public const XML_PATH_PRIORITY = 'sitemap/category/priority';
     /**#@-*/
 
     /**

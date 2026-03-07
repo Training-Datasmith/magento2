@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -164,7 +166,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             ->getAllowedCountries(ScopeInterface::SCOPE_STORE, $store);
 
         if (!empty($allowedCountries)) {
-            $this->addFieldToFilter("country_id", ['in' => $allowedCountries]);
+            $this->addFieldToFilter('country_id', ['in' => $allowedCountries]);
         }
 
         return $this;
@@ -204,7 +206,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 if (is_array($iso)) {
                     $whereOr = [];
                     foreach ($iso as $iso_curr) {
-                            $whereOr[] = $this->_getConditionSql("{$iso_curr}_code", ['in' => $countryCode]);
+                        $whereOr[] = $this->_getConditionSql("{$iso_curr}_code", ['in' => $countryCode]);
                     }
                     $this->_select->where('(' . implode(') OR (', $whereOr) . ')');
                 } else {
@@ -214,7 +216,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 if (is_array($iso)) {
                     $whereOr = [];
                     foreach ($iso as $iso_curr) {
-                            $whereOr[] = $this->_getConditionSql("{$iso_curr}_code", $countryCode);
+                        $whereOr[] = $this->_getConditionSql("{$iso_curr}_code", $countryCode);
                     }
                     $this->_select->where('(' . implode(') OR (', $whereOr) . ')');
                 } else {
@@ -235,9 +237,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         if (!empty($countryId)) {
             if (is_array($countryId)) {
-                $this->addFieldToFilter("country_id", ['in' => $countryId]);
+                $this->addFieldToFilter('country_id', ['in' => $countryId]);
             } else {
-                $this->addFieldToFilter("country_id", $countryId);
+                $this->addFieldToFilter('country_id', $countryId);
             }
         }
         return $this;

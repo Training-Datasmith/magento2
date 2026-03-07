@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class Multiple extends AbstractOptions
         )->setData(
             [
                 'id' => 'select_' . $option->getId(),
-                'class' => $require . ' product-custom-option admin__control-select'
+                'class' => $require . ' product-custom-option admin__control-select',
             ]
         );
         $select = $this->insertSelectOption($select, $option);
@@ -90,7 +91,7 @@ class Multiple extends AbstractOptions
             $priceStr = $this->_formatPrice(
                 [
                     'is_percent' => $isPercentPriceType,
-                    'pricing_value' => $_value->getPrice($isPercentPriceType)
+                    'pricing_value' => $_value->getPrice($isPercentPriceType),
                 ],
                 false
             );
@@ -102,7 +103,7 @@ class Multiple extends AbstractOptions
                         $_value->getPrice(true),
                         $store,
                         false
-                    )
+                    ),
                 ]
             );
         }

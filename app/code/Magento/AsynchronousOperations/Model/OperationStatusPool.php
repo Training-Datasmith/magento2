@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model;
 
 /**
@@ -12,17 +15,8 @@ namespace Magento\AsynchronousOperations\Model;
  */
 class OperationStatusPool
 {
-    /**
-     * @var array
-     */
-    private $statuses;
-
-    /**
-     * @param array $statuses
-     */
-    public function __construct(array $statuses = [])
+    public function __construct(private readonly array $statuses = [])
     {
-        $this->statuses = $statuses;
     }
 
     /**

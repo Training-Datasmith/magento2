@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
  */
 class QuoteDataConfigFilterTest extends TestCase
 {
-
     /**
      * @var QuoteDataConfigFilter
      */
@@ -54,15 +54,15 @@ class QuoteDataConfigFilterTest extends TestCase
                 [
                     'test1' => 1,
                     'test2' => 2,
-                    'test3' => 3
-                ]
+                    'test3' => 3,
+                ],
         ];
 
         $expected = [
             'quoteData' =>
                 [
-                    'test3' => 3
-                ]
+                    'test3' => 3,
+                ],
         ];
 
         $this->assertEquals($expected, $this->model->process($config));

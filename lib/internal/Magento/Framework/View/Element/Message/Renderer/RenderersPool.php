@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\Message\Renderer;
 
 class RenderersPool implements PoolInterface
@@ -38,6 +41,6 @@ class RenderersPool implements PoolInterface
     {
         return !isset($this->renderers[$rendererCode])
                 ? null
-                :$this->renderers[$rendererCode];
+                : $this->renderers[$rendererCode];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -858,7 +860,7 @@ class InitializeDirectoryData implements DataPatchInterface, PatchVersionInterfa
                 'scope' => 'default',
                 'scope_id' => 0,
                 'path' => Data::XML_PATH_DISPLAY_ALL_STATES,
-                'value' => 1
+                'value' => 1,
             ]
         );
         /** @var \Magento\Directory\Helper\Data $helper */
@@ -870,7 +872,7 @@ class InitializeDirectoryData implements DataPatchInterface, PatchVersionInterfa
                 'scope' => 'default',
                 'scope_id' => 0,
                 'path' => Data::XML_PATH_STATES_REQUIRED,
-                'value' => implode(',', array_keys($countries))
+                'value' => implode(',', array_keys($countries)),
             ]
         );
     }

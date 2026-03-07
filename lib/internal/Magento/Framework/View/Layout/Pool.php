@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -13,7 +16,7 @@ use Magento\Framework\View\Element\UiComponent\LayoutInterface;
  */
 class Pool
 {
-    const DEFAULT_CLASS = \Magento\Framework\View\Layout\Generic::class;
+    public const DEFAULT_CLASS = \Magento\Framework\View\Layout\Generic::class;
 
     /**
      * Layouts pool

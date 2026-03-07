@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
-namespace Magento\SomeModule\Model\One;
 
-use PHPUnit\Framework\TestCase;
+namespace Magento\SomeModule\Model\One;
 
 require_once __DIR__ . '/../Proxy.php';
 class TestOne

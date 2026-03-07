@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,6 @@ declare(strict_types=1);
 namespace Magento\GraphQl\CatalogInventory;
 
 use Exception;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\Bundle\Test\Fixture\AddProductToCart as AddBundleProductToCart;
 use Magento\Bundle\Test\Fixture\Link as BundleSelectionFixture;
 use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
@@ -23,9 +19,14 @@ use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart as AddConfigurable
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Test\Fixture\AddProductToCart;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask as QuoteMaskFixture;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorage;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test for product status
@@ -105,7 +106,7 @@ class ProductStockStatusTest extends GraphQlAbstract
         DataFixture(
             BundleSelectionFixture::class,
             [
-                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0
+                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0,
             ],
             as:'link'
         ),
@@ -123,7 +124,7 @@ class ProductStockStatusTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundleProduct.id$',
                 'selections' => [['$product.id$']],
-                'qty' => 100
+                'qty' => 100,
             ],
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask'),
@@ -152,7 +153,7 @@ class ProductStockStatusTest extends GraphQlAbstract
         DataFixture(
             BundleSelectionFixture::class,
             [
-                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0
+                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0,
             ],
             as:'link'
         ),
@@ -170,7 +171,7 @@ class ProductStockStatusTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundleProduct.id$',
                 'selections' => [['$product.id$']],
-                'qty' => 100
+                'qty' => 100,
             ],
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask'),
@@ -209,7 +210,7 @@ class ProductStockStatusTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurable_product.id$',
                 'child_product_id' => '$product.id$',
-                'qty' => 100
+                'qty' => 100,
             ],
         ),
         DataFixture(ProductStockFixture::class, ['prod_id' => '$product.id$', 'is_in_stock' => 0], 'prodStock')
@@ -249,7 +250,7 @@ class ProductStockStatusTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurable_product.id$',
                 'child_product_id' => '$product.id$',
-                'qty' => 90
+                'qty' => 90,
             ],
         ),
     ]

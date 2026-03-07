@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\EntityManager\HydratorPool;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Sales\Api\Data\OrderItemInterface;
+use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
+use Magento\Sales\Api\Data\ShipmentCreationArgumentsInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\ShipmentItemCreationInterface;
 use Magento\Sales\Api\Data\ShipmentPackageCreationInterface;
 use Magento\Sales\Api\Data\ShipmentTrackCreationInterface;
-use Magento\Framework\EntityManager\HydratorPool;
 use Magento\Sales\Model\Order\Shipment\TrackFactory;
-use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
-use Magento\Sales\Api\Data\ShipmentCreationArgumentsInterface;
-use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Model\Order\ShipmentDocumentFactory\ExtensionAttributesProcessor;
 
 /**

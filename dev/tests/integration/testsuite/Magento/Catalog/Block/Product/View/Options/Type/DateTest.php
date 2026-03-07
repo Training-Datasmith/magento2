@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -72,8 +73,8 @@ class DateTest extends TestCase
             'product.info.options.date',
             [
                 'data' => [
-                    'template' => 'Magento_Catalog::product/view/options/type/date.phtml'
-                ]
+                    'template' => 'Magento_Catalog::product/view/options/type/date.phtml',
+                ],
             ]
         );
         $layout->createBlock(
@@ -158,7 +159,7 @@ class DateTest extends TestCase
             [
                 'qty' => 1,
                 'options' => [
-                    $option->getId() => $data
+                    $option->getId() => $data,
                 ],
             ]
         );
@@ -187,7 +188,7 @@ class DateTest extends TestCase
      */
     private function getHtmlDocument(string $source): \DOMDocument
     {
-        $page =<<<HTML
+        $page = <<<HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,7 +221,7 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//select[@id="options_{id}_year"]/option[@selected]' => '2020',
@@ -229,7 +230,7 @@ HTML;
                     '//select[@id="options_{id}_hour"]/option[@selected]' => '2',
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
-                ]
+                ],
             ],
             [
                 [
@@ -237,7 +238,7 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//select[@id="options_{id}_year"]/option[@selected]' => '2020',
@@ -246,8 +247,8 @@ HTML;
                     '//select[@id="options_{id}_hour"]/option[@selected]' => '2',
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -265,14 +266,14 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//input[@id="options_{id}_date"]' => '3/5/2020',
                     '//select[@id="options_{id}_hour"]/option[@selected]' => '2',
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
-                ]
+                ],
             ],
             [
                 [
@@ -280,14 +281,14 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//input[@id="options_{id}_date"]' => '9/30/2020',
                     '//select[@id="options_{id}_hour"]/option[@selected]' => '2',
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
-                ]
+                ],
             ],
             [
                 [
@@ -297,7 +298,7 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//input[@id="options_{id}_date"]' => '05/03/2020',
@@ -305,7 +306,7 @@ HTML;
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
                 ],
-                'fr_FR'
+                'fr_FR',
             ],
             [
                 [
@@ -313,7 +314,7 @@ HTML;
                     'hour' => '2',
                     'minute' => '15',
                     'day_part' => 'am',
-                    'date_internal' => '2020-09-30 02:15:00'
+                    'date_internal' => '2020-09-30 02:15:00',
                 ],
                 [
                     '//input[@id="options_{id}_date"]' => '30/09/2020',
@@ -321,8 +322,8 @@ HTML;
                     '//select[@id="options_{id}_minute"]/option[@selected]' => '15',
                     '//select[@id="options_{id}_day_part"]/option[@selected]' => 'am',
                 ],
-                'fr_FR'
-            ]
+                'fr_FR',
+            ],
         ];
     }
 }

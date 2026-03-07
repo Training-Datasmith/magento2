@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,10 +10,9 @@ declare(strict_types=1);
 namespace Magento\Paypal\Block\PayLater;
 
 use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
-use Magento\Framework\App\ObjectManager;
+use Magento\Paypal\Model\Config as PaypalConfig;
 use Magento\Paypal\Model\PayLaterConfig;
 use Magento\Paypal\Model\SdkUrl;
-use Magento\Paypal\Model\Config as PaypalConfig;
 
 /**
  * PayLater Layout Processor
@@ -80,8 +80,8 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'sdkUrl' => $this->sdkUrl->getUrl(),
                 'displayAmount' => true,
                 'amountComponentConfig' => [
-                    'component' => 'Magento_Paypal/js/view/amountProviders/checkout'
-                ]
+                    'component' => 'Magento_Paypal/js/view/amountProviders/checkout',
+                ],
             ];
             $config = array_replace($defaultConfig, $componentConfig);
             $displayAmount = $config['displayAmount'] ?? false;

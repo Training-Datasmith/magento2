@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Framework;
  */
 class ValidatorFactory
 {
-    const DEFAULT_INSTANCE_NAME = Validator::class;
+    public const DEFAULT_INSTANCE_NAME = Validator::class;
 
     /**
      * Object Manager instance

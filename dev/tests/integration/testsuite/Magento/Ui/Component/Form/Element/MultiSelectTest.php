@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class MultiSelectTest extends TestCase
                 [
                     ['value' => '${\'my-value\'}', 'label' => 'My label'],
                     ['value' => '1', 'label' => 'Label'],
-                    ['value' => '${\'my-value-2\'}', 'label' => 'This is ${\'My label\'}']
+                    ['value' => '${\'my-value-2\'}', 'label' => 'This is ${\'My label\'}'],
                 ],
                 [
                     ['value' => '${\'my-value\'}', 'label' => 'My label', '__disableTmpl' => ['value' => true]],
@@ -49,13 +50,12 @@ class MultiSelectTest extends TestCase
                     [
                         'value' => '${\'my-value-2\'}',
                         'label' => 'This is ${\'My label\'}',
-                        '__disableTmpl' => ['value' => true, 'label' => true]
-                    ]
-                ]
+                        '__disableTmpl' => ['value' => true, 'label' => true],
+                    ],
+                ],
             ],
             'provider' => [
-                new class implements OptionSourceInterface
-                {
+                new class () implements OptionSourceInterface {
                     /**
                      * @inheritDoc
                      */
@@ -64,8 +64,8 @@ class MultiSelectTest extends TestCase
                         return [['value' => '${\'value\'}', 'label' => 'Test']];
                     }
                 },
-                [['value' => '${\'value\'}', 'label' => 'Test', '__disableTmpl' => ['value' => true]]]
-            ]
+                [['value' => '${\'value\'}', 'label' => 'Test', '__disableTmpl' => ['value' => true]]],
+            ],
         ];
     }
 

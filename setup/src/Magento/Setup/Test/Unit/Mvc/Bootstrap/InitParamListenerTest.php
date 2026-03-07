@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,15 +12,14 @@ use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\SharedEventManager;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\ServiceManager\ServiceManager;
-use Laminas\Stdlib\RequestInterface;
-use Magento\Framework\Setup\Mvc\MvcApplication;
-use Magento\Framework\Setup\Mvc\MvcEvent;
 use Magento\Framework\App\Bootstrap as AppBootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Setup\Mvc\MvcApplication;
+use Magento\Framework\Setup\Mvc\MvcEvent;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,7 +28,6 @@ use PHPUnit\Framework\TestCase;
  */
 class InitParamListenerTest extends TestCase
 {
-
     /**
      * @var InitParamListener
      */
@@ -152,25 +151,25 @@ class InitParamListenerTest extends TestCase
                 [], //zfAppConfig
                 [], //env
                 null, //argv
-                [] //expectedArray
+                [], //expectedArray
             ],
             'mage_mode App' => [
                 ['MAGE_MODE' => 'developer'],
                 [],
                 '', //test non array value
-                ['MAGE_MODE' => 'developer']
+                ['MAGE_MODE' => 'developer'],
             ],
             'mage_mode Env' => [
                 [],
                 ['MAGE_MODE' => 'developer'],
                 null,
-                ['MAGE_MODE' => 'developer']
+                ['MAGE_MODE' => 'developer'],
             ],
             'mage_mode CLI' => [
                 [],
                 [],
                 ['bin/magento', 'setup:install', '--magento-init-params=MAGE_MODE=developer'],
-                ['MAGE_MODE' => 'developer']
+                ['MAGE_MODE' => 'developer'],
             ],
             'one MAGE_DIRS CLI' => [
                 [],
@@ -195,7 +194,7 @@ class InitParamListenerTest extends TestCase
                 [],
                 [],
                 ['bin/magento', 'setup:install', '--magento-init-params=MAGE_MODE=developer'],
-                ['MAGE_MODE' => 'developer']
+                ['MAGE_MODE' => 'developer'],
             ],
             'MAGE_DIRS Env' => [
                 [],

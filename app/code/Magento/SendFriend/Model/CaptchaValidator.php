@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 
 namespace Magento\SendFriend\Model;
 
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Captcha\Helper\Data;
 use Magento\Captcha\Model\DefaultModel;
 use Magento\Captcha\Observer\CaptchaStringResolver;
-use Magento\Authorization\Model\UserContextInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Class CaptchaValidator. Performs captcha validation

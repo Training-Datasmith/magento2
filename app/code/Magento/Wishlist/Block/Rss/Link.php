@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Wishlist block customer items
  */
+
 namespace Magento\Wishlist\Block\Rss;
 
 use Magento\Framework\App\Rss\UrlBuilderInterface;
@@ -95,7 +98,7 @@ class Link extends Template
             $params = [
                 'type' => 'wishlist',
                 'data' => $this->urlEncoder->encode($key),
-                '_secure' => false
+                '_secure' => false,
             ];
         }
         if ($wishlistId) {

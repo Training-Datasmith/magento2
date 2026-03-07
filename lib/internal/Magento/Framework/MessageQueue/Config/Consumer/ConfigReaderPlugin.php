@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Config\Consumer;
 
 use Magento\Framework\MessageQueue\ConfigInterface;
@@ -71,7 +74,7 @@ class ConfigReaderPlugin
                 'maxMessages' => $consumerData['max_messages'],
                 'maxIdleTime' => null,
                 'sleep' => null,
-                'onlySpawnWhenMessageAvailable' => null
+                'onlySpawnWhenMessageAvailable' => null,
             ];
         }
 

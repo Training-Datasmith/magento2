@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,9 +24,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class TaxClassRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'taxTaxClassRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/taxClasses';
+    public const SERVICE_NAME = 'taxTaxClassRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/taxClasses';
 
     /** @var SearchCriteriaBuilder */
     private $searchCriteriaBuilder;
@@ -44,7 +46,7 @@ class TaxClassRepositoryTest extends WebapiAbstract
     /** @var ClassModelRegistry */
     private $taxClassRegistry;
 
-    const SAMPLE_TAX_CLASS_NAME = 'Wholesale Customer';
+    public const SAMPLE_TAX_CLASS_NAME = 'Wholesale Customer';
 
     /**
      * Execute per test initialization.
@@ -215,7 +217,7 @@ class TaxClassRepositoryTest extends WebapiAbstract
         try {
             $this->taxClassRegistry->remove($taxClassId);
             $this->taxClassRepository->get($taxClassId);
-            $this->fail("Tax class was not expected to be returned after being deleted.");
+            $this->fail('Tax class was not expected to be returned after being deleted.');
         } catch (NoSuchEntityException $e) {
             $this->assertEquals('No such entity with class_id = ' . $taxClassId, $e->getMessage());
         }
@@ -274,8 +276,8 @@ class TaxClassRepositoryTest extends WebapiAbstract
         $filter4 = $this->filterBuilder->setField(ClassModel::KEY_TYPE)
             ->setValue($customerTaxClass[ClassModel::KEY_TYPE])
             ->create();
-        $sortOrder = $this->sortOrderBuilder->setField("class_type")
-            ->setDirection("ASC")->create();
+        $sortOrder = $this->sortOrderBuilder->setField('class_type')
+            ->setDirection('ASC')->create();
 
         /**
          * (class_name == 'Retail Customer' || class_name == 'Taxable Goods)

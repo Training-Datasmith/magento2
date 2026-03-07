@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,9 +18,9 @@ interface CostInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     /**#@+
      * Constants
      */
-    const COST = 'cost';
-    const STORE_ID = 'store_id';
-    const SKU = 'sku';
+    public const COST = 'cost';
+    public const STORE_ID = 'store_id';
+    public const SKU = 'sku';
     /**#@-*/
 
     /**

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,49 +18,49 @@ interface CartInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_ID = 'id';
+    public const KEY_ID = 'id';
 
-    const KEY_ENTITY_ID = 'entity_id';
+    public const KEY_ENTITY_ID = 'entity_id';
 
-    const KEY_CREATED_AT = 'created_at';
+    public const KEY_CREATED_AT = 'created_at';
 
-    const KEY_UPDATED_AT = 'updated_at';
+    public const KEY_UPDATED_AT = 'updated_at';
 
-    const KEY_CONVERTED_AT = 'converted_at';
+    public const KEY_CONVERTED_AT = 'converted_at';
 
-    const KEY_IS_ACTIVE = 'is_active';
+    public const KEY_IS_ACTIVE = 'is_active';
 
-    const KEY_IS_VIRTUAL = 'is_virtual';
+    public const KEY_IS_VIRTUAL = 'is_virtual';
 
-    const KEY_ITEMS = 'items';
+    public const KEY_ITEMS = 'items';
 
-    const KEY_ITEMS_COUNT = 'items_count';
+    public const KEY_ITEMS_COUNT = 'items_count';
 
-    const KEY_ITEMS_QTY = 'items_qty';
+    public const KEY_ITEMS_QTY = 'items_qty';
 
-    const KEY_CUSTOMER = 'customer';
+    public const KEY_CUSTOMER = 'customer';
 
-    const KEY_CHECKOUT_METHOD = 'checkout_method';
+    public const KEY_CHECKOUT_METHOD = 'checkout_method';
 
-    const KEY_SHIPPING_ADDRESS = 'shipping_address';
+    public const KEY_SHIPPING_ADDRESS = 'shipping_address';
 
-    const KEY_BILLING_ADDRESS = 'billing_address';
+    public const KEY_BILLING_ADDRESS = 'billing_address';
 
-    const KEY_RESERVED_ORDER_ID = 'reserved_order_id';
+    public const KEY_RESERVED_ORDER_ID = 'reserved_order_id';
 
-    const KEY_ORIG_ORDER_ID = 'orig_order_id';
+    public const KEY_ORIG_ORDER_ID = 'orig_order_id';
 
-    const KEY_CURRENCY = 'currency';
+    public const KEY_CURRENCY = 'currency';
 
-    const KEY_CUSTOMER_IS_GUEST = 'customer_is_guest';
+    public const KEY_CUSTOMER_IS_GUEST = 'customer_is_guest';
 
-    const KEY_CUSTOMER_NOTE = 'customer_note';
+    public const KEY_CUSTOMER_NOTE = 'customer_note';
 
-    const KEY_CUSTOMER_NOTE_NOTIFY = 'customer_note_notify';
+    public const KEY_CUSTOMER_NOTE_NOTIFY = 'customer_note_notify';
 
-    const KEY_CUSTOMER_TAX_CLASS_ID = 'customer_tax_class_id';
+    public const KEY_CUSTOMER_TAX_CLASS_ID = 'customer_tax_class_id';
 
-    const KEY_STORE_ID = 'store_id';
+    public const KEY_STORE_ID = 'store_id';
 
     /**#@-*/
 

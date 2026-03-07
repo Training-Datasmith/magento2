@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\Config;
-use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Customer\Model\Attribute;
-use Magento\Eav\Model\Entity\Type;
+use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
+use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Eav\Model\Entity\Type;
 use Magento\Sales\Model\Order\Address;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 $addressData = [
@@ -24,7 +25,7 @@ $addressData = [
     'city' => 'Los Angeles',
     'email' => 'multiattribute@example.com',
     'telephone' => '2222222',
-    'country_id' => 'US'
+    'country_id' => 'US',
 ];
 
 /** @var $entityType Type */
@@ -60,7 +61,7 @@ $attributeMultiselect = $objectManager->create(
                     'cat' => 2,
                 ],
             ],
-        ]
+        ],
     ]
 );
 
@@ -85,7 +86,7 @@ $attributeMultiline = $objectManager->create(
             'entity_type_id' => $entityType->getId(),
             'backend_model' => ArrayBackend::class,
             'used_in_forms' => ['customer_register_address'],
-        ]
+        ],
     ]
 );
 

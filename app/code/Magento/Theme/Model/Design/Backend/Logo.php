@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Backend;
 
 class Logo extends Image
@@ -11,7 +14,7 @@ class Logo extends Image
      * The tail part of directory path for uploading
      *
      */
-    const UPLOAD_DIR = 'logo';
+    public const UPLOAD_DIR = 'logo';
 
     /**
      * Return path to directory for upload file

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -83,23 +84,23 @@ class AgreementTest extends TestCase
     {
         $payment = $this->createMock(Payment::class);
         $order = $this->createMock(Order::class);
-        
+
         $order->expects($this->any())
             ->method('getBaseCurrencyCode')
             ->willReturn('USD');
-        
+
         $payment->expects($this->any())
             ->method('getOrder')
             ->willReturn($order);
-        
+
         $payment->expects($this->any())
             ->method('setTransactionId')
             ->willReturnSelf();
-        
+
         $payment->expects($this->any())
             ->method('setIsTransactionClosed')
             ->willReturnSelf();
-        
+
         $payment->expects($this->any())
             ->method('getAdditionalInformation')
             ->willReturn('reference_id');

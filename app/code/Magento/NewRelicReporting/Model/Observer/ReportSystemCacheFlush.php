@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model\Observer;
 
 use Magento\Framework\Event\Observer;
@@ -58,7 +61,7 @@ class ReportSystemCacheFlush implements ObserverInterface
 
             $modelData = [
                 'type' => Config::FLUSH_CACHE,
-                'action' => $this->jsonEncoder->encode($jsonData)
+                'action' => $this->jsonEncoder->encode($jsonData),
             ];
 
             /** @var \Magento\NewRelicReporting\Model\System $systemModel */

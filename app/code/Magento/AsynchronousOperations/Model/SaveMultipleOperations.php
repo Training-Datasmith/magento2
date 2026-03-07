@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,21 +18,11 @@ use Magento\Framework\Exception\CouldNotSaveException;
  */
 class SaveMultipleOperations implements SaveMultipleOperationsInterface
 {
-
-    /**
-     * @var OperationResource
-     */
-    private $operationResource;
-
     /**
      * BulkSummary constructor.
-     *
-     * @param OperationResource $operationResource
      */
-    public function __construct(
-        OperationResource $operationResource
-    ) {
-        $this->operationResource = $operationResource;
+    public function __construct(private readonly OperationResource $operationResource)
+    {
     }
 
     /**
@@ -40,9 +31,7 @@ class SaveMultipleOperations implements SaveMultipleOperationsInterface
     public function execute(array $operations): void
     {
         try {
-            $operationsToInsert = array_map(function ($operation) {
-                return $operation->getData();
-            }, $operations);
+            $operationsToInsert = array_map(fn (\Magento\AsynchronousOperations\Api\Data\OperationInterface $operation) => $operation->getData(), $operations);
 
             $connection = $this->operationResource->getConnection();
             $connection->insertMultiple(

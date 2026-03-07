@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class StyleAttributeValidatorTest extends TestCase
             'valid position style' => ['style', 'color: blue; position: inherit; width: 100%', true],
             'valid background style' => ['style', 'color: blue; background-position: left; width: 100%', true],
             'invalid opacity style' => ['style', 'color: blue; width: 100%; opacity: 0.5', false],
-            'invalid z-index style' => ['style', 'color: blue; width: 100%; z-index: 11', false]
+            'invalid z-index style' => ['style', 'color: blue; width: 100%; z-index: 11', false],
         ];
     }
 

@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Db\Sequence;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Webapi\Exception;
-use Magento\SalesSequence\Model\ResourceModel\Meta as ResourceMetadata;
 use Magento\Framework\App\ResourceConnection as AppResource;
 use Magento\Framework\DB\Ddl\Sequence as DdlSequence;
-use Magento\SalesSequence\Model\ProfileFactory;
+use Magento\Framework\Webapi\Exception;
 use Magento\SalesSequence\Model\MetaFactory;
+use Magento\SalesSequence\Model\ProfileFactory;
+use Magento\SalesSequence\Model\ResourceModel\Meta as ResourceMetadata;
 
 /**
  * Class Builder
@@ -50,7 +52,7 @@ class Builder extends \Magento\SalesSequence\Model\Builder
      */
     protected $required = [
         'entityType',
-        'storeId'
+        'storeId',
     ];
 
     /**
@@ -238,10 +240,10 @@ class Builder extends \Magento\SalesSequence\Model\Builder
                     array_flip(
                         [
                             'prefix', 'suffix', 'start_value', 'step', 'max_value', 'warning_value',
-                            'is_active', 'active_profile'
+                            'is_active', 'active_profile',
                         ]
                     )
-                )
+                ),
             ]
         );
         $profile->setHasDataChanges(true);
@@ -251,7 +253,7 @@ class Builder extends \Magento\SalesSequence\Model\Builder
                 'data' => array_intersect_key(
                     $this->data,
                     array_flip(['entity_type', 'store_id', 'sequence_table', 'active_profile'])
-                )
+                ),
             ]
         );
         $metadata->setHasDataChanges(true);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Http\Client;
 
 use Laminas\Http\Exception\RuntimeException;
@@ -60,7 +63,7 @@ class Zend implements ClientInterface
     {
         $log = [
             'request' => $transferObject->getBody(),
-            'request_uri' => $transferObject->getUri()
+            'request_uri' => $transferObject->getUri(),
         ];
         $result = [];
         /** @var LaminasClient $client */

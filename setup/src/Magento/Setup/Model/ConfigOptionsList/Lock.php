@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Setup\Model\ConfigOptionsList;
 
-use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
-use Magento\Framework\Lock\LockBackendFactory;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
+use Magento\Framework\Lock\LockBackendFactory;
 use Magento\Framework\Setup\ConfigOptionsListInterface;
 use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -67,9 +68,9 @@ class ObserverTest extends TestCase
             PublisherConsumerController::class,
             [
                 'consumers' => ['product_alert'],
-                'logFilePath' => TESTS_TEMP_DIR . "/MessageQueueTestLog.txt",
+                'logFilePath' => TESTS_TEMP_DIR . '/MessageQueueTestLog.txt',
                 'maxMessages' => 1,
-                'appInitParams' => Bootstrap::getInstance()->getAppInitParams()
+                'appInitParams' => Bootstrap::getInstance()->getAppInitParams(),
             ]
         );
         try {

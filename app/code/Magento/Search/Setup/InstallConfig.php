@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class InstallConfig implements InstallConfigInterface
      * @var array
      */
     private $searchConfigMapping = [
-        SearchConfigOptionsList::INPUT_KEY_SEARCH_ENGINE => 'engine'
+        SearchConfigOptionsList::INPUT_KEY_SEARCH_ENGINE => 'engine',
     ];
 
     /**

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Configuration metadata processor
  *
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 use Magento\Framework\App\Config\Data\ProcessorFactory;

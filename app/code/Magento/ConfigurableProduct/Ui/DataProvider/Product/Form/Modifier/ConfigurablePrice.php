@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableType;
 
 /**
@@ -63,7 +66,7 @@ class ConfigurablePrice extends AbstractModifier
                                     'data' => [
                                         'config' => [
                                             'component' => 'Magento_ConfigurableProduct/js/' .
-                                                'components/price-configurable'
+                                                'components/price-configurable',
                                         ],
                                     ],
                                 ],
@@ -83,7 +86,7 @@ class ConfigurablePrice extends AbstractModifier
                             'visible' => 'ns = ${ $.ns }, index = '
                                 . ConfigurablePanel::CONFIGURABLE_MATRIX . ':isEmpty',
                             '__disableTmpl' => ['visible' => false],
-                        ]
+                        ],
                     ];
                 $config = $visibilityConfig;
                 $config['componentType'] = 'container';

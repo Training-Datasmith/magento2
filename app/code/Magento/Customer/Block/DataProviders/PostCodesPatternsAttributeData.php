@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Block\DataProviders;
 
+use Magento\Directory\Model\Country\Postcode\Config as PostCodeConfig;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Directory\Model\Country\Postcode\Config as PostCodeConfig;
 
 /**
  * Provides postcodes patterns into template.

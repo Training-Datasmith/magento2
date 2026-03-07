@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,8 +9,10 @@
 /**
  * Customer country with website specified attribute source
  */
+
 namespace Magento\Customer\Model\ResourceModel\Address\Attribute\Source;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Config\Share;
 use Magento\Customer\Model\Config\Share as CustomerShareConfig;
 use Magento\Directory\Model\AllowedCountries;
@@ -18,10 +22,9 @@ use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory as OptionCollectionFactory;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory as AttrubuteOptionFactory;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\Request\Http;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 
 /**
  * Return allowed countries for specified website

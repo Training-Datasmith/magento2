@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class ViewUpdatePluginTest extends TestCase
 
         $this->loggerMock->expects($this->once())
             ->method('info')
-            ->with($this->stringContains("Suspended status detected for indexer"));
+            ->with($this->stringContains('Suspended status detected for indexer'));
 
         $proceed = function () {
             // This should not be called
@@ -139,17 +140,17 @@ class ViewUpdatePluginTest extends TestCase
 
         $this->configMock->method('getIndexers')->willReturnOnConsecutiveCalls(
             [
-                $indexerId => ['view_id' => $viewId]
+                $indexerId => ['view_id' => $viewId],
             ],
             [
                 'test_indexer' => [
                     'view_id' => 'test_view',
-                    'shared_index' => 'shared_index'
+                    'shared_index' => 'shared_index',
                 ],
                 'another_test_indexer' => [
                     'view_id' => 'another_view_id',
                     'shared_index' => 'shared_index',
-                ]
+                ],
             ]
         );
 
@@ -175,7 +176,7 @@ class ViewUpdatePluginTest extends TestCase
 
         $this->loggerMock->expects($this->once())
             ->method('info')
-            ->with($this->stringContains("Suspended status detected for indexer"));
+            ->with($this->stringContains('Suspended status detected for indexer'));
 
         $proceed = function () {
             // This should not be called

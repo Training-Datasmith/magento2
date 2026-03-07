@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,5 +31,5 @@ return [
     ],
     'fileFormats' => [
         'name_three' => ['name' => 'name_three', 'model' => 'Model\Three', 'label' => 'Label_Three'],
-    ]
+    ],
 ];

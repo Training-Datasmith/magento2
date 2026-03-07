@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application config file resolver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 use Magento\Framework\App\Filesystem\DirectoryList;

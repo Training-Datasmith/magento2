@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class PersistentTest extends TestCase
             [
                 'persistentSession' => $this->persistentSessionHelperMock,
                 'customerViewHelper' => $this->customerViewHelperMock,
-                'customerRepository' => $this->customerRepositoryMock
+                'customerRepository' => $this->customerRepositoryMock,
             ]
         );
     }
@@ -122,7 +123,7 @@ class PersistentTest extends TestCase
 
         $this->assertEquals(
             [
-                'fullname' => self::STUB_CUSTOMER_NAME
+                'fullname' => self::STUB_CUSTOMER_NAME,
             ],
             $this->customerData->getSectionData()
         );

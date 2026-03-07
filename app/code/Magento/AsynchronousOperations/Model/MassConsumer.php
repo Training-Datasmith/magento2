@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\AsynchronousOperations\Model;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\MessageQueue\CallbackInvokerInterface;
-use Magento\Framework\MessageQueue\Consumer\ConfigInterface as ConsumerConfig;
 use Magento\Framework\MessageQueue\ConsumerConfigurationInterface;
 use Magento\Framework\MessageQueue\ConsumerInterface;
 use Magento\Framework\MessageQueue\EnvelopeInterface;
@@ -24,57 +23,26 @@ use Magento\Framework\Registry;
 class MassConsumer implements ConsumerInterface
 {
     /**
-     * @var CallbackInvokerInterface
-     */
-    private $invoker;
-
-    /**
-     * @var ConsumerConfigurationInterface
-     */
-    private $configuration;
-
-    /**
      * @var MassConsumerEnvelopeCallbackFactory
      */
     private $massConsumerEnvelopeCallback;
 
     /**
-     * @var Registry
-     */
-    private $registry;
-
-    /**
-     * @var ConsumerConfig
-     */
-    private $consumerConfig;
-
-    /**
      * Initialize dependencies.
-     *
-     * @param CallbackInvokerInterface $invoker
-     * @param ConsumerConfigurationInterface $configuration
-     * @param MassConsumerEnvelopeCallbackFactory $massConsumerEnvelopeCallback
-     * @param Registry $registry
-     * @param ConsumerConfig|null $consumerConfig
      */
     public function __construct(
-        CallbackInvokerInterface $invoker,
-        ConsumerConfigurationInterface $configuration,
+        private readonly CallbackInvokerInterface $invoker,
+        private readonly ConsumerConfigurationInterface $configuration,
         MassConsumerEnvelopeCallbackFactory $massConsumerEnvelopeCallback,
-        Registry $registry,
-        ?ConsumerConfig $consumerConfig = null
+        private readonly Registry $registry
     ) {
-        $this->invoker = $invoker;
-        $this->configuration = $configuration;
         $this->massConsumerEnvelopeCallback = $massConsumerEnvelopeCallback;
-        $this->registry = $registry;
-        $this->consumerConfig = $consumerConfig ?: ObjectManager::getInstance()->get(ConsumerConfig::class);
     }
 
     /**
      * @inheritdoc
      */
-    public function process($maxNumberOfMessages = null)
+    public function process($maxNumberOfMessages = null): void
     {
         $this->registry->register('isSecureArea', true, true);
 
@@ -100,7 +68,6 @@ class MassConsumer implements ConsumerInterface
     /**
      * Get transaction callback. This handles the case of async.
      *
-     * @param QueueInterface $queue
      * @return \Closure
      */
     private function getTransactionCallback(QueueInterface $queue)
@@ -111,7 +78,7 @@ class MassConsumer implements ConsumerInterface
                 'queue' => $queue,
             ]
         );
-        return function (EnvelopeInterface $message) use ($callbackInstance) {
+        return function (EnvelopeInterface $message) use ($callbackInstance): void {
             $callbackInstance->execute($message);
         };
     }

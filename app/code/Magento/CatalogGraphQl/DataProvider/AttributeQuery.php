@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -230,7 +231,7 @@ class AttributeQuery
                 ->columns(
                     [
                         'attribute_code' => $attributeCodeExpression,
-                        'value' => $attributeValueExpression
+                        'value' => $attributeValueExpression,
                     ]
                 );
         }
@@ -259,12 +260,12 @@ class AttributeQuery
         $expressionParts = ['CASE'];
 
         foreach ($eavAttributes as $attribute) {
-            $expressionParts[]=
+            $expressionParts[] =
                 $dbConnection->quoteInto('WHEN eav.attribute_id = ?', $attribute['attribute_id'], \Zend_Db::INT_TYPE) .
                 $dbConnection->quoteInto(' THEN ?', $attribute['attribute_code'], 'string');
         }
 
-        $expressionParts[]= 'END';
+        $expressionParts[] = 'END';
 
         return new \Zend_Db_Expr(implode(' ', $expressionParts));
     }

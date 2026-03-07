@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -109,13 +111,13 @@ class GuestCartManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/guest-carts/' . $cartId,
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
-                'token' => $token
+                'token' => $token,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => 'V1',
                 'operation' => self::SERVICE_NAME . 'AssignCustomer',
-                'token' => $token
+                'token' => $token,
             ],
         ];
 
@@ -231,13 +233,13 @@ class GuestCartManagementTest extends WebapiAbstract
             'rest' => [
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
                 'resourcePath' => '/V1/guest-carts/' . $cartId,
-                'token' => $token
+                'token' => $token,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => 'V1',
                 'operation' => self::SERVICE_NAME . 'AssignCustomer',
-                'token' => $token
+                'token' => $token,
             ],
         ];
 
@@ -288,12 +290,12 @@ class GuestCartManagementTest extends WebapiAbstract
                 'service' => self::SERVICE_NAME,
                 'operation' => self::SERVICE_NAME . 'AssignCustomer',
                 'serviceVersion' => 'V1',
-                'token' => $token
+                'token' => $token,
             ],
             'rest' => [
                 'resourcePath' => '/V1/guest-carts/' . $cartId,
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
-                'token' => $token
+                'token' => $token,
             ],
         ];
 

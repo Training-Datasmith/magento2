@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,13 +9,13 @@
 namespace Magento\Cms\Controller;
 
 use Magento\Cms\Api\GetPageByIdentifierInterface;
+use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Cms\Model\Page\CustomLayoutManagerInterface;
 use Magento\Framework\App\Cache\Type\Block;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Cms\Model\CustomLayoutManager;
-use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -36,7 +38,7 @@ class PageTest extends AbstractController
         $this->_objectManager->configure([
             'preferences' => [
                 CustomLayoutManagerInterface::class => CustomLayoutManager::class,
-            ]
+            ],
         ]);
         $this->pageRetriever = $this->_objectManager->get(GetPageByIdentifierInterface::class);
     }
@@ -150,7 +152,7 @@ class PageTest extends AbstractController
     {
         return [
             'Page with 1column layout' => ['page-with-1column-layout'],
-            'Page with unavailable layout' => ['page-with-unavailable-layout']
+            'Page with unavailable layout' => ['page-with-unavailable-layout'],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class ImageEntryConverterTest extends TestCase
                 'getContent',
                 'setContent',
                 'getExtensionAttributes',
-                'setExtensionAttributes'
+                'setExtensionAttributes',
             ]);
 
         $this->mediaGalleryEntryFactoryMock->method('create')->willReturn(
@@ -88,7 +89,7 @@ class ImageEntryConverterTest extends TestCase
             ImageEntryConverter::class,
             [
                 'mediaGalleryEntryFactory' => $this->mediaGalleryEntryFactoryMock,
-                'dataObjectHelper' => $this->dataObjectHelperMock
+                'dataObjectHelper' => $this->dataObjectHelperMock,
             ]
         );
     }
@@ -195,8 +196,8 @@ class ImageEntryConverterTest extends TestCase
                 'data' => [
                     'base64_encoded_data' => base64_encode('some_content'),
                     'type' => 'image/jpeg',
-                    'name' => '/s/a/sample_3.jpg'
-                ]
+                    'name' => '/s/a/sample_3.jpg',
+                ],
             ],
             'media_type' => null,
         ];

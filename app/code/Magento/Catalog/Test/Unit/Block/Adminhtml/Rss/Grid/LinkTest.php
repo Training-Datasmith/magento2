@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class LinkTest extends TestCase
         $this->link = $this->objectManagerHelper->getObject(
             Link::class,
             [
-                'rssUrlBuilder' => $this->urlBuilderInterface
+                'rssUrlBuilder' => $this->urlBuilderInterface,
             ]
         );
     }

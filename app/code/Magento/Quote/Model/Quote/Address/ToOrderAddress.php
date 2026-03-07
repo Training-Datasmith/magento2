@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Quote\Model\Quote\Address;
 
 use Magento\Framework\DataObject\Copy;
 use Magento\Quote\Model\Quote\Address;
-use Magento\Sales\Model\Order\AddressRepository as OrderAddressRepository;
 use Magento\Sales\Api\Data\OrderAddressInterface;
+use Magento\Sales\Model\Order\AddressRepository as OrderAddressRepository;
 
 /**
  * Class ToOrderAddress

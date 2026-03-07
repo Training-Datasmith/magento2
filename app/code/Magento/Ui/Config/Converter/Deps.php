@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
 use Magento\Framework\ObjectManager\Config\Reader\Dom;
@@ -49,7 +52,7 @@ class Deps implements ConverterInterface
     {
         $result = [
             'name' => $this->converterUtils->getComponentName($node),
-            Dom::TYPE_ATTRIBUTE => 'array'
+            Dom::TYPE_ATTRIBUTE => 'array',
         ];
         if ($this->hasChildNodes($node)) {
             $i = 0;
@@ -59,7 +62,7 @@ class Deps implements ConverterInterface
                     $result['item'][] = [
                         'name' => $i,
                         Dom::TYPE_ATTRIBUTE => 'string',
-                        'value' => trim($childNode->nodeValue)
+                        'value' => trim($childNode->nodeValue),
                     ];
                     $i++;
                 }
@@ -68,7 +71,7 @@ class Deps implements ConverterInterface
             $result['item'][] = [
                 'name' => 0,
                 Dom::TYPE_ATTRIBUTE => 'string',
-                'value' => trim($node->nodeValue)
+                'value' => trim($node->nodeValue),
             ];
         }
         return $result;

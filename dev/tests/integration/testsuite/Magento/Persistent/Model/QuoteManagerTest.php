@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Model;
 
-use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Quote\Api\CartRepositoryInterface;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -178,7 +179,7 @@ class StoreTest extends \PHPUnit\Framework\TestCase
             [UrlInterface::URL_TYPE_MEDIA, false, false, 'http://localhost/media/'],
             [UrlInterface::URL_TYPE_MEDIA, false, true, 'http://localhost/media/'],
             [UrlInterface::URL_TYPE_MEDIA, true, false, 'http://localhost/media/'],
-            [UrlInterface::URL_TYPE_MEDIA, true, true, 'http://localhost/media/']
+            [UrlInterface::URL_TYPE_MEDIA, true, true, 'http://localhost/media/'],
         ];
     }
 
@@ -249,7 +250,7 @@ class StoreTest extends \PHPUnit\Framework\TestCase
                 UrlInterface::URL_TYPE_LINK,
                 false,
                 true,
-                'http://localhost/custom_entry.php/default/'
+                'http://localhost/custom_entry.php/default/',
             ],
             [UrlInterface::URL_TYPE_LINK, true, false, 'http://localhost/index.php/'],
             [UrlInterface::URL_TYPE_LINK, true, true, 'http://localhost/index.php/default/'],
@@ -257,16 +258,16 @@ class StoreTest extends \PHPUnit\Framework\TestCase
                 UrlInterface::URL_TYPE_DIRECT_LINK,
                 false,
                 false,
-                'http://localhost/custom_entry.php/'
+                'http://localhost/custom_entry.php/',
             ],
             [
                 UrlInterface::URL_TYPE_DIRECT_LINK,
                 false,
                 true,
-                'http://localhost/custom_entry.php/'
+                'http://localhost/custom_entry.php/',
             ],
             [UrlInterface::URL_TYPE_DIRECT_LINK, true, false, 'http://localhost/index.php/'],
-            [UrlInterface::URL_TYPE_DIRECT_LINK, true, true, 'http://localhost/index.php/']
+            [UrlInterface::URL_TYPE_DIRECT_LINK, true, true, 'http://localhost/index.php/'],
         ];
     }
 
@@ -440,7 +441,7 @@ class StoreTest extends \PHPUnit\Framework\TestCase
         return [
             'empty store name' => [['name' => '']],
             'empty store code' => [['code' => '']],
-            'invalid store code' => [['code' => '^_^']]
+            'invalid store code' => [['code' => '^_^']],
         ];
     }
 
@@ -464,7 +465,7 @@ class StoreTest extends \PHPUnit\Framework\TestCase
         $configMock
             ->method('isSetFlag')
             ->willReturnCallback(
-                static fn($arg1) => match ($arg1) {
+                static fn ($arg1) => match ($arg1) {
                     StoreManager::XML_PATH_SINGLE_STORE_MODE_ENABLED => $singleStoreModeEnabled,
                     Store::XML_PATH_STORE_IN_URL => $storeInUrl,
                     default => null
@@ -491,7 +492,7 @@ class StoreTest extends \PHPUnit\Framework\TestCase
             [true, null, true, false],
             [false, null, true, false],
             [true, true, true, false],
-            [true, false, true, false]
+            [true, false, true, false],
         ];
     }
 

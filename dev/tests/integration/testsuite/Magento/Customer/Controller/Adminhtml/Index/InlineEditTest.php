@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -127,12 +128,12 @@ class InlineEditTest extends AbstractBackendController
                 'params' => [
                     'items' => [],
                     'isAjax' => true,
-                ]
+                ],
             ],
             [
                 'params' => [
                     'items' => [],
-                ]
+                ],
             ],
         ];
     }
@@ -151,7 +152,7 @@ class InlineEditTest extends AbstractBackendController
         $customer = $this->getCustomer();
         $params = [
             'items' => [
-                $customer->getId() => []
+                $customer->getId() => [],
             ],
             'isAjax' => true,
         ];

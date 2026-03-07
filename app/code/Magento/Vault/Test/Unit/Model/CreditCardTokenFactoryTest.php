@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class CreditCardTokenFactoryTest extends TestCase
 
         $tokenTypes = [
             'account' => PaymentTokenFactoryInterface::TOKEN_TYPE_ACCOUNT,
-            'credit_card' => PaymentTokenFactoryInterface::TOKEN_TYPE_CREDIT_CARD
+            'credit_card' => PaymentTokenFactoryInterface::TOKEN_TYPE_CREDIT_CARD,
         ];
 
         $this->paymentToken = $objectManager->getObject(PaymentToken::class);

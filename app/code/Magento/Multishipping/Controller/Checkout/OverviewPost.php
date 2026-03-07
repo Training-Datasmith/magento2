@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Multishipping\Controller\Checkout;
 
 use Magento\Checkout\Api\AgreementsValidatorInterface;
+use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
+use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
-use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
-use Magento\Framework\App\ObjectManager;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\PaymentException;
 use Magento\Framework\Session\SessionManagerInterface;

@@ -1,20 +1,20 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 $objectManager = Bootstrap::getObjectManager();
 
 $configData = [
     'sendfriend/email/max_per_hour',
-    'sendfriend/email/check_by'
+    'sendfriend/email/check_by',
 ];
 /** @var WriterInterface $configWriter */
 $configWriter = $objectManager->get(WriterInterface::class);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Page cache data helper
  *
  */
+
 namespace Magento\PageCache\Helper;
 
 /**
@@ -18,7 +21,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Private caching time one year
      */
-    const PRIVATE_MAX_AGE_CACHE = 31536000;
+    public const PRIVATE_MAX_AGE_CACHE = 31536000;
 
     /**
      * @var \Magento\Framework\Session\Config

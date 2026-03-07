@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class LayoutProcessorTest extends TestCase
                 'merger' => $this->merger,
                 'countryCollection' => $this->countryCollection,
                 'regionCollection' => $this->regionCollection,
-                'topDestinationCountries' => $this->topDestinationCountries
+                'topDestinationCountries' => $this->topDestinationCountries,
             ]
         );
     }
@@ -86,7 +87,7 @@ class LayoutProcessorTest extends TestCase
         $layout['components']['block-summary']['children']['block-shipping']['children']
         ['address-fieldsets']['children'] = [
             'fieldOne' => ['param' => 'value'],
-            'fieldTwo' => ['param' => 'value']
+            'fieldTwo' => ['param' => 'value'],
         ];
         $layoutPointer = &$layout['components']['block-summary']['children']['block-shipping']
         ['children']['address-fieldsets']['children'];
@@ -114,35 +115,35 @@ class LayoutProcessorTest extends TestCase
             'dictionaries' => [
                 'country_id' => [],
                 'region_id' => [],
-            ]
+            ],
         ];
         $elements = [
             'city' => [
                 'visible' => false,
                 'formElement' => 'input',
                 'label' => __('City'),
-                'value' => null
+                'value' => null,
             ],
             'country_id' => [
                 'visible' => 1,
                 'formElement' => 'select',
                 'label' => __('Country'),
                 'options' => [],
-                'value' => null
+                'value' => null,
             ],
             'region_id' => [
                 'visible' => 1,
                 'formElement' => 'select',
                 'label' => __('State/Province'),
                 'options' => [],
-                'value' => null
+                'value' => null,
             ],
             'postcode' => [
                 'visible' => 1,
                 'formElement' => 'input',
                 'label' => __('Zip/Postal Code'),
-                'value' => null
-            ]
+                'value' => null,
+            ],
         ];
         $this->merger->expects($this->once())
             ->method('merge')

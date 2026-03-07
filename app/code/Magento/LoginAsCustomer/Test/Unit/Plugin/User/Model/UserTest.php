@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\LoginAsCustomer\Test\Unit\Plugin\User\Model;
 use Exception;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\LoginAsCustomer\Model\Validator\UserRolePermission;
 use Magento\LoginAsCustomer\Plugin\User\Model\User;
 use Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForUserInterface;
 use Magento\User\Api\Data\UserInterface;
 use Magento\User\Model\User as UserModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -80,7 +81,7 @@ class UserTest extends TestCase
                 'authSession' => $this->authSessionMock,
                 'deleteAuthenticationDataForUser' => $this->deleteAuthenticationDataForUserMock,
                 'validator' => $this->validatorMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

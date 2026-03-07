@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Filter;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Filter\DataProvider\Category as CategoryDataProvider;
@@ -20,6 +20,7 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollectionR
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -131,7 +132,7 @@ class CategoryTest extends TestCase
                 'layer' => $this->layer,
                 'itemDataBuilder' => $this->itemDataBuilder,
                 'filterItemFactory' => $this->filterItemFactory,
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
     }
@@ -176,16 +177,16 @@ class CategoryTest extends TestCase
         return [
             [
                 'requestValue' => null,
-                'idValue' => 0
+                'idValue' => 0,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => false
+                'idValue' => false,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => null
-            ]
+                'idValue' => null,
+            ],
         ];
     }
 
@@ -265,13 +266,13 @@ class CategoryTest extends TestCase
             [
                 'label' => 'Category 1',
                 'value' => 120,
-                'count' => 10
+                'count' => 10,
             ],
             [
                 'label' => 'Category 2',
                 'value' => 5641,
-                'count' => 45
-            ]
+                'count' => 45,
+            ],
         ];
 
         $this->itemDataBuilder
@@ -280,7 +281,7 @@ class CategoryTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     ['Category 1', 120, 10],
-                    ['Category 2', 5641, 45]
+                    ['Category 2', 5641, 45],
                 ];
                 $returnValue = $this->itemDataBuilder;
                 $index++;

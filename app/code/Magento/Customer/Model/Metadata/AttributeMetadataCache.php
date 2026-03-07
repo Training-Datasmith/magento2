@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata;
 
 use Magento\Config\App\Config\Type\System;
@@ -140,7 +143,7 @@ class AttributeMetadataCache implements ResetAfterRequestInterface
                     Type::CACHE_TAG,
                     Attribute::CACHE_TAG,
                     System::CACHE_TAG,
-                    Store::CACHE_TAG
+                    Store::CACHE_TAG,
                 ]
             );
         }
@@ -158,7 +161,7 @@ class AttributeMetadataCache implements ResetAfterRequestInterface
             $this->cache->clean(
                 [
                     Type::CACHE_TAG,
-                    Attribute::CACHE_TAG
+                    Attribute::CACHE_TAG,
                 ]
             );
         }

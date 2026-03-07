@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,8 +54,8 @@ return [
                 'disabled' => false,
                 'topic' => 'top01',
                 'arguments' => [
-                    'arg01' => 10
-                ]
+                    'arg01' => 10,
+                ],
             ],
         ],
         'arguments' => [],

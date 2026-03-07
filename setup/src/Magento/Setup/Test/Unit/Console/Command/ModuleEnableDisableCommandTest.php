@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Setup\Console\Command\ModuleDisableCommand;
 use Magento\Setup\Console\Command\ModuleEnableCommand;
 use Magento\Setup\Model\ObjectManagerProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -131,26 +132,26 @@ class ModuleEnableDisableCommandTest extends TestCase
                 true,
                 false,
                 '%amodules have been enabled%aMagento_Module1%a'
-                    . "Info: Some modules might require static view files to be cleared. To do this, run "
-                    . "'module:enable' with the --clear-static-content%a"
+                    . 'Info: Some modules might require static view files to be cleared. To do this, run '
+                    . "'module:enable' with the --clear-static-content%a",
             ],
             'disable, do not clear static content' => [
                 false,
                 false,
                 '%amodules have been disabled%aMagento_Module1%a'
-                    . "Info: Some modules might require static view files to be cleared. To do this, run "
-                    . "'module:disable' with the --clear-static-content%a"
+                    . 'Info: Some modules might require static view files to be cleared. To do this, run '
+                    . "'module:disable' with the --clear-static-content%a",
             ],
             'enable, clear static content' => [
                 true,
                 true,
-                '%amodules have been enabled%aMagento_Module1%aGenerated static view files cleared%a'
+                '%amodules have been enabled%aMagento_Module1%aGenerated static view files cleared%a',
             ],
             'disable, clear static content' => [
                 false,
                 true,
-                '%amodules have been disabled%aMagento_Module1%aGenerated static view files cleared%a'
-            ]
+                '%amodules have been disabled%aMagento_Module1%aGenerated static view files cleared%a',
+            ],
         ];
     }
 

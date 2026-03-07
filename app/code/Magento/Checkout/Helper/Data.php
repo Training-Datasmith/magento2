@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Helper;
 
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Sales\Api\PaymentFailuresInterface;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
 
 /**
  * Checkout default helper
@@ -19,9 +22,9 @@ use Magento\Sales\Api\PaymentFailuresInterface;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const XML_PATH_GUEST_CHECKOUT = 'checkout/options/guest_checkout';
+    public const XML_PATH_GUEST_CHECKOUT = 'checkout/options/guest_checkout';
 
-    const XML_PATH_CUSTOMER_MUST_BE_LOGGED = 'checkout/options/customer_must_be_logged';
+    public const XML_PATH_CUSTOMER_MUST_BE_LOGGED = 'checkout/options/customer_must_be_logged';
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
@@ -87,7 +90,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_transportBuilder = $transportBuilder;
         $this->inlineTranslation = $inlineTranslation;
         $this->priceCurrency = $priceCurrency;
-        $this->paymentFailures = $paymentFailures ? : \Magento\Framework\App\ObjectManager::getInstance()
+        $this->paymentFailures = $paymentFailures ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(PaymentFailuresInterface::class);
         parent::__construct($context);
     }

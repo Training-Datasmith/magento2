@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Invoice\Sender;
 
+use Magento\Framework\DataObject;
 use Magento\Sales\Model\Order\Email\Sender;
 use Magento\Sales\Model\Order\Invoice\SenderInterface;
-use Magento\Framework\DataObject;
 
 /**
  * Email notification sender for Invoice.
@@ -117,8 +120,8 @@ class EmailSender extends Sender implements SenderInterface
                     'customer_name' => $order->getCustomerName(),
                     'is_not_virtual' => $order->getIsNotVirtual(),
                     'email_customer_note' => $order->getEmailCustomerNote(),
-                    'frontend_status_label' => $order->getFrontendStatusLabel()
-                ]
+                    'frontend_status_label' => $order->getFrontendStatusLabel(),
+                ],
             ];
             $transportObject = new DataObject($transport);
 

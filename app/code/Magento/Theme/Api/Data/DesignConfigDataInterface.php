@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Theme\Api\Data;
 
-use Magento\Theme\Api\Data\DesignConfigDataExtensionInterface;
+namespace Magento\Theme\Api\Data;
 
 /**
  * Interface DesignConfigDataInterface
@@ -17,9 +18,9 @@ interface DesignConfigDataInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const PATH = 'path';
-    const VALUE = 'value';
-    const FIELD_CONFIG = 'field_config';
+    public const PATH = 'path';
+    public const VALUE = 'value';
+    public const FIELD_CONFIG = 'field_config';
     /**#@-*/
 
     /**

@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Review\Controller\Adminhtml\Product as ProductController;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
-use Magento\Review\Model\ReviewFactory;
-use Magento\Review\Model\RatingFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\DataObject;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\DataObject;
+use Magento\Framework\Registry;
+use Magento\Review\Controller\Adminhtml\Product as ProductController;
+use Magento\Review\Model\RatingFactory;
+use Magento\Review\Model\ReviewFactory;
 
 /**
  * Represents product info in json

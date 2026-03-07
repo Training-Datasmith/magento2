@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Currency filter
  */
+
 namespace Magento\Directory\Model\Currency;
 
 use Laminas\Filter\FilterInterface;
@@ -92,7 +95,7 @@ class Filter implements FilterInterface
     {
         $value = $this->_localeFormat->getNumber($value);
         $value = $this->priceCurrency->round($this->_rate * $value);
-        $value = sprintf("%f", $value);
+        $value = sprintf('%f', $value);
         return $this->_currency->toCurrency($value);
     }
 }

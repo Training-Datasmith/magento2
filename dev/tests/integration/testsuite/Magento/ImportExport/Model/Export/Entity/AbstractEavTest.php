@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test for eav abstract export model
  */
+
 namespace Magento\ImportExport\Model\Export\Entity;
 
 class AbstractEavTest extends \PHPUnit\Framework\TestCase
@@ -46,7 +49,7 @@ class AbstractEavTest extends \PHPUnit\Framework\TestCase
                 'export',
                 'exportItem',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ])
             ->disableOriginalConstructor()
             ->getMock();

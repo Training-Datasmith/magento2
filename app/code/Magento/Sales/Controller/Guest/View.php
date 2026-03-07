@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Guest;
 
 use Magento\Framework\App\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Sales\Helper\Guest as GuestHelper;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Sales\Helper\Guest as GuestHelper;
 
 /**
  * Guest order view action.

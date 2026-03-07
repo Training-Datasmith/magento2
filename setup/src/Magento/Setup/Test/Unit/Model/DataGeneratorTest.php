@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class DataGeneratorTest extends TestCase
 {
-    const PATH_TO_CSV_FILE = '/_files/dictionary.csv';
+    public const PATH_TO_CSV_FILE = '/_files/dictionary.csv';
 
     /**
      * @test
@@ -31,7 +32,7 @@ class DataGeneratorTest extends TestCase
             $found = (strpos($result, $word[0]) !== false) || $found;
         }
         $this->assertTrue($found);
-        $this->assertCount($wordCount, explode(" ", $result));
+        $this->assertCount($wordCount, explode(' ', $result));
     }
 
     public function testGenerateWithKey()
@@ -45,7 +46,7 @@ class DataGeneratorTest extends TestCase
 
         $foundResult = $model->generate($wordCount, $wordCount, $key);
 
-        $this->assertCount($wordCount, explode(" ", $result));
+        $this->assertCount($wordCount, explode(' ', $result));
         $this->assertEquals($result, $foundResult);
     }
 }

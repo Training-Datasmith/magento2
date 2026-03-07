@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,11 +10,8 @@ namespace Magento\Wishlist\Ui\DataProvider\Product\Collector;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductRender\ButtonInterfaceFactory;
-use Magento\Catalog\Api\Data\ProductRenderInfoDtoInterface;
 use Magento\Catalog\Api\Data\ProductRenderInterface;
-use Magento\Catalog\Model\ProductRenderInfoDto;
 use Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorInterface;
-use Magento\Catalog\Ui\DataProvider\Product\ProductRenderInfoProviderInterface;
 use Magento\Wishlist\Helper\Data;
 
 /**
@@ -21,7 +20,7 @@ use Magento\Wishlist\Helper\Data;
 class Button implements ProductRenderCollectorInterface
 {
     /** Url Key */
-    const KEY_WISHLIST_URL_PARAMS = "wishlist_url_params";
+    public const KEY_WISHLIST_URL_PARAMS = 'wishlist_url_params';
 
     /**
      * @var Data

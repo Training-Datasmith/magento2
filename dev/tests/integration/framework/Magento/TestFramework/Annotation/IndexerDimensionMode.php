@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -155,8 +156,8 @@ class IndexerDimensionMode
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\IndexerDimensionMode::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\IndexerDimensionMode::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\IndexerDimensionMode::class),
+                    ],
                 ]
             );
         return $parsers->parse($test, ParserInterface::SCOPE_METHOD)

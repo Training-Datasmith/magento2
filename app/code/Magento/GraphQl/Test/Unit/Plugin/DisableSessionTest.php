@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class DisableSessionTest extends TestCase
             DisableSessionPlugin::class,
             [
                 'disableSessionConfig' => $this->disableSessionConfigMock,
-                'appState' => $this->appStateMock
+                'appState' => $this->appStateMock,
             ]
         );
     }

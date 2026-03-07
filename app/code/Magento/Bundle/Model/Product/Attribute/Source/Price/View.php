@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\Product\Attribute\Source\Price;
 
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Helper;
 
 use Magento\Framework\Data\Form as DataForm;
@@ -39,7 +42,7 @@ class Form extends \Magento\Framework\App\Helper\AbstractHelper
                 'class' => 'textarea googleoptimizer',
                 'required' => false,
                 'note' => __('Experiment code should be added to the original page only.'),
-                'data-form-part' => $formName
+                'data-form-part' => $formName,
             ]
         );
 
@@ -50,7 +53,7 @@ class Form extends \Magento\Framework\App\Helper\AbstractHelper
                 'name' => 'code_id',
                 'value' => $experimentCodeModel ? $experimentCodeModel->getCodeId() : '',
                 'required' => false,
-                'data-form-part' => $formName
+                'data-form-part' => $formName,
             ]
         );
 

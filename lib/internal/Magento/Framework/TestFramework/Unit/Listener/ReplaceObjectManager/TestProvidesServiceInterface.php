@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,5 +16,5 @@ interface TestProvidesServiceInterface
      * @param string $type
      * @return object|null
      */
-    public function getServiceForObjectManager(string $type) : ?object;
+    public function getServiceForObjectManager(string $type): ?object;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Sales\Test\Unit\Model\Order;
 
 use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\EntityManager\HydratorPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\ShipmentCommentCreationInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\ShipmentItemCreationInterface;
@@ -22,7 +24,6 @@ use Magento\Sales\Model\Order\ShipmentDocumentFactory\ExtensionAttributesProcess
 use Magento\Sales\Model\Order\ShipmentFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -124,7 +125,7 @@ class ShipmentDocumentFactoryTest extends TestCase
 
     public function testCreate()
     {
-        $trackNum = "123456789";
+        $trackNum = '123456789';
         $trackData = [$trackNum];
         $tracks = [$this->trackMock];
         $appendComment = true;
@@ -170,7 +171,7 @@ class ShipmentDocumentFactoryTest extends TestCase
             ->willReturn($this->trackMock);
 
         if ($appendComment) {
-            $comment = "New comment!";
+            $comment = 'New comment!';
             $visibleOnFront = true;
             $this->commentMock->expects($this->exactly(2))
                 ->method('getComment')

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ExportPostTest extends TestCase
             ExportPost::class,
             [
                 'fileFactory' => $this->fileFactoryMock,
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }
@@ -97,7 +98,7 @@ class ExportPostTest extends TestCase
         $this->objectManagerMock->expects($this->any())->method('create')->willReturnMap([
             [Store::class, [], $storeMock],
             [Title::class, [], $rateTitleMock],
-            [\Magento\Tax\Model\ResourceModel\Calculation\Rate\Collection::class, [], $rateCollectionMock]
+            [\Magento\Tax\Model\ResourceModel\Calculation\Rate\Collection::class, [], $rateCollectionMock],
         ]);
         $rateCollectionMock->expects($this->once())->method('joinCountryTable')->willReturnSelf();
         $rateCollectionMock->expects($this->once())->method('joinRegionTable')->willReturnSelf();

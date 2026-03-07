@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Plugin;
 
-use Magento\Framework\Event\Observer;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Event\Observer;
 use Magento\Quote\Observer\SubmitObserver;
 use Magento\Sales\Model\Order;
 

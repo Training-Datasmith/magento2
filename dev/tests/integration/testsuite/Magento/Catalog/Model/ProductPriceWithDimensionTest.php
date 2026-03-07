@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model;
 
-use Magento\TestFramework\Fixture\DbIsolation;
-use Magento\TestFramework\Fixture\IndexerDimensionMode;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
+use Magento\TestFramework\Fixture\DbIsolation;
+use Magento\TestFramework\Fixture\IndexerDimensionMode;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Tests product model:

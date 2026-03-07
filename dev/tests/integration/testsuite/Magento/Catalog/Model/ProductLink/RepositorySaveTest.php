@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\ProductLink;
 
 use Magento\Catalog\Api\ProductLinkRepositoryInterface;
-use Magento\Catalog\Model\ProductLink\Link;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;

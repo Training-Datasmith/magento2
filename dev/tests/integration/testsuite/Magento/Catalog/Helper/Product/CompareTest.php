@@ -1,12 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Helper\Product;
 
 use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Customer\Model\Visitor;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\Store\Test\Fixture\Website as WebsiteFixture;
@@ -14,8 +19,6 @@ use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Customer\Model\Visitor;
 
 class CompareTest extends \PHPUnit\Framework\TestCase
 {

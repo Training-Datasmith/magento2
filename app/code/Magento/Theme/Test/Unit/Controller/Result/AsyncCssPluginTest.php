@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Controller\Result;
 
-use Magento\Theme\Controller\Result\AsyncCssPlugin;
 use Magento\Csp\Api\InlineUtilInterface;
-use Magento\Framework\App\Response\Http;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\View\Result\Layout;
+use Magento\Framework\App\Response\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Framework\View\Result\Layout;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Theme\Controller\Result\AsyncCssPlugin;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for Magento\Theme\Test\Unit\Controller\Result\AsyncCssPlugin.
@@ -68,7 +68,7 @@ class AsyncCssPluginTest extends TestCase
             AsyncCssPlugin::class,
             [
                 'scopeConfig' => $this->scopeConfigMock,
-                'cspInlineUtil' => $this->cspInlineUtilMock
+                'cspInlineUtil' => $this->cspInlineUtilMock,
             ]
         );
     }
@@ -82,61 +82,61 @@ class AsyncCssPluginTest extends TestCase
     {
         return [
             [
-                "content" => "<head><link rel=\"stylesheet\" href=\"css/async.css\">" .
-                    "<style>.critical-css{}</style>" .
-                    "</head>",
-                "isSetFlag" => true,
-                "result" => "<head><style>.critical-css{}</style>\n" .
-                    "<link " .
+                'content' => '<head><link rel="stylesheet" href="css/async.css">' .
+                    '<style>.critical-css{}</style>' .
+                    '</head>',
+                'isSetFlag' => true,
+                'result' => "<head><style>.critical-css{}</style>\n" .
+                    '<link ' .
                         "rel=\"stylesheet\" media=\"print\" onload=\"this.onload=null;this.media='all'\" " .
                         "href=\"css/async.css\">\n" .
-                    "</head>",
+                    '</head>',
             ],
             [
-                "content" => "<head><link rel=\"stylesheet\" href=\"css/async.css\">" .
-                    "<link rel=\"preload\" href=\"other-file.html\">" .
-                    "</head>",
-                "isSetFlag" => true,
-                "result" => "<head><link rel=\"preload\" href=\"other-file.html\">\n" .
-                    "<link " .
+                'content' => '<head><link rel="stylesheet" href="css/async.css">' .
+                    '<link rel="preload" href="other-file.html">' .
+                    '</head>',
+                'isSetFlag' => true,
+                'result' => "<head><link rel=\"preload\" href=\"other-file.html\">\n" .
+                    '<link ' .
                         "rel=\"stylesheet\" media=\"print\" onload=\"this.onload=null;this.media='all'\" " .
                         "href=\"css/async.css\">\n" .
-                    "</head>",
+                    '</head>',
             ],
             [
-                "content" => "<head><link rel=\"stylesheet\" href=\"css/async.css\">" .
-                    "<link rel=\"preload\" href=\"other-file.html\">" .
-                    "</head>",
-                "isSetFlag" => false,
-                "result" => "<head><link rel=\"stylesheet\" href=\"css/async.css\">" .
-                    "<link rel=\"preload\" href=\"other-file.html\">" .
-                    "</head>",
+                'content' => '<head><link rel="stylesheet" href="css/async.css">' .
+                    '<link rel="preload" href="other-file.html">' .
+                    '</head>',
+                'isSetFlag' => false,
+                'result' => '<head><link rel="stylesheet" href="css/async.css">' .
+                    '<link rel="preload" href="other-file.html">' .
+                    '</head>',
             ],
             [
-                "content" => "<head><link rel=\"stylesheet\" href=\"css/first.css\">" .
-                    "<link rel=\"stylesheet\" href=\"css/second.css\">" .
-                    "<style>.critical-css{}</style>" .
-                    "</head>",
-                "isSetFlag" => true,
-                "result" => "<head><style>.critical-css{}</style>\n" .
-                    "<link " .
+                'content' => '<head><link rel="stylesheet" href="css/first.css">' .
+                    '<link rel="stylesheet" href="css/second.css">' .
+                    '<style>.critical-css{}</style>' .
+                    '</head>',
+                'isSetFlag' => true,
+                'result' => "<head><style>.critical-css{}</style>\n" .
+                    '<link ' .
                         "rel=\"stylesheet\" media=\"print\" onload=\"this.onload=null;this.media='all'\" " .
                         "href=\"css/first.css\">\n" .
-                    "<link " .
+                    '<link ' .
                         "rel=\"stylesheet\" media=\"print\" onload=\"this.onload=null;this.media='all'\" " .
                         "href=\"css/second.css\">\n" .
-                    "</head>",
+                    '</head>',
             ],
             [
-                "content" => "<head><style>.critical-css{}</style></head>",
-                "isSetFlag" => false,
-                "result" => "<head><style>.critical-css{}</style></head>"
+                'content' => '<head><style>.critical-css{}</style></head>',
+                'isSetFlag' => false,
+                'result' => '<head><style>.critical-css{}</style></head>',
             ],
             [
-                "content" => "<head><style>.critical-css{}</style></head>",
-                "isSetFlag" => true,
-                "result" => "<head><style>.critical-css{}</style></head>"
-            ]
+                'content' => '<head><style>.critical-css{}</style></head>',
+                'isSetFlag' => true,
+                'result' => '<head><style>.critical-css{}</style></head>',
+            ],
         ];
     }
 
@@ -185,8 +185,8 @@ class AsyncCssPluginTest extends TestCase
     {
         return [
             [
-                'content' => null
-            ]
+                'content' => null,
+            ],
         ];
     }
 

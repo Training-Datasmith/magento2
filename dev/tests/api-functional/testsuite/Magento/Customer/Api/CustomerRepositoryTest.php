@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Customer\Api;
 
 use Magento\Authorization\Test\Fixture\Role as RoleFixture;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\Data\AddressInterface as Address;
 use Magento\Customer\Api\Data\CustomerInterface as Customer;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
@@ -22,8 +22,8 @@ use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Api\SortOrderBuilder;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Integration\Api\AdminTokenServiceInterface;
@@ -40,6 +40,7 @@ use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Customer as CustomerHelper;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Test\Fixture\User as UserFixture;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Customer\Api\CustomerRepositoryInterface.
@@ -193,8 +194,8 @@ class CustomerRepositoryTest extends WebapiAbstract
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::SERVICE_NAME . 'Save',
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $newCustomerDataObject = $this->dataObjectProcessor->buildOutputDataArray(
@@ -254,7 +255,7 @@ class CustomerRepositoryTest extends WebapiAbstract
 
         //Verify if the customer is deleted
         $this->expectException(NoSuchEntityException::class);
-        $this->expectExceptionMessage(sprintf("No such entity with customerId = %s", $customerData[Customer::ID]));
+        $this->expectExceptionMessage(sprintf('No such entity with customerId = %s', $customerData[Customer::ID]));
         $this->getCustomerData($customerData[Customer::ID]);
     }
 
@@ -289,7 +290,7 @@ class CustomerRepositoryTest extends WebapiAbstract
         ];
         try {
             $this->_webApiCall($serviceInfo, ['customerId' => $customerData['id']]);
-            $this->fail("Expected exception is not thrown.");
+            $this->fail('Expected exception is not thrown.');
         } catch (\SoapFault $e) {
         } catch (\Exception $e) {
             $expectedMessage = 'The consumer isn\'t authorized to access %resources.';
@@ -328,12 +329,12 @@ class CustomerRepositoryTest extends WebapiAbstract
         try {
             $this->_webApiCall($serviceInfo, ['customerId' => $invalidId]);
 
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -452,7 +453,7 @@ class CustomerRepositoryTest extends WebapiAbstract
 
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/-1",
+                'resourcePath' => self::RESOURCE_PATH . '/-1',
                 'httpMethod' => Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
@@ -471,12 +472,12 @@ class CustomerRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception.");
+            $this->fail('Expected exception.');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -797,7 +798,7 @@ class CustomerRepositoryTest extends WebapiAbstract
             $expectedExceptionData = [
                 'message' => '"%fieldName" is required. Enter and try again.',
                 'parameters' => [
-                    'fieldName' => 'searchCriteria'
+                    'fieldName' => 'searchCriteria',
                 ],
             ];
             $this->assertEquals($expectedExceptionData, $exceptionData);
@@ -1362,8 +1363,8 @@ class CustomerRepositoryTest extends WebapiAbstract
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::SERVICE_NAME . 'Save',
-                'token' => $accessToken
-            ]
+                'token' => $accessToken,
+            ],
         ];
 
         $address =  current($customer->getAddresses())->getData();
@@ -1386,9 +1387,9 @@ class CustomerRepositoryTest extends WebapiAbstract
                     'firstname' => $address['firstname'],
                     'lastname' => $address['lastname'],
                     'default_shipping' => true,
-                    'default_billing' => true
-                ]
-            ]
+                    'default_billing' => true,
+                ],
+            ],
         ];
 
         $requestData['customer'] = TESTS_WEB_API_ADAPTER === self::ADAPTER_REST

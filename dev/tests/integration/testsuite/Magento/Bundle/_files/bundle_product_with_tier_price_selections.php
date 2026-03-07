@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ $bundleSelectionsData = [
             'sku' => 'simple_3',
             'selection_qty' => 3,
         ],
-    ]
+    ],
 ];
 $bundleProduct = $prepareBundleLinks->execute($bundleProduct, $bundleOptionsData, $bundleSelectionsData);
 $productRepository->save($bundleProduct);

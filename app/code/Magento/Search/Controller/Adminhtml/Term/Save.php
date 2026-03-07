@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller\Adminhtml\Term;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Search\Model\QueryFactory;
-use Magento\Search\Controller\Adminhtml\Term as TermController;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Search\Controller\Adminhtml\Term as TermController;
+use Magento\Search\Model\QueryFactory;
 
 class Save extends TermController implements HttpPostActionInterface
 {

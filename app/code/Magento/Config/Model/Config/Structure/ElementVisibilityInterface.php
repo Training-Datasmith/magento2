@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Structure;
 
 /**
@@ -16,8 +19,8 @@ interface ElementVisibilityInterface
     /**#@+
      * Constants of statuses for form elements.
      */
-    const HIDDEN = 'hidden';
-    const DISABLED = 'disabled';
+    public const HIDDEN = 'hidden';
+    public const DISABLED = 'disabled';
     /**#@-*/
 
     /**

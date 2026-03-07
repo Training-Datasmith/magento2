@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class AccessListTest extends TestCase
             AccessList::class,
             [
                 'config' => $configMock,
-                'data' => ['field' => 'access_list']
+                'data' => ['field' => 'access_list'],
             ]
         );
     }

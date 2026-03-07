@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Advanced;
 
-use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Framework\Exception\RuntimeException;
+use Magento\Framework\Search\EngineResolverInterface;
 
 /**
  * Strategy provider for preparing product collection.

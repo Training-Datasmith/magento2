@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,8 +84,8 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                         'id' => 'order/1/#100000002',
                         'type' => 'Order',
                         'name' => 'Order #100000002',
-                        'description' => 'guest guest'
-                    ]
+                        'description' => 'guest guest',
+                    ],
                 ],
             ],
             'All items, second page' => [
@@ -96,7 +98,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                         'type' => 'Order',
                         'name' => 'Order #100000003',
                         'description' => 'guest guest',
-                    ]
+                    ],
                 ],
             ],
             'Search by first name, first item only' => [
@@ -109,7 +111,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                         'type' => 'Order',
                         'name' => 'Order #100000001',
                         'description' => 'firstname lastname',
-                    ]
+                    ],
                 ],
             ],
             'No results' => [
@@ -128,7 +130,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                         'type' => 'Order',
                         'name' => 'Order #100000001',
                         'description' => 'firstname lastname',
-                    ]
+                    ],
                 ],
             ],
         ];

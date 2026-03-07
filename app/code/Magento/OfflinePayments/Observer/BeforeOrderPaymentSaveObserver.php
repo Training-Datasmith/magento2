@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class BeforeOrderPaymentSaveObserver implements ObserverInterface
         $payment = $observer->getEvent()->getPayment();
         $instructionMethods = [
             Banktransfer::PAYMENT_METHOD_BANKTRANSFER_CODE,
-            Cashondelivery::PAYMENT_METHOD_CASHONDELIVERY_CODE
+            Cashondelivery::PAYMENT_METHOD_CASHONDELIVERY_CODE,
         ];
         if (in_array($payment->getMethod(), $instructionMethods)
             && empty($payment->getAdditionalInformation('instructions'))) {

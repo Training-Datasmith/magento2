@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -116,10 +117,10 @@ class AsyncBulkAccountManagementTest extends WebapiAbstract
                     'email' => 'john' . uniqid() . '@example.com',
                     'firstname' => 'John',
                     'lastname' => 'Doe',
-                    'website_id' => $fixtures->get('website2')->getId()
+                    'website_id' => $fixtures->get('website2')->getId(),
                 ],
                 'password' => 'J!Do&007',
-            ]
+            ],
         ];
         $response = $this->postAsync($postData);
         $this->assertFalse($response['errors']);
@@ -135,7 +136,7 @@ class AsyncBulkAccountManagementTest extends WebapiAbstract
                 [$postData]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Customer was not created");
+            $this->fail('Customer was not created');
         }
 
         $mailConfig = $fixtures->get('mail_transport_config')->getData();
@@ -151,7 +152,7 @@ class AsyncBulkAccountManagementTest extends WebapiAbstract
                 [$directory, $mailConfig['path']]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("No mail was sent");
+            $this->fail('No mail was sent');
         }
 
         $mailPaths = $directory->read($mailConfig['path']);

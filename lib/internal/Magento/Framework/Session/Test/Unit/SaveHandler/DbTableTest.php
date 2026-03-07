@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Session\SaveHandler\DbTable;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DbTableTest extends TestCase
 {
@@ -69,7 +70,7 @@ class DbTableTest extends TestCase
     {
         return [
             'session_encoded' => ['isDataEncoded' => true],
-            'session_not_encoded' => ['isDataEncoded' => false]
+            'session_not_encoded' => ['isDataEncoded' => false],
         ];
     }
 
@@ -223,7 +224,7 @@ class DbTableTest extends TestCase
     {
         return [
             'session_exists' => ['sessionExists' => true],
-            'session_not_exists' => ['sessionExists' => false]
+            'session_not_exists' => ['sessionExists' => false],
         ];
     }
 

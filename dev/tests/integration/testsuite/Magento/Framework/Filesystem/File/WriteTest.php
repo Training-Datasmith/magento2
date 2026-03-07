@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Filesystem\File\Write
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\File;
 
 use Magento\TestFramework\Helper\Bootstrap;

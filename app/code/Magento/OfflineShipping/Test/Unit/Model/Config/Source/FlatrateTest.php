@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class FlatrateTest extends TestCase
         $expected = [
             ['value' => '', 'label' => __('None')],
             ['value' => 'O', 'label' => __('Per Order')],
-            ['value' => 'I', 'label' => __('Per Item')]
+            ['value' => 'I', 'label' => __('Per Item')],
         ];
 
         $this->assertEquals($expected, $this->model->toOptionArray());

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Model;
 
 use Magento\Customer\Api\Data\CustomerInterface;
@@ -251,7 +254,7 @@ class Session extends \Magento\Framework\Session\SessionManager
 
         if ($this->_quote === null) {
             if ($this->isLoading) {
-                throw new \LogicException("Infinite loop detected, review the trace for the looping path");
+                throw new \LogicException('Infinite loop detected, review the trace for the looping path');
             }
             $this->isLoading = true;
             $quote = $this->quoteFactory->create();

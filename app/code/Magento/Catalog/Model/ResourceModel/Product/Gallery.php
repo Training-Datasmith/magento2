@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -195,7 +197,7 @@ class Gallery extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             [
                 'value_id',
                 'file' => 'value',
-                'media_type'
+                'media_type',
             ]
         )->joinInner(
             ['entity' => $this->getTable(self::GALLERY_VALUE_TO_ENTITY_TABLE)],
@@ -229,7 +231,7 @@ class Gallery extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             'disabled' => $this->getConnection()->getIfNullSql('`value`.`disabled`', '`default_value`.`disabled`'),
             'label_default' => 'default_value.label',
             'position_default' => 'default_value.position',
-            'disabled_default' => 'default_value.disabled'
+            'disabled_default' => 'default_value.disabled',
         ])->where(
             $mainTableAlias . '.attribute_id = ?',
             $attributeId
@@ -292,7 +294,7 @@ class Gallery extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             self::GALLERY_VALUE_TO_ENTITY_TABLE,
             [
                 'value_id' => $valueId,
-                $this->metadata->getLinkField() => $entityId
+                $this->metadata->getLinkField() => $entityId,
             ]
         );
     }
@@ -391,7 +393,7 @@ class Gallery extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             [
                 $this->getConnection()->quoteInto('value_id = ?', (int)$valueId),
                 $this->getConnection()->quoteInto($this->metadata->getLinkField() . ' = ?', (int)$entityId),
-                $this->getConnection()->quoteInto('store_id = ?', (int)$storeId)
+                $this->getConnection()->quoteInto('store_id = ?', (int)$storeId),
             ]
         );
 

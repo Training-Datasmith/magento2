@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class DataMapperResolverTest extends TestCase
         $this->model = (new ObjectManagerHelper($this))->getObject(
             DataMapperResolver::class,
             [
-                'dataMapperFactory' => $this->dataMapperFactoryMock
+                'dataMapperFactory' => $this->dataMapperFactoryMock,
             ]
         );
     }

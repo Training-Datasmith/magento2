@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +88,7 @@ class SaveTest extends AbstractBackendController
         $data = [
             'account' => [
                 'email' => $email,
-            ]
+            ],
         ];
         $this->getRequest()->setMethod(Http::METHOD_POST);
         $this->getRequest()->setPostValue(['order' => $data]);

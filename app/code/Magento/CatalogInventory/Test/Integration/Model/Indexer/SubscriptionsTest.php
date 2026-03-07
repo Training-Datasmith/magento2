@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Integration\Model\Indexer;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceIndexProcessor;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor as FulltextIndexProcessor;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
 class SubscriptionsTest extends TestCase

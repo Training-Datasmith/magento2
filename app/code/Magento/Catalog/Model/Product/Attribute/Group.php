@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Attribute;
 
 use Magento\Framework\Api\AttributeValueFactory;
@@ -96,8 +99,8 @@ class Group extends \Magento\Eav\Model\Entity\Attribute\Group
                 $this->attributeSetUnassignValidator->validate($attribute, (int) $attribute->getAttributeSetId());
             } catch (LocalizedException $e) {
                 throw new LocalizedException(
-                    __("This group contains system attributes." .
-                        " Please move system attributes to another group and try again.")
+                    __('This group contains system attributes.' .
+                        ' Please move system attributes to another group and try again.')
                 );
             }
         }

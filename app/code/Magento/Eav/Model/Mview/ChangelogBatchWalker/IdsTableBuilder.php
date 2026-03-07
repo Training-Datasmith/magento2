@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -38,10 +40,10 @@ class IdsTableBuilder extends BaseIdsTableBuilder
             [
                 $changelog->getColumnName(),
                 'attribute_ids',
-                'store_id'
+                'store_id',
             ],
             [
-                'type' => AdapterInterface::INDEX_TYPE_UNIQUE
+                'type' => AdapterInterface::INDEX_TYPE_UNIQUE,
             ]
         );
 

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Validation configuration files handler
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator;
 
 use Magento\Framework\Validator\Constraint\Option;
@@ -16,9 +19,9 @@ class Config extends \Magento\Framework\Config\AbstractXml
     /**#@+
      * Constraints types
      */
-    const CONSTRAINT_TYPE_ENTITY = 'entity';
+    public const CONSTRAINT_TYPE_ENTITY = 'entity';
 
-    const CONSTRAINT_TYPE_PROPERTY = 'property';
+    public const CONSTRAINT_TYPE_PROPERTY = 'property';
     /**#@-*/
 
     /**#@-*/
@@ -428,7 +431,7 @@ class Config extends \Magento\Framework\Config\AbstractXml
             '/validation/entity/rules/rule/property_constraints/property/constraint' => 'class',
             '/validation/entity/rules/rule/property_constraints/property' => 'name',
             '/validation/entity/groups/group' => 'name',
-            '/validation/entity/groups/group/uses/use' => 'rule'
+            '/validation/entity/groups/group/uses/use' => 'rule',
         ];
     }
 }

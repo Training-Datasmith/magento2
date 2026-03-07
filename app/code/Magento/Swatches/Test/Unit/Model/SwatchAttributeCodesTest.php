@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Model\SwatchAttributeCodes;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class SwatchAttributeCodesTest extends TestCase
 {
@@ -55,7 +56,7 @@ class SwatchAttributeCodesTest extends TestCase
             'load',
             'save',
             'remove',
-            'clean'
+            'clean',
         ]);
 
         $this->resourceConnection = $this->createPartialMock(
@@ -90,7 +91,7 @@ class SwatchAttributeCodesTest extends TestCase
             ->method('from')
             ->willReturnCallback(function ($arg1) use ($selectMock) {
                 if ($arg1 == ['a' => self::ATTRIBUTE_TABLE]) {
-                     return $selectMock;
+                    return $selectMock;
                 } elseif ($arg1 == ['o' => self::ATTRIBUTE_OPTION_TABLE]) {
                     return $selectMock;
                 }
@@ -137,7 +138,7 @@ class SwatchAttributeCodesTest extends TestCase
     {
         return [
             [false, self::$swatchAttributesCodes],
-            [json_encode(self::$swatchAttributesCodes), self::$swatchAttributesCodes]
+            [json_encode(self::$swatchAttributesCodes), self::$swatchAttributesCodes],
         ];
     }
 }

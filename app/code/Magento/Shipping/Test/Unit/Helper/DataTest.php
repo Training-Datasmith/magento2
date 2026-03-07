@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class DataTest extends TestCase
         $this->helper = $this->objectManagerHelper->getObject(
             HelperData::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -91,14 +92,14 @@ class DataTest extends TestCase
                 [
                     'key' => 'order_id',
                     'id' => 1,
-                    'hash' => 'protected_code'
-                ]
+                    'hash' => 'protected_code',
+                ],
             ],
             'Test with hash key is not allowed' => [
                 strtr(base64_encode('invoice_id:1:protected_code'), '+/=', '-_,'),
                 'invoice_id:1:protected_code',
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

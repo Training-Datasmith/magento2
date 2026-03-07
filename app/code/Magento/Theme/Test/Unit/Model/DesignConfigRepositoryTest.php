@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class DesignConfigRepositoryTest extends TestCase
                 'configStorage' => $this->configStorage,
                 'reinitableConfig' => $this->reinitableConfig,
                 'indexerRegistry' => $this->indexerRegistry,
-                'validator' => $this->validator
+                'validator' => $this->validator,
             ]
         );
     }

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Attribute\Backend;
 
 use Magento\Catalog\Model\AbstractModel;
+use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Model\Layout\Update\ValidatorFactory;
-use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 
 /**
  * Layout update attribute backend

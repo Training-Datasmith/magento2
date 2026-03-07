@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -17,10 +19,10 @@ use Magento\Framework\Config\Scope;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Shell;
 use Magento\TestFramework\Application;
-use Magento\TestFramework\Helper\Bootstrap as TestFrameworkBootstrap;
 use Magento\TestFramework\Db\Mysql;
-use ReflectionClass;
+use Magento\TestFramework\Helper\Bootstrap as TestFrameworkBootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionClass;
 
 /**
  * Provides tests for \Magento\TestFramework\Application.
@@ -200,7 +202,7 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
         } else {
             $withArgs[] = [
                 PHP_BINARY . ' -f %s cache:disable -vvv --bootstrap=%s',
-                [BP . '/bin/magento', $this->getInitParamsQuery($tmpDir)]
+                [BP . '/bin/magento', $this->getInitParamsQuery($tmpDir)],
             ];
         }
         $this->shell
@@ -221,7 +223,7 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
             ->willReturn($this->objectManager);
         $this->objectManager->expects($this->any())
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [\Magento\Indexer\Model\Indexer\Collection::class] => $this->collectionMock,
                 default => ''
             });
@@ -250,8 +252,8 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
                 '0',
                 '0',
                 self::getInitParamsQuery(sys_get_temp_dir()),
-                true
-            ]
+                true,
+            ],
         ];
 
         return [
@@ -260,8 +262,8 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
                 dirname(__FILE__) . '/_files/config-global-1.php',
                 null,
                 [
-                    $installShellCommandExpectation
-                ]
+                    $installShellCommandExpectation,
+                ],
             ],
             'valid post install setup command' => [
                 dirname(__FILE__) . '/_files/install-config-mysql1.php',
@@ -280,9 +282,9 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
                             'root',
                             'secret',
                             self::getInitParamsQuery(sys_get_temp_dir()),
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             'post install setup command with both options and arguments' => [
                 dirname(__FILE__) . '/_files/install-config-mysql1.php',
@@ -300,18 +302,18 @@ class ApplicationTest extends \PHPUnit\Framework\TestCase
                             'baz',
                             'qux',
                             self::getInitParamsQuery(sys_get_temp_dir()),
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             'post install setup command missing required value for "command"' => [
                 dirname(__FILE__) . '/_files/install-config-mysql1.php',
                 dirname(__FILE__) . '/_files/config-global-1.php',
                 dirname(__FILE__) . '/_files/post-install-setup-command-config4.php',
                 [
-                    $installShellCommandExpectation
+                    $installShellCommandExpectation,
                 ],
-                true
+                true,
             ],
         ];
     }

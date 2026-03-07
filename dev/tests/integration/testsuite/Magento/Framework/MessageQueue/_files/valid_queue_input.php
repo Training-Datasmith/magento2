@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,39 +12,39 @@ return [
             'demo-publisher-1' => [
                 'name' => 'demo-publisher-1',
                 'connection' => 'amqp',
-                "exchange" => "magento"
+                'exchange' => 'magento',
             ],
-            "test-publisher-5" => [
-                "name" => "test-publisher-5",
-                "connection" => "amqp",
-                "exchange" => "test-exchange-10"
-            ]
+            'test-publisher-5' => [
+                'name' => 'test-publisher-5',
+                'connection' => 'amqp',
+                'exchange' => 'test-exchange-10',
+            ],
         ],
-        "topics" => [
-            "publisher5.topic" => [
-                "name" => "publisher5.topic",
-                "schema" => [
-                    "schema_type" => "object",
-                    "schema_value" => \Magento\TestModuleMysqlMq\Model\DataObject::class
+        'topics' => [
+            'publisher5.topic' => [
+                'name' => 'publisher5.topic',
+                'schema' => [
+                    'schema_type' => 'object',
+                    'schema_value' => \Magento\TestModuleMysqlMq\Model\DataObject::class,
                 ],
-                "response_schema" => [
-                    "schema_type" => "object",
-                    "schema_value" => \Magento\Customer\Api\Data\CustomerInterface::class
+                'response_schema' => [
+                    'schema_type' => 'object',
+                    'schema_value' => \Magento\Customer\Api\Data\CustomerInterface::class,
                 ],
-                "publisher" => "test-publisher-5"
-            ]
+                'publisher' => 'test-publisher-5',
+            ],
         ],
-        "binds" => [
-            "publisher5.topic--test-exchange-10--demo-queue-1" => [
-                "queue" => "demo-queue-1",
-                "exchange" => "test-exchange-10",
-                "topic" => "publisher5.topic"
-            ]
+        'binds' => [
+            'publisher5.topic--test-exchange-10--demo-queue-1' => [
+                'queue' => 'demo-queue-1',
+                'exchange' => 'test-exchange-10',
+                'topic' => 'publisher5.topic',
+            ],
         ],
-        "exchange_topic_to_queues_map" => [
-            "test-exchange-10--publisher5.topic" => [
-                "demo-queue-1"
-            ]
-        ]
-    ]
+        'exchange_topic_to_queues_map' => [
+            'test-exchange-10--publisher5.topic' => [
+                'demo-queue-1',
+            ],
+        ],
+    ],
 ];

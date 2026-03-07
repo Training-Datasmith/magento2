@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\ResourceModel\Db;
 
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\DuplicateException;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\DB\Adapter\DuplicateException;
 use Magento\Framework\Phrase;
 
 /**

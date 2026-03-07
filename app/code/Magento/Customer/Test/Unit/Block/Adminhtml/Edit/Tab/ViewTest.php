@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class ViewTest extends TestCase
         $this->view = $objectManagerHelper->getObject(
             View::class,
             [
-                'registry' => $registry
+                'registry' => $registry,
             ]
         );
     }

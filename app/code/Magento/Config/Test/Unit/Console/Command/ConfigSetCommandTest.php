@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class ConfigSetCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute([
             ConfigSetCommand::ARG_PATH => 'test/test/test',
-            ConfigSetCommand::ARG_VALUE => 'value'
+            ConfigSetCommand::ARG_VALUE => 'value',
         ]);
 
         $this->assertStringContainsString(
@@ -133,7 +134,7 @@ class ConfigSetCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute([
             ConfigSetCommand::ARG_PATH => 'test/test/test',
-            ConfigSetCommand::ARG_VALUE => 'value'
+            ConfigSetCommand::ARG_VALUE => 'value',
         ]);
 
         $this->assertStringContainsString(
@@ -157,7 +158,7 @@ class ConfigSetCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute([
             ConfigSetCommand::ARG_PATH => 'test/test/test',
-            ConfigSetCommand::ARG_VALUE => 'value'
+            ConfigSetCommand::ARG_VALUE => 'value',
         ]);
 
         $this->assertStringContainsString(
@@ -182,7 +183,7 @@ class ConfigSetCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute([
             ConfigSetCommand::ARG_PATH => 'test/test/test',
-            ConfigSetCommand::ARG_VALUE => 'value'
+            ConfigSetCommand::ARG_VALUE => 'value',
         ]);
 
         $this->assertStringContainsString(

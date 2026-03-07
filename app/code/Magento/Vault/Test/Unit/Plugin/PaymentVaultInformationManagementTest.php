@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Vault\Test\Unit\Plugin;
 
 use Magento\Checkout\Api\PaymentInformationManagementInterface;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Quote\Api\Data\PaymentInterface;
+use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Vault\Api\PaymentMethodListInterface;
 use Magento\Vault\Model\VaultPaymentInterface;
 use Magento\Vault\Plugin\PaymentVaultInformationManagement;
-use Magento\Quote\Api\Data\PaymentInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

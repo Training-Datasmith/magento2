@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ReadXmp implements ReadMetadataInterface
         return $this->metadataFactory->create([
             'title' => null,
             'description' => null,
-            'keywords' => null
+            'keywords' => null,
         ]);
     }
 

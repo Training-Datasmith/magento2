@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception\Code\Generator;
 
 class TSample
@@ -10,7 +13,7 @@ class TSample
     private $value;
     private $variadicValue;
 
-    public function returnVoid() : void
+    public function returnVoid(): void
     {
         // Nothing to do here
     }
@@ -18,7 +21,7 @@ class TSample
     /**
      * @return null|string
      */
-    public function getNullableValue() : ?string
+    public function getNullableValue(): ?string
     {
         return null;
     }
@@ -26,7 +29,7 @@ class TSample
     /**
      * @return string
      */
-    public function getValue() : string
+    public function getValue(): string
     {
         return $this->value;
     }

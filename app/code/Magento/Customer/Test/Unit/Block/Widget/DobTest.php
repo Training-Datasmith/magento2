@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -371,7 +372,7 @@ class DobTest extends TestCase
                             ->create('ar_SA', \IntlDateFormatter::SHORT, \IntlDateFormatter::NONE)
                             ->getPattern()
                     )
-                )
+                ),
             ],
             [Resolver::DEFAULT_LOCALE, self::DATE_FORMAT],
         ];
@@ -425,14 +426,14 @@ class DobTest extends TestCase
     protected function getValidationRuleClass($type)
     {
         $validationRule = $this->createMock(ValidationRuleInterface::class);
-        if ($type=="MIN") {
+        if ($type == 'MIN') {
             $validationRule->expects($this->any())
                 ->method('getName')
                 ->willReturn(Dob::MIN_DATE_RANGE_KEY);
             $validationRule->expects($this->any())
                 ->method('getValue')
                 ->willReturn(strtotime(self::MIN_DATE));
-        } elseif ($type=="MAX") {
+        } elseif ($type == 'MAX') {
             $validationRule->expects($this->any())
                 ->method('getName')
                 ->willReturn(Dob::MAX_DATE_RANGE_KEY);
@@ -470,8 +471,8 @@ class DobTest extends TestCase
                 [
                     $emptyValidationRule,
                 ],
-                null
-            ]
+                null,
+            ],
         ];
     }
 
@@ -529,8 +530,8 @@ class DobTest extends TestCase
                 [
                     $emptyValidationRule,
                 ],
-                null
-            ]
+                null,
+            ],
         ];
     }
 
@@ -560,10 +561,10 @@ class DobTest extends TestCase
         $validation = json_encode(
             [
                 'validate-date' => [
-                    'dateFormat' => self::DATE_FORMAT
+                    'dateFormat' => self::DATE_FORMAT,
                 ],
                 'validate-dob' => [
-                    'dateFormat' => self::DATE_FORMAT
+                    'dateFormat' => self::DATE_FORMAT,
                 ],
             ]
         );
@@ -575,7 +576,7 @@ class DobTest extends TestCase
             );
 
         $this->attribute->expects($this->once())
-            ->method("isRequired")
+            ->method('isRequired')
             ->willReturn(false);
 
         $this->assertEquals(
@@ -593,15 +594,15 @@ class DobTest extends TestCase
             [
                 'required' => true,
                 'validate-date' => [
-                    'dateFormat' => self::DATE_FORMAT
+                    'dateFormat' => self::DATE_FORMAT,
                 ],
                 'validate-dob' => [
-                    'dateFormat' => self::DATE_FORMAT
+                    'dateFormat' => self::DATE_FORMAT,
                 ],
             ]
         );
         $this->attribute->expects($this->once())
-            ->method("isRequired")
+            ->method('isRequired')
             ->willReturn(true);
         $this->escaper->expects($this->any())
             ->method('escapeHtml')
@@ -669,7 +670,7 @@ class DobTest extends TestCase
                     'dayNamesMin' => ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                 ],
                 // phpcs:disable Generic.Files.LineLength.TooLong
-                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["Su","Mo","Tu","We","Th","Fr","Sa"]}'
+                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["Su","Mo","Tu","We","Th","Fr","Sa"]}',
                 // phpcs:enable Generic.Files.LineLength.TooLong
             ],
             [
@@ -688,7 +689,7 @@ class DobTest extends TestCase
                     'dayNamesMin' => ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
                 ],
                 // phpcs:disable Generic.Files.LineLength.TooLong
-                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesShort":["Jan.","Feb.","M\u00e4rz","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."],"dayNames":["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],"dayNamesShort":["So.","Mo.","Di.","Mi.","Do.","Fr.","Sa."],"dayNamesMin":["So.","Mo.","Di.","Mi.","Do.","Fr.","Sa."]}'
+                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["Januar","Februar","M\u00e4rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],"monthNamesShort":["Jan.","Feb.","M\u00e4rz","Apr.","Mai","Juni","Juli","Aug.","Sept.","Okt.","Nov.","Dez."],"dayNames":["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],"dayNamesShort":["So.","Mo.","Di.","Mi.","Do.","Fr.","Sa."],"dayNamesMin":["So.","Mo.","Di.","Mi.","Do.","Fr.","Sa."]}',
                 // phpcs:enable Generic.Files.LineLength.TooLong
             ],
             [
@@ -707,7 +708,7 @@ class DobTest extends TestCase
                     'dayNamesMin' => ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
                 ],
                 // phpcs:disable Generic.Files.LineLength.TooLong
-                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631","\u062f\u064a\u0633\u0645\u0628\u0631"],"monthNamesShort":["\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631","\u062f\u064a\u0633\u0645\u0628\u0631"],"dayNames":["\u0627\u0644\u0623\u062d\u062f","\u0627\u0644\u0627\u062b\u0646\u064a\u0646","\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621","\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621","\u0627\u0644\u062e\u0645\u064a\u0633","\u0627\u0644\u062c\u0645\u0639\u0629","\u0627\u0644\u0633\u0628\u062a"],"dayNamesShort":["\u0627\u0644\u0623\u062d\u062f","\u0627\u0644\u0627\u062b\u0646\u064a\u0646","\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621","\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621","\u0627\u0644\u062e\u0645\u064a\u0633","\u0627\u0644\u062c\u0645\u0639\u0629","\u0627\u0644\u0633\u0628\u062a"],"dayNamesMin":["\u0623\u062d\u062f","\u0625\u062b\u0646\u064a\u0646","\u062b\u0644\u0627\u062b\u0627\u0621","\u0623\u0631\u0628\u0639\u0627\u0621","\u062e\u0645\u064a\u0633","\u062c\u0645\u0639\u0629","\u0633\u0628\u062a"]}'
+                'expectedJson' => '{"closeText":"Done","prevText":"Prev","nextText":"Next","currentText":"Today","monthNames":["\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631","\u062f\u064a\u0633\u0645\u0628\u0631"],"monthNamesShort":["\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631","\u062f\u064a\u0633\u0645\u0628\u0631"],"dayNames":["\u0627\u0644\u0623\u062d\u062f","\u0627\u0644\u0627\u062b\u0646\u064a\u0646","\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621","\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621","\u0627\u0644\u062e\u0645\u064a\u0633","\u0627\u0644\u062c\u0645\u0639\u0629","\u0627\u0644\u0633\u0628\u062a"],"dayNamesShort":["\u0627\u0644\u0623\u062d\u062f","\u0627\u0644\u0627\u062b\u0646\u064a\u0646","\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621","\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621","\u0627\u0644\u062e\u0645\u064a\u0633","\u0627\u0644\u062c\u0645\u0639\u0629","\u0627\u0644\u0633\u0628\u062a"],"dayNamesMin":["\u0623\u062d\u062f","\u0625\u062b\u0646\u064a\u0646","\u062b\u0644\u0627\u062b\u0627\u0621","\u0623\u0631\u0628\u0639\u0627\u0621","\u062e\u0645\u064a\u0633","\u062c\u0645\u0639\u0629","\u0633\u0628\u062a"]}',
                 // phpcs:enable Generic.Files.LineLength.TooLong
             ],
         ];

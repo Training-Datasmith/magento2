@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -83,12 +85,12 @@ return [
                                                 'index' => [
                                                     'name' => 'index',
                                                     'xsi:type' => 'string',
-                                                    'value' => '0'
+                                                    'value' => '0',
                                                 ],
                                                 'href' => [
                                                     'name' => 'href',
                                                     'xsi:type' => 'string',
-                                                    'value' => 'string'
+                                                    'value' => 'string',
                                                 ],
                                             ],
                                         ],

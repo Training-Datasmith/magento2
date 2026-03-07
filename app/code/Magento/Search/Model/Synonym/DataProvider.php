@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model\Synonym;
 
-use Magento\Search\Model\ResourceModel\SynonymGroup\CollectionFactory;
 use Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool;
+use Magento\Search\Model\ResourceModel\SynonymGroup\CollectionFactory;
 
 /**
  * Class DataProvider

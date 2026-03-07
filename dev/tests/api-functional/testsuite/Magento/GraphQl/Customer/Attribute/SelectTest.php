@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ QRY;
             Attribute::class,
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
-                'frontend_input' => 'select'
+                'frontend_input' => 'select',
             ],
             'attribute'
         ),
@@ -53,7 +54,7 @@ QRY;
             [
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$attribute.attribute_code$',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'option1'
         ),
@@ -62,7 +63,7 @@ QRY;
             [
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$attribute.attribute_code$',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'option2'
         ),
@@ -86,12 +87,12 @@ QRY;
                             'code' => $attribute->getAttributeCode(),
                             'options' => [
                                 $option1->getData(),
-                                $option2->getData()
-                            ]
-                        ]
+                                $option2->getData(),
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

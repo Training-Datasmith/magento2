@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,13 +63,13 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
     }
 
     #[
-        Config('tax/calculation/apply_after_discount', false, "store", "default"),
+        Config('tax/calculation/apply_after_discount', false, 'store', 'default'),
         DataFixture(
             AddressConditionFixture::class,
             [
                 'attribute' => 'total_qty',
                 'operator' => '>=',
-                'value' => 1
+                'value' => 1,
             ],
             'condition'
         ),
@@ -83,7 +84,7 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
                 'conditions' => ['$condition$'],
                 'uses_per_customer' => 10,
                 'apply_to_shipping' => true,
-                'stop_rules_processing' => true
+                'stop_rules_processing' => true,
             ],
             as: 'rule'
         ),
@@ -94,13 +95,13 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
         DataFixture(ProductFixture::class, [
             'price' => self::PRODUCT_PRICE,
-            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
         ], as: 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -109,14 +110,14 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::TOTAL_QTY
+                'qty' => self::TOTAL_QTY,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'coupon_codes' => [self::COUPON_CODE]
+                'coupon_codes' => [self::COUPON_CODE],
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -131,13 +132,13 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
     }
 
     #[
-        Config('tax/calculation/apply_after_discount', true, "store", "default"),
+        Config('tax/calculation/apply_after_discount', true, 'store', 'default'),
         DataFixture(
             AddressConditionFixture::class,
             [
                 'attribute' => 'total_qty',
                 'operator' => '>=',
-                'value' => 1
+                'value' => 1,
             ],
             'condition'
         ),
@@ -152,7 +153,7 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
                 'conditions' => ['$condition$'],
                 'uses_per_customer' => 10,
                 'apply_to_shipping' => true,
-                'stop_rules_processing' => true
+                'stop_rules_processing' => true,
             ],
             as: 'rule'
         ),
@@ -163,13 +164,13 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
         DataFixture(ProductFixture::class, [
             'price' => self::PRODUCT_PRICE,
-            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
         ], as: 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -178,14 +179,14 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::TOTAL_QTY
+                'qty' => self::TOTAL_QTY,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'coupon_codes' => [self::COUPON_CODE]
+                'coupon_codes' => [self::COUPON_CODE],
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -200,7 +201,7 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
     }
 
     #[
-        Config('tax/calculation/apply_after_discount', false, "store", "default"),
+        Config('tax/calculation/apply_after_discount', false, 'store', 'default'),
         DataFixture(ProductTaxClassFixture::class, as: 'product_tax_class'),
         DataFixture(TaxRateFixture::class, as: 'rate'),
         DataFixture(
@@ -208,13 +209,13 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
         DataFixture(ProductFixture::class, [
             'price' => self::PRODUCT_PRICE,
-            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+            'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
         ], as: 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -223,7 +224,7 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::TOTAL_QTY
+                'qty' => self::TOTAL_QTY,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -258,19 +259,19 @@ class OrderTotalGrandTotalExclTaxTest extends GraphQlAbstract
                                 'total' => [
                                     'grand_total' => [
                                         'value' => $order->getGrandTotal(),
-                                        'currency' => 'USD'
+                                        'currency' => 'USD',
                                     ],
                                     'grand_total_excl_tax' => [
                                         'value' => (float)($order->getSubtotal()
                                             + $order->getShippingAmount()
                                             - abs((float)$order->getDiscountAmount())),
-                                        'currency' => 'USD'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'currency' => 'USD',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(

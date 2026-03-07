@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ $productSkus = [
     'search_product_2' => 110,
     'search_product_3' => 515,
     'search_product_4' => 1020,
-    'search_product_5' => 1225
+    'search_product_5' => 1225,
 ];
 foreach ($productSkus as $sku => $price) {
     $product = $productRepository->get($sku, true, null, true);

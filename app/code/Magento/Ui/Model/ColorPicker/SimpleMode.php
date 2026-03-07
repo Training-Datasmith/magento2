@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class SimpleMode implements ModeInterface
             'showInitial' => false,
             'showPalette' => false,
             'showAlpha' => false,
-            'showSelectionPalette' => true
+            'showSelectionPalette' => true,
         ];
     }
 }

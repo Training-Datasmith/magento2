@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Sales\Block\Adminhtml\Order;
  * @api
  * @since 100.0.2
  */
-class Totals extends \Magento\Sales\Block\Adminhtml\Totals//\Magento\Sales\Block\Adminhtml\Order\AbstractOrder
+class Totals extends \Magento\Sales\Block\Adminhtml\Totals //\Magento\Sales\Block\Adminhtml\Order\AbstractOrder
 {
     /**
      * Initialize order totals array

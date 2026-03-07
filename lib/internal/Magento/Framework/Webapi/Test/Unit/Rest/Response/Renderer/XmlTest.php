@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test XML Renderer for REST.
  *
@@ -12,8 +13,8 @@ namespace Magento\Framework\Webapi\Test\Unit\Rest\Response\Renderer;
 use Magento\Framework\DataObject;
 use Magento\Framework\Webapi\Rest\Response\Renderer\Xml;
 use Magento\Framework\Xml\Generator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XmlTest extends TestCase
 {
@@ -66,53 +67,53 @@ class XmlTest extends TestCase
             [
                 ['value1', 'value2'],
                 '<?xml version="1.0"?><response><item>value1</item><item>value2</item></response>',
-                'Invalid XML render of unassociated array data.'
+                'Invalid XML render of unassociated array data.',
             ],
             [
                 ['key1' => 'value1', 'key2' => 'value2'],
                 '<?xml version="1.0"?><response><key1>value1</key1><key2>value2</key2></response>',
-                'Invalid XML render of associated array data.'
+                'Invalid XML render of associated array data.',
             ],
             [
                 (object)['key' => 'value'],
                 '<?xml version="1.0"?><response><key>value</key></response>',
-                'Invalid XML render of object data.'
+                'Invalid XML render of object data.',
             ],
             [
                 ['7key' => 'value'],
                 '<?xml version="1.0"?><response><item_7key>value</item_7key></response>',
-                'Invalid XML render with numeric symbol in data index.'
+                'Invalid XML render with numeric symbol in data index.',
             ],
             [
                 ['key' => 'test & foo'],
                 '<?xml version="1.0"?><response><key>test &amp; foo</key></response>',
-                'Invalid XML render with ampersand symbol in data index.'
+                'Invalid XML render with ampersand symbol in data index.',
             ],
             [
                 ['.key' => 'value'],
                 '<?xml version="1.0"?><response><item_key>value</item_key></response>',
-                'Invalid XML render with "." symbol in data index.'
+                'Invalid XML render with "." symbol in data index.',
             ],
             [
                 ['-key' => 'value'],
                 '<?xml version="1.0"?><response><item_-key>value</item_-key></response>',
-                'Invalid XML render with "-" symbol in data index.'
+                'Invalid XML render with "-" symbol in data index.',
             ],
             [
                 [' prefix key:' => 'value'],
                 '<?xml version="1.0"?><response><prefix_key>value</prefix_key></response>',
-                'Invalid XML render with data key trimming.'
+                'Invalid XML render with data key trimming.',
             ],
             [
                 'data',
                 '<?xml version="1.0"?><response>data</response>',
-                'Invalid XML render with simple data.'
+                'Invalid XML render with simple data.',
             ],
             [
                 new DataObject(['key' => 'value']),
                 '<?xml version="1.0"?><response><key>value</key></response>',
-                'Invalid XML render with \Magento\Framework\DataObject data.'
-            ]
+                'Invalid XML render with \Magento\Framework\DataObject data.',
+            ],
         ];
     }
 }

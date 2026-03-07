@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class ReadHandlerTest extends TestCase
         $entityId = 100;
         $entityType = RuleInterface::class;
         $entityData = [
-            $linkedField => $entityId
+            $linkedField => $entityId,
         ];
 
         $customerGroupIds = [1, 2, 3];
@@ -77,7 +78,7 @@ class ReadHandlerTest extends TestCase
         $expectedResult = [
             $linkedField => $entityId,
             'customer_group_ids' => $customerGroupIds,
-            'website_ids' => $websiteIds
+            'website_ids' => $websiteIds,
         ];
 
         $this->assertEquals($expectedResult, $this->subject->execute($entityType, $entityData));

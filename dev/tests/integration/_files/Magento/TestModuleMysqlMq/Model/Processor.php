@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModuleMysqlMq\Model;
 
 use LogicException;
@@ -78,7 +81,7 @@ class Processor
     public function processMessageWithConnectionException()
     {
         throw new ConnectionLostException(
-            "Connection exception during message processing happened."
+            'Connection exception during message processing happened.'
         );
     }
 }

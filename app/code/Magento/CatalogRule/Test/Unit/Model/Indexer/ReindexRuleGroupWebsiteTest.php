@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class ReindexRuleGroupWebsiteTest extends TestCase
             ->willReturnMap(
                 [
                     ['catalogrule_group_website', 'catalogrule_group_website_replica'],
-                    ['catalogrule_product', 'catalogrule_product_replica']
+                    ['catalogrule_product', 'catalogrule_product_replica'],
                 ]
             );
 
@@ -90,7 +91,7 @@ class ReindexRuleGroupWebsiteTest extends TestCase
                     ['catalogrule_group_website', 'default', 'catalogrule_group_website'],
                     ['catalogrule_product', 'default', 'catalogrule_product'],
                     ['catalogrule_group_website_replica', 'default', 'catalogrule_group_website_replica'],
-                    ['catalogrule_product_replica', 'default', 'catalogrule_product_replica']
+                    ['catalogrule_product_replica', 'default', 'catalogrule_product_replica'],
                 ]
             );
 

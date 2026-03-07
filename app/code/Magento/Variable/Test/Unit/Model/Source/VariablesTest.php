@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ class VariablesTest extends TestCase
         $configVariables = [
             'web' => [
                 'web/unsecure/base_url' => '1',
-                'web/secure/base_url' => '1'
-            ]
+                'web/secure/base_url' => '1',
+            ],
         ];
         $this->variablesConfigMock = $this->createMock(AvailableVariables::class);
         $this->variablesConfigMock->expects($this->any())->method('getConfigPaths')->willReturn($configVariables);
@@ -71,12 +72,12 @@ class VariablesTest extends TestCase
         $this->configMock->expects($this->any())->method('getElementByConfigPath')->willReturnMap([
             ['web', $groupElement],
             ['web/unsecure/base_url', $element1],
-            ['web/secure/base_url', $element2]
+            ['web/secure/base_url', $element2],
         ]);
 
         $this->model = $helper->getObject(Variables::class, [
             'configStructure' => $this->configMock,
-            'configPaths' => $this->variablesConfigMock
+            'configPaths' => $this->variablesConfigMock,
         ]);
     }
 
@@ -112,10 +113,10 @@ class VariablesTest extends TestCase
     {
         $vars = [
             'web/unsecure/base_url' => '1',
-            'web/secure/base_url' => '1'
+            'web/secure/base_url' => '1',
         ];
         $expected = [
-            'web/unsecure/base_url', 'web/secure/base_url'
+            'web/unsecure/base_url', 'web/secure/base_url',
         ];
         $this->variablesConfigMock->expects($this->any())->method('getFlatConfigPaths')->willReturn($vars);
         $this->assertEquals($expected, $this->model->getAvailableVars());
@@ -129,11 +130,11 @@ class VariablesTest extends TestCase
         return [
             [
                 'value' => '{{config path="web/unsecure/base_url"}}',
-                'label_text' => 'Base URL'
+                'label_text' => 'Base URL',
             ],
             [
                 'value' => '{{config path="web/secure/base_url"}}',
-                'label_text' => 'Secure Base URL'
+                'label_text' => 'Secure Base URL',
             ],
         ];
     }

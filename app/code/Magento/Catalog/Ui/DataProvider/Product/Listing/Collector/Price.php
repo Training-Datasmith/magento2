@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -23,16 +25,16 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 class Price implements ProductRenderCollectorInterface
 {
     /** FInal Price key */
-    public const KEY_FINAL_PRICE = "final_price";
+    public const KEY_FINAL_PRICE = 'final_price';
 
     /** Minimal Price key */
-    public const KEY_MINIMAL_PRICE = "minimal_price";
+    public const KEY_MINIMAL_PRICE = 'minimal_price';
 
     /** Regular Price key */
-    public const KEY_REGULAR_PRICE = "regular_price";
+    public const KEY_REGULAR_PRICE = 'regular_price';
 
     /** Max Price key */
-    public const KEY_MAX_PRICE = "max_price";
+    public const KEY_MAX_PRICE = 'max_price';
 
     /**
      * @var PriceCurrencyInterface

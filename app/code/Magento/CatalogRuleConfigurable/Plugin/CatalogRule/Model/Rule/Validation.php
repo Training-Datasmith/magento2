@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\Rule;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
-use Magento\CatalogRule\Model\Rule;
-use Magento\Framework\DataObject;
 use Magento\Catalog\Model\Product;
+use Magento\CatalogRule\Model\Rule;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Framework\DataObject;
 
 /**
  * Class Validation. Call validate method for configurable product instead simple product

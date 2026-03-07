@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Filter\StripTags;
 use Magento\Framework\Stdlib\StringUtils;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -152,7 +153,7 @@ class AttributeTest extends TestCase
                 'itemDataBuilder' => $this->itemDataBuilder,
                 'filterAttributeFactory' => $this->filterAttributeFactory,
                 'tagFilter' => $stripTagsFilter,
-                'string' => $string
+                'string' => $string,
             ]
         );
     }

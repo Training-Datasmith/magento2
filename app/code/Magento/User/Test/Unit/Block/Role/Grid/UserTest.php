@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,10 +11,13 @@ namespace Magento\User\Test\Unit\Block\Role\Grid;
 use Magento\Authorization\Model\Role;
 use Magento\Authorization\Model\RoleFactory;
 use Magento\Backend\Helper\Data;
+use Magento\Backend\Helper\Data as BackendHelper;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Escaper;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -23,9 +27,6 @@ use Magento\Framework\View\LayoutInterface;
 use Magento\User\Block\Role\Grid\User;
 use Magento\User\Controller\Adminhtml\User\Role\SaveRole;
 use Magento\User\Model\ResourceModel\Role\User\CollectionFactory;
-use Magento\Framework\Escaper;
-use Magento\Backend\Helper\Data as BackendHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -106,7 +107,7 @@ class UserTest extends TestCase
         $backendHelperMock = $this->createMock(BackendHelper::class);
         $this->objectManagerHelper->prepareObjectManager([
             [JsonHelper::class, $jsonHelperMock],
-            [BackendHelper::class, $backendHelperMock]
+            [BackendHelper::class, $backendHelperMock],
         ]);
 
         $this->backendHelperMock = $this->createMock(Data::class);
@@ -135,7 +136,7 @@ class UserTest extends TestCase
                 'urlBuilder' => $this->urlInterfaceMock,
                 'layout' => $this->layoutMock,
                 'filesystem' => $this->filesystemMock,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }

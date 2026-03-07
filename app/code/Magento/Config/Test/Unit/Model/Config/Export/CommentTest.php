@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Config\Model\Placeholder\PlaceholderFactory;
 use Magento\Config\Model\Placeholder\PlaceholderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class CommentTest extends TestCase
@@ -83,7 +84,7 @@ class CommentTest extends TestCase
         $this->configSourceMock->expects($this->once())
             ->method('getExcludedFields')
             ->willReturn(array_unique(array_merge($sensitive, $notSensitive)));
-        
+
         // Convert string/array expects to actual matcher for typePoolMock
         $typePoolExpects = $expectedMocks['typePoolMock']['isPresent']['expects'];
         if (is_string($typePoolExpects)) {
@@ -96,7 +97,7 @@ class CommentTest extends TestCase
         $this->typePoolMock->expects($typePoolMatcher)
             ->method('isPresent')
             ->willReturnMap($expectedMocks['typePoolMock']['isPresent']['returnMap']);
-        
+
         // Convert string/array expects to actual matcher for placeholderMock
         $placeholderExpects = $expectedMocks['placeholderMock']['generate']['expects'];
         if (is_string($placeholderExpects)) {
@@ -127,7 +128,7 @@ class CommentTest extends TestCase
                         'isPresent' => [
                             'expects' => 'never',
                             'returnMap' => [],
-                        ]
+                        ],
                     ],
                     'placeholderMock' => [
                         'generate' => [
@@ -151,7 +152,7 @@ class CommentTest extends TestCase
                             'returnMap' => [
                                 ['some/notSensitive/field1', TypePool::TYPE_SENSITIVE, false],
                                 ['some/notSensitive/field2', TypePool::TYPE_SENSITIVE, false],
-                            ]
+                            ],
                         ],
                     ],
                     'placeholderMock' => [
@@ -161,7 +162,7 @@ class CommentTest extends TestCase
                         ],
                     ],
                 ],
-                'expectedMessage' => ''
+                'expectedMessage' => '',
             ],
             [
                 'sensitive' => ['some/sensitive/field1', 'some/sensitive/field2', 'some/sensitive_and_env/field'],
@@ -175,7 +176,7 @@ class CommentTest extends TestCase
                                 ['some/sensitive/field2', TypePool::TYPE_SENSITIVE, true],
                                 ['some/sensitive_and_env/field', TypePool::TYPE_SENSITIVE, true],
                                 ['some/notSensitive/field1', TypePool::TYPE_SENSITIVE, false],
-                            ]
+                            ],
                         ],
                     ],
                     'placeholderMock' => [
@@ -186,19 +187,19 @@ class CommentTest extends TestCase
                                     'some/sensitive/field1',
                                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                                     null,
-                                    'CONFIG__SOME__SENSITIVE__FIELD1'
+                                    'CONFIG__SOME__SENSITIVE__FIELD1',
                                 ],
                                 [
                                     'some/sensitive/field2',
                                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                                     null,
-                                    'CONFIG__SOME__SENSITIVE__FIELD2'
+                                    'CONFIG__SOME__SENSITIVE__FIELD2',
                                 ],
                                 [
                                     'some/sensitive_and_env/field',
                                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                                     null,
-                                    'CONFIG__SOME__SENSITIVE_AND_ENV__FIELD'
+                                    'CONFIG__SOME__SENSITIVE_AND_ENV__FIELD',
                                 ],
                             ],
                         ],
@@ -210,8 +211,8 @@ class CommentTest extends TestCase
                     'Sensitive data can be stored in the following environment variables:',
                     'CONFIG__SOME__SENSITIVE__FIELD1 for some/sensitive/field1',
                     'CONFIG__SOME__SENSITIVE__FIELD2 for some/sensitive/field2',
-                    'CONFIG__SOME__SENSITIVE_AND_ENV__FIELD for some/sensitive_and_env/field'
-                ])
+                    'CONFIG__SOME__SENSITIVE_AND_ENV__FIELD for some/sensitive_and_env/field',
+                ]),
             ],
         ];
     }

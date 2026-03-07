@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class EditActionTest extends TestCase
             [],
             [
                 'name' => 'name',
-                'config' => ['editUrlPath' => 'theme/design_config/edit']
+                'config' => ['editUrlPath' => 'theme/design_config/edit'],
             ]
         );
     }
@@ -68,7 +69,7 @@ class EditActionTest extends TestCase
                 'edit' => [
                     'href' => 'http://magento.com/theme/design_config/edit',
                     'label' => new Phrase('Edit'),
-                ]
+                ],
             ],
         ];
 

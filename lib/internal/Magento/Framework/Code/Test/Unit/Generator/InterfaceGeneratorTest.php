@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Generator;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Code\Generator\InterfaceGenerator;
-use Magento\SomeModule\Model\Two\Test;
 use Magento\Framework\Code\Generator\CodeGeneratorInterface;
+use Magento\Framework\Code\Generator\InterfaceGenerator;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\SomeModule\Model\Two\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class InterfaceGeneratorTest extends TestCase
 {
@@ -102,7 +105,7 @@ class InterfaceGeneratorTest extends TestCase
         $this->assertStringEndsWith(
             $generatedInterface,
             $expectedInterface,
-            "Interface was generated incorrectly."
+            'Interface was generated incorrectly.'
         );
     }
 
@@ -111,7 +114,7 @@ class InterfaceGeneratorTest extends TestCase
         $expectedContent = 'Expected generated content.';
         $this->interfaceGenerator->setSourceDirty(false)->setSourceContent($expectedContent);
         $generatedContent = $this->interfaceGenerator->generate();
-        $this->assertEquals($expectedContent, $generatedContent, "Generated content is invalid.");
+        $this->assertEquals($expectedContent, $generatedContent, 'Generated content is invalid.');
     }
 
     public function testGeneratePredefinedContentNotSet()
@@ -119,7 +122,7 @@ class InterfaceGeneratorTest extends TestCase
         $expectedContent = '';
         $this->interfaceGenerator->setSourceDirty(false);
         $generatedContent = $this->interfaceGenerator->generate();
-        $this->assertEquals($expectedContent, $generatedContent, "Generated content is invalid.");
+        $this->assertEquals($expectedContent, $generatedContent, 'Generated content is invalid.');
     }
 
     /**
@@ -131,24 +134,24 @@ class InterfaceGeneratorTest extends TestCase
             'Valid data' => [
                 'additionalMethodsData' => [],
                 'expectedException' => '',
-                'expectedExceptionMessage' => ''
+                'expectedExceptionMessage' => '',
             ],
             '"final" usage exception' => [
                 'additionalMethodsData' => ['testMethod1' => ['final' => true]],
                 'expectedException' => '\LogicException',
-                'expectedExceptionMessage' => "Interface method cannot be marked as 'final'. Method name: 'testMethod1'"
+                'expectedExceptionMessage' => "Interface method cannot be marked as 'final'. Method name: 'testMethod1'",
             ],
             'Non public interface method  exception' => [
                 'additionalMethodsData' => ['testMethod2' => ['visibility' => 'protected']],
                 'expectedException' => '\LogicException',
                 'expectedExceptionMessage' =>
-                    "Interface method visibility can only be 'public'. Method name: 'testMethod2'"
+                    "Interface method visibility can only be 'public'. Method name: 'testMethod2'",
             ],
             '"abstract" usage exception' => [
                 'additionalMethodsData' => ['testMethod1' => ['abstract' => true]],
                 'expectedException' => '\LogicException',
                 'expectedExceptionMessage' =>
-                    "'abstract' modifier cannot be used for interface method. Method name: 'testMethod1'"
+                    "'abstract' modifier cannot be used for interface method. Method name: 'testMethod1'",
             ],
         ];
     }

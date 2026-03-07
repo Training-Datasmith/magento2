@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order;
 
-use Magento\Sales\Api\Data\OrderItemInterface;
-use Magento\Framework\DataObject;
+use Magento\Catalog\Api\Data\ProductOptionExtensionFactory;
 use Magento\Catalog\Model\ProductOptionFactory;
 use Magento\Catalog\Model\ProductOptionProcessorInterface;
-use Magento\Catalog\Api\Data\ProductOptionExtensionFactory;
+use Magento\Framework\DataObject;
+use Magento\Sales\Api\Data\OrderItemInterface;
 
 /**
  * Adds product option to the order item according to product options processors pool.

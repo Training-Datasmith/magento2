@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,17 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Framework\ObjectManager\Resetter;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use WeakReference;
 use WeakMap;
+use WeakReference;
 
 /**
  * Sorts a WeakMap into an ordered array of WeakReference and reset them in order.
  */
 class WeakMapSorter
 {
-
     public const DEFAULT_SORT_VALUE = 5000;
 
     public const MAX_SORT_VALUE = 10000;
@@ -43,7 +41,7 @@ class WeakMapSorter
      * @return WeakReference[]
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function sortWeakMapIntoWeakReferenceList(WeakMap $weakmap) : array
+    public function sortWeakMapIntoWeakReferenceList(WeakMap $weakmap): array
     {
         /** @var SortableReferenceObject[] */
         $sortableReferenceList = [];
@@ -57,7 +55,7 @@ class WeakMapSorter
         }
         usort(
             $sortableReferenceList,
-            fn(SortableReferenceObject $a, SortableReferenceObject  $b) => $a->getSort() - $b->getSort()
+            fn (SortableReferenceObject $a, SortableReferenceObject  $b) => $a->getSort() - $b->getSort()
         );
         $returnValue = [];
         foreach ($sortableReferenceList as $sortableReference) {
@@ -72,7 +70,7 @@ class WeakMapSorter
      * @param object $object
      * @return int
      */
-    private function getSortValueOfObject(object $object) : int
+    private function getSortValueOfObject(object $object): int
     {
         $className = get_class($object);
         if (array_key_exists($className, $this->sortOrder)) {

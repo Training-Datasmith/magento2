@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Config;
 use Magento\Framework\App\Config\ConfigTypeInterface;
 use Magento\Framework\App\Config\ScopeCodeResolver;
 use Magento\Framework\App\ScopeInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase
@@ -72,7 +73,7 @@ class ConfigTest extends TestCase
         }
         $this->configType->expects($this->once())
             ->method('get')
-            ->with($scope =='store' ? 'stores/path' : 'websites/myWebsite/path')
+            ->with($scope == 'store' ? 'stores/path' : 'websites/myWebsite/path')
             ->willReturn(true);
 
         $this->assertTrue($this->appConfig->getValue($path, $scope, $scopeCode ?: $this->scope));

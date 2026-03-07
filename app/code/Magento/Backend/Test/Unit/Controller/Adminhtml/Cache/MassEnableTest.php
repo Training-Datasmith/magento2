@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class MassEnableTest extends TestCase
             [
                 'context' => $contextMock,
                 'cacheTypeList' => $this->cacheTypeListMock,
-                'cacheState' => $this->cacheStateMock
+                'cacheState' => $this->cacheStateMock,
             ]
         );
         $objectManagerHelper->setBackwardCompatibleProperty($this->controller, 'state', $this->stateMock);
@@ -135,8 +136,8 @@ class MassEnableTest extends TestCase
             ->willReturn([
                 'pageCache' => [
                     'id' => 'pageCache',
-                    'label' => 'Cache of Page'
-                ]
+                    'label' => 'Cache of Page',
+                ],
             ]);
 
         $this->requestMock->expects($this->once())
@@ -185,8 +186,8 @@ class MassEnableTest extends TestCase
             ->willReturn([
                 'pageCache' => [
                     'id' => 'pageCache',
-                    'label' => 'Cache of Page'
-                ]
+                    'label' => 'Cache of Page',
+                ],
             ]);
 
         $this->requestMock->expects($this->once())

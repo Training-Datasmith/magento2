@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,12 +49,12 @@ class FilterTest extends TestCase
         $objects = [
             [
                 SignatureProvider::class,
-                $this->createMock(SignatureProvider::class)
+                $this->createMock(SignatureProvider::class),
             ],
             [
                 FilteringDepthMeter::class,
-                $this->createMock(FilteringDepthMeter::class)
-            ]
+                $this->createMock(FilteringDepthMeter::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -77,7 +78,7 @@ class FilterTest extends TestCase
         $construction = [
             '{{media url="wysiwyg/image.jpg"}}',
             'media',
-            ' url="wysiwyg/image.jpg"'
+            ' url="wysiwyg/image.jpg"',
         ];
         $expectedResult = 'pub/media/wysiwyg/image.jpg';
         $this->storeMock->expects($this->once())
@@ -97,7 +98,7 @@ class FilterTest extends TestCase
         $construction = [
             '{{media url=&quot;wysiwyg/image.jpg&quot;}}',
             'media',
-            ' url=&quot;wysiwyg/image.jpg&quot;'
+            ' url=&quot;wysiwyg/image.jpg&quot;',
         ];
         $expectedResult = 'pub/media/wysiwyg/image.jpg';
 
@@ -119,7 +120,7 @@ class FilterTest extends TestCase
         $construction = [
             '{{media url="wysiwyg/images/../image.jpg"}}',
             'media',
-            ' url="wysiwyg/images/../image.jpg"'
+            ' url="wysiwyg/images/../image.jpg"',
         ];
         $this->storeMock->expects($this->any())
             ->method('getBaseMediaDir')
@@ -140,7 +141,7 @@ class FilterTest extends TestCase
         $construction = [
             '{{media url="http://wysiwyg/images/image.jpg"}}',
             'media',
-            ' url="http://wysiwyg/images/../image.jpg"'
+            ' url="http://wysiwyg/images/../image.jpg"',
         ];
         $this->storeMock->expects($this->any())
             ->method('getBaseMediaDir')

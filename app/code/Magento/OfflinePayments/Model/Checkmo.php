@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\OfflinePayments\Model;
 
 /**
@@ -15,7 +18,7 @@ namespace Magento\OfflinePayments\Model;
  */
 class Checkmo extends \Magento\Payment\Model\Method\AbstractMethod
 {
-    const PAYMENT_METHOD_CHECKMO_CODE = 'checkmo';
+    public const PAYMENT_METHOD_CHECKMO_CODE = 'checkmo';
 
     /**
      * Payment method code

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\App\Cache\Type\FrontendPool;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class FrontendPoolTest extends TestCase
@@ -52,7 +53,7 @@ class FrontendPoolTest extends TestCase
         );
     }
 
-        /**
+    /**
      */
     #[DataProvider('getDataProvider')]
     public function testGet($fixtureConfigData, $inputCacheType, $expectedFrontendId)
@@ -113,7 +114,7 @@ class FrontendPoolTest extends TestCase
                 $configData3,
                 'unknown_cache_type',
                 Pool::DEFAULT_FRONTEND_ID,
-            ]
+            ],
         ];
     }
 }

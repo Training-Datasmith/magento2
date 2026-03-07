@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -175,7 +176,7 @@ class Full extends AbstractAction
                 $select->distinct(true);
                 $select->from(
                     [
-                        'e' => $entityMetadata->getEntityTable()
+                        'e' => $entityMetadata->getEntityTable(),
                     ],
                     $entityMetadata->getIdentifierField()
                 )->where(

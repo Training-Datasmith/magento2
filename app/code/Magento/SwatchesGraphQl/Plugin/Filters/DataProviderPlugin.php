@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class DataProviderPlugin
         \Closure $proceed,
         string $layerType,
         $attributesToFilter = null
-    ) : array {
+    ): array {
         $swatchFilters = [];
         /** @var AbstractFilter $filter */
         foreach ($this->filtersProvider->getFilters($layerType) as $filter) {
@@ -89,7 +90,7 @@ class DataProviderPlugin
                             if ($filterItem['value_string'] == $swatchKey) {
                                 $filtersData[$groupKey]['filter_items'][$itemKey]['swatch_data'] = [
                                     'type' => $swatchDataItem['type'],
-                                    'value' => $swatchDataItem['value']
+                                    'value' => $swatchDataItem['value'],
                                 ];
                             }
                         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class TaxRatesFixtureTest extends TestCase
 {
-
     /**
      * @var MockObject|FixtureModel
      */
@@ -50,7 +50,7 @@ class TaxRatesFixtureTest extends TestCase
 
         $valueMap = [
             [Rate::class, $rateMock],
-            [Collection::class, $collectionMock]
+            [Collection::class, $collectionMock],
         ];
 
         $objectManagerMock = $this->createMock(ObjectManager::class);

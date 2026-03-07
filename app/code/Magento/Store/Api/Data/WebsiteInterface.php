@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Api\Data;
 
 /**
@@ -16,7 +19,7 @@ interface WebsiteInterface extends \Magento\Framework\Api\ExtensibleDataInterfac
     /**
      * contains code of admin website
      */
-    const ADMIN_CODE = 'admin';
+    public const ADMIN_CODE = 'admin';
 
     /**
      * @return int

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,5 +25,5 @@ return [
         'street' => ['Tunnel Alexanderpl'],
         'lastname' => 'Smith',
         'firstname' => 'John',
-    ]
+    ],
 ];

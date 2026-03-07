@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class ShippingDiscount extends \Magento\Quote\Model\Quote\Address\Total\Abstract
             $result = [
                 'code' => DiscountCollector::COLLECTOR_TYPE_CODE,
                 'title' => strlen($description) ? __('Discount (%1)', $description) : __('Discount'),
-                'value' => $amount
+                'value' => $amount,
             ];
         }
         return $result;

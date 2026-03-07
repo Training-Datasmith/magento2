@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,9 +21,9 @@ class ProcessorFactory
     /**#@+
      * Constants for processor types.
      */
-    const TYPE_CREATE = 'create';
-    const TYPE_DELETE = 'delete';
-    const TYPE_UPDATE = 'update';
+    public const TYPE_CREATE = 'create';
+    public const TYPE_DELETE = 'delete';
+    public const TYPE_UPDATE = 'update';
     /**#@-*/
 
     /**#@-*/

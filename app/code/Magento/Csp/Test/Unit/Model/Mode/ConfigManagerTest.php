@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ConfigManagerTest extends TestCase
                 'storeModel' => $this->storeMock,
                 'state' => $this->stateMock,
                 'request' => $this->requestMock,
-                'modeConfiguredFactory' => $this->modeConfiguredFactoryMock
+                'modeConfiguredFactory' => $this->modeConfiguredFactoryMock,
             ]
         );
     }

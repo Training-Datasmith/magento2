@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block\User\Edit;
 
 /**
@@ -39,7 +42,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'label' => __('User Info'),
                 'title' => __('User Info'),
                 'content' => $this->getLayout()->createBlock(\Magento\User\Block\User\Edit\Tab\Main::class)->toHtml(),
-                'active' => true
+                'active' => true,
             ]
         );
 
@@ -51,7 +54,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'content' => $this->getLayout()->createBlock(
                     \Magento\User\Block\User\Edit\Tab\Roles::class,
                     'user.roles.grid'
-                )->toHtml()
+                )->toHtml(),
             ]
         );
         return parent::_beforeToHtml();

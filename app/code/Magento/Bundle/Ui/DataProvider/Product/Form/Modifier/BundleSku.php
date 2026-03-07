@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
@@ -13,7 +16,7 @@ use Magento\Framework\Stdlib\ArrayManager;
  */
 class BundleSku extends AbstractModifier
 {
-    const CODE_SKU_TYPE = 'sku_type';
+    public const CODE_SKU_TYPE = 'sku_type';
 
     /**
      * @var ArrayManager
@@ -39,11 +42,11 @@ class BundleSku extends AbstractModifier
             [
                 'valueMap' => [
                     'false' => '1',
-                    'true' => '0'
+                    'true' => '0',
                 ],
                 'validation' => [
-                    'required-entry' => false
-                ]
+                    'required-entry' => false,
+                ],
             ]
         );
 

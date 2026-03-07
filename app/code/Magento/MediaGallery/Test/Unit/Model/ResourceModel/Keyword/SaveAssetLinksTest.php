@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class SaveAssetLinksTest extends TestCase
                 ->willReturnMap(
                     [
                         ['media_gallery_asset_keyword', 'default', 'prefix_media_gallery_asset_keyword'],
-                        ['media_gallery_asset', 'default', 'prefix_media_gallery_asset']
+                        ['media_gallery_asset', 'default', 'prefix_media_gallery_asset'],
                     ]
                 );
             $this->connectionMock->expects($this->once())
@@ -131,22 +132,22 @@ class SaveAssetLinksTest extends TestCase
             [
                 12,
                 [],
-                []
+                [],
             ],
             [
                 12,
                 [1],
                 [
-                    [12, 1]
-                ]
+                    [12, 1],
+                ],
             ], [
                 12,
                 [1, 2],
                 [
                     [12, 1],
                     [12, 2],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

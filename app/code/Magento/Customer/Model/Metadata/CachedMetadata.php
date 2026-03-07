@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata;
 
 use Magento\Customer\Api\MetadataInterface;
@@ -13,7 +16,7 @@ use Magento\Framework\App\ObjectManager;
  */
 class CachedMetadata implements MetadataInterface
 {
-    const CACHE_SEPARATOR = ';';
+    public const CACHE_SEPARATOR = ';';
 
     /**
      * @var string

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -134,9 +135,9 @@ class PageCacheTest extends TestCase
                             'serializer' => '',
                         ],
                         'id_prefix' => $this->expectedIdPrefix(),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         $configData = $this->configList->createConfig(['page-cache' => 'redis'], $this->deploymentConfigMock);
@@ -184,9 +185,9 @@ class PageCacheTest extends TestCase
                             'compression_lib' => 'gzip',
                             'serializer' => null,
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         $options = [
@@ -216,11 +217,11 @@ class PageCacheTest extends TestCase
                     'page_cache' => [
                         'id_prefix' => $this->expectedIdPrefix(),
                         'backend_options' => [
-                            'serializer' => 'igbinary'
-                        ]
-                    ]
-                ]
-            ]
+                            'serializer' => 'igbinary',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $configData = $this->configList->createConfig([], $this->deploymentConfigMock);
@@ -242,11 +243,11 @@ class PageCacheTest extends TestCase
                     'page_cache' => [
                         'id_prefix' => $explicitPrefix,
                         'backend_options' => [
-                            'serializer' => 'igbinary'
-                        ]
-                    ]
-                ]
-            ]
+                            'serializer' => 'igbinary',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $configData = $this->configList->createConfig(
@@ -269,7 +270,7 @@ class PageCacheTest extends TestCase
         $options = [
             'page-cache' => 'redis',
             'page-cache-redis-db' => '2',
-            'cache-backend' => 'redis'
+            'cache-backend' => 'redis',
         ];
 
         $errors = $this->configList->validate($options, $this->deploymentConfigMock);
@@ -283,7 +284,7 @@ class PageCacheTest extends TestCase
     public function testValidationWithInvalidData()
     {
         $options = [
-            'page-cache' => 'foobar'
+            'page-cache' => 'foobar',
         ];
 
         $errors = $this->configList->validate($options, $this->deploymentConfigMock);

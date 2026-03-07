@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Swatches\Test\Unit\Block\Adminhtml\Product\Attribute\Edit;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\Form;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FormTest extends TestCase
 {
@@ -19,7 +20,7 @@ class FormTest extends TestCase
     {
         $objectManager = new ObjectManager($this);
         $block = $objectManager->getObject(Form::class);
-        $result= $block->addValues($values);
+        $result = $block->addValues($values);
         $this->assertEquals($block, $result);
     }
 
@@ -31,7 +32,7 @@ class FormTest extends TestCase
         $additionalData = [
             'swatch_input_type' => 'visual',
             'update_product_preview_image' => 1,
-            'use_product_image_for_swatch' => 0
+            'use_product_image_for_swatch' => 0,
         ];
 
         return [
@@ -39,17 +40,17 @@ class FormTest extends TestCase
                 [
                     'frontend_input' => 'select',
                     'swatch_input_type' => 'text',
-                ]
+                ],
             ],
             [
                 [
                     'frontend_input' => 'textarea',
-                ]
+                ],
             ],
             [
                 [
                     'frontend_input' => 'select',
-                ]
+                ],
             ],
             [
                 'wrong_string_value',
@@ -58,13 +59,13 @@ class FormTest extends TestCase
                 [
                     'additional_data' => json_encode($additionalData),
                     'frontend_input' => 'select',
-                ]
+                ],
             ],
             [
                 [
                     'additional_data' => '',
                     'frontend_input' => 'select',
-                ]
+                ],
             ],
         ];
     }

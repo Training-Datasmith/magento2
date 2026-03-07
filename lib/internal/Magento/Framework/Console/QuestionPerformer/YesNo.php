@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -76,7 +78,7 @@ class YesNo
     {
         /** @var Question $question */
         $question = $this->questionFactory->create([
-            'question' => implode(PHP_EOL, $messages) . PHP_EOL
+            'question' => implode(PHP_EOL, $messages) . PHP_EOL,
         ]);
 
         $question->setValidator(function ($answer) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class RowSizeEstimator implements IndexTableRowSizeEstimatorInterface
     /**
      * Amount of memory for index data row.
      */
-    const ROW_MEMORY_SIZE = 100;
+    public const ROW_MEMORY_SIZE = 100;
 
     /**
      * @var \Magento\Framework\App\ResourceConnection

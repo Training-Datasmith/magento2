@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class DeleteAuthenticationDataForUser implements DeleteAuthenticationDataForUser
         $connection->delete(
             $tableName,
             [
-                'admin_id = ?' => $userId
+                'admin_id = ?' => $userId,
             ]
         );
     }

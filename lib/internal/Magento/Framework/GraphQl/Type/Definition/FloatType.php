@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -51,10 +52,11 @@ class FloatType extends \GraphQL\Type\Definition\FloatType
                 && isset($valueNode->value)) {
                 $valueNode = new FloatValueNode([
                     'value' => (string)$this->parseValue($valueNode->value),
-                    'loc' => $valueNode->loc
+                    'loc' => $valueNode->loc,
                 ]);
             }
-        } catch (Exception $e) {} // @codingStandardsIgnoreLine
+        } catch (Exception $e) {
+        } // @codingStandardsIgnoreLine
         return parent::parseLiteral($valueNode, $variables);
     }
 }

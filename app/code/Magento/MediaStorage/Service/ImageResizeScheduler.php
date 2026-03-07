@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaStorage\Service;
 
-use Magento\Framework\Bulk\BulkManagementInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\Authorization\Model\UserContextInterface;
+use Magento\Framework\Bulk\BulkManagementInterface;
+use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\Bulk\OperationInterface;
-use Magento\Authorization\Model\UserContextInterface;
 
 /**
  * Scheduler for image resize queue
@@ -83,7 +84,7 @@ class ImageResizeScheduler
                 'topic_name' => 'media.storage.catalog.image.resize',
                 'serialized_data' => $this->serializer->serialize($dataToEncode),
                 'status' => OperationInterface::STATUS_TYPE_OPEN,
-            ]
+            ],
         ];
         $operation = $this->operationFactory->create($data);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model;
 
-use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
 use Magento\Quote\Api\GuestCartManagementInterface;
+use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
 
 class MaskedQuoteIdToQuoteIdTest extends \PHPUnit\Framework\TestCase
 {

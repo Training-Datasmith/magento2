@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Ui\DataProvider\Product\Form\Modifier;
 
 /**
@@ -10,10 +13,10 @@ namespace Magento\Review\Ui\DataProvider\Product\Form\Modifier;
  */
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Ui\Component\Form;
-use Magento\Framework\UrlInterface;
-use Magento\Framework\Module\Manager as ModuleManager;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Module\Manager as ModuleManager;
+use Magento\Framework\UrlInterface;
+use Magento\Ui\Component\Form;
 
 /**
  * Review modifier for catalog product form
@@ -23,11 +26,11 @@ use Magento\Framework\App\ObjectManager;
  */
 class Review extends AbstractModifier
 {
-    const GROUP_REVIEW = 'review';
-    const GROUP_CONTENT = 'content';
-    const DATA_SCOPE_REVIEW = 'grouped';
-    const SORT_ORDER = 20;
-    const LINK_TYPE = 'associated';
+    public const GROUP_REVIEW = 'review';
+    public const GROUP_CONTENT = 'content';
+    public const DATA_SCOPE_REVIEW = 'grouped';
+    public const SORT_ORDER = 20;
+    public const LINK_TYPE = 'associated';
 
     /**
      * @var LocatorInterface

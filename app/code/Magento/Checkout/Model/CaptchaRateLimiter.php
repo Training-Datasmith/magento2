@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ declare(strict_types=1);
 namespace Magento\Checkout\Model;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Captcha\Model\DefaultModel as Captcha;
 use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\Captcha\Model\DefaultModel as Captcha;
 use Magento\Captcha\Observer\CaptchaStringResolver as CaptchaResolver;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 

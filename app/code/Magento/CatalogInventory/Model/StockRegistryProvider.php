@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
-use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
-use Magento\CatalogInventory\Api\StockRepositoryInterface;
-use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
-use Magento\CatalogInventory\Api\StockStatusRepositoryInterface;
 use Magento\CatalogInventory\Api\Data\StockInterfaceFactory;
 use Magento\CatalogInventory\Api\Data\StockItemInterfaceFactory;
 use Magento\CatalogInventory\Api\Data\StockStatusInterfaceFactory;
 use Magento\CatalogInventory\Api\StockCriteriaInterfaceFactory;
 use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
+use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
+use Magento\CatalogInventory\Api\StockRepositoryInterface;
 use Magento\CatalogInventory\Api\StockStatusCriteriaInterfaceFactory;
+use Magento\CatalogInventory\Api\StockStatusRepositoryInterface;
+use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
 
 /**
  * Class Catalog StockRegistryProvider

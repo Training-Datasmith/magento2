@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,8 +82,8 @@ class ConfigGeneratorTest extends TestCase
         // phpcs:ignore Magento2.Security.InsecureFunction
         $this->assertEquals([
                 'crypt' => [
-                    'key' => ConfigOptionsListConstants::STORE_KEY_ENCODED_RANDOM_STRING_PREFIX . 'randombytes'
-                ]
+                    'key' => ConfigOptionsListConstants::STORE_KEY_ENCODED_RANDOM_STRING_PREFIX . 'randombytes',
+                ],
             ], $returnValue->getData());
     }
 

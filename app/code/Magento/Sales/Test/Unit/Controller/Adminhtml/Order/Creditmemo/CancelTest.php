@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CancelTest extends TestCase
 {
-
     /**
      * @var Cancel
      */
@@ -137,7 +137,7 @@ class CancelTest extends TestCase
                     'getHelper',
                     'getActionFlag',
                     'getMessageManager',
-                    'getResultRedirectFactory'
+                    'getResultRedirectFactory',
                 ]
             )
             ->disableOriginalConstructor()
@@ -173,7 +173,7 @@ class CancelTest extends TestCase
             Cancel::class,
             [
                 'context' => $this->contextMock,
-                'resultForwardFactory' => $this->resultForwardFactoryMock
+                'resultForwardFactory' => $this->resultForwardFactoryMock,
             ]
         );
     }

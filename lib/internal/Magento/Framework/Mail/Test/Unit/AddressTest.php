@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class AddressTest extends TestCase
      */
     public function testGetEmailEmpty()
     {
-        $address = new Address(null, "Test name");
+        $address = new Address(null, 'Test name');
         $this->assertNull($address->getEmail());
     }
 }

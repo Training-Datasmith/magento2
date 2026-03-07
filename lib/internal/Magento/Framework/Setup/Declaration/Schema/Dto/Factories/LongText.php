@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -15,7 +18,7 @@ class LongText implements FactoryInterface
     /**
      * Default long text length.
      */
-    const DEFAULT_TEXT_LENGTH = 2147483648;
+    public const DEFAULT_TEXT_LENGTH = 2147483648;
 
     /**
      * @var ObjectManagerInterface

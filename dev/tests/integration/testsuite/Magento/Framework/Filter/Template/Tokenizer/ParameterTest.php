@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Framework\Filter\Template\Tokenizer;
 
 use Magento\Catalog\Block\Product\Widget\NewWidget;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Framework\Filter\Template\Tokenizer\Parameter.
  */
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
@@ -70,7 +71,7 @@ class ParameterTest extends TestCase
                     'type' => NewWidget::class,
                     'display_type' => 'all_products',
                     'products_count' => 10,
-                    'template' => 'product/widget/new/content/new_grid.phtml'
+                    'template' => 'product/widget/new/content/new_grid.phtml',
                 ],
             ],
             [
@@ -80,8 +81,8 @@ class ParameterTest extends TestCase
                     'type' => NewWidget::class,
                     'display_type' => 'all_products',
                     'products_count' => 10,
-                    'template' => 'product/widget/new/content/new_grid.phtml'
-                ]
+                    'template' => 'product/widget/new/content/new_grid.phtml',
+                ],
             ],
             [
                 sprintf(
@@ -92,7 +93,7 @@ class ParameterTest extends TestCase
                     'type' => NewWidget::class,
                     'display_type' => 'all_products',
                     'products_count' => 1,
-                    'template' => 'content/new_grid.phtml'
+                    'template' => 'content/new_grid.phtml',
                 ],
             ],
         ];
@@ -110,7 +111,7 @@ class ParameterTest extends TestCase
                 [
                     'type="Magento\Catalog\Block\Product\Widget\NewWidget"',
                     'display_type="all_products"',
-                    'products_count="10"'
+                    'products_count="10"',
                 ],
             ],
             [
@@ -119,9 +120,9 @@ class ParameterTest extends TestCase
                 [
                     'type="Magento\Catalog\Block\Product\Widget\NewWidget"',
                     'display_type="all_products"',
-                    'products_count="10"'
-                ]
-            ]
+                    'products_count="10"',
+                ],
+            ],
         ];
     }
 }

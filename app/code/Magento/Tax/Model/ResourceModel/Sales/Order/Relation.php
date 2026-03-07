@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class Relation implements RelationInterface
             $taxModel->save();
             $taxItems = [
                 ...$itemizedTaxesByTaxCode[$tax->getId() ?? ''] ?? [],
-                ...$itemizedTaxesByTaxCode[$tax->getCode() ?? ''] ?? []
+                ...$itemizedTaxesByTaxCode[$tax->getCode() ?? ''] ?? [],
             ];
             unset($itemizedTaxesByTaxCode[$tax->getId() ?? ''], $itemizedTaxesByTaxCode[$tax->getCode() ?? '']);
             foreach ($taxItems as $taxItem) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Catalog\Test\Fixture\ProductStock as ProductStockFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Indexer\Test\Fixture\Indexer as IndexerFixture;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
@@ -27,7 +29,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
 
 /**
  * Test for merging customer carts
@@ -157,7 +158,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(GuestCartFixture::class, as: 'guestCart'),
@@ -167,7 +168,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -211,15 +212,15 @@ class MergeCartsTest extends GraphQlAbstract
                 'stock_item' => [
                     'use_config_backorders' => false,
                     'backorders' => 1,
-                    'is_in_stock' => 1
-                ]
-            ]
+                    'is_in_stock' => 1,
+                ],
+            ],
         ], as: 'product'),
         DataFixture(
             ProductStockFixture::class,
             [
                 'prod_id' => '$product.id$',
-                'prod_qty' => 0
+                'prod_qty' => 0,
             ]
         ),
         DataFixture(IndexerFixture::class),
@@ -229,7 +230,7 @@ class MergeCartsTest extends GraphQlAbstract
             [
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(Customer::class, as: 'customer'),
@@ -239,7 +240,7 @@ class MergeCartsTest extends GraphQlAbstract
             [
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
     ]
@@ -265,16 +266,16 @@ class MergeCartsTest extends GraphQlAbstract
         $mergeResponse = $this->graphQlMutation($cartMergeQuery, [], '', $queryHeader);
         $this->assertEquals(
             [
-                "mergeCarts" => [
-                    "items" => [
+                'mergeCarts' => [
+                    'items' => [
                         0 => [
-                            "quantity" => $updatedQuantity,
-                            "product" => [
-                                "sku" => $productSku,
-                            ]
-                        ]
-                    ]
-                ]
+                            'quantity' => $updatedQuantity,
+                            'product' => [
+                                'sku' => $productSku,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $mergeResponse
         );
@@ -283,16 +284,16 @@ class MergeCartsTest extends GraphQlAbstract
         $cartResponse = $this->graphQlMutation($cartQuery, [], '', $queryHeader);
         $this->assertEquals(
             [
-                "cart" => [
-                    "items" => [
+                'cart' => [
+                    'items' => [
                         0 => [
-                            "quantity" => $updatedQuantity,
-                            "product" => [
-                                "sku" => $productSku,
-                            ]
-                        ]
-                    ]
-                ]
+                            'quantity' => $updatedQuantity,
+                            'product' => [
+                                'sku' => $productSku,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $cartResponse
         );
@@ -419,7 +420,7 @@ class MergeCartsTest extends GraphQlAbstract
         $this->quoteResource->load($customerQuote, 'test_quote', 'reserved_order_id');
 
         $customerQuoteMaskedId = $this->quoteIdToMaskedId->execute((int)$customerQuote->getId());
-        $guestQuoteMaskedId = "";
+        $guestQuoteMaskedId = '';
 
         $query = $this->getCartMergeMutation($guestQuoteMaskedId, $customerQuoteMaskedId);
         $this->graphQlMutation($query, [], '', $this->getHeaderMap());
@@ -441,7 +442,7 @@ class MergeCartsTest extends GraphQlAbstract
             'reserved_order_id'
         );
 
-        $customerQuoteMaskedId = "";
+        $customerQuoteMaskedId = '';
         $guestQuoteMaskedId = $this->quoteIdToMaskedId->execute((int)$guestQuote->getId());
 
         $query = $this->getCartMergeMutation($guestQuoteMaskedId, $customerQuoteMaskedId);

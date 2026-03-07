@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -60,8 +61,8 @@ class MediaImageDeleteProcessorTest extends TestCase
             [
                 'sku' => 'simple',
                 'media_gallery_entries' => [
-                    []
-                ]
+                    [],
+                ],
             ]
         ),
     ]

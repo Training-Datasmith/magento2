@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Hostedpro;
 
 use Magento\Customer\Helper\Address;
@@ -176,14 +179,14 @@ class Request extends DataObject
     private function getNonTaxableAmount(Order $order)
     {
         // PayPal denied transaction with 0 amount
-        $subtotal = $order->getBaseSubtotal() ? : $order->getPayment()->getBaseAmountAuthorized();
+        $subtotal = $order->getBaseSubtotal() ?: $order->getPayment()->getBaseAmountAuthorized();
 
         return [
             'subtotal' => $this->formatPrice($subtotal),
             'total' => $this->formatPrice($order->getPayment()->getBaseAmountAuthorized()),
             'tax' => $this->formatPrice($order->getBaseTaxAmount()),
             'shipping' => $this->formatPrice($order->getBaseShippingAmount()),
-            'discount' => $this->formatPrice(abs((float) $order->getBaseDiscountAmount()))
+            'discount' => $this->formatPrice(abs((float) $order->getBaseDiscountAmount())),
         ];
     }
 
@@ -199,7 +202,7 @@ class Request extends DataObject
 
         return [
             'amount' => $amount,
-            'subtotal' => $amount // subtotal always is required
+            'subtotal' => $amount, // subtotal always is required
         ];
     }
 

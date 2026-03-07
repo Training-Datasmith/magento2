@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class UpdatePaypalCreditOption implements DataPatchInterface, PatchVersionInterf
                             'scope' => $pair['scope'],
                             'scope_id' => $pair['scope_id'],
                             'path' => 'paypal/style/disable_funding_options',
-                            'value' => 'CREDIT'
+                            'value' => 'CREDIT',
                         ]
                     );
             }

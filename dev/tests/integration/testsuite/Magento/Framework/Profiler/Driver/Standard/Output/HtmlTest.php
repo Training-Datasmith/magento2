@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Profiler\Driver\Standard\Output\Html
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Driver\Standard\Output;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -46,7 +49,7 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     public static function displayDataProvider()
     {
         return [
-            ['statFile' => __DIR__ . '/_files/timers.php', 'expectedHtmlFile' => __DIR__ . '/_files/output.html']
+            ['statFile' => __DIR__ . '/_files/timers.php', 'expectedHtmlFile' => __DIR__ . '/_files/output.html'],
         ];
     }
 

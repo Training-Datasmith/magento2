@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class Recurring implements InstallSchemaInterface
             $this->schedule->getMainTable(),
             [
                 'status' => \Magento\Cron\Model\Schedule::STATUS_ERROR,
-                'messages' => 'The job is terminated due to system upgrade'
+                'messages' => 'The job is terminated due to system upgrade',
             ],
             $connection->quoteInto('status = ?', \Magento\Cron\Model\Schedule::STATUS_RUNNING)
         );

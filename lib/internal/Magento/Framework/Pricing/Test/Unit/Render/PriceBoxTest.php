@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for \Magento\Framework\Pricing\Render\PriceBox
@@ -101,7 +102,7 @@ class PriceBoxTest extends TestCase
                 'context' => $this->context,
                 'saleableItem' => $this->saleable,
                 'price' => $this->price,
-                'rendererPool' => $this->rendererPool
+                'rendererPool' => $this->rendererPool,
             ]
         );
     }
@@ -124,7 +125,7 @@ class PriceBoxTest extends TestCase
                 'saleableItem' => $this->saleable,
                 'price' => $this->price,
                 'rendererPool' => $this->rendererPool,
-                'data' => $data
+                'data' => $data,
             ]
         );
         $priceBox->toHtml();
@@ -145,7 +146,7 @@ class PriceBoxTest extends TestCase
             [
                 'data' => ['css_classes' => 'some_css_class'],
                 'priceCode' => 'test_price',
-                'cssClasses' => 'some_css_class price-test_price'
+                'cssClasses' => 'some_css_class price-test_price',
             ]];
     }
 
@@ -248,7 +249,7 @@ class PriceBoxTest extends TestCase
             ['prefix', '', 'default_prefix', 'default_suffix'],
             ['', 'suffix', 'default_prefix', 'default_suffix'],
             ['', '', 'default_prefix', 'default_suffix'],
-            ['prefix', 'suffix', '', '']
+            ['prefix', 'suffix', '', ''],
         ];
     }
 

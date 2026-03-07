@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ $block->setTitle(
     [
         Bootstrap::getObjectManager()->get(
             StoreManagerInterface::class
-        )->getStore()->getId()
+        )->getStore()->getId(),
     ]
 );
 

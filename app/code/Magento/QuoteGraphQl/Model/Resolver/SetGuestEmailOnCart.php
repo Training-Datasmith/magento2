@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Validator\EmailAddress as EmailAddressValidator;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 use Magento\QuoteGraphQl\Model\Cart\CheckCartCheckoutAllowance;
+use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 
 /**
  * @inheritdoc

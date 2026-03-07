@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,9 +63,9 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                         'firstname' => 'John',
                         'lastname' => 'Doe',
                         'default_billing' => true,
-                        'default_shipping' => true
-                    ]
-                ]
+                        'default_shipping' => true,
+                    ],
+                ],
             ],
             'customer'
         )
@@ -86,9 +87,9 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                     'lastname' => 'Smith',
                     'country_id' => 'US',
                     'region' => [
-                        'region_id' => 32
-                    ]
-                ]
+                        'region_id' => 32,
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getUpdateCustomerAddressV2Mutation(),
@@ -100,8 +101,8 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02138',
                         'telephone' => '0987654321',
                         'firstname' => 'Jane',
-                        'lastname' => 'Smith'
-                    ]
+                        'lastname' => 'Smith',
+                    ],
                 ],
                 '',
                 $this->getCustomerAuthHeaders($this->customer->getEmail())
@@ -125,9 +126,9 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -142,8 +143,8 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
             [
                 'uid' => $this->idEncoder->encode('999999'),
                 'input' => [
-                    'city' => 'Cambridge'
-                ]
+                    'city' => 'Cambridge',
+                ],
             ],
             '',
             $this->getCustomerAuthHeaders($this->customer->getEmail())
@@ -165,9 +166,9 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -185,8 +186,8 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
             [
                 'uid' => $addressUid,
                 'input' => [
-                    'city' => 'Cambridge'
-                ]
+                    'city' => 'Cambridge',
+                ],
             ]
         );
     }
@@ -207,16 +208,16 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'firstname' => 'John',
-                        'lastname' => 'Doe'
-                    ]
-                ]
+                        'lastname' => 'Doe',
+                    ],
+                ],
             ],
             'customer1'
         ),
         DataFixture(
             Customer::class,
             [
-                'email' => 'customer2@example.com'
+                'email' => 'customer2@example.com',
             ],
             'customer2'
         )
@@ -238,8 +239,8 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
             [
                 'uid' => $this->idEncoder->encode((string) $address->getId()),
                 'input' => [
-                    'city' => 'Cambridge'
-                ]
+                    'city' => 'Cambridge',
+                ],
             ],
             '',
             $this->getCustomerAuthHeaders($customer2->getEmail())
@@ -254,7 +255,7 @@ class UpdateCustomerAddressV2Test extends GraphQlAbstract
     private function getCustomerAuthHeaders(string $email): array
     {
         return [
-            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password')
+            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password'),
         ];
     }
 

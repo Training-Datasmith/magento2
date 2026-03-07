@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
 use Composer\Package\Version\VersionParser;
@@ -71,7 +74,7 @@ class PhpReadinessCheck
                 'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
                 'data' => [
                     'error' => 'phpVersionError',
-                    'message' => 'Cannot determine required PHP version: ' . $e->getMessage()
+                    'message' => 'Cannot determine required PHP version: ' . $e->getMessage(),
                 ],
             ];
         }
@@ -113,7 +116,7 @@ class PhpReadinessCheck
 
         return [
             'responseType' => $responseType,
-            'data' => $settings
+            'data' => $settings,
         ];
     }
 
@@ -139,7 +142,7 @@ class PhpReadinessCheck
 
         return [
             'responseType' => $responseType,
-            'data' => $settings
+            'data' => $settings,
         ];
     }
 
@@ -158,7 +161,7 @@ class PhpReadinessCheck
                 'responseType' => ResponseTypeInterface::RESPONSE_TYPE_ERROR,
                 'data' => [
                     'error' => 'phpExtensionError',
-                    'message' => 'Cannot determine required PHP extensions: ' . $e->getMessage()
+                    'message' => 'Cannot determine required PHP extensions: ' . $e->getMessage(),
                 ],
             ];
         }
@@ -262,7 +265,7 @@ class PhpReadinessCheck
 
             $data['xdebug_max_nesting_level'] = [
                 'message' => $message,
-                'error' => $error
+                'error' => $error,
             ];
         }
 

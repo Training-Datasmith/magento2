@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Compare\Item;
 
 use Magento\Customer\Model\Config\Share;
@@ -281,7 +284,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
                 'customer_id' => 'customer_id',
                 'visitor_id' => 'visitor_id',
                 'item_store_id' => 'store_id',
-                'catalog_compare_item_id' => 'catalog_compare_item_id'
+                'catalog_compare_item_id' => 'catalog_compare_item_id',
             ],
             $this->getConditionForJoin()
         );
@@ -452,7 +455,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
                             'al.value IS NULL',
                             'main_table.frontend_label',
                             'al.value'
-                        )
+                        ),
                     ]
                 )->where(
                     'additional_table.is_comparable=?',

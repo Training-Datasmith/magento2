@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\CatalogRule\Test\Unit\Model\Indexer;
 
 use Magento\CatalogRule\Model\Indexer\ProductPriceCalculator;
@@ -99,7 +101,7 @@ class ReindexRuleProductsPriceProcessorTest extends TestCase
                 'customer_group_id' => 2,
                 'from_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') - 100),
                 'to_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') + 100),
-                'action_stop' => true
+                'action_stop' => true,
             ],
             [
                 'product_id' => 66,
@@ -107,8 +109,8 @@ class ReindexRuleProductsPriceProcessorTest extends TestCase
                 'customer_group_id' => 2,
                 'from_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') - 100),
                 'to_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') + 100),
-                'action_stop' => true
-            ]
+                'action_stop' => true,
+            ],
         ];
 
         $statementMock

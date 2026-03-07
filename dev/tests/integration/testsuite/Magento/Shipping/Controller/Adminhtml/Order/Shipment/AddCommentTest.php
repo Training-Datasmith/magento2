@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,12 +42,12 @@ class AddCommentTest extends AbstractShipmentControllerTest
         $this->assertStringContainsString($comment, $html);
 
         $message = $this->transportBuilder->getSentMessage();
-        $subject =__('Update to your %1 shipment', $order->getStore()->getFrontendName())->render();
+        $subject = __('Update to your %1 shipment', $order->getStore()->getFrontendName())->render();
         $messageConstraint = $this->logicalAnd(
             new StringContains($order->getCustomerName()),
             new RegularExpression(
                 sprintf(
-                    "/Your order #%s has been updated with a status of.*%s/",
+                    '/Your order #%s has been updated with a status of.*%s/',
                     $order->getIncrementId(),
                     $order->getFrontendStatusLabel()
                 )

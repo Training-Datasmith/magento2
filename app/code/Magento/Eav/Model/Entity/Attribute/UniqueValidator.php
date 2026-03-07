@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute;
 
-use Magento\Framework\DataObject;
 use Magento\Eav\Model\Entity\AbstractEntity;
+use Magento\Framework\DataObject;
 
 /**
  * Class for validate unique attribute value

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,13 +22,12 @@ use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Console\Request as ConsoleRequest;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\State as AppState;
 use Magento\Framework\App\State;
+use Magento\Framework\App\State as AppState;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Process\PhpExecutableFinderFactory;
@@ -312,7 +312,7 @@ class ProcessCronQueueObserverTest extends TestCase
                         'system/cron/test_group/schedule_lifetime',
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        2 * 24 * 60
+                        2 * 24 * 60,
                     ],
                 ]
             );
@@ -391,7 +391,7 @@ class ProcessCronQueueObserverTest extends TestCase
             [
                 'tryLockJob', 'save', '__wakeup', 'getResource', 'getId',
                 'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'getStatus',
-                'getMessages', 'getScheduleId'
+                'getMessages', 'getScheduleId',
             ]
         );
         $schedule->expects($this->atLeastOnce())->method('getId')->willReturn($scheduleId);
@@ -482,7 +482,7 @@ class ProcessCronQueueObserverTest extends TestCase
             Schedule::class,
             [
                 'tryLockJob', 'save', '__wakeup', 'getResource',
-                'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'getStatus'
+                'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'getStatus',
             ]
         );
         $schedule->expects($this->any())->method('getJobCode')->willReturn('test_job1');
@@ -573,7 +573,7 @@ class ProcessCronQueueObserverTest extends TestCase
     ): void {
         $jobConfig = [
             'test_group' => [
-                'test_job1' => ['instance' => $cronJobType, 'method' => 'execute']
+                'test_job1' => ['instance' => $cronJobType, 'method' => 'execute'],
             ],
         ];
 
@@ -588,7 +588,7 @@ class ProcessCronQueueObserverTest extends TestCase
             Schedule::class,
             [
                 'tryLockJob', 'save', '__wakeup', 'getResource',
-                'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'getStatus'
+                'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'getStatus',
             ]
         );
         $schedule->expects($this->any())->method('getJobCode')->willReturn('test_job1');
@@ -659,7 +659,7 @@ class ProcessCronQueueObserverTest extends TestCase
                 'Invalid callback: Not_Existed_Class::execute can\'t be called',
                 1,
                 0,
-                new Exception('Invalid callback: Not_Existed_Class::execute can\'t be called')
+                new Exception('Invalid callback: Not_Existed_Class::execute can\'t be called'),
             ],
             'exception in execution' => [
                 'CronJobException',
@@ -667,7 +667,7 @@ class ProcessCronQueueObserverTest extends TestCase
                 'Test exception',
                 2,
                 1,
-                new Exception('Test exception')
+                new Exception('Test exception'),
             ],
             'throwable in execution' => [
                 'CronJobException',
@@ -681,7 +681,7 @@ class ProcessCronQueueObserverTest extends TestCase
                     'Error when running a cron job: Description of TypeError',
                     0,
                     $throwable
-                )
+                ),
             ],
         ];
     }
@@ -695,7 +695,7 @@ class ProcessCronQueueObserverTest extends TestCase
     public function testDispatchRunJob(): void
     {
         $jobConfig = [
-            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']]
+            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']],
         ];
         $this->consoleRequestMock->expects($this->any())->method('getParam')->willReturn('test_group');
 
@@ -709,7 +709,7 @@ class ProcessCronQueueObserverTest extends TestCase
             Schedule::class,
             [
                 'getJobCode', 'getScheduledAt', 'setStatus', 'setMessages', 'setExecutedAt', 'setFinishedAt',
-                'tryLockJob', 'save', '__wakeup', 'getResource'
+                'tryLockJob', 'save', '__wakeup', 'getResource',
             ]
         );
         $schedule->expects($this->any())->method('getJobCode')->willReturn('test_job1');
@@ -787,7 +787,7 @@ class ProcessCronQueueObserverTest extends TestCase
     public function testDispatchNotGenerate(): void
     {
         $jobConfig = [
-            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']]
+            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']],
         ];
 
         $this->eventManager->expects($this->never())->method('dispatch');
@@ -846,7 +846,7 @@ class ProcessCronQueueObserverTest extends TestCase
             'default' => [
                 'test_job1' => [
                     'instance' => 'CronJob',
-                    'method' => 'execute'
+                    'method' => 'execute',
                 ],
             ],
         ];
@@ -855,7 +855,7 @@ class ProcessCronQueueObserverTest extends TestCase
             'default' => [
                 'job1' => ['config_path' => 'test/path'],
                 'job2' => ['schedule' => ''],
-                'job3' => ['schedule' => '* * * * *']
+                'job3' => ['schedule' => '* * * * *'],
             ],
         ];
         $this->eventManager->expects($this->never())->method('dispatch');
@@ -881,14 +881,14 @@ class ProcessCronQueueObserverTest extends TestCase
                     'system/cron/default/schedule_generate_every',
                     ScopeInterface::SCOPE_STORE,
                     null,
-                    0
+                    0,
                 ],
                 [
                     'system/cron/default/schedule_ahead_for',
                     ScopeInterface::SCOPE_STORE,
                     null,
-                    2
-                ]
+                    2,
+                ],
             ]
         );
 
@@ -922,7 +922,7 @@ class ProcessCronQueueObserverTest extends TestCase
     public function testDispatchCleanup(): void
     {
         $jobConfig = [
-            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']]
+            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']],
         ];
 
         $this->eventManager->expects($this->never())->method('dispatch');
@@ -999,7 +999,7 @@ class ProcessCronQueueObserverTest extends TestCase
 
         /* 2. Initialize dependencies of _generate() method which is called second */
         $jobConfig = [
-            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']]
+            'test_group' => ['test_job1' => ['instance' => 'CronJob', 'method' => 'execute']],
         ];
         //get configuration value CACHE_KEY_LAST_HISTORY_CLEANUP_AT in the "_generate()"
         $this->cacheMock
@@ -1021,7 +1021,7 @@ class ProcessCronQueueObserverTest extends TestCase
                     ['system/cron/test_group/schedule_lifetime', 2 * 24 * 60],
                     ['system/cron/test_group/history_success_lifetime', 0],
                     ['system/cron/test_group/history_failure_lifetime', 0],
-                    ['system/cron/test_group/schedule_generate_every', 0]
+                    ['system/cron/test_group/schedule_generate_every', 0],
                 ]
             );
 
@@ -1067,26 +1067,26 @@ class ProcessCronQueueObserverTest extends TestCase
             ->method('delete')
             ->willReturnCallback(
                 function ($arg1, $arg2) use ($tableName) {
-                    if ($arg1== $tableName &&
+                    if ($arg1 == $tableName &&
                         $arg2 === ['status = ?' => 'pending', 'job_code in (?)' => ['test_job1']]
                     ) {
                         return 1;
-                    } elseif ($arg1== $tableName &&
+                    } elseif ($arg1 == $tableName &&
                         $arg2 === ['status = ?' => 'success', 'job_code in (?)' => ['test_job1'],
                             'scheduled_at < ?' => null]
                     ) {
                         return 1;
-                    } elseif ($arg1== $tableName &&
+                    } elseif ($arg1 == $tableName &&
                         $arg2 === ['status = ?' => 'missed',
                             'job_code in (?)' => ['test_job1'], 'scheduled_at < ?' => null]
                     ) {
                         return 1;
-                    } elseif ($arg1== $tableName &&
+                    } elseif ($arg1 == $tableName &&
                         $arg2 === ['status = ?' => 'error',
                             'job_code in (?)' => ['test_job1'], 'scheduled_at < ?' => null]
                     ) {
                         return 1;
-                    } elseif ($arg1== $tableName && $arg1== $tableName &&
+                    } elseif ($arg1 == $tableName && $arg1 == $tableName &&
                         $arg2 === ['status = ?' => 'pending', 'job_code in (?)' => ['test_job1'],
                             'scheduled_at < ?' => null]
                     ) {
@@ -1115,7 +1115,7 @@ class ProcessCronQueueObserverTest extends TestCase
                 [
                     "status = 'running'",
                     "job_code IN ('test_job1')",
-                    'scheduled_at < UTC_TIMESTAMP() - INTERVAL 1 DAY'
+                    'scheduled_at < UTC_TIMESTAMP() - INTERVAL 1 DAY',
                 ]
             )
             ->willReturn(0);

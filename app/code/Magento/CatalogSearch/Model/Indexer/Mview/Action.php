@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Indexer\Mview;
 
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
-use Magento\Framework\Mview\ActionInterface;
 use Magento\Framework\Indexer\IndexerInterfaceFactory;
+use Magento\Framework\Mview\ActionInterface;
 
 /**
  * Catalog search materialized view index action.

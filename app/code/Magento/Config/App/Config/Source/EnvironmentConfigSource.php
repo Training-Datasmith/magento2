@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\App\Config\Source;
 
-use Magento\Framework\App\Config\ConfigSourceInterface;
-use Magento\Framework\DataObject;
 use Magento\Config\Model\Placeholder\PlaceholderFactory;
 use Magento\Config\Model\Placeholder\PlaceholderInterface;
+use Magento\Framework\App\Config\ConfigSourceInterface;
+use Magento\Framework\DataObject;
 use Magento\Framework\Stdlib\ArrayManager;
 
 /**

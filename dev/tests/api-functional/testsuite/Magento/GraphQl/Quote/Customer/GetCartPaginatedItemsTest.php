@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -137,13 +138,13 @@ QUERY;
                 ['p1', 'p2', 'p3'],
                 3,
                 1,
-                5
+                5,
             ],
             [
                 ['p4', 'p5'],
                 3,
                 2,
-                5
+                5,
             ],
         ];
     }

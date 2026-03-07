@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,16 +8,15 @@
 
 namespace Magento\CatalogSearch\Block\Advanced;
 
+use Magento\CatalogSearch\Helper\Data as CatalogSearchHelper;
 use Magento\CatalogSearch\Model\Advanced;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb as DbCollection;
-use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\CatalogSearch\Helper\Data as CatalogSearchHelper;
 
 /**
  * Advanced search form
@@ -68,7 +69,7 @@ class Form extends Template
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             )->addCrumb(
                 'search',
@@ -273,7 +274,7 @@ class Form extends Template
         )->setTitle(
             $this->getAttributeLabel($attribute)
         )->setExtraParams(
-            ""
+            ''
         )->setValue(
             $this->getAttributeValue($attribute)
         )->setOptions(

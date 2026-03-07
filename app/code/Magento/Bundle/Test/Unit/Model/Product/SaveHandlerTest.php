@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,19 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Product;
 
+use Magento\Bundle\Api\Data\OptionInterface;
 use Magento\Bundle\Api\ProductLinkManagementInterface;
 use Magento\Bundle\Api\ProductOptionRepositoryInterface as OptionRepository;
-use Magento\Bundle\Api\Data\OptionInterface;
 use Magento\Bundle\Model\Option\SaveAction;
-use Magento\Bundle\Model\Product\Type;
-use Magento\Bundle\Model\Product\SaveHandler;
 use Magento\Bundle\Model\Product\CheckOptionLinkIfExist;
+use Magento\Bundle\Model\Product\SaveHandler;
+use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ProductRelationsProcessorComposite;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -88,7 +88,7 @@ class SaveHandlerTest extends TestCase
             Product::class,
             [
                 'getTypeId', 'setTypeId', 'getExtensionAttributes', 'setExtensionAttributes',
-                'getSku', 'getDropOptions', 'getCopyFromView', 'setCopyFromView'
+                'getSku', 'getDropOptions', 'getCopyFromView', 'setCopyFromView',
             ]
         );
         $this->entity->method('getTypeId')->willReturn(Type::TYPE_CODE);

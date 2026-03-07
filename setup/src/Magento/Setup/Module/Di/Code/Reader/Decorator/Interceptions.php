@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\Code\Reader\Decorator;
 
-use Magento\Setup\Module\Di\Compiler\Log\Log;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Setup\Module\Di\Compiler\Log\Log;
 
 /**
  * Class Interceptions

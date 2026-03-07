@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -122,7 +123,7 @@ class QueryFactoryTest extends TestCase
                 'selectBuilderFactory' => $this->selectBuilderFactoryMock,
                 'config' => $this->configMock,
                 'assemblers' => [$this->assemblerMock],
-                'jsonSerializer' => $this->jsonSerializerMock
+                'jsonSerializer' => $this->jsonSerializerMock,
             ]
         );
     }
@@ -233,14 +234,14 @@ class QueryFactoryTest extends TestCase
                     'connectionName' => self::STUB_CONNECTION,
                     'config' => [
                         'name' => self::STUB_QUERY_NAME,
-                        'connection' => self::STUB_CONNECTION
+                        'connection' => self::STUB_CONNECTION,
                     ],
-                    'select_parts' => []
+                    'select_parts' => [],
                 ],
                 'jsonEncodeData' => '{"connectionName":"default",' .
                     '"config":{"name":"test_query",' .
-                    '"connection":"default"},"select_parts":[]}'
-            ]
+                    '"connection":"default"},"select_parts":[]}',
+            ],
         ];
     }
 
@@ -260,7 +261,7 @@ class QueryFactoryTest extends TestCase
                     'select' => $this->selectMock,
                     'selectHydrator' => $this->selectHydratorMock,
                     'connectionName' => $queryDataMock['connectionName'],
-                    'config' => $queryDataMock['config']
+                    'config' => $queryDataMock['config'],
                 ]
             )
             ->willReturn($this->queryMock);

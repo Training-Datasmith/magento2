@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractConfigTest extends TestCase
 {
-
     /**
      * @var ScopeConfigInterface|MockObject
      */
@@ -84,7 +84,7 @@ class AbstractConfigTest extends TestCase
         return [
             ['payment_code', 'payment_code'],
             [$methodInterfaceMock, 'payment_code'],
-            [['array'], null]
+            [['array'], null],
         ];
     }
 
@@ -141,7 +141,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 0],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                AbstractConfigTesting::PAYMENT_ACTION_SALE
+                AbstractConfigTesting::PAYMENT_ACTION_SALE,
             ],
             [
                 'payment_action',
@@ -154,7 +154,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 1],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                'configValue'
+                'configValue',
             ],
             [
                 'payment_other',
@@ -162,7 +162,7 @@ class AbstractConfigTest extends TestCase
                 [
                     ['payment/paypal_express/payment_other', ModelScopeInterface::SCOPE_STORE, null, 'configValue'],
                 ],
-                'configValue'
+                'configValue',
             ],
             [
                 'payment_action',
@@ -170,7 +170,7 @@ class AbstractConfigTest extends TestCase
                 [
                     ['payment/paypal_express/payment_action', ModelScopeInterface::SCOPE_STORE, null, 'Sale'],
                 ],
-                'Sale'
+                'Sale',
             ],
             [
                 'payment_action',
@@ -179,7 +179,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/payment_action', ModelScopeInterface::SCOPE_STORE, null, 'configValue'],
                     ['payment/paypal_express/business_account', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                'configValue'
+                'configValue',
             ],
             [
                 'payment_action',
@@ -187,7 +187,7 @@ class AbstractConfigTest extends TestCase
                 [
                     ['payment/method_other/payment_action', ModelScopeInterface::SCOPE_STORE, null, 'configValue'],
                 ],
-                'configValue'
+                'configValue',
             ],
         ];
     }
@@ -220,20 +220,20 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 0],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                false
+                false,
             ],
             [
                 [
                     ['payment/paypal_express/api_username', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                false
+                false,
             ],
             [
                 [
                     ['payment/paypal_express/api_username', ModelScopeInterface::SCOPE_STORE, null, 1],
                     ['payment/paypal_express/api_password', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                false
+                false,
             ],
             [
                 [
@@ -242,7 +242,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 1],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 0],
                 ],
-                true
+                true,
             ],
             [
                 [
@@ -251,7 +251,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 0],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 1],
                 ],
-                true
+                true,
             ],
             [
                 [
@@ -260,7 +260,7 @@ class AbstractConfigTest extends TestCase
                     ['payment/paypal_express/api_signature', ModelScopeInterface::SCOPE_STORE, null, 1],
                     ['payment/paypal_express/api_cert', ModelScopeInterface::SCOPE_STORE, null, 1],
                 ],
-                true
+                true,
             ],
         ];
     }
@@ -325,7 +325,7 @@ class AbstractConfigTest extends TestCase
         $configFlagMap = [
             ['payment/wps_express/active', ScopeInterface::SCOPE_STORE, null, $wpsExpress],
             ['payment/wps_express_bml/active', ScopeInterface::SCOPE_STORE, null, $wpsExpressBml],
-            ['payment/paypal_express_bml/active', ScopeInterface::SCOPE_STORE, null, $expressBml]
+            ['payment/paypal_express_bml/active', ScopeInterface::SCOPE_STORE, null, $expressBml],
         ];
 
         $this->scopeConfigMock->method('isSetFlag')
@@ -351,7 +351,7 @@ class AbstractConfigTest extends TestCase
             ['CREDIT', 0, 1, 0, false],
             ['', 0, 1, 0, false],
             ['', 0, 1, 1, true],
-            ['CREDIT', 0, 1, 1, true]
+            ['CREDIT', 0, 1, 1, true],
         ];
     }
 

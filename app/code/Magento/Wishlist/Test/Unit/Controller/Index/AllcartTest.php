@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class AllcartTest extends TestCase
             ->willReturnMap(
                 [
                     [ResultFactory::TYPE_REDIRECT, [], $this->resultRedirectMock],
-                    [ResultFactory::TYPE_FORWARD, [], $this->resultForwardMock]
+                    [ResultFactory::TYPE_FORWARD, [], $this->resultForwardMock],
                 ]
             );
     }

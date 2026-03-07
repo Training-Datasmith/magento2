@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Customer\Test\Unit\Block\Account;
 
 use Magento\Customer\Block\Account\Link;
 use Magento\Customer\Model\Url;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class LinkTest extends TestCase
 {

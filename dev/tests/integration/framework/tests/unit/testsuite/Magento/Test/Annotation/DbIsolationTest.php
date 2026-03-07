@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Annotation;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -31,7 +34,7 @@ class DbIsolationTest extends \PHPUnit\Framework\TestCase
             ->getMock();
 
         $sharedInstances = [
-            DbIsolation::class => $this->createConfiguredMock(DbIsolation::class, ['parse' => []])
+            DbIsolation::class => $this->createConfiguredMock(DbIsolation::class, ['parse' => []]),
         ];
         $objectManager->method('get')
             ->willReturnCallback(

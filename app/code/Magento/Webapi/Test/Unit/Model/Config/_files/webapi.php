@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 
@@ -22,7 +24,7 @@ return [
                 ],
                 'save' => [
                     'resources' => [
-                        'Magento_Customer::manage'
+                        'Magento_Customer::manage',
                     ],
                     'secure' => false,
                     'realMethod' => 'save',
@@ -31,7 +33,7 @@ return [
                 ],
                 'saveSelf' => [
                     'resources' => [
-                        'Magento_Customer::customer_self'
+                        'Magento_Customer::customer_self',
                     ],
                     'secure' => true,
                     'realMethod' => 'save',

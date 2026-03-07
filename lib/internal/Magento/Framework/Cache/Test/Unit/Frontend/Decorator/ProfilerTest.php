@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Framework\Cache\Test\Unit\Frontend\Decorator;
 
 use Magento\Framework\Cache\CacheConstants;
 use Magento\Framework\Cache\Frontend\Adapter\Symfony;
-use Magento\Framework\Cache\Frontend\Adapter\Zend;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\Profiler;
 use Magento\Framework\Profiler\DriverInterface;
@@ -99,7 +99,7 @@ class ProfilerTest extends TestCase
                     'group' => 'cache',
                     'operation' => 'cache:test',
                     'frontend_type' => Symfony::class,
-                    'backend_type' => NullAdapter::class
+                    'backend_type' => NullAdapter::class,
                 ],
                 111,
             ],
@@ -113,9 +113,9 @@ class ProfilerTest extends TestCase
                     'group' => 'cache',
                     'operation' => 'cache:load',
                     'frontend_type' => Symfony::class,
-                    'backend_type' => NullAdapter::class
+                    'backend_type' => NullAdapter::class,
                 ],
-                '111'
+                '111',
             ],
             [
                 'save',
@@ -127,9 +127,9 @@ class ProfilerTest extends TestCase
                     'group' => 'cache',
                     'operation' => 'cache:save',
                     'frontend_type' => Symfony::class,
-                    'backend_type' => NullAdapter::class
+                    'backend_type' => NullAdapter::class,
                 ],
-                true
+                true,
             ],
             [
                 'remove',
@@ -141,9 +141,9 @@ class ProfilerTest extends TestCase
                     'group' => 'cache',
                     'operation' => 'cache:remove',
                     'frontend_type' => Symfony::class,
-                    'backend_type' => NullAdapter::class
+                    'backend_type' => NullAdapter::class,
                 ],
-                true
+                true,
             ],
             [
                 'clean',
@@ -155,10 +155,10 @@ class ProfilerTest extends TestCase
                     'group' => 'cache',
                     'operation' => 'cache:clean',
                     'frontend_type' => Symfony::class,
-                    'backend_type' => NullAdapter::class
+                    'backend_type' => NullAdapter::class,
                 ],
-                true
-            ]
+                true,
+            ],
         ];
     }
 }

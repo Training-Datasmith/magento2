@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxDetails;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,11 +19,11 @@ class TaxDetails extends AbstractExtensibleModel implements TaxDetailsInterface
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_SUBTOTAL      = 'subtotal';
-    const KEY_TAX_AMOUNT    = 'tax_amount';
-    const KEY_APPLIED_TAXES = 'applied_taxes';
-    const KEY_ITEMS         = 'items';
-    const KEY_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const KEY_SUBTOTAL      = 'subtotal';
+    public const KEY_TAX_AMOUNT    = 'tax_amount';
+    public const KEY_APPLIED_TAXES = 'applied_taxes';
+    public const KEY_ITEMS         = 'items';
+    public const KEY_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /**#@-*/
 
     /**

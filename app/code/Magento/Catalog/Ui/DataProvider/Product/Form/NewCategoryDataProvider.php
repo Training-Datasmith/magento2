@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Ui\DataProvider\Product\Form;
 
-use Magento\Framework\Phrase;
-use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\Framework\Phrase;
 use Magento\Framework\UrlInterface;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 
 /**
  * DataProvider for new category form
@@ -67,10 +68,10 @@ class NewCategoryDataProvider extends AbstractDataProvider
                         'return_session_messages_only' => 1,
                         'use_config' => [
                             'available_sort_by' => true,
-                            'default_sort_by' => true
-                        ]
-                    ]
-                ]
+                            'default_sort_by' => true,
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -90,9 +91,9 @@ class NewCategoryDataProvider extends AbstractDataProvider
                 'children' => [
                     'parent' => [
                         'notice' => $this->getNotice(),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         return parent::getMeta();

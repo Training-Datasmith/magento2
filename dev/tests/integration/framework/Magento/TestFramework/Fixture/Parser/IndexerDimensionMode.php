@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class IndexerDimensionMode implements ParserInterface
             $args = $attribute->getArguments();
             $fixtures[] = [
                 'indexer' => $args[0],
-                'dimension' => $args[1]
+                'dimension' => $args[1],
             ];
         }
         return $fixtures;

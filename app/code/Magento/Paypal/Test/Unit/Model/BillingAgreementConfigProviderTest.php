@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,11 +64,11 @@ class BillingAgreementConfigProviderTest extends TestCase
                 'paypalBillingAgreement' => [
                     'agreements' => [
                         ['id' => 1, 'referenceId' => 'DFG123ER'],
-                        ['id' => 2, 'referenceId' => 'JKT153ER']
+                        ['id' => 2, 'referenceId' => 'JKT153ER'],
                     ],
-                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID
-                ]
-            ]
+                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID,
+                ],
+            ],
         ];
 
         $this->currentCustomerMock->expects($this->once())->method('getCustomerId')->willReturn($customerId);
@@ -90,10 +91,10 @@ class BillingAgreementConfigProviderTest extends TestCase
         $expected = [
             'payment' => [
                 'paypalBillingAgreement' => [
-                    'agreements'=> [],
-                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID
-                ]
-            ]
+                    'agreements' => [],
+                    'transportName' => AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID,
+                ],
+            ],
         ];
         $this->currentCustomerMock->expects($this->once())->method('getCustomerId')->willReturn($customerId);
         $this->agreementFactoryMock->expects($this->never())->method('create');

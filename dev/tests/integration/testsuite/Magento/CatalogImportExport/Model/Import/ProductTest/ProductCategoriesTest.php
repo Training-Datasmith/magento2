@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,11 +15,11 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\Source\Csv;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Indexer\Test\Fixture\ScheduleMode;
 use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\AppIsolation;
 use Magento\TestFramework\Fixture\DataFixtureBeforeTransaction;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -47,14 +48,14 @@ class ProductCategoriesTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setSource($source);
         $this->_model->setParameters([
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
             'entity' => 'catalog_product',
-            Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => $separator
+            Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => $separator,
         ]);
         $errors = $this->_model->validateData();
         $this->assertTrue($errors->getErrorsCount() == 0);
@@ -101,13 +102,13 @@ class ProductCategoriesTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setSource($source);
         $this->_model->setParameters([
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-            'entity' => 'catalog_product'
+            'entity' => 'catalog_product',
         ]);
         $errors = $this->_model->validateData();
         $this->assertTrue($errors->getErrorsCount() == 0);
@@ -133,7 +134,7 @@ class ProductCategoriesTest extends ProductTestBase
     {
         return [
             ['import_new_categories_default_separator.csv', ','],
-            ['import_new_categories_custom_separator.csv', '|']
+            ['import_new_categories_custom_separator.csv', '|'],
         ];
     }
 
@@ -155,13 +156,13 @@ class ProductCategoriesTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setSource($source)->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-                'entity' => 'catalog_product'
+                'entity' => 'catalog_product',
             ]
         )->validateData();
 

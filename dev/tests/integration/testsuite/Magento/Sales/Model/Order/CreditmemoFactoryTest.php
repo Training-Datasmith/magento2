@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -21,7 +24,7 @@ class CreditmemoFactoryTest extends \PHPUnit\Framework\TestCase
     /**
      * Placeholder for order item id field.
      */
-    const ORDER_ITEM_ID_PLACEHOLDER = 'id_item_';
+    public const ORDER_ITEM_ID_PLACEHOLDER = 'id_item_';
 
     /**
      * @var ObjectManagerInterface

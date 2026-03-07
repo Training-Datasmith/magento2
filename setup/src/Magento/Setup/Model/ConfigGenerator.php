@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -194,7 +196,7 @@ class ConfigGenerator
         foreach ($optional as $key) {
             if (isset($data[$key])) {
                 $value = $data[$key];
-                
+
                 // Clean up deprecated 'SET NAMES utf8;' from initStatements
                 if ($key === ConfigOptionsListConstants::INPUT_KEY_DB_INIT_STATEMENTS && is_string($value)) {
                     $value = $this->initStatementsCleanup->removeSetNamesUtf8($value);
@@ -203,7 +205,7 @@ class ConfigGenerator
                         continue;
                     }
                 }
-                
+
                 $configData->set($dbConnectionPrefix . self::$paramMap[$key], $value);
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Customer\Ui\Component;
 
 use Magento\Backend\Model\Locale\Resolver;
 use Magento\Customer\Model\Customer;
-use Magento\Customer\Ui\Component\DataProvider;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Locale\ResolverInterface;

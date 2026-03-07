@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,17 +9,15 @@ declare(strict_types=1);
 
 namespace Magento\Integration\Model\OpaqueToken;
 
-use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Integration\Api\Data\UserToken;
 use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\IntegrationServiceInterface;
 use Magento\Integration\Api\UserTokenReaderInterface;
-use Magento\Integration\Model\Config\AuthorizationConfig;
+use Magento\Integration\Helper\Oauth\Data as OauthHelper;
 use Magento\Integration\Model\CustomUserContext;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory;
-use Magento\Integration\Helper\Oauth\Data as OauthHelper;
 use Magento\Integration\Model\Validator\BearerTokenValidator;
 
 /**

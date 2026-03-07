@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleAdwords\Model\Validator;
 
 use Magento\Framework\Validator\IntUtils;
@@ -61,7 +64,7 @@ class Factory
                             ],
                         ],
                     ],
-                ]
+                ],
             ]
         );
         return $builder->createValidator();
@@ -94,7 +97,7 @@ class Factory
                             ],
                         ],
                     ],
-                ]
+                ],
             ]
         );
         return $builder->createValidator();

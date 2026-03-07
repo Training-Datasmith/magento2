@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,8 +20,8 @@ interface TaxClassKeyInterface extends ExtensibleDataInterface
     /**#@+
      * Constants defined for type of tax class key
      */
-    const TYPE_ID   = 'id';
-    const TYPE_NAME = 'name';
+    public const TYPE_ID   = 'id';
+    public const TYPE_NAME = 'name';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Customer\Model\Session;
 use Magento\Framework\App\PageCache\FormKey as CookieFormKey;
 use Magento\Framework\Data\Form\FormKey as DataFormKey;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\PageCache\Observer\FlushFormKey;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class CustomerFlushFormKeyTest extends TestCase
 {
@@ -51,7 +52,7 @@ class CustomerFlushFormKeyTest extends TestCase
             Session::class,
             [
                 'getBeforeRequestParams',
-                'setBeforeRequestParams'
+                'setBeforeRequestParams',
             ]
         );
     }
@@ -104,7 +105,7 @@ class CustomerFlushFormKeyTest extends TestCase
         return [
             ['form_key_value', 'form_key_value', 2, 1],
             ['form_old_key_value', 'form_key_value', 1, 0],
-            [null, 'form_key_value', 1, 0]
+            [null, 'form_key_value', 1, 0],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -18,10 +19,10 @@ use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
 use Magento\QuoteGraphQl\Model\Cart\AssignShippingMethodToCart;
+use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 use Magento\QuoteGraphQl\Model\ErrorMapper;
 use Magento\QuoteGraphQl\Model\TotalsBuilder;
 use Psr\Log\LoggerInterface;
-use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
 
 /**
  * Apply address and shipping method to totals estimate and return the quote
@@ -78,7 +79,7 @@ class EstimateTotals implements ResolverInterface
                 __(
                     'Could not find a cart with ID "%masked_id"',
                     [
-                        'masked_id' => $maskedCartId
+                        'masked_id' => $maskedCartId,
                     ]
                 ),
                 $exception,
@@ -101,8 +102,8 @@ class EstimateTotals implements ResolverInterface
 
         return [
             'cart' => [
-                'model' => $this->cartRepository->get($cartId)
-            ]
+                'model' => $this->cartRepository->get($cartId),
+            ],
         ];
     }
 

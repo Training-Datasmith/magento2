@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for entity source model \Magento\ImportExport\Model\Source\Import\Entity
  */
+
 namespace Magento\ImportExport\Model\Source\Import;
 
 class EntityTest extends \PHPUnit\Framework\TestCase

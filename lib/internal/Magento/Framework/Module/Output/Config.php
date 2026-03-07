@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Module Output Config Model
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Output;
 
 /**
@@ -20,7 +23,7 @@ class Config implements \Magento\Framework\Module\Output\ConfigInterface
      * XPath in the configuration where module statuses are stored
      * @deprecated 100.2.0
      */
-    const XML_PATH_MODULE_OUTPUT_STATUS = 'advanced/modules_disable_output/%s';
+    public const XML_PATH_MODULE_OUTPUT_STATUS = 'advanced/modules_disable_output/%s';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

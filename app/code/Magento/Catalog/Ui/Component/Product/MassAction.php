@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Ui\Component\Product;
 
 use Magento\Framework\AuthorizationInterface;
-use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\AbstractComponent;
 
 /**
@@ -17,7 +18,7 @@ use Magento\Ui\Component\AbstractComponent;
  */
 class MassAction extends AbstractComponent
 {
-    const NAME = 'massaction';
+    public const NAME = 'massaction';
 
     /**
      * @var AuthorizationInterface
@@ -45,7 +46,7 @@ class MassAction extends AbstractComponent
     /**
      * @inheritdoc
      */
-    public function prepare() : void
+    public function prepare(): void
     {
         $config = $this->getConfiguration();
 
@@ -70,7 +71,7 @@ class MassAction extends AbstractComponent
     /**
      * @inheritdoc
      */
-    public function getComponentName() : string
+    public function getComponentName(): string
     {
         return static::NAME;
     }
@@ -81,7 +82,7 @@ class MassAction extends AbstractComponent
      * @param string $actionType
      * @return bool
      */
-    public function isActionAllowed($actionType) : bool
+    public function isActionAllowed($actionType): bool
     {
         $isAllowed = true;
         switch ($actionType) {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Ui\Component\Form\Element;
  */
 class Checkbox extends AbstractElement
 {
-    const NAME = 'checkbox';
+    public const NAME = 'checkbox';
 
     /**
      * Get component name

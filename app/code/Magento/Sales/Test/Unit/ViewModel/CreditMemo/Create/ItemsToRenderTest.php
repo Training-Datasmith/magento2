@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\ViewModel\CreditMemo\Create;
 
-use Magento\Sales\Model\Convert\Order as ConvertOrder;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items as BlockItems;
-use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
+use Magento\Sales\Model\Convert\Order as ConvertOrder;
 use Magento\Sales\Model\Order\Creditmemo;
+use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\ViewModel\CreditMemo\Create\ItemsToRender;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test creditmemo items to render
@@ -104,7 +105,7 @@ class ItemsToRenderTest extends TestCase
             ItemsToRender::class,
             [
                 'items' => $this->blockItems,
-                'converter' => $this->converter
+                'converter' => $this->converter,
             ]
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\Auth;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -35,7 +38,7 @@ class DeniedJson extends \Magento\Backend\Controller\Adminhtml\Auth implements H
     {
         return [
             'ajaxExpired' => 1,
-            'ajaxRedirect' => $this->_helper->getHomePageUrl()
+            'ajaxRedirect' => $this->_helper->getHomePageUrl(),
         ];
     }
 

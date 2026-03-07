@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Payment\Gateway\Command;
 
-use Magento\Framework\ObjectManager\TMap;
-use Magento\Payment\Gateway\CommandInterface;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\ObjectManager\TMap;
 use Magento\Framework\ObjectManager\TMapFactory;
+use Magento\Payment\Gateway\CommandInterface;
 
 /**
  * Class CommandPool
@@ -34,7 +36,7 @@ class CommandPool implements CommandPoolInterface
         $this->commands = $tmapFactory->create(
             [
                 'array' => $commands,
-                'type' => CommandInterface::class
+                'type' => CommandInterface::class,
             ]
         );
     }

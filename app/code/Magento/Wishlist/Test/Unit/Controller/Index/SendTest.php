@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,20 +15,21 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\Data\Customer as CustomerData;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context as ActionContext;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Request\Http as RequestHttp;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Redirect as ResultRedirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Escaper;
+use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Session\Generic as WishlistSession;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Framework\UrlInterface;
@@ -41,7 +43,6 @@ use Magento\Wishlist\Controller\WishlistProviderInterface;
 use Magento\Wishlist\Model\Config as WishlistConfig;
 use Magento\Wishlist\Model\Validator\MessageValidator;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -227,7 +228,7 @@ class SendTest extends TestCase
                 'formKeyValidator' => $this->formKeyValidator,
                 'wishlistProvider' => $this->wishlistProvider,
                 'captchaHelper' => $this->captchaHelper,
-                '_customerSession' => $this->customerSession
+                '_customerSession' => $this->customerSession,
             ]
         );
     }
@@ -320,7 +321,7 @@ class SendTest extends TestCase
     public function testExecuteWithInvalidMessageContent(): void
     {
         $maliciousMessage = '{{var this.getTemplateFilter()}}';
-        
+
         $this->formKeyValidator->expects($this->once())
             ->method('validate')
             ->with($this->request)
@@ -360,7 +361,7 @@ class SendTest extends TestCase
     public function testExecuteWithMessageLengthExceeded(): void
     {
         $longMessage = str_repeat('a', 10001);
-        
+
         $this->formKeyValidator->expects($this->once())
             ->method('validate')
             ->with($this->request)
@@ -368,7 +369,7 @@ class SendTest extends TestCase
 
         $wishlist = $this->createPartialMockWithReflection(Wishlist::class, ['getShared']);
         $wishlist->expects($this->any())->method('getShared')->willReturn(0);
-        
+
         $this->wishlistProvider->expects($this->once())
             ->method('getWishlist')
             ->willReturn($wishlist);
@@ -405,10 +406,10 @@ class SendTest extends TestCase
         $wishlistConfig = $this->createMock(WishlistConfig::class);
         $wishlistConfig->method('getSharingEmailLimit')->willReturn(10);
         $wishlistConfig->method('getSharingTextLimit')->willReturn(255);
-        
+
         $escaper = $this->createMock(Escaper::class);
         $escaper->method('escapeHtml')->willReturnArgument(0);
-        
+
         $messageValidator = $this->createMock(MessageValidator::class);
         $messageValidator->method('isValid')->willReturn(true);
 
@@ -423,7 +424,7 @@ class SendTest extends TestCase
                 'captchaHelper' => $this->captchaHelper,
                 '_customerSession' => $this->customerSession,
                 'escaper' => $escaper,
-                'messageValidator' => $messageValidator
+                'messageValidator' => $messageValidator,
             ]
         );
 
@@ -434,7 +435,7 @@ class SendTest extends TestCase
 
         $wishlist = $this->createPartialMockWithReflection(Wishlist::class, ['getShared']);
         $wishlist->expects($this->any())->method('getShared')->willReturn(0);
-        
+
         $this->wishlistProvider->expects($this->once())
             ->method('getWishlist')
             ->willReturn($wishlist);
@@ -472,10 +473,10 @@ class SendTest extends TestCase
         $wishlistConfig = $this->createMock(WishlistConfig::class);
         $wishlistConfig->method('getSharingEmailLimit')->willReturn(10);
         $wishlistConfig->method('getSharingTextLimit')->willReturn(255);
-        
+
         $escaper = $this->createMock(Escaper::class);
         $escaper->method('escapeHtml')->willReturnArgument(0);
-        
+
         $messageValidator = $this->createMock(MessageValidator::class);
         $messageValidator->method('isValid')->willReturn(true);
 
@@ -490,7 +491,7 @@ class SendTest extends TestCase
                 'captchaHelper' => $this->captchaHelper,
                 '_customerSession' => $this->customerSession,
                 'escaper' => $escaper,
-                'messageValidator' => $messageValidator
+                'messageValidator' => $messageValidator,
             ]
         );
 
@@ -501,7 +502,7 @@ class SendTest extends TestCase
 
         $wishlist = $this->createPartialMockWithReflection(Wishlist::class, ['getShared']);
         $wishlist->expects($this->any())->method('getShared')->willReturn(0);
-        
+
         $this->wishlistProvider->expects($this->once())
             ->method('getWishlist')
             ->willReturn($wishlist);
@@ -562,7 +563,7 @@ class SendTest extends TestCase
                 'formKeyValidator' => $this->formKeyValidator,
                 'wishlistProvider' => $this->wishlistProvider,
                 'captchaHelper' => $captchaHelper,
-                '_customerSession' => $this->customerSession
+                '_customerSession' => $this->customerSession,
             ]
         );
 
@@ -608,11 +609,11 @@ class SendTest extends TestCase
         $messageValidator = $this->createMock(MessageValidator::class);
 
         $customerData = $this->createMock(CustomerData::class);
-        
+
         $customerModel = $this->createPartialMockWithReflection(Customer::class, ['getId', 'getEmail']);
         $customerModel->method('getId')->willReturn(null);
         $customerModel->method('getEmail')->willReturn('');
-        
+
         $session = $this->createMock(Session::class);
         $session->method('getCustomerDataObject')->willReturn($customerData);
         $session->method('getCustomer')->willReturn($customerModel);
@@ -620,7 +621,7 @@ class SendTest extends TestCase
         $customerHelper->method('getCustomerName')->willReturn('John Doe');
         $escaper->method('escapeHtml')->willReturnArgument(0);
         $messageValidator->method('isValid')->willReturn(true);
-        
+
         $store->method('getStoreId')->willReturn(1);
         $storeManager->method('getStore')->willReturn($store);
         $scopeConfig->method('getValue')->willReturn('template_id');
@@ -695,7 +696,7 @@ class SendTest extends TestCase
                 'storeManager' => $storeManager,
                 'captchaHelper' => $this->captchaHelper,
                 'escaper' => $escaper,
-                'messageValidator' => $messageValidator
+                'messageValidator' => $messageValidator,
             ]
         );
 
@@ -726,11 +727,11 @@ class SendTest extends TestCase
         $messageValidator = $this->createMock(MessageValidator::class);
 
         $customerData = $this->createMock(CustomerData::class);
-        
+
         $customerModel = $this->createPartialMockWithReflection(Customer::class, ['getId', 'getEmail']);
         $customerModel->method('getId')->willReturn(null);
         $customerModel->method('getEmail')->willReturn('');
-        
+
         $session = $this->createMock(Session::class);
         $session->method('getCustomerDataObject')->willReturn($customerData);
         $session->method('getCustomer')->willReturn($customerModel);
@@ -738,7 +739,7 @@ class SendTest extends TestCase
         $customerHelper->method('getCustomerName')->willReturn('John Doe');
         $escaper->method('escapeHtml')->willReturnArgument(0);
         $messageValidator->method('isValid')->willReturn(true);
-        
+
         $store->method('getStoreId')->willReturn(1);
         $storeManager->method('getStore')->willReturn($store);
         $scopeConfig->method('getValue')->willReturn('template_id');
@@ -813,7 +814,7 @@ class SendTest extends TestCase
                 'storeManager' => $storeManager,
                 'captchaHelper' => $this->captchaHelper,
                 'escaper' => $escaper,
-                'messageValidator' => $messageValidator
+                'messageValidator' => $messageValidator,
             ]
         );
 
@@ -844,11 +845,11 @@ class SendTest extends TestCase
         $messageValidator = $this->createMock(MessageValidator::class);
 
         $customerData = $this->createMock(CustomerData::class);
-        
+
         $customerModel = $this->createPartialMockWithReflection(Customer::class, ['getId', 'getEmail']);
         $customerModel->method('getId')->willReturn(null);
         $customerModel->method('getEmail')->willReturn('');
-        
+
         $session = $this->createMock(Session::class);
         $session->method('getCustomerDataObject')->willReturn($customerData);
         $session->method('getCustomer')->willReturn($customerModel);
@@ -856,7 +857,7 @@ class SendTest extends TestCase
         $customerHelper->method('getCustomerName')->willReturn('John Doe');
         $escaper->method('escapeHtml')->willReturnArgument(0);
         $messageValidator->method('isValid')->willReturn(true);
-        
+
         $store->method('getStoreId')->willReturn(1);
         $storeManager->method('getStore')->willReturn($store);
         $scopeConfig->method('getValue')->willReturn('template_id');
@@ -934,7 +935,7 @@ class SendTest extends TestCase
                 'storeManager' => $storeManager,
                 'captchaHelper' => $this->captchaHelper,
                 'escaper' => $escaper,
-                'messageValidator' => $messageValidator
+                'messageValidator' => $messageValidator,
             ]
         );
 
@@ -993,7 +994,7 @@ class SendTest extends TestCase
                 'formKeyValidator' => $this->formKeyValidator,
                 'wishlistProvider' => $this->wishlistProvider,
                 'captchaHelper' => $captchaHelper,
-                '_customerSession' => $customerSession
+                '_customerSession' => $customerSession,
             ]
         );
 

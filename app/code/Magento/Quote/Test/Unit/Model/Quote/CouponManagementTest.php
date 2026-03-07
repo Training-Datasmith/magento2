@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class CouponManagementTest extends TestCase
                 'collectTotals',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $quote->expects($this->once())->method('getItemsCount')->willReturn(2);
@@ -100,7 +101,7 @@ class CouponManagementTest extends TestCase
                 'collectTotals',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $quote->expects($this->once())->method('getItemsCount')->willReturn(0);
@@ -131,7 +132,7 @@ class CouponManagementTest extends TestCase
                 'collectTotals',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $quote->expects($this->once())->method('getItemsCount')->willReturn(1);
@@ -157,7 +158,7 @@ class CouponManagementTest extends TestCase
         $shippingAddress = $this->createPartialMockWithReflection(
             Address::class,
             [
-                'setCollectShippingRates'
+                'setCollectShippingRates',
             ]
         );
         $shippingAddress->expects($this->once())->method('setCollectShippingRates')->with(true);
@@ -170,7 +171,7 @@ class CouponManagementTest extends TestCase
                 'collectTotals',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $quote->expects($this->once())->method('getItemsCount')->willReturn(2);
@@ -208,7 +209,7 @@ class CouponManagementTest extends TestCase
                 'collectTotals',
                 'setCouponCode',
                 'getCouponCode',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $quote->expects($this->once())->method('getItemsCount')->willReturn(2);
@@ -231,7 +232,7 @@ class CouponManagementTest extends TestCase
         return $this->createPartialMockWithReflection(
             Address::class,
             [
-                'setCollectShippingRates'
+                'setCollectShippingRates',
             ]
         );
     }

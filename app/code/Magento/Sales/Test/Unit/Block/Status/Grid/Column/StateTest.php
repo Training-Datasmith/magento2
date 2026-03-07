@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Sales\Test\Unit\Block\Status\Grid\Column;
 
 use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Block\Status\Grid\Column\State;
 use Magento\Sales\Model\Order\Config;
@@ -17,7 +19,6 @@ use Magento\Sales\Model\ResourceModel\Order\Status\Collection;
 use Magento\Sales\Model\ResourceModel\Order\Status\CollectionFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class StateTest extends TestCase
 {
@@ -48,7 +49,7 @@ class StateTest extends TestCase
         $this->configMock = $helper->getObject(
             Config::class,
             [
-                'orderStatusCollectionFactory' => $this->orderStatusCollectionFactoryMock
+                'orderStatusCollectionFactory' => $this->orderStatusCollectionFactoryMock,
             ]
         );
         $this->stateColumn = $helper
@@ -81,7 +82,7 @@ class StateTest extends TestCase
                     'is_default' => '1',
                     'label' => 'Processing',
                 ]
-            )
+            ),
         ];
         $collectionMock = $this->createPartialMockWithReflection(
             Collection::class,

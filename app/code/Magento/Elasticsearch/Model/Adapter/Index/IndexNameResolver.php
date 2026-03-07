@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +9,11 @@
 namespace Magento\Elasticsearch\Model\Adapter\Index;
 
 use Magento\AdvancedSearch\Model\Client\ClientInterface as ElasticsearchClient;
-use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
-use Magento\Elasticsearch\Model\Config;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
+use Magento\Elasticsearch\Model\Config;
+use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
+use Magento\Framework\Exception\LocalizedException;
+use Psr\Log\LoggerInterface;
 
 /**
  * Index name resolver for Elasticsearch

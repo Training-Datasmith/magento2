@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class CurrencyTest extends TestCase
         'USD' => 'US Dollar (USD)',
         'EUR' => 'Euro (EUR)',
         'UAH' => 'Ukrainian Hryvnia (UAH)',
-        'GBP' => 'British Pound (GBP)'
+        'GBP' => 'British Pound (GBP)',
     ];
 
     public function testIsValid()

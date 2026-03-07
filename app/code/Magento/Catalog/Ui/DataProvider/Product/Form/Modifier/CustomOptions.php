@@ -1,28 +1,31 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Model\Locator\LocatorInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Model\ProductOptions\ConfigInterface;
 use Magento\Catalog\Model\Config\Source\Product\Options\Price as ProductOptionsPrice;
-use Magento\Framework\UrlInterface;
+use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Model\ProductOptions\ConfigInterface;
 use Magento\Framework\Stdlib\ArrayManager;
-use Magento\Ui\Component\Form\Element\Hidden;
-use Magento\Ui\Component\Modal;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Container;
 use Magento\Ui\Component\DynamicRows;
-use Magento\Ui\Component\Form\Fieldset;
-use Magento\Ui\Component\Form\Field;
+use Magento\Ui\Component\Form\Element\ActionDelete;
+use Magento\Ui\Component\Form\Element\Checkbox;
+use Magento\Ui\Component\Form\Element\DataType\Number;
+use Magento\Ui\Component\Form\Element\DataType\Text;
+use Magento\Ui\Component\Form\Element\Hidden;
 use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\Select;
-use Magento\Ui\Component\Form\Element\Checkbox;
-use Magento\Ui\Component\Form\Element\ActionDelete;
-use Magento\Ui\Component\Form\Element\DataType\Text;
-use Magento\Ui\Component\Form\Element\DataType\Number;
+use Magento\Ui\Component\Form\Field;
+use Magento\Ui\Component\Form\Fieldset;
+use Magento\Ui\Component\Modal;
 
 /**
  * Data provider for "Customizable Options" panel
@@ -203,9 +206,9 @@ class CustomOptions extends AbstractModifier
                 $productId => [
                     static::DATA_SOURCE_DEFAULT => [
                         static::FIELD_ENABLE => 1,
-                        static::GRID_OPTIONS_NAME => $options
-                    ]
-                ]
+                        static::GRID_OPTIONS_NAME => $options,
+                    ],
+                ],
             ]
         );
     }
@@ -272,16 +275,16 @@ class CustomOptions extends AbstractModifier
                     'children' => [
                         static::CONTAINER_HEADER_NAME => $this->getHeaderContainerConfig(10),
                         static::FIELD_ENABLE => $this->getEnableFieldConfig(20),
-                        static::GRID_OPTIONS_NAME => $this->getOptionsGridConfig(30)
-                    ]
-                ]
+                        static::GRID_OPTIONS_NAME => $this->getOptionsGridConfig(30),
+                    ],
+                ],
             ]
         );
 
         $this->meta = array_merge_recursive(
             $this->meta,
             [
-                static::IMPORT_OPTIONS_MODAL => $this->getImportOptionsModalConfig()
+                static::IMPORT_OPTIONS_MODAL => $this->getImportOptionsModalConfig(),
             ]
         );
 
@@ -322,7 +325,7 @@ class CustomOptions extends AbstractModifier
                                 'actions' => [
                                     [
                                         'targetName' => 'ns=' . static::FORM_NAME . ', index=options',
-                                        'actionName' => 'clearDataProvider'
+                                        'actionName' => 'clearDataProvider',
                                     ],
                                     [
                                         'targetName' => 'ns=' . static::FORM_NAME . ', index='
@@ -356,9 +359,9 @@ class CustomOptions extends AbstractModifier
                                             . '.' . static::GRID_OPTIONS_NAME,
                                         '__disableTmpl' => ['targetName' => false],
                                         'actionName' => 'processingAddChild',
-                                    ]
-                                ]
-                            ]
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -397,8 +400,8 @@ class CustomOptions extends AbstractModifier
                             '__disableTmpl' => ['insertData' => false],
                         ],
                         'sizesConfig' => [
-                            'enabled' => true
-                        ]
+                            'enabled' => true,
+                        ],
                     ],
                 ],
             ],
@@ -433,12 +436,12 @@ class CustomOptions extends AbstractModifier
                                 static::FIELD_SORT_ORDER_NAME => $this->getPositionFieldConfig(40),
                                 static::CONTAINER_COMMON_NAME => $this->getCommonContainerConfig(10),
                                 static::CONTAINER_TYPE_STATIC_NAME => $this->getStaticTypeContainerConfig(20),
-                                static::GRID_TYPE_SELECT_NAME => $this->getSelectTypeGridConfig(30)
-                            ]
+                                static::GRID_TYPE_SELECT_NAME => $this->getSelectTypeGridConfig(30),
+                            ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -491,9 +494,9 @@ class CustomOptions extends AbstractModifier
                                     'actions' => [
                                         [
                                             'targetName' => 'index = ' . static::CUSTOM_OPTIONS_LISTING,
-                                            'actionName' => 'save'
+                                            'actionName' => 'save',
                                         ],
-                                        'closeModal'
+                                        'closeModal',
                                     ],
                                 ],
                             ],
@@ -520,12 +523,12 @@ class CustomOptions extends AbstractModifier
                                 'currentProductId' => $this->locator->getProduct()->getId(),
                                 'dataLinks' => [
                                     'imports' => false,
-                                    'exports' => true
+                                    'exports' => true,
                                 ],
                                 'exports' => [
                                     'currentProductId' => '${ $.externalProvider }:params.current_product_id',
                                     '__disableTmpl' => ['currentProductId' => false],
-                                ]
+                                ],
                             ],
                         ],
                     ],
@@ -572,22 +575,22 @@ class CustomOptions extends AbstractModifier
                                         'optionId' => '${ $.provider }:${ $.parentScope }.option_id',
                                         'isUseDefault' => '${ $.provider }:${ $.parentScope }.is_use_default',
                                         '__disableTmpl' => ['optionId' => false, 'isUseDefault' => false],
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
                     ]
                 ),
                 static::FIELD_TYPE_NAME => $this->getTypeFieldConfig(30),
-                static::FIELD_IS_REQUIRE_NAME => $this->getIsRequireFieldConfig(40)
-            ]
+                static::FIELD_IS_REQUIRE_NAME => $this->getIsRequireFieldConfig(40),
+            ],
         ];
 
         if ($this->locator->getProduct()->getStoreId()) {
             $useDefaultConfig = [
                 'service' => [
                     'template' => 'Magento_Catalog/form/element/helper/custom-option-service',
-                ]
+                ],
             ];
             $titlePath = $this->arrayManager->findPath(static::FIELD_TITLE_NAME, $commonContainer, null)
                 . static::META_CONFIG_PATH;
@@ -629,8 +632,8 @@ class CustomOptions extends AbstractModifier
                 static::FIELD_MAX_CHARACTERS_NAME => $this->getMaxCharactersFieldConfig(40),
                 static::FIELD_FILE_EXTENSION_NAME => $this->getFileExtensionFieldConfig(50),
                 static::FIELD_IMAGE_SIZE_X_NAME => $this->getImageSizeXFieldConfig(60),
-                static::FIELD_IMAGE_SIZE_Y_NAME => $this->getImageSizeYFieldConfig(70)
-            ]
+                static::FIELD_IMAGE_SIZE_Y_NAME => $this->getImageSizeYFieldConfig(70),
+            ],
         ];
     }
 
@@ -675,8 +678,8 @@ class CustomOptions extends AbstractModifier
                         'renderDefaultRecord' => false,
                         'sortOrder' => $sortOrder,
                         'sizesConfig' => [
-                            'enabled' => true
-                        ]
+                            'enabled' => true,
+                        ],
                     ],
                 ],
             ],
@@ -702,10 +705,10 @@ class CustomOptions extends AbstractModifier
                         static::FIELD_PRICE_TYPE_NAME => $this->getPriceTypeFieldConfig(30, ['fit' => true]),
                         static::FIELD_SKU_NAME => $this->getSkuFieldConfig(40),
                         static::FIELD_SORT_ORDER_NAME => $this->getPositionFieldConfig(50),
-                        static::FIELD_IS_DELETE => $this->getIsDeleteFieldConfig(60)
-                    ]
-                ]
-            ]
+                        static::FIELD_IS_DELETE => $this->getIsDeleteFieldConfig(60),
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -755,7 +758,7 @@ class CustomOptions extends AbstractModifier
                             'dataType' => Text::NAME,
                             'sortOrder' => $sortOrder,
                             'validation' => [
-                                'required-entry' => true
+                                'required-entry' => true,
                             ],
                         ],
                     ],
@@ -794,7 +797,7 @@ class CustomOptions extends AbstractModifier
                             'defaultPlaceholder' => __('-- Please select --'),
                         ],
                         'validation' => [
-                            'required-entry' => true
+                            'required-entry' => true,
                         ],
                         'groupsConfig' => [
                             'text' => [
@@ -804,8 +807,8 @@ class CustomOptions extends AbstractModifier
                                     static::FIELD_PRICE_NAME,
                                     static::FIELD_PRICE_TYPE_NAME,
                                     static::FIELD_SKU_NAME,
-                                    static::FIELD_MAX_CHARACTERS_NAME
-                                ]
+                                    static::FIELD_MAX_CHARACTERS_NAME,
+                                ],
                             ],
                             'file' => [
                                 'values' => ['file'],
@@ -816,14 +819,14 @@ class CustomOptions extends AbstractModifier
                                     static::FIELD_SKU_NAME,
                                     static::FIELD_FILE_EXTENSION_NAME,
                                     static::FIELD_IMAGE_SIZE_X_NAME,
-                                    static::FIELD_IMAGE_SIZE_Y_NAME
-                                ]
+                                    static::FIELD_IMAGE_SIZE_Y_NAME,
+                                ],
                             ],
                             'select' => [
                                 'values' => ['drop_down', 'radio', 'checkbox', 'multiple'],
                                 'indexes' => [
-                                    static::GRID_TYPE_SELECT_NAME
-                                ]
+                                    static::GRID_TYPE_SELECT_NAME,
+                                ],
                             ],
                             'data' => [
                                 'values' => ['date', 'date_time', 'time'],
@@ -831,9 +834,9 @@ class CustomOptions extends AbstractModifier
                                     static::CONTAINER_TYPE_STATIC_NAME,
                                     static::FIELD_PRICE_NAME,
                                     static::FIELD_PRICE_TYPE_NAME,
-                                    static::FIELD_SKU_NAME
-                                ]
-                            ]
+                                    static::FIELD_SKU_NAME,
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -863,7 +866,7 @@ class CustomOptions extends AbstractModifier
                         'value' => '1',
                         'valueMap' => [
                             'true' => '1',
-                            'false' => '0'
+                            'false' => '0',
                         ],
                     ],
                 ],
@@ -911,7 +914,7 @@ class CustomOptions extends AbstractModifier
                     'config' => [
                         'componentType' => ActionDelete::NAME,
                         'fit' => true,
-                        'sortOrder' => $sortOrder
+                        'sortOrder' => $sortOrder,
                     ],
                 ],
             ],
@@ -941,7 +944,7 @@ class CustomOptions extends AbstractModifier
                         'addbeforePool' => $this->productOptionsPrice->prefixesToOptionArray(),
                         'sortOrder' => $sortOrder,
                         'validation' => [
-                            'validate-number' => true
+                            'validate-number' => true,
                         ],
                     ],
                 ],
@@ -1042,7 +1045,7 @@ class CustomOptions extends AbstractModifier
                         'dataType' => Number::NAME,
                         'sortOrder' => $sortOrder,
                         'validation' => [
-                            'validate-zero-or-greater' => true
+                            'validate-zero-or-greater' => true,
                         ],
                     ],
                 ],
@@ -1102,7 +1105,7 @@ class CustomOptions extends AbstractModifier
                         'dataType' => Number::NAME,
                         'sortOrder' => $sortOrder,
                         'validation' => [
-                            'validate-zero-or-greater' => true
+                            'validate-zero-or-greater' => true,
                         ],
                     ],
                 ],
@@ -1132,7 +1135,7 @@ class CustomOptions extends AbstractModifier
                         'dataType' => Number::NAME,
                         'sortOrder' => $sortOrder,
                         'validation' => [
-                            'validate-zero-or-greater' => true
+                            'validate-zero-or-greater' => true,
                         ],
                     ],
                 ],
@@ -1156,7 +1159,7 @@ class CustomOptions extends AbstractModifier
                 'value' => $groupIndex,
                 //TODO: Wrap label with __() or remove this TODO after MAGETWO-49771 is closed
                 'label' => $option['label'],
-                'optgroup' => []
+                'optgroup' => [],
             ];
 
             foreach ($option['types'] as $type) {

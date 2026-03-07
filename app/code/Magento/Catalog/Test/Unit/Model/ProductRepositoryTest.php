@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Api\Data\ProductSearchResultsInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Catalog\Api\Data\ProductSearchResultsInterfaceFactory;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\Product;
@@ -40,12 +38,15 @@ use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\DB\Adapter\ConnectionException;
+use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -125,7 +126,7 @@ class ProductRepositoryTest extends TestCase
      */
     private $productData = [
         'sku' => 'exisiting',
-        'name' => 'existing product'
+        'name' => 'existing product',
     ];
 
     /**
@@ -216,10 +217,10 @@ class ProductRepositoryTest extends TestCase
                 'getMediaGalleryEntries',
                 'getExtensionAttributes',
                 'getCategoryIds',
-                'getAttributes'
+                'getAttributes',
             ]
         );
-        
+
         $this->product->method('getData')->willReturnCallback(function ($key = null, $index = null) {
             if ($key === null || $key === '') {
                 return [];
@@ -245,10 +246,10 @@ class ProductRepositoryTest extends TestCase
                 'getMediaGalleryEntries',
                 'getExtensionAttributes',
                 'getCategoryIds',
-                'getAttributes'
+                'getAttributes',
             ]
         );
-        
+
         $this->initializedProduct->method('hasGalleryAttribute')->willReturn(true);
         $this->filterBuilder = $this->createMock(FilterBuilder::class);
         $this->collectionFactory = $this->createPartialMock(CollectionFactory::class, ['create']);
@@ -297,13 +298,13 @@ class ProductRepositoryTest extends TestCase
                 'setDownloadableProductSamples',
                 'getGiftcardAmounts',
                 'setGiftcardAmounts',
-                '__toArray'
+                '__toArray',
             ]
         );
         $this->productExtension
             ->method('__toArray')
             ->willReturn([]);
-        
+
         $this->product
             ->method('getExtensionAttributes')
             ->willReturn($this->productExtension);
@@ -341,7 +342,7 @@ class ProductRepositoryTest extends TestCase
             [
                 'processor' => $this->processor,
                 'contentFactory' => $this->contentFactory,
-                'imageProcessor' => $this->imageProcessor
+                'imageProcessor' => $this->imageProcessor,
             ]
         );
         $this->model = $this->objectManager->getObject(
@@ -363,7 +364,7 @@ class ProductRepositoryTest extends TestCase
                 'mediaGalleryProcessor' => $this->processor,
                 'collectionProcessor' => $this->collectionProcessor,
                 'serializer' => $this->serializerMock,
-                'cacheLimit' => $this->cacheLimit
+                'cacheLimit' => $this->cacheLimit,
             ]
         );
         $this->objectManager->setBackwardCompatibleProperty($this->model, 'mediaProcessor', $mediaProcessor);
@@ -411,9 +412,9 @@ class ProductRepositoryTest extends TestCase
                 [
                     'sku' => self::STUB_PRODUCT_SKU,
                     'name' => self::STUB_PRODUCT_NAME,
-                    'store_id' => self::STUB_STORE_ID_GLOBAL
-                ]
-            ]
+                    'store_id' => self::STUB_STORE_ID_GLOBAL,
+                ],
+            ],
         ];
     }
 
@@ -602,7 +603,7 @@ class ProductRepositoryTest extends TestCase
      */
     public function testGetByIdForcedReload(): void
     {
-        $identifier = "23";
+        $identifier = '23';
         $editMode = false;
         $storeId = 0;
 
@@ -675,8 +676,8 @@ class ProductRepositoryTest extends TestCase
      */
     public function testGetForcedReload(): void
     {
-        $sku = "sku";
-        $id = "23";
+        $sku = 'sku';
+        $id = '23';
         $editMode = false;
         $storeId = 0;
 
@@ -967,32 +968,32 @@ class ProductRepositoryTest extends TestCase
             [
                 'identifier' => 'test-sku',
                 'editMode' => false,
-                'storeId' => null
+                'storeId' => null,
             ],
             [
                 'identifier' => 25,
                 'editMode' => false,
-                'storeId' => null
+                'storeId' => null,
             ],
             [
                 'identifier' => 25,
                 'editMode' => true,
-                'storeId' => null
+                'storeId' => null,
             ],
             [
                 'identifier' => 'test-sku',
                 'editMode' => true,
-                'storeId' => null
+                'storeId' => null,
             ],
             [
                 'identifier' => 25,
                 'editMode' => true,
-                'storeId' => '1'
+                'storeId' => '1',
             ],
             [
                 'identifier' => 'test-sku',
                 'editMode' => true,
-                'storeId' => 1
+                'storeId' => 1,
             ],
         ];
     }
@@ -1035,7 +1036,7 @@ class ProductRepositoryTest extends TestCase
         $existingOption->setData(
             [
                 'option_id' => 10,
-                'type' => 'drop_down'
+                'type' => 'drop_down',
             ]
         );
         /** @var Value $existingOptionValue1 */
@@ -1044,7 +1045,7 @@ class ProductRepositoryTest extends TestCase
             [
                 'option_type_id' => '8',
                 'title' => 'DropdownOptions_1',
-                'price' => 5
+                'price' => 5,
             ]
         );
         $existingOptionValue2 = $this->createMock(Value::class);
@@ -1052,13 +1053,13 @@ class ProductRepositoryTest extends TestCase
             [
                 'option_type_id' => '9',
                 'title' => 'DropdownOptions_2',
-                'price' => 6
+                'price' => 6,
             ]
         );
         $existingOption->setValues(
             [
                 '8' => $existingOptionValue1,
-                '9' => $existingOptionValue2
+                '9' => $existingOptionValue2,
             ]
         );
 
@@ -1071,7 +1072,7 @@ class ProductRepositoryTest extends TestCase
         $existingOption->setData(
             [
                 'option_id' => 11,
-                'type' => 'drop_down'
+                'type' => 'drop_down',
             ]
         );
         return $existingOption;
@@ -1094,24 +1095,24 @@ class ProductRepositoryTest extends TestCase
                 'values' => [
                     [
                         'title' => 'DropdownOptions_1',
-                        "option_type_id" => 8, //existing
-                        'price' => 3
+                        'option_type_id' => 8, //existing
+                        'price' => 3,
                     ],
                     [ //new option value
                         'title' => 'DropdownOptions_3',
-                        'price' => 4
-                    ]
-                ]
+                        'price' => 4,
+                    ],
+                ],
             ],
             [//new option
                 'type' => 'checkbox',
                 'values' => [
                     [
                         'title' => 'CheckBoxValue2',
-                        'price' => 5
-                    ]
-                ]
-            ]
+                        'price' => 5,
+                    ],
+                ],
+            ],
         ];
 
         $existingOption1 = static fn (self $testCase) => $testCase->getMockForOptionOneClass();
@@ -1122,8 +1123,8 @@ class ProductRepositoryTest extends TestCase
             [
                 $newOptionsData,
                 [
-                    "10" => $existingOption1,
-                    "11" => $existingOption2,
+                    '10' => $existingOption1,
+                    '11' => $existingOption2,
                 ],
                 [
                     [
@@ -1133,37 +1134,37 @@ class ProductRepositoryTest extends TestCase
                             [
                                 'title' => 'DropdownOptions_1',
                                 'option_type_id' => 8,
-                                'price' => 3
+                                'price' => 3,
                             ],
                             [
                                 'title' => 'DropdownOptions_3',
-                                "price" => 4
+                                'price' => 4,
                             ],
                             [
                                 'option_type_id' => 9,
                                 'title' => 'DropdownOptions_2',
                                 'price' => 6,
-                                'is_delete' => 1
-                            ]
-                        ]
+                                'is_delete' => 1,
+                            ],
+                        ],
                     ],
                     [
                         'type' => 'checkbox',
                         'values' => [
                             [
                                 'title' => 'CheckBoxValue2',
-                                'price' => 5
-                            ]
-                        ]
+                                'price' => 5,
+                            ],
+                        ],
                     ],
                     [
                         'option_id' => 11,
                         'type' => 'drop_down',
                         'values' => [],
-                        'is_delete' => 1
-                    ]
-                ]
-            ]
+                        'is_delete' => 1,
+                    ],
+                ],
+            ],
         ];
 
         return $data;
@@ -1187,7 +1188,7 @@ class ProductRepositoryTest extends TestCase
         $this->resourceModel->expects($this->once())->method('save')
             ->with($this->initializedProduct)->willReturn(true);
 
-        $this->initializedProduct->setData("product_links", $existingLinks);
+        $this->initializedProduct->setData('product_links', $existingLinks);
 
         if (!empty($newLinks)) {
             $linkTypes = ['related' => 1, 'upsell' => 4, 'crosssell' => 5, 'associated' => 3];
@@ -1195,7 +1196,7 @@ class ProductRepositoryTest extends TestCase
                 ->method('getLinkTypes')
                 ->willReturn($linkTypes);
 
-            $this->initializedProduct->setData("ignore_links_flag", false);
+            $this->initializedProduct->setData('ignore_links_flag', false);
             $this->resourceModel
                 ->method('getProductsIdsBySkus')
                 ->willReturn([$newLinks['linked_product_sku'] => $newLinks['linked_product_sku']]);
@@ -1276,22 +1277,22 @@ class ProductRepositoryTest extends TestCase
         // No existing, new links
         $data['scenario_1'] = [
             'newLinks' => [
-                "product_sku" => "Simple Product 1",
-                "link_type" => "associated",
-                "linked_product_sku" => "Simple Product 2",
-                "linked_product_type" => "simple",
-                "position" => 0,
-                "qty" => 1
+                'product_sku' => 'Simple Product 1',
+                'link_type' => 'associated',
+                'linked_product_sku' => 'Simple Product 2',
+                'linked_product_type' => 'simple',
+                'position' => 0,
+                'qty' => 1,
             ],
             'existingLinks' => [],
             'expectedData' => [[
-                "product_sku" => "Simple Product 1",
-                "link_type" => "associated",
-                "linked_product_sku" => "Simple Product 2",
-                "linked_product_type" => "simple",
-                "position" => 0,
-                "qty" => 1
-            ]]
+                'product_sku' => 'Simple Product 1',
+                'link_type' => 'associated',
+                'linked_product_sku' => 'Simple Product 2',
+                'linked_product_type' => 'simple',
+                'position' => 0,
+                'qty' => 1,
+            ]],
         ];
 
         // Scenario 2
@@ -1299,41 +1300,41 @@ class ProductRepositoryTest extends TestCase
         $data['scenario_2'] = [
             'newLinks' => [],
             'existingLinks' => [
-                "product_sku" => "Simple Product 1",
-                "link_type" => "related",
-                "linked_product_sku" => "Simple Product 2",
-                "linked_product_type" => "simple",
-                "position" => 0
+                'product_sku' => 'Simple Product 1',
+                'link_type' => 'related',
+                'linked_product_sku' => 'Simple Product 2',
+                'linked_product_type' => 'simple',
+                'position' => 0,
             ],
-            'expectedData' => []
+            'expectedData' => [],
         ];
 
         // Scenario 3
         // Existing and new links
         $data['scenario_3'] = [
             'newLinks' => [
-                "product_sku" => "Simple Product 1",
-                "link_type" => "related",
-                "linked_product_sku" => "Simple Product 2",
-                "linked_product_type" => "simple",
-                "position" => 0
+                'product_sku' => 'Simple Product 1',
+                'link_type' => 'related',
+                'linked_product_sku' => 'Simple Product 2',
+                'linked_product_type' => 'simple',
+                'position' => 0,
             ],
             'existingLinks' => [
-                "product_sku" => "Simple Product 1",
-                "link_type" => "related",
-                "linked_product_sku" => "Simple Product 3",
-                "linked_product_type" => "simple",
-                "position" => 0
+                'product_sku' => 'Simple Product 1',
+                'link_type' => 'related',
+                'linked_product_sku' => 'Simple Product 3',
+                'linked_product_type' => 'simple',
+                'position' => 0,
             ],
             'expectedData' => [
                 [
-                    "product_sku" => "Simple Product 1",
-                    "link_type" => "related",
-                    "linked_product_sku" => "Simple Product 2",
-                    "linked_product_type" => "simple",
-                    "position" => 0
-                ]
-            ]
+                    'product_sku' => 'Simple Product 1',
+                    'link_type' => 'related',
+                    'linked_product_sku' => 'Simple Product 2',
+                    'linked_product_type' => 'simple',
+                    'position' => 0,
+                ],
+            ],
         ];
 
         return $data;
@@ -1362,7 +1363,7 @@ class ProductRepositoryTest extends TestCase
             'images' => [
                 [
                     'value_id' => null,
-                    'label' => "label_text",
+                    'label' => 'label_text',
                     'position' => 10,
                     'disabled' => false,
                     'types' => ['image', 'small_image'],
@@ -1370,12 +1371,12 @@ class ProductRepositoryTest extends TestCase
                         'data' => [
                             ImageContentInterface::NAME => 'filename',
                             ImageContentInterface::TYPE => 'image/jpeg',
-                            ImageContentInterface::BASE64_ENCODED_DATA => 'encoded_content'
-                        ]
+                            ImageContentInterface::BASE64_ENCODED_DATA => 'encoded_content',
+                        ],
                     ],
-                    'media_type' => 'media_type'
-                ]
-            ]
+                    'media_type' => 'media_type',
+                ],
+            ],
         ];
 
         $this->setupProductMocksForSave();
@@ -1388,7 +1389,7 @@ class ProductRepositoryTest extends TestCase
 
         $this->initializedProduct->setData('media_gallery', $newEntriesData);
         $this->initializedProduct->method('getMediaAttributes')
-            ->willReturn(["image" => "imageAttribute", "small_image" => "small_image_attribute"]);
+            ->willReturn(['image' => 'imageAttribute', 'small_image' => 'small_image_attribute']);
 
         //setup media attribute backend
         $mediaTmpPath = '/tmp';
@@ -1419,11 +1420,11 @@ class ProductRepositoryTest extends TestCase
             ->method('processImageContent')
             ->willReturn($absolutePath);
 
-        $imageFileUri = "imageFileUri";
+        $imageFileUri = 'imageFileUri';
         $newEntriesDataWithId = [
             'images' => [
-                123 => array_merge($newEntriesData['images'][0], ['value_id' => 123])
-            ]
+                123 => array_merge($newEntriesData['images'][0], ['value_id' => 123]),
+            ],
         ];
         $this->processor->expects($this->once())->method('addImage')
             ->with($this->initializedProduct, $mediaTmpPath . $absolutePath, ['image', 'small_image'], true, false)
@@ -1457,7 +1458,7 @@ class ProductRepositoryTest extends TestCase
     public function websitesProvider(): array
     {
         return [
-            [[1,2,3]]
+            [[1,2,3]],
         ];
     }
 
@@ -1487,7 +1488,7 @@ class ProductRepositoryTest extends TestCase
                 [
                     1 => ['first'],
                     2 => ['second'],
-                    3 => ['third']
+                    3 => ['third'],
                 ]
             );
         $this->product->method('getData')->willReturn([]);
@@ -1507,11 +1508,11 @@ class ProductRepositoryTest extends TestCase
         $newEntries = [
             [
                 'value_id' => 5,
-                "label" => "new_label_text",
+                'label' => 'new_label_text',
                 'file' => 'filename1',
                 'position' => 10,
                 'disabled' => false,
-                'types' => ['image', 'small_image']
+                'types' => ['image', 'small_image'],
             ],
         ];
 
@@ -1519,32 +1520,32 @@ class ProductRepositoryTest extends TestCase
             'images' => [
                 [
                     'value_id' => 5,
-                    "label" => "label_text",
+                    'label' => 'label_text',
                     'file' => 'filename1',
                     'position' => 10,
-                    'disabled' => true
+                    'disabled' => true,
                 ],
                 [
                     'value_id' => 6, //will be deleted
-                    'file' => 'filename2'
-                ]
-            ]
+                    'file' => 'filename2',
+                ],
+            ],
         ];
 
         $expectedResult = [
             [
                 'value_id' => 5,
-                "label" => "new_label_text",
+                'label' => 'new_label_text',
                 'file' => 'filename1',
                 'position' => 10,
                 'disabled' => false,
-                'types' => ['image', 'small_image']
+                'types' => ['image', 'small_image'],
             ],
             [
                 'value_id' => 6, //will be deleted
                 'file' => 'filename2',
-                'removed' => true
-            ]
+                'removed' => true,
+            ],
         ];
 
         $this->setupProductMocksForSave();
@@ -1557,7 +1558,7 @@ class ProductRepositoryTest extends TestCase
 
         $this->initializedProduct->setData('media_gallery', $existingMediaGallery);
         $this->initializedProduct->method('getMediaAttributes')
-            ->willReturn(["image" => "filename1", "small_image" => "filename2"]);
+            ->willReturn(['image' => 'filename1', 'small_image' => 'filename2']);
 
         $this->processor->expects($this->once())->method('clearMediaAttribute')
             ->with($this->initializedProduct, ['image', 'small_image']);
@@ -1580,7 +1581,7 @@ class ProductRepositoryTest extends TestCase
         $this->expectException(CouldNotSaveException::class);
         $productData = [
             'name' => 'Simple Product',
-            'price' => 100
+            'price' => 100,
         ];
         $this->product->setData($productData);
         $this->model->save($this->product);

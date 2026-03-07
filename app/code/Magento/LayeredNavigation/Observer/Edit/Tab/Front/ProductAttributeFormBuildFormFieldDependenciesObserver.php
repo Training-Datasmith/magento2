@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\LayeredNavigation\Observer\Edit\Tab\Front;
 
-use Magento\Framework\Module\Manager;
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Element\BlockInterface;
 
 class ProductAttributeFormBuildFormFieldDependenciesObserver implements ObserverInterface

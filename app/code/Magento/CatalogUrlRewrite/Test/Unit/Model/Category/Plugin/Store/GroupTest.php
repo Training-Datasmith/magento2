@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -123,7 +124,7 @@ class GroupTest extends TestCase
                 'storeManager' => $this->storeManagerMock,
                 'categoryFactory' => $this->categoryFactoryMock,
                 'productFactory' => $this->productFactoryMock,
-                'productUrlRewriteGenerator' => $this->productUrlRewriteGeneratorMock
+                'productUrlRewriteGenerator' => $this->productUrlRewriteGeneratorMock,
             ]
         );
     }

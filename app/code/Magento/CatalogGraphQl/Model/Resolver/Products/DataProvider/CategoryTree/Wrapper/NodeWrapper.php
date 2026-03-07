@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class NodeWrapper
      * @param int $id
      * @return Node|null
      */
-    public function getNodeById(int $id) : ?Node
+    public function getNodeById(int $id): ?Node
     {
         return $this->nodesById[$id] ?? null;
     }

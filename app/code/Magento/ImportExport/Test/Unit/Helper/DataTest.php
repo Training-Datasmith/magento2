@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class DataTest extends TestCase
             HelperData::class,
             [
                 'context' => $this->contextMock,
-                'fileSize' => $this->fileSizeMock
+                'fileSize' => $this->fileSizeMock,
             ]
         );
     }
@@ -97,7 +98,7 @@ class DataTest extends TestCase
             'Test with max image size = 0' => [
                 'maxImageSize' => 0,
                 'expected' => 'We can\'t provide the upload settings right now.',
-            ]
+            ],
         ];
     }
 
@@ -114,7 +115,7 @@ class DataTest extends TestCase
                 'export_csv' => 'var/export/*/*.csv',
                 'import_xml' => 'var/import/*/*.xml',
                 'import_csv' => 'var/import/*/*.csv',
-            ]
+            ],
         ];
         $this->scopeConfigMock->expects($this->any())->method('getValue')
             ->with(HelperData::XML_PATH_EXPORT_LOCAL_VALID_PATH)

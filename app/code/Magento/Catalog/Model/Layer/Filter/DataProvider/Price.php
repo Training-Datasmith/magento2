@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\DataProvider;
 
 use Magento\Catalog\Model\Layer;
+use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price as LayerFilterPrice;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price as LayerFilterPrice;
 
 /**
  * Data provider for price filter in layered navigation

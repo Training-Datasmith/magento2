@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class MetricType
 {
-    public const OTHER = "Other";
-    public const SECONDS_ELAPSED_FLOAT = "SecondsElapsedFloat";
-    public const UNIX_TIMESTAMP_FLOAT = "UnixTimestampFloat";
-    public const MEMORY_SIZE_INT = "MemorySizeInt";
+    public const OTHER = 'Other';
+    public const SECONDS_ELAPSED_FLOAT = 'SecondsElapsedFloat';
+    public const UNIX_TIMESTAMP_FLOAT = 'UnixTimestampFloat';
+    public const MEMORY_SIZE_INT = 'MemorySizeInt';
 }

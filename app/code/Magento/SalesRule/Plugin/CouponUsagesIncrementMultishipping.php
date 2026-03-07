@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,17 +10,16 @@ namespace Magento\SalesRule\Plugin;
 
 use Closure;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\SalesRule\Model\Coupon\Quote\UpdateCouponUsages;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\PlaceOrderDefault;
-use Throwable;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\SalesRule\Model\Coupon\Quote\UpdateCouponUsages;
+use Throwable;
 
 /**
  * Increments number of coupon usages before placing order
  */
 class CouponUsagesIncrementMultishipping
 {
-
     /**
      * @var UpdateCouponUsages
      */

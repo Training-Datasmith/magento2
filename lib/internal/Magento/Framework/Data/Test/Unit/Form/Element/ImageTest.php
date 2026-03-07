@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Image
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
@@ -18,10 +20,10 @@ use Magento\Framework\Escaper;
 use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\UrlInterface;
 
 /**
  * Test for the widget.
@@ -76,8 +78,8 @@ class ImageTest extends TestCase
         $this->_image = $objectManager->getObject(
             Image::class,
             [
-                'factoryMock'=>$factoryMock,
-                'collectionFactoryMock'=>$collectionFactoryMock,
+                'factoryMock' => $factoryMock,
+                'collectionFactoryMock' => $collectionFactoryMock,
                 'urlBuilder' => $this->urlBuilder,
                 '_escaper' => $objectManager->getObject(Escaper::class),
                 'random' => $randomMock,

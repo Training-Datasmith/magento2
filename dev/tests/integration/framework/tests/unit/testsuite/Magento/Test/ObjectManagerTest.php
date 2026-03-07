@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test;
 
 use Magento\Framework\App\CacheInterface;
@@ -62,12 +65,12 @@ class ObjectManagerTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(
             $objectManager,
             $objectManager->get(ObjectManagerInterface::class),
-            "Object manager instance should be the same after cache clearing."
+            'Object manager instance should be the same after cache clearing.'
         );
         $this->assertSame(
             $objectManager,
             $objectManager->get(\Magento\Framework\App\ObjectManager::class),
-            "Object manager instance should be the same after cache clearing."
+            'Object manager instance should be the same after cache clearing.'
         );
         foreach ($this->persistedInstances as $className) {
             $this->assertSame(

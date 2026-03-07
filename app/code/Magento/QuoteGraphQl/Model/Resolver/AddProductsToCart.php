@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\QuoteGraphQl\Model\AddProductsToCart as AddProductsToCartService;
 use Magento\Quote\Model\QuoteMutexInterface;
+use Magento\QuoteGraphQl\Model\AddProductsToCart as AddProductsToCartService;
 use Magento\QuoteGraphQl\Model\Cart\ValidateProductCartResolver;
 
 /**

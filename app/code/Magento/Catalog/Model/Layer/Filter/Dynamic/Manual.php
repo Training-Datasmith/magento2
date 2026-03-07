@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\Dynamic;
 
 use Magento\Catalog\Model\Layer\Filter\Price\Range;
@@ -16,7 +19,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Manual implements AlgorithmInterface
 {
-    const XML_PATH_RANGE_MAX_INTERVALS = 'catalog/layered_navigation/price_range_max_intervals';
+    public const XML_PATH_RANGE_MAX_INTERVALS = 'catalog/layered_navigation/price_range_max_intervals';
 
     /**
      * @var Algorithm

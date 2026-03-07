@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Json\Helper\Data;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -90,7 +91,7 @@ class UpdateItemQtyTest extends TestCase
                 'jsonHelper' => $this->jsonHelperMock,
                 'quantityProcessor' => $this->quantityProcessor,
                 'request' => $this->requestMock,
-                'response' => $this->responseMock
+                'response' => $this->responseMock,
             ]
         );
     }
@@ -126,8 +127,8 @@ class UpdateItemQtyTest extends TestCase
                     'data' => [
                         'summary_qty' => 2,
                         'summary_text' => __(' items'),
-                        'subtotal' => 12.34
-                    ]
+                        'subtotal' => 12.34,
+                    ],
                 ]
             );
 
@@ -138,8 +139,8 @@ class UpdateItemQtyTest extends TestCase
                     'data' => [
                         'summary_qty' => 2,
                         'summary_text' => __(' items'),
-                        'subtotal' => 12.34
-                    ]
+                        'subtotal' => 12.34,
+                    ],
                 ]
             )
             ->willReturn('json encoded');
@@ -177,7 +178,7 @@ class UpdateItemQtyTest extends TestCase
             ->willReturn(
                 [
                     'success' => false,
-                    'error_message' => 'Error!'
+                    'error_message' => 'Error!',
                 ]
             );
 
@@ -186,7 +187,7 @@ class UpdateItemQtyTest extends TestCase
             ->with(
                 [
                     'success' => false,
-                    'error_message' => 'Error!'
+                    'error_message' => 'Error!',
                 ]
             )
             ->willReturn('json encoded');
@@ -226,7 +227,7 @@ class UpdateItemQtyTest extends TestCase
             ->willReturn(
                 [
                     'success' => false,
-                    'error_message' => 'Error!'
+                    'error_message' => 'Error!',
                 ]
             );
 
@@ -235,7 +236,7 @@ class UpdateItemQtyTest extends TestCase
             ->with(
                 [
                     'success' => false,
-                    'error_message' => 'Error!'
+                    'error_message' => 'Error!',
                 ]
             )
             ->willReturn('json encoded');
@@ -250,7 +251,7 @@ class UpdateItemQtyTest extends TestCase
     {
         $error = [
             'success' => false,
-            'error_message' => 'Invalid Item Quantity Requested.'
+            'error_message' => 'Invalid Item Quantity Requested.',
         ];
         $jsonResult = json_encode($error);
         $this->requestMock

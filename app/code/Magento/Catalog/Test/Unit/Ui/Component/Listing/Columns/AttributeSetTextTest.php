@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class AttributeSetTextTest extends AbstractColumnTestCase
                 'items' => [
                     [
                         AttributeSetText::NAME => self::ATTRIBUTE_SET_ID,
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -66,7 +67,7 @@ class AttributeSetTextTest extends AbstractColumnTestCase
                     [
                         AttributeSetText::NAME => self::ATTRIBUTE_SET_ID,
                         '' => self::ATTRIBUTE_SET_NAME,
-                    ]
+                    ],
                 ],
             ],
         ];

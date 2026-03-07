@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ActionsTest extends TestCase
                 'uiComponentFactory' => $this->uiComponentFactory,
                 'components' => [],
                 'data' => ['name' => 'Edit'],
-                'editUrl' => ''
+                'editUrl' => '',
             ]
         );
     }
@@ -77,9 +78,9 @@ class ActionsTest extends TestCase
                 'edit' => [
                     'href' => $href,
                     'label' => __('Details'),
-                    'hidden' => false
-                ]
-            ]
+                    'hidden' => false,
+                ],
+            ],
         ];
         $expectedResult = array_merge_recursive($dataSource, $actionColumn);
         $this->assertEquals($expectedResult, $this->actionColumn->prepareDataSource($dataSource));

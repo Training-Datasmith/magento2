@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ abstract class Attribute extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::update_attributes';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::update_attributes';
 
     /**
      * @var \Magento\Catalog\Helper\Product\Edit\Action\Attribute

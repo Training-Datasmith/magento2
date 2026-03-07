@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product;
 
 use Magento\Catalog\Model\Category as CategoryModel;
@@ -79,7 +82,7 @@ class Price implements IndexerActionInterface, MviewActionInterface
         $this->cacheContext->registerTags(
             [
                 CategoryModel::CACHE_TAG,
-                ProductModel::CACHE_TAG
+                ProductModel::CACHE_TAG,
             ]
         );
     }

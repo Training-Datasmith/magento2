@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -254,7 +255,7 @@ class StompClient implements StompClientInterface
             'AMQ229031', // Connection lost
             'disconnected',
             'socket',
-            'not connected'
+            'not connected',
         ];
 
         $lowerMessage = strtolower($errorMessage);
@@ -316,7 +317,7 @@ class StompClient implements StompClientInterface
                     [
                         'queue' => $queue,
                         'retryable' => $isRetryableError,
-                        'exception' => $e
+                        'exception' => $e,
                     ]
                 );
 
@@ -366,7 +367,7 @@ class StompClient implements StompClientInterface
             $this->logger->error(
                 sprintf('Failed to read STOMP message: %s', $e->getMessage()),
                 ['exception' => $e,
-                 'trace' => $e->getTraceAsString()
+                 'trace' => $e->getTraceAsString(),
                 ]
             );
 
@@ -452,7 +453,7 @@ class StompClient implements StompClientInterface
                 'mbean' => 'org.apache.activemq.artemis:broker="0.0.0.0",component=addresses,address="' .
                     $queueName . '",subcomponent=queues,routing-type="anycast",queue="' . $queueName . '"',
                 'operation' => 'removeAllMessages()',
-                'arguments' => []
+                'arguments' => [],
             ];
 
             $response = $this->executeJolokiaRequest($body, $host, $user, $password);
@@ -486,7 +487,7 @@ class StompClient implements StompClientInterface
             'type' => 'read',
             'mbean' => 'org.apache.activemq.artemis:broker="0.0.0.0",component=addresses,address="' .
                 $queueName . '",subcomponent=queues,routing-type="anycast",queue="' . $queueName . '"',
-            'attribute' => 'MessageCount'
+            'attribute' => 'MessageCount',
         ];
 
         $response = $this->executeJolokiaRequest($body, $host, $user, $password);
@@ -520,12 +521,12 @@ class StompClient implements StompClientInterface
             CURLOPT_POSTFIELDS => json_encode($body),
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
-                'Authorization: Basic ' . base64_encode($user . ':' . $password)
+                'Authorization: Basic ' . base64_encode($user . ':' . $password),
             ],
             CURLOPT_TIMEOUT => 5,
             CURLOPT_CONNECTTIMEOUT => 3,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false
+            CURLOPT_SSL_VERIFYHOST => false,
         ]);
 
         $response = curl_exec($ch);
@@ -533,21 +534,21 @@ class StompClient implements StompClientInterface
         $error = curl_error($ch);
 
         if ($error) {
-            throw new \RuntimeException("CURL error: " . $error);
+            throw new \RuntimeException('CURL error: ' . $error);
         }
 
         if ($httpCode !== 200) {
-            throw new \RuntimeException("HTTP error: " . $httpCode);
+            throw new \RuntimeException('HTTP error: ' . $httpCode);
         }
 
         $decoded = json_decode($response, true);
 
         if (!$decoded) {
-            throw new \RuntimeException("Invalid JSON response");
+            throw new \RuntimeException('Invalid JSON response');
         }
 
         if (isset($decoded['status']) && $decoded['status'] !== 200) {
-            throw new \RuntimeException("Jolokia error: " . ($decoded['error'] ?? 'Unknown error'));
+            throw new \RuntimeException('Jolokia error: ' . ($decoded['error'] ?? 'Unknown error'));
         }
 
         return $decoded;
@@ -584,7 +585,7 @@ class StompClient implements StompClientInterface
                 self::$persistentclient[$this->clientId] = $this->client;
                 $this->createStatefulStompInstance();
             } else {
-                $this->client =self::$persistentclient[$this->clientId];
+                $this->client = self::$persistentclient[$this->clientId];
                 $this->createStatefulStompInstance();
                 if (!self::$persistentclient[$this->clientId]->isConnected()) {
                     $this->retryConnection();
@@ -625,7 +626,7 @@ class StompClient implements StompClientInterface
             $this->createStatefulStompInstance();
 
         } else {
-            $this->client =self::$persistentclient[$this->clientId];
+            $this->client = self::$persistentclient[$this->clientId];
             $this->createStatefulStompInstance();
         }
     }

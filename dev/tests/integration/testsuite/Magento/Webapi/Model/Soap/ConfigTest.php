@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Soap;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class ConfigTest extends \PHPUnit\Framework\TestCase
 {
@@ -33,7 +36,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
                         'inputRequired' => false,
                         'isSecure' => false,
                         'resources' => [
-                            'Magento_Customer::manage'
+                            'Magento_Customer::manage',
                         ],
                         'documentation'
                             => 'Activate a customer account using a key that was sent in a confirmation email.',
@@ -43,39 +46,39 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
                                     'email' => [
                                         'type' => 'string',
                                         'required' => true,
-                                        'documentation' => null
+                                        'documentation' => null,
                                     ],
                                     'confirmationKey' => [
                                         'type' => 'string',
                                         'required' => true,
-                                        'documentation' => null
-                                    ]
-                                ]
+                                        'documentation' => null,
+                                    ],
+                                ],
                             ],
                             'out' => [
                                 'parameters' => [
                                     'result' => [
                                         'type' => 'CustomerDataCustomerInterface',
                                         'required' => true,
-                                        'documentation' => null
-                                    ]
+                                        'documentation' => null,
+                                    ],
                                 ],
                                 'throws' => [
-                                    '\\' . LocalizedException::class
-                                ]
-                            ]
+                                    '\\' . LocalizedException::class,
+                                ],
+                            ],
                         ],
-                        'parameters' => []
-                    ]
+                        'parameters' => [],
+                    ],
                 ],
                 'class' => AccountManagementInterface::class,
                 'description' => 'Interface for managing customers accounts.',
-            ]
+            ],
         ];
         $actual = $this->soapConfig->getRequestedSoapServices(
             [
                 'customerAccountManagementV1',
-                'NonExistentService'
+                'NonExistentService',
             ]
         );
         $this->assertEquals(array_replace_recursive($actual, $expected), $actual);
@@ -97,7 +100,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'customerCustomerRepositoryV1GetById',
             [
                 'customerCustomerRepositoryV1',
-                'NonExistentService'
+                'NonExistentService',
             ]
         );
         $this->assertEquals($expected, $actual);

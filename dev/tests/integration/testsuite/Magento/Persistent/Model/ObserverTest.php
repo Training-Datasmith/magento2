@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -68,7 +70,7 @@ class ObserverTest extends \PHPUnit\Framework\TestCase
                 'escaper' => $this->_escaper,
                 'customerViewHelper' => $this->_customerViewHelper,
                 'customerRepository' => $this->customerRepository,
-                'checkoutSession' => $this->_checkoutSession
+                'checkoutSession' => $this->_checkoutSession,
             ]
         );
     }
@@ -84,7 +86,7 @@ class ObserverTest extends \PHPUnit\Framework\TestCase
         $block = $this->_objectManager->create(
             \Magento\Sales\Block\Reorder\Sidebar::class,
             [
-                'httpContext' => $httpContext
+                'httpContext' => $httpContext,
             ]
         );
         $this->_observer->emulateWelcomeBlock($block);

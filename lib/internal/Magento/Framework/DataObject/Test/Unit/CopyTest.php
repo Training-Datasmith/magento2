@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -241,13 +242,13 @@ class CopyTest extends TestCase
         $sourceMock = $this->createPartialMock(
             AbstractSimpleObject::class,
             [
-                '__toArray'
+                '__toArray',
             ]
         );
         $targetMock = $this->createPartialMock(
             AbstractSimpleObject::class,
             [
-                'setData'
+                'setData',
             ]
         );
 
@@ -380,13 +381,13 @@ class CopyTest extends TestCase
         $sourceMock = $this->createPartialMock(
             Address::class,
             [
-                'getExtensionAttributes'
+                'getExtensionAttributes',
             ]
         );
         $targetMock = $this->createPartialMock(
             Address::class,
             [
-                'getExtensionAttributes'
+                'getExtensionAttributes',
             ]
         );
 

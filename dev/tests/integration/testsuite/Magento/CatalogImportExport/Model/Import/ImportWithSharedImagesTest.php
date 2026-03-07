@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -216,7 +217,7 @@ class ImportWithSharedImagesTest extends TestCase
         $source = $this->csvFactory->create(
             [
                 'file' => $fileName,
-                'directory' => $tmpDirectory
+                'directory' => $tmpDirectory,
             ]
         );
 
@@ -241,7 +242,7 @@ class ImportWithSharedImagesTest extends TestCase
 
         $this->import->setParameters(
             [
-                Import::FIELD_NAME_IMG_FILE_DIR => $mediaDir . '/import/images'
+                Import::FIELD_NAME_IMG_FILE_DIR => $mediaDir . '/import/images',
             ]
         );
         $uploader = $this->import->getUploader();

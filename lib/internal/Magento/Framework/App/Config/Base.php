@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Abstract configuration class
  * Used to retrieve core configuration values
@@ -6,6 +8,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 class Base extends \Magento\Framework\Simplexml\Config

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Wishlist\Block\Customer\Wishlist\Item\Column;
 
 use Magento\Catalog\Block\Product\View;
-use Magento\Catalog\Controller\Adminhtml\Product\Initialization\StockDataFilter;
 use Magento\Catalog\Model\Product\Image\UrlBuilder;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\ConfigInterface;

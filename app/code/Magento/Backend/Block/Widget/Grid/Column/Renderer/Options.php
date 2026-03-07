@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
-use Magento\Backend\Block\Widget\Grid\Column\Renderer\Text;
 use Magento\Framework\DataObject;
 use Magento\Ui\Component\Listing\Columns\Options as UiOptions;
 

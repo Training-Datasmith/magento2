@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -123,19 +124,19 @@ class GroupedCollectionTest extends TestCase
             ],
             [
                 'properties' => ['property' => 'test_value', 'content_type' => 'css', 'can_merge' => false],
-                'assets' => ['css_asset_one' => $cssAsset, 'css_asset_two' => $cssAsset]
+                'assets' => ['css_asset_one' => $cssAsset, 'css_asset_two' => $cssAsset],
             ],
             [
                 'properties' => ['property' => 'test_value2', 'content_type' => 'css', 'can_merge' => false],
-                'assets' => ['css_asset_four' => $cssAsset, 'css_asset_five' => $cssAsset]
+                'assets' => ['css_asset_four' => $cssAsset, 'css_asset_five' => $cssAsset],
             ],
             [
                 'properties' => ['property' => 'different_value', 'content_type' => 'css', 'can_merge' => false],
-                'assets' => ['css_asset_three' => $cssAsset]
+                'assets' => ['css_asset_three' => $cssAsset],
             ],
             [
                 'properties' => ['property' => 'test_value', 'content_type' => 'js', 'can_merge' => false],
-                'assets' => ['js_asset_one' => $jsAsset]
+                'assets' => ['js_asset_one' => $jsAsset],
             ],
             [
                 'properties' => [
@@ -144,11 +145,11 @@ class GroupedCollectionTest extends TestCase
                     'content_type' => 'js',
                     'can_merge' => false,
                 ],
-                'assets' => ['js_asset_two' => $jsAsset, 'js_asset_three' => $jsAsset]
+                'assets' => ['js_asset_two' => $jsAsset, 'js_asset_three' => $jsAsset],
             ],
             [
                 'properties' => ['property' => 'test_value', 'content_type' => 'js', 'can_merge' => true],
-                'assets' => ['asset_allowing_merge' => $jsAssetAllowingMerge]
+                'assets' => ['asset_allowing_merge' => $jsAssetAllowingMerge],
             ],
         ];
 

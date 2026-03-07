@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,20 +9,20 @@ declare(strict_types=1);
 namespace Magento\ConfigurableProduct\Api;
 
 use Magento\Authorization\Test\Fixture\Role;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Test\Fixture\Attribute as AttributeFixture;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Integration\Api\AdminTokenServiceInterface;
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\Framework\Webapi\Rest\Request;
-use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Integration\Api\AdminTokenServiceInterface;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Test\Fixture\User;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Catalog\Model\Product\Visibility;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
 /**
  * Complete workflow test for configurable product creation via REST API
@@ -83,7 +84,7 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
                 'lastname' => 'Admin',
                 'email' => 'testadmin@example.com',
                 'password' => \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD,
-                'role_id' => '$admin_role.role_id$'
+                'role_id' => '$admin_role.role_id$',
             ],
             'admin_user'
         ),
@@ -132,7 +133,7 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
             (int)$colorAttribute->getAttributeId(),
             [
                 ['value_index' => $option1->getValue()],
-                ['value_index' => $option2->getValue()]
+                ['value_index' => $option2->getValue()],
             ]
         );
         $this->assertNotEmpty($optionResult, 'Configurable product option should be created successfully');
@@ -170,7 +171,7 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
             Role::class,
             [
                 'role_name' => 'Test Admin Role',
-                'resources' => ['Magento_Backend::all']
+                'resources' => ['Magento_Backend::all'],
             ],
             'admin_role'
         ),
@@ -182,7 +183,7 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
                 'lastname' => 'Admin',
                 'email' => 'testadmin@example.com',
                 'password' => \Magento\TestFramework\Bootstrap::ADMIN_PASSWORD,
-                'role_id' => '$admin_role.role_id$'
+                'role_id' => '$admin_role.role_id$',
             ],
             'admin_user'
         )
@@ -246,18 +247,18 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
                 'custom_attributes' => [
                     [
                         'attribute_code' => 'description',
-                        'value' => 'Test configurable product created via REST API'
+                        'value' => 'Test configurable product created via REST API',
                     ],
                     [
                         'attribute_code' => 'meta_description',
-                        'value' => 'Meta description for configurable product'
+                        'value' => 'Meta description for configurable product',
                     ],
                     [
                         'attribute_code' => 'tax_class_id',
-                        'value' => 2 // Taxable Goods
-                    ]
-                ]
-            ]
+                        'value' => 2, // Taxable Goods
+                    ],
+                ],
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $productData);
@@ -291,8 +292,8 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
                 'label' => 'Color',
                 'position' => 0,
                 'is_use_default' => true,
-                'values' => $attributeValues
-            ]
+                'values' => $attributeValues,
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $requestData);
@@ -329,18 +330,18 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
                 'custom_attributes' => [
                     [
                         'attribute_code' => $colorAttributeCode,
-                        'value' => $colorValue
+                        'value' => $colorValue,
                     ],
                     [
                         'attribute_code' => 'description',
-                        'value' => 'Child product with red color'
+                        'value' => 'Child product with red color',
                     ],
                     [
                         'attribute_code' => 'tax_class_id',
-                        'value' => 2
-                    ]
-                ]
-            ]
+                        'value' => 2,
+                    ],
+                ],
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $productData);
@@ -364,7 +365,7 @@ class ConfigurableProductWorkflowTest extends WebapiAbstract
         ];
 
         $requestData = [
-            'childSku' => $childSku
+            'childSku' => $childSku,
         ];
 
         return $this->_webApiCall($serviceInfo, $requestData);

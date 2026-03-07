@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -170,7 +171,7 @@ class ConfigurableViewOnProductPageTest extends TestCase
                     'options' => [
                         [
                             'label' => 'Option 2',
-                            'product' => 'simple_20'
+                            'product' => 'simple_20',
                         ],
                         [
                             'label' => 'Option 1',

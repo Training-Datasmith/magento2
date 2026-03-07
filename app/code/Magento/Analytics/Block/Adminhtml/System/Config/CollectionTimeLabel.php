@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,31 +18,18 @@ use Magento\Framework\Locale\ResolverInterface;
  */
 class CollectionTimeLabel extends Field
 {
-    /**
-     * @var ResolverInterface
-     */
-    private $localeResolver;
-
-    /**
-     * @param Context $context
-     * @param ResolverInterface $localeResolver
-     * @param array $data
-     */
     public function __construct(
         Context $context,
-        ResolverInterface $localeResolver,
+        private readonly ResolverInterface $localeResolver,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->localeResolver = $localeResolver;
     }
 
     /**
      * Add current time zone to comment, properly translated according to locale
      *
-     * @param AbstractElement $element
      *
-     * @return string
      */
     public function render(AbstractElement $element): string
     {

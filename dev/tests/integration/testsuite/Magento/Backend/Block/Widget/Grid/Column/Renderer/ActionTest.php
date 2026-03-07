@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 use Magento\Backend\Block\Widget\Grid\Column;
@@ -62,14 +64,14 @@ class ActionTest extends \PHPUnit\Framework\TestCase
         $column = $this->objectManager->create(
             Column::class,
             [
-                'data' => $columnData
+                'data' => $columnData,
             ]
         );
         /** @var DataObject $row */
         $row = $this->objectManager->create(
             DataObject::class,
             [
-                'data' => $rowData
+                'data' => $rowData,
             ]
         );
         $this->assertStringContainsString(
@@ -89,13 +91,13 @@ class ActionTest extends \PHPUnit\Framework\TestCase
                     'index' => 'type',
                     'type' => 'action',
                     'actions' => [
-                        'rollback_action'=> [
-                            'caption' => 'Rollback', 'href'=>'#', 'onclick' => 'alert("test")'
-                        ]
-                    ]
+                        'rollback_action' => [
+                            'caption' => 'Rollback', 'href' => '#', 'onclick' => 'alert("test")',
+                        ],
+                    ],
                 ],
                 [],
-                'alert("test")'
+                'alert("test")',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ContextPlugin
                 ToolbarModel::ORDER_PARAM_NAME,
                 ToolbarModel::DIRECTION_PARAM_NAME,
                 ToolbarModel::MODE_PARAM_NAME,
-                ToolbarModel::LIMIT_PARAM_NAME
+                ToolbarModel::LIMIT_PARAM_NAME,
             ];
             foreach ($params as $param) {
                 $paramValue = $this->catalogSession->getData($param);

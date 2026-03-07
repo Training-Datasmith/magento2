@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento filesystem zlib driver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Driver;
 
 class Zlib extends File

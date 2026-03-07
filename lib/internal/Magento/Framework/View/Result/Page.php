@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,25 +9,25 @@
 namespace Magento\Framework\View\Result;
 
 use Magento\Framework;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\RequestInterface as AppRequestInterface;
 use Magento\Framework\App\Response\HttpInterface as HttpResponseInterface;
-use Magento\Framework\View;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\View\LayoutFactory;
-use Magento\Framework\View\Layout\ReaderPool;
 use Magento\Framework\Translate\InlineInterface;
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View;
+use Magento\Framework\View\Asset\Repository as AssetRepository;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\View\EntitySpecificHandlesList;
+use Magento\Framework\View\FileSystem as ViewFileSystem;
 use Magento\Framework\View\Layout\BuilderFactory;
 use Magento\Framework\View\Layout\GeneratorPool;
-use Magento\Framework\View\Page\Config\RendererInterface as PageConfigRendererInterface;
-use Magento\Framework\View\Page\Config\RendererFactory as PageConfigRendererFactory;
-use Magento\Framework\View\Page\Layout\Reader as PageLayoutReader;
-use Magento\Framework\App\RequestInterface as AppRequestInterface;
-use Magento\Framework\View\Asset\Repository as AssetRepository;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Layout\ReaderPool;
+use Magento\Framework\View\LayoutFactory;
 use Magento\Framework\View\Page\Config as PageConfig;
-use Magento\Framework\View\FileSystem as ViewFileSystem;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\EntitySpecificHandlesList;
+use Magento\Framework\View\Page\Config\RendererFactory as PageConfigRendererFactory;
+use Magento\Framework\View\Page\Config\RendererInterface as PageConfigRendererInterface;
+use Magento\Framework\View\Page\Layout\Reader as PageLayoutReader;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class Page represents a "page" result that encapsulates page type, page configuration
@@ -184,7 +186,7 @@ class Page extends Layout
         $this->layoutBuilderFactory->create(View\Layout\BuilderFactory::TYPE_PAGE, [
             'layout' => $this->layout,
             'pageConfig' => $this->pageConfig,
-            'pageLayoutReader' => $this->pageLayoutReader
+            'pageLayoutReader' => $this->pageLayoutReader,
         ]);
     }
 

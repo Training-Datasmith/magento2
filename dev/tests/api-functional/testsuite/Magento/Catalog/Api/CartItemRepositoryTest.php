@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Api;
 
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Class \Magento\Catalog\Api\CartItemRepositoryTest
@@ -48,7 +48,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/carts/' . $cartId . '/items',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -93,7 +93,7 @@ class CartItemRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/carts/' . $cartId . '/items',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Oauth\Helper;
 
 class Oauth
@@ -11,11 +14,11 @@ class Oauth
      * #@+
      * Lengths of token fields
      */
-    const LENGTH_TOKEN = 32;
+    public const LENGTH_TOKEN = 32;
 
-    const LENGTH_TOKEN_SECRET = 32;
+    public const LENGTH_TOKEN_SECRET = 32;
 
-    const LENGTH_TOKEN_VERIFIER = 32;
+    public const LENGTH_TOKEN_VERIFIER = 32;
 
     /**#@- */
 
@@ -23,23 +26,23 @@ class Oauth
      * #@+
      * Lengths of consumer fields
      */
-    const LENGTH_CONSUMER_KEY = 32;
+    public const LENGTH_CONSUMER_KEY = 32;
 
-    const LENGTH_CONSUMER_SECRET = 32;
+    public const LENGTH_CONSUMER_SECRET = 32;
 
     /**#@- */
 
     /**
      * Nonce length
      */
-    const LENGTH_NONCE = 32;
+    public const LENGTH_NONCE = 32;
 
     /**
      * Value of callback URL when it is established or if the client is unable to receive callbacks
      *
      * @link http://tools.ietf.org/html/rfc5849#section-2.1     Requirement in RFC-5849
      */
-    const CALLBACK_ESTABLISHED = 'oob';
+    public const CALLBACK_ESTABLISHED = 'oob';
 
     /**
      * @var \Magento\Framework\Math\Random

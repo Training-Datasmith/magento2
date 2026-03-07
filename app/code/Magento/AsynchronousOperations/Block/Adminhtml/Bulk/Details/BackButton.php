@@ -1,32 +1,27 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Back button configuration provider
  */
 class BackButton implements ButtonProviderInterface
 {
-    /**
-     * URL builder
-     *
-     * @var UrlInterface
-     */
-    private $urlBuilder;
-
-    /**
-     * @param UrlInterface $urlBuilder
-     */
     public function __construct(
-        UrlInterface $urlBuilder
+        /**
+         * URL builder
+         */
+        private readonly UrlInterface $urlBuilder
     ) {
-        $this->urlBuilder = $urlBuilder;
     }
 
     /**
@@ -34,13 +29,13 @@ class BackButton implements ButtonProviderInterface
      *
      * @return array button configuration
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         return [
             'label' => __('Back'),
             'on_click' => sprintf("location.href = '%s';", $this->urlBuilder->getUrl('*/')),
             'class' => 'back',
-            'sort_order' => 10
+            'sort_order' => 10,
         ];
     }
 }

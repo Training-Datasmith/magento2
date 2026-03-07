@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Image include policy into sitemap file
  *
  */
+
 namespace Magento\Sitemap\Model\Source\Product\Image;
 
 /**
@@ -19,11 +22,11 @@ class IncludeImage implements \Magento\Framework\Option\ArrayInterface
     /**#@+
      * Add Images into Sitemap possible values
      */
-    const INCLUDE_NONE = 'none';
+    public const INCLUDE_NONE = 'none';
 
-    const INCLUDE_BASE = 'base';
+    public const INCLUDE_BASE = 'base';
 
-    const INCLUDE_ALL = 'all';
+    public const INCLUDE_ALL = 'all';
 
     /**#@-*/
 
@@ -37,7 +40,7 @@ class IncludeImage implements \Magento\Framework\Option\ArrayInterface
         return [
             self::INCLUDE_NONE => __('None'),
             self::INCLUDE_BASE => __('Base Only'),
-            self::INCLUDE_ALL => __('All')
+            self::INCLUDE_ALL => __('All'),
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Data;
 
 /**
@@ -13,14 +16,14 @@ namespace Magento\SalesRule\Model\Data;
 class CouponGenerationSpec extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\SalesRule\Api\Data\CouponGenerationSpecInterface
 {
-    const KEY_RULE_ID = 'rule_id';
-    const KEY_FORMAT = 'format';
-    const KEY_LENGTH = 'length';
-    const KEY_QUANTITY = 'quantity';
-    const KEY_PREFIX = 'prefix';
-    const KEY_SUFFIX = 'suffix';
-    const KEY_DELIMITER_AT_EVERY = 'dash';
-    const KEY_DELIMITER = 'delimiter';
+    public const KEY_RULE_ID = 'rule_id';
+    public const KEY_FORMAT = 'format';
+    public const KEY_LENGTH = 'length';
+    public const KEY_QUANTITY = 'quantity';
+    public const KEY_PREFIX = 'prefix';
+    public const KEY_SUFFIX = 'suffix';
+    public const KEY_DELIMITER_AT_EVERY = 'dash';
+    public const KEY_DELIMITER = 'delimiter';
 
     /**
      * Get the id of the rule associated with the coupon

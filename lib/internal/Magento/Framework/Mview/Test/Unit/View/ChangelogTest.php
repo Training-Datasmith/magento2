@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class ChangelogTest extends TestCase
         $mviewConfigMock->expects($this->any())
             ->method('getView')
             ->willReturn([
-                'subscriptions' => []
+                'subscriptions' => [],
             ]);
         return $mviewConfigMock;
     }

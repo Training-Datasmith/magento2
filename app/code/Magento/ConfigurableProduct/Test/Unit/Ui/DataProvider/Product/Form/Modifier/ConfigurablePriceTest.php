@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier\AbstractModifierTestCase;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurablePrice as ConfigurablePriceModifier;
-use Magento\Catalog\Model\Locator\LocatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConfigurablePriceTest extends AbstractModifierTestCase
 {
@@ -46,10 +47,10 @@ class ConfigurablePriceTest extends AbstractModifierTestCase
             'arguments' => [
                 'data' => [
                     'config' => [
-                        'component' => 'Magento_ConfigurableProduct/js/components/price-configurable'
-                    ]
-                ]
-            ]
+                        'component' => 'Magento_ConfigurableProduct/js/components/price-configurable',
+                    ],
+                ],
+            ],
         ];
         return [
             [
@@ -59,12 +60,12 @@ class ConfigurablePriceTest extends AbstractModifierTestCase
                             'container_price' => [
                                 'children' => [
                                     'advanced_pricing_button' => [
-                                        'arguments' => []
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'arguments' => [],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'metaOutput' => [
                     'product-details' => [
@@ -77,7 +78,7 @@ class ConfigurablePriceTest extends AbstractModifierTestCase
                                                 'config' => [
                                                     'visible' => 0,
                                                     'disabled' => 1,
-                                                    'componentType' => 'container'
+                                                    'componentType' => 'container',
                                                 ],
                                             ],
                                         ],
@@ -86,30 +87,30 @@ class ConfigurablePriceTest extends AbstractModifierTestCase
                                 ],
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ], [
                 'metaInput' => [
                     'product-details' => [
                         'children' => [
                             'container_price' => [
-                                'children' => []
-                            ]
-                        ]
-                    ]
+                                'children' => [],
+                            ],
+                        ],
+                    ],
                 ],
                 'metaOutput' => [
                     'product-details' => [
                         'children' => [
                             'container_price' => [
                                 'children' => [
-                                    'price' => $priceComponentConfig
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'price' => $priceComponentConfig,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -132,15 +133,15 @@ class ConfigurablePriceTest extends AbstractModifierTestCase
                                     'data' => [
                                         'config' => [
                                             'scopeLabel' => 'Some Label',
-                                            'service' => 'Some Service'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                            'service' => 'Some Service',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $result = $modifier->modifyMeta($meta);

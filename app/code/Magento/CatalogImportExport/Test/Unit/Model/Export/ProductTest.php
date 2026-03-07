@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,21 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Export;
 
-use Magento\Catalog\Model\ResourceModel\ProductFactory;
-use Magento\CatalogInventory\Model\ResourceModel\Stock\ItemFactory;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
 use Magento\CatalogImportExport\Model\Export\Product;
 use Magento\CatalogImportExport\Model\Export\Product\Type\Factory;
 use Magento\CatalogImportExport\Model\Export\ProductFilterInterface;
 use Magento\CatalogImportExport\Model\Export\RowCustomizer\Composite;
-use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection as AttributeSetCollection;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
+use Magento\CatalogInventory\Model\ResourceModel\Stock\ItemFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Eav\Model\Entity\Type;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\Collection as AttributeSetCollection;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory as AttributeSetCollectionFactory;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\EntityManager\MetadataPool;
@@ -30,9 +29,9 @@ use Magento\Framework\Logger\Monolog;
 use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter;
 use Magento\ImportExport\Model\Export\ConfigInterface;
-use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -230,7 +229,7 @@ class ProductTest extends TestCase
             '_initStores',
             'initAttributeSets',
             'initWebsites',
-            'initCategories'
+            'initCategories',
         ];
 
         $mockMethods = array_merge($constructorMethods, [
@@ -435,7 +434,7 @@ class ProductTest extends TestCase
         $currentMemoryLimit = ini_get('memory_limit');
 
         foreach ($scenarios as $scenario) {
-            if ($currentMemoryLimit !== "-1" && $currentMemoryLimit < $scenario['memory_limit']) {
+            if ($currentMemoryLimit !== '-1' && $currentMemoryLimit < $scenario['memory_limit']) {
                 $this->markTestSkipped('Memory limit is too low for this test');
             }
             ini_set('memory_limit', $scenario['memory_limit']);
@@ -478,7 +477,7 @@ class ProductTest extends TestCase
                 'memory_limit' => '2G',
                 'options' => $options,
                 'expected_items_per_page' => 5000,
-            ]
+            ],
         ]];
 
         $options = [];
@@ -502,7 +501,7 @@ class ProductTest extends TestCase
                 'memory_limit' => '2G',
                 'options' => $options,
                 'expected_items_per_page' => 1000,
-            ]
+            ],
         ]];
 
         $options = [];
@@ -526,7 +525,7 @@ class ProductTest extends TestCase
                 'memory_limit' => '2G',
                 'options' => $options,
                 'expected_items_per_page' => 2500,
-            ]
+            ],
         ]];
 
         return $scenarios;

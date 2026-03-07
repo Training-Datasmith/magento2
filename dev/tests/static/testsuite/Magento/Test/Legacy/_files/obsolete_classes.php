@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -39,11 +41,11 @@ return [
     ['Mage_Admin_Model_Resource_Rules_Collection', 'Magento\Authorization\Model\ResourceModel\Rules\Collection'],
     [
         'Mage_Admin_Model_Resource_Permissions_Collection',
-        'Magento\Authorization\Model\ResourceModel\Rules\Collection'
+        'Magento\Authorization\Model\ResourceModel\Rules\Collection',
     ],
     [
         'Magento\Authorization\Model\ResourceModel\Permissions\Collection',
-        'Magento\Authorization\Model\ResourceModel\Rules\Collection'
+        'Magento\Authorization\Model\ResourceModel\Rules\Collection',
     ],
     ['Mage_Adminhtml_Block_Abstract', 'Magento\Backend\Block\AbstractBlock'],
     ['Mage_Adminhtml_Block_Backup_Grid'],
@@ -784,7 +786,7 @@ return [
     ['Magento\Core\Model\Resource\AbstractResource', 'Magento\Framework\Model\ResourceModel\AbstractResource'],
     [
         'Magento\Framework\Model\ModelResource\AbstractResource',
-        'Magento\Framework\Model\ResourceModel\AbstractResource'
+        'Magento\Framework\Model\ResourceModel\AbstractResource',
     ],
     ['Magento\Core\Model\Resource\Db\AbstractDb', 'Magento\Framework\Model\ResourceModel\Db\AbstractDb'],
     ['Magento\Core\Model\Resource\Db\Profiler', 'Magento\Framework\Model\ResourceModel\Db\Profiler'],
@@ -806,14 +808,14 @@ return [
     ['Magento\Core\Model\Resource\Type\AbstractType', 'Magento\Framework\Model\ResourceModel\Type\AbstractType'],
     [
         'Magento\Framework\Model\ModelResource\Type\AbstractType',
-        'Magento\Framework\Model\ResourceModel\Type\AbstractType'
+        'Magento\Framework\Model\ResourceModel\Type\AbstractType',
     ],
     ['Magento\Core\Model\Resource\Type\Db', 'Magento\Framework\Model\ResourceModel\Type\Db'],
     ['Magento\Framework\Model\ModelResource\Type\Db', 'Magento\Framework\Model\ResourceModel\Type\Db'],
     ['Magento\Core\Model\Resource\Type\Db\Pdo\Mysql', 'Magento\Framework\Model\ResourceModel\Type\Db\Pdo\Mysql'],
     [
         'Magento\Framework\Model\ModelResource\Type\Db\Pdo\Mysql',
-        'Magento\Framework\Model\ResourceModel\Type\Db\Pdo\Mysql'
+        'Magento\Framework\Model\ResourceModel\Type\Db\Pdo\Mysql',
     ],
     [
         'Magento\Core\Model\Resource\Db\Collection\AbstractCollection',
@@ -1292,7 +1294,7 @@ return [
     ['Magento\Sales\Model\ResourceModel\Helper\HelperInterface', 'Magento\Sales\Model\ResourceModel\HelperInterface'],
     [
         'Magento\Reports\Model\ResourceModel\Helper\HelperInterface',
-        'Magento\Reports\Model\ResourceModel\HelperInterface'
+        'Magento\Reports\Model\ResourceModel\HelperInterface',
     ],
     ['Magento\Payment\Block\Form\Banktransfer', 'Magento\OfflinePayments\Block\Form\Banktransfer'],
     ['Magento\Payment\Block\Form\Cashondelivery', 'Magento\OfflinePayments\Block\Form\Cashondelivery'],
@@ -2317,7 +2319,7 @@ return [
     ['Magento\Core\Model\Resource\Website\Collection', 'Magento\Store\Model\ResourceModel\Website\Collection'],
     [
         'Magento\Core\Model\Resource\Website\Grid\Collection',
-        'Magento\Store\Model\ResourceModel\Website\Grid\Collection'
+        'Magento\Store\Model\ResourceModel\Website\Grid\Collection',
     ],
     ['Magento\Core\Model\ScopeInterface', 'Magento\Store\Model\ScopeInterface'],
     ['Magento\Core\Model\Store', 'Magento\Store\Model\Store'],
@@ -2372,7 +2374,7 @@ return [
     ],
     [
         'Magento\Rating\Model\Resource\Rating\Grid\Collection',
-        'Magento\Review\Model\ResourceModel\Rating\Grid\Collection'
+        'Magento\Review\Model\ResourceModel\Rating\Grid\Collection',
     ],
     ['Magento\Rating\Model\Resource\Rating\Collection', 'Magento\Review\Model\ResourceModel\Rating\Collection'],
     ['Magento\Rating\Model\Resource\Rating\Option\Vote', 'Magento\Review\Model\ResourceModel\Rating\Option\Vote'],
@@ -2419,7 +2421,7 @@ return [
     ['Magento\Backend\Model\ResourceModel\Translate', 'Magento\Translation\Model\ResourceModel\Translate'],
     [
         'Magento\Backend\Model\ResourceModel\Translate\StringUtils',
-        'Magento\Translation\Model\ResourceModel\StringUtils'
+        'Magento\Translation\Model\ResourceModel\StringUtils',
     ],
     ['Magento\Core\Model\Layout', 'Magento\Framework\View\Layout'],
     ['Magento\Catalog\Block\Product\Price\Template'],
@@ -3054,7 +3056,7 @@ return [
     ['Magento\Core\Model\Resource\Layout\Update', 'Magento\Widget\Model\ResourceModel\Layout\Update'],
     [
         'Magento\Core\Model\Resource\Layout\Update\Collection',
-        'Magento\Widget\Model\ResourceModel\Layout\Update\Collection'
+        'Magento\Widget\Model\ResourceModel\Layout\Update\Collection',
     ],
     ['Magento\Backend\Model\View', 'Magento\Framework\App\View'],
     ['Zend_Controller_Router_Route'],
@@ -3689,24 +3691,24 @@ return [
     ['Magento\Authorizenet\Controller\Authorizenet\Payment\Cancel'],
     [
         'Magento\Authorizenet\Model\Authorizenet\Source\Cctype',
-        'Magento\Authorizenet\Model\Source\Cctype'
+        'Magento\Authorizenet\Model\Source\Cctype',
     ],
     [
         'Magento\Authorizenet\Model\Authorizenet\Source\PaymentAction',
-        'Magento\Authorizenet\Model\Source\PaymentAction'
+        'Magento\Authorizenet\Model\Source\PaymentAction',
     ],
     ['Magento\Authorizenet\Model\Authorizenet\Cards'],
     [
         'Magento\Authorizenet\Model\Authorizenet\Debug',
-        'Magento\Authorizenet\Model\Debug'
+        'Magento\Authorizenet\Model\Debug',
     ],
     [
         'Magento\Authorizenet\Model\ResourceModel\Authorizenet\Debug\Collection',
-        'Magento\Authorizenet\Model\ResourceModel\Debug\Collection'
+        'Magento\Authorizenet\Model\ResourceModel\Debug\Collection',
     ],
     [
         'Magento\Authorizenet\Model\ResourceModel\Authorizenet\Debug',
-        'Magento\Authorizenet\Model\ResourceModel\Debug'
+        'Magento\Authorizenet\Model\ResourceModel\Debug',
     ],
     ['Magento\GoogleShopping\Block\SiteVerification'],
     ['Magento\GoogleShopping\Block\Adminhtml\Items\Renderer\Id'],
@@ -3806,16 +3808,16 @@ return [
     ['Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\Tabs\Configurable'],
     [
         'Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Handler\ProductType'
-        . '\Configurable'
+        . '\Configurable',
     ],
     ['Magento\Setup\Model\Deployer', 'Magento\Deploy\Model\Deployer'],
     [
         'Magento\Deploy\Console\Command\DeployStaticContentCommand',
-        'Magento\Setup\Console\Command\DeployStaticContentCommand'
+        'Magento\Setup\Console\Command\DeployStaticContentCommand',
     ],
     [
         'Magento\Setup\Test\Unit\Console\Command\DeployStaticContentCommandTest',
-        'Magento\Deploy\Test\Unit\Console\Command\DeployStaticContentCommandTest'
+        'Magento\Deploy\Test\Unit\Console\Command\DeployStaticContentCommandTest',
     ],
     ['Magento\Store\Model\Storage\Db', 'Magento\Store\Model\StoreManagerInterface'],
     ['Magento\Store\Model\Storage\DefaultStorage', 'Magento\Store\Model\StoreManagerInterface'],
@@ -3849,18 +3851,18 @@ return [
     ['Magento\Checkout\Model\Agreements\AgreementsValidator', 'Magento\CheckoutAgreements\Model\AgreementsValidator'],
     [
         'Magento\Checkout\Model\Agreements\AgreementsProviderInterface',
-        'Magento\CheckoutAgreements\Model\AgreementsProviderInterface'
+        'Magento\CheckoutAgreements\Model\AgreementsProviderInterface',
     ],
     ['Magento\Setup\Model\SampleData', 'Magento\SampleData\Model\SampleData'],
     ['Magento\Customer\Controller\Account\ResetPassword'],
     ['Magento\Customer\Controller\Account'],
     [
         'Magento\Framework\Module\ModuleRegistryInterface',
-        'Magento\Framework\Component\ComponentRegistrarInterface'
+        'Magento\Framework\Component\ComponentRegistrarInterface',
     ],
     [
         'Magento\Framework\Module\ModuleRegistry',
-        'Magento\Framework\Component\ComponentRegistrar'
+        'Magento\Framework\Component\ComponentRegistrar',
     ],
     ['Magento\Framework\App\Router\ActionList\Reader'],
     ['Magento\User\Observer\Backend\CheckAdminPasswordChangeObserver'],
@@ -3957,27 +3959,27 @@ return [
     ['Magento\Catalog\Model\App\Action\ContextPlugin'],
     [
         'Magento\CmsUrlRewrite\Plugin\Cms\Model\Resource\Page',
-        'Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel\Page'
+        'Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel\Page',
     ],
     [
         'Magento\CmsUrlRewrite\Test\Unit\Plugin\Cms\Model\Resource\PageTest',
-        'Magento\CmsUrlRewrite\Test\Unit\Plugin\Cms\Model\ResourceModel\PageTest'
+        'Magento\CmsUrlRewrite\Test\Unit\Plugin\Cms\Model\ResourceModel\PageTest',
     ],
     [
         'Magento\ConfigurableProduct\Plugin\Model\Resource\Product',
-        'Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Product'
+        'Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Product',
     ],
     [
         'Magento\ConfigurableProduct\Test\Unit\Plugin\Model\Resource\ProductTest',
-        'Magento\ConfigurableProduct\Test\Unit\Plugin\Model\ResourceModel\ProductTest'
+        'Magento\ConfigurableProduct\Test\Unit\Plugin\Model\ResourceModel\ProductTest',
     ],
     [
         '\Magento\SalesRule\Model\Plugin\Resource\Rule',
-        '\Magento\SalesRule\Model\Plugin\ResourceModel\Rule'
+        '\Magento\SalesRule\Model\Plugin\ResourceModel\Rule',
     ],
     [
         '\Magento\SalesRule\Test\Unit\Model\Plugin\Resource\RuleTest',
-        '\Magento\SalesRule\Test\Unit\Model\Plugin\ResourceModel\RuleTest'
+        '\Magento\SalesRule\Test\Unit\Model\Plugin\ResourceModel\RuleTest',
     ],
     ['Magento\Eav\Model\Entity\Increment\Numeric', 'Magento\Eav\Model\Entity\Increment\NumericValue'],
     ['Magento\Framework\Pricing\Object\SaleableInterface', 'Magento\Framework\Pricing\SaleableInterface'],
@@ -3992,11 +3994,11 @@ return [
     ['Magento\Catalog\Observer\CatalogCheckIsUsingStaticUrlsAllowed', 'Magento\Catalog\Observer\*'],
     [
         'Magento\LayeredNavigation\Block\Adminhtml\Product\Attribute\Edit\Tab\Front\Observer',
-        'Magento\LayeredNavigation\Observer\*'
+        'Magento\LayeredNavigation\Observer\*',
     ],
     [
         'Magento\LayeredNavigation\Block\Adminhtml\Product\Attribute\Grid\Observer',
-        'Magento\LayeredNavigation\Observer\*'
+        'Magento\LayeredNavigation\Observer\*',
     ],
     ['Magento\Authorizenet\Model\Directpost\Observer', 'Magento\Authorizenet\Observer\*'],
     ['Magento\Downloadable\Model\Observer', 'Magento\Downloadable\Observer\*'],
@@ -4055,7 +4057,7 @@ return [
     ['Magento\Persistent\Model\Observer\MakePersistentQuoteGuest', 'Magento\Persistent\Observer\*'],
     [
         'Magento\Persistent\Observer\RemovePersistentCookieObserver',
-        '\Magento\Persistent\Observer\RemovePersistentCookieOnRegisterObserver'
+        '\Magento\Persistent\Observer\RemovePersistentCookieOnRegisterObserver',
     ],
     ['Magento\CmsUrlRewrite\Model\Observer', 'Magento\CmsUrlRewrite\Observer\*'],
     ['Magento\Cms\Model\Observer', 'Magento\Cms\Observer\*'],
@@ -4098,7 +4100,7 @@ return [
     ['Magento\Developer\Model\View\Asset\PreProcessor\DeveloperChainFactory'],
     [
         'Magento\Quote\Api\GuestShippingAddressManagementInterface',
-        'Magento\Quote\Model\GuestCart\GuestShippingAddressManagementInterface'
+        'Magento\Quote\Model\GuestCart\GuestShippingAddressManagementInterface',
     ],
     ['Magento\Quote\Api\ShippingAddressManagementInterface', 'Magento\Quote\Model\ShippingAddressManagementInterface'],
     ['Magento\Cms\Block\Adminhtml\Page\Edit'],
@@ -4116,7 +4118,7 @@ return [
     ['Magento\Catalog\Block\Adminhtml\Category\Edit\Form'],
     [
         'Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Media',
-        'Magento\Catalog\Model\ResourceModel\Product\Gallery'
+        'Magento\Catalog\Model\ResourceModel\Product\Gallery',
     ],
     ['Magento\CatalogInventory\Observer\AddStockStatusToCollectionObserver'],
     ['Magento\CatalogRule\Block\Adminhtml\Promo\Catalog\Edit\Tab\Actions'],
@@ -4225,7 +4227,7 @@ return [
     ['Magento\Fmework\MessageQueue\Config\Reader\Xml\Converter\DeprecatedFormat'],
     [
         'Magento\Framework\MessageQueue\Config\Converter',
-        'Magento\Framework\MessageQueue\Config\Reader\Xml\CompositeConverter'
+        'Magento\Framework\MessageQueue\Config\Reader\Xml\CompositeConverter',
     ],
     ['Magento\Framework\MessageQueue\Config\Reader', 'Magento\Framework\MessageQueue\Config\Reader\Xml'],
     ['Magento\Framework\MessageQueue\PublisherFactory'],
@@ -4240,7 +4242,7 @@ return [
     ['Magento\Search\Model\SearchDataProviderInterface', 'Magento\AdvancedSearch\Model\SearchDataProviderInterface'],
     [
         'Magento\Elasticsearch\Test\Unit\Model\SearchAdapter\ConnectionManagerTest',
-        'Magento\Elasticsearch\Test\Unit\SearchAdapter\ConnectionManagerTest'
+        'Magento\Elasticsearch\Test\Unit\SearchAdapter\ConnectionManagerTest',
     ],
     ['Zend_Feed', 'Laminas\Feed'],
     ['Zend_Uri', 'Laminas\Uri\Uri'],
@@ -4319,15 +4321,15 @@ return [
     ['Magento\Setup\Console\Command\CronRunCommand'],
     [
         'Magento\Elasticsearch\SearchAdapter\Query\Builder\Match',
-        'Magento\Elasticsearch\SearchAdapter\Query\Builder\MatchQuery'
+        'Magento\Elasticsearch\SearchAdapter\Query\Builder\MatchQuery',
     ],
     [
         'Magento\Framework\Search\Request\Query\Match',
-        'Magento\Framework\Search\Request\Query\MatchQuery'
+        'Magento\Framework\Search\Request\Query\MatchQuery',
     ],
     [
         'Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\Builder\MatchTest',
-        'Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\Builder\MatchQueryTest'
+        'Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\Builder\MatchQueryTest',
     ],
     ['Magento\Elasticsearch\Test\Unit\Model\DataProvider\Base\SuggestionsTest'],
     ['Zend_Measure_Length', 'Magento\Framework\Measure\Length'],

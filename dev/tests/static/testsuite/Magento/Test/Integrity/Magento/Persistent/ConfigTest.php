@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test persistent.xsd and xml files.
  *
@@ -8,6 +10,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Persistent;
 
 class ConfigTest extends \Magento\TestFramework\Integrity\AbstractConfig

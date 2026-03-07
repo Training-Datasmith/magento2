@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class PopulateCustomerAddressFromInput
      * @return AddressInterface
      * @throws GraphQlInputException
      */
-    private function setRegionData(AddressInterface $address, array $addressData):AddressInterface
+    private function setRegionData(AddressInterface $address, array $addressData): AddressInterface
     {
         if (!empty($addressData['region']['region_id'])) {
             if (array_key_exists('country_code', $addressData)) {

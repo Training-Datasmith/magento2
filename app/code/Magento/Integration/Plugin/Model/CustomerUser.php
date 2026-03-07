@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Plugin\Model;
 
+use Magento\Customer\Model\Customer;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Integration\Model\CustomerTokenService;
-use Magento\Customer\Model\Customer;
 
 /**
  * Plugin to delete customer tokens when customer becomes inactive

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class HydratorDehydratorProvider implements HydratorProviderInterface, Dehydrato
             $this->dehydratorInstances[$resolverClass] = $this->objectManager->create(
                 DehydratorComposite::class,
                 [
-                    'dehydrators' => $resolverDehydrators
+                    'dehydrators' => $resolverDehydrators,
                 ]
             );
         }
@@ -103,7 +104,7 @@ class HydratorDehydratorProvider implements HydratorProviderInterface, Dehydrato
             $this->hydratorInstances[$resolverClass] = $this->objectManager->create(
                 HydratorComposite::class,
                 [
-                    'hydrators' => $resolverHydrators
+                    'hydrators' => $resolverHydrators,
                 ]
             );
         }

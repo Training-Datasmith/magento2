@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,11 +18,11 @@ use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\Entity\ScopeInterface;
 use Magento\Framework\Model\Entity\ScopeResolver;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Eav attributes read handler tests
@@ -111,7 +112,7 @@ class ReadHandlerTest extends TestCase
                     [
                         'attribute_id' => 'attributeId',
                         'value' => 'attributeValue',
-                    ]
+                    ],
                 ]
             );
         $this->metadataMock->method('getEntityConnection')
@@ -174,8 +175,8 @@ class ReadHandlerTest extends TestCase
                     [
                         'attribute_id' => 'attributeId',
                         'value' => 'attributeValue',
-                        'store_id' => 0
-                    ]
+                        'store_id' => 0,
+                    ],
                 ]
             );
         $this->metadataMock->method('getEntityConnection')
@@ -191,7 +192,7 @@ class ReadHandlerTest extends TestCase
                 'getAttributeCode',
                 'isStatic',
                 'getBackend',
-                'getAttributeId'
+                'getAttributeId',
             ]
         );
         $attributeMock->method('isStatic')
@@ -226,10 +227,10 @@ class ReadHandlerTest extends TestCase
                 1,
                 [
                     'linkField' => 'theLinkField',
-                    'attributeCode' => 'attributeValue'
+                    'attributeCode' => 'attributeValue',
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -246,20 +247,20 @@ class ReadHandlerTest extends TestCase
                 1,
                 [
                     'linkField' => 'theLinkField',
-                    'attributeCode' => 'attributeValue'
+                    'attributeCode' => 'attributeValue',
                 ],
                 false,
-                null
+                null,
             ],
             'non-static attribute2' => [
                 'env-entity-type',
                 1,
                 [
                     'linkField' => 'theLinkField',
-                    'attributeCode' => 'attributeValue'
+                    'attributeCode' => 'attributeValue',
                 ],
                 false,
-                1
+                1,
             ],
         ];
     }

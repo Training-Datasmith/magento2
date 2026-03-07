@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class StorageConfigTest extends TestCase
                     'name' => 'test',
                     'xsi:type' => 'string',
                     'value' => 'test',
-                ]
+                ],
             ],
         ];
         $this->assertEquals($expectedResult, $this->converter->convert($storageConfig));

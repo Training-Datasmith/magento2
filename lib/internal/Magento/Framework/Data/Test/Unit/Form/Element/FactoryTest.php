@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,15 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Factory
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\Collection;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\ObjectManager\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FactoryTest extends TestCase
 {
@@ -114,7 +116,7 @@ class FactoryTest extends TestCase
             'submit' => ['submit'],
             'text' => ['text'],
             'textarea' => ['textarea'],
-            'time' => ['time']
+            'time' => ['time'],
         ];
     }
 
@@ -145,7 +147,7 @@ class FactoryTest extends TestCase
         return [
             'factory' => ['factory'],
             'collection' => ['collection'],
-            'abstract' => ['abstract']
+            'abstract' => ['abstract'],
         ];
     }
 
@@ -176,11 +178,11 @@ class FactoryTest extends TestCase
     {
         return [
             Factory::class => [
-                Factory::class
+                Factory::class,
             ],
             Collection::class => [
-                Collection::class
-            ]
+                Collection::class,
+            ],
         ];
     }
 }

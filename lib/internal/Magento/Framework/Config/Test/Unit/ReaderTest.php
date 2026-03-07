@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -34,9 +35,9 @@ class ReaderTest extends TestCase
     {
         $config = [
             'default' => [
-                'general/locale/code'=> 'ru_RU',
-                'general/locale/timezone'=> 'America/Chicago',
-            ]
+                'general/locale/code' => 'ru_RU',
+                'general/locale/timezone' => 'America/Chicago',
+            ],
         ];
         $this->source->expects($this->once())
             ->method('get')

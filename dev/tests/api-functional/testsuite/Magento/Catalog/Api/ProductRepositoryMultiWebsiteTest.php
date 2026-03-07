@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,12 @@ namespace Magento\Catalog\Api;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Data;
+use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Webapi\Rest\Request;
 use Magento\Store\Model\Store;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
@@ -21,10 +26,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
-use Magento\Catalog\Model\Product;
-use Magento\Framework\Webapi\Rest\Request;
-use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Test for \Magento\Catalog\Api\ProductRepositoryInterface
@@ -88,7 +89,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 if ($attribute['attribute_code'] == 'category_ids'
                     && !is_array($attribute['value'])
                 ) {
-                    $attribute['value'] = [""];
+                    $attribute['value'] = [''];
                 }
             }
         }
@@ -117,7 +118,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
      * @param string $sku
      * @return boolean
      */
-    private function deleteProduct(string $sku) : bool
+    private function deleteProduct(string $sku): bool
     {
         $serviceInfo = [
             'rest' => [
@@ -234,7 +235,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 [
                     'attribute_code' => 'text_attribute',
                     'value' => 'api_test_value_text',
-                ]
+                ],
             ],
         ];
         $response = $this->saveProduct($request1, 'all');
@@ -249,13 +250,13 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 [
                     'attribute_code' => 'varchar_attribute',
                     'value' => 'api_test_value_varchar_changed',
-                ]
+                ],
             ],
         ];
         $response2 = $this->saveProduct($request2, 'fixture_third_store');
         $expected = [
             'varchar_attribute' => 'api_test_value_varchar_changed',
-            'text_attribute' => 'api_test_value_text'
+            'text_attribute' => 'api_test_value_text',
         ];
         $this->assertResponse(
             array_merge($request1, $expected),
@@ -279,13 +280,13 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 [
                     'attribute_code' => 'text_attribute',
                     'value' => 'api_test_value_text_changed',
-                ]
+                ],
             ],
         ];
         $response3 = $this->saveProduct($request3, 'fixture_third_store');
         $expected = [
             'varchar_attribute' => 'api_test_value_varchar_changed',
-            'text_attribute' => 'api_test_value_text_changed'
+            'text_attribute' => 'api_test_value_text_changed',
         ];
         $this->assertResponse(
             array_merge($request1, $expected),
@@ -309,13 +310,13 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 [
                     'attribute_code' => 'text_attribute',
                     'value' => null,
-                ]
+                ],
             ],
         ];
         $response4 = $this->saveProduct($request4, 'fixture_third_store');
         $expected = [
             'varchar_attribute' => 'api_test_value_varchar_changed',
-            'text_attribute' => 'api_test_value_text'
+            'text_attribute' => 'api_test_value_text',
         ];
         $this->assertResponse(
             array_merge($request1, $expected),
@@ -354,7 +355,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
         // change any attribute value in second store
         $request = [
             ProductInterface::SKU => $sku,
-            'name' => 'updated product name for storeview'
+            'name' => 'updated product name for storeview',
         ];
         $this->saveProduct($request, $secondWebsiteStore1);
 
@@ -366,7 +367,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
                 [
                     'attribute_code' => 'special_price',
                     'value' => 8,
-                ]
+                ],
             ],
         ];
         $this->saveProduct($request, $secondWebsiteStore1);
@@ -432,7 +433,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
         $this->saveProduct(
             [
                 ProductInterface::SKU => $sku2,
-                'name' => $sku1Name
+                'name' => $sku1Name,
             ],
             $defaultStore->getCode()
         );
@@ -454,7 +455,7 @@ class ProductRepositoryMultiWebsiteTest extends WebapiAbstract
         $this->saveProduct(
             [
                 ProductInterface::SKU => $sku2,
-                'name' => $sku2NewName
+                'name' => $sku2NewName,
             ],
             $defaultStore->getCode()
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ use Magento\Vault\Api\PaymentTokenManagementInterface;
  */
 class SetPaymentMethodOnCart
 {
-    const CC_VAULT_CODE = 'payflowpro_cc_vault';
+    public const CC_VAULT_CODE = 'payflowpro_cc_vault';
 
     /**
      * @var PaymentRepository
@@ -87,7 +88,7 @@ class SetPaymentMethodOnCart
         $payment->setAdditionalInformation(
             [
                 PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                PaymentTokenInterface::PUBLIC_HASH => $tokenPublicHash
+                PaymentTokenInterface::PUBLIC_HASH => $tokenPublicHash,
             ]
         );
         $payment->save();

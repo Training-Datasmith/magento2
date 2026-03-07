@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Config\Model\Config\Source\Reports;
 
 /**
@@ -27,7 +30,7 @@ class Scope implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => 'website', 'label' => __('Website')],
             ['value' => 'group', 'label' => __('Store')],
-            ['value' => 'store', 'label' => __('Store View')]
+            ['value' => 'store', 'label' => __('Store View')],
         ];
     }
 }

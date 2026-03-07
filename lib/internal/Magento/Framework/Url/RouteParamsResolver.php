@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\Url;
 
-use Magento\Framework\Url\RouteParamsResolverInterface;
+namespace Magento\Framework\Url;
 
 /**
  * Route params resolver.

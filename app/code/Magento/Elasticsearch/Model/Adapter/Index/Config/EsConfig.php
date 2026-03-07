@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\Index\Config;
 
-use Magento\Framework\Config\Data;
 use Magento\Framework\Config\CacheInterface;
+use Magento\Framework\Config\Data;
 use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ namespace Magento\ImportExport\Model\Import\ErrorProcessing;
  */
 interface ProcessingErrorAggregatorInterface
 {
-    const VALIDATION_STRATEGY_SKIP_ERRORS = 'validation-skip-errors';
-    const VALIDATION_STRATEGY_STOP_ON_ERROR = 'validation-stop-on-errors';
+    public const VALIDATION_STRATEGY_SKIP_ERRORS = 'validation-skip-errors';
+    public const VALIDATION_STRATEGY_STOP_ON_ERROR = 'validation-stop-on-errors';
 
     /**
      * Add an error to the aggregator
@@ -153,7 +155,7 @@ interface ProcessingErrorAggregatorInterface
     public function getErrorsCount(
         array $errorLevels = [
         ProcessingError::ERROR_LEVEL_CRITICAL,
-        ProcessingError::ERROR_LEVEL_NOT_CRITICAL
+        ProcessingError::ERROR_LEVEL_NOT_CRITICAL,
         ]
     );
 

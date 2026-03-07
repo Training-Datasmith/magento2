@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -176,7 +177,7 @@ class EavTest extends AbstractEavTest
     public function testModifyMetaWithRemovedGroup(): void
     {
         $designAttributes = ['page_layout', 'options_container', 'custom_layout_update'];
-        $designGroupId =$this->attributeGroupByName->execute($this->defaultSetId, 'Design')
+        $designGroupId = $this->attributeGroupByName->execute($this->defaultSetId, 'Design')
             ->getAttributeGroupId();
         $additional = ['removeGroups' => [$designGroupId]];
         $this->prepareAttributeSet($additional);
@@ -307,8 +308,8 @@ class EavTest extends AbstractEavTest
                             'required' => false,
                         ],
                     'serviceDisabled' => true,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

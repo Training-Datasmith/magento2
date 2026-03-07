@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ namespace Magento\JwtUserToken\Model;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Jwt\Jwk;
 use Magento\Framework\Jwt\JwkFactory;
-use Magento\Framework\Jwt\JwkSet;
 
 /**
  * Creates JWT settings instances using Magento secret.

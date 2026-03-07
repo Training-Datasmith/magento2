@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\Catalog\Api;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class ProductAttributeManagementTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductAttributeManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products/attribute-sets';
+    public const SERVICE_NAME = 'catalogProductAttributeManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products/attribute-sets';
 
     public function testGetAttributes()
     {
@@ -60,12 +62,12 @@ class ProductAttributeManagementTest extends \Magento\TestFramework\TestCase\Web
 
         try {
             $this->_webApiCall($this->getAssignServiceInfo(), $payload);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -83,12 +85,12 @@ class ProductAttributeManagementTest extends \Magento\TestFramework\TestCase\Web
 
         try {
             $this->_webApiCall($this->getAssignServiceInfo(), $payload);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -107,12 +109,12 @@ class ProductAttributeManagementTest extends \Magento\TestFramework\TestCase\Web
 
         try {
             $this->_webApiCall($this->getAssignServiceInfo(), $payload);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);

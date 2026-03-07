@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class AutocompleteTest extends TestCase
             ->getMock();
         $dataProviders = [
             '20' => $this->firstDataProvider,
-            '10' => $this->secondDataProvider
+            '10' => $this->secondDataProvider,
         ];
 
         $this->model = $helper->getObject(

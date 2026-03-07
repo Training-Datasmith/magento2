@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer\Action;
 
 use Magento\Framework\App\ResourceConnection as AppResource;
+use Magento\Framework\App\ResourceConnection\SourceFactory;
 use Magento\Framework\App\ResourceConnection\SourceProviderInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
-use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
-use Magento\Framework\Stdlib\StringUtils as StdString;
 use Magento\Framework\Indexer\ActionInterface;
 use Magento\Framework\Indexer\FieldsetPool;
+use Magento\Framework\Indexer\HandlerInterface;
 use Magento\Framework\Indexer\HandlerPool;
 use Magento\Framework\Indexer\IndexStructureInterface;
+use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
 use Magento\Framework\Indexer\SaveHandlerFactory;
-use Magento\Framework\App\ResourceConnection\SourceFactory;
-use Magento\Framework\Indexer\HandlerInterface;
+use Magento\Framework\Stdlib\StringUtils as StdString;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -28,7 +31,7 @@ class Base implements ActionInterface
     /**
      * Prefix
      */
-    const PREFIX = 'index_';
+    public const PREFIX = 'index_';
 
     /**
      * @var FieldsetPool
@@ -208,7 +211,7 @@ class Base implements ActionInterface
      */
     public function executeRow($id)
     {
-         $this->execute([$id]);
+        $this->execute([$id]);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class AdminSessionsManagerTest extends TestCase
                 'getId',
                 'getUpdatedAt',
                 'getAdminSessionInfoId',
-                'setAdminSessionInfoId'
+                'setAdminSessionInfoId',
             ]
         );
 
@@ -94,7 +95,7 @@ class AdminSessionsManagerTest extends TestCase
                 'setDataToAll',
                 'save',
                 'updateActiveSessionsStatus',
-                'deleteSessionsOlderThen'
+                'deleteSessionsOlderThen',
             ]
         );
 
@@ -114,7 +115,7 @@ class AdminSessionsManagerTest extends TestCase
                 'setData',
                 'setIsOtherSessionsTerminated',
                 'save',
-                'getId'
+                'getId',
             ]
         );
 
@@ -425,24 +426,24 @@ class AdminSessionsManagerTest extends TestCase
                     'Someone logged into this account from another device or browser.'
                     . ' Your current session is terminated.'
                 ),
-                'sessionStatus' => AdminSessionInfo::LOGGED_OUT_BY_LOGIN
+                'sessionStatus' => AdminSessionInfo::LOGGED_OUT_BY_LOGIN,
             ],
             [
                 'expectedResult' => __('Your current session is terminated by another user of this account.'),
-                'sessionStatus' => AdminSessionInfo::LOGGED_OUT_MANUALLY
+                'sessionStatus' => AdminSessionInfo::LOGGED_OUT_MANUALLY,
             ],
             [
                 'expectedResult' => __('Your current session has been expired.'),
-                'sessionStatus' => AdminSessionInfo::LOGGED_OUT
+                'sessionStatus' => AdminSessionInfo::LOGGED_OUT,
             ],
             [
                 'expectedResult' => __('Your account is temporarily disabled. Please try again later.'),
-                'sessionStatus' => AdminSessionsManager::LOGOUT_REASON_USER_LOCKED
+                'sessionStatus' => AdminSessionsManager::LOGOUT_REASON_USER_LOCKED,
             ],
             [
                 'expectedResult' => '',
-                'sessionStatus' => AdminSessionInfo::LOGGED_IN
-            ]
+                'sessionStatus' => AdminSessionInfo::LOGGED_IN,
+            ],
         ];
     }
 

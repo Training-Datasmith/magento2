@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Edit form for Catalog product and category URL rewrites
  */
+
 namespace Magento\UrlRewrite\Block\Catalog\Edit;
 
 use Magento\UrlRewrite\Controller\Adminhtml\Url\Rewrite;
@@ -97,7 +100,7 @@ class Form extends \Magento\UrlRewrite\Block\Edit\Form
                 [
                     'id' => $this->_getModel()->getId(),
                     'product' => $this->_getProduct()->getId(),
-                    'category' => $this->_getCategory()->getId()
+                    'category' => $this->_getCategory()->getId(),
                 ]
             )
         );

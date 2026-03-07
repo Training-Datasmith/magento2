@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\LayoutInterface as LayoutInterfaceView;
 use Magento\Ui\Model\UiComponentGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class UiComponentGeneratorTest extends TestCase
@@ -48,7 +48,7 @@ class UiComponentGeneratorTest extends TestCase
             UiComponentGenerator::class,
             [
                 'contextFactory' => $this->contextFactoryMock,
-                'uiComponentFactory' => $this->uiComponentFactoryMock
+                'uiComponentFactory' => $this->uiComponentFactoryMock,
             ]
         );
     }

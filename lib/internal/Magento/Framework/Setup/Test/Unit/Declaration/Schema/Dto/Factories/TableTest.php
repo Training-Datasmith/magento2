@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class TableTest extends TestCase
             [
                 'objectManager' => $this->objectManagerMock,
                 'resourceConnection' => $this->resourceConnectionMock,
-                'sqlVersionProvider' => $this->sqlVersionProvider
+                'sqlVersionProvider' => $this->sqlVersionProvider,
             ]
         );
     }
@@ -74,7 +75,7 @@ class TableTest extends TestCase
             'nameWithoutPrefix' => 'some_table',
             'charset' => 'utf8',
             'collation' => 'utf8_general_ci',
-            'onCreate' => ''
+            'onCreate' => '',
         ];
         $this->objectManagerMock->expects(self::once())
             ->method('create')
@@ -90,7 +91,7 @@ class TableTest extends TestCase
         $data = [
             'name' => 'pf_some_table',
             'engine' => 'memory',
-            'nameWithoutPrefix' => 'some_table'
+            'nameWithoutPrefix' => 'some_table',
         ];
         $expectedData = [
             'name' => 'pf_some_table',
@@ -98,7 +99,7 @@ class TableTest extends TestCase
             'nameWithoutPrefix' => 'some_table',
             'charset' => 'utf8',
             'collation' => 'utf8_general_ci',
-            'onCreate' => ''
+            'onCreate' => '',
         ];
         $this->objectManagerMock->expects(self::once())
             ->method('create')

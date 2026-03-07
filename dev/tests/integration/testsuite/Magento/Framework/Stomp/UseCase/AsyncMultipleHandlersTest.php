@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class AsyncMultipleHandlersTest extends QueueTestCaseAbstract
      */
     private $topicValueMap = [
         'stomp.mtmh.topic.1' => 'stomp.mtmh.topic.1',
-        'stomp.mtmh.topic.2' => ['stomp.mtmh.topic.2-1', 'stomp.mtmh.topic.2-2']
+        'stomp.mtmh.topic.2' => ['stomp.mtmh.topic.2-1', 'stomp.mtmh.topic.2-2'],
     ];
 
     /**
@@ -41,7 +42,7 @@ class AsyncMultipleHandlersTest extends QueueTestCaseAbstract
     private $expectedValues = [
         'stomp-string-stomp.mtmh.topic.1',
         'stomp-array-stomp.mtmh.topic.2-1',
-        'stomp-array-stomp.mtmh.topic.2-2'
+        'stomp-array-stomp.mtmh.topic.2-2',
     ];
 
     /**

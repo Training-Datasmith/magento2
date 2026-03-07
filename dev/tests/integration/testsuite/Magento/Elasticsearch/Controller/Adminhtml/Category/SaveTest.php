@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class SaveTest extends AbstractBackendController
         $inputData = [
             'category_products' => json_encode(array_fill_keys($productIdList, [0, 1, 2])),
             'entity_id' => $category->getId(),
-            'default_sort_by' => 'position'
+            'default_sort_by' => 'position',
         ];
 
         $this->getRequest()->setPostValue($inputData);

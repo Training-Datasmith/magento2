@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Translation\Model\Js;
 
 use Magento\Deploy\Console\DeployStaticOptions;
+use Magento\Deploy\Strategy\DeployStrategyFactory;
 use Magento\Framework\App\AreaList;
 use Magento\Framework\TranslateInterface;
 use Magento\Framework\View\Asset\File\FallbackContext;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
 use Magento\Framework\View\Asset\PreProcessorInterface;
 use Symfony\Component\Console\Input\ArgvInput;
-use Magento\Deploy\Strategy\DeployStrategyFactory;
 
 /**
  * PreProcessor responsible for replacing translation calls in js files to translated strings

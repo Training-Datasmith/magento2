@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Helper;
 
 use Magento\Catalog\Model\Config\CatalogMediaConfig;
@@ -541,7 +544,7 @@ class Image extends AbstractHelper implements ArgumentInterface
                     $this->applyScheduledActions();
                     break;
                 default:
-                    throw new LocalizedException(__("The specified Catalog media URL format is not supported."));
+                    throw new LocalizedException(__('The specified Catalog media URL format is not supported.'));
             }
             return $this->_getModel()->getUrl();
         } catch (\Exception $e) {

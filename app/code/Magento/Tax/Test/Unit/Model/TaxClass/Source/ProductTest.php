@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ProductTest extends TestCase
             [
                 'taxClassRepository' => $this->taxClassRepositoryMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'filterBuilder' => $this->filterBuilderMock
+                'filterBuilder' => $this->filterBuilderMock,
             ]
         );
     }
@@ -152,8 +153,8 @@ class ProductTest extends TestCase
             ->method('getItems')
             ->willReturn($items);
 
-        $result=($this->product->getAllOptions(false));
-        $expected=$value;
+        $result = ($this->product->getAllOptions(false));
+        $expected = $value;
         $this->assertEquals([$expected], $result);
     }
 

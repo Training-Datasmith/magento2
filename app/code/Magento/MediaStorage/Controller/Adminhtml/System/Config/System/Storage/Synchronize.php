@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaStorage\Controller\Adminhtml\System\Config\System\Storage;
 
 class Synchronize extends \Magento\MediaStorage\Controller\Adminhtml\System\Config\System\Storage

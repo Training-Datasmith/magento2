@@ -1,15 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 
+use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 use Magento\SalesRule\Model\Rule;
-use Magento\SalesRule\Model\RuleFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 
 Resolver::getInstance()->requireDataFixture('Magento/SalesRule/_files/cart_rule_free_shipping.php');
 
@@ -31,7 +32,7 @@ $row =
                     'value' => '1',
                     'is_value_processed' => null,
                     'aggregator' => 'all',
-                ]
+                ],
 
         ],
         'actions' => [
@@ -49,9 +50,9 @@ $row =
                         'operator' => '==',
                         'value' => '7',
                         'is_value_processed' => false,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'is_advanced' => 1,
         'simple_action' => 'by_percent',
@@ -67,8 +68,8 @@ $row =
         'simple_free_shipping' => 1,
 
         'website_ids' => [
-            $objectManager->get(StoreManagerInterface::class)->getWebsite()->getId()
-        ]
+            $objectManager->get(StoreManagerInterface::class)->getWebsite()->getId(),
+        ],
     ];
 $salesRule->loadPost($row);
 $salesRule->save();

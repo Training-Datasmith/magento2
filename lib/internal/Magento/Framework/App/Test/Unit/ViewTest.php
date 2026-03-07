@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class ViewTest extends TestCase
                     [
                         'request' => $this->_requestMock,
                         'pageConfigRendererFactory' => $pageConfigRendererFactory,
-                        'layout' => $this->_layoutMock
+                        'layout' => $this->_layoutMock,
                     ]
                 )
             )
@@ -134,7 +135,7 @@ class ViewTest extends TestCase
                 'configScope' => $this->_configScopeMock,
                 'eventManager' => $this->_eventManagerMock,
                 'actionFlag' => $this->_actionFlagMock,
-                'pageFactory' => $pageFactory
+                'pageFactory' => $pageFactory,
             ]
         );
     }
@@ -262,7 +263,7 @@ class ViewTest extends TestCase
     {
         $valueMap = [
             ['', ActionInterface::FLAG_NO_DISPATCH_BLOCK_EVENT, true],
-            ['', ActionInterface::FLAG_NO_DISPATCH_BLOCK_EVENT, true]
+            ['', ActionInterface::FLAG_NO_DISPATCH_BLOCK_EVENT, true],
         ];
         $this->_actionFlagMock->expects($this->any())->method('get')->willReturnMap($valueMap);
 

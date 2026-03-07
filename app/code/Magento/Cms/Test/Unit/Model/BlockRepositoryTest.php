@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Cms\Api\Data\BlockInterface;
 use Magento\Cms\Api\Data\BlockInterfaceFactory;
 use Magento\Cms\Api\Data\BlockSearchResultsInterface;
 use Magento\Cms\Api\Data\BlockSearchResultsInterfaceFactory;
+use Magento\Cms\Model\Block as CmsModelBlock;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\BlockRepository;
-use Magento\Cms\Model\Block as CmsModelBlock;
 use Magento\Cms\Model\ResourceModel\Block;
 use Magento\Cms\Model\ResourceModel\Block\Collection;
 use Magento\Cms\Model\ResourceModel\Block\CollectionFactory;
@@ -22,7 +23,6 @@ use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;

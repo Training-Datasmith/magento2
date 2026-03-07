@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ use Magento\Sales\Model\RefundOrder;
  */
 class CancelOrder
 {
-    private const EMAIL_NOTIFICATION_SUCCESS = "Order cancellation notification email was sent.";
-    private const EMAIL_NOTIFICATION_ERROR = "Email notification failed.";
+    private const EMAIL_NOTIFICATION_SUCCESS = 'Order cancellation notification email was sent.';
+    private const EMAIL_NOTIFICATION_ERROR = 'Email notification failed.';
 
     /**
      * CancelOrder constructor
@@ -80,10 +81,10 @@ class CancelOrder
      */
     public function updateOrderComments(OrderInterface $order, string $reason): OrderInterface
     {
-        $result = $this->sender->send($order, true, __("Order %1 was cancelled", $order->getRealOrderId()));
+        $result = $this->sender->send($order, true, __('Order %1 was cancelled', $order->getRealOrderId()));
 
         $order->addCommentToStatusHistory(
-            __("%1", $result ? self::EMAIL_NOTIFICATION_SUCCESS : self::EMAIL_NOTIFICATION_ERROR),
+            __('%1', $result ? self::EMAIL_NOTIFICATION_SUCCESS : self::EMAIL_NOTIFICATION_ERROR),
             $order->getStatus(),
             true
         );

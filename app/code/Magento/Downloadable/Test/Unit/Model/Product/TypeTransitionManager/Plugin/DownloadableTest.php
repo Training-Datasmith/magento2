@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Product\TypeTransitionManager\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Edit\WeightResolver;
 use Magento\Catalog\Model\Product\TypeTransitionManager;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Model\Product\TypeTransitionManager\Plugin\Downloadable;
 use Magento\Framework\App\Request\Http;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -93,7 +94,7 @@ class DownloadableTest extends TestCase
         return [
             [\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE],
             [\Magento\Catalog\Model\Product\Type::TYPE_VIRTUAL],
-            [Type::TYPE_DOWNLOADABLE]
+            [Type::TYPE_DOWNLOADABLE],
         ];
     }
 
@@ -129,7 +130,7 @@ class DownloadableTest extends TestCase
             [true, \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE, null],
             [false, \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE, null],
             [true, \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE, ['link' => [['is_delete' => '']]]],
-            [false, Type::TYPE_DOWNLOADABLE, ['link' => [['is_delete' => '1']]]]
+            [false, Type::TYPE_DOWNLOADABLE, ['link' => [['is_delete' => '1']]]],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Event\Test\Unit\Observer;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\Observer\Collection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CollectionTest extends TestCase
 {
@@ -93,7 +94,7 @@ class CollectionTest extends TestCase
             ['simple_name'],
             ['1234567890'],
             ['~!@#$%^&*()_=-}{}'],
-            ['DjnJ2139540___    asdf']
+            ['DjnJ2139540___    asdf'],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class JwtAlgorithmSource implements OptionSourceInterface
 
     private const ALG_TYPE_NAME = [
         self::ALG_TYPE_JWS => 'JWS',
-        self::ALG_TYPE_JWE => 'JWE'
+        self::ALG_TYPE_JWE => 'JWE',
     ];
 
     private const ALGS = [
@@ -64,7 +65,7 @@ class JwtAlgorithmSource implements OptionSourceInterface
         foreach (array_keys($this->algs) as $algorithm) {
             $options[] = [
                 'label' => __($algorithm . implode('', [' (', self::ALG_TYPE_NAME[$this->algs[$algorithm]], ')'])),
-                'value' => $algorithm
+                'value' => $algorithm,
             ];
         }
 

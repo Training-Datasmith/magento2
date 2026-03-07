@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\GraphQl\GiftMessage;
 use Exception;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
+use Magento\Downloadable\Test\Fixture\DownloadableProduct as DownloadableProductFixture;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\GiftMessage\Test\Fixture\GiftMessage;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart;
-use Magento\Downloadable\Test\Fixture\DownloadableProduct as DownloadableProductFixture;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
@@ -51,7 +52,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
     {
         $this->fixtures = Bootstrap::getObjectManager()->get(DataFixtureStorageManager::class)->getStorage();
         $this->resourceConnection = Bootstrap::getObjectManager()->get(ResourceConnection::class);
-        $this->quoteIdToMaskedQuoteId= Bootstrap::getObjectManager()->get(QuoteIdToMaskedQuoteIdInterface::class);
+        $this->quoteIdToMaskedQuoteId = Bootstrap::getObjectManager()->get(QuoteIdToMaskedQuoteIdInterface::class);
     }
 
     #[
@@ -63,7 +64,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -81,12 +82,12 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
                         'items' => [
                             '0' => [
                                 'product' => [
-                                    'gift_message_available' => false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'gift_message_available' => false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getCartItemsGraphQlQuery($maskedQuoteId))
         );
@@ -102,14 +103,14 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
                 [
                     'title' => 'Example 1',
                     'price' => 0.00,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
                 [
                     'title' => 'Example 2',
                     'price' => 0.00,
-                    'link_type' => 'url'
-                ]
-            ]
+                    'link_type' => 'url',
+                ],
+            ],
         ], as: 'product'),
         DataFixture(GuestCart::class, ['message_id' => '$message.id$'], as: 'quote'),
         DataFixture(SetGuestEmailFixture::class, ['cart_id' => '$quote.id$']),
@@ -117,7 +118,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -135,12 +136,12 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
                         'items' => [
                             '0' => [
                                 'product' => [
-                                    'gift_message_available' => false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'gift_message_available' => false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getCartItemsGraphQlQuery($maskedQuoteId))
         );
@@ -159,7 +160,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -183,7 +184,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -207,7 +208,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -231,7 +232,7 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         Config('sales/gift_options/allow_order', 1),
@@ -375,17 +376,17 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
                         'items' => [
                             '0' => [
                                 'product' => [
-                                    'gift_message_available' => true
+                                    'gift_message_available' => true,
                                 ],
                                 'gift_message' => [
                                     'from' => 'Romeo',
                                     'to' => 'Mercutio',
-                                    'message' => 'Fixture Test message.'
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'message' => 'Fixture Test message.',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getCartItemsGraphQlQuery($maskedQuoteId))
         );
@@ -409,13 +410,13 @@ class CartItemWithGiftMessageTest extends GraphQlAbstract
                         'items' => [
                             '0' => [
                                 'product' => [
-                                    'gift_message_available' => false
+                                    'gift_message_available' => false,
                                 ],
-                                'gift_message' => null
-                            ]
-                        ]
-                    ]
-                ]
+                                'gift_message' => null,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getCartItemsGraphQlQuery($maskedQuoteId))
         );

@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 use Magento\Backend\App\Action;
 use Magento\Catalog\Controller\Adminhtml\Product;
-use Magento\Framework\Controller\Result;
 use Magento\Framework\View\Result\LayoutFactory;
 
 class AlertsStockGrid extends \Magento\Catalog\Controller\Adminhtml\Product

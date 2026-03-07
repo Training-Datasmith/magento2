@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -156,12 +157,12 @@ class RuleTest extends TestCase
                     'customer_group' => [
                         'associations_table' => 'salesrule_customer_group',
                         'rule_id_field' => 'rule_id',
-                        'entity_id_field' => 'customer_group_id'
+                        'entity_id_field' => 'customer_group_id',
                     ],
                     'website' => [
                         'associations_table' => 'salesrule_website',
                         'rule_id_field' => 'rule_id',
-                        'entity_id_field' => 'website_id'
+                        'entity_id_field' => 'website_id',
                     ],
                 ]
             );
@@ -184,7 +185,7 @@ class RuleTest extends TestCase
                 'associatedEntityMapInstance' => $associatedEntitiesMap,
                 'serializer' => $serializerMock,
                 'metadataPool' => $this->metadataPoolMock,
-                'resourceCoupon' => $this->resourceCoupon
+                'resourceCoupon' => $this->resourceCoupon,
             ]
         );
     }
@@ -283,20 +284,20 @@ class RuleTest extends TestCase
         return [
             [
                 ['use_auto_generation' => 0, 'coupon_type' => \Magento\SalesRule\Model\Rule::COUPON_TYPE_NO_COUPON],
-                false
+                false,
             ],
             [
                 ['use_auto_generation' => 0, 'coupon_type' => \Magento\SalesRule\Model\Rule::COUPON_TYPE_SPECIFIC],
-                false
+                false,
             ],
             [
                 ['use_auto_generation' => 1, 'coupon_type' => \Magento\SalesRule\Model\Rule::COUPON_TYPE_SPECIFIC],
-                true
+                true,
             ],
             [
                 ['use_auto_generation' => 0, 'coupon_type' => \Magento\SalesRule\Model\Rule::COUPON_TYPE_AUTO],
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -313,7 +314,7 @@ class RuleTest extends TestCase
                 ]),
                 [
                     'some_attribute',
-                ]
+                ],
             ],
             [
                 json_encode([
@@ -329,18 +330,18 @@ class RuleTest extends TestCase
                 [
                     'some_attribute',
                     'some_attribute2',
-                ]
+                ],
             ],
             [
                 json_encode([
                     'type' => Found::class,
                     'attribute' => 'some_attribute',
                 ]),
-                []
+                [],
             ],
             [
                 json_encode([]),
-                []
+                [],
             ],
         ];
     }

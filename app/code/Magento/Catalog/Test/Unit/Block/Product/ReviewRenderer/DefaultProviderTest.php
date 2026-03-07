@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class DefaultProviderTest extends TestCase
             'default_view_display' => [ReviewRendererInterface::DEFAULT_VIEW, true],
             'short_view_no_display' => [ReviewRendererInterface::SHORT_VIEW, false],
             'full_view_display' => [ReviewRendererInterface::FULL_VIEW, true],
-            'custom_template_no_display' => ['custom_template_type', false]
+            'custom_template_no_display' => ['custom_template_type', false],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\ResourceModel;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -78,7 +81,7 @@ class Sample extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     [
                         'sample_id' => $sampleObject->getId(),
                         'store_id' => (int)$sampleObject->getStoreId(),
-                        'title' => $sampleObject->getTitle()
+                        'title' => $sampleObject->getTitle(),
                     ]
                 );
             }

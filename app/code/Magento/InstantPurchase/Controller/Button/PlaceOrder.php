@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Controller\Button;
 
 use Exception;
@@ -226,7 +229,7 @@ class PlaceOrder extends Action
         /** @var JsonResult $result */
         $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $result->setData([
-            'response' => $message
+            'response' => $message,
         ]);
         if ($successMessage) {
             $this->messageManager->addSuccessMessage($message);

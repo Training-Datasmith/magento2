@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Object manager configuration schema locator
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager\Config;
 
 class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface

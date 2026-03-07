@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Paypal\Model\Payflow\Service\Gateway;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Psr\Log\LoggerInterface;
 use ReflectionMethod;
 
 /**
@@ -85,7 +85,7 @@ class GatewayTest extends TestCase
     {
         $configMap = [
             ['getDebugReplacePrivateDataKeys', null, ['masked']],
-            ['debug', null, true]
+            ['debug', null, true],
         ];
 
         /** @var ConfigInterface|MockObject $configInterfaceMock */
@@ -129,7 +129,7 @@ class GatewayTest extends TestCase
                     'securetokenid' => 'vVWBMSNb9j0SLlYw4AbqBnKmuogtzNNC',
                     'respmsg' => 'Approved',
                     'result_code' => '0',
-                ]
+                ],
             ],
             [
                 'RESULT=0&PNREF=A30A3A958244&RESPMSG=Approved&AUTHCODE=028PNI&AVSADDR=N&AVSZIP=N&HOSTCODE=A'
@@ -157,7 +157,7 @@ class GatewayTest extends TestCase
                     'cardtype' => '0',
                     'iavs' => 'N',
                     'result_code' => '0',
-                ]
+                ],
             ],
         ];
     }
@@ -171,7 +171,7 @@ class GatewayTest extends TestCase
     {
         $configMap = [
             ['getDebugReplacePrivateDataKeys', null, ['masked']],
-            ['debug', null, true]
+            ['debug', null, true],
         ];
 
         /** @var ConfigInterface|MockObject $configInterfaceMock */
@@ -219,8 +219,8 @@ class GatewayTest extends TestCase
                 ],
                 'companyname[14]=Ruff & Johnson&comment1[7]=Level=5&shiptofirstname=Joé&shiptolastname=O\'Reilly'
                 . '&shiptostreet=4659 Rainbow Road&shiptocity=Los Angeles&shiptostate=CA&shiptozip=90017'
-                . '&shiptocountry=US'
-            ]
+                . '&shiptocountry=US',
+            ],
         ];
     }
 

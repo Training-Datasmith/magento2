@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class Unsigned implements DbDefinitionProcessorInterface
     /**
      * Unsigned flag. Applicable only to numeric types.
      */
-    const UNSIGNED_FLAG = 'unsigned';
+    public const UNSIGNED_FLAG = 'unsigned';
 
     /**
      * @param ColumnUnsignedAwareInterface $column

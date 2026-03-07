@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class BuilderTest extends TestCase
         $this->model = $this->objectManager->getObject(
             Builder::class,
             [
-                'menuItemFactory' => $this->factoryMock
+                'menuItemFactory' => $this->factoryMock,
             ]
         );
     }
@@ -96,7 +97,7 @@ class BuilderTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [$this->isInstanceOf(Item::class), null, 2],
-                    [$this->isInstanceOf(Item::class), null, 4]
+                    [$this->isInstanceOf(Item::class), null, 4],
                 ];
                 $index++;
                 if ($args === $expectedArgs[$index - 1]) {
@@ -111,7 +112,7 @@ class BuilderTest extends TestCase
                     'title' => 'Item 1',
                     'module' => 'Magento_Backend',
                     'sortOrder' => 2,
-                    'resource' => 'Magento_Backend::item1'
+                    'resource' => 'Magento_Backend::item1',
                 ]
             )
         );
@@ -123,7 +124,7 @@ class BuilderTest extends TestCase
                     'title' => 'two',
                     'module' => 'Magento_Backend',
                     'sortOrder' => 4,
-                    'resource' => 'Magento_Backend::item2'
+                    'resource' => 'Magento_Backend::item2',
                 ]
             )
         );
@@ -142,7 +143,7 @@ class BuilderTest extends TestCase
                     'id' => 1,
                     'title' => 'Item 1',
                     'module' => 'Magento_Backend',
-                    'resource' => 'Magento_Backend::i1'
+                    'resource' => 'Magento_Backend::i1',
                 ]
             )
         );
@@ -169,7 +170,7 @@ class BuilderTest extends TestCase
                     'parent' => 'not_exists',
                     'title' => 'Item 1',
                     'module' => 'Magento_Backend',
-                    'resource' => 'Magento_Backend::item1'
+                    'resource' => 'Magento_Backend::item1',
                 ]
             )
         );

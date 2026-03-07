@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Filesystem\DriverPool;
+use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 use Magento\RemoteStorage\Filesystem;
 use Magento\RemoteStorage\Model\Synchronizer;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Filesystem\DriverPool;
-use Magento\RemoteStorage\Driver\DriverPool as RemoteDriverPool;
 
 /**
  * @see Synchronizer
@@ -67,11 +68,11 @@ class SynchronizerTest extends TestCase
             ->method('getDirectoryWrite')
             ->willReturnMap([
                 ['test', DriverPool::FILE, $localDirectory],
-                ['test', RemoteDriverPool::REMOTE, $remoteDirectory]
+                ['test', RemoteDriverPool::REMOTE, $remoteDirectory],
             ]);
         $localDirectory->method('getAbsolutePath')
             ->willReturnMap([
-                [null, __DIR__ . '/_files/test']
+                [null, __DIR__ . '/_files/test'],
             ]);
         $localDirectory->method('getRelativePath')
             ->willReturnCallback(function ($arg) {
@@ -82,12 +83,12 @@ class SynchronizerTest extends TestCase
             ->willReturnMap([
                 [
                     'remote:/_files/test/root_file.txt',
-                    false
+                    false,
                 ],
                 [
                     'remote:/_files/test/.dot_directory/child_file.txt',
-                    true
-                ]
+                    true,
+                ],
             ]);
         $remoteDirectory->method('getAbsolutePath')
             ->willReturnCallback(function ($arg) {
@@ -106,7 +107,7 @@ class SynchronizerTest extends TestCase
         self::assertSame(
             [
                 '/_files/test/root_file.txt',
-                '/_files/test/.dot_directory'
+                '/_files/test/.dot_directory',
             ],
             iterator_to_array($this->synchronizer->execute(), false)
         );

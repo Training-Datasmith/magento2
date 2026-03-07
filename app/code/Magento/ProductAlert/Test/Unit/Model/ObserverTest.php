@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,19 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\ProductAlert\Test\Unit\Model;
 
-use Magento\Store\Model\Group;
+use Exception;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\ProductAlert\Model\EmailFactory;
 use Magento\ProductAlert\Model\Mailing\Publisher;
 use Magento\ProductAlert\Model\Observer;
 use Magento\ProductAlert\Model\ResourceModel\Price\CollectionFactory as PriceCollectionFactory;
 use Magento\ProductAlert\Model\ResourceModel\Stock\CollectionFactory as StockCollectionFactory;
+use Magento\Store\Model\Group;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Exception;
 
 /**
  * Class ObserverTest

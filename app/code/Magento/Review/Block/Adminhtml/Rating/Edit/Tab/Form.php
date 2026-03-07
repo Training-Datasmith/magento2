@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Review\Block\Adminhtml\Rating\Edit\Tab;
 
@@ -107,7 +108,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'rating_code',
                 'label' => __('Default Value'),
                 'class' => 'required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -184,7 +185,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     [
                         'required' => true,
                         'name' => 'option_title[' . $item->getId() . ']',
-                        'value' => $item->getCode() ? $item->getCode() : $i
+                        'value' => $item->getCode() ? $item->getCode() : $i,
                     ]
                 );
 
@@ -216,7 +217,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 [
                     'label' => __('Visibility'),
                     'name' => 'stores[]',
-                    'values' => $this->systemStore->getStoreValuesForForm()
+                    'values' => $this->systemStore->getStoreValuesForForm(),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -241,7 +242,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 [
                     'label' => __('Sort Order'),
                     'name' => 'position',
-                    'class' => 'validate-not-negative-number'
+                    'class' => 'validate-not-negative-number',
                 ]
             );
     }

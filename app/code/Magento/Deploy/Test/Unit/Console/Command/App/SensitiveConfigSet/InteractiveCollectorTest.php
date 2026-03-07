@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class InteractiveCollectorTest extends TestCase
         $configPaths = [
             'some/config/path1',
             'some/config/path2',
-            'some/config/path3'
+            'some/config/path3',
         ];
 
         $questionMock = $this->getMockBuilder(Question::class)
@@ -97,7 +98,7 @@ class InteractiveCollectorTest extends TestCase
             [
                 'some/config/path1' => 'someValue',
                 'some/config/path2' => 'someValue',
-                'some/config/path3' => 'someValue'
+                'some/config/path3' => 'someValue',
             ],
             $this->model->getValues(
                 $this->inputMock,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Category;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category\FileInfo;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\File\Mime;
@@ -16,6 +16,7 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -124,7 +125,7 @@ class FileInfoTest extends TestCase
             ->willReturnMap(
                 [
                     [null, '/a/b/c/pub/media'],
-                    ['/catalog/category/filename.ext1', $absoluteFilePath]
+                    ['/catalog/category/filename.ext1', $absoluteFilePath],
                 ]
             );
 
@@ -184,7 +185,7 @@ class FileInfoTest extends TestCase
         return [
             ['/filename.ext1', '/catalog/category/filename.ext1'],
             ['/pub/media/filename.ext1', 'filename.ext1'],
-            ['/media/filename.ext1', 'filename.ext1']
+            ['/media/filename.ext1', 'filename.ext1'],
         ];
     }
 
@@ -210,7 +211,7 @@ class FileInfoTest extends TestCase
             ['/pub/media/test/filename.ext1', true],
             ['/media/test/filename.ext1', true],
             ['/test/filename.ext1', false],
-            ['test2/filename.ext1', false]
+            ['test2/filename.ext1', false],
         ];
     }
 }

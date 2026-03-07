@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Plugin;
 
-use Magento\Quote\Model\Quote\Item\ToOrderItem as QuoteToOrderItem;
-use Magento\Quote\Model\Quote\Item\AbstractItem as AbstractQuoteItem;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface as ProductOption;
+use Magento\Quote\Model\Quote\Item\AbstractItem as AbstractQuoteItem;
+use Magento\Quote\Model\Quote\Item\ToOrderItem as QuoteToOrderItem;
 
 /**
  * Plugin for Magento\Quote\Model\Quote\Item\ToOrderItem

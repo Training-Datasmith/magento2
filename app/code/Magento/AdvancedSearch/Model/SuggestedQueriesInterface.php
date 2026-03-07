@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model;
 
 use Magento\Search\Model\QueryInterface;
@@ -29,11 +32,9 @@ interface SuggestedQueriesInterface
     public const SEARCH_SUGGESTION_COUNT_RESULTS_ENABLED = 'catalog/search/search_suggestion_count_results_enabled';
     public const SEARCH_SUGGESTION_ENABLED = 'catalog/search/search_suggestion_enabled';
     /**#@-*/
-
     /**
      * Retrieve search results
      *
-     * @param QueryInterface $query
      * @return \Magento\Search\Model\QueryResult[]
      */
     public function getItems(QueryInterface $query);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -83,9 +84,9 @@ class UpdateCommandTest extends TestCase
 
     public function testExecuteSuccess()
     {
-        $url = "old.localhost.com";
-        $configVal = "Config val";
-        $token = "Secret token!";
+        $url = 'old.localhost.com';
+        $configVal = 'Config val';
+        $token = 'Secret token!';
         $this->analyticsTokenMock->expects($this->once())
             ->method('isTokenExist')
             ->willReturn(true);
@@ -113,7 +114,7 @@ class UpdateCommandTest extends TestCase
                 [
                     'url' => $url,
                     'new-url' => $configVal,
-                    'access-token' => $token
+                    'access-token' => $token,
                 ]
             )->willReturn($response);
 

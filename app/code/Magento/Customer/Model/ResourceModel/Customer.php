@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -17,6 +18,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -24,7 +26,6 @@ use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Validator\Exception as ValidatorException;
-use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Validator\Factory;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -137,7 +138,7 @@ class Customer extends AbstractEntity
             'updated_at',
             'increment_id',
             'store_id',
-            'website_id'
+            'website_id',
         ];
     }
 
@@ -253,13 +254,13 @@ class Customer extends AbstractEntity
      */
     private function isExistingCustomerConfirmationRequired(DataObject $customer): bool
     {
-         return $customer->getId()
-             && $customer->dataHasChangedFor('email')
-             && $this->accountConfirmation->isEmailChangedConfirmationRequired(
-                 (int)$customer->getWebsiteId(),
-                 (int)$customer->getId(),
-                 $customer->getEmail()
-             );
+        return $customer->getId()
+            && $customer->dataHasChangedFor('email')
+            && $this->accountConfirmation->isEmailChangedConfirmationRequired(
+                (int)$customer->getWebsiteId(),
+                (int)$customer->getId(),
+                $customer->getEmail()
+            );
     }
 
     /**
@@ -553,6 +554,6 @@ class Customer extends AbstractEntity
             $rpToken = $customer->getData('rp_token');
             $customer->setRpToken($this->encryptor->decrypt($rpToken));
         }
-        return parent::_afterLoad($customer); //
+        return parent::_afterLoad($customer);
     }
 }

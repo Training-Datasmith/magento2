@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Unit test for \Magento\Framework\Filesystem\FileResolver
  *
@@ -7,6 +9,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Test\Unit;
 
 use Magento\Framework\Filesystem\FileResolver;

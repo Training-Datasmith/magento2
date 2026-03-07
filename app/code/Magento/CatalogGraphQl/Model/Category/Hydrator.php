@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class Hydrator
      * @param bool $basicFieldsOnly Set to false to avoid expensive hydration, used for performance optimization
      * @return array
      */
-    public function hydrateCategory(Category $category, $basicFieldsOnly = false) : array
+    public function hydrateCategory(Category $category, $basicFieldsOnly = false): array
     {
         if ($basicFieldsOnly) {
             $categoryData = $category->getData();

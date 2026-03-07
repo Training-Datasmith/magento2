@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product;
 
 use Magento\Catalog\Model\ResourceModel\Product\Link;
@@ -397,9 +400,9 @@ class LinkProcessor
                 $linkedSku = $linkedSku !== null ? trim($linkedSku) : '';
 
                 return (
-                        $this->skuProcessor->getNewSku($linkedSku) !== null
-                        || $this->isSkuExist($linkedSku)
-                    )
+                    $this->skuProcessor->getNewSku($linkedSku) !== null
+                    || $this->isSkuExist($linkedSku)
+                )
                     && strcasecmp($linkedSku, $sku) !== 0;
             }
         );

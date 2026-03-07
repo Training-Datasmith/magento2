@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -241,7 +244,7 @@ class SchemaPersistor
                         $indexData
                     );
                 }
-                
+
                 if (!empty($indexData['columns'])) {
                     foreach ($indexData['columns'] as $column) {
                         $columnXml = $domIndex->addChild('column');

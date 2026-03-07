@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Set of tests of layout directives handling behavior
  *
@@ -295,7 +297,7 @@ class LayoutDirectivesTest extends \PHPUnit\Framework\TestCase
             'Before element which is after' => ['sort_before_after.xml', '312'],
             'Before element which is previous' => ['sort_before_before.xml', '213'],
             'After element which is after' => ['sort_after_after.xml', '312'],
-            'After element which is previous' => ['sort_after_previous.xml', '321']
+            'After element which is previous' => ['sort_after_previous.xml', '321'],
         ];
     }
 

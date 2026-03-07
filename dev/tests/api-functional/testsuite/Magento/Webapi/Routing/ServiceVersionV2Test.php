@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Routing;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -157,6 +160,6 @@ class ServiceVersionV2Test extends \Magento\Webapi\Routing\BaseService
         ];
         $requestData = ['id' => $itemId, 'name' => 'testName'];
         $item = $this->_webApiCall($serviceInfo, $requestData);
-        $this->assertEquals($itemId, $item['id'], "Item delete failed");
+        $this->assertEquals($itemId, $item['id'], 'Item delete failed');
     }
 }

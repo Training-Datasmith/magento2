@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details\DoneButton;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Bulk\BulkStatusInterface;
 use Magento\Framework\Bulk\OperationInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +55,7 @@ class DoneButtonTest extends TestCase
         $uuid = 'some standard uuid string';
         $this->requestMock->expects($this->exactly(2))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['uuid'] => $uuid,
                 ['buttons'] => $buttonsParam,
             });
@@ -89,13 +90,13 @@ class DoneButtonTest extends TestCase
                                 'actions' => [
                                     [
                                         'targetName' => 'notification_area.notification_area.modalContainer.modal',
-                                        'actionName' => 'closeModal'
+                                        'actionName' => 'closeModal',
                                     ],
                                 ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Cache cleaner backend model
  *
  */
+
 namespace Magento\Config\Model\Config\Backend;
 
 /**

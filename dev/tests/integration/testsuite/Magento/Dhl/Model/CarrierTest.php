@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class CarrierTest extends TestCase
      *
      * @return array
      */
-    public static function trackingDataProvider() : array
+    public static function trackingDataProvider(): array
     {
         // phpcs:disable Magento2.Functions.DiscouragedFunction
         $expectedMultiAWBRequestXml = file_get_contents(__DIR__ . '/../_files/TrackingRequest_MultipleAWB.xml');
@@ -136,8 +137,8 @@ class CarrierTest extends TestCase
                     'activity' => 'SD Shipment information received',
                     'deliverydate' => '2017-12-25',
                     'deliverytime' => '14:38:00',
-                    'deliverylocation' => 'BEIJING-CHN [PEK]'
-                ]
+                    'deliverylocation' => 'BEIJING-CHN [PEK]',
+                ],
             ],
             'weight' => '0.5 K',
         ];
@@ -151,8 +152,8 @@ class CarrierTest extends TestCase
                     'activity' => 'SD Shipment information received',
                     'deliverydate' => '2017-12-24',
                     'deliverytime' => '13:35:00',
-                    'deliverylocation' => 'HONG KONG-HKG [HKG]'
-                ]
+                    'deliverylocation' => 'HONG KONG-HKG [HKG]',
+                ],
             ],
             'weight' => '2.0 K',
         ];
@@ -166,8 +167,8 @@ class CarrierTest extends TestCase
                     'activity' => 'SD Shipment information received',
                     'deliverydate' => '2017-12-24',
                     'deliverytime' => '04:12:00',
-                    'deliverylocation' => 'BIRMINGHAM-GBR [BHX]'
-                ]
+                    'deliverylocation' => 'BIRMINGHAM-GBR [BHX]',
+                ],
             ],
             'weight' => '0.12 K',
         ];
@@ -175,7 +176,7 @@ class CarrierTest extends TestCase
             'carrier' => 'dhl',
             'carrier_title' => 'DHL',
             'tracking' => 4781585060,
-            'error_message' => __('Unable to retrieve tracking')
+            'error_message' => __('Unable to retrieve tracking'),
         ];
         $expectedTrackingDataE = [
             'carrier' => 'dhl',
@@ -189,23 +190,23 @@ class CarrierTest extends TestCase
                     "ShipperReference" must match
                     "(ReferenceID,ReferenceType?)". at line
                     16, column 22'
-            )
+            ),
         ];
         return [
             'multi-AWB' => [
                 ['4781584780', '4781585060', '5702254250'],
                 $multiAWBResponseXml,
                 [$expectedTrackingDataA, $expectedTrackingDataB, $expectedTrackingDataC],
-                $expectedMultiAWBRequestXml
+                $expectedMultiAWBRequestXml,
             ],
             'single-AWB' => [
                 ['4781585060'],
                 $singleAWBResponseXml,
                 [$expectedTrackingDataB],
-                $expectedSingleAWBRequestXml
+                $expectedSingleAWBRequestXml,
             ],
             'single-AWB-no-data' => [['4781585061'], $singleNoDataResponseXml, [$expectedTrackingDataD]],
-            'failed-response' => [['4781585060-failed'], $failedResponseXml, [$expectedTrackingDataE]]
+            'failed-response' => [['4781585060-failed'], $failedResponseXml, [$expectedTrackingDataE]],
         ];
     }
 
@@ -295,7 +296,7 @@ class CarrierTest extends TestCase
                     200,
                     [],
                     $content
-                )
+                ),
             ]
         );
         $productName = $isProductNameContainsSpecialChars ? self::PRODUCT_NAME_SPECIAL_CHARS : 'item_name';
@@ -337,11 +338,11 @@ class CarrierTest extends TestCase
                     [
                         'order' => new DataObject(
                             [
-                                'subtotal' => '10.00'
+                                'subtotal' => '10.00',
                             ]
-                        )
+                        ),
                     ]
-                )
+                ),
             ]
         );
 
@@ -378,16 +379,16 @@ class CarrierTest extends TestCase
     {
         return [
             [
-                'GB', 'EU', 'US'
+                'GB', 'EU', 'US',
             ],
             [
-                'SG', 'AP', 'US'
+                'SG', 'AP', 'US',
             ],
             [
-                'DE', 'EU', 'DE'
+                'DE', 'EU', 'DE',
             ],
             [
-                'GB', 'EU', 'US', true
+                'GB', 'EU', 'US', true,
             ],
         ];
     }
@@ -483,7 +484,7 @@ class CarrierTest extends TestCase
             ['carrier' => 'dhl', 'carrier_title' => 'DHL Title', 'cost' => 45.85, 'method' => 'E', 'price' => 45.85],
             ['carrier' => 'dhl', 'carrier_title' => 'DHL Title', 'cost' => 35.26, 'method' => 'Q', 'price' => 35.26],
             ['carrier' => 'dhl', 'carrier_title' => 'DHL Title', 'cost' => 37.38, 'method' => 'Y', 'price' => 37.38],
-            ['carrier' => 'dhl', 'carrier_title' => 'DHL Title', 'cost' => 35.26, 'method' => 'P', 'price' => 35.26]
+            ['carrier' => 'dhl', 'carrier_title' => 'DHL Title', 'cost' => 35.26, 'method' => 'P', 'price' => 35.26],
         ];
 
         $actualRates = $this->dhlCarrier->collectRates($request)->getAllRates();
@@ -646,15 +647,15 @@ class CarrierTest extends TestCase
         return [
             [
                 ['package_value' => 25, 'package_value_with_discount' => 22],
-                false
+                false,
             ],
             [
                 ['package_value' => 25, 'package_value_with_discount' => 25],
-                true
+                true,
             ],
             [
                 ['package_value' => 28, 'package_value_with_discount' => 25],
-                true
+                true,
             ],
         ];
     }
@@ -782,15 +783,15 @@ class CarrierTest extends TestCase
                 'carrier_title' => 'DHL Title',
                 'price' => 4810.92,
                 'method' => 'P',
-                'cost' => 4810.92
+                'cost' => 4810.92,
             ],
             [
                 'carrier' => 'dhl',
                 'carrier_title' => 'DHL Title',
                 'price' => 5980.74,
                 'method' => 'Q',
-                'cost' => 5980.74
-            ]
+                'cost' => 5980.74,
+            ],
         ];
 
         $actualRates = $this->dhlCarrier->collectRates($request)->getAllRates();
@@ -851,7 +852,7 @@ class CarrierTest extends TestCase
                     200,
                     [],
                     $content
-                )
+                ),
             ]
         );
         $productName = 'item_name';
@@ -893,11 +894,11 @@ class CarrierTest extends TestCase
                     [
                         'order' => new DataObject(
                             [
-                                'subtotal' => '10.00'
+                                'subtotal' => '10.00',
                             ]
-                        )
+                        ),
                     ]
-                )
+                ),
             ]
         );
 
@@ -942,8 +943,8 @@ class CarrierTest extends TestCase
     {
         return [
             [
-                'US', 'CA', '90034', 'G1A 0A8', 'los angeles', 'quebec'
-            ]
+                'US', 'CA', '90034', 'G1A 0A8', 'los angeles', 'quebec',
+            ],
         ];
     }
 
@@ -1014,7 +1015,7 @@ class CarrierTest extends TestCase
      *
      * @return array
      */
-    public static function trackingRestDataProvider() : array
+    public static function trackingRestDataProvider(): array
     {
         // phpcs:disable Magento2.Functions.DiscouragedFunction
         $expectedMultiShipRequestRest = file_get_contents(__DIR__ . '/../_files/TrackingRequest_MultipleShipment.json');
@@ -1051,15 +1052,15 @@ class CarrierTest extends TestCase
                 ['2725476530', '5539315121'],
                 $multiShipResponseRest,
                 [$expectedTrackingDataA, $expectedTrackingDataB],
-                $expectedMultiShipRequestRest
+                $expectedMultiShipRequestRest,
             ],
             'single-Ship' => [
                 ['2725476530'],
                 $singleShipResponseRest,
                 [$expectedTrackingDataA],
-                $expectedSingleShipRequestRest
+                $expectedSingleShipRequestRest,
             ],
-            'single-Ship-no-data' => [['1234567892'], $singleNoDataResponseRest, [$expectedTrackingDataC]]
+            'single-Ship-no-data' => [['1234567892'], $singleNoDataResponseRest, [$expectedTrackingDataC]],
         ];
     }
 

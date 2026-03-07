@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ErrorMapper
             self::ERROR_CART_NOT_ACTIVE_ID => self::ERROR_CART_NOT_ACTIVE,
             self::ERROR_GUEST_EMAIL_MISSING_ID => self::ERROR_GUEST_EMAIL_MISSING,
             self::ERROR_UNABLE_TO_PLACE_ORDER_ID => self::ERROR_UNABLE_TO_PLACE_ORDER,
-            self::ERROR_UNDEFINED_ID => self::ERROR_UNDEFINED
+            self::ERROR_UNDEFINED_ID => self::ERROR_UNDEFINED,
     ];
 
     /**

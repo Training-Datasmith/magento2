@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -831,9 +833,9 @@ abstract class AbstractEntity extends AbstractResource implements
             $prefix = (string) $this->getEntityType()->getValueTablePrefix();
             if (!empty($prefix)) {
                 $this->_valueTablePrefix = $prefix;
-            /**
-             * entity type prefix include DB table name prefix
-             */
+                /**
+                 * entity type prefix include DB table name prefix
+                 */
                 //$this->_resource->getTableName($prefix);
             } else {
                 $this->_valueTablePrefix = $this->getEntityTable();

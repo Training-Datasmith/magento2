@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,8 +39,8 @@ class SaveTest extends AbstractShipmentControllerTest
             [
                 'number' => 'some_racking_number',
                 'title' => 'some_tracking_title',
-                'carrier_code' => 'carrier_code'
-            ]
+                'carrier_code' => 'carrier_code',
+            ],
         ];
         $order = $this->prepareRequest(['shipment' => ['send_email' => true], 'tracking' => $tracking]);
         $this->dispatch('backend/admin/order_shipment/save');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,14 +19,14 @@ namespace Magento\AsynchronousOperations\Api\Data;
  */
 interface ItemStatusInterface
 {
-    const ENTITY_ID = 'entity_id';
-    const DATA_HASH = 'data_hash';
-    const STATUS = 'status';
-    const ERROR_MESSAGE = 'error_message';
-    const ERROR_CODE = 'error_code';
+    public const ENTITY_ID = 'entity_id';
+    public const DATA_HASH = 'data_hash';
+    public const STATUS = 'status';
+    public const ERROR_MESSAGE = 'error_message';
+    public const ERROR_CODE = 'error_code';
 
-    const STATUS_ACCEPTED = 'accepted';
-    const STATUS_REJECTED = 'rejected';
+    public const STATUS_ACCEPTED = 'accepted';
+    public const STATUS_REJECTED = 'rejected';
 
     /**
      * Get entity Id.

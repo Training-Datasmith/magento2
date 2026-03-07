@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,7 +14,6 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Sales\Model\Order\Address;
-use Magento\Sales\Setup\SalesSetupFactory;
 
 /**
  * Fills quote_address_id in table sales_order_address if it is empty.
@@ -79,7 +80,7 @@ class FillQuoteAddressIdInSalesOrderAddress implements DataPatchInterface, Patch
     public static function getDependencies()
     {
         return [
-            ConvertSerializedDataToJson::class
+            ConvertSerializedDataToJson::class,
         ];
     }
 
@@ -181,7 +182,7 @@ class FillQuoteAddressIdInSalesOrderAddress implements DataPatchInterface, Patch
                 'quote_address_id' => $quoteAddresses[$orderAddress['quote_id']]['address_id'] ?? null,
             ];
             $where = [
-                'entity_id = ?' => $orderAddress['entity_id']
+                'entity_id = ?' => $orderAddress['entity_id'],
             ];
 
             $salesConnection->update($salesOrderAddressTable, $bind, $where);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class CatalogProductCompareClearObserverTest extends TestCase
             CatalogProductCompareClearObserver::class,
             [
                 'reportStatus' => $this->reportStatusMock,
-                'productCompFactory' => $this->productCompFactoryMock
+                'productCompFactory' => $this->productCompFactoryMock,
             ]
         );
     }

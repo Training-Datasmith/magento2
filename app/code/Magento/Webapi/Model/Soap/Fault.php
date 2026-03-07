@@ -1,45 +1,48 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Soap;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\State;
 use Magento\Framework\Escaper;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Webapi Fault Model for Soap.
  */
 class Fault
 {
-    const FAULT_REASON_INTERNAL = 'Internal Error.';
+    public const FAULT_REASON_INTERNAL = 'Internal Error.';
 
     /**#@+
      * Fault codes that are used in SOAP faults.
      */
-    const FAULT_CODE_SENDER = 'Sender';
-    const FAULT_CODE_RECEIVER = 'Receiver';
+    public const FAULT_CODE_SENDER = 'Sender';
+    public const FAULT_CODE_RECEIVER = 'Receiver';
 
     /**#@+
      * Nodes that can appear in Detail node of SOAP fault.
      */
-    const NODE_DETAIL_PARAMETERS = 'Parameters';
-    const NODE_DETAIL_WRAPPED_ERRORS = 'WrappedErrors';
-    const NODE_DETAIL_WRAPPED_EXCEPTION = 'WrappedException';
+    public const NODE_DETAIL_PARAMETERS = 'Parameters';
+    public const NODE_DETAIL_WRAPPED_ERRORS = 'WrappedErrors';
+    public const NODE_DETAIL_WRAPPED_EXCEPTION = 'WrappedException';
     /* Note that parameter node must be unique in scope of all complex types declared in WSDL */
-    const NODE_DETAIL_PARAMETER = 'GenericFaultParameter';
-    const NODE_DETAIL_PARAMETER_KEY = 'key';
-    const NODE_DETAIL_PARAMETER_VALUE = 'value';
-    const NODE_DETAIL_WRAPPED_ERROR = 'WrappedError';
-    const NODE_DETAIL_WRAPPED_ERROR_MESSAGE = 'message';
-    const NODE_DETAIL_WRAPPED_ERROR_PARAMETERS = 'parameters';
-    const NODE_DETAIL_WRAPPED_ERROR_PARAMETER = 'parameter';
-    const NODE_DETAIL_WRAPPED_ERROR_KEY = 'key';
-    const NODE_DETAIL_WRAPPED_ERROR_VALUE = 'value';
-    const NODE_DETAIL_TRACE = 'Trace';
-    const NODE_DETAIL_WRAPPER = 'GenericFault';
+    public const NODE_DETAIL_PARAMETER = 'GenericFaultParameter';
+    public const NODE_DETAIL_PARAMETER_KEY = 'key';
+    public const NODE_DETAIL_PARAMETER_VALUE = 'value';
+    public const NODE_DETAIL_WRAPPED_ERROR = 'WrappedError';
+    public const NODE_DETAIL_WRAPPED_ERROR_MESSAGE = 'message';
+    public const NODE_DETAIL_WRAPPED_ERROR_PARAMETERS = 'parameters';
+    public const NODE_DETAIL_WRAPPED_ERROR_PARAMETER = 'parameter';
+    public const NODE_DETAIL_WRAPPED_ERROR_KEY = 'key';
+    public const NODE_DETAIL_WRAPPED_ERROR_VALUE = 'value';
+    public const NODE_DETAIL_TRACE = 'Trace';
+    public const NODE_DETAIL_WRAPPER = 'GenericFault';
     /**#@-*/
 
     /**

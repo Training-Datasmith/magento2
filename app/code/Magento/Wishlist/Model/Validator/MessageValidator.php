@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class MessageValidator extends AbstractValidator
         // Template directives
         '/\{\{.*?\}\}/s',
         '/\{%.*?%\}/s',
-    
+
         // Server-side code execution
         '/<\?/i',
 
@@ -52,7 +53,7 @@ class MessageValidator extends AbstractValidator
         foreach (self::FORBIDDEN_PATTERNS as $pattern) {
             if (preg_match($pattern, $decoded) || preg_match($pattern, $normalized)) {
                 $this->_addMessages([
-                    'Invalid content detected in message. Code and system commands are not allowed.'
+                    'Invalid content detected in message. Code and system commands are not allowed.',
                 ]);
                 return false;
             }

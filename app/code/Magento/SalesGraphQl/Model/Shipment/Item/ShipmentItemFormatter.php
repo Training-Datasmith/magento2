@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class ShipmentItemFormatter implements FormatterInterface
             'product_sku' => $item->getSku(),
             'product_sale_price' => [
                 'value' => $item->getPrice(),
-                'currency' => $order->getOrderCurrencyCode()
+                'currency' => $order->getOrderCurrencyCode(),
             ],
             'product_type' => $item->getOrderItem()->getProductType(),
             'quantity_shipped' => $item->getQty(),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -19,12 +20,12 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\RedirectFactory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as HelperObjectManager;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as HelperObjectManager;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\Store;
@@ -155,7 +156,7 @@ class SaveTest extends TestCase
                 'getObjectManager',
                 'getHelper',
                 'getMessageManager',
-                'getResultRedirectFactory'
+                'getResultRedirectFactory',
             ]
         );
         $contextMock->expects($this->once())->method('getRequest')->willReturn($this->requestMock);
@@ -188,8 +189,8 @@ class SaveTest extends TestCase
                 'name' => 'Test Store View',
                 'code' => 'test_store',
                 'is_active' => 1,
-                'group_id' => 1
-            ]
+                'group_id' => 1,
+            ],
         ];
         $this->requestMock->expects($this->once())->method('isPost')->willReturn(true);
         $this->requestMock->expects($this->once())->method('getPostValue')->willReturn($requestParams);
@@ -201,7 +202,7 @@ class SaveTest extends TestCase
             ->method('create')
             ->willReturnMap([
                 [Store::class, $this->storeModelMock],
-                [Group::class, $this->groupModelMock]
+                [Group::class, $this->groupModelMock],
             ]);
         $this->storeModelMock->expects($this->once())->method('load')->with($storeId)->willReturnSelf();
         $this->storeModelMock->expects($this->once())->method('setData')->willReturnSelf();

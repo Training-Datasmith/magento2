@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2015 Adobe
@@ -13,12 +15,12 @@ class ConfigDomMock
      * @var string|null
      */
     private $initialContents;
-    
+
     /**
      * @var string
      */
     private $typeAttribute;
-    
+
     /**
      * @param null|string $initialContents
      * @param mixed $validationState

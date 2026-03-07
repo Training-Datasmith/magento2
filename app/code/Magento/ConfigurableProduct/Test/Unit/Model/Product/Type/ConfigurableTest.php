@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product\Type;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use ArrayIterator;
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -24,8 +22,7 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable\AttributeFactory
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\Collection;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\CollectionFactory;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\Collection as ProductCollection;
-use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\CollectionFactory
-    as ProductCollectionFactory;
+use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\ConfigurableFactory;
 use Magento\Customer\Model\Session;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -40,14 +37,16 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Quote\Model\Quote\Item\Option;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.LongVariable)
@@ -79,8 +78,8 @@ class ConfigurableTest extends TestCase
             'attribute_id' => 111,
             'position' => 0,
             'label' => 'Some Super Attribute',
-            'values' => []
-        ]
+            'values' => [],
+        ],
     ];
 
     /**
@@ -212,7 +211,7 @@ class ConfigurableTest extends TestCase
                 'serializer' => $this->serializer,
                 'salableProcessor' => $this->salableProcessor,
                 'metadataPool' => $this->metadataPool,
-                'productFactory' => $this->productFactory
+                'productFactory' => $this->productFactory,
             ]
         );
         $refClass = new ReflectionClass(Configurable::class);
@@ -237,18 +236,18 @@ class ConfigurableTest extends TestCase
             \Magento\Catalog\Api\Data\ProductExtensionInterface::class,
             [
                 'setConfigurableProductOptions', 'setConfigurableProductLinks',
-                'getConfigurableProductOptions', 'getConfigurableProductLinks'
+                'getConfigurableProductOptions', 'getConfigurableProductLinks',
             ]
         );
         $extensionAttributes->method('getConfigurableProductOptions')->willReturn([]);
         $extensionAttributes->method('getConfigurableProductLinks')->willReturn([]);
-        
+
         $product = $this->createPartialMockWithReflection(
             \Magento\Catalog\Model\Product::class,
             [
                 'getExtensionAttributes', 'setConfigurableAttributesData', 'setIsDuplicate', 'setStoreId',
                 'setAssociatedProductIds', 'hasData', 'getConfigurableAttributesData', 'getIsDuplicate',
-                'getStoreId', 'setExtensionAttributes', 'setData', 'getData'
+                'getStoreId', 'setExtensionAttributes', 'setData', 'getData',
             ]
         );
         $product->method('getExtensionAttributes')->willReturn($extensionAttributes);
@@ -256,11 +255,11 @@ class ConfigurableTest extends TestCase
         $product->method('getIsDuplicate')->willReturn(true);
         $product->method('getStoreId')->willReturn(1);
         $product->method('hasData')->willReturnMap([
-            ['_cache_instance_used_product_attribute_ids', true]
+            ['_cache_instance_used_product_attribute_ids', true],
         ]);
         $product->method('getData')->willReturnMap([
             ['_cache_instance_used_product_attribute_ids', null, [1]],
-            ['link', null, 1]
+            ['link', null, 1],
         ]);
         $extensionAttributes->setConfigurableProductOptions([]);
         $extensionAttributes->setConfigurableProductLinks([]);
@@ -275,7 +274,7 @@ class ConfigurableTest extends TestCase
         $attribute->method('setStoreId')->willReturnSelf();
         $attribute->method('setProductId')->willReturnSelf();
         $attribute->method('save')->willReturnSelf();
-        
+
         $expectedAttributeData = $this->attributeData[1];
         unset($expectedAttributeData['id']);
 
@@ -350,14 +349,14 @@ class ConfigurableTest extends TestCase
             ->willReturnMap(
                 [
                     ['_cache_instance_products', null],
-                    ['_cache_instance_used_product_attributes', 1]
+                    ['_cache_instance_used_product_attributes', 1],
                 ]
             );
         $product->expects($this->any())
             ->method('getData')
             ->willReturnMap(
                 [
-                    ['_cache_instance_used_product_attributes', null, []]
+                    ['_cache_instance_used_product_attributes', null, []],
                 ]
             );
         $this->catalogConfig->method('getProductAttributes')->willReturn([]);
@@ -413,13 +412,13 @@ class ConfigurableTest extends TestCase
         $product->expects($this->atLeastOnce())->method('hasData')
             ->willReturnMap(
                 [
-                    ['_cache_instance_configurable_attributes', 1]
+                    ['_cache_instance_configurable_attributes', 1],
                 ]
             );
         $product->expects($this->any())->method('getData')
             ->willReturnMap(
                 [
-                    ['_cache_instance_configurable_attributes', null, [$attribute]]
+                    ['_cache_instance_configurable_attributes', null, [$attribute]],
                 ]
             );
 
@@ -651,8 +650,8 @@ class ConfigurableTest extends TestCase
                     'label' => 'attr_store_label',
                     'value' => '',
                     'option_id' => 1,
-                    'option_value' => ''
-                ]
+                    'option_value' => '',
+                ],
             ]
         );
     }
@@ -789,14 +788,14 @@ class ConfigurableTest extends TestCase
         );
         $childProductMock = $this->createMock(Product::class);
         $this->entityMetadata->method('getLinkField')->willReturn('link');
-        
+
         // Configure mock with expected values
         $productMock->method('hasData')->willReturnMap([
-            ['_cache_instance_products', true]
+            ['_cache_instance_products', true],
         ]);
         $productMock->method('getData')->willReturnMap([
             ['image', null, 'no_selection'],
-            ['_cache_instance_products', null, [$childProductMock]]
+            ['_cache_instance_products', null, [$childProductMock]],
         ]);
         $productMock->expects($this->once())->method('setImage')->with('image_data');
 

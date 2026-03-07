@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,10 +15,10 @@ use Magento\Framework\Indexer\ActionInterface;
 use Magento\Framework\Indexer\Config\DependencyInfoProviderInterface;
 use Magento\Framework\Indexer\ConfigInterface;
 use Magento\Framework\Indexer\IndexerInterface;
+use Magento\Framework\Indexer\IndexerInterfaceFactory;
 use Magento\Framework\Indexer\IndexStructureInterface;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Indexer\StructureFactory;
-use Magento\Framework\Indexer\IndexerInterfaceFactory;
 use Magento\Framework\Indexer\SuspendableIndexerInterface;
 use Magento\Framework\Mview\View\ChangelogTableNotExistsException;
 use Magento\Framework\Mview\ViewInterface;
@@ -499,7 +501,7 @@ class Indexer extends DataObject implements IndexerInterface, SuspendableIndexer
      * @param string $sharedIndex
      * @return array
      */
-    private function getSharedIndexers(string $sharedIndex) : array
+    private function getSharedIndexers(string $sharedIndex): array
     {
         $result = [];
         foreach (array_keys($this->config->getIndexers()) as $indexerId) {
@@ -524,7 +526,7 @@ class Indexer extends DataObject implements IndexerInterface, SuspendableIndexer
      * @return void
      * @throws \Exception
      */
-    private function suspendViews(array $indexers, bool $reset = true) : void
+    private function suspendViews(array $indexers, bool $reset = true): void
     {
         foreach ($indexers as $indexer) {
             if ($indexer->getView()->isEnabled()) {
@@ -546,7 +548,7 @@ class Indexer extends DataObject implements IndexerInterface, SuspendableIndexer
      * @param array $sharedIndexers
      * @return void
      */
-    private function resumeSharedViews(array $sharedIndexers) : void
+    private function resumeSharedViews(array $sharedIndexers): void
     {
         foreach ($sharedIndexers as $indexer) {
             $indexer->getView()->resume();

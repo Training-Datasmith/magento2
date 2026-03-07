@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteGuestPaymentMethodManagementV1';
-    const RESOURCE_PATH = '/V1/guest-carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteGuestPaymentMethodManagementV1';
+    public const RESOURCE_PATH = '/V1/guest-carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -78,10 +81,10 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "method" => [
+            'cartId' => $cartId,
+            'method' => [
                 'method' => 'checkmo',
-                'po_number' => null
+                'po_number' => null,
             ],
         ];
 
@@ -111,10 +114,10 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "method" => [
+            'cartId' => $cartId,
+            'method' => [
                 'method' => 'checkmo',
-                'po_number' => '200'
+                'po_number' => '200',
             ],
         ];
         $this->assertNotNull($this->_webApiCall($serviceInfo, $requestData));
@@ -143,10 +146,10 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "method" => [
+            'cartId' => $cartId,
+            'method' => [
                 'method' => 'checkmo',
-                'po_number' => '200'
+                'po_number' => '200',
             ],
         ];
 
@@ -179,10 +182,10 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "method" => [
+            'cartId' => $cartId,
+            'method' => [
                 'method' => 'checkmo',
-                'po_number' => '200'
+                'po_number' => '200',
             ],
         ];
         $this->assertNotNull($this->_webApiCall($serviceInfo, $requestData));
@@ -210,7 +213,7 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $requestResponse = $this->_webApiCall($serviceInfo, $requestData);
 
         $expectedResponse = [
@@ -244,7 +247,7 @@ class GuestPaymentMethodManagementTest extends \Magento\TestFramework\TestCase\W
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $requestResponse = $this->_webApiCall($serviceInfo, $requestData);
 
         foreach ($this->getPaymentMethodFieldsForAssert() as $field) {

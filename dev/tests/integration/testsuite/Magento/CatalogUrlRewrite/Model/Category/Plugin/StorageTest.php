@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\CatalogUrlRewrite\Model\Category\Plugin;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product as ProductEntity;
 use Magento\Catalog\Model\Product\Media\ConfigInterface;
+use Magento\CatalogImportExport\Model\Import\ProductFactory;
 use Magento\Framework\App\Bootstrap as AppBootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ResourceConnection;
@@ -19,7 +21,6 @@ use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\ImportExport\Model\Import;
-use Magento\CatalogImportExport\Model\Import\ProductFactory;
 use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\ImportExport\Model\Import\Source\CsvFactory;
 use Magento\ImportExport\Model\ResourceModel\Import\Data;
@@ -173,7 +174,7 @@ class StorageTest extends TestCase
         $source = $this->csvFactory->create(
             [
                 'file' => $fileName,
-                'directory' => $tmpDirectory
+                'directory' => $tmpDirectory,
             ]
         );
 

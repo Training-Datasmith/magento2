@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,8 +12,6 @@ use Magento\Framework\DataObject;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\AddressInterfaceFactory;
-use Magento\Quote\Api\Data\CartExtensionFactory;
-use Magento\Quote\Model\Quote\ShippingAssignment\ShippingAssignmentProcessor;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
 use Magento\TestFramework\Fixture\DataFixtureInterface;
 
@@ -74,7 +73,7 @@ class AddAddressToCart implements DataFixtureInterface
         $cart = $this->cartRepository->get($data['cart_id']);
         $address = $this->addressInterfaceFactory->create(
             [
-                'data' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data['address'] ?? []))
+                'data' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data['address'] ?? [])),
             ]
         );
         if (!$cart->getIsMultiShipping()) {

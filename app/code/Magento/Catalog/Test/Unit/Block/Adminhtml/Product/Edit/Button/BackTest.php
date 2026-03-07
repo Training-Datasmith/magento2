@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class BackTest extends GenericTest
                 'label' => __('Back'),
                 'on_click' => sprintf("location.href = '%s';", '/'),
                 'class' => 'back',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             $this->getModel(Back::class)->getButtonData()
         );

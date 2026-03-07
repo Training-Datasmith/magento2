@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class TargetUrlBuilder implements TargetUrlBuilderInterface
         );
         $existingUrlRewrite = $this->urlFinder->findOneByData(
             [
-                UrlRewrite::REQUEST_PATH => $routePath
+                UrlRewrite::REQUEST_PATH => $routePath,
             ]
         );
         if ($currentUrlRewrite === null && $existingUrlRewrite !== null && !empty($pageId)) {
@@ -102,8 +103,8 @@ class TargetUrlBuilder implements TargetUrlBuilderInterface
                 '_current' => false,
                 '_nosid' => true,
                 '_query' => [
-                    StoreManagerInterface::PARAM_NAME => $store
-                ]
+                    StoreManagerInterface::PARAM_NAME => $store,
+                ],
             ]
         );
     }

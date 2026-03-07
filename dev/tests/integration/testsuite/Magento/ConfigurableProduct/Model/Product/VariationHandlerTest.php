@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -146,7 +147,7 @@ class VariationHandlerTest extends TestCase
                         'price' => '3',
                         'sku' => '1-bbb',
                         'quantity_and_stock_status' => ['qty' => '5'],
-                        'weight' => '6'
+                        'weight' => '6',
                     ],
                     [
                         'name' => '1-ccc',
@@ -154,10 +155,10 @@ class VariationHandlerTest extends TestCase
                         'price' => '3',
                         'sku' => '1-ccc',
                         'quantity_and_stock_status' => ['qty' => '5'],
-                        'weight' => '6'
+                        'weight' => '6',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -178,7 +179,7 @@ class VariationHandlerTest extends TestCase
                         'weight' => '6',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

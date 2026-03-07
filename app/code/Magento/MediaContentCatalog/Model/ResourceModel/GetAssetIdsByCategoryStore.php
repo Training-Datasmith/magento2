@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\MediaContentCatalog\Model\ResourceModel;
 
-use Magento\Catalog\Api\CategoryManagementInterface;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\MediaContentApi\Model\GetAssetIdsByContentFieldInterface;
 use Magento\Store\Api\GroupRepositoryInterface;

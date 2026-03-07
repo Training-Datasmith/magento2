@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Widget\Grid\Column\Renderer;
 
 /**
@@ -24,7 +27,7 @@ class Name extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text
         $text = parent::render($row);
         if (($row->getEndpoint() && !$this->isUrlSecure($row->getEndpoint())) ||
             ($row->getIdentityLinkUrl() && !$this->isUrlSecure($row->getIdentityLinkUrl()))) {
-            $text .= '<span class="security-notice"><span>' . __("Integration not secure") . '</span></span>';
+            $text .= '<span class="security-notice"><span>' . __('Integration not secure') . '</span></span>';
         }
         return $text;
     }

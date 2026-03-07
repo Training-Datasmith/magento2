@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for Magento\Email\Model\BackendTemplate.
  */
+
 namespace Magento\Email\Test\Unit\Model;
 
 use Magento\Config\Model\Config\Structure;
@@ -105,7 +107,7 @@ class BackendTemplateTest extends TestCase
             [
                 'scopeConfig' => $this->scopeConfigMock,
                 'structure' => $this->structureMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }

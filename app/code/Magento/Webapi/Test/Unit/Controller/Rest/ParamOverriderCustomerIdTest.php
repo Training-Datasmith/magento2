@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class ParamOverriderCustomerIdTest extends TestCase
         $this->model = (new ObjectManager($this))->getObject(
             ParamOverriderCustomerId::class,
             [
-                'userContext' => $this->userContext
+                'userContext' => $this->userContext,
             ]
         );
     }

@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat\Action;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Store\Model\Store;

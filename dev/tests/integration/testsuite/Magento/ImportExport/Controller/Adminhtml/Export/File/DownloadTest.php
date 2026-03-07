@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Controller\Adminhtml\Export\File;
 
+use Magento\Backend\Model\Auth;
+use Magento\Backend\Model\UrlInterface as BackendUrl;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Backend\Model\UrlInterface as BackendUrl;
-use Magento\Backend\Model\Auth;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -141,7 +142,7 @@ class DownloadTest extends AbstractBackendController
     {
         return [
             ['catalog_product.csv'],
-            ['test/catalog_product.csv']
+            ['test/catalog_product.csv'],
         ];
     }
 

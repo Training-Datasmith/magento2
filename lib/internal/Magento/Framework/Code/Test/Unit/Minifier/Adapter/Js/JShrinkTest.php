@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Minifier\Adapter\Js;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Code\Minifier\Adapter\Js\JShrink;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JShrinkTest extends TestCase
 {
@@ -29,7 +32,7 @@ class JShrinkTest extends TestCase
         return [
             'line breaks' => [
                 'content' => file_get_contents(__DIR__ . '/../../_files/js/original.js'),
-                'expected' => "var one='one';var two='two';"
+                'expected' => "var one='one';var two='two';",
             ],
             'regex1' => [
                 'content' => <<<JS

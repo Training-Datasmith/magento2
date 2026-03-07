@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -69,9 +70,9 @@ class ItemIdProcessorTest extends TestCase
                 [
                     'components' => [
                         'giftOptionsCartItem-23' => [
-                            'config' => ['key' => 'value', 'itemId' => 23], 'key2' => 'value2'
-                        ]
-                    ]
+                            'config' => ['key' => 'value', 'itemId' => 23], 'key2' => 'value2',
+                        ],
+                    ],
                 ],
             ],
         ];

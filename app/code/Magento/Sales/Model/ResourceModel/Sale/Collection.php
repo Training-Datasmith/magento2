@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Sale;
 
-use Magento\Framework\Data\Collection\EntityFactory;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
+use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface as Logger;
 
 /**
@@ -141,7 +144,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                     'base_lifetime' => new \Zend_Db_Expr('SUM(base_grand_total * base_to_global_rate)'),
                     'avgsale' => new \Zend_Db_Expr('AVG(base_grand_total)'),
                     'base_avgsale' => new \Zend_Db_Expr('AVG(base_grand_total * base_to_global_rate)'),
-                    'num_orders' => new \Zend_Db_Expr('COUNT(base_grand_total)')
+                    'num_orders' => new \Zend_Db_Expr('COUNT(base_grand_total)'),
                 ]
             )
             ->group('store_id');

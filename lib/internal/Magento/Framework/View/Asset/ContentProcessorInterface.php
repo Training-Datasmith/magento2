@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\View\Asset;
 
-use Magento\Framework\View\Asset\File;
+namespace Magento\Framework\View\Asset;
 
 /**
  * Interface ContentProcessorInterface
@@ -17,7 +18,7 @@ interface ContentProcessorInterface
     /**
      * Error prefix
      */
-    const ERROR_MESSAGE_PREFIX = 'Compilation from source: ';
+    public const ERROR_MESSAGE_PREFIX = 'Compilation from source: ';
 
     /**
      * Process file content

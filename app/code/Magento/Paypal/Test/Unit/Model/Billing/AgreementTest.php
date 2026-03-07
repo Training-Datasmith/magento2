@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class AgreementTest extends TestCase
                 'getCode',
                 'getFormBlockType',
                 'getTitle',
-                'getStore'
+                'getStore',
             ]
         );
 
@@ -66,7 +67,7 @@ class AgreementTest extends TestCase
     {
         $baData = [
             'billing_agreement_id' => 'B-5E3253653W103435Y',
-            'method_code' => 'paypal_billing_agreement'
+            'method_code' => 'paypal_billing_agreement',
         ];
 
         $paymentMock = $this->importOrderPaymentCommonPart($baData);
@@ -90,7 +91,7 @@ class AgreementTest extends TestCase
     public function testImportOrderPaymentWithoutMethodCode()
     {
         $baData = [
-            'billing_agreement_id' => 'B-5E3253653W103435Y'
+            'billing_agreement_id' => 'B-5E3253653W103435Y',
         ];
 
         $paymentMock = $this->importOrderPaymentCommonPart($baData);

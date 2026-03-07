@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -53,10 +55,10 @@ class IdsTableBuilder implements IdsTableBuilderInterface
         $table->addIndex(
             self::INDEX_NAME_UNIQUE,
             [
-                $changelog->getColumnName()
+                $changelog->getColumnName(),
             ],
             [
-                'type' => AdapterInterface::INDEX_TYPE_UNIQUE
+                'type' => AdapterInterface::INDEX_TYPE_UNIQUE,
             ]
         );
 

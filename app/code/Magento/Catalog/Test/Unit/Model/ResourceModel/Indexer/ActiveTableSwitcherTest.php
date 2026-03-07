@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -50,15 +51,14 @@ class ActiveTableSwitcherTest extends TestCase
 
         $connectionMock->expects($this->exactly(2))
             ->method('showTableStatus')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$tableName] => $tableData,
                 [$replicaName] => $replicaData
             });
 
         $connectionMock->expects($this->exactly(2))
             ->method('changeTableComment')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($tableName, $replicaData, $statement, $replicaName, $tableData) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($tableName, $replicaData, $statement, $replicaName, $tableData) {
                 if ($arg1 == $tableName && $arg2 == $replicaData['Comment']) {
                     return $statement;
                 } elseif ($arg1 == $replicaName && $arg2 == $tableData['Comment']) {
@@ -72,15 +72,15 @@ class ActiveTableSwitcherTest extends TestCase
                 [
                     [
                         'oldName' => 'tableName',
-                        'newName' => 'tableName_outdated'
+                        'newName' => 'tableName_outdated',
                     ],
                     [
                         'oldName' => 'tableName_replica',
-                        'newName' => 'tableName'
+                        'newName' => 'tableName',
                     ],
                     [
                         'oldName' => 'tableName_outdated',
-                        'newName' => 'tableName_replica'
+                        'newName' => 'tableName_replica',
                     ],
                 ]
             )

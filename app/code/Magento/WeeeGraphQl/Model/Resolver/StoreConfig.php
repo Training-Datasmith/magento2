@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\WeeeGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Weee\Helper\Data;
-use Magento\Tax\Helper\Data as TaxHelper;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\Weee\Model\Tax as WeeeDisplayConfig;
 use Magento\Framework\Pricing\Render;
+use Magento\Store\Api\Data\StoreInterface;
+use Magento\Tax\Helper\Data as TaxHelper;
+use Magento\Weee\Helper\Data;
+use Magento\Weee\Model\Tax as WeeeDisplayConfig;
 
 /**
  * Resolver for the FPT store config settings
@@ -34,7 +35,7 @@ class StoreConfig implements ResolverInterface, ResetAfterRequestInterface
         WeeeDisplayConfig::DISPLAY_INCL => 'INCLUDE_FPT_WITHOUT_DETAILS',
         WeeeDisplayConfig::DISPLAY_INCL_DESCR => 'INCLUDE_FPT_WITH_DETAILS',
         WeeeDisplayConfig::DISPLAY_EXCL_DESCR_INCL => 'EXCLUDE_FPT_AND_INCLUDE_WITH_DETAILS',
-        WeeeDisplayConfig::DISPLAY_EXCL => 'EXCLUDE_FPT_WITHOUT_DETAILS'
+        WeeeDisplayConfig::DISPLAY_EXCL => 'EXCLUDE_FPT_WITHOUT_DETAILS',
     ];
 
     /**

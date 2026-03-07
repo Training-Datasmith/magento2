@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,22 +63,22 @@ class AjaxLoadTest extends TestCase
      */
     public function testExecute()
     {
-        $taxRateId=1;
-        $returnArray=[
+        $taxRateId = 1;
+        $returnArray = [
             'tax_calculation_rate_id' => null,
             'tax_country_id' => 'US',
             'tax_region_id' => 2,
             'tax_postcode' => null,
             'code' => 'Tax Rate Code',
             'rate' => 7.5,
-            'zip_is_range'=> 0,
+            'zip_is_range' => 0,
             'title[1]' => 'texas',
         ];
         $objectManager = new ObjectManager($this);
         $rateTitles = [$objectManager->getObject(
             Title::class,
             ['data' => ['store_id' => 1, 'value' => 'texas']]
-        )
+        ),
         ];
         $rateMock = $objectManager->getObject(
             Rate::class,
@@ -111,14 +112,14 @@ class AjaxLoadTest extends TestCase
             ->with($rateMock, true)
             ->willReturn($returnArray);
 
-        $jsonObject= $this->getMockBuilder(JsonResult::class)
+        $jsonObject = $this->getMockBuilder(JsonResult::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['setData'])
             ->getMock();
 
         $jsonObject->expects($this->once())
             ->method('setData')
-            ->with(['success' => true, 'error_message' => '', 'result'=> $returnArray,
+            ->with(['success' => true, 'error_message' => '', 'result' => $returnArray,
             ]);
 
         $this->resultFactory->expects($this->any())
@@ -145,9 +146,9 @@ class AjaxLoadTest extends TestCase
      */
     public function testExecuteLocalizedException()
     {
-        $taxRateId=999;
-        $exceptionMessage='No such entity with taxRateId = ' . $taxRateId;
-        $noSuchEntityEx= new NoSuchEntityException(__($exceptionMessage));
+        $taxRateId = 999;
+        $exceptionMessage = 'No such entity with taxRateId = ' . $taxRateId;
+        $noSuchEntityEx = new NoSuchEntityException(__($exceptionMessage));
 
         $objectManager = new ObjectManager($this);
 
@@ -160,7 +161,7 @@ class AjaxLoadTest extends TestCase
             ->with($taxRateId)
             ->willThrowException($noSuchEntityEx);
 
-        $jsonObject= $this->getMockBuilder(JsonResult::class)
+        $jsonObject = $this->getMockBuilder(JsonResult::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['setData'])
             ->getMock();
@@ -195,9 +196,9 @@ class AjaxLoadTest extends TestCase
      */
     public function testExecuteException()
     {
-        $taxRateId=999;
-        $exceptionMessage=__('An error occurred while loading this tax rate.');
-        $noSuchEntityEx= new \Exception();
+        $taxRateId = 999;
+        $exceptionMessage = __('An error occurred while loading this tax rate.');
+        $noSuchEntityEx = new \Exception();
 
         $objectManager = new ObjectManager($this);
 
@@ -210,7 +211,7 @@ class AjaxLoadTest extends TestCase
             ->with($taxRateId)
             ->willThrowException($noSuchEntityEx);
 
-        $jsonObject= $this->getMockBuilder(JsonResult::class)
+        $jsonObject = $this->getMockBuilder(JsonResult::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['setData'])
             ->getMock();

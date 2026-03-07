@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Component;
 
 /**
@@ -16,11 +19,11 @@ class ComponentRegistrar implements ComponentRegistrarInterface
     /**#@+
      * Different types of components
      */
-    const MODULE = 'module';
-    const LIBRARY = 'library';
-    const THEME = 'theme';
-    const LANGUAGE = 'language';
-    const SETUP = 'setup';
+    public const MODULE = 'module';
+    public const LIBRARY = 'library';
+    public const THEME = 'theme';
+    public const LANGUAGE = 'language';
+    public const SETUP = 'setup';
     /**#@- */
 
     /**#@- */
@@ -29,7 +32,7 @@ class ComponentRegistrar implements ComponentRegistrarInterface
         self::LIBRARY => [],
         self::LANGUAGE => [],
         self::THEME => [],
-        self::SETUP => []
+        self::SETUP => [],
     ];
 
     /**

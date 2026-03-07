@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -11,45 +14,45 @@ namespace Magento\Catalog\Api\Data;
  */
 interface EavAttributeInterface extends \Magento\Eav\Api\Data\AttributeInterface
 {
-    const IS_WYSIWYG_ENABLED = 'is_wysiwyg_enabled';
+    public const IS_WYSIWYG_ENABLED = 'is_wysiwyg_enabled';
 
-    const IS_HTML_ALLOWED_ON_FRONT = 'is_html_allowed_on_front';
+    public const IS_HTML_ALLOWED_ON_FRONT = 'is_html_allowed_on_front';
 
-    const USED_FOR_SORT_BY = 'used_for_sort_by';
+    public const USED_FOR_SORT_BY = 'used_for_sort_by';
 
-    const IS_FILTERABLE = 'is_filterable';
+    public const IS_FILTERABLE = 'is_filterable';
 
-    const IS_FILTERABLE_IN_SEARCH = 'is_filterable_in_search';
+    public const IS_FILTERABLE_IN_SEARCH = 'is_filterable_in_search';
 
-    const IS_USED_IN_GRID = 'is_used_in_grid';
+    public const IS_USED_IN_GRID = 'is_used_in_grid';
 
-    const IS_VISIBLE_IN_GRID = 'is_visible_in_grid';
+    public const IS_VISIBLE_IN_GRID = 'is_visible_in_grid';
 
-    const IS_FILTERABLE_IN_GRID = 'is_filterable_in_grid';
+    public const IS_FILTERABLE_IN_GRID = 'is_filterable_in_grid';
 
-    const POSITION = 'position';
+    public const POSITION = 'position';
 
-    const APPLY_TO = 'apply_to';
+    public const APPLY_TO = 'apply_to';
 
-    const IS_SEARCHABLE = 'is_searchable';
+    public const IS_SEARCHABLE = 'is_searchable';
 
-    const IS_VISIBLE_IN_ADVANCED_SEARCH = 'is_visible_in_advanced_search';
+    public const IS_VISIBLE_IN_ADVANCED_SEARCH = 'is_visible_in_advanced_search';
 
-    const IS_COMPARABLE = 'is_comparable';
+    public const IS_COMPARABLE = 'is_comparable';
 
-    const IS_USED_FOR_PROMO_RULES = 'is_used_for_promo_rules';
+    public const IS_USED_FOR_PROMO_RULES = 'is_used_for_promo_rules';
 
-    const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
+    public const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
 
-    const USED_IN_PRODUCT_LISTING = 'used_in_product_listing';
+    public const USED_IN_PRODUCT_LISTING = 'used_in_product_listing';
 
-    const IS_VISIBLE = 'is_visible';
+    public const IS_VISIBLE = 'is_visible';
 
-    const SCOPE_STORE_TEXT = 'store';
+    public const SCOPE_STORE_TEXT = 'store';
 
-    const SCOPE_GLOBAL_TEXT = 'global';
+    public const SCOPE_GLOBAL_TEXT = 'global';
 
-    const SCOPE_WEBSITE_TEXT = 'website';
+    public const SCOPE_WEBSITE_TEXT = 'website';
 
     /**
      * Enable WYSIWYG flag

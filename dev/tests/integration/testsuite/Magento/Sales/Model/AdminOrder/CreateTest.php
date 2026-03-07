@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\AdminOrder;
 
 use Magento\Backend\Model\Session\Quote as SessionQuote;
@@ -17,7 +20,6 @@ use Magento\Sales\Api\Data\OrderAddressExtensionInterface;
 use Magento\Sales\Api\Data\OrderAddressExtensionInterfaceFactory;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\AdminOrder\EmailSender;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -58,7 +60,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
         $this->emailSenderMock = $this->getMockBuilder(EmailSender::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->model =$this->objectManager->create(
+        $this->model = $this->objectManager->create(
             Create::class,
             ['messageManager' => $this->messageManager, 'emailSender' => $this->emailSenderMock]
         );
@@ -522,7 +524,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
             $this->objectManager->removeSharedInstance(OrderManagementInterface::class);
         }
 
-        $customerEmail = $customerEmailSecondAttempt ? :$this->model->getQuote()->getCustomer()->getEmail();
+        $customerEmail = $customerEmailSecondAttempt ?: $this->model->getQuote()->getCustomer()->getEmail();
         $orderData['account']['email'] = $customerEmailSecondAttempt;
 
         $this->preparePreconditionsForCreateOrder(
@@ -806,7 +808,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             0,
             $this->messageManager->getMessages()->getCount(),
-            "Precondition failed: Errors occurred before SUT execution."
+            'Precondition failed: Errors occurred before SUT execution.'
         );
         /** Selectively check quote data */
         $createOrderData = $this->model->getData();
@@ -886,7 +888,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
             'postcode' => '76868',
             'telephone' => '+8709273498729384',
             'fax' => '',
-            'vat_id' => ''
+            'vat_id' => '',
         ];
     }
 
@@ -979,7 +981,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
         );
         $this->model->setBillingAddress($orderData['billing_address']);
         try {
-            $order =$this->model->createOrder();
+            $order = $this->model->createOrder();
             $orderData = $order->getData();
             self::assertNotEmpty($orderData['increment_id'], 'Order increment ID is empty.');
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
@@ -1002,7 +1004,7 @@ class CreateTest extends \PHPUnit\Framework\TestCase
                     'getId',
                     'getGroupId',
                     'getEmail',
-                    '_getExtensionAttributes'
+                    '_getExtensionAttributes',
                 ]
             )->getMock();
         $customerMock->method('getId')

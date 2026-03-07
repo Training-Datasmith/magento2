@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,8 +24,9 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Session\Generic as GenericSession;
+use Magento\Framework\Session\SessionManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Form\Field;
@@ -32,7 +34,6 @@ use Magento\Ui\DataProvider\EavValidationRules;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit tests for \Magento\Customer\Model\Customer\DataProvider class.
@@ -87,10 +88,10 @@ class DataProviderTest extends TestCase
             ->getMockBuilder(EavValidationRules::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->sessionMock =$this->createPartialMockWithReflection(
+        $this->sessionMock = $this->createPartialMockWithReflection(
             GenericSession::class,
             ['getCustomerFormData',
-                            'unsCustomerFormData'
+                            'unsCustomerFormData',
                             ]
         );
 
@@ -121,7 +122,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->getCustomerCollectionFactoryMock(),
                 'eavConfig' => $this->getEavConfigMock(),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -157,10 +158,10 @@ class DataProviderTest extends TestCase
                                             'notice' => 'note',
                                             'default' => 'default_value',
                                             'size' => 'multiline_count',
-                                            'componentType' => Field::NAME
-                                        ]
-                                    ]
-                                ]
+                                            'componentType' => Field::NAME,
+                                        ],
+                                    ],
+                                ],
                             ],
                             'test-code-boolean' => [
                                 'arguments' => [
@@ -179,13 +180,13 @@ class DataProviderTest extends TestCase
                                             'prefer' => 'toggle',
                                             'valueMap' => [
                                                 'true' => 1,
-                                                'false' => 0
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
+                                                'false' => 0,
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     'address' => [
                         'children' => [
@@ -203,10 +204,10 @@ class DataProviderTest extends TestCase
                                             'notice' => 'note',
                                             'default' => 'default_value',
                                             'size' => 'multiline_count',
-                                            'componentType' => Field::NAME
-                                        ]
-                                    ]
-                                ]
+                                            'componentType' => Field::NAME,
+                                        ],
+                                    ],
+                                ],
                             ],
                             'test-code-boolean' => [
                                 'arguments' => [
@@ -225,11 +226,11 @@ class DataProviderTest extends TestCase
                                             'prefer' => 'toggle',
                                             'valueMap' => [
                                                 'true' => 1,
-                                                'false' => 0
-                                            ]
-                                        ]
-                                    ]
-                                ]
+                                                'false' => 0,
+                                            ],
+                                        ],
+                                    ],
+                                ],
                             ],
                             'country_id' => [
                                 'arguments' => [
@@ -249,16 +250,16 @@ class DataProviderTest extends TestCase
                                             'filterBy' => [
                                                 'target' => '${ $.provider }:data.customer.website_id',
                                                 '__disableTmpl' => ['target' => false],
-                                                'field' => 'website_ids'
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                                'field' => 'website_ids',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -288,7 +289,7 @@ class DataProviderTest extends TestCase
     {
         $this->eavConfigMock
             ->method('getEntityType')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['customer'] => $this->getTypeCustomerMock($customerAttributes),
                 ['customer_address'] => $this->getTypeAddressMock()
             });
@@ -401,7 +402,7 @@ class DataProviderTest extends TestCase
                 'getIsUserDefined',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
         $sourceMock = $this->createMock(AbstractSource::class);
@@ -441,7 +442,7 @@ class DataProviderTest extends TestCase
                 'getSource',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
 
@@ -474,7 +475,7 @@ class DataProviderTest extends TestCase
             );
         $mocks = [$attributeMock, $attributeBooleanMock];
         $this->injectVisibilityProps($attributeMock, $attributeBooleanMock, $options);
-        if ($type == "address") {
+        if ($type == 'address') {
             $mocks[] = $this->getCountryAttrMock();
         }
 
@@ -554,12 +555,12 @@ class DataProviderTest extends TestCase
             'default_shipping' => 2,
             'password_hash' => 'password_hash',
             'rp_token' => 'rp_token',
-            'confirmation' => 'confirmation'
+            'confirmation' => 'confirmation',
         ];
         $addressData = [
             'firstname' => 'firstname',
             'lastname' => 'lastname',
-            'street' => "street\nstreet"
+            'street' => "street\nstreet",
         ];
 
         $customer = $this->createMock(Customer::class);
@@ -604,7 +605,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->customerCollectionFactoryMock,
                 'eavConfig' => $this->getEavConfigMock(),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -622,7 +623,7 @@ class DataProviderTest extends TestCase
                     'customer' => [
                         'email' => 'test@test.ua',
                         'default_billing' => 2,
-                        'default_shipping' => 2
+                        'default_shipping' => 2,
                     ],
                     'address' => [
                         2 => [
@@ -631,7 +632,7 @@ class DataProviderTest extends TestCase
                             // Won't be an array because it isn't defined as a multiline field in this test
                             'street' => "street\nstreet",
                             'default_billing' => 2,
-                            'default_shipping' => 2
+                            'default_shipping' => 2,
                         ],
                     ],
                 ],
@@ -652,7 +653,7 @@ class DataProviderTest extends TestCase
                 'email' => 'test1@test1.ua',
                 'default_billing' => 3,
                 'default_shipping' => 3,
-                'entity_id' => $customerId
+                'entity_id' => $customerId,
             ],
             'address' => [
                 3 => [
@@ -660,12 +661,12 @@ class DataProviderTest extends TestCase
                     'lastname' => 'lastname1',
                     'street' => [
                         'street1',
-                        'street2'
+                        'street2',
                     ],
                     'default_billing' => 3,
-                    'default_shipping' => 3
-                ]
-            ]
+                    'default_shipping' => 3,
+                ],
+            ],
         ];
 
         $customer = $this->createMock(Customer::class);
@@ -689,7 +690,7 @@ class DataProviderTest extends TestCase
                 [
                     'email' => 'test@test.ua',
                     'default_billing' => 2,
-                    'default_shipping' => 2
+                    'default_shipping' => 2,
                 ]
             );
         $customer->expects($this->once())
@@ -711,7 +712,7 @@ class DataProviderTest extends TestCase
                 [
                     'firstname' => 'firstname',
                     'lastname' => 'lastname',
-                    'street' => "street\nstreet"
+                    'street' => "street\nstreet",
                 ]
             );
         $helper = new ObjectManager($this);
@@ -724,7 +725,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->customerCollectionFactoryMock,
                 'eavConfig' => $this->getEavConfigMock(),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -758,7 +759,7 @@ class DataProviderTest extends TestCase
             ->willReturn(
                 [
                     'email' => $customerEmail,
-                    'img1' => $filename
+                    'img1' => $filename,
                 ]
             );
         $customerMock->expects($this->once())
@@ -790,7 +791,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->customerCollectionFactoryMock,
                 'eavConfig' => $this->getEavConfigMock(),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -864,7 +865,7 @@ class DataProviderTest extends TestCase
 
         $this->eavConfigMock
             ->method('getEntityType')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['customer'] => $typeCustomerMock,
                 ['customer_address'] => $typeAddressMock
             });
@@ -881,13 +882,13 @@ class DataProviderTest extends TestCase
                     'notice' => 'note',
                     'default' => 'default_value',
                     'size' => 'multiline_count',
-                    'label' => __('frontend_label')
+                    'label' => __('frontend_label'),
                 ]
             )
             ->willReturn(
                 [
                     'max_file_size' => $maxFileSize,
-                    'file_extensions' => 'ext1, eXt2 ' // Added spaces and upper-cases
+                    'file_extensions' => 'ext1, eXt2 ', // Added spaces and upper-cases
                 ]
             );
 
@@ -905,7 +906,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->customerCollectionFactoryMock,
                 'eavConfig' => $this->eavConfigMock,
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -926,25 +927,25 @@ class DataProviderTest extends TestCase
                                     'maxFileSize' => $maxFileSize,
                                     'allowedExtensions' => $allowedExtension,
                                     'uploaderConfig' => [
-                                        'url' => 'customer/file/customer_upload'
+                                        'url' => 'customer/file/customer_upload',
                                     ],
                                     'sortOrder' => 'sort_order',
                                     'required' => 'is_required',
                                     'visible' => null,
                                     'validation' => [
                                         'max_file_size' => $maxFileSize,
-                                        'file_extensions' => 'ext1, eXt2 '
+                                        'file_extensions' => 'ext1, eXt2 ',
                                     ],
                                     'label' => __('frontend_label'),
-                                    'attributeId' => null
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'attributeId' => null,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'address' => [
-                'children' => []
+                'children' => [],
             ],
         ];
 
@@ -963,14 +964,14 @@ class DataProviderTest extends TestCase
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_edit'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_1"
+                    'specific_code_prefix' => '_1',
                 ],
                 'test-code-boolean' => [
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_1"
-                ]
+                    'specific_code_prefix' => '_1',
+                ],
             ]
         );
         $secondAttributesBundle = $this->getAttributeMock(
@@ -980,14 +981,14 @@ class DataProviderTest extends TestCase
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => false,
-                    'specific_code_prefix' => "_2"
+                    'specific_code_prefix' => '_2',
                 ],
                 'test-code-boolean' => [
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_2"
-                ]
+                    'specific_code_prefix' => '_2',
+                ],
             ]
         );
 
@@ -1002,7 +1003,7 @@ class DataProviderTest extends TestCase
                 'eavValidationRules' => $this->eavValidationRulesMock,
                 'customerCollectionFactory' => $this->getCustomerCollectionFactoryMock(),
                 'eavConfig' => $this->getEavConfigMock(array_merge($firstAttributesBundle, $secondAttributesBundle)),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
             ]
         );
 
@@ -1023,14 +1024,14 @@ class DataProviderTest extends TestCase
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_edit'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_1"
+                    'specific_code_prefix' => '_1',
                 ],
                 'test-code-boolean' => [
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_1"
-                ]
+                    'specific_code_prefix' => '_1',
+                ],
             ]
         );
         $secondAttributesBundle = $this->getAttributeMock(
@@ -1040,14 +1041,14 @@ class DataProviderTest extends TestCase
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => false,
-                    'specific_code_prefix' => "_2"
+                    'specific_code_prefix' => '_2',
                 ],
                 'test-code-boolean' => [
                     'visible' => true,
                     'is_used_in_forms' => ['customer_account_create'],
                     'user_defined' => true,
-                    'specific_code_prefix' => "_2"
-                ]
+                    'specific_code_prefix' => '_2',
+                ],
             ]
         );
 
@@ -1068,7 +1069,7 @@ class DataProviderTest extends TestCase
                 'customerCollectionFactory' => $this->getCustomerCollectionFactoryMock(),
                 'context' => $context,
                 'eavConfig' => $this->getEavConfigMock(array_merge($firstAttributesBundle, $secondAttributesBundle)),
-                'fileUploaderDataResolver' => $this->fileUploaderDataResolver
+                'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
 
             ]
         );
@@ -1086,26 +1087,7 @@ class DataProviderTest extends TestCase
     private function getCustomerAttributeExpectations(): array
     {
         return [
-            self::ATTRIBUTE_CODE . "_1" => [
-                'arguments' => [
-                    'data' => [
-                        'config' => [
-                            'dataType' => 'frontend_input',
-                            'formElement' => 'frontend_input',
-                            'options' => 'test-options',
-                            'visible' => true,
-                            'required' => 'is_required',
-                            'label' => __('frontend_label'),
-                            'sortOrder' => 'sort_order',
-                            'notice' => 'note',
-                            'default' => 'default_value',
-                            'size' => 'multiline_count',
-                            'componentType' => Field::NAME
-                        ]
-                    ]
-                ]
-            ],
-            self::ATTRIBUTE_CODE . "_2" => [
+            self::ATTRIBUTE_CODE . '_1' => [
                 'arguments' => [
                     'data' => [
                         'config' => [
@@ -1120,9 +1102,28 @@ class DataProviderTest extends TestCase
                             'default' => 'default_value',
                             'size' => 'multiline_count',
                             'componentType' => Field::NAME,
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
+            ],
+            self::ATTRIBUTE_CODE . '_2' => [
+                'arguments' => [
+                    'data' => [
+                        'config' => [
+                            'dataType' => 'frontend_input',
+                            'formElement' => 'frontend_input',
+                            'options' => 'test-options',
+                            'visible' => true,
+                            'required' => 'is_required',
+                            'label' => __('frontend_label'),
+                            'sortOrder' => 'sort_order',
+                            'notice' => 'note',
+                            'default' => 'default_value',
+                            'size' => 'multiline_count',
+                            'componentType' => Field::NAME,
+                        ],
+                    ],
+                ],
             ],
             'test-code-boolean_1' => [
                 'arguments' => [
@@ -1141,11 +1142,11 @@ class DataProviderTest extends TestCase
                             'prefer' => 'toggle',
                             'valueMap' => [
                                 'true' => 1,
-                                'false' => 0
-                            ]
-                        ]
-                    ]
-                ]
+                                'false' => 0,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'test-code-boolean_2' => [
                 'arguments' => [
@@ -1164,12 +1165,12 @@ class DataProviderTest extends TestCase
                             'prefer' => 'toggle',
                             'valueMap' => [
                                 'true' => 1,
-                                'false' => 0
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'false' => 0,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1200,10 +1201,10 @@ class DataProviderTest extends TestCase
                                     'notice' => 'note',
                                     'default' => 'default_value',
                                     'size' => 'multiline_count',
-                                    'componentType' => Field::NAME
-                                ]
-                            ]
-                        ]
+                                    'componentType' => Field::NAME,
+                                ],
+                            ],
+                        ],
                     ],
                     'test-code-boolean' => [
                         'arguments' => [
@@ -1222,11 +1223,11 @@ class DataProviderTest extends TestCase
                                     'prefer' => 'toggle',
                                     'valueMap' => [
                                         'true' => 1,
-                                        'false' => 0
-                                    ]
-                                ]
-                            ]
-                        ]
+                                        'false' => 0,
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     'country_id' => [
                         'arguments' => [
@@ -1246,14 +1247,14 @@ class DataProviderTest extends TestCase
                                     'filterBy' => [
                                         'target' => '${ $.provider }:data.customer.website_id',
                                         '__disableTmpl' => ['target' => false],
-                                        'field' => 'website_ids'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                        'field' => 'website_ids',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

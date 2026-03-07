@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +10,7 @@ namespace Magento\Test\Di\Aggregate;
 
 interface AggregateInterface
 {
-    const PARAM_ONE = 'one';
+    public const PARAM_ONE = 'one';
 
-    const PARAM_TWO = 'two';
+    public const PARAM_TWO = 'two';
 }

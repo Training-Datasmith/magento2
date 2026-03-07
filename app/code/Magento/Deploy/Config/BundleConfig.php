@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Config;
 
 use Magento\Framework\View;
@@ -18,12 +21,12 @@ class BundleConfig
     /**
      * Namespace of the bundling configuration
      */
-    const VIEW_CONFIG_MODULE = 'Js_Bundle';
+    public const VIEW_CONFIG_MODULE = 'Js_Bundle';
 
     /**
      * Name of the bundle file size configuration setting
      */
-    const VIEW_CONFIG_BUNDLE_SIZE_NAME = 'bundle_size';
+    public const VIEW_CONFIG_BUNDLE_SIZE_NAME = 'bundle_size';
 
     /**
      * Interface provides theme configuration settings
@@ -124,7 +127,7 @@ class BundleConfig
         if (!isset($this->config[$themePath])) {
             $this->config[$themePath] = $this->viewConfig->getViewConfig([
                 'area' => $area,
-                'themeModel' => $this->themeProvider->getThemeByFullPath($themePath)
+                'themeModel' => $this->themeProvider->getThemeByFullPath($themePath),
             ]);
         }
         return $this->config[$themePath];

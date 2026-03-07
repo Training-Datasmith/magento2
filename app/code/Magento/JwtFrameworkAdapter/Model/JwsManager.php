@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,6 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\JwtFrameworkAdapter\Model;
 
+use Jose\Component\Core\JWK as AdapterJwk;
+use Jose\Component\Core\JWKSet as AdapterJwkSet;
 use Jose\Component\Signature\JWSBuilder;
 use Jose\Component\Signature\JWSLoader;
 use Jose\Component\Signature\Serializer\JWSSerializerManager;
@@ -20,8 +23,6 @@ use Magento\Framework\Jwt\Jwk;
 use Magento\Framework\Jwt\Jws\JwsHeader;
 use Magento\Framework\Jwt\Jws\JwsInterface;
 use Magento\Framework\Jwt\Jws\JwsSignatureJwks;
-use Jose\Component\Core\JWK as AdapterJwk;
-use Jose\Component\Core\JWKSet as AdapterJwkSet;
 use Magento\JwtFrameworkAdapter\Model\Data\Header;
 
 /**

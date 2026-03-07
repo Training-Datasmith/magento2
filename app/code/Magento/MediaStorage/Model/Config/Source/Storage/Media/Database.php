@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Generate options for media database selection
  */
+
 namespace Magento\MediaStorage\Model\Config\Source\Storage\Media;
 
 use Magento\Framework\App\DeploymentConfig;

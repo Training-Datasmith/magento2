@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -296,7 +298,7 @@ class AddressRepositoryTest extends \PHPUnit\Framework\TestCase
         // See that address is deleted
         try {
             $addressDataObject = $this->repository->getById($addressId);
-            $this->fail("Expected NoSuchEntityException not caught");
+            $this->fail('Expected NoSuchEntityException not caught');
         } catch (NoSuchEntityException $exception) {
             $this->assertEquals('No such entity with addressId = 1', $exception->getMessage());
         }
@@ -319,7 +321,7 @@ class AddressRepositoryTest extends \PHPUnit\Framework\TestCase
         // See that address is deleted
         try {
             $addressDataObject = $this->repository->getById($addressId);
-            $this->fail("Expected NoSuchEntityException not caught");
+            $this->fail('Expected NoSuchEntityException not caught');
         } catch (NoSuchEntityException $exception) {
             $this->assertEquals('No such entity with addressId = 1', $exception->getMessage());
         }
@@ -332,7 +334,7 @@ class AddressRepositoryTest extends \PHPUnit\Framework\TestCase
     {
         try {
             $this->repository->deleteById(12345);
-            $this->fail("Expected NoSuchEntityException not caught");
+            $this->fail('Expected NoSuchEntityException not caught');
         } catch (NoSuchEntityException $exception) {
             $this->assertEquals('No such entity with addressId = 12345', $exception->getMessage());
         }
@@ -404,18 +406,18 @@ class AddressRepositoryTest extends \PHPUnit\Framework\TestCase
                 null,
                 [
                     1 => ['city' => 'CityM', 'postcode' => 75477, 'firstname' => 'John'],
-                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John']
+                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John'],
                 ],
             ],
             'Addresses with postcode of either 75477 or 47676' => [
                 [],
                 [
                     $filterBuilder->setField('postcode')->setValue('75477')->create(),
-                    $filterBuilder->setField('postcode')->setValue('47676')->create()
+                    $filterBuilder->setField('postcode')->setValue('47676')->create(),
                 ],
                 [
                     1 => ['city' => 'CityM', 'postcode' => 75477, 'firstname' => 'John'],
-                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John']
+                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John'],
                 ],
             ],
             'Addresses with postcode greater than 0' => [
@@ -423,9 +425,9 @@ class AddressRepositoryTest extends \PHPUnit\Framework\TestCase
                 null,
                 [
                     1 => ['city' => 'CityM', 'postcode' => 75477, 'firstname' => 'John'],
-                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John']
+                    2 => ['city' => 'CityX', 'postcode' => 47676, 'firstname' => 'John'],
                 ],
-            ]
+            ],
         ];
     }
 

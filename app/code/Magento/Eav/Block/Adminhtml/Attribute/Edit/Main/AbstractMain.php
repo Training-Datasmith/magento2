@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -151,7 +153,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                     \Magento\Eav\Model\Entity\Attribute::ATTRIBUTE_CODE_MAX_LENGTH
                 ),
                 'class' => $validateClass,
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -163,7 +165,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Catalog Input Type for Store Owner'),
                 'title' => __('Catalog Input Type for Store Owner'),
                 'value' => 'text',
-                'values' => $this->_inputTypeFactory->create()->toOptionArray()
+                'values' => $this->_inputTypeFactory->create()->toOptionArray(),
             ]
         );
 
@@ -174,7 +176,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'is_required',
                 'label' => __('Values Required'),
                 'title' => __('Values Required'),
-                'values' => $yesno
+                'values' => $yesno,
             ]
         );
 
@@ -185,7 +187,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'default_value_text',
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -197,7 +199,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
                 'values' => $yesno,
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -210,7 +212,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
                 'value' => $attributeObject->getDefaultValue(),
-                'date_format' => $dateFormat
+                'date_format' => $dateFormat,
             ]
         );
 
@@ -221,7 +223,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'default_value_textarea',
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -233,7 +235,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Unique Value'),
                 'title' => __('Unique Value (not shared with other products)'),
                 'note' => __('Not shared with other products.'),
-                'values' => $yesno
+                'values' => $yesno,
             ]
         );
 
@@ -244,7 +246,7 @@ abstract class AbstractMain extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'frontend_class',
                 'label' => __('Input Validation for Store Owner'),
                 'title' => __('Input Validation for Store Owner'),
-                'values' => $this->_eavData->getFrontendClasses($attributeObject->getEntityType()->getEntityTypeCode())
+                'values' => $this->_eavData->getFrontendClasses($attributeObject->getEntityType()->getEntityTypeCode()),
             ]
         );
 

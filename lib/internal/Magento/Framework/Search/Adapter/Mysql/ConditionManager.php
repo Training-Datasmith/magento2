@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Adapter\Mysql;
 
 use Magento\Framework\App\ResourceConnection;
@@ -18,8 +21,8 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
  */
 class ConditionManager
 {
-    const CONDITION_PATTERN_SIMPLE = '%s %s %s';
-    const CONDITION_PATTERN_ARRAY = '%s %s (%s)';
+    public const CONDITION_PATTERN_SIMPLE = '%s %s %s';
+    public const CONDITION_PATTERN_ARRAY = '%s %s (%s)';
 
     /**
      * @var AdapterInterface

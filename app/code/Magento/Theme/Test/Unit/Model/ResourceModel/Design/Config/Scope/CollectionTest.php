@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -131,19 +132,19 @@ class CollectionTest extends TestCase
                 'store_website_id' => null,
                 'store_group_id' => null,
                 'store_id' => null,
-                'second_field' => 'DefaultValue'
+                'second_field' => 'DefaultValue',
             ]),
             new DataObject([
                 'store_website_id' => 1,
                 'store_group_id' => null,
                 'store_id' => null,
-                'second_field' => 'WebsiteValue'
+                'second_field' => 'WebsiteValue',
             ]),
             new DataObject([
                 'store_website_id' => 1,
                 'store_group_id' => 1,
                 'store_id' => 1,
-                'second_field' => 'WebsiteValue' //parent (website level) value
+                'second_field' => 'WebsiteValue', //parent (website level) value
             ]),
         ];
 

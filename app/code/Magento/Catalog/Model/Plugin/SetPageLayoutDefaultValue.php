@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class SetPageLayoutDefaultValue
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         StoreManagerInterface $storeManager,
-        string $defaultValue = ""
+        string $defaultValue = ''
     ) {
         $this->defaultValue = $defaultValue;
         $this->scopeConfig = $scopeConfig;

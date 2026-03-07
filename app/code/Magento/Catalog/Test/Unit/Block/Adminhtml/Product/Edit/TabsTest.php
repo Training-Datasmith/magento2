@@ -28,8 +28,8 @@ use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\LayoutInterface;
@@ -126,12 +126,12 @@ class TabsTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $jsonHelperMock
+                $jsonHelperMock,
             ],
             [
                 DirectoryHelper::class,
-                $directoryHelperMock
-            ]
+                $directoryHelperMock,
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -169,8 +169,8 @@ class TabsTest extends TestCase
                 'translateInline' => $this->translateInlineMock,
                 'data' => [
                     'jsonHelper' => $jsonHelperMock,
-                    'directoryHelper' => $directoryHelperMock
-                ]
+                    'directoryHelper' => $directoryHelperMock,
+                ],
             ]
         );
     }
@@ -266,12 +266,12 @@ class TabsTest extends TestCase
         return [
             'custom_block_from_helper' => [
                 'helperReturn' => 'Custom\Block\Class',
-                'expectedBlock' => 'Custom\Block\Class'
+                'expectedBlock' => 'Custom\Block\Class',
             ],
             'default_block_when_helper_returns_null' => [
                 'helperReturn' => null,
-                'expectedBlock' => Attributes::class
-            ]
+                'expectedBlock' => Attributes::class,
+            ],
         ];
     }
 
@@ -403,7 +403,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getChildBlock'])
             ->getMock();
@@ -458,7 +458,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getChildBlock'])
             ->getMock();
@@ -538,7 +538,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getChildBlock'])
             ->getMock();
@@ -585,7 +585,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getChildBlock'])
             ->getMock();
@@ -668,7 +668,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getProduct', 'getLayout'])
             ->getMock();
@@ -815,7 +815,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods([
                 'getProduct',
@@ -824,7 +824,7 @@ class TabsTest extends TestCase
                 'getAttributeTabBlock',
                 'addTab',
                 'getChildBlock',
-                'getUrl'
+                'getUrl',
             ])
             ->getMock();
 
@@ -1039,7 +1039,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods([
                 'getProduct',
@@ -1048,7 +1048,7 @@ class TabsTest extends TestCase
                 'getAttributeTabBlock',
                 'addTab',
                 'getChildBlock',
-                'getUrl'
+                'getUrl',
             ])
             ->getMock();
 
@@ -1366,7 +1366,7 @@ class TabsTest extends TestCase
                 $this->registryMock,
                 $this->translateInlineMock,
                 ['jsonHelper' => $this->createMock(JsonHelper::class),
-                'directoryHelper' => $this->createMock(DirectoryHelper::class)]
+                'directoryHelper' => $this->createMock(DirectoryHelper::class)],
             ])
             ->onlyMethods(['getChildBlock'])
             ->getMock();

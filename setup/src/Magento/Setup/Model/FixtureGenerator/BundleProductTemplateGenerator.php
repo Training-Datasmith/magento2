@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -105,12 +107,12 @@ class BundleProductTemplateGenerator implements TemplateEntityGeneratorInterface
                     'use_config_manage_stock' => 1,
                     'qty' => 100500,
                     'is_qty_decimal' => 0,
-                    'is_in_stock' => 1
+                    'is_in_stock' => 1,
                 ],
                 'can_save_bundle_selections' => true,
                 'affect_bundle_product_selections' => true,
 
-            ]
+            ],
         ]);
 
         $bundleProductOptions = [];

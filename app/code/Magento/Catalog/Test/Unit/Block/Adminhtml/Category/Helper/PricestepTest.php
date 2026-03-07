@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -85,9 +86,9 @@ class PricestepTest extends TestCase
         $this->secureRendererMock->method('renderEventListenerAsTag')
             ->willReturnCallback(
                 function (string $event, string $listener, string $selector): string {
-                    return "<script type=\"text/x-magento-template\">"
+                    return '<script type="text/x-magento-template">'
                         . "document.querySelector('{$selector}').{$event} = () => { {$listener} };"
-                        . "</script>";
+                        . '</script>';
                 }
             );
 
@@ -323,7 +324,7 @@ class PricestepTest extends TestCase
             'simple_id' => ['price_step', 'use_config_price_step'],
             'with_underscore' => ['category_price', 'use_config_category_price'],
             'with_numbers' => ['price_123', 'use_config_price_123'],
-            'complex_id' => ['default_price_step_config', 'use_config_default_price_step_config']
+            'complex_id' => ['default_price_step_config', 'use_config_default_price_step_config'],
         ];
     }
 }

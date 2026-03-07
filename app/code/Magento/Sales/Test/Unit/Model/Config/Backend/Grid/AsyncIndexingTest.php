@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Event\Manager;
 use Magento\Framework\Model\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Config\Backend\Grid\AsyncIndexing;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test of backend model for global configuration value
@@ -58,7 +59,7 @@ class AsyncIndexingTest extends TestCase
             AsyncIndexing::class,
             [
                 'config' => $this->config,
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }
@@ -98,7 +99,7 @@ class AsyncIndexingTest extends TestCase
             [0, 0, null],
             [1, 1, null],
             [0, 1, 'config_data_dev_grid_async_indexing_disabled'],
-            [1, 0, 'config_data_dev_grid_async_indexing_enabled']
+            [1, 0, 'config_data_dev_grid_async_indexing_enabled'],
         ];
     }
 }

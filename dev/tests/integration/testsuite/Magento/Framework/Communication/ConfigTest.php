@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication;
 
 /**
@@ -393,12 +396,12 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             \Magento\Framework\Communication\Config\Reader\EnvReader::class,
             [
                 'deploymentConfig' => $deploymentConfig,
-                'methodsMap' => $methodsMap
+                'methodsMap' => $methodsMap,
             ]
         );
         $readersConfig = [
             'xmlReader' => ['reader' => $xmlReader, 'sortOrder' => 10],
-            'envReader' => ['reader' => $envReader, 'sortOrder' => 20]
+            'envReader' => ['reader' => $envReader, 'sortOrder' => 20],
         ];
         /** @var \Magento\Framework\Communication\Config\CompositeReader $reader */
         $reader = $objectManager->create(
@@ -409,7 +412,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $configData = $objectManager->create(
             \Magento\Framework\Communication\Config\Data::class,
             [
-                'reader' => $reader
+                'reader' => $reader,
             ]
         );
         return $objectManager->create(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Category;
 
 use Magento\Catalog\Model\Category;
@@ -49,7 +52,7 @@ class CanonicalUrlRewriteGenerator
                 ->setEntityType(CategoryUrlRewriteGenerator::ENTITY_TYPE)
                 ->setEntityId($category->getId())
                 ->setRequestPath($urlPath)
-                ->setTargetPath($this->categoryUrlPathGenerator->getCanonicalUrlPath($category))
+                ->setTargetPath($this->categoryUrlPathGenerator->getCanonicalUrlPath($category)),
         ];
         return $result;
     }

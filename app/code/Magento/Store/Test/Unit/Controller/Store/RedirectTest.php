@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -225,7 +226,7 @@ class RedirectTest extends TestCase
                         'data' => '',
                         'time_stamp' => 0,
                         'signature' => '',
-                    ]
+                    ],
                 ]
             );
 
@@ -310,7 +311,7 @@ class RedirectTest extends TestCase
     public static function getConfigDataProvider(): array
     {
         return [
-            [self::STUB_DEFAULT_STORE_VIEW_CODE, self::STUB_STORE_CODE]
+            [self::STUB_DEFAULT_STORE_VIEW_CODE, self::STUB_STORE_CODE],
         ];
     }
 }

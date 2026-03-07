@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Checkout\Controller\Cart;
 
 use Magento\Checkout\Model\Cart as CustomerCart;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 use Magento\Sales\Model\Order\Item;
 
 /**
@@ -107,7 +109,7 @@ class Addgroup extends \Magento\Checkout\Controller\Cart implements HttpPostActi
                         'addCartSuccessMessage',
                         [
                             'product_name' => $item->getName(),
-                            'cart_url' => $this->getCartUrl()
+                            'cart_url' => $this->getCartUrl(),
                         ]
                     );
                 }

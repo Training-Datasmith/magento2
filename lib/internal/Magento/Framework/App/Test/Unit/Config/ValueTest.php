@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Value;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ValueTest extends TestCase
@@ -95,7 +96,7 @@ class ValueTest extends TestCase
     {
         return [
             ['value', 'value', false],
-            ['value', 'new_value', true]
+            ['value', 'new_value', true],
         ];
     }
 
@@ -137,18 +138,18 @@ class ValueTest extends TestCase
             [
                 ['key' => 'value'],
                 'key',
-                'value'
+                'value',
             ],
             [
                 ['key' => 'value'],
                 'none',
-                null
+                null,
             ],
             [
                 'value',
                 'key',
-                null
-            ]
+                null,
+            ],
         ];
     }
 
@@ -173,7 +174,7 @@ class ValueTest extends TestCase
     {
         return [
             [0, 'some_value'],
-            [1, 'other_value']
+            [1, 'other_value'],
         ];
     }
 

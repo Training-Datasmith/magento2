@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ $attributeModel->setData(
         'used_for_sort_by' => 0,
         'frontend_label' => ['Boolean Attribute'],
         'backend_type' => 'int',
-        'source_model' => Boolean::class
+        'source_model' => Boolean::class,
     ]
 );
 $attribute = $attributeRepository->save($attributeModel);

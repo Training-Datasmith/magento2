@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Bundle\Test\Unit\Controller\Adminhtml\Bundle\Selection;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option\Search as SearchBlock;
 use Magento\Bundle\Controller\Adminhtml\Bundle\Selection\Search;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Response\Http as HttpResponse;
@@ -18,7 +20,6 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option\Search as SearchBlock;
 
 class SearchTest extends TestCase
 {
@@ -73,7 +74,7 @@ class SearchTest extends TestCase
         $this->controller = $this->objectManagerHelper->getObject(
             Search::class,
             [
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }

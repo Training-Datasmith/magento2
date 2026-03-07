@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model\BulkDescription;
 
 use Magento\Framework\Bulk\BulkSummaryInterface;
@@ -18,27 +21,20 @@ class Options implements \Magento\Framework\Data\OptionSourceInterface
     private $bulkCollectionFactory;
 
     /**
-     * @var \Magento\Authorization\Model\UserContextInterface
-     */
-    private $userContext;
-
-    /**
      * Options constructor.
-     * @param \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollection
-     * @param \Magento\Authorization\Model\UserContextInterface $userContext
      */
     public function __construct(
         \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollection,
-        \Magento\Authorization\Model\UserContextInterface $userContext
+        private readonly \Magento\Authorization\Model\UserContextInterface $userContext
     ) {
         $this->bulkCollectionFactory = $bulkCollection;
-        $this->userContext = $userContext;
     }
 
     /**
      * {@inheritdoc}
+     * @return array{value: mixed, label: mixed}[]
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         /** @var \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\Collection $collection */
         $collection = $this->bulkCollectionFactory->create();
@@ -56,7 +52,7 @@ class Options implements \Magento\Framework\Data\OptionSourceInterface
         foreach ($collection->getItems() as $item) {
             $options[] = [
                 'value' => $item->getDescription(),
-                'label' => $item->getDescription()
+                'label' => $item->getDescription(),
             ];
         }
         return $options;

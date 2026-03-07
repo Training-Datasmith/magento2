@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -63,7 +64,7 @@ class PriceTest extends TestCase
             Price::class,
             [
                 'context' => $contextMock,
-                'registry' => $this->registryMock
+                'registry' => $this->registryMock,
             ]
         );
     }
@@ -109,17 +110,17 @@ class PriceTest extends TestCase
     {
         return [
             'string formatted price' => [
-                'formattedPrice' => '$99.99'
+                'formattedPrice' => '$99.99',
             ],
             'float price value' => [
-                'formattedPrice' => 99.99
+                'formattedPrice' => 99.99,
             ],
             'zero price' => [
-                'formattedPrice' => 0.00
+                'formattedPrice' => 0.00,
             ],
             'empty string price' => [
-                'formattedPrice' => ''
-            ]
+                'formattedPrice' => '',
+            ],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Catalog\Model\CustomOptions\CustomOptionProcessor;
@@ -12,9 +15,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CartItemRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCartItemRepositoryV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCartItemRepositoryV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -72,7 +75,7 @@ class CartItemRepositoryTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $this->assertEquals($output, $this->_webApiCall($serviceInfo, $requestData));
     }
 
@@ -102,10 +105,10 @@ class CartItemRepositoryTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartItem" => [
-                "sku" => $productSku,
-                "qty" => 7,
-                "quote_id" => $cartId,
+            'cartItem' => [
+                'sku' => $productSku,
+                'qty' => 7,
+                'quote_id' => $cartId,
             ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
@@ -139,8 +142,8 @@ class CartItemRepositoryTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "itemId" => $itemId,
+            'cartId' => $cartId,
+            'itemId' => $itemId,
         ];
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));
         $quote = $this->objectManager->create(Quote::class);
@@ -175,17 +178,17 @@ class CartItemRepositoryTest extends WebapiAbstract
 
         if (TESTS_WEB_API_ADAPTER == self::ADAPTER_SOAP) {
             $requestData = [
-                "cartItem" => [
-                    "qty" => 5,
-                    "quote_id" => $cartId,
-                    "itemId" => $itemId,
+                'cartItem' => [
+                    'qty' => 5,
+                    'quote_id' => $cartId,
+                    'itemId' => $itemId,
                 ],
             ];
         } else {
             $requestData = [
-                "cartItem" => [
-                    "qty" => 5,
-                    "quote_id" => $cartId,
+                'cartItem' => [
+                    'qty' => 5,
+                    'quote_id' => $cartId,
                 ],
             ];
         }

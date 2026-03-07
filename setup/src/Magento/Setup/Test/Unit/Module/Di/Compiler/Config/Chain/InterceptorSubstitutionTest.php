@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ class InterceptorSubstitutionTest extends TestCase
     public function testModifyArgumentsDoNotExist()
     {
         $inputConfig = [
-            'data' => []
+            'data' => [],
         ];
         $modifier = new InterceptorSubstitution();
         $this->assertSame($inputConfig, $modifier->modify($inputConfig));
@@ -34,24 +35,24 @@ class InterceptorSubstitutionTest extends TestCase
                 'ClassReplaced' => [],
                 'ClassReplacement' => [],
                 'ClassReplaced\Interceptor' => [],
-                'ClassReplacement\Interceptor' => []
+                'ClassReplacement\Interceptor' => [],
             ],
             'preferences' => [
-                'ClassReplaced' => 'ClassReplacement'
+                'ClassReplaced' => 'ClassReplacement',
             ],
-            'instanceTypes' => []
+            'instanceTypes' => [],
         ];
 
         $outputConfig = [
             'arguments' => [
                 'ClassReplaced\Interceptor' => [],
-                'ClassReplacement\Interceptor' => []
+                'ClassReplacement\Interceptor' => [],
             ],
             'preferences' => [
                 'ClassReplaced' => 'ClassReplacement\Interceptor',
-                'ClassReplacement' => 'ClassReplacement\Interceptor'
+                'ClassReplacement' => 'ClassReplacement\Interceptor',
             ],
-            'instanceTypes' => []
+            'instanceTypes' => [],
         ];
 
         $modifier = new InterceptorSubstitution();
@@ -76,29 +77,29 @@ class InterceptorSubstitutionTest extends TestCase
                         'array' => [
                             'argument_type' => ['_i_' => 'Class\Dependency'],
                             'argument_not_shared' => ['_ins_' => 'Class\DependencyIntercepted'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 'virtualType' => [
                     'argument_type' => ['_i_' => 'Class\DependencyIntercepted'],
                     'argument_not_shared' => ['_ins_' => 'Class\Dependency'],
-                    'array_configured' => ['banana']
+                    'array_configured' => ['banana'],
                 ],
                 'Class\Interceptor' => [
                     'argument_type' => ['_i_' => 'Class\Dependency'],
                     'argument_not_shared' => ['_ins_' => 'Class\Dependency'],
-                    'array_configured' => []
+                    'array_configured' => [],
                 ],
 
                 'Class\DependencyIntercepted\Interceptor' => [],
-                'Class\DependencyIntercepted' => []
+                'Class\DependencyIntercepted' => [],
             ],
             'preferences' => [
                 'ClassInterface' => 'Class',
             ],
             'instanceTypes' => [
-                'virtualType' => 'Class'
-            ]
+                'virtualType' => 'Class',
+            ],
         ];
     }
 
@@ -120,24 +121,24 @@ class InterceptorSubstitutionTest extends TestCase
                         'array' => [
                             'argument_type' => ['_i_' => 'Class\Dependency'],
                             'argument_not_shared' => ['_ins_' => 'Class\DependencyIntercepted'],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 'virtualType' => [
                     'argument_type' => ['_i_' => 'Class\DependencyIntercepted'],
                     'argument_not_shared' => ['_ins_' => 'Class\Dependency'],
-                    'array_configured' => ['banana']
+                    'array_configured' => ['banana'],
                 ],
-                'Class\DependencyIntercepted\Interceptor' => []
+                'Class\DependencyIntercepted\Interceptor' => [],
             ],
             'preferences' => [
                 'ClassInterface' => 'Class\Interceptor',
                 'Class' => 'Class\Interceptor',
-                'Class\DependencyIntercepted' => 'Class\DependencyIntercepted\Interceptor'
+                'Class\DependencyIntercepted' => 'Class\DependencyIntercepted\Interceptor',
             ],
             'instanceTypes' => [
                 'virtualType' => 'Class\Interceptor',
-            ]
+            ],
         ];
     }
 }

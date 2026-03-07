@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,15 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Framework;
 
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test that required input parameters are properly validated on framework level
  */
 class RequiredInputArgumentTest extends GraphQlAbstract
 {
-
     /**
      * Test that a simple input value will be treated as required
      *

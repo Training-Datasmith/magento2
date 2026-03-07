@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Sales\Test\Unit\Block\Adminhtml\Order\View;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Block\Adminhtml\Order\View\History;
 use Magento\Sales\Helper\Admin;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class HistoryTest extends TestCase
@@ -33,7 +34,7 @@ class HistoryTest extends TestCase
         $this->viewHistory = (new ObjectManager($this))->getObject(
             History::class,
             [
-                'adminHelper' => $this->adminHelperMock
+                'adminHelper' => $this->adminHelperMock,
             ]
         );
     }
@@ -63,18 +64,18 @@ class HistoryTest extends TestCase
             [
                 '<a>some text in tags</a>',
                 '&lt;a&gt;some text in tags&lt;/a&gt;',
-                'allowedTags' => null
+                'allowedTags' => null,
             ],
             [
                 'Transaction ID: "<a target="_blank" href="https://www.paypal.com/?id=XX123XX">XX123XX</a>"',
                 'Transaction ID: &quot;<a target="_blank" href="https://www.paypal.com/?id=XX123XX">XX123XX</a>&quot;',
-                'allowedTags' => ['b', 'br', 'strong', 'i', 'u', 'a']
+                'allowedTags' => ['b', 'br', 'strong', 'i', 'u', 'a'],
             ],
             [
                 '<a>some text in tags</a>',
                 '<a>some text in tags</a>',
-                'allowedTags' => ['a']
-            ]
+                'allowedTags' => ['a'],
+            ],
         ];
     }
 }

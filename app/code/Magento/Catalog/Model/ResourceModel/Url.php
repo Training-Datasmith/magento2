@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel;
 
 /**
@@ -199,7 +202,7 @@ class Url extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implement
             );
         } elseif ($this->_categoryAttributes[$attributeCode]['is_global'] || $storeId == 0) {
             $select->from(
-                ['t1' =>$this->getTable('catalog_category_entity')],
+                ['t1' => $this->getTable('catalog_category_entity')],
                 [$identifierFiled]
             )->joinLeft(
                 ['e' => $attributeTable],
@@ -236,7 +239,7 @@ class Url extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implement
             )->where(
                 't1.attribute_id = :attribute_id'
             )->where(
-                "e.entity_id IN(?)",
+                'e.entity_id IN(?)',
                 $categoryIds,
                 \Zend_Db::INT_TYPE
             )->group('e.entity_id');
@@ -420,7 +423,7 @@ class Url extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implement
                 'main_table.parent_id',
                 'main_table.level',
                 'is_active' => $isActiveExpr,
-                'main_table.path'
+                'main_table.path',
             ]
         );
 
@@ -693,7 +696,7 @@ class Url extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb implement
                 $bindArray = [
                     'i.product_id = :' . $productBind,
                     'i.store_id = :' . $storeBind,
-                    'i.category_id = :' . $catBind
+                    'i.category_id = :' . $catBind,
                 ];
                 $cond = '(' . implode(' AND ', $bindArray) . ')';
                 $bind[$productBind] = $productId;

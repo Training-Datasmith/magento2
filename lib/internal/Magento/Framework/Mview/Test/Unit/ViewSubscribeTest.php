@@ -286,7 +286,7 @@ class ViewSubscribeTest extends TestCase
             'action_class' => 'Some\Class\Name',
             'group' => 'some_group',
             'subscriptions' => ['some_entity' => ['name' => 'some_entity', 'column' => 'entity_id']],
-            'walker' => ChangelogBatchWalkerInterface::class
+            'walker' => ChangelogBatchWalkerInterface::class,
         ];
     }
 }

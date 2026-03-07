@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -26,7 +27,6 @@ $dataObjectHelper->populateWithArray(
     \Magento\Eav\Api\Data\AttributeSetInterface::class
 );
 $attributeSetManagement->create('catalog_product', $attributeSet, $defaultAttributeSet)->save();
-
 
 $attributeSet = $attributeSetFactory->create();
 $dataObjectHelper->populateWithArray(

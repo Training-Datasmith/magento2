@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session;
 
 /**
@@ -13,7 +16,7 @@ class SaveHandlerFactory
     /**
      * Php native session handler
      */
-    const PHP_NATIVE_HANDLER = \Magento\Framework\Session\SaveHandler\Native::class;
+    public const PHP_NATIVE_HANDLER = \Magento\Framework\Session\SaveHandler\Native::class;
 
     /**
      * Object manager

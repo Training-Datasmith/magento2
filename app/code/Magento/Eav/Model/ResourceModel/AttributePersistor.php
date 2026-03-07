@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -228,7 +230,7 @@ class AttributePersistor
                     $metadata->getEntityConnection()->update(
                         $attribute->getBackend()->getTable(),
                         [
-                            'value' => $this->prepareValue($entityType, $attributeValue, $attribute)
+                            'value' => $this->prepareValue($entityType, $attributeValue, $attribute),
                         ],
                         $condition
                     );

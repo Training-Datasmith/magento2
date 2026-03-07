@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -132,7 +133,7 @@ class TypeTest extends TestCase
                 '__wakeup',
                 'getCustomOption',
                 'addCustomOption',
-                'getEntityId'
+                'getEntityId',
             ]
         );
         $this->product->method('getResource')->willReturn($resourceProductMock);
@@ -167,7 +168,7 @@ class TypeTest extends TestCase
                 'linkFactory' => $linkFactory,
                 'eavConfig' => $eavConfigMock,
                 'typeHandler' => $this->typeHandler,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }

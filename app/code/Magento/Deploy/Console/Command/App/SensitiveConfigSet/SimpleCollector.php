@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,11 +11,11 @@ namespace Magento\Deploy\Console\Command\App\SensitiveConfigSet;
 use Magento\Deploy\Console\Command\App\SensitiveConfigSetCommand;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Question\QuestionFactory;
-use Symfony\Component\Console\Helper\QuestionHelper;
 
 /**
  * Class SimpleCollector collects configuration value from user input
@@ -80,7 +82,7 @@ class SimpleCollector implements CollectorInterface
     {
         /** @var Question $configPathQuestion */
         $configPathQuestion = $this->questionFactory->create([
-            'question' => 'Please enter config path: '
+            'question' => 'Please enter config path: ',
         ]);
         $configPathQuestion->setAutocompleterValues($configPaths);
         $configPathQuestion->setValidator(function ($configPath) use ($configPaths) {
@@ -100,7 +102,7 @@ class SimpleCollector implements CollectorInterface
     {
         /** @var Question $configValueQuestion */
         $configValueQuestion = $this->questionFactory->create([
-            'question' => 'Please enter value: '
+            'question' => 'Please enter value: ',
         ]);
         $configValueQuestion->setValidator(function ($interviewer) {
             if (empty($interviewer)) {

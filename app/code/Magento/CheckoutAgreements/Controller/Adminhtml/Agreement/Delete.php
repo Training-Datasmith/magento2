@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
 
+use Magento\Backend\App\Action\Context;
 use Magento\CheckoutAgreements\Api\CheckoutAgreementsRepositoryInterface;
 use Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Registry;
 
 class Delete extends Agreement implements HttpPostActionInterface
 {

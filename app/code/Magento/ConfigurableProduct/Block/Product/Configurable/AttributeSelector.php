@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Product\Configurable;
 
 /**
@@ -34,7 +37,7 @@ class AttributeSelector extends \Magento\Backend\Block\Template
             'source' => $this->getUrl('*/product_attribute/suggestConfigurableAttributes'),
             'minLength' => 0,
             'className' => 'category-select',
-            'showAll' => true
+            'showAll' => true,
         ];
     }
 }

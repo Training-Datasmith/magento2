@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -22,7 +25,7 @@ class RepositoryMap
      *
      * @var string
      */
-    const MAP_NAME = 'map.json';
+    public const MAP_NAME = 'map.json';
 
     /**
      * Name of package result map file
@@ -31,7 +34,7 @@ class RepositoryMap
      *
      * @var string
      */
-    const RESULT_MAP_NAME = 'result_map.json';
+    public const RESULT_MAP_NAME = 'result_map.json';
 
     /**
      * Name of package result map file
@@ -40,7 +43,7 @@ class RepositoryMap
      *
      * @var string
      */
-    const REQUIRE_JS_MAP_NAME = 'requirejs-map.js';
+    public const REQUIRE_JS_MAP_NAME = 'requirejs-map.js';
 
     /**
      * @var DesignInterface

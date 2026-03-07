@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,9 +44,9 @@ class XsdTest extends TestCase
         $messageFormat = '%message%';
         $dom = new Dom($fixtureXml, $validationStateMock, [], null, null, $messageFormat);
         $actualResult = $dom->validate($this->schemaFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
         foreach ($expectedErrors as $error) {
-            $this->assertContains($error, $actualErrors, "Validation errors does not match.");
+            $this->assertContains($error, $actualErrors, 'Validation errors does not match.');
         }
     }
 
@@ -89,7 +90,7 @@ class XsdTest extends TestCase
                 '<integrations/>',
                 [
                     "Element 'integrations': Missing child element(s). Expected is ( integration ).The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<integrations/>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<integrations/>\n2:\n",
                 ],
             ],
             'empty integration' => [
@@ -99,7 +100,7 @@ class XsdTest extends TestCase
                 [
                     "Element 'integration': Missing child element(s). Expected is ( resources ).The xml was: \n" .
                     "0:<?xml version=\"1.0\"?>\n1:<integrations>\n2:                    <integration " .
-                    "name=\"TestIntegration\"/>\n3:                </integrations>\n4:\n"
+                    "name=\"TestIntegration\"/>\n3:                </integrations>\n4:\n",
                 ],
             ],
             'empty resources' => [
@@ -113,14 +114,14 @@ class XsdTest extends TestCase
                     "Element 'resources': Missing child element(s). Expected is ( resource ).The xml was: \n" .
                     "0:<?xml version=\"1.0\"?>\n1:<integrations>\n2:                    <integration " .
                     "name=\"TestIntegration1\">\n3:                        <resources>\n4:                        " .
-                    "</resources>\n5:                    </integration>\n6:                </integrations>\n7:\n"
+                    "</resources>\n5:                    </integration>\n6:                </integrations>\n7:\n",
                 ],
             ],
             'irrelevant root node' => [
                 '<integration name="TestIntegration"/>',
                 [
                     "Element 'integration': No matching global declaration available for the validation root." .
-                    "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<integration name=\"TestIntegration\"/>\n2:\n"
+                    "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<integration name=\"TestIntegration\"/>\n2:\n",
                 ],
             ],
             /** Excessive nodes */
@@ -140,7 +141,7 @@ class XsdTest extends TestCase
                     "name=\"Magento_Customer::manage\"/>\n5:                            <resource " .
                     "name=\"Magento_Customer::online\"/>\n6:                        </resources>\n" .
                     "7:                    </integration>\n8:                    <invalid/>\n" .
-                    "9:                </integrations>\n10:\n"
+                    "9:                </integrations>\n10:\n",
                 ],
             ],
             'irrelevant node in integration' => [
@@ -159,7 +160,7 @@ class XsdTest extends TestCase
                     "4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "6:                        </resources>\n7:                        <invalid/>\n" .
-                    "8:                    </integration>\n9:                </integrations>\n10:\n"
+                    "8:                    </integration>\n9:                </integrations>\n10:\n",
                 ],
             ],
             'irrelevant node in resources' => [
@@ -179,7 +180,7 @@ class XsdTest extends TestCase
                     "name=\"Magento_Customer::manage\"/>\n5:                            <resource " .
                     "name=\"Magento_Customer::online\"/>\n6:                        <invalid/>\n" .
                     "7:                        </resources>\n8:                    </integration>\n" .
-                    "9:                </integrations>\n10:\n"
+                    "9:                </integrations>\n10:\n",
                 ],
             ],
             'irrelevant node in resource' => [
@@ -200,7 +201,7 @@ class XsdTest extends TestCase
                     "<resources>\n4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\">\n" .
                     "6:                                <invalid/>\n7:                            </resource>\n" .
-                    "8:                        </resources>\n9:                    </integration>\n"
+                    "8:                        </resources>\n9:                    </integration>\n",
                 ],
             ],
             /** Excessive attributes */
@@ -220,7 +221,7 @@ class XsdTest extends TestCase
                     "<resources>\n4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "6:                        </resources>\n7:                    </integration>\n" .
-                    "8:                </integrations>\n9:\n"
+                    "8:                </integrations>\n9:\n",
                 ],
             ],
             'invalid attribute in integration' => [
@@ -239,7 +240,7 @@ class XsdTest extends TestCase
                     "4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "6:                        </resources>\n7:                    </integration>\n" .
-                    "8:                </integrations>\n9:\n"
+                    "8:                </integrations>\n9:\n",
                 ],
             ],
             'invalid attribute in resources' => [
@@ -258,7 +259,7 @@ class XsdTest extends TestCase
                     "4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "6:                        </resources>\n7:                    </integration>\n" .
-                    "8:                </integrations>\n9:\n"
+                    "8:                </integrations>\n9:\n",
                 ],
             ],
             'invalid attribute in resource' => [
@@ -274,10 +275,10 @@ class XsdTest extends TestCase
                     "Element 'resource', attribute 'invalid': The attribute 'invalid' is not allowed.The " .
                     "xml was: \n0:<?xml version=\"1.0\"?>\n1:<integrations>\n2:                    <integration " .
                     "name=\"TestIntegration1\">\n3:                        <resources>\n" .
-                    "4:                            <resource name=\"Magento_Customer::manage\" " .
+                    '4:                            <resource name="Magento_Customer::manage" ' .
                     "invalid=\"invalid\"/>\n5:                            <resource " .
                     "name=\"Magento_Customer::online\"/>\n6:                        </resources>\n" .
-                    "7:                    </integration>\n8:                </integrations>\n9:\n"
+                    "7:                    </integration>\n8:                </integrations>\n9:\n",
                 ],
             ],
             /** Missing or empty required attributes */
@@ -296,7 +297,7 @@ class XsdTest extends TestCase
                     "3:                        <resources>\n4:                            <resource " .
                     "name=\"Magento_Customer::manage\"/>\n5:                            <resource " .
                     "name=\"Magento_Customer::online\"/>\n6:                        </resources>\n" .
-                    "7:                    </integration>\n8:                </integrations>\n9:\n"
+                    "7:                    </integration>\n8:                </integrations>\n9:\n",
                 ],
             ],
             'integration with empty name' => [
@@ -315,7 +316,7 @@ class XsdTest extends TestCase
                     "<resources>\n4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "6:                        </resources>\n7:                    </integration>\n" .
-                    "8:                </integrations>\n9:\n"
+                    "8:                </integrations>\n9:\n",
                 ],
             ],
             'resource without name' => [
@@ -333,7 +334,7 @@ class XsdTest extends TestCase
                     "name=\"TestIntegration1\">\n3:                        <resources>\n" .
                     "4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource/>\n6:                        </resources>\n" .
-                    "7:                    </integration>\n8:                </integrations>\n9:\n"
+                    "7:                    </integration>\n8:                </integrations>\n9:\n",
                 ],
             ],
             'resource with empty name' => [
@@ -351,7 +352,7 @@ class XsdTest extends TestCase
                     "2:                    <integration name=\"TestIntegration1\">\n3:                        " .
                     "<resources>\n4:                            <resource name=\"Magento_Customer::manage\"/>\n" .
                     "5:                            <resource name=\"\"/>\n6:                        </resources>\n" .
-                    "7:                    </integration>\n8:                </integrations>\n9:\n"
+                    "7:                    </integration>\n8:                </integrations>\n9:\n",
                 ],
             ],
             /** Invalid values */
@@ -370,9 +371,9 @@ class XsdTest extends TestCase
                     "2:                    <integration name=\"TestIntegration1\">\n3:                        " .
                     "<resources>\n4:                            <resource name=\"Magento_Customer::online\"/>\n" .
                     "5:                            <resource name=\"customer_manage\"/>\n6:                        " .
-                    "</resources>\n7:                    </integration>\n8:                </integrations>\n9:\n"
+                    "</resources>\n7:                    </integration>\n8:                </integrations>\n9:\n",
                 ],
-            ]
+            ],
         ];
     }
 }

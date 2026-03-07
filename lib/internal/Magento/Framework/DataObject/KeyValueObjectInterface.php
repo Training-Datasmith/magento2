@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ namespace Magento\Framework\DataObject;
  */
 interface KeyValueObjectInterface
 {
-    const KEY = 'key';
-    const VALUE = 'value';
+    public const KEY = 'key';
+    public const VALUE = 'value';
 
     /**
      * Get object key

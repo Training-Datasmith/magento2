@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Generator;
 
 use Magento\Framework\View\Layout;
@@ -15,13 +18,13 @@ class Container implements Layout\GeneratorInterface
     /**#@+
      * Names of container options in layout
      */
-    const CONTAINER_OPT_HTML_TAG = 'htmlTag';
-    const CONTAINER_OPT_HTML_CLASS = 'htmlClass';
-    const CONTAINER_OPT_HTML_ID = 'htmlId';
-    const CONTAINER_OPT_LABEL = 'label';
+    public const CONTAINER_OPT_HTML_TAG = 'htmlTag';
+    public const CONTAINER_OPT_HTML_CLASS = 'htmlClass';
+    public const CONTAINER_OPT_HTML_ID = 'htmlId';
+    public const CONTAINER_OPT_LABEL = 'label';
     /**#@-*/
 
-    const TYPE = 'container';
+    public const TYPE = 'container';
 
     /**
      * @var array

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
-use Magento\TestFramework\TestCase\AbstractBackendController;
+namespace Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
 class ImportExportTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {

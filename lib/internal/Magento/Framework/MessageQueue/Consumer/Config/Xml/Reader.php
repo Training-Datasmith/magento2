@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Consumer\Config\Xml;
 
 use Magento\Framework\MessageQueue\Consumer\Config\ReaderInterface;
@@ -16,7 +19,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem implements Read
      * {@inheritdoc}
      */
     protected $_idAttributes = [
-        '/config/consumer' => 'name'
+        '/config/consumer' => 'name',
     ];
 
     /**

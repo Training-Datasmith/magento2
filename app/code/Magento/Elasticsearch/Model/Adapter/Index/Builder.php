@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\Index;
 
+use Magento\Elasticsearch\Model\Adapter\Index\Config\EsConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Locale\Resolver as LocaleResolver;
-use Magento\Elasticsearch\Model\Adapter\Index\Config\EsConfigInterface;
 use Magento\Search\Model\ResourceModel\SynonymReader;
 
 /**
@@ -72,7 +75,7 @@ class Builder implements BuilderInterface
                             ['lowercase', 'keyword_repeat', 'asciifolding'],
                             array_keys($filter)
                         ),
-                        'char_filter' => array_keys($charFilter)
+                        'char_filter' => array_keys($charFilter),
                     ],
                     // this analyzer must not include keyword_repeat and stemmer filters
                     'prefix_search' => [
@@ -82,7 +85,7 @@ class Builder implements BuilderInterface
                             ['lowercase', 'asciifolding'],
                             array_keys($synonymFilter)
                         ),
-                        'char_filter' => array_keys($charFilter)
+                        'char_filter' => array_keys($charFilter),
                     ],
                     'sku' => [
                         'type' => 'custom',
@@ -100,7 +103,7 @@ class Builder implements BuilderInterface
                             ['lowercase', 'asciifolding'],
                             array_keys($synonymFilter)
                         ),
-                    ]
+                    ],
                 ],
                 'tokenizer' => $tokenizer,
                 'filter' => array_merge($filter, $synonymFilter),
@@ -137,8 +140,8 @@ class Builder implements BuilderInterface
     {
         return [
             'default_tokenizer' => [
-                'type' => 'standard'
-            ]
+                'type' => 'standard',
+            ],
         ];
     }
 
@@ -153,8 +156,8 @@ class Builder implements BuilderInterface
             'default_stemmer' => $this->getStemmerConfig(),
             'unique_stem' => [
                 'type' => 'unique',
-                'only_on_same_position' => true
-            ]
+                'only_on_same_position' => true,
+            ],
         ];
     }
 
@@ -208,8 +211,8 @@ class Builder implements BuilderInterface
             $synonymFilter = [
                 'synonyms' => [
                     'type' => 'synonym_graph',
-                    'synonyms' => $synonyms
-                ]
+                    'synonyms' => $synonyms,
+                ],
             ];
         }
 

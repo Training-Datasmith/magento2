@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -266,13 +267,13 @@ QUERY;
             if ($optionType == 'field' || $optionType == 'area') {
                 $customOptionsValues[] = [
                     'id' => (int) $customOption->getOptionId(),
-                    'value_string' => 'test'
+                    'value_string' => 'test',
                 ];
             } elseif ($optionType == 'drop_down') {
                 $optionSelectValues = $customOption->getValues();
                 $customOptionsValues[] = [
                     'id' => (int) $customOption->getOptionId(),
-                    'value_string' => reset($optionSelectValues)->getOptionTypeId()
+                    'value_string' => reset($optionSelectValues)->getOptionTypeId(),
                 ];
             }
         }

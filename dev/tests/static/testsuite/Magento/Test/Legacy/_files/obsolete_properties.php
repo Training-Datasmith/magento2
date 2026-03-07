@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Obsolete class attributes
  *
@@ -80,12 +82,12 @@ return [
     [
         '_showTemplateHints',
         'Magento\Framework\View\Element\Template',
-        'Magento\Core\Model\TemplateEngine\Plugin\DebugHints'
+        'Magento\Core\Model\TemplateEngine\Plugin\DebugHints',
     ],
     [
         '_showTemplateHintsBlocks',
         'Magento\Framework\View\Element\Template',
-        'Magento\Core\Model\TemplateEngine\Plugin\DebugHints'
+        'Magento\Core\Model\TemplateEngine\Plugin\DebugHints',
     ],
     ['_sortedChildren'],
     ['_sortInstructions'],

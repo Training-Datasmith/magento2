@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Weee;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Weee\Model\Tax as WeeeDisplayConfig;
 use Magento\Weee\Model\Config;
+use Magento\Weee\Model\Tax as WeeeDisplayConfig;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for storeConfig FPT config values
@@ -42,7 +43,7 @@ class StoreConfigFPTTest extends GraphQlAbstract
     #[DataProvider('sameFPTDisplaySettingsProvider')]
     public function testSameFPTDisplaySettings(array $weeTaxSettings, $displayValue)
     {
-       /** @var WriterInterface $configWriter */
+        /** @var WriterInterface $configWriter */
         $configWriter = $this->objectManager->get(WriterInterface::class);
 
         foreach ($weeTaxSettings as $path => $value) {
@@ -178,7 +179,7 @@ class StoreConfigFPTTest extends GraphQlAbstract
                     Config::XML_PATH_FPT_DISPLAY_PRODUCT_VIEW => WeeeDisplayConfig::DISPLAY_INCL,
                     Config::XML_PATH_FPT_DISPLAY_PRODUCT_LIST => WeeeDisplayConfig::DISPLAY_INCL_DESCR,
                     Config::XML_PATH_FPT_DISPLAY_SALES => WeeeDisplayConfig::DISPLAY_EXCL_DESCR_INCL,
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class SequenceTest extends TestCase
             Sequence::class,
             [
                 'meta' => $this->meta,
-                'resource' => $this->resource
+                'resource' => $this->resource,
             ]
         );
     }

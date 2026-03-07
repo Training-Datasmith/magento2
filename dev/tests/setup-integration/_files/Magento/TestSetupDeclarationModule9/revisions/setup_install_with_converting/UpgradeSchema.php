@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
     /**
      * The name of the main table of Module9.
      */
-    const REPLICA_TABLE = 'module9_test_update_replica_table';
+    public const REPLICA_TABLE = 'module9_test_update_replica_table';
 
     /**
      * @inheritdoc
@@ -89,7 +90,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 Module8UpgradeSchema::UPDATE_TABLE,
                 'MODULE9_UPDATE_MODULE8_GUEST_BROWSER_ID',
                 [
-                    'module8_guest_browser_id'
+                    'module8_guest_browser_id',
                 ]
             );
     }

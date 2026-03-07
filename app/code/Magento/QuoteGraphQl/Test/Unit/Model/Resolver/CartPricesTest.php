@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,14 +13,14 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GraphQl\Model\Query\Context;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address\Total;
 use Magento\QuoteGraphQl\Model\Cart\TotalsCollector;
 use Magento\QuoteGraphQl\Model\Resolver\CartPrices;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @see CartPrices
@@ -89,7 +90,7 @@ class CartPricesTest extends TestCase
                 'getDiscountTaxCompensationAmount',
                 'getDiscountAmount',
                 'getDiscountDescription',
-                'getAppliedTaxes'
+                'getAppliedTaxes',
             ]
         );
         $this->cartPrices = new CartPrices(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
 use Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for SynchronizeFiles.
@@ -97,8 +98,8 @@ class SynchronizeFilesTest extends TestCase
             [
                 '/magento.jpg',
                 'magento',
-                'Local'
-            ]
+                'Local',
+            ],
         ];
     }
 }

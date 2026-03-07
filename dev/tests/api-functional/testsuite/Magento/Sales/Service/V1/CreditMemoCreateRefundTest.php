@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\Sales\Api\OrderRepositoryInterface;
@@ -14,11 +17,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CreditMemoCreateRefundTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/creditmemo/refund';
+    public const RESOURCE_PATH = '/V1/creditmemo/refund';
 
-    const SERVICE_READ_NAME = 'salesCreditmemoManagementV1';
+    public const SERVICE_READ_NAME = 'salesCreditmemoManagementV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

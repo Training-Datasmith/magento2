@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Csp\Model\Policy\FlagPolicy;
 use Magento\Csp\Model\Policy\PluginTypesPolicy;
 use Magento\Csp\Model\Policy\SandboxPolicy;
 use Magento\Framework\App\RequestInterface;
-use PHPUnit\Framework\TestCase;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test collecting policies from Magento config.
@@ -85,7 +86,7 @@ class ConfigCollectorTest extends TestCase
             'form-action' => new FetchPolicy('form-action', false, [], [], true),
             'frame-ancestors' => new FetchPolicy('frame-ancestors', false, [], [], true),
             'block-all-mixed-content' => new FlagPolicy('block-all-mixed-content'),
-            'upgrade-insecure-requests' => new FlagPolicy('upgrade-insecure-requests')
+            'upgrade-insecure-requests' => new FlagPolicy('upgrade-insecure-requests'),
         ];
     }
 

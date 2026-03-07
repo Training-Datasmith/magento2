@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Adjustment;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\Price as ProductPrice;
 use Magento\Bundle\Pricing\Adjustment\Calculator;
@@ -21,13 +21,14 @@ use Magento\Framework\Pricing\Adjustment\Calculator as PricingAdjustmentCalculat
 use Magento\Framework\Pricing\Amount\AmountFactory;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\SaleableInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Tax\Helper\Data;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -126,7 +127,7 @@ class CalculatorTest extends TestCase
                 'bundleSelectionFactory' => $this->selectionFactory,
                 'taxHelper' => $this->taxData,
                 'priceCurrency' => $priceCurrency,
-                'selectionPriceListProvider' => $this->selectionPriceListProvider
+                'selectionPriceListProvider' => $this->selectionPriceListProvider,
             ]
         );
     }
@@ -307,14 +308,14 @@ class CalculatorTest extends TestCase
                                 'amount' => 8,
                             ],
                         ],
-                    ]
+                    ],
                 ],
             ],
             'expectedResult' => [
                 'isMinAmount' => true,
                 'fullAmount' => 790.,
                 'adjustments' => ['tax' => 110, 'weee' => 10],
-            ]
+            ],
         ];
     }
 
@@ -350,7 +351,7 @@ class CalculatorTest extends TestCase
                                 'amount' => 8,
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 // second option with multiselection
                 [
@@ -385,14 +386,14 @@ class CalculatorTest extends TestCase
                                 'amount' => 18,
                             ],
                         ],
-                    ]
+                    ],
                 ],
             ],
             'expectedResult' => [
                 'isMinAmount' => false,
                 'fullAmount' => 844.,
                 'adjustments' => ['tax' => 164, 'weee' => 10],
-            ]
+            ],
         ];
     }
 
@@ -420,14 +421,14 @@ class CalculatorTest extends TestCase
                         'position' => '0',
                         'required' => '1',
                     ],
-                    'selections' => []
+                    'selections' => [],
                 ],
             ],
             'expectedResult' => [
                 'isMinAmount' => true,
                 'fullAmount' => 782.,
                 'adjustments' => ['tax' => 102],
-            ]
+            ],
         ];
     }
 
@@ -463,7 +464,7 @@ class CalculatorTest extends TestCase
                                 'amount' => 8,
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 // second option
                 [
@@ -477,14 +478,14 @@ class CalculatorTest extends TestCase
                         'required' => '0',
                     ],
                     'selections' => [
-                    ]
+                    ],
                 ],
             ],
             'expectedResult' => [
                 'isMinAmount' => true,
                 'fullAmount' => 8.,
                 'adjustments' => ['tax' => 8],
-            ]
+            ],
         ];
     }
 

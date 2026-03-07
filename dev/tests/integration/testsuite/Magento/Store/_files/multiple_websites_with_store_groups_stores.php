@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Store\Model\Website;
-use Magento\Store\Model\Store;
 use Magento\Store\Model\Group;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\Website;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 //Creating second website with a store.

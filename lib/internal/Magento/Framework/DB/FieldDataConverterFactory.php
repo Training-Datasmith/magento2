@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -39,7 +42,7 @@ class FieldDataConverterFactory
         return $this->objectManager->create(
             FieldDataConverter::class,
             [
-                'dataConverter' => $this->objectManager->get($dataConverterClassName)
+                'dataConverter' => $this->objectManager->get($dataConverterClassName),
             ]
         );
     }

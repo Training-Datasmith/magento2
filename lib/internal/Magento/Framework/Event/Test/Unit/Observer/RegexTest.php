@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Event\Test\Unit\Observer;
 
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer\Regex;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RegexTest extends TestCase
 {
@@ -52,7 +53,7 @@ class RegexTest extends TestCase
     {
         return [
             ['~_name$~', 'event_name', true],
-            ['~_names$~', 'event_name', false]
+            ['~_names$~', 'event_name', false],
         ];
     }
 }

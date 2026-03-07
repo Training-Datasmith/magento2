@@ -1,14 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\ShippingRates;
 
 use Magento\Framework\App\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
 
 class Index extends \Magento\Framework\App\Action\Action
 {

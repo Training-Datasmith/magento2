@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
-use Magento\Deploy\Service\DeployStaticContent;
 use Magento\Csp\Model\SubresourceIntegrityCollector;
 use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Psr\Log\LoggerInterface;
+use Magento\Deploy\Service\DeployStaticContent;
 use Magento\Framework\App\ObjectManager;
+use Psr\Log\LoggerInterface;
 
 /**
  * Plugin that stores generated integrity hashes for all assets.
@@ -69,7 +70,7 @@ class StoreAssetIntegrityHashes
         $integrityHashes = $this->integrityCollector->release();
 
         foreach ($integrityHashes as $integrity) {
-            $area = explode("/", $integrity->getPath())[0];
+            $area = explode('/', $integrity->getPath())[0];
             $bunches[$area][] = $integrity;
         }
 

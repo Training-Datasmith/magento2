@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,9 +65,9 @@ $orderItem->setProductOptions([
     'info_buyRequest' => $requestInfo,
     'bundle_options' => [
         [
-            'value' => [['title' => $product->getName()]]
-        ]
-    ]
+            'value' => [['title' => $product->getName()]],
+        ],
+    ],
 ]);
 
 /** @var \Magento\Sales\Model\Order $order */

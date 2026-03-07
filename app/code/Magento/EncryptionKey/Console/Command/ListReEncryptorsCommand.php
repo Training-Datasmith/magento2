@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Console\Command;
 
+use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 use Magento\Framework\Console\Cli;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 
 /**
  * Command for displaying a list of available data re-encryptors.

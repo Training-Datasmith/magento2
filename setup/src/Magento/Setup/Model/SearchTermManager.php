@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
 /**
@@ -75,7 +78,7 @@ class SearchTermManager
         foreach ($this->searchTerms as $searchTerm) {
             $this->searchTermsUseRate[$searchTerm['term']] = [
                 'use_rate' => floor($this->totalProductsCount / $searchTerm['count']),
-                'used' => 0
+                'used' => 0,
             ];
         }
     }

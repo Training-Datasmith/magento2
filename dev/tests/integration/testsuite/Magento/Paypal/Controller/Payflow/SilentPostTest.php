@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Payflow;
 
 use Magento\Framework\Api\FilterBuilder;
@@ -165,7 +168,7 @@ class SilentPostTest extends AbstractController
         $response = new DataObject([
             'custref' => $orderIncrementId,
             'origresult' => $resultCode,
-            'respmsg' => 'Response message from PayPal gateway'
+            'respmsg' => 'Response message from PayPal gateway',
         ]);
         $this->gateway->method('postRequest')
             ->willReturn($response);
@@ -184,7 +187,7 @@ class SilentPostTest extends AbstractController
         $filters = [
             $filterBuilder->setField(OrderInterface::INCREMENT_ID)
                 ->setValue($incrementId)
-                ->create()
+                ->create(),
         ];
 
         /** @var SearchCriteriaBuilder $searchCriteriaBuilder */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -180,7 +181,7 @@ class Search implements ProductQueryInterface
     {
         $productFields = (array)$info->getFieldSelection(1);
         $includeAggregations = isset($productFields['filters']) || isset($productFields['aggregations']);
-        $fieldName = $info->fieldName ?? "";
+        $fieldName = $info->fieldName ?? '';
         $processedArgs = $this->argsSelection->process((string) $fieldName, $args);
         $searchCriteria = $this->searchCriteriaBuilder->build($processedArgs, $includeAggregations);
 

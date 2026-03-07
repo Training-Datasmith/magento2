@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ShortcutTest extends TestCase
             [
                 'alias' => self::STUB_ALIAS,
                 'paymentMethodCode' => 'test-method',
-                'paypalConfigFactory' => $paypalConfigFactoryMock
+                'paypalConfigFactory' => $paypalConfigFactoryMock,
             ]
         );
         $this->assertEquals(self::STUB_ALIAS, $model->getAlias());

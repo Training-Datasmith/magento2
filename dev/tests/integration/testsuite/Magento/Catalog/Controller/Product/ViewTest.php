@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,7 +9,9 @@ declare(strict_types=1);
 namespace Magento\Catalog\Controller\Product;
 
 use Magento\Catalog\Api\AttributeSetRepositoryInterface;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Visibility;
@@ -25,13 +28,11 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Eav\Model\GetAttributeSetByName;
 use Magento\TestFramework\Fixture\Cache;
 use Magento\TestFramework\Request;
+use Magento\TestFramework\Response;
+use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\TestFramework\Response;
-use Magento\TestFramework\TestCase\AbstractController;
 
 /**
  * Integration test for product view front action.
@@ -140,7 +141,7 @@ class ViewTest extends AbstractController
         $logger->expects($this->never())
             ->method('warning')
             ->with(
-                "Attempt to load value of nonexistent EAV attribute",
+                'Attempt to load value of nonexistent EAV attribute',
                 [
                     'attribute_id' => $attributeCountryOfManufacture->getAttributeId(),
                     'entity_type' => ProductInterface::class,

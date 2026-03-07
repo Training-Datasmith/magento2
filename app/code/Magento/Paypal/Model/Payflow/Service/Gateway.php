@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Service;
 
 use Laminas\Http\Exception\RuntimeException;
@@ -66,7 +69,7 @@ class Gateway implements GatewayInterface
         $clientConfig = [
             'maxredirects' => 5,
             'timeout' => 30,
-            'verifypeer' => $config->getValue('verify_peer')
+            'verifypeer' => $config->getValue('verify_peer'),
         ];
 
         if ($config->getValue('use_proxy')) {
@@ -93,7 +96,7 @@ class Gateway implements GatewayInterface
             [
                 'X-VPS-VIT-CLIENT-CERTIFICATION-ID' => '33baf5893fc2123d8b191d2d011b7fdc',
                 'X-VPS-Request-ID' => $this->mathRandom->getUniqueHash(),
-                'X-VPS-CLIENT-TIMEOUT' => 45
+                'X-VPS-CLIENT-TIMEOUT' => 45,
             ]
         );
         $client->setUrlEncodeBody(false);
@@ -109,7 +112,7 @@ class Gateway implements GatewayInterface
                 [
                     'response_code' => -1,
                     'response_reason_code' => $e->getCode(),
-                    'response_reason_text' => $e->getMessage()
+                    'response_reason_text' => $e->getMessage(),
                 ]
             );
             throw $e;
@@ -117,7 +120,7 @@ class Gateway implements GatewayInterface
             $this->logger->debug(
                 [
                     'request' => $requestData,
-                    'result' => $result->getData()
+                    'result' => $result->getData(),
                 ],
                 (array)$config->getValue('getDebugReplacePrivateDataKeys'),
                 (bool)$config->getValue('debug')

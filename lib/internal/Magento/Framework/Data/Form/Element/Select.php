@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\App\ObjectManager;
@@ -179,7 +182,7 @@ class Select extends AbstractElement
             'tabindex',
             'data-form-part',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 }

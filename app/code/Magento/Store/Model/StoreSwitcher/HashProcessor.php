@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -104,14 +105,14 @@ class HashProcessor implements StoreSwitcherInterface
                 [
                     'fromStore' => $fromStore,
                     'targetStore' => $targetStore,
-                    'redirectUrl' => $redirectUrl
+                    'redirectUrl' => $redirectUrl,
                 ]
             );
             $redirectDataObject = $this->dataFactory->create(
                 [
                     'signature' => $signature,
                     'timestamp' => $timestamp,
-                    'data' => $data
+                    'data' => $data,
                 ]
             );
 

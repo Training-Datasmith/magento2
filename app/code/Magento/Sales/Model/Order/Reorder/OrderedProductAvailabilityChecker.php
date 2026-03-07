@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Reorder;
 
-use Magento\Sales\Model\Order\Item;
 use Magento\Framework\Exception\ConfigurationMismatchException;
+use Magento\Sales\Model\Order\Item;
 
 /**
  * Class for checking availability of different product types
@@ -20,7 +23,6 @@ use Magento\Framework\Exception\ConfigurationMismatchException;
  */
 class OrderedProductAvailabilityChecker implements OrderedProductAvailabilityCheckerInterface
 {
-
     /**
      * @var OrderedProductAvailabilityCheckerInterface[]
      */

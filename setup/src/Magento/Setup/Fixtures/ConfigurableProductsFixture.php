@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -471,7 +473,7 @@ class ConfigurableProductsFixture extends Fixture
                 }
                 $attributeSetData[$attributeSet['name']] = [
                     'name' => $attributeSet['name'],
-                    'attributes' => $attributes
+                    'attributes' => $attributes,
                 ];
             }
         }
@@ -488,9 +490,9 @@ class ConfigurableProductsFixture extends Fixture
             'attributes' => [
                 [
                     'name' => 'configurable_variation',
-                    'values' => $attributeOptions
-                ]
-            ]
+                    'values' => $attributeOptions,
+                ],
+            ],
         ];
 
         return $attributeSetData;
@@ -692,9 +694,9 @@ class ConfigurableProductsFixture extends Fixture
                     $data['used_in_product_listing'] = 1;
 
                     $swatch = $this->swatchesGenerator->generateSwatchData(
-                        (int) $attributes[$index-1]['options'],
+                        (int) $attributes[$index - 1]['options'],
                         $attributeSetName . $index,
-                        $attributes[$index-1]['swatches']
+                        $attributes[$index - 1]['swatches']
                     );
                 }
 
@@ -927,7 +929,7 @@ class ConfigurableProductsFixture extends Fixture
                     [
                         'name' => $attribute->getAttributeCode(),
                         'id' => $attribute->getAttributeId(),
-                        'values' => $values
+                        'values' => $values,
                     ];
             }
         }

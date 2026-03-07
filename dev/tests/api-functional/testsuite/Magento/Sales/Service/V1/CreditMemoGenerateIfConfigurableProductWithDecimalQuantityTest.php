@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,27 +8,27 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Service\V1;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
 use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
 use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
 use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
+use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart as AddConfigurableProductToCartFixture;
+use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
+use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
-use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
-use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
-use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart as AddConfigurableProductToCartFixture;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * API test for credit memo generation with configurable product decimal quantity.
@@ -81,7 +82,7 @@ class CreditMemoGenerateIfConfigurableProductWithDecimalQuantityTest extends Web
             $creditMemoResult = $this->_webApiCall(
                 $this->getServiceData($order),
                 [
-                    'orderId' => $order->getEntityId()
+                    'orderId' => $order->getEntityId(),
                 ]
             );
             $this->assertGreaterThan(0, (int) $creditMemoResult);
@@ -108,7 +109,7 @@ class CreditMemoGenerateIfConfigurableProductWithDecimalQuantityTest extends Web
                 'service' => self::SERVICE_REFUND_ORDER_NAME,
                 'serviceVersion' => 'V1',
                 'operation' => self::SERVICE_REFUND_ORDER_NAME . 'execute',
-            ]
+            ],
         ];
     }
 }

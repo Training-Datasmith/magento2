@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ class Fetch extends \Magento\Paypal\Controller\Adminhtml\Paypal\Reports
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::fetch';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::fetch';
 
     /**
      * Forced fetch reports action

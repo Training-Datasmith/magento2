@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Gallery;
 
-use Magento\Framework\Model\AbstractExtensibleModel;
-use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface;
 use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryExtensionInterface;
+use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface;
+use Magento\Framework\Model\AbstractExtensibleModel;
 
 /**
  * @codeCoverageIgnore

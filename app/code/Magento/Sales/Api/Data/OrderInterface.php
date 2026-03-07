@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -22,547 +25,547 @@ interface OrderInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * State.
      */
-    const STATE = 'state';
+    public const STATE = 'state';
     /*
      * Status.
      */
-    const STATUS = 'status';
+    public const STATUS = 'status';
     /*
      * Coupon code.
      */
-    const COUPON_CODE = 'coupon_code';
+    public const COUPON_CODE = 'coupon_code';
     /*
      * Protect code.
      */
-    const PROTECT_CODE = 'protect_code';
+    public const PROTECT_CODE = 'protect_code';
     /*
      * Shipping description.
      */
-    const SHIPPING_DESCRIPTION = 'shipping_description';
+    public const SHIPPING_DESCRIPTION = 'shipping_description';
     /*
      * Is-virtual flag.
      */
-    const IS_VIRTUAL = 'is_virtual';
+    public const IS_VIRTUAL = 'is_virtual';
     /*
      * Store ID.
      */
-    const STORE_ID = 'store_id';
+    public const STORE_ID = 'store_id';
     /*
      * Customer ID.
      */
-    const CUSTOMER_ID = 'customer_id';
+    public const CUSTOMER_ID = 'customer_id';
     /*
      * Base discount amount.
      */
-    const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
     /*
      * Base discount canceled.
      */
-    const BASE_DISCOUNT_CANCELED = 'base_discount_canceled';
+    public const BASE_DISCOUNT_CANCELED = 'base_discount_canceled';
     /*
      * Base discount invoiced.
      */
-    const BASE_DISCOUNT_INVOICED = 'base_discount_invoiced';
+    public const BASE_DISCOUNT_INVOICED = 'base_discount_invoiced';
     /*
      * Base discount refunded.
      */
-    const BASE_DISCOUNT_REFUNDED = 'base_discount_refunded';
+    public const BASE_DISCOUNT_REFUNDED = 'base_discount_refunded';
     /*
      * Base grand total.
      */
-    const BASE_GRAND_TOTAL = 'base_grand_total';
+    public const BASE_GRAND_TOTAL = 'base_grand_total';
     /*
      * Base shipping amount.
      */
-    const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
+    public const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
     /*
      * Base shipping canceled.
      */
-    const BASE_SHIPPING_CANCELED = 'base_shipping_canceled';
+    public const BASE_SHIPPING_CANCELED = 'base_shipping_canceled';
     /*
      * Base shipping invoiced.
      */
-    const BASE_SHIPPING_INVOICED = 'base_shipping_invoiced';
+    public const BASE_SHIPPING_INVOICED = 'base_shipping_invoiced';
     /*
      * Base shipping refunded.
      */
-    const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
+    public const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
     /*
      * Base shipping tax amount.
      */
-    const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
+    public const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
     /*
      * Base shipping tax refunded.
      */
-    const BASE_SHIPPING_TAX_REFUNDED = 'base_shipping_tax_refunded';
+    public const BASE_SHIPPING_TAX_REFUNDED = 'base_shipping_tax_refunded';
     /*
      * Base subtotal.
      */
-    const BASE_SUBTOTAL = 'base_subtotal';
+    public const BASE_SUBTOTAL = 'base_subtotal';
     /*
      * Base subtotal canceled.
      */
-    const BASE_SUBTOTAL_CANCELED = 'base_subtotal_canceled';
+    public const BASE_SUBTOTAL_CANCELED = 'base_subtotal_canceled';
     /*
      * Base subtotal invoiced.
      */
-    const BASE_SUBTOTAL_INVOICED = 'base_subtotal_invoiced';
+    public const BASE_SUBTOTAL_INVOICED = 'base_subtotal_invoiced';
     /*
      * Base subtotal refunded.
      */
-    const BASE_SUBTOTAL_REFUNDED = 'base_subtotal_refunded';
+    public const BASE_SUBTOTAL_REFUNDED = 'base_subtotal_refunded';
     /*
      * Base tax amount.
      */
-    const BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const BASE_TAX_AMOUNT = 'base_tax_amount';
     /*
      * Base tax canceled.
      */
-    const BASE_TAX_CANCELED = 'base_tax_canceled';
+    public const BASE_TAX_CANCELED = 'base_tax_canceled';
     /*
      * Base tax invoiced.
      */
-    const BASE_TAX_INVOICED = 'base_tax_invoiced';
+    public const BASE_TAX_INVOICED = 'base_tax_invoiced';
     /*
      * Base tax refunded.
      */
-    const BASE_TAX_REFUNDED = 'base_tax_refunded';
+    public const BASE_TAX_REFUNDED = 'base_tax_refunded';
     /*
      * Base-to-global rate.
      */
-    const BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
+    public const BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
     /*
      * Base-to-order rate.
      */
-    const BASE_TO_ORDER_RATE = 'base_to_order_rate';
+    public const BASE_TO_ORDER_RATE = 'base_to_order_rate';
     /*
      * Base total canceled.
      */
-    const BASE_TOTAL_CANCELED = 'base_total_canceled';
+    public const BASE_TOTAL_CANCELED = 'base_total_canceled';
     /*
      * Base total invoiced.
      */
-    const BASE_TOTAL_INVOICED = 'base_total_invoiced';
+    public const BASE_TOTAL_INVOICED = 'base_total_invoiced';
     /*
      * Base total invoiced cost.
      */
-    const BASE_TOTAL_INVOICED_COST = 'base_total_invoiced_cost';
+    public const BASE_TOTAL_INVOICED_COST = 'base_total_invoiced_cost';
     /*
      * Base total offline refunded.
      */
-    const BASE_TOTAL_OFFLINE_REFUNDED = 'base_total_offline_refunded';
+    public const BASE_TOTAL_OFFLINE_REFUNDED = 'base_total_offline_refunded';
     /*
      * Base total online refunded.
      */
-    const BASE_TOTAL_ONLINE_REFUNDED = 'base_total_online_refunded';
+    public const BASE_TOTAL_ONLINE_REFUNDED = 'base_total_online_refunded';
     /*
      * Base total paid.
      */
-    const BASE_TOTAL_PAID = 'base_total_paid';
+    public const BASE_TOTAL_PAID = 'base_total_paid';
     /*
      * Base total quantity ordered.
      */
-    const BASE_TOTAL_QTY_ORDERED = 'base_total_qty_ordered';
+    public const BASE_TOTAL_QTY_ORDERED = 'base_total_qty_ordered';
     /*
      * Base total refunded.
      */
-    const BASE_TOTAL_REFUNDED = 'base_total_refunded';
+    public const BASE_TOTAL_REFUNDED = 'base_total_refunded';
     /*
      * Discount amount.
      */
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
     /*
      * Discount canceled.
      */
-    const DISCOUNT_CANCELED = 'discount_canceled';
+    public const DISCOUNT_CANCELED = 'discount_canceled';
     /*
      * Discount invoiced.
      */
-    const DISCOUNT_INVOICED = 'discount_invoiced';
+    public const DISCOUNT_INVOICED = 'discount_invoiced';
     /*
      * Discount refunded.
      */
-    const DISCOUNT_REFUNDED = 'discount_refunded';
+    public const DISCOUNT_REFUNDED = 'discount_refunded';
     /*
      * Grand total.
      */
-    const GRAND_TOTAL = 'grand_total';
+    public const GRAND_TOTAL = 'grand_total';
     /*
      * Shipping amount.
      */
-    const SHIPPING_AMOUNT = 'shipping_amount';
+    public const SHIPPING_AMOUNT = 'shipping_amount';
     /*
      * Shipping canceled.
      */
-    const SHIPPING_CANCELED = 'shipping_canceled';
+    public const SHIPPING_CANCELED = 'shipping_canceled';
     /*
      * Shipping invoiced.
      */
-    const SHIPPING_INVOICED = 'shipping_invoiced';
+    public const SHIPPING_INVOICED = 'shipping_invoiced';
     /*
      * Shipping refunded.
      */
-    const SHIPPING_REFUNDED = 'shipping_refunded';
+    public const SHIPPING_REFUNDED = 'shipping_refunded';
     /*
      * Shipping tax amount.
      */
-    const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
+    public const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
     /*
      * Shipping tax refunded.
      */
-    const SHIPPING_TAX_REFUNDED = 'shipping_tax_refunded';
+    public const SHIPPING_TAX_REFUNDED = 'shipping_tax_refunded';
     /*
      * Store-to-base rate.
      */
-    const STORE_TO_BASE_RATE = 'store_to_base_rate';
+    public const STORE_TO_BASE_RATE = 'store_to_base_rate';
     /*
      * Store-to-order rate.
      */
-    const STORE_TO_ORDER_RATE = 'store_to_order_rate';
+    public const STORE_TO_ORDER_RATE = 'store_to_order_rate';
     /*
      * Subtotal.
      */
-    const SUBTOTAL = 'subtotal';
+    public const SUBTOTAL = 'subtotal';
     /*
      * Subtotal canceled.
      */
-    const SUBTOTAL_CANCELED = 'subtotal_canceled';
+    public const SUBTOTAL_CANCELED = 'subtotal_canceled';
     /*
      * Subtotal invoiced.
      */
-    const SUBTOTAL_INVOICED = 'subtotal_invoiced';
+    public const SUBTOTAL_INVOICED = 'subtotal_invoiced';
     /*
      * Subtotal refunded.
      */
-    const SUBTOTAL_REFUNDED = 'subtotal_refunded';
+    public const SUBTOTAL_REFUNDED = 'subtotal_refunded';
     /*
      * Tax amount.
      */
-    const TAX_AMOUNT = 'tax_amount';
+    public const TAX_AMOUNT = 'tax_amount';
     /*
      * Tax canceled.
      */
-    const TAX_CANCELED = 'tax_canceled';
+    public const TAX_CANCELED = 'tax_canceled';
     /*
      * Tax invoiced.
      */
-    const TAX_INVOICED = 'tax_invoiced';
+    public const TAX_INVOICED = 'tax_invoiced';
     /*
      * Tax refunded.
      */
-    const TAX_REFUNDED = 'tax_refunded';
+    public const TAX_REFUNDED = 'tax_refunded';
     /*
      * Total canceled.
      */
-    const TOTAL_CANCELED = 'total_canceled';
+    public const TOTAL_CANCELED = 'total_canceled';
     /*
      * Total invoiced.
      */
-    const TOTAL_INVOICED = 'total_invoiced';
+    public const TOTAL_INVOICED = 'total_invoiced';
     /*
      * Total refunded offline.
      */
-    const TOTAL_OFFLINE_REFUNDED = 'total_offline_refunded';
+    public const TOTAL_OFFLINE_REFUNDED = 'total_offline_refunded';
     /*
      * Total refunded online.
      */
-    const TOTAL_ONLINE_REFUNDED = 'total_online_refunded';
+    public const TOTAL_ONLINE_REFUNDED = 'total_online_refunded';
     /*
      * Total paid.
      */
-    const TOTAL_PAID = 'total_paid';
+    public const TOTAL_PAID = 'total_paid';
     /*
      * Total quantity ordered.
      */
-    const TOTAL_QTY_ORDERED = 'total_qty_ordered';
+    public const TOTAL_QTY_ORDERED = 'total_qty_ordered';
     /*
      * Total refunded.
      */
-    const TOTAL_REFUNDED = 'total_refunded';
+    public const TOTAL_REFUNDED = 'total_refunded';
     /*
      * Can-ship-partially flag.
      */
-    const CAN_SHIP_PARTIALLY = 'can_ship_partially';
+    public const CAN_SHIP_PARTIALLY = 'can_ship_partially';
     /*
      * Can-ship-item-partially flag.
      */
-    const CAN_SHIP_PARTIALLY_ITEM = 'can_ship_partially_item';
+    public const CAN_SHIP_PARTIALLY_ITEM = 'can_ship_partially_item';
     /*
      * Customer-is-guest flag.
      */
-    const CUSTOMER_IS_GUEST = 'customer_is_guest';
+    public const CUSTOMER_IS_GUEST = 'customer_is_guest';
     /*
      * Customer-note-notify flag.
      */
-    const CUSTOMER_NOTE_NOTIFY = 'customer_note_notify';
+    public const CUSTOMER_NOTE_NOTIFY = 'customer_note_notify';
     /*
      * Billing address ID.
      */
-    const BILLING_ADDRESS_ID = 'billing_address_id';
+    public const BILLING_ADDRESS_ID = 'billing_address_id';
     /*
      * Customer group ID.
      */
-    const CUSTOMER_GROUP_ID = 'customer_group_id';
+    public const CUSTOMER_GROUP_ID = 'customer_group_id';
     /*
      * Edit increment value.
      */
-    const EDIT_INCREMENT = 'edit_increment';
+    public const EDIT_INCREMENT = 'edit_increment';
     /*
      * Email-sent flag.
      */
-    const EMAIL_SENT = 'email_sent';
+    public const EMAIL_SENT = 'email_sent';
     /*
      * Forced-shipment-with-invoice flag.
      */
-    const FORCED_SHIPMENT_WITH_INVOICE = 'forced_shipment_with_invoice';
+    public const FORCED_SHIPMENT_WITH_INVOICE = 'forced_shipment_with_invoice';
     /*
      * Payment authorization expiration date.
      */
-    const PAYMENT_AUTH_EXPIRATION = 'payment_auth_expiration';
+    public const PAYMENT_AUTH_EXPIRATION = 'payment_auth_expiration';
     /*
      * Quote address ID.
      */
-    const QUOTE_ADDRESS_ID = 'quote_address_id';
+    public const QUOTE_ADDRESS_ID = 'quote_address_id';
     /*
      * Quote ID.
      */
-    const QUOTE_ID = 'quote_id';
+    public const QUOTE_ID = 'quote_id';
     /*
      * Negative adjustment.
      */
-    const ADJUSTMENT_NEGATIVE = 'adjustment_negative';
+    public const ADJUSTMENT_NEGATIVE = 'adjustment_negative';
     /*
      * Positive adjustment.
      */
-    const ADJUSTMENT_POSITIVE = 'adjustment_positive';
+    public const ADJUSTMENT_POSITIVE = 'adjustment_positive';
     /*
      * Base negative adjustment.
      */
-    const BASE_ADJUSTMENT_NEGATIVE = 'base_adjustment_negative';
+    public const BASE_ADJUSTMENT_NEGATIVE = 'base_adjustment_negative';
     /*
      * Base positive adjustment.
      */
-    const BASE_ADJUSTMENT_POSITIVE = 'base_adjustment_positive';
+    public const BASE_ADJUSTMENT_POSITIVE = 'base_adjustment_positive';
     /*
      * Base shipping discount amount.
      */
-    const BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
+    public const BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
     /*
      * Base subtotal including tax.
      */
-    const BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
+    public const BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
     /*
      * Base total due.
      */
-    const BASE_TOTAL_DUE = 'base_total_due';
+    public const BASE_TOTAL_DUE = 'base_total_due';
     /*
      * Payment authorization amount.
      */
-    const PAYMENT_AUTHORIZATION_AMOUNT = 'payment_authorization_amount';
+    public const PAYMENT_AUTHORIZATION_AMOUNT = 'payment_authorization_amount';
     /*
      * Shipping discount amount.
      */
-    const SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
+    public const SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
     /*
      * Subtotal including tax.
      */
-    const SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
+    public const SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
     /*
      * Total due.
      */
-    const TOTAL_DUE = 'total_due';
+    public const TOTAL_DUE = 'total_due';
     /*
      * Weight.
      */
-    const WEIGHT = 'weight';
+    public const WEIGHT = 'weight';
     /*
      * Customer date-of-birth (DOB).
      */
-    const CUSTOMER_DOB = 'customer_dob';
+    public const CUSTOMER_DOB = 'customer_dob';
     /*
      * Increment ID.
      */
-    const INCREMENT_ID = 'increment_id';
+    public const INCREMENT_ID = 'increment_id';
     /*
      * Applied rule IDs.
      */
-    const APPLIED_RULE_IDS = 'applied_rule_ids';
+    public const APPLIED_RULE_IDS = 'applied_rule_ids';
     /*
      * Base currency code.
      */
-    const BASE_CURRENCY_CODE = 'base_currency_code';
+    public const BASE_CURRENCY_CODE = 'base_currency_code';
     /*
      * Customer email address.
      */
-    const CUSTOMER_EMAIL = 'customer_email';
+    public const CUSTOMER_EMAIL = 'customer_email';
     /*
      * Customer first name.
      */
-    const CUSTOMER_FIRSTNAME = 'customer_firstname';
+    public const CUSTOMER_FIRSTNAME = 'customer_firstname';
     /*
      * Customer last name.
      */
-    const CUSTOMER_LASTNAME = 'customer_lastname';
+    public const CUSTOMER_LASTNAME = 'customer_lastname';
     /*
      * Customer middle name.
      */
-    const CUSTOMER_MIDDLENAME = 'customer_middlename';
+    public const CUSTOMER_MIDDLENAME = 'customer_middlename';
     /*
      * Customer prefix.
      */
-    const CUSTOMER_PREFIX = 'customer_prefix';
+    public const CUSTOMER_PREFIX = 'customer_prefix';
     /*
      * Customer suffix.
      */
-    const CUSTOMER_SUFFIX = 'customer_suffix';
+    public const CUSTOMER_SUFFIX = 'customer_suffix';
     /*
      * Customer value-added tax (VAT).
      */
-    const CUSTOMER_TAXVAT = 'customer_taxvat';
+    public const CUSTOMER_TAXVAT = 'customer_taxvat';
     /*
      * Discount description.
      */
-    const DISCOUNT_DESCRIPTION = 'discount_description';
+    public const DISCOUNT_DESCRIPTION = 'discount_description';
     /*
      * External customer ID.
      */
-    const EXT_CUSTOMER_ID = 'ext_customer_id';
+    public const EXT_CUSTOMER_ID = 'ext_customer_id';
     /*
      * External order ID.
      */
-    const EXT_ORDER_ID = 'ext_order_id';
+    public const EXT_ORDER_ID = 'ext_order_id';
     /*
      * Global currency code.
      */
-    const GLOBAL_CURRENCY_CODE = 'global_currency_code';
+    public const GLOBAL_CURRENCY_CODE = 'global_currency_code';
     /*
      * Hold before state.
      */
-    const HOLD_BEFORE_STATE = 'hold_before_state';
+    public const HOLD_BEFORE_STATE = 'hold_before_state';
     /*
      * Hold before status.
      */
-    const HOLD_BEFORE_STATUS = 'hold_before_status';
+    public const HOLD_BEFORE_STATUS = 'hold_before_status';
     /*
      * Order currency code.
      */
-    const ORDER_CURRENCY_CODE = 'order_currency_code';
+    public const ORDER_CURRENCY_CODE = 'order_currency_code';
     /*
      * Original increment ID.
      */
-    const ORIGINAL_INCREMENT_ID = 'original_increment_id';
+    public const ORIGINAL_INCREMENT_ID = 'original_increment_id';
     /*
      * Relation child ID.
      */
-    const RELATION_CHILD_ID = 'relation_child_id';
+    public const RELATION_CHILD_ID = 'relation_child_id';
     /*
      * Relation child real ID.
      */
-    const RELATION_CHILD_REAL_ID = 'relation_child_real_id';
+    public const RELATION_CHILD_REAL_ID = 'relation_child_real_id';
     /*
      * Relation parent ID.
      */
-    const RELATION_PARENT_ID = 'relation_parent_id';
+    public const RELATION_PARENT_ID = 'relation_parent_id';
     /*
      * Relation parent real ID.
      */
-    const RELATION_PARENT_REAL_ID = 'relation_parent_real_id';
+    public const RELATION_PARENT_REAL_ID = 'relation_parent_real_id';
     /*
      * Remote IP address.
      */
-    const REMOTE_IP = 'remote_ip';
+    public const REMOTE_IP = 'remote_ip';
     /*
      * Store currency code.
      */
-    const STORE_CURRENCY_CODE = 'store_currency_code';
+    public const STORE_CURRENCY_CODE = 'store_currency_code';
     /*
      * Store name.
      */
-    const STORE_NAME = 'store_name';
+    public const STORE_NAME = 'store_name';
     /*
      * X-Forwarded-For HTTP header field.
      */
-    const X_FORWARDED_FOR = 'x_forwarded_for';
+    public const X_FORWARDED_FOR = 'x_forwarded_for';
     /*
      * Customer note.
      */
-    const CUSTOMER_NOTE = 'customer_note';
+    public const CUSTOMER_NOTE = 'customer_note';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
     /*
      * Updated-at timestamp.
      */
-    const UPDATED_AT = 'updated_at';
+    public const UPDATED_AT = 'updated_at';
     /*
      * Total item count.
      */
-    const TOTAL_ITEM_COUNT = 'total_item_count';
+    public const TOTAL_ITEM_COUNT = 'total_item_count';
     /*
      * Customer gender.
      */
-    const CUSTOMER_GENDER = 'customer_gender';
+    public const CUSTOMER_GENDER = 'customer_gender';
     /*
      * Discount tax compensation amount.
      */
-    const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /*
      * Base discount tax compensation amount.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
     /*
      * Shipping discount tax compensation amount.
      */
-    const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
+    public const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
     /*
      * Base shipping discount tax compensation amount.
      */
-    const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
+    public const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
     /*
      * Discount tax compensation invoiced.
      */
-    const DISCOUNT_TAX_COMPENSATION_INVOICED = 'discount_tax_compensation_invoiced';
+    public const DISCOUNT_TAX_COMPENSATION_INVOICED = 'discount_tax_compensation_invoiced';
     /*
      * Base discount tax compensation invoiced.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_INVOICED = 'base_discount_tax_compensation_invoiced';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_INVOICED = 'base_discount_tax_compensation_invoiced';
     /*
      * Discount tax compensation refunded.
      */
-    const DISCOUNT_TAX_COMPENSATION_REFUNDED = 'discount_tax_compensation_refunded';
+    public const DISCOUNT_TAX_COMPENSATION_REFUNDED = 'discount_tax_compensation_refunded';
     /*
      * Base discount tax compensation refunded.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_REFUNDED = 'base_discount_tax_compensation_refunded';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_REFUNDED = 'base_discount_tax_compensation_refunded';
     /*
      * Shipping including tax.
      */
-    const SHIPPING_INCL_TAX = 'shipping_incl_tax';
+    public const SHIPPING_INCL_TAX = 'shipping_incl_tax';
     /*
      * Base shipping including tax.
      */
-    const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
+    public const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
     /*
      * Items.
      */
-    const ITEMS = 'items';
+    public const ITEMS = 'items';
     /*
      * Billing address.
      */
-    const BILLING_ADDRESS = 'billing_address';
+    public const BILLING_ADDRESS = 'billing_address';
     /*
      * Payment.
      */
-    const PAYMENT = 'payment';
+    public const PAYMENT = 'payment';
     /*
      * Status histories.
      */
-    const STATUS_HISTORIES = 'status_histories';
+    public const STATUS_HISTORIES = 'status_histories';
 
     /**
      * Gets the negative adjustment value for the order.

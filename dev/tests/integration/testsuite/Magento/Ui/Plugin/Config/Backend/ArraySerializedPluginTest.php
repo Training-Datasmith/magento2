@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -66,7 +67,7 @@ class ArraySerializedPluginTest extends AbstractBackendController
         $stringKeyedArray = [
             'row1' => ['field1' => 'value1'],
             'row2' => ['field2' => 'value2'],
-            'row3' => ['field3' => 'value3']
+            'row3' => ['field3' => 'value3'],
         ];
 
         // Create ArraySerialized backend model
@@ -99,7 +100,7 @@ class ArraySerializedPluginTest extends AbstractBackendController
         $stringKeyedArray = [
             'row1' => ['field1' => 'value1'],
             'row2' => ['field2' => 'value2'],
-            'row3' => ['field3' => 'value3']
+            'row3' => ['field3' => 'value3'],
         ];
 
         // Create ArraySerialized backend model
@@ -127,34 +128,34 @@ class ArraySerializedPluginTest extends AbstractBackendController
                 [
                     'row1' => ['field1' => 'value1'],
                     'row2' => ['field2' => 'value2'],
-                    'row3' => ['field3' => 'value3']
+                    'row3' => ['field3' => 'value3'],
                 ],
                 [
                     ['field1' => 'value1'],
                     ['field2' => 'value2'],
-                    ['field3' => 'value3']
-                ]
+                    ['field3' => 'value3'],
+                ],
             ],
             [ //Test that plugin doesn't convert already numeric arrays.
                 [
                     ['field1' => 'value1'],
                     ['field2' => 'value2'],
-                    ['field3' => 'value3']
+                    ['field3' => 'value3'],
                 ],
                 [
                     ['field1' => 'value1'],
                     ['field2' => 'value2'],
-                    ['field3' => 'value3']
-                ]
+                    ['field3' => 'value3'],
+                ],
             ],
             [ // Test that plugin handles empty arrays correctly
                 [],
-                []
+                [],
             ],
             [ // Test that plugin handles non-array values correctly
                 'test_string',
-                false
-            ]
+                false,
+            ],
         ];
     }
 

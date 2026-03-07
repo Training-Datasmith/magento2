@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Payflowexpress;
 
 class Review extends \Magento\Paypal\Controller\Express\AbstractExpress\Review

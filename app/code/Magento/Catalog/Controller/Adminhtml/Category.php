@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Catalog\Controller\Adminhtml;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Filter\FilterInput;
 use Magento\Store\Model\Store;
-use Magento\Framework\Controller\ResultFactory;
 
 /**
  * Catalog category controller
@@ -125,7 +126,7 @@ abstract class Category extends \Magento\Backend\App\Action
      *
      * @return int
      */
-    private function resolveCategoryId() : int
+    private function resolveCategoryId(): int
     {
         $categoryId = (int)$this->getRequest()->getParam('id', false);
 
@@ -139,7 +140,7 @@ abstract class Category extends \Magento\Backend\App\Action
      *
      * @return int
      */
-    private function resolveStoreId() : int
+    private function resolveStoreId(): int
     {
         $storeId = (int)$this->getRequest()->getParam('store', false);
 
@@ -182,7 +183,7 @@ abstract class Category extends \Magento\Backend\App\Action
                     . $resultPage->getLayout()->getBlock('category.tree')
                         ->getBreadcrumbsJavascript($breadcrumbsPath, 'editingCategoryBreadcrumbs'),
                 'messages' => $resultPage->getLayout()->getMessagesBlock()->getGroupedHtml(),
-                'toolbar' => $resultPage->getLayout()->getBlock('page.actions.toolbar')->toHtml()
+                'toolbar' => $resultPage->getLayout()->getBlock('page.actions.toolbar')->toHtml(),
             ]
         );
         $this->_eventManager->dispatch(

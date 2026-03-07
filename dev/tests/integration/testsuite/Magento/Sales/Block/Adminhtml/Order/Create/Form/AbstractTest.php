@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\Sales\Block\Adminhtml\Order\Create\Form\AbstractForm
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Form;
 
 use Magento\Backend\App\Area\FrontNameResolver;
@@ -46,7 +49,7 @@ class AbstractTest extends TestCase
             $objectManager->get(Create::class),
             $objectManager->get(PriceCurrencyInterface::class),
             $objectManager->get(FormFactory::class),
-            $objectManager->get(DataObjectProcessor::class)
+            $objectManager->get(DataObjectProcessor::class),
         ];
 
         /** @var $block AbstractForm */

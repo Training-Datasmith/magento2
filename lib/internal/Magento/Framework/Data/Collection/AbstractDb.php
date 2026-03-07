@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +9,12 @@
 
 namespace Magento\Framework\Data\Collection;
 
+use Magento\Framework\Api\ExtensionAttribute\JoinDataInterface;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
-use Magento\Framework\Api\ExtensionAttribute\JoinDataInterface;
-use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Psr\Log\LoggerInterface as Logger;
 
 /**
@@ -289,7 +291,7 @@ abstract class AbstractDb extends \Magento\Framework\Data\Collection
         'WIDTH_BUCKET' => 898, 'WINDOW' => 899, 'WITH' => 900, 'WITHIN' => 901, 'WITHIN_GROUP' => 902,
         'WITHOUT' => 903, 'WLM' => 904, 'WORK' => 905, 'WRITE' => 906, 'WRITETEXT' => 907,
         'XMLCAST' => 908, 'XMLEXISTS' => 909, 'XMLNAMESPACES' => 910, 'XOR' => 911, 'YEAR' => 912,
-        'YEAR_MONTH' => 913, 'YEARS' => 914, 'ZEROFILL' => 915, 'ZEROIFNULL' => 916, 'ZONE' => 917
+        'YEAR_MONTH' => 913, 'YEARS' => 914, 'ZEROFILL' => 915, 'ZEROIFNULL' => 916, 'ZONE' => 917,
     ];
 
     /**
@@ -463,7 +465,7 @@ abstract class AbstractDb extends \Magento\Framework\Data\Collection
 
         $countSelect->reset(\Magento\Framework\DB\Select::GROUP);
         $group = $this->getSelect()->getPart(\Magento\Framework\DB\Select::GROUP);
-        $countSelect->columns(new \Zend_Db_Expr(("COUNT(DISTINCT " . implode(", ", $group) . ")")));
+        $countSelect->columns(new \Zend_Db_Expr(('COUNT(DISTINCT ' . implode(', ', $group) . ')')));
         return $countSelect;
     }
 
@@ -1152,7 +1154,7 @@ abstract class AbstractDb extends \Magento\Framework\Data\Collection
             }
         }
 
-        throw new \LogicException("Main table cannot be identified.");
+        throw new \LogicException('Main table cannot be identified.');
     }
 
     /**

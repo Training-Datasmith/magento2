@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,14 +60,14 @@ class XsdTest extends TestCase
                 '<config/>',
                 [
                     "Element 'config': Missing child element(s). Expected is ( format ).The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n",
                 ],
             ],
             'irrelevant root node' => [
                 '<attribute name="attr"/>',
                 [
                     "Element 'attribute': No matching global declaration available for the validation root.The xml " .
-                    "was: \n0:<?xml version=\"1.0\"?>\n1:<attribute name=\"attr\"/>\n2:\n"
+                    "was: \n0:<?xml version=\"1.0\"?>\n1:<attribute name=\"attr\"/>\n2:\n",
                 ],
             ],
             'irrelevant node' => [
@@ -74,7 +75,7 @@ class XsdTest extends TestCase
                 [
                     "Element 'invalid': This element is not expected. Expected is ( format ).The xml was: \n" .
                     "0:<?xml version=\"1.0\"?>\n1:<config><format code=\"code\" title=\"title\"/><invalid/>" .
-                    "</config>\n2:\n"
+                    "</config>\n2:\n",
                 ],
             ],
             'non empty node "format"' => [
@@ -82,21 +83,21 @@ class XsdTest extends TestCase
                 [
                     "Element 'format': Element content is not allowed, because the content type is empty.The xml " .
                     "was: \n0:<?xml version=\"1.0\"?>\n1:<config><format code=\"code\" title=\"title\"><invalid/>" .
-                    "</format></config>\n2:\n"
+                    "</format></config>\n2:\n",
                 ],
             ],
             'node "format" without attribute "code"' => [
                 '<config><format title="title" /></config>',
                 [
                     "Element 'format': The attribute 'code' is required but missing.The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config><format title=\"title\"/></config>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config><format title=\"title\"/></config>\n2:\n",
                 ],
             ],
             'node "format" without attribute "title"' => [
                 '<config><format code="code" /></config>',
                 [
                     "Element 'format': The attribute 'title' is required but missing.The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config><format code=\"code\"/></config>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config><format code=\"code\"/></config>\n2:\n",
                 ],
             ],
             'node "format" with invalid attribute' => [
@@ -104,7 +105,7 @@ class XsdTest extends TestCase
                 [
                     "Element 'format', attribute 'invalid': The attribute 'invalid' is not allowed.The xml was: \n" .
                     "0:<?xml version=\"1.0\"?>\n1:<config><format code=\"code\" title=\"title\" " .
-                    "invalid=\"invalid\"/></config>\n2:\n"
+                    "invalid=\"invalid\"/></config>\n2:\n",
                 ],
             ],
             'attribute "escapeHtml" with invalid type' => [
@@ -112,9 +113,9 @@ class XsdTest extends TestCase
                 [
                     "Element 'format', attribute 'escapeHtml': 'invalid' is not a valid value of the atomic " .
                     "type 'xs:boolean'.The xml was: \n0:<?xml version=\"1.0\"?>\n" .
-                    "1:<config><format code=\"code\" title=\"title\" escapeHtml=\"invalid\"/></config>\n2:\n"
+                    "1:<config><format code=\"code\" title=\"title\" escapeHtml=\"invalid\"/></config>\n2:\n",
                 ],
-            ]
+            ],
         ];
     }
 }

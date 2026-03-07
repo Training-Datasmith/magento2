@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Convert\Test\Unit;
 
 use Magento\Framework\Convert\DataSize;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DataSizeTest extends TestCase
 {
@@ -50,7 +51,7 @@ class DataSizeTest extends TestCase
             ['1K', 1024],
             ['1g', 1073741824],
             ['asdas', 0],
-            ['1M', 1048576]
+            ['1M', 1048576],
         ];
     }
 }

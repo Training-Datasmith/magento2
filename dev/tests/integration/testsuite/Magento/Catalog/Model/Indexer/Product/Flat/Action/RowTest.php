@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Flat\Action;
 
-use Magento\TestFramework\Indexer\TestCase as IndexerTestCase;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
-use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Indexer\TestCase as IndexerTestCase;
 
 /**
  * Class RowTest

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,6 +14,7 @@ use Magento\Config\Model\Config\Structure\Converter;
 use Magento\Config\Model\Config\Structure\Data as StructureData;
 use Magento\Directory\Model\Currency;
 use Magento\Framework\App\Config\ConfigPathResolver;
+use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig\FileReader;
 use Magento\Framework\App\DeploymentConfig\Writer;
@@ -23,9 +26,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Config\ReinitableConfigInterface;
-use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject as Mock;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -167,14 +169,14 @@ class ConfigSetCommandTest extends \PHPUnit\Framework\TestCase
             ->method('getArgument')
             ->willReturnMap([
                 [ConfigSetCommand::ARG_PATH, $path],
-                [ConfigSetCommand::ARG_VALUE, $value]
+                [ConfigSetCommand::ARG_VALUE, $value],
             ]);
         $this->inputMock->expects($this->any())
             ->method('getOption')
             ->willReturnMap([
                 [ConfigSetCommand::OPTION_LOCK_ENV, true],
                 [ConfigSetCommand::OPTION_SCOPE, $scope],
-                [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode]
+                [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode],
             ]);
         $this->outputMock->expects($this->exactly(2))
             ->method('writeln')
@@ -237,11 +239,11 @@ class ConfigSetCommandTest extends \PHPUnit\Framework\TestCase
     ) {
         $arguments = [
             [ConfigSetCommand::ARG_PATH, $path],
-            [ConfigSetCommand::ARG_VALUE, $value]
+            [ConfigSetCommand::ARG_VALUE, $value],
         ];
         $options = [
             [ConfigSetCommand::OPTION_SCOPE, $scope],
-            [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode]
+            [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode],
         ];
         $optionsLock = array_merge($options, [[ConfigSetCommand::OPTION_LOCK_ENV, true]]);
 
@@ -341,64 +343,64 @@ class ConfigSetCommandTest extends \PHPUnit\Framework\TestCase
             [
                 Custom::XML_PATH_UNSECURE_BASE_URL,
                 'value',
-                'Invalid Base URL. Value must be a URL or one of placeholders: {{base_url}}'
+                'Invalid Base URL. Value must be a URL or one of placeholders: {{base_url}}',
             ],
             //set not existed field path
             [
                 'test/test/test',
                 'value',
-                'The "test/test/test" path doesn\'t exist. Verify and try again.'
+                'The "test/test/test" path doesn\'t exist. Verify and try again.',
             ],
             //wrong scope or scope code
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'A scope is missing. Enter a scope and try again.',
-                ''
+                '',
             ],
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'A scope code is missing. Enter a code and try again.',
-                ScopeInterface::SCOPE_WEBSITE
+                ScopeInterface::SCOPE_WEBSITE,
             ],
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'A scope code is missing. Enter a code and try again.',
-                ScopeInterface::SCOPE_STORE
+                ScopeInterface::SCOPE_STORE,
             ],
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'The "wrong_scope" value doesn\'t exist. Enter another value and try again.',
                 'wrong_scope',
-                'base'
+                'base',
             ],
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'The "wrong_website_code" value doesn\'t exist. Enter another value and try again.',
                 ScopeInterface::SCOPE_WEBSITE,
-                'wrong_website_code'
+                'wrong_website_code',
             ],
             [
                 Custom::XML_PATH_GENERAL_LOCALE_CODE,
                 'en_UK',
                 'The "wrong_store_code" value doesn\'t exist. Enter another value and try again.',
                 ScopeInterface::SCOPE_STORE,
-                'wrong_store_code'
+                'wrong_store_code',
             ],
             [
                 Currency::XML_PATH_CURRENCY_DEFAULT,
                 'GBP',
-                'Sorry, the default display currency you selected is not available in allowed currencies.'
+                'Sorry, the default display currency you selected is not available in allowed currencies.',
             ],
             [
                 Currency::XML_PATH_CURRENCY_ALLOW,
                 'GBP',
-                'Default display currency "US Dollar" is not available in allowed currencies.'
-            ]
+                'Default display currency "US Dollar" is not available in allowed currencies.',
+            ],
         ];
     }
 
@@ -443,7 +445,7 @@ class ConfigSetCommandTest extends \PHPUnit\Framework\TestCase
             [Custom::XML_PATH_UNSECURE_BASE_URL, 'http://magento2.local/'],
             [Custom::XML_PATH_GENERAL_LOCALE_CODE, 'en_UK', ScopeInterface::SCOPE_WEBSITE, 'base'],
             [Custom::XML_PATH_GENERAL_LOCALE_CODE, 'en_AU', ScopeInterface::SCOPE_STORE, 'default'],
-            [Custom::XML_PATH_ADMIN_SECURITY_USEFORMKEY, '0']
+            [Custom::XML_PATH_ADMIN_SECURITY_USEFORMKEY, '0'],
         ];
     }
 
@@ -520,13 +522,13 @@ class ConfigSetCommandTest extends \PHPUnit\Framework\TestCase
             ->method('getArgument')
             ->willReturnMap([
                 [ConfigSetCommand::ARG_PATH, $path],
-                [ConfigSetCommand::ARG_VALUE, $value]
+                [ConfigSetCommand::ARG_VALUE, $value],
             ]);
         $input->expects($this->any())
             ->method('getOption')
             ->willReturnMap([
                 [ConfigSetCommand::OPTION_SCOPE, $scope],
-                [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode]
+                [ConfigSetCommand::OPTION_SCOPE_CODE, $scopeCode],
             ]);
         $output->expects($this->once())
             ->method('writeln')

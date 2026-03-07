@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -430,7 +431,7 @@ class QuoteManagement implements CartManagementInterface, ResetAfterRequestInter
                     AbstractMethod::CHECK_USE_FOR_COUNTRY,
                     AbstractMethod::CHECK_USE_FOR_CURRENCY,
                     AbstractMethod::CHECK_ORDER_TOTAL_MIN_MAX,
-                    AbstractMethod::CHECK_ZERO_TOTAL
+                    AbstractMethod::CHECK_ZERO_TOTAL,
                 ]
             );
             $quote->getPayment()->setQuote($quote);
@@ -589,7 +590,7 @@ class QuoteManagement implements CartManagementInterface, ResetAfterRequestInter
                 $quote->getShippingAddress(),
                 [
                     'address_type' => 'shipping',
-                    'email' => $quote->getCustomerEmail()
+                    'email' => $quote->getCustomerEmail(),
                 ]
             );
             $shippingAddress->setData('quote_address_id', $quote->getShippingAddress()->getId());
@@ -601,7 +602,7 @@ class QuoteManagement implements CartManagementInterface, ResetAfterRequestInter
             $quote->getBillingAddress(),
             [
                 'address_type' => 'billing',
-                'email' => $quote->getCustomerEmail()
+                'email' => $quote->getCustomerEmail(),
             ]
         );
         $billingAddress->setData('quote_address_id', $quote->getBillingAddress()->getId());
@@ -629,7 +630,7 @@ class QuoteManagement implements CartManagementInterface, ResetAfterRequestInter
             'sales_model_service_quote_submit_before',
             [
                 'order' => $order,
-                'quote' => $quote
+                'quote' => $quote,
             ]
         );
 
@@ -640,7 +641,7 @@ class QuoteManagement implements CartManagementInterface, ResetAfterRequestInter
                 'sales_model_service_quote_submit_success',
                 [
                     'order' => $order,
-                    'quote' => $quote
+                    'quote' => $quote,
                 ]
             );
             $this->quoteRepository->save($quote);

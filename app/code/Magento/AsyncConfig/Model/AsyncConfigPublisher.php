@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -17,56 +18,24 @@ use Magento\Framework\Serialize\Serializer\Json;
 class AsyncConfigPublisher implements \Magento\AsyncConfig\Api\AsyncConfigPublisherInterface
 {
     /**
-     * @var PublisherInterface
-     */
-    private $messagePublisher;
-
-    /**
      * @var AsyncConfigMessageInterfaceFactory
      */
     private $asyncConfigFactory;
 
-    /**
-     * @var Json
-     */
-    private $serializer;
-
-    /**
-     * @var \Magento\Framework\Filesystem\DirectoryList
-     */
-    private $dir;
-
-    /**
-     * @var File
-     */
-    private $file;
-
-    /**
-     *
-     * @param AsyncConfigMessageInterfaceFactory $asyncConfigFactory
-     * @param PublisherInterface $publisher
-     * @param Json $json
-     * @param \Magento\Framework\Filesystem\DirectoryList $dir
-     * @param File $file
-     */
     public function __construct(
         AsyncConfigMessageInterfaceFactory $asyncConfigFactory,
-        PublisherInterface $publisher,
-        Json $json,
-        \Magento\Framework\Filesystem\DirectoryList $dir,
-        File $file
+        private readonly PublisherInterface $messagePublisher,
+        private readonly Json $serializer,
+        private readonly \Magento\Framework\Filesystem\DirectoryList $dir,
+        private readonly File $file
     ) {
         $this->asyncConfigFactory = $asyncConfigFactory;
-        $this->messagePublisher = $publisher;
-        $this->serializer = $json;
-        $this->dir = $dir;
-        $this->file = $file;
     }
 
     /**
      * @inheritDoc
      */
-    public function saveConfigData(array $configData)
+    public function saveConfigData(array $configData): void
     {
         $asyncConfig = $this->asyncConfigFactory->create();
         $this->saveImages($configData);
@@ -77,11 +46,9 @@ class AsyncConfigPublisher implements \Magento\AsyncConfig\Api\AsyncConfigPublis
     /**
      * Save Images to temporary Path
      *
-     * @param array $configData
-     * @return void
      * @throws FileSystemException
      */
-    private function saveImages(array &$configData)
+    private function saveImages(array &$configData): void
     {
         if (isset($configData['groups']['placeholder'])) {
             $this->changeImagePath($configData['groups']['placeholder']['fields']);
@@ -93,18 +60,16 @@ class AsyncConfigPublisher implements \Magento\AsyncConfig\Api\AsyncConfigPublis
     /**
      * Change Placeholder Data path if exists
      *
-     * @param array $fields
-     * @return void
      * @throws FileSystemException
      */
-    private function changeImagePath(array &$fields)
+    private function changeImagePath(array &$fields): void
     {
         foreach ($fields as &$data) {
             if (!empty($data['value']['tmp_name'])) {
                 $newPath =
                     $this->dir->getPath(DirectoryList::MEDIA) . '/' .
                     // phpcs:ignore Magento2.Functions.DiscouragedFunction
-                    pathinfo($data['value']['tmp_name'])['filename'];
+                    pathinfo((string) $data['value']['tmp_name'])['filename'];
                 $this->file->mv(
                     $data['value']['tmp_name'],
                     $newPath

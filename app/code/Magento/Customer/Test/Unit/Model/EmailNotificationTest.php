@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class EmailNotificationTest extends TestCase
         $this->senderResolverMock = $this->createPartialMock(
             SenderResolverInterface::class,
             [
-                'resolve'
+                'resolve',
             ]
         );
         $this->emulation = $this->createMock(Emulation::class);
@@ -166,7 +167,7 @@ class EmailNotificationTest extends TestCase
                 'dataProcessor' => $this->dataProcessorMock,
                 'scopeConfig' => $this->scopeConfigMock,
                 'senderResolver' => $this->senderResolverMock,
-                'emulation' => $this->emulation
+                'emulation' => $this->emulation,
             ]
         );
     }
@@ -293,7 +294,7 @@ class EmailNotificationTest extends TestCase
                     [$xmlPathTemplate, ScopeInterface::SCOPE_STORE, $customerStoreId],
                     [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId],
                     [$xmlPathTemplate, ScopeInterface::SCOPE_STORE, $customerStoreId],
-                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId]
+                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId],
                 ];
                 $returnValue = [self::STUB_EMAIL_IDENTIFIER,
                     self::STUB_SENDER,
@@ -361,43 +362,43 @@ class EmailNotificationTest extends TestCase
                 'customerStoreId' => 0,
                 'oldEmail' => 'test@example.com',
                 'newEmail' => 'test@example.com',
-                'isPasswordChanged' => true
+                'isPasswordChanged' => true,
             ],
             [
                 'testNumber' => 1,
                 'customerStoreId' => 2,
                 'oldEmail' => 'test@example.com',
                 'newEmail' => 'test@example.com',
-                'isPasswordChanged' => true
+                'isPasswordChanged' => true,
             ],
             [
                 'testNumber' => 2,
                 'customerStoreId' => 0,
                 'oldEmail' => 'test1@example.com',
                 'newEmail' => 'test2@example.com',
-                'isPasswordChanged' => false
+                'isPasswordChanged' => false,
             ],
             [
                 'testNumber' => 2,
                 'customerStoreId' => 2,
                 'oldEmail' => 'test1@example.com',
                 'newEmail' => 'test2@example.com',
-                'isPasswordChanged' => false
+                'isPasswordChanged' => false,
             ],
             [
                 'testNumber' => 3,
                 'customerStoreId' => 0,
                 'oldEmail' => 'test1@example.com',
                 'newEmail' => 'test2@example.com',
-                'isPasswordChanged' => true
+                'isPasswordChanged' => true,
             ],
             [
                 'testNumber' => 3,
                 'customerStoreId' => 2,
                 'oldEmail' => 'test1@example.com',
                 'newEmail' => 'test2@example.com',
-                'isPasswordChanged' => true
-            ]
+                'isPasswordChanged' => true,
+            ],
         ];
     }
 
@@ -489,7 +490,7 @@ class EmailNotificationTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [EmailNotification::XML_PATH_REMIND_EMAIL_TEMPLATE, ScopeInterface::SCOPE_STORE, $customerStoreId],
-                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId]
+                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId],
                 ];
                 $returnValue = [self::STUB_EMAIL_IDENTIFIER, self::STUB_SENDER];
                 $index++;
@@ -591,7 +592,7 @@ class EmailNotificationTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [EmailNotification::XML_PATH_REMIND_EMAIL_TEMPLATE, ScopeInterface::SCOPE_STORE, $defaultStoreId],
-                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $defaultStoreId]
+                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $defaultStoreId],
                 ];
                 $returnValue = [self::STUB_EMAIL_IDENTIFIER, self::STUB_SENDER];
                 $index++;
@@ -693,7 +694,7 @@ class EmailNotificationTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [EmailNotification::XML_PATH_FORGOT_EMAIL_TEMPLATE, ScopeInterface::SCOPE_STORE, $customerStoreId],
-                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId]
+                    [EmailNotification::XML_PATH_FORGOT_EMAIL_IDENTITY, ScopeInterface::SCOPE_STORE, $customerStoreId],
                 ];
                 $returnValue = [self::STUB_EMAIL_IDENTIFIER, self::STUB_SENDER];
                 $index++;
@@ -796,7 +797,7 @@ class EmailNotificationTest extends TestCase
                     [EmailNotification::XML_PATH_REGISTER_EMAIL_TEMPLATE,
                         ScopeInterface::SCOPE_STORE, $customerStoreId],
                     [EmailNotification::XML_PATH_REGISTER_EMAIL_IDENTITY,
-                        ScopeInterface::SCOPE_STORE, $customerStoreId]
+                        ScopeInterface::SCOPE_STORE, $customerStoreId],
                 ];
                 $returnValue = [self::STUB_EMAIL_IDENTIFIER, self::STUB_SENDER];
                 $index++;
@@ -832,11 +833,11 @@ class EmailNotificationTest extends TestCase
      *
      * @return array
      */
-    public static function customerStoreIdDataProvider():array
+    public static function customerStoreIdDataProvider(): array
     {
         return [
             ['customerStoreId' => 0],
-            ['customerStoreId' => 2]
+            ['customerStoreId' => 2],
         ];
     }
 

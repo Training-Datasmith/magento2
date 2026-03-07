@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Config\Test\Unit;
 
 use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\ValidationStateInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Framework\Config\Dom class.
@@ -77,7 +78,7 @@ class DomTest extends TestCase
                 'text_node_cdata_new.xml',
                 [],
                 null,
-                'text_node_cdata_merged.xml'
+                'text_node_cdata_merged.xml',
             ],
             'cdata' => ['cdata.xml', 'cdata_new.xml', [], null, 'cdata_merged.xml'],
             'cdata with html' => ['cdata_html.xml', 'cdata_html_new.xml', [], null, 'cdata_html_merged.xml'],
@@ -86,7 +87,7 @@ class DomTest extends TestCase
                 'cdata_text_new.xml',
                 [],
                 null,
-                'cdata_text_merged.xml'
+                'cdata_text_merged.xml',
             ],
             'big cdata' => ['big_cdata.xml', 'big_cdata_new.xml', [], null, 'big_cdata_merged.xml'],
             'big cdata with attribute' => [
@@ -94,14 +95,14 @@ class DomTest extends TestCase
                 'big_cdata_attribute_new.xml',
                 [],
                 null,
-                'big_cdata_attribute_merged.xml'
+                'big_cdata_attribute_merged.xml',
             ],
             'big cdata replaced with text' => [
                 'big_cdata_text.xml',
                 'big_cdata_text_new.xml',
                 [],
                 null,
-                'big_cdata_text_merged.xml'
+                'big_cdata_text_merged.xml',
             ],
             [
                 'recursive.xml',
@@ -138,8 +139,8 @@ class DomTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\LocalizedException');
         $this->expectExceptionMessage('More than one node matching the query: /root/node/subnode');
-        $xml = file_get_contents(__DIR__ . "/_files/dom/ambiguous_two.xml");
-        $newXml = file_get_contents(__DIR__ . "/_files/dom/ambiguous_new_one.xml");
+        $xml = file_get_contents(__DIR__ . '/_files/dom/ambiguous_two.xml');
+        $newXml = file_get_contents(__DIR__ . '/_files/dom/ambiguous_new_one.xml');
         $config = new Dom($xml, $this->validationStateMock);
         $config->merge($newXml);
     }
@@ -172,7 +173,7 @@ class DomTest extends TestCase
                 '<root><node id="id1"/><unknown_node/></root>',
                 [
                     "Element 'unknown_node': This element is not expected. Expected is ( node ).\nLine: 1\n" .
-                    "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<root><node id=\"id1\"/><unknown_node/></root>\n2:\n"
+                    "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<root><node id=\"id1\"/><unknown_node/></root>\n2:\n",
                 ],
             ],
         ];
@@ -216,7 +217,7 @@ class DomTest extends TestCase
             ->with($schemaFile)
             ->willReturn(false);
         $this->assertEquals(
-            ["Unknown validation error"],
+            ['Unknown validation error'],
             $dom->validateDomDocument($domMock, $schemaFile)
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ class Product extends \Magento\Reports\Controller\Adminhtml\Report\Shopcart impl
     /**
      * Authorization of a product report
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::product';
+    public const ADMIN_RESOURCE = 'Magento_Reports::product';
 
     /**
      * Products in carts action

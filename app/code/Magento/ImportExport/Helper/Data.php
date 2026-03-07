@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -17,9 +19,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**#@+
      * XML path for config data
      */
-    const XML_PATH_EXPORT_LOCAL_VALID_PATH = 'general/file/importexport_local_valid_paths';
+    public const XML_PATH_EXPORT_LOCAL_VALID_PATH = 'general/file/importexport_local_valid_paths';
 
-    const XML_PATH_BUNCH_SIZE = 'general/file/bunch_size';
+    public const XML_PATH_BUNCH_SIZE = 'general/file/bunch_size';
 
     /**#@-*/
 

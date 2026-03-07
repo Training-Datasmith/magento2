@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -183,7 +184,7 @@ class SoapTest extends TestCase
         $params = [
             Server::REQUEST_PARAM_WSDL => 1,
             'param_1' => 'foo',
-            'param_2' => 'bar,'
+            'param_2' => 'bar,',
         ];
         $this->_mockGetParam(Server::REQUEST_PARAM_WSDL, 1);
         $this->_requestMock->expects($this->once())
@@ -198,14 +199,14 @@ class SoapTest extends TestCase
         );
         $wsdl = 'Some WSDL content';
         $this->_wsdlGeneratorMock->expects($this->any())->method('generate')->willReturn($wsdl);
-        $encoding = "utf-8";
+        $encoding = 'utf-8';
         $this->_soapServerMock->expects($this->any())->method('getApiCharset')->willReturn($encoding);
         $objectManager = new ObjectManager($this);
         $objects = [
             [
                 Escaper::class,
-                $this->createMock(Escaper::class)
-            ]
+                $this->createMock(Escaper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->_soapController->dispatch($this->_requestMock);
@@ -253,7 +254,7 @@ EXPECTED_MESSAGE;
         )->willReturn(
             $exception
         );
-        $encoding = "utf-8";
+        $encoding = 'utf-8';
         $this->_soapServerMock->expects($this->any())->method('getApiCharset')->willReturn($encoding);
 
         $this->_soapController->dispatch($this->_requestMock);

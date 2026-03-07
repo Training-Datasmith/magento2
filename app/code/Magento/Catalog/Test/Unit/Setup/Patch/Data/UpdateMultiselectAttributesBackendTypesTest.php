@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Setup\Patch\Data;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Catalog\Setup\Patch\Data\UpdateMultiselectAttributesBackendTypes;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class UpdateMultiselectAttributesBackendTypesTest extends TestCase
@@ -68,7 +69,7 @@ class UpdateMultiselectAttributesBackendTypesTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [$entityTypeId, 3, 'backend_type', 'text'],
-                    [$entityTypeId, 7, 'backend_type', 'text']
+                    [$entityTypeId, 7, 'backend_type', 'text'],
                 ];
 
                 $index++;
@@ -111,7 +112,7 @@ class UpdateMultiselectAttributesBackendTypesTest extends TestCase
                 $expectedArgs = [
                     ['entity_type_id = ?', $entityTypeId,null],
                     ['backend_type = ?', 'varchar',null],
-                    ['frontend_input = ?', 'multiselect',null]
+                    ['frontend_input = ?', 'multiselect',null],
                 ];
                 $returnValue = $select1;
                 $index++;

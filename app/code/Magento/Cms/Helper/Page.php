@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Helper;
 
 use Magento\Cms\Model\Page\CustomLayoutManagerInterface;
@@ -184,7 +187,7 @@ class Page extends AbstractHelper
         $this->setLayoutType($inRange, $resultPage);
         $resultPage->addHandle('cms_page_view');
         $pageHandles = [
-            'id' => $this->_page->getIdentifier() === null ? '' : str_replace('/', '_', $this->_page->getIdentifier())
+            'id' => $this->_page->getIdentifier() === null ? '' : str_replace('/', '_', $this->_page->getIdentifier()),
         ];
         //Selected custom updates.
         try {

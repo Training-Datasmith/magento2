@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -15,11 +18,11 @@ interface ShippingInterface extends \Magento\Framework\Api\ExtensibleDataInterfa
     /**#@+
      * Shipping object data keys
      */
-    const KEY_ADDRESS = 'address';
+    public const KEY_ADDRESS = 'address';
 
-    const KEY_METHOD = 'method';
+    public const KEY_METHOD = 'method';
 
-    const KEY_TOTAL = 'total';
+    public const KEY_TOTAL = 'total';
     /**#@-*/
 
     /**

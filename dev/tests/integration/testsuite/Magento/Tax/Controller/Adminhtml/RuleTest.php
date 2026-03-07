@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml;
 
 use Magento\Directory\Model\CountryFactory;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Json\Helper\Data;
+use Magento\Tax\Api\Data\TaxRateInterface;
 use Magento\Tax\Api\Data\TaxRateInterfaceFactory;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Tax\Api\Data\TaxRateInterface;
-use Magento\Tax\Model\TaxRuleFixtureFactory;
 use Magento\Tax\Model\Rate\Provider as RatesProvider;
+use Magento\Tax\Model\TaxRuleFixtureFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -145,7 +148,7 @@ class RuleTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 
         return [
             [['p' => 1], $taxRatesProvider->getPageSize()],
-            [['p' => 1, 's' => 'no_such_code'], 0]
+            [['p' => 1, 's' => 'no_such_code'], 0],
         ];
     }
 }

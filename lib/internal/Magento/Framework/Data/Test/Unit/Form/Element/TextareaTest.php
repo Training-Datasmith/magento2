@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class TextareaTest extends TestCase
      */
     protected $_model;
 
-        /**
+    /**
      * @var \Magento\Framework\ObjectManagerInterface|null
      */
     private $originalObjectManager;

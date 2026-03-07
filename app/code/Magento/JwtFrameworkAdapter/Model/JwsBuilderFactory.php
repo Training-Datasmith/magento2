@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -18,7 +19,8 @@ class JwsBuilderFactory
      */
     private $algoManager;
 
-    public function __construct(JwsAlgorithmManagerFactory $algorithmManagerFactory) {
+    public function __construct(JwsAlgorithmManagerFactory $algorithmManagerFactory)
+    {
         $this->algoManager = $algorithmManagerFactory->create();
     }
 

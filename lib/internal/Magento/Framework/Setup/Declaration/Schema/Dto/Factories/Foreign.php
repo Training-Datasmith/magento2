@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\App\ResourceConnection;
@@ -18,7 +21,7 @@ class Foreign implements FactoryInterface
     /**
      * Default ON DELETE action.
      */
-    const DEFAULT_ON_DELETE = "CASCADE";
+    public const DEFAULT_ON_DELETE = 'CASCADE';
 
     /**
      * @var ObjectManagerInterface

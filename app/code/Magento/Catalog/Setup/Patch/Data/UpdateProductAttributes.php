@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Catalog\Setup\Patch\Data;
 
 use Magento\Catalog\Setup\CategorySetup;
 use Magento\Catalog\Setup\CategorySetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -233,7 +234,7 @@ class UpdateProductAttributes implements DataPatchInterface, PatchVersionInterfa
                 'group' => 'Schedule Design Update',
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => false,
-                'is_filterable_in_grid' => false
+                'is_filterable_in_grid' => false,
             ]
         );
     }

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Helper;
 
-use PHPUnit\Framework\TestCase;
 use Magento\OfflinePayments\Block\Info\Checkmo;
 use Magento\Payment\Model\Info;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Magento\Payment\Helper\Data

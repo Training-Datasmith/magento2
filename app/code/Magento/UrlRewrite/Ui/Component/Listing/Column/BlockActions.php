@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -62,25 +63,25 @@ class BlockActions extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 $editUrlPath,
                                 [
-                                    $urlEntityParamName => $item['url_rewrite_id']
+                                    $urlEntityParamName => $item['url_rewrite_id'],
                                 ]
                             ),
-                            'label' => __('Edit')
+                            'label' => __('Edit'),
                         ],
                         'delete' => [
                             'href' => $this->urlBuilder->getUrl(
                                 $deleteUrlPath,
                                 [
-                                    $urlEntityParamName => $item['url_rewrite_id']
+                                    $urlEntityParamName => $item['url_rewrite_id'],
                                 ]
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
                                 'title' => __('Delete record #%1', $title),
-                                'message' => __('Are you sure you want to delete a record #%1?', $title)
+                                'message' => __('Are you sure you want to delete a record #%1?', $title),
                             ],
-                            'post' => true
-                        ]
+                            'post' => true,
+                        ],
                     ];
                 }
             }

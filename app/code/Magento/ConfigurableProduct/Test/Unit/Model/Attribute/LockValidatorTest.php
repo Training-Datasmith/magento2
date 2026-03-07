@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -136,7 +137,7 @@ class LockValidatorTest extends TestCase
             ->willReturn($this->connectionMock);
         $this->resource
             ->method('getTableName')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['catalog_product_super_attribute'] => $attrTable,
                 ['catalog_product_entity'] => $productTable
             });

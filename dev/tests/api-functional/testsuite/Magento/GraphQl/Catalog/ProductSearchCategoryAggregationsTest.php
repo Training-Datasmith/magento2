@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class ProductSearchCategoryAggregationsTest extends GraphQlAbstract
     public function testAggregationEqCategory()
     {
         $filterValue = '{category_id: {eq: "2"}}';
-        $categoryAggregation = $this->aggregationCategoryTesting($filterValue, "true");
+        $categoryAggregation = $this->aggregationCategoryTesting($filterValue, 'true');
         $expectedSubcategorie = $this->getSubcategoriesOfCategoryTwo();
         $this->assertEquals($expectedSubcategorie, $categoryAggregation);
     }
@@ -81,7 +82,7 @@ class ProductSearchCategoryAggregationsTest extends GraphQlAbstract
      * @param array $result
      * @return array|null
      */
-    private function getCategoryAggregation(array $result) : ?array
+    private function getCategoryAggregation(array $result): ?array
     {
         return array_filter(
             $result['products']['aggregations'],
@@ -99,7 +100,7 @@ class ProductSearchCategoryAggregationsTest extends GraphQlAbstract
     public function testAggregationInCategory()
     {
         $filterValue = '{category_id: {in: ["3","2"]}}';
-        $categoryAggregation = $this->aggregationCategoryTesting($filterValue, "true");
+        $categoryAggregation = $this->aggregationCategoryTesting($filterValue, 'true');
         $expectedSubcategorie = $this->getSubcategoriesOfCategoryThree() + $this->getSubcategoriesOfCategoryTwo();
         $this->assertEquals($expectedSubcategorie, $categoryAggregation);
     }
@@ -161,7 +162,7 @@ class ProductSearchCategoryAggregationsTest extends GraphQlAbstract
             3 => 'Category 1',
             10 => 'Movable Position 2',
             11 => 'Movable Position 3',
-            12 => 'Category 12'
+            12 => 'Category 12',
         ];
     }
 
@@ -174,11 +175,11 @@ class ProductSearchCategoryAggregationsTest extends GraphQlAbstract
     {
         return [
             4 => 'Category 1.1',
-            13 => 'Category 1.2'
+            13 => 'Category 1.2',
         ];
     }
 
-    private function getAggregationQuery() : string
+    private function getAggregationQuery(): string
     {
         return <<<QUERY
 query {

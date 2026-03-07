@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class JweAlgorithmSource implements OptionSourceInterface
         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A256GCM,
         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256,
         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192_HS384,
-        JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A256_HS512
+        JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A256_HS512,
     ];
 
     /**

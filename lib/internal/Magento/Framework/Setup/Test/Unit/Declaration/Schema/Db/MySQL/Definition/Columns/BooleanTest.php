@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class BooleanTest extends TestCase
             [
                 'nullable' => $this->nullableMock,
                 'comment' => $this->commentMock,
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -118,7 +119,7 @@ class BooleanTest extends TestCase
             [
                 'type' => 'tinyint',
                 'padding' => '1',
-                'default' => '1'
+                'default' => '1',
             ]
         );
         $this->assertEquals($expectedData, $result);

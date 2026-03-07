@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Catalog\Model\Layer;
 
 use Magento\Catalog\Model\Layer\Filter\Item;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Layered navigation state model

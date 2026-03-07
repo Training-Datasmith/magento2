@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Controller\Index;
 
-use Magento\Checkout\Model\CartFactory;
 use Magento\Checkout\Model\Cart as CartModel;
+use Magento\Checkout\Model\CartFactory;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Escaper;

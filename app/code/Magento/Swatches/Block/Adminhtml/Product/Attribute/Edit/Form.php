@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form\Element\CollectionFactory as ElementCollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\FormKey;
-use Magento\Swatches\Model\Swatch;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\App\ObjectManager;
+use Magento\Swatches\Model\Swatch;
 
 /**
  * Class Form

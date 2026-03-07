@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -125,7 +126,7 @@ class ConfigurableTest extends TestCase
             ProductFixture::class,
             [
                 'price' => 12,
-                'website_ids' => [1, '$website_2.id$']
+                'website_ids' => [1, '$website_2.id$'],
             ],
             'configurable_product_child'
         ),
@@ -134,7 +135,7 @@ class ConfigurableTest extends TestCase
             [
                 'sku' => '$configurable_product_child.sku$',
                 'price' => 5,
-                '_update' => true
+                '_update' => true,
             ],
             scope: 'store_view_2'
         ),
@@ -144,7 +145,7 @@ class ConfigurableTest extends TestCase
             [
                 'website_ids' => [1, '$website_2.id$'],
                 '_options' => ['$attribute$'],
-                '_links' => ['$configurable_product_child$']
+                '_links' => ['$configurable_product_child$'],
             ],
             'configurable_product'
         )

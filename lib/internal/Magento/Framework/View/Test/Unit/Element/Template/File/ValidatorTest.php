@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\View\Element\Template\File\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ValidatorTest extends TestCase
 {
@@ -92,7 +93,7 @@ class ValidatorTest extends TestCase
             ->willReturnMap(
                 [
                     [ComponentRegistrar::MODULE, ['/magento/app/code/Some/Module']],
-                    [ComponentRegistrar::THEME, ['/magento/themes/default']]
+                    [ComponentRegistrar::THEME, ['/magento/themes/default']],
                 ]
             );
 

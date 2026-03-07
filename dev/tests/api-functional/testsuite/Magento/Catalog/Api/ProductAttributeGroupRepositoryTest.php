@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 class ProductAttributeGroupRepositoryTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductAttributeGroupRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products/attribute-sets';
+    public const SERVICE_NAME = 'catalogProductAttributeGroupRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products/attribute-sets';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/empty_attribute_group.php
@@ -34,7 +37,7 @@ class ProductAttributeGroupRepositoryTest extends \Magento\TestFramework\TestCas
 
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/groups/" . $group->getId(),
+                'resourcePath' => self::RESOURCE_PATH . '/groups/' . $group->getId(),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE,
             ],
             'soap' => [
@@ -165,7 +168,7 @@ class ProductAttributeGroupRepositoryTest extends \Magento\TestFramework\TestCas
     {
         return [
             'attribute_group_name' => 'empty_attribute_group',
-            'attribute_set_id' => $attributeSetId
+            'attribute_set_id' => $attributeSetId,
         ];
     }
 

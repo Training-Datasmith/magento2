@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\IntegrationException;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
 use Magento\Integration\Controller\Adminhtml\Integration\Delete;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Integration\Model\Integration as IntegrationModel;
 use Magento\Integration\Test\Unit\Controller\Adminhtml\IntegrationTestCase;
 
@@ -32,12 +33,12 @@ class DeleteTest extends IntegrationTestCase
         $objects = [
             [
                 Factory::class,
-                $this->createMock(Factory::class)
+                $this->createMock(Factory::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(SerializerInterface::class)
-            ]
+                $this->createMock(SerializerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->integrationController = $this->_createIntegrationController('Delete');

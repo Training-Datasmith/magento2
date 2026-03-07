@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -103,7 +104,7 @@ class RssTest extends TestCase
                 'getDetail',
                 'getTitle',
                 'getNickname',
-                'getProductUrl'
+                'getProductUrl',
             ]
         );
         $storeModel = $this->createMock(Store::class);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,7 +30,7 @@ class TaxRuleCollectionTest extends \PHPUnit\Framework\TestCase
         $expectedFirstTaxRuleId = $firstTaxRuleFixture->getId();
 
         if (($dbTaxRulesQty == 0) || ($collection->getFirstItem()->getId() != $expectedFirstTaxRuleId)) {
-            $this->fail("Preconditions failed.");
+            $this->fail('Preconditions failed.');
         }
         /** @var \Magento\Tax\Model\TaxRuleCollection $taxRulesCollection */
         $taxRulesCollection = Bootstrap::getObjectManager()
@@ -45,7 +47,7 @@ class TaxRuleCollectionTest extends \PHPUnit\Framework\TestCase
             'customer_tax_classes' => $firstTaxRuleFixture->getCustomerTaxClassIds(),
             'product_tax_classes' => $firstTaxRuleFixture->getProductTaxClassIds(),
             'tax_rates' => $firstTaxRuleFixture->getTaxRateIds(),
-            'tax_rates_codes' => $firstTaxRuleFixture->getTaxRatesCodes()
+            'tax_rates_codes' => $firstTaxRuleFixture->getTaxRatesCodes(),
         ];
 
         $this->assertEquals($expectedTaxRuleData, $taxRule, 'Tax rule data is invalid.');

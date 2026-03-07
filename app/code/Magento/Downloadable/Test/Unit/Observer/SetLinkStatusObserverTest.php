@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Model\Link\Purchased\Item as DownloadableItem;
 use Magento\Downloadable\Model\Product\Type as DownloadableProductType;
 use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item\Collection as LinkItemCollection;
@@ -22,6 +22,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Item;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -116,7 +117,7 @@ class SetLinkStatusObserverTest extends TestCase
                 'orderStateMapping' => [
                     Order::STATE_HOLDED => 'pending',
                     Order::STATE_PENDING_PAYMENT => 'payment_pending',
-                    Order::STATE_PAYMENT_REVIEW => 'payment_review'
+                    Order::STATE_PAYMENT_REVIEW => 'payment_review',
 
                 ],
             ],
@@ -125,7 +126,7 @@ class SetLinkStatusObserverTest extends TestCase
                 'orderStateMapping' => [
                     Order::STATE_HOLDED => 'pending',
                     Order::STATE_PENDING_PAYMENT => 'pending_payment',
-                    Order::STATE_PAYMENT_REVIEW => 'payment_review'
+                    Order::STATE_PAYMENT_REVIEW => 'payment_review',
 
                 ],
             ],
@@ -134,7 +135,7 @@ class SetLinkStatusObserverTest extends TestCase
                 'orderStateMapping' => [
                     Order::STATE_HOLDED => 'pending',
                     Order::STATE_PENDING_PAYMENT => 'payment_pending',
-                    Order::STATE_PAYMENT_REVIEW => 'payment_review'
+                    Order::STATE_PAYMENT_REVIEW => 'payment_review',
 
                 ],
             ],
@@ -462,7 +463,7 @@ class SetLinkStatusObserverTest extends TestCase
                 'getQtyOrdered',
                 'getQtyRefunded',
                 'getProductType',
-                'getRealProductType'
+                'getRealProductType',
             ]);
         $item->method('getId')->willReturn($id);
         $item->method('getQtyOrdered')->willReturn($qtyOrdered);

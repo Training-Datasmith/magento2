@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Helper that can convert relative paths from system.xml to absolute
  */
+
 namespace Magento\Config\Model\Config\Structure\Mapper\Helper;
 
 /**

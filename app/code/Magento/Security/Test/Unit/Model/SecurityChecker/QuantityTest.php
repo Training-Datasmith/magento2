@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class QuantityTest extends TestCase
             [
                 'securityConfig' => $this->securityConfigMock,
                 'collectionFactory' => $this->collectionFactoryMock,
-                'remoteAddress' => $this->remoteAddressMock
+                'remoteAddress' => $this->remoteAddressMock,
             ]
         );
     }
@@ -135,28 +136,28 @@ class QuantityTest extends TestCase
         return [
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP_AND_EMAIL
+                ResetMethod::OPTION_BY_IP_AND_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP
+                ResetMethod::OPTION_BY_IP,
             ],
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_EMAIL
+                ResetMethod::OPTION_BY_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP_AND_EMAIL
+                ResetMethod::OPTION_BY_IP_AND_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP
+                ResetMethod::OPTION_BY_IP,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_EMAIL
-            ]
+                ResetMethod::OPTION_BY_EMAIL,
+            ],
         ];
     }
 

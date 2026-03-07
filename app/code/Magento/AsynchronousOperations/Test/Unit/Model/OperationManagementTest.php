@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class OperationManagementTest extends TestCase
             'status' => $status,
             'result_message' => $message,
             'serialized_data' => $data,
-            'result_serialized_data' => ''
+            'result_serialized_data' => '',
         ];
         $where = ['bulk_uuid = ?' => $bulkUuid, 'operation_key = ?' => $operationKey];
 
@@ -114,7 +115,7 @@ class OperationManagementTest extends TestCase
             'status' => $status,
             'result_message' => $message,
             'serialized_data' => $data,
-            'result_serialized_data' => ''
+            'result_serialized_data' => '',
         ];
         $where = ['bulk_uuid = ?' => $bulkUuid, 'operation_key = ?' => $operationKey];
 

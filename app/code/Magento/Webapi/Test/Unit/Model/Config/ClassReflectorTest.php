@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class ClassReflectorTest extends TestCase
                         'result' => ['type' => 'string', 'documentation' => 'random string', 'required' => true],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

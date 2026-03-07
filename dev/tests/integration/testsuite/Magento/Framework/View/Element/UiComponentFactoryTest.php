@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Element;
 
 use Magento\Framework\Api\Search\SearchCriteria;
+use Magento\Framework\Config\DataInterface as ConfigData;
+use Magento\Framework\Config\DataInterfaceFactory as ConfigDataFactory;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Config\DataInterface as ConfigData;
-use Magento\Framework\Config\DataInterfaceFactory as ConfigDataFactory;
 
 /**
  * Test the component factory.
@@ -44,7 +45,7 @@ class UiComponentFactoryTest extends TestCase
     {
         $dataMock = $this->createMock(ConfigData::class);
         $dataMock->method('get')->willReturnCallback(
-            function (string $id) use ($mockConfig) : array {
+            function (string $id) use ($mockConfig): array {
                 return $mockConfig[$id];
             }
         );
@@ -72,23 +73,23 @@ class UiComponentFactoryTest extends TestCase
                     'name' => 'test',
                     'sorting' => true,
                     'class' => 'Magento\Ui\Component\Listing',
-                    'component' => 'uiComponent'
+                    'component' => 'uiComponent',
                 ],
                 'children' => [
                     'test_child' => [
                         'arguments' => [
                             'data' => ['config' => ['component' => 'uiComponent']],
-                            'dataProvider' => $this->generateMockProvider()
+                            'dataProvider' => $this->generateMockProvider(),
                         ],
                         'attributes' => [
                             'name' => 'test_child',
                             'sorting' => true,
                             'class' => 'Magento\Ui\Component\Listing',
-                            'component' => 'uiComponent'
+                            'component' => 'uiComponent',
                         ],
-                        'children' => []
-                    ]
-                ]
+                        'children' => [],
+                    ],
+                ],
             ],
             'test_child_child' => [
                 'arguments' => [
@@ -96,18 +97,18 @@ class UiComponentFactoryTest extends TestCase
                         'config' => [
                             'component' => 'uiComponent',
                             'label' => '${\'Label\'}',
-                            'componentType' => 'component'
-                        ]
+                            'componentType' => 'component',
+                        ],
                     ],
                 ],
                 'attributes' => [
                     'name' => 'test_child_child',
                     'sorting' => true,
                     'class' => 'Magento\Ui\Component\Listing',
-                    'component' => 'uiComponent'
+                    'component' => 'uiComponent',
                 ],
-                'children' => []
-            ]
+                'children' => [],
+            ],
         ]);
         $component = $factory->create('test', null, ['data' => ['label' => '${\'Label\'}']]);
 
@@ -149,17 +150,17 @@ class UiComponentFactoryTest extends TestCase
                             'config' => [
                                 'component' => 'uiComponent',
                                 'label' => '${\'Label\'}',
-                                'componentType' => 'component'
-                            ]
+                                'componentType' => 'component',
+                            ],
                         ],
                     ],
                     'attributes' => [
                         'name' => 'test_child_child',
                         'sorting' => true,
                         'class' => 'Magento\Ui\Component\Listing',
-                        'component' => 'uiComponent'
-                    ]
-                ]
+                        'component' => 'uiComponent',
+                    ],
+                ],
             ]
         );
 

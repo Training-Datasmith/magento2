@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class ProductActionsTest extends TestCase
     {
         $storeId = 1;
         $data = [
-            'name' => 'test'
+            'name' => 'test',
         ];
         $dataSource = [
             'data' => [
@@ -93,7 +94,7 @@ class ProductActionsTest extends TestCase
                                     'href' => 'http://example.com/catalog/product/edit?id=1&store=1',
                                     'ariaLabel' => 'Edit ',
                                     'label' => __('Edit'),
-                                    'hidden' => false
+                                    'hidden' => false,
                                 ],
                             ],
                         ],

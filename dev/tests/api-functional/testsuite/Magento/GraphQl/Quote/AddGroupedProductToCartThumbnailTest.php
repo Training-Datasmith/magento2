@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\GraphQl\Quote;
 
 use Exception;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\GroupedProduct\Test\Fixture\Product as GroupedProductFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask as QuoteMaskFixture;
+use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -39,7 +40,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
                     'types' => [
                         'image',
                         'small_image',
-                        'thumbnail'
+                        'thumbnail',
                     ],
                     'file' => '/m/product1.jpg',
                 ],
@@ -60,7 +61,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
                     'types' => [
                         'image',
                         'small_image',
-                        'thumbnail'
+                        'thumbnail',
                     ],
                     'file' => '/m/product2.jpg',
                 ],
@@ -74,8 +75,8 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'category_ids' => ['$category.id$'],
             'product_links' => [
                 ['sku' => '$product1.sku$', 'qty' => 1],
-                ['sku' => '$product2.sku$', 'qty' => 1]
-            ]
+                ['sku' => '$product2.sku$', 'qty' => 1],
+            ],
         ],
         'grouped-product'
     ),
@@ -96,7 +97,7 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
     {
         $thumbnails = [
             'product1' => self::DEFAULT_THUMBNAIL_PATH,
-            'product2' => self::DEFAULT_THUMBNAIL_PATH
+            'product2' => self::DEFAULT_THUMBNAIL_PATH,
         ];
         $this->assertProductThumbnailUrl($thumbnails);
     }
@@ -114,7 +115,7 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
         $product2Sku = DataFixtureStorageManager::getStorage()->get('product2')->getSku();
         $thumbnails = [
             'product1' => $productRepository->get($product1Sku)->getThumbnail(),
-            'product2' => $productRepository->get($product2Sku)->getThumbnail()
+            'product2' => $productRepository->get($product2Sku)->getThumbnail(),
         ];
 
         $this->assertProductThumbnailUrl($thumbnails);
@@ -159,7 +160,7 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
                 'name' => 'Product 1',
                 'sku' => 'product-1',
                 'category_ids' => ['$category.id$'],
-                'price' => 10
+                'price' => 10,
             ],
             'product1'
         ),
@@ -169,7 +170,7 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
                 'name' => 'Product 2',
                 'sku' => 'product-2',
                 'category_ids' => ['$category.id$'],
-                'price' => 15
+                'price' => 15,
             ],
             'product2'
         ),
@@ -180,8 +181,8 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
                 'category_ids' => ['$category.id$'],
                 'product_links' => [
                     ['sku' => '$product1.sku$', 'qty' => 1],
-                    ['sku' => '$product2.sku$', 'qty' => 1]
-                ]
+                    ['sku' => '$product2.sku$', 'qty' => 1],
+                ],
             ],
             'grouped-product'
         ),
@@ -192,7 +193,7 @@ class AddGroupedProductToCartThumbnailTest extends GraphQlAbstract
     {
         $thumbnails = [
             'product1' => self::DEFAULT_THUMBNAIL_PATH,
-            'product2' => self::DEFAULT_THUMBNAIL_PATH
+            'product2' => self::DEFAULT_THUMBNAIL_PATH,
         ];
         $this->assertProductThumbnailUrl($thumbnails);
     }

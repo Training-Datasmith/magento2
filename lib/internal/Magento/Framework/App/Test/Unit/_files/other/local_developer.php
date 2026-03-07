@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,5 +28,5 @@ return [
         ],
     ],
     'arbitrary_one' => 'Overridden Value One',
-    'arbitrary_new' => 'Value New'
+    'arbitrary_new' => 'Value New',
 ];

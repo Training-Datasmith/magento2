@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Catalog\Block\Product\View\Options\Type;
 
-use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Block\Product\View\Options\Type\Select\CheckableFactory;
 use Magento\Catalog\Block\Product\View\Options\Type\Select\MultipleFactory;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\Pricing\Helper\Data;
 use Magento\Catalog\Helper\Data as CatalogHelper;
+use Magento\Catalog\Model\Product\Option;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Pricing\Helper\Data;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Product options text type block

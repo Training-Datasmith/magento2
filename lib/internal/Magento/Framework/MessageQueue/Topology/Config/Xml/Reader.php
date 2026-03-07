@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Topology\Config\Xml;
 
-use \Magento\Framework\MessageQueue\Topology\Config\ReaderInterface;
+use Magento\Framework\MessageQueue\Topology\Config\ReaderInterface;
 
 /**
  * Reader for etc/queue_topology.xml configs.

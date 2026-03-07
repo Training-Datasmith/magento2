@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FieldsetTest extends TestCase
 {
-    const NAME = 'fieldset';
+    public const NAME = 'fieldset';
 
     /**
      * @var Fieldset

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model;
 
 use Magento\Framework\DataObject;
@@ -54,8 +57,8 @@ class ShippingTest extends \PHPUnit\Framework\TestCase
                 'email' => 'john.doe@example.com',
                 'telephone' => '11111111',
                 'country_id' => 'US',
-                'item_qty' => 1
-            ]
+                'item_qty' => 1,
+            ],
         ]);
         /** @var Shipping $result */
         $result = $this->model->collectRatesByAddress($address, 'flatrate');

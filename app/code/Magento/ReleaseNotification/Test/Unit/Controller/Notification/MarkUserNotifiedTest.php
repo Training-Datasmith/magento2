@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class MarkUserNotifiedTest extends TestCase
                 'productMetadata' => $this->productMetadataMock,
                 'notificationLogger' => $this->notificationLoggerMock,
                 'context' => $contextMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -117,7 +118,7 @@ class MarkUserNotifiedTest extends TestCase
             ->with(
                 [
                     'success' => true,
-                    'error_message' => ''
+                    'error_message' => '',
                 ],
                 false,
                 []
@@ -144,7 +145,7 @@ class MarkUserNotifiedTest extends TestCase
             ->with(
                 [
                     'success' => false,
-                    'error_message' => 'Error message'
+                    'error_message' => 'Error message',
                 ],
                 false,
                 []
@@ -171,7 +172,7 @@ class MarkUserNotifiedTest extends TestCase
             ->with(
                 [
                     'success' => false,
-                    'error_message' => __('It is impossible to log user action')
+                    'error_message' => __('It is impossible to log user action'),
                 ],
                 false,
                 []

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Helper\Data;
 use Magento\Swatches\Model\Plugin\ProductImage;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ProductImageTest extends TestCase
 {
@@ -186,7 +187,7 @@ class ProductImageTest extends TestCase
                     'getUsedInProductListing_count' => 1,
                     'getIsFilterable' => true,
                     'getIsFilterable_count' => 1,
-                    'update_product_preview_image' =>true,
+                    'update_product_preview_image' => true,
                     'update_product_preview_image__count' => 1,
                     'loadVariationByFallback_count' => 0,
                     'product' => $productMock,
@@ -204,7 +205,7 @@ class ProductImageTest extends TestCase
                     'getUsedInProductListing_count' => 1,
                     'getIsFilterable' => true,
                     'getIsFilterable_count' => 1,
-                    'update_product_preview_image' =>true,
+                    'update_product_preview_image' => true,
                     'update_product_preview_image__count' => 1,
                     'loadVariationByFallback_count' => 1,
                     'product' => $productMock,
@@ -222,7 +223,7 @@ class ProductImageTest extends TestCase
                     'getUsedInProductListing_count' => 1,
                     'getIsFilterable' => true,
                     'getIsFilterable_count' => 1,
-                    'update_product_preview_image' =>false,
+                    'update_product_preview_image' => false,
                     'update_product_preview_image__count' => 1,
                     'loadVariationByFallback_count' => 0,
                     'product' => $productMock,

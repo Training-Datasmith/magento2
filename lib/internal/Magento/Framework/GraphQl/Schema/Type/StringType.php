@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,5 +16,5 @@ class StringType extends \GraphQL\Type\Definition\StringType implements InputTyp
     /**
      * @var string
      */
-    public string $name = "Magento_String";
+    public string $name = 'Magento_String';
 }

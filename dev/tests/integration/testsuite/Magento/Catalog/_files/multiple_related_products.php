@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,11 +7,11 @@
 
 declare(strict_types=1);
 
+use Magento\Catalog\Api\Data\ProductLinkInterface;
+use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductLinkInterface;
-use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
 
 /** @var ProductFactory $factory */
 $factory = Bootstrap::getObjectManager()->get(ProductFactory::class);
@@ -20,7 +21,7 @@ $linkFactory = Bootstrap::getObjectManager()->get(ProductLinkInterfaceFactory::c
 $rootProductCount = 10;
 $rootSku = 'simple-related-';
 $simpleProducts = [];
-for ($i =1; $i <= $rootProductCount; $i++) {
+for ($i = 1; $i <= $rootProductCount; $i++) {
     /** @var Product $product */
     $product = $factory->create();
     $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)

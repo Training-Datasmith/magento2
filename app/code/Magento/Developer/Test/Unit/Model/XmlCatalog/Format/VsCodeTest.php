@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class VsCodeTest extends TestCase
             [
                 'readFactory' => $this->readFactoryMock,
                 'fileWriteFactory' => $this->fileWriteFactoryMock,
-                'domDocumentFactory' => $this->domFactory
+                'domDocumentFactory' => $this->domFactory,
             ]
         );
 
@@ -252,10 +253,10 @@ class VsCodeTest extends TestCase
                     'urn:magento:module:Magento_Store:etc/config.xsd' => 'vendor/magento/module-store/etc/config.xsd',
                     'urn:magento:module:Magento_Cron:etc/crontab.xsd' => 'vendor/magento/module-cron/etc/crontab.xsd',
                     'urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd' =>
-                        'vendor/magento/framework/Setup/Declaration/Schema/etc/schema.xsd'
+                        'vendor/magento/framework/Setup/Declaration/Schema/etc/schema.xsd',
                 ],
-                $invalidContent
-            ]
+                $invalidContent,
+            ],
         ];
     }
 }

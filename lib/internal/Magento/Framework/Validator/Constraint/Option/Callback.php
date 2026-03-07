@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Constraint callback option
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Validator\Constraint\Option;
 
 class Callback implements \Magento\Framework\Validator\Constraint\OptionInterface

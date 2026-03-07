@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -25,19 +26,9 @@ class AjaxMarkAsRead extends Notification implements HttpPostActionInterface
      */
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::mark_as_read';
 
-    /**
-     * @var NotificationService
-     */
-    private $notificationService;
-
-    /**
-     * @param Action\Context $context
-     * @param NotificationService $notificationService
-     */
-    public function __construct(Action\Context $context, NotificationService $notificationService)
+    public function __construct(Action\Context $context, private readonly NotificationService $notificationService)
     {
         parent::__construct($context);
-        $this->notificationService = $notificationService;
     }
 
     /**
@@ -56,7 +47,7 @@ class AjaxMarkAsRead extends Notification implements HttpPostActionInterface
         try {
             $this->notificationService->markAsRead($notificationId);
             $responseData['success'] = true;
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $responseData['success'] = false;
         }
 

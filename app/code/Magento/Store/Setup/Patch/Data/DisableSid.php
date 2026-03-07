@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,20 +8,19 @@
 
 namespace Magento\Store\Setup\Patch\Data;
 
+use Magento\Framework\App\Config\MutableScopeConfigInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use \Magento\Framework\App\Config\MutableScopeConfigInterface;
 
 /**
  * Disable default frontend SID
  */
 class DisableSid implements DataPatchInterface, PatchVersionInterface
 {
-
     /**
      * Config path for flag whether use SID on frontend
      */
-    const XML_PATH_USE_FRONTEND_SID = 'web/session/use_frontend_sid';
+    public const XML_PATH_USE_FRONTEND_SID = 'web/session/use_frontend_sid';
 
     /**
      * @var \Magento\Framework\App\Config\MutableScopeConfigInterface
@@ -29,7 +30,7 @@ class DisableSid implements DataPatchInterface, PatchVersionInterface
     /**
      * scope type
      */
-    const SCOPE_STORE = 'store';
+    public const SCOPE_STORE = 'store';
 
     /**
      * Disable Sid constructor.

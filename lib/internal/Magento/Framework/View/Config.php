@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View;
 
-use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\Config\ViewFactory;
+use Magento\Framework\View\Asset\Repository;
 
 /**
  * Handles theme view.xml files

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Url;
 
 use Magento\Downloadable\Model\DomainManager;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**

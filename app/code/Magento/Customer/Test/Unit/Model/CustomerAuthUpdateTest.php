@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Customer\Test\Unit\Model;
 
 use Magento\Customer\Model\Customer as CustomerModel;
-use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\CustomerAuthUpdate;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\Customer\Model\Data\CustomerSecure;
 use Magento\Customer\Model\ResourceModel\Customer as CustomerResourceModel;
@@ -65,7 +66,7 @@ class CustomerAuthUpdateTest extends TestCase
             [
                 'customerRegistry' => $this->customerRegistry,
                 'customerResourceModel' => $this->customerResourceModel,
-                'customerFactory' => $this->customerFactory
+                'customerFactory' => $this->customerFactory,
             ]
         );
     }
@@ -105,7 +106,7 @@ class CustomerAuthUpdateTest extends TestCase
                 [
                     'failures_num' => 1,
                     'first_failure' => 1,
-                    'lock_expires' => 1
+                    'lock_expires' => 1,
                 ]
             );
 

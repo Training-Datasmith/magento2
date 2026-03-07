@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ class FreeShippingTest extends TestCase
                 'getShippingAddress',
                 'getStoreId',
                 'isVirtual',
-                'getCouponCode'
+                'getCouponCode',
             ]
         );
 

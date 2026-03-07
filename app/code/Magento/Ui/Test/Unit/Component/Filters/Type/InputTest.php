@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\Filters\FilterModifier;
 use Magento\Ui\Component\Filters\Type\Input;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class InputTest extends TestCase
@@ -222,8 +223,8 @@ class InputTest extends TestCase
                         'filter' => [
                             'filterType' => 'text',
                             'conditionType' => 'eq',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 ['text_attr' => 'something'],
                 [
@@ -238,8 +239,8 @@ class InputTest extends TestCase
                         'filter' => [
                             'filterType' => 'text',
                             'conditionType' => 'like',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 ['text_attr' => 'something'],
                 [
@@ -254,9 +255,9 @@ class InputTest extends TestCase
                         'filter' => [
                             'filterType' => 'text',
                             'conditionType' => 'like',
-                            'valueExpression' => '%s%%'
-                        ]
-                    ]
+                            'valueExpression' => '%s%%',
+                        ],
+                    ],
                 ],
                 ['text_attr' => 'something'],
                 [

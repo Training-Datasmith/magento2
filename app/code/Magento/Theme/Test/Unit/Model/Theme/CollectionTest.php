@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class CollectionTest extends TestCase
                     'code' => 'theme/code',
                     'theme_title' => $themeTitle,
                     'preview_image' => $media['preview_image'],
-                    'parent_theme_path' => 'theme/parentThemeCode'
+                    'parent_theme_path' => 'theme/parentThemeCode',
                 ]
             )
             ->willReturnSelf();
@@ -184,7 +185,7 @@ class CollectionTest extends TestCase
         $default = [
             Collection::CONSTRAINT_AREA => [],
             Collection::CONSTRAINT_VENDOR => [],
-            Collection::CONSTRAINT_THEME_NAME => []
+            Collection::CONSTRAINT_THEME_NAME => [],
         ];
         $expected = array_merge($default, $expected);
         $this->assertAttributeSame($expected, 'constraints', $this->model);
@@ -198,15 +199,15 @@ class CollectionTest extends TestCase
         return [
             'area' => [
                 [[Collection::CONSTRAINT_AREA, 'area']],
-                [Collection::CONSTRAINT_AREA => ['area']]
+                [Collection::CONSTRAINT_AREA => ['area']],
             ],
             'vendor' => [
                 [[Collection::CONSTRAINT_VENDOR, 'Vendor']],
-                [Collection::CONSTRAINT_VENDOR => ['Vendor']]
+                [Collection::CONSTRAINT_VENDOR => ['Vendor']],
             ],
             'theme name' => [
                 [[Collection::CONSTRAINT_THEME_NAME, 'theme_name']],
-                [Collection::CONSTRAINT_THEME_NAME => ['theme_name']]
+                [Collection::CONSTRAINT_THEME_NAME => ['theme_name']],
             ],
             'area, vendor and theme name' => [
                 [
@@ -214,13 +215,13 @@ class CollectionTest extends TestCase
                     [Collection::CONSTRAINT_AREA, 'area_two'],
                     [Collection::CONSTRAINT_VENDOR, 'Vendor'],
                     [Collection::CONSTRAINT_VENDOR, 'Vendor'],
-                    [Collection::CONSTRAINT_THEME_NAME, 'theme_name']
+                    [Collection::CONSTRAINT_THEME_NAME, 'theme_name'],
                 ],
                 [
                     Collection::CONSTRAINT_AREA => ['area_one', 'area_two'],
                     Collection::CONSTRAINT_VENDOR => ['Vendor'],
-                    Collection::CONSTRAINT_THEME_NAME => ['theme_name']
-                ]
+                    Collection::CONSTRAINT_THEME_NAME => ['theme_name'],
+                ],
             ],
         ];
     }

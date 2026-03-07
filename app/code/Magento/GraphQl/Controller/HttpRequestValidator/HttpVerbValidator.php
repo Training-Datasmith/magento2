@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -57,8 +58,8 @@ class HttpVerbValidator implements HttpRequestValidatorInterface
                         'leave' => [
                             NodeKind::OPERATION_DEFINITION => function (Node $node) use (&$operationType) {
                                 $operationType = $node->operation;
-                            }
-                        ]
+                            },
+                        ],
                     ]
                 );
 

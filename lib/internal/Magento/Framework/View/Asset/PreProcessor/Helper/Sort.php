@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset\PreProcessor\Helper;
 
 /**
@@ -13,12 +16,12 @@ class Sort implements SortInterface
     /**
      * Name of directive
      */
-    const DIRECTIVE = 'after';
+    public const DIRECTIVE = 'after';
 
     /**
      * Key of name items
      */
-    const NEXT_KEY = 'next';
+    public const NEXT_KEY = 'next';
 
     /**
      * @var array

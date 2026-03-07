@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ReviewGraphQl\Mapper;
 
-use Magento\Catalog\Model\Product;
 use Magento\Review\Model\Review;
 
 /**
@@ -30,7 +30,7 @@ class ReviewDataMapper
             'nickname' => $review->getData('nickname'),
             'created_at' => $review->getData('created_at'),
             'sku' => $review->getSku(),
-            'model' => $review
+            'model' => $review,
         ];
     }
 }

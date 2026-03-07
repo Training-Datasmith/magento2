@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,21 +9,20 @@ declare(strict_types=1);
 namespace Magento\Setup\Console\Command;
 
 use Magento\Deploy\Console\Command\App\ConfigImportCommand;
+use Magento\Framework\Setup\ConsoleLogger;
 use Magento\Framework\Setup\Declaration\Schema\DryRunLogger;
 use Magento\Framework\Setup\Declaration\Schema\OperationsExecutor;
-use Magento\Framework\Setup\Declaration\Schema\Request;
 use Magento\Setup\Model\AdminAccount;
 use Magento\Setup\Model\ConfigModel;
 use Magento\Setup\Model\InstallerFactory;
-use Magento\Framework\Setup\ConsoleLogger;
 use Magento\Setup\Model\SearchConfigOptionsList;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Helper\QuestionHelper;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ChoiceQuestion;
+use Symfony\Component\Console\Question\Question;
 
 /**
  * Command to install Magento application
@@ -294,7 +294,7 @@ class InstallCommand extends AbstractSetupCommand
      * @param InputInterface $input
      * @return string[] Array of error messages
      */
-    public function validate(InputInterface $input) : array
+    public function validate(InputInterface $input): array
     {
         $errors = [];
         $value = $input->getOption(self::INPUT_KEY_SALES_ORDER_INCREMENT_PREFIX);
@@ -314,7 +314,7 @@ class InstallCommand extends AbstractSetupCommand
      * @param OutputInterface $output
      * @return string[] Array of inputs
      */
-    private function interactiveQuestions(InputInterface $input, OutputInterface $output) : array
+    private function interactiveQuestions(InputInterface $input, OutputInterface $output): array
     {
         $helper = $this->getHelper('question');
         $configOptionsToValidate = [];
@@ -329,7 +329,7 @@ class InstallCommand extends AbstractSetupCommand
             );
         }
 
-        $output->writeln("");
+        $output->writeln('');
 
         foreach ($this->userConfig->getOptionsList() as $option) {
             $configOptionsToValidate[$option->getName()] = $this->askQuestion(
@@ -340,7 +340,7 @@ class InstallCommand extends AbstractSetupCommand
             );
         }
 
-        $output->writeln("");
+        $output->writeln('');
 
         foreach ($this->adminUser->getOptionsList(InputOption::VALUE_OPTIONAL) as $option) {
             $configOptionsToValidate[$option->getName()] = $this->askQuestion(
@@ -351,7 +351,7 @@ class InstallCommand extends AbstractSetupCommand
             );
         }
 
-        $output->writeln("");
+        $output->writeln('');
 
         $returnConfigOptionsToValidate = [];
         foreach ($configOptionsToValidate as $key => $value) {

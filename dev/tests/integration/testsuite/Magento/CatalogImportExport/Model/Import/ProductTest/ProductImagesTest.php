@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,13 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogImportExport\Model\Import\ProductTest;
 
 use Magento\CatalogImportExport\Model\Import\ProductTestBase;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
-use Magento\Framework\Filesystem;
 use Magento\ImportExport\Model\Import;
-use Magento\ImportExport\Model\Import\Source\Csv;
-use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
 
 /**
  * Integration test for \Magento\CatalogImportExport\Model\Import\Product class.

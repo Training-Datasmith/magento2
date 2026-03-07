@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -474,18 +476,18 @@ class System implements ConfigTypeInterface
      * @param array $data
      * @return array
      */
-    private function prepareDataForCache(array $data) :array
+    private function prepareDataForCache(array $data): array
     {
         $dataToSave = [];
         $dataToSave[] = [
             $this->encryptor->encryptWithFastestAvailableAlgorithm($this->serializer->serialize($data)),
             $this->configType,
-            [System::CACHE_TAG]
+            [System::CACHE_TAG],
         ];
         $dataToSave[] = [
             $this->encryptor->encryptWithFastestAvailableAlgorithm($this->serializer->serialize($data['default'])),
             $this->configType . '_default',
-            [System::CACHE_TAG]
+            [System::CACHE_TAG],
         ];
         $scopes = [];
         foreach ([StoreScope::SCOPE_WEBSITES, StoreScope::SCOPE_STORES] as $curScopeType) {
@@ -494,14 +496,14 @@ class System implements ConfigTypeInterface
                 $dataToSave[] = [
                     $this->encryptor->encryptWithFastestAvailableAlgorithm($this->serializer->serialize($curScopeData)),
                     $this->configType . '_' . $curScopeType . '_' . $curScopeId,
-                    [System::CACHE_TAG]
+                    [System::CACHE_TAG],
                 ];
             }
         }
         $dataToSave[] = [
             $this->encryptor->encryptWithFastestAvailableAlgorithm($this->serializer->serialize($scopes)),
             $this->configType . '_scopes',
-            [System::CACHE_TAG]
+            [System::CACHE_TAG],
         ];
         return $dataToSave;
     }
@@ -514,7 +516,7 @@ class System implements ConfigTypeInterface
      * @param array $dataToSave
      * @return void
      */
-    private function cachePreparedData(array $dataToSave) : void
+    private function cachePreparedData(array $dataToSave): void
     {
         foreach ($dataToSave as $datumToSave) {
             $this->cache->save($datumToSave[0], $datumToSave[1], $datumToSave[2]);

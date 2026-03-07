@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class RemoveItemTest extends TestCase
                 'resultRedirectFactory' => $this->resultRedirectFactoryMock,
                 'sidebar' => $this->sidebarMock,
                 'formKeyValidator' => $this->formKeyValidatorMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -141,7 +142,7 @@ class RemoveItemTest extends TestCase
         $errorMessage = 'Error message!';
         $responseData = [
             'success' => false,
-            'error_message' => $errorMessage
+            'error_message' => $errorMessage,
         ];
 
         $this->formKeyValidatorMock->expects($this->once())
@@ -180,7 +181,7 @@ class RemoveItemTest extends TestCase
         $errorMessage = 'Error message!';
         $responseData = [
             'success' => false,
-            'error_message' => $errorMessage
+            'error_message' => $errorMessage,
         ];
 
         $this->formKeyValidatorMock->expects($this->once())

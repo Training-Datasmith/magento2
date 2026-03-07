@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class AppendUpsellProductsObserverTest extends TestCase
             'load',
             'setFlag',
             'setPageSize',
-            'setVisibility'
+            'setVisibility',
         ]);
 
         $this->bundleDataMock = $this->createPartialMock(BundleHelper::class, ['getAllowedSelectionTypes']);
@@ -150,7 +151,7 @@ class AppendUpsellProductsObserverTest extends TestCase
     public function testAddBundleCollectionItemsToEventCollection()
     {
         $collectionItems = [
-            1 => 1
+            1 => 1,
         ];
         $limit = 2;
         $parentIds = [1, 3];
@@ -235,7 +236,7 @@ class AppendUpsellProductsObserverTest extends TestCase
     public function testObserverWithoutBundleIds()
     {
         $collectionItems = [
-            1 => 1
+            1 => 1,
         ];
         $parentIds = [1];
         $limit = 2;
@@ -282,7 +283,7 @@ class AppendUpsellProductsObserverTest extends TestCase
     public function testObserverWithoutLinkedProducts()
     {
         $collectionItems = [
-            1 => 1
+            1 => 1,
         ];
         $limit = 1;
 

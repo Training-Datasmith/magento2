@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\ResourceModel;
 
 use Magento\Framework\App\ResourceConnection;
@@ -11,15 +14,14 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Model\Order;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Vault\Model\PaymentTokenManagement;
-use Magento\Vault\Setup\InstallSchema;
 use PHPUnit\Framework\TestCase;
 
 class PaymentTokenTest extends TestCase
 {
-    const CUSTOMER_ID = 1;
-    const TOKEN = 'mx29vk';
-    const ORDER_INCREMENT_ID = '100000001';
-    const PAYFLOWPRO = 'payflowpro';
+    public const CUSTOMER_ID = 1;
+    public const TOKEN = 'mx29vk';
+    public const ORDER_INCREMENT_ID = '100000001';
+    public const PAYFLOWPRO = 'payflowpro';
 
     /**
      * @var ObjectManagerInterface
@@ -76,7 +78,7 @@ class PaymentTokenTest extends TestCase
             $this->resource->getTableName('vault_payment_token_order_payment_link'),
             [
                 'order_payment_id' => $this->order->getPayment()->getEntityId(),
-                'payment_token_id' => $paymentToken->getEntityId()
+                'payment_token_id' => $paymentToken->getEntityId(),
             ]
         );
 

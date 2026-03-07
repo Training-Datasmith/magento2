@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\ShippingMethodChoose;
 
 use Magento\Customer\Model\Address;
@@ -47,7 +50,7 @@ class CarrierFinder
     public function getCarriersForCustomerAddress(Address $address): array
     {
         $request = new DataObject([
-            'dest_country_id' => $address->getCountryId()
+            'dest_country_id' => $address->getCountryId(),
         ]);
 
         $carriers = [];

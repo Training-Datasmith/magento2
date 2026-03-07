@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Config implements ConfigInterface
 {
-    const DEFAULT_PATH_PATTERN = 'payment/%s/%s';
+    public const DEFAULT_PATH_PATTERN = 'payment/%s/%s';
 
     /**
      * @var ScopeConfigInterface

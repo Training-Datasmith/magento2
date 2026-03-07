@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order\Invoice;
 
-use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Get Custom Logo File for Invoice HTML print
@@ -54,7 +55,7 @@ class GetLogoFile
         }
 
         return sprintf(
-            "%s%s%s",
+            '%s%s%s',
             $this->urlBuilder->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]),
             self::LOGO_BASE_DIR,
             $invoiceLogoPath

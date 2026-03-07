@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,18 +11,18 @@ namespace Magento\Downloadable\Model\Product\TypeHandler;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Helper\File;
 use Magento\Downloadable\Model\ComponentInterface;
-use Magento\Framework\Json\Helper\Data;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\Json\Helper\Data;
 
 /**
  * Class AbstractTypeHandler
  */
 abstract class AbstractTypeHandler
 {
-    const FIELD_IS_DELETE = 'is_delete';
+    public const FIELD_IS_DELETE = 'is_delete';
 
-    const FIELD_FILE = 'file';
+    public const FIELD_FILE = 'file';
 
     /**
      * @var array

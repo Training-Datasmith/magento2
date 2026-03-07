@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\ViewModel;
 
-use Magento\ConfigurableProduct\ViewModel\UploadResizeConfigValue;
 use Magento\Backend\Model\Image\UploadResizeConfigInterface;
+use Magento\ConfigurableProduct\ViewModel\UploadResizeConfigValue;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

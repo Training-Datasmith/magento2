@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\App\State;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Layout\Data\Structure;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 class StructureTest extends TestCase
@@ -53,7 +54,7 @@ class StructureTest extends TestCase
             Structure::class,
             [
                 'logger' => $this->loggerMock,
-                'state' => $this->stateMock
+                'state' => $this->stateMock,
             ]
         );
     }
@@ -72,8 +73,8 @@ class StructureTest extends TestCase
         $this->stateMock->expects($this->once())
             ->method('getMode')
             ->willReturn($stateMode);
-        $expects = is_string($loggerExpects) 
-            ? $this->createInvocationMatcher($loggerExpects) 
+        $expects = is_string($loggerExpects)
+            ? $this->createInvocationMatcher($loggerExpects)
             : $loggerExpects;
         $this->loggerMock->expects($expects)
             ->method('info')
@@ -93,16 +94,16 @@ class StructureTest extends TestCase
         return [
             [
                 'loggerExpects' => 'once',
-                'stateMode' => State::MODE_DEVELOPER
+                'stateMode' => State::MODE_DEVELOPER,
             ],
             [
                 'loggerExpects' => 'never',
-                'stateMode' => State::MODE_DEFAULT
+                'stateMode' => State::MODE_DEFAULT,
             ],
             [
                 'loggerExpects' => 'never',
-                'stateMode' => State::MODE_PRODUCTION
-            ]
+                'stateMode' => State::MODE_PRODUCTION,
+            ],
         ];
     }
 }

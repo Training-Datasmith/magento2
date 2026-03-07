@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Quote\Item\Option;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Quote\Item\Option\BundleSelectionAttributesComparator;
 use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Json;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -54,17 +55,17 @@ class BundleSelectionAttributesComparatorTest extends TestCase
             [
                 ['code' => 'test', 'value' => '{"option_id":1,"option_label":"Option 1"}'],
                 ['code' => 'test', 'value' => '{"option_id":1,"option_label":"Option One"}'],
-                true
+                true,
             ],
             [
                 ['code' => 'test', 'value' => '{"option_id":1,"option_label":"Option 1"}'],
                 ['code' => 'test', 'value' => '{"option_id":2,"option_label":"Option 1"}'],
-                false
+                false,
             ],
             [
                 ['code' => 'test', 'value' => '{"option_id":1,"option_label":"Option 1"}'],
                 ['code' => 'test', 'value' => '{"option_label":"Option 1"}'],
-                false
+                false,
             ],
         ];
     }

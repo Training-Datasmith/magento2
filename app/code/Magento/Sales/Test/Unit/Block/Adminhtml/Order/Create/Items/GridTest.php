@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,20 +14,21 @@ use Magento\Backend\Model\Session\Quote;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
+use Magento\CatalogInventory\Model\Stock\Item as StockItem;
 use Magento\CatalogInventory\Model\StockRegistry;
 use Magento\CatalogInventory\Model\StockState;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutInterface;
 use Magento\GiftMessage\Model\Save as GiftMessageSave;
-use Magento\CatalogInventory\Model\Stock\Item as StockItem;
-use Magento\Quote\Model\Quote as QuoteModel;
 use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\Quote as QuoteModel;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Sales\Block\Adminhtml\Order\Create\Items\Grid;
 use Magento\Sales\Model\AdminOrder\Create;
@@ -34,10 +36,9 @@ use Magento\Store\Model\Store;
 use Magento\Tax\Helper\Data;
 use Magento\Tax\Model\Config;
 use Magento\Wishlist\Model\WishlistFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -142,12 +143,12 @@ class GridTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->block = $this->objectManager->getObject(
@@ -161,7 +162,7 @@ class GridTest extends TestCase
                 'orderCreate' => $orderCreateMock,
                 'priceCurrency' => $this->priceCurrency,
                 'stockRegistry' => $this->stockRegistry,
-                'stockState' => $this->stockState
+                'stockState' => $this->stockState,
             ]
         );
 
@@ -207,19 +208,19 @@ class GridTest extends TestCase
             [
                 [['price' => 100, 'price_qty' => 1], ['price' => 200, 'price_qty' => 2]],
                 '1 with 100% discount each<br />2 with 200% discount each',
-                Type::TYPE_BUNDLE
+                Type::TYPE_BUNDLE,
             ],
             [
                 [['price' => 50, 'price_qty' => 2]],
                 '2 for 50',
-                Type::TYPE_SIMPLE
+                Type::TYPE_SIMPLE,
             ],
             [
                 [['price' => 50, 'price_qty' => 2], ['price' => 150, 'price_qty' => 3]],
                 '2 for 50<br />3 for 150',
-                Type::TYPE_SIMPLE
+                Type::TYPE_SIMPLE,
             ],
-            [0, '', Type::TYPE_SIMPLE]
+            [0, '', Type::TYPE_SIMPLE],
         ];
     }
 
@@ -314,7 +315,7 @@ class GridTest extends TestCase
                 'context' => $this->objectManager->getObject(
                     Context::class,
                     ['layout' => $this->layoutMock]
-                )
+                ),
             ]
         );
 
@@ -399,7 +400,7 @@ class GridTest extends TestCase
             Address::class,
             [
                 'getSubtotal', 'getTaxAmount', 'getDiscountTaxCompensationAmount',
-                'getDiscountAmount'
+                'getDiscountAmount',
             ]
         );
         $gridMock = $this->createPartialMock(
@@ -442,20 +443,20 @@ class GridTest extends TestCase
                 'subTotal' => 32.59,
                 'taxAmount' => 8.2,
                 'discountTaxCompensationAmount' => 1.72,
-                'discountAmount' => -10.24
+                'discountAmount' => -10.24,
             ],
-            'displayTotalsIncludeTax'=> true,
-            'expected' => 32.27
+            'displayTotalsIncludeTax' => true,
+            'expected' => 32.27,
         ];
         $result['displayTotalsIncludeTaxFalse'] = [
             'orderData' => [
                 'subTotal' => 66.67,
                 'taxAmount' => 20,
                 'discountTaxCompensationAmount' => 8,
-                'discountAmount' => -34.67
+                'discountAmount' => -34.67,
             ],
-            'displayTotalsIncludeTax'=> false,
-            'expected' => 32
+            'displayTotalsIncludeTax' => false,
+            'expected' => 32,
         ];
         return $result;
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\CustomerData;
 
 use Magento\Customer\CustomerData\SectionSourceInterface;
@@ -95,7 +98,7 @@ class BillingAgreement implements SectionSourceInterface
                 ),
                 'confirmMessage' => $this->escaper->escapeHtml(
                     __('Would you like to sign a billing agreement to streamline further purchases with PayPal?')
-                )
+                ),
             ];
         }
 

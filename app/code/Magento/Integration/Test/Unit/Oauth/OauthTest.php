@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Integration\Test\Unit\Oauth;
 
-use Magento\Framework\Oauth\Helper\Utility;
 use Magento\Framework\DataObject;
 use Magento\Framework\Math\Random;
 use Magento\Framework\Oauth\Helper\Oauth;
+use Magento\Framework\Oauth\Helper\Utility;
 use Magento\Framework\Oauth\OauthInputException;
 use Magento\Framework\Oauth\OauthInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Integration\Model\Oauth\Consumer;
 use Magento\Integration\Model\Oauth\ConsumerFactory;
 use Magento\Integration\Model\Oauth\Nonce;
@@ -22,12 +24,11 @@ use Magento\Integration\Model\Oauth\NonceFactory;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\Token\Provider;
 use Magento\Integration\Model\Oauth\TokenFactory;
+use Magento\Integration\Model\ResourceModel\Oauth\Token as TokenResourceModel;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Integration\Model\ResourceModel\Oauth\Token as TokenResourceModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -151,7 +152,7 @@ class OauthTest extends TestCase
                 'getToken',
                 'getSecret',
                 'getConsumerId',
-                'getRevoked'
+                'getRevoked',
             ]
         );
         $this->_tokenFactory->expects($this->any())->method('create')->willReturn($this->_tokenMock);
@@ -338,7 +339,7 @@ class OauthTest extends TestCase
         return [
             [0],
             //Adding one day deviation
-            [time() + Generator::TIME_DEVIATION + 86400]
+            [time() + Generator::TIME_DEVIATION + 86400],
         ];
     }
 
@@ -358,7 +359,7 @@ class OauthTest extends TestCase
                 'setNonce',
                 'setConsumerId',
                 'setTimestamp',
-                'getTimeStamp'
+                'getTimeStamp',
             ]
         );
 
@@ -717,7 +718,7 @@ class OauthTest extends TestCase
         $this->assertEquals(
             1,
             $this->_oauth->validateAccessTokenRequest($requiredParams, self::REQUEST_URL),
-            "Consumer ID is invalid."
+            'Consumer ID is invalid.'
         );
     }
 
@@ -768,7 +769,7 @@ class OauthTest extends TestCase
         $this->_setupConsumer();
         $this->_setupToken(true, Token::TYPE_ACCESS);
 
-        $this->assertEquals(1, $this->_oauth->validateAccessToken($this->_oauthToken), "Consumer ID is invalid.");
+        $this->assertEquals(1, $this->_oauth->validateAccessToken($this->_oauthToken), 'Consumer ID is invalid.');
     }
 
     public function testBuildAuthorizationHeader()
@@ -841,7 +842,7 @@ class OauthTest extends TestCase
                     'oauth_token' => '7c0709f789e1f38a17aa4b9a28e1b06c',
                     'oauth_token_secret' => 'a6agsfrsfgsrjjjjyy487939244ssggg',
                     'custom_param1' => 'foo',
-                    'custom_param2' => 'bar'
+                    'custom_param2' => 'bar',
                 ],
             ],
             [
@@ -852,8 +853,8 @@ class OauthTest extends TestCase
                     'oauth_token' => '7c0709f789e1f38a17aa4b9a28e1b06c',
                     'oauth_token_secret' => 'a6agsfrsfgsrjjjjyy487939244ssggg',
                     'custom_param1' => 'foo',
-                    'custom_param2' => 'bar'
-                ]
+                    'custom_param2' => 'bar',
+                ],
             ],
             [
                 'oauth_token',
@@ -863,8 +864,8 @@ class OauthTest extends TestCase
                     //'oauth_token' => '7c0709f789e1f38a17aa4b9a28e1b06c',
                     'oauth_token_secret' => 'a6agsfrsfgsrjjjjyy487939244ssggg',
                     'custom_param1' => 'foo',
-                    'custom_param2' => 'bar'
-                ]
+                    'custom_param2' => 'bar',
+                ],
             ],
             [
                 'oauth_token_secret',
@@ -874,9 +875,9 @@ class OauthTest extends TestCase
                     'oauth_token' => '7c0709f789e1f38a17aa4b9a28e1b06c',
                     //'oauth_token_secret' => 'a6agsfrsfgsrjjjjyy487939244ssggg',
                     'custom_param1' => 'foo',
-                    'custom_param2' => 'bar'
-                ]
-            ]
+                    'custom_param2' => 'bar',
+                ],
+            ],
         ];
     }
 

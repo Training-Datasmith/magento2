@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Elasticsearch8\Model\Adapter\DynamicTemplatesProvider;
 use Magento\Elasticsearch8\Model\Client\Elasticsearch;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class ElasticsearchTest to test Elasticsearch 8
@@ -86,7 +87,7 @@ class ElasticsearchTest extends TestCase
             'stats',
             'updateAliases',
             'existsAlias',
-            'getAlias'
+            'getAlias',
         ]);
         $this->elasticsearchResponse = $this->getMockBuilder(ElasticsearchResponse::class) /** @phpstan-ignore-line */
         ->onlyMethods([

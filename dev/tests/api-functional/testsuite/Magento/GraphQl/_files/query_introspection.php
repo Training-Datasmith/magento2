@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,11 +23,11 @@ return [
                                 [
                                     'kind' => 'LIST',
                                     'name' => null,
-                                ]
+                                ],
                         ],
                         'defaultValue' => null,
-                ]
-            ]
+                ],
+            ],
     ],
      [
          'name' => 'testItem',
@@ -43,13 +44,13 @@ return [
                              [
                                  'kind' => 'SCALAR',
                                  'name' => 'Int',
-                             ]
+                             ],
 
                      ],
                      'defaultValue' => null,
 
-             ]
-         ]
+             ],
+         ],
 
      ],
      [
@@ -67,11 +68,11 @@ return [
                              [
                                  'kind' => 'SCALAR',
                                  'name' => 'String',
-                             ]
+                             ],
                      ],
                      'defaultValue' => null,
-             ]
-         ]
+             ],
+         ],
 
-     ]
+     ],
 ];

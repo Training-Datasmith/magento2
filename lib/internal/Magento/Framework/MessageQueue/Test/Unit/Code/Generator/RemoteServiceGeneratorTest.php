@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -97,14 +98,14 @@ class RemoteServiceGeneratorTest extends TestCase
                 '\\' . CustomerRepositoryInterface::class,
                 '\\' . \Magento\Customer\Api\CustomerRepositoryInterfaceRemote::class,
                 'magento.customer.api.customerRepositoryInterface',
-                'RemoteService.txt'
+                'RemoteService.txt',
             ],
             [
                 '\\' . \Magento\Framework\MessageQueue\Code\Generator\TRepositoryInterface::class,
                 '\\' . \Magento\Framework\MessageQueue\Code\Generator\TRepositoryInterfaceRemote::class,
                 'magento.framework.messageQueue.code.generator.tRepositoryInterface',
-                'TRemoteService.txt'
-            ]
+                'TRemoteService.txt',
+            ],
         ];
     }
 
@@ -138,7 +139,7 @@ class RemoteServiceGeneratorTest extends TestCase
                 'serviceMethodsMap' => $methodMap,
                 'sourceClassName' => $sourceClassName,
                 'resultClassName' => $resultClassName,
-                'classGenerator' => null
+                'classGenerator' => null,
             ]
         );
 
@@ -167,7 +168,7 @@ class RemoteServiceGeneratorTest extends TestCase
         /** @var MethodsMap $serviceMethodMap */
         $serviceMethodMap = $this->objectManager->getObject(MethodsMap::class, [
             'cache' => $cache,
-            'typeProcessor' => $typeProcessor
+            'typeProcessor' => $typeProcessor,
         ]);
         $this->objectManager->setBackwardCompatibleProperty(
             $serviceMethodMap,

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\Framework\App\ResourceConnection;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\Bulk\OperationManagementInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class for managing Bulk Operations
@@ -17,35 +19,10 @@ use Magento\Framework\Bulk\OperationManagementInterface;
 class OperationManagement implements OperationManagementInterface
 {
     /**
-     * @var ResourceConnection
-     */
-    private $connection;
-
-    /**
-     * @var OperationInterfaceFactory
-     */
-    private $operationFactory;
-
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
-
-    /**
      * OperationManagement constructor.
-     *
-     * @param OperationInterfaceFactory $operationFactory
-     * @param LoggerInterface $logger
-     * @param ResourceConnection $connection
      */
-    public function __construct(
-        OperationInterfaceFactory $operationFactory,
-        LoggerInterface $logger,
-        ResourceConnection $connection
-    ) {
-        $this->operationFactory = $operationFactory;
-        $this->logger = $logger;
-        $this->connection = $connection;
+    public function __construct(OperationInterfaceFactory $operationFactory, private readonly LoggerInterface $logger, private readonly ResourceConnection $connection)
+    {
     }
 
     /**
@@ -59,7 +36,7 @@ class OperationManagement implements OperationManagementInterface
         $message = null,
         $data = null,
         $resultData = null
-    ) {
+    ): bool {
         try {
             $connection = $this->connection->getConnection();
             $table = $this->connection->getTableName('magento_operation');
@@ -68,7 +45,7 @@ class OperationManagement implements OperationManagementInterface
                 'status' => $status,
                 'result_message' => $message,
                 'serialized_data' => $data,
-                'result_serialized_data' => $resultData
+                'result_serialized_data' => $resultData,
             ];
             $where = ['bulk_uuid = ?' => $bulkUuid, 'operation_key = ?' => $operationKey];
             $connection->update($table, $bind, $where);

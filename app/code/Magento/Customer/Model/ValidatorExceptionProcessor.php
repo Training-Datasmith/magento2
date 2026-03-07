@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -236,7 +237,7 @@ class ValidatorExceptionProcessor
         if (empty($validatorMessages)) {
             return [
                 'errors' => null,
-                'mainPhrase' => new Phrase($exception->getRawMessage())
+                'mainPhrase' => new Phrase($exception->getRawMessage()),
             ];
         }
 
@@ -256,7 +257,7 @@ class ValidatorExceptionProcessor
 
         return [
             'errors' => $errors,
-            'mainPhrase' => $mainPhrase
+            'mainPhrase' => $mainPhrase,
         ];
     }
 }

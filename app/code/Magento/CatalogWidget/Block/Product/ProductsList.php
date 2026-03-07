@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -245,7 +247,7 @@ class ProductsList extends AbstractProduct implements BlockInterface, IdentityIn
             $conditions,
             $this->json->serialize($this->getRequest()->getParams()),
             $this->getTemplate(),
-            $this->getTitle()
+            $this->getTitle(),
         ];
     }
 
@@ -323,7 +325,7 @@ class ProductsList extends AbstractProduct implements BlockInterface, IdentityIn
                 'product' => $product->getEntityId(),
                 'options' => $this->optionsData->getOptionsData($product),
                 ActionInterface::PARAM_NAME_URL_ENCODED => $this->urlEncoder->encode($url),
-            ]
+            ],
         ];
     }
 

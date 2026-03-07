@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class HtmlContentTest extends TestCase
                 'layout' => [
                     'xsi:type' => 'string',
                     'name' => 'layout',
-                    'value' => ''
+                    'value' => '',
                 ],
                 'name' => [
                     'xsi:type' => 'string',

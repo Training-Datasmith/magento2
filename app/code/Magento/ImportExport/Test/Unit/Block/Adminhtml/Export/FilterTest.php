@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,19 +10,17 @@ namespace Magento\ImportExport\Test\Unit\Block\Adminhtml\Export;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Helper\Data;
-use Magento\Eav\Api\Data\AttributeOptionInterfaceFactory;
 use Magento\Eav\Model\Entity\Attribute;
-use Magento\Eav\Model\Entity\TypeFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Stdlib\DateTime\Timezone;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Html\Date;
 use Magento\Framework\View\Element\Html\Select;
 use Magento\Framework\View\Layout;
 use Magento\ImportExport\Block\Adminhtml\Export\Filter;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ImportExport\Model\ResourceModel\Export\AttributeGridCollectionFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -116,7 +115,7 @@ class FilterTest extends TestCase
         return  [
             [
                 [
-                    'attribute_code' =>'updated_at',
+                    'attribute_code' => 'updated_at',
                     'frontend_input' => '',
                     'options' => [],
                     'filter_options' => [],
@@ -125,8 +124,8 @@ class FilterTest extends TestCase
                 ['values' => ['updated_at' => ['12/12/12', '12/15/12']]],
                 [
                     ['12/12/12'],
-                    ['12/15/12']
-                ]
+                    ['12/15/12'],
+                ],
             ],
         ];
     }
@@ -180,18 +179,18 @@ class FilterTest extends TestCase
                     'options' => [
                         [
                             'label' => '-- Not Selected --',
-                            'value' => ''
+                            'value' => '',
                         ],
                         [
                             'label' => 'Green',
-                            'value' => '6'
+                            'value' => '6',
                         ],
                         [
                             'label' => 'Blue',
-                            'value' => '7'
-                        ]
-                    ]
-                ]
+                            'value' => '7',
+                        ],
+                    ],
+                ],
             ],
             [
                 [
@@ -206,19 +205,19 @@ class FilterTest extends TestCase
                     'options' => [
                         [
                             'label' => '-- Not Selected --',
-                            'value' => ''
+                            'value' => '',
                         ],
                         [
                             'label' => 'Green',
-                            'value' => '6'
+                            'value' => '6',
                         ],
                         [
                             'label' => 'Blue',
-                            'value' => '7'
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => '7',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -265,7 +264,7 @@ class FilterTest extends TestCase
                 [
                     'name' => 'export_filter[category_ids]',
                     'value' => '1',
-                ]
+                ],
             ],
         ];
     }
@@ -309,7 +308,7 @@ class FilterTest extends TestCase
                 [
                     'value="3"',
                     'value="5"',
-                ]
+                ],
             ],
         ];
     }

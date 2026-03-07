@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class FormTest extends TestCase
                 'paypalConfigFactory' => $paypalConfigFactory,
                 'currentCustomer' => $this->currentCustomer,
                 'layout' => $layout,
-                'localeResolver' => $localeResolver
+                'localeResolver' => $localeResolver,
             ]
         );
     }
@@ -117,7 +118,7 @@ class FormTest extends TestCase
     {
         return [
             [true, Checkout::PAYMENT_INFO_TRANSPORT_BILLING_AGREEMENT],
-            [false, null]
+            [false, null],
         ];
     }
 }

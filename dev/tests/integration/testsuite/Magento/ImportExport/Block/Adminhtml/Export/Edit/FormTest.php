@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Block\Adminhtml\Export\Edit;
 
 /**
@@ -33,7 +36,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
     protected $_expectedFields = ['base_fieldset' => [
         'entity' => 'entity',
         'file_format' => 'file_format',
-        'fields_enclosure' => 'fields_enclosure'
+        'fields_enclosure' => 'fields_enclosure',
     ]];
 
     protected function setUp(): void

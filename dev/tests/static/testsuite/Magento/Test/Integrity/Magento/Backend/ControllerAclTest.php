@@ -1,30 +1,33 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Backend;
 
-use Magento\TestFramework\Utility\ChangedFiles;
-use Magento\Framework\App\Utility\Files;
 use Magento\Backend\App\AbstractAction;
+use Magento\Framework\App\Utility\Files;
+use Magento\TestFramework\Utility\ChangedFiles;
 
 class ControllerAclTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Default function for checking accessibility of the ACL resource.
      */
-    const ACL_FUNC_NAME = '_isAllowed';
+    public const ACL_FUNC_NAME = '_isAllowed';
 
     /**
      * Name of the const. that contains ACL resource path.
      */
-    const ACL_CONST_NAME = 'ADMIN_RESOURCE';
+    public const ACL_CONST_NAME = 'ADMIN_RESOURCE';
 
     /**
      * Default value from the AbstractResource.
      */
-    const DEFAULT_BACKEND_RESOURCE = 'Magento_Backend::admin';
+    public const DEFAULT_BACKEND_RESOURCE = 'Magento_Backend::admin';
 
     /**
      * Several backend controllers should be accessible always, and can't be closed by ACL.

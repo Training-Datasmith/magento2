@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Creditmemo;
 
 use Magento\Backend\App\Action;
@@ -69,7 +72,7 @@ class View extends \Magento\Backend\App\Action implements HttpGetActionInterface
             $resultPage->setActiveMenu('Magento_Sales::sales_creditmemo');
             if ($creditmemo->getInvoice()) {
                 $resultPage->getConfig()->getTitle()->prepend(
-                    __("View Credit Memo for #%1", $creditmemo->getInvoice()->getIncrementId())
+                    __('View Credit Memo for #%1', $creditmemo->getInvoice()->getIncrementId())
                 );
             } else {
                 $resultPage->getConfig()->getTitle()->prepend(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,8 +87,8 @@ class GridStructureTest extends TestCase
             [
                 'type'     => 'searchable',
                 'name'     => 'field',
-                'dataType' => 'int'
-            ]
+                'dataType' => 'int',
+            ],
         ];
         $tableName = 'index_table';
         $idxName = 'idxName';
@@ -108,7 +109,7 @@ class GridStructureTest extends TestCase
             ->willReturnMap(
                 [
                     ['entity_id', Table::TYPE_INTEGER, 10, ['unsigned' => true, 'nullable' => false], 'Entity ID'],
-                    ['field', Table::TYPE_INTEGER, null]
+                    ['field', Table::TYPE_INTEGER, null],
                 ]
             );
         $this->connection->expects($this->once())

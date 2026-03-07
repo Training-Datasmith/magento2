@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class FontTest extends TestCase
         $this->model = $this->objectManagerHelper->getObject(
             Font::class,
             [
-                'captchaData' => $this->helperDataMock
+                'captchaData' => $this->helperDataMock,
             ]
         );
     }
@@ -74,30 +75,30 @@ class FontTest extends TestCase
         return [
             'Empty get font' => [
                 [],
-                []
+                [],
             ],
             'Get font result' => [
                 [
                     'arial' => [
                         'label' => 'Arial',
-                        'path' => '/www/magento/fonts/arial.ttf'
+                        'path' => '/www/magento/fonts/arial.ttf',
                     ],
                     'verdana' => [
                         'label' => 'Verdana',
-                        'path' => '/www/magento/fonts/verdana.ttf'
-                    ]
+                        'path' => '/www/magento/fonts/verdana.ttf',
+                    ],
                 ],
                 [
                     [
                         'label' => 'Arial',
-                        'value' => 'arial'
+                        'value' => 'arial',
                     ],
                     [
                         'label' => 'Verdana',
-                        'value' => 'verdana'
-                    ]
-                ]
-            ]
+                        'value' => 'verdana',
+                    ],
+                ],
+            ],
         ];
     }
 }

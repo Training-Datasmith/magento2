@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Grid\Massaction;
 
 class ItemsUpdater implements \Magento\Framework\View\Layout\Argument\UpdaterInterface

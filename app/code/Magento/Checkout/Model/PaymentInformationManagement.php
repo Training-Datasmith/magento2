@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -170,7 +172,7 @@ class PaymentInformationManagement implements \Magento\Checkout\Api\PaymentInfor
                 [
                     'quote_id' => $cartId,
                     'exception' => (string)$e,
-                    'is_guest_checkout' => false
+                    'is_guest_checkout' => false,
                 ]
             );
             throw new CouldNotSaveException(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ $createdOption = $optionRepository->create([
         'type' => ProductCustomOptionInterface::OPTION_TYPE_AREA,
         'price' => 15,
         'price_type' => 'fixed',
-    ]
+    ],
 ]);
 $createdOption->setProductSku($product->getSku());
 $product->setOptions([$createdOption]);

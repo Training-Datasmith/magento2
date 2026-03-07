@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class AddDataForCostaRica implements DataPatchInterface, PatchVersionInterface
             ['CR', 'CR-HE', 'Heredia'],
             ['CR', 'CR-GU', 'Guanacaste'],
             ['CR', 'CR-PU', 'Puntarenas'],
-            ['CR', 'CR-LI', 'Limón']
+            ['CR', 'CR-LI', 'Limón'],
         ];
     }
 

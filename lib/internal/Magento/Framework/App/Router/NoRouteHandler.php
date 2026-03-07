@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Default no route handler
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Router;
 
 class NoRouteHandler implements \Magento\Framework\App\Router\NoRouteHandlerInterface

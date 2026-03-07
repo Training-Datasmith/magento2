@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -214,7 +216,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
      *
      * @return array
      */
-    private function prepareIndexEnforcements() : array
+    private function prepareIndexEnforcements(): array
     {
         $result = [];
         foreach ($this->indexUsageEnforcements as $table => $index) {
@@ -233,7 +235,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
      * @param string $index
      * @return bool
      */
-    private function isIndexExists(string $table, string $index) : bool
+    private function isIndexExists(string $table, string $index): bool
     {
         return array_key_exists($index, $this->_conn->getIndexList($table));
     }

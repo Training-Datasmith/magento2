@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -45,7 +47,7 @@ class Generic implements \Magento\Framework\Data\OptionSourceInterface
                 function ($code, $title) {
                     return [
                         'value' => $code,
-                        'label' => $title
+                        'label' => $title,
                     ];
                 },
                 array_keys($configData),

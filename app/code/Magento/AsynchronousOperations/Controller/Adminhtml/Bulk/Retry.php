@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Controller\Adminhtml\Bulk;
 
+use Magento\AsynchronousOperations\Model\AccessValidator;
 use Magento\AsynchronousOperations\Model\BulkManagement;
 use Magento\AsynchronousOperations\Model\BulkNotificationManagement;
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Backend\App\Action;
-use Magento\AsynchronousOperations\Model\AccessValidator;
 use Magento\Framework\Controller\ResultFactory;
 
 /**
@@ -19,43 +22,21 @@ use Magento\Framework\Controller\ResultFactory;
 class Retry extends Action
 {
     /**
-     * @var BulkManagement
-     */
-    private $bulkManagement;
-
-    /**
-     * @var BulkNotificationManagement
-     */
-    private $notificationManagement;
-
-    /**
-     * @var \Magento\AsynchronousOperations\Model\AccessValidator
-     */
-    private $accessValidator;
-
-    /**
      * Retry constructor.
-     * @param Context $context
-     * @param BulkManagement $bulkManagement
-     * @param BulkNotificationManagement $notificationManagement
-     * @param AccessValidator $accessValidator
      */
     public function __construct(
         Context $context,
-        BulkManagement $bulkManagement,
-        BulkNotificationManagement $notificationManagement,
-        AccessValidator $accessValidator
+        private readonly BulkManagement $bulkManagement,
+        private readonly BulkNotificationManagement $notificationManagement,
+        private readonly AccessValidator $accessValidator
     ) {
         parent::__construct($context);
-        $this->bulkManagement = $bulkManagement;
-        $this->notificationManagement = $notificationManagement;
-        $this->accessValidator = $accessValidator;
     }
 
     /**
      * @inheritDoc
      */
-    protected function _isAllowed()
+    protected function _isAllowed(): bool
     {
         return $this->_authorization->isAllowed('Magento_Logging::system_magento_logging_bulk_operations')
             && $this->accessValidator->isAllowed($this->getRequest()->getParam('uuid'));

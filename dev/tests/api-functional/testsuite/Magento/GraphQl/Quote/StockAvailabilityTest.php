@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -87,10 +88,10 @@ class StockAvailabilityTest extends GraphQlAbstract
                                     'only_x_left_in_stock' => null,
                                 ],
                                 'quantity' => 100,
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())
@@ -120,11 +121,11 @@ class StockAvailabilityTest extends GraphQlAbstract
                                     'sku' => $this->fixtures->get('product')->getSku(),
                                     'only_x_left_in_stock' => 100,
                                 ],
-                                'quantity' => 100
-                            ]
-                        ]
-                    ]
-                ]
+                                'quantity' => 100,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())
@@ -155,9 +156,9 @@ class StockAvailabilityTest extends GraphQlAbstract
                         [
                             'code' => 'INSUFFICIENT_STOCK',
                             'message' => 'Only 10 of 20 available',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->addToCartMutation(
@@ -189,9 +190,9 @@ class StockAvailabilityTest extends GraphQlAbstract
                                     'not_available_message' => null,
                                     'quantity' => 100,
                                     'is_available' => true,
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'user_errors' => [],
                 ],
@@ -211,7 +212,7 @@ class StockAvailabilityTest extends GraphQlAbstract
         DataFixture(
             BundleSelectionFixture::class,
             [
-                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0
+                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0,
             ],
             as:'link'
         ),
@@ -229,7 +230,7 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundleProduct.id$',
                 'selections' => [['$product.id$']],
-                'qty' => 100
+                'qty' => 100,
             ],
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
@@ -250,11 +251,11 @@ class StockAvailabilityTest extends GraphQlAbstract
                                 'product' => [
                                     'sku' => $this->fixtures->get('bundleProduct')->getSku(),
                                     'only_x_left_in_stock' => null,
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())
@@ -269,7 +270,7 @@ class StockAvailabilityTest extends GraphQlAbstract
         DataFixture(
             BundleSelectionFixture::class,
             [
-                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0
+                'sku' => '$product.sku$', 'price' => 100, 'price_type' => 0,
             ],
             as:'link'
         ),
@@ -279,7 +280,7 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'title' => 'Checkbox Options',
                 'type' => 'checkbox',
                 'required' => 1,
-                'product_links' => ['$link$']
+                'product_links' => ['$link$'],
             ],
             'option'
         ),
@@ -288,7 +289,7 @@ class StockAvailabilityTest extends GraphQlAbstract
             [
                 'sku' => self::PARENT_SKU_BUNDLE,
                 'price' => 90,
-                '_options' => ['$option$']
+                '_options' => ['$option$'],
             ],
             as:'bundleProduct'
         ),
@@ -299,9 +300,9 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundleProduct.id$',
                 'selections' => [
-                    ['$product.id$']
+                    ['$product.id$'],
                 ],
-                'qty' => 99
+                'qty' => 99,
             ],
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
@@ -335,12 +336,12 @@ class StockAvailabilityTest extends GraphQlAbstract
                                     'not_available_message' => null,
                                     'product' => [
                                         'sku' => self::PARENT_SKU_BUNDLE,
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->mutationAddBundleProduct(
@@ -369,7 +370,7 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurable_product.id$',
                 'child_product_id' => '$product.id$',
-                'qty' => 100
+                'qty' => 100,
             ],
         )
     ]
@@ -388,11 +389,11 @@ class StockAvailabilityTest extends GraphQlAbstract
                                 'product' => [
                                     'sku' => $this->fixtures->get('configurable_product')->getSku(),
                                     'only_x_left_in_stock' => null,
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())
@@ -418,7 +419,7 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurable_product.id$',
                 'child_product_id' => '$product.id$',
-                'qty' => 90
+                'qty' => 90,
             ],
         ),
     ]
@@ -436,11 +437,11 @@ class StockAvailabilityTest extends GraphQlAbstract
                                 'product' => [
                                     'sku' => $this->fixtures->get('configurable_product')->getSku(),
                                     'only_x_left_in_stock' => 100,
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId())
@@ -472,7 +473,7 @@ class StockAvailabilityTest extends GraphQlAbstract
                 'type_id' => 'simple',
                 'sku' => self::PARENT_SKU_CONFIGURABLE,
                 '_options' => [
-                    '$attribute$'
+                    '$attribute$',
                 ],
                 '_links' => [
                     '$product_variant_1$',
@@ -485,7 +486,7 @@ class StockAvailabilityTest extends GraphQlAbstract
             ProductStockFixture::class,
             [
                 'prod_id' => '$product_variant_1.id$',
-                'prod_qty' => 100
+                'prod_qty' => 100,
             ],
             'productVariantStock1'
         ),
@@ -493,7 +494,7 @@ class StockAvailabilityTest extends GraphQlAbstract
             ProductStockFixture::class,
             [
                 'prod_id' => '$product_variant_2.id$',
-                'prod_qty' => 100
+                'prod_qty' => 100,
             ],
             'productVariantStock2'
         ),
@@ -523,10 +524,10 @@ class StockAvailabilityTest extends GraphQlAbstract
                                     'product' => [
                                         'sku' => 'product_variant_1',
                                         'only_x_left_in_stock' => 100,
-                                    ]
-                                ]
-                            ]
-                        ]
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     'user_errors' => [],
                 ],
@@ -564,9 +565,9 @@ class StockAvailabilityTest extends GraphQlAbstract
                         [
                             'code' => 'INSUFFICIENT_STOCK',
                             'message' => 'Only 90 of 100 available',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->addToCartMutation(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -171,7 +172,7 @@ class ConfigOptionsListTest extends TestCase
                 true,
                 [
                     'Adapter error: [Message from LocalizedException]',
-                ]
+                ],
             ],
         ];
     }
@@ -219,10 +220,10 @@ class ConfigOptionsListTest extends TestCase
                 [
                     'remote_storage' => [
                         'driver' => 'aws-s3',
-                    ]
+                    ],
                 ],
                 // no config data will be passed to write to deployment config
-                []
+                [],
             ],
             'Remote Storage Options Missing and Remote Storage Deployment Config Missing' => [
                 [
@@ -233,8 +234,8 @@ class ConfigOptionsListTest extends TestCase
                     // will create default config with file driver
                     'remote_storage' => [
                         'driver' => 'file',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'Remote Storage Options Present and Remote Storage Deployment Config Missing' => [
                 [
@@ -252,8 +253,8 @@ class ConfigOptionsListTest extends TestCase
                             'bucket' => 'bucket1',
                             'region' => 'us-east-1',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'Remote Storage Options Present and Remote Storage Deployment Config Present' => [
                 [
@@ -269,7 +270,7 @@ class ConfigOptionsListTest extends TestCase
                             'bucket' => 'bucket_OLD',
                             'region' => 'us-east-1_OLD',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'remote_storage' => [
@@ -279,8 +280,8 @@ class ConfigOptionsListTest extends TestCase
                             'bucket' => 'bucket_NEW',
                             'region' => 'us-east-1_NEW',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
     }

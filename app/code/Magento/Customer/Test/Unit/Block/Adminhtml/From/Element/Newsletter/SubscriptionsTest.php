@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -63,8 +64,8 @@ class SubscriptionsTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
-            ]
+                $this->createMock(SecureHtmlRenderer::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -75,7 +76,7 @@ class SubscriptionsTest extends TestCase
                 'factoryCollection' => $this->factoryCollection,
                 'escaper' => $this->escaper,
                 'dataPersistor' => $this->dataPersistor,
-                'data' => []
+                'data' => [],
             ]
         );
     }
@@ -112,9 +113,9 @@ class SubscriptionsTest extends TestCase
                             'values' => $data['subscriptions'][0]['store_options'],
                             'value' => $data['subscriptions'][0]['store_id'],
                             'required' => true,
-                        ]
+                        ],
                     ],
-                    $selectElement
+                    $selectElement,
                 ],
                 [
                     'checkbox',
@@ -124,10 +125,10 @@ class SubscriptionsTest extends TestCase
                             'data-form-part' => $data['target_form'],
                             'value' => $data['subscriptions'][0]['status'],
                             'onchange' => 'this.value = this.checked;',
-                        ]
+                        ],
                     ],
-                    $statusElement
-                ]
+                    $statusElement,
+                ],
             ]
         );
         $this->dataPersistor->method('get')->willReturn([]);
@@ -154,9 +155,9 @@ class SubscriptionsTest extends TestCase
         $lastUpdated = 'last updated';
         $storeElementHtml = 'storeElementHtml';
         $statusElementHtml = 'statusElementHtml';
-        $outputHtmlTemplate = "<table class=\"admin__table-secondary\">"
-            . "<tr><th>%s</th><th class=\"subscriber-status\">%s</th><th>%s</th><th>%s</th></tr>"
-            . "<tr><td>%s</td><td class=\"subscriber-status\">%s</td><td>%s</td><td>%s</td></tr></table>";
+        $outputHtmlTemplate = '<table class="admin__table-secondary">'
+            . '<tr><th>%s</th><th class="subscriber-status">%s</th><th>%s</th><th>%s</th></tr>'
+            . '<tr><td>%s</td><td class="subscriber-status">%s</td><td>%s</td><td>%s</td></tr></table>';
 
         return [
             [
@@ -189,7 +190,7 @@ class SubscriptionsTest extends TestCase
                     $statusElementHtml,
                     $storeElementHtml,
                     $lastUpdated
-                )
+                ),
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class GalleryTest extends TestCase
         'url' => ['DATA_TYPE' => 'text', 'NULLABLE' => true],
         'title' => ['DATA_TYPE' => 'varchar', 'NULLABLE' => true],
         'description' => ['DATA_TYPE' => 'text', 'NULLABLE' => true],
-        'metadata' => ['DATA_TYPE' => 'text', 'NULLABLE' => true]
+        'metadata' => ['DATA_TYPE' => 'text', 'NULLABLE' => true],
     ];
 
     /**
@@ -91,7 +92,7 @@ class GalleryTest extends TestCase
             Gallery::class,
             [
                 'metadataPool' => $metadataPool,
-                'resource' => $resource
+                'resource' => $resource,
             ]
         );
         $this->product = $this->createMock(Product::class);
@@ -113,12 +114,12 @@ class GalleryTest extends TestCase
             'video_url_default' => 'url',
             'video_title_default' => 'title',
             'video_description_default' => 'description',
-            'video_metadata_default' => 'metadata'
+            'video_metadata_default' => 'metadata',
         ];
         $leftJoinTables = [
             0 => [
                 0 => [
-                    'store_value' => 'catalog_product_entity_media_gallery_value_video'
+                    'store_value' => 'catalog_product_entity_media_gallery_value_video',
                 ],
                 1 => 'main.value_id = store_value.value_id AND store_value.store_id = 0',
                 2 => [
@@ -126,9 +127,9 @@ class GalleryTest extends TestCase
                     'video_url' => 'url',
                     'video_title' => 'title',
                     'video_description' => 'description',
-                    'video_metadata' => 'metadata'
-                ]
-            ]
+                    'video_metadata' => 'metadata',
+                ],
+            ],
         ];
         $whereCondition = null;
         $getTableReturnValue = 'table';
@@ -147,7 +148,7 @@ class GalleryTest extends TestCase
                 'video_url' => 'https://www.youtube.com/watch?v=abcdefghij',
                 'video_title' => 'Some first title',
                 'video_description' => 'Description first',
-                'video_metadata' => 'meta one'
+                'video_metadata' => 'meta one',
             ],
             [
                 'value_id' => '5',
@@ -161,8 +162,8 @@ class GalleryTest extends TestCase
                 'video_url' => 'https://www.youtube.com/watch?v=ab123456',
                 'video_title' => 'Some second title',
                 'video_description' => 'Description second',
-                'video_metadata' => ''
-            ]
+                'video_metadata' => '',
+            ],
         ];
         $this->connection->expects($this->once())->method('fetchAll')
             ->with($this->select)
@@ -199,7 +200,7 @@ class GalleryTest extends TestCase
                     'video_url_default' => 'url',
                     'video_title_default' => 'title',
                     'video_description_default' => 'description',
-                    'video_metadata_default' => 'metadata'
+                    'video_metadata_default' => 'metadata',
                 ]
             )
             ->willReturn($this->select);
@@ -229,7 +230,7 @@ class GalleryTest extends TestCase
         $leftJoinTables = [
             0 => [
                 0 => [
-                    'store_value' => 'catalog_product_entity_media_gallery_value_video'
+                    'store_value' => 'catalog_product_entity_media_gallery_value_video',
                 ],
                 1 => 'main.value_id = store_value.value_id AND store_value.store_id = 0',
                 2 => [
@@ -237,9 +238,9 @@ class GalleryTest extends TestCase
                     'video_url' => 'url',
                     'video_title' => 'title',
                     'video_description' => 'description',
-                    'video_metadata' => 'metadata'
-                ]
-            ]
+                    'video_metadata' => 'metadata',
+                ],
+            ],
         ];
         $whereCondition = 'main.store_id = ' . $storeId;
         $getTableReturnValue = 'table';
@@ -250,7 +251,7 @@ class GalleryTest extends TestCase
             ->method('from')
             ->with(
                 [
-                    'main' => $getTableReturnValue
+                    'main' => $getTableReturnValue,
                 ],
                 '*'
             )
@@ -282,7 +283,7 @@ class GalleryTest extends TestCase
                 'video_url' => 'https://www.youtube.com/watch?v=abcdefghij',
                 'video_title' => 'Some first title',
                 'video_description' => 'Description first',
-                'video_metadata' => 'meta one'
+                'video_metadata' => 'meta one',
             ],
             [
                 'value_id' => '5',
@@ -296,8 +297,8 @@ class GalleryTest extends TestCase
                 'video_url' => 'https://www.youtube.com/watch?v=ab123456',
                 'video_title' => 'Some second title',
                 'video_description' => 'Description second',
-                'video_metadata' => ''
-            ]
+                'video_metadata' => '',
+            ],
         ];
 
         $this->connection->expects($this->once())->method('fetchAll')
@@ -354,8 +355,8 @@ class GalleryTest extends TestCase
                 'disabled' => '0',
                 'label_default' => null,
                 'position_default' => '1',
-                'disabled_default' => '0'
-            ]
+                'disabled_default' => '0',
+            ],
         ];
 
         $this->connection->expects($this->once())->method('getCheckSql')->with(
@@ -388,18 +389,18 @@ class GalleryTest extends TestCase
                 [
                     '`value`.`label`',
                     '`default_value`.`label`',
-                    'IFNULL(`value`.`label`, `default_value`.`label`)'
+                    'IFNULL(`value`.`label`, `default_value`.`label`)',
                 ],
                 [
                     '`value`.`position`',
                     '`default_value`.`position`',
-                    'IFNULL(`value`.`position`, `default_value`.`position`)'
+                    'IFNULL(`value`.`position`, `default_value`.`position`)',
                 ],
                 [
                     '`value`.`disabled`',
                     '`default_value`.`disabled`',
-                    'IFNULL(`value`.`disabled`, `default_value`.`disabled`)'
-                ]
+                    'IFNULL(`value`.`disabled`, `default_value`.`disabled`)',
+                ],
             ]
         );
         $this->select
@@ -411,7 +412,7 @@ class GalleryTest extends TestCase
                 [
                     'value_id',
                     'file' => 'value',
-                    'media_type'
+                    'media_type',
                 ]
             )
             ->willReturn($this->select);
@@ -437,7 +438,7 @@ class GalleryTest extends TestCase
                     'disabled' => 'IFNULL(`value`.`disabled`, `default_value`.`disabled`)',
                     'label_default' => 'default_value.label',
                     'position_default' => 'default_value.position',
-                    'disabled_default' => 'default_value.disabled'
+                    'disabled_default' => 'default_value.disabled',
                 ]
             )
             ->willReturn($this->select);
@@ -487,7 +488,7 @@ class GalleryTest extends TestCase
             'url' => 'https://www.youtube.com/watch?v=abcdfghijk',
             'title' => 'New Title',
             'description' => 'New Description',
-            'metadata' => 'New metadata'
+            'metadata' => 'New metadata',
         ];
 
         $this->connection->expects($this->once())->method('describeTable')->willReturn($this->fields);
@@ -545,8 +546,8 @@ class GalleryTest extends TestCase
                 'attribute_id' => 90,
                 'value' => '/d/o/download_7.jpg',
                 'media_type' => 'image',
-                'disabled' => '0'
-            ]
+                'disabled' => '0',
+            ],
         ];
 
         $this->connection->expects($this->once())->method('select')->willReturn($this->select);

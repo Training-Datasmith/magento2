@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer;
 use Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\PhraseCollector;
 use Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\Token;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,7 +45,7 @@ class PhraseCollectorTest extends TestCase
         $this->phraseCollector = $this->objectManager->getObject(
             PhraseCollector::class,
             [
-                'tokenizer' => $this->tokenizerMock
+                'tokenizer' => $this->tokenizerMock,
             ]
         );
     }
@@ -91,26 +92,26 @@ class PhraseCollectorTest extends TestCase
         $isEndOfLoopCallCount = 0;
         $this->tokenizerMock->expects($this->atLeastOnce())
             ->method('isEndOfLoop')
-            ->willReturnCallback(function() use (&$isEndOfLoopCallCount, $isEndOfLoopReturnValues) {
+            ->willReturnCallback(function () use (&$isEndOfLoopCallCount, $isEndOfLoopReturnValues) {
                 return $isEndOfLoopReturnValues[$isEndOfLoopCallCount++] ?? false;
             });
         $getNextRealTokenCallCount = 0;
         $this->tokenizerMock->expects($this->any())
             ->method('getNextRealToken')
-            ->willReturnCallback(function() use (&$getNextRealTokenCallCount, $nextRealToken) {
+            ->willReturnCallback(function () use (&$getNextRealTokenCallCount, $nextRealToken) {
                 return $nextRealToken[$getNextRealTokenCallCount++] ?? null;
             });
         $getFunctionArgumentsTokensCallCount = 0;
         $this->tokenizerMock->expects($this->any())
             ->method('getFunctionArgumentsTokens')
-            ->willReturnCallback(function() use (&$getFunctionArgumentsTokensCallCount, $getFunctionArgumentsTokensReturnValues) {
+            ->willReturnCallback(function () use (&$getFunctionArgumentsTokensCallCount, $getFunctionArgumentsTokensReturnValues) {
                 return $getFunctionArgumentsTokensReturnValues[$getFunctionArgumentsTokensCallCount++] ?? [];
             });
         $isMatchingClassCallCount = 0;
         $this->tokenizerMock->expects($this->any())
             ->method('isMatchingClass')
             ->with($matchingClass)
-            ->willReturnCallback(function() use (&$isMatchingClassCallCount, $isMatchingClassReturnValues) {
+            ->willReturnCallback(function () use (&$isMatchingClassCallCount, $isMatchingClassReturnValues) {
                 return $isMatchingClassReturnValues[$isMatchingClassCallCount++] ?? false;
             });
 
@@ -144,7 +145,7 @@ class PhraseCollectorTest extends TestCase
                     false, //at =
                     false, //at __
                     false, //at ;
-                    true //after ;
+                    true, //after ;
                 ],
                 'getNextRealTokenReturnValues' => [
                     static fn (self $testCase) => $testCase->createToken(false, false, false, false, '$phrase1'),
@@ -156,7 +157,7 @@ class PhraseCollectorTest extends TestCase
                     static fn (self $testCase) => $testCase->createToken(true, false, false, false, '__', $line),
                     static fn (self $testCase) => $testCase->createToken(false, true, false, false, '('),
                     static fn (self $testCase) => $testCase->createToken(false, false, false, false, ';'),
-                    false
+                    false,
                 ],
                 'getFunctionArgumentsTokensReturnValues' => [
                     [[static fn (self $testCase) => $testCase->createToken(
@@ -172,26 +173,26 @@ class PhraseCollectorTest extends TestCase
                         false,
                         true,
                         '\'More testing\''
-                    )]] // 'More testing')
+                    )]], // 'More testing')
                 ],
                 'isMatchingClassReturnValues' => [
-                    true // \Magento\Framework\Phrase(
+                    true, // \Magento\Framework\Phrase(
                 ],
                 'result' => [
                     [
                         'phrase' => '\'Testing\'',
                         'arguments' => 0,
                         'file' => $file,
-                        'line' => $line
+                        'line' => $line,
                     ],
                     [
                         'phrase' => '\'More testing\'',
                         'arguments' => 0,
                         'file' => $file,
-                        'line' => $line
-                    ]
-                ]
-            ]
+                        'line' => $line,
+                    ],
+                ],
+            ],
         ];
     }
 

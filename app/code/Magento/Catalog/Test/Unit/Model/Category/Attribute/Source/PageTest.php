@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class PageTest extends TestCase
         $this->model = $helper->getObject(
             Page::class,
             [
-                'blockCollectionFactory' => $this->getMockedBlockCollectionFactory()
+                'blockCollectionFactory' => $this->getMockedBlockCollectionFactory(),
             ]
         );
     }

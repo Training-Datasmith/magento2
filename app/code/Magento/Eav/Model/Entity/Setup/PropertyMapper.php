@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Setup;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
@@ -38,7 +41,7 @@ class PropertyMapper extends PropertyMapperAbstract
                 $input,
                 'global',
                 \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL
-            )
+            ),
         ];
     }
 }

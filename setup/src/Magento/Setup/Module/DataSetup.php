@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Resource Setup Model
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Setup\Module\Setup\SetupCache;
 

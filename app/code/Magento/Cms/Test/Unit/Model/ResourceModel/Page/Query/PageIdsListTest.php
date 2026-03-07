@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 class PageIdsListTest extends TestCase
 {
-
     /**
      * @var ResourceConnection|MockObject
      */
@@ -99,7 +99,7 @@ class PageIdsListTest extends TestCase
         return [
             [[1, 2, 3], [1], ['test1', 'test2', 'test3']],
             [[1, 2, 3], [], []],
-            [[], [], []]
+            [[], [], []],
         ];
     }
 }

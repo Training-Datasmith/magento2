@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class Node
                         },
                         $this->children
                     )
-                )
+                ),
             ]
         );
     }

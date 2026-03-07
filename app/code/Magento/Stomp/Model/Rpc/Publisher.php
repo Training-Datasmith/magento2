@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -104,8 +105,8 @@ class Publisher implements PublisherInterface
                     'destination-type' => 'ANYCAST',
                     // md5() here is not for cryptographic use.
                     // phpcs:ignore Magento2.Security.InsecureFunction
-                    'message_id' => md5(uniqid($topicName))
-                ]
+                    'message_id' => md5(uniqid($topicName)),
+                ],
             ]
         );
         $publisher = $this->publisherConfig->getPublisher($topicName);

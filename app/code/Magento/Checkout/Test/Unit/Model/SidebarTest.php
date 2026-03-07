@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Checkout\Model\Sidebar;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Model\Quote;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class SidebarTest extends TestCase
 {
@@ -195,8 +196,8 @@ class SidebarTest extends TestCase
             //locale, itemId, expectedItemQty, ItemQty
             [ 'en_US', 1, 2, 2],
             [ 'en_US', 1, 0.5, 0.5],
-            [ 'en_US', 1,"0.5","0.5"],
-            [ 'nl_NL', 1,"0.5","0,5"]
+            [ 'en_US', 1,'0.5','0.5'],
+            [ 'nl_NL', 1,'0.5','0,5'],
         ];
     }
 }

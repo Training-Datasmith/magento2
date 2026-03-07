@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,11 +18,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class OrderStatusHistoryAddTest extends WebapiAbstract
 {
-    const SERVICE_READ_NAME = 'salesOrderManagementV1';
+    public const SERVICE_READ_NAME = 'salesOrderManagementV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
-    const ORDER_INCREMENT_ID = '100000001';
+    public const ORDER_INCREMENT_ID = '100000001';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

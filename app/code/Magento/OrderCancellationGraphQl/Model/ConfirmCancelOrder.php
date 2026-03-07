@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -51,11 +52,11 @@ class ConfirmCancelOrder
                 $confirmationKeyData['reason']
             );
             return [
-                'order' => $this->orderFormatter->format($updatedOrder)
+                'order' => $this->orderFormatter->format($updatedOrder),
             ];
         } catch (LocalizedException $e) {
             return [
-                'error' => __($e->getMessage())
+                'error' => __($e->getMessage()),
             ];
         }
     }

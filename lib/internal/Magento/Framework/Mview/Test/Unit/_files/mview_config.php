@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,17 +23,17 @@ return [
                     'column' => 'entity_id',
                     'subscription_model' => null,
                     'additional_columns' => [],
-                    'processor' => \Magento\Framework\Mview\View\AdditionalColumnsProcessor\DefaultProcessor::class
+                    'processor' => \Magento\Framework\Mview\View\AdditionalColumnsProcessor\DefaultProcessor::class,
                 ],
                 'some_product_relation' => [
                     'name' => 'some_product_relation',
                     'column' => 'product_id',
                     'subscription_model' => null,
                     'additional_columns' => [],
-                    'processor' => \Magento\Framework\Mview\View\AdditionalColumnsProcessor\DefaultProcessor::class
+                    'processor' => \Magento\Framework\Mview\View\AdditionalColumnsProcessor\DefaultProcessor::class,
                 ],
             ],
-            'walker' => \Magento\Framework\Mview\View\ChangelogBatchWalker::class
+            'walker' => \Magento\Framework\Mview\View\ChangelogBatchWalker::class,
         ],
-    ]
+    ],
 ];

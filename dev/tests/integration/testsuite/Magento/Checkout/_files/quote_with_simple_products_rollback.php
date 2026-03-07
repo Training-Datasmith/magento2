@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Framework\Registry;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\ResourceModel\Quote\Collection;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Quote\Model\ResourceModel\Quote\Collection;
-use Magento\Quote\Model\Quote;
-use Magento\Framework\Registry;
 
 /** @var Registry $registry */
 $registry = Bootstrap::getObjectManager()->get(Registry::class);

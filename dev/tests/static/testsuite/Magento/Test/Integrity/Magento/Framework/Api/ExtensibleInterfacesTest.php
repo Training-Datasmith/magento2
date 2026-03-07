@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Framework\Api;
 
 use Laminas\Code\Reflection\ClassReflection;
@@ -17,7 +20,7 @@ use Magento\Setup\Module\Di\Code\Reader\FileClassScanner;
  */
 class ExtensibleInterfacesTest extends \PHPUnit\Framework\TestCase
 {
-    const EXTENSIBLE_DATA_INTERFACE = \Magento\Framework\Api\ExtensibleDataInterface::class;
+    public const EXTENSIBLE_DATA_INTERFACE = \Magento\Framework\Api\ExtensibleDataInterface::class;
 
     /**
      * Check return types of getExtensionAttributes() methods.
@@ -95,14 +98,14 @@ class ExtensibleInterfacesTest extends \PHPUnit\Framework\TestCase
             $methodReflection = $interfaceReflection->getMethod('getExtensionAttributes');
             /** Ensure that proper return type of getExtensionAttributes() method is specified */
             $methodDocBlock = $methodReflection->getDocComment();
-            $pattern = "/@return\s+" . str_replace('\\', '\\\\', $extensionInterfaceName) . "/";
+            $pattern = "/@return\s+" . str_replace('\\', '\\\\', $extensionInterfaceName) . '/';
             if (!preg_match($pattern, $methodDocBlock)) {
                 $errors[] =
                     "'{$fullInterfaceName}::getExtensionAttributes()' must be declared "
                     . "with a return type of '{$extensionInterfaceName}'.";
             }
         } catch (\ReflectionException $e) {
-            $errors[] = "The following method should be declared in "
+            $errors[] = 'The following method should be declared in '
                 . "'{$extensionInterfaceName}'. '{$extensionInterfaceName}' must be specified as"
                 . " a return type for '{$fullInterfaceName}::getExtensionAttributes()'";
         }

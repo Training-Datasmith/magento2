@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Locale\Currency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for \Magento\CurrencySymbol\Observer\CurrencyDisplayOptions
@@ -77,7 +78,7 @@ class CurrencyDisplayOptionsTest extends TestCase
     public function testCurrencyDisplayOptionsEmpty()
     {
         $baseData = [
-            Currency::CURRENCY_OPTION_NAME => 'US Dollar'
+            Currency::CURRENCY_OPTION_NAME => 'US Dollar',
         ];
         $sampleCurrencyOptionObject = new DataObject($baseData);
 
@@ -95,7 +96,7 @@ class CurrencyDisplayOptionsTest extends TestCase
     public function testCurrencyDisplayOptions()
     {
         $baseData = [
-            Currency::CURRENCY_OPTION_NAME => 'US Dollar'
+            Currency::CURRENCY_OPTION_NAME => 'US Dollar',
         ];
         $sampleCurrencyOptionObject = new DataObject($baseData);
         $sampleCurrency = 'USD';
@@ -106,7 +107,7 @@ class CurrencyDisplayOptionsTest extends TestCase
             [
                 Currency::CURRENCY_OPTION_NAME => 'US Dollar',
                 Currency::CURRENCY_OPTION_SYMBOL => $sampleCurrencySymbol,
-                Currency::CURRENCY_OPTION_DISPLAY => \Magento\Framework\Currency::USE_SYMBOL
+                Currency::CURRENCY_OPTION_DISPLAY => \Magento\Framework\Currency::USE_SYMBOL,
             ]
         );
 

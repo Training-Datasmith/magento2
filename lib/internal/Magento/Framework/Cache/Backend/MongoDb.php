@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * MongoDb cache backend
  */
+
 namespace Magento\Framework\Cache\Backend;
 
 use Magento\Framework\Cache\CacheConstants;
@@ -171,7 +173,7 @@ class MongoDb extends AbstractBackend implements ExtendedBackendInterface
             self::COMPARISON_MODE_MATCHING_ANY_TAG => '$or',
         ];
         if (!isset($operators[$comparisonMode])) {
-            throw new CacheException(__("Incorrect comparison mode specified: %1", $comparisonMode));
+            throw new CacheException(__('Incorrect comparison mode specified: %1', $comparisonMode));
         }
         $operator = $operators[$comparisonMode];
         $query = [];
@@ -250,7 +252,7 @@ class MongoDb extends AbstractBackend implements ExtendedBackendInterface
             'expired_read' => true,
             'priority' => false,
             'infinite_lifetime' => true,
-            'get_list' => true
+            'get_list' => true,
         ];
     }
 

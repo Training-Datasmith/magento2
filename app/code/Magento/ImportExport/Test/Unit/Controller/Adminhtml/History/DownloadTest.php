@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -136,7 +137,7 @@ class DownloadTest extends TestCase
                 'context' => $this->context,
                 'fileFactory' => $this->fileFactory,
                 'resultRawFactory' => $this->resultRawFactory,
-                'reportHelper' => $this->reportHelper
+                'reportHelper' => $this->reportHelper,
             ]
         );
     }
@@ -163,7 +164,7 @@ class DownloadTest extends TestCase
             ->method('create')
             ->with(
                 $processedFilename,
-                ['type' => 'filename', 'value' =>Import::IMPORT_HISTORY_DIR . $processedFilename],
+                ['type' => 'filename', 'value' => Import::IMPORT_HISTORY_DIR . $processedFilename],
                 DirectoryList::VAR_IMPORT_EXPORT,
                 'application/octet-stream',
                 1
@@ -179,7 +180,7 @@ class DownloadTest extends TestCase
     {
         return [
             'Normal file name' => ['filename.csv', 'filename.csv'],
-            'Relative file name' => ['../../../../../../../../etc/passwd', 'passwd']
+            'Relative file name' => ['../../../../../../../../etc/passwd', 'passwd'],
         ];
     }
 

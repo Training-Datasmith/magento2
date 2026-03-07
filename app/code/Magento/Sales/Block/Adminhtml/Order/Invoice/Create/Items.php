@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Invoice\Create;
 
 /**
@@ -84,7 +87,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
                 'label' => $_submitLabel,
                 'class' => 'save submit-button primary' . $submitButtonClass,
                 'onclick' => 'disableElements(\'submit-button\');$(\'edit_form\').submit()',
-                'disabled' => $this->_disableSubmitButton
+                'disabled' => $this->_disableSubmitButton,
             ]
         );
 

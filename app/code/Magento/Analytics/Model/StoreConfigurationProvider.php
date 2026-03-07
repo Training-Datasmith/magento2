@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,43 +20,18 @@ use Magento\Store\Model\StoreManagerInterface;
 class StoreConfigurationProvider
 {
     /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var string[]
-     */
-    private $configPaths;
-
-    /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
-    /**
-     * @param ScopeConfigInterface $scopeConfig
-     * @param StoreManagerInterface $storeManager
      * @param string[] $configPaths
      */
-    public function __construct(
-        ScopeConfigInterface $scopeConfig,
-        StoreManagerInterface $storeManager,
-        array $configPaths
-    ) {
-        $this->scopeConfig = $scopeConfig;
-        $this->configPaths = $configPaths;
-        $this->storeManager = $storeManager;
+    public function __construct(private readonly ScopeConfigInterface $scopeConfig, private readonly StoreManagerInterface $storeManager, private readonly array $configPaths)
+    {
     }
 
     /**
      * Generates report using config paths from di.xml
      *
      * For each website and store
-     *
-     * @return \IteratorIterator
      */
-    public function getReport()
+    public function getReport(): \IteratorIterator
     {
         $configReport = $this->generateReportForScope(ScopeConfigInterface::SCOPE_TYPE_DEFAULT, 0);
 
@@ -81,23 +58,21 @@ class StoreConfigurationProvider
     /**
      * Creates report from config for scope type and scope id.
      *
-     * @param string $scope
      * @param int $scopeId
-     * @return array
      */
-    private function generateReportForScope($scope, $scopeId)
+    private function generateReportForScope(string $scope, $scopeId): array
     {
         $report = [];
         foreach ($this->configPaths as $configPath) {
             $report[] = [
-                "config_path" => $configPath,
-                "scope" => $scope,
-                "scope_id" => $scopeId,
-                "value" => $this->scopeConfig->getValue(
+                'config_path' => $configPath,
+                'scope' => $scope,
+                'scope_id' => $scopeId,
+                'value' => $this->scopeConfig->getValue(
                     $configPath,
                     $scope,
                     $scopeId
-                )
+                ),
             ];
         }
         return $report;

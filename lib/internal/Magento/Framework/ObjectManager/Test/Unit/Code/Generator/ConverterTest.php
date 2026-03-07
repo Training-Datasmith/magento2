@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class ConverterTest extends TestCase
                 'resultClassName' => $this->resultClassName,
                 'ioObject' => $this->ioObjectMock,
                 'classGenerator' => $this->classGenerator,
-                'definedClasses' => $this->definedClassesMock
+                'definedClasses' => $this->definedClassesMock,
             ]
         );
     }

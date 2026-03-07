@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Customer\Block;
 
-use Magento\Customer\Api\AccountManagementInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
+namespace Magento\Customer\Block;
 
 /**
  * Customer front  newsletter manage block

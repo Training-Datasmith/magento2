@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Msrp\Model\Product\Attribute\Source\Type;
 
 /**
@@ -13,7 +16,7 @@ class Price extends \Magento\Msrp\Model\Product\Attribute\Source\Type
     /**
      * Get value from the store configuration settings
      */
-    const TYPE_USE_CONFIG = 0;
+    public const TYPE_USE_CONFIG = 0;
 
     /**
      * Entity attribute factory

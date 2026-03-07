@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\CurrencySymbol\Controller\Adminhtml\System\Currency;
 
+use Exception;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Backend\Model\Session as BackendSession;
+use Magento\Backend\Model\View\Result\Redirect;
 use Magento\CurrencySymbol\Controller\Adminhtml\System\Currency as CurrencyAction;
 use Magento\Directory\Model\Currency\Import\Factory as CurrencyImportFactory;
 use Magento\Directory\Model\Currency\Import\ImportInterface as CurrencyImport;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Escaper;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Registry;
-use Exception;
 
 /**
  * Fetch rates controller.

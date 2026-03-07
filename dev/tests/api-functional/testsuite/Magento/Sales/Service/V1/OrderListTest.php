@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -78,7 +81,7 @@ class OrderListTest extends WebapiAbstract
 
         $expectedTax = [
             'code' => 'US-NY-*-Rate 1',
-            'type' => 'shipping'
+            'type' => 'shipping',
         ];
         $appliedTaxes = $result['items'][0]['extension_attributes']['applied_taxes'];
         $this->assertEquals($expectedTax['code'], $appliedTaxes[0]['code']);
@@ -107,7 +110,7 @@ class OrderListTest extends WebapiAbstract
      *
      * @return array
      */
-    private function getSearchData() : array
+    private function getSearchData(): array
     {
         /** @var \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder */
         $sortOrderBuilder = $this->objectManager->get(

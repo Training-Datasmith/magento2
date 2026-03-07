@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ExpiredQuotesCollection
         /** @var $quotes Collection */
         $quotes = $this->quoteCollectionFactory->create();
         $quotes->addFieldToFilter('main_table.store_id', $store->getId());
-        $quotes->addFieldToFilter('main_table.updated_at', ['to' => date("Y-m-d", time() - $lifetime)]);
+        $quotes->addFieldToFilter('main_table.updated_at', ['to' => date('Y-m-d', time() - $lifetime)]);
 
         return $quotes;
     }

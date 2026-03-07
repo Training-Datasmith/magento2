@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model;
 
 use Magento\Framework\App\DesignInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 
 /**
@@ -29,7 +32,7 @@ class Design extends AbstractModel implements IdentityInterface, DesignInterface
     /**
      * Cache tag
      */
-    const CACHE_TAG = 'CORE_DESIGN';
+    public const CACHE_TAG = 'CORE_DESIGN';
 
     /**
      * Prefix of model events names

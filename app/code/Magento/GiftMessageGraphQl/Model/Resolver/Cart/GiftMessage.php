@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class GiftMessage implements ResolverInterface
         return [
             'to' => $giftCartMessage->getRecipient() ?? '',
             'from' =>  $giftCartMessage->getSender() ?? '',
-            'message'=>  $giftCartMessage->getMessage() ?? ''
+            'message' =>  $giftCartMessage->getMessage() ?? '',
         ];
     }
 }

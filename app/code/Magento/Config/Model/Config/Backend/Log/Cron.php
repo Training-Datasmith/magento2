@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Log Cron Backend Model
  */
+
 namespace Magento\Config\Model\Config\Backend\Log;
 
 /**
@@ -17,9 +20,9 @@ namespace Magento\Config\Model\Config\Backend\Log;
  */
 class Cron extends \Magento\Framework\App\Config\Value
 {
-    const CRON_STRING_PATH = 'crontab/default/jobs/log_clean/schedule/cron_expr';
+    public const CRON_STRING_PATH = 'crontab/default/jobs/log_clean/schedule/cron_expr';
 
-    const CRON_MODEL_PATH = 'crontab/default/jobs/log_clean/run/model';
+    public const CRON_MODEL_PATH = 'crontab/default/jobs/log_clean/run/model';
 
     /**
      * @var \Magento\Framework\App\Config\ValueFactory

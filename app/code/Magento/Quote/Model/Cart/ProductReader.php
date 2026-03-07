@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ProductReader implements ProductReaderInterface
     /**
      * @inheritDoc
      */
-    public function getProductBySku(string $sku) : ?ProductInterface
+    public function getProductBySku(string $sku): ?ProductInterface
     {
         return $this->productsBySku[strtolower($sku)] ?? null;
     }

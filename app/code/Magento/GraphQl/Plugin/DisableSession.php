@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -58,7 +59,8 @@ class DisableSession
             if ($this->appState->getAreaCode() === Area::AREA_GRAPHQL && $this->disableSessionConfig->isDisabled()) {
                 $result = false;
             }
-        } catch (LocalizedException $e) {} finally { //@codingStandardsIgnoreLine
+        } catch (LocalizedException $e) {
+        } finally { //@codingStandardsIgnoreLine
             return $result;
         }
     }

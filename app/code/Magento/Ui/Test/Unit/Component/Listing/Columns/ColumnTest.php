@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,12 +80,12 @@ class ColumnTest extends TestCase
                 'context' => $this->contextMock,
                 'data' => [
                     'js_config' => [
-                        'extends' => 'test_config_extends'
+                        'extends' => 'test_config_extends',
                     ],
                     'config' => [
-                        'dataType' => 'testType'
-                    ]
-                ]
+                        'dataType' => 'testType',
+                    ],
+                ],
             ]
         );
 
@@ -116,7 +117,7 @@ class ColumnTest extends TestCase
         $data = [
             'name' => 'test_name',
             'js_config' => ['extends' => 'test_config_extends'],
-            'config' => ['dataType' => 'test_type', 'sortable' => true]
+            'config' => ['dataType' => 'test_type', 'sortable' => true],
         ];
 
         /** @var Column $column */
@@ -125,7 +126,7 @@ class ColumnTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'uiComponentFactory' => $this->uiComponentFactoryMock,
-                'data' => $data
+                'data' => $data,
             ]
         );
 
@@ -187,7 +188,7 @@ class ColumnTest extends TestCase
     {
         $data = [
             'name' => 'test_name',
-            'config' => $config
+            'config' => $config,
         ];
 
         $this->dataProviderMock = $this->createMock(DataProviderInterface::class);
@@ -210,7 +211,7 @@ class ColumnTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'uiComponentFactory' => $this->uiComponentFactoryMock,
-                'data' => $data
+                'data' => $data,
             ]
         );
 
@@ -227,7 +228,7 @@ class ColumnTest extends TestCase
         return [
             [['dataType' => 'test_type', 'sortable' => true], 'ASC', 1],
             [['dataType' => 'test_type', 'sortable' => false], 'ASC', 0],
-            [['dataType' => 'test_type', 'sortable' => true], 'foobar', 0]
+            [['dataType' => 'test_type', 'sortable' => true], 'foobar', 0],
         ];
     }
 }

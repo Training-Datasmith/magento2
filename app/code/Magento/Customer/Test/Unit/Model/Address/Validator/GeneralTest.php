@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Customer\Model\Address\Validator\General;
 use Magento\Directory\Helper\Data;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Magento\Customer\Model\Address\Validator\General tests.
@@ -70,7 +71,7 @@ class GeneralTest extends TestCase
                 'getCompany',
                 'getPostcode',
                 'getCountryId',
-                'getStreetLine'
+                'getStreetLine',
             ]
         );
 

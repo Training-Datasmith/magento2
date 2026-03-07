@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Event\Manager;
 use Magento\Framework\Indexer\CacheContext;
 use Magento\Indexer\Model\Indexer\DeferredCacheCleaner;
 use Magento\Indexer\Model\Indexer\DeferredCacheContext;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -114,7 +115,7 @@ class DeferredCacheCleanerTest extends TestCase
     {
         return [
             [[], false],
-            [['cat_c_1', 'cat_c_2'], true]
+            [['cat_c_1', 'cat_c_2'], true],
         ];
     }
 }

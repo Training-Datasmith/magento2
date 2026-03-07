@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Pricing\Test\Unit\Adjustment;
 
 use Magento\Framework\Pricing\Adjustment\Factory;
 use Magento\Framework\Pricing\Adjustment\Pool;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class PoolTest extends TestCase
 {

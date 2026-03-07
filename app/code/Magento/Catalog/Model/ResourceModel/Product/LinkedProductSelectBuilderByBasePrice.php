@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -74,7 +77,7 @@ class LinkedProductSelectBuilderByBasePrice implements LinkedProductSelectBuilde
     /**
      * @inheritdoc
      */
-    public function build(int $productId, int $storeId) : array
+    public function build(int $productId, int $storeId): array
     {
         $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
         $priceAttribute = $this->eavConfig->getAttribute(Product::ENTITY, 'price');

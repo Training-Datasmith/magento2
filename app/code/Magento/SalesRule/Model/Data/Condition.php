@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Data;
 
 use Magento\SalesRule\Api\Data\ConditionInterface;
@@ -15,12 +18,12 @@ use Magento\SalesRule\Api\Data\ConditionInterface;
 class Condition extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\SalesRule\Api\Data\ConditionInterface
 {
-    const KEY_CONDITION_TYPE = 'condition_type';
-    const KEY_CONDITIONS = 'conditions';
-    const KEY_AGGREGATOR_TYPE = 'aggregator_type';
-    const KEY_OPERATOR = 'operator';
-    const KEY_ATTRIBUTE_NAME = 'attribute_name';
-    const KEY_VALUE = 'value';
+    public const KEY_CONDITION_TYPE = 'condition_type';
+    public const KEY_CONDITIONS = 'conditions';
+    public const KEY_AGGREGATOR_TYPE = 'aggregator_type';
+    public const KEY_OPERATOR = 'operator';
+    public const KEY_ATTRIBUTE_NAME = 'attribute_name';
+    public const KEY_VALUE = 'value';
 
     /**
      * Get condition type

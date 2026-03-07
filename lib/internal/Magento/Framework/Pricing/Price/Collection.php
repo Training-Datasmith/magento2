@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -78,7 +80,7 @@ class Collection implements \Iterator, ResetAfterRequestInterface
     /**
      * @inheritdoc
      */
-    public function _resetState() : void
+    public function _resetState(): void
     {
         $this->priceModels = [];
     }

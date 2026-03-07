@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,13 +19,13 @@ use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\Tree;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\App\Http\Context;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Rss\UrlBuilderInterface;
 use Magento\Framework\Config\View;
 use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\ConfigInterface;
 use Magento\Store\Model\ScopeInterface;
@@ -120,9 +121,9 @@ class CategoryTest extends TestCase
         'entries' => [
             [
                 'title' => 'Product Name',
-                'link' => 'http://magento.com/product.html'
-            ]
-        ]
+                'link' => 'http://magento.com/product.html',
+            ],
+        ],
     ];
 
     /**
@@ -133,7 +134,7 @@ class CategoryTest extends TestCase
         $this->request = $this->createMock(RequestInterface::class);
         $this->request
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['cid'] => 1,
                 ['store_id'] => null
             });
@@ -172,7 +173,7 @@ class CategoryTest extends TestCase
                 'customerSession' => $this->customerSession,
                 'storeManager' => $this->storeManager,
                 'categoryRepository' => $this->categoryRepository,
-                'viewConfig' => $this->viewConfig
+                'viewConfig' => $this->viewConfig,
             ]
         );
     }
@@ -279,7 +280,7 @@ class CategoryTest extends TestCase
                     'addAttributeToSort',
                     'load',
                     'addAttributeToFilter',
-                    'getIterator'
+                    'getIterator',
                 ]
         );
         $collection->expects($this->once())->method('addIdFilter')->willReturnSelf();
@@ -295,7 +296,7 @@ class CategoryTest extends TestCase
         $this->categoryFactory->expects($this->once())->method('create')->willReturn($category);
 
         $childNode = new DataObject(['id' => 1]);
-        
+
         $treeNode = $this->createPartialMock(Node::class, ['loadChildren', 'getChildren']);
         $treeNode->expects($this->once())->method('loadChildren')->willReturnSelf();
         $treeNode->expects($this->once())->method('getChildren')->willReturn([$childNode]);
@@ -311,7 +312,7 @@ class CategoryTest extends TestCase
             'group' => 'Categories',
             'feeds' => [
                 ['label' => 'Category Name', 'link' => 'http://magento.com/category-name.html'],
-            ]
+            ],
         ];
         $this->assertEquals($feeds, $this->block->getFeeds());
     }

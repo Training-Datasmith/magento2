@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -128,14 +129,14 @@ class LastOrderedItemsTest extends TestCase
             'name' => 'Product Name 1',
             'url' => 'http://example.com',
             'is_saleable' => true,
-            'product_id' => 1
+            'product_id' => 1,
         ];
         $expectedItem2 = [
             'id' => 2,
             'name' => 'Product Name 2',
             'url' => null,
             'is_saleable' => true,
-            'product_id' => 2
+            'product_id' => 2,
         ];
         $productIdVisible = 1;
         $productIdNotVisible = 2;
@@ -177,14 +178,14 @@ class LastOrderedItemsTest extends TestCase
             ->method('getById')
             ->willReturnMap([
                 [$productIdVisible, false, $storeId, false, $productVisible],
-                [$productIdNotVisible, false, $storeId, false, $productNotVisible]
+                [$productIdNotVisible, false, $storeId, false, $productNotVisible],
             ]);
         $this->stockRegistryMock
             ->expects($this->any())
             ->method('getStockItem')
             ->willReturnMap([
                 [$productIdVisible, $websiteId, $stockItemMock],
-                [$productIdNotVisible, $websiteId, $stockItemMock]
+                [$productIdNotVisible, $websiteId, $stockItemMock],
             ]);
         $stockItemMock->expects($this->exactly(2))->method('getIsInStock')->willReturn($expectedItem1['is_saleable']);
         $this->assertEquals(['items' => [$expectedItem1, $expectedItem2]], $this->section->getSectionData());
@@ -206,8 +207,7 @@ class LastOrderedItemsTest extends TestCase
             ->willReturn($visibleOnFrontStatuses);
         $this->orderCollectionFactoryMock->expects($this->once())->method('create')->willReturn($orderCollectionMock);
         $orderCollectionMock->method('addAttributeToFilter')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($customerId, $visibleOnFrontStatuses, $orderCollectionMock) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($customerId, $visibleOnFrontStatuses, $orderCollectionMock) {
                 if ($arg1 == 'customer_id' && $arg2 == $customerId) {
                     return $orderCollectionMock;
                 }

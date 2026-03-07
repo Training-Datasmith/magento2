@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\Checkout\Block\Cart;
 
-use Magento\Checkout\Model\CompositeConfigProvider;
 use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
+use Magento\Checkout\Model\CompositeConfigProvider;
+use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\JsonHexTag;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Checkout\Model\Session as CheckoutSession;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Cart Shipping Block

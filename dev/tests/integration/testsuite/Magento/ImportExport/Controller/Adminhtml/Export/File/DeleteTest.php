@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class DeleteTest extends AbstractBackendController
     {
         return [
             ['catalog_product.csv'],
-            ['test/catalog_product.csv']
+            ['test/catalog_product.csv'],
         ];
     }
 

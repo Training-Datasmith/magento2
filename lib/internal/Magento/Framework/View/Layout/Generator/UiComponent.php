@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -26,12 +28,12 @@ class UiComponent implements GeneratorInterface
     /**
      * Generator type
      */
-    const TYPE = 'uiComponent';
+    public const TYPE = 'uiComponent';
 
     /**
      * Block container for components
      */
-    const CONTAINER = \Magento\Framework\View\Element\UiComponent\ContainerInterface::class;
+    public const CONTAINER = \Magento\Framework\View\Element\UiComponent\ContainerInterface::class;
 
     /**
      * @var UiComponentFactory
@@ -127,7 +129,7 @@ class UiComponent implements GeneratorInterface
         $context = $this->contextFactory->create(
             [
                 'namespace' => $elementName,
-                'pageLayout' => $layout
+                'pageLayout' => $layout,
             ]
         );
 

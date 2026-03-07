@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
 use Magento\Ui\Component\Form\Element\Input as ElementInput;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,31 +9,31 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Sales;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrder;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddress;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethod;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddress;
+use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\ResourceModel\Order\Collection;
+use Magento\Tax\Model\Config as TaxConfig;
+use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorage;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddress;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddress;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethod;
-use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrder;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
-use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Tax\Model\Config as TaxConfig;
-use Magento\TestFramework\Fixture\Config;
 
 /**
  * Class RetrieveOrdersTest
@@ -61,7 +62,7 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
      */
     private $fixtures;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         parent::setUp();
         $objectManager = Bootstrap::getObjectManager();
@@ -87,9 +88,9 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
         $customerOrderItemsInResponse = $response['customer']['orders']['items'][0];
         $this->assertArrayHasKey('items', $customerOrderItemsInResponse);
         $this->assertNotEmpty($customerOrderItemsInResponse['items']);
-        $this->assertNotEmpty($response["customer"]["orders"]["items"][0]["billing_address"]);
-        $this->assertNotEmpty($response["customer"]["orders"]["items"][0]["shipping_address"]);
-        $this->assertNotEmpty($response["customer"]["orders"]["items"][0]["payment_methods"]);
+        $this->assertNotEmpty($response['customer']['orders']['items'][0]['billing_address']);
+        $this->assertNotEmpty($response['customer']['orders']['items'][0]['shipping_address']);
+        $this->assertNotEmpty($response['customer']['orders']['items'][0]['payment_methods']);
 
         $searchCriteria = $this->searchCriteriaBuilder->addFilter('increment_id', '100000002')
             ->create();
@@ -102,18 +103,18 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
             $this->assertEquals('Processing', $customerOrderItemsInResponse['status']);
         }
         $expectedOrderItems = [
-            'quantity_ordered'=> 2,
-            'product_sku'=> 'simple',
-            'product_name'=> 'Simple Product',
-            'product_sale_price'=> ['currency'=> 'USD', 'value'=> 10]
+            'quantity_ordered' => 2,
+            'product_sku' => 'simple',
+            'product_name' => 'Simple Product',
+            'product_sale_price' => ['currency' => 'USD', 'value' => 10],
         ];
         $actualOrderItemsFromResponse = $customerOrderItemsInResponse['items'][0];
         $this->assertEquals($expectedOrderItems, $actualOrderItemsFromResponse);
         $actualOrderTotalFromResponse = $response['customer']['orders']['items'][0]['total'];
         $expectedOrderTotal = [
-            'base_grand_total' => ['value'=> 120,'currency' =>'USD'],
-            'grand_total' => ['value'=> 120,'currency' =>'USD'],
-            'subtotal' => ['value'=> 120,'currency' =>'USD']
+            'base_grand_total' => ['value' => 120,'currency' => 'USD'],
+            'grand_total' => ['value' => 120,'currency' => 'USD'],
+            'subtotal' => ['value' => 120,'currency' => 'USD'],
         ];
         $this->assertEquals($expectedOrderTotal, $actualOrderTotalFromResponse, 'Totals do not match');
     }
@@ -155,9 +156,9 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
                 0 => 'test street 1',
                 1 => 'test street 2',
             ],
-            'telephone' => '5123456677'
+            'telephone' => '5123456677',
         ];
-        $this->assertResponseFields($customerOrderResponse[0]["billing_address"], $billingAssertionMap);
+        $this->assertResponseFields($customerOrderResponse[0]['billing_address'], $billingAssertionMap);
         $shippingAssertionMap = [
             'firstname' => 'test shipFirst',
             'lastname' => 'test shipLast',
@@ -171,17 +172,17 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
             ],
             'region_id' => '1',
             'region' => 'Alabama',
-            'telephone' => '3347665522'
+            'telephone' => '3347665522',
         ];
-        $this->assertResponseFields($customerOrderResponse[0]["shipping_address"], $shippingAssertionMap);
+        $this->assertResponseFields($customerOrderResponse[0]['shipping_address'], $shippingAssertionMap);
         $paymentMethodAssertionMap = [
             [
                 'name' => 'Check / Money order',
                 'type' => 'checkmo',
-                'additional_data' => []
-            ]
+                'additional_data' => [],
+            ],
         ];
-        $this->assertResponseFields($customerOrderResponse[0]["payment_methods"], $paymentMethodAssertionMap);
+        $this->assertResponseFields($customerOrderResponse[0]['payment_methods'], $paymentMethodAssertionMap);
         $this->assertEquals(10.75, $customerOrderResponse[0]['items'][0]['product_sale_price']['value']);
         $this->assertEquals(7.5, $customerOrderResponse[0]['total']['taxes'][0]['rate']);
         // Asserting discounts on order item level
@@ -210,31 +211,31 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 58.05, 'currency' =>'USD'],
-            'grand_total' => ['value' => 58.05, 'currency' =>'USD'],
-            'subtotal' => ['value' => 40, 'currency' =>'USD'],
-            'total_tax' => ['value' => 4.05, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 20, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 58.05, 'currency' => 'USD'],
+            'grand_total' => ['value' => 58.05, 'currency' => 'USD'],
+            'subtotal' => ['value' => 40, 'currency' => 'USD'],
+            'total_tax' => ['value' => 4.05, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 20, 'currency' => 'USD'],
             'shipping_handling' => [
                 'amount_including_tax' => ['value' => 21.5],
                 'amount_excluding_tax' => ['value' => 20],
-                'total_amount' => ['value' => 20, 'currency' =>'USD'],
+                'total_amount' => ['value' => 20, 'currency' => 'USD'],
                 'discounts' => [
-                    0 => ['amount'=>['value'=> 2, 'currency' =>'USD']]
+                    0 => ['amount' => ['value' => 2, 'currency' => 'USD']],
                 ],
-                'taxes'=> [
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 1.35],
+                        'amount' => ['value' => 1.35],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
-                ]
+                        'rate' => 7.5,
+                    ],
+                ],
             ],
             'discounts' => [
-                0 => ['amount' => [ 'value' => 6, 'currency' =>'USD'],
-                    'label' => 'Discount Label for 10% off'
-                ]
-            ]
+                0 => ['amount' => [ 'value' => 6, 'currency' => 'USD'],
+                    'label' => 'Discount Label for 10% off',
+                ],
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }
@@ -293,36 +294,36 @@ class RetrieveOrdersByOrderNumberTest extends GraphQlAbstract
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 61.02, 'currency' =>'USD'],
-            'grand_total' => ['value' => 61.02, 'currency' =>'USD'],
-            'subtotal' => ['value' => 40, 'currency' =>'USD'],
-            'total_tax' => ['value' => 7.02, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 20, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 61.02, 'currency' => 'USD'],
+            'grand_total' => ['value' => 61.02, 'currency' => 'USD'],
+            'subtotal' => ['value' => 40, 'currency' => 'USD'],
+            'total_tax' => ['value' => 7.02, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 20, 'currency' => 'USD'],
             'shipping_handling' => [
                 'amount_including_tax' => ['value' => 22.6],
                 'amount_excluding_tax' => ['value' => 20],
-                'total_amount' => ['value' => 20, 'currency' =>'USD'],
+                'total_amount' => ['value' => 20, 'currency' => 'USD'],
                 'discounts' => [
-                    0 => ['amount'=>['value'=> 2, 'currency' =>'USD']]
+                    0 => ['amount' => ['value' => 2, 'currency' => 'USD']],
                 ],
-                'taxes'=> [
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 1.35],
+                        'amount' => ['value' => 1.35],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
+                        'rate' => 7.5,
                     ],
                     1 => [
-                        'amount'=>['value' => 0.99],
+                        'amount' => ['value' => 0.99],
                         'title' => 'US-AL-*-Rate-1',
-                        'rate' => 5.5
-                    ]
-                ]
+                        'rate' => 5.5,
+                    ],
+                ],
             ],
             'discounts' => [
-                0 => ['amount' => [ 'value' => 6, 'currency' =>'USD'],
-                    'label' => 'Discount Label for 10% off'
-                ]
-            ]
+                0 => ['amount' => [ 'value' => 6, 'currency' => 'USD'],
+                    'label' => 'Discount Label for 10% off',
+                ],
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }
@@ -524,7 +525,7 @@ QUERY;
         $this->assertEquals(
             $orderNumberCreatedAtExpected,
             $orderNumberCreatedAtResponse,
-            "The order number is different than the expected for order"
+            'The order number is different than the expected for order'
         );
     }
 
@@ -878,12 +879,12 @@ QUERY;
     private function assertTotals(array $response, int $expectedCount): void
     {
         $assertionMap = [
-            'base_grand_total' => ['value' => 100, 'currency' =>'USD'],
-            'grand_total' => ['value' => 100, 'currency' =>'USD'],
-            'subtotal' => ['value' => 110, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 100, 'currency' => 'USD'],
+            'grand_total' => ['value' => 100, 'currency' => 'USD'],
+            'subtotal' => ['value' => 110, 'currency' => 'USD'],
             'shipping_handling' => [
-                'total_amount' => ['value' => 10, 'currency' =>'USD']
-            ]
+                'total_amount' => ['value' => 10, 'currency' => 'USD'],
+            ],
         ];
         if ($expectedCount === 0) {
             $this->assertEmpty($response['customer']['orders']['items']);
@@ -900,16 +901,16 @@ QUERY;
     {
         return [
             'firstStoreFirstOrder' => [
-                '100000001', 'default', 1
+                '100000001', 'default', 1,
             ],
             'secondStoreSecondOrder' => [
-                '100000002', 'fixture_second_store', 1
+                '100000002', 'fixture_second_store', 1,
             ],
             'firstStoreSecondOrder' => [
-                '100000002', 'default', 0
+                '100000002', 'default', 0,
             ],
             'secondStoreFirstOrder' => [
-                '100000001', 'fixture_second_store', 0
+                '100000001', 'fixture_second_store', 0,
             ],
         ];
     }
@@ -955,25 +956,25 @@ QUERY;
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 32.25, 'currency' =>'USD'],
-            'grand_total' => ['value' => 32.25, 'currency' =>'USD'],
-            'total_tax' => ['value' => 2.25, 'currency' =>'USD'],
-            'subtotal' => ['value' => 20, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 32.25, 'currency' => 'USD'],
+            'grand_total' => ['value' => 32.25, 'currency' => 'USD'],
+            'total_tax' => ['value' => 2.25, 'currency' => 'USD'],
+            'subtotal' => ['value' => 20, 'currency' => 'USD'],
             'discounts' => [],
-            'total_shipping' => ['value' => 10, 'currency' =>'USD'],
+            'total_shipping' => ['value' => 10, 'currency' => 'USD'],
             'shipping_handling' => [
                 'amount_including_tax' => ['value' => 10.75],
                 'amount_excluding_tax' => ['value' => 10],
-                'total_amount' => ['value' => 10, 'currency' =>'USD'],
-                'taxes'=> [
+                'total_amount' => ['value' => 10, 'currency' => 'USD'],
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 0.75],
+                        'amount' => ['value' => 0.75],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
+                        'rate' => 7.5,
+                    ],
                 ],
-                'discounts' =>[]
-            ]
+                'discounts' => [],
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }
@@ -1024,23 +1025,23 @@ QUERY;
         unset($customerOrderItemTotal['taxes']);
         unset($customerOrderItemTotal['shipping_handling']['discounts']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 32.25, 'currency' =>'USD'],
-            'grand_total' => ['value' => 32.25, 'currency' =>'USD'],
-            'total_tax' => ['value' => 2.25, 'currency' =>'USD'],
-            'subtotal' => ['value' => 20, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 10, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 32.25, 'currency' => 'USD'],
+            'grand_total' => ['value' => 32.25, 'currency' => 'USD'],
+            'total_tax' => ['value' => 2.25, 'currency' => 'USD'],
+            'subtotal' => ['value' => 20, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 10, 'currency' => 'USD'],
             'shipping_handling' => [
                 'amount_including_tax' => ['value' => 10.75],
                 'amount_excluding_tax' => ['value' => 10],
-                'total_amount' => ['value' => 10, 'currency' =>'USD'],
-                'taxes'=> [
+                'total_amount' => ['value' => 10, 'currency' => 'USD'],
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 0.75],
+                        'amount' => ['value' => 0.75],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
-                ]
-            ]
+                        'rate' => 7.5,
+                    ],
+                ],
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }

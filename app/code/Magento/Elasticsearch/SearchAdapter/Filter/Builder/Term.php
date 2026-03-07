@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,10 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\SearchAdapter\Filter\Builder;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface as FieldTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Framework\Search\Request\Filter\Term as TermFilterRequest;
 use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface
-    as FieldTypeConverterInterface;
 
 /**
  * Term filter builder
@@ -72,7 +72,7 @@ class Term implements FilterInterface
 
         if ($filter->getValue() !== false) {
             $operator = is_array($filter->getValue()) ? 'terms' : 'term';
-            $filterQuery []= [
+            $filterQuery [] = [
                 $operator => [
                     $fieldName => $filter->getValue(),
                 ],

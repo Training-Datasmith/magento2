@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class CommentTest extends TestCase
             ->willReturn($directoryReadMock);
         $this->placeholderMock->expects($this->any())
             ->method('restore')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['CONFIG__DEFAULT__SOME__PAYMENT__PASSWORD'] => 'some/payment/password',
                 ['CONFIG__DEFAULT__SOME__PAYMENT__TOKEN'] => 'some/payment/token'
             });
@@ -69,7 +70,7 @@ class CommentTest extends TestCase
             $this->model->execute($fileName),
             [
                 'CONFIG__DEFAULT__SOME__PAYMENT__PASSWORD' => 'some/payment/password',
-                'CONFIG__DEFAULT__SOME__PAYMENT__TOKEN' => 'some/payment/token'
+                'CONFIG__DEFAULT__SOME__PAYMENT__TOKEN' => 'some/payment/token',
             ]
         );
     }

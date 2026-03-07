@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,22 +8,22 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Observer;
 
+use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Data;
 use Magento\Persistent\Helper\Session;
 use Magento\Persistent\Model\QuoteManager;
 use Magento\Persistent\Observer\CheckExpirePersistentQuoteObserver;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,7 +31,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CheckExpirePersistentQuoteObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -108,7 +108,7 @@ class CheckExpirePersistentQuoteObserverTest extends TestCase
             [
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getParam', 'setParams', 'getParams', 'getCookie', 'isSecure',
-                'getRequestUri', 'getServer'  // Custom methods
+                'getRequestUri', 'getServer',  // Custom methods
             ]
         );
         $this->quoteRepositoryMock = $this->createMock(CartRepositoryInterface::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Attribute\Source;
 
+use Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate as Backend;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Eav\Model\Entity\Attribute\Source\SpecificSourceInterface;
 use Magento\Framework\Api\CustomAttributesDataInterface;
-use Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate as Backend;
 use Magento\Framework\Model\AbstractExtensibleModel;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Helper\Form;
 
-use Magento\Catalog\Block\Adminhtml\Helper\Form\Wysiwyg;
 use Magento\Backend\Block\Widget\Button;
 use Magento\Backend\Helper\Data as BackendHelperData;
+use Magento\Catalog\Block\Adminhtml\Helper\Form\Wysiwyg;
 use Magento\Cms\Model\Wysiwyg\Config as WysiwygConfig;
-use Magento\Framework\Data\Form\Element\CollectionFactory as ElementCollectionFactory;
-use Magento\Framework\Data\Form\Element\Factory as ElementFactory;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\CollectionFactory as ElementCollectionFactory;
+use Magento\Framework\Data\Form\Element\Factory as ElementFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Magento\Framework\Math\Random;
@@ -23,10 +24,10 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\View\LayoutInterface;
-use ReflectionClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * @covers \Magento\Catalog\Block\Adminhtml\Helper\Form\Wysiwyg

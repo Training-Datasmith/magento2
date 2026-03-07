@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class BundleTest extends TestCase
         $this->minificationMock
             ->expects($this->any())
             ->method('addMinifiedSign')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['onefile.js'] => 'onefile.min.js',
                 ['path-to-theme/js/bundle/bundle0.js'] => 'path-to-theme/js/bundle/bundle0.min.js'
             });

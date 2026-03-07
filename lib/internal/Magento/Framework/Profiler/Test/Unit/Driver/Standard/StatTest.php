@@ -1,13 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Test\Unit\Driver\Standard;
 
 use Magento\Framework\Profiler\Driver\Standard\Stat;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class StatTest extends TestCase
 {
@@ -132,7 +135,7 @@ class StatTest extends TestCase
                         Stat::COUNT => 1,
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -253,7 +256,7 @@ class StatTest extends TestCase
                     'root->system->init_config',
                     'root->system->init_store',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -308,7 +311,7 @@ class StatTest extends TestCase
                 'filterPattern' => null,
                 // TIME >= 1000, REALMEM >= 20000
                 'expectedTimerIds' => ['root', 'root->init->init_cache'],
-            ]
+            ],
         ];
     }
 
@@ -355,17 +358,17 @@ class StatTest extends TestCase
                     [
                         'timerId' => 'root',
                         'key' => Stat::TIME,
-                        'expectedValue' => 1000
+                        'expectedValue' => 1000,
                     ],
                     [
                         'timerId' => 'root',
                         'key' => Stat::REALMEM,
-                        'expectedValue' => 500
+                        'expectedValue' => 500,
                     ],
                     [
                         'timerId' => 'root',
                         'key' => Stat::EMALLOC,
-                        'expectedValue' => 10
+                        'expectedValue' => 10,
                     ],
                 ],
             ],
@@ -382,7 +385,7 @@ class StatTest extends TestCase
                         'key' => Stat::AVG,
                         'expectedValue' => 10,
                     ],
-                ]
+                ],
             ],
             [
                 'timers' => [['start', 'root', 'time' => 0]],
@@ -395,10 +398,10 @@ class StatTest extends TestCase
                     [
                         'timerId' => 'root',
                         'key' => Stat::ID,
-                        'expectedValue' => 'root'
+                        'expectedValue' => 'root',
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

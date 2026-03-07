@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,7 +29,7 @@ class NotSyncedDataProvider implements NotSyncedDataProviderInterface
         $this->providers = $tmapFactory->create(
             [
                 'array' => $providers,
-                'type' => NotSyncedDataProviderInterface::class
+                'type' => NotSyncedDataProviderInterface::class,
             ]
         );
     }

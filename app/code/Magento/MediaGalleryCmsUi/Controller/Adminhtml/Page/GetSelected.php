@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class GetSelected extends Action implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::page';
+    public const ADMIN_RESOURCE = 'Magento_Cms::page';
 
     /**
      * @var JsonFactory
@@ -71,7 +72,7 @@ class GetSelected extends Action implements HttpGetActionInterface
                     'value' => $page->getId(),
                     'label' => $page->getTitle(),
                     'is_active' => $page->isActive(),
-                    'optgroup' => false
+                    'optgroup' => false,
                 ];
             } catch (\Exception $e) {
                 continue;

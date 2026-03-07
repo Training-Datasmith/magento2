@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Api;
 
+use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Store\Model\Store;
 
 class ProductRepositoryPriceModeWebsiteChangePriceTest extends WebapiAbstract
 {
@@ -45,9 +46,9 @@ class ProductRepositoryPriceModeWebsiteChangePriceTest extends WebapiAbstract
                 [
                     'price' => 20,
                     'store_id' => $store1->getId(),
-                    'sku' => $sku
-                ]
-            ]
+                    'sku' => $sku,
+                ],
+            ],
         ];
 
         $requestData2 = [
@@ -55,21 +56,21 @@ class ProductRepositoryPriceModeWebsiteChangePriceTest extends WebapiAbstract
                 [
                     'price' => 30,
                     'store_id' => $store2->getId(),
-                    'sku' => $sku
-                ]
-            ]
+                    'sku' => $sku,
+                ],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::PRICES_RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::PRICE_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::PRICE_SERVICE_NAME . 'Update',
-            ]
+            ],
         ];
 
         $this->_webApiCall($serviceInfo, $requestData1);

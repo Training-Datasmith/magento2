@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Block\Adminhtml\Sales\Order\Items;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Block\Adminhtml\Sales\Order\Items\Renderer;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Shipment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -41,19 +42,19 @@ class RendererTest extends TestCase
     protected function setUp(): void
     {
         $this->orderItem = $this->createPartialMockWithReflection(Item::class, [
-            'getParentItem', 'getId', 'getProductOptions'
+            'getParentItem', 'getId', 'getProductOptions',
         ]);
         $this->serializer = $this->createMock(Json::class);
         $objectManager = new ObjectManager($this);
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->model = $objectManager->getObject(
@@ -85,18 +86,18 @@ class RendererTest extends TestCase
             [
                 \Magento\Sales\Model\Order\Invoice\Item::class,
                 'getInvoice',
-                Invoice::class
+                Invoice::class,
             ],
             [
                 \Magento\Sales\Model\Order\Shipment\Item::class,
                 'getShipment',
-                Shipment::class
+                Shipment::class,
             ],
             [
                 \Magento\Sales\Model\Order\Creditmemo\Item::class,
                 'getCreditmemo',
-                Creditmemo::class
-            ]
+                Creditmemo::class,
+            ],
         ];
     }
 
@@ -179,7 +180,7 @@ class RendererTest extends TestCase
         return [
             [['shipment_type' => 1], true],
             [['shipment_type' => 0], false],
-            [[], false]
+            [[], false],
         ];
     }
 
@@ -187,9 +188,9 @@ class RendererTest extends TestCase
     public function testIsShipmentSeparatelyWithItem($productOptions, $result, $parentItem)
     {
         $orderItemMock = $this->createPartialMockWithReflection(Item::class, [
-            'getParentItem', 'getProductOptions', 'getOrderItem'
+            'getParentItem', 'getProductOptions', 'getOrderItem',
         ]);
-        
+
         $parentItemMock = null;
         if ($parentItem) {
             $parentItemMock = $this->createPartialMockWithReflection(Item::class, ['getProductOptions']);
@@ -242,9 +243,9 @@ class RendererTest extends TestCase
     public function testIsChildCalculatedWithItem($productOptions, $result, $parentItem)
     {
         $orderItemMock = $this->createPartialMockWithReflection(Item::class, [
-            'getParentItem', 'getProductOptions', 'getOrderItem'
+            'getParentItem', 'getProductOptions', 'getOrderItem',
         ]);
-        
+
         $parentItemMock = null;
         if ($parentItem) {
             $parentItemMock = $this->createPartialMockWithReflection(Item::class, ['getProductOptions']);
@@ -289,7 +290,7 @@ class RendererTest extends TestCase
             ->method('unserialize')
             ->with($bundleAttributes)
             ->willReturn($unserializedResult);
-        
+
         $orderItemMock = $this->createPartialMockWithReflection(Item::class, ['getProductOptions']);
         $orderItemMock->method('getProductOptions')->willReturn($options);
 
@@ -321,14 +322,14 @@ class RendererTest extends TestCase
         if ($parentItem) {
             $parentItemMock = $this->createMock(Item::class);
         }
-        
+
         $orderItemMock = $this->createPartialMockWithReflection(Item::class, [
-            'getParentItem', 'getProductOptions', 'getOrderItem'
+            'getParentItem', 'getProductOptions', 'getOrderItem',
         ]);
         $orderItemMock->method('getParentItem')->willReturn($parentItemMock);
         $orderItemMock->method('getProductOptions')->willReturn($productOptions);
         $orderItemMock->method('getOrderItem')->willReturn($orderItemMock);
-        
+
         $this->model->setItem($orderItemMock);
 
         $this->assertSame($result, $this->model->canShowPriceInfo($orderItemMock));

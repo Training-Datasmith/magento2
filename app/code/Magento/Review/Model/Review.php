@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Review\Model;
 
-use Magento\Framework\DataObject;
 use Magento\Catalog\Model\Product;
+use Magento\Framework\DataObject;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Validator\NotEmpty;
 use Magento\Framework\Validator\ValidateException;

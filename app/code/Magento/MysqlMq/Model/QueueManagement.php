@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model;
 
 /**
@@ -13,30 +16,30 @@ namespace Magento\MysqlMq\Model;
  */
 class QueueManagement
 {
-    const MESSAGE_TOPIC = 'topic_name';
-    const MESSAGE_BODY = 'body';
-    const MESSAGE_ID = 'message_id';
-    const MESSAGE_STATUS = 'status';
-    const MESSAGE_UPDATED_AT = 'updated_at';
-    const MESSAGE_QUEUE_ID = 'queue_id';
-    const MESSAGE_QUEUE_NAME = 'queue_name';
-    const MESSAGE_QUEUE_RELATION_ID = 'relation_id';
-    const MESSAGE_NUMBER_OF_TRIALS = 'retries';
+    public const MESSAGE_TOPIC = 'topic_name';
+    public const MESSAGE_BODY = 'body';
+    public const MESSAGE_ID = 'message_id';
+    public const MESSAGE_STATUS = 'status';
+    public const MESSAGE_UPDATED_AT = 'updated_at';
+    public const MESSAGE_QUEUE_ID = 'queue_id';
+    public const MESSAGE_QUEUE_NAME = 'queue_name';
+    public const MESSAGE_QUEUE_RELATION_ID = 'relation_id';
+    public const MESSAGE_NUMBER_OF_TRIALS = 'retries';
 
-    const MESSAGE_STATUS_NEW = 2;
-    const MESSAGE_STATUS_IN_PROGRESS = 3;
-    const MESSAGE_STATUS_COMPLETE= 4;
-    const MESSAGE_STATUS_RETRY_REQUIRED = 5;
-    const MESSAGE_STATUS_ERROR = 6;
-    const MESSAGE_STATUS_TO_BE_DELETED = 7;
+    public const MESSAGE_STATUS_NEW = 2;
+    public const MESSAGE_STATUS_IN_PROGRESS = 3;
+    public const MESSAGE_STATUS_COMPLETE = 4;
+    public const MESSAGE_STATUS_RETRY_REQUIRED = 5;
+    public const MESSAGE_STATUS_ERROR = 6;
+    public const MESSAGE_STATUS_TO_BE_DELETED = 7;
 
     /**#@+
      * Cleanup configuration XML nodes
      */
-    const XML_PATH_SUCCESSFUL_MESSAGES_LIFETIME = 'system/mysqlmq/successful_messages_lifetime';
-    const XML_PATH_FAILED_MESSAGES_LIFETIME = 'system/mysqlmq/failed_messages_lifetime';
-    const XML_PATH_RETRY_IN_PROGRESS_AFTER = 'system/mysqlmq/retry_inprogress_after';
-    const XML_PATH_NEW_MESSAGES_LIFETIME = 'system/mysqlmq/new_messages_lifetime';
+    public const XML_PATH_SUCCESSFUL_MESSAGES_LIFETIME = 'system/mysqlmq/successful_messages_lifetime';
+    public const XML_PATH_FAILED_MESSAGES_LIFETIME = 'system/mysqlmq/failed_messages_lifetime';
+    public const XML_PATH_RETRY_IN_PROGRESS_AFTER = 'system/mysqlmq/retry_inprogress_after';
+    public const XML_PATH_NEW_MESSAGES_LIFETIME = 'system/mysqlmq/new_messages_lifetime';
     /**#@-*/
 
     /**#@-*/

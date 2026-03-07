@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Form\Element\ElementCreator;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Price;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Price\Tier;
 use Magento\Catalog\Model\Product;
@@ -16,8 +16,6 @@ use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Data\Form\Element\Fieldset;
 use Magento\Framework\Data\FormFactory;
-use Magento\Framework\Filesystem\Directory\ReadInterface as DirectoryHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;

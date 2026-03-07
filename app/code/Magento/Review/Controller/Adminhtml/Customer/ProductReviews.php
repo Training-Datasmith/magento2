@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class ProductReviews extends Action implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Review::reviews_all';
+    public const ADMIN_RESOURCE = 'Magento_Review::reviews_all';
 
     /** @var CustomerIdProvider */
     private $customerIdProvider;

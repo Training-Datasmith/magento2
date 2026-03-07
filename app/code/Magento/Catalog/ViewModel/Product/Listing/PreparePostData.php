@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\ViewModel\Product\Listing;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Check is available add to compare.
@@ -36,7 +37,7 @@ class PreparePostData implements ArgumentInterface
      * @param array $data
      * @return array
      */
-    public function getPostData(string $url, array $data = []):array
+    public function getPostData(string $url, array $data = []): array
     {
         if (!isset($data[ActionInterface::PARAM_NAME_URL_ENCODED])) {
             $data[ActionInterface::PARAM_NAME_URL_ENCODED] = $this->urlHelper->getEncodedUrl();

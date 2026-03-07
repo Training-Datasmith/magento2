@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class UpdateConfigurationsTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'productRepository' => $this->productRepositoryMock,
-                'variationHandler' => $this->variationHandlerMock
+                'variationHandler' => $this->variationHandlerMock,
             ]
         );
     }
@@ -80,7 +81,7 @@ class UpdateConfigurationsTest extends TestCase
         return [
             [
                 'newProduct' => true,
-                'id' => 'product1'
+                'id' => 'product1',
             ],
             [
                 'newProduct' => false,
@@ -150,10 +151,10 @@ class UpdateConfigurationsTest extends TestCase
                 'thumbnail' => 'simple2_thumbnail',
                 'image' => 'simple2_image',
                 'product_has_weight' => 1,
-                'type_id' => 'simple'
+                'type_id' => 'simple',
             ],
             'product3' => [
-                'quantity_and_stock_status' => ['qty' => '3']
+                'quantity_and_stock_status' => ['qty' => '3'],
             ],
             'product5' => [
                 'status' => 'simple5_status',
@@ -181,7 +182,7 @@ class UpdateConfigurationsTest extends TestCase
             ->willReturnMap(
                 [
                     ['store', 0, 0],
-                    ['configurable-matrix-serialized', "[]", json_encode($configurableMatrix)]
+                    ['configurable-matrix-serialized', '[]', json_encode($configurableMatrix)],
                 ]
             );
         $this->variationHandlerMock->expects(static::once())
@@ -203,7 +204,7 @@ class UpdateConfigurationsTest extends TestCase
                 [
                     [$productMocks['product2'], $configurations['product2'], $configurations['product2']],
                     [$productMocks['product3'], $configurations['product3'], $configurations['product3']],
-                    [$productMocks['product5'], $configurations['product5'], $configurations['product5']]
+                    [$productMocks['product5'], $configurations['product5'], $configurations['product5']],
                 ]
             );
 

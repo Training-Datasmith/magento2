@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Used in creating options for Yes|No|Specified config value selection
  *
  */
+
 namespace Magento\Config\Model\Config\Source;
 
 /**
@@ -26,7 +29,7 @@ class Yesnocustom implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => 1, 'label' => __('Yes')],
             ['value' => 0, 'label' => __('No')],
-            ['value' => 2, 'label' => __('Specified')]
+            ['value' => 2, 'label' => __('Specified')],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\PageCache\Cache;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\App\PageCachePlugin;
 use Magento\PageCache\Model\Cache\Type;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class PageCachePluginTest extends TestCase
@@ -69,7 +70,7 @@ class PageCachePluginTest extends TestCase
     {
         return [
             'Compressed cache' => ['raw-data', PageCachePlugin::COMPRESSION_PREFIX . gzcompress('raw-data')],
-            'Non-compressed cache' => ['raw-data', 'raw-data']
+            'Non-compressed cache' => ['raw-data', 'raw-data'],
         ];
     }
 }

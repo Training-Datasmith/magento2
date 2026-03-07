@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class RedirectDataPostprocessorTest extends TestCase
                                     $this->createConfiguredMock(
                                         CustomerInterface::class,
                                         [
-                                            'getId' => $id
+                                            'getId' => $id,
                                         ]
                                     )
                                 );

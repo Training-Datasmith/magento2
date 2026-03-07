@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Code\Generator\Config\RemoteServiceReader;
 
-use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
+use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 
 /**
  * Remote service configuration reader.
@@ -15,9 +18,9 @@ use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
  */
 class MessageQueue implements \Magento\Framework\Config\ReaderInterface
 {
-    const DEFAULT_PUBLISHER = 'default';
-    const DEFAULT_CONNECTION = 'amqp';
-    const DEFAULT_EXCHANGE = 'magento';
+    public const DEFAULT_PUBLISHER = 'default';
+    public const DEFAULT_CONNECTION = 'amqp';
+    public const DEFAULT_EXCHANGE = 'magento';
 
     /**
      * @var Communication
@@ -52,15 +55,15 @@ class MessageQueue implements \Magento\Framework\Config\ReaderInterface
                 QueueConfig::TOPIC_NAME => $topicName,
                 QueueConfig::TOPIC_SCHEMA => [
                     QueueConfig::TOPIC_SCHEMA_TYPE => QueueConfig::TOPIC_SCHEMA_TYPE_METHOD,
-                    QueueConfig::TOPIC_SCHEMA_VALUE => $communicationConfig[CommunicationConfig::TOPIC_REQUEST]
+                    QueueConfig::TOPIC_SCHEMA_VALUE => $communicationConfig[CommunicationConfig::TOPIC_REQUEST],
                 ],
                 QueueConfig::TOPIC_RESPONSE_SCHEMA => [
                     QueueConfig::TOPIC_SCHEMA_TYPE => isset($communicationConfig[CommunicationConfig::TOPIC_RESPONSE])
                         ? QueueConfig::TOPIC_SCHEMA_TYPE_OBJECT
                         : null,
-                    QueueConfig::TOPIC_SCHEMA_VALUE => $communicationConfig[CommunicationConfig::TOPIC_RESPONSE]
+                    QueueConfig::TOPIC_SCHEMA_VALUE => $communicationConfig[CommunicationConfig::TOPIC_RESPONSE],
                 ],
-                QueueConfig::TOPIC_PUBLISHER => self::DEFAULT_PUBLISHER
+                QueueConfig::TOPIC_PUBLISHER => self::DEFAULT_PUBLISHER,
             ];
 
             $queueName = 'queue.' . $topicName;
@@ -76,8 +79,8 @@ class MessageQueue implements \Magento\Framework\Config\ReaderInterface
             self::DEFAULT_PUBLISHER => [
                 QueueConfig::PUBLISHER_NAME => self::DEFAULT_PUBLISHER,
                 QueueConfig::PUBLISHER_CONNECTION => self::DEFAULT_CONNECTION,
-                QueueConfig::PUBLISHER_EXCHANGE => self::DEFAULT_EXCHANGE
-            ]
+                QueueConfig::PUBLISHER_EXCHANGE => self::DEFAULT_EXCHANGE,
+            ],
         ];
         return [
             QueueConfig::PUBLISHERS => $queuePublishers,

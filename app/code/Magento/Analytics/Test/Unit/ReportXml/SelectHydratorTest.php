@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SelectHydratorTest extends TestCase
@@ -72,7 +73,7 @@ class SelectHydratorTest extends TestCase
             SelectHydrator::class,
             [
                 'resourceConnection' => $this->resourceConnectionMock,
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
 
@@ -96,16 +97,16 @@ class SelectHydratorTest extends TestCase
                 Select::ORDER,
                 Select::LIMIT_COUNT,
                 Select::LIMIT_OFFSET,
-                Select::FOR_UPDATE
+                Select::FOR_UPDATE,
             ];
 
         $result = [];
         foreach ($selectParts as $part) {
-            $result[$part] = "Part";
+            $result[$part] = 'Part';
         }
         $this->selectMock
             ->method('getPart')
-            ->willReturn("Part");
+            ->willReturn('Part');
         $this->assertEquals($this->selectHydrator->extract($this->selectMock), $result);
     }
 
@@ -151,29 +152,29 @@ class SelectHydratorTest extends TestCase
                         [
                             'table_name',
                             'field_name',
-                            'alias'
+                            'alias',
                         ],
                         [
                             'table_name',
                             'field_name_2',
-                            'alias_2'
+                            'alias_2',
                         ],
-                    ]
+                    ],
                 ],
                 [Select::COLUMNS],
                 [[
                     [
                         'table_name',
                         'field_name',
-                        'alias'
+                        'alias',
                     ],
                     [
                         'table_name',
                         'field_name_2',
-                        'alias_2'
-                    ]
-                ]]
-            ]
+                        'alias_2',
+                    ],
+                ]],
+            ],
         ];
     }
 
@@ -239,38 +240,38 @@ class SelectHydratorTest extends TestCase
                         [
                             'table_name',
                             'field_name',
-                            'alias'
+                            'alias',
                         ],
                         [
                             'table_name',
                             [
                                 'class' => 'Some_class',
                                 'arguments' => [
-                                    'expression' => ['some(expression)']
-                                ]
+                                    'expression' => ['some(expression)'],
+                                ],
                             ],
-                            'alias_2'
-                        ]
-                    ]
+                            'alias_2',
+                        ],
+                    ],
                 ],
                 'expectedParts' => [
                     Select::COLUMNS => [
                         [
                             'table_name',
                             'field_name',
-                            'alias'
+                            'alias',
                         ],
                         [
                             'table_name',
                             self::$expressionMock,
-                            'alias_2'
-                        ]
-                    ]
+                            'alias_2',
+                        ],
+                    ],
                 ],
                 'expressionMocks' => [
-                    self::$expressionMock
-                ]
-            ]
+                    self::$expressionMock,
+                ],
+            ],
         ];
     }
 }

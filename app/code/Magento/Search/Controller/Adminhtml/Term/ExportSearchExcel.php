@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller\Adminhtml\Term;
 
-use Magento\Search\Controller\Adminhtml\Term as TermController;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Search\Controller\Adminhtml\Term as TermController;
 
 class ExportSearchExcel extends TermController
 {

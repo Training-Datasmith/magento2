@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Setup\Patch\Data;
 
-use Magento\Framework\Config\ConfigOptionsListConstants;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Encryption\Encryptor;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Class SodiumChachaPatch library test

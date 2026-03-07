@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller;
 
 /**
@@ -14,5 +17,5 @@ class RegistryConstants
     /**
      * Registry key where current synonyms page is stored
      */
-    const SEARCH_SYNONYMS = 'search_synonyms';
+    public const SEARCH_SYNONYMS = 'search_synonyms';
 }

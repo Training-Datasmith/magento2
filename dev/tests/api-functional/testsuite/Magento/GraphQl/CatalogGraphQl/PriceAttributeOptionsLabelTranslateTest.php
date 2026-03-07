@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -53,14 +54,14 @@ class PriceAttributeOptionsLabelTranslateTest extends GraphQlAbstract
             StoreFixture::class,
             [
                 'code' => 'view2',
-                'name' => 'view2'
+                'name' => 'view2',
             ],
             as: 'view2'
         ),
         DataFixture(
             ProductFixture::class,
             [
-                'sku' => 'simple'
+                'sku' => 'simple',
             ],
             as: 'product'
         ),
@@ -109,7 +110,7 @@ class PriceAttributeOptionsLabelTranslateTest extends GraphQlAbstract
      *
      * @return string
      */
-    private function getProductsQueryWithAggregations() : string
+    private function getProductsQueryWithAggregations(): string
     {
         return <<<QUERY
 {
@@ -152,14 +153,14 @@ QUERY;
             StoreFixture::class,
             [
                 'code' => 'view2',
-                'name' => 'view2'
+                'name' => 'view2',
             ],
             as: 'view2'
         ),
         DataFixture(
             ProductFixture::class,
             [
-                'sku' => 'simple'
+                'sku' => 'simple',
             ],
             as: 'product'
         ),

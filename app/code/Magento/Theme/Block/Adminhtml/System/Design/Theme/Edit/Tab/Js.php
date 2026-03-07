@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Tab;
 
 /**
@@ -61,7 +64,7 @@ class Js extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstrac
                 'accept' => 'application/x-javascript',
                 'multiple' => '',
                 'value' => __('Browse JS Files'),
-                'note' => $this->_getUploadJsFileNote()
+                'note' => $this->_getUploadJsFileNote(),
             ]
         );
 

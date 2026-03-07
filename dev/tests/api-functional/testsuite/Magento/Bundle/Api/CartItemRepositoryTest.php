@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CartItemRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCartItemRepositoryV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCartItemRepositoryV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -83,7 +86,7 @@ class CartItemRepositoryTest extends WebapiAbstract
             'bundle_option' => [$bundleOptionId => [$optionSelections]],
             'bundle_option_qty' => [$bundleOptionId => 1],
             'qty' => $itemQty,
-            'original_qty' => $itemQty
+            'original_qty' => $itemQty,
         ];
 
         $productSku = $product->getSku();
@@ -105,22 +108,22 @@ class CartItemRepositoryTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartItem" => [
-                "sku" => $productSku,
-                "qty" => $itemQty,
-                "quote_id" => $cartId,
-                "product_option" => [
-                    "extension_attributes" => [
-                        "bundle_options" => [
+            'cartItem' => [
+                'sku' => $productSku,
+                'qty' => $itemQty,
+                'quote_id' => $cartId,
+                'product_option' => [
+                    'extension_attributes' => [
+                        'bundle_options' => [
                             [
-                                "option_id" => (int)$bundleOptionId,
-                                "option_qty" => $itemQty,
-                                "option_selections" => [(int)$optionSelections]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'option_id' => (int)$bundleOptionId,
+                                'option_qty' => $itemQty,
+                                'option_selections' => [(int)$optionSelections],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $response = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertTrue($quote->hasProductId($productId));
@@ -171,17 +174,17 @@ class CartItemRepositoryTest extends WebapiAbstract
             ],
         ];
         $requestData = [
-            "cartItem" => [
-                "sku" => $itemSku,
-                "qty" => 2,
-                "quote_id" => $cartId,
-                "item_id" => $itemId,
-                "product_option" => [
-                    "extension_attributes" => [
-                        "bundle_options" => $bundleOptions
-                    ]
-                ]
-            ]
+            'cartItem' => [
+                'sku' => $itemSku,
+                'qty' => 2,
+                'quote_id' => $cartId,
+                'item_id' => $itemId,
+                'product_option' => [
+                    'extension_attributes' => [
+                        'bundle_options' => $bundleOptions,
+                    ],
+                ],
+            ],
         ];
         $this->_webApiCall($serviceInfo, $requestData);
 

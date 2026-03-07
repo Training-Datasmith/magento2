@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,7 +18,6 @@ class Actions extends Column
     /**
      * Prepare Data Source
      *
-     * @param array $dataSource
      * @return array
      */
     public function prepareDataSource(array $dataSource)

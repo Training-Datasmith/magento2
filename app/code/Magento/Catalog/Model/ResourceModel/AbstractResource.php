@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -201,7 +203,7 @@ abstract class AbstractResource extends \Magento\Eav\Model\Entity\AbstractEntity
         $conditions = [
             'attribute_id = ?' => $attribute->getAttributeId(),
             "{$entityIdField} = ?" => $object->getData($entityIdField),
-            'store_id <> ?' => $storeId
+            'store_id <> ?' => $storeId,
         ];
         if ($hasSingleStore
             && !$object->isObjectNew()
@@ -595,7 +597,7 @@ abstract class AbstractResource extends \Magento\Eav\Model\Entity\AbstractEntity
                         ['default_value' => $table],
                         implode(' AND ', $defaultJoinCondition),
                         []
-                    )->where("e.entity_id = :entity_id");
+                    )->where('e.entity_id = :entity_id');
 
                 $bind = ['entity_id' => $entityId];
 

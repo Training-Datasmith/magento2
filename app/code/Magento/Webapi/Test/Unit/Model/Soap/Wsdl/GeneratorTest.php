@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Test\Unit\Model\Soap\Wsdl;
 
 use Magento\Eav\Model\TypeLocator;
@@ -119,7 +122,7 @@ class GeneratorTest extends TestCase
         $objectManagerMock->expects($this->any())
             ->method('get')
             ->willReturnMap([
-                [Json::class, $this->serializer]
+                [Json::class, $this->serializer],
             ]);
         \Magento\Framework\App\ObjectManager::setInstance($objectManagerMock);
 
@@ -132,7 +135,7 @@ class GeneratorTest extends TestCase
                 'customAttributeTypeLocator' => $this->customAttributeTypeLocator,
                 'serviceMetadata' => $this->serviceMetadata,
                 'authorization' => $authorizationMock,
-                'serializer' => $this->serializer
+                'serializer' => $this->serializer,
             ]
         );
 
@@ -144,7 +147,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetElementComplexTypeName()
     {
-        $this->assertEquals("Test", $this->_wsdlGenerator->getElementComplexTypeName("test"));
+        $this->assertEquals('Test', $this->_wsdlGenerator->getElementComplexTypeName('test'));
     }
 
     /**
@@ -152,7 +155,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetPortTypeName()
     {
-        $this->assertEquals("testPortType", $this->_wsdlGenerator->getPortTypeName("test"));
+        $this->assertEquals('testPortType', $this->_wsdlGenerator->getPortTypeName('test'));
     }
 
     /**
@@ -160,7 +163,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetBindingName()
     {
-        $this->assertEquals("testBinding", $this->_wsdlGenerator->getBindingName("test"));
+        $this->assertEquals('testBinding', $this->_wsdlGenerator->getBindingName('test'));
     }
 
     /**
@@ -168,7 +171,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetPortName()
     {
-        $this->assertEquals("testPort", $this->_wsdlGenerator->getPortName("test"));
+        $this->assertEquals('testPort', $this->_wsdlGenerator->getPortName('test'));
     }
 
     /**
@@ -176,7 +179,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetServiceName()
     {
-        $this->assertEquals("testService", $this->_wsdlGenerator->getServiceName("test"));
+        $this->assertEquals('testService', $this->_wsdlGenerator->getServiceName('test'));
     }
 
     /**
@@ -184,7 +187,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetInputMessageName()
     {
-        $this->assertEquals("operationNameRequest", $this->_wsdlGenerator->getInputMessageName("operationName"));
+        $this->assertEquals('operationNameRequest', $this->_wsdlGenerator->getInputMessageName('operationName'));
     }
 
     /**
@@ -192,7 +195,7 @@ class GeneratorTest extends TestCase
      */
     public function testGetOutputMessageName()
     {
-        $this->assertEquals("operationNameResponse", $this->_wsdlGenerator->getOutputMessageName("operationName"));
+        $this->assertEquals('operationNameResponse', $this->_wsdlGenerator->getOutputMessageName('operationName'));
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Mftf\Helper;
 
-use Magento\FunctionalTestingFramework\DataGenerator\Handlers\DataObjectHandler;
-use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\DataGenerator\Objects\EntityDataObject;
+use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\FunctionalTestingFramework\ObjectManagerFactory;
 
@@ -32,10 +32,10 @@ class CustomerApiHelper extends Helper
         $stats = [
             'total_deleted' => 0,
             'total_failed' => 0,
-            'failed_reasons' => []
+            'failed_reasons' => [],
         ];
 
-        $this->logMessage($enableLog, "=== Starting customer deletion via API ===");
+        $this->logMessage($enableLog, '=== Starting customer deletion via API ===');
 
         try {
             $allCustomers = $this->getAllCustomers($pageNum);
@@ -44,7 +44,7 @@ class CustomerApiHelper extends Helper
                 return;
             }
 
-            $this->logMessage($enableLog, "Found " . count($allCustomers) . " customers to delete");
+            $this->logMessage($enableLog, 'Found ' . count($allCustomers) . ' customers to delete');
             $this->processCustomerDeletion($allCustomers, $stats, $enableLog);
 
             $message = "Customer deletion completed: {$stats['total_deleted']} successful, " .
@@ -53,17 +53,17 @@ class CustomerApiHelper extends Helper
 
             if (!empty($stats['failed_reasons'])) {
                 $reasons = array_count_values($stats['failed_reasons']);
-                $this->logMessage($enableLog, "Failure breakdown:");
+                $this->logMessage($enableLog, 'Failure breakdown:');
                 foreach ($reasons as $reason => $count) {
                     $this->logMessage($enableLog, "  - {$reason}: {$count} customer(s)");
                 }
             }
 
         } catch (\Exception $e) {
-            $this->logMessage($enableLog, "ERROR: Customer deletion failed: " . $e->getMessage());
+            $this->logMessage($enableLog, 'ERROR: Customer deletion failed: ' . $e->getMessage());
         }
 
-        $this->logMessage($enableLog, "=== Customer deletion complete ===");
+        $this->logMessage($enableLog, '=== Customer deletion complete ===');
     }
 
     /**
@@ -77,7 +77,7 @@ class CustomerApiHelper extends Helper
     private function deleteById(int $customerId, array &$stats): void
     {
         if (empty($customerId)) {
-            throw new \Exception("Customer ID cannot be empty");
+            throw new \Exception('Customer ID cannot be empty');
         }
 
         $customerEntity = new EntityDataObject(
@@ -97,7 +97,7 @@ class CustomerApiHelper extends Helper
             [
                 'operation' => 'delete',
                 'entityObject' => $customerEntity,
-                'storeCode' => null
+                'storeCode' => null,
             ]
         );
 
@@ -105,7 +105,7 @@ class CustomerApiHelper extends Helper
 
         if (!$this->isResponseSuccessful($response)) {
             $errorMessage = "Customer deletion failed for ID '{$customerId}' - " .
-                "Response: " . json_encode($response);
+                'Response: ' . json_encode($response);
             throw new \Exception($errorMessage);
         }
 
@@ -127,7 +127,7 @@ class CustomerApiHelper extends Helper
                 'customer_list',
                 [
                     'pageSize' => $pageSize,
-                    'currentPage' => 1
+                    'currentPage' => 1,
                 ],
                 [],
                 [],
@@ -142,7 +142,7 @@ class CustomerApiHelper extends Helper
                 [
                     'operation' => 'get',
                     'entityObject' => $customerListEntity,
-                    'storeCode' => null
+                    'storeCode' => null,
                 ]
             );
 
@@ -157,7 +157,7 @@ class CustomerApiHelper extends Helper
             return $responseData['items'] ?? [];
 
         } catch (\Exception $e) {
-            throw new \Exception("Failed to retrieve customers: " . $e->getMessage(), 0, $e);
+            throw new \Exception('Failed to retrieve customers: ' . $e->getMessage(), 0, $e);
         }
     }
 
@@ -171,7 +171,7 @@ class CustomerApiHelper extends Helper
     private function handleEmptyCustomerList(array $allCustomers, bool $enableLog): bool
     {
         if (empty($allCustomers)) {
-            $this->logMessage($enableLog, "No customers found to delete.");
+            $this->logMessage($enableLog, 'No customers found to delete.');
             return true;
         }
         return false;

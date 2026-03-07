@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -49,10 +50,11 @@ class IntType extends \GraphQL\Type\Definition\IntType
                 && isset($valueNode->value)) {
                 $valueNode = new IntValueNode([
                     'value' => (string)$this->parseValue($valueNode->value),
-                    'loc' => $valueNode->loc
+                    'loc' => $valueNode->loc,
                 ]);
             }
-        } catch (Exception $e) {} // @codingStandardsIgnoreLine
+        } catch (Exception $e) {
+        } // @codingStandardsIgnoreLine
         return parent::parseLiteral($valueNode, $variables);
     }
 }

@@ -42,7 +42,7 @@ class GenericTest extends TestCase
         $this->model = $objectManager->getObject(
             Generic::class,
             [
-                'shippingFedex' => $this->shippingFedexMock
+                'shippingFedex' => $this->shippingFedexMock,
             ]
         );
     }
@@ -75,17 +75,17 @@ class GenericTest extends TestCase
             [
                 [
                     'FEDEX_GROUND' => __('Ground'),
-                    'FIRST_OVERNIGHT' => __('First Overnight')
+                    'FIRST_OVERNIGHT' => __('First Overnight'),
                 ],
                 [
                     ['value' => 'FEDEX_GROUND', 'label' => __('Ground')],
-                    ['value' => 'FIRST_OVERNIGHT', 'label' => __('First Overnight')]
-                ]
+                    ['value' => 'FIRST_OVERNIGHT', 'label' => __('First Overnight')],
+                ],
             ],
             [
                 false,
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

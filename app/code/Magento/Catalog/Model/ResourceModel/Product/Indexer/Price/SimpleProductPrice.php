@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Price;
 
 use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
@@ -85,15 +87,15 @@ class SimpleProductPrice implements DimensionalIndexerInterface
             $select,
             $temporaryPriceTable->getTableName(),
             [
-                "entity_id",
-                "customer_group_id",
-                "website_id",
-                "tax_class_id",
-                "price",
-                "final_price",
-                "min_price",
-                "max_price",
-                "tier_price",
+                'entity_id',
+                'customer_group_id',
+                'website_id',
+                'tax_class_id',
+                'price',
+                'final_price',
+                'min_price',
+                'max_price',
+                'tier_price',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class AbstractTest extends TestCase
                 'context' => $this->_objectManager->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 
@@ -87,7 +88,7 @@ class AbstractTest extends TestCase
                 'context' => $this->_objectManager->getObject(
                     Context::class,
                     ['layout' => $layout]
-                )
+                ),
             ]
         );
 

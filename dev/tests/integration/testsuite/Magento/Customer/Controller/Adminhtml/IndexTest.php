@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,12 +15,12 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\EmailNotification;
 use Magento\Framework\Acl\Builder;
 use Magento\Framework\App\Area;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Mail\TransportInterface;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\Bootstrap;
 use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -98,7 +100,7 @@ class IndexTest extends AbstractBackendController
                     'email' => $newEmail,
                     'password' => 'password',
                 ],
-            ]
+            ],
         ];
         $this->getRequest()->setParam('ajax', true)->setParam('isAjax', true);
         $this->getRequest()->setPostValue($post)->setMethod(HttpRequest::METHOD_POST);
@@ -213,7 +215,7 @@ class IndexTest extends AbstractBackendController
      */
     public function testAclDeleteActionDeny()
     {
-        $resource= 'Magento_Customer::delete';
+        $resource = 'Magento_Customer::delete';
         $this->_objectManager->get(Builder::class)
             ->getAcl()
             ->deny(Bootstrap::ADMIN_ROLE_ID, $resource);
@@ -240,7 +242,7 @@ class IndexTest extends AbstractBackendController
         array $sender,
         int $customerId,
         $newEmail = null
-    ) : MockObject {
+    ): MockObject {
         $area = Area::AREA_FRONTEND;
         $customer = $this->customerRepository->getById($customerId);
         $storeId = $customer->getStoreId();

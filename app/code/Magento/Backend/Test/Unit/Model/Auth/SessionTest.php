@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PhpCookieManager;
 use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
 use Magento\Framework\Stdlib\CookieManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\User\Model\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -79,7 +80,7 @@ class SessionTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
-        
+
         $this->cookieMetadataFactory = $this->createPartialMock(
             CookieMetadataFactory::class,
             ['createPublicCookieMetadata']
@@ -101,15 +102,15 @@ class SessionTest extends TestCase
                 'getCookieDomain',
                 'getCookieSecure',
                 'getCookieHttpOnly',
-                'getCookieSameSite'
+                'getCookieSameSite',
             ]
         );
         $this->aclBuilder = $this->createMock(Builder::class);
         $objects = [
             [
                 SessionStartChecker::class,
-                $this->createMock(SessionStartChecker::class)
-            ]
+                $this->createMock(SessionStartChecker::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->session = $this->objectManager->getObject(
@@ -120,7 +121,7 @@ class SessionTest extends TestCase
                 'cookieManager' => $this->cookieManager,
                 'cookieMetadataFactory' => $this->cookieMetadataFactory,
                 'storage' => $this->storage,
-                'aclBuilder' => $this->aclBuilder
+                'aclBuilder' => $this->aclBuilder,
             ]
         );
     }
@@ -163,7 +164,7 @@ class SessionTest extends TestCase
     {
         return [
             'User set via params' => [true],
-            'User set to session object' => [false]
+            'User set to session object' => [false],
         ];
     }
 
@@ -282,10 +283,10 @@ class SessionTest extends TestCase
     public static function isAllowedDataProvider()
     {
         return [
-            "Negative: User not defined" => [false, true, true, false],
-            "Negative: Acl not defined" => [true, false, true, false],
-            "Negative: Permission denied" => [true, true, false, false],
-            "Positive: Permission granted" => [true, true, false, false],
+            'Negative: User not defined' => [false, true, true, false],
+            'Negative: Acl not defined' => [true, false, true, false],
+            'Negative: Permission denied' => [true, true, false, false],
+            'Positive: Permission granted' => [true, true, false, false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\Order\Invoice\Comment;
 
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Sales\Model\Order\Invoice\Comment;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Sales\Helper\SalesEntityCommentValidator;
+use Magento\Sales\Model\Order\Invoice\Comment;
 
 /**
  * Sales invoice comment validator

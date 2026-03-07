@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme model
  */
+
 namespace Magento\Theme\Test\Unit\Model;
 
 use Magento\Framework\App\Config\Value;
@@ -93,7 +95,7 @@ class ThemeValidatorTest extends TestCase
             [
                 '<error>frontend/Magento/a is in use in default config</error>',
                 '<error>frontend/Magento/a is in use in website websiteA</error>',
-                '<error>frontend/Magento/a is in use in store storeA</error>'
+                '<error>frontend/Magento/a is in use in store storeA</error>',
             ],
             $result
         );

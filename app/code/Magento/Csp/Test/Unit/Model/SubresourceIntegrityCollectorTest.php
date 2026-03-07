@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Csp\Test\Unit\Model;
 
 use Magento\Csp\Model\SubresourceIntegrity;
 use Magento\Csp\Model\SubresourceIntegrityCollector;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**

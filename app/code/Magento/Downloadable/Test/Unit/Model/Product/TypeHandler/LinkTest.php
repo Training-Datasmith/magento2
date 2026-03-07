@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Product\TypeHandler;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Helper\Download;
 use Magento\Downloadable\Model\Link as LinkModel;
 use Magento\Downloadable\Model\LinkFactory;
 use Magento\Downloadable\Model\Product\TypeHandler\Link;
+use Magento\Downloadable\Model\ResourceModel\Link as LinkResource;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Downloadable\Model\ResourceModel\Link as LinkResource;
 
 /**
  * Test for \Magento\Downloadable\Model\Product\TypeHandler\Link
@@ -67,7 +68,7 @@ class LinkTest extends TestCase
             Link::class,
             [
                 'linkFactory' => $this->linkFactory,
-                'linkResource' => $this->linkResource
+                'linkResource' => $this->linkResource,
             ]
         );
         $refClass = new \ReflectionClass(Link::class);
@@ -161,8 +162,8 @@ class LinkTest extends TestCase
                     'link_url' => null,
                     'number_of_downloads' => 15,
                     'price' => 15.00,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -212,10 +213,10 @@ class LinkTest extends TestCase
                             'link_id' => 890,
                             'is_delete' => 1,
                         ],
-                    ]
+                    ],
                 ],
-                'expectedItems' => [1, 2, 890]
-            ]
+                'expectedItems' => [1, 2, 890],
+            ],
         ];
     }
 
@@ -243,7 +244,7 @@ class LinkTest extends TestCase
                 'setSampleType',
                 'setLinkFile',
                 'setSampleFile',
-                'save'
+                'save',
             ]
         );
         $link->expects($this->once())
@@ -292,7 +293,7 @@ class LinkTest extends TestCase
                 'getStoreId',
                 'getStore',
                 'getWebsiteIds',
-                'getData'
+                'getData',
             ]
         );
         $product->method('getId')->willReturn($id);

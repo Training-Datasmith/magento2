@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Search::synonyms';
+    public const ADMIN_RESOURCE = 'Magento_Search::synonyms';
 
     /**
      * @var \Magento\Ui\Component\MassAction\Filter

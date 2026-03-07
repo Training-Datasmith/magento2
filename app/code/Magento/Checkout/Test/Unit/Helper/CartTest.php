@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Model\Product;
 use Magento\Checkout\Helper\Cart;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Helper\Context;
@@ -19,6 +18,7 @@ use Magento\Framework\Url\EncoderInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -149,7 +149,7 @@ class CartTest extends TestCase
         $isRequestSecure = false;
         $product = new DataObject([
             'entity_id' => $productEntityId,
-            'url_data_object' => new DataObject(['store_id' => $storeId])
+            'url_data_object' => new DataObject(['store_id' => $storeId]),
         ]);
 
         $this->requestMock->method('getRouteName')->willReturn('checkout');
@@ -157,13 +157,13 @@ class CartTest extends TestCase
         $this->requestMock->expects($this->once())->method('isSecure')->willReturn($isRequestSecure);
 
         $params = [
-            Action::PARAM_NAME_URL_ENCODED => strtr("%uenc%", '+/=', '-_,'),
+            Action::PARAM_NAME_URL_ENCODED => strtr('%uenc%', '+/=', '-_,'),
             'product' => $productEntityId,
             'custom_param' => 'value',
             '_scope' => $storeId,
             '_scope_to_url' => true,
             'in_cart' => 1,
-            '_secure' => $isRequestSecure
+            '_secure' => $isRequestSecure,
         ];
 
         $this->urlBuilderMock->expects($this->once())->method('getUrl')->with('checkout/cart/add', $params);
@@ -195,7 +195,7 @@ class CartTest extends TestCase
         $isRequestSecure = false;
         $product = new DataObject([
             'entity_id' => $productEntityId,
-            'url_data_object' => new DataObject(['store_id' => $storeId])
+            'url_data_object' => new DataObject(['store_id' => $storeId]),
         ]);
 
         $currentUrl = 'http://www.example.com/';
@@ -212,7 +212,7 @@ class CartTest extends TestCase
             '_scope' => $storeId,
             '_scope_to_url' => true,
             'in_cart' => 1,
-            '_secure' => $isRequestSecure
+            '_secure' => $isRequestSecure,
         ];
 
         $this->urlBuilderMock->expects($this->once())->method('getUrl')->with('checkout/cart/add', $params);

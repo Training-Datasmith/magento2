@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Cms\Model\Page\IdentityMap;
 use Magento\Framework\App\Area;
 use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Framework\View\DesignInterface;
-use Magento\Framework\View\Result\Page as PageLayout;
 use Magento\Framework\View\Model\Layout\Merge as LayoutProcessor;
 use Magento\Framework\View\Model\Layout\MergeFactory as LayoutProcessorFactory;
+use Magento\Framework\View\Result\Page as PageLayout;
 
 /**
  * @inheritDoc
@@ -99,7 +100,7 @@ class CustomLayoutManager implements CustomLayoutManagerInterface
                 [
                     'theme' => $this->themeFactory->create(
                         $this->design->getConfigurationDesignTheme(Area::AREA_FRONTEND)
-                    )
+                    ),
                 ]
             );
             $this->themeFactory = null;
@@ -119,7 +120,7 @@ class CustomLayoutManager implements CustomLayoutManagerInterface
 
         return array_filter(
             array_map(
-                function (string $handle) use ($identifier) : ?string {
+                function (string $handle) use ($identifier): ?string {
                     preg_match(
                         '/^cms\_page\_view\_selectable\_' .preg_quote($identifier) .'\_([a-z0-9]+)/i',
                         $handle,

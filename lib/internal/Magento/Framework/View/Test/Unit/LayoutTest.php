@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -36,9 +37,9 @@ use Magento\Framework\View\Layout\ReaderPool;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Model\Layout\Merge;
 use Magento\Framework\View\Page\Config\Structure;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -245,7 +246,7 @@ class LayoutTest extends TestCase
                 'logger' => $this->loggerMock,
                 'cacheable' => true,
                 'serializer' => $this->serializer,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }
@@ -549,7 +550,7 @@ class LayoutTest extends TestCase
             [false, '', false],
             [true, 'container', true],
             [true, 'block', false],
-            [true, 'something', false]
+            [true, 'something', false],
         ];
     }
 
@@ -591,7 +592,7 @@ class LayoutTest extends TestCase
         return [
             ['parent', ['has_element' => true, 'attribute' => 'container'], true],
             ['parent', ['has_element' => true, 'attribute' => 'block'], false],
-            [false, [], false]
+            [false, [], false],
         ];
     }
 
@@ -717,8 +718,8 @@ class LayoutTest extends TestCase
             [
                 'some_type',
                 Template::class,
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -759,7 +760,7 @@ class LayoutTest extends TestCase
             'dynamic_type' => 'dynamic_type_value',
             'type' => 'type_value',
             'template' => 'template.phtml',
-            'data' => ['some' => 'data']
+            'data' => ['some' => 'data'],
         ];
         return [
             'wrong namespace' => [
@@ -767,7 +768,7 @@ class LayoutTest extends TestCase
                 [
                     'namespace' => 'wrong namespace',
                     'static_type' => 'static_type_value',
-                    'dynamic_type' => 'dynamic_type_value'
+                    'dynamic_type' => 'dynamic_type_value',
                 ],
                 null,
             ],
@@ -776,7 +777,7 @@ class LayoutTest extends TestCase
                 [
                     'namespace' => 'namespace_value',
                     'static_type' => 'wrong static type',
-                    'dynamic_type' => 'dynamic_type_value'
+                    'dynamic_type' => 'dynamic_type_value',
                 ],
                 null,
             ],
@@ -785,7 +786,7 @@ class LayoutTest extends TestCase
                 [
                     'namespace' => 'namespace_value',
                     'static_type' => 'static_type_value',
-                    'dynamic_type' => 'wrong dynamic type'
+                    'dynamic_type' => 'wrong dynamic type',
                 ],
                 null,
             ],
@@ -794,14 +795,14 @@ class LayoutTest extends TestCase
                 [
                     'namespace' => 'namespace_value',
                     'static_type' => 'static_type_value',
-                    'dynamic_type' => 'dynamic_type_value'
+                    'dynamic_type' => 'dynamic_type_value',
                 ],
                 [
                     'type' => 'type_value',
                     'template' => 'template.phtml',
-                    'data' => ['some' => 'data']
-                ]
-            ]
+                    'data' => ['some' => 'data'],
+                ],
+            ],
         ];
     }
 
@@ -832,14 +833,14 @@ class LayoutTest extends TestCase
                     . '<block></block></layout>',
                 'blockName' => '',
                 'hasElement' => true,
-                'cacheable' => true
+                'cacheable' => true,
             ],
             'notCacheableBlockWithoutName' => [
                 'xmlString' => '<?xml version="1.0"?><layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
                     . '<block cacheable="false"></block></layout>',
                 'blockName' => '',
                 'hasElement' => true,
-                'cacheable' => true
+                'cacheable' => true,
             ],
             'notCacheableBlockWithMissingBlockReference' => [
                 'xmlString' => '<?xml version="1.0"?><layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
@@ -848,7 +849,7 @@ class LayoutTest extends TestCase
                     . '</referenceBlock></layout>',
                 'blockName' => 'non_cacheable_block',
                 'hasElement' => false,
-                'cacheable' => true
+                'cacheable' => true,
             ],
             'notCacheableBlockWithMissingContainerReference' => [
                 'xmlString' => '<?xml version="1.0"?><layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
@@ -857,7 +858,7 @@ class LayoutTest extends TestCase
                     . '</referenceContainer></layout>',
                 'blockName' => 'non_cacheable_block',
                 'hasElement' => false,
-                'cacheable' => true
+                'cacheable' => true,
             ],
             'notCacheableBlockWithExistingBlockReference' => [
                 'xmlString' => '<?xml version="1.0"?><layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
@@ -866,7 +867,7 @@ class LayoutTest extends TestCase
                     . '</referenceBlock></layout>',
                 'blockName' => 'non_cacheable_block',
                 'hasElement' => true,
-                'cacheable' => false
+                'cacheable' => false,
             ],
             'notCacheableBlockWithExistingContainerReference' => [
                 'xmlString' => '<?xml version="1.0"?><layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
@@ -875,8 +876,8 @@ class LayoutTest extends TestCase
                     . '</referenceContainer></layout>',
                 'blockName' => 'non_cacheable_block',
                 'hasElement' => true,
-                'cacheable' => false
-            ]
+                'cacheable' => false,
+            ],
         ];
     }
 
@@ -926,8 +927,8 @@ class LayoutTest extends TestCase
             'field_3' => [
                 'field_3_1' => '1244',
                 'field_3_2' => null,
-                'field_3_3' => false
-            ]
+                'field_3_3' => false,
+            ],
         ];
         $this->pageConfigStructure->expects($this->any())
             ->method('__toArray')
@@ -935,12 +936,12 @@ class LayoutTest extends TestCase
 
         $layoutScheduledStructureData = [
             'field_1' => 1283,
-            'field_2' => 'text_qwertyuiop[]asdfghjkl;'
+            'field_2' => 'text_qwertyuiop[]asdfghjkl;',
         ];
         $this->layoutScheduledSructure->expects($this->any())
             ->method('__toArray')
             ->willReturn($layoutScheduledStructureData);
-        
+
         // Ensure __toArray returns valid data for defensive copying
         $this->pageConfigStructure->expects($this->any())
             ->method('__toArray')
@@ -972,7 +973,7 @@ class LayoutTest extends TestCase
             'name_1' => ['type' => '', 'parent' => null],
             'name_2' => ['type' => Element::TYPE_CONTAINER, 'parent' => null],
             'name_3' => ['type' => '', 'parent' => 'parent'],
-            'name_4' => ['type' => Element::TYPE_CONTAINER, 'parent' => 'parent']
+            'name_4' => ['type' => Element::TYPE_CONTAINER, 'parent' => 'parent'],
         ];
 
         $this->structureMock->expects($this->once())
@@ -1014,8 +1015,8 @@ class LayoutTest extends TestCase
             'field_3' => [
                 'field_3_1' => '1244',
                 'field_3_2' => null,
-                'field_3_3' => false
-            ]
+                'field_3_3' => false,
+            ],
         ];
         $this->pageConfigStructure->expects($this->once())
             ->method('populateWithArray')
@@ -1028,7 +1029,7 @@ class LayoutTest extends TestCase
         $this->layoutScheduledSructure->expects($this->once())
             ->method('populateWithArray')
             ->with($layoutScheduledStructureData);
-        
+
         // Ensure __toArray returns valid data for defensive copying
         $this->layoutScheduledSructure->expects($this->any())
             ->method('__toArray')
@@ -1068,7 +1069,7 @@ class LayoutTest extends TestCase
             'name_1' => ['type' => '', 'parent' => null],
             'name_2' => ['type' => Element::TYPE_CONTAINER, 'parent' => null],
             'name_3' => ['type' => '', 'parent' => 'parent'],
-            'name_4' => ['type' => Element::TYPE_CONTAINER, 'parent' => 'parent']
+            'name_4' => ['type' => Element::TYPE_CONTAINER, 'parent' => 'parent'],
         ];
 
         $this->structureMock->expects($this->once())
@@ -1105,7 +1106,7 @@ class LayoutTest extends TestCase
                 [
                     [$name, 'display', $displayValue],
                     [$child, 'display', $displayValue],
-                    [$child, 'type', Element::TYPE_BLOCK]
+                    [$child, 'type', Element::TYPE_BLOCK],
                 ]
             );
 
@@ -1175,7 +1176,7 @@ class LayoutTest extends TestCase
                 [
                     [$name, 'display', $displayValue],
                     [$child, 'display', $displayValue],
-                    [$child, 'type', Element::TYPE_BLOCK]
+                    [$child, 'type', Element::TYPE_BLOCK],
                 ]
             );
 
@@ -1202,7 +1203,7 @@ class LayoutTest extends TestCase
         return [
             ['false'],
             ['0'],
-            [0]
+            [0],
         ];
     }
 
@@ -1213,7 +1214,7 @@ class LayoutTest extends TestCase
     {
         return [
             ['', ' '],
-            [' <html/>', ' <html/>']
+            [' <html/>', ' <html/>'],
         ];
     }
 
@@ -1228,7 +1229,7 @@ class LayoutTest extends TestCase
             [1],
             ['true'],
             [false],
-            [null]
+            [null],
         ];
     }
 

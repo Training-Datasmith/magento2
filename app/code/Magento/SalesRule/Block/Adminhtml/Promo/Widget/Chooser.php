@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -152,7 +154,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'align' => 'left',
                 'width' => '120px',
                 'type' => 'date',
-                'index' => 'from_date'
+                'index' => 'from_date',
             ]
         );
 
@@ -164,7 +166,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '120px',
                 'type' => 'date',
                 'default' => '--',
-                'index' => 'to_date'
+                'index' => 'to_date',
             ]
         );
 
@@ -176,7 +178,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '80px',
                 'index' => 'is_active',
                 'type' => 'options',
-                'options' => [1 => 'Active', 0 => 'Inactive']
+                'options' => [1 => 'Active', 0 => 'Inactive'],
             ]
         );
 

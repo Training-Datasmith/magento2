@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Customer\Model\ResourceModel;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface;
@@ -13,18 +16,16 @@ use Magento\Customer\Api\Data\AddressInterfaceFactory;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Model\Customer;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Framework\Api\Filter;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Sales\Test\Fixture\PlaceOrderWithCustomerOrGuest as OrderFixture;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -32,6 +33,7 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Test\Fixture\PlaceOrderWithCustomerOrGuest as OrderFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -233,7 +235,7 @@ class CustomerRepositoryTest extends TestCase
             'created_in' => 'Admin',
             'password' => 'notsaved',
             'default_billing' => $defaultBilling,
-            'default_shipping' => $defaultShipping
+            'default_shipping' => $defaultShipping,
         ]);
         $customerDetails = $this->customerFactory->create();
         $this->dataObjectHelper->populateWithArray(
@@ -452,8 +454,8 @@ class CustomerRepositoryTest extends TestCase
         $newCustomerAddresses = $newCustomer->getAddresses();
         $addressId = $newCustomerAddresses[0]->getId();
 
-        $this->assertEquals($newCustomer->getDefaultBilling(), $addressId, "Default billing invalid value");
-        $this->assertEquals($newCustomer->getDefaultShipping(), $addressId, "Default shipping invalid value");
+        $this->assertEquals($newCustomer->getDefaultBilling(), $addressId, 'Default billing invalid value');
+        $this->assertEquals($newCustomer->getDefaultShipping(), $addressId, 'Default shipping invalid value');
     }
 
     /**
@@ -579,11 +581,11 @@ class CustomerRepositoryTest extends TestCase
         return [
             'Customer remove default shipping and billing' => [
                 null,
-                null
+                null,
             ],
             'Customer update default shipping and billing' => [
                 1,
-                1
+                1,
             ],
         ];
     }
@@ -611,11 +613,11 @@ class CustomerRepositoryTest extends TestCase
                 [],
                 [
                     $builder->setField('firstname')->setValue('Firstname')->create(),
-                    $builder->setField('firstname')->setValue('Firstname2')->create()
+                    $builder->setField('firstname')->setValue('Firstname2')->create(),
                 ],
                 [
                     1 => ['email' => 'customer@search.example.com', 'firstname' => 'Firstname'],
-                    2 => ['email' => 'customer2@search.example.com', 'firstname' => 'Firstname2']
+                    2 => ['email' => 'customer2@search.example.com', 'firstname' => 'Firstname2'],
                 ],
             ],
             'Customers created since' => [
@@ -626,9 +628,9 @@ class CustomerRepositoryTest extends TestCase
                 [],
                 [
                     1 => ['email' => 'customer@search.example.com', 'firstname' => 'Firstname'],
-                    3 => ['email' => 'customer3@search.example.com', 'firstname' => 'Firstname3']
+                    3 => ['email' => 'customer3@search.example.com', 'firstname' => 'Firstname3'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -672,13 +674,13 @@ class CustomerRepositoryTest extends TestCase
     {
         $customerId = 1;
         $customerData = [
-            "id" => 1,
-            "website_id" => 1,
-            "email" => "roni_cost@example.com",
-            "firstname" => "1111",
-            "lastname" => "Boss",
-            "middlename" => null,
-            "gender" => 0
+            'id' => 1,
+            'website_id' => 1,
+            'email' => 'roni_cost@example.com',
+            'firstname' => '1111',
+            'lastname' => 'Boss',
+            'middlename' => null,
+            'gender' => 0,
         ];
 
         $customerEntity = $this->customerFactory->create(['data' => $customerData]);
@@ -774,7 +776,7 @@ class CustomerRepositoryTest extends TestCase
             CustomerFixture::class,
             [
                 'email' => 'émâíl123@example.com',
-                'rp_token' => 'random_token_123'
+                'rp_token' => 'random_token_123',
             ],
             as: 'customer'
         )
@@ -805,7 +807,7 @@ class CustomerRepositoryTest extends TestCase
                 'type_id' => 'simple',
                 'price' => 50,
                 'status' => 1,
-                'website_ids' => [1]
+                'website_ids' => [1],
             ],
             as: 'product'
         ),

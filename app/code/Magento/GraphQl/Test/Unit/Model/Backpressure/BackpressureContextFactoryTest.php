@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\GraphQl\Test\Unit\Model\Backpressure;
 
 use Magento\Framework\App\Backpressure\ContextInterface;
 use Magento\Framework\App\Backpressure\IdentityProviderInterface;
-use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\GraphQl\Model\Backpressure\BackpressureContextFactory;
 use Magento\GraphQl\Model\Backpressure\GraphQlContext;
 use Magento\GraphQl\Model\Backpressure\RequestTypeExtractorInterface;
@@ -81,16 +82,16 @@ class BackpressureContextFactoryTest extends TestCase
         return [
             'guest' => [
                 ContextInterface::IDENTITY_TYPE_IP,
-                '127.0.0.1'
+                '127.0.0.1',
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
-                '42'
+                '42',
             ],
             'admin' => [
                 ContextInterface::IDENTITY_TYPE_ADMIN,
-                '42'
-            ]
+                '42',
+            ],
         ];
     }
 

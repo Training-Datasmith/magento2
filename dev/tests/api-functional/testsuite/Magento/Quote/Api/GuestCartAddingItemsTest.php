@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class GuestCartAddingItemsTest extends WebapiAbstract
                 'option_id' => $option->getId(),
                 'option_value' => $option->getType() !== 'field'
                     ? current($option->getValues())->getOptionTypeId()
-                    : 'test'
+                    : 'test',
             ];
         }
 
@@ -69,7 +70,7 @@ class GuestCartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
         $quoteId = $this->_webApiCall($serviceInfoForCreatingEmptyCart);
 
@@ -78,7 +79,7 @@ class GuestCartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . $quoteId . '/items',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
 
         $requestData = [
@@ -88,10 +89,10 @@ class GuestCartAddingItemsTest extends WebapiAbstract
                 'qty' => 1,
                 'product_option' => [
                     'extension_attributes' => [
-                        'custom_options' => $customOptions
-                    ]
-                ]
-            ]
+                        'custom_options' => $customOptions,
+                    ],
+                ],
+            ],
         ];
         $item = $this->_webApiCall($serviceInfoForAddingProduct, $requestData);
         $this->assertNotEmpty($item);
@@ -100,7 +101,7 @@ class GuestCartAddingItemsTest extends WebapiAbstract
                 'option_id' => $option->getId(),
                 'option_value' => $option->getType() != 'field'
                     ? current(array_reverse($option->getValues()))->getOptionTypeId()
-                    : 'test2'
+                    : 'test2',
             ];
         }
         $requestData = [
@@ -110,10 +111,10 @@ class GuestCartAddingItemsTest extends WebapiAbstract
                 'qty' => 1,
                 'product_option' => [
                     'extension_attributes' => [
-                        'custom_options' => $customOptions
-                    ]
-                ]
-            ]
+                        'custom_options' => $customOptions,
+                    ],
+                ],
+            ],
         ];
 
         // Update the item for the cart
@@ -121,7 +122,7 @@ class GuestCartAddingItemsTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . $quoteId . '/items/' . $item['item_id'],
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         $item = $this->_webApiCall($serviceInfoForUpdateProduct, $requestData);
@@ -166,8 +167,8 @@ class GuestCartAddingItemsTest extends WebapiAbstract
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'simple',
-                'qty' => 1
-            ]
+                'qty' => 1,
+            ],
         ];
         $item = $this->_webApiCall($serviceInfoForAddingProduct, $requestData);
         $this->assertNotEmpty($item);
@@ -205,8 +206,8 @@ class GuestCartAddingItemsTest extends WebapiAbstract
             'cartItem' => [
                 'quote_id' => $quoteId,
                 'sku' => 'simple',
-                'qty' => 1
-            ]
+                'qty' => 1,
+            ],
         ];
         $item = $this->_webApiCall($serviceInfoForAddingProduct, $requestData);
         $this->assertNotEmpty($item);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class StructurePluginTest extends TestCase
             ConfigStructurePlugin::class,
             [
                 'scopeDefiner' => $this->configScopeDefinerMock,
-                'backendHelper' => $this->backendHelperMock
+                'backendHelper' => $this->backendHelperMock,
             ]
         );
     }
@@ -168,7 +169,7 @@ class StructurePluginTest extends TestCase
             [
                 ['payment', 'group1', 'group2', 'field'],
                 'DE',
-            ]
+            ],
         ];
     }
 }

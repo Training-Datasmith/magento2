@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Observer;
 
+use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category;
@@ -21,7 +23,6 @@ use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\Store;
-use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 
 /**
  * Class for set or update url path.
@@ -30,7 +31,6 @@ use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
  */
 class CategoryUrlPathAutogeneratorObserver implements ObserverInterface
 {
-
     /**
      * @var CategoryUrlPathGenerator
      */

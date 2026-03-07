@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class Delete extends \Magento\Backend\App\Action implements HttpPostActionInterf
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Search::synonyms';
+    public const ADMIN_RESOURCE = 'Magento_Search::synonyms';
 
     /**
      * @var \Psr\Log\LoggerInterface $logger

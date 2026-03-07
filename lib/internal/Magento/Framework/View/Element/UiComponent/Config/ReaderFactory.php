@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -12,7 +15,7 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class ReaderFactory
 {
-    const INSTANCE_NAME = \Magento\Framework\View\Element\UiComponent\Config\Reader::class;
+    public const INSTANCE_NAME = \Magento\Framework\View\Element\UiComponent\Config\Reader::class;
 
     /**
      * @var ObjectManagerInterface

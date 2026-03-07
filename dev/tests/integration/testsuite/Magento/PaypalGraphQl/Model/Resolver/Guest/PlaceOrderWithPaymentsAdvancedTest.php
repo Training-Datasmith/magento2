@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class PlaceOrderWithPaymentsAdvancedTest extends TestCase
                 'result' => '0',
                 'respmsg' => 'Approved',
                 'pnref' => 'V19A3D27B61E',
-                'result_code' => '0'
+                'result_code' => '0',
             ]
         );
         $this->gateway->expects($this->once())
@@ -137,8 +138,8 @@ class PlaceOrderWithPaymentsAdvancedTest extends TestCase
                             'BUTTONSOURCE' => $button,
                             'tender' => 'C',
                         ],
-                        $this->paymentRequest
-                    ]
+                        $this->paymentRequest,
+                    ],
                 ],
                 ['USER1', 1, $this->paymentRequest],
                 ['USER2', 'USER2SilentPostHash', $this->paymentRequest]
@@ -177,7 +178,7 @@ class PlaceOrderWithPaymentsAdvancedTest extends TestCase
         $cartId = $this->getMaskedQuoteIdByReservedOrderId->execute('test_quote');
 
         $responseData = $this->setPaymentMethodWithInValidUrl($cartId, $paymentMethod);
-        $expectedExceptionMessage = "Invalid Url.";
+        $expectedExceptionMessage = 'Invalid Url.';
         $this->assertArrayHasKey('errors', $responseData);
         $actualError = $responseData['errors'][0];
         $this->assertEquals($expectedExceptionMessage, $actualError['message']);
@@ -221,7 +222,7 @@ class PlaceOrderWithPaymentsAdvancedTest extends TestCase
                         'result' => $resultCode,
                         'trxtype' => 'A',
 
-                    ]
+                    ],
                 ]
             )
             ->willReturnSelf();

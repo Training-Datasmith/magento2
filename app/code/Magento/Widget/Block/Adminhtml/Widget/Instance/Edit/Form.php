@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Widget Instance edit form
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic

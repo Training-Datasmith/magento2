@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Block\Adminhtml\Create;
 
 /**
@@ -91,7 +94,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
             [
                 'label' => __('Submit Shipment'),
                 'class' => 'save submit-button primary',
-                'onclick' => 'submitShipment(this);'
+                'onclick' => 'submitShipment(this);',
             ]
         );
 

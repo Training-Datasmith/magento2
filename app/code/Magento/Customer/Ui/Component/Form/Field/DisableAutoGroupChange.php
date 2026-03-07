@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Ui\Component\Form\Field;
 
+use Magento\Customer\Helper\Address as AddressHelper;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Customer\Helper\Address as AddressHelper;
 
 /**
  * Process setting to set Default Value for Disable Automatic Group Changes Based on VAT ID
@@ -22,7 +23,7 @@ class DisableAutoGroupChange extends \Magento\Ui\Component\Form\Field
     /**
      * Yes value for Default Value for Disable Automatic Group Changes Based on VAT ID
      */
-    const DISABLE_AUTO_GROUP_CHANGE_YES = '1';
+    public const DISABLE_AUTO_GROUP_CHANGE_YES = '1';
 
     /**
      * Address Helper

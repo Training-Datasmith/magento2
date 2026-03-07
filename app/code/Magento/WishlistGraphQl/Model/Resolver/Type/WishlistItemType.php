@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class WishlistItemType implements TypeResolverInterface
     {
         if (!$data['model'] instanceof ProductInterface) {
             throw new LocalizedException(__('"model" should be a "%instance" instance', [
-                'instance' => ProductInterface::class
+                'instance' => ProductInterface::class,
             ]));
         }
 

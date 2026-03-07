@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,19 +11,18 @@ namespace Magento\Multishipping\Test\Unit\Plugin;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Type\Simple;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Multishipping\Plugin\MultishippingQuoteRepository;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartExtensionInterface;
-use Magento\Quote\Api\Data\CartInterface;
+use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\Item;
-use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Quote\Model\Quote\Address\Rate;
+use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Quote\Model\Quote\ShippingAssignment\ShippingProcessor;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Shipping;
 use Magento\Quote\Model\ShippingAssignment;
 use Magento\Quote\Model\ShippingAssignmentFactory;
@@ -89,7 +89,7 @@ class MultishippingQuoteRepositoryTest extends TestCase
                 'setItems',
                 'getItems',
                 'getItemById',
-                'getExtensionAttributes'
+                'getExtensionAttributes',
             ]
         );
         $this->quoteItemMock = $this->createMock(QuoteItem::class);
@@ -139,10 +139,10 @@ class MultishippingQuoteRepositoryTest extends TestCase
         $extensionAttributesMock->expects($this->any())
             ->method('getShippingAssignments')
             ->willReturn($this->shippingAssignmentFactoryMock);
-        
+
         $shippingAssignmentMock = $this->createMock(ShippingAssignment::class);
         $this->shippingAssignmentFactoryMock->method('create')->willReturn($shippingAssignmentMock);
-        
+
         $shippingMock = $this->createMock(Shipping::class);
         $this->shippingProcessorMock->method('create')->willReturn($shippingMock);
 
@@ -311,11 +311,11 @@ class MultishippingQuoteRepositoryTest extends TestCase
                     'product' => '1',
                     'qty' => 1,
                 ],
-            ]
+            ],
         ];
         return [
             'test case for multi shipping quote' => [true, $productData],
-            'test case for single shipping quote' => [false, $productData]
+            'test case for single shipping quote' => [false, $productData],
         ];
     }
 }

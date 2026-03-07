@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Abstract Tax Class
  */
+
 namespace Magento\Tax\Model\TaxClass;
 
 abstract class AbstractType extends \Magento\Framework\DataObject implements Type\TypeInterface

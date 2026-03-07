@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model\ResourceModel;
 
 use Magento\Authorization\Model\Acl\Role\User as RoleUser;
@@ -28,8 +31,6 @@ class Role extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected $_cache;
 
     /**
-     * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
-     * @param \Magento\Framework\App\CacheInterface $cache
      * @param string $connectionName
      */
     public function __construct(
@@ -55,10 +56,9 @@ class Role extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Process role before saving
      *
-     * @param \Magento\Framework\Model\AbstractModel $role
      * @return $this
      */
-    protected function _beforeSave(\Magento\Framework\Model\AbstractModel $role)
+    protected function _beforeSave(\Magento\Framework\Model\AbstractModel $role): static
     {
         if ($role->getId() == '') {
             if ($role->getIdFieldName()) {
@@ -96,11 +96,10 @@ class Role extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Process role after saving
      *
-     * @param \Magento\Framework\Model\AbstractModel $role
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function _afterSave(\Magento\Framework\Model\AbstractModel $role)
+    protected function _afterSave(\Magento\Framework\Model\AbstractModel $role): static
     {
         $this->_cache->clean(CacheConstants::CLEANING_MODE_MATCHING_TAG, [\Magento\Backend\Block\Menu::CACHE_TAGS]);
         return $this;
@@ -109,10 +108,9 @@ class Role extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Process role after deleting
      *
-     * @param \Magento\Framework\Model\AbstractModel $role
      * @return $this
      */
-    protected function _afterDelete(\Magento\Framework\Model\AbstractModel $role)
+    protected function _afterDelete(\Magento\Framework\Model\AbstractModel $role): static
     {
         $connection = $this->getConnection();
 
@@ -128,7 +126,6 @@ class Role extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Get role users
      *
-     * @param \Magento\Authorization\Model\Role $role
      * @return array
      */
     public function getRoleUsers(\Magento\Authorization\Model\Role $role)

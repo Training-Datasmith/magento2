@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class RecurringTest extends TestCase
             'queue_name_2',
         ];
         $queuesToInsert = [
-            2 => 'queue_name_3'
+            2 => 'queue_name_3',
         ];
         $queueTableName = 'queue_table';
 

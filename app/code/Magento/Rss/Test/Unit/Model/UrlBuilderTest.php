@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class UrlBuilderTest extends TestCase
             UrlBuilder::class,
             [
                 'urlBuilder' => $this->urlInterface,
-                'scopeConfig' => $this->scopeConfigInterface
+                'scopeConfig' => $this->scopeConfigInterface,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Observer;
 
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -16,7 +18,6 @@ use Magento\Persistent\Helper\Session;
 use Magento\Persistent\Model\Persistent\Config;
 use Magento\Persistent\Model\Persistent\ConfigFactory;
 use Magento\Persistent\Observer\ApplyBlockPersistentDataObserver;
-use Magento\Customer\Model\Session as CustomerSession;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

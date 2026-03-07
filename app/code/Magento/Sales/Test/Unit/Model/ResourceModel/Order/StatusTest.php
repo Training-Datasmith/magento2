@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Eav\Model\Config;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\ResourceModel\Order\Status;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class StatusTest extends TestCase
 {
@@ -113,7 +114,7 @@ class StatusTest extends TestCase
                     'status' => $status,
                     'state' => $state,
                     'is_default' => $isDefault,
-                    'visible_on_front' => $visibleOnFront
+                    'visible_on_front' => $visibleOnFront,
                 ]
             );
         $this->model->assignState($status, $state, $isDefault, $visibleOnFront);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -84,14 +85,14 @@ class ResponseTest extends \Magento\TestFramework\TestCase\AbstractController
                 'currentDateTime' => '2019-07-05 00:00:00',
                 'paypalExpDate' => '0321',
                 'expectedCcMonth' => 3,
-                'expectedCcYear' => 2021
+                'expectedCcYear' => 2021,
             ],
             'Expiration year in next century' => [
                 'currentDateTime' => '2099-01-01 00:00:00',
                 'paypalExpDate' => '1002',
                 'expectedCcMonth' => 10,
-                'expectedCcYear' => 2102
-            ]
+                'expectedCcYear' => 2102,
+            ],
         ];
     }
 

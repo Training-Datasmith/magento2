@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ declare(strict_types=1);
 namespace Magento\Cms\Model\Page;
 
 use Magento\Cms\Model\Page;
-use Magento\Cms\Model\PageFactory;
 use Magento\Cms\Model\Page\CustomLayout\Data\CustomLayoutSelected;
+use Magento\Cms\Model\PageFactory;
+use Magento\Framework\View\Model\Layout\Merge;
+use Magento\Framework\View\Model\Layout\MergeFactory;
+use Magento\Framework\View\Result\PageFactory as PageResultFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\Result\PageFactory as PageResultFactory;
-use Magento\Framework\View\Model\Layout\MergeFactory;
-use Magento\Framework\View\Model\Layout\Merge;
 
 /**
  * Test the manager.
@@ -57,7 +58,7 @@ class CustomLayoutManagerTest extends TestCase
         //Mocking available list of files for the page.
         $handles = [
             'cms_page_view_selectable_page100_select1',
-            'cms_page_view_selectable_page100_select2'
+            'cms_page_view_selectable_page100_select2',
         ];
         $processor = $this->getMockBuilder(Merge::class)->disableOriginalConstructor()->getMock();
         $processor->method('getAvailableHandles')->willReturn($handles);

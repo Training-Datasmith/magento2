@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * System config translate inline fields backend model
  */
+
 namespace Magento\Config\Model\Config\Backend;
 
 /**
@@ -20,7 +23,7 @@ class Translate extends \Magento\Framework\App\Config\Value
      *
      * @var string
      */
-    const XML_PATH_INVALID_CACHES = 'dev/translate_inline/invalid_caches';
+    public const XML_PATH_INVALID_CACHES = 'dev/translate_inline/invalid_caches';
 
     /**
      * Set status 'invalidate' for blocks and other output caches

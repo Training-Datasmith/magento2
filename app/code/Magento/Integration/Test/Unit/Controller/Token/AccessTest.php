@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class AccessTest extends TestCase
                 'setParams',
                 'getParams',
                 'getCookie',
-                'isSecure'
+                'isSecure',
             ]
         );
         $this->response = $this->createMock(Response::class);
@@ -150,7 +151,7 @@ class AccessTest extends TestCase
             Access::class,
             [
                 'context' => $this->context,
-                'oauthService'=> $this->frameworkOauthSvcMock,
+                'oauthService' => $this->frameworkOauthSvcMock,
                 'intOauthService' => $this->intOauthServiceMock,
                 'integrationService' => $this->integrationServiceMock,
                 'helper' => $this->helperMock,

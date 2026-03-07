@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Plugin\Product\Initialization;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -119,8 +121,8 @@ class CleanConfigurationTmpImages
     private function getConfigurations()
     {
         $result = [];
-        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', "[]");
-        if (isset($configurableMatrix) && $configurableMatrix !== "") {
+        $configurableMatrix = $this->request->getParam('configurable-matrix-serialized', '[]');
+        if (isset($configurableMatrix) && $configurableMatrix !== '') {
             $configurableMatrix = $this->serialize->unserialize($configurableMatrix) ?? [];
 
             foreach ($configurableMatrix as $item) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ViewTest extends TestCase
         $this->view = $this->objectManagerHelper->getObject(
             View::class,
             [
-                'sendfriend' => $this->sendfriendModel
+                'sendfriend' => $this->sendfriendModel,
             ]
         );
     }
@@ -66,7 +67,7 @@ class ViewTest extends TestCase
     {
         return [
             [true, 'never'],
-            [false, 'once']
+            [false, 'once'],
         ];
     }
 }

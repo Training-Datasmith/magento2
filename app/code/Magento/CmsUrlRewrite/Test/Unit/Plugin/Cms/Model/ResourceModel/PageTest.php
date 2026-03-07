@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CmsUrlRewrite\Test\Unit\Plugin\Cms\Model\ResourceModel;
 
-use Magento\CmsUrlRewrite\Model\CmsPageUrlRewriteGenerator;
-use Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel\Page;
 use Magento\Cms\Model\Page as CmsPageModelPage;
 use Magento\Cms\Model\ResourceModel\Page as CmsPageResourceModelPage;
+use Magento\CmsUrlRewrite\Model\CmsPageUrlRewriteGenerator;
+use Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel\Page;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
@@ -56,7 +57,7 @@ class PageTest extends TestCase
         $this->pageObject = $objectManager->getObject(
             Page::class,
             [
-                'urlPersist' => $this->urlPersistMock
+                'urlPersist' => $this->urlPersistMock,
             ]
         );
     }
@@ -78,7 +79,7 @@ class PageTest extends TestCase
             ->with(
                 [
                     UrlRewrite::ENTITY_ID => $productId,
-                    UrlRewrite::ENTITY_TYPE => CmsPageUrlRewriteGenerator::ENTITY_TYPE
+                    UrlRewrite::ENTITY_TYPE => CmsPageUrlRewriteGenerator::ENTITY_TYPE,
                 ]
             );
 

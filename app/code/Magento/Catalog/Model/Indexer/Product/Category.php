@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product;
 
 use Magento\Framework\Indexer\IndexMutexInterface;
@@ -18,7 +21,7 @@ class Category extends \Magento\Catalog\Model\Indexer\Category\Product
     /**
      * Indexer ID in configuration
      */
-    const INDEXER_ID = 'catalog_product_category';
+    public const INDEXER_ID = 'catalog_product_category';
 
     /**
      * @param \Magento\Catalog\Model\Indexer\Category\Product\Action\FullFactory $fullActionFactory
@@ -48,7 +51,7 @@ class Category extends \Magento\Catalog\Model\Indexer\Category\Product
         $this->getCacheContext()->registerTags(
             [
                 \Magento\Catalog\Model\Category::CACHE_TAG,
-                \Magento\Catalog\Model\Product::CACHE_TAG
+                \Magento\Catalog\Model\Product::CACHE_TAG,
             ]
         );
     }

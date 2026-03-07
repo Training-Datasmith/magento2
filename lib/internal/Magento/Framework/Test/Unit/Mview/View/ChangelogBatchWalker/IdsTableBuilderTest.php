@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class IdsTableBuilderTest extends TestCase
         $this->model = new IdsTableBuilder($this->resourceConnection);
     }
 
-    public function testBuildDoNotCreateMemoryTable() : void
+    public function testBuildDoNotCreateMemoryTable(): void
     {
         $this->table->expects($this->never())
             ->method('setOption')

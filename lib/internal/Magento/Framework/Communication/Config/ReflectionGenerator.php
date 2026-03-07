@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication\Config;
 
 use Magento\Framework\Communication\ConfigInterface as Config;
@@ -13,7 +16,7 @@ use Magento\Framework\Reflection\MethodsMap;
  */
 class ReflectionGenerator
 {
-    const DEFAULT_HANDLER = 'defaultHandler';
+    public const DEFAULT_HANDLER = 'defaultHandler';
 
     /**
      * @var MethodsMap
@@ -44,8 +47,8 @@ class ReflectionGenerator
             Config::SCHEMA_METHOD_RETURN_TYPE => $this->methodsMap->getMethodReturnType($className, $methodName),
             Config::SCHEMA_METHOD_HANDLER => [
                 Config::HANDLER_TYPE => $className,
-                Config::HANDLER_METHOD => $methodName
-            ]
+                Config::HANDLER_METHOD => $methodName,
+            ],
         ];
         $paramsMeta = $this->methodsMap->getMethodParams($className, $methodName);
         foreach ($paramsMeta as $paramPosition => $paramMeta) {
@@ -91,7 +94,7 @@ class ReflectionGenerator
             Config::TOPIC_REQUEST_TYPE => Config::TOPIC_REQUEST_TYPE_METHOD,
             Config::TOPIC_RESPONSE => $returnType,
             Config::TOPIC_HANDLERS => $handlers
-                ?: [self::DEFAULT_HANDLER => $methodMetadata[Config::SCHEMA_METHOD_HANDLER]]
+                ?: [self::DEFAULT_HANDLER => $methodMetadata[Config::SCHEMA_METHOD_HANDLER]],
         ];
     }
 

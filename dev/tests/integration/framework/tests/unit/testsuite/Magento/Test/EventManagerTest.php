@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\EventManager.
  */
+
 namespace Magento\Test;
 
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -69,7 +72,7 @@ class EventManagerTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'straight order' => [false, ['subscriberOne', 'subscriberTwo']],
-            'reverse order' => [true, ['subscriberTwo', 'subscriberOne']]
+            'reverse order' => [true, ['subscriberTwo', 'subscriberOne']],
         ];
     }
 

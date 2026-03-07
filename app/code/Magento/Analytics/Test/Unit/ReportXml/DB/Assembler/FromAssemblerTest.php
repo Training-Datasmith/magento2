@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Analytics\ReportXml\DB\NameResolver;
 use Magento\Analytics\ReportXml\DB\SelectBuilder;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -137,8 +138,8 @@ class FromAssemblerTest extends TestCase
                         'alias' => 'sales',
                         'attribute' => [
                             [
-                                'name' => 'entity_id'
-                            ]
+                                'name' => 'entity_id',
+                            ],
                         ],
                     ],
                 ],
@@ -151,13 +152,13 @@ class FromAssemblerTest extends TestCase
                         'alias' => 'sales',
                         'attribute' => [
                             [
-                                'name' => 'entity_id'
-                            ]
+                                'name' => 'entity_id',
+                            ],
                         ],
                     ],
                 ],
                 'pref_sales_order',
-            ]
+            ],
         ];
     }
 }

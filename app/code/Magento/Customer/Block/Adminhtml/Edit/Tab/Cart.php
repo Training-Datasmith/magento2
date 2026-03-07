@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
@@ -159,7 +162,7 @@ class Cart extends Extended
             [
                 'header' => __('Product'),
                 'index' => 'name',
-                'renderer' => Item::class
+                'renderer' => Item::class,
             ]
         );
 
@@ -210,9 +213,9 @@ class Cart extends Extended
                     [
                         'caption' => __('Delete'),
                         'url' => '#',
-                        'onclick' => 'return ' . $this->getJsObjectName() . 'cartControl.removeItem($item_id);'
+                        'onclick' => 'return ' . $this->getJsObjectName() . 'cartControl.removeItem($item_id);',
                     ],
-                ]
+                ],
             ]
         );
 
@@ -257,7 +260,7 @@ class Cart extends Extended
             'catalog/product/edit',
             [
                 'id' => $row->getProductId(),
-                'customerId' => $this->getCustomerId()
+                'customerId' => $this->getCustomerId(),
             ]
         );
     }

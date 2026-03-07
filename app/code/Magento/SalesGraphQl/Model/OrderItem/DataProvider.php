@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -157,7 +158,7 @@ class DataProvider
                     'value' => $this->taxHelper->displaySalesPriceInclTax($associatedOrder->getStoreId())
                         ? $orderItem->getPriceInclTax()
                         : $orderItem->getPrice(),
-                    'currency' => $associatedOrder->getOrderCurrencyCode()
+                    'currency' => $associatedOrder->getOrderCurrencyCode(),
                 ],
                 'selected_options' => $itemOptions['selected_options'],
                 'entered_options' => $itemOptions['entered_options'],
@@ -166,7 +167,7 @@ class DataProvider
                 'quantity_refunded' => $orderItem->getQtyRefunded(),
                 'quantity_invoiced' => $orderItem->getQtyInvoiced(),
                 'quantity_canceled' => $orderItem->getQtyCanceled(),
-                'quantity_returned' => $orderItem->getQtyReturned()
+                'quantity_returned' => $orderItem->getQtyReturned(),
             ];
         }
 
@@ -233,7 +234,7 @@ class DataProvider
      * @param OrderItemInterface $orderItem
      * @return array
      */
-    private function getDiscountDetails(OrderInterface $associatedOrder, OrderItemInterface $orderItem) : array
+    private function getDiscountDetails(OrderInterface $associatedOrder, OrderItemInterface $orderItem): array
     {
         if ($associatedOrder->getDiscountDescription() === null && $orderItem->getDiscountAmount() == 0
             && $associatedOrder->getDiscountAmount() == 0
@@ -245,7 +246,7 @@ class DataProvider
                 'applied_to' => $this->getAppliedTo($associatedOrder),
                 'amount' => [
                     'value' => abs((float) $orderItem->getDiscountAmount()),
-                    'currency' => $associatedOrder->getOrderCurrencyCode()
+                    'currency' => $associatedOrder->getOrderCurrencyCode(),
                 ],
                 'order_model' => $associatedOrder,
             ];

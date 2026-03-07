@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter\Filter\Builder;
 
+use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Framework\Search\Request\Filter\Wildcard as WildcardFilterRequest;
 use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 
 /**
  * @deprecated Elasticsearch is no longer supported by Adobe
@@ -42,7 +45,7 @@ class Wildcard implements FilterInterface
                 'wildcard' => [
                     $fieldName => '*' . $filter->getValue() . '*',
                 ],
-            ]
+            ],
         ];
     }
 }

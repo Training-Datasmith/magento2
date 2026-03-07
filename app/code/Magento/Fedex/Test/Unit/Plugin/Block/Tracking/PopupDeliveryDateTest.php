@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Fedex\Test\Unit\Plugin\Block\Tracking;
 
 use Magento\Fedex\Model\Carrier;
 use Magento\Fedex\Plugin\Block\Tracking\PopupDeliveryDate;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Shipping\Block\Tracking\Popup;
 use Magento\Shipping\Model\Tracking\Result\Status;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -170,14 +171,14 @@ class PopupDeliveryDateTest extends TestCase
                 'date' => '2024-01-07 06:00:00',
                 'currentTimezone' => 'US/Eastern',
                 'convertedTimezone' => 'America/Chicago',
-                'expected' => '2024-01-07'
+                'expected' => '2024-01-07',
             ],
             'previous day' => [
                 'date' => '2024-01-07 00:00:00',
                 'currentTimezone' => 'US/Eastern',
                 'convertedTimezone' => 'America/Chicago',
-                'expected' => '2024-01-06'
-            ]
+                'expected' => '2024-01-06',
+            ],
         ];
     }
 }

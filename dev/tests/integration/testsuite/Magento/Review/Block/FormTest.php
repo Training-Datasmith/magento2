@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -84,8 +86,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 'scope' => 'websites',
                 'scopeId' => '1',
                 'value' => 1,
-                'expectedResult' => true
-            ]
+                'expectedResult' => true,
+            ],
         ];
     }
 
@@ -101,7 +103,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
         $form = $this->objectManager->create(Form::class);
         $form->getRequest()
             ->setMethod(Http::METHOD_GET)
-            ->setParams(['id' => $product->getId() . "abc"]);
+            ->setParams(['id' => $product->getId() . 'abc']);
 
         $productInfo = $form->getProductInfo();
         $this->assertEquals($product->getId(), $productInfo->getId());

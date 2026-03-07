@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ foreach ($skus as $sku) {
             'discount_step' => 0,
             'stop_rules_processing' => 0,
             'website_ids' => [
-                $storeManager->getWebsite()->getId()
+                $storeManager->getWebsite()->getId(),
             ],
             'conditions' => [
                 1 => [
@@ -49,7 +50,7 @@ foreach ($skus as $sku) {
                     'value' => '1',
                     'is_value_processed' => null,
                     'aggregator' => 'all',
-                ]
+                ],
             ],
             'actions' => [
                 1 => [
@@ -66,16 +67,16 @@ foreach ($skus as $sku) {
                             'operator' => '==',
                             'value' => $sku,
                             'is_value_processed' => false,
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             'store_labels' => [
 
                 'store_id' => 0,
                 'store_label' => 'Promo code for ' . $sku,
 
-            ]
+            ],
         ]
     );
     $salesRule->save();

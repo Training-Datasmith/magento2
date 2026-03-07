@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Create;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\Model\View\Result\ForwardFactory;
-use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\View\Result\PageFactory;
 
 class ShowUpdateResult extends \Magento\Sales\Controller\Adminhtml\Order\Create implements HttpGetActionInterface
 {

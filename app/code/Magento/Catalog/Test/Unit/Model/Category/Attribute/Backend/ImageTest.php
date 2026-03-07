@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Category\Attribute\Backend;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category\Attribute\Backend\Image;
 use Magento\Catalog\Model\ImageUploader;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -21,6 +21,7 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -96,7 +97,7 @@ class ImageTest extends TestCase
     {
         return [
             [false],
-            [['delete' => true]]
+            [['delete' => true]],
         ];
     }
 
@@ -134,7 +135,7 @@ class ImageTest extends TestCase
             [true],
             [new \stdClass()],
             [$closure],
-            [['a' => 1, 'b' => 2]]
+            [['a' => 1, 'b' => 2]],
         ];
     }
 
@@ -279,7 +280,7 @@ class ImageTest extends TestCase
                     [
                         'name' => 'test123.jpg',
                         'tmp_name' => 'abc123',
-                        'url' => 'http://www.example.com/media/temp/test123.jpg'
+                        'url' => 'http://www.example.com/media/temp/test123.jpg',
                     ],
                 ],
             ]
@@ -339,7 +340,7 @@ class ImageTest extends TestCase
                 'objectManager' => $objectManagerMock,
                 'logger' => $this->logger,
                 'filesystem' => $this->filesystem,
-                'storeManager' => $this->storeManagerInterfaceMock
+                'storeManager' => $this->storeManagerInterfaceMock,
             ]
         );
         $this->objectManager->setBackwardCompatibleProperty($model, 'imageUploader', $this->imageUploader);
@@ -356,7 +357,7 @@ class ImageTest extends TestCase
             [[['name' => 'test1234.jpg']]],
             ['test1234.jpg'],
             [''],
-            [false]
+            [false],
         ];
     }
 
@@ -378,7 +379,7 @@ class ImageTest extends TestCase
         $object = new DataObject(
             [
                 'test_attribute' => $value,
-                '_additional_data_test_attribute' => [['name' => 'test1234.jpg', 'tmp_name' => 'test-test-1234']]
+                '_additional_data_test_attribute' => [['name' => 'test1234.jpg', 'tmp_name' => 'test-test-1234']],
             ]
         );
 
@@ -401,7 +402,7 @@ class ImageTest extends TestCase
 
         $object = new DataObject(
             [
-                'test_attribute' => $value
+                'test_attribute' => $value,
             ]
         );
 
@@ -451,7 +452,7 @@ class ImageTest extends TestCase
 
         $object = new DataObject(
             [
-                '_additional_data_test_attribute' => [['name' => 'test1234.jpg', 'tmp_name' => 'test-test-1234']]
+                '_additional_data_test_attribute' => [['name' => 'test1234.jpg', 'tmp_name' => 'test-test-1234']],
             ]
         );
 

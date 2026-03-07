@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class MaliciousCode implements FilterInterface
      * @param string $expression
      * @return $this
      */
-    public function addExpression(string $expression) :self
+    public function addExpression(string $expression): self
     {
         if (!in_array($expression, $this->_expressions)) {
             $this->_expressions[] = $expression;
@@ -88,7 +89,7 @@ class MaliciousCode implements FilterInterface
      * @param array $expressions
      * @return $this
      */
-    public function setExpressions(array $expressions) :self
+    public function setExpressions(array $expressions): self
     {
         $this->_expressions = $expressions;
         return $this;

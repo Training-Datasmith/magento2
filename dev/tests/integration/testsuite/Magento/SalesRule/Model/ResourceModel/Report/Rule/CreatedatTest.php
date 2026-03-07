@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\ResourceModel\Report\Rule;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
@@ -13,8 +16,8 @@ use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
@@ -113,13 +116,13 @@ class CreatedatTest extends TestCase
     private function getTotalAmount(Order $order)
     {
         return (
-                ($order->getBaseSubtotal() - $order->getBaseSubtotalCanceled()
-                    + ($order->getBaseShippingAmount() - $order->getBaseShippingCanceled()))
-                - (abs((float) $order->getBaseDiscountAmount()) - abs((float) $order->getBaseDiscountCanceled()))
-                + ($order->getBaseTaxAmount() - $order->getBaseTaxCanceled())
-                + ($order->getBaseDiscountTaxCompensationAmount() - $order->getBaseDiscountTaxCompensationRefunded())
-                - abs((float) $order->getShippingDiscountTaxCompensationAmount())
-            ) * $order->getBaseToGlobalRate();
+            ($order->getBaseSubtotal() - $order->getBaseSubtotalCanceled()
+                + ($order->getBaseShippingAmount() - $order->getBaseShippingCanceled()))
+            - (abs((float) $order->getBaseDiscountAmount()) - abs((float) $order->getBaseDiscountCanceled()))
+            + ($order->getBaseTaxAmount() - $order->getBaseTaxCanceled())
+            + ($order->getBaseDiscountTaxCompensationAmount() - $order->getBaseDiscountTaxCompensationRefunded())
+            - abs((float) $order->getShippingDiscountTaxCompensationAmount())
+        ) * $order->getBaseToGlobalRate();
     }
 
     /**
@@ -131,13 +134,13 @@ class CreatedatTest extends TestCase
     private function getTotalAmountActual(Order $order)
     {
         return (
-                ($order->getBaseSubtotalInvoiced() - $order->getSubtotalRefunded()
-                    + ($order->getBaseShippingInvoiced() - $order->getBaseShippingRefunded()))
-                - abs((float) $order->getBaseDiscountInvoiced()) - abs((float) $order->getBaseDiscountRefunded())
-                + $order->getBaseTaxInvoiced() - $order->getBaseTaxRefunded()
-                + ($order->getBaseDiscountTaxCompensationInvoiced() - $order->getBaseDiscountTaxCompensationRefunded())
-                - abs((float) $order->getBaseShippingDiscountTaxCompensationAmnt())
-            ) * $order->getBaseToGlobalRate();
+            ($order->getBaseSubtotalInvoiced() - $order->getSubtotalRefunded()
+                + ($order->getBaseShippingInvoiced() - $order->getBaseShippingRefunded()))
+            - abs((float) $order->getBaseDiscountInvoiced()) - abs((float) $order->getBaseDiscountRefunded())
+            + $order->getBaseTaxInvoiced() - $order->getBaseTaxRefunded()
+            + ($order->getBaseDiscountTaxCompensationInvoiced() - $order->getBaseDiscountTaxCompensationRefunded())
+            - abs((float) $order->getBaseShippingDiscountTaxCompensationAmnt())
+        ) * $order->getBaseToGlobalRate();
     }
 
     /**
@@ -153,9 +156,9 @@ class CreatedatTest extends TestCase
                     'base_tax_amount' => 8.8,
                     'base_subtotal_invoiced' => 494,
                     'base_discount_invoiced' => 98.80,
-                    'base_tax_invoiced' => 8.8
-                ]
-            ]
+                    'base_tax_invoiced' => 8.8,
+                ],
+            ],
         ];
     }
 
@@ -208,7 +211,7 @@ class CreatedatTest extends TestCase
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => [2],
-                'tax_rate_ids' => ['$taxRate.id$']
+                'tax_rate_ids' => ['$taxRate.id$'],
             ],
             'taxRule'
         ),
@@ -228,7 +231,7 @@ class CreatedatTest extends TestCase
                 'uses_per_customer' => 10,
                 'discount_amount' => 10,
                 'stop_rules_processing' => true,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ],
             'cartPriceRule'
         ),
@@ -236,7 +239,7 @@ class CreatedatTest extends TestCase
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -247,7 +250,7 @@ class CreatedatTest extends TestCase
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(ApplyCouponFixture::class, ['cart_id' => '$cart.id$', 'coupon_codes' => ['COUPON1']]),

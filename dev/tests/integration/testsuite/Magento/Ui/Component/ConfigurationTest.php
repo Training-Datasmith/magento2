@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentFile;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\DirSearch;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
@@ -62,8 +64,8 @@ class ConfigurationTest extends \PHPUnit\Framework\TestCase
     private $whiteList = [
         'argument[@name="data"]/item[@name="config"]/item[@name="multiple"]' => [
             '//*[@formElement="select"]',
-            '//*[substring(@component, string-length(@component) - string-length("ui-group") +1) = "ui-group"]'
-        ]
+            '//*[substring(@component, string-length(@component) - string-length("ui-group") +1) = "ui-group"]',
+        ],
     ];
 
     protected function setUp(): void

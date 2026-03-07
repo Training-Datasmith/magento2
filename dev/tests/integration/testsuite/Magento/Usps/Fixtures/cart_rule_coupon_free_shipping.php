@@ -1,16 +1,14 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Framework\Registry;
 use Magento\SalesRule\Api\CouponRepositoryInterface;
 use Magento\SalesRule\Model\Coupon;
-use Magento\SalesRule\Model\ResourceModel\Rule as RuleResource;
 use Magento\SalesRule\Model\Rule;
-use Magento\SalesRule\Model\RuleFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;

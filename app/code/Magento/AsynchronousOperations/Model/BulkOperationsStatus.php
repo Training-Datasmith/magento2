@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,50 +23,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
  */
 class BulkOperationsStatus implements BulkStatusInterface
 {
-    /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    /**
-     * @var BulkStatusDetailedFactory
-     */
-    private $bulkDetailedFactory;
-
-    /**
-     * @var BulkStatusShortFactory
-     */
-    private $bulkShortFactory;
-
-    /**
-     * @var BulkStatus
-     */
-    private $bulkStatus;
-
-    /**
-     * @var OperationCollectionFactory
-     */
-    private $operationCollectionFactory;
-
-    /**
-     * @param BulkStatus $bulkStatus
-     * @param OperationCollectionFactory $operationCollection
-     * @param BulkStatusDetailedFactory $bulkDetailedFactory
-     * @param BulkStatusShortFactory $bulkShortFactory
-     * @param EntityManager $entityManager
-     */
-    public function __construct(
-        BulkStatus $bulkStatus,
-        OperationCollectionFactory $operationCollection,
-        BulkStatusDetailedFactory $bulkDetailedFactory,
-        BulkStatusShortFactory $bulkShortFactory,
-        EntityManager $entityManager
-    ) {
-        $this->bulkStatus = $bulkStatus;
-        $this->operationCollectionFactory = $operationCollection;
-        $this->bulkDetailedFactory = $bulkDetailedFactory;
-        $this->bulkShortFactory = $bulkShortFactory;
-        $this->entityManager = $entityManager;
+    public function __construct(private readonly BulkStatus $bulkStatus, private readonly OperationCollectionFactory $operationCollectionFactory, private readonly BulkStatusDetailedFactory $bulkDetailedFactory, private readonly BulkStatusShortFactory $bulkShortFactory, private readonly EntityManager $entityManager)
+    {
     }
 
     /**

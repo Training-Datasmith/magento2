@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute\Backend;
 
 /**
@@ -68,7 +71,7 @@ class ArrayBackend extends \Magento\Eav\Model\Entity\Attribute\Backend\AbstractB
             ',',
             array_filter(
                 array_unique($data),
-                fn($value) => is_numeric($value) || !empty($value)
+                fn ($value) => is_numeric($value) || !empty($value)
             )
         );
     }

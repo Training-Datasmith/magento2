@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ConnectionManagerTest extends TestCase
             [
                 'clientFactory' => $this->clientFactory,
                 'clientConfig' => $this->clientConfig,
-                'logger' => $this->logger
+                'logger' => $this->logger,
             ]
         );
     }

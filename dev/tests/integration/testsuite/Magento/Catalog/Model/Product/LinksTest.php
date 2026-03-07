@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -118,7 +119,7 @@ class LinksTest extends TestCase
         $this->assertEquals(
             $expectedLinks,
             $this->getActualLinks($product),
-            "Expected linked products do not match actual linked products!"
+            'Expected linked products do not match actual linked products!'
         );
     }
 
@@ -139,7 +140,7 @@ class LinksTest extends TestCase
             'delete' => [
                 'data' => [
                     'defaultLinks' => self::$defaultDataFixture,
-                    'productLinks' => []
+                    'productLinks' => [],
                 ],
             ],
             'same' => [

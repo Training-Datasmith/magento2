@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class FactoryTest extends TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ]
         )->willReturn(
             $this->_vbMock
@@ -143,7 +144,7 @@ class FactoryTest extends TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ]
         )->willReturn(
             $this->_vbMock

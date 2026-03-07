@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,26 +17,26 @@ use Magento\Cms\Model\Wysiwyg\Images\Storage\Collection as StorageCollection;
 use Magento\Cms\Model\Wysiwyg\Images\Storage\CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Data\Collection\Filesystem as FrameworkDataCollectionFilesystem;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
+use Magento\Framework\Filesystem\Driver\File as FilesystemDriverFile;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Image\AdapterFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Asset\Repository;
-use Magento\Framework\Filesystem\Driver\File as FilesystemDriverFile;
-use Magento\Framework\Data\Collection\Filesystem as FrameworkDataCollectionFilesystem;
-use Magento\MediaStorage\Model\File\Storage\Directory\DatabaseFactory as MediaStorageDirectoryDatabaseFactory;
 use Magento\MediaStorage\Helper\File\Storage\Database as MediaStorageHelperFileStorageDatabase;
 use Magento\MediaStorage\Model\File\Storage\DatabaseFactory;
 use Magento\MediaStorage\Model\File\Storage\Directory\Database;
+use Magento\MediaStorage\Model\File\Storage\Directory\DatabaseFactory as MediaStorageDirectoryDatabaseFactory;
 use Magento\MediaStorage\Model\File\Storage\FileFactory;
 use Magento\MediaStorage\Model\File\Uploader;
 use Magento\MediaStorage\Model\File\UploaderFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -291,7 +292,7 @@ class StorageTest extends TestCase
             'folder1',
             'folder2/subfolder21',
             'folder2/subfolder22',
-            'folder3/subfolder31/subfolder32'
+            'folder3/subfolder31/subfolder32',
         ];
         $this->coreConfigMock->expects($this->any())
             ->method('getValue')
@@ -323,7 +324,7 @@ class StorageTest extends TestCase
                 'file' => $this->fileMock,
                 'ioFile' => $this->ioFileMock,
                 'coreConfig' => $this->coreConfigMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -440,7 +441,7 @@ class StorageTest extends TestCase
             ->method('warning')
             ->with(
                 sprintf(
-                    "The image %s is invalid and cannot be displayed in the gallery.",
+                    'The image %s is invalid and cannot be displayed in the gallery.',
                     $imageItem->getBasename()
                 )
             );
@@ -471,9 +472,9 @@ class StorageTest extends TestCase
                             'name' => 'zero-bytes.jpg',
                             'short_name' => 'zero-bytes.jpg',
                             'url' => 'https://magento.local/pub/media/wysiwyg/zero-bytes.jpg',
-                            'mime_type' => 'image/jpeg'
+                            'mime_type' => 'image/jpeg',
                         ]
-                    )
+                    ),
             ],
             // Images files with incorrect not allowed extensions should generate proper warnings
             [
@@ -490,9 +491,9 @@ class StorageTest extends TestCase
                             'name' => 'wrong-image.exe',
                             'short_name' => 'wrong-image.exe',
                             'url' => 'https://magento.local/pub/media/wysiwyg/wrong-image.exe',
-                            'mime_type' => 'image/jpeg'
+                            'mime_type' => 'image/jpeg',
                         ]
-                    )
+                    ),
             ],
             // Images with non-zero size and allowed extension should not generate warnings
             [
@@ -509,9 +510,9 @@ class StorageTest extends TestCase
                             'name' => 'image.jpg',
                             'short_name' => 'image.jpg',
                             'url' => 'https://magento.local/pub/media/wysiwyg/image.jpg',
-                            'mime_type' => 'image/jpeg'
+                            'mime_type' => 'image/jpeg',
                         ]
-                    )
+                    ),
             ],
         ];
     }
@@ -537,7 +538,7 @@ class StorageTest extends TestCase
             [
                 'path' => self::STORAGE_ROOT_DIR,
                 'callNum' => 1,
-                'dirsFilter' => '/^(target|folder1|folder2|folder3)$/'
+                'dirsFilter' => '/^(target|folder1|folder2|folder3)$/',
             ],
             [
                 'path' => self::STORAGE_ROOT_DIR . 'target',
@@ -550,12 +551,12 @@ class StorageTest extends TestCase
             [
                 'path' => self::STORAGE_ROOT_DIR . 'folder2',
                 'callNum' => 1,
-                'dirsFilter' => '/^(subfolder21|subfolder22)$/'
+                'dirsFilter' => '/^(subfolder21|subfolder22)$/',
             ],
             [
                 'path' => self::STORAGE_ROOT_DIR . 'folder3/subfolder31',
                 'callNum' => 1,
-                'dirsFilter' => '/^(subfolder32)$/'
+                'dirsFilter' => '/^(subfolder32)$/',
             ],
             [
                 'path' => self::STORAGE_ROOT_DIR . 'folder3/subfolder31/subfolder32',
@@ -564,7 +565,7 @@ class StorageTest extends TestCase
             [
                 'path' => self::STORAGE_ROOT_DIR . 'unknown',
                 'callNum' => 1,
-                'dirsFilter' => '/^()$/'
+                'dirsFilter' => '/^()$/',
             ],
         ];
     }
@@ -620,7 +621,7 @@ class StorageTest extends TestCase
         $thumbnailDestination = $thumbnailTargetPath . '/' . $fileName;
         $type = 'image';
         $result = [
-            'result'
+            'result',
         ];
         $uploader = $this->getMockBuilder(Uploader::class)
             ->disableOriginalConstructor()

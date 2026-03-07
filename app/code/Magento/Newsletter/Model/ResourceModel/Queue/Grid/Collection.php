@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter queue data grid collection
  */
+
 namespace Magento\Newsletter\Model\ResourceModel\Queue\Grid;
 
 class Collection extends \Magento\Newsletter\Model\ResourceModel\Queue\Collection

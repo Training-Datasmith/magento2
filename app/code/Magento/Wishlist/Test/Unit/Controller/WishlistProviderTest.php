@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class WishlistProviderTest extends TestCase
                 'request' => $this->request,
                 'wishlistFactory' => $this->wishlistFactory,
                 'customerSession' => $this->customerSession,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
     }

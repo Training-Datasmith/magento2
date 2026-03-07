@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ abstract class AbstractBase
     public static function getDataForCreateOptions(): array
     {
         return [
-            "type_{static::getType()}_title" => [
+            'type_{static::getType()}_title' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -33,7 +34,7 @@ abstract class AbstractBase
                     'price_type' => 'fixed',
                 ],
             ],
-            "type_{static::getType()}_required_options" => [
+            'type_{static::getType()}_required_options' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -46,7 +47,7 @@ abstract class AbstractBase
                     'price_type' => 'fixed',
                 ],
             ],
-            "type_{static::getType()}_not_required_options" => [
+            'type_{static::getType()}_not_required_options' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -59,7 +60,7 @@ abstract class AbstractBase
                     'price_type' => 'fixed',
                 ],
             ],
-            "type_{static::getType()}_options_with_fixed_price" => [
+            'type_{static::getType()}_options_with_fixed_price' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -72,7 +73,7 @@ abstract class AbstractBase
                     'price_type' => 'fixed',
                 ],
             ],
-            "type_{static::getType()}_options_with_percent_price" => [
+            'type_{static::getType()}_options_with_percent_price' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -85,7 +86,7 @@ abstract class AbstractBase
                     'price_type' => 'percent',
                 ],
             ],
-            "type_{static::getType()}_price" => [
+            'type_{static::getType()}_price' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -98,7 +99,7 @@ abstract class AbstractBase
                     'price_type' => 'percent',
                 ],
             ],
-            "type_{static::getType()}_sku" => [
+            'type_{static::getType()}_sku' => [
                 [
                     'record_id' => 0,
                     'sort_order' => 1,
@@ -124,37 +125,37 @@ abstract class AbstractBase
         return array_merge_recursive(
             static::getDataForCreateOptions(),
             [
-                "type_{static::getType()}_title" => [
+                'type_{static::getType()}_title' => [
                     [
                         'title' => 'Test updated option title',
-                    ]
+                    ],
                 ],
-                "type_{static::getType()}_required_options" => [
+                'type_{static::getType()}_required_options' => [
                     [
                         'is_require' => 0,
                     ],
                 ],
-                "type_{static::getType()}_not_required_options" => [
+                'type_{static::getType()}_not_required_options' => [
                     [
                         'is_require' => 1,
                     ],
                 ],
-                "type_{static::getType()}_options_with_fixed_price" => [
+                'type_{static::getType()}_options_with_fixed_price' => [
                     [
                         'price_type' => 'percent',
                     ],
                 ],
-                "type_{static::getType()}_options_with_percent_price" => [
+                'type_{static::getType()}_options_with_percent_price' => [
                     [
                         'price_type' => 'fixed',
                     ],
                 ],
-                "type_{static::getType()}_price" => [
+                'type_{static::getType()}_price' => [
                     [
                         'price' => 60,
                     ],
                 ],
-                "type_{static::getType()}_sku" => [
+                'type_{static::getType()}_sku' => [
                     [
                         'sku' => 'Updated option sku',
                     ],

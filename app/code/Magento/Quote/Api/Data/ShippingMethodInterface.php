@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,52 +18,52 @@ interface ShippingMethodInterface extends \Magento\Framework\Api\ExtensibleDataI
     /**
      * Shipping carrier code.
      */
-    const KEY_CARRIER_CODE = 'carrier_code';
+    public const KEY_CARRIER_CODE = 'carrier_code';
 
     /**
      * Shipping method code.
      */
-    const KEY_METHOD_CODE = 'method_code';
+    public const KEY_METHOD_CODE = 'method_code';
 
     /**
      * Shipping carrier title.
      */
-    const KEY_CARRIER_TITLE = 'carrier_title';
+    public const KEY_CARRIER_TITLE = 'carrier_title';
 
     /**
      * Shipping method title.
      */
-    const KEY_METHOD_TITLE = 'method_title';
+    public const KEY_METHOD_TITLE = 'method_title';
 
     /**
      * Shipping amount in store currency.
      */
-    const KEY_SHIPPING_AMOUNT = 'amount';
+    public const KEY_SHIPPING_AMOUNT = 'amount';
 
     /**
      * Shipping amount in base currency.
      */
-    const KEY_BASE_SHIPPING_AMOUNT = 'base_amount';
+    public const KEY_BASE_SHIPPING_AMOUNT = 'base_amount';
 
     /**
      * Available.
      */
-    const KEY_AVAILABLE = 'available';
+    public const KEY_AVAILABLE = 'available';
 
     /**
      * Shipping error message.
      */
-    const KEY_ERROR_MESSAGE = 'error_message';
+    public const KEY_ERROR_MESSAGE = 'error_message';
 
     /**
      * Shipping error message.
      */
-    const KEY_PRICE_EXCL_TAX = 'price_excl_tax';
+    public const KEY_PRICE_EXCL_TAX = 'price_excl_tax';
 
     /**
      * Shipping error message.
      */
-    const KEY_PRICE_INCL_TAX = 'price_incl_tax';
+    public const KEY_PRICE_INCL_TAX = 'price_incl_tax';
 
     /**
      * Returns the shipping carrier code.

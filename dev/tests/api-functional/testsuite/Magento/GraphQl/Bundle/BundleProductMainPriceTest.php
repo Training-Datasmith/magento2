@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -179,7 +180,7 @@ QUERY;
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class TimezoneTest extends TestCase
         'Australia/Darwin' => 'Darwind description',
         'America/Los_Angeles' => 'Los_Angeles description',
         'Europe/Kiev' => 'Kiev description',
-        'Asia/Jerusalem' => 'Jerusalem description'
+        'Asia/Jerusalem' => 'Jerusalem description',
     ];
 
     public function testIsValid()

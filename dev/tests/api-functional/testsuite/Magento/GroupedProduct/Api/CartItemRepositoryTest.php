@@ -1,20 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Api;
 
-use Magento\Catalog\Model\CustomOptions\CustomOptionProcessor;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Quote\Model\Quote;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CartItemRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCartItemRepositoryV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCartItemRepositoryV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager

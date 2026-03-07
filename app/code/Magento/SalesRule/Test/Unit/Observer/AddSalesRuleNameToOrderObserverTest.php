@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class AddSalesRuleNameToOrderObserverTest extends TestCase
             Coupon::class,
             [
                 'updateCustomerCouponTimesUsed', 'save', 'load', 'getId',
-                'setTimesUsed', 'getTimesUsed', 'getRuleId', 'loadByCode'
+                'setTimesUsed', 'getTimesUsed', 'getRuleId', 'loadByCode',
             ]
         );
         $this->ruleFactory = $this->createPartialMock(RuleFactory::class, ['create']);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -185,7 +187,7 @@ class ProcessingErrorAggregator implements ProcessingErrorAggregatorInterface
     {
         $allowedStrategy = [
             self::VALIDATION_STRATEGY_STOP_ON_ERROR,
-            self::VALIDATION_STRATEGY_SKIP_ERRORS
+            self::VALIDATION_STRATEGY_SKIP_ERRORS,
         ];
         if (!in_array($validationStrategy, $allowedStrategy)) {
             throw new \Magento\Framework\Exception\LocalizedException(
@@ -341,7 +343,7 @@ class ProcessingErrorAggregator implements ProcessingErrorAggregatorInterface
     public function getErrorsCount(
         array $errorLevels = [
         ProcessingError::ERROR_LEVEL_CRITICAL,
-        ProcessingError::ERROR_LEVEL_NOT_CRITICAL
+        ProcessingError::ERROR_LEVEL_NOT_CRITICAL,
         ]
     ) {
         $result = 0;

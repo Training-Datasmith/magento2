@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ use Magento\Framework\View\DesignInterface;
 use Magento\Translation\Model\Js\Config;
 use Magento\Translation\Model\Js\DataProvider;
 use Magento\Translation\Model\Json\PreProcessor;
+use PHPUnit\Framework\Attributes\DataProvider as DataProviderAttribute;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider as DataProviderAttribute;
 
 class PreProcessorTest extends TestCase
 {
@@ -150,21 +151,21 @@ class PreProcessorTest extends TestCase
         return [
             'adminhtml_area' => [
                 [
-                    'area_code' => FrontNameResolver::AREA_CODE
+                    'area_code' => FrontNameResolver::AREA_CODE,
                 ],
                 [
                     'areaList_getArea' => 0,
                     'area_load' => 0,
-                ]
+                ],
             ],
             'frontend_area' => [
                 [
-                    'area_code' => 'frontend'
+                    'area_code' => 'frontend',
                 ],
                 [
                     'areaList_getArea' => 1,
                     'area_load' => 1,
-                ]
+                ],
             ],
         ];
     }

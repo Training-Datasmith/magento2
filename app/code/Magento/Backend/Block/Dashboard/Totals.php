@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Backend\Block\Dashboard;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Model\Dashboard\Period;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Module\Manager;
 use Magento\Reports\Model\ResourceModel\Order\Collection;
 use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
 use Magento\Store\Model\Store;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Adminhtml dashboard totals bar

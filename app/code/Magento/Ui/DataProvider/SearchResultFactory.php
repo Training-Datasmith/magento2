@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\DataProvider;
 
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\Search\DocumentFactory;
+use Magento\Framework\Api\Search\SearchResultFactory as BaseSearchResultFactory;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Api\Search\SearchResultFactory as BaseSearchResultFactory;
 use Magento\Framework\EntityManager\HydratorInterface;
 
 /**

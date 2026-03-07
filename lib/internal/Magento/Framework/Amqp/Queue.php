@@ -1,19 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Amqp;
 
 use Closure;
 use Exception;
 use Magento\Framework\MessageQueue\ConnectionLostException;
+use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Magento\Framework\MessageQueue\EnvelopeInterface;
 use Magento\Framework\MessageQueue\QueueInterface;
 use Magento\Framework\Phrase;
-use PhpAmqpLib\Exception\AMQPTimeoutException;
 use PhpAmqpLib\Message\AMQPMessage;
-use Magento\Framework\MessageQueue\EnvelopeFactory;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -193,7 +195,7 @@ class Queue implements QueueInterface
             $envelope->getBody(),
             [
                 'correlation_id' => $messageProperties['correlation_id'],
-                'delivery_mode' => 2
+                'delivery_mode' => 2,
             ]
         );
         $this->amqpConfig->getChannel()->basic_publish($msg, '', $this->queueName);

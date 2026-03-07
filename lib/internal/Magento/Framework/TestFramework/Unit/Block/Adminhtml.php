@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Framework for testing Block_Adminhtml code
  *
@@ -10,6 +12,7 @@
  * of parent classes.
  *
  */
+
 namespace Magento\Framework\TestFramework\Unit\Block;
 
 /**

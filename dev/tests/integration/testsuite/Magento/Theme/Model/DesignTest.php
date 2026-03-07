@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model;
 
-use Magento\Backend\Block\Widget\Grid\Serializer;
 use Magento\Framework\Serialize\SerializerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -225,7 +227,7 @@ class DesignTest extends \PHPUnit\Framework\TestCase
             'default store - UTC+12:00' => ['default', 'Etc/GMT-12', '+12 hours'],
             'default store - UTC-12:00' => ['default', 'Etc/GMT+12', '-12 hours'],
             'admin store - UTC+12:00' => ['admin', 'Etc/GMT-12', '+12 hours'],
-            'admin store - UTC-12:00' => ['admin', 'Etc/GMT+12', '-12 hours']
+            'admin store - UTC-12:00' => ['admin', 'Etc/GMT+12', '-12 hours'],
         ];
     }
 }

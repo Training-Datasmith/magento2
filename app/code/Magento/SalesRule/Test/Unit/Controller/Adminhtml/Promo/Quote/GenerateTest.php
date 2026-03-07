@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\Response\Http as HttpResponse;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Json\Helper\Data;
@@ -29,7 +31,6 @@ use Magento\SalesRule\Model\Quote\GetCouponCodeLengthInterface;
 use Magento\SalesRule\Model\Rule;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\Response\Http as HttpResponse;
 
 /**
  * Class for testing coupon generation
@@ -56,7 +57,7 @@ class GenerateTest extends TestCase
     private array $requestMockData = [
         'qty' => 2,
         'length' => 10,
-        'rule_id' => 1
+        'rule_id' => 1,
     ];
 
     /**
@@ -65,7 +66,7 @@ class GenerateTest extends TestCase
     private array $requestMockDataWithInvalidCouponQuantity = [
         'qty' => 250001,
         'length' => 10,
-        'rule_id' => 1
+        'rule_id' => 1,
     ];
 
     /** @var Generate */
@@ -167,7 +168,7 @@ class GenerateTest extends TestCase
                 'publisher' => $this->publisherMock,
                 'generationSpecFactory' => $this->couponGenerationSpec,
                 'getCouponCodeLength' => $this->getCouponCodeLength,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -217,7 +218,7 @@ class GenerateTest extends TestCase
         $helperData->expects($this->once())
             ->method('jsonEncode')
             ->with([
-                'messages' => __('%1 coupon(s) have been generated.', 2)
+                'messages' => __('%1 coupon(s) have been generated.', 2),
             ]);
         $layout = $this->createMock(Layout::class);
         $this->view->expects($this->any())
@@ -280,7 +281,7 @@ class GenerateTest extends TestCase
         $helperData->expects($this->once())
             ->method('jsonEncode')
             ->with([
-                'messages' => __('%1 coupon(s) have been generated.', 2)
+                'messages' => __('%1 coupon(s) have been generated.', 2),
             ]);
         $layout = $this->createMock(Layout::class);
         $this->view->expects($this->any())
@@ -333,7 +334,7 @@ class GenerateTest extends TestCase
         $helperData->expects($this->once())
             ->method('jsonEncode')
             ->with([
-                'error' => __('The rule coupon settings changed. Please save the rule before using auto-generation.')
+                'error' => __('The rule coupon settings changed. Please save the rule before using auto-generation.'),
             ]);
         $this->model->execute();
     }
@@ -385,7 +386,7 @@ class GenerateTest extends TestCase
             ->with([
                 'messages' => __(
                     'Coupon qty should be less than or equal to the coupon qty in the store configuration.'
-                )
+                ),
             ]);
         $layout = $this->createMock(Layout::class);
         $this->view->expects($this->any())
@@ -453,7 +454,7 @@ class GenerateTest extends TestCase
         $helperData->expects($this->once())
             ->method('jsonEncode')
             ->with([
-                'messages' => __('%1 coupon(s) have been generated.', 2)
+                'messages' => __('%1 coupon(s) have been generated.', 2),
             ]);
         $layout = $this->createMock(Layout::class);
         $this->view->expects($this->any())

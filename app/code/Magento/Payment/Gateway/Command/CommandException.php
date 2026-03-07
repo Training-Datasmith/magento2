@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Command;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -15,5 +18,4 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class CommandException extends LocalizedException
 {
-
 }

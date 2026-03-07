@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class SetTest extends \PHPUnit\Framework\TestCase
         $this->config = $this->objectManager->get(Config::class);
         $this->defaultSetId = (int)$this->config->getEntityType(Product::ENTITY)->getDefaultAttributeSetId();
         $this->attributeSetResource = $this->objectManager->get(AttributeSetResource::class);
-        $this->attributeCollectionFactory = $this->objectManager->get(CollectionFactory ::class);
+        $this->attributeCollectionFactory = $this->objectManager->get(CollectionFactory::class);
         $this->attributeGroupByName = $this->objectManager->get(GetAttributeGroupByName::class);
         $this->getEntityIdByAttributeId = $this->objectManager->get(GetEntityIdByAttributeId::class);
     }
@@ -161,8 +162,8 @@ class SetTest extends \PHPUnit\Framework\TestCase
         $additional = [
             'groups' => [
                 [$contentGroupId, 'Content', 2],
-                [$imagesGroupId, 'Images', 1]
-            ]
+                [$imagesGroupId, 'Images', 1],
+            ],
         ];
         $set->organizeData($this->getAttributeSetData($additional));
         $this->attributeSetResource->save($set);

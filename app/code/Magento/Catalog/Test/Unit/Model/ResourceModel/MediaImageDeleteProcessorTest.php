@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,18 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\ResourceModel\MediaImageDeleteProcessor;
 use Magento\Catalog\Model\Product\Gallery\Processor;
 use Magento\Catalog\Model\Product\Media\ConfigInterface as MediaConfig;
+use Magento\Catalog\Model\ResourceModel\MediaImageDeleteProcessor;
 use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 use Magento\Framework\DataObject;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -92,7 +92,7 @@ class MediaImageDeleteProcessorTest extends TestCase
                 'imageConfig' => $this->imageConfig,
                 'mediaDirectory' => $this->mediaDirectory,
                 'imageProcessor' => $this->imageProcessor,
-                'productGallery' => $this->productGallery
+                'productGallery' => $this->productGallery,
             ]
         );
     }
@@ -155,14 +155,14 @@ class MediaImageDeleteProcessorTest extends TestCase
                 'value_id' => 1,
                 'file' => $image1FilePath,
                 'media_type' => 'image',
-                'path' => $imageDirectoryPath.$image1FilePath
+                'path' => $imageDirectoryPath.$image1FilePath,
             ]),
             new DataObject([
                 'value_id' => 2,
                 'file' => $image2FilePath,
                 'media_type' => 'image',
-                'path' => $imageDirectoryPath.$image2FilePath
-            ])
+                'path' => $imageDirectoryPath.$image2FilePath,
+            ]),
         ];
         return [
             'test image can be deleted with existing product and product images' =>
@@ -170,21 +170,21 @@ class MediaImageDeleteProcessorTest extends TestCase
                     12,
                     $productImages,
                     true,
-                    false
+                    false,
                 ],
             'test image can not be deleted without valid product id' =>
                 [
                     0,
                     $productImages,
                     true,
-                    false
+                    false,
                 ],
             'test image can not be deleted without valid product images' =>
                 [
                     12,
                     [new DataObject(['file' => null]), new DataObject(['file' => null])],
                     true,
-                    false
+                    false,
                 ],
         ];
     }

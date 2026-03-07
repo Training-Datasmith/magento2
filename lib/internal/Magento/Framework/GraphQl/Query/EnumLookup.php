@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class EnumLookup
      * @return string
      * @throws RuntimeException
      */
-    public function getEnumValueFromField(string $enumName, string $fieldValue) : string
+    public function getEnumValueFromField(string $enumName, string $fieldValue): string
     {
         /** @var Enum $enumObject */
         $enumObject = $this->typeConfig->getConfigElement($enumName);

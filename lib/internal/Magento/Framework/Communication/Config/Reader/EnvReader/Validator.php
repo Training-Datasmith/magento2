@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication\Config\Reader\EnvReader;
 
 use Magento\Framework\Communication\Config\Validator as ConfigValidator;
@@ -117,7 +120,7 @@ class Validator extends ConfigValidator
             ConfigInterface::TOPIC_REQUEST,
             ConfigInterface::TOPIC_REQUEST_TYPE,
             ConfigInterface::TOPIC_RESPONSE,
-            ConfigInterface::TOPIC_HANDLERS
+            ConfigInterface::TOPIC_HANDLERS,
         ];
 
         if (!is_array($configDataItem)) {

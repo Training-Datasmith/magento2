@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\CatalogSearch\Model\ResourceModel\Advanced;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -63,7 +64,7 @@ class AdvancedTest extends TestCase
             ['select', ['test'], ['in' => ['test']]],
             ['range', ['from' => 1], ['from' => 1]],
             ['range', ['to' => 3], ['to' => 3]],
-            ['range', ['from' => 1, 'to' => 3], ['from' => 1, 'to' => 3]]
+            ['range', ['from' => 1, 'to' => 3], ['from' => 1, 'to' => 3]],
         ];
     }
 }

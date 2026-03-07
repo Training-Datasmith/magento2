@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class Provider implements ProviderInterface
     /**
      * Dev docs link
      */
-    private const DEV_DOCS = "https://developer.adobe.com/commerce/webapi/graphql/develop";
+    private const DEV_DOCS = 'https://developer.adobe.com/commerce/webapi/graphql/develop';
 
     /**
      * @var ObjectManagerInterface
@@ -136,7 +137,7 @@ class Provider implements ProviderInterface
             if (isset($this->factorProviders[$resolverClass])
                 && is_array($this->factorProviders[$resolverClass])
             ) {
-                $resultsToMerge []= $this->factorProviders[$resolverClass];
+                $resultsToMerge [] = $this->factorProviders[$resolverClass];
             }
         }
         // avoid using array_merge in a loop

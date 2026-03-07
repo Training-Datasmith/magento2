@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class FileManager
     /**
      * File name of RequireJs inline translation config
      */
-    const TRANSLATION_CONFIG_FILE_NAME = 'Magento_Translation/js/i18n-config.js';
+    public const TRANSLATION_CONFIG_FILE_NAME = 'Magento_Translation/js/i18n-config.js';
 
     /**
      * @var Repository

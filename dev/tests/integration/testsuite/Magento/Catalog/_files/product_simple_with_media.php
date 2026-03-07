@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 use Magento\Catalog\Api\CategoryLinkManagementInterface;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterfaceFactory;
-use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
 use Magento\Catalog\Api\Data\ProductExtensionInterfaceFactory;
+use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
@@ -48,8 +49,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => Group::CUST_GROUP_ALL,
             'qty' => 2,
-            'value' => 8
-        ]
+            'value' => 8,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -58,8 +59,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => Group::CUST_GROUP_ALL,
             'qty' => 5,
-            'value' => 5
-        ]
+            'value' => 5,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -68,8 +69,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => Group::NOT_LOGGED_IN_ID,
             'qty' => 3,
-            'value' => 5
-        ]
+            'value' => 5,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -79,7 +80,7 @@ $tierPrices[] = $tierPriceFactory->create(
             'customer_group_id' => Group::NOT_LOGGED_IN_ID,
             'qty' => 3.2,
             'value' => 6,
-        ]
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -91,8 +92,8 @@ $tierPrices[] = $tierPriceFactory->create(
     [
         'data' => [
             'customer_group_id' => Group::NOT_LOGGED_IN_ID,
-            'qty' => 10
-        ]
+            'qty' => 10,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes2);
 
@@ -107,7 +108,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_product_with_media')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(2)
     ->setTierPrices($tierPrices)
     ->setDescription('Description with <b>html tag</b>')
@@ -170,7 +171,7 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '3-2-select',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'select',
@@ -193,8 +194,8 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '4-2-radio',
             ],
-        ]
-    ]
+        ],
+    ],
 ];
 
 $options = [];

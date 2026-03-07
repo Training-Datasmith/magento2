@@ -1,25 +1,28 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Transparent;
 
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Registry;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\View\Result\LayoutFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
+use Magento\Framework\Session\SessionManager as Session;
+use Magento\Framework\View\Result\LayoutFactory;
 use Magento\Payment\Block\Transparent\Iframe;
 use Magento\Paypal\Model\Payflow\Service\Response\Transaction;
 use Magento\Paypal\Model\Payflow\Service\Response\Validator\ResponseValidator;
 use Magento\Paypal\Model\Payflow\Transparent;
 use Magento\Sales\Api\PaymentFailuresInterface;
-use Magento\Framework\Session\SessionManager as Session;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 
 /**
  * Class for requesting the response result form the paypal controller.

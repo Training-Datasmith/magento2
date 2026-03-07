@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Ddl;
 
 /**
@@ -14,20 +17,20 @@ class Trigger
     /**#@+
      * Trigger times
      */
-    const TIME_BEFORE = 'BEFORE';
+    public const TIME_BEFORE = 'BEFORE';
 
-    const TIME_AFTER = 'AFTER';
+    public const TIME_AFTER = 'AFTER';
 
     /**#@-*/
 
     /**#@+
      * Trigger events
      */
-    const EVENT_INSERT = 'INSERT';
+    public const EVENT_INSERT = 'INSERT';
 
-    const EVENT_UPDATE = 'UPDATE';
+    public const EVENT_UPDATE = 'UPDATE';
 
-    const EVENT_DELETE = 'DELETE';
+    public const EVENT_DELETE = 'DELETE';
 
     /**#@-*/
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,8 +88,8 @@ class ColumnFactoryTest extends TestCase
                     'options' =>  [
                         [
                             'label' => 'Label',
-                            'value' => 'Value'
-                        ]
+                            'value' => 'Value',
+                        ],
                     ],
                     'component' => 'Magento_Ui/js/grid/columns/column',
                 ],
@@ -103,8 +104,8 @@ class ColumnFactoryTest extends TestCase
             'options' => [
                 [
                     'label' => 'Label',
-                    'value' => 'Value'
-                ]
+                    'value' => 'Value',
+                ],
             ],
             'is_used_in_grid' => true,
             'is_visible_in_grid' => true,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Controller\Advanced;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Laminas\Stdlib\Parameters;
+use Magento\TestFramework\TestCase\AbstractController;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -34,7 +35,7 @@ class IndexTest extends AbstractController
             $this->_objectManager->create(
                 Parameters::class,
                 [
-                    'values' => $searchParams
+                    'values' => $searchParams,
                 ]
             )
         );
@@ -60,8 +61,8 @@ class IndexTest extends AbstractController
                     'price' => [
                         'from' => [],
                         'to' => 1,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'from_data_with_to_param_is_array' => [
                 [
@@ -72,8 +73,8 @@ class IndexTest extends AbstractController
                     'price' => [
                         'from' => 0,
                         'to' => [],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'from_data_with_params_in_array' => [
                 [
@@ -84,8 +85,8 @@ class IndexTest extends AbstractController
                     'price' => [
                         'from' => ['0' => 1],
                         'to' => [1],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'from_data_with_params_in_array_in_array' => [
                 [
@@ -96,8 +97,8 @@ class IndexTest extends AbstractController
                     'price' => [
                         'from' => ['0' => ['0' => 1]],
                         'to' => 1,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'from_data_with_name_param_is_array' => [
                 [
@@ -108,9 +109,9 @@ class IndexTest extends AbstractController
                     'price' => [
                         'from' => 0,
                         'to' => 20,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

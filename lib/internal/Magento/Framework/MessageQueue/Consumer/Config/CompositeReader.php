@@ -1,13 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\MessageQueue\Consumer\Config;
 
-use Magento\Framework\MessageQueue\Consumer\Config\ReaderInterface;
-use Magento\Framework\Phrase;
-use Magento\Framework\MessageQueue\Consumer\Config\ValidatorInterface;
+namespace Magento\Framework\MessageQueue\Consumer\Config;
 
 /**
  * Composite reader for consumer config.

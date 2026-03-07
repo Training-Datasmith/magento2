@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Paypal\Model\Ipn
  */
+
 namespace Magento\Paypal\Test\Unit\Model;
 
 use Magento\Framework\HTTP\Adapter\CurlFactory;
@@ -15,18 +17,18 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
+use Magento\Paypal\Model\Exception\UnknownIpnException;
 use Magento\Paypal\Model\Info;
 use Magento\Paypal\Model\Ipn;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Order\Payment;
-use Magento\Sales\Model\OrderFactory;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Magento\Paypal\Model\Exception\UnknownIpnException;
 use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
 use Magento\Sales\Model\Order\Email\Sender\OrderSender;
+use Magento\Sales\Model\Order\Payment;
+use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\OrderMutexInterface;
-use \Psr\Log\LoggerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -77,7 +79,7 @@ class IpnTest extends TestCase
                 'save',
                 'getState',
                 'setState',
-                'create'
+                'create',
             ]
         );
         $this->_orderMock->expects($this->any())->method('create')->willReturnSelf();
@@ -120,7 +122,7 @@ class IpnTest extends TestCase
                 'curlFactory' => $this->curlFactory,
                 'orderFactory' => $this->_orderMock,
                 'paypalInfo' => $this->_paypalInfo,
-                'data' => ['invoice' => '00000001', 'payment_status' => 'Pending', 'pending_reason' => 'authorization']
+                'data' => ['invoice' => '00000001', 'payment_status' => 'Pending', 'pending_reason' => 'authorization'],
             ]
         );
     }
@@ -138,7 +140,7 @@ class IpnTest extends TestCase
                 'setTransactionId',
                 'setParentTransactionId',
                 'setIsTransactionClosed',
-                'registerAuthorizationNotification'
+                'registerAuthorizationNotification',
             ]
         );
         $payment->expects($this->any())->method('setPreparedMessage')->willReturnSelf();
@@ -229,7 +231,7 @@ class IpnTest extends TestCase
                     'payment_status' => 'Pending',
                     'pending_reason' => 'fraud',
                     'fraud_management_pending_filters_1' => 'Maximum Transaction Amount',
-                ]
+                ],
             ]
         );
         $this->_ipn->processIpnRequest();
@@ -246,7 +248,7 @@ class IpnTest extends TestCase
                 'getAdditionalInformation',
                 'setTransactionId',
                 'setIsTransactionClosed',
-                'deny'
+                'deny',
             ]
         );
 
@@ -273,7 +275,7 @@ class IpnTest extends TestCase
                 'data' => [
                     'invoice' => '00000001',
                     'payment_status' => 'Denied',
-                ]
+                ],
             ]
         );
 

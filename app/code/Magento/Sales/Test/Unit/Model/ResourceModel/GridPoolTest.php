@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use PHPUnit\Framework\TestCase;
 
 class GridPoolTest extends TestCase
 {
-
     /**
      * @var GridPool
      */
@@ -54,7 +54,7 @@ class GridPoolTest extends TestCase
             'order_grid' => $this->orderGridMock,
             'invoice_grid' => $this->invoiceGridMock,
             'shipment_grid' => $this->shipmentGridMock,
-            'creditmemo_grid' => $this->creditmemoGridMock
+            'creditmemo_grid' => $this->creditmemoGridMock,
         ];
         $this->gridPool = new GridPool($grids);
     }

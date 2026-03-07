@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\Data\Form\Element\Editablemultiselect;
 use Magento\Framework\Data\Form\Element\Multiselect;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Math\Random;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for the widget.
@@ -55,7 +56,7 @@ class MultiselectTest extends TestCase
             [
                 '_escaper' => $escaper,
                 'random' => $randomMock,
-                'secureRenderer' => $secureRendererMock
+                'secureRenderer' => $secureRendererMock,
             ]
         );
         $this->_model->setForm(new DataObject());

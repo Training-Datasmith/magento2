@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria;
 
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\Search\FilterGroup;
+use Magento\Framework\Api\Search\FilterGroupBuilder;
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\Clause;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\Connective;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\Operator;
-use Magento\Framework\Api\FilterBuilder;
-use Magento\Framework\Api\Search\FilterGroupBuilder;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\Phrase;
-use Magento\Framework\Api\Search\FilterGroup;
 
 /**
  * Class FilterGroupFactory
@@ -46,7 +47,7 @@ class FilterGroupFactory
      * @return \Magento\Framework\Api\Search\FilterGroup[]
      * @throws GraphQlInputException
      */
-    public function create(Connective $arguments) : array
+    public function create(Connective $arguments): array
     {
         $filters = $arguments;
         /** @var \Magento\Framework\Api\Search\FilterGroup[] $searchCriteriaFilterGroups */
@@ -76,7 +77,7 @@ class FilterGroupFactory
      * @return FilterGroup
      * @throws GraphQlInputException
      */
-    private function processConnective(Connective $connective) : FilterGroup
+    private function processConnective(Connective $connective): FilterGroup
     {
         foreach ($connective->getConditions() as $subNode) {
             if ($subNode instanceof Clause) {

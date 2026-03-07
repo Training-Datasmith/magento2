@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ for ($i = 1; $i <= 2; $i++) {
                 'value' => ['option_1' => ['Option 1'], 'option_2' => ['Option 2'], 'option_3' => ['Option 3']],
                 'order' => ['option_1' => 1, 'option_2' => 2, 'option_3' => 3],
             ],
-            'position' => 3 - $i
+            'position' => 3 - $i,
         ]
     );
     $attribute = $attributeRepository->save($attributeModel);

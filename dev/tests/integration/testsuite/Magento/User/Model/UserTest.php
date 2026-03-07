@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Exception\State\UserLockedException;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Stdlib\DateTime;
@@ -32,6 +32,7 @@ use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
 use Magento\User\Model\User as UserModel;
 use Magento\User\Test\Fixture\User as UserDataFixture;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -94,9 +95,9 @@ class UserTest extends TestCase
     public function testCRUD()
     {
         $this->_model->setFirstname(
-            "John"
+            'John'
         )->setLastname(
-            "Doe"
+            'Doe'
         )->setUsername(
             'user2'
         )->setPassword(
@@ -242,7 +243,7 @@ class UserTest extends TestCase
     {
         $newuser = $this->objectManager->create(UserModel::class);
         $newuser->setUserId(10);
-        $this->assertNull($newuser->getAclRole(), "User role was not initialized and is expected to be empty.");
+        $this->assertNull($newuser->getAclRole(), 'User role was not initialized and is expected to be empty.');
     }
 
     /**

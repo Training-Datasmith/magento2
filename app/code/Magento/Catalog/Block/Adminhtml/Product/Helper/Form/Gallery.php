@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,15 +11,16 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Helper\Form;
 
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Gallery\DefaultValueProcessor;
+use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Registry;
-use Magento\Catalog\Model\Product;
-use Magento\Eav\Model\Entity\Attribute;
-use Magento\Catalog\Api\Data\ProductInterface;
 
 /**
  * Adminhtml gallery block

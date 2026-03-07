@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Lock\Backend;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\App\ResourceConnection;
 
 /**
  * \Magento\Framework\Lock\Backend\Database test case.

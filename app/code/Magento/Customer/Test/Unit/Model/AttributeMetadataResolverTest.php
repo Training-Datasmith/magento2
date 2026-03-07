@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Customer\Model\FileUploaderDataResolver;
 use Magento\Customer\Model\GroupManagement;
 use Magento\Customer\Model\ResourceModel\Address\Attribute\Source\CountryWithWebsites;
 use Magento\Eav\Model\Entity\Type;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\DataProvider\EavValidationRules;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  *
@@ -97,7 +98,7 @@ class AttributeMetadataResolverTest extends TestCase
             GroupManagement::class,
             [
                 'getDefaultGroup',
-                'getId'
+                'getId',
             ]
         );
         $this->attributeWebsiteRequired = $this->createMock(AttributeWebsiteRequired::class);
@@ -109,7 +110,7 @@ class AttributeMetadataResolverTest extends TestCase
                 'getAttributeCode',
                 'getFrontendInput',
                 'getSource',
-                'setDataUsingMethod'
+                'setDataUsingMethod',
             ]
         );
 
@@ -133,7 +134,7 @@ class AttributeMetadataResolverTest extends TestCase
     public function testGetAttributesMetaHasDefaultAttributeValue(): void
     {
         $rules = [
-            'required-entry' => true
+            'required-entry' => true,
         ];
         $defaultGroupId = '3';
         $allowToShowHiddenAttributes = false;

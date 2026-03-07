@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -14,51 +17,35 @@ use Magento\Framework\FlagManager;
 class FileInfoManager
 {
     /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
      * @var FileInfoFactory
      */
     private $fileInfoFactory;
 
     /**
      * Flag code for a stored FileInfo object.
-     *
-     * @var string
      */
-    private $flagCode = 'analytics_file_info';
+    private string $flagCode = 'analytics_file_info';
 
     /**
      * Parameters which have to be saved into encoded form.
-     *
-     * @var array
      */
-    private $encodedParameters = [
-        'initializationVector'
+    private array $encodedParameters = [
+        'initializationVector',
     ];
 
-    /**
-     * @param FlagManager $flagManager
-     * @param FileInfoFactory $fileInfoFactory
-     */
     public function __construct(
-        FlagManager $flagManager,
+        private readonly FlagManager $flagManager,
         FileInfoFactory $fileInfoFactory
     ) {
-        $this->flagManager = $flagManager;
         $this->fileInfoFactory = $fileInfoFactory;
     }
 
     /**
      * Save FileInfo object.
      *
-     * @param FileInfo $fileInfo
-     * @return bool
      * @throws LocalizedException
      */
-    public function save(FileInfo $fileInfo)
+    public function save(FileInfo $fileInfo): bool
     {
         $parameters = [];
         $parameters['initializationVector'] = $fileInfo->getInitializationVector();
@@ -94,18 +81,13 @@ class FileInfoManager
             $parameters[$encodedParameter] = $this->decodeValue($parameters[$encodedParameter]);
         }
 
-        $fileInfo = $this->fileInfoFactory->create($parameters);
-
-        return $fileInfo;
+        return $this->fileInfoFactory->create($parameters);
     }
 
     /**
      * Encode value.
-     *
-     * @param string $value
-     * @return string
      */
-    private function encodeValue($value)
+    private function encodeValue(string $value): string
     {
         return base64_encode($value);
     }
@@ -114,9 +96,8 @@ class FileInfoManager
      * Decode value.
      *
      * @param string $value
-     * @return string
      */
-    private function decodeValue($value)
+    private function decodeValue($value): string
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction
         return base64_decode($value);

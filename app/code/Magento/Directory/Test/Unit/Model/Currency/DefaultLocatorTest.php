@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Directory\Test\Unit\Model\Currency;
 
-use Magento\Backend\Helper\Data;
 use Magento\Directory\Model\Currency\DefaultLocator;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;

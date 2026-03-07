@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Model\Config;
 
+use Magento\Config\Model\Config\Structure;
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\ValidatorException;
 use Magento\Theme\Api\Data\DesignConfigDataInterface;
 use Magento\Theme\Api\Data\DesignConfigInterface;
+use Magento\Theme\Model\Config\PathValidator;
+use Magento\Theme\Model\DesignConfigRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Theme\Model\Config\PathValidator;
-use Magento\Config\Model\Config\Structure;
-use Magento\Theme\Model\DesignConfigRepository;
-use Magento\Framework\Exception\ValidatorException;
 
 class PathValidatorTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Backend\Block\Widget\Button
  */
+
 namespace Magento\Backend\Test\Unit\Block\Widget;
 
 use Magento\Backend\Block\Widget\Button;
@@ -16,8 +18,8 @@ use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ButtonTest extends TestCase
@@ -55,12 +57,12 @@ class ButtonTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 
@@ -96,7 +98,7 @@ class ButtonTest extends TestCase
             ],
             [
                 ['data_attribute' => ['mage-init' => ['button' => ['someKey' => 'someValue']]]],
-                '/data-mage-init="[^"]*" /'
+                '/data-mage-init="[^"]*" /',
             ],
             [
                 [
@@ -105,8 +107,8 @@ class ButtonTest extends TestCase
                         'validation' => ['required' => true],
                     ],
                 ],
-                '/data-mage-init="[^"]*" data-validation="[^"]*" /'
-            ]
+                '/data-mage-init="[^"]*" data-validation="[^"]*" /',
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class PagingTest extends TestCase
             Paging::class,
             [
                 'context' => $this->contextMock,
-                'data' => []
+                'data' => [],
             ]
         );
 
@@ -77,22 +78,22 @@ class PagingTest extends TestCase
         $resultData = [
             'js_config' => [
                 'extends' => 'test_config_extends',
-                'testData' => 'testValue'
+                'testData' => 'testValue',
             ],
             'config' => [
                 'options' => [
                     'options1' => [
                         'value' => 20,
-                        'label' => 'options1'
+                        'label' => 'options1',
                     ],
                     'options2' => [
                         'value' => 40,
-                        'label' => 'options2'
+                        'label' => 'options2',
                     ],
                 ],
                 'pageSize' => 20,
-                'current' => 2
-            ]
+                'current' => 2,
+            ],
         ];
 
         /** @var Paging $paging */
@@ -109,17 +110,17 @@ class PagingTest extends TestCase
                         'options' => [
                             'options1' => [
                                 'label' => 'options1',
-                                'value' => '20'
+                                'value' => '20',
                             ],
                             'options2' => [
                                 'label' => 'options2',
-                                'value' => '40'
-                            ]
+                                'value' => '40',
+                            ],
                         ],
                         'current' => 2,
-                        'pageSize' => 20
-                    ]
-                ]
+                        'pageSize' => 20,
+                    ],
+                ],
             ]
         );
         /** @var DataProviderInterface|MockObject $dataProviderMock */

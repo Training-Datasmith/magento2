@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class SearchEngineVersionReader
      *
      * @return int
      */
-    public function getVersion() : int
+    public function getVersion(): int
     {
         $info = $this->getInfo();
         $versionData = isset($info['version']['number']) ? explode('.', $info['version']['number']) : [];
@@ -54,7 +55,7 @@ class SearchEngineVersionReader
      *
      * @return string
      */
-    public function getDistribution() : string
+    public function getDistribution(): string
     {
         $info = $this->getInfo();
         return $info['version']['distribution'] ?? 'elasticsearch';

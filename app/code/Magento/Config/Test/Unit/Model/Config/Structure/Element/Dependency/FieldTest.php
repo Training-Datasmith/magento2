@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class FieldTest extends TestCase
         return [
             'value' => self::COMPLEX_VALUE1 . ',' . self::COMPLEX_VALUE2 . ',' . self::COMPLEX_VALUE3,
             'separator' => ',',
-            'dependPath' => ['section_5', 'group_6', 'group_7', 'field_8']
+            'dependPath' => ['section_5', 'group_6', 'group_7', 'field_8'],
         ];
     }
 
@@ -105,7 +106,7 @@ class FieldTest extends TestCase
             [self::_getSimpleData(), true],
             [self::_getSimpleData(), false],
             [self::_getComplexData(), true],
-            [self::_getComplexData(), false]
+            [self::_getComplexData(), false],
         ];
     }
 
@@ -134,7 +135,7 @@ class FieldTest extends TestCase
             [self::_getComplexData(), true, self::COMPLEX_VALUE1, false],
             [self::_getComplexData(), false, self::COMPLEX_VALUE2, true],
             [self::_getComplexData(), true, self::SIMPLE_VALUE, true],
-            [self::_getComplexData(), false, self::SIMPLE_VALUE, false]
+            [self::_getComplexData(), false, self::SIMPLE_VALUE, false],
         ];
     }
 
@@ -160,7 +161,7 @@ class FieldTest extends TestCase
             [self::_getSimpleData(), false, [self::SIMPLE_VALUE]],
             [self::_getSimpleEmptyData(), false, [static::EMPTY_VALUE]],
             [self::_getComplexData(), true, $complexDataValues],
-            [self::_getComplexData(), false, $complexDataValues]
+            [self::_getComplexData(), false, $complexDataValues],
         ];
     }
 

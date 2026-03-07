@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Setup\Module\Dependency\ParserInterface;
 use Magento\Setup\Module\Dependency\Report\Builder\AbstractBuilder;
 use Magento\Setup\Module\Dependency\Report\Data\ConfigInterface;
 use Magento\Setup\Module\Dependency\Report\WriterInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractBuilderTest extends TestCase
 {

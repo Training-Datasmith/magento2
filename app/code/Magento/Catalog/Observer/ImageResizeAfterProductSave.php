@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
+use Magento\Catalog\Model\Config\CatalogMediaConfig;
 use Magento\Framework\App\State;
+use Magento\Framework\Event\ObserverInterface;
 use Magento\MediaStorage\Service\ImageResize;
 use Magento\MediaStorage\Service\ImageResizeScheduler;
-use Magento\Catalog\Model\Config\CatalogMediaConfig;
 
 /**
  * Resize product images after the product is saved

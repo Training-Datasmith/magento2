@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Abstract class that helps in writing tests that validate config xml files
  * are valid both individually and when merged.
@@ -6,6 +8,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -59,7 +62,7 @@ abstract class AbstractConfigFiles extends \PHPUnit\Framework\TestCase
                 [
                     'configFiles' => $xmlFiles,
                     'fileResolver' => $this->_fileResolverMock,
-                    'validationState' => $validateStateMock
+                    'validationState' => $validateStateMock,
                 ]
             );
 

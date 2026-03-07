@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product\Validator;
 
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
@@ -24,7 +27,7 @@ class Weight extends AbstractImportValidator implements RowValidatorInterface
                         $this->context->retrieveMessageTemplate(self::ERROR_INVALID_ATTRIBUTE_TYPE),
                         'weight',
                         'decimal'
-                    )
+                    ),
                 ]
             );
             return false;

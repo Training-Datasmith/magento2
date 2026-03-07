@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -22,12 +23,12 @@ use Magento\Quote\Model\Quote\Item;
 use Magento\SalesRule\Api\Data\DiscountDataInterfaceFactory;
 use Magento\SalesRule\Api\Data\RuleDiscountInterfaceFactory;
 use Magento\SalesRule\Model\Quote\Discount;
+use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Rule\Action\Discount\Data;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\RulesApplier;
 use Magento\SalesRule\Model\Validator;
 use Magento\Store\Model\Store;
-use Magento\SalesRule\Model\Rule;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -118,7 +119,7 @@ class DiscountTest extends TestCase
                     'processShippingAmount',
                     'canApplyDiscount',
                     'getRules',
-                    'prepareDescription'
+                    'prepareDescription',
                 ]
             )
             ->getMock();
@@ -143,7 +144,7 @@ class DiscountTest extends TestCase
                 'getAllItems',
                 'getExtensionAttributes',
                 'getCustomAttributesCodes',
-                'setBaseDiscountAmount'
+                'setBaseDiscountAmount',
             ]
         );
         $addressExtension = $this->createPartialMockWithReflection(
@@ -385,7 +386,7 @@ class DiscountTest extends TestCase
         $expectedResult = [
             'code' => 'discount',
             'value' => 100,
-            'title' => __('Discount (%1)', $discountDescription)
+            'title' => __('Discount (%1)', $discountDescription),
         ];
 
         $quoteMock = $this->createMock(Quote::class);
@@ -437,7 +438,7 @@ class DiscountTest extends TestCase
                 'getExtensionAttributes',
                 'getAddress',
                 'getChildren',
-                'isChildrenCalculated'
+                'isChildrenCalculated',
             ]
         );
         $item->expects($this->any())->method('getNoDiscount')->willReturn(false);

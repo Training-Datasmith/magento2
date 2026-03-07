@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class DefaultPriceTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             DefaultPrice::class,
             [
-                'resources' => $this->resourceMock
+                'resources' => $this->resourceMock,
             ]
         );
     }

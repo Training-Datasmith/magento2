@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ trait SelectRendererTrait
                         'renderer' => $objectManager->getObject(
                             \Magento\Framework\DB\Select\ColumnsRenderer::class,
                             [
-                                'quote' => $objectManager->getObject(\Magento\Framework\DB\Platform\Quote::class)
+                                'quote' => $objectManager->getObject(\Magento\Framework\DB\Platform\Quote::class),
                             ]
                         ),
                         'sort' => 11,
@@ -49,7 +51,7 @@ trait SelectRendererTrait
                         'renderer' => $objectManager->getObject(
                             \Magento\Framework\DB\Select\FromRenderer::class,
                             [
-                                'quote' => $objectManager->getObject(\Magento\Framework\DB\Platform\Quote::class)
+                                'quote' => $objectManager->getObject(\Magento\Framework\DB\Platform\Quote::class),
                             ]
                         ),
                         'sort' => 11,

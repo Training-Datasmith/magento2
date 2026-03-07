@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class CustomAttributesV2Test extends GraphQlAbstract
             [
                 'sku' => 'test-simple-product',
                 'name' => 'Simple Product',
-                'price' => 10
+                'price' => 10,
             ],
             'simple_product'
         ),
@@ -105,7 +106,7 @@ QUERY;
             [
                 'sku' => 'test-custom-attrs-product',
                 'name' => 'Test Product for Custom Attributes',
-                'price' => 10
+                'price' => 10,
             ],
             'test_product'
         ),
@@ -159,7 +160,7 @@ QUERY;
             [
                 'sku' => 'simple-filter-test',
                 'name' => 'Simple Product for Filter Test',
-                'price' => 15
+                'price' => 15,
             ],
             'simple_product_filter'
         ),

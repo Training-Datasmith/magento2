@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Controller\Address\File;
 
+use Magento\Customer\Api\AddressMetadataInterface;
+use Magento\Customer\Model\FileProcessorFactory;
+use Magento\Customer\Model\FileUploader;
+use Magento\Customer\Model\FileUploaderFactory;
+use Magento\Framework\Api\CustomAttributesDataInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Api\CustomAttributesDataInterface;
-use Magento\Customer\Api\AddressMetadataInterface;
-use Magento\Customer\Model\FileUploader;
-use Magento\Customer\Model\FileUploaderFactory;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
-use Magento\Customer\Model\FileProcessorFactory;
 
 /**
  * Class for upload files for customer custom address attributes

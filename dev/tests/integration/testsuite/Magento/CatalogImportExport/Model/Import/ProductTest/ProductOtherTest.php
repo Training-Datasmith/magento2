@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setParameters(
@@ -127,7 +128,7 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_datetime.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setParameters(
@@ -170,16 +171,16 @@ class ProductOtherTest extends ProductTestBase
         $linksData = [
             'upsell' => [
                 'simple1' => '3',
-                'simple3' => '1'
+                'simple3' => '1',
             ],
             'crosssell' => [
                 'simple2' => '1',
-                'simple3' => '2'
+                'simple3' => '2',
             ],
             'related' => [
                 'simple1' => '2',
-                'simple2' => '1'
-            ]
+                'simple2' => '1',
+            ],
         ];
         // import data from CSV file
         $pathToFile = __DIR__ . '/../_files/products_to_import_with_product_links.csv';
@@ -191,13 +192,13 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setSource($source);
         $this->_model->setParameters([
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-            'entity' => 'catalog_product'
+            'entity' => 'catalog_product',
         ]);
         $errors = $this->_model->validateData();
         $this->assertTrue($errors->getErrorsCount() == 0);
@@ -213,7 +214,7 @@ class ProductOtherTest extends ProductTestBase
         $productLinks = [
             'upsell' => $product->getUpSellProducts(),
             'crosssell' => $product->getCrossSellProducts(),
-            'related' => $product->getRelatedProducts()
+            'related' => $product->getRelatedProducts(),
         ];
         $importedProductLinks = [];
         foreach ($productLinks as $linkType => $linkedProducts) {
@@ -238,12 +239,12 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_category.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setParameters([
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-            'entity' => \Magento\Catalog\Model\Product::ENTITY
+            'entity' => \Magento\Catalog\Model\Product::ENTITY,
         ]);
         $this->_model->setSource($source);
         $errors = $this->_model->validateData();
@@ -254,15 +255,15 @@ class ProductOtherTest extends ProductTestBase
         $listOfProductUrlKeys = [
             sprintf('%s.html', $product->getUrlKey()),
             sprintf('men/tops/%s.html', $product->getUrlKey()),
-            sprintf('men/%s.html', $product->getUrlKey())
+            sprintf('men/%s.html', $product->getUrlKey()),
         ];
         $repUrlRewriteCol = $this->objectManager->create(
             UrlRewriteCollection::class
         );
         /** @var UrlRewriteCollection $collUrlRewrite */
         $collUrlRewrite = $repUrlRewriteCol->addFieldToSelect(['request_path'])
-            ->addFieldToFilter('entity_id', ['eq'=> $product->getEntityId()])
-            ->addFieldToFilter('entity_type', ['eq'=> 'product'])
+            ->addFieldToFilter('entity_id', ['eq' => $product->getEntityId()])
+            ->addFieldToFilter('entity_type', ['eq' => 'product'])
             ->load();
         $listOfUrlRewriteIds = $collUrlRewrite->getAllIds();
         $this->assertCount(3, $collUrlRewrite);
@@ -288,12 +289,12 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_category.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setParameters([
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-            'entity' => \Magento\Catalog\Model\Product::ENTITY
+            'entity' => \Magento\Catalog\Model\Product::ENTITY,
         ]);
         $this->_model->setSource($source);
         $errors = $this->_model->validateData();
@@ -304,15 +305,15 @@ class ProductOtherTest extends ProductTestBase
         $listOfProductUrlKeys = [
             sprintf('%s.html', $product->getUrlKey()),
             sprintf('men/tops/%s.html', $product->getUrlKey()),
-            sprintf('men/%s.html', $product->getUrlKey())
+            sprintf('men/%s.html', $product->getUrlKey()),
         ];
         $repUrlRewriteCol = $this->objectManager->create(
             UrlRewriteCollection::class
         );
         /** @var UrlRewriteCollection $collUrlRewrite */
         $collUrlRewrite = $repUrlRewriteCol->addFieldToSelect(['request_path'])
-            ->addFieldToFilter('entity_id', ['eq'=> $product->getEntityId()])
-            ->addFieldToFilter('entity_type', ['eq'=> 'product'])
+            ->addFieldToFilter('entity_id', ['eq' => $product->getEntityId()])
+            ->addFieldToFilter('entity_type', ['eq' => 'product'])
             ->load();
         $listOfUrlRewriteIds = $collUrlRewrite->getAllIds();
         $this->assertCount(1, $collUrlRewrite);
@@ -332,7 +333,7 @@ class ProductOtherTest extends ProductTestBase
         $products = [
             'simple1' => true,
             'simple2' => true,
-            'simple3' => false
+            'simple3' => false,
         ];
         $filesystem = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()
             ->create(\Magento\Framework\Filesystem::class);
@@ -341,7 +342,7 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_use_config_settings.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -378,14 +379,14 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_additional_attributes.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
                 'entity' => 'catalog_product',
-                \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE => 1
+                \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE => 1,
             ]
         )->setSource(
             $source
@@ -436,10 +437,10 @@ class ProductOtherTest extends ProductTestBase
             'SkuProductWithMarkup',
         ];
 
-        $importParameters =[
+        $importParameters = [
             'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
             'entity' => 'catalog_product',
-            \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE => 0
+            \Magento\ImportExport\Model\Import::FIELDS_ENCLOSURE => 0,
         ];
         $filesystem = $this->objectManager->create(\Magento\Framework\Filesystem::class);
         $directory = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
@@ -447,7 +448,7 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_json_and_markup_attributes.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setParameters($importParameters);
@@ -470,12 +471,12 @@ class ProductOtherTest extends ProductTestBase
         return [
             'import of attribute with json' => [
                 'SkuProductWithJson',
-                '{"type": "basic", "unit": "inch", "sign": "(\")", "size": "1.5\""}'
+                '{"type": "basic", "unit": "inch", "sign": "(\")", "size": "1.5\""}',
             ],
             'import of attribute with markup' => [
                 'SkuProductWithMarkup',
                 '<div data-content>Element type is basic, measured in inches ' .
-                '(marked with sign (\")) with size 1.5\", mid-price range</div>'
+                '(marked with sign (\")) with size 1.5\", mid-price range</div>',
             ],
         ];
     }
@@ -499,13 +500,13 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_new_attribute_set.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
-                'entity' => \Magento\Catalog\Model\Product::ENTITY
+                'entity' => \Magento\Catalog\Model\Product::ENTITY,
             ]
         )->setSource(
             $source
@@ -571,13 +572,13 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
-                'entity' => \Magento\Catalog\Model\Product::ENTITY
+                'entity' => \Magento\Catalog\Model\Product::ENTITY,
             ]
         )->setSource($source)->validateData();
 
@@ -597,13 +598,13 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_changed_sku_case.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,
-                'entity' => \Magento\Catalog\Model\Product::ENTITY
+                'entity' => \Magento\Catalog\Model\Product::ENTITY,
             ]
         )->setSource($source)->validateData();
 
@@ -683,8 +684,8 @@ class ProductOtherTest extends ProductTestBase
         $linksData = [
             'related' => [
                 'simple1' => '2',
-                'simple2' => '1'
-            ]
+                'simple2' => '1',
+            ],
         ];
         $pathToFile = __DIR__ . '/../_files/products_to_import_with_related.csv';
         $filesystem = $this->objectManager->create(Filesystem::class);
@@ -693,13 +694,13 @@ class ProductOtherTest extends ProductTestBase
             Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $this->_model->setSource($source);
         $this->_model->setParameters([
             'behavior' => Import::BEHAVIOR_APPEND,
-            'entity' => 'catalog_product'
+            'entity' => 'catalog_product',
         ]);
         $errors = $this->_model->validateData();
         $this->assertTrue($errors->getErrorsCount() == 0);
@@ -710,7 +711,7 @@ class ProductOtherTest extends ProductTestBase
         $product = $this->objectManager->create(Product::class);
         $product->load($productId);
         $productLinks = [
-            'related' => $product->getRelatedProducts()
+            'related' => $product->getRelatedProducts(),
         ];
         $importedProductLinks = [];
         foreach ($productLinks as $linkType => $linkedProducts) {
@@ -750,7 +751,7 @@ class ProductOtherTest extends ProductTestBase
                     ['sku', 'store_view_code', 'price'],
                     ['$product.sku$', 'default', '9'],
                     ['$product.sku$', 'default', '8'],
-                ]
+                ],
             ],
             'file'
         ),
@@ -785,7 +786,7 @@ class ProductOtherTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'visibility'],
                     ['$p1.sku$', 'Nicht individuell sichtbar'],
-                ]
+                ],
             ],
             'file'
         )
@@ -825,7 +826,7 @@ class ProductOtherTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'store_view_code', 'product_type', 'additional_attributes'],
                     ['$product.sku$', 'default', 'simple', 'datetime_attr=10/27/23, 1:15 PM,date_attr=12/16/23'],
-                ]
+                ],
             ],
             'file'
         ),
@@ -869,7 +870,7 @@ class ProductOtherTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'store_view_code', 'product_type', 'additional_attributes'],
                     ['$product.sku$', 'default', 'simple', 'datetime_attr=27.10.23, 13:15,date_attr=16.12.23'],
-                ]
+                ],
             ],
             'file'
         ),
@@ -913,7 +914,7 @@ class ProductOtherTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'store_view_code', 'product_type', 'additional_attributes'],
                     ['$product.sku$', 'default', 'simple', 'datetime_attr=2023-10-27 13:15:00,date_attr=2023-12-16'],
-                ]
+                ],
             ],
             'file'
         ),
@@ -947,7 +948,7 @@ class ProductOtherTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 

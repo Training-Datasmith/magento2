@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filter\Template;
-use Magento\Framework\View\Element\Context;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\Element\Context;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -40,7 +41,7 @@ class BlockByIdentifierTest extends TestCase
     private const ASSERT_CONTENT_HTML = self::STUB_CONTENT;
     private const ASSERT_UNAVAILABLE_IDENTIFIER_BASED_IDENTITIES = [
         BlockByIdentifier::CACHE_KEY_PREFIX . '_' . self::STUB_UNAVAILABLE_IDENTIFIER,
-        BlockByIdentifier::CACHE_KEY_PREFIX . '_' . self::STUB_UNAVAILABLE_IDENTIFIER . '_' . self::STUB_DEFAULT_STORE
+        BlockByIdentifier::CACHE_KEY_PREFIX . '_' . self::STUB_UNAVAILABLE_IDENTIFIER . '_' . self::STUB_DEFAULT_STORE,
     ];
     private const STUB_CMS_BLOCK_IDENTITY_BY_ID = 'CMS_BLOCK_' . self::STUB_CMS_BLOCK_ID;
     private const STUB_CMS_BLOCK_IDENTITY_BY_IDENTIFIER = 'CMS_BLOCK_' . self::STUB_EXISTING_IDENTIFIER;
@@ -128,7 +129,7 @@ class BlockByIdentifierTest extends TestCase
         $cmsBlockMock->method('getIdentities')->willReturn(
             [
                 self::STUB_CMS_BLOCK_IDENTITY_BY_ID,
-                self::STUB_CMS_BLOCK_IDENTITY_BY_IDENTIFIER
+                self::STUB_CMS_BLOCK_IDENTITY_BY_IDENTIFIER,
             ]
         );
 

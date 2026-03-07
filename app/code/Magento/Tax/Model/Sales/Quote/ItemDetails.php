@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Sales\Quote;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,17 +19,17 @@ class ItemDetails extends AbstractExtensibleModel implements QuoteDetailsItemInt
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_CODE                 = 'code';
-    const KEY_TYPE                 = 'type';
-    const KEY_TAX_CLASS_KEY        = 'tax_class_key';
-    const KEY_UNIT_PRICE           = 'unit_price';
-    const KEY_QUANTITY             = 'quantity';
-    const KEY_IS_TAX_INCLUDED      = 'is_tax_included';
-    const KEY_SHORT_DESCRIPTION    = 'short_description';
-    const KEY_DISCOUNT_AMOUNT      = 'discount_amount';
-    const KEY_PARENT_CODE          = 'parent_code';
-    const KEY_ASSOCIATED_ITEM_CODE = 'associated_item_code';
-    const KEY_TAX_CLASS_ID         = 'tax_class_id';
+    public const KEY_CODE                 = 'code';
+    public const KEY_TYPE                 = 'type';
+    public const KEY_TAX_CLASS_KEY        = 'tax_class_key';
+    public const KEY_UNIT_PRICE           = 'unit_price';
+    public const KEY_QUANTITY             = 'quantity';
+    public const KEY_IS_TAX_INCLUDED      = 'is_tax_included';
+    public const KEY_SHORT_DESCRIPTION    = 'short_description';
+    public const KEY_DISCOUNT_AMOUNT      = 'discount_amount';
+    public const KEY_PARENT_CODE          = 'parent_code';
+    public const KEY_ASSOCIATED_ITEM_CODE = 'associated_item_code';
+    public const KEY_TAX_CLASS_ID         = 'tax_class_id';
     /**#@-*/
 
     /**

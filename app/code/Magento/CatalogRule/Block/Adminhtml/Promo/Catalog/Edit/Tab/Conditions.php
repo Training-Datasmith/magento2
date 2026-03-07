@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Block\Adminhtml\Promo\Catalog\Edit\Tab;
 
 use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
-use Magento\Ui\Component\Layout\Tabs\TabInterface;
 use Magento\Rule\Model\Condition\AbstractCondition;
+use Magento\Ui\Component\Layout\Tabs\TabInterface;
 
 class Conditions extends Generic implements TabInterface
 {
@@ -174,7 +177,7 @@ class Conditions extends Generic implements TabInterface
                 'label' => __('Conditions'),
                 'title' => __('Conditions'),
                 'required' => true,
-                'data-form-part' => $formName
+                'data-form-part' => $formName,
             ]
         )
             ->setRule($model)

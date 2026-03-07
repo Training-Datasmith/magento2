@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\IntegrationGraphQl;
 
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Class for Store Config Customer Access Token Lifetime settings
@@ -24,8 +25,8 @@ class CustomerAccessTokenLifetimeResolverTest extends GraphQlAbstract
             $this->graphQlQuery($this->getQuery()),
             [
                 'storeConfig' => [
-                    "customer_access_token_lifetime" => 2
-                ]
+                    'customer_access_token_lifetime' => 2,
+                ],
             ]
         );
     }
@@ -39,8 +40,8 @@ class CustomerAccessTokenLifetimeResolverTest extends GraphQlAbstract
             $this->graphQlQuery($this->getQuery()),
             [
                 'storeConfig' => [
-                    "customer_access_token_lifetime" => 2.5
-                ]
+                    'customer_access_token_lifetime' => 2.5,
+                ],
             ]
         );
     }
@@ -54,8 +55,8 @@ class CustomerAccessTokenLifetimeResolverTest extends GraphQlAbstract
             $this->graphQlQuery($this->getQuery()),
             [
                 'storeConfig' => [
-                    "customer_access_token_lifetime" => null
-                ]
+                    'customer_access_token_lifetime' => null,
+                ],
             ]
         );
     }

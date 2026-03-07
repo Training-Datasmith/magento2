@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -172,12 +173,12 @@ class DisableBrowserMonitoringAutomaticInjectionTest extends TestCase
         return [
             'auto_instrument_enabled' => [
                 'isAutoInstrumentEnabled' => true,
-                'disableAutoRumCallCount' => 1
+                'disableAutoRumCallCount' => 1,
             ],
             'auto_instrument_disabled' => [
                 'isAutoInstrumentEnabled' => false,
-                'disableAutoRumCallCount' => 0
-            ]
+                'disableAutoRumCallCount' => 0,
+            ],
         ];
     }
 

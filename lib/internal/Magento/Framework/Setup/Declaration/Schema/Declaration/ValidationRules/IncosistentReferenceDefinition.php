@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationRules;
 
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationInterface;
@@ -23,7 +26,7 @@ class IncosistentReferenceDefinition implements ValidationInterface
     /**
      * Error code.
      */
-    const ERROR_TYPE = 'reference_incosistence_definition';
+    public const ERROR_TYPE = 'reference_incosistence_definition';
 
     /**
      * Assert that column dimensions are the same
@@ -127,7 +130,7 @@ class IncosistentReferenceDefinition implements ValidationInterface
                             $referenceColumn->getName(),
                             $column->getTable()->getName(),
                             $referenceColumn->getTable()->getName()
-                        )
+                        ),
                     ];
                 }
             }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\System\Config\Source;
 
 class Inputtype
@@ -15,7 +18,7 @@ class Inputtype
     {
         return [
             ['value' => 'multiselect', 'label' => __('Multiple Select')],
-            ['value' => 'select', 'label' => __('Dropdown')]
+            ['value' => 'select', 'label' => __('Dropdown')],
         ];
     }
 }

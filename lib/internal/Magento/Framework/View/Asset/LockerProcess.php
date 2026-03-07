@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -20,12 +23,12 @@ class LockerProcess implements LockerProcessInterface
     /**
      * File extension lock
      */
-    const LOCK_EXTENSION = '.lock';
+    public const LOCK_EXTENSION = '.lock';
 
     /**
      * Max execution (locking) time for process (in seconds)
      */
-    const MAX_LOCK_TIME = 30;
+    public const MAX_LOCK_TIME = 30;
 
     /**
      * @var Filesystem

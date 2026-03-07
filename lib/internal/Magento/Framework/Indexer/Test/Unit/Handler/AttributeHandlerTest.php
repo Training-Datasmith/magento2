@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,11 +10,10 @@ namespace Magento\Framework\Indexer\Test\Unit\Handler;
 
 use Magento\Framework\App\ResourceConnection\SourceProviderInterface;
 use Magento\Framework\Indexer\Handler\AttributeHandler;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-
 
 /**
  * Unit test for Magento\Framework\Indexer\Handler\AttributeHandler.
@@ -44,7 +44,7 @@ class AttributeHandlerTest extends TestCase
                 'getIdFieldName',
                 'addFieldToSelect',
                 'getSelect',
-                'addFieldToFilter'
+                'addFieldToFilter',
             ]
         );
 

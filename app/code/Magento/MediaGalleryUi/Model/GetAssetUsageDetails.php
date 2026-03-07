@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class GetAssetUsageDetails
             $details[] = [
                 'name' => $this->getName($type),
                 'number' => count($entities),
-                'link' => $this->getLinkUrl($type)
+                'link' => $this->getLinkUrl($type),
             ];
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class FilterTest extends TestCase
                 AttributeMetadataInterface::IS_VISIBLE_IN_GRID => false,
                 AttributeMetadataInterface::IS_FILTERABLE_IN_GRID => false,
                 AttributeMetadataInterface::IS_SEARCHABLE_IN_GRID => false,
-            ]
+            ],
         ];
 
         $this->indexerRegistry->expects($this->once())
@@ -116,7 +117,7 @@ class FilterTest extends TestCase
             ->method('describeTable')
             ->with($tableName)
             ->willReturn([
-                'attribute-code' => ['Attribute data']
+                'attribute-code' => ['Attribute data'],
             ]);
 
         $this->assertArrayNotHasKey($attributeCodeTwo, $this->model->filter($attributes));

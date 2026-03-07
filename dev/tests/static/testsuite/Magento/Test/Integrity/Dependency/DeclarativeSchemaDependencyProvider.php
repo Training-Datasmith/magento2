@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Test\Integrity\Dependency;
 
 use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Setup\Declaration\Schema\Config\Converter;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Setup\Declaration\Schema\Config\Converter;
 use Magento\TestFramework\Inspection\Exception as InspectionException;
 
 /**
@@ -149,7 +150,7 @@ class DeclarativeSchemaDependencyProvider
         foreach ($dependencies as $id => $modules) {
             $decodedId = self::decodeDependencyId($id);
             $entityType = $decodedId['entityType'];
-            if ($entityType === self::SCHEMA_ENTITY_TABLE || $entityType === "column") {
+            if ($entityType === self::SCHEMA_ENTITY_TABLE || $entityType === 'column') {
                 if (array_search($moduleName, $modules) !== false) {
                     unset($dependencies[$id]);
                 }
@@ -216,7 +217,7 @@ class DeclarativeSchemaDependencyProvider
                     $moduleDeclaration,
                     [self::SCHEMA_ENTITY_TABLE => [
                         $tableName => $tableDeclaration,
-                    ]
+                    ],
                     ]
                 );
                 foreach ($entityTypes as $entityType) {
@@ -226,8 +227,8 @@ class DeclarativeSchemaDependencyProvider
                     $moduleDeclaration = array_replace_recursive(
                         $moduleDeclaration,
                         [self::SCHEMA_ENTITY_TABLE => [
-                            $tableName => $this->addModuleAssigment($tableDeclaration, $entityType, $moduleName)
-                        ]
+                            $tableName => $this->addModuleAssigment($tableDeclaration, $entityType, $moduleName),
+                        ],
                         ]
                     );
                 }

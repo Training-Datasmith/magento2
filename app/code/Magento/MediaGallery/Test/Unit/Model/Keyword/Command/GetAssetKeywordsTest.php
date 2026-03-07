@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -85,14 +86,14 @@ class GetAssetKeywordsTest extends TestCase
             'not_found' => [[],0],
             'find_one_keyword' => [
                 'databaseQueryResult' => [['id' => 1, 'keyword' => 'keywordRawData']],
-                'expectedNumberOfFoundKeywords' => 1
+                'expectedNumberOfFoundKeywords' => 1,
             ],
             'find_several_keywords' => [
                 'databaseQueryResult' => [
-                    ['id' => 1, 'keyword'=> 'keywordRawData'],
-                    ['id' => 2, 'keyword' => 'keywordRawData']
+                    ['id' => 1, 'keyword' => 'keywordRawData'],
+                    ['id' => 2, 'keyword' => 'keywordRawData'],
                 ],
-                'expectedNumberOfFoundKeywords' => 2
+                'expectedNumberOfFoundKeywords' => 2,
             ],
         ];
     }

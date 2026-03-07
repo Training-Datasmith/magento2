@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\DataProvider;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Magento\Ui\DataProvider\Modifier\Pool;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
 
 class ModifierPoolDataProvider extends AbstractDataProvider

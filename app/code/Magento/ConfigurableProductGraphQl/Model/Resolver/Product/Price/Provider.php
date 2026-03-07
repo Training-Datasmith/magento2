@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class Provider implements ProviderInterface, ResetAfterRequestInterface
      */
     private $minimalPrice = [
         FinalPrice::PRICE_CODE => [],
-        RegularPrice::PRICE_CODE => []
+        RegularPrice::PRICE_CODE => [],
     ];
 
     /**
@@ -50,7 +51,7 @@ class Provider implements ProviderInterface, ResetAfterRequestInterface
      */
     private $maximalPrice = [
         FinalPrice::PRICE_CODE => [],
-        RegularPrice::PRICE_CODE => []
+        RegularPrice::PRICE_CODE => [],
     ];
 
     /**
@@ -175,7 +176,7 @@ class Provider implements ProviderInterface, ResetAfterRequestInterface
     /**
      * @inheritDoc
      */
-    public function _resetState():void
+    public function _resetState(): void
     {
         $this->minimalPrice[RegularPrice::PRICE_CODE] = [];
         $this->minimalPrice[FinalPrice::PRICE_CODE] = [];

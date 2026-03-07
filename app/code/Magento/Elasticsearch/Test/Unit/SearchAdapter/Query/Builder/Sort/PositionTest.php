@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,8 +9,7 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\Builder\Sort;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeAdapter;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface
-    as FieldNameResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface as FieldNameResolver;
 use Magento\Elasticsearch\SearchAdapter\Query\Builder\Sort\Position;
 use Magento\Framework\Search\Request\Query\BoolExpression;
 use Magento\Framework\Search\Request\Query\Filter as FilterQuery;

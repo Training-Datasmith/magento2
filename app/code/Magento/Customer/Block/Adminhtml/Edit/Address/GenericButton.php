@@ -1,16 +1,18 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Address;
 
 use Magento\Customer\Model\AddressFactory;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Customer\Model\ResourceModel\Address;
 use Magento\Customer\Model\ResourceModel\AddressRepository;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\UrlInterface;
 
 /**
  * Class for common code for buttons on the create/edit address form

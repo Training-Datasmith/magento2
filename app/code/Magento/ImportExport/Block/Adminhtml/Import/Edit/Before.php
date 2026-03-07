@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Block before edit form
  */
+
 namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
 
 /**

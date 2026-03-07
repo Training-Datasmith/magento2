@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 use Magento\Customer\Model\GroupManagement;
-use Magento\SalesRule\Api\Data\RuleInterface;
-use Magento\SalesRule\Api\RuleRepositoryInterface;
 use Magento\SalesRule\Model\Rule;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -33,7 +32,7 @@ $salesRule->setData(
         'store_labels' => [
             'store_id' => 0,
             'store_label' => '10$ fixed discount on whole cart',
-        ]
+        ],
     ]
 );
 

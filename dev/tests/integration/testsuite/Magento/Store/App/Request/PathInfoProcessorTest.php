@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\App\Request;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class PathInfoProcessorTest extends TestCase
 {
@@ -40,27 +43,27 @@ class PathInfoProcessorTest extends TestCase
         return [
             'default store id' =>
                 [
-                    'pathInfo' => '/0/m/c/a'
+                    'pathInfo' => '/0/m/c/a',
                 ]
             ,
             'main store id' =>
                 [
-                    'pathInfo' => '/1/m/c/a'
+                    'pathInfo' => '/1/m/c/a',
                 ]
             ,
             'nonexistent store code' =>
                 [
-                    'pathInfo' => '/test_string/m/c/a'
+                    'pathInfo' => '/test_string/m/c/a',
                 ]
             ,
             'admin store code' =>
                 [
-                    'pathInfo' => '/admin/m/c/a'
+                    'pathInfo' => '/admin/m/c/a',
                 ]
             ,
             'empty path' =>
                 [
-                    'pathInfo' => '/'
+                    'pathInfo' => '/',
                 ]
             ,
         ];

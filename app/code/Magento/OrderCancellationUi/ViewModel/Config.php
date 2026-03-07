@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\OrderCancellationUi\ViewModel;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\OrderCancellation\Model\CustomerCanCancel;
 use Magento\OrderCancellation\Model\Config\Config as CancellationConfig;
+use Magento\OrderCancellation\Model\CustomerCanCancel;
 use Magento\Sales\Api\OrderRepositoryInterface;
 
 /**

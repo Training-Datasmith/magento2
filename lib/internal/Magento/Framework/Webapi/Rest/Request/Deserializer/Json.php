@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * JSON deserializer of REST request content.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi\Rest\Request\Deserializer;
 
 use Magento\Framework\App\State;

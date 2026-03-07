@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\DriverInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\HTTP\Adapter\FileTransferFactory;
 use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
@@ -23,6 +23,7 @@ use Magento\Framework\Math\Random;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Helper\Data;
 use Magento\ImportExport\Model\Export\Adapter\CsvFactory;
 use Magento\ImportExport\Model\History;
@@ -195,7 +196,7 @@ class ImportTest extends AbstractImportTestCase
                 'validateData',
                 '_importData',
                 'getEntityTypeCode',
-                'validateRow'
+                'validateRow',
             ]
         );
         $this->_entityAdapter->method('getErrorAggregator')
@@ -243,7 +244,7 @@ class ImportTest extends AbstractImportTestCase
                 'isReportEntityType',
                 '_getEntityAdapter',
                 'getBehavior',
-                'getForceImport'
+                'getForceImport',
             ]
         );
         $this->import->__construct(
@@ -323,12 +324,12 @@ class ImportTest extends AbstractImportTestCase
             ->willReturn(
                 [
                     $entityTypeCode => [
-                        'model' => $entityTypeCode
-                    ]
+                        'model' => $entityTypeCode,
+                    ],
                 ]
             );
         $importOnceMethodsReturnNull = [
-            'getBehavior'
+            'getBehavior',
         ];
 
         foreach ($importOnceMethodsReturnNull as $method) {
@@ -554,7 +555,7 @@ class ImportTest extends AbstractImportTestCase
     {
         $indexers = [
             'indexer_1' => 'indexer_1',
-            'indexer_2' => 'indexer_2'
+            'indexer_2' => 'indexer_2',
         ];
         $indexer1 = $this->createMock(IndexerInterface::class);
         $indexer2 = clone $indexer1;
@@ -756,8 +757,8 @@ class ImportTest extends AbstractImportTestCase
             ->willReturn(
                 [
                     'advanced_pricing' => [
-                        'model' => 'advanced_pricing'
-                    ]
+                        'model' => 'advanced_pricing',
+                    ],
                 ]
             );
         $this->_entityFactory->expects($this->any())->method('create')->willReturnSelf();
@@ -833,7 +834,7 @@ class ImportTest extends AbstractImportTestCase
             $sourceFileRelative,
             $entity,
             $extension,
-            $result
+            $result,
         ];
         $actualResult = $this->invokeMethod($this->import, 'createHistoryReport', $args);
         $this->assertEquals($this->import, $actualResult);
@@ -878,7 +879,7 @@ class ImportTest extends AbstractImportTestCase
             $sourceFileRelative,
             $entity,
             $extension,
-            $result
+            $result,
         ];
         $actualResult = $this->invokeMethod($this->import, 'createHistoryReport', $args);
         $this->assertEquals($this->import, $actualResult);
@@ -920,7 +921,7 @@ class ImportTest extends AbstractImportTestCase
             $sourceFileRelative,
             $entity,
             $extension,
-            $result
+            $result,
         ];
         $actualResult = $this->invokeMethod($this->import, 'createHistoryReport', $args);
         $this->assertEquals($this->import, $actualResult);
@@ -960,7 +961,7 @@ class ImportTest extends AbstractImportTestCase
             $sourceFileRelative,
             $entity,
             $extension,
-            $result
+            $result,
         ];
         $actualResult = $this->invokeMethod($this->import, 'createHistoryReport', $args);
         $this->assertEquals($this->import, $actualResult);
@@ -1005,7 +1006,7 @@ class ImportTest extends AbstractImportTestCase
             $sourceFileRelative,
             $entity,
             $extension,
-            $result
+            $result,
         ];
         $actualResult = $this->invokeMethod($this->import, 'createHistoryReport', $args);
         $this->assertEquals($this->import, $actualResult);

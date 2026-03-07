@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class Adapter implements AdapterInterface
             $rawResponse = $client->query($query);
         } catch (\Exception $e) {
             $this->logger->critical($e);
-            throw new ClientException("Could not perform search query.", $e->getCode(), $e);
+            throw new ClientException('Could not perform search query.', $e->getCode(), $e);
         }
 
         $rawDocuments = $rawResponse['hits']['hits'] ?? [];
@@ -106,7 +107,7 @@ class Adapter implements AdapterInterface
             [
                 'documents' => $rawDocuments,
                 'aggregations' => $aggregationBuilder->build($request, $rawResponse),
-                'total' => $rawResponse['hits']['total']['value'] ?? 0
+                'total' => $rawResponse['hits']['total']['value'] ?? 0,
             ]
         );
     }

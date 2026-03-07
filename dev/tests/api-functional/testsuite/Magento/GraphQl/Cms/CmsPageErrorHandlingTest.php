@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Cms;
 
-use Magento\UrlRewrite\Test\Fixture\CmsPage;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\UrlRewrite\Test\Fixture\CmsPage;
 
 /**
  * Test to return category aggregations
@@ -21,7 +22,7 @@ class CmsPageErrorHandlingTest extends GraphQlAbstract
             CmsPage::class,
             [
                 'is_active' => 1,
-                "identifier"=>"enabled-test-page"
+                'identifier' => 'enabled-test-page',
             ],
             as: 'enabled_page'
         )
@@ -40,7 +41,7 @@ class CmsPageErrorHandlingTest extends GraphQlAbstract
             CmsPage::class,
             [
                 'is_active' => 0,
-                "identifier"=>"disabled-test-page"
+                'identifier' => 'disabled-test-page',
             ],
             as: 'enabled_page'
         )

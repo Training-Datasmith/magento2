@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,63 +15,63 @@ use Magento\Framework\Exception\LocalizedException;
  */
 interface ConfigInterface
 {
-    const PUBLISHERS = 'publishers';
-    const PUBLISHER_NAME = 'name';
-    const PUBLISHER_CONNECTION = 'connection';
-    const PUBLISHER_EXCHANGE = 'exchange';
+    public const PUBLISHERS = 'publishers';
+    public const PUBLISHER_NAME = 'name';
+    public const PUBLISHER_CONNECTION = 'connection';
+    public const PUBLISHER_EXCHANGE = 'exchange';
 
-    const TOPICS = 'topics';
-    const TOPIC_NAME = 'name';
-    const TOPIC_PUBLISHER = 'publisher';
-    const TOPIC_SCHEMA = 'schema';
-    const TOPIC_RESPONSE_SCHEMA = 'response_schema';
-    const TOPIC_SCHEMA_TYPE = 'schema_type';
-    const TOPIC_SCHEMA_VALUE = 'schema_value';
+    public const TOPICS = 'topics';
+    public const TOPIC_NAME = 'name';
+    public const TOPIC_PUBLISHER = 'publisher';
+    public const TOPIC_SCHEMA = 'schema';
+    public const TOPIC_RESPONSE_SCHEMA = 'response_schema';
+    public const TOPIC_SCHEMA_TYPE = 'schema_type';
+    public const TOPIC_SCHEMA_VALUE = 'schema_value';
 
-    const TOPIC_SCHEMA_TYPE_OBJECT = 'object';
-    const TOPIC_SCHEMA_TYPE_METHOD = 'method_arguments';
+    public const TOPIC_SCHEMA_TYPE_OBJECT = 'object';
+    public const TOPIC_SCHEMA_TYPE_METHOD = 'method_arguments';
 
-    const SCHEMA_METHOD_PARAM_NAME = 'param_name';
-    const SCHEMA_METHOD_PARAM_POSITION = 'param_position';
-    const SCHEMA_METHOD_PARAM_TYPE = 'param_type';
-    const SCHEMA_METHOD_PARAM_IS_REQUIRED = 'is_required';
+    public const SCHEMA_METHOD_PARAM_NAME = 'param_name';
+    public const SCHEMA_METHOD_PARAM_POSITION = 'param_position';
+    public const SCHEMA_METHOD_PARAM_TYPE = 'param_type';
+    public const SCHEMA_METHOD_PARAM_IS_REQUIRED = 'is_required';
 
-    const CONSUMERS = 'consumers';
-    const CONSUMER_NAME = 'name';
-    const CONSUMER_QUEUE = 'queue';
-    const CONSUMER_CONNECTION = 'connection';
-    const CONSUMER_INSTANCE_TYPE = 'instance_type';
-    const CONSUMER_CLASS = 'type';
-    const CONSUMER_METHOD = 'method';
-    const CONSUMER_MAX_MESSAGES = 'max_messages';
-    const CONSUMER_HANDLERS = 'handlers';
-    const CONSUMER_HANDLER_TYPE = 'type';
-    const CONSUMER_HANDLER_METHOD = 'method';
-    const CONSUMER_TYPE = 'consumer_type';
-    const CONSUMER_TYPE_SYNC = 'sync';
-    const CONSUMER_TYPE_ASYNC = 'async';
+    public const CONSUMERS = 'consumers';
+    public const CONSUMER_NAME = 'name';
+    public const CONSUMER_QUEUE = 'queue';
+    public const CONSUMER_CONNECTION = 'connection';
+    public const CONSUMER_INSTANCE_TYPE = 'instance_type';
+    public const CONSUMER_CLASS = 'type';
+    public const CONSUMER_METHOD = 'method';
+    public const CONSUMER_MAX_MESSAGES = 'max_messages';
+    public const CONSUMER_HANDLERS = 'handlers';
+    public const CONSUMER_HANDLER_TYPE = 'type';
+    public const CONSUMER_HANDLER_METHOD = 'method';
+    public const CONSUMER_TYPE = 'consumer_type';
+    public const CONSUMER_TYPE_SYNC = 'sync';
+    public const CONSUMER_TYPE_ASYNC = 'async';
 
-    const RESPONSE_QUEUE_PREFIX = 'responseQueue.';
+    public const RESPONSE_QUEUE_PREFIX = 'responseQueue.';
 
-    const BINDS = 'binds';
-    const BIND_QUEUE = 'queue';
-    const BIND_EXCHANGE = 'exchange';
-    const BIND_TOPIC = 'topic';
+    public const BINDS = 'binds';
+    public const BIND_QUEUE = 'queue';
+    public const BIND_EXCHANGE = 'exchange';
+    public const BIND_TOPIC = 'topic';
 
-    const BROKER_TOPIC = 'topic';
-    const BROKER_TYPE = 'type';
-    const BROKER_EXCHANGE = 'exchange';
-    const BROKER_CONSUMERS = 'consumers';
-    const BROKER_CONSUMER_NAME = 'name';
-    const BROKER_CONSUMER_QUEUE = 'queue';
-    const BROKER_CONSUMER_INSTANCE_TYPE = 'instance_type';
-    const BROKER_CONSUMER_MAX_MESSAGES = 'max_messages';
-    const BROKERS = 'brokers';
+    public const BROKER_TOPIC = 'topic';
+    public const BROKER_TYPE = 'type';
+    public const BROKER_EXCHANGE = 'exchange';
+    public const BROKER_CONSUMERS = 'consumers';
+    public const BROKER_CONSUMER_NAME = 'name';
+    public const BROKER_CONSUMER_QUEUE = 'queue';
+    public const BROKER_CONSUMER_INSTANCE_TYPE = 'instance_type';
+    public const BROKER_CONSUMER_MAX_MESSAGES = 'max_messages';
+    public const BROKERS = 'brokers';
 
     /**
      * Map which allows optimized search of queues corresponding to the specified exchange and topic pair.
      */
-    const EXCHANGE_TOPIC_TO_QUEUES_MAP = 'exchange_topic_to_queues_map';
+    public const EXCHANGE_TOPIC_TO_QUEUES_MAP = 'exchange_topic_to_queues_map';
 
     /**
      * Identify configured exchange for the provided topic.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\Description\Mixin\Helper;
 
 use Magento\Setup\Model\Description\Mixin\Helper\WordWrapper;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class WordWrapperTest extends TestCase
 {
@@ -48,7 +49,7 @@ class WordWrapperTest extends TestCase
                     'words' => [],
                     'format' => '',
                 ],
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             ],
 
             [
@@ -57,7 +58,7 @@ class WordWrapperTest extends TestCase
                     'words' => ['Lorem'],
                     'format' => '<test>%s</test>',
                 ],
-                '<test>Lorem</test> ipsum dolor sit amet, consectetur adipiscing elit.'
+                '<test>Lorem</test> ipsum dolor sit amet, consectetur adipiscing elit.',
             ],
 
             [
@@ -66,7 +67,7 @@ class WordWrapperTest extends TestCase
                     'words' => ['Lorem', 'consectetur', 'elit'],
                     'format' => '<test>%s</test>',
                 ],
-                '<test>Lorem</test> ipsum dolor sit amet, <test>consectetur</test> adipiscing <test>elit</test>.'
+                '<test>Lorem</test> ipsum dolor sit amet, <test>consectetur</test> adipiscing <test>elit</test>.',
             ],
         ];
     }

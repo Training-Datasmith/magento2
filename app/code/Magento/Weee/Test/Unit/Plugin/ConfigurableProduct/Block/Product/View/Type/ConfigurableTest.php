@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -144,9 +145,9 @@ class ConfigurableTest extends TestCase
         $jsonConfig = '{"optionPrices":{"1":{"finalPrice":{"amount":100}}},"priceFormat":{}}';
         $config = [
             'optionPrices' => [
-                '1' => ['finalPrice' => ['amount' => 100]]
+                '1' => ['finalPrice' => ['amount' => 100]],
             ],
-            'priceFormat' => []
+            'priceFormat' => [],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -192,9 +193,9 @@ class ConfigurableTest extends TestCase
         $jsonConfig = '{"optionPrices":{"1":{"finalPrice":{"amount":100}}},"priceFormat":{}}';
         $config = [
             'optionPrices' => [
-                '1' => ['finalPrice' => ['amount' => 100]]
+                '1' => ['finalPrice' => ['amount' => 100]],
             ],
-            'priceFormat' => []
+            'priceFormat' => [],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -240,15 +241,15 @@ class ConfigurableTest extends TestCase
         $config = [
             'optionPrices' => [
                 '1' => [
-                    'finalPrice' => ['amount' => 110.50]
-                ]
+                    'finalPrice' => ['amount' => 110.50],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -260,7 +261,7 @@ class ConfigurableTest extends TestCase
             'amount' => 10.50,
             'name' => 'FPT Tax',
             'amount_excl_tax' => 10.00,
-            'tax_amount' => 0.50
+            'tax_amount' => 0.50,
         ]);
 
         $this->jsonDecoderMock->expects($this->once())
@@ -291,21 +292,21 @@ class ConfigurableTest extends TestCase
                             [
                                 'name' => 'FPT Tax',
                                 'amount' => 10.50,
-                                'formatted' => '$10.50'
-                            ]
+                                'formatted' => '$10.50',
+                            ],
                         ],
                         'amountWithoutWeee' => 100.00,
                         'formattedWithoutWeee' => '$100.00',
-                        'formattedWithWeee' => '$110.50'
-                    ]
-                ]
+                        'formattedWithWeee' => '$110.50',
+                    ],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $this->jsonEncoderMock->expects($this->once())
@@ -331,15 +332,15 @@ class ConfigurableTest extends TestCase
         $config = [
             'optionPrices' => [
                 '1' => [
-                    'finalPrice' => ['amount' => 125.75]
-                ]
+                    'finalPrice' => ['amount' => 125.75],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -351,14 +352,14 @@ class ConfigurableTest extends TestCase
             'amount' => 10.50,
             'name' => 'FPT Tax 1',
             'amount_excl_tax' => 10.00,
-            'tax_amount' => 0.50
+            'tax_amount' => 0.50,
         ]);
 
         $weeeAttribute2Mock = new DataObject([
             'amount' => 15.25,
             'name' => 'FPT Tax 2',
             'amount_excl_tax' => 14.50,
-            'tax_amount' => 0.75
+            'tax_amount' => 0.75,
         ]);
 
         $this->jsonDecoderMock->expects($this->once())
@@ -389,26 +390,26 @@ class ConfigurableTest extends TestCase
                             [
                                 'name' => 'FPT Tax 1',
                                 'amount' => 10.50,
-                                'formatted' => '$10.50'
+                                'formatted' => '$10.50',
                             ],
                             [
                                 'name' => 'FPT Tax 2',
                                 'amount' => 15.25,
-                                'formatted' => '$15.25'
-                            ]
+                                'formatted' => '$15.25',
+                            ],
                         ],
                         'amountWithoutWeee' => 100.00,
                         'formattedWithoutWeee' => '$100.00',
-                        'formattedWithWeee' => '$125.75'
-                    ]
-                ]
+                        'formattedWithWeee' => '$125.75',
+                    ],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $this->jsonEncoderMock->expects($this->once())
@@ -433,15 +434,15 @@ class ConfigurableTest extends TestCase
         $config = [
             'optionPrices' => [
                 '1' => [
-                    'finalPrice' => ['amount' => 110.50]
-                ]
+                    'finalPrice' => ['amount' => 110.50],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -452,7 +453,7 @@ class ConfigurableTest extends TestCase
         $weeeAttributeMock = new DataObject([
             'amount' => 10.50,
             'amount_excl_tax' => 10.00,
-            'tax_amount' => 0.50
+            'tax_amount' => 0.50,
             // No 'name' key = getData('name') returns null
         ]);
 
@@ -484,21 +485,21 @@ class ConfigurableTest extends TestCase
                             [
                                 'name' => 'FPT', // Default name
                                 'amount' => 10.50,
-                                'formatted' => '$10.50'
-                            ]
+                                'formatted' => '$10.50',
+                            ],
                         ],
                         'amountWithoutWeee' => 100.00,
                         'formattedWithoutWeee' => '$100.00',
-                        'formattedWithWeee' => '$110.50'
-                    ]
-                ]
+                        'formattedWithWeee' => '$110.50',
+                    ],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '$%s',
                 'precision' => 2,
                 'decimalSymbol' => '.',
-                'groupSymbol' => ','
-            ]
+                'groupSymbol' => ',',
+            ],
         ];
 
         $this->jsonEncoderMock->expects($this->once())
@@ -523,15 +524,15 @@ class ConfigurableTest extends TestCase
         $config = [
             'optionPrices' => [
                 '1' => [
-                    'finalPrice' => ['amount' => 1234.567]
-                ]
+                    'finalPrice' => ['amount' => 1234.567],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '%s €',
                 'precision' => 3,
                 'decimalSymbol' => ',',
-                'groupSymbol' => '.'
-            ]
+                'groupSymbol' => '.',
+            ],
         ];
 
         $productMock = $this->createMock(Product::class);
@@ -543,7 +544,7 @@ class ConfigurableTest extends TestCase
             'amount' => 234.567,
             'name' => 'Euro Tax',
             'amount_excl_tax' => 234.00,
-            'tax_amount' => 0.567
+            'tax_amount' => 0.567,
         ]);
 
         $this->jsonDecoderMock->expects($this->once())
@@ -574,21 +575,21 @@ class ConfigurableTest extends TestCase
                             [
                                 'name' => 'Euro Tax',
                                 'amount' => 234.567,
-                                'formatted' => '234,567 €'
-                            ]
+                                'formatted' => '234,567 €',
+                            ],
                         ],
                         'amountWithoutWeee' => 1000.00,
                         'formattedWithoutWeee' => '1.000,000 €',
-                        'formattedWithWeee' => '1.234,567 €'
-                    ]
-                ]
+                        'formattedWithWeee' => '1.234,567 €',
+                    ],
+                ],
             ],
             'priceFormat' => [
                 'pattern' => '%s €',
                 'precision' => 3,
                 'decimalSymbol' => ',',
-                'groupSymbol' => '.'
-            ]
+                'groupSymbol' => '.',
+            ],
         ];
 
         $this->jsonEncoderMock->expects($this->once())

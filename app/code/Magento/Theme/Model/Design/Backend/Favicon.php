@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Theme\Model\Design\Backend;
 
-use Magento\Framework\Filesystem;
+namespace Magento\Theme\Model\Design\Backend;
 
 class Favicon extends Image
 {
@@ -13,7 +14,7 @@ class Favicon extends Image
      * The tail part of directory path for uploading
      *
      */
-    const UPLOAD_DIR = 'favicon';
+    public const UPLOAD_DIR = 'favicon';
 
     /**
      * Return path to directory for upload file

@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModuleDefaultHydrator\Model\ResourceModel\Address;
 
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\EntityManager;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\EntityManager\EntityManager;
+use Magento\Framework\EntityManager\Operation\ExtensionInterface;
 
 class SaveHandler implements ExtensionInterface
 {

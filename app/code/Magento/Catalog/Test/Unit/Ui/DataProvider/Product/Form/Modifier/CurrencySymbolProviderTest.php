@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CurrencySymbolProvider;
@@ -17,10 +17,10 @@ use Magento\Framework\Currency\Data\Currency as CurrencyData;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\Store;
-use Magento\Store\Model\Website;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -92,7 +92,7 @@ class CurrencySymbolProviderTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'storeManager' => $this->storeManagerMock,
                 'locator' => $this->locatorMock,
-                'localeCurrency' => $this->localeCurrencyMock
+                'localeCurrency' => $this->localeCurrencyMock,
             ]
         );
     }
@@ -153,13 +153,13 @@ class CurrencySymbolProviderTest extends TestCase
                             'name' => 'Main Website',
                             'code' => 'main_website',
                             'base_currency_code' => 'USD',
-                            'currency_symbol' => '$'
-                        ]
+                            'currency_symbol' => '$',
+                        ],
                     ]
                 ),
                 'productWebsiteIds' => ['1'],
                 'currencySymbols' => ['$'],
-                'actualResult' => ['$']
+                'actualResult' => ['$'],
             ],
             'verify website currency with default website and website price scope' => [
                 'catalogPriceScope' => 1,
@@ -171,13 +171,13 @@ class CurrencySymbolProviderTest extends TestCase
                             'name' => 'Main Website',
                             'code' => 'main_website',
                             'base_currency_code' => 'USD',
-                            'currency_symbol' => '$'
-                        ]
+                            'currency_symbol' => '$',
+                        ],
                     ]
                 ),
                 'productWebsiteIds' => ['1'],
                 'currencySymbols' => ['$'],
-                'actualResult' => ['$', '$']
+                'actualResult' => ['$', '$'],
             ],
             'verify website currency with two website and website price scope' => [
                 'catalogPriceScope' => 1,
@@ -189,21 +189,21 @@ class CurrencySymbolProviderTest extends TestCase
                             'name' => 'Main Website',
                             'code' => 'main_website',
                             'base_currency_code' => 'USD',
-                            'currency_symbol' => '$'
+                            'currency_symbol' => '$',
                         ],
                         [
                             'id' => '2',
                             'name' => 'Indian Website',
                             'code' => 'indian_website',
                             'base_currency_code' => 'INR',
-                            'currency_symbol' => '₹'
-                        ]
+                            'currency_symbol' => '₹',
+                        ],
                     ]
                 ),
                 'productWebsiteIds' => ['1', '2'],
                 'currencySymbols' => ['$', '₹'],
-                'actualResult' => ['$', '$', '$']
-            ]
+                'actualResult' => ['$', '$', '$'],
+            ],
         ];
     }
 

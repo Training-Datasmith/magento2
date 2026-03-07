@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class SetGoogleAnalyticsOnOrderSuccessPageViewObserverTest extends TestCase
             [
                 'storeManager' => $this->storeManagerMock,
                 'layout' => $this->layoutMock,
-                'googleAnalyticsData' => $this->googleAnalyticsDataMock
+                'googleAnalyticsData' => $this->googleAnalyticsDataMock,
             ]
         );
     }

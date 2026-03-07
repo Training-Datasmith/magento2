@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\SalesRule\Model\Quote\GetCouponCodes;
 
 class Coupon implements ResolverInterface
 {
-
     /**
      * @param GetCouponCodes $getCouponCodes
      * @param GetCoupons $getCoupons

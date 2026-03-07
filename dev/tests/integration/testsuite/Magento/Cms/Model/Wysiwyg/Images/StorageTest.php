@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\Wysiwyg\Images;
 
 use Magento\Cms\Model\Wysiwyg\Images\Storage\Collection;
@@ -10,7 +13,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -129,12 +131,12 @@ class StorageTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 '/media/.thumbsMagentoCmsModelWysiwygImagesStorageTest/magento_image.jpg',
                 $thumbUrl,
-                "Check if Thumbnail URL is equal to the generated URL"
+                'Check if Thumbnail URL is equal to the generated URL'
             );
             $this->assertEquals(
                 'image/jpeg',
                 $item->getMimeType(),
-                "Check if Mime Type is equal to the image in the file system"
+                'Check if Mime Type is equal to the image in the file system'
             );
             return;
         }
@@ -296,7 +298,7 @@ class StorageTest extends \PHPUnit\Framework\TestCase
         $tmpDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::SYS_TMP);
         $filePath = $tmpDirectory->getAbsolutePath($fileName);
         // phpcs:disable
-        $file = fopen($filePath, "wb");
+        $file = fopen($filePath, 'wb');
         fwrite($file, 'just a text');
 
         $_FILES['image'] = [
@@ -352,15 +354,15 @@ class StorageTest extends \PHPUnit\Framework\TestCase
                     'width' => 1024,
                     'height' => 768,
                 ],
-                true
+                true,
             ],
             [
                 [
                     'width' => 20,
                     'height' => 20,
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 

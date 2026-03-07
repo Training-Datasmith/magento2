@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\ImportExport\Controller\Adminhtml;
 
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\HTTP\Adapter\FileTransferFactory;
+use Magento\ImportExport\Controller\Adminhtml\Import\HttpFactoryMock;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\ImportExport\Controller\Adminhtml\Import\HttpFactoryMock;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -62,13 +63,13 @@ class ImportResultTest extends \Magento\TestFramework\TestCase\AbstractBackendCo
                 'type' => $mimeType,
                 'tmp_name' => $target,
                 'error' => 0,
-                'size' => filesize($target)
-            ]
+                'size' => filesize($target),
+            ],
         ];
 
         $this->_objectManager->configure(
             [
-                'preferences' => [FileTransferFactory::class => HttpFactoryMock::class]
+                'preferences' => [FileTransferFactory::class => HttpFactoryMock::class],
             ]
         );
 

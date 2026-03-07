@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,17 +15,17 @@ class CalculatorFactory
     /**
      * Identifier constant for unit based calculation
      */
-    const CALC_UNIT_BASE = 'UNIT_BASE_CALCULATION';
+    public const CALC_UNIT_BASE = 'UNIT_BASE_CALCULATION';
 
     /**
      * Identifier constant for row based calculation
      */
-    const CALC_ROW_BASE = 'ROW_BASE_CALCULATION';
+    public const CALC_ROW_BASE = 'ROW_BASE_CALCULATION';
 
     /**
      * Identifier constant for total based calculation
      */
-    const CALC_TOTAL_BASE = 'TOTAL_BASE_CALCULATION';
+    public const CALC_TOTAL_BASE = 'TOTAL_BASE_CALCULATION';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

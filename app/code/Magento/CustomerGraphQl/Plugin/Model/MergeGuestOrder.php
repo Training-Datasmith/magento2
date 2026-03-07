@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CustomerGraphQl\Plugin\Model;
 
-use Magento\Customer\Model\AccountManagement;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Sales\Model\Order\CustomerAssignment;
+use Magento\Customer\Model\AccountManagement;
 use Magento\CustomerGraphQl\Model\GetGuestOrdersByEmail;
+use Magento\Sales\Model\Order\CustomerAssignment;
 
 class MergeGuestOrder
 {

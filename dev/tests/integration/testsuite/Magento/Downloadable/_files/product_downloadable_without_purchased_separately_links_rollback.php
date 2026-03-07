@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Downloadable\Api\DomainManagerInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var DomainManagerInterface $domainManager */
 $domainManager = Bootstrap::getObjectManager()->get(DomainManagerInterface::class);

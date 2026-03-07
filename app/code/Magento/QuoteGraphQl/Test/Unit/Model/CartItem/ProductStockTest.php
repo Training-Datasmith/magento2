@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -108,7 +109,7 @@ class ProductStockTest extends TestCase
                 'getChildren',
                 'getQtyOptions',
                 'getQtyToAdd',
-                'getPreviousQty'
+                'getPreviousQty',
             ]
         );
         $this->productMock = $this->createPartialMock(

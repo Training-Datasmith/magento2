@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
+use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -32,8 +33,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
             'qty' => 0.5,
-            'value' => 2.99
-        ]
+            'value' => 2.99,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes);
 $product->setTierPrices($tierPrices);

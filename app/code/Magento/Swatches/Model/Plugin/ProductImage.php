@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Model\Plugin;
 
-use Magento\Catalog\Model\Product;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
-use Magento\Swatches\Helper\Data;
-use Magento\Eav\Model\Config;
-use Magento\Framework\App\Request\Http;
 use Magento\Catalog\Block\Product\AbstractProduct;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product as ProductModel;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Eav\Model\Config;
+use Magento\Framework\App\Request\Http;
+use Magento\Swatches\Helper\Data;
 
 /**
  * Class ProductImage replace original configurable product with first child
@@ -23,8 +26,8 @@ class ProductImage
      * Determine context of creation image block
      * which defined in catalog/product/list.phtml
      */
-    const CATEGORY_PAGE_GRID_LOCATION = 'category_page_grid';
-    const CATEGORY_PAGE_LIST_LOCATION = 'category_page_list';
+    public const CATEGORY_PAGE_GRID_LOCATION = 'category_page_grid';
+    public const CATEGORY_PAGE_LIST_LOCATION = 'category_page_list';
 
     /**
      * Data helper to get child product image

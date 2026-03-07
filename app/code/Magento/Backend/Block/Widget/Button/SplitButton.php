@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Button;
 
 use Magento\Backend\Block\Template\Context;
@@ -129,7 +132,7 @@ class SplitButton extends \Magento\Backend\Block\Widget
             'id' => $this->getButtonId(),
             'title' => $title,
             'class' => join(' ', $classes),
-            'disabled' => $disabled
+            'disabled' => $disabled,
         ];
 
         //TODO perhaps we need to skip data-mage-init when disabled="disabled"

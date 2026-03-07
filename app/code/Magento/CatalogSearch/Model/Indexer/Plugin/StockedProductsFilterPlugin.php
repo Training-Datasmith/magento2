@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Model\Indexer\Plugin;
 
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Api\StockStatusRepositoryInterface;
-use Magento\CatalogInventory\Api\StockStatusCriteriaInterfaceFactory;
 use Magento\CatalogInventory\Api\Data\StockStatusInterface;
+use Magento\CatalogInventory\Api\StockConfigurationInterface;
+use Magento\CatalogInventory\Api\StockStatusCriteriaInterfaceFactory;
+use Magento\CatalogInventory\Api\StockStatusRepositoryInterface;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Action\DataProvider;
 
 /**

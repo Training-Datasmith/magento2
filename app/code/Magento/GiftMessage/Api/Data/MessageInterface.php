@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Api\Data;
 
 /**
@@ -15,11 +18,11 @@ interface MessageInterface extends \Magento\Framework\Api\ExtensibleDataInterfac
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const GIFT_MESSAGE_ID = 'gift_message_id';
-    const CUSTOMER_ID = 'customer_id';
-    const SENDER = 'sender';
-    const RECIPIENT = 'recipient';
-    const MESSAGE = 'message';
+    public const GIFT_MESSAGE_ID = 'gift_message_id';
+    public const CUSTOMER_ID = 'customer_id';
+    public const SENDER = 'sender';
+    public const RECIPIENT = 'recipient';
+    public const MESSAGE = 'message';
     /**#@-*/
 
     /**

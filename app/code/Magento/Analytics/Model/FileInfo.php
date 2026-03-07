@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 /**
@@ -11,27 +14,19 @@ namespace Magento\Analytics\Model;
 class FileInfo
 {
     /**
-     * Initialization vector that was used for encryption.
-     *
-     * @var string
-     */
-    private $initializationVector;
-
-    /**
-     * Relative path to an encrypted file.
-     *
-     * @var string
-     */
-    private $path;
-
-    /**
      * @param string $path
      * @param string $initializationVector
      */
-    public function __construct($path = '', $initializationVector = '')
-    {
-        $this->path = $path;
-        $this->initializationVector = $initializationVector;
+    public function __construct(
+        /**
+         * Relative path to an encrypted file.
+         */
+        private $path = '',
+        /**
+         * Initialization vector that was used for encryption.
+         */
+        private $initializationVector = ''
+    ) {
     }
 
     /**

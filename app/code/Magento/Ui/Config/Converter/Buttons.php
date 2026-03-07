@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
+use Magento\Framework\ObjectManager\Config\Reader\Dom;
 use Magento\Ui\Config\Converter;
 use Magento\Ui\Config\ConverterInterface;
-use Magento\Framework\ObjectManager\Config\Reader\Dom;
 use Magento\Ui\Config\ConverterUtils;
 
 /**
@@ -44,7 +47,7 @@ class Buttons implements ConverterInterface
             return [
                 Converter::NAME_ATTRIBUTE_KEY => $this->converterUtils->getComponentName($node),
                 Dom::TYPE_ATTRIBUTE => 'array',
-                'item' => []
+                'item' => [],
             ];
         }
 
@@ -149,7 +152,7 @@ class Buttons implements ConverterInterface
             $result['item']['name'] = [
                 Converter::NAME_ATTRIBUTE_KEY => 'name',
                 'value' => $node->getAttribute('name'),
-                Dom::TYPE_ATTRIBUTE => 'string'
+                Dom::TYPE_ATTRIBUTE => 'string',
             ];
         }
         return $result;

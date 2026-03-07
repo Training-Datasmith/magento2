@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Plugin\Catalog\Model\Product\Attribute\Backend\TierPrice;
 
-use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\TierPrice\UpdateHandler;
+use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Plugin\Catalog\Model\Product\Attribute\Backend\TierPrice\UpdateHandlerPlugin;
@@ -87,8 +88,8 @@ class UpdateHandlerPluginTest extends TestCase
                 'price_qty' => 2.0000,
                 'percentage_value' => null,
                 'product_id' => 29,
-                'website_price' => 50.000000
-            ]
+                'website_price' => 50.000000,
+            ],
         ];
 
         $this->entityMock->expects($this->once())
@@ -129,8 +130,8 @@ class UpdateHandlerPluginTest extends TestCase
                 'price_qty' => 5.0000,
                 'percentage_value' => null,
                 'product_id' => 30,
-                'website_price' => 50.000000
-            ]
+                'website_price' => 50.000000,
+            ],
         ];
 
         $this->entityMock->expects($this->once())

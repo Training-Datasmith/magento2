@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ use Magento\Framework\App\ActionFlag;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AccountTest extends TestCase
 {
@@ -123,27 +124,27 @@ class AccountTest extends TestCase
             [
                 'action' => 'TestAction',
                 'allowedActions' => ['TestAction'],
-                'isAllowed' => true
+                'isAllowed' => true,
             ],
             [
                 'action' => 'testaction',
                 'allowedActions' => ['testaction'],
-                'isAllowed' => true
+                'isAllowed' => true,
             ],
             [
                 'action' => 'wrongaction',
                 'allowedActions' => ['testaction'],
-                'isAllowed' => false
+                'isAllowed' => false,
             ],
             [
                 'action' => 'wrongaction',
                 'allowedActions' => ['testaction'],
-                'isAllowed' => false
+                'isAllowed' => false,
             ],
             [
                 'action' => 'wrongaction',
                 'allowedActions' => [],
-                'isAllowed' => false
+                'isAllowed' => false,
             ],
         ];
     }

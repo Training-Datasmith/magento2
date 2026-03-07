@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class Publish
      *
      * @param array $contentIdentities
      */
-    public function execute(array $contentIdentities = []) : void
+    public function execute(array $contentIdentities = []): void
     {
         $data = [
             'data' => [
@@ -74,7 +75,7 @@ class Publish
                 'topic_name' => self::TOPIC_MEDIA_CONTENT_SYNCHRONIZATION,
                 'serialized_data' => $this->serializer->serialize($contentIdentities),
                 'status' => OperationInterface::STATUS_TYPE_OPEN,
-            ]
+            ],
         ];
         $operation = $this->operationFactory->create($data);
 

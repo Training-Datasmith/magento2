@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -22,381 +25,381 @@ interface OrderItemInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /*
      * Item ID.
      */
-    const ITEM_ID = 'item_id';
+    public const ITEM_ID = 'item_id';
     /*
      * Order ID.
      */
-    const ORDER_ID = 'order_id';
+    public const ORDER_ID = 'order_id';
     /*
      * Parent item ID.
      */
-    const PARENT_ITEM_ID = 'parent_item_id';
+    public const PARENT_ITEM_ID = 'parent_item_id';
     /*
      * Quote item ID.
      */
-    const QUOTE_ITEM_ID = 'quote_item_id';
+    public const QUOTE_ITEM_ID = 'quote_item_id';
     /*
      * Store ID.
      */
-    const STORE_ID = 'store_id';
+    public const STORE_ID = 'store_id';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
     /*
      * Updated-at timestamp.
      */
-    const UPDATED_AT = 'updated_at';
+    public const UPDATED_AT = 'updated_at';
     /*
      * Product ID.
      */
-    const PRODUCT_ID = 'product_id';
+    public const PRODUCT_ID = 'product_id';
     /*
      * Product type.
      */
-    const PRODUCT_TYPE = 'product_type';
+    public const PRODUCT_TYPE = 'product_type';
     /*
      * Weight.
      */
-    const WEIGHT = 'weight';
+    public const WEIGHT = 'weight';
     /*
      * Is-virtual flag.
      */
-    const IS_VIRTUAL = 'is_virtual';
+    public const IS_VIRTUAL = 'is_virtual';
     /*
      * SKU.
      */
-    const SKU = 'sku';
+    public const SKU = 'sku';
     /*
      * Name.
      */
-    const NAME = 'name';
+    public const NAME = 'name';
     /*
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
     /*
      * Applied rule IDs.
      */
-    const APPLIED_RULE_IDS = 'applied_rule_ids';
+    public const APPLIED_RULE_IDS = 'applied_rule_ids';
     /*
      * Additional data.
      */
-    const ADDITIONAL_DATA = 'additional_data';
+    public const ADDITIONAL_DATA = 'additional_data';
     /*
      * Is-quantity-decimal flag.
      */
-    const IS_QTY_DECIMAL = 'is_qty_decimal';
+    public const IS_QTY_DECIMAL = 'is_qty_decimal';
     /*
      * No-discount flag.
      */
-    const NO_DISCOUNT = 'no_discount';
+    public const NO_DISCOUNT = 'no_discount';
     /*
      * Quantity backordered.
      */
-    const QTY_BACKORDERED = 'qty_backordered';
+    public const QTY_BACKORDERED = 'qty_backordered';
     /*
      * Quantity canceled.
      */
-    const QTY_CANCELED = 'qty_canceled';
+    public const QTY_CANCELED = 'qty_canceled';
     /*
      * Quantity invoiced.
      */
-    const QTY_INVOICED = 'qty_invoiced';
+    public const QTY_INVOICED = 'qty_invoiced';
     /*
      * Quantity ordered.
      */
-    const QTY_ORDERED = 'qty_ordered';
+    public const QTY_ORDERED = 'qty_ordered';
     /*
      * Quantity refunded.
      */
-    const QTY_REFUNDED = 'qty_refunded';
+    public const QTY_REFUNDED = 'qty_refunded';
     /*
      * Quantity shipped.
      */
-    const QTY_SHIPPED = 'qty_shipped';
+    public const QTY_SHIPPED = 'qty_shipped';
     /*
      * Base cost.
      */
-    const BASE_COST = 'base_cost';
+    public const BASE_COST = 'base_cost';
     /*
      * Price.
      */
-    const PRICE = 'price';
+    public const PRICE = 'price';
     /*
      * Base price.
      */
-    const BASE_PRICE = 'base_price';
+    public const BASE_PRICE = 'base_price';
     /*
      * Original price.
      */
-    const ORIGINAL_PRICE = 'original_price';
+    public const ORIGINAL_PRICE = 'original_price';
     /*
      * Base original price.
      */
-    const BASE_ORIGINAL_PRICE = 'base_original_price';
+    public const BASE_ORIGINAL_PRICE = 'base_original_price';
     /*
      * Tax percent.
      */
-    const TAX_PERCENT = 'tax_percent';
+    public const TAX_PERCENT = 'tax_percent';
     /*
      * Tax amount.
      */
-    const TAX_AMOUNT = 'tax_amount';
+    public const TAX_AMOUNT = 'tax_amount';
     /*
      * Base tax amount.
      */
-    const BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const BASE_TAX_AMOUNT = 'base_tax_amount';
     /*
      * Tax invoiced.
      */
-    const TAX_INVOICED = 'tax_invoiced';
+    public const TAX_INVOICED = 'tax_invoiced';
     /*
      * Base tax invoiced.
      */
-    const BASE_TAX_INVOICED = 'base_tax_invoiced';
+    public const BASE_TAX_INVOICED = 'base_tax_invoiced';
     /*
      * Discount percent.
      */
-    const DISCOUNT_PERCENT = 'discount_percent';
+    public const DISCOUNT_PERCENT = 'discount_percent';
     /*
      * Discount amount.
      */
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
     /*
      * Base discount amount.
      */
-    const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
     /*
      * Discount invoiced.
      */
-    const DISCOUNT_INVOICED = 'discount_invoiced';
+    public const DISCOUNT_INVOICED = 'discount_invoiced';
     /*
      * Base discount invoiced.
      */
-    const BASE_DISCOUNT_INVOICED = 'base_discount_invoiced';
+    public const BASE_DISCOUNT_INVOICED = 'base_discount_invoiced';
     /*
      * Amount refunded.
      */
-    const AMOUNT_REFUNDED = 'amount_refunded';
+    public const AMOUNT_REFUNDED = 'amount_refunded';
     /*
      * Base amount refunded.
      */
-    const BASE_AMOUNT_REFUNDED = 'base_amount_refunded';
+    public const BASE_AMOUNT_REFUNDED = 'base_amount_refunded';
     /*
      * Row total.
      */
-    const ROW_TOTAL = 'row_total';
+    public const ROW_TOTAL = 'row_total';
     /*
      * Base row total.
      */
-    const BASE_ROW_TOTAL = 'base_row_total';
+    public const BASE_ROW_TOTAL = 'base_row_total';
     /*
      * Row invoiced.
      */
-    const ROW_INVOICED = 'row_invoiced';
+    public const ROW_INVOICED = 'row_invoiced';
     /*
      * Base row invoiced.
      */
-    const BASE_ROW_INVOICED = 'base_row_invoiced';
+    public const BASE_ROW_INVOICED = 'base_row_invoiced';
     /*
      * Row weight.
      */
-    const ROW_WEIGHT = 'row_weight';
+    public const ROW_WEIGHT = 'row_weight';
     /*
      * Base tax before discount.
      */
-    const BASE_TAX_BEFORE_DISCOUNT = 'base_tax_before_discount';
+    public const BASE_TAX_BEFORE_DISCOUNT = 'base_tax_before_discount';
     /*
      * Tax before discount.
      */
-    const TAX_BEFORE_DISCOUNT = 'tax_before_discount';
+    public const TAX_BEFORE_DISCOUNT = 'tax_before_discount';
     /*
      * External order item ID.
      */
-    const EXT_ORDER_ITEM_ID = 'ext_order_item_id';
+    public const EXT_ORDER_ITEM_ID = 'ext_order_item_id';
     /*
      * Locked DO invoice.
      */
-    const LOCKED_DO_INVOICE = 'locked_do_invoice';
+    public const LOCKED_DO_INVOICE = 'locked_do_invoice';
     /*
      * Locked DO ship.
      */
-    const LOCKED_DO_SHIP = 'locked_do_ship';
+    public const LOCKED_DO_SHIP = 'locked_do_ship';
     /*
      * Price including tax.
      */
-    const PRICE_INCL_TAX = 'price_incl_tax';
+    public const PRICE_INCL_TAX = 'price_incl_tax';
     /*
      * Base price including tax.
      */
-    const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
+    public const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
     /*
      * Row total including tax.
      */
-    const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
+    public const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
     /*
      * Base row total including tax.
      */
-    const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
+    public const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
     /*
      * Discount tax compensation amount.
      */
-    const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /*
      * Base discount tax compensation amount.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
     /*
      * Discount tax compensation invoiced.
      */
-    const DISCOUNT_TAX_COMPENSATION_INVOICED = 'discount_tax_compensation_invoiced';
+    public const DISCOUNT_TAX_COMPENSATION_INVOICED = 'discount_tax_compensation_invoiced';
     /*
      * Base discount tax compensation invoiced.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_INVOICED = 'base_discount_tax_compensation_invoiced';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_INVOICED = 'base_discount_tax_compensation_invoiced';
     /*
      * Discount tax compensation refunded.
      */
-    const DISCOUNT_TAX_COMPENSATION_REFUNDED = 'discount_tax_compensation_refunded';
+    public const DISCOUNT_TAX_COMPENSATION_REFUNDED = 'discount_tax_compensation_refunded';
     /*
      * Base discount tax compensation refunded.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_REFUNDED = 'base_discount_tax_compensation_refunded';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_REFUNDED = 'base_discount_tax_compensation_refunded';
     /*
      * Tax canceled flag
      */
-    const TAX_CANCELED = 'tax_canceled';
+    public const TAX_CANCELED = 'tax_canceled';
     /*
      * Discount-tax-compensation-canceled flag.
      */
-    const DISCOUNT_TAX_COMPENSATION_CANCELED = 'discount_tax_compensation_canceled';
+    public const DISCOUNT_TAX_COMPENSATION_CANCELED = 'discount_tax_compensation_canceled';
     /*
      * Tax refunded.
      */
-    const TAX_REFUNDED = 'tax_refunded';
+    public const TAX_REFUNDED = 'tax_refunded';
     /*
      * Base tax refunded.
      */
-    const BASE_TAX_REFUNDED = 'base_tax_refunded';
+    public const BASE_TAX_REFUNDED = 'base_tax_refunded';
     /*
      * Discount refunded.
      */
-    const DISCOUNT_REFUNDED = 'discount_refunded';
+    public const DISCOUNT_REFUNDED = 'discount_refunded';
     /*
      * Base discount refunded.
      */
-    const BASE_DISCOUNT_REFUNDED = 'base_discount_refunded';
+    public const BASE_DISCOUNT_REFUNDED = 'base_discount_refunded';
     /*
      * GW ID.
      */
-    const GW_ID = 'gw_id';
+    public const GW_ID = 'gw_id';
     /*
      * GW base price.
      */
-    const GW_BASE_PRICE = 'gw_base_price';
+    public const GW_BASE_PRICE = 'gw_base_price';
     /*
      * GW price.
      */
-    const GW_PRICE = 'gw_price';
+    public const GW_PRICE = 'gw_price';
     /*
      * GW base tax amount.
      */
-    const GW_BASE_TAX_AMOUNT = 'gw_base_tax_amount';
+    public const GW_BASE_TAX_AMOUNT = 'gw_base_tax_amount';
     /*
      * GW tax amount.
      */
-    const GW_TAX_AMOUNT = 'gw_tax_amount';
+    public const GW_TAX_AMOUNT = 'gw_tax_amount';
     /*
      * GW base price invoiced.
      */
-    const GW_BASE_PRICE_INVOICED = 'gw_base_price_invoiced';
+    public const GW_BASE_PRICE_INVOICED = 'gw_base_price_invoiced';
     /*
      * GW price invoiced.
      */
-    const GW_PRICE_INVOICED = 'gw_price_invoiced';
+    public const GW_PRICE_INVOICED = 'gw_price_invoiced';
     /*
      * GW base tax amount invoiced.
      */
-    const GW_BASE_TAX_AMOUNT_INVOICED = 'gw_base_tax_amount_invoiced';
+    public const GW_BASE_TAX_AMOUNT_INVOICED = 'gw_base_tax_amount_invoiced';
     /*
      * GW tax amount invoiced.
      */
-    const GW_TAX_AMOUNT_INVOICED = 'gw_tax_amount_invoiced';
+    public const GW_TAX_AMOUNT_INVOICED = 'gw_tax_amount_invoiced';
     /*
      * GW base price refunded.
      */
-    const GW_BASE_PRICE_REFUNDED = 'gw_base_price_refunded';
+    public const GW_BASE_PRICE_REFUNDED = 'gw_base_price_refunded';
     /*
      * GW price refunded.
      */
-    const GW_PRICE_REFUNDED = 'gw_price_refunded';
+    public const GW_PRICE_REFUNDED = 'gw_price_refunded';
     /*
      * GW base tax amount refunded.
      */
-    const GW_BASE_TAX_AMOUNT_REFUNDED = 'gw_base_tax_amount_refunded';
+    public const GW_BASE_TAX_AMOUNT_REFUNDED = 'gw_base_tax_amount_refunded';
     /*
      * GW tax amount refunded.
      */
-    const GW_TAX_AMOUNT_REFUNDED = 'gw_tax_amount_refunded';
+    public const GW_TAX_AMOUNT_REFUNDED = 'gw_tax_amount_refunded';
     /*
      * Free shipping.
      */
-    const FREE_SHIPPING = 'free_shipping';
+    public const FREE_SHIPPING = 'free_shipping';
     /*
      * Quantity returned.
      */
-    const QTY_RETURNED = 'qty_returned';
+    public const QTY_RETURNED = 'qty_returned';
     /*
      * Event ID.
      */
-    const EVENT_ID = 'event_id';
+    public const EVENT_ID = 'event_id';
     /*
      * Base WEEE tax applied amount.
      */
-    const BASE_WEEE_TAX_APPLIED_AMOUNT = 'base_weee_tax_applied_amount';
+    public const BASE_WEEE_TAX_APPLIED_AMOUNT = 'base_weee_tax_applied_amount';
     /*
      * Base WEEE tax applied row amount.
      */
-    const BASE_WEEE_TAX_APPLIED_ROW_AMNT = 'base_weee_tax_applied_row_amnt';
+    public const BASE_WEEE_TAX_APPLIED_ROW_AMNT = 'base_weee_tax_applied_row_amnt';
     /*
      * WEEE tax applied amount.
      */
-    const WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
+    public const WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
     /*
      * WEEE tax applied row amount.
      */
-    const WEEE_TAX_APPLIED_ROW_AMOUNT = 'weee_tax_applied_row_amount';
+    public const WEEE_TAX_APPLIED_ROW_AMOUNT = 'weee_tax_applied_row_amount';
     /*
      * WEEE tax applied.
      */
-    const WEEE_TAX_APPLIED = 'weee_tax_applied';
+    public const WEEE_TAX_APPLIED = 'weee_tax_applied';
     /*
      * WEEE tax disposition.
      */
-    const WEEE_TAX_DISPOSITION = 'weee_tax_disposition';
+    public const WEEE_TAX_DISPOSITION = 'weee_tax_disposition';
     /*
      * WEEE tax row disposition.
      */
-    const WEEE_TAX_ROW_DISPOSITION = 'weee_tax_row_disposition';
+    public const WEEE_TAX_ROW_DISPOSITION = 'weee_tax_row_disposition';
     /*
      * Base WEEE tax disposition.
      */
-    const BASE_WEEE_TAX_DISPOSITION = 'base_weee_tax_disposition';
+    public const BASE_WEEE_TAX_DISPOSITION = 'base_weee_tax_disposition';
     /*
      * Base WEEE tax row disposition.
      */
-    const BASE_WEEE_TAX_ROW_DISPOSITION = 'base_weee_tax_row_disposition';
+    public const BASE_WEEE_TAX_ROW_DISPOSITION = 'base_weee_tax_row_disposition';
 
     /**
      * Parent Item
      */
-    const PARENT_ITEM = 'parent_item';
+    public const PARENT_ITEM = 'parent_item';
 
     /**
      * Product Option
      */
-    const KEY_PRODUCT_OPTION = 'product_option';
+    public const KEY_PRODUCT_OPTION = 'product_option';
 
     /**
      * Gets the additional data for the order item.

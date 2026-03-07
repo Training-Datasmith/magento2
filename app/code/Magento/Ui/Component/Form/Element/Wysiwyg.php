@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Ui\Component\Form\Element;
 
-use Magento\Framework\Data\Form\Element\Editor;
 use Magento\Framework\Data\Form;
+use Magento\Framework\Data\Form\Element\Editor;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Wysiwyg\ConfigInterface;
@@ -20,7 +22,7 @@ use Magento\Ui\Component\Wysiwyg\ConfigInterface;
  */
 class Wysiwyg extends AbstractElement
 {
-    const NAME = 'wysiwyg';
+    public const NAME = 'wysiwyg';
 
     /**
      * @var Form

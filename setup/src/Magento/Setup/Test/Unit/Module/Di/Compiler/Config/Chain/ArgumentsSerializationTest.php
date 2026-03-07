@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class ArgumentsSerializationTest extends TestCase
     public function testModifyArgumentsDoNotExist()
     {
         $inputConfig = [
-            'data' => []
+            'data' => [],
         ];
         $modifier = new ArgumentsSerialization($this->serializer);
         $this->assertSame($inputConfig, $modifier->modify($inputConfig));
@@ -52,14 +53,14 @@ class ArgumentsSerializationTest extends TestCase
             'arguments' => [
                 'argument1' => [],
                 'argument2' => null,
-            ]
+            ],
         ];
 
         $expected = [
             'arguments' => [
                 'argument1' => json_encode([]),
                 'argument2' => null,
-            ]
+            ],
         ];
 
         $modifier = new ArgumentsSerialization($this->serializer);

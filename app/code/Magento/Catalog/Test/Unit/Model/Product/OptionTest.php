@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Catalog\Model\Product\Option\Value;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceInfoInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -62,7 +63,7 @@ class OptionTest extends TestCase
         $priceInfoMock = $this->createMock(PriceInfoInterface::class);
         $priceMock = $this->createMock(PriceInterface::class);
         $amountMock = $this->createMock(AmountInterface::class);
-        
+
         $priceInfoMock->expects($this->once())->method('getPrice')->willReturn($priceMock);
         $priceMock->expects($this->once())->method('getAmount')->willReturn($amountMock);
 

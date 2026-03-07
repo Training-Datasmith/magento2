@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Block\Express\InContext;
 
+use Magento\Catalog\Block\ShortcutInterface;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
-use Magento\Framework\View\Element\Template;
-use Magento\Catalog\Block\ShortcutInterface;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Paypal\Model\SmartButtonConfig;
-use Magento\Framework\UrlInterface;
 
 /**
  * Class Button
@@ -123,14 +124,14 @@ class SmartButton extends Template implements ShortcutInterface
             'onCancelUrl' => $this->urlBuilder->getUrl(
                 'paypal/express/cancel',
                 ['_secure' => $this->getRequest()->isSecure()]
-            )
+            ),
         ];
         $smartButtonsConfig = $this->smartButtonConfig->getConfig('product');
         $clientConfig = array_replace_recursive($clientConfig, $smartButtonsConfig);
         $config = [
             'Magento_Paypal/js/in-context/product-express-checkout' => [
-                'clientConfig' => $clientConfig
-            ]
+                'clientConfig' => $clientConfig,
+            ],
         ];
 
         return $this->serializer->serialize($config);

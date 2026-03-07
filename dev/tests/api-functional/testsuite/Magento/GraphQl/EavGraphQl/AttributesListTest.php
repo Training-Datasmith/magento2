@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\EavGraphQl;
 
-use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Catalog\Setup\CategorySetup;
-use Magento\Eav\Test\Fixture\Attribute;
+use Magento\Catalog\Test\Fixture\Attribute as ProductAttribute;
+use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Test\Fixture\CustomerAttribute;
 use Magento\Eav\Api\Data\AttributeInterface;
+use Magento\Eav\Test\Fixture\Attribute;
 use Magento\Sales\Setup\SalesSetup;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Catalog\Test\Fixture\Attribute as ProductAttribute;
-use Magento\Customer\Test\Fixture\CustomerAttribute;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test EAV attributes metadata retrieval for entity type via GraphQL API
@@ -28,7 +29,7 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
         [
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ],
         'customer_attribute_0'
     ),
@@ -37,7 +38,7 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
         [
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ],
         'customer_attribute_1'
     ),
@@ -46,7 +47,7 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
         [
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ],
         'customer_attribute_2'
     ),
@@ -55,7 +56,7 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
         [
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ],
         'customer_attribute_3'
     ),
@@ -78,7 +79,7 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
             'backend_type' => 'int',
             'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             'is_visible_on_front' => 1,
-            'is_comparable' => 1
+            'is_comparable' => 1,
         ],
         'catalog_attribute_4'
     ),
@@ -87,14 +88,14 @@ use Magento\Customer\Test\Fixture\CustomerAttribute;
         [
             'entity_type_id' => SalesSetup::CREDITMEMO_PRODUCT_ENTITY_TYPE_ID,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ],
         'credit_memo_attribute_5'
     )
 ]
 class AttributesListTest extends GraphQlAbstract
 {
-    private const ATTRIBUTE_NOT_FOUND_ERROR = "Attribute was not found in query result";
+    private const ATTRIBUTE_NOT_FOUND_ERROR = 'Attribute was not found in query result';
 
     /**
      * @var AttributeInterface|null
@@ -237,11 +238,11 @@ QRY);
                         0  => [
                             'code' => $this->catalogAttribute4->getAttributeCode(),
                             'is_comparable' => true,
-                            'is_visible_on_front' => true
-                        ]
+                            'is_visible_on_front' => true,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $queryResult
         );

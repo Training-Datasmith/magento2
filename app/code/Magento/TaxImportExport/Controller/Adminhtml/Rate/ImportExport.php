@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -15,7 +18,7 @@ class ImportExport extends \Magento\TaxImportExport\Controller\Adminhtml\Rate im
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_TaxImportExport::import_export';
+    public const ADMIN_RESOURCE = 'Magento_TaxImportExport::import_export';
 
     /**
      * Import and export Page

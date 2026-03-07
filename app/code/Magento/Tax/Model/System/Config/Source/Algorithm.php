@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\System\Config\Source;
 
 class Algorithm implements \Magento\Framework\Option\ArrayInterface

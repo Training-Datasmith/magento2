@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,18 +9,19 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Field\Image
  */
+
 namespace Magento\Config\Test\Unit\Block\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\Image;
 use Magento\Config\Model\Config\Backend\Image as BackendImage;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 class ImageTest extends TestCase
 {
@@ -57,7 +59,7 @@ class ImageTest extends TestCase
                 'urlBuilder' => $this->urlBuilderMock,
                 '_escaper' => $objectManager->getObject(Escaper::class),
                 'random' => $randomMock,
-                'secureRenderer' => $secureRendererMock
+                'secureRenderer' => $secureRendererMock,
             ]
         );
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\ImportExport\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\ValidatorException;
-use Magento\ImportExport\Model\Import;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
+use Magento\ImportExport\Model\Import;
 
 /**
  * ImportExport history reports helper

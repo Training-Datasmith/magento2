@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class GenerateBundleAssetIntegrityTest extends TestCase
 
         $pubStaticDir = $this->createMock(ReadInterface::class);
         $pubStaticDir->expects($this->once())->method('search')->with(
-            $area ."/" . $theme . "/" . $locale . "/" . Bundle::BUNDLE_JS_DIR . "/*.js"
+            $area .'/' . $theme . '/' . $locale . '/' . Bundle::BUNDLE_JS_DIR . '/*.js'
         )->willReturn([$file]);
         $pubStaticDir->expects($this->once())->method('readFile')->willReturn($fileContent);
         $this->filesystem->expects($this->once())->method('getDirectoryRead')->willReturn($pubStaticDir);
@@ -99,8 +100,8 @@ class GenerateBundleAssetIntegrityTest extends TestCase
             ->with([
                 'data' => [
                     'hash' => $hash,
-                    'path' => $area . '/' . $theme . '/' . $locale . '/' . Bundle::BUNDLE_JS_DIR . '/file.js'
-                ]
+                    'path' => $area . '/' . $theme . '/' . $locale . '/' . Bundle::BUNDLE_JS_DIR . '/file.js',
+                ],
             ])
             ->willReturn($integrity);
         $this->integrityCollector->expects($this->once())->method('collect')->with($integrity);

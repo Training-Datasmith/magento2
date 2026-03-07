@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,5 +16,5 @@ class BooleanType extends \GraphQL\Type\Definition\BooleanType implements InputT
     /**
      * @var string
      */
-    public string $name = "Magento_Boolean";
+    public string $name = 'Magento_Boolean';
 }

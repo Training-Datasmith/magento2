@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * \Magento\Framework\DataObject test case.
  */
+
 namespace Magento\Framework\Test\Unit;
 
 use Magento\Framework\DataObject;
@@ -403,7 +405,7 @@ string',
             'Test 4' => ['Set1StoneColor', '1_stone_color'],
             'Test 5' => ['GetgetCcLast4', 'get_cc_last_4'],
             'Test 6' => ['Set99Bottles', '99_bottles'],
-            'Test 7' => ['GetXApiLogin', 'x_api_login']
+            'Test 7' => ['GetXApiLogin', 'x_api_login'],
         ];
     }
 }

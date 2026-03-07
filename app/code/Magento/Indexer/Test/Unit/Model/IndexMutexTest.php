@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Indexer\Test\Unit\Model;
 
 use Exception;
 use Magento\Framework\Indexer\ConfigInterface;
+use Magento\Framework\Indexer\IndexMutexException;
 use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Indexer\Model\IndexMutex;
-use Magento\Framework\Indexer\IndexMutexException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

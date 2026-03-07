@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Config;
 
 use Magento\Framework\ObjectManager\TMap;
@@ -22,7 +25,7 @@ class ValueHandlerPool implements \Magento\Payment\Gateway\Config\ValueHandlerPo
     /**
      * Default handler code
      */
-    const DEFAULT_HANDLER = 'default';
+    public const DEFAULT_HANDLER = 'default';
 
     /**
      * @var ValueHandlerInterface[] | TMap
@@ -44,7 +47,7 @@ class ValueHandlerPool implements \Magento\Payment\Gateway\Config\ValueHandlerPo
         $this->handlers = $tmapFactory->create(
             [
                 'array' => $handlers,
-                'type' => ValueHandlerInterface::class
+                'type' => ValueHandlerInterface::class,
             ]
         );
     }

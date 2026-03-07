@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\DownloadableImportExport\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\DownloadableImportExport\Helper\Data as HelperData;
 use Magento\DownloadableImportExport\Model\Import\Product\Type\Downloadable;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DataTest extends TestCase
@@ -53,17 +54,17 @@ class DataTest extends TestCase
             'Data set include downloadable link and sample' => [
                 [
                     Downloadable::COL_DOWNLOADABLE_LINKS => 'https://magento2.com/download_link',
-                    Downloadable::COL_DOWNLOADABLE_SAMPLES => 'https://magento2.com/sample_link'
+                    Downloadable::COL_DOWNLOADABLE_SAMPLES => 'https://magento2.com/sample_link',
                 ],
-                false
+                false,
             ],
             'Data set with empty' => [
                 [
                     Downloadable::COL_DOWNLOADABLE_LINKS => '',
-                    Downloadable::COL_DOWNLOADABLE_SAMPLES => ''
+                    Downloadable::COL_DOWNLOADABLE_SAMPLES => '',
                 ],
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -90,17 +91,17 @@ class DataTest extends TestCase
             'Data set include downloadable link and sample' => [
                 [
                     Downloadable::COL_DOWNLOADABLE_LINKS => 'https://magento2.com/download_link',
-                    Downloadable::COL_DOWNLOADABLE_SAMPLES => 'https://magento2.com/sample_link'
+                    Downloadable::COL_DOWNLOADABLE_SAMPLES => 'https://magento2.com/sample_link',
                 ],
-                true
+                true,
             ],
             'Data set with empty' => [
                 [
                     Downloadable::COL_DOWNLOADABLE_LINKS => '',
-                    Downloadable::COL_DOWNLOADABLE_SAMPLES => ''
+                    Downloadable::COL_DOWNLOADABLE_SAMPLES => '',
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -135,7 +136,7 @@ class DataTest extends TestCase
                     'sample_file' => 'sample_file1',
                     'link_file' => 'link_file1',
                     'link_type' => 'link_type1',
-                    'link_url' => 'link_url1'
+                    'link_url' => 'link_url1',
                 ],
                 [
                     [
@@ -145,7 +146,7 @@ class DataTest extends TestCase
                         'sample_file' => 'sample_file1',
                         'link_file' => 'link_file1',
                         'link_type' => 'link_type1',
-                        'link_url' => 'link_url1'
+                        'link_url' => 'link_url1',
                     ],
                     [
                         'product_id' => 2,
@@ -154,8 +155,8 @@ class DataTest extends TestCase
                         'sample_file' => 'sample_file2',
                         'link_file' => 'link_file2',
                         'link_type' => 'link_type2',
-                        'link_url' => 'link_url2'
-                    ]
+                        'link_url' => 'link_url2',
+                    ],
                 ],
                 [
                     'product_id' => 1,
@@ -164,8 +165,8 @@ class DataTest extends TestCase
                     'sample_file' => 'sample_file1',
                     'link_file' => 'link_file1',
                     'link_type' => 'link_type1',
-                    'link_url' => 'link_url1'
-                ]
+                    'link_url' => 'link_url1',
+                ],
             ],
             'Data set 2' => [
                 [],
@@ -176,11 +177,11 @@ class DataTest extends TestCase
                     'sample_file' => 'sample_file1',
                     'link_file' => 'link_file1',
                     'link_type' => 'link_type1',
-                    'link_url' => 'link_url1'
+                    'link_url' => 'link_url1',
                 ],
                 [],
-                []
-            ]
+                [],
+            ],
         ];
     }
 
@@ -208,7 +209,7 @@ class DataTest extends TestCase
             'Data set 1' => [
                 [],
                 [],
-                []
+                [],
             ],
 
             'Data set 2' => [
@@ -219,7 +220,7 @@ class DataTest extends TestCase
                     'sample_file' => 'sample_file1',
                     'link_file' => 'link_file1',
                     'link_type' => 'link_type1',
-                    'link_url' => 'link_url1'
+                    'link_url' => 'link_url1',
                 ],
                 [
                     [
@@ -229,8 +230,8 @@ class DataTest extends TestCase
                         'sample_file' => 'sample_file2',
                         'link_file' => 'link_file2',
                         'link_type' => 'link_type2',
-                        'link_url' => 'link_url2'
-                    ]
+                        'link_url' => 'link_url2',
+                    ],
                 ],
                 [
                     [
@@ -240,10 +241,10 @@ class DataTest extends TestCase
                         'sample_file' => 'sample_file2',
                         'link_file' => 'link_file2',
                         'link_type' => 'link_type2',
-                        'link_url' => 'link_url2'
-                    ]
-                ]
-            ]
+                        'link_url' => 'link_url2',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -269,12 +270,12 @@ class DataTest extends TestCase
         return [
             'Case File Option Value' => [
                 'file1',
-                Downloadable::FILE_OPTION_VALUE
+                Downloadable::FILE_OPTION_VALUE,
             ],
             'Case url Option Value' => [
                 'https://example.com',
-                Downloadable::URL_OPTION_VALUE
-            ]
+                Downloadable::URL_OPTION_VALUE,
+            ],
         ];
     }
 }

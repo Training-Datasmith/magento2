@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class Price implements ResolverInterface
                 $regularPriceAmount,
                 $store
             ),
-            'maximalPrice' => $this->createAdjustmentsArray($priceInfo->getAdjustments(), $maximalPriceAmount, $store)
+            'maximalPrice' => $this->createAdjustmentsArray($priceInfo->getAdjustments(), $maximalPriceAmount, $store),
         ];
 
         return $prices;
@@ -99,14 +100,14 @@ class Price implements ResolverInterface
      * @param StoreInterface $store
      * @return array
      */
-    private function createAdjustmentsArray(array $adjustments, AmountInterface $amount, StoreInterface $store) : array
+    private function createAdjustmentsArray(array $adjustments, AmountInterface $amount, StoreInterface $store): array
     {
         $priceArray = [
                 'amount' => [
                     'value' => $amount->getValue(),
-                    'currency' => $store->getCurrentCurrencyCode()
+                    'currency' => $store->getCurrentCurrencyCode(),
                 ],
-                'adjustments' => []
+                'adjustments' => [],
             ];
         $priceAdjustmentsArray = [];
         foreach ($adjustments as $adjustmentCode => $adjustment) {
@@ -118,7 +119,7 @@ class Price implements ResolverInterface
                         'currency' => $store->getCurrentCurrencyCode(),
                     ],
                     'description' => $adjustment->isIncludedInDisplayPrice() ?
-                        'INCLUDED' : 'EXCLUDED'
+                        'INCLUDED' : 'EXCLUDED',
                 ];
             }
         }

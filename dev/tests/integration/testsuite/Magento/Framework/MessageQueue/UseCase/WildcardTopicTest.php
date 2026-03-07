@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\UseCase;
 
 use Magento\Framework\MessageQueue\DefaultValueProvider;
@@ -60,7 +63,7 @@ class WildcardTopicTest extends QueueTestCaseAbstract
 
         $this->waitForAsynchronousResult(count($matchingQueues), $this->logFilePath);
 
-        $this->assertFileExists($this->logFilePath, "No handlers invoked (log file was not created).");
+        $this->assertFileExists($this->logFilePath, 'No handlers invoked (log file was not created).');
         foreach ($nonMatchingQueues as $queueName) {
             $this->assertStringNotContainsString($queueName, file_get_contents($this->logFilePath));
         }
@@ -75,13 +78,13 @@ class WildcardTopicTest extends QueueTestCaseAbstract
             'segment1.segment2.segment3.wildcard' => [
                 'segment1.segment2.segment3.wildcard',
                 ['wildcard.queue.one', 'wildcard.queue.two', 'wildcard.queue.four'],
-                ['wildcard.queue.three']
+                ['wildcard.queue.three'],
             ],
             'segment2.segment3.wildcard' => [
                 'segment2.segment3.wildcard',
                 ['wildcard.queue.one', 'wildcard.queue.three', 'wildcard.queue.four'],
-                ['wildcard.queue.two']
-            ]
+                ['wildcard.queue.two'],
+            ],
         ];
     }
 
@@ -95,7 +98,7 @@ class WildcardTopicTest extends QueueTestCaseAbstract
         $testObject = $this->generateTestObject();
         $this->publisher->publish('not.matching.wildcard.topic', $testObject);
         sleep(2);
-        $this->assertFileDoesNotExist($this->logFilePath, "No log file must be created for non-matching topic.");
+        $this->assertFileDoesNotExist($this->logFilePath, 'No log file must be created for non-matching topic.');
     }
 
     /**

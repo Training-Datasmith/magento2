@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * WYSIWYG widget options form
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget;
 
 use Magento\Framework\App\ObjectManager;

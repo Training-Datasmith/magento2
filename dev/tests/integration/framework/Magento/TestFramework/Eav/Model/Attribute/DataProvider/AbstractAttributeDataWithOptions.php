@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -34,8 +35,8 @@ abstract class AbstractAttributeDataWithOptions extends AbstractBaseAttributeDat
         static::$defaultAttributePostData['is_filterable'] = '0';
         static::$defaultAttributePostData['is_filterable_in_search'] = '0';
         $result = parent::getAttributeData();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }
@@ -53,7 +54,7 @@ abstract class AbstractAttributeDataWithOptions extends AbstractBaseAttributeDat
         return array_replace_recursive(
             parent::getAttributeDataWithErrorMessage(),
             [
-                "{static::getFrontendInput()}_with_wrong_serialized_options" => [
+                '{static::getFrontendInput()}_with_wrong_serialized_options' => [
                     array_merge(
                         static::$defaultAttributePostData,
                         [
@@ -61,7 +62,7 @@ abstract class AbstractAttributeDataWithOptions extends AbstractBaseAttributeDat
                             'serialized_options' => '?.\\//',
                         ]
                     ),
-                    (string)__($wrongSerializeMessage)
+                    (string)__($wrongSerializeMessage),
                 ],
             ]
         );
@@ -76,8 +77,8 @@ abstract class AbstractAttributeDataWithOptions extends AbstractBaseAttributeDat
         static::$defaultAttributePostData['is_filterable'] = '0';
         static::$defaultAttributePostData['is_filterable_in_search'] = '0';
         $result = parent::getAttributeDataWithCheckArray();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }

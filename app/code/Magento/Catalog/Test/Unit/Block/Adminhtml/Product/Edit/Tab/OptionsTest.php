@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Backend\Block\Widget\Button;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\Option;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\Element\BlockInterface;
 
 /**
  * Unit test for Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options

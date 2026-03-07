@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -84,19 +85,19 @@ class UpdateCustomerAddressAttributesSortOrder implements DataPatchInterface
             'customer_address' => [
                 'country_id' => [
                     'sort_order' => 80,
-                    'position' => 80
+                    'position' => 80,
                 ],
                 'region' => [
                     'sort_order' => 90,
-                    'position' => 90
+                    'position' => 90,
                 ],
                 'region_id' => [
                     'sort_order' => 90,
-                    'position' => 90
+                    'position' => 90,
                 ],
                 'city' => [
                     'sort_order' => 100,
-                    'position' => 100
+                    'position' => 100,
                 ],
             ],
         ];

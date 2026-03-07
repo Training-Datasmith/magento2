@@ -95,7 +95,7 @@ class CommandRendererBackgroundTest extends TestCase
     {
         $testCommand = 'php -r test.php';
         $logPath = '/path/to/magento/var/log/';
-        
+
         return [
             'windows' => [
                 true,

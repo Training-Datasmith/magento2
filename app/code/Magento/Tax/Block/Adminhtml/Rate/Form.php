@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -205,7 +206,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Tax Identifier'),
                 'title' => __('Tax Identifier'),
                 'class' => 'required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -216,7 +217,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'zip_is_range',
                 'label' => __('Zip/Post is Range'),
                 'value' => '1',
-                'class' => 'zip-is-range-checkbox'
+                'class' => 'zip-is-range-checkbox',
             ]
         );
 
@@ -237,7 +238,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     "'*' - matches any; 'xyz*' - matches any that begins on 'xyz' and are not longer than %1.",
                     $this->_taxData->getPostCodeSubStringLength()
                 ),
-                'class' => 'validate-length maximum-length-' . $this->_taxData->getPostCodeSubStringLength()
+                'class' => 'validate-length maximum-length-' . $this->_taxData->getPostCodeSubStringLength(),
             ]
         );
 
@@ -250,7 +251,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'maxlength' => 9,
                 'class' => 'validate-digits',
-                'css_class' => 'hidden'
+                'css_class' => 'hidden',
             ]
         );
 
@@ -263,7 +264,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'maxlength' => 9,
                 'class' => 'validate-digits',
-                'css_class' => 'hidden'
+                'css_class' => 'hidden',
             ]
         );
 
@@ -287,7 +288,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Rate Percent'),
                 'title' => __('Rate Percent'),
                 'required' => true,
-                'class' => 'validate-not-negative-number'
+                'class' => 'validate-not-negative-number',
             ]
         );
 

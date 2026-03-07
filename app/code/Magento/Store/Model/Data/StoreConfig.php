@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Data;
 
 /**
@@ -13,22 +16,22 @@ namespace Magento\Store\Model\Data;
 class StoreConfig extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\Store\Api\Data\StoreConfigInterface
 {
-    const KEY_ID = 'id';
-    const KEY_CODE = 'code';
-    const KEY_WEBSITE_ID = 'website_id';
-    const KEY_LOCALE = 'locale';
-    const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
-    const KEY_DEFAULT_DISPLAY_CURRENCY_CODE = 'default_display_currency_code';
-    const KEY_TIMEZONE = 'timezone';
-    const KEY_WEIGHT_UNIT = 'weight_unit';
-    const KEY_BASE_URL = 'base_url';
-    const KEY_BASE_LINK_URL = 'base_link_url';
-    const KEY_BASE_STATIC_URL = 'base_static_url';
-    const KEY_BASE_MEDIA_URL = 'base_media_url';
-    const KEY_SECURE_BASE_URL = 'secure_base_url';
-    const KEY_SECURE_BASE_LINK_URL = 'secure_base_link_url';
-    const KEY_SECURE_BASE_STATIC_URL = 'secure_base_static_url';
-    const KEY_SECURE_BASE_MEDIA_URL = 'secure_base_media_url';
+    public const KEY_ID = 'id';
+    public const KEY_CODE = 'code';
+    public const KEY_WEBSITE_ID = 'website_id';
+    public const KEY_LOCALE = 'locale';
+    public const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
+    public const KEY_DEFAULT_DISPLAY_CURRENCY_CODE = 'default_display_currency_code';
+    public const KEY_TIMEZONE = 'timezone';
+    public const KEY_WEIGHT_UNIT = 'weight_unit';
+    public const KEY_BASE_URL = 'base_url';
+    public const KEY_BASE_LINK_URL = 'base_link_url';
+    public const KEY_BASE_STATIC_URL = 'base_static_url';
+    public const KEY_BASE_MEDIA_URL = 'base_media_url';
+    public const KEY_SECURE_BASE_URL = 'secure_base_url';
+    public const KEY_SECURE_BASE_LINK_URL = 'secure_base_link_url';
+    public const KEY_SECURE_BASE_STATIC_URL = 'secure_base_static_url';
+    public const KEY_SECURE_BASE_MEDIA_URL = 'secure_base_media_url';
 
     /**
      * Get store id

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Test\Unit\Block\Widget\Grid\Column\Renderer;
 
-use Magento\Directory\Model\Currency\DefaultLocator;
-use Magento\Framework\App\RequestInterface;
-use Magento\Directory\Model\CurrencyFactory;
 use Magento\Backend\Block\Widget\Grid\Column;
-use Magento\Framework\DataObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\Currency;
-use Magento\Framework\Locale\Currency as LocaleCurrency;
 use Magento\Directory\Model\Currency as CurrencyData;
+use Magento\Directory\Model\Currency\DefaultLocator;
+use Magento\Directory\Model\CurrencyFactory;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\DataObject;
+use Magento\Framework\Locale\Currency as LocaleCurrency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -104,7 +105,7 @@ class CurrencyTest extends TestCase
                 'localeCurrency' => $this->localeCurrencyMock,
                 'currencyLocator' => $this->currencyLocatorMock,
                 'request' => $this->requestMock,
-                'currencyFactory' => $this->currencyFactoryMock
+                'currencyFactory' => $this->currencyFactoryMock,
             ]
         );
     }
@@ -120,7 +121,7 @@ class CurrencyTest extends TestCase
             ->with($defaultCurrencyCode)
             ->willReturn($this->localeCurrencyMock);
         $this->localeCurrencyMock->method('toCurrency')
-            ->with(sprintf("%f", $amount))
+            ->with(sprintf('%f', $amount))
             ->willReturn($formattedAmount);
         $result = $this->currencyRenderer->render($row);
         $this->assertEquals($formattedAmount, $result);
@@ -134,7 +135,7 @@ class CurrencyTest extends TestCase
         $storeId = 2;
         $row = new DataObject([
             'value' => $amount,
-            'store_id' => $storeId
+            'store_id' => $storeId,
         ]);
         $this->currencyRenderer->setColumn($this->columnMock);
         $storeMock = $this->createPartialMock(
@@ -150,7 +151,7 @@ class CurrencyTest extends TestCase
             ->with($nonDefaultCurrencyCode)
             ->willReturn($this->localeCurrencyMock);
         $this->localeCurrencyMock->method('toCurrency')
-            ->with(sprintf("%f", $amount))
+            ->with(sprintf('%f', $amount))
             ->willReturn($formattedAmount);
         $result = $this->currencyRenderer->render($row);
         $this->assertEquals($formattedAmount, $result);

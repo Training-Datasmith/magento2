@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Interception\Code\Generator\ReflectionUnionTypeSample;
 use Magento\Framework\Interception\Code\Generator\Sample;
 use Magento\Framework\Interception\Code\Generator\SampleBackendMenu;
 use Magento\Framework\Interception\Code\Generator\TSample;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -92,12 +93,12 @@ class InterceptorTest extends TestCase
             [
                 Sample::class,
                 Sample\Interceptor::class,
-                'Interceptor'
+                'Interceptor',
             ],
             [
                 TSample::class,
                 TSample\Interceptor::class,
-                'TInterceptor'
+                'TInterceptor',
             ],
             [
                 SampleBackendMenu::class,

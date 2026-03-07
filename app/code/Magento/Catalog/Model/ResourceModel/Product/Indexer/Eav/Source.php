@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav;
 
-use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
 use Magento\Catalog\Model\ResourceModel\Helper;
 use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Model\Config;
@@ -184,7 +187,7 @@ class Source extends AbstractEav
             []
         )->joinLeft(
             ['ds' => $this->getTable('catalog_product_entity_int')],
-            "ds.store_id = s.store_id AND ds.attribute_id = dd.attribute_id AND " .
+            'ds.store_id = s.store_id AND ds.attribute_id = dd.attribute_id AND ' .
             "ds.{$productIdField} = dd.{$productIdField}",
             []
         )->joinLeft(
@@ -196,7 +199,7 @@ class Source extends AbstractEav
             []
         )->joinLeft(
             ['d2s' => $this->getTable('catalog_product_entity_int')],
-            "d2s.store_id = s.store_id AND d2s.attribute_id = d2d.attribute_id AND " .
+            'd2s.store_id = s.store_id AND d2s.attribute_id = d2d.attribute_id AND ' .
             "d2s.{$productIdField} = d2d.{$productIdField}",
             []
         )->joinLeft(
@@ -206,7 +209,7 @@ class Source extends AbstractEav
         )->joinLeft(
             ['pis' => $this->getTable('catalog_product_entity_int')],
             "pis.{$productIdField} = cpe.{$productIdField} " .
-            "AND pis.attribute_id = dd.attribute_id AND pis.store_id = s.store_id",
+            'AND pis.attribute_id = dd.attribute_id AND pis.store_id = s.store_id',
             []
         )->where(
             's.store_id != 0'
@@ -265,7 +268,7 @@ class Source extends AbstractEav
                 []
             )->joinLeft(
                 ['d2s' => $this->getTable('catalog_product_entity_int')],
-                "d2s.store_id != 0 AND d2s.attribute_id = d2d.attribute_id AND " .
+                'd2s.store_id != 0 AND d2s.attribute_id = d2d.attribute_id AND ' .
                 "d2s.{$productIdField} = d2d.{$productIdField}",
                 []
             )

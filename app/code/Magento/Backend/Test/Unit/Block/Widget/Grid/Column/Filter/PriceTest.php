@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Backend\Test\Unit\Block\Widget\Grid\Column\Filter;
 use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Backend\Block\Widget\Grid\Column\Filter\Price;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\DB\Helper;
 use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\Currency\DefaultLocator;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\DB\Helper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -95,7 +96,7 @@ class PriceTest extends TestCase
             'context'         => $this->context,
             'resourceHelper'  => $this->helper,
             'currencyModel'   => $this->currency,
-            'currencyLocator' => $this->currencyLocator
+            'currencyLocator' => $this->currencyLocator,
         ]);
         $this->blockPrice->setColumn($this->columnMock);
     }
@@ -122,8 +123,8 @@ class PriceTest extends TestCase
 
         $testValue = [
             'value' => [
-                'from' => '1234a'
-            ]
+                'from' => '1234a',
+            ],
         ];
 
         $this->blockPrice->addData($testValue);

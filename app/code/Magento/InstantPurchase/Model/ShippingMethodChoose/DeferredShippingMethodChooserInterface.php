@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model\ShippingMethodChoose;
 
 use Magento\Quote\Model\Quote\Address;
@@ -18,7 +21,7 @@ interface DeferredShippingMethodChooserInterface
     /**
      * Carrier code to set for deferred shipping method.
      */
-    const CARRIER = 'instant-purchase';
+    public const CARRIER = 'instant-purchase';
 
     /**
      * Choose shipping method for a quote address.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -70,11 +71,11 @@ class JwtId implements ClaimInterface
     private function generateRandom(): string
     {
         return implode('', array_map(
-            function($value) {
+            function ($value) {
                 return chr($value);
             },
             array_map(
-                function() {
+                function () {
                     return random_int(33, 126);
                 },
                 array_fill(0, 21, null)

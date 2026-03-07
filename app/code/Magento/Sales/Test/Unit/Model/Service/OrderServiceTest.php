@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderStatusHistorySearchResultInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Api\OrderStatusHistoryRepositoryInterface;
@@ -29,7 +31,6 @@ use Magento\Sales\Model\Service\OrderService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  *
@@ -38,7 +39,6 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class OrderServiceTest extends TestCase
 {
-
     /**
      * @var OrderService
      */
@@ -259,7 +259,7 @@ class OrderServiceTest extends TestCase
     public function testAddComment()
     {
         $orderId = 123;
-        $clearComment = "Comment text here...";
+        $clearComment = 'Comment text here...';
         $this->mockCommentStatuses($orderId, Order::STATUS_FRAUD);
         $this->orderMock->expects($this->once())
             ->method('setStatus')
@@ -272,7 +272,7 @@ class OrderServiceTest extends TestCase
             ->with($this->orderStatusHistoryMock)
             ->willReturn($this->orderMock);
         $this->orderStatusHistoryMock->method('getComment')
-            ->willReturn("<h1>" . $clearComment);
+            ->willReturn('<h1>' . $clearComment);
         $this->orderRepositoryMock->expects($this->once())
             ->method('save')
             ->with($this->orderMock)
@@ -318,7 +318,7 @@ class OrderServiceTest extends TestCase
             ->willReturn([
                 Order::STATE_PROCESSING => 'Processing',
                 Order::STATUS_FRAUD => 'Suspected Fraud',
-                'test' => 'Tests'
+                'test' => 'Tests',
             ]);
         $this->orderMock->expects($this->once())
             ->method('getStatus')

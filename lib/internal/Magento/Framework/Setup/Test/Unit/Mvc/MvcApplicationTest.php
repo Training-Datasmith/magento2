@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Framework\Setup\Test\Unit\Mvc;
 use Laminas\ServiceManager\ServiceManager;
 use Magento\Framework\Setup\Mvc\MvcApplication;
 use Magento\Framework\Setup\Mvc\TestBootstrapListener;
-use Magento\Framework\Setup\Mvc\TestModule;
 use PHPUnit\Framework\TestCase;
 
 class MvcApplicationTest extends TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class TrackAdminNewPasswordObserverTest extends TestCase
                 'unsPciAdminUserIsPasswordExpired',
                 'getPciAdminUserIsPasswordExpired',
                 'isLoggedIn',
-                'clearStorage'
+                'clearStorage',
             ]
         );
         $this->managerInterfaceMock = $this->createMock(ManagerInterface::class);
@@ -69,7 +70,7 @@ class TrackAdminNewPasswordObserverTest extends TestCase
         $this->observerConfig = $helper->getObject(
             ObserverConfig::class,
             [
-                'backendConfig' => $this->configInterfaceMock
+                'backendConfig' => $this->configInterfaceMock,
             ]
         );
 
@@ -86,7 +87,7 @@ class TrackAdminNewPasswordObserverTest extends TestCase
 
     public function testTrackAdminPassword()
     {
-        $newPW = "mYn3wpassw0rd";
+        $newPW = 'mYn3wpassw0rd';
         $uid = 123;
         /** @var Observer|MockObject $eventObserverMock */
         $eventObserverMock = $this->createPartialMock(Observer::class, ['getEvent']);

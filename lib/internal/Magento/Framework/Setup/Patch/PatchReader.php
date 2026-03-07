@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Framework\Setup\Patch;
 
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\Filesystem\Glob;
 use Magento\Framework\Module\Dir;
 

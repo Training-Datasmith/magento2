@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class SearchConfigOptionsList
                 TextConfigOption::FRONTEND_WIZARD_TEXT,
                 '',
                 'OpenSearch server timeout.'
-            )
+            ),
         ];
     }
 
@@ -150,7 +151,7 @@ class SearchConfigOptionsList
     {
         return [
             'elasticsearch8' => 'Elasticsearch 8.x (deprecated)',
-            'opensearch' => 'OpenSearch'
+            'opensearch' => 'OpenSearch',
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Registry;
 use Magento\Integration\Api\AdminTokenServiceInterface;
 use Magento\User\Controller\Adminhtml\User;
-use Magento\User\Model\UserFactory;
 use Magento\User\Helper\ForceSignIn;
+use Magento\User\Model\UserFactory;
 
 /**
  * Class InvalidateToken - used to invalidate/revoke all authentication tokens for a specific user.

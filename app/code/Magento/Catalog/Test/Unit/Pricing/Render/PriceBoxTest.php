@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Pricing\Render;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Pricing\Render\PriceBox;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -102,7 +103,7 @@ class PriceBoxTest extends TestCase
     {
         return [
             'product is not of type grouped' => ['configurable', true],
-            'product is of type grouped' => ['grouped', false]
+            'product is of type grouped' => ['grouped', false],
         ];
     }
 }

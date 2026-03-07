@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -90,13 +91,13 @@ class AvailablePaymentMethods implements ResolverInterface
                 return [
                     [
                         'title' => $paymentMethod->getTitle(),
-                        'code' => $paymentMethod->getCode()
-                    ]
+                        'code' => $paymentMethod->getCode(),
+                    ],
                 ];
             } elseif ((int)$grandTotal >= 0) {
                 $paymentMethodsData[] = [
                     'title' => $paymentMethod->getTitle(),
-                    'code' => $paymentMethod->getCode()
+                    'code' => $paymentMethod->getCode(),
                 ];
             }
         }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\ResourceModel\Theme;
 
 /**
@@ -15,7 +18,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     /**
      * Default page size
      */
-    const DEFAULT_PAGE_SIZE = 6;
+    public const DEFAULT_PAGE_SIZE = 6;
 
     /**
      * @var string

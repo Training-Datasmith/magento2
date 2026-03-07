@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Attribute\Data;
 
 use Magento\Framework\App\RequestInterface;
@@ -63,6 +66,7 @@ class Multiselect extends AbstractData
             case \Magento\Eav\Model\AttributeDataFactory::OUTPUT_FORMAT_ARRAY:
                 $output = $values;
                 // fall-through intentional
+                // no break
             default:
                 $output = [];
                 foreach ($values as $value) {

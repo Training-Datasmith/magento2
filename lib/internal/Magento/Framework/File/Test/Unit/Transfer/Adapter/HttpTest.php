@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,8 +52,8 @@ class HttpTest extends TestCase
         $objects = [
             [
                 HttpRequest::class,
-                $this->createMock(HttpRequest::class)
-            ]
+                $this->createMock(HttpRequest::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         $this->response = $this->createPartialMock(
@@ -188,7 +189,7 @@ class HttpTest extends TestCase
 
         // For HEAD requests, no output should be generated
         $this->expectOutputString('');
-        
+
         $this->object->send($file);
     }
 }

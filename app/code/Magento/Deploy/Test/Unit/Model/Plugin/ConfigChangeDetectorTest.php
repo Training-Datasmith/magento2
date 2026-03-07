@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ConfigChangeDetectorTest extends TestCase
             ->getMock();
         $this->frontControllerMock = $this->createMock(FrontControllerInterface::class);
         $this->requestMock = $this->createMock(RequestInterface::class);
-        $this->deploymentConfig =$this->getMockBuilder(DeploymentConfig::class)
+        $this->deploymentConfig = $this->getMockBuilder(DeploymentConfig::class)
             ->disableOriginalConstructor()
             ->getMock();
 

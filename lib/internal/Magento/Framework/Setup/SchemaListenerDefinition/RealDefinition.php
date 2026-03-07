@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,16 +21,16 @@ class RealDefinition implements DefinitionConverterInterface
     private static $shapeByType = [
         'float' => [
             'precision' => '0',
-            'scale' => '0'
+            'scale' => '0',
         ],
         'decimal' => [
             'precision' => '0',
-            'scale' => '10'
+            'scale' => '10',
         ],
         'double' => [
             'precision' => '0',
-            'scale' => '0'
-        ]
+            'scale' => '0',
+        ],
     ];
 
     /**
@@ -37,7 +39,7 @@ class RealDefinition implements DefinitionConverterInterface
     public function convertToDefinition(array $definition)
     {
         if (isset($definition['length'])) {
-            list($definition['precision'], $definition['scale']) = explode(",", $definition['length']);
+            list($definition['precision'], $definition['scale']) = explode(',', $definition['length']);
         }
         return [
             'xsi:type' => $definition['type'],
@@ -49,7 +51,7 @@ class RealDefinition implements DefinitionConverterInterface
             'nullable' => $definition['nullable'] ?? true,
             'default' => isset($definition['default']) && $definition['default'] !== false ?
                 (int) $definition['default'] : null,
-            'primary' => $definition['primary'] ?? false
+            'primary' => $definition['primary'] ?? false,
         ];
     }
 }

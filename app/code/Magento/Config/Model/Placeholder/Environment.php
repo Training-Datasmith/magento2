@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Placeholder;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -18,7 +21,7 @@ class Environment implements PlaceholderInterface
     /**
      * @const string Prefix for placeholder
      */
-    const PREFIX = 'CONFIG__';
+    public const PREFIX = 'CONFIG__';
 
     /**
      * @var DeploymentConfig

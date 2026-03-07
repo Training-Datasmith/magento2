@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Attribute\Backend;
 
-use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\CategoryFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 
 /**
  * Test 'custom layout' attribute.

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
@@ -72,7 +75,7 @@ class DataProductHashMap implements HashMapInterface, ResetAfterRequestInterface
                             'in' => $this->hashMapPool->getDataMap(
                                 DataCategoryHashMap::class,
                                 $categoryId
-                            )->getAllData($categoryId)
+                            )->getAllData($categoryId),
                         ]
                     )
                 )->group('e.entity_id');

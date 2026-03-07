@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Catalog\Pricing\Price;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\ExtensibleDataInterface;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
-use Magento\Catalog\Pricing\Price\ConfiguredPriceInterface;
 
 /**
  * Configured price selection model

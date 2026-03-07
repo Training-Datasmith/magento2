@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Framework\HTTP\AsyncClient\HttpException;
 use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\GuestCouponManagementInterface;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\Error;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\HTTP\AsyncClientInterfaceMock;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
@@ -185,7 +186,7 @@ class ShipmentServiceTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
         $this->uspsAuthMock->method('getAccessToken')
@@ -259,7 +260,7 @@ class ShipmentServiceTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
         $rates = $this->carrier->collectRates($request);
@@ -323,7 +324,7 @@ class ShipmentServiceTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
         $rates = $this->carrier->collectRates($request);
@@ -431,7 +432,7 @@ class ShipmentServiceTest extends TestCase
             ['MEDIA_MAIL_MACHINABLE_5-DIGIT', 'Media Mail', 3.26],
             ['PRIORITY_MAIL_MACHINABLE_SINGLE-PIECE', 'Priority Mail', 10.21 ],
             ['PRIORITY_MAIL_EXPRESS_MACHINABLE_SINGLE-PIECE', 'Priority Mail Express', 45.45 ],
-            ['USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE', 'USPS Ground Advantage', 8.99 ]
+            ['USPS_GROUND_ADVANTAGE_MACHINABLE_SINGLE-PIECE', 'USPS Ground Advantage', 8.99 ],
         ];
     }
 }

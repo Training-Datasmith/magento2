@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -179,12 +180,12 @@ class PriceTiers implements ResolverInterface, ResetAfterRequestInterface
         }
 
         $this->formatAndFilterTierPrices[] = [
-            "discount" => $discount,
-            "quantity" => $tierPrice->getQty(),
-            "final_price" => [
-                "value" => $tierPrice->getValue(),
-                "currency" => $currencyCode
-            ]
+            'discount' => $discount,
+            'quantity' => $tierPrice->getQty(),
+            'final_price' => [
+                'value' => $tierPrice->getValue(),
+                'currency' => $currencyCode,
+            ],
         ];
     }
 

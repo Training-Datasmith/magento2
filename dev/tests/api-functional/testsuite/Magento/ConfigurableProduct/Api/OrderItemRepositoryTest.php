@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class OrderItemRepositoryTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/orders/items';
+    public const RESOURCE_PATH = '/V1/orders/items';
 
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'salesOrderItemRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'salesOrderItemRepositoryV1';
 
-    const ORDER_INCREMENT_ID = '100000001';
+    public const ORDER_INCREMENT_ID = '100000001';
 
     /**
      * @var \Magento\TestFramework\ObjectManager

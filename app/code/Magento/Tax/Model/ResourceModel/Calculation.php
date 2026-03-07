@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tax Calculation Resource Model
  */
+
 namespace Magento\Tax\Model\ResourceModel;
 
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
@@ -103,7 +106,7 @@ class Calculation extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
         $rates = $this->_getRates($request);
         return [
             'process' => $this->getCalculationProcess($request, $rates),
-            'value' => $this->_calculateRate($rates)
+            'value' => $this->_calculateRate($rates),
         ];
     }
 
@@ -148,7 +151,7 @@ class Calculation extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
                 'title' => $rate['title'],
                 'percent' => $value,
                 'position' => $rate['position'],
-                'priority' => $rate['priority']
+                'priority' => $rate['priority'],
             ];
             if (isset($rate['tax_calculation_rule_id'])) {
                 $oneRate['rule_id'] = $rate['tax_calculation_rule_id'];
@@ -298,7 +301,7 @@ class Calculation extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
                     'tax_calculation_rate_id',
                     'tax_calculation_rule_id',
                     'customer_tax_class_id',
-                    'product_tax_class_id'
+                    'product_tax_class_id',
                 ]
             )->where(
                 'customer_tax_class_id = ?',
@@ -326,18 +329,18 @@ class Calculation extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
                     'rate.tax_region_id',
                     'rate.tax_postcode',
                     'rate.tax_calculation_rate_id',
-                    'rate.code'
+                    'rate.code',
                 ]
             )->joinLeft(
                 ['title_table' => $this->getTable('tax_calculation_rate_title')],
-                "rate.tax_calculation_rate_id = title_table.tax_calculation_rate_id " .
+                'rate.tax_calculation_rate_id = title_table.tax_calculation_rate_id ' .
                 "AND title_table.store_id = '{$storeId}'",
                 ['title' => $ifnullTitleValue]
             )->where(
                 'rate.tax_country_id = ?',
                 $countryId
             )->where(
-                "rate.tax_region_id IN(?)",
+                'rate.tax_region_id IN(?)',
                 [0, (int)$regionId]
             );
             $postcodeIsNumeric = is_numeric($postcode);

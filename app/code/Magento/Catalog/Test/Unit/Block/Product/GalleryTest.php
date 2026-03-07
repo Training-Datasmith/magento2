@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,21 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Product;
 
+use Magento\Catalog\Block\Product\Gallery;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
+use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\Element\Template\Context;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Block\Product\Gallery;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\Registry;
 
 /**
  * @covers \Magento\Catalog\Block\Product\Gallery
@@ -187,7 +188,7 @@ class GalleryTest extends TestCase
         $this->productMock->expects($this->once())->method('getMediaGalleryImages')->willReturn($this->collectionMock);
         $this->collectionMock->expects($this->once())->method('getItemById')->with($imageId)->willReturn($imageMock);
         $imageMock->expects($this->once())->method('getPath')->willReturn($expectedFile);
-        $this->fileSystemMock->expects($this->exactly(2))->method('getDirectoryRead')->with("media")
+        $this->fileSystemMock->expects($this->exactly(2))->method('getDirectoryRead')->with('media')
             ->willReturn($dirReadMock);
         $dirReadMock->expects($this->once())->method('stat')->willReturn($fileStat);
         $dirReadMock->expects($this->once())->method('isFile')->with($expectedFile)->willReturn($isFile);
@@ -206,7 +207,7 @@ class GalleryTest extends TestCase
             'large-file' => [['size' => [1000]], true, 600],
             'small-file' => [['size' => [100]], true, 100],
             'not-a-file' => [['size' => [100]], false, false],
-            'empty-size' => [['size' => []], true, false]
+            'empty-size' => [['size' => []], true, false],
         ];
     }
 

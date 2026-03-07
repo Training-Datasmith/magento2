@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Ui\Component\Form\Element\Select as ElementSelect;
+use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Filters\FilterModifier;
+use Magento\Ui\Component\Form\Element\Select as ElementSelect;
 
 /**
  * @api

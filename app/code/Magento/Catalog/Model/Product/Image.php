@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
 use Magento\Catalog\Model\Product\Image\NotLoadInfoImageException;
@@ -919,7 +922,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
                 'transparency' => $this->_keepTransparency,
                 'background' => $this->_backgroundColor,
                 'angle' => $this->_angle,
-                'quality' => $this->getQuality()
+                'quality' => $this->getQuality(),
             ]
         );
     }

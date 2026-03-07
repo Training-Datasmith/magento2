@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\NewRelicReporting\Model\Cron\ReportNewRelicCron;
 use Magento\NewRelicReporting\Model\CronEvent;
 use Magento\NewRelicReporting\Model\CronEventFactory;
 use Magento\NewRelicReporting\Model\Module\Collect;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
@@ -230,27 +231,27 @@ class ReportNewRelicCronTest extends TestCase
                 [
                     'type' => Config::ENABLED,
                     'name' => 'Test_Module1',
-                    'setup_version' => '1.0.0'
+                    'setup_version' => '1.0.0',
                 ],
                 [
                     'type' => Config::DISABLED,
                     'name' => 'Test_Module2',
-                    'setup_version' => '1.1.0'
+                    'setup_version' => '1.1.0',
                 ],
                 [
                     'type' => Config::INSTALLED,
                     'name' => 'Test_Module3',
-                    'setup_version' => '2.0.0'
+                    'setup_version' => '2.0.0',
                 ],
                 [
                     'type' => Config::UNINSTALLED,
                     'name' => 'Test_Module4',
-                    'setup_version' => '1.5.0'
-                ]
+                    'setup_version' => '1.5.0',
+                ],
             ],
             Config::ENABLED => 10,
             Config::DISABLED => 5,
-            Config::INSTALLED => 15
+            Config::INSTALLED => 15,
         ];
 
         $this->collect->expects($this->once())
@@ -288,7 +289,7 @@ class ReportNewRelicCronTest extends TestCase
             'changes' => [],
             Config::ENABLED => 8,
             Config::DISABLED => 3,
-            Config::INSTALLED => 11
+            Config::INSTALLED => 11,
         ];
 
         $this->collect->expects($this->once())
@@ -366,7 +367,7 @@ class ReportNewRelicCronTest extends TestCase
             'enabled_modules' => [Config::ENABLED, 'Test_Module_Enabled', '1.0.0'],
             'disabled_modules' => [Config::DISABLED, 'Test_Module_Disabled', '1.1.0'],
             'installed_modules' => [Config::INSTALLED, 'Test_Module_Installed', '2.0.0'],
-            'uninstalled_modules' => [Config::UNINSTALLED, 'Test_Module_Uninstalled', '1.5.0']
+            'uninstalled_modules' => [Config::UNINSTALLED, 'Test_Module_Uninstalled', '1.5.0'],
         ];
     }
 
@@ -386,12 +387,12 @@ class ReportNewRelicCronTest extends TestCase
                 [
                     'type' => $changeType,
                     'name' => $moduleName,
-                    'setup_version' => $version
-                ]
+                    'setup_version' => $version,
+                ],
             ],
             Config::ENABLED => 1,
             Config::DISABLED => 1,
-            Config::INSTALLED => 1
+            Config::INSTALLED => 1,
         ];
 
         $this->collect->expects($this->once())
@@ -422,11 +423,11 @@ class ReportNewRelicCronTest extends TestCase
                 ['type' => Config::DISABLED, 'name' => 'DisabledModule', 'setup_version' => '1.0.0'],
                 ['type' => Config::INSTALLED, 'name' => 'InstalledModule', 'setup_version' => '1.0.0'],
                 ['type' => Config::UNINSTALLED, 'name' => 'UninstalledModule', 'setup_version' => '1.0.0'],
-                ['type' => 'unknown_type', 'name' => 'UnknownModule', 'setup_version' => '1.0.0'] // Test default case
+                ['type' => 'unknown_type', 'name' => 'UnknownModule', 'setup_version' => '1.0.0'], // Test default case
             ],
             Config::ENABLED => 1,
             Config::DISABLED => 1,
-            Config::INSTALLED => 1
+            Config::INSTALLED => 1,
         ];
 
         $this->collect->expects($this->once())

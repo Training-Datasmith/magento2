@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\PageCache\Controller\Adminhtml/PageCache
  */
+
 namespace Magento\PageCache\Test\Unit\Controller\Adminhtml\PageCache;
 
 use Magento\Backend\App\Action\Context;

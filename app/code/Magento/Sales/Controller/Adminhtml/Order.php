@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,6 +13,8 @@ use Magento\Backend\Model\View\Result\Page;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\Framework\View\Result\LayoutFactory;
@@ -19,8 +22,6 @@ use Magento\Framework\View\Result\PageFactory;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\InputException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -37,7 +38,7 @@ abstract class Order extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::sales_order';
+    public const ADMIN_RESOURCE = 'Magento_Sales::sales_order';
 
     /**
      * Array of actions which can be processed without secret key validation

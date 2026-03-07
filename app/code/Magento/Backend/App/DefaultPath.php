@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\App;
 
 /**
@@ -13,13 +16,9 @@ namespace Magento\Backend\App;
  */
 class DefaultPath implements \Magento\Framework\App\DefaultPathInterface
 {
-    /**
-     * @var array
-     */
-    protected $_parts;
+    protected array $_parts;
 
     /**
-     * @param \Magento\Backend\App\ConfigInterface $config
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     public function __construct(\Magento\Backend\App\ConfigInterface $config)
@@ -27,14 +26,14 @@ class DefaultPath implements \Magento\Framework\App\DefaultPathInterface
         $pathConfigValue = $config->getValue('web/default/admin') ?? '';
         $pathParts  = [];
         if ($pathConfigValue) {
-            $pathParts = explode('/', $pathConfigValue);
+            $pathParts = explode('/', (string) $pathConfigValue);
         }
 
         $this->_parts = [
-            'area' => isset($pathParts[0]) ? $pathParts[0] : '',
-            'module' => isset($pathParts[1]) ? $pathParts[1] : 'admin',
-            'controller' => isset($pathParts[2]) ? $pathParts[2] : 'index',
-            'action' => isset($pathParts[3]) ? $pathParts[3] : 'index',
+            'area' => $pathParts[0] ?? '',
+            'module' => $pathParts[1] ?? 'admin',
+            'controller' => $pathParts[2] ?? 'index',
+            'action' => $pathParts[3] ?? 'index',
         ];
     }
 

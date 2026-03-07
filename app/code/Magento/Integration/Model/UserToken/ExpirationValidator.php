@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Integration\Model\UserToken;
 
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Exception\AuthorizationException;
+use Magento\Framework\Stdlib\DateTime\DateTime as DtUtil;
 use Magento\Integration\Api\Data\UserToken;
 use Magento\Integration\Api\UserTokenValidatorInterface;
-use Magento\Framework\Stdlib\DateTime\DateTime as DtUtil;
 
 /**
  * Validates if a token is expired

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Edit;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Catalog\Block\Adminhtml\Category\AbstractCategory;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class SaveButton

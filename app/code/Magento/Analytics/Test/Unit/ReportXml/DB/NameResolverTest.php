@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Analytics\Test\Unit\ReportXml\DB;
 
 use Magento\Analytics\ReportXml\DB\NameResolver;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class NameResolverTest extends TestCase
@@ -85,7 +86,7 @@ class NameResolverTest extends TestCase
             'ElementConfigWithoutAliases' => [
                 ['name' => 'sales_order'],
                 null,
-            ]
+            ],
         ];
     }
 }

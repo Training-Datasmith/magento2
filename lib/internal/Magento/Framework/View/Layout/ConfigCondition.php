@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
-use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ScopeResolverInterface;
+use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
 
 /**
  * Check that config flag is set to true,
@@ -17,7 +20,7 @@ class ConfigCondition implements VisibilityConditionInterface
     /**
      * Unique name.
      */
-    const NAME = 'ifconfig';
+    public const NAME = 'ifconfig';
 
     /**
      * @var ScopeConfigInterface

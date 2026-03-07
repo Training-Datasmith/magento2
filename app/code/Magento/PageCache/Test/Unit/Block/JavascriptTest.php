@@ -71,7 +71,7 @@ class JavascriptTest extends TestCase
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getParam', 'setParams', 'getParams', 'getCookie', 'isSecure',
                 // Custom methods
-                'getControllerName', 'getRequestUri', 'setRequestUri', 'getRouteName'
+                'getControllerName', 'getRequestUri', 'setRequestUri', 'getRouteName',
             ]
         );
         $this->layoutMock = $this->createMock(LayoutInterface::class);
@@ -93,7 +93,7 @@ class JavascriptTest extends TestCase
         $this->blockJavascript = $objectManager->getObject(
             Javascript::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -110,7 +110,7 @@ class JavascriptTest extends TestCase
         $handles = [
             'some',
             'handles',
-            'here'
+            'here',
         ];
         $this->requestMock->expects($this->once())
             ->method('isSecure')
@@ -145,13 +145,13 @@ class JavascriptTest extends TestCase
             'http' => [
                 'isSecure' => false,
                 'url' => 'http://some-name.com/page_cache/block/render',
-                'expectedResult' => '~http:\\\\/\\\\/some-name\\.com.+\\["some","handles","here"\\]~'
+                'expectedResult' => '~http:\\\\/\\\\/some-name\\.com.+\\["some","handles","here"\\]~',
             ],
             'https' => [
                 'isSecure' => true,
                 'url' => 'https://some-name.com/page_cache/block/render',
-                'expectedResult' => '~https:\\\\/\\\\/some-name\\.com.+\\["some","handles","here"\\]~'
-            ]
+                'expectedResult' => '~https:\\\\/\\\\/some-name\\.com.+\\["some","handles","here"\\]~',
+            ],
         ];
     }
 
@@ -170,7 +170,7 @@ class JavascriptTest extends TestCase
         $handles = [
             'some',
             'handles',
-            'here'
+            'here',
         ];
         $this->requestMock->expects($this->once())
             ->method('isSecure')
@@ -215,7 +215,7 @@ class JavascriptTest extends TestCase
                 'controller'     => 'controller',
                 'action'         => 'action',
                 'uri'            => 'uri',
-                'expectedResult' => '~"originalRequest":{"route":"route","controller":"controller","action":"action","uri":"uri"}~'
+                'expectedResult' => '~"originalRequest":{"route":"route","controller":"controller","action":"action","uri":"uri"}~',
             ],
         ];
         //@codingStandardsIgnoreEnd

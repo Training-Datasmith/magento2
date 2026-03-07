@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -160,7 +161,7 @@ class ListProductTest extends TestCase
                 'cartHelper' => $this->cartHelperMock,
                 'postDataHelper' => $this->postDataHelperMock,
                 'urlHelper' => $this->urlHelperMock,
-                'collectionFactory' => $this->collectionFactory
+                'collectionFactory' => $this->collectionFactory,
             ]
         );
         $this->block->setToolbarBlockName('mock');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\GiftMessage\Test\Unit\Model;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GiftMessage\Model\CartRepository;
 use Magento\GiftMessage\Model\GiftMessageManager;
 use Magento\GiftMessage\Model\Message;
 use Magento\GiftMessage\Model\MessageFactory;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -174,33 +175,33 @@ class BaseFinalPrice
                 ) : '',
             []
         )->joinLeft(
-        // customer group website limitations
+            // customer group website limitations
             ['cgw' => $this->getTable('customer_group_excluded_website')],
             'cg.customer_group_id = cgw.customer_group_id AND pw.website_id = cgw.website_id',
             []
         )->joinLeft(
-        // calculate tier price specified as Website = `All Websites` and Customer Group = `Specific Customer Group`
+            // calculate tier price specified as Website = `All Websites` and Customer Group = `Specific Customer Group`
             ['tier_price_1' => $this->getTable('catalog_product_entity_tier_price')],
             'tier_price_1.' . $linkField . ' = e.' . $linkField . ' AND tier_price_1.all_groups = 0' .
             ' AND tier_price_1.customer_group_id = cg.customer_group_id AND tier_price_1.qty = 1' .
             ' AND tier_price_1.website_id = 0',
             []
         )->joinLeft(
-        // calculate tier price specified as Website = `All Websites` and Customer Group = `ALL GROUPS`
+            // calculate tier price specified as Website = `All Websites` and Customer Group = `ALL GROUPS`
             ['tier_price_3' => $this->getTable('catalog_product_entity_tier_price')],
             'tier_price_3.' . $linkField . ' = e.' . $linkField . ' AND tier_price_3.all_groups = 1 ' .
             'AND tier_price_3.customer_group_id = 0 AND tier_price_3.qty = 1 AND tier_price_3.website_id = 0',
             []
         )->joinLeft(
-        // calculate tier price specified as Website = `Specific Website` and Customer Group = `ALL GROUPS`
+            // calculate tier price specified as Website = `Specific Website` and Customer Group = `ALL GROUPS`
             ['tier_price_4' => $this->getTable('catalog_product_entity_tier_price')],
             'tier_price_4.' . $linkField . ' = e.' . $linkField . ' AND tier_price_4.all_groups = 1' .
             ' AND tier_price_4.customer_group_id = 0 AND tier_price_4.qty = 1' .
             ' AND tier_price_4.website_id = pw.website_id',
             []
         )->joinLeft(
-        // calculate tier price specified as Website = `Specific Website`
-        //and Customer Group = `Specific Customer Group`
+            // calculate tier price specified as Website = `Specific Website`
+            //and Customer Group = `Specific Customer Group`
             ['tier_price_2' => $this->getTable('catalog_product_entity_tier_price')],
             'tier_price_2.' . $linkField . ' = e.' . $linkField . ' AND tier_price_2.all_groups = 0 ' .
             'AND tier_price_2.customer_group_id = cg.customer_group_id AND tier_price_2.qty = 1' .
@@ -224,7 +225,7 @@ class BaseFinalPrice
             ]
         );
 
-        $select->where("e.type_id = ?", $productType);
+        $select->where('e.type_id = ?', $productType);
 
         // exclude websites that are limited for customer group
         $select->where('cgw.website_id IS NULL');
@@ -266,7 +267,7 @@ class BaseFinalPrice
                     'tier_price_1.value_id is NULL',
                     'tier_price_2.value_id is NULL',
                     'tier_price_3.value_id is NULL',
-                    'tier_price_4.value_id is NULL'
+                    'tier_price_4.value_id is NULL',
                 ]
             ),
             'NULL',

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -120,7 +122,7 @@ class Status extends \Magento\Sales\Model\AbstractModel
             'sales_order_status_unassign',
             [
                 'status' => $this->getStatus(),
-                'state' => $state
+                'state' => $state,
             ]
         );
         return $this;

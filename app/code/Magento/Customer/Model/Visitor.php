@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -200,7 +201,7 @@ class Visitor extends AbstractModel
      */
     public function beforeSave()
     {
-        $this->unsetData("session_id");
+        $this->unsetData('session_id');
         return parent::beforeSave();
     }
 

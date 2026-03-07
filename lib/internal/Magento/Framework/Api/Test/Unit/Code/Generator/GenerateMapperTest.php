@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class GenerateMapperTest extends TestCase
                     $this->ioObjectMock,
                     null,
                     null,
-                    $this->createMock(FileResolver::class)
+                    $this->createMock(FileResolver::class),
                 ]
             )
             ->getMock();

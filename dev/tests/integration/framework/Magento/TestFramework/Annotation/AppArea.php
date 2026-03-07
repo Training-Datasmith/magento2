@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -32,7 +35,7 @@ class AppArea
         \Magento\Framework\App\Area::AREA_WEBAPI_REST,
         \Magento\Framework\App\Area::AREA_WEBAPI_SOAP,
         \Magento\Framework\App\Area::AREA_CRONTAB,
-        \Magento\Framework\App\Area::AREA_GRAPHQL
+        \Magento\Framework\App\Area::AREA_GRAPHQL,
     ];
 
     /**
@@ -120,8 +123,8 @@ class AppArea
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\AppArea::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\AppArea::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\AppArea::class),
+                    ],
                 ]
             );
         $values = $parsers->parse($test, ParserInterface::SCOPE_METHOD)

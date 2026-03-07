@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\TierPriceInterface;
-use Magento\Framework\Webapi\Rest\Request;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\TestFramework\Fixture\DataFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Model\Group;
+use Magento\Framework\Webapi\Rest\Request;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Test all API calls for tier price storage.
@@ -21,10 +24,10 @@ class TierPriceStorageTest extends WebapiAbstract
     private const SERVICE_NAME = 'catalogTierPriceStorageV1';
     private const SERVICE_VERSION = 'V1';
     private const SIMPLE_PRODUCT_SKU = 'simple';
-    private const CUSTOMER_ALL_GROUPS_NAME ='ALL GROUPS';
-    private const CUSTOMER_GENERAL_GROUP_NAME ='General';
-    private const CUSTOMER_NOT_LOGGED_IN_GROUP_NAME ='NOT LOGGED IN';
-    private const WRONG_CUSTOMER_GROUP_NAME ='general';
+    private const CUSTOMER_ALL_GROUPS_NAME = 'ALL GROUPS';
+    private const CUSTOMER_GENERAL_GROUP_NAME = 'General';
+    private const CUSTOMER_NOT_LOGGED_IN_GROUP_NAME = 'NOT LOGGED IN';
+    private const WRONG_CUSTOMER_GROUP_NAME = 'general';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -50,7 +53,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices-information',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -83,7 +86,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -97,7 +100,7 @@ class TierPriceStorageTest extends WebapiAbstract
             'website_id' => 0,
             'sku' => self::SIMPLE_PRODUCT_SKU,
             'customer_group' => self::CUSTOMER_ALL_GROUPS_NAME,
-            'quantity' => 7778
+            'quantity' => 7778,
         ];
         $updatedPrice = [
             'price' => 778,
@@ -105,7 +108,7 @@ class TierPriceStorageTest extends WebapiAbstract
             'website_id' => 0,
             'sku' => self::SIMPLE_PRODUCT_SKU,
             'customer_group' => self::CUSTOMER_NOT_LOGGED_IN_GROUP_NAME,
-            'quantity' => $tierPrice->getQty()
+            'quantity' => $tierPrice->getQty(),
         ];
         $response = $this->_webApiCall($serviceInfo, ['prices' => [$updatedPrice, $newPrice]]);
         $productRepository = $this->objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -125,7 +128,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -139,7 +142,7 @@ class TierPriceStorageTest extends WebapiAbstract
             'website_id' => 2,
             'sku' => self::SIMPLE_PRODUCT_SKU,
             'customer_group' => 'not logged in',
-            'quantity' => 3
+            'quantity' => 3,
         ];
         $response = $this->_webApiCall($serviceInfo, ['prices' => [$invalidPrice]]);
         $this->assertNotEmpty($response);
@@ -171,7 +174,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_PUT
+                'httpMethod' => Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -186,7 +189,7 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::CUSTOMER_GENERAL_GROUP_NAME,
-                'quantity' => 7778
+                'quantity' => 7778,
             ],
             [
                 'price' => 70,
@@ -194,8 +197,8 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::CUSTOMER_NOT_LOGGED_IN_GROUP_NAME,
-                'quantity' => 33
-            ]
+                'quantity' => 33,
+            ],
         ];
         $response = $this->_webApiCall($serviceInfo, ['prices' => $newPrices]);
         $productRepository = $this->objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -215,7 +218,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_PUT
+                'httpMethod' => Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -230,7 +233,7 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::WRONG_CUSTOMER_GROUP_NAME,
-                'quantity' => 2
+                'quantity' => 2,
             ],
             [
                 'price' => 20.62,
@@ -238,8 +241,8 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::WRONG_CUSTOMER_GROUP_NAME,
-                'quantity' => 2
-            ]
+                'quantity' => 2,
+            ],
         ];
         $response = $this->_webApiCall($serviceInfo, ['prices' => $newPrices]);
         $this->assertNotEmpty($response);
@@ -279,14 +282,14 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'customer_group' => $customerGroup,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
-                'quantity' => $tierPrice->getQty()
+                'quantity' => $tierPrice->getQty(),
 
             ];
         }
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices-delete',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -316,9 +319,9 @@ class TierPriceStorageTest extends WebapiAbstract
                     [
                         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                         'qty' => 3.2,
-                        'value' => 6
-                    ]
-                ]
+                        'value' => 6,
+                    ],
+                ],
             ]
         )
     ]
@@ -327,7 +330,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -342,7 +345,7 @@ class TierPriceStorageTest extends WebapiAbstract
             'sku' => self::SIMPLE_PRODUCT_SKU,
             'customer_group' => 'ALL GROUPS',
             'quantity' => 3,
-            'extension_attributes' => []
+            'extension_attributes' => [],
         ];
         $response = $this->_webApiCall($serviceInfo, ['prices' => [$tierPriceWithInvalidWebsiteId]]);
         if (is_array($response) && count($response) > 0) {
@@ -364,7 +367,7 @@ class TierPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/tier-prices',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -380,7 +383,7 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 0,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::CUSTOMER_ALL_GROUPS_NAME,
-                'quantity' => 2
+                'quantity' => 2,
             ],
             [
                 'price' => 20.62,
@@ -388,8 +391,8 @@ class TierPriceStorageTest extends WebapiAbstract
                 'website_id' => 1,
                 'sku' => self::SIMPLE_PRODUCT_SKU,
                 'customer_group' => self::CUSTOMER_ALL_GROUPS_NAME,
-                'quantity' => 2
-            ]
+                'quantity' => 2,
+            ],
         ];
 
         $response = $this->_webApiCall($serviceInfo, ['prices' => $newPrices]);

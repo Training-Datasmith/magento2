@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2015 Adobe
@@ -9,7 +11,6 @@ namespace Magento\CatalogUrlRewrite\Test\Unit\Observer;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Eav\Model\ResourceModel\AttributeValue;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductFactory;
@@ -22,8 +23,9 @@ use Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator;
 use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
 use Magento\CatalogUrlRewrite\Observer\AfterImportDataObserver;
 use Magento\CatalogUrlRewrite\Service\V1\StoreViewService;
-use Magento\Framework\Event;
+use Magento\Eav\Model\ResourceModel\AttributeValue;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -301,7 +303,7 @@ class AfterImportDataObserverTest extends TestCase
         $this->importProduct
             ->expects($this->exactly($productsCount))
             ->method('getNewSku')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$this->products[0][ImportProduct::COL_SKU]] => $newSku[0],
                 [$this->products[1][ImportProduct::COL_SKU]] => $newSku[1]
             });
@@ -309,7 +311,7 @@ class AfterImportDataObserverTest extends TestCase
         $this->importProduct
             ->expects($this->exactly($productsCount))
             ->method('getProductCategories')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$this->products[0][ImportProduct::COL_SKU]] => [],
                 [$this->products[1][ImportProduct::COL_SKU]] => []
             });
@@ -328,7 +330,7 @@ class AfterImportDataObserverTest extends TestCase
             });
         $map = [
             [$this->products[0][ImportProduct::COL_STORE], $this->products[0][ImportProduct::COL_STORE]],
-            [$this->products[1][ImportProduct::COL_STORE], $this->products[1][ImportProduct::COL_STORE]]
+            [$this->products[1][ImportProduct::COL_STORE], $this->products[1][ImportProduct::COL_STORE]],
         ];
         $this->importProduct
             ->expects($this->exactly(1))
@@ -376,7 +378,7 @@ class AfterImportDataObserverTest extends TestCase
         $this->urlRewrite->method('setTargetPath')->willReturnSelf();
         $this->urlRewrite->method('getTargetPath')->willReturn('targetPath');
         $this->urlRewrite->method('getRequestPath')->willReturn('requestPath');
-        
+
         $getStoreIdCallCount = 0;
         $this->urlRewrite->method('getStoreId')
             ->willReturnCallback(function () use (&$getStoreIdCallCount) {
@@ -390,7 +392,7 @@ class AfterImportDataObserverTest extends TestCase
         $this->urlRewriteFactory->method('create')->willReturn($this->urlRewrite);
         $productUrls = [
             'requestPath_0' => $this->urlRewrite,
-            'requestPath_not global' => $this->urlRewrite
+            'requestPath_not global' => $this->urlRewrite,
         ];
         $this->urlPersist
             ->expects($this->once())

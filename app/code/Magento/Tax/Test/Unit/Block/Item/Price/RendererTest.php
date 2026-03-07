@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\Render;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;
 use Magento\Sales\Model\Order\Item;
 use Magento\Store\Model\Store;
-use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Tax\Block\Item\Price\Renderer;
 use Magento\Tax\Helper\Data;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -66,7 +67,7 @@ class RendererTest extends TestCase
                 'priceCurrency' => $this->priceCurrency,
                 'data' => [
                     'zone' => Render::ZONE_CART,
-                ]
+                ],
             ]
         );
     }
@@ -242,7 +243,7 @@ class RendererTest extends TestCase
     public function testFormatPriceQuoteItem(): void
     {
         $price = 3.554;
-        $formattedPrice = "$3.55";
+        $formattedPrice = '$3.55';
 
         $storeMock = $this->createPartialMockWithReflection(
             Store::class,
@@ -270,7 +271,7 @@ class RendererTest extends TestCase
     public function testFormatPriceOrderItem(): void
     {
         $price = 3.554;
-        $formattedPrice = "$3.55";
+        $formattedPrice = '$3.55';
 
         $orderMock = $this->getMockBuilder(Order::class)
             ->disableOriginalConstructor()
@@ -297,7 +298,7 @@ class RendererTest extends TestCase
     public function testFormatPriceInvoiceItem(): void
     {
         $price = 3.554;
-        $formattedPrice = "$3.55";
+        $formattedPrice = '$3.55';
 
         $orderMock = $this->getMockBuilder(Order::class)
             ->disableOriginalConstructor()
@@ -414,7 +415,7 @@ class RendererTest extends TestCase
                     'getTaxAmount',
                     'getDiscountTaxCompensationAmount',
                     'getDiscountAmount',
-                    '__wakeup'
+                    '__wakeup',
                 ]
             )
             ->getMock();
@@ -455,7 +456,7 @@ class RendererTest extends TestCase
                     'getBaseTaxAmount',
                     'getBaseDiscountTaxCompensationAmount',
                     'getBaseDiscountAmount',
-                    '__wakeup'
+                    '__wakeup',
                 ]
             )
             ->getMock();

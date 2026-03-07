@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class CheckUserCreateObserverTest extends TestCase
                 'session' => $this->_session,
                 'urlManager' => $this->_urlManager,
                 'redirect' => $this->redirect,
-                'captchaStringResolver' => $this->captchaStringResolver
+                'captchaStringResolver' => $this->captchaStringResolver,
             ]
         );
         $this->_captcha = $this->createMock(DefaultModel::class);

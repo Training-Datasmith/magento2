@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'backend_type' => 'text',
             'is_filterable_in_search' => true,
             'position' => 4,
-            'apply_to' => 'category'
+            'apply_to' => 'category',
         ],
         'category_attribute'
     ),
@@ -114,10 +115,10 @@ QRY;
                             'is_used_for_promo_rules' => false,
                             'used_in_product_listing' => false,
                             'apply_to' => null,
-                        ]
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );
@@ -162,10 +163,10 @@ QRY;
                             'is_used_for_promo_rules' => false,
                             'used_in_product_listing' => false,
                             'apply_to' => ['CATEGORY'],
-                        ]
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

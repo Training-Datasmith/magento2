@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,9 +16,9 @@ use Magento\Framework\Exception\ValidatorException;
  */
 class EntityGenerator
 {
-    const SQL_DEFAULT_BUNCH_AMOUNT = 1000;
+    public const SQL_DEFAULT_BUNCH_AMOUNT = 1000;
 
-    const SKIP_ENTITY_ID_BINDING = 'skip_entity_id_binding';
+    public const SKIP_ENTITY_ID_BINDING = 'skip_entity_id_binding';
 
     /**
      * @var array
@@ -359,7 +361,7 @@ class EntityGenerator
             $this->initCustomTables();
 
             $this->primaryEntityIdTables = [
-                $this->getEntityMetadata()->getEntityTable()
+                $this->getEntityMetadata()->getEntityTable(),
             ];
             $entitySequence = $this->sequenceRegistry->retrieve($this->entityType);
             if (isset($entitySequence['sequenceTable'])) {

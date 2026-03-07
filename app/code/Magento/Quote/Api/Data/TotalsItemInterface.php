@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -19,107 +22,107 @@ interface TotalsItemInterface extends \Magento\Framework\Api\ExtensibleDataInter
     /**
      * Item id.
      */
-    const KEY_ITEM_ID = 'item_id';
+    public const KEY_ITEM_ID = 'item_id';
 
     /**
      * Price.
      */
-    const KEY_PRICE = 'price';
+    public const KEY_PRICE = 'price';
 
     /**
      * Base price.
      */
-    const KEY_BASE_PRICE = 'base_price';
+    public const KEY_BASE_PRICE = 'base_price';
 
     /**
      * Quantity.
      */
-    const KEY_QTY = 'qty';
+    public const KEY_QTY = 'qty';
 
     /**
      * Row total.
      */
-    const KEY_ROW_TOTAL = 'row_total';
+    public const KEY_ROW_TOTAL = 'row_total';
 
     /**
      * Base row total.
      */
-    const KEY_BASE_ROW_TOTAL = 'base_row_total';
+    public const KEY_BASE_ROW_TOTAL = 'base_row_total';
 
     /**
      * Row total with discount.
      */
-    const KEY_ROW_TOTAL_WITH_DISCOUNT = 'row_total_with_discount';
+    public const KEY_ROW_TOTAL_WITH_DISCOUNT = 'row_total_with_discount';
 
     /**
      * Discount amount.
      */
-    const KEY_DISCOUNT_AMOUNT = 'discount_amount';
+    public const KEY_DISCOUNT_AMOUNT = 'discount_amount';
 
     /**
      * Base discount amount.
      */
-    const KEY_BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const KEY_BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
 
     /**
      * Discount percent.
      */
-    const KEY_DISCOUNT_PERCENT = 'discount_percent';
+    public const KEY_DISCOUNT_PERCENT = 'discount_percent';
 
     /**
      * Tax amount.
      */
-    const KEY_TAX_AMOUNT = 'tax_amount';
+    public const KEY_TAX_AMOUNT = 'tax_amount';
 
     /**
      * Base tax amount.
      */
-    const KEY_BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const KEY_BASE_TAX_AMOUNT = 'base_tax_amount';
 
     /**
      * Tax percent.
      */
-    const KEY_TAX_PERCENT = 'tax_percent';
+    public const KEY_TAX_PERCENT = 'tax_percent';
 
     /**
      * Price including tax.
      */
-    const KEY_PRICE_INCL_TAX = 'price_incl_tax';
+    public const KEY_PRICE_INCL_TAX = 'price_incl_tax';
 
     /**
      * Base price including tax.
      */
-    const KEY_BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
+    public const KEY_BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
 
     /**
      * Row total including tax.
      */
-    const KEY_ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
+    public const KEY_ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
 
     /**
      * Base row total including tax.
      */
-    const KEY_BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
+    public const KEY_BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
 
     /**
      * Item options data.
      */
-    const KEY_OPTIONS = 'options';
+    public const KEY_OPTIONS = 'options';
 
     /**
      * Item Weee Tax Applied Amount.
      */
-    const KEY_WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
+    public const KEY_WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
 
     /**
      * Item Weee Tax Applied Amount.
      */
-    const KEY_WEEE_TAX_APPLIED = 'weee_tax_applied';
+    public const KEY_WEEE_TAX_APPLIED = 'weee_tax_applied';
 
     /**
      * Item name.
      */
-    const KEY_NAME = 'name';
+    public const KEY_NAME = 'name';
 
     /**#@-*/
 

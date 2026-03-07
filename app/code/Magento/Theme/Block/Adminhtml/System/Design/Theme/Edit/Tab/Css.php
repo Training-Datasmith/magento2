@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Tab;
 
 use Magento\Theme\Helper\Storage;
@@ -156,7 +159,7 @@ class Css extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstra
                 'title' => __('Select CSS File to Upload'),
                 'accept' => 'text/css',
                 'value' => __('Browse CSS File'),
-                'note' => $this->_getUploadCssFileNote()
+                'note' => $this->_getUploadCssFileNote(),
             ]
         );
 
@@ -192,7 +195,7 @@ class Css extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstra
                     [
                         'target_element_id' => 'custom_css_content',
                         Storage::PARAM_THEME_ID => $this->_getCurrentTheme()->getId(),
-                        Storage::PARAM_CONTENT_TYPE => \Magento\Theme\Model\Wysiwyg\Storage::TYPE_IMAGE
+                        Storage::PARAM_CONTENT_TYPE => \Magento\Theme\Model\Wysiwyg\Storage::TYPE_IMAGE,
                     ]
                 ) . "', null, null,'" . $this->escapeJs(
                     __('Upload Images')
@@ -203,7 +206,7 @@ class Css extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstra
         $themeFieldset->addField(
             'css_browse_image_button',
             'note',
-            ['label' => __("Images Assets"), 'text' => $imageButton->toHtml()]
+            ['label' => __('Images Assets'), 'text' => $imageButton->toHtml()]
         );
 
         /** @var $fontButton \Magento\Backend\Block\Widget\Button */
@@ -219,7 +222,7 @@ class Css extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstra
                     [
                         'target_element_id' => 'custom_css_content',
                         Storage::PARAM_THEME_ID => $this->_getCurrentTheme()->getId(),
-                        Storage::PARAM_CONTENT_TYPE => \Magento\Theme\Model\Wysiwyg\Storage::TYPE_FONT
+                        Storage::PARAM_CONTENT_TYPE => \Magento\Theme\Model\Wysiwyg\Storage::TYPE_FONT,
                     ]
                 ) . "', null, null,'" . $this->escapeJs(
                     __('Upload Fonts')
@@ -230,7 +233,7 @@ class Css extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Abstra
         $themeFieldset->addField(
             'css_browse_font_button',
             'note',
-            ['label' => __("Fonts Assets"), 'text' => $fontButton->toHtml()]
+            ['label' => __('Fonts Assets'), 'text' => $fontButton->toHtml()]
         );
 
         $themeFieldset->addField(

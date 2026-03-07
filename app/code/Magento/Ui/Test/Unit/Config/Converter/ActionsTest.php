@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -50,11 +51,11 @@ class ActionsTest extends TestCase
             'param' => [
                 'first' => [
                     'name' => 'first',
-                    'value' => 'first_value'
+                    'value' => 'first_value',
                 ],
                 'second' => [
                     'name' => 'second',
-                    'value' => 'second_value'
+                    'value' => 'second_value',
                 ],
 
             ],
@@ -89,7 +90,7 @@ class ActionsTest extends TestCase
                                 'custom_param_one' => [
                                     'name' => 'custom_param_one',
                                     'xsi:type' => 'string',
-                                    'value' => 'custom_value_one'
+                                    'value' => 'custom_value_one',
                                 ],
                                 'type' => [
                                     'name' => 'type',
@@ -103,11 +104,11 @@ class ActionsTest extends TestCase
                                     'param' => [
                                         'first' => [
                                             'name' => 'first',
-                                            'value' => 'first_value'
+                                            'value' => 'first_value',
                                         ],
                                         'second' => [
                                             'name' => 'second',
-                                            'value' => 'second_value'
+                                            'value' => 'second_value',
                                         ],
 
                                     ],
@@ -127,7 +128,7 @@ class ActionsTest extends TestCase
                                 'custom_param_two' => [
                                     'name' => 'custom_param_two',
                                     'xsi:type' => 'string',
-                                    'value' => 'custom_value_two'
+                                    'value' => 'custom_value_two',
                                 ],
                                 'type' => [
                                     'name' => 'type',
@@ -141,11 +142,11 @@ class ActionsTest extends TestCase
                                     'param' => [
                                         'first' => [
                                             'name' => 'first',
-                                            'value' => 'first_value'
+                                            'value' => 'first_value',
                                         ],
                                         'second' => [
                                             'name' => 'second',
-                                            'value' => 'second_value'
+                                            'value' => 'second_value',
                                         ],
 
                                     ],
@@ -154,16 +155,16 @@ class ActionsTest extends TestCase
                         ],
                     ],
                 ],
-                '//listing/listingToolbar/massaction[@name="listing_massaction"]/settings/actions'
+                '//listing/listingToolbar/massaction[@name="listing_massaction"]/settings/actions',
             ],
             [
                 [
                     'name' => 'actions',
                     'xsi:type' => 'object',
-                    'value' => 'Some_Actions_Class'
+                    'value' => 'Some_Actions_Class',
                 ],
-                '//listing/listingToolbar/massaction[@name="listing_massaction"]/action/settings/actions'
-            ]
+                '//listing/listingToolbar/massaction[@name="listing_massaction"]/action/settings/actions',
+            ],
         ];
     }
 }

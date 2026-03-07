@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model\Driver;
 
 /**
@@ -47,7 +50,7 @@ class QueueFactory implements \Magento\Framework\MessageQueue\QueueFactoryInterf
             $this->instanceName,
             [
                 'queueName' => $queueName,
-                'connectionName' => $connectionName
+                'connectionName' => $connectionName,
             ]
         );
     }

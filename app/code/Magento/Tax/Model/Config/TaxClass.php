@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Config;
 
 /**
@@ -54,14 +57,14 @@ class TaxClass extends \Magento\Framework\App\Config\Value
      */
     public function afterSave()
     {
-        $attributeCode = "tax_class_id";
+        $attributeCode = 'tax_class_id';
 
         $attribute = $this->attributeFactory->create();
         $attribute->loadByCode(\Magento\Catalog\Model\Product::ENTITY, $attributeCode);
         if (!$attribute->getId()) {
             throw new \Magento\Framework\Exception\LocalizedException(__('Invalid attribute %1', $attributeCode));
         }
-        $attribute->setData("default_value", $this->getData('value'));
+        $attribute->setData('default_value', $this->getData('value'));
         $attribute->save();
 
         return parent::afterSave();

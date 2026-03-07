@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\GraphQl\Sales\Order\Create;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Tax\Test\Fixture\ProductTaxClass as ProductTaxClassFixture;
@@ -23,7 +25,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\GraphQl\Sales\Order\Create;
 
 /**
  * Test for guestOrder.items.prices
@@ -34,8 +35,8 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
     private const PRODUCT_SPECIAL_PRICE = 20;
     private const TAX_PERCENTAGE = 10;
 
-    private const EMAIL = "guest@magento.com";
-    private const LASTNAME = "test shipLast";
+    private const EMAIL = 'guest@magento.com';
+    private const LASTNAME = 'test shipLast';
 
     /**
      * @var DataFixtureStorageManager
@@ -88,7 +89,7 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -104,21 +105,21 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_FIXED,
                         'price' => 20,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option2',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
                         'price' => 10,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
                         'price' => 50,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'dropdown',
@@ -129,8 +130,8 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                                 'title' => 'option1_value1',
                                 'price' => 10,
                                 'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
                     [
                         'title' => 'multiple option',
@@ -159,8 +160,8 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product'
         ),
@@ -187,7 +188,7 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                 'title' => $value->getTitle(),
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[3]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $dropDownOptionId = $productOptions[0]['uid'];
@@ -197,7 +198,7 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                 'title' => $value->getTitle(),
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[4]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $multiOptionId = $productOptions[0]['uid'];
@@ -225,10 +226,10 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'original_row_total' => [
-                    'value' => 86
+                    'value' => 86,
                 ],
                 'original_row_total_including_tax' => [
-                    'value' => 94.6
+                    'value' => 94.6,
                 ],
             ],
             $response['guestOrder']['items'][0]['prices']
@@ -253,21 +254,21 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_FIXED,
                         'price' => 20,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option2',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
                         'price' => 10,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
                         'price' => 50,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'dropdown',
@@ -278,8 +279,8 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                                 'title' => 'option1_value1',
                                 'price' => 10,
                                 'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
                     [
                         'title' => 'multiple option',
@@ -308,8 +309,8 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product'
         ),
@@ -336,7 +337,7 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                 'title' => $value->getTitle(),
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[3]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $dropDownOptionId = $productOptions[0]['uid'];
@@ -346,7 +347,7 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
                 'title' => $value->getTitle(),
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[4]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $multiOptionId = $productOptions[0]['uid'];
@@ -375,10 +376,10 @@ class ProductsWithCustomOptionsSalesOrderPricesTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'original_row_total' => [
-                    'value' => 86
+                    'value' => 86,
                 ],
                 'original_row_total_including_tax' => [
-                    'value' => 86
+                    'value' => 86,
                 ],
             ],
             $response['guestOrder']['items'][0]['prices']

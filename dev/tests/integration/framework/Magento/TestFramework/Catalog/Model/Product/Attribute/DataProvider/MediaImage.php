@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Catalog\Model\Product\Attribute\Frontend\Image;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Eav\Model\Attribute\DataProvider\AbstractBaseAttributeData;
-use tests\util\MftfStaticTestCase;
 
 /**
  * Product attribute data for attribute with input type media image.
@@ -33,8 +33,8 @@ class MediaImage extends AbstractBaseAttributeData
     public static function getAttributeData(): array
     {
         $result = parent::getAttributeData();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }
@@ -45,8 +45,8 @@ class MediaImage extends AbstractBaseAttributeData
     public static function getAttributeDataWithCheckArray(): array
     {
         $result = parent::getAttributeDataWithCheckArray();
-        unset($result["{static::getFrontendInput()}_with_default_value"]);
-        unset($result["{static::getFrontendInput()}_without_default_value"]);
+        unset($result['{static::getFrontendInput()}_with_default_value']);
+        unset($result['{static::getFrontendInput()}_without_default_value']);
 
         return $result;
     }

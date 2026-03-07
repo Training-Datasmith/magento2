@@ -1,16 +1,17 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\ImportExport\Model\Export\Adapter;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
-use Magento\ImportExport\Model\Import;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\ImportExport\Model\Import;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -50,7 +51,7 @@ class CsvTest extends TestCase
     {
         $csv = $this->objectManager->create(Csv::class, [
             'destination' => $destination,
-            'destinationDirectoryCode' => DirectoryList::VAR_DIR
+            'destinationDirectoryCode' => DirectoryList::VAR_DIR,
         ]);
         /** @var Filesystem $fileSystem */
         $fileSystem = $this->objectManager->get(Filesystem::class);

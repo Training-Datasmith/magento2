@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ForwardTest extends TestCase
             [
                 'cookieManager' => $cookieManagerMock,
                 'cookieMetadataFactory' => $cookieMetadataFactoryMock,
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
 
@@ -68,7 +69,7 @@ class ForwardTest extends TestCase
             Forward::class,
             [
                 'request' => $this->request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -80,8 +81,8 @@ class PageDesignTest extends AbstractBackendController
     {
         BootstrapHelper::getObjectManager()->configure([
             'preferences' => [
-                CustomLayoutManagerInterface::class => CustomLayoutManager::class
-            ]
+                CustomLayoutManagerInterface::class => CustomLayoutManager::class,
+            ],
         ]);
         parent::setUp();
 
@@ -150,7 +151,7 @@ class PageDesignTest extends AbstractBackendController
             PageInterface::IDENTIFIER => $id,
             PageInterface::TITLE => 'Page title',
             PageInterface::CUSTOM_THEME => '1',
-            PageInterface::PAGE_LAYOUT => 'empty'
+            PageInterface::PAGE_LAYOUT => 'empty',
         ];
 
         //Creating a new page with design properties without the required permissions.
@@ -217,7 +218,7 @@ class PageDesignTest extends AbstractBackendController
         $requestData = [
             PageInterface::IDENTIFIER => $id,
             PageInterface::TITLE => 'Page title',
-            PageInterface::PAGE_LAYOUT => $defaultLayout
+            PageInterface::PAGE_LAYOUT => $defaultLayout,
         ];
         //Creating a new page with design properties without the required permissions but with default values.
         $this->aclBuilder->getAcl()->deny(
@@ -254,7 +255,7 @@ class PageDesignTest extends AbstractBackendController
             PageInterface::TITLE => 'Page title',
             PageInterface::CUSTOM_LAYOUT_UPDATE_XML => $page->getCustomLayoutUpdateXml(),
             PageInterface::LAYOUT_UPDATE_XML => $page->getLayoutUpdateXml(),
-            'layout_update_selected' => '_existing_'
+            'layout_update_selected' => '_existing_',
         ];
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
@@ -272,7 +273,7 @@ class PageDesignTest extends AbstractBackendController
             PageInterface::TITLE => 'Page title',
             PageInterface::CUSTOM_LAYOUT_UPDATE_XML => $page->getCustomLayoutUpdateXml(),
             PageInterface::LAYOUT_UPDATE_XML => $page->getLayoutUpdateXml(),
-            'layout_update_selected' => '_no_update_'
+            'layout_update_selected' => '_no_update_',
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($requestData);

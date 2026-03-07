@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class GroupRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'storeGroupRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/store/storeGroups';
+    public const SERVICE_NAME = 'storeGroupRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/store/storeGroups';
 
     /**
      * Test getList

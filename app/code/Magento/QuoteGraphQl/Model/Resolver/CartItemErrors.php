@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\QuoteGraphQl\Model\Resolver;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\EnumLookup;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Model\Quote\Item;
 
@@ -77,7 +78,7 @@ class CartItemErrors implements ResolverInterface
             );
             $errors[$message] = [
                 'code' => $errorEnumCode,
-                'message' => $message
+                'message' => $message,
             ];
         }
 

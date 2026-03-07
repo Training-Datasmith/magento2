@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +15,11 @@ use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\UserTokenIssuerInterface;
 use Magento\Integration\Api\UserTokenRevokerInterface;
 use Magento\Integration\Model\Oauth\Token as Token;
+use Magento\Integration\Model\Oauth\Token\RequestThrottler;
 use Magento\Integration\Model\Oauth\TokenFactory as TokenModelFactory;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory as TokenCollectionFactory;
-use Magento\User\Model\User as UserModel;
-use Magento\Integration\Model\Oauth\Token\RequestThrottler;
 use Magento\Integration\Model\UserToken\UserTokenParametersFactory;
+use Magento\User\Model\User as UserModel;
 
 /**
  * Class to handle token generation for Admins

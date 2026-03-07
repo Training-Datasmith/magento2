@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Model\Indexer\Stock;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
@@ -20,9 +20,10 @@ use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Indexer\CacheContext;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for CacheCleaner
@@ -93,19 +94,19 @@ class CacheCleanerTest extends TestCase
             ->getMock();
         $this->eventManagerMock = $this->getMockBuilder(ManagerInterface::class)
             ->getMock();
-        
+
         $this->metadataPoolMock = $this->createPartialMockWithReflection(
             MetadataPool::class,
             ['getMetadata', 'getHydrator']
         );
-        
+
         $metadataMock = $this->createPartialMockWithReflection(
             EntityMetadata::class,
             ['getLinkField']
         );
         $metadataMock->method('getLinkField')->willReturn('row_id');
         $this->metadataPoolMock->method('getMetadata')->willReturn($metadataMock);
-        
+
         $this->selectMock = $this->getMockBuilder(Select::class)
             ->disableOriginalConstructor()
             ->getMock();

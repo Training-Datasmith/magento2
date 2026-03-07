@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class SalesOrderPaymentDataConverterTest extends TestCase
             SalesOrderPaymentDataConverter::class,
             [
                 'serialize' => $this->serializeMock,
-                'json' => $this->jsonMock
+                'json' => $this->jsonMock,
             ]
         );
     }
@@ -51,12 +52,12 @@ class SalesOrderPaymentDataConverterTest extends TestCase
         $unserializedData = [
             'token_metadata' => [
                 'customer_id' => 1,
-                'public_hash' => 'someHash'
-            ]
+                'public_hash' => 'someHash',
+            ],
         ];
         $convertedUnserializedData = [
             'customer_id' => 1,
-            'public_hash' => 'someHash'
+            'public_hash' => 'someHash',
         ];
         $jsonEncodedData = 'json encoded data';
 

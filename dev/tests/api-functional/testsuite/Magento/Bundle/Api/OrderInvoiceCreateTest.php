@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Api;
 
 /**
@@ -10,8 +13,8 @@ namespace Magento\Bundle\Api;
  */
 class OrderInvoiceCreateTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_READ_NAME = 'salesInvoiceOrderV1';
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_READ_NAME = 'salesInvoiceOrderV1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

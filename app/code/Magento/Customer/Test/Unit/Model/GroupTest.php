@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Customer\Model\Group;
 use Magento\Customer\Model\GroupManagement;
 use Magento\Customer\Model\ResourceModel\Group as GroupResource;
 use Magento\Framework\Model\Context;
-use Magento\Framework\Registry;
 use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\StoresConfig;
 use Magento\Tax\Model\ClassModel;
@@ -85,7 +86,7 @@ class GroupTest extends TestCase
         $eventManagerMock->expects($this->any())
             ->method('dispatch')
             ->willReturn(true);
-        
+
         $this->contextMock->expects($this->any())
             ->method('getEventDispatcher')
             ->willReturn($eventManagerMock);
@@ -99,7 +100,7 @@ class GroupTest extends TestCase
                 'storesConfig' => $this->storesConfigMock,
                 'dataObjectProcessor' => $this->dataObjectProcessorMock,
                 'classModelFactory' => $this->classModelFactoryMock,
-                'resource' => $this->resourceMock
+                'resource' => $this->resourceMock,
             ]
         );
     }
@@ -113,7 +114,7 @@ class GroupTest extends TestCase
     {
         $code = 'test_group_code';
         $result = $this->model->setCode($code);
-        
+
         $this->assertSame($this->model, $result, 'setCode should return $this for method chaining');
         $this->assertEquals($code, $this->model->getCode(), 'getCode should return the code set by setCode');
     }
@@ -127,10 +128,10 @@ class GroupTest extends TestCase
     {
         $longCode = str_repeat('a', 50); // 50 characters, exceeds max of 32
         $expectedCode = str_repeat('a', Group::GROUP_CODE_MAX_LENGTH);
-        
+
         $this->model->setCode($longCode);
         $this->model->beforeSave();
-        
+
         $this->assertEquals(
             $expectedCode,
             $this->model->getCode(),
@@ -159,7 +160,7 @@ class GroupTest extends TestCase
     ): void {
         $this->model->setCode($input);
         $this->model->beforeSave();
-        
+
         $this->assertEquals(
             $expected,
             $this->model->getCode(),
@@ -183,33 +184,33 @@ class GroupTest extends TestCase
             'multibyte_within_limit' => [
                 'input' => str_repeat('ö', 31),
                 'expected' => str_repeat('ö', 31),
-                'expectedLength' => 31
+                'expectedLength' => 31,
             ],
             'multibyte_at_limit' => [
                 'input' => str_repeat('ö', 32),
                 'expected' => str_repeat('ö', 32),
-                'expectedLength' => 32
+                'expectedLength' => 32,
             ],
             'multibyte_over_limit' => [
                 'input' => str_repeat('ö', 40),
                 'expected' => str_repeat('ö', 32),
-                'expectedLength' => 32
+                'expectedLength' => 32,
             ],
             'chinese_over_limit' => [
                 'input' => str_repeat('中', 40),
                 'expected' => str_repeat('中', 32),
-                'expectedLength' => 32
+                'expectedLength' => 32,
             ],
             'mixed_multibyte' => [
                 'input' => str_repeat('aö', 20), // 40 characters
                 'expected' => str_repeat('aö', 16), // 32 characters
-                'expectedLength' => 32
+                'expectedLength' => 32,
             ],
             'emoji_over_limit' => [
                 'input' => str_repeat('😀', 40),
                 'expected' => str_repeat('😀', 32),
-                'expectedLength' => 32
-            ]
+                'expectedLength' => 32,
+            ],
         ];
     }
 
@@ -222,13 +223,13 @@ class GroupTest extends TestCase
     {
         $taxClassName = 'Retail Customer';
         $this->model->setData('tax_class_name', $taxClassName);
-        
+
         // Should not call classModelFactory since name is already set
         $this->classModelFactoryMock->expects($this->never())
             ->method('create');
-        
+
         $result = $this->model->getTaxClassName();
-        
+
         $this->assertEquals($taxClassName, $result);
     }
 
@@ -241,9 +242,9 @@ class GroupTest extends TestCase
     {
         $taxClassId = 3;
         $taxClassName = 'Retail Customer';
-        
+
         $this->model->setTaxClassId($taxClassId);
-        
+
         $classModelMock = $this->createMock(ClassModel::class);
         $classModelMock->expects($this->once())
             ->method('load')
@@ -252,13 +253,13 @@ class GroupTest extends TestCase
         $classModelMock->expects($this->once())
             ->method('getClassName')
             ->willReturn($taxClassName);
-        
+
         $this->classModelFactoryMock->expects($this->once())
             ->method('create')
             ->willReturn($classModelMock);
-        
+
         $result = $this->model->getTaxClassName();
-        
+
         $this->assertEquals($taxClassName, $result);
         $this->assertEquals($taxClassName, $this->model->getData('tax_class_name'));
     }
@@ -272,14 +273,14 @@ class GroupTest extends TestCase
     {
         $groupId = 1;
         $this->model->setId($groupId);
-        
+
         $this->storesConfigMock->expects($this->once())
             ->method('getStoresConfigByPath')
             ->with(GroupManagement::XML_PATH_DEFAULT_ID)
             ->willReturn([1, 2, 3]);
-        
+
         $result = $this->model->usesAsDefault();
-        
+
         $this->assertTrue($result);
     }
 
@@ -292,14 +293,14 @@ class GroupTest extends TestCase
     {
         $groupId = 5;
         $this->model->setId($groupId);
-        
+
         $this->storesConfigMock->expects($this->once())
             ->method('getStoresConfigByPath')
             ->with(GroupManagement::XML_PATH_DEFAULT_ID)
             ->willReturn([1, 2, 3]);
-        
+
         $result = $this->model->usesAsDefault();
-        
+
         $this->assertFalse($result);
     }
 
@@ -312,9 +313,9 @@ class GroupTest extends TestCase
     {
         $code = str_repeat('a', 50);
         $this->model->setCode($code);
-        
+
         $this->model->beforeSave();
-        
+
         // Verify that code was truncated by _prepareData
         $this->assertEquals(
             Group::GROUP_CODE_MAX_LENGTH,

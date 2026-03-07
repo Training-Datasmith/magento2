@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Invalid state exception
  *

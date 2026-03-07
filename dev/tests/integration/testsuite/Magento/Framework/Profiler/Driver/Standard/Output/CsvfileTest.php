@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Profiler\Driver\Standard\Output\Csvfile
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Driver\Standard\Output;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -60,7 +63,7 @@ class CsvfileTest extends \PHPUnit\Framework\TestCase
                 __DIR__ . '/_files/output_custom.csv',
                 '.',
                 '`',
-            ]
+            ],
         ];
     }
 }

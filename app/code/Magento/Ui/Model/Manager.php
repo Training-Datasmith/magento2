@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ class Manager implements ManagerInterface
     /**
      * ID in the storage cache
      */
-    const CACHE_ID = 'ui_component_configuration_data';
+    public const CACHE_ID = 'ui_component_configuration_data';
 
     /**
      * Configuration provider for UI component
@@ -259,7 +261,7 @@ class Manager implements ManagerInterface
                     'fileCollector' => $this->aggregatedFileCollectorFactory->create(
                         ['searchPattern' => sprintf(ManagerInterface::SEARCH_PATTERN, $name)]
                     ),
-                    'domMerger' => $this->domMerger
+                    'domMerger' => $this->domMerger,
                 ]
             );
         }

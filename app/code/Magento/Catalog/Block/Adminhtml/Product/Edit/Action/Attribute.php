@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Action;
 
 use Magento\Catalog\Helper\Product\Edit\Action\Attribute as ActionAttribute;
@@ -55,7 +58,7 @@ class Attribute extends \Magento\Backend\Block\Widget
                     'catalog/product/',
                     ['store' => $this->getRequest()->getParam('store', 0)]
                 ) . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
 
@@ -65,7 +68,7 @@ class Attribute extends \Magento\Backend\Block\Widget
             [
                 'label' => __('Reset'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/*', ['_current' => true]) . '\')',
-                'class' => 'reset'
+                'class' => 'reset',
             ]
         );
 
@@ -77,7 +80,7 @@ class Attribute extends \Magento\Backend\Block\Widget
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#attributes-edit-form']],
-                ]
+                ],
             ]
         );
     }

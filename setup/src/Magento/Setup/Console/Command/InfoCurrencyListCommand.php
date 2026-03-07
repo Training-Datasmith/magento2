@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Setup\Console\Command;
 
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Setup\Lists;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\TableFactory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
-use Magento\Framework\Setup\Lists;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Command prints list of available currencies

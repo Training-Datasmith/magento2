@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class SetConversionValueObserverTest extends TestCase
             [
                 'helper' => $this->_helperMock,
                 'collection' => $this->_collectionMock,
-                'registry' => $this->_registryMock
+                'registry' => $this->_registryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,8 +55,8 @@ class PolicyRendererPoolTest extends TestCase
             PolicyRendererPool::class,
             [
                 'renderers' => [
-                    $this->simplePolicyHeaderRendererMock
-                ]
+                    $this->simplePolicyHeaderRendererMock,
+                ],
             ]
         );
     }

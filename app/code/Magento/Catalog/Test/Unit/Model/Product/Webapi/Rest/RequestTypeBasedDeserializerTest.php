@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,14 +8,12 @@
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Webapi\Rest;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Webapi\Exception;
 use Magento\Catalog\Model\Product\Webapi\Rest\RequestTypeBasedDeserializer;
 use Magento\Framework\App\State;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Json\Decoder;
 use Magento\Framework\Serialize\Serializer\Json as SerializerJson;
+use Magento\Framework\Webapi\Exception;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Framework\Webapi\Rest\Request\Deserializer\Json as DeserializerJson;
 use Magento\Framework\Webapi\Rest\Request\Deserializer\Xml as DeserializerXml;
@@ -21,7 +21,9 @@ use Magento\Framework\Webapi\Rest\Request\DeserializerFactory;
 use Magento\Framework\Webapi\Rest\Request\DeserializerInterface;
 use Magento\Framework\Xml\Parser as ParserXml;
 use Magento\Framework\Xml\ParserFactory as ParserXmlFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * A Test for RequestTypeBasedDeserializer
@@ -105,9 +107,9 @@ class RequestTypeBasedDeserializerTest extends TestCase
                         'name' => 'testName1',
                         'weight' => '10',
                         'attribute_set_id' => '4',
-                        'status' => '1'
-                    ]
-                ]
+                        'status' => '1',
+                    ],
+                ],
             ],
             'request body with json data' => [
                 'body' => '{
@@ -127,10 +129,10 @@ class RequestTypeBasedDeserializerTest extends TestCase
                         'name' => 'testName2',
                         'weight' => 5,
                         'attribute_set_id' => 4,
-                        'status' => 0
-                    ]
-                ]
-            ]
+                        'status' => 0,
+                    ],
+                ],
+            ],
         ];
     }
 

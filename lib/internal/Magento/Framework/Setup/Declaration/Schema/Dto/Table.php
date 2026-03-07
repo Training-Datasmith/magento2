@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class Table extends GenericElement implements
      * In case if we will need to change this object: add, modify or drop, we will need
      * to define it by its type
      */
-    const TYPE = 'table';
+    public const TYPE = 'table';
 
     /**
      * @var Constraint[]
@@ -183,7 +185,7 @@ class Table extends GenericElement implements
      *
      * @return array
      */
-    public function getInternalConstraints() : array
+    public function getInternalConstraints(): array
     {
         $constraints = [];
         foreach ($this->getConstraints() as $constraint) {
@@ -299,7 +301,7 @@ class Table extends GenericElement implements
     public function getElementsByType($type)
     {
         if (!isset($this->{$type})) {
-            throw new \InvalidArgumentException(sprintf("Type %s is not defined", $type));
+            throw new \InvalidArgumentException(sprintf('Type %s is not defined', $type));
         }
 
         return $this->{$type};
@@ -346,7 +348,7 @@ class Table extends GenericElement implements
             'engine' => $this->getEngine(),
             'comment' => $this->getComment(),
             'charset' => $this->getCharset(),
-            'collation' => $this->getCollation()
+            'collation' => $this->getCollation(),
         ];
     }
 
@@ -355,7 +357,7 @@ class Table extends GenericElement implements
      *
      * @return string
      */
-    public function getCharset() : string
+    public function getCharset(): string
     {
         return $this->charset;
     }
@@ -365,7 +367,7 @@ class Table extends GenericElement implements
      *
      * @return string
      */
-    public function getCollation() : string
+    public function getCollation(): string
     {
         return $this->collation;
     }

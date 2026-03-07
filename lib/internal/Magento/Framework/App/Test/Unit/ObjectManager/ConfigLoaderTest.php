@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\ObjectManager\Config\Reader\Dom;
 use Magento\Framework\ObjectManager\Config\Reader\DomFactory;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ConfigLoaderTest extends TestCase
@@ -115,7 +116,7 @@ class ConfigLoaderTest extends TestCase
         return [
             'global files' => ['global'],
             'adminhtml files' => ['adminhtml'],
-            'any area files' => ['any']
+            'any area files' => ['any'],
         ];
     }
 

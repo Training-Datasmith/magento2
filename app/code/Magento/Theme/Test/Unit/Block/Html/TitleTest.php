@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title as PageTitle;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Theme\Block\Html\Title;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for \Magento\Theme\Block\Html\Title
@@ -74,7 +75,7 @@ class TitleTest extends TestCase
             Title::class,
             [
                 'context' => $context,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -192,11 +193,11 @@ class TitleTest extends TestCase
     {
         return [
             [
-                true
+                true,
             ],
             [
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

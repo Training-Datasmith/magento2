@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModuleWysiwygConfig\Model;
 
 class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
@@ -11,13 +14,13 @@ class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
      * Configuration override for WYSIWYG height
      * @var string
      */
-    const CONFIG_HEIGHT = 'something_else';
+    public const CONFIG_HEIGHT = 'something_else';
 
     /**
      * Configuration override for WYSIWYG content css
      * @var string
      */
-    const CONFIG_CONTENT_CSS = 'something_else.css';
+    public const CONFIG_CONTENT_CSS = 'something_else.css';
 
     /** @var \Magento\Cms\Model\Wysiwyg\DefaultConfigProvider */
     private $cmsConfigProvider;
@@ -50,12 +53,12 @@ class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
      * @param \Magento\Framework\DataObject $config
      * @return \Magento\Framework\DataObject
      */
-    private function modifyHeightAndContentCss(\Magento\Framework\DataObject $config) : \Magento\Framework\DataObject
+    private function modifyHeightAndContentCss(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject
     {
         return $config->addData(
             [
                 'height' => self::CONFIG_HEIGHT,
-                'content_css' => self::CONFIG_CONTENT_CSS
+                'content_css' => self::CONFIG_CONTENT_CSS,
             ]
         );
     }
@@ -68,7 +71,7 @@ class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
      */
     private function removeSpecialCharacterFromToolbar(
         \Magento\Framework\DataObject $config
-    ) : \Magento\Framework\DataObject {
+    ): \Magento\Framework\DataObject {
         $tinymce = $config->getData('tinymce');
         if (isset($tinymce['toolbar']) && isset($tinymce['plugins'])) {
             $toolbar = $tinymce['toolbar'];

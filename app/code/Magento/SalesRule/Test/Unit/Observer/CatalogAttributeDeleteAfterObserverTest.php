@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class CatalogAttributeDeleteAfterObserverTest extends TestCase
         $this->model = $helper->getObject(
             CatalogAttributeDeleteAfterObserver::class,
             [
-                'checkSalesRulesAvailability' => $this->checkSalesRulesAvailability
+                'checkSalesRulesAvailability' => $this->checkSalesRulesAvailability,
             ]
         );
     }

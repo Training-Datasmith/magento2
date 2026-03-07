@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -84,7 +86,7 @@ class AddressMetadata implements AddressMetadataInterface
                         'fieldName' => 'entityType',
                         'fieldValue' => AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
                         'field2Name' => 'attributeCode',
-                        'field2Value' => $attributeCode
+                        'field2Value' => $attributeCode,
                     ]
                 )
             );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class InfoTimezoneListCommandTest extends TestCase
     public function testExecute()
     {
         $timezones = [
-            'timezone' => 'timezone description'
+            'timezone' => 'timezone description',
         ];
 
         $table = $this->createMock(Table::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class DataTest extends TestCase
                 'orderTaxManagement' => $this->orderTaxManagementMock,
                 'priceCurrency' => $this->priceCurrencyMock,
                 'taxConfig' => $this->taxConfigMock,
-                'serializer' => $this->serializer
+                'serializer' => $this->serializer,
             ]
         );
     }
@@ -293,7 +294,7 @@ class DataTest extends TestCase
         foreach ($result as $index => $appliedTax) {
             $expectedTax = $expectedResults[$index];
             foreach ($appliedTax as $attr => $value) {
-                $this->assertEquals($expectedTax[$attr], $value, "The " . $attr . " of tax does not match");
+                $this->assertEquals($expectedTax[$attr], $value, 'The ' . $attr . ' of tax does not match');
             }
         }
     }
@@ -320,12 +321,12 @@ class DataTest extends TestCase
                                         'base_amount' => 5.0,
                                         'code' => 'US-CA',
                                         'title' => 'US-CA-Sales-Tax',
-                                        'percent' => 20.0
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'percent' => 20.0,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'invoiceData' => [
                     'invoice_items' => [
@@ -334,10 +335,10 @@ class DataTest extends TestCase
                                 'order_item' => new MagentoObject(
                                     [
                                         'id' => 1,
-                                        'tax_amount' => 5.00
+                                        'tax_amount' => 5.00,
                                     ]
                                 ),
-                                'tax_amount' => 2.50
+                                'tax_amount' => 2.50,
                             ]
                         ),
                         'item2' => new MagentoObject(
@@ -345,22 +346,22 @@ class DataTest extends TestCase
                                 'order_item' => new MagentoObject(
                                     [
                                         'id' => 2,
-                                        'tax_amount' => 0.0
+                                        'tax_amount' => 0.0,
                                     ]
                                 ),
-                                'tax_amount' => 0.0
+                                'tax_amount' => 0.0,
                             ]
-                        )
-                    ]
+                        ),
+                    ],
                 ],
                 'expectedResults' => [
                     [
                         'title' => 'US-CA-Sales-Tax',
                         'percent' => 20.0,
                         'tax_amount' => 2.5,
-                        'base_tax_amount' => 2.5
-                    ]
-                ]
+                        'base_tax_amount' => 2.5,
+                    ],
+                ],
             ],
             //Scenario 2: one item with associated weee tax
             'item_with_weee_tax_partial_invoice' => [
@@ -377,9 +378,9 @@ class DataTest extends TestCase
                                         'base_amount' => 5.0,
                                         'code' => 'US-CA',
                                         'title' => 'US-CA-Sales-Tax',
-                                        'percent' => 20.0
-                                    ]
-                                ]
+                                        'percent' => 20.0,
+                                    ],
+                                ],
                             ],
                             'weeeTax1' => [
                                 'associated_item_id' => 1,
@@ -390,12 +391,12 @@ class DataTest extends TestCase
                                         'base_amount' => 3.0,
                                         'code' => 'US-CA',
                                         'title' => 'US-CA-Sales-Tax',
-                                        'percent' => 20.0
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'percent' => 20.0,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'invoiceData' => [
                     'invoice_items' => [
@@ -404,24 +405,24 @@ class DataTest extends TestCase
                                 'order_item' => new MagentoObject(
                                     [
                                         'id' => 1,
-                                        'tax_amount' => 5.00
+                                        'tax_amount' => 5.00,
                                     ]
                                 ),
                                 'tax_amount' => 5.0,
                                 //half of weee tax is invoiced
-                                'tax_ratio' => json_encode(['weee' => 0.5])
+                                'tax_ratio' => json_encode(['weee' => 0.5]),
                             ]
-                        )
-                    ]
+                        ),
+                    ],
                 ],
                 'expectedResults' => [
                     [
                         'title' => 'US-CA-Sales-Tax',
                         'percent' => 20.0,
                         'tax_amount' => 6.5,
-                        'base_tax_amount' => 6.5
-                    ]
-                ]
+                        'base_tax_amount' => 6.5,
+                    ],
+                ],
             ],
             //Scenario 3: one item, with both shipping and product taxes
             // note that 'shipping tax' is listed before 'product tax'
@@ -440,9 +441,9 @@ class DataTest extends TestCase
                                         'base_amount' => 2.0,
                                         'code' => 'US-CA-Ship',
                                         'title' => 'US-CA-Sales-Tax-Ship',
-                                        'percent' => 10.0
-                                    ]
-                                ]
+                                        'percent' => 10.0,
+                                    ],
+                                ],
                             ],
                             'itemTax1' => [
                                 'item_id' => 1,
@@ -452,12 +453,12 @@ class DataTest extends TestCase
                                         'base_amount' => 5.0,
                                         'code' => 'US-CA',
                                         'title' => 'US-CA-Sales-Tax',
-                                        'percent' => 20.0
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                        'percent' => 20.0,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'invoiceData' => [
                     'shipping_tax_amount' => 2,
@@ -467,13 +468,13 @@ class DataTest extends TestCase
                                 'order_item' => new MagentoObject(
                                     [
                                         'id' => 1,
-                                        'tax_amount' => 5.00
+                                        'tax_amount' => 5.00,
                                     ]
                                 ),
-                                'tax_amount' => 5.00
+                                'tax_amount' => 5.00,
                             ]
-                        )
-                    ]
+                        ),
+                    ],
                 ],
                 // note that 'shipping tax' is now listed after 'product tax'
                 'expectedResults' => [
@@ -481,16 +482,16 @@ class DataTest extends TestCase
                         'title' => 'US-CA-Sales-Tax',
                         'percent' => 20.0,
                         'tax_amount' => 5.00,
-                        'base_tax_amount' => 5.00
+                        'base_tax_amount' => 5.00,
                     ],
                     [
                         'title' => 'US-CA-Sales-Tax-Ship',
                         'percent' => 10.0,
                         'tax_amount' => 2.00,
-                        'base_tax_amount' => 2.00
-                    ]
-                ]
-            ]
+                        'base_tax_amount' => 2.00,
+                    ],
+                ],
+            ],
         ];
 
         return $data;
@@ -550,7 +551,7 @@ class DataTest extends TestCase
             [true , false, true, false, true],
             [false , false, true, true, true],
             [true , false, false, true, true],
-            [false , false, false, true, false]
+            [false , false, false, true, false],
         ];
     }
 }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2018 Adobe
@@ -38,12 +40,12 @@ class EnabledConnectionTest extends TestCase
                 'disabled' => false,
                 'connections' => [
                     'con01' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => true],
-                ]
+                ],
             ],
             'pub03' => [
                 'topic' => 'pub02',
                 'disabled' => false,
-            ]
+            ],
         ];
         $this->model->validate($configData);
     }

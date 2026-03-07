@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -50,10 +51,10 @@ return [
         Magento\Framework\GraphQl\Schema\Type\TypeRegistry::class => ['types' => null],
         Magento\Framework\Filesystem::class => ['readInstances' => null, 'writeInstances' => null],
         Magento\Framework\EntityManager\TypeResolver::class => [
-            'typeMapping' => null
+            'typeMapping' => null,
         ],
         Magento\Framework\App\View\Deployment\Version::class => [
-            'cachedValue' => null // deployment version of static files
+            'cachedValue' => null, // deployment version of static files
         ],
         Magento\Framework\View\Asset\Minification::class => ['configCache' => null], // TODO: depends on mode
         Magento\Eav\Model\Config::class => [ // TODO: is this risky?

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class ImageProviderTest extends TestCase
             'src' => 'Url',
             'alt' => 'Label',
             'width' => 'Width',
-            'height' => 'Height'
+            'height' => 'Height',
         ];
         $itemMock = $this->createMock(Item::class);
         $itemMock->expects($this->once())->method('getItemId')->willReturn($itemId);

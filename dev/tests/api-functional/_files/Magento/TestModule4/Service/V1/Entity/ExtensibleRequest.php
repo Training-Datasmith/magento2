@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ class ExtensibleRequest extends \Magento\Framework\Model\AbstractExtensibleModel
 {
     public function getName()
     {
-        return $this->getData("name");
+        return $this->getData('name');
     }
 
     /**
@@ -24,7 +26,7 @@ class ExtensibleRequest extends \Magento\Framework\Model\AbstractExtensibleModel
      */
     public function setName($name)
     {
-        return $this->setData("name", $name);
+        return $this->setData('name', $name);
     }
 
     /**
@@ -33,6 +35,6 @@ class ExtensibleRequest extends \Magento\Framework\Model\AbstractExtensibleModel
      */
     public function setEntityId($entityId)
     {
-        return $this->setData("entity_id", $entityId);
+        return $this->setData('entity_id', $entityId);
     }
 }

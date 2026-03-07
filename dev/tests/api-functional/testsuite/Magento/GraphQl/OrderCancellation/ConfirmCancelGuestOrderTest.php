@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,12 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\OrderCancellation;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Exception\AuthenticationException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\OrderCancellation\Model\GetConfirmationKey;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Quote\Test\Fixture\GuestCart;
 use Magento\Sales\Api\OrderRepositoryInterface;
@@ -22,21 +31,13 @@ use Magento\Sales\Test\Fixture\Creditmemo as CreditmemoFixture;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
 use Magento\Sales\Test\Fixture\Shipment as ShipmentFixture;
 use Magento\Store\Test\Fixture\Store;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Framework\Exception\AuthenticationException;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Fixture\Config;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test coverage for cancel order mutation for guest order
@@ -91,7 +92,7 @@ class ConfirmCancelGuestOrderTest extends GraphQlAbstract
     public function testAttemptToConfirmCancelOrderWhenMissingOrderId(): void
     {
         $this->expectException(ResponseContainsErrorsException::class);
-        $this->expectExceptionMessage("Field ConfirmCancelOrderInput.order_id of required type ID! was not provided.");
+        $this->expectExceptionMessage('Field ConfirmCancelOrderInput.order_id of required type ID! was not provided.');
         $this->graphQlMutation(<<<MUTATION
         mutation {
             confirmCancelOrder(
@@ -119,10 +120,10 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'error' => "The entity that was requested doesn't exist. Verify the entity and try again.",
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
-            $this->graphQlMutation($this->getConfirmCancelOrderMutation("MTAwMDA="))
+            $this->graphQlMutation($this->getConfirmCancelOrderMutation('MTAwMDA='))
         );
     }
 
@@ -134,7 +135,7 @@ MUTATION);
     {
         $this->expectException(ResponseContainsErrorsException::class);
         $this->expectExceptionMessage(
-            "Field ConfirmCancelOrderInput.confirmation_key of required type String! was not provided."
+            'Field ConfirmCancelOrderInput.confirmation_key of required type String! was not provided.'
         );
         $this->graphQlMutation(<<<MUTATION
         mutation {
@@ -168,8 +169,8 @@ MUTATION);
                     'errorV2' => [
                         'message' => 'Order cancellation is not enabled for requested store.',
                     ],
-                    'order' => null
-                ]
+                    'order' => null,
+                ],
             ],
             $this->graphQlMutation(
                 $this->getConfirmCancelOrderMutationWithErrorV2(
@@ -211,9 +212,9 @@ MUTATION);
                             'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => $expectedStatus
-                        ]
-                    ]
+                            'status' => $expectedStatus,
+                        ],
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$order->getEntityId())
@@ -248,12 +249,12 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order already closed, complete, cancelled or on hold'
+                            'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => 'Complete'
-                        ]
-                    ]
+                            'status' => 'Complete',
+                        ],
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -275,7 +276,7 @@ MUTATION);
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -289,7 +290,7 @@ MUTATION);
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product.id$', 'qty' => 1]],
             ]
         ),
         Config('sales/cancellation/enabled', 1)
@@ -301,12 +302,12 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order with one or more items shipped cannot be cancelled'
+                            'message' => 'Order with one or more items shipped cannot be cancelled',
                         ],
                         'order' => [
-                            'status' => 'Processing'
-                        ]
-                    ]
+                            'status' => 'Processing',
+                        ],
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -341,12 +342,12 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Order already closed, complete, cancelled or on hold'
+                            'message' => 'Order already closed, complete, cancelled or on hold',
                         ],
                         'order' => [
-                            'status' => 'Closed'
-                        ]
-                    ]
+                            'status' => 'Closed',
+                        ],
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -374,10 +375,10 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => "The order cancellation could not be confirmed."
+                            'message' => 'The order cancellation could not be confirmed.',
                         ],
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -405,10 +406,10 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'errorV2' => [
-                            'message' => 'Current user is not authorized to cancel this order'
+                            'message' => 'Current user is not authorized to cancel this order',
                         ],
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutationWithErrorV2(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -436,8 +437,8 @@ MUTATION);
                 'confirmCancelOrder' =>
                     [
                         'error' => 'The order cancellation could not be confirmed.',
-                        'order' => null
-                    ]
+                        'order' => null,
+                    ],
             ],
             $this->graphQlMutation($this->getConfirmCancelOrderMutation(
                 $this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())
@@ -468,9 +469,9 @@ MUTATION);
                     [
                         'errorV2' => null,
                         'order' => [
-                            'status' => 'Canceled'
-                        ]
-                    ]
+                            'status' => 'Canceled',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getConfirmCancelOrderMutationWithErrorV2(
@@ -515,7 +516,7 @@ MUTATION;
      */
     private function getConfirmCancelOrderMutationWithErrorV2(
         string $orderUid,
-        string $confirmationKey = "4f8d1e2a6c7e5b4f9a2d3e0f1c5a747d"
+        string $confirmationKey = '4f8d1e2a6c7e5b4f9a2d3e0f1c5a747d'
     ): string {
         return <<<MUTATION
          mutation {
@@ -544,20 +545,20 @@ MUTATION;
         return [
             'On Hold status' => [
                 Order::STATE_HOLDED,
-                'On Hold'
+                'On Hold',
             ],
             'Canceled status' => [
                 Order::STATE_CANCELED,
-                'Canceled'
+                'Canceled',
             ],
             'Closed status' => [
                 Order::STATE_CLOSED,
-                'Closed'
+                'Closed',
             ],
             'Complete status' => [
                 Order::STATE_COMPLETE,
-                'Complete'
-            ]
+                'Complete',
+            ],
         ];
     }
 }

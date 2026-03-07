@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 use Magento\Bundle\Model\Product\Price;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Api\Data\CategoryInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\Data\CategoryInterfaceFactory;
 use Magento\Catalog\Helper\DefaultCategory;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
@@ -108,7 +109,7 @@ $bundleSelectionsData = [
             'selection_price_value' => 0,
             'selection_can_change_qty' => 1,
         ],
-    ]
+    ],
 ];
 $bundleProduct = $prepareBundleLinks->execute($bundleProduct, $bundleOptionsData, $bundleSelectionsData);
 $productRepository->save($bundleProduct);

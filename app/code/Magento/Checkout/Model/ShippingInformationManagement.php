@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,8 +26,8 @@ use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Api\PaymentMethodManagementInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\TotalsCollector;
-use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\QuoteAddressValidationService;
+use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\ShippingAssignmentFactory;
 use Magento\Quote\Model\ShippingFactory;
 use Psr\Log\LoggerInterface as Logger;

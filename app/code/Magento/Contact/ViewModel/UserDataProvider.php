@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +16,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  */
 class UserDataProvider implements ArgumentInterface
 {
-
     /**
      * @var Data
      */

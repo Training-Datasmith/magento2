@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedImportExport\Model\Import\Product\Type\Grouped;
 
 use Magento\CatalogImportExport\Model\Import\Product as ProductImport;
@@ -76,7 +79,7 @@ class Links
                 $mainData[] = [
                     'product_id' => $productData['parent_id'],
                     'linked_product_id' => $productData['child_id'],
-                    'link_type_id' => $this->getLinkTypeId()
+                    'link_type_id' => $this->getLinkTypeId(),
                 ];
             }
             $this->connection->insertOnDuplicate($mainTable, $mainData);
@@ -147,7 +150,7 @@ class Links
             foreach ($this->connection->fetchAll($select) as $row) {
                 $this->attributes[$row['code']] = [
                     'id' => $row['id'],
-                    'table' => $this->productLink->getAttributeTypeTable($row['type'])
+                    'table' => $this->productLink->getAttributeTypeTable($row['type']),
                 ];
             }
         }

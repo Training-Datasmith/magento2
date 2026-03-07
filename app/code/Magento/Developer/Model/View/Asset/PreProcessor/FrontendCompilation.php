@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Model\View\Asset\PreProcessor;
 
 use Magento\Framework\View\Asset\File\FallbackContext;
-use Magento\Framework\View\Asset\PreProcessor;
-use Magento\Framework\View\Asset\PreProcessorInterface;
 use Magento\Framework\View\Asset\LockerProcessInterface;
-use Magento\Framework\View\Asset\PreProcessor\AlternativeSourceInterface;
+use Magento\Framework\View\Asset\PreProcessor;
 use Magento\Framework\View\Asset\PreProcessor\AlternativeSource\AssetBuilder;
+use Magento\Framework\View\Asset\PreProcessor\AlternativeSourceInterface;
+use Magento\Framework\View\Asset\PreProcessorInterface;
 use Magento\Framework\View\Asset\Source;
 
 /**
@@ -121,14 +124,14 @@ class FrontendCompilation implements PreProcessorInterface
             if (trim($processedContent) !== '') {
                 return [
                     'content' => $processedContent,
-                    'sourceType' => $name
+                    'sourceType' => $name,
                 ];
             }
         }
 
         return [
             'content' => $content,
-            'sourceType' => pathinfo($path, PATHINFO_EXTENSION)
+            'sourceType' => pathinfo($path, PATHINFO_EXTENSION),
         ];
     }
 }

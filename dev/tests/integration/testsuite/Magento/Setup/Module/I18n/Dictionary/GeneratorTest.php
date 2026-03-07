@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Dictionary;
 
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Setup\Module\I18n\Dictionary\Generator;
 use Magento\Setup\Module\I18n\ServiceLocator;
 
 class GeneratorTest extends \PHPUnit\Framework\TestCase

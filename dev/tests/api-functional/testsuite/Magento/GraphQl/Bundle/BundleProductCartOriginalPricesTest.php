@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'sku' => 'bundle-product-fixed-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
-                '_options' => ['$opt1$', '$opt2$']
+                '_options' => ['$opt1$', '$opt2$'],
             ],
             'bundle_product_1'
         ),
@@ -69,7 +70,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
                 'sku' => 'bundle-product-fixed-price-special-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -79,7 +80,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         ),
         DataFixture(
@@ -87,7 +88,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         )
     ]
@@ -131,7 +132,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
                 'sku' => 'bundle-product-fixed-price-special-price',
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -141,7 +142,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         ),
         DataFixture(
@@ -149,7 +150,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         )
     ]
@@ -179,7 +180,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product1.sku$',
                 'price' => 90, //90% of bundle price
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection1'
         ),
@@ -188,7 +189,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 80, //80% of bundle price
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection2'
         ),
@@ -211,7 +212,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -221,7 +222,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         ),
         DataFixture(
@@ -229,7 +230,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         )
     ]
@@ -272,7 +273,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         )
     ]
@@ -312,7 +313,7 @@ class BundleProductCartOriginalPricesTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         )
     ]
@@ -381,74 +382,74 @@ QUERY;
         $item2Option2PriceV2,
     ): array {
         return [
-            "cart" =>  [
-                "items" => [
+            'cart' =>  [
+                'items' => [
                     0 => [
-                        "bundle_options" => [
+                        'bundle_options' => [
                             0 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item1Option1PriceV2,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item1Option1PriceV2,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => $product1OriginalPrice,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
+                                        'original_price' => [
+                                            'value' => $product1OriginalPrice,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
                             ],
                             1 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item2Option1PriceV2,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item2Option1PriceV2,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => $product2OriginalPrice,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
+                                        'original_price' => [
+                                            'value' => $product2OriginalPrice,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     1 => [
-                        "bundle_options" => [
+                        'bundle_options' => [
                             0 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item1Option2PriceV2,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item1Option2PriceV2,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => $product1OriginalPrice,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
+                                        'original_price' => [
+                                            'value' => $product1OriginalPrice,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
                             ],
                             1 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item2Option2PriceV2,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item2Option2PriceV2,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => $product2OriginalPrice,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                        'original_price' => [
+                                            'value' => $product2OriginalPrice,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -464,42 +465,42 @@ QUERY;
         $item2SpecialPrice
     ): array {
         return [
-            "cart" =>  [
-                "items" => [
+            'cart' =>  [
+                'items' => [
                     0 => [
-                        "bundle_options" => [
+                        'bundle_options' => [
                             0 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item1SpecialPrice,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item1SpecialPrice,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => 20,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
+                                        'original_price' => [
+                                            'value' => 20,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
                             ],
                             1 => [
                                 'values' => [
                                     0 => [
-                                        "priceV2" => [
-                                            "value" => $item2SpecialPrice,
-                                            "currency" => "USD"
+                                        'priceV2' => [
+                                            'value' => $item2SpecialPrice,
+                                            'currency' => 'USD',
                                         ],
-                                        "original_price" => [
-                                            "value" => 10,
-                                            "currency" => "USD"
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                        'original_price' => [
+                                            'value' => 10,
+                                            'currency' => 'USD',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

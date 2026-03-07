@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\FromRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FromRendererTest extends TestCase
 {
@@ -93,15 +94,15 @@ class FromRendererTest extends TestCase
             [
                 [['joinType' => Select::FROM, 'schema' => null, 'tableName' => 't1', 'joinCondition' => null]],
                 'SELECT *',
-                'SELECT * FROM t1 AS 0'
+                'SELECT * FROM t1 AS 0',
             ],
             [
                 [
                     'a' => ['joinType' => Select::FROM, 'schema' => null, 'tableName' => 't1', 'joinCondition' => null],
-                    'b' => ['joinType' => Select::FROM, 'schema' => null, 'tableName' => 't2', 'joinCondition' => null]
+                    'b' => ['joinType' => Select::FROM, 'schema' => null, 'tableName' => 't2', 'joinCondition' => null],
                 ],
                 'SELECT a.*',
-                'SELECT a.* FROM t1 AS a' . "\n" . ' INNER JOIN t2 AS b'
+                'SELECT a.* FROM t1 AS a' . "\n" . ' INNER JOIN t2 AS b',
             ],
             [
                 [
@@ -110,12 +111,12 @@ class FromRendererTest extends TestCase
                         'joinType' => Select::LEFT_JOIN,
                         'schema' => 'db',
                         'tableName' => 't2',
-                        'joinCondition' => 't1.f1 = t2.f2'
-                    ]
+                        'joinCondition' => 't1.f1 = t2.f2',
+                    ],
                 ],
                 'SELECT b.f2',
-                'SELECT b.f2 FROM t1 AS a' . "\n" . ' LEFT JOIN db.t2 AS b ON t1.f1 = t2.f2'
-            ]
+                'SELECT b.f2 FROM t1 AS a' . "\n" . ' LEFT JOIN db.t2 AS b ON t1.f1 = t2.f2',
+            ],
         ];
     }
 }

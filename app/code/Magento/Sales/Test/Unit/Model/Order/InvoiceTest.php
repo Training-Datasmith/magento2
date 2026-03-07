@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,9 +25,9 @@ use Magento\Sales\Model\ResourceModel\Order\Invoice\Comment\CollectionFactory as
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Item\CollectionFactory;
 use Magento\Sales\Model\ResourceModel\OrderFactory;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  *
@@ -34,7 +35,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 class InvoiceTest extends TestCase
 {
-
     /**
      * @var Invoice
      */
@@ -260,7 +260,7 @@ class InvoiceTest extends TestCase
             [Invoice::STATE_CANCELED, null, false],
             [Invoice::STATE_CANCELED, null, false],
             [Invoice::STATE_PAID, null, false],
-            [Invoice::STATE_PAID, null, false]
+            [Invoice::STATE_PAID, null, false],
         ];
     }
 
@@ -285,7 +285,7 @@ class InvoiceTest extends TestCase
         return [
             [Invoice::STATE_OPEN, true],
             [Invoice::STATE_CANCELED, false],
-            [Invoice::STATE_PAID, false]
+            [Invoice::STATE_PAID, false],
         ];
     }
 
@@ -375,25 +375,25 @@ class InvoiceTest extends TestCase
         $expectedState,
         array $items
     ) {
-         $this->mockPay();
-         $this->model->setGrandTotal($totalPaid);
-         $this->model->setBaseGrandTotal($baseTotalPaid);
-         $this->order->setTotalPaid($totalPaid);
-         $this->order->setBaseTotalPaid($baseTotalPaid);
-         $collection = $this->getOrderInvoiceCollection();
-         $collection->method('getItems')
-            ->willReturn($items);
+        $this->mockPay();
+        $this->model->setGrandTotal($totalPaid);
+        $this->model->setBaseGrandTotal($baseTotalPaid);
+        $this->order->setTotalPaid($totalPaid);
+        $this->order->setBaseTotalPaid($baseTotalPaid);
+        $collection = $this->getOrderInvoiceCollection();
+        $collection->method('getItems')
+           ->willReturn($items);
 
-         self::assertFalse($this->model->wasPayCalled());
-         self::assertEquals($this->model, $this->model->pay());
-         self::assertTrue($this->model->wasPayCalled());
-         self::assertEquals($expectedState, $this->model->getState());
+        self::assertFalse($this->model->wasPayCalled());
+        self::assertEquals($this->model, $this->model->pay());
+        self::assertTrue($this->model->wasPayCalled());
+        self::assertEquals($expectedState, $this->model->getState());
 
         //second call of pay() method must do nothing
-         $this->model->pay();
+        $this->model->pay();
 
-         self::assertEquals($expectedBaseTotal, $this->order->getBaseTotalPaid());
-         self::assertEquals($expectedTotal, $this->order->getTotalPaid());
+        self::assertEquals($expectedBaseTotal, $this->order->getBaseTotalPaid());
+        self::assertEquals($expectedTotal, $this->order->getTotalPaid());
     }
 
     /**

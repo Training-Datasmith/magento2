@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class CurrencyTest extends TestCase
                 [
                     'eventManager'     => $this->mockEventManager,
                     'localeResolver'   => $this->mockLocaleResolver,
-                    'currencyFactory'  => $this->mockCurrencyFactory
+                    'currencyFactory'  => $this->mockCurrencyFactory,
                 ]
             );
     }

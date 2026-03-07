@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -746,7 +747,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
             '3-1-select' => -3000.00,
             '3-2-select' => 5000.00,
             '4-1-radio' => 600.234,
-            '4-2-radio' => 40000.00
+            '4-2-radio' => 40000.00,
         ];
         foreach ($options as $option) {
             if (!$option->getValues()) {
@@ -851,7 +852,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         $data = [
             'custom_attributes' => [
                 'tax_class_id' => '3',
-                'category_ids' => '1,2'
+                'category_ids' => '1,2',
             ],
         ];
 
@@ -867,12 +868,12 @@ class ProductTest extends \PHPUnit\Framework\TestCase
             'custom_attributes' => [
                 [
                     'attribute_code' => 'tax_class_id',
-                    'value' => '3'
+                    'value' => '3',
                 ],
                 [
                     'attribute_code' => 'category_ids',
-                    'value' => '1,2'
-                ]
+                    'value' => '1,2',
+                ],
             ],
         ];
 

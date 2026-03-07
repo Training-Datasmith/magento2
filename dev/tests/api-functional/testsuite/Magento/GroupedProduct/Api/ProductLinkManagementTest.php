@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Api;
 
 /**
@@ -10,9 +13,9 @@ namespace Magento\GroupedProduct\Api;
  */
 class ProductLinkManagementTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductLinkManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/products/';
+    public const SERVICE_NAME = 'catalogProductLinkManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/products/';
 
     /**
      * @magentoApiDataFixture Magento/GroupedProduct/_files/product_grouped.php
@@ -43,7 +46,7 @@ class ProductLinkManagementTest extends \Magento\TestFramework\TestCase\WebapiAb
                 'linked_product_sku' => 'simple',
                 'linked_product_type' => 'simple',
                 'position' => 1,
-                'extension_attributes' => ['qty' => 1]
+                'extension_attributes' => ['qty' => 1],
             ],
             [
                 'sku' => 'grouped-product',
@@ -51,7 +54,7 @@ class ProductLinkManagementTest extends \Magento\TestFramework\TestCase\WebapiAb
                 'linked_product_sku' => 'virtual-product',
                 'linked_product_type' => 'virtual',
                 'position' => 2,
-                'extension_attributes' => ['qty' => 2]
+                'extension_attributes' => ['qty' => 2],
             ],
         ];
 

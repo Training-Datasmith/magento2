@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ namespace Magento\Framework\Convert;
 class DataObject
 {
     /** Constant used to mark cycles in the input array/objects */
-    const CYCLE_DETECTED_MARK = '*** CYCLE DETECTED ***';
+    public const CYCLE_DETECTED_MARK = '*** CYCLE DETECTED ***';
 
     /**
      * Convert input data into an array and return the resulting array.

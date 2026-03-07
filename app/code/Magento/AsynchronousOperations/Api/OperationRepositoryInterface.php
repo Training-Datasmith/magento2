@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ interface OperationRepositoryInterface
     /**
      * Lists the bulk operation items that match specified search criteria.
      *
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Magento\AsynchronousOperations\Api\Data\OperationSearchResultsInterface
      * @since 100.3.0
      */

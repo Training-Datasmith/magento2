@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Express;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Checkout\Helper\Data;
 use Magento\Checkout\Helper\ExpressRedirect;
 use Magento\Checkout\Model\Type\Onepage;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Webapi\Exception;
 use Magento\Paypal\Model\Express\Checkout;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class GetToken
@@ -103,8 +106,8 @@ class GetToken extends AbstractExpress implements HttpGetActionInterface
             $controllerResult->setData([
                 'message' => [
                     'text' => $exception->getMessage(),
-                    'type' => 'error'
-                ]
+                    'type' => 'error',
+                ],
             ]);
         } catch (\Exception $exception) {
             $this->messageManager->addExceptionMessage(

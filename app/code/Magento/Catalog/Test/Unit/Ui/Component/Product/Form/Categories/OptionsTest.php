@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class OptionsTest extends TestCase
         Category::KEY_PARENT_ID => 'getParentId',
         Category::KEY_NAME => 'getName',
         Category::KEY_PATH => 'getPath',
-        Category::KEY_IS_ACTIVE => 'getIsActive'
+        Category::KEY_IS_ACTIVE => 'getIsActive',
     ];
 
     protected function setUp(): void
@@ -68,7 +69,7 @@ class OptionsTest extends TestCase
                 $this->getCategoryMock(['path' => '1/3/4/6']),
                 $this->getCategoryMock(['path' => '1/7']),
                 $this->getCategoryMock(['path' => '1/8']),
-                $this->getCategoryMock(['path' => '1/7/9'])
+                $this->getCategoryMock(['path' => '1/7/9']),
             ]
         );
 
@@ -94,9 +95,9 @@ class OptionsTest extends TestCase
                     [
                         'value' => '5',
                         'is_active' => '1',
-                        'label' => 'Category 5'
-                    ]
-                ]
+                        'label' => 'Category 5',
+                    ],
+                ],
             ],
             [
                 'value' => '3',
@@ -111,11 +112,11 @@ class OptionsTest extends TestCase
                             [
                                 'value' => '6',
                                 'is_active' => '1',
-                                'label' => 'Category 6'
-                            ]
-                        ]
-                    ]
-                ]
+                                'label' => 'Category 6',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 'value' => '7',
@@ -125,15 +126,15 @@ class OptionsTest extends TestCase
                     [
                         'value' => '9',
                         'is_active' => '1',
-                        'label' => 'Category 9'
-                    ]
-                ]
+                        'label' => 'Category 9',
+                    ],
+                ],
             ],
             [
                 'value' => '8',
                 'is_active' => '1',
-                'label' => 'Category 8'
-            ]
+                'label' => 'Category 8',
+            ],
         ];
 
         $this->categoryCollectionFactoryMock->expects($this->any())

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Directory\Setup\Patch\Data;
 
 use Magento\Directory\Setup\DataInstaller;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -99,7 +100,7 @@ class AddDataForIndia implements DataPatchInterface, PatchVersionInterface
             ['IN', 'TR', 'Tripura'],
             ['IN', 'UP', 'Uttar Pradesh'],
             ['IN', 'UT', 'Uttarakhand'],
-            ['IN', 'WB', 'West Bengal']
+            ['IN', 'WB', 'West Bengal'],
         ];
     }
 

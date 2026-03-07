@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ declare(strict_types=1);
 namespace Magento\JwtUserToken\Model\ResourceModel;
 
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Framework\App\CacheInterface;
 use Magento\JwtUserToken\Api\ConfigReaderInterface;
 use Magento\JwtUserToken\Api\Data\Revoked;
 use Magento\JwtUserToken\Api\RevokedRepositoryInterface;
-use Magento\Framework\App\CacheInterface;
 
 /**
  * Stores revoked token data in a fast storage on top of other storage type.

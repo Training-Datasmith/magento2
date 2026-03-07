@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,14 +18,14 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Session\Config;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\ValidatorInterface;
 use Magento\Framework\ValidatorFactory;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -123,7 +124,7 @@ class ConfigTest extends TestCase
             ['hash_function', 'getHashFunction', 'md5'],
             ['hash_bits_per_character', 'getHashBitsPerCharacter', 5],
             ['url_rewriter_tags', 'getUrlRewriterTags', 'a=href'],
-            ['cookie_samesite', 'getCookieSameSite', 'Lax']
+            ['cookie_samesite', 'getCookieSameSite', 'Lax'],
         ];
     }
 
@@ -167,7 +168,7 @@ class ConfigTest extends TestCase
         $returnMap =
             [
                 ['foobar_bogus', false],
-                ['Lax', true]
+                ['Lax', true],
             ];
         $validatorMock = $this->createMock(ValidatorInterface::class);
         $validatorMock->expects($this->any())
@@ -184,7 +185,7 @@ class ConfigTest extends TestCase
         $returnMap =
             [
                 [-1, false],
-                ['Lax', true]
+                ['Lax', true],
             ];
         $validatorMock = $this->createMock(ValidatorInterface::class);
         $validatorMock->expects($this->any())
@@ -237,7 +238,7 @@ class ConfigTest extends TestCase
         $returnMap =
             [
                 [24, false],
-                ['Lax', true]
+                ['Lax', true],
             ];
         $validatorMock = $this->createMock(ValidatorInterface::class);
         $validatorMock->expects($this->any())
@@ -254,7 +255,7 @@ class ConfigTest extends TestCase
         $returnMap =
             [
                 ['D:\\WINDOWS\\System32\\drivers\\etc\\hosts', false],
-                ['Lax', true]
+                ['Lax', true],
             ];
         $validatorMock = $this->createMock(ValidatorInterface::class);
         $validatorMock->expects($this->any())
@@ -350,7 +351,7 @@ class ConfigTest extends TestCase
                     [7200, $isValid],
                     ['/', $isValid],
                     ['init.host', $isValid],
-                    ['Lax', true]
+                    ['Lax', true],
                 ];
             $validatorMock->expects($this->any())
                 ->method('isValid')
@@ -362,7 +363,7 @@ class ConfigTest extends TestCase
                     [7200, false],
                     ['/', true],
                     ['init.host', true],
-                    ['Lax', true]
+                    ['Lax', true],
                 ];
             $validatorMock->expects($this->any())
                 ->method('isValid')
@@ -391,7 +392,7 @@ class ConfigTest extends TestCase
                     'session.cookie_httponly' => false,
                     'session.cookie_secure' => false,
                     'session.save_handler' => 'files',
-                    'session.cookie_samesite' => 'Lax'
+                    'session.cookie_samesite' => 'Lax',
                 ],
             ],
             'all invalid' => [
@@ -402,7 +403,7 @@ class ConfigTest extends TestCase
                     'session.cookie_httponly' => false,
                     'session.cookie_secure' => false,
                     'session.save_handler' => 'files',
-                    'session.cookie_samesite' => 'Lax'
+                    'session.cookie_samesite' => 'Lax',
                 ],
             ],
             'invalid_valid' => [
@@ -416,7 +417,7 @@ class ConfigTest extends TestCase
                     'session.cookie_httponly' => false,
                     'session.cookie_secure' => false,
                     'session.save_handler' => 'files',
-                    'session.cookie_samesite' => 'Lax'
+                    'session.cookie_samesite' => 'Lax',
                 ],
             ],
         ];

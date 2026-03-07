@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\EncryptionKey\Model\ResourceModel\Key;
 
-use \Exception;
+use Exception;
 use Magento\Config\Model\Config\Backend\Encrypted;
 use Magento\Config\Model\Config\Structure;
 use Magento\Framework\App\DeploymentConfig\Writer;

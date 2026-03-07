@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -46,12 +47,12 @@ class AuthorizationLinkTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $this->_objectManager->prepareObjectManager($objects);
 

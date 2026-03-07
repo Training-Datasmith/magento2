@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class CustomerTest extends TestCase
                 'customerGroupRepository' => $customerGroupServiceMock,
                 'searchCriteriaBuilder' => $searchCriteriaBuilder,
                 'filterBuilder' => $filterBuilder,
-                'data' => ['id' => 5]
+                'data' => ['id' => 5],
             ]
         );
 

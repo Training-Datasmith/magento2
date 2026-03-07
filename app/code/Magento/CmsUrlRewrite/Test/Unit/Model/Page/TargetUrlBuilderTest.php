@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -102,7 +103,7 @@ class TargetUrlBuilderTest extends TestCase
 
         $this->cmsPageMock->expects($this->any())
             ->method('checkIdentifier')
-            ->willReturn("1");
+            ->willReturn('1');
         $this->cmsPageUrlPathGeneratorMock->expects($this->any())
             ->method('getCanonicalUrlPath')
             ->with($this->cmsPageMock)
@@ -151,18 +152,18 @@ class TargetUrlBuilderTest extends TestCase
             '_query' => [
                 '___store' => $enStoreCode,
                 'uenc' => null,
-            ]
+            ],
         ];
 
         return [
             [
                 $defaultUrlParams,
-                "1"
+                '1',
             ],
             [
                 $defaultUrlParams,
-                "2"
-            ]
+                '2',
+            ],
         ];
     }
 }

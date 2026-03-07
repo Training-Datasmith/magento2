@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Store\Model\StoreSwitcher;
 
-use Magento\Store\Model\StoreSwitcherInterface;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
+use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\StoreCookieManagerInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\StoreSwitcherInterface;
 
 /**
  * Manage store cookie depending on what store view customer is.

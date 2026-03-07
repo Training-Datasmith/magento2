@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -19,29 +22,29 @@ use Magento\Ui\DataProvider\Modifier\ModifierInterface;
  */
 abstract class AbstractModifier implements ModifierInterface
 {
-    const FORM_NAME = 'product_form';
-    const DATA_SOURCE_DEFAULT = 'product';
-    const DATA_SCOPE_PRODUCT = 'data.product';
+    public const FORM_NAME = 'product_form';
+    public const DATA_SOURCE_DEFAULT = 'product';
+    public const DATA_SCOPE_PRODUCT = 'data.product';
 
     /**
      * Name of default general panel
      */
-    const DEFAULT_GENERAL_PANEL = 'product-details';
+    public const DEFAULT_GENERAL_PANEL = 'product-details';
 
     /**
      * Default general panel order
      */
-    const GENERAL_PANEL_ORDER = 10;
+    public const GENERAL_PANEL_ORDER = 10;
 
     /**
      * Container fieldset prefix
      */
-    const CONTAINER_PREFIX = 'container_';
+    public const CONTAINER_PREFIX = 'container_';
 
     /**
      * Meta config path
      */
-    const META_CONFIG_PATH = '/arguments/data/config';
+    public const META_CONFIG_PATH = '/arguments/data/config';
 
     /**
      * Retrieve next group sort order

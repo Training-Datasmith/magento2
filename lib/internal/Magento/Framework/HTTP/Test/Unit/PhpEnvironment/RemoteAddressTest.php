@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\HTTP\Test\Unit\PhpEnvironment;
 
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @see RemoteAddress

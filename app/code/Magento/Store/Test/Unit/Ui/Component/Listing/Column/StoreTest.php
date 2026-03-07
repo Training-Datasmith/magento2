@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class StoreTest extends TestCase
                 'systemStore' =>  $this->systemStoreMock,
                 'escaper' => $this->escaperMock,
                 'components' => [],
-                'data' => ['name' => self::$name]
+                'data' => ['name' => self::$name],
             ]
         );
 
@@ -152,11 +153,11 @@ class StoreTest extends TestCase
                         'value' => 1,
                         'label' => $group,
                         'children' => [
-                            1 => ['value' => 1, 'label' => $store]
-                        ]
-                    ]
-                ]
-            ]
+                            1 => ['value' => 1, 'label' => $store],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $this->escaperMock->expects($this->any())
             ->method('escapeHtml')
@@ -170,19 +171,19 @@ class StoreTest extends TestCase
      */
     public static function prepareDataSourceDataProvider()
     {
-        $content = "website<br/>&nbsp;&nbsp;&nbsp;group<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;store<br/>";
+        $content = 'website<br/>&nbsp;&nbsp;&nbsp;group<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;store<br/>';
         return [
             'withoutStore' => [
                 'dataSource' => ['data' => ['items' => [['store_id' => null]]]],
-                'expectedResult' => ['data' => ['items' => [['store_id' => null, self::$name => '']]]]
+                'expectedResult' => ['data' => ['items' => [['store_id' => null, self::$name => '']]]],
             ],
             'allStores' => [
                 'dataSource' => ['data' => ['items' => [['store_id' => [0]]]]],
-                'expectedResult' => ['data' => ['items' => [['store_id' => [0], self::$name => __('All Store Views')]]]]
+                'expectedResult' => ['data' => ['items' => [['store_id' => [0], self::$name => __('All Store Views')]]]],
             ],
             'Stores' => [
                 'dataSource' => ['data' => ['items' => [['store_id' => [1]]]]],
-                'expectedResult' => ['data' => ['items' => [['store_id' => [1], self::$name => $content]]]]
+                'expectedResult' => ['data' => ['items' => [['store_id' => [1], self::$name => $content]]]],
             ],
 
         ];

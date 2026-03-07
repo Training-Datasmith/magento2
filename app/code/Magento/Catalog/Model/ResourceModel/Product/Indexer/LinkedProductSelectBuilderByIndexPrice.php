@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
+use Magento\Catalog\Model\ResourceModel\Product\LinkedProductSelectBuilderInterface;
 use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DB\Select;
-use Magento\Catalog\Model\ResourceModel\Product\LinkedProductSelectBuilderInterface;
 use Magento\Framework\Indexer\DimensionFactory;
-use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 use Magento\Framework\Search\Request\IndexScopeResolverInterface;
+use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 
 /**
  * Class LinkedProductSelectBuilderByIndexPrice
@@ -92,7 +95,7 @@ class LinkedProductSelectBuilderByIndexPrice implements LinkedProductSelectBuild
     /**
      * @inheritdoc
      */
-    public function build(int $productId, int $storeId) : array
+    public function build(int $productId, int $storeId): array
     {
         $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
         $productTable = $this->resource->getTableName('catalog_product_entity');
@@ -117,7 +120,7 @@ class LinkedProductSelectBuilderByIndexPrice implements LinkedProductSelectBuild
                             CustomerGroupDimensionProvider::DIMENSION_NAME,
                             (string)$customerGroupId
                         ),
-                    ])
+                    ]),
                 ],
                 sprintf('t.entity_id = %s.entity_id', BaseSelectProcessorInterface::PRODUCT_TABLE_ALIAS),
                 []

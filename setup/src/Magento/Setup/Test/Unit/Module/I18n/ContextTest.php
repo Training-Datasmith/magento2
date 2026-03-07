@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\I18n;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Setup\Module\I18n\Context;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ContextTest extends TestCase
@@ -57,7 +58,7 @@ class ContextTest extends TestCase
                 [
                     [Context::CONTEXT_TYPE_MODULE, ['Magento_Module' => '/app/code/Magento/Module']],
                     [Context::CONTEXT_TYPE_THEME, []],
-                ]
+                ],
             ],
             [
                 [Context::CONTEXT_TYPE_THEME, 'frontend/Some/theme'],
@@ -65,7 +66,7 @@ class ContextTest extends TestCase
                 [
                     [Context::CONTEXT_TYPE_MODULE, []],
                     [Context::CONTEXT_TYPE_THEME, ['frontend/Some/theme' => '/app/design/area/theme']],
-                ]
+                ],
             ],
             [
                 [Context::CONTEXT_TYPE_LIB, 'lib/web/module/test.phtml'],
@@ -73,7 +74,7 @@ class ContextTest extends TestCase
                 [
                     [Context::CONTEXT_TYPE_MODULE, []],
                     [Context::CONTEXT_TYPE_THEME, []],
-                ]
+                ],
             ],
         ];
     }
@@ -86,7 +87,7 @@ class ContextTest extends TestCase
             ->method('getPaths')
             ->willReturnMap([
                 [ComponentRegistrar::MODULE, ['/path/to/module']],
-                [ComponentRegistrar::THEME, ['/path/to/theme']]
+                [ComponentRegistrar::THEME, ['/path/to/theme']],
             ]);
         $this->context = new Context($this->componentRegistrar);
         $this->context->getContextByPath('invalid_path');
@@ -120,23 +121,23 @@ class ContextTest extends TestCase
             [
                 BP . '/app/code/Magento/Module/i18n/',
                 [Context::CONTEXT_TYPE_MODULE, 'Magento_Module'],
-                [[ComponentRegistrar::MODULE, 'Magento_Module', BP . '/app/code/Magento/Module']]
+                [[ComponentRegistrar::MODULE, 'Magento_Module', BP . '/app/code/Magento/Module']],
             ],
             [
                 BP . '/app/design/frontend/Magento/luma/i18n/',
                 [Context::CONTEXT_TYPE_THEME, 'frontend/Magento/luma'],
-                [[ComponentRegistrar::THEME, 'frontend/Magento/luma', BP . '/app/design/frontend/Magento/luma']]
+                [[ComponentRegistrar::THEME, 'frontend/Magento/luma', BP . '/app/design/frontend/Magento/luma']],
             ],
 
             [
                 null,
                 [Context::CONTEXT_TYPE_MODULE, 'Unregistered_Module'],
-                [[ComponentRegistrar::MODULE, 'Unregistered_Module', null]]
+                [[ComponentRegistrar::MODULE, 'Unregistered_Module', null]],
             ],
             [
                 null,
                 [Context::CONTEXT_TYPE_THEME, 'frontend/Magento/unregistered'],
-                [[ComponentRegistrar::THEME, 'frontend/Magento/unregistered', null]]
+                [[ComponentRegistrar::THEME, 'frontend/Magento/unregistered', null]],
             ],
             [BP . '/lib/web/i18n/', [Context::CONTEXT_TYPE_LIB, 'lib/web/module/test.phtml'], []],
         ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class CategoryManagementTest extends TestCase
             [
                 'categoryRepository' => $this->categoryRepositoryMock,
                 'categoryTree' => $this->categoryTreeMock,
-                'categoriesFactory' => $this->categoriesFactoryMock
+                'categoriesFactory' => $this->categoriesFactoryMock,
             ]
         );
 

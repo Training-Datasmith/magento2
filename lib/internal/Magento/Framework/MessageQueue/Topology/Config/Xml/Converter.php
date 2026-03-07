@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Topology\Config\Xml;
 
 use Magento\Framework\Config\Converter\Dom\Flat as FlatConverter;
@@ -195,7 +198,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface, ResetAf
             'destination' => $destination,
             'disabled' => $isDisabled,
             'topic' => $topic,
-            'arguments' => $bindingArguments
+            'arguments' => $bindingArguments,
         ];
         return $bindings;
     }

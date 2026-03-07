@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Helper\Oauth;
 
 /**
@@ -26,34 +29,34 @@ class Data
     /**#@+
      * Cleanup xpath config settings
      */
-    const XML_PATH_CLEANUP_PROBABILITY = 'oauth/cleanup/cleanup_probability';
+    public const XML_PATH_CLEANUP_PROBABILITY = 'oauth/cleanup/cleanup_probability';
 
-    const XML_PATH_CLEANUP_EXPIRATION_PERIOD = 'oauth/cleanup/expiration_period';
+    public const XML_PATH_CLEANUP_EXPIRATION_PERIOD = 'oauth/cleanup/expiration_period';
 
     /**#@-*/
 
     /**
      * Cleanup expiration period in minutes
      */
-    const CLEANUP_EXPIRATION_PERIOD_DEFAULT = 120;
+    public const CLEANUP_EXPIRATION_PERIOD_DEFAULT = 120;
 
     /**#@+
      * Consumer xpath settings
      */
-    const XML_PATH_CONSUMER_EXPIRATION_PERIOD = 'oauth/consumer/expiration_period';
+    public const XML_PATH_CONSUMER_EXPIRATION_PERIOD = 'oauth/consumer/expiration_period';
 
-    const XML_PATH_CONSUMER_POST_MAXREDIRECTS = 'oauth/consumer/post_maxredirects';
+    public const XML_PATH_CONSUMER_POST_MAXREDIRECTS = 'oauth/consumer/post_maxredirects';
 
-    const XML_PATH_CONSUMER_POST_TIMEOUT = 'oauth/consumer/post_timeout';
+    public const XML_PATH_CONSUMER_POST_TIMEOUT = 'oauth/consumer/post_timeout';
 
     /**#@-*/
 
     /**#@+
      * Consumer default settings
      */
-    const CONSUMER_EXPIRATION_PERIOD_DEFAULT = 300;
+    public const CONSUMER_EXPIRATION_PERIOD_DEFAULT = 300;
 
-    const CONSUMER_POST_TIMEOUT_DEFAULT = 5;
+    public const CONSUMER_POST_TIMEOUT_DEFAULT = 5;
 
     /**#@-*/
 

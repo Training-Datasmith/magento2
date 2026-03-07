@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Vault\Test\Unit\Plugin;
 
 use Magento\Payment\Api\Data\PaymentMethodInterface;
 use Magento\Payment\Block\Form\Container;
-use Magento\Vault\Model\VaultPaymentInterface;
-use Magento\Vault\Plugin\PaymentMethodProcess;
 use Magento\Vault\Model\Ui\Adminhtml\TokensConfigProvider;
 use Magento\Vault\Model\Ui\TokenUiComponentInterface;
+use Magento\Vault\Model\VaultPaymentInterface;
+use Magento\Vault\Plugin\PaymentMethodProcess;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -58,7 +59,7 @@ class PaymentMethodProcessTest extends TestCase
     #[DataProvider('afterGetMethodsDataProvider')]
     public function testAfterGetMethods($tokenInterface, $availableMethodsCount)
     {
-        if ($tokenInterface!=null) {
+        if ($tokenInterface != null) {
             $tokenInterface = $tokenInterface($this);
         }
         $checkmoPaymentMethod = $this->createMock(PaymentMethodInterface::class);

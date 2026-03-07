@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class AjaxLoginTest extends TestCase
         $requestData = [
             'username' => $username,
             'captcha_string' => $captchaString,
-            'captcha_form_id' => self::$formIds[0]
+            'captcha_form_id' => self::$formIds[0],
         ];
         $requestContent = json_encode($requestData);
 
@@ -155,7 +156,7 @@ class AjaxLoginTest extends TestCase
         $requestData = [
             'username' => $username,
             'captcha_string' => $captchaString,
-            'captcha_form_id' => self::$formIds[0]
+            'captcha_form_id' => self::$formIds[0],
         ];
         $requestContent = json_encode($requestData);
 
@@ -222,7 +223,7 @@ class AjaxLoginTest extends TestCase
                 'requestContent' => [
                     'username' => 'name',
                     'captcha_string' => 'string',
-                    'captcha_form_id' => self::$formIds[0]
+                    'captcha_form_id' => self::$formIds[0],
                 ],
             ],
             [
@@ -230,7 +231,7 @@ class AjaxLoginTest extends TestCase
                 'requestContent' => [
                     'username' => null,
                     'captcha_string' => 'string',
-                    'captcha_form_id' => self::$formIds[0]
+                    'captcha_form_id' => self::$formIds[0],
                 ],
             ],
             [
@@ -238,7 +239,7 @@ class AjaxLoginTest extends TestCase
                 'requestContent' => [
                     'username' => 'name',
                     'captcha_string' => 'string',
-                    'captcha_form_id' => null
+                    'captcha_form_id' => null,
                 ],
             ],
         ];

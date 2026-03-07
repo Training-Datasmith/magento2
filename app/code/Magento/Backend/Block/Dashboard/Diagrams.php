@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Dashboard;
 
 /**
@@ -43,7 +46,7 @@ class Diagrams extends \Magento\Backend\Block\Widget\Tabs
                 'content' => $this->getLayout()->createBlock(
                     \Magento\Backend\Block\Dashboard\Tab\Orders::class
                 )->toHtml(),
-                'active' => true
+                'active' => true,
             ]
         );
 
@@ -53,7 +56,7 @@ class Diagrams extends \Magento\Backend\Block\Widget\Tabs
                 'label' => __('Amounts'),
                 'content' => $this->getLayout()->createBlock(
                     \Magento\Backend\Block\Dashboard\Tab\Amounts::class
-                )->toHtml()
+                )->toHtml(),
             ]
         );
         return parent::_prepareLayout();

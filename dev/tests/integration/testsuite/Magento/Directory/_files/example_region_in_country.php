@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,9 +7,9 @@
 
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Directory\Model\Region as RegionModel;
 use Magento\Directory\Model\ResourceModel\Region as RegionResource;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 
@@ -16,13 +17,13 @@ $regionData = [
     [
         'country_id' => 'WW',
         'code' => 'ER1',
-        'default_name' => 'Example Region 1'
+        'default_name' => 'Example Region 1',
     ],
     [
         'country_id' => 'WW',
         'code' => 'ER2',
-        'default_name' => 'Example Region 2'
-    ]
+        'default_name' => 'Example Region 2',
+    ],
 ];
 
 /** @var RegionModel $region */

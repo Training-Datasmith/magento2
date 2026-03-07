@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class DefaultInvoice extends \Magento\Sales\Model\Order\Pdf\Items\AbstractItems
             $resourceCollection,
             $data
         );
-        $this->rtlTextHandler = $rtlTextHandler  ?: ObjectManager::getInstance()->get(RtlTextHandler::class);
+        $this->rtlTextHandler = $rtlTextHandler ?: ObjectManager::getInstance()->get(RtlTextHandler::class);
     }
 
     /**
@@ -82,7 +83,7 @@ class DefaultInvoice extends \Magento\Sales\Model\Order\Pdf\Items\AbstractItems
         // draw Product name
         $lines[0][] = [
                 'text' => $this->string->split($this->prepareText((string)$item->getName()), 35, true, true),
-                'feed' => 35
+                'feed' => 35,
         ];
 
         // draw SKU

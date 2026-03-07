@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,14 +11,13 @@ namespace Magento\Sales\Test\Unit\Model\Order;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShippingInterfaceFactory;
 use Magento\Sales\Api\Data\TotalInterfaceFactory;
-use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\Order\ShippingBuilder;
+use Magento\Sales\Model\OrderFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ShippingBuilderTest extends TestCase
 {
-
     /**
      * @var ShippingBuilder
      */
@@ -54,7 +54,7 @@ class ShippingBuilderTest extends TestCase
      *
      * @return void
      */
-    public function testCreateWithOrder() : void
+    public function testCreateWithOrder(): void
     {
         $order = $this->getMockBuilder(OrderInterface::class)
             ->getMock();

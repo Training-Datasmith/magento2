@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,8 +9,7 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\SearchAdapter\Query\Builder\Sort;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeAdapter;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface
-    as FieldNameResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface as FieldNameResolver;
 use Magento\Framework\Search\Request\QueryInterface;
 use Magento\Framework\Search\RequestInterface;
 
@@ -59,7 +59,7 @@ class Position implements ExpressionBuilderInterface
                     SCRIPT,
                     'params' => [
                         'sortFieldNames' => $fieldNames,
-                    ]
+                    ],
                 ],
             ];
         } elseif (!empty($categoryIds)) {

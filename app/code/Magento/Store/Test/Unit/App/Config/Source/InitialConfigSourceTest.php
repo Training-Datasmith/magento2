@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class InitialConfigSourceTest extends TestCase
             'big path' => ['path1/path2', ['configType' => 'value'], 'value'],
             'empty path' => ['', [], []],
             'null path' => [null, [], []],
-            'leading path' => ['/path', [], []]
+            'leading path' => ['/path', [], []],
         ];
     }
 

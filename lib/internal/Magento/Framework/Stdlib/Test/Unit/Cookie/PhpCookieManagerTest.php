@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 // @codingStandardsIgnoreStart
+
 namespace {
 
     $mockTranslateSetCookie = false;
@@ -27,10 +29,10 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
     use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
     use Magento\Framework\Stdlib\Cookie\SensitiveCookieMetadata;
     use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+    use PHPUnit\Framework\Attributes\DataProvider;
     use PHPUnit\Framework\MockObject\MockObject;
     use PHPUnit\Framework\TestCase;
     use Psr\Log\LoggerInterface;
-    use PHPUnit\Framework\Attributes\DataProvider;
 
     // @codingStandardsIgnoreEnd
 
@@ -148,7 +150,7 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
                     'scope' => $this->scopeMock,
                     'reader' => $this->readerMock,
                     'logger' => $this->loggerMock,
-                    'httpHeader' => $this->httpHeaderMock
+                    'httpHeader' => $this->httpHeaderMock,
                 ]
             );
 
@@ -194,8 +196,8 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
                     'metadata' => [
                         'domain' => 'magento.url',
                         'path' => '/backend',
-                        'samesite' => 'Strict'
-                    ]
+                        'samesite' => 'Strict',
+                    ],
                 ]
             );
 
@@ -254,16 +256,16 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
          * @param string $cookieName
          * @param bool $secure
          */
-    #[DataProvider('isCurrentlySecureDataProvider')]
-    public function testSetSensitiveCookieNoMetadata($cookieName, $secure)
-    {
-        self::$isSetCookieInvoked = false;
+        #[DataProvider('isCurrentlySecureDataProvider')]
+        public function testSetSensitiveCookieNoMetadata($cookieName, $secure)
+        {
+            self::$isSetCookieInvoked = false;
             /** @var SensitiveCookieMetadata $sensitiveCookieMetadata */
             $sensitiveCookieMetadata = $this->objectManager
                 ->getObject(
                     SensitiveCookieMetadata::class,
                     [
-                        'request' => $this->requestMock
+                        'request' => $this->requestMock,
                     ]
                 );
             $this->scopeMock->expects($this->once())
@@ -284,16 +286,16 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
             $this->assertTrue(self::$isSetCookieInvoked);
         }
 
-    /**
-     * @return array
-     */
-    public static function isCurrentlySecureDataProvider()
-    {
-        return [
-            [self::SENSITIVE_COOKIE_NAME_NO_METADATA_HTTPS, true],
-            [self::SENSITIVE_COOKIE_NAME_NO_METADATA_NOT_HTTPS, false]
-        ];
-    }
+        /**
+         * @return array
+         */
+        public static function isCurrentlySecureDataProvider()
+        {
+            return [
+                [self::SENSITIVE_COOKIE_NAME_NO_METADATA_HTTPS, true],
+                [self::SENSITIVE_COOKIE_NAME_NO_METADATA_NOT_HTTPS, false],
+            ];
+        }
 
         public function testSetSensitiveCookieNullDomainAndPath()
         {
@@ -429,7 +431,7 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
                         'domain' => 'magento.url',
                         'path' => '/backend',
                         'http_only' => true,
-                        'samesite' => 'Lax'
+                        'samesite' => 'Lax',
                     ],
                 ]
             );
@@ -501,7 +503,7 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
                         'secure' => false,
                         'http_only' => false,
                         'duration' => 3600,
-                        'samesite' => 'Strict'
+                        'samesite' => 'Strict',
                     ],
                 ]
             );
@@ -567,7 +569,7 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie
                     new Phrase('Unable to send the cookie. Maximum number of cookies would be exceeded.'),
                     [
                         'cookies' => array_keys($_COOKIE),
-                        'user-agent' => $userAgent
+                        'user-agent' => $userAgent,
                     ]
                 );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Pricing\Render;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Pricing\Renderer\SalableResolverInterface;
 use Magento\Catalog\Pricing\Price\FinalPrice;
@@ -15,7 +15,6 @@ use Magento\Catalog\Pricing\Price\MinimalPriceCalculatorInterface;
 use Magento\Catalog\Pricing\Price\RegularPrice;
 use Magento\Catalog\Pricing\Render\FinalPriceBox;
 use Magento\Framework\App\Cache\StateInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\State;
@@ -28,6 +27,7 @@ use Magento\Framework\Pricing\PriceInfoInterface;
 use Magento\Framework\Pricing\Render\Amount;
 use Magento\Framework\Pricing\Render\PriceBox;
 use Magento\Framework\Pricing\Render\RendererPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
@@ -37,6 +37,7 @@ use Magento\Framework\View\LayoutInterface;
 use Magento\Msrp\Pricing\Price\MsrpPrice;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -121,7 +122,7 @@ class FinalPriceBoxTest extends TestCase
     {
         $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
         \Magento\Framework\App\ObjectManager::setInstance($this->objectManagerMock);
-        
+
         $this->priceInfo = $this->createMock(PriceInfoInterface::class);
         $this->product = $this->createPartialMock(Product::class, ['getPriceInfo', 'getId']);
         $this->product->method('getPriceInfo')->willReturn($this->priceInfo);
@@ -179,7 +180,7 @@ class FinalPriceBoxTest extends TestCase
                 'price' => $this->price,
                 'data' => ['zone' => 'test_zone', 'list_category_page' => true],
                 'salableResolver' => $this->salableResolverMock,
-                'minimalPriceCalculator' => $this->minimalPriceCalculator
+                'minimalPriceCalculator' => $this->minimalPriceCalculator,
             ]
         );
     }
@@ -326,7 +327,7 @@ class FinalPriceBoxTest extends TestCase
             'display_label' => __('As low as'),
             'price_id' => $priceId,
             'include_container' => false,
-            'skip_adjustments' => false
+            'skip_adjustments' => false,
         ];
 
         $amountRender = $this->createPartialMock(Amount::class, ['toHtml']);
@@ -392,7 +393,7 @@ class FinalPriceBoxTest extends TestCase
         return [
             [10.0, 20.0, false],
             [20.0, 10.0, true],
-            [10.0, 10.0, false]
+            [10.0, 10.0, false],
         ];
     }
 
@@ -522,7 +523,7 @@ class FinalPriceBoxTest extends TestCase
     {
         return [
             'is_not_product_list' => [false],
-            'is_product_list' => [true]
+            'is_product_list' => [true],
         ];
     }
 }

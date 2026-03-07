@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class SenderTest extends TestCase
             new DataObject(
                 [
                     'template_sender_name' => 'test',
-                    'template_sender_email' => 'test@localhost.com'
+                    'template_sender_email' => 'test@localhost.com',
                 ]
             )
         );
@@ -62,7 +63,7 @@ class SenderTest extends TestCase
             new DataObject(
                 [
                     'template_sender_name' => '',
-                    'template_sender_email' => ''
+                    'template_sender_email' => '',
                 ]
             )
         );

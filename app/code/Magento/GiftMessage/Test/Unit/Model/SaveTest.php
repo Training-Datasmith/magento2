@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ class SaveTest extends TestCase
             'from' => 'John Doe',
             'to' => 'Jane Doe',
             'message' => 'I love Magento',
-            'type' => 'order'
-        ]
+            'type' => 'order',
+        ],
         ];
         $this->model->setGiftmessages($message);
 

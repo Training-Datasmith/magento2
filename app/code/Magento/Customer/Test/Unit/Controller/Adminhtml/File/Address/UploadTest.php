@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ use Magento\Customer\Model\FileUploader;
 use Magento\Customer\Model\FileUploaderFactory;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class UploadTest extends TestCase
 {
@@ -125,7 +126,7 @@ class UploadTest extends TestCase
             $attributeCode => [
                 'name' => $resultFileName,
                 'type' => $resultType,
-                'size' => $resultFileSize
+                'size' => $resultFileSize,
             ],
         ];
 
@@ -193,7 +194,7 @@ class UploadTest extends TestCase
             $attributeCode => [
                 'name' => $resultFileName,
                 'type' => $resultType,
-                'size' => $resultFileSize
+                'size' => $resultFileSize,
             ],
         ];
 

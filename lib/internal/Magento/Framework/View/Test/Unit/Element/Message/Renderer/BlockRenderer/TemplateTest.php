@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class TemplateTest extends TestCase
         $template = $helper->getObject(
             Template::class,
             [
-                'storeManager' => $storeManager
+                'storeManager' => $storeManager,
             ]
         );
 
@@ -37,7 +38,7 @@ class TemplateTest extends TestCase
             'swallow' => 1,
             'MESSAGE',
             'MontyPythonAndTheHolyGrail.phtml',
-            'GB'
+            'GB',
         ];
 
         $storeMock->expects(static::once())
@@ -47,7 +48,7 @@ class TemplateTest extends TestCase
         $template->setData(
             [
                 'coconut' => 1,
-                'swallow' => 1
+                'swallow' => 1,
             ]
         );
 

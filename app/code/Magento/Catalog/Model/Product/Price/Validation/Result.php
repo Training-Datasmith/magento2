@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -49,7 +51,7 @@ class Result
     {
         $this->failedItems[$id][] = [
             'message' => $message,
-            'parameters' => $parameters
+            'parameters' => $parameters,
         ];
     }
 

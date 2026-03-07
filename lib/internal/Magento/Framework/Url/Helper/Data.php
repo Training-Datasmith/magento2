@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Core URL helper
  */
+
 namespace Magento\Framework\Url\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper

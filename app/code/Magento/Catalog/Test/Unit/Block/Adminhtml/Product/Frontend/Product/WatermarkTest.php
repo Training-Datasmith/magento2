@@ -20,8 +20,8 @@ use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Imagefile;
 use Magento\Framework\Data\Form\Element\Select;
 use Magento\Framework\Data\Form\Element\Text;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -88,7 +88,7 @@ class WatermarkTest extends TestCase
         $imageTypes = [
             'thumbnail' => ['title' => 'Thumbnail'],
             'small_image' => ['title' => 'Small Image'],
-            'image' => ['title' => 'Base Image']
+            'image' => ['title' => 'Base Image'],
         ];
 
         $this->watermark = $objectManager->getObject(
@@ -98,7 +98,7 @@ class WatermarkTest extends TestCase
                 'watermarkPosition' => $this->positionMock,
                 'formField' => $this->formFieldMock,
                 'elementFactory' => $this->elementFactoryMock,
-                'imageTypes' => $imageTypes
+                'imageTypes' => $imageTypes,
             ]
         );
     }
@@ -227,14 +227,14 @@ class WatermarkTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['website', null, $websiteParam],
-                ['store', null, $storeParam]
+                ['store', null, $storeParam],
             ]);
 
         $this->positionMock->expects($this->exactly(3))
             ->method('toOptionArray')
             ->willReturn([
                 ['value' => 'stretch', 'label' => 'Stretch'],
-                ['value' => 'center', 'label' => 'Center']
+                ['value' => 'center', 'label' => 'Center'],
             ]);
 
         $this->setupElementFactoryMock();
@@ -269,21 +269,21 @@ class WatermarkTest extends TestCase
                 'expectedContains' => [
                     '<div>text field</div>',
                     '<div>image field</div>',
-                    '<div>select field</div>'
-                ]
+                    '<div>select field</div>',
+                ],
             ],
             'website_scope' => [
                 'websiteParam' => 'base',
                 'storeParam' => null,
                 'expectUseDefault' => true,
-                'expectedContains' => []
+                'expectedContains' => [],
             ],
             'store_scope' => [
                 'websiteParam' => null,
                 'storeParam' => 'default',
                 'expectUseDefault' => true,
-                'expectedContains' => []
-            ]
+                'expectedContains' => [],
+            ],
         ];
     }
 
@@ -303,7 +303,7 @@ class WatermarkTest extends TestCase
                 'watermarkPosition' => $this->positionMock,
                 'formField' => $this->formFieldMock,
                 'elementFactory' => $this->elementFactoryMock,
-                'imageTypes' => []
+                'imageTypes' => [],
             ]
         );
 
@@ -315,7 +315,7 @@ class WatermarkTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['website', null, null],
-                ['store', null, null]
+                ['store', null, null],
             ]);
 
         $this->elementFactoryMock->expects($this->never())->method('create');
@@ -341,7 +341,7 @@ class WatermarkTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['website', null, null],
-                ['store', null, null]
+                ['store', null, null],
             ]);
 
         $method = new ReflectionMethod(Watermark::class, '_getHeaderHtml');
@@ -397,7 +397,7 @@ class WatermarkTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['website', null, null],
-                ['store', null, 'default']
+                ['store', null, 'default'],
             ]);
 
         $method = new ReflectionMethod(Watermark::class, '_getHeaderHtml');
@@ -487,7 +487,7 @@ class WatermarkTest extends TestCase
                 'watermarkPosition' => $this->positionMock,
                 'formField' => $this->formFieldMock,
                 'elementFactory' => $this->elementFactoryMock,
-                'imageTypes' => []
+                'imageTypes' => [],
             ]
         );
 
@@ -551,7 +551,7 @@ class WatermarkTest extends TestCase
                 'watermarkPosition' => $this->positionMock,
                 'formField' => $this->formFieldMock,
                 'elementFactory' => $this->elementFactoryMock,
-                'imageTypes' => ['thumbnail' => ['title' => 'Thumbnail Only']]
+                'imageTypes' => ['thumbnail' => ['title' => 'Thumbnail Only']],
             ]
         );
 
@@ -597,8 +597,8 @@ class WatermarkTest extends TestCase
                 'formField' => $this->formFieldMock,
                 'elementFactory' => $this->elementFactoryMock,
                 'imageTypes' => [
-                    'test' => ['title' => $titleWithScript]
-                ]
+                    'test' => ['title' => $titleWithScript],
+                ],
             ]
         );
 
@@ -640,7 +640,7 @@ class WatermarkTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['website', null, 'base'],
-                ['store', null, 'default']
+                ['store', null, 'default'],
             ]);
 
         $this->positionMock->expects($this->any())

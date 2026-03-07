@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Captcha\Test\Unit\Plugin;
 
+use Magento\Captcha\Helper\Data as HelperCaptcha;
+use Magento\Captcha\Model\DefaultModel;
 use Magento\Captcha\Model\ResourceModel\Log;
 use Magento\Captcha\Model\ResourceModel\LogFactory;
 use Magento\Captcha\Plugin\ResetPaymentAttemptsAfterOrderIsPlacedPlugin;
-use Magento\Captcha\Helper\Data as HelperCaptcha;
-use Magento\Captcha\Model\DefaultModel;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use PHPUnit\Framework\TestCase;

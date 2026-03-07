@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
 /**
@@ -15,7 +18,7 @@ abstract class Status extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::order_statuses';
+    public const ADMIN_RESOURCE = 'Magento_Sales::order_statuses';
 
     /**
      * Core registry

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Cms\Page;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -308,8 +311,8 @@ class EditTest extends TestCase
                     'reset_button' => false,
                     'delete_button' => false,
                     'form' => ['cms_page' => $cmsPage, 'url_rewrite' => $urlRewrite],
-                    'cms_pages_grid' => false
-                ]
+                    'cms_pages_grid' => false,
+                ],
             ],
             // Creating URL rewrite when CMS page not selected
             [
@@ -322,8 +325,8 @@ class EditTest extends TestCase
                     'reset_button' => false,
                     'delete_button' => false,
                     'form' => false,
-                    'cms_pages_grid' => true
-                ]
+                    'cms_pages_grid' => true,
+                ],
             ],
             // Editing existing URL rewrite with CMS page
             [
@@ -335,9 +338,9 @@ class EditTest extends TestCase
                     'reset_button' => true,
                     'delete_button' => true,
                     'form' => ['cms_page' => $cmsPage, 'url_rewrite' => $existingUrlRewrite],
-                    'cms_pages_grid' => false
-                ]
-            ]
+                    'cms_pages_grid' => false,
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,10 +53,10 @@ class VisualTest extends TestCase
                 'option_values' => [
                     new DataObject(['value' => 6, 'label' => 'red']),
                     new DataObject(['value' => 6, 'label' => 'blue']),
-                ]
+                ],
             ],
             'expectedResult' => '{"attributesData":[{"value":6,"label":"red"},{"value":6,"label":"blue"}],' .
-                '"uploadActionUrl":"http:\/\/magento.com\/admin\/swatches\/iframe\/show","isSortable":0,"isReadOnly":1}'
+                '"uploadActionUrl":"http:\/\/magento.com\/admin\/swatches\/iframe\/show","isSortable":0,"isReadOnly":1}',
 
         ];
 
@@ -75,10 +76,10 @@ class VisualTest extends TestCase
                 'option_values' => [
                     new DataObject(['value' => 6, 'label' => 'red']),
                     new DataObject(['value' => 6, 'label' => 'blue']),
-                ]
+                ],
             ],
             'expectedResult' => '{"attributesData":[{"value":6,"label":"red"},{"value":6,"label":"blue"}],' .
-                '"uploadActionUrl":"http:\/\/magento.com\/admin\/swatches\/iframe\/show","isSortable":1,"isReadOnly":0}'
+                '"uploadActionUrl":"http:\/\/magento.com\/admin\/swatches\/iframe\/show","isSortable":1,"isReadOnly":0}',
         ];
 
         $this->executeTest($testCase1);

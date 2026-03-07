@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Product;
 
-use Magento\Framework\DB\Select;
 use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Model\Stock\Status as StockStatus;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\Status as StockStatusResource;
+use Magento\CatalogInventory\Model\Stock\Status as StockStatus;
+use Magento\Framework\DB\Select;
 
 /**
  * A Select object processor.

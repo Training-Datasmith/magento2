@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\Cache;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -15,7 +18,7 @@ class CleanStaticFiles extends \Magento\Backend\Controller\Adminhtml\Cache imple
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Backend::flush_static_files';
+    public const ADMIN_RESOURCE = 'Magento_Backend::flush_static_files';
 
     /**
      * Clean static files cache

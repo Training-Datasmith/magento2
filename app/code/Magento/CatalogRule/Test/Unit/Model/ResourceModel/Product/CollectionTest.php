@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\CatalogRule\Test\Unit\Model\ResourceModel\Product;
 use Magento\CatalogRule\Model\Indexer\DynamicBatchSizeCalculator;
 use Magento\CatalogRule\Model\ResourceModel\Product\AttributeValuesLoader;
 use Magento\CatalogRule\Model\ResourceModel\Product\Collection;
-use Magento\Eav\Model\Config as EavConfig;
 use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -203,7 +203,7 @@ class CollectionTest extends TestCase
         $this->entityMock->method('getAttribute')
             ->willReturnMap([
                 [$attributeCode1, $attribute1Mock],
-                [$attributeCode2, $attribute2Mock]
+                [$attributeCode2, $attribute2Mock],
             ]);
 
         $this->batchSizeCalculatorMock->method('getAttributeBatchSize')

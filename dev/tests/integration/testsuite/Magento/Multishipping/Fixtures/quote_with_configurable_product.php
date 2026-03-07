@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,9 +43,9 @@ $request->setData(
         'product_id' => $productRepository->get('configurable')->getId(),
         'selected_configurable_option' => '1',
         'super_attribute' => [
-            $attribute->getAttributeId() => $attribute->getOptions()[1]->getValue()
+            $attribute->getAttributeId() => $attribute->getOptions()[1]->getValue(),
         ],
-        'qty' => '2'
+        'qty' => '2',
     ]
 );
 
@@ -90,7 +91,7 @@ $addressList = [
         'postcode' => 80203,
         'country_id' => 'US',
         'email' => 'customer002@shipping.test',
-        'address_type' => 'shipping'
+        'address_type' => 'shipping',
     ],
 ];
 

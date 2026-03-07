@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class ReaderTest extends TestCase
                 'source' => $this->source,
                 'fallback' => $this->fallback,
                 'preProcessor' => $this->preProcessor,
-                'postProcessor' => $this->postProcessor
+                'postProcessor' => $this->postProcessor,
             ]
         );
     }
@@ -68,7 +69,7 @@ class ReaderTest extends TestCase
         $data = [
             'default' => [],
             'websites' => [],
-            'stores' => []
+            'stores' => [],
         ];
         $this->source->expects($this->once())
             ->method('get')

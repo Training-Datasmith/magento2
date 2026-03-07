@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ConfigTest extends TestCase
         $connectionMock->expects($this->atLeastOnce())->method('select')->willReturn($selectMock);
 
         $this->resource->expects($this->exactly(3))->method('getTableName')
-        ->willReturnCallback(fn($param) => match ([$param]) {
+        ->willReturnCallback(fn ($param) => match ([$param]) {
             ['eav_attribute'] => 'eav_attribute',
             ['catalog_eav_attribute'] => 'catalog_eav_attribute',
             ['eav_attribute_label'] => 'eav_attribute_label'

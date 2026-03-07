@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -20,6 +22,6 @@ $block->setTitle(
     1
 )->setStores(
     [
-        Bootstrap::getObjectManager()->get(StoreManagerInterface::class)->getStore()->getId()
+        Bootstrap::getObjectManager()->get(StoreManagerInterface::class)->getStore()->getId(),
     ]
 )->save();

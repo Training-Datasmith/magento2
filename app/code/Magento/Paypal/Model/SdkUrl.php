@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -254,7 +255,7 @@ class SdkUrl
         $mappedIntentValues = [
             Config::PAYMENT_ACTION_AUTH => 'authorize',
             Config::PAYMENT_ACTION_SALE => 'capture',
-            Config::PAYMENT_ACTION_ORDER => 'order'
+            Config::PAYMENT_ACTION_ORDER => 'order',
         ];
         return $mappedIntentValues[$paymentAction];
     }

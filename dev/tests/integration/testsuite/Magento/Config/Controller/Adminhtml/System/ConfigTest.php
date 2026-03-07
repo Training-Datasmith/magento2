@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Config\Controller\Adminhtml\System;
 
 use Magento\Config\Controller\Adminhtml\System\Config\Save;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoAppArea adminhtml
@@ -42,11 +44,11 @@ class ConfigTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
                     ['unsecure' =>
                         ['fields' =>
                             ['base_url' =>
-                                ['value' => 'http://' . $newHost . '/']
-                            ]
-                        ]
+                                ['value' => 'http://' . $newHost . '/'],
+                            ],
+                        ],
                     ],
-                    'config_state' => ['web_unsecure' => 1]
+                    'config_state' => ['web_unsecure' => 1],
             ]
         )->setParam(
             'section',
@@ -83,11 +85,11 @@ class ConfigTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
                 'non_existing' => [
                     'fields' => [
                         'non_existing_field' => [
-                            'value' => 'some_value'
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => 'some_value',
+                        ],
+                    ],
+                ],
+            ],
         ]);
         $request->setParam('section', 'web');
         $request->setMethod(HttpRequest::METHOD_POST);
@@ -116,11 +118,11 @@ class ConfigTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
                 'unsecure' => [
                     'fields' => [
                         'base_url' => [
-                            'value' => $defaultHost
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => $defaultHost,
+                        ],
+                    ],
+                ],
+            ],
         ];
         Bootstrap::getObjectManager()->create(\Magento\Config\Model\Config\Factory::class)
             ->create()

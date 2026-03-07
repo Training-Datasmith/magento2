@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ActionsSerializer
      * @param array $data
      * @return array
      */
-    private function normalize(array $data) : array
+    private function normalize(array $data): array
     {
         $actions = $data;
         $actions += [

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Ddl;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoTable;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Data Definition for table
@@ -511,7 +514,7 @@ class Table
             'COLUMN_NAME' => $column,
             'REF_TABLE_NAME' => $refTable,
             'REF_COLUMN_NAME' => $refColumn,
-            'ON_DELETE' => $onDelete
+            'ON_DELETE' => $onDelete,
         ];
 
         return $this;

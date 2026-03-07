@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Attribute\Backend\WebsiteSpecific\Scheduler;
 use Magento\Catalog\Observer\SynchronizeWebsiteAttributesOnStoreChange;
 use Magento\Framework\Event\Observer;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SynchronizeWebsiteAttributesOnStoreChangeTest extends TestCase

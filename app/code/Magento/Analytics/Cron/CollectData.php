@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Cron;
 
 use Magento\Analytics\Model\ExportDataHandlerInterface;
@@ -13,38 +16,22 @@ use Magento\Analytics\Model\SubscriptionStatusProvider;
  */
 class CollectData
 {
-    /**
-     * Resource for the handling of a new data collection.
-     *
-     * @var ExportDataHandlerInterface
-     */
-    private $exportDataHandler;
-
-    /**
-     * Resource which provides a status of subscription.
-     *
-     * @var SubscriptionStatusProvider
-     */
-    private $subscriptionStatus;
-
-    /**
-     * @param ExportDataHandlerInterface $exportDataHandler
-     * @param SubscriptionStatusProvider $subscriptionStatus
-     */
     public function __construct(
-        ExportDataHandlerInterface $exportDataHandler,
-        SubscriptionStatusProvider $subscriptionStatus
+        /**
+         * Resource for the handling of a new data collection.
+         */
+        private readonly ExportDataHandlerInterface $exportDataHandler,
+        /**
+         * Resource which provides a status of subscription.
+         */
+        private readonly SubscriptionStatusProvider $subscriptionStatus
     ) {
-        $this->exportDataHandler = $exportDataHandler;
-        $this->subscriptionStatus = $subscriptionStatus;
     }
 
     /**
      * Run data export preparation
-     *
-     * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
         if ($this->subscriptionStatus->getStatus() === SubscriptionStatusProvider::ENABLED) {
             $this->exportDataHandler->prepareExportData();

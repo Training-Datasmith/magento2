@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Framework\Interception\Test\Unit\PluginList;
 use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Interception\ConfigLoaderInterface;
+use Magento\Framework\Interception\Definition\Runtime as InterceptionRuntime;
 use Magento\Framework\Interception\ObjectManager\ConfigInterface;
 use Magento\Framework\Interception\PluginList\PluginList;
 use Magento\Framework\Interception\PluginListGenerator;
@@ -20,16 +22,15 @@ use Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemPlugin\Adva
 use Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemPlugin\Simple;
 use Magento\Framework\Interception\Test\Unit\Custom\Module\Model\StartingBackslash;
 use Magento\Framework\Interception\Test\Unit\Custom\Module\Model\StartingBackslash\Plugin as StartingBackslashPlugin;
-use Magento\Framework\Interception\Definition\Runtime as InterceptionRuntime;
 use Magento\Framework\ObjectManager\Config\Reader\Dom;
 use Magento\Framework\ObjectManager\Definition\Runtime;
 use Magento\Framework\ObjectManager\Relations\Runtime as RelationsRuntime;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionClass;
 use ReflectionObject;
 
@@ -90,7 +91,7 @@ class PluginListTest extends TestCase
                 'remove',
                 'clean',
                 'getBackend',
-                'getLowLevelFrontend'
+                'getLowLevelFrontend',
             ]
         );
         // turn cache off
@@ -136,7 +137,7 @@ class PluginListTest extends TestCase
                     'cacheId' => 'interception',
                     'serializer' => $this->serializerMock,
                     'configLoader' => $this->configLoaderMock,
-                    'pluginListGenerator' => $pluginListGeneratorMock
+                    'pluginListGenerator' => $pluginListGeneratorMock,
                 ]
             )
             ->getMock();
@@ -153,39 +154,39 @@ class PluginListTest extends TestCase
                     ],
                     'simple_plugin' => [
                         'sortOrder' => 10,
-                        'instance' => Simple::class
-                    ]
-                ]
+                        'instance' => Simple::class,
+                    ],
+                ],
             ];
             $processedItem = [
                 'Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item_getName___self' => [
                     2 => 'advanced_plugin',
-                    4 => ['advanced_plugin']
+                    4 => ['advanced_plugin'],
                 ],
                 'Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item_getName_advanced_plugin' => [
-                    4 => ['simple_plugin']
-                ]
+                    4 => ['simple_plugin'],
+                ],
             ];
             $inheritedItemContainer = [
                 ItemContainer::class => [
                     'simple_plugin' => [
                         'sortOrder' => 15,
-                        'instance' => ItemContainerPlugin::class
-                    ]
-                ]
+                        'instance' => ItemContainerPlugin::class,
+                    ],
+                ],
             ];
             $processedItemContainer = [
                 'Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemContainer_getName___self' => [
-                    4 => ['simple_plugin']
-                ]
+                    4 => ['simple_plugin'],
+                ],
             ];
             $inheritedStartingBackslash = [
                 StartingBackslash::class => [
                     'simple_plugin' => [
                         'sortOrder' => 20,
-                        'instance' => StartingBackslashPlugin::class
-                    ]
-                ]
+                        'instance' => StartingBackslashPlugin::class,
+                    ],
+                ],
             ];
 
             if ($type === 'Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item') {
@@ -263,15 +264,15 @@ class PluginListTest extends TestCase
                 Item::class => [
                     'simple_plugin' => [
                         'sortOrder' => 10,
-                        'instance' => Simple::class
-                    ]
-                ]
+                        'instance' => Simple::class,
+                    ],
+                ],
             ];
             $processedItem = [
                 'Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item_getName___self' => [
                     4 => [
-                        'simple_plugin'
-                    ]
+                        'simple_plugin',
+                    ],
                 ],
             ];
 
@@ -296,7 +297,7 @@ class PluginListTest extends TestCase
                 [4 => ['simple_plugin']], Item::class,
                 'getName',
                 'global',
-            ]
+            ],
         ];
     }
 
@@ -314,7 +315,7 @@ class PluginListTest extends TestCase
         $data = [
             [], // _data
             [], // _inherited
-            []  // _processed
+            [],  // _processed
         ];
         $serializedData = 'serialized data';
 
@@ -330,7 +331,7 @@ class PluginListTest extends TestCase
             ->method('unserialize')
             ->with($serializedData)
             ->willReturn($data);
-        
+
         // Cannot override setUp's method()->willReturn() with expects()->willReturn()
         // Use willReturnMap to provide specific return value for this cache ID
         $this->cacheMock = $this->createPartialMockWithReflection(
@@ -339,9 +340,9 @@ class PluginListTest extends TestCase
         );
         $this->cacheMock->method('load')
             ->willReturnMap([
-                ['global|scope|interception', $serializedData]
+                ['global|scope|interception', $serializedData],
             ]);
-        
+
         // Inject the new cache mock into the object via reflection
         $reflection = new ReflectionObject($this->object);
         $cacheProperty = $reflection->getParentClass()->getProperty('_cache');
@@ -350,10 +351,10 @@ class PluginListTest extends TestCase
         $inheritPlugins = function ($type) {
             $inherited = [
                 0 => 'key',
-                'Type' => null
+                'Type' => null,
             ];
             $processed = [
-                0 => 'key'
+                0 => 'key',
             ];
 
             if ($type === 'Type') {
@@ -387,10 +388,10 @@ class PluginListTest extends TestCase
         $inheritPlugins = function ($type) {
             $inherited = [
                 0 => 'key',
-                'Type' => null
+                'Type' => null,
             ];
             $processed = [
-                0 => 'key'
+                0 => 'key',
             ];
 
             if ($type === 'Type') {

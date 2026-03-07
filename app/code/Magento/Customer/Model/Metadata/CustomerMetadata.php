@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ class CustomerMetadata implements CustomerMetadataInterface
                         'fieldName' => 'entityType',
                         'fieldValue' => self::ENTITY_TYPE_CUSTOMER,
                         'field2Name' => 'attributeCode',
-                        'field2Value' => $attributeCode
+                        'field2Value' => $attributeCode,
                     ]
                 )
             );
@@ -145,7 +147,8 @@ class CustomerMetadata implements CustomerMetadataInterface
                 || isset($this->customerDataObjectMethods['is' . $camelCaseKey]);
 
             if (!$isDataObjectMethod
-                && (!$attributeMetadata->isSystem()
+                && (
+                    !$attributeMetadata->isSystem()
                     || in_array($attributeCode, $this->systemAttributes)
                 )
             ) {

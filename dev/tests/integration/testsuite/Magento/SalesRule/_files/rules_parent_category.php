@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,8 +26,8 @@ $salesRule->setData(
         'website_ids' => [
             Bootstrap::getObjectManager()->get(
                 \Magento\Store\Model\StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ]
 );
 

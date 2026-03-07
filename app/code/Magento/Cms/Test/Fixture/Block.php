@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class Block implements RevertibleDataFixtureInterface
         BlockInterface::CONTENT => 'BlockContent%uniqid%',
         BlockInterface::CREATION_TIME => null,
         BlockInterface::UPDATE_TIME => null,
-        'active' => true
+        'active' => true,
     ];
 
     /**

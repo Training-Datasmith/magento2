@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\Model\Resolver\Category;
 
 use Magento\CatalogGraphQl\DataProvider\Product\SearchCriteriaBuilder;
+use Magento\CatalogGraphQl\Model\Resolver\Products\Query\ProductQueryInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\CatalogGraphQl\Model\Resolver\Products\Query\ProductQueryInterface;
 
 /**
  * Category products resolver, used by GraphQL endpoints to retrieve products assigned to a category
@@ -60,8 +61,8 @@ class Products implements ResolverInterface
 
         $args['filter'] = [
             'category_id' => [
-                'eq' => $value['id']
-            ]
+                'eq' => $value['id'],
+            ],
         ];
         $searchResult = $this->searchQuery->getResult($args, $info, $context);
 
@@ -88,8 +89,8 @@ class Products implements ResolverInterface
             'page_info'   => [
                 'page_size'    => $searchResult->getPageSize(),
                 'current_page' => $currentPage,
-                'total_pages' => $maxPages
-            ]
+                'total_pages' => $maxPages,
+            ],
         ];
         return $data;
     }

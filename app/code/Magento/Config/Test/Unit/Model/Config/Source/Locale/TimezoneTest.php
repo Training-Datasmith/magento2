@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class TimezoneTest extends TestCase
             'Antarctica/Troll',
             'Asia/Chita',
             'Asia/Srednekolymsk',
-            'Pacific/Bougainville'
+            'Pacific/Bougainville',
         ];
         $list = \DateTimeZone::listIdentifiers();
         $preparedList = [];

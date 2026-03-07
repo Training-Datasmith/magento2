@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +14,10 @@ use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\Tree;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Tree\Node;
-use Magento\Framework\Data\Tree\Node\Collection as NodeCollection;
 use Magento\Framework\Escaper;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Widget\Block\Adminhtml\Widget\Catalog\Category\Chooser;
@@ -117,7 +117,7 @@ class ChooserTest extends TestCase
         $this->collection->expects($this->any())->method('addAttributeToSelect')->willReturnMap(
             [
                 ['url_key', false, $this->collection],
-                ['is_anchor', false, $this->collection]
+                ['is_anchor', false, $this->collection],
             ]
         );
 
@@ -152,7 +152,7 @@ class ChooserTest extends TestCase
                 Chooser::class,
                 [
                     'categoryTree' => $this->categoryTree,
-                    'context' => $this->context
+                    'context' => $this->context,
                 ]
             );
         $chooser->setData('category_collection', $this->collection);

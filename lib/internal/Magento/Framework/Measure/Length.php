@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -405,7 +406,7 @@ class Length extends AbstractMeasure
         'ELLE' => ['0.6', 'ellen'],
         'ELLE_VIENNA' => ['0.7793', 'ellen'],
         'EM' => ['0.0042175176', 'em'],
-        'ESTADIO_PORTUGAL'=> ['261', 'estadio'],
+        'ESTADIO_PORTUGAL' => ['261', 'estadio'],
         'ESTADIO' => ['174', 'estadio'],
         'EXAMETER' => ['1.0e+18', 'Em'],
         'FADEN_AUSTRIA' => ['1.8965', 'faden'],
@@ -645,6 +646,6 @@ class Length extends AbstractMeasure
         'ZETTAMETER' => ['1.0e+21', 'Zm'],
         'ZOLL' => ['0.02634', 'zoll'],
         'ZOLL_SWISS' => ['0.03', 'zoll'],
-        'STANDARD' => 'METER'
+        'STANDARD' => 'METER',
     ];
 }

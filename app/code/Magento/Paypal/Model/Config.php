@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +22,6 @@ use Magento\Payment\Helper\Formatter;
  */
 class Config extends AbstractConfig
 {
-
     use Formatter;
 
     /**
@@ -1150,7 +1151,7 @@ class Config extends AbstractConfig
             'paymentsBy_150x60' => __('Payments by PayPal (150 X 60)'),
             'paymentsBy_150x40' => __('Payments by PayPal (150 X 40)'),
             'shopNowUsing_150x60' => __('Shop now using (150 X 60)'),
-            'shopNowUsing_150x40' => __('Shop now using (150 X 40)')
+            'shopNowUsing_150x40' => __('Shop now using (150 X 40)'),
         ];
     }
 
@@ -1199,7 +1200,7 @@ class Config extends AbstractConfig
     {
         return [
             self::EC_BUTTON_TYPE_SHORTCUT => __('Shortcut'),
-            self::EC_BUTTON_TYPE_MARK => __('Acceptance Mark Image')
+            self::EC_BUTTON_TYPE_MARK => __('Acceptance Mark Image'),
         ];
     }
 
@@ -1230,7 +1231,7 @@ class Config extends AbstractConfig
         return [
             self::REQUIRE_BILLING_ADDRESS_ALL => __('Yes'),
             self::REQUIRE_BILLING_ADDRESS_NO => __('No'),
-            self::REQUIRE_BILLING_ADDRESS_VIRTUAL => __('For Virtual Quotes Only')
+            self::REQUIRE_BILLING_ADDRESS_VIRTUAL => __('For Virtual Quotes Only'),
         ];
     }
 
@@ -1274,7 +1275,7 @@ class Config extends AbstractConfig
         return [
             self::EC_BA_SIGNUP_AUTO => __('Auto'),
             self::EC_BA_SIGNUP_ASK => __('Ask Customer'),
-            self::EC_BA_SIGNUP_NEVER => __('Never')
+            self::EC_BA_SIGNUP_NEVER => __('Never'),
         ];
     }
 
@@ -1544,7 +1545,7 @@ class Config extends AbstractConfig
     {
         switch ($fieldName) {
             case 'allow_ba_signup':
-                return "payment/" . self::METHOD_WPP_EXPRESS . "/{$fieldName}";
+                return 'payment/' . self::METHOD_WPP_EXPRESS . "/{$fieldName}";
             default:
                 return $this->_mapExpressFieldset($fieldName);
         }
@@ -1560,7 +1561,7 @@ class Config extends AbstractConfig
     {
         switch ($fieldName) {
             case 'allow_ba_signup':
-                return "payment/" . self::METHOD_WPP_PE_EXPRESS . "/{$fieldName}";
+                return 'payment/' . self::METHOD_WPP_PE_EXPRESS . "/{$fieldName}";
             default:
                 return $this->_mapExpressFieldset($fieldName);
         }

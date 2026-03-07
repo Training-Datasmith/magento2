@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,13 +18,13 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\Manager as MessageManager;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\Email;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
-use Magento\Store\Model\Store;
 use Magento\Shipping\Model\ShipmentNotifier;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -114,7 +115,7 @@ class EmailTest extends TestCase
                 'getSession',
                 'getActionFlag',
                 'getHelper',
-                'getResultFactory'
+                'getResultFactory',
             ]
         );
         $this->response = $this->createMock(ResponseInterface::class);
@@ -155,7 +156,7 @@ class EmailTest extends TestCase
                 'context' => $this->context,
                 'shipmentLoader' => $this->shipmentLoader,
                 'request' => $this->request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }
@@ -193,7 +194,7 @@ class EmailTest extends TestCase
                     ['order_id', null, $orderId],
                     ['shipment_id', null, $shipmentId],
                     ['shipment', null, $shipment],
-                    ['tracking', null, $tracking]
+                    ['tracking', null, $tracking],
                 ]
             );
         $this->shipmentLoader->expects($this->once())
@@ -264,7 +265,7 @@ class EmailTest extends TestCase
                     ['order_id', null, $orderId],
                     ['shipment_id', null, $shipmentId],
                     ['shipment', null, $shipment],
-                    ['tracking', null, $tracking]
+                    ['tracking', null, $tracking],
                 ]
             );
         $this->shipmentLoader->expects($this->once())
@@ -339,7 +340,7 @@ class EmailTest extends TestCase
                     ['order_id', null, $orderId],
                     ['shipment_id', null, $shipmentId],
                     ['shipment', null, $shipment],
-                    ['tracking', null, $tracking]
+                    ['tracking', null, $tracking],
                 ]
             );
 
@@ -392,7 +393,7 @@ class EmailTest extends TestCase
                     ['order_id', null, $orderId],
                     ['shipment_id', null, $shipmentId],
                     ['shipment', null, $shipment],
-                    ['tracking', null, $tracking]
+                    ['tracking', null, $tracking],
                 ]
             );
 

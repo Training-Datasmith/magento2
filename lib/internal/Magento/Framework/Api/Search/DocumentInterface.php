@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Search;
 
 use Magento\Framework\Api\CustomAttributesDataInterface;
@@ -14,7 +17,7 @@ use Magento\Framework\Api\CustomAttributesDataInterface;
  */
 interface DocumentInterface extends CustomAttributesDataInterface
 {
-    const ID = 'id';
+    public const ID = 'id';
 
     /**
      * @return int

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +9,12 @@
 namespace Magento\Config\Model\Config\Compiler;
 
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Module\Dir;
 use Magento\Framework\Module\Dir\Reader;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\View\TemplateEngine\Xhtml\CompilerInterface;
 use Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Element\ElementInterface;
+use Magento\Framework\View\TemplateEngine\Xhtml\CompilerInterface;
 
 /**
  * Class IncludeElement
@@ -21,7 +23,7 @@ use Magento\Framework\View\TemplateEngine\Xhtml\Compiler\Element\ElementInterfac
  */
 class IncludeElement implements ElementInterface
 {
-    const INCLUDE_PATH = 'path';
+    public const INCLUDE_PATH = 'path';
 
     /**
      * @var Reader

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ use Magento\TestFramework\SkippableTrait;
  */
 class WrapperGenerator
 {
-    const SKIPPABLE_SUFFIX = 'Skippable';
+    public const SKIPPABLE_SUFFIX = 'Skippable';
 
     /**
      * @var ClassGenerator

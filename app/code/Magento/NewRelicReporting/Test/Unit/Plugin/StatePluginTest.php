@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\NewRelicReporting\Model\Config as NewRelicConfig;
 use Magento\NewRelicReporting\Model\NewRelicWrapper;
 use Magento\NewRelicReporting\Plugin\StatePlugin;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -144,18 +145,18 @@ class StatePluginTest extends TestCase
             'Separate apps config is disabled' => [
                 false,
                 static::STUB_APP_NAME,
-                true
+                true,
             ],
             'Application name is not configured' => [
                 true,
                 '',
-                true
+                true,
             ],
             'New Relic is disabled' => [
                 true,
                 static::STUB_APP_NAME,
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

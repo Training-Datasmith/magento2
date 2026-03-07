@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,18 +12,18 @@ use Magento\Framework\Indexer\ActionFactory;
 use Magento\Framework\Indexer\ActionInterface;
 use Magento\Framework\Indexer\Config\DependencyInfoProviderInterface;
 use Magento\Framework\Indexer\ConfigInterface;
+use Magento\Framework\Indexer\IndexerInterfaceFactory;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Indexer\StructureFactory;
-use Magento\Framework\Indexer\IndexerInterfaceFactory;
 use Magento\Framework\Mview\ViewInterface;
 use Magento\Indexer\Model\Indexer;
 use Magento\Indexer\Model\Indexer\CollectionFactory;
 use Magento\Indexer\Model\Indexer\State;
 use Magento\Indexer\Model\Indexer\StateFactory;
 use Magento\Indexer\Model\WorkingStateProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -544,7 +545,7 @@ class IndexerTest extends TestCase
             'action_class' => 'Some\Class\Name',
             'title' => 'Indexer public name',
             'description' => 'Indexer public description',
-            'shared_index' => null
+            'shared_index' => null,
         ];
     }
 
@@ -627,7 +628,7 @@ class IndexerTest extends TestCase
     {
         return [
             [true, 'subscribe'],
-            [false, 'unsubscribe']
+            [false, 'unsubscribe'],
         ];
     }
 
@@ -664,7 +665,7 @@ class IndexerTest extends TestCase
             ['isValid', StateInterface::STATUS_VALID],
             ['isInvalid', StateInterface::STATUS_INVALID],
             ['isWorking', StateInterface::STATUS_WORKING],
-            ['isSuspended', StateInterface::STATUS_SUSPENDED]
+            ['isSuspended', StateInterface::STATUS_SUSPENDED],
         ];
     }
 

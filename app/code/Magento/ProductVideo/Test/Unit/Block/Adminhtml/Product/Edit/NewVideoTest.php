@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
- 
+
 namespace Magento\ProductVideo\Test\Unit\Block\Adminhtml\Product\Edit;
- 
+
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\Data\FormFactory;
@@ -19,54 +20,54 @@ use Magento\ProductVideo\Block\Adminhtml\Product\Edit\NewVideo;
 use Magento\ProductVideo\Helper\Media;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
- 
+
 class NewVideoTest extends TestCase
 {
     /**
      * @var Context|MockObject
      */
     protected $contextMock;
- 
+
     /**
      * @var MockObject|UrlInterface
      */
     protected $urlBuilder;
- 
+
     /**
      * @var Random|MockObject
      */
     protected $mathRandom;
- 
+
     /**
      * @var Registry|MockObject
      */
     protected $registryMock;
- 
+
     /**
      * @var FormFactory|MockObject
      */
     protected $formFactoryMock;
- 
+
     /**
      * @var EncoderInterface|MockObject
      */
     protected $jsonEncoderMock;
- 
+
     /**
      * @var Media|MockObject
      */
     protected $mediaHelper;
- 
+
     /**
      * @var NewVideo
      */
     protected $block;
- 
+
     protected function setUp(): void
     {
         $objectManagerMock = $this->createMock(AppObjectManager::class);
         AppObjectManager::setInstance($objectManagerMock);
- 
+
         $this->contextMock = $this->createMock(Context::class);
         $this->mediaHelper = $this->createMock(Media::class);
         $this->mathRandom = $this->createMock(Random::class);
@@ -76,9 +77,9 @@ class NewVideoTest extends TestCase
         $this->registryMock = $this->createMock(Registry::class);
         $this->formFactoryMock = $this->createMock(FormFactory::class);
         $this->jsonEncoderMock = $this->createMock(EncoderInterface::class);
- 
+
         $objectManager = new ObjectManager($this);
- 
+
         $this->block = $objectManager->getObject(
             NewVideo::class,
             [
@@ -91,14 +92,14 @@ class NewVideoTest extends TestCase
             ]
         );
     }
- 
+
     public function testGetHtmlId()
     {
         $this->mathRandom->expects($this->any())->method('getUniqueHash')->with('id_')->willReturn('id_' . rand());
         $result = $this->block->getHtmlId();
         $this->assertNotNull($result);
     }
- 
+
     public function testGetWidgetOptions()
     {
         $rand = rand();
@@ -114,7 +115,7 @@ class NewVideoTest extends TestCase
             'saveRemoteVideoUrl' => $saveRemoteVideoUrl,
             'htmlId' => 'id_' . $rand,
             'youTubeApiKey' => null,
-            'videoSelector' => '#media_gallery_content'
+            'videoSelector' => '#media_gallery_content',
         ];
         $this->jsonEncoderMock->expects($this->once())->method('encode')->with(
             $value

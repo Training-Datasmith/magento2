@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\JsonHexTag;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JsonHexTagTest extends TestCase
 {
@@ -113,7 +114,7 @@ class JsonHexTagTest extends TestCase
         return [
             [''],
             [false],
-            ['{']
+            ['{'],
         ];
     }
 }

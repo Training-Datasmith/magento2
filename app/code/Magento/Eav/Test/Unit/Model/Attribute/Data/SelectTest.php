@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 class SelectTest extends TestCase
 {
@@ -75,12 +76,12 @@ class SelectTest extends TestCase
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => '',
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => 'value',
-                'expectedResult' => '123'
+                'expectedResult' => '123',
             ],
         ];
     }
@@ -155,7 +156,7 @@ class SelectTest extends TestCase
                 'isRequired' => true,
                 'skipRequiredValidation' => true,
                 'expectedResult' => true,
-            ]
+            ],
         ];
     }
 

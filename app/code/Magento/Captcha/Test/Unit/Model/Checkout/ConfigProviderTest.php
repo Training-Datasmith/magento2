@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,7 +109,7 @@ class ConfigProviderTest extends TestCase
                             'imageHeight' => '12px',
                             'imageSrc' => 'source',
                             'refreshUrl' => 'https://magento.com/captcha',
-                            'isRequired' => true
+                            'isRequired' => true,
                         ],
                     ],
                 ],
@@ -123,7 +124,7 @@ class ConfigProviderTest extends TestCase
                             'imageHeight' => '12px',
                             'imageSrc' => '',
                             'refreshUrl' => 'https://magento.com/captcha',
-                            'isRequired' => false
+                            'isRequired' => false,
                         ],
                     ],
                 ],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,11 +67,14 @@ class PublisherTest extends TestCase
         $this->writeFactory = $this->createMock(WriteFactory::class);
         $this->object = new Publisher($this->filesystem, $this->materializationStrategyFactory, $this->writeFactory);
 
-        $this->sourceDirWrite = $this->createMock(WriteInterface::class
+        $this->sourceDirWrite = $this->createMock(
+            WriteInterface::class
         );
-        $this->staticDirRead = $this->createMock(ReadInterface::class
+        $this->staticDirRead = $this->createMock(
+            ReadInterface::class
         );
-        $this->staticDirWrite = $this->createMock(WriteInterface::class
+        $this->staticDirWrite = $this->createMock(
+            WriteInterface::class
         );
         $this->filesystem->expects($this->any())
             ->method('getDirectoryRead')

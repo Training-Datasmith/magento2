@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -22,9 +23,9 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 class ResetPasswordTest extends GraphQlAbstract
 {
-    const CUSTOMER_EMAIL = "customer@example.com";
+    public const CUSTOMER_EMAIL = 'customer@example.com';
 
-    const CUSTOMER_NEW_PASSWORD = "new_password123";
+    public const CUSTOMER_NEW_PASSWORD = 'new_password123';
 
     /** @var ObjectManagerInterface */
     private $objectManager;

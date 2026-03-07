@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CustomerImportExport\Controller\Adminhtml\Index;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -17,7 +20,7 @@ class ExportXml extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::manage';
+    public const ADMIN_RESOURCE = 'Magento_Customer::manage';
 
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory

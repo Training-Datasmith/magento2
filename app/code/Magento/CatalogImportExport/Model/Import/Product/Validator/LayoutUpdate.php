@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class LayoutUpdate extends AbstractImportValidator
      * @var ValidatorFactory
      */
     private $layoutValidatorFactory;
-    
+
     /**
      * @var ValidationStateInterface
      */
@@ -48,7 +49,7 @@ class LayoutUpdate extends AbstractImportValidator
         if (!empty($value['custom_layout_update']) && !$this->validateXml($value['custom_layout_update'])) {
             $this->_addMessages(
                 [
-                    $this->context->retrieveMessageTemplate(self::ERROR_INVALID_LAYOUT_UPDATE)
+                    $this->context->retrieveMessageTemplate(self::ERROR_INVALID_LAYOUT_UPDATE),
                 ]
             );
             return false;

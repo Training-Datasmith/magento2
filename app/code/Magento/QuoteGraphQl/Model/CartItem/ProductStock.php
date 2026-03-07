@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -26,12 +27,12 @@ class ProductStock
     /**
      * Bundle product type code
      */
-    private const PRODUCT_TYPE_BUNDLE = "bundle";
+    private const PRODUCT_TYPE_BUNDLE = 'bundle';
 
     /**
      * Configurable product type code
      */
-    private const PRODUCT_TYPE_CONFIGURABLE = "configurable";
+    private const PRODUCT_TYPE_CONFIGURABLE = 'configurable';
 
     /**
      * ProductStock Constructor

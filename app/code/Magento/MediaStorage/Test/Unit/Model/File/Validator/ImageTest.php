@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class ImageTest extends TestCase
             'x-icon' => [dirname(__FILE__) . '/_files/favicon-x-icon.ico',
                 'image/x-icon', true],
             'vnd-microsoft-icon' => [dirname(__FILE__) . '/_files/favicon-vnd-microsoft.ico',
-                'image/vnd.microsoft.icon', true]
+                'image/vnd.microsoft.icon', true],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ namespace Magento\Framework\Phrase\Test\Unit\Renderer;
 use Magento\Framework\Phrase\Renderer\MessageFormatter;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests that messages sent through the MessageFormatter phrase renderer result in what would be expected when sent
@@ -46,32 +47,32 @@ class MessageFormatterTest extends TestCase
                 'A table has {legs, plural, =0 {no legs} =1 {one leg} other {# legs}}.',
                 'en_US',
                 ['legs' => 4],
-                'A table has 4 legs.'
+                'A table has 4 legs.',
             ],
             [
                 'A table has {legs, plural, =0 {no legs} =1 {one leg} other {# legs}}.',
                 'en_US',
                 ['legs' => 0],
-                'A table has no legs.'
+                'A table has no legs.',
             ],
             [
                 'A table has {legs, plural, =0 {no legs} =1 {one leg} other {# legs}}.',
                 'en_US',
                 ['legs' => 1],
-                'A table has one leg.'
+                'A table has one leg.',
             ],
             ['The table costs {price, number, currency}.', 'en_US', ['price' => 23.4], 'The table costs $23.40.'],
             [
                 'Today is {date, date, long}.',
                 'en_US',
                 ['date' => $twentynineteenJuneTwentyseven],
-                'Today is June 27, 2019.'
+                'Today is June 27, 2019.',
             ],
             [
                 'Today is {date, date, long}.',
                 'ja_JP',
                 ['date' => $twentynineteenJuneTwentyseven],
-                'Today is 2019年6月27日.'
+                'Today is 2019年6月27日.',
             ],
         ];
     }

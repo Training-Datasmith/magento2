@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class Mapper
      * @param RequestInterface $request
      * @return array
      */
-    public function buildQuery(RequestInterface $request) : array
+    public function buildQuery(RequestInterface $request): array
     {
         $searchQuery = $this->mapper->buildQuery($request);
         $searchQuery['track_total_hits'] = true;

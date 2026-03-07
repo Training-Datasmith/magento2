@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\ConfigurableProduct\Helper;
 
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Helper\Image as ImageHelper;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Image;
 use Magento\Catalog\Model\Product\Image\UrlBuilder;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Helper\Image as ImageHelper;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Product\Image;
 
 /**
  * Class Data

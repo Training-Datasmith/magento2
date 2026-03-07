@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto;
 
 /**
@@ -15,7 +18,7 @@ class Column extends GenericElement implements
     /**
      * Element type.
      */
-    const TYPE = 'column';
+    public const TYPE = 'column';
 
     /**
      * @var Table

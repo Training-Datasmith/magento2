@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ $storeId = $storeRepository->get('fixture_second_store')->getId();
 $price = $objectManager->create(Price::class);
 $price->setCustomerId($customer->getId())
     ->setProductId($product->getId())
-    ->setPrice($product->getPrice()+1)
+    ->setPrice($product->getPrice() + 1)
     ->setWebsiteId(1)
     ->setStoreId($storeId);
 $price->save();

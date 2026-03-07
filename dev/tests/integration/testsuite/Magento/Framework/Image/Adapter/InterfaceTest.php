@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Framework\Image\Adapter;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\ImageFixture;
@@ -162,7 +163,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [\Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_GD2],
-            [\Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM]
+            [\Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM],
         ];
     }
 
@@ -450,7 +451,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     self::_getFixture('watermark_alpha.png'),
                     25,
                     [ 23, 3 ],
-                    [ 23, 30 ]
+                    [ 23, 30 ],
                 ],
                 // Watermark with alpha channel, 50%
                 [
@@ -458,7 +459,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     self::_getFixture('watermark_alpha.png'),
                     50,
                     [ 23, 3 ],
-                    [ 23, 30 ]
+                    [ 23, 30 ],
                 ],
                 // Watermark with no alpha channel, 50%
                 [
@@ -466,7 +467,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     self::_getFixture('watermark.png'),
                     50,
                     [ 3, 3 ],
-                    [ 23,3 ]
+                    [ 23,3 ],
                 ],
                 // Watermark with no alpha channel, 100%
                 [
@@ -474,7 +475,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     self::_getFixture('watermark.png'),
                     100,
                     [ 3, 3 ],
-                    [ 3, 60 ]
+                    [ 3, 60 ],
                 ],
             ]
         );
@@ -551,7 +552,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     100,
                     \Magento\Framework\Image\Adapter\AbstractAdapter::POSITION_TOP_LEFT,
                     10,
-                    10
+                    10,
                 ],
                 [
                     self::_getFixture('image_adapters_test.png'),
@@ -561,7 +562,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     100,
                     \Magento\Framework\Image\Adapter\AbstractAdapter::POSITION_TILE,
                     10,
-                    10
+                    10,
                 ],
                 [
                     self::_getFixture('image_adapters_test.png'),
@@ -571,7 +572,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     100,
                     \Magento\Framework\Image\Adapter\AbstractAdapter::POSITION_STRETCH,
                     10,
-                    10
+                    10,
                 ],
                 [
                     self::_getFixture('image_adapters_test.png'),
@@ -581,7 +582,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     100,
                     \Magento\Framework\Image\Adapter\AbstractAdapter::POSITION_BOTTOM_RIGHT,
                     10,
-                    10
+                    10,
                 ],
                 [
                     self::_getFixture('image_adapters_test.png'),
@@ -591,7 +592,7 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                     100,
                     \Magento\Framework\Image\Adapter\AbstractAdapter::POSITION_BOTTOM_RIGHT,
                     10,
-                    10
+                    10,
                 ],
             ]
         );
@@ -724,22 +725,22 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                 ['red' => 0, 'green' => 0, 'blue' => 0],
                 ['x' => 0, 'y' => 20],
                 ['red' => 255, 'green' => 255, 'blue' => 255],
-                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM
+                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM,
             ],
             [
                 ['x' => 1, 'y' => 11],
                 ['red' => 255, 'green' => 255, 'blue' => 255],
                 ['x' => 5, 'y' => 11],
                 ['red' => 0, 'green' => 0, 'blue' => 0],
-                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_GD2
+                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_GD2,
             ],
             [
                 ['x' => 1, 'y' => 20],
                 ['red' => 255, 'green' => 255, 'blue' => 255],
                 ['x' => 5, 'y' => 16],
                 ['red' => 0, 'green' => 0, 'blue' => 0],
-                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM
-            ]
+                \Magento\Framework\Image\Adapter\AdapterInterface::ADAPTER_IM,
+            ],
         ];
     }
 
@@ -779,18 +780,18 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
             'image_notfound' => [
                 'fileName' => 'notfound.png',
                 'expectedErrorMsg' => 'Upload file does not exist.',
-                'useFixture' => false
+                'useFixture' => false,
             ],
             'image_empty' => [
                 'fileName' => 'empty.png',
                 'expectedErrorMsg' => 'Wrong file size.',
-                'useFixture' => true
+                'useFixture' => true,
             ],
             'notanimage' => [
                 'fileName' => 'notanimage.txt',
                 'expectedErrorMsg' => 'Disallowed file type.',
-                'useFixture' => true
-            ]
+                'useFixture' => true,
+            ],
         ];
     }
 }

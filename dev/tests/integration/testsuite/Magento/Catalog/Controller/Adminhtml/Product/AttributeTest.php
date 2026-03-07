@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * @magentoAppArea adminhtml
@@ -273,7 +276,7 @@ class AttributeTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
         $expectedOptionsLabels = [];
         for ($i = 0; $i < $optionsCount; $i++) {
             $expectedOptionLabelOnStoreView = 'value_' . $i . '_store_1';
-            $expectedOptionsLabels[$i+1] = $expectedOptionLabelOnStoreView;
+            $expectedOptionsLabels[$i + 1] = $expectedOptionLabelOnStoreView;
             $optionId = 'option_' . $i;
             $optionRowData = [];
             $optionRowData['option']['order'][$optionId] = $i + 1;

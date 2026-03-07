@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Ui\DataProvider\Product\ProductCustomOptionsDataProvider;
 use Magento\Framework\App\RequestInterface;
@@ -15,9 +15,10 @@ use Magento\Framework\DB\Select as DbSelect;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -78,13 +79,13 @@ class ProductCustomOptionsDataProviderTest extends TestCase
     {
         $this->collectionFactoryMock = $this->createPartialMock(CollectionFactory::class, ['create']);
         $this->requestMock = $this->createMock(RequestInterface::class);
-        
+
         $this->collectionMock = $this->createPartialMockWithReflection(
             AbstractCollection::class,
             ['isLoaded', 'load', 'getSelect', 'getTable', 'getIterator', 'getData', 'getSize', 'toArray', 'setStoreId']
         );
         $this->collectionMock->method('setStoreId')->willReturnSelf();
-        
+
         $this->dbSelectMock = $this->createMock(DbSelect::class);
 
         $this->collectionFactoryMock->expects($this->once())
@@ -104,7 +105,7 @@ class ProductCustomOptionsDataProviderTest extends TestCase
                 'collectionFactory' => $this->collectionFactoryMock,
                 'request' => $this->requestMock,
                 'modifiersPool' => $this->modifiersPool,
-                'metadataPool' => $this->metadataPool
+                'metadataPool' => $this->metadataPool,
             ]
         );
     }
@@ -177,16 +178,16 @@ class ProductCustomOptionsDataProviderTest extends TestCase
                 'amount' => 2,
                 'collectionArray' => [
                     '12' => ['id' => '12', 'value' => 'test1'],
-                    '25' => ['id' => '25', 'value' => 'test2']
+                    '25' => ['id' => '25', 'value' => 'test2'],
                 ],
                 'result' => [
                     'totalRecords' => 2,
                     'items' => [
                         ['id' => '12', 'value' => 'test1'],
-                        ['id' => '25', 'value' => 'test2']
-                    ]
-                ]
-            ]
+                        ['id' => '25', 'value' => 'test2'],
+                    ],
+                ],
+            ],
         ];
     }
 

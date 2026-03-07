@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,9 +9,8 @@
 namespace Magento\Framework;
 
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Helper\CacheCleaner;
-use PHPUnit\Framework\MockObject\MockObject as MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject as MockObject;
 
 /**
  * @magentoAppIsolation enabled
@@ -37,9 +38,7 @@ class TranslateTest extends \PHPUnit\Framework\TestCase
         $viewFileSystem->expects($this->any())
             ->method('getLocaleFileName')
             ->willReturn(
-
-                    dirname(__DIR__) . '/Translation/Model/_files/Magento/design/Magento/theme/i18n/en_US.csv'
-
+                dirname(__DIR__) . '/Translation/Model/_files/Magento/design/Magento/theme/i18n/en_US.csv'
             );
 
         /** @var \Magento\Framework\View\Design\ThemeInterface|MockObject $theme */
@@ -74,7 +73,7 @@ class TranslateTest extends \PHPUnit\Framework\TestCase
                     $objectManager->get(\Magento\Theme\Model\ThemeFactory::class),
                     $objectManager->get(\Magento\Framework\ObjectManagerInterface::class),
                     $objectManager->get(\Magento\Framework\App\State::class),
-                    ['frontend' => 'Test/default']
+                    ['frontend' => 'Test/default'],
                 ]
             )
             ->getMock();

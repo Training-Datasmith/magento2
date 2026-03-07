@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for \Magento\Framework\Pricing\Render\Amount
@@ -115,7 +116,7 @@ class AmountTest extends TestCase
                 'rendererPool' => $this->rendererPool,
                 'amount' => $this->amount,
                 'saleableItem' => $this->saleableItemMock,
-                'price' => $this->priceMock
+                'price' => $this->priceMock,
             ]
         );
     }
@@ -161,7 +162,7 @@ class AmountTest extends TestCase
                 'css_classes' => 'class1 class2',
                 'module_name' => null,
                 'adjustment_css_classes' => 'class1 class2 render1 render2',
-                'skip_adjustments' => $skipAdjustments
+                'skip_adjustments' => $skipAdjustments,
             ];
         } else {
             $expectedData = [

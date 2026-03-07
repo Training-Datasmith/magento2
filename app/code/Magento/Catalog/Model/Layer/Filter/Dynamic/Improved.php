@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\Dynamic;
 
 use Magento\Catalog\Model\Layer\Filter\Price\Render;
@@ -14,7 +17,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Improved implements AlgorithmInterface
 {
-    const XML_PATH_INTERVAL_DIVISION_LIMIT = 'catalog/layered_navigation/interval_division_limit';
+    public const XML_PATH_INTERVAL_DIVISION_LIMIT = 'catalog/layered_navigation/interval_division_limit';
 
     /**
      * @var Algorithm

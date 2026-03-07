@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -13,17 +14,18 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Annotation\DataFixture as DataFixtureAnnotation;
 use Magento\TestFramework\Annotation\DataFixtureSetup;
+use Magento\TestFramework\Annotation\TestsIsolation;
 use Magento\TestFramework\Event\Param\Transaction;
+use Magento\TestFramework\Fixture\CallableDataFixture;
 use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureFactory;
 use Magento\TestFramework\Fixture\DataFixtureInterface;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DbIsolation;
-use Magento\TestFramework\Fixture\LegacyDataFixturePathResolver;
-use Magento\TestFramework\Fixture\CallableDataFixture;
-use Magento\TestFramework\Fixture\DataFixtureFactory;
 use Magento\TestFramework\Fixture\ImageFixture;
 use Magento\TestFramework\Fixture\LegacyDataFixture;
+use Magento\TestFramework\Fixture\LegacyDataFixturePathResolver;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Fixture\ScopeFixture;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -31,7 +33,6 @@ use Magento\TestFramework\ScopeSwitcherInterface;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Annotation\TestsIsolation;
 use ReflectionException;
 
 /**

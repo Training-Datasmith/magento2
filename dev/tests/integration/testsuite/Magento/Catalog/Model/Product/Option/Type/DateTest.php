@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -90,7 +92,7 @@ class DateTest extends \PHPUnit\Framework\TestCase
                 // $productOptionData
                 ['id' => '11', 'value' => '{"qty":12}'],
                 // $expectedOptionValueForRequest
-                ['date_internal' => ['field1' => 'value1', 'field2' => 'value2']]
+                ['date_internal' => ['field1' => 'value1', 'field2' => 'value2']],
             ],
             // Variation 2
             [
@@ -101,7 +103,7 @@ class DateTest extends \PHPUnit\Framework\TestCase
                 // $productOptionData
                 ['id' => '11', 'value' => '{"qty":12}'],
                 // $expectedOptionValueForRequest
-                ['qty' => 23]
+                ['qty' => 23],
             ],
             // Variation 3
             [
@@ -112,7 +114,7 @@ class DateTest extends \PHPUnit\Framework\TestCase
                 // $productOptionData
                 [],
                 // $expectedOptionValueForRequest
-                ['date_internal' => ['field1' => 'value1', 'field2' => 'value2']]
+                ['date_internal' => ['field1' => 'value1', 'field2' => 'value2']],
             ],
         ];
     }
@@ -170,8 +172,8 @@ class DateTest extends \PHPUnit\Framework\TestCase
                         'hour' => 0,
                         'minute' => 0,
                         'day_part' => '',
-                        'date_internal' => ''
-                    ]
+                        'date_internal' => '',
+                    ],
                 ],
                 // $productOptionData
                 ['id' => '11', 'value' => '{"qty":12}', 'type' => 'date'],
@@ -179,13 +181,13 @@ class DateTest extends \PHPUnit\Framework\TestCase
                 [
                     'options' => [
                         [
-                            'date' => '09/30/2019'
-                        ]
-                    ]
+                            'date' => '09/30/2019',
+                        ],
+                    ],
                 ],
                 // $expectedOptionValueForRequest
-                '2019-09-30 00:00:00'
-            ]
+                '2019-09-30 00:00:00',
+            ],
         ];
     }
 }

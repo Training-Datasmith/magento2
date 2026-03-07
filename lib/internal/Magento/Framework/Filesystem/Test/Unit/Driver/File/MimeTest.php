@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Filesystem\Test\Unit\Driver\File;
 
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\Driver\File\Mime;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @see Mime

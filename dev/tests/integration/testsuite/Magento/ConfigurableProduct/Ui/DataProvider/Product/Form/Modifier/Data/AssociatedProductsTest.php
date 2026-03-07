@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\Data;
 
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Ui\Component\Filters\FilterModifier;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurablePanel;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Component\Filters\FilterModifier;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -50,7 +53,7 @@ class AssociatedProductsTest extends TestCase
         $productSku = 'configurable';
         $associatedProductsData = [
             [10 => '10.000000'],
-            [20 => '20.000000']
+            [20 => '20.000000'],
         ];
         /** @var \Magento\Catalog\Api\ProductRepositoryInterface $productRepository */
         $productRepository = $this->objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -99,7 +102,7 @@ class AssociatedProductsTest extends TestCase
                 ],
             ],
             'attributes_codes' => [
-                'test_configurable'
+                'test_configurable',
             ],
         ]);
         $context = $this->objectManager->create(ContextInterface::class, ['request' => $request]);
@@ -143,7 +146,7 @@ class AssociatedProductsTest extends TestCase
                 ],
             ],
             'attributes_codes' => [
-                'test_configurable'
+                'test_configurable',
             ],
         ]);
         $context = $this->objectManager->create(ContextInterface::class, ['request' => $request]);
@@ -171,7 +174,7 @@ class AssociatedProductsTest extends TestCase
     {
         return [
             ['en_US'],
-            ['zh_Hans_CN']
+            ['zh_Hans_CN'],
         ];
     }
 }

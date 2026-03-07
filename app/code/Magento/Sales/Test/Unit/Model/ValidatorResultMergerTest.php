@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ValidatorResultMergerTest extends TestCase
 {
-
     /**
      * @var ValidatorResultMerger
      */
@@ -50,7 +50,7 @@ class ValidatorResultMergerTest extends TestCase
         $this->validatorResultMerger = $this->objectManager->getObject(
             ValidatorResultMerger::class,
             [
-                'validatorResultInterfaceFactory' => $this->validatorResultFactoryMock
+                'validatorResultInterfaceFactory' => $this->validatorResultFactoryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\Paypal\Model\System\Config\Source;
  */
 class DisableFundingOptions
 {
-
     /**
      * @var array
      */
@@ -36,7 +36,7 @@ class DisableFundingOptions
             function ($key, $value) {
                 return [
                     'value' => $key,
-                    'label' => __($value)
+                    'label' => __($value),
                 ];
             },
             array_keys($this->disallowedFundingOptions),

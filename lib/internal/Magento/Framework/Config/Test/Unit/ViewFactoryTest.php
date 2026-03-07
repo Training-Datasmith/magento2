@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 
 class ViewFactoryTest extends TestCase
 {
-    const AREA = 'frontend';
+    public const AREA = 'frontend';
 
     /**
      * @var ViewFactory
@@ -87,7 +88,7 @@ class ViewFactoryTest extends TestCase
         $this->model->create(
             [
                 'themeModel' => 'wrong theme',
-                'area' => self::AREA
+                'area' => self::AREA,
             ]
         );
     }
@@ -99,7 +100,7 @@ class ViewFactoryTest extends TestCase
     {
         return [
             'themeModel' => $this->theme,
-            'area'       => self::AREA
+            'area'       => self::AREA,
         ];
     }
 }

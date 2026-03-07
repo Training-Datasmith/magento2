@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\Session\SaveHandler\Native;
 use Magento\Framework\Session\SaveHandlerFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SaveHandlerFactoryTest extends TestCase
 {

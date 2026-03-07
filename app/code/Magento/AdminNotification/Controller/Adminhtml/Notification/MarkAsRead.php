@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Controller\Adminhtml\Notification;
 
 use Magento\AdminNotification\Controller\Adminhtml\Notification;
@@ -23,19 +26,9 @@ class MarkAsRead extends Notification implements HttpGetActionInterface
      */
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::mark_as_read';
 
-    /**
-     * @var NotificationService
-     */
-    private $notificationService;
-
-    /**
-     * @param Action\Context $context
-     * @param NotificationService $notificationService
-     */
-    public function __construct(Action\Context $context, NotificationService $notificationService)
+    public function __construct(Action\Context $context, private readonly NotificationService $notificationService)
     {
         parent::__construct($context);
-        $this->notificationService = $notificationService;
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class ImageFactoryTest extends TestCase
      * Url of AWS main image
      */
     private const REMOTE_IMAGE_PATH = 'https://a0.awsstatic.com/libra-css/' .
-    'images/logos/aws_smile-header-desktop-en-white_59x35.png';
+        'images/logos/aws_smile-header-desktop-en-white_59x35.png';
 
     /**
      * @var \Magento\Framework\File\Pdf\ImageResource\ImageFactory
@@ -51,7 +52,7 @@ class ImageFactoryTest extends TestCase
             [
                 'image-width' => 36,
                 'image-height' => 69,
-                'image-name' => $tempFilenameFromBucketOrDisk
+                'image-name' => $tempFilenameFromBucketOrDisk,
             ]
         );
 

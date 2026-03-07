@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class FormTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
 
@@ -165,7 +166,7 @@ class FormTest extends TestCase
             [
                 ['sandbox_flag', null, $sandboxFlag],
                 ['cgi_url_test_mode', null, $cgiUrlTestMode],
-                ['cgi_url', null, $cgiUrl]
+                ['cgi_url', null, $cgiUrl],
             ]
         );
 
@@ -191,13 +192,13 @@ class FormTest extends TestCase
                 1,
                 'cgi_url_test_mode_value',
                 'cgi_url_value',
-                'cgi_url_test_mode_value'
+                'cgi_url_test_mode_value',
             ],
             [
                 0,
                 'cgi_url_test_mode_value',
                 'cgi_url_value',
-                'cgi_url_value'
+                'cgi_url_value',
             ],
         ];
     }

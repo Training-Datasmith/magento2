@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,6 +20,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Api\InvoiceManagementInterface;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
@@ -29,7 +31,6 @@ use Magento\Sales\Model\Order\Invoice;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -164,7 +165,7 @@ class EmailTest extends TestCase
             OrderInvoiceEmail::class,
             [
                 'context' => $this->context,
-                'resultForwardFactory' => $this->resultForwardFactory
+                'resultForwardFactory' => $this->resultForwardFactory,
             ]
         );
     }
@@ -212,7 +213,7 @@ class EmailTest extends TestCase
             ->willReturn($order);
         $this->objectManager
             ->method('create')
-            ->willReturnCallback(fn($param) => match ($param) {
+            ->willReturnCallback(fn ($param) => match ($param) {
                 InvoiceRepositoryInterface::class => $invoiceRepository,
                 $cmNotifierClassName => $this->invoiceManagement
             });
@@ -277,7 +278,7 @@ class EmailTest extends TestCase
 
         $this->objectManager
             ->method('create')
-            ->willReturnCallback(fn($param) => match ($param) {
+            ->willReturnCallback(fn ($param) => match ($param) {
                 InvoiceRepositoryInterface::class => $invoiceRepository,
                 default => null
             });

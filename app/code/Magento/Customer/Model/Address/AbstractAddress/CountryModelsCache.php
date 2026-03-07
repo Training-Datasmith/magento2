@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class CountryModelsCache implements ResetAfterRequestInterface
      * @param Country $model
      * @return void
      */
-    public function add(string $key, Country $model) : void
+    public function add(string $key, Country $model): void
     {
         $this->countryModels[$key] = $model;
     }
@@ -44,7 +45,7 @@ class CountryModelsCache implements ResetAfterRequestInterface
      * @param string $key
      * @return Country|null
      */
-    public function get(string $key) : ?Country
+    public function get(string $key): ?Country
     {
         return $this->countryModels[$key] ?? null;
     }

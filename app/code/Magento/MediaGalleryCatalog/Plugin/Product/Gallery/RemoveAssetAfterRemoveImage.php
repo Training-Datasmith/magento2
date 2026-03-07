@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryCatalog\Plugin\Product\Gallery;
 
-use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Gallery\Processor as ProcessorSubject;
+use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Psr\Log\LoggerInterface;
 
 /**

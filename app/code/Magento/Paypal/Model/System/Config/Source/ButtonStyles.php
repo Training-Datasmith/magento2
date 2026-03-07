@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class ButtonStyles
             'gold' => __('Gold'),
             'blue' => __('Blue'),
             'silver' => __('Silver'),
-            'black' => __('Black')
+            'black' => __('Black'),
         ];
     }
 
@@ -36,7 +37,7 @@ class ButtonStyles
     {
         return [
             'vertical' => __('Vertical'),
-            'horizontal' => __('Horizontal')
+            'horizontal' => __('Horizontal'),
         ];
     }
 
@@ -49,7 +50,7 @@ class ButtonStyles
     {
         return [
             'pill' => __('Pill'),
-            'rect' => __('Rectangle')
+            'rect' => __('Rectangle'),
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class AfterAdminUserSaveTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Save a new UserExpiration record
      *

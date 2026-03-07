@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Bundle;
 
+use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Test\Fixture\AddProductToCart as AddBundleProductToCart;
 use Magento\Bundle\Test\Fixture\Link as BundleSelectionFixture;
 use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
@@ -14,15 +16,14 @@ use Magento\Bundle\Test\Fixture\Product as BundleProductFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
+use Magento\SalesRule\Model\Rule as SalesRule;
+use Magento\SalesRule\Test\Fixture\AddressCondition as AddressConditionFixture;
+use Magento\SalesRule\Test\Fixture\Rule as SalesRuleFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Bundle\Model\Product\Price;
-use Magento\SalesRule\Model\Rule as SalesRule;
-use Magento\SalesRule\Test\Fixture\AddressCondition as AddressConditionFixture;
-use Magento\SalesRule\Test\Fixture\Rule as SalesRuleFixture;
 
 class BundleProductDynamicPriceTest extends GraphQlAbstract
 {
@@ -57,7 +58,7 @@ class BundleProductDynamicPriceTest extends GraphQlAbstract
                 'uses_per_customer' => 1,
                 'discount_amount' => 10,
                 'stop_rules_processing' => false,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(ProductFixture::class, ['sku' => 'simple1', 'price' => 100], as:'p1'),
@@ -75,8 +76,8 @@ class BundleProductDynamicPriceTest extends GraphQlAbstract
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
                 '_options' => [
                     '$opt1$',
-                    '$opt2$'
-                ]
+                    '$opt2$',
+                ],
             ],
             as:'bp1'
         ),
@@ -87,7 +88,7 @@ class BundleProductDynamicPriceTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         )
     ]
@@ -124,8 +125,8 @@ class BundleProductDynamicPriceTest extends GraphQlAbstract
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
                 '_options' => [
                     '$opt1$',
-                    '$opt2$'
-                ]
+                    '$opt2$',
+                ],
             ],
             as:'bp1'
         ),
@@ -136,7 +137,7 @@ class BundleProductDynamicPriceTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         )
     ]

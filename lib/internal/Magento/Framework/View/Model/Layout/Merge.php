@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Model\Layout;
 
 use Magento\Framework\App\ObjectManager;
@@ -482,8 +485,8 @@ class Merge implements \Magento\Framework\View\Layout\ProcessorInterface
         $result = $this->_loadCache($cacheId);
         if ($result !== false && $result !== null) {
             $data = $this->serializer->unserialize($result);
-            $this->pageLayout = $data["pageLayout"];
-            $this->addUpdate($data["layout"]);
+            $this->pageLayout = $data['pageLayout'];
+            $this->addUpdate($data['layout']);
             foreach ($this->getHandles() as $handle) {
                 $this->allHandles[$handle] = $this->handleProcessed;
             }
@@ -500,8 +503,8 @@ class Merge implements \Magento\Framework\View\Layout\ProcessorInterface
         $this->_validateMergedLayout($cacheId, $layout);
 
         $data = [
-            "pageLayout" => (string)$this->pageLayout,
-            "layout"     => $layout
+            'pageLayout' => (string)$this->pageLayout,
+            'layout'     => $layout,
         ];
         $this->_saveCache($this->serializer->serialize($data), $cacheId, $this->getHandles());
 
@@ -808,7 +811,7 @@ class Merge implements \Magento\Framework\View\Layout\ProcessorInterface
                             "Theme layout update file '%1' is not valid.\n%2",
                             [
                                 $file->getFilename(),
-                                implode("\n", $xmlErrors)
+                                implode("\n", $xmlErrors),
                             ]
                         )
                     );

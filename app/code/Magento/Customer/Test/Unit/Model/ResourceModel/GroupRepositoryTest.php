@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,6 +17,7 @@ use Magento\Customer\Api\Data\GroupSearchResultsInterfaceFactory;
 use Magento\Customer\Model\Group;
 use Magento\Customer\Model\GroupFactory;
 use Magento\Customer\Model\GroupRegistry;
+use Magento\Customer\Model\ResourceModel\Group as GroupResourceModel;
 use Magento\Customer\Model\ResourceModel\Group\Collection;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
@@ -25,12 +27,11 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\State\InvalidTransitionException;
 use Magento\Framework\Phrase;
 use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Tax\Api\Data\TaxClassInterface;
 use Magento\Tax\Api\TaxClassRepositoryInterface;
-use Magento\Customer\Model\ResourceModel\Group as GroupResourceModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -158,7 +159,7 @@ class GroupRepositoryTest extends TestCase
                 'usesAsDefault',
                 'delete',
                 'getCollection',
-                'getData'
+                'getData',
             ]
         );
         $this->groupDataFactory = $this->createPartialMock(

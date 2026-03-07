@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Observer;
 
-use Magento\Catalog\Model\Indexer\Category\Product\Processor;
 use Magento\Catalog\Model\Indexer\Category\Flat\State as FlatState;
+use Magento\Catalog\Model\Indexer\Category\Product\Processor;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 

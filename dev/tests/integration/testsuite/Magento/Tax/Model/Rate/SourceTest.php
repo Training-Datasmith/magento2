@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Tax\Model\Rate;
 
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Tax\Model\Rate\Provider;
 
 class SourceTest extends \Magento\TestFramework\Indexer\TestCase
 {

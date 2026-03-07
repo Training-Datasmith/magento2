@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Ui\Component\DataProvider\Operation\Failed;
 
+use Magento\AsynchronousOperations\Ui\Component\DataProvider\Bulk\IdentifierResolver;
+use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
 use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Psr\Log\LoggerInterface as Logger;
-use Magento\AsynchronousOperations\Ui\Component\DataProvider\Bulk\IdentifierResolver;
-use Magento\Framework\Bulk\OperationInterface;
 
 /**
  * Class SearchResult
@@ -18,25 +21,8 @@ use Magento\Framework\Bulk\OperationInterface;
 class SearchResult extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
 {
     /**
-     * @var IdentifierResolver
-     */
-    private $identifierResolver;
-
-    /**
-     * @var \Magento\Framework\Json\Helper\Data
-     */
-    private $jsonHelper;
-
-    /**
      * SearchResult constructor.
-     * @param EntityFactory $entityFactory
-     * @param Logger $logger
-     * @param FetchStrategy $fetchStrategy
-     * @param EventManager $eventManager
-     * @param IdentifierResolver $identifierResolver
-     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
      * @param string $mainTable
-     * @param null $resourceModel
      * @param string $identifierName identifier field name for collection items
      */
     public function __construct(
@@ -44,14 +30,12 @@ class SearchResult extends \Magento\Framework\View\Element\UiComponent\DataProvi
         Logger $logger,
         FetchStrategy $fetchStrategy,
         EventManager $eventManager,
-        IdentifierResolver $identifierResolver,
-        \Magento\Framework\Json\Helper\Data $jsonHelper,
+        private readonly IdentifierResolver $identifierResolver,
+        private readonly \Magento\Framework\Json\Helper\Data $jsonHelper,
         $mainTable = 'magento_operation',
         $resourceModel = null,
         $identifierName = 'id'
     ) {
-        $this->jsonHelper = $jsonHelper;
-        $this->identifierResolver = $identifierResolver;
         parent::__construct(
             $entityFactory,
             $logger,
@@ -66,7 +50,7 @@ class SearchResult extends \Magento\Framework\View\Element\UiComponent\DataProvi
     /**
      * {@inheritdoc}
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         $bulkUuid = $this->identifierResolver->execute();
         $this->getSelect()->from(['main_table' => $this->getMainTable()], ['id', 'result_message', 'serialized_data'])
@@ -78,7 +62,7 @@ class SearchResult extends \Magento\Framework\View\Element\UiComponent\DataProvi
     /**
      * {@inheritdoc}
      */
-    protected function _afterLoad()
+    protected function _afterLoad(): static
     {
         parent::_afterLoad();
         foreach ($this->_items as $key => $item) {
@@ -98,45 +82,30 @@ class SearchResult extends \Magento\Framework\View\Element\UiComponent\DataProvi
     /**
      * Provide meta info by serialized data
      *
-     * @param array $item
      * @return string
      */
-    private function provideMetaInfo($item)
+    private function provideMetaInfo(array $item)
     {
-        $metaInfo = '';
-        if (isset($item['meta_information'])) {
-            $metaInfo = $item['meta_information'];
-        }
-        return $metaInfo;
+        return $item['meta_information'] ?? '';
     }
 
     /**
      * Get link from serialized data
      *
-     * @param array $item
      * @return string
      */
-    private function getLink($item)
+    private function getLink(array $item)
     {
-        $entityLink = '';
-        if (isset($item['entity_link'])) {
-            $entityLink = $item['entity_link'];
-        }
-        return $entityLink;
+        return $item['entity_link'] ?? '';
     }
 
     /**
      * Get entity id from serialized data
      *
-     * @param array $item
      * @return string
      */
-    private function getEntityId($item)
+    private function getEntityId(array $item)
     {
-        $entityLink = '';
-        if (isset($item['entity_id'])) {
-            $entityLink = $item['entity_id'];
-        }
-        return $entityLink;
+        return $item['entity_id'] ?? '';
     }
 }

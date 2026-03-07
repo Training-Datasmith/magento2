@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class StockQuantityTest extends GraphQlAbstract
                 'title' => 'Checkbox Options',
                 'type' => 'checkbox',
                 'required' => 1,
-                'product_links' => ['$link$']
+                'product_links' => ['$link$'],
             ],
             'option'
         ),
@@ -113,7 +114,7 @@ class StockQuantityTest extends GraphQlAbstract
             ConfigurableProductFixture::class,
             [
                 '_options' => ['$attribute$'],
-                '_links' => ['$product$']
+                '_links' => ['$product$'],
             ],
             'configurableProduct'
         ),

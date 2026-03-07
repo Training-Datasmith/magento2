@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,19 +16,19 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\AbstractForm;
 use Magento\Framework\Data\Form\Element\Collection;
-use Magento\Framework\Data\Form\Element\Fieldset as FieldsetElement;
 use Magento\Framework\Data\Form\Element\CollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
+use Magento\Framework\Data\Form\Element\Fieldset as FieldsetElement;
 use Magento\Framework\Data\Form\Element\Text;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\Js;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\View\Layout;
 use Magento\User\Model\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -140,7 +141,7 @@ class FieldsetTest extends TestCase
             'layout' => $this->_layoutMock,
             'jsHelper' => $this->_helperMock,
             'data' => ['group' => $groupMock],
-            'secureRenderer' => $secureRendererMock
+            'secureRenderer' => $secureRendererMock,
         ];
         $this->_object = $this->_testHelper->getObject(Fieldset::class, $data);
 

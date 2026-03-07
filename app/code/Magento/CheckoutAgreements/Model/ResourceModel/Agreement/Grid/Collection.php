@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Grid;
  */
 class Collection extends \Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Collection
 {
-
     /**
      * @inheritdoc
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching\GraphQlReader\Reader;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\FieldMetaReader;
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\CacheAnnotationReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\FieldMetaReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 
 /**
  * Composite configuration reader to handle the interface object type meta
@@ -53,14 +54,14 @@ class InterfaceType implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         if ($typeMeta instanceof \GraphQL\Type\Definition\InterfaceType) {
             $typeName = $typeMeta->name;
             $result = [
                 'name' => $typeName,
                 'type' => self::GRAPHQL_INTERFACE,
-                'fields' => []
+                'fields' => [],
             ];
 
             $interfaceTypeResolver = $this->getInterfaceTypeResolver($typeMeta);
@@ -93,7 +94,7 @@ class InterfaceType implements TypeMetaReaderInterface
      * @param \GraphQL\Type\Definition\InterfaceType $interfaceTypeMeta
      * @return string
      */
-    private function getInterfaceTypeResolver(\GraphQL\Type\Definition\InterfaceType $interfaceTypeMeta) : string
+    private function getInterfaceTypeResolver(\GraphQL\Type\Definition\InterfaceType $interfaceTypeMeta): string
     {
         /** @var \GraphQL\Language\AST\NodeList $directives */
         $directives = $interfaceTypeMeta->astNode->directives;

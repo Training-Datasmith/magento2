@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Review\Model\ResourceModel\Review;
 
-use Magento\Framework\App\ResourceConnection;
+namespace Magento\Review\Model\ResourceModel\Review;
 
 /**
  * Class ReviewTest

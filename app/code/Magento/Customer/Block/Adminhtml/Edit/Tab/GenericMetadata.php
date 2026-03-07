@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab;
 
 use Magento\Customer\Api\Data\AttributeMetadataInterface;
@@ -65,7 +68,7 @@ class GenericMetadata extends \Magento\Backend\Block\Widget\Form\Generic
                         'label' => __($attribute->getFrontendLabel()),
                         'class' => $attribute->getFrontendClass(),
                         'required' => $attribute->isRequired(),
-                        'note' => $attribute->getNote()
+                        'note' => $attribute->getNote(),
                     ]
                 );
 

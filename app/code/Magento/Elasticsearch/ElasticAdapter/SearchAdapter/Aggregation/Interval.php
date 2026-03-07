@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Aggregation;
 
-use Magento\Framework\Search\Dynamic\IntervalInterface;
-use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
+use Magento\CatalogSearch\Model\Indexer\Fulltext;
 use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Elasticsearch\Model\Config;
+use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
 use Magento\Elasticsearch\SearchAdapter\SearchIndexNameResolver;
-use Magento\CatalogSearch\Model\Indexer\Fulltext;
+use Magento\Framework\Search\Dynamic\IntervalInterface;
 
 /**
  * Aggregate price intervals for search query result.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class StockTest extends TestCase
                 'factoryElement' => $this->_factoryElementMock,
                 'factoryCollection' => $this->_collectionFactoryMock,
                 'factoryText' => $this->_factoryTextMock,
-                'data' => ['qty' => $this->_qtyMock, 'name' => self::ATTRIBUTE_NAME]
+                'data' => ['qty' => $this->_qtyMock, 'name' => self::ATTRIBUTE_NAME],
             ]
         );
     }
@@ -93,7 +94,7 @@ class StockTest extends TestCase
                 Text::class,
                 [
                     'factoryElement' => $this->_factoryElementMock,
-                    'factoryCollection' => $this->_collectionFactoryMock
+                    'factoryCollection' => $this->_collectionFactoryMock,
                 ]
             )
         );

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Button;
 
 class Save extends Generic
@@ -20,7 +23,7 @@ class Save extends Generic
             'data_attribute' => [
                 'mage-init' => ['button' => ['event' => 'save']],
                 'form-role' => 'save',
-            ]
+            ],
         ];
     }
 }

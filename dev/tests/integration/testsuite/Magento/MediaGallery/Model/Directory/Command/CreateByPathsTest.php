@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -137,14 +138,14 @@ class CreateByPathsTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [
-                ['../../pub/' . self::TEST_DIRECTORY_NAME]
+                ['../../pub/' . self::TEST_DIRECTORY_NAME],
             ],
             [
-                ['theme/' . self::TEST_DIRECTORY_NAME]
+                ['theme/' . self::TEST_DIRECTORY_NAME],
             ],
             [
-                ['../../pub/media', 'theme']
-            ]
+                ['../../pub/media', 'theme'],
+            ],
         ];
     }
 

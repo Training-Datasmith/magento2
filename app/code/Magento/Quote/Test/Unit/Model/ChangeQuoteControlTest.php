@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Quote\Test\Unit\Model;
 
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\ChangeQuoteControl;
 use Magento\Quote\Model\Quote;

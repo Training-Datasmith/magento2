@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Condition\Product;
 
 use Magento\Catalog\Model\Product\Type;
@@ -78,7 +81,7 @@ class Subselect extends Combine
             [
                 'qty' => __('total quantity'),
                 'base_row_total' => __('total amount (excl. tax)'),
-                'base_row_total_incl_tax' => __('total amount (incl. tax)')
+                'base_row_total_incl_tax' => __('total amount (incl. tax)'),
             ]
         );
         return $this;
@@ -134,7 +137,7 @@ class Subselect extends Combine
     public function asHtml()
     {
         $html = $this->getTypeElement()->getHtml() . __(
-            "If %1 %2 %3 for a subselection of items in cart matching %4 of these conditions:",
+            'If %1 %2 %3 for a subselection of items in cart matching %4 of these conditions:',
             $this->getAttributeElement()->getHtml(),
             $this->getOperatorElement()->getHtml(),
             $this->getValueElement()->getHtml(),

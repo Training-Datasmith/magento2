@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +12,8 @@ use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Theme\Model\Theme\Registration;
 use Magento\Theme\Model\Data\Design\Config;
+use Magento\Theme\Model\Theme\Registration;
 
 /**
  * Upgrade registered themes

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat;
 
 /**
@@ -14,12 +17,12 @@ class State extends \Magento\Catalog\Model\Indexer\AbstractFlatState
     /**
      * Indexer ID in configuration
      */
-    const INDEXER_ID = 'catalog_product_flat';
+    public const INDEXER_ID = 'catalog_product_flat';
 
     /**
      * Flat Is Enabled Config XML Path
      */
-    const INDEXER_ENABLED_XML_PATH = 'catalog/frontend/flat_catalog_product';
+    public const INDEXER_ENABLED_XML_PATH = 'catalog/frontend/flat_catalog_product';
 
     /**
      * @var \Magento\Catalog\Helper\Product\Flat\Indexer

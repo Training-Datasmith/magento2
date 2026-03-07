@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Price\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionModeConfiguration;
 use Magento\Catalog\Model\Indexer\Product\Price\Plugin\CustomerGroup;
 use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
@@ -16,6 +16,7 @@ use Magento\Customer\Model\Data\Group;
 use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\Indexer\DimensionFactory;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -120,15 +121,15 @@ class CustomerGroupTest extends TestCase
         return [
             'customer_group_id = 0' => [
                 'customerGroupId' => '0',
-                'callTimes' => 0
+                'callTimes' => 0,
             ],
             'customer_group_id = 1' => [
                 'customerGroupId' => '1',
-                'callTimes' => 0
+                'callTimes' => 0,
             ],
             'customer_group_id = null' => [
                 'customerGroupId' => null,
-                'callTimes' => 1
+                'callTimes' => 1,
             ],
         ];
     }

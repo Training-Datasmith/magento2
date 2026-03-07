@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ConfigTest extends TestCase
             Config::class,
             [
                 'assetRepo' => $this->repositoryMock,
-                'viewConfigFactory' => $this->viewConfigFactoryMock
+                'viewConfigFactory' => $this->viewConfigFactoryMock,
             ]
         );
     }
@@ -56,7 +57,7 @@ class ConfigTest extends TestCase
             ->willReturn($themeCode);
         $params = [
             'themeModel' => $themeMock,
-            'area'       => 'frontend'
+            'area'       => 'frontend',
         ];
         $this->repositoryMock->expects($this->atLeastOnce())
             ->method('updateDesignParams')

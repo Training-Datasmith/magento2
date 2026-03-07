@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class BackendTest extends TestCase
         $this->model = $this->objectManagerHelper->getObject(
             Backend::class,
             [
-                'config' => $this->configMock
+                'config' => $this->configMock,
             ]
         );
     }
@@ -75,28 +76,28 @@ class BackendTest extends TestCase
         return [
             'Empty captcha backend areas' => [
                 '',
-                []
+                [],
             ],
             'With two captcha backend area' => [
                 [
                     'backend_login' => [
-                        'label' => 'Admin Login'
+                        'label' => 'Admin Login',
                     ],
                     'backend_forgotpassword' => [
-                        'label' => 'Admin Forgot Password'
-                    ]
+                        'label' => 'Admin Forgot Password',
+                    ],
                 ],
                 [
                     [
                         'label' => 'Admin Login',
-                        'value' => 'backend_login'
+                        'value' => 'backend_login',
                     ],
                     [
                         'label' => 'Admin Forgot Password',
-                        'value' => 'backend_forgotpassword'
-                    ]
-                ]
-            ]
+                        'value' => 'backend_forgotpassword',
+                    ],
+                ],
+            ],
         ];
     }
 }

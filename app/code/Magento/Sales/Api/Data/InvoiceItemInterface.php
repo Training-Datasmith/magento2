@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -22,104 +25,104 @@ interface InvoiceItemInterface extends ExtensibleDataInterface, LineItemInterfac
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Base price.
      */
-    const BASE_PRICE = 'base_price';
+    public const BASE_PRICE = 'base_price';
     /*
      * Tax amount.
      */
-    const TAX_AMOUNT = 'tax_amount';
+    public const TAX_AMOUNT = 'tax_amount';
     /*
      * Base row total.
      */
-    const BASE_ROW_TOTAL = 'base_row_total';
+    public const BASE_ROW_TOTAL = 'base_row_total';
     /*
      * Discount amount.
      */
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
     /*
      * Row total.
      */
-    const ROW_TOTAL = 'row_total';
+    public const ROW_TOTAL = 'row_total';
     /*
      * Base discount amount.
      */
-    const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
     /*
      * Price including tax.
      */
-    const PRICE_INCL_TAX = 'price_incl_tax';
+    public const PRICE_INCL_TAX = 'price_incl_tax';
     /*
      * Base tax amount.
      */
-    const BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const BASE_TAX_AMOUNT = 'base_tax_amount';
     /*
      * Base price including tax.
      */
-    const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
+    public const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
     /*
      * Quantity.
      */
-    const QTY = 'qty';
+    public const QTY = 'qty';
     /*
      * Base cost.
      */
-    const BASE_COST = 'base_cost';
+    public const BASE_COST = 'base_cost';
     /*
      * Price.
      */
-    const PRICE = 'price';
+    public const PRICE = 'price';
     /*
      * Base row total including tax.
      */
-    const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
+    public const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
     /*
      * Row total including tax.
      */
-    const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
+    public const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
     /*
      * Product ID.
      */
-    const PRODUCT_ID = 'product_id';
+    public const PRODUCT_ID = 'product_id';
     /*
      * Order item ID.
      */
-    const ORDER_ITEM_ID = 'order_item_id';
+    public const ORDER_ITEM_ID = 'order_item_id';
     /*
      * Additional data.
      */
-    const ADDITIONAL_DATA = 'additional_data';
+    public const ADDITIONAL_DATA = 'additional_data';
     /*
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
     /*
      * SKU.
      */
-    const SKU = 'sku';
+    public const SKU = 'sku';
     /*
      * Name.
      */
-    const NAME = 'name';
+    public const NAME = 'name';
     /*
      * Discount tax compensation amount.
      */
-    const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /*
      * Base discount tax compensation amount.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
 
     /**
      * Invoice
      */
-    const INVOICE = 'invoice';
+    public const INVOICE = 'invoice';
 
     /**
      * Gets the additional data for the invoice item.

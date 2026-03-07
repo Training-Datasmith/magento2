@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Config\Source;
 
 class TimeFormat implements \Magento\Framework\Option\ArrayInterface
@@ -16,7 +19,7 @@ class TimeFormat implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => '12h', 'label' => __('12h AM/PM')],
-            ['value' => '24h', 'label' => __('24h')]
+            ['value' => '24h', 'label' => __('24h')],
         ];
     }
 }

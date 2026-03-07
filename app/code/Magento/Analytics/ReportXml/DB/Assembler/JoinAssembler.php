@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Analytics\ReportXml\DB\Assembler;
 
+use Magento\Analytics\ReportXml\DB\ColumnsResolver;
+use Magento\Analytics\ReportXml\DB\ConditionResolver;
 use Magento\Analytics\ReportXml\DB\NameResolver;
 use Magento\Analytics\ReportXml\DB\SelectBuilder;
-use Magento\Analytics\ReportXml\DB\ConditionResolver;
-use Magento\Analytics\ReportXml\DB\ColumnsResolver;
 use Magento\Framework\App\ResourceConnection;
 
 /**
@@ -17,52 +19,16 @@ use Magento\Framework\App\ResourceConnection;
  */
 class JoinAssembler implements AssemblerInterface
 {
-    /**
-     * @var ConditionResolver
-     */
-    private $conditionResolver;
-
-    /**
-     * @var NameResolver
-     */
-    private $nameResolver;
-
-    /**
-     * @var ColumnsResolver
-     */
-    private $columnsResolver;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @param ConditionResolver $conditionResolver
-     * @param ColumnsResolver $columnsResolver
-     * @param NameResolver $nameResolver
-     * @param ResourceConnection $resourceConnection
-     */
-    public function __construct(
-        ConditionResolver $conditionResolver,
-        ColumnsResolver $columnsResolver,
-        NameResolver $nameResolver,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->conditionResolver = $conditionResolver;
-        $this->nameResolver = $nameResolver;
-        $this->columnsResolver = $columnsResolver;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(private readonly ConditionResolver $conditionResolver, private readonly ColumnsResolver $columnsResolver, private readonly NameResolver $nameResolver, private readonly ResourceConnection $resourceConnection)
+    {
     }
 
     /**
      * Assembles JOIN conditions
      *
-     * @param SelectBuilder $selectBuilder
      * @param array $queryConfig
-     * @return SelectBuilder
      */
-    public function assemble(SelectBuilder $selectBuilder, $queryConfig)
+    public function assemble(SelectBuilder $selectBuilder, $queryConfig): SelectBuilder
     {
         if (!isset($queryConfig['source']['link-source'])) {
             return $selectBuilder;
@@ -76,7 +42,7 @@ class JoinAssembler implements AssemblerInterface
             $joinAlias = $this->nameResolver->getAlias($join);
 
             $joins[$joinAlias]  = [
-                'link-type' => isset($join['link-type']) ? $join['link-type'] : 'left',
+                'link-type' => $join['link-type'] ?? 'left',
                 'table' => [
                     $joinAlias => $this->resourceConnection
                         ->getTableName($this->nameResolver->getName($join)),
@@ -86,7 +52,7 @@ class JoinAssembler implements AssemblerInterface
                     $join['using'],
                     $joinAlias,
                     $sourceAlias
-                )
+                ),
             ];
             if (isset($join['filter'])) {
                 // phpcs:ignore Magento2.Performance.ForeachArrayMerge
@@ -98,7 +64,7 @@ class JoinAssembler implements AssemblerInterface
                             $join['filter'],
                             $joinAlias,
                             $sourceAlias
-                        )
+                        ),
                     ]
                 );
             }

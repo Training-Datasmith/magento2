@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block;
 
 use Magento\Framework\View\Element\Template;
@@ -20,9 +23,9 @@ class ShortcutButtons extends Template
     /**#@+
      * Position of "OR" label against shortcut
      */
-    const POSITION_BEFORE = 'before';
+    public const POSITION_BEFORE = 'before';
 
-    const POSITION_AFTER = 'after';
+    public const POSITION_AFTER = 'after';
 
     /**#@-*/
 
@@ -80,7 +83,7 @@ class ShortcutButtons extends Template
             [
                 'container' => $this,
                 'is_catalog_product' => $this->_isCatalogProduct,
-                'or_position' => $this->_orPosition
+                'or_position' => $this->_orPosition,
             ]
         );
         return $this;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Message\Manager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderManagementInterface;
@@ -20,7 +22,6 @@ use Magento\Sales\Controller\Adminhtml\Order\ReviewPayment;
 use Magento\Sales\Model\Order\Payment;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -99,7 +100,7 @@ class ReviewPaymentTest extends TestCase
             'getSession',
             'getActionFlag',
             'getHelper',
-            'getResultRedirectFactory'
+            'getResultRedirectFactory',
         ]);
         $this->orderManagementMock = $this->getMockBuilder(OrderManagementInterface::class)
             ->getMock();
@@ -143,7 +144,7 @@ class ReviewPaymentTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'orderManager' => $this->orderManagementMock,
-                'orderRepository' => $this->orderRepositoryMock
+                'orderRepository' => $this->orderRepositoryMock,
             ]
         );
     }
@@ -158,7 +159,7 @@ class ReviewPaymentTest extends TestCase
 
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['order_id'] => $orderId,
                 ['action'] => $action
             });

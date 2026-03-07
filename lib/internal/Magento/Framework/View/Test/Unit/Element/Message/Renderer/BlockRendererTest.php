@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class BlockRendererTest extends TestCase
         $messageData = [
             'painting' => 'The Last Supper',
             'apostles_cnt' => 28,
-            'kangaroos_cnt' => 1
+            'kangaroos_cnt' => 1,
         ];
         $initializationData = ['template' => 'canvas.phtml'];
         $messagePresentation = 'The Last Supper, Michelangelo.';
@@ -85,7 +86,7 @@ class BlockRendererTest extends TestCase
         $message = $this->createMock(MessageInterface::class);
         $messageData = [
             'who' => 'Brian',
-            'is' => 'a Very Naughty Boy'
+            'is' => 'a Very Naughty Boy',
         ];
 
         $message->expects(static::once())

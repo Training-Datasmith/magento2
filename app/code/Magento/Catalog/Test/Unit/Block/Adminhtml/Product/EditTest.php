@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product;
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Button;
 use Magento\Backend\Block\Widget\Button\SplitButton;
-use Magento\Backend\Block\Widget\ContainerInterface;
 use Magento\Catalog\Block\Adminhtml\Product\Edit;
 use Magento\Catalog\Helper\Product as ProductHelper;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\Entity\Attribute\SetFactory;
@@ -26,7 +27,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\LayoutInterface;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -113,12 +113,12 @@ class EditTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -153,7 +153,7 @@ class EditTest extends TestCase
                 'attributeSetFactory' => $this->attributeSetFactoryMock,
                 'registry' => $this->registryMock,
                 'productHelper' => $this->productHelperMock,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }
@@ -281,18 +281,18 @@ class EditTest extends TestCase
             'product has attribute set id' => [
                 'attributeSetId' => 4,
                 'requestSetParam' => null,
-                'expectedSetId' => 4
+                'expectedSetId' => 4,
             ],
             'product has no attribute set id, use request param' => [
                 'attributeSetId' => null,
                 'requestSetParam' => 7,
-                'expectedSetId' => 7
+                'expectedSetId' => 7,
             ],
             'neither product nor request has set id' => [
                 'attributeSetId' => null,
                 'requestSetParam' => null,
-                'expectedSetId' => null
-            ]
+                'expectedSetId' => null,
+            ],
         ];
     }
 
@@ -337,26 +337,26 @@ class EditTest extends TestCase
                 'productId' => 1,
                 'productName' => 'Test Product',
                 'escapedName' => 'Test Product',
-                'expectedHeader' => 'Test Product'
+                'expectedHeader' => 'Test Product',
             ],
             'new product returns New Product phrase' => [
                 'productId' => null,
                 'productName' => null,
                 'escapedName' => null,
-                'expectedHeader' => 'New Product'
+                'expectedHeader' => 'New Product',
             ],
             'product with empty name returns empty string' => [
                 'productId' => 1,
                 'productName' => '',
                 'escapedName' => '',
-                'expectedHeader' => ''
+                'expectedHeader' => '',
             ],
             'product name with special characters is escaped' => [
                 'productId' => 1,
                 'productName' => 'Product <b>"Special"</b> & \'Test\'',
                 'escapedName' => 'Product &lt;b&gt;&quot;Special&quot;&lt;/b&gt; &amp; \'Test\'',
-                'expectedHeader' => 'Product &lt;b&gt;&quot;Special&quot;&lt;/b&gt; &amp; \'Test\''
-            ]
+                'expectedHeader' => 'Product &lt;b&gt;&quot;Special&quot;&lt;/b&gt; &amp; \'Test\'',
+            ],
         ];
     }
 
@@ -412,23 +412,23 @@ class EditTest extends TestCase
             'product has attribute set' => [
                 'setId' => 4,
                 'setName' => 'Default',
-                'expectedName' => 'Default'
+                'expectedName' => 'Default',
             ],
             'product has no attribute set' => [
                 'setId' => null,
                 'setName' => null,
-                'expectedName' => ''
+                'expectedName' => '',
             ],
             'invalid attribute set ID returns null' => [
                 'setId' => 99999,
                 'setName' => null,
-                'expectedName' => null
+                'expectedName' => null,
             ],
             'empty attribute set name' => [
                 'setId' => 4,
                 'setName' => '',
-                'expectedName' => ''
-            ]
+                'expectedName' => '',
+            ],
         ];
     }
 
@@ -588,33 +588,33 @@ class EditTest extends TestCase
             'back button' => [
                 'method' => 'getBackButtonHtml',
                 'alias' => 'back_button',
-                'expectedHtml' => '<button>Back</button>'
+                'expectedHtml' => '<button>Back</button>',
             ],
             'cancel/reset button' => [
                 'method' => 'getCancelButtonHtml',
                 'alias' => 'reset_button',
-                'expectedHtml' => '<button>Reset</button>'
+                'expectedHtml' => '<button>Reset</button>',
             ],
             'save button' => [
                 'method' => 'getSaveButtonHtml',
                 'alias' => 'save_button',
-                'expectedHtml' => '<button>Save</button>'
+                'expectedHtml' => '<button>Save</button>',
             ],
             'save and edit button' => [
                 'method' => 'getSaveAndEditButtonHtml',
                 'alias' => 'save_and_edit_button',
-                'expectedHtml' => '<button>Save & Edit</button>'
+                'expectedHtml' => '<button>Save & Edit</button>',
             ],
             'delete button' => [
                 'method' => 'getDeleteButtonHtml',
                 'alias' => 'delete_button',
-                'expectedHtml' => '<button>Delete</button>'
+                'expectedHtml' => '<button>Delete</button>',
             ],
             'save split button' => [
                 'method' => 'getSaveSplitButtonHtml',
                 'alias' => 'save-split-button',
-                'expectedHtml' => '<button>Save Split</button>'
-            ]
+                'expectedHtml' => '<button>Save Split</button>',
+            ],
         ];
     }
 
@@ -660,12 +660,12 @@ class EditTest extends TestCase
         return [
             'new product with no ID' => [
                 'productId' => null,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             'existing product with ID' => [
                 'productId' => 123,
-                'expectedResult' => false
-            ]
+                'expectedResult' => false,
+            ],
         ];
     }
 
@@ -707,7 +707,7 @@ class EditTest extends TestCase
 
         $attributes = [
             'color' => $attribute1Mock,
-            'size' => $attribute2Mock
+            'size' => $attribute2Mock,
         ];
 
         $this->productMock->expects($this->once())
@@ -753,26 +753,26 @@ class EditTest extends TestCase
                 'isPopup' => false,
                 'isDuplicable' => true,
                 'expectedOptionsCount' => 4,
-                'expectedOptionIds' => ['edit-button', 'new-button', 'duplicate-button', 'close-button']
+                'expectedOptionIds' => ['edit-button', 'new-button', 'duplicate-button', 'close-button'],
             ],
             'non-popup mode with non-duplicable product' => [
                 'isPopup' => false,
                 'isDuplicable' => false,
                 'expectedOptionsCount' => 3,
-                'expectedOptionIds' => ['edit-button', 'new-button', 'close-button']
+                'expectedOptionIds' => ['edit-button', 'new-button', 'close-button'],
             ],
             'popup mode with duplicable product' => [
                 'isPopup' => true,
                 'isDuplicable' => true,
                 'expectedOptionsCount' => 2,
-                'expectedOptionIds' => ['new-button', 'close-button']
+                'expectedOptionIds' => ['new-button', 'close-button'],
             ],
             'popup mode with non-duplicable product' => [
                 'isPopup' => true,
                 'isDuplicable' => false,
                 'expectedOptionsCount' => 2,
-                'expectedOptionIds' => ['new-button', 'close-button']
-            ]
+                'expectedOptionIds' => ['new-button', 'close-button'],
+            ],
         ];
     }
 

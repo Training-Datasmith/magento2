@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Controller\Adminhtml\System;
 
-use Magento\Store\Model\ResourceModel\Store as StoreResource;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\Message\MessageInterface;
 use Magento\Store\Api\Data\StoreInterfaceFactory;
 use Magento\Store\Api\WebsiteRepositoryInterface;
-use Magento\Framework\Data\Form\FormKey;
-use Magento\Framework\Message\MessageInterface;
-use Magento\Framework\Message\ManagerInterface;
+use Magento\Store\Model\ResourceModel\Store as StoreResource;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\App\Request\Http as HttpRequest;
 
 /**
  * @magentoAppArea adminhtml
@@ -151,7 +152,7 @@ class StoreTest extends \Magento\TestFramework\TestCase\AbstractBackendControlle
             ],
             'store_type' => 'website',
             'store_action' => 'edit',
-        ],);
+        ], );
         $this->dispatch('backend/admin/system_store/save');
         //Check that errors was generated and set to session
         $this->assertSessionMessages(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,19 +18,19 @@ interface DesignInterface
     /**
      * Default design area
      */
-    const DEFAULT_AREA = 'frontend';
+    public const DEFAULT_AREA = 'frontend';
 
     /**#@+
      * Public directories prefix group
      */
-    const PUBLIC_VIEW_DIR   = '_view';
-    const PUBLIC_THEME_DIR  = '_theme';
+    public const PUBLIC_VIEW_DIR   = '_view';
+    public const PUBLIC_THEME_DIR  = '_theme';
     /**#@-*/
 
     /**
      * Common node path to theme design configuration
      */
-    const XML_PATH_THEME_ID = 'design/theme/theme_id';
+    public const XML_PATH_THEME_ID = 'design/theme/theme_id';
 
     /**
      * Set package area

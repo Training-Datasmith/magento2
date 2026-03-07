@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Ui\DataProvider;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider;
-use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Filesystem\Io\File;
+use Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider;
 
 /**
  * Data provider for export grid.

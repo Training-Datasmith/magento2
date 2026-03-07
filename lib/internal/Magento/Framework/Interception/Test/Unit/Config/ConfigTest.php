@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +20,9 @@ use Magento\Framework\ObjectManager\DefinitionInterface;
 use Magento\Framework\ObjectManager\Relations\Runtime;
 use Magento\Framework\ObjectManager\RelationsInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 require_once __DIR__ . '/../Custom/Module/Model/Item.php';
 require_once __DIR__ . '/../Custom/Module/Model/Item/Enhanced.php';
@@ -131,18 +132,18 @@ class ConfigTest extends TestCase
                     ],
                     [
                         \Magento\Framework\Interception\Custom\Module\Model\Backslash\Item\Proxy::class,
-                        \Magento\Framework\Interception\Custom\Module\Model\Backslash\Item\Proxy::class
+                        \Magento\Framework\Interception\Custom\Module\Model\Backslash\Item\Proxy::class,
                     ],
                     [
                         'virtual_custom_item',
-                        Item::class
+                        Item::class,
                     ],
                 ]
             );
         $this->definitionMock->expects($this->any())->method('getClasses')->willReturn(
             [
                 \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item\Proxy::class,
-                \Magento\Framework\Interception\Custom\Module\Model\Backslash\Item\Proxy::class
+                \Magento\Framework\Interception\Custom\Module\Model\Backslash\Item\Proxy::class,
             ]
         );
         $this->relationsMock->expects($this->any())->method('has')->willReturn($expectedResult);
@@ -179,7 +180,7 @@ class ConfigTest extends TestCase
             \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemContainer\Enhanced::class => true,
             \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemContainer\Proxy::class => true,
             \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item\Proxy::class => false,
-            'virtual_custom_item' => true
+            'virtual_custom_item' => true,
         ];
         $this->readerMock->expects($this->never())->method('read');
         $this->cacheManagerMock->expects($this->never())->method('save');
@@ -215,35 +216,35 @@ class ConfigTest extends TestCase
             // item container has plugins only in the backend scope
             [
                 true, ItemContainer::class,
-                []
+                [],
             ],
             [
                 true, Item::class,
-                []
+                [],
             ],
             [
                 true, Enhanced::class,
-                []
+                [],
             ],
             [
                 // the following model has only inherited plugins
                 true, \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemContainer\Proxy::class,
-                [ItemContainer::class]
+                [ItemContainer::class],
             ],
             [
                 // the following model has only inherited plugins
                 true, \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\ItemContainer\Proxy::class,
-                [ItemContainer::class]
+                [ItemContainer::class],
             ],
             [
                 false, \Magento\Framework\Interception\Test\Unit\Custom\Module\Model\Item\Proxy::class,
-                []
+                [],
             ],
             [
                 true,
                 'virtual_custom_item',
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

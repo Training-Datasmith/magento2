@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,15 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\NewRelicReporting\Model\NerdGraph;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\HTTP\LaminasClientFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\NewRelicReporting\Model\Apm\Deployments;
 use Magento\NewRelicReporting\Model\Config;
-use Magento\NewRelicReporting\Model\NerdGraph\Client;
-use Magento\NewRelicReporting\Model\NerdGraph\DeploymentTracker;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -174,7 +172,7 @@ class DeploymentWorkflowTest extends TestCase
             'logger',
             'clientFactory',
             'serializer',
-            'deploymentTracker'
+            'deploymentTracker',
         ];
 
         $this->assertCount(count($expectedParameters), $parameters);
@@ -200,7 +198,7 @@ class DeploymentWorkflowTest extends TestCase
             'httpClientFactory',
             'serializer',
             'config',
-            'logger'
+            'logger',
         ];
 
         $this->assertCount(count($expectedParameters), $parameters);
@@ -225,7 +223,7 @@ class DeploymentWorkflowTest extends TestCase
         $expectedParameters = [
             'nerdGraphClient',
             'config',
-            'logger'
+            'logger',
         ];
 
         $this->assertCount(count($expectedParameters), $parameters);

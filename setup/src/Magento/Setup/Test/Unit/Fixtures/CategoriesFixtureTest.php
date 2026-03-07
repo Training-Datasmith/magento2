@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Fixtures\CategoriesFixture;
 use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class CategoriesFixtureTest extends TestCase
@@ -84,7 +85,7 @@ class CategoriesFixtureTest extends TestCase
     {
         $valueMap = [
             ['categories', 0, 1],
-            ['categories_nesting_level', 3, 3]
+            ['categories_nesting_level', 3, 3],
         ];
 
         $this->fixtureModelMock
@@ -100,7 +101,7 @@ class CategoriesFixtureTest extends TestCase
             [
                 'getName', 'setId', 'getId', 'setName', 'setParentId', 'setPath', 'setLevel', 'getLevel',
                 'setAvailableSortBy', 'setIsActive', 'save', 'setStoreId', 'load', 'setUrlKey', 'setUrlPath',
-                'setDefaultSortBy', 'getResource', 'setIsAnchor'
+                'setDefaultSortBy', 'getResource', 'setIsAnchor',
             ]
         );
         $parentCategoryMock->expects($this->once())->method('getId')->willReturn(5);
@@ -164,7 +165,7 @@ class CategoriesFixtureTest extends TestCase
     public function testIntroduceParamLabels()
     {
         $this->assertSame([
-            'categories' => 'Categories'
+            'categories' => 'Categories',
         ], $this->model->introduceParamLabels());
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\Filter\VariableResolver\StrictResolver;
 use Magento\Framework\Filter\VariableResolverInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class IfDirectiveTest extends TestCase
 {
@@ -80,12 +81,12 @@ class IfDirectiveTest extends TestCase
             [
                 '{{if foo.getBar().baz}}blah{{else}}other{{/if}}',
                 ['foo' => new DataObject(['bar' => ['baz' => true]])],
-                'blah'
+                'blah',
             ],
             [
                 '{{if foo.getBar().baz}}blah{{else}}other{{/if}}',
                 ['foo' => new DataObject(['bar' => ['baz' => false]])],
-                'other'
+                'other',
             ],
         ];
     }

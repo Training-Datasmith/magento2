@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -148,12 +150,12 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         return [
             [
                 'categoryId' => $validCategoryId,
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'categoryId' => $invalidCategoryId,
-                'expectedResult' => false
-            ]
+                'expectedResult' => false,
+            ],
         ];
     }
 
@@ -220,7 +222,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                 'value' => '1',
                 'is_value_processed' => null,
                 'aggregator' => 'all',
-                'conditions' => $conditions
+                'conditions' => $conditions,
             ]
         );
         $rule->save();
@@ -261,7 +263,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                             ],
                     ],
                 ],
-                'expected' => false
+                'expected' => false,
             ],
             'If total quantity  is 1 for a subselection of items in cart matching ALL of these conditions: ' .
             'Category (Parent Only) is "Default Category"' => [
@@ -285,7 +287,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                             ],
                     ],
                 ],
-                'expected' => true
+                'expected' => true,
             ],
             'If an item is found in the cart with all these conditions true: ' .
             'Category (Parent Only) is not "Default Category"' => [
@@ -307,7 +309,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                             ],
                     ],
                 ],
-                'expected' => false
+                'expected' => false,
             ],
             'If an item is found in the cart with all these conditions true: ' .
             'Category (Parent Only) is "Default Category"' => [
@@ -329,7 +331,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                             ],
                     ],
                 ],
-                'expected' => true
+                'expected' => true,
             ],
             'If an item is not found in the cart with all these conditions true: ' .
             'Category (Parent Only) is "Default Category"' => [
@@ -351,7 +353,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                             ],
                     ],
                 ],
-                'expected' => false
+                'expected' => false,
             ],
         ];
     }
@@ -370,17 +372,17 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         DataFixture(ProductFixture::class, [
             'price' => 40,
             'sku' => 'p1',
-            'category_ids' => ['$c1.id$']
+            'category_ids' => ['$c1.id$'],
         ], 'p1'),
         DataFixture(ProductFixture::class, [
             'price' => 30,
             'sku' => 'p2',
-            'category_ids' => ['$c2.id$']
+            'category_ids' => ['$c2.id$'],
         ], 'p2'),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'coupon_code' => 'test',
                 'discount_amount' => 10,
                 'conditions' => [
@@ -411,7 +413,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                     ],
                 ],
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             'rule'
         ),

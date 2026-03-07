@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat\Plugin;
 
+use Magento\Catalog\Model\Indexer\Product\Flat\Processor as ProductFlatIndexerProcessor;
 use Magento\Catalog\Model\Indexer\Product\Flat\State as ProductFlatIndexerState;
 use Magento\Indexer\Model\Config\Data as ConfigData;
-use Magento\Catalog\Model\Indexer\Product\Flat\Processor as ProductFlatIndexerProcessor;
 
 /**
  * Plugin for Magento\Indexer\Model\Config\Data

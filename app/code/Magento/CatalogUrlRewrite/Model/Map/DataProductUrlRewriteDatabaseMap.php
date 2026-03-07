@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\TemporaryTableService;
-use Magento\Framework\DB\Select;
 use Magento\UrlRewrite\Model\MergeDataProvider;
 
 /**
@@ -15,7 +17,7 @@ use Magento\UrlRewrite\Model\MergeDataProvider;
  */
 class DataProductUrlRewriteDatabaseMap implements DatabaseMapInterface
 {
-    const ENTITY_TYPE = 'product';
+    public const ENTITY_TYPE = 'product';
 
     /**
      * @var string[]
@@ -93,7 +95,7 @@ class DataProductUrlRewriteDatabaseMap implements DatabaseMapInterface
                 ['e' => $this->connection->getTableName('url_rewrite')],
                 ['e.*', 'hash_key' => new \Zend_Db_Expr(
                     "CONCAT(e.store_id,'" . MergeDataProvider::SEPARATOR . "', e.entity_id)"
-                )
+                ),
                 ]
             )
             ->where('entity_type = ?', self::ENTITY_TYPE)
@@ -102,7 +104,7 @@ class DataProductUrlRewriteDatabaseMap implements DatabaseMapInterface
                     'entity_id',
                     [
                         'in' => $this->hashMapPool->getDataMap(DataProductHashMap::class, $categoryId)
-                            ->getAllData($categoryId)
+                            ->getAllData($categoryId),
                     ]
                 )
             );
@@ -112,7 +114,7 @@ class DataProductUrlRewriteDatabaseMap implements DatabaseMapInterface
             [
                 'PRIMARY' => ['url_rewrite_id'],
                 'HASHKEY_ENTITY_STORE' => ['hash_key'],
-                'ENTITY_STORE' => ['entity_id', 'store_id']
+                'ENTITY_STORE' => ['entity_id', 'store_id'],
             ]
         );
         return $mapName;

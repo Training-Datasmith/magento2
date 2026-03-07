@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Multishipping\Model\Payment\Method\Specification;
 
 use Magento\Payment\Model\Method\Specification\AbstractSpecification;
@@ -15,7 +18,7 @@ class Enabled extends AbstractSpecification
     /**
      * Allow multiple address flag
      */
-    const FLAG_ALLOW_MULTIPLE_ADDRESS = 'allow_multiple_address';
+    public const FLAG_ALLOW_MULTIPLE_ADDRESS = 'allow_multiple_address';
 
     /**
      * {@inheritdoc}

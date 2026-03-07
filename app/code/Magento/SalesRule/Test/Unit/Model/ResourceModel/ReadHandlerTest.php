@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class ReadHandlerTest extends TestCase
     {
         $entityData = [
             'row_id' => 2,
-            'rule_id' => 1
+            'rule_id' => 1,
         ];
 
         $customers = [1, 2];

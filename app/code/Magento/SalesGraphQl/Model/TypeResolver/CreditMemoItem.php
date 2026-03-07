@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\SalesGraphQl\Model\TypeResolver;
 
-use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 
 /**
  * Resolve concrete type for CreditMemoItemInterface

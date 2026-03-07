@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -457,7 +458,7 @@ QUERY;
             'missed_cart_item_qty' => [
                 'cart_items: [{ cart_item_id: 1 }]',
                 'Required parameter "quantity" for "cart_items" is missing.',
-                'REQUIRED_PARAMETER_MISSING'
+                'REQUIRED_PARAMETER_MISSING',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -181,7 +182,7 @@ class DataFixture extends Base
     private function getFixtureAsArray(string $fixture): array
     {
         return [
-            'factory' => $fixture
+            'factory' => $fixture,
         ];
     }
 }

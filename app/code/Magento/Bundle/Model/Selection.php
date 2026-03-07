@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Bundle\Model;
 
-use Magento\Framework\App\ObjectManager;
+namespace Magento\Bundle\Model;
 
 /**
  * Bundle Selection Model

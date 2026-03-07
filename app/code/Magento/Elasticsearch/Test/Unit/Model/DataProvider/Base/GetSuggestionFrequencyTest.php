@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\Test\Unit\Model\DataProvider\Base;
 
 use Magento\Elasticsearch\Model\DataProvider\Base\GetSuggestionFrequency;
-use Magento\Framework\Api\FilterBuilder;
-use Magento\Framework\Api\Search\SearchCriteriaBuilder;
-use Magento\Search\Api\SearchInterface;
-use Magento\Framework\Api\Search\SearchCriteria;
-use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\Filter;
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\Search\SearchCriteria;
+use Magento\Framework\Api\Search\SearchCriteriaBuilder;
+use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Search\Api\SearchInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -93,7 +94,7 @@ class GetSuggestionFrequencyTest extends TestCase
             [
                 'filterBuilder' => $this->filterBuilder,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
-                'search' => $this->search
+                'search' => $this->search,
             ]
         );
     }

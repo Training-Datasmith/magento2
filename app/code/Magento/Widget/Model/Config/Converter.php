@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Model\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface
@@ -70,7 +73,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                         }
                         break;
                     case '#comment':
-                    case "#text":
+                    case '#text':
                         break;
                     default:
                         throw new \LogicException(

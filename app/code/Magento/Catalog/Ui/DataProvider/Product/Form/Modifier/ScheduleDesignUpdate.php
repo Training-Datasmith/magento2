@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Framework\Stdlib\ArrayManager;
@@ -18,8 +21,8 @@ class ScheduleDesignUpdate extends AbstractModifier
     /**#@+
      * Field names
      */
-    const CODE_CUSTOM_DESIGN_FROM = 'custom_design_from';
-    const CODE_CUSTOM_DESIGN_TO = 'custom_design_to';
+    public const CODE_CUSTOM_DESIGN_FROM = 'custom_design_from';
+    public const CODE_CUSTOM_DESIGN_TO = 'custom_design_to';
     /**#@-*/
 
     /**

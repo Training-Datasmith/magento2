@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class ItemTest extends TestCase
         $this->taxItem = $objectManager->getObject(
             Item::class,
             [
-                'resource' => $this->appResourceMock
+                'resource' => $this->appResourceMock,
             ]
         );
     }
@@ -64,8 +65,8 @@ class ItemTest extends TestCase
                 'taxable_item_type' => 4,
                 'associated_item_id' => 1,
                 'real_amount' => 12,
-                'real_base_amount' => 12
-            ]
+                'real_base_amount' => 12,
+            ],
         ];
         $select = $this->createMock(Select::class);
         $this->connectionMock->expects($this->once())->method('select')->willReturn($select);

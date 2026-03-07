@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -296,7 +297,7 @@ class CreateAddressTest extends AbstractController
                     '"telephone" is required. Enter and try again.',
                     '"postcode" is required. Enter and try again.',
                     '"countryId" is required. Enter and try again.',
-                ]
+                ],
             ],
             'required_field_empty_telephone' => [
                 array_replace(self::STATIC_POST_ADDRESS_DATA, [AddressInterface::TELEPHONE => '']),

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Framework\Config;
  */
 class DomFactory
 {
-    const CLASS_NAME = \Magento\Framework\Config\Dom::class;
+    public const CLASS_NAME = \Magento\Framework\Config\Dom::class;
 
     /**
      * Object manager

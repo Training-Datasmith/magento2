@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Adminhtml\Design\Config\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -28,7 +31,7 @@ class SaveAndContinueButton implements ButtonProviderInterface
                 'mage-init' => [
                     'button' => ['event' => 'saveAndContinue'],
                 ],
-                'form-role' => 'saveAndContinue'
+                'form-role' => 'saveAndContinue',
             ],
             'sort_order' => 15,
         ];

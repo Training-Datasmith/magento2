@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SampleData\Model;
 
 use Magento\Framework\App\ObjectManager;
@@ -129,6 +132,6 @@ class Dependency
                 return $this->packageFactory->create(['json' => json_decode($directory->readFile('composer.json'))]);
             }
         }
-        return $this->packageFactory->create(['json' => new \stdClass]);
+        return $this->packageFactory->create(['json' => new \stdClass()]);
     }
 }

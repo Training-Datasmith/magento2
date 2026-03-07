@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Plugin\Data;
 
+use Magento\Config\Console\Command\ConfigSet\ProcessorFacade;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Theme\Api\Data\DesignConfigInterface;
+use Magento\Theme\Model\Data\Design\ConfigFactory;
+use Magento\Theme\Model\Design\Config\Validator;
+use Magento\Theme\Plugin\DesignProcessorFacade;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Theme\Plugin\DesignProcessorFacade;
-use Magento\Config\Console\Command\ConfigSet\ProcessorFacade;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Theme\Model\Data\Design\ConfigFactory;
-use Magento\Theme\Model\Design\Config\Validator;
-use Magento\Theme\Api\Data\DesignConfigInterface;
 
 class DesignProcessorFacadeTest extends TestCase
 {

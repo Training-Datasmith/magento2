@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class AddDataForSweden implements DataPatchInterface
             ['SE', 'SE-U', 'Västmanlands län'],
             ['SE', 'SE-O', 'Västra Götalands län'],
             ['SE', 'SE-T', 'Örebro län'],
-            ['SE', 'SE-E', 'Östergötlands län']
+            ['SE', 'SE-E', 'Östergötlands län'],
         ];
     }
 

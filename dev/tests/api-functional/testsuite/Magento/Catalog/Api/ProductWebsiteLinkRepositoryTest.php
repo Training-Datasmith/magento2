@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class ProductWebsiteLinkRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogProductWebsiteLinkRepositoryV1';
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'catalogProductWebsiteLinkRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
 
     /** @var ObjectManagerInterface */
     private $objectManager;

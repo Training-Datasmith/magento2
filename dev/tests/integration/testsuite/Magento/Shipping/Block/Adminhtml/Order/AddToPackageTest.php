@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentTrackInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Api\OrderRepositoryInterface;
 
 /**
  * Class verifies packaging popup.
@@ -113,7 +114,7 @@ class AddToPackageTest extends TestCase
      * @param string $incrementId
      * @return OrderInterface
      */
-    private function getOrderByIncrementId(string $incrementId) : OrderInterface
+    private function getOrderByIncrementId(string $incrementId): OrderInterface
     {
         /** @var SearchCriteria $searchCriteria */
         $searchCriteria = $this->objectManager->get(SearchCriteriaBuilder::class)

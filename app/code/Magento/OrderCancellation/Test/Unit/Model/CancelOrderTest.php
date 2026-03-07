@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\OrderCancellation\Test\Unit\Model;
 
 use Magento\Framework\Escaper;
+use Magento\Framework\Phrase;
 use Magento\OrderCancellation\Model\CancelOrder;
+use Magento\Payment\Model\MethodInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Email\Sender\OrderCommentSender;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\RefundInvoice;
 use Magento\Sales\Model\RefundOrder;
-use Magento\Payment\Model\MethodInterface;
-use Magento\Framework\Phrase;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

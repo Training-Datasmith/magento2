@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Framework\Image\Adapter\Gd2;
 use Magento\Framework\Image\Adapter\ImageMagick;
 use Magento\Framework\Image\AdapterFactory;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AdapterFactoryTest extends TestCase
 {
@@ -84,7 +85,7 @@ class AdapterFactoryTest extends TestCase
     {
         return [
             ['GD2', Gd2::class],
-            ['IMAGEMAGICK', ImageMagick::class]
+            ['IMAGEMAGICK', ImageMagick::class],
         ];
     }
 

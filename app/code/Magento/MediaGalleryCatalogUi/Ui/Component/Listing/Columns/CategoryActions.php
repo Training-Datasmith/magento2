@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\UrlInterface;
 
 /**
  * Class CategoryActions for Category grid
@@ -52,7 +55,7 @@ class CategoryActions extends Column
                     'href' => $this->urlBuilder->getUrl(
                         'catalog/category/edit',
                         [
-                            'id' => $item['entity_id']
+                            'id' => $item['entity_id'],
                         ]
                     ),
                     'label' => __('Edit'),

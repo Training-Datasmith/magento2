@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento session manager interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session;
 
 /**
@@ -18,7 +21,7 @@ interface SessionManagerInterface
     /**
      * Session key for list of hosts
      */
-    const HOST_KEY = '_session_hosts';
+    public const HOST_KEY = '_session_hosts';
 
     /**
      * Start session

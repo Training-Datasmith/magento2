@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Fedex\Plugin\Block\DataProviders\Tracking;
 
 use Magento\Fedex\Model\Carrier;
-use Magento\Shipping\Model\Tracking\Result\Status;
 use Magento\Shipping\Block\DataProviders\Tracking\DeliveryDateTitle as Subject;
+use Magento\Shipping\Model\Tracking\Result\Status;
 
 /**
  * Plugin to change delivery date title with FedEx customized value

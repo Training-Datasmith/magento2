@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Config;
 
-use Magento\Catalog\Model\ResourceModel\Category\Attribute\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Category\Attribute\Collection;
+use Magento\Catalog\Model\ResourceModel\Category\Attribute\CollectionFactory;
+use Magento\EavGraphQl\Model\Resolver\Query\Type;
 use Magento\Framework\Config\ReaderInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\Reflection\TypeProcessor;
-use Magento\EavGraphQl\Model\Resolver\Query\Type;
 
 /**
  * Adds custom/eav attribute to Catalog category types in the GraphQL config.
@@ -79,9 +80,9 @@ class CategoryAttributeReader implements ReaderInterface
      * @throws GraphQlInputException
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function read($scope = null) : array
+    public function read($scope = null): array
     {
-        $config =[];
+        $config = [];
         $data = [];
         /** @var Collection $collection */
         $collection = $this->collectionFactory->create();

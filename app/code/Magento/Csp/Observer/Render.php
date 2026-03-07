@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Csp\Observer;
 
 use Magento\Csp\Api\CspRendererInterface;
+use Magento\Framework\App\Response\HttpInterface as HttpResponse;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\App\Response\HttpInterface as HttpResponse;
 
 /**
  * Adds CSP rendering after HTTP response is generated.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ interface DDLTriggerInterface
      * @param string $statement
      * @return bool
      */
-    public function isApplicable(string $statement) : bool ;
+    public function isApplicable(string $statement): bool ;
 
     /**
      * Setup callback to current statement, can generate new statements.
@@ -44,5 +45,5 @@ interface DDLTriggerInterface
      * @param ElementHistory $elementHistory
      * @return callable
      */
-    public function getCallback(ElementHistory $elementHistory) : callable;
+    public function getCallback(ElementHistory $elementHistory): callable;
 }

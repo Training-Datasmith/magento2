@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -103,30 +104,30 @@ class PaymentTest extends TestCase
             [['activity_path' => [self::CONFIG_PATH_NOT_ACTIVE]], ' class="section-config with-button">'],
             [
                 ['activity_path' => [self::CONFIG_PATH_ACTIVE, self::CONFIG_PATH_NOT_ACTIVE]],
-                ' class="section-config with-button enabled">'
+                ' class="section-config with-button enabled">',
             ],
             [
                 ['activity_path' => self::CONFIG_PATH_ACTIVE, 'fieldset_css' => 'any-css'],
-                ' class="section-config any-css with-button enabled">'
+                ' class="section-config any-css with-button enabled">',
             ],
             [
                 ['activity_path' => self::CONFIG_PATH_NOT_ACTIVE, 'fieldset_css' => 'any-css'],
-                ' class="section-config any-css with-button">'
+                ' class="section-config any-css with-button">',
             ],
             [
                 ['activity_path' => [self::CONFIG_PATH_ACTIVE], 'fieldset_css' => 'any-css'],
-                ' class="section-config any-css with-button enabled">'
+                ' class="section-config any-css with-button enabled">',
             ],
             [
                 ['activity_path' => [self::CONFIG_PATH_NOT_ACTIVE], 'fieldset_css' => 'any-css'],
-                ' class="section-config any-css with-button">'
+                ' class="section-config any-css with-button">',
             ],
             [
                 [
                     'activity_path' => [self::CONFIG_PATH_ACTIVE, self::CONFIG_PATH_NOT_ACTIVE],
                     'fieldset_css' => 'any-css',
                 ],
-                ' class="section-config any-css with-button enabled">'
+                ' class="section-config any-css with-button enabled">',
             ],
         ];
     }

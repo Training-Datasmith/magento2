@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\Address;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote\Address\Total;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(\Magento\Quote\Model\Quote\Address\Total::class)]
@@ -35,7 +36,7 @@ class TotalTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             Total::class,
             [
-                'serializer' => $serializer
+                'serializer' => $serializer,
             ]
         );
     }
@@ -64,13 +65,13 @@ class TotalTest extends TestCase
             'Subtotal' => [
                 'code' => 'subtotal',
                 'amount' => 42.42,
-                'storedCode' => 'subtotal'
+                'storedCode' => 'subtotal',
             ],
             'Other total' => [
                 'code' => 'other',
                 'amount' => 42.17,
-                'storedCode' => 'other_amount'
-            ]
+                'storedCode' => 'other_amount',
+            ],
         ];
     }
 
@@ -98,13 +99,13 @@ class TotalTest extends TestCase
             'Subtotal' => [
                 'code' => 'subtotal',
                 'amount' => 17.42,
-                'storedCode' => 'base_subtotal'
+                'storedCode' => 'base_subtotal',
             ],
             'Other total' => [
                 'code' => 'other',
                 'amount' => 42.17,
-                'storedCode' => 'base_other_amount'
-            ]
+                'storedCode' => 'base_other_amount',
+            ],
         ];
     }
 
@@ -132,13 +133,13 @@ class TotalTest extends TestCase
             'Zero' => [
                 'initialAmount' => 0,
                 'delta' => 42,
-                'updatedAmount' => 42
+                'updatedAmount' => 42,
             ],
             'Non-zero' => [
                 'initialAmount' => 20,
                 'delta' => 22,
-                'updatedAmount' => 42
-            ]
+                'updatedAmount' => 42,
+            ],
         ];
     }
 
@@ -166,13 +167,13 @@ class TotalTest extends TestCase
             'Zero' => [
                 'initialAmount' => 0,
                 'delta' => 42,
-                'updatedAmount' => 42
+                'updatedAmount' => 42,
             ],
             'Non-zero' => [
                 'initialAmount' => 20,
                 'delta' => 22,
-                'updatedAmount' => 42
-            ]
+                'updatedAmount' => 42,
+            ],
         ];
     }
 

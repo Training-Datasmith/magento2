@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Framework\View\Test\Unit\Asset\NotationResolver;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\NotationResolver\Module;
 use Magento\Framework\View\Asset\Repository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ModuleTest extends TestCase
 {
@@ -107,7 +108,7 @@ class ModuleTest extends TestCase
                 'Bar_Baz::images/logo.gif',
                 'area/theme/locale/Bar_Baz/images/logo.gif',
                 '../../Bar_Baz/images/logo.gif',
-            ]
+            ],
         ];
     }
 }

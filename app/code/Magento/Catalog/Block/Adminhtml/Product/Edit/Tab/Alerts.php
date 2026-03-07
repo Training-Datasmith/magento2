@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab;
 
 class Alerts extends \Magento\Backend\Block\Widget\Tab
@@ -45,7 +48,7 @@ class Alerts extends \Magento\Backend\Block\Widget\Tab
                     'content' => $this->getLayout()->createBlock(
                         \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Alerts\Price::class
                     )->toHtml() . '<br />',
-                    'open' => true
+                    'open' => true,
                 ]
             );
         }
@@ -57,7 +60,7 @@ class Alerts extends \Magento\Backend\Block\Widget\Tab
                     'content' => $this->getLayout()->createBlock(
                         \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Alerts\Stock::class
                     ),
-                    'open' => true
+                    'open' => true,
                 ]
             );
         }

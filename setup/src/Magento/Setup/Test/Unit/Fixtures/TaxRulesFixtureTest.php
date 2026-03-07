@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,14 +11,14 @@ namespace Magento\Setup\Test\Unit\Fixtures;
 use Magento\Framework\App\Config\Storage\Writer as ConfigWriter;
 use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Setup\Fixtures\TaxRulesFixture;
-use Magento\Tax\Api\Data\TaxRateInterfaceFactory;
 use Magento\Tax\Api\Data\TaxRateInterface;
+use Magento\Tax\Api\Data\TaxRateInterfaceFactory;
 use Magento\Tax\Api\Data\TaxRuleInterface;
 use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
-use Magento\Tax\Model\ResourceModel\Calculation\Rate\CollectionFactory;
 use Magento\Tax\Model\ResourceModel\Calculation\Rate\Collection;
+use Magento\Tax\Model\ResourceModel\Calculation\Rate\CollectionFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -26,7 +27,6 @@ use PHPUnit\Framework\TestCase;
  */
 class TaxRulesFixtureTest extends TestCase
 {
-
     /**
      * @var MockObject|FixtureModel
      */
@@ -88,7 +88,7 @@ class TaxRulesFixtureTest extends TestCase
         $this->taxRateRepositoryMock = $this->getMockBuilder(TaxRateRepositoryInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         // Configure taxRateRepository to return a mock with getId() when save() is called
         $taxRateDataMock = $this->createMock(TaxRateInterface::class);
         $taxRateDataMock->method('getId')->willReturn(1);
@@ -101,7 +101,7 @@ class TaxRulesFixtureTest extends TestCase
         $this->taxRuleFactoryMock = $this->getMockBuilder(TaxRuleInterfaceFactory::class)
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         // Configure taxRuleFactory to return a mock TaxRuleInterface
         $taxRuleMock = $this->createMock(TaxRuleInterface::class);
         $taxRuleMock->method('setCode')->willReturnSelf();
@@ -122,7 +122,7 @@ class TaxRulesFixtureTest extends TestCase
             ->method('getValue')
             ->willReturnMap([
                 ['tax_mode', 'VAT'],
-                ['tax_rules', 2]
+                ['tax_rules', 2],
             ]);
 
         $this->taxRateCollectionFactoryMock = $this->getMockBuilder(CollectionFactory::class)

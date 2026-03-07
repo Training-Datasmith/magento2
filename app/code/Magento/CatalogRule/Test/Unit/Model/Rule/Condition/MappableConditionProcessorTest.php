@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'any'
         );
@@ -160,14 +161,14 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'all'
         );
 
         $validResult = $this->getMockForCombinedCondition(
             [
-                $simpleCondition1
+                $simpleCondition1,
             ],
             'all'
         );
@@ -224,7 +225,7 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'all'
         );
@@ -318,7 +319,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'all'
         );
@@ -331,7 +332,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
@@ -339,28 +340,28 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $subCondition1,
-                $subCondition2
+                $subCondition2,
             ],
             'any'
         );
 
         $validSubCondition1 = $this->getMockForCombinedCondition(
             [
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'all'
         );
         $validSubCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
         $validResult = $this->getMockForCombinedCondition(
             [
                 $validSubCondition1,
-                $validSubCondition2
+                $validSubCondition2,
             ],
             'any'
         );
@@ -446,7 +447,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'any'
         );
@@ -459,7 +460,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
@@ -467,7 +468,7 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $subCondition1,
-                $subCondition2
+                $subCondition2,
             ],
             'all'
         );
@@ -475,13 +476,13 @@ class MappableConditionProcessorTest extends TestCase
         $validSubCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
         $validResult = $this->getMockForCombinedCondition(
             [
-                $validSubCondition2
+                $validSubCondition2,
             ],
             'all'
         );
@@ -547,7 +548,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
@@ -556,7 +557,7 @@ class MappableConditionProcessorTest extends TestCase
             [
                 $simpleCondition1,
                 $simpleCondition2,
-                $subCondition1
+                $subCondition1,
             ],
             'all'
         );
@@ -686,14 +687,14 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition2,
-                $simpleCondition3
+                $simpleCondition3,
             ],
             'any'
         );
         $subCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $subCondition1
+                $subCondition1,
             ],
             'all'
         );
@@ -711,21 +712,21 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition3 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition4,
-                $simpleCondition5
+                $simpleCondition5,
             ],
             'any'
         );
         $subCondition4 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition6,
-                $simpleCondition7
+                $simpleCondition7,
             ],
             'any'
         );
         $subCondition5 = $this->getMockForCombinedCondition(
             [
                 $subCondition3,
-                $subCondition4
+                $subCondition4,
             ],
             'all'
         );
@@ -733,20 +734,20 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $subCondition2,
-                $subCondition5
+                $subCondition5,
             ],
             'any'
         );
 
         $validSubCondition2 = $this->getMockForCombinedCondition(
             [
-                $simpleCondition1
+                $simpleCondition1,
             ],
             'all'
         );
         $validSubCondition4 = $this->getMockForCombinedCondition(
             [
-                $subCondition4
+                $subCondition4,
             ],
             'all'
         );
@@ -754,7 +755,7 @@ class MappableConditionProcessorTest extends TestCase
         $validResult = $this->getMockForCombinedCondition(
             [
                 $validSubCondition2,
-                $validSubCondition4
+                $validSubCondition4,
             ],
             'any'
         );
@@ -831,7 +832,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'any'
         );
@@ -844,7 +845,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
@@ -852,7 +853,7 @@ class MappableConditionProcessorTest extends TestCase
         $inputCondition = $this->getMockForCombinedCondition(
             [
                 $subCondition1,
-                $subCondition2
+                $subCondition2,
             ],
             'any'
         );
@@ -929,7 +930,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition1 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition1,
-                $simpleCondition2
+                $simpleCondition2,
             ],
             'any'
         );
@@ -942,7 +943,7 @@ class MappableConditionProcessorTest extends TestCase
         $subCondition2 = $this->getMockForCombinedCondition(
             [
                 $simpleCondition3,
-                $simpleCondition4
+                $simpleCondition4,
             ],
             'any'
         );
@@ -954,7 +955,7 @@ class MappableConditionProcessorTest extends TestCase
             [
                 $subCondition1,
                 $subCondition2,
-                $simpleCondition5
+                $simpleCondition5,
             ],
             'any'
         );
@@ -986,14 +987,14 @@ class MappableConditionProcessorTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('Undefined condition type "olo-lo" passed in.');
-        
+
         // This tests the instanceof logic at line 82 and 70 - if neither match, throw exception
         $invalidCondition = $this->createPartialMockWithReflection(
             AbstractCondition::class,
             ['getType']
         );
         $invalidCondition->method('getType')->willReturn('olo-lo');
-        
+
         $inputCondition = $this->getMockForCombinedCondition([$invalidCondition], 'any');
 
         $this->mappableConditionProcessor->rebuildConditionsTree($inputCondition);
@@ -1037,7 +1038,7 @@ class MappableConditionProcessorTest extends TestCase
     public function testValidateSimpleConditionWithEavAttribute()
     {
         $simpleCondition = $this->getMockForSimpleCondition('sku');
-        
+
         // Mock attribute with backend type (valid EAV attribute)
         $attributeMock = $this->createPartialMock(
             AbstractAttribute::class,
@@ -1060,10 +1061,10 @@ class MappableConditionProcessorTest extends TestCase
             ->willReturn($attributeMock);
 
         $inputCondition = $this->getMockForCombinedCondition([$simpleCondition], 'all');
-        
+
         // The condition should be valid (kept in validConditions)
         $result = $this->mappableConditionProcessor->rebuildConditionsTree($inputCondition);
-        
+
         // Should have 1 valid condition
         $this->assertCount(1, $result->getConditions());
     }
@@ -1076,7 +1077,7 @@ class MappableConditionProcessorTest extends TestCase
     public function testValidateSimpleConditionWithNonEavAttribute()
     {
         $simpleCondition = $this->getMockForSimpleCondition('non_existent_field');
-        
+
         // Mock attribute with null backend type (invalid/non-existent EAV attribute)
         $attributeMock = $this->createPartialMock(
             AbstractAttribute::class,
@@ -1099,10 +1100,10 @@ class MappableConditionProcessorTest extends TestCase
             ->willReturn($attributeMock);
 
         $inputCondition = $this->getMockForCombinedCondition([$simpleCondition], 'all');
-        
+
         // The condition should be invalid (removed from conditions)
         $result = $this->mappableConditionProcessor->rebuildConditionsTree($inputCondition);
-        
+
         // Should have 0 valid conditions
         $this->assertCount(0, $result->getConditions());
     }
@@ -1115,7 +1116,7 @@ class MappableConditionProcessorTest extends TestCase
     public function testValidateSimpleConditionWithCustomProcessor()
     {
         $simpleCondition = $this->getMockForSimpleCondition('custom_field');
-        
+
         // Has custom processor for this field
         $this->customConditionProcessorBuilderMock
             ->expects($this->once())
@@ -1129,10 +1130,10 @@ class MappableConditionProcessorTest extends TestCase
             ->method('getAttribute');
 
         $inputCondition = $this->getMockForCombinedCondition([$simpleCondition], 'all');
-        
+
         // The condition should be valid (kept in validConditions)
         $result = $this->mappableConditionProcessor->rebuildConditionsTree($inputCondition);
-        
+
         // Should have 1 valid condition
         $this->assertCount(1, $result->getConditions());
     }

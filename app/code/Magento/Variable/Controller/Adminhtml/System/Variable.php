@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Controller\Adminhtml\System;
 
 use Magento\Backend\App\Action;
@@ -17,7 +20,7 @@ abstract class Variable extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Variable::variable';
+    public const ADMIN_RESOURCE = 'Magento_Variable::variable';
 
     /**
      * Core registry

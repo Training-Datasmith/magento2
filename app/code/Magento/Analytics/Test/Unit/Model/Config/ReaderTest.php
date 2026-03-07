@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -76,10 +77,10 @@ class ReaderTest extends TestCase
     {
         $scope = 'store';
         $xmlReaderResult = [
-            'config' => ['node1' => ['node2' => 'node4']]
+            'config' => ['node1' => ['node2' => 'node4']],
         ];
         $dbReaderResult = [
-            'config' => ['node1' => ['node2' => 'node3']]
+            'config' => ['node1' => ['node2' => 'node3']],
         ];
         $mapperResult = ['node2' => ['node3', 'node4']];
 

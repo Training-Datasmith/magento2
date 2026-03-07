@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,6 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Variable\Model\Source\Variables;
 use Magento\Variable\Model\VariableFactory;
 use Magento\Widget\Model\ResourceModel\Widget as WidgetResourceModel;
-use Magento\Widget\Model\Widget;
 use Magento\Widget\Model\Widget as WidgetModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -123,8 +123,8 @@ class FilterTest extends TestCase
                 [
                     [
                         1 => $construction,
-                        2 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1" store_id ="1"'
-                    ]
+                        2 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1" store_id ="1"',
+                    ],
                 ]
             )
             ->willReturn(
@@ -137,7 +137,7 @@ class FilterTest extends TestCase
 
         $this->filter->widgetDirective([
             1 => $construction,
-            2 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1"'
+            2 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1"',
         ]);
     }
 
@@ -150,7 +150,7 @@ class FilterTest extends TestCase
         $result = $this->filter->widgetDirective(
             [
                 0 => $construction,
-                1 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1"'
+                1 => 'type="\Magento\Cms\Block\Widget\Page\Link" page_id="1"',
             ]
         );
 

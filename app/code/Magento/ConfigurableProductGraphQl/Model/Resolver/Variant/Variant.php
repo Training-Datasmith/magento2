@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProductGraphQl\Model\Resolver\Variant;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
@@ -24,7 +27,7 @@ class Variant implements ResolverInterface
                 array_merge(
                     $value['variant']['model']->getData(),
                     [
-                        'model' => $value['variant']['model']
+                        'model' => $value['variant']['model'],
                     ]
                 );
         } else {

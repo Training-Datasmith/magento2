@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Fixture for Customer List method.
  *
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -93,4 +94,3 @@ $customerRegistry->remove($customerAddress->getCustomerId());
 /** @var AddressRegistry $addressRegistry */
 $addressRegistry = $objectManager->get(AddressRegistry::class);
 $addressRegistry->remove($customerAddress->getId());
-

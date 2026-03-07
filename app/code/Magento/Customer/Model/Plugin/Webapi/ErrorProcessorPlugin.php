@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Customer\Model\Plugin\Webapi;
 
 use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\App\State;
+use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Webapi\ErrorProcessor;
 use Magento\Framework\Webapi\Exception as WebapiException;
-use Magento\Framework\Validator\Exception as ValidatorException;
 
 class ErrorProcessorPlugin
 {

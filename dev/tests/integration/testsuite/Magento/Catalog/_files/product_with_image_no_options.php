@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ $product->setStoreId(0)
             'position' => 1,
             'label' => 'Image Alt Text',
             'disabled' => 0,
-            'media_type' => 'image'
+            'media_type' => 'image',
         ],
     ]])
     ->save();

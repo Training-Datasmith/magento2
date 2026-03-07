@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Module\Test\Unit\Dir;
 use Magento\Framework\Module\Dir;
 use Magento\Framework\Module\Dir\ReverseResolver;
 use Magento\Framework\Module\ModuleListInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ReverseResolverTest extends TestCase
 {
@@ -77,7 +78,7 @@ class ReverseResolverTest extends TestCase
                 'app\\code\\Fixture\\ModuleOne\\etc\\config.xml',
                 'Fixture_ModuleOne',
             ],
-            'unknown module' => ['app/code/Unknown/Module', null]
+            'unknown module' => ['app/code/Unknown/Module', null],
         ];
     }
 }

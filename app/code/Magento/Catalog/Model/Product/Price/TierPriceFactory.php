@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -128,7 +130,7 @@ class TierPriceFactory implements ResetAfterRequestInterface
             'percentage_value' => $price->getPriceType() === TierPriceInterface::PRICE_TYPE_DISCOUNT
                 ? $price->getPrice()
                 : null,
-            'website_id' => $price->getWebsiteId()
+            'website_id' => $price->getWebsiteId(),
         ];
     }
 
@@ -159,7 +161,7 @@ class TierPriceFactory implements ResetAfterRequestInterface
         if (!isset($this->customerGroupsByCode[$code])) {
             $searchCriteria = $this->searchCriteriaBuilder->addFilters(
                 [
-                    $this->filterBuilder->setField('customer_group_code')->setValue($code)->create()
+                    $this->filterBuilder->setField('customer_group_code')->setValue($code)->create(),
                 ]
             );
             $items = $this->customerGroupRepository->getList($searchCriteria->create())->getItems();

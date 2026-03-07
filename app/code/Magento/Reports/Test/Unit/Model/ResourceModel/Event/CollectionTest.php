@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -128,7 +129,7 @@ class CollectionTest extends TestCase
     public function testAddStoreFilter($ignoreData, string $ignoreSql): void
     {
         $typeId = 1;
-        $subjectId =2;
+        $subjectId = 2;
         $subtype = 3;
         $limit = 0;
         $stores = [1, 2];
@@ -172,12 +173,12 @@ class CollectionTest extends TestCase
         return [
             [
                 'ignoreData' => 1,
-                'ignoreSql' => 'object_id <> ?'
+                'ignoreSql' => 'object_id <> ?',
             ],
             [
                 'ignoreData' => [1],
-                'ignoreSql' => 'object_id NOT IN(?)'
-            ]
+                'ignoreSql' => 'object_id NOT IN(?)',
+            ],
         ];
     }
 }

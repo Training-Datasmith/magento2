@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Setup\CategorySetup;
+use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Api\AttributeRepositoryInterface;
 
 Bootstrap::getInstance()->reinitialize();
 
@@ -33,7 +35,6 @@ foreach ($attributesData as $attributeData) {
     $attribute = $eavConfig->getAttribute('catalog_product', $attributeData['code']);
 
     $eavConfig->clear();
-
 
     if (!$attribute->getId()) {
 
@@ -69,23 +70,23 @@ foreach ($attributesData as $attributeData) {
                 'option' => [
                     'value' => [
                         'option_0' => [
-                            $attributeData['label'] . ' Option 1'
+                            $attributeData['label'] . ' Option 1',
                         ],
                         'option_1' => [
-                            $attributeData['label'] . ' Option 2'
+                            $attributeData['label'] . ' Option 2',
                         ],
                         'option_2' => [
-                            $attributeData['label'] . ' Option 3'
+                            $attributeData['label'] . ' Option 3',
                         ],
                         'option_3' => [
-                            $attributeData['label'] . ' Option 4'
-                        ]
+                            $attributeData['label'] . ' Option 4',
+                        ],
                     ],
                     'order' => [
                         'option_0' => 1,
                         'option_1' => 2,
                         'option_2' => 3,
-                        'option_3' => 4
+                        'option_3' => 4,
                     ],
                 ],
             ]

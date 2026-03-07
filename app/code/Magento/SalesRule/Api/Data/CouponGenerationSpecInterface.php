@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api\Data;
 
 /**
@@ -13,9 +16,9 @@ namespace Magento\SalesRule\Api\Data;
  */
 interface CouponGenerationSpecInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const COUPON_FORMAT_ALPHANUMERIC = 'alphanum';
-    const COUPON_FORMAT_ALPHABETICAL = 'alpha';
-    const COUPON_FORMAT_NUMERIC = 'num';
+    public const COUPON_FORMAT_ALPHANUMERIC = 'alphanum';
+    public const COUPON_FORMAT_ALPHABETICAL = 'alpha';
+    public const COUPON_FORMAT_NUMERIC = 'num';
 
     /**
      * Get the id of the rule associated with the coupon

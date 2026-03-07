@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class ValidateConfirmRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'order_id'
+                        'field' => 'order_id',
                     ]
                 )
             );
@@ -49,7 +50,7 @@ class ValidateConfirmRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'confirmation_key'
+                        'field' => 'confirmation_key',
                     ]
                 )
             );

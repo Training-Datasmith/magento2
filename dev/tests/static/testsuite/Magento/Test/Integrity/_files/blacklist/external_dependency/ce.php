@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Black list for the @see \Magento\Test\Integrity\DependencyTest::testExternalDependencies()
  *

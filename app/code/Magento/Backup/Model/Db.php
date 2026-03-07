@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Model;
 
 use Magento\Backup\Helper\Data as Helper;
@@ -24,7 +27,7 @@ class Db implements \Magento\Framework\Backup\Db\BackupDbInterface
      * Buffer length for multi rows
      * default 100 Kb
      */
-    const BUFFER_LENGTH = 102400;
+    public const BUFFER_LENGTH = 102400;
 
     /**
      * Backup resource model

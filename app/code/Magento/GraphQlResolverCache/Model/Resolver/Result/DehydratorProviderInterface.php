@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,5 +22,5 @@ interface DehydratorProviderInterface
      *
      * @return DehydratorInterface|null
      */
-    public function getDehydratorForResolver(ResolverInterface $resolver) : ?DehydratorInterface;
+    public function getDehydratorForResolver(ResolverInterface $resolver): ?DehydratorInterface;
 }

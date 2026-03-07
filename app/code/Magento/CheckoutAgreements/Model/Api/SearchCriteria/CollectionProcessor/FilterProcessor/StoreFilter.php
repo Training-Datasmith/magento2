@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor;
 
+use Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Collection;
+use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\Api\Filter;
-use Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Collection;
 
 /**
  * Custom store filter to collection

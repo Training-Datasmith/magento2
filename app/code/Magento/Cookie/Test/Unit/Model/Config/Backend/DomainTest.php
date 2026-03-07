@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class DomainTest extends TestCase
                 'addCommitCallback',
                 'rollBack',
                 'getIdFieldName',
-                'save'
+                'save',
             ]
         );
 

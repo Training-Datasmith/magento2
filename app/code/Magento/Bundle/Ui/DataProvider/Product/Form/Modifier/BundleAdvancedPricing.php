@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
@@ -14,11 +17,11 @@ use Magento\Framework\Stdlib\ArrayManager;
  */
 class BundleAdvancedPricing extends AbstractModifier
 {
-    const CODE_PRICE_TYPE = 'price_type';
-    const CODE_MSRP = 'msrp';
-    const CODE_MSRP_DISPLAY_ACTUAL_PRICE_TYPE = 'msrp_display_actual_price_type';
-    const CODE_ADVANCED_PRICING = 'advanced-pricing';
-    const CODE_RECORD = 'record';
+    public const CODE_PRICE_TYPE = 'price_type';
+    public const CODE_MSRP = 'msrp';
+    public const CODE_MSRP_DISPLAY_ACTUAL_PRICE_TYPE = 'msrp_display_actual_price_type';
+    public const CODE_ADVANCED_PRICING = 'advanced-pricing';
+    public const CODE_RECORD = 'record';
 
     /**
      * @var ArrayManager
@@ -49,7 +52,7 @@ class BundleAdvancedPricing extends AbstractModifier
             if (isset($parentNode['container_' . ProductAttributeInterface::CODE_SPECIAL_PRICE])) {
                 $currentNode = &$parentNode['container_' . ProductAttributeInterface::CODE_SPECIAL_PRICE]['children'];
                 $currentNode[ProductAttributeInterface::CODE_SPECIAL_PRICE]['arguments']['data']['config']['addbefore']
-                    = "%";
+                    = '%';
             }
             $parentNodeChildren = &$parentNode[ProductAttributeInterface::CODE_TIER_PRICE]['children'];
             if (isset($parentNodeChildren[self::CODE_RECORD]['children'][ProductAttributeInterface::CODE_PRICE])) {
@@ -90,7 +93,7 @@ class BundleAdvancedPricing extends AbstractModifier
                 'imports' => [
                     'disabled' => 'ns = ${ $.ns }, index = ' . static::CODE_PRICE_TYPE . ':checked',
                     '__disableTmpl' => ['disabled' => false],
-                ]
+                ],
             ]
         );
 
@@ -106,7 +109,7 @@ class BundleAdvancedPricing extends AbstractModifier
                 'imports' => [
                     'disabled' => 'ns = ${ $.ns }, index = ' . static::CODE_PRICE_TYPE . ':checked',
                     '__disableTmpl' => ['disabled' => false],
-                ]
+                ],
             ]
         );
 

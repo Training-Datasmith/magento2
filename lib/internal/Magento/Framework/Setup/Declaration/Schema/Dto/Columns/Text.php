@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Columns;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -100,7 +103,7 @@ class Text extends Column implements
             'nullable' => $this->isNullable(),
             'comment' => $this->getComment(),
             'collation' => $this->getCollation(),
-            'charset' => $this->getCharset()
+            'charset' => $this->getCharset(),
         ];
     }
 }

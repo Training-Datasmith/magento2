@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class Scheduler
                     'topic_name' => self::TOPIC_NAME,
                     'serialized_data' => $this->serializer->serialize(['website_id' => $websiteId]),
                     'status' => OperationInterface::STATUS_TYPE_OPEN,
-                ]
+                ],
             ]
         );
         $bulkDescription = __('Update Product Url Rewrites values');

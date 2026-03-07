@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -32,8 +33,8 @@ $optionsSet = [
         'price' => 20.0,
         'price_type' => 'percent',
         'sku' => 'sku2',
-        'max_characters' => 100
-    ]
+        'max_characters' => 100,
+    ],
 ];
 
 /** @var ProductRepositoryInterface $productRepository */

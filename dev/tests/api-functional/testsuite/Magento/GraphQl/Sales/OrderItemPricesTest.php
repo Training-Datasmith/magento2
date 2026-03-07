@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class OrderItemPricesTest extends GraphQlAbstract
                 'store_labels' => [1 => self::DISCOUNT_LABEL],
                 'simple_action' => SalesRule::BY_PERCENT_ACTION,
                 'discount_amount' => self::DISCOUNT_PERCENTAGE,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(ProductTaxClassFixture::class, as: 'product_tax_class'),
@@ -80,7 +81,7 @@ class OrderItemPricesTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -89,7 +90,7 @@ class OrderItemPricesTest extends GraphQlAbstract
             [
                 'price' => self::PRODUCT_PRICE,
                 'special_price' => self::PRODUCT_SPECIAL_PRICE,
-                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
             ],
             'product'
         ),
@@ -147,7 +148,7 @@ class OrderItemPricesTest extends GraphQlAbstract
                 'store_labels' => [1 => self::DISCOUNT_LABEL],
                 'simple_action' => SalesRule::BY_PERCENT_ACTION,
                 'discount_amount' => self::DISCOUNT_PERCENTAGE,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(ProductFixture::class, ['price' => self::PRODUCT_PRICE], 'product'),
@@ -270,44 +271,44 @@ QUERY;
                     0 => [
                         'prices' => [
                             'price' => [
-                                'value' => $productPrice
+                                'value' => $productPrice,
                             ],
                             'price_including_tax' => [
-                                'value' => $priceIncludingTax
+                                'value' => $priceIncludingTax,
                             ],
                             'row_total' => [
-                                'value' => $productPrice * self::TOTAL_QTY
+                                'value' => $productPrice * self::TOTAL_QTY,
                             ],
                             'row_total_including_tax' => [
-                                'value' => $rowTotalIncludingTax
+                                'value' => $rowTotalIncludingTax,
                             ],
                             'discounts' => [
                                 0 => [
                                     'amount' => [
-                                        'value' => $discount
+                                        'value' => $discount,
                                     ],
-                                    'label' => self::DISCOUNT_LABEL
-                                ]
+                                    'label' => self::DISCOUNT_LABEL,
+                                ],
                             ],
                             'total_item_discount' => [
-                                'value' => $discount
+                                'value' => $discount,
                             ],
                             'original_price' => [
-                                'value' => self::PRODUCT_PRICE
+                                'value' => self::PRODUCT_PRICE,
                             ],
                             'original_price_including_tax' => [
-                                'value' => $originalPriceIncludingTax
+                                'value' => $originalPriceIncludingTax,
                             ],
                             'original_row_total' => [
-                                'value' => self::PRODUCT_PRICE * self::TOTAL_QTY
+                                'value' => self::PRODUCT_PRICE * self::TOTAL_QTY,
                             ],
                             'original_row_total_including_tax' => [
-                                'value' => $originalRowTotalInclTax
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'value' => $originalRowTotalInclTax,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

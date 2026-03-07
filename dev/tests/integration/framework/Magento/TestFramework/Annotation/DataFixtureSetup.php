@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -192,7 +193,7 @@ class DataFixtureSetup
     {
         $fixtureName = $matches[1];
         $attribute = isset($matches[2]) ? ltrim($matches[2], '.') : null;
-        $reference = "\${$fixtureName}" . ($attribute ? ".{$attribute}" : '') . "\$";
+        $reference = "\${$fixtureName}" . ($attribute ? ".{$attribute}" : '') . '$';
         $fixtureData = $this->getFixtureData($fixtureName, $reference);
         $value = $this->extractValue($fixtureData, $attribute);
         return is_scalar($value) ? (string)$value : $value;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ShortcutTest extends TestCase
                 'paymentData' => $this->paymentHelperMock,
                 'mathRandom' => $this->randomMock,
                 'shortcutValidator' => $this->paypalShortcutHelperMock,
-                'config' => $configFactoryMock
+                'config' => $configFactoryMock,
             ]
         );
     }

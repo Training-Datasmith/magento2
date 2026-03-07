@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model;
 
 /**
@@ -13,27 +16,17 @@ namespace Magento\AdminNotification\Model;
  */
 class NotificationService
 {
-    /**
-     * @var \Magento\AdminNotification\Model\InboxFactory $notificationFactory
-     */
-    protected $_notificationFactory;
-
-    /**
-     * @param \Magento\AdminNotification\Model\InboxFactory $notificationFactory
-     */
-    public function __construct(\Magento\AdminNotification\Model\InboxFactory $notificationFactory)
+    public function __construct(protected \Magento\AdminNotification\Model\InboxFactory $_notificationFactory)
     {
-        $this->_notificationFactory = $notificationFactory;
     }
 
     /**
      * Mark notification as read
      *
      * @param int $notificationId
-     * @return void
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function markAsRead($notificationId)
+    public function markAsRead($notificationId): void
     {
         $notification = $this->_notificationFactory->create();
         $notification->load($notificationId);

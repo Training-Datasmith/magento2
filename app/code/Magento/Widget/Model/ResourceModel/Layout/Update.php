@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -126,7 +128,7 @@ class Update extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     'store_id' => $data['store_id'],
                     'theme_id' => $data['theme_id'],
                     'layout_update_id' => $object->getId(),
-                    'is_temporary' => (int)$object->getIsTemporary()
+                    'is_temporary' => (int)$object->getIsTemporary(),
                 ]
             );
         }

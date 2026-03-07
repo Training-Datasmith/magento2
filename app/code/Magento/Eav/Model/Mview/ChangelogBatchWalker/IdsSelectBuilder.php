@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -53,7 +55,7 @@ class IdsSelectBuilder implements IdsSelectBuilderInterface
         $columns = [
             $changelog->getColumnName(),
             'attribute_ids' => new Expression('GROUP_CONCAT(attribute_id)'),
-            'store_id'
+            'store_id',
         ];
 
         return $connection->select()

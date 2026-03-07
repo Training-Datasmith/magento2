@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Value;
-use Magento\Theme\Api\Data\DesignConfigInterface;
-use Magento\Framework\DB\TransactionFactory;
 use Magento\Framework\App\Config\ValueInterface;
+use Magento\Framework\DB\TransactionFactory;
+use Magento\Theme\Api\Data\DesignConfigInterface;
 use Magento\Theme\Model\Data\Design\ConfigFactory;
 use Magento\Theme\Model\Design\BackendModelFactory;
 
@@ -116,7 +119,7 @@ class Storage
                 'value' => $fieldData->getValue(),
                 'scope' => $designConfig->getScope(),
                 'scopeId' => $designConfig->getScopeId(),
-                'config' => $fieldData->getFieldConfig()
+                'config' => $fieldData->getFieldConfig(),
             ]);
 
             if ($fieldData->getValue() !== null
@@ -153,7 +156,7 @@ class Storage
                 'value' => $fieldData->getValue(),
                 'scope' => $designConfig->getScope(),
                 'scopeId' => $designConfig->getScopeId(),
-                'config' => $fieldData->getFieldConfig()
+                'config' => $fieldData->getFieldConfig(),
             ]);
             if (!$backendModel->isObjectNew()) {
                 $deleteTransaction->addObject($backendModel);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -8,16 +9,17 @@ declare(strict_types=1);
 /**
  * Custom import CSV file field for shipping table rates
  */
+
 namespace Magento\OfflineShipping\Test\Unit\Block\Adminhtml\Form\Field;
 
 use Magento\Framework\Data\Form;
 use Magento\Framework\Escaper;
+use Magento\Framework\Math\Random;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\OfflineShipping\Block\Adminhtml\Form\Field\Import;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
 
 class ImportTest extends TestCase
 {
@@ -48,7 +50,7 @@ class ImportTest extends TestCase
             [
                 'data' => $testData,
                 '_escaper' => $testHelper->getObject(Escaper::class),
-                'random' => $randomMock
+                'random' => $randomMock,
             ]
         );
         $this->_object->setForm($this->_formMock);

@@ -1,15 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe.
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Account;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Customer\Model\Form;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Customer\Model\Context;
-use Magento\Framework\App\Http\Context as HttpContext;
 
 /**
  * @api

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\PageCache;
 
-use Magento\Framework\App\State as AppState;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\State as AppState;
 use Magento\Framework\Stdlib\CookieDisablerInterface;
 
 /**
@@ -194,7 +197,7 @@ class Kernel
             'content' => $response->getContent(),
             'status_code' => $response->getStatusCode(),
             'headers' => $response->getHeaders()->toArray(),
-            'context' => $this->context->toArray()
+            'context' => $this->context->toArray(),
         ];
     }
 
@@ -209,13 +212,13 @@ class Kernel
         $context = $this->contextFactory->create(
             [
                 'data' => $responseData['context']['data'],
-                'default' => $responseData['context']['default']
+                'default' => $responseData['context']['default'],
             ]
         );
 
         $response = $this->httpFactory->create(
             [
-                'context' => $context
+                'context' => $context,
             ]
         );
         $response->setStatusCode($responseData['status_code']);

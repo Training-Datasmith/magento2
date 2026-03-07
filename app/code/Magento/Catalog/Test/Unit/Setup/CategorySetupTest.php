@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +12,11 @@ use PHPUnit\Framework\TestCase;
 
 class CategorySetupTest extends TestCase
 {
-
     public function testGetDefaultEntitiesContainAllAttributes()
     {
         // Test the expected structure of default entities without instantiating the object
         // This validates that the CategorySetup class has the expected attribute definitions
-        
+
         $expectedCategoryAttributes = [
             'name',
             'is_active',
@@ -97,11 +97,11 @@ class CategorySetupTest extends TestCase
         // Test that the expected attributes are defined
         $this->assertIsArray($expectedCategoryAttributes);
         $this->assertIsArray($expectedProductAttributes);
-        
+
         // Test that we have the expected number of attributes
         $this->assertCount(28, $expectedCategoryAttributes);
         $this->assertCount(43, $expectedProductAttributes);
-        
+
         // Test that specific important attributes are present
         $this->assertContains('name', $expectedCategoryAttributes);
         $this->assertContains('is_active', $expectedCategoryAttributes);

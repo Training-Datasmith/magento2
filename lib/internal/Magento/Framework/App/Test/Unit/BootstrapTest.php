@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -185,7 +186,7 @@ class BootstrapTest extends TestCase
         $this->assertSame($this->objectManager, $bootstrap->getObjectManager());
     }
 
-        /**
+    /**
      */
     #[DataProvider('isDeveloperModeDataProvider')]
     public function testIsDeveloperMode($modeFromEnvironment, $modeFromDeployment, $isDeveloper)
@@ -211,7 +212,7 @@ class BootstrapTest extends TestCase
             [State::MODE_DEVELOPER, State::MODE_PRODUCTION, true],
             [State::MODE_PRODUCTION, State::MODE_DEVELOPER, false],
             [null, State::MODE_DEVELOPER, true],
-            [null, State::MODE_PRODUCTION, false]
+            [null, State::MODE_PRODUCTION, false],
         ];
     }
 
@@ -256,7 +257,7 @@ class BootstrapTest extends TestCase
         $this->runAndRestoreErrorHandler($this->bootstrapMock, $this->application);
     }
 
-        /**
+    /**
      */
     #[DataProvider('assertMaintenanceDataProvider')]
     public function testAssertMaintenance($isOn, $isExpected)
@@ -277,11 +278,11 @@ class BootstrapTest extends TestCase
     {
         return [
             [true, false],
-            [false, true]
+            [false, true],
         ];
     }
 
-        /**
+    /**
      */
     #[DataProvider('assertInstalledDataProvider')]
     public function testAssertInstalled($isInstalled, $isExpected)

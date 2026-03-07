@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\ResourceModel\Address\Relation;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class RelationTest extends TestCase
 {
@@ -38,7 +39,7 @@ class RelationTest extends TestCase
         $this->relation = (new ObjectManagerHelper($this))->getObject(
             Relation::class,
             [
-                'customerFactory' => $this->customerFactoryMock
+                'customerFactory' => $this->customerFactoryMock,
             ]
         );
     }
@@ -63,7 +64,7 @@ class RelationTest extends TestCase
                 'validateBeforeSave',
                 'beforeSave',
                 'afterSave',
-                'isSaveAllowed'
+                'isSaveAllowed',
             ]
         );
         $customerModel = $this->createPartialMockWithReflection(
@@ -77,7 +78,7 @@ class RelationTest extends TestCase
                 'getResource',
                 'getId',
                 'getDefaultShippingAddress',
-                'getDefaultBillingAddress'
+                'getDefaultBillingAddress',
             ]
         );
         $customerResource = $this->createMock(

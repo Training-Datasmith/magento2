@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -339,13 +340,13 @@ class RateRepositoryTest extends TestCase
             'entity_already_exists' => [
                 new AlreadyExistsException(__('Entity already exists')),
                 AlreadyExistsException::class,
-                'Entity already exists'
+                'Entity already exists',
             ],
             'cannot_save_title' => [
                 new LocalizedException(__('Cannot save titles')),
                 LocalizedException::class,
-                'Cannot save titles'
-            ]
+                'Cannot save titles',
+            ],
         ];
     }
 

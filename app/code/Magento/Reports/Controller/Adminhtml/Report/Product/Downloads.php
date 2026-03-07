@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class Downloads extends \Magento\Reports\Controller\Adminhtml\Report\Product imp
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::downloads';
+    public const ADMIN_RESOURCE = 'Magento_Reports::downloads';
 
     /**
      * Downloads action

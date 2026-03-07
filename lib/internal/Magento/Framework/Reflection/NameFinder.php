@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -44,7 +46,7 @@ class NameFinder
      */
     public function getFieldDescriptionFromGetterDescription($shortDescription)
     {
-        return ucfirst(substr(strstr($shortDescription, " "), 1));
+        return ucfirst(substr(strstr($shortDescription, ' '), 1));
     }
 
     /**

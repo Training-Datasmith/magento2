@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class UploadTest extends TestCase
         $this->request = $this->createMock(RequestInterface::class);
         $this->response = $this->createMock(ResponseInterface::class);
         $this->fileHelper = $this->createPartialMock(File::class, [
-            'uploadFromTmp'
+            'uploadFromTmp',
         ]);
         $this->context->method('getRequest')->willReturn($this->request);
         $this->context->method('getResultFactory')->willReturn($this->resultFactory);
@@ -106,7 +107,7 @@ class UploadTest extends TestCase
                 'sample' => $this->sample,
                 'fileHelper' => $this->fileHelper,
                 'uploaderFactory' => $this->uploaderFactory,
-                'storageDatabase' => $this->storageDatabase
+                'storageDatabase' => $this->storageDatabase,
             ]
         );
     }
@@ -116,7 +117,7 @@ class UploadTest extends TestCase
         $data = [
             'tmp_name' => 'tmp_name',
             'path' => 'path',
-            'file' => 'file'
+            'file' => 'file',
         ];
         $uploader = $this->createMock(Uploader::class);
         $resultJson = $this->createPartialMock(Json::class, ['setData']);

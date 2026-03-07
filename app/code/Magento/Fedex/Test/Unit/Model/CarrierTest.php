@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -19,6 +20,7 @@ use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Fedex\Model\Carrier;
+use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
@@ -27,6 +29,7 @@ use Magento\Framework\HTTP\Client\CurlFactory;
 use Magento\Framework\HTTP\ClientInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\Xml\Security;
@@ -48,13 +51,10 @@ use Magento\Shipping\Model\Tracking\Result\StatusFactory;
 use Magento\Shipping\Model\Tracking\ResultFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\CacheInterface;
 
 /**
  * CarrierTest contains units test for Fedex carrier methods
@@ -271,8 +271,8 @@ class CarrierTest extends TestCase
                 'name' => '',
                 'weight' => '',
                 'product_id' => '',
-                'order_item_id' => ''
-            ]
+                'order_item_id' => '',
+            ],
         ];
         $packages = [
             1 => [
@@ -287,10 +287,10 @@ class CarrierTest extends TestCase
                     'dimension_units' => 'INCH',
                     'content_type' => '',
                     'content_type_other' => '',
-                    'delivery_confirmation' => 'NO_SIGNATURE_REQUIRED'
+                    'delivery_confirmation' => 'NO_SIGNATURE_REQUIRED',
                 ],
-                'items' => $items
-            ]
+                'items' => $items,
+            ],
         ];
         $storeId = 1;
         $phoneNumber = '1234567890';
@@ -401,7 +401,7 @@ class CarrierTest extends TestCase
             'carriers/fedex/secret_key' => 'TestSecretKey',
             'carriers/fedex/enabled_tracking_api' => 0,
             'carriers/fedex/rest_sandbox_webservices_url' => 'https://rest.sandbox.url/',
-            'carriers/fedex/rest_production_webservices_url' => 'https://rest.production.url/'
+            'carriers/fedex/rest_production_webservices_url' => 'https://rest.production.url/',
         ];
 
         return $pathMap[$path] ?? null;
@@ -425,7 +425,7 @@ class CarrierTest extends TestCase
             'carriers/fedex/tracking_api_key' => 'TestTrackingApiKey',
             'carriers/fedex/tracking_api_secret_key' => 'TestTrackingSecretKey',
             'carriers/fedex/rest_sandbox_webservices_url' => 'https://rest.sandbox.url/',
-            'carriers/fedex/rest_production_webservices_url' => 'https://rest.production.url/'
+            'carriers/fedex/rest_production_webservices_url' => 'https://rest.production.url/',
         ];
 
         return $pathMap[$path] ?? null;
@@ -464,8 +464,8 @@ class CarrierTest extends TestCase
                         'accountNumber' => '123456789',
                         'requestedShipment' =>
                             ['rateRequestTypes' =>
-                                ['LIST', 'ACCOUNT']
-                            ]
+                                ['LIST', 'ACCOUNT'],
+                            ],
                     ]
                 ) .'CollectRateString' . $amount
             );
@@ -480,7 +480,7 @@ class CarrierTest extends TestCase
                 [
                     ['USD', 1],
                     ['EUR', 0.75],
-                    ['UNKNOWN', false]
+                    ['UNKNOWN', false],
                 ]
             );
 
@@ -594,12 +594,12 @@ class CarrierTest extends TestCase
             [
                 [
                     'client_id' => 'testClientId',
-                    'client_secret' => 'testClientSecret'
+                    'client_secret' => 'testClientSecret',
                 ],
                 ['client_id', 'client_secret'],
                 [
                     'client_id' => '****',
-                    'client_secret' => '****'
+                    'client_secret' => '****',
                 ],
             ],
         ];
@@ -617,10 +617,10 @@ class CarrierTest extends TestCase
             'trackingInfo' => [
                 [
                     'trackingNumberInfo' => [
-                        'trackingNumber'=> $tracking
-                    ]
-                ]
-            ]
+                        'trackingNumber' => $tracking,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -912,9 +912,9 @@ class CarrierTest extends TestCase
     {
         $accessTokenResponse = [
             'access_token' => 'TestAccessToken',
-            'token_type'=>'bearer',
+            'token_type' => 'bearer',
             'expires_in' => 3600,
-            'scope'=>'CXS'
+            'scope' => 'CXS',
         ];
 
         $this->curlFactory->expects($this->any())->method('create')->willReturn($this->curlClient);
@@ -1069,7 +1069,7 @@ class CarrierTest extends TestCase
         $expiresAt = time() + 3600;
         $cachedData = json_encode([
             'access_token' => $accessToken,
-            'expires_at' => $expiresAt
+            'expires_at' => $expiresAt,
         ]);
         $this->scope->expects($this->any())
             ->method('getValue')
@@ -1093,13 +1093,13 @@ class CarrierTest extends TestCase
                                 'totalNetCharge' => '28.75',
                                 'currency' => 'USD',
                                 'ratedPackages' => [
-                                    ['packageRateDetail' => ['rateType' => 'RATED_ACCOUNT_PACKAGE']]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    ['packageRateDetail' => ['rateType' => 'RATED_ACCOUNT_PACKAGE']],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $this->serializer->expects($this->once())
             ->method('serialize')
@@ -1144,7 +1144,7 @@ class CarrierTest extends TestCase
         $cacheType = 'fedex_api';
         $tokenResponse = [
             'access_token' => $accessToken,
-            'expires_in' => $expiresIn
+            'expires_in' => $expiresIn,
         ];
         $trackingNumber = '123456789012';
         $this->scope->expects($this->any())
@@ -1293,7 +1293,7 @@ class CarrierTest extends TestCase
                 '2024-09-19T02:06:35+03:00',
                 '2024-09-21',
                 '18:31:00',
-                true
+                true,
             ],
         ];
     }
@@ -1433,14 +1433,14 @@ class CarrierTest extends TestCase
                         'pieceResponses' => [
                             0 => [
                                 'packageDocuments' => [
-                                    0 => ['encodedLabel' => 'label']
+                                    0 => ['encodedLabel' => 'label'],
                                 ],
-                                'trackingNumber' => '123'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'trackingNumber' => '123',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -1464,7 +1464,7 @@ class CarrierTest extends TestCase
             'getReferenceData',
             'getPackageItems',
             'getOrderShipment',
-            'getPackageParams'
+            'getPackageParams',
         ]);
     }
 
@@ -1483,13 +1483,13 @@ class CarrierTest extends TestCase
                                     'trackingNumberInfo' => ['trackingNumber' => '123456789012'],
                                     'statusDetail' => ['description' => 'Delivered'],
                                     'dateAndTimes' => [
-                                        ['type' => 'ACTUAL_DELIVERY', 'dateTime' => '2025-05-20T10:00:00Z']
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        ['type' => 'ACTUAL_DELIVERY', 'dateTime' => '2025-05-20T10:00:00Z'],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ];
     }
 }

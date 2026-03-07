@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Ui\Component\Listing\Column;
 
+use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
  * Class CustomerGroup

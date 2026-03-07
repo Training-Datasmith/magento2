@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -708,7 +710,7 @@ class AbstractAddress extends AbstractExtensibleModel implements AddressModelInt
      */
     public function unsRegion()
     {
-        return $this->unsetData("region");
+        return $this->unsetData('region');
     }
 
     /**

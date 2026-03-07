@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Payment\Model\Method\ConfigInterface;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class AbstractConfig
@@ -19,17 +22,17 @@ abstract class AbstractConfig implements ConfigInterface
     /**#@+
      * Payment actions
      */
-    const PAYMENT_ACTION_SALE = 'Sale';
+    public const PAYMENT_ACTION_SALE = 'Sale';
 
-    const PAYMENT_ACTION_AUTH = 'Authorization';
+    public const PAYMENT_ACTION_AUTH = 'Authorization';
 
-    const PAYMENT_ACTION_ORDER = 'Order';
+    public const PAYMENT_ACTION_ORDER = 'Order';
     /**#@-*/
 
     /**
      * PayPal Website Payments Pro - Express Checkout
      */
-    const METHOD_WPP_EXPRESS = 'paypal_express';
+    public const METHOD_WPP_EXPRESS = 'paypal_express';
 
     /**
      * Current payment method code
@@ -144,7 +147,7 @@ abstract class AbstractConfig implements ConfigInterface
             case 'getDebugReplacePrivateDataKeys':
                 return $this->methodInstance->getDebugReplacePrivateDataKeys();
             default:
-                $underscored = strtolower(preg_replace('/(.)([A-Z])/', "$1_$2", $key));
+                $underscored = strtolower(preg_replace('/(.)([A-Z])/', '$1_$2', $key));
                 $path = $this->_getSpecificConfigPath($underscored);
                 if ($path !== null) {
                     $value = $this->_scopeConfig->getValue(

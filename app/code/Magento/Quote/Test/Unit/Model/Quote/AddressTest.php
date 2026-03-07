@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,14 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\Region;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\App\Config;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\CustomAttributeListInterface;
@@ -35,6 +35,7 @@ use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -199,7 +200,7 @@ class AddressTest extends TestCase
                 '_rateCollectionFactory' => $this->rateCollectionFactory,
                 '_rateCollector' => $this->rateCollector,
                 '_regionFactory' => $this->regionFactory,
-                '_addressRateFactory' => $this->addressRateFactory
+                '_addressRateFactory' => $this->addressRateFactory,
             ]
         );
         $this->quote = $this->createMock(Quote::class);
@@ -239,36 +240,36 @@ class AddressTest extends TestCase
                     ['sales/minimum_order/active', ScopeInterface::SCOPE_STORE, 1, true],
                     ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, 1, 20],
                     ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, 1, true],
-                    ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, 1, true]
+                    ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, 1, true],
                 ],
                 'address' => [
-                    'setAddressType' => 'billing'
+                    'setAddressType' => 'billing',
                 ],
                 'quote' => [
                     'getStoreId' => 1,
-                    'getIsVirtual' => false
+                    'getIsVirtual' => false,
                 ],
-                'result' => true
+                'result' => true,
             ],
             'With Shipping Discount' => [
                 'scopeConfigValues' => [
                     ['sales/minimum_order/active', ScopeInterface::SCOPE_STORE, 1, true],
                     ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, 1, 2],
                     ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, 1, true],
-                    ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, 1, true]
+                    ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, 1, true],
                 ],
                 'address' => [
                     'setBaseSubtotal' => 25.00,
                     'setBaseDiscountAmount' => -27.60,
                     'setBaseShippingDiscountAmount' => 4.6,
-                    'setAddressType' => 'shipping'
+                    'setAddressType' => 'shipping',
                 ],
                 'quote' => [
                     'getStoreId' => 1,
-                    'getIsVirtual' => false
+                    'getIsVirtual' => false,
                 ],
-                'result' => true
-            ]
+                'result' => true,
+            ],
         ];
     }
 
@@ -306,7 +307,7 @@ class AddressTest extends TestCase
             ['sales/minimum_order/active', ScopeInterface::SCOPE_STORE, $storeId, true],
             ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, $storeId, 20],
             ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, $storeId, false],
-            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true]
+            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true],
         ];
 
         $this->quote->expects($this->once())
@@ -333,7 +334,7 @@ class AddressTest extends TestCase
             ['sales/minimum_order/active', ScopeInterface::SCOPE_STORE, $storeId, true],
             ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, $storeId, 20],
             ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, $storeId, true],
-            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true]
+            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true],
         ];
 
         $this->quote->expects($this->once())
@@ -474,7 +475,7 @@ class AddressTest extends TestCase
 
         $this->storeManager->method('getStore')
             ->willReturnCallback(
-                function ($arg) use ($storeId,) {
+                function ($arg) use ($storeId) {
                     if ($arg === $storeId || is_null($arg)) {
                         return $this->store;
                     }

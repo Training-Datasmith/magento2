@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ declare(strict_types=1);
 namespace Magento\MediaContentApi\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\MediaContentApi\Api\Data\ContentAssetLinkExtensionInterface;
 
 /**
  * Data interface representing the identificator of content. I.e. short description field of product entity with id 42

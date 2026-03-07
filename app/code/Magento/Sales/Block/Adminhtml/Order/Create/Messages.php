@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create;
 
 /**
@@ -13,7 +16,6 @@ namespace Magento\Sales\Block\Adminhtml\Order\Create;
  */
 class Messages extends \Magento\Framework\View\Element\Messages
 {
-
     private const ITEMS_GRID = 'items_grid';
 
     /**

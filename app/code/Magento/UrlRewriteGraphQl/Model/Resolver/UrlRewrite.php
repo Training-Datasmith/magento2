@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\UrlRewriteGraphQl\Model\Resolver;
 
+use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\EntityManager\TypeResolver;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\Model\AbstractModel;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteDTO;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\EntityManager\TypeResolver;
-use Magento\Framework\EntityManager\MetadataPool;
 
 /**
  * Returns URL rewrites list for the specified product
@@ -87,7 +88,7 @@ class UrlRewrite implements ResolverInterface
         $data = [
             UrlRewriteDTO::ENTITY_TYPE => $entityType,
             UrlRewriteDTO::ENTITY_ID => $entityId,
-            UrlRewriteDTO::STORE_ID => $storeId
+            UrlRewriteDTO::STORE_ID => $storeId,
         ];
 
         $urlRewriteCollection = $this->urlFinder->findAllByData($data);
@@ -102,7 +103,7 @@ class UrlRewrite implements ResolverInterface
 
             $urlRewrites[] = [
                 'url' => $urlRewrite->getRequestPath(),
-                'parameters' => $this->getUrlParameters($urlRewrite->getTargetPath())
+                'parameters' => $this->getUrlParameters($urlRewrite->getTargetPath()),
             ];
         }
 
@@ -127,7 +128,7 @@ class UrlRewrite implements ResolverInterface
         for ($index = 3; $index < $count; $index += 2) {
             $urlParameters[] = [
                 'name' => $targetPathParts[$index],
-                'value' => $targetPathParts[$index + 1]
+                'value' => $targetPathParts[$index + 1],
             ];
         }
         return $urlParameters;
@@ -139,7 +140,7 @@ class UrlRewrite implements ResolverInterface
      * @param string $entityTypeMetadata
      * @return string
      */
-    private function getEntityType(string $entityTypeMetadata) : string
+    private function getEntityType(string $entityTypeMetadata): string
     {
         $entityType = '';
         if ($entityTypeMetadata) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class AjaxLoadRatesTest extends TestCase
             ->with($searchCriteria)
             ->willThrowException(new \Exception());
 
-        $jsonObject= $this->getMockBuilder(Json::class)
+        $jsonObject = $this->getMockBuilder(Json::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['setData'])
             ->getMock();
@@ -116,7 +117,7 @@ class AjaxLoadRatesTest extends TestCase
             ->method('setData')
             ->with([
                 'success' => false,
-                'errorMessage' => __('An error occurred while loading tax rates.')
+                'errorMessage' => __('An error occurred while loading tax rates.'),
             ]);
 
         $this->resultFactory->expects($this->any())
@@ -131,7 +132,7 @@ class AjaxLoadRatesTest extends TestCase
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
                 'ratesProvider' => $this->ratesProvider,
                 'resultFactory' => $this->resultFactory,
-                '_request' => $this->request
+                '_request' => $this->request,
             ]
         );
 

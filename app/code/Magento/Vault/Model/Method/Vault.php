@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\Method;
 
-use Exception;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Payment\Gateway\Command;
 use Magento\Payment\Gateway\Config\ValueHandlerPoolInterface;
 use Magento\Payment\Gateway\ConfigFactoryInterface;
@@ -22,7 +25,6 @@ use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenManagementInterface;
 use Magento\Vault\Block\Form;
 use Magento\Vault\Model\VaultPaymentInterface;
-use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * Vault payment method
@@ -335,7 +337,7 @@ class Vault implements VaultPaymentInterface
      */
     public function fetchTransactionInfo(InfoInterface $payment, $transactionId)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -425,7 +427,7 @@ class Vault implements VaultPaymentInterface
      */
     public function order(\Magento\Payment\Model\InfoInterface $payment, $amount)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -450,7 +452,7 @@ class Vault implements VaultPaymentInterface
             VaultPaymentInterface::VAULT_AUTHORIZE_COMMAND,
             $payment,
             [
-                'amount' => $amount
+                'amount' => $amount,
             ]
         );
 
@@ -485,7 +487,7 @@ class Vault implements VaultPaymentInterface
             VaultPaymentInterface::VAULT_SALE_COMMAND,
             $payment,
             [
-                'amount' => $amount
+                'amount' => $amount,
             ]
         );
 
@@ -514,7 +516,7 @@ class Vault implements VaultPaymentInterface
         $paymentToken = $this->tokenManagement->getByPublicHash($publicHash, $customerId);
 
         if ($paymentToken === null) {
-            throw new \LogicException("No token found");
+            throw new \LogicException('No token found');
         }
 
         $extensionAttributes = $this->getPaymentExtensionAttributes($orderPayment);
@@ -571,7 +573,7 @@ class Vault implements VaultPaymentInterface
      */
     public function refund(\Magento\Payment\Model\InfoInterface $payment, $amount)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -580,7 +582,7 @@ class Vault implements VaultPaymentInterface
      */
     public function cancel(\Magento\Payment\Model\InfoInterface $payment)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -589,7 +591,7 @@ class Vault implements VaultPaymentInterface
      */
     public function void(\Magento\Payment\Model\InfoInterface $payment)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -598,7 +600,7 @@ class Vault implements VaultPaymentInterface
      */
     public function canReviewPayment()
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -607,7 +609,7 @@ class Vault implements VaultPaymentInterface
      */
     public function acceptPayment(InfoInterface $payment)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -616,7 +618,7 @@ class Vault implements VaultPaymentInterface
      */
     public function denyPayment(InfoInterface $payment)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**
@@ -639,7 +641,7 @@ class Vault implements VaultPaymentInterface
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -648,7 +650,7 @@ class Vault implements VaultPaymentInterface
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -681,7 +683,7 @@ class Vault implements VaultPaymentInterface
      */
     public function initialize($paymentAction, $stateObject)
     {
-        throw new \DomainException("Not implemented");
+        throw new \DomainException('Not implemented');
     }
 
     /**

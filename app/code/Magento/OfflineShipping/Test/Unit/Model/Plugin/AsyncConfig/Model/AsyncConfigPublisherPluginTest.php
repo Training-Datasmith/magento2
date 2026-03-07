@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class AsyncConfigPublisherPluginTest extends TestCase
     {
         $files['groups']['tablerate']['fields']['import']['value'] = [
             'tmp_name' => 'some/path/to/file/import.csv',
-            'name' => 'import.csv'
+            'name' => 'import.csv',
         ];
         $request = $this->createMock(Http::class);
         $request->expects($this->once())->method('getFiles')->willReturn($files);
@@ -107,7 +108,7 @@ class AsyncConfigPublisherPluginTest extends TestCase
     {
         $files['groups']['tablerate']['fields']['import']['value'] = [
             'tmp_name' => 'some/path/to/file/import.csv',
-            'name' => 'import.csv'
+            'name' => 'import.csv',
         ];
         $request = $this->createMock(Http::class);
         $request->expects($this->once())->method('getFiles')->willReturn($files);
@@ -128,7 +129,7 @@ class AsyncConfigPublisherPluginTest extends TestCase
         $files['groups']['tablerate']['fields']['import']['value']['name'] = '123456_import.csv';
         $result['groups']['tablerate']['fields']['import']['value'] = [
             'name' => '123456_import.csv',
-            'full_path' => 'some/path/to/file'
+            'full_path' => 'some/path/to/file',
         ];
         $this->assertSame([$result], $this->plugin->beforeSaveConfigData($subject, $config));
     }

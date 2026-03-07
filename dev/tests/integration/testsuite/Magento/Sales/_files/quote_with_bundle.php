@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,17 +98,17 @@ $product
                     'option_id' => '',
                     'selection_id' => '',
                     'is_default' => 1,
-                ]
+                ],
             ],
         ]
     )->setCustomAttributes([
-        "price_type" => [
+        'price_type' => [
             'attribute_code' => 'price_type',
-            'value' => \Magento\Bundle\Model\Product\Price::PRICE_TYPE_DYNAMIC
+            'value' => \Magento\Bundle\Model\Product\Price::PRICE_TYPE_DYNAMIC,
         ],
-        "price_view" => [
-            "attribute_code" => "price_view",
-            "value" => "1",
+        'price_view' => [
+            'attribute_code' => 'price_view',
+            'value' => '1',
         ],
     ])
     ->setCanSaveBundleSelections(true)

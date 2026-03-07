@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Model\Template;
 
 use Magento\Framework\App\Area;
@@ -232,12 +235,12 @@ class FilterTest extends \PHPUnit\Framework\TestCase
             'capture escaped single-quotes inside text' => [
                 "{{trans 'Hello \\'tested\\' world!'|escape}}",
                 [],
-                "Hello &#039;tested&#039; world!",
+                'Hello &#039;tested&#039; world!',
             ],
             'filter with params' => [
                 "{{trans 'Hello \\'tested\\' world!'|escape:html}}",
                 [],
-                "Hello &#039;tested&#039; world!",
+                'Hello &#039;tested&#039; world!',
             ],
             'basic var' => [
                 '{{trans "Hello %adjective world!" adjective="tested"}}',
@@ -259,7 +262,7 @@ class FilterTest extends \PHPUnit\Framework\TestCase
                 [],
                 'Hello happy world!',
                 [
-                    'mood' => 'happy'
+                    'mood' => 'happy',
                 ],
             ],
         ];
@@ -308,22 +311,22 @@ class FilterTest extends \PHPUnit\Framework\TestCase
             'CSS from theme' => [
                 TemplateTypesInterface::TYPE_HTML,
                 'file="css/email-1.css"',
-                'color: #111'
+                'color: #111',
             ],
             'CSS from parent theme' => [
                 TemplateTypesInterface::TYPE_HTML,
                 'file="css/email-2.css"',
-                'color: #222'
+                'color: #222',
             ],
             'CSS from grandparent theme' => [
                 TemplateTypesInterface::TYPE_HTML,
                 'file="css/email-3.css"',
-                'color: #333'
+                'color: #333',
             ],
             'Missing file parameter' => [
                 TemplateTypesInterface::TYPE_HTML,
                 '',
-                '/* "file" parameter must be specified */'
+                '/* "file" parameter must be specified */',
             ],
             'Plain-text template outputs nothing' => [
                 TemplateTypesInterface::TYPE_TEXT,

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Cms\Api;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
+namespace Magento\Cms\Api;
 
 /**
  * CMS page CRUD interface.

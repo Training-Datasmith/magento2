@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\Module\Dir\File
  */
+
 namespace Magento\Framework\Module\Test\Unit\Dir;
 
 use Magento\Framework\App\Config\Base;

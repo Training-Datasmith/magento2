@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Backend\Model\Dashboard\Period;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Reports\Model\ResourceModel\Order\Collection;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ChartTest extends TestCase
@@ -67,7 +68,7 @@ class ChartTest extends TestCase
             [
                 'dateRetriever' => $this->dateRetrieverMock,
                 'orderHelper' => $this->orderHelperMock,
-                'period' => $period
+                'period' => $period,
             ]
         );
     }
@@ -87,7 +88,7 @@ class ChartTest extends TestCase
             ->willReturnCallback(function ($arg1, $arg2) use ($period) {
                 if ($arg1 == 'period' && $arg2 == $period) {
                     return $this;
-                } elseif ($arg1 == 'store' || $arg1=='website' || $arg1 == 'group') {
+                } elseif ($arg1 == 'store' || $arg1 == 'website' || $arg1 == 'group') {
                     return $this;
                 }
             });
@@ -112,7 +113,7 @@ class ChartTest extends TestCase
             $valueMap[] = [
                 'range',
                 $resultItem['x'],
-                $dataObjectMock
+                $dataObjectMock,
             ];
         }
         $this->collectionMock->method('getItemByColumnValue')
@@ -136,21 +137,21 @@ class ChartTest extends TestCase
                 [
                     [
                         'x' => '2020-01-21',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-01-22',
-                        'y' => 2
+                        'y' => 2,
                     ],
                     [
                         'x' => '2020-01-23',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-01-24',
-                        'y' => 7
-                    ]
-                ]
+                        'y' => 7,
+                    ],
+                ],
             ],
             [
                 Period::PERIOD_1_MONTH,
@@ -158,21 +159,21 @@ class ChartTest extends TestCase
                 [
                     [
                         'x' => '2020-01-21',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-01-22',
-                        'y' => 2
+                        'y' => 2,
                     ],
                     [
                         'x' => '2020-01-23',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-01-24',
-                        'y' => 7
-                    ]
-                ]
+                        'y' => 7,
+                    ],
+                ],
             ],
             [
                 Period::PERIOD_1_YEAR,
@@ -180,22 +181,22 @@ class ChartTest extends TestCase
                 [
                     [
                         'x' => '2020-01',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-02',
-                        'y' => 2
+                        'y' => 2,
                     ],
                     [
                         'x' => '2020-03',
-                        'y' => 0
+                        'y' => 0,
                     ],
                     [
                         'x' => '2020-04',
-                        'y' => 7
-                    ]
-                ]
-            ]
+                        'y' => 7,
+                    ],
+                ],
+            ],
         ];
     }
 }

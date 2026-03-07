@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class GraphQLPageCacheAbstract extends GraphQlAbstract
      * @param array $headers
      * @return array
      */
-    protected function assertCacheMissAndReturnResponse(string $query, array $headers) :array
+    protected function assertCacheMissAndReturnResponse(string $query, array $headers): array
     {
         $responseMiss = $this->graphQlQueryWithResponseHeaders($query, [], '', $headers);
         $this->assertArrayHasKey('X-Magento-Cache-Debug', $responseMiss['headers']);
@@ -36,7 +37,7 @@ class GraphQLPageCacheAbstract extends GraphQlAbstract
      * @param array $headers
      * @return array
      */
-    protected function assertCacheHitAndReturnResponse(string $query, array $headers) :array
+    protected function assertCacheHitAndReturnResponse(string $query, array $headers): array
     {
         $responseHit = $this->graphQlQueryWithResponseHeaders($query, [], '', $headers);
         $this->assertArrayHasKey('X-Magento-Cache-Debug', $responseHit['headers']);

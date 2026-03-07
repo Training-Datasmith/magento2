@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application configuration object. Used to access configuration when application is installed.
  *

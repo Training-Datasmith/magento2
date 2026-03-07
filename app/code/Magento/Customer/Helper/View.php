@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Helper;
 
-use Magento\Customer\Api\CustomerNameGenerationInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
+use Magento\Customer\Api\CustomerNameGenerationInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Escaper;

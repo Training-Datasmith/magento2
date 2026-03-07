@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -440,7 +441,7 @@ class ProductTest extends TestCase
             'entity_id' => $productId,
             'url' => 'product.html',
             'name' => 'Test Product',
-            'thumbnail' => '/thumb.jpg'
+            'thumbnail' => '/thumb.jpg',
         ];
 
         $statementMock = $this->createMock(\Zend_Db_Statement_Interface::class);

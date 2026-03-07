@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,8 +18,8 @@ interface ValidationRuleInterface
     /**#@+
      * Constants for keys of data array
      */
-    const NAME = 'name';
-    const VALUE = 'value';
+    public const NAME = 'name';
+    public const VALUE = 'value';
     /**#@-*/
 
     /**

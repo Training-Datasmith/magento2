@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter Queue statuses option array
  */
+
 namespace Magento\Newsletter\Model\Queue\Options;
 
 class Status implements \Magento\Framework\Option\ArrayInterface
@@ -23,7 +26,7 @@ class Status implements \Magento\Framework\Option\ArrayInterface
             \Magento\Newsletter\Model\Queue::STATUS_CANCEL => __('Cancelled'),
             \Magento\Newsletter\Model\Queue::STATUS_NEVER => __('Not Sent'),
             \Magento\Newsletter\Model\Queue::STATUS_SENDING => __('Sending'),
-            \Magento\Newsletter\Model\Queue::STATUS_PAUSE => __('Paused')
+            \Magento\Newsletter\Model\Queue::STATUS_PAUSE => __('Paused'),
         ];
     }
 }

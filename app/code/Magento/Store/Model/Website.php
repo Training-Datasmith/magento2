@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 use Magento\Config\Model\ResourceModel\Config\Data;
@@ -608,7 +611,7 @@ class Website extends \Magento\Framework\Model\AbstractExtensibleModel implement
         $this->_storeManager->reinitStores();
         $types = [
             'full_page',
-            Config::TYPE_IDENTIFIER
+            Config::TYPE_IDENTIFIER,
         ];
         foreach ($types as $type) {
             $this->typeList->cleanType($type);

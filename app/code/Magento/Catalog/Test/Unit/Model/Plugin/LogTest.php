@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Plugin;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Model\Plugin\Log;
 use Magento\Catalog\Model\Product\Compare\Item;
 use Magento\Customer\Model\ResourceModel\Visitor;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

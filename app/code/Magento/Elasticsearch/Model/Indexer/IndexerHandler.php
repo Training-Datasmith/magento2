@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Indexer;
 
 use Magento\Catalog\Model\Category;
@@ -13,12 +16,12 @@ use Magento\Elasticsearch\Model\Adapter\Index\IndexNameResolver;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ScopeResolverInterface;
+use Magento\Framework\Indexer\CacheContext;
 use Magento\Framework\Indexer\IndexStructureInterface;
 use Magento\Framework\Indexer\SaveHandler\Batch;
-use Magento\Framework\Indexer\SaveHandler\StackedActionsIndexerInterface;
 use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
+use Magento\Framework\Indexer\SaveHandler\StackedActionsIndexerInterface;
 use Magento\Framework\Search\Request\Dimension;
-use Magento\Framework\Indexer\CacheContext;
 
 /**
  * Indexer Handler for Elasticsearch engine.
@@ -186,7 +189,7 @@ class IndexerHandler implements IndexerInterface, StackedActionsIndexerInterface
      * @param array $docs
      * @return void
      */
-    private function updateCacheContext(array $docs) : void
+    private function updateCacheContext(array $docs): void
     {
         $categoryIds = [];
         foreach ($docs as $document) {

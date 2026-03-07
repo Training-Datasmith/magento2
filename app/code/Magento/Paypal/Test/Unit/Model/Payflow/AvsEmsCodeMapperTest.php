@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class AvsEmsCodeMapperTest extends TestCase
             ->method('getAdditionalInformation')
             ->willReturn([
                 Info::PAYPAL_AVSZIP => $avsZip,
-                Info::PAYPAL_AVSADDR => $avsStreet
+                Info::PAYPAL_AVSADDR => $avsStreet,
             ]);
 
         self::assertEquals($expected, $this->mapper->getCode($orderPayment));
@@ -95,7 +96,7 @@ class AvsEmsCodeMapperTest extends TestCase
             ['avsZip' => 'X', 'avsStreet' => 'Y', 'expected' => ''],
             ['avsZip' => 'N', 'avsStreet' => 'X', 'expected' => ''],
             ['avsZip' => '', 'avsStreet' => 'Y', 'expected' => ''],
-            ['avsZip' => 'N', 'avsStreet' => '', 'expected' => '']
+            ['avsZip' => 'N', 'avsStreet' => '', 'expected' => ''],
         ];
     }
 }

@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config\Converter;
 
 class Dom implements \Magento\Framework\Config\ConverterInterface
 {
-    const ATTRIBUTES = '__attributes__';
+    public const ATTRIBUTES = '__attributes__';
 
-    const CONTENT = '__content__';
+    public const CONTENT = '__content__';
 
     /**
      * Convert dom node tree to array

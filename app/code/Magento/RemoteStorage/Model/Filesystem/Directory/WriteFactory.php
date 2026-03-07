@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\RemoteStorage\Model\Filesystem\Directory;
 
 use Magento\Framework\Filesystem\Directory\CompositePathValidator;
@@ -10,8 +13,8 @@ use Magento\Framework\Filesystem\Directory\DenyListPathValidator;
 use Magento\Framework\Filesystem\Directory\PathValidator;
 use Magento\Framework\Filesystem\Directory\WriteFactory as BaseWriteFactory;
 use Magento\Framework\Filesystem\DriverPool as BaseDriverPool;
-use Magento\RemoteStorage\Driver\DriverPool;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\RemoteStorage\Driver\DriverPool;
 
 /**
  * The factory of the filesystem directory instances for remote storage write operations.
@@ -72,7 +75,7 @@ class WriteFactory extends BaseWriteFactory
 
             $validators = [
                 'pathValidator' => new PathValidator($driver),
-                'denyListPathValidator' => $this->denyListPathValidator ?: new DenyListPathValidator($driver)
+                'denyListPathValidator' => $this->denyListPathValidator ?: new DenyListPathValidator($driver),
             ];
 
             $pathValidator = new CompositePathValidator($validators);
@@ -84,7 +87,7 @@ class WriteFactory extends BaseWriteFactory
                     'path' => $path,
                     'createPermissions' => $createPermissions,
                     'pathValidator' => $pathValidator,
-                    'directoryCode' => $directoryCode
+                    'directoryCode' => $directoryCode,
                 ]
             );
         } else {

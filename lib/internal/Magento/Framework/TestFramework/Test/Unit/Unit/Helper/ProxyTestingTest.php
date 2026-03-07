@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\TestFramework\Test\Unit\Unit\Helper;
 
-use Magento\Framework\TestFramework\Unit\Helper\ProxyTesting;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ProxyTesting;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ProxyTestingTest extends TestCase
 {
@@ -105,7 +106,7 @@ class ProxyTestingTest extends TestCase
                 'callProxiedMethod' => 'returnAminusB',
                 'passProxiedParams' => [10, 3],
                 'expectedResult' => 7,
-            ]
+            ],
         ];
     }
 }

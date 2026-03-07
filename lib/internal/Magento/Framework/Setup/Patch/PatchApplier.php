@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -151,7 +152,7 @@ class PatchApplier
             );
             if (!$dataPatch instanceof DataPatchInterface) {
                 throw new SetupException(
-                    new Phrase("Patch %1 should implement DataPatchInterface", [get_class($dataPatch)])
+                    new Phrase('Patch %1 should implement DataPatchInterface', [get_class($dataPatch)])
                 );
             }
             if ($this->isApplied($dataPatch)) {
@@ -172,7 +173,7 @@ class PatchApplier
                             [
                                 get_class($dataPatch),
                                 $moduleName,
-                                $e->getMessage()
+                                $e->getMessage(),
                             ]
                         ),
                         $e
@@ -219,7 +220,7 @@ class PatchApplier
                         [
                             $schemaPatchClass,
                             $moduleName,
-                            $e->getMessage()
+                            $e->getMessage(),
                         ]
                     )
                 );

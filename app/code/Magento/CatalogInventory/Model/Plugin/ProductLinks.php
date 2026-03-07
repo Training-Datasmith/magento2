@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,7 +15,6 @@ use Magento\CatalogInventory\Model\Configuration;
 
 class ProductLinks
 {
-
     /**
      * ProductLinks constructor.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\App\Route\ConfigInterface\Proxy;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -221,7 +222,7 @@ class HttpTest extends TestCase
             'action_name' => 'ActionName',
             'controller_name' => 'ControllerName',
             'module_name' => 'ModuleName',
-            'route_name' => 'RouteName'
+            'route_name' => 'RouteName',
         ];
         $this->model->setParams($beforeForwardInfo['params']);
         $this->model->setActionName($beforeForwardInfo['action_name']);
@@ -304,7 +305,7 @@ class HttpTest extends TestCase
             'SCRIPT_NAME' => 'index.php',
             'HTTP_HOST' => 'sample.host.com',
             'SERVER_PORT' => '80',
-            'HTTPS' => '1'
+            'HTTPS' => '1',
         ];
 
         $secureUnusualPort = $noHttpsData = $httpsOffData = $noHostData = $noScriptNameData = $defaultServerData;
@@ -326,7 +327,7 @@ class HttpTest extends TestCase
         $returnValue['no SERVER_PORT'] = [
             $noHttpsNoServerPort,
             $noHttpsNoServerPort['HTTP_HOST'],
-            'http://sample.host.com/'
+            'http://sample.host.com/',
         ];
 
         $noHttpsButSecurePort = $noHttpsData;
@@ -334,7 +335,7 @@ class HttpTest extends TestCase
         $returnValue['no HTTP but secure port'] = [
             $noHttpsButSecurePort,
             $noHttpsButSecurePort['HTTP_HOST'],
-            'https://sample.host.com/'
+            'https://sample.host.com/',
         ];
 
         $notSecurePort = $noHttpsData;
@@ -343,7 +344,7 @@ class HttpTest extends TestCase
         $returnValue['not secure not standard port'] = [
             $notSecurePort,
             $notSecurePort['HTTP_HOST'],
-            'http://sample.host.com:81/'
+            'http://sample.host.com:81/',
         ];
 
         $secureUnusualPort['SERVER_PORT'] = 441;
@@ -351,7 +352,7 @@ class HttpTest extends TestCase
         $returnValue['not standard secure port'] = [
             $secureUnusualPort,
             $secureUnusualPort['HTTP_HOST'],
-            'https://sample.host.com:441/'
+            'https://sample.host.com:441/',
         ];
 
         $customUrlPathData = $noHttpsData;
@@ -427,7 +428,7 @@ class HttpTest extends TestCase
             'Test 1' => ['GET'],
             'Test 2' => ['HEAD'],
             'Test 3' => ['TRACE'],
-            'Test 4' => ['OPTIONS']
+            'Test 4' => ['OPTIONS'],
         ];
     }
 
@@ -442,7 +443,7 @@ class HttpTest extends TestCase
             'Test 3' => ['DELETE'],
             'Test 4' => ['PATCH'],
             'Test 5' => ['CONNECT'],
-            'Test 6' => [null]
+            'Test 6' => [null],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,15 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Shipment;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
-use Magento\Sales\Api\Data\ShipmentItemInterface;
-use Magento\Sales\Model\Order\Shipment\Item as ShipmentItem;
 use Magento\Sales\Model\Order\Item;
+use Magento\Sales\Model\Order\Shipment\Item as ShipmentItem;
 use Magento\Sales\Model\Order\Shipment\OrderRegistrar;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class OrderRegistrarTest extends TestCase
 {

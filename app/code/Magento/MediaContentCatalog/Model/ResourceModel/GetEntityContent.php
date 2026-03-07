@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\MediaContentCatalog\Model\ResourceModel;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\MediaContentApi\Model\GetEntityContentsInterface;
-use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
 use Magento\Eav\Model\Config;
+use Magento\Framework\App\ResourceConnection;
+use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
+use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 
 /**
  * Get concatenated content for all store views

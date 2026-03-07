@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Locator for fieldset XSD schemas.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DataObject\Copy\Config;
 
 use Magento\Framework\Config\Dom\UrnResolver;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,15 +13,14 @@ use Magento\CatalogUrlRewrite\Model\ObjectRegistryFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Verify generate url rewrites for anchor categories.
  */
 class AnchorUrlRewriteGeneratorTest extends TestCase
 {
-
     /**
      * @var ObjectManagerInterface
      */
@@ -86,8 +86,8 @@ class AnchorUrlRewriteGeneratorTest extends TestCase
     {
         return [
             [
-                'expect' => 'category-1-custom/simple-product.html'
-            ]
+                'expect' => 'category-1-custom/simple-product.html',
+            ],
         ];
     }
 }

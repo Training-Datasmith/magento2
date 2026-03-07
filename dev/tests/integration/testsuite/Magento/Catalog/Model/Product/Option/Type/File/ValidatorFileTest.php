@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -196,8 +198,8 @@ class ValidatorFileTest extends \PHPUnit\Framework\TestCase
             ->method('getFileInfo')
             ->willReturn([
                 'options_1_file' => [
-                    'name' => 'test.jpg'
-                ]
+                    'name' => 'test.jpg',
+                ],
             ]);
         $httpAdapterMock->expects($this->once())
             ->method('isValid')
@@ -293,7 +295,7 @@ class ValidatorFileTest extends \PHPUnit\Framework\TestCase
         $option = $this->objectManager->create(
             \Magento\Catalog\Model\Product\Option::class,
             [
-                'data' => array_merge($data, $options)
+                'data' => array_merge($data, $options),
             ]
         );
 

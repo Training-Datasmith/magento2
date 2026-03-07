@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class PropertiesTest extends TestCase
         $this->propertiesBlock = $objectManager->getObject(
             Properties::class,
             [
-                'registry' => $this->registry
+                'registry' => $this->registry,
             ]
         );
     }
@@ -82,9 +83,9 @@ class PropertiesTest extends TestCase
                             'type' => 'select',
                             'visible' => '1',
                         ],
-                    ]
+                    ],
                 ],
-                'isHidden' => true
+                'isHidden' => true,
             ],
             [
                 'widgetConfig' => [
@@ -97,13 +98,13 @@ class PropertiesTest extends TestCase
                             'type' => 'select',
                             'visible' => '1',
                         ],
-                    ]
+                    ],
                 ],
-                'isHidden' => false
+                'isHidden' => false,
             ],
             [
                 'widgetConfig' => [],
-                'isHidden' => true
+                'isHidden' => true,
             ],
             [
                 'widgetConfig' => [
@@ -112,10 +113,10 @@ class PropertiesTest extends TestCase
                             'type' => 'select',
                             'visible' => '0',
                         ],
-                    ]
+                    ],
                 ],
-                'isHidden' => true
-            ]
+                'isHidden' => true,
+            ],
         ];
     }
 }

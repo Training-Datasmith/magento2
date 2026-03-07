@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\DB\TemporaryTableService;
 use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class TemporaryTableServiceTest extends TestCase
 {
@@ -53,7 +54,7 @@ class TemporaryTableServiceTest extends TestCase
             [
                 'random' => $this->randomMock,
                 'allowedIndexMethods' => ['HASH'],
-                'allowedEngines' => ['INNODB']
+                'allowedEngines' => ['INNODB'],
             ]
         );
     }
@@ -70,7 +71,7 @@ class TemporaryTableServiceTest extends TestCase
         $indexes = [
             ['PRIMARY' => ['primary_column_name']],
             'CREATE TEMPORARY TABLE random_table (PRIMARY KEY(primary_column_name)) ENGINE=INNODB IGNORE '
-            . '(select * from sometable)'
+            . '(select * from sometable)',
         ];
 
         $this->assertEquals(
@@ -79,8 +80,8 @@ class TemporaryTableServiceTest extends TestCase
                 $this->selectMock,
                 $this->adapterMock,
                 $indexes,
-                TemporaryTableService::INDEX_METHOD_HASH . "Other",
-                TemporaryTableService::DB_ENGINE_INNODB . "Other"
+                TemporaryTableService::INDEX_METHOD_HASH . 'Other',
+                TemporaryTableService::DB_ENGINE_INNODB . 'Other'
             )
         );
     }
@@ -171,28 +172,28 @@ class TemporaryTableServiceTest extends TestCase
             [
                 ['PRIMARY' => ['primary_column_name']],
                 'CREATE TEMPORARY TABLE random_table (PRIMARY KEY(primary_column_name)) ENGINE=INNODB IGNORE '
-                . '(select * from sometable)'
+                . '(select * from sometable)',
             ],
             [
                 ['UNQ_INDX' => ['column1', 'column2']],
                 'CREATE TEMPORARY TABLE random_table (UNIQUE UNQ_INDX(column1,column2)) ENGINE=INNODB IGNORE '
-                . '(select * from sometable)'
+                . '(select * from sometable)',
             ],
             [
                 ['OTH_INDX' => ['column3', 'column4']],
                 'CREATE TEMPORARY TABLE random_table (INDEX OTH_INDX USING HASH(column3,column4)) ENGINE=INNODB IGNORE '
-                . '(select * from sometable)'
+                . '(select * from sometable)',
             ],
             [
                 [
                     'PRIMARY' => ['primary_column_name'],
                     'OTH_INDX' => ['column3', 'column4'],
-                    'UNQ_INDX' => ['column1', 'column2']
+                    'UNQ_INDX' => ['column1', 'column2'],
                 ],
                 'CREATE TEMPORARY TABLE random_table '
                 . '(PRIMARY KEY(primary_column_name),'
                 . 'INDEX OTH_INDX USING HASH(column3,column4),UNIQUE UNQ_INDX(column1,column2)) ENGINE=INNODB IGNORE '
-                . '(select * from sometable)'
+                . '(select * from sometable)',
             ],
         ];
     }

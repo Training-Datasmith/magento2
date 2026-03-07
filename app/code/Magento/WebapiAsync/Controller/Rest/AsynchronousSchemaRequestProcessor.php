@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Controller\Rest;
 
-use Magento\Webapi\Model\Rest\Swagger\Generator;
-use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magento\Framework\Webapi\Request;
+use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magento\Webapi\Controller\Rest\RequestProcessorInterface;
+use Magento\Webapi\Model\Rest\Swagger\Generator;
 
 /**
  * Get schema from request to generate swagger body.
@@ -21,8 +22,8 @@ class AsynchronousSchemaRequestProcessor implements RequestProcessorInterface
     /**
      * Path for accessing Async Rest API schema
      */
-    const PROCESSOR_PATH = 'async/schema';
-    const BULK_PROCESSOR_PATH = 'async/bulk/schema';
+    public const PROCESSOR_PATH = 'async/schema';
+    public const BULK_PROCESSOR_PATH = 'async/bulk/schema';
 
     /**
      * @var \Magento\Webapi\Model\Rest\Swagger\Generator

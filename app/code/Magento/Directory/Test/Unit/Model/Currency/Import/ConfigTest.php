@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ConfigTest extends TestCase
             'empty label' => [
                 ['test' => ['class' => 'Test_Class', 'label' => '']],
                 'Label for a currency import service has to be specified',
-            ]
+            ],
         ];
     }
 

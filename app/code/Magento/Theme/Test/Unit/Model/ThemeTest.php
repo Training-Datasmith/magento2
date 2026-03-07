@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme model
  */
+
 namespace Magento\Theme\Test\Unit\Model;
 
 use Magento\Framework\App\State;
@@ -119,7 +121,7 @@ class ThemeTest extends TestCase
                 'domainFactory' => $this->domainFactory,
                 'validator' => $this->validator,
                 'appState' => $this->appState,
-                'themeModelFactory' => $this->themeModelFactory
+                'themeModelFactory' => $this->themeModelFactory,
             ]
         );
         $this->getServicesForObjMap();
@@ -184,7 +186,7 @@ class ThemeTest extends TestCase
         return [
             ['type' => ThemeInterface::TYPE_VIRTUAL, 'isVirtual' => true],
             ['type' => ThemeInterface::TYPE_STAGING, 'isVirtual' => false],
-            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isVirtual' => false]
+            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isVirtual' => false],
         ];
     }
 
@@ -210,7 +212,7 @@ class ThemeTest extends TestCase
         return [
             ['type' => ThemeInterface::TYPE_VIRTUAL, 'isPhysical' => false],
             ['type' => ThemeInterface::TYPE_STAGING, 'isPhysical' => false],
-            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isPhysical' => true]
+            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isPhysical' => true],
         ];
     }
 
@@ -236,7 +238,7 @@ class ThemeTest extends TestCase
         return [
             ['type' => ThemeInterface::TYPE_VIRTUAL, 'isVisible' => true],
             ['type' => ThemeInterface::TYPE_STAGING, 'isVisible' => false],
-            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isVisible' => true]
+            ['type' => ThemeInterface::TYPE_PHYSICAL, 'isVisible' => true],
         ];
     }
 
@@ -269,7 +271,7 @@ class ThemeTest extends TestCase
         return [
             [ThemeInterface::TYPE_VIRTUAL, true],
             [ThemeInterface::TYPE_STAGING, true],
-            [ThemeInterface::TYPE_PHYSICAL, false]
+            [ThemeInterface::TYPE_PHYSICAL, false],
         ];
     }
 
@@ -294,7 +296,7 @@ class ThemeTest extends TestCase
         return [
             'string code' => ['theme/code', 'theme/code'],
             'null code' => [null, ''],
-            'number code' => [10, '10']
+            'number code' => [10, '10'],
         ];
     }
 
@@ -330,7 +332,7 @@ class ThemeTest extends TestCase
             ThemeInterface::class,
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
-                'getCode', 'isPhysical', 'getInheritedThemes', 'getId', 'delete'
+                'getCode', 'isPhysical', 'getInheritedThemes', 'getId', 'delete',
             ]
         );
         $theme->expects($this->once())
@@ -372,7 +374,7 @@ class ThemeTest extends TestCase
             ThemeInterface::class,
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
-                'getCode', 'isPhysical', 'getInheritedThemes', 'getId'
+                'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
             ]
         );
         $theme->expects($this->once())
@@ -592,34 +594,34 @@ class ThemeTest extends TestCase
             'null' => [[], []],
             'valid' => [
                 ['theme_data' => 'theme_data'],
-                ['theme_data' => 'theme_data']
+                ['theme_data' => 'theme_data'],
             ],
             'valid with parent' => [
                 [
                     'theme_data' => 'theme_data',
-                    'parent_theme' => $parentTheme
+                    'parent_theme' => $parentTheme,
                 ],
                 [
                     'theme_data' => 'theme_data',
-                    'parent_theme' => 'parent_theme'
-                ]
+                    'parent_theme' => 'parent_theme',
+                ],
             ],
             'valid with children' => [
                 [
                     'theme_data' => 'theme_data',
                     'inherited_themes' => [
                         'key1' => $childTheme,
-                        'key2' => $childTheme
-                    ]
+                        'key2' => $childTheme,
+                    ],
                 ],
                 [
                     'theme_data' => 'theme_data',
                     'inherited_themes' => [
                         'key1' => 'child_theme',
-                        'key2' => 'child_theme'
-                    ]
-                ]
-            ]
+                        'key2' => 'child_theme',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -654,38 +656,38 @@ class ThemeTest extends TestCase
         return [
             'valid data' => [
                 'value' => ['theme_data' => 'theme_data'],
-                'expected' => ['theme_data' => 'theme_data']
+                'expected' => ['theme_data' => 'theme_data'],
             ],
             'valid data with parent' => [
                 'value' => [
                     'theme_data' => 'theme_data',
                     'parent_theme' => [
-                        'theme_data' => 'theme_data'
-                    ]
+                        'theme_data' => 'theme_data',
+                    ],
                 ],
                 'expected' => [
                     'theme_data' => 'theme_data',
-                    'parent_theme' => 'theme_instance'
+                    'parent_theme' => 'theme_instance',
                 ],
-                'expectedCallCount' => 1
+                'expectedCallCount' => 1,
             ],
             'valid data with children' => [
                 'value' => [
                     'theme_data' => 'theme_data',
                     'inherited_themes' => [
                         'key1' => ['theme_data' => 'theme_data'],
-                        'key2' => ['theme_data' => 'theme_data']
-                    ]
+                        'key2' => ['theme_data' => 'theme_data'],
+                    ],
                 ],
                 'expected' => [
                     'theme_data' => 'theme_data',
                     'inherited_themes' => [
                         'key1' => 'theme_instance',
-                        'key2' => 'theme_instance'
-                    ]
+                        'key2' => 'theme_instance',
+                    ],
                 ],
-                'expectedCallCount' => 2
-            ]
+                'expectedCallCount' => 2,
+            ],
         ];
     }
 }

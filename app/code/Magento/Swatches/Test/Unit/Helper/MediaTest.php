@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,9 +24,9 @@ use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Swatches\Helper\Media;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Helper to move images from tmp to catalog directory
@@ -206,7 +207,7 @@ class MediaTest extends TestCase
             'keepFrame',
             'keepAspectRatio',
             'backgroundColor',
-            'quality'
+            'quality',
         ]);
 
         $this->imageFactoryMock->expects($this->any())->method('create')->willReturn($image);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\CatalogImportExport\Model\Import\ProductTest;
 use Magento\CatalogImportExport\Model\Import\ProductTestBase;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\Source\Csv;
@@ -71,19 +71,19 @@ class ProductImportImagesTest extends ProductTestBase
                     [
                         'file' => '/m/a/magento_image.jpg',
                         'label' => 'Image Alt Text',
-                        'position' => 1
+                        'position' => 1,
                     ],
                     [
                         'file' => '/m/a/magento_additional_image_one.jpg',
                         'label' => null,
-                        'position' => 2
+                        'position' => 2,
                     ],
                     [
                         'file' => '/m/a/magento_additional_image_two.jpg',
                         'label' => null,
-                        'position' => 3
+                        'position' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'import_media_additional_images_storeview.csv',
@@ -93,20 +93,20 @@ class ProductImportImagesTest extends ProductTestBase
                     [
                         'file' => '/m/a/magento_image.jpg',
                         'label' => 'Image Alt Text',
-                        'position' => 1
+                        'position' => 1,
                     ],
                     [
                         'file' => '/m/a/magento_additional_image_one.jpg',
                         'label' => 'Additional Image Label One',
-                        'position' => 2
+                        'position' => 2,
                     ],
                     [
                         'file' => '/m/a/magento_additional_image_two.jpg',
                         'label' => 'Additional Image Label Two',
-                        'position' => 3
+                        'position' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -296,7 +296,7 @@ class ProductImportImagesTest extends ProductTestBase
                     'file' => '/m/a/magento_additional_image_three.jpg',
                     'label' => '',
                 ],
-            ]
+            ],
         ];
         $actual = [];
         $products = ['import-configurable-option-1', 'import-configurable-option-2', 'import-configurable'];
@@ -354,7 +354,7 @@ class ProductImportImagesTest extends ProductTestBase
             ->validateData();
         $this->assertEquals($errors->getErrorsCount(), 1);
         $this->assertEquals(
-            "Wrong URL/path used for attribute additional_images",
+            'Wrong URL/path used for attribute additional_images',
             $errors->getErrorByRowNumber(0)[0]->getErrorMessage()
         );
     }

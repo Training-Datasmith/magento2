@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +14,7 @@
 namespace ArgumentSequence;
 
 use Magento\Framework\ObjectManager\ContextInterface;
+
 class ContextObject implements ContextInterface
 {
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Coupon;
 
+use Magento\Captcha\Helper\Data as Helper;
 use Magento\Captcha\Model\DefaultModel;
+use Magento\Checkout\Model\ConfigProviderInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Captcha\Helper\Data as Helper;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Checkout\Model\ConfigProviderInterface;
 
 /**
  * Adds captcha data related to coupons.
@@ -79,9 +80,9 @@ class CaptchaConfigProvider implements ConfigProviderInterface
                     'imageSrc' => $imageSrc,
                     'refreshUrl' => $store->getUrl('captcha/refresh', ['_secure' => $store->isCurrentlySecure()]),
                     'isRequired' => $required,
-                    'timestamp' => time()
-                ]
-            ]
+                    'timestamp' => time(),
+                ],
+            ],
         ];
     }
 }

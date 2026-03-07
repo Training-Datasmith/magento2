@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
 use Magento\Framework\ObjectManager\Config\Reader\Dom;
@@ -48,7 +51,7 @@ class Communication implements ConverterInterface
     {
         $result = [
             'name' => $this->converterUtils->getComponentName($node),
-            Dom::TYPE_ATTRIBUTE => 'array'
+            Dom::TYPE_ATTRIBUTE => 'array',
         ];
         if ($this->hasChildNodes($node)) {
             /** @var \DOMNode $childNode */
@@ -58,7 +61,7 @@ class Communication implements ConverterInterface
                     $result['item'][$childNodeName] = [
                         'name' => $childNodeName,
                         Dom::TYPE_ATTRIBUTE => 'string',
-                        'value' => trim($childNode->nodeValue)
+                        'value' => trim($childNode->nodeValue),
                     ];
                 }
             }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ class CartRulesStoreConfigTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'share_applied_cart_rule' => true
-                ]
+                    'share_applied_cart_rule' => true,
+                ],
             ],
             $this->graphQlQuery($this->getStoreConfigQuery())
         );
@@ -35,8 +36,8 @@ class CartRulesStoreConfigTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'share_applied_cart_rule' => false
-                ]
+                    'share_applied_cart_rule' => false,
+                ],
             ],
             $this->graphQlQuery($this->getStoreConfigQuery())
         );

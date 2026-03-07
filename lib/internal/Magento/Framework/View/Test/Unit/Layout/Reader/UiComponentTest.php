@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,12 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\View\Layout\Reader\UiComponent
  */
+
 namespace Magento\Framework\View\Test\Unit\Layout\Reader;
 
 use Magento\Framework\Config\DataInterface;
 use Magento\Framework\Config\DataInterfaceFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout\AclCondition;
 use Magento\Framework\View\Layout\ConfigCondition;
@@ -22,10 +25,9 @@ use Magento\Framework\View\Layout\Reader\Visibility\Condition;
 use Magento\Framework\View\Layout\ReaderPool;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\ScheduledStructure\Helper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -118,13 +120,13 @@ class UiComponentTest extends TestCase
                         'ifconfig' => [
                             'name' => ConfigCondition::class,
                             'arguments' => [
-                                'configPath' => 'config_path'
+                                'configPath' => 'config_path',
                             ],
                         ],
                         'acl' => [
                             'name' => AclCondition::class,
                             'arguments' => [
-                                'acl' => 'test_acl'
+                                'acl' => 'test_acl',
                             ],
                         ],
                     ],
@@ -147,11 +149,11 @@ class UiComponentTest extends TestCase
                     'testComponent' => [
                         'arguments' => [
                             'block' => [
-                                'layout' => $xml
-                            ]
-                        ]
-                    ]
-                ]
+                                'layout' => $xml,
+                            ],
+                        ],
+                    ],
+                ],
             ]);
 
         $this->readerPool->expects($this->once())
@@ -177,7 +179,7 @@ class UiComponentTest extends TestCase
                     ><visibilityCondition name="test_name" className="name"></visibilityCondition></uiComponent>',
                     'uiComponent'
                 ),
-            ]
+            ],
         ];
     }
 

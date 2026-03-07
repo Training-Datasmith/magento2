@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LogLevel;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Helper\FormatterHelper;
-use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\Directory\ReadInterface;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * PSR logger implementation for CLI
@@ -84,7 +87,7 @@ class ConsoleLogger extends AbstractLogger
         LogLevel::WARNING => OutputInterface::VERBOSITY_NORMAL,
         LogLevel::NOTICE => OutputInterface::VERBOSITY_NORMAL,
         LogLevel::INFO => OutputInterface::VERBOSITY_VERBOSE,
-        LogLevel::DEBUG => OutputInterface::VERBOSITY_DEBUG
+        LogLevel::DEBUG => OutputInterface::VERBOSITY_DEBUG,
     ];
 
     /**
@@ -98,7 +101,7 @@ class ConsoleLogger extends AbstractLogger
         LogLevel::WARNING => self::INFO,
         LogLevel::NOTICE => self::INFO,
         LogLevel::INFO => self::INFO,
-        LogLevel::DEBUG => self::INFO
+        LogLevel::DEBUG => self::INFO,
     ];
 
     /**
@@ -202,7 +205,7 @@ class ConsoleLogger extends AbstractLogger
             $bar = '';
             foreach ($bars as &$bar) {
                 if ($this->initialMaxBarSize > strlen($bar)) {
-                    $bar .= str_pad(" ", ($this->initialMaxBarSize - strlen($bar)));
+                    $bar .= str_pad(' ', ($this->initialMaxBarSize - strlen($bar)));
                 }
             }
             $bar = trim($bar);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -22,7 +24,7 @@ class Payflowlink extends \Magento\Paypal\Model\Payflowpro
     /**
      * Default layout template
      */
-    const LAYOUT_TEMPLATE = 'mobile';
+    public const LAYOUT_TEMPLATE = 'mobile';
 
     /**
      * Controller for callback urls
@@ -72,12 +74,12 @@ class Payflowlink extends \Magento\Paypal\Model\Payflowpro
     /**
      * Gateway request URL
      */
-    const TRANSACTION_PAYFLOW_URL = 'https://payflowlink.paypal.com/';
+    public const TRANSACTION_PAYFLOW_URL = 'https://payflowlink.paypal.com/';
 
     /**
      * Error message
      */
-    const RESPONSE_ERROR_MSG = 'Payment error. %s was not found.';
+    public const RESPONSE_ERROR_MSG = 'Payment error. %s was not found.';
 
     /**
      * Key for storing secure hash in additional information of payment model
@@ -508,7 +510,7 @@ class Payflowlink extends \Magento\Paypal\Model\Payflowpro
     {
         $tokenTypes = [
             Config::PAYMENT_ACTION_AUTH => self::TRXTYPE_AUTH_ONLY,
-            Config::PAYMENT_ACTION_SALE => self::TRXTYPE_SALE
+            Config::PAYMENT_ACTION_SALE => self::TRXTYPE_SALE,
         ];
 
         $paymentAction = $this->getConfigData('payment_action') ?? '';

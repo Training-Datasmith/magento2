@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Attributes;
 
 class ListingTest extends \PHPUnit\Framework\TestCase
@@ -28,7 +31,7 @@ class ListingTest extends \PHPUnit\Framework\TestCase
                 'name' => 'product_attributes_grid_data_source',
                 'primaryFieldName' => 'attribute_id',
                 'requestFieldName' => 'id',
-                'request' => $this->request
+                'request' => $this->request,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class ExternalVideoEntryConverterTest extends TestCase
                     'getContent',
                     'setContent',
                     'getExtensionAttributes',
-                    'setExtensionAttributes'
+                    'setExtensionAttributes',
                 ]
             );
 
@@ -125,7 +126,7 @@ class ExternalVideoEntryConverterTest extends TestCase
                 'mediaGalleryEntryFactory' => $this->mediaGalleryEntryFactoryMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
                 'videoEntryFactory' => $this->videoEntryFactoryMock,
-                'mediaGalleryEntryExtensionFactory' => $this->mediaGalleryEntryExtensionFactoryMock
+                'mediaGalleryEntryExtensionFactory' => $this->mediaGalleryEntryExtensionFactoryMock,
             ]
         );
     }
@@ -161,14 +162,14 @@ class ExternalVideoEntryConverterTest extends TestCase
             'video_url' => 'https://www.youtube.com/watch?v=abcdefghij',
             'video_title' => '111',
             'video_description' => null,
-            'video_metadata' => null
+            'video_metadata' => null,
         ];
 
         $productImages = [
             'image' => '/s/a/sample_3.jpg',
             'small_image' => '/s/a/sample-1_1.jpg',
             'thumbnail' => '/s/a/sample-1_1.jpg',
-            'swatch_image' => '/s/a/sample_3.jpg'
+            'swatch_image' => '/s/a/sample_3.jpg',
         ];
 
         $product->expects($this->once())->method('getMediaAttributeValues')->willReturn($productImages);
@@ -223,7 +224,7 @@ class ExternalVideoEntryConverterTest extends TestCase
             'video_url' => 'https://www.youtube.com/watch?v=abcdefghij',
             'video_title' => 'Some video title',
             'video_description' => 'Some video description',
-            'video_metadata' => 'Meta data'
+            'video_metadata' => 'Meta data',
         ];
 
         $result = $this->modelObject->convertFrom($this->mediaGalleryEntryMock);
@@ -243,7 +244,7 @@ class ExternalVideoEntryConverterTest extends TestCase
                 [
                     'setVideoContent',
                     'getVideoContent',
-                    'getVideoProvider'
+                    'getVideoProvider',
                 ]
             );
         } catch (RuntimeException $e) {

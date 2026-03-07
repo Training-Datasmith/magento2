@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\DirectoryGraphQl\Plugin;
 
+use Magento\Directory\Model\Currency as CurrencyModel;
 use Magento\DirectoryGraphQl\Model\Resolver\Currency\Identity;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Directory\Model\Currency as CurrencyModel;
 
 /**
  * Currency plugin triggers clean page cache and provides currency cache identities

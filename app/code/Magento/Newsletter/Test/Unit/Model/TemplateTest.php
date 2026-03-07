@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -125,8 +126,8 @@ class TemplateTest extends TestCase
         $objects = [
             [
                 Database::class,
-                $this->createMock(Database::class)
-            ]
+                $this->createMock(Database::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->contextMock = $this->createMock(Context::class);
@@ -226,7 +227,7 @@ class TemplateTest extends TestCase
             [
                 'getTemplateFilter',
                 'getDesignConfig',
-                'applyDesignConfig'
+                'applyDesignConfig',
             ],
             [
                 'setVariables',
@@ -284,7 +285,7 @@ class TemplateTest extends TestCase
                 'setStoreId',
                 'filter',
                 'getStoreId',
-                'getInlineCssFiles'
+                'getInlineCssFiles',
             ]
         );
         $filterTemplate->expects($this->never())
@@ -433,25 +434,25 @@ class TemplateTest extends TestCase
                 'senderName' => 'sender name',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => 'template subject',
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'no sender name so not valid' => [
                 'senderName' => '',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => 'template subject',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
             'no sender email so not valid' => [
                 'senderName' => 'sender name',
                 'senderEmail' => '',
                 'templateSubject' => 'template subject',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
             'no subject so not valid' => [
                 'senderName' => 'sender name',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => '',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
         ];
     }

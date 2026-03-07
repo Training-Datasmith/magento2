@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
+use Magento\CheckoutAgreements\Model\Api\SearchCriteria\ActiveStoreAgreementsFilter;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
-use Magento\CheckoutAgreements\Model\Api\SearchCriteria\ActiveStoreAgreementsFilter;
 
 /**
  * Configuration provider for GiftMessage rendering on "Shipping Method" step of checkout.
@@ -106,7 +109,7 @@ class AgreementsConfigProvider implements ConfigProviderInterface
                     : nl2br($this->escaper->escapeHtml($agreement->getCheckboxText())),
                 'mode' => $agreement->getMode(),
                 'agreementId' => $agreement->getAgreementId(),
-                'contentHeight' => $agreement->getContentHeight()
+                'contentHeight' => $agreement->getContentHeight(),
             ];
         }
 

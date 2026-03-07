@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -22,7 +24,7 @@ $data = [
     'label' => 'Example',
     'store_labels' => [
         1 => 'Store view example',
-    ]
+    ],
 ];
 
 $orderStatus->setData($data)->setStatus('example');

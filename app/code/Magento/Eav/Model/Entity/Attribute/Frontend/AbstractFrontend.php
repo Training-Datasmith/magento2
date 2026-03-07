@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,15 +11,16 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Eav\Model\Entity\Attribute\Frontend;
 
-use Magento\Framework\App\CacheInterface;
-use Magento\Framework\Serialize\Serializer\Json as Serializer;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\ObjectManager;
 use Magento\Eav\Model\Cache\Type as CacheType;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Source\BooleanFactory;
+use Magento\Framework\App\CacheInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\Serializer\Json as Serializer;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * EAV entity attribute form renderer.

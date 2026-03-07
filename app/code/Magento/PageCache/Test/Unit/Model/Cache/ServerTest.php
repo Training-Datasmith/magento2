@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Cache\InvalidateLogger;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\PageCache\Model\Cache\Server;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ServerTest extends TestCase
@@ -117,9 +118,9 @@ class ServerTest extends TestCase
                 [
                     ['host' => '127.0.0.1', 'port' => 8080],
                     ['host' => '127.0.0.2', 'port' => 1234],
-                    ['host' => 'host']
-                ]
-            ]
+                    ['host' => 'host'],
+                ],
+            ],
         ];
     }
 }

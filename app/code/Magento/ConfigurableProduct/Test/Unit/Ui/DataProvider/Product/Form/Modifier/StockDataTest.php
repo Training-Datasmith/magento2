@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class StockDataTest extends TestCase
         $this->stockDataModifier = $this->objectManagerHelper->getObject(
             StockDataModifier::class,
             [
-                'locator' => $this->productLocatorMock
+                'locator' => $this->productLocatorMock,
             ]
         );
     }

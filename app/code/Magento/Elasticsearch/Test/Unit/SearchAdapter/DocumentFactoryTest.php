@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class DocumentFactoryTest extends TestCase
             DocumentFactory::class,
             [
                 'objectManager' => $this->objectManager,
-                'entityMetadata' => $this->entityMetadata
+                'entityMetadata' => $this->entityMetadata,
             ]
         );
     }

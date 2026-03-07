@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class Category implements RevertibleDataFixtureInterface
         'include_in_menu' => true,
         'available_sort_by' => [],
         'custom_attributes' => [
-            'default_sort_by' => 'position'
+            'default_sort_by' => 'position',
         ],
         'extension_attributes' => [],
         'created_at' => null,
@@ -74,7 +75,7 @@ class Category implements RevertibleDataFixtureInterface
 
         return $service->execute(
             [
-                'category' => $this->prepareData($data)
+                'category' => $this->prepareData($data),
             ]
         );
     }
@@ -87,7 +88,7 @@ class Category implements RevertibleDataFixtureInterface
         $service = $this->serviceFactory->create(CategoryRepositoryInterface::class, 'deleteByIdentifier');
         $service->execute(
             [
-                'categoryId' => $data->getId()
+                'categoryId' => $data->getId(),
             ]
         );
     }

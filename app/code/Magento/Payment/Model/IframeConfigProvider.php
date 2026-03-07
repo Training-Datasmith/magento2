@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -31,17 +34,17 @@ class IframeConfigProvider implements ConfigProviderInterface
     /**
      * 30 sec
      */
-    const TIMEOUT_TIME = 30000;
+    public const TIMEOUT_TIME = 30000;
 
     /**
      * Default length of Cc year field
      */
-    const DEFAULT_YEAR_LENGTH = 2;
+    public const DEFAULT_YEAR_LENGTH = 2;
 
     /**
      * Checkout identifier for transparent iframe payments
      */
-    const CHECKOUT_IDENTIFIER = 'checkout_flow';
+    public const CHECKOUT_IDENTIFIER = 'checkout_flow';
 
     /**
      * @var Repository
@@ -115,9 +118,9 @@ class IframeConfigProvider implements ConfigProviderInterface
                     'cgiUrl' => [$this->methodCode => $this->getCgiUrl()],
                     'placeOrderUrl' => [$this->methodCode => $this->getPlaceOrderUrl()],
                     'saveOrderUrl' => [$this->methodCode => $this->getSaveOrderUrl()],
-                    'expireYearLength' => [$this->methodCode => $this->getExpireDateYearLength()]
-                ]
-            ]
+                    'expireYearLength' => [$this->methodCode => $this->getExpireDateYearLength()],
+                ],
+            ],
         ];
     }
 
@@ -146,7 +149,7 @@ class IframeConfigProvider implements ConfigProviderInterface
      */
     protected function getExpireDateYearLength()
     {
-         return (int)$this->getMethodConfigData('cc_year_length') ?: self::DEFAULT_YEAR_LENGTH;
+        return (int)$this->getMethodConfigData('cc_year_length') ?: self::DEFAULT_YEAR_LENGTH;
     }
 
     /**
@@ -195,7 +198,7 @@ class IframeConfigProvider implements ConfigProviderInterface
         return $this->urlBuilder->getUrl(
             $this->getMethodConfigData('place_order_url'),
             [
-                '_secure' => $this->request->isSecure()
+                '_secure' => $this->request->isSecure(),
             ]
         );
     }

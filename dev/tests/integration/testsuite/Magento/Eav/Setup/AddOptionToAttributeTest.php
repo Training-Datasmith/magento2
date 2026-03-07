@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class AddOptionToAttributeTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['new1', 'new2'],
-                'attribute_id' => $this->attributeId
+                'attribute_id' => $this->attributeId,
             ]
         );
         $optionsAfter = $this->getAttributeOptions(false);
@@ -113,7 +114,7 @@ class AddOptionToAttributeTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['Black', 'White'],
-                'attribute_id' => $this->attributeId
+                'attribute_id' => $this->attributeId,
             ]
         );
         $optionsAfter = $this->getAttributeOptions();
@@ -132,7 +133,7 @@ class AddOptionToAttributeTest extends TestCase
         $this->operation->execute(
             [
                 'values' => [666 => 'White', 777 => 'Black'],
-                'attribute_id' => $this->attributeId
+                'attribute_id' => $this->attributeId,
             ]
         );
         $optionsAfter = $this->getAttributeOptions();
@@ -150,7 +151,7 @@ class AddOptionToAttributeTest extends TestCase
         $this->operation->execute(
             [
                 'values' => [666 => 'Black', 'NewOption'],
-                'attribute_id' => $this->attributeId
+                'attribute_id' => $this->attributeId,
             ]
         );
         $updatedOptions = $this->getAttributeOptions();

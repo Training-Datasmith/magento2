@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,7 +11,6 @@ namespace Magento\GroupedProduct\Setup\Patch\Data;
 use Magento\Catalog\Model\Product;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -68,7 +69,7 @@ class InitializeGroupedProductLinks implements DataPatchInterface, PatchVersionI
                 ['c' => $this->moduleDataSetup->getTable('catalog_product_link_attribute')]
             )
             ->where(
-                "c.link_type_id=?",
+                'c.link_type_id=?',
                 \Magento\GroupedProduct\Model\ResourceModel\Product\Link::LINK_TYPE_GROUPED
             );
         $result = $this->moduleDataSetup->getConnection()->fetchAll($select);
@@ -82,7 +83,7 @@ class InitializeGroupedProductLinks implements DataPatchInterface, PatchVersionI
                 [
                     'link_type_id' => \Magento\GroupedProduct\Model\ResourceModel\Product\Link::LINK_TYPE_GROUPED,
                     'product_link_attribute_code' => 'qty',
-                    'data_type' => 'decimal'
+                    'data_type' => 'decimal',
                 ],
             ];
             $this->moduleDataSetup->getConnection()->insertMultiple(

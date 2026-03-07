@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class GalleryOptionsTest extends TestCase
         $this->viewConfig = $this->createConfiguredMock(
             Config::class,
             [
-                'getViewConfig' => $this->configView
+                'getViewConfig' => $this->configView,
             ]
         );
 
@@ -76,7 +77,7 @@ class GalleryOptionsTest extends TestCase
             Context::class,
             [
                 'getEscaper' => $this->escaper,
-                'getViewConfig' => $this->viewConfig
+                'getViewConfig' => $this->viewConfig,
             ]
         );
 
@@ -89,7 +90,7 @@ class GalleryOptionsTest extends TestCase
         $this->model =  $objectManager->getObject(GalleryOptions::class, [
             'context' => $this->context,
             'jsonSerializer' => $this->jsonSerializer,
-            'gallery' => $this->gallery
+            'gallery' => $this->gallery,
         ]);
     }
 
@@ -115,7 +116,7 @@ class GalleryOptionsTest extends TestCase
             ['product_page_image_medium','height',null, 100],
             ['product_page_image_medium','width',null, 200],
             ['product_page_image_small','height',null, 300],
-            ['product_page_image_small','width',null, 400]
+            ['product_page_image_small','width',null, 400],
         ];
 
         $this->configView->expects($this->any())
@@ -193,7 +194,7 @@ class GalleryOptionsTest extends TestCase
     {
         $configMap = [
             ['Magento_Catalog', 'gallery/fullscreen/thumbmargin', false],
-            ['Magento_Catalog', 'gallery/fullscreen/transition/duration', false]
+            ['Magento_Catalog', 'gallery/fullscreen/transition/duration', false],
         ];
 
         $this->configView->expects($this->any())
@@ -213,7 +214,7 @@ class GalleryOptionsTest extends TestCase
         $configMap = [
             ['Magento_Catalog', 'gallery/fullscreen/keyboard', false],
             ['Magento_Catalog', 'gallery/fullscreen/thumbmargin', false],
-            ['Magento_Catalog', 'gallery/fullscreen/transition/duration', false]
+            ['Magento_Catalog', 'gallery/fullscreen/transition/duration', false],
         ];
 
         $this->configView->expects($this->any())

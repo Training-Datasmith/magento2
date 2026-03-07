@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class RelativePathConverterTest extends TestCase
             ['current/node/path', 'relative/node/path', 'relative/node/path'],
             ['current/node', 'siblingRelativeNode', 'current/siblingRelativeNode'],
             ['current/node', '*/siblingNode', 'current/siblingNode'],
-            ['very/deep/node/hierarchy', '*/*/sourceNode', 'very/deep/sourceNode']
+            ['very/deep/node/hierarchy', '*/*/sourceNode', 'very/deep/sourceNode'],
         ];
     }
 }

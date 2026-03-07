@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Swatches\Test\Unit\Model;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Model\ConvertSwatchAttributeFrontendInput;
 use Magento\Swatches\Model\Swatch;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for \Magento\Swatches\Model\ConvertSwatchAttributeFrontendInput.
@@ -48,39 +49,39 @@ class ConvertSwatchAttributeFrontendInputTest extends TestCase
         return [
             [
                 [
-                    'frontend_input' => 'swatch_visual'
+                    'frontend_input' => 'swatch_visual',
                 ],
                 [
                     'frontend_input' => 'select',
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_VISUAL,
-                ]
+                ],
             ],
             [
                 [
-                    'frontend_input' => 'swatch_text'
+                    'frontend_input' => 'swatch_text',
                 ],
                 [
                     'frontend_input' => 'select',
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_TEXT,
-                    'use_product_image_for_swatch' => 0
-                ]
+                    'use_product_image_for_swatch' => 0,
+                ],
             ],
             [
                 [
-                    'frontend_input' => 'select'
+                    'frontend_input' => 'select',
                 ],
                 [
                     'frontend_input' => 'select',
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_DROPDOWN,
-                ]
+                ],
             ],
             [
                 [],
-                []
+                [],
             ],
             [
                 null,
-                null
+                null,
             ],
         ];
     }

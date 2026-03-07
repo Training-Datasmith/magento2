@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\ObjectManager\Config\Mapper\ArgumentParser;
 use Magento\Framework\ObjectManager\Config\Mapper\Dom;
 use Magento\Framework\Stdlib\BooleanUtils;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DomTest extends TestCase
 {
@@ -110,14 +111,14 @@ class DomTest extends TestCase
             [
                 '<?xml version="1.0"?><config><virtualType name="some_type">' .
                 '<wrong_node name="wrong_node" />' .
-                '</virtualType></config>'
+                '</virtualType></config>',
             ],
             [
                 '<?xml version="1.0"?><config>' .
                 '<preference for="some_interface" type="some_class" />' .
                 '<wrong_node name="wrong_node" />' .
-                '</config>'
-            ]
+                '</config>',
+            ],
         ];
     }
 }

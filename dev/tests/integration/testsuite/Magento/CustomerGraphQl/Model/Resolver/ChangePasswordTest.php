@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,9 +64,9 @@ class ChangePasswordTest extends TestCase
             [
                 'data' => [
                     'changeCustomerPassword' => [
-                        'email' => $customer->getEmail()
-                    ]
-                ]
+                        'email' => $customer->getEmail(),
+                    ],
+                ],
             ],
             Bootstrap::getObjectManager()->get(SerializerInterface::class)->unserialize($response->getContent())
         );

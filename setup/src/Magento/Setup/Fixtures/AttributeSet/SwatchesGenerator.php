@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Fixtures\AttributeSet;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Swatches\Model\Swatch;
 
 /**
@@ -18,21 +20,21 @@ class SwatchesGenerator
      *
      * @var int
      */
-    const GENERATED_SWATCH_WIDTH = 110;
+    public const GENERATED_SWATCH_WIDTH = 110;
 
     /**
      * Generated swatch image height in pixels.
      *
      * @var int
      */
-    const GENERATED_SWATCH_HEIGHT = 90;
+    public const GENERATED_SWATCH_HEIGHT = 90;
 
     /**
      * File name for temporary swatch image file.
      *
      * @var string
      */
-    const GENERATED_SWATCH_TMP_NAME = 'tmp_swatch.jpg';
+    public const GENERATED_SWATCH_TMP_NAME = 'tmp_swatch.jpg';
 
     /**
      * @var \Magento\Swatches\Helper\Media
@@ -134,7 +136,7 @@ class SwatchesGenerator
         $this->imagesGenerator->generate([
             'image-width' => self::GENERATED_SWATCH_WIDTH,
             'image-height' => self::GENERATED_SWATCH_HEIGHT,
-            'image-name' => $imageName
+            'image-name' => $imageName,
         ]);
 
         $imagePath = substr($this->swatchHelper->moveImageFromTmp($imageName), 1);

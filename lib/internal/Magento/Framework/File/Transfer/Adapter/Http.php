@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Framework\File\Transfer\Adapter;
 
-use Magento\Framework\HTTP\PhpEnvironment\Response;
-use Magento\Framework\File\Mime;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\App\ObjectManager;
 use Laminas\Http\Headers;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\File\Mime;
+use Magento\Framework\HTTP\PhpEnvironment\Response;
 
 /**
  * File adapter to send the file to the client.
@@ -78,7 +80,7 @@ class Http
                 echo $buffer;
             }
             if (!feof($handle)) {
-                throw new \UnexpectedValueException("Unexpected end of file");
+                throw new \UnexpectedValueException('Unexpected end of file');
             }
             fclose($handle);
         }
@@ -100,7 +102,7 @@ class Http
         } elseif (is_array($options) && isset($options['filepath'])) {
             $filePath = $options['filepath'];
         } else {
-            throw new \InvalidArgumentException("Filename is not set.");
+            throw new \InvalidArgumentException('Filename is not set.');
         }
 
         return $filePath;

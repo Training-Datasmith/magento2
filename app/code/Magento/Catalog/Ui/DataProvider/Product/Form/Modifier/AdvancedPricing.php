@@ -1,20 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
-use Magento\Customer\Model\Customer\Source\GroupSourceInterface;
-use Magento\Directory\Helper\Data;
-use Magento\Framework\App\ObjectManager;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Customer\Model\Customer\Source\GroupSourceInterface;
+use Magento\Directory\Helper\Data;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Module\Manager as ModuleManager;
+use Magento\Framework\Stdlib\ArrayManager;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Container;
 use Magento\Ui\Component\Form\Element\DataType\Number;
 use Magento\Ui\Component\Form\Element\DataType\Price;
@@ -23,7 +27,6 @@ use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\Select;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Modal;
-use Magento\Framework\Stdlib\ArrayManager;
 
 /**
  * Class for Product Modifier Advanced Pricing
@@ -303,7 +306,7 @@ class AdvancedPricing extends AbstractModifier
             [
                 'label' => __('All Websites') . ' [' . $this->directoryHelper->getBaseCurrencyCode() . ']',
                 'value' => 0,
-            ]
+            ],
         ];
         $product = $this->locator->getProduct();
 
@@ -429,7 +432,7 @@ class AdvancedPricing extends AbstractModifier
                     [
                         'targetName' => $this->scopeName . '.advanced_pricing_modal',
                         'actionName' => 'toggleModal',
-                    ]
+                    ],
                 ],
                 'title' => __('Advanced Pricing'),
                 'additionalForGroup' => true,
@@ -571,11 +574,11 @@ class AdvancedPricing extends AbstractModifier
                                         'imports' => [
                                             'priceValue' => '${ $.provider }:data.product.price',
                                             '__disableTmpl' => ['priceValue' => false, 'addbefore' => false],
-                                            'addbefore' => '${ $.parentName }:currency'
+                                            'addbefore' => '${ $.parentName }:currency',
                                         ],
                                         'tracks' => [
-                                            'addbefore' => true
-                                        ]
+                                            'addbefore' => true,
+                                        ],
                                     ],
                                 ],
                             ],
@@ -636,7 +639,7 @@ class AdvancedPricing extends AbstractModifier
                 [
                     'label' => __('To'),
                     'scopeLabel' => null,
-                    'additionalClasses' => 'admin__field-date'
+                    'additionalClasses' => 'admin__field-date',
                 ]
             );
             // Move special_to_date to special_from_date container
@@ -681,9 +684,9 @@ class AdvancedPricing extends AbstractModifier
                             [
                                 'targetName' => '${ $.name }',
                                 '__disableTmpl' => ['targetName' => false],
-                                'actionName' => 'actionDone'
-                            ]
-                        ]
+                                'actionName' => 'actionDone',
+                            ],
+                        ],
                     ],
                 ],
             ],

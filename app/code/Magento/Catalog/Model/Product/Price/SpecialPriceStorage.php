@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,13 +11,13 @@ namespace Magento\Catalog\Model\Product\Price;
 use Magento\Catalog\Api\Data\SpecialPriceInterface;
 use Magento\Catalog\Api\Data\SpecialPriceInterfaceFactory;
 use Magento\Catalog\Api\SpecialPriceStorageInterface;
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\Product\Price\Validation\InvalidSkuProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\Result;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Catalog\Helper\Data;
 use Magento\Store\Api\StoreRepositoryInterface;
 
 /**

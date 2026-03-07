@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -182,36 +183,36 @@ class DateTest extends TestCase
                 'locale' => 'en_US',
                 'index' => 'period',
                 'period' => 'year',
-                'result' => '2000'
+                'result' => '2000',
             ],
             [
                 'data' => '2030',
                 'locale' => 'en_US',
                 'index' => 'period',
                 'period' => 'year',
-                'result' => '2030'
+                'result' => '2030',
             ],
             [
                 'data' => '2000-01',
                 'locale' => 'en_US',
                 'index' => 'period',
                 'period' => 'month',
-                'result' => '1/2000'
+                'result' => '1/2000',
             ],
             [
                 'data' => '2030-12',
                 'locale' => 'en_US',
                 'index' => 'period',
                 'period' => 'month',
-                'result' => '12/2030'
+                'result' => '12/2030',
             ],
             [
                 'data' => '2014-06-25',
                 'locale' => 'en_US',
                 'index' => 'period',
                 'period' => 'day',
-                'result' => 'Jun 25, 2014'
-            ]
+                'result' => 'Jun 25, 2014',
+            ],
         ];
     }
 

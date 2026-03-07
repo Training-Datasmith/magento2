@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Msrp\Model\Product;
 
 use Magento\Msrp\Model\Product\Attribute\Source\Type\Price as TypePrice;

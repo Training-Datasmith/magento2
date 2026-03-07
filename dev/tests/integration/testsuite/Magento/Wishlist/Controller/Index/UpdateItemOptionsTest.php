@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class UpdateItemOptionsTest extends AbstractController
             'qty' => 5,
         ];
         $this->performUpdateWishListItemRequest($params);
-        $message = sprintf("%s has been updated in your Wish List.", $item->getProduct()->getName());
+        $message = sprintf('%s has been updated in your Wish List.', $item->getProduct()->getName());
         $this->assertSessionMessages($this->equalTo([(string)__($message)]), MessageInterface::TYPE_SUCCESS);
         $this->assertRedirect($this->stringContains('wishlist/index/index/wishlist_id/' . $item->getWishlistId()));
         $this->assertUpdatedItem(
@@ -171,7 +172,7 @@ class UpdateItemOptionsTest extends AbstractController
             'qty' => 1,
         ];
         $this->performUpdateWishListItemRequest($params);
-        $message = sprintf("%s has been updated in your Wish List.", $item->getProduct()->getName());
+        $message = sprintf('%s has been updated in your Wish List.', $item->getProduct()->getName());
         $this->assertSessionMessages($this->equalTo([(string)__($message)]), MessageInterface::TYPE_SUCCESS);
         $this->assertRedirect($this->stringContains('wishlist/index/index/wishlist_id/' . $item->getWishlistId()));
         $this->assertUpdatedItem(

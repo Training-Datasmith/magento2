@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Block\Adminhtml\Template\Edit;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\TemplateTypesInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Test class for \Magento\Email\Block\Adminhtml\Template\Edit\Form
@@ -41,7 +44,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
             'template_variables',
             'insert_variable',
             'template_text',
-            'template_styles'
+            'template_styles',
         ];
 
         $this->objectManager = Bootstrap::getObjectManager();
@@ -53,8 +56,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
             \Magento\Email\Block\Adminhtml\Template\Edit\Form::class,
             [
                 'data' => [
-                    'email_template' => $this->template
-                ]
+                    'email_template' => $this->template,
+                ],
             ]
         );
         $this->prepareFormMethod = new \ReflectionMethod(

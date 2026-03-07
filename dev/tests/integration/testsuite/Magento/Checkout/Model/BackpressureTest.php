@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class BackpressureTest extends TestCase
                 GuestPaymentInformationManagementInterface::class,
                 'savePaymentInformationAndPlaceOrder',
                 '/V1/guest-carts/:cartId/payment-information',
-                50
+                50,
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
@@ -74,8 +75,8 @@ class BackpressureTest extends TestCase
                 PaymentInformationManagementInterface::class,
                 'savePaymentInformationAndPlaceOrder',
                 '/V1/carts/mine/payment-information',
-                100
-            ]
+                100,
+            ],
         ];
     }
 

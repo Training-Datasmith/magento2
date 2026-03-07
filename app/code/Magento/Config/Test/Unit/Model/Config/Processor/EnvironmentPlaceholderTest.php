@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -96,18 +97,18 @@ class EnvironmentPlaceholderTest extends TestCase
                         'default/test2',
                         [
                             'default' => [
-                                'test' => 1
-                            ]
+                                'test' => 1,
+                            ],
                         ],
                         2,
                         '/',
                         [
                             'default' => [
                                 'test' => 1,
-                                'test2' => 2
-                            ]
+                                'test2' => 2,
+                            ],
                         ],
-                    ]
+                    ],
                 ]
             );
 
@@ -115,8 +116,8 @@ class EnvironmentPlaceholderTest extends TestCase
             [
                 'default' => [
                     'test' => 1,
-                    'test2' => 2
-                ]
+                    'test2' => 2,
+                ],
             ],
             $this->model->process([])
         );

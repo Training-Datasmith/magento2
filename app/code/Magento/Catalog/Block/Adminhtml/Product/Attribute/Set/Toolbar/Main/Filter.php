@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,9 +9,8 @@
 /**
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Set\Toolbar\Main;
 
-use Magento\Backend\Block\Widget\Form;
+namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Set\Toolbar\Main;
 
 class Filter extends \Magento\Backend\Block\Widget\Form\Generic
 {
@@ -55,7 +56,7 @@ class Filter extends \Magento\Backend\Block\Widget\Form\Generic
                 'class' => 'left-col-block',
                 'no_span' => true,
                 'values' => $collection,
-                'onchange' => 'this.form.submit()'
+                'onchange' => 'this.form.submit()',
             ]
         );
 

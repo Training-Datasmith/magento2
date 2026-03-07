@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Dynamic\Algorithm;
 
-use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Search\Adapter\OptionsInterface;
 use Magento\Framework\Search\Dynamic\DataProviderInterface;
 use Magento\Framework\Search\Dynamic\EntityStorage;

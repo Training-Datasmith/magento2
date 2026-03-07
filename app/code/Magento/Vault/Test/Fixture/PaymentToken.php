@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class PaymentToken implements DataFixtureInterface
             self::DEFAULT_DATA,
             [
                 'expires_at' => strtotime('+1 year'),
-                'public_hash' => $this->encryptor->hash(uniqid((string) $data['customer_id']))
+                'public_hash' => $this->encryptor->hash(uniqid((string) $data['customer_id'])),
             ],
             $data
         );

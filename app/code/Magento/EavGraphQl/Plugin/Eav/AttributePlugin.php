@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -29,12 +30,12 @@ class AttributePlugin
             $result,
             [
                 sprintf(
-                    "%s_%s_%s",
+                    '%s_%s_%s',
                     Attribute::CACHE_TAG,
                     $subject->getEntityType()->getEntityTypeCode(),
                     $subject->getOrigData(AttributeInterface::ATTRIBUTE_CODE)
                         ?? $subject->getData(AttributeInterface::ATTRIBUTE_CODE)
-                )
+                ),
             ]
         );
     }

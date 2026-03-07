@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +20,9 @@ use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionMethod;
 use ReflectionProperty;
 
@@ -98,24 +99,24 @@ class AbstractDbTest extends TestCase
         return [
             [
                 'fieldNameString',
-                ['fieldNameString']
+                ['fieldNameString'],
             ],
             [
                 [
                     'fieldNameArray',
-                    'FieldNameArraySecond'
+                    'FieldNameArraySecond',
                 ],
                 [
                     [
                         'fieldNameArray',
-                        'FieldNameArraySecond'
-                    ]
-                ]
+                        'FieldNameArraySecond',
+                    ],
+                ],
             ],
             [
                 null,
-                [null]
-            ]
+                [null],
+            ],
         ];
     }
 
@@ -192,15 +193,15 @@ class AbstractDbTest extends TestCase
         return [
             [
                 'tableName',
-                'tableName'
+                'tableName',
             ],
             [
                 [
                     'tableName',
-                    'entity_suffix'
+                    'entity_suffix',
                 ],
-                'tableName_entity_suffix'
-            ]
+                'tableName_entity_suffix',
+            ],
         ];
     }
 
@@ -259,8 +260,8 @@ class AbstractDbTest extends TestCase
             ],
             [
                 14,
-                'checksum'
-            ]
+                'checksum',
+            ],
         ];
     }
 
@@ -455,7 +456,7 @@ class AbstractDbTest extends TestCase
     {
         return [
             [true, true],
-            [null, false]
+            [null, false],
         ];
     }
 
@@ -523,7 +524,7 @@ class AbstractDbTest extends TestCase
             [
                 'id'    => 0,
                 'name'  => 'Test Name',
-                'value' => 'Test Value'
+                'value' => 'Test Value',
             ]
         );
         $abstractModelMock->afterLoad();
@@ -602,13 +603,13 @@ class AbstractDbTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(['lastInsertId', 'insert'])
             ->getMock();
-        
+
         if ($pkIncrement) {
             $connectionMock->expects($this->once())
                 ->method('lastInsertId')
                 ->willReturn('generated_id');
         }
-        
+
         $getConnectionInvokedCount = $pkIncrement ? 2 : 1;
         $model->expects($this->exactly($getConnectionInvokedCount))
             ->method('getConnection')

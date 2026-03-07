@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Exception;
 use Magento\Customer\Api\CustomerMetadataInterface;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Eav\Test\Fixture\Attribute;
+use Magento\Framework\Exception\AuthenticationException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Framework\Exception\AuthenticationException;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\TestFramework\Helper\Bootstrap;
 
 #[
     DataFixture(Customer::class, ['email' => 'customer@example.com'], as: 'customer'),
@@ -91,7 +92,7 @@ class CustomerEmailUpdateTest extends GraphQlAbstract
                 'email' => '',
                 'password' => 'password',
                 'message' => '"" is not a valid email address.',
-            ]
+            ],
         ];
     }
 

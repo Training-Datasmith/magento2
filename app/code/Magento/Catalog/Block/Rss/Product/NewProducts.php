@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Rss\Product;
 
 use Magento\Framework\App\Rss\DataProviderInterface as DProviderInterface;
@@ -100,7 +103,7 @@ class NewProducts extends \Magento\Framework\View\Element\AbstractBlock implemen
 
             $this->_eventManager->dispatch('rss_catalog_new_xml_callback', [
                 'row' => $item->getData(),
-                'product' => $item
+                'product' => $item,
             ]);
 
             if (!$item->getAllowedInRss()) {
@@ -171,7 +174,7 @@ class NewProducts extends \Magento\Framework\View\Element\AbstractBlock implemen
                 [
                     'display_minimal_price'  => true,
                     'use_link_for_as_low_as' => true,
-                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
                 ]
             );
         }

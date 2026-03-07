@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Model\QuoteIdMask;
 
 /**
  * Class GuestCollectRatesTest checks that totals will be recollected properly with new shipping method
  */
 class GuestCollectRatesTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteGuestCartTotalManagementV1';
-    const RESOURCE_PATH = '/V1/guest-carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteGuestCartTotalManagementV1';
+    public const RESOURCE_PATH = '/V1/guest-carts/';
 
     /**
      * @var ObjectManager
@@ -56,10 +59,10 @@ class GuestCollectRatesTest extends WebapiAbstract
 
         $cartId = $quoteIdMask->getMaskedId();
         $requestData = [
-            "shippingMethodCode" => "freeshipping",
-            "shippingCarrierCode" => "freeshipping",
-            "paymentMethod" => [
-                "method" => "checkmo",
+            'shippingMethodCode' => 'freeshipping',
+            'shippingCarrierCode' => 'freeshipping',
+            'paymentMethod' => [
+                'method' => 'checkmo',
             ],
         ];
 

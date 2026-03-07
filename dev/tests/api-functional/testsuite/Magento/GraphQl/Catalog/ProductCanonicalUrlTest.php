@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All rights reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Catalog;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Indexer\Test\Fixture\Indexer as IndexerFixture;
 use Magento\TestFramework\Fixture\Config;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test for getting canonical_url for products

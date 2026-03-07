@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Swatches\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
@@ -20,6 +20,7 @@ use Magento\Swatches\Model\ResourceModel\Swatch\CollectionFactory;
 use Magento\Swatches\Model\Swatch;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test product attribute option management API for swatch attribute type
@@ -135,7 +136,7 @@ class ProductAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_VISUAL,
                     'option' => [
 
-                    ]
+                    ],
                 ],
                 'payload' => [
                     AttributeOptionInterface::LABEL => 'Black',
@@ -158,7 +159,7 @@ class ProductAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_VISUAL,
                     'option' => [
 
-                    ]
+                    ],
                 ],
                 'payload' => [
                     AttributeOptionInterface::LABEL => 'Black',
@@ -181,7 +182,7 @@ class ProductAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_TEXT,
                     'option' => [
 
-                    ]
+                    ],
                 ],
                 'payload' => [
                     AttributeOptionInterface::LABEL => 'Small',
@@ -204,7 +205,7 @@ class ProductAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_TEXT,
                     'option' => [
 
-                    ]
+                    ],
                 ],
                 'payload' => [
                     AttributeOptionInterface::LABEL => 'Small',
@@ -227,7 +228,7 @@ class ProductAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_TEXT,
                     'option' => [
 
-                    ]
+                    ],
                 ],
                 'payload' => [
                     AttributeOptionInterface::LABEL => 'Small',

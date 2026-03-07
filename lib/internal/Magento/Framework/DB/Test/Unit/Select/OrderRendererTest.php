@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class OrderRendererTest extends TestCase
         $parts = [
             10,
             'ASC',
-            ['field1', 1]
+            ['field1', 1],
         ];
 
         $quoteMock->expects($this->any())

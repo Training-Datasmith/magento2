@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class ProductTest extends TestCase
                 'getConnection',
                 '_addFilter',
                 '_joinAttribute',
-                'prepareSelectStatement'
+                'prepareSelectStatement',
             ]
         );
         $this->model->__construct(
@@ -86,13 +87,13 @@ class ProductTest extends TestCase
             $this->createMock(SitemapHelper::class),
             $this->createConfiguredMock(ProductResource::class, ['getLinkField' => 'entity_id']),
             $this->createConfiguredMock(StoreManagerInterface::class, [
-                'getStore' => $this->createConfiguredMock(Store::class, ['getId' => 1])
+                'getStore' => $this->createConfiguredMock(Store::class, ['getId' => 1]),
             ]),
             $this->createConfiguredMock(Visibility::class, ['getVisibleInSiteIds' => [1, 2, 3, 4]]),
             $this->createConfiguredMock(Status::class, ['getVisibleStatusIds' => [1]]),
             $this->mediaGalleryResourceModelMock,
             $this->createConfiguredMock(ReadHandler::class, [
-                'getAttribute' => $this->createConfiguredMock(Attribute::class, ['getId' => 123])
+                'getAttribute' => $this->createConfiguredMock(Attribute::class, ['getId' => 123]),
             ]),
             $this->createMock(Config::class),
             null,
@@ -101,7 +102,7 @@ class ProductTest extends TestCase
             null,
             $this->createMock(UrlBuilder::class),
             $this->createConfiguredMock(ProductSelectBuilder::class, [
-                'execute' => $this->createMock(Select::class)
+                'execute' => $this->createMock(Select::class),
             ]),
             $this->sitemapConfigReaderMock
         );

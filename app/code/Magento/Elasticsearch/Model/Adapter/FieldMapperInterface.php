@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter;
 
 /**
@@ -14,9 +17,9 @@ interface FieldMapperInterface
     /**#@+
      * Text flags for field mapping context
      */
-    const TYPE_QUERY = 'text';
-    const TYPE_SORT = 'sort';
-    const TYPE_FILTER = 'default';
+    public const TYPE_QUERY = 'text';
+    public const TYPE_SORT = 'sort';
+    public const TYPE_FILTER = 'default';
     /**#@-*/
 
     /**

@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Class constructor validator. Validates arguments sequence
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Validator;
 
 use Magento\Framework\Code\ValidatorInterface;
 
 class ArgumentSequence implements ValidatorInterface
 {
-    const REQUIRED = 'required';
+    public const REQUIRED = 'required';
 
-    const OPTIONAL = 'optional';
+    public const OPTIONAL = 'optional';
 
     /**
      * @var \Magento\Framework\Code\Reader\ArgumentsReader
@@ -87,7 +90,7 @@ class ArgumentSequence implements ValidatorInterface
                         implode(', $', array_keys($requiredSequence)),
                         PHP_EOL,
                         implode(', $', array_keys($classArguments)),
-                        PHP_EOL
+                        PHP_EOL,
                     ]
                 )
             );

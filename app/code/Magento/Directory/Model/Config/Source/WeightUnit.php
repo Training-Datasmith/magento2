@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class WeightUnit implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 'lbs', 'label' => __('lbs')],
-            ['value' => 'kgs', 'label' => __('kgs')]
+            ['value' => 'kgs', 'label' => __('kgs')],
         ];
     }
 }

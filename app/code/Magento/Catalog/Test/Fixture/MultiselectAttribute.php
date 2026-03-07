@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ class MultiselectAttribute extends SelectAttribute
 {
     private const DEFAULT_DATA = [
         'frontend_input' => 'multiselect',
-        'backend_type' => 'text'
+        'backend_type' => 'text',
     ];
 
     /**

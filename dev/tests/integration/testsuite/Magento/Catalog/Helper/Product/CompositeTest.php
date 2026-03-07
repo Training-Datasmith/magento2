@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -128,7 +129,7 @@ class CompositeTest extends TestCase
             'error_true' => [
                 'data' => [
                     'error' => true,
-                    'message' => 'Test Message'
+                    'message' => 'Test Message',
                 ],
                 'expectedErrorMessage' => 'Test Message',
             ],

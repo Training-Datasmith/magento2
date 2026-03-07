@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class OldDbValidator implements UpToDateValidatorInterface, DetailProviderInterf
                 }
 
                 $messages[] = sprintf(
-                    "<info>%20s %10s: %11s  ->  %-11s</info>",
+                    '<info>%20s %10s: %11s  ->  %-11s</info>',
                     $error[DbVersionInfo::KEY_MODULE],
                     $error[DbVersionInfo::KEY_TYPE],
                     $error[DbVersionInfo::KEY_CURRENT],
@@ -79,7 +80,7 @@ class OldDbValidator implements UpToDateValidatorInterface, DetailProviderInterf
      *
      * @return array
      */
-    public function getDetails() : array
+    public function getDetails(): array
     {
         $versionErrors = $this->dbVersionInfo->getDbVersionErrors();
         if (empty($versionErrors)) {
@@ -88,7 +89,7 @@ class OldDbValidator implements UpToDateValidatorInterface, DetailProviderInterf
 
         return [
             'timestamp' => date('Y-m-d H:i:s'),
-            'version_errors' => $versionErrors
+            'version_errors' => $versionErrors,
         ];
     }
 }

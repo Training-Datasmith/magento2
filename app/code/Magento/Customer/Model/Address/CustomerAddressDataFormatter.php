@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Customer\Model\Address;
 
 use Magento\Customer\Api\Data\AddressInterface;
-use Magento\Customer\Model\Address\Mapper as AddressMapper;
 use Magento\Customer\Model\Address\Config as AddressConfig;
+use Magento\Customer\Model\Address\Mapper as AddressMapper;
 
 /**
  * Provides method to format customer address data.
@@ -81,7 +82,7 @@ class CustomerAddressDataFormatter
             'inline' => $this->getCustomerAddressInline($customerAddress),
             'custom_attributes' => [],
             'extension_attributes' => $customerAddress->getExtensionAttributes(),
-            'vat_id' => $customerAddress->getVatId()
+            'vat_id' => $customerAddress->getVatId(),
         ];
 
         if ($customerAddress->getCustomAttributes()) {

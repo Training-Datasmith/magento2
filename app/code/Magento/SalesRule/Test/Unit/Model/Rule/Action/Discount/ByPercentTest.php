@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -244,7 +245,7 @@ class ByPercentTest extends TestCase
                     'originalAmount' => 87,
                     'baseOriginalAmount' => 67.5,
                 ],
-            ]
+            ],
         ];
     }
 
@@ -274,7 +275,7 @@ class ByPercentTest extends TestCase
             ['step' => 0, 'qty' => 23, 'expected' => 23],
             ['step' => 10, 'qty' => 23.5, 'expected' => 20],
             ['step' => 20, 'qty' => 33, 'expected' => 20],
-            ['step' => 25, 'qty' => 23, 'expected' => 0]
+            ['step' => 25, 'qty' => 23, 'expected' => 0],
         ];
     }
 }

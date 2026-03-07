@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class IAVSResponseTest extends TestCase
     public function testValidate($configValue, $iavs, $expected)
     {
         $response = new DataObject([
-            'iavs' => $iavs
+            'iavs' => $iavs,
         ]);
 
         /** @var PayflowConfig|MockObject $config */

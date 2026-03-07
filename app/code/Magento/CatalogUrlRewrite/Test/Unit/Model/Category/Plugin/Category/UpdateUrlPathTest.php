@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class UpdateUrlPathTest extends TestCase
                 'isObjectNew',
                 'isInRootCategoryList',
                 'getStoreIds',
-                'setStoreId'
+                'setStoreId',
             ]
         );
         $this->storeViewService = $this->createPartialMock(

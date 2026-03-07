@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -398,7 +400,7 @@ class Import extends AbstractModel
                 $validationResult->getErrorsCount(
                     [
                         ProcessingError::ERROR_LEVEL_CRITICAL,
-                        ProcessingError::ERROR_LEVEL_NOT_CRITICAL
+                        ProcessingError::ERROR_LEVEL_NOT_CRITICAL,
                     ]
                 )
             );
@@ -561,7 +563,7 @@ class Import extends AbstractModel
                     $this->getProcessedEntitiesCount(),
                     $this->getErrorAggregator()->getInvalidRowsCount(),
                     $this->getErrorAggregator()->getErrorsCount()
-                )
+                ),
             ];
             foreach ($this->getErrorAggregator()->getAllErrors() as $error) {
                 $logComments[] = $error->getErrorMessage();
@@ -589,7 +591,7 @@ class Import extends AbstractModel
         if (empty($ids)) {
             $idsFromPostData = $this->getData(self::FIELD_IMPORT_IDS);
             if (null !== $idsFromPostData && '' !== $idsFromPostData) {
-                $ids = explode(",", $idsFromPostData);
+                $ids = explode(',', $idsFromPostData);
             }
         }
 
@@ -679,7 +681,7 @@ class Import extends AbstractModel
     {
         $driver = $this->_varDirectory->getDriver();
         $string = $driver->fileGetContents($this->_varDirectory->getAbsolutePath($sourceFile));
-        if ($string !== false && substr($string, 0, 3) == pack("CCC", 0xef, 0xbb, 0xbf)) {
+        if ($string !== false && substr($string, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
             $string = substr($string, 3);
             $driver->filePutContents($this->_varDirectory->getAbsolutePath($sourceFile), $string);
         }
@@ -949,7 +951,7 @@ class Import extends AbstractModel
      *
      * @return int[]
      */
-    public function getValidatedIds() : array
+    public function getValidatedIds(): array
     {
         return $this->_getEntityAdapter()->getIds() ?? [];
     }

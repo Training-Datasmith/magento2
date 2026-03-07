@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Api\Data;
 
 /**
@@ -15,13 +18,13 @@ interface ShippingInformationInterface extends \Magento\Framework\Api\CustomAttr
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const SHIPPING_ADDRESS = 'shipping_address';
+    public const SHIPPING_ADDRESS = 'shipping_address';
 
-    const BILLING_ADDRESS = 'billing_address';
+    public const BILLING_ADDRESS = 'billing_address';
 
-    const SHIPPING_METHOD_CODE = 'shipping_method_code';
+    public const SHIPPING_METHOD_CODE = 'shipping_method_code';
 
-    const SHIPPING_CARRIER_CODE = 'shipping_carrier_code';
+    public const SHIPPING_CARRIER_CODE = 'shipping_carrier_code';
 
     /**#@-*/
 

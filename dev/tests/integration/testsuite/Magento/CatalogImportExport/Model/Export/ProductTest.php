@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Model\Export;
 
@@ -107,7 +108,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         'qty_increments',
         'use_config_enable_qty_inc',
         'enable_qty_increments',
-        'is_decimal_divided'
+        'is_decimal_divided',
     ];
 
     protected function setUp(): void
@@ -243,13 +244,13 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         return [
             'json' => [
                 '{"type": "basic", "unit": "inch", "sign": "(")", "size": "1.5""}',
-                '"text_attribute={""type"": ""basic"", ""unit"": ""inch"", ""sign"": ""("")"", ""size"": ""1.5""""}"'
+                '"text_attribute={""type"": ""basic"", ""unit"": ""inch"", ""sign"": ""("")"", ""size"": ""1.5""""}"',
             ],
             'markup' => [
                 '<div data-content>Element type is basic, measured in inches ' .
                 '(marked with sign (")) with size 1.5", mid-price range</div>',
                 '"text_attribute=<div data-content>Element type is basic, measured in inches ' .
-                '(marked with sign ("")) with size 1.5"", mid-price range</div>"'
+                '(marked with sign ("")) with size 1.5"", mid-price range</div>"',
             ],
         ];
     }
@@ -438,7 +439,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
             [
                 'rowCustomizer' => $rowCustomizerMock,
                 'logger' => $loggerMock,
-                'collection' => $collection
+                'collection' => $collection,
             ]
         );
 
@@ -457,7 +458,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
     {
         $this->model->setParameters(
             [
-                \Magento\ImportExport\Model\Export::FIELDS_ENCLOSURE => 1
+                \Magento\ImportExport\Model\Export::FIELDS_ENCLOSURE => 1,
             ]
         );
 
@@ -492,8 +493,8 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         $this->model->setParameters(
             [
                 \Magento\ImportExport\Model\Export::FILTER_ELEMENT_GROUP => [
-                    'category_ids' => '2,13'
-                ]
+                    'category_ids' => '2,13',
+                ],
             ]
         );
 
@@ -698,7 +699,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
 
         $expectedData = [
             $globalStoreCode => 10.0,
-            $secondStoreCode => 9.99
+            $secondStoreCode => 9.99,
         ];
 
         /** @var \Magento\Store\Model\Store $store */
@@ -912,7 +913,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
         );
         $this->model->setParameters(
             [
-                \Magento\ImportExport\Model\Export::FILTER_ELEMENT_GROUP => $filters
+                \Magento\ImportExport\Model\Export::FILTER_ELEMENT_GROUP => $filters,
             ]
         );
         return $this->model->export();
@@ -959,7 +960,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
     {
         $sku = $this->fixtures->get('p1')->getSku();
         $exportFilter = [
-            'sku' => $sku
+            'sku' => $sku,
         ];
         $exportManager = $this->objectManager->get(ExportManagementInterface::class);
         $exportInfo = $this->objectManager->create(LocalizedExportInfoInterface::class);

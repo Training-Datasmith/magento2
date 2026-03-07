@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Test\Fixture;
 
 use Magento\Framework\DataObject;
-use Magento\TestFramework\Fixture\LegacyDataFixturePathResolver;
 use Magento\TestFramework\Fixture\LegacyDataFixture;
+use Magento\TestFramework\Fixture\LegacyDataFixturePathResolver;
 use PHPUnit\Framework\TestCase;
 
 /**

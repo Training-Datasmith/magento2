@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector\Http\Client;
 
 use Laminas\Http\Response;
 use Magento\Analytics\Model\Connector\Http\ConverterInterface;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\HTTP\Adapter\CurlFactory;
 use Magento\Framework\HTTP\ResponseFactory;
+use Psr\Log\LoggerInterface;
 
 /**
  * A CURL HTTP client.
@@ -23,37 +26,13 @@ class Curl implements \Magento\Analytics\Model\Connector\Http\ClientInterface
      */
     private $curlFactory;
 
-    /**
-     * @var ResponseFactory
-     */
-    private $responseFactory;
-
-    /**
-     * @var ConverterInterface
-     */
-    private $converter;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @param CurlFactory $curlFactory
-     * @param ResponseFactory $responseFactory
-     * @param ConverterInterface $converter
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         CurlFactory $curlFactory,
-        ResponseFactory $responseFactory,
-        ConverterInterface $converter,
-        LoggerInterface $logger
+        private readonly ResponseFactory $responseFactory,
+        private readonly ConverterInterface $converter,
+        private readonly LoggerInterface $logger
     ) {
         $this->curlFactory = $curlFactory;
-        $this->responseFactory = $responseFactory;
-        $this->converter = $converter;
-        $this->logger = $logger;
     }
 
     /**
@@ -97,11 +76,9 @@ class Curl implements \Magento\Analytics\Model\Connector\Http\ClientInterface
     /**
      * Apply content type header from converter
      *
-     * @param array $headers
      *
-     * @return array
      */
-    private function applyContentTypeHeaderFromConverter(array $headers)
+    private function applyContentTypeHeaderFromConverter(array $headers): array
     {
         $contentTypeHeaderKey = array_search($this->converter->getContentTypeHeader(), $headers);
         if ($contentTypeHeaderKey === false) {

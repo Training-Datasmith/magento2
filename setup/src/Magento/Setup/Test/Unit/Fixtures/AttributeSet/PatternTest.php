@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -37,17 +38,17 @@ class PatternTest extends TestCase
                             'option' => [
                                 [
                                     'label' => 'option 1',
-                                    'value' => 'option_1'
+                                    'value' => 'option_1',
                                 ],
                                 [
                                     'label' => 'option 2',
-                                    'value' => 'option_2'
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'value' => 'option_2',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $pattern = new Pattern();
         $this->assertEquals(

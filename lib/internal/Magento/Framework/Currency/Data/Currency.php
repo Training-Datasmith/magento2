@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class Currency
         'currency' => null,
         'symbol' => null,
         'locale' => null,
-        'value' => 0
+        'value' => 0,
     ];
 
     /**
@@ -87,7 +88,7 @@ class Currency
         'TZS' => 'sw_TZ', 'UAH' => 'uk_UA', 'UGX' => 'sw_UG', 'USD' => 'en_GU',
         'UYU' => 'es_UY', 'UZS' => 'uz_Cyrl_UZ', 'VES' => 'es_VE', 'VND' => 'vi_VN',
         'VUV' => 'bi_VU', 'WST' => 'sm_WS', 'XCD' => 'en_AI', 'YER' => 'ar_YE',
-        'ZAR' => 'en_ZA', 'ZMW' => 'en_ZM'
+        'ZAR' => 'en_ZA', 'ZMW' => 'en_ZM',
     ];
 
     /**

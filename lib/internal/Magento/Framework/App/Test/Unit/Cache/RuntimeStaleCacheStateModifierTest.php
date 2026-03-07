@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ class RuntimeStaleCacheStateModifierTest extends TestCase
                 'cache_one' => true,
                 'cache_two' => true,
                 'cache_three' => true,
-                'cache_four' => false
+                'cache_four' => false,
             ]
         );
     }
@@ -42,7 +44,7 @@ class RuntimeStaleCacheStateModifierTest extends TestCase
                     'cache_one' => true,
                     'cache_two' => true,
                     'cache_three' => true,
-                    'cache_four' => false
+                    'cache_four' => false,
                 ]
             ),
             $this->cacheState
@@ -60,12 +62,12 @@ class RuntimeStaleCacheStateModifierTest extends TestCase
             [
                 false,
                 true,
-                false
+                false,
             ],
             [
                 $this->cacheState->isEnabled('cache_one'),
                 $this->cacheState->isEnabled('cache_two'),
-                $this->cacheState->isEnabled('cache_three')
+                $this->cacheState->isEnabled('cache_three'),
             ]
         );
     }
@@ -83,7 +85,7 @@ class RuntimeStaleCacheStateModifierTest extends TestCase
                     'cache_one' => true,
                     'cache_two' => true,
                     'cache_three' => true,
-                    'cache_four' => false
+                    'cache_four' => false,
                 ]
             ),
             $this->cacheState->withPersistedState([])

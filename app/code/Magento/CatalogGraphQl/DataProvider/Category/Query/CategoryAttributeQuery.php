@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class CategoryAttributeQuery
 
         $attributeQuery = $this->attributeQueryFactory->create(
             [
-            'entityType' => CategoryInterface::class
+            'entityType' => CategoryInterface::class,
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\Jwt\EncryptionSettingsInterface;
 use Magento\Framework\Jwt\Exception\EncryptionException;
 use Magento\Framework\Jwt\Exception\JwtException;
 use Magento\Framework\Jwt\Exception\MalformedTokenException;
-use Magento\Framework\Jwt\HeaderInterface;
 use Magento\Framework\Jwt\Jwe\JweEncryptionSettingsInterface;
 use Magento\Framework\Jwt\Jwe\JweInterface;
 use Magento\Framework\Jwt\Jwk;
@@ -46,7 +46,7 @@ class JwtManager implements JwtManagerInterface
         Jwk::ALGORITHM_ES512,
         Jwk::ALGORITHM_PS256,
         Jwk::ALGORITHM_PS384,
-        Jwk::ALGORITHM_PS512
+        Jwk::ALGORITHM_PS512,
     ];
 
     private const JWE_ALGORITHMS = [

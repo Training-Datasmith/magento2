@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml Manage Widgets Instance Controller
  */
+
 namespace Magento\Widget\Controller\Adminhtml\Widget;
 
 abstract class Instance extends \Magento\Backend\App\Action
@@ -16,7 +19,7 @@ abstract class Instance extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
+    public const ADMIN_RESOURCE = 'Magento_Widget::widget_instance';
 
     /**
      * Core registry

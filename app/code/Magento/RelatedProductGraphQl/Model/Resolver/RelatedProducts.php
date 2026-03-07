@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\RelatedProductGraphQl\Model\Resolver;
 use Magento\Catalog\Model\Product\Link;
 use Magento\CatalogGraphQl\Model\Resolver\Product\ProductFieldsSelector;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\RelatedProductGraphQl\Model\DataProvider\RelatedProductDataProvider;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\RelatedProductGraphQl\Model\DataProvider\RelatedProductDataProvider;
 
 /**
  * Related Products Resolver

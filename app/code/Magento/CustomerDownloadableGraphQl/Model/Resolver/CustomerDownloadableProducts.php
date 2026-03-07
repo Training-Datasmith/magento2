@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\CustomerDownloadableGraphQl\Model\Resolver;
 
 use Magento\DownloadableGraphQl\Model\ResourceModel\GetPurchasedDownloadableProducts;
-use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\UrlInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
 
@@ -79,7 +80,7 @@ class CustomerDownloadableProducts implements ResolverInterface
                     'downloadable/download/link',
                     ['id' => $purchasedProduct['link_hash'], '_secure' => true]
                 ),
-                'remaining_downloads' => $remainingDownloads
+                'remaining_downloads' => $remainingDownloads,
             ];
         }
 

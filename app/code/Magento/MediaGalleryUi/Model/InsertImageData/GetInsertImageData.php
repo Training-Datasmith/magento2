@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class GetInsertImageData
         return $this->insertImageDataFactory->create([
             'content' => $content,
             'size' => $size,
-            'type' => $type
+            'type' => $type,
         ]);
     }
 

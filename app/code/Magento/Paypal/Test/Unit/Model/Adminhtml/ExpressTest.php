@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -75,15 +76,15 @@ class ExpressTest extends TestCase
     protected function setUp(): void
     {
         $objectManager = new ObjectManager($this);
-        
+
         $jsonHelper = $this->createMock(JsonHelper::class);
         $directoryHelper = $this->createMock(DirectoryHelper::class);
-        
+
         $objectManager->prepareObjectManager([
             [JsonHelper::class, $jsonHelper],
-            [DirectoryHelper::class, $directoryHelper]
+            [DirectoryHelper::class, $directoryHelper],
         ]);
-        
+
         $this->nvp = $this->createPartialMockWithReflection(
             Nvp::class,
             ['setProcessableErrors', 'getData', 'callDoAuthorization']

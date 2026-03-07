@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class StockStatusBaseSelectProcessorTest extends TestCase
         $this->stockStatusBaseSelectProcessor =  (new ObjectManager($this))->getObject(
             StockStatusBaseSelectProcessor::class,
             [
-                'resource' => $this->resource
+                'resource' => $this->resource,
             ]
         );
     }
@@ -71,7 +72,7 @@ class StockStatusBaseSelectProcessorTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     ['stock.stock_status = ?', Stock::STOCK_IN_STOCK, null],
-                    ['stock.website_id = ?', 0, null]
+                    ['stock.website_id = ?', 0, null],
                 ];
                 $returnValue = $this->select;
                 $index++;

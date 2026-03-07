@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Link;
 
 use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Downloadable\Helper\File;
 use Magento\Downloadable\Model\File\ContentValidator as FileContentValidator;
-use Magento\Framework\Exception\InputException;
+use Magento\Downloadable\Model\Url\DomainValidator;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Url\Validator as UrlValidator;
-use Magento\Downloadable\Model\Url\DomainValidator;
 
 /**
  * Class to validate Link Content.

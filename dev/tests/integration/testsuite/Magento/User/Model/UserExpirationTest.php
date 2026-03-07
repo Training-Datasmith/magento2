@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,17 +12,16 @@ use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Security\Model\ResourceModel\UserExpiration;
+use Magento\Security\Model\UserExpirationFactory;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\User\Test\Fixture\User as UserDataFixture;
-use Magento\Security\Model\UserExpirationFactory;
 use PHPUnit\Framework\TestCase;
 
 class UserExpirationTest extends TestCase
 {
-
     /**
      * @var UserExpiration
      */

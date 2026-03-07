@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -174,18 +175,18 @@ class AttributeRepositoryTest extends TestCase
                         [
                             'label' => 'Label',
                             'value' => 'Value',
-                            '__disableTmpl' => true
-                        ]
+                            '__disableTmpl' => true,
+                        ],
                     ],
                     'is_used_in_grid' => true,
                     'is_visible_in_grid' => true,
                     'is_filterable_in_grid' => true,
                     'is_searchable_in_grid' => true,
                     'validation_rules' => [],
-                    'required'=> false,
+                    'required' => false,
                     'entity_type_code' => 'customer_address',
-                    'grid_filter_condition_type' => 1
-                ]
+                    'grid_filter_condition_type' => 1,
+                ],
             ],
             $this->component->getList()
         );

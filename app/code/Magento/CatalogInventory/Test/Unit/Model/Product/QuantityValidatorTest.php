@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Model\Product\QuantityValidator;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -61,8 +62,8 @@ class QuantityValidatorTest extends TestCase
             'validate-item-quantity' => [
                 'minAllowed' => 2.0,
                 'maxAllowed' => 10.0,
-                'qtyIncrements' => 2.0
-            ]
+                'qtyIncrements' => 2.0,
+            ],
         ];
 
         $result = $this->quantityValidator->getData(self::PRODUCT_ID, self::WEBSITE_ID);
@@ -97,7 +98,7 @@ class QuantityValidatorTest extends TestCase
 
         $expected = [
             'validate-item-quantity' => [
-                'minAllowed'    => null
+                'minAllowed'    => null,
             ],
         ];
         $result = $this->quantityValidator->getData(self::PRODUCT_ID, self::WEBSITE_ID);
@@ -122,7 +123,7 @@ class QuantityValidatorTest extends TestCase
         $expected = [
             'validate-item-quantity' => [
                 'minAllowed'    => 'not-a-number',
-                'maxAllowed'    => -5
+                'maxAllowed'    => -5,
             ],
         ];
         $result = $this->quantityValidator->getData(self::PRODUCT_ID, self::WEBSITE_ID);

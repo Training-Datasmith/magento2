@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Gallery;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Repository;
 use Magento\Catalog\Model\Product\Gallery\Processor;
@@ -21,6 +21,7 @@ use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\MediaStorage\Helper\File\Storage\Database;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -114,7 +115,7 @@ class ProcessorTest extends TestCase
                 'fileStorageDb' => $fileStorageDb,
                 'mediaConfig' => $this->mediaConfig,
                 'filesystem' => $filesystem,
-                'resourceModel' => $resourceModel
+                'resourceModel' => $resourceModel,
             ]
         );
     }
@@ -204,7 +205,7 @@ class ProcessorTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 

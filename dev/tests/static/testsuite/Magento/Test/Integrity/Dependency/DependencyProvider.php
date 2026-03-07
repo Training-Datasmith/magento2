@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Test\Integrity\Dependency;
 
 use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Config\Composer\Package;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Inspection\Exception as InspectionException;
 
 class DependencyProvider

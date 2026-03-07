@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,7 +86,7 @@ abstract class AbstractGroupPrice extends Price implements ResetAfterRequestInte
     /**
      * @inheritdoc
      */
-    public function _resetState() : void
+    public function _resetState(): void
     {
         $this->_rates = null;
     }
@@ -413,7 +415,7 @@ abstract class AbstractGroupPrice extends Price implements ResetAfterRequestInte
                 $price = new \Magento\Framework\DataObject(
                     [
                         'value_id' => $oldValues[$key]['price_id'],
-                        'value' => $value['value']
+                        'value' => $value['value'],
                     ]
                 );
                 $this->_getResource()->savePriceData($price);

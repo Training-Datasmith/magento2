@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\DB\Transaction;
 use Magento\Framework\Registry;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
-use Magento\Store\Test\Fixture\Store;
 use Magento\GraphQl\Sales\Fixtures\CustomerPlaceOrder;
 use Magento\Quote\Test\Fixture\AddProductToCart;
 use Magento\Quote\Test\Fixture\CustomerCart;
@@ -28,6 +28,7 @@ use Magento\Sales\Model\Order\ShipmentFactory;
 use Magento\Sales\Model\ResourceModel\Order\Collection as OrderCollection;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
 use Magento\Sales\Test\Fixture\Shipment as ShipmentFixture;
+use Magento\Store\Test\Fixture\Store;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -128,7 +129,7 @@ class OrderShipmentsTest extends GraphQlAbstract
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product1.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product1.id$', 'qty' => 1]],
             ],
             'shipment1'
         ),
@@ -136,7 +137,7 @@ class OrderShipmentsTest extends GraphQlAbstract
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product2.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product2.id$', 'qty' => 1]],
             ],
             'shipment2'
         ),
@@ -160,7 +161,7 @@ class OrderShipmentsTest extends GraphQlAbstract
         $this->assertEquals($shipment2->getIncrementId(), $shipments[1]['number']);
         $this->assertCount(1, $shipments[1]['items']);
     }
-    
+
     /**
      * @magentoConfigFixture default_store carriers/ups/active 1
      * @magentoApiDataFixture Magento/GraphQl/Sales/_files/customer_order_with_ups_shipping.php
@@ -179,7 +180,7 @@ class OrderShipmentsTest extends GraphQlAbstract
         $expectedTracking = [
             'title' => 'United Parcel Service',
             'carrier' => 'ups',
-            'number' => '987654321'
+            'number' => '987654321',
         ];
         $this->assertEquals($expectedTracking, $shipments[0]['tracking'][0]);
     }
@@ -214,13 +215,13 @@ class OrderShipmentsTest extends GraphQlAbstract
 
         $shipmentItemAssertionMap = [
             'order_item' => [
-                'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2'
+                'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2',
             ],
             'product_name' => 'Bundle Product With Two dropdown options',
             'product_sku' => 'bundle-product-two-dropdown-options-simple1-simple2',
             'product_sale_price' => [
                 'value' => 15,
-                'currency' => 'USD'
+                'currency' => 'USD',
             ],
             'bundle_options' => [
                 [
@@ -230,9 +231,9 @@ class OrderShipmentsTest extends GraphQlAbstract
                             'product_name' => 'Simple Product1',
                             'product_sku' => 'simple1',
                             'quantity' => 1,
-                            'price' => ['value' => 1]
-                        ]
-                    ]
+                            'price' => ['value' => 1],
+                        ],
+                    ],
                 ],
                 [
                     'label' => 'Drop Down Option 2',
@@ -241,11 +242,11 @@ class OrderShipmentsTest extends GraphQlAbstract
                             'product_name' => 'Simple Product2',
                             'product_sku' => 'simple2',
                             'quantity' => 2,
-                            'price' => ['value' => 2]
-                        ]
-                    ]
-                ]
-            ]
+                            'price' => ['value' => 2],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertResponseFields($shipmentBundleItem, $shipmentItemAssertionMap);
@@ -259,7 +260,7 @@ class OrderShipmentsTest extends GraphQlAbstract
      */
     private function getQuery(?string $orderId = null)
     {
-        $filter = $orderId ? "(filter:{number:{eq:\"$orderId\"}})" : "";
+        $filter = $orderId ? "(filter:{number:{eq:\"$orderId\"}})" : '';
         return <<<QUERY
 {
   customer {

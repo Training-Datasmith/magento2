@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class BlockActionsTest extends TestCase
             BlockActions::class,
             [
                 'context' => $context,
-                'urlBuilder' => $this->urlBuilder
+                'urlBuilder' => $this->urlBuilder,
             ]
         );
 

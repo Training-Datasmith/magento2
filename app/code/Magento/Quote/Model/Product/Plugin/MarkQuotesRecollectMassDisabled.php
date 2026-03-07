@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model\Product\Plugin;
 
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Action as ProductAction;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 
 /**

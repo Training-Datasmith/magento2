@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,5 +74,5 @@ return [
     'base_calculation_price' => 10,
     'calculation_price' => 10,
     'converted_price' => 10,
-    'base_original_price' => 10
+    'base_original_price' => 10,
 ];

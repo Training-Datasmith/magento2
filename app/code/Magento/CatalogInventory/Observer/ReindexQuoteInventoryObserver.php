@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Observer;
 
+use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceProcessor;
 use Magento\CatalogInventory\Model\Indexer\Stock\Processor as StockProcessor;
-use Magento\Catalog\Model\Indexer\Product\Price\Processor  as PriceProcessor;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Exception\LocalizedException;

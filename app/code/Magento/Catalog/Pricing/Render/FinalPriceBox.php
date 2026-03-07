@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,7 +12,6 @@ use Magento\Catalog\Model\Product\Pricing\Renderer\SalableResolverInterface;
 use Magento\Catalog\Pricing\Price;
 use Magento\Catalog\Pricing\Price\MinimalPriceCalculatorInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\Render\PriceBox as BasePriceBox;
 use Magento\Framework\Pricing\Render\RendererPool;
@@ -141,7 +142,7 @@ class FinalPriceBox extends BasePriceBox
                 'display_label'     => __('As low as'),
                 'price_id'          => $id,
                 'include_container' => false,
-                'skip_adjustments' => false
+                'skip_adjustments' => false,
             ]
         );
     }

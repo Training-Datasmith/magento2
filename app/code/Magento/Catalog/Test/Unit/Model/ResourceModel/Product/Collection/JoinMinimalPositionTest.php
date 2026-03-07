@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Product\Collection;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Collection\JoinMinimalPosition;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Exception\LocalizedException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -56,22 +57,22 @@ class JoinMinimalPositionTest extends TestCase
             [
                 'e',
                 '*',
-                null
+                null,
             ],
             [
                 'at_status',
                 'value_id',
-                'status'
+                'status',
             ],
             [
                 'e',
                 'visibility',
-                null
+                null,
             ],
             [
                 'e',
                 new \Zend_Db_Expr('LEAST(IFNULL(cat_index_3.position, ~0), IFNULL(cat_index_5.position, ~0))'),
-                'cat_index_position'
+                'cat_index_position',
             ],
         ];
         $expectedFromParts = [
@@ -96,7 +97,7 @@ class JoinMinimalPositionTest extends TestCase
                 'joinCondition' => 'cat_index_5.product_id=e.entity_id' .
                     ' AND cat_index_5.store_id=1' .
                     ' AND cat_index_5.category_id=5',
-            ]
+            ],
         ];
         $categoryIds = [3, 5];
         $collection = $this->createMock(Collection::class);

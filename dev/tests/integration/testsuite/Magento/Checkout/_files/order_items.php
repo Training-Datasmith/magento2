@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -38,7 +40,7 @@ $orderItems = [
         'price' => 90,
         'row_total' => 92,
         'product_type' => 'simple',
-        'product_options' => sprintf($productOptionValue, $product1->getId())
+        'product_options' => sprintf($productOptionValue, $product1->getId()),
     ],
     [
         'item_id' => 2,
@@ -48,7 +50,7 @@ $orderItems = [
         'price' => 100,
         'row_total' => 102,
         'product_type' => 'simple',
-        'product_options' => sprintf($productOptionValue, $product2->getId())
+        'product_options' => sprintf($productOptionValue, $product2->getId()),
     ],
     [
         'item_id' => 3,
@@ -58,7 +60,7 @@ $orderItems = [
         'price' => 110,
         'row_total' => 112,
         'product_type' => 'simple',
-        'product_options' => sprintf($productOptionValue, $product3->getId())
+        'product_options' => sprintf($productOptionValue, $product3->getId()),
     ],
     [
         'item_id' => 4,
@@ -68,7 +70,7 @@ $orderItems = [
         'price' => 123,
         'row_total' => 126,
         'product_type' => 'simple',
-        'product_options' => sprintf($productOptionValue, $product4->getId())
+        'product_options' => sprintf($productOptionValue, $product4->getId()),
     ],
 ];
 

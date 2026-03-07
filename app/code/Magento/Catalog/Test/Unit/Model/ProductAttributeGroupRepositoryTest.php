@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class ProductAttributeGroupRepositoryTest extends TestCase
             [
                 'groupRepository' => $this->groupRepositoryMock,
                 'groupResource' => $this->groupResourceMock,
-                'groupFactory' => $this->groupFactoryMock
+                'groupFactory' => $this->groupFactoryMock,
             ]
         );
     }

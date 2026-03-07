@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model\ResourceModel\Operation;
 
 use Magento\Framework\EntityManager\Operation\CheckIfExistsInterface;
-use Magento\Framework\App\ResourceConnection;
 
 /**
  * CheckIfExists operation for list of bulk operations.
@@ -18,10 +20,9 @@ class CheckIfExists implements CheckIfExistsInterface
      *
      * @param object $entity
      * @param array $arguments
-     * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function execute($entity, $arguments = [])
+    public function execute($entity, $arguments = []): bool
     {
         return false;
     }

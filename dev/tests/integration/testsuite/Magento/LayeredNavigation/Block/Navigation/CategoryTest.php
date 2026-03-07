@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\LayeredNavigation\Block\Navigation;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
-use Magento\Catalog\Api\Data\CategoryInterfaceFactory;
 use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
@@ -19,8 +19,8 @@ use Magento\LayeredNavigation\Block\Navigation;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Provides tests for filters block on category page.
@@ -158,12 +158,12 @@ class CategoryTest extends TestCase
             'with_mode_cms_block' => [
                 'defaultMode' => CategoryModel::DM_PRODUCT,
                 'storeMode' => CategoryModel::DM_PAGE,
-                'canShow' => false
+                'canShow' => false,
             ],
             'with_mode_cms_block_and_products' => [
                 'defaultMode' => CategoryModel::DM_PAGE,
                 'storeMode' => CategoryModel::DM_MIXED,
-                'canShow' => true
+                'canShow' => true,
             ],
         ];
     }

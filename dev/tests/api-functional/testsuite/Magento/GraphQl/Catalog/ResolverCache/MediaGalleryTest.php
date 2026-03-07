@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -186,7 +187,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
         DataFixture(
             ProductFixture::class,
             [
-                'media_gallery_entries' => [[]]
+                'media_gallery_entries' => [[]],
             ],
             as: 'product'
         ),
@@ -371,7 +372,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
                         $integration
                     );
                 },
-                false
+                false,
             ],
             'update gallery-related attribute via rest' => [
                 function ($test, ProductInterface $product) {
@@ -415,7 +416,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
                         $integration
                     );
                 },
-                true
+                true,
             ],
             'add new media gallery entry' => [
                 function ($test, ProductInterface $product) use ($galleryManagement, $objectManager) {
@@ -428,11 +429,11 @@ class MediaGalleryTest extends ResolverCacheAbstract
                     $imageContentFactory = $objectManager->get(ImageContentInterfaceFactory::class);
                     $imageContent = $imageContentFactory->create();
                     $imageContent->setBase64EncodedData(
-                    // black 1x1 image
+                        // black 1x1 image
                         'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
                     );
-                    $imageContent->setType("image/png");
-                    $imageContent->setName("new_image.png");
+                    $imageContent->setType('image/png');
+                    $imageContent->setName('new_image.png');
 
                     $newImage = $mediaGalleryEntryFactory->create();
                     $newImage->setDisabled(false);
@@ -444,7 +445,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
 
                     $galleryManagement->create($product->getSku(), $newImage);
                 },
-                true
+                true,
             ],
             'update media label' => [
                 function ($test, ProductInterface $product) use ($galleryManagement) {
@@ -452,7 +453,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
                     $mediaEntry->setLabel('new_' . $mediaEntry->getLabel());
                     $galleryManagement->update($product->getSku(), $mediaEntry);
                 },
-                true
+                true,
             ],
             'update video description' => [
                 function ($test, ProductInterface $product) use ($galleryManagement) {
@@ -464,27 +465,27 @@ class MediaGalleryTest extends ResolverCacheAbstract
 
                     $galleryManagement->update($product->getSku(), $mediaEntry);
                 },
-                true
+                true,
             ],
             'update product name' => [
                 function ($test, ProductInterface $product) use ($productRepository) {
                     $product->setName('new name');
                     $productRepository->save($product);
                 },
-                false
+                false,
             ],
             'remove media' => [
                 function ($test, ProductInterface $product) use ($galleryManagement) {
                     $mediaEntry = $product->getMediaGalleryEntries()[0];
                     $galleryManagement->remove($product->getSku(), $mediaEntry->getId());
                 },
-                true
+                true,
             ],
             'save product without change' => [
                 function ($test, ProductInterface $product) use ($productRepository) {
                     $productRepository->save($product);
                 },
-                false
+                false,
             ],
         ];
     }
@@ -521,7 +522,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
 
         // Query the simple product with media
         $simpleProductWithMediaQuery = $this->getProductWithMediaGalleryQuery($simpleProductWithMedia);
-        $simpleProductWithMediaQueryResponse =$this->graphQlQuery($simpleProductWithMediaQuery);
+        $simpleProductWithMediaQueryResponse = $this->graphQlQuery($simpleProductWithMediaQuery);
         $this->assertNotEquals($simpleProductQueryResponse, $simpleProductWithMediaQueryResponse);
 
         $simpleProductWithMediaCacheKey = $this->getCacheKeyForMediaGalleryResolver($simpleProductWithMedia);
@@ -697,7 +698,7 @@ class MediaGalleryTest extends ResolverCacheAbstract
         $cacheKeyParts = [
             GraphQlResolverCache::CACHE_TAG,
             $cacheKeyFactor,
-            sha1($cacheKeyQueryPayloadMetadata)
+            sha1($cacheKeyQueryPayloadMetadata),
         ];
 
         // strtoupper is called in \Magento\Framework\Cache\Frontend\Adapter\Zend::_unifyId
@@ -751,7 +752,7 @@ QUERY;
             $params = [
                 'all_resources' => true,
                 'status' => Integration::STATUS_ACTIVE,
-                'name' => 'Integration' . microtime()
+                'name' => 'Integration' . microtime(),
             ];
 
             $this->integration = Bootstrap::getObjectManager()->get(IntegrationServiceInterface::class)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,14 +9,13 @@ declare(strict_types=1);
 
 namespace Magento\Ups\Test\Unit\Plugin\Block\DataProviders\Tracking;
 
-use Magento\Ups\Model\Carrier;
-use Magento\Ups\Plugin\Block\DataProviders\Tracking\ChangeTitle;
 use Magento\Framework\Phrase;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Shipping\Block\DataProviders\Tracking\DeliveryDateTitle;
 use Magento\Shipping\Model\Tracking\Result\Status;
-use Magento\Ups\Model\Carrier as UpsCarrier;
+use Magento\Ups\Model\Carrier;
+use Magento\Ups\Plugin\Block\DataProviders\Tracking\ChangeTitle;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

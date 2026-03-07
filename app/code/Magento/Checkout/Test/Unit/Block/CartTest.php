@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class CartTest extends TestCase
 {
-
     /**
      * @var Cart
      */
@@ -54,8 +54,8 @@ class CartTest extends TestCase
         $this->cartBlock = $objectManager->getObject(
             Cart::class,
             [
-                'context'=> $this->context,
-                'checkoutSession'=>$checkoutSession,
+                'context' => $this->context,
+                'checkoutSession' => $checkoutSession,
 
             ]
         );
@@ -64,7 +64,7 @@ class CartTest extends TestCase
     public function testGetMethodHtmlWithException()
     {
         $this->layoutMock->method('getBlock')->willReturn(false);
-        $name='blockMethod';
+        $name = 'blockMethod';
         $this->expectException(LocalizedException::class);
         $this->expectExceptionMessage(
             (string)__('Invalid method: %1', $name)

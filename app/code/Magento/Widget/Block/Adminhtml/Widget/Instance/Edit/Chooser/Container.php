@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -29,10 +30,10 @@ class Container extends Select
      * @deprecated hardcoded list was replaced with checking actual existing layouts
      * @see \Magento\Framework\View\Model\PageLayout\Config\BuilderInterface::getPageLayoutsConfig
      */
-    const PAGE_LAYOUT_1COLUMN = '1column-center';
-    const PAGE_LAYOUT_2COLUMNS_LEFT = '2columns-left';
-    const PAGE_LAYOUT_2COLUMNS_RIGHT = '2columns-right';
-    const PAGE_LAYOUT_3COLUMNS = '3columns';
+    public const PAGE_LAYOUT_1COLUMN = '1column-center';
+    public const PAGE_LAYOUT_2COLUMNS_LEFT = '2columns-left';
+    public const PAGE_LAYOUT_2COLUMNS_RIGHT = '2columns-right';
+    public const PAGE_LAYOUT_3COLUMNS = '3columns';
     /**#@-*/
 
     /**

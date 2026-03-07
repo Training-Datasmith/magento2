@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -499,7 +500,7 @@ class CreateAddressTest extends TestCase
             ->setConstructorArgs(
                 [
                     $this->objectManager->get(ScopeConfigInterface::class),
-                    $this->objectManager->get(PsrLogger::class)
+                    $this->objectManager->get(PsrLogger::class),
                 ]
             )
             ->onlyMethods(['checkVatNumber'])

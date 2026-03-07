@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class PlaceOrderTest extends ExpressTestCase
             [ProcessableException::API_DO_EXPRESS_CHECKOUT_FAIL],
             [
                 ProcessableException::API_UNABLE_TRANSACTION_COMPLETE,
-                AbstractMethod::ACTION_ORDER
+                AbstractMethod::ACTION_ORDER,
             ],
             [ProcessableException::API_UNABLE_TRANSACTION_COMPLETE, 'other'],
             [999999],

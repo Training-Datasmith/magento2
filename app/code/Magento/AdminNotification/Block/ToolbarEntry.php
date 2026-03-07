@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -29,43 +31,29 @@ class ToolbarEntry extends \Magento\Backend\Block\Template
      */
     public const NOTIFICATION_DESCRIPTION_LENGTH = 150;
 
-    /**
-     * Collection of latest unread notifications
-     *
-     * @var \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection
-     */
-    protected $_notificationList;
-
-    /**
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Unread $notificationList
-     * @param array $data
-     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Unread $notificationList,
+        /**
+         * Collection of latest unread notifications
+         */
+        protected \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Unread $_notificationList,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_notificationList = $notificationList;
     }
 
     /**
      * Retrieve notification description start length
-     *
-     * @return int
      */
-    public function getNotificationDescriptionLength()
+    public function getNotificationDescriptionLength(): int
     {
         return self::NOTIFICATION_DESCRIPTION_LENGTH;
     }
 
     /**
      * Retrieve notification counter max value
-     *
-     * @return int
      */
-    public function getNotificationCounterMax()
+    public function getNotificationCounterMax(): int
     {
         return self::NOTIFICATIONS_COUNTER_MAX;
     }

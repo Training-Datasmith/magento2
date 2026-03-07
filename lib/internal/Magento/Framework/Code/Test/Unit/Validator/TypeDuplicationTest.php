@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Validator;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Code\Validator\TypeDuplication;
 use Magento\Framework\Exception\ValidatorException;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once '_files/ClassesForTypeDuplication.php';
 class TypeDuplicationTest extends TestCase
@@ -46,7 +49,7 @@ class TypeDuplicationTest extends TestCase
         return [
             'Duplicated interface injection' => ['\TypeDuplication\ValidClassWithTheSameInterfaceTypeArguments'],
             'Class with sub type arguments' => ['\TypeDuplication\ValidClassWithSubTypeArguments'],
-            'Class with SuppressWarnings' => ['\TypeDuplication\ValidClassWithSuppressWarnings']
+            'Class with SuppressWarnings' => ['\TypeDuplication\ValidClassWithSuppressWarnings'],
         ];
     }
 

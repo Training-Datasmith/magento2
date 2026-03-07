@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class AddressConverter
         return $this->addressFactory->create(
             [
                 'name' => $name,
-                'email' => $email
+                'email' => $email,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class GatewayCommandTest extends TestCase
                 [
                     ['401', 'Unauthorized'],
                     ['Failure #1', 'Failure Mapped'],
-                    ['Failure #2', null]
+                    ['Failure #2', null],
                 ]
             );
 
@@ -181,7 +182,7 @@ class GatewayCommandTest extends TestCase
     ) {
         $request = [
             'request_field1' => 'request_value1',
-            'request_field2' => 'request_value2'
+            'request_field2' => 'request_value2',
         ];
         $response = ['response_field1' => 'response_value1'];
         $transferO = $this->getMockBuilder(TransferInterface::class)

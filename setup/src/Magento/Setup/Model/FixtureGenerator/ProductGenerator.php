@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,10 +13,10 @@ use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
 use Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Model\ResourceModel\Store\CollectionFactory as StoreCollectionFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
 
@@ -183,13 +185,13 @@ class ProductGenerator
             $customTableMap['catalog_product_website'] = [
                 'fields' => [
                     'website_id' => 'website_ids',
-                ]
+                ],
             ];
         }
         $generator = $this->entityGeneratorFactory->create(
             [
                 'entityType' => ProductInterface::class,
-                'customTableMap' => array_merge($customTableMap, $this->customTableMap)
+                'customTableMap' => array_merge($customTableMap, $this->customTableMap),
             ]
         );
         foreach ($attributeSets as $attributeSetId => $productsAmount) {

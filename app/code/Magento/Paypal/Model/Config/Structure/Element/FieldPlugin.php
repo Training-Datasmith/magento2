@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Config\Structure\Element;
 
 use Magento\Config\Model\Config\Structure\Element\Field as FieldConfigStructure;

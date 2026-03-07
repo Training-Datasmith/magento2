@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
  * Tests for \Magento\Framework\Data\Form\Element\AbstractElement
@@ -70,7 +71,7 @@ class AbstractElementTest extends TestCase
                 $this->_escaperMock,
                 [],
                 $this->createMock(SecureHtmlRenderer::class),
-                $randomMock
+                $randomMock,
             ])
             ->onlyMethods([])
             ->getMock();
@@ -460,7 +461,7 @@ class AbstractElementTest extends TestCase
                     'key_1' => 'value_1',
                     'key_2' => 'value_2',
                     'key_3' => 'value_3',
-                    'key_4' => 'value_7'
+                    'key_4' => 'value_7',
                 ],
             ],
             [
@@ -482,9 +483,9 @@ class AbstractElementTest extends TestCase
                     'key_1' => 'value_4',
                     'key_2' => 'value_5',
                     'key_3' => 'value_6',
-                    'key_4' => 'value_7'
-                ]
-            ]
+                    'key_4' => 'value_7',
+                ],
+            ],
         ];
     }
 
@@ -503,22 +504,22 @@ class AbstractElementTest extends TestCase
                     'attributes' => ['disabled'],
                     'disabled' => true,
                 ],
-                'disabled="disabled"'
+                'disabled="disabled"',
             ],
             [
                 [
                     'attributes' => ['checked'],
                     'checked' => true,
                 ],
-                'checked="checked"'
+                'checked="checked"',
             ],
             [
                 [
                     'data-locked' => 1,
                     'attributes' => ['attribute_1'],
                 ],
-                'data-locked="1"'
-            ]
+                'data-locked="1"',
+            ],
         ];
     }
 
@@ -536,7 +537,7 @@ class AbstractElementTest extends TestCase
             ],
             [
                 ['default_html' => 'some default html'],
-                'some default html'
+                'some default html',
             ],
             [
                 [
@@ -550,7 +551,7 @@ class AbstractElementTest extends TestCase
                 . '<span>some label</span></label>' . "\n"
                 . '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
                 .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>'
-                . '</div>' . "\n"
+                . '</div>' . "\n",
             ],
             [
                 [
@@ -563,7 +564,7 @@ class AbstractElementTest extends TestCase
                 '<label class="label admin__field-label" for="html-id" data-ui-id="form-element-some-namelabel">'
                 . '<span>some label</span></label>' . "\n"
                 . '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
-                .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>'
+                .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>',
             ],
         ];
     }
@@ -582,7 +583,7 @@ class AbstractElementTest extends TestCase
                 [
                     'id_suffix' => 'suffix',
                 ],
-                ''
+                '',
             ],
             [
                 [
@@ -590,7 +591,7 @@ class AbstractElementTest extends TestCase
                     'html_id' => 'some-html-id',
                 ],
                 '<label class="label admin__field-label" for="some-html-id" data-ui-id="form-element-label">'
-                . '<span>some-label</span></label>' . "\n"
+                . '<span>some-label</span></label>' . "\n",
             ],
             [
                 [
@@ -599,7 +600,7 @@ class AbstractElementTest extends TestCase
                     'html_id' => 'some-html-id',
                 ],
                 '<label class="label admin__field-label" for="some-html-idsuffix" data-ui-id="form-element-label">'
-                . '<span>some-label</span></label>' . "\n"
+                . '<span>some-label</span></label>' . "\n",
             ],
         ];
     }
@@ -622,7 +623,7 @@ class AbstractElementTest extends TestCase
                     'value' => 'some-value',
                 ],
                 '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
-                    .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>'
+                    .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>',
             ],
             [
                 [
@@ -633,7 +634,7 @@ class AbstractElementTest extends TestCase
                 ],
                 '<label class="addbefore" for="html-id">some-html</label>'
                 . '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
-                .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>'
+                .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>',
             ],
             [
                 [
@@ -643,7 +644,7 @@ class AbstractElementTest extends TestCase
                     'after_element_js' => 'some-js',
                 ],
                 '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
-                    .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>some-js'
+                    .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>some-js',
             ],
             [
                 [
@@ -654,8 +655,8 @@ class AbstractElementTest extends TestCase
                 ],
                 '<input id="html-id" name="some-name"  data-ui-id="form-element-some-name" value="some-value"'
                     .' formelementhookid="elemId' .self::RANDOM_STRING .'"/>'
-                    . '<label class="addafter" for="html-id">some-html</label>'
-            ]
+                    . '<label class="addafter" for="html-id">some-html</label>',
+            ],
         ];
     }
 }

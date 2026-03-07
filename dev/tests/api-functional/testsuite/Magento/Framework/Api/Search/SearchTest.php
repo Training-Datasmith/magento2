@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Search;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class SearchTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'searchV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/search';
+    public const SERVICE_NAME = 'searchV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/search';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/product_simple.php
@@ -28,15 +31,15 @@ class SearchTest extends WebapiAbstract
                             [
                                 'field' => 'search_term',
                                 'value' => 'simple',
-                                'condition_type' => 'eq'
+                                'condition_type' => 'eq',
                             ],
                             [
                                 'field' => 'price_dynamic_algorithm',
                                 'value' => 'auto',
-                                'condition_type' => 'eq'
-                            ]
-                        ]
-                    ]
+                                'condition_type' => 'eq',
+                            ],
+                        ],
+                    ],
                 ],
                 'page_size' => 300,
                 'current_page' => 0,
@@ -71,7 +74,7 @@ class SearchTest extends WebapiAbstract
                 $response['items'][0]['custom_attributes'][0]['attribute_code'],
                 [
                     'score', // mysql
-                    '_score' // elasticsearch score
+                    '_score', // elasticsearch score
                 ]
             )
         );

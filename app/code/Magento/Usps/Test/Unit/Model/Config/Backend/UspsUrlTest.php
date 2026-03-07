@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class UspsUrlTest extends TestCase
      * @throws ValidatorException
      */
     #[DataProvider('validDataProvider')]
-    public function testBeforeSave(string $data = ""): void
+    public function testBeforeSave(string $data = ''): void
     {
         $this->url->expects($this->any())->method('isValid')->willReturn(true);
         $this->urlConfig->setValue($data);

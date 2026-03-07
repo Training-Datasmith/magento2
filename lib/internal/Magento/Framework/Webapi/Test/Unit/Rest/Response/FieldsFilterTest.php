@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Webapi\Test\Unit\Rest\Response;
 
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Framework\Webapi\Rest\Response\FieldsFilter;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for FieldsFilter
@@ -133,7 +134,7 @@ class FieldsFilterTest extends TestCase
             ],
         ];
 
-        $simpleFilter = "customer[email,id]";
+        $simpleFilter = 'customer[email,id]';
 
         $this->requestMock->expects($this->any())->method('getParam')->willReturn($simpleFilter);
         $filteredResponse = $this->processor->filter($this->sampleResponseValue);
@@ -238,7 +239,7 @@ class FieldsFilterTest extends TestCase
             ['customer(email)'],
             [' customer[email]'],
             ['-'],
-            ['customer[id,email],addresses[city,postcode,region[region_code,region]'] //Missing last parentheses
+            ['customer[id,email],addresses[city,postcode,region[region_code,region]'], //Missing last parentheses
         ];
     }
 }

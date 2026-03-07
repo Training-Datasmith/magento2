@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\SendFriend\Controller\Product;
 
+use Magento\Captcha\Helper\Data as CaptchaHelper;
 use Magento\Captcha\Model\DefaultModel;
-use Magento\TestFramework\TestCase\AbstractController;
-use Magento\Framework\Data\Form\FormKey;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Model\Session;
-use Psr\Log\LoggerInterface;
+use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\MessageInterface;
-use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\TestFramework\TestCase\AbstractController;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class CustomerSendmailTest
@@ -75,13 +76,13 @@ class CustomerSendmailTest extends AbstractController
                     'sender' => [
                         'name' => 'customer',
                         'email' => 'customer@example.com',
-                        'message' => 'example message'
+                        'message' => 'example message',
                     ],
                     'id' => 1,
                     'recipients' => [
                         'name' => ['John'],
-                        'email' => ['example1@gmail.com']
-                    ]
+                        'email' => ['example1@gmail.com'],
+                    ],
 
                 ]
             );
@@ -111,16 +112,16 @@ class CustomerSendmailTest extends AbstractController
                     'sender' => [
                         'name' => 'customer',
                         'email' => 'customer@example.com',
-                        'message' => 'example message'
+                        'message' => 'example message',
                     ],
                     'id' => 1,
                     'captcha' => [
-                        'product_sendtofriend_form' => 'test'
+                        'product_sendtofriend_form' => 'test',
                     ],
                     'recipients' => [
                         'name' => ['John'],
-                        'email' => ['example1@gmail.com']
-                    ]
+                        'email' => ['example1@gmail.com'],
+                    ],
 
                 ]
             );
@@ -154,16 +155,16 @@ class CustomerSendmailTest extends AbstractController
                     'sender' => [
                         'name' => 'customer',
                         'email' => 'customer@example.com',
-                        'message' => 'example message'
+                        'message' => 'example message',
                     ],
                     'id' => 1,
                     'captcha' => [
-                        'product_sendtofriend_form' => $word
+                        'product_sendtofriend_form' => $word,
                     ],
                     'recipients' => [
                         'name' => ['John'],
-                        'email' => ['example1@gmail.com']
-                    ]
+                        'email' => ['example1@gmail.com'],
+                    ],
                 ]
             );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
@@ -12,9 +15,9 @@ use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
  */
 class BundleQuantity extends AbstractModifier
 {
-    const CODE_QUANTITY_AND_STOCK_STATUS = 'quantity_and_stock_status';
-    const CODE_QUANTITY = 'qty';
-    const CODE_QTY_CONTAINER = 'quantity_and_stock_status_qty';
+    public const CODE_QUANTITY_AND_STOCK_STATUS = 'quantity_and_stock_status';
+    public const CODE_QUANTITY = 'qty';
+    public const CODE_QTY_CONTAINER = 'quantity_and_stock_status_qty';
 
     /**
      * {@inheritdoc}
@@ -35,7 +38,7 @@ class BundleQuantity extends AbstractModifier
                                     ],
                                 ],
                             ],
-                        ]
+                        ],
                     ]
                 );
             }

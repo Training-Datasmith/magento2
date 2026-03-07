@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class CustomerAddresses
                 'current_page' => $searchResult->getSearchCriteria()->getCurrentPage(),
                 'total_pages' => (int)ceil($searchResult->getTotalCount()
                     / (int)$searchResult->getSearchCriteria()->getPageSize()),
-            ]
+            ],
         ];
     }
 }

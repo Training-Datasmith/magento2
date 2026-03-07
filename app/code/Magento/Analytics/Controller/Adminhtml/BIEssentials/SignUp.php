@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Controller\Adminhtml\BIEssentials;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
@@ -17,30 +20,18 @@ class SignUp extends Action implements HttpGetActionInterface
 {
     /**
      * Path to config value with URL to BI Essentials sign-up page.
-     *
-     * @var string
      */
-    private $urlBIEssentialsConfigPath = 'analytics/url/bi_essentials';
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $config;
+    private string $urlBIEssentialsConfigPath = 'analytics/url/bi_essentials';
 
     /**
      * @inheritdoc
      */
     public const ADMIN_RESOURCE = 'Magento_Analytics::bi_essentials';
 
-    /**
-     * @param Context $context
-     * @param ScopeConfigInterface $config
-     */
     public function __construct(
         Context $context,
-        ScopeConfigInterface $config
+        private readonly ScopeConfigInterface $config
     ) {
-        $this->config = $config;
         parent::__construct($context);
     }
 

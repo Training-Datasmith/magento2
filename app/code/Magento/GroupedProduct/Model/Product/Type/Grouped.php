@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Model\Product\Type;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -218,7 +221,7 @@ class Grouped extends \Magento\Catalog\Model\Product\Type\AbstractType
                     'special_to_date',
                     'tax_class_id',
                     'image',
-                    'thumbnail'
+                    'thumbnail',
                 ]
             )->addFilterByRequiredOptions()->setPositionOrder()->addStoreFilter(
                 $this->getStoreFilter($product)

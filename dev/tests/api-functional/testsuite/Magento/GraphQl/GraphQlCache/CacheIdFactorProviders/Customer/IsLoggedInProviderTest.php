@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ MUTATION;
         );
 
         // Revoke the token and check that cache is not generated
-        $revokeCustomerToken = "mutation{revokeCustomerToken{result}}";
+        $revokeCustomerToken = 'mutation{revokeCustomerToken{result}}';
         $revokeResponse = $this->graphQlMutationWithResponseHeaders(
             $revokeCustomerToken,
             [],

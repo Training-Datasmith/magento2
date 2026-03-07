@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,13 +9,14 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Field\Regexceptions
  */
+
 namespace Magento\Config\Test\Unit\Block\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\Regexceptions;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Data\Form\Element\Factory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Design\Theme\Label;
 use Magento\Framework\View\Design\Theme\LabelFactory;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -76,7 +78,7 @@ class RegexceptionsTest extends TestCase
             AbstractElement::class,
             [
                 'setName', 'setHtmlId', 'setValues', 'getValues',
-                'setForm', 'getName', 'getHtmlId', 'getElementHtml'
+                'setForm', 'getName', 'getHtmlId', 'getElementHtml',
             ]
         );
 
@@ -84,7 +86,7 @@ class RegexceptionsTest extends TestCase
             'elementFactory' => $this->elementFactoryMock,
             'labelFactory'   => $this->labelFactoryMock,
             'data'           => [
-                'element' => $this->elementMock
+                'element' => $this->elementMock,
             ],
         ];
         $this->objectManager->prepareObjectManager();

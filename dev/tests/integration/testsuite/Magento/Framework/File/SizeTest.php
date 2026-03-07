@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Magento file size test
  */
+
 namespace Magento\Framework\File;
 
 class SizeTest extends \PHPUnit\Framework\TestCase

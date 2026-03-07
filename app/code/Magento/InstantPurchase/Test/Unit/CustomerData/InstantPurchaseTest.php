@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class InstantPurchaseTest extends TestCase
                 'instantPurchase' => $this->instantPurchase,
                 'paymentTokenFormatter' => $this->paymentTokenFormatter,
                 'customerAddressesFormatter' => $this->customerAddressesFormatter,
-                'shippingMethodFormatter' => $this->shippingMethodFormatter
+                'shippingMethodFormatter' => $this->shippingMethodFormatter,
             ]
         );
     }
@@ -152,13 +153,13 @@ class InstantPurchaseTest extends TestCase
             'No Login and available instant purchase' => [
                 false,
                 true,
-                ['available' => false]
+                ['available' => false],
             ],
 
             'Login and no available instant purchase option' => [
                 true,
                 false,
-                ['available' => false]
+                ['available' => false],
             ],
 
             'Login and available instant purchase option' => [
@@ -168,23 +169,23 @@ class InstantPurchaseTest extends TestCase
                     'available' => true,
                     'paymentToken' => [
                         'publicHash' => '',
-                        'summary' => ''
+                        'summary' => '',
                     ],
                     'shippingAddress' => [
                         'id' => null,
-                        'summary' => ''
+                        'summary' => '',
                     ],
                     'billingAddress' => [
                         'id' => null,
-                        'summary' => ''
+                        'summary' => '',
                     ],
                     'shippingMethod' => [
                         'carrier' => null,
                         'method' => null,
-                        'summary' => ''
-                    ]
-                ]
-            ]
+                        'summary' => '',
+                    ],
+                ],
+            ],
         ];
     }
 }

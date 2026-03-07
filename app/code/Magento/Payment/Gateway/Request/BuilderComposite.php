@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Request;
 
 use Magento\Framework\ObjectManager\TMap;
@@ -31,7 +34,7 @@ class BuilderComposite implements BuilderInterface
         $this->builders = $tmapFactory->create(
             [
                 'array' => $builders,
-                'type' => BuilderInterface::class
+                'type' => BuilderInterface::class,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\ImportExport\Model\ResourceModel\Import\Data as DataSourceModel;
  */
 interface EntityInterface
 {
-
     /**
      * Returns Error aggregator
      *
@@ -190,7 +190,7 @@ interface EntityInterface
      *
      * @return array
      */
-    public function getIds() : array;
+    public function getIds(): array;
 
     /**
      * Set Ids of Validated Rows
@@ -205,5 +205,5 @@ interface EntityInterface
      *
      * @return array
      */
-    public function getDataSourceModel() : DataSourceModel;
+    public function getDataSourceModel(): DataSourceModel;
 }

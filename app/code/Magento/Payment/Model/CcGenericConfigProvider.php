@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -59,9 +62,9 @@ class CcGenericConfigProvider implements ConfigProviderInterface
                             'months' => [$methodCode => $this->getCcMonths()],
                             'years' => [$methodCode => $this->getCcYears()],
                             'hasVerification' => [$methodCode => $this->hasVerification($methodCode)],
-                            'cvvImageUrl' => [$methodCode => $this->getCvvImageUrl()]
-                        ]
-                    ]
+                            'cvvImageUrl' => [$methodCode => $this->getCvvImageUrl()],
+                        ],
+                    ],
                 ]);
             }
         }

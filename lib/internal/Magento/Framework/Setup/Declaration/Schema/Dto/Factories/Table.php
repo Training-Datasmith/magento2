@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -53,7 +55,7 @@ class Table implements FactoryInterface
         '10.11.' => 'utf8mb4',
         '11.4.' => 'utf8mb4',
         'mysql_8_29' => 'utf8mb4',
-        'default' => 'utf8'
+        'default' => 'utf8',
     ];
 
     /**
@@ -65,7 +67,7 @@ class Table implements FactoryInterface
         '10.11.' => 'utf8mb4_general_ci',
         '11.4.' => 'utf8mb4_general_ci',
         'mysql_8_29' => 'utf8mb4_general_ci',
-        'default' => 'utf8_general_ci'
+        'default' => 'utf8_general_ci',
     ];
 
     /**

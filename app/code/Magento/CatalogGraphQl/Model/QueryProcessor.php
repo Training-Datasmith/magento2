@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class QueryProcessor
      * @throws NoSuchEntityException
      * @return Query
      */
-    public function prepare(ContextInterface $context, string $queryText) : Query
+    public function prepare(ContextInterface $context, string $queryText): Query
     {
         $query = $this->queryFactory->create();
         $maxQueryLength = (int) $query->getMaxQueryLength();

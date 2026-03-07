@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\Catalog\Block\Product;
 
 use Magento\Catalog\Block\Product\Image as ImageBlock;
-use Magento\Catalog\Model\View\Asset\ImageFactory as AssetImageFactory;
+use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Image\ParamsBuilder;
+use Magento\Catalog\Model\View\Asset\ImageFactory as AssetImageFactory;
 use Magento\Catalog\Model\View\Asset\PlaceholderFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\ConfigInterface;
-use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -159,7 +160,7 @@ class ImageFactory
         if ($originalFilePath === null || $originalFilePath === 'no_selection') {
             $imageAsset = $this->viewAssetPlaceholderFactory->create(
                 [
-                    'type' => $imageMiscParams['image_type']
+                    'type' => $imageMiscParams['image_type'],
                 ]
             );
         } else {
@@ -187,7 +188,7 @@ class ImageFactory
                 'ratio' => $this->getRatio($imageMiscParams['image_width'] ?? 0, $imageMiscParams['image_height'] ?? 0),
                 'custom_attributes' => $this->filterCustomAttributes($attributes),
                 'class' => $this->getClass($attributes),
-                'product_id' => $product->getId()
+                'product_id' => $product->getId(),
             ],
         ];
 

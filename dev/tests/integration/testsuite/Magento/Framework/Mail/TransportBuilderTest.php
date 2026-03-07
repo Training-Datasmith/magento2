@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class EmailMessageTest
@@ -113,8 +114,8 @@ class TransportBuilderTest extends TestCase
                 [
                     'billy.everything@someserver.com',
                     'john.doe@someserver.com',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -187,15 +188,15 @@ class TransportBuilderTest extends TestCase
                         'billy.everythingsomeserver.com',
                         'billy.everything2@someserver.com',
                         'billy.everythin2gsomeserver.com',
-                        'billy.everything3@someserver.com'
+                        'billy.everything3@someserver.com',
                     ],
                     [
                         'billy.everything@someserver.com',
                         'billy.everything2@someserver.com',
-                        'billy.everything3@someserver.com'
-                    ]
-                ]
-            ]
+                        'billy.everything3@someserver.com',
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 $objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
 
@@ -18,7 +19,7 @@ $productRepository = $objectManager->create(
 $categoryLinkRepository = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkRepositoryInterface::class,
     [
-        'productRepository' => $productRepository
+        'productRepository' => $productRepository,
     ]
 );
 
@@ -27,7 +28,7 @@ $categoryLinkManagement = $objectManager->create(\Magento\Catalog\Api\CategoryLi
 $reflectionClass = new \ReflectionClass(get_class($categoryLinkManagement));
 $properties = [
     'productRepository' => $productRepository,
-    'categoryLinkRepository' => $categoryLinkRepository
+    'categoryLinkRepository' => $categoryLinkRepository,
 ];
 foreach ($properties as $key => $value) {
     if ($reflectionClass->hasProperty($key)) {

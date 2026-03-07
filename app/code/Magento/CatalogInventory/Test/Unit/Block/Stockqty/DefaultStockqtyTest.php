@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,6 @@ use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\CatalogInventory\Block\Stockqty\DefaultStockqty;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\Store;
@@ -55,12 +54,12 @@ class DefaultStockqtyTest extends TestCase
         $contextMock = $this->createMock(Context::class);
         $this->scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
         $contextMock->method('getScopeConfig')->willReturn($this->scopeConfigMock);
-        
+
         $this->registryMock = $this->createMock(Registry::class);
         $this->stockRegistryMock = $this->createMock(StockRegistryInterface::class);
-        
+
         $stockStateMock = $this->createMock(StockStateInterface::class);
-        
+
         $this->block = new DefaultStockqty(
             $contextMock,
             $this->registryMock,
@@ -187,14 +186,14 @@ class DefaultStockqtyTest extends TestCase
                 'productId' => null,
                 'websiteId' => null,
                 'dataQty' => null,
-                'expectedQty' => 0
+                'expectedQty' => 0,
             ],
             [
                 'productStockQty' => null,
                 'productId' => null,
                 'websiteId' => null,
                 'dataQty' => 50,
-                'expectedQty' => 50
+                'expectedQty' => 50,
             ],
         ];
     }

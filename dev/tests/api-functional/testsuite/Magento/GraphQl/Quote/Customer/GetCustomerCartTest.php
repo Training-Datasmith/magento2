@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,8 +10,10 @@ namespace Magento\GraphQl\Quote\Customer;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
+use Magento\Quote\Model\ResourceModel\Quote\Collection;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\Store\Test\Fixture\Website as WebsiteFixture;
@@ -18,8 +21,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Quote\Model\ResourceModel\Quote\Collection;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
@@ -159,7 +160,7 @@ class GetCustomerCartTest extends GraphQlAbstract
             [
                 'store_id' => '$store2.id$',
                 'website_id' => '$website2.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             as: 'customer'
         )
@@ -318,7 +319,7 @@ QUERY;
      * @param string $password
      * @return string
      */
-    private function generateCustomerToken(string $email, string $password) : string
+    private function generateCustomerToken(string $email, string $password): string
     {
         return <<<MUTATION
 mutation {

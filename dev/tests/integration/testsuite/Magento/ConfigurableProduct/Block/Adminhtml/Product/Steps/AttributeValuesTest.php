@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -55,8 +56,8 @@ class AttributeValuesTest extends TestCase
                         'modal' => 'configurableModal',
                         'dataScope' => 'productFormConfigurable',
                     ],
-                    'permissions' => Bootstrap::getObjectManager()->get(PermissionsData::class)
-                ]
+                    'permissions' => Bootstrap::getObjectManager()->get(PermissionsData::class),
+                ],
             ]
         );
         $isAllowedToManageAttributes = $block->getPermissions()->isAllowedToManageAttributes();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class SampleTest extends TestCase
                 'clearBody',
                 'setHeader',
                 'sendHeaders',
-                'sendResponse'
+                'sendResponse',
             ]
         );
         $this->fileHelper = $this->createPartialMock(
@@ -91,7 +92,7 @@ class SampleTest extends TestCase
                 'getContentType',
                 'output',
                 'getFileSize',
-                'getContentDisposition'
+                'getContentDisposition',
             ]
         );
         $this->sampleModel = $this->createPartialMockWithReflection(
@@ -103,14 +104,14 @@ class SampleTest extends TestCase
                 'getSampleUrl',
                 'getBasePath',
                 'getBaseSamplePath',
-                'getSampleFile'
+                'getSampleFile',
             ]
         );
         $this->objectManager = $this->createPartialMock(
             ObjectManager::class,
             [
                 'create',
-                'get'
+                'get',
             ]
         );
         $this->sample = $this->objectManagerHelper->getObject(
@@ -118,7 +119,7 @@ class SampleTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'request' => $this->request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }

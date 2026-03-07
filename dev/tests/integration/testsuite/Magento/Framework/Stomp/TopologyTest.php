@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\MessageQueue\DefaultValueProvider;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Stomp;
 use Magento\TestFramework\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @see dev/tests/integration/_files/Magento/TestModuleMessageQueueConfiguration
@@ -100,9 +101,9 @@ class TopologyTest extends TestCase
                     'durable' => 'true',
                     'autoDelete' => 'false',
                     'internalQueue' => 'false',
-                    'routingType' => 'ANYCAST'
-                ]
-            ]
+                    'routingType' => 'ANYCAST',
+                ],
+            ],
         ];
     }
 }

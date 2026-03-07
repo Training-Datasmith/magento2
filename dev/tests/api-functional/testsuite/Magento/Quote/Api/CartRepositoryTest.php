@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Api\SortOrderBuilder;
 use Magento\Framework\Api\SortOrder;
+use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\Webapi\Rest\Request;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
+use Magento\Quote\Model\Quote;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Model\Quote;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\Framework\Webapi\Rest\Request;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -293,14 +296,14 @@ class CartRepositoryTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::$mineCartUrl,
                 'httpMethod'   => Request::HTTP_METHOD_PUT,
-                'token'        => $token
+                'token'        => $token,
             ],
             'soap' => [
                 'service' => 'quoteCartRepositoryV1',
                 'serviceVersion' => 'V1',
                 'operation' => 'quoteCartRepositoryV1Save',
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);
@@ -324,23 +327,23 @@ class CartRepositoryTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::$mineCartUrl,
                 'httpMethod'   => Request::HTTP_METHOD_PUT,
-                'token'        => $token
+                'token'        => $token,
             ],
             'soap' => [
                 'service'        => 'quoteCartRepositoryV1',
                 'serviceVersion' => 'V1',
                 'operation'      => 'quoteCartRepositoryV1Save',
-                'token'          => $token
-            ]
+                'token'          => $token,
+            ],
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);
 
-        $quote->loadActive($requestData["quote"]["id"]);
-        $this->assertEquals($requestData["quote"]["customer"]["firstname"], $quote->getCustomerFirstname());
-        $this->assertEquals($requestData["quote"]["customer"]["middlename"], $quote->getCustomerMiddlename());
-        $this->assertEquals($requestData["quote"]["customer"]["lastname"], $quote->getCustomerLastname());
-        $this->assertEquals($requestData["quote"]["customer"]["email"], $quote->getCustomerEmail());
+        $quote->loadActive($requestData['quote']['id']);
+        $this->assertEquals($requestData['quote']['customer']['firstname'], $quote->getCustomerFirstname());
+        $this->assertEquals($requestData['quote']['customer']['middlename'], $quote->getCustomerMiddlename());
+        $this->assertEquals($requestData['quote']['customer']['lastname'], $quote->getCustomerLastname());
+        $this->assertEquals($requestData['quote']['customer']['email'], $quote->getCustomerEmail());
     }
 
     /**
@@ -373,8 +376,8 @@ class CartRepositoryTest extends WebapiAbstract
                 'middlename' => 'Middlename_Test',
                 'firstname'  => 'Firstname_Test',
                 'lastname'   => 'Lastname_Test',
-                'email'      => 'customer@test.com'
-            ]
+                'email'      => 'customer@test.com',
+            ],
         ];
 
         return $requestData;

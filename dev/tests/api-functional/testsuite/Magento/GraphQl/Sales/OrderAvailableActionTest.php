@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -179,7 +180,7 @@ class OrderAvailableActionTest extends GraphQlAbstract
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product1.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product1.id$', 'qty' => 1]],
             ]
         )
     ]
@@ -234,24 +235,24 @@ QUERY;
         return [
             'pending status' => [
                 'pending',
-                ['CANCEL', 'REORDER']
+                ['CANCEL', 'REORDER'],
             ],
             'On Hold status' => [
                 Order::STATE_HOLDED,
-                []
+                [],
             ],
             'Canceled status' => [
                 Order::STATE_CANCELED,
-                ['REORDER']
+                ['REORDER'],
             ],
             'Closed status' => [
                 Order::STATE_CLOSED,
-                ['REORDER']
+                ['REORDER'],
             ],
             'Complete status' => [
                 Order::STATE_COMPLETE,
-                ['REORDER']
-            ]
+                ['REORDER'],
+            ],
         ];
     }
 }

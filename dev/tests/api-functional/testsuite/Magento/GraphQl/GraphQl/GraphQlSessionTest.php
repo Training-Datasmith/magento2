@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\GraphQl\GraphQl;
 
 use Magento\Framework\Exception\AuthenticationException;
+use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\Client;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 
 /**
  * Test class to verify category uid, available as product aggregation type
@@ -290,7 +291,7 @@ QUERY;
      * @magentoApiDataFixture Magento/Customer/_files/customer.php
      * @magentoConfigFixture graphql/session/disable 0
      */
-    public function testCustomerCanQueryOwnEmailUsingSession() : void
+    public function testCustomerCanQueryOwnEmailUsingSession(): void
     {
         $query = '{customer{email}}';
         $result = $this->graphQlClient->postWithResponseHeaders($query, [], '', $this->getAuthHeaders(), true);

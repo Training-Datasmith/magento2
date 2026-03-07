@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,8 +108,8 @@ class LinkManagementTest extends WebapiAbstract
             (int)$attribute->getAttributeId(),
             [
                 [
-                    'value_index' => $attribute->getOptions()[1]->getValue()
-                ]
+                    'value_index' => $attribute->getOptions()[1]->getValue(),
+                ],
             ]
         );
 
@@ -117,8 +118,8 @@ class LinkManagementTest extends WebapiAbstract
             [
                 [
                     'attribute_code' => 'test_configurable',
-                    'value' => $attribute->getOptions()[1]->getValue()
-                ]
+                    'value' => $attribute->getOptions()[1]->getValue(),
+                ],
             ]
         );
 
@@ -155,7 +156,7 @@ class LinkManagementTest extends WebapiAbstract
         $productSku = 'configurable-product-sku';
         $childProductSkus = [
             'simple-product-sku-1',
-            'simple-product-sku-2'
+            'simple-product-sku-2',
         ];
         $attributesToAdd = [
             'custom_attr_1',
@@ -261,7 +262,7 @@ class LinkManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/' . $sku,
-                'httpMethod' => Request::HTTP_METHOD_DELETE
+                'httpMethod' => Request::HTTP_METHOD_DELETE,
             ],
             'soap' => [
                 'service' => 'catalogProductRepositoryV1',
@@ -283,13 +284,13 @@ class LinkManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '/' . $productSku . '/options/all',
-                'httpMethod' => Request::HTTP_METHOD_GET
+                'httpMethod' => Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::OPTION_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::OPTION_SERVICE_NAME . 'GetList'
-            ]
+                'operation' => self::OPTION_SERVICE_NAME . 'GetList',
+            ],
         ];
         return $this->_webApiCall($serviceInfo, ['sku' => $productSku]);
     }
@@ -306,13 +307,13 @@ class LinkManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '/' . $productSku . '/child',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'AddChild'
-            ]
+                'operation' => self::SERVICE_NAME . 'AddChild',
+            ],
         ];
         return $this->_webApiCall($serviceInfo, ['sku' => $productSku, 'childSku' => $childSku]);
     }
@@ -331,13 +332,13 @@ class LinkManagementTest extends WebapiAbstract
                 'name' => 'configurable-product-' . $productSku,
                 'type_id' => 'configurable',
                 'price' => 50,
-                'attribute_set_id' => 4
-            ]
+                'attribute_set_id' => 4,
+            ],
         ];
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => 'catalogProductRepositoryV1',
@@ -370,8 +371,8 @@ class LinkManagementTest extends WebapiAbstract
                 'label' => 'test_configurable',
                 'position' => $position,
                 'is_use_default' => true,
-                'values' => $attributeValues
-            ]
+                'values' => $attributeValues,
+            ],
         ];
         $serviceInfo = [
             'rest' => [
@@ -398,8 +399,8 @@ class LinkManagementTest extends WebapiAbstract
                 'price' => 3.62,
                 'status' => 1,
                 'visibility' => 4,
-                'custom_attributes' => $customAttributes
-            ]
+                'custom_attributes' => $customAttributes,
+            ],
         ];
         $serviceInfo = [
             'rest' => [
@@ -482,13 +483,13 @@ class LinkManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => sprintf($resourcePath, $productSku, $childSku),
-                'httpMethod' => Request::HTTP_METHOD_DELETE
+                'httpMethod' => Request::HTTP_METHOD_DELETE,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'RemoveChild'
-            ]
+                'operation' => self::SERVICE_NAME . 'RemoveChild',
+            ],
         ];
         $requestData = ['sku' => $productSku, 'childSku' => $childSku];
         return $this->_webApiCall($serviceInfo, $requestData);
@@ -505,13 +506,13 @@ class LinkManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '/' . $productSku . '/children',
-                'httpMethod' => Request::HTTP_METHOD_GET
+                'httpMethod' => Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'GetChildren'
-            ]
+                'operation' => self::SERVICE_NAME . 'GetChildren',
+            ],
         ];
         return $this->_webApiCall($serviceInfo, ['sku' => $productSku]);
     }

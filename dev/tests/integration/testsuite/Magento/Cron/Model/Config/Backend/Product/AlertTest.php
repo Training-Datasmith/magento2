@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -81,15 +82,15 @@ class AlertTest extends TestCase
         return [
             'daily' => [
                 Frequency::CRON_DAILY,  // $frequency
-                '0 0 * * *'  // $expectedCronExpr
+                '0 0 * * *',  // $expectedCronExpr
             ],
             'weekly' => [
                 Frequency::CRON_WEEKLY,  // $frequency
-                '0 0 * * 1'  // $expectedCronExpr
+                '0 0 * * 1',  // $expectedCronExpr
             ],
             'monthly' => [
                 Frequency::CRON_MONTHLY,  // $frequency
-                '0 0 1 * *'  // $expectedCronExpr
+                '0 0 1 * *',  // $expectedCronExpr
             ],
         ];
     }

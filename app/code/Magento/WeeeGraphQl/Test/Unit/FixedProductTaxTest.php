@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class FixedProductTaxTest extends TestCase
 
         $objectManager = new ObjectManager($this);
         $this->resolver = $objectManager->getObject(FixedProductTax::class, [
-            'weeeHelper' => $this->weeeHelperMock
+            'weeeHelper' => $this->weeeHelperMock,
         ]);
     }
 

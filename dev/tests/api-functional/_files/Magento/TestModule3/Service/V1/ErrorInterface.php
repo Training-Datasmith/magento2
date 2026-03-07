@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Interface for a test service for error handling testing
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule3\Service\V1;
 
 interface ErrorInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Customer\Model\Backend\Customer testing
  */
+
 namespace Magento\Customer\Test\Unit\Model\Backend;
 
 use Magento\Customer\Model\Backend\Customer;

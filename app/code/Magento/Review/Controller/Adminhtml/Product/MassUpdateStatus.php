@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
 use Magento\Review\Controller\Adminhtml\Product as ProductController;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Review\Model\RatingFactory;
-use Magento\Review\Model\Review;
 use Magento\Review\Model\ResourceModel\Review\Collection;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory;
+use Magento\Review\Model\Review;
 use Magento\Review\Model\ReviewFactory;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 
 /**
  * Mass Update Status action.

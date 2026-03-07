@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Integration\Source;
 
 /**
@@ -20,7 +23,7 @@ class Status implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => \Magento\Integration\Model\Integration::STATUS_INACTIVE, 'label' => __('Inactive')],
             ['value' => \Magento\Integration\Model\Integration::STATUS_ACTIVE, 'label' => __('Active')],
-            ['value' => \Magento\Integration\Model\Integration::STATUS_RECREATED, 'label' => __('Reset')]
+            ['value' => \Magento\Integration\Model\Integration::STATUS_RECREATED, 'label' => __('Reset')],
         ];
     }
 }

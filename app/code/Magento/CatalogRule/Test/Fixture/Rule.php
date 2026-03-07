@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Test\Fixture;
 
+use Magento\CatalogRule\Model\ResourceModel\Rule as ResourceModel;
+use Magento\CatalogRule\Model\RuleFactory;
 use Magento\CatalogRule\Test\Fixture\Data\ActionsSerializer;
 use Magento\CatalogRule\Test\Fixture\Data\ConditionsSerializer;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 use Magento\Framework\DataObject;
-use Magento\CatalogRule\Model\ResourceModel\Rule as ResourceModel;
-use Magento\CatalogRule\Model\RuleFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;

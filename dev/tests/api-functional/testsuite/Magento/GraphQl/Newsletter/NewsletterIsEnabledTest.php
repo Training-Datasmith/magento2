@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -31,8 +32,8 @@ QRY;
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'newsletter_enabled' => true
-                ]
+                    'newsletter_enabled' => true,
+                ],
             ],
             $this->graphQlQuery(
                 self::QUERY
@@ -48,8 +49,8 @@ QRY;
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'newsletter_enabled' => false
-                ]
+                    'newsletter_enabled' => false,
+                ],
             ],
             $this->graphQlQuery(
                 self::QUERY

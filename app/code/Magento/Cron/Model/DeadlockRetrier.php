@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class DeadlockRetrier implements DeadlockRetrierInterface
             try {
                 return $callback();
             } catch (DeadlockException $e) {
-                $this->logger->warning(sprintf("Deadlock detected in cron: %s", $e->getMessage()));
+                $this->logger->warning(sprintf('Deadlock detected in cron: %s', $e->getMessage()));
                 continue;
             }
         }

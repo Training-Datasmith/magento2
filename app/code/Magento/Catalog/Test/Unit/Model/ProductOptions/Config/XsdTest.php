@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ProductOptions\Config;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\TestFramework\Unit\Utility\XsdValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
@@ -98,7 +99,7 @@ class XsdTest extends TestCase
     {
         return [
             'product_options' => ['product_options.xsd', 'product_options_valid.xml'],
-            'product_options_merged' => ['product_options_merged.xsd', 'product_options_merged_valid.xml']
+            'product_options_merged' => ['product_options_merged.xsd', 'product_options_merged_valid.xml'],
         ];
     }
 

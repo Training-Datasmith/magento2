@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class GenericTest extends TestCase
     {
         return [
             [[['value' => 'Val', 'label' => 'Label']], ['Val' => 'Label']],
-            [[], false]
+            [[], false],
         ];
     }
 }

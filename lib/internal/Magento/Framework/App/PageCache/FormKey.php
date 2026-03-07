@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\PageCache;
 
 use Magento\Framework\Session\SessionManagerInterface;
@@ -19,7 +22,7 @@ class FormKey
     /**
      * Name of cookie that holds private content version
      */
-    const COOKIE_NAME = 'form_key';
+    public const COOKIE_NAME = 'form_key';
 
     /**
      * CookieManager

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class BundlePriceDetails implements ResolverInterface
         return [
             'main_price' =>  $price,
             'main_final_price' => $finalPrice,
-            'discount_percentage' => $discountPercentage
+            'discount_percentage' => $discountPercentage,
         ];
     }
 

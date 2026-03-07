@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Console\Command;
 
+use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\DeploymentConfig\Writer;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Math\Random;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\CacheInterface;
-use Magento\Framework\Encryption\EncryptorInterface;
 
 class UpdateEncryptionKeyCommand extends Command
 {

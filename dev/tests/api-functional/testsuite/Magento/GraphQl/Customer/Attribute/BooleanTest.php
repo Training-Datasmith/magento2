@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'attribute'
         ),
@@ -76,17 +77,17 @@ QRY;
                             'options' => [
                                 [
                                     'label' => 'Yes',
-                                    'value' => '1'
+                                    'value' => '1',
                                 ],
                                 [
                                     'label' => 'No',
-                                    'value' => '0'
-                                ]
-                            ]
-                        ]
+                                    'value' => '0',
+                                ],
+                            ],
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

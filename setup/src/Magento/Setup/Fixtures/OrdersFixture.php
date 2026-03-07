@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,56 +52,56 @@ class OrdersFixture extends Fixture
      *
      * @var string
      */
-    const BATCH_SIZE = 1000;
+    public const BATCH_SIZE = 1000;
 
     /**
      * Product type for "big" configurable products.
      *
      * @var string
      */
-    const BIG_CONFIGURABLE_TYPE = 'big_configurable';
+    public const BIG_CONFIGURABLE_TYPE = 'big_configurable';
 
     /**
      * Default value for minimum items (simple) per order configuration.
      *
      * @var int
      */
-    const ORDER_SIMPLE_PRODUCT_COUNT_FROM = 2;
+    public const ORDER_SIMPLE_PRODUCT_COUNT_FROM = 2;
 
     /**
      * Default value for maximum items (simple) per order configuration.
      *
      * @var int
      */
-    const ORDER_SIMPLE_PRODUCT_COUNT_TO = 2;
+    public const ORDER_SIMPLE_PRODUCT_COUNT_TO = 2;
 
     /**
      * Default value for minimum items (configurable) per order configuration.
      *
      * @var int
      */
-    const ORDER_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
+    public const ORDER_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
 
     /**
      * Default value for maximum items (configurable) per order configuration.
      *
      * @var int
      */
-    const ORDER_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
+    public const ORDER_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
 
     /**
      * Default value for minimum items (big configurable) per order configuration.
      *
      * @var int
      */
-    const ORDER_BIG_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
+    public const ORDER_BIG_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
 
     /**
      * Default value for maximum items (big configurable) per order configuration.
      *
      * @var int
      */
-    const ORDER_BIG_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
+    public const ORDER_BIG_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
 
     /**
      * Fixture execution priority.
@@ -277,9 +279,9 @@ class OrdersFixture extends Fixture
                 implode(PHP_EOL, [
                     $this->storeManager->getWebsite($store->getWebsiteId())->getName(),
                     $this->storeManager->getGroup($store->getStoreGroupId())->getName(),
-                    $store->getName()
+                    $store->getName(),
                 ]),
-                $productsResult
+                $productsResult,
             ];
         }
 
@@ -317,7 +319,7 @@ class OrdersFixture extends Fixture
             '%state%' => 'Alabama',
             '%country%' => 'US',
             '%zip%' => '11111',
-            '%phone%' => '911'
+            '%phone%' => '911',
         ];
 
         $batchNumber = 0;
@@ -330,7 +332,7 @@ class OrdersFixture extends Fixture
                 // phpcs:disable Magento2.Security.InsecureFunction
                 Type::TYPE_SIMPLE => mt_rand($orderSimpleCountFrom, $orderSimpleCountTo),
                 Configurable::TYPE_CODE => mt_rand($orderConfigurableCountFrom, $orderConfigurableCountTo),
-                self::BIG_CONFIGURABLE_TYPE => mt_rand($orderBigConfigurableCountFrom, $orderBigConfigurableCountTo)
+                self::BIG_CONFIGURABLE_TYPE => mt_rand($orderBigConfigurableCountFrom, $orderBigConfigurableCountTo),
                 // phpcs:enable
             ];
             $order = [
@@ -377,9 +379,9 @@ class OrdersFixture extends Fixture
                         '%code%' => 'info_buyRequest',
                         '%value%' => $this->serializer->serialize([
                             'product' => $productId($entityId, $i, Type::TYPE_SIMPLE),
-                            'qty' => "1",
-                            'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw'
-                        ])
+                            'qty' => '1',
+                            'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw',
+                        ]),
                     ]);
                     $itemIdSequence->next();
                 }
@@ -395,26 +397,26 @@ class OrdersFixture extends Fixture
                             '%productOptions%' => $productBuyRequest($entityId, $i, $type)['order'],
                             '%itemId%' => $parentItemId,
                             '%parentItemId%' => 'null',
-                            '%productType%' => Configurable::TYPE_CODE
+                            '%productType%' => Configurable::TYPE_CODE,
                         ];
                         $this->query('sales_order_item', $order, $itemData);
                         $this->query('quote_item', $order, $itemData);
                         $this->query('quote_item_option', $order, $itemData, [
                             '%code%' => 'info_buyRequest',
-                            '%value%' => $productBuyRequest($entityId, $i, $type)['quote']
+                            '%value%' => $productBuyRequest($entityId, $i, $type)['quote'],
                         ]);
                         $this->query('quote_item_option', $order, $itemData, [
                             '%code%' => 'attributes',
-                            '%value%' => $productBuyRequest($entityId, $i, $type)['super_attribute']
+                            '%value%' => $productBuyRequest($entityId, $i, $type)['super_attribute'],
                         ]);
                         $itemData['%productId%'] = $productChildId($entityId, $i, $type);
                         $this->query('quote_item_option', $itemData, [
-                            '%code%' => "product_qty_" . $productChildId($entityId, $i, $type),
-                            '%value%' => "1"
+                            '%code%' => 'product_qty_' . $productChildId($entityId, $i, $type),
+                            '%value%' => '1',
                         ]);
                         $this->query('quote_item_option', $itemData, [
-                            '%code%' => "simple_product",
-                            '%value%' => $productChildId($entityId, $i, $type)
+                            '%code%' => 'simple_product',
+                            '%value%' => $productChildId($entityId, $i, $type),
                         ]);
                         $itemIdSequence->next();
 
@@ -426,18 +428,18 @@ class OrdersFixture extends Fixture
                             '%productOptions%' => $productChildBuyRequest($entityId, $i, $type)['order'],
                             '%itemId%' => $itemIdSequence->current(),
                             '%parentItemId%' => $parentItemId,
-                            '%productType%' => Type::TYPE_SIMPLE
+                            '%productType%' => Type::TYPE_SIMPLE,
                         ];
 
                         $this->query('sales_order_item', $order, $itemData);
                         $this->query('quote_item', $order, $itemData);
                         $this->query('quote_item_option', $itemData, [
-                            '%code%' => "info_buyRequest",
-                            '%value%' => $productChildBuyRequest($entityId, $i, $type)['quote']
+                            '%code%' => 'info_buyRequest',
+                            '%value%' => $productChildBuyRequest($entityId, $i, $type)['quote'],
                         ]);
                         $this->query('quote_item_option', $itemData, [
-                            '%code%' => "parent_product_id",
-                            '%value%' => $productId($entityId, $i, $type)
+                            '%code%' => 'parent_product_id',
+                            '%value%' => $productId($entityId, $i, $type),
                         ]);
                         $itemIdSequence->next();
                     }
@@ -477,7 +479,7 @@ class OrdersFixture extends Fixture
      */
     private function prepareQueryTemplates()
     {
-        $fileName = __DIR__ . DIRECTORY_SEPARATOR . "_files" . DIRECTORY_SEPARATOR . "orders_fixture_data.json";
+        $fileName = __DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'orders_fixture_data.json';
         // phpcs:ignore Magento2.Functions.DiscouragedFunction
         $templateData = json_decode(file_get_contents(realpath($fileName)), true);
         foreach ($templateData as $table => $template) {
@@ -489,19 +491,19 @@ class OrdersFixture extends Fixture
                 $resource = $template['_resource'];
                 unset($template['_resource']);
             } else {
-                $resource = explode("_", $table);
+                $resource = explode('_', $table);
                 foreach ($resource as &$item) {
                     $item = ucfirst($item);
                 }
-                $resource = "Magento\\"
+                $resource = 'Magento\\'
                     . array_shift($resource)
-                    . "\\Model\\ResourceModel\\"
-                    . implode("\\", $resource);
+                    . '\\Model\\ResourceModel\\'
+                    . implode('\\', $resource);
             }
 
             $tableName = $this->getTableName($table, $resource);
 
-            $querySuffix = "";
+            $querySuffix = '';
             if (isset($template['_query_suffix'])) {
                 $querySuffix = $template['_query_suffix'];
                 unset($template['_query_suffix']);
@@ -535,7 +537,7 @@ class OrdersFixture extends Fixture
      */
     protected function query($table, ... $replacements)
     {
-        if (!$this->orderQuotesEnable && strpos($table, "quote") !== false) {
+        if (!$this->orderQuotesEnable && strpos($table, 'quote') !== false) {
             return;
         }
         $query = $this->queryTemplates[$table];
@@ -621,11 +623,11 @@ class OrdersFixture extends Fixture
             $productsResult[$key]['sku'] = $simpleProduct->getSku();
             $productsResult[$key]['name'] = $simpleProduct->getName();
             $productsResult[$key]['buyRequest'] = $this->serializer->serialize([
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,",
-                    "product" => $simpleId,
-                    "qty" => "1"
-                ]
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,',
+                    'product' => $simpleId,
+                    'qty' => '1',
+                ],
             ]);
         }
         return $productsResult;
@@ -654,36 +656,36 @@ class OrdersFixture extends Fixture
             $superAttribute = [];
             foreach ($options as $option) {
                 $attributesInfo[] = [
-                    "label" => $option->getLabel(),
-                    "value" => $option['options']['0']['label'],
-                    "option_id" => $option->getAttributeId(),
-                    "option_value" => $option->getValues()[0]->getValueIndex()
+                    'label' => $option->getLabel(),
+                    'value' => $option['options']['0']['label'],
+                    'option_id' => $option->getAttributeId(),
+                    'option_value' => $option->getValues()[0]->getValueIndex(),
                 ];
                 $superAttribute[$option->getAttributeId()] = $option->getValues()[0]->getValueIndex();
             }
 
             $configurableBuyRequest = [
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw",
-                    "product" => $configurableId,
-                    "selected_configurable_option" => $simpleId,
-                    "related_product" => "",
-                    "super_attribute" => $superAttribute,
-                    "qty" => 1
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw',
+                    'product' => $configurableId,
+                    'selected_configurable_option' => $simpleId,
+                    'related_product' => '',
+                    'super_attribute' => $superAttribute,
+                    'qty' => 1,
                 ],
-                "attributes_info" => $attributesInfo,
-                "simple_name" => $configurableChild->getName(),
-                "simple_sku" => $configurableChild->getSku(),
+                'attributes_info' => $attributesInfo,
+                'simple_name' => $configurableChild->getName(),
+                'simple_sku' => $configurableChild->getSku(),
             ];
             $simpleBuyRequest = [
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,",
-                    "product" => $configurableId,
-                    "selected_configurable_option" => $simpleId,
-                    "related_product" => "",
-                    "super_attribute" => $superAttribute,
-                    "qty" => "1"
-                ]
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,',
+                    'product' => $configurableId,
+                    'selected_configurable_option' => $simpleId,
+                    'related_product' => '',
+                    'super_attribute' => $superAttribute,
+                    'qty' => '1',
+                ],
             ];
 
             $quoteConfigurableBuyRequest = $configurableBuyRequest['info_buyRequest'];
@@ -698,7 +700,7 @@ class OrdersFixture extends Fixture
             $productsResult[$key]['buyRequest'] = [
                 'order' => $this->serializer->serialize($configurableBuyRequest),
                 'quote' => $this->serializer->serialize($quoteConfigurableBuyRequest),
-                'super_attribute' => $this->serializer->serialize($superAttribute)
+                'super_attribute' => $this->serializer->serialize($superAttribute),
             ];
             $productsResult[$key]['childBuyRequest'] = [
                 'order' => $this->serializer->serialize($simpleBuyRequest),
@@ -739,7 +741,7 @@ class OrdersFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'orders' => 'Orders'
+            'orders' => 'Orders',
         ];
     }
 

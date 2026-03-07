@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\View\Test\Unit\Asset\PreProcessor;
 use Magento\Framework\View\Asset\Minification;
 use Magento\Framework\View\Asset\PreProcessor\MinificationConfigProvider;
 use Magento\Framework\View\Asset\PreProcessor\MinificationFilenameResolver;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
@@ -54,18 +55,18 @@ class MinificationFilenameResolverTest extends TestCase
             [
                 'isMin' => true,
                 'input' => 'test.min.ext',
-                'expected' => 'test.ext'
+                'expected' => 'test.ext',
             ],
             [
                 'isMin' => false,
                 'input' => 'test.min.ext',
-                'expected' => 'test.min.ext'
+                'expected' => 'test.min.ext',
             ],
             [
                 'isMin' => false,
                 'input' => 'test.ext',
-                'expected' => 'test.ext'
-            ]
+                'expected' => 'test.ext',
+            ],
         ];
     }
 }

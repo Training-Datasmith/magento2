@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ExportSearchCsvTest extends TestCase
             ExportSearchCsv::class,
             [
                 'fileFactory' => $this->fileFactoryMock,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
     }

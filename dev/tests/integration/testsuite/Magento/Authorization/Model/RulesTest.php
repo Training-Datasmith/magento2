@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Model;
 
 /**
@@ -38,7 +41,7 @@ class RulesTest extends \PHPUnit\Framework\TestCase
         $this->_model
             ->setRoleType('G')
             ->setResourceId('Magento_Backend::all')
-            ->setPrivileges("")
+            ->setPrivileges('')
             ->setAssertId(0)
             ->setRoleId(1)
             ->setPermission('allow');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Cms\Model\PageRepository\ValidationComposite;
 use Magento\Cms\Model\PageRepository\ValidatorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\Exception\LocalizedException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\EntityManager\HydratorInterface;
 
 /**
  * Validate behavior of the validation composite
@@ -145,7 +146,7 @@ class ValidationCompositeTest extends TestCase
             [
                 [
                     static fn (self $testCase) =>
-                    $testCase->createMock(ValidatorInterface::class), 'foo']
+                    $testCase->createMock(ValidatorInterface::class), 'foo'],
                 ],
         ];
     }
@@ -158,7 +159,7 @@ class ValidationCompositeTest extends TestCase
             [
                 'getList',
                 static fn (self $testCase) =>
-                $testCase->createMock(SearchCriteriaInterface::class)
+                $testCase->createMock(SearchCriteriaInterface::class),
             ],
             ['delete', static fn (self $testCase) => $testCase->createMock(PageInterface::class)],
             ['deleteById', 1],

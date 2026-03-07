@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\LayeredNavigation\Block\Navigation;
 
 use Magento\Catalog\Model\Layer\Filter\FilterInterface;
 use Magento\Framework\View\Element\Template;
-use Magento\LayeredNavigation\Block\Navigation\FilterRendererInterface;
 
 /**
  * Catalog layer filter renderer

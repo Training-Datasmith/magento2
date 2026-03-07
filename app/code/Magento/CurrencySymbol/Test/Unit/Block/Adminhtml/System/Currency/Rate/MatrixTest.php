@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\CurrencySymbol\Block\Adminhtml\System\Currency\Rate\Matrix;
 use Magento\CurrencySymbol\Block\Adminhtml\System\Currency\Rate\Services;
 use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\CurrencyFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class MatrixTest extends TestCase
 {
@@ -71,7 +72,7 @@ class MatrixTest extends TestCase
             Matrix::class,
             [
                 'dirCurrencyFactory' => $currencyFactoryMock,
-                'backendSession' => $backendSessionMock
+                'backendSession' => $backendSessionMock,
             ]
         );
         $block->setLayout($layoutMock);

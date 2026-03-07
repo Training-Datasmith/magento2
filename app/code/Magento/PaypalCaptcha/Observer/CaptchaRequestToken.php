@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\PaypalCaptcha\Observer;
 
 use Magento\Captcha\Helper\Data;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\ActionFlag ;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\App\ActionFlag ;
 
 /**
  * Validates Captcha for Request Token controller
@@ -68,7 +69,7 @@ class CaptchaRequestToken implements ObserverInterface
         $data = $this->jsonSerializer->serialize([
             'success' => false,
             'error' => true,
-            'error_messages' => __('Incorrect CAPTCHA.')
+            'error_messages' => __('Incorrect CAPTCHA.'),
         ]);
         $this->actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
         $controller->getResponse()->representJson($data);

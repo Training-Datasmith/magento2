@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Link;
 
 use Magento\Downloadable\Api\LinkRepositoryInterface as LinkRepository;
@@ -46,7 +49,7 @@ class CreateHandler implements ExtensionInterface
             $link->setId(null);
             $this->linkRepository->save($entity->getSku(), $link, !(bool)$entity->getStoreId());
         }
-        
+
         return $entity;
     }
 }

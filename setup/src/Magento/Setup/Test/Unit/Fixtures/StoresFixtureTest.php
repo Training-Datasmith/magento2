@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class StoresFixtureTest extends TestCase
                 'getPath', 'setPath', 'getAvailableSortBy', 'setAvailableSortBy',
                 'getIncludeInMenu', 'setIncludeInMenu', 'getExtensionAttributes', 'setExtensionAttributes',
                 'getCustomAttribute', 'setCustomAttribute', 'getCustomAttributes', 'setCustomAttributes',
-                'setDefaultSortBy', 'save'
+                'setDefaultSortBy', 'save',
             ]
         );
 
@@ -160,7 +161,7 @@ class StoresFixtureTest extends TestCase
                 'getId', 'setId', 'getCode', 'setCode', 'getName', 'setName',
                 'getWebsiteId', 'setWebsiteId', 'getStoreGroupId', 'setIsActive',
                 'getIsActive', 'setStoreGroupId', 'getExtensionAttributes', 'setExtensionAttributes',
-                'addData', 'save'
+                'addData', 'save',
             ]
         );
 
@@ -181,7 +182,7 @@ class StoresFixtureTest extends TestCase
             [
                 'getId', 'setId', 'getWebsiteId', 'setWebsiteId', 'getRootCategoryId', 'setRootCategoryId',
                 'getDefaultStoreId', 'setDefaultStoreId', 'getName', 'setName', 'getCode', 'setCode',
-                'getExtensionAttributes', 'setExtensionAttributes', 'addData', 'save'
+                'getExtensionAttributes', 'setExtensionAttributes', 'addData', 'save',
             ]
         );
 
@@ -202,7 +203,7 @@ class StoresFixtureTest extends TestCase
             [
                 'getId', 'setId', 'getCode', 'setCode', 'getName', 'setName',
                 'getDefaultGroupId', 'setDefaultGroupId', 'getExtensionAttributes', 'setExtensionAttributes',
-                'addData', 'save'
+                'addData', 'save',
             ]
         );
 
@@ -245,7 +246,7 @@ class StoresFixtureTest extends TestCase
                 ['websites', 1, 3],
                 ['store_groups', 1, 6],
                 ['store_views', 1, 12],
-                ['assign_entities_to_all_websites', false]
+                ['assign_entities_to_all_websites', false],
             ]);
 
         $this->model = new StoresFixture(

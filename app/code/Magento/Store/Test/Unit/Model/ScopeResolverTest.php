@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Store\Test\Unit\Model;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ScopeTreeProviderInterface;
 use Magento\Store\Model\ScopeInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Store\Model\ScopeResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ScopeResolver
@@ -80,49 +81,49 @@ class ScopeResolverTest extends TestCase
                 'baseScopeId' => 0,
                 'requestedScope' => ScopeInterface::SCOPE_WEBSITE,
                 'requestedScopeId' => 1,
-                'isBelong' => true
+                'isBelong' => true,
             ],
             'Store group belongs to website' => [
                 'baseScope' => ScopeInterface::SCOPE_WEBSITE,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_GROUP,
                 'requestedScopeId' => 1,
-                'isBelong' => true
+                'isBelong' => true,
             ],
             'Store belongs to store group' => [
                 'baseScope' => ScopeInterface::SCOPE_GROUP,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_STORE,
                 'requestedScopeId' => 1,
-                'isBelong' => true
+                'isBelong' => true,
             ],
             'Store belongs to website' => [
                 'baseScope' => ScopeInterface::SCOPE_WEBSITE,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_STORE,
                 'requestedScopeId' => 1,
-                'isBelong' => true
+                'isBelong' => true,
             ],
             'Store group not belongs to website' => [
                 'baseScope' => ScopeInterface::SCOPE_WEBSITE,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_GROUP,
                 'requestedScopeId' => 2,
-                'isBelong' => false
+                'isBelong' => false,
             ],
             'Store not belongs to store group' => [
                 'baseScope' => ScopeInterface::SCOPE_GROUP,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_STORE,
                 'requestedScopeId' => 2,
-                'isBelong' => false
+                'isBelong' => false,
             ],
             'Store not belongs to website' => [
                 'baseScope' => ScopeInterface::SCOPE_WEBSITE,
                 'baseScopeId' => 1,
                 'requestedScope' => ScopeInterface::SCOPE_STORE,
                 'requestedScopeId' => 2,
-                'isBelong' => false
+                'isBelong' => false,
             ],
         ];
     }

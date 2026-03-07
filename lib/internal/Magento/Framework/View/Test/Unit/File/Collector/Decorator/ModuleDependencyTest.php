@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\File;
 use Magento\Framework\View\File\Collector\Decorator\ModuleDependency;
 use Magento\Framework\View\File\CollectorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ModuleDependencyTest extends TestCase
 {

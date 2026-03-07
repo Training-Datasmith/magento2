@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,5 +22,5 @@ interface HydratorProviderInterface
      *
      * @return HydratorInterface|null
      */
-    public function getHydratorForResolver(ResolverInterface $resolver) : ?HydratorInterface;
+    public function getHydratorForResolver(ResolverInterface $resolver): ?HydratorInterface;
 }

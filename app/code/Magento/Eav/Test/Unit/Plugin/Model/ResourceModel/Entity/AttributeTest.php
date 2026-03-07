@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class AttributeTest extends TestCase
             [
                 'cache' => $this->cacheMock,
                 'cacheState' => $this->cacheStateMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }
@@ -151,7 +152,7 @@ class AttributeTest extends TestCase
                 $cacheId,
                 [
                     Type::CACHE_TAG,
-                    Attribute::CACHE_TAG
+                    Attribute::CACHE_TAG,
                 ]
             );
 

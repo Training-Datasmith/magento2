@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\ConfigurableProduct\Api\Data\OptionInterface;
 use Magento\ConfigurableProduct\Api\OptionRepositoryInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable as ResourceModelConfigurable;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\EntityManager\Operation\ExtensionInterface;
-use Magento\ConfigurableProduct\Api\Data\OptionInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 
 /**
  * Class SaveHandler to update configurable options

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class ExportTest extends AbstractBackendController
                 [
                     'entity' => ProductAttributeInterface::ENTITY_TYPE_CODE,
                     'file_format' => $fileFormat,
-                    'fields_enclosure' => '1'
+                    'fields_enclosure' => '1',
                 ]
             );
         $this->dispatch('backend/admin/export/export');

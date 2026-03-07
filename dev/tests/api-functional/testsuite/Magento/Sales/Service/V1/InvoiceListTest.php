@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\Framework\Api\SortOrderBuilder;
@@ -13,11 +16,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class InvoiceListTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/invoices';
+    public const RESOURCE_PATH = '/V1/invoices';
 
-    const SERVICE_READ_NAME = 'salesInvoiceRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesInvoiceRepositoryV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class GetShippingAddressWhenCartIsVirtualTest extends GraphQlAbstract
             'lastname' => 'Smith',
             'company' => 'CompanyName',
             'street' => [
-                'Green str, 67'
+                'Green str, 67',
             ],
             'city' => 'CityM',
             'region' => [

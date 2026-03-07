@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid;
 
 use Laminas\Stdlib\Parameters;
@@ -115,14 +118,14 @@ class ExtendedTest extends TestCase
                     Parameters::class,
                     [
                         'values' => [
-                            'ajax' => true
-                        ]
+                            'ajax' => true,
+                        ],
                     ]
                 )
             );
         $html = $this->_block->getHtml();
-        $html = str_replace(["\n", " "], '', $html);
-        $this->assertStringEndsWith("</table></div>", $html);
+        $html = str_replace(["\n", ' '], '', $html);
+        $this->assertStringEndsWith('</table></div>', $html);
     }
 
     public function testGetCsvFileStartsWithBOM(): void

@@ -1,21 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\ResourceModel;
 
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Search\Request\IndexScopeResolverInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Catalog\Api\Data\CategoryInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Search\Request\Dimension;
 use Magento\Catalog\Model\Indexer\Category\Product\AbstractAction;
-use Magento\Framework\Search\Request\IndexScopeResolverInterface as TableResolver;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\Context;
+use Magento\Framework\Search\Request\Dimension;
+use Magento\Framework\Search\Request\IndexScopeResolverInterface;
+use Magento\Framework\Search\Request\IndexScopeResolverInterface as TableResolver;
 use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 
 /**
@@ -26,18 +27,6 @@ use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
  */
 class Index extends AbstractDb
 {
-    /**
-     * @var StoreManagerInterface
-     * @since 100.1.0
-     */
-    protected $storeManager;
-
-    /**
-     * @var MetadataPool
-     * @since 100.1.0
-     */
-    protected $metadataPool;
-
     /**
      * @var TableResolver
      */
@@ -55,24 +44,23 @@ class Index extends AbstractDb
 
     /**
      * Index constructor.
-     * @param Context $context
-     * @param StoreManagerInterface $storeManager
-     * @param MetadataPool $metadataPool
      * @param string|null $connectionName
-     * @param TableResolver|null $tableResolver
-     * @param DimensionCollectionFactory|null $dimensionCollectionFactory
      */
     public function __construct(
         Context $context,
-        StoreManagerInterface $storeManager,
-        MetadataPool $metadataPool,
+        /**
+         * @since 100.1.0
+         */
+        protected \Magento\Store\Model\StoreManagerInterface $storeManager,
+        /**
+         * @since 100.1.0
+         */
+        protected \Magento\Framework\EntityManager\MetadataPool $metadataPool,
         $connectionName = null,
         ?TableResolver $tableResolver = null,
         ?DimensionCollectionFactory $dimensionCollectionFactory = null
     ) {
         parent::__construct($context, $connectionName);
-        $this->storeManager = $storeManager;
-        $this->metadataPool = $metadataPool;
         $this->tableResolver = $tableResolver ?: ObjectManager::getInstance()->get(IndexScopeResolverInterface::class);
         $this->dimensionCollectionFactory = $dimensionCollectionFactory
             ?: ObjectManager::getInstance()->get(DimensionCollectionFactory::class);
@@ -93,10 +81,9 @@ class Index extends AbstractDb
      * Return array of price data per customer and website by products
      *
      * @param null|array $productIds
-     * @return array
      * @since 100.1.0
      */
-    protected function _getCatalogProductPriceData($productIds = null)
+    protected function _getCatalogProductPriceData($productIds = null): array
     {
         $connection = $this->getConnection();
         $catalogProductIndexPriceSelect = [];
@@ -155,10 +142,9 @@ class Index extends AbstractDb
      *
      * @param int $storeId
      * @param null|array $productIds
-     * @return array
      * @since 100.1.0
      */
-    public function getCategoryProductIndexData($storeId = null, $productIds = null)
+    public function getCategoryProductIndexData($storeId = null, $productIds = null): array
     {
         $connection = $this->getConnection();
 
@@ -167,7 +153,7 @@ class Index extends AbstractDb
         $catalogCategoryProductTableName = $this->tableResolver->resolve(
             AbstractAction::MAIN_INDEX_TABLE,
             [
-                $catalogCategoryProductDimension
+                $catalogCategoryProductDimension,
             ]
         );
 

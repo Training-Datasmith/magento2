@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -119,7 +120,7 @@ class AgreementsTest extends TestCase
             [
                 'context' => $this->context,
                 'agreementCollection' => $this->agreementCollection,
-                'helper' => $this->helper
+                'helper' => $this->helper,
             ]
         );
     }

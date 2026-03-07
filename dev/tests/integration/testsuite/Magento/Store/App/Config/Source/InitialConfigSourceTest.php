@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test that initial scopes config are loaded if database is available
@@ -122,7 +123,7 @@ class InitialConfigSourceTest extends TestCase
                     'main',
                 ],
                 'main',
-                true
+                true,
             ],
             [
                 [
@@ -130,7 +131,7 @@ class InitialConfigSourceTest extends TestCase
                     'base',
                 ],
                 'base',
-                false
+                false,
             ],
         ];
     }
@@ -141,7 +142,7 @@ class InitialConfigSourceTest extends TestCase
             ->getDirectoryWrite(DirectoryList::CONFIG)
             ->writeFile(
                 $this->configFilePool->getPath($type),
-                "<?" . "php\n return [];\n"
+                '<?' . "php\n return [];\n"
             );
         /** @var DeploymentConfig $config */
         $config = Bootstrap::getObjectManager()->get(DeploymentConfig::class);

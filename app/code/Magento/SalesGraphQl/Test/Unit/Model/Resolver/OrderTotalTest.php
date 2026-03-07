@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -103,7 +104,7 @@ class OrderTotalTest extends TestCase
         $this->orderTaxDetailsAppliedTaxMock->expects($this->atMost(1))->method('setAmount')->willReturn(100.00);
         $this->orderTaxDetailsAppliedTaxMock->expects($this->atMost(1))->method('setPercent')->willReturn(10);
         $this->orderTaxDetailsMock->expects($this->any())->method('getAppliedTaxes')->willReturn([
-            $this->orderTaxDetailsAppliedTaxMock
+            $this->orderTaxDetailsAppliedTaxMock,
         ]);
         $this->orderTaxManagementMock->expects($this->any())->method('getOrderTaxDetails')->willReturn(
             $this->orderTaxDetailsMock

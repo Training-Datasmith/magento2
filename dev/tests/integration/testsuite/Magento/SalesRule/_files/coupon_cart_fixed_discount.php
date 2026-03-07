@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ $salesRule->setData(
 
             'store_id' => 0,
             'store_label' => 'TestRule_Coupon',
-        ]
+        ],
     ]
 );
 $objectManager->get(\Magento\SalesRule\Model\ResourceModel\Rule::class)->save($salesRule);

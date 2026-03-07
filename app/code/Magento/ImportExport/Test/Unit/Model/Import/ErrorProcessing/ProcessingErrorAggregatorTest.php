@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class ProcessingErrorAggregatorTest extends TestCase
         $this->model = $objectManager->getObject(
             ProcessingErrorAggregator::class,
             [
-                'errorFactory' => $this->processingErrorFactoryMock
+                'errorFactory' => $this->processingErrorFactoryMock,
             ]
         );
     }
@@ -142,7 +143,7 @@ class ProcessingErrorAggregatorTest extends TestCase
             [ProcessingError::ERROR_LEVEL_CRITICAL, 7, true],
             [ProcessingError::ERROR_LEVEL_NOT_CRITICAL, 8, false],
             [ProcessingError::ERROR_LEVEL_NOTICE, 9, false],
-            [ProcessingError::ERROR_LEVEL_WARNING, 10, false]
+            [ProcessingError::ERROR_LEVEL_WARNING, 10, false],
         ];
     }
 
@@ -383,36 +384,36 @@ class ProcessingErrorAggregatorTest extends TestCase
         return [
             [
                 [[$errorCode1]],
-                [$message1 => [1]]
+                [$message1 => [1]],
             ],
             [
                 [[], [$errorCode2]],
-                [$message1 => [1], $message3 => [5]]
+                [$message1 => [1], $message3 => [5]],
             ],
             [
                 [[$errorCode3, $errorCode2], [$errorCode2]],
-                [$message3 => [5]]
+                [$message3 => [5]],
             ],
             [
                 [[], []],
-                [$message1 => [1], $message2 => [8], $message3 => [5]]
+                [$message1 => [1], $message2 => [8], $message3 => [5]],
             ],
 
             [
                 [[$errorCode1], [], false],
-                [$errorCode1 => [1]]
+                [$errorCode1 => [1]],
             ],
             [
                 [[], [$errorCode2], false],
-                [$errorCode1 => [1], $errorCode3 => [5]]
+                [$errorCode1 => [1], $errorCode3 => [5]],
             ],
             [
                 [[$errorCode3, $errorCode2], [$errorCode2], false],
-                [$errorCode3 => [5]]
+                [$errorCode3 => [5]],
             ],
             [
                 [[], [], false],
-                [$errorCode1 => [1], $errorCode2 => [8], $errorCode3 => [5]]
+                [$errorCode1 => [1], $errorCode2 => [8], $errorCode3 => [5]],
             ],
         ];
     }

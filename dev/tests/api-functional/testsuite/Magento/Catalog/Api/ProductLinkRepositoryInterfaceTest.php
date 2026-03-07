@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,17 +24,17 @@ class ProductLinkRepositoryInterfaceTest extends WebapiAbstract
     /**
      * @var string
      */
-    const SERVICE_NAME = 'catalogProductLinkRepositoryV1';
+    public const SERVICE_NAME = 'catalogProductLinkRepositoryV1';
 
     /**
      * @var string
      */
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var string
      */
-    const RESOURCE_PATH = '/V1/products/';
+    public const RESOURCE_PATH = '/V1/products/';
 
     /**
      * @var ObjectManagerInterface

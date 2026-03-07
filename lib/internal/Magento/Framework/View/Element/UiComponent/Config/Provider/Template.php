@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config\Provider;
 
 use Magento\Framework\View\Element\UiComponent\Config\FileCollector\AggregatedFileCollector;
@@ -16,12 +19,12 @@ class Template
     /**
      * Components node name in config
      */
-    const TEMPLATE_KEY = 'template';
+    public const TEMPLATE_KEY = 'template';
 
     /**
      * ID in the storage cache
      */
-    const CACHE_ID = 'ui_component_templates';
+    public const CACHE_ID = 'ui_component_templates';
 
     /**
      * @var AggregatedFileCollector
@@ -105,7 +108,7 @@ class Template
         $this->cachedTemplates[$hash] = $this->readerFactory->create(
             [
                 'fileCollector' => $this->aggregatedFileCollectorFactory->create(['searchPattern' => $template]),
-                'domMerger' => $this->domMerger
+                'domMerger' => $this->domMerger,
             ]
         )->getContent();
         $this->cache->save($this->getSerializer()->serialize($this->cachedTemplates), static::CACHE_ID);

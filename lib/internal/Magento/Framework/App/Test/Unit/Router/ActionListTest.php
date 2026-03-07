@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Module\Dir\Reader;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -111,11 +112,11 @@ class ActionListTest extends TestCase
         } else {
             $expectedClassName = $expected;
         }
-        
+
         if (is_callable($data)) {
             $data = $data($this, $expectedClassName);
         }
-        
+
         $this->reflectionClass->method('isInstantiable')->willReturn($isInstantiable);
 
         $this->cacheMock->expects($this->once())
@@ -147,10 +148,10 @@ class ActionListTest extends TestCase
                 'Namespace',
                 'Index',
                 static fn (self $testCase, $className) => [
-                    'magento\module\controller\area\namespace\index' => $className
+                    'magento\module\controller\area\namespace\index' => $className,
                 ],
                 true,
-                static fn (self $testCase) => $testCase->createMock(ActionInterface::class)
+                static fn (self $testCase) => $testCase->createMock(ActionInterface::class),
             ],
             [
                 'Magento_Module',
@@ -158,10 +159,10 @@ class ActionListTest extends TestCase
                 'Namespace',
                 'Index',
                 static fn (self $testCase, $className) => [
-                    'magento\module\controller\namespace\index' => $className
+                    'magento\module\controller\namespace\index' => $className,
                 ],
                 true,
-                static fn (self $testCase) => $testCase->createMock(ActionInterface::class)
+                static fn (self $testCase) => $testCase->createMock(ActionInterface::class),
             ],
             [
                 'Magento_Module',
@@ -169,10 +170,10 @@ class ActionListTest extends TestCase
                 'Namespace',
                 'Catch',
                 static fn (self $testCase, $className) => [
-                    'magento\module\controller\area\namespace\catchaction' => $className
+                    'magento\module\controller\area\namespace\catchaction' => $className,
                 ],
                 true,
-                static fn (self $testCase) => $testCase->createMock(ActionInterface::class)
+                static fn (self $testCase) => $testCase->createMock(ActionInterface::class),
             ],
             [
                 'Magento_Module',
@@ -181,7 +182,7 @@ class ActionListTest extends TestCase
                 'Index',
                 ['magento\module\controller\area\namespace\index' => 'Not_Exist_Class'],
                 false,
-                null
+                null,
             ],
             [
                 'Magento_Module',
@@ -190,7 +191,7 @@ class ActionListTest extends TestCase
                 'Index',
                 [],
                 false,
-                null
+                null,
             ],
             [
                 'Magento_Module',
@@ -199,7 +200,7 @@ class ActionListTest extends TestCase
                 'index',
                 ['magento\module\controller\adminhtml\product\index' => '$mockClassName'],
                 false,
-                null
+                null,
             ],
         ];
     }
@@ -212,7 +213,7 @@ class ActionListTest extends TestCase
                 'cache' => $this->cacheMock,
                 'moduleReader' => $this->readerMock,
                 'serializer' => $this->serializerMock,
-                'reflectionClassFactory' => $this->reflectionClassFactory
+                'reflectionClassFactory' => $this->reflectionClassFactory,
             ]
         );
     }

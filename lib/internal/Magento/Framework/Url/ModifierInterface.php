@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Url;
 
 /**
@@ -15,8 +18,8 @@ interface ModifierInterface
     /**#@+
      * Possible modes.
      */
-    const MODE_ENTIRE = 'entire';
-    const MODE_BASE = 'base';
+    public const MODE_ENTIRE = 'entire';
+    public const MODE_BASE = 'base';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext;
 use Magento\Framework\App\ResourceConnection;
@@ -17,6 +17,7 @@ use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -74,7 +75,7 @@ class FulltextTest extends TestCase
             Fulltext::class,
             [
                 'context' => $this->context,
-                'metadataPool' => $this->metadataPool
+                'metadataPool' => $this->metadataPool,
             ]
         );
     }

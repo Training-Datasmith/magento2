@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit;
 
 /**
@@ -29,7 +32,7 @@ class Tabs extends \Magento\Catalog\Block\Adminhtml\Product\Edit\Tabs
             [
                 'label' => __('Bundle Items'),
                 'url' => $this->getUrl('adminhtml/*/bundles', ['_current' => true]),
-                'class' => 'ajax'
+                'class' => 'ajax',
             ]
         );
         $this->bindShadowTabs('bundle_items', 'customer_options');

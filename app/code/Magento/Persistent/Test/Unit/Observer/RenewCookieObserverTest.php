@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,22 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Observer;
 
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Data;
 use Magento\Persistent\Helper\Session;
-use Magento\Persistent\Model\SessionFactory;
-use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Persistent\Model\Session as PersistentSession;
+use Magento\Persistent\Model\SessionFactory;
 use Magento\Persistent\Observer\RenewCookieObserver;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class RenewCookieObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**

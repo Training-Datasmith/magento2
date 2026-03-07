@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Type;
 
-use Magento\Framework\File\Http;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Option;
@@ -19,6 +19,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\File\Http;
 use Magento\Framework\File\Uploader;
 use Magento\Framework\File\UploaderFactory;
 use Magento\Framework\Filesystem;
@@ -77,7 +78,7 @@ class AbstractTypeTest extends TestCase
                 $registry,
                 $logger,
                 $this->productRepository,
-                $serializer
+                $serializer,
             ])
             ->onlyMethods(['deleteTypeSpecificData'])
             ->getMock();

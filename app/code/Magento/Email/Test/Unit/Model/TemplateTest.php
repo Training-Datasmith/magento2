@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Email\Test\Unit\Model;
 
+use Magento\Email\Model\ResourceModel\Template as TemplateResourceModel;
 use Magento\Email\Model\Template;
 use Magento\Email\Model\Template\Config;
 use Magento\Email\Model\Template\Filter;
@@ -20,9 +22,11 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filter\FilterManager;
+use Magento\Framework\Filter\Template as TemplateFilter;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url;
 use Magento\Framework\View\Asset\Repository;
@@ -34,12 +38,9 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Theme\Model\View\Design;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Email\Model\ResourceModel\Template as TemplateResourceModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\Filter\Template as TemplateFilter;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Covers \Magento\Email\Model\Template
@@ -128,12 +129,12 @@ class TemplateTest extends TestCase
         $objects = [
             [
                 Database::class,
-                $this->createMock(Database::class)
+                $this->createMock(Database::class),
             ],
             [
                 TemplateResourceModel::class,
-                $this->createMock(TemplateResourceModel::class)
-            ]
+                $this->createMock(TemplateResourceModel::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->context = $this->getMockBuilder(Context::class)
@@ -198,7 +199,7 @@ class TemplateTest extends TestCase
     {
         $allMethods = array_merge($mockedMethods, $addMockedMethods, ['__wakeup', '__sleep', '_init']);
         $mock = $this->createPartialMockWithReflection(Template::class, $allMethods);
-        
+
         $this->addPropertyValue($mock, [
             'context' => $this->context,
             'design' => $this->design,
@@ -215,7 +216,7 @@ class TemplateTest extends TestCase
             'filterFactory' => $this->filterFactory,
             'serializer' => $this->serializerMock,
         ], null, false);
-        
+
         return $mock;
     }
 
@@ -495,25 +496,25 @@ class TemplateTest extends TestCase
                 'senderName' => 'sender name',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => 'template subject',
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'no sender name so not valid' => [
                 'senderName' => '',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => 'template subject',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
             'no sender email so not valid' => [
                 'senderName' => 'sender name',
                 'senderEmail' => '',
                 'templateSubject' => 'template subject',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
             'no subject so not valid' => [
                 'senderName' => 'sender name',
                 'senderEmail' => 'email@example.com',
                 'templateSubject' => '',
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
         ];
     }
@@ -774,7 +775,7 @@ class TemplateTest extends TestCase
                     $this->createMock(Url::class),
                     $this->createMock(FilterFactory::class),
                     [],
-                    $this->createMock(Json::class)
+                    $this->createMock(Json::class),
                 ]
             )
             ->getMock();

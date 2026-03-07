@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,13 +9,14 @@ declare(strict_types=1);
 /**
  * Test for \Magento\Eav\Model\Form
  */
+
 namespace Magento\Eav\Test\Unit\Model;
 
 use Magento\Eav\Model\Form;
 use Magento\Eav\Model\Validator\Attribute\Data;
 use Magento\Framework\DataObject;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FormTest extends TestCase
 {
@@ -157,7 +159,7 @@ class FormTest extends TestCase
     {
         return [
             'is_valid' => [true, true, null],
-            'is_invalid' => [false, ['Invalid'], ['attribute_visible_user' => ['Invalid']]]
+            'is_invalid' => [false, ['Invalid'], ['attribute_visible_user' => ['Invalid']]],
         ];
     }
 }

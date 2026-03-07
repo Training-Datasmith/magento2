@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Gallery;
 
 class MimeTypeExtensionMap
@@ -27,10 +30,10 @@ class MimeTypeExtensionMap
      */
     public function getMimeTypeExtension($mimeType)
     {
-        if ($mimeType !==null && isset($this->mimeTypeExtensionMap[$mimeType])) {
+        if ($mimeType !== null && isset($this->mimeTypeExtensionMap[$mimeType])) {
             return $this->mimeTypeExtensionMap[$mimeType];
         } else {
-            return "";
+            return '';
         }
     }
 }

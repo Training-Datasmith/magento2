@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Html;
 
 use Magento\Customer\Model\Context;
@@ -40,7 +43,7 @@ class FooterTest extends \PHPUnit\Framework\TestCase
             $this->_theme->getId(),
             false,
             $block->getTemplateFile(),
-            'template' => 'html/copyright.phtml'
+            'template' => 'html/copyright.phtml',
         ];
         $this->assertEquals(
             $expected,

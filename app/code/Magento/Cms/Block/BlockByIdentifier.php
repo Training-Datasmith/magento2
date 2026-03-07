@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -158,7 +159,7 @@ class BlockByIdentifier extends AbstractBlock implements IdentityInterface
 
         $identities = [
             self::CACHE_KEY_PREFIX . '_' . $this->getIdentifier(),
-            self::CACHE_KEY_PREFIX . '_' . $this->getIdentifier() . '_' . $this->getCurrentStoreId()
+            self::CACHE_KEY_PREFIX . '_' . $this->getIdentifier() . '_' . $this->getCurrentStoreId(),
         ];
 
         try {

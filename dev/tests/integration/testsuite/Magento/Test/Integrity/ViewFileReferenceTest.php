@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test constructions of layout files
  *
@@ -18,6 +20,7 @@
  * The test is intended to be deleted before Magento 2 release. With the release, having non-modular files with the
  * same paths as modular ones, is legitimate.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\Component\ComponentRegistrar;

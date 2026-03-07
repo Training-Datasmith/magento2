@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Catalog breadcrumbs
  */
+
 namespace Magento\Catalog\Block;
 
 use Magento\Catalog\Helper\Data;
@@ -60,7 +63,7 @@ class Breadcrumbs extends \Magento\Framework\View\Element\Template
                 [
                     'label' => __('Home'),
                     'title' => __('Go to Home Page'),
-                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                    'link' => $this->_storeManager->getStore()->getBaseUrl(),
                 ]
             );
 

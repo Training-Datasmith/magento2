@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter;
 
-use Magento\Framework\Search\EntityMetadata;
 use Magento\Framework\Api\AttributeInterface;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\CustomAttributesDataInterface;
 use Magento\Framework\Api\Search\Document;
 use Magento\Framework\Api\Search\DocumentInterface;
+use Magento\Framework\Search\EntityMetadata;
 
 /**
  * Document Factory to create Search Document instance

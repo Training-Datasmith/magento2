@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Serialize\Test\Unit;
 
 use Magento\Framework\Serialize\JsonValidator;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JsonValidatorTest extends TestCase
 {
@@ -57,7 +58,7 @@ class JsonValidatorTest extends TestCase
             [false, false],
             ['{"a', false],
             ['{', false],
-            ['', false]
+            ['', false],
         ];
     }
 }

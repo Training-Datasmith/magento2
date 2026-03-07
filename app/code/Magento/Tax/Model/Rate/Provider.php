@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Rate;
 
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Convert\DataObject as Converter;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Tax\Model\Calculation\Rate;
 
 /**

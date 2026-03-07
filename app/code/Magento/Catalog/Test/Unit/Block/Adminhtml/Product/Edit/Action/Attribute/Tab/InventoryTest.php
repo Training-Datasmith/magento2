@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,17 +54,17 @@ class InventoryTest extends TestCase
     protected function setUp(): void
     {
         $objectManager = new ObjectManager($this);
-        
+
         // Prepare ObjectManager with required dependencies
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -81,7 +82,7 @@ class InventoryTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'backorders' => $this->backordersMock,
-                'stockConfiguration' => $this->stockConfigurationMock
+                'stockConfiguration' => $this->stockConfigurationMock,
             ]
         );
     }

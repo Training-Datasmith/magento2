@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Controller\Adminhtml\Notification;
 
 use Magento\AsynchronousOperations\Model\BulkNotificationManagement;
-use Magento\Backend\App\Action\Context;
 use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 
@@ -17,22 +20,13 @@ use Magento\Framework\Controller\ResultFactory;
 class Dismiss extends Action implements HttpPostActionInterface
 {
     /**
-     * @var BulkNotificationManagement
-     */
-    private $notificationManagement;
-
-    /**
      * Class constructor.
-     *
-     * @param Context $context
-     * @param BulkNotificationManagement $notificationManagement
      */
     public function __construct(
         Context $context,
-        BulkNotificationManagement $notificationManagement
+        private readonly BulkNotificationManagement $notificationManagement
     ) {
         parent::__construct($context);
-        $this->notificationManagement = $notificationManagement;
     }
 
     /**

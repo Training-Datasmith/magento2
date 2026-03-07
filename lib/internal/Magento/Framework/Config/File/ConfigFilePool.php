@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,18 +15,18 @@ namespace Magento\Framework\Config\File;
  */
 class ConfigFilePool
 {
-    const APP_CONFIG = 'app_config';
-    const APP_ENV = 'app_env';
+    public const APP_CONFIG = 'app_config';
+    public const APP_ENV = 'app_env';
 
     /**
      * @deprecated Magento does not support custom config file pools since 2.2.0 version
      */
-    const LOCAL = 'local';
+    public const LOCAL = 'local';
 
     /**
      * @deprecated Magento does not support custom config file pools since 2.2.0 version
      */
-    const DIST = 'dist';
+    public const DIST = 'dist';
 
     /**
      * Default files for configuration
@@ -50,7 +52,7 @@ class ConfigFilePool
         self::LOCAL => [
             self::APP_CONFIG => 'config.local.php',
             self::APP_ENV => 'env.local.php',
-        ]
+        ],
     ];
 
     /**

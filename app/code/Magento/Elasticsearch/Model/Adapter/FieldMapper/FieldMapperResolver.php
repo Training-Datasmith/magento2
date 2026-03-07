@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\FieldMapper;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Elasticsearch\Model\Config;
+use Magento\Framework\ObjectManagerInterface;
 
 class FieldMapperResolver implements FieldMapperInterface
 {

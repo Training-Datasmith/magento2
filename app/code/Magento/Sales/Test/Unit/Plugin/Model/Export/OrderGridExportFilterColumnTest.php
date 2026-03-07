@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Sales\Test\Unit\Plugin\Model\Export;
 use Exception;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Sales\Plugin\Model\Export\OrderGridExportFilterColumn;
 use Magento\Sales\Model\ExportViewFilterProcessor;
+use Magento\Sales\Plugin\Model\Export\OrderGridExportFilterColumn;
 use Magento\Ui\Model\Export\MetadataProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test case for Process and filter order grid export columns according to view
@@ -133,24 +134,24 @@ class OrderGridExportFilterColumnTest extends TestCase
                     [],
                     [   0 => 'id',
                         2 => 'increment_id',
-                        5=> 'invoice_id',
+                        5 => 'invoice_id',
                         7 => 'invoice_details',
                         9 => 'created_date',
-                        10 => 'status'
-                    ]
+                        10 => 'status',
+                    ],
                 ],
             'test case when namespace is `sales_order_grid`' =>
                 [
                     'sales_order_grid',
-                    [ 0 => 'id', 2 => 'increment_id', 5=> 'invoice_id', 7 => 'invoice_details'],
+                    [ 0 => 'id', 2 => 'increment_id', 5 => 'invoice_id', 7 => 'invoice_details'],
                     [   0 => 'id',
                         2 => 'increment_id',
-                        5=> 'invoice_id',
+                        5 => 'invoice_id',
                         7 => 'invoice_details',
                         9 => 'created_date',
-                        10 => 'status'
-                    ]
-                ]
+                        10 => 'status',
+                    ],
+                ],
         ];
     }
 }

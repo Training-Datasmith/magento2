@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\Mview\View\State\CollectionInterface as StateCollectionInt
 use Magento\Framework\Mview\View\StateInterface;
 use Magento\Framework\Mview\ViewInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CollectionTest extends TestCase
 {
@@ -150,7 +151,7 @@ class CollectionTest extends TestCase
             ->method('create')
             ->willReturnMap([
                 [IndexerInterface::class, [], $indexer],
-                [ViewInterface::class, [], $emptyView]
+                [ViewInterface::class, [], $emptyView],
             ]);
 
         $states = $this->createMock(StateCollectionInterface::class);

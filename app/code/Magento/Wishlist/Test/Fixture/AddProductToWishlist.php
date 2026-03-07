@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Wishlist\Test\Fixture;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\TestFramework\Fixture\DataFixtureInterface;
 use Magento\Wishlist\Model\ResourceModel\Wishlist;
 use Magento\Wishlist\Model\WishlistFactory;
-use Magento\TestFramework\Fixture\DataFixtureInterface;
 
 class AddProductToWishlist implements DataFixtureInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Service\V1;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\TestFramework\TestCase\WebapiAbstract;
+use Magento\Authorization\Test\Fixture\Role;
+use Magento\Catalog\Test\Fixture\Product;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Test\Fixture\User;
-use Magento\Authorization\Test\Fixture\Role;
-use Magento\Catalog\Test\Fixture\Product;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests that orders cannot be created with only payment method (no billing address or items)
@@ -50,16 +51,16 @@ class OrderCreationValidationTest extends WebapiAbstract
         $requestData = [
             'entity' => [
                 'payment' => [
-                    'method' => 'cashondelivery'
-                ]
-            ]
+                    'method' => 'cashondelivery',
+                ],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         try {
@@ -85,18 +86,18 @@ class OrderCreationValidationTest extends WebapiAbstract
         $requestData = [
             'entity' => [
                 'payment' => [
-                    'method' => 'cashondelivery'
+                    'method' => 'cashondelivery',
                 ],
                 'billing_address' => null,
-                'items' => []
-            ]
+                'items' => [],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         try {
@@ -123,7 +124,7 @@ class OrderCreationValidationTest extends WebapiAbstract
         $requestData = [
             'entity' => [
                 'payment' => [
-                    'method' => 'cashondelivery'
+                    'method' => 'cashondelivery',
                 ],
                 'billing_address' => [
                     'address_type' => 'billing',
@@ -139,15 +140,15 @@ class OrderCreationValidationTest extends WebapiAbstract
                     'street' => ['Green str, 67'],
                     'telephone' => '3468676',
                 ],
-                'items' => []
-            ]
+                'items' => [],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         try {
@@ -173,7 +174,7 @@ class OrderCreationValidationTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         try {
@@ -200,43 +201,43 @@ class OrderCreationValidationTest extends WebapiAbstract
                 [
                     'entity' => [
                         'payment' => [
-                            'method' => 'cashondelivery'
-                        ]
-                    ]
+                            'method' => 'cashondelivery',
+                        ],
+                    ],
                 ],
-                'Please provide billing address for the order.'
+                'Please provide billing address for the order.',
             ],
             'empty_entity' => [
                 [
-                    'entity' => []
+                    'entity' => [],
                 ],
-                'Please provide billing address for the order.'
+                'Please provide billing address for the order.',
             ],
             'null_billing_address' => [
                 [
                     'entity' => [
                         'payment' => [
-                            'method' => 'cashondelivery'
+                            'method' => 'cashondelivery',
                         ],
-                        'billing_address' => null
-                    ]
+                        'billing_address' => null,
+                    ],
                 ],
-                'Please provide billing address for the order.'
+                'Please provide billing address for the order.',
             ],
             'incomplete_billing_address' => [
                 [
                     'entity' => [
                         'payment' => [
-                            'method' => 'cashondelivery'
+                            'method' => 'cashondelivery',
                         ],
                         'billing_address' => [
-                            'city' => 'Test City'
+                            'city' => 'Test City',
                             // Missing required fields
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
-                'Please provide billing address for the order.'
-            ]
+                'Please provide billing address for the order.',
+            ],
         ];
     }
 
@@ -250,16 +251,16 @@ class OrderCreationValidationTest extends WebapiAbstract
         $requestData = [
             'entity' => [
                 'payment' => [
-                    'method' => 'cashondelivery'
-                ]
-            ]
+                    'method' => 'cashondelivery',
+                ],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         $this->expectException(\Exception::class);
@@ -339,21 +340,21 @@ class OrderCreationValidationTest extends WebapiAbstract
                         'sku' => $product->getSku(),
                         'store_id' => 1,
                         'weight' => 1,
-                    ]
+                    ],
                 ],
                 'payment' => [
                     'method' => 'cashondelivery',
                     'amount_ordered' => 25.00,
                     'base_amount_ordered' => 25.00,
-                ]
-            ]
+                ],
+            ],
         ];
 
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
                 'httpMethod' => Request::HTTP_METHOD_PUT,
-            ]
+            ],
         ];
 
         // This should succeed and not throw an exception

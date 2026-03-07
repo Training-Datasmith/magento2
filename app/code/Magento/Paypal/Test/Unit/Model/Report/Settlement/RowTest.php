@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class RowTest extends TestCase
     {
         return [
             ['ODR', __('Order ID')],
-            ['EX_VALUE', 'EX_VALUE']
+            ['EX_VALUE', 'EX_VALUE'],
         ];
     }
 
@@ -90,7 +91,7 @@ class RowTest extends TestCase
     {
         return [
             ['T1502', __('ACH Deposit (Hold for Dispute or Other Investigation)')],
-            ['EX_VALUE', 'EX_VALUE']
+            ['EX_VALUE', 'EX_VALUE'],
         ];
     }
 
@@ -101,7 +102,7 @@ class RowTest extends TestCase
     {
         return [
             ['CR', __('Credit')],
-            ['EX_VALUE', 'EX_VALUE']
+            ['EX_VALUE', 'EX_VALUE'],
         ];
     }
 
@@ -112,7 +113,7 @@ class RowTest extends TestCase
     {
         return [
             ['fee_amount', ['fee_amount' => 1, 'fee_debit_or_credit' => 'CR'], -1],
-            ['fee_amount', ['fee_amount' => 1, 'fee_debit_or_credit' => 'DB'], 1]
+            ['fee_amount', ['fee_amount' => 1, 'fee_debit_or_credit' => 'DB'], 1],
         ];
     }
 }

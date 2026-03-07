@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,14 +9,13 @@
 namespace Magento\Catalog\Api;
 
 use Magento\Catalog\Model\ProductRepository;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 use Magento\Catalog\Model\ProductRepositoryFactory;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Base price storage test to test the update and update with invalid parameter.
@@ -60,7 +61,7 @@ class BasePriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/base-prices-information',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -88,7 +89,7 @@ class BasePriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/base-prices',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -106,8 +107,8 @@ class BasePriceStorageTest extends WebapiAbstract
                         'price' => $newPrice,
                         'store_id' => $storeId,
                         'sku' => self::SIMPLE_PRODUCT_SKU,
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $productRepository = $this->objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -126,7 +127,7 @@ class BasePriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/base-prices',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -144,8 +145,8 @@ class BasePriceStorageTest extends WebapiAbstract
                         'sku' => 'not_existing_sku',
                         'price' => $newPrice,
                         'store_id' => $storeId,
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
 
@@ -155,23 +156,23 @@ class BasePriceStorageTest extends WebapiAbstract
                 'parameters' => [
                     'SKU',
                     'not_existing_sku',
-                ]
+                ],
             ],
             1 => [
                 'message' => 'Invalid attribute %fieldName = %fieldValue.',
                 'parameters' => [
                     'Price',
                     '-9999',
-                ]
+                ],
             ],
             2 => [
                 'message' =>
                     'Requested store is not found. Row ID: SKU = not_existing_sku, Store ID: 9999.',
                 'parameters' => [
                     'not_existing_sku',
-                    '9999'
-                ]
-            ]
+                    '9999',
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -194,7 +195,7 @@ class BasePriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/base-prices',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -212,8 +213,8 @@ class BasePriceStorageTest extends WebapiAbstract
                         'price' => $newPrice,
                         'store_id' => $storeId,
                         'sku' => $productSku,
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $this->assertEmpty($response);

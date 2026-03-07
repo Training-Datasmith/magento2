@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class ProductTest extends TestCase
             [
                 'entityType' => 'catalog_product',
                 'field' => 'description',
-                'entityId' => $productId
+                'entityId' => $productId,
             ]
         );
 

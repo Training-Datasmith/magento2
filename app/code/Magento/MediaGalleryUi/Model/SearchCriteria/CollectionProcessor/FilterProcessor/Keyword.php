@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class Keyword implements CustomFilterInterface
             [self::TABLE_ALIAS . '.title', self::TABLE_ALIAS . '.id'],
             [
                 ['like' => sprintf('%%%s%%', $value)],
-                ['in' => $this->getAssetIdsByKeyword($value)]
+                ['in' => $this->getAssetIdsByKeyword($value)],
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Widget;
 
 use Magento\Customer\Api\CustomerMetadataInterface;
@@ -261,7 +264,7 @@ class Dob extends AbstractWidget
                 'change_month' => 'true',
                 'change_year' => 'true',
                 'show_on' => 'both',
-                'first_day' => $this->getFirstDay()
+                'first_day' => $this->getFirstDay(),
             ]
         );
         return $this->dateElement->getHtml();
@@ -289,10 +292,10 @@ class Dob extends AbstractWidget
             $validators['required'] = true;
         }
         $validators['validate-date'] = [
-            'dateFormat' => $this->getDateFormat()
+            'dateFormat' => $this->getDateFormat(),
         ];
         $validators['validate-dob'] = [
-            'dateFormat' => $this->getDateFormat()
+            'dateFormat' => $this->getDateFormat(),
         ];
 
         return 'data-validate="' . $this->_escaper->escapeHtml(json_encode($validators)) . '"';
@@ -363,7 +366,7 @@ class Dob extends AbstractWidget
                 self::MIN_DATE_RANGE_KEY
             );
             if ($minDateValue !== null) {
-                return date("Y/m/d", $minDateValue);
+                return date('Y/m/d', $minDateValue);
             }
         }
         return null;
@@ -384,7 +387,7 @@ class Dob extends AbstractWidget
                 self::MAX_DATE_RANGE_KEY
             );
             if ($maxDateValue !== null) {
-                return date("Y/m/d", $maxDateValue);
+                return date('Y/m/d', $maxDateValue);
             }
         }
         return null;

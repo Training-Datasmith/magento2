@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ try {
     $xmlDom = updateTestSuite($xmlDom, $testType);
     $xmlDom->save($argv[1]);
     //phpcs:ignore Magento2.Security.LanguageConstruct
-    print("{$testType} " . basename($argv[1]) . " is updated.");
+    print("{$testType} " . basename($argv[1]) . ' is updated.');
     //phpcs:ignore Magento2.Security.LanguageConstruct
 } catch (Exception $e) {
     //phpcs:ignore Magento2.Security.LanguageConstruct
@@ -85,7 +86,7 @@ function findMagentoModuleDirs(string $testType): array
         'Integration' => 'Integration',
         'REST' => 'Api',
         'SOAP' => 'Api',
-        'GraphQl' => 'GraphQl'
+        'GraphQl' => 'GraphQl',
     ];
     $magentoBaseDir = realpath(__DIR__ . '/../../..') . DIRECTORY_SEPARATOR;
     $magentoBaseDirPattern = preg_quote($magentoBaseDir, '/');
@@ -110,7 +111,7 @@ function findMagentoModuleDirs(string $testType): array
 
     return [
         'directory' => array_unique($directoryPatterns),
-        'exclude' => array_unique($excludePatterns)
+        'exclude' => array_unique($excludePatterns),
     ];
 }
 
@@ -218,11 +219,11 @@ function getDefaultSuites(string $testType): array
         case 'Integration':
             $suites = [
                 'directory' => [
-                    'testsuite'
+                    'testsuite',
                 ],
                 'exclude' => [
-                    'testsuite/Magento/MemoryUsageTest.php'
-                ]
+                    'testsuite/Magento/MemoryUsageTest.php',
+                ],
             ];
             break;
         case 'REST':
@@ -230,15 +231,15 @@ function getDefaultSuites(string $testType): array
             $suites = [
                 'directory' => $skipDefaultDir ? [] : ['testsuite'],
                 'exclude' => [
-                    'testsuite/Magento/GraphQl'
-                ]
+                    'testsuite/Magento/GraphQl',
+                ],
             ];
             break;
         case 'GraphQl':
             $suites = [
                 'directory' => $skipDefaultDir ? [] : ['testsuite/Magento/GraphQl'],
                 'exclude' => [
-                ]
+                ],
             ];
     }
     return $suites;

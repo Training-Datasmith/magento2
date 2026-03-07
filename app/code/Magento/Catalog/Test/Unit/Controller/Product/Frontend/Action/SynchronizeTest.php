@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class SynchronizeTest extends TestCase
     {
         $data = [
             'type_id' => null,
-            'ids' => []
+            'ids' => [],
         ];
 
         $jsonObject = $this->createMock(Json::class);
@@ -109,7 +110,7 @@ class SynchronizeTest extends TestCase
     {
         $data = [
             'type_id' => null,
-            'ids' => []
+            'ids' => [],
         ];
         $jsonObject = $this->createMock(Json::class);
 

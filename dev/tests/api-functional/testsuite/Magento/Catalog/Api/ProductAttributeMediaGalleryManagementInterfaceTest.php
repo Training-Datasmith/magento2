@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,21 +8,21 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Api;
 
+use Magento\Catalog\Model\Product\Attribute\Backend\Media\ImageEntryConverter;
 use Magento\Catalog\Model\Product\Gallery\DefaultValueProcessor;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Catalog\Model\ProductRepository;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\Api\Data\ImageContentInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Webapi\Rest\Request;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\ScopeFixture;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Model\ProductFactory;
-use Magento\Catalog\Model\Product\Attribute\Backend\Media\ImageEntryConverter;
-use Magento\Catalog\Model\ProductRepository;
-use Magento\Framework\Webapi\Rest\Request;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Class ProductAttributeMediaGalleryManagementInterfaceTest
@@ -160,8 +161,8 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             'content' => [
                 ImageContentInterface::BASE64_ENCODED_DATA => base64_encode(file_get_contents($this->testImagePath)),
                 ImageContentInterface::TYPE => 'image/jpeg',
-                ImageContentInterface::NAME => 'test_image.jpg'
-            ]
+                ImageContentInterface::NAME => 'test_image.jpg',
+            ],
         ];
 
         $actualResult = $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -195,8 +196,8 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             'content' => [
                 ImageContentInterface::BASE64_ENCODED_DATA => base64_encode(file_get_contents($this->testImagePath)),
                 ImageContentInterface::TYPE => 'image/jpeg',
-                ImageContentInterface::NAME => 'test_image'
-            ]
+                ImageContentInterface::NAME => 'test_image',
+            ],
         ];
 
         $actualResult = $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -231,7 +232,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => base64_encode(file_get_contents($this->testImagePath)),
                 'type' => 'image/jpeg',
                 'name' => 'test_image.jpg',
-            ]
+            ],
         ];
 
         $actualResult = $this->_webApiCall(
@@ -353,7 +354,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'types' => ['thumbnail'],
                 'disabled' => true,
                 'media_type' => 'image',
-            ]
+            ],
         ];
 
         $this->updateServiceInfo['rest']['resourcePath'] = $this->updateServiceInfo['rest']['resourcePath']
@@ -434,7 +435,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => $encodedContent,
                 'type' => 'image/jpeg',
                 'name' => 'test_image.jpg',
-            ]
+            ],
         ];
 
         $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -462,7 +463,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => $encodedContent,
                 'type' => 'image/jpeg',
                 'name' => 'test_image.jpg',
-            ]
+            ],
         ];
 
         $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -490,7 +491,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => $encodedContent,
                 'type' => 'wrong_mime_type',
                 'name' => 'test_image.jpg',
-            ]
+            ],
         ];
 
         $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -515,7 +516,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => base64_encode(file_get_contents($this->testImagePath)),
                 'type' => 'image/jpeg',
                 'name' => 'test_image.jpg',
-            ]
+            ],
         ];
 
         $expectedMessage = 'The product with SKU "%1" does not exist.';
@@ -550,7 +551,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                 'base64_encoded_data' => base64_encode(file_get_contents($this->testImagePath)),
                 'type' => 'image/jpeg',
                 'name' => 'test/\\{}|:"<>', // Cannot contain \ / : * ? " < > |
-            ]
+            ],
         ];
 
         $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -813,7 +814,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             'video_url' => 'https://vimeo.com/testUrl',
             'video_title' => 'Vimeo Test Title',
             'video_description' => 'test description',
-            'video_metadata' => 'video meta data'
+            'video_metadata' => 'video meta data',
         ];
 
         $requestData = [
@@ -826,11 +827,11 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             'content' => [
                 ImageContentInterface::BASE64_ENCODED_DATA => base64_encode(file_get_contents($this->testImagePath)),
                 ImageContentInterface::TYPE => 'image/jpeg',
-                ImageContentInterface::NAME => 'test_image.jpg'
+                ImageContentInterface::NAME => 'test_image.jpg',
             ],
             'extension_attributes' => [
-                'video_content' => $videoContent
-            ]
+                'video_content' => $videoContent,
+            ],
         ];
 
         $actualResult = $this->_webApiCall($this->createServiceInfo, ['sku' => 'simple', 'entry' => $requestData]);
@@ -860,7 +861,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $productSku = $this->fixtures->get('product')->getSku();
         $serviceInfo =  [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH.$productSku."/media",
+                'resourcePath' => self::RESOURCE_PATH.$productSku.'/media',
                 'httpMethod' => Request::HTTP_METHOD_GET,
             ],
             'soap' => [
@@ -891,7 +892,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $entryId = $product->getMediaGalleryEntries()[0]->getId();
         $serviceInfo =  [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH.$productSku."/media/".$entryId,
+                'resourcePath' => self::RESOURCE_PATH.$productSku.'/media/'.$entryId,
                 'httpMethod' => Request::HTTP_METHOD_GET,
             ],
             'soap' => [
@@ -932,8 +933,8 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
                     'base64_encoded_data' => base64_encode(file_get_contents($this->testImagePath)),
                     'type' => 'image/jpeg',
                     'name' => 'magento_image.jpg',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->updateServiceInfo['rest']['resourcePath'] = $this->updateServiceInfo['rest']['resourcePath']
@@ -962,7 +963,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $fixtures = DataFixtureStorageManager::getStorage();
         $sku = $fixtures->get('p1')->getSku();
         $store2 = $fixtures->get('store_view_2');
-        
+
         // Check image label, visibility and position inheritance in store view 2
         $product = $productRepository->get($sku, false, (int) $store2->getId(), true);
         $gallery = $defaultValueProcessor->process($product);
@@ -971,7 +972,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $this->assertEquals(1, $gallery['images'][$existingImageId]['label_use_default']);
         $this->assertEquals(1, $gallery['images'][$existingImageId]['disabled_use_default']);
         $this->assertEquals(1, $gallery['images'][$existingImageId]['position_use_default']);
-        
+
         // Add new image in store view 2
         $requestData = [
             'id' => null,
@@ -983,8 +984,8 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             'content' => [
                 ImageContentInterface::BASE64_ENCODED_DATA => base64_encode(file_get_contents($this->testImagePath)),
                 ImageContentInterface::TYPE => 'image/jpeg',
-                ImageContentInterface::NAME => 'test_image.jpg'
-            ]
+                ImageContentInterface::NAME => 'test_image.jpg',
+            ],
         ];
 
         $this->createServiceInfo['rest']['resourcePath'] =  "/V1/products/{$sku}/media";
@@ -995,7 +996,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
             $store2->getCode()
         );
         $requestData['id'] = $result;
-        
+
         // Check image label, visibility and position inheritance in store view 2
         $product = $productRepository->get($sku, false, (int) $store2->getId(), true);
         $gallery = $defaultValueProcessor->process($product);
@@ -1003,7 +1004,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $this->assertEquals(1, $gallery['images'][$existingImageId]['label_use_default']);
         $this->assertEquals(1, $gallery['images'][$existingImageId]['disabled_use_default']);
         $this->assertEquals(0, $gallery['images'][$existingImageId]['position_use_default']);
-        
+
         // Update recently added image in store view 2
         $requestData['label'] = 'Updated Image Text';
         $this->updateServiceInfo['rest']['resourcePath'] =  "/V1/products/{$sku}/media/{$requestData['id']}";
@@ -1021,7 +1022,7 @@ class ProductAttributeMediaGalleryManagementInterfaceTest extends WebapiAbstract
         $this->assertEquals(1, $gallery['images'][$existingImageId]['label_use_default']);
         $this->assertEquals(1, $gallery['images'][$existingImageId]['disabled_use_default']);
         $this->assertEquals(0, $gallery['images'][$existingImageId]['position_use_default']);
-        
+
         // Delete recently added image in store view 2
         $this->deleteServiceInfo['rest']['resourcePath'] = "/V1/products/{$sku}/media/{$requestData['id']}";
         $requestData = [

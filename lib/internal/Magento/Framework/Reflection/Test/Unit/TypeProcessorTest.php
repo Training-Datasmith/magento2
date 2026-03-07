@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 // @codingStandardsIgnoreStart
+
 namespace Magento\Framework\Reflection\Test\Unit;
 
 use Laminas\Code\Reflection\ClassReflection;
@@ -18,8 +20,8 @@ use Magento\Framework\Reflection\Test\Unit\Fixture\UseClasses\SampleTwo;
 use Magento\Framework\Reflection\Test\Unit\Fixture\UseClasses\SampleTwo\SampleFour;
 use Magento\Framework\Reflection\Test\Unit\Fixture\UseSample;
 use Magento\Framework\Reflection\TypeProcessor;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -234,8 +236,8 @@ class TypeProcessorTest extends TestCase
     public static function processSimpleTypeExceptionProvider()
     {
         return [
-            "int type, string value" => ['test', 'int'],
-            "float type, string value" => ['test', 'float'],
+            'int type, string value' => ['test', 'int'],
+            'float type, string value' => ['test', 'float'],
         ];
     }
 
@@ -281,7 +283,7 @@ class TypeProcessorTest extends TestCase
     {
         return [
             ['methodName' => 'addData', 'type' => 'array[]'],
-            ['methodName' => 'addObjectList', 'type' => '\\' . TSampleInterface::class . '[]']
+            ['methodName' => 'addObjectList', 'type' => '\\' . TSampleInterface::class . '[]'],
         ];
     }
 
@@ -321,8 +323,8 @@ class TypeProcessorTest extends TestCase
     public function testGetOperationName()
     {
         $this->assertEquals(
-            "resNameMethodName",
-            $this->typeProcessor->getOperationName("resName", "methodName")
+            'resNameMethodName',
+            $this->typeProcessor->getOperationName('resName', 'methodName')
         );
     }
 
@@ -395,7 +397,7 @@ class TypeProcessorTest extends TestCase
             'type' => 'string',
             'isRequired' => false,
             'description' => null,
-            'parameterCount' => 0
+            'parameterCount' => 0,
         ];
 
         $classReflection = new ClassReflection(TSample::class);
@@ -515,12 +517,12 @@ class TypeProcessorTest extends TestCase
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\SampleOne',
-                '\\' . SampleOne::class
+                '\\' . SampleOne::class,
             ],
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\SampleTwo',
-                '\\' . SampleTwo::class
+                '\\' . SampleTwo::class,
             ],
             [UseSample::class, 'UseClasses\\SampleOne', '\\' . SampleOne::class],
             [UseSample::class, 'UseClasses\\SampleTwo', '\\' . SampleTwo::class],
@@ -530,12 +532,12 @@ class TypeProcessorTest extends TestCase
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\SampleOne[]',
-                '\\' . SampleOne::class . '[]'
+                '\\' . SampleOne::class . '[]',
             ],
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\SampleTwo[]',
-                '\\' . SampleTwo::class . '[]'
+                '\\' . SampleTwo::class . '[]',
             ],
             [UseSample::class, 'UseClasses\\SampleOne[]', '\\' . SampleOne::class . '[]'],
             [UseSample::class, 'UseClasses\\SampleTwo[]', '\\' . SampleTwo::class . '[]'],
@@ -552,12 +554,12 @@ class TypeProcessorTest extends TestCase
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting',
-                '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting'
+                '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting',
             ],
             [
                 UseSample::class,
                 '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting[]',
-                '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting[]'
+                '\\Magento\\Framework\\Reflection\\Test\\Unit\\Fixture\\UseClasses\\NotExisting[]',
             ],
         ];
     }

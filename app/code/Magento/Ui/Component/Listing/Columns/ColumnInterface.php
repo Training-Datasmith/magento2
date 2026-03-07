@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Listing\Columns;
 
 use Magento\Framework\View\Element\UiComponentInterface;
@@ -13,5 +16,4 @@ use Magento\Framework\View\Element\UiComponentInterface;
  */
 interface ColumnInterface extends UiComponentInterface
 {
-    //
 }

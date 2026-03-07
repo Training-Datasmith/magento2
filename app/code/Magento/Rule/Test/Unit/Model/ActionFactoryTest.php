@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ActionFactoryTest extends TestCase
         $this->actionFactory = $this->objectManagerHelper->getObject(
             ActionFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }

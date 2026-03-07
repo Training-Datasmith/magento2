@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,18 +10,18 @@ namespace Magento\Catalog\Model\Product\Price\Validation;
 
 use Magento\Catalog\Api\Data\TierPriceInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Directory\Model\Currency;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Catalog\Helper\Data;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -57,7 +59,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
     /**
      * @var string
      */
-    private $allWebsitesValue = "0";
+    private $allWebsitesValue = '0';
 
     /**
      * @var array
@@ -207,14 +209,14 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -232,7 +234,8 @@ class TierPriceValidator implements ResetAfterRequestInterface
     {
         if (null === $price->getPrice()
             || $price->getPrice() < 0
-            || ($price->getPriceType() === TierPriceInterface::PRICE_TYPE_DISCOUNT
+            || (
+                $price->getPriceType() === TierPriceInterface::PRICE_TYPE_DISCOUNT
                 && $price->getPrice() > 100
             )
         ) {
@@ -246,7 +249,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
@@ -254,7 +257,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -279,7 +282,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
             $price->getPriceType(),
             [
                     TierPriceInterface::PRICE_TYPE_FIXED,
-                    TierPriceInterface::PRICE_TYPE_DISCOUNT
+                    TierPriceInterface::PRICE_TYPE_DISCOUNT,
                 ]
         )
             || (array_search(Type::TYPE_BUNDLE, $ids) !== false
@@ -295,7 +298,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
@@ -303,7 +306,7 @@ class TierPriceValidator implements ResetAfterRequestInterface
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -338,14 +341,14 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -382,14 +385,14 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -432,14 +435,14 @@ class TierPriceValidator implements ResetAfterRequestInterface
                                     'SKU' => '%SKU',
                                     'websiteId' => '%websiteId',
                                     'customerGroup' => '%customerGroup',
-                                    'qty' => '%qty'
+                                    'qty' => '%qty',
                                 ]
                             ),
                             [
                                 'SKU' => $price->getSku(),
                                 'websiteId' => $price->getWebsiteId(),
                                 'customerGroup' => $price->getCustomerGroup(),
-                                'qty' => $price->getQuantity()
+                                'qty' => $price->getQuantity(),
                             ]
                         );
                     }
@@ -471,14 +474,14 @@ class TierPriceValidator implements ResetAfterRequestInterface
                         'SKU' => '%SKU',
                         'websiteId' => '%websiteId',
                         'customerGroup' => '%customerGroup',
-                        'qty' => '%qty'
+                        'qty' => '%qty',
                     ]
                 ),
                 [
                     'SKU' => $price->getSku(),
                     'websiteId' => $price->getWebsiteId(),
                     'customerGroup' => $price->getCustomerGroup(),
-                    'qty' => $price->getQuantity()
+                    'qty' => $price->getQuantity(),
                 ]
             );
         }
@@ -518,9 +521,9 @@ class TierPriceValidator implements ResetAfterRequestInterface
     private function compareWebsiteValue(TierPriceInterface $price, TierPriceInterface $tierPrice): bool
     {
         return (
-                    $price->getWebsiteId() == $this->allWebsitesValue
-                    || $tierPrice->getWebsiteId() == $this->allWebsitesValue
-                )
+            $price->getWebsiteId() == $this->allWebsitesValue
+            || $tierPrice->getWebsiteId() == $this->allWebsitesValue
+        )
                 && $price->getWebsiteId() != $tierPrice->getWebsiteId();
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -187,7 +189,7 @@ abstract class AbstractServiceCollection extends \Magento\Framework\Data\Collect
                     foreach ($cond as $condKey => $condValue) {
                         $this->fieldFilters[] = [
                             'field' => array_slice($field, $cnt, 1, true),
-                            'condition' => [$condKey => $condValue]
+                            'condition' => [$condKey => $condValue],
                         ];
                     }
                 } else {

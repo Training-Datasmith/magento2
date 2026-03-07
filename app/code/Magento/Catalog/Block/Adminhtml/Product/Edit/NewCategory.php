@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit;
 
 use Magento\Framework\App\ObjectManager;
@@ -81,7 +84,7 @@ class NewCategory extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Category Name'),
                 'title' => __('Category Name'),
                 'required' => true,
-                'name' => 'new_category_name'
+                'name' => 'new_category_name',
             ]
         );
 
@@ -101,7 +104,7 @@ class NewCategory extends \Magento\Backend\Block\Widget\Form\Generic
                     'You can reassign the category at any time in ' .
                     '<a href="%1" target="_blank">Products > Categories</a>.',
                     $this->getUrl('catalog/category')
-                )
+                ),
                 // @codingStandardsIgnoreEnd
             ]
         );

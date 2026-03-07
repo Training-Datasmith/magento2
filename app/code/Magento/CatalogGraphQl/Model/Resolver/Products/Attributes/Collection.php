@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Resolver\Products\Attributes;
 
-use GraphQL\Language\AST\FieldNode;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as AttributeCollection;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\Eav\Model\Attribute;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
@@ -41,7 +41,7 @@ class Collection implements ResetAfterRequestInterface
      *
      * @return AttributeCollection
      */
-    public function getAttributes() : AttributeCollection
+    public function getAttributes(): AttributeCollection
     {
         if (!$this->collection) {
             $this->collection = $this->collectionFactory->create();
@@ -54,7 +54,7 @@ class Collection implements ResetAfterRequestInterface
                     'is_filterable_in_search',
                     'is_visible_on_front',
                     'used_in_product_listing',
-                    'used_for_sort_by'
+                    'used_for_sort_by',
                 ],
                 [
                     ['eq' => '1'],
@@ -62,7 +62,7 @@ class Collection implements ResetAfterRequestInterface
                     ['eq' => '1'],
                     ['eq' => '1'],
                     ['eq' => '1'],
-                    ['eq' => '1']
+                    ['eq' => '1'],
                 ]
             );
         }
@@ -76,7 +76,7 @@ class Collection implements ResetAfterRequestInterface
      * @param string[] $fieldNames
      * @return string[]
      */
-    public function getRequestAttributes(array $fieldNames) : array
+    public function getRequestAttributes(array $fieldNames): array
     {
         $attributes = $this->getAttributes();
         $attributeNames = [];

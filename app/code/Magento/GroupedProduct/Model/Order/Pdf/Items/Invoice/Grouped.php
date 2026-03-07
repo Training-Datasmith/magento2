@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Model\Order\Pdf\Items\Invoice;
 
 class Grouped extends \Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice

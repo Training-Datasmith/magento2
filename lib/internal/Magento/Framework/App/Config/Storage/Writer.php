@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application config storage writer
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config\Storage;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;

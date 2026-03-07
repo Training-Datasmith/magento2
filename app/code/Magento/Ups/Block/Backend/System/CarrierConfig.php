@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ups\Block\Backend\System;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context as TemplateContext;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Store\Model\Website;
 use Magento\Ups\Helper\Config as ConfigHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 
 /**
  * Backend shipping UPS content block

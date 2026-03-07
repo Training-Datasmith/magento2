@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Test\Unit\Model\Method\Checks;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Payment\Model\Checks\SpecificationInterface;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Paypal\Model\Billing\Agreement as BillingAgreement;
@@ -80,7 +81,7 @@ class SpecificationPluginTest extends TestCase
         $this->plugin = $this->objectManagerHelper->getObject(
             SpecificationPlugin::class,
             [
-                'agreementFactory' => $this->billingAgreementFactoryMock
+                'agreementFactory' => $this->billingAgreementFactoryMock,
             ]
         );
     }

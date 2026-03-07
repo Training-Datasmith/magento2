@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,11 +22,11 @@ use PHPUnit\Framework\TestCase;
  */
 class PoolTest extends TestCase
 {
-    const DEFAULT_PREPROCESSOR = 'defaul/preprocessor';
+    public const DEFAULT_PREPROCESSOR = 'defaul/preprocessor';
 
-    const CONTENT_TYPE = 'test-type';
+    public const CONTENT_TYPE = 'test-type';
 
-    const PREPROCESSOR_CLASS = PreProcessorInterface::class;
+    public const PREPROCESSOR_CLASS = PreProcessorInterface::class;
 
     /**
      * @var ObjectManagerInterface|MockObject
@@ -91,9 +92,9 @@ class PoolTest extends TestCase
         $preprocessors = [
             self::CONTENT_TYPE => [
                 'test' => [
-                    Pool::PREPROCESSOR_CLASS => self::PREPROCESSOR_CLASS
-                ]
-            ]
+                    Pool::PREPROCESSOR_CLASS => self::PREPROCESSOR_CLASS,
+                ],
+            ],
         ];
 
         $pool = new Pool(
@@ -157,9 +158,9 @@ class PoolTest extends TestCase
         $preprocessors = [
             self::CONTENT_TYPE => [
                 'test' => [
-                    Pool::PREPROCESSOR_CLASS => 'stdClass'
-                ]
-            ]
+                    Pool::PREPROCESSOR_CLASS => 'stdClass',
+                ],
+            ],
         ];
 
         $pool = new Pool(

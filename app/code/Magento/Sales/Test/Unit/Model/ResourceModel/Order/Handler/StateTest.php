@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\ResourceModel\Order\Handler;
 
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\Product\Type\AbstractType;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Config;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\ResourceModel\Order\Handler\State;
-use Magento\Catalog\Model\Product\Type;
-use Magento\Catalog\Model\Product\Type\AbstractType;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class StateTest extends TestCase
 {
@@ -69,7 +70,7 @@ class StateTest extends TestCase
         // Prevent subsequent COMPLETE/CLOSED transitions after PROCESSING
         $order->method('canShip')->willReturn(true);
         $order->method('getAllItems')->willReturn([
-            $this->createOrderItemStub(1, 0, 0, 0) // openQty > 0 -> not fulfilled
+            $this->createOrderItemStub(1, 0, 0, 0), // openQty > 0 -> not fulfilled
         ]);
 
         $this->subject->check($order);
@@ -146,7 +147,7 @@ class StateTest extends TestCase
         $order->method('canShip')->willReturn(true);
 
         // Virtual item with open qty should be skipped
-        $virtualItem = new class {
+        $virtualItem = new class () {
             public function getIsVirtual()
             {
                 return true;
@@ -236,7 +237,7 @@ class StateTest extends TestCase
         $order->method('canShip')->willReturn(true);
 
         // Locked-do-ship item with open qty should be skipped
-        $lockedItem = new class {
+        $lockedItem = new class () {
             public function getIsVirtual()
             {
                 return false;
@@ -351,14 +352,14 @@ class StateTest extends TestCase
 
     private function createBundleParentShippedTogetherFulfilled(): object
     {
-        $bundleProduct = new class {
+        $bundleProduct = new class () {
             public function getShipmentType()
             {
                 return AbstractType::SHIPMENT_TOGETHER;
             }
         };
 
-        return new class($bundleProduct) {
+        return new class ($bundleProduct) {
             /** @var object */
             private $bundleProduct;
             public function __construct($bundleProduct)
@@ -406,7 +407,7 @@ class StateTest extends TestCase
 
     private function createChildItemForParent(object $parent, int $shipped): object
     {
-        $child = new class {
+        $child = new class () {
             /** @var object */
             public $parent;
             /** @var int */
@@ -455,7 +456,7 @@ class StateTest extends TestCase
 
     private function createSwitchingParentForBundleSelection(): object
     {
-        return new class {
+        return new class () {
             /** @var int */
             private $typeCall = 0;
             /** @var int */
@@ -481,7 +482,7 @@ class StateTest extends TestCase
             {
                 $this->productCall++;
                 $callIndex = $this->productCall;
-                return new class($callIndex) {
+                return new class ($callIndex) {
                     /** @var int */
                     private $callIndex;
                     public function __construct($callIndex)
@@ -601,7 +602,7 @@ class StateTest extends TestCase
         $order->method('canCreditmemo')->willReturn(false);
         $order->method('getIsNotVirtual')->willReturn(true);
         $order->method('getAllItems')->willReturn([
-            $this->createOrderItemStub(2, 0, 2, 0)
+            $this->createOrderItemStub(2, 0, 2, 0),
         ]);
 
         $order->expects($this->once())
@@ -682,7 +683,7 @@ class StateTest extends TestCase
             [
                 'getState', 'setState', 'setStatus', 'getConfig', 'isCanceled', 'canUnhold',
                 'canInvoice', 'getInvoiceCollection', 'getTotalDue', 'canShip', 'canCreditmemo',
-                'getIsNotVirtual', 'getAllItems', 'getIsVirtual', 'getStatus', 'getIsInProcess'
+                'getIsNotVirtual', 'getAllItems', 'getIsVirtual', 'getStatus', 'getIsInProcess',
             ]
         );
     }
@@ -695,7 +696,7 @@ class StateTest extends TestCase
      */
     private function createInvoiceCollection(array $invoices): object
     {
-        return new class($invoices) {
+        return new class ($invoices) {
             /** @var array */
             private $invoices;
 
@@ -716,7 +717,7 @@ class StateTest extends TestCase
      */
     private function createOrderItemStub(int $ordered, int $canceled, int $shipped, int $refunded): object
     {
-        return new class($ordered, $canceled, $shipped, $refunded) {
+        return new class ($ordered, $canceled, $shipped, $refunded) {
             /** @var int */
             private $ordered;
             /** @var int */

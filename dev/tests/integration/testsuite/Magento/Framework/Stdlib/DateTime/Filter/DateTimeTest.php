@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Stdlib\DateTime\Filter;
 
 use Magento\TestFramework\ObjectManager;
@@ -37,11 +40,11 @@ class DateTimeTest extends \PHPUnit\Framework\TestCase
         $this->localeResolver = $this->objectManager->get(\Magento\Framework\Locale\ResolverInterface::class);
 
         $this->localeDate = $this->objectManager->get(\Magento\Framework\Stdlib\DateTime\TimezoneInterface::class, [
-            'localeResolver' => $this->localeResolver
+            'localeResolver' => $this->localeResolver,
         ]);
 
         $this->dateTimeFilter = $this->objectManager->get(\Magento\Framework\Stdlib\DateTime\Filter\DateTime::class, [
-            'localeDate' => $this->localeDate
+            'localeDate' => $this->localeDate,
         ]);
     }
 
@@ -79,7 +82,7 @@ class DateTimeTest extends \PHPUnit\Framework\TestCase
             ['es_ES', '28/11/2010 23:12', '2010-11-28 23:12:00'],
             ['de_DE', '01/02/2010 15:30', '2010-02-01 15:30:00'],
             ['en_US', '2017-09-01T15:30:00.000Z', '2017-09-01 15:30:00'],
-            ['fr_FR', '2017-09-01T15:30:00.000Z', '2017-09-01 15:30:00']
+            ['fr_FR', '2017-09-01T15:30:00.000Z', '2017-09-01 15:30:00'],
         ];
     }
 }

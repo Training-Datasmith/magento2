@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 use Magento\Catalog\Model\Product\Option\Type\File\ValidatorFile;
 use Magento\Framework\DataObject;
+use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\QuoteRepository;
-use Magento\TestFramework\Catalog\Model\Product\Option\Type\File\ValidatorFileMock;
-use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
+use Magento\TestFramework\Catalog\Model\Product\Option\Type\File\ValidatorFileMock;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 

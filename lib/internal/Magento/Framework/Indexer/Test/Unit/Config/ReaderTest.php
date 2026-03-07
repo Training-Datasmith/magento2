@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Indexer\Config\Reader;
 use Magento\Framework\Indexer\Config\SchemaLocator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ReaderTest extends TestCase
 {
@@ -112,8 +113,8 @@ class ReaderTest extends TestCase
                     'indexer_one.xml' => file_get_contents(__DIR__ . '/../_files/indexer_one.xml'),
                     'indexer_three.xml' => file_get_contents(__DIR__ . '/../_files/indexer_three.xml'),
                 ],
-                'indexer_merged_two.xml'
-            ]
+                'indexer_merged_two.xml',
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Validator constraint delegates validation of value's property to wrapped validator.
  *

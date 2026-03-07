@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class ProductUrlPathGenerator
 {
-    const XML_PATH_PRODUCT_URL_SUFFIX = 'catalog/seo/product_url_suffix';
+    public const XML_PATH_PRODUCT_URL_SUFFIX = 'catalog/seo/product_url_suffix';
 
     /**
      * Cache for product rewrite suffix

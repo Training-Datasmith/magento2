@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Helper for determining system memory usage
  *
@@ -8,6 +10,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Helper;
 
 /**
@@ -21,7 +24,7 @@ class Memory
      * Warning: it is important to maintain the exact order of letters in this literal,
      * as it is used to convert string with units to bytes
      */
-    const MEMORY_UNITS = 'BKMGTPE';
+    public const MEMORY_UNITS = 'BKMGTPE';
 
     /**
      * @var \Magento\Framework\Shell
@@ -119,7 +122,7 @@ class Memory
         $pow = $unitSymbol ? strpos(self::MEMORY_UNITS, $unitSymbol) : 0;
         $is32Bit = PHP_INT_SIZE == 4;
         if ($is32Bit && $pow >= 4) {
-            throw new \OutOfBoundsException("A 32-bit system is unable to process such a number.");
+            throw new \OutOfBoundsException('A 32-bit system is unable to process such a number.');
         }
         if ($unitSymbol) {
             $result *= pow(1024, $pow);

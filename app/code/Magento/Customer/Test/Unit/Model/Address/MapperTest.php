@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\RegionInterface;
 use Magento\Customer\Model\Address\Mapper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class MapperTest extends TestCase
 {
@@ -40,7 +41,7 @@ class MapperTest extends TestCase
         $this->addressMapper = $this->_objectManager->getObject(
             Mapper::class,
             [
-                'extensibleDataObjectConverter' => $this->extensibleObjectConverter
+                'extensibleDataObjectConverter' => $this->extensibleObjectConverter,
             ]
         );
     }
@@ -57,7 +58,7 @@ class MapperTest extends TestCase
             'country_id' => 'US',
             'region_id' => 1,
             'region' => 'Texas',
-            'region_code' => 'TX'
+            'region_code' => 'TX',
         ];
         $expectedResultWithStreet = array_merge(
             $expectedResultWithoutStreet,
@@ -95,7 +96,7 @@ class MapperTest extends TestCase
                 'getRegion',
                 'getStreet',
                 'isDefaultBilling',
-                'isDefaultShipping'
+                'isDefaultShipping',
             ]
         );
         $addressMock->expects($this->any())->method('getId')->willReturn('1');

@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Search;
 
 use Magento\Framework\Api\SearchCriteria as BaseSearchCriteria;
-use Magento\Framework\Api\Search\SearchCriteriaInterface;
 
 /**
  * @api
@@ -14,7 +16,7 @@ use Magento\Framework\Api\Search\SearchCriteriaInterface;
  */
 class SearchCriteria extends BaseSearchCriteria implements SearchCriteriaInterface
 {
-    const REQUEST_NAME = 'request_name';
+    public const REQUEST_NAME = 'request_name';
 
     /**
      * {@inheritdoc}

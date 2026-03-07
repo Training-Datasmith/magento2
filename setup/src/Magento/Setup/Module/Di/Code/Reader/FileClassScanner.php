@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class FileClassScanner
     private const ALLOWED_OPEN_BRACES_TOKENS = [
         T_CURLY_OPEN => true,
         T_DOLLAR_OPEN_CURLY_BRACES => true,
-        T_STRING_VARNAME => true
+        T_STRING_VARNAME => true,
     ];
 
     /**
@@ -134,15 +135,15 @@ class FileClassScanner
                 }
                 $namespaceParts[] = $token[1];
 
-            // `class` token is not used with a valid class name
+                // `class` token is not used with a valid class name
             } elseif ($triggerClass && !$tokenIsArray) {
                 $triggerClass = false;
-            // `class` token was used as a string; not to define class
-            // phpstan:ignore
+                // `class` token was used as a string; not to define class
+                // phpstan:ignore
             } elseif ($triggerClass && empty($class) && $token[0] === T_DOUBLE_ARROW) {
                 $triggerClass = false;
                 continue;
-            // The class keyword was found in the last loop
+                // The class keyword was found in the last loop
             } elseif ($triggerClass && $token[0] === T_STRING) {
                 $triggerClass = false;
                 $class = $token[1];
@@ -156,7 +157,7 @@ class FileClassScanner
                     $bracedNamespace = $this->isBracedNamespace($index);
                     break;
 
-                // PHP 8
+                    // PHP 8
                 case T_NAME_QUALIFIED:
                 case T_NAME_FULLY_QUALIFIED:
                     if ($triggerNamespace) {

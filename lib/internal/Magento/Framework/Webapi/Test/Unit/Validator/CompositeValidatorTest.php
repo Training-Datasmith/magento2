@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Webapi\Test\Unit\Validator;
 
-use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\Framework\Webapi\Validator\CompositeServiceInputValidator;
 use Magento\Framework\Webapi\Validator\ServiceInputValidatorInterface;
 use PHPUnit\Framework\TestCase;

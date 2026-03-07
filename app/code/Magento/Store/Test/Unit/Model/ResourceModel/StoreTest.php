@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class StoreTest extends TestCase
             ResourceConnection::class,
             [
                 'getConnection',
-                'getTableName'
+                'getTableName',
             ]
         );
         $this->connectionMock = $this->createPartialMockWithReflection(
@@ -59,7 +60,7 @@ class StoreTest extends TestCase
                 'fetchOne',
                 'getCheckSql',
                 'quoteIdentifier',
-                'quote'
+                'quote',
             ]
         );
 
@@ -70,7 +71,7 @@ class StoreTest extends TestCase
             Store::class,
             [
                 'context' => $contextMock,
-                'configCacheType' => $configCacheTypeMock
+                'configCacheType' => $configCacheTypeMock,
             ]
         );
     }
@@ -126,8 +127,8 @@ class StoreTest extends TestCase
     {
         $mainTable = 'store';
         $data = [
-            ["store_id" => "0", "code" => "admin", "website_id" => 0, "name" => "Admin"],
-            ["store_id" => "1", "code" => "default", "website_id" => 1, "name" => "Default Store View"]
+            ['store_id' => '0', 'code' => 'admin', 'website_id' => 0, 'name' => 'Admin'],
+            ['store_id' => '1', 'code' => 'default', 'website_id' => 1, 'name' => 'Default Store View'],
         ];
 
         $this->resourceMock->expects($this->atLeastOnce())

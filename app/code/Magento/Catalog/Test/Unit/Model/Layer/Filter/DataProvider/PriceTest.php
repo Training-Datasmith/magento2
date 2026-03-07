@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Filter\DataProvider;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Filter\DataProvider\Price;
@@ -18,6 +18,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -110,7 +111,7 @@ class PriceTest extends TestCase
             ['getFilterPriceRange']
         );
         $category->method('getFilterPriceRange')->willReturn(10);
-        
+
         $this->coreRegistry->expects($this->once())
             ->method('registry')
             ->with('current_category_filter')
@@ -126,7 +127,7 @@ class PriceTest extends TestCase
             ['getFilterPriceRange']
         );
         $category->method('getFilterPriceRange')->willReturn(0);
-        
+
         $this->coreRegistry->expects($this->once())
             ->method('registry')
             ->with('current_category_filter')

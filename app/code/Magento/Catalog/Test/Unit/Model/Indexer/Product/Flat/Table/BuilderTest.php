@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class BuilderTest extends TestCase
             Builder::class,
             [
                 'connection' => $this->connectionMock,
-                'tableName' => $tableName
+                'tableName' => $tableName,
             ]
         );
         $this->assertEquals($builder, $builder->addColumn('test', Table::TYPE_INTEGER));

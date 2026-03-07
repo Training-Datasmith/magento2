@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +9,7 @@
 namespace Magento\Authorization\Model\ResourceModel;
 
 use Magento\Backend\App\AbstractAction;
-use Magento\Framework\Acl\Builder;
 use Magento\Framework\Acl\Data\CacheInterface;
-use Magento\Framework\Acl\RootResource;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
@@ -21,48 +21,26 @@ use Psr\Log\LoggerInterface;
 class Rules extends AbstractDb
 {
     /**
-     * Root ACL resource
-     *
-     * @var RootResource
-     */
-    protected $_rootResource;
-
-    /**
-     * @var Builder
-     */
-    protected $_aclBuilder;
-
-    /**
      * @var LoggerInterface
      */
     protected $_logger;
 
     /**
-     * @var CacheInterface
-     */
-    private $aclDataCache;
-
-    /**
-     * @param Context $context
-     * @param Builder $aclBuilder
-     * @param LoggerInterface $logger
-     * @param RootResource $rootResource
-     * @param CacheInterface $aclDataCache
      * @param string $connectionName
      */
     public function __construct(
         Context $context,
-        Builder $aclBuilder,
+        protected \Magento\Framework\Acl\Builder $_aclBuilder,
         LoggerInterface $logger,
-        RootResource $rootResource,
-        CacheInterface $aclDataCache,
+        /**
+         * Root ACL resource
+         */
+        protected \Magento\Framework\Acl\RootResource $_rootResource,
+        private readonly CacheInterface $aclDataCache,
         $connectionName = null
     ) {
-        $this->_aclBuilder = $aclBuilder;
         parent::__construct($context, $connectionName);
-        $this->_rootResource = $rootResource;
         $this->_logger = $logger;
-        $this->aclDataCache = $aclDataCache;
     }
 
     /**
@@ -78,11 +56,9 @@ class Rules extends AbstractDb
     /**
      * Save ACL resources
      *
-     * @param \Magento\Authorization\Model\Rules $rule
-     * @return void
      * @throws LocalizedException
      */
-    public function saveRel(\Magento\Authorization\Model\Rules $rule)
+    public function saveRel(\Magento\Authorization\Model\Rules $rule): void
     {
         $connection = $this->getConnection();
         try {

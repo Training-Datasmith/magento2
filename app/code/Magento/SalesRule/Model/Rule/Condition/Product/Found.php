@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Condition\Product;
 
 use Magento\Framework\Model\AbstractModel;
@@ -42,7 +45,7 @@ class Found extends \Magento\SalesRule\Model\Rule\Condition\Product\Combine
     public function asHtml()
     {
         $html = $this->getTypeElement()->getHtml() . __(
-            "If an item is %1 in the cart with %2 of these conditions true:",
+            'If an item is %1 in the cart with %2 of these conditions true:',
             $this->getValueElement()->getHtml(),
             $this->getAggregatorElement()->getHtml()
         );

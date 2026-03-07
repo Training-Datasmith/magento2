@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class Boolean implements FactoryInterface
     /**
      * Default value for boolean xsi:type.
      */
-    const DEFAULT_BOOLEAN = false;
+    public const DEFAULT_BOOLEAN = false;
 
     /**
      * @var ObjectManagerInterface

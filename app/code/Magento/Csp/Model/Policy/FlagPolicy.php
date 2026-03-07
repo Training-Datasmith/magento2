@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +15,7 @@ class FlagPolicy implements SimplePolicyInterface
 {
     public const POLICIES = [
         'upgrade-insecure-requests',
-        'block-all-mixed-content'
+        'block-all-mixed-content',
     ];
 
     /**

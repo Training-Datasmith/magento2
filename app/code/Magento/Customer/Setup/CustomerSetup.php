@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -358,8 +359,8 @@ class CustomerSetup extends EavSetup
                         'backend' => Boolean::class,
                         'position' => 28,
                         'required' => false,
-                        'adminhtml_only' => true
-                    ]
+                        'adminhtml_only' => true,
+                    ],
                 ],
             ],
             'customer_address' => [

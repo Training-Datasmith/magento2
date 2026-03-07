@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,11 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Block\Product\View\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Catalog\Pricing\Price\TierPriceInterface;
 use Magento\ConfigurableProduct\Block\Product\View\Type\Configurable;
 use Magento\ConfigurableProduct\Helper\Data;
 use Magento\ConfigurableProduct\Model\ConfigurableAttributeData;
@@ -29,11 +28,11 @@ use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Stdlib\ArrayUtils;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\File\Resolver;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Tax\Helper\Data as TaxData;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Tax\Helper\Data as TaxData;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -222,7 +221,7 @@ class ConfigurableTest extends TestCase
                 ],
                 'USD',
                 null,
-            ]
+            ],
         ];
     }
 
@@ -379,7 +378,7 @@ class ConfigurableTest extends TestCase
                     ],
                     'msrpPrice' => [
                         'amount' => null,
-                    ]
+                    ],
                 ],
             ],
             'priceFormat' => [],
@@ -402,7 +401,7 @@ class ConfigurableTest extends TestCase
             'images' => [],
             'index' => [],
             'salable' => [],
-            'canDisplayShowOutOfStockStatus' => false
+            'canDisplayShowOutOfStockStatus' => false,
         ];
 
         return $expectedArray;

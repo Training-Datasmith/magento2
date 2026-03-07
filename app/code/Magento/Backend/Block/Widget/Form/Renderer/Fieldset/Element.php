@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,7 +9,7 @@
 namespace Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
 
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use \Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
+use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
 
 /**
  * Fieldset element renderer

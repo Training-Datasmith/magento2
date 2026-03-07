@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,25 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Service\V1;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\WebapiAbstract;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\PlaceOrder;
+use Magento\Checkout\Test\Fixture\SetBillingAddress;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
+use Magento\Checkout\Test\Fixture\SetGuestEmail;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod;
+use Magento\Checkout\Test\Fixture\SetShippingAddress;
+use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart;
+use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
+use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
+use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Webapi\Rest\Request;
+use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\Quote\Test\Fixture\GuestCart;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Framework\Webapi\Rest\Request;
-use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
-use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart;
-use Magento\Quote\Test\Fixture\GuestCart;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\Checkout\Test\Fixture\SetBillingAddress;
-use Magento\Checkout\Test\Fixture\SetShippingAddress;
-use Magento\Checkout\Test\Fixture\SetGuestEmail;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod;
-use Magento\Checkout\Test\Fixture\PlaceOrder;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class OrderApiConfigurableVariationsPriceTest extends WebapiAbstract
 {

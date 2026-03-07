@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -18,31 +21,19 @@ class PredispatchAdminActionControllerObserver implements ObserverInterface
      */
     protected $_feedFactory;
 
-    /**
-     * @var \Magento\Backend\Model\Auth\Session
-     */
-    protected $_backendAuthSession;
-
-    /**
-     * @param \Magento\AdminNotification\Model\FeedFactory $feedFactory
-     * @param \Magento\Backend\Model\Auth\Session $backendAuthSession
-     */
     public function __construct(
         \Magento\AdminNotification\Model\FeedFactory $feedFactory,
-        \Magento\Backend\Model\Auth\Session $backendAuthSession
+        protected \Magento\Backend\Model\Auth\Session $_backendAuthSession
     ) {
         $this->_feedFactory = $feedFactory;
-        $this->_backendAuthSession = $backendAuthSession;
     }
 
     /**
      * Predispatch admin action controller
      *
-     * @param \Magento\Framework\Event\Observer $observer
-     * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function execute(\Magento\Framework\Event\Observer $observer)
+    public function execute(\Magento\Framework\Event\Observer $observer): void
     {
         if ($this->_backendAuthSession->isLoggedIn()) {
             $feedModel = $this->_feedFactory->create();

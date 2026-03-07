@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -53,7 +56,7 @@ class CartRepositoryTest extends WebapiAbstract
             'message' => 'I thought all for the best.',
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $resultMessage = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertCount(5, $resultMessage);
         unset($resultMessage['gift_message_id']);
@@ -105,7 +108,7 @@ class CartRepositoryTest extends WebapiAbstract
         $this->markTestSkipped('This test relies on system configuration state.');
         // sales/gift_options/allow_order must be set to 1 in system configuration
         // @todo remove above statement when \Magento\TestFramework\TestCase\WebapiAbstract::_updateAppConfig is fixed
-        
+
         /** @var \Magento\Quote\Model\Quote $quote */
         $quote = $this->objectManager->create(\Magento\Quote\Model\Quote::class);
         $quote->load('test_order_item_with_message', 'reserved_order_id');

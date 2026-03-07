@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Validator;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Code\Validator\ArgumentSequence;
 use Magento\Framework\Exception\ValidatorException;
+use PHPUnit\Framework\TestCase;
 
 require_once '_files/ClassesForArgumentSequence.php';
 class ArgumentSequenceTest extends TestCase

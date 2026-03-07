@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ declare(strict_types=1);
 namespace Magento\ImportExport\Model\Import;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Filesystem\Directory\ReadInterface;
-use Magento\Framework\Filesystem;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\ReadInterface;
 
 /**
  * Provides base directory to use for images when user imports entities.

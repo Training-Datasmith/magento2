@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,8 +88,8 @@ class AfterPaymentSaveObserverTest extends TestCase
         $objects = [
             [
                 KeyValidator::class,
-                $this->createMock(KeyValidator::class)
-            ]
+                $this->createMock(KeyValidator::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         /** @var Random|MockObject $encryptorRandomGenerator */

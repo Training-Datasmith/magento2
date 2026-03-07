@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * {@inheritdoc}
  */
+
 namespace Magento\Theme\Model\Theme\Customization;
 
 class Config implements \Magento\Framework\View\Design\Theme\Customization\ConfigInterface
@@ -14,7 +17,7 @@ class Config implements \Magento\Framework\View\Design\Theme\Customization\Confi
     /**
      * XML path to definitions of customization services
      */
-    const XML_PATH_CUSTOM_FILES = 'theme/customization';
+    public const XML_PATH_CUSTOM_FILES = 'theme/customization';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

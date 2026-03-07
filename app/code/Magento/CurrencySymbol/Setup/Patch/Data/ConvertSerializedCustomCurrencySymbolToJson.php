@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,7 +12,6 @@ use Magento\CurrencySymbol\Model\System\Currencysymbol;
 use Magento\Framework\DB\DataConverter\SerializedToJson;
 use Magento\Framework\DB\FieldDataConverterFactory;
 use Magento\Framework\DB\Select\QueryModifierFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -61,8 +62,8 @@ class ConvertSerializedCustomCurrencySymbolToJson implements DataPatchInterface,
             'in',
             [
                 'values' => [
-                    'path' => [Currencysymbol::XML_PATH_CUSTOM_CURRENCY_SYMBOL]
-                ]
+                    'path' => [Currencysymbol::XML_PATH_CUSTOM_CURRENCY_SYMBOL],
+                ],
             ]
         );
         $fieldDataConverter->convert(

@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin;
 
+use Magento\Catalog\Api\Data\EavAttributeInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\ResourceModel\Attribute as AttributeResourceModel;
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Action\DataProvider;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Catalog\Model\ResourceModel\Attribute as AttributeResourceModel;
-use Magento\Framework\Search\Request\Config;
-use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\Catalog\Api\Data\EavAttributeInterface;
 use Magento\Eav\Model\Config as EavConfig;
+use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Search\Request\Config;
 
 /**
  * Catalog search indexer plugin for catalog attribute.
@@ -148,7 +151,7 @@ class Attribute extends AbstractPlugin
      */
     private function shouldInvalidateSearchIndex(
         AbstractModel $attribute
-    ):bool {
+    ): bool {
         $shouldInvalidate = false;
         $fields = [
             EavAttributeInterface::IS_SEARCHABLE,

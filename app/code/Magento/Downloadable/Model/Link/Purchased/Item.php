@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Downloadable\Model\Link\Purchased;
 
-use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item as Resource;
+namespace Magento\Downloadable\Model\Link\Purchased;
 
 /**
  * Downloadable links purchased item model
@@ -46,17 +47,17 @@ use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item as Resource;
  */
 class Item extends \Magento\Framework\Model\AbstractModel
 {
-    const XML_PATH_ORDER_ITEM_STATUS = 'catalog/downloadable/order_item_status';
+    public const XML_PATH_ORDER_ITEM_STATUS = 'catalog/downloadable/order_item_status';
 
-    const LINK_STATUS_PENDING = 'pending';
+    public const LINK_STATUS_PENDING = 'pending';
 
-    const LINK_STATUS_AVAILABLE = 'available';
+    public const LINK_STATUS_AVAILABLE = 'available';
 
-    const LINK_STATUS_EXPIRED = 'expired';
+    public const LINK_STATUS_EXPIRED = 'expired';
 
-    const LINK_STATUS_PENDING_PAYMENT = 'pending_payment';
+    public const LINK_STATUS_PENDING_PAYMENT = 'pending_payment';
 
-    const LINK_STATUS_PAYMENT_REVIEW = 'payment_review';
+    public const LINK_STATUS_PAYMENT_REVIEW = 'payment_review';
 
     /**
      * Enter description here...

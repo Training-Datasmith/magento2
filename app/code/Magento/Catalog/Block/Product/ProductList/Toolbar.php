@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product\ProductList;
 
 use Magento\Catalog\Helper\Product\ProductList;
@@ -748,7 +751,7 @@ class Toolbar extends \Magento\Framework\View\Element\Template
             'limitDefault' => $this->_productListHelper->getDefaultLimitPerPageValue($defaultMode),
             'url' => $this->getPagerUrl(),
             'formKey' => $this->formKey->getFormKey(),
-            'post' => $this->toolbarMemorizer->isMemorizingAllowed() ? true : false
+            'post' => $this->toolbarMemorizer->isMemorizingAllowed() ? true : false,
         ];
         $options = array_replace_recursive($options, $customOptions);
         return json_encode(['productListToolbarForm' => $options]);

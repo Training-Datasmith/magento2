@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Captcha\Model\Customer\Plugin;
 
 use Magento\Captcha\Helper\Data as CaptchaHelper;
-use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Session\SessionManagerInterface;
 
 /**
  * Around plugin for login action.

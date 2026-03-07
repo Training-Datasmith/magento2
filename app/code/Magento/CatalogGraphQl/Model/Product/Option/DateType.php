@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\CatalogGraphQl\Model\Product\Option;
 
 use Magento\Catalog\Model\Product\Option\Type\Date as ProductDateOptionType;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\Stdlib\DateTime;
 
 /**
  * CatalogGraphQl product option date type

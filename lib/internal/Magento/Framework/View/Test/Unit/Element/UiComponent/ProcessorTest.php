@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test for view Messages model
  */
+
 namespace Magento\Framework\View\Test\Unit\Element\UiComponent;
 
 use Magento\Framework\View\Element\UiComponent\ObserverInterface;

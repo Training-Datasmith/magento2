@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +9,9 @@
 namespace Magento\Test\Xml;
 
 use Magento\Framework\App\Utility\Files;
-use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\Test\Php\LiveCodeTest as PHPCodeTest;
+use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer\Wrapper;
-use Magento\TestFramework\Utility\FilesSearch;
 use PHPUnit\Framework\TestCase;
 
 /**

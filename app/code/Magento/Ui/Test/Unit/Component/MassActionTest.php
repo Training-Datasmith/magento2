@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Ui\Component\MassAction;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class MassActionTest extends TestCase
@@ -50,7 +51,7 @@ class MassActionTest extends TestCase
             MassAction::class,
             [
                 'context' => $this->contextMock,
-                'data' => []
+                'data' => [],
             ]
         );
 
@@ -77,7 +78,7 @@ class MassActionTest extends TestCase
                 'data' => [
                     'name' => $componentName,
                     'config' => $componentData,
-                ]
+                ],
             ]
         );
         /** @var MassAction $massAction */
@@ -85,7 +86,7 @@ class MassActionTest extends TestCase
             MassAction::class,
             [
                 'context' => $this->contextMock,
-                'data' => []
+                'data' => [],
             ]
         );
         $massAction->addComponent('action', $action);
@@ -116,12 +117,12 @@ class MassActionTest extends TestCase
                         [
                             'type' => 'second_sub_action1',
                             'label' => 'Second Sub Action 1',
-                            'url' => '/module/controller/secondSubAction1'
+                            'url' => '/module/controller/secondSubAction1',
                         ],
                         [
                             'type' => 'second_sub_action2',
                             'label' => 'Second Sub Action 2',
-                            'url' => '/module/controller/secondSubAction2'
+                            'url' => '/module/controller/secondSubAction2',
                         ],
                     ],
                 ],

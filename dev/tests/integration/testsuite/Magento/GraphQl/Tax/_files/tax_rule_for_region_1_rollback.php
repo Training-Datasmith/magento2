@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,10 +13,10 @@ use Magento\Tax\Model\Calculation\RateFactory;
 use Magento\Tax\Model\Calculation\RateRepository;
 use Magento\Tax\Model\Calculation\Rule;
 use Magento\Tax\Model\Calculation\RuleFactory;
-use Magento\Tax\Model\TaxRuleRepository;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Tax\Model\ResourceModel\Calculation\Rate as RateResource;
 use Magento\Tax\Model\ResourceModel\Calculation\Rule as RuleResource;
+use Magento\Tax\Model\TaxRuleRepository;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var RateFactory $rateFactory */

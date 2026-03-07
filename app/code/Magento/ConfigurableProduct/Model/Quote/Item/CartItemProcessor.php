@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\Quote\Item;
 
 use Magento\ConfigurableProduct\Api\Data\ConfigurableItemOptionValueInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Api\Data\ProductOptionExtensionInterface;
 use Magento\Quote\Model\Quote\Item\CartItemProcessorInterface;
-use Magento\Quote\Api\Data\CartItemInterface;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\App\ObjectManager;
 
 class CartItemProcessor implements CartItemProcessorInterface
 {

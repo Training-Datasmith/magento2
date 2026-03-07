@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use Magento\Framework\Exception\InputException;
 use Magento\Customer\Api\AddressRepositoryInterface;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\BillingAddressManagement;
@@ -86,7 +87,7 @@ class BillingAddressManagementTest extends TestCase
                 'addressValidator' => $this->validatorMock,
                 'logger' => $logger,
                 'addressRepository' => $this->addressRepository,
-                'cartAddressMutex' => $this->cartAddressMutex
+                'cartAddressMutex' => $this->cartAddressMutex,
             ]
         );
 
@@ -142,7 +143,7 @@ class BillingAddressManagementTest extends TestCase
         $this->cartAddressMutex->expects($this->once())->method('execute')
             ->with(
                 'cart_billing_address_lock_'.$addressId,
-                self::callback(fn($c) => $c instanceof \Closure),
+                self::callback(fn ($c) => $c instanceof \Closure),
                 $addressId,
                 [$address, $quoteMock, $useForShipping]
             )

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class InlineEditUpdaterTest extends TestCase
             ->with(true, [$this->validationRule])
             ->willReturn([
                 'validate-email' => true,
-                'required-entry' => true
+                'required-entry' => true,
             ]);
         $this->column->expects($this->once())
             ->method('setData')
@@ -67,8 +68,8 @@ class InlineEditUpdaterTest extends TestCase
                         'validation' => [
                             'validate-email' => true,
                             'required-entry' => true,
-                        ]
-                    ]
+                        ],
+                    ],
                 ]
             );
 

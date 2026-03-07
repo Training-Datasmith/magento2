@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class IndexTest extends TestCase
                 ScopeInterface::SCOPE_STORE,
                 $scopeConfigMock,
             ],
-            [CmsPage::class, $this->_cmsHelperMock]
+            [CmsPage::class, $this->_cmsHelperMock],
         ];
         $objectManagerMock->expects($this->any())->method('get')->willReturnMap($valueMap);
         $scopeConfigMock->expects(
@@ -105,7 +106,7 @@ class IndexTest extends TestCase
                 'response' => $responseMock,
                 'objectManager' => $objectManagerMock,
                 'request' => $this->_requestMock,
-                'resultForwardFactory' => $this->forwardFactoryMock
+                'resultForwardFactory' => $this->forwardFactoryMock,
             ]
         );
     }

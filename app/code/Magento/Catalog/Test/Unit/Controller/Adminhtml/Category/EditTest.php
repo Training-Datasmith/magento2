@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,30 +8,29 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Category;
 
-use Magento\Framework\Registry;
-use Magento\Cms\Model\Wysiwyg\Config;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Session;
 use Magento\Backend\Model\View\Result\RedirectFactory;
-use Magento\Store\Model\Store;
 use Magento\Catalog\Controller\Adminhtml\Category\Edit;
 use Magento\Catalog\Model\Category;
+use Magento\Cms\Model\Wysiwyg\Config;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Store\Model\StoreManager;
 use Magento\Framework\View\LayoutFactory;
 use Magento\Framework\View\Page\Config as PageConfig;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Page as ResultPage;
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -134,20 +134,20 @@ class EditTest extends TestCase
         $objects = [
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 Registry::class,
-                $this->createMock(Registry::class)
+                $this->createMock(Registry::class),
             ],
             [
                 Config::class,
-                $this->createMock(Config::class)
+                $this->createMock(Config::class),
             ],
             [
                 \Magento\Backend\Model\Auth\Session::class,
-                $this->createMock(\Magento\Backend\Model\Auth\Session::class)
-            ]
+                $this->createMock(\Magento\Backend\Model\Auth\Session::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -160,7 +160,7 @@ class EditTest extends TestCase
                 'getName',
                 'getResource',
                 'setStoreId',
-                'toArray'
+                'toArray',
             ]
         );
 
@@ -174,7 +174,7 @@ class EditTest extends TestCase
         $pageTitle->method('prepend')->willReturnSelf();
         $pageTitle->method('set')->willReturnSelf();
         $pageConfig->method('getTitle')->willReturn($pageTitle);
-        
+
         $this->resultPageMock = $this->createPartialMockWithReflection(
             ResultPage::class,
             ['setActiveMenu', 'getConfig', 'addBreadcrumb']
@@ -203,7 +203,7 @@ class EditTest extends TestCase
                 'getParam', 'setParam', 'getQuery',
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getCookie', 'getDistroBaseUrl', 'getRequestUri', 'getScheme',
-                'setParams', 'getParams', 'isSecure', 'getPost'
+                'setParams', 'getParams', 'isSecure', 'getPost',
             ]
         );
         $this->requestMock->method('setParam')->willReturnSelf();
@@ -229,7 +229,7 @@ class EditTest extends TestCase
 
         $this->contextMock = $this->createPartialMockWithReflection(Context::class, [
             'getRequest', 'getObjectManager', 'getEventManager', 'getMessageManager',
-            'getResultRedirectFactory', 'getTitle', 'getSession'
+            'getResultRedirectFactory', 'getTitle', 'getSession',
         ]);
         $this->contextMock->method('getRequest')->willReturn($this->requestMock);
         $this->contextMock->method('getObjectManager')->willReturn($this->objectManagerMock);
@@ -245,7 +245,7 @@ class EditTest extends TestCase
                 'context' => $this->contextMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
-                'storeManager' => $this->storeManagerInterfaceMock
+                'storeManager' => $this->storeManagerInterfaceMock,
             ]
         );
     }
@@ -326,7 +326,7 @@ class EditTest extends TestCase
             [
                 'categoryId' => null,
                 'storeId' => 7,
-            ]
+            ],
         ];
     }
 

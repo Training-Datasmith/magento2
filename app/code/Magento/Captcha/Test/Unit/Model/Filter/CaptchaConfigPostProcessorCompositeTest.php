@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Captcha\Test\Unit\Model\Filter;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use Magento\Captcha\Api\CaptchaConfigPostProcessorInterface;
 use Magento\Captcha\Model\Filter\CaptchaConfigPostProcessorComposite;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Class \Magento\Captcha\Model\Filter\CaptchaConfigPostProcessorComposite

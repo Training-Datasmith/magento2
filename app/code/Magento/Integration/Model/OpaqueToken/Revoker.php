@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,11 +10,10 @@ declare(strict_types=1);
 namespace Magento\Integration\Model\OpaqueToken;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\UserTokenRevokerInterface;
-use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory as TokenCollectionFactory;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\Collection as TokenCollection;
+use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory as TokenCollectionFactory;
 
 class Revoker implements UserTokenRevokerInterface
 {

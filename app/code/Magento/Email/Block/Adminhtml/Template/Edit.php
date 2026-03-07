@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Block\Adminhtml\Template;
 
 use Magento\Backend\Block\Widget;
@@ -142,7 +145,7 @@ class Edit extends Widget implements ContainerInterface
             [
                 'label' => __('Back'),
                 'onclick' => "window.location.href = '" . $this->getUrl('adminhtml/*') . "'",
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
         $this->buttonList->add(
@@ -158,7 +161,7 @@ class Edit extends Widget implements ContainerInterface
                     'data_attribute' => [
                         'role' => 'template-delete',
                     ],
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
         }
@@ -170,7 +173,7 @@ class Edit extends Widget implements ContainerInterface
                     'data_attribute' => [
                         'role' => 'template-strip',
                     ],
-                    'id' => 'convert_button'
+                    'id' => 'convert_button',
                 ]
             );
             $this->buttonList->add(
@@ -181,7 +184,7 @@ class Edit extends Widget implements ContainerInterface
                         'role' => 'template-unstrip',
                     ],
                     'id' => 'convert_button_back',
-                    'style' => 'display:none'
+                    'style' => 'display:none',
                 ]
             );
         }
@@ -191,7 +194,7 @@ class Edit extends Widget implements ContainerInterface
                 'label' => __('Preview Template'),
                 'data_attribute' => [
                     'role' => 'template-preview',
-                ]
+                ],
             ]
         );
         $this->buttonList->add(
@@ -201,7 +204,7 @@ class Edit extends Widget implements ContainerInterface
                 'data_attribute' => [
                     'role' => 'template-save',
                 ],
-                'class' => 'save primary save-template'
+                'class' => 'save primary save-template',
             ]
         );
         $this->buttonList->add(
@@ -212,7 +215,7 @@ class Edit extends Widget implements ContainerInterface
                     'role' => 'template-load',
                 ],
                 'type' => 'button',
-                'class' => 'save'
+                'class' => 'save',
             ],
             0,
             0,
@@ -223,7 +226,7 @@ class Edit extends Widget implements ContainerInterface
             'form',
             \Magento\Email\Block\Adminhtml\Template\Edit\Form::class,
             [
-                'email_template' => $this->getEmailTemplate()
+                'email_template' => $this->getEmailTemplate(),
             ]
         );
         return parent::_prepareLayout();

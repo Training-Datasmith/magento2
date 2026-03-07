@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Integration\Test\Unit\Model\ResourceModel\Oauth;
 
-use \Magento\Integration\Model\ResourceModel\Oauth\Consumer as ConsumerResourceModel;
 use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -16,8 +16,9 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\Integration\Model\Oauth\Consumer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Integration\Model\Oauth\Consumer;
+use Magento\Integration\Model\ResourceModel\Oauth\Consumer as ConsumerResourceModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

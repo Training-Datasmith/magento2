@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class SalesEventQuoteMergeTest extends TestCase
             ->method('getData')
             ->willReturnMap([
                 ['quote', null, $targetQuoteMock],
-                ['source', null, $sourceQuoteMock]
+                ['source', null, $sourceQuoteMock],
             ]);
 
         $this->salesEventQuoteMerge->execute($observer);
@@ -81,7 +82,7 @@ class SalesEventQuoteMergeTest extends TestCase
     {
         return [
             [null],
-            [1]
+            [1],
         ];
     }
 }

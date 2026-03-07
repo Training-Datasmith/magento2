@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,15 +12,15 @@ use Magento\Config\Model\Config\Reader\Source\Deployed\SettingChecker;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ScopeValidatorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Theme\Api\Data\DesignConfigDataInterface;
-use Magento\Theme\Api\Data\DesignConfigExtension;
-use Magento\Theme\Api\Data\DesignConfigInterfaceFactory;
-use Magento\Theme\Model\Design\Config\MetadataProviderInterface;
 use Magento\Theme\Api\Data\DesignConfigDataInterfaceFactory;
+use Magento\Theme\Api\Data\DesignConfigExtension;
 use Magento\Theme\Api\Data\DesignConfigExtensionFactory;
 use Magento\Theme\Api\Data\DesignConfigInterface;
-use Magento\Store\Model\ScopeInterface;
+use Magento\Theme\Api\Data\DesignConfigInterfaceFactory;
+use Magento\Theme\Model\Design\Config\MetadataProviderInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -155,7 +157,7 @@ class ConfigFactory
         }
         return [
             'scope' => $scope,
-            'scopeId' => $scopeId
+            'scopeId' => $scopeId,
         ];
     }
 }

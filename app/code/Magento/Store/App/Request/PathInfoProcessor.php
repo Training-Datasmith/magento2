@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class PathInfoProcessor implements PathInfoProcessorInterface
      * @param string $pathInfo
      * @return string
      */
-    public function process(RequestInterface $request, $pathInfo) : string
+    public function process(RequestInterface $request, $pathInfo): string
     {
         $storeCode = $this->storePathInfoValidator->getValidStoreCode($request, $pathInfo);
         if (!empty($storeCode)) {
@@ -59,10 +60,10 @@ class PathInfoProcessor implements PathInfoProcessorInterface
      * @param string $storeCode
      * @return string
      */
-    private function trimStoreCodeFromPathInfo(string $pathInfo, string $storeCode) : string
+    private function trimStoreCodeFromPathInfo(string $pathInfo, string $storeCode): string
     {
         if (substr($pathInfo, 0, strlen('/' . $storeCode)) == '/'. $storeCode) {
-            $pathInfo = substr($pathInfo, strlen($storeCode)+1);
+            $pathInfo = substr($pathInfo, strlen($storeCode) + 1);
         }
         return empty($pathInfo) ? '/' : $pathInfo;
     }

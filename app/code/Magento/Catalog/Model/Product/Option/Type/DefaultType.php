@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Catalog\Model\Product\Option\Type;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
-use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
+use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
+use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Model\Product\Option\Value;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**

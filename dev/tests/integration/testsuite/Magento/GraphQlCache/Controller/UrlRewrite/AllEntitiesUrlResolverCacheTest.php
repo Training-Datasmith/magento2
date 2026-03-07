@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\GraphQlCache\Controller\UrlRewrite;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Cms\Api\Data\PageInterface;
+use Magento\Cms\Api\GetPageByIdentifierInterface;
 use Magento\Framework\App\Response\HttpInterface as HttpResponse;
 use Magento\GraphQlCache\Controller\AbstractGraphqlCacheTest;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
-use Magento\Cms\Api\Data\PageInterface;
-use Magento\Cms\Api\GetPageByIdentifierInterface;
 
 /**
  * Test caching works for categoryUrlResolver
@@ -117,7 +118,7 @@ QUERY;
         $actualUrls    = $urlFinder->findOneByData(
             [
                 'request_path' => $categoryUrlKey,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $categoryId    = (string) $actualUrls->getEntityId();

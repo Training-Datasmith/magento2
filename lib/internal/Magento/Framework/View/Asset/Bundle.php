@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +40,7 @@ class Bundle
      */
     protected $bundleNames = [
         Manager::ASSET_TYPE_JS => 'jsbuild',
-        Manager::ASSET_TYPE_HTML => 'text'
+        Manager::ASSET_TYPE_HTML => 'text',
     ];
 
     /**
@@ -229,8 +231,8 @@ class Bundle
         $assetKey = $this->getAssetKey($asset);
         if (!isset($this->assetsContent[$assetContextCode][$assetContentType][$assetKey])) {
             $content = $asset->getContent();
-            if (mb_detect_encoding($content) !== "UTF-8") {
-                $content = $content !== null ? mb_convert_encoding($content, "UTF-8") : '';
+            if (mb_detect_encoding($content) !== 'UTF-8') {
+                $content = $content !== null ? mb_convert_encoding($content, 'UTF-8') : '';
             }
             $this->assetsContent[$assetContextCode][$assetContentType][$assetKey] = $content;
         }

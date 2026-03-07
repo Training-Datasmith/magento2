@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Controller\Adminhtml\Product\Save;
 
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\TestCase\AbstractBackendController;
@@ -61,7 +62,7 @@ class LinksTest extends AbstractBackendController
         $this->assertEquals(
             $this->getExpectedLinks($postData['links']),
             $this->getActualLinks($product),
-            "Expected linked products do not match actual linked products!"
+            'Expected linked products do not match actual linked products!'
         );
     }
 
@@ -79,7 +80,7 @@ class LinksTest extends AbstractBackendController
                 'name' => 'Simple Product',
                 'sku' => 'simple',
                 'url_key' => 'simple-product',
-                'type_id' => \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE
+                'type_id' => \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE,
             ],
             'links' => [
                 'upsell' => [
@@ -91,7 +92,7 @@ class LinksTest extends AbstractBackendController
                 'related' => [
                     ['id' => '12'],
                 ],
-            ]
+            ],
         ];
     }
 

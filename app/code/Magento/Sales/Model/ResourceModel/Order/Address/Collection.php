@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order\Address;
 
 use Magento\Sales\Api\Data\OrderAddressSearchResultInterface;
-use Magento\Sales\Model\ResourceModel\Order\Collection\AbstractCollection;
 use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\ResourceModel\Order\Address as AddressResource;
+use Magento\Sales\Model\ResourceModel\Order\Collection\AbstractCollection;
 
 /**
  * Order addresses collection

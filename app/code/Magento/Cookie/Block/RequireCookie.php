@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,8 @@ declare(strict_types=1);
 /**
  * Frontend form key content block
  */
-namespace Magento\Cookie\Block;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+namespace Magento\Cookie\Block;
 
 /**
  * Block Require Cookie
@@ -33,7 +32,7 @@ class RequireCookie extends \Magento\Framework\View\Element\Template
         $params = [
             'noCookieUrl' => $this->escapeUrl($this->getUrl('cookie/index/noCookies/')),
             'triggers' => $this->escapeHtml($this->getTriggers()),
-            'isRedirectCmsPage' => $isRedirectCmsPage
+            'isRedirectCmsPage' => $isRedirectCmsPage,
         ];
         return json_encode($params);
     }

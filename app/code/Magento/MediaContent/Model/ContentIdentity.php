@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\MediaContent\Model;
 
-use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
 use Magento\MediaContentApi\Api\Data\ContentIdentityExtensionInterface;
+use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
 
 /**
  * @inheritdoc
@@ -34,7 +35,7 @@ class ContentIdentity implements ContentIdentityInterface
         ?ContentIdentityExtensionInterface $extensionAttributes = null
     ) {
         $this->entityType = $entityType;
-        $this->entityId= $entityId;
+        $this->entityId = $entityId;
         $this->field = $field;
         $this->extensionAttributes = $extensionAttributes;
     }

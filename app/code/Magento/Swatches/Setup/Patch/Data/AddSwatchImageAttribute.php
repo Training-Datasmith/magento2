@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +10,8 @@ namespace Magento\Swatches\Setup\Patch\Data;
 
 use Magento\Catalog\Model\Product\Attribute\Frontend\Image;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
-use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Eav\Setup\EavSetup;
-use Magento\Framework\App\ResourceConnection;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -65,7 +66,7 @@ class AddSwatchImageAttribute implements DataPatchInterface, PatchVersionInterfa
                 'required' => false,
                 'sort_order' => 3,
                 'global' => ScopedAttributeInterface::SCOPE_STORE,
-                'used_in_product_listing' => true
+                'used_in_product_listing' => true,
             ]
         );
     }

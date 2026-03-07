@@ -9,12 +9,11 @@ declare(strict_types=1);
 namespace Magento\CatalogInventory\Test\Unit\Model\Quote\Item\QuantityValidator\Initializer;
 
 use Magento\Catalog\Model\Product;
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer\Option;
-use Magento\CatalogInventory\Model\Stock\Item as StockItem;
 use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\QuoteItemQtyList;
+use Magento\CatalogInventory\Model\Stock\Item as StockItem;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -111,14 +110,14 @@ class OptionTest extends TestCase
             StockItem::class,
             ['setIsChildItem', 'setSuppressCheckQtyIncrements', 'unsIsChildItem', 'setProductName', 'getItemId']
         );
-        
+
         $this->productMock = $this->createPartialMock(Product::class, ['getId', 'getStore']);
         $productStore = $this->createPartialMock(Store::class, ['getWebsiteId']);
         $productStore->expects($this->any())->method('getWebsiteId')->willReturn($this->websiteId);
         $this->productMock->expects($this->any())->method('getStore')->willReturn($productStore);
 
         $this->qtyItemListMock = $this->createMock(QuoteItemQtyList::class);
-        
+
         $this->resultMock = $this->createPartialMockWithReflection(
             DataObject::class,
             ['getItemIsQtyDecimal', 'getHasQtyOptionUpdate', 'getOrigQty', 'getMessage',
@@ -135,7 +134,7 @@ class OptionTest extends TestCase
             [
                 'quoteItemQtyList' => $this->qtyItemListMock,
                 'stockRegistry' => $this->stockRegistry,
-                'stockState' => $this->stockState
+                'stockState' => $this->stockState,
             ]
         );
     }

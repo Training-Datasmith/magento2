@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\TestModuleExtensionAttributes\Model\Data;
 
-use Magento\TestModuleExtensionAttributes\Api\Data\FakeRegionInterface;
 use Magento\Framework\Api\AbstractExtensibleObject;
+use Magento\TestModuleExtensionAttributes\Api\Data\FakeRegionInterface;
 
 class FakeRegion extends AbstractExtensibleObject implements FakeRegionInterface
 {

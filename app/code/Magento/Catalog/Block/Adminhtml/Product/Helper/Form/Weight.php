@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Catalog\Block\Adminhtml\Product\Helper\Form;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Model\Product\Edit\WeightResolver;
 use Magento\Directory\Helper\Data;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form;
-use Magento\Catalog\Model\Product\Edit\WeightResolver;
 use Magento\Framework\Data\Form\Element\CollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Radios;
@@ -73,7 +74,7 @@ class Weight extends Text
         )->setValues(
             [
                 ['value' => WeightResolver::HAS_WEIGHT, 'label' => __('Yes')],
-                ['value' => WeightResolver::HAS_NO_WEIGHT, 'label' => __('No')]
+                ['value' => WeightResolver::HAS_NO_WEIGHT, 'label' => __('No')],
             ]
         )->setId(
             'weight-switcher'
@@ -163,7 +164,7 @@ class Weight extends Text
         }
 
         if ($this->getEntityAttribute()) {
-            $format= $this->localeFormat->getPriceFormat();
+            $format = $this->localeFormat->getPriceFormat();
             $value = number_format($value, $format['precision'], $format['decimalSymbol'], $format['groupSymbol']);
         } else {
             // default format:  1234.56
@@ -221,7 +222,7 @@ HTML;
         $html .= /* @noEscape */ $this->secureRenderer->renderEventListenerAsTag(
             'onclick',
             "toogleFieldEditMode(this, 'weight-switcher1'); toogleFieldEditMode(this, 'weight-switcher0');",
-            "#". $dataCheckboxName
+            '#'. $dataCheckboxName
         );
 
         return $html;

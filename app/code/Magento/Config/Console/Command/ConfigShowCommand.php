@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Console\Command;
 
 use Magento\Config\Console\Command\ConfigShow\ValueProcessor;
@@ -238,7 +241,7 @@ class ConfigShowCommand extends Command
     {
         if (!is_array($configValue)) {
             $value = $this->valueProcessor->process($this->scope, $this->scopeCode, $configValue, $configPath);
-            $output->writeln($this->inputPath === $configPath ? [$value] : sprintf("%s - %s", $configPath, $value));
+            $output->writeln($this->inputPath === $configPath ? [$value] : sprintf('%s - %s', $configPath, $value));
         } elseif (is_array($configValue)) {
             foreach ($configValue as $name => $value) {
                 $childPath = empty($configPath) ? $name : ($configPath . '/' . $name);

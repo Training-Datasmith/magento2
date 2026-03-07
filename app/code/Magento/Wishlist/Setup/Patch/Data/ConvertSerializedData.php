@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Setup\Patch\Data;
 
 use Magento\Framework\DB\DataConverter\SerializedToJson;
@@ -109,8 +112,8 @@ class ConvertSerializedData implements DataPatchInterface, PatchVersionInterface
                         'bundle_selection_ids',
                         'attributes',
                         'bundle_selection_attributes',
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $fieldDataConverter->convert(
@@ -140,8 +143,8 @@ class ConvertSerializedData implements DataPatchInterface, PatchVersionInterface
                 'in',
                 [
                     'values' => [
-                        'code' => $codes
-                    ]
+                        'code' => $codes,
+                    ],
                 ]
             );
             $fieldDataConverter->convert(

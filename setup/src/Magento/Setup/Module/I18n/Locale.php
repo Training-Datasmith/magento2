@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n;
 
 /**
@@ -13,7 +16,7 @@ class Locale
     /**
      * Default system locale
      */
-    const DEFAULT_SYSTEM_LOCALE = 'en_US';
+    public const DEFAULT_SYSTEM_LOCALE = 'en_US';
 
     /**
      * Locale name

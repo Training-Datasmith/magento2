@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class BasePrice extends AbstractPrice
     /**
      * Price type identifier string
      */
-    const PRICE_CODE = 'base_price';
+    public const PRICE_CODE = 'base_price';
 
     /**
      * Get Base Price Value
@@ -30,7 +32,7 @@ class BasePrice extends AbstractPrice
             $this->value = false;
             foreach ($this->priceInfo->getPrices() as $price) {
                 if ($price instanceof BasePriceProviderInterface && $price->getValue() !== false) {
-                    $this->value = min($price->getValue(), $this->value !== false ? $this->value: $price->getValue());
+                    $this->value = min($price->getValue(), $this->value !== false ? $this->value : $price->getValue());
                 }
             }
         }

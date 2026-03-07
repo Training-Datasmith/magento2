@@ -1,24 +1,27 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
-use Magento\Framework\View\Element\UiComponent\DataSourceInterface;
 use Magento\Framework\View\Element\UiComponent\BlockWrapperInterface;
+use Magento\Framework\View\Element\UiComponent\DataSourceInterface;
 use Magento\Framework\View\Element\UiComponent\LayoutInterface;
-use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Framework\View\Element\UiComponentInterface;
 
 /**
  * Class Generic
  */
 class Generic implements LayoutInterface
 {
-    const CONFIG_JS_COMPONENT = 'component';
-    const CONFIG_COMPONENT_NAME = 'componentName';
-    const CONFIG_PANEL_COMPONENT = 'panelComponentName';
+    public const CONFIG_JS_COMPONENT = 'component';
+    public const CONFIG_COMPONENT_NAME = 'componentName';
+    public const CONFIG_PANEL_COMPONENT = 'panelComponentName';
 
     /**
      * @var UiComponentInterface
@@ -65,7 +68,7 @@ class Generic implements LayoutInterface
             $this->getConfig(self::CONFIG_COMPONENT_NAME),
             [
                 'component' => $this->getConfig(self::CONFIG_JS_COMPONENT),
-                'extends' => $this->namespace
+                'extends' => $this->namespace,
             ]
         );
 
@@ -77,9 +80,9 @@ class Generic implements LayoutInterface
             'types' => $context->getComponentsDefinitions(),
             'components' => [
                 $context->getNamespace() => [
-                    'children' => array_merge($children, $dataSources)
-                ]
-            ]
+                    'children' => array_merge($children, $dataSources),
+                ],
+            ],
         ];
         return $configuration;
     }
@@ -159,9 +162,9 @@ class Generic implements LayoutInterface
                     'type' => $childComponent->getComponentName(),
                     'dataScope' => $name,
                     'config' => [
-                        'content' => $childComponent->render()
+                        'content' => $childComponent->render(),
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -183,7 +186,7 @@ class Generic implements LayoutInterface
             $childComponent->getData('wrapper/componentType'),
             [
                 'context' => $this->component->getContext(),
-                'components' => [$childComponent->getName() => $childComponent]
+                'components' => [$childComponent->getName() => $childComponent],
             ]
         );
         $panelComponent->prepare();

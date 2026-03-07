@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,5 +10,4 @@ namespace Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey;
 
 class CalculationException extends \Exception
 {
-
 }

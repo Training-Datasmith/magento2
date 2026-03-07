@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\WebapiSecurity\Model\Plugin;
 
 use Magento\Webapi\Model\Config\Converter;
@@ -12,7 +15,7 @@ class AnonymousResourceSecurity
     /**
      * Config path
      */
-    const XML_ALLOW_INSECURE = 'webapi/webapisecurity/allow_insecure';
+    public const XML_ALLOW_INSECURE = 'webapi/webapisecurity/allow_insecure';
 
     /**
      * @var \Magento\Framework\App\Config\ReinitableConfigInterface
@@ -52,8 +55,8 @@ class AnonymousResourceSecurity
         $useInsecure = $this->config->getValue(self::XML_ALLOW_INSECURE);
         if ($useInsecure) {
             foreach (array_keys($this->resources) as $resource) {
-                list($route, $requestType) = explode("::", $resource);
-                if ($result = $this->getNode($route, $requestType, $nodes["routes"])) {
+                list($route, $requestType) = explode('::', $resource);
+                if ($result = $this->getNode($route, $requestType, $nodes['routes'])) {
                     if (isset($result[$requestType]['resources'])) {
                         $result[$requestType]['resources'] = ['anonymous' => true];
                         $nodes['routes'][$route] = $result;

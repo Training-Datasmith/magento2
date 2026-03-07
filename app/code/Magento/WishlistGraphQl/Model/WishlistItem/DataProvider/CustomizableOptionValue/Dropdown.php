@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class Dropdown implements CustomizableOptionValueInterface
             $optionDetails = [
                 self::OPTION_TYPE,
                 $option->getOptionId(),
-                $optionValue->getOptionTypeId()
+                $optionValue->getOptionTypeId(),
             ];
 
             $uuid = $this->uidEncoder->encode((string) implode('/', $optionDetails));
@@ -83,7 +84,7 @@ class Dropdown implements CustomizableOptionValueInterface
                     'type' => strtoupper($optionPriceType),
                     'units' => $priceValueUnits,
                     'value' => $optionValue->getPrice(),
-                ]
+                ],
             ];
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Test\Unit\Model;
 
+use Magento\Csp\Model\SubresourceIntegrity;
+use Magento\Csp\Model\SubresourceIntegrity\StorageInterface;
+use Magento\Csp\Model\SubresourceIntegrityFactory;
+use Magento\Csp\Model\SubresourceIntegrityRepository;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Csp\Model\SubresourceIntegrity;
-use Magento\Csp\Model\SubresourceIntegrityRepository;
-use Magento\Csp\Model\SubresourceIntegrityFactory;
-use Magento\Csp\Model\SubresourceIntegrity\StorageInterface;
 
 /**
  * Unit Test for Class @see Magento\Csp\Model\SubresourceIntegrityRepository
@@ -25,7 +26,7 @@ class SubresourceIntegrityRepositoryTest extends TestCase
     /**
      * @var string
      */
-    private string $context = "test";
+    private string $context = 'test';
 
     /**
      * @var MockObject
@@ -84,7 +85,7 @@ class SubresourceIntegrityRepositoryTest extends TestCase
         $data = new SubresourceIntegrity(
             [
                 'hash' => 'testhash',
-                'path' => 'js/jquery.js'
+                'path' => 'js/jquery.js',
             ]
         );
 
@@ -125,15 +126,15 @@ class SubresourceIntegrityRepositoryTest extends TestCase
             new SubresourceIntegrity(
                 [
                     'hash' => 'testhash',
-                    'path' => 'js/jquery.js'
+                    'path' => 'js/jquery.js',
                 ]
             ),
             new SubresourceIntegrity(
                 [
                     'hash' => 'testhash2',
-                    'path' => 'js/test.js'
+                    'path' => 'js/test.js',
                 ]
-            )
+            ),
         ];
 
         $expected = [];

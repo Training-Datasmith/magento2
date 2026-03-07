@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,7 +14,6 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Module\Setup;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Backup\BackupInterface;
 
 /**
  * Provide tests for \Magento\Framework\Backup\Db.

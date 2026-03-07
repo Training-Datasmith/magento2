@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -20,12 +21,12 @@ class Options implements OptionSourceInterface
         return [
             [
                 'value' => UserContextInterface::USER_TYPE_ADMIN,
-                'label' => __('Admin user')
+                'label' => __('Admin user'),
             ],
             [
                 'value' => UserContextInterface::USER_TYPE_INTEGRATION,
-                'label' => __('Integration')
-            ]
+                'label' => __('Integration'),
+            ],
         ];
     }
 }

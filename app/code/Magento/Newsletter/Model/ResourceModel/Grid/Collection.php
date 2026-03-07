@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter problems collection
  */
+
 namespace Magento\Newsletter\Model\ResourceModel\Grid;
 
 class Collection extends \Magento\Newsletter\Model\ResourceModel\Problem\Collection

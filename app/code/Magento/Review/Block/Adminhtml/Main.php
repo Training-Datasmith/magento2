@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,10 +9,11 @@ declare(strict_types=1);
 /**
  * Adminhtml review main block
  */
+
 namespace Magento\Review\Block\Adminhtml;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Framework\App\ObjectManager;
 
 /**
  * Class \Magento\Review\Block\Adminhtml\Main

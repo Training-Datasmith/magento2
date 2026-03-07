@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Sales\ViewModel\CreditMemo\Create;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create\Items;
-use Magento\Sales\Model\Convert\OrderFactory;
 use Magento\Sales\Model\Convert\Order as ConvertOrder;
+use Magento\Sales\Model\Convert\OrderFactory;
 use Magento\Sales\Model\Order\Creditmemo\Item;
 
 /**

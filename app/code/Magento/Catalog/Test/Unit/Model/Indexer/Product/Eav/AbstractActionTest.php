@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Eav;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Product\Eav\AbstractAction;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\Decimal;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\DecimalFactory;
@@ -17,6 +17,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -63,7 +64,7 @@ class AbstractActionTest extends TestCase
             [
                 $this->_eavDecimalFactoryMock,
                 $this->_eavSourceFactoryMock,
-                $this->scopeConfig
+                $this->scopeConfig,
             ]
         );
     }
@@ -163,7 +164,7 @@ class AbstractActionTest extends TestCase
         array $ids,
         array $parentIds,
         array $childIds
-    ) : void {
+    ): void {
         $reindexIds = array_unique(array_merge($ids, $parentIds, $childIds));
 
         $connectionMock = $this->createMock(AdapterInterface::class);
@@ -230,7 +231,7 @@ class AbstractActionTest extends TestCase
     /**
      * @return array
      */
-    public static function reindexEntitiesDataProvider() : array
+    public static function reindexEntitiesDataProvider(): array
     {
         return [
             [[4], [], [1, 2, 3]],

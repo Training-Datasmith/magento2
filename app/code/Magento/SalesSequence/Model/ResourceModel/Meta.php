@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +11,9 @@ namespace Magento\SalesSequence\Model\ResourceModel;
 use Magento\Framework\Exception\LocalizedException as Exception;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Model\ResourceModel\Db\Context as DatabaseContext;
-use Magento\SalesSequence\Model\ResourceModel\Profile as ResourceProfile;
 use Magento\SalesSequence\Model\MetaFactory;
 use Magento\SalesSequence\Model\Profile as ModelProfile;
+use Magento\SalesSequence\Model\ResourceModel\Profile as ResourceProfile;
 
 /**
  * Class Meta represents metadata for sequence as sequence table and store id
@@ -123,7 +125,7 @@ class Meta extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             throw new NoSuchEntityException(
                 __(
                     "The entity sequence profile wasn't added to the meta active profile. "
-                    . "Verify the profile and try again."
+                    . 'Verify the profile and try again.'
                 )
             );
         }

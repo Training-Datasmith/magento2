@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,10 +23,10 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -115,7 +116,7 @@ class SetTest extends TestCase
             [
                 'context' => $contextMock,
                 'attrGroupFactory' => $attributeGroupFactoryMock,
-                'eavConfig' => $this->eavConfigMock
+                'eavConfig' => $this->eavConfigMock,
             ]
         );
 
@@ -126,7 +127,7 @@ class SetTest extends TestCase
             AbstractModel::class,
             [
                 'getEntityTypeId', 'getAttributeSetId', 'beforeDelete', 'getId',
-                'isDeleted', 'afterDelete', 'afterDeleteCommit', '__wakeup'
+                'isDeleted', 'afterDelete', 'afterDeleteCommit', '__wakeup',
             ]
         );
     }
@@ -192,16 +193,16 @@ class SetTest extends TestCase
             10000 => [
                 'group_id' => 10,
                 'group_sort' => 100,
-                'sort' => 1000
-            ]
+                'sort' => 1000,
+            ],
         ];
         $setData = [
             1 => $setElement,
             2 => [],
-            3 => []
+            3 => [],
         ];
         $cached = [
-            1 => $setElement
+            1 => $setElement,
         ];
         $cacheMock = $this->createPartialMockWithReflection(
             CacheInterface::class,
@@ -235,8 +236,8 @@ class SetTest extends TestCase
                 'attribute_group_id' => 10,
                 'group_sort_order' => 100,
                 'sort_order' => 1000,
-                'attribute_set_id' => 10000
-            ]
+                'attribute_set_id' => 10000,
+            ],
         ];
 
         $selectMock = $this->createPartialMockWithReflection(
@@ -271,16 +272,16 @@ class SetTest extends TestCase
             10000 => [
                 'group_id' => 10,
                 'group_sort' => 100,
-                'sort' => 1000
-            ]
+                'sort' => 1000,
+            ],
         ];
         $setData = [
             1 => $setElement,
             2 => [],
-            3 => []
+            3 => [],
         ];
         $cached = [
-            1 => $setElement
+            1 => $setElement,
         ];
         $serializedData = 'serialized data';
         $this->resourceMock->expects($this->never())->method('getConnection');

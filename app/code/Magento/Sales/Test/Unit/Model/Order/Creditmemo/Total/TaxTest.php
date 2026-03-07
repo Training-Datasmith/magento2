@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Total;
 
-use Magento\Framework\DataObject as MagentoObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Item;
@@ -17,10 +17,9 @@ use Magento\Sales\Model\Order\Creditmemo\Total\Tax;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\ResourceModel\Order\Invoice as ResourceInvoice;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Class to test Collecting credit memo taxes
@@ -811,7 +810,7 @@ class TaxTest extends TestCase
                     'shipping_discount_amount' => 15,
                     'base_shipping_amount' => 13.64,
                     'discount_tax_compensation_invoiced' => 1.73,
-                    'base_discount_tax_compensation_invoiced' => 1.73
+                    'base_discount_tax_compensation_invoiced' => 1.73,
                 ],
             ],
             'creditmemoData' => [
@@ -824,7 +823,7 @@ class TaxTest extends TestCase
                             'discount_tax_compensation_amount' => 1.73,
                             'base_discount_tax_compensation_amount' => 1.73,
                             'discount_tax_compensation_invoiced' => 1.73,
-                            'base_discount_tax_compensation_invoiced' => 1.73
+                            'base_discount_tax_compensation_invoiced' => 1.73,
                         ],
                         'is_last' => true,
                         'qty' => 1,
@@ -837,7 +836,7 @@ class TaxTest extends TestCase
                     'grand_total' => 10.45,
                     'base_grand_total' => 10.45,
                     'tax_amount' => 0,
-                    'base_tax_amount' => 0
+                    'base_tax_amount' => 0,
                 ],
             ],
             'expectedResults' => [
@@ -873,7 +872,7 @@ class TaxTest extends TestCase
                     'shipping_discount_amount' => 15,
                     'base_shipping_amount' => 13.64,
                     'discount_tax_compensation_invoiced' => 1.73,
-                    'base_discount_tax_compensation_invoiced' => 1.73
+                    'base_discount_tax_compensation_invoiced' => 1.73,
                 ],
             ],
             'creditmemoData' => [
@@ -886,7 +885,7 @@ class TaxTest extends TestCase
                             'discount_tax_compensation_amount' => 1.73,
                             'base_discount_tax_compensation_amount' => 1.73,
                             'discount_tax_compensation_invoiced' => 1.73,
-                            'base_discount_tax_compensation_invoiced' => 1.73
+                            'base_discount_tax_compensation_invoiced' => 1.73,
                         ],
                         'is_last' => true,
                         'qty' => 1,
@@ -899,7 +898,7 @@ class TaxTest extends TestCase
                     'grand_total' => 10.45,
                     'base_grand_total' => 10.45,
                     'tax_amount' => 0,
-                    'base_tax_amount' => 0
+                    'base_tax_amount' => 0,
                 ],
             ],
             'expectedResults' => [
@@ -1030,7 +1029,7 @@ class TaxTest extends TestCase
         $orderItem = $this->createPartialMock(
             OrderItem::class,
             [
-                'isDummy'
+                'isDummy',
             ]
         );
         foreach ($creditmemoItemData['order_item'] as $key => $value) {
@@ -1042,7 +1041,7 @@ class TaxTest extends TestCase
             Item::class,
             [
                 'getOrderItem',
-                'isLast'
+                'isLast',
             ]
         );
         $creditmemoItem->expects($this->any())->method('getOrderItem')->willReturn($orderItem);
@@ -1068,7 +1067,7 @@ class TaxTest extends TestCase
                 'getBaseShippingDiscountTaxCompensationAmount', 'getTaxAmount', 'getBaseTaxAmount',
                 'getShippingTaxAmount', 'getBaseShippingTaxAmount',
                 'getShippingDiscountTaxCompensationAmount', 'getDiscountTaxCompensationAmount',
-                'getBaseDiscountTaxCompensationAmount', 'getId'
+                'getBaseDiscountTaxCompensationAmount', 'getId',
             ]
         );
 

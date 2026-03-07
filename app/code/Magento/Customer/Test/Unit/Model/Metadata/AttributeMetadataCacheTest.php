@@ -85,7 +85,7 @@ class AttributeMetadataCacheTest extends TestCase
                 'state' => $this->stateMock,
                 'serializer' => $this->serializerMock,
                 'attributeMetadataHydrator' => $this->attributeMetadataHydratorMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }
@@ -225,7 +225,7 @@ class AttributeMetadataCacheTest extends TestCase
                     Type::CACHE_TAG,
                     Attribute::CACHE_TAG,
                     System::CACHE_TAG,
-                    Store::CACHE_TAG
+                    Store::CACHE_TAG,
                 ]
             );
         $this->attributeMetadataCache->save($entityType, $attributesMetadata, $suffix);

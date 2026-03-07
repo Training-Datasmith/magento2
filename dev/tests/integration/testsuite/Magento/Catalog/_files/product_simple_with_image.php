@@ -1,10 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 
-use Magento\Catalog\Api\Data\ProductExtensionInterfaceFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
 \Magento\TestFramework\Helper\Bootstrap::getInstance()->reinitialize();

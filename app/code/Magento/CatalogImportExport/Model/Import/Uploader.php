@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -24,7 +27,6 @@ use Magento\Framework\Filesystem\DriverPool;
  */
 class Uploader extends \Magento\MediaStorage\Model\File\Uploader
 {
-
     /**
      * HTTP scheme
      * used to compare against the filename and select the proper DriverPool adapter
@@ -304,7 +306,7 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
             'type' => $this->_getMimeTypeByExt($fileInfo['extension']),
             'tmp_name' => $filePath,
             'error' => 0,
-            'size' => $this->_directory->stat($filePath)['size']
+            'size' => $this->_directory->stat($filePath)['size'],
         ];
     }
 

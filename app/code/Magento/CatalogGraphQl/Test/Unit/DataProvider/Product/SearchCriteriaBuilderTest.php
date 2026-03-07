@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ class SearchCriteriaBuilderTest extends TestCase
 
         $this->sortOrderBuilder->expects($this->exactly(2))
             ->method('setField')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$sortOrderList[0]] => $this->sortOrderBuilder,
                 [$sortOrderList[1]] => $this->sortOrderBuilder
             });

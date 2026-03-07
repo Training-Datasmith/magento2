@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Reader;
 
-use Magento\Framework\GetParameterClassTrait;
 use Laminas\Code\Reflection\ParameterReflection;
+use Magento\Framework\GetParameterClassTrait;
 
 /**
  * The class arguments reader

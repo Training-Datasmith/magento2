@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ use Magento\CatalogInventory\Api\Data\StockStatusInterface;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
+use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Model\StockRegistry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\CatalogInventory\Model\Stock\Item;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -28,7 +29,7 @@ use Magento\CatalogInventory\Model\Stock\Item;
 class StockRegistryTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /** @var ObjectManagerHelper */
     protected $objectManagerHelper;
 
@@ -82,18 +83,18 @@ class StockRegistryTest extends TestCase
 
         $this->product = $this->createPartialMock(Product::class, ['__wakeup', 'getIdBySku']);
         $this->product->method('getIdBySku')->willReturn(self::PRODUCT_ID);
-        
+
         $this->productFactory = $this->createPartialMock(ProductFactory::class, ['create']);
         $this->productFactory->method('create')->willReturn($this->product);
 
         $this->stock = $this->createMock(StockInterface::class);
-        
+
         // Use concrete Item class instead of interface for proper type support
         $this->stockItem = $this->createPartialMockWithReflection(
             Item::class,
             ['getData', 'addData', 'getWebsiteId','setProductId', 'getItemId']
         );
-        
+
         $this->stockStatus = $this->createMock(StockStatusInterface::class);
 
         $this->stockRegistryProvider = $this->createMock(StockRegistryProviderInterface::class);
@@ -109,7 +110,7 @@ class StockRegistryTest extends TestCase
             [
                 'stockRegistryProvider' => $this->stockRegistryProvider,
                 'productFactory' => $this->productFactory,
-                'stockItemRepository' => $this->stockItemRepository
+                'stockItemRepository' => $this->stockItemRepository,
             ]
         );
     }
@@ -157,13 +158,13 @@ class StockRegistryTest extends TestCase
     {
         $itemId = 1;
         $testData = ['test_key' => 'test_value'];
-        
+
         $this->stockItem->method('getWebsiteId')->willReturn(null);
         $this->stockItem->method('getData')->willReturn($testData);
-        
+
         $this->stockItem->method('getItemId')->willReturn($itemId);
         $this->stockItem->method('getData')->willReturn($testData);
-        
+
         $this->assertEquals(
             $itemId,
             $this->stockRegistry->updateStockItemBySku(self::PRODUCT_SKU, $this->stockItem)

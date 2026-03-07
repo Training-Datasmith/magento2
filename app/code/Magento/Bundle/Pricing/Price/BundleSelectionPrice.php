@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Pricing\Price;
 
 use Magento\Bundle\Model\Product\Price;
@@ -12,8 +15,8 @@ use Magento\Catalog\Pricing\Price as CatalogPrice;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\Pricing\Price\AbstractPrice;
+use Magento\Framework\Pricing\SaleableInterface;
 
 /**
  * Bundle option price

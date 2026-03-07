@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Test\Unit\Controller\Index;
 
+use Exception;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ActionFlag;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\Controller\Result\Redirect as ResultRedirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Data\Form\FormKey\Validator;
+use Magento\Framework\Event\Manager as EventManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Manager;
-use Exception;
 use Magento\Framework\Url;
 use Magento\Store\App\Response\Redirect;
 use Magento\Wishlist\Controller\Index\Remove;
@@ -26,8 +29,6 @@ use Magento\Wishlist\Model\Product\AttributeValueProvider;
 use Magento\Wishlist\Model\Wishlist;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Controller\Result\Redirect as ResultRedirect;
-use Magento\Framework\Event\Manager as EventManager;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -365,7 +366,7 @@ class RemoveTest extends TestCase
                 [
                     ['item', null, 1],
                     ['referer_url', null, $referer],
-                    ['uenc', null, $referer]
+                    ['uenc', null, $referer],
                 ]
             );
 
@@ -447,7 +448,7 @@ class RemoveTest extends TestCase
                 [
                     ['item', null, 1],
                     ['referer_url', null, $referer],
-                    ['uenc', null, false]
+                    ['uenc', null, false],
                 ]
             );
 

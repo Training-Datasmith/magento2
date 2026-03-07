@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductAlert\Model\ResourceModel;
 
 use Magento\Framework\Model\AbstractModel;
@@ -37,7 +40,7 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\D
                 ':customer_id' => $object->getCustomerId(),
                 ':product_id' => $object->getProductId(),
                 ':website_id' => $object->getWebsiteId(),
-                ':store_id' => $object->getStoreId()
+                ':store_id' => $object->getStoreId(),
             ];
             return $connection->fetchRow($select, $bind);
         }

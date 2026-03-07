@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -69,44 +71,44 @@ class ProfilerEnableCommandTest extends TestCase
             [
                 '',
                 true,
-                'Profiler enabled with html output.'
+                'Profiler enabled with html output.',
             ],
             [
                 '',
                 false,
-                'Something went wrong while enabling the profiler.'
+                'Something went wrong while enabling the profiler.',
             ],
             [
                 'html',
                 true,
-                'Profiler enabled with html output.'
+                'Profiler enabled with html output.',
             ],
             [
                 'html',
                 false,
-                'Something went wrong while enabling the profiler.'
+                'Something went wrong while enabling the profiler.',
             ],
             [
                 'csvfile',
                 true,
-                'Profiler enabled with csvfile output. Output will be saved in /var/log/profiler.csv'
+                'Profiler enabled with csvfile output. Output will be saved in /var/log/profiler.csv',
             ],
             [
                 'csvfile',
                 false,
-                'Something went wrong while enabling the profiler.'
+                'Something went wrong while enabling the profiler.',
             ],
             [
                 'xml',
                 true,
                 'Type xml is not one of the built-in output types (html, csvfile). ' .
-                'Profiler enabled with xml output.'
+                'Profiler enabled with xml output.',
             ],
             [
                 'xml',
                 false,
                 'Type xml is not one of the built-in output types (html, csvfile). ' .
-                'Something went wrong while enabling the profiler.'
+                'Something went wrong while enabling the profiler.',
             ],
         ];
     }

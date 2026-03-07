@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -165,13 +166,13 @@ class CacheTest extends TestCase
                             'compression_lib' => '',
                             'use_lua' => '0',
                             'use_lua_on_gc' => '1',
-                            'serializer' => 'igbinary'
+                            'serializer' => 'igbinary',
                         ],
                         'id_prefix' => $this->expectedIdPrefix(),
-                    ]
+                    ],
                 ],
                 'allow_parallel_generation' => 'false',
-            ]
+            ],
         ];
 
         $configData = $this->configOptionsList
@@ -210,12 +211,12 @@ class CacheTest extends TestCase
                             'compression_lib' => 'gzip',
                             'use_lua' => '0',
                             'use_lua_on_gc' => '1',
-                            'serializer' => 'igbinary'
+                            'serializer' => 'igbinary',
                         ],
-                    ]
+                    ],
                 ],
                 'allow_parallel_generation' => 'false',
-            ]
+            ],
         ];
 
         $options = [
@@ -224,7 +225,7 @@ class CacheTest extends TestCase
             'cache-backend-redis-port' => '1234',
             'cache-backend-redis-db' => '5',
             'cache-backend-redis-compress-data' => '1',
-            'cache-backend-redis-compression-lib' => 'gzip'
+            'cache-backend-redis-compression-lib' => 'gzip',
         ];
 
         $configData = $this->configOptionsList->createConfig($options, $this->deploymentConfigMock);
@@ -245,11 +246,11 @@ class CacheTest extends TestCase
                     'default' => [
                         'id_prefix' => $this->expectedIdPrefix(),
                         'backend_options' => [
-                            'serializer' => 'igbinary'
-                        ]
-                    ]
-                ]
-            ]
+                            'serializer' => 'igbinary',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $configData = $this->configOptionsList->createConfig([], $this->deploymentConfigMock);
@@ -271,11 +272,11 @@ class CacheTest extends TestCase
                     'default' => [
                         'id_prefix' => $explicitPrefix,
                         'backend_options' => [
-                            'serializer' => 'igbinary'
-                        ]
-                    ]
-                ]
-            ]
+                            'serializer' => 'igbinary',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $configData = $this->configOptionsList->createConfig(
@@ -294,7 +295,7 @@ class CacheTest extends TestCase
         $options = [
             'cache-backend' => 'redis',
             'cache-backend-redis-server' => 'localhost',
-            'page-cache' => 'redis'
+            'page-cache' => 'redis',
         ];
         $this->validatorMock->expects($this->once())
             ->method('isValidConnection')
@@ -319,7 +320,7 @@ class CacheTest extends TestCase
         $options = [
             'cache-backend' => 'valkey',
             'cache-backend-valkey-server' => 'localhost',
-            'page-cache' => 'valkey'
+            'page-cache' => 'valkey',
         ];
         $this->validatorMock->expects($this->once())
             ->method('isValidConnection')

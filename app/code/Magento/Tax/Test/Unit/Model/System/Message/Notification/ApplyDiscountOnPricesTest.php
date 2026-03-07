@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -104,36 +105,36 @@ class ApplyDiscountOnPricesTest extends TestCase
                 false, // $priceIncludesTax,
                 true, // $applyTaxAfterDiscount,
                 true, // $discountTax,
-                true // $expectedResult
+                true, // $expectedResult
             ],
             [
                 false, // $isWrongApplyDiscountSettingIgnored,
                 false, // $priceIncludesTax,
                 true, // $applyTaxAfterDiscount,
                 false, // $discountTax,
-                false // $expectedResult
+                false, // $expectedResult
             ],
             [
                 false, // $isWrongApplyDiscountSettingIgnored,
                 false, // $priceIncludesTax,
                 false, // $applyTaxAfterDiscount,
                 true, // $discountTax,
-                false // $expectedResult
+                false, // $expectedResult
             ],
             [
                 false, // $isWrongApplyDiscountSettingIgnored,
                 true, // $priceIncludesTax,
                 true, // $applyTaxAfterDiscount,
                 true, // $discountTax,
-                false // $expectedResult
+                false, // $expectedResult
             ],
             [
                 true, // $isWrongApplyDiscountSettingIgnored,
                 false, // $priceIncludesTax,
                 true, // $applyTaxAfterDiscount,
                 true, // $discountTax,
-                false // $expectedResult
-            ]
+                false, // $expectedResult
+            ],
         ];
     }
 

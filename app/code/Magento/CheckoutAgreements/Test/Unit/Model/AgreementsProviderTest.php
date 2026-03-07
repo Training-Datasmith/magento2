@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class AgreementsProviderTest extends TestCase
             [
                 'agreementCollectionFactory' => $this->agreementCollFactoryMock,
                 'storeManager' => $this->storeManagerMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }

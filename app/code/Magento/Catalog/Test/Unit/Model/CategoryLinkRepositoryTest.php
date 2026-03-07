@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -311,7 +312,7 @@ class CategoryLinkRepositoryTest extends TestCase
         $productSku = 'testSku';
         $productId = 55;
         $productPositions = [55 => 1];
-        
+
         $categoryMock = $this->createPartialMockWithReflection(
             Category::class,
             ['setPostedProducts', 'getProductsPosition', 'save', 'getId']

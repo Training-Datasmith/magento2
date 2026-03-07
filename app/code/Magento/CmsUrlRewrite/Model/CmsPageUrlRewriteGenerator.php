@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CmsUrlRewrite\Model;
 
 use Magento\Store\Model\StoreManagerInterface;
@@ -13,7 +16,7 @@ class CmsPageUrlRewriteGenerator
     /**
      * Entity type code
      */
-    const ENTITY_TYPE = 'cms-page';
+    public const ENTITY_TYPE = 'cms-page';
 
     /**
      * @var \Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory

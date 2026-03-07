@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ use Magento\Framework\View\Element\UiComponent\Config\UiReaderInterface;
 use Magento\Ui\Model\Manager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -94,7 +94,8 @@ class ManagerTest extends TestCase
         $this->componentConfigProvider = $this->createMock(
             \Magento\Framework\View\Element\UiComponent\Config\Provider\Component\Definition::class
         );
-        $this->domMerger = $this->createMock(DomMergerInterface::class
+        $this->domMerger = $this->createMock(
+            DomMergerInterface::class
         );
         $this->aggregatedFileCollector = $this->createMock(
             AggregatedFileCollector::class
@@ -108,14 +109,16 @@ class ManagerTest extends TestCase
         $this->arrayObjectFactory
             ->method('create')
             ->willReturn(new \ArrayObject([]));
-        $this->uiReader = $this->createMock(UiReaderInterface::class
+        $this->uiReader = $this->createMock(
+            UiReaderInterface::class
         );
         $this->readerFactory = $this->createMock(
             ReaderFactory::class
         );
         $this->cacheConfig = $this->createMock(CacheInterface::class);
         $this->argumentInterpreter = $this->createMock(InterpreterInterface::class);
-        $this->serializer = $this->createMock(SerializerInterface::class
+        $this->serializer = $this->createMock(
+            SerializerInterface::class
         );
         $this->serializer->expects($this->any())
             ->method('serialize')
@@ -232,12 +235,12 @@ class ManagerTest extends TestCase
                     ManagerInterface::CHILDREN_KEY => [
                         'custom' => [
                             ManagerInterface::COMPONENT_ARGUMENTS_KEY => [
-                                'custom_name1' => ['value' => 'custom_value1']
+                                'custom_name1' => ['value' => 'custom_value1'],
                             ],
-                            ManagerInterface::CHILDREN_KEY => []
-                        ]
-                    ]
-                ]
+                            ManagerInterface::CHILDREN_KEY => [],
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -253,13 +256,13 @@ class ManagerTest extends TestCase
                         ManagerInterface::CHILDREN_KEY => [
                             'custom' => [
                                 ManagerInterface::COMPONENT_ARGUMENTS_KEY => [
-                                    'custom_name1' => ['argument' => 'custom_value1']
+                                    'custom_name1' => ['argument' => 'custom_value1'],
                                 ],
-                                ManagerInterface::CHILDREN_KEY => []
-                            ]
-                        ]
-                    ]
-                ]
+                                ManagerInterface::CHILDREN_KEY => [],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 'test_component2',
@@ -270,12 +273,12 @@ class ManagerTest extends TestCase
                             ManagerInterface::CHILDREN_KEY => [
                                 'test_component21' => [
                                     ManagerInterface::COMPONENT_ARGUMENTS_KEY => [
-                                        'argument_name21' => ['value' => 'value21']
+                                        'argument_name21' => ['value' => 'value21'],
                                     ],
-                                    ManagerInterface::CHILDREN_KEY => []
-                                ]
-                            ]
-                        ]
+                                    ManagerInterface::CHILDREN_KEY => [],
+                                ],
+                            ],
+                        ],
                     ]
                 ),
                 false,
@@ -287,11 +290,11 @@ class ManagerTest extends TestCase
                             'test_component21' => [
                                 0 => [
                                     Converter::DATA_ARGUMENTS_KEY => ['argument_name21' => ['value' => 'value21']],
-                                    Converter::DATA_ATTRIBUTES_KEY => ['name' => 'attribute_name21']
-                                ]
-                            ]
-                        ]
-                    ]
+                                    Converter::DATA_ATTRIBUTES_KEY => ['name' => 'attribute_name21'],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'test_component2' => [
@@ -300,15 +303,15 @@ class ManagerTest extends TestCase
                         ManagerInterface::CHILDREN_KEY => [
                             'attribute_name21' => [
                                 ManagerInterface::COMPONENT_ARGUMENTS_KEY => [
-                                    'argument_name21' => ['argument' => 'value21']
+                                    'argument_name21' => ['argument' => 'value21'],
                                 ],
                                 ManagerInterface::COMPONENT_ATTRIBUTES_KEY => ['name' => 'attribute_name21'],
-                                ManagerInterface::CHILDREN_KEY => []
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                ManagerInterface::CHILDREN_KEY => [],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -343,11 +346,11 @@ class ManagerTest extends TestCase
             [
                 'test_component1',
                 [
-                    Converter::DATA_ATTRIBUTES_KEY => ['name' => 'attribute_name1']
+                    Converter::DATA_ATTRIBUTES_KEY => ['name' => 'attribute_name1'],
                 ],
                 [
                     ManagerInterface::COMPONENT_ATTRIBUTES_KEY => ['name' => 'attribute_name1'],
-                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => []
+                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => [],
 
                 ],
                 false,
@@ -355,28 +358,28 @@ class ManagerTest extends TestCase
             [
                 'test_component2',
                 [
-                    Converter::DATA_ARGUMENTS_KEY => ['argument_name2' => ['value' => 'value2']]
+                    Converter::DATA_ARGUMENTS_KEY => ['argument_name2' => ['value' => 'value2']],
                 ],
                 [
                     ManagerInterface::COMPONENT_ATTRIBUTES_KEY => [],
-                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => ['argument_name2' => ['value' => 'value2']]
+                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => ['argument_name2' => ['value' => 'value2']],
 
                 ],
-                false
+                false,
             ],
             [
                 'test_component3',
                 [
                     Converter::DATA_ATTRIBUTES_KEY => ['name' => 'attribute_name3'],
-                    Converter::DATA_ARGUMENTS_KEY => ['argument_name3' => ['value' => 'value3']]
+                    Converter::DATA_ARGUMENTS_KEY => ['argument_name3' => ['value' => 'value3']],
                 ],
                 [
                     ManagerInterface::COMPONENT_ATTRIBUTES_KEY => ['name' => 'attribute_name3'],
-                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => ['argument_name3' => ['argument' => 'value3']]
+                    ManagerInterface::COMPONENT_ARGUMENTS_KEY => ['argument_name3' => ['argument' => 'value3']],
 
                 ],
-                true
-            ]
+                true,
+            ],
         ];
     }
 }

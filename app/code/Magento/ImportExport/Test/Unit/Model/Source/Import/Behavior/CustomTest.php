@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\ImportExport\Model\Source\Import\Behavior\Custom
  */
+
 namespace Magento\ImportExport\Test\Unit\Model\Source\Import\Behavior;
 
 use Magento\ImportExport\Model\Import;

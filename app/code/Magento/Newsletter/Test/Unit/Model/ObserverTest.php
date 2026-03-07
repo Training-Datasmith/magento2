@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ObserverTest extends TestCase
         $this->model = $objectManager->getObject(
             Observer::class,
             [
-                'queueCollectionFactory' => $this->collectionFactoryMock
+                'queueCollectionFactory' => $this->collectionFactoryMock,
             ]
         );
     }

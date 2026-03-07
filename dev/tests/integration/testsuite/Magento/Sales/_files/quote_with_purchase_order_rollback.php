@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Rollback for quote_with_purchase_order.php fixture.
  *

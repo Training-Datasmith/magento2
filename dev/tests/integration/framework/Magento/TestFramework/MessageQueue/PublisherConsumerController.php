@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\TestFramework\MessageQueue;
 
 use Magento\Framework\MessageQueue\PublisherInterface;
 use Magento\Framework\OsInfo;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Amqp;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class PublisherConsumerController
 {
@@ -96,7 +97,7 @@ class PublisherConsumerController
     {
         $this->validateEnvironmentPreconditions();
 
-        $this->clearQueueProcessor->execute("async.operations.all");
+        $this->clearQueueProcessor->execute('async.operations.all');
         $this->stopConsumers();
         $this->startConsumers();
 
@@ -121,7 +122,7 @@ class PublisherConsumerController
     {
         if ($this->osInfo->isWindows()) {
             throw new EnvironmentPreconditionException(
-                "This test relies on *nix shell and should be skipped in Windows environment."
+                'This test relies on *nix shell and should be skipped in Windows environment.'
             );
         }
     }
@@ -208,7 +209,7 @@ class PublisherConsumerController
         } while (!$assertion && ($i++ < 20));
 
         if (!$assertion) {
-            throw new PreconditionFailedException("No asynchronous messages were processed.");
+            throw new PreconditionFailedException('No asynchronous messages were processed.');
         }
     }
 

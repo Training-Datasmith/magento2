@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -23,12 +24,12 @@ class PluginListGeneratorTest extends TestCase
     /**
      * Generated plugin list config for frontend scope
      */
-    const CACHE_ID_FRONTEND = 'primary|global|frontend|plugin-list';
+    public const CACHE_ID_FRONTEND = 'primary|global|frontend|plugin-list';
 
     /**
      * Generated plugin list config for dummy scope
      */
-    const CACHE_ID_DUMMY = 'primary|global|dummy|plugin-list';
+    public const CACHE_ID_DUMMY = 'primary|global|dummy|plugin-list';
 
     private $cacheIds = [self::CACHE_ID_FRONTEND, self::CACHE_ID_DUMMY];
 
@@ -61,7 +62,7 @@ class PluginListGeneratorTest extends TestCase
         $this->directoryList = new DirectoryList(BP, $this->getCustomDirs());
         $this->file = Bootstrap::getObjectManager()->create(DriverInterface::class);
         $reader = Bootstrap::getObjectManager()->create(
-        // phpstan:ignore "Class Magento\Framework\ObjectManager\Config\Reader\Dom\Proxy not found."
+            // phpstan:ignore "Class Magento\Framework\ObjectManager\Config\Reader\Dom\Proxy not found."
             \Magento\Framework\ObjectManager\Config\Reader\Dom\Proxy::class
         );
         $scopeConfig = Bootstrap::getObjectManager()->create(\Magento\Framework\Config\Scope::class);
@@ -108,8 +109,8 @@ class PluginListGeneratorTest extends TestCase
         $expectedFrontend = [
             1 => [
                 0 => $globalPlugin,
-                1 => $frontendPlugin
-            ]
+                1 => $frontendPlugin,
+            ],
         ];
         // Here in test is assumed that this class below has 3 plugins. But the amount of plugins and class itself
         // may vary. If it is changed, please update these assertions.

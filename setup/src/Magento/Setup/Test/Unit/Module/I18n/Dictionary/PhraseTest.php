@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Module\I18n\Dictionary;
 
 use Magento\Setup\Module\I18n\Dictionary\Phrase;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class PhraseTest extends TestCase
 {
@@ -37,18 +38,18 @@ class PhraseTest extends TestCase
             [
                 ['phrase', 'translation', 'context_type', 'context_value'],
                 'getContextValue',
-                ['context_value']
+                ['context_value'],
             ],
             [
                 ['phrase', 'translation', 'context_type', ['context_value1', 'context_value2']],
                 'getContextValue',
-                ['context_value1', 'context_value2']
+                ['context_value1', 'context_value2'],
             ],
             [
                 ['phrase', 'translation', 'context_type', 'context_value1,context_value2'],
                 'getContextValue',
-                ['context_value1', 'context_value2']
-            ]
+                ['context_value1', 'context_value2'],
+            ],
         ];
     }
 
@@ -73,7 +74,7 @@ class PhraseTest extends TestCase
         return [
             [[null, 'translation'], 'Missed phrase'],
             [['phrase', null], 'Missed translation'],
-            [['phrase', 'translation', null, new \stdClass()], 'Wrong context type']
+            [['phrase', 'translation', null, new \stdClass()], 'Wrong context type'],
         ];
     }
 
@@ -100,7 +101,7 @@ class PhraseTest extends TestCase
             ['value1', 'setPhrase', 'getPhrase'],
             ['value1', 'setTranslation', 'getTranslation'],
             ['value1', 'setContextType', 'getContextType'],
-            [['value1'], 'setContextValue', 'getContextValue']
+            [['value1'], 'setContextValue', 'getContextValue'],
         ];
     }
 

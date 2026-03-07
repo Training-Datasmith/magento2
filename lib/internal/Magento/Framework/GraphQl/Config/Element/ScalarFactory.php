@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ScalarFactory implements ConfigElementFactoryInterface
             [
                 'name' => $data['name'],
                 'description' => $data['description'] ?? $data['name'],
-                'implementation' => $data['implementation']
+                'implementation' => $data['implementation'],
             ]
         );
     }

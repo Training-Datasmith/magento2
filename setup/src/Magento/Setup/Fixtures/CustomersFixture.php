@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +61,7 @@ class CustomersFixture extends Fixture
      * @var array
      */
     private $defaultCustomerConfig = [
-        'addresses-count' => 2
+        'addresses-count' => 2,
     ];
 
     /**
@@ -132,7 +134,7 @@ class CustomersFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'customers' => 'Customers'
+            'customers' => 'Customers',
         ];
     }
 

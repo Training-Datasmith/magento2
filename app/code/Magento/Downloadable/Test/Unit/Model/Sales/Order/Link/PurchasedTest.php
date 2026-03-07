@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Sales\Order\Link;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Model\Link\Purchased as PurchasedEntity;
+use Magento\Downloadable\Model\Link\PurchasedFactory;
 use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item\Collection;
+use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item\CollectionFactory;
 use Magento\Downloadable\Model\Sales\Order\Link\Purchased;
 use Magento\Framework\DataObject;
 use Magento\Sales\Model\Order\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Downloadable\Model\Link\PurchasedFactory;
-use Magento\Downloadable\Model\ResourceModel\Link\Purchased\Item\CollectionFactory;
 
 /**
  * Test order purchased link resolver
@@ -103,7 +104,7 @@ class PurchasedTest extends TestCase
                 1,
                 [
                     'id' => 1,
-                    'product_type' => 'downloadable'
+                    'product_type' => 'downloadable',
                 ],
             ],
             [
@@ -111,11 +112,11 @@ class PurchasedTest extends TestCase
                 2,
                 [
                     'id' => 1,
-                    'product_type' => 'configurable'
+                    'product_type' => 'configurable',
                 ],
                 [
                     'id' => 2,
-                    'product_type' => 'downloadable'
+                    'product_type' => 'downloadable',
                 ],
             ],
             [
@@ -123,13 +124,13 @@ class PurchasedTest extends TestCase
                 1,
                 [
                     'id' => 1,
-                    'product_type' => 'configurable'
+                    'product_type' => 'configurable',
                 ],
                 [
                     'id' => 2,
-                    'product_type' => 'virtual'
+                    'product_type' => 'virtual',
                 ],
-            ]
+            ],
         ];
     }
 }

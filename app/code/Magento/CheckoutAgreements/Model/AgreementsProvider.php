@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Model;
 
-use Magento\Store\Model\ScopeInterface;
 use Magento\CheckoutAgreements\Model\ResourceModel\Agreement\CollectionFactory as AgreementCollectionFactory;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Provide Agreements stored in db
@@ -16,7 +19,7 @@ class AgreementsProvider implements AgreementsProviderInterface
     /**
      * Path to config node
      */
-    const PATH_ENABLED = 'checkout/options/enable_agreements';
+    public const PATH_ENABLED = 'checkout/options/enable_agreements';
 
     /**
      * @var AgreementCollectionFactory

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -26,12 +27,12 @@ use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Shipping\Helper\Carrier as CarrierHelper;
 use Magento\Shipping\Model\Rate\Result;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Shipping\Model\Rate\Result\ProxyDeferredFactory;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Shipping\Model\Shipment\ReturnShipment;
 use Magento\Shipping\Model\Simplexml\Element;
 use Magento\Shipping\Model\Simplexml\ElementFactory;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Usps\Helper\Data as DataHelper;
 use Magento\Usps\Model\Carrier;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -152,7 +153,7 @@ class CarrierTest extends TestCase
             'carrierHelper' => $carrierHelper,
             'productCollectionFactory' => $productCollectionFactory,
             'dataHelper' => $this->dataHelper,
-            'proxyDeferredFactory' => $this->proxyDeferredFactory
+            'proxyDeferredFactory' => $this->proxyDeferredFactory,
         ];
         $this->carrier = $this->objectManager->getObject(Carrier::class, $arguments);
     }
@@ -346,7 +347,7 @@ class CarrierTest extends TestCase
         $requestData = array_merge(
             [
                 'orig_country_id' => 'US',
-                'dest_country_id' => 'US'
+                'dest_country_id' => 'US',
             ],
             $requestData
         );
@@ -395,7 +396,7 @@ class CarrierTest extends TestCase
                     '1' => 70,
                     '2' => 50,
                     '3' => 30,
-                ]
+                ],
             ],
             [
                 [
@@ -409,7 +410,7 @@ class CarrierTest extends TestCase
                     '1' => 70,
                     '2' => 50,
                     '3' => 15,
-                ]
+                ],
             ],
             [
                 [
@@ -423,8 +424,8 @@ class CarrierTest extends TestCase
                     '1' => 70,
                     '2' => 50,
                     '3' => 0,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

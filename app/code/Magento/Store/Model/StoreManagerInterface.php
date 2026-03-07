@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,12 +21,12 @@ interface StoreManagerInterface
     /**
      * Store cache context
      */
-    const CONTEXT_STORE = 'store';
+    public const CONTEXT_STORE = 'store';
 
     /**
      * The store GET Param name
      */
-    const PARAM_NAME = '___store';
+    public const PARAM_NAME = '___store';
 
     /**
      * Allow or disallow single store mode

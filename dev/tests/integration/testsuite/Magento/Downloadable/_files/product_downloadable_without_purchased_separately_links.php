@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
-use Magento\Downloadable\Model\Product\Type as ProductType;
 use Magento\Catalog\Model\Product\Visibility as ProductVisibility;
 use Magento\Downloadable\Api\DomainManagerInterface;
+use Magento\Downloadable\Model\Product\Type as ProductType;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var DomainManagerInterface $domainManager */
 $domainManager = Bootstrap::getObjectManager()->get(DomainManagerInterface::class);

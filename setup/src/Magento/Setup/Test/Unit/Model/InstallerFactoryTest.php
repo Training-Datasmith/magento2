@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,6 +25,7 @@ use Magento\Framework\Setup\ConsoleLoggerInterface;
 use Magento\Framework\Setup\FilePermissions;
 use Magento\Framework\Setup\SampleData\State;
 use Magento\Framework\Setup\SchemaPersistor;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Setup\Model\AdminAccountFactory;
 use Magento\Setup\Model\ConfigModel;
 use Magento\Setup\Model\DeclarationInstaller;
@@ -31,7 +33,6 @@ use Magento\Setup\Model\Installer;
 use Magento\Setup\Model\InstallerFactory;
 use Magento\Setup\Model\ObjectManagerProvider;
 use Magento\Setup\Model\PhpReadinessCheck;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Setup\Module\ConnectionFactory;
 use Magento\Setup\Module\DataSetupFactory;
 use Magento\Setup\Module\ResourceFactory;
@@ -150,7 +151,7 @@ class InstallerFactoryTest extends TestCase
             ],
             [
                 ObjectManagerProvider::class,
-                $this->objectManagerProviderMock
+                $this->objectManagerProviderMock,
             ],
             [
                 TransactionManager::class,

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Package\Processor\PostProcessor;
 
 use Magento\Deploy\Console\DeployStaticOptions;
@@ -12,8 +15,8 @@ use Magento\Deploy\Package\Processor\ProcessorInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\View\Url\CssResolver;
 use Magento\Framework\View\Asset\Minification;
+use Magento\Framework\View\Url\CssResolver;
 
 /**
  * Post-processor scans through all CSS files and correct misleading URLs
@@ -108,7 +111,7 @@ class CssUrls implements ProcessorInterface
             if ($this->isExternalUrl($url)) {
                 $urlMap[$url][] = [
                     'filePath' => $this->minification->addMinifiedSign($packagePath . '/' . $cssFilePath),
-                    'replace' => $this->getValidExternalUrl($url, $package)
+                    'replace' => $this->getValidExternalUrl($url, $package),
                 ];
                 continue;
             }
@@ -124,7 +127,7 @@ class CssUrls implements ProcessorInterface
                     'filePath' => $this->minification->addMinifiedSign($packagePath . '/' . $cssFilePath),
                     'replace' => '../../../../' // base path is always of four chunks size
                         . str_repeat('../', count(explode('/', $cssFileBasePath)))
-                        . $this->minification->addMinifiedSign($matchedFile->getDeployedFilePath())
+                        . $this->minification->addMinifiedSign($matchedFile->getDeployedFilePath()),
                 ];
             } else {
                 $filePathInBase = $package->getArea() .

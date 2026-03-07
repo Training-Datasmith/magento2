@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Link;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Api\Data\File\ContentInterface;
-use Magento\Downloadable\Api\Data\LinkInterface;
 use Magento\Downloadable\Helper\File;
 use Magento\Downloadable\Model\Link\ContentValidator;
 use Magento\Downloadable\Model\Url\DomainValidator;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

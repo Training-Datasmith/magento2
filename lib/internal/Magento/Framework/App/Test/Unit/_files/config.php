@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,5 +33,5 @@ return [
         'level_one' => [
             'level_two' => ['level_three' => ['level_four' => ['level_five' => 'Level Five Data']]],
         ],
-    ]
+    ],
 ];

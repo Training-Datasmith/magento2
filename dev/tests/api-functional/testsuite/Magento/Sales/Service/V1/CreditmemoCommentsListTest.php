@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\Framework\Webapi\Rest\Request;
@@ -19,9 +22,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CreditmemoCommentsListTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'salesCreditmemoManagementV1';
+    public const SERVICE_NAME = 'salesCreditmemoManagementV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @magentoApiDataFixture Magento/Sales/_files/creditmemo_for_get.php
@@ -43,7 +46,7 @@ class CreditmemoCommentsListTest extends WebapiAbstract
                         CreditmemoCommentInterface::PARENT_ID => $creditmemo->getEntityId(),
                         CreditmemoCommentInterface::IS_VISIBLE_ON_FRONT => true,
                         CreditmemoCommentInterface::IS_CUSTOMER_NOTIFIED => true,
-                    ]
+                    ],
                 ]
             );
 

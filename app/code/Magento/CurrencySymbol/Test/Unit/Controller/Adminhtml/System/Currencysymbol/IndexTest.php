@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Backend\Model\Menu;
 use Magento\Backend\Model\Menu\Item;
 use Magento\CurrencySymbol\Controller\Adminhtml\System\Currencysymbol\Index;
 use Magento\Framework\App\ViewInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\Layout;
@@ -19,7 +21,6 @@ use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Page;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class IndexTest extends TestCase
 {
@@ -94,7 +95,7 @@ class IndexTest extends TestCase
         $this->action = $objectManager->getObject(
             Index::class,
             [
-                'view' => $this->viewMock
+                'view' => $this->viewMock,
             ]
         );
     }

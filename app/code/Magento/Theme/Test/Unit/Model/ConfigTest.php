@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme config model
  */
+
 namespace Magento\Theme\Test\Unit\Model;
 
 use Magento\Framework\App\Config\Storage\WriterInterface;
@@ -15,8 +17,8 @@ use Magento\Framework\App\Config\Value;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\View\DesignInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\DesignInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Theme\Model\Config;

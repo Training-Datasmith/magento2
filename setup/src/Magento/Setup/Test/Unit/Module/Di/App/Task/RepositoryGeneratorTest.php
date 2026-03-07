@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class RepositoryGeneratorTest extends TestCase
                 'repositoryScanner' => $this->repositoryScannerMock,
                 'classesScanner' => $this->classesScannerMock,
                 'configurationScanner' => $this->configurationScannerMock,
-                'data' => ['paths' => ['path/to/app']]
+                'data' => ['paths' => ['path/to/app']],
             ]
         );
     }

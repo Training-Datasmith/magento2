@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Translate\Test\Unit;
 
 use Laminas\I18n\Translator\Translator;
 use Magento\Framework\Translate\Adapter;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AdapterTest extends TestCase
 {

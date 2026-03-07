@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,15 +17,15 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class GroupTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
-    const TAX_CLASS_ID = 3;
+    public const TAX_CLASS_ID = 3;
 
-    const TAX_CLASS_NAME = 'Retail Customer';
+    public const TAX_CLASS_NAME = 'Retail Customer';
 
-    const CUSTOMER_GROUP_CODE = 'custom_group';
+    public const CUSTOMER_GROUP_CODE = 'custom_group';
 
-    const BASE_CONTROLLER_URL = 'http://localhost/index.php/backend/customer/group/';
+    public const BASE_CONTROLLER_URL = 'http://localhost/index.php/backend/customer/group/';
 
-    const CUSTOMER_GROUP_ID = 2;
+    public const CUSTOMER_GROUP_ID = 2;
 
     /** @var  \Magento\Framework\Session\SessionManagerInterface */
     private $session;

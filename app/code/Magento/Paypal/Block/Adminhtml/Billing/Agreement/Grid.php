@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Billing\Agreement;
 
 /**
@@ -113,7 +116,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'agreement_id',
                 'type' => 'text',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -124,7 +127,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'customer_email',
                 'type' => 'text',
                 'header_css_class' => 'col-mail',
-                'column_css_class' => 'col-mail'
+                'column_css_class' => 'col-mail',
             ]
         );
 
@@ -136,7 +139,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'text',
                 'escape' => true,
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'col-name'
+                'column_css_class' => 'col-name',
             ]
         );
 
@@ -148,7 +151,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'text',
                 'escape' => true,
                 'header_css_class' => 'col-last-name',
-                'column_css_class' => 'col-last-name'
+                'column_css_class' => 'col-last-name',
             ]
         );
 
@@ -159,7 +162,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'reference_id',
                 'type' => 'text',
                 'header_css_class' => 'col-reference',
-                'column_css_class' => 'col-reference'
+                'column_css_class' => 'col-reference',
             ]
         );
 
@@ -171,7 +174,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => $this->_agreementModel->getStatusesArray(),
                 'header_css_class' => 'col-status',
-                'column_css_class' => 'col-status'
+                'column_css_class' => 'col-status',
             ]
         );
 
@@ -185,7 +188,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'default' => __('N/A'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -199,7 +202,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'default' => __('N/A'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 

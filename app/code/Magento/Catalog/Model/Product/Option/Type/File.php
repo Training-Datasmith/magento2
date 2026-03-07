@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Catalog\Model\Product\Option\Type;
 
-use Magento\Catalog\Model\Product\Exception as ProductException;
 use Magento\Catalog\Helper\Product as ProductHelper;
+use Magento\Catalog\Model\Product\Exception as ProductException;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * Catalog product option file type
@@ -275,7 +277,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
                     throw new LocalizedException(
                         __(
                             "The product's required option(s) weren't entered. "
-                            . "Make sure the options are entered and try again."
+                            . 'Make sure the options are entered and try again.'
                         )
                     );
                 default:
@@ -357,7 +359,7 @@ class File extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
                 ? $this->getCustomOptionUrlParams()
                 : [
                     'id' => $this->getConfigurationItemOption()->getId(),
-                    'key' => $value['secret_key']
+                    'key' => $value['secret_key'],
                 ];
 
             $value['url'] = ['route' => $this->_customOptionDownloadUrl, 'params' => $customOptionUrlParams];

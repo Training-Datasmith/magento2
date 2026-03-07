@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\GenericFactorPro
  */
 class CustomerGroup implements GenericFactorProviderInterface
 {
-    private const NAME = "CUSTOMER_GROUP";
+    private const NAME = 'CUSTOMER_GROUP';
 
     /**
      * @inheritdoc

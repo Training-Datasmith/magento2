@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -67,8 +68,8 @@ class OrderUpdateV1Test extends WebapiAbstract
                 'backend_type' => 'int',
                 'options' => [
                     ['label' => 'option1', 'sort_order' => 0],
-                    ['label' => 'option2', 'sort_order' => 1]
-                ]
+                    ['label' => 'option2', 'sort_order' => 1],
+                ],
             ],
             as: 'attr'
         ),
@@ -78,7 +79,7 @@ class OrderUpdateV1Test extends WebapiAbstract
         DataFixture(
             ConfigurableProductFixture::class,
             [
-                '_options' => ['$attr$'], '_links' => ['$simple2$']
+                '_options' => ['$attr$'], '_links' => ['$simple2$'],
             ],
             as: 'cp1'
         ),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\View\Test\Unit\Layout\Argument\Interpreter;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\View\Layout\Argument\Interpreter\NamedParams;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class NamedParamsTest extends TestCase
 {
@@ -79,12 +80,12 @@ class NamedParamsTest extends TestCase
         return [
             'root param is non-array' => [
                 ['param' => 'non-array'],
-                'Layout argument parameters are expected to be an array'
+                'Layout argument parameters are expected to be an array',
             ],
             'individual param is non-array' => [
                 ['param' => ['sub-param' => 'non-array']],
-                'Parameter data of layout argument is expected to be an array'
-            ]
+                'Parameter data of layout argument is expected to be an array',
+            ],
         ];
     }
 }

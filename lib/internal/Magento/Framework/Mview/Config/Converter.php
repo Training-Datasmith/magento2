@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mview\Config;
 
 use Magento\Framework\Mview\View\AdditionalColumnsProcessor\DefaultProcessor;
@@ -118,7 +121,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                         'subscription_model' => $subscriptionModel,
                         'additional_columns' => $this->getAdditionalColumns($subscription),
                         'processor' => $this->getAttributeValue($subscription, 'processor')
-                            ?: $this->defaultProcessor
+                            ?: $this->defaultProcessor,
                     ];
                 }
                 break;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class IndexTest extends ThemeTestCase
             ->method('getBlock')
             ->willReturnMap([
                 ['menu', $menuBlock],
-                ['page.title', $titleBlock]
+                ['page.title', $titleBlock],
             ]);
 
         $this->view->expects($this->any())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class CronEventTest extends TestCase
                 'getInsightsApiUrl',
                 'getInsightsInsertKey',
                 'getNewRelicAppName',
-                'getNewRelicAppId'
+                'getNewRelicAppId',
             ])
             ->disableOriginalConstructor()
             ->getMock();
@@ -96,7 +97,7 @@ class CronEventTest extends TestCase
         $appName = 'app_name';
         $insightApiKey = 'insert_key_value';
 
-        $this->model->addData(['eventType'=>'Cron']);
+        $this->model->addData(['eventType' => 'Cron']);
 
         $this->httpClientMock->expects($this->once())->method('setUri')->with($uri)->willReturnSelf();
         $this->httpClientMock->expects($this->once())->method('setMethod')->with($method)->willReturnSelf();

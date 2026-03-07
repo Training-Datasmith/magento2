@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class StateTest extends TestCase
      * @var WriteInterface|MockObject
      */
     protected $writeInterface;
-    
+
     /**
      * @var WriteInterface|MockObject
      */
@@ -50,20 +51,20 @@ class StateTest extends TestCase
             ->onlyMethods(['getDirectoryWrite'])
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         // Directory WriteInterface (19 methods) - use createMock for all interface methods
         $this->directoryWriteMock = $this->createMock(WriteInterface::class);
-        
+
         // File WriteInterface (what openFile returns) has write(), read(), and close() methods
         $this->writeInterface = $this->createMock(FileWriteInterface::class);
-        
+
         // Configure directory mock: file exists and openFile returns file stream
         $this->directoryWriteMock->method('isExist')->willReturn(true);
         $this->directoryWriteMock->method('openFile')->willReturn($this->writeInterface);
         $this->directoryWriteMock->method('delete')->willReturn(true);
-        
+
         $this->filesystem->method('getDirectoryWrite')->willReturn($this->directoryWriteMock);
-        
+
         $objectManager = new ObjectManager($this);
         $this->state = $objectManager->getObject(
             State::class,
@@ -85,7 +86,7 @@ class StateTest extends TestCase
         // Configure mocks for write and read operations
         $this->writeInterface->method('write')->willReturnSelf();
         $this->writeInterface->method('read')->willReturn(State::ERROR);
-        
+
         $this->state->setError();
         $this->assertTrue($this->state->hasError());
     }

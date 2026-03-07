@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class OnepageTest extends TestCase
         $objectManagerMock = $this->createMock(\Magento\Framework\ObjectManager\ObjectManager::class);
         $objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 [Session::class] => $this->checkoutSession,
                 [\Magento\Customer\Model\Session::class] => $this->customerSession,
             });
@@ -97,7 +98,7 @@ class OnepageTest extends TestCase
         $this->controller = $objectManager->getObject(
             OnepageStub::class,
             [
-                'context' => $context
+                'context' => $context,
             ]
         );
     }

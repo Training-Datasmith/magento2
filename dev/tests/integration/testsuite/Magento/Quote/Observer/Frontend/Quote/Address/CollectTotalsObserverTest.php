@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Observer\Frontend\Quote\Address;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -87,8 +90,8 @@ class CollectTotalsObserverTest extends TestCase
             ['data' => [
                 'quote' => $quote,
                 'shipping_assignment' => $shippingAssignment,
-                'total' => $total
-            ]
+                'total' => $total,
+            ],
             ]
         );
         $this->model->execute($eventObserver);

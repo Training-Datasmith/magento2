@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Api;
 
 use Magento\Payment\Model\Cart;
@@ -18,44 +21,44 @@ class PayflowNvp extends \Magento\Paypal\Model\Api\Nvp
     /**#@+
      * Transaction types declaration
      */
-    const TRXTYPE_AUTH_ONLY = 'A';
+    public const TRXTYPE_AUTH_ONLY = 'A';
 
-    const TRXTYPE_SALE = 'S';
+    public const TRXTYPE_SALE = 'S';
 
-    const TRXTYPE_CREDIT = 'C';
+    public const TRXTYPE_CREDIT = 'C';
 
-    const TRXTYPE_DELAYED_CAPTURE = 'D';
+    public const TRXTYPE_DELAYED_CAPTURE = 'D';
 
-    const TRXTYPE_DELAYED_VOID = 'V';
+    public const TRXTYPE_DELAYED_VOID = 'V';
 
     /**#@-*/
 
     /**#@+
      * Tender definition
      */
-    const TENDER_CC = 'C';
+    public const TENDER_CC = 'C';
 
-    const TENDER_PAYPAL = 'P';
+    public const TENDER_PAYPAL = 'P';
 
     /**#@-*/
 
     /**#@+
      * Express Checkout Actions
      */
-    const EXPRESS_SET = 'S';
+    public const EXPRESS_SET = 'S';
 
-    const EXPRESS_GET = 'G';
+    public const EXPRESS_GET = 'G';
 
-    const EXPRESS_DO_PAYMENT = 'D';
+    public const EXPRESS_DO_PAYMENT = 'D';
 
     /**#@-*/
 
     /**#@+
      * Response codes definition
      */
-    const RESPONSE_CODE_APPROVED = 0;
+    public const RESPONSE_CODE_APPROVED = 0;
 
-    const RESPONSE_CODE_FRAUD = 126;
+    public const RESPONSE_CODE_FRAUD = 126;
 
     /**#@-*/
 

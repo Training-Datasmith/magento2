@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class ExportCouponsCsvTest extends TestCase
             ExportCouponsCsv::class,
             [
                 'fileFactory' => $this->fileFactoryMock,
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,19 +16,19 @@ use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\App\Backpressure\BackpressureExceededException;
 use Magento\Framework\App\BackpressureEnforcerInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Webapi\Authorization;
 use Magento\Framework\Exception\AuthorizationException;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Framework\Reflection\MethodsMap;
+use Magento\Framework\Webapi\Authorization;
 use Magento\Framework\Webapi\Backpressure\BackpressureContextFactory;
-use Magento\Framework\Webapi\ServiceInputProcessor;
-use Magento\Framework\Webapi\Request as WebapiRequest;
 use Magento\Framework\Webapi\Exception as WebapiException;
+use Magento\Framework\Webapi\Request as WebapiRequest;
+use Magento\Framework\Webapi\ServiceInputProcessor;
 use Magento\Framework\Webapi\Validator\EntityArrayValidator\InputArraySizeLimitValue;
 use Magento\Webapi\Controller\Rest\ParamsOverrider;
-use Magento\Webapi\Model\Soap\Config as SoapConfig;
-use Magento\Framework\Reflection\MethodsMap;
 use Magento\Webapi\Model\ServiceMetadata;
+use Magento\Webapi\Model\Soap\Config as SoapConfig;
 
 /**
  * Handler of requests to SOAP server
@@ -167,7 +168,7 @@ class Handler
 
         // check if the operation is a secure operation & whether the request was made in HTTPS
         if ($serviceMethodInfo[ServiceMetadata::KEY_IS_SECURE] && !$this->_request->isSecure()) {
-            throw new WebapiException(__("Operation allowed only in HTTPS"));
+            throw new WebapiException(__('Operation allowed only in HTTPS'));
         }
 
         //Backpressure enforcement
@@ -279,7 +280,7 @@ class Handler
         } elseif (is_scalar($data) || $data === null) {
             $result = $data;
         } else {
-            throw new InvalidArgumentException("Service returned result in invalid format.");
+            throw new InvalidArgumentException('Service returned result in invalid format.');
         }
         return [self::RESULT_NODE_NAME => $result];
     }

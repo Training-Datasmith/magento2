@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Flat;
 
 /**
@@ -16,7 +19,7 @@ class Processor extends \Magento\Framework\Indexer\AbstractProcessor
     /**
      * Indexer ID
      */
-    const INDEXER_ID = 'catalog_product_flat';
+    public const INDEXER_ID = 'catalog_product_flat';
 
     /**
      * @var \Magento\Catalog\Model\Indexer\Product\Flat\State

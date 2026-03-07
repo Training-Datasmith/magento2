@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class AccountManagementRevokeCustomerTokenTest extends WebapiAbstract
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::INTEGRATION_SERVICE . 'RevokeCustomerAccessToken',
                 'token' => $token,
-            ]
+            ],
         ];
 
         $requestData = [];
@@ -91,7 +92,7 @@ class AccountManagementRevokeCustomerTokenTest extends WebapiAbstract
                 'service' => self::INTEGRATION_SERVICE,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::INTEGRATION_SERVICE . 'RevokeCustomerAccessToken',
-            ]
+            ],
         ];
 
         $this->_webApiCall($serviceInfo, $requestData);

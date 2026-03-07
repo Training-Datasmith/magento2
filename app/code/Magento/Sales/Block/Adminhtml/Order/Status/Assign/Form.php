@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Status\Assign;
 
 /**
@@ -82,7 +85,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Order Status'),
                 'class' => 'required-entry',
                 'values' => $statuses,
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -94,7 +97,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Order State'),
                 'class' => 'required-entry',
                 'values' => $states,
-                'required' => true
+                'required' => true,
             ]
         );
 

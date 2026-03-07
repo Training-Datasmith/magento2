@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class Ratio implements OptionSourceInterface
             ['value' => '1x1', 'label' => '1x1'],
             ['value' => '1x4', 'label' => '1x4'],
             ['value' => '8x1', 'label' => '8x1'],
-            ['value' => '20x1', 'label' => '20x1']
+            ['value' => '20x1', 'label' => '20x1'],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Block\Adminhtml\Catalog\Product\Edit\Tab\Downloadable;
 
 /**
@@ -222,7 +225,7 @@ class Samples extends \Magento\Backend\Block\Widget
                 'id' => '',
                 'label' => __('Upload Files'),
                 'type' => 'button',
-                'onclick' => 'Downloadable.massUploadByType(\'samples\')'
+                'onclick' => 'Downloadable.massUploadByType(\'samples\')',
             ]
         );
     }

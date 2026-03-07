@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\PaypalGraphQl\Model\Plugin\Cart\PayflowPro;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Paypal\Model\Config;
+use Magento\PaypalGraphQl\Observer\PayflowProSetCcData;
 use Magento\Quote\Model\Quote;
 use Magento\QuoteGraphQl\Model\Cart\Payment\AdditionalDataProviderPool;
 use Magento\Sales\Model\Order\Payment\Repository as PaymentRepository;
-use Magento\PaypalGraphQl\Observer\PayflowProSetCcData;
 
 /**
  * Set additionalInformation on payment for PayflowPro method

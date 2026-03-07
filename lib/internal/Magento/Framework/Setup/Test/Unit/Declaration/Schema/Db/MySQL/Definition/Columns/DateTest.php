@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class DateTest extends TestCase
             [
                 'nullable' => $this->nullableMock,
                 'comment' => $this->commentMock,
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }

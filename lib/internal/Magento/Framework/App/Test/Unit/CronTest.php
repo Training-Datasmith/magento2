@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class CronTest extends TestCase
             ->method('get')
             ->willReturnMap([
                 [ConfigLoaderInterface::class, $configLoader],
-                [ManagerInterface::class, $eventManagerMock]
+                [ManagerInterface::class, $eventManagerMock],
             ]);
         $crontabConfig = ['config'];
         $configLoader->expects($this->once())

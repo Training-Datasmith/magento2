@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -46,7 +48,7 @@ class System extends Generic
                     'datetime' => __('Datetime'),
                     'decimal' => __('Decimal'),
                     'int' => __('Integer'),
-                ]
+                ],
             ]
         );
 
@@ -57,7 +59,7 @@ class System extends Generic
                 'name' => 'is_global',
                 'label' => __('Globally Editable'),
                 'title' => __('Globally Editable'),
-                'values' => $yesno
+                'values' => $yesno,
             ]
         );
 

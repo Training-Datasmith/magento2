@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Cron;
 
-use Magento\Framework\App\ResourceConnection;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Eav\Api\AttributeRepositoryInterface as AttributeRepository;
 use Magento\Framework\App\Config\MutableScopeConfigInterface as ScopeConfig;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Store\Model\Store;
 
 /**

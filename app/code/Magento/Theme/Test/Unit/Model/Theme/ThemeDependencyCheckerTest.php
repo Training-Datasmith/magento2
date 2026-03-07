@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Theme\Model\Theme\Data\Collection;
 use Magento\Theme\Model\Theme\ThemeDependencyChecker;
 use Magento\Theme\Model\Theme\ThemePackageInfo;
 use Magento\Theme\Model\Theme\ThemeProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ThemeDependencyCheckerTest extends TestCase
@@ -55,7 +56,7 @@ class ThemeDependencyCheckerTest extends TestCase
     {
         $packages = [
             'vendor/package1',
-            'vendor/package2'
+            'vendor/package2',
         ];
         $this->themePackageInfo->expects($this->exactly(2))->method('getFullThemePath')->willReturn(null);
         $this->themeDependencyChecker->checkChildThemeByPackagesName($packages);
@@ -105,34 +106,34 @@ class ThemeDependencyCheckerTest extends TestCase
                 true,
                 false,
                 ['frontend/Magento/a'],
-                ['frontend/Magento/a is a parent of virtual theme. Parent themes cannot be uninstalled.']
+                ['frontend/Magento/a is a parent of virtual theme. Parent themes cannot be uninstalled.'],
             ],
             [
                 true,
                 false,
                 ['frontend/Magento/a', 'frontend/Magento/b'],
                 ['frontend/Magento/a, frontend/Magento/b are parents of virtual theme.'
-                . ' Parent themes cannot be uninstalled.']
+                . ' Parent themes cannot be uninstalled.'],
             ],
             [
                 false,
                 true,
                 ['frontend/Magento/a'],
-                ['frontend/Magento/a is a parent of physical theme. Parent themes cannot be uninstalled.']
+                ['frontend/Magento/a is a parent of physical theme. Parent themes cannot be uninstalled.'],
             ],
             [
                 false,
                 true,
                 ['frontend/Magento/a', 'frontend/Magento/b'],
                 ['frontend/Magento/a, frontend/Magento/b are parents of physical theme.'
-                . ' Parent themes cannot be uninstalled.']
+                . ' Parent themes cannot be uninstalled.'],
             ],
             [
                 true,
                 true,
                 ['frontend/Magento/a'],
                 ['frontend/Magento/a is a parent of virtual theme. Parent themes cannot be uninstalled.',
-                    'frontend/Magento/a is a parent of physical theme. Parent themes cannot be uninstalled.']
+                    'frontend/Magento/a is a parent of physical theme. Parent themes cannot be uninstalled.'],
             ],
             [
                 true,
@@ -141,7 +142,7 @@ class ThemeDependencyCheckerTest extends TestCase
                 ['frontend/Magento/a, frontend/Magento/b are parents of virtual theme.'
                 . ' Parent themes cannot be uninstalled.',
                     'frontend/Magento/a, frontend/Magento/b are parents of physical theme.'
-                    . ' Parent themes cannot be uninstalled.']
+                    . ' Parent themes cannot be uninstalled.'],
             ],
         ];
     }

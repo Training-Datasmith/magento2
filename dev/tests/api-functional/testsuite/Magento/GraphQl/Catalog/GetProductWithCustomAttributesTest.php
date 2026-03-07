@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Catalog\Setup\CategorySetup;
 use Magento\Catalog\Test\Fixture\Attribute;
 use Magento\Catalog\Test\Fixture\MultiselectAttribute;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Api\Data\AttributeInterface;
+use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
 use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Eav\Test\Fixture\AttributeOption as AttributeOptionFixture;
@@ -31,7 +32,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type_id' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
             'attribute_code' => 'product_custom_attribute',
             'is_comparable' => 1,
-            'is_visible_on_front' => 1
+            'is_visible_on_front' => 1,
         ],
         'varchar_custom_attribute'
     ),
@@ -41,7 +42,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type_id' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
             'source_model' => Table::class,
             'backend_model' => ArrayBackend::class,
-            'attribute_code' => 'product_custom_attribute_multiselect'
+            'attribute_code' => 'product_custom_attribute_multiselect',
         ],
         'multiselect_custom_attribute'
     ),
@@ -51,7 +52,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => CategorySetup::CATALOG_PRODUCT_ENTITY_TYPE_ID,
             'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
             'label' => 'red',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'multiselect_custom_attribute_option_1'
     ),
@@ -62,7 +63,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
             'sort_order' => 10,
             'label' => 'white',
-            'is_default' => true
+            'is_default' => true,
         ],
         'multiselect_custom_attribute_option_2'
     ),
@@ -72,13 +73,13 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'custom_attributes' => [
                 [
                     'attribute_code' => '$varchar_custom_attribute.attribute_code$',
-                    'value' => 'test_value'
+                    'value' => 'test_value',
                 ],
                 [
                     'attribute_code' => '$multiselect_custom_attribute.attribute_code$',
                     'selected_options' => [
                         ['value' => '$multiselect_custom_attribute_option_1.value$'],
-                        ['value' => '$multiselect_custom_attribute_option_2.value$']
+                        ['value' => '$multiselect_custom_attribute_option_2.value$'],
                     ],
                 ],
             ],
@@ -258,14 +259,14 @@ QUERY;
                                 'items' => [
                                     0 => [
                                         'code' => $this->varcharCustomAttribute->getAttributeCode(),
-                                        'value' => 'test_value'
-                                    ]
+                                        'value' => 'test_value',
+                                    ],
                                 ],
-                                'errors' => []
-                            ]
-                        ]
-                    ]
-                ]
+                                'errors' => [],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -340,7 +341,7 @@ QUERY;
             $response['products']['items'][0],
             [
                 'sku' => $this->product->getSku(),
-                'name' => $this->product->getName()
+                'name' => $this->product->getName(),
             ]
         );
 
@@ -351,7 +352,7 @@ QUERY;
             ),
             [
                 'code' => $this->varcharCustomAttribute->getAttributeCode(),
-                'value' => 'test_value'
+                'value' => 'test_value',
             ]
         );
 
@@ -370,8 +371,8 @@ QUERY;
                     [
                         'label' => $this->multiselectCustomAttributeOption1->getLabel(),
                         'value' => $this->multiselectCustomAttributeOption1->getValue(),
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -45,12 +47,12 @@ class TokensTest extends \PHPUnit\Framework\TestCase
                     'label' => __('Consumer Secret'),
                     'name' => Tokens::DATA_CONSUMER_SECRET,
                     'readonly' => true,
-                ]
+                ],
             ],
             [
                 'name' => Tokens::DATA_TOKEN,
                 'type' => 'text',
-                'metadata' => ['label' => __('Access Token'), 'name' => Tokens::DATA_TOKEN, 'readonly' => true]
+                'metadata' => ['label' => __('Access Token'), 'name' => Tokens::DATA_TOKEN, 'readonly' => true],
             ],
             [
                 'name' => Tokens::DATA_TOKEN_SECRET,
@@ -59,8 +61,8 @@ class TokensTest extends \PHPUnit\Framework\TestCase
                     'label' => __('Access Token Secret'),
                     'name' => Tokens::DATA_TOKEN_SECRET,
                     'readonly' => true,
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertEquals($expectedData, $this->tokensBlock->getFormFields());
     }

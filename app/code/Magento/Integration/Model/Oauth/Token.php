@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Oauth;
 
 use Magento\Authorization\Model\UserContextInterface;
@@ -14,7 +17,6 @@ use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\UserTokenIssuerInterface;
 use Magento\Integration\Api\UserTokenReaderInterface;
 use Magento\Integration\Model\CustomUserContext;
-use Magento\Integration\Model\ResourceModel\Oauth\Token\Collection as TokenCollection;
 
 /**
  * oAuth token model

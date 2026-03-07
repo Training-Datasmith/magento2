@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -183,7 +185,7 @@ class StoreConfigManagerTest extends TestCase
             ['currency/options/base', ScopeInterface::SCOPE_STORES, $code, $baseCurrencyCode],
             ['currency/options/default', ScopeInterface::SCOPE_STORES, $code, $defaultDisplayCurrencyCode],
             ['general/locale/timezone', ScopeInterface::SCOPE_STORES, $code, $timeZone],
-            [Data::XML_PATH_WEIGHT_UNIT, ScopeInterface::SCOPE_STORES, $code, $weightUnit]
+            [Data::XML_PATH_WEIGHT_UNIT, ScopeInterface::SCOPE_STORES, $code, $weightUnit],
         ];
         $this->scopeConfigMock->expects($this->any())
             ->method('getValue')

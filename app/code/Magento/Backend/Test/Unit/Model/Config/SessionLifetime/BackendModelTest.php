@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -41,16 +42,16 @@ class BackendModelTest extends TestCase
         return [
             [
                 BackendModel::MIN_LIFETIME - 1,
-                'The Admin session lifetime is invalid. Set the lifetime to 60 seconds or longer and try again.'
+                'The Admin session lifetime is invalid. Set the lifetime to 60 seconds or longer and try again.',
             ],
             [
                 BackendModel::MAX_LIFETIME + 1,
                 'The Admin session lifetime is invalid. '
-                . 'Set the lifetime to 31536000 seconds (one year) or shorter and try again.'
+                . 'Set the lifetime to 31536000 seconds (one year) or shorter and try again.',
             ],
             [
-                900
-            ]
+                900,
+            ],
         ];
     }
 }

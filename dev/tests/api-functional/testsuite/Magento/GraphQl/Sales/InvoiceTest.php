@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\Registry;
+use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\ResourceModel\Order\Collection;
 use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
@@ -26,7 +27,6 @@ use Magento\Sales\Test\Fixture\InvoiceComment as InvoiceCommentFixture ;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\GraphQl\GetCustomerAuthenticationHeader;
 
 /**
  * Tests the Invoice query
@@ -55,7 +55,7 @@ class InvoiceTest extends GraphQlAbstract
         $response = $this->getCustomerInvoicesBasedOnOrderNumber('100000001');
         $expectedOrdersData = [
             'status' => 'Processing',
-            'grand_total' => 100.00
+            'grand_total' => 100.00,
         ];
         $expectedInvoiceData = [
             [
@@ -65,63 +65,63 @@ class InvoiceTest extends GraphQlAbstract
                         'product_sku' => 'simple',
                         'product_sale_price' => [
                             'value' => 10,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'quantity_invoiced' => 1,
-                        'discounts' => []
+                        'discounts' => [],
                     ],
                     [
                         'product_name' => 'Simple Product With Related Product',
                         'product_sku' => 'simple_with_cross',
                         'product_sale_price' => [
                             'value' => 10,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'quantity_invoiced' => 1,
-                        'discounts' => []
-                    ]
+                        'discounts' => [],
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
                         'value' => 100,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'grand_total' => [
                         'value' => 100,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
                         'value' => 0,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'shipping_handling' => [
                         'total_amount' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_including_tax' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_excluding_tax' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'taxes' => [],
-                        'discounts' => []
+                        'discounts' => [],
                     ],
                     'taxes' => [],
                     'discounts' => [],
                     'base_grand_total' => [
                         'value' => 100,
-                        'currency' => 'EUR'
+                        'currency' => 'EUR',
                     ],
                     'total_tax' => [
                         'value' => 0,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertOrdersData($response, $expectedOrdersData);
         $invoices = $response[0]['invoices'];
@@ -137,7 +137,7 @@ class InvoiceTest extends GraphQlAbstract
         $response = $this->getCustomerInvoicesBasedOnOrderNumber('100000002');
         $expectedOrdersData = [
             'status' => 'Processing',
-            'grand_total' => 60.00
+            'grand_total' => 60.00,
         ];
         $expectedInvoiceData = [
             [
@@ -147,52 +147,52 @@ class InvoiceTest extends GraphQlAbstract
                         'product_sku' => 'simple',
                         'product_sale_price' => [
                             'value' => 10,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'quantity_invoiced' => 3,
-                        'discounts'=> []
-                    ]
+                        'discounts' => [],
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
                         'value' => 30,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'grand_total' => [
                         'value' => 50,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
                         'value' => 20,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 50,
-                        'currency' => 'EUR'
+                        'currency' => 'EUR',
                     ],
                     'total_tax' => [
                         'value' => 0,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'shipping_handling' => [
                         'total_amount' => [
                             'value' => 20,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_including_tax' => [
                             'value' => 25,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_excluding_tax' => [
                             'value' => 20,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'taxes' => [],
                         'discounts' => [],
                     ],
                     'taxes' => [],
                     'discounts' => [],
-                ]
+                ],
             ],
             [
                 'items' => [
@@ -201,53 +201,53 @@ class InvoiceTest extends GraphQlAbstract
                         'product_sku' => 'simple_with_cross',
                         'product_sale_price' => [
                             'value' => 10,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'quantity_invoiced' => 1,
-                        'discounts' => []
-                    ]
+                        'discounts' => [],
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
                         'value' => 10,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'grand_total' => [
                         'value' => 10,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'base_grand_total' => [
                         'value' => 0,
-                        'currency' => 'EUR'
+                        'currency' => 'EUR',
                     ],
                     'total_tax' => [
                         'value' => 0,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
                         'value' => 0,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'shipping_handling' => [
                         'total_amount' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_including_tax' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'amount_excluding_tax' => [
                             'value' => 0,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'taxes' => [],
                         'discounts' => [],
                     ],
                     'taxes' => [],
                     'discounts' => [],
-                ]
-            ]
+                ],
+            ],
         ];
         $this->assertOrdersData($response, $expectedOrdersData);
         $invoices = $response[0]['invoices'];
@@ -315,7 +315,7 @@ QUERY;
         );
         $expectedOrdersData = [
             'status' => 'Processing',
-            'grand_total' => 100.00
+            'grand_total' => 100.00,
         ];
 
         $expectedInvoiceData = [
@@ -326,26 +326,26 @@ QUERY;
                         'product_sku' => 'simple',
                         'product_sale_price' => [
                             'value' => 10,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'quantity_invoiced' => 1
-                    ]
+                        'quantity_invoiced' => 1,
+                    ],
                 ],
                 'total' => [
                     'subtotal' => [
                         'value' => 100,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'grand_total' => [
                         'value' => 100,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'total_shipping' => [
                         'value' => 0,
-                        'currency' => 'USD'
-                    ]
-                ]
-            ]
+                        'currency' => 'USD',
+                    ],
+                ],
+            ],
         ];
         $this->assertOrdersData($response['customer']['orders']['items'], $expectedOrdersData);
         $invoices = $response['customer']['orders']['items'][0]['invoices'];
@@ -522,26 +522,26 @@ QUERY;
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 29.1, 'currency' =>'USD'],
-            'grand_total' => ['value' => 29.1, 'currency' =>'USD'],
-            'total_tax' => ['value' => 2.03, 'currency' =>'USD'],
-            'subtotal' => ['value' => 20, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 10, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 29.1, 'currency' => 'USD'],
+            'grand_total' => ['value' => 29.1, 'currency' => 'USD'],
+            'total_tax' => ['value' => 2.03, 'currency' => 'USD'],
+            'subtotal' => ['value' => 20, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 10, 'currency' => 'USD'],
             'shipping_handling' => [
-                'amount_including_tax' => ['value' => 10.75, 'currency' =>'USD'],
-                'amount_excluding_tax' => ['value' => 10, 'currency' =>'USD'],
-                'total_amount' => ['value' => 10, 'currency' =>'USD'],
-                'taxes'=> [
+                'amount_including_tax' => ['value' => 10.75, 'currency' => 'USD'],
+                'amount_excluding_tax' => ['value' => 10, 'currency' => 'USD'],
+                'total_amount' => ['value' => 10, 'currency' => 'USD'],
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 0.68],
+                        'amount' => ['value' => 0.68],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
+                        'rate' => 7.5,
+                    ],
                 ],
-                 'discounts'=> [
-                     0 => ['amount'=>['value' => 1, 'currency'=> 'USD']]
+                 'discounts' => [
+                     0 => ['amount' => ['value' => 1, 'currency' => 'USD']],
                  ],
-            ]
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }
@@ -562,25 +562,25 @@ QUERY;
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 19.43, 'currency' =>'USD'],
-            'grand_total' => ['value' => 19.43, 'currency' =>'USD'],
-            'total_tax' => ['value' => 1.36, 'currency' =>'USD'],
-            'subtotal' => ['value' => 10, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 10, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 19.43, 'currency' => 'USD'],
+            'grand_total' => ['value' => 19.43, 'currency' => 'USD'],
+            'total_tax' => ['value' => 1.36, 'currency' => 'USD'],
+            'subtotal' => ['value' => 10, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 10, 'currency' => 'USD'],
             'shipping_handling' => [
-                'amount_including_tax' => ['value' => 10.75, 'currency' =>'USD'],
-                'amount_excluding_tax' => ['value' => 10, 'currency' =>'USD'],
-                'total_amount' => ['value' => 10, 'currency' =>'USD'],
-                'taxes'=> [
+                'amount_including_tax' => ['value' => 10.75, 'currency' => 'USD'],
+                'amount_excluding_tax' => ['value' => 10, 'currency' => 'USD'],
+                'total_amount' => ['value' => 10, 'currency' => 'USD'],
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 0.68],
+                        'amount' => ['value' => 0.68],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
+                        'rate' => 7.5,
+                    ],
                 ],
-                 'discounts'=> [['amount'=>['value' => 1, 'currency'=> 'USD']]
+                 'discounts' => [['amount' => ['value' => 1, 'currency' => 'USD']],
                  ],
-            ]
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }
@@ -921,12 +921,12 @@ QUERY;
         $this->assertEquals(
             $expectedOrdersData['grand_total'],
             $actualData['total']['grand_total']['value'],
-            "grand_total is different than the expected for order"
+            'grand_total is different than the expected for order'
         );
         $this->assertEquals(
             $expectedOrdersData['status'],
             $actualData['status'],
-            "status is different than the expected for order"
+            'status is different than the expected for order'
         );
     }
 

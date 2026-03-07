@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Shopcart\Product;
 
 /**
@@ -83,7 +86,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'product_id',
                 'sortable' => false,
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -94,7 +97,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'name',
                 'sortable' => false,
                 'header_css_class' => 'col-product',
-                'column_css_class' => 'col-product'
+                'column_css_class' => 'col-product',
             ]
         );
 
@@ -111,7 +114,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
                 'rate' => $this->getRate($currencyCode),
                 'header_css_class' => 'col-price',
-                'column_css_class' => 'col-price'
+                'column_css_class' => 'col-price',
             ]
         );
 
@@ -123,7 +126,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'carts',
                 'sortable' => false,
                 'header_css_class' => 'col-carts',
-                'column_css_class' => 'col-carts'
+                'column_css_class' => 'col-carts',
             ]
         );
 
@@ -135,7 +138,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'index' => 'orders',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 

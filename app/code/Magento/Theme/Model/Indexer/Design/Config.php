@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Indexer\Design;
 
 use Magento\Framework\Indexer\ActionInterface;
 use Magento\Framework\Indexer\FieldsetPool;
 use Magento\Framework\Indexer\HandlerPool;
-use Magento\Theme\Model\ResourceModel\Design\Config\Scope\CollectionFactory;
-use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
 use Magento\Framework\Indexer\IndexStructureInterface;
-use Magento\Framework\Indexer\StructureFactory;
+use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
 use Magento\Framework\Indexer\SaveHandlerFactory;
+use Magento\Framework\Indexer\StructureFactory;
+use Magento\Theme\Model\ResourceModel\Design\Config\Scope\CollectionFactory;
 
 class Config implements ActionInterface
 {

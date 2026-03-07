@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ExceptionsTest extends TestCase
                 [
                     'value' => 'value',
                     'search' => 'qwe',
-                    'record_id' => 1
+                    'record_id' => 1,
                 ],
             ]
         );

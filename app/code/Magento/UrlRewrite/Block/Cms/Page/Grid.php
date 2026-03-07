@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Cms\Page;
 
 /**
@@ -54,7 +57,7 @@ class Grid extends \Magento\Cms\Block\Adminhtml\Page\Grid
                     'store_all' => true,
                     'store_view' => true,
                     'sortable' => false,
-                    'filter_condition_callback' => [$this, '_filterStoreCondition']
+                    'filter_condition_callback' => [$this, '_filterStoreCondition'],
                 ]
             );
         }
@@ -65,7 +68,7 @@ class Grid extends \Magento\Cms\Block\Adminhtml\Page\Grid
                 'header' => __('Status'),
                 'index' => 'is_active',
                 'type' => 'options',
-                'options' => $this->_cmsPage->getAvailableStatuses()
+                'options' => $this->_cmsPage->getAvailableStatuses(),
             ]
         );
 

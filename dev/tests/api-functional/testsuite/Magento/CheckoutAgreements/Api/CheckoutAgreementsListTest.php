@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,7 +58,7 @@ class CheckoutAgreementsListTest extends WebapiAbstract
      * @param array $requestData
      * @return array
      */
-    private function getServiceInfo(array $requestData) : array
+    private function getServiceInfo(array $requestData): array
     {
         return [
             'soap' => [

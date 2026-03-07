@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ConfigureTest extends AbstractBackendController
         $this->assertEquals(
             [
                 'error' => true,
-                'message' => "The quote items are incorrect. Verify the quote items and try again.",
+                'message' => 'The quote items are incorrect. Verify the quote items and try again.',
             ],
             $this->json->unserialize($this->getResponse()->getBody())
         );

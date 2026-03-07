@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,13 +85,13 @@ class SamplesTest extends TestCase
         $this->fileHelper = $this->createPartialMock(File::class, [
             'getFilePath',
             'ensureFileInFilesystem',
-            'getFileSize'
+            'getFileSize',
         ]);
         $this->productModel = $this->createPartialMock(Product::class, [
             '__wakeup',
             'getTypeId',
             'getTypeInstance',
-            'getStoreId'
+            'getStoreId',
         ]);
         $this->downloadableProductModel = $this->createPartialMockWithReflection(
             Type::class,
@@ -135,7 +136,7 @@ class SamplesTest extends TestCase
         $this->productModel->method('getTypeId')->willReturn('downloadable');
         $this->productModel->method('getTypeInstance')->willReturn($this->downloadableProductModel);
         $this->productModel->method('getStoreId')->willReturn(0);
-        
+
         // Configure the sample model for this test with getter returns
         $this->downloadableSampleModel->method('getId')->willReturn(1);
         $this->downloadableSampleModel->method('getTitle')->willReturn('Sample Title');

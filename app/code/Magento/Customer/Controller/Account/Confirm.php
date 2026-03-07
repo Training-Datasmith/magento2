@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Controller\AbstractAccount;
 use Magento\Customer\Helper\Address;
+use Magento\Customer\Model\Logger as CustomerLogger;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
 use Magento\Framework\App\Action\Context;
@@ -19,12 +21,11 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\StateException;
 use Magento\Framework\Phrase;
 use Magento\Framework\UrlFactory;
-use Magento\Framework\Exception\StateException;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Customer\Model\Logger as CustomerLogger;
 
 /**
  * Class Confirm
@@ -223,7 +224,7 @@ class Confirm extends AbstractAccount implements HttpGetActionInterface
                 $this->addressHelper->getTaxCalculationAddressType() == Address::TYPE_SHIPPING
                     ? 'If you are a registered VAT customer, please click <a href="%1">here</a> to enter your '
                     .'shipping address for proper VAT calculation.'
-                    :'If you are a registered VAT customer, please click <a href="%1">here</a> to enter your '
+                    : 'If you are a registered VAT customer, please click <a href="%1">here</a> to enter your '
                     .'billing address for proper VAT calculation.',
                 $this->urlModel->getUrl('customer/address/edit')
             );

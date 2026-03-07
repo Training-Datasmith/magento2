@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Helper\Data;
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Pricing\SpecialPriceService;
+use Magento\Catalog\Model\Product;
 use Magento\CatalogRule\Model\ResourceModel\RuleFactory;
 use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Customer\Model\Session;
@@ -30,6 +29,8 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -161,7 +162,7 @@ class PriceTest extends TestCase
                 'catalogData' => $this->catalogHelperMock,
                 'serializer' => $this->serializer,
                 'tierPriceExtensionFactory' => $tierPriceExtensionFactoryMock,
-                'specialPriceService' => $specialPriceService
+                'specialPriceService' => $specialPriceService,
             ]
         );
     }

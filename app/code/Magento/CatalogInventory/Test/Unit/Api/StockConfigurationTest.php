@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class StockConfigurationTest extends TestCase
             [
                 'config' => $this->config,
                 'scopeConfig' => $this->scopeConfig,
-                'minsaleqtyHelper' => $this->minsaleqtyHelper
+                'minsaleqtyHelper' => $this->minsaleqtyHelper,
             ]
         );
     }

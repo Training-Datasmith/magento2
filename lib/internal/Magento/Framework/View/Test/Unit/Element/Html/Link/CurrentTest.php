@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Html\Link\Current;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @covers \Magento\Framework\View\Element\Html\Link\Current
@@ -47,7 +48,7 @@ class CurrentTest extends TestCase
             Current::class,
             [
                 'urlBuilder' => $this->_urlBuilderMock,
-                'request' => $this->_requestMock
+                'request' => $this->_requestMock,
             ]
         );
     }
@@ -159,9 +160,9 @@ class CurrentTest extends TestCase
                     'controllerStub' => 'index',
                     'actionStub' => 'index',
                     'mcaStub' => 'test/index',
-                    'getUrl' => 'http://example.com/asdasd/'
+                    'getUrl' => 'http://example.com/asdasd/',
                 ],
-                'expected' => true
+                'expected' => true,
             ],
             'url with CMS' => [
                 'pathStub' => 'test',
@@ -172,9 +173,9 @@ class CurrentTest extends TestCase
                     'controllerStub' => 'page',
                     'actionStub' => 'view',
                     'mcaStub' => '',
-                    'getUrl' => 'http://example.com/'
+                    'getUrl' => 'http://example.com/',
                 ],
-                'expected' => true
+                'expected' => true,
             ],
             'Test if is current false' => [
                 'pathStub' => 'test/path',
@@ -185,10 +186,10 @@ class CurrentTest extends TestCase
                     'controllerStub' => 'index',
                     'actionStub' => 'index',
                     'mcaStub' => 'test/index',
-                    'getUrl' => 'http://example.com/asdasd/'
+                    'getUrl' => 'http://example.com/asdasd/',
                 ],
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 }

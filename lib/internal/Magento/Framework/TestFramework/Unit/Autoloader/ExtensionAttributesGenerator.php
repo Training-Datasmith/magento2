@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -44,7 +46,7 @@ class ExtensionAttributesGenerator implements GeneratorInterface
      */
     private function isExtension($className)
     {
-        $suffix = "Extension";
+        $suffix = 'Extension';
         $sourceName = $className !== null ? rtrim(substr($className, 0, -strlen($suffix)), '\\') : '';
         return $sourceName . $suffix == $className;
     }

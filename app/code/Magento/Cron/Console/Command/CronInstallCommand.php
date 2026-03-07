@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Cron\Console\Command;
 
+use Magento\Framework\Console\Cli;
 use Magento\Framework\Crontab\CrontabManagerInterface;
 use Magento\Framework\Crontab\TasksProviderInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\Console\Cli;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * CronInstallCommand installs Magento cron tasks
@@ -58,7 +59,7 @@ class CronInstallCommand extends Command
             ->addOption(self::COMMAND_OPTION_FORCE, 'f', InputOption::VALUE_NONE, 'Force install tasks')
             // @codingStandardsIgnoreStart
             ->addOption(self::COMMAND_OPTION_NON_OPTIONAL, 'd', InputOption::VALUE_NONE, 'Install only the non-optional (default) tasks');
-            // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreEnd
 
         parent::configure();
     }

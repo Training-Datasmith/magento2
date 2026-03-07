@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Controller\Adminhtml\Downloadable\Product\Edit;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Downloadable\Controller\Adminhtml\Downloadable\Product\Edit\Link;
 use Magento\Downloadable\Helper\Download;
 use Magento\Downloadable\Helper\File;
@@ -17,6 +17,7 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -76,7 +77,7 @@ class LinkTest extends TestCase
                 'clearBody',
                 'setHeader',
                 'sendHeaders',
-                'sendResponse'
+                'sendResponse',
             ]
         );
         $this->fileHelper = $this->createPartialMock(
@@ -91,7 +92,7 @@ class LinkTest extends TestCase
                 'getContentType',
                 'output',
                 'getFileSize',
-                'getContentDisposition'
+                'getContentDisposition',
             ]
         );
         $this->linkModel = $this->createPartialMockWithReflection(
@@ -106,14 +107,14 @@ class LinkTest extends TestCase
                 'getBasePath',
                 'getBaseSamplePath',
                 'getLinkFile',
-                'getSampleFile'
+                'getSampleFile',
             ]
         );
         $this->objectManager = $this->createPartialMock(
             ObjectManager::class,
             [
                 'create',
-                'get'
+                'get',
             ]
         );
 
@@ -122,7 +123,7 @@ class LinkTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'request' => $this->request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }
@@ -279,7 +280,7 @@ class LinkTest extends TestCase
     {
         return [
             ['link'],
-            ['sample']
+            ['sample'],
         ];
     }
 }

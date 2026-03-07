@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,9 +14,9 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface as MagentoTimezone;
 use Magento\Framework\Stdlib\StringUtils;
 use Psr\Log\LoggerInterface as PsrLogger;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface as MagentoTimezone;
 
 /**
  * Customer Address Postal/Zip Code Attribute Data Model.

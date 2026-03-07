@@ -1,23 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order\Shipment;
 
-use Exception;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
+use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Sales\Model\Order\Shipment\Comment\Validator;
 use Magento\Sales\Model\ResourceModel\Attribute;
 use Magento\Sales\Model\ResourceModel\EntityAbstract;
-use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Sales\Model\Spi\ShipmentCommentResourceInterface;
 use Magento\SalesSequence\Model\Manager;
-use Magento\Authorization\Model\UserContextInterface;
 
 /**
  * Flat sales order shipment comment resource

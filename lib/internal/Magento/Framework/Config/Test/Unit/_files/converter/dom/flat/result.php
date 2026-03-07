@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,7 @@ return [
                 ['attributeThree' => '30'],
                 ['attributeThree' => '40', 'attributeFour' => '40', 'value' => 'Value1'],
                 ['attributeThree' => '50', 'value' => 'value_from_new_line'],
-                ['attributeThree' => '60', 'value' => 'auto_formatted_by_ide_value_due_to_line_size_restriction']
+                ['attributeThree' => '60', 'value' => 'auto_formatted_by_ide_value_due_to_line_size_restriction'],
             ],
             'books' => ['attributeFive' => '50'],
         ],
@@ -25,12 +26,12 @@ return [
             'four' => [
                 'id' => 'four',
                 'name' => 'name4',
-                'value' => 'auto_formatted_by_ide_value_due_to_line_size_restriction'
+                'value' => 'auto_formatted_by_ide_value_due_to_line_size_restriction',
             ],
         ],
         'someOtherVal' => '',
         'someDataVal' => '',
         'valueFromNewLine' => 'value_from_new_line',
-        'autoFormattedValue' => 'auto_formatted_by_ide_value_due_to_line_size_restriction'
-    ]
+        'autoFormattedValue' => 'auto_formatted_by_ide_value_due_to_line_size_restriction',
+    ],
 ];

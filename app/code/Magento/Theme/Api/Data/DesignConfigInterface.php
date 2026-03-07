@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -17,8 +20,8 @@ interface DesignConfigInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const SCOPE = 'scope';
-    const SCOPE_ID = 'scope_id';
+    public const SCOPE = 'scope';
+    public const SCOPE_ID = 'scope_id';
     /**#@-*/
 
     /**

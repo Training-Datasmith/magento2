@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class GroupTest extends TestCase
             );
 
         $helper->prepareObjectManager([
-            [SecureHtmlRenderer::class, $secureRendererMock]
+            [SecureHtmlRenderer::class, $secureRendererMock],
         ]);
 
         $this->_model = $helper->getObject(

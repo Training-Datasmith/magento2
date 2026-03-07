@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\MediaStorage\Helper\File\Storage;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
 
 /**
  * Integration tests for Magento\MediaStorage\Helper\File\Storage\Database
@@ -68,7 +69,7 @@ class DatabaseTest extends \PHPUnit\Framework\TestCase
             'test1/test2/test3/test4a.dat',
             'test5/test6/test7.dat',
             'test5/test6a/test7a.dat',
-            'test8/test9.dat'
+            'test8/test9.dat',
         ];
 
         foreach ($filenames as $filename) {

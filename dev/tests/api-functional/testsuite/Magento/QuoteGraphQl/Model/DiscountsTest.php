@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class DiscountsTest extends GraphQlAbstract
      */
     public function testDiscountsVirtualQuote()
     {
-        $this->createSalesRuleForSku("virtual222");
+        $this->createSalesRuleForSku('virtual222');
         $quoteIdMask = DataFixtureStorageManager::getStorage()->get('quoteIdMask');
         $maskedQuoteId = $quoteIdMask->getMaskedId();
         $query = $this->getCartDiscountsQueryWithItems($maskedQuoteId);
@@ -274,7 +275,7 @@ class DiscountsTest extends GraphQlAbstract
             ->setIsActive(1)
             ->setSimpleAction('by_percent');
         $rule->loadPost([
-            'name' => "{$discountPercent}% " . "off for virtual222",
+            'name' => "{$discountPercent}% " . 'off for virtual222',
             'is_active' => 1,
             'simple_action' => 'by_percent',
             'discount_amount' => $discountPercent,
@@ -295,9 +296,9 @@ class DiscountsTest extends GraphQlAbstract
                             'operator' => '==',
                             'value' => 'virtual222',
                             'is_value_processed' => false,
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
         ]);
         $rule->save();

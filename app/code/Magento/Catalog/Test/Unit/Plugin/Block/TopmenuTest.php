@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class TopmenuTest extends TestCase
             [
                 'catalogCategory' => $this->categoryHelperMock,
                 'categoryCollectionFactory' => $this->categoryCollectionFactoryMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }

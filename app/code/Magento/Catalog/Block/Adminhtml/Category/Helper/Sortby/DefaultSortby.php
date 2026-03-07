@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml additional helper block for sort by
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Helper\Sortby;
 
 use Magento\Framework\App\ObjectManager;
@@ -52,7 +55,7 @@ class DefaultSortby extends \Magento\Framework\Data\Form\Element\Select
     public function getToggleCode()
     {
         $htmlId = 'use_config_' . $this->getHtmlId();
-        return "toggleValueElements(this, this.parentNode.parentNode);" .
+        return 'toggleValueElements(this, this.parentNode.parentNode);' .
             "if (!this.checked) toggleValueElements(\$('{$htmlId}'), \$('{$htmlId}').parentNode);";
     }
 
@@ -90,7 +93,7 @@ class DefaultSortby extends \Magento\Framework\Data\Form\Element\Select
         $html .= /* @noEscape */ $this->secureRenderer->renderTag('script', [], $scriptString, false);
         $html .= /* @noEscape */ $this->secureRenderer->renderEventListenerAsTag(
             'onclick',
-            "toggleValueElements(this, this.parentNode);",
+            'toggleValueElements(this, this.parentNode);',
             '#' . $htmlId
         );
 

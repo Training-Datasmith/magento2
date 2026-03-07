@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Framework\Api\AttributeValueFactory;
@@ -29,22 +32,22 @@ class Invoice extends AbstractModel implements EntityInterface, InvoiceInterface
     /**#@+
      * Invoice states
      */
-    const STATE_OPEN = 1;
+    public const STATE_OPEN = 1;
 
-    const STATE_PAID = 2;
+    public const STATE_PAID = 2;
 
-    const STATE_CANCELED = 3;
+    public const STATE_CANCELED = 3;
     /**#@-*/
 
-    const CAPTURE_ONLINE = 'online';
+    public const CAPTURE_ONLINE = 'online';
 
-    const CAPTURE_OFFLINE = 'offline';
+    public const CAPTURE_OFFLINE = 'offline';
 
-    const NOT_CAPTURE = 'not_capture';
+    public const NOT_CAPTURE = 'not_capture';
 
-    const REPORT_DATE_TYPE_ORDER_CREATED = 'order_created';
+    public const REPORT_DATE_TYPE_ORDER_CREATED = 'order_created';
 
-    const REPORT_DATE_TYPE_INVOICE_CREATED = 'invoice_created';
+    public const REPORT_DATE_TYPE_INVOICE_CREATED = 'invoice_created';
 
     /**
      * Identifier for history item

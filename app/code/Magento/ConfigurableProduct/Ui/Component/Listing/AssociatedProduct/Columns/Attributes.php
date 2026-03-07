@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns;
 
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface as AttributeRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
 
 class Attributes extends \Magento\Ui\Component\Listing\Columns\Column
 {
     /**
      * Column name
      */
-    const NAME = 'column.attributes';
+    public const NAME = 'column.attributes';
 
     /**
      * @var AttributeRepository
@@ -62,7 +65,7 @@ class Attributes extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as $key => & $item) {
                 $attrStrings = [];
                 foreach ($attributes as $attributeCode => $attribute) {
-                    if ($item['required_options'] === "1") {
+                    if ($item['required_options'] === '1') {
                         unset($dataSource['data']['items'][$key]);
                         $dataSource['data']['totalRecords']--;
                         continue;

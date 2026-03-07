@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Wishlist;
 
 use Exception;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Wishlist\Model\WishlistFactory;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Ui\Component\Form\Element\Select;
+use Magento\Wishlist\Model\WishlistFactory;
 
 /**
  * Test coverage for updating a bundle product from wishlist
@@ -276,8 +277,8 @@ MUTATION;
         $query = $this->getBundleProductSearchQuery($bundleProductSku);
         $response = $this->graphQlQuery($query);
 
-        $bundleProduct = $response["products"]["items"][0];
-        $bundleProductOptions = $bundleProduct["items"][0]["options"];
+        $bundleProduct = $response['products']['items'][0];
+        $bundleProductOptions = $bundleProduct['items'][0]['options'];
         $bundleProductOptionUid = null;
 
         // Search the specified bundle product for the specified option based on the product sku

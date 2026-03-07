@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'backend_type' => 'varchar',
                 'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Table',
                 'backend_model' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
-                'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit']
+                'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
             ],
             'customer_attribute'
         ),
@@ -87,7 +88,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$customer_attribute.attribute_code$',
                 'label' => 'Customer Opt 1',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'cust_option1'
         ),
@@ -97,7 +98,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$customer_attribute.attribute_code$',
                 'label' => 'Customer Opt 2',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'cust_option2'
         ),
@@ -107,7 +108,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$customer_attribute.attribute_code$',
                 'label' => 'Customer Opt 3',
-                'sort_order' => 30
+                'sort_order' => 30,
             ],
             'cust_option3'
         ),
@@ -122,7 +123,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'backend_type' => 'varchar',
                 'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Table',
                 'backend_model' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
-                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
+                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
             ],
             'address_attribute'
         ),
@@ -132,7 +133,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$address_attribute.attribute_code$',
                 'label' => 'Address Opt 1',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'addr_option1'
         ),
@@ -142,7 +143,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$address_attribute.attribute_code$',
                 'label' => 'Address Opt 2',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'addr_option2'
         ),
@@ -152,7 +153,7 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$address_attribute.attribute_code$',
                 'label' => 'Address Opt 3',
-                'sort_order' => 30
+                'sort_order' => 30,
             ],
             'addr_option3'
         ),
@@ -165,9 +166,9 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                         'selected_options' => [
                             ['value' => '$cust_option1.value$'],
                             ['value' => '$cust_option2.value$'],
-                            ['value' => '$cust_option3.value$']
-                        ]
-                    ]
+                            ['value' => '$cust_option3.value$'],
+                        ],
+                    ],
                 ],
                 'addresses' => [
                     [
@@ -187,12 +188,12 @@ class OrphanedMultiselectAttributeTest extends WebapiAbstract
                                 'selected_options' => [
                                     ['value' => '$addr_option1.value$'],
                                     ['value' => '$addr_option2.value$'],
-                                    ['value' => '$addr_option3.value$']
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    ['value' => '$addr_option3.value$'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'customer'
         )

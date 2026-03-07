@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\App\Config\Source;
 
+use Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory;
 use Magento\Framework\App\Config\ConfigSourceInterface;
+use Magento\Framework\App\Config\Scope\Converter;
 use Magento\Framework\App\Config\ScopeCodeResolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
-use Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory;
-use Magento\Framework\App\Config\Scope\Converter;
 use Magento\Framework\DB\Adapter\TableNotFoundException;
 
 /**

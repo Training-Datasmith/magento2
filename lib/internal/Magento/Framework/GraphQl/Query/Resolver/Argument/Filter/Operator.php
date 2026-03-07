@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,17 +20,17 @@ class Operator
     /**
      * Default Operator
      */
-    const __DEFAULT = self::AND;
+    public const __DEFAULT = self::AND;
 
     /**
      * OR operator
      */
-    const OR = 'or';
+    public const OR = 'or';
 
     /**
      * AND operator
      */
-    const AND = 'and';
+    public const AND = 'and';
 
     /**
      * @var string
@@ -59,7 +60,7 @@ class Operator
      *
      * @return array
      */
-    public static function getOperators() : array
+    public static function getOperators(): array
     {
         $type = new \ReflectionClass(Operator::class);
         return $type->getConstants();
@@ -70,7 +71,7 @@ class Operator
      *
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return strtoupper($this->value);
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Edit;
 
 class Reorder extends \Magento\Sales\Controller\Adminhtml\Order\Create\Reorder
@@ -12,5 +15,5 @@ class Reorder extends \Magento\Sales\Controller\Adminhtml\Order\Create\Reorder
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
+    public const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
 }

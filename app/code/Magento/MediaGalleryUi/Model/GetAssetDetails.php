@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -52,28 +53,28 @@ class GetAssetDetails
             ],
             [
                 'title' => __('Created'),
-                'value' => $this->formatDate($asset->getCreatedAt())
+                'value' => $this->formatDate($asset->getCreatedAt()),
             ],
             [
                 'title' => __('Modified'),
-                'value' => $this->formatDate($asset->getUpdatedAt())
+                'value' => $this->formatDate($asset->getUpdatedAt()),
             ],
             [
                 'title' => __('Width'),
-                'value' => sprintf('%spx', $asset->getWidth())
+                'value' => sprintf('%spx', $asset->getWidth()),
             ],
             [
                 'title' => __('Height'),
-                'value' => sprintf('%spx', $asset->getHeight())
+                'value' => sprintf('%spx', $asset->getHeight()),
             ],
             [
                 'title' => __('Size'),
-                'value' => $this->formatSize($asset->getSize())
+                'value' => $this->formatSize($asset->getSize()),
             ],
             [
                 'title' => __('Used In'),
-                'value' => $this->getAssetUsageDetails->execute($asset->getId())
-            ]
+                'value' => $this->getAssetUsageDetails->execute($asset->getId()),
+            ],
         ];
         return $details;
     }

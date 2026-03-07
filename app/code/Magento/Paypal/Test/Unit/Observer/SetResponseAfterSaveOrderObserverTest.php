@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,21 +91,21 @@ class SetResponseAfterSaveOrderObserverTest extends TestCase
             'paypalHss.getHssMethods' => [
                 'method-1',
                 $paymentMethod,
-                'method-3'
+                'method-3',
             ],
             'result.getData' => [
-                'error' => false
+                'error' => false,
             ],
             'block.toHtml' => $iFrameHtml,
             'result.setData' => [
                 'error' => false,
                 'update_section' => [
                     'name' => 'paypaliframe',
-                    'html' => $iFrameHtml
+                    'html' => $iFrameHtml,
                 ],
                 'redirect' => false,
                 'success' => false,
-            ]
+            ],
         ];
     }
 

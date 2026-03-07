@@ -1,20 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product\Set;
 
-use Magento\Framework\Registry;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ObjectManager;
 use Magento\Backend\Model\View\Result\Page;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Eav\Api\AttributeSetRepositoryInterface;
 use Magento\Catalog\Controller\Adminhtml\Product\Set;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Eav\Api\AttributeSetRepositoryInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
 
 /**
  * Edit attribute set controller.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Observer;
 
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Event\Observer;
 use Magento\Persistent\Helper\Data;
 use Magento\Persistent\Helper\Session;
 use Magento\Persistent\Model\QuoteManager;
-use Magento\Persistent\Observer\RemovePersistentCookieOnRegisterObserver;
-use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Persistent\Model\Session as PersistentSession;
+use Magento\Persistent\Observer\RemovePersistentCookieOnRegisterObserver;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

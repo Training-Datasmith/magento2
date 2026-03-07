@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,10 +62,10 @@ class SortAttributeReader implements ReaderInterface
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function read($scope = null) : array
+    public function read($scope = null): array
     {
         $map = $this->mapper->getMappedTypes(self::ENTITY_TYPE);
-        $config =[];
+        $config = [];
         $attributes = $this->attributesCollectionFactory->create()
             ->addSearchableAttributeFilter()->addFilter('used_for_sort_by', 1);
         /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
@@ -76,7 +78,7 @@ class SortAttributeReader implements ReaderInterface
                     'type' => self::FIELD_TYPE,
                     'arguments' => [],
                     'required' => false,
-                    'description' => __('Attribute label: ') . $attributeLabel
+                    'description' => __('Attribute label: ') . $attributeLabel,
                 ];
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\Filters\FilterModifier;
 use Magento\Ui\Component\Filters\Type\Select;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SelectTest extends TestCase
@@ -166,27 +167,27 @@ class SelectTest extends TestCase
             [
                 ['name' => 'test_date', 'config' => []],
                 [],
-                null
+                null,
             ],
             [
                 ['name' => 'test_date', 'config' => []],
                 ['test_date' => ''],
-                'eq'
+                'eq',
             ],
             [
                 ['name' => 'test_date', 'config' => ['dataType' => 'text']],
                 ['test_date' => 'some_value'],
-                'eq'
+                'eq',
             ],
             [
                 ['name' => 'test_date', 'config' => ['dataType' => 'select']],
                 ['test_date' => ['some_value1', 'some_value2']],
-                'in'
+                'in',
             ],
             [
                 ['name' => 'test_date', 'config' => ['dataType' => 'multiselect']],
                 ['test_date' => 'some_value'],
-                'finset'
+                'finset',
             ],
         ];
     }

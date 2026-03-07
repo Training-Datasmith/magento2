@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class CacheManagerTest extends TestCase
                 'eventManager' => $this->eventManagerMock,
                 'translateResource' => $this->translateResourceMock,
                 'localeResolver' => $this->localeResolverMock,
-                'fileManager' => $this->fileManagerMock
+                'fileManager' => $this->fileManagerMock,
             ]
         );
     }

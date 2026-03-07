@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class JsonDefinition implements DefinitionConverterInterface
         return [
             'xsi:type' => $definition['type'],
             'name' => $definition['name'],
-            'nullable' => $definition['nullable'] ?? true
+            'nullable' => $definition['nullable'] ?? true,
         ];
     }
 }

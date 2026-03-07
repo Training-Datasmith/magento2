@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -18,7 +20,6 @@ use Magento\PageCache\Model\Config as CacheConfig;
  */
 class FlushCategoryPagesCache implements ObserverInterface
 {
-
     /**
      * @var CacheConfig
      */

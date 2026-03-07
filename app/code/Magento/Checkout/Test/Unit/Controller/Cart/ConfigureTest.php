@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class ConfigureTest extends TestCase
             Configure::class,
             [
                 'context' => $this->contextMock,
-                'cart' => $this->cartMock
+                'cart' => $this->cartMock,
             ]
         );
     }
@@ -151,7 +152,7 @@ class ConfigureTest extends TestCase
         //expects
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['id'] => $quoteId,
                 ['product_id'] => $actualProductId,
             });
@@ -211,7 +212,7 @@ class ConfigureTest extends TestCase
             ->method('getParam')
             ->willReturnMap([
                 ['id', null, $quotaId],
-                ['product_id', null, $productIdInRequest]
+                ['product_id', null, $productIdInRequest],
             ]);
         $this->cartMock->method('getQuote')->willReturn($quoteMock);
         $quoteMock->expects($this->once())->method('getItemById')->willReturn($quoteItemMock);

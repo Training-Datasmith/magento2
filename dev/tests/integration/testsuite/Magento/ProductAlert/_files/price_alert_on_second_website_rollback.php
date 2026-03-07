@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,12 +10,11 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
-use Magento\ProductAlert\Model\ResourceModel\Price as PriceResource;
 use Magento\ProductAlert\Model\PriceFactory;
+use Magento\ProductAlert\Model\ResourceModel\Price as PriceResource;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var ProductRepositoryInterface $peoductRepository */
@@ -41,7 +41,6 @@ try {
 } catch (NoSuchEntityException $e) {
     //already removed
 }
-
 
 $priceAlert = $priceFactory->create();
 $priceAlert->deleteCustomer((int)$customer->getId(), (int)$secondWebsite->getId());

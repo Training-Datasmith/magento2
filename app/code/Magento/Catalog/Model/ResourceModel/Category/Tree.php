@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Category;
 
-use Magento\Framework\Data\Tree\Dbp;
 use Magento\Catalog\Api\Data\CategoryInterface;
+use Magento\Framework\Data\Tree\Dbp;
 use Magento\Framework\EntityManager\MetadataPool;
 
 /**
@@ -122,7 +125,7 @@ class Tree extends Dbp
                 Dbp::ID_FIELD => 'entity_id',
                 Dbp::PATH_FIELD => 'path',
                 Dbp::ORDER_FIELD => 'position',
-                Dbp::LEVEL_FIELD => 'level'
+                Dbp::LEVEL_FIELD => 'level',
             ]
         );
         $this->_eventManager = $eventManager;
@@ -327,7 +330,7 @@ class Tree extends Dbp
                 'attribute_id' => $this->_catalogCategory->getIsActiveAttributeId(),
                 'store_id' => $storeId,
                 'zero_store_id' => 0,
-                'cond' => 0
+                'cond' => 0,
             ]
         );
     }

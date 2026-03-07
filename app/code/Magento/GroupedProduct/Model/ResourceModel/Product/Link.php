@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -15,7 +18,7 @@ use Magento\Framework\EntityManager\MetadataPool;
  */
 class Link extends \Magento\Catalog\Model\ResourceModel\Product\Link
 {
-    const LINK_TYPE_GROUPED = 3;
+    public const LINK_TYPE_GROUPED = 3;
 
     /**
      * @var MetadataPool

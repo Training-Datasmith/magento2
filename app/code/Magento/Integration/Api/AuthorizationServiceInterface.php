@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +21,8 @@ interface AuthorizationServiceInterface
     /**#@+
      * Permission type
      */
-    const PERMISSION_ANONYMOUS = 'anonymous';
-    const PERMISSION_SELF = 'self';
+    public const PERMISSION_ANONYMOUS = 'anonymous';
+    public const PERMISSION_SELF = 'self';
     /**#@- */
 
     /**

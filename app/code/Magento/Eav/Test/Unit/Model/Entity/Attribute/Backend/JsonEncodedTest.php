@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class JsonEncodedTest extends TestCase
     {
         $product = new DataObject(
             [
-                'json_encoded' => [1, 2, 3]
+                'json_encoded' => [1, 2, 3],
             ]
         );
         $this->model->beforeSave($product);
@@ -91,7 +92,7 @@ class JsonEncodedTest extends TestCase
     {
         $product = new DataObject(
             [
-                'json_encoded' => [1, 2, 3]
+                'json_encoded' => [1, 2, 3],
             ]
         );
 
@@ -110,7 +111,7 @@ class JsonEncodedTest extends TestCase
     {
         $product = new DataObject(
             [
-                'json_encoded' => json_encode([1, 2, 3])
+                'json_encoded' => json_encode([1, 2, 3]),
             ]
         );
         $this->model->afterLoad($product);
@@ -124,7 +125,7 @@ class JsonEncodedTest extends TestCase
     {
         $product = new DataObject(
             [
-                'json_encoded' => null
+                'json_encoded' => null,
             ]
         );
         $this->model->afterLoad($product);

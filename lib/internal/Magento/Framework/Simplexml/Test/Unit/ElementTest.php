@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Simplexml\Test\Unit;
 
 use Magento\Framework\Simplexml\Element;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ElementTest extends TestCase
 {
@@ -49,7 +50,7 @@ class ElementTest extends TestCase
     public static function xmlDataProvider()
     {
         return [
-            [[__DIR__ . '/_files/data.xml', Element::class]]
+            [[__DIR__ . '/_files/data.xml', Element::class]],
         ];
     }
 
@@ -124,7 +125,7 @@ XML;
         return [
             ['name', 'test'],
             ['new', 'beard'],
-            ['data', 'some-data']
+            ['data', 'some-data'],
         ];
     }
 }

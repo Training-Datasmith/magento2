@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Adapter\DataMapper;
 
 /**
@@ -12,22 +15,16 @@ namespace Magento\AdvancedSearch\Model\Adapter\DataMapper;
 class AdditionalFieldsProvider implements AdditionalFieldsProviderInterface
 {
     /**
-     * @var AdditionalFieldsProviderInterface[]
-     */
-    private $fieldsProviders;
-
-    /**
      * @param AdditionalFieldsProviderInterface[] $fieldsProviders
      */
-    public function __construct(array $fieldsProviders)
+    public function __construct(private readonly array $fieldsProviders)
     {
-        $this->fieldsProviders = $fieldsProviders;
     }
 
     /**
      * @inheritdoc
      */
-    public function getFields(array $productIds, $storeId)
+    public function getFields(array $productIds, $storeId): array
     {
         $fields = [];
         foreach ($this->fieldsProviders as $fieldsProvider) {

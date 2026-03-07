@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class MessageTest extends TestCase
             Message::class,
             [
                 'layoutFactory' => $this->layoutFactoryMock,
-                'skipMessageCheck' => ['onepage_checkout']
+                'skipMessageCheck' => ['onepage_checkout'],
             ]
         );
     }

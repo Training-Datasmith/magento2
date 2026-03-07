@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class InlineEditTest extends TestCase
         $this->contextMock = $this->objectManager->getObject(
             Context::class,
             [
-                'request' => $this->request
+                'request' => $this->request,
             ]
         );
 
@@ -123,7 +124,7 @@ class InlineEditTest extends TestCase
                 'context' => $this->contextMock,
                 'urlRewriteFactory' => $this->urlRewriteFactory,
                 'urlRewriteResourceFactory' => $this->urlRewriteResourceFactory,
-                'jsonFactory' => $this->jsonFactory
+                'jsonFactory' => $this->jsonFactory,
             ]
         );
     }
@@ -139,15 +140,15 @@ class InlineEditTest extends TestCase
             1 => [
                 'request_path' => 'category-1.html',
                 'redirect_type' => 0,
-                'url_rewrite_id' => 1
-            ]
+                'url_rewrite_id' => 1,
+            ],
         ];
         $this->request->expects($this->any())
             ->method('getParam')
             ->willReturnMap(
                 [
                     ['isAjax', null, true],
-                    ['items', [], $postData]
+                    ['items', [], $postData],
                 ]
             );
 
@@ -194,9 +195,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        '[Url rewrite ID: 1] RuntimeException'
+                        '[Url rewrite ID: 1] RuntimeException',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -224,9 +225,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        '[Url rewrite ID: 1] Something went wrong while saving the url rewrite.'
+                        '[Url rewrite ID: 1] Something went wrong while saving the url rewrite.',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -249,7 +250,7 @@ class InlineEditTest extends TestCase
             ->willReturnMap(
                 [
                     ['isAjax', null, true],
-                    ['items', [], []]
+                    ['items', [], []],
                 ]
             );
         $this->resultJson->expects($this->once())
@@ -257,9 +258,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        __('Please correct the data sent.')
+                        __('Please correct the data sent.'),
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -284,7 +285,7 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [],
-                    'error' => false
+                    'error' => false,
                 ]
             )
             ->willReturnSelf();

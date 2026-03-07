@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class ScopeResolver
         int $baseScopeId,
         string $requestedScope,
         int $requestedScopeId
-    ) : bool {
+    ): bool {
         /* All scopes belongs to All Store Views */
         if ($baseScope === ScopeConfigInterface::SCOPE_TYPE_DEFAULT) {
             return true;
@@ -68,7 +69,7 @@ class ScopeResolver
         string $requestedScope,
         int $requestedScopeId,
         array $tree
-    ) : bool {
+    ): bool {
         foreach ($tree as $node) {
             if ($this->isScopeEquals($node['scope'], $requestedScope) && (int)$node['scope_id'] === $requestedScopeId) {
                 return true;

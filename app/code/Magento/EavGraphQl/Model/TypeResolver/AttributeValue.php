@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\EavGraphQl\Model\TypeResolver;
 use Magento\Eav\Model\Attribute;
 use Magento\Eav\Model\AttributeRepository;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
+use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 
 /**
  * @inheritdoc

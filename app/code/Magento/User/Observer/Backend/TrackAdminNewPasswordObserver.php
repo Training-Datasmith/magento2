@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\User\Observer\Backend;
 
+use Magento\Backend\Model\Auth\Session as AuthSession;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\User\Model\User;
 use Magento\User\Model\Backend\Config\ObserverConfig;
 use Magento\User\Model\ResourceModel\User as UserResource;
-use Magento\Backend\Model\Auth\Session as AuthSession;
+use Magento\User\Model\User;
 
 /**
  * User backend observer model for passwords

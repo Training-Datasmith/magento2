@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute\Frontend;
 
 use Magento\Catalog\Model\Product;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Helper\CacheCleaner;
+use Magento\Eav\Model\Entity\Attribute;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\CacheInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
-use Magento\Eav\Model\Entity\Attribute;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoAppIsolation enabled

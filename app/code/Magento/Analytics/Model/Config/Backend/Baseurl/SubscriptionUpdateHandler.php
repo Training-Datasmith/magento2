@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class SubscriptionUpdateHandler
     /**
      * Config path for schedule setting of update handler.
      */
-    public const UPDATE_CRON_STRING_PATH = "crontab/analytics/jobs/analytics_update/schedule/cron_expr";
+    public const UPDATE_CRON_STRING_PATH = 'crontab/analytics/jobs/analytics_update/schedule/cron_expr';
 
     /**
      * Flag code for the previous Base URL.
@@ -33,63 +35,22 @@ class SubscriptionUpdateHandler
 
     /**
      * Max value for a reserve counter to update subscription.
-     *
-     * @var int
      */
-    private $attemptsInitValue = 48;
-
-    /**
-     * @var WriterInterface
-     */
-    private $configWriter;
+    private int $attemptsInitValue = 48;
 
     /**
      * Cron expression for a update handler.
-     *
-     * @var string
      */
-    private $cronExpression = '0 * * * *';
+    private string $cronExpression = '0 * * * *';
 
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * @var ReinitableConfigInterface
-     */
-    private $reinitableConfig;
-
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param FlagManager $flagManager
-     * @param ReinitableConfigInterface $reinitableConfig
-     * @param WriterInterface $configWriter
-     */
-    public function __construct(
-        AnalyticsToken $analyticsToken,
-        FlagManager $flagManager,
-        ReinitableConfigInterface $reinitableConfig,
-        WriterInterface $configWriter
-    ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->flagManager = $flagManager;
-        $this->reinitableConfig = $reinitableConfig;
-        $this->configWriter = $configWriter;
+    public function __construct(private readonly AnalyticsToken $analyticsToken, private readonly FlagManager $flagManager, private readonly ReinitableConfigInterface $reinitableConfig, private readonly WriterInterface $configWriter)
+    {
     }
 
     /**
      * Activate process of subscription update handling.
-     *
-     * @param string $url
-     * @return bool
      */
-    public function processUrlUpdate(string $url)
+    public function processUrlUpdate(string $url): bool
     {
         if ($this->analyticsToken->isTokenExist()) {
             if (!$this->flagManager->getFlagData(self::PREVIOUS_BASE_URL_FLAG_CODE)) {

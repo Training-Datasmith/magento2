@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Renderer for Payflow Link information
  */
+
 namespace Magento\Paypal\Block\Adminhtml\System\Config\Payflowlink;
 
 class Info extends \Magento\Config\Block\System\Config\Form\Field

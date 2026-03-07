@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,7 +8,7 @@
 
 namespace Magento\Customer\Model\Data;
 
-use \Magento\Framework\Api\AttributeValueFactory;
+use Magento\Framework\Api\AttributeValueFactory;
 
 /**
  * Customer data model

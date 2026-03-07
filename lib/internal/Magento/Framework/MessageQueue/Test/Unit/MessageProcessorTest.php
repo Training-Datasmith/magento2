@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class MessageProcessorTest extends TestCase
             MessageProcessor::class,
             [
                 'messageStatusProcessor' => $this->messageStatusProcessor,
-                'resource' => $this->resource
+                'resource' => $this->resource,
             ]
         );
     }
@@ -85,10 +86,10 @@ class MessageProcessorTest extends TestCase
         $mergedMessage = $this->createMock(CustomAttributesDataInterface::class);
         $message = $this->createMock(EnvelopeInterface::class);
         $mergedMessages = [
-            $topicName => [$mergedMessage]
+            $topicName => [$mergedMessage],
         ];
         $messages = [
-            $topicName => [$message]
+            $topicName => [$message],
         ];
 
         $this->messageProcessor->process($queue, $configuration, $messages, $messagesToAcknowledge, $mergedMessages);
@@ -116,10 +117,10 @@ class MessageProcessorTest extends TestCase
         $mergedMessage = $this->createMock(CustomAttributesDataInterface::class);
         $message = $this->createMock(EnvelopeInterface::class);
         $mergedMessages = [
-            $topicName => [$mergedMessage]
+            $topicName => [$mergedMessage],
         ];
         $messages = [
-            $topicName => [$message]
+            $topicName => [$message],
         ];
 
         $this->messageProcessor->process($queue, $configuration, $messages, $messagesToAcknowledge, $mergedMessages);
@@ -148,10 +149,10 @@ class MessageProcessorTest extends TestCase
         $mergedMessage = $this->createMock(CustomAttributesDataInterface::class);
         $message = $this->createMock(EnvelopeInterface::class);
         $mergedMessages = [
-            $topicName => [$mergedMessage]
+            $topicName => [$mergedMessage],
         ];
         $messages = [
-            $topicName => [$message]
+            $topicName => [$message],
         ];
 
         $this->messageProcessor->process($queue, $configuration, $messages, $messagesToAcknowledge, $mergedMessages);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns;
 
 use Magento\Catalog\Model\Category\Image;
@@ -19,7 +22,6 @@ use Magento\Ui\Component\Listing\Columns\Column;
  */
 class Thumbnail extends Column
 {
-
     /**
      * @var StoreManagerInterface
      */

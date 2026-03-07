@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Test\Unit\Model\Indexer\Fulltext\Plugin\Category\Product\Action;
 
+use Magento\Catalog\Model\Indexer\Category\Product\Action\Rows as ActionRows;
 use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
+use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
+use Magento\Elasticsearch\Model\Indexer\Fulltext\Plugin\Category\Product\Action\Rows;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManager;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Elasticsearch\Model\Indexer\Fulltext\Plugin\Category\Product\Action\Rows;
-use Magento\Catalog\Model\Indexer\Category\Product\Action\Rows as ActionRows;
-use Magento\Framework\App\ResourceConnection;
-use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
-use Magento\Store\Model\StoreManager;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

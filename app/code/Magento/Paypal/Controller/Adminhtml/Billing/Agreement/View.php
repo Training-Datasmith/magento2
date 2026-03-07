@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Billing\Agreement;
 
 class View extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
@@ -12,7 +15,7 @@ class View extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement_actions_view';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement_actions_view';
 
     /**
      * View billing agreement action
@@ -27,7 +30,7 @@ class View extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement
             $this->_view->loadLayout();
             $this->_setActiveMenu('Magento_Paypal::paypal_billing_agreement');
             $this->_view->getPage()->getConfig()->getTitle()->prepend(
-                sprintf("#%s", $agreementModel->getReferenceId())
+                sprintf('#%s', $agreementModel->getReferenceId())
             );
             $this->_view->getPage()->getConfig()->getTitle()->prepend(__('Billing Agreements'));
             $this->_view->renderLayout();

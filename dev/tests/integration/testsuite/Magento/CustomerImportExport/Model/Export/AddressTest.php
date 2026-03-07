@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -135,7 +137,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'male' => [1],  // $genderFilterValue
-            'female' => [2]  // $genderFilterValue
+            'female' => [2],  // $genderFilterValue
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Block\Plugin;
 
 use Magento\Catalog\Block\Adminhtml\Product\Attribute\Edit\Tab\Front as ProductAttributeFrontTabBlock;
@@ -46,7 +49,7 @@ class FrontTabPlugin
                 'name' => 'search_weight',
                 'label' => __('Search Weight'),
                 'note' => __('10 is the highest priority/heaviest weighting.'),
-                'values' => $this->weightSource->getOptions()
+                'values' => $this->weightSource->getOptions(),
             ],
             'is_searchable'
         );

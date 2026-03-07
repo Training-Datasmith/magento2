@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\AsynchronousOperations\Model\OperationRepositoryInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\MessageQueue\MessageValidator;
-use Magento\Framework\MessageQueue\MessageEncoder;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\EntityManager\EntityManager;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\MessageQueue\MessageEncoder;
+use Magento\Framework\MessageQueue\MessageValidator;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\WebapiAsync\Controller\Rest\Asynchronous\InputParamsResolver;
 
@@ -84,7 +85,7 @@ class OperationRepository implements OperationRepositoryInterface
         $this->messageValidator = $messageValidator;
         $this->entityManager = $entityManager;
         $this->inputParamsResolver = $inputParamsResolver;
-        $this->storeManager = $storeManager?: ObjectManager::getInstance()->get(StoreManagerInterface::class);
+        $this->storeManager = $storeManager ?: ObjectManager::getInstance()->get(StoreManagerInterface::class);
         $this->messageEncoder = $messageEncoder ?: ObjectManager::getInstance()->get(MessageEncoder::class);
     }
 

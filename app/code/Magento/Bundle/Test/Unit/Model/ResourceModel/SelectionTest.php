@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\ResourceModel;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Bundle\Model\ResourceModel\Selection as ResourceSelection;
 use Magento\Bundle\Model\Selection;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\EntityManager\EntityManager;
+use PHPUnit\Framework\TestCase;
 
 class SelectionTest extends TestCase
 {

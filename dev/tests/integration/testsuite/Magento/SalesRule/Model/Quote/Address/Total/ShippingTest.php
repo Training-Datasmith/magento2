@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -193,9 +195,9 @@ class ShippingTest extends TestCase
                             'operator' => '==',
                             'value' => $sku,
                             'is_value_processed' => false,
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
         ];
         $salesRule->loadPost($data);

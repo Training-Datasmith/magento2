@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset\PreProcessor;
 
 use Magento\Framework\View\Asset\PreProcessorInterface;

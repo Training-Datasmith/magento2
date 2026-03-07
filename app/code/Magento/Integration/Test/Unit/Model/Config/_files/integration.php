@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,5 +12,5 @@ return [
         'endpoint_url' => 'http://endpoint.com',
         'identity_link_url' => 'http://www.example.com/identity',
     ],
-    'TestIntegration2' => ['email' => 'test-integration2@magento.com']
+    'TestIntegration2' => ['email' => 'test-integration2@magento.com'],
 ];

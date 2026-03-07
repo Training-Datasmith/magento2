@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Checkout\Test\Unit\Model\Cart;
 
 use Magento\Checkout\Model\Cart\RequestQuantityProcessor;
 use Magento\Framework\Locale\ResolverInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class RequestQuantityProcessorTest extends TestCase
 {
@@ -63,23 +64,23 @@ class RequestQuantityProcessorTest extends TestCase
             'strings_array' => [
                 'cartData' => [
                     ['qty' => ' 10 '],
-                    ['qty' => ' 0.5 ']
+                    ['qty' => ' 0.5 '],
                 ],
                 'locale' => 'en_US',
                 'expected' => [
                     ['qty' => 10],
-                    ['qty' => 0.5]
+                    ['qty' => 0.5],
                 ],
             ],
             'integer_array' => [
                 'cartData' => [
                     ['qty' => 1],
-                    ['qty' => 0.002]
+                    ['qty' => 0.002],
                 ],
                 'locale' => 'en_US',
                 'expected' => [
                     ['qty' => 1],
-                    ['qty' => 0.002]
+                    ['qty' => 0.002],
                 ],
             ],
             'array_of arrays' => [
@@ -94,12 +95,12 @@ class RequestQuantityProcessorTest extends TestCase
             'strings_array_spain_locale' => [
                 'cartData' => [
                     ['qty' => ' 10 '],
-                    ['qty' => ' 0.5 ']
+                    ['qty' => ' 0.5 '],
                 ],
                 'locale' => 'es_CL',
                 'expected' => [
                     ['qty' => 10],
-                    ['qty' => 0.5]
+                    ['qty' => 0.5],
                 ],
             ],
         ];

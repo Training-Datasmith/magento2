@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\QueryModifierInterface;
 use Magento\Framework\DB\SelectFactory;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FieldDataConverterTest extends TestCase
 {
@@ -148,7 +149,7 @@ class FieldDataConverterTest extends TestCase
     {
         return [
             [false, 0],
-            [true, 1]
+            [true, 1],
         ];
     }
 
@@ -186,7 +187,7 @@ class FieldDataConverterTest extends TestCase
                 'queryGenerator' => $this->queryGeneratorMock,
                 'dataConverter' => $this->dataConverterMock,
                 'selectFactory' => $this->selectFactoryMock,
-                'envBatchSize' => $envBatchSize
+                'envBatchSize' => $envBatchSize,
             ]
         );
         $fieldDataConverter->convert(
@@ -245,7 +246,7 @@ class FieldDataConverterTest extends TestCase
                 'queryGenerator' => $this->queryGeneratorMock,
                 'dataConverter' => $this->dataConverterMock,
                 'selectFactory' => $this->selectFactoryMock,
-                'envBatchSize' => $batchSize
+                'envBatchSize' => $batchSize,
             ]
         );
         $fieldDataConverter->convert(

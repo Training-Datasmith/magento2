@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\PriceCurrency;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\Model\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Method\AbstractMethod;
@@ -35,10 +37,9 @@ use Magento\Sales\Model\Order\Payment\Transaction\Repository;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Sales\Model\ResourceModel\Order\Payment\Transaction as TransactionResource;
 use Magento\Sales\Model\ResourceModel\Order\Payment\Transaction\CollectionFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -220,7 +221,7 @@ class PaymentTest extends TestCase
                     'getItemsCollection',
                     'getOrder',
                     'register',
-                    'capture'
+                    'capture',
                 ]
             )->getMock();
         $this->helper->method('getMethodInstance')
@@ -233,7 +234,7 @@ class PaymentTest extends TestCase
                 'getBaseCurrencyCode', 'getTotalDue', 'getBaseTotalDue', 'getInvoiceCollection',
                 'addRelatedObject', 'getState', 'getStatus', 'addStatusHistoryComment',
                 'registerCancellation', 'getCustomerNote', 'prepareInvoice', 'getPaymentsCollection',
-                'setIsCustomerNotified'
+                'setIsCustomerNotified',
             ]
         );
 
@@ -253,7 +254,7 @@ class PaymentTest extends TestCase
             [
                 'getItemsCollection', 'getItems', 'addComment', 'save', 'getGrandTotal',
                 'getBaseGrandTotal', 'getInvoice', 'getOrder', 'setPaymentRefundDisallowed',
-                'setAutomaticallyCreated', 'register', 'getDoTransaction', 'getPaymentRefundDisallowed'
+                'setAutomaticallyCreated', 'register', 'getDoTransaction', 'getPaymentRefundDisallowed',
             ]
         );
 
@@ -626,7 +627,7 @@ class PaymentTest extends TestCase
     {
         return [
             [false, 9.99],
-            [true, 0.01]
+            [true, 0.01],
         ];
     }
 
@@ -670,11 +671,11 @@ class PaymentTest extends TestCase
         return [
             'Fraud = 1' => [
                 true,
-                Order::STATUS_FRAUD
+                Order::STATUS_FRAUD,
             ],
             'Fraud = 0' => [
                 false,
-                false
+                false,
             ],
         ];
     }
@@ -1415,7 +1416,7 @@ class PaymentTest extends TestCase
             'amount_paid' => 10,
             'base_amount_paid' => 10,
             'shipping_captured' => 5,
-            'base_shipping_captured' => 5
+            'base_shipping_captured' => 5,
         ];
         $this->assertNull($this->payment->getData('amount_paid'));
         $this->invoice->expects($this->once())->method('getGrandTotal')->willReturn($expects['amount_paid']);
@@ -1688,7 +1689,7 @@ class PaymentTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 
@@ -1740,7 +1741,7 @@ class PaymentTest extends TestCase
                 'paymentProcessor' => $this->paymentProcessor,
                 'orderRepository' => $this->orderRepository,
                 'creditmemoManager' => $this->creditmemoManagerMock,
-                'saleOperation' => $this->saleOperation
+                'saleOperation' => $this->saleOperation,
             ]
         );
     }
@@ -1825,7 +1826,7 @@ class PaymentTest extends TestCase
                     'isFailsafe',
                     'getTxnId',
                     'getHtmlTxnId',
-                    'getTxnType'
+                    'getTxnType',
                 ]));
         $transaction->expects($this->any())->method('getId')->willReturn($transactionId);
         $transaction->expects($this->any())->method('getTxnId')->willReturn($transactionId);

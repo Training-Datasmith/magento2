@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\NewRelicReporting\Model\NerdGraph;
 
+use Laminas\Http\Exception\RuntimeException;
+use Laminas\Http\Request;
 use Magento\Framework\HTTP\LaminasClientFactory;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\NewRelicReporting\Model\Config;
 use Psr\Log\LoggerInterface;
-use Laminas\Http\Request;
-use Laminas\Http\Exception\RuntimeException;
 
 /**
  * NerdGraph GraphQL API Client for New Relic
@@ -80,12 +81,12 @@ class Client
             $client->setMethod(Request::METHOD_POST);
             $client->setHeaders([
                 'Content-Type' => 'application/json',
-                'Api-Key' => $apiKey
+                'Api-Key' => $apiKey,
             ]);
 
             $requestBody = [
                 'query' => $query,
-                'variables' => empty($variables) ? (object)[] : $variables
+                'variables' => empty($variables) ? (object)[] : $variables,
             ];
 
             $client->setRawBody($this->serializer->serialize($requestBody));

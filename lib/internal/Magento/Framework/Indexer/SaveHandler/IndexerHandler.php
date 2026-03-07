@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer\SaveHandler;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\Search\Request\Dimension;
-use Magento\Framework\Search\Request\IndexScopeResolverInterface;
 use Magento\Framework\Indexer\IndexStructureInterface;
 use Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
+use Magento\Framework\Search\Request\Dimension;
+use Magento\Framework\Search\Request\IndexScopeResolverInterface;
 
 /**
  * Save handler for indexer.

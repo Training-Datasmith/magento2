@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Model\Resolver;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 
 /**
@@ -20,10 +20,10 @@ class CartErrorTypeResolver implements TypeResolverInterface
      */
     public function resolveType(array $data): string
     {
-        $errorType = "CartUserInputError";
+        $errorType = 'CartUserInputError';
 
         if (isset($data['quantity']) && $data['quantity'] > 0) {
-            return "InsufficientStockError";
+            return 'InsufficientStockError';
         }
 
         return $errorType;

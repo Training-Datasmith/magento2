@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Webapi\Controller\Rest\RequestValidator;
 use Magento\Webapi\Controller\Rest\Router;
 use Magento\Webapi\Controller\Rest\Router\Route;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RequestValidatorTest extends TestCase
@@ -94,7 +95,7 @@ class RequestValidatorTest extends TestCase
                     'request' => $this->requestMock,
                     'router' => $routerMock,
                     'authorization' => $this->authorizationMock,
-                    'storeManager' => $this->storeManagerMock
+                    'storeManager' => $this->storeManagerMock,
                 ]
             );
 

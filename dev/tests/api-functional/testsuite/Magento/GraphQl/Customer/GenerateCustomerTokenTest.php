@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,20 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Customer;
 
-use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Log;
 use Magento\Customer\Model\Logger;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\Exception\EmailNotConfirmedException;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Customer\Model\CustomerFactory;
 
 /**
  * API-functional tests cases for generateCustomerToken mutation
@@ -100,7 +99,7 @@ class GenerateCustomerTokenTest extends GraphQlAbstract
             Customer::class,
             [
                 'email' => 'another@example.com',
-                'confirmation' => 'account_not_confirmed'
+                'confirmation' => 'account_not_confirmed',
             ],
             'customer'
         )
@@ -145,25 +144,25 @@ class GenerateCustomerTokenTest extends GraphQlAbstract
                 'invalid_email@example.com',
                 'password',
                 'The account sign-in was incorrect or your account is disabled temporarily. ' .
-                'Please wait and try again later.'
+                'Please wait and try again later.',
             ],
             'empty_email' => [
                 '',
                 'password',
-                'Specify the "email" value.'
+                'Specify the "email" value.',
             ],
             'invalid_password' => [
                 'customer@example.com',
                 'invalid_password',
                 'The account sign-in was incorrect or your account is disabled temporarily. ' .
-                'Please wait and try again later.'
+                'Please wait and try again later.',
             ],
             'empty_password' => [
                 'customer@example.com',
                 '',
-                'Specify the "password" value.'
+                'Specify the "password" value.',
 
-            ]
+            ],
         ];
     }
 

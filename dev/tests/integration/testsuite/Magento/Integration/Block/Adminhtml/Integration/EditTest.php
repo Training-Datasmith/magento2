@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,7 +86,7 @@ class EditTest extends \PHPUnit\Framework\TestCase
         $integrationData = [
             Integration::ID => $integrationId,
             Integration::NAME => $integrationName,
-            Integration::SETUP_TYPE => Integration::TYPE_CONFIG
+            Integration::SETUP_TYPE => Integration::TYPE_CONFIG,
         ];
 
         /** @var \Magento\Framework\Registry $registry */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Base64Json;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class Base64JsonTest extends TestCase
 {
@@ -25,7 +26,7 @@ class Base64JsonTest extends TestCase
     {
         $objectManager = new ObjectManager($this);
         $this->base64json = $objectManager->getObject(Base64Json::class, [
-            'jsonSerializer' => new Json()
+            'jsonSerializer' => new Json(),
         ]);
     }
 
@@ -78,7 +79,7 @@ class Base64JsonTest extends TestCase
             ['{"a":"b","d":123}', ['a' => 'b', 'd' => 123]],
             ['123', 123],
             ['10.56', 10.56],
-            ["IiI=", ''],
+            ['IiI=', ''],
             ['InN0cmluZyI=', 'string'],
             ['bnVsbA==', null],
             ['ZmFsc2U=', false],

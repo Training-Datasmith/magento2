@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\Cache;
 
 use Magento\Framework\App\Cache\State;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\TestFramework\App\State as AppState;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class MassActionTest extends \Magento\TestFramework\TestCase\AbstractBackendController
@@ -185,7 +188,7 @@ class MassActionTest extends \Magento\TestFramework\TestCase\AbstractBackendCont
                     \Magento\Framework\App\Cache\Type\Layout::TYPE_IDENTIFIER,
                     \Magento\Framework\App\Cache\Type\Block::TYPE_IDENTIFIER,
                 ],
-            ]
+            ],
         ];
     }
 }

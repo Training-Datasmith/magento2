@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Sales\Api\Data\InvoiceCommentInterface;
 use Magento\Sales\Api\Data\InvoiceCommentInterfaceFactory;
 use Magento\Sales\Api\Data\InvoiceCommentSearchResultInterfaceFactory;
 use Magento\Sales\Api\InvoiceCommentRepositoryInterface;
-use Magento\Sales\Model\Spi\InvoiceCommentResourceInterface;
-use Magento\Sales\Model\Order\Email\Sender\InvoiceCommentSender;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
+use Magento\Sales\Model\Order\Email\Sender\InvoiceCommentSender;
+use Magento\Sales\Model\Spi\InvoiceCommentResourceInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -84,9 +85,9 @@ class CommentRepository implements InvoiceCommentRepositoryInterface
         $this->searchResultFactory = $searchResultFactory;
         $this->collectionProcessor = $collectionProcessor;
         $this->invoiceCommentSender = $invoiceCommentSender
-            ?:ObjectManager::getInstance()->get(InvoiceCommentSender::class);
+            ?: ObjectManager::getInstance()->get(InvoiceCommentSender::class);
         $this->invoiceRepository = $invoiceRepository
-            ?:ObjectManager::getInstance()->get(InvoiceRepositoryInterface::class);
+            ?: ObjectManager::getInstance()->get(InvoiceRepositoryInterface::class);
         $this->logger = $logger ?: ObjectManager::getInstance()->get(LoggerInterface::class);
     }
 

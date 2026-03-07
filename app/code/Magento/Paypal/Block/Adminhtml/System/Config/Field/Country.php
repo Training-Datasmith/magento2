@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Field renderer for PayPal merchant country selector
  */
+
 namespace Magento\Paypal\Block\Adminhtml\System\Config\Field;
 
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
@@ -17,12 +20,12 @@ class Country extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Config path for merchant country selector
      */
-    const FIELD_CONFIG_PATH = 'paypal/general/merchant_country';
+    public const FIELD_CONFIG_PATH = 'paypal/general/merchant_country';
 
     /**
      * Request parameter name for default country
      */
-    const REQUEST_PARAM_DEFAULT_COUNTRY = 'paypal_default_country';
+    public const REQUEST_PARAM_DEFAULT_COUNTRY = 'paypal_default_country';
 
     /**
      * Country of default scope

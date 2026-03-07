@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class LogoType implements OptionSourceInterface
             ['value' => 'primary', 'label' => __('Primary')],
             ['value' => 'alternative', 'label' => __('Alternative')],
             ['value' => 'inline', 'label' => __('Inline')],
-            ['value' => 'none', 'label' => __('None')]
+            ['value' => 'none', 'label' => __('None')],
         ];
     }
 }

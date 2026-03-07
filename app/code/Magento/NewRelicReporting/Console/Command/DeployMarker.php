@@ -1,20 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Console\Command;
 
-use Magento\Framework\Exception\LocalizedException;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Helper\Table;
-use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\Apm\DeploymentsFactory;
+use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\ServiceShellUser;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class DeployMarker extends Command
 {
@@ -57,8 +59,8 @@ class DeployMarker extends Command
      */
     protected function configure()
     {
-        $this->setName("newrelic:create:deploy-marker");
-        $this->setDescription("Create a deployment marker in New Relic (supports both v2 REST and NerdGraph)")
+        $this->setName('newrelic:create:deploy-marker');
+        $this->setDescription('Create a deployment marker in New Relic (supports both v2 REST and NerdGraph)')
             ->addArgument(
                 'message',
                 InputArgument::REQUIRED,
@@ -163,7 +165,7 @@ class DeployMarker extends Command
                 date(
                     'Y-m-d H:i:s',
                     (int)($deployment['timestamp'] / 1000)
-                ) : 'N/A']
+                ) : 'N/A'],
         ];
 
         if (!empty($deployment['changelog'])) {

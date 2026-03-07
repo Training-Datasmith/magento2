@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,7 +10,7 @@ return [
     'top04' => [
         'topic' => 'top04',
         'disabled' => false,
-        'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento8', 'disabled' => false]]
+        'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento8', 'disabled' => false]],
     ],
     'top06' => [
         'topic' => 'top06',

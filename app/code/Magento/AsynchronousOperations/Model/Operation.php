@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\AsynchronousOperations\Model\OperationStatusValidator;
 use Magento\Framework\DataObject;
 
 /**
@@ -15,21 +17,12 @@ use Magento\Framework\DataObject;
 class Operation extends DataObject implements OperationInterface
 {
     /**
-     * @var OperationStatusValidator
-     */
-    private $operationStatusValidator;
-
-    /**
      * Operation constructor.
-     *
-     * @param OperationStatusValidator $operationStatusValidator
-     * @param array $data
      */
     public function __construct(
-        OperationStatusValidator $operationStatusValidator,
+        private readonly OperationStatusValidator $operationStatusValidator,
         array $data = []
     ) {
-        $this->operationStatusValidator = $operationStatusValidator;
         parent::__construct($data);
     }
 
@@ -175,7 +168,6 @@ class Operation extends DataObject implements OperationInterface
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(

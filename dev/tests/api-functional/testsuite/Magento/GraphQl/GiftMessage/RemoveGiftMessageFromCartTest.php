@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
         DataFixture(
             CustomerCartFixture::class,
             [
-                'customer_id' => '$customer.id$'
+                'customer_id' => '$customer.id$',
             ],
             as: 'quote'
         ),
@@ -71,7 +72,7 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$quote.id$'], 'quoteIdMask')
@@ -94,8 +95,8 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'cart' => [
-                    'gift_message' => null
-                ]
+                    'gift_message' => null,
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartGraphQlQuery($maskedQuoteId),
@@ -124,7 +125,7 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
         DataFixture(
             CustomerCartFixture::class,
             [
-                'customer_id' => '$customer.id$'
+                'customer_id' => '$customer.id$',
             ],
             as: 'quote'
         ),
@@ -132,14 +133,14 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product2.id$'
+                'product_id' => '$product2.id$',
             ]
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$quote.id$'], 'quoteIdMask')
@@ -164,9 +165,9 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
                     'gift_message' => [
                         'from' => 'Romeo',
                         'to' => 'Mercutio',
-                        'message' => 'Fixture Test message.'
-                    ]
-                ]
+                        'message' => 'Fixture Test message.',
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartGraphQlQuery($maskedQuoteId),
@@ -190,7 +191,7 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
         DataFixture(
             CustomerCartFixture::class,
             [
-                'customer_id' => '$customer.id$'
+                'customer_id' => '$customer.id$',
             ],
             as: 'quote'
         ),
@@ -198,7 +199,7 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(QuoteMaskFixture::class, ['cart_id' => '$quote.id$'], 'quoteIdMask')
@@ -212,8 +213,8 @@ class RemoveGiftMessageFromCartTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'cart' => [
-                    'gift_message' => null
-                ]
+                    'gift_message' => null,
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartGraphQlQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),

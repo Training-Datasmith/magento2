@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Rss;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -18,9 +21,9 @@ use Magento\Framework\Exception\NoSuchEntityException;
  */
 class Category extends \Magento\Framework\View\Element\AbstractBlock implements DataProviderInterface
 {
-   /**
-    * @var \Magento\Catalog\Model\CategoryFactory
-    */
+    /**
+     * @var \Magento\Catalog\Model\CategoryFactory
+     */
     protected $categoryFactory;
 
     /**
@@ -113,7 +116,7 @@ class Category extends \Magento\Framework\View\Element\AbstractBlock implements 
                 'title' => 'Category Not Found',
                 'description' => 'Category Not Found',
                 'link' => $this->getUrl(''),
-                'charset' => 'UTF-8'
+                'charset' => 'UTF-8',
             ];
         }
 
@@ -187,7 +190,7 @@ class Category extends \Magento\Framework\View\Element\AbstractBlock implements 
                 [
                     'display_minimal_price'  => true,
                     'use_link_for_as_low_as' => true,
-                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                    'zone' => \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -152,7 +153,7 @@ class CarrierTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
 
@@ -225,7 +226,7 @@ class CarrierTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
 
@@ -285,7 +286,7 @@ class CarrierTest extends TestCase
                     'height' => null,
                     'length' => null,
                     'width' => null,
-                ]
+                ],
             ]
         );
 
@@ -323,7 +324,7 @@ class CarrierTest extends TestCase
             ->nextResponses(
                 [
                     new Response(200, [], file_get_contents(__DIR__ . '/../Fixtures/success_usps_response_rates.xml')),
-                    new Response(200, [], file_get_contents(__DIR__ . '/../Fixtures/rates_response.xml'))
+                    new Response(200, [], file_get_contents(__DIR__ . '/../Fixtures/rates_response.xml')),
                 ]
             );
         //phpcs:enable
@@ -518,9 +519,9 @@ class CarrierTest extends TestCase
                             'operator' => '==',
                             'value' => self::PRODUCT_1,
                             'is_value_processed' => false,
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
         ];
         $salesRule->loadPost($data);

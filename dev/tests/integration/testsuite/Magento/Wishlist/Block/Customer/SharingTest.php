@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class SharingTest extends TestCase
             $this->assertEquals(
                 1,
                 Xpath::getElementsCountForXpath($xpath, $blockHtml),
-                sprintf("%s was not found.", $element)
+                sprintf('%s was not found.', $element)
             );
         }
     }

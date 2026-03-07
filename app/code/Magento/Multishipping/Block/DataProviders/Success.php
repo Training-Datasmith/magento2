@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,5 +16,4 @@ use Magento\Multishipping\Block\Checkout\Results;
  */
 class Success extends Results implements ArgumentInterface
 {
-
 }

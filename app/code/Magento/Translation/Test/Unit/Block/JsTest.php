@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class JsTest extends TestCase
             Js::class,
             [
                 'config' => $this->configMock,
-                'fileManager' => $this->fileManagerMock
+                'fileManager' => $this->fileManagerMock,
             ]
         );
     }

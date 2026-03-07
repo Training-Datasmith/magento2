@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme;
 
 use Magento\Framework\Filesystem\Directory\ReadFactory;
@@ -16,21 +19,21 @@ class ThemeList extends \Magento\Framework\Data\Collection implements ListInterf
     /**
      * Area constraint type
      */
-    const CONSTRAINT_AREA = 'area';
+    public const CONSTRAINT_AREA = 'area';
 
     /**
      * Vendor constraint type
      *
      * For example, "Magento" part for theme "frontend/Magento/blank"
      */
-    const CONSTRAINT_VENDOR = 'vendor';
+    public const CONSTRAINT_VENDOR = 'vendor';
 
     /**
      * Theme name constraint type
      *
      * For example, "blank" part for theme "frontend/Magento/blank"
      */
-    const CONSTRAINT_THEME_NAME = 'theme_name';
+    public const CONSTRAINT_THEME_NAME = 'theme_name';
 
     /**
      * Model of collection item
@@ -217,7 +220,7 @@ class ThemeList extends \Magento\Framework\Data\Collection implements ListInterf
             'theme_path_pieces' => [
                 $themePackage->getVendor(),
                 $themePackage->getName(),
-            ]
+            ],
         ];
     }
 
@@ -252,7 +255,7 @@ class ThemeList extends \Magento\Framework\Data\Collection implements ListInterf
             'code' => $themeCode,
             'theme_title' => $themeConfig->getThemeTitle(),
             'preview_image' => $media['preview_image'] ? $media['preview_image'] : null,
-            'parent_theme_path' => $parentPath
+            'parent_theme_path' => $parentPath,
         ];
     }
 

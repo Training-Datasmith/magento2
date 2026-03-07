@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\MediaGallerySynchronization\Test\Integration\Model\Filesystem;
 
 use Magento\MediaGallerySynchronization\Model\Filesystem\GetFileInfo;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Integration test for GetFileInfo
@@ -63,7 +64,7 @@ class GetFileInfoTest extends TestCase
     {
         return [
             ['magento.jpg'],
-            ['magento_2.jpg']
+            ['magento_2.jpg'],
         ];
     }
 
@@ -81,7 +82,7 @@ class GetFileInfoTest extends TestCase
                 DIRECTORY_SEPARATOR,
                 [
                     '_files',
-                    $filename
+                    $filename,
                 ]
             );
     }

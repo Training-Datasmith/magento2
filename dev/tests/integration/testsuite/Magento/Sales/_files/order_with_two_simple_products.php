@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Customer\Model\CustomerRegistry;
+use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/product_simple.php');
@@ -42,7 +44,7 @@ $optionValuesByType = [
         'minute' => '2',
         'day_part' => 'am',
         'date_internal' => '',
-    ]
+    ],
 ];
 
 $requestInfo = ['options' => [], 'qty' => 1];
@@ -68,7 +70,7 @@ $orderItem->setStoreId(0);
 
 $orderItem2 = $objectManager->create(\Magento\Sales\Model\Order\Item::class);
 $requestInfo = [
-    'qty' => 1
+    'qty' => 1,
 ];
 $orderItem2->setProductId($secondProduct->getId())
     ->setQtyOrdered(1)

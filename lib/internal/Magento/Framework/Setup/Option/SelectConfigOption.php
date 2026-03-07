@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Option;
 
 /**
@@ -13,8 +16,8 @@ class SelectConfigOption extends AbstractConfigOption
     /**#@+
      * Frontend input types
      */
-    const FRONTEND_WIZARD_RADIO = 'radio';
-    const FRONTEND_WIZARD_SELECT = 'select';
+    public const FRONTEND_WIZARD_RADIO = 'radio';
+    public const FRONTEND_WIZARD_SELECT = 'select';
     /**#@- */
 
     /**#@- */

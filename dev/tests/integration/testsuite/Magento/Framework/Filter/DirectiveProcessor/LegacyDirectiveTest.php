@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Filter\DirectiveProcessor;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Filter\Template;
 use Magento\TestModuleSimpleTemplateDirective\Model\LegacyFilter;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class LegacyDirectiveTest extends TestCase
 {

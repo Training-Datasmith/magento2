@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class UrlTest extends TestCase
                 'abstractProduct' => $this->abstractProductMock,
                 'compare' => $this->catalogProductHelperMock,
                 'postHelper' => $this->postHelperMock,
-                'buttonFactory' =>$this->buttonFactoryMock,
+                'buttonFactory' => $this->buttonFactoryMock,
             ]
         );
     }
@@ -71,7 +72,7 @@ class UrlTest extends TestCase
     public function testCollectWithNullButtons()
     {
         $product = $this->createMock(Product::class);
-      
+
         $productRenderInfoDto = $this->createMock(ProductRenderInterface::class);
 
         // Mock both getAddToCartButton and getAddToCompareButton returning null (line 81-82)
@@ -115,7 +116,7 @@ class UrlTest extends TestCase
                 'some:url',
                 [
                     'product' => 1,
-                    ActionInterface::PARAM_NAME_URL_ENCODED => "%uenc%"
+                    ActionInterface::PARAM_NAME_URL_ENCODED => '%uenc%',
                 ]
             )
             ->willReturn(['some cart url post data']);
@@ -182,7 +183,7 @@ class UrlTest extends TestCase
                 'some:url',
                 [
                     'product' => 1,
-                    ActionInterface::PARAM_NAME_URL_ENCODED => "%uenc%"
+                    ActionInterface::PARAM_NAME_URL_ENCODED => '%uenc%',
                 ]
             )
             ->willReturn(['some cart url post data']);
@@ -254,7 +255,7 @@ class UrlTest extends TestCase
                 'some:url',
                 [
                     'product' => 1,
-                    ActionInterface::PARAM_NAME_URL_ENCODED => "%uenc%"
+                    ActionInterface::PARAM_NAME_URL_ENCODED => '%uenc%',
                 ]
             )
             ->willReturn(['some cart url post data']);

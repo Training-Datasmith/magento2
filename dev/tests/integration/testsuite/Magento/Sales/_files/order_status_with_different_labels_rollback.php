@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/order_with_customer_on_second_website_rollback.php');
 
@@ -21,7 +22,7 @@ $status = $objectManager->get(\Magento\Sales\Model\Order\Status::class)->load('p
 $data = [
     'status' => 'processing',
     'label' => 'Processing',
-    'store_labels' => []
+    'store_labels' => [],
 ];
 
 $status->setData($data)->setStatus('processing');

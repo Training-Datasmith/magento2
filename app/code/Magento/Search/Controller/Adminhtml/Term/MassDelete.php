@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Controller\Adminhtml\Term;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Search\Controller\Adminhtml\Term as TermController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Search\Controller\Adminhtml\Term as TermController;
 
 class MassDelete extends TermController implements HttpPostActionInterface
 {

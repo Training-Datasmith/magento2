@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Codeception\Lib\ModuleContainer;
 use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
 use League\Flysystem\PathPrefixer;
 use Magento\AwsS3\Driver\AwsS3;
-use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\RemoteStorage\Driver\Adapter\MetadataProvider;
 
 /**
@@ -47,10 +48,10 @@ class S3FileAssertions extends Helper
             'version' => 'latest',
             'credentials' => [
                 'key' => $accessKey,
-                'secret' => $secretKey
+                'secret' => $secretKey,
             ],
             'bucket' => $bucket,
-            'region' => $region
+            'region' => $region,
         ];
 
         if (empty($config['credentials']['key']) || empty($config['credentials']['secret'])) {

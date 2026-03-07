@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -108,8 +109,8 @@ QUERY;
                 [
                     'sku' => $associatedProductSku,
                     'type_id' => $groupedProductLinks[$itemIndex]->getLinkedProductType(),
-                    'url_key'=> $associatedProduct->getUrlKey(),
-                    'name' => $associatedProduct->getName()
+                    'url_key' => $associatedProduct->getUrlKey(),
+                    'name' => $associatedProduct->getName(),
 
                 ]
             );

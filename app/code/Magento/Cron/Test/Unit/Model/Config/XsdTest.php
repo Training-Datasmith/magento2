@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class XsdTest extends TestCase
                     "11:        </job>\n12:    </group>\n13:</config>\n14:\n",
                     "Element 'job', attribute 'wrongInstance': The attribute 'wrongInstance' is not allowed.\n" .
                     "Line: 10\nThe xml was: \n5: */\n6:-->\n7:<config " .
-                    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Cron:etc/crontab.xsd\">\n" .
                     "8:    <group id=\"default\">\n9:        <job wrongName=\"job1\" wrongInstance=\"Model1\" " .
                     "wrongMethod=\"method1\">\n10:            <wrongSchedule>30 2 * * *</wrongSchedule>\n" .
@@ -115,11 +116,11 @@ class XsdTest extends TestCase
                     "11:        </job>\n12:    </group>\n13:</config>\n14:\n",
                     "Element 'wrongSchedule': This element is not expected. Expected is one of ( schedule, " .
                     "config_path ).\nLine: 11\nThe xml was: \n6:-->\n7:<config " .
-                    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Cron:etc/crontab.xsd\">\n" .
                     "8:    <group id=\"default\">\n9:        <job wrongName=\"job1\" wrongInstance=\"Model1\" " .
                     "wrongMethod=\"method1\">\n10:            <wrongSchedule>30 2 * * *</wrongSchedule>\n" .
-                    "11:        </job>\n12:    </group>\n13:</config>\n14:\n"
+                    "11:        </job>\n12:    </group>\n13:</config>\n14:\n",
                 ],
             ],
             [
@@ -130,8 +131,8 @@ class XsdTest extends TestCase
                     "instance=\"Model1\" method=\"method1\">\n10:            <schedule>30 2 * * *</schedule>\n" .
                     "11:        </job>\n12:        <job name=\"job1\" instance=\"Model1\" method=\"method1\">\n" .
                     "13:            <schedule>30 2 * * *</schedule>\n14:        </job>\n15:    </group>\n" .
-                    "16:</config>\n17:\n"
-                ]
+                    "16:</config>\n17:\n",
+                ],
             ],
             [
                 'crontab_invalid_without_name.xml',
@@ -141,8 +142,8 @@ class XsdTest extends TestCase
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Cron:etc/crontab.xsd\">\n" .
                     "8:    <group id=\"default\">\n9:        <job instance=\"Model1\" method=\"method1\">\n" .
                     "10:            <schedule>30 2 * * *</schedule>\n11:        </job>\n12:    </group>\n" .
-                    "13:</config>\n14:\n"
-                ]
+                    "13:</config>\n14:\n",
+                ],
             ],
             [
                 'crontab_invalid_without_instance.xml',
@@ -152,8 +153,8 @@ class XsdTest extends TestCase
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Cron:etc/crontab.xsd\">\n" .
                     "8:    <group id=\"default\">\n9:        <job name=\"job1\" method=\"method1\">\n" .
                     "10:            <schedule>30 2 * * *</schedule>\n11:        </job>\n12:    </group>\n" .
-                    "13:</config>\n14:\n"
-                ]
+                    "13:</config>\n14:\n",
+                ],
             ],
             [
                 'crontab_invalid_without_method.xml',
@@ -163,9 +164,9 @@ class XsdTest extends TestCase
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Cron:etc/crontab.xsd\">\n" .
                     "8:    <group id=\"default\">\n9:        <job name=\"job1\" instance=\"Model1\">\n" .
                     "10:            <schedule>30 2 * * *</schedule>\n11:        </job>\n12:    </group>\n" .
-                    "13:</config>\n14:\n"
-                ]
-            ]
+                    "13:</config>\n14:\n",
+                ],
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
 use Magento\Framework\App\ObjectManagerFactory;
@@ -56,7 +59,7 @@ class GenerateFixturesCommandTest extends \Magento\TestFramework\Indexer\TestCas
         $this->command = $this->objectManager->create(
             GenerateFixturesCommand::class,
             [
-                'fixtureModel' => $this->fixtureModelMock
+                'fixtureModel' => $this->fixtureModelMock,
             ]
         );
 
@@ -112,11 +115,11 @@ class GenerateFixturesCommandTest extends \Magento\TestFramework\Indexer\TestCas
      */
     public function testExecute()
     {
-        $profile = realpath(__DIR__ . "/_files/min_profile.xml");
+        $profile = realpath(__DIR__ . '/_files/min_profile.xml');
         $this->commandTester->execute(
             [
                 GenerateFixturesCommand::PROFILE_ARGUMENT => $profile,
-                '--' . GenerateFixturesCommand::SKIP_REINDEX_OPTION => true
+                '--' . GenerateFixturesCommand::SKIP_REINDEX_OPTION => true,
             ]
         );
         $this->indexerCommand->execute([]);

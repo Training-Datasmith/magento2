@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -18,11 +19,11 @@ use Magento\Customer\Model\Data\CustomerSecure;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;
 use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -102,7 +103,7 @@ class AuthenticationTest extends TestCase
                 'getLockExpires',
                 'setFirstFailure',
                 'setFailuresNum',
-                'setLockExpires'
+                'setLockExpires',
             ]
         );
 
@@ -131,7 +132,7 @@ class AuthenticationTest extends TestCase
         $customerId = 1;
         $this->backendConfigMock->expects($this->exactly(2))
             ->method('getValue')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Authentication::LOCKOUT_THRESHOLD_PATH] => 0,
                 [Authentication::MAX_FAILURES_PATH] => 0
             });
@@ -166,7 +167,7 @@ class AuthenticationTest extends TestCase
         $customerId = 1;
         $this->backendConfigMock->expects($this->exactly(2))
             ->method('getValue')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Authentication::LOCKOUT_THRESHOLD_PATH] => 10,
                 [Authentication::MAX_FAILURES_PATH] => 5
             });
@@ -291,7 +292,7 @@ class AuthenticationTest extends TestCase
         } else {
             $this->backendConfigMock->expects($this->exactly(2))
                 ->method('getValue')
-                ->willReturnCallback(fn($param) => match ([$param]) {
+                ->willReturnCallback(fn ($param) => match ([$param]) {
                     [Authentication::LOCKOUT_THRESHOLD_PATH] => 1,
                     [Authentication::MAX_FAILURES_PATH] => 1
                 });

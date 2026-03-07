@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class ShipmentTracking implements ResolverInterface
                 'title' => $tracking->getTitle(),
                 'carrier' => $tracking->getCarrierCode(),
                 'number' => $tracking->getTrackNumber(),
-                'model' => $tracking
+                'model' => $tracking,
             ];
         }
 

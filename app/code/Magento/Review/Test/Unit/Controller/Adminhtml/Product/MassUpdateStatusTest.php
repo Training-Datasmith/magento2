@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,22 +8,22 @@ declare(strict_types=1);
 
 namespace Magento\Review\Test\Unit\Controller\Adminhtml\Product;
 
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Review\Controller\Adminhtml\Product\MassUpdateStatus;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
+use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Review\Controller\Adminhtml\Product\MassUpdateStatus;
 use Magento\Review\Model\RatingFactory;
-use Magento\Review\Model\Review;
+use Magento\Review\Model\ResourceModel\Review as ReviewResourceModel;
 use Magento\Review\Model\ResourceModel\Review\Collection as ReviewCollection;
 use Magento\Review\Model\ResourceModel\Review\CollectionFactory;
+use Magento\Review\Model\Review;
 use Magento\Review\Model\ReviewFactory;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Message\ManagerInterface;
-use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Review\Model\ResourceModel\Review as ReviewResourceModel;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

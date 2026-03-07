@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class SenderTest extends TestCase
         $this->sender = $objectManager->getObject(
             Sender::class,
             [
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,11 @@ declare(strict_types=1);
 namespace Magento\Store\Url\Plugin;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Url\RouteParamsResolver as UrlRouteParamsResolver;
 use Magento\Framework\Url\QueryParamsResolverInterface;
+use Magento\Framework\Url\RouteParamsResolver as UrlRouteParamsResolver;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\Store\Model\ScopeInterface as StoreScopeInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Plugin for \Magento\Framework\Url\RouteParamsResolver

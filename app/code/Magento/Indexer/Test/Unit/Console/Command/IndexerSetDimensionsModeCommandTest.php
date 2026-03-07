@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Indexer\Console\Command\IndexerSetDimensionsModeCommand;
 use Magento\Indexer\Model\DimensionModes;
 use Magento\Indexer\Model\Indexer;
 use Magento\Indexer\Model\ModeSwitcherInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Tester\CommandTester;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for class \Magento\Indexer\Model\ModeSwitcherInterface.

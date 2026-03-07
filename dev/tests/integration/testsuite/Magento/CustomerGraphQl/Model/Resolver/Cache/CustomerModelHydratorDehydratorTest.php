@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class CustomerModelHydratorDehydratorTest extends TestCase
         $assertionMap = [
             'model_id' => 'id',
             'firstname' => 'firstname',
-            'lastname' => 'lastname'
+            'lastname' => 'lastname',
         ];
 
         foreach ($assertionMap as $resolverDataField => $modelDataField) {

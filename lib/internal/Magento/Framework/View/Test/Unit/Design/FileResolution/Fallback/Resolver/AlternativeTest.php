@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\View\Design\Fallback\RulePool;
 use Magento\Framework\View\Design\FileResolution\Fallback\Resolver\Alternative;
 use Magento\Framework\View\Design\FileResolution\Fallback\Resolver\Simple;
 use Magento\Framework\View\Design\ThemeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AlternativeTest extends TestCase
 {
@@ -58,7 +59,7 @@ class AlternativeTest extends TestCase
     public function testConstructorException(array $alternativeExtensions)
     {
         $this->expectException('\InvalidArgumentException');
-        $this->expectExceptionMessage("\$alternativeExtensions must be an array with format:"
+        $this->expectExceptionMessage('$alternativeExtensions must be an array with format:'
             . " array('ext1' => array('ext1', 'ext2'), 'ext3' => array(...)]");
 
         $readFactory = $this->createMock(ReadFactory::class);

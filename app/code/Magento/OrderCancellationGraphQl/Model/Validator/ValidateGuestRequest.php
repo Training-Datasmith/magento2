@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class ValidateGuestRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'token'
+                        'field' => 'token',
                     ]
                 )
             );
@@ -48,7 +49,7 @@ class ValidateGuestRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'reason'
+                        'field' => 'reason',
                     ]
                 )
             );

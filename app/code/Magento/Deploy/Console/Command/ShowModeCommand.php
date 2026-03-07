@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Deploy\Console\Command;
 
+use Magento\Framework\App\State;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\State;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Command to show application mode

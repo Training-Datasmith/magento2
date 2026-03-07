@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class SerializerTest extends TestCase
         // Prepare ObjectManager for helpers used by parent blocks
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -60,7 +61,7 @@ class SerializerTest extends TestCase
             Serializer::class,
             [
                 'context' => $this->createMock(Context::class),
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }
@@ -130,47 +131,47 @@ class SerializerTest extends TestCase
             'single product without entity id flag' => [
                 false,
                 [
-                    ['id' => 1, 'entityId' => 101, 'qty' => 5, 'position' => 1]
+                    ['id' => 1, 'entityId' => 101, 'qty' => 5, 'position' => 1],
                 ],
                 [
-                    1 => ['qty' => 5, 'position' => 1]
+                    1 => ['qty' => 5, 'position' => 1],
                 ],
-                '{"1":{"qty":5,"position":1}}'
+                '{"1":{"qty":5,"position":1}}',
             ],
             'single product with entity id flag' => [
                 true,
                 [
-                    ['id' => 1, 'entityId' => 101, 'qty' => 10, 'position' => 2]
+                    ['id' => 1, 'entityId' => 101, 'qty' => 10, 'position' => 2],
                 ],
                 [
-                    101 => ['qty' => 10, 'position' => 2]
+                    101 => ['qty' => 10, 'position' => 2],
                 ],
-                '{"101":{"qty":10,"position":2}}'
+                '{"101":{"qty":10,"position":2}}',
             ],
             'multiple products without entity id flag' => [
                 false,
                 [
                     ['id' => 1, 'entityId' => 101, 'qty' => 5, 'position' => 1],
-                    ['id' => 2, 'entityId' => 102, 'qty' => 3, 'position' => 2]
+                    ['id' => 2, 'entityId' => 102, 'qty' => 3, 'position' => 2],
                 ],
                 [
                     1 => ['qty' => 5, 'position' => 1],
-                    2 => ['qty' => 3, 'position' => 2]
+                    2 => ['qty' => 3, 'position' => 2],
                 ],
-                '{"1":{"qty":5,"position":1},"2":{"qty":3,"position":2}}'
+                '{"1":{"qty":5,"position":1},"2":{"qty":3,"position":2}}',
             ],
             'multiple products with entity id flag' => [
                 true,
                 [
                     ['id' => 1, 'entityId' => 101, 'qty' => 5, 'position' => 1],
-                    ['id' => 2, 'entityId' => 102, 'qty' => 3, 'position' => 2]
+                    ['id' => 2, 'entityId' => 102, 'qty' => 3, 'position' => 2],
                 ],
                 [
                     101 => ['qty' => 5, 'position' => 1],
-                    102 => ['qty' => 3, 'position' => 2]
+                    102 => ['qty' => 3, 'position' => 2],
                 ],
-                '{"101":{"qty":5,"position":1},"102":{"qty":3,"position":2}}'
-            ]
+                '{"101":{"qty":5,"position":1},"102":{"qty":3,"position":2}}',
+            ],
         ];
     }
 

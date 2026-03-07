@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ $salesRule->setData(
          'store_labels' => [
             'store_id' => 0,
             'store_label' => 'Discount Label for 10% off',
-         ]
+         ],
     ]
 );
 
@@ -56,7 +57,7 @@ $salesRule->getConditions()->loadArray([
                             'operator' => null,
                             'value' => '1',
                             'is_value_processed' => null,
-                            'aggregator'=>'all'
+                            'aggregator' => 'all',
                         ],
                     ],
             ],

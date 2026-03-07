@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Customer\Source;
 
-use Magento\Customer\Api\Data\GroupSearchResultsInterface;
-use Magento\Framework\Module\Manager as ModuleManager;
 use Magento\Customer\Api\Data\GroupInterface;
+use Magento\Customer\Api\Data\GroupSearchResultsInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Module\Manager as ModuleManager;
 
 /**
  * Group.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,12 +27,12 @@ class CollectionTest extends TestCase
     /**
      * Instance name
      */
-    const INSTANCE_1 = 'Class_Name_1';
+    public const INSTANCE_1 = 'Class_Name_1';
 
     /**
      * Instance name
      */
-    const INSTANCE_2 = 'Class_Name_2';
+    public const INSTANCE_2 = 'Class_Name_2';
 
     /**
      * Returns initialized argument data

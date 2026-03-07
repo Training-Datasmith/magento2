@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Filters\FilterModifier;
 use Magento\Ui\Component\Filters\Type\DateRange;
 use Magento\Ui\Component\Form\Element\DataType\Date as FormDate;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DateRangeTest extends TestCase
@@ -167,7 +168,7 @@ class DateRangeTest extends TestCase
                     'to' => '11-05-2015',
                     'orig_to' => '11-05-2015',
                     'datetime' => true,
-                    'locale' => 'en_US'
+                    'locale' => 'en_US',
                 ],
             ],
             [

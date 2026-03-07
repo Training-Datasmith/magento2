@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Paypal\Model\Express;
 use Magento\Checkout\Model\Type\Onepage;
 use Magento\Directory\Model\CountryFactory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Paypal\Model\Api\Nvp;
 use Magento\Paypal\Model\Api\Type\Factory;
 use Magento\Paypal\Model\Config;
@@ -17,7 +19,6 @@ use Magento\Paypal\Model\Info;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\ResourceModel\Quote\Collection;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -123,7 +124,7 @@ class CheckoutTest extends TestCase
             [
                 'params' => ['quote' => $quote, 'config' => $paypalConfig],
                 'apiTypeFactory' => $apiTypeFactory,
-                'paypalInfo' => $paypalInfo
+                'paypalInfo' => $paypalInfo,
             ]
         );
 
@@ -282,7 +283,7 @@ class CheckoutTest extends TestCase
                         ->disableOriginalConstructor()
                         ->getMock(),
                     'quote' => $quote,
-                ]
+                ],
             ]
         );
     }
@@ -302,7 +303,7 @@ class CheckoutTest extends TestCase
             [
                 'params' => ['quote' => $quote, 'config' => $this->paypalConfig],
                 'apiTypeFactory' => $this->apiTypeFactory,
-                'paypalInfo' => $this->paypalInfo
+                'paypalInfo' => $this->paypalInfo,
             ]
         );
 
@@ -598,7 +599,7 @@ class CheckoutTest extends TestCase
             [
                 'params' => ['quote' => $quote, 'config' => $this->paypalConfig],
                 'apiTypeFactory' => $this->apiTypeFactory,
-                'paypalInfo' => $this->paypalInfo
+                'paypalInfo' => $this->paypalInfo,
             ]
         );
 
@@ -650,8 +651,8 @@ class CheckoutTest extends TestCase
                 'city' => 'Austin',
                 'street' => '1100 Congress Ave',
                 'postcode' => '78701',
-                'telephone' => '555-555-555'
-            ]
+                'telephone' => '555-555-555',
+            ],
         ];
     }
 
@@ -684,7 +685,7 @@ class CheckoutTest extends TestCase
             [
                 'params' => ['quote' => $quote, 'config' => $paypalConfig],
                 'apiTypeFactory' => $apiTypeFactory,
-                'paypalInfo' => $paypalInfo
+                'paypalInfo' => $paypalInfo,
             ]
         );
 
@@ -708,7 +709,7 @@ class CheckoutTest extends TestCase
         $this->addCountryFactory($api);
         $data = [
             'COUNTRYCODE' => $quote->getShippingAddress()->getCountryId(),
-            'STATE' => 'unknown'
+            'STATE' => 'unknown',
         ];
         $api->method('call')
             ->willReturn($data);

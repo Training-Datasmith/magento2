@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Reader;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Config\FileIterator;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Filesystem\File\ReadFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class DomTest extends \PHPUnit\Framework\TestCase
 {
@@ -53,7 +56,7 @@ class DomTest extends \PHPUnit\Framework\TestCase
                     [
                         'xml' => $content,
                         'idAttributes' => ['/' => 'name'],
-                        'schemaLocator' => $objectManager->create(Definition\SchemaLocator::class)
+                        'schemaLocator' => $objectManager->create(Definition\SchemaLocator::class),
                     ]
                 );
             } else {
@@ -75,9 +78,9 @@ class DomTest extends \PHPUnit\Framework\TestCase
         $path = realpath(__DIR__ . '/../../_files/view');
         $paths = [
             $path . '/module_one/ui_component/' . $filename,
-            $path . '/module_two/ui_component/' . $filename
+            $path . '/module_two/ui_component/' . $filename,
         ];
-        return new FileIterator(new ReadFactory(new DriverPool), $paths);
+        return new FileIterator(new ReadFactory(new DriverPool()), $paths);
     }
 
     /**

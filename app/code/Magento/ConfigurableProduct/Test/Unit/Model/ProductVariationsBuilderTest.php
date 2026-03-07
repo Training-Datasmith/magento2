@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class ProductVariationsBuilderTest extends TestCase
         );
         $attributes = [10 => ['attribute_code' => 'sort_order']];
         $variations = [
-            [10 => ['value' => 15, 'price' => ['pricing_value' => 10]]]
+            [10 => ['value' => 15, 'price' => ['pricing_value' => 10]]],
         ];
         $this->variationMatrix->expects($this->once())
             ->method('getVariations')

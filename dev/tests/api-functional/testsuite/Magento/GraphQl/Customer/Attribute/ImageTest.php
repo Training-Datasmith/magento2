@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'image',
-                'validate_rules' => '{"MAX_FILE_SIZE":"10000","MAX_IMAGE_WIDTH":"100"}'
+                'validate_rules' => '{"MAX_FILE_SIZE":"10000","MAX_IMAGE_WIDTH":"100"}',
             ],
             'attribute'
         )
@@ -80,11 +81,11 @@ QRY;
                             'is_required' => false,
                             'default_value' => $attribute->getDefaultValue(),
                             'is_unique' => false,
-                            'validate_rules' => $formattedValidationRules
-                        ]
+                            'validate_rules' => $formattedValidationRules,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

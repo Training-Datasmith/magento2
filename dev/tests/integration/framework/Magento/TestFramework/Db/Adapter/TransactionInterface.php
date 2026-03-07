@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * DB adapter transaction interface that allows starting transaction with adjusted level,
  * transparently to the application
  */
+
 namespace Magento\TestFramework\Db\Adapter;
 
 interface TransactionInterface

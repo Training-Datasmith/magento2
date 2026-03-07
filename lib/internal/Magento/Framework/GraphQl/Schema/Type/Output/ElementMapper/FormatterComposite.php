@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class FormatterComposite implements FormatterInterface
     {
         $defaultConfig = [
             'name' => $configElement->getName(),
-            'description' => $configElement->getDescription()
+            'description' => $configElement->getDescription(),
         ];
         $formattedConfig = [];
         foreach ($this->formatters as $formatter) {

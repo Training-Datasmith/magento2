@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Item;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\Order\ItemFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ItemTest extends TestCase
 {
@@ -38,7 +39,7 @@ class ItemTest extends TestCase
         $this->item = $objectManager->getObject(
             Item::class,
             [
-                'orderItemFactory' => $this->orderItemFactoryMock
+                'orderItemFactory' => $this->orderItemFactoryMock,
             ]
         );
     }

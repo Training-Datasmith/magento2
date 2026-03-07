@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -335,7 +337,7 @@ class Option extends \Magento\Bundle\Block\Catalog\Product\Price
             $price,
             $selection,
             [
-                'include_container' => $includeContainer
+                'include_container' => $includeContainer,
             ]
         );
 

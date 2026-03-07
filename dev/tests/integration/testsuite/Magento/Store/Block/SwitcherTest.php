@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Block;
 
 use Magento\Framework\App\ActionInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\App\ScopeInterface;
+use Magento\Framework\Url\DecoderInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Integration tests for \Magento\Store\Block\Switcher block.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class UploadCssTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Service::class] => $serviceModel,
                 [Data::class] => $jsonData
             });
@@ -74,7 +75,7 @@ class UploadCssTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Service::class] => $serviceModel,
                 [Data::class] => $jsonData
             });
@@ -105,7 +106,7 @@ class UploadCssTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Service::class] => $serviceModel,
                 [LoggerInterface::class] => $logger,
                 [Data::class] => $jsonData

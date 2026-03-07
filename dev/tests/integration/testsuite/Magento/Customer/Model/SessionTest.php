@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Eav\Model\Cache\Type as EavCacheType;
@@ -101,7 +104,7 @@ class SessionTest extends \PHPUnit\Framework\TestCase
             ['expectedResult' => true, 'isCustomerIdValid' => true, 'isCustomerEmulated' => false],
             ['expectedResult' => false, 'isCustomerIdValid' => true, 'isCustomerEmulated' => true],
             ['expectedResult' => false, 'isCustomerIdValid' => false, 'isCustomerEmulated' => false],
-            ['expectedResult' => false, 'isCustomerIdValid' => false, 'isCustomerEmulated' => true]
+            ['expectedResult' => false, 'isCustomerIdValid' => false, 'isCustomerEmulated' => true],
         ];
     }
 
@@ -115,7 +118,7 @@ class SessionTest extends \PHPUnit\Framework\TestCase
 
         $customerData = $customerSession->getCustomerData();
 
-        $this->assertEquals($fixtureCustomerId, $customerData->getId(), "Customer data was loaded incorrectly");
+        $this->assertEquals($fixtureCustomerId, $customerData->getId(), 'Customer data was loaded incorrectly');
     }
 
     /**

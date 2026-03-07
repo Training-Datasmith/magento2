@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,11 +17,11 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Profiler;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Page\Config as PageConfig;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class ActionTest extends TestCase
 {
@@ -117,7 +118,7 @@ class ActionTest extends TestCase
         $this->_actionFlagMock->method('get')->willReturnMap(
             [
                 ['', Action::FLAG_NO_DISPATCH, false],
-                ['', Action::FLAG_NO_POST_DISPATCH]
+                ['', Action::FLAG_NO_POST_DISPATCH],
             ]
         );
 

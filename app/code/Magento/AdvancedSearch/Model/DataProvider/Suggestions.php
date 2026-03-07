@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\DataProvider;
 
-use Magento\Search\Model\QueryInterface;
 use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
+use Magento\Search\Model\QueryInterface;
 
 class Suggestions implements SuggestedQueriesInterface
 {
     /**
      * @inheritdoc
      */
-    public function isResultsCountEnabled()
+    public function isResultsCountEnabled(): bool
     {
         return false;
     }
@@ -21,7 +24,7 @@ class Suggestions implements SuggestedQueriesInterface
     /**
      * @inheritdoc
      */
-    public function getItems(QueryInterface $query)
+    public function getItems(QueryInterface $query): array
     {
         return [];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,5 +10,4 @@ namespace Magento\Framework\Reflection\Test\Unit\Fixture\UseClasses\SampleOne;
 
 class SampleThree
 {
-
 }

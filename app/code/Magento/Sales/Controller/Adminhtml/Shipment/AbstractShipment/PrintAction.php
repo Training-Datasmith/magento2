@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Shipment\AbstractShipment;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
+use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
-use Magento\Backend\Model\View\Result\ForwardFactory;
+use Magento\Framework\App\ResponseInterface;
 
 abstract class PrintAction extends \Magento\Backend\App\Action
 {
@@ -18,7 +21,7 @@ abstract class PrintAction extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::shipment';
+    public const ADMIN_RESOURCE = 'Magento_Sales::shipment';
 
     /**
      * @var FileFactory

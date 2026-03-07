@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product;
 
 use Magento\Customer\Model\Context as CustomerContext;
@@ -100,7 +103,7 @@ class NewProduct extends \Magento\Catalog\Block\Product\AbstractProduct implemen
            $this->_design->getDesignTheme()->getId(),
            $this->httpContext->getValue(CustomerContext::CONTEXT_GROUP),
            'template' => $this->getTemplate(),
-           $this->getProductsCount()
+           $this->getProductsCount(),
         ];
     }
 
@@ -126,7 +129,7 @@ class NewProduct extends \Magento\Catalog\Block\Product\AbstractProduct implemen
                 'or' => [
                     0 => ['date' => true, 'to' => $todayEndOfDayDate],
                     1 => ['is' => new \Zend_Db_Expr('null')],
-                ]
+                ],
             ],
             'left'
         )->addAttributeToFilter(
@@ -135,7 +138,7 @@ class NewProduct extends \Magento\Catalog\Block\Product\AbstractProduct implemen
                 'or' => [
                     0 => ['date' => true, 'from' => $todayStartOfDayDate],
                     1 => ['is' => new \Zend_Db_Expr('null')],
-                ]
+                ],
             ],
             'left'
         )->addAttributeToFilter(

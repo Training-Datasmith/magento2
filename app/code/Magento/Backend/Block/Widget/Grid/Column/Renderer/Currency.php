@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -85,7 +87,7 @@ class Currency extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
         if ($data = (string)$this->_getValue($row)) {
             $currency_code = $this->_getCurrencyCode($row);
             $sign = (bool)(int)$this->getColumn()->getShowNumberSign() && $data > 0 ? '+' : '';
-            $data = sprintf("%f", $data);
+            $data = sprintf('%f', $data);
             $data = $this->_localeCurrency->getCurrency($currency_code)->toCurrency($data);
             return $sign . $data;
         }

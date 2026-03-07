@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\Sales\Block\Adminhtml\Order\View\Tab\Transactions;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Test\Unit\Block\Adminhtml\Order\View\Tab\Stub\OnlineMethod;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -79,7 +80,7 @@ class TransactionsTest extends TestCase
             Transactions::class,
             [
                 'authorization' => $this->authorizationMock,
-                'registry' => $this->coreRegistryMock
+                'registry' => $this->coreRegistryMock,
             ]
         );
     }
@@ -115,7 +116,7 @@ class TransactionsTest extends TestCase
             [Cashondelivery::class, false],
             [Checkmo::class, false],
             [Banktransfer::class, false],
-            [Purchaseorder::class, false]
+            [Purchaseorder::class, false],
         ];
     }
 
@@ -141,7 +142,7 @@ class TransactionsTest extends TestCase
     {
         return [
             [true, false],
-            [false, true]
+            [false, true],
         ];
     }
 }

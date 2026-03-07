@@ -1,10 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework;
 
+use DomainException;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\DeploymentConfig\Reader;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -17,7 +21,6 @@ use Magento\Indexer\Model\Indexer\Collection;
 use Magento\TestFramework;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
 use Psr\Log\LoggerInterface;
-use DomainException;
 
 /**
  * Encapsulates application installation, initialization and uninstall.
@@ -211,7 +214,7 @@ class Application
         );
         $this->_initParams = [
             \Magento\Framework\App\Bootstrap::INIT_PARAM_FILESYSTEM_DIR_PATHS => $customDirs,
-            \Magento\Framework\App\State::PARAM_MODE => $appMode
+            \Magento\Framework\App\State::PARAM_MODE => $appMode,
         ];
         $driverPool = new \Magento\Framework\Filesystem\DriverPool();
         $configFilePool = new \Magento\Framework\Config\File\ConfigFilePool();
@@ -363,14 +366,14 @@ class Application
                                 \Magento\Framework\Logger\Handler\Exception::class,
                                 ['filePath' => $this->installDir]
                             ),
-                            'filePath' => $this->installDir
+                            'filePath' => $this->installDir,
                         ]
                     ),
                     'debug'  => $objectManager->create(
                         \Magento\Framework\Logger\Handler\Debug::class,
                         ['filePath' => $this->installDir]
                     ),
-                ]
+                ],
             ]
         );
         $objectManager->removeSharedInstance(LoggerInterface::class, true);
@@ -424,7 +427,7 @@ class Application
                 Mail\TransportInterface::class => TestFramework\Mail\TransportInterfaceMock::class,
                 Mail\Template\TransportBuilder::class => TestFramework\Mail\Template\TransportBuilderMock::class,
                 ProcessorInterface::class => \Magento\TestFramework\Fixture\Data\CompositeProcessor::class,
-            ]
+            ],
         ];
         if ($this->loadTestExtensionAttributes) {
             $objectManagerConfiguration = array_merge(
@@ -433,7 +436,7 @@ class Application
                     \Magento\Framework\Api\ExtensionAttribute\Config\Reader::class => [
                         'arguments' => [
                             'fileResolver' => [
-                                'instance' => TestFramework\Api\Config\Reader\FileResolver::class
+                                'instance' => TestFramework\Api\Config\Reader\FileResolver::class,
                             ],
                         ],
                     ],
@@ -449,9 +452,9 @@ class Application
                 'core_app_init_current_store_after' => [
                     'integration_tests' => [
                         'instance' => TestFramework\Event\Magento::class,
-                        'name' => 'integration_tests'
-                    ]
-                ]
+                        'name' => 'integration_tests',
+                    ],
+                ],
             ]
         );
 
@@ -615,7 +618,7 @@ class Application
             $argumentsAndOptions = $postInstallSetupCommand['config'];
 
             $argumentsAndOptionsPlaceholders = [
-                '--no-interaction'
+                '--no-interaction',
             ];
 
             foreach (array_keys($argumentsAndOptions) as $key) {
@@ -628,7 +631,7 @@ class Application
                 }
             }
 
-            $argumentsAndOptionsPlaceholders[] = "--magento-init-params=%s";
+            $argumentsAndOptionsPlaceholders[] = '--magento-init-params=%s';
             $argumentsAndOptions[] = $this->getInitParamsQuery();
 
             $this->_shell->execute(
@@ -792,7 +795,7 @@ class Application
             \Magento\Framework\App\Area::AREA_WEBAPI_REST,
             \Magento\Framework\App\Area::AREA_WEBAPI_SOAP,
             \Magento\Framework\App\Area::AREA_CRONTAB,
-            \Magento\Framework\App\Area::AREA_GRAPHQL
+            \Magento\Framework\App\Area::AREA_GRAPHQL,
         ];
         if (in_array($areaCode, $areasForPartialLoading, true)) {
             $app->getArea($areaCode)->load(\Magento\Framework\App\Area::PART_CONFIG);
@@ -843,8 +846,8 @@ class Application
         Helper\Bootstrap::setObjectManager($objectManager);
         $objectManagerConfiguration = [
             'preferences' => [
-                \Magento\Framework\App\State::class => TestFramework\App\State::class
-            ]
+                \Magento\Framework\App\State::class => TestFramework\App\State::class,
+            ],
         ];
         $objectManager->configure($objectManagerConfiguration);
         $this->setIndexerToRealtime($objectManager);

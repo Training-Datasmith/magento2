@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\SendFriend\Test\Unit\Model;
 
 use Magento\Framework\Stdlib\Cookie\CookieMetadata;
+use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\SensitiveCookieMetadata;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -15,7 +17,6 @@ use Magento\SendFriend\Helper\Data;
 use Magento\SendFriend\Model\SendFriend;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 
 /**
  * Test SendFriend
@@ -55,7 +56,7 @@ class SendFriendTest extends TestCase
             [
                 'sendfriendData' => $this->sendfriendDataMock,
                 'cookieManager' => $this->cookieManagerMock,
-                'cookieMetadataFactory' => $this->cookieMetadataFactoryMock
+                'cookieMetadataFactory' => $this->cookieMetadataFactoryMock,
             ]
         );
     }
@@ -88,7 +89,7 @@ class SendFriendTest extends TestCase
             ->method('createSensitiveCookieMetadata')
             ->with(
                 [
-                    CookieMetadata::KEY_SAME_SITE => 'Lax'
+                    CookieMetadata::KEY_SAME_SITE => 'Lax',
                 ]
             )
             ->willReturn($sensitiveCookieMetadataMock);

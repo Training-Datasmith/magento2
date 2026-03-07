@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class DeleteAuthenticationDataForListOfUser implements DeleteAuthenticationDataF
         $connection->delete(
             $tableName,
             [
-                'admin_id IN (?)' => $userIds
+                'admin_id IN (?)' => $userIds,
             ]
         );
     }

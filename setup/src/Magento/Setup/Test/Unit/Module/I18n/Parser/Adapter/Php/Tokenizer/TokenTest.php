@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\I18n\Parser\Adapter\Php\Tokenizer;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\Token;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\Token
@@ -77,7 +78,7 @@ class TokenTest extends TestCase
         return [
             'new' => ['name' => T_NEW, 'value' => 'new', 'result' => true],
             'namespace' => ['name' => T_NS_SEPARATOR, 'value' => '\\', 'result' => false],
-            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => false]
+            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => false],
         ];
     }
 
@@ -89,7 +90,7 @@ class TokenTest extends TestCase
         return [
             'new' => ['name' => T_NEW, 'value' => 'new', 'result' => false],
             'namespace' => ['name' => T_NS_SEPARATOR, 'value' => '\\', 'result' => true],
-            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => false]
+            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => false],
         ];
     }
 
@@ -101,7 +102,7 @@ class TokenTest extends TestCase
         return [
             'new' => ['name' => T_NEW, 'value' => 'new', 'result' => false],
             'namespace' => ['name' => T_NS_SEPARATOR, 'value' => '\\', 'result' => false],
-            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => true]
+            'identifier' => ['name' => T_STRING, 'value' => '__', 'result' => true],
         ];
     }
 
@@ -118,7 +119,7 @@ class TokenTest extends TestCase
             [
                 'name' => $name,
                 'value' => $value,
-                'line' => $line
+                'line' => $line,
             ]
         );
     }

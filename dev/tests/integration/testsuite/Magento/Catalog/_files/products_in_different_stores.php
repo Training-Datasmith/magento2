@@ -1,16 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Store/_files/core_fixturestore.php');
@@ -60,7 +62,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_1')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')
@@ -84,7 +86,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_2')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')
@@ -108,7 +110,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_3')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\User\Controller\Adminhtml\User;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\User\Block\User\Edit\Tab\Main as UserEdit;
 use Magento\Framework\Exception\AuthenticationException;
+use Magento\User\Block\User\Edit\Tab\Main as UserEdit;
 use Magento\User\Controller\Adminhtml\User;
 
 class Delete extends User implements HttpPostActionInterface

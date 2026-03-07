@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Framework\App\Config\ReinitableConfigInterface;
@@ -16,45 +19,23 @@ class AnalyticsToken
 {
     /**
      * Path to value of Magento BI token into config.
-     *
-     * @var string
      */
-    private $tokenPath = 'analytics/general/token';
+    private string $tokenPath = 'analytics/general/token';
 
-    /**
-     * Reinitable Config Model.
-     *
-     * @var ReinitableConfigInterface
-     */
-    private $reinitableConfig;
-
-    /**
-     * Scope config model.
-     *
-     * @var ScopeConfigInterface
-     */
-    private $config;
-
-    /**
-     * Service which allows to write values into config.
-     *
-     * @var WriterInterface
-     */
-    private $configWriter;
-
-    /**
-     * @param ReinitableConfigInterface $reinitableConfig
-     * @param ScopeConfigInterface $config
-     * @param WriterInterface $configWriter
-     */
     public function __construct(
-        ReinitableConfigInterface $reinitableConfig,
-        ScopeConfigInterface $config,
-        WriterInterface $configWriter
+        /**
+         * Reinitable Config Model.
+         */
+        private readonly ReinitableConfigInterface $reinitableConfig,
+        /**
+         * Scope config model.
+         */
+        private readonly ScopeConfigInterface $config,
+        /**
+         * Service which allows to write values into config.
+         */
+        private readonly WriterInterface $configWriter
     ) {
-        $this->reinitableConfig = $reinitableConfig;
-        $this->config = $config;
-        $this->configWriter = $configWriter;
     }
 
     /**
@@ -71,10 +52,8 @@ class AnalyticsToken
      * Stores Magento BI token value.
      *
      * @param string $value
-     *
-     * @return bool
      */
-    public function storeToken($value)
+    public function storeToken($value): bool
     {
         $this->configWriter->save($this->tokenPath, $value);
         $this->reinitableConfig->reinit();
@@ -84,10 +63,8 @@ class AnalyticsToken
 
     /**
      * Check Magento BI token value exist.
-     *
-     * @return bool
      */
-    public function isTokenExist()
+    public function isTokenExist(): bool
     {
         return (bool)$this->getToken();
     }

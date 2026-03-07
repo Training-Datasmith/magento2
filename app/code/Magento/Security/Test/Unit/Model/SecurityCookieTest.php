@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class SecurityCookieTest extends TestCase
                 'phpCookieManager' => $this->phpCookieManagerMock,
                 'cookieMetadataFactory' => $this->cookieMetadataFactoryMock,
                 'cookieReader' => $this->cookieReaderMock,
-                'backendData' => $this->backendDataMock
+                'backendData' => $this->backendDataMock,
             ]
         );
     }

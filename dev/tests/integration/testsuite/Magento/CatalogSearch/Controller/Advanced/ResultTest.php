@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Controller\Advanced;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\TestFramework\TestCase\AbstractController;
-use Laminas\Stdlib\Parameters;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -59,7 +60,7 @@ class ResultTest extends AbstractController
             $this->_objectManager->create(
                 Parameters::class,
                 [
-                    'values' => $searchParams
+                    'values' => $searchParams,
                 ]
             )
         );
@@ -94,7 +95,7 @@ class ResultTest extends AbstractController
                             'to' => '',
                         ],
                         'test_searchable_attribute' => '',
-                    ]
+                    ],
                 ]
             )
         );
@@ -153,7 +154,7 @@ class ResultTest extends AbstractController
             $this->_objectManager->create(
                 Parameters::class,
                 [
-                    'values' => $searchParams
+                    'values' => $searchParams,
                 ]
             )
         );
@@ -184,7 +185,7 @@ class ResultTest extends AbstractController
             $this->_objectManager->create(
                 Parameters::class,
                 [
-                    'values' => $searchParams
+                    'values' => $searchParams,
                 ]
             )
         );
@@ -219,8 +220,8 @@ class ResultTest extends AbstractController
                     'price' => [
                         'from' => [],
                         'to' => 1,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'search_with_to_param_is_array' => [
                 [
@@ -231,8 +232,8 @@ class ResultTest extends AbstractController
                     'price' => [
                         'from' => 0,
                         'to' => [],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'search_with_params_in_array' => [
                 [
@@ -243,8 +244,8 @@ class ResultTest extends AbstractController
                     'price' => [
                         'from' => ['0' => 1],
                         'to' => [1],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'search_with_params_in_array_in_array' => [
                 [
@@ -255,8 +256,8 @@ class ResultTest extends AbstractController
                     'price' => [
                         'from' => ['0' => ['0' => 1]],
                         'to' => 1,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'search_with_name_param_is_array' => [
                 [
@@ -267,9 +268,9 @@ class ResultTest extends AbstractController
                     'price' => [
                         'from' => 0,
                         'to' => 20,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -397,7 +398,7 @@ class ResultTest extends AbstractController
                     ],
                     'test_searchable_attribute' => '',
                 ],
-                true
+                true,
             ],
             'search_product_by_name_and_price_not_shown' => [
                 [
@@ -411,7 +412,7 @@ class ResultTest extends AbstractController
                     ],
                     'test_searchable_attribute' => '',
                 ],
-                false
+                false,
             ],
             'search_product_by_sku' => [
                 [
@@ -425,7 +426,7 @@ class ResultTest extends AbstractController
                     ],
                     'test_searchable_attribute' => '',
                 ],
-                true
+                true,
             ],
             'search_product_by_sku_not_shown' => [
                 [
@@ -439,7 +440,7 @@ class ResultTest extends AbstractController
                     ],
                     'test_searchable_attribute' => '',
                 ],
-                false
+                false,
             ],
         ];
     }

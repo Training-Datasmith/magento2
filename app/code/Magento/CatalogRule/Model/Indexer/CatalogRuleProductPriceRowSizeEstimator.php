@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Model\Indexer;
 
+use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Indexer\IndexTableRowSizeEstimatorInterface;
-use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**

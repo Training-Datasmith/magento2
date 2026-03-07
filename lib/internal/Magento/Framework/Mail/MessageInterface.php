@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mail;
 
 /**
@@ -19,12 +22,12 @@ interface MessageInterface
      * Types of message
      * @deprecated
      */
-    const TYPE_TEXT = 'text/plain';
+    public const TYPE_TEXT = 'text/plain';
 
     /**
      * @deprecated
      */
-    const TYPE_HTML = 'text/html';
+    public const TYPE_HTML = 'text/html';
 
     /**
      * Set message subject

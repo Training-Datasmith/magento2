@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,5 +19,5 @@ interface ExtensibleDataInterface
     /**
      * Key for extension attributes object
      */
-    const EXTENSION_ATTRIBUTES_KEY = 'extension_attributes';
+    public const EXTENSION_ATTRIBUTES_KEY = 'extension_attributes';
 }

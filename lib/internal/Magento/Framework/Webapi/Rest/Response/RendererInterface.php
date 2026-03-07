@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Interface of REST response renderers.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi\Rest\Response;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,11 +18,11 @@ use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\PrintLabel;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
 use Magento\Shipping\Model\Shipping\LabelGenerator;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -131,7 +132,7 @@ class PrintLabelTest extends TestCase
             'getSession',
             'getActionFlag',
             'getObjectManager',
-            'getHelper'
+            'getHelper',
         ]);
 
         $contextMock->expects($this->any())->method('getRequest')->willReturn($this->requestMock);
@@ -169,7 +170,7 @@ class PrintLabelTest extends TestCase
 
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['order_id'] => $orderId,
                 ['shipment_id'] => $shipmentId,
                 ['shipment'] => $shipment,
@@ -294,7 +295,7 @@ class PrintLabelTest extends TestCase
         $exception = new \Exception();
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['order_id'] => $orderId,
                 ['shipment_id'] => $shipmentId,
                 ['shipment'] => $shipment,

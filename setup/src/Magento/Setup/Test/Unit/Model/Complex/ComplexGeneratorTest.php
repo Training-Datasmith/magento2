@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,10 +38,10 @@ class ComplexGeneratorTest extends TestCase
                     },
                 ],
                 [
-                    'name' => 'xxx %s'
+                    'name' => 'xxx %s',
                 ],
                 [
-                    'name' => 'yyy %s'
+                    'name' => 'yyy %s',
                 ],
             ];
             $this->_pattern = new Pattern();

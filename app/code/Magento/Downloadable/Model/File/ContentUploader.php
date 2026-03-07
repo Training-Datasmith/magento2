@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\File;
 
-use Magento\MediaStorage\Helper\File\Storage;
-use Magento\MediaStorage\Helper\File\Storage\Database;
-use Magento\MediaStorage\Model\File\Uploader;
-use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
 use Magento\Downloadable\Api\Data\File\ContentInterface;
 use Magento\Downloadable\Model\Link as LinkConfig;
 use Magento\Downloadable\Model\Sample as SampleConfig;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
+use Magento\MediaStorage\Helper\File\Storage;
+use Magento\MediaStorage\Helper\File\Storage\Database;
+use Magento\MediaStorage\Model\File\Uploader;
+use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
 
 class ContentUploader extends Uploader implements \Magento\Downloadable\Api\Data\File\ContentUploaderInterface
 {

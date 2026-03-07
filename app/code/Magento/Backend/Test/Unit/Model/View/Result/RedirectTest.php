@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class RedirectTest extends TestCase
                 'session' => $this->session,
                 'actionFlag' => $this->actionFlag,
                 'redirect' => $this->redirect,
-                'urlBuilder' =>$this->urlBuilder,
+                'urlBuilder' => $this->urlBuilder,
             ]
         );
     }

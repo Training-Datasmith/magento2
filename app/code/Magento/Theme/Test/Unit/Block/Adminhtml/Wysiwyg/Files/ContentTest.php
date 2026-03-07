@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Theme\Block\Adminhtml\Wysiwyg\Files\Content;
 use Magento\Theme\Model\Wysiwyg\Storage;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ContentTest extends TestCase
 {
@@ -46,13 +47,13 @@ class ContentTest extends TestCase
 
         $objectManagerHelper = new ObjectManager($this);
         $objectManagerHelper->prepareObjectManager();
-        
+
         $constructArguments = $objectManagerHelper->getConstructArguments(
             Content::class,
             [
                 'urlBuilder' => $this->_urlBuilder,
                 'request' => $this->_request,
-                'storageHelper' => $this->_helperStorage
+                'storageHelper' => $this->_helperStorage,
             ]
         );
         $this->_filesContent = $objectManagerHelper->getObject(
@@ -163,8 +164,8 @@ class ContentTest extends TestCase
                     \Magento\Theme\Helper\Storage::PARAM_THEME_ID => 1,
                     \Magento\Theme\Helper\Storage::PARAM_CONTENT_TYPE => Storage::TYPE_IMAGE,
                     \Magento\Theme\Helper\Storage::PARAM_NODE => 'root',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,13 +10,12 @@ namespace Magento\CatalogInventoryGraphQl\Model\Resolver;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\CatalogInventory\Api\Data\StockStatusInterface;
 use Magento\CatalogInventory\Api\StockStatusRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Model\Quote\Item;
 
 /**
@@ -26,22 +26,22 @@ class StockStatusProvider implements ResolverInterface
     /**
      * Bundle product type code
      */
-    private const PRODUCT_TYPE_BUNDLE = "bundle";
+    private const PRODUCT_TYPE_BUNDLE = 'bundle';
 
     /**
      * Configurable product type code
      */
-    private const PRODUCT_TYPE_CONFIGURABLE = "configurable";
+    private const PRODUCT_TYPE_CONFIGURABLE = 'configurable';
 
     /**
      * In Stock return code
      */
-    private const IN_STOCK = "IN_STOCK";
+    private const IN_STOCK = 'IN_STOCK';
 
     /**
      * Out of Stock return code
      */
-    private const OUT_OF_STOCK = "OUT_OF_STOCK";
+    private const OUT_OF_STOCK = 'OUT_OF_STOCK';
 
     /**
      * StockStatusProvider Constructor

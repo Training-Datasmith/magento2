@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config\FileCollector;
 
 use Magento\Framework\Filesystem\Directory\ReadFactory;
 use Magento\Framework\View\DesignInterface;
-use Magento\Framework\View\File\CollectorInterface;
 use Magento\Framework\View\Element\UiComponent\Config\FileCollectorInterface;
+use Magento\Framework\View\File\CollectorInterface;
 
 /**
  * Class AggregatedFileCollector

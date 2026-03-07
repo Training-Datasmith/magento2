@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,19 +9,18 @@
 namespace Magento\Integration\Model;
 
 use Magento\Authorization\Model\UserContextInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Model\CustomerFactory;
+use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Integration\Api\UserTokenReaderInterface;
-use Magento\Integration\Model\Oauth\Token as TokenModel;
+use Magento\Integration\Model\Oauth\Token\RequestLog\Config as TokenThrottlerConfig;
+use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Model\User as UserModel;
-use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
-use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory;
-use Magento\Integration\Model\Oauth\Token\RequestLog\Config as TokenThrottlerConfig;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\Customer\Model\CustomerFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * api-functional test for \Magento\Integration\Model\CustomerTokenService.
@@ -28,9 +29,9 @@ use Magento\Customer\Model\CustomerFactory;
  */
 class CustomerTokenServiceTest extends WebapiAbstract
 {
-    private const SERVICE_NAME = "integrationCustomerTokenServiceV1";
-    private const SERVICE_VERSION = "V1";
-    private const RESOURCE_PATH_CUSTOMER_TOKEN = "/V1/integration/customer/token";
+    private const SERVICE_NAME = 'integrationCustomerTokenServiceV1';
+    private const SERVICE_VERSION = 'V1';
+    private const RESOURCE_PATH_CUSTOMER_TOKEN = '/V1/integration/customer/token';
 
     /**
      * @var CustomerTokenServiceInterface
@@ -165,7 +166,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
             $this->assertInputExceptionMessages($e);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+            $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
         }
     }
 
@@ -188,7 +189,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
             $this->assertInvalidCredentialsException($e);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+            $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
         }
     }
 
@@ -201,7 +202,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
     {
         return [
             'Check for empty credentials' => ['', ''],
-            'Check for null credentials' => [null, null]
+            'Check for null credentials' => [null, null],
         ];
     }
 
@@ -227,7 +228,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
                     'message' => '"%fieldName" is required. Enter and try again.',
                     'parameters' => [
                         'fieldName' => 'password',
-                    ]
+                    ],
                 ],
             ],
         ];
@@ -268,7 +269,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
         }
         if ($noExceptionOccurred) {
             $this->fail(
-                "Precondition failed: exception should have occurred when token was requested with invalid credentials."
+                'Precondition failed: exception should have occurred when token was requested with invalid credentials.'
             );
         }
 
@@ -310,7 +311,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
                 $this->assertInvalidCredentialsException($e);
             }
             if ($noExceptionOccurred) {
-                $this->fail("Exception was expected to be thrown when provided credentials are invalid.");
+                $this->fail('Exception was expected to be thrown when provided credentials are invalid.');
             }
         }
 
@@ -322,7 +323,7 @@ class CustomerTokenServiceTest extends WebapiAbstract
             $this->assertInvalidCredentialsException($e);
         }
         if ($noExceptionOccurred) {
-            $this->fail("Exception was expected to be thrown because account should have been locked at this point.");
+            $this->fail('Exception was expected to be thrown because account should have been locked at this point.');
         }
     }
 
@@ -333,13 +334,13 @@ class CustomerTokenServiceTest extends WebapiAbstract
      */
     private function assertInvalidCredentialsException($e)
     {
-        $this->assertEquals(HTTPExceptionCodes::HTTP_UNAUTHORIZED, $e->getCode(), "Response HTTP code is invalid.");
+        $this->assertEquals(HTTPExceptionCodes::HTTP_UNAUTHORIZED, $e->getCode(), 'Response HTTP code is invalid.');
         $exceptionData = $this->processRestExceptionResult($e);
         $expectedExceptionData = [
             'message' => 'The account sign-in was incorrect or your account is disabled temporarily. '
-                . 'Please wait and try again later.'
+                . 'Please wait and try again later.',
         ];
-        $this->assertEquals($expectedExceptionData, $exceptionData, "Exception message is invalid.");
+        $this->assertEquals($expectedExceptionData, $exceptionData, 'Exception message is invalid.');
     }
 
     /**

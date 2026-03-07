@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\AssertionFailedError;
 use Magento\TestFramework\Event\Magento;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\TestCase;
 use PHPUnit\TestRunner\TestResult\PassedTests;
 
 /**
@@ -46,7 +49,7 @@ class TestsIsolation
         'eav_attribute_set',
         'store',
         'store_website',
-        'url_rewrite'
+        'url_rewrite',
     ];
 
     /**
@@ -181,7 +184,7 @@ class TestsIsolation
             $test->getTestResultObject()->addFailure(
                 $test,
                 new AssertionFailedError(
-                    "There was a problem with isolation: " . var_export($isolationProblem, true)
+                    'There was a problem with isolation: ' . var_export($isolationProblem, true)
                 ),
                 0
             );

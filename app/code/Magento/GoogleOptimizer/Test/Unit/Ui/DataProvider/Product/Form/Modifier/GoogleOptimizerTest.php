@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,15 +13,15 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\GoogleOptimizer\Helper\Code;
-use Magento\GoogleOptimizer\Model\Code as ModelCode;
 use Magento\GoogleOptimizer\Helper\Data;
+use Magento\GoogleOptimizer\Model\Code as ModelCode;
 use Magento\GoogleOptimizer\Ui\DataProvider\Product\Form\Modifier\GoogleOptimizer;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Element\Input;
 use Magento\Ui\Component\Form\Element\Textarea;
 use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Fieldset;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -81,7 +82,7 @@ class GoogleOptimizerTest extends TestCase
             [
                 'locator' => $this->locatorMock,
                 'dataHelper' => $this->dataHelperMock,
-                'codeHelper' => $this->codeHelperMock
+                'codeHelper' => $this->codeHelperMock,
             ]
         );
     }

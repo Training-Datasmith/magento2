@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class ImageTest extends TestCase
             ->method('emulateAreaCode')
             ->with(
                 'frontend',
-                [$this->model, "emulateImageCreating"],
+                [$this->model, 'emulateImageCreating'],
                 [$product, $imageCode, 1, $image]
             )
             ->willReturn($imageHelper);
@@ -131,7 +132,7 @@ class ImageTest extends TestCase
             ->method('setImages')
             ->with(
                 [
-                    $image
+                    $image,
                 ]
             );
         $this->model->collect($product, $productRenderInfoDto);

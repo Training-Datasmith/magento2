@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model;
 
 /**
@@ -18,13 +21,13 @@ class ProductTest extends AbstractProductExportImportTestCase
         return [
             'product_export_data' => [
                 [
-                    'Magento/CatalogImportExport/_files/product_export_data.php'
+                    'Magento/CatalogImportExport/_files/product_export_data.php',
                 ],
                 [
                     'simple_ms_1',
                     'simple_ms_2',
                     'simple',
-                ]
+                ],
             ],
             // @todo uncomment after resolving MAGETWO-49677
             /*
@@ -40,59 +43,59 @@ class ProductTest extends AbstractProductExportImportTestCase
             */
             'simple-product' => [
                 [
-                    'Magento/Catalog/_files/product_simple.php'
+                    'Magento/Catalog/_files/product_simple.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'simple-product-multistore' => [
                 [
-                    'Magento/Catalog/_files/product_simple_multistore.php'
+                    'Magento/Catalog/_files/product_simple_multistore.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'simple-product-xss' => [
                 [
-                    'Magento/Catalog/_files/product_simple_xss.php'
+                    'Magento/Catalog/_files/product_simple_xss.php',
                 ],
                 [
                     'product-with-xss',
-                ]
+                ],
             ],
             'simple-product-special-price' => [
                 [
-                    'Magento/Catalog/_files/product_special_price.php'
+                    'Magento/Catalog/_files/product_special_price.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'virtual-product' => [
                 [
-                    'Magento/Catalog/_files/product_virtual_in_stock.php'
+                    'Magento/Catalog/_files/product_virtual_in_stock.php',
                 ],
                 [
                     'virtual-product',
-                ]
+                ],
             ],
             'simple-product-options' => [
                 [
-                    'Magento/Catalog/_files/product_with_options.php'
+                    'Magento/Catalog/_files/product_with_options.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'simple-product-dropdown' => [
                 [
-                    'Magento/Catalog/_files/product_with_dropdown_option.php'
+                    'Magento/Catalog/_files/product_with_dropdown_option.php',
                 ],
                 [
                     'simple_dropdown_option',
-                ]
+                ],
             ],
             'simple-product-image' => [
                 [
@@ -103,35 +106,35 @@ class ProductTest extends AbstractProductExportImportTestCase
                     'simple',
                 ],
                 [
-                    "image",
-                    "small_image",
-                    "thumbnail",
-                    "media_gallery"
-                ]
+                    'image',
+                    'small_image',
+                    'thumbnail',
+                    'media_gallery',
+                ],
             ],
             'simple-product-crosssell' => [
                 [
-                    'Magento/Catalog/_files/products_crosssell.php'
+                    'Magento/Catalog/_files/products_crosssell.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'simple-product-related' => [
                 [
-                    'Magento/Catalog/_files/products_related_multiple.php'
+                    'Magento/Catalog/_files/products_related_multiple.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
             'simple-product-upsell' => [
                 [
-                    'Magento/Catalog/_files/products_upsell.php'
+                    'Magento/Catalog/_files/products_upsell.php',
                 ],
                 [
                     'simple',
-                ]
+                ],
             ],
         ];
     }

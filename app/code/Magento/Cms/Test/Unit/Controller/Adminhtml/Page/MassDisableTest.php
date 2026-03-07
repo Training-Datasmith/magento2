@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class MassDisableTest extends AbstractMassActionTestCase
             [
                 'context' => $this->contextMock,
                 'filter' => $this->filterMock,
-                'collectionFactory' => $this->collectionFactoryMock
+                'collectionFactory' => $this->collectionFactoryMock,
             ]
         );
     }
@@ -59,7 +60,7 @@ class MassDisableTest extends AbstractMassActionTestCase
 
         $collection = [
             $this->getPageMock(),
-            $this->getPageMock()
+            $this->getPageMock(),
         ];
 
         $this->collectionFactoryMock->expects($this->once())->method('create')->willReturn($this->pageCollectionMock);

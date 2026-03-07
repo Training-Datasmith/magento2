@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,11 +18,11 @@ class AlgorithmFactory
     /**
      * XML configuration path for Price Layered Navigation
      */
-    const XML_PATH_RANGE_CALCULATION = 'catalog/layered_navigation/price_range_calculation';
+    public const XML_PATH_RANGE_CALCULATION = 'catalog/layered_navigation/price_range_calculation';
 
-    const RANGE_CALCULATION_AUTO = 'auto';
-    const RANGE_CALCULATION_IMPROVED = 'improved';
-    const RANGE_CALCULATION_MANUAL = 'manual';
+    public const RANGE_CALCULATION_AUTO = 'auto';
+    public const RANGE_CALCULATION_IMPROVED = 'improved';
+    public const RANGE_CALCULATION_MANUAL = 'manual';
 
     /**
      * Object Manager

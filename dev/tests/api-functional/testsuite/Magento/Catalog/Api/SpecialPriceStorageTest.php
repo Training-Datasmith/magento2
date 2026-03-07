@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
 use Magento\Framework\Exception\CouldNotSaveException;
@@ -17,6 +19,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * SpecialPriceStorage API operations test
@@ -70,7 +73,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price-information',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -101,7 +104,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price-information',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -126,7 +129,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -138,8 +141,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
             $serviceInfo,
             [
                 'prices' => [
-                    $data
-                ]
+                    $data,
+                ],
             ]
         );
         $this->assertEmpty($response);
@@ -157,7 +160,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price-delete',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -175,9 +178,9 @@ class SpecialPriceStorageTest extends WebapiAbstract
                         'store_id' => 1,
                         'sku' => self::SIMPLE_PRODUCT_SKU,
                         'price_from' => '2037-01-19 03:14:07',
-                        'price_to' => '2038-01-19 03:14:07'
-                    ]
-                ]
+                        'price_to' => '2038-01-19 03:14:07',
+                    ],
+                ],
             ]
         );
 
@@ -213,7 +216,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price-delete',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -225,8 +228,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
             $serviceInfo,
             [
                 'prices' => [
-                        $data
-                ]
+                        $data,
+                ],
             ]
         );
         $product = $productRepository->get($data['sku'], false, null, true);
@@ -252,8 +255,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
                     'store_id' => 0,
                     'sku' => self::VIRTUAL_PRODUCT_SKU,
                     'price_from' => $fromDate,
-                    'price_to' => $toDate
-                ]
+                    'price_to' => $toDate,
+                ],
             ],
             [
                 // data set without 'price_to' specified
@@ -262,8 +265,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
                     'store_id' => 0,
                     'sku' => self::VIRTUAL_PRODUCT_SKU,
                     'price_from' => $fromDate,
-                    'price_to' => false
-                ]
+                    'price_to' => false,
+                ],
             ],
         ];
     }
@@ -286,8 +289,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
                     'store_id' => 0,
                     'sku' => self::SIMPLE_PRODUCT_SKU,
                     'price_from' => $fromDate,
-                    'price_to' => $toDate
-                ]
+                    'price_to' => $toDate,
+                ],
             ],
             [
                 // data set without 'price_to' specified
@@ -296,8 +299,8 @@ class SpecialPriceStorageTest extends WebapiAbstract
                     'store_id' => 0,
                     'sku' => self::SIMPLE_PRODUCT_SKU,
                     'price_from' => $fromDate,
-                    'price_to' => false
-                ]
+                    'price_to' => false,
+                ],
             ],
         ];
     }
@@ -319,7 +322,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
             'store_id' => $secondStoreViewId,
             'sku' => self::PRODUCT_SKU_TWO_WEBSITES,
             'price_from' => '1970-01-01 00:00:01',
-            'price_to' => false
+            'price_to' => false,
         ];
 
         /** @var ProductRepositoryInterface $productRepository */
@@ -340,7 +343,7 @@ class SpecialPriceStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/special-price-delete',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

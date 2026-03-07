@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class AuthObserverTest extends TestCase
                 'unsPciAdminUserIsPasswordExpired',
                 'getPciAdminUserIsPasswordExpired',
                 'isLoggedIn',
-                'clearStorage'
+                'clearStorage',
             ]
         );
         $this->userFactoryMock = $this->createPartialMock(UserFactory::class, ['create']);
@@ -99,7 +100,7 @@ class AuthObserverTest extends TestCase
         $this->observerConfig = $helper->getObject(
             ObserverConfig::class,
             [
-                'backendConfig' => $this->configInterfaceMock
+                'backendConfig' => $this->configInterfaceMock,
             ]
         );
 
@@ -114,20 +115,20 @@ class AuthObserverTest extends TestCase
                 'encryptor' => $this->encryptorMock,
                 'messageManager' => $this->managerInterfaceMock,
                 'messageInterface' => $this->messageInterfaceMock,
-                'eventManager' => $this->eventManagerMock
+                'eventManager' => $this->eventManagerMock,
             ]
         );
     }
 
     public function testAdminAuthenticate()
     {
-        $password = "myP@sw0rd";
+        $password = 'myP@sw0rd';
         $uid = 123;
         $authResult = true;
         $lockExpires = false;
         $userPassword = [
             'expires' => 1,
-            'last_updated' => 1496248367
+            'last_updated' => 1496248367,
         ];
 
         /** @var Observer|MockObject $eventObserverMock */
@@ -175,7 +176,7 @@ class AuthObserverTest extends TestCase
 
     public function testAdminAuthenticateThrowsException()
     {
-        $password = "myP@sw0rd";
+        $password = 'myP@sw0rd';
         $authResult = true;
         $lockExpires = '3015-07-08 11:14:15.638276';
 
@@ -215,13 +216,13 @@ class AuthObserverTest extends TestCase
      */
     public function testAdminAuthenticatePasswordExpire(): void
     {
-        $password = "myP@sw0rd";
+        $password = 'myP@sw0rd';
         $uid = 123;
         $authResult = true;
         $lockExpires = false;
         $userPassword = [
             'expires' => 1,
-            'last_updated' => 1694661402
+            'last_updated' => 1694661402,
         ];
 
         /** @var Observer|MockObject $eventObserverMock */
@@ -269,7 +270,7 @@ class AuthObserverTest extends TestCase
 
     public function testAdminAuthenticateUpdateLockingInfo()
     {
-        $password = "myP@sw0rd";
+        $password = 'myP@sw0rd';
         $uid = 123;
         $authResult = false;
         $firstFailure = '1965-07-08 11:14:15.638276';

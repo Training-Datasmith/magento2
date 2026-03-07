@@ -1,16 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model;
 
 use Laminas\Http\Request;
-use Magento\AdminNotification\Model\InboxFactory;
-use Magento\Backend\App\ConfigInterface;
-use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Escaper;
@@ -20,7 +19,6 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
-use Magento\Framework\UrlInterface;
 use SimpleXMLElement;
 
 /**
@@ -51,11 +49,6 @@ class Feed extends AbstractModel
     protected $_feedUrl;
 
     /**
-     * @var ConfigInterface
-     */
-    protected $_backendConfig;
-
-    /**
      * @var InboxFactory
      */
     protected $_inboxFactory;
@@ -67,58 +60,28 @@ class Feed extends AbstractModel
     protected $curlFactory;
 
     /**
-     * Deployment configuration
-     *
-     * @var DeploymentConfig
-     */
-    protected $_deploymentConfig;
-
-    /**
-     * @var ProductMetadataInterface
-     */
-    protected $productMetadata;
-
-    /**
-     * @var UrlInterface
-     */
-    protected $urlBuilder;
-
-    /**
-     * @param Context $context
-     * @param Registry $registry
-     * @param ConfigInterface $backendConfig
-     * @param InboxFactory $inboxFactory
-     * @param CurlFactory $curlFactory
-     * @param DeploymentConfig $deploymentConfig
-     * @param ProductMetadataInterface $productMetadata
-     * @param UrlInterface $urlBuilder
-     * @param AbstractResource|null $resource
-     * @param AbstractDb|null $resourceCollection
-     * @param array $data
-     * @param Escaper|null $escaper
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         Context $context,
         Registry $registry,
-        ConfigInterface $backendConfig,
+        protected \Magento\Backend\App\ConfigInterface $_backendConfig,
         InboxFactory $inboxFactory,
         CurlFactory $curlFactory,
-        DeploymentConfig $deploymentConfig,
-        ProductMetadataInterface $productMetadata,
-        UrlInterface $urlBuilder,
+        /**
+         * Deployment configuration
+         */
+        protected \Magento\Framework\App\DeploymentConfig $_deploymentConfig,
+        protected \Magento\Framework\App\ProductMetadataInterface $productMetadata,
+        protected \Magento\Framework\UrlInterface $urlBuilder,
         ?AbstractResource $resource = null,
         ?AbstractDb $resourceCollection = null,
         array $data = [],
         ?Escaper $escaper = null
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-        $this->_backendConfig = $backendConfig;
         $this->_inboxFactory = $inboxFactory;
         $this->curlFactory = $curlFactory;
-        $this->_deploymentConfig = $deploymentConfig;
-        $this->productMetadata = $productMetadata;
-        $this->urlBuilder = $urlBuilder;
         $this->escaper = $escaper ?? ObjectManager::getInstance()->get(
             Escaper::class
         );
@@ -153,7 +116,7 @@ class Feed extends AbstractModel
      *
      * @return $this
      */
-    public function checkUpdate()
+    public function checkUpdate(): static
     {
         if ($this->getFrequency() + $this->getLastUpdate() > time()) {
             return $this;
@@ -163,7 +126,7 @@ class Feed extends AbstractModel
 
         $feedXml = $this->getFeedData();
 
-        $installDate = strtotime($this->_deploymentConfig->get(ConfigOptionsListConstants::CONFIG_PATH_INSTALL_DATE));
+        $installDate = strtotime((string) $this->_deploymentConfig->get(ConfigOptionsListConstants::CONFIG_PATH_INSTALL_DATE));
 
         if ($feedXml && $feedXml->channel && $feedXml->channel->item) {
             foreach ($feedXml->channel->item as $item) {
@@ -193,7 +156,7 @@ class Feed extends AbstractModel
      *
      * @return int
      */
-    public function getFrequency()
+    public function getFrequency(): int|float
     {
         return $this->_backendConfig->getValue(self::XML_FREQUENCY_PATH) * 3600;
     }
@@ -213,7 +176,7 @@ class Feed extends AbstractModel
      *
      * @return $this
      */
-    public function setLastUpdate()
+    public function setLastUpdate(): static
     {
         $this->_cacheManager->save(time(), 'admin_notifications_lastcheck');
         return $this;
@@ -224,7 +187,7 @@ class Feed extends AbstractModel
      *
      * @return SimpleXMLElement
      */
-    public function getFeedData()
+    public function getFeedData(): false|\SimpleXMLElement
     {
         /** @var Curl $curl */
         $curl = $this->curlFactory->create();
@@ -234,7 +197,7 @@ class Feed extends AbstractModel
                 'useragent' => $this->productMetadata->getName()
                     . '/' . $this->productMetadata->getVersion()
                     . ' (' . $this->productMetadata->getEdition() . ')',
-                'referer'   => $this->urlBuilder->getUrl('*/*/*')
+                'referer'   => $this->urlBuilder->getUrl('*/*/*'),
             ]
         );
         $curl->write(Request::METHOD_GET, $this->getFeedUrl(), '1.0');
@@ -245,7 +208,7 @@ class Feed extends AbstractModel
 
         try {
             $xml = new SimpleXMLElement($data);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
 
@@ -262,7 +225,7 @@ class Feed extends AbstractModel
         try {
             $data = $this->getFeedData();
             $xml = new SimpleXMLElement($data);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             $xml = new SimpleXMLElement('<?xml version="1.0" encoding="utf-8" ?>');
         }
 
@@ -272,7 +235,6 @@ class Feed extends AbstractModel
     /**
      * Converts incoming data to string format and escapes special characters.
      *
-     * @param SimpleXMLElement $data
      * @return string
      */
     private function escapeString(SimpleXMLElement $data)

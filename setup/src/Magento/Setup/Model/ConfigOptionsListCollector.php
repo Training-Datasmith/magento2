@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Setup\ConfigOptionsListInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Collects all ConfigOptionsList class in modules and setup

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class WeeeSettingsTest extends TestCase
         $this->plugin = $objectManager->getObject(
             WeeeSettings::class,
             [
-                'config' => $this->configMock
+                'config' => $this->configMock,
             ]
         );
     }
@@ -66,7 +67,7 @@ class WeeeSettingsTest extends TestCase
 
         $this->assertEquals(
             [
-                'displayWeee' => self::STUB_FPT_DISPLAY_PRODUCT_LIST
+                'displayWeee' => self::STUB_FPT_DISPLAY_PRODUCT_LIST,
             ],
             $this->plugin->afterGetData($this->subjectMock, [])
         );

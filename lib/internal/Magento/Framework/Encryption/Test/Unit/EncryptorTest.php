@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Encryption\KeyValidator;
 use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Throwable;
 
 /**
@@ -62,7 +63,7 @@ class EncryptorTest extends TestCase
             [
                 'random' => $this->randomGeneratorMock,
                 'deploymentConfig' => $deploymentConfigMock,
-                'keyValidator' => $this->keyValidatorMock
+                'keyValidator' => $this->keyValidatorMock,
             ]
         );
     }
@@ -185,7 +186,7 @@ class EncryptorTest extends TestCase
             //Upgraded from version #1 to #2
             ['password', 'c6aad9e058f6c4b06187c06d2b69bf506a786af030f81fb6d83778422a68205e:salt:1:2', true, 2],
             //From #0 to #1
-            ['password', '3b68ca4706cbae291455e4340478076c1e1618e742b6144cfcc3e50f648903e4:salt:0:1', true, 1]
+            ['password', '3b68ca4706cbae291455e4340478076c1e1618e742b6144cfcc3e50f648903e4:salt:0:1', true, 1],
         ];
     }
 
@@ -361,32 +362,32 @@ class EncryptorTest extends TestCase
                 'password',
                 'salt',
                 Encryptor::HASH_VERSION_MD5,
-                '/^[a-z0-9]{32}\:salt\:0$/'
+                '/^[a-z0-9]{32}\:salt\:0$/',
             ],
             [
                 'password',
                 'salt',
                 Encryptor::HASH_VERSION_SHA256,
-                '/^[a-z0-9]{64}\:salt\:1$/'
+                '/^[a-z0-9]{64}\:salt\:1$/',
             ],
             [
                 'password',
                 false,
                 Encryptor::HASH_VERSION_MD5,
-                '/^[0-9a-z]{32}$/'
+                '/^[0-9a-z]{32}$/',
             ],
             [
                 'password',
                 false,
                 Encryptor::HASH_VERSION_SHA256,
-                '/^[0-9a-z]{64}$/'
+                '/^[0-9a-z]{64}$/',
             ],
             [
                 'password',
                 true,
                 Encryptor::HASH_VERSION_ARGON2ID13_AGNOSTIC,
-                '/^.+\:.+\:' .Encryptor::HASH_VERSION_ARGON2ID13_AGNOSTIC .'\_\d+\_\d+\_\d+$/is'
-            ]
+                '/^.+\:.+\:' .Encryptor::HASH_VERSION_ARGON2ID13_AGNOSTIC .'\_\d+\_\d+\_\d+$/is',
+            ],
         ];
     }
 

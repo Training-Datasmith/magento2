@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,13 @@ declare(strict_types=1);
 /**
  * Test for view BlockPool model
  */
+
 namespace Magento\Framework\View\Test\Unit\Element\Text\TextList;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Text\TextList\Link;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
 {
@@ -68,15 +70,15 @@ class LinkTest extends TestCase
                 'aParams' => ['href' => 'url'],
                 'innerText' => 'text',
                 'afterText' => 'afterText',
-                'expectedHtml' => '<li class="some-css-class"><a href="url">text</a>afterText</li>' . "\r\n"
+                'expectedHtml' => '<li class="some-css-class"><a href="url">text</a>afterText</li>' . "\r\n",
             ],
             [
                 'liParams' => 'class="some-css-class"',
                 'aParams' => 'href="url"',
                 'innerText' => 'text',
                 'afterText' => 'afterText',
-                'expectedHtml' => '<li class="some-css-class"><a href="url">text</a>afterText</li>' . "\r\n"
-            ]
+                'expectedHtml' => '<li class="some-css-class"><a href="url">text</a>afterText</li>' . "\r\n",
+            ],
         ];
     }
 }

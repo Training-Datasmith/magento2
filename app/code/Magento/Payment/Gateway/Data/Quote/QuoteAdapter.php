@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Data\Quote;
 
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Payment\Gateway\Data\AddressAdapterInterface;
 use Magento\Payment\Gateway\Data\OrderAdapterInterface;
 use Magento\Quote\Api\Data\CartInterface;
-use Magento\Payment\Gateway\Data\AddressAdapterInterface;
 
 /**
  * Class QuoteAdapter

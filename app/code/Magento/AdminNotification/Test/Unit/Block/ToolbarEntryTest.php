@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\AdminNotification\Block\ToolbarEntry
  */
+
 namespace Magento\AdminNotification\Test\Unit\Block;
 
 use Magento\AdminNotification\Block\ToolbarEntry;
@@ -31,12 +33,12 @@ class ToolbarEntryTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         // mock collection of unread notifications
@@ -68,12 +70,12 @@ class ToolbarEntryTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
 

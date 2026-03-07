@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Config\FileIteratorFactory;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Module\Dir\Reader;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class FileResolverTest extends TestCase
@@ -153,7 +154,7 @@ class FileResolverTest extends TestCase
         return [
             ['di.xml', ['di.xml', 'anotherfolder/di.xml']],
             ['no_files.xml', []],
-            ['one_file.xml', ['one_file.xml']]
+            ['one_file.xml', ['one_file.xml']],
         ];
     }
 }

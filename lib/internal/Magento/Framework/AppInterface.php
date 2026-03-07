@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 /**
@@ -21,7 +24,7 @@ interface AppInterface
     /**
      * Default application locale
      */
-    const DISTRO_LOCALE_CODE = 'en_US';
+    public const DISTRO_LOCALE_CODE = 'en_US';
 
     /**
      * Launch application

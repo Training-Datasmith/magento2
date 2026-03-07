@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model;
 
 use Exception;
@@ -11,6 +14,7 @@ use Laminas\Validator\ValidatorInterface;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\State;
+use Magento\Framework\Data\Collection\AbstractDb as AbstractDbCollection;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -18,7 +22,6 @@ use Magento\Framework\Message\Error;
 use Magento\Framework\Model\ActionValidator\RemoveAction;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Data\Collection\AbstractDb as AbstractDbCollection;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;

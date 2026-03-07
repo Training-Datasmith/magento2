@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\LayeredNavigation\Block\Navigation;
 
-use Magento\Framework\View\Element\Template;
+namespace Magento\LayeredNavigation\Block\Navigation;
 
 /**
  * Layered navigation state

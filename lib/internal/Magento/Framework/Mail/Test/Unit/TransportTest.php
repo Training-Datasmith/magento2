@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Mail\Test\Unit;
 
-use Symfony\Component\Mime\Exception\RfcComplianceException;
-use Symfony\Component\Mime\Message as SymfonyMessage;
-use Symfony\Component\Mime\Header\Headers;
 use Magento\Framework\Mail\EmailMessage;
 use Magento\Framework\Mail\Transport;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Mime\Exception\RfcComplianceException;
+use Symfony\Component\Mime\Header\Headers;
+use Symfony\Component\Mime\Message as SymfonyMessage;
 
 /**
  * Provides tests for framework email transport functionality.

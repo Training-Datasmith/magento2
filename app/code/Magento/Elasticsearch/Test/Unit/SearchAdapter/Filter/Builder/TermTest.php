@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class TermTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             TermBuilder::class,
             [
-                'fieldMapper' => $this->fieldMapper
+                'fieldMapper' => $this->fieldMapper,
             ]
         );
     }

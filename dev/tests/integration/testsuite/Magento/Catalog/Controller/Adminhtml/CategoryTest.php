@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,25 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Controller\Adminhtml;
 
-use Magento\Framework\Acl\Builder;
 use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Model\Category as CategoryModel;
+use Magento\Catalog\Model\CategoryFactory as CategoryModelFactory;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\Framework\Acl\Builder;
 use Magento\Framework\App\ProductMetadata;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\Registry;
-use Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Store\Api\StoreRepositoryInterface;
-use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Store\Model\Store;
-use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Model\Category as CategoryModel;
-use Magento\Catalog\Model\CategoryFactory as CategoryModelFactory;
 
 /**
  * Test for admin category functionality.
@@ -74,8 +75,8 @@ class CategoryTest extends AbstractBackendController
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Category\Attribute\LayoutUpdateManager::class
-                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class
-            ]
+                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class,
+            ],
         ]);
         parent::setUp();
 
@@ -230,7 +231,7 @@ class CategoryTest extends AbstractBackendController
             'include_in_menu' => 0,
             'use_config' => [
                 'available_sort_by' => 1,
-                'default_sort_by' => 1
+                'default_sort_by' => 1,
             ],
             'parent' => 2,
         ];
@@ -259,8 +260,8 @@ class CategoryTest extends AbstractBackendController
                 'name' => 'test-category',
                 'is_active' => 1,
                 'thumbnail' => 1,
-                'description' => 'Test description for test-category'
-            ]
+                'description' => 'Test description for test-category',
+            ],
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($categoryDetails);
@@ -356,7 +357,7 @@ class CategoryTest extends AbstractBackendController
                     'custom_layout_update' => false,
                     'custom_design_from' => false,
                     'custom_design_to' => false,
-                    'filter_price_range' => false
+                    'filter_price_range' => false,
                 ],
             ],
             'custom values' => [
@@ -403,7 +404,7 @@ class CategoryTest extends AbstractBackendController
                     'meta_description' => true,
                     'custom_design_from' => true,
                     'custom_design_to' => true,
-                    'filter_price_range' => false
+                    'filter_price_range' => false,
                 ],
                 [
                     'name' => 'Custom Name',
@@ -422,7 +423,7 @@ class CategoryTest extends AbstractBackendController
                     'meta_description' => 'Custom meta description',
                     'custom_design_from' => '2015-05-21 00:00:00',
                     'custom_design_to' => '2015-05-29 00:00:00',
-                    'filter_price_range' => null
+                    'filter_price_range' => null,
                 ],
             ],
         ];
@@ -623,12 +624,12 @@ class CategoryTest extends AbstractBackendController
                     'path_ids' => [
                         0 => '1',
                         1 => '2',
-                        2 => '96377'
+                        2 => '96377',
                     ],
                     'use_config' => [
                         'available_sort_by' => 'true',
                         'default_sort_by' => 'true',
-                        'filter_price_range' => 'true'
+                        'filter_price_range' => 'true',
                     ],
                     'id' => '',
                     'parent' => '0',
@@ -648,7 +649,7 @@ class CategoryTest extends AbstractBackendController
                         'meta_keywords' => '1',
                         'meta_description' => '1',
                         'custom_layout_update' => '1',
-                        'image' => '1'
+                        'image' => '1',
                     ],
                     'filter_price_range' => false,
                     'meta_title' => false,
@@ -666,9 +667,9 @@ class CategoryTest extends AbstractBackendController
                     'is_smart_category' => '0',
                     'smart_category_rules' => false,
                     'sort_order' => '0',
-                    'vm_category_products' => '{"1":1,"3":0}'
-                ]
-            ]
+                    'vm_category_products' => '{"1":1,"3":0}',
+                ],
+            ],
         ];
     }
 
@@ -831,7 +832,7 @@ class CategoryTest extends AbstractBackendController
                 'filter_price_range' => 1,
             ],
             'custom_design' => '1',
-            'custom_apply_to_products' => '0'
+            'custom_apply_to_products' => '0',
         ];
         $uri = 'backend/catalog/category/save';
 
@@ -946,8 +947,8 @@ class CategoryTest extends AbstractBackendController
             'url_key' => $urlKey,
             'use_config' => [
                 'available_sort_by' => 1,
-                'default_sort_by' => 1
-            ]
+                'default_sort_by' => 1,
+            ],
         ];
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue($inputData);
@@ -956,7 +957,7 @@ class CategoryTest extends AbstractBackendController
             $this->equalTo(
                 [
                     'URL key "backend" matches a reserved endpoint name '
-                    . '(backend). Use another URL key.'
+                    . '(backend). Use another URL key.',
                 ]
             ),
             MessageInterface::TYPE_ERROR
@@ -978,7 +979,7 @@ class CategoryTest extends AbstractBackendController
             'name' => $categoryName,
             'use_config' => [
                 'available_sort_by' => 1,
-                'default_sort_by' => 1
+                'default_sort_by' => 1,
             ],
             'is_active' => '1',
             'include_in_menu' => '1',
@@ -989,7 +990,7 @@ class CategoryTest extends AbstractBackendController
         $this->assertSessionMessages(
             $this->equalTo(
                 [
-                    (string)__($errorMessage, $categoryName)
+                    (string)__($errorMessage, $categoryName),
                 ]
             ),
             MessageInterface::TYPE_ERROR
@@ -1011,7 +1012,7 @@ class CategoryTest extends AbstractBackendController
             'url_key' => $categoryUrlKey,
             'use_config' => [
                 'available_sort_by' => 1,
-                'default_sort_by' => 1
+                'default_sort_by' => 1,
             ],
             'is_active' => '1',
             'include_in_menu' => '1',
@@ -1022,7 +1023,7 @@ class CategoryTest extends AbstractBackendController
         $this->assertSessionMessages(
             $this->equalTo(
                 [
-                    (string)__($errorMessage, $categoryUrlKey)
+                    (string)__($errorMessage, $categoryUrlKey),
                 ]
             ),
             MessageInterface::TYPE_ERROR

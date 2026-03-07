@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ use Magento\Payment\Model\Method\AbstractMethod;
  */
 class Stub extends AbstractMethod
 {
-    const STUB_CODE = 'stub-code';
+    public const STUB_CODE = 'stub-code';
 
     /**
      * @return string

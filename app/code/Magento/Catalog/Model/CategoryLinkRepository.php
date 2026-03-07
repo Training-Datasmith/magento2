@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -108,9 +110,9 @@ class CategoryLinkRepository implements CategoryLinkRepositoryInterface, Categor
                 __(
                     'Could not save product "%product" with position %position to category %category',
                     [
-                        "product" => $product->getId(),
-                        "position" => $backupPosition,
-                        "category" => $category->getId()
+                        'product' => $product->getId(),
+                        'position' => $backupPosition,
+                        'category' => $category->getId(),
                     ]
                 ),
                 $e
@@ -148,8 +150,8 @@ class CategoryLinkRepository implements CategoryLinkRepositoryInterface, Categor
                 __(
                     'Could not save products "%products" to category %category',
                     [
-                        "products" => implode(',', $productSkuList),
-                        "category" => $category->getId()
+                        'products' => implode(',', $productSkuList),
+                        'category' => $category->getId(),
                     ]
                 ),
                 $e

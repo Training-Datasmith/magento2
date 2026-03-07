@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -150,8 +151,8 @@ class TransparentTest extends TestCase
                     'additional_data' => [
                         'public_hash' => '$token.public_hash$',
                         'customer_id' => '$customer.id$',
-                    ]
-                ]
+                    ],
+                ],
             ]
         ),
     ]
@@ -293,7 +294,7 @@ class TransparentTest extends TestCase
         $reflection = new \ReflectionClass($gatewayMock);
         $property = $reflection->getProperty('httpClientFactory');
         $property->setValue($gatewayMock, $clientFactory);
-        
+
         return $gatewayMock;
     }
 }

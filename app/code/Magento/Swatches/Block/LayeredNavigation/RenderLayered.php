@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Block\LayeredNavigation;
 
 use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
@@ -28,7 +31,7 @@ class RenderLayered extends Template
     /**
      * For `Filterable (with results)` setting
      */
-    const FILTERABLE_WITH_RESULTS = '1';
+    public const FILTERABLE_WITH_RESULTS = '1';
 
     /**
      * Path to template file.
@@ -169,7 +172,7 @@ class RenderLayered extends Template
             [
                 '_current' => true,
                 '_use_rewrite' => true,
-                '_query' => $query
+                '_query' => $query,
             ]
         );
     }
@@ -186,7 +189,7 @@ class RenderLayered extends Template
         return [
             'label' => $swatchOption->getLabel(),
             'link' => 'javascript:void();',
-            'custom_style' => 'disabled'
+            'custom_style' => 'disabled',
         ];
     }
 
@@ -229,7 +232,7 @@ class RenderLayered extends Template
         return [
             'label' => $swatchOption->getLabel(),
             'link' => $linkToOption,
-            'custom_style' => $customStyle
+            'custom_style' => $customStyle,
         ];
     }
 

@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model\Cron;
 
+use Magento\NewRelicReporting\Model\Apm\DeploymentsFactory;
 use Magento\NewRelicReporting\Model\Config;
-use Magento\NewRelicReporting\Model\Module\Collect;
 use Magento\NewRelicReporting\Model\Counter;
 use Magento\NewRelicReporting\Model\CronEventFactory;
-use Magento\NewRelicReporting\Model\Apm\DeploymentsFactory;
+use Magento\NewRelicReporting\Model\Module\Collect;
 
 /**
  * Class ReportNewRelicCron

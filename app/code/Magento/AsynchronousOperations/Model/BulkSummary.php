@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -123,7 +125,6 @@ class BulkSummary extends DataObject implements BulkSummaryInterface, \Magento\F
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\AsynchronousOperations\Api\Data\BulkSummaryExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order;
 
 /**
@@ -28,7 +31,7 @@ class Status extends \Magento\Backend\Block\Widget\Grid\Container
             [
                 'label' => __('Assign Status to State'),
                 'onclick' => 'setLocation(\'' . $this->getAssignUrl() . '\')',
-                'class' => 'add'
+                'class' => 'add',
             ]
         );
         parent::_construct();

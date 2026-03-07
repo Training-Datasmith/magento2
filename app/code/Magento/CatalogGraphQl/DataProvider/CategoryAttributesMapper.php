@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\DataProvider;
 
-use Magento\Framework\GraphQl\ConfigInterface;
-use Magento\Framework\GraphQl\Config\Element\Type;
 use Magento\Framework\GraphQl\Config\Element\InterfaceType;
+use Magento\Framework\GraphQl\Config\Element\Type;
+use Magento\Framework\GraphQl\ConfigInterface;
 
 /**
  * Map for category attributes.

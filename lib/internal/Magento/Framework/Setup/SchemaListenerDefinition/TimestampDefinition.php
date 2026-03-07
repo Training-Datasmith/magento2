@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -42,7 +44,7 @@ class TimestampDefinition implements DefinitionConverterInterface
             'name' => $definition['name'],
             'on_update' => $onUpdate,
             'nullable' => $cNullable,
-            'default' => $cDefault
+            'default' => $cDefault,
         ];
     }
 }

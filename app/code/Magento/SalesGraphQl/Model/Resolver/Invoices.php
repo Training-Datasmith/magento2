@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\InvoiceInterface;
+use Magento\Sales\Api\Data\OrderInterface;
 
 /**
  * Resolver for Invoice
@@ -55,7 +56,7 @@ class Invoices implements ResolverInterface
                 'number' => $invoice['increment_id'],
                 'comments' => $this->getInvoiceComments($invoice),
                 'model' => $invoice,
-                'order' => $orderModel
+                'order' => $orderModel,
             ];
         }
         return $invoices;
@@ -75,7 +76,7 @@ class Invoices implements ResolverInterface
                 $comments[] = [
                     'timestamp' => $this->timezone->date($comment->getCreatedAt())
                         ->format(DateTime::DATETIME_SLASH_PHP_FORMAT),
-                    'message' => $comment->getComment()
+                    'message' => $comment->getComment(),
                 ];
             }
         }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule1\Service\V2\Entity;
 
 class Item extends \Magento\Framework\Api\AbstractExtensibleObject

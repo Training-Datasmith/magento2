@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class ThemeTest extends TestCase
      */
     private $themePath = 'frontend/Magento/theme';
 
-    const FULL_THEME_PATH = '/full/theme/path';
+    public const FULL_THEME_PATH = '/full/theme/path';
 
     /**
      * @var Theme

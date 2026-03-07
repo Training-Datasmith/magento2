@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\GroupRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class GroupRendererTest extends TestCase
 {
@@ -79,7 +80,7 @@ class GroupRendererTest extends TestCase
         $expectedResult = $sql . ' ' . Select::SQL_GROUP_BY . ' group1' . ",\n\t" . 'group2';
         $mapValues = [
             [Select::FROM, true],
-            [Select::GROUP, ['group1', 'group2']]
+            [Select::GROUP, ['group1', 'group2']],
         ];
         $this->selectMock->expects($this->exactly(3))
             ->method('getPart')

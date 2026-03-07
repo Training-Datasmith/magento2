@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class CustomerAttributeMetadata implements GetAttributeDataInterface
                     'ValidationRuleEnum',
                     strtoupper($validationRule->getName())
                 ),
-                'value' => $validationRule->getValue()
+                'value' => $validationRule->getValue(),
             ];
         }, $attributeMetadata->getValidationRules());
 
@@ -94,7 +95,7 @@ class CustomerAttributeMetadata implements GetAttributeDataInterface
                 'multiline_count' => $attributeMetadata->getMultilineCount(),
                 'sort_order' => $attributeMetadata->getSortOrder(),
                 'validate_rules' => $validationRules,
-                'attributeMetadata' => $attributeMetadata
+                'attributeMetadata' => $attributeMetadata,
             ];
         }
 

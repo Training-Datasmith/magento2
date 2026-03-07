@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Exception\NotFoundException;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class YesNo extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'default_value_text' => '',
                         'default_value_yesno' => 1,
@@ -52,7 +53,7 @@ class YesNo extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeDataWithCheckArray(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     1 => [
                         'default_value' => 1,
                     ],

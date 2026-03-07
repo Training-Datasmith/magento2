@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -66,8 +67,8 @@ class MediaGalleryAssetDeleteByDirectoryPath
         DeleteDirectoriesByPathsInterface $subject,
         \Closure $proceed,
         array $paths
-    ) : void {
-        $assetIdsArrays =[];
+    ): void {
+        $assetIdsArrays = [];
         foreach ($paths as $path) {
             $assetIdsArrays[] = $this->getAssetIdsByDirectoryPath($path);
         }

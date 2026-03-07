@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\ResourceModel\Entity\Attribute;
 
 use Magento\Eav\Model\Entity\Attribute\AttributeGroupAlreadyExistsException;
@@ -115,7 +118,7 @@ class Group extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $bind = [':attribute_set_id' => $object->getAttributeSetId()];
         $select = $connection->select()->from(
             $this->getMainTable(),
-            new \Zend_Db_Expr("MAX(sort_order)")
+            new \Zend_Db_Expr('MAX(sort_order)')
         )->where(
             'attribute_set_id = :attribute_set_id'
         );

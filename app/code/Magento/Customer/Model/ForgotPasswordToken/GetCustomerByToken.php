@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class GetCustomerByToken
                 new Phrase(
                     'No such entity with rp_token = %value',
                     [
-                        'value' => $resetPasswordToken
+                        'value' => $resetPasswordToken,
                     ]
                 )
             );

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Product;
 
 class QuoteItemsCleaner implements \Magento\Quote\Model\Product\QuoteItemsCleanerInterface

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -725,7 +727,7 @@ class Transaction extends AbstractModel implements TransactionInterface
             \Magento\Sales\Model\Order\Payment\Transaction::TYPE_AUTH => __('Authorization'),
             \Magento\Sales\Model\Order\Payment\Transaction::TYPE_CAPTURE => __('Capture'),
             \Magento\Sales\Model\Order\Payment\Transaction::TYPE_VOID => __('Void'),
-            \Magento\Sales\Model\Order\Payment\Transaction::TYPE_REFUND => __('Refund')
+            \Magento\Sales\Model\Order\Payment\Transaction::TYPE_REFUND => __('Refund'),
         ];
     }
 

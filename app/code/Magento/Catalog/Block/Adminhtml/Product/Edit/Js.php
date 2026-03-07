@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit;
 
 use Magento\Customer\Helper\Session\CurrentCustomer;
-use Magento\Tax\Api\TaxCalculationInterface;
-use Magento\Tax\Model\TaxClass\Source\Product as ProductTaxClassSource;
 use Magento\Framework\App\ObjectManager;
+use Magento\Tax\Api\TaxCalculationInterface;
 use Magento\Tax\Helper\Data as TaxHelper;
+use Magento\Tax\Model\TaxClass\Source\Product as ProductTaxClassSource;
 
 class Js extends \Magento\Backend\Block\Template
 {

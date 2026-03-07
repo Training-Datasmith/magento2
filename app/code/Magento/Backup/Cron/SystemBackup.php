@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Cron;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -13,11 +16,11 @@ use Magento\Store\Model\ScopeInterface;
  */
 class SystemBackup
 {
-    const XML_PATH_BACKUP_ENABLED = 'system/backup/enabled';
+    public const XML_PATH_BACKUP_ENABLED = 'system/backup/enabled';
 
-    const XML_PATH_BACKUP_TYPE = 'system/backup/type';
+    public const XML_PATH_BACKUP_TYPE = 'system/backup/type';
 
-    const XML_PATH_BACKUP_MAINTENANCE_MODE = 'system/backup/maintenance';
+    public const XML_PATH_BACKUP_MAINTENANCE_MODE = 'system/backup/maintenance';
 
     /**
      * Error messages

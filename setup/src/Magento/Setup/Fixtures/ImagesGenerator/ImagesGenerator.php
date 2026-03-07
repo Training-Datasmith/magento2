@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Fixtures\ImagesGenerator;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -75,7 +78,7 @@ class ImagesGenerator
         $imagePath = $relativePathToMedia . DIRECTORY_SEPARATOR . $config['image-name'];
         $imagePath = preg_replace('|/{2,}|', '/', $imagePath);
         $memory = fopen('php://memory', 'r+');
-        if(!imagejpeg($image, $memory)) {
+        if (!imagejpeg($image, $memory)) {
             throw new \Exception('Could not create picture ' . $imagePath);
         }
         $mediaDirectory->writeFile($imagePath, stream_get_contents($memory, -1, 0));

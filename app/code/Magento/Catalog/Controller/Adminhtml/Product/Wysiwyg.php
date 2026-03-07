@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -69,7 +72,7 @@ class Wysiwyg extends \Magento\Catalog\Controller\Adminhtml\Product implements H
                         'editor_element_id' => $elementId,
                         'store_id' => $storeId,
                         'store_media_url' => $storeMediaUrl,
-                    ]
+                    ],
                 ]
             );
 

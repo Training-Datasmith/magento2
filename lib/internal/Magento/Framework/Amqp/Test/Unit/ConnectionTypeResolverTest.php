@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -39,8 +40,8 @@ class ConnectionTypeResolverTest extends TestCase
                             'virtualhost' => 'localhost',
                             'ssl' => '',
                             'randomKey' => 'randomValue',
-                        ]
-                    ]
+                        ],
+                    ],
                 ]
             );
 

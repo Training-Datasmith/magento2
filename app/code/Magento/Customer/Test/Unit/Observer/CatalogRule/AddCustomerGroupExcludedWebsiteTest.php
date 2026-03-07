@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\CatalogRule\Model\Rule;
 use Magento\Customer\Api\GroupExcludedWebsiteRepositoryInterface;
 use Magento\Customer\Observer\CatalogRule\AddCustomerGroupExcludedWebsite;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AddCustomerGroupExcludedWebsiteTest extends TestCase
 {
@@ -81,7 +82,7 @@ class AddCustomerGroupExcludedWebsiteTest extends TestCase
     {
         $excludedWebsites = [
             1 => [2],
-            3 => [1]
+            3 => [1],
         ];
         $this->ruleCollectionMock->expects(self::once())
             ->method('getItems')

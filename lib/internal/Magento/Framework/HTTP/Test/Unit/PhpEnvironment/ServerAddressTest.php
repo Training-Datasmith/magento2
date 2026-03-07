@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\HTTP\Test\Unit\PhpEnvironment;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\HTTP\PhpEnvironment\ServerAddress;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ServerAddressTest extends TestCase
 {
@@ -66,7 +67,7 @@ class ServerAddressTest extends TestCase
         return [
             [null, false, false],
             ['192.168.0.1', '192.168.0.1', false],
-            ['192.168.1.1', ip2long('192.168.1.1'), true]
+            ['192.168.1.1', ip2long('192.168.1.1'), true],
         ];
     }
 }

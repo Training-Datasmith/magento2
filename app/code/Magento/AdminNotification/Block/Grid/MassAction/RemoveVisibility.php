@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -16,17 +17,8 @@ use Magento\Framework\AuthorizationInterface;
  */
 class RemoveVisibility implements VisibilityCheckerInterface
 {
-    /**
-     * @var AuthorizationInterface
-     */
-    private $authorization;
-
-    /**
-     * @param AuthorizationInterface $authorizationInterface
-     */
-    public function __construct(AuthorizationInterface $authorizationInterface)
+    public function __construct(private readonly AuthorizationInterface $authorization)
     {
-        $this->authorization = $authorizationInterface;
     }
 
     /**

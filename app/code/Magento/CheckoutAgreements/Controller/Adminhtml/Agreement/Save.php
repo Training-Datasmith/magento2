@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
 
+use Magento\Backend\App\Action\Context;
 use Magento\CheckoutAgreements\Controller\Adminhtml\Agreement;
 use Magento\CheckoutAgreements\Model\AgreementFactory;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Registry;
 
 class Save extends Agreement implements HttpPostActionInterface
 {

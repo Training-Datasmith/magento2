@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Backend\Model\Auth\Credential\StorageInterface;
 use Magento\Framework\Data\Collection\ModelFactory;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -60,7 +61,7 @@ class AuthTest extends TestCase
             [
                 'eventManager' => $this->_eventManagerMock,
                 'credentialStorage' => $this->_credentialStorage,
-                'modelFactory' => $this->_modelFactoryMock
+                'modelFactory' => $this->_modelFactoryMock,
             ]
         );
     }

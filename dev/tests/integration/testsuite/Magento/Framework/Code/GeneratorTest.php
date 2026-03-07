@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code;
 
 use Magento\Framework\Api\Code\Generator\ExtensionAttributesInterfaceFactoryGenerator;
@@ -11,8 +14,8 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Interception\Code\Generator as InterceptionGenerator;
 use Magento\Framework\ObjectManager\Code\Generator as DIGenerator;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/GeneratorTest/SourceClassWithNamespace.php';
 require_once __DIR__ . '/GeneratorTest/ParentClassWithNamespace.php';
@@ -26,10 +29,10 @@ require_once __DIR__ . '/GeneratorTest/NestedNamespace/SourceClassWithNestedName
  */
 class GeneratorTest extends TestCase
 {
-    const CLASS_NAME_WITH_NAMESPACE = GeneratorTest\SourceClassWithNamespace::class;
-    const CLASS_NAME_WITH_NESTED_NAMESPACE = GeneratorTest\NestedNamespace\SourceClassWithNestedNamespace::class;
-    const EXTENSION_CLASS_NAME_WITH_NAMESPACE = GeneratorTest\SourceClassWithNamespaceExtension::class;
-    const EXTENSION_CLASS_NAME_WITH_NESTED_NAMESPACE =
+    public const CLASS_NAME_WITH_NAMESPACE = GeneratorTest\SourceClassWithNamespace::class;
+    public const CLASS_NAME_WITH_NESTED_NAMESPACE = GeneratorTest\NestedNamespace\SourceClassWithNestedNamespace::class;
+    public const EXTENSION_CLASS_NAME_WITH_NAMESPACE = GeneratorTest\SourceClassWithNamespaceExtension::class;
+    public const EXTENSION_CLASS_NAME_WITH_NESTED_NAMESPACE =
         GeneratorTest\NestedNamespace\SourceClassWithNestedNamespaceExtension::class;
 
     /**
@@ -80,7 +83,7 @@ class GeneratorTest extends TestCase
                     DIGenerator\Factory::ENTITY_TYPE => DIGenerator\Factory::class,
                     DIGenerator\Proxy::ENTITY_TYPE => DIGenerator\Proxy::class,
                     InterceptionGenerator\Interceptor::ENTITY_TYPE => InterceptionGenerator\Interceptor::class,
-                ]
+                ],
             ]
         );
         $this->_generator->setObjectManager($objectManager);
@@ -139,22 +142,22 @@ class GeneratorTest extends TestCase
             'factory_with_namespace' => [
                 'className' => self::CLASS_NAME_WITH_NAMESPACE,
                 'generateType' => 'Factory',
-                'expectedDataPath' => '/_expected/SourceClassWithNamespaceFactory.php.sample'
+                'expectedDataPath' => '/_expected/SourceClassWithNamespaceFactory.php.sample',
             ],
             'factory_with_nested_namespace' => [
                 'className' => self::CLASS_NAME_WITH_NESTED_NAMESPACE,
                 'generateType' => 'Factory',
-                'expectedDataPath' => '/_expected/SourceClassWithNestedNamespaceFactory.php.sample'
+                'expectedDataPath' => '/_expected/SourceClassWithNestedNamespaceFactory.php.sample',
             ],
             'ext_interface_factory_with_namespace' => [
                 'className' => self::EXTENSION_CLASS_NAME_WITH_NAMESPACE,
                 'generateType' => 'InterfaceFactory',
-                'expectedDataPath' => '/_expected/SourceClassWithNamespaceExtensionInterfaceFactory.php.sample'
+                'expectedDataPath' => '/_expected/SourceClassWithNamespaceExtensionInterfaceFactory.php.sample',
             ],
             'ext_interface_factory_with_nested_namespace' => [
                 'className' => self::EXTENSION_CLASS_NAME_WITH_NESTED_NAMESPACE,
                 'generateType' => 'InterfaceFactory',
-                'expectedDataPath' => '/_expected/SourceClassWithNestedNamespaceExtensionInterfaceFactory.php.sample'
+                'expectedDataPath' => '/_expected/SourceClassWithNestedNamespaceExtensionInterfaceFactory.php.sample',
             ],
         ];
     }
@@ -191,13 +194,13 @@ class GeneratorTest extends TestCase
             'proxy' => [
                 'className' => self::CLASS_NAME_WITH_NAMESPACE,
                 'generateType' => '\Proxy',
-                'expectedDataPath' => '/_expected/SourceClassWithNamespaceProxy.php.sample'
+                'expectedDataPath' => '/_expected/SourceClassWithNamespaceProxy.php.sample',
             ],
             'interceptor' => [
                 'className' => self::CLASS_NAME_WITH_NAMESPACE,
                 'generateType' => '\Interceptor',
-                'expectedDataPath' => '/_expected/SourceClassWithNamespaceInterceptor.php.sample'
-            ]
+                'expectedDataPath' => '/_expected/SourceClassWithNamespaceInterceptor.php.sample',
+            ],
         ];
     }
 

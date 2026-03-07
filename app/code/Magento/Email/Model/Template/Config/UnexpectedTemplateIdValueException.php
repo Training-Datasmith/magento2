@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ class UnexpectedTemplateIdValueException extends \UnexpectedValueException
     public function __toString(): string
     {
         return preg_replace(
-            "/(Stack trace:).*$/s",
-            "$1" . PHP_EOL . "#0 {main}",
+            '/(Stack trace:).*$/s',
+            '$1' . PHP_EOL . '#0 {main}',
             parent::__toString()
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Test\Unit\Annotation;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
@@ -40,7 +43,7 @@ class ReinstallInstanceTest extends \PHPUnit\Framework\TestCase
         $this->model = $this->objectManagerHelper->getObject(
             \Magento\TestFramework\Annotation\ReinstallInstance::class,
             [
-                'application' => $this->applicationMock
+                'application' => $this->applicationMock,
             ]
         );
     }

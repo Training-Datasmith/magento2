@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +109,7 @@ class DataObjectHelper
             $data,
             [
                 CustomAttributesDataInterface::CUSTOM_ATTRIBUTES,
-                CustomAttributesDataInterface::CUSTOM_ATTRIBUTES . "V2"
+                CustomAttributesDataInterface::CUSTOM_ATTRIBUTES . 'V2',
             ]
         );
         if ($dataObject instanceof \Magento\Framework\Model\AbstractModel) {

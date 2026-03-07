@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,26 +10,26 @@ namespace Magento\Catalog\Block\Product;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Block\Product\ProductList\Toolbar;
+use Magento\Catalog\Helper\Output as OutputHelper;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Config;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Pricing\Price\FinalPrice;
 use Magento\Catalog\Pricing\Price\SpecialPriceBulkResolverInterface;
 use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Config\Element;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Helper\PostHelper;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Pricing\Render;
 use Magento\Framework\Url\Helper\Data;
-use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Helper\Output as OutputHelper;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
 /**
  * Product list
@@ -414,7 +415,7 @@ class ListProduct extends AbstractProduct implements IdentityInterface
             'data' => [
                 'product' => (int) $product->getEntityId(),
                 ActionInterface::PARAM_NAME_URL_ENCODED => $this->urlHelper->getEncodedUrl($url),
-            ]
+            ],
         ];
     }
 
@@ -437,7 +438,7 @@ class ListProduct extends AbstractProduct implements IdentityInterface
                     'include_container' => true,
                     'display_minimal_price' => true,
                     'zone' => Render::ZONE_ITEM_LIST,
-                    'list_category_page' => true
+                    'list_category_page' => true,
                 ]
             );
         }

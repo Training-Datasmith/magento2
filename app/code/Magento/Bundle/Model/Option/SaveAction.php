@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Bundle\Model\Option;
 use Exception;
 use Magento\Bundle\Api\Data\LinkInterface;
 use Magento\Bundle\Api\Data\OptionInterface;
-use Magento\Bundle\Api\ProductLinkManagementInterface;
 use Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface;
+use Magento\Bundle\Api\ProductLinkManagementInterface;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\Option;
 use Magento\Bundle\Model\ResourceModel\Option\Collection;
@@ -131,7 +132,7 @@ class SaveAction
         Collection $optionCollection,
         EntityMetadataInterface $metadata,
         array $existingBundleProductOptions = []
-    ) : void {
+    ): void {
         $linksToAdd = [];
 
         $option->setStoreId($bundleProduct->getStoreId());
@@ -203,7 +204,7 @@ class SaveAction
         ProductInterface $product,
         OptionInterface $option,
         ?OptionInterface $existingOption = null
-    ):void {
+    ): void {
         $linksToAdd = [];
         $linksToUpdate = [];
         $linksToDelete = [];
@@ -245,7 +246,7 @@ class SaveAction
      * @param LinkInterface[] $updates
      * @return array
      */
-    private function verifyLinksToUpdate(array $existing, array $updates) : array
+    private function verifyLinksToUpdate(array $existing, array $updates): array
     {
         $linksToUpdate = [];
         $beforeLinksMap = [];
@@ -274,7 +275,7 @@ class SaveAction
      * @param LinkInterface $updatedLink
      * @return bool
      */
-    private function isLinkChanged(LinkInterface $beforeLink, LinkInterface $updatedLink) : bool
+    private function isLinkChanged(LinkInterface $beforeLink, LinkInterface $updatedLink): bool
     {
         return (int)$beforeLink->getOptionId() !== (int)$updatedLink->getOptionId()
             || $beforeLink->getIsDefault() !== $updatedLink->getIsDefault()

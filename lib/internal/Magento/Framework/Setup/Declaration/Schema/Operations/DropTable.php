@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class DropTable implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'drop_table';
+    public const OPERATION_NAME = 'drop_table';
 
     /**
      * @var DefinitionAggregator

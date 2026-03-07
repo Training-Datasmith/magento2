@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Items\Column;
 
+use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Filter\TruncateFilter\Result;
-use Magento\Catalog\Helper\Data as CatalogHelper;
 
 /**
  * Sales Order items name column renderer
@@ -76,7 +79,7 @@ class Name extends \Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn
         $this->truncateString($value, 55, '', $remainder);
         $result = [
             'value' => nl2br($this->truncateResult->getValue()),
-            'remainder' => nl2br($this->truncateResult->getRemainder())
+            'remainder' => nl2br($this->truncateResult->getRemainder()),
         ];
 
         return $result;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\View\Test\Unit\Helper\SecureHtmlRenderer;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Helper\SecureHtmlRender\HtmlRenderer;
 use Magento\Framework\View\Helper\SecureHtmlRender\TagData;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class HtmlRendererTest extends TestCase
 {
@@ -36,28 +37,28 @@ class HtmlRendererTest extends TestCase
         /** Test void element to have closing tag */
         $tag = new TagData('hr', [], null, true);
         $this->assertEquals(
-            "<hr/>",
+            '<hr/>',
             $helper->renderTag($tag)
         );
 
         /** Test void element to never have content */
         $tag = new TagData('hr', [], 'content', false);
         $this->assertEquals(
-            "<hr/>",
+            '<hr/>',
             $helper->renderTag($tag)
         );
 
         /** Test any non-void element to not have a closing tag while not having content */
         $tags = new TagData('script', [], null, false);
         $this->assertEquals(
-            "<script></script>",
+            '<script></script>',
             $helper->renderTag($tags)
         );
 
         /** Test any non-void element to not have a closing tag and allow content */
         $tags = new TagData('script', [], 'content', false);
         $this->assertEquals(
-            "<script>content</script>",
+            '<script>content</script>',
             $helper->renderTag($tags)
         );
     }

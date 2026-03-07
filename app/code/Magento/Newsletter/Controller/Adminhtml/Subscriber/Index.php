@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Controller\Adminhtml\Subscriber;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;

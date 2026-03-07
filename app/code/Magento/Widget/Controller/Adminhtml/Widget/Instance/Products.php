@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Controller\Adminhtml\Widget\Instance;
 
 class Products extends \Magento\Widget\Controller\Adminhtml\Widget\Instance
@@ -37,7 +40,7 @@ class Products extends \Magento\Widget\Controller\Adminhtml\Widget\Instance
                     'callback' => 'getSelectedProducts',
                     'input_element_name' => 'selected_products',
                     'reload_param_name' => 'selected_products',
-                ]
+                ],
             ]
         );
         $this->setBody($chooser->toHtml() . $serializer->toHtml());

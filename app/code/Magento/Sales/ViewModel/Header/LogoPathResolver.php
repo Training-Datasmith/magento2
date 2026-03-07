@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class LogoPathResolver implements LogoPathResolverInterface, ArgumentInterface
             $storeId = $order->getStoreId();
         }
         $scopeType = ScopeInterface::SCOPE_STORE;
-        if ($this->scopeConfig->getValue('general/single_store_mode/enabled') === "1") {
+        if ($this->scopeConfig->getValue('general/single_store_mode/enabled') === '1') {
             $scopeType = ScopeInterface::SCOPE_WEBSITE;
         }
         $salesLogoPath = $this->scopeConfig->getValue(

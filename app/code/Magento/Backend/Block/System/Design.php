@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System;
 
 /**
@@ -24,7 +27,7 @@ class Design extends \Magento\Backend\Block\Template
             [
                 'label' => __('Add Design Change'),
                 'onclick' => "setLocation('" . $this->getUrl('adminhtml/*/new') . "')",
-                'class' => 'add primary add-design-change'
+                'class' => 'add primary add-design-change',
             ]
         );
 

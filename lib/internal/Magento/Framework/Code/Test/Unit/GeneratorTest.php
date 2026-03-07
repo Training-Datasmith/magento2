@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,18 +10,18 @@ namespace Magento\Framework\Code\Test\Unit;
 
 use Magento\Framework\Code\Generator;
 use Magento\Framework\Code\Generator\DefinedClasses;
+use Magento\Framework\Code\Generator\EntityAbstract;
 use Magento\Framework\Code\Generator\Io;
-use Magento\Framework\ObjectManager\ConfigInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use Psr\Log\LoggerInterface;
+use Magento\Framework\Interception\Code\Generator\Interceptor;
 use Magento\Framework\ObjectManager\Code\Generator\Factory;
 use Magento\Framework\ObjectManager\Code\Generator\Proxy;
-use Magento\Framework\Interception\Code\Generator\Interceptor;
+use Magento\Framework\ObjectManager\ConfigInterface;
+use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Code\Generator\EntityAbstract;
+use Psr\Log\LoggerInterface;
 use RuntimeException;
 
 /**

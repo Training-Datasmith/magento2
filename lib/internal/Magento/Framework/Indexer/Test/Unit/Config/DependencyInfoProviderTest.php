@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Indexer\Config\DependencyInfoProvider;
 use Magento\Framework\Indexer\ConfigInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DependencyInfoProviderTest extends TestCase
 {
@@ -60,7 +61,7 @@ class DependencyInfoProviderTest extends TestCase
             [
                 'indexer_id' => $indexerId,
                 'dependencies' => $dependencies,
-            ]
+            ],
         ]);
         $this->assertSame($dependencies, $this->dependencyInfoProvider->getIndexerIdsToRunBefore($indexerId));
     }
@@ -72,7 +73,7 @@ class DependencyInfoProviderTest extends TestCase
             ->method('getIndexer')
             ->willReturn([]);
         $this->expectException(NoSuchEntityException::class);
-        $this->expectExceptionMessage((string)__("%1 indexer does not exist.", $indexerId));
+        $this->expectExceptionMessage((string)__('%1 indexer does not exist.', $indexerId));
         $this->dependencyInfoProvider->getIndexerIdsToRunBefore($indexerId);
     }
 
@@ -129,7 +130,7 @@ class DependencyInfoProviderTest extends TestCase
                     ],
                 ],
                 'dependentIndexerIds' => ['indexer_4', 'indexer_1'],
-            ]
+            ],
         ];
     }
 
@@ -140,7 +141,7 @@ class DependencyInfoProviderTest extends TestCase
             ->method('getIndexer')
             ->willReturn([]);
         $this->expectException(NoSuchEntityException::class);
-        $this->expectExceptionMessage((string)__("%1 indexer does not exist.", $indexerId));
+        $this->expectExceptionMessage((string)__('%1 indexer does not exist.', $indexerId));
         $this->dependencyInfoProvider->getIndexerIdsToRunAfter($indexerId);
     }
 

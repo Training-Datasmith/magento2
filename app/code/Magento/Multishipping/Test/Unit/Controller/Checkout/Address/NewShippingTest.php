@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Layout;
@@ -22,7 +24,6 @@ use Magento\Framework\View\Result\Page;
 use Magento\Multishipping\Controller\Checkout\Address\NewShipping;
 use Magento\Multishipping\Helper\Data;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -103,7 +104,7 @@ class NewShippingTest extends TestCase
         $this->stateMock = $this->createMock(State::class);
         $valueMap = [
             [State::class, $this->stateMock],
-            [Multishipping::class, $this->checkoutMock]
+            [Multishipping::class, $this->checkoutMock],
         ];
         $this->objectManagerMock->expects($this->any())->method('get')->willReturnMap($valueMap);
         $request = $this->createMock(RequestInterface::class);
@@ -167,7 +168,7 @@ class NewShippingTest extends TestCase
         $valueMap = [
             ['*/*/shippingSaved', null, 'success/url'],
             ['*/*/*', null, 'error/url'],
-            [$backUrl, null, $url]
+            [$backUrl, null, $url],
         ];
         $this->urlMock->expects($this->any())->method('getUrl')->willReturnMap($valueMap);
         $this->titleMock->expects($this->once())->method('getDefault')->willReturn('default_title');
@@ -191,7 +192,7 @@ class NewShippingTest extends TestCase
     {
         return [
             'shipping_address_exists' => ['*/checkout/addresses', 'shipping_address', 'back/address'],
-            'shipping_address_not_exist' => ['checkout/cart/', null, 'back/cart']
+            'shipping_address_not_exist' => ['checkout/cart/', null, 'back/cart'],
         ];
     }
 

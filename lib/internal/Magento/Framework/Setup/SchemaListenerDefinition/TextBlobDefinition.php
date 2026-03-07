@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -84,7 +86,7 @@ class TextBlobDefinition implements DefinitionConverterInterface
             'xsi:type' => $cType,
             'name' => $definition['name'],
             'nullable' => $definition['nullable'] ?? true,
-            'primary' => $definition['primary'] ?? false
+            'primary' => $definition['primary'] ?? false,
         ];
 
         if (in_array($cType, ['varchar', 'varbinary'])) {

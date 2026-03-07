@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class GraphQlStateDiff
         $jsonEncodedRequest = json_encode([
             'query' => $query,
             'variables' => $variables,
-            'operationName' => $operationName
+            'operationName' => $operationName,
         ]);
         $output1 = $this->request($jsonEncodedRequest, $operationName, $authInfo1, $test, true);
         $test->assertStringContainsString($expected, $output1);
@@ -150,9 +151,9 @@ class GraphQlStateDiff
             foreach ($variables as $cartId) {
                 $this->reactivateCart($cartId);
             }
-        } elseif ($operationName==='applyCouponToCart') {
+        } elseif ($operationName === 'applyCouponToCart') {
             $this->removeCouponFromCart($variables);
-        } elseif ($operationName==='resetPassword') {
+        } elseif ($operationName === 'resetPassword') {
             $variables2['resetPasswordToken'] = $variables['resetPasswordToken'];
             $variables2['email'] = $variables['email'];
             $variables2['newPassword'] = $variables['newPassword'];
@@ -162,7 +163,7 @@ class GraphQlStateDiff
             $jsonEncodedRequest = json_encode([
                 'query' => $query,
                 'variables' => $variables2,
-                'operationName' => $operationName
+                'operationName' => $operationName,
             ]);
         }
         $output2 = $this->request($jsonEncodedRequest, $operationName, $authInfo2, $test);

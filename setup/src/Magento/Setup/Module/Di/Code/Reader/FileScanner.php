@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -87,7 +89,7 @@ class FileScanner
             T_NS_SEPARATOR => T_NS_SEPARATOR,
             T_STRING => T_STRING,
             T_NAME_QUALIFIED => T_NAME_QUALIFIED,
-            T_NAME_FULLY_QUALIFIED => T_NAME_FULLY_QUALIFIED
+            T_NAME_FULLY_QUALIFIED => T_NAME_FULLY_QUALIFIED,
         ];
 
         /**
@@ -181,7 +183,7 @@ class FileScanner
             case T_DOC_COMMENT:
                 $macroDocCommentStart();
                 goto SCANNER_CONTINUE;
-            //goto no break needed
+                //goto no break needed
 
             case T_NAMESPACE:
                 $infos[$infoIndex] = [
@@ -224,7 +226,7 @@ class FileScanner
 
                 $macroInfoAdvance();
                 goto SCANNER_CONTINUE;
-            //goto no break needed
+                //goto no break needed
 
             case T_USE:
                 $infos[$infoIndex] = [
@@ -284,7 +286,7 @@ class FileScanner
 
                 $macroInfoAdvance();
                 goto SCANNER_CONTINUE;
-            //goto no break needed
+                //goto no break needed
 
             case T_INCLUDE:
             case T_INCLUDE_ONCE:
@@ -295,7 +297,7 @@ class FileScanner
                     T_INCLUDE => 'include',
                     T_INCLUDE_ONCE => 'include_once',
                     T_REQUIRE => 'require',
-                    T_REQUIRE_ONCE => 'require_once'
+                    T_REQUIRE_ONCE => 'require_once',
                 ];
 
                 $infos[$infoIndex] = [
@@ -332,7 +334,7 @@ class FileScanner
 
                 $macroInfoAdvance();
                 goto SCANNER_CONTINUE;
-            //goto no break needed
+                //goto no break needed
 
             case T_FUNCTION:
             case T_FINAL:
@@ -360,10 +362,11 @@ class FileScanner
 
                 // process the name
                 if ($infos[$infoIndex]['shortName'] == ''
-                    && (($this->tokenType === T_CLASS
+                    && ((
+                        $this->tokenType === T_CLASS
                             || $this->tokenType === T_INTERFACE
                             || $this->tokenType === T_TRAIT
-                        )
+                    )
                         && $infos[$infoIndex]['type'] === 'class' && $tokens[$tokenIndex - 1][0] !== T_DOUBLE_COLON
                         || ($this->tokenType === T_FUNCTION && $infos[$infoIndex]['type'] === 'function'))
                 ) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ class BmlApiWizard extends ApiWizard
     /**
      * Path to block template
      */
-    const WIZARD_TEMPLATE = 'Magento_Paypal::system/config/bml_api_wizard.phtml';
+    public const WIZARD_TEMPLATE = 'Magento_Paypal::system/config/bml_api_wizard.phtml';
 
     /**
      * Get the button and scripts contents

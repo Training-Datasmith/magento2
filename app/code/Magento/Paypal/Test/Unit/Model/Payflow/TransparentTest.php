@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,8 +95,8 @@ class TransparentTest extends TestCase
         $objects = [
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
         $this->initPayment();
@@ -274,7 +275,7 @@ class TransparentTest extends TestCase
                         'discount' => '5.00',
                     ]
                 ),
-            ]
+            ],
         ];
     }
 
@@ -296,7 +297,7 @@ class TransparentTest extends TestCase
                 'getPaymentAction',
                 'getValue',
                 'setMethodCode',
-                'setPathPattern'
+                'setPathPattern',
             ]
         );
 
@@ -407,7 +408,7 @@ class TransparentTest extends TestCase
                 'setParentTransactionId',
                 'setAdditionalInformation',
                 'getAdditionalInformation',
-                'setExtensionAttributes'
+                'setExtensionAttributes',
             ]
         );
         $this->order = $this->createMock(Order::class);

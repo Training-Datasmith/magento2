@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Filter\Test\Unit;
 
 use Magento\Framework\Filter\Truncate;
 use Magento\Framework\Stdlib\StringUtils;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class TruncateTest extends TestCase
 {
@@ -47,7 +48,7 @@ class TruncateTest extends TestCase
                 [new StringUtils(), 8, '..', $remainder, false],
                 '123..',
                 ' 456 789',
-            ]
+            ],
         ];
     }
 }

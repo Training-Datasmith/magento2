@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -60,9 +61,9 @@ class GetCustomerAddressesTest extends GraphQlAbstract
                         'postcode' => '02108',
                         'telephone' => '1234567890',
                         'default_billing' => true,
-                        'default_shipping' => true
-                    ]
-                ]
+                        'default_shipping' => true,
+                    ],
+                ],
             ],
             'customer'
         )
@@ -80,10 +81,10 @@ class GetCustomerAddressesTest extends GraphQlAbstract
                     'addresses' => [
                         [
                             'uid' => $this->idEncoder->encode((string) $address->getId()),
-                            'country_id' => $address->getCountryId()
-                        ]
-                    ]
-                ]
+                            'country_id' => $address->getCountryId(),
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerAddressQuery(),
@@ -108,8 +109,8 @@ class GetCustomerAddressesTest extends GraphQlAbstract
                     'firstname' => $this->customer->getFirstname(),
                     'lastname' => $this->customer->getLastname(),
                     'email' => $this->customer->getEmail(),
-                    'addresses' => []
-                ]
+                    'addresses' => [],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerAddressQuery(),

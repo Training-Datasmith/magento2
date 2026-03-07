@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Transactions;
 
 use Magento\Backend\App\Action;
@@ -16,7 +19,7 @@ class Fetch extends \Magento\Sales\Controller\Adminhtml\Transactions
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::transactions_fetch';
+    public const ADMIN_RESOURCE = 'Magento_Sales::transactions_fetch';
 
     /**
      * Fetch transaction details action

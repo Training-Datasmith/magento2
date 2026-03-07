@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -31,58 +32,8 @@ class MarkIncompleteOperationsAsFailed
      */
     private const ERROR_MESSAGE = 'Unknown Error';
 
-    /**
-     * @var Operation
-     */
-    private $resource;
-
-    /**
-     * @var DateTime
-     */
-    private $dateTime;
-
-    /**
-     * @var int
-     */
-    private $messageMaxProcessingTime;
-
-    /**
-     * @var string
-     */
-    private $errorMessage;
-
-    /**
-     * @var int
-     */
-    private $errorCode;
-
-    /**
-     * @var int
-     */
-    private $failedStatus;
-
-    /**
-     * @param Operation $resource
-     * @param DateTime $dateTime
-     * @param int $messageMaxProcessingTime
-     * @param int $failedStatus
-     * @param int $errorCode
-     * @param string $errorMessage
-     */
-    public function __construct(
-        Operation $resource,
-        DateTime $dateTime,
-        int $messageMaxProcessingTime = self::DEFAULT_MESSAGE_MAX_PROCESSING_TIME,
-        int $failedStatus = OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
-        int $errorCode = self::ERROR_CODE,
-        string $errorMessage = self::ERROR_MESSAGE
-    ) {
-        $this->resource = $resource;
-        $this->dateTime = $dateTime;
-        $this->messageMaxProcessingTime = $messageMaxProcessingTime;
-        $this->errorMessage = $errorMessage;
-        $this->errorCode = $errorCode;
-        $this->failedStatus = $failedStatus;
+    public function __construct(private readonly Operation $resource, private readonly DateTime $dateTime, private readonly int $messageMaxProcessingTime = self::DEFAULT_MESSAGE_MAX_PROCESSING_TIME, private readonly int $failedStatus = OperationInterface::STATUS_TYPE_RETRIABLY_FAILED, private readonly int $errorCode = self::ERROR_CODE, private readonly string $errorMessage = self::ERROR_MESSAGE)
+    {
     }
 
     /**
@@ -107,7 +58,7 @@ class MarkIncompleteOperationsAsFailed
                     'error_code' => $this->errorCode,
                 ],
                 [
-                    "$idField = ?" => (int) $id
+                    "$idField = ?" => (int) $id,
                 ]
             );
         }

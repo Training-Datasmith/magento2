@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -41,12 +43,12 @@ class InMemoryStateTest extends TestCase
             [
                 false,
                 true,
-                false
+                false,
             ],
             [
                 $this->state->isEnabled('cache_type_one'),
                 $this->state->isEnabled('cache_type_two'),
-                $this->state->isEnabled('cache_type_three')
+                $this->state->isEnabled('cache_type_three'),
             ]
         );
     }
@@ -57,7 +59,7 @@ class InMemoryStateTest extends TestCase
         $state = $this->state->withPersistedState(
             [
                 'cache_type_one' => true,
-                'cache_type_three' => true
+                'cache_type_three' => true,
             ]
         );
 
@@ -65,12 +67,12 @@ class InMemoryStateTest extends TestCase
             [
                 true,
                 false,
-                true
+                true,
             ],
             [
                 $state->isEnabled('cache_type_one'),
                 $state->isEnabled('cache_type_two'),
-                $state->isEnabled('cache_type_three')
+                $state->isEnabled('cache_type_three'),
             ]
         );
     }
@@ -82,7 +84,7 @@ class InMemoryStateTest extends TestCase
             ->withPersistedState(
                 [
                     'key2' => true,
-                    'key3' => false
+                    'key3' => false,
                 ]
             )
             ->withPersistedState(
@@ -98,7 +100,7 @@ class InMemoryStateTest extends TestCase
                     'key1' => false,
                     'key2' => true,
                     'key3' => false,
-                    'key4' => true
+                    'key4' => true,
                 ]
             ),
             $state
@@ -112,7 +114,7 @@ class InMemoryStateTest extends TestCase
             ->withPersistedState(
                 [
                     'key1' => true,
-                    'key2' => false
+                    'key2' => false,
                 ]
             );
 
@@ -122,7 +124,7 @@ class InMemoryStateTest extends TestCase
             new InMemoryState(
                 [
                     'key1' => true,
-                    'key2' => false
+                    'key2' => false,
                 ]
             ),
             $state->withPersistedState([])
@@ -137,7 +139,7 @@ class InMemoryStateTest extends TestCase
                 [
                     'key1' => true,
                     'key2' => false,
-                    'key3' => false
+                    'key3' => false,
                 ]
             );
 
@@ -149,7 +151,7 @@ class InMemoryStateTest extends TestCase
                 [
                     'key1' => true,
                     'key2' => true,
-                    'key3' => false
+                    'key3' => false,
                 ]
             ),
             $state

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Argument\Parser;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\UrlFactory;
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Layout\Argument\Interpreter\NamedParams;
 
 /**

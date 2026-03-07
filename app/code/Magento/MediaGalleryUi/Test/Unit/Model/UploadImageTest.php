@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -129,8 +130,8 @@ class UploadImageTest extends TestCase
             [
                 'targetFolder' => 'media/catalog',
                 'type' => 'image',
-                'absolutePath' => 'root/media/catalog/test-image.jpeg'
-            ]
+                'absolutePath' => 'root/media/catalog/test-image.jpeg',
+            ],
         ];
     }
 }

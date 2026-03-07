@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\Cookie\CookieReaderInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as HelperObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -90,8 +91,8 @@ class HttpTest extends TestCase
         $objects = [
             [
                 PathInfo::class,
-                $this->createMock(PathInfo::class)
-            ]
+                $this->createMock(PathInfo::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $cookieReaderMock = $this->getMockBuilder(CookieReaderInterface::class)
@@ -115,7 +116,7 @@ class HttpTest extends TestCase
                     'converter' => $converterMock,
                     'routeConfig' => $routeConfigMock,
                     'pathInfoProcessor' => $pathInfoProcessorMock,
-                    'objectManager' => $objectManagerMock
+                    'objectManager' => $objectManagerMock,
                 ]
             )
             ->onlyMethods(['getFrontName', 'isHead'])
@@ -251,21 +252,21 @@ class HttpTest extends TestCase
     {
         return [
             [
-                "<html><head></head><body>Test</body></html>",                // Ascii text
-                43                                                            // Expected Content-Length
+                '<html><head></head><body>Test</body></html>',                // Ascii text
+                43,                                                            // Expected Content-Length
             ],
             [
-                "<html><head></head><body>部落格</body></html>",               // Multi-byte characters
-                48                                                            // Expected Content-Length
+                '<html><head></head><body>部落格</body></html>',               // Multi-byte characters
+                48,                                                            // Expected Content-Length
             ],
             [
                 "<html><head></head><body>\0</body></html>",     // Null byte
-                40                                                            // Expected Content-Length
+                40,                                                            // Expected Content-Length
             ],
             [
-                "<html><head></head>خرید<body></body></html>",                // LTR text
-                47                                                            // Expected Content-Length
-            ]
+                '<html><head></head>خرید<body></body></html>',                // LTR text
+                47,                                                            // Expected Content-Length
+            ],
         ];
     }
 }

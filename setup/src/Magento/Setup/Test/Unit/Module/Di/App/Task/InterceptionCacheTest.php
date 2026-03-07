@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,14 +55,14 @@ class InterceptionCacheTest extends TestCase
             'Library\Class',
             'Application\Class',
             'VarGeneration\Class',
-            'AppGeneration\Class'
+            'AppGeneration\Class',
         ];
 
         $data = [
             'lib',
             'app',
             'generation',
-            'appgeneration'
+            'appgeneration',
         ];
 
         $this->interceptionsListMock->expects($this->any())
@@ -71,7 +72,7 @@ class InterceptionCacheTest extends TestCase
                     ['lib', ['Library\Class']],
                     ['app', ['Application\Class']],
                     ['generation', ['VarGeneration\Class']],
-                    ['appgeneration', ['AppGeneration\Class']]
+                    ['appgeneration', ['AppGeneration\Class']],
                 ]
             );
 

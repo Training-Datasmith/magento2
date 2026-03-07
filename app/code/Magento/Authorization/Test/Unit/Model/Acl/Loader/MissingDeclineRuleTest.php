@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Authorization\Test\Unit\Model\Acl\Loader;
 use Magento\Authorization\Model\Acl\Loader\Rule;
 use Magento\Framework\Acl;
 use Magento\Framework\Acl\Data\CacheInterface;
+use Magento\Framework\Acl\Role\CurrentRoleContext;
 use Magento\Framework\Acl\RootResource;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\Exception;
-use Magento\Framework\Acl\Role\CurrentRoleContext;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

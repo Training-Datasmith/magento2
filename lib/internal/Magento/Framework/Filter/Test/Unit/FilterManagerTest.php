@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Filter\Factory;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Filter\FilterManager\Config;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\TestCase;
 
 class FilterManagerTest extends TestCase
 {

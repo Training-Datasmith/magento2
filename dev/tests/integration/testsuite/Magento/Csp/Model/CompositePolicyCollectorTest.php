@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class CompositePolicyCollectorTest extends TestCase
                             new FetchPolicy('script-src', false, ['https://devdocs.magento.com']),
                             new FlagPolicy('upgrade-insecure-requests'),
                             new PluginTypesPolicy(['application/x-shockwave-flash']),
-                            new SandboxPolicy(false, true, false, true, false, true, false, true, false, true, false)
+                            new SandboxPolicy(false, true, false, true, false, true, false, true, false, true, false),
                         ]
                     );
                 }
@@ -78,7 +79,7 @@ class CompositePolicyCollectorTest extends TestCase
                             new FetchPolicy('default-src', false, [], [], true),
                             new FlagPolicy('upgrade-insecure-requests'),
                             new PluginTypesPolicy(['application/x-java-applet']),
-                            new SandboxPolicy(true, false, true, false, true, false, true, false, true, false, false)
+                            new SandboxPolicy(true, false, true, false, true, false, true, false, true, false, false),
                         ]
                     );
                 }
@@ -135,7 +136,7 @@ class CompositePolicyCollectorTest extends TestCase
         $foundHashes = $policies['script-src']->getHashes();
         $hashes = [
             'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF7=' => 'sha256',
-            'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=' => 'sha256'
+            'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=' => 'sha256',
         ];
         $this->assertEquals($hashes, $foundHashes);
 

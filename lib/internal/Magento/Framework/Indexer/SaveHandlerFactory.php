@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Indexer\SaveHandler\IndexerInterface as SaveHandlerInterface;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * @api Instantiate save handler when implementing custom Indexer\Action

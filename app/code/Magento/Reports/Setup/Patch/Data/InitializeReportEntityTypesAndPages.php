@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Reports\Setup\Patch\Data;
 
 use Magento\Cms\Model\PageFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -52,20 +53,20 @@ class InitializeReportEntityTypesAndPages implements DataPatchInterface, PatchVe
         $eventTypeData = [
             [
                 'event_type_id' => \Magento\Reports\Model\Event::EVENT_PRODUCT_VIEW,
-                'event_name' => 'catalog_product_view'
+                'event_name' => 'catalog_product_view',
             ],
             ['event_type_id' => \Magento\Reports\Model\Event::EVENT_PRODUCT_SEND, 'event_name' => 'sendfriend_product'],
             [
                 'event_type_id' => \Magento\Reports\Model\Event::EVENT_PRODUCT_COMPARE,
-                'event_name' => 'catalog_product_compare_add_product'
+                'event_name' => 'catalog_product_compare_add_product',
             ],
             [
                 'event_type_id' => \Magento\Reports\Model\Event::EVENT_PRODUCT_TO_CART,
-                'event_name' => 'checkout_cart_add_product'
+                'event_name' => 'checkout_cart_add_product',
             ],
             [
                 'event_type_id' => \Magento\Reports\Model\Event::EVENT_PRODUCT_TO_WISHLIST,
-                'event_name' => 'wishlist_add_product'
+                'event_name' => 'wishlist_add_product',
             ],
             ['event_type_id' => \Magento\Reports\Model\Event::EVENT_WISHLIST_SHARE, 'event_name' => 'wishlist_share'],
         ];

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,25 +24,25 @@ class Information
     /**#@+
      * Configuration paths
      */
-    const XML_PATH_STORE_INFO_NAME = 'general/store_information/name';
+    public const XML_PATH_STORE_INFO_NAME = 'general/store_information/name';
 
-    const XML_PATH_STORE_INFO_PHONE = 'general/store_information/phone';
+    public const XML_PATH_STORE_INFO_PHONE = 'general/store_information/phone';
 
-    const XML_PATH_STORE_INFO_HOURS = 'general/store_information/hours';
+    public const XML_PATH_STORE_INFO_HOURS = 'general/store_information/hours';
 
-    const XML_PATH_STORE_INFO_STREET_LINE1 = 'general/store_information/street_line1';
+    public const XML_PATH_STORE_INFO_STREET_LINE1 = 'general/store_information/street_line1';
 
-    const XML_PATH_STORE_INFO_STREET_LINE2 = 'general/store_information/street_line2';
+    public const XML_PATH_STORE_INFO_STREET_LINE2 = 'general/store_information/street_line2';
 
-    const XML_PATH_STORE_INFO_CITY = 'general/store_information/city';
+    public const XML_PATH_STORE_INFO_CITY = 'general/store_information/city';
 
-    const XML_PATH_STORE_INFO_POSTCODE = 'general/store_information/postcode';
+    public const XML_PATH_STORE_INFO_POSTCODE = 'general/store_information/postcode';
 
-    const XML_PATH_STORE_INFO_REGION_CODE = 'general/store_information/region_id';
+    public const XML_PATH_STORE_INFO_REGION_CODE = 'general/store_information/region_id';
 
-    const XML_PATH_STORE_INFO_COUNTRY_CODE = 'general/store_information/country_id';
+    public const XML_PATH_STORE_INFO_COUNTRY_CODE = 'general/store_information/country_id';
 
-    const XML_PATH_STORE_INFO_VAT_NUMBER = 'general/store_information/merchant_vat_number';
+    public const XML_PATH_STORE_INFO_VAT_NUMBER = 'general/store_information/merchant_vat_number';
     /**#@-*/
 
     /**#@-*/

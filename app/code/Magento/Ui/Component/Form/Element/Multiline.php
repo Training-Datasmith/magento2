@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element;
 
-use Magento\Ui\Component\Form\Field;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Ui\Component\Form\Field;
 
 /**
  * @api
@@ -16,11 +19,11 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
  */
 class Multiline extends AbstractElement
 {
-    const NAME = 'multiline';
+    public const NAME = 'multiline';
 
-    const FORM_ELEMENT = 'input';
+    public const FORM_ELEMENT = 'input';
 
-    const DATA_TYPE = 'text';
+    public const DATA_TYPE = 'text';
 
     /**
      * UI component factory
@@ -76,8 +79,8 @@ class Multiline extends AbstractElement
                         'dataType' => static::DATA_TYPE,
                         'formElement' => static::FORM_ELEMENT,
                         'sortOrder' => $size,
-                    ]
-                ]
+                    ],
+                ],
             ];
 
             if (!empty($validation[$size])) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Collection of events
  */
+
 namespace Magento\Framework\Event;
 
 use Magento\Framework\Event;

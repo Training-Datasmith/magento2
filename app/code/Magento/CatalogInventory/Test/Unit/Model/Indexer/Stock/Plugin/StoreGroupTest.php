@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Model\Indexer\Stock\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogInventory\Model\Indexer\Stock\Plugin\StoreGroup;
 use Magento\CatalogInventory\Model\Indexer\Stock\Processor;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Store\Model\ResourceModel\Group;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -77,13 +78,13 @@ class StoreGroupTest extends TestCase
                 [
                     'object_id' => false,
                     'has_website_id_changed' => true,
-                ]
+                ],
             ],
             [
                 [
                     'object_id' => false,
                     'has_website_id_changed' => false,
-                ]
+                ],
             ],
         ];
     }

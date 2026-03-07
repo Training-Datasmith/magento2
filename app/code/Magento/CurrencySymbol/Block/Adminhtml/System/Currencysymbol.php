@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CurrencySymbol\Block\Adminhtml\System;
 
 /**
@@ -63,7 +66,7 @@ class Currencysymbol extends \Magento\Backend\Block\Widget\Form
                 'class' => 'save primary save-currency-symbols',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#currency-symbols-form']],
-                ]
+                ],
             ]
         );
 

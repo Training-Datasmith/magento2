@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class SendTest extends TestCase
         'recipient email field' => "//input[contains(@name, 'recipients[email]')]",
         'submit button' => "//button[@type='submit']/span[contains(text(), 'Send Email')]",
         'notice massage' =>  "//div[@id='max-recipient-message']"
-            . "/span[contains(text(), 'Maximum 1 email addresses allowed.')]"
+            . "/span[contains(text(), 'Maximum 1 email addresses allowed.')]",
     ];
 
     /** @var ObjectManagerInterface */
@@ -96,7 +97,7 @@ class SendTest extends TestCase
     {
         return [
             ['name', 'Customer Form Name'],
-            ['email', 'customer_form_email@example.com']
+            ['email', 'customer_form_email@example.com'],
         ];
     }
 
@@ -124,7 +125,7 @@ class SendTest extends TestCase
     {
         return [
             ['name', 'John Smith'],
-            ['email', 'customer@example.com']
+            ['email', 'customer@example.com'],
         ];
     }
 

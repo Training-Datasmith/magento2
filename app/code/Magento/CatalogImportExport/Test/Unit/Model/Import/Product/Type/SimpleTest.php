@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
@@ -20,6 +19,7 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -91,11 +91,11 @@ class SimpleTest extends TestCase
             ],
             [
                 'attribute_id' => '2',
-                'attribute_set_name' => 'attributeSetName'
+                'attribute_set_name' => 'attributeSetName',
             ],
             [
                 'attribute_id' => '3',
-                'attribute_set_name' => 'attributeSetName'
+                'attribute_set_name' => 'attributeSetName',
             ],
         ];
         $attribute1 = $this->createPartialMockWithReflection(
@@ -281,7 +281,7 @@ class SimpleTest extends TestCase
         $rowData = [
             '_attribute_set' => 'attribute_set_name',
             'sku' => 'sku',
-            'attr_code' => 'test'
+            'attr_code' => 'test',
         ];
         $rowNum = 1;
         $this->entityModel->method('getRowScope')
@@ -327,9 +327,9 @@ class SimpleTest extends TestCase
                     'attr set name' => [
                         'attr set name value key' => [
                             'options' => [
-                                'option key' => 'option value'
-                            ]
-                        ]
+                                'option key' => 'option value',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -346,7 +346,7 @@ class SimpleTest extends TestCase
                     'attr set name' => [
                         'not equal to code value' => [],
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -403,7 +403,7 @@ class SimpleTest extends TestCase
         ];
         $expected = [
             'boolean_attribute' => 1,
-            'text_attribute' => 'default_value'
+            'text_attribute' => 'default_value',
         ];
         $result = $this->simpleType->prepareAttributesWithDefaultValueForSave($rowData);
         $this->assertEquals($expected, $result);

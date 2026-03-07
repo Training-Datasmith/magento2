@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class AddCommentTest extends AbstractInvoiceControllerTest
             new StringContains($order->getCustomerName()),
             new RegularExpression(
                 sprintf(
-                    "/Your order #%s has been updated with a status of.*%s/",
+                    '/Your order #%s has been updated with a status of.*%s/',
                     $order->getIncrementId(),
                     $order->getFrontendStatusLabel()
                 )

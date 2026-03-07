@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,12 +92,12 @@ class GalleryTest extends TestCase
         $objects = [
             [
                 ImagesConfigFactoryInterface::class,
-                $this->imagesConfigFactoryMock
+                $this->imagesConfigFactoryMock,
             ],
             [
                 UrlBuilder::class,
-                $this->urlBuilderMock
-            ]
+                $this->urlBuilderMock,
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -132,7 +133,7 @@ class GalleryTest extends TestCase
                 'media_type' => '',
                 'video_url' => '',
                 'is_base' => null,
-            ]
+            ],
         ];
         $mediaGalleryData->setData($data);
 

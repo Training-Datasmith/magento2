@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Http;
 use Magento\Framework\App\ViewInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Paypal\Controller\Payflow\ReturnUrl;
 use Magento\Paypal\Controller\Payflowadvanced\ReturnUrl as PayflowadvancedReturnUrl;
 use Magento\Paypal\Helper\Checkout;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Paypal\Model\Config;
 use Magento\Sales\Api\PaymentFailuresInterface;
 use Magento\Sales\Model\Order;
@@ -33,7 +34,7 @@ use PHPUnit\Framework\TestCase;
 class ReturnUrlTest extends TestCase
 {
     use MockCreationTrait;
-   
+
     public const LAST_REAL_ORDER_ID = '000000001';
 
     public const SILENT_POST_HASH = 'abcdfg';
@@ -161,7 +162,7 @@ class ReturnUrlTest extends TestCase
                 'checkoutSession' => $this->checkoutSession,
                 'orderFactory' => $this->orderFactory,
                 'checkoutHelper' => $this->checkoutHelper,
-                'paymentFailures' => $this->paymentFailures
+                'paymentFailures' => $this->paymentFailures,
             ]
         );
     }
@@ -183,7 +184,7 @@ class ReturnUrlTest extends TestCase
             ->willReturnMap(
                 [
                     ['INVNUM', self::LAST_REAL_ORDER_ID],
-                    ['USER2', self::SILENT_POST_HASH]
+                    ['USER2', self::SILENT_POST_HASH],
                 ]
             );
 
@@ -209,7 +210,7 @@ class ReturnUrlTest extends TestCase
         return [
             [Order::STATE_PROCESSING],
             [Order::STATE_COMPLETE],
-            [Order::STATE_PAYMENT_REVIEW]
+            [Order::STATE_PAYMENT_REVIEW],
         ];
     }
 
@@ -231,7 +232,7 @@ class ReturnUrlTest extends TestCase
             ->willReturnMap(
                 [
                     ['INVNUM', self::LAST_REAL_ORDER_ID],
-                    ['USER2', $requestHash]
+                    ['USER2', $requestHash],
                 ]
             );
 
@@ -252,7 +253,7 @@ class ReturnUrlTest extends TestCase
         return [
             ['requestHash' => '', 'orderHash' => self::SILENT_POST_HASH],
             ['requestHash' => self::SILENT_POST_HASH, 'orderHash' => ''],
-            ['requestHash' => 'abcd', 'orderHash' => 'dcba']
+            ['requestHash' => 'abcd', 'orderHash' => 'dcba'],
         ];
     }
 
@@ -277,7 +278,7 @@ class ReturnUrlTest extends TestCase
             ->willReturnMap([
                 ['RESPMSG', $errMessage],
                 ['INVNUM', self::LAST_REAL_ORDER_ID],
-                ['USER2', self::SILENT_POST_HASH]
+                ['USER2', self::SILENT_POST_HASH],
             ]);
 
         $this->payment->method('getMethod')
@@ -308,7 +309,7 @@ class ReturnUrlTest extends TestCase
             [Order::STATE_CANCELED, false, ''],
             [Order::STATE_CANCELED, true, 'paymentMethod'],
             [Order::STATE_HOLDED, false, ''],
-            [Order::STATE_HOLDED, true, 'paymentMethod']
+            [Order::STATE_HOLDED, true, 'paymentMethod'],
         ];
     }
 
@@ -328,7 +329,7 @@ class ReturnUrlTest extends TestCase
         $this->request->method('getParam')
             ->willReturnMap([
                 ['INVNUM', self::LAST_REAL_ORDER_ID],
-                ['USER2', self::SILENT_POST_HASH]
+                ['USER2', self::SILENT_POST_HASH],
             ]);
 
         $this->withBlockContent(false, 'Requested payment method does not match with order.');
@@ -357,7 +358,7 @@ class ReturnUrlTest extends TestCase
             ->willReturnMap([
                 ['RESPMSG', $errorMsg],
                 ['INVNUM', self::LAST_REAL_ORDER_ID],
-                ['USER2', self::SILENT_POST_HASH]
+                ['USER2', self::SILENT_POST_HASH],
             ]);
 
         $this->checkoutHelper->method('cancelCurrentOrder')
@@ -381,7 +382,7 @@ class ReturnUrlTest extends TestCase
         return [
             ['simple', 'simple'],
             ['<script>alert(1)</script>', 'alert(1)'],
-            ['<div style="background-image:url(javascript:alert(1))">', '']
+            ['<div style="background-image:url(javascript:alert(1))">', ''],
         ];
     }
 
@@ -401,7 +402,7 @@ class ReturnUrlTest extends TestCase
                 [
                     ['RESPMSG', 'message'],
                     ['INVNUM', self::LAST_REAL_ORDER_ID],
-                    ['USER2', self::SILENT_POST_HASH]
+                    ['USER2', self::SILENT_POST_HASH],
                 ]
             );
 
@@ -417,7 +418,7 @@ class ReturnUrlTest extends TestCase
                 'checkoutSession' => $this->checkoutSession,
                 'orderFactory' => $this->orderFactory,
                 'checkoutHelper' => $this->checkoutHelper,
-                'paymentFailures' => $this->paymentFailures
+                'paymentFailures' => $this->paymentFailures,
             ]
         );
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,9 +20,9 @@ class PhpCookieReaderTest extends \PHPUnit\Framework\TestCase
      */
     protected $model;
 
-    const NAME = 'cookie-name';
-    const VALUE = 'cookie-val';
-    const DEFAULT_VAL = 'default-val';
+    public const NAME = 'cookie-name';
+    public const VALUE = 'cookie-val';
+    public const DEFAULT_VAL = 'default-val';
 
     protected function setUp(): void
     {

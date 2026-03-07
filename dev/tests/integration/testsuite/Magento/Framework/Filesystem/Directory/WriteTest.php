@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Filesystem\Directory\Write
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Directory;
 
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ReadTest
@@ -62,10 +65,10 @@ class WriteTest extends TestCase
     public static function createProvider()
     {
         return [
-            ['newDir1', 0777, "newDir1"],
-            ['newDir1', 0777, "root_dir1/subdir1/subdir2"],
-            ['newDir2', 0777, "root_dir2/subdir"],
-            ['newDir1', 0777, "."]
+            ['newDir1', 0777, 'newDir1'],
+            ['newDir1', 0777, 'root_dir1/subdir1/subdir2'],
+            ['newDir2', 0777, 'root_dir2/subdir'],
+            ['newDir1', 0777, '.'],
         ];
     }
 
@@ -279,7 +282,7 @@ class WriteTest extends TestCase
     {
         return [
             ['newDir1', 0777, 'first_name.txt', 'second_name.txt'],
-            ['newDir1', 0777, 'subdir/first_name.txt', 'subdir/second_name.txt']
+            ['newDir1', 0777, 'subdir/first_name.txt', 'subdir/second_name.txt'],
         ];
     }
 
@@ -356,7 +359,7 @@ class WriteTest extends TestCase
     {
         return [
             ['dir1', 'dir2', 0777, 'first_name.txt', 'second_name.txt'],
-            ['dir1', 'dir2', 0777, 'subdir/first_name.txt', 'subdir/second_name.txt']
+            ['dir1', 'dir2', 0777, 'subdir/first_name.txt', 'subdir/second_name.txt'],
         ];
     }
 
@@ -469,7 +472,7 @@ class WriteTest extends TestCase
     {
         return [
             ['test_directory', 0777, 'touch_file.txt', time() - 3600],
-            ['test_directory', 0777, 'subdirectory/touch_file.txt', time() - 3600]
+            ['test_directory', 0777, 'subdirectory/touch_file.txt', time() - 3600],
         ];
     }
 
@@ -568,7 +571,7 @@ class WriteTest extends TestCase
     {
         return [
             ['newDir1', 0777, 'newFile.txt', 'w+'],
-            ['newDir1', 0777, 'subdirectory/newFile.txt', 'w+']
+            ['newDir1', 0777, 'subdirectory/newFile.txt', 'w+'],
         ];
     }
 

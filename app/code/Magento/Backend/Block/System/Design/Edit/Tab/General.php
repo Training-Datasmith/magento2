@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -63,7 +65,7 @@ class General extends \Magento\Backend\Block\Widget\Form\Generic
                     'title' => __('Store'),
                     'values' => $this->_systemStore->getStoreValuesForForm(),
                     'name' => 'store_id',
-                    'required' => true
+                    'required' => true,
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -89,7 +91,7 @@ class General extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Custom Design'),
                 'values' => $options,
                 'name' => 'design',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -101,7 +103,7 @@ class General extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Date From'),
                 'title' => __('Date From'),
                 'name' => 'date_from',
-                'date_format' => $dateFormat
+                'date_format' => $dateFormat,
                 //'required' => true
             ]
         );
@@ -112,7 +114,7 @@ class General extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Date To'),
                 'title' => __('Date To'),
                 'name' => 'date_to',
-                'date_format' => $dateFormat
+                'date_format' => $dateFormat,
                 //'required' => true
             ]
         );

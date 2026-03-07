@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ $domainManager->addDomains(
         'example.com',
         'www.example.com',
         'www.sample.example.com',
-        'google.com'
+        'google.com',
     ]
 );
 

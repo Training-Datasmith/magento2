@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute;
 
 use Magento\Backend\Model\Session;
-use Magento\Catalog\Model\CategoryFactory;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\Attributes\DataProvider;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class FlagManagerTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 }

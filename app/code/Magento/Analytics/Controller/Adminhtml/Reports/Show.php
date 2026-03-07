@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Controller\Adminhtml\Reports;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Analytics\Model\Exception\State\SubscriptionUpdateException;
 use Magento\Analytics\Model\ReportUrlProvider;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -20,24 +23,14 @@ use Magento\Framework\Exception\LocalizedException;
 class Show extends Action implements HttpGetActionInterface
 {
     /**
-     * @var ReportUrlProvider
-     */
-    private $reportUrlProvider;
-
-    /**
      * @inheritdoc
      */
     public const ADMIN_RESOURCE = 'Magento_Analytics::advanced_reporting';
 
-    /**
-     * @param Context $context
-     * @param ReportUrlProvider $reportUrlProvider
-     */
     public function __construct(
         Context $context,
-        ReportUrlProvider $reportUrlProvider
+        private readonly ReportUrlProvider $reportUrlProvider
     ) {
-        $this->reportUrlProvider = $reportUrlProvider;
         parent::__construct($context);
     }
 

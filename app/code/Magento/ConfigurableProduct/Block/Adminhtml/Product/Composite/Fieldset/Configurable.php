@@ -1,16 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Composite\Fieldset;
 
-use Magento\Catalog\Helper\Product as ProductHelper;
 use Magento\ConfigurableProduct\Model\ConfigurableAttributeData;
 use Magento\Customer\Helper\Session\CurrentCustomer;
 use Magento\Customer\Model\Session;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\Locale\Format;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 

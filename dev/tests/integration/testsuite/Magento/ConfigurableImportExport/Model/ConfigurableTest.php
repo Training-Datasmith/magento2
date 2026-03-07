@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableImportExport\Model;
 
 use Magento\CatalogImportExport\Model\AbstractProductExportImportTestCase;
@@ -17,7 +20,7 @@ class ConfigurableTest extends AbstractProductExportImportTestCase
         return [
             'configurable-product' => [
                 [
-                    'Magento/ConfigurableProduct/_files/product_configurable.php'
+                    'Magento/ConfigurableProduct/_files/product_configurable.php',
                 ],
                 [
                     'configurable',
@@ -26,7 +29,7 @@ class ConfigurableTest extends AbstractProductExportImportTestCase
             ],
             'configurable-product-12345' => [
                 [
-                    'Magento/ConfigurableProduct/_files/product_configurable_12345.php'
+                    'Magento/ConfigurableProduct/_files/product_configurable_12345.php',
                 ],
                 [
                     '12345',

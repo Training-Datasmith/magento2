@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\Search;
 
 use Magento\Framework\Api\SearchResultsInterface;
@@ -18,10 +21,10 @@ interface SearchResultInterface extends SearchResultsInterface
     /**#@+
      * Constants defined for keys of data array
      */
-    const TOTAL_COUNT = 'total_count';
-    const SEARCH_CRITERIA = 'search_criteria';
-    const ITEMS = 'items';
-    const AGGREGATIONS = 'aggregations';
+    public const TOTAL_COUNT = 'total_count';
+    public const SEARCH_CRITERIA = 'search_criteria';
+    public const ITEMS = 'items';
+    public const AGGREGATIONS = 'aggregations';
     /**#@-*/
 
     /**

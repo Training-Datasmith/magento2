@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class JoinMinimalPosition
                     $table . '.category_id=?',
                     $categoryId,
                     'int'
-                )
+                ),
             ];
 
             $joinCond = implode(' AND ', $conditions);

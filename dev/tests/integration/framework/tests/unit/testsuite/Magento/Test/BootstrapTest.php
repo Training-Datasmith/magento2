@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Bootstrap.
  */
+
 namespace Magento\Test;
 
 class BootstrapTest extends \PHPUnit\Framework\TestCase
@@ -175,11 +178,11 @@ class BootstrapTest extends \PHPUnit\Framework\TestCase
         $this->_profilerBootstrap
             ->expects($this->once())
             ->method('registerFileProfiler')
-            ->with("profiler.csv");
+            ->with('profiler.csv');
         $this->_profilerBootstrap
             ->expects($this->once())
             ->method('registerBambooProfiler')
-            ->with("profiler_bamboo.csv", "profiler_metrics.php");
+            ->with('profiler_bamboo.csv', 'profiler_metrics.php');
         $this->_object->runBootstrap();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class PriceAttributes implements ModifierInterface
                 foreach ($this->priceAttributeList as $priceAttribute) {
                     if (isset($item[$priceAttribute])) {
                         $item[$priceAttribute] = $this->priceCurrency->format(
-                            sprintf("%F", $item[$priceAttribute]),
+                            sprintf('%F', $item[$priceAttribute]),
                             false,
                             PriceCurrencyInterface::DEFAULT_PRECISION,
                             $this->storeManager->getStore($item['store_id'] ?? null)

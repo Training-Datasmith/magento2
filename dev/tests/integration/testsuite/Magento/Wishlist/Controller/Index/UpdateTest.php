@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class UpdateTest extends AbstractController
         $this->assertNotNull($item);
         $params = ['description' => [$item->getId() => 'Some description.'], 'qty' => [$item->getId() => 5]];
         $this->performUpdateWishListItemRequest($params);
-        $message = sprintf("%s has been updated in your Wish List.", $item->getProduct()->getName());
+        $message = sprintf('%s has been updated in your Wish List.', $item->getProduct()->getName());
         $this->assertSessionMessages($this->equalTo([(string)__($message)]), MessageInterface::TYPE_SUCCESS);
         $this->assertRedirect($this->stringContains('wishlist/index/index/wishlist_id/' . $item->getWishlistId()));
         $updatedItem = $this->getWishlistByCustomerId->getItemBySku(1, 'simple');
@@ -78,7 +79,7 @@ class UpdateTest extends AbstractController
         $this->assertNotNull($item);
         $params = ['description' => [$item->getId() => ''], 'qty' => [$item->getId() => 0]];
         $this->performUpdateWishListItemRequest($params);
-        $message = sprintf("%s has been updated in your Wish List.", $item->getProduct()->getName());
+        $message = sprintf('%s has been updated in your Wish List.', $item->getProduct()->getName());
         $this->assertSessionMessages($this->equalTo([(string)__($message)]), MessageInterface::TYPE_SUCCESS);
         $this->assertRedirect($this->stringContains('wishlist/index/index/wishlist_id/' . $item->getWishlistId()));
         $this->assertCount(0, $this->getWishlistByCustomerId->execute(1)->getItemCollection());

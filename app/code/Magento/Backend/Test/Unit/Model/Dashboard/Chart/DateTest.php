@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Backend\Test\Unit\Model\Dashboard\Chart;
 
 use Magento\Backend\Model\Dashboard\Chart\Date;
+use Magento\Backend\Model\Dashboard\Period;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Data\Collection\EntityFactory;
@@ -19,16 +21,15 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
-use Magento\Backend\Model\Dashboard\Period;
 use Magento\Reports\Model\ResourceModel\Order\Collection;
+use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
 use Magento\Sales\Model\Order\Config;
 use Magento\Sales\Model\ResourceModel\EntitySnapshot;
 use Magento\Sales\Model\ResourceModel\Report\OrderFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -170,7 +171,7 @@ class DateTest extends TestCase
 
         return [
             [Period::PERIOD_1_YEAR, 'reports/dashboard/ytd_start', $expectedYear],
-            [Period::PERIOD_2_YEARS, 'reports/dashboard/ytd_start', $expected2YTDYear]
+            [Period::PERIOD_2_YEARS, 'reports/dashboard/ytd_start', $expected2YTDYear],
         ];
     }
 

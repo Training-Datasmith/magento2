@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Control;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -12,7 +15,7 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class ActionPoolFactory
 {
-    const INSTANCE = \Magento\Framework\View\Element\UiComponent\Control\ActionPoolInterface::class;
+    public const INSTANCE = \Magento\Framework\View\Element\UiComponent\Control\ActionPoolInterface::class;
 
     /**
      * @var ObjectManagerInterface

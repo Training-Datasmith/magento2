@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class OrderItemRepositoryTest extends TestCase
                 'storeManager' => $this->storeManagerMock,
                 'helper' => $this->helperMock,
                 'messageFactory' => $this->messageFactoryMock,
-                'giftMessageSaveModel' => $this->giftMessageSaveModelMock
+                'giftMessageSaveModel' => $this->giftMessageSaveModelMock,
             ]
         );
     }
@@ -221,7 +222,7 @@ class OrderItemRepositoryTest extends TestCase
         } catch (NoSuchEntityException $exception) {
             $this->assertEquals(
                 "No item with the provided ID was found in the Order, or a gift message isn't allowed. "
-                . "Verify and try again.",
+                . 'Verify and try again.',
                 $exception->getMessage()
             );
         }

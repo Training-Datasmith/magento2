@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class DataCategoryUrlRewriteDatabaseMapTest extends TestCase
             [
                 'connection' => $this->connectionMock,
                 'hashMapPool' => $this->hashMapPoolMock,
-                'temporaryTableService' => $this->temporaryTableServiceMock
+                'temporaryTableService' => $this->temporaryTableServiceMock,
             ]
         );
     }
@@ -104,7 +105,7 @@ class DataCategoryUrlRewriteDatabaseMapTest extends TestCase
                 [
                     'PRIMARY' => ['url_rewrite_id'],
                     'HASHKEY_ENTITY_STORE' => ['hash_key'],
-                    'ENTITY_STORE' => ['entity_id', 'store_id']
+                    'ENTITY_STORE' => ['entity_id', 'store_id'],
                 ]
             )
             ->willReturn('tempTableName');

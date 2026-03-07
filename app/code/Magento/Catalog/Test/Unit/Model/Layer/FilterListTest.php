@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Config\LayerCategoryConfig;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Category\FilterableAttributeList;
 use Magento\Catalog\Model\Layer\FilterList;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Framework\ObjectManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,7 @@ class FilterListTest extends TestCase
             FilterList::CATEGORY_FILTER => 'CategoryFilterClass',
             FilterList::PRICE_FILTER => 'PriceFilterClass',
             FilterList::DECIMAL_FILTER => 'DecimalFilterClass',
-            FilterList::ATTRIBUTE_FILTER => 'AttributeFilterClass'
+            FilterList::ATTRIBUTE_FILTER => 'AttributeFilterClass',
 
         ];
         $this->layerMock = $this->createMock(Layer::class);
@@ -98,7 +99,7 @@ class FilterListTest extends TestCase
                 if (empty($arguments)) {
                     return 'filter';
                 } else {
-                        $expectedClass = $arguments[0];
+                    $expectedClass = $arguments[0];
                     if ($expectedClass == $expectedClass) {
                         return 'filter';
                     }
@@ -143,7 +144,7 @@ class FilterListTest extends TestCase
                 $expectedClass,
                 [
                     'data' => ['attribute_model' => $this->attributeMock],
-                    'layer' => $this->layerMock
+                    'layer' => $this->layerMock,
                 ]
             )
             ->willReturn('filter');
@@ -172,18 +173,18 @@ class FilterListTest extends TestCase
             [
                 'method' => 'getAttributeCode',
                 'value' => FilterList::PRICE_FILTER,
-                'expectedClass' => 'PriceFilterClass'
+                'expectedClass' => 'PriceFilterClass',
             ],
             [
                 'method' => 'getBackendType',
                 'value' => FilterList::DECIMAL_FILTER,
-                'expectedClass' => 'DecimalFilterClass'
+                'expectedClass' => 'DecimalFilterClass',
             ],
             [
                 'method' => 'getAttributeCode',
                 'value' => null,
-                'expectedClass' => 'AttributeFilterClass'
-            ]
+                'expectedClass' => 'AttributeFilterClass',
+            ],
         ];
     }
 
@@ -200,9 +201,9 @@ class FilterListTest extends TestCase
                 'value' => FilterList::PRICE_FILTER,
                 'expectedClass' => 'PriceFilterClass',
                 'expectedResult' => [
-                    'filter'
-                ]
-            ]
+                    'filter',
+                ],
+            ],
         ];
     }
 }

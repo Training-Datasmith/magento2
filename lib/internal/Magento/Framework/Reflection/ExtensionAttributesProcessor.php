@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Framework\Reflection;
 
+use Laminas\Code\Reflection\MethodReflection;
 use Magento\Framework\Api\ExtensionAttribute\Config;
 use Magento\Framework\Api\ExtensionAttribute\Config\Converter;
+use Magento\Framework\Api\ExtensionAttributesInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Phrase;
-use Magento\Framework\Api\ExtensionAttributesInterface;
-use Laminas\Code\Reflection\MethodReflection;
 
 /**
  * Processes extension attributes and produces an array for the data.

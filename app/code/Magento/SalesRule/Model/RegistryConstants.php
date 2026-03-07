@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,5 +17,5 @@ class RegistryConstants
     /**
      * Key for current sales rule in registry
      */
-    const CURRENT_SALES_RULE = 'current_promo_sales_rule';
+    public const CURRENT_SALES_RULE = 'current_promo_sales_rule';
 }

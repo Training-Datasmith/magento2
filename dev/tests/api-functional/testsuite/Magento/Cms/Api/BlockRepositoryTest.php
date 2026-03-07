@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Api;
 
 use Magento\Cms\Api\Data\BlockInterface;
@@ -18,9 +21,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class BlockRepositoryTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'cmsBlockRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/cmsBlock';
+    public const SERVICE_NAME = 'cmsBlockRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/cmsBlock';
 
     /**
      * @var \Magento\Cms\Api\Data\BlockInterfaceFactory
@@ -265,7 +268,7 @@ class BlockRepositoryTest extends WebapiAbstract
         $requestData = ['searchCriteria' => $searchData];
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/search" . '?' . http_build_query($requestData),
+                'resourcePath' => self::RESOURCE_PATH . '/search' . '?' . http_build_query($requestData),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [

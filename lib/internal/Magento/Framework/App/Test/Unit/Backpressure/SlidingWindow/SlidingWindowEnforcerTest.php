@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -17,11 +18,10 @@ use Magento\Framework\App\Backpressure\SlidingWindow\RequestLoggerInterface;
 use Magento\Framework\App\Backpressure\SlidingWindow\SlidingWindowEnforcer;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -138,7 +138,7 @@ class SlidingWindowEnforcerTest extends TestCase
         return [
             'prev-lt-50%' => [999, false],
             'prev-eq-50%' => [1000, false],
-            'prev-gt-50%' => [1001, true]
+            'prev-gt-50%' => [1001, true],
         ];
     }
 

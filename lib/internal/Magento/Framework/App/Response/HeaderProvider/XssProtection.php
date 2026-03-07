@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Response\HeaderProvider;
 
-use Magento\Framework\App\Response\HeaderProvider\HeaderProviderInterface;
 use Magento\Framework\HTTP\Header;
 
 class XssProtection extends AbstractHeaderProvider
@@ -16,13 +18,13 @@ class XssProtection extends AbstractHeaderProvider
     protected $headerName = 'X-XSS-Protection';
 
     /** Matches IE 8 browsers */
-    const IE_8_USER_AGENT = 'MSIE 8';
+    public const IE_8_USER_AGENT = 'MSIE 8';
 
     /** Value for browsers except IE 8 */
-    const HEADER_ENABLED = '1; mode=block';
+    public const HEADER_ENABLED = '1; mode=block';
 
     /** Value for IE 8 */
-    const HEADER_DISABLED = '0';
+    public const HEADER_DISABLED = '0';
 
     /**
      * @var \Magento\Framework\HTTP\Header

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -127,8 +128,8 @@ class InitialTranslationSourceTest extends TestCase
                     'store_id' => 2,
                     'locale' => 'en_US',
                     'string' => 'hello',
-                    'translate' => 'bonjour'
-                ]
+                    'translate' => 'bonjour',
+                ],
             ]);
         $this->storeManager->expects($this->once())
             ->method('getStore')
@@ -142,9 +143,9 @@ class InitialTranslationSourceTest extends TestCase
             [
                 'en_US' => [
                     'myStore' => [
-                        'hello' => 'bonjour'
-                    ]
-                ]
+                        'hello' => 'bonjour',
+                    ],
+                ],
             ],
             $this->source->get()
         );

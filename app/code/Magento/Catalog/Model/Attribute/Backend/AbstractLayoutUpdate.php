@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Attribute\Backend;
 
+use Magento\Catalog\Model\AbstractModel;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Catalog\Model\AbstractModel;
 
 /**
  * Custom layout file attribute.

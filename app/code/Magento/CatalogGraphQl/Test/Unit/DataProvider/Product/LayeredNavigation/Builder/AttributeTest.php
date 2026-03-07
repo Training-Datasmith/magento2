@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class AttributeTest extends TestCase
                 'label' => $bucketName,
                 'count' => 0,
                 'attribute_code' => $bucketName,
-                'position' => null
+                'position' => null,
             ]);
         $this->layerFormatter->expects($this->once())
             ->method('buildItem')
@@ -86,7 +87,7 @@ class AttributeTest extends TestCase
             ->willReturn([
                 'label' => '1',
                 'value' => '1',
-                'count' => 5
+                'count' => 5,
             ]);
         $result = $this->model->build($aggregation, $storeId);
         $this->assertIsArray($result);
@@ -116,9 +117,9 @@ class AttributeTest extends TestCase
                 'is_filterable' => 0,
                 'options' => [
                     '1' => 'Red',
-                    '2' => 'Blue'
-                ]
-            ]
+                    '2' => 'Blue',
+                ],
+            ],
         ];
         $this->attributeOptionProvider->expects($this->once())
             ->method('getOptions')
@@ -131,7 +132,7 @@ class AttributeTest extends TestCase
                 'label' => $attributeLabel,
                 'count' => 0,
                 'attribute_code' => $attributeCode,
-                'position' => $attributePosition
+                'position' => $attributePosition,
             ]);
         $this->layerFormatter->expects($this->exactly(2))
             ->method('buildItem')
@@ -139,7 +140,7 @@ class AttributeTest extends TestCase
                 return [
                     'label' => $label,
                     'value' => $value,
-                    'count' => $count
+                    'count' => $count,
                 ];
             });
         $result = $this->model->build($aggregation, $storeId);

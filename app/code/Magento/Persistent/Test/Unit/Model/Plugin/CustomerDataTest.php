@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Persistent\Test\Unit\Model\Plugin;
 
 use Magento\Customer\CustomerData\Customer;
 use Magento\Customer\Model\Session;
-use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Persistent\Helper\Data;
+use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Persistent\Model\Plugin\CustomerData;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

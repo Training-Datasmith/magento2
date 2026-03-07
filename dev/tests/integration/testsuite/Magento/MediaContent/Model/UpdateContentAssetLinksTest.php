@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class UpdateContentAssetLinksTest extends TestCase
             [
                 'entityType' => $entityType,
                 'entityId' => $entityId,
-                'field' => $field
+                'field' => $field,
             ]
         );
 

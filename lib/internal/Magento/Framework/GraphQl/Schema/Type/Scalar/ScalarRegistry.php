@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class ScalarRegistry
      * @param ScalarElement $element
      * @return CustomScalarInterface
      */
-    public function get(ScalarElement $element) : CustomScalarInterface
+    public function get(ScalarElement $element): CustomScalarInterface
     {
         return $this->objectManager->get($element->getImplementation());
     }

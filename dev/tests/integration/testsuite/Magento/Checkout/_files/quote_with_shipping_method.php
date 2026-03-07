@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Quote with simple product, shipping, billing addresses and shipping method fixture
  *

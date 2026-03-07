@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class FormTest extends TestCase
         parent::setUp();
         $objectManager = new ObjectManager($this);
         $objectManager->prepareObjectManager();
-        
+
         $this->context = $this->createMock(Context::class);
         $this->registry = $this->createMock(Registry::class);
         $this->formFactory = $this->createMock(FormFactory::class);
@@ -91,7 +92,7 @@ class FormTest extends TestCase
             return $capturedValue;
         });
         $element->method('getId')->willReturn('multiselect');
-        
+
         $element->setId('multiselect');
         $form->method('getElements')->willReturn(new Collection($form));
         $form->method('getElement')->with('multiselect')->willReturn($element);

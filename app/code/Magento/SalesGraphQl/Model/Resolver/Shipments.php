@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class Shipments implements ResolverInterface
                     'number' => $shipment->getIncrementId(),
                     'comments' => $this->getShipmentComments($shipment),
                     'model' => $shipment,
-                    'order' => $order
+                    'order' => $order,
                 ];
         }
         return $orderShipments;
@@ -76,7 +77,7 @@ class Shipments implements ResolverInterface
                 $comments[] = [
                     'timestamp' => $this->timezone->date($comment->getCreatedAt())
                         ->format(DateTime::DATETIME_SLASH_PHP_FORMAT),
-                    'message' => $comment->getComment()
+                    'message' => $comment->getComment(),
                 ];
             }
         }

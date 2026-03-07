@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class SetModeCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute(['mode' => 'production']);
         $this->assertStringContainsString(
-            "production mode",
+            'production mode',
             $tester->getDisplay()
         );
     }
@@ -65,7 +66,7 @@ class SetModeCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute(['mode' => 'developer']);
         $this->assertStringContainsString(
-            "developer mode",
+            'developer mode',
             $tester->getDisplay()
         );
     }
@@ -77,7 +78,7 @@ class SetModeCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute(['mode' => 'default']);
         $this->assertStringContainsString(
-            "default mode",
+            'default mode',
             $tester->getDisplay()
         );
     }
@@ -89,7 +90,7 @@ class SetModeCommandTest extends TestCase
         $tester = new CommandTester($this->command);
         $tester->execute(['mode' => 'production', '--skip-compilation' => true]);
         $this->assertStringContainsString(
-            "production mode",
+            'production mode',
             $tester->getDisplay()
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,15 @@ declare(strict_types=1);
 namespace Magento\Checkout\Test\Unit\Model;
 
 use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
+use Magento\Checkout\Api\PaymentInformationManagementInterface;
 use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
 use Magento\Checkout\Api\PaymentSavingRateLimiterInterface;
-use Magento\Checkout\Api\PaymentInformationManagementInterface;
+use Magento\Checkout\Model\AddressComparatorInterface;
 use Magento\Checkout\Model\GuestPaymentInformationManagement;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
-use Magento\Checkout\Model\AddressComparatorInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
@@ -24,13 +26,12 @@ use Magento\Quote\Api\GuestCartManagementInterface;
 use Magento\Quote\Api\GuestPaymentMethodManagementInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\QuoteAddressValidationService;
+use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Quote\Model\QuoteIdMask;
-use Magento\Quote\Model\QuoteAddressValidationService;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -271,7 +272,7 @@ class GuestPaymentInformationManagementTest extends TestCase
     private function getMockForAssignBillingAddress(
         int $cartId,
         MockObject $billingAddressMock
-    ) : void {
+    ): void {
         $quoteIdMask = $this->createPartialMockWithReflection(QuoteIdMask::class, ['load', 'getQuoteId']);
         $quoteIdMask->method('load')->with($cartId, 'masked_id')->willReturnSelf();
         $quoteIdMask->method('getQuoteId')->willReturn($cartId);

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 
 use Magento\Catalog\Api\Data\ProductInterfaceFactory;
+use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
@@ -13,7 +16,6 @@ use Magento\Catalog\Model\Product\Visibility;
 use Magento\Eav\Model\Config;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();

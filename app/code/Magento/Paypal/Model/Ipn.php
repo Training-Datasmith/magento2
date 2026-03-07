@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -184,11 +186,11 @@ class Ipn extends \Magento\Paypal\Model\AbstractIpn implements IpnInterface
                 case Info::TXN_TYPE_NEW_CASE:
                     $this->_registerDispute();
                     break;
-                // handle new adjustment is created
+                    // handle new adjustment is created
                 case Info::TXN_TYPE_ADJUSTMENT:
                     $this->_registerAdjustment();
                     break;
-                //handle new transaction created
+                    //handle new transaction created
                 default:
                     $this->_registerTransaction();
                     break;
@@ -259,11 +261,11 @@ class Ipn extends \Magento\Paypal\Model\AbstractIpn implements IpnInterface
             case Info::PAYMENTSTATUS_COMPLETED:
                 $this->_registerPaymentCapture(true);
                 break;
-            // the holded payment was denied on paypal side
+                // the holded payment was denied on paypal side
             case Info::PAYMENTSTATUS_DENIED:
                 $this->_registerPaymentDenial();
                 break;
-            // customer attempted to pay via bank account, but failed
+                // customer attempted to pay via bank account, but failed
             case Info::PAYMENTSTATUS_FAILED:
                 if ($this->_order->getState() === \Magento\Sales\Model\Order::STATE_PAYMENT_REVIEW) {
                     $this->_registerPaymentDenial();
@@ -271,7 +273,7 @@ class Ipn extends \Magento\Paypal\Model\AbstractIpn implements IpnInterface
                     $this->_registerPaymentFailure();
                 }
                 break;
-            // payment was obtained, but money were not captured yet
+                // payment was obtained, but money were not captured yet
             case Info::PAYMENTSTATUS_PENDING:
                 $this->_registerPaymentPending();
                 break;
@@ -286,7 +288,7 @@ class Ipn extends \Magento\Paypal\Model\AbstractIpn implements IpnInterface
             case Info::PAYMENTSTATUS_REFUNDED:
                 $this->_registerPaymentRefund();
                 break;
-            // authorization expire/void
+                // authorization expire/void
             case Info::PAYMENTSTATUS_EXPIRED:
                 // break is intentionally omitted
             case Info::PAYMENTSTATUS_VOIDED:

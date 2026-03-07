@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,5 +10,4 @@ namespace Magento\AdvancedSearch\Model\Client;
 
 class ClientException extends \Exception
 {
-
 }

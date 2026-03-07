@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,11 +7,11 @@
 declare(strict_types=1);
 
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Api\Data\AddressInterface;
+use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Quote\Api\Data\AddressInterface;
-use Magento\Quote\Model\Quote\Address\Rate;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var QuoteFactory $quoteFactory */
@@ -44,8 +45,8 @@ $addressList = [
         'postcode' => 80203,
         'country_id' => 'US',
         'email' => 'customer002@shipping.test',
-        'address_type' => 'shipping'
-    ]
+        'address_type' => 'shipping',
+    ],
 ];
 
 $methodCode = 'flatrate_flatrate';

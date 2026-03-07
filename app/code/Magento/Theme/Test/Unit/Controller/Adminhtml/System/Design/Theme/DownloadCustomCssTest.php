@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,12 +19,12 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Design\Theme\Customization;
 use Magento\Framework\View\Design\Theme\FileInterface;
 use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Controller\Adminhtml\System\Design\Theme\DownloadCustomCss;
 use Magento\Theme\Model\Theme\Customization\File\CustomCss;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -155,7 +156,7 @@ class DownloadCustomCssTest extends TestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'getCustomization'
+                'getCustomization',
             ]
         );
         $file->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceInfo\Base as PriceInfoBase;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class PriceTest extends TestCase
 {
@@ -95,13 +96,13 @@ class PriceTest extends TestCase
             Product::class,
             ['getCustomOption', 'getCustomerGroupId', 'setFinalPrice', 'getCalculatedFinalPrice']
         );
-        
+
         /** @var Option|MockObject $customOption */
         $customOption = $this->createPartialMockWithReflection(
             Option::class,
             ['getProduct']
         );
-        
+
         /** @var Product|MockObject $simpleProduct */
         $simpleProduct = $this->createPartialMockWithReflection(
             Product::class,
@@ -115,7 +116,7 @@ class PriceTest extends TestCase
                 'setFinalPrice',
                 'getData',
                 'getCustomOption',
-                'getCalculatedFinalPrice'
+                'getCalculatedFinalPrice',
             ]
         );
 
@@ -123,15 +124,15 @@ class PriceTest extends TestCase
         $configurableProduct->method('getCustomOption')
             ->willReturnMap([
                 ['simple_product', $customOption],
-                ['option_ids', false]
+                ['option_ids', false],
             ]);
         $configurableProduct->method('getCustomerGroupId')->willReturn($customerGroupId);
         $configurableProduct->method('getCalculatedFinalPrice')->willReturn(null);
         $configurableProduct->expects($this->once())->method('setFinalPrice')->with($finalPrice)->willReturnSelf();
-        
+
         // Configure custom option mock
         $customOption->method('getProduct')->willReturn($simpleProduct);
-        
+
         // Configure simple product mock for parent::getFinalPrice() call
         // getBasePrice() calls getPrice(), getTierPrice(), getSpecialPrice()
         $simpleProduct->expects($this->once())->method('setCustomerGroupId')->with($customerGroupId)->willReturnSelf();
@@ -141,7 +142,7 @@ class PriceTest extends TestCase
         $simpleProduct->method('getSpecialFromDate')->willReturn(null);
         $simpleProduct->method('getSpecialToDate')->willReturn(null);
         $simpleProduct->method('getCalculatedFinalPrice')->willReturn(null);
-        
+
         // getFinalPrice() sets final price, then gets it back via getData('final_price')
         // Make the mock stateful so setFinalPrice() and getData() work together
         $finalPriceValue = null;
@@ -162,7 +163,7 @@ class PriceTest extends TestCase
             }
         );
         $simpleProduct->method('getCustomOption')->with('option_ids')->willReturn(false);
-        
+
         // Verify event dispatch for simple product
         $this->eventManagerMock->expects($this->once())
             ->method('dispatch')

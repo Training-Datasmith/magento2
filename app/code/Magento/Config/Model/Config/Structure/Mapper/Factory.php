@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * System Configuration Mapper Factory
  */
+
 namespace Magento\Config\Model\Config\Structure\Mapper;
 
 /**
@@ -15,17 +18,17 @@ namespace Magento\Config\Model\Config\Structure\Mapper;
  */
 class Factory
 {
-    const MAPPER_SORTING = 'sorting';
+    public const MAPPER_SORTING = 'sorting';
 
-    const MAPPER_PATH = 'path';
+    public const MAPPER_PATH = 'path';
 
-    const MAPPER_IGNORE = 'ignore';
+    public const MAPPER_IGNORE = 'ignore';
 
-    const MAPPER_DEPENDENCIES = 'dependencies';
+    public const MAPPER_DEPENDENCIES = 'dependencies';
 
-    const MAPPER_ATTRIBUTE_INHERITANCE = 'attribute_inheritance';
+    public const MAPPER_ATTRIBUTE_INHERITANCE = 'attribute_inheritance';
 
-    const MAPPER_EXTENDS = 'extends';
+    public const MAPPER_EXTENDS = 'extends';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +9,10 @@
 /**
  * Config backend model for robots.txt
  */
+
 namespace Magento\Config\Model\Config\Backend\Admin;
 
-use Magento\Config\Model\Config\Reader\Source\Deployed\DocumentRoot;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * @deprecated 100.1.7 robots.txt file is no longer stored in filesystem. It generates as response on request.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class FetchPolicy implements SimplePolicyInterface
         'style-src',
         'base-uri',
         'form-action',
-        'frame-ancestors'
+        'frame-ancestors',
     ];
 
     /**

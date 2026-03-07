@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -66,8 +67,8 @@ QUERY;
         $assertionMap = [
             [
                 'response_field' => 'product', 'expected_value' => [
-                    "sku" => $product->getSku()
-                ]
+                    'sku' => $product->getSku(),
+                ],
             ],
         ];
 

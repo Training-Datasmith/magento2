@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,10 +24,10 @@ use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Service\InvoiceService;
-use Magento\Sales\Model\Order\ShipmentFactory;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\ShipmentFactory;
+use Magento\Sales\Model\Service\InvoiceService;
 use Magento\Shipping\Model\ShipmentNotifier;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;

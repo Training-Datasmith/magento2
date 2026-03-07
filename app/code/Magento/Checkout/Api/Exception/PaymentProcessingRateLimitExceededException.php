@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,5 +18,4 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class PaymentProcessingRateLimitExceededException extends LocalizedException
 {
-
 }

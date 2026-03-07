@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class MediaTest extends TestCase
                 'context' => $this->contextMock,
                 'swatchHelper' => $this->swatchHelperMock,
                 'productModelFactory' => $this->productModelFactoryMock,
-                'config' => $this->config
+                'config' => $this->config,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\View\Test\Unit\Asset\File;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Asset\File\FallbackContext;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Magento\Framework\View\Asset\File\FallbackContext
@@ -53,7 +54,7 @@ class FallbackContextTest extends TestCase
                 'baseUrl' => $baseUrl,
                 'areaType' => $areaType,
                 'themePath' => $themePath,
-                'localeCode' => $localeCode
+                'localeCode' => $localeCode,
             ]
         );
         $this->assertEquals($expectedResult, $this->fallbackContext->getConfigPath());
@@ -70,15 +71,15 @@ class FallbackContextTest extends TestCase
                 'areaType' => 'frontend',
                 'themePath' => 'Magento/blank',
                 'localeCode' => 'en_US',
-                'expectedResult' => 'frontend/Magento/blank/en_US'
+                'expectedResult' => 'frontend/Magento/blank/en_US',
             ],
             'https' => [
                 'baseUrl' => 'https://some-name.com/pub/static/',
                 'areaType' => 'frontend',
                 'themePath' => 'Magento/blank',
                 'localeCode' => 'en_US',
-                'expectedResult' => 'frontend/Magento/blank/en_US'
-            ]
+                'expectedResult' => 'frontend/Magento/blank/en_US',
+            ],
         ];
     }
 }

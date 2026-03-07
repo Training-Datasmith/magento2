@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +50,7 @@ class NewFolderTest extends \PHPUnit\Framework\TestCase
     /**
      * @var string
      */
-    private $dirName= 'NewDirectory';
+    private $dirName = 'NewDirectory';
 
     /**
      * @var \Magento\Framework\Filesystem

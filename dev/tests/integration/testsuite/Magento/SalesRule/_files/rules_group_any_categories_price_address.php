@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -29,8 +31,8 @@ $salesRule->setData(
         'website_ids' => [
             Bootstrap::getObjectManager()->get(
                 StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ]
 );
 
@@ -65,37 +67,37 @@ $salesRule->getConditions()->loadArray([
                     'type' => Address::class,
                     'attribute' => 'payment_method',
                     'operator' => '==',
-                    'value' => 'payflowpro'
+                    'value' => 'payflowpro',
                 ],                [
                     'type' => Address::class,
                     'attribute' => 'shipping_method',
                     'operator' => '==',
-                    'value' => 'fedex_FEDEX_2_DAY'
+                    'value' => 'fedex_FEDEX_2_DAY',
                 ],
                 [
                     'type' => Address::class,
                     'attribute' => 'postcode',
                     'operator' => '==',
-                    'value' => '78000'
+                    'value' => '78000',
                 ],
                 [
                     'type' => Address::class,
                     'attribute' => 'region',
                     'operator' => '==',
-                    'value' => 'HD'
+                    'value' => 'HD',
                 ],
                 [
                     'type' => Address::class,
                     'attribute' => 'region_id',
                     'operator' => '==',
-                    'value' => '56'
+                    'value' => '56',
                 ],
                 [
                     'type' => Address::class,
                     'attribute' => 'country_id',
                     'operator' => '==',
-                    'value' => 'US'
-                ]
+                    'value' => 'US',
+                ],
         ],
 ]);
 

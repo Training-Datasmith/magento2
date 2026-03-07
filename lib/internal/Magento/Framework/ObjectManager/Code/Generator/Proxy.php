@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -118,7 +119,7 @@ class Proxy extends \Magento\Framework\Code\Generator\EntityAbstract
                 "        ? \$this->_objectManager->get(\$this->_instanceName)\n" .
                 "        : \$this->_objectManager->create(\$this->_instanceName);\n" .
                 "}\n" .
-                "return \$this->_subject;",
+                'return $this->_subject;',
             'docblock' => [
                 'shortDescription' => 'Get proxied instance',
                 'tags' => [['name' => 'return', 'description' => $this->getSourceClassName()]],
@@ -128,11 +129,11 @@ class Proxy extends \Magento\Framework\Code\Generator\EntityAbstract
         $publicMethods = $reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC);
         foreach ($publicMethods as $method) {
             if (!(
-                    $method->isConstructor() ||
+                $method->isConstructor() ||
                     $method->isFinal() ||
                     $method->isStatic() ||
                     $method->isDestructor()
-                )
+            )
                 && !in_array(
                     $method->getName(),
                     ['__sleep', '__wakeup', '__clone', '__debugInfo', '_resetState']
@@ -228,7 +229,7 @@ class Proxy extends \Magento\Framework\Code\Generator\EntityAbstract
                 ['name' => 'instanceName', 'defaultValue' => $this->getSourceClassName()],
                 ['name' => 'shared', 'defaultValue' => true],
             ],
-            'body' => "\$this->_objectManager = \$objectManager;" .
+            'body' => '$this->_objectManager = $objectManager;' .
                 "\n\$this->_instanceName = \$instanceName;" .
                 "\n\$this->_isShared = \$shared;",
             'docblock' => [
@@ -241,7 +242,7 @@ class Proxy extends \Magento\Framework\Code\Generator\EntityAbstract
                     ['name' => 'param', 'description' => 'string $instanceName'],
                     ['name' => 'param', 'description' => 'bool $shared'],
                 ],
-            ]
+            ],
         ];
     }
 

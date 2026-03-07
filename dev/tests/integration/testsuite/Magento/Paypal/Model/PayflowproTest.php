@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -55,7 +57,7 @@ class PayflowproTest extends TestCase
                 'setParameterPost',
                 'setHeaders',
                 'setUrlEncodeBody',
-                'send'
+                'send',
             ])->getMock();
         $this->_httpClientMock->expects($this->any())->method('setUri')->willReturnSelf();
         $this->_httpClientMock->expects($this->any())->method('setOptions')->willReturnSelf();
@@ -69,7 +71,7 @@ class PayflowproTest extends TestCase
 
         $mathRandomMock = $this->createMock(Random::class);
         $loggerMock = $this->createMock(Logger::class);
-        $this->gatewayMock =$this->_objectManager->create(
+        $this->gatewayMock = $this->_objectManager->create(
             Gateway::class,
             [
                 'httpClientFactory' => $httpClientFactoryMock,

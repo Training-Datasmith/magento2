@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Phrase;
+use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Webapi\ErrorProcessor;
 use Magento\Framework\Webapi\Exception as WebapiException;
-use Magento\Framework\Validator\Exception as ValidatorException;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -78,9 +79,9 @@ class ErrorProcessorTest extends TestCase
         $result = [
             'errors' => [
                 new LocalizedException(new Phrase('Der Vorname ist ungültig!')),
-                new LocalizedException(new Phrase('Der Nachname ist ungültig!'))
+                new LocalizedException(new Phrase('Der Nachname ist ungültig!')),
             ],
-            'mainPhrase' => new Phrase("Der Vorname ist ungültig!\nDer Nachname ist ungültig!")
+            'mainPhrase' => new Phrase("Der Vorname ist ungültig!\nDer Nachname ist ungültig!"),
         ];
 
         $this->validatorExceptionProcessorMock->expects($this->once())

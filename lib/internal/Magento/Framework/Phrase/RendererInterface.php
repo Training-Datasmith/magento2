@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Phrase renderer interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Phrase;
 
 /**

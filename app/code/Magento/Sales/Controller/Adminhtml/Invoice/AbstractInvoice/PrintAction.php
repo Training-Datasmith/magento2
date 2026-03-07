@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Invoice\AbstractInvoice;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 
 abstract class PrintAction extends \Magento\Backend\App\Action
 {
@@ -15,7 +18,7 @@ abstract class PrintAction extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
+    public const ADMIN_RESOURCE = 'Magento_Sales::sales_invoice';
 
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory

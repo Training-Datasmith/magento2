@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class WebsiteTest extends TestCase
                 [
                     'value' => 0,
                     'label' => 'All Websites USD',
-                ]
+                ],
             ],
             $this->model->getWebsites($this->productMock, $this->eavAttributeMock)
         );

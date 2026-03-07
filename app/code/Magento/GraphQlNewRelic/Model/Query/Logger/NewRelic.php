@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\GraphQlNewRelic\Model\Query\Logger;
 
+use Magento\GraphQl\Model\Query\Logger\LoggerInterface;
 use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\NewRelicWrapper;
-use Magento\GraphQl\Model\Query\Logger\LoggerInterface;
 
 /**
  * Logs GraphQl query data for New Relic

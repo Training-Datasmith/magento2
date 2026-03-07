@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\Data;
 
 /**
@@ -13,9 +16,9 @@ namespace Magento\Directory\Model\Data;
 class RegionInformation extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\Directory\Api\Data\RegionInformationInterface
 {
-    const KEY_REGION_ID   = 'region_id';
-    const KEY_REGION_CODE = 'region_code';
-    const KEY_REGION_NAME = 'region_name';
+    public const KEY_REGION_ID   = 'region_id';
+    public const KEY_REGION_CODE = 'region_code';
+    public const KEY_REGION_NAME = 'region_name';
 
     /**
      * @inheritDoc

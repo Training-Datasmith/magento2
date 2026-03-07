@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class FileResolverByModuleTest extends TestCase
                 'filesystem' => $this->filesystemMock,
                 'iteratorFactory' => $this->fileIteratorFactoryMock,
                 'componentRegistrar' => $this->componentRegistrarMock,
-                'driver' => $this->fileDriver
+                'driver' => $this->fileDriver,
             ]
         );
     }
@@ -82,13 +83,13 @@ class FileResolverByModuleTest extends TestCase
         $iterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                'some_path' => '<xml>Some Content</xml>'
+                'some_path' => '<xml>Some Content</xml>',
             ]);
         $primaryIterator = $this->createMock(FileIterator::class);
         $primaryIterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>'
+                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>',
             ]);
         $directoryMock = $this->createMock(ReadInterface::class);
         $directoryMock->expects(self::once())
@@ -116,7 +117,7 @@ class FileResolverByModuleTest extends TestCase
             $this->model->get('db_schema.xml', 'all'),
             [
                 'some_path' => '<xml>Some Content</xml>',
-                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>'
+                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>',
             ]
         );
     }
@@ -128,13 +129,13 @@ class FileResolverByModuleTest extends TestCase
         $iterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                'some_path' => '<xml>Some Content</xml>'
+                'some_path' => '<xml>Some Content</xml>',
             ]);
         $primaryIterator = $this->createMock(FileIterator::class);
         $primaryIterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>'
+                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>',
             ]);
         $directoryMock = $this->createMock(ReadInterface::class);
         $directoryMock->expects(self::once())
@@ -167,13 +168,13 @@ class FileResolverByModuleTest extends TestCase
         $iterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                'some_path/etc/db_schema.xml' => '<xml>Some Content</xml>'
+                'some_path/etc/db_schema.xml' => '<xml>Some Content</xml>',
             ]);
         $primaryIterator = $this->createMock(FileIterator::class);
         $primaryIterator->expects(self::once())
             ->method('toArray')
             ->willReturn([
-                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>'
+                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>',
             ]);
         $directoryMock = $this->createMock(ReadInterface::class);
         $directoryMock->expects(self::once())
@@ -204,7 +205,7 @@ class FileResolverByModuleTest extends TestCase
         self::assertEquals(
             [
                 'some_path/etc/db_schema.xml' => '<xml>Some Content</xml>',
-                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>'
+                '/www/app/etc/db_schema.xml' => '<xml>Primary Content</xml>',
             ],
             $this->model->get('db_schema.xml', 'Magento_Some')
         );

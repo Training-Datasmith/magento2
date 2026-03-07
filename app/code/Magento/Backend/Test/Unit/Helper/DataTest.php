@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Backend\Helper\Data;
 use Magento\Backend\Model\Auth;
 use Magento\Backend\Model\Url;
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Route\Config;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Math\Random;
@@ -82,7 +82,7 @@ class DataTest extends TestCase
             'both_spaces_value' => [
                 ['field' => ' value '],
                 ['field' => 'value'],
-            ]
+            ],
         ];
     }
 }

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
-use Magento\Catalog\Model\ResourceModel\CategoryFactory;
-use Magento\Catalog\Model\CategoryRepository;
 use Magento\Catalog\Api\Data\CategoryInterface;
+use Magento\Catalog\Model\CategoryRepository;
+use Magento\Catalog\Model\ResourceModel\CategoryFactory;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**

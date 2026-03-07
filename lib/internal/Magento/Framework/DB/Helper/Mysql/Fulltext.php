@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,37 +20,37 @@ class Fulltext
      *
      * @var string
      */
-    const SPECIAL_CHARACTERS = '-+<>*()~?';
+    public const SPECIAL_CHARACTERS = '-+<>*()~?';
 
     /**
      * FULLTEXT search in MySQL search mode "natural language"
      */
-    const FULLTEXT_MODE_NATURAL = 'IN NATURAL LANGUAGE MODE';
+    public const FULLTEXT_MODE_NATURAL = 'IN NATURAL LANGUAGE MODE';
 
     /**
      * FULLTEXT search in MySQL search mode "natural language with query expansion"
      */
-    const FULLTEXT_MODE_NATURAL_QUERY = 'IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION';
+    public const FULLTEXT_MODE_NATURAL_QUERY = 'IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION';
 
     /**
      * FULLTEXT search in MySQL search mode "boolean"
      */
-    const FULLTEXT_MODE_BOOLEAN = 'IN BOOLEAN MODE';
+    public const FULLTEXT_MODE_BOOLEAN = 'IN BOOLEAN MODE';
 
     /**
      * FULLTEXT search in MySQL search mode "query expansion"
      */
-    const FULLTEXT_MODE_QUERY = 'WITH QUERY EXPANSION';
+    public const FULLTEXT_MODE_QUERY = 'WITH QUERY EXPANSION';
 
     /**
      * FULLTEXT search in MySQL MATCH method
      */
-    const MATCH = 'MATCH';
+    public const MATCH = 'MATCH';
 
     /**
      * FULLTEXT search in MySQL AGAINST method
      */
-    const AGAINST = 'AGAINST';
+    public const AGAINST = 'AGAINST';
 
     /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface

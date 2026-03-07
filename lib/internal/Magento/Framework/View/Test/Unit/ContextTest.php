@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test for view Context model
  */
+
 namespace Magento\Framework\View\Test\Unit;
 
 use Magento\Framework\App\Cache\StateInterface;
@@ -25,9 +27,9 @@ use Magento\Framework\View\ConfigInterface;
 use Magento\Framework\View\Context;
 use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -74,7 +76,7 @@ class ContextTest extends TestCase
             [
                 'appState' => $this->appState,
                 'request' => $this->request,
-                'design' => $this->design
+                'design' => $this->design,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -478,12 +479,12 @@ QUERY;
                             'items' => [
                                 ['sku' => '12345'],
                                 ['sku' => 'simple-4'],
-                                ['sku' => 'simple']
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                ['sku' => 'simple'],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         $this->assertEquals($expectedResponse, $response);
     }
@@ -518,22 +519,22 @@ QUERY;
                         'breadcrumbs' => [
                             [
                                 'category_id' => 3,
-                                'category_name' => "Category 1",
+                                'category_name' => 'Category 1',
                                 'category_level' => 2,
-                                'category_url_key' => "category-1",
-                                'category_url_path' => "category-1"
+                                'category_url_key' => 'category-1',
+                                'category_url_path' => 'category-1',
                             ],
                             [
                                 'category_id' => 4,
-                                'category_name' => "Category 1.1",
+                                'category_name' => 'Category 1.1',
                                 'category_level' => 3,
-                                'category_url_key' => "category-1-1",
-                                'category_url_path' => "category-1/category-1-1"
+                                'category_url_key' => 'category-1-1',
+                                'category_url_path' => 'category-1/category-1-1',
                             ],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
         $this->assertEquals($expectedResponse, $response);
     }
@@ -704,16 +705,16 @@ QUERY;
     {
         return [
             'default_filename_strategy' => [
-                'imagePrefix' => null
+                'imagePrefix' => null,
             ],
             'just_filename_strategy' => [
-                'imagePrefix' => ''
+                'imagePrefix' => '',
             ],
             'with_pub_media_strategy' => [
-                'imagePrefix' => '/media/catalog/category/'
+                'imagePrefix' => '/media/catalog/category/',
             ],
             'catalog_category_strategy' => [
-                'imagePrefix' => 'catalog/category/'
+                'imagePrefix' => 'catalog/category/',
             ],
         ];
     }
@@ -730,25 +731,25 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
-                ]
+                ],
             ],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
             ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()],

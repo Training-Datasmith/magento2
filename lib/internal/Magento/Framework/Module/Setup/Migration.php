@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Setup;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -22,31 +25,31 @@ class Migration
     /**#@+
      * Type of field content where class alias is used
      */
-    const FIELD_CONTENT_TYPE_PLAIN = 'plain';
+    public const FIELD_CONTENT_TYPE_PLAIN = 'plain';
 
-    const FIELD_CONTENT_TYPE_XML = 'xml';
+    public const FIELD_CONTENT_TYPE_XML = 'xml';
 
-    const FIELD_CONTENT_TYPE_WIKI = 'wiki';
+    public const FIELD_CONTENT_TYPE_WIKI = 'wiki';
 
-    const FIELD_CONTENT_TYPE_SERIALIZED = 'serialized';
+    public const FIELD_CONTENT_TYPE_SERIALIZED = 'serialized';
 
     /**#@-*/
 
     /**#@+
      *  Entity type of alias
      */
-    const ENTITY_TYPE_MODEL = 'Model';
+    public const ENTITY_TYPE_MODEL = 'Model';
 
-    const ENTITY_TYPE_BLOCK = 'Block';
+    public const ENTITY_TYPE_BLOCK = 'Block';
 
-    const ENTITY_TYPE_RESOURCE = 'Model_Resource';
+    public const ENTITY_TYPE_RESOURCE = 'Model_Resource';
 
     /**#@-*/
 
     /**#@+
      *  Replace pattern
      */
-    const SERIALIZED_REPLACE_PATTERN = 's:%d:"%s"';
+    public const SERIALIZED_REPLACE_PATTERN = 's:%d:"%s"';
 
     /**#@-*/
 
@@ -160,7 +163,7 @@ class Migration
         ];
         $this->_compositeModules = $compositeModules;
         $this->setup = $setup;
-        $this->serializer = $serializer?: \Magento\Framework\App\ObjectManager::getInstance()
+        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\Magento\Framework\Serialize\Serializer\Json::class);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\NewRelicReporting\Test\Unit\Model;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\NewRelicReporting\Model\Config;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionException;
 
@@ -332,7 +333,7 @@ class ConfigTest extends TestCase
                     Config::XML_PATH_APP_NAME => 'app_name_value',
                     Config::XML_PATH_NERD_GRAPH_API_URL => 'nerdgraph_url_value',
                     Config::XML_PATH_ENTITY_GUID => 'entity_guid_value',
-                    Config::XML_PATH_API_MODE => 'nerdgraph'
+                    Config::XML_PATH_API_MODE => 'nerdgraph',
                 ];
                 return $values[$path] ?? null;
             });
@@ -450,7 +451,7 @@ class ConfigTest extends TestCase
             Config::XML_PATH_INSIGHTS_API_URL =>
                 'https://insights-collector.eu01.nr-data.net/v1/accounts/%s/events',
             Config::XML_PATH_API_MODE => 'nerdgraph',
-            Config::XML_PATH_ENABLED => '1'
+            Config::XML_PATH_ENABLED => '1',
         ];
 
         $this->scopeConfigMock->expects($this->exactly(5))
@@ -840,7 +841,7 @@ class ConfigTest extends TestCase
             // getNerdGraphUrl tests
             ['getNerdGraphUrl', Config::XML_PATH_NERD_GRAPH_API_URL, '', ''],
             ['getNerdGraphUrl', Config::XML_PATH_NERD_GRAPH_API_URL, null, ''],
-            ['getNerdGraphUrl', Config::XML_PATH_NERD_GRAPH_API_URL, false, '']
+            ['getNerdGraphUrl', Config::XML_PATH_NERD_GRAPH_API_URL, false, ''],
         ];
     }
 
@@ -872,7 +873,7 @@ class ConfigTest extends TestCase
             ['123.45', 123],  // PHP int casting truncates decimals
             [456.78, 456],
             [0, 0],
-            ['0', 0]
+            ['0', 0],
         ];
     }
 
@@ -907,7 +908,7 @@ class ConfigTest extends TestCase
             ['false', true],  // Non-empty string is truthy
             ['true', true],
             [[], false],      // Empty array is falsy
-            ['anything', true] // Non-empty string is truthy
+            ['anything', true], // Non-empty string is truthy
         ];
     }
 
@@ -946,7 +947,7 @@ class ConfigTest extends TestCase
             Config::XML_PATH_SEPARATE_APPS => '1',
             Config::XML_PATH_API_MODE => 'nerdgraph',
             Config::XML_PATH_ENTITY_GUID => 'ENTITY_GUID_123',
-            Config::XML_PATH_NERD_GRAPH_API_URL => 'https://api.newrelic.com/graphql'
+            Config::XML_PATH_NERD_GRAPH_API_URL => 'https://api.newrelic.com/graphql',
         ];
 
         $this->scopeConfigMock->expects($this->exactly(12))
@@ -961,7 +962,7 @@ class ConfigTest extends TestCase
             ->willReturnCallback(function ($path) {
                 $flagValues = [
                     Config::XML_PATH_ENABLED => true,
-                    Config::XML_PATH_CRON_ENABLED => true
+                    Config::XML_PATH_CRON_ENABLED => true,
                 ];
                 return $flagValues[$path] ?? false;
             });
@@ -972,7 +973,7 @@ class ConfigTest extends TestCase
             ->willReturnCallback(function ($encryptedValue) {
                 $decryptMap = [
                     'encrypted_api_key' => 'NRAK-DECRYPTED-API-KEY',
-                    'encrypted_insights_key' => 'NRII-DECRYPTED-INSIGHTS-KEY'
+                    'encrypted_insights_key' => 'NRII-DECRYPTED-INSIGHTS-KEY',
                 ];
                 return $decryptMap[$encryptedValue] ?? '';
             });

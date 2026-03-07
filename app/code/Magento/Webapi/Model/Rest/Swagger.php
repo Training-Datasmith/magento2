@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Webapi\Model\Rest;
 
-use Magento\Webapi\Model\Config as ModelConfig;
+namespace Magento\Webapi\Model\Rest;
 
 /**
  * Webapi Swagger Specification Model
@@ -21,7 +22,7 @@ class Swagger extends \Magento\Framework\DataObject
     /**
      * Swagger specification version
      */
-    const SWAGGER_VERSION = '2.0';
+    public const SWAGGER_VERSION = '2.0';
 
     /**
      * Constructor
@@ -29,12 +30,12 @@ class Swagger extends \Magento\Framework\DataObject
     public function __construct()
     {
         $data = [
-            "securityDefinitions" => [
-                "api_key" => [
-                    "type" => "apiKey",
-                    "name" => "api_key",
-                    "in" => "header"
-                ]
+            'securityDefinitions' => [
+                'api_key' => [
+                    'type' => 'apiKey',
+                    'name' => 'api_key',
+                    'in' => 'header',
+                ],
             ],
             'swagger' => self::SWAGGER_VERSION,
             'info' => [

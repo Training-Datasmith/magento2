@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Resolver\Product;
 
+use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Model\ProductLink\Data\ListCriteria;
 use Magento\Catalog\Model\ProductLink\ProductLinkQuery;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Query\Resolver\BatchServiceContractResolverInterface;
 use Magento\Framework\GraphQl\Query\Resolver\ResolveRequestInterface;
-use Magento\Catalog\Api\Data\ProductLinkInterface;
 
 /**
  * Format the product links information to conform to GraphQL schema representation
@@ -79,7 +80,7 @@ class BatchProductLinks implements BatchServiceContractResolverInterface
                         'link_type' => $link->getLinkType(),
                         'linked_product_sku' => $link->getLinkedProductSku(),
                         'linked_product_type' => $link->getLinkedProductType(),
-                        'position' => $link->getPosition()
+                        'position' => $link->getPosition(),
                     ];
                 },
                 $result->getResult()

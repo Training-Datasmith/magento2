@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class FactoryTest extends TestCase
             port: '61614',
             sslOptions: [
                 'verify_peer' => false,
-                'allow_self_signed' => true
+                'allow_self_signed' => true,
             ]
         );
     }
@@ -57,7 +58,7 @@ class FactoryTest extends TestCase
         $connectionMock = $this->createMock(Connection::class);
         $connectionMock->expects($this->once())->method('connect');
 
-        $factory = new class($connectionMock) extends Factory {
+        $factory = new class ($connectionMock) extends Factory {
             /** @var Connection */
             private Connection $connection;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Sales\Order\Pdf\Items;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Sales\Order\Pdf\Items\Shipment;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -50,7 +51,7 @@ class AbstractItemsTest extends TestCase
             ['getId', 'getParentItem', 'getOrderItemId', 'getProductOptions', 'getName', 'getOrderItem']
         );
         $this->orderItemMock->method('getOrderItem')->willReturnSelf();
-        
+
         $this->filterManagerMock = $this->createPartialMockWithReflection(
             FilterManager::class,
             ['stripTags', 'sprintf']
@@ -96,18 +97,18 @@ class AbstractItemsTest extends TestCase
             [
                 Invoice\Item::class,
                 'getInvoice',
-                Invoice::class
+                Invoice::class,
             ],
             [
                 \Magento\Sales\Model\Order\Shipment\Item::class,
                 'getShipment',
-                \Magento\Sales\Model\Order\Shipment::class
+                \Magento\Sales\Model\Order\Shipment::class,
             ],
             [
                 Creditmemo\Item::class,
                 'getCreditmemo',
-                Creditmemo::class
-            ]
+                Creditmemo::class,
+            ],
         ];
     }
 
@@ -171,7 +172,7 @@ class AbstractItemsTest extends TestCase
         return [
             [['shipment_type' => 1], true],
             [['shipment_type' => 0], false],
-            [[], false]
+            [[], false],
         ];
     }
 

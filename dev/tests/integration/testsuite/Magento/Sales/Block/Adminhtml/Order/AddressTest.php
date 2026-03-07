@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class AddressTest extends TestCase
             ],
             'shipping_address' => [
                 AddressType::TYPE_SHIPPING,
-            ]
+            ],
         ];
     }
 

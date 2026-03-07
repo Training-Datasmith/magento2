@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Email\Container\CreditmemoIdentity;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\ErrorLog\Logger;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\ErrorLog\Logger;
 
 class CreditmemoSenderTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Product;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\Media;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Url\Validator;
 use Magento\ImportExport\Model\Import;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -43,7 +44,7 @@ class MediaTest extends TestCase
         $this->media = $this->objectManagerHelper->getObject(
             Media::class,
             [
-                'validator' => $this->validatorMock
+                'validator' => $this->validatorMock,
             ]
         );
         $this->media->init($contextMock);
@@ -149,11 +150,11 @@ class MediaTest extends TestCase
         return [
             'additional_images' => [
                 ['additional_images' => 'image1.png,image2.jpg'],
-                ['result' => true, 'messages' => []]
+                ['result' => true, 'messages' => []],
             ],
             'additional_images_fail' => [
                 ['additional_images' => 'image1.png|image2.jpg|image3.gif'],
-                ['result' => false, 'messages' => [0 => 'additional_images']]
+                ['result' => false, 'messages' => [0 => 'additional_images']],
             ],
         ];
     }
@@ -170,8 +171,8 @@ class MediaTest extends TestCase
             ],
             'additional_images_url_multiple_underscores' => [
                 ['additional_images' => 'https://example.com/images/some-name__with___multiple____underscores.jpg'],
-                ['result' => true, 'messages' => []]
-            ]
+                ['result' => true, 'messages' => []],
+            ],
         ];
     }
 }

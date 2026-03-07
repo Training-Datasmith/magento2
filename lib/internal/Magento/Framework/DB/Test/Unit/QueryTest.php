@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -102,7 +103,7 @@ class QueryTest extends TestCase
                 'select' => $this->selectMock,
                 'criteria' => $this->criteriaMock,
                 'resource' => $this->resourceMock,
-                'fetchStrategy' => $this->fetchStrategyMock
+                'fetchStrategy' => $this->fetchStrategyMock,
             ]
         );
     }

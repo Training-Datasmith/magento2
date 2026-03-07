@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -200,12 +201,12 @@ class GroupedTest extends AbstractModifierTestCase
                             'thumbnail' => null,
                             'type_id' => null,
                             'status' => null,
-                            'attribute_set' => null
+                            'attribute_set' => null,
                         ],
                     ],
                 ],
                 'product' => [
-                    'current_store_id' => null
+                    'current_store_id' => null,
                 ],
             ],
         ];

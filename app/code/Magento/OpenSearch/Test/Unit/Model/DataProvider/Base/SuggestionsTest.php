@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -139,7 +140,7 @@ class SuggestionsTest extends TestCase
                 'storeManager' => $this->storeManager,
                 'fieldProvider' => $this->fieldProvider,
                 'logger' => $this->logger,
-                'responseErrorExceptionList' => ['opensearchBadRequest400' => BadRequest400Exception::class]
+                'responseErrorExceptionList' => ['opensearchBadRequest400' => BadRequest400Exception::class],
             ]
         );
     }

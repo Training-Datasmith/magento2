@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -55,15 +56,15 @@ class AbstractAgreementTest extends TestCase
         $objects = [
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
         $this->payment = $helper->getObject(
             AbstractAgreementStub::class,
             [
                 'eventDispatcher' => $this->eventManagerMock,
-                'agreementFactory' => $this->agreementFactory
+                'agreementFactory' => $this->agreementFactory,
             ]
         );
     }
@@ -77,8 +78,8 @@ class AbstractAgreementTest extends TestCase
         $data = new DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID => $baId
-                ]
+                    AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID => $baId,
+                ],
             ]
         );
         $paymentInfo = $this->createMock(Payment::class);
@@ -125,7 +126,7 @@ class AbstractAgreementTest extends TestCase
             ->willReturnMap(
                 [
                     [AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID, $baId],
-                    [AbstractAgreement::PAYMENT_INFO_REFERENCE_ID, $referenceId]
+                    [AbstractAgreement::PAYMENT_INFO_REFERENCE_ID, $referenceId],
                 ]
             );
 
@@ -141,7 +142,7 @@ class AbstractAgreementTest extends TestCase
         $eventData = [
             AbstractDataAssignObserver::METHOD_CODE => $this,
             AbstractDataAssignObserver::MODEL_CODE => $this->payment->getInfoInstance(),
-            AbstractDataAssignObserver::DATA_CODE => $data
+            AbstractDataAssignObserver::DATA_CODE => $data,
         ];
 
         $this->eventManagerMock->expects(static::exactly(2))
@@ -150,12 +151,12 @@ class AbstractAgreementTest extends TestCase
                 [
                     [
                         'payment_method_assign_data_' . AbstractAgreementStub::STUB_CODE,
-                        $eventData
+                        $eventData,
                     ],
                     [
                         'payment_method_assign_data',
-                        $eventData
-                    ]
+                        $eventData,
+                    ],
                 ]
             );
     }

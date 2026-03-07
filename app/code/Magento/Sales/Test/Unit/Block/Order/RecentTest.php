@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class RecentTest extends TestCase
             'addAttributeToFilter',
             'addAttributeToSort',
             'setPageSize',
-            'load'
+            'load',
         ]);
         $this->orderCollectionFactory->expects($this->once())
             ->method('create')
@@ -126,8 +127,7 @@ class RecentTest extends TestCase
             ->willReturn($orderCollection);
         $orderCollection
             ->method('addAttributeToFilter')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($attribute, $customerId, $storeId, $statuses, $orderCollection) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($attribute, $customerId, $storeId, $statuses, $orderCollection) {
                 if ($arg1 == $attribute[0] && $arg2 == $customerId) {
                     return $orderCollection;
                 }

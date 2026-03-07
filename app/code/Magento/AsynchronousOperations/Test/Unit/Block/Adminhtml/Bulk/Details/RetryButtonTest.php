@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class RetryButtonTest extends TestCase
                         'mage-init' => ['button' => ['event' => 'save']],
                         'form-role' => 'save',
                     ],
-                ]
+                ],
             ],
         ];
     }

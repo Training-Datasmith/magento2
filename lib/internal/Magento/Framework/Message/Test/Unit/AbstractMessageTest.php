@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Message\Test\Unit;
 
 use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Phrase;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * \Magento\Framework\Message\AbstractMessage test case

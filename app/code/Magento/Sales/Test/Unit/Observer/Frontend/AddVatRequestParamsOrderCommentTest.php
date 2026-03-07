@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\Sales\Test\Unit\Observer\Frontend;
 use Magento\Customer\Helper\Address;
 use Magento\Customer\Model\Address\AbstractAddress;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
 use Magento\Sales\Observer\Frontend\AddVatRequestParamsOrderComment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Tests Magento\Sales\Observer\Frontend\AddVatRequestParamsOrderComment
@@ -57,28 +58,28 @@ class AddVatRequestParamsOrderCommentTest extends TestCase
         $vatRequestDate,
         $orderHistoryComment
     ) {
-         $this->customerAddressHelperMock->expects($this->once())
-            ->method('getTaxCalculationAddressType')
-            ->willReturn($configAddressType);
+        $this->customerAddressHelperMock->expects($this->once())
+           ->method('getTaxCalculationAddressType')
+           ->willReturn($configAddressType);
 
-         $orderAddressMock = $this->createPartialMock(
-             OrderAddress::class,
-             ['getVatRequestId', 'getVatRequestDate']
-         );
-         $orderAddressMock->expects($this->any())
-            ->method('getVatRequestId')
-            ->willReturn($vatRequestId);
-         $orderAddressMock->expects($this->any())
-            ->method('getVatRequestDate')
-            ->willReturn($vatRequestDate);
+        $orderAddressMock = $this->createPartialMock(
+            OrderAddress::class,
+            ['getVatRequestId', 'getVatRequestDate']
+        );
+        $orderAddressMock->expects($this->any())
+           ->method('getVatRequestId')
+           ->willReturn($vatRequestId);
+        $orderAddressMock->expects($this->any())
+           ->method('getVatRequestDate')
+           ->willReturn($vatRequestDate);
 
-         $orderMock = $this->getMockBuilder(Order::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods(['getShippingAddress', 'addStatusHistoryComment', 'getBillingAddress'])
-            ->getMock();
-         $orderMock->expects($this->any())
-            ->method('getShippingAddress')
-            ->willReturn($orderAddressMock);
+        $orderMock = $this->getMockBuilder(Order::class)
+           ->disableOriginalConstructor()
+           ->onlyMethods(['getShippingAddress', 'addStatusHistoryComment', 'getBillingAddress'])
+           ->getMock();
+        $orderMock->expects($this->any())
+           ->method('getShippingAddress')
+           ->willReturn($orderAddressMock);
         if ($orderHistoryComment === null) {
             $orderMock->expects($this->never())
                ->method('addStatusHistoryComment');
@@ -87,12 +88,12 @@ class AddVatRequestParamsOrderCommentTest extends TestCase
                ->method('addStatusHistoryComment')
                ->with($orderHistoryComment, false);
         }
-         $observer = $this->createPartialMockWithReflection(Observer::class, ['getOrder']);
-         $observer->expects($this->once())
-            ->method('getOrder')
-            ->willReturn($orderMock);
+        $observer = $this->createPartialMockWithReflection(Observer::class, ['getOrder']);
+        $observer->expects($this->once())
+           ->method('getOrder')
+           ->willReturn($orderMock);
 
-         $this->assertNull($this->observer->execute($observer));
+        $this->assertNull($this->observer->execute($observer));
     }
 
     /**

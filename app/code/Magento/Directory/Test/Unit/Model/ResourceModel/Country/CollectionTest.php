@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class CollectionTest extends TestCase
             'countryFactory' => $countryFactory,
             'resource' => $resource,
             'helperData' => $helperDataMock,
-            'storeManager' => $this->storeManagerMock
+            'storeManager' => $this->storeManagerMock,
         ];
         $this->_model = $objectManager
             ->getObject(Collection::class, $arguments);

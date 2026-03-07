@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -106,7 +108,7 @@ class CustomerTemplateGenerator implements TemplateEntityGeneratorInterface
                 'taxvat' => null,
                 'website_id' => $this->storeManager->getDefaultStoreView()->getWebsiteId(),
                 'password' => '123123q',
-            ]
+            ],
         ]);
     }
 
@@ -139,7 +141,7 @@ class CustomerTemplateGenerator implements TemplateEntityGeneratorInterface
                 'vat_id' => '',
                 'default_billing_' => '1',
                 'default_shipping_' => '1',
-            ]
+            ],
         ]);
     }
 

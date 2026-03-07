@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -121,7 +122,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('currency', $testStoreResponse['body']);
@@ -134,7 +135,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('currency', $testStoreResponseHit['body']);
@@ -184,7 +185,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('currency', $secondStoreResponse['body']);
@@ -210,7 +211,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('currency', $secondStoreResponseMiss['body']);
@@ -221,7 +222,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('currency', $secondStoreResponseHit['body']);
@@ -272,7 +273,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(['USD'], $secondStoreResponse['body']['currency']['available_currency_codes']);
@@ -291,7 +292,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(['USD'], $thirdStoreResponse['body']['currency']['available_currency_codes']);
@@ -312,7 +313,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -324,7 +325,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -334,7 +335,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(
@@ -346,7 +347,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -392,7 +393,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(['USD'], $secondStoreResponse['body']['currency']['available_currency_codes']);
@@ -411,7 +412,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(['USD'], $thirdStoreResponse['body']['currency']['available_currency_codes']);
@@ -438,7 +439,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(['CNY','USD'], $secondStoreResponseMiss['body']['currency']['available_currency_codes']);
@@ -447,7 +448,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -457,7 +458,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals(['CNY','USD'], $thirdStoreResponseMiss['body']['currency']['available_currency_codes']);
@@ -466,7 +467,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -513,7 +514,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals('CNY', $secondStoreResponse['body']['currency']['exchange_rates'][0]['currency_to']);
@@ -533,7 +534,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals('CNY', $thirdStoreResponse['body']['currency']['exchange_rates'][0]['currency_to']);
@@ -570,7 +571,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertEquals(
@@ -586,7 +587,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -596,7 +597,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertEquals('CNY', $thirdStoreResponseMiss['body']['currency']['exchange_rates'][0]['currency_to']);
@@ -606,7 +607,7 @@ class CurrencyCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -679,13 +680,13 @@ QUERY;
                 'path' => $path,
                 'value' => $this->configStorage->getValueFromDb($path, $scopeType, $scopeCode),
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         } else {
             $this->notExistingOrigConfigs[] = [
                 'path' => $path,
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         }
         $this->config->setValue($path, $value, $scopeType, $scopeCode);

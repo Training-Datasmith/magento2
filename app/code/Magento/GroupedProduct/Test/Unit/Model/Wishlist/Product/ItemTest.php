@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ItemTest extends TestCase
                 'getBuyRequest',
                 'setOptions',
                 'mergeBuyRequest',
-                'getProduct'
+                'getProduct',
             ]
         );
 
@@ -56,7 +57,7 @@ class ItemTest extends TestCase
             [
                 'getId',
                 'getTypeId',
-                'getCustomOptions'
+                'getCustomOptions',
             ]
         );
 
@@ -76,10 +77,10 @@ class ItemTest extends TestCase
         $resWishlistQty = $prodInitQty + $prodQtyInWishlist;
         $superGroup = [
             'super_group' => [
-                33 => "0",
+                33 => '0',
                 34 => 3,
-                35 => "0"
-            ]
+                35 => '0',
+            ],
         ];
 
         $superGroupObj = new DataObject($superGroup);

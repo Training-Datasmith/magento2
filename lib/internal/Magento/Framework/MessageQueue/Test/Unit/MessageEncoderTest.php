@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class MessageEncoderTest extends TestCase
     {
         return [
             CommunicationConfig::TOPIC_REQUEST_TYPE => CommunicationConfig::TOPIC_REQUEST_TYPE_CLASS,
-            CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class
+            CommunicationConfig::TOPIC_REQUEST => CustomerInterface::class,
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block;
 
 /**
@@ -47,7 +50,7 @@ class Buttons extends \Magento\Backend\Block\Template
             [
                 'label' => __('Back'),
                 'onclick' => 'window.location.href=\'' . $this->getUrl('*/*/') . '\'',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
 
@@ -70,7 +73,7 @@ class Buttons extends \Magento\Backend\Block\Template
                         '*/*/delete',
                         ['rid' => $this->getRequest()->getParam('rid')]
                     ) . '\', {data: {}})',
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
         }
@@ -83,7 +86,7 @@ class Buttons extends \Magento\Backend\Block\Template
                 'class' => 'save primary save-role',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#role-edit-form']],
-                ]
+                ],
             ]
         );
         return parent::_prepareLayout();

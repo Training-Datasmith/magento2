@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter Template Edit Block
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Template;
 
 use Magento\Backend\Block\Widget;
@@ -69,7 +72,7 @@ class Edit extends Widget
             [
                 'label' => __('Back'),
                 'onclick' => "window.location.href = '" . $this->getUrl('*/*') . "'",
-                'class' => 'action-back'
+                'class' => 'action-back',
             ]
         );
 
@@ -79,7 +82,7 @@ class Edit extends Widget
             [
                 'label' => __('Reset'),
                 'onclick' => 'window.location.href = window.location.href',
-                'class' => 'reset'
+                'class' => 'reset',
             ]
         );
 
@@ -93,7 +96,7 @@ class Edit extends Widget
                         'role' => 'template-strip',
                     ],
                     'id' => 'convert_button',
-                    'class' => 'convert'
+                    'class' => 'convert',
                 ]
             );
 
@@ -107,7 +110,7 @@ class Edit extends Widget
                     ],
                     'id' => 'convert_button_back',
                     'style' => 'display:none',
-                    'class' => 'return'
+                    'class' => 'return',
                 ]
             );
         }
@@ -120,7 +123,7 @@ class Edit extends Widget
                 'data_attribute' => [
                     'role' => 'template-preview',
                 ],
-                'class' => 'preview'
+                'class' => 'preview',
             ]
         );
 
@@ -133,7 +136,7 @@ class Edit extends Widget
                     'data_attribute' => [
                         'role' => 'template-delete',
                     ],
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
 
@@ -145,7 +148,7 @@ class Edit extends Widget
                     'data_attribute' => [
                         'role' => 'template-save-as',
                     ],
-                    'class' => 'save-as'
+                    'class' => 'save-as',
                 ]
             );
         }
@@ -158,7 +161,7 @@ class Edit extends Widget
                 'data_attribute' => [
                     'role' => 'template-save',
                 ],
-                'class' => 'save primary'
+                'class' => 'save primary',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryCatalogUi\Controller\Adminhtml\Product;
 
-use Magento\Framework\Controller\ResultInterface;
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Backend\App\Action;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Controller\ResultInterface;
 
 /**
  * Returns selected product by product id. for ui-select filter
@@ -23,7 +24,7 @@ class GetSelected extends Action implements HttpGetActionInterface
     /**
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var JsonFactory
@@ -57,7 +58,7 @@ class GetSelected extends Action implements HttpGetActionInterface
      *
      * @return ResultInterface
      */
-    public function execute() : ResultInterface
+    public function execute(): ResultInterface
     {
         $productIds = $this->getRequest()->getParam('ids');
         $options = [];
@@ -72,7 +73,7 @@ class GetSelected extends Action implements HttpGetActionInterface
                     'value' => $product->getId(),
                     'label' => $product->getName(),
                     'is_active' => $product->getSatus(),
-                    'path' => $product->getSku()
+                    'path' => $product->getSku(),
                 ];
             } catch (\Exception $e) {
                 continue;

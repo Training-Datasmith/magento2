@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\App\Action;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -25,65 +28,7 @@ use Magento\Framework\Controller\ResultFactory;
 class Context extends \Magento\Framework\App\Action\Context
 {
     /**
-     * @var \Magento\Framework\AuthorizationInterface
-     */
-    protected $_authorization;
-
-    /**
-     * @var \Magento\Backend\Model\Auth
-     */
-    protected $_auth;
-
-    /**
-     * @var \Magento\Backend\Helper\Data
-     */
-    protected $_helper;
-
-    /**
-     * @var \Magento\Backend\Model\UrlInterface
-     */
-    protected $_backendUrl;
-
-    /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
-     */
-    protected $_formKeyValidator;
-
-    /**
-     * @var bool
-     */
-    protected $_canUseBaseUrl;
-
-    /**
-     * @var \Magento\Backend\Model\Session
-     */
-    protected $_session;
-
-    /**
-     * @var \Magento\Framework\Locale\ResolverInterface
-     */
-    protected $_localeResolver;
-
-    /**
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param \Magento\Framework\App\ResponseInterface $response
-     * @param \Magento\Framework\ObjectManagerInterface $objectManager
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Framework\UrlInterface $url
-     * @param \Magento\Framework\App\Response\RedirectInterface $redirect
-     * @param \Magento\Framework\App\ActionFlag $actionFlag
-     * @param \Magento\Framework\App\ViewInterface $view
-     * @param \Magento\Framework\Message\ManagerInterface $messageManager
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
-     * @param \Magento\Framework\Controller\ResultFactory $resultFactory
-     * @param \Magento\Backend\Model\Session $session
-     * @param \Magento\Framework\AuthorizationInterface $authorization
-     * @param \Magento\Backend\Model\Auth $auth
-     * @param \Magento\Backend\Helper\Data $helper
-     * @param \Magento\Backend\Model\UrlInterface $backendUrl
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
-     * @param \Magento\Framework\Locale\ResolverInterface $localeResolver
-     * @param bool $canUseBaseUrl
+     * @param bool $_canUseBaseUrl
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
@@ -98,14 +43,14 @@ class Context extends \Magento\Framework\App\Action\Context
         \Magento\Framework\Message\ManagerInterface $messageManager,
         \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         ResultFactory $resultFactory,
-        \Magento\Backend\Model\Session $session,
-        \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\Backend\Model\Auth $auth,
-        \Magento\Backend\Helper\Data $helper,
-        \Magento\Backend\Model\UrlInterface $backendUrl,
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \Magento\Framework\Locale\ResolverInterface $localeResolver,
-        $canUseBaseUrl = false
+        protected \Magento\Backend\Model\Session $_session,
+        protected \Magento\Framework\AuthorizationInterface $_authorization,
+        protected \Magento\Backend\Model\Auth $_auth,
+        protected \Magento\Backend\Helper\Data $_helper,
+        protected \Magento\Backend\Model\UrlInterface $_backendUrl,
+        protected \Magento\Framework\Data\Form\FormKey\Validator $_formKeyValidator,
+        protected \Magento\Framework\Locale\ResolverInterface $_localeResolver,
+        protected $_canUseBaseUrl = false
     ) {
         parent::__construct(
             $request,
@@ -120,15 +65,6 @@ class Context extends \Magento\Framework\App\Action\Context
             $resultRedirectFactory,
             $resultFactory
         );
-
-        $this->_session = $session;
-        $this->_authorization = $authorization;
-        $this->_auth = $auth;
-        $this->_helper = $helper;
-        $this->_backendUrl = $backendUrl;
-        $this->_formKeyValidator = $formKeyValidator;
-        $this->_localeResolver = $localeResolver;
-        $this->_canUseBaseUrl = $canUseBaseUrl;
     }
 
     /**

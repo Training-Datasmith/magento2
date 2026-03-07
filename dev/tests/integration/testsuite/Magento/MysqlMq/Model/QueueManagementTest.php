@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class QueueManagementTest extends \PHPUnit\Framework\TestCase
             $message[QueueManagement::MESSAGE_STATUS]
         );
 
-        $message= array_shift($messages);
+        $message = array_shift($messages);
         $this->assertEquals('topic2', $message[QueueManagement::MESSAGE_TOPIC]);
         $this->assertEquals('messageBody2', $message[QueueManagement::MESSAGE_BODY]);
         $this->assertEquals('queue1', $message[QueueManagement::MESSAGE_QUEUE_NAME]);
@@ -105,7 +106,7 @@ class QueueManagementTest extends \PHPUnit\Framework\TestCase
         $messages = $this->queueManagement->readMessages('queue2', $maxMessagesNumber);
         $this->assertCount($maxMessagesNumber, $messages);
 
-        $message= array_shift($messages);
+        $message = array_shift($messages);
         $this->assertEquals('topic2', $message[QueueManagement::MESSAGE_TOPIC]);
         $this->assertEquals('messageBody2', $message[QueueManagement::MESSAGE_BODY]);
         $this->assertEquals('queue2', $message[QueueManagement::MESSAGE_QUEUE_NAME]);
@@ -145,28 +146,28 @@ class QueueManagementTest extends \PHPUnit\Framework\TestCase
 
         $this->queueManagement->changeStatus(
             [
-                $firstMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID]
+                $firstMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID],
             ],
             QueueManagement::MESSAGE_STATUS_ERROR
         );
 
         $this->queueManagement->changeStatus(
             [
-                $secondMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID]
+                $secondMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID],
             ],
             QueueManagement::MESSAGE_STATUS_COMPLETE
         );
 
         $this->queueManagement->changeStatus(
             [
-                $thirdMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID]
+                $thirdMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID],
             ],
             QueueManagement::MESSAGE_STATUS_NEW
         );
 
         $this->queueManagement->changeStatus(
             [
-                $fourthMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID]
+                $fourthMessage[QueueManagement::MESSAGE_QUEUE_RELATION_ID],
             ],
             QueueManagement::MESSAGE_STATUS_RETRY_REQUIRED
         );

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Shipment;
 
 use Magento\Framework\Api\AttributeValueFactory;
@@ -144,7 +147,7 @@ class Track extends AbstractModel implements ShipmentTrackInterface
             if ($this->getParentId()) {
                 $this->_shipment = $this->shipmentRepository->get($this->getParentId());
             } else {
-                throw new LocalizedException(__("Parent shipment cannot be loaded for track object."));
+                throw new LocalizedException(__('Parent shipment cannot be loaded for track object.'));
             }
         }
 

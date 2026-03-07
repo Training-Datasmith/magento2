@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Sales\Test\Unit\Model\Order\Email\Sender;
 use Magento\Framework\App\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\Manager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Info;
 use Magento\Sales\Model\Order;
@@ -24,7 +26,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  *
@@ -124,7 +125,7 @@ abstract class AbstractSenderTestCase extends TestCase
                 'setSendEmail', 'getId', 'getStore', 'getBillingAddress', 'getPayment',
                 'getCustomerIsGuest', 'getCustomerName', 'getCustomerEmail', 'getShippingAddress',
                 'setEmailSent', 'getCreatedAtFormatted', 'getIsNotVirtual', 'getEmailCustomerNote',
-                'getFrontendStatusLabel'
+                'getFrontendStatusLabel',
             ]
         );
         $this->orderMock->expects($this->any())

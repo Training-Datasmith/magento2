@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Persistent\Model\Persistent\Config
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Model\Persistent;
 
 use Magento\Framework\App\Filesystem\DirectoryList;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Rss\Controller\Adminhtml;
 
 /**
@@ -14,7 +17,7 @@ abstract class Feed extends \Magento\Backend\App\Action
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Magento_Rss::rss';
+    public const ADMIN_RESOURCE = 'Magento_Rss::rss';
 
     /**
      * @var \Magento\Rss\Model\RssManager

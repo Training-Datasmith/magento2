@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Sales\Block\Adminhtml\Order\Invoice\View
  */
+
 namespace Magento\Sales\Test\Unit\Block\Adminhtml\Order\Invoice;
 
 use Magento\Sales\Block\Adminhtml\Order\Invoice\View;
@@ -71,7 +73,7 @@ class ViewTest extends TestCase
             [true, true, true],
             [true, false, true],
             [false, true, true],
-            [false, false, false]
+            [false, false, false],
         ];
     }
 }

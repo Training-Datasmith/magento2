@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer;
 
 /**
@@ -54,7 +57,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
                             ['layer' => $this->_model]
                         ),
                         'value' => 'expected-value-string',
-                    ]
+                    ],
                 ]
             )
         )->addFilter(
@@ -67,7 +70,7 @@ class CategoryTest extends \PHPUnit\Framework\TestCase
                             ['layer' => $this->_model]
                         ),
                         'value' => 1234,
-                    ]
+                    ],
                 ]
             )
         );

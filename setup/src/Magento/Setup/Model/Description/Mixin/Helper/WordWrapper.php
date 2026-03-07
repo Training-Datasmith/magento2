@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\Description\Mixin\Helper;
 
 /**
@@ -22,6 +25,6 @@ class WordWrapper
     {
         return empty($words)
             ? $source
-            : preg_replace("/\\b(" . implode('|', $words) . ")\\b/", sprintf($format, '$1'), $source);
+            : preg_replace('/\\b(' . implode('|', $words) . ')\\b/', sprintf($format, '$1'), $source);
     }
 }

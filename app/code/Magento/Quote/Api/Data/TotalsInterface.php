@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,59 +18,59 @@ interface TotalsInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_GRAND_TOTAL = 'grand_total';
+    public const KEY_GRAND_TOTAL = 'grand_total';
 
-    const KEY_BASE_GRAND_TOTAL = 'base_grand_total';
+    public const KEY_BASE_GRAND_TOTAL = 'base_grand_total';
 
-    const KEY_SUBTOTAL = 'subtotal';
+    public const KEY_SUBTOTAL = 'subtotal';
 
-    const KEY_BASE_SUBTOTAL = 'base_subtotal';
+    public const KEY_BASE_SUBTOTAL = 'base_subtotal';
 
-    const KEY_DISCOUNT_AMOUNT = 'discount_amount';
+    public const KEY_DISCOUNT_AMOUNT = 'discount_amount';
 
-    const KEY_BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const KEY_BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
 
-    const KEY_SUBTOTAL_WITH_DISCOUNT = 'subtotal_with_discount';
+    public const KEY_SUBTOTAL_WITH_DISCOUNT = 'subtotal_with_discount';
 
-    const KEY_BASE_SUBTOTAL_WITH_DISCOUNT = 'base_subtotal_with_discount';
+    public const KEY_BASE_SUBTOTAL_WITH_DISCOUNT = 'base_subtotal_with_discount';
 
-    const KEY_SHIPPING_AMOUNT = 'shipping_amount';
+    public const KEY_SHIPPING_AMOUNT = 'shipping_amount';
 
-    const KEY_BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
+    public const KEY_BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
 
-    const KEY_SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
+    public const KEY_SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
 
-    const KEY_BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
+    public const KEY_BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
 
-    const KEY_TAX_AMOUNT = 'tax_amount';
+    public const KEY_TAX_AMOUNT = 'tax_amount';
 
-    const KEY_BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const KEY_BASE_TAX_AMOUNT = 'base_tax_amount';
 
-    const KEY_WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
+    public const KEY_WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
 
-    const KEY_SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
+    public const KEY_SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
 
-    const KEY_BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
+    public const KEY_BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
 
-    const KEY_SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
+    public const KEY_SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
 
-    const KEY_BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
+    public const KEY_BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
 
-    const KEY_SHIPPING_INCL_TAX = 'shipping_incl_tax';
+    public const KEY_SHIPPING_INCL_TAX = 'shipping_incl_tax';
 
-    const KEY_BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
+    public const KEY_BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
 
-    const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
+    public const KEY_BASE_CURRENCY_CODE = 'base_currency_code';
 
-    const KEY_QUOTE_CURRENCY_CODE = 'quote_currency_code';
+    public const KEY_QUOTE_CURRENCY_CODE = 'quote_currency_code';
 
-    const KEY_COUPON_CODE = 'coupon_code';
+    public const KEY_COUPON_CODE = 'coupon_code';
 
-    const KEY_ITEMS = 'items';
+    public const KEY_ITEMS = 'items';
 
-    const KEY_TOTAL_SEGMENTS = 'total_segments';
+    public const KEY_TOTAL_SEGMENTS = 'total_segments';
 
-    const KEY_ITEMS_QTY = 'items_qty';
+    public const KEY_ITEMS_QTY = 'items_qty';
 
     /**#@-*/
 

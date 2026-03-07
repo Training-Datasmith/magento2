@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config\Provider\Component;
 
-use Magento\Framework\Phrase;
 use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\View\Element\UiComponent\Config\Converter;
 use Magento\Framework\View\Element\UiComponent\ArrayObjectFactory;
+use Magento\Framework\View\Element\UiComponent\Config\Converter;
 use Magento\Framework\View\Element\UiComponent\Config\UiReaderInterface;
 
 /**
@@ -20,12 +22,12 @@ class Definition
     /**
      * ID in the storage cache
      */
-    const CACHE_ID = 'ui_component_definition_data';
+    public const CACHE_ID = 'ui_component_definition_data';
 
     /**
      * Components node name in config
      */
-    const COMPONENTS_KEY = 'components';
+    public const COMPONENTS_KEY = 'components';
 
     /**
      * @var CacheInterface

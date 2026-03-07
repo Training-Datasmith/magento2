@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Fedex\Setup\Patch\Data;
 
-use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 class UpdateFedexInternationalPriority implements DataPatchInterface, PatchVersionInterface
@@ -39,7 +40,7 @@ class UpdateFedexInternationalPriority implements DataPatchInterface, PatchVersi
         $configDataTable = $this->moduleDataSetup->getTable('core_config_data');
         $paths = [
             'carriers/fedex/allowed_methods',
-            'carriers/fedex/free_method'
+            'carriers/fedex/free_method',
         ];
         foreach ($paths as $path) {
             $select = $conn->select()
@@ -76,7 +77,7 @@ class UpdateFedexInternationalPriority implements DataPatchInterface, PatchVersi
     public static function getDependencies()
     {
         return [
-            ConfigureFedexDefaults::class
+            ConfigureFedexDefaults::class,
         ];
     }
 

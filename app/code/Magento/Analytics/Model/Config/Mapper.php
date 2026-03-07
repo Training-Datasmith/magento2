@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,7 +16,6 @@ class Mapper
     /**
      * Transforms Analytics configuration data.
      *
-     * @param array $configData
      * @return array $files
      * $files = [
      *    'file_name' => [
@@ -35,7 +36,7 @@ class Mapper
      *    ]
      * ];
      */
-    public function execute($configData)
+    public function execute(array $configData): array
     {
         if (!isset($configData['config'][0]['file'])) {
             return [];
@@ -52,7 +53,7 @@ class Mapper
                 $providerData['parameters'] = !empty($providerData['parameters'])
                     ? reset($providerData['parameters'])
                     : [];
-                array_walk($providerData['parameters'], function (&$array) {
+                array_walk($providerData['parameters'], function (&$array): void {
                     $array = reset($array);
                 });
                 $providers[$providerType] = $providerData;

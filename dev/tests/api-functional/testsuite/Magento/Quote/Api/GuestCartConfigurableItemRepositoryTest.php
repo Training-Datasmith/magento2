@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -26,7 +27,6 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
 {
-
     private const RESOURCE_PATH_GUEST_CART = '/V1/guest-carts/';
 
     private const SERVICE_VERSION_GUEST_CART = 'V1';
@@ -70,7 +70,7 @@ class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
                 'sku' => 'configurable',
                 'name' => 'Configurable Product',
                 '_options' => ['$attr$'],
-                '_links' => ['$p1$', '$p2$']
+                '_links' => ['$p1$', '$p2$'],
             ],
             'configurableProduct'
         )
@@ -93,7 +93,7 @@ class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
         $quoteId = $this->_webApiCall([
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH_GUEST_CART,
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME_GUEST_CART,
@@ -233,7 +233,7 @@ class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
 
         return [
             'attribute_id' => $configOptions[0]->getAttributeId(),
-            'option_id' => isset($options[$optionKey]) ? $options[$optionKey]['value_index'] : null
+            'option_id' => isset($options[$optionKey]) ? $options[$optionKey]['value_index'] : null,
         ];
     }
 
@@ -263,10 +263,10 @@ class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
                             [
                                 'option_id' => $attributeId,
                                 'option_value' => $optionId,
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
     }
@@ -303,7 +303,7 @@ class GuestCartConfigurableItemRepositoryTest extends WebapiAbstract
         return [
             'rest' => [
                 'resourcePath' => $resourcePath,
-                'httpMethod' => $httpMethod
+                'httpMethod' => $httpMethod,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME_GUEST_CART_ITEM,

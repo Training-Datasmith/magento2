@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Directory\Model;
 use Magento\Directory\Model\ResourceModel\Region\CollectionFactory as RegionCollectionFactory;
 use Magento\Directory\Setup\Patch\Data\UpdateRegionNamesForSwitzerland as SwitzerlandRegionData;
 use Magento\Framework\AppInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
-use Magento\Framework\Exception\LocalizedException;
 
 class RegionTest extends TestCase
 {

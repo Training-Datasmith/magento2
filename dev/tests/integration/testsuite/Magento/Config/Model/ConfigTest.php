@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model;
 
 use Magento\Backend\App\Area\FrontNameResolver;
@@ -151,7 +154,7 @@ class ConfigTest extends TestCase
                                 'merchant_country' => ['value' => 'GB'],
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'groups' => [
@@ -165,7 +168,7 @@ class ConfigTest extends TestCase
                 [
                     'paypal/general/merchant_country' => 'GB',
                 ],
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Fixture for Customer List method.
  *

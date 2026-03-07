@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Image\UrlBuilder;
@@ -19,6 +18,7 @@ use Magento\Framework\Data\Collection;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -67,7 +67,7 @@ class DataTest extends TestCase
             Data::class,
             [
                 '_imageHelper' => $this->_imageHelperMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
         $objectManager->setBackwardCompatibleProperty($this->_model, 'imageUrlBuilder', $this->imageUrlBuilder);
@@ -134,13 +134,13 @@ class DataTest extends TestCase
             Product::class,
             [
                 'getTypeInstance',
-                'getTypeId'
+                'getTypeId',
             ]
         );
         $provider = [];
         $provider[] = [
             [
-                'canDisplayShowOutOfStockStatus' => false
+                'canDisplayShowOutOfStockStatus' => false,
             ],
             [
                 'allowed_products' => [],
@@ -212,19 +212,19 @@ class DataTest extends TestCase
                 'index' => [
                     'product_id_1' => [
                         'attribute_id_1' => 'attribute_code_value_1',
-                        'attribute_id_2' => 'attribute_code_value_2'
+                        'attribute_id_2' => 'attribute_code_value_2',
                     ],
 
                     'product_id_2' => [
                         'attribute_id_1' => 'attribute_code_value_1',
-                        'attribute_id_2' => 'attribute_code_value_2'
-                    ]
+                        'attribute_id_2' => 'attribute_code_value_2',
+                    ],
 
                 ],
                 'attribute_id_2' => [
                     'attribute_code_value_2' => ['product_id_1', 'product_id_2'],
                 ],
-                'canDisplayShowOutOfStockStatus' => false
+                'canDisplayShowOutOfStockStatus' => false,
             ],
             [
                 'allowed_products' => $allowedProducts,

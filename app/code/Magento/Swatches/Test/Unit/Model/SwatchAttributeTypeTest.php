@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Swatches\Model\Swatch;
 use Magento\Swatches\Model\SwatchAttributeType;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests for \Magento\Swatches\Model\SwatchAttributeType class.
@@ -45,7 +46,7 @@ class SwatchAttributeTypeTest extends TestCase
      * @return void
      */
     #[DataProvider('provideIsSwatchAttributeTestData')]
-    public function testIsSwatchAttribute(string $dataValue, bool $expected) : void
+    public function testIsSwatchAttribute(string $dataValue, bool $expected): void
     {
         $this->assertEquals(
             $expected,
@@ -60,7 +61,7 @@ class SwatchAttributeTypeTest extends TestCase
      *
      * @return array
      */
-    public static function provideIsSwatchAttributeTestData() : array
+    public static function provideIsSwatchAttributeTestData(): array
     {
         return [
             [Swatch::SWATCH_INPUT_TYPE_TEXT, true],
@@ -75,7 +76,7 @@ class SwatchAttributeTypeTest extends TestCase
      * @return void
      */
     #[DataProvider('provideIsTextSwatchAttributeTestData')]
-    public function testIsTextSwatch(string $dataValue, bool $expected) : void
+    public function testIsTextSwatch(string $dataValue, bool $expected): void
     {
         $this->assertEquals(
             $expected,
@@ -90,7 +91,7 @@ class SwatchAttributeTypeTest extends TestCase
      *
      * @return array
      */
-    public static function provideIsTextSwatchAttributeTestData() : array
+    public static function provideIsTextSwatchAttributeTestData(): array
     {
         return [
             [Swatch::SWATCH_INPUT_TYPE_TEXT, true],
@@ -105,7 +106,7 @@ class SwatchAttributeTypeTest extends TestCase
      * @return void
      */
     #[DataProvider('provideIsVisualSwatchAttributeTestData')]
-    public function testIsVisualSwatch(string $dataValue, bool $expected) : void
+    public function testIsVisualSwatch(string $dataValue, bool $expected): void
     {
         $this->assertEquals(
             $expected,
@@ -120,7 +121,7 @@ class SwatchAttributeTypeTest extends TestCase
      *
      * @return array
      */
-    public static function provideIsVisualSwatchAttributeTestData() : array
+    public static function provideIsVisualSwatchAttributeTestData(): array
     {
         return [
             [Swatch::SWATCH_INPUT_TYPE_VISUAL, true],
@@ -132,7 +133,7 @@ class SwatchAttributeTypeTest extends TestCase
     /**
      * @return void
      */
-    public function testIfAttributeHasNotAdditionData() : void
+    public function testIfAttributeHasNotAdditionData(): void
     {
         /** @var Json $json */
         $json = new Json();

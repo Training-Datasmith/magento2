@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 use Magento\Framework\ObjectManagerInterface as ObjectManager;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 class StoreManagerTest extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -119,7 +120,7 @@ class AbstractConditionTest extends TestCase
         $this->assertEquals(
             $expectedResult,
             $this->_condition->validateAttribute($valueForValidate),
-            "Failed asserting that "
+            'Failed asserting that '
             . var_export($existingValue, true)
             . $operator
             . var_export($valueForValidate, true)
@@ -157,7 +158,7 @@ class AbstractConditionTest extends TestCase
         $this->assertEquals(
             $expectedResult,
             $this->_condition->validate($objectMock),
-            "Failed asserting that "
+            'Failed asserting that '
             . var_export($existingValue, true)
             . $operator
             . var_export($valueForValidate, true)
@@ -229,7 +230,7 @@ class AbstractConditionTest extends TestCase
         $this->assertEquals(
             $expectedResult,
             $this->_condition->validateAttribute($valueForValidate),
-            "Failed asserting that "
+            'Failed asserting that '
             . var_export($existingValue, true)
             . $operator
             . var_export($valueForValidate, true)

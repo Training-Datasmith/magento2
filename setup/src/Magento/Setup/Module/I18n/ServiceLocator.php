@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -53,7 +56,7 @@ class ServiceLocator
             $filesCollector = new FilesCollector();
 
             $phraseCollector = new Parser\Adapter\Php\Tokenizer\PhraseCollector(new Parser\Adapter\Php\Tokenizer());
-            $fileSystem = new File;
+            $fileSystem = new File();
             $adapters = [
                 'php' => new Parser\Adapter\Php($phraseCollector),
                 'html' => new Parser\Adapter\Html(),

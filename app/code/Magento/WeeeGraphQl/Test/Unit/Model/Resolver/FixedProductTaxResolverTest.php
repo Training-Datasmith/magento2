@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -54,38 +55,38 @@ class FixedProductTaxResolverTest extends TestCase
      */
     private $fpts = [
         [
-            "title" =>  "FPT 2",
-            "base_amount" =>  "0.5000",
-            "amount" =>  0.5,
-            "row_amount" =>  1.0,
-            "base_row_amount" =>  1.0,
-            "base_amount_incl_tax" =>  "0.5500",
-            "amount_incl_tax" =>  0.55,
-            "row_amount_incl_tax" =>  1.1,
-            "base_row_amount_incl_tax" =>  1.1
+            'title' =>  'FPT 2',
+            'base_amount' =>  '0.5000',
+            'amount' =>  0.5,
+            'row_amount' =>  1.0,
+            'base_row_amount' =>  1.0,
+            'base_amount_incl_tax' =>  '0.5500',
+            'amount_incl_tax' =>  0.55,
+            'row_amount_incl_tax' =>  1.1,
+            'base_row_amount_incl_tax' =>  1.1,
         ],
         [
-            "title" =>  "FPT 1",
-            "base_amount" =>  "1.0000",
-            "amount" =>  1,
-            "row_amount" =>  2,
-            "base_row_amount" =>  2,
-            "base_amount_incl_tax" =>  "1.1000",
-            "amount_incl_tax" =>  1.1,
-            "row_amount_incl_tax" =>  2.2,
-            "base_row_amount_incl_tax" =>  2.2
+            'title' =>  'FPT 1',
+            'base_amount' =>  '1.0000',
+            'amount' =>  1,
+            'row_amount' =>  2,
+            'base_row_amount' =>  2,
+            'base_amount_incl_tax' =>  '1.1000',
+            'amount_incl_tax' =>  1.1,
+            'row_amount_incl_tax' =>  2.2,
+            'base_row_amount_incl_tax' =>  2.2,
         ],
         [
-            "title" =>  "FPT 2",
-            "base_amount" =>  "1.5000",
-            "amount" =>  1.5,
-            "row_amount" =>  3.0,
-            "base_row_amount" =>  3.0,
-            "base_amount_incl_tax" =>  "1.6500",
-            "amount_incl_tax" =>  1.65,
-            "row_amount_incl_tax" =>  3.30,
-            "base_row_amount_incl_tax" =>  3.30
-        ]
+            'title' =>  'FPT 2',
+            'base_amount' =>  '1.5000',
+            'amount' =>  1.5,
+            'row_amount' =>  3.0,
+            'base_row_amount' =>  3.0,
+            'base_amount_incl_tax' =>  '1.6500',
+            'amount_incl_tax' =>  1.65,
+            'row_amount_incl_tax' =>  3.30,
+            'base_row_amount_incl_tax' =>  3.30,
+        ],
     ];
 
     /**
@@ -222,8 +223,8 @@ class FixedProductTaxResolverTest extends TestCase
                 [
                     'model' => $this->cartItemMock,
                     'price' => [
-                        'currency' => 'USD'
-                    ]
+                        'currency' => 'USD',
+                    ],
                 ]
             )
         );
@@ -242,24 +243,24 @@ class FixedProductTaxResolverTest extends TestCase
                         'label' => 'FPT 2',
                         'amount' => [
                             'value' => 0.5,
-                            'currency' => 'USD'
-                        ]
+                            'currency' => 'USD',
+                        ],
                     ],
                     [
                         'label' => 'FPT 1',
                         'amount' => [
                             'value' => 1,
-                            'currency' => 'USD'
-                        ]
+                            'currency' => 'USD',
+                        ],
                     ],
                     [
                         'label' => 'FPT 2',
                         'amount' => [
                             'value' => 1.5,
-                            'currency' => 'USD'
-                        ]
-                    ]
-                ]
+                            'currency' => 'USD',
+                        ],
+                    ],
+                ],
             ],
             [
                 2,
@@ -268,25 +269,25 @@ class FixedProductTaxResolverTest extends TestCase
                         'label' => 'FPT 2',
                         'amount' => [
                             'value' => 0.55,
-                            'currency' => 'USD'
-                        ]
+                            'currency' => 'USD',
+                        ],
                     ],
                     [
                         'label' => 'FPT 1',
                         'amount' => [
                             'value' => 1.1,
-                            'currency' => 'USD'
-                        ]
+                            'currency' => 'USD',
+                        ],
                     ],
                     [
                         'label' => 'FPT 2',
                         'amount' => [
                             'value' => 1.65,
-                            'currency' => 'USD'
-                        ]
-                    ]
-                ]
-            ]
+                            'currency' => 'USD',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

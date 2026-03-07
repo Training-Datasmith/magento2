@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Strategy;
 
-use Magento\Deploy\Package\PackagePool;
 use Magento\Deploy\Package\Package;
+use Magento\Deploy\Package\PackagePool;
 use Magento\Deploy\Process\Queue;
 
 /**

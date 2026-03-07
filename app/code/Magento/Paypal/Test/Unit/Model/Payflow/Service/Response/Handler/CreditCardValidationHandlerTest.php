@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,14 +22,14 @@ class CreditCardValidationHandlerTest extends TestCase
             Info::PAYPAL_CVV2MATCH => 'Y',
             Info::PAYPAL_AVSZIP => 'X',
             Info::PAYPAL_AVSADDR => 'X',
-            Info::PAYPAL_IAVS => 'X'
+            Info::PAYPAL_IAVS => 'X',
         ];
 
         $paypalInfoManager = $this->createMock(Info::class);
         $paymentMock = $this->createMock(InfoInterface::class);
         $responseMock = $this->createMock(DataObject::class);
 
-        $responseMock->expects($this->exactly(count($expectedHandleResult)*2))
+        $responseMock->expects($this->exactly(count($expectedHandleResult) * 2))
             ->method('getData')
             ->willReturnMap(
                 [
@@ -36,7 +37,7 @@ class CreditCardValidationHandlerTest extends TestCase
                     [Info::PAYPAL_AVSZIP, null, 'X'],
                     [Info::PAYPAL_AVSADDR, null, 'X'],
                     [Info::PAYPAL_IAVS, null, 'X'],
-                    ['Some other key', null, 'Some other value']
+                    ['Some other key', null, 'Some other value'],
                 ]
             );
         $paypalInfoManager->expects($this->once())

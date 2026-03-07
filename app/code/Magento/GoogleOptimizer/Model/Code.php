@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Model;
 
 /**
@@ -24,11 +27,11 @@ class Code extends \Magento\Framework\Model\AbstractModel
     /**#@+
      * Entity types
      */
-    const ENTITY_TYPE_PRODUCT = 'product';
+    public const ENTITY_TYPE_PRODUCT = 'product';
 
-    const ENTITY_TYPE_CATEGORY = 'category';
+    public const ENTITY_TYPE_CATEGORY = 'category';
 
-    const ENTITY_TYPE_PAGE = 'cms';
+    public const ENTITY_TYPE_PAGE = 'cms';
 
     /**#@-*/
 

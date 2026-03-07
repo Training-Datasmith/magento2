@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -112,8 +114,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'data' => [
                     'id' => 'filter_form',
                     'action' => $actionUrl,
-                    'method' => 'get'
-                ]
+                    'method' => 'get',
+                ],
             ]
         );
 
@@ -131,7 +133,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => 'report_type',
                 'options' => $this->_reportTypeOptions,
-                'label' => __('Date Used')
+                'label' => __('Date Used'),
             ]
         );
 
@@ -142,7 +144,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'period_type',
                 'options' => ['day' => __('Day'), 'month' => __('Month'), 'year' => __('Year')],
                 'label' => __('Period'),
-                'title' => __('Period')
+                'title' => __('Period'),
             ]
         );
 
@@ -156,7 +158,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('From'),
                 'required' => true,
                 'css_class' => 'admin__field-small',
-                'class' => 'admin__control-text'
+                'class' => 'admin__control-text',
             ]
         );
 
@@ -170,7 +172,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('To'),
                 'required' => true,
                 'css_class' => 'admin__field-small',
-                'class' => 'admin__control-text'
+                'class' => 'admin__control-text',
             ]
         );
 
@@ -181,7 +183,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'show_empty_rows',
                 'options' => ['1' => __('Yes'), '0' => __('No')],
                 'label' => __('Empty Rows'),
-                'title' => __('Empty Rows')
+                'title' => __('Empty Rows'),
             ]
         );
 

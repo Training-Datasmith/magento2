@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,10 +97,10 @@ class ExtensibleDataObjectConverterTest extends TestCase
                         [
                             AttributeValue::ATTRIBUTE_CODE => 'another_custom_attribute_code',
                             AttributeValue::VALUE => 'another_custom_attribute_value',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $resultArray = [
@@ -113,8 +114,8 @@ class ExtensibleDataObjectConverterTest extends TestCase
                 0 => [
                     '3rd_attribute_key' => '3rd_attribute_value',
                     'another_custom_attribute_code' => 'another_custom_attribute_value',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->processor->expects($this->any())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class FullTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->markTestSkipped("MC-18332: Mysql Search Engine is deprecated and will be removed");
+        $this->markTestSkipped('MC-18332: Mysql Search Engine is deprecated and will be removed');
         $resource = $this->getMockBuilder(ResourceConnection::class)
             ->disableOriginalConstructor()
             ->getMock();
@@ -92,7 +93,7 @@ class FullTest extends TestCase
                 'dateTime' => $dateTime,
                 'localeResolver' => $localeResolver,
                 'localeDate' => $localeDate,
-                'fulltextResource' => $fulltextResource
+                'fulltextResource' => $fulltextResource,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class AttributeOptionProvider
                         'option_value_store.value_id > 0',
                         'option_value_store.value',
                         'option_value.value'
-                    )
+                    ),
                 ]
             )->where(
                 'a.attribute_id = options.attribute_id AND option_value.store_id = ?',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Customer\Model\Config\Share;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Json as JsonResult;
 use Magento\Framework\Controller\ResultFactory;
@@ -24,10 +25,10 @@ use Magento\LoginAsCustomerApi\Api\ConfigInterface;
 use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterface;
 use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterfaceFactory;
 use Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForUserInterface;
+use Magento\LoginAsCustomerApi\Api\GenerateAuthenticationSecretInterface;
 use Magento\LoginAsCustomerApi\Api\IsLoginAsCustomerEnabledForCustomerInterface;
 use Magento\LoginAsCustomerApi\Api\SaveAuthenticationDataInterface;
 use Magento\LoginAsCustomerApi\Api\SetLoggedAsCustomerCustomerIdInterface;
-use Magento\LoginAsCustomerApi\Api\GenerateAuthenticationSecretInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\StoreSwitcher\ManageStoreCookie;
 
@@ -44,7 +45,7 @@ class Login extends Action implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_LoginAsCustomer::login';
+    public const ADMIN_RESOURCE = 'Magento_LoginAsCustomer::login';
 
     /**
      * @var Session

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid;
 
 use Magento\TestFramework\App\State;
@@ -154,7 +157,7 @@ class MassactionTest extends \PHPUnit\Framework\TestCase
                     'label' => 'Option One',
                     'url' => '#http:\/\/localhost\/index\.php\/(?:key\/([\w\d]+)\/)?#',
                     'selected' => false,
-                    'blockname' => ''
+                    'blockname' => '',
                 ],
             ],
             [
@@ -164,8 +167,8 @@ class MassactionTest extends \PHPUnit\Framework\TestCase
                     'label' => 'Option Two',
                     'url' => '#http:\/\/localhost\/index\.php\/(?:key\/([\w\d]+)\/)?#',
                     'selected' => false,
-                    'blockname' => ''
-                ]
+                    'blockname' => '',
+                ],
             ],
             [
                 'option_id3',
@@ -174,9 +177,9 @@ class MassactionTest extends \PHPUnit\Framework\TestCase
                     'label' => 'Option Three',
                     'url' => '#http:\/\/localhost\/index\.php\/(?:key\/([\w\d]+)\/)?#',
                     'selected' => false,
-                    'blockname' => ''
-                ]
-            ]
+                    'blockname' => '',
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,10 +16,10 @@ namespace Magento\Framework\Api\ExtensionAttribute;
  */
 interface JoinDataInterface
 {
-    const SELECT_FIELD_EXTERNAL_ALIAS = 'external_alias';
-    const SELECT_FIELD_INTERNAL_ALIAS = 'internal_alias';
-    const SELECT_FIELD_WITH_DB_PREFIX = 'with_db_prefix';
-    const SELECT_FIELD_SETTER = 'setter';
+    public const SELECT_FIELD_EXTERNAL_ALIAS = 'external_alias';
+    public const SELECT_FIELD_INTERNAL_ALIAS = 'internal_alias';
+    public const SELECT_FIELD_WITH_DB_PREFIX = 'with_db_prefix';
+    public const SELECT_FIELD_SETTER = 'setter';
 
     /**
      * Get attribute code.

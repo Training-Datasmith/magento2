@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Model\Product\TypeHandler;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Helper\Download;
 use Magento\Downloadable\Model\Product\TypeHandler\Sample;
 use Magento\Downloadable\Model\ResourceModel\Link;
+use Magento\Downloadable\Model\ResourceModel\Sample as ResourceSample;
+use Magento\Downloadable\Model\ResourceModel\SampleFactory as ResourceSampleFactory;
 use Magento\Downloadable\Model\Sample as SampleModel;
 use Magento\Downloadable\Model\SampleFactory;
 use Magento\Framework\EntityManager\EntityMetadata;
@@ -19,11 +21,10 @@ use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Downloadable\Model\ResourceModel\SampleFactory as ResourceSampleFactory;
-use Magento\Downloadable\Model\ResourceModel\Sample as ResourceSample;
 
 /**
  * Test for \Magento\Downloadable\Model\Product\TypeHandler\Sample
@@ -74,7 +75,7 @@ class SampleTest extends TestCase
             [
                 'sampleFactory' => $this->sampleFactory,
                 'sampleResourceFactory' => $sampleResourceFactory,
-                'metadataPool' => $this->metadataPoolMock
+                'metadataPool' => $this->metadataPoolMock,
             ]
         );
         $refClass = new \ReflectionClass(Sample::class);
@@ -125,8 +126,8 @@ class SampleTest extends TestCase
                     'type' => Download::LINK_TYPE_FILE,
                     'sample_url' => null,
                     'sort_order' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -176,10 +177,10 @@ class SampleTest extends TestCase
                             'sample_id' => 456,
                             'is_delete' => 1,
                         ],
-                    ]
+                    ],
                 ],
-                'expectedItems' => [1, 2, 456]
-            ]
+                'expectedItems' => [1, 2, 456],
+            ],
         ];
     }
 
@@ -202,7 +203,7 @@ class SampleTest extends TestCase
                 'setSampleType',
                 'setSampleUrl',
                 'setSampleFile',
-                'save'
+                'save',
             ]
         );
         $sample->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class FeedTest extends TestCase
             [
                 'getValue',
                 'setValue',
-                'isSetFlag'
+                'isSetFlag',
             ]
         );
         $this->cacheManager = $this->createPartialMock(
@@ -117,7 +118,7 @@ class FeedTest extends TestCase
                 'getFrontend',
                 'remove',
                 'save',
-                'clean'
+                'clean',
             ]
         );
 
@@ -136,7 +137,7 @@ class FeedTest extends TestCase
                 'curlFactory' => $this->curlFactory,
                 'deploymentConfig' => $this->deploymentConfig,
                 'productMetadata' => $this->productMetadata,
-                'urlBuilder' => $this->urlBuilder
+                'urlBuilder' => $this->urlBuilder,
             ]
         );
     }
@@ -163,7 +164,7 @@ class FeedTest extends TestCase
         $configValues = [
             'timeout'   => 2,
             'useragent' => $mockName . '/' . $mockVersion . ' (' . $mockEdition . ')',
-            'referer'   => $mockUrl
+            'referer'   => $mockUrl,
         ];
 
         $lastUpdate = 0;
@@ -252,7 +253,7 @@ class FeedTest extends TestCase
                                     <pubDate>Tue, 1 Sep 2014 16:46:11 UTC</pubDate>
                                 </item>
                             </channel>
-                        </rss>'
+                        </rss>',
             ],
             [
                 true,
@@ -271,9 +272,9 @@ class FeedTest extends TestCase
                                     <pubDate>Tue, 20 Jun 2017 13:14:47 UTC</pubDate>
                                 </item>
                             </channel>
-                        </rss>'
+                        </rss>',
                 // @codingStandardsIgnoreEnd
-            ]
+            ],
         ];
     }
 }

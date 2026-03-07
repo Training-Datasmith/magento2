@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Consumer\Config\Validator;
 
 use Magento\Framework\MessageQueue\Consumer\Config\ValidatorInterface;
@@ -37,7 +40,7 @@ class FieldsTypes implements ValidatorInterface
             'queue' => 'string',
             'handlers' => 'array',
             'consumerInstance' => 'string',
-            'connection' => 'string'
+            'connection' => 'string',
         ];
         foreach ($fields as $fieldName => $expectedType) {
             $actualType = gettype($consumerConfig[$fieldName]);

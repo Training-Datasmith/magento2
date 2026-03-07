@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -112,7 +115,7 @@ class BackendTemplate extends Template
 
                 $configData[] = [
                     'scope' => ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-                    'path' => $path
+                    'path' => $path,
                 ];
             }
         }

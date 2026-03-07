@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Tax\Model\Config
  */
+
 namespace Magento\Tax\Test\Unit\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -47,7 +49,7 @@ class ConfigTest extends TestCase
             ['setNeedUseShippingExcludeTax', 'getNeedUseShippingExcludeTax', false],
             ['setPriceIncludesTax', 'priceIncludesTax', true],
             ['setPriceIncludesTax', 'priceIncludesTax', false],
-            ['setPriceIncludesTax', 'priceIncludesTax', null]
+            ['setPriceIncludesTax', 'priceIncludesTax', null],
         ];
     }
 
@@ -79,7 +81,7 @@ class ConfigTest extends TestCase
             [true,  true,  Calculation::CALC_TAX_AFTER_DISCOUNT_ON_INCL],
             [true,  false, Calculation::CALC_TAX_AFTER_DISCOUNT_ON_EXCL],
             [false, true,  Calculation::CALC_TAX_BEFORE_DISCOUNT_ON_INCL],
-            [false, false, Calculation::CALC_TAX_BEFORE_DISCOUNT_ON_EXCL]
+            [false, false, Calculation::CALC_TAX_BEFORE_DISCOUNT_ON_EXCL],
         ];
     }
 
@@ -111,260 +113,260 @@ class ConfigTest extends TestCase
                 'priceIncludesTax',
                 Config::CONFIG_XML_PATH_PRICE_INCLUDES_TAX,
                 true,
-                true
+                true,
             ],
             [
                 'applyTaxAfterDiscount',
                 Config::CONFIG_XML_PATH_APPLY_AFTER_DISCOUNT,
                 true,
-                true
+                true,
             ],
             [
                 'getPriceDisplayType',
                 Config::CONFIG_XML_PATH_PRICE_DISPLAY_TYPE,
                 true,
-                true
+                true,
             ],
             [
                 'discountTax',
                 Config::CONFIG_XML_PATH_DISCOUNT_TAX,
                 1,
-                true
+                true,
             ],
             [
                 'getAlgorithm',
                 Config::XML_PATH_ALGORITHM,
                 true,
-                true
+                true,
             ],
             [
                 'getShippingTaxClass',
                 Config::CONFIG_XML_PATH_SHIPPING_TAX_CLASS,
                 true,
-                true
+                true,
             ],
             [
                 'getShippingPriceDisplayType',
                 Config::CONFIG_XML_PATH_DISPLAY_SHIPPING,
                 true,
-                true
+                true,
             ],
             [
                 'shippingPriceIncludesTax',
                 Config::CONFIG_XML_PATH_SHIPPING_INCLUDES_TAX,
                 true,
-                true
+                true,
             ],
             [
                 'displayCartPricesInclTax',
                 Config::XML_PATH_DISPLAY_CART_PRICE,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartPricesExclTax',
                 Config::XML_PATH_DISPLAY_CART_PRICE,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartPricesBoth',
                 Config::XML_PATH_DISPLAY_CART_PRICE,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displayCartSubtotalInclTax',
                 Config::XML_PATH_DISPLAY_CART_SUBTOTAL,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartSubtotalExclTax',
                 Config::XML_PATH_DISPLAY_CART_SUBTOTAL,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartSubtotalBoth',
                 Config::XML_PATH_DISPLAY_CART_SUBTOTAL,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displayCartShippingInclTax',
                 Config::XML_PATH_DISPLAY_CART_SHIPPING,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartShippingExclTax',
                 Config::XML_PATH_DISPLAY_CART_SHIPPING,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartShippingBoth',
                 Config::XML_PATH_DISPLAY_CART_SHIPPING,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displayCartDiscountInclTax',
                 Config::XML_PATH_DISPLAY_CART_DISCOUNT,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartDiscountExclTax',
                 Config::XML_PATH_DISPLAY_CART_DISCOUNT,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displayCartDiscountBoth',
                 Config::XML_PATH_DISPLAY_CART_DISCOUNT,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displayCartTaxWithGrandTotal',
                 Config::XML_PATH_DISPLAY_CART_GRANDTOTAL,
                 true,
-                true
+                true,
             ],
             [
                 'displayCartFullSummary',
                 Config::XML_PATH_DISPLAY_CART_FULL_SUMMARY,
                 true,
-                true
+                true,
             ],
             [
                 'displayCartZeroTax',
                 Config::XML_PATH_DISPLAY_CART_ZERO_TAX,
                 true,
-                true
+                true,
             ],
             [
                 'displaySalesPricesInclTax',
                 Config::XML_PATH_DISPLAY_SALES_PRICE,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesPricesExclTax',
                 Config::XML_PATH_DISPLAY_SALES_PRICE,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesPricesBoth',
                 Config::XML_PATH_DISPLAY_SALES_PRICE,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displaySalesSubtotalInclTax',
                 Config::XML_PATH_DISPLAY_SALES_SUBTOTAL,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesSubtotalExclTax',
                 Config::XML_PATH_DISPLAY_SALES_SUBTOTAL,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesSubtotalBoth',
                 Config::XML_PATH_DISPLAY_SALES_SUBTOTAL,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displaySalesShippingInclTax',
                 Config::XML_PATH_DISPLAY_SALES_SHIPPING,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesShippingExclTax',
                 Config::XML_PATH_DISPLAY_SALES_SHIPPING,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesShippingBoth',
                 Config::XML_PATH_DISPLAY_SALES_SHIPPING,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displaySalesDiscountInclTax',
                 Config::XML_PATH_DISPLAY_SALES_DISCOUNT,
                 Config::DISPLAY_TYPE_INCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesDiscountExclTax',
                 Config::XML_PATH_DISPLAY_SALES_DISCOUNT,
                 Config::DISPLAY_TYPE_EXCLUDING_TAX,
-                true
+                true,
             ],
             [
                 'displaySalesDiscountBoth',
                 Config::XML_PATH_DISPLAY_SALES_DISCOUNT,
                 Config::DISPLAY_TYPE_BOTH,
-                true
+                true,
             ],
             [
                 'displaySalesTaxWithGrandTotal',
                 Config::XML_PATH_DISPLAY_SALES_GRANDTOTAL,
                 true,
-                true
+                true,
             ],
             [
                 'displaySalesFullSummary',
                 Config::XML_PATH_DISPLAY_SALES_FULL_SUMMARY,
                 true,
-                true
+                true,
             ],
             [
                 'displaySalesZeroTax',
                 Config::XML_PATH_DISPLAY_SALES_ZERO_TAX,
                 true,
-                true
+                true,
             ],
             [
                 'crossBorderTradeEnabled',
                 Config::CONFIG_XML_PATH_CROSS_BORDER_TRADE_ENABLED,
                 true,
-                true
+                true,
             ],
             [
                 'isWrongDisplaySettingsIgnored',
                 Config::XML_PATH_TAX_NOTIFICATION_IGNORE_PRICE_DISPLAY,
                 true,
-                true
+                true,
             ],
             [
                 'isWrongDiscountSettingsIgnored',
                 Config::XML_PATH_TAX_NOTIFICATION_IGNORE_DISCOUNT,
                 true,
-                true
+                true,
             ],
             [
                 'isWrongApplyDiscountSettingIgnored',
                 Config::XML_PATH_TAX_NOTIFICATION_IGNORE_APPLY_DISCOUNT,
                 true,
-                true
+                true,
             ],
             [
                 'getInfoUrl',
                 Config::XML_PATH_TAX_NOTIFICATION_INFO_URL,
                 'http:\\kiwis.rule.com',
-                'http:\\kiwis.rule.com'
-            ]
+                'http:\\kiwis.rule.com',
+            ],
         ];
     }
 
@@ -384,26 +386,26 @@ class ConfigTest extends TestCase
                         Config::XML_PATH_DISPLAY_CART_SHIPPING,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        true
+                        true,
                     ],
                     [
                         Config::XML_PATH_DISPLAY_CART_SHIPPING,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        false
+                        false,
                     ],
                     [
                         Config::CONFIG_XML_PATH_PRICE_DISPLAY_TYPE,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        true
+                        true,
                     ],
                     [
                         Config::XML_PATH_DISPLAY_CART_PRICE,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        false
-                    ]
+                        false,
+                    ],
                 ]
             );
         /** @var Config */

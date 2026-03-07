@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab\View;
 
 use Magento\Customer\Controller\RegistryConstants;
@@ -100,7 +103,7 @@ class Wishlist extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('Product'),
                 'index' => 'product_name',
-                'renderer' => \Magento\Customer\Block\Adminhtml\Edit\Tab\View\Grid\Renderer\Item::class
+                'renderer' => \Magento\Customer\Block\Adminhtml\Edit\Tab\View\Grid\Renderer\Item::class,
             ]
         );
 
@@ -122,7 +125,7 @@ class Wishlist extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Days in Wish List'),
                 'index' => 'days_in_wishlist',
                 'type' => 'number',
-                'width' => '140px'
+                'width' => '140px',
             ]
         );
 

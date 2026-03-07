@@ -1,18 +1,19 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/default_rollback.php');
@@ -65,7 +66,7 @@ $order->setIncrementId('100000001')
     ->setGrandTotal(100)
     ->setBaseSubtotal(100)
     ->setBaseGrandTotal(100)
-    ->setOrderCurrencyCode("USD")
+    ->setOrderCurrencyCode('USD')
     ->setBaseCurrencyCode('USD')
     ->setCustomerIsGuest(false)
     ->setCustomerId(1)

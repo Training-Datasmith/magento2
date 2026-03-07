@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ namespace Magento\Integration\ViewModel;
  */
 class JsonSerializer implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
-
     /**
      * @var \Magento\Framework\Serialize\Serializer\Json
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\ConfigurableProduct\Model\LinkManagement;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Customer\Model\Group;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\GraphQl\Customer\LockCustomer;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\GraphQl\Customer\LockCustomer;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -89,30 +90,30 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertNotEmpty($product['price_range']);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => 10
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => 10,
                 ],
-                "final_price" => [
-                    "value" => 10
+                'final_price' => [
+                    'value' => 10,
                 ],
-                "discount" => [
-                    "amount_off" => 0,
-                    "percent_off" => 0
-                ]
+                'discount' => [
+                    'amount_off' => 0,
+                    'percent_off' => 0,
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => 10
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => 10,
                 ],
-                "final_price" => [
-                    "value" => 10
+                'final_price' => [
+                    'value' => 10,
                 ],
-                "discount" => [
-                    "amount_off" => 0,
-                    "percent_off" => 0
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => 0,
+                    'percent_off' => 0,
+                ],
+            ],
         ];
 
         $this->assertPrices($expectedPriceRange, $product['price_range']);
@@ -128,7 +129,7 @@ class ProductPriceTest extends GraphQlAbstract
         $skus = ['simple'];
         $query = $this->getProductQuery($skus);
         $headerMap = [
-            'Content-Currency' => 'CNY'
+            'Content-Currency' => 'CNY',
         ];
         $result = $this->graphQlQuery($query, [], '', $headerMap);
 
@@ -138,30 +139,30 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertNotEmpty($product['price_range']);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => 70
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => 70,
                 ],
-                "final_price" => [
-                    "value" => 70
+                'final_price' => [
+                    'value' => 70,
                 ],
-                "discount" => [
-                    "amount_off" => 0,
-                    "percent_off" => 0
-                ]
+                'discount' => [
+                    'amount_off' => 0,
+                    'percent_off' => 0,
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => 70
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => 70,
                 ],
-                "final_price" => [
-                    "value" => 70
+                'final_price' => [
+                    'value' => 70,
                 ],
-                "discount" => [
-                    "amount_off" => 0,
-                    "percent_off" => 0
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => 0,
+                    'percent_off' => 0,
+                ],
+            ],
         ];
 
         $this->assertPrices($expectedPriceRange, $product['price_range'], 'CNY');
@@ -176,7 +177,7 @@ class ProductPriceTest extends GraphQlAbstract
      */
     public function testMultipleProductTypes()
     {
-        $skus = ["simple-1", "12345", "grouped"];
+        $skus = ['simple-1', '12345', 'grouped'];
 
         $query = $this->getProductQuery($skus);
 
@@ -185,84 +186,84 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertCount(3, $result['products']['items']);
 
         $expected = [
-            "simple-1" => [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => 10
+            'simple-1' => [
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => 10,
                     ],
-                    "final_price" => [
-                        "value" => 10
+                    'final_price' => [
+                        'value' => 10,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => 10
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => 10,
                     ],
-                    "final_price" => [
-                        "value" => 10
+                    'final_price' => [
+                        'value' => 10,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
-                ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
+                ],
             ],
-            "12345" => [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => 30
+            '12345' => [
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => 30,
                     ],
-                    "final_price" => [
-                        "value" => 30
+                    'final_price' => [
+                        'value' => 30,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => 40
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => 40,
                     ],
-                    "final_price" => [
-                        "value" => 40
+                    'final_price' => [
+                        'value' => 40,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
-                ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
+                ],
             ],
-            "grouped" => [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => 100
+            'grouped' => [
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => 100,
                     ],
-                    "final_price" => [
-                        "value" => 100
+                    'final_price' => [
+                        'value' => 100,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => 100
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => 100,
                     ],
-                    "final_price" => [
-                        "value" => 100
+                    'final_price' => [
+                        'value' => 100,
                     ],
-                    "discount" => [
-                        "amount_off" => 0,
-                        "percent_off" => 0
-                    ]
-                ]
-            ]
+                    'discount' => [
+                        'amount_off' => 0,
+                        'percent_off' => 0,
+                    ],
+                ],
+            ],
         ];
 
         foreach ($result['products']['items'] as $product) {
@@ -289,7 +290,7 @@ class ProductPriceTest extends GraphQlAbstract
         array $expectedTierPrices,
         array $customerData
     ) {
-        $skus = ["simple1", "simple2"];
+        $skus = ['simple1', 'simple2'];
         $tierPriceFactory = $this->objectManager->get(ProductTierPriceInterfaceFactory::class);
 
         /** @var  $tierPriceExtensionAttributesFactory */
@@ -300,8 +301,8 @@ class ProductPriceTest extends GraphQlAbstract
             [
                 'data' => [
                     'customer_group_id' => $customerGroup,
-                    'qty' => 2
-                ]
+                    'qty' => 2,
+                ],
             ]
         )->setExtensionAttributes($tierPriceExtensionAttribute);
         foreach ($skus as $sku) {
@@ -339,103 +340,103 @@ class ProductPriceTest extends GraphQlAbstract
      * @return array
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public static function priceDataProvider() : array
+    public static function priceDataProvider(): array
     {
         return [
             [
                 'customerGroup' => Group::CUST_GROUP_ALL,
                 'expectedPriceRange' => [
-                    "simple1" => [
-                        "minimum_price" => [
-                            "regular_price" => ["value" => 10],
-                            "final_price" => ["value" => 5.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 40.1]
+                    'simple1' => [
+                        'minimum_price' => [
+                            'regular_price' => ['value' => 10],
+                            'final_price' => ['value' => 5.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 40.1],
                         ],
-                        "maximum_price" => [
-                            "regular_price" => ["value" => 10],
-                            "final_price" => ["value" => 5.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 40.1]
-                        ]
+                        'maximum_price' => [
+                            'regular_price' => ['value' => 10],
+                            'final_price' => ['value' => 5.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 40.1],
+                        ],
                     ],
-                    "simple2" => [
-                        "minimum_price" => [
-                            "regular_price" => ["value" => 20],
-                            "final_price" => ["value" => 15.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 20.05]
+                    'simple2' => [
+                        'minimum_price' => [
+                            'regular_price' => ['value' => 20],
+                            'final_price' => ['value' => 15.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 20.05],
                         ],
-                        "maximum_price" => [
-                            "regular_price" => ["value" => 20],
-                            "final_price" => ["value" => 15.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 20.05]
-                        ]
-                    ]
+                        'maximum_price' => [
+                            'regular_price' => ['value' => 20],
+                            'final_price' => ['value' => 15.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 20.05],
+                        ],
+                    ],
                 ],
                 'expectedTierPrices' => [
-                    "simple1" => [
+                    'simple1' => [
                         0 => [
-                            'discount' =>['amount_off' => 1, 'percent_off' => 10],
-                            'final_price' =>['value'=> 9],
-                            'quantity' => 2
-                        ]
+                            'discount' => ['amount_off' => 1, 'percent_off' => 10],
+                            'final_price' => ['value' => 9],
+                            'quantity' => 2,
+                        ],
                     ],
-                    "simple2" => [
+                    'simple2' => [
                         0 => [
-                            'discount' =>['amount_off' => 2, 'percent_off' => 10],
-                            'final_price' =>['value'=> 18],
-                            'quantity' => 2
-                        ]
-                    ]
+                            'discount' => ['amount_off' => 2, 'percent_off' => 10],
+                            'final_price' => ['value' => 18],
+                            'quantity' => 2,
+                        ],
+                    ],
                 ],
-                'customerData' => []
+                'customerData' => [],
             ],
             [
                 'customerGroup' => 1,
                 'expectedPriceRange' => [
-                    "simple1" => [
-                        "minimum_price" => [
-                            "regular_price" => ["value" => 10],
-                            "final_price" => ["value" => 5.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 40.1]
+                    'simple1' => [
+                        'minimum_price' => [
+                            'regular_price' => ['value' => 10],
+                            'final_price' => ['value' => 5.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 40.1],
                         ],
-                        "maximum_price" => [
-                            "regular_price" => ["value" => 10],
-                            "final_price" => ["value" => 5.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 40.1]
-                        ]
+                        'maximum_price' => [
+                            'regular_price' => ['value' => 10],
+                            'final_price' => ['value' => 5.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 40.1],
+                        ],
                     ],
-                    "simple2" => [
-                        "minimum_price" => [
-                            "regular_price" => ["value" => 20],
-                            "final_price" => ["value" => 15.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 20.05]
+                    'simple2' => [
+                        'minimum_price' => [
+                            'regular_price' => ['value' => 20],
+                            'final_price' => ['value' => 15.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 20.05],
                         ],
-                        "maximum_price" => [
-                            "regular_price" => ["value" => 20],
-                            "final_price" => ["value" => 15.99],
-                            "discount" => ["amount_off" => 4.01, "percent_off" => 20.05]
-                        ]
-                    ]
+                        'maximum_price' => [
+                            'regular_price' => ['value' => 20],
+                            'final_price' => ['value' => 15.99],
+                            'discount' => ['amount_off' => 4.01, 'percent_off' => 20.05],
+                        ],
+                    ],
                 ],
                 'expectedTierPrices' => [
-                    "simple1" => [
+                    'simple1' => [
                         0 => [
-                            'discount' =>['amount_off' => 1, 'percent_off' => 10],
-                            'final_price' =>['value'=> 9],
-                            'quantity' => 2
-                        ]
+                            'discount' => ['amount_off' => 1, 'percent_off' => 10],
+                            'final_price' => ['value' => 9],
+                            'quantity' => 2,
+                        ],
                     ],
-                    "simple2" => [
+                    'simple2' => [
                         0 => [
-                            'discount' =>['amount_off' => 2, 'percent_off' => 10],
-                            'final_price' =>['value'=> 18],
-                            'quantity' => 2
-                        ]
-                    ]
+                            'discount' => ['amount_off' => 2, 'percent_off' => 10],
+                            'final_price' => ['value' => 18],
+                            'quantity' => 2,
+                        ],
+                    ],
                 ],
                 'customerData' => [
                     'username' => 'customer@example.com',
-                    'password' => 'password'
-                ]
+                    'password' => 'password',
+                ],
             ],
         ];
     }
@@ -454,10 +455,10 @@ class ProductPriceTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 87
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 87,
+            ],
         ];
         $associatedProductSkus = [];
         foreach ($groupedProductLinks as $groupedProductLink) {
@@ -480,31 +481,31 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertNotEmpty($product['price_range']);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => 100
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => 100,
                 ],
-                "final_price" => [
-                    "value" => 95.75
+                'final_price' => [
+                    'value' => 95.75,
                 ],
-                "discount" => [
-                    "amount_off" => 100 - 95.75,
+                'discount' => [
+                    'amount_off' => 100 - 95.75,
                     //difference between original and final over original price
-                    "percent_off" => (100 - 95.75)*100/100
-                ]
+                    'percent_off' => (100 - 95.75) * 100 / 100,
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => 100
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => 100,
                 ],
-                "final_price" => [
-                    "value" => 95.75
+                'final_price' => [
+                    'value' => 95.75,
                 ],
-                "discount" => [
-                    "amount_off" => 100 - 95.75,
-                    "percent_off" => (100 - 95.75)*100/100
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => 100 - 95.75,
+                    'percent_off' => (100 - 95.75) * 100 / 100,
+                ],
+            ],
         ];
         $this->assertPrices($expectedPriceRange, $product['price_range']);
         $this->assertEmpty($product['price_tiers']);
@@ -534,17 +535,17 @@ class ProductPriceTest extends GraphQlAbstract
         $skus = ['bundle-product'];
         $bundled->setSpecialPrice(10);
 
-       // set the tier price for the bundled product
+        // set the tier price for the bundled product
         $tierPriceFactory = $this->objectManager->get(ProductTierPriceInterfaceFactory::class);
-       /** @var  $tierPriceExtensionAttributesFactory */
+        /** @var  $tierPriceExtensionAttributesFactory */
         $tierPriceExtensionAttributesFactory = $this->objectManager->create(ProductTierPriceExtensionFactory::class);
         $tierPriceExtensionAttribute = $tierPriceExtensionAttributesFactory->create()->setPercentageValue(10);
         $tierPrices[] = $tierPriceFactory->create(
             [
                 'data' => [
                     'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-                    'qty' => 2
-                ]
+                    'qty' => 2,
+                ],
             ]
         )->setExtensionAttributes($tierPriceExtensionAttribute);
         $bundled->setTierPrices($tierPrices);
@@ -570,46 +571,46 @@ class ProductPriceTest extends GraphQlAbstract
         $minFinalPrice = round($minRegularPrice * 0.1, 2);
 
         $maxRegularPrice = $bundleRegularPrice + $secondOptionPrice;
-        $maxFinalPrice = round($maxRegularPrice* 0.1, 2);
+        $maxFinalPrice = round($maxRegularPrice * 0.1, 2);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => $minRegularPrice
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => $minRegularPrice,
                 ],
-                "final_price" => [
-                    "value" => $minFinalPrice
+                'final_price' => [
+                    'value' => $minFinalPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $minRegularPrice - $minFinalPrice,
-                    "percent_off" => round(($minRegularPrice - $minFinalPrice)*100/$minRegularPrice, 2)
-                ]
+                'discount' => [
+                    'amount_off' => $minRegularPrice - $minFinalPrice,
+                    'percent_off' => round(($minRegularPrice - $minFinalPrice) * 100 / $minRegularPrice, 2),
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => $maxRegularPrice
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => $maxRegularPrice,
                 ],
-                "final_price" => [
-                    "value" => $maxFinalPrice
+                'final_price' => [
+                    'value' => $maxFinalPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $maxRegularPrice - $maxFinalPrice,
-                    "percent_off" => round(($maxRegularPrice - $maxFinalPrice)*100/$maxRegularPrice, 2)
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => $maxRegularPrice - $maxFinalPrice,
+                    'percent_off' => round(($maxRegularPrice - $maxFinalPrice) * 100 / $maxRegularPrice, 2),
+                ],
+            ],
         ];
         $this->assertPrices($expectedPriceRange, $product['price_range']);
         $this->assertResponseFields(
             $product['price_tiers'],
             [
                 0 => [
-                    'discount' =>[
+                    'discount' => [
                         'amount_off' => 1,
-                        'percent_off' => 10
+                        'percent_off' => 10,
                     ],
-                    'final_price' =>['value'=> 9],
-                    'quantity' => 2
-                ]
+                    'final_price' => ['value' => 9],
+                    'quantity' => 2,
+                ],
             ]
         );
     }
@@ -640,43 +641,43 @@ class ProductPriceTest extends GraphQlAbstract
         $maxFinalPrice = round(15.99 * 0.1, 2);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => $minRegularPrice
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => $minRegularPrice,
                 ],
-                "final_price" => [
-                    "value" => $minFinalPrice
+                'final_price' => [
+                    'value' => $minFinalPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $minRegularPrice - $minFinalPrice,
-                    "percent_off" => round(($minRegularPrice - $minFinalPrice)*100/$minRegularPrice, 2)
-                ]
+                'discount' => [
+                    'amount_off' => $minRegularPrice - $minFinalPrice,
+                    'percent_off' => round(($minRegularPrice - $minFinalPrice) * 100 / $minRegularPrice, 2),
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => $maxRegularPrice
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => $maxRegularPrice,
                 ],
-                "final_price" => [
-                    "value" => $maxFinalPrice
+                'final_price' => [
+                    'value' => $maxFinalPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $maxRegularPrice - $maxFinalPrice,
-                    "percent_off" => round(($maxRegularPrice - $maxFinalPrice)*100/$maxRegularPrice, 2)
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => $maxRegularPrice - $maxFinalPrice,
+                    'percent_off' => round(($maxRegularPrice - $maxFinalPrice) * 100 / $maxRegularPrice, 2),
+                ],
+            ],
         ];
         $this->assertPrices($expectedPriceRange, $product['price_range']);
         $this->assertResponseFields(
             $product['price_tiers'],
             [
                 0 => [
-                    'discount' =>[
+                    'discount' => [
                         'amount_off' => 1,
-                        'percent_off' => 10
+                        'percent_off' => 10,
                     ],
-                    'final_price' =>['value'=> 0],
-                    'quantity' => 2
-                ]
+                    'final_price' => ['value' => 0],
+                    'quantity' => 2,
+                ],
             ]
         );
     }
@@ -689,17 +690,17 @@ class ProductPriceTest extends GraphQlAbstract
      */
     public function testConfigurableProductWithVariantsHavingSpecialAndTierPrices()
     {
-        $configurableProductSku ='12345';
+        $configurableProductSku = '12345';
         /** @var LinkManagementInterface $configurableProductLink */
         $configurableProductLinks = $this->objectManager->get(LinkManagement::class);
         $configurableProductVariants = $configurableProductLinks->getChildren($configurableProductSku);
         $tierPriceData = [
             [
                 'customer_group_id' => Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 20,
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 20,
+            ],
         ];
         foreach ($configurableProductVariants as $configurableProductVariant) {
             $configurableProductVariant->setSpecialPrice('25.99');
@@ -725,36 +726,36 @@ class ProductPriceTest extends GraphQlAbstract
         $regularPriceExpensiveVariant = 40;
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => $regularPriceCheapestVariant
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => $regularPriceCheapestVariant,
                 ],
-                "final_price" => [
-                    "value" => $specialPrice
+                'final_price' => [
+                    'value' => $specialPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $regularPriceCheapestVariant - $specialPrice,
-                    "percent_off" => round(
-                        ($regularPriceCheapestVariant - $specialPrice)*100/$regularPriceCheapestVariant,
+                'discount' => [
+                    'amount_off' => $regularPriceCheapestVariant - $specialPrice,
+                    'percent_off' => round(
+                        ($regularPriceCheapestVariant - $specialPrice) * 100 / $regularPriceCheapestVariant,
                         2
-                    )
-                ]
+                    ),
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => $regularPriceExpensiveVariant
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => $regularPriceExpensiveVariant,
                 ],
-                "final_price" => [
-                    "value" => $specialPrice
+                'final_price' => [
+                    'value' => $specialPrice,
                 ],
-                "discount" => [
-                    "amount_off" => $regularPriceExpensiveVariant - $specialPrice,
-                    "percent_off" => round(
-                        ($regularPriceExpensiveVariant - $specialPrice)*100/$regularPriceExpensiveVariant,
+                'discount' => [
+                    'amount_off' => $regularPriceExpensiveVariant - $specialPrice,
+                    'percent_off' => round(
+                        ($regularPriceExpensiveVariant - $specialPrice) * 100 / $regularPriceExpensiveVariant,
                         2
-                    )
-                ]
-            ]
+                    ),
+                ],
+            ],
         ];
         $this->assertPrices($expectedPriceRange, $product['price_range']);
         //configurable product's tier price is empty
@@ -770,30 +771,30 @@ class ProductPriceTest extends GraphQlAbstract
             $this->assertResponseFields(
                 $configurableVariantsInResponse[$key][0]['product']['price_range'],
                 [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => $configurableProductVariants[$key]->getPrice()
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => $configurableProductVariants[$key]->getPrice(),
                     ],
-                    "final_price" => [
-                        "value" => round((float) $configurableProductVariants[$key]->getSpecialPrice(), 2)
+                    'final_price' => [
+                        'value' => round((float) $configurableProductVariants[$key]->getSpecialPrice(), 2),
                     ],
-                    "discount" => [
-                        "amount_off" => round($regularPrice[$key] - $finalPrice[$key], 2),
-                        "percent_off" => round(($regularPrice[$key] - $finalPrice[$key])*100/$regularPrice[$key], 2)
-                    ]
+                    'discount' => [
+                        'amount_off' => round($regularPrice[$key] - $finalPrice[$key], 2),
+                        'percent_off' => round(($regularPrice[$key] - $finalPrice[$key]) * 100 / $regularPrice[$key], 2),
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => $configurableProductVariants[$key]->getPrice()
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => $configurableProductVariants[$key]->getPrice(),
                     ],
-                    "final_price" => [
-                        "value" => round((float) $configurableProductVariants[$key]->getSpecialPrice(), 2)
+                    'final_price' => [
+                        'value' => round((float) $configurableProductVariants[$key]->getSpecialPrice(), 2),
                     ],
-                    "discount" => [
-                        "amount_off" => round($regularPrice[$key] - $finalPrice[$key], 2),
-                        "percent_off" => round(($regularPrice[$key] - $finalPrice[$key])*100/$regularPrice[$key], 2)
-                    ]
-                ]
+                    'discount' => [
+                        'amount_off' => round($regularPrice[$key] - $finalPrice[$key], 2),
+                        'percent_off' => round(($regularPrice[$key] - $finalPrice[$key]) * 100 / $regularPrice[$key], 2),
+                    ],
+                ],
                 ]
             );
 
@@ -801,18 +802,18 @@ class ProductPriceTest extends GraphQlAbstract
                 $configurableVariantsInResponse[$key][0]['product']['price_tiers'],
                 [
                     0 => [
-                        'discount' =>[
+                        'discount' => [
                             'amount_off' => $regularPrice[$key] - $tierPriceData[0]['value'],
                             'percent_off' => round(
                                 (
                                     $regularPrice[$key] - $tierPriceData[0]['value']
-                                    ) * 100/$regularPrice[$key],
+                                ) * 100 / $regularPrice[$key],
                                 2
-                            )
+                            ),
                         ],
-                        'final_price' =>['value'=> $tierPriceData[0]['value']],
-                        'quantity' => 2
-                    ]
+                        'final_price' => ['value' => $tierPriceData[0]['value']],
+                        'quantity' => 2,
+                    ],
                 ]
             );
         }
@@ -835,10 +836,10 @@ class ProductPriceTest extends GraphQlAbstract
         $tierPriceData = [
             [
                 'customer_group_id' => Group::CUST_GROUP_ALL,
-                'percentage_value'=> null,
-                'qty'=> 2,
-                'value'=> 7
-            ]
+                'percentage_value' => null,
+                'qty' => 2,
+                'value' => 7,
+            ],
         ];
         $this->saveProductTierPrices($downloadableProduct, $tierPriceData);
         $skus = ['downloadable-product'];
@@ -852,45 +853,45 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertNotEmpty($product['price_tiers']);
 
         $expectedPriceRange = [
-            "minimum_price" => [
-                "regular_price" => [
-                    "value" => 10
+            'minimum_price' => [
+                'regular_price' => [
+                    'value' => 10,
                 ],
-                "final_price" => [
-                    "value" => 5.75
+                'final_price' => [
+                    'value' => 5.75,
                 ],
-                "discount" => [
-                    "amount_off" => 4.25,
+                'discount' => [
+                    'amount_off' => 4.25,
                     //discount amount over regular price value
-                    "percent_off" => (4.25/10)*100
-                ]
+                    'percent_off' => (4.25 / 10) * 100,
+                ],
             ],
-            "maximum_price" => [
-                "regular_price" => [
-                    "value" => 10
+            'maximum_price' => [
+                'regular_price' => [
+                    'value' => 10,
                 ],
-                "final_price" => [
-                    "value" => 5.75
+                'final_price' => [
+                    'value' => 5.75,
                 ],
-                "discount" => [
-                    "amount_off" => 4.25,
-                    "percent_off" => (4.25/10)*100
-                ]
-            ]
+                'discount' => [
+                    'amount_off' => 4.25,
+                    'percent_off' => (4.25 / 10) * 100,
+                ],
+            ],
         ];
         $this->assertPrices($expectedPriceRange, $product['price_range']);
         $this->assertResponseFields(
             $product['price_tiers'],
             [
                 0 => [
-                    'discount' =>[
+                    'discount' => [
                         //regualr price - tier price value
                          'amount_off' => 3,
-                         'percent_off' => 30
+                         'percent_off' => 30,
                     ],
-                    'final_price' =>['value'=> 7],
-                    'quantity' => 2
-                ]
+                    'final_price' => ['value' => 7],
+                    'quantity' => 2,
+                ],
             ]
         );
     }
@@ -902,7 +903,7 @@ class ProductPriceTest extends GraphQlAbstract
      */
     public function testProductWithCatalogDiscount()
     {
-        $skus = ["virtual-product", "configurable"];
+        $skus = ['virtual-product', 'configurable'];
         $query = $this->getProductQuery($skus);
 
         $result = $this->graphQlQuery($query);
@@ -910,58 +911,58 @@ class ProductPriceTest extends GraphQlAbstract
         $this->assertCount(2, $result['products']['items']);
 
         $expected = [
-            "virtual-product" => [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => 10
+            'virtual-product' => [
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => 10,
                     ],
-                    "final_price" => [
-                        "value" => 9
+                    'final_price' => [
+                        'value' => 9,
                     ],
-                    "discount" => [
-                        "amount_off" => 1,
-                        "percent_off" => 10
-                    ]
+                    'discount' => [
+                        'amount_off' => 1,
+                        'percent_off' => 10,
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => 10
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => 10,
                     ],
-                    "final_price" => [
-                        "value" => 9
+                    'final_price' => [
+                        'value' => 9,
                     ],
-                    "discount" => [
-                        "amount_off" => 1,
-                        "percent_off" => 10
-                    ]
-                ]
+                    'discount' => [
+                        'amount_off' => 1,
+                        'percent_off' => 10,
+                    ],
+                ],
             ],
-            "configurable" => [
-                "minimum_price" => [
-                    "regular_price" => [
-                        "value" => 10
+            'configurable' => [
+                'minimum_price' => [
+                    'regular_price' => [
+                        'value' => 10,
                     ],
-                    "final_price" => [
-                        "value" => 9
+                    'final_price' => [
+                        'value' => 9,
                     ],
-                    "discount" => [
-                        "amount_off" => 1,
-                        "percent_off" => 10
-                    ]
+                    'discount' => [
+                        'amount_off' => 1,
+                        'percent_off' => 10,
+                    ],
                 ],
-                "maximum_price" => [
-                    "regular_price" => [
-                        "value" => 20
+                'maximum_price' => [
+                    'regular_price' => [
+                        'value' => 20,
                     ],
-                    "final_price" => [
-                        "value" => 18
+                    'final_price' => [
+                        'value' => 18,
                     ],
-                    "discount" => [
-                        "amount_off" => 2,
-                        "percent_off" => 10
-                    ]
-                ]
-            ]
+                    'discount' => [
+                        'amount_off' => 2,
+                        'percent_off' => 10,
+                    ],
+                ],
+            ],
         ];
 
         foreach ($result['products']['items'] as $product) {
@@ -1248,12 +1249,12 @@ QUERY;
      */
     private function saveProductTierPrices(ProductInterface $product, array $tierPriceData)
     {
-        $tierPrices =[];
+        $tierPrices = [];
         $tierPriceFactory = $this->objectManager->get(ProductTierPriceInterfaceFactory::class);
         foreach ($tierPriceData as $tierPrice) {
             $tierPrices[] = $tierPriceFactory->create(
                 [
-                'data' => $tierPrice
+                'data' => $tierPrice,
                 ]
             );
             /** ProductInterface $product */
@@ -1341,8 +1342,8 @@ QUERY;
                 'discount' => [
                     'amount_off' => $expected['amount_off'][1],
                     'percent_off' => $expected['percent_off'][1],
-                ]
-            ]
+                ],
+            ],
         ];
         foreach ($productsConfiguration as $fixture => $data) {
             $id = (int) $this->fixtures->get($fixture)->getId();
@@ -1377,48 +1378,48 @@ QUERY;
             [
                 [
                     'p1' => [
-                        'is_in_stock' => false
-                    ]
+                        'is_in_stock' => false,
+                    ],
                 ],
                 [
                     'regular_price' => [18, 18],
                     'final_price' => [12.6, 12.6],
                     'amount_off' => [5.4, 5.4],
                     'percent_off' => [30, 30],
-                ]
+                ],
             ],
             [
                 [
                     'p1' => [
-                        'is_in_stock' => false
+                        'is_in_stock' => false,
                     ],
                     'p2' => [
-                        'status' => Status::STATUS_DISABLED
-                    ]
+                        'status' => Status::STATUS_DISABLED,
+                    ],
                 ],
                 [
                     'regular_price' => [10, 10],
                     'final_price' => [7, 7],
                     'amount_off' => [3, 3],
                     'percent_off' => [30, 30],
-                ]
+                ],
             ],
             [
                 [
                     'p1' => [
-                        'is_in_stock' => false
+                        'is_in_stock' => false,
                     ],
                     'p2' => [
-                        'is_in_stock' => false
-                    ]
+                        'is_in_stock' => false,
+                    ],
                 ],
                 [
                     'regular_price' => [10, 18],
                     'final_price' => [7, 12.6],
                     'amount_off' => [3, 5.4],
                     'percent_off' => [30, 30],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

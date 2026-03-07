@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata\Form;
 
 use Magento\Customer\Model\Metadata\ElementFactory;
@@ -113,10 +116,10 @@ class Multiline extends Text
                 $output = $values;
                 break;
             case ElementFactory::OUTPUT_FORMAT_HTML:
-                $output = implode("<br />", $values);
+                $output = implode('<br />', $values);
                 break;
             case ElementFactory::OUTPUT_FORMAT_ONELINE:
-                $output = implode(" ", $values);
+                $output = implode(' ', $values);
                 break;
             default:
                 $output = implode("\n", $values);

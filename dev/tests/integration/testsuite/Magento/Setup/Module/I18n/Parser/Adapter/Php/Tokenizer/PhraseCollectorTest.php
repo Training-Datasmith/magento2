@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -44,14 +47,14 @@ class PhraseCollectorTest extends \PHPUnit\Framework\TestCase
                 'phrase' => '\'Testing\'',
                 'arguments' => 0,
                 'file' => $file,
-                'line' => 3
+                'line' => 3,
             ],
             [
                 'phrase' => '\'More testing\'',
                 'arguments' => 0,
                 'file' => $file,
-                'line' => 4
-            ]
+                'line' => 4,
+            ],
         ];
         $this->assertEquals($expectation, $this->phraseCollector->getPhrases());
     }

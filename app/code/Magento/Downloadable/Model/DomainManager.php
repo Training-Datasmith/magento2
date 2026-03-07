@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Model;
 
-use Magento\Framework\App\DeploymentConfig\Writer as ConfigWriter;
 use Magento\Downloadable\Api\DomainManagerInterface;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\App\DeploymentConfig\Writer as ConfigWriter;
 use Magento\Framework\Config\File\ConfigFilePool;
 
 /**
@@ -71,8 +72,8 @@ class DomainManager implements DomainManagerInterface
         $this->configWriter->saveConfig(
             [
                 ConfigFilePool::APP_ENV => [
-                    self::PARAM_DOWNLOADABLE_DOMAINS => $whitelist
-                ]
+                    self::PARAM_DOWNLOADABLE_DOMAINS => $whitelist,
+                ],
             ],
             true
         );
@@ -96,8 +97,8 @@ class DomainManager implements DomainManagerInterface
         $this->configWriter->saveConfig(
             [
                 ConfigFilePool::APP_ENV => [
-                    self::PARAM_DOWNLOADABLE_DOMAINS => $whitelist
-                ]
+                    self::PARAM_DOWNLOADABLE_DOMAINS => $whitelist,
+                ],
             ],
             true
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,22 +63,22 @@ class GetFilterTest extends AbstractBackendController
                 'catalog_product',
                 [
                     'export_filter[sku]',
-                    'export_filter[website_ids][]'
-                ]
+                    'export_filter[website_ids][]',
+                ],
             ],
             'advanced_pricing' => [
                 'advanced_pricing',
                 [
                     'export_filter[sku]',
-                    'export_filter[website_ids][]'
-                ]
+                    'export_filter[website_ids][]',
+                ],
             ],
             'customer' => [
                 'customer',
                 [
                     'export_filter[email]',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

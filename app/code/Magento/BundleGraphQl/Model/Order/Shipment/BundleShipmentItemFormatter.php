@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\BundleGraphQl\Model\Order\Shipment;
 use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\ShipmentItemInterface;
-use Magento\SalesGraphQl\Model\Shipment\Item\ShipmentItemFormatter;
 use Magento\SalesGraphQl\Model\Shipment\Item\FormatterInterface;
+use Magento\SalesGraphQl\Model\Shipment\Item\ShipmentItemFormatter;
 
 /**
  * Format Bundle shipment items for GraphQl output

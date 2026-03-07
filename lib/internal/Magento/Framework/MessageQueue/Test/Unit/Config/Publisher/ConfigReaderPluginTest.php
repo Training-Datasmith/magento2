@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,12 +57,12 @@ class ConfigReaderPluginTest extends TestCase
         $binds = [
             [
                 'topic' => 'topic1',
-                'exchange' => 'exchange1'
+                'exchange' => 'exchange1',
             ],
             [
                 'topic' => 'topic2',
-                'exchange' => 'exchange2'
-            ]
+                'exchange' => 'exchange2',
+            ],
         ];
         $finalResult = [
             'topic1' => [
@@ -69,20 +70,20 @@ class ConfigReaderPluginTest extends TestCase
                 'connection' => [
                     'name' => 'connection1',
                     'exchange' => 'exchange1',
-                    'disabled' => false
+                    'disabled' => false,
                 ],
-                'disabled' => false
+                'disabled' => false,
             ],
             'topic2' => [
                 'topic' => 'topic2',
                 'connection' => [
                     'name' => 'connection2',
                     'exchange' => 'exchange2',
-                    'disabled' => false
+                    'disabled' => false,
                 ],
-                'disabled' => false
+                'disabled' => false,
             ],
-            'topic0' => []
+            'topic0' => [],
         ];
 
         $this->configMock->expects(static::atLeastOnce())
@@ -93,7 +94,7 @@ class ConfigReaderPluginTest extends TestCase
             ->willReturnMap(
                 [
                     ['topic1', 'connection1'],
-                    ['topic2', 'connection2']
+                    ['topic2', 'connection2'],
                 ]
             );
 

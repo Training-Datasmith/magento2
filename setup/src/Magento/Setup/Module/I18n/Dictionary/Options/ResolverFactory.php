@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Dictionary\Options;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -15,7 +18,7 @@ class ResolverFactory
     /**
      * Default option resolver class
      */
-    const DEFAULT_RESOLVER = \Magento\Setup\Module\I18n\Dictionary\Options\Resolver::class;
+    public const DEFAULT_RESOLVER = \Magento\Setup\Module\I18n\Dictionary\Options\Resolver::class;
 
     /**
      * @var string

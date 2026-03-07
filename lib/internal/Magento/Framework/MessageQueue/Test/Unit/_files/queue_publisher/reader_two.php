@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ return [
         'topic' => 'top04',
         'connections' => [
             'amqp' => ['name' => 'amqp', 'disabled' => true],
-            'db' => ['name' => 'db', 'exchange' => 'magento2', 'disabled' => false]
-        ]
+            'db' => ['name' => 'db', 'exchange' => 'magento2', 'disabled' => false],
+        ],
     ],
     'top05' => [
         'topic' => 'top05',
@@ -19,7 +20,7 @@ return [
         'connections' => [
             'amqp' => ['name' => 'amqp', 'exchange' => 'exch01', 'disabled' => false],
             'db' => ['name' => 'db', 'exchange' => 'exch02', 'disabled' => true],
-        ]
+        ],
     ],
     'top07' => [
         'topic' => 'top07',
@@ -27,6 +28,6 @@ return [
         'connections' => [
             'amqp' => ['name' => 'amqp', 'exchange' => 'exch01', 'disabled' => true],
             'db' => ['name' => 'db', 'exchange' => 'exch02', 'disabled' => true],
-        ]
+        ],
     ],
 ];

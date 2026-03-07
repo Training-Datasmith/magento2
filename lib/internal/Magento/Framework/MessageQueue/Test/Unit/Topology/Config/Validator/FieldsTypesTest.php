@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\MessageQueue\Test\Unit\Topology\Config\Validator;
 
 use Magento\Framework\MessageQueue\Topology\Config\Validator\FieldsTypes;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FieldsTypesTest extends TestCase
 {
@@ -44,7 +45,7 @@ class FieldsTypesTest extends TestCase
                         'arguments' => ['some' => 'arguments'],
                     ],
                 ],
-            ]
+            ],
         ];
         $this->model->validate($configData);
     }
@@ -90,7 +91,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'name' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'boolean', 'string' was expected."
+                . " Given 'boolean', 'string' was expected.",
             ],
             'type type' => [
                 [
@@ -114,7 +115,7 @@ class FieldsTypesTest extends TestCase
                         ],
                     ],
                 ],
-                "Type of 'type' field specified in configuration of 'ex01' exchange is invalid. Given 'integer"
+                "Type of 'type' field specified in configuration of 'ex01' exchange is invalid. Given 'integer",
             ],
             'invalid type' => [
                 [
@@ -139,7 +140,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Value of 'type' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'some', 'topic' was expected."
+                . " Given 'some', 'topic' was expected.",
             ],
             'type connection' => [
                 [
@@ -164,7 +165,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'connection' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'boolean', 'string' was expected."
+                . " Given 'boolean', 'string' was expected.",
             ],
             'type durable' => [
                 [
@@ -189,7 +190,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'durable' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'integer', 'boolean' was expected."
+                . " Given 'integer', 'boolean' was expected.",
             ],
             'type internal' => [
                 [
@@ -214,7 +215,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'internal' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'NULL', 'boolean' was expected."
+                . " Given 'NULL', 'boolean' was expected.",
             ],
             'type autoDelete' => [
                 [
@@ -239,7 +240,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'autoDelete' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'integer', 'boolean' was expected."
+                . " Given 'integer', 'boolean' was expected.",
             ],
             'type arguments' => [
                 [
@@ -264,7 +265,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'arguments' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'string', 'array' was expected."
+                . " Given 'string', 'array' was expected.",
             ],
             'type bindings' => [
                 [
@@ -280,7 +281,7 @@ class FieldsTypesTest extends TestCase
                     ],
                 ],
                 "Type of 'bindings' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'boolean', 'array' was expected."
+                . " Given 'boolean', 'array' was expected.",
             ],
             'type binding id' => [
                 [
@@ -299,13 +300,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => false,
                                 'topic' => 'topic01',
-                                'arguments' => ['some' => 'arg']
-                            ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
                         ],
                     ],
                 ],
                 "Type of 'id' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'integer', 'string' was expected."
+                . " Given 'integer', 'string' was expected.",
             ],
             'type binding destinationType' => [
                 [
@@ -324,13 +325,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => false,
                                 'topic' => 'topic01',
-                                'arguments' => ['some' => 'arg']
-                            ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
                         ],
                     ],
                 ],
                 "Type of 'destinationType' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'boolean', 'string' was expected."
+                . " Given 'boolean', 'string' was expected.",
             ],
             'invalid binding destinationType' => [
                 [
@@ -349,13 +350,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => false,
                                 'topic' => 'topic01',
-                                'arguments' => ['some' => 'arg']
-                            ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
                         ],
                     ],
                 ],
                 "Value of 'destinationType' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'test', 'queue' was expected."
+                . " Given 'test', 'queue' was expected.",
             ],
             'type binding destination' => [
                 [
@@ -374,13 +375,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => null,
                                 'disabled' => false,
                                 'topic' => 'topic01',
-                                'arguments' => ['some' => 'arg']
-                            ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
                         ],
                     ],
                 ],
                 "Type of 'destination' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'NULL', 'string' was expected."
+                . " Given 'NULL', 'string' was expected.",
             ],
             'type binding disabled' => [
                 [
@@ -399,13 +400,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => 1,
                                 'topic' => 'topic01',
-                                'arguments' => ['some' => 'arg']
-                            ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
                         ],
                     ],
                 ],
                 "Type of 'disabled' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'integer', 'boolean' was expected."
+                . " Given 'integer', 'boolean' was expected.",
             ],
             'type binding topic' => [
                 [
@@ -424,13 +425,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => false,
                                 'topic' => false,
-                                'arguments' => ['some' => 'arg']
-                            ]
-                        ]
+                                'arguments' => ['some' => 'arg'],
+                            ],
+                        ],
                     ],
                 ],
                 "Type of 'topic' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'boolean', 'string' was expected."
+                . " Given 'boolean', 'string' was expected.",
             ],
             'type binding arguments' => [
                 [
@@ -449,13 +450,13 @@ class FieldsTypesTest extends TestCase
                                 'destination' => 'queue01',
                                 'disabled' => false,
                                 'topic' => 'topic01',
-                                'arguments' => 'args'
-                            ]
-                        ]
+                                'arguments' => 'args',
+                            ],
+                        ],
                     ],
                 ],
                 "Type of 'arguments' field specified in configuration of 'ex01' exchange is invalid."
-                . " Given 'string', 'array' was expected."
+                . " Given 'string', 'array' was expected.",
             ],
         ];
     }

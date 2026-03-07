@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AttributeLoaderTest extends TestCase
 {
@@ -57,7 +58,7 @@ class AttributeLoaderTest extends TestCase
             [
                 'attributeRepository' => $this->attributeRepositoryMock,
                 'metadataPool' => $this->metadataPoolMock,
-                'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock
+                'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
             ]
         );
     }
@@ -111,7 +112,7 @@ class AttributeLoaderTest extends TestCase
     {
         return [
             ['entity-type', null, 'neq'],
-            ['entity-type', 1, 'eq']
+            ['entity-type', 1, 'eq'],
         ];
     }
 }

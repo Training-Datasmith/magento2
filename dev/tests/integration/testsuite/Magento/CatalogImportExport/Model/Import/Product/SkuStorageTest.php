@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,7 +12,7 @@ use Magento\CatalogImportExport\Model\ResourceModel\ProductDataLoader;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use PHPUnit\Framework\MockObject\MockObject;
-use \PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class SkuStorageTest extends TestCase
 {
@@ -86,7 +87,7 @@ class SkuStorageTest extends TestCase
             'entity_id' => 8,
             'type_id' => 'bundle',
             'attribute_set_id' => 1,
-            self::LINK_FIELD => 999
+            self::LINK_FIELD => 999,
         ]);
 
         $this->assertEquals([
@@ -143,14 +144,14 @@ class SkuStorageTest extends TestCase
                 'entity_id' => 1,
                 'type_id' => 'simple',
                 'attribute_set_id' => 3,
-                self::LINK_FIELD => 8
+                self::LINK_FIELD => 8,
             ],
             [
                 'sku' => 'SKU-4',
                 'entity_id' => 2,
                 'type_id' => 'configurable',
                 'attribute_set_id' => 5,
-                self::LINK_FIELD => 9
+                self::LINK_FIELD => 9,
             ],
 
             [
@@ -158,7 +159,7 @@ class SkuStorageTest extends TestCase
                 'entity_id' => 3,
                 'type_id' => 'configurable',
                 'attribute_set_id' => 2,
-                self::LINK_FIELD => 11
+                self::LINK_FIELD => 11,
             ],
         ];
     }

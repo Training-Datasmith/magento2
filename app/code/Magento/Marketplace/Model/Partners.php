@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Marketplace\Model;
 
+use Magento\Backend\Model\UrlInterface;
 use Magento\Framework\HTTP\Client\Curl;
 use Magento\Marketplace\Helper\Cache;
-use Magento\Backend\Model\UrlInterface;
 
 /**
  * @api
@@ -72,7 +75,7 @@ class Partners
             $this->getCurlClient()->post($apiUrl, []);
             $this->getCurlClient()->setOptions(
                 [
-                    CURLOPT_REFERER => $this->getReferer()
+                    CURLOPT_REFERER => $this->getReferer(),
                 ]
             );
             $response = json_decode($this->getCurlClient()->getBody(), true);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class PlaceholderTest extends TestCase
             $this->_requestMock,
             [
                 'unsecureBaseUrl' => Store::XML_PATH_UNSECURE_BASE_URL,
-                'secureBaseUrl' => Store::XML_PATH_SECURE_BASE_URL
+                'secureBaseUrl' => Store::XML_PATH_SECURE_BASE_URL,
             ],
             Store::BASE_URL_PLACEHOLDER
         );
@@ -64,10 +65,10 @@ class PlaceholderTest extends TestCase
                 'level2' => [
                     'level3' => [
                         // test that all levels are processed (i.e. implementation is not hardcoded to 3 levels)
-                        'level4' => '{{secure_base_url}}level4'
-                    ]
-                ]
-            ]
+                        'level4' => '{{secure_base_url}}level4',
+                    ],
+                ],
+            ],
         ];
         $expectedResult = $data;
         $expectedResult['web']['unsecure']['base_link_url'] = 'http://localhost/website/de';

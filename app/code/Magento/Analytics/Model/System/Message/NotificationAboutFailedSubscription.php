@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\System\Message;
 
 use Magento\Analytics\Model\SubscriptionStatusProvider;
@@ -14,24 +17,8 @@ use Magento\Framework\UrlInterface;
  */
 class NotificationAboutFailedSubscription implements MessageInterface
 {
-    /**
-     * @var SubscriptionStatusProvider
-     */
-    private $subscriptionStatusProvider;
-
-    /**
-     * @var UrlInterface
-     */
-    private $urlBuilder;
-
-    /**
-     * @param SubscriptionStatusProvider $subscriptionStatusProvider
-     * @param UrlInterface $urlBuilder
-     */
-    public function __construct(SubscriptionStatusProvider $subscriptionStatusProvider, UrlInterface $urlBuilder)
+    public function __construct(private readonly SubscriptionStatusProvider $subscriptionStatusProvider, private readonly UrlInterface $urlBuilder)
     {
-        $this->subscriptionStatusProvider = $subscriptionStatusProvider;
-        $this->urlBuilder = $urlBuilder;
     }
 
     /**
@@ -39,7 +26,7 @@ class NotificationAboutFailedSubscription implements MessageInterface
      *
      * @codeCoverageIgnore
      */
-    public function getIdentity()
+    public function getIdentity(): string
     {
         return hash('sha256', 'ANALYTICS_NOTIFICATION');
     }
@@ -47,7 +34,7 @@ class NotificationAboutFailedSubscription implements MessageInterface
     /**
      * @inheritdoc
      */
-    public function isDisplayed()
+    public function isDisplayed(): bool
     {
         return $this->subscriptionStatusProvider->getStatus() === SubscriptionStatusProvider::FAILED;
     }
@@ -55,15 +42,13 @@ class NotificationAboutFailedSubscription implements MessageInterface
     /**
      * @inheritdoc
      */
-    public function getText()
+    public function getText(): string
     {
         $messageDetails = '';
 
         $messageDetails .= __('Failed to synchronize data to the Magento Business Intelligence service. ');
-        $messageDetails .= '<a href="' . $this->urlBuilder->getUrl('analytics/subscription/retry') . '">'
-            . __('Retry Synchronization') . '</a>';
 
-        return $messageDetails;
+        return $messageDetails . ('<a href="' . $this->urlBuilder->getUrl('analytics/subscription/retry') . '">' . __('Retry Synchronization') . '</a>');
     }
 
     /**
@@ -71,7 +56,7 @@ class NotificationAboutFailedSubscription implements MessageInterface
      *
      * @codeCoverageIgnore
      */
-    public function getSeverity()
+    public function getSeverity(): int
     {
         return self::SEVERITY_MAJOR;
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class InlineEditTest extends TestCase
             Context::class,
             [
                 'request' => $this->request,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
         $this->dataProcessor = $this->createMock(PostDataProcessor::class);
@@ -99,15 +100,15 @@ class InlineEditTest extends TestCase
                 'title' => '404 Not Found',
                 'identifier' => 'no-route',
                 'custom_theme' => '1',
-                'custom_root_template' => '2'
-            ]
+                'custom_root_template' => '2',
+            ],
         ];
         $this->request->expects($this->any())
             ->method('getParam')
             ->willReturnMap(
                 [
                     ['isAjax', null, true],
-                    ['items', [], $postData]
+                    ['items', [], $postData],
                 ]
             );
         $this->pageRepository->expects($this->once())
@@ -137,7 +138,7 @@ class InlineEditTest extends TestCase
             ->willReturn(
                 [
                     'layout' => '1column',
-                    'identifier' => 'test-identifier'
+                    'identifier' => 'test-identifier',
                 ]
             );
         $this->cmsPage->expects($this->once())
@@ -148,7 +149,7 @@ class InlineEditTest extends TestCase
                     'title' => '404 Not Found',
                     'identifier' => 'no-route',
                     'custom_theme' => '1',
-                    'custom_root_template' => '2'
+                    'custom_root_template' => '2',
                 ]
             );
         $this->jsonFactory->expects($this->once())
@@ -169,9 +170,9 @@ class InlineEditTest extends TestCase
                 [
                     'messages' => [
                         '[Page ID: 1] Error message',
-                        '[Page ID: 1] LocalizedException'
+                        '[Page ID: 1] LocalizedException',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -192,9 +193,9 @@ class InlineEditTest extends TestCase
                 [
                     'messages' => [
                         '[Page ID: 1] Error message',
-                        '[Page ID: 1] RuntimeException'
+                        '[Page ID: 1] RuntimeException',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -215,9 +216,9 @@ class InlineEditTest extends TestCase
                 [
                     'messages' => [
                         '[Page ID: 1] Error message',
-                        '[Page ID: 1] Something went wrong while saving the page.'
+                        '[Page ID: 1] Something went wrong while saving the page.',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -235,7 +236,7 @@ class InlineEditTest extends TestCase
             ->willReturnMap(
                 [
                     ['items', [], []],
-                    ['isAjax', null, true]
+                    ['isAjax', null, true],
                 ]
             );
         $this->resultJson->expects($this->once())
@@ -243,9 +244,9 @@ class InlineEditTest extends TestCase
             ->with(
                 [
                     'messages' => [
-                        'Please correct the data sent.'
+                        'Please correct the data sent.',
                     ],
-                    'error' => true
+                    'error' => true,
                 ]
             )
             ->willReturnSelf();
@@ -265,7 +266,7 @@ class InlineEditTest extends TestCase
             'is_active' => '1',
             'sort_order' => '1',
             'custom_theme' => '3',
-            'store_id' => ['0']
+            'store_id' => ['0'],
         ];
         $pageData = [
             'page_id' => '2',
@@ -286,7 +287,7 @@ class InlineEditTest extends TestCase
             'sort_order' => '1',
             'custom_theme' => '3',
             'custom_root_template' => '1column',
-            'store_id' => ['0']
+            'store_id' => ['0'],
         ];
         $mergedData = [
             'page_id' => '2',
@@ -299,7 +300,7 @@ class InlineEditTest extends TestCase
             'sort_order' => '1',
             'custom_theme' => '3',
             'custom_root_template' => '1column',
-            'store_id' => ['0']
+            'store_id' => ['0'],
         ];
         $this->cmsPage->expects($this->once())->method('getData')->willReturn($getData);
         $this->cmsPage->expects($this->once())->method('setData')->with($mergedData)->willReturnSelf();

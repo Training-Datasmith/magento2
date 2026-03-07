@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Config\DataProvider;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ScopeFallbackResolverInterface;
-use Magento\Theme\Api\DesignConfigRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Theme\Api\DesignConfigRepositoryInterface;
 
 class MetadataLoader
 {

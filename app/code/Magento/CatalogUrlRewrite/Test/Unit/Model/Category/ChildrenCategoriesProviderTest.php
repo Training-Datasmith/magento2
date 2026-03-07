@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class ChildrenCategoriesProviderTest extends TestCase
                 'getResource',
                 'getLevel',
                 '__wakeup',
-                'isObjectNew'
+                'isObjectNew',
             ]
         );
         $categoryCollection = $this->createPartialMockWithReflection(
@@ -112,7 +113,7 @@ class ChildrenCategoriesProviderTest extends TestCase
         $categoryLevel = 3;
         $this->select
             ->method('where')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['path LIKE :c_path'] => $this->select,
                 ['level <= :c_level'] => $this->select
             });

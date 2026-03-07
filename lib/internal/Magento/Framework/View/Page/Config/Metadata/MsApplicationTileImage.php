@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class MsApplicationTileImage
     /**#@+
      * Constant of asset name
      */
-    const META_NAME = 'msapplication-TileImage';
+    public const META_NAME = 'msapplication-TileImage';
 
     /**
      * @var AssetRepository

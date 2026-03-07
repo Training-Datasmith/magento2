@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -139,7 +140,7 @@ class ConsumerTest extends TestCase
                 'resource' => $this->resource,
                 'configuration' => $this->configuration,
                 'logger' => $this->logger,
-                'queueRepository' => $this->queueRepository
+                'queueRepository' => $this->queueRepository,
             ]
         );
 

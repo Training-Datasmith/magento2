@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Generator;
 
 use Laminas\Code\Generator\ValueGenerator;
@@ -358,7 +361,7 @@ abstract class EntityAbstract
 
         // Type "?array|string|null" is a union type, and therefore cannot be also marked nullable with the "?" prefix
         if ($parameter->allowsNull() && $typeName !== 'mixed') {
-            $typeName = str_contains($typeName, "null") ? $typeName : '?' . $typeName;
+            $typeName = str_contains($typeName, 'null') ? $typeName : '?' . $typeName;
         }
 
         return $typeName;
@@ -399,7 +402,7 @@ abstract class EntityAbstract
     {
         $parameterInfo = [
             'name' => $parameter->getName(),
-            'passedByReference' => $parameter->isPassedByReference()
+            'passedByReference' => $parameter->isPassedByReference(),
         ];
         if ($parameter->isVariadic()) {
             $parameterInfo['variadic'] = $parameter->isVariadic();

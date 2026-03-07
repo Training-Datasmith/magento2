@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\LayeredNavigation\Block\Navigation\Category\Configurable;
 
+use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
+use Magento\Catalog\Model\Layer\Filter\Item;
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Framework\Module\Manager;
 use Magento\LayeredNavigation\Block\Navigation\AbstractFiltersTest;
-use Magento\Catalog\Model\Layer\Filter\AbstractFilter;
-use Magento\Catalog\Model\Layer\Filter\Item;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\Attributes\DataProvider;
 

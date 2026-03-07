@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -291,7 +292,7 @@ class OptionManagement implements AttributeOptionManagementInterface, AttributeO
     private function retrieveOptionId(
         EavAttributeInterface $attribute,
         AttributeOptionInterface $option
-    ) : string {
+    ): string {
         $label = $option->getLabel() !== null ? trim($option->getLabel()) : '';
         $optionId = $attribute->getSource()->getOptionId($label);
         if ($optionId) {

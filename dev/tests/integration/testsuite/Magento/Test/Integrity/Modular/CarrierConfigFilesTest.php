@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test configuration of Online Shipping carriers
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Test\Integrity\Modular;
 
-use Magento\Framework\Module\Dir;
+namespace Magento\Test\Integrity\Modular;
 
 class CarrierConfigFilesTest extends \PHPUnit\Framework\TestCase
 {

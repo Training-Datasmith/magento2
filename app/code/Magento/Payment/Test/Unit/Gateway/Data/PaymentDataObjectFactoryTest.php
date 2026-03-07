@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class PaymentDataObjectFactoryTest extends TestCase
                 PaymentDataObject::class,
                 [
                     'order' => $orderAdapterMock,
-                    'payment' => $paymentInfoMock
+                    'payment' => $paymentInfoMock,
                 ]
             )->willReturn($this->paymentDataObjectMock);
 
@@ -146,7 +147,7 @@ class PaymentDataObjectFactoryTest extends TestCase
                 PaymentDataObject::class,
                 [
                     'order' => $quoteAdapterMock,
-                    'payment' => $paymentInfoMock
+                    'payment' => $paymentInfoMock,
                 ]
             )->willReturn($this->paymentDataObjectMock);
 

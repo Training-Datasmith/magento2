@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Class to work with HTTP protocol using sockets
  */
+
 namespace Magento\Framework\HTTP\Client;
 
 /**
@@ -171,7 +174,7 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
     public function setCredentials($login, $pass)
     {
         $val = base64_encode("{$login}:{$pass}");
-        $this->addHeader("Authorization", "Basic {$val}");
+        $this->addHeader('Authorization', "Basic {$val}");
     }
 
     /**
@@ -226,7 +229,7 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
      */
     public function get($uri)
     {
-        $this->makeRequest("GET", $this->parseUrl($uri));
+        $this->makeRequest('GET', $this->parseUrl($uri));
     }
 
     /**
@@ -258,7 +261,7 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
             throw new \InvalidArgumentException("Uri doesn't contain path part");
         }
         if (!empty($parts['query'])) {
-            $requestUri .= "?" . $parts['query'];
+            $requestUri .= '?' . $parts['query'];
         }
         return $requestUri;
     }
@@ -272,7 +275,7 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
      */
     public function post($uri, $params)
     {
-        $this->makeRequest("POST", $this->parseUrl($uri), $params);
+        $this->makeRequest('POST', $this->parseUrl($uri), $params);
     }
 
     /**
@@ -307,12 +310,12 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
         }
         $out = [];
         foreach ($this->_responseHeaders['Set-Cookie'] as $row) {
-            $values = explode("; ", $row ?? '');
+            $values = explode('; ', $row ?? '');
             $c = count($values);
             if (!$c) {
                 continue;
             }
-            list($key, $val) = explode("=", $values[0]);
+            list($key, $val) = explode('=', $values[0]);
             if ($val === null) {
                 continue;
             }
@@ -334,12 +337,12 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
         }
         $out = [];
         foreach ($this->_responseHeaders['Set-Cookie'] as $row) {
-            $values = explode("; ", $row ?? '');
+            $values = explode('; ', $row ?? '');
             $c = count($values);
             if (!$c) {
                 continue;
             }
-            list($key, $val) = explode("=", $values[0]);
+            list($key, $val) = explode('=', $values[0]);
             if ($val === null) {
                 continue;
             }
@@ -350,7 +353,7 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
                 continue;
             }
             for ($i = 0; $i < $c; $i++) {
-                list($subkey, $val) = explode("=", $values[$i]);
+                list($subkey, $val) = explode('=', $values[$i]);
                 $out[trim($key)][trim($subkey)] = $val !== null ? trim($val) : '';
             }
         }
@@ -372,13 +375,13 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
                 return;
             }
             $name = $value = '';
-            $out = explode(": ", trim($line), 2);
+            $out = explode(': ', trim($line), 2);
             if (count($out) == 2) {
                 $name = $out[0];
                 $value = $out[1];
             }
             if (!empty($value)) {
-                if ($name == "Set-Cookie") {
+                if ($name == 'Set-Cookie') {
                     if (!isset($this->_responseHeaders[$name])) {
                         $this->_responseHeaders[$name] = [];
                     }
@@ -415,9 +418,9 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
         $response = '';
         $responseLine = trim(fgets($this->_sock, 1024));
 
-        $line = explode(" ", $responseLine, 3);
+        $line = explode(' ', $responseLine, 3);
         if (count($line) != 3) {
-            $this->doError("Invalid response line returned from server: " . $responseLine);
+            $this->doError('Invalid response line returned from server: ' . $responseLine);
         }
         $this->_responseStatus = (int)$line[1];
         $this->processResponseHeaders();
@@ -463,11 +466,11 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
         $errno = $errstr = '';
         $this->_sock = @fsockopen($this->_host, $this->_port, $errno, $errstr, $this->_timeout);
         if (!$this->_sock) {
-            $this->doError(sprintf("[errno: %d] %s", $errno, $errstr));
+            $this->doError(sprintf('[errno: %d] %s', $errno, $errstr));
         }
 
         $crlf = "\r\n";
-        $isPost = $method == "POST";
+        $isPost = $method == 'POST';
 
         $appendHeaders = [];
         $paramsStr = false;
@@ -510,8 +513,8 @@ class Socket implements \Magento\Framework\HTTP\ClientInterface
     protected function headersToString($append = [])
     {
         $headers = [];
-        $headers["Host"] = $this->_host;
-        $headers['Connection'] = "close";
+        $headers['Host'] = $this->_host;
+        $headers['Connection'] = 'close';
         $headers = array_merge($headers, $this->_headers, $append);
         $str = [];
         foreach ($headers as $k => $v) {

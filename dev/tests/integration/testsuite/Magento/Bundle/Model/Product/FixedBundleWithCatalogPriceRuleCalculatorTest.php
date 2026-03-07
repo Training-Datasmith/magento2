@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -63,8 +64,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 99,
 
                     // 110 * 0.9
-                    'maximalPrice' => 99
-                ]
+                    'maximalPrice' => 99,
+                ],
             ],
 
             '
@@ -80,8 +81,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 219,
 
                     // 0.9 * 110 + 1 * 20 + 100
-                    'maximalPrice' => 219
-                ]
+                    'maximalPrice' => 219,
+                ],
             ],
 
             '
@@ -97,8 +98,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 217.8,
 
                     // 0.9 * 110 + 0.9 * 110 * 0.2 + 0.9 * 110 * 1
-                    'maximalPrice' => 217.8
-                ]
+                    'maximalPrice' => 217.8,
+                ],
             ],
 
             '
@@ -114,8 +115,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                    'minimalPrice' => 218,
 
                     // 0.9 * 110 + 1 * 20 + 0.9 * 110 * 1
-                   'maximalPrice' => 218
-                ]
+                   'maximalPrice' => 218,
+                ],
             ],
 
             '
@@ -131,8 +132,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                    'minimalPrice' => 218.8,
 
                     // 0.9 * 110 + 0.9 * 110 * 0.2 + 100
-                   'maximalPrice' => 218.8
-                ]
+                   'maximalPrice' => 218.8,
+                ],
             ],
 
             '
@@ -148,8 +149,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 199,
 
                     // 0.9 * 110 + 2 * 20 + 100
-                    'maximalPrice' => 239
-                ]
+                    'maximalPrice' => 239,
+                ],
             ],
 
             '
@@ -165,8 +166,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 198,
 
                     // 0.9 * 110 + 2 * 0.9 * 110 * 0.2 + 1 * 0.9 * 110
-                    'maximalPrice' => 237.6
-                ]
+                    'maximalPrice' => 237.6,
+                ],
             ],
 
             '
@@ -182,8 +183,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 198,
 
                     // 0.9 * 110 + 2 * 20 + 1 * 0.9 * 110
-                    'maximalPrice' => 238
-                ]
+                    'maximalPrice' => 238,
+                ],
             ],
 
             '
@@ -199,8 +200,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 199,
 
                     // 0.9 * 110 + 2 * 0.2 * 0.9 *  110 + 100
-                    'maximalPrice' => 238.6
-                ]
+                    'maximalPrice' => 238.6,
+                ],
             ],
 
             '
@@ -216,8 +217,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 229,
 
                     // 0.9 * 110 + 3 * 10 + 1 * 40 + 100
-                    'maximalPrice' => 269
-                ]
+                    'maximalPrice' => 269,
+                ],
             ],
 
             '
@@ -233,8 +234,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 227.7,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.1 + 1 * 0.9 * 110 * 0.4 + 0.9 * 110 * 1
-                    'maximalPrice' => 267.3
-                ]
+                    'maximalPrice' => 267.3,
+                ],
             ],
 
             '
@@ -250,8 +251,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 228,
 
                     // 0.9 * 110 + 3 * 10 + 1 * 40 + 1 * 0.9 * 110
-                    'maximalPrice' => 268
-                ]
+                    'maximalPrice' => 268,
+                ],
             ],
 
             '
@@ -267,8 +268,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 228.7,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.1 + 1 * 0.9 * 110 * 0.4 + 100
-                    'maximalPrice' => 268.3
-                ]
+                    'maximalPrice' => 268.3,
+                ],
             ],
 
             '
@@ -284,8 +285,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 239,
 
                     // 0.9 * 110 + 1 * 40 + 3 * 15 + 100
-                    'maximalPrice' => 284
-                ]
+                    'maximalPrice' => 284,
+                ],
             ],
 
             '
@@ -301,8 +302,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 237.6,
 
                     // 0.9 * 110 + 1 * 0.9 * 110 * 0.4 + 3 * 0.9 * 110 * 0.15 + 0.9 * 110 * 1
-                    'maximalPrice' => 282.15
-                ]
+                    'maximalPrice' => 282.15,
+                ],
             ],
 
             '
@@ -318,8 +319,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 238,
 
                     // 0.9 * 110 + 1 * 40 + 3 * 15 + 1 * 0.9 * 110
-                    'maximalPrice' => 283
-                ]
+                    'maximalPrice' => 283,
+                ],
             ],
 
             '
@@ -335,8 +336,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 238.6,
 
                     // 0.9 * 110 + 1 * 0.9 * 110 * 0.4 + 3 * 0.9 * 110 * 0.15 + 100
-                    'maximalPrice' => 283.15
-                ]
+                    'maximalPrice' => 283.15,
+                ],
             ],
 
             '
@@ -352,8 +353,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 239,
 
                     // 0.9 * 110 + 3 * 15 + 100
-                    'maximalPrice' => 244
-                ]
+                    'maximalPrice' => 244,
+                ],
             ],
 
             '
@@ -369,8 +370,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 237.6,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.15 + 1 * 0.9 * 110
-                    'maximalPrice' => 242.55
-                ]
+                    'maximalPrice' => 242.55,
+                ],
             ],
 
             '
@@ -386,8 +387,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 238,
 
                     // 0.9 * 110 + 3 * 15 + 0.9 * 110 * 1
-                    'maximalPrice' => 243
-                ]
+                    'maximalPrice' => 243,
+                ],
             ],
 
             '
@@ -403,8 +404,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 238.6,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.15 + 100
-                    'maximalPrice' => 243.55
-                ]
+                    'maximalPrice' => 243.55,
+                ],
             ],
 
             '
@@ -420,8 +421,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 259,
 
                     // 0.9 * 110 + 3 * 15 + 1 * 20 + 3 * 10 + 100
-                    'maximalPrice' => 294
-                ]
+                    'maximalPrice' => 294,
+                ],
             ],
 
             '
@@ -437,8 +438,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 257.4,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.15 + 1 * 0.9 * 110 * 0.2 + 3 * 0.9 * 110 * 0.1 + 0.9 * 110 * 1
-                    'maximalPrice' => 292.05
-                ]
+                    'maximalPrice' => 292.05,
+                ],
             ],
 
             '
@@ -454,8 +455,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 258,
 
                     // 0.9 * 110 + 3 * 15 + 1 * 20 + 3 * 10 + 1 * 0.9 * 110
-                    'maximalPrice' => 293
-                ]
+                    'maximalPrice' => 293,
+                ],
             ],
 
             '
@@ -471,8 +472,8 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                     'minimalPrice' => 258.4,
 
                     // 0.9 * 110 + 3 * 0.9 * 110 * 0.15 + 1 * 0.9 * 110 * 0.2 + 3 * 0.9 * 110 * 0.1 + 100
-                    'maximalPrice' => 293.05
-                ]
+                    'maximalPrice' => 293.05,
+                ],
             ],
         ];
     }
@@ -504,10 +505,10 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 20,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -518,17 +519,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -551,10 +552,10 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'price' => 20,
                         'qty' => 2,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -565,17 +566,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -598,16 +599,16 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 10,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -618,17 +619,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -651,16 +652,16 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -671,17 +672,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -704,16 +705,16 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -724,17 +725,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }
@@ -757,15 +758,15 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 40,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 15,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -776,16 +777,16 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 20,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
                     [
                         'sku' => 'simple2',
                         'price' => 10,
                         'qty' => 3,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $customOptionsData = [
@@ -796,17 +797,17 @@ class FixedBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }

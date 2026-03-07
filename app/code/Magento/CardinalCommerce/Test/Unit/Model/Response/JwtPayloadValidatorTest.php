@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\CardinalCommerce\Test\Unit\Model\Response;
 use DateTimeZone;
 use Magento\CardinalCommerce\Model\Response\JwtPayloadValidator;
 use Magento\Framework\Intl\DateTimeFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JwtPayloadValidatorTest extends TestCase
 {
@@ -168,10 +169,10 @@ class JwtPayloadValidatorTest extends TestCase
                         ],
                     ],
                     'ActionCode' => $actionCode,
-                    'ErrorNumber' => $errorNumber
+                    'ErrorNumber' => $errorNumber,
                 ],
-                'exp' => $expTimestamp
-            ]
+                'exp' => $expTimestamp,
+            ],
         ];
     }
 

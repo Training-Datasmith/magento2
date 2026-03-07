@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class InvoiceEmailSenderHandlerTest extends TestCase
         $this->assertEquals($message->getSubject(), $subject);
         $this->assertStringContainsString(
             sprintf(
-                "Your Invoice #%s for Order #%s",
+                'Your Invoice #%s for Order #%s',
                 $invoice->getIncrementId(),
                 $invoice->getOrder()->getIncrementId()
             ),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class CouponTest extends TestCase
             \Magento\SalesRule\Model\Coupon::class,
             [
                 'resource' => $this->resourceMock,
-                'context' => $context
+                'context' => $context,
             ]
         );
     }

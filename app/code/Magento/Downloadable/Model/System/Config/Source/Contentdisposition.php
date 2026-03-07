@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\System\Config\Source;
 
 /**
@@ -19,7 +22,7 @@ class Contentdisposition implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 'attachment', 'label' => __('attachment')],
-            ['value' => 'inline', 'label' => __('inline')]
+            ['value' => 'inline', 'label' => __('inline')],
         ];
     }
 }

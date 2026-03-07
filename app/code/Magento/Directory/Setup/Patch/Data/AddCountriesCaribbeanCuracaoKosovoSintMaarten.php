@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class AddCountriesCaribbeanCuracaoKosovoSintMaarten implements DataPatchInterfac
     public static function getDependencies()
     {
         return [
-            InitializeDirectoryData::class
+            InitializeDirectoryData::class,
         ];
     }
 

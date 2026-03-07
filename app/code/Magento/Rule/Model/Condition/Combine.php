@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Rule\Model\Condition;
 
 /**
@@ -112,7 +115,7 @@ class Combine extends AbstractCondition
                 'values' => $this->getAggregatorSelectOptions(),
                 'value' => $this->getAggregator(),
                 'value_name' => $this->getAggregatorName(),
-                'data-form-part' => $this->getFormName()
+                'data-form-part' => $this->getFormName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Editable::class)
@@ -205,12 +208,12 @@ class Combine extends AbstractCondition
      */
     public function asXml($containerKey = 'conditions', $itemKey = 'condition')
     {
-        $xml = "<aggregator>" .
+        $xml = '<aggregator>' .
             $this->getAggregator() .
-            "</aggregator>" .
-            "<value>" .
+            '</aggregator>' .
+            '<value>' .
             $this->getValue() .
-            "</value>" .
+            '</value>' .
             "<{$containerKey}>";
         foreach ($this->getConditions() as $condition) {
             $xml .= "<{$itemKey}>" . $condition->asXml() . "</{$itemKey}>";
@@ -337,7 +340,7 @@ class Combine extends AbstractCondition
                 'name' => $this->elementName . '[' . $this->getPrefix() . '][' . $this->getId() . '][new_child]',
                 'values' => $this->getNewChildSelectOptions(),
                 'value_name' => $this->getNewChildName(),
-                'data-form-part' => $this->getFormName()
+                'data-form-part' => $this->getFormName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Newchild::class)
@@ -373,7 +376,7 @@ class Combine extends AbstractCondition
      */
     public function asString($format = '')
     {
-        $str = __("If %1 of these conditions are %2:", $this->getAggregatorName(), $this->getValueName());
+        $str = __('If %1 of these conditions are %2:', $this->getAggregatorName(), $this->getValueName());
         return $str;
     }
 

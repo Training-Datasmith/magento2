@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\App\ResourceConnection;
 
 class ConfigurableMaxPriceCalculator
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class SaveTest extends TestCase
             ->setConstructorArgs([
                 $this->contextMock,
                 $registryMock,
-                $this->userFactoryMock
+                $this->userFactoryMock,
             ])
             ->onlyMethods(['redirectToEdit'])
             ->getMock();

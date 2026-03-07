@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\App\DeploymentConfig\Writer;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Filesystem;
-use Magento\Framework\MessageQueue\Config;
 use Magento\Framework\MessageQueue\Config\Data;
 use Magento\Framework\MessageQueue\Config\Reader\Xml;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -67,14 +67,14 @@ class ConfigGetConsumersTest extends TestCase
         $configData = $this->objectManager->create(
             Data::class,
             [
-                'cacheId' => uniqid(microtime())
+                'cacheId' => uniqid(microtime()),
             ]
         );
 
         $this->configSubject = $this->objectManager->create(
             Config::class,
             [
-                'queueConfigData' => $configData
+                'queueConfigData' => $configData,
             ]
         );
     }
@@ -120,9 +120,9 @@ class ConfigGetConsumersTest extends TestCase
                     'user' => 'guest',
                     'password' => 'guest',
                     'virtualhost' => '/',
-                    'ssl' => ''
+                    'ssl' => '',
                 ],
-                'consumers' => $consumers
+                'consumers' => $consumers,
             ],
         ];
     }

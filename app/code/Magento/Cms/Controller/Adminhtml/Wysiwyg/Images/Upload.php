@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class Upload extends \Magento\Cms\Controller\Adminhtml\Wysiwyg\Images implements
                 'type' => $uploaded['type'],
                 'error' => $uploaded['error'],
                 'size' => $uploaded['size'],
-                'file' => $uploaded['file']
+                'file' => $uploaded['file'],
             ];
         } catch (\Exception $e) {
             $response = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];

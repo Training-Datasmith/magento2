@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,10 +16,10 @@ namespace Magento\ImportExport\Model\Import\ErrorProcessing;
  */
 class ProcessingError
 {
-    const ERROR_LEVEL_CRITICAL = 'critical';
-    const ERROR_LEVEL_NOT_CRITICAL = 'not-critical';
-    const ERROR_LEVEL_WARNING = 'warning';
-    const ERROR_LEVEL_NOTICE = 'notice';
+    public const ERROR_LEVEL_CRITICAL = 'critical';
+    public const ERROR_LEVEL_NOT_CRITICAL = 'not-critical';
+    public const ERROR_LEVEL_WARNING = 'warning';
+    public const ERROR_LEVEL_NOTICE = 'notice';
 
     /**
      * @var string

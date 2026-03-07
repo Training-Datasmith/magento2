@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -57,11 +58,11 @@ class LinkTest extends TestCase
         $websiteIds = [1,2];
         $productId = 1;
         $this->dbSelect->expects($this->once())
-            ->method("from")
+            ->method('from')
             ->with('catalog_product_website', 'website_id')
             ->willReturn($this->dbSelect);
         $this->dbSelect->expects($this->once())
-            ->method("where")
+            ->method('where')
             ->with('product_id = ?', (int) $productId);
         $this->connection->expects($this->once())
             ->method('fetchCol')
@@ -80,11 +81,11 @@ class LinkTest extends TestCase
             ->method('getId')
             ->willReturn($productId);
         $this->dbSelect->expects($this->once())
-            ->method("from")
+            ->method('from')
             ->with('catalog_product_website', 'website_id')
             ->willReturn($this->dbSelect);
         $this->dbSelect->expects($this->once())
-            ->method("where")
+            ->method('where')
             ->with('product_id = ?', (int) $productId);
         $this->connection->expects($this->once())
             ->method('fetchCol')
@@ -93,7 +94,7 @@ class LinkTest extends TestCase
         $this->connection->expects($this->once())
             ->method('insertMultiple')
             ->with('catalog_product_website', [
-                ['product_id' => $productId, 'website_id' => 3]
+                ['product_id' => $productId, 'website_id' => 3],
             ]);
 
         $this->connection->expects($this->once())

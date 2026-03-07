@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,8 +14,6 @@ $cancelUrl = $url->getUrl('paypal/express/cancel/');
 $successUrl = $url->getUrl('checkout/onepage/success/');
 $returnUrl = $url->getUrl('paypal/express/return/');
 $pendingUrl = $url->getUrl('checkout/onepage/pending/');
-
-
 
 return [
         'PAYMENTACTION' => 'Authorization',
@@ -57,5 +56,5 @@ return [
         'SHIPTOSTREET2' => '',
         'STREET2' => '',
         'SHIPTONAME' => 'John Smith',
-        'ADDROVERRIDE' => 1
+        'ADDROVERRIDE' => 1,
 ];

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Sales\Order;
 
 /**
@@ -24,12 +27,12 @@ class Tax extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_CODE        = 'code';
-    const KEY_TITLE       = 'title';
-    const KEY_PERCENT     = 'percent';
-    const KEY_AMOUNT      = 'amount';
-    const KEY_BASE_AMOUNT = 'base_amount';
-    const KEY_RATES       = 'rates';
+    public const KEY_CODE        = 'code';
+    public const KEY_TITLE       = 'title';
+    public const KEY_PERCENT     = 'percent';
+    public const KEY_AMOUNT      = 'amount';
+    public const KEY_BASE_AMOUNT = 'base_amount';
+    public const KEY_RATES       = 'rates';
     /**#@-*/
 
     /**

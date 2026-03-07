@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,12 +10,10 @@ declare(strict_types=1);
 namespace Magento\Cms\Model\Page;
 
 use Magento\Cms\Model\Page;
-use Magento\Cms\Model\PageFactory;
 use Magento\Cms\Model\Page\CustomLayout\Data\CustomLayoutSelected;
+use Magento\Cms\Model\PageFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\View\Model\Layout\Merge;
-use Magento\Framework\View\Model\Layout\MergeFactory;
 use Magento\TestFramework\Cms\Model\CustomLayoutManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -55,8 +54,8 @@ class CustomLayoutRepositoryTest extends TestCase
         $objectManager->configure([
             'preferences' => [
                 \Magento\Cms\Model\Page\CustomLayoutManagerInterface::class =>
-                    \Magento\TestFramework\Cms\Model\CustomLayoutManager::class
-            ]
+                    \Magento\TestFramework\Cms\Model\CustomLayoutManager::class,
+            ],
         ]);
         $this->fakeManager = $objectManager->get(CustomLayoutManager::class);
         $this->repo = $objectManager->create(CustomLayoutRepositoryInterface::class, ['manager' => $this->fakeManager]);

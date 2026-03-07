@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Test\Annotation;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Annotation\ConfigFixture;
+use Magento\TestFramework\Annotation\TestCaseAnnotation;
 use Magento\TestFramework\App\MutableScopeConfig;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Annotation\TestCaseAnnotation;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -62,7 +63,7 @@ class ConfigFixtureTest extends TestCase
                 'getScopeConfig',
                 'getMutableScopeConfig',
                 'setScopeConfigValue',
-                'getScopeConfigValue'
+                'getScopeConfigValue',
             ]
         );
         $this->object->method('getMutableScopeConfig')

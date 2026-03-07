@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\OrderCancellationGraphQl\Plugin\Model;
 
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\OrderCancellation\Model\CancelOrder as Subject;
 use Magento\OrderCancellationGraphQl\Model\Validator\ValidateOrderCancellationReason;
 use Magento\Sales\Model\Order;
-use Magento\OrderCancellation\Model\CancelOrder as Subject;
 
 /**
  * Plugin for cancel order model

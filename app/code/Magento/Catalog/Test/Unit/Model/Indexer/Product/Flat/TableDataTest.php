@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Flat;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Product\Flat\TableData;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -98,7 +99,7 @@ class TableDataTest extends TestCase
                 'flat_tmp',
                 [
                     ['oldName' => 'flat_table', 'newName' => 'flat_table_to_drop'],
-                    ['oldName' => 'flat_tmp', 'newName' => 'flat_table']
+                    ['oldName' => 'flat_tmp', 'newName' => 'flat_table'],
                 ],
             ],
             [
@@ -106,8 +107,8 @@ class TableDataTest extends TestCase
                 false,
                 'flat_table_to_drop',
                 'flat_tmp',
-                [['oldName' => 'flat_tmp', 'newName' => 'flat_table']]
-            ]
+                [['oldName' => 'flat_tmp', 'newName' => 'flat_table']],
+            ],
         ];
     }
 }

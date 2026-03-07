@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Backend\Block\Widget\Grid\Massaction\Extended
  */
+
 namespace Magento\Backend\Test\Unit\Block\Widget\Grid\Massaction;
 
 use Magento\Backend\Block\Widget\Grid;
@@ -18,8 +20,8 @@ use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -67,7 +69,7 @@ class ExtendedTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
-        
+
         $this->_gridMock = $this->createPartialMock(
             Grid::class,
             ['getId', 'getCollection']
@@ -112,12 +114,12 @@ class ExtendedTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 

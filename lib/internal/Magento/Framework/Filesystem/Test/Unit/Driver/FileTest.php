@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filesystem\Test\Unit\Driver;
 
 use Magento\Framework\Filesystem\Driver\File;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase
 {
@@ -54,7 +55,7 @@ class FileTest extends TestCase
             ['/root/path/', '../sub', '/root/path/../sub'],
             ['/root/path/', '/root/path/sub', '/root/path/sub'],
             ['', '', ''],
-            ['0', '0', '0']
+            ['0', '0', '0'],
         ];
     }
 
@@ -84,7 +85,7 @@ class FileTest extends TestCase
             ['/root/path/', '/root/path/sub', 'sub'],
             ['/root/path/sub', '/root/path/other', '/root/path/other'],
             ['/root/path/', '', ''],
-            ['0', '0', '']
+            ['0', '0', ''],
         ];
     }
 
@@ -121,7 +122,7 @@ class FileTest extends TestCase
             ['1/2/.//.\3/4/..\..\5', '1/2/5'],
             ['\./.test', '/.test'],
             ['\\1/\\\.\..test', '/1/..test'],
-            ['/1/2\\3\\\.', '/1/2/3']
+            ['/1/2\\3\\\.', '/1/2/3'],
         ];
     }
 }

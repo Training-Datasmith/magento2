@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class QueryFactoryTest extends TestCase
                 'queryHelper' => $this->queryHelper,
                 'context' => $context,
                 'string' => $this->string,
-                'objectManager' => $this->objectManager
+                'objectManager' => $this->objectManager,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class AddDataForPortugal implements DataPatchInterface
             ['PT', 'PT-17', 'Vila Real'],
             ['PT', 'PT-18', 'Viseu'],
             ['PT', 'PT-20', 'Região Autónoma dos Açores'],
-            ['PT', 'PT-30', 'Região Autónoma da Madeira']
+            ['PT', 'PT-30', 'Região Autónoma da Madeira'],
         ];
     }
 

@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Observer\Backend;
 
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\Config\Share as ShareConfig;
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class CustomerQuote

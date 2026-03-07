@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block\User\Edit\Tab;
 
 use Magento\Backend\Block\Widget\Grid\Column;
@@ -124,7 +127,7 @@ class Roles extends \Magento\Backend\Block\Widget\Grid\Extended
                 'html_name' => 'roles[]',
                 'values' => $this->getSelectedRoles(),
                 'align' => 'center',
-                'index' => 'role_id'
+                'index' => 'role_id',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class ConfigOptionsListTest extends TestCase
                 ConfigOptionsList::CONFIG_PATH_QUEUE_STOMP_SSL_OPTIONS,
                 'Stomp SSL Options (JSON)',
                 ConfigOptionsList::DEFAULT_STOMP_SSL
-            )
+            ),
         ];
         $this->assertEquals($expectedOptions, $this->model->getOptions());
     }
@@ -191,8 +192,8 @@ class ConfigOptionsListTest extends TestCase
                     'password' => 'password',
                     'ssl' => 'ssl',
                     'ssl_options' => ['ssl_option' => 'test'],
-                ]
-                ]
+                ],
+                ],
                 ],
             ],
             [
@@ -211,8 +212,8 @@ class ConfigOptionsListTest extends TestCase
                     'password' => 'password',
                     'ssl' => 'ssl',
                     'ssl_options' => ['ssl_option' => 'test'],
-                ]
-                ]
+                ],
+                ],
                 ],
             ],
             [
@@ -221,7 +222,7 @@ class ConfigOptionsListTest extends TestCase
                     ConfigOptionsList::INPUT_KEY_QUEUE_STOMP_PORT => ConfigOptionsList::DEFAULT_STOMP_PORT,
                     ConfigOptionsList::INPUT_KEY_QUEUE_STOMP_USER => ConfigOptionsList::DEFAULT_STOMP_USER,
                     ConfigOptionsList::INPUT_KEY_QUEUE_STOMP_PASSWORD => ConfigOptionsList::DEFAULT_STOMP_PASSWORD,
-                    ConfigOptionsList::INPUT_KEY_QUEUE_STOMP_SSL => ConfigOptionsList::DEFAULT_STOMP_SSL
+                    ConfigOptionsList::INPUT_KEY_QUEUE_STOMP_SSL => ConfigOptionsList::DEFAULT_STOMP_SSL,
                 ],
                 [],
             ],

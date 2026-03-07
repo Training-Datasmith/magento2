@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('out-of-stock-product')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')

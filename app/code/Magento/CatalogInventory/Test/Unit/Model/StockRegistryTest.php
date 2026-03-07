@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class StockRegistryTest extends TestCase
         $this->model = $objectManager->getObject(
             StockRegistry::class,
             [
-                'criteriaFactory' => $criteriaFactory
+                'criteriaFactory' => $criteriaFactory,
             ]
         );
     }

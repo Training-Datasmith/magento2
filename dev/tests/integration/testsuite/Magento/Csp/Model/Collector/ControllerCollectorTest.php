@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ControllerCollectorTest extends TestCase
      */
     public function testCollect(): void
     {
-        $controller = new class implements CspAwareActionInterface {
+        $controller = new class () implements CspAwareActionInterface {
             /**
              * @inheritDoc
              */

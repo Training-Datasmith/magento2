@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,22 +15,22 @@ namespace Magento\Framework\MessageQueue;
  */
 interface ConsumerConfigurationInterface
 {
-    const CONSUMER_NAME = "consumer_name";
+    public const CONSUMER_NAME = 'consumer_name';
 
-    const QUEUE_NAME = "queue_name";
-    const MAX_MESSAGES = "max_messages";
-    const SCHEMA_TYPE = "schema_type";
-    const TOPICS = 'topics';
-    const TOPIC_TYPE = 'consumer_type';
-    const TOPIC_HANDLERS = 'handlers';
-    const MAX_IDLE_TIME = 'max_idle_time';
-    const SLEEP = 'sleep';
-    const ONLY_SPAWN_WHEN_MESSAGE_AVAILABLE = 'only_spawn_when_message_available';
+    public const QUEUE_NAME = 'queue_name';
+    public const MAX_MESSAGES = 'max_messages';
+    public const SCHEMA_TYPE = 'schema_type';
+    public const TOPICS = 'topics';
+    public const TOPIC_TYPE = 'consumer_type';
+    public const TOPIC_HANDLERS = 'handlers';
+    public const MAX_IDLE_TIME = 'max_idle_time';
+    public const SLEEP = 'sleep';
+    public const ONLY_SPAWN_WHEN_MESSAGE_AVAILABLE = 'only_spawn_when_message_available';
 
-    const TYPE_SYNC = 'sync';
-    const TYPE_ASYNC = 'async';
-    const INSTANCE_TYPE_BATCH = 'batch';
-    const INSTANCE_TYPE_SINGULAR = 'singular';
+    public const TYPE_SYNC = 'sync';
+    public const TYPE_ASYNC = 'async';
+    public const INSTANCE_TYPE_BATCH = 'batch';
+    public const INSTANCE_TYPE_SINGULAR = 'singular';
 
     /**
      * Get consumer name.

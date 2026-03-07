@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class RowsTest extends TestCase
                 'productHelper' => $this->_productIndexerHelper,
                 'flatItemEraser' => $this->_flatItemEraser,
                 'flatItemWriter' => $this->_flatItemWriter,
-                'flatTableBuilder' => $this->_flatTableBuilder
+                'flatTableBuilder' => $this->_flatTableBuilder,
             ]
         );
     }

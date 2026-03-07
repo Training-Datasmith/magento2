@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class ReaderTest extends \PHPUnit\Framework\TestCase
      *
      * @string
      */
-    const CONFIG = '/dev/tests/integration/testsuite/Magento/Config/Model/Config/Structure/Reader/_files/';
+    public const CONFIG = '/dev/tests/integration/testsuite/Magento/Config/Model/Config/Structure/Reader/_files/';
 
     /**
      * @var ObjectManagerInterface
@@ -104,7 +105,7 @@ class ReaderTest extends \PHPUnit\Framework\TestCase
                 'validationState' => $this->validationStateMock,
                 'fileName' => 'no_existing_file.xml',
                 'compiler' => $this->compiler,
-                'domDocumentClass' => Dom::class
+                'domDocumentClass' => Dom::class,
             ]
         );
     }

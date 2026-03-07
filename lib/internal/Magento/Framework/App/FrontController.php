@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
 use Magento\Framework\App\Action\AbstractAction;
@@ -194,7 +197,7 @@ class FrontController implements FrontControllerInterface
                 //Validation failed - processing validation results.
                 $this->logger->debug(
                     sprintf('Request validation failed for action "%s"', get_class($actionInstance)),
-                    ["exception" => $exception]
+                    ['exception' => $exception]
                 );
                 $result = $exception->getReplaceResult();
                 if ($messages = $exception->getMessages()) {

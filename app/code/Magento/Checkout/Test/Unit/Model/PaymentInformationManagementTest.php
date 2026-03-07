@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Checkout\Test\Unit\Model;
 use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
 use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
 use Magento\Checkout\Api\PaymentSavingRateLimiterInterface;
-use Magento\Checkout\Model\PaymentInformationManagement;
-use Magento\Checkout\Model\PaymentDetailsFactory;
 use Magento\Checkout\Model\AddressComparatorInterface;
+use Magento\Checkout\Model\PaymentDetailsFactory;
+use Magento\Checkout\Model\PaymentInformationManagement;
+use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface as CustomerAddressInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 use Magento\Quote\Api\BillingAddressManagementInterface;
@@ -28,10 +29,10 @@ use Magento\Quote\Api\PaymentMethodManagementInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\Rate;
+use Magento\Quote\Model\QuoteAddressValidationService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Quote\Model\QuoteAddressValidationService;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

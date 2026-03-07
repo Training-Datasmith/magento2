@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,13 +22,13 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config as PageConfig;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for Edit controller
@@ -36,7 +37,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
  */
 class EditTest extends TestCase
 {
-
     use MockCreationTrait;
     /**
      * @var Edit
@@ -139,7 +139,7 @@ class EditTest extends TestCase
                 'context' => $this->contextMock,
                 'coreRegistry' => $this->registryMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
-                'attributeSetRepository' => $this->attributeSetRepositoryMock
+                'attributeSetRepository' => $this->attributeSetRepositoryMock,
             ]
         );
     }
@@ -154,7 +154,7 @@ class EditTest extends TestCase
         // Create a mock for ObjectManager singleton
         $objectManagerMock = $this->createMock(ObjectManagerInterface::class);
         $attributeSetRepositoryMock = $this->createMock(AttributeSetRepositoryInterface::class);
-        
+
         $objectManagerMock->expects($this->once())
             ->method('get')
             ->with(AttributeSetRepositoryInterface::class)
@@ -199,7 +199,7 @@ class EditTest extends TestCase
                 'setEntityTypeId',
                 'getExtensionAttributes',
                 'setExtensionAttributes',
-                'getId'
+                'getId',
             ]
         );
         $attributeSetMock->expects($this->any())
@@ -331,7 +331,7 @@ class EditTest extends TestCase
                 'setEntityTypeId',
                 'getExtensionAttributes',
                 'setExtensionAttributes',
-                'getId'
+                'getId',
             ]
         );
         $attributeSetMock->expects($this->any())

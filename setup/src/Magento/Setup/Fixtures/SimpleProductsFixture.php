@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -154,7 +155,7 @@ class SimpleProductsFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'simple_products' => 'Simple products'
+            'simple_products' => 'Simple products',
         ];
     }
 
@@ -267,7 +268,7 @@ class SimpleProductsFixture extends Fixture
             'additional_attributes' => $additionalAttributes,
             'status' => function () {
                 return Status::STATUS_ENABLED;
-            }
+            },
         ];
         $this->productGenerator->generate($simpleProductsCount, $fixtureMap);
     }

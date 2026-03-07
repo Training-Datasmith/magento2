@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Downloadable\Model\Product\Type as DownloadableProductType;
@@ -19,6 +19,7 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -62,7 +63,7 @@ class SetHasDownloadableProductsObserverTest extends TestCase
         $this->setHasDownloadableProductsObserver = $this->objectManager->getObject(
             SetHasDownloadableProductsObserver::class,
             [
-                'checkoutSession' => $this->checkoutSessionMock
+                'checkoutSession' => $this->checkoutSessionMock,
             ]
         );
     }
@@ -149,30 +150,30 @@ class SetHasDownloadableProductsObserverTest extends TestCase
                     [
                         DownloadableProductType::TYPE_DOWNLOADABLE,
                         DownloadableProductType::TYPE_DOWNLOADABLE,
-                        '1'
+                        '1',
                     ],
                     [
                         ProductType::TYPE_SIMPLE,
                         ProductType::TYPE_SIMPLE,
-                        '1'
-                    ]
+                        '1',
+                    ],
                 ],
-                'once'
+                'once',
             ],
             'Order has all items are simple product' => [
                 [
                     [
                         ProductType::TYPE_SIMPLE,
                         ProductType::TYPE_SIMPLE,
-                        '0'
+                        '0',
                     ],
                     [
                         ProductType::TYPE_SIMPLE,
                         ProductType::TYPE_SIMPLE,
-                        '0'
-                    ]
+                        '0',
+                    ],
                 ],
-                'never'
+                'never',
             ],
         ];
     }

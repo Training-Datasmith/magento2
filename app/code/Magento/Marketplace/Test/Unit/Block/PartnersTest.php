@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class PartnersTest extends TestCase
     {
         $this->partnersBlockMock = $this->getPartnersBlockMock(
             [
-                'getPartnersModel'
+                'getPartnersModel',
             ]
         );
     }

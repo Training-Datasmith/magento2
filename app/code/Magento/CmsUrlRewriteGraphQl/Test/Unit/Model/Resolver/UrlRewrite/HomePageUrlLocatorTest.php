@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\CmsUrlRewriteGraphQl\Test\Unit\Model\Resolver\UrlRewrite;
 
 use Magento\Cms\Helper\Page;
 use Magento\CmsUrlRewriteGraphQl\Model\Resolver\UrlRewrite\HomePageUrlLocator;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\TestCase;
 
 /**

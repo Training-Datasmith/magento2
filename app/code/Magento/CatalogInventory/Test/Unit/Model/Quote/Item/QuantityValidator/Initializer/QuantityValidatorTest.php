@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ class QuantityValidatorTest extends TestCase
                 'optionInitializer' => $this->optionInitializer,
                 'stockItemInitializer' => $this->stockItemInitializer,
                 'stockRegistry' => $this->stockRegistryMock,
-                'stockState' => $this->stockState
+                'stockState' => $this->stockState,
             ]
         );
         $this->observerMock = $this->createMock(Observer::class);
@@ -371,7 +372,7 @@ class QuantityValidatorTest extends TestCase
             'when product is disabled and out of stock' =>
                 [1, Product\Attribute\Source\Status::STATUS_DISABLED, Stock::STOCK_OUT_OF_STOCK],
             'when product is disabled but in stock' =>
-                [1, Product\Attribute\Source\Status::STATUS_DISABLED, Stock::STOCK_IN_STOCK]
+                [1, Product\Attribute\Source\Status::STATUS_DISABLED, Stock::STOCK_IN_STOCK],
         ];
     }
     /**

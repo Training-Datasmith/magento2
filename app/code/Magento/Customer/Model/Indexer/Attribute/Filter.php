@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Indexer\Attribute;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver;
 use Magento\Customer\Model\Customer;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\Framework\Indexer\ScopeResolver\FlatScopeResolver;
 use Magento\Framework\Indexer\StateInterface;
 
 class Filter

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
@@ -18,17 +21,17 @@ class WorkflowType implements ArrayInterface
     /**
      * Constant for
      */
-    const CONFIG_NAME_PATH = 'dev/front_end_development_workflow/type';
+    public const CONFIG_NAME_PATH = 'dev/front_end_development_workflow/type';
 
     /**
      * Constant for server side compilation workflow
      */
-    const SERVER_SIDE_COMPILATION = 'server_side_compilation';
+    public const SERVER_SIDE_COMPILATION = 'server_side_compilation';
 
     /**
      * Constant for client side compilation workflow
      */
-    const CLIENT_SIDE_COMPILATION = 'client_side_compilation';
+    public const CLIENT_SIDE_COMPILATION = 'client_side_compilation';
 
     /**
      * Return list of Workflow types
@@ -39,7 +42,7 @@ class WorkflowType implements ArrayInterface
     {
         return [
             ['value' => self::CLIENT_SIDE_COMPILATION, 'label' => __('Client side less compilation')],
-            ['value' => self::SERVER_SIDE_COMPILATION, 'label' => __('Server side less compilation')]
+            ['value' => self::SERVER_SIDE_COMPILATION, 'label' => __('Server side less compilation')],
         ];
     }
 }

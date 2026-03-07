@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Helper;
 
-use Magento\Framework\Data\Wysiwyg\Normalizer;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Data\Wysiwyg\Normalizer;
 use Magento\Framework\Serialize\Serializer\Json;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class FormatTest extends TestCase
         $this->model = $objectManager->getObject(
             Format::class,
             [
-                'exportConfig' => $this->exportConfigMock
+                'exportConfig' => $this->exportConfigMock,
             ]
         );
     }
@@ -67,21 +68,21 @@ class FormatTest extends TestCase
         return [
             'Empty file format' => [
                 [],
-                []
+                [],
             ],
             'Has file format' => [
                 [
                     'fileFormat1' => [
-                        'label' => 'File Format 1'
-                    ]
+                        'label' => 'File Format 1',
+                    ],
                 ],
                 [
                     [
                         'label' => (string)__('File Format 1'),
-                        'value' => 'fileFormat1'
-                    ]
-                ]
-            ]
+                        'value' => 'fileFormat1',
+                    ],
+                ],
+            ],
         ];
     }
 }

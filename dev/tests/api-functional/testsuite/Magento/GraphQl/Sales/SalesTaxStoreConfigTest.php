@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class SalesTaxStoreConfigTest extends GraphQlAbstract
         'fixed_product_taxes_display_prices_in_sales_modules' => 1,
         'fixed_product_taxes_display_prices_in_emails' => 1,
         'fixed_product_taxes_apply_tax_to_fpt' => 0,
-        'fixed_product_taxes_include_fpt_in_subtotal' => 0
+        'fixed_product_taxes_include_fpt_in_subtotal' => 0,
     ];
 
     /**

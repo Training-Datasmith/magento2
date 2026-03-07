@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity\Attribute\Source;
 
 /**
@@ -14,9 +17,9 @@ class Boolean extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
     /**
      * Option values
      */
-    const VALUE_YES = 1;
+    public const VALUE_YES = 1;
 
-    const VALUE_NO = 0;
+    public const VALUE_NO = 0;
 
     /**
      * @var \Magento\Eav\Model\ResourceModel\Entity\AttributeFactory

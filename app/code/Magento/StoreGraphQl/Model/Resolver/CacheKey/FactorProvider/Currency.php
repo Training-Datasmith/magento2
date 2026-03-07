@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\GenericFactorPro
  */
 class Currency implements GenericFactorProviderInterface
 {
-    private const NAME = "CURRENCY";
+    private const NAME = 'CURRENCY';
 
     /**
      * @inheritdoc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class CategoryProcessUrlRewriteMovingObserverTest extends TestCase
             $this->databaseMapPoolMock,
             [
                 DataCategoryUrlRewriteDatabaseMap::class,
-                DataProductUrlRewriteDatabaseMap::class
+                DataProductUrlRewriteDatabaseMap::class,
             ]
         );
     }
@@ -109,7 +110,7 @@ class CategoryProcessUrlRewriteMovingObserverTest extends TestCase
                 'dataHasChangedFor',
                 'getEntityId',
                 'getStoreId',
-                'setData'
+                'setData',
             ]
         );
 
@@ -173,7 +174,7 @@ class CategoryProcessUrlRewriteMovingObserverTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 }

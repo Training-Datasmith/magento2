@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\System\Message\Media\Synchronization;
 
 /**
@@ -22,10 +25,8 @@ class Success extends \Magento\AdminNotification\Model\System\Message\Media\Abst
 
     /**
      * Check whether
-     *
-     * @return bool
      */
-    protected function _shouldBeDisplayed()
+    protected function _shouldBeDisplayed(): bool
     {
         $state = $this->_syncFlag->getState();
         $data = $this->_syncFlag->getFlagData();

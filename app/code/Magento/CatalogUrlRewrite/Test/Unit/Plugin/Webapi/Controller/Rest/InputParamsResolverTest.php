@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -78,9 +79,9 @@ class InputParamsResolverTest extends TestCase
             'product' => [
                 'sku' => 'test',
                 'custom_attributes' => [
-                    ['attribute_code' => $this->saveRewritesHistory, 'value' => 1]
-                ]
-            ]
+                    ['attribute_code' => $this->saveRewritesHistory, 'value' => 1],
+                ],
+            ],
         ];
 
         $this->route = $this->createPartialMock(Route::class, ['getServiceMethod', 'getServiceClass']);
@@ -96,7 +97,7 @@ class InputParamsResolverTest extends TestCase
         $this->plugin = $this->objectManager->getObject(
             InputParamsResolverPlugin::class,
             [
-                'request' => $this->request
+                'request' => $this->request,
             ]
         );
     }

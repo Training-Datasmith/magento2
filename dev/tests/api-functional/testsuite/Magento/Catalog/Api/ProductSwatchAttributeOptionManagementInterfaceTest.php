@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Api\Data\AttributeOptionLabelInterface;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ProductSwatchAttributeOptionManagementInterfaceTest extends WebapiAbstract
 {
@@ -70,18 +73,18 @@ class ProductSwatchAttributeOptionManagementInterfaceTest extends WebapiAbstract
                     AttributeOptionLabelInterface::STORE_ID => 1,
                 ],
             ],
-            AttributeOptionInterface::VALUE => ''
+            AttributeOptionInterface::VALUE => '',
         ];
 
         return [
             'option_without_value_node' => [
-                $optionPayload
+                $optionPayload,
             ],
             'option_with_value_node_that_starts_with_text' => [
-                array_merge($optionPayload, [AttributeOptionInterface::VALUE => 'some_text'])
+                array_merge($optionPayload, [AttributeOptionInterface::VALUE => 'some_text']),
             ],
             'option_with_value_node_that_starts_with_a_number' => [
-                array_merge($optionPayload, [AttributeOptionInterface::VALUE => '123_some_text'])
+                array_merge($optionPayload, [AttributeOptionInterface::VALUE => '123_some_text']),
             ],
 
         ];

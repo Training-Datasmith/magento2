@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,17 +14,16 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Address;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Event\Observer;
-use Magento\Persistent\Helper\Data;
-use Magento\Persistent\Observer\EmulateCustomerObserver;
-use Magento\Persistent\Model\Session as PersistentSession;
-use Magento\Persistent\Helper\Session as PersistentSessionHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Persistent\Helper\Data;
+use Magento\Persistent\Helper\Session as PersistentSessionHelper;
+use Magento\Persistent\Model\Session as PersistentSession;
+use Magento\Persistent\Observer\EmulateCustomerObserver;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class EmulateCustomerObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -70,7 +70,7 @@ class EmulateCustomerObserverTest extends TestCase
             Session::class,
             [
                 'setDefaultTaxShippingAddress', 'setDefaultTaxBillingAddress', 'setIsCustomerEmulated',
-                'setCustomerId', 'setCustomerGroupId', 'isLoggedIn'
+                'setCustomerId', 'setCustomerGroupId', 'isLoggedIn',
             ]
         );
         $this->sessionHelperMock = $this->createMock(PersistentSessionHelper::class);
@@ -140,7 +140,7 @@ class EmulateCustomerObserverTest extends TestCase
             ->willReturn(12346);
         $valueMap = [
             [12345, $defaultShippingAddressMock],
-            [12346, $defaultBillingAddressMock]
+            [12346, $defaultBillingAddressMock],
         ];
         $this->addressRepositoryMock->expects($this->any())->method('getById')->willReturnMap($valueMap);
         $this->customerSessionMock
@@ -150,7 +150,7 @@ class EmulateCustomerObserverTest extends TestCase
                 [
                     'country_id' => $countryId,
                     'region_id' => $regionId,
-                    'postcode' => $postcode
+                    'postcode' => $postcode,
                 ]
             );
         $defaultBillingAddressMock->expects($this->once())

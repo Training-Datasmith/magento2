@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,12 +22,12 @@ class TokensDialogTest extends IntegrationTestCase
         $objects = [
             [
                 Factory::class,
-                $this->createMock(Factory::class)
+                $this->createMock(Factory::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(SerializerInterface::class)
-            ]
+                $this->createMock(SerializerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $controller = $this->_createIntegrationController('TokensDialog');
@@ -41,7 +42,7 @@ class TokensDialogTest extends IntegrationTestCase
                 [
                     Integration::PARAM_INTEGRATION_ID,
                     null,
-                    self::INTEGRATION_ID
+                    self::INTEGRATION_ID,
                 ],[Integration::PARAM_REAUTHORIZE, 0, 0],
             ]
         );

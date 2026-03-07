@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * ObjectManager config with interception processing
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception\ObjectManager\Config;
 
 use Magento\Framework\Interception\ObjectManager\ConfigInterface;

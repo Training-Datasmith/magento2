@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\View\Asset;
 
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Catalog\Model\Product\Media\ConfigInterface;
 use Magento\Catalog\Model\View\Asset\Placeholder;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\MergeableInterface;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Filesystem;
-use Magento\Catalog\Model\Product\Media\ConfigInterface;
 
 class PlaceholderTest extends TestCase
 {

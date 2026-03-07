@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
 use Magento\Framework\View\Element\BlockInterface;
@@ -19,7 +22,7 @@ abstract class Widget extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::categories';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::categories';
 
     /**
      * @var \Magento\Framework\View\LayoutFactory
@@ -51,7 +54,7 @@ abstract class Widget extends \Magento\Backend\App\Action
                     'data' => [
                         'id' => $this->getRequest()->getParam('uniq_id'),
                         'use_massaction' => $this->getRequest()->getParam('use_massaction', false),
-                    ]
+                    ],
                 ]
             );
     }

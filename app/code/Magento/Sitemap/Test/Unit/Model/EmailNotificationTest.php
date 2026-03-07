@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Sitemap\Test\Unit\Model;
 
@@ -11,7 +12,6 @@ use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Framework\Mail\TransportInterface;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Sitemap\Model\EmailNotification;
@@ -66,7 +66,7 @@ class EmailNotificationTest extends TestCase
             [
                 'inlineTranslation' => $this->inlineTranslationMock,
                 'scopeConfig' => $this->scopeConfigMock,
-                'transportBuilder' => $this->transportBuilderMock
+                'transportBuilder' => $this->transportBuilderMock,
             ]
         );
     }

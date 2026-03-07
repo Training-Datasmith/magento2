@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model;
 
 use Magento\Framework\App\ObjectManager;
@@ -14,7 +17,7 @@ use Magento\Integration\Model\Cache\TypeConsolidated;
  */
 class ConsolidatedConfig
 {
-    const CACHE_ID = 'integration-consolidated';
+    public const CACHE_ID = 'integration-consolidated';
 
     /**
      * @var \Magento\Framework\App\Cache\Type\Config

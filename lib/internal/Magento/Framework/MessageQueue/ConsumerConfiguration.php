@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\Framework\MessageQueue\ConfigInterface as MessageQueueConfig;
 use Magento\Framework\MessageQueue\Consumer\ConfigInterface as ConsumerConfig;
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 
 /**
  * Value class which stores the configuration
@@ -18,13 +21,13 @@ class ConsumerConfiguration implements ConsumerConfigurationInterface
      * @deprecated Should be used constant from ConsumerConfigurationInterface
      * @see ConsumerConfigurationInterface::TOPIC_TYPE
      */
-    const CONSUMER_TYPE = "consumer_type";
+    public const CONSUMER_TYPE = 'consumer_type';
 
     /**
      * @deprecated Should be used constant from ConsumerConfigurationInterface
      * @see ConsumerConfigurationInterface::TOPIC_HANDLERS
      */
-    const HANDLERS = 'handlers';
+    public const HANDLERS = 'handlers';
 
     /**
      * @var array

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface;
 use Magento\Bundle\Pricing\Price\BundleOptionPrice;
 use Magento\Bundle\Pricing\Price\FinalPrice;
-use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
 use Magento\Catalog\Api\ProductCustomOptionRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Pricing\Price\BasePrice;
@@ -20,8 +19,9 @@ use Magento\Catalog\Pricing\Price\CustomOptionPrice;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\SaleableInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -141,7 +141,7 @@ class FinalPriceTest extends TestCase
                 'quantity' => $this->quantity,
                 'calculator' => $this->bundleCalculatorMock,
                 'priceCurrency' => $this->priceCurrencyMock,
-                'productOptionRepository' => $this->productOptionRepositoryMock
+                'productOptionRepository' => $this->productOptionRepositoryMock,
             ]
         );
     }
@@ -171,7 +171,7 @@ class FinalPriceTest extends TestCase
         return [
             [false, false, 0],
             [0, 1.2, 1.2],
-            [1, 2, 3]
+            [1, 2, 3],
         ];
     }
 
@@ -231,7 +231,7 @@ class FinalPriceTest extends TestCase
             $this->createPartialMock(
                 \Magento\Catalog\Model\Product\Option::class,
                 ['setProduct']
-            )
+            ),
         ];
 
         $this->productOptionRepositoryMock->expects(static::once())

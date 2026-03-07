@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ProductTypes;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ProductTypes\Config;
 use Magento\Catalog\Model\ProductTypes\Config\Reader;
 use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -84,7 +85,7 @@ class ConfigTest extends TestCase
     {
         return [
             'global_key_exist' => [['types' => ['global' => 'value']], 'value'],
-            'return_default_value' => [['types' => ['some_key' => 'value']], []]
+            'return_default_value' => [['types' => ['some_key' => 'value']], []],
         ];
     }
 

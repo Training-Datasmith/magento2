@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,31 +8,31 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model;
 
-use Magento\TestFramework\Fixture\Config;
-use PHPUnit\Framework\TestCase;
+use Magento\Catalog\Test\Fixture\Product;
+use Magento\Checkout\Test\Fixture\PlaceOrder;
+use Magento\Checkout\Test\Fixture\SetBillingAddress;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod;
+use Magento\Checkout\Test\Fixture\SetShippingAddress;
+use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Quote\Test\Fixture\AddProductToCart;
+use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
 use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Sales\Api\Data\OrderInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Store\Api\Data\StoreInterface;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Checkout\Test\Fixture\SetBillingAddress;
-use Magento\Checkout\Test\Fixture\SetShippingAddress;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod;
-use Magento\Checkout\Test\Fixture\PlaceOrder;
-use Magento\Sales\Test\Fixture\Invoice;
 use Magento\Sales\Test\Fixture\Creditmemo;
-use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Store\Test\Fixture\Website;
+use Magento\Sales\Test\Fixture\Invoice;
+use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Test\Fixture\Group;
 use Magento\Store\Test\Fixture\Store;
-use Magento\Catalog\Test\Fixture\Product;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\Quote\Test\Fixture\AddProductToCart;
+use Magento\Store\Test\Fixture\Website;
+use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Integration test for complete workflow using proper fixtures:
@@ -86,7 +87,7 @@ class StoreWithNumericNameCreditmemoWorkflowTest extends TestCase
                 'code' => 'test_store',
                 'name' => '123test Store View',
                 'website_id' => '$test_website.id$',
-                'group_id' => '$test_group.id$'
+                'group_id' => '$test_group.id$',
             ],
             'test_store'
         ),
@@ -101,7 +102,7 @@ class StoreWithNumericNameCreditmemoWorkflowTest extends TestCase
                 'email' => 'customer@123test.com',
                 'website_id' => '$test_website.id$',
                 'store_id' => '$test_store.id$',
-                'addresses' => [[]]
+                'addresses' => [[]],
             ],
             'customer'
         ),

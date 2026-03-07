@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Controller\Transparent;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Laminas\Stdlib\Parameters;
+use Magento\TestFramework\TestCase\AbstractController;
 
 /**
  * Tests PayPal transparent redirect controller.
@@ -29,7 +30,7 @@ class RedirectTest extends AbstractController
             'BILLTOEMAIL' => 'user_1@example.com',
             'BILLTOSTREET' => '123 Freedom Blvd. #123 app.111',
             'VISACARDLEVEL' => '12',
-            'SHIPTOCITY' => 'culver city'
+            'SHIPTOCITY' => 'culver city',
         ];
 
         $this->setRequestUri($redirectUri);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -68,7 +69,7 @@ class BackupTest extends TestCase
             Backup::class,
             [
                 'filesystem' => $this->filesystemMock,
-                'helper' => $this->dataHelperMock
+                'helper' => $this->dataHelperMock,
             ]
         );
     }
@@ -119,7 +120,7 @@ class BackupTest extends TestCase
     {
         return [
             ['isFile' => true, 'result' => 'test_result'],
-            ['isFile' => false, 'result' => null]
+            ['isFile' => false, 'result' => null],
         ];
     }
 }

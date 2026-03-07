@@ -1,15 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Controller\Product as ProductAction;
 use Magento\Catalog\Model\Design;
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\ForwardFactory;
@@ -18,7 +22,6 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Catalog\Controller\Product as ProductAction;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -156,7 +159,7 @@ class View extends ProductAction implements HttpGetActionInterface, HttpPostActi
                 $this->getResponse()->representJson(
                     $this->jsonHelper->jsonEncode(
                         [
-                            'backUrl' => $this->_redirect->getRedirectUrl()
+                            'backUrl' => $this->_redirect->getRedirectUrl(),
                         ]
                     )
                 );

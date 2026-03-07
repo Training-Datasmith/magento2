@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -159,13 +161,13 @@ class AttributeSetFixture
             }, $optionsData);
             $attributes[] = [
                 'name' => $attributeData['attribute_code'],
-                'values' => $optionsData
+                'values' => $optionsData,
             ];
         }
 
         return [
             'name' => $attributeSetData['name'],
-            'attributes' => $attributes
+            'attributes' => $attributes,
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -44,7 +46,7 @@ class SaveOrder extends \Magento\Checkout\Controller\Onepage implements HttpPost
                     'error_messages',
                     __(
                         "The order wasn't placed. "
-                        . "First, agree to the terms and conditions, then try placing your order again."
+                        . 'First, agree to the terms and conditions, then try placing your order again.'
                     )
                 );
                 return $this->resultJsonFactory->create()->setData($result->getData());
@@ -78,7 +80,7 @@ class SaveOrder extends \Magento\Checkout\Controller\Onepage implements HttpPost
                 'update_section',
                 [
                     'name' => 'payment-method',
-                    'html' => $this->_getPaymentMethodsHtml()
+                    'html' => $this->_getPaymentMethodsHtml(),
                 ]
             );
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
@@ -134,7 +136,7 @@ class SaveOrder extends \Magento\Checkout\Controller\Onepage implements HttpPost
             'checkout_controller_onepage_saveOrder',
             [
                 'result' => $result,
-                'action' => $this
+                'action' => $this,
             ]
         );
 

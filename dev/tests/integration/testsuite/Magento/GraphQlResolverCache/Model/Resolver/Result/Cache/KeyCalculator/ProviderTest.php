@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
     /**
      * Dev docs link
      */
-    private const DEV_DOCS = "https://developer.adobe.com/commerce/webapi/graphql/develop";
+    private const DEV_DOCS = 'https://developer.adobe.com/commerce/webapi/graphql/develop';
 
     /**
      * @inheritdoc
@@ -87,7 +88,7 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
             [
                 'factorProviders' => [
                     'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [],
-                ]
+                ],
             ]
         );
         $resolver = $this->getMockBuilder(\Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver::class)
@@ -110,12 +111,12 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
             'factorProviders' => [
                 'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [
                     'store' => 'Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Store',
-                    'currency' => 'Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Currency'
+                    'currency' => 'Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Currency',
                 ],
                 'StoreConfigDerivedMock' => [
-                    'customer_group' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerGroup'
-                ]
-            ]
+                    'customer_group' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerGroup',
+                ],
+            ],
         ]);
         $resolver = $this->getMockBuilder(StoreConfigResolver::class)
             ->disableOriginalConstructor()
@@ -193,14 +194,14 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
                     'Magento\CustomerGraphQl\Model\Resolver\Customer' => [
                         'customer_id' =>
                             'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CurrentCustomerId',
-                        'is_logged_in' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn'
+                        'is_logged_in' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn',
                     ],
                     'Magento\CustomerGraphQl\Model\Resolver\CustomerAddresses' => [
                         'customer_id' =>
                             'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CurrentCustomerId',
-                        'is_logged_in' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn'
-                    ]
-                ]
+                        'is_logged_in' => 'Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn',
+                    ],
+                ],
             ]
         );
         $customerResolver = $this->getMockBuilder(Customer::class)
@@ -230,13 +231,13 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
                     'Magento\CustomerGraphQl\Model\Resolver\Customer' => [
                         'customer_id' =>
                             'Magento\CustomerGraphQl\Model\Resolver\Cache\KeyFactorProvider\CurrentCustomerId',
-                        'is_logged_in' => 'Magento\CustomerGraphQl\CacheIdFactorProviders\IsLoggedInProvider'
+                        'is_logged_in' => 'Magento\CustomerGraphQl\CacheIdFactorProviders\IsLoggedInProvider',
                     ],
                     'Magento\CustomerGraphQl\Model\Resolver\CustomerAddresses' => [
                         'customer_id' =>
                             'Magento\CustomerGraphQl\Model\Resolver\Cache\KeyFactorProvider\CurrentCustomerId',
-                    ]
-                ]
+                    ],
+                ],
             ]);
         $customerResolver = $this->getMockBuilder(Customer::class)
             ->disableOriginalConstructor()

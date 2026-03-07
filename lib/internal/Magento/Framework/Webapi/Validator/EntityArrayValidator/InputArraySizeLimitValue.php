@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -72,7 +73,8 @@ class InputArraySizeLimitValue
      */
     public function get(): ?int
     {
-        return $this->value ?? ($this->isAsync()
+        return $this->value ?? (
+            $this->isAsync()
                 ? $this->deploymentConfig->get(
                     ConstantList::CONFIG_PATH_WEBAPI_ASYNC_DEFAULT_INPUT_ARRAY_SIZE_LIMIT,
                     self::DEFAULT_ASYNC_INPUT_ARRAY_SIZE_LIMIT
@@ -80,7 +82,7 @@ class InputArraySizeLimitValue
                 : $this->deploymentConfig->get(
                     ConstantList::CONFIG_PATH_WEBAPI_SYNC_DEFAULT_INPUT_ARRAY_SIZE_LIMIT
                 )
-            );
+        );
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Search\Request\Filter\BoolExpression;
 use Magento\Framework\Search\Request\FilterInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BuilderTest extends TestCase
 {
@@ -69,7 +70,7 @@ class BuilderTest extends TestCase
             [
                 'range' => $this->range,
                 'term' => $this->term,
-                'wildcard' => $this->wildcard
+                'wildcard' => $this->wildcard,
             ]
         );
     }
@@ -97,7 +98,7 @@ class BuilderTest extends TestCase
     #[DataProvider('buildDataProvider')]
     public function testBuild($filterMock, $filterType)
     {
-        if ($filterMock=="Magento\Framework\Search\Request\FilterInterface") {
+        if ($filterMock == "Magento\Framework\Search\Request\FilterInterface") {
             $childFilter = $this->createPartialMockWithReflection(
                 FilterInterface::class,
                 ['getType', 'getName', 'getMust', 'getShould', 'getMustNot']
@@ -136,7 +137,7 @@ class BuilderTest extends TestCase
     #[DataProvider('buildDataProvider')]
     public function testBuildNegation($filterMock, $filterType)
     {
-        if ($filterMock == "BoolExpression") {
+        if ($filterMock == 'BoolExpression') {
             $childFilter = $this->createPartialMockWithReflection(
                 FilterInterface::class,
                 ['getType', 'getName', 'getMust', 'getShould', 'getMustNot']
@@ -174,10 +175,10 @@ class BuilderTest extends TestCase
     {
         return [
             [FilterInterface::class,
-                'termFilter'
+                'termFilter',
             ],
             [BoolExpression::class,
-                'boolFilter'
+                'boolFilter',
             ],
         ];
     }

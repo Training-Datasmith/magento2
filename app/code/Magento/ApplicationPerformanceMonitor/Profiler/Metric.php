@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -13,12 +14,6 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class Metric
 {
-    /**
-     * @param string $type
-     * @param string $name
-     * @param mixed $value
-     * @param bool $verbose
-     */
     public function __construct(
         private readonly string $type,
         private readonly string $name,
@@ -29,8 +24,6 @@ class Metric
 
     /**
      * Gets type of metric
-     *
-     * @return int|string
      */
     public function getType(): string|int
     {
@@ -39,8 +32,6 @@ class Metric
 
     /**
      * Gets a name
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -49,8 +40,6 @@ class Metric
 
     /**
      * Gets a value
-     *
-     * @return mixed
      */
     public function getValue(): mixed
     {
@@ -59,8 +48,6 @@ class Metric
 
     /**
      * Checks if verbose
-     *
-     * @return bool
      */
     public function isVerbose(): bool
     {

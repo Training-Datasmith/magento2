@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +106,7 @@ class UninstallLanguageCommand extends Command
                         '-b',
                         InputOption::VALUE_NONE,
                         'Take code and configuration files backup (excluding temporary files)'
-                    )
+                    ),
                 ]
             );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Api\Data;
 
 /**
@@ -16,27 +19,27 @@ interface CustomerInterface extends \Magento\Framework\Api\CustomAttributesDataI
     /**#@+
      * Constants defined for keys of the data array. Identical to the name of the getter in snake case
      */
-    const ID = 'id';
-    const CONFIRMATION = 'confirmation';
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-    const CREATED_IN = 'created_in';
-    const DOB = 'dob';
-    const EMAIL = 'email';
-    const FIRSTNAME = 'firstname';
-    const GENDER = 'gender';
-    const GROUP_ID = 'group_id';
-    const LASTNAME = 'lastname';
-    const MIDDLENAME = 'middlename';
-    const PREFIX = 'prefix';
-    const STORE_ID = 'store_id';
-    const SUFFIX = 'suffix';
-    const TAXVAT = 'taxvat';
-    const WEBSITE_ID = 'website_id';
-    const DEFAULT_BILLING = 'default_billing';
-    const DEFAULT_SHIPPING = 'default_shipping';
-    const KEY_ADDRESSES = 'addresses';
-    const DISABLE_AUTO_GROUP_CHANGE = 'disable_auto_group_change';
+    public const ID = 'id';
+    public const CONFIRMATION = 'confirmation';
+    public const CREATED_AT = 'created_at';
+    public const UPDATED_AT = 'updated_at';
+    public const CREATED_IN = 'created_in';
+    public const DOB = 'dob';
+    public const EMAIL = 'email';
+    public const FIRSTNAME = 'firstname';
+    public const GENDER = 'gender';
+    public const GROUP_ID = 'group_id';
+    public const LASTNAME = 'lastname';
+    public const MIDDLENAME = 'middlename';
+    public const PREFIX = 'prefix';
+    public const STORE_ID = 'store_id';
+    public const SUFFIX = 'suffix';
+    public const TAXVAT = 'taxvat';
+    public const WEBSITE_ID = 'website_id';
+    public const DEFAULT_BILLING = 'default_billing';
+    public const DEFAULT_SHIPPING = 'default_shipping';
+    public const KEY_ADDRESSES = 'addresses';
+    public const DISABLE_AUTO_GROUP_CHANGE = 'disable_auto_group_change';
     /**#@-*/
 
     /**

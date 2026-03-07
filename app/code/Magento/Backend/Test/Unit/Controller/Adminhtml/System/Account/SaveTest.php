@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class SaveTest extends TestCase
                 'performIdentityCheck',
                 'validate',
                 '__sleep',
-                '__wakeup'
+                '__wakeup',
             ]
         );
 
@@ -165,7 +166,7 @@ class SaveTest extends TestCase
                 'getObjectManager',
                 'getHelper',
                 'getMessageManager',
-                'getResultFactory'
+                'getResultFactory',
             ]
         );
         $contextMock->expects($this->any())->method('getRequest')->willReturn($this->requestMock);
@@ -196,11 +197,11 @@ class SaveTest extends TestCase
             'firstname' => 'Bar',
             'lastname' => 'Dummy',
             'email' => 'test@example.com',
-            Form::IDENTITY_VERIFICATION_PASSWORD_FIELD => 'current_password'
+            Form::IDENTITY_VERIFICATION_PASSWORD_FIELD => 'current_password',
         ];
 
-        $testedMessage = "The password, username, firstname, lastname and email of this account"
-            ." have been modified successfully.";
+        $testedMessage = 'The password, username, firstname, lastname and email of this account'
+            .' have been modified successfully.';
 
         $this->authSessionMock->expects($this->any())->method('getUser')->willReturn($this->userMock);
 
@@ -218,7 +219,7 @@ class SaveTest extends TestCase
 
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Session::class] => $this->authSessionMock,
                 [Locale::class] => $this->validatorMock,
                 [Manager::class] => $this->managerMock

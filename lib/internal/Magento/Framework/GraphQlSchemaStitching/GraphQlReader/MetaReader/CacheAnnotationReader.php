@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class CacheAnnotationReader
      * @param \GraphQL\Language\AST\NodeList $directives
      * @return array
      */
-    public function read(\GraphQL\Language\AST\NodeList $directives) : array
+    public function read(\GraphQL\Language\AST\NodeList $directives): array
     {
         $argMap = [];
         foreach ($directives as $directive) {
@@ -27,13 +28,13 @@ class CacheAnnotationReader
                     if ($directiveArgument->name->value == 'cacheable') {
                         $argMap = array_merge(
                             $argMap,
-                            ["cacheable" => $directiveArgument->value->value]
+                            ['cacheable' => $directiveArgument->value->value]
                         );
                     }
                     if ($directiveArgument->name->value == 'cacheIdentity') {
                         $argMap = array_merge(
                             $argMap,
-                            ["cacheIdentity" => $directiveArgument->value->value]
+                            ['cacheIdentity' => $directiveArgument->value->value]
                         );
                     }
                 }

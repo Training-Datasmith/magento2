@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class ReviewSummary
         $object->addData(
             [
                 'reviews_count' => $summary->getData('reviews_count'),
-                'rating_summary' => $summary->getData('rating_summary')
+                'rating_summary' => $summary->getData('rating_summary'),
             ]
         );
     }

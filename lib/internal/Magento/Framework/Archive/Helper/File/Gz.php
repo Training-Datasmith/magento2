@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Helper class that simplifies gz files stream reading and writing
  */
+
 namespace Magento\Framework\Archive\Helper\File;
 
 class Gz extends \Magento\Framework\Archive\Helper\File

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element\DataType;
 
 /**
@@ -10,7 +13,7 @@ namespace Magento\Ui\Component\Form\Element\DataType;
  */
 class Media extends AbstractDataType
 {
-    const NAME = 'media';
+    public const NAME = 'media';
 
     /**
      * Get component name
@@ -32,7 +35,7 @@ class Media extends AbstractDataType
         if ($this->getData('config/uploaderConfig/url')) {
             $url = $this->getContext()->getUrl($this->getData('config/uploaderConfig/url'), ['_secure' => true]);
             $updateConfig = [
-                'uploaderConfig' => ['url' => $url]
+                'uploaderConfig' => ['url' => $url],
             ];
             if (!isset($this->getConfiguration()['dataScope'])) {
                 $updateConfig['dataScope'] = $this->getName();

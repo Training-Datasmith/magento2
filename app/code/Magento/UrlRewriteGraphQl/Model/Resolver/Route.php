@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Uid;
-use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocatorInterface;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewriteGraphQl\Model\DataProvider\EntityDataProviderComposite;
+use Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocatorInterface;
 
 class Route extends AbstractEntityUrl implements ResolverInterface
 {

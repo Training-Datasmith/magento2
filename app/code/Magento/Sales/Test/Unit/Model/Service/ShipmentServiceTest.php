@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ use PHPUnit\Framework\TestCase;
 
 class ShipmentServiceTest extends TestCase
 {
-
     /**
      * Repository
      *

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Billing;
 
 use Magento\Sales\Model\Order\Payment;
@@ -33,9 +36,9 @@ use Magento\Sales\Model\Order\Payment;
  */
 class Agreement extends \Magento\Paypal\Model\Billing\AbstractAgreement
 {
-    const STATUS_ACTIVE = 'active';
+    public const STATUS_ACTIVE = 'active';
 
-    const STATUS_CANCELED = 'canceled';
+    public const STATUS_CANCELED = 'canceled';
 
     /**
      * Related agreement orders
@@ -215,7 +218,7 @@ class Agreement extends \Magento\Paypal\Model\Billing\AbstractAgreement
     {
         return [
             self::STATUS_ACTIVE     => __('Active'),
-            self::STATUS_CANCELED   => __('Canceled')
+            self::STATUS_CANCELED   => __('Canceled'),
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class DataObjectHelperTest extends TestCase
                 'typeProcessor' => $this->typeProcessor,
                 'objectProcessor' => $this->objectProcessorMock,
                 'methodsMapProcessor' => $this->methodsMapProcessor,
-                'joinProcessor' => $this->joinProcessorMock
+                'joinProcessor' => $this->joinProcessorMock,
             ]
         );
     }
@@ -122,11 +123,11 @@ class DataObjectHelperTest extends TestCase
     {
         $id = 5;
         $countryId = 15;
-        $street = ["7700 W Parmer Lane", "second line"];
+        $street = ['7700 W Parmer Lane', 'second line'];
         $isDefaultShipping = true;
 
         $regionId = 7;
-        $region = "TX";
+        $region = 'TX';
 
         /** @var Address $addressDataObject */
         $addressDataObject = $this->objectManager->getObject(
@@ -146,7 +147,7 @@ class DataObjectHelperTest extends TestCase
             'default_shipping' => $isDefaultShipping,
             'region' => [
                 'region_id' => $regionId,
-                'region' => $region
+                'region' => $region,
             ],
         ];
 
@@ -211,7 +212,7 @@ class DataObjectHelperTest extends TestCase
             [
                 'dataObjectHelper' => $this->dataObjectHelper,
                 'metadataService' => $metadataServiceMock,
-                'attributeValueFactory' => $this->attributeValueFactoryMock
+                'attributeValueFactory' => $this->attributeValueFactoryMock,
             ]
         );
 
@@ -272,7 +273,7 @@ class DataObjectHelperTest extends TestCase
             [
                 'dataObjectHelper' => $this->dataObjectHelper,
                 'metadataService' => $metadataServiceMock,
-                'attributeValueFactory' => $this->attributeValueFactoryMock
+                'attributeValueFactory' => $this->attributeValueFactoryMock,
             ]
         );
 
@@ -281,7 +282,7 @@ class DataObjectHelperTest extends TestCase
             CustomAttributesDataInterface::CUSTOM_ATTRIBUTES => [
                 [
                     AttributeInterface::ATTRIBUTE_CODE => $customAttributeCode,
-                    AttributeInterface::VALUE => $customAttributeValue
+                    AttributeInterface::VALUE => $customAttributeValue,
                 ],
             ],
         ];
@@ -316,17 +317,17 @@ class DataObjectHelperTest extends TestCase
         $customerPaymentId = null;
         $additionalData = null;
         $poNumber = 'ReferenceNumber934829dek2';
-        $cc_type = "Debit";
-        $cc_number_enc = "393993138";
-        $cc_last_4 = "3982";
-        $cc_owner = "John Doe";
-        $cc_exp_month = "05";
-        $cc_exp_year = "24";
+        $cc_type = 'Debit';
+        $cc_number_enc = '393993138';
+        $cc_last_4 = '3982';
+        $cc_owner = 'John Doe';
+        $cc_exp_month = '05';
+        $cc_exp_year = '24';
         $cc_number = '1234567890';
         $cc_cid = null;
         $cc_ss_issue = null;
-        $cc_ss_start_month = "0";
-        $cc_ss_start_year = "0";
+        $cc_ss_start_month = '0';
+        $cc_ss_start_year = '0';
 
         /** @var OrderPaymentInterface $orderPaymentObject */
         $orderPaymentObject = $this->objectManager->getObject(
@@ -350,7 +351,7 @@ class DataObjectHelperTest extends TestCase
             'cc_cid' => $cc_cid,
             'cc_ss_issue' => $cc_ss_issue,
             'cc_ss_start_month' => $cc_ss_start_month,
-            'cc_ss_start_year' => $cc_ss_start_year
+            'cc_ss_start_year' => $cc_ss_start_year,
         ];
         $this->dataObjectHelper->populateWithArray(
             $orderPaymentObject,
@@ -467,44 +468,44 @@ class DataObjectHelperTest extends TestCase
                 [
                     'id' => '1',
                     'country_id' => '1',
-                    'street' => ["7701 W Parmer Lane", "Second Line"],
+                    'street' => ['7701 W Parmer Lane', 'Second Line'],
                     'default_shipping' => true,
                     'region' => [
                         'region_id' => '1',
-                        'region' => 'TX'
-                    ]
+                        'region' => 'TX',
+                    ],
                 ],
                 [
                     'id' => '2',
                     'country_id' => '2',
-                    'street' => ["7702 W Parmer Lane", "Second Line"],
+                    'street' => ['7702 W Parmer Lane', 'Second Line'],
                     'default_shipping' => false,
                     'region' => [
                         'region_id' => '2',
-                        'region' => 'TX'
-                    ]
-                ]
+                        'region' => 'TX',
+                    ],
+                ],
             ],
             [
                 [
-                    'street' => ["7701 W Parmer Lane", "Second Line"],
+                    'street' => ['7701 W Parmer Lane', 'Second Line'],
                     'default_shipping' => true,
                     'region' => [
                         'region_id' => '1',
-                        'region' => 'TX'
-                    ]
+                        'region' => 'TX',
+                    ],
                 ],
                 [
                     'id' => '2',
                     'country_id' => '2',
-                    'street' => ["7702 W Parmer Lane", "Second Line"],
+                    'street' => ['7702 W Parmer Lane', 'Second Line'],
                     'default_shipping' => false,
                     'region' => [
                         'region_id' => '2',
-                        'region' => 'TX'
-                    ]
-                ]
-            ]
+                        'region' => 'TX',
+                    ],
+                ],
+            ],
         ];
     }
 }

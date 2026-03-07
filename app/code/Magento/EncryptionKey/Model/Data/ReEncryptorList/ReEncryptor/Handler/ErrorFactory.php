@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ErrorFactory
             [
                 'rowIdField' => $rowIdField,
                 'rowIdValue' => $rowIdValue,
-                'message' => $message
+                'message' => $message,
             ]
         );
     }

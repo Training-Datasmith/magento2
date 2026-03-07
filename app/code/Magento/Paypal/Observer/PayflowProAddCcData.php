@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Observer;
 
 use Magento\Framework\Event\Observer;
@@ -19,7 +22,7 @@ class PayflowProAddCcData extends AbstractDataAssignObserver
         'cc_type',
         'cc_exp_year',
         'cc_exp_month',
-        'cc_last_4'
+        'cc_last_4',
     ];
 
     /**

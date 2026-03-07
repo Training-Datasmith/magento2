@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class ItemResolverComposite implements ItemResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function getFinalProduct(ItemInterface $item) : ProductInterface
+    public function getFinalProduct(ItemInterface $item): ProductInterface
     {
         $finalProduct = $item->getProduct();
         foreach ($this->itemResolvers as $resolver) {
@@ -51,7 +52,7 @@ class ItemResolverComposite implements ItemResolverInterface
      * @param string $className
      * @return ItemResolverInterface
      */
-    private function getItemResolverInstance(string $className) : ItemResolverInterface
+    private function getItemResolverInstance(string $className): ItemResolverInterface
     {
         if (!isset($this->itemResolversInstances[$className])) {
             $this->itemResolversInstances[$className] = ObjectManager::getInstance()->get($className);

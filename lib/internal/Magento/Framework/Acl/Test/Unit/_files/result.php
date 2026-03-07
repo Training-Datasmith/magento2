@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,5 +27,5 @@ return [
                 ],
             ],
         ],
-    ]
+    ],
 ];

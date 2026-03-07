@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -90,8 +91,10 @@ class Synchronizer
             }
         }
 
-        foreach (Glob::glob($path . '/{,.}[!.,!..]*',
-            $flags | Glob::GLOB_ONLYDIR | Glob::GLOB_BRACE) as $childDirectory) {
+        foreach (Glob::glob(
+            $path . '/{,.}[!.,!..]*',
+            $flags | Glob::GLOB_ONLYDIR | Glob::GLOB_BRACE
+        ) as $childDirectory) {
             $relativeDirectory = $directory->getRelativePath($childDirectory);
             $destinationDirectory = $remoteDirectory->getAbsolutePath($relativeDirectory);
 

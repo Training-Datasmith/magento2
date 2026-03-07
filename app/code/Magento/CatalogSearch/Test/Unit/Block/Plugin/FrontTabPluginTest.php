@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class FrontTabPluginTest extends TestCase
                     'name' => 'search_weight',
                     'label' => __('Search Weight'),
                     'note' => __('10 is the highest priority/heaviest weighting.'),
-                    'values' => $weightOptions
+                    'values' => $weightOptions,
                 ],
                 'is_searchable',
                 false

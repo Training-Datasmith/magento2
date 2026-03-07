@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +17,8 @@ use Magento\Config\Model\Config\Structure\Element\Field;
 use Magento\Framework\Data\Form\Element\Text;
 use Magento\Framework\DataObject;
 use Magento\Framework\Option\ArrayInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\BlockFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -28,7 +30,7 @@ class FieldTest extends TestCase
 {
     use MockCreationTrait;
 
-    public const FIELD_TEST_CONSTANT = "field test constant";
+    public const FIELD_TEST_CONSTANT = 'field test constant';
 
     /**
      * @var Field
@@ -283,7 +285,7 @@ class FieldTest extends TestCase
             [
                 'label' => 'test',
                 'value' => sprintf(
-                    "{{\\%s::FIELD_TEST_CONSTANT}}",
+                    '{{\\%s::FIELD_TEST_CONSTANT}}',
                     self::class
                 ),
             ],

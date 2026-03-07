@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class CatalogProductCompareAddProductObserverTest extends TestCase
                 'customerSession' => $this->customerSessionMock,
                 'customerVisitor' => $this->customerVisitorMock,
                 'eventSaver' => $this->eventSaverMock,
-                'reportStatus' => $this->reportStatusMock
+                'reportStatus' => $this->reportStatusMock,
             ]
         );
     }
@@ -163,7 +164,7 @@ class CatalogProductCompareAddProductObserverTest extends TestCase
         $visitorId = 333;
         $viewData = [
             'product_id' => $productId,
-            $userKey => $userId
+            $userKey => $userId,
         ];
         $observerMock = $this->getObserverMock($productId);
 
@@ -191,13 +192,13 @@ class CatalogProductCompareAddProductObserverTest extends TestCase
             'logged in' => [
                 'isLoggedIn' => true,
                 'userKey' => 'customer_id',
-                'userId' => 222
+                'userId' => 222,
             ],
             'not logged in' => [
                 'isLoggedIn' => false,
                 'userKey' => 'visitor_id',
-                'userId' => 333
-            ]
+                'userId' => 333,
+            ],
         ];
     }
 

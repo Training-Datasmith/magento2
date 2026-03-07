@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ConsumerRunnerTest extends TestCase
             [
                 'consumerFactory' => $this->consumerFactoryMock,
                 'maintenanceMode' => $this->maintenanceModeMock,
-                'maintenanceSleepInterval' => self::STUB_SLEEP_INTERVAL
+                'maintenanceSleepInterval' => self::STUB_SLEEP_INTERVAL,
             ]
         );
     }
@@ -98,7 +99,7 @@ class ConsumerRunnerTest extends TestCase
             ->expects($this->once())
             ->method('get')
             ->with($consumerName)
-            ->willThrowException(new LocalizedException(new Phrase("Some exception")));
+            ->willThrowException(new LocalizedException(new Phrase('Some exception')));
 
         $this->consumerRunner->$consumerName();
     }

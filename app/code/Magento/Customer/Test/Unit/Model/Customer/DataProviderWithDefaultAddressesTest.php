@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,14 +19,14 @@ use Magento\Directory\Model\CountryFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Type;
-use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Session\Generic as GenericSession;
+use Magento\Framework\Session\SessionManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Ui\Component\Form\Field;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for class \Magento\Customer\Model\Customer\DataProviderWithDefaultAddresses
@@ -95,7 +96,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
         $this->sessionMock = $this->createPartialMockWithReflection(
             GenericSession::class,
             ['getCustomerFormData',
-                            'unsCustomerFormData'
+                            'unsCustomerFormData',
                             ]
         );
         $this->countryFactoryMock = $this->createPartialMockWithReflection(
@@ -134,10 +135,10 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                                 'notice' => 'note',
                                 'default' => 'default_value',
                                 'size' => 'multiline_count',
-                                'componentType' => Field::NAME
-                            ]
-                        ]
-                    ]
+                                'componentType' => Field::NAME,
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'arguments' => [
@@ -156,11 +157,11 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                                 'prefer' => 'toggle',
                                 'valueMap' => [
                                     'true' => 1,
-                                    'false' => 0
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'false' => 0,
+                                ],
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -177,7 +178,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                 'session' => $this->sessionMock,
                 'fileUploaderDataResolver' => $this->fileUploaderDataResolver,
                 'attributeMetadataResolver' => $this->attributeMetadataResolver,
-                'allowToShowHiddenAttributes' => true
+                'allowToShowHiddenAttributes' => true,
             ]
         );
     }
@@ -222,10 +223,10 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                                             'notice' => 'note',
                                             'default' => 'default_value',
                                             'size' => 'multiline_count',
-                                            'componentType' => Field::NAME
-                                        ]
-                                    ]
-                                ]
+                                            'componentType' => Field::NAME,
+                                        ],
+                                    ],
+                                ],
                             ],
                             'test-code-boolean' => [
                                 'arguments' => [
@@ -244,16 +245,16 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                                             'prefer' => 'toggle',
                                             'valueMap' => [
                                                 'true' => 1,
-                                                'false' => 0
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                                'false' => 0,
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -294,7 +295,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                 'getIsUserDefined',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
 
@@ -317,7 +318,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                 'getSource',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
 
@@ -345,14 +346,14 @@ class DataProviderWithDefaultAddressesTest extends TestCase
             'default_billing' => 2,
             'default_shipping' => 2,
             'password_hash' => 'password_hash',
-            'rp_token' => 'rp_token'
+            'rp_token' => 'rp_token',
         ];
         $addressData = [
             'country_id' => 'code',
             'entity_id' => 2,
             'parent_id' => $customerId,
             'street' => "line 1\nline 2",
-            'region' => 'Region Name'
+            'region' => 'Region Name',
         ];
         $localeRegionName = 'Locale Region Name';
 
@@ -387,7 +388,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                     'customer' => [
                         'email' => 'test@test.ua',
                         'default_billing' => 2,
-                        'default_shipping' => 2
+                        'default_shipping' => 2,
                     ],
                     'default_billing_address' => [
                         'country' => 'Ukraine',
@@ -395,11 +396,11 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                         'entity_id' => 2,
                         'parent_id' => $customerId,
                         'street' => ['line 1', 'line 2'],
-                        'region' => $localeRegionName
+                        'region' => $localeRegionName,
                     ],
                     'default_shipping_address' => [],
-                    'customer_id' => $customerId
-                ]
+                    'customer_id' => $customerId,
+                ],
             ],
             $this->dataProvider->getData()
         );
@@ -416,7 +417,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                 'email' => 'test1@test1.ua',
                 'default_billing' => 3,
                 'default_shipping' => 3,
-                'entity_id' => $customerId
+                'entity_id' => $customerId,
             ],
             'address' => [
                 3 => [
@@ -424,10 +425,10 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                     'lastname' => 'lastname1',
                     'street' => [
                         'street1',
-                        'street2'
+                        'street2',
                     ],
                     'default_billing' => 3,
-                    'default_shipping' => 3
+                    'default_shipping' => 3,
                 ],
             ],
         ];
@@ -439,7 +440,7 @@ class DataProviderWithDefaultAddressesTest extends TestCase
                 [
                     'email' => 'test@test.ua',
                     'default_billing' => 2,
-                    'default_shipping' => 2
+                    'default_shipping' => 2,
                 ]
             );
         $this->customerMock->expects($this->atLeastOnce())->method('getId')->willReturn($customerId);

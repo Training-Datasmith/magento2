@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Model\Product\Initialization\Helper\ProductLinks\Plugin;
 
 use Magento\Catalog\Api\Data\ProductLinkExtensionFactory;
@@ -20,7 +23,7 @@ class Grouped
     /**
      * String name for link type
      */
-    const TYPE_NAME = 'associated';
+    public const TYPE_NAME = 'associated';
 
     /**
      * @var ProductLinkInterfaceFactory

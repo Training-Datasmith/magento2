@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\PaypalGraphQl\Model\Plugin;
 
 use Magento\Framework\DataObject;
-use Magento\Store\Model\StoreRepository;
 use Magento\PaypalGraphQl\Model\Resolver\Store\Url;
+use Magento\Store\Model\StoreRepository;
 
 /**
  * Plugin for PayflowLink payment model class

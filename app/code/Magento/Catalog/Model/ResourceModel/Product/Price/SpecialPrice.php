@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,7 +14,6 @@ use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Catalog\Model\ResourceModel\Attribute;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Special price resource.
@@ -212,7 +213,7 @@ class SpecialPrice implements SpecialPriceInterface
                         [
                             'attribute_id = ?' => $this->getPriceAttributeId(),
                             'store_id = ?' => $storeId,
-                            $this->getEntityLinkField() . ' IN (?)' => $idsBunch
+                            $this->getEntityLinkField() . ' IN (?)' => $idsBunch,
                         ]
                     );
                 }
@@ -222,7 +223,7 @@ class SpecialPrice implements SpecialPriceInterface
                         [
                             'attribute_id IN (?)' => [$this->getPriceFromAttributeId(), $this->getPriceToAttributeId()],
                             'store_id = ?' => $storeId,
-                            $this->getEntityLinkField() . ' IN (?)' => $idsBunch
+                            $this->getEntityLinkField() . ' IN (?)' => $idsBunch,
                         ]
                     );
                 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Eav;
 
+use Magento\Catalog\Helper\Product\Flat\Indexer as ProductFlatIndexerHelper;
 use Magento\Catalog\Model\Attribute\LockValidatorInterface;
 use Magento\Catalog\Model\Indexer\Product\Eav\Processor as EavIndexerProcessor;
 use Magento\Catalog\Model\Indexer\Product\Flat\Processor as FlatIndexerProcessor;
 use Magento\Catalog\Model\Product\ReservedAttributeList;
-use Magento\Catalog\Helper\Product\Flat\Indexer as ProductFlatIndexerHelper;
 use Magento\Catalog\Model\ResourceModel\Eav\SpecialFromDate;
 use Magento\Catalog\Model\ResourceModel\Product;
 use Magento\Eav\Api\Data\AttributeExtensionFactory;

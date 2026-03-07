@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Bootstrap;
 
 /**
@@ -34,7 +37,7 @@ class SetupDocBlock extends \Magento\TestFramework\Bootstrap\DocBlock
             new \Magento\TestFramework\Workaround\CacheClean(),
             new \Magento\TestFramework\Annotation\ReinstallInstance($application),
             new \Magento\TestFramework\Annotation\CopyModules(),
-            new \Magento\TestFramework\Annotation\DataProviderFromFile()
+            new \Magento\TestFramework\Annotation\DataProviderFromFile(),
         ];
     }
 }

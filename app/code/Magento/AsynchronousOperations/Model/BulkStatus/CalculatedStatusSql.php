@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,10 +15,9 @@ class CalculatedStatusSql
     /**
      * Get sql to calculate bulk status
      *
-     * @param string $operationTableName
      * @return \Zend_Db_Expr
      */
-    public function get($operationTableName)
+    public function get(string $operationTableName)
     {
         return new \Zend_Db_Expr(
             '(IF(

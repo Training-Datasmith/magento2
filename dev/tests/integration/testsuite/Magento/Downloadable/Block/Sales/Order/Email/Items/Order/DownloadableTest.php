@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Quote\Api\GuestCartManagementInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteIdMask;
+use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
 use PHPUnit\Framework\TestCase;
-use Magento\Quote\Model\QuoteIdMaskFactory;
 
 /**
  * Test order confirmation email for downloadable product.

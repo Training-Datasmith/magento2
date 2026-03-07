@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ return [
                     'test_value_3' => 'value3.local_config.default.test',
                     'test_value_4' => 'value4.local_config.default.test',
                 ],
-            ]
+            ],
         ],
         'websites' => [
             'base' => [
@@ -32,23 +34,23 @@ return [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => '',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'THIRD_WEBSITE' => [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => 'local_config.website_third_website.test',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'fourthWebsite' => [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => 'local_config.website_fourthwebsite.test',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'stores' => [
             'default' => [
@@ -63,31 +65,31 @@ return [
                 ],
                 'camelCase' => [
                     'UPPERCASE' => [
-                        'snake_case' => 'local_config.store_default.test'
-                    ]
-                ]
+                        'snake_case' => 'local_config.store_default.test',
+                    ],
+                ],
             ],
             'SecondStore' => [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => 'local_config.store_secondstore.test',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'THIRD_STORE' => [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => '',
-                    ]
-                ]
+                    ],
+                ],
             ],
             'fourthStore' => [
                 'camelCase' => [
                     'UPPERCASE' => [
                         'snake_case' => 'local_config.store_fourthstore.test',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
-    ]
+    ],
 ];

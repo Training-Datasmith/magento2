@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Placeholder;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -17,7 +20,7 @@ class PlaceholderFactory
     /**
      * @const string Environment type
      */
-    const TYPE_ENVIRONMENT = 'environment';
+    public const TYPE_ENVIRONMENT = 'environment';
 
     /**
      * @var ObjectManagerInterface

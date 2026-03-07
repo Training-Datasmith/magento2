@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class DefaultDataMapper implements DataMapperInterface
     /**
      * @inheritdoc
      */
-    public function getMappedEnums(string $enumName) : array
+    public function getMappedEnums(string $enumName): array
     {
         return $this->map[$enumName] ?? [];
     }

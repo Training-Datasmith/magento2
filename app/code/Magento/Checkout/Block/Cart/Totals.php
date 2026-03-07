@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Checkout\Block\Cart;
 
-use Magento\Framework\View\Element\BlockInterface;
 use Magento\Checkout\Block\Checkout\LayoutProcessorInterface;
+use Magento\Framework\View\Element\BlockInterface;
 use Magento\Sales\Model\ConfigInterface;
 
 /**

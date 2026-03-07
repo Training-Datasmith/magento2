@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -183,7 +184,7 @@ class FulltextTest extends \PHPUnit\Framework\TestCase
         $visibilityFilter = [
             Visibility::VISIBILITY_IN_SEARCH,
             Visibility::VISIBILITY_IN_CATALOG,
-            Visibility::VISIBILITY_BOTH
+            Visibility::VISIBILITY_BOTH,
         ];
         $products = $this->search('Configurable', $visibilityFilter);
         $this->assertCount(1, $products);

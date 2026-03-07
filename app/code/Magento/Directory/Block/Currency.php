@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Currency dropdown block
  */
+
 namespace Magento\Directory\Block;
 
 use Magento\Framework\Locale\Bundle\CurrencyBundle as CurrencyBundle;

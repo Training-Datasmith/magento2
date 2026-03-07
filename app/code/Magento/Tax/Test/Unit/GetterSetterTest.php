@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class GetterSetterTest extends TestCase
 
             $this->assertTrue(
                 method_exists($classObject, $setterName),
-                "Method " . $setterName . " does not exist in " . $className
+                'Method ' . $setterName . ' does not exist in ' . $className
             );
 
             if (is_array($variableValue)) {
@@ -74,7 +75,7 @@ class GetterSetterTest extends TestCase
                     [$classObject, $setterName],
                     $variableValue
                 ),
-                "Calling method " . $setterName . " failed in " . $className
+                'Calling method ' . $setterName . ' failed in ' . $className
             );
         }
 
@@ -83,17 +84,17 @@ class GetterSetterTest extends TestCase
 
             $this->assertTrue(
                 method_exists($classObject, $getterName),
-                "Method " . $getterName . " does not exist in " . $className
+                'Method ' . $getterName . ' does not exist in ' . $className
             );
             $result = call_user_func([$classObject, $getterName]);
             $this->assertNotFalse(
                 $result,
-                "Calling method " . $getterName . " failed in " . $className
+                'Calling method ' . $getterName . ' failed in ' . $className
             );
             $this->assertSame(
                 $result,
                 $variableValue,
-                "Value from " . $getterName . "did not match in " . $className
+                'Value from ' . $getterName . 'did not match in ' . $className
             );
         }
     }
@@ -111,18 +112,18 @@ class GetterSetterTest extends TestCase
                     'TaxRateKey' => 'taxRateKey',
                     'Percent' => 1.0,
                     'Amount' => 1.0,
-                    'Rates' => [AppliedTaxRate::class
+                    'Rates' => [AppliedTaxRate::class,
                     ],
-                    'ExtensionAttributes' => AppliedTaxExtension::class
-                ]
+                    'ExtensionAttributes' => AppliedTaxExtension::class,
+                ],
             ],
             [AppliedTaxRate::class,
                 [
                     'Code' => 'code',
                     'Title' => 'title',
                     'Percent' => 1.0,
-                    'ExtensionAttributes' => AppliedTaxRateExtension::class
-                ]
+                    'ExtensionAttributes' => AppliedTaxRateExtension::class,
+                ],
             ],
             [Tax::class,
                 [
@@ -131,27 +132,27 @@ class GetterSetterTest extends TestCase
                     'Percent' => 1.0,
                     'Amount' => 'amount',
                     'BaseAmount' => 'baseAmount',
-                    'ExtensionAttributes' => OrderTaxDetailsAppliedTaxExtension::class
-                ]
+                    'ExtensionAttributes' => OrderTaxDetailsAppliedTaxExtension::class,
+                ],
             ],
             [Details::class,
                 [
-                    'AppliedTaxes' => [Tax::class
+                    'AppliedTaxes' => [Tax::class,
                     ],
-                    'Items' => [Item::class
+                    'Items' => [Item::class,
                     ],
-                    'ExtensionAttributes' => OrderTaxDetailsExtension::class
-                ]
+                    'ExtensionAttributes' => OrderTaxDetailsExtension::class,
+                ],
             ],
             [Item::class,
                 [
                     'Type' => 'type',
                     'ItemId' => 1,
                     'AssociatedItemId' => 1,
-                    'AppliedTaxes' => [Tax::class
+                    'AppliedTaxes' => [Tax::class,
                     ],
-                    'ExtensionAttributes' => OrderTaxDetailsItemExtension::class
-                ]
+                    'ExtensionAttributes' => OrderTaxDetailsItemExtension::class,
+                ],
             ],
             [QuoteDetails::class,
                 [
@@ -159,11 +160,11 @@ class GetterSetterTest extends TestCase
                     'ShippingAddress' => Address::class,
                     'CustomerTaxClassKey' => Key::class,
                     'CustomerId' => 1,
-                    'Items' => [Item::class
+                    'Items' => [Item::class,
                     ],
                     'CustomerTaxClassId' => 1,
-                    'ExtensionAttributes' => QuoteDetailsExtension::class
-                ]
+                    'ExtensionAttributes' => QuoteDetailsExtension::class,
+                ],
             ],
             [ItemDetails::class,
                 [
@@ -178,35 +179,35 @@ class GetterSetterTest extends TestCase
                     'ParentCode' => 'parentCode',
                     'AssociatedItemCode' => 1,
                     'TaxClassId' => 1,
-                    'ExtensionAttributes' => QuoteDetailsItemExtension::class
-                ]
+                    'ExtensionAttributes' => QuoteDetailsItemExtension::class,
+                ],
             ],
             [ClassModel::class,
                 [
                     'ClassId' => 1,
                     'ClassName' => 'className',
                     'ClassType' => 'classType',
-                    'ExtensionAttributes' => TaxClassExtension::class
-                ]
+                    'ExtensionAttributes' => TaxClassExtension::class,
+                ],
             ],
             [Key::class,
                 [
                     'Type' => 'type',
                     'Value' => 'value',
-                    'ExtensionAttributes' => TaxClassKeyExtension::class
-                ]
+                    'ExtensionAttributes' => TaxClassKeyExtension::class,
+                ],
             ],
             [TaxDetails::class,
                 [
                     'Subtotal' => 1.0,
                     'TaxAmount' => 1.0,
                     'DiscountTaxCompensationAmount' => 1.0,
-                    'AppliedTaxes' => [AppliedTax::class
+                    'AppliedTaxes' => [AppliedTax::class,
                     ],
-                    'Items' => [\Magento\Tax\Model\TaxDetails\ItemDetails::class
+                    'Items' => [\Magento\Tax\Model\TaxDetails\ItemDetails::class,
                     ],
-                    'ExtensionAttributes' => TaxDetailsExtension::class
-                ]
+                    'ExtensionAttributes' => TaxDetailsExtension::class,
+                ],
             ],
             [\Magento\Tax\Model\TaxDetails\ItemDetails::class,
                 [
@@ -221,11 +222,11 @@ class GetterSetterTest extends TestCase
                     'TaxableAmount' => 1.0,
                     'DiscountAmount' => 1.0,
                     'DiscountTaxCompensationAmount' => 1.0,
-                    'AppliedTaxes' => [AppliedTax::class
+                    'AppliedTaxes' => [AppliedTax::class,
                     ],
                     'AssociatedItemCode' => 1,
-                    'ExtensionAttributes' => TaxDetailsItemExtension::class
-                ]
+                    'ExtensionAttributes' => TaxDetailsItemExtension::class,
+                ],
             ],
             [Rate::class,
                 [
@@ -239,17 +240,17 @@ class GetterSetterTest extends TestCase
                     'ZipTo' => 1,
                     'Rate' => 1.0,
                     'Code' => 'code',
-                    'Titles' => [Title::class
+                    'Titles' => [Title::class,
                     ],
-                    'ExtensionAttributes' => TaxRateExtension::class
-                ]
+                    'ExtensionAttributes' => TaxRateExtension::class,
+                ],
             ],
             [Title::class,
                 [
                     'StoreId' => 'storeId',
                     'Value' => 'value',
-                    'ExtensionAttributes' => TaxRateTitleExtension::class
-                ]
+                    'ExtensionAttributes' => TaxRateTitleExtension::class,
+                ],
             ],
             [Rule::class,
                 [
@@ -261,9 +262,9 @@ class GetterSetterTest extends TestCase
                     'ProductTaxClassIds' => [1],
                     'TaxRateIds' => [1],
                     'CalculateSubtotal' => true,
-                    'ExtensionAttributes' => TaxRuleExtension::class
-                ]
-            ]
+                    'ExtensionAttributes' => TaxRuleExtension::class,
+                ],
+            ],
         ];
     }
 }

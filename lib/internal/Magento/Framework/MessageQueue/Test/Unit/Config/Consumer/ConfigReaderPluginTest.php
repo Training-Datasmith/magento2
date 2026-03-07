@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -58,12 +59,12 @@ class ConfigReaderPluginTest extends TestCase
                 'name' => 'consumer1',
                 'handlers' => [
                     ['handlerConfig1_1_1', 'handlerConfig1_1_2'],
-                    ['handlerConfig1_2_1']
+                    ['handlerConfig1_2_1'],
                 ],
                 'queue' => ['item1_1', 'item1_2'],
                 'instance_type' => 'type1',
                 'connection' => 'connection1',
-                'max_messages' => 100
+                'max_messages' => 100,
             ],
             [
                 'name' => 'consumer2',
@@ -71,8 +72,8 @@ class ConfigReaderPluginTest extends TestCase
                 'queue' => ['item2_1'],
                 'instance_type' => 'type2',
                 'connection' => 'connection2',
-                'max_messages' => 2
-            ]
+                'max_messages' => 2,
+            ],
         ];
         $finalResult = [
             'consumer1' => [
@@ -84,7 +85,7 @@ class ConfigReaderPluginTest extends TestCase
                 'maxMessages' => 100,
                 'maxIdleTime' => null,
                 'sleep' => null,
-                'onlySpawnWhenMessageAvailable' => false
+                'onlySpawnWhenMessageAvailable' => false,
             ],
             'consumer2' => [
                 'name' => 'consumer2',
@@ -95,9 +96,9 @@ class ConfigReaderPluginTest extends TestCase
                 'maxMessages' => 2,
                 'maxIdleTime' => null,
                 'sleep' => null,
-                'onlySpawnWhenMessageAvailable' => false
+                'onlySpawnWhenMessageAvailable' => false,
             ],
-            'consumer0' => []
+            'consumer0' => [],
         ];
 
         $this->configMock->expects(static::atLeastOnce())

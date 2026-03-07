@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Catalog\Model\ResourceModel\Collection;
 
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
-use Magento\Framework\Exception\LocalizedException;
+namespace Magento\Catalog\Model\ResourceModel\Collection;
 
 /**
  * Catalog EAV collection resource abstract model
@@ -192,7 +192,7 @@ class AbstractCollection extends \Magento\Eav\Model\Entity\Collection\AbstractCo
                 "e.{$entityIdField} = t_d.{$entityIdField}",
                 ['e.entity_id']
             )->where(
-                "e.entity_id IN (?)",
+                'e.entity_id IN (?)',
                 array_keys($this->_itemsById),
                 \Zend_Db::INT_TYPE
             )->where(
@@ -216,7 +216,7 @@ class AbstractCollection extends \Magento\Eav\Model\Entity\Collection\AbstractCo
                 "e.{$entityIdField} = t_d.{$entityIdField}",
                 ['e.entity_id']
             )->where(
-                "e.entity_id IN (?)",
+                'e.entity_id IN (?)',
                 array_keys($this->_itemsById),
                 \Zend_Db::INT_TYPE
             )->where(
@@ -284,7 +284,7 @@ class AbstractCollection extends \Magento\Eav\Model\Entity\Collection\AbstractCo
 
             $defCondition = str_replace($tableAlias, $defAlias, $defCondition);
             $defCondition .= $connection->quoteInto(
-                " AND " . $connection->quoteColumnAs("{$defAlias}.store_id", null) . " = ?",
+                ' AND ' . $connection->quoteColumnAs("{$defAlias}.store_id", null) . ' = ?',
                 $this->getDefaultStoreId()
             );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,17 +11,16 @@ namespace Magento\Persistent\Test\Unit\Observer;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Controller\Index;
 use Magento\Persistent\Helper\Data;
 use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Persistent\Observer\PreventClearCheckoutSessionObserver;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class PreventClearCheckoutSessionObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**

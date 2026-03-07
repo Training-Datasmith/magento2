@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class Product extends \Magento\Catalog\Test\Fixture\Product
         ],
         'extension_attributes' => [
             'bundle_product_options' => [],
-        ]
+        ],
     ];
 
     /**

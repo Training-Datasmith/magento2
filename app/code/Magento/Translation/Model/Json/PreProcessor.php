@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Translation\Model\Json;
 
+use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\AreaList;
 use Magento\Framework\TranslateInterface;
@@ -14,7 +16,6 @@ use Magento\Framework\View\Asset\File\FallbackContext;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
 use Magento\Framework\View\Asset\PreProcessorInterface;
 use Magento\Framework\View\DesignInterface;
-use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Translation\Model\Js\Config;
 use Magento\Translation\Model\Js\DataProviderInterface;
 

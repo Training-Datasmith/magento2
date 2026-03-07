@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,9 +12,6 @@ namespace Magento\JwtFrameworkAdapter\Model;
 use Magento\Framework\Jwt\Jwe\Jwe;
 use Magento\Framework\Jwt\Jwe\JweHeader;
 use Magento\Framework\Jwt\Jwe\JweInterface;
-use Magento\Framework\Jwt\Jws\Jws;
-use Magento\Framework\Jwt\Jws\JwsHeader;
-use Magento\Framework\Jwt\Jws\JwsInterface;
 use Magento\Framework\Jwt\Payload\ArbitraryPayload;
 use Magento\Framework\Jwt\Payload\ClaimsPayload;
 use Magento\Framework\Jwt\Payload\NestedPayload;

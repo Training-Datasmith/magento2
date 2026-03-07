@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Data\Design\Config;
 
 use Magento\Framework\Api\AbstractExtensibleObject;
-use Magento\Theme\Api\Data\DesignConfigDataInterface;
 use Magento\Theme\Api\Data\DesignConfigDataExtensionInterface;
+use Magento\Theme\Api\Data\DesignConfigDataInterface;
 
 class Data extends AbstractExtensibleObject implements DesignConfigDataInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,12 +15,12 @@ use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Customer\Model\Visitor as VisitorModel;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Session\Generic as GenericSession;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\LayoutInterface;
 use Magento\PageCache\Model\DepersonalizeChecker;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit tests for \Magento\Customer\Model\Layout\DepersonalizePlugin class.
@@ -81,7 +82,7 @@ class DepersonalizePluginTest extends TestCase
             [
                 'setData',
                 'clearStorage',
-                'getData'
+                'getData',
             ]
         );
         $this->customerSessionMock = $this->createPartialMock(
@@ -93,7 +94,7 @@ class DepersonalizePluginTest extends TestCase
             Customer::class,
             [
                 'setGroupId',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->visitorMock = $this->createMock(VisitorModel::class);

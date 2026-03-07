@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Magento\Vault\Api\Data\PaymentTokenExtensionInterface;
-use Magento\Vault\Model\ResourceModel;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\MediaContent\Model;
 
 use Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ExtractAssetsFromContent
@@ -64,45 +65,45 @@ class ExtractAssetsFromContentTest extends TestCase
         return [
             'Empty Content' => [
                 '',
-                []
+                [],
             ],
             'No paths in content' => [
                 'content without paths',
-                []
+                [],
             ],
             'Relevant paths in content' => [
                 'content {{media url="testDirectory/path.jpg"}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant paths in content without quotes' => [
                 'content {{media url=testDirectory/path.jpg}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant wysiwyg paths in content' => [
                 'content <img src="https://domain.com/media/testDirectory/path.jpg"}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant path content with pub' => [
                 '/pub/media/testDirectory/path.jpg',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant path content' => [
                 '/media/testDirectory/path.jpg',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Irrelevant paths in content' => [
                 'content {{media url="media/non-existing-path.png"}} content',
-                []
+                [],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\Item;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\Option;
 use Magento\Quote\Model\Quote\Item\RelatedProducts;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(\Magento\Quote\Model\Quote\Item\RelatedProducts::class)]
@@ -81,7 +82,7 @@ class RelatedProductsTest extends TestCase
             ['optionValue' => 'type1', 'productId' => 123, 'expectedResult' => [123]],
             ['optionValue' => 'other_type', 'productId' => 123, 'expectedResult' => []],
             ['optionValue' => 'type1', 'productId' => null, 'expectedResult' => []],
-            ['optionValue' => 'other_type', 'productId' => false, 'expectedResult' => []]
+            ['optionValue' => 'other_type', 'productId' => false, 'expectedResult' => []],
         ];
     }
 

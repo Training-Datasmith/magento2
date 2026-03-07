@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -78,10 +79,10 @@ class ReorderTest extends GraphQlAbstract
                             'product' => [
                                 'sku' => 'simple',
                             ],
-                        ]
+                        ],
                     ],
                 ],
-                'userInputErrors' => []
+                'userInputErrors' => [],
             ]
         );
     }
@@ -138,15 +139,15 @@ class ReorderTest extends GraphQlAbstract
                     [
                         'quantity' => 1,
                         'product' => [
-                            'sku' => 'simple'
-                        ]
+                            'sku' => 'simple',
+                        ],
                     ],
                     [
                         'quantity' => 1,
                         'product' => [
-                            'sku' => 'simple-2'
-                        ]
-                    ]
+                            'sku' => 'simple-2',
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -176,9 +177,9 @@ class ReorderTest extends GraphQlAbstract
                     [
                         'quantity' => 10,
                         'product' => [
-                            'sku' => 'simple-2'
-                        ]
-                    ]
+                            'sku' => 'simple-2',
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -206,7 +207,7 @@ class ReorderTest extends GraphQlAbstract
             'userInputErrors' => [
                 [
                     'path' => [
-                        'orderNumber'
+                        'orderNumber',
                     ],
                     'code' => 'NOT_SALABLE',
                 ],

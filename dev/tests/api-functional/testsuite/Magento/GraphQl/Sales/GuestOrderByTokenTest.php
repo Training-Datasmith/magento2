@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ QUERY;
         $placeOrderQuery = strtr(
             self::PLACE_ORDER,
             [
-                '%cart_id' => $maskedQuoteId
+                '%cart_id' => $maskedQuoteId,
             ]
         );
         $placeOrderResponse = $this->graphQlMutation($placeOrderQuery);
@@ -106,9 +107,9 @@ QUERY;
                     'email' => $placeOrderResponse['placeOrder']['orderV2']['email'],
                     'billing_address' => [
                         'firstname' => $placeOrderResponse['placeOrder']['orderV2']['billing_address']['firstname'],
-                        'lastname' => $placeOrderResponse['placeOrder']['orderV2']['billing_address']['lastname']
-                    ]
-                ]
+                        'lastname' => $placeOrderResponse['placeOrder']['orderV2']['billing_address']['lastname'],
+                    ],
+                ],
             ],
             $response
         );
@@ -138,7 +139,7 @@ QUERY;
                     $order->getIncrementId(),
                     $order->getBillingAddress()->getEmail(),
                     $order->getBillingAddress()->getLastname()
-                )
+                ),
             ]
         );
         $this->graphQlQuery($query);
@@ -150,7 +151,7 @@ QUERY;
         $query = strtr(
             self::GUEST_ORDER_BY_TOKEN,
             [
-                '%token' => 'incorrect'
+                '%token' => 'incorrect',
             ]
         );
         $this->graphQlQuery($query);

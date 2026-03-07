@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Block;
 
 use Magento\Store\Model\ScopeInterface;
@@ -13,7 +16,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class UrlKeyRenderer extends \Magento\Catalog\Block\Adminhtml\Form\Renderer\Fieldset\Element
 {
-    const XML_PATH_SEO_SAVE_HISTORY = 'catalog/seo/save_rewrites_history';
+    public const XML_PATH_SEO_SAVE_HISTORY = 'catalog/seo/save_rewrites_history';
 
     /**
      * @var \Magento\Framework\Data\Form\Element\Factory

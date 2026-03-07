@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Eav\Model\AttributeFactory;
 use Magento\Eav\Model\AttributeRepository;
 use Magento\Eav\Test\Fixture\Attribute;
 use Magento\GraphQl\PageCache\GraphQLPageCacheAbstract;
+use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
 use Magento\PageCache\Model\Config;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Test\Fixture\Group as StoreGroupFixture;
@@ -24,7 +26,6 @@ use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\GraphQlCache\Model\CacheId\CacheIdCalculator;
 
 /**
  * Test caching for attributes list GraphQL query.
@@ -105,7 +106,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_attribute_0'
         ),
@@ -153,7 +154,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_attribute_0'
         ),
@@ -185,7 +186,7 @@ QRY;
             self::QUERY,
             [
                 'Store' => $store2->getCode(),
-                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2
+                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2,
             ]
         );
         $attribute = end($response['body']['attributesList']['items']);
@@ -195,7 +196,7 @@ QRY;
             self::QUERY,
             [
                 'Store' => $store2->getCode(),
-                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2
+                CacheIdCalculator::CACHE_ID_HEADER => $cacheIdStore2,
             ]
         );
     }
@@ -207,7 +208,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_attribute_0'
         )
@@ -258,7 +259,7 @@ QRY;
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
                 'default_value' => 'initial value',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_attribute_0'
         )
@@ -313,7 +314,7 @@ QRY;
             [
                 'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_attribute_0'
         ),
@@ -322,7 +323,7 @@ QRY;
             [
                 'entity_type_id' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'customer_address_attribute_0'
         ),
@@ -401,7 +402,7 @@ QRY;
         $newAttribute = $newAttributeCreate->apply([
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'frontend_input' => 'boolean',
-            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+            'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
         ]);
 
         // First query execution should result in a cache miss, while second one should be a cache hit

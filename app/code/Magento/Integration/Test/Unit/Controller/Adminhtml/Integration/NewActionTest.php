@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,12 +27,12 @@ class NewActionTest extends IntegrationTestCase
         $objects = [
             [
                 Factory::class,
-                $this->createMock(Factory::class)
+                $this->createMock(Factory::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(SerializerInterface::class)
-            ]
+                $this->createMock(SerializerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $integrationContr = $this->_createIntegrationController('NewAction');

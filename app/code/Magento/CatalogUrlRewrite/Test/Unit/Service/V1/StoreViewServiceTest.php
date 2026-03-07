@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class StoreViewServiceTest extends TestCase
         $this->select->method('where')->willReturnSelf();
         $this->select->expects($this->once())->method('join')->with(
             ['e_attr' => 'backend_table'],
-            "e.link_field = e_attr.link_field",
+            'e.link_field = e_attr.link_field',
             'store_id'
         )->willReturnSelf();
         $this->connection->expects($this->once())->method('select')->willReturn($this->select);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -149,38 +150,38 @@ class CollectionTest extends TestCase
                 'period' => 'day',
                 'fromDate' => new \DateTime('-3 day'),
                 'toDate' => new \DateTime('+3 day'),
-                'size' => 7
+                'size' => 7,
             ],
             [
                 'period' => 'month',
                 'fromDate' => new \DateTime('2015-01-15 11:11:11'),
                 'toDate' => new \DateTime('2015-01-25 11:11:11'),
-                'size' => 1
+                'size' => 1,
             ],
             [
                 'period' => 'month',
                 'fromDate' => new \DateTime('2015-01-15 11:11:11'),
                 'toDate' => new \DateTime('2015-02-25 11:11:11'),
-                'size' => 2
+                'size' => 2,
             ],
             [
                 'period' => 'year',
                 'fromDate' => new \DateTime('2015-01-15 11:11:11'),
                 'toDate' => new \DateTime('2015-01-25 11:11:11'),
-                'size' => 1
+                'size' => 1,
             ],
             [
                 'period' => 'year',
                 'fromDate' => new \DateTime('2014-01-15 11:11:11'),
                 'toDate' => new \DateTime('2015-01-25 11:11:11'),
-                'size' => 2
+                'size' => 2,
             ],
             [
                 'period' => null,
                 'fromDate' => new \DateTime('-3 day'),
                 'toDate' => new \DateTime('+3 day'),
-                'size' => 0
-            ]
+                'size' => 0,
+            ],
         ];
     }
 
@@ -191,7 +192,7 @@ class CollectionTest extends TestCase
     public function formatDate(\DateTimeInterface $dateStart): string
     {
         $formatter = new \IntlDateFormatter(
-            "en_US",
+            'en_US',
             \IntlDateFormatter::SHORT,
             \IntlDateFormatter::SHORT,
             new \DateTimeZone('America/Los_Angeles')

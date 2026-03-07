@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @TODO Eliminate this factory in favor of strictly typified, not involving object manager with arbitrary class name
  */
+
 namespace Magento\Framework\Validator;
 
 class UniversalFactory

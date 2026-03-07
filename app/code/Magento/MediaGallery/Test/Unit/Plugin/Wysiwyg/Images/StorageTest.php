@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class StorageTest extends TestCase
             [
                 'deleteMediaAssetByPath' => $this->deleteMediaAssetByPathMock,
                 'filesystem' => $this->filesystemMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -130,7 +131,7 @@ class StorageTest extends TestCase
         return [
             'Non string path' => [2020],
             'Invalid path' => [self::INVALID_PATH],
-            'Existent path' => [self::VALID_PATH]
+            'Existent path' => [self::VALID_PATH],
         ];
     }
 

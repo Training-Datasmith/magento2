@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,8 +43,8 @@ class XsdTest extends TestCase
         $messageFormat = '%message%';
         $dom = new Dom($fixtureXml, $validationStateMock, [], null, null, $messageFormat);
         $actualResult = $dom->validate($this->_schemaFile, $actualErrors);
-        $this->assertEquals($expectedErrors, $actualErrors, "Validation errors does not match.");
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
+        $this->assertEquals($expectedErrors, $actualErrors, 'Validation errors does not match.');
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
     }
 
     /**
@@ -134,7 +135,7 @@ class XsdTest extends TestCase
                 '<config/>',
                 [
                     "Element 'config': Missing child element(s). Expected is ( extension_attributes ).The " .
-                    "xml was: \n0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n"
+                    "xml was: \n0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n",
                 ],
             ],
             'invalid with attribute code with resources without single resource' => [
@@ -153,7 +154,7 @@ class XsdTest extends TestCase
                     "code=\"custom_1\" type=\"Magento\Customer\Api\Data\CustomerCustom\">\n" .
                     "4:                            <resources>\n5:                            </resources>\n" .
                     "6:                        </attribute>\n7:                    </extension_attributes>\n" .
-                    "8:                </config>\n9:\n"
+                    "8:                </config>\n9:\n",
                 ],
             ],
             'invalid with attribute code without join attributes' => [

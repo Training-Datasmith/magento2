@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Phrase;
-use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Webapi\Exception as WebapiException;
 
 /**
@@ -246,7 +247,7 @@ class ErrorProcessor
         if (empty($validatorMessages)) {
             return [
                 'errors' => null,
-                'mainPhrase' => new Phrase($exception->getRawMessage())
+                'mainPhrase' => new Phrase($exception->getRawMessage()),
             ];
         }
 
@@ -266,7 +267,7 @@ class ErrorProcessor
 
         return [
             'errors' => $errors,
-            'mainPhrase' => $mainPhrase
+            'mainPhrase' => $mainPhrase,
         ];
     }
 
@@ -305,7 +306,7 @@ class ErrorProcessor
      */
     protected function _critical(\Exception $exception)
     {
-        $reportId = uniqid("webapi-");
+        $reportId = uniqid('webapi-');
         $message = "Report ID: {$reportId}; Message: {$exception->getMessage()}";
         $code = $exception->getCode();
         $exception = new \Exception($message, $code, $exception);

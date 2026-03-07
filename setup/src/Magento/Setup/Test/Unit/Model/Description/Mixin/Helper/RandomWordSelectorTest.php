@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\Description\Mixin\Helper;
 
 use Magento\Setup\Model\Description\Mixin\Helper\RandomWordSelector;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RandomWordSelectorTest extends TestCase
 {
@@ -51,18 +52,18 @@ class RandomWordSelectorTest extends TestCase
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 ',
-                'fixtureCount' => 1
+                'fixtureCount' => 1,
             ],
             [
                 'fixtureSource' => 'Lorem.',
-                'fixtureCount' => 5
+                'fixtureCount' => 5,
             ],
             [
                 'fixtureSource' => '
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 ',
-                'fixtureCount' => 3
+                'fixtureCount' => 3,
             ],
         ];
     }

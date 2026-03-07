@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,11 +9,12 @@
 /**
  * Store grid column filter
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 class Store extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFilter
 {
-    const ALL_STORE_VIEWS = '0';
+    public const ALL_STORE_VIEWS = '0';
 
     /**
      * @var \Magento\Store\Model\System\Store

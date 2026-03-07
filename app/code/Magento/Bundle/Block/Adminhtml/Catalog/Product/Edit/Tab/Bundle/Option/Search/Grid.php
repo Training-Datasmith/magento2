@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option\Search;
 
 /**
@@ -138,7 +141,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('ID'),
                 'index' => 'entity_id',
                 'renderer' => \Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkbox::class,
-                'type' => 'skip-list'
+                'type' => 'skip-list',
             ]
         );
 
@@ -148,7 +151,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Product'),
                 'index' => 'name',
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'name col-name'
+                'column_css_class' => 'name col-name',
             ]
         );
         $this->addColumn(
@@ -158,7 +161,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '80px',
                 'index' => 'sku',
                 'header_css_class' => 'col-sku',
-                'column_css_class' => 'sku col-sku'
+                'column_css_class' => 'sku col-sku',
             ]
         );
         $this->addColumn(
@@ -169,7 +172,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'currency',
                 'index' => 'price',
                 'header_css_class' => 'col-price',
-                'column_css_class' => 'col-price'
+                'column_css_class' => 'col-price',
             ]
         );
         return parent::_prepareColumns();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Indexer\Test\Unit\Model;
 
 use Magento\Framework\Indexer\CacheContext;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test indexer cache context
@@ -85,19 +86,19 @@ class CacheContextTest extends TestCase
             'should return entities and tags' => [
                 [
                     'cat_p' => [1, 2, 3],
-                    'cat_c' => [5, 6, 7]
+                    'cat_c' => [5, 6, 7],
                 ],
                 ['cat_c_p1', 'cat_c_p2'],
-                ['cat_p_1', 'cat_p_2', 'cat_p_3', 'cat_c_5', 'cat_c_6', 'cat_c_7', 'cat_c_p1', 'cat_c_p2']
+                ['cat_p_1', 'cat_p_2', 'cat_p_3', 'cat_c_5', 'cat_c_6', 'cat_c_7', 'cat_c_p1', 'cat_c_p2'],
             ],
             'should return unique values' => [
                 [
                     'cat_p' => [1, 2, 3, 1, 3],
-                    'cat_c' => [5, 6, 7, 6]
+                    'cat_c' => [5, 6, 7, 6],
                 ],
                 ['cat_c_p1', 'cat_c_p2'],
-                ['cat_p_1', 'cat_p_2', 'cat_p_3', 'cat_c_5', 'cat_c_6', 'cat_c_7', 'cat_c_p1', 'cat_c_p2']
-            ]
+                ['cat_p_1', 'cat_p_2', 'cat_p_3', 'cat_c_5', 'cat_c_6', 'cat_c_7', 'cat_c_p1', 'cat_c_p2'],
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\OfflineShipping\Model\Config\Source;
 
 /**
@@ -19,7 +22,7 @@ class Flatrate implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => '', 'label' => __('None')],
             ['value' => 'O', 'label' => __('Per Order')],
-            ['value' => 'I', 'label' => __('Per Item')]
+            ['value' => 'I', 'label' => __('Per Item')],
         ];
     }
 }

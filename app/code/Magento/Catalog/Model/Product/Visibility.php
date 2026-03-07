@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -16,13 +19,13 @@ use Magento\Framework\DB\Ddl\Table;
  */
 class Visibility extends \Magento\Framework\DataObject implements OptionSourceInterface
 {
-    const VISIBILITY_NOT_VISIBLE = 1;
+    public const VISIBILITY_NOT_VISIBLE = 1;
 
-    const VISIBILITY_IN_CATALOG = 2;
+    public const VISIBILITY_IN_CATALOG = 2;
 
-    const VISIBILITY_IN_SEARCH = 3;
+    public const VISIBILITY_IN_SEARCH = 3;
 
-    const VISIBILITY_BOTH = 4;
+    public const VISIBILITY_BOTH = 4;
 
     /**
      * Reference to the attribute instance
@@ -94,7 +97,7 @@ class Visibility extends \Magento\Framework\DataObject implements OptionSourceIn
             self::VISIBILITY_NOT_VISIBLE => __('Not Visible Individually'),
             self::VISIBILITY_IN_CATALOG => __('Catalog'),
             self::VISIBILITY_IN_SEARCH => __('Search'),
-            self::VISIBILITY_BOTH => __('Catalog, Search')
+            self::VISIBILITY_BOTH => __('Catalog, Search'),
         ];
     }
 

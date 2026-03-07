@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -874,8 +877,8 @@ class Product extends \Magento\Catalog\Model\AbstractModel implements
 
         $this->getTypeInstance()->beforeSave($this);
 
-        $hasOptions = $this->getData('has_options') === "1" && $this->isProductHasOptions();
-        $hasRequiredOptions = $this->getData('required_options') === "1" && $this->isProductHasOptions();
+        $hasOptions = $this->getData('has_options') === '1' && $this->isProductHasOptions();
+        $hasRequiredOptions = $this->getData('required_options') === '1' && $this->isProductHasOptions();
 
         /**
          * $this->_canAffectOptions - set by type instance only
@@ -930,7 +933,7 @@ class Product extends \Magento\Catalog\Model\AbstractModel implements
      *
      * @return bool
      */
-    private function isProductHasOptions() : bool
+    private function isProductHasOptions(): bool
     {
         if ($this->getData('options') === null) {
             $result = true;

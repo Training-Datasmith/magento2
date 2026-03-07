@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ interface ResponseTypeInterface
     /**#@+
      * Response Type values
      */
-    const RESPONSE_TYPE_SUCCESS = 'success';
-    const RESPONSE_TYPE_ERROR = 'error';
+    public const RESPONSE_TYPE_SUCCESS = 'success';
+    public const RESPONSE_TYPE_ERROR = 'error';
     /**#@-*/
 }

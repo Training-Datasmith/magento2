@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class ConfigurableWYSIWYGValidator implements WYSIWYGValidatorInterface
     /**
      * @var string
      */
-    private static string $contentFiltrationPattern = "/(<body)/i";
+    private static string $contentFiltrationPattern = '/(<body)/i';
 
     /**
      * @var string[]

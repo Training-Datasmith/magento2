@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\TestFramework\Eav\Model\GetAttributeSetByName;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\CacheCleaner;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\TestFramework\Eav\Model\GetAttributeSetByName;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/attribute_set_based_on_default_set.php');
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/categories.php');
@@ -65,7 +66,7 @@ $attributeModel->setData(
             'value' => ['option_0' => ['Option 1'], 'option_1' => ['Option 2']],
             'order' => ['option_0' => 1, 'option_1' => 2],
         ],
-        'default' => ['option_0']
+        'default' => ['option_0'],
     ]
 );
 $attribute = $attributeRepository->save($attributeModel);

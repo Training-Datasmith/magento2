@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class Ga extends Template
     {
         return [
             'optPageUrl' => $this->getOptPageUrl(),
-            'measurementId' => $this->_escaper->escapeHtmlAttr($measurementId, false)
+            'measurementId' => $this->_escaper->escapeHtmlAttr($measurementId, false),
         ];
     }
 
@@ -153,7 +154,7 @@ class Ga extends Template
                         $this->_storeManager->getStore()->getFrontendName()
                     ),
                     'price' => round((float) $item->getPrice(), 2),
-                    'quantity' => (int)$item->getQtyOrdered()
+                    'quantity' => (int)$item->getQtyOrdered(),
                 ];
             }
             $result['orders'][] = [
@@ -195,7 +196,7 @@ class Ga extends Template
             'cookieName' => Cookie::IS_USER_ALLOWED_SAVE_COOKIE,
             'pageTrackingData' => $this->getPageTrackingData($this->googleGtagConfig->getMeasurementId()),
             'ordersTrackingData' => $this->getOrdersTrackingData(),
-            'googleAnalyticsAvailable' => $this->googleGtagConfig->isGoogleAnalyticsAvailable()
+            'googleAnalyticsAvailable' => $this->googleGtagConfig->isGoogleAnalyticsAvailable(),
         ];
         return $this->serializer->serialize($analyticData);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Shipping\Model\Config\Source;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Shipping\Model\Config;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -132,10 +133,10 @@ class AllmethodsTest extends TestCase
             $firstMethod = $methods[0];
             $this->assertArrayHasKey('value', $firstMethod);
             $this->assertArrayHasKey('label', $firstMethod);
-            
+
             // Verify value format: {carrierCode}_{methodCode}
             $this->assertStringStartsWith('flatrate_', $firstMethod['value']);
-            
+
             // Verify label format: [{carrierCode}] {methodTitle}
             $this->assertStringStartsWith('[flatrate]', $firstMethod['label']);
         }
@@ -185,7 +186,7 @@ class AllmethodsTest extends TestCase
             ->getMock();
 
         $scopeConfig = $this->objectManager->get(ScopeConfigInterface::class);
-        
+
         // Get real carrier instances
         $shippingConfig = $this->objectManager->create(Config::class);
         $activeCarriers = $shippingConfig->getActiveCarriers();
@@ -200,7 +201,7 @@ class AllmethodsTest extends TestCase
             Allmethods::class,
             [
                 'scopeConfig' => $scopeConfig,
-                'shippingConfig' => $configMock
+                'shippingConfig' => $configMock,
             ]
         );
 
@@ -222,7 +223,7 @@ class AllmethodsTest extends TestCase
             Allmethods::class,
             [
                 'scopeConfig' => $scopeConfig,
-                'shippingConfig' => $configMock2
+                'shippingConfig' => $configMock2,
             ]
         );
 
@@ -242,11 +243,11 @@ class AllmethodsTest extends TestCase
         $result = $this->allmethods->toOptionArray(true);
 
         $this->assertIsArray($result);
-        
+
         // Should include at least flatrate
         $this->assertArrayHasKey('flatrate', $result);
         $this->assertSame('Flat Rate', $result['flatrate']['label']);
-        
+
         // Count active carriers (excluding the empty option at index 0)
         $activeCarrierCount = 0;
         foreach (array_keys($result) as $key) {
@@ -254,7 +255,7 @@ class AllmethodsTest extends TestCase
                 $activeCarrierCount++;
             }
         }
-        
+
         // Should have at least 1 active carrier (flatrate)
         // May have more depending on system configuration
         $this->assertGreaterThanOrEqual(1, $activeCarrierCount, 'Should return at least one active carrier');
@@ -275,7 +276,7 @@ class AllmethodsTest extends TestCase
         $this->assertCount(count($resultFalse), $resultDefault, 'Both results should have same number of carriers');
         $this->assertArrayHasKey(0, $resultDefault, 'Default should have empty option');
         $this->assertArrayHasKey('flatrate', $resultDefault, 'Default should include flatrate carrier');
-        
+
         // Verify both have the same carrier keys
         $keysDefault = array_keys($resultDefault);
         $keysFalse = array_keys($resultFalse);

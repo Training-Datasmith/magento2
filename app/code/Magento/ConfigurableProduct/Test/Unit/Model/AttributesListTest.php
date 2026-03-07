@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 use Magento\ConfigurableProduct\Model\AttributesList;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AttributesListTest extends TestCase
 {
@@ -73,8 +74,8 @@ class AttributesListTest extends TestCase
                 'id' => 'id',
                 'label' => 'label',
                 'code' => 'code',
-                'options' => ['options']
-            ]
+                'options' => ['options'],
+            ],
         ];
 
         $this->collectionMock

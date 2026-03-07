@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,9 +25,9 @@ use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\InputException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -142,7 +143,7 @@ class AddressRepositoryTest extends TestCase
                 'validate',
                 'save',
                 'getDataModel',
-                'getCustomerId'
+                'getCustomerId',
             ]
         );
 
@@ -185,7 +186,7 @@ class AddressRepositoryTest extends TestCase
             ->with($customerId)
             ->willReturn($this->customer);
         $this->address->expects($this->atLeastOnce())
-            ->method("getId")
+            ->method('getId')
             ->willReturn($addressId);
         $this->addressRegistry->expects($this->once())
             ->method('retrieve')
@@ -212,10 +213,10 @@ class AddressRepositoryTest extends TestCase
             ->method('getAddressesCollection')
             ->willReturn($addressCollection);
         $addressCollection->expects($this->once())
-            ->method("removeItemByKey")
+            ->method('removeItemByKey')
             ->with($addressId);
         $addressCollection->expects($this->once())
-            ->method("addItem")
+            ->method('addItem')
             ->with($this->address);
         $this->address->expects($this->once())
             ->method('getDataModel')
@@ -244,7 +245,7 @@ class AddressRepositoryTest extends TestCase
             ->with($customerId)
             ->willReturn($this->customer);
         $this->address->expects($this->atLeastOnce())
-            ->method("getId")
+            ->method('getId')
             ->willReturn($addressId);
         $this->addressRegistry->expects($this->once())
             ->method('retrieve')
@@ -279,10 +280,10 @@ class AddressRepositoryTest extends TestCase
             ->method('getAddressesCollection')
             ->willReturn($addressCollection);
         $addressCollection->expects($this->once())
-            ->method("removeItemByKey")
+            ->method('removeItemByKey')
             ->with($addressId);
         $addressCollection->expects($this->once())
-            ->method("addItem")
+            ->method('addItem')
             ->with($this->address);
         $this->address->expects($this->once())
             ->method('getDataModel')
@@ -311,7 +312,7 @@ class AddressRepositoryTest extends TestCase
             ->with($customerId)
             ->willReturn($this->customer);
         $this->address->expects($this->atLeastOnce())
-            ->method("getId")
+            ->method('getId')
             ->willReturn($addressId);
         $this->addressRegistry->expects($this->once())
             ->method('retrieve')
@@ -346,10 +347,10 @@ class AddressRepositoryTest extends TestCase
             ->method('getAddressesCollection')
             ->willReturn($addressCollection);
         $addressCollection->expects($this->once())
-            ->method("removeItemByKey")
+            ->method('removeItemByKey')
             ->with($addressId);
         $addressCollection->expects($this->once())
-            ->method("addItem")
+            ->method('addItem')
             ->with($this->address);
         $this->address->expects($this->once())
             ->method('getDataModel')

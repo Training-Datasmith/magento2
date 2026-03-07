@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml\Config;
 
 /**
@@ -16,11 +19,8 @@ class Mapper
 {
     /**
      * Transforms configuration data.
-     *
-     * @param array $configData
-     * @return array
      */
-    public function execute($configData)
+    public function execute(array $configData): array
     {
         if (!isset($configData['config'][0]['report'])) {
             return [];

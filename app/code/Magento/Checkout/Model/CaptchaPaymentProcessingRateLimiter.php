@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ declare(strict_types=1);
 namespace Magento\Checkout\Model;
 
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\Captcha\Observer\CaptchaStringResolver as CaptchaResolver;
 use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
 use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Captcha\Helper\Data as CaptchaHelper;
-use Magento\Captcha\Observer\CaptchaStringResolver as CaptchaResolver;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -55,7 +56,7 @@ class CaptchaPaymentProcessingRateLimiter implements PaymentProcessingRateLimite
             'captchaHelper' => $captchaHelper,
             'captchaResolver' => $captchaResolver,
             'request' => $request,
-            'captchaId' => self::CAPTCHA_FORM
+            'captchaId' => self::CAPTCHA_FORM,
         ]);
     }
 

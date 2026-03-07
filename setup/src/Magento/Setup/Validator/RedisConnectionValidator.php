@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -25,7 +27,7 @@ class RedisConnectionValidator
             'db' => '',
             'password' => null,
             'timeout' => null,
-            'persistent' => ''
+            'persistent' => '',
         ];
 
         $config = array_merge($default, $redisOptions);

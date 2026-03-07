@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,23 +8,23 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Filter;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Filter\DataProvider\Price;
 use Magento\Catalog\Model\Layer\Filter\DataProvider\PriceFactory;
 use Magento\Catalog\Model\Layer\Filter\Dynamic\AlgorithmFactory;
 use Magento\Catalog\Model\Layer\Filter\Dynamic\Auto;
 use Magento\Catalog\Model\Layer\Filter\Item;
-use Magento\Catalog\Model\Layer\Filter\Price as FilterPrice;
-use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price as PriceResource;
 use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
 use Magento\Catalog\Model\Layer\Filter\ItemFactory;
+use Magento\Catalog\Model\Layer\Filter\Price as FilterPrice;
 use Magento\Catalog\Model\Layer\State;
+use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price as PriceResource;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -185,7 +186,7 @@ class PriceTest extends TestCase
                 'itemDataBuilder' => $this->itemDataBuilder,
                 'filterItemFactory' => $this->filterItemFactory,
                 'escaper' => $escaper,
-                'algorithmFactory' => $algorithmFactory
+                'algorithmFactory' => $algorithmFactory,
             ]
         );
     }
@@ -221,16 +222,16 @@ class PriceTest extends TestCase
         return [
             [
                 'requestValue' => null,
-                'idValue' => 0
+                'idValue' => 0,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => false
+                'idValue' => false,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => null
-            ]
+                'idValue' => null,
+            ],
         ];
     }
 

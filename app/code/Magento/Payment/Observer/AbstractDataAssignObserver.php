@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Observer;
 
 use Magento\Framework\DataObject;
@@ -19,11 +22,11 @@ use Magento\Payment\Model\MethodInterface;
  */
 abstract class AbstractDataAssignObserver implements ObserverInterface
 {
-    const METHOD_CODE = 'method';
+    public const METHOD_CODE = 'method';
 
-    const DATA_CODE = 'data';
+    public const DATA_CODE = 'data';
 
-    const MODEL_CODE = 'payment_model';
+    public const MODEL_CODE = 'payment_model';
 
     /**
      * Reads method argument

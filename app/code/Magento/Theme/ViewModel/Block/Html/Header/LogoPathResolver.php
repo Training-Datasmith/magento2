@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Theme\ViewModel\Block\Html\Header;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Config\Model\Config\Backend\Image\Logo;
-use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class for resolving logo path
@@ -40,7 +41,7 @@ class LogoPathResolver implements LogoPathResolverInterface, ArgumentInterface
     {
         $path = null;
         $scopeType = ScopeInterface::SCOPE_STORE;
-        if ($this->scopeConfig->getValue('general/single_store_mode/enabled') === "1") {
+        if ($this->scopeConfig->getValue('general/single_store_mode/enabled') === '1') {
             $scopeType = ScopeInterface::SCOPE_WEBSITE;
         }
         $storeLogoPath = $this->scopeConfig->getValue(

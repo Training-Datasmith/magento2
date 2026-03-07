@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Block\Order\Item\Renderer;
 
 use Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ namespace Magento\Search\Model;
  */
 class PopularSearchTerms
 {
-    const XML_PATH_MAX_COUNT_CACHEABLE_SEARCH_TERMS = 'catalog/search/max_count_cacheable_search_terms';
+    public const XML_PATH_MAX_COUNT_CACHEABLE_SEARCH_TERMS = 'catalog/search/max_count_cacheable_search_terms';
 
     /**
      * Scope configuration

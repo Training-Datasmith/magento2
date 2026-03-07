@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -26,9 +28,9 @@ class UpgradeWebsiteAttributes implements DataPatchInterface, PatchVersionInterf
     /**
      * ATTENTION: These constants must not be reused anywhere outside
      */
-    const ATTRIBUTE_WEBSITE = 2;
-    const GLOBAL_STORE_VIEW_ID = 0;
-    const MASK_ATTRIBUTE_VALUE = '%d_%d_%d';
+    public const ATTRIBUTE_WEBSITE = 2;
+    public const GLOBAL_STORE_VIEW_ID = 0;
+    public const MASK_ATTRIBUTE_VALUE = '%d_%d_%d';
 
     /**
      * Map table names to metadata classes where link field might be found

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\Mview;
 
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Ddl\Trigger;
 use Magento\Framework\Mview\View\CollectionFactory;
 use Magento\Framework\Mview\View\StateInterface;
 use Magento\Framework\Mview\View\Subscription;
-use Magento\Framework\DB\Ddl\Trigger;
 
 /**
  * Class for removing old triggers that were created by mview
@@ -154,7 +155,7 @@ class TriggerCleaner
         $subscription[$tableName] = [
             'name' => $tableName,
             'column' => '',
-            'subscription_model' => null
+            'subscription_model' => null,
         ];
         $data['data'] = [
             'subscriptions' => $subscription,

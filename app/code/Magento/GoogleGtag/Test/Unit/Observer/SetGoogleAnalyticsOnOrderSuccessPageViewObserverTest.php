@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -12,9 +13,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\LayoutInterface;
-use Magento\GoogleGtag\Helper\Data as GaDataHelper;
 use Magento\GoogleGtag\Observer\SetGoogleAnalyticsOnOrderSuccessPageViewObserver;
-use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +53,7 @@ class SetGoogleAnalyticsOnOrderSuccessPageViewObserverTest extends TestCase
         $this->orderSuccessObserver = $objectManager->getObject(
             SetGoogleAnalyticsOnOrderSuccessPageViewObserver::class,
             [
-                'layout' => $this->layoutMock
+                'layout' => $this->layoutMock,
             ]
         );
     }

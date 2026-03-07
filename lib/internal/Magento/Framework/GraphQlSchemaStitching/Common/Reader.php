@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class Reader implements ReaderInterface
      * @param string|null $scope
      * @return array
      */
-    public function read($scope = null) : array
+    public function read($scope = null): array
     {
         $output = [];
         foreach ($this->readers as $reader) {

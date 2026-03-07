@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ namespace Magento\AsynchronousOperations\Api\Data;
  */
 interface AsyncResponseInterface
 {
-    const BULK_UUID = 'bulk_uuid';
-    const REQUEST_ITEMS = 'request_items';
-    const ERRORS = 'errors';
+    public const BULK_UUID = 'bulk_uuid';
+    public const REQUEST_ITEMS = 'request_items';
+    public const ERRORS = 'errors';
 
     /**
      * Gets the bulk uuid.
@@ -81,7 +82,6 @@ interface AsyncResponseInterface
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\AsynchronousOperations\Api\Data\AsyncResponseExtensionInterface $extensionAttributes
      * @return $this
      * @since 100.2.3
      */

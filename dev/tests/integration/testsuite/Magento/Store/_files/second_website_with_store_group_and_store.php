@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Store\Api\Data\GroupInterface;
 use Magento\Store\Api\Data\GroupInterfaceFactory;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\StoreInterfaceFactory;
-use \Magento\Store\Api\Data\WebsiteInterface;
-use \Magento\Store\Api\Data\WebsiteInterfaceFactory;
+use Magento\Store\Api\Data\WebsiteInterface;
+use Magento\Store\Api\Data\WebsiteInterfaceFactory;
 use Magento\Store\Model\ResourceModel\Group as GroupResource;
 use Magento\Store\Model\ResourceModel\Store as StoreResource;
 use Magento\Store\Model\ResourceModel\Website as WebsiteResource;

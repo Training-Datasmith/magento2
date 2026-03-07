@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\CatalogRule\Setup\Patch\Data;
 
+use Magento\CatalogRule\Api\Data\RuleInterface;
+use Magento\Framework\DB\AggregatedFieldDataConverter;
+use Magento\Framework\DB\DataConverter\SerializedToJson;
+use Magento\Framework\DB\FieldToConvert;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\Framework\DB\AggregatedFieldDataConverter;
-use Magento\Framework\DB\DataConverter\SerializedToJson;
-use Magento\Framework\DB\FieldToConvert;
-use Magento\CatalogRule\Api\Data\RuleInterface;
 
 class ConvertSerializedDataToJson implements DataPatchInterface, PatchVersionInterface
 {

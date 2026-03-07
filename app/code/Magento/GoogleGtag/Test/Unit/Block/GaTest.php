@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -31,7 +32,6 @@ use PHPUnit\Framework\TestCase;
  */
 class GaTest extends TestCase
 {
-
     /**
      * @var Ga|MockObject
      */
@@ -117,7 +117,7 @@ class GaTest extends TestCase
                 'serializer' => $this->serializerMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
                 'orderRepository' => $this->orderRepository,
-                '_escaper' => $escaper
+                '_escaper' => $escaper,
             ]
         );
     }
@@ -158,8 +158,8 @@ class GaTest extends TestCase
                     'value' => 10.00,
                     'tax' => 2.00,
                     'shipping' => 1.00,
-                    'currency' => 'USD'
-                ]
+                    'currency' => 'USD',
+                ],
             ],
             'products' => [
                 [
@@ -167,8 +167,8 @@ class GaTest extends TestCase
                     'item_name' => 'testName0',
                     'affiliation' => 'test',
                     'price' => 0.00,
-                    'quantity' => 1
-                ]
+                    'quantity' => 1,
+                ],
             ],
         ];
         $this->gaBlock->setOrderIds([1, 2]);
@@ -179,10 +179,10 @@ class GaTest extends TestCase
     public function testGetPageTrackingData()
     {
         $pageName = '/page/name';
-        $accountId = "100";
+        $accountId = '100';
         $expectedResult = [
             'optPageUrl' => ", '" . $pageName . "'",
-            'measurementId' => $accountId
+            'measurementId' => $accountId,
         ];
         $this->gaBlock->setData('page_name', $pageName);
         $this->assertEquals($expectedResult, $this->gaBlock->getPageTrackingData($accountId));

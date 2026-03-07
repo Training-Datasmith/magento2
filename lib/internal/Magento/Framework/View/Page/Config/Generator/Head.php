@@ -1,33 +1,36 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Page\Config\Generator;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Page\Config\Structure;
-use Magento\Framework\App\ObjectManager;
 
 class Head implements Layout\GeneratorInterface
 {
     /**#@+
      * Available src_type in assets
      */
-    const SRC_TYPE_RESOURCE = 'resource';
-    const SRC_TYPE_CONTROLLER = 'controller';
-    const SRC_TYPE_URL = 'url';
+    public const SRC_TYPE_RESOURCE = 'resource';
+    public const SRC_TYPE_CONTROLLER = 'controller';
+    public const SRC_TYPE_URL = 'url';
     /**#@-*/
 
     /**
      * Type of generator
      */
-    const TYPE = 'head';
+    public const TYPE = 'head';
 
     /**
      * Virtual content type
      */
-    const VIRTUAL_CONTENT_TYPE_LINK = 'link';
+    public const VIRTUAL_CONTENT_TYPE_LINK = 'link';
 
     /**
      * @var array
@@ -42,7 +45,7 @@ class Head implements Layout\GeneratorInterface
      */
     protected $assetProperties = [
         'ie_condition',
-        'order'
+        'order',
     ];
 
     /**

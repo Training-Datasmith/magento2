@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\GroupedProduct\Model\Product\Type\Grouped as Type;
  */
 class GroupedProductTypeResolver implements TypeResolverInterface
 {
-    const GROUPED_PRODUCT = 'GroupedProduct';
+    public const GROUPED_PRODUCT = 'GroupedProduct';
     /**
      * @inheritdoc
      */
-    public function resolveType(array $data) : string
+    public function resolveType(array $data): string
     {
         if (isset($data['type_id']) && $data['type_id'] == Type::TYPE_CODE) {
             return self::GROUPED_PRODUCT;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Reader\Source\Deployed;
 
 use Magento\Config\Model\Placeholder\PlaceholderFactory;
@@ -64,12 +67,12 @@ class SettingChecker
         );
 
         if (null === $config) {
-            $config = $this->config->get($this->resolvePath($scope, $scopeCode) . "/" . $path);
+            $config = $this->config->get($this->resolvePath($scope, $scopeCode) . '/' . $path);
         }
 
         if (null === $config) {
             $config = $this->config->get(
-                $this->resolvePath(ScopeConfigInterface::SCOPE_TYPE_DEFAULT, null) . "/" . $path
+                $this->resolvePath(ScopeConfigInterface::SCOPE_TYPE_DEFAULT, null) . '/' . $path
             );
         }
 

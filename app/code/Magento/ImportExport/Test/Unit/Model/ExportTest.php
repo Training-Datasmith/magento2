@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\ImportExport\Model\Export
  */
+
 namespace Magento\ImportExport\Test\Unit\Model;
 
 use Magento\Framework\Filesystem;
@@ -48,22 +50,22 @@ class ExportTest extends TestCase
      */
     private $entities = [
         'entityA' => [
-            'model' => 'entityAClass'
+            'model' => 'entityAClass',
         ],
         'entityB' => [
-            'model' => 'entityBClass'
-        ]
+            'model' => 'entityBClass',
+        ],
     ];
     /**
      * @var string[]
      */
     private $fileFormats = [
         'csv' => [
-            'model' => 'csvFormatClass'
+            'model' => 'csvFormatClass',
         ],
         'xml' => [
-            'model' => 'xmlFormatClass'
-        ]
+            'model' => 'xmlFormatClass',
+        ],
     ];
 
     /**
@@ -130,7 +132,7 @@ class ExportTest extends TestCase
             'entity' => 'entityA',
             'file_format' => 'csv',
             Export::FILTER_ELEMENT_GROUP => [],
-            'locale' => $locale
+            'locale' => $locale,
         ];
         $this->model->setData($config);
         $this->exportAbstractEntityMock->method('getEntityTypeCode')

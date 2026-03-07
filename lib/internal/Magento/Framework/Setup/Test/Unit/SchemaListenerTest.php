@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -44,8 +45,8 @@ class SchemaListenerTest extends TestCase
                     'integer' => new IntegerDefinition(
                         new BooleanDefinition()
                     ),
-                    'decimal' => new RealDefinition()
-                ]
+                    'decimal' => new RealDefinition(),
+                ],
             ]
         );
         $this->model->flush();
@@ -54,7 +55,7 @@ class SchemaListenerTest extends TestCase
     /**
      * @return Table
      */
-    private function getCreateTableDDL($tableName) : Table
+    private function getCreateTableDDL($tableName): Table
     {
         $table = new Table();
         $table->setName($tableName);
@@ -79,22 +80,22 @@ class SchemaListenerTest extends TestCase
             'Decimal'
         )
             ->addIndex(
-            'INDEX_KEY',
-            ['column_with_type_text'],
-            ['type' => AdapterInterface::INDEX_TYPE_FULLTEXT]
-        )
+                'INDEX_KEY',
+                ['column_with_type_text'],
+                ['type' => AdapterInterface::INDEX_TYPE_FULLTEXT]
+            )
             ->addForeignKey(
-            'some_key',
-            'decimal',
-            'setup_tests_table1',
-            'column_with_type_integer',
-            Table::ACTION_CASCADE
-        )->setComment(
-            'Related Table'
-        );
+                'some_key',
+                'decimal',
+                'setup_tests_table1',
+                'column_with_type_integer',
+                Table::ACTION_CASCADE
+            )->setComment(
+                'Related Table'
+            );
     }
 
-    public function testRenameTable() : void
+    public function testRenameTable(): void
     {
         $this->model->setModuleName('First_Module');
         $this->model->createTable($this->getCreateTableDDL('old_table'));
@@ -104,7 +105,7 @@ class SchemaListenerTest extends TestCase
         self::assertArrayNotHasKey('old_table', $tables['First_Module']);
     }
 
-    public function testDropIndex() : void
+    public function testDropIndex(): void
     {
         $this->model->setModuleName('First_Module');
         $this->model->createTable($this->getCreateTableDDL('index_table'));
@@ -112,7 +113,7 @@ class SchemaListenerTest extends TestCase
         self::assertTrue($this->model->getTables()['First_Module']['index_table']['indexes']['INDEX_KEY']['disabled']);
     }
 
-    public function testCreateTable() : void
+    public function testCreateTable(): void
     {
         $this->model->setModuleName('First_Module');
         $this->model->createTable($this->getCreateTableDDL('new_table'));
@@ -140,7 +141,7 @@ class SchemaListenerTest extends TestCase
                     'default' => null,
                     'disabled' => false,
                     'onCreate' => null,
-                    'comment' => 'Integer'
+                    'comment' => 'Integer',
                 ],
                 'decimal' => [
                     'xsi:type' => 'decimal',
@@ -152,7 +153,7 @@ class SchemaListenerTest extends TestCase
                     'default' => null,
                     'disabled' => false,
                     'onCreate' => null,
-                    'comment' => 'Decimal'
+                    'comment' => 'Decimal',
                 ],
             ],
             $tables['First_Module']['new_table']['columns']
@@ -197,7 +198,7 @@ class SchemaListenerTest extends TestCase
         );
     }
 
-    public function testDropTable() : void
+    public function testDropTable(): void
     {
         $this->model->setModuleName('Old_Module');
         $this->model->createTable($this->getCreateTableDDL('old_table'));
@@ -206,7 +207,7 @@ class SchemaListenerTest extends TestCase
         self::assertTrue($this->model->getTables()['New_Module']['old_table']['disabled']);
     }
 
-    public function testDropTableInSameModule() : void
+    public function testDropTableInSameModule(): void
     {
         $this->model->setModuleName('Old_Module');
         $this->model->createTable($this->getCreateTableDDL('old_table'));

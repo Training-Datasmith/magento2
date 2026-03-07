@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class IgnoreTaxNotificationTest extends TestCase
                 'objectManager' => $manager,
                 'cacheTypeList' => $cacheTypeList,
                 'request' => $request,
-                'resultFactory' => $resultFactory
+                'resultFactory' => $resultFactory,
             ]
         );
 

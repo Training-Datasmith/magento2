@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Security\Test\Unit\Model\Plugin;
 
+use Magento\Backend\Model\Auth as BackendAuth;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Security\Model\AdminSessionInfo;
 use Magento\Security\Model\AdminSessionsManager;
 use Magento\Security\Model\Plugin\Auth;
-use Magento\Backend\Model\Auth as BackendAuth;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -76,7 +77,7 @@ class AuthTest extends TestCase
             Auth::class,
             [
                 'sessionsManager' => $this->sessionsManager,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class TypeTest extends TestCase
                 'types' => [
                     ['disabled' => true],
                 ],
-                'label' => 'optionLabelDisabled'
+                'label' => 'optionLabelDisabled',
             ],
         ];
         $expect = [
@@ -57,7 +58,7 @@ class TypeTest extends TestCase
             [
                 'label' => 'optionLabel',
                 'optgroup-name' => 'optionLabel',
-                'value' => [['label' => 'typeLabel', 'value' => 'typeName']]
+                'value' => [['label' => 'typeLabel', 'value' => 'typeName']],
             ],
         ];
 

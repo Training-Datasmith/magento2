@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Widget Instance Properties tab block
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance\Edit\Tab;
 
 /**
@@ -23,7 +26,7 @@ class Properties extends \Magento\Widget\Block\Adminhtml\Widget\Options implemen
      * @var array
      */
     protected $hiddenParameters = [
-        'template'
+        'template',
     ];
 
     /**

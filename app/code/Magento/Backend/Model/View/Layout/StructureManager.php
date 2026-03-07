@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Backend\Model\View\Layout;
 
-use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\Data\Structure;
+use Magento\Framework\View\Layout\ScheduledStructure;
 
 /**
  * Class StructureManager

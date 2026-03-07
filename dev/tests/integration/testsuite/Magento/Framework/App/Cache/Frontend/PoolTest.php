@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2019 Adobe
@@ -9,8 +11,8 @@ namespace Magento\Framework\App\Cache\Frontend;
 
 use Magento\Framework\ObjectManager\ConfigInterface as ObjectManagerConfig;
 use Magento\TestFramework\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This superfluous comment can be removed as soon as the sniffs have been updated to match the coding guide lines.

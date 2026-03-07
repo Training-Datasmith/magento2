@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -129,11 +130,11 @@ class MessageControllerDecoratorTest extends TestCase
             ->with(
                 $operationTableName,
                 [
-                    'started_at' => $date
+                    'started_at' => $date,
                 ],
                 [
                     'bulk_uuid = ?' => $bUuid,
-                    'operation_key = ?' => $operationId
+                    'operation_key = ?' => $operationId,
                 ]
             );
         $this->assertSame($lock, $this->model->lock($envelope, $consumerName));

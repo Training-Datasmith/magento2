@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\MessageQueue\Topology\Config;
 
-use Magento\Framework\Phrase;
+namespace Magento\Framework\MessageQueue\Topology\Config;
 
 /**
  * Composite reader for topology config.

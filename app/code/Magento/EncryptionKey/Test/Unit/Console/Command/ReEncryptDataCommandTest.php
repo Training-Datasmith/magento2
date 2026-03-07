@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Test\Unit\Console\Command;
 
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Console\Tester\CommandTester;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 use Magento\EncryptionKey\Console\Command\ReEncryptDataCommand;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor;
 use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\Handler\Error;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * Test for the 'encryption:data:re-encrypt' CLI command.
@@ -32,13 +33,13 @@ class ReEncryptDataCommandTest extends TestCase
         $reEncryptorError = $this->createMock(Error::class);
         $reEncryptorError->expects($this->any())
             ->method('getRowIdField')
-            ->willReturn("id");
+            ->willReturn('id');
         $reEncryptorError->expects($this->any())
             ->method('getRowIdValue')
             ->willReturn(1);
         $reEncryptorError->expects($this->any())
             ->method('getMessage')
-            ->willReturn("Test error");
+            ->willReturn('Test error');
 
         $reEncryptorOneMock = $this->createMock(ReEncryptor::class);
         $reEncryptorOneMock->expects($this->any())
@@ -53,16 +54,16 @@ class ReEncryptDataCommandTest extends TestCase
         $reEncryptorThreeMock = $this->createMock(ReEncryptor::class);
         $reEncryptorThreeMock->expects($this->any())
             ->method('reEncrypt')
-            ->willThrowException(new \Exception("Critical error!"));
+            ->willThrowException(new \Exception('Critical error!'));
 
         $reEncryptorListMock = $this->createMock(ReEncryptorList::class);
         $reEncryptorListMock->expects($this->any())
             ->method('getReEncryptors')
             ->willReturn(
                 [
-                    "test_one" => $reEncryptorOneMock,
-                    "test_two" => $reEncryptorTwoMock,
-                    "test_three" => $reEncryptorThreeMock
+                    'test_one' => $reEncryptorOneMock,
+                    'test_two' => $reEncryptorTwoMock,
+                    'test_three' => $reEncryptorThreeMock,
                 ]
             );
 
@@ -82,29 +83,29 @@ class ReEncryptDataCommandTest extends TestCase
             sprintf(
                 "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 "Executing 'test_one' re-encryptor...",
-                "Done in 0:00:00 but with the following errors:",
-                "[id 1]: Test error",
+                'Done in 0:00:00 but with the following errors:',
+                '[id 1]: Test error',
                 "Executing 'test_two' re-encryptor...",
-                "Done successfully in 0:00:00.",
+                'Done successfully in 0:00:00.',
                 "Executing 'test_three' re-encryptor...",
-                "Failed due to the following error:",
-                "Critical error!"
+                'Failed due to the following error:',
+                'Critical error!'
             ),
             $this->commandTester->getDisplay()
         );
 
-        $this->commandTester->execute(["encryptors" => ["test_two"]]);
+        $this->commandTester->execute(['encryptors' => ['test_two']]);
 
         $this->assertEquals(
             sprintf(
                 "%s\n%s\n",
                 "Executing 'test_two' re-encryptor...",
-                "Done successfully in 0:00:00."
+                'Done successfully in 0:00:00.'
             ),
             $this->commandTester->getDisplay()
         );
 
-        $this->commandTester->execute(["encryptors" => ["test_four"]]);
+        $this->commandTester->execute(['encryptors' => ['test_four']]);
 
         $this->assertEquals(
             sprintf(

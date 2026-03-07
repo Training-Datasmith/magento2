@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Bundle\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\BundlePrice;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Framework\Stdlib\ArrayManager;
 
 class BundlePriceTest extends AbstractModifierTestCase
 {
@@ -22,7 +22,7 @@ class BundlePriceTest extends AbstractModifierTestCase
             BundlePrice::class,
             [
                 'locator' => $this->locatorMock,
-                'arrayManager' => $this->arrayManagerMock
+                'arrayManager' => $this->arrayManagerMock,
             ]
         );
     }
@@ -44,49 +44,49 @@ class BundlePriceTest extends AbstractModifierTestCase
         $sourceMeta = [
             'bundle-items' => [
                 'children' => [
-                    BundlePrice::CODE_PRICE_TYPE => []
-                ]
-            ]
+                    BundlePrice::CODE_PRICE_TYPE => [],
+                ],
+            ],
         ];
         $priceTypeParams = [
             'disabled' => true,
             'valueMap' => [
                 'false' => '1',
-                'true' => '0'
+                'true' => '0',
             ],
             'validation' => [
-                'required-entry' => false
-            ]
+                'required-entry' => false,
+            ],
         ];
         $priceTypeMeta = [
             'bundle-items' => [
                 'children' => [
-                    BundlePrice::CODE_PRICE_TYPE => $priceTypeParams
-                ]
-            ]
+                    BundlePrice::CODE_PRICE_TYPE => $priceTypeParams,
+                ],
+            ],
         ];
         $priceParams = [
             'imports' => [
                 'disabled' => 'ns = ${ $.ns }, index = ' . BundlePrice::CODE_PRICE_TYPE . ':checked',
                 '__disableTmpl' => ['disabled' => false],
-            ]
+            ],
         ];
         $priceMeta = [
             'product-details' => [
                 'children' => [
-                    BundlePrice::CODE_PRICE_TYPE => []
-                ]
+                    BundlePrice::CODE_PRICE_TYPE => [],
+                ],
             ],
             'bundle-items' => [
                 'children' => [
-                    ProductAttributeInterface::CODE_PRICE => $priceParams
-                ]
-            ]
+                    ProductAttributeInterface::CODE_PRICE => $priceParams,
+                ],
+            ],
         ];
         $taxParams = [
             'service' => [
-                'template' => ''
-            ]
+                'template' => '',
+            ],
         ];
 
         $this->arrayManagerMock->expects($this->any())

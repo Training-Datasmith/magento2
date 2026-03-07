@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\CatalogSearch\Block\Result;
 use Magento\Framework\Module\Setup\Migration;
@@ -34,7 +36,7 @@ return [
                 'table' => 'table',
                 'field' => 'field',
                 'to' => '<p>{{widget type="Magento\CatalogSearch\Block\Result"}}</p>',
-                'from' => ['`field` = ?' => '<p>{{widget type="catalogSearch/result"}}</p>']
+                'from' => ['`field` = ?' => '<p>{{widget type="catalogSearch/result"}}</p>'],
             ],
         ],
         'aliases_map' => [
@@ -43,5 +45,5 @@ return [
                 'catalogSearch/result' => Result::class,
             ],
         ],
-    ]
+    ],
 ];

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Config\Source\Product;
 
 /**
@@ -11,9 +14,9 @@ namespace Magento\Catalog\Model\Config\Source\Product;
  */
 class Thumbnail implements \Magento\Framework\Option\ArrayInterface
 {
-    const OPTION_USE_PARENT_IMAGE = 'parent';
+    public const OPTION_USE_PARENT_IMAGE = 'parent';
 
-    const OPTION_USE_OWN_IMAGE = 'itself';
+    public const OPTION_USE_OWN_IMAGE = 'itself';
 
     /**
      * {@inheritdoc}
@@ -24,7 +27,7 @@ class Thumbnail implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => self::OPTION_USE_OWN_IMAGE, 'label' => __('Product Thumbnail Itself')],
-            ['value' => self::OPTION_USE_PARENT_IMAGE, 'label' => __('Parent Product Thumbnail')]
+            ['value' => self::OPTION_USE_PARENT_IMAGE, 'label' => __('Parent Product Thumbnail')],
         ];
     }
 }

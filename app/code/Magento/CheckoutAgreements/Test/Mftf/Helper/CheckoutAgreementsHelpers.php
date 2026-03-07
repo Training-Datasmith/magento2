@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CheckoutAgreements\Test\Mftf\Helper;
 
+use Exception;
 use Facebook\WebDriver\WebDriverBy;
 use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\FunctionalTestingFramework\Module\MagentoWebDriver;
-use Exception;
 
 /**
  * Class for MFTF helpers for CheckoutAgreements module.
@@ -37,7 +38,7 @@ class CheckoutAgreementsHelpers extends Helper
     ): void {
         try {
             /** @var MagentoWebDriver $magentoWebDriver */
-            $magentoWebDriver = $this->getModule("\\" . MagentoWebDriver::class);
+            $magentoWebDriver = $this->getModule('\\' . MagentoWebDriver::class);
             $webDriver = $magentoWebDriver->webDriver;
 
             $magentoWebDriver->waitForPageLoad(30);

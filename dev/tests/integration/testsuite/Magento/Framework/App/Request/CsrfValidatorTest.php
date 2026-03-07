@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,20 +9,20 @@ declare(strict_types=1);
 
 namespace Magento\Framework\App\Request;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\Framework\App\Response\HttpFactory as HttpResponseFactory;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Phrase;
-use PHPUnit\Framework\TestCase;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Laminas\Stdlib\Parameters;
-use Magento\Framework\App\Response\Http as HttpResponse;
-use Magento\Framework\App\Response\HttpFactory as HttpResponseFactory;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -69,7 +70,7 @@ class CsrfValidatorTest extends TestCase
      */
     private function createUnawareAction(): ActionInterface
     {
-        return new class implements ActionInterface {
+        return new class () implements ActionInterface {
             /**
              * @inheritDoc
              */
@@ -89,7 +90,7 @@ class CsrfValidatorTest extends TestCase
         $m = self::AWARE_MESSAGE;
         $p = self::AWARE_VALIDATION_PARAM;
 
-        return new class($u, $m, $p) implements CsrfAwareActionInterface {
+        return new class ($u, $m, $p) implements CsrfAwareActionInterface {
             /**
              * @var string
              */

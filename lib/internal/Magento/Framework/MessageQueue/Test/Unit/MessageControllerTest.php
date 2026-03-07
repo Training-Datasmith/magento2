@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class MessageControllerTest extends TestCase
         $this->messageController = $objectManager->getObject(
             MessageController::class,
             [
-                'lockFactory' => $this->lockFactory
+                'lockFactory' => $this->lockFactory,
             ]
         );
     }

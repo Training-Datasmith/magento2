@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\Ui;
 
 use Magento\Vault\Api\Data\PaymentTokenInterface;
@@ -15,8 +18,8 @@ use Magento\Vault\Api\Data\PaymentTokenInterface;
  */
 interface TokenUiComponentProviderInterface
 {
-    const COMPONENT_DETAILS = 'details';
-    const COMPONENT_PUBLIC_HASH = 'publicHash';
+    public const COMPONENT_DETAILS = 'details';
+    public const COMPONENT_PUBLIC_HASH = 'publicHash';
 
     /**
      * @param PaymentTokenInterface $paymentToken

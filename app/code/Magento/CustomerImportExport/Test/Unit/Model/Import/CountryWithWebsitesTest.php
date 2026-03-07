@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\CustomerImportExport\Test\Unit\Model\Import;
 
-use PHPUnit\Framework\TestCase;
-use Magento\CustomerImportExport\Model\Import\CountryWithWebsites;
-use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
-use Magento\Directory\Model\AllowedCountries;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\Config\Share as CustomerShareConfig;
+use Magento\CustomerImportExport\Model\Import\CountryWithWebsites;
+use Magento\Directory\Model\AllowedCountries;
+use Magento\Directory\Model\ResourceModel\Country\Collection as CountryCollection;
+use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Directory\Model\ResourceModel\Country\Collection as CountryCollection;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class CountryWithWebsitesTest extends TestCase
 {
@@ -86,14 +87,14 @@ class CountryWithWebsitesTest extends TestCase
         $countryCollectionMock->method('toOptionArray')
             ->willReturn([
                 ['value' => 'US', 'label' => 'United States'],
-                ['value' => 'CA', 'label' => 'Canada']
+                ['value' => 'CA', 'label' => 'Canada'],
             ]);
 
         $this->countriesFactoryMock->method('create')->willReturn($countryCollectionMock);
 
         $expectedResult = [
             ['value' => 'US', 'label' => 'United States', 'website_ids' => [1]],
-            ['value' => 'CA', 'label' => 'Canada', 'website_ids' => [1]]
+            ['value' => 'CA', 'label' => 'Canada', 'website_ids' => [1]],
         ];
 
         $this->assertEquals($expectedResult, $this->countryWithWebsites->getCountiesPerWebsite());

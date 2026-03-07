@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaStorage\Model\File\Storage\Database;
 
 /**
@@ -16,7 +19,7 @@ abstract class AbstractDatabase extends \Magento\Framework\Model\AbstractModel
     /**
      * Default connection
      */
-    const CONNECTION_DEFAULT = 'default_setup';
+    public const CONNECTION_DEFAULT = 'default_setup';
 
     /**
      * Core file storage database

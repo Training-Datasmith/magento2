@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Bundle\Setup\Patch\Schema;
 
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Framework\Setup\Patch\SchemaPatchInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * Class UpdateBundleRelatedSchema
@@ -49,7 +51,7 @@ class UpdateBundleRelatedSchema implements SchemaPatchInterface, PatchVersionInt
                 [
                     'options' => $this->schemaSetup->getTable(
                         'catalog_product_bundle_option'
-                    )
+                    ),
                 ],
                 'values.option_id = options.option_id',
                 ['parent_product_id' => 'parent_id']
@@ -118,7 +120,7 @@ class UpdateBundleRelatedSchema implements SchemaPatchInterface, PatchVersionInt
                 [
                     'selections' => $this->schemaSetup->getTable(
                         'catalog_product_bundle_selection'
-                    )
+                    ),
                 ],
                 'prices.selection_id = selections.selection_id',
                 []

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 use Magento\Ui\Component\Filters\FilterModifier;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class FilterModifierTest extends TestCase
@@ -82,8 +83,8 @@ class FilterModifierTest extends TestCase
             ->with(FilterModifier::FILTER_MODIFIER)
             ->willReturn([
                 'filter' => [
-                    'condition_type' => 'not_allowed'
-                ]
+                    'condition_type' => 'not_allowed',
+                ],
             ]);
         $this->dataProvider->expects($this->never())->method('addFilter');
         $this->unit->applyFilterModifier($this->dataProvider, 'filter');
@@ -122,19 +123,19 @@ class FilterModifierTest extends TestCase
         return [
             [
                 [
-                    'filter1' => ['condition_type' => 'eq', 'value' => '5']
+                    'filter1' => ['condition_type' => 'eq', 'value' => '5'],
                 ],
                 'filter1',
                 'eq',
-                '5'
+                '5',
             ],
             [
                 [
-                    'filter2' => ['condition_type' => 'notnull']
+                    'filter2' => ['condition_type' => 'notnull'],
                 ],
                 'filter2',
                 'notnull',
-                null
+                null,
             ],
         ];
     }

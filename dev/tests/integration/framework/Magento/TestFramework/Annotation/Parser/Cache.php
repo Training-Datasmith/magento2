@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class Cache implements ParserInterface
             if (!preg_match('/^([a-z_]+)\s(enabled|disabled)$/', $value, $matches)) {
                 throw new LocalizedException(
                     __(
-                        "Invalid annotation format: @%1 %2. The valid format is: @%1 [<type>|all] [enabled|disabled].",
+                        'Invalid annotation format: @%1 %2. The valid format is: @%1 [<type>|all] [enabled|disabled].',
                         self::ANNOTATION,
                         $value
                     )

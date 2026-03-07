@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Setup;
 
+use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Setup\ExternalFKSetup;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Api\Data\ProductInterface;
 
 /**
  * @codeCoverageIgnore
@@ -52,7 +55,7 @@ class Recurring implements InstallSchemaInterface
             'report_viewed_product_aggregated_monthly' => 'product_id',
             'report_viewed_product_aggregated_yearly' => 'product_id',
             'report_compared_product_index' => 'product_id',
-            'report_viewed_product_index' => 'product_id'
+            'report_viewed_product_index' => 'product_id',
         ];
         foreach ($listTables as $tableName => $columnName) {
             $this->addExternalForeignKeys($installer, $tableName, $columnName);

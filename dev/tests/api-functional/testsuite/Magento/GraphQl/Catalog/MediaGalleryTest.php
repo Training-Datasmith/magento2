@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -251,7 +252,7 @@ QUERY;
                         'types' => [
                             'image',
                             'small_image',
-                            'thumbnail'
+                            'thumbnail',
                         ],
                         'file' => '/m/product1.jpg',
                     ],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class AdjustAttributeSearchableTest extends TestCase
         $presentation = $this->createMock(Presentation::class);
         $result = [
             'is_filterable_in_search' => '1',
-            'is_searchable' => '0'
+            'is_searchable' => '0',
         ];
         $interceptor = new AdjustAttributeSearchable();
         $this->assertSame(

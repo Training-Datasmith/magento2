@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Block;
 
 /**
@@ -25,7 +28,7 @@ class Javascript extends \Magento\Framework\View\Element\Template
                 'page_cache/block/render/',
                 [
                     '_current' => true,
-                    '_secure' => $this->templateContext->getRequest()->isSecure()
+                    '_secure' => $this->templateContext->getRequest()->isSecure(),
                 ]
             ),
             'handles' => $this->_layout->getUpdate()->getHandles(),
@@ -35,7 +38,7 @@ class Javascript extends \Magento\Framework\View\Element\Template
                 'action'     => $this->getRequest()->getActionName(),
                 'uri'        => $this->getRequest()->getRequestUri(),
             ],
-            'versionCookieName' => \Magento\Framework\App\PageCache\Version::COOKIE_NAME
+            'versionCookieName' => \Magento\Framework\App\PageCache\Version::COOKIE_NAME,
         ];
         return json_encode($params);
     }

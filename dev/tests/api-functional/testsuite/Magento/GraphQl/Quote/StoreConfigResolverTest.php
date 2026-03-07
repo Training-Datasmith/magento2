@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -72,8 +73,8 @@ class StoreConfigResolverTest extends GraphQlAbstract
     {
         $this->assertEquals([
             'storeConfig' => [
-                'cart_merge_preference' => 'guest'
-            ]
+                'cart_merge_preference' => 'guest',
+            ],
         ], $this->graphQlQuery($this->getStoreConfigQueryForMergePreference()));
     }
 
@@ -84,8 +85,8 @@ class StoreConfigResolverTest extends GraphQlAbstract
     {
         $this->assertEquals([
             'storeConfig' => [
-                'cart_merge_preference' => 'customer'
-            ]
+                'cart_merge_preference' => 'customer',
+            ],
         ], $this->graphQlQuery($this->getStoreConfigQueryForMergePreference()));
     }
 
@@ -96,8 +97,8 @@ class StoreConfigResolverTest extends GraphQlAbstract
     {
         $this->assertEquals([
             'storeConfig' => [
-                'cart_merge_preference' => 'merge'
-            ]
+                'cart_merge_preference' => 'merge',
+            ],
         ], $this->graphQlQuery($this->getStoreConfigQueryForMergePreference()));
     }
 

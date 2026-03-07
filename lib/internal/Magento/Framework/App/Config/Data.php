@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 /**
@@ -92,7 +95,7 @@ class Data implements DataInterface
     {
         $clone = [];
         foreach ($data as $key => $value) {
-            $clone[$key]= $value;
+            $clone[$key] = $value;
         }
         return $clone;
     }

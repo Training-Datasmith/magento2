@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\ViewModel\Product\Checker;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\ViewModel\Product\Checker\AddToCompareAvailability;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +23,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AddToCompareAvailabilityTest extends TestCase
 {
-
     /**
      * @var AddToCompareAvailability
      */
@@ -45,7 +45,7 @@ class AddToCompareAvailabilityTest extends TestCase
         $this->viewModel = $objectManager->getObject(
             AddToCompareAvailability::class,
             [
-                'stockConfiguration' => $this->stockConfigurationMock
+                'stockConfiguration' => $this->stockConfigurationMock,
             ]
         );
     }
@@ -90,7 +90,7 @@ class AddToCompareAvailabilityTest extends TestCase
             [Status::STATUS_ENABLED, true, ['is_in_stock' => false], true, true],
             [Status::STATUS_ENABLED, true, [], false, true],
             [Status::STATUS_ENABLED, false, [], false, false],
-            [Status::STATUS_DISABLED, true, ['is_in_stock' => true], false, false]
+            [Status::STATUS_DISABLED, true, ['is_in_stock' => true], false, false],
         ];
     }
 }

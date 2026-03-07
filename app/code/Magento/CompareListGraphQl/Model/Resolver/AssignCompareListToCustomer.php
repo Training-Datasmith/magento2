@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class AssignCompareListToCustomer implements ResolverInterface
                 if ($result) {
                     return [
                         'result' => true,
-                        'compare_list' => $this->getCompareList->execute((int)$result->getListId(), $context)
+                        'compare_list' => $this->getCompareList->execute((int)$result->getListId(), $context),
                     ];
                 }
             } catch (LocalizedException $exception) {
@@ -104,7 +105,7 @@ class AssignCompareListToCustomer implements ResolverInterface
         }
 
         return [
-            'result' => false
+            'result' => false,
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class PayflowlinkTest extends TestCase
                 'configFactory' => $configFactoryMock,
                 'requestFactory' => $requestFactory,
                 'gateway' => $this->gatewayMock,
-                'mathRandom' => new Random()
+                'mathRandom' => new Random(),
             ]
         );
         $this->model->setInfoInstance($this->infoInstance);
@@ -154,7 +155,7 @@ class PayflowlinkTest extends TestCase
                         'verbosity' => null,
                         'BUTTONSOURCE' => 'build notation code',
                         'tender' => 'C',
-                    ]
+                    ],
                 ]
             )->willReturnSelf();
 
@@ -174,7 +175,7 @@ class PayflowlinkTest extends TestCase
         $this->scopeConfigMock->expects($this->once())
             ->method('getValue')
             ->with(
-                "payment/payflow_link/active",
+                'payment/payflow_link/active',
                 ScopeInterface::SCOPE_STORE,
                 $storeId
             )->willReturn($configResult);
@@ -189,7 +190,7 @@ class PayflowlinkTest extends TestCase
     {
         return [
             [false, '0'],
-            [true, '1']
+            [true, '1'],
         ];
     }
 

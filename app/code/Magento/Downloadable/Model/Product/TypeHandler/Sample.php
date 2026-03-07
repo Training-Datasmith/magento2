@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Product\TypeHandler;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -16,8 +19,8 @@ use Magento\Downloadable\Model\ComponentInterface;
  */
 class Sample extends AbstractTypeHandler
 {
-    const DATA_KEY = 'sample';
-    const IDENTIFIER_KEY = 'sample_id';
+    public const DATA_KEY = 'sample';
+    public const IDENTIFIER_KEY = 'sample_id';
 
     /**
      * @var \Magento\Downloadable\Model\SampleFactory

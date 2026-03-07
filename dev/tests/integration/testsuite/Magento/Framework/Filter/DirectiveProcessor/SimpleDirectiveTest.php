@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class SimpleDirectiveTest extends TestCase
             ['mydir' => $this->objectManager->create(MyDirProcessor::class)],
             [
                 'foofilter' => $this->objectManager->create(FooFilter::class),
-                'nl2br' => $this->objectManager->create(NewlineToBreakFilter::class)
+                'nl2br' => $this->objectManager->create(NewlineToBreakFilter::class),
             ]
         );
 

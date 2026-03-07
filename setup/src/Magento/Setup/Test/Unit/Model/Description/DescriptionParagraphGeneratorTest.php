@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class DescriptionParagraphGeneratorTest extends TestCase
     private $paragraphConfig = [
         'sentences' => [
             'count-min' => 4,
-            'count-max' => 4
-        ]
+            'count-max' => 4,
+        ],
     ];
 
     protected function setUp(): void
@@ -51,7 +52,7 @@ class DescriptionParagraphGeneratorTest extends TestCase
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
             'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         ];
         // @codingStandardsIgnoreEnd
 
@@ -59,7 +60,7 @@ class DescriptionParagraphGeneratorTest extends TestCase
         $this->sentenceGeneratorMock
             ->expects($this->exactly(4))
             ->method('generate')
-            ->willReturnCallback(function() use (&$callCount, $consecutiveSentences) {
+            ->willReturnCallback(function () use (&$callCount, $consecutiveSentences) {
                 return $consecutiveSentences[$callCount++];
             });
 

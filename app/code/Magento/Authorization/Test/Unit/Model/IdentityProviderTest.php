@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -63,21 +64,21 @@ class IdentityProviderTest extends TestCase
                 null,
                 '127.0.0.1',
                 ContextInterface::IDENTITY_TYPE_IP,
-                '127.0.0.1'
+                '127.0.0.1',
             ],
             'admin-user-context' => [
                 UserContextInterface::USER_TYPE_ADMIN,
                 42,
                 '127.0.0.1',
                 ContextInterface::IDENTITY_TYPE_ADMIN,
-                '42'
+                '42',
             ],
             'customer-user-context' => [
                 UserContextInterface::USER_TYPE_CUSTOMER,
                 42,
                 '127.0.0.1',
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
-                '42'
+                '42',
             ],
         ];
     }

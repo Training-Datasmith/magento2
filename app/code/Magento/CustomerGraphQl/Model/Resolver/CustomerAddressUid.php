@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CustomerGraphQl\Model\Resolver;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Uid;
@@ -35,6 +35,6 @@ class CustomerAddressUid implements ResolverInterface
         ?array $value = null,
         ?array $args = null
     ): ?string {
-        return isset($value['id']) ? $this->idEncoder->encode((string) $value['id']): null;
+        return isset($value['id']) ? $this->idEncoder->encode((string) $value['id']) : null;
     }
 }

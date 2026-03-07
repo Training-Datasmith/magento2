@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Library;
 
 use Laminas\Code\Reflection\ClassReflection;
@@ -56,7 +59,7 @@ class DependencyTest extends TestCase
             'SalesRule\Api\Data\RuleInterface',
             'SalesRule\Model\Rule\Interceptor',
             'SalesRule\Model\Rule\Proxy',
-            'Theme\Model\View\Design'
+            'Theme\Model\View\Design',
         ];
     }
 

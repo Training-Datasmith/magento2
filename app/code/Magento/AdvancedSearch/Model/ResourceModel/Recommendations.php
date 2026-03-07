@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\ResourceModel;
 
+use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\Context as DbContext;
 use Magento\Search\Model\Query;
 use Magento\Search\Model\QueryFactory;
-use Magento\Framework\Model\ResourceModel\Db\Context as DbContext;
-use Magento\Framework\DB\Select;
 use Zend_Db_Expr;
 
 /**
@@ -20,7 +23,6 @@ use Zend_Db_Expr;
  */
 class Recommendations extends AbstractDb
 {
-
     /**
      * @var Query
      */
@@ -29,8 +31,6 @@ class Recommendations extends AbstractDb
     /**
      * Construct
      *
-     * @param DbContext $context
-     * @param QueryFactory $queryFactory
      * @param string $connectionName
      */
     public function __construct(
@@ -59,7 +59,7 @@ class Recommendations extends AbstractDb
      * @param array $relatedQueries
      * @return $this
      */
-    public function saveRelatedQueries($queryId, $relatedQueries = [])
+    public function saveRelatedQueries($queryId, $relatedQueries = []): static
     {
         $connection = $this->getConnection();
         $whereOr = [];
@@ -68,14 +68,14 @@ class Recommendations extends AbstractDb
                 ' AND ',
                 [
                     $connection->quoteInto('query_id=?', $queryId),
-                    $connection->quoteInto('relation_id NOT IN(?)', $relatedQueries)
+                    $connection->quoteInto('relation_id NOT IN(?)', $relatedQueries),
                 ]
             );
             $whereOr[] = implode(
                 ' AND ',
                 [
                     $connection->quoteInto('relation_id = ?', $queryId),
-                    $connection->quoteInto('query_id NOT IN(?)', $relatedQueries)
+                    $connection->quoteInto('query_id NOT IN(?)', $relatedQueries),
                 ]
             );
         } else {
@@ -88,7 +88,7 @@ class Recommendations extends AbstractDb
         $existsRelatedQueries = $this->getRelatedQueries($queryId);
         $neededRelatedQueries = array_diff($relatedQueries, $existsRelatedQueries);
         foreach ($neededRelatedQueries as $relationId) {
-            $connection->insert($this->getMainTable(), ["query_id" => $queryId, "relation_id" => $relationId]);
+            $connection->insert($this->getMainTable(), ['query_id' => $queryId, 'relation_id' => $relationId]);
         }
         return $this;
     }
@@ -128,20 +128,17 @@ class Recommendations extends AbstractDb
         if (!empty($order)) {
             $collection->getSelect()->order($order);
         }
-
-        $queryIds = $connection->fetchCol($collection->getSelect());
-        return $queryIds;
+        return $connection->fetchCol($collection->getSelect());
     }
 
     /**
      * Retrieve related search queries by single query
      *
      * @param string $query
-     * @param array $params
      * @param int $searchRecommendationsCount
      * @return array
      */
-    public function getRecommendationsByQuery($query, $params, $searchRecommendationsCount)
+    public function getRecommendationsByQuery($query, array $params, $searchRecommendationsCount)
     {
         $this->_searchQueryModel->loadByQueryText($query);
 
@@ -185,7 +182,7 @@ class Recommendations extends AbstractDb
         }
 
         $queryWords = [$query];
-        if ($query !== null && strpos($query, ' ') !== false) {
+        if ($query !== null && str_contains($query, ' ')) {
             $queryWords = array_unique(array_merge($queryWords, explode(' ', $query)));
             foreach ($queryWords as $key => $word) {
                 $queryWords[$key] = trim($word);
@@ -225,7 +222,6 @@ class Recommendations extends AbstractDb
             unset($ids[$key]);
         }
         $ids = array_unique(array_merge($relatedQueries, $ids));
-        $ids = array_slice($ids, 0, $searchRecommendationsCount);
-        return $ids;
+        return array_slice($ids, 0, $searchRecommendationsCount);
     }
 }

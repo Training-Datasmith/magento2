@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class RelationCompositeTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'getEventPrefix'
+                    'getEventPrefix',
                 ]
             )
             ->getMock();
@@ -55,7 +56,7 @@ class RelationCompositeTest extends TestCase
         $this->entityRelationComposite = new RelationComposite(
             $this->eventManagerMock,
             [
-                'default' => $this->relationProcessorMock
+                'default' => $this->relationProcessorMock,
             ]
         );
     }
@@ -73,7 +74,7 @@ class RelationCompositeTest extends TestCase
             ->with(
                 'custom_event_prefix_process_relation',
                 [
-                    'object' => $this->modelMock
+                    'object' => $this->modelMock,
                 ]
             );
         $this->entityRelationComposite->processRelations($this->modelMock);

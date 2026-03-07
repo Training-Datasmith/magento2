@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Grid column block that is displayed only if rollback allowed
  */
+
 namespace Magento\Backup\Block\Adminhtml\Grid\Column;
 
 /**

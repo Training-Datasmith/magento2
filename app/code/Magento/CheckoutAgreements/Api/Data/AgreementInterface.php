@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Api\Data;
 
 /**
@@ -15,14 +18,14 @@ interface AgreementInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const AGREEMENT_ID = 'agreement_id';
-    const NAME = 'name';
-    const CONTENT = 'content';
-    const CONTENT_HEIGHT = 'content_height';
-    const CHECKBOX_TEXT = 'checkbox_text';
-    const IS_ACTIVE = 'is_active';
-    const IS_HTML = 'is_html';
-    const MODE = 'mode';
+    public const AGREEMENT_ID = 'agreement_id';
+    public const NAME = 'name';
+    public const CONTENT = 'content';
+    public const CONTENT_HEIGHT = 'content_height';
+    public const CHECKBOX_TEXT = 'checkbox_text';
+    public const IS_ACTIVE = 'is_active';
+    public const IS_HTML = 'is_html';
+    public const MODE = 'mode';
     /**#@-*/
 
     /**

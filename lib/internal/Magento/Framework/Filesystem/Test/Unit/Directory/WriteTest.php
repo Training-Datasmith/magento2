@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Test\Unit\Directory;
 
 use Magento\Framework\Filesystem\Directory\Write;
@@ -11,9 +14,9 @@ use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Filesystem\File\WriteFactory;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit Test for \Magento\Framework\Filesystem\Directory\Write
@@ -233,14 +236,14 @@ class WriteTest extends TestCase
             WriteInterface::class,
             [
                 // ReadInterface methods
-                'getAbsolutePath', 'getRelativePath', 'read', 'readFile', 'isExist', 
+                'getAbsolutePath', 'getRelativePath', 'read', 'readFile', 'isExist',
                 'isDirectory', 'isFile', 'isReadable', 'search', 'stat',
-                // WriteInterface methods  
+                // WriteInterface methods
                 'create', 'delete', 'renameFile', 'copyFile', 'createSymlink',
                 'changePermissions', 'changePermissionsRecursively', 'touch',
                 'isWritable', 'openFile', 'writeFile', 'getDriver',
                 // Custom method not in interface (used by tests)
-                'isExists'
+                'isExists',
             ]
         );
     }

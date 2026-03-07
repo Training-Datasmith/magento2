@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,10 +12,9 @@ use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\AsynchronousOperations\Model\OperationRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\MessageQueue\MessageValidator;
 use Magento\Framework\MessageQueue\MessageEncoder;
+use Magento\Framework\MessageQueue\MessageValidator;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\EntityManager\EntityManager;
 
 /**
  * Create operation for list of bulk operations.
@@ -26,45 +26,13 @@ class OperationRepository implements OperationRepositoryInterface
      */
     private $operationFactory;
 
-    /**
-     * @var Json
-     */
-    private $jsonSerializer;
-
-    /**
-     * @var EntityManager
-     */
-    private $entityManager;
-
-    /**
-     * @var MessageEncoder
-     */
-    private $messageEncoder;
-
-    /**
-     * @var MessageValidator
-     */
-    private $messageValidator;
-
-    /**
-     * @param OperationInterfaceFactory $operationFactory
-     * @param EntityManager $entityManager
-     * @param MessageValidator $messageValidator
-     * @param MessageEncoder $messageEncoder
-     * @param Json $jsonSerializer
-     */
     public function __construct(
         OperationInterfaceFactory $operationFactory,
-        EntityManager $entityManager,
-        MessageValidator $messageValidator,
-        MessageEncoder $messageEncoder,
-        Json $jsonSerializer
+        private readonly MessageValidator $messageValidator,
+        private readonly MessageEncoder $messageEncoder,
+        private readonly Json $jsonSerializer
     ) {
         $this->operationFactory = $operationFactory;
-        $this->jsonSerializer = $jsonSerializer;
-        $this->messageEncoder = $messageEncoder;
-        $this->messageValidator = $messageValidator;
-        $this->entityManager = $entityManager;
     }
 
     /**

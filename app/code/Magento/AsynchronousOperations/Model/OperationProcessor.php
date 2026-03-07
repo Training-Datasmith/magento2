@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,84 +33,16 @@ use Psr\Log\LoggerInterface;
 class OperationProcessor
 {
     /**
-     * @var Json
-     */
-    private $jsonHelper;
-
-    /**
-     * @var OperationManagementInterface
-     */
-    private $operationManagement;
-
-    /**
-     * @var MessageEncoder
-     */
-    private $messageEncoder;
-
-    /**
-     * @var MessageValidator
-     */
-    private $messageValidator;
-
-    /**
-     * @var ConsumerConfigurationInterface
-     */
-    private $configuration;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var ServiceOutputProcessor
-     */
-    private $serviceOutputProcessor;
-
-    /**
-     * @var CommunicationConfig
-     */
-    private $communicationConfig;
-
-    /**
      * OperationProcessor constructor.
-     *
-     * @param MessageValidator $messageValidator
-     * @param MessageEncoder $messageEncoder
-     * @param ConsumerConfigurationInterface $configuration
-     * @param Json $jsonHelper
-     * @param OperationManagementInterface $operationManagement
-     * @param \Magento\Framework\Webapi\ServiceOutputProcessor $serviceOutputProcessor
-     * @param \Magento\Framework\Communication\ConfigInterface $communicationConfig
-     * @param LoggerInterface $logger
      */
-    public function __construct(
-        MessageValidator $messageValidator,
-        MessageEncoder $messageEncoder,
-        ConsumerConfigurationInterface $configuration,
-        Json $jsonHelper,
-        OperationManagementInterface $operationManagement,
-        ServiceOutputProcessor $serviceOutputProcessor,
-        CommunicationConfig $communicationConfig,
-        LoggerInterface $logger
-    ) {
-        $this->messageValidator = $messageValidator;
-        $this->messageEncoder = $messageEncoder;
-        $this->configuration = $configuration;
-        $this->jsonHelper = $jsonHelper;
-        $this->operationManagement = $operationManagement;
-        $this->logger = $logger;
-        $this->serviceOutputProcessor = $serviceOutputProcessor;
-        $this->communicationConfig = $communicationConfig;
+    public function __construct(private readonly MessageValidator $messageValidator, private readonly MessageEncoder $messageEncoder, private readonly ConsumerConfigurationInterface $configuration, private readonly Json $jsonHelper, private readonly OperationManagementInterface $operationManagement, private readonly ServiceOutputProcessor $serviceOutputProcessor, private readonly CommunicationConfig $communicationConfig, private readonly LoggerInterface $logger)
+    {
     }
 
     /**
      * Process topic-based encoded message
-     *
-     * @param string $encodedMessage
-     * @return void
      */
-    public function process(string $encodedMessage)
+    public function process(string $encodedMessage): void
     {
         $operation = $this->messageEncoder->decode(AsyncConfig::SYSTEM_TOPIC_NAME, $encodedMessage);
         $this->messageValidator->validate(AsyncConfig::SYSTEM_TOPIC_NAME, $operation);
@@ -177,21 +110,20 @@ class OperationProcessor
      *
      * @param callable $callback
      * @param array $entityParams
-     * @return array
      */
-    private function executeHandler($callback, $entityParams)
+    private function executeHandler($callback, $entityParams): array
     {
         $result = [
             'status' => OperationInterface::STATUS_TYPE_COMPLETE,
             'error_code' => null,
             'messages' => [],
-            'output_data' => null
+            'output_data' => null,
         ];
         try {
             // phpcs:disable Magento2.Functions.DiscouragedFunction
             $result['output_data'] = call_user_func_array($callback, $entityParams);
             // phpcs:enable Magento2.Functions.DiscouragedFunction
-            $result['messages'][] = sprintf('Service execution success %s::%s', get_class($callback[0]), $callback[1]);
+            $result['messages'][] = sprintf('Service execution success %s::%s', $callback[0]::class, $callback[1]);
         } catch (\Zend_Db_Adapter_Exception  $e) {
             $this->logger->critical($e->getMessage());
             if ($e instanceof LockWaitException
@@ -207,17 +139,7 @@ class OperationProcessor
                 $result['messages'][] =
                     __('Sorry, something went wrong during product prices update. Please see log for details.');
             }
-        } catch (NoSuchEntityException $e) {
-            $this->logger->error($e->getMessage());
-            $result['status'] = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
-            $result['error_code'] = $e->getCode();
-            $result['messages'][] = $e->getMessage();
-        } catch (LocalizedException $e) {
-            $this->logger->error($e->getMessage());
-            $result['status'] = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
-            $result['error_code'] = $e->getCode();
-            $result['messages'][] = $e->getMessage();
-        } catch (\Exception $e) {
+        } catch (NoSuchEntityException|LocalizedException|\Exception $e) {
             $this->logger->error($e->getMessage());
             $result['status'] = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
             $result['error_code'] = $e->getCode();

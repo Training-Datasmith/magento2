@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,7 +11,6 @@ namespace Magento\Setup\Model;
 use Magento\Backend\Model\Url;
 use Magento\Directory\Helper\Data;
 use Magento\Directory\Model\Currency;
-use Magento\Setup\Module\Setup;
 use Magento\Store\Model\Store;
 use Magento\Ui\Model\Config as UiConfig;
 
@@ -23,16 +24,16 @@ class StoreConfigurationDataMapper
     /**#@+
      * Model data keys
      */
-    const KEY_USE_SEF_URL = 'use-rewrites';
-    const KEY_BASE_URL = 'base-url';
-    const KEY_BASE_URL_SECURE = 'base-url-secure';
-    const KEY_IS_SECURE = 'use-secure';
-    const KEY_IS_SECURE_ADMIN = 'use-secure-admin';
-    const KEY_LANGUAGE = 'language';
-    const KEY_TIMEZONE = 'timezone';
-    const KEY_CURRENCY = 'currency';
-    const KEY_ADMIN_USE_SECURITY_KEY = 'admin-use-security-key';
-    const KEY_JS_LOGGING = 'js-logging';
+    public const KEY_USE_SEF_URL = 'use-rewrites';
+    public const KEY_BASE_URL = 'base-url';
+    public const KEY_BASE_URL_SECURE = 'base-url-secure';
+    public const KEY_IS_SECURE = 'use-secure';
+    public const KEY_IS_SECURE_ADMIN = 'use-secure-admin';
+    public const KEY_LANGUAGE = 'language';
+    public const KEY_TIMEZONE = 'timezone';
+    public const KEY_CURRENCY = 'currency';
+    public const KEY_ADMIN_USE_SECURITY_KEY = 'admin-use-security-key';
+    public const KEY_JS_LOGGING = 'js-logging';
     /**#@- */
 
     /**#@- */
@@ -48,7 +49,7 @@ class StoreConfigurationDataMapper
         Currency::XML_PATH_CURRENCY_DEFAULT => self::KEY_CURRENCY,
         Currency::XML_PATH_CURRENCY_ALLOW => self::KEY_CURRENCY,
         Url::XML_PATH_USE_SECURE_KEY => self::KEY_ADMIN_USE_SECURITY_KEY,
-        UiConfig::XML_PATH_LOGGING => self::KEY_JS_LOGGING
+        UiConfig::XML_PATH_LOGGING => self::KEY_JS_LOGGING,
     ];
 
     /**

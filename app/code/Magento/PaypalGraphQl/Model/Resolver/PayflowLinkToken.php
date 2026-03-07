@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Payment\Helper\Data as PaymentDataHelper;
 use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
-use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order;
-use Magento\Store\Model\StoreManagerInterface;
+use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactoryInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Resolver to pull PayflowLink payment information from pending order

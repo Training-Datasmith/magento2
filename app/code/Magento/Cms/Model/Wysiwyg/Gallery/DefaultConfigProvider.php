@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -64,13 +65,13 @@ class DefaultConfigProvider implements \Magento\Framework\Data\Wysiwyg\ConfigPro
     /**
      * @inheritdoc
      */
-    public function getConfig(\Magento\Framework\DataObject $config) : \Magento\Framework\DataObject
+    public function getConfig(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject
     {
         $pluginData = (array) $config->getData('plugins');
         $imageData = [
             [
                 'name' => 'image',
-            ]
+            ],
         ];
 
         $fileBrowserUrlParams = [];
@@ -90,7 +91,7 @@ class DefaultConfigProvider implements \Magento\Framework\Data\Wysiwyg\ConfigPro
                 ),
                 'files_browser_window_width' => $this->windowSize['width'],
                 'files_browser_window_height' => $this->windowSize['height'],
-                'plugins' => array_merge($pluginData, $imageData)
+                'plugins' => array_merge($pluginData, $imageData),
             ]
         );
     }

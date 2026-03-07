@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class CacheTest extends TestCase
                 'cacheIdPrefix' => 'fixture_',
                 'cacheTags' => ['fixture_tag_one', 'fixture_tag_two'],
                 'cacheLifetime' => 86400,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }
@@ -94,7 +95,7 @@ class CacheTest extends TestCase
         $serializedData = 'serialized data';
         $bindParams = [
             'param_one' => 'value_one',
-            'param_two' => 'value_two'
+            'param_two' => 'value_two',
         ];
         $this->cacheMock->expects($this->once())
             ->method('load')

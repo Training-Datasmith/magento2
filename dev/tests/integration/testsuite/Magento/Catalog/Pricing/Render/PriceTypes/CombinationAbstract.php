@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -433,7 +434,7 @@ abstract class CombinationAbstract extends TestCase
 
             $createdTierPrices[] = $this->productTierPriceFactory->create(
                 [
-                    'data' => $tierPrice
+                    'data' => $tierPrice,
                 ]
             )->setExtensionAttributes($tierPriceExtensionAttribute);
         }
@@ -604,7 +605,7 @@ abstract class CombinationAbstract extends TestCase
             RuleInterface::SORT_ORDER => 0,
             'sub_is_enable' => 0,
             'sub_discount_amount' => 0,
-            'website_ids' => [$baseWebsite->getId()]
+            'website_ids' => [$baseWebsite->getId()],
         ];
 
         foreach ($catalogRules as $catalogRule) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,15 +11,14 @@ namespace Magento\AsynchronousOperations\Model;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\MessageQueue\MessageLockException;
-use Magento\Framework\MessageQueue\ConnectionLostException;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\MessageQueue\ConnectionLostException;
 use Magento\Framework\MessageQueue\ConsumerConfigurationInterface;
 use Magento\Framework\MessageQueue\EnvelopeInterface;
-use Magento\Framework\MessageQueue\QueueInterface;
 use Magento\Framework\MessageQueue\LockInterface;
-use Magento\Framework\MessageQueue\MessageController;
+use Magento\Framework\MessageQueue\MessageLockException;
+use Magento\Framework\MessageQueue\QueueInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class used as public callback function by async consumer.
@@ -26,31 +26,6 @@ use Magento\Framework\MessageQueue\MessageController;
  */
 class MassConsumerEnvelopeCallback
 {
-    /**
-     * @var QueueInterface
-     */
-    private $queue;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resource;
-
-    /**
-     * @var ConsumerConfigurationInterface
-     */
-    private $configuration;
-
-    /**
-     * @var MessageController
-     */
-    private $messageController;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
     /**
      * @var OperationProcessor
      */
@@ -61,45 +36,27 @@ class MassConsumerEnvelopeCallback
      */
     private $messageControllerDecorator;
 
-    /**
-     * @param ResourceConnection $resource
-     * @param MessageController $messageController
-     * @param ConsumerConfigurationInterface $configuration
-     * @param OperationProcessorFactory $operationProcessorFactory
-     * @param LoggerInterface $logger
-     * @param QueueInterface $queue
-     * @param MessageControllerDecorator|null $messageControllerDecorator
-     */
     public function __construct(
-        ResourceConnection $resource,
-        MessageController $messageController,
-        ConsumerConfigurationInterface $configuration,
+        private readonly ResourceConnection $resource,
+        private readonly ConsumerConfigurationInterface $configuration,
         OperationProcessorFactory $operationProcessorFactory,
-        LoggerInterface $logger,
-        QueueInterface $queue,
+        private readonly LoggerInterface $logger,
+        private readonly QueueInterface $queue,
         ?MessageControllerDecorator $messageControllerDecorator = null
     ) {
-        $this->resource = $resource;
-        $this->messageController = $messageController;
-        $this->configuration = $configuration;
         $this->operationProcessor = $operationProcessorFactory->create(
             [
-                'configuration' => $configuration
+                'configuration' => $this->configuration,
             ]
         );
-        $this->logger = $logger;
-        $this->queue = $queue;
         $this->messageControllerDecorator = $messageControllerDecorator
             ?: ObjectManager::getInstance()->get(MessageControllerDecorator::class);
     }
 
     /**
      * Get transaction callback. This handles the case of async.
-     *
-     * @param EnvelopeInterface $message
-     * @return void
      */
-    public function execute(EnvelopeInterface $message)
+    public function execute(EnvelopeInterface $message): void
     {
         $queue = $this->queue;
         /** @var LockInterface $lock */
@@ -116,9 +73,9 @@ class MassConsumerEnvelopeCallback
                 return;
             }
             $queue->acknowledge($message);
-        } catch (MessageLockException $exception) {
+        } catch (MessageLockException) {
             $queue->acknowledge($message);
-        } catch (ConnectionLostException $e) {
+        } catch (ConnectionLostException) {
             if ($lock) {
                 $this->resource->getConnection()
                     ->delete($this->resource->getTableName('queue_lock'), ['id = ?' => $lock->getId()]);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\CustomerGraphQl\Model\Context;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Authorization\Model\UserContextInterfaceFactory;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\GraphQl\Model\Query\ContextParametersInterface;

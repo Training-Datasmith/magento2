@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -136,8 +137,8 @@ class CustomerSharingOptionsTest extends WebapiAbstract
                 'service' => self::REPO_SERVICE,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::REPO_SERVICE . 'GetSelf',
-                'token' => $this->token
-            ]
+                'token' => $this->token,
+            ],
         ];
         $arguments = [];
         if (TESTS_WEB_API_ADAPTER === 'soap') {
@@ -162,12 +163,12 @@ class CustomerSharingOptionsTest extends WebapiAbstract
         return [
             'Default Store View' => [
                 'default', // storeCode
-                false // expectingException
+                false, // expectingException
             ],
             'Custom Store View' => [
                 'fixture_second_store', // storeCode
-                true // expectingException
-            ]
+                true, // expectingException
+            ],
         ];
     }
 
@@ -181,12 +182,12 @@ class CustomerSharingOptionsTest extends WebapiAbstract
         return [
             'Default Store View' => [
                 'default', // storeCode
-                false // expectingException
+                false, // expectingException
             ],
             'Custom Store View' => [
                 'fixture_second_store', // storeCode
-                false // expectingException
-            ]
+                false, // expectingException
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ return [
                     'customerCreatedFirst' => [
                         'type' => \Magento\Customer\Api\CustomerRepositoryInterface::class,
                         'method' => 'save',
-                        'disabled' => false
+                        'disabled' => false,
                     ],
                 ],
             ],
@@ -31,10 +33,10 @@ return [
                     'default' => [
                         'type' => \Magento\Customer\Api\CustomerRepositoryInterface::class,
                         'method' => 'save',
-                        'disabled' => true
+                        'disabled' => true,
                     ],
                 ],
             ],
-        ]
-    ]
+        ],
+    ],
 ];

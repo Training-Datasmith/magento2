@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class InlineEdit extends Rewrite implements HttpPostActionInterface
         return $resultJson->setData(
             [
                 'messages' => $messages,
-                'error' => $error
+                'error' => $error,
             ]
         );
     }

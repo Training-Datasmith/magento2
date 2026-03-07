@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Email;
 
 use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order\Email\Container\ShipmentIdentity;
 use Magento\Sales\Model\Order\Email\Container\Template;
 use Magento\Sales\Model\Order\Email\SenderBuilder;
@@ -15,7 +17,6 @@ use Magento\Sales\Test\Unit\Model\Order\Email\Stub\TransportInterfaceMock;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class SenderBuilderTest extends TestCase
 {
@@ -62,7 +63,7 @@ class SenderBuilderTest extends TestCase
             ShipmentIdentity::class,
             [
                 'getTemplateOptions', 'getEmailIdentity', 'getCustomerEmail', 'getCustomerName',
-                'getEmailCopyTo', 'getCopyMethod', 'getStore'
+                'getEmailCopyTo', 'getCopyMethod', 'getStore',
             ]
         );
 

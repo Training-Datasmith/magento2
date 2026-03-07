@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\Cache\Type\Layout as LayoutCache;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutFactory;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Integration tests for \Magento\Catalog\Model\Layout\DepersonalizePlugin class.

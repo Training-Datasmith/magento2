@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Cms\Block\Widget\Page\Link;
 use Magento\Cms\Helper\Page;
 use Magento\Cms\Model\ResourceModel\Page as CmsPageResource;
 use Magento\Framework\Math\Random;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -50,12 +50,12 @@ class LinkTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 

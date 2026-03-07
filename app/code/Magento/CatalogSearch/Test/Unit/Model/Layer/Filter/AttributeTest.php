@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class AttributeTest extends TestCase
                 'getAttributeCode',
                 'getFrontend',
                 'getIsFilterable',
-                'getBackendType'
+                'getBackendType',
             ]
         );
 
@@ -171,7 +172,7 @@ class AttributeTest extends TestCase
                 'layer' => $this->layer,
                 'itemDataBuilder' => $this->itemDataBuilder,
                 'filterAttributeFactory' => $this->filterAttributeFactory,
-                'tagFilter' => $stripTagsFilter
+                'tagFilter' => $stripTagsFilter,
             ]
         );
     }
@@ -265,17 +266,17 @@ class AttributeTest extends TestCase
                     'attribute_code' => 'attributeCode',
                     'attribute_value' => 'attributeValue',
                     'attribute_label' => 'attributeLabel',
-                    'backend_type' => 'text'
-                ]
+                    'backend_type' => 'text',
+                ],
             ],
             'Attribute with \'int\' backend type' => [
                 [
                     'attribute_code' => 'attributeCode',
                     'attribute_value' => '0',
                     'attribute_label' => 'attributeLabel',
-                    'backend_type' => 'int'
-                ]
-            ]
+                    'backend_type' => 'int',
+                ],
+            ],
         ];
     }
 
@@ -338,41 +339,41 @@ class AttributeTest extends TestCase
             [
                 'label' => 'selectedOptionLabel1',
                 'value' => 'selectedOptionValue1',
-                'count' => 25
+                'count' => 25,
             ],
             [
                 'label' => 'selectedOptionLabel2',
                 'value' => 'selectedOptionValue2',
-                'count' => 13
+                'count' => 13,
             ],
             [
                 'label' => 'selectedOptionLabel3',
                 'value' => 'selectedOptionValue3',
-                'count' => 10
-            ]
+                'count' => 10,
+            ],
         ];
         $facetedData = [
             'selectedOptionValue1' => ['count' => 10],
             'selectedOptionValue2' => ['count' => 45],
-            'selectedOptionValue3' => ['count' => 50]
+            'selectedOptionValue3' => ['count' => 50],
         ];
 
         $builtData = [
             [
                 'label' => $selectedOptions[0]['label'],
                 'value' => $selectedOptions[0]['value'],
-                'count' => $facetedData[$selectedOptions[0]['value']]['count']
+                'count' => $facetedData[$selectedOptions[0]['value']]['count'],
             ],
             [
                 'label' => $selectedOptions[1]['label'],
                 'value' => $selectedOptions[1]['value'],
-                'count' => $facetedData[$selectedOptions[1]['value']]['count']
+                'count' => $facetedData[$selectedOptions[1]['value']]['count'],
             ],
             [
                 'label' => $selectedOptions[2]['label'],
                 'value' => $selectedOptions[2]['value'],
-                'count' => $facetedData[$selectedOptions[2]['value']]['count']
-            ]
+                'count' => $facetedData[$selectedOptions[2]['value']]['count'],
+            ],
         ];
 
         $this->attribute->expects($this->exactly(2))
@@ -411,7 +412,7 @@ class AttributeTest extends TestCase
         $expectedFilterItems = [
             $this->createFilterItem($builtData[0]['label'], $builtData[0]['value'], $builtData[0]['count']),
             $this->createFilterItem($builtData[1]['label'], $builtData[1]['value'], $builtData[1]['count']),
-            $this->createFilterItem($builtData[2]['label'], $builtData[2]['value'], $builtData[2]['count'])
+            $this->createFilterItem($builtData[2]['label'], $builtData[2]['value'], $builtData[2]['count']),
         ];
         $this->filterItemFactory
             ->method('create')
@@ -432,23 +433,23 @@ class AttributeTest extends TestCase
         $selectedOptions = [
             [
                 'label' => 'selectedOptionLabel1',
-                'value' => 'selectedOptionValue1'
+                'value' => 'selectedOptionValue1',
             ],
             [
                 'label' => 'selectedOptionLabel2',
-                'value' => 'selectedOptionValue2'
-            ]
+                'value' => 'selectedOptionValue2',
+            ],
         ];
         $facetedData = [
             'selectedOptionValue1' => ['count' => 10],
-            'selectedOptionValue2' => ['count' => 0]
+            'selectedOptionValue2' => ['count' => 0],
         ];
         $builtData = [
             [
                 'label' => $selectedOptions[0]['label'],
                 'value' => $selectedOptions[0]['value'],
-                'count' => $facetedData[$selectedOptions[0]['value']]['count']
-            ]
+                'count' => $facetedData[$selectedOptions[0]['value']]['count'],
+            ],
         ];
 
         $this->attribute->expects($this->atLeastOnce())
@@ -484,7 +485,7 @@ class AttributeTest extends TestCase
             ->willReturn($builtData);
 
         $expectedFilterItems = [
-            $this->createFilterItem($builtData[0]['label'], $builtData[0]['value'], $builtData[0]['count'])
+            $this->createFilterItem($builtData[0]['label'], $builtData[0]['value'], $builtData[0]['count']),
         ];
         $this->filterItemFactory
             ->method('create')

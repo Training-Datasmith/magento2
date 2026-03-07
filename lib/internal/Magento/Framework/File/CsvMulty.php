@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Csv parse
  */
+
 namespace Magento\Framework\File;
 
 class CsvMulty extends \Magento\Framework\File\Csv

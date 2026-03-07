@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class TaxRate implements RevertibleDataFixtureInterface
         'zip_is_range' => null,
         'zip_from' => null,
         'zip_to' => null,
-        'titles' => []
+        'titles' => [],
     ];
 
     /**

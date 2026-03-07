@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ use Magento\TestFramework\Helper\Bootstrap;
 
 class EncryptionUpdateTest extends \PHPUnit\Framework\TestCase
 {
-    const TEST_CC_NUMBER = '4111111111111111';
+    public const TEST_CC_NUMBER = '4111111111111111';
 
     /**
      * Tests re-encryption of credit card numbers
@@ -43,7 +44,7 @@ class EncryptionUpdateTest extends \PHPUnit\Framework\TestCase
                 static::TEST_CC_NUMBER,
                 $encyptor->decrypt($payment->getCcNumberEnc())
             );
-            
+
             $this->assertStringStartsWith('0:' . Encryptor::CIPHER_LATEST . ':', $payment->getCcNumberEnc());
         }
     }

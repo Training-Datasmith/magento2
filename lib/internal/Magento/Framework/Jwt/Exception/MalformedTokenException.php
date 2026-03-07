@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,5 +14,4 @@ namespace Magento\Framework\Jwt\Exception;
  */
 class MalformedTokenException extends JwtException
 {
-
 }

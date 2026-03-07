@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,17 +115,17 @@ class GenericMapperTest extends TestCase
             [
                 'type' => 'string',
                 'field' => 'test-field',
-                'condition' => 'test-condition'
+                'condition' => 'test-condition',
             ],
             [
                 'type' => 'public',
                 'field' => 'test-field',
-                'condition' => 'test-condition'
+                'condition' => 'test-condition',
             ],
             [
                 'type' => 'default',
                 'field' => 'test-field',
-                'condition' => 'test-condition'
+                'condition' => 'test-condition',
             ],
         ];
 
@@ -182,12 +183,12 @@ class GenericMapperTest extends TestCase
             [
                 'test-correlation-name',
                 'test-field',
-                null
+                null,
             ],
             [
                 'test-correlation-name',
                 'test-field',
-                'test-alias-unique'
+                'test-alias-unique',
             ],
         ];
 

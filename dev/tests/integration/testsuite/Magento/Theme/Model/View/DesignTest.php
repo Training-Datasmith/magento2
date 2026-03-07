@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\View;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -163,7 +166,7 @@ class DesignTest extends \PHPUnit\Framework\TestCase
             ['theme_file.txt', ['module' => 'Magento_Catalog']],
             ['Magento_Catalog::theme_file.txt', []],
             ['Magento_Catalog::theme_file_with_2_dots..txt', []],
-            ['Magento_Catalog::theme_file.txt', ['module' => 'Overridden_Module']]
+            ['Magento_Catalog::theme_file.txt', ['module' => 'Overridden_Module']],
         ];
     }
 

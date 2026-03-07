@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\DB\MapperFactory;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 class AbstractMapperTest extends TestCase
@@ -124,11 +125,11 @@ class AbstractMapperTest extends TestCase
     public function testMapException()
     {
         $mapperMethods = [
-            'my-test-value1' => 'mapMyMapperMethodOne'
+            'my-test-value1' => 'mapMyMapperMethodOne',
         ];
 
         $criteriaParts = [
-            'my_mapper_method_one' => 'my-test-value1'
+            'my_mapper_method_one' => 'my-test-value1',
         ];
         /** @var AbstractMapper|MockObject $mapper */
         // Use createPartialMockWithReflection for methods that don't exist in AbstractMapper
@@ -167,7 +168,7 @@ class AbstractMapperTest extends TestCase
                 'fetchStrategy' => $this->fetchStrategyMock,
                 'objectFactory' => $this->objectFactoryMock,
                 'mapperFactory' => $this->mapperFactoryMock,
-                'select' => $this->selectMock
+                'select' => $this->selectMock,
             ])
             ->onlyMethods(['init'])
             ->getMock();
@@ -198,7 +199,7 @@ class AbstractMapperTest extends TestCase
                 $this->fetchStrategyMock,
                 $this->objectFactoryMock,
                 $this->mapperFactoryMock,
-                $this->selectMock
+                $this->selectMock,
             ])
             ->onlyMethods(['getConnection', 'init'])
             ->getMock();
@@ -247,7 +248,7 @@ class AbstractMapperTest extends TestCase
                     'my_mapper_method_one' => ['my-test-value1'],
                     'my_mapper_method_two' => ['my-test-value2'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -265,7 +266,7 @@ class AbstractMapperTest extends TestCase
             ],
             [
                 'field' => ['my-field', 'my-field'],
-                'condition' => null
+                'condition' => null,
             ],
         ];
     }

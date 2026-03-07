@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
 use Magento\Customer\Api\Data\RegionInterface;
 use Magento\Customer\Api\Data\RegionInterfaceFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
@@ -24,7 +26,6 @@ use Magento\Tax\Api\Data\TaxClassKeyInterface;
 use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
 use Magento\Tax\Api\Data\TaxDetailsInterface;
 use Magento\Tax\Api\TaxCalculationInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Tax\Model\Config;
 use Magento\Tax\Model\Sales\Total\Quote\Subtotal;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -157,7 +158,7 @@ class SubtotalTest extends TestCase
             Address::class,
             [
                 'getAssociatedTaxables', 'getBillingAddress', 'getParentItem',
-                'getQuote', 'getRegionId', 'getAllItems', '__wakeup'
+                'getQuote', 'getRegionId', 'getAllItems', '__wakeup',
             ]
         );
 

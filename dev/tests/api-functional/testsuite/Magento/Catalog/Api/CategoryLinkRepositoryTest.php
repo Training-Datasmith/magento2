@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class CategoryLinkRepositoryTest extends WebapiAbstract
 {
@@ -58,7 +61,7 @@ class CategoryLinkRepositoryTest extends WebapiAbstract
             [
                 ['sku' => 'simple_with_cross', 'category_id' => self::$categoryId],
                 334,
-                0
+                0,
             ],
         ];
     }
@@ -100,7 +103,7 @@ class CategoryLinkRepositoryTest extends WebapiAbstract
             [
                 ['sku' => 'simple_with_cross', 'categoryId' => self::$categoryId],
                 333,
-                0
+                0,
             ],
         ];
     }

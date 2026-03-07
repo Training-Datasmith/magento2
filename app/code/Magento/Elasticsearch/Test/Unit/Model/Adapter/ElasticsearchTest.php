@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,22 +9,21 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\Test\Unit\Model\Adapter;
 
 use Elasticsearch\Client;
-use Elasticsearch\Namespaces\IndicesNamespace;
 use Elasticsearch\ClientBuilder;
+use Elasticsearch\Namespaces\IndicesNamespace;
 use Exception;
-use Magento\AdvancedSearch\Model\Client\ClientInterface as ElasticsearchClient;
 use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
-use Magento\Elasticsearch8\Model\Client\Elasticsearch;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Elasticsearch\Model\Adapter\BatchDataMapperInterface;
 use Magento\Elasticsearch\Model\Adapter\Elasticsearch as ElasticsearchAdapter;
-use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\StaticField;
+use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Elasticsearch\Model\Adapter\Index\BuilderInterface;
 use Magento\Elasticsearch\Model\Adapter\Index\IndexNameResolver;
 use Magento\Elasticsearch\Model\Config;
 use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
+use Magento\Elasticsearch8\Model\Client\Elasticsearch;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
@@ -146,7 +146,7 @@ class ElasticsearchTest extends TestCase
                     'putMapping',
                     'existsAlias',
                     'updateAliases',
-                    'stats'
+                    'stats',
                 ]
             )
             ->addMethods(['deleteMapping'])
@@ -174,10 +174,10 @@ class ElasticsearchTest extends TestCase
                         'type' => 'string',
                         'fields' => [
                             'keyword' => [
-                                'type' => "keyword"
-                            ]
-                        ]
-                    ]
+                                'type' => 'keyword',
+                            ],
+                        ],
+                    ],
                 ]
             );
         $this->clientConfig->expects($this->any())
@@ -192,7 +192,7 @@ class ElasticsearchTest extends TestCase
                     'getIndexName',
                     'getIndexNamespace',
                     'getIndexFromAlias',
-                    'getIndexNameForAlias'
+                    'getIndexNameForAlias',
                 ]
             )
             ->disableOriginalConstructor()
@@ -222,7 +222,7 @@ class ElasticsearchTest extends TestCase
                 'options' => [],
                 'productAttributeRepository' => $this->productAttributeRepository,
                 'staticFieldProvider' => $this->staticFieldProvider,
-                'arrayManager' => $this->arrayManager
+                'arrayManager' => $this->arrayManager,
             ]
         );
     }
@@ -469,7 +469,7 @@ class ElasticsearchTest extends TestCase
                 'indexBuilder' => $this->indexBuilder,
                 'logger' => $this->logger,
                 'indexNameResolver' => $this->indexNameResolver,
-                'options' => []
+                'options' => [],
             ]
         );
 
@@ -504,7 +504,7 @@ class ElasticsearchTest extends TestCase
                 'indexBuilder' => $this->indexBuilder,
                 'logger' => $this->logger,
                 'indexNameResolver' => $this->indexNameResolver,
-                'options' => []
+                'options' => [],
             ]
         );
     }
@@ -676,10 +676,10 @@ class ElasticsearchTest extends TestCase
             'index' => [
                     'mapping' => [
                         'total_fields' => [
-                            'limit'  => 1002
-                        ]
-                    ]
-            ]
+                            'limit'  => 1002,
+                        ],
+                    ],
+            ],
         ];
         $this->client
             ->method('createIndex')

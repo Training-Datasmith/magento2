@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use Magento\Sales\Model\ResourceModel\Order\Shipment;
 
 class OrdersCollectionFilters
 {
-
     /**
      * Return product attribute data set for update attribute options
      *
@@ -26,7 +26,7 @@ class OrdersCollectionFilters
      */
     public static function getCollectionFiltersDataProvider(): array
     {
-        $filterDate = "2021-12-13 00:00:00";
+        $filterDate = '2021-12-13 00:00:00';
         $customerOrdersFilterDate = new DateTime($filterDate);
         $customerOrdersFilterDate->setTimezone(new DateTimeZone('UTC'));
         return [

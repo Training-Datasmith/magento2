@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Shipping\Test\Unit\Controller\Adminhtml\Order\Shipment;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\View\Result\Forward;
 use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\EditComment;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Backend\Model\View\Result\Forward;
 
 /**
  * Edit comment test feature
@@ -61,7 +62,7 @@ class EditCommentTest extends TestCase
             EditComment::class,
             [
                 'context' => $this->context,
-                'resultForwardFactory' => $this->resultForwardFactory
+                'resultForwardFactory' => $this->resultForwardFactory,
             ]
         );
     }

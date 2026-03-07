@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class Elasticsearch extends \Magento\Elasticsearch\Model\Adapter\Elasticsearch
             $bulkArray['body'][] = [
                 $action => [
                     '_id' => $id,
-                    '_index' => $indexName
-                ]
+                    '_index' => $indexName,
+                ],
             ];
 
             if ($action == self::BULK_ACTION_INDEX) {

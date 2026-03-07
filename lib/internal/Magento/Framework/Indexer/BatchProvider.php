@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer;
 
-use \Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * Generator of consecutive entity ID ranges that must be handled as a batch.
@@ -24,7 +27,7 @@ class BatchProvider implements BatchProviderInterface
             $adapter->select()->from(
                 ['entity' => $tableName],
                 [
-                    'max_value' => new \Zend_Db_Expr('MAX(entity.' . $linkField . ')')
+                    'max_value' => new \Zend_Db_Expr('MAX(entity.' . $linkField . ')'),
                 ]
             )
         );
@@ -34,7 +37,7 @@ class BatchProvider implements BatchProviderInterface
         /** @var int $fullBatchCount count of the batches that have expected batch size */
         $fullBatchCount = ($maxLinkFieldValue - $truncatedBatchSize) / $batchSize;
 
-        for ($batchIndex = 0; $batchIndex < $fullBatchCount; $batchIndex ++) {
+        for ($batchIndex = 0; $batchIndex < $fullBatchCount; $batchIndex++) {
             yield ['from' => $batchIndex * $batchSize + 1, 'to' => ($batchIndex + 1) * $batchSize];
         }
         // return the last batch if it has smaller size

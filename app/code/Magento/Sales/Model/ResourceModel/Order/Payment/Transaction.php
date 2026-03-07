@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All rights reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order\Payment;
 
 use Magento\Sales\Model\ResourceModel\EntityAbstract;

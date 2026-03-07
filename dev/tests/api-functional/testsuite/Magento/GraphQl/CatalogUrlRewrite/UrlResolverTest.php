@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $relativePath = $actualUrls->getRequestPath();
@@ -111,7 +112,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         // even of non seo friendly path requested, the seo friendly path should be prefered
@@ -168,7 +169,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         // querying the end redirect gives the same record
@@ -249,7 +250,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $categoryUrlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $categoryId = $actualUrls->getEntityId();
@@ -313,7 +314,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $relativePath = $actualUrls->getRequestPath();
@@ -347,7 +348,7 @@ QUERY;
         $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $query
@@ -387,7 +388,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $categoryUrlPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         $categoryId = $actualUrls->getEntityId();
@@ -432,7 +433,7 @@ QUERY;
         $actualUrls = $urlFinder->findOneByData(
             [
                 'request_path' => $urlPath,
-                'store_id' => 1
+                'store_id' => 1,
             ]
         );
         $relativePath = $actualUrls->getRequestPath();

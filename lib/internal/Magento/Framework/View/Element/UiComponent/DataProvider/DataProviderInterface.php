@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\View\Element\UiComponent\DataProvider;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+namespace Magento\Framework\View\Element\UiComponent\DataProvider;
 
 /**
  * Interface DataProviderInterface

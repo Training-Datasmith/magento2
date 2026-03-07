@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaStorage\Model\ResourceModel\File\Storage;
 
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\App\ResourceConnection\ConnectionFactory;
-use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\DB\Helper;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 

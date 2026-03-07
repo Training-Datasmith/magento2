@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\LayoutInterface;
 use Magento\LayeredNavigation\Block\Navigation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
@@ -74,7 +75,7 @@ class NavigationTest extends TestCase
             [
                 'layerResolver' => $layerResolver,
                 'filterList' => $this->filterListMock,
-                'visibilityFlag' => $this->visibilityFlagMock
+                'visibilityFlag' => $this->visibilityFlagMock,
             ]
         );
         $this->layoutMock = $this->createMock(LayoutInterface::class);
@@ -170,15 +171,15 @@ class NavigationTest extends TestCase
         return [
             [
                 Category::DM_PRODUCT,
-                true
+                true,
             ],
             [
                 Category::DM_PAGE,
-                false
+                false,
             ],
             [
                 Category::DM_MIXED,
-                true
+                true,
             ],
         ];
     }

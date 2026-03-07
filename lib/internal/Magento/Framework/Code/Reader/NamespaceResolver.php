@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -110,7 +112,7 @@ class NamespaceResolver
                                 T_STRING => T_STRING,
                                 T_AS => T_AS,
                                 T_NAME_QUALIFIED => T_NAME_QUALIFIED,
-                                T_NAME_FULLY_QUALIFIED => T_NAME_FULLY_QUALIFIED
+                                T_NAME_FULLY_QUALIFIED => T_NAME_FULLY_QUALIFIED,
                             ];
                             if (isset($token[0], $whitelist[$token[0]])) {
                                 return true;

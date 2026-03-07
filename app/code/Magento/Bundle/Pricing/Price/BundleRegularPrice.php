@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Bundle\Pricing\Price;
 
+use Magento\Bundle\Model\Product\Price;
 use Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface;
+use Magento\Catalog\Pricing\Price\CustomOptionPrice;
 use Magento\Catalog\Pricing\Price\RegularPrice;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Catalog\Pricing\Price\CustomOptionPrice;
-use Magento\Bundle\Model\Product\Price;
 
 /**
  * Bundle product regular price model

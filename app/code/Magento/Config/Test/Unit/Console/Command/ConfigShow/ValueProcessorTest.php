@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\Matcher\InvokedCount;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -217,7 +217,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => '{value:someValue}',
                 'className' => Value::class,
                 'value' => '{value:someValue}',
-                'processedValue' => ['someValue']
+                'processedValue' => ['someValue'],
             ],
             [
                 'hasBackendModel' => true,
@@ -233,7 +233,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => 'someValue',
                 'className' => Value::class,
                 'value' => 'someValue',
-                'processedValue' => 'someValue'
+                'processedValue' => 'someValue',
             ],
             [
                 'hasBackendModel' => false,
@@ -249,7 +249,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => 'someValue',
                 'className' => Value::class,
                 'value' => 'someValue',
-                'processedValue' => 'someValue'
+                'processedValue' => 'someValue',
             ],
             [
                 'hasBackendModel' => true,
@@ -265,7 +265,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => ValueProcessor::SAFE_PLACEHOLDER,
                 'className' => Encrypted::class,
                 'value' => 'someValue',
-                'processedValue' => 'someValue'
+                'processedValue' => 'someValue',
             ],
             [
                 'hasBackendModel' => true,
@@ -281,7 +281,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => null,
                 'className' => Value::class,
                 'value' => null,
-                'processedValue' => null
+                'processedValue' => null,
             ],
             [
                 'hasBackendModel' => true,
@@ -297,7 +297,7 @@ class ValueProcessorTest extends TestCase
                 'expectsValue' => null,
                 'className' => Encrypted::class,
                 'value' => null,
-                'processedValue' => null
+                'processedValue' => null,
             ],
         ];
     }

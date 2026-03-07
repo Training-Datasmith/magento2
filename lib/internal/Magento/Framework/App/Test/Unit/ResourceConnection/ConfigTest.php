@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\SerializerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ConfigTest extends TestCase
@@ -135,10 +136,10 @@ class ConfigTest extends TestCase
             ['resourceName' => 'mainResourceName', 'connectionName' => 'anotherConnection'],
             [
                 'resourceName' => 'brokenResourceName',
-                'connectionName' => ResourceConnection::DEFAULT_CONNECTION
+                'connectionName' => ResourceConnection::DEFAULT_CONNECTION,
             ],
             ['resourceName' => 'extendedResourceName', 'connectionName' => 'validConnectionName'],
-            ['resourceName' => 'validResource', 'connectionName' => 'validConnectionName']
+            ['resourceName' => 'validResource', 'connectionName' => 'validConnectionName'],
         ];
     }
 }

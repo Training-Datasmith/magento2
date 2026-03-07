@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -14,5 +16,5 @@ return [
         'endpoint_url' => 'http://example.com/integration2',
         'identity_link_url' => 'http://www.example.com/identity2',
     ],
-    'TestIntegration3' => ['email' => 'test-integration3@example.com']
+    'TestIntegration3' => ['email' => 'test-integration3@example.com'],
 ];

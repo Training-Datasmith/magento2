@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use PHPUnit\Framework\TestCase;
 
 class GetRenditionPathTest extends TestCase
 {
-
     /**
      * @var GetRenditionPathInterface
      */
@@ -67,12 +67,12 @@ class GetRenditionPathTest extends TestCase
         return [
             'return_original_path' => [
                 'path' => '/magento_medium_image.jpg',
-                'expectedRenditionPath' => '.renditions/magento_medium_image.jpg'
+                'expectedRenditionPath' => '.renditions/magento_medium_image.jpg',
             ],
             'return_rendition_path' => [
                 'path' => '/magento_large_image.jpg',
-                'expectedRenditionPath' => '.renditions/magento_large_image.jpg'
-            ]
+                'expectedRenditionPath' => '.renditions/magento_large_image.jpg',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,13 +18,13 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 class Form implements ArgumentInterface
 {
     private $expectedParamsGetRequest = [
-        'id'
+        'id',
     ];
 
     private $expectedParamsPostRequest = [
         'text',
         'type',
-        'styles'
+        'styles',
     ];
 
     /**

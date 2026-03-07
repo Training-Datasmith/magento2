@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Logger\LoggerProxy;
 use Magento\Framework\Logger\Monolog;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
@@ -32,7 +33,7 @@ class LoggerProxyTest extends TestCase
             [LogLevel::WARNING],
             [LogLevel::NOTICE],
             [LogLevel::INFO],
-            [LogLevel::DEBUG]
+            [LogLevel::DEBUG],
         ];
     }
 

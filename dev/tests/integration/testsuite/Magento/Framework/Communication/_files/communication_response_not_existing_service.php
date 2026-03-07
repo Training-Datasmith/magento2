@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +17,6 @@ return [
                 'response' => \Magento\Customer\Api\Data\InvalidInterface::class,
                 'handlers' => [],
             ],
-        ]
-    ]
+        ],
+    ],
 ];

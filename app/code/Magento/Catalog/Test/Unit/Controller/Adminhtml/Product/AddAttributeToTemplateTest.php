@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -170,8 +171,8 @@ class AddAttributeToTemplateTest extends TestCase
         $groupSortOrder = '15';
         $templateId = '4';
         $attributeIds = [
-            'selected' => ["178"],
-            'total' => '1'
+            'selected' => ['178'],
+            'total' => '1',
         ];
 
         $this->requestMock
@@ -183,7 +184,7 @@ class AddAttributeToTemplateTest extends TestCase
                     ['groupName', null, $groupName],
                     ['groupSortOrder', null, $groupSortOrder],
                     ['templateId', null, $templateId],
-                    ['attributeIds', [], $attributeIds]
+                    ['attributeIds', [], $attributeIds],
                 ]
             );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Customer\Block\Form;
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Element\ButtonLockManager;
+use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Xpath;
 use PHPUnit\Framework\TestCase;
@@ -24,12 +25,12 @@ class LoginTest extends TestCase
     private const EMAIL_LABEL_XPATH = "//label[@for='email']/span[contains(text(), 'Email')]";
     private const PASSWORD_LABEL_XPATH = "//label[@for='pass' ]/span[contains(text(), 'Password')]";
     private const EMAIL_INPUT_XPATH = "//input[@name ='login[username]' and contains(@data-validate,'required:true')"
-    . "and contains(@data-validate, \"'validate-email':true\")]";
+        . "and contains(@data-validate, \"'validate-email':true\")]";
     private const PASSWORD_INPUT_XPATH = "//input[@name='login[password]'"
-    . "and contains(@data-validate,'required:true')]";
+        . "and contains(@data-validate,'required:true')]";
     private const SIGN_IN_BUTTON_XPATH = "//button[@type='submit']/span[contains(text(), 'Sign In')]";
     private const FORGOT_PASSWORD_LINK_PATH = "//a[contains(@href, 'customer/account/forgotpassword')]"
-    . "/span[contains(text(), 'Forgot Your Password?')] ";
+        . "/span[contains(text(), 'Forgot Your Password?')] ";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

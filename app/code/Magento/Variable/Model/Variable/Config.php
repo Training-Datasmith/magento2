@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Model\Variable;
 
 use Magento\Framework\App\ObjectManager;
@@ -89,7 +92,7 @@ class Config
                     'url' => $this->getVariablesWysiwygActionUrl(),
                     'onclick' => $onclickParts,
                     'class' => 'add-variable plugin',
-                    'placeholders' => $this->getVariablesWysiwygData()
+                    'placeholders' => $this->getVariablesWysiwygData(),
                 ],
             ],
         ];
@@ -133,7 +136,7 @@ class Config
             $variables[$variable['value']] = [
                 'code' => $variable['value'],
                 'variable_name' => $variable['label'],
-                'variable_type' => \Magento\Variable\Model\Source\Variables::DEFAULT_VARIABLE_TYPE
+                'variable_type' => \Magento\Variable\Model\Source\Variables::DEFAULT_VARIABLE_TYPE,
             ];
         }
 
@@ -154,7 +157,7 @@ class Config
             $variables[$variable['code']] = [
                 'code' => $variable['code'],
                 'variable_name' => $variable['name'],
-                'variable_type' => 'custom'
+                'variable_type' => 'custom',
             ];
         }
 

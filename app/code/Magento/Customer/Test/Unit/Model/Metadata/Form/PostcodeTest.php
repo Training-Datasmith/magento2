@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Customer\Api\Data\ValidationRuleInterface;
 use Magento\Customer\Model\Metadata\Form\Postcode;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Phrase;
+use Magento\Framework\Stdlib\StringUtils;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Stdlib\StringUtils;
 
 class PostcodeTest extends AbstractFormTestCase
 {
@@ -178,17 +179,17 @@ class PostcodeTest extends AbstractFormTestCase
             'S1' => ['s',
                 [
                     '"" length must be equal or greater than 5 characters.',
-                    "notDigits" => '"" contains non-numeric characters.'
-                ]
+                    'notDigits' => '"" contains non-numeric characters.',
+                ],
             ],
-            'S6' => ['string', ["notDigits" => '"" contains non-numeric characters.']],
+            'S6' => ['string', ['notDigits' => '"" contains non-numeric characters.']],
             'S7' => ['strings',
                 [
                     '"" length must be equal or less than 6 characters.',
-                    "notDigits" => '"" contains non-numeric characters.'
-                ]
+                    'notDigits' => '"" contains non-numeric characters.',
+                ],
             ],
-            'L6s' => ['66666s', ["notDigits" => '"" contains non-numeric characters.']],
+            'L6s' => ['66666s', ['notDigits' => '"" contains non-numeric characters.']],
         ];
     }
 }

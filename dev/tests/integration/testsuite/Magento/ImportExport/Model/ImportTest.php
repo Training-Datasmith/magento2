@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model;
 
 use Magento\Framework\Phrase;
@@ -75,7 +78,7 @@ class ImportTest extends \PHPUnit\Framework\TestCase
         $this->_model = Bootstrap::getObjectManager()->create(
             Import::class,
             [
-                'importConfig' => $this->_importConfig
+                'importConfig' => $this->_importConfig,
             ]
         );
         $this->_model->setData('images_base_directory', $provider->getDirectory());
@@ -256,7 +259,7 @@ class ImportTest extends \PHPUnit\Framework\TestCase
                 Import::BEHAVIOR_REPLACE => new Phrase('The existing product data is replaced with new data.'
                     . ' <b>Exercise caution when replacing data because the existing product data will be completely'
                     . ' cleared and all references in the system will be lost.</b>'),
-                Import::BEHAVIOR_DELETE => new  Phrase('Any entities in the import data that already exist in the'
+                Import::BEHAVIOR_DELETE => new Phrase('Any entities in the import data that already exist in the'
                     . ' database are deleted from the database.'),
             ];
     }

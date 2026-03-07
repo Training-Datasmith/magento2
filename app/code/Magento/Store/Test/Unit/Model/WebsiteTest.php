@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class WebsiteTest extends TestCase
             [
                 'websiteFactory' => $this->websiteFactory,
                 'storeManager' => $this->storeManager,
-                'typeList' => $this->typeList
+                'typeList' => $this->typeList,
             ]
         );
     }

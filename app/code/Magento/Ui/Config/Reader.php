@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -143,7 +145,7 @@ class Reader implements ReaderInterface
                     'fileName' => sprintf(
                         Data::SEARCH_PATTERN,
                         $output['attributes']['extends']
-                    )
+                    ),
                 ]
             );
             $extendsData = $extendsReader->read();

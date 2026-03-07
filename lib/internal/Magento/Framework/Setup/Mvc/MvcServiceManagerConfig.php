@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Setup\Mvc;
 
-use Laminas\ServiceManager\ServiceManager;
 use Laminas\EventManager\EventManager;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\SharedEventManager;
 use Laminas\EventManager\SharedEventManagerInterface;
-use Laminas\ModuleManager\ModuleManager;
 use Laminas\ModuleManager\Listener\ServiceListener;
+use Laminas\ModuleManager\ModuleManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Native ServiceManagerConfig.

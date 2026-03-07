@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
 
 namespace Magento\Framework\Api;
-
-use Magento\Framework\Api\AbstractSimpleObject;
 
 /**
  * Filter which can be used by any methods from service layer.
@@ -20,9 +20,9 @@ class Filter extends AbstractSimpleObject
     /**#@+
      * Constants for Data Object keys
      */
-    const KEY_FIELD = 'field';
-    const KEY_VALUE = 'value';
-    const KEY_CONDITION_TYPE = 'condition_type';
+    public const KEY_FIELD = 'field';
+    public const KEY_VALUE = 'value';
+    public const KEY_CONDITION_TYPE = 'condition_type';
 
     /**
      * Get field

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class Dashboard extends Template
     /**
      * Location of the "Enable Chart" config param
      */
-    const XML_PATH_ENABLE_CHARTS = 'admin/dashboard/enable_charts';
+    public const XML_PATH_ENABLE_CHARTS = 'admin/dashboard/enable_charts';
 
     /**
      * @var string

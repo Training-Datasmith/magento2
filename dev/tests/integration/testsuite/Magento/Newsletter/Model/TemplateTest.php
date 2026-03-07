@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Model;
 
 use Magento\Framework\App\TemplateTypesInterface;
@@ -69,7 +72,7 @@ class TemplateTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'frontend' => ['default', 'Magento/luma'],
-            'frontend store' => ['fixturestore', 'Magento/blank']
+            'frontend store' => ['fixturestore', 'Magento/blank'],
         ];
     }
 
@@ -103,7 +106,7 @@ class TemplateTest extends \PHPUnit\Framework\TestCase
             ->get(DesignInterface::class)
             ->getConfigurationDesignTheme('adminhtml');
         return [
-            'backend' => ['adminhtml', $designTheme]
+            'backend' => ['adminhtml', $designTheme],
         ];
     }
 
@@ -137,7 +140,7 @@ class TemplateTest extends \PHPUnit\Framework\TestCase
             ['', 'john.doe', 'Test Subject', false],
             ['', '', 'Test Subject', false],
             ['', 'john.doe', '', false],
-            ['', '', '', false]
+            ['', '', '', false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ $ruleCollection = $ruleCollectionFactory->create()
             'in' => [
                 'Percent rule for first simple product',
                 'Percent rule for second simple product',
-            ]
+            ],
         ]
     );
 foreach ($ruleCollection as $rule) {

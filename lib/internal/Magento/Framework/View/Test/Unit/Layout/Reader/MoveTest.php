@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\View\Layout\Element;
 use Magento\Framework\View\Layout\Reader\Context;
 use Magento\Framework\View\Layout\Reader\Move;
 use Magento\Framework\View\Layout\ScheduledStructure;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MoveTest extends TestCase
 {
@@ -101,7 +102,7 @@ class MoveTest extends TestCase
                 'isAfter' => true,
                 'alias' => 'as.product.info',
                 'parentElement' => new Element('<element/>'),
-            ]
+            ],
         ];
     }
 

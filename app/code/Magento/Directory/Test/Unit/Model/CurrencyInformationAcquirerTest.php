@@ -14,10 +14,10 @@ use Magento\Directory\Model\Data\CurrencyInformation;
 use Magento\Directory\Model\Data\CurrencyInformationFactory;
 use Magento\Directory\Model\Data\ExchangeRate;
 use Magento\Directory\Model\Data\ExchangeRateFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

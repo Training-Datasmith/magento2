@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -73,8 +74,8 @@ class BasePackageInfoTest extends \PHPUnit\Framework\TestCase
             [
                 BasePackageInfo::COMPOSER_KEY_EXTRA => [
                     __FILE__,
-                    __FILE__
-                ]
+                    __FILE__,
+                ],
             ]
         );
         $this->readerMock->expects($this->once())->method('readFile')->willReturn($jsonData);
@@ -94,14 +95,14 @@ class BasePackageInfoTest extends \PHPUnit\Framework\TestCase
                     BasePackageInfo::COMPOSER_KEY_MAP => [
                         [
                             __FILE__,
-                            __FILE__
+                            __FILE__,
                         ],
                         [
                             __DIR__,
-                            __DIR__
-                        ]
-                    ]
-                ]
+                            __DIR__,
+                        ],
+                    ],
+                ],
             ]
         );
         $this->readerMock->expects($this->once())->method('readFile')->willReturn($jsonData);

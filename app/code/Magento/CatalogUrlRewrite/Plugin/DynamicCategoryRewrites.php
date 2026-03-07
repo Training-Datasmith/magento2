@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Plugin;
 
+use Magento\CatalogUrlRewrite\Model\Storage\DbStorage;
+use Magento\CatalogUrlRewrite\Model\Storage\DynamicStorage;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
-use Magento\CatalogUrlRewrite\Model\Storage\DynamicStorage;
-use Magento\CatalogUrlRewrite\Model\Storage\DbStorage;
 
 /**
  * Class DbStorage

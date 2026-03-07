@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -134,7 +135,7 @@ class BackendTest extends TestCase
         return [
             [null, false, 'DE'],
             ['not country code', false, 'DE'],
-            ['not country code', '', 'any final result']
+            ['not country code', '', 'any final result'],
         ];
     }
 
@@ -150,7 +151,7 @@ class BackendTest extends TestCase
             ->willReturnMap(
                 [
                     [StructurePlugin::REQUEST_PARAM_COUNTRY, null, $request],
-                    [self::SCOPE, null, self::SCOPE_ID]
+                    [self::SCOPE, null, self::SCOPE_ID],
                 ]
             );
     }

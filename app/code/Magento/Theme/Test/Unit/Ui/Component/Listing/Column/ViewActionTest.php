@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -85,8 +86,8 @@ class ViewActionTest extends TestCase
 
         $dataSource = [
             'data' => [
-                'items' => $dataSourceItems
-            ]
+                'items' => $dataSourceItems,
+            ],
         ];
         $dataSource = $this->model->prepareDataSource($dataSource);
         $this->assertEquals($expectedDataSourceItems, $dataSource['data']['items']);
@@ -102,10 +103,10 @@ class ViewActionTest extends TestCase
             [
                 [
                     'name' => 'itemName',
-                    'config' => []
+                    'config' => [],
                 ],
                 [
-                    ['itemName' => '', 'entity_id' => 1]
+                    ['itemName' => '', 'entity_id' => 1],
                 ],
                 [
                     [
@@ -113,13 +114,13 @@ class ViewActionTest extends TestCase
                             'view' => [
                                 'href' => 'url',
                                 'label' => __('View'),
-                            ]
+                            ],
                         ],
-                        'entity_id' => 1
-                    ]
+                        'entity_id' => 1,
+                    ],
                 ],
                 '#',
-                ['id' => 1]
+                ['id' => 1],
             ],
             [
                 [
@@ -127,11 +128,11 @@ class ViewActionTest extends TestCase
                     'config' => [
                         'viewUrlPath' => 'url_path',
                         'urlEntityParamName' => 'theme_id',
-                        'indexField' => 'theme_id'
-                    ]
+                        'indexField' => 'theme_id',
+                    ],
                 ],
                 [
-                    ['itemName' => '', 'theme_id' => 2]
+                    ['itemName' => '', 'theme_id' => 2],
                 ],
                 [
                     [
@@ -139,14 +140,14 @@ class ViewActionTest extends TestCase
                             'view' => [
                                 'href' => 'url',
                                 'label' => __('View'),
-                            ]
+                            ],
                         ],
-                        'theme_id' => 2
-                    ]
+                        'theme_id' => 2,
+                    ],
                 ],
                 'url_path',
-                ['theme_id' => 2]
-            ]
+                ['theme_id' => 2],
+            ],
         ];
     }
 }

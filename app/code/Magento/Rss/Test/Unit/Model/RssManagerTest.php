@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class RssManagerTest extends TestCase
                 'dataProviders' => [
                     'rss_feed' => DataProviderInterface::class,
                     'bad_rss_feed' => 'Some\Class\Not\Existent',
-                ]
+                ],
             ]
         );
     }

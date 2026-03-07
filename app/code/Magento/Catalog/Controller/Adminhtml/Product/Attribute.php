@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 /**
  * Catalog product attribute controller
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 use Laminas\Validator\Regex;
-use Magento\Framework\Controller\Result;
 use Magento\Framework\View\Result\PageFactory;
 
 abstract class Attribute extends \Magento\Backend\App\Action

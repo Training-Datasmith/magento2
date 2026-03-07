@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ query getTestItem(\$id: Int!)
 }
 QUERY;
         $variables = [
-            "id" => $id
+            'id' => $id,
         ];
 
         $response = $this->graphQlQuery($query, $variables, '', []);

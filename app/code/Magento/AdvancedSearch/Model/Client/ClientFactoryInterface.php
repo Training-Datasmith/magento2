@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Client;
 
 /**
@@ -14,7 +17,6 @@ interface ClientFactoryInterface
     /**
      * Return search client
      *
-     * @param array $options
      * @return ClientInterface
      * @since 100.1.0
      */

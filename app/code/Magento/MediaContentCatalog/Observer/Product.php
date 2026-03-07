@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\MediaContentCatalog\Observer;
 use Magento\Catalog\Model\Product as CatalogProduct;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\MediaContentApi\Api\UpdateContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\Data\ContentIdentityInterfaceFactory;
-use Magento\MediaContentApi\Model\GetEntityContentsInterface;
+use Magento\MediaContentApi\Api\UpdateContentAssetLinksInterface;
 use Magento\MediaContentApi\Model\Config;
+use Magento\MediaContentApi\Model\GetEntityContentsInterface;
 
 /**
  * Observe the catalog_product_save_after event and run processing relation between product content and media asset

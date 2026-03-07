@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,17 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\EavGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\EavGraphQl\Model\Resolver\Query\Type;
+use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\EavGraphQl\Model\Resolver\Query\Attribute;
+use Magento\EavGraphQl\Model\Resolver\Query\Type;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Eav\Api\Data\AttributeInterface;
-use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * Resolve data for custom attribute metadata requests
@@ -94,7 +94,7 @@ class CustomAttributeMetadata implements ResolverInterface
                 'entity_type' => $attributeInput['entity_type'],
                 'attribute_type' => ucfirst($type),
                 'input_type' => isset($attribute) ? $attribute->getFrontendInput() : null,
-                'storefront_properties' => isset($attribute) ?$this->getStorefrontProperties($attribute) : null
+                'storefront_properties' => isset($attribute) ? $this->getStorefrontProperties($attribute) : null,
             ];
         }
 
@@ -110,12 +110,12 @@ class CustomAttributeMetadata implements ResolverInterface
     private function getStorefrontProperties(AttributeInterface $attribute)
     {
         return [
-            'position'=> $attribute->getPosition(),
-            'visible_on_catalog_pages'=> $attribute->getIsVisibleOnFront(),
+            'position' => $attribute->getPosition(),
+            'visible_on_catalog_pages' => $attribute->getIsVisibleOnFront(),
             'use_in_search_results_layered_navigation' => $attribute->getIsFilterableInSearch(),
-            'use_in_product_listing'=> $attribute->getUsedInProductListing(),
-            'use_in_layered_navigation'=>
-                $this->getLayeredNavigationPropertiesEnum()[$attribute->getisFilterable() ?? ''] ?? null
+            'use_in_product_listing' => $attribute->getUsedInProductListing(),
+            'use_in_layered_navigation' =>
+                $this->getLayeredNavigationPropertiesEnum()[$attribute->getisFilterable() ?? ''] ?? null,
         ];
     }
 
@@ -129,7 +129,7 @@ class CustomAttributeMetadata implements ResolverInterface
         return [
             0 => 'NO',
             1 => 'FILTERABLE_WITH_RESULTS',
-            2 => 'FILTERABLE_NO_RESULT'
+            2 => 'FILTERABLE_NO_RESULT',
         ];
     }
 
@@ -139,13 +139,13 @@ class CustomAttributeMetadata implements ResolverInterface
      * @param array $attribute
      * @return GraphQlInputException
      */
-    private function createInputException(array $attribute) : GraphQlInputException
+    private function createInputException(array $attribute): GraphQlInputException
     {
         $isCodeSet = isset($attribute['attribute_code']);
         $isEntitySet = isset($attribute['entity_type']);
         $messagePart = !$isCodeSet ? 'attribute_code' : 'entity_type';
         $messagePart .= !$isCodeSet && !$isEntitySet ? '/entity_type' : '';
-        $identifier = "Empty AttributeInput";
+        $identifier = 'Empty AttributeInput';
         if ($isCodeSet) {
             $identifier = 'attribute_code: ' . $attribute['attribute_code'];
         } elseif ($isEntitySet) {

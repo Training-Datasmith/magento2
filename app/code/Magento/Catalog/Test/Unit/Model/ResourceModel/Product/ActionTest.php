@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Factory;
 use Magento\Catalog\Model\Product;
@@ -28,6 +28,7 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -113,12 +114,12 @@ class ActionTest extends TestCase
         $objects = [
             [
                 UniqueValidationInterface::class,
-                $this->createMock(UniqueValidationInterface::class)
+                $this->createMock(UniqueValidationInterface::class),
             ],
             [
                 AttributeLoaderInterface::class,
-                $this->createMock(AttributeLoaderInterface::class)
-            ]
+                $this->createMock(AttributeLoaderInterface::class),
+            ],
         ];
         $object->prepareObjectManager($objects);
         $this->contextMock = $this->createMock(Context::class);
@@ -169,7 +170,7 @@ class ActionTest extends TestCase
                 'dateTime' => $this->dateTimeMock,
                 'productCollectionFactory' => $this->productCollectionFactoryMock,
                 'typeTransitionManager' => $this->typeTransitionManagerMock,
-                'data' => []
+                'data' => [],
             ]
         );
     }
@@ -222,7 +223,7 @@ class ActionTest extends TestCase
         $this->prepareAdapter();
         $this->prepareProductCollection($items);
         $attrData = [
-            ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeight
+            ProductAttributeInterface::CODE_HAS_WEIGHT => $hasWeight,
         ];
         $storeId = 0;
 
@@ -231,8 +232,8 @@ class ActionTest extends TestCase
             ->willReturn(
                 [
                     self::STUB_PRIMARY_KEY => [
-                        'COLUMNS_LIST' => ['Column']
-                    ]
+                        'COLUMNS_LIST' => ['Column'],
+                    ],
                 ]
             );
 
@@ -259,20 +260,20 @@ class ActionTest extends TestCase
                 WeightResolver::HAS_WEIGHT,
                 Type::TYPE_SIMPLE,
                 static fn (self $testCase) => $testCase->getProductsVirtualToSimple(),
-                static::ENTITY_IDS
+                static::ENTITY_IDS,
             ],
             [
                 WeightResolver::HAS_NO_WEIGHT,
                 Type::TYPE_VIRTUAL,
                 static fn (self $testCase) => $testCase->getProductsSimpleToVirtual(),
-                static::ENTITY_IDS
+                static::ENTITY_IDS,
             ],
             [
                 WeightResolver::HAS_NO_WEIGHT,
                 Type::TYPE_VIRTUAL,
                 static fn (self $testCase) => $testCase->getProductsMixedTypes(),
-                array_slice(static::ENTITY_IDS, 2, 2)
-            ]
+                array_slice(static::ENTITY_IDS, 2, 2),
+            ],
         ];
     }
 

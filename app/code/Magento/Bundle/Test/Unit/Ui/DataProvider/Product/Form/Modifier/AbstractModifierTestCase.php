@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ abstract class AbstractModifierTestCase extends TestCase
     {
         $this->objectManager = new ObjectManager($this);
         $this->locatorMock = $this->createMock(LocatorInterface::class);
-        
+
         $this->productMock = $this->createMock(Product::class);
 
         $this->locatorMock->method('getProduct')->willReturn($this->productMock);

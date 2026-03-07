@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Session max size configuration object
  *
@@ -22,12 +23,12 @@ class SessionMaxSizeConfig
     /**
      * Configuration path to max session size for admin
      */
-    const XML_PATH_MAX_SESSION_SIZE_ADMIN = 'system/security/max_session_size_admin';
+    public const XML_PATH_MAX_SESSION_SIZE_ADMIN = 'system/security/max_session_size_admin';
 
     /**
      * Configuration path to max session size for storefront
      */
-    const XML_PATH_MAX_SESSION_SIZE_STOREFRONT = 'system/security/max_session_size_storefront';
+    public const XML_PATH_MAX_SESSION_SIZE_STOREFRONT = 'system/security/max_session_size_storefront';
 
     /**
      * @var ScopeConfigInterface

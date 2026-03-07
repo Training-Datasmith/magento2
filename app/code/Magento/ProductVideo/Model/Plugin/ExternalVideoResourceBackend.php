@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Model\Plugin;
 
 use Magento\Catalog\Model\ResourceModel\Product\Gallery;
@@ -69,7 +72,7 @@ class ExternalVideoResourceBackend
             [
                 'default_value_video' => $originalResourceModel->getTable(
                     'catalog_product_entity_media_gallery_value_video'
-                )
+                ),
             ],
             implode(
                 ' AND ',

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Customer\Api;
 
 use Magento\Customer\Api\Data\GroupInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Model\Data\Group as CustomerGroup;
 use Magento\Customer\Model\GroupRegistry;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
@@ -19,6 +20,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Customer Group Repository API test
@@ -27,9 +29,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class GroupRepositoryTest extends WebapiAbstract
 {
-    private const SERVICE_NAME = "customerGroupRepositoryV1";
-    private const SERVICE_VERSION = "V1";
-    private const RESOURCE_PATH = "/V1/customerGroups";
+    private const SERVICE_NAME = 'customerGroupRepositoryV1';
+    private const SERVICE_VERSION = 'V1';
+    private const RESOURCE_PATH = '/V1/customerGroups';
 
     /**
      * @var GroupRegistry
@@ -88,7 +90,7 @@ class GroupRepositoryTest extends WebapiAbstract
         $requestData = [CustomerGroup::ID => $groupId];
         $groupData = $this->_webApiCall($serviceInfo, $requestData);
 
-        $this->assertEquals($testGroup, $groupData, "The group data does not match.");
+        $this->assertEquals($testGroup, $groupData, 'The group data does not match.');
     }
 
     /**
@@ -196,7 +198,7 @@ class GroupRepositoryTest extends WebapiAbstract
             CustomerGroup::ID => null,
             CustomerGroup::CODE => $code,
             CustomerGroup::TAX_CLASS_ID => 3,
-            'extension_attributes' => ['exclude_website_ids' => $excludeWebsitesIds]
+            'extension_attributes' => ['exclude_website_ids' => $excludeWebsitesIds],
         ];
         $requestData = ['group' => $groupData];
 
@@ -227,7 +229,7 @@ class GroupRepositoryTest extends WebapiAbstract
     {
         return [
             ['Create Group No Excludes REST', [], null],
-            ['Create Group With Excludes REST', ['1'], ['1']]
+            ['Create Group With Excludes REST', ['1'], ['1']],
         ];
     }
 
@@ -262,7 +264,7 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\Exception $e) {
             $errorData = json_decode($e->getMessage(), true);
 
@@ -331,13 +333,13 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\Exception $e) {
             // @codingStandardsIgnoreStart
             $this->assertStringContainsString(
                 '\"%fieldName\" is required. Enter and try again.","parameters":{"fieldName":"code"}',
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
             // @codingStandardsIgnoreEnd
         }
@@ -368,13 +370,13 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\Exception $e) {
             // @codingStandardsIgnoreStart
             $this->assertStringContainsString(
                 '{"message":"Invalid value of \"%value\" provided for the %fieldName field.","parameters":{"fieldName":"taxClassId","value":9999}',
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
             // codingStandardsIgnoreEnd
         }
@@ -407,7 +409,7 @@ class GroupRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 '{"message":"No such entity with %fieldName = %fieldValue","parameters":{"fieldName":"id","fieldValue":88}',
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -436,12 +438,12 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 'No such entity with %fieldName = %fieldValue',
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         }
     }
@@ -506,7 +508,7 @@ class GroupRepositoryTest extends WebapiAbstract
             CustomerGroup::ID => $groupId,
             CustomerGroup::CODE => 'Updated Group with Exclude REST',
             CustomerGroup::TAX_CLASS_ID => 3,
-            'extension_attributes' => ['exclude_website_ids' => ['1']]
+            'extension_attributes' => ['exclude_website_ids' => ['1']],
         ];
         $requestData = ['group' => $groupData];
 
@@ -569,7 +571,7 @@ class GroupRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -600,12 +602,12 @@ class GroupRepositoryTest extends WebapiAbstract
         $this->assertNotNull($groupId);
 
         $newGroup = $this->groupRepository->getById($groupId);
-        $this->assertEquals($groupId, $newGroup->getId(), "The group id does not match.");
-        $this->assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), "The group code does not match.");
+        $this->assertEquals($groupId, $newGroup->getId(), 'The group id does not match.');
+        $this->assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), 'The group code does not match.');
         $this->assertEquals(
             $groupData['taxClassId'],
             $newGroup->getTaxClassId(),
-            "The group tax class id does not match."
+            'The group tax class id does not match.'
         );
     }
 
@@ -638,7 +640,7 @@ class GroupRepositoryTest extends WebapiAbstract
             CustomerGroup::ID => null,
             CustomerGroup::CODE => $code,
             'taxClassId' => 3,
-            'extension_attributes' => ['exclude_website_ids' => $excludeWebsitesIds]
+            'extension_attributes' => ['exclude_website_ids' => $excludeWebsitesIds],
         ];
         $requestData = ['group' => $groupData];
 
@@ -646,12 +648,12 @@ class GroupRepositoryTest extends WebapiAbstract
         self::assertNotNull($groupId);
 
         $newGroup = $this->groupRepository->getById($groupId);
-        self::assertEquals($groupId, $newGroup->getId(), "The group id does not match.");
-        self::assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), "The group code does not match.");
+        self::assertEquals($groupId, $newGroup->getId(), 'The group id does not match.');
+        self::assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), 'The group code does not match.');
         self::assertEquals(
             $groupData['taxClassId'],
             $newGroup->getTaxClassId(),
-            "The group tax class id does not match."
+            'The group tax class id does not match.'
         );
         self::assertEquals(
             $result,
@@ -669,7 +671,7 @@ class GroupRepositoryTest extends WebapiAbstract
     {
         return [
             ['Create Group No Excludes SOAP', [], null],
-            ['Create Group With Excludes SOAP', ['1'], ['1']]
+            ['Create Group With Excludes SOAP', ['1'], ['1']],
         ];
     }
 
@@ -706,12 +708,12 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -744,12 +746,12 @@ class GroupRepositoryTest extends WebapiAbstract
         $this->assertNotNull($groupId);
 
         $newGroup = $this->groupRepository->getById($groupId);
-        $this->assertEquals($groupId, $newGroup->getId(), "The group id does not match.");
-        $this->assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), "The group code does not match.");
+        $this->assertEquals($groupId, $newGroup->getId(), 'The group id does not match.');
+        $this->assertEquals($groupData[CustomerGroup::CODE], $newGroup->getCode(), 'The group code does not match.');
         $this->assertEquals(
             GroupRepository::DEFAULT_TAX_CLASS_ID,
             $newGroup->getTaxClassId(),
-            "The group tax class id does not match."
+            'The group tax class id does not match.'
         );
     }
 
@@ -777,12 +779,12 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 '"%fieldName" is required. Enter and try again.',
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         }
     }
@@ -815,12 +817,12 @@ class GroupRepositoryTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         }
     }
@@ -893,7 +895,7 @@ class GroupRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
     }
@@ -1012,7 +1014,7 @@ class GroupRepositoryTest extends WebapiAbstract
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $errorObj = $this->processRestExceptionResult($e);
@@ -1042,22 +1044,22 @@ class GroupRepositoryTest extends WebapiAbstract
         ];
 
         $requestData = [CustomerGroup::ID => $groupIdAssignedDefault];
-        $expectedMessage = "Cannot delete group.";
+        $expectedMessage = 'Cannot delete group.';
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
         }
 
@@ -1097,7 +1099,7 @@ class GroupRepositoryTest extends WebapiAbstract
         return [
             ['tax_class_id', 3, []],
             ['tax_class_id', 0, null],
-            ['code', hash("sha256", random_int(0, 10000000000) . time()), null],
+            ['code', hash('sha256', random_int(0, 10000000000) . time()), null],
             [
                 'id',
                 0,
@@ -1105,8 +1107,8 @@ class GroupRepositoryTest extends WebapiAbstract
                     'id' => 0,
                     'code' => 'NOT LOGGED IN',
                     'tax_class_id' => 3,
-                    'tax_class_name' => 'Retail Customer'
-                ]
+                    'tax_class_name' => 'Retail Customer',
+                ],
             ],
             [
                 'code',
@@ -1115,8 +1117,8 @@ class GroupRepositoryTest extends WebapiAbstract
                     'id' => 1,
                     'code' => 'General',
                     'tax_class_id' => 3,
-                    'tax_class_name' => 'Retail Customer'
-                ]
+                    'tax_class_name' => 'Retail Customer',
+                ],
             ],
             [
                 'id',
@@ -1125,8 +1127,8 @@ class GroupRepositoryTest extends WebapiAbstract
                     'id' => 2,
                     'code' => 'Wholesale',
                     'tax_class_id' => 3,
-                    'tax_class_name' => 'Retail Customer'
-                ]
+                    'tax_class_name' => 'Retail Customer',
+                ],
             ],
             [
                 'code',
@@ -1135,9 +1137,9 @@ class GroupRepositoryTest extends WebapiAbstract
                     'id' => 3,
                     'code' => 'Retailer',
                     'tax_class_id' => 3,
-                    'tax_class_name' => 'Retail Customer'
-                ]
-            ]
+                    'tax_class_name' => 'Retail Customer',
+                ],
+            ],
         ];
     }
 
@@ -1165,7 +1167,7 @@ class GroupRepositoryTest extends WebapiAbstract
         $requestData = ['searchCriteria' => $searchData];
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/search" . '?' . http_build_query($requestData),
+                'resourcePath' => self::RESOURCE_PATH . '/search' . '?' . http_build_query($requestData),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
@@ -1223,7 +1225,7 @@ class GroupRepositoryTest extends WebapiAbstract
         $requestData = ['searchCriteria' => $searchData];
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/search" . '?' . http_build_query($requestData),
+                'resourcePath' => self::RESOURCE_PATH . '/search' . '?' . http_build_query($requestData),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [

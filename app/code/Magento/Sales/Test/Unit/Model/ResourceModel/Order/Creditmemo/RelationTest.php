@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\ResourceModel\Order\Creditmemo;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Comment;
 use Magento\Sales\Model\Order\Item as OrderItem;
@@ -15,7 +17,6 @@ use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Item;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Relation;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class RelationTest extends TestCase
 {
@@ -57,7 +58,7 @@ class RelationTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'save'
+                    'save',
                 ]
             )
             ->getMock();
@@ -67,7 +68,7 @@ class RelationTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'save'
+                    'save',
                 ]
             )
             ->getMock();
@@ -77,7 +78,7 @@ class RelationTest extends TestCase
                 [
                     'getId',
                     'getItems',
-                    'getComments'
+                    'getComments',
                 ]
             )
             ->getMock();

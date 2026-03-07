@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\PriceInfo\Factory;
 use Magento\Framework\Pricing\PriceInfoInterface;
 use Magento\Framework\Pricing\SaleableInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for \Magento\Framework\Pricing\PriceInfo\Factory
@@ -106,8 +107,8 @@ class FactoryTest extends TestCase
                 'configurable',
                 2,
                 'Price\PriceInfo\Configurable',
-                'Price\Collection\Configurable'
-            ]
+                'Price\Collection\Configurable',
+            ],
         ];
     }
 
@@ -133,7 +134,7 @@ class FactoryTest extends TestCase
                     $prices,
                     [
                         'saleableItem' => $this->saleableItemMock,
-                        'quantity' => $quantity
+                        'quantity' => $quantity,
                     ],
                     $this->pricesMock,
                 ],
@@ -142,9 +143,9 @@ class FactoryTest extends TestCase
                     [
                         'saleableItem' => $this->saleableItemMock,
                         'quantity' => $quantity,
-                        'prices' => $this->pricesMock
+                        'prices' => $this->pricesMock,
                     ],
-                    $this->priceInfoMock
+                    $this->priceInfoMock,
                 ],
             ]);
         $this->assertEquals($this->priceInfoMock, $this->factory->create($this->saleableItemMock, []));

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\RequireJs\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;

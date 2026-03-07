@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Adminhtml\System\Config\Backend;
 
 use Magento\Framework\App\ObjectManager;

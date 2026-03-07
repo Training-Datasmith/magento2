@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class Data extends AbstractHelper
             Factory::TYPE_DB => __('Database'),
             Factory::TYPE_MEDIA => __('Database and Media'),
             Factory::TYPE_SYSTEM_SNAPSHOT => __('System'),
-            Factory::TYPE_SNAPSHOT_WITHOUT_MEDIA => __('System (excluding Media)')
+            Factory::TYPE_SNAPSHOT_WITHOUT_MEDIA => __('System (excluding Media)'),
         ];
     }
 
@@ -86,7 +87,7 @@ class Data extends AbstractHelper
             Factory::TYPE_DB,
             Factory::TYPE_SYSTEM_SNAPSHOT,
             Factory::TYPE_SNAPSHOT_WITHOUT_MEDIA,
-            Factory::TYPE_MEDIA
+            Factory::TYPE_MEDIA,
         ];
     }
 
@@ -133,7 +134,7 @@ class Data extends AbstractHelper
             Factory::TYPE_SYSTEM_SNAPSHOT => 'tgz',
             Factory::TYPE_SNAPSHOT_WITHOUT_MEDIA => 'tgz',
             Factory::TYPE_MEDIA => 'tgz',
-            Factory::TYPE_DB => 'sql'
+            Factory::TYPE_DB => 'sql',
         ];
     }
 
@@ -279,9 +280,9 @@ class Data extends AbstractHelper
             );
         }
 
-        $filenameWithoutExtension = substr($filenameWithoutExtension, 0, strrpos($filenameWithoutExtension, "."));
+        $filenameWithoutExtension = substr($filenameWithoutExtension, 0, strrpos($filenameWithoutExtension, '.'));
 
-        list($time, $type) = explode("_", $filenameWithoutExtension);
+        list($time, $type) = explode('_', $filenameWithoutExtension);
 
         $name = str_replace($time . '_' . $type, '', $filenameWithoutExtension);
 

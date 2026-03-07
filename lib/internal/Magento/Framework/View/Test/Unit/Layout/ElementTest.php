@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,11 +9,12 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\View\Layout\Element
  */
+
 namespace Magento\Framework\View\Test\Unit\Layout;
 
 use Magento\Framework\View\Layout\Element;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ElementTest extends TestCase
 {
@@ -34,7 +36,7 @@ class ElementTest extends TestCase
             ['<container name="name" />', 'name'],
             ['<referenceBlock name="name" />', 'name'],
             ['<invalid name="name" />', false],
-            ['<block />', '']
+            ['<block />', ''],
         ];
     }
 
@@ -52,7 +54,7 @@ class ElementTest extends TestCase
             ['<renderer cacheable="false" />', true],
             ['<renderer name="name" />', true],
             ['<widget cacheable="false" />', true],
-            ['<widget name="name" />', true]
+            ['<widget name="name" />', true],
         ];
     }
 

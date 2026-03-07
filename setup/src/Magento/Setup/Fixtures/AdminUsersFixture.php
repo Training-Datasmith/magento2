@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -118,7 +120,7 @@ class AdminUsersFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'admin_users' => 'Admin Users'
+            'admin_users' => 'Admin Users',
         ];
     }
 

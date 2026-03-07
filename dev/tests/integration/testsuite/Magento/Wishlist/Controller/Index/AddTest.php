@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,21 +9,20 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Controller\Index;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Customer\Model\Session;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Escaper;
-use Magento\Framework\Message\MessageInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\TestCase\AbstractController;
-use Magento\TestFramework\Wishlist\Model\GetWishlistByCustomerId;
 use Laminas\Stdlib\Parameters;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\TestFramework\Mail\Template\TransportBuilderMock;
-use Magento\Wishlist\Model\DataSerializer;
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Escaper;
+use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\UrlInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Mail\Template\TransportBuilderMock;
+use Magento\TestFramework\TestCase\AbstractController;
+use Magento\TestFramework\Wishlist\Model\GetWishlistByCustomerId;
+use Magento\Wishlist\Model\DataSerializer;
 
 /**
  * Test for add product to wish list.
@@ -309,7 +309,7 @@ class AddTest extends AbstractController
     private function assertSuccess(int $customerId, int $itemsCount, string $productName): void
     {
         $expectedMessage = sprintf("\n%s has been added to your Wish List.", $productName)
-            . " Click <a href=\"http://localhost/test\">here</a> to continue shopping.";
+            . ' Click <a href="http://localhost/test">here</a> to continue shopping.';
         $this->assertSessionMessages($this->equalTo([(string)__($expectedMessage)]), MessageInterface::TYPE_SUCCESS);
         $wishlist = $this->getWishlistByCustomerId->execute($customerId);
         $this->assertCount($itemsCount, $wishlist->getItemCollection());

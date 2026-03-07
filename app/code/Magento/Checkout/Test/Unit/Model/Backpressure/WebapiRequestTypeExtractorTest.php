@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Checkout\Test\Unit\Model\Backpressure;
 
 use Magento\Checkout\Model\Backpressure\WebapiRequestTypeExtractor;
 use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests the WebapiRequestTypeExtractor class

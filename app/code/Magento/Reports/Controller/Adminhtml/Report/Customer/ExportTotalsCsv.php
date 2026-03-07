@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report\Customer;
 
 use Magento\Backend\Block\Widget\Grid\ExportInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 
 class ExportTotalsCsv extends \Magento\Reports\Controller\Adminhtml\Report\Customer
 {

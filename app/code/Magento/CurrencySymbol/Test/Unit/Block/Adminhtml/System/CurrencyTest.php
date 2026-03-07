@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\CurrencySymbol\Test\Unit\Block\Adminhtml\System;
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Button;
 use Magento\CurrencySymbol\Block\Adminhtml\System\Currency;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class CurrencyTest extends TestCase
 {
@@ -71,7 +72,7 @@ class CurrencyTest extends TestCase
             'adminhtml/system_config/edit',
             [
                 'section' => 'currency',
-                '_fragment' => 'currency_options-link'
+                '_fragment' => 'currency_options-link',
             ]
         )->willReturn(self::STUB_OPTION_LINK_URL);
 
@@ -87,9 +88,9 @@ class CurrencyTest extends TestCase
                             'class' => 'save primary save-currency-rates',
                             'data_attribute' => [
                                 'mage-init' => [
-                                    'button' => ['event' => 'save', 'target' => '#rate-form']
-                                ]
-                            ]
+                                    'button' => ['event' => 'save', 'target' => '#rate-form'],
+                                ],
+                            ],
                         ]];
                         if ($args === $expectedArgs1) {
                             return null;
@@ -98,7 +99,7 @@ class CurrencyTest extends TestCase
                     case 2:
                         $expectedArgs2 = ['options_button', Button::class, [
                             'label' => __('Options'),
-                            'onclick' => 'setLocation(\'' . self::STUB_OPTION_LINK_URL . '\')'
+                            'onclick' => 'setLocation(\'' . self::STUB_OPTION_LINK_URL . '\')',
                         ]];
                         if ($args === $expectedArgs2) {
                             return null;
@@ -110,7 +111,7 @@ class CurrencyTest extends TestCase
                         $expectedArgs3 = ['reset_button', Button::class, [
                             'label' => __('Reset'),
                             'onclick' => 'document.location.reload()',
-                            'class' => 'reset'
+                            'class' => 'reset',
                         ]];
                         if ($args === $expectedArgs3) {
                             return null;
@@ -124,7 +125,7 @@ class CurrencyTest extends TestCase
             Currency::class,
             [
                 'layout' => $layoutMock,
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
         $block->setLayout($layoutMock);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\CompareArraysRecursively;
+use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests CategoryManagement
@@ -46,13 +48,13 @@ class CategoryManagementTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . '?' . http_build_query($requestData),
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => 'V1',
-                'operation' => self::SERVICE_NAME . 'GetTree'
-            ]
+                'operation' => self::SERVICE_NAME . 'GetTree',
+            ],
         ];
         $result = $this->_webApiCall($serviceInfo, $requestData);
         $diff = $this->compareArraysRecursively->execute($expected, $result);
@@ -85,14 +87,14 @@ class CategoryManagementTest extends WebapiAbstract
                                             'name' => 'Category 1.1.1',
                                             'children_data' => [
 
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 2,
@@ -114,14 +116,14 @@ class CategoryManagementTest extends WebapiAbstract
                                             'name' => 'Category 1.1.1',
                                             'children_data' => [
 
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 400,
@@ -135,10 +137,10 @@ class CategoryManagementTest extends WebapiAbstract
                             'name' => 'Category 1.1',
                             'children_data' => [
 
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 400,
@@ -148,8 +150,8 @@ class CategoryManagementTest extends WebapiAbstract
                     'name' => 'Category 1',
                     'children_data' => [
 
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
     }
@@ -166,13 +168,13 @@ class CategoryManagementTest extends WebapiAbstract
             [
                 'rest' => [
                     'resourcePath' => self::RESOURCE_PATH . '/' . $categoryId . '/move',
-                    'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                    'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
                 ],
                 'soap' => [
                     'service' => self::SERVICE_NAME,
                     'serviceVersion' => 'V1',
-                    'operation' => self::SERVICE_NAME . 'Move'
-                ]
+                    'operation' => self::SERVICE_NAME . 'Move',
+                ],
             ];
         $this->assertTrue($this->_webApiCall($serviceInfo, $categoryData));
         /** @var \Magento\Catalog\Model\Category $model */
@@ -189,7 +191,7 @@ class CategoryManagementTest extends WebapiAbstract
             [402, 400, null, 2],
             [402, 400, 401, 2],
             [402, 400, 999, 2],
-            [402, 400, 0, 1]
+            [402, 400, 0, 1],
         ];
     }
 }

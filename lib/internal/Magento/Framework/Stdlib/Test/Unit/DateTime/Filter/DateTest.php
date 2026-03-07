@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Exception;
 use IntlDateFormatter;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DateTest extends TestCase
 {
@@ -48,7 +49,7 @@ class DateTest extends TestCase
         return [
             ['2000-01-01', '2000-01-01'],
             ['2014-03-30T02:30:00', '2014-03-30'],
-            ['12/31/2000', '2000-12-31']
+            ['12/31/2000', '2000-12-31'],
         ];
     }
 

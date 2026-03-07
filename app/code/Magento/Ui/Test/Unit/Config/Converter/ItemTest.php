@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class ItemTest extends TestCase
     public static function convertDataProvider()
     {
         return [
-            self::getSetOne() + self::getSetTwo() + self::getSetThree()
+            self::getSetOne() + self::getSetTwo() + self::getSetThree(),
         ];
     }
 
@@ -122,7 +123,7 @@ class ItemTest extends TestCase
                     ],
                 ],
             ],
-            '//listing/listingToolbar/filters/settings/templates'
+            '//listing/listingToolbar/filters/settings/templates',
         ];
     }
 
@@ -164,7 +165,7 @@ class ItemTest extends TestCase
                     ],
                 ],
             ],
-            '//listing/columns/settings/editorConfig'
+            '//listing/columns/settings/editorConfig',
         ];
     }
 
@@ -202,7 +203,7 @@ class ItemTest extends TestCase
                     ],
                 ],
             ],
-            '//listing/filters/settings/templates'
+            '//listing/filters/settings/templates',
         ];
     }
 }

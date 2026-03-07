@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\GuestCart;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\CartItemRepositoryInterface;
 use Magento\Quote\Model\GuestCart\GuestCartItemRepository;
 use Magento\Quote\Model\Quote\Item;
@@ -68,12 +69,12 @@ class GuestCartItemRepositoryTest extends TestCase
         // Create QuoteIdMask mock
         $this->quoteIdMaskMock = $this->createPartialMockWithReflection(
             QuoteIdMask::class,
-            ["load", "getQuoteId", "getMaskedId"]
+            ['load', 'getQuoteId', 'getMaskedId']
         );
         $this->quoteIdMaskMock->method('load')->with($this->maskedCartId)->willReturnSelf();
         $this->quoteIdMaskMock->method('getQuoteId')->willReturn($this->cartId);
         $this->quoteIdMaskMock->method('getMaskedId')->willReturn($this->maskedCartId);
-        
+
         // Create QuoteIdMaskFactory mock
         $this->quoteIdMaskFactoryMock = $this->createMock(QuoteIdMaskFactory::class);
         $this->quoteIdMaskFactoryMock->method('create')->willReturn($this->quoteIdMaskMock);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ namespace Magento\Framework\DB;
  */
 interface MapperInterface
 {
-    const SORT_ORDER_ASC = 'ASC';
+    public const SORT_ORDER_ASC = 'ASC';
 
-    const SORT_ORDER_DESC = 'DESC';
+    public const SORT_ORDER_DESC = 'DESC';
 
     /**
      * Map criteria to Select Query Object

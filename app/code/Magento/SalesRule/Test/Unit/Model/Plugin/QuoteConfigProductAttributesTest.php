@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class QuoteConfigProductAttributesTest extends TestCase
         $this->plugin = $objectManager->getObject(
             QuoteConfigProductAttributes::class,
             [
-                'ruleResource' => $this->ruleResource
+                'ruleResource' => $this->ruleResource,
             ]
         );
     }

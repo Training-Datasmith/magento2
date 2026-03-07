@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Test\Unit\Model\Rule\Action\Discount;
 
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
@@ -16,7 +18,6 @@ use Magento\SalesRule\Model\Rule\Action\Discount\ByFixed;
 use Magento\SalesRule\Model\Rule\Action\Discount\Data;
 use Magento\SalesRule\Model\Rule\Action\Discount\DataFactory;
 use Magento\SalesRule\Model\Validator;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -70,7 +71,7 @@ class ByFixedTest extends TestCase
             [
                 'discountDataFactory' => $this->discountDataFactory,
                 'validator' => $this->validator,
-                'priceCurrency' => $this->priceCurrency
+                'priceCurrency' => $this->priceCurrency,
             ]
         );
     }
@@ -122,7 +123,7 @@ class ByFixedTest extends TestCase
                 'getQuote',
                 'getAddress',
                 'getOptionByCode',
-                'getQty'
+                'getQty',
             ]
         );
         $this->validator->expects(
@@ -252,7 +253,7 @@ class ByFixedTest extends TestCase
                     'originalAmount' => 0,
                     'baseOriginalAmount' => 0,
                 ],
-            ]
+            ],
         ];
     }
 
@@ -284,7 +285,7 @@ class ByFixedTest extends TestCase
             ['step' => 0, 'qty' => 23, 'expected' => 23],
             ['step' => 10, 'qty' => 23.5, 'expected' => 20],
             ['step' => 20, 'qty' => 33, 'expected' => 20],
-            ['step' => 25, 'qty' => 23, 'expected' => 0]
+            ['step' => 25, 'qty' => 23, 'expected' => 0],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,8 +52,8 @@ return [
             'shared_index' => null,
             'fieldsets' => [],
             'dependencies' => [
-                'test_indexer_with_dependencies'
+                'test_indexer_with_dependencies',
             ],
         ],
-    ]
+    ],
 ];

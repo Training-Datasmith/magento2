@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Routes configuration converter
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Route\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ $bundleProduct->setTypeId(Type::TYPE_BUNDLE)
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                 ],
-            ]
+            ],
         ]
     );
 

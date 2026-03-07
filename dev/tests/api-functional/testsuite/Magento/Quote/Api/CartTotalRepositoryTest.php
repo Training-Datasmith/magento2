@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
@@ -11,21 +14,21 @@ use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
 use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Model\Cart\Totals;
 use Magento\Quote\Model\Cart\Totals\Item as ItemTotals;
-use Magento\Framework\Api\FilterBuilder;
-use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Tax\Test\Fixture\TaxRule as TaxRule;
+use Magento\TestFramework\Fixture\Config as Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\Config as Config;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\Quote\Address;
 use Magento\TestModuleOverrideConfig\Inheritance\Fixtures\FixturesInterface;
 
 /**
@@ -105,14 +108,14 @@ class CartTotalRepositoryTest extends WebapiAbstract
             [
                 'tax_rate_ids' => [2],
                 'product_tax_class_ids' => [2],
-                'customer_tax_class_ids' => [3]
+                'customer_tax_class_ids' => [3],
             ],
             'tax_rule'
         ),
         DataFixture(
             ProductFixture::class,
             [
-                'price' => 5
+                'price' => 5,
             ],
             'product'
         ),
@@ -124,7 +127,7 @@ class CartTotalRepositoryTest extends WebapiAbstract
             AddProductToCartFixture::class,
             [
                 'cart_id' => '$cart.id$',
-                'product_id' => '$product.id$'
+                'product_id' => '$product.id$',
             ]
         ),
         DataFixture(
@@ -134,8 +137,8 @@ class CartTotalRepositoryTest extends WebapiAbstract
                 'address' => [
                     AddressInterface::KEY_POSTCODE => 10036,
                     AddressInterface::KEY_CITY => 'New York',
-                    AddressInterface::KEY_REGION_ID => 43
-                ]
+                    AddressInterface::KEY_REGION_ID => 43,
+                ],
             ]
         ),
         DataFixture(
@@ -145,26 +148,26 @@ class CartTotalRepositoryTest extends WebapiAbstract
                 'address' => [
                     AddressInterface::KEY_POSTCODE => 10036,
                     AddressInterface::KEY_CITY => 'New York',
-                    AddressInterface::KEY_REGION_ID => 43
-                ]
+                    AddressInterface::KEY_REGION_ID => 43,
+                ],
             ]
         ),
         DataFixture(
             SetGuestEmailFixture::class,
             [
-                'cart_id' => '$cart.id$'
+                'cart_id' => '$cart.id$',
             ]
         ),
         DataFixture(
             SetDeliveryMethodFixture::class,
             [
-                'cart_id' => '$cart.id$'
+                'cart_id' => '$cart.id$',
             ]
         ),
         DataFixture(
             SetPaymentMethodFixture::class,
             [
-                'cart_id' => '$cart.id$'
+                'cart_id' => '$cart.id$',
             ]
         ),
     ]
@@ -288,7 +291,7 @@ class CartTotalRepositoryTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine/totals',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
+                'token' => $token,
             ],
         ];
 
@@ -318,7 +321,7 @@ class CartTotalRepositoryTest extends WebapiAbstract
      *
      * @return array
      */
-    private function getData(Quote $quote, Address $shippingAddress) : array
+    private function getData(Quote $quote, Address $shippingAddress): array
     {
         return [
             Totals::KEY_GRAND_TOTAL => $quote->getGrandTotal(),

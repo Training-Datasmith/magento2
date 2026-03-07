@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Design\Edit;
 
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
@@ -29,7 +32,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'label' => __('General'),
                 'content' => $this->getLayout()->createBlock(
                     \Magento\Backend\Block\System\Design\Edit\Tab\General::class
-                )->toHtml()
+                )->toHtml(),
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Test\Unit\View\Element;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
@@ -60,14 +63,14 @@ class UiComponentFactoryTest extends \PHPUnit\Framework\TestCase
                 'data' => [],
                 'componentChildFactories' => [],
                 'definitionData' => $this->dataMock,
-                'sanitizer' => $sanitizerMock
+                'sanitizer' => $sanitizerMock,
             ]
         );
     }
 
     public function testCreateRootComponent()
     {
-        $identifier = "product_listing";
+        $identifier = 'product_listing';
         $context = $this->createMock(\Magento\Framework\View\Element\UiComponent\ContextInterface::class);
         $bundleComponents = [
             'attributes' => [
@@ -75,10 +78,10 @@ class UiComponentFactoryTest extends \PHPUnit\Framework\TestCase
             ],
             'arguments' => [
                 'config' => [
-                    'class' => 'Some\Class\Component2'
-                ]
+                    'class' => 'Some\Class\Component2',
+                ],
             ],
-            'children' => []
+            'children' => [],
         ];
         $uiConfigMock = $this->createMock(\Magento\Framework\Config\DataInterface::class);
         $this->dataInterfaceFactoryMock->expects($this->once())
@@ -93,13 +96,13 @@ class UiComponentFactoryTest extends \PHPUnit\Framework\TestCase
             ->willReturn($context);
         $expectedArguments = [
             'config' => [
-                'class' => 'Some\Class\Component2'
+                'class' => 'Some\Class\Component2',
             ],
             'data' => [
-                'name' => $identifier
+                'name' => $identifier,
             ],
             'context' => $context,
-            'components' => []
+            'components' => [],
         ];
         $this->objectManagerMock->expects($this->once())
             ->method('create')
@@ -109,8 +112,8 @@ class UiComponentFactoryTest extends \PHPUnit\Framework\TestCase
 
     public function testNonRootComponent()
     {
-        $identifier = "custom_select";
-        $name = "fieldset";
+        $identifier = 'custom_select';
+        $name = 'fieldset';
         $context = $this->createMock(\Magento\Framework\View\Element\UiComponent\ContextInterface::class);
         $arguments = ['context' => $context];
         $definitionArguments = [
@@ -118,14 +121,14 @@ class UiComponentFactoryTest extends \PHPUnit\Framework\TestCase
             'attributes' => [
                 'class' => '\Some\Class',
             ],
-            'arguments' => []
+            'arguments' => [],
         ];
         $expectedArguments = [
             'data' => [
-                'name' => $identifier
+                'name' => $identifier,
             ],
             'context' => $context,
-            'components' => []
+            'components' => [],
         ];
         $this->dataMock->expects($this->once())
             ->method('get')

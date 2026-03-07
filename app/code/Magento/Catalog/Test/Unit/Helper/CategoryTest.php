@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Helper\Category;
 use Magento\Catalog\Model\CategoryFactory;
@@ -17,6 +17,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\CollectionFactory;
 use Magento\Framework\Escaper;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -115,17 +116,17 @@ class CategoryTest extends TestCase
             'test cases with valid product params' => [
                 ['id' => 1, 'p' => 'test'],
                 'http://localhost/catalog/category',
-                'http://localhost/catalog/category?p=test'
+                'http://localhost/catalog/category?p=test',
             ],
             'test cases with no params' => [
                 ['id' => 1],
                 'http://localhost/catalog/category',
-                'http://localhost/catalog/category'
+                'http://localhost/catalog/category',
             ],
             'test cases with empty params' => [
                 null,
                 'http://localhost/catalog/category',
-                'http://localhost/catalog/category'
+                'http://localhost/catalog/category',
             ],
         ];
     }

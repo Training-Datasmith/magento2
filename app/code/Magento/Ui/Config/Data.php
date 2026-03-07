@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config;
 
 use Magento\Framework\Config\CacheInterface;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Ui\Config\Converter;
 use Magento\Framework\Data\Argument\InterpreterInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * UI Component configuration data
@@ -18,12 +20,12 @@ class Data implements \Magento\Framework\Config\DataInterface
     /**
      * ID in the storage cache
      */
-    const CACHE_ID = 'ui_component_configuration_data';
+    public const CACHE_ID = 'ui_component_configuration_data';
 
     /**
      * Search pattern
      */
-    const SEARCH_PATTERN = '%s.xml';
+    public const SEARCH_PATTERN = '%s.xml';
 
     /**
      * Config data

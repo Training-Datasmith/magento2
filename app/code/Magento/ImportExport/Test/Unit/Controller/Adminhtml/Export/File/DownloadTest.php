@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
-use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\ImportExport\Controller\Adminhtml\Export\File\Download;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -140,7 +141,7 @@ class DownloadTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'filesystem' => $this->fileSystemMock,
-                'fileFactory' => $this->fileFactoryMock
+                'fileFactory' => $this->fileFactoryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Mail\Test\Unit;
 
+use Magento\Framework\Mail\Address;
 use Magento\Framework\Mail\AddressConverter;
 use Magento\Framework\Mail\AddressFactory;
-use Magento\Framework\Mail\Address;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AddressConverterTest extends TestCase
 {
@@ -63,26 +64,26 @@ class AddressConverterTest extends TestCase
                 'email' => 'test@example.com',
                 'name' => 'Test',
                 'emailExpected' => 'test@example.com',
-                'nameExpected' => 'Test'
+                'nameExpected' => 'Test',
             ],
             [
                 'email' => 'tést@example.com',
                 'name' => 'Test',
                 'emailExpected' => 'xn--tst-bma@example.com',
-                'nameExpected' => 'Test'
+                'nameExpected' => 'Test',
             ],
             [
                 'email' => 'test.-email@example.com',
                 'name' => 'Test',
                 'emailExpected' => 'test.-email@example.com',
-                'nameExpected' => 'Test'
+                'nameExpected' => 'Test',
             ],
             [
                 'email' => 'tést.-èmail@example.com',
                 'name' => 'Test',
                 'emailExpected' => 'xn--tst-bma.xn---mail-4ra@example.com',
-                'nameExpected' => 'Test'
-            ]
+                'nameExpected' => 'Test',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -24,7 +25,6 @@ interface ReportWriterInterface
     /**
      * Writes report files to provided path
      *
-     * @param WriteInterface $directory
      * @param string $path
      * @return void
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\EncryptionKey\Console\Command;
 
 use DateInterval;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 use Magento\Framework\Console\Cli;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList;
 
 /**
  * Command for re-encryption of encrypted data using current encryption key.
@@ -102,10 +103,10 @@ class ReEncryptDataCommand extends Command
                     $startTime->diff($endTime)
                 );
             } catch (\Throwable $e) {
-                $output->writeLn("<fg=red>Failed due to the following error:</>");
+                $output->writeLn('<fg=red>Failed due to the following error:</>');
 
                 $output->writeLn(
-                    sprintf("<fg=white;bg=red>%s</>", $e->getMessage())
+                    sprintf('<fg=white;bg=red>%s</>', $e->getMessage())
                 );
 
                 continue;
@@ -114,14 +115,14 @@ class ReEncryptDataCommand extends Command
             if (empty($errors)) {
                 $output->writeLn(
                     sprintf(
-                        "<fg=green>Done successfully in %s.</>",
+                        '<fg=green>Done successfully in %s.</>',
                         $elapsedTime
                     )
                 );
             } else {
                 $output->writeLn(
                     sprintf(
-                        "<fg=yellow>Done in %s but with the following errors:</>",
+                        '<fg=yellow>Done in %s but with the following errors:</>',
                         $elapsedTime
                     )
                 );
@@ -129,7 +130,7 @@ class ReEncryptDataCommand extends Command
                 foreach ($errors as $error) {
                     $output->writeLn(
                         sprintf(
-                            "<fg=black;bg=yellow>[%s %s]: %s</>",
+                            '<fg=black;bg=yellow>[%s %s]: %s</>',
                             $error->getRowIdField(),
                             $error->getRowIdValue(),
                             $error->getMessage()
@@ -157,6 +158,6 @@ class ReEncryptDataCommand extends Command
         $minutes = $interval->format('%I');
         $seconds = $interval->format('%S');
 
-        return sprintf("%s:%s:%s", $hours, $minutes, $seconds);
+        return sprintf('%s:%s:%s', $hours, $minutes, $seconds);
     }
 }

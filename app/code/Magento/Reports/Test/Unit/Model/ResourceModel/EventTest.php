@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -215,7 +216,7 @@ class EventTest extends TestCase
                 ['event_type_id = ?', 1],
                 ['subject_id = ?', 1],
                 ['subtype = ?', 1],
-                ['store_id IN(?)', $storeIdSelect]
+                ['store_id IN(?)', $storeIdSelect],
             ]);
 
         $this->connectionMock
@@ -238,7 +239,7 @@ class EventTest extends TestCase
     {
         return [
             ['storeId' => 1, 'storeIdSelect' => [1]],
-            ['storeId' => null, 'storeIdSelect' => [1]]
+            ['storeId' => null, 'storeIdSelect' => [1]],
         ];
     }
     /**

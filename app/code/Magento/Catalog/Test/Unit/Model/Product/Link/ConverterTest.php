@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,11 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Link;
 
-use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Link\Converter;
-use Magento\Catalog\Model\ProductLink\Link as ProductLink;
 use Magento\Catalog\Model\Product\Type\Simple;
+use Magento\Catalog\Model\ProductLink\Link as ProductLink;
 use Magento\Framework\Api\ExtensionAttributesInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;

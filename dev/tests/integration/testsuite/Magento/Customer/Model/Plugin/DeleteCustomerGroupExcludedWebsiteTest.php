@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,14 +12,14 @@ use Magento\Customer\Api\Data\GroupInterfaceFactory;
 use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Customer\Model\ResourceModel\GroupExcludedWebsite;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Registry;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\ResourceModel\Website as WebsiteResourceModel;
 use Magento\Store\Model\Website;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Registry;
 
 /**
  * Checks that removal of website also deletes it from the customer group excluded website table.

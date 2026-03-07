@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Collector\CspWhitelistXml;
 
-use Magento\Framework\Module\Dir;
 use Magento\Framework\Config\SchemaLocatorInterface;
+use Magento\Framework\Module\Dir;
 use Magento\Framework\Module\Dir\Reader;
 
 /**

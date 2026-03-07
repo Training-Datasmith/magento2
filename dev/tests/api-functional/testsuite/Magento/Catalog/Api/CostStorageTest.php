@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,16 +9,15 @@
 namespace Magento\Catalog\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\Webapi\Exception as HTTPExceptionCodes;
 
 /**
  * Catalog Cost Storage API test.
  */
 class CostStorageTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'catalogCostStorageV1';
-    const SERVICE_VERSION = 'V1';
-    const SIMPLE_PRODUCT_SKU = 'simple';
+    public const SERVICE_NAME = 'catalogCostStorageV1';
+    public const SERVICE_VERSION = 'V1';
+    public const SIMPLE_PRODUCT_SKU = 'simple';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -44,7 +45,7 @@ class CostStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/cost-information',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -71,7 +72,7 @@ class CostStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/cost',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -89,8 +90,8 @@ class CostStorageTest extends WebapiAbstract
                         'cost' => $newCost,
                         'store_id' => $storeId,
                         'sku' => self::SIMPLE_PRODUCT_SKU,
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $productRepository = $this->objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -108,7 +109,7 @@ class CostStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/cost',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -125,9 +126,9 @@ class CostStorageTest extends WebapiAbstract
                     [
                         'sku' => 'not_existing_sku',
                         'cost' => $newCost,
-                        'store_id' => $storeId
-                    ]
-                ]
+                        'store_id' => $storeId,
+                    ],
+                ],
             ]
         );
 
@@ -137,23 +138,23 @@ class CostStorageTest extends WebapiAbstract
                 'parameters' => [
                     'SKU',
                     'not_existing_sku',
-                ]
+                ],
             ],
             1 => [
                 'message' => 'Invalid attribute Cost = -9999. Row ID: SKU = not_existing_sku, Store ID: 9999.',
                 'parameters' => [
                     '-9999',
                     'not_existing_sku',
-                    '9999'
-                ]
+                    '9999',
+                ],
             ],
             2 => [
                 'message' => 'Requested store is not found. Row ID: SKU = not_existing_sku, Store ID: 9999.',
                 'parameters' => [
                     'not_existing_sku',
-                    '9999'
-                ]
-            ]
+                    '9999',
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -171,7 +172,7 @@ class CostStorageTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/cost-delete',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

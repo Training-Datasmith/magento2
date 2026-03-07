@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class TypeTest extends AbstractColumnTestCase
             'data' => [
                 'items' => [
                     [
-                        'customer_id' => 1
+                        'customer_id' => 1,
                     ],
                     [
                         'store_id' => 1,

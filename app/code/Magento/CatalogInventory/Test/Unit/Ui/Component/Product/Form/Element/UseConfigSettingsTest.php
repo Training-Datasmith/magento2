@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Ui\Component\Product\Form\Element;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings;
 use Magento\Framework\Data\ValueSourceInterface;
 use Magento\Framework\Serialize\JsonValidator;
@@ -15,6 +15,7 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\Processor;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -58,7 +59,7 @@ class UseConfigSettingsTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'serializer' => $this->serializerMock,
-                'jsonValidator' => $this->jsonValidatorMock
+                'jsonValidator' => $this->jsonValidatorMock,
             ]
         );
     }
@@ -122,20 +123,20 @@ class UseConfigSettingsTest extends TestCase
             'valid' => [
                 'expectedResult' => [
                     'valueFromConfig' => 2,
-                    'keyInConfiguration' => 'validKey'
+                    'keyInConfiguration' => 'validKey',
                 ],
-                'sourceValue' => 2
+                'sourceValue' => 2,
             ],
             'serialized' => [
                 'expectedResult' => [
                     'valueFromConfig' => ['32000' => 3],
                     'keyInConfiguration' => 'serializedKey',
-                    'unserialized' => true
+                    'unserialized' => true,
                 ],
                 'sourceValue' => '{"32000":3}',
                 'serializedCalledNum' => 1,
-                'isValidCalledNum' => 1
-            ]
+                'isValidCalledNum' => 1,
+            ],
         ];
     }
 }

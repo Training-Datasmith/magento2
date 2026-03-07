@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Phrase\Test\Unit\Renderer;
 
 use Magento\Framework\Phrase\Renderer\Placeholder;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class PlaceholderTest extends TestCase
 {
@@ -46,17 +47,17 @@ class PlaceholderTest extends TestCase
             [
                 'text %1 %two %2 %3 %five %4 %5',
                 ['one', 'two' => 'two', 'three', 'four', 'five' => 'five', 'six', 'seven'],
-                'text one two three four five six seven'
+                'text one two three four five six seven',
             ],
             [
                 '%one text %two text %three %1 %2',
                 ['two' => 'two', 'one' => 'one', 'three' => 'three', 'four', 'five'],
-                'one text two text three four five'
+                'one text two text three four five',
             ],
             [
                 '%three text %two text %1',
                 ['two' => 'two', 'three' => 'three', 'one'],
-                'three text two text one'
+                'three text two text one',
             ],
             ['text %1 text %2 text', [], 'text %1 text %2 text'],
             ['%1 text %2', ['one'], 'one text %2'],
@@ -67,7 +68,7 @@ class PlaceholderTest extends TestCase
             ],
             [
                 'A %table has four legs',
-                ['tab' => 'Tab-Leiste', 'able' => '', 'table' => 'Tabelle'], 'A Tabelle has four legs'
+                ['tab' => 'Tab-Leiste', 'able' => '', 'table' => 'Tabelle'], 'A Tabelle has four legs',
             ],
         ];
     }

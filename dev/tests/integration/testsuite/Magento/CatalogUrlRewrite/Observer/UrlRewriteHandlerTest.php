@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class UrlRewriteHandlerTest extends TestCase
         $expected = [
             'store-1-key.html',
             'cat-1/store-1-key.html',
-            'p002.html'
+            'p002.html',
         ];
         self::assertEquals($expected, $actual, 'Generated URLs rewrites do not match.');
     }
@@ -162,7 +163,7 @@ class UrlRewriteHandlerTest extends TestCase
 
         $expected = [
             'simple-product.html',
-            'category-1/simple-product.html'
+            'category-1/simple-product.html',
         ];
         $this->assertEquals($expected, $actual, 'Generated URLs rewrites do not match.');
     }

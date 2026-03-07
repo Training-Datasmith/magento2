@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
 use Magento\Deploy\Config\BundleConfig;
@@ -10,8 +13,8 @@ use Magento\Deploy\Package\BundleInterface;
 use Magento\Deploy\Package\BundleInterfaceFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Filesystem;
 use Magento\Framework\App\Utility\Files;
+use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Asset\RepositoryMap;
@@ -75,7 +78,7 @@ class Bundle
      * */
     public static $availableTypes = [
         self::ASSET_TYPE_JS,
-        self::ASSET_TYPE_HTML
+        self::ASSET_TYPE_HTML,
     ];
 
     /**
@@ -130,7 +133,7 @@ class Bundle
             [
             'area' => $area,
             'theme' => $theme,
-            'locale' => $locale
+            'locale' => $locale,
             ]
         );
 

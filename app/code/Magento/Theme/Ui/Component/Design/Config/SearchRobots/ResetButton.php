@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Ui\Component\Design\Config\SearchRobots;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -21,7 +24,7 @@ class ResetButton extends Field
     /**
      * Page robots default instructions
      */
-    const XML_PATH_ROBOTS_DEFAULT_CUSTOM_INSTRUCTIONS = 'design/search_engine_robots/default_custom_instructions';
+    public const XML_PATH_ROBOTS_DEFAULT_CUSTOM_INSTRUCTIONS = 'design/search_engine_robots/default_custom_instructions';
 
     /**
      * @var ScopeConfigInterface
@@ -78,9 +81,9 @@ class ResetButton extends Field
                 'targetName' => '${ $.name }',
                 '__disableTmpl' => ['targetName' => false],
                 'params'     => [
-                    json_encode($this->getRobotsDefaultCustomInstructions())
-                ]
-            ]
+                    json_encode($this->getRobotsDefaultCustomInstructions()),
+                ],
+            ],
         ];
     }
 }

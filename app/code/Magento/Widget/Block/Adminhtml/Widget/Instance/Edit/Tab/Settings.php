@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Widget Instance Settings tab block
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance\Edit\Tab;
 
 /**
@@ -129,7 +132,7 @@ class Settings extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'label' => __('Type'),
                 'title' => __('Type'),
                 'required' => true,
-                'values' => $this->getTypesOptionsArray()
+                'values' => $this->getTypesOptionsArray(),
             ]
         );
 
@@ -144,7 +147,7 @@ class Settings extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'label' => __('Design Theme'),
                 'title' => __('Design Theme'),
                 'required' => true,
-                'values' => $options
+                'values' => $options,
             ]
         );
         $continueButton = $this->getLayout()->createBlock(
@@ -176,7 +179,7 @@ class Settings extends \Magento\Backend\Block\Widget\Form\Generic implements
                 '_current' => true,
                 'code' => '<%- data.code %>',
                 'theme_id' => '<%- data.theme_id %>',
-                '_escape_params' => false
+                '_escape_params' => false,
             ]
         );
     }
@@ -202,6 +205,6 @@ class Settings extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     protected function _sortWidgets($a, $b)
     {
-        return strcmp($a["label"], $b["label"]);
+        return strcmp($a['label'], $b['label']);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Tax\Test\Unit\Model\Calculation;
 use Magento\Customer\Api\Data\AddressInterface as CustomerAddress;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Tax\Model\Calculation\AbstractCalculator;
 use Magento\Tax\Model\Calculation\CalculatorFactory;
 use Magento\Tax\Model\Calculation\RowBaseCalculator;
 use Magento\Tax\Model\Calculation\TotalBaseCalculator;
@@ -52,10 +52,10 @@ class CalculatorFactoryTest extends TestCase
         ?int $customerId,
         string $expectedInstanceType
     ): void {
-        if ($billingAddress!=null) {
+        if ($billingAddress != null) {
             $billingAddress = $billingAddress($this);
         }
-        if ($shippingAddress!=null) {
+        if ($shippingAddress != null) {
             $shippingAddress = $shippingAddress($this);
         }
         $instanceMock = $this->getMockBuilder($expectedInstanceType)

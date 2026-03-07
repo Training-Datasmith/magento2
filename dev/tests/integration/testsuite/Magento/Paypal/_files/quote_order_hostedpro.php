@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Quote\Model\QuoteFactory;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Sales\Model\Order\Payment;
 use Magento\Paypal\Model\Config;
-use Magento\Sales\Model\Order;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
+use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Payment;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/GraphQl/Quote/_files/guest/create_empty_cart.php');

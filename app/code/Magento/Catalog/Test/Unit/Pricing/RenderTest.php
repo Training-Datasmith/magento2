@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Pricing\Render;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\Test\Unit\ManagerStub;
-use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Pricing\Render as PricingRender;
+use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutInterface;
@@ -69,7 +70,7 @@ class RenderTest extends TestCase
                     'price_render' => 'test_price_render',
                     'price_type_code' => 'test_price_type_code',
                     'module_name' => 'test_module_name',
-                ]
+                ],
             ]
         );
     }

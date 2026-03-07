@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class EavVariationsFixture extends Fixture
      */
     protected $priority = 40;
 
-    const ATTRIBUTE_SET_ID = 4;
+    public const ATTRIBUTE_SET_ID = 4;
 
     /**
      * @var Config

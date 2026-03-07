@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,13 +11,12 @@ namespace Magento\Sales\Test\Unit\Model\Order\Pdf\Total;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Model\Order\Pdf\Total\DefaultTotal;
 use Magento\Sales\Model\Order\Pdf\Total\Factory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FactoryTest extends TestCase
 {
-
     /**
      * @var MockObject|ObjectManagerInterface
      */
@@ -71,7 +71,7 @@ class FactoryTest extends TestCase
                 ['param1', 'param2'],
                 DefaultTotal::class,
             ],
-            'custom model' => ['custom_class', ['param1', 'param2'], 'custom_class']
+            'custom model' => ['custom_class', ['param1', 'param2'], 'custom_class'],
         ];
     }
 

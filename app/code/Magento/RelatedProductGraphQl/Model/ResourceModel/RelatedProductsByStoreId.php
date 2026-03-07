@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -67,6 +68,6 @@ class RelatedProductsByStoreId
         }
         return !empty($linkedStoreProductIds) ?
             array_column($linkedStoreProductIds, 'linked_product_id')
-            :[];
+            : [];
     }
 }

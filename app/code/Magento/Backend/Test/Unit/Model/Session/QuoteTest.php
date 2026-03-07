@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,6 +19,7 @@ use Magento\Framework\App\State;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Session\Config\ConfigInterface;
 use Magento\Framework\Session\SaveHandlerInterface;
+use Magento\Framework\Session\SessionStartChecker;
 use Magento\Framework\Session\SidResolverInterface;
 use Magento\Framework\Session\Storage;
 use Magento\Framework\Session\StorageInterface;
@@ -26,7 +28,6 @@ use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\Session\SessionStartChecker;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Quote as QuoteModel;
@@ -175,8 +176,8 @@ class QuoteTest extends TestCase
         $objects = [
             [
                 SessionStartChecker::class,
-                $this->createMock(SessionStartChecker::class)
-            ]
+                $this->createMock(SessionStartChecker::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -197,7 +198,7 @@ class QuoteTest extends TestCase
             'orderFactory' => $this->orderFactoryMock,
             'storeManager' => $this->storeManagerMock,
             'groupManagement' => $this->groupManagementMock,
-            'quoteFactory' => $this->quoteFactoryMock
+            'quoteFactory' => $this->quoteFactoryMock,
         ]);
 
         // Use reflection to set methods property for magic methods
@@ -236,7 +237,7 @@ class QuoteTest extends TestCase
                 'getCurrency', 'setCurrency', 'getCustomerIsGuest', 'setCustomerIsGuest',
                 'getCustomerNote', 'setCustomerNote', 'getCustomerNoteNotify', 'setCustomerNoteNotify',
                 'getCustomerTaxClassId', 'setCustomerTaxClassId', 'getStoreId', 'setStoreId',
-                'getExtensionAttributes', 'setExtensionAttributes'
+                'getExtensionAttributes', 'setExtensionAttributes',
             ]
         );
         $this->quoteFactoryMock->expects($this->once())->method('create')->willReturn($cartInterfaceMock);
@@ -260,7 +261,7 @@ class QuoteTest extends TestCase
             QuoteModel::class,
             [
                 'setCustomerGroupId', 'setIgnoreOldQty', 'setIsSuperMode', 'setStoreId',
-                'setIsActive', 'assignCustomer', '__wakeup'
+                'setIsActive', 'assignCustomer', '__wakeup',
             ]
         );
 
@@ -303,7 +304,7 @@ class QuoteTest extends TestCase
             QuoteModel::class,
             [
                 'setCustomerGroupId', 'setIgnoreOldQty', 'setIsSuperMode', 'getCustomerId',
-                'setStoreId', 'setIsActive', 'getId', 'assignCustomer', '__wakeup'
+                'setStoreId', 'setIsActive', 'getId', 'assignCustomer', '__wakeup',
             ]
         );
         $quoteMock->expects($this->once())

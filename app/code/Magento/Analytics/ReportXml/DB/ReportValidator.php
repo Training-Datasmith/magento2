@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml\DB;
 
 use Magento\Analytics\ReportXml\ConnectionFactory;
@@ -15,27 +18,12 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 class ReportValidator
 {
     /**
-     * @var ConnectionFactory
-     */
-    private $connectionFactory;
-
-    /**
-     * @var QueryFactory
-     */
-    private $queryFactory;
-
-    /**
      * ReportValidator constructor.
      *
      * Needs connection and query factory for do a query
-     *
-     * @param ConnectionFactory $connectionFactory
-     * @param QueryFactory $queryFactory
      */
-    public function __construct(ConnectionFactory $connectionFactory, QueryFactory $queryFactory)
+    public function __construct(private readonly ConnectionFactory $connectionFactory, private readonly QueryFactory $queryFactory)
     {
-        $this->connectionFactory = $connectionFactory;
-        $this->queryFactory = $queryFactory;
     }
 
     /**
@@ -43,10 +31,9 @@ class ReportValidator
      *
      * @param string $name
      * @param SearchCriteriaInterface $criteria
-     * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function validate($name, ?SearchCriteriaInterface $criteria = null)
+    public function validate($name, ?SearchCriteriaInterface $criteria = null): array
     {
         $query = $this->queryFactory->create($name);
         $connection = $this->connectionFactory->getConnection($query->getConnectionName());

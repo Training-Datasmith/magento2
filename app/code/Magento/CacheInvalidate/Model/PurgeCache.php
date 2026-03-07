@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CacheInvalidate\Model;
 
 use Exception;
 use Generator;
-use Magento\Framework\Cache\InvalidateLogger;
-use Magento\PageCache\Model\Cache\Server;
 use Laminas\Http\Client\Adapter\Socket;
 use Laminas\Uri\Uri;
+use Magento\Framework\Cache\InvalidateLogger;
+use Magento\PageCache\Model\Cache\Server;
 
 /**
  * Invalidate external HTTP cache(s) based on tag pattern
@@ -144,15 +147,15 @@ class PurgeCache
                 $socketAdapter->read();
                 $socketAdapter->close();
             } catch (Exception $e) {
-                $unresponsiveServerError[] = "Cache host: " . $server->getHost() . ":" . $server->getPort() .
-                    "resulted in error message: " . $e->getMessage();
+                $unresponsiveServerError[] = 'Cache host: ' . $server->getHost() . ':' . $server->getPort() .
+                    'resulted in error message: ' . $e->getMessage();
             }
         }
 
         $errorCount = count($unresponsiveServerError);
 
         if ($errorCount > 0) {
-            $loggerMessage = implode(" ", $unresponsiveServerError);
+            $loggerMessage = implode(' ', $unresponsiveServerError);
 
             if ($errorCount == count($servers)) {
                 $this->logger->critical(

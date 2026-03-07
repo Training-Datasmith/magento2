@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Data\Design;
 
 use Magento\Framework\Api\AbstractExtensibleObject;
@@ -13,7 +16,7 @@ class Config extends AbstractExtensibleObject implements DesignConfigInterface
     /**
      * Design config grid indexer id
      */
-    const DESIGN_CONFIG_GRID_INDEXER_ID = 'design_config_grid';
+    public const DESIGN_CONFIG_GRID_INDEXER_ID = 'design_config_grid';
 
     /**
      * @inheritDoc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class CmsPage implements RevertibleDataFixtureInterface
         'page_layout' => '1column',
         'meta_title' => 'Disabled Page Meta Title',
         'meta_keywords' => 'disabled, cms, page, test, graphql',
-        'meta_description' => 'This is a disabled CMS page used for GraphQL error handling tests'
+        'meta_description' => 'This is a disabled CMS page used for GraphQL error handling tests',
     ];
 
     /**

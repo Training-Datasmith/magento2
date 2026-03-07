@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ $quoteFactory = $objectManager->get(QuoteFactory::class);
 $quoteResource = $objectManager->get(QuoteResource::class);
 /** @var CartRepositoryInterface $cartRepository */
 $cartRepository = $objectManager->get(CartRepositoryInterface::class);
-
 
 /** @var \Magento\GiftMessage\Model\Message $message */
 $message = $objectManager->create(\Magento\GiftMessage\Model\Message::class);

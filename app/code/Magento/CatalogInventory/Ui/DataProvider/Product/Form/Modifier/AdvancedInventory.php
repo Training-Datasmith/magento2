@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Controller\Adminhtml\Product\Initialization\StockDataFilter;
@@ -11,17 +14,17 @@ use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\JsonValidator;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\Stdlib\ArrayManager;
 
 /**
  * Data provider for advanced inventory form
  */
 class AdvancedInventory extends AbstractModifier
 {
-    const STOCK_DATA_FIELDS = 'stock_data';
+    public const STOCK_DATA_FIELDS = 'stock_data';
 
     /**
      * @var LocatorInterface
@@ -120,7 +123,7 @@ class AdvancedInventory extends AbstractModifier
                         function ($group, $qty) {
                             return [
                                 StockItemInterface::CUSTOMER_GROUP_ID => $group,
-                                StockItemInterface::MIN_SALE_QTY => $qty
+                                StockItemInterface::MIN_SALE_QTY => $qty,
                             ];
                         },
                         array_keys($unserializedMinSaleQty),
@@ -152,7 +155,7 @@ class AdvancedInventory extends AbstractModifier
         $result[StockItemInterface::MIN_SALE_QTY] = (float)$stockItem->getMinSaleQty();
         $result[StockItemInterface::MAX_SALE_QTY] = (float)$stockItem->getMaxSaleQty();
         $result[StockItemInterface::IS_QTY_DECIMAL] = (int)$stockItem->getIsQtyDecimal();
-        $result[StockItemInterface::IS_DECIMAL_DIVIDED]= (int)$stockItem->getIsDecimalDivided();
+        $result[StockItemInterface::IS_DECIMAL_DIVIDED] = (int)$stockItem->getIsDecimalDivided();
         $result[StockItemInterface::BACKORDERS] = (int)$stockItem->getBackorders();
         $result[StockItemInterface::NOTIFY_STOCK_QTY] = (float)$stockItem->getNotifyStockQty();
         $result[StockItemInterface::ENABLE_QTY_INCREMENTS] = (int)$stockItem->getEnableQtyIncrements();
@@ -211,7 +214,7 @@ class AdvancedInventory extends AbstractModifier
             $container['arguments']['data']['config'] = [
                 'formElement' => 'container',
                 'componentType' => 'container',
-                'component' => "Magento_Ui/js/form/components/group",
+                'component' => 'Magento_Ui/js/form/components/group',
                 'label' => false,
                 'breakLine' => false,
                 'dataScope' => $fieldCode,

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -90,7 +92,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'start_at',
                     'date_format' => $dateFormat,
                     'time_format' => $timeFormat,
-                    'label' => __('Queue Date Start')
+                    'label' => __('Queue Date Start'),
                 ]
             );
 
@@ -102,7 +104,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                         'name' => 'stores[]',
                         'label' => __('Subscribers From'),
                         'values' => $this->_systemStore->getStoreValuesForForm(),
-                        'value' => $queue->getStores()
+                        'value' => $queue->getStores(),
                     ]
                 );
             } else {
@@ -122,7 +124,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'style' => 'width:38%;',
                     'date_format' => $dateFormat,
                     'time_format' => $timeFormat,
-                    'label' => __('Queue Date Start')
+                    'label' => __('Queue Date Start'),
                 ]
             );
 
@@ -135,7 +137,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                         'label' => __('Subscribers From'),
                         'required' => true,
                         'values' => $this->_systemStore->getStoreValuesForForm(),
-                        'value' => $queue->getStores()
+                        'value' => $queue->getStores(),
                     ]
                 );
             } else {
@@ -165,7 +167,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'value' => $queue->isNew() ? $queue
                     ->getTemplate()
                     ->getTemplateSubject() : $queue
-                    ->getNewsletterSubject()
+                    ->getNewsletterSubject(),
             ]
         );
 
@@ -180,7 +182,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'value' => $queue->isNew() ? $queue
                     ->getTemplate()
                     ->getTemplateSenderName() : $queue
-                    ->getNewsletterSenderName()
+                    ->getNewsletterSenderName(),
             ]
         );
 
@@ -196,7 +198,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'value' => $queue->isNew() ? $queue
                     ->getTemplate()
                     ->getTemplateSenderEmail() : $queue
-                    ->getNewsletterSenderEmail()
+                    ->getNewsletterSenderEmail(),
             ]
         );
 
@@ -213,7 +215,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'required' => true,
                     'value' => $queue->getTemplate()->getTemplateText(),
                     'style' => 'height: 600px;',
-                    'config' => $wysiwygConfig
+                    'config' => $wysiwygConfig,
                 ]
             );
 
@@ -224,7 +226,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'styles',
                     'label' => __('Newsletter Styles'),
                     'container_id' => 'field_newsletter_styles',
-                    'value' => $queue->getTemplate()->getTemplateStyles()
+                    'value' => $queue->getTemplate()->getTemplateStyles(),
                 ]
             );
         } elseif (Queue::STATUS_NEVER != $queue->getQueueStatus() && $queue->getQueueStatus() != Queue::STATUS_PAUSE) {
@@ -257,7 +259,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'required' => true,
                     'value' => $queue->getNewsletterText(),
                     'style' => 'height: 600px;',
-                    'config' => $wysiwygConfig
+                    'config' => $wysiwygConfig,
                 ]
             );
 
@@ -268,7 +270,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'styles',
                     'label' => __('Newsletter Styles'),
                     'value' => $queue->getNewsletterStyles(),
-                    'style' => 'height: 300px;'
+                    'style' => 'height: 300px;',
                 ]
             );
         }
@@ -288,8 +290,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     {
         return [
             'widget_filers' => [
-                'is_email_compatible' => 1
-            ]
+                'is_email_compatible' => 1,
+            ],
         ];
     }
 

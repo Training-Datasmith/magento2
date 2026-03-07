@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Checkout\Test\Unit\Model;
 use Magento\Checkout\Api\Data\TotalsInformationInterface;
 use Magento\Checkout\Model\TotalsInformationManagement;
 use Magento\Checkout\Model\TotalsInformationManagement as TotalsInformationManagementModel;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CartTotalRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class TotalsInformationManagementTest extends \PHPUnit\Framework\TestCase
 {
@@ -166,23 +167,23 @@ class TotalsInformationManagementTest extends \PHPUnit\Framework\TestCase
             [
                 null,
                 null,
-                0
+                0,
             ],
             [
                 null,
                 'carrier_method',
-                0
+                0,
             ],
             [
                 'carrier_code',
                 null,
-                0
+                0,
             ],
             [
                 'carrier_code',
                 'carrier_method',
-                1
-            ]
+                1,
+            ],
         ];
     }
 }

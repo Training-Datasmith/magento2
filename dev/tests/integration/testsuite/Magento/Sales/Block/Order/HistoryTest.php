@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -166,7 +167,7 @@ class HistoryTest extends TestCase
                 1,
                 Xpath::getElementsCountForXpath(
                     sprintf(
-                        $rowXpath . "/following-sibling::td/a[contains(@data-post,"
+                        $rowXpath . '/following-sibling::td/a[contains(@data-post,'
                         . "'sales\/order\/reorder\/order_id\/%s')]/span[contains(text(), '%s')]",
                         $order->getId(),
                         __('Reorder')

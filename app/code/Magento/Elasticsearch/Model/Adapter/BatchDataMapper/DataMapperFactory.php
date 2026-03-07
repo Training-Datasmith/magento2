@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\BatchDataMapper;
 
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\ConfigurationMismatchException;
 use Magento\Elasticsearch\Model\Adapter\BatchDataMapperInterface;
+use Magento\Framework\Exception\ConfigurationMismatchException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Data mapper factory uses to create appropriate mapper class

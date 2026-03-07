@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ abstract class AbstractBundleOptionsViewTest extends TestCase
 
     /** @var string */
     private $selectLabelXpath = "//fieldset[contains(@class, 'fieldset-bundle-options')]"
-    . "//label/span[normalize-space(text()) = '%s']";
+        . "//label/span[normalize-space(text()) = '%s']";
 
     /** @var string */
     private $backToProductDetailButtonXpath = "//button[contains(@class, 'back customization')]";

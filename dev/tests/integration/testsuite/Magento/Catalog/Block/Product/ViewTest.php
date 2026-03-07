@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -185,7 +186,7 @@ class ViewTest extends TestCase
      */
     public function testStartBundleCustomization(): void
     {
-        $this->markTestSkipped("Functionality not implemented in Magento 1.x. Implemented in Magento 2");
+        $this->markTestSkipped('Functionality not implemented in Magento 1.x. Implemented in Magento 2');
 
         $this->assertFalse($this->block->startBundleCustomization());
     }

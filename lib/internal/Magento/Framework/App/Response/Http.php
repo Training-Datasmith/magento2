@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,12 +10,12 @@ namespace Magento\Framework\App\Response;
 
 use Magento\Framework\App\Http\Context;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Session\Config\ConfigInterface;
 use Magento\Framework\Stdlib\Cookie\CookieMetadata;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\Session\Config\ConfigInterface;
 
 /**
  * HTTP Response.
@@ -112,7 +114,7 @@ class Http extends \Magento\Framework\HTTP\PhpEnvironment\Response
             $cookieLifeTime = $this->sessionConfig->getCookieLifetime();
             $sensitiveCookMetadata = $this->cookieMetadataFactory->createSensitiveCookieMetadata(
                 [CookieMetadata::KEY_DURATION => $cookieLifeTime,
-                    CookieMetadata::KEY_SAME_SITE => 'Lax'
+                    CookieMetadata::KEY_SAME_SITE => 'Lax',
                 ]
             )->setPath('/');
             $this->cookieManager->setSensitiveCookie(self::COOKIE_VARY_STRING, $varyString, $sensitiveCookMetadata);

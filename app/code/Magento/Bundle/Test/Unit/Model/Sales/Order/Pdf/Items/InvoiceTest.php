@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Sales\Order\Pdf\Items;
 
-use Magento\Framework\Filesystem\Directory\Read;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
 use Magento\Bundle\Model\Sales\Order\Pdf\Items\Invoice;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
@@ -22,6 +22,7 @@ use Magento\Framework\Stdlib\StringUtils;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Pdf\Invoice as InvoicePdf;
 use Magento\Tax\Helper\Data;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Zend_Pdf_Page;
@@ -72,7 +73,7 @@ class InvoiceTest extends TestCase
                 $serializerMock,
                 $resourceMock,
                 $collectionMock,
-                []
+                [],
             ])
             ->onlyMethods([
                 '_setFontRegular',
@@ -80,7 +81,7 @@ class InvoiceTest extends TestCase
                 'isShipmentSeparately',
                 'isChildCalculated',
                 'getValueHtml',
-                'getSelectionAttributes'
+                'getSelectionAttributes',
             ])
             ->getMock();
     }
@@ -122,9 +123,9 @@ class InvoiceTest extends TestCase
                 'name' => 'Bundle',
                 'order_item' => new DataObject(
                     [
-                        'product_options' => []
+                        'product_options' => [],
                     ]
-                )
+                ),
             ]
         );
         $items = [
@@ -140,9 +141,9 @@ class InvoiceTest extends TestCase
                     'tax_amount' => '1.66',
                     'order_item' => new DataObject(
                         [
-                            'parent_item' => $parentItem
+                            'parent_item' => $parentItem,
                         ]
-                    )
+                    ),
                 ]
             ),
             new DataObject(
@@ -157,11 +158,11 @@ class InvoiceTest extends TestCase
                     'tax_amount' => '0.83',
                     'order_item' => new DataObject(
                         [
-                            'parent_item' => $parentItem
+                            'parent_item' => $parentItem,
                         ]
-                    )
+                    ),
                 ]
-            )
+            ),
         ];
         $orderMock = $this->createMock(Order::class);
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ups\Helper;
 
 /**
@@ -171,11 +174,11 @@ class Config
                 'XPD' => __('Worldwide Expedited'),
             ],
             'pickup' => [
-                'RDP' => ["label" => 'Regular Daily Pickup', "code" => "01"],
-                'OCA' => ["label" => 'On Call Air', "code" => "07"],
-                'OTP' => ["label" => 'One Time Pickup', "code" => "06"],
-                'LC' => ["label" => 'Letter Center', "code" => "19"],
-                'CC' => ["label" => 'Customer Counter', "code" => "03"],
+                'RDP' => ['label' => 'Regular Daily Pickup', 'code' => '01'],
+                'OCA' => ['label' => 'On Call Air', 'code' => '07'],
+                'OTP' => ['label' => 'One Time Pickup', 'code' => '06'],
+                'LC' => ['label' => 'Letter Center', 'code' => '19'],
+                'CC' => ['label' => 'Customer Counter', 'code' => '03'],
             ],
             'container' => [
                 'CP' => '00',
@@ -256,7 +259,7 @@ class Config
                                 '65', // Worldwide Saver
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['24', '25'], // UPS Worldwide 25 kilo, UPS Worldwide 10 kilo
@@ -269,7 +272,7 @@ class Config
                                 '65', // Worldwide Saver
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['01', '04'], // UPS Letter, UPS PAK
@@ -290,16 +293,16 @@ class Config
                                 '65', // Worldwide Saver
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'containers' => ['04'], // UPS PAK
                     'filters' => [
                         'within_us' => ['method' => []],
                         'from_us' => ['method' => ['08']], // Worldwide Expedited
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ];
     }
 }

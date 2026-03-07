@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller;
 
 use Magento\Checkout\Model\Session;
@@ -115,12 +118,12 @@ class ExpressTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertNotEquals(
             $fixtureCustomerEmail,
             $quote->getCustomerEmail(),
-            "Precondition failed: customer email in quote is invalid."
+            'Precondition failed: customer email in quote is invalid.'
         );
         $this->assertNotEquals(
             $fixtureCustomerFirstname,
             $quote->getCustomerFirstname(),
-            "Precondition failed: customer first name in quote is invalid."
+            'Precondition failed: customer first name in quote is invalid.'
         );
 
         /** Execute SUT */
@@ -133,12 +136,12 @@ class ExpressTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(
             $fixtureCustomerEmail,
             $updatedQuote->getCustomer()->getEmail(),
-            "Customer email in quote is invalid."
+            'Customer email in quote is invalid.'
         );
         $this->assertEquals(
             $fixtureCustomerFirstname,
             $updatedQuote->getCustomer()->getFirstname(),
-            "Customer first name in quote is invalid."
+            'Customer first name in quote is invalid.'
         );
     }
 
@@ -176,7 +179,7 @@ class ExpressTest extends \Magento\TestFramework\TestCase\AbstractController
             'setBillingAddress',
             'callDoExpressCheckoutPayment',
             'callGetExpressCheckoutDetails',
-            'getExportedBillingAddress'
+            'getExportedBillingAddress',
         ];
 
         $nvpMock = $this->createPartialMockWithReflection(
@@ -195,7 +198,7 @@ class ExpressTest extends \Magento\TestFramework\TestCase\AbstractController
                 'setIsLineItemsEnabled',
                 'setAddress',
                 'setBillingAddress',
-                'getExportedBillingAddress'
+                'getExportedBillingAddress',
             ]
         );
 

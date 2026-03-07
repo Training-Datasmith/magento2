@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Block\Express\InContext\Minicart;
 
+use Magento\Catalog\Block\ShortcutInterface;
 use Magento\Checkout\Model\Session;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
-use Magento\Framework\View\Element\Template;
-use Magento\Catalog\Block\ShortcutInterface;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Paypal\Model\SmartButtonConfig;
-use Magento\Framework\UrlInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
-use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class Button
@@ -27,7 +28,7 @@ class SmartButton extends Template implements ShortcutInterface
 {
     private const ALIAS_ELEMENT_INDEX = 'alias';
 
-    const PAYPAL_BUTTON_ID = 'paypal-express-in-context-checkout-main';
+    public const PAYPAL_BUTTON_ID = 'paypal-express-in-context-checkout-main';
 
     /**
      * @var Config
@@ -179,7 +180,7 @@ class SmartButton extends Template implements ShortcutInterface
                 'onCancelUrl' => $this->urlBuilder->getUrl(
                     'paypal/express/cancel',
                     ['_secure' => $this->getRequest()->isSecure()]
-                )
+                ),
             ];
             $smartButtonsConfig = $this->getIsShoppingCart()
                 ? $this->smartButtonConfig->getConfig('cart')
@@ -187,8 +188,8 @@ class SmartButton extends Template implements ShortcutInterface
             $clientConfig = array_replace_recursive($clientConfig, $smartButtonsConfig);
             $config = [
                 'Magento_Paypal/js/in-context/button' => [
-                    'clientConfig' => $clientConfig
-                ]
+                    'clientConfig' => $clientConfig,
+                ],
             ];
         }
         $json = $this->serializer->serialize($config);
@@ -217,7 +218,7 @@ class SmartButton extends Template implements ShortcutInterface
             try {
                 $quoteId = $this->quoteIdMask->execute($quoteId);
             } catch (NoSuchEntityException $e) {
-                $quoteId = "";
+                $quoteId = '';
             }
         }
         return (string)$quoteId;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -56,8 +57,8 @@ class ProductAttributeStoreOptionsTest extends GraphQlAbstract
         $expectedOptions = [
             [
                 'label' => $expectedLabel,
-                'value' => $optionValues[0]['value']
-            ]
+                'value' => $optionValues[0]['value'],
+            ],
         ];
 
         $query = <<<QUERY

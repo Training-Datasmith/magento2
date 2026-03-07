@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\ConfigurableProductGraphQl\Test\Unit\Model\Resolver;
 
 use Magento\ConfigurableProductGraphQl\Model\Resolver\AddConfigurableProductsToCart;
+use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Quote\Model\QuoteMutexInterface;
 use Magento\QuoteGraphQl\Model\Cart\AddProductsToCart;
 use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;

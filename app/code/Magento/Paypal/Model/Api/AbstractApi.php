@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ abstract class AbstractApi extends \Magento\Framework\DataObject
      * @var array
      */
     protected $_lineItemExportItemsFilters = [
-        'name' => 'strval'
+        'name' => 'strval',
     ];
 
     /**

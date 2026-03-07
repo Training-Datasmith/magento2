@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class CollectionTest extends AbstractTestCase
     {
         return [
             'Add temporary filter' => ['flag' => true],
-            'Disable temporary filter' => ['flag' => false]
+            'Disable temporary filter' => ['flag' => false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -29,17 +30,17 @@ use PHPUnit\Framework\TestCase;
  */
 class AlternativeSourceTest extends TestCase
 {
-    const AREA = 'test-area';
+    public const AREA = 'test-area';
 
-    const THEME = 'test-theme';
+    public const THEME = 'test-theme';
 
-    const LOCALE = 'test-locale';
+    public const LOCALE = 'test-locale';
 
-    const FILE_PATH = 'test-file';
+    public const FILE_PATH = 'test-file';
 
-    const MODULE = 'test-module';
+    public const MODULE = 'test-module';
 
-    const NEW_CONTENT = 'test-new-content';
+    public const NEW_CONTENT = 'test-new-content';
 
     /**
      * @var SortInterface|MockObject
@@ -93,8 +94,8 @@ class AlternativeSourceTest extends TestCase
     {
         $alternatives = [
             'processor' => [
-                AlternativeSource::PROCESSOR_CLASS => 'stdClass'
-            ]
+                AlternativeSource::PROCESSOR_CLASS => 'stdClass',
+            ],
         ];
 
         $this->lockerProcessMock->expects(self::once())
@@ -165,8 +166,8 @@ class AlternativeSourceTest extends TestCase
     {
         $alternatives = [
             'processor' => [
-                AlternativeSource::PROCESSOR_CLASS => ContentProcessorInterface::class
-            ]
+                AlternativeSource::PROCESSOR_CLASS => ContentProcessorInterface::class,
+            ],
         ];
 
         $this->lockerProcessMock->expects(self::once())

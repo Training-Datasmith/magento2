@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Order\PrintOrder;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -48,21 +51,21 @@ class LogoTest extends TestCase
     public function testGetLogoSrc(): void
     {
         $host = 'http://localhost/media/';
-        $defaultLogoFile= 'logo.jpg';
+        $defaultLogoFile = 'logo.jpg';
         $defaultPath = 'logo/default/' . $defaultLogoFile;
         $salesLogoFile = 'logo_sales.jpg';
         $salesPath = 'sales/store/logo_html/default/' . $salesLogoFile;
         $this->mediaDirectory->writeFile($defaultPath, '');
         $this->mediaDirectory->writeFile($salesPath, '');
         $blockArguments = ['data' =>
-            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverDefault::class)]
+            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverDefault::class)],
         ];
         /** @var Logo $block */
         $block = $this->objectManager->create(LayoutInterface::class)
             ->createBlock(Logo::class, 'logo', $blockArguments);
         $this->assertSame($host . $defaultPath, $block->getLogoSrc());
         $blockArguments = ['data' =>
-            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverSales::class)]
+            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverSales::class)],
         ];
         /** @var Logo $block */
         $block = $this->objectManager->create(LayoutInterface::class)
@@ -85,14 +88,14 @@ class LogoTest extends TestCase
         $defaultPath = 'logo/default/' . $defaultLogoFile;
         $this->mediaDirectory->writeFile($defaultPath, '');
         $blockArguments = ['data' =>
-            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverDefault::class)]
+            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverDefault::class)],
         ];
         /** @var Logo $block */
         $block = $this->objectManager->create(LayoutInterface::class)
             ->createBlock(Logo::class, 'logo', $blockArguments);
         $this->assertSame($host . $defaultPath, $block->getLogoSrc());
         $blockArguments = ['data' =>
-            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverSales::class)]
+            ['logoPathResolver' => $this->objectManager->get(LogoPathResolverSales::class)],
         ];
         /** @var Logo $block */
         $block = $this->objectManager->create(LayoutInterface::class)

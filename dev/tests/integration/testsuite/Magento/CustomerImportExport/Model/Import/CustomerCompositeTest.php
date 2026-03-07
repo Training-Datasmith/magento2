@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CustomerImportExport\Model\Import;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -228,7 +231,7 @@ class CustomerCompositeTest extends \PHPUnit\Framework\TestCase
                 0,  // $updatedItemsCount
                 0,  // $createdItemsCount
                 1,  // $deletedItemsCount
-                []  // $errors
+                [],  // $errors
             ],
             'add_update_behavior' => [
                 \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE,  // $behavior
@@ -238,8 +241,8 @@ class CustomerCompositeTest extends \PHPUnit\Framework\TestCase
                 1,  // $updatedItemsCount
                 3,  // $createdItemsCount
                 0,  // $deletedItemsCount
-                []  // $errors
-            ]
+                [],  // $errors
+            ],
         ];
 
         return $sourceData;

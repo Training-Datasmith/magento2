@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,16 +9,17 @@
 /**
  * Customer Form Element Factory
  */
+
 namespace Magento\Customer\Model\Metadata;
 
 class ElementFactory
 {
-    const OUTPUT_FORMAT_JSON = 'json';
-    const OUTPUT_FORMAT_TEXT = 'text';
-    const OUTPUT_FORMAT_HTML = 'html';
-    const OUTPUT_FORMAT_PDF = 'pdf';
-    const OUTPUT_FORMAT_ONELINE = 'oneline';
-    const OUTPUT_FORMAT_ARRAY = 'array';
+    public const OUTPUT_FORMAT_JSON = 'json';
+    public const OUTPUT_FORMAT_TEXT = 'text';
+    public const OUTPUT_FORMAT_HTML = 'html';
+    public const OUTPUT_FORMAT_PDF = 'pdf';
+    public const OUTPUT_FORMAT_ONELINE = 'oneline';
+    public const OUTPUT_FORMAT_ARRAY = 'array';
 
     // available only for multiply attributes
 

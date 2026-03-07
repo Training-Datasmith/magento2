@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Model\Config\Source;
 
 class Display implements \Magento\Framework\Option\ArrayInterface
@@ -17,20 +20,20 @@ class Display implements \Magento\Framework\Option\ArrayInterface
         return [
             [
                 'value' => \Magento\Weee\Model\Tax::DISPLAY_INCL,
-                'label' => __('Including FPT only')
+                'label' => __('Including FPT only'),
             ],
             [
                 'value' => \Magento\Weee\Model\Tax::DISPLAY_INCL_DESCR,
-                'label' => __('Including FPT and FPT description')
+                'label' => __('Including FPT and FPT description'),
             ],
             [
                 'value' => \Magento\Weee\Model\Tax::DISPLAY_EXCL_DESCR_INCL,
-                'label' => __('Excluding FPT. Including FPT description and final price')
+                'label' => __('Excluding FPT. Including FPT description and final price'),
             ],
             [
                 'value' => \Magento\Weee\Model\Tax::DISPLAY_EXCL,
-                'label' => __('Excluding FPT')
-            ]
+                'label' => __('Excluding FPT'),
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class CustomerLoggedInObserverTest extends TestCase
                 'setCustomerTaxClassId',
                 'setDefaultTaxBillingAddress',
                 'setDefaultTaxShippingAddress',
-                'setWebsiteId'
+                'setWebsiteId',
             ]
         );
 

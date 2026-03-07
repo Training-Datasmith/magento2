@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Payment\Test\Unit\Observer;
 
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Payment\Observer\UpdateOrderStatusForPaymentMethodsObserver;
 use Magento\Sales\Model\Order;
@@ -43,9 +44,9 @@ class UpdateOrderStatusForPaymentMethodsObserverTest extends TestCase
     /** @var Event|MockObject */
     protected $eventMock;
 
-    const ORDER_STATUS = 'status';
+    public const ORDER_STATUS = 'status';
 
-    const METHOD_CODE = 'method_code';
+    public const METHOD_CODE = 'method_code';
 
     protected function setUp(): void
     {
@@ -59,7 +60,7 @@ class UpdateOrderStatusForPaymentMethodsObserverTest extends TestCase
             [
                 'salesOrderConfig' => $this->orderConfigMock,
                 'paymentConfig' => $this->paymentConfigMock,
-                'resourceConfig' => $this->coreResourceConfigMock
+                'resourceConfig' => $this->coreResourceConfigMock,
             ]
         );
 

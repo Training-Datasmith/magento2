@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,18 +14,17 @@ use Magento\ConfigurableProduct\Api\LinkManagementInterface;
 use Magento\ConfigurableProduct\Api\OptionRepositoryInterface;
 use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\ResourceModel\Order;
 use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Setup\Fixtures\OrdersFixture;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class OrdersFixtureTest extends TestCase
 {
     use MockCreationTrait;
-
 
     /**
      * @var MockObject|FixtureModel

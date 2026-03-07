@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,21 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface as CustomerAddressInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\TotalsCollector;
-use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\QuoteAddressValidationService;
+use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\ShippingAddressManagement;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -121,7 +121,7 @@ class ShippingAddressManagementTest extends TestCase
                 'setSameAsBilling',
                 'setSaveInAddressBook',
                 'setCollectShippingRates',
-                'save'
+                'save',
             ]
         );
         $this->quoteMock

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -124,7 +126,7 @@ class VclGenerator implements VclGeneratorInterface
     private function getRegexForDesignExceptions()
     {
         $result = '';
-        $tpl = "%s (req.http.user-agent ~ \"%s\") {\n" . "        hash_data(\"%s\");\n" . "    }";
+        $tpl = "%s (req.http.user-agent ~ \"%s\") {\n" . "        hash_data(\"%s\");\n" . '    }';
 
         $expressions = $this->getDesignExceptions();
 
@@ -133,7 +135,7 @@ class VclGenerator implements VclGeneratorInterface
             foreach ($rules as $i => $rule) {
                 if (preg_match('/^[\W]{1}(.*)[\W]{1}(\w+)?$/', $rule['regexp'] ?? '', $matches)) {
                     if (!empty($matches[2])) {
-                        $pattern = sprintf("(?%s)%s", $matches[2], $matches[1]);
+                        $pattern = sprintf('(?%s)%s', $matches[2], $matches[1]);
                     } else {
                         $pattern = $matches[1];
                     }
@@ -159,7 +161,7 @@ class VclGenerator implements VclGeneratorInterface
      */
     private function getTransformedAccessList()
     {
-        $tpl = "    \"%s\";";
+        $tpl = '    "%s";';
         $result = array_reduce(
             $this->getAccessList(),
             function ($ips, $ip) use ($tpl) {

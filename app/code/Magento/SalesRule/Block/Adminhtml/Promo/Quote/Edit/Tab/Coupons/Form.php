@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Coupon Qty'),
                 'required' => true,
                 'class' => 'validate-digits validate-greater-than-zero',
-                'onchange' => 'window.validateCouponGenerate(this)'
+                'onchange' => 'window.validateCouponGenerate(this)',
             ]
         );
 
@@ -93,7 +94,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'note' => __('Excluding prefix, suffix and separators.'),
                 'value' => $couponHelper->getDefaultLength(),
                 'class' => 'validate-digits validate-greater-than-zero',
-                'onchange' => 'window.validateCouponGenerate(this)'
+                'onchange' => 'window.validateCouponGenerate(this)',
             ]
         );
 
@@ -106,7 +107,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'options' => $couponHelper->getFormatsList(),
                 'required' => true,
                 'value' => $couponHelper->getDefaultFormat(),
-                'onchange' => 'window.validateCouponGenerate(this)'
+                'onchange' => 'window.validateCouponGenerate(this)',
             ]
         );
 
@@ -117,7 +118,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'prefix',
                 'label' => __('Code Prefix'),
                 'title' => __('Code Prefix'),
-                'value' => $couponHelper->getDefaultPrefix()
+                'value' => $couponHelper->getDefaultPrefix(),
             ]
         );
 
@@ -128,7 +129,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'suffix',
                 'label' => __('Code Suffix'),
                 'title' => __('Code Suffix'),
-                'value' => $couponHelper->getDefaultSuffix()
+                'value' => $couponHelper->getDefaultSuffix(),
             ]
         );
 
@@ -142,7 +143,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'note' => __('If empty no separation.'),
                 'value' => $couponHelper->getDefaultDashInterval(),
                 'class' => 'validate-digits',
-                'onchange' => 'window.validateCouponGenerate(this)'
+                'onchange' => 'window.validateCouponGenerate(this)',
             ]
         );
 
@@ -157,7 +158,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     __('Generate'),
                     "generateCouponCodes('{$idPrefix}' ,'{$generateUrl}', '{$gridBlockJsObject}')",
                     'generate'
-                )
+                ),
             ]
         );
 

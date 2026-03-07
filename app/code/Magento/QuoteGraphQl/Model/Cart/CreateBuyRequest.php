@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -63,8 +64,8 @@ class CreateBuyRequest
         $requestData = [
             [
                 'qty' => $qty,
-                'options' => $customizableOptions
-            ]
+                'options' => $customizableOptions,
+            ],
         ];
         foreach ($this->providers as $provider) {
             $requestData[] = $provider->execute($enteredOptions);
@@ -82,8 +83,8 @@ class CreateBuyRequest
     private function convertCustomOptionValue(string $value)
     {
         $value = trim($value);
-        if (substr($value, 0, 1) === "[" &&
-            substr($value, strlen($value) - 1, 1) === "]") {
+        if (substr($value, 0, 1) === '[' &&
+            substr($value, strlen($value) - 1, 1) === ']') {
             return explode(',', substr($value, 1, -1));
         }
         return $value;

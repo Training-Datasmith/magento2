@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Cms\Test\Unit\Model\ResourceModel\Page\Relation\Store;
 
 use Magento\Cms\Api\Data\PageInterface;
+use Magento\Cms\Model\Page as CmsModelPage;
 use Magento\Cms\Model\ResourceModel\Page;
 use Magento\Cms\Model\ResourceModel\Page\Relation\Store\SaveHandler;
-use Magento\Cms\Model\Page as CmsModelPage;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;

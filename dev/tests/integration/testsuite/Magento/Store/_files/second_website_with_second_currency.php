@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -49,5 +51,5 @@ $objectManager->get(\Magento\Catalog\Observer\SwitchPriceAttributeScopeOnConfigC
 $rate = $objectManager->create(\Magento\Directory\Model\ResourceModel\Currency::class);
 $rate->saveRates([
     'USD' => ['EUR' => 2],
-    'EUR' => ['USD' => 0.5]
+    'EUR' => ['USD' => 0.5],
 ]);

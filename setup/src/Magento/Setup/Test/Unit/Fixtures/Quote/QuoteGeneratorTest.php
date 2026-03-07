@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,6 +21,7 @@ use Magento\Framework\DB\Statement\Pdo\Mysql;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Setup\Fixtures\Quote\QuoteConfiguration;
@@ -27,7 +29,6 @@ use Magento\Setup\Fixtures\Quote\QuoteGenerator;
 use Magento\Store\Api\Data\GroupInterface;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -102,7 +103,7 @@ class QuoteGeneratorTest extends TestCase
             ->getMock();
         $this->optionRepository = $this->getMockBuilder(
             OptionRepositoryInterface::class
-        ) 
+        )
             ->disableOriginalConstructor()
             ->getMock();
         $this->productCollectionFactory = $this->getMockBuilder(
@@ -122,7 +123,7 @@ class QuoteGeneratorTest extends TestCase
             [
                 'getSimpleCountTo', 'getSimpleCountFrom', 'getConfigurableCountTo', 'getConfigurableCountFrom',
                 'getBigConfigurableCountTo', 'getBigConfigurableCountFrom', 'getRequiredQuoteQuantity',
-                'getFixtureDataFilename', 'getExistsQuoteQuantity'
+                'getFixtureDataFilename', 'getExistsQuoteQuantity',
             ]
         );
         $objectManager = new ObjectManager($this);
@@ -181,7 +182,7 @@ class QuoteGeneratorTest extends TestCase
         $this->config->expects($this->atLeastOnce())->method('getExistsQuoteQuantity')->willReturn(0);
         $this->config->expects($this->atLeastOnce())
             ->method('getFixtureDataFilename')
-            ->willReturn($dir . DIRECTORY_SEPARATOR . "_files" . DIRECTORY_SEPARATOR . 'orders_fixture_data.json');
+            ->willReturn($dir . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'orders_fixture_data.json');
         $this->storeManager->expects($this->atLeastOnce())->method('getStores')->willReturn([$store]);
         $this->storeManager->expects($this->atLeastOnce())
             ->method('getWebsite')->with($websiteId)->willReturn($website);
@@ -262,7 +263,7 @@ class QuoteGeneratorTest extends TestCase
         $this->productRepository->expects($this->atLeastOnce())
             ->method('getById')
             ->willReturnCallback(function ($arg) use ($product) {
-                if ($arg == 1 || $arg == 2 || $arg == 3 || $arg ==4) {
+                if ($arg == 1 || $arg == 2 || $arg == 3 || $arg == 4) {
                     return $product;
                 }
             });

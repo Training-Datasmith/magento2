@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Reports\Block\Adminhtml\Shopcart\Abandoned;
 
+use Magento\Framework\View\LayoutInterface;
 use Magento\Quote\Model\Quote;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\View\LayoutInterface;
 
 /**
  * Test class for \Magento\Reports\Block\Adminhtml\Shopcart\Abandoned\Grid

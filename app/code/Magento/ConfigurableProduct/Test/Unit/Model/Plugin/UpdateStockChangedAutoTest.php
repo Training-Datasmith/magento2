@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Plugin;
 
-use Magento\CatalogInventory\Model\Stock;
-use Magento\ConfigurableProduct\Model\Plugin\UpdateStockChangedAuto;
 use Magento\Catalog\Model\ResourceModel\GetProductTypeById;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\Item as ItemResourceModel;
+use Magento\CatalogInventory\Model\Stock;
 use Magento\CatalogInventory\Model\Stock\Item as StockItem;
+use Magento\ConfigurableProduct\Model\Plugin\UpdateStockChangedAuto;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for Magento\ConfigurableProduct\Model\Plugin\UpdateStockChangedAuto class.

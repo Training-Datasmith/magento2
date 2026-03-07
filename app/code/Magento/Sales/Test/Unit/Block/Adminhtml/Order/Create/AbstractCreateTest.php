@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,13 +14,12 @@ use Magento\Downloadable\Pricing\Price\LinkPrice;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Sales\Block\Adminhtml\Order\Create\AbstractCreate;
 use Magento\Wishlist\Model\Item;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AbstractCreateTest extends TestCase
 {
-
     /**
      * @var AbstractCreate|MockObject
      */

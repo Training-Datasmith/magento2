@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Widget;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
 use Magento\Catalog\Block\Widget\Link;
 use Magento\Catalog\Model\ResourceModel\AbstractResource;
@@ -24,6 +24,7 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -64,12 +65,12 @@ class LinkTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -87,7 +88,7 @@ class LinkTest extends TestCase
             [
                 'context' => $context,
                 'urlFinder' => $this->urlFinder,
-                'entityResource' => $this->entityResource
+                'entityResource' => $this->entityResource,
             ]
         );
     }
@@ -176,7 +177,7 @@ class LinkTest extends TestCase
             [
                 'storeManager' => $this->storeManager,
                 'url' => $url,
-                'config' => $config
+                'config' => $config,
             ]
         );
         $property = (new ReflectionClass(get_class($store)))->getProperty('urlModifier');
@@ -201,8 +202,8 @@ class LinkTest extends TestCase
                         Store::XML_PATH_STORE_IN_URL,
                         ReinitableConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        $includeStoreCode
-                    ]
+                        $includeStoreCode,
+                    ],
                 ]
             );
 

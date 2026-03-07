@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class SaveImageInformation
         try {
             return $path
                 && !$this->isPathExcluded->execute($path)
-                && preg_match('#\.(' . implode("|", $this->imageExtensions) . ')$# i', $path);
+                && preg_match('#\.(' . implode('|', $this->imageExtensions) . ')$# i', $path);
         } catch (\Exception $exception) {
             $this->log->critical($exception);
             return false;

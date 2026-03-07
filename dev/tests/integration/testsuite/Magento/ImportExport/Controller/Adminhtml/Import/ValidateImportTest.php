@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -59,13 +61,13 @@ class ValidateImportTest extends \Magento\TestFramework\TestCase\AbstractBackend
                 'type' => $mimeType,
                 'tmp_name' => $target,
                 'error' => 0,
-                'size' => filesize($target)
-            ]
+                'size' => filesize($target),
+            ],
         ];
 
         $this->_objectManager->configure(
             [
-                'preferences' => [FileTransferFactory::class => HttpFactoryMock::class]
+                'preferences' => [FileTransferFactory::class => HttpFactoryMock::class],
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe.
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class PhpScannerTest extends TestCase
         $objects = [
             [
                 LoggerInterface::class,
-                $this->createMock(LoggerInterface::class)
+                $this->createMock(LoggerInterface::class),
             ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
@@ -66,7 +67,7 @@ class PhpScannerTest extends TestCase
             $this->testDir . '/app/code/Magento/SomeModule/Helper/TestHelper.php',
             $this->testDir . '/app/code/Magento/SomeModule/Model/DoubleColon.php',
             $this->testDir . '/app/code/Magento/SomeModule/Api/Data/SomeInterface.php',
-            $this->testDir . '/app/code/Magento/SomeModule/Model/StubWithAnonymousClass.php'
+            $this->testDir . '/app/code/Magento/SomeModule/Model/StubWithAnonymousClass.php',
         ];
 
         $this->log

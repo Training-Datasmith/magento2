@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Model\ResourceModel\Catalog;
 
 /**
@@ -17,7 +20,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
     /**
      * Base product image path
      */
-    const BASE_IMAGE_PATH = '#http://localhost/media/catalog/product/cache/[a-z0-9]{32}:path:#';
+    public const BASE_IMAGE_PATH = '#http://localhost/media/catalog/product/cache/[a-z0-9]{32}:path:#';
 
     /**
      * Test getCollection None images

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class Timestamp implements DbDefinitionProcessorInterface
     /**
      * This date and time can be used, when const value as DEFAULT 0 was passed for datetime type.
      */
-    const CONST_DEFAULT_TIMESTAMP = '0000-00-00 00:00:00';
+    public const CONST_DEFAULT_TIMESTAMP = '0000-00-00 00:00:00';
 
     /**
      * @var OnUpdate

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ use Magento\Framework\View\Element\Template;
 class PriceBox extends Template implements PriceBoxRenderInterface, IdentityInterface
 {
     /** Default block lifetime */
-    const DEFAULT_LIFETIME = 86400;
+    public const DEFAULT_LIFETIME = 86400;
 
     /**
      * @var SaleableInterface

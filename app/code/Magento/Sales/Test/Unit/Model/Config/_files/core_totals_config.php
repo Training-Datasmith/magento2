@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,5 +23,5 @@ return [
     'tax_shipping' => ['after' => ['shipping'], 'before' => ['tax', 'discount']],
     'tax' => ['after' => ['subtotal', 'shipping'], 'before' => ['grand_total']],
     // Totals declared in Magento_Weee
-    'weee' => ['after' => ['subtotal', 'tax', 'discount', 'grand_total', 'shipping'], 'before' => []]
+    'weee' => ['after' => ['subtotal', 'tax', 'discount', 'grand_total', 'shipping'], 'before' => []],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Amqp\ConfigPool as AmqpConfigPool;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Registry;
 use Magento\Indexer\Model\ProcessManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Class covers process manager execution test logic

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Authorization\Test\Unit\Model\Acl\Loader;
 use Magento\Authorization\Model\Acl\Loader\Rule;
 use Magento\Framework\Acl;
 use Magento\Framework\Acl\Data\CacheInterface;
-use Magento\Framework\Acl\RootResource;
 use Magento\Framework\Acl\Role\CurrentRoleContext;
+use Magento\Framework\Acl\RootResource;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -57,7 +58,7 @@ class RuleTest extends TestCase
     protected function setUp(): void
     {
         $this->rootResource = new RootResource('Magento_Backend::all');
-        
+
         $this->resourceMock = $this->createPartialMockWithReflection(
             ResourceConnection::class,
             ['getConnection', 'getTableName', 'getTable']
@@ -83,7 +84,7 @@ class RuleTest extends TestCase
             );
 
         $roleContext = $this->createMock(CurrentRoleContext::class);
-        
+
         $this->model = new Rule(
             $this->rootResource,
             $this->resourceMock,
@@ -106,7 +107,7 @@ class RuleTest extends TestCase
         $rules = [
             ['role_id' => 1, 'resource_id' => 'Magento_Backend::all', 'permission' => 'allow'],
             ['role_id' => 2, 'resource_id' => 1, 'permission' => 'allow'],
-            ['role_id' => 3, 'resource_id' => 1, 'permission' => 'deny']
+            ['role_id' => 3, 'resource_id' => 1, 'permission' => 'deny'],
         ];
         $this->resourceMock->expects($this->never())->method('getTable');
         $this->resourceMock->expects($this->never())
@@ -147,7 +148,7 @@ class RuleTest extends TestCase
                 'Magento_Backend::all',
                 'Magento_Backend::admin',
                 'Vendor_MyModule::menu',
-                'Vendor_MyModule::index'
+                'Vendor_MyModule::index',
             ]);
 
         $this->model->populateAcl($aclMock);

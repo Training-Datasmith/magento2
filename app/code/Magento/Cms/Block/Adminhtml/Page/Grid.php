@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Page;
 
 /**
@@ -90,7 +93,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Layout'),
                 'index' => 'page_layout',
                 'type' => 'options',
-                'options' => $this->pageLayoutBuilder->getPageLayoutsConfig()->getOptions()
+                'options' => $this->pageLayoutBuilder->getPageLayoutsConfig()->getOptions(),
             ]
         );
 
@@ -107,7 +110,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'store_all' => true,
                     'store_view' => true,
                     'sortable' => false,
-                    'filter_condition_callback' => [$this, '_filterStoreCondition']
+                    'filter_condition_callback' => [$this, '_filterStoreCondition'],
                 ]
             );
         }
@@ -118,7 +121,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Status'),
                 'index' => 'is_active',
                 'type' => 'options',
-                'options' => $this->_cmsPage->getAvailableStatuses()
+                'options' => $this->_cmsPage->getAvailableStatuses(),
             ]
         );
 
@@ -129,7 +132,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'creation_time',
                 'type' => 'datetime',
                 'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
+                'column_css_class' => 'col-date',
             ]
         );
 
@@ -140,7 +143,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'update_time',
                 'type' => 'datetime',
                 'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
+                'column_css_class' => 'col-date',
             ]
         );
 
@@ -152,7 +155,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'filter' => false,
                 'renderer' => \Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action::class,
                 'header_css_class' => 'col-action',
-                'column_css_class' => 'col-action'
+                'column_css_class' => 'col-action',
             ]
         );
 

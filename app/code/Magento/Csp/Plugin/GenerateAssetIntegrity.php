@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
+use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
+use Magento\Csp\Model\SubresourceIntegrityCollector;
+use Magento\Csp\Model\SubresourceIntegrityFactory;
 use Magento\Framework\View\Asset\File;
 use Magento\RequireJs\Model\FileManager;
-use Magento\Csp\Model\SubresourceIntegrityFactory;
-use Magento\Csp\Model\SubresourceIntegrityCollector;
-use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
 
 /**
  * Plugin to add asset integrity value after static content deploy.
@@ -23,7 +24,7 @@ class GenerateAssetIntegrity
      *
      * @var array
      */
-    private const CONTENT_TYPES = ["js"];
+    private const CONTENT_TYPES = ['js'];
 
     /**
      * @var HashGenerator
@@ -73,12 +74,12 @@ class GenerateAssetIntegrity
             if (in_array($result->getContentType(), self::CONTENT_TYPES)) {
                 $integrity = $this->integrityFactory->create(
                     [
-                        "data" => [
+                        'data' => [
                             'hash' => $this->hashGenerator->generate(
                                 $result->getContent()
                             ),
-                            'path' => $result->getPath()
-                        ]
+                            'path' => $result->getPath(),
+                        ],
                     ]
                 );
 
@@ -150,10 +151,10 @@ class GenerateAssetIntegrity
             if ($content !== null) {
                 $integrity = $this->integrityFactory->create(
                     [
-                        "data" => [
+                        'data' => [
                             'hash' => $this->hashGenerator->generate($content),
-                            'path' => $path
-                        ]
+                            'path' => $path,
+                        ],
                     ]
                 );
                 $this->integrityCollector->collect($integrity);

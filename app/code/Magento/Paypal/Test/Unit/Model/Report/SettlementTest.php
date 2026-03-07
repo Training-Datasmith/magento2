@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Test\Unit\Model\Report;
 
+use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\Filesystem\Io\Sftp;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Paypal\Model\Report\Settlement;
-use Magento\Framework\Filesystem\Io\Sftp;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -39,7 +40,7 @@ class SettlementTest extends TestCase
         $this->settlement = $objectManagerHelper->getObject(
             Settlement::class,
             [
-                '_tmpDirectory' => $this->tmpDirectory
+                '_tmpDirectory' => $this->tmpDirectory,
             ]
         );
     }

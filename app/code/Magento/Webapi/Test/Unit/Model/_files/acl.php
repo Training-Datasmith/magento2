@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,17 +25,17 @@ return [
                         'id' => 'customer/update',
                         'title' => 'Edit Customer',
                         'sortOrder' => '10',
-                        'children' => []
+                        'children' => [],
                     ],
                     [
                         'id' => 'customer/get',
                         'title' => 'Get Customer',
                         'sortOrder' => '20',
-                        'children' => []
+                        'children' => [],
                     ],
                     ['id' => 'customer/delete', 'title' => 'Delete Customer', 'children' => []],
                 ],
             ],
         ],
-    ]
+    ],
 ];

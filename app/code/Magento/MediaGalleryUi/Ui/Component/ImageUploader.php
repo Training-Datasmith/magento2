@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class ImageUploader extends Container
                     'imageUploadUrl' => $this->url->getUrl('media_gallery/image/upload', ['type' => 'image']),
                     'acceptFileTypes' => self::ACCEPT_FILE_TYPES,
                     'allowedExtensions' => self::ALLOWED_EXTENSIONS,
-                    'maxFileSize' => $this->size->getMaxFileSize()
+                    'maxFileSize' => $this->size->getMaxFileSize(),
                 ]
             )
         );

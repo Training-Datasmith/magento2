@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ class InfoTest extends \PHPUnit\Framework\TestCase
             $html
         );
         $this->assertMatchesRegularExpression(
-            "/<input id=\"integration_properties_identity_link_url\" name=\"identity_link_url\".*"
+            '/<input id="integration_properties_identity_link_url" name="identity_link_url".*'
             . "value=\"$identityLinkUrl\".*type=\"text\".*>/",
             $html
         );

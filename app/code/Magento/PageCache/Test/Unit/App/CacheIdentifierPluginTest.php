@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,14 +108,14 @@ class CacheIdentifierPluginTest extends TestCase
                 true,
                 'aa123aa',
                 false,
-                'aa123aa'
+                'aa123aa',
             ],
             'Built-in, PageCache enabled, with design exception' => [Config::BUILT_IN,
                 true,
                 'aa123aa',
                 '7',
-                'DESIGN=7|aa123aa'
-            ]
+                'DESIGN=7|aa123aa',
+            ],
         ];
     }
 

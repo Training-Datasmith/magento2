@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,14 +8,12 @@
 
 namespace Magento\Theme\Model\Config;
 
-use Magento\Email\Model\Template;
-
 /**
  * Class ValidatorTest to test \Magento\Theme\Model\Design\Config\Validator
  */
 class ValidatorTest extends \PHPUnit\Framework\TestCase
 {
-    const TEMPLATE_CODE = 'email_exception_fixture';
+    public const TEMPLATE_CODE = 'email_exception_fixture';
 
     /**
      * @var \Magento\Theme\Model\Design\Config\Validator
@@ -46,7 +46,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
         $this->templateModel = $objectManager->create(\Magento\Email\Model\Template::class);
         $this->templateModel->load(self::TEMPLATE_CODE, 'template_code');
         $this->templateFactoryMock->expects($this->once())
-            ->method("create")
+            ->method('create')
             ->willReturn($this->templateModel);
         $this->model = $objectManager->create(
             \Magento\Theme\Model\Design\Config\Validator::class,
@@ -68,7 +68,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
         $fieldConfig = [
             'path' => 'design/email/header_template',
             'fieldset' => 'other_settings/email',
-            'field' => 'email_header_template'
+            'field' => 'email_header_template',
         ];
 
         $designConfigMock = $this->getMockBuilder(\Magento\Theme\Api\Data\DesignConfigInterface::class)
@@ -109,13 +109,13 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     public function testValidateNoRecursiveReference()
     {
         $this->templateFactoryMock->expects($this->once())
-            ->method("create")
+            ->method('create')
             ->willReturn($this->templateModel);
 
         $fieldConfig = [
             'path' => 'design/email/footer_template',
             'fieldset' => 'other_settings/email',
-            'field' => 'email_footer_template'
+            'field' => 'email_footer_template',
         ];
 
         $designConfigMock = $this->getMockBuilder(\Magento\Theme\Api\Data\DesignConfigInterface::class)

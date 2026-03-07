@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Payment\Test\Unit\Helper;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Matcher\MethodInvokedAtIndex;
 use Magento\Framework\View\Element\BlockInterface;
@@ -18,7 +20,6 @@ use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Info;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Payment\Model\MethodInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -138,8 +139,8 @@ class DataTest extends TestCase
                     Data::XML_PATH_PAYMENT_METHODS => [
                         $methodA['code'] => $methodA['data'],
                         $methodB['code'] => $methodB['data'],
-                        'empty' => []
-                    ]
+                        'empty' => [],
+                    ],
                 ]
             );
 
@@ -294,12 +295,12 @@ class DataTest extends TestCase
         return [
             [
                 ['code' => 'methodA', 'data' => ['sort_order' => 0]],
-                ['code' => 'methodB', 'data' => ['sort_order' => 1]]
+                ['code' => 'methodB', 'data' => ['sort_order' => 1]],
             ],
             [
                 ['code' => 'methodA', 'data' => ['sort_order' => 2]],
-                ['code' => 'methodB', 'data' => ['sort_order' => 1]]
-            ]
+                ['code' => 'methodB', 'data' => ['sort_order' => 1]],
+            ],
         ];
     }
 }

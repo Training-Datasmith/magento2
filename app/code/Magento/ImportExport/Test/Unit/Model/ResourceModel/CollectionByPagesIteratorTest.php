@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class CollectionByPagesIteratorTest extends TestCase
                 'count',
                 'getLastPageNumber',
                 'getSelect',
-                'getResource'
+                'getResource',
             ]
         );
         $collectionMock->__construct($entityFactory, $logger, $fetchStrategy);

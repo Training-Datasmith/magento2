@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -31,12 +32,12 @@ class ValidatorTest extends TestCase
         $postCodes = [
             'US' => [
                 'pattern_1' => ['pattern' => '^[0-9]{5}\-[0-9]{4}$'],
-                'pattern_2' => ['pattern' => '^[0-9]{5}$']
+                'pattern_2' => ['pattern' => '^[0-9]{5}$'],
             ],
             'NL' => [
                 'pattern_1' => ['pattern' => '^[1-9][0-9]{3}\s?[a-zA-Z]{2}$'],
-                'pattern_2' => ['pattern' => '^[1-9][0-9]{3}$']
-            ]
+                'pattern_2' => ['pattern' => '^[1-9][0-9]{3}$'],
+            ],
         ];
         $this->postcodesConfigMock->expects($this->once())->method('getPostCodes')->willReturn($postCodes);
         $this->model = new Validator($this->postcodesConfigMock);
@@ -77,16 +78,16 @@ class ValidatorTest extends TestCase
         return [
             [
                 'postCode' => '12345-6789',
-                'countryId' => 'US'
+                'countryId' => 'US',
             ],
             [
                 'postCode' => '1234',
-                'countryId' => 'NL'
+                'countryId' => 'NL',
             ],
             [
                 'postCode' => '1234AB',
-                'countryId' => 'NL'
-            ]
+                'countryId' => 'NL',
+            ],
         ];
     }
 }

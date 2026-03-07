@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\System\Message;
 
 /**
@@ -12,13 +15,6 @@ namespace Magento\AdminNotification\Model\ResourceModel\System\Message;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
-     * System message list
-     *
-     * @var \Magento\Framework\Notification\MessageList
-     */
-    protected $_messageList;
-
-    /**
      * Number of messages by severity
      *
      * @var array
@@ -26,11 +22,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected $_countBySeverity = [];
 
     /**
-     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Framework\Notification\MessageList $messageList
      * @param mixed $connection
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
      */
@@ -39,11 +30,13 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
         \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\Notification\MessageList $messageList,
+        /**
+         * System message list
+         */
+        protected \Magento\Framework\Notification\MessageList $_messageList,
         ?\Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
         ?\Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
-        $this->_messageList = $messageList;
         parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
     }
 
@@ -99,7 +92,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param int $severity
      * @return $this
      */
-    public function setSeverity($severity)
+    public function setSeverity($severity): static
     {
         $this->addFieldToFilter('severity', ['eq' => $severity * 1]);
         return $this;
@@ -113,6 +106,6 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function getCountBySeverity($severity)
     {
-        return isset($this->_countBySeverity[$severity]) ? $this->_countBySeverity[$severity] : 0;
+        return $this->_countBySeverity[$severity] ?? 0;
     }
 }

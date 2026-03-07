@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class Entity implements CustomFilterInterface
             $collection->addFieldToFilter(
                 [self::TABLE_ALIAS . '.id'],
                 [
-                    ['in' => $this->getSelectByEntityIds($ids)]
+                    ['in' => $this->getSelectByEntityIds($ids)],
                 ]
             );
         }

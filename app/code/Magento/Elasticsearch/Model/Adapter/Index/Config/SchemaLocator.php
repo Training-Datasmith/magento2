@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\Index\Config;
 
 use Magento\Framework\Config\SchemaLocatorInterface;
@@ -13,7 +16,7 @@ class SchemaLocator implements SchemaLocatorInterface
     /**
      * XML schema for config file.
      */
-    const CONFIG_FILE_SCHEMA = 'esconfig.xsd';
+    public const CONFIG_FILE_SCHEMA = 'esconfig.xsd';
 
     /**
      * Path to corresponding XSD file with validation rules for merged config

@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model;
 
 use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Stdlib\DateTime\DateTime;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -104,18 +106,18 @@ class PageTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($afterTimestamp, $pageTimestamp);
     }
 
-    public static function generateIdentifierFromTitleDataProvider() : array
+    public static function generateIdentifierFromTitleDataProvider(): array
     {
         return [
             ['data' => ['title' => 'Test title', 'stores' => [1]], 'expectedIdentifier' => 'test-title'],
             [
                 'data' => ['title' => 'Кирилический заголовок', 'stores' => [1]],
-                'expectedIdentifier' => 'kirilicheskij-zagolovok'
+                'expectedIdentifier' => 'kirilicheskij-zagolovok',
             ],
             [
                 'data' => ['title' => 'Test title', 'identifier' => 'custom-identifier', 'stores' => [1]],
-                'expectedIdentifier' => 'custom-identifier'
-            ]
+                'expectedIdentifier' => 'custom-identifier',
+            ],
         ];
     }
 
@@ -123,7 +125,7 @@ class PageTest extends \PHPUnit\Framework\TestCase
      * Data provider for "testGetByIdentifier" method
      * @return array
      */
-    public static function pageGetByIdentifierDataProvider() : array
+    public static function pageGetByIdentifierDataProvider(): array
     {
         return [
             ['pageData' => [
@@ -132,8 +134,8 @@ class PageTest extends \PHPUnit\Framework\TestCase
                 'page_layout' => '1column',
                 'stores' => [1],
                 'content' => 'Test content',
-                'is_active' => 1
-            ]]
+                'is_active' => 1,
+            ]],
         ];
     }
 }

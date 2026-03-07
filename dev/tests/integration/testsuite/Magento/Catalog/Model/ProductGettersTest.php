@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -218,7 +221,7 @@ class ProductGettersTest extends \PHPUnit\Framework\TestCase
         $expected = [
             'Option 2',
             'Option 3',
-            'Option 4 "!@#$%^&*'
+            'Option 4 "!@#$%^&*',
         ];
         self::assertEquals(
             $expected,

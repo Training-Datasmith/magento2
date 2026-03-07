@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleOptimizer\Block\Adminhtml;
 
-use Magento\Framework\Exception\ConfigurationMismatchException;
-use Magento\Framework\App\ObjectManager;
 use Magento\Backend\Block\Widget\Form\Generic;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\ConfigurationMismatchException;
 
 /**
  * @SuppressWarnings(PHPMD.DepthOfInheritance)

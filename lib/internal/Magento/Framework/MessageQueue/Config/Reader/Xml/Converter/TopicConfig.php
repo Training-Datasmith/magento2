@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Config\Reader\Xml\Converter;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\MessageQueue\ConfigInterface;
-use Magento\Framework\MessageQueue\Config\Validator;
-use Magento\Framework\MessageQueue\DefaultValueProvider;
-use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
+use Magento\Framework\MessageQueue\Config\Validator;
+use Magento\Framework\MessageQueue\ConfigInterface;
 use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\MessageQueue\ConsumerInterface;
+use Magento\Framework\MessageQueue\DefaultValueProvider;
+use Magento\Framework\Reflection\MethodsMap;
 
 /**
  * Converts MessageQueue config from \DOMDocument to array
@@ -107,14 +110,14 @@ class TopicConfig implements \Magento\Framework\Config\ConverterInterface
                 'name' => $topicName,
                 'schema' => [
                     'schema_type' => $schemaType,
-                    'schema_value' => $schemaValue
+                    'schema_value' => $schemaValue,
                 ],
                 'response_schema' => [
                     'schema_type' => isset($topicDefinition['response']) ? QueueConfig::TOPIC_SCHEMA_TYPE_OBJECT : null,
-                    'schema_value' => $topicDefinition['response']
+                    'schema_value' => $topicDefinition['response'],
                 ],
                 'is_synchronous' => $topicDefinition[CommunicationConfig::TOPIC_IS_SYNCHRONOUS],
-                'publisher' => $topicConfig['type'] . '-' . $topicConfig['exchange']
+                'publisher' => $topicConfig['type'] . '-' . $topicConfig['exchange'],
             ];
         }
         return $output;
@@ -152,7 +155,7 @@ class TopicConfig implements \Magento\Framework\Config\ConverterInterface
                         ? $queueConfig['consumerInstance'] : self::DEFAULT_INSTANCE,
                     'consumer_type' => $topic[CommunicationConfig::TOPIC_IS_SYNCHRONOUS] ? 'sync' : 'async',
                     'max_messages' => $queueConfig['maxMessages'],
-                    'connection' => $topicConfig['type']
+                    'connection' => $topicConfig['type'],
                 ];
             }
         }
@@ -207,7 +210,7 @@ class TopicConfig implements \Magento\Framework\Config\ConverterInterface
             $output[$publisherName] = [
                 'name' => $publisherName,
                 'connection' => $topicConfig['type'],
-                'exchange' => $topicConfig['exchange']
+                'exchange' => $topicConfig['exchange'],
             ];
         }
         return $output;
@@ -278,7 +281,7 @@ class TopicConfig implements \Magento\Framework\Config\ConverterInterface
                 'exchange' => $this->getAttributeValue($brokerNode, 'exchange', self::DEFAULT_EXCHANGE),
                 'consumerInstance' => $this->getAttributeValue($brokerNode, 'consumerInstance'),
                 'maxMessages' => $this->getAttributeValue($brokerNode, 'maxMessages'),
-                'queues' => $this->extractQueuesFromBroker($brokerNode, $topicName)
+                'queues' => $this->extractQueuesFromBroker($brokerNode, $topicName),
             ];
         }
         return $output;
@@ -300,14 +303,14 @@ class TopicConfig implements \Magento\Framework\Config\ConverterInterface
             $handler = $this->getAttributeValue($queueNode, 'handler');
             $queueName = $this->getAttributeValue($queueNode, 'name');
             $queue = [
-               'name'=> $queueName,
+               'name' => $queueName,
                'handlerName' => $this->getAttributeValue($queueNode, 'handlerName'),
                'handlers' => $handler ? ['default' => $handler] : $topicConfig['handlers'],
                'exchange' => $this->getAttributeValue($queueNode, 'exchange'),
                'consumer' => $this->getAttributeValue($queueNode, 'consumer'),
                'consumerInstance' => $this->getAttributeValue($queueNode, 'consumerInstance'),
                'maxMessages' => $this->getAttributeValue($queueNode, 'maxMessages', null),
-               'type' => $this->getAttributeValue($queueNode, 'type')
+               'type' => $this->getAttributeValue($queueNode, 'type'),
 
             ];
             $queues[$queueName] = $queue;

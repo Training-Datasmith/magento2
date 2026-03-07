@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Autoload;
 
 use InvalidArgumentException;
-use Magento\Framework\Autoload\AutoloaderInterface;
 
 /**
  * Registry to store a static member autoloader

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class IndexerSetStatusCommand extends AbstractIndexerManageCommand
         $acceptedValues = [
             StateInterface::STATUS_INVALID,
             StateInterface::STATUS_SUSPENDED,
-            StateInterface::STATUS_VALID
+            StateInterface::STATUS_VALID,
         ];
         $inputStatus = $input->getArgument(self::INPUT_KEY_STATUS);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Cms\Test\Unit\Controller\Index;
 use Magento\Cms\Controller\Index\Index;
 use Magento\Cms\Helper\Page as CmsPageHelperPage;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Request\Http as FrameworkHttpRequestHttp;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\ForwardFactory;
@@ -17,7 +19,6 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Result\Page;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Request\Http as FrameworkHttpRequestHttp;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -108,7 +109,7 @@ class IndexTest extends TestCase
                 'request' => $this->requestMock,
                 'resultForwardFactory' => $this->forwardFactoryMock,
                 'scopeConfig' => $scopeConfigMock,
-                'page' => $this->cmsHelperMock
+                'page' => $this->cmsHelperMock,
             ]
         );
     }

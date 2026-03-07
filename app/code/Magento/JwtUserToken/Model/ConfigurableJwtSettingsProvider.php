@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Jwt\EncryptionSettingsInterface;
 use Magento\Framework\Jwt\Jwe\JweEncryptionJwks;
 use Magento\Framework\Jwt\Jwk;
-use Magento\Framework\Jwt\JwkSet;
 use Magento\Framework\Jwt\Jws\JwsSignatureJwks;
 use Magento\JwtUserToken\Api\ConfigReaderInterface;
 

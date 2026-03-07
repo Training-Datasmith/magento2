@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,21 +9,18 @@
 namespace Magento\Rule\Model\Condition\Sql;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
-use Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitation;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Catalog\Setup\CategorySetup;
+use Magento\Catalog\Test\Fixture\MultiselectAttribute;
+use Magento\CatalogWidget\Model\Rule\Condition\Combine as CombineCondition;
+use Magento\CatalogWidget\Model\Rule\Condition\Product as ProductCondition;
+use Magento\CatalogWidget\Model\RuleFactory;
 use Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend;
-use Magento\Framework\DB\Select;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Catalog\Test\Fixture\MultiselectAttribute;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
-use Magento\CatalogWidget\Model\RuleFactory;
-use Magento\CatalogWidget\Model\Rule\Condition\Combine as CombineCondition;
-use Magento\CatalogWidget\Model\Rule\Condition\Product as ProductCondition;
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\TestFramework\Helper\Bootstrap as BootstrapHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -70,7 +69,7 @@ class BuilderTest extends TestCase
                 'frontend_input' => 'multiselect',
                 'backend_type' => 'text',
                 'attribute_model' => Attribute::class,
-                'options' => ['red', 'white']
+                'options' => ['red', 'white'],
             ],
             'multiselect'
         )
@@ -87,9 +86,9 @@ class BuilderTest extends TestCase
             if (isset($condition['attribute']) && $condition['attribute'] === 'multi_select_attr') {
                 $multiselectAttributeOptionIds = [
                     $this->fixtures->get('multiselect')->getData('red'),
-                    $this->fixtures->get('multiselect')->getData('white')
+                    $this->fixtures->get('multiselect')->getData('white'),
                 ];
-                $expectedWhere = str_replace(["red", "white"], $multiselectAttributeOptionIds, $expectedWhere);
+                $expectedWhere = str_replace(['red', 'white'], $multiselectAttributeOptionIds, $expectedWhere);
 
                 $conditions[$key]['value'] = $multiselectAttributeOptionIds;
             }
@@ -148,14 +147,14 @@ class BuilderTest extends TestCase
                         'attribute' => 'sku',
                         'operator' => '()',
                         'value' => 'sku1,sku2,sku3,sku4,sku5',
-                    ]
+                    ],
                 ],
-                "(((`e`.`entity_id` IN (SELECT `catalog_category_product`.`product_id` FROM " .
+                '(((`e`.`entity_id` IN (SELECT `catalog_category_product`.`product_id` FROM ' .
                 "`catalog_category_product` WHERE (category_id IN ('3')))) " .
-                "AND(IF(`at_special_to_date`.`value_id` > 0, `at_special_to_date`.`value`, " .
+                'AND(IF(`at_special_to_date`.`value_id` > 0, `at_special_to_date`.`value`, ' .
                 "`at_special_to_date_default`.`value`) = '2017-09-15 00:00:00') " .
                 "AND(`e`.`sku` IN ('sku1', 'sku2', 'sku3', 'sku4', 'sku5'))",
-                "ORDER BY (FIELD(`e`.`sku`, 'sku1', 'sku2', 'sku3', 'sku4', 'sku5'))"
+                "ORDER BY (FIELD(`e`.`sku`, 'sku1', 'sku2', 'sku3', 'sku4', 'sku5'))",
             ],
             [
                 [
@@ -182,15 +181,15 @@ class BuilderTest extends TestCase
                         'attribute' => 'multi_select_attr',
                         'operator' => '{}',
                         'collected_attributes' => ['multiselect_attribute' => true],
-                    ]
+                    ],
                 ],
-                "(((`e`.`entity_id` IN (SELECT `catalog_category_product`.`product_id` FROM " .
+                '(((`e`.`entity_id` IN (SELECT `catalog_category_product`.`product_id` FROM ' .
                 "`catalog_category_product` WHERE (category_id IN ('3')))) " .
                 "AND(`e`.`sku` IN ('sku1', 'sku2', 'sku3')) AND(`multi_select_attr`.`value` IN ('red', 'white') OR " .
                 "(FIND_IN_SET ('red', `multi_select_attr`.`value`) > 0) OR " .
                 "(FIND_IN_SET ('white', `multi_select_attr`.`value`) > 0))",
-                "ORDER BY (FIELD(`e`.`sku`, 'sku1', 'sku2', 'sku3'))"
-            ]
+                "ORDER BY (FIELD(`e`.`sku`, 'sku1', 'sku2', 'sku3'))",
+            ],
         ];
     }
 }

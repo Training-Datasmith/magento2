@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Factory class for \Magento\Paypal\Model\Api\AbstractApi
  */
+
 namespace Magento\Paypal\Model\Api\Type;
 
 class Factory

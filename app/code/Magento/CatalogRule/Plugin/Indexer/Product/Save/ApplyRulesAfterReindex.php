@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Plugin\Indexer\Product\Save;
 
-use Magento\CatalogRule\Model\Indexer\Product\ProductRuleProcessor;
 use Magento\Catalog\Model\Product;
+use Magento\CatalogRule\Model\Indexer\Product\ProductRuleProcessor;
 
 /**
  * Plugin for Magento\Catalog\Model\Product

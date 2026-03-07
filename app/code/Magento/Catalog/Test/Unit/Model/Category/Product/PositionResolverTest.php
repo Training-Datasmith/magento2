@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class PositionResolverTest extends TestCase
     private $positions = [
         '3' => 100,
         '2' => 101,
-        '1' => 102
+        '1' => 102,
     ];
 
     /**
@@ -58,7 +59,7 @@ class PositionResolverTest extends TestCase
     private $flippedPositions = [
         '100' => 3,
         '101' => 2,
-        '102' => 1
+        '102' => 1,
     ];
 
     /**
@@ -81,7 +82,7 @@ class PositionResolverTest extends TestCase
             [
                 'context' => $this->context,
                 null,
-                '_resources' => $this->resources
+                '_resources' => $this->resources,
             ]
         );
     }

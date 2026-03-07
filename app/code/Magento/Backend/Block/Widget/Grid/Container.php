@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid;
 
 /**
@@ -19,11 +22,11 @@ class Container extends \Magento\Backend\Block\Widget\Container
     /**#@+
      * Initialization parameters in pseudo-constructor
      */
-    const PARAM_BLOCK_GROUP = 'block_group';
+    public const PARAM_BLOCK_GROUP = 'block_group';
 
-    const PARAM_BUTTON_NEW = 'button_new';
+    public const PARAM_BUTTON_NEW = 'button_new';
 
-    const PARAM_BUTTON_BACK = 'button_back';
+    public const PARAM_BUTTON_BACK = 'button_back';
 
     /**#@-*/
 
@@ -147,7 +150,7 @@ class Container extends \Magento\Backend\Block\Widget\Container
             [
                 'label' => $this->getAddButtonLabel(),
                 'onclick' => 'setLocation(\'' . $this->getCreateUrl() . '\')',
-                'class' => 'add primary'
+                'class' => 'add primary',
             ]
         );
     }
@@ -162,7 +165,7 @@ class Container extends \Magento\Backend\Block\Widget\Container
             [
                 'label' => $this->getBackButtonLabel(),
                 'onclick' => 'setLocation(\'' . $this->getBackUrl() . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
     }

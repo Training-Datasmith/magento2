@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -12,13 +13,13 @@ use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
 use Magento\Csp\Model\SubresourceIntegrityFactory;
 use Magento\Csp\Model\SubresourceIntegrityRepository;
 use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
+use Magento\Csp\Plugin\GenerateMergedAssetIntegrity;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\MergeStrategy\FileExists;
-use Magento\Csp\Plugin\GenerateMergedAssetIntegrity;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -90,8 +91,8 @@ class GenerateMergedAssetIntegrityTest extends TestCase
             ->method('create')->with([
                 'data' => [
                     'hash' => $hash,
-                    'path' => $filePath
-                ]
+                    'path' => $filePath,
+                ],
             ])->willReturn($integrity);
         $repository = $this->createMock(SubresourceIntegrityRepository::class);
         $this->sourceIntegrityRepository->expects($this->once())->method('get')
@@ -177,8 +178,8 @@ class GenerateMergedAssetIntegrityTest extends TestCase
             ->method('create')->with([
                 'data' => [
                     'hash' => $hash,
-                    'path' => $filePath
-                ]
+                    'path' => $filePath,
+                ],
             ])->willReturn($integrity);
         $repository = $this->createMock(SubresourceIntegrityRepository::class);
         $this->sourceIntegrityRepository->expects($this->once())->method('get')

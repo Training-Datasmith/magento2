@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxClass;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,8 +19,8 @@ class Key extends AbstractExtensibleModel implements TaxClassKeyInterface
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_TYPE  = 'type';
-    const KEY_VALUE = 'value';
+    public const KEY_TYPE  = 'type';
+    public const KEY_VALUE = 'value';
     /**#@-*/
 
     /**

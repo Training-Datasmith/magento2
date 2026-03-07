@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class ThemeTest extends TestCase
                 [
                     'file' => 'test.css',
                     'theme_dir' => '/path/to/current/theme',
-                    'theme_pubstatic_dir' => '/pub/static/frontend/luma'
+                    'theme_pubstatic_dir' => '/pub/static/frontend/luma',
                 ],
                 ['package/current_theme/path/one', 'package/current_theme/path/two'],
             ],
@@ -99,9 +100,9 @@ class ThemeTest extends TestCase
                 [
                     'file' => 'test.css',
                     'theme_dir' => '/path/to/parent/theme',
-                    'theme_pubstatic_dir' => '/pub/static/frontend/luma'
+                    'theme_pubstatic_dir' => '/pub/static/frontend/luma',
                 ],
-                ['package/parent_theme/path/one', 'package/parent_theme/path/two']
+                ['package/parent_theme/path/one', 'package/parent_theme/path/two'],
             ],
         ];
         $this->ruleMock->expects($this->atLeastOnce())->method('getPatternDirs')->willReturnMap($ruleDirsMap);

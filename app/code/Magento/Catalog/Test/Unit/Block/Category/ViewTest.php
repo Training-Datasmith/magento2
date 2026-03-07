@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ use Magento\Catalog\Model\Layer\Filter\Item;
 use Magento\Catalog\Model\Layer\Resolver as LayerResolver;
 use Magento\Catalog\Model\Layer\State;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -326,7 +327,7 @@ class ViewTest extends TestCase
         return [
             'mode_products_only' => [Category::DM_PRODUCT, true],
             'mode_page_only' => [Category::DM_PAGE, false],
-            'mode_products_and_page' => [Category::DM_MIXED, false]
+            'mode_products_and_page' => [Category::DM_MIXED, false],
         ];
     }
 
@@ -340,7 +341,7 @@ class ViewTest extends TestCase
         return [
             'mode_products_only' => [Category::DM_PRODUCT, false],
             'mode_page_only' => [Category::DM_PAGE, false],
-            'mode_products_and_page' => [Category::DM_MIXED, true]
+            'mode_products_and_page' => [Category::DM_MIXED, true],
         ];
     }
 
@@ -432,7 +433,7 @@ class ViewTest extends TestCase
         return [
             'display_mode_page' => [Category::DM_PAGE, true],
             'display_mode_product' => [Category::DM_PRODUCT, false],
-            'display_mode_mixed' => [Category::DM_MIXED, false]
+            'display_mode_mixed' => [Category::DM_MIXED, false],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -442,7 +443,7 @@ class CartFixedTest extends TestCase
                     'discount_amount' => -0.71,
                     'shipping_amount' => 0.00,
                     'grand_total' => 4.2900,
-                ]
+                ],
             ],
             'Discount $30 proportionally spread between products' => [
                 30,
@@ -463,7 +464,7 @@ class CartFixedTest extends TestCase
                     'discount_amount' => -4.29,
                     'shipping_amount' => 0.00,
                     'grand_total' => 0.7100,
-                ]
+                ],
             ],
             'Discount $50 which is more then all subtotals combined proportionally spread between products' => [
                 50,
@@ -484,7 +485,7 @@ class CartFixedTest extends TestCase
                     'discount_amount' => -5.00,
                     'shipping_amount' => 0.00,
                     'grand_total' => 0.0000,
-                ]
+                ],
             ],
         ];
     }
@@ -528,19 +529,19 @@ class CartFixedTest extends TestCase
         return [
             [
                 'percentDiscount' => 0,
-                'expectedDiscounts' => ['simple1' => 2.73, 'simple2' => 7.27, 'totalDiscount' => -10]
+                'expectedDiscounts' => ['simple1' => 2.73, 'simple2' => 7.27, 'totalDiscount' => -10],
             ],
             [
                 'percentDiscount' => 15.5,
-                'expectedDiscounts' => ['simple1' => 3.65, 'simple2' => 9.76, 'totalDiscount' => -13.41]
+                'expectedDiscounts' => ['simple1' => 3.65, 'simple2' => 9.76, 'totalDiscount' => -13.41],
             ],
             [
                 'percentDiscount' => 50,
-                'expectedDiscounts' => ['simple1' => 5.72, 'simple2' => 15.28, 'totalDiscount' => -21]
+                'expectedDiscounts' => ['simple1' => 5.72, 'simple2' => 15.28, 'totalDiscount' => -21],
             ],
             [
                 'percentDiscount' => 100,
-                'expectedDiscounts' => ['simple1' => 5.99, 'simple2' => 15.99, 'totalDiscount' => -21.98]
+                'expectedDiscounts' => ['simple1' => 5.99, 'simple2' => 15.99, 'totalDiscount' => -21.98],
             ],
         ];
     }
@@ -592,7 +593,7 @@ class CartFixedTest extends TestCase
                 'discount_amount' => 40,
                 'apply_to_shipping' => 1,
                 'stop_rules_processing' => 0,
-                'sort_order' => 2
+                'sort_order' => 2,
             ]
         ),
         DataFixture(GuestCartFixture::class, as: 'cart'),
@@ -635,7 +636,7 @@ class CartFixedTest extends TestCase
                 'stop_rules_processing' => 0,
                 'sort_order' => 1,
                 'conditions' => ['$cond11$'],
-                'actions' => ['$applyCond1$']
+                'actions' => ['$applyCond1$'],
             ]
         ),
         DataFixture(
@@ -661,7 +662,7 @@ class CartFixedTest extends TestCase
                 'apply_to_shipping' => 0,
                 'stop_rules_processing' => 0,
                 'sort_order' => 2,
-                'conditions' => ['$cond22$']
+                'conditions' => ['$cond22$'],
             ]
         ),
         DataFixture(GuestCartFixture::class, as: 'cart'),
@@ -708,7 +709,7 @@ class CartFixedTest extends TestCase
                 'stop_rules_processing' => 0,
                 'sort_order' => 0,
                 'conditions' => ['$cond111$'],
-                'actions' => ['$applyCond1$']
+                'actions' => ['$applyCond1$'],
             ]
         ),
         DataFixture(
@@ -740,7 +741,7 @@ class CartFixedTest extends TestCase
                 'stop_rules_processing' => 0,
                 'sort_order' => 0,
                 'conditions' => ['$cond222$'],
-                'actions' => ['$applyCond2$']
+                'actions' => ['$applyCond2$'],
             ]
         ),
         DataFixture(GuestCartFixture::class, as: 'cart'),

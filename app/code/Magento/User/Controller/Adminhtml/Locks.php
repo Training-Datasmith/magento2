@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Locked administrators controller
  */
+
 namespace Magento\User\Controller\Adminhtml;
 
 abstract class Locks extends \Magento\Backend\App\Action
@@ -16,5 +19,5 @@ abstract class Locks extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_User::locks';
+    public const ADMIN_RESOURCE = 'Magento_User::locks';
 }

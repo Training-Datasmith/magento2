@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Status;
 
 use Magento\Framework\Api\AttributeValueFactory;
@@ -18,7 +21,7 @@ use Magento\Sales\Model\AbstractModel;
  */
 class History extends AbstractModel implements OrderStatusHistoryInterface
 {
-    const CUSTOMER_NOTIFICATION_NOT_APPLICABLE = 2;
+    public const CUSTOMER_NOTIFICATION_NOT_APPLICABLE = 2;
 
     /**
      * Order instance

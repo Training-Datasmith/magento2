@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\CoversClass;
+use Magento\Catalog\Api\Data\ProductExtensionInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\ConfigurableProduct\Api\Data\OptionInterface;
@@ -17,11 +19,10 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableM
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\ConfigurableFactory;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Catalog\Api\Data\ProductExtensionInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -108,7 +109,7 @@ class SaveHandlerTest extends TestCase
                 'getConfigurableProductOptions',
                 'setConfigurableProductOptions',
                 'getConfigurableProductLinks',
-                'setConfigurableProductLinks'
+                'setConfigurableProductLinks',
             ]
         );
         $extensionAttributes->method('getConfigurableProductOptions')->willReturn([]);
@@ -155,7 +156,7 @@ class SaveHandlerTest extends TestCase
                 'getConfigurableProductOptions',
                 'setConfigurableProductOptions',
                 'getConfigurableProductLinks',
-                'setConfigurableProductLinks'
+                'setConfigurableProductLinks',
             ]
         );
 
@@ -194,7 +195,7 @@ class SaveHandlerTest extends TestCase
             ->with($sku, $idOld);
 
         $configurableAttributes = [
-            $attributeNew
+            $attributeNew,
         ];
         $extensionAttributes->method('getConfigurableProductOptions')->willReturn($configurableAttributes);
         $extensionAttributes->method('getConfigurableProductLinks')->willReturn($configurableProductLinks);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,24 +17,14 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
  */
 class MoveCronConfigToAnalyticsGroup implements DataPatchInterface
 {
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @param ResourceConnection $resourceConnection
-     */
-    public function __construct(
-        ResourceConnection $resourceConnection
-    ) {
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(private readonly ResourceConnection $resourceConnection)
+    {
     }
 
     /**
      * @inheritDoc
      */
-    public function apply()
+    public function apply(): static
     {
         $connection = $this->resourceConnection->getConnection();
         $table = $this->resourceConnection->getTableName('core_config_data');
@@ -61,7 +52,7 @@ class MoveCronConfigToAnalyticsGroup implements DataPatchInterface
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
@@ -69,7 +60,7 @@ class MoveCronConfigToAnalyticsGroup implements DataPatchInterface
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }

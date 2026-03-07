@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Api\Data;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Downloadable\Api\Data;
  */
 interface DownloadableOptionInterface
 {
-    const DOWNLOADABLE_LINKS = 'downloadable_links';
+    public const DOWNLOADABLE_LINKS = 'downloadable_links';
 
     /**
      * Returns the list of downloadable links

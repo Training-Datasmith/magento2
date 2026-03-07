@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Option;
 
+use Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface;
 use Magento\Bundle\Api\ProductLinkManagementInterface;
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Option\SaveAction;
@@ -14,13 +16,12 @@ use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\Option as OptionResource;
 use Magento\Bundle\Model\ResourceModel\Option\Collection;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface;
 
 /**
  * Test class for \Magento\Bundle\Model\Option\SaveAction
@@ -96,7 +97,7 @@ class SaveActionTest extends TestCase
     {
         $this->product->method('getStoreId')->willReturn(1);
         $this->product->method('setIsRelationsChanged')->willReturnSelf();
-        
+
         $option = $this->createPartialMockWithReflection(
             Option::class,
             ['getOptionId', 'getData', 'getProduct']

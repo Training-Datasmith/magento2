@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -81,21 +82,21 @@ class GenerateBundleAssetIntegrity
         if (PHP_SAPI == 'cli') {
             $pubStaticDir = $this->filesystem->getDirectoryRead(DirectoryList::STATIC_VIEW);
             $files = $pubStaticDir->search(
-                $area ."/" . $theme . "/" . $locale . "/" . Bundle::BUNDLE_JS_DIR . "/*.js"
+                $area .'/' . $theme . '/' . $locale . '/' . Bundle::BUNDLE_JS_DIR . '/*.js'
             );
-            
+
             foreach ($files as $file) {
                 $bundlePath = $area . '/' . $theme . '/' . $locale .
-                    "/" . Bundle::BUNDLE_JS_DIR . '/' . $this->fileIo->getPathInfo($file)['basename'];
-                    
+                    '/' . Bundle::BUNDLE_JS_DIR . '/' . $this->fileIo->getPathInfo($file)['basename'];
+
                 $integrity = $this->integrityFactory->create(
                     [
-                        "data" => [
+                        'data' => [
                             'hash' => $this->hashGenerator->generate(
                                 $pubStaticDir->readFile($file)
                             ),
-                            'path' => $bundlePath
-                        ]
+                            'path' => $bundlePath,
+                        ],
                     ]
                 );
 

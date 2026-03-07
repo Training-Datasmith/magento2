@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Wishlist;
 
 /**
@@ -89,7 +92,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '50px',
                 'align' => 'right',
                 'sortable' => false,
-                'index' => 'bought_from_wishlists'
+                'index' => 'bought_from_wishlists',
             ]
         );
 
@@ -100,7 +103,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '50px',
                 'align' => 'right',
                 'sortable' => false,
-                'index' => 'w_vs_order'
+                'index' => 'w_vs_order',
             ]
         );
 
@@ -111,7 +114,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'width' => '50px',
                 'align' => 'right',
                 'sortable' => false,
-                'index' => 'num_deleted'
+                'index' => 'num_deleted',
             ]
         );
 

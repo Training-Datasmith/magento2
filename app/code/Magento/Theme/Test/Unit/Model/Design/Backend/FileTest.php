@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Config\Model\Config\Backend\File\RequestData\RequestDataInterface;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\File\Mime;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -25,9 +26,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Theme\Model\Design\Backend\File;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -162,7 +163,7 @@ class FileTest extends TestCase
                     ],
                     'base_url' => [
                         'type' => 'media',
-                        'value' => 'design/file'
+                        'value' => 'design/file',
                     ],
                 ],
             ]
@@ -202,7 +203,7 @@ class FileTest extends TestCase
                     'exists' => true,
                     'name' => $value,
                     'type' => $mime,
-                ]
+                ],
             ],
             $this->fileBackend->getValue()
         );
@@ -228,7 +229,7 @@ class FileTest extends TestCase
                         'url' => 'http://magento2.com/media/tmp/image/' . $fileName,
                         'file' => $fileName,
                         'size' => 234234,
-                    ]
+                    ],
                 ],
                 'field_config' => [
                     'upload_dir' => [
@@ -276,10 +277,10 @@ class FileTest extends TestCase
         $this->fileBackend->setData(
             [
                 'value' => [
-                    'test' => ''
+                    'test' => '',
                 ],
                 'field_config' => [
-                    'field' => 'header_logo_src'
+                    'field' => 'header_logo_src',
                 ],
             ]
         );
@@ -301,8 +302,8 @@ class FileTest extends TestCase
                         'url' => 'http://magento2.com/media/tmp/image/' . $value,
                         'file' => $value,
                         'size' => 234234,
-                        'exists' => true
-                    ]
+                        'exists' => true,
+                    ],
                 ],
             ]
         );

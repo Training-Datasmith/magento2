@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,15 +95,15 @@ HTML;
 
         return $scriptString .
             $this->secureRenderer->renderStyleAsTag(
-                "position: relative; border: 1px dotted red; margin: 6px 2px; padding: 18px 2px 2px 2px;",
+                'position: relative; border: 1px dotted red; margin: 6px 2px; padding: 18px 2px 2px 2px;',
                 '#' . $hintsId
             ) . $this->secureRenderer->renderStyleAsTag(
-                "position: absolute; top: 0; padding: 2px 5px; font: normal 11px Arial; background: red; left: 0;" .
-                " color: white; white-space: nowrap;",
+                'position: absolute; top: 0; padding: 2px 5px; font: normal 11px Arial; background: red; left: 0;' .
+                ' color: white; white-space: nowrap;',
                 '#' . $hintsTemplateFileId
             ) . $this->secureRenderer->renderEventListenerAsTag(
                 'onmouseover',
-                "this.style.zIndex = 999;",
+                'this.style.zIndex = 999;',
                 '#' . $hintsTemplateFileId
             ) . $this->secureRenderer->renderEventListenerAsTag(
                 'onmouseout',
@@ -128,12 +130,12 @@ HTML;
 
         return $scriptString .
             $this->secureRenderer->renderStyleAsTag(
-                "position: absolute; top: 0; padding: 2px 5px; font: normal 11px Arial; background: red; right: 0;" .
-                " color: blue; white-space: nowrap;",
+                'position: absolute; top: 0; padding: 2px 5px; font: normal 11px Arial; background: red; right: 0;' .
+                ' color: blue; white-space: nowrap;',
                 '#' . $hintsId
             ) . $this->secureRenderer->renderEventListenerAsTag(
                 'onmouseover',
-                "this.style.zIndex = 999;",
+                'this.style.zIndex = 999;',
                 '#' . $hintsId
             ) . $this->secureRenderer->renderEventListenerAsTag(
                 'onmouseout',

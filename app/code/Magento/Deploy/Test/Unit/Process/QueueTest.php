@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -347,7 +348,7 @@ class QueueTest extends TestCase
 
         if ($hasInProgress) {
             $this->setPrivateProperty($queue, 'inProgress', [
-                'path' => $this->createPackageMock('path', Package::STATE_COMPLETED)
+                'path' => $this->createPackageMock('path', Package::STATE_COMPLETED),
             ]);
             $this->setPrivateProperty($queue, 'logDelay', 10);
             $this->logger->expects($this->once())->method('info')->with('.');

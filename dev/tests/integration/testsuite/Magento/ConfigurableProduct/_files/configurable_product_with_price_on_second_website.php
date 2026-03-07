@@ -1,13 +1,14 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Catalog\Api\Data\ProductExtensionFactory;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\Data\ProductExtensionFactory;
 use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Helper\DefaultCategory;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;

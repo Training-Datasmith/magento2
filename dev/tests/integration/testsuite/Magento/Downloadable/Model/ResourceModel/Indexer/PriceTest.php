@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\ResourceModel\Indexer;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class PriceTest extends \PHPUnit\Framework\TestCase
 {

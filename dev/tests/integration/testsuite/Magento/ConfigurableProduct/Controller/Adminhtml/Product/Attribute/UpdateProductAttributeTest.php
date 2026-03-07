@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Attribute;
 
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
+use Magento\Eav\Model\Config;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Eav\Model\Config;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 
 /**
  * Checks creating attribute options process.

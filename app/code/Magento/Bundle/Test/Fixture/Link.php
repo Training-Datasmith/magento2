@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class Link implements DataFixtureInterface
         'is_default' => false,
         'price' => null,
         'price_type' => null,
-        'can_change_quantity' => 0
+        'can_change_quantity' => 0,
     ];
 
     /**

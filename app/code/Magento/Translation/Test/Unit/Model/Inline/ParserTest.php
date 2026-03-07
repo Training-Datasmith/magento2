@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -88,8 +89,8 @@ class ParserTest extends TestCase
         $objects = [
             [
                 \Magento\Framework\Translate\InlineInterface::class,
-                $this->createMock(\Magento\Framework\Translate\InlineInterface::class)
-            ]
+                $this->createMock(\Magento\Framework\Translate\InlineInterface::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -131,7 +132,7 @@ class ParserTest extends TestCase
                 'appCache' => $this->appCacheMock,
                 'translateInline' => $this->translateInlineMock,
                 'cacheManager' => $this->cacheManagerMock,
-                'escaper' => $this->getMockEscaper()
+                'escaper' => $this->getMockEscaper(),
             ]
         );
     }

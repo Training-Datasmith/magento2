@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\ResourceModel\Oauth;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Encryption\Encryptor;
-use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Encryption\Encryptor;
 
 /**
  * OAuth token resource model
@@ -218,7 +220,7 @@ class Token extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $object->setSecret($this->encryptor->encrypt($object->getSecret()));
             }
         }
-            return parent::_beforeSave($object);
+        return parent::_beforeSave($object);
     }
 
     /**

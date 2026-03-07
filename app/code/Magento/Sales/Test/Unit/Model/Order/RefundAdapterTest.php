@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
  */
 class RefundAdapterTest extends TestCase
 {
-
     /**
      * @var RefundAdapter
      */

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,5 +17,5 @@ return [
     'city' => 'Los Angeles',
     'email' => 'admin@example.com',
     'telephone' => '11111111',
-    'country_id' => 'US'
+    'country_id' => 'US',
 ];

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
+use Magento\Catalog\Model\ProductTypes\ConfigInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Helper\Minsaleqty as MinsaleqtyHelper;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Catalog\Model\ProductTypes\ConfigInterface;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -445,7 +448,7 @@ class Configuration implements StockConfigurationInterface, ResetAfterRequestInt
             'manage_stock',
             'enable_qty_increments',
             'qty_increments',
-            'is_decimal_divided'
+            'is_decimal_divided',
         ];
     }
 }

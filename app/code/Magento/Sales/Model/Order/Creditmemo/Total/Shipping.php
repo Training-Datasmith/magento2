@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Creditmemo\Total;
 
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Tax\Model\Calculation as TaxCalculation;
 use Magento\Sales\Model\Order;
+use Magento\Tax\Model\Calculation as TaxCalculation;
 
 /**
  * Order creditmemo shipping total calculation model
@@ -58,7 +61,7 @@ class Shipping extends AbstractTotal
         // amounts including tax
         $orderShippingInclTax = $order->getShippingInclTax();
         $orderBaseShippingInclTax = $order->getBaseShippingInclTax();
-        $allowedAmountInclTax =$this->getAllowedAmountInclTax($order);
+        $allowedAmountInclTax = $this->getAllowedAmountInclTax($order);
         $baseAllowedAmountInclTax = $this->getBaseAllowedAmountInclTax($order);
 
         // Check if the desired shipping amount to refund was specified (from invoice or another source).

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class SetAttributeTabBlockObserverTest extends TestCase
         $this->observer = $objectManager->getObject(
             SetAttributeTabBlockObserver::class,
             [
-                'helperCatalog' => $this->helperCatalogMock
+                'helperCatalog' => $this->helperCatalogMock,
             ]
         );
     }

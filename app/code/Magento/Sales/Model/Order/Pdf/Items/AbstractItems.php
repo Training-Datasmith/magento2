@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Pdf\Items;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -263,7 +266,7 @@ abstract class AbstractItems extends AbstractModel
             $resultValue .= $value['title'];
 
             if (isset($value['price'])) {
-                $resultValue .= " " . $order->formatPrice($value['price']);
+                $resultValue .= ' ' . $order->formatPrice($value['price']);
             }
             return $resultValue;
         } else {
@@ -298,7 +301,7 @@ abstract class AbstractItems extends AbstractModel
                 [
                     'label' => __('Incl. Tax') . ':',
                     'price' => $order->formatPriceTxt($item->getPriceInclTax()),
-                    'subtotal' => $order->formatPriceTxt($item->getRowTotalInclTax())
+                    'subtotal' => $order->formatPriceTxt($item->getRowTotalInclTax()),
                 ],
             ];
         } elseif ($this->_taxData->displaySalesPriceInclTax()) {

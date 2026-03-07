@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,7 +12,7 @@ use Magento\Framework\App as App;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Stdlib\Cookie\CookieSizeLimitReachedException;
 use Magento\Framework\Stdlib\Cookie\FailureToSendException;
-use \Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order;
 
 /**
  * Sales module base helper
@@ -127,7 +129,7 @@ class Guest extends \Magento\Framework\App\Helper\AbstractHelper
         $this->resultRedirectFactory = $resultRedirectFactory;
         $this->orderRepository = $orderRepository ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\Magento\Sales\Api\OrderRepositoryInterface::class);
-        $this->searchCriteriaBuilder = $searchCriteria?: \Magento\Framework\App\ObjectManager::getInstance()
+        $this->searchCriteriaBuilder = $searchCriteria ?: \Magento\Framework\App\ObjectManager::getInstance()
             ->get(\Magento\Framework\Api\SearchCriteriaBuilder::class);
         parent::__construct(
             $context
@@ -187,7 +189,7 @@ class Guest extends \Magento\Framework\App\Helper\AbstractHelper
             [
                 'label' => __('Home'),
                 'title' => __('Go to Home Page'),
-                'link' => $this->storeManager->getStore()->getBaseUrl()
+                'link' => $this->storeManager->getStore()->getBaseUrl(),
             ]
         );
         $breadcrumbs->addCrumb(

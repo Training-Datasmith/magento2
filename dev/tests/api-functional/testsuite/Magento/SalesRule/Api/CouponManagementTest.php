@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class CouponManagementTest extends WebapiAbstract
 {
     public const SERVICE_NAME = 'salesRuleCouponManagementV1';
     public const RESOURCE_PATH = '/V1/coupons';
-    public const SERVICE_VERSION = "V1";
+    public const SERVICE_VERSION = 'V1';
 
     public const SERVICE_NAME_COUPON = 'salesRuleCouponRepositoryV1';
     public const RESOURCE_PATH_COUPON = '/V1/coupons';
-    public const SERVICE_VERSION_COUPON = "V1";
+    public const SERVICE_VERSION_COUPON = 'V1';
 
     /**
      * @param int $count
@@ -54,7 +57,7 @@ class CouponManagementTest extends WebapiAbstract
                 }
                 $cnt++;
             }
-            $cnt=0;
+            $cnt = 0;
             foreach ($couponList as $coupon) {
                 if ($cnt >= $count / 2) {
                     $couponCodes[] = $coupon['code'];
@@ -114,8 +117,8 @@ class CouponManagementTest extends WebapiAbstract
     {
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "/generate",
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'resourcePath' => self::RESOURCE_PATH . '/generate',
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
@@ -123,13 +126,13 @@ class CouponManagementTest extends WebapiAbstract
                 'operation' => self::SERVICE_NAME . 'generate',
             ],
         ];
-        $requestData = [  "couponSpec"=>
+        $requestData = [  'couponSpec' =>
             [
-                "rule_id" => $ruleId,
-                "quantity"  => $count,
-                "length" => $length,
-                "format"  => $format
-            ]
+                'rule_id' => $ruleId,
+                'quantity'  => $count,
+                'length' => $length,
+                'format'  => $format,
+            ],
         ];
         $result = $this->_webApiCall($serviceInfo, $requestData);
 

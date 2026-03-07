@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class ExcludedPatternsConfig implements ExcludedPatternsConfigInterface
      *
      * @return array
      */
-    public function get() : array
+    public function get(): array
     {
         return $this->data->get(self::XML_PATH_EXCLUDED_PATTERNS);
     }

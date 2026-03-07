@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Css\PreProcessor;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -12,7 +15,7 @@ class Config
     /**
      * Temporary directory prefix
      */
-    const TMP_DIR = 'pub/static';
+    public const TMP_DIR = 'pub/static';
 
     /**
      * Returns relative path to materialization directory

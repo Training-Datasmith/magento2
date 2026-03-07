@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -29,14 +31,14 @@ $productRepository = $objectManager->create(\Magento\Catalog\Api\ProductReposito
 $categoryLinkRepository = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkRepositoryInterface::class,
     [
-        'productRepository' => $productRepository
+        'productRepository' => $productRepository,
     ]
 );
 $categoryLinkManagement = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkManagementInterface::class,
     [
         'productRepository' => $productRepository,
-        'categoryLinkRepository' => $categoryLinkRepository
+        'categoryLinkRepository' => $categoryLinkRepository,
     ]
 );
 
@@ -55,7 +57,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->save();
 $categoryLinkManagement->assignProductToCategories($product->getSku(), [3]);
 
-$product =$objectManager->create(\Magento\Catalog\Model\Product::class);
+$product = $objectManager->create(\Magento\Catalog\Model\Product::class);
 $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->setAttributeSetId($installer->getAttributeSetId('catalog_product', 'Default'))
     ->setStoreId(1)

@@ -89,7 +89,7 @@ class EnableAdminUsageTest extends \PHPUnit\Framework\TestCase
             'configFactory' => $configFactory,
             'productMetadata' => $this->productMetadataMock,
             'notificationLogger' => $this->notificationLoggerMock,
-            'resultFactory' => $this->resultFactoryMock
+            'resultFactory' => $this->resultFactoryMock,
         ]);
     }
 

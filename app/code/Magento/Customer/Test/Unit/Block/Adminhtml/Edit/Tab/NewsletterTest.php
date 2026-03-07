@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,6 +23,7 @@ use Magento\Framework\Data\Form\Element\Select;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Newsletter\Model\Subscriber;
@@ -33,7 +35,6 @@ use Magento\Store\Model\Website;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test Customer account form block
@@ -192,7 +193,7 @@ class NewsletterTest extends TestCase
             ['getChangeStatusAt',
                             'loadByCustomer',
                             'isSubscribed',
-                            'getData'
+                            'getData',
                             ]
         );
         $statusDate = new \DateTime($statusDate);
@@ -216,7 +217,7 @@ class NewsletterTest extends TestCase
         return
             [
                 ['',''],
-                ['Nov 22, 2023, 1:00:00 AM','Nov 23, 2023, 2:00:00 AM']
+                ['Nov 22, 2023, 1:00:00 AM','Nov 23, 2023, 2:00:00 AM'],
             ];
     }
 
@@ -271,7 +272,7 @@ class NewsletterTest extends TestCase
                     'name' => "subscription_status[$websiteId]",
                     'data-form-part' => null,
                     'value' => $isSubscribed,
-                    'onchange' => 'this.value = this.checked;'
+                    'onchange' => 'this.value = this.checked;',
                 ]
             )
             ->willReturn($statusElementMock);
@@ -343,7 +344,7 @@ class NewsletterTest extends TestCase
                     'name' => "subscription_status[$websiteId]",
                     'data-form-part' => null,
                     'value' => $isSubscribed,
-                    'onchange' => 'this.value = this.checked;'
+                    'onchange' => 'this.value = this.checked;',
                 ]
             )
             ->willReturn($statusElementMock);
@@ -379,7 +380,7 @@ class NewsletterTest extends TestCase
             ->willReturn(
                 [
                     'customer' => ['entity_id' => $customerId],
-                    'subscription_status' => [$websiteId => $isSubscribedCustomerSession]
+                    'subscription_status' => [$websiteId => $isSubscribedCustomerSession],
                 ]
             );
 

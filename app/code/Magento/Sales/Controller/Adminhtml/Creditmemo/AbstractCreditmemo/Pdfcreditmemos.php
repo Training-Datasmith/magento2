@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Creditmemo\AbstractCreditmemo;
 
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\Sales\Model\Order\Pdf\Creditmemo;
-use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
-use Magento\Ui\Component\MassAction\Filter;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Sales\Model\Order\Pdf\Creditmemo;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\CollectionFactory;
+use Magento\Ui\Component\MassAction\Filter;
 
 /**
  * Class Pdfcreditmemos
@@ -26,7 +29,7 @@ class Pdfcreditmemos extends \Magento\Sales\Controller\Adminhtml\Order\AbstractM
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::sales_creditmemo';
+    public const ADMIN_RESOURCE = 'Magento_Sales::sales_creditmemo';
 
     /**
      * @var FileFactory

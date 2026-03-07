@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,11 +15,11 @@ use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\UrlInterface;
+use Magento\Store\Model\Store;
 use Magento\Ui\Component\Container;
 use Magento\Ui\Component\Form;
 use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\Component\Modal;
-use Magento\Store\Model\Store;
 
 /**
  * Create Ship Bundle Items and Affect Bundle Product Selections fields
@@ -88,7 +89,7 @@ class BundlePanel extends AbstractModifier
             $meta[$groupCode]['arguments']['data']['config'] = [
                 'componentType' => Fieldset::NAME,
                 'label' => __('Bundle Items'),
-                'collapsible' => true
+                'collapsible' => true,
             ];
 
             $path = $this->arrayManager->findPath($groupCode, $meta, null, 'children');
@@ -107,7 +108,7 @@ class BundlePanel extends AbstractModifier
                                 $meta,
                                 static::GROUP_CONTENT,
                                 static::SORT_ORDER
-                            )
+                            ),
                         ],
                     ],
                 ],
@@ -133,9 +134,9 @@ class BundlePanel extends AbstractModifier
                                                 'actions' => [
                                                     [
                                                         'targetName' => 'index = bundle_product_listing',
-                                                        'actionName' => 'save'
+                                                        'actionName' => 'save',
                                                     ],
-                                                    'closeModal'
+                                                    'closeModal',
                                                 ],
                                             ],
                                         ],
@@ -176,14 +177,14 @@ class BundlePanel extends AbstractModifier
                                     'formElement' => Form\Element\Input::NAME,
                                     'dataScope' => 'data.affect_bundle_product_selections',
                                     'visible' => false,
-                                    'value' => '1'
+                                    'value' => '1',
                                 ],
                             ],
                         ],
                     ],
                     self::CODE_BUNDLE_HEADER => $this->getBundleHeader(),
-                    self::CODE_BUNDLE_OPTIONS => $this->getBundleOptions()
-                ]
+                    self::CODE_BUNDLE_OPTIONS => $this->getBundleOptions(),
+                ],
             ]
         );
 
@@ -266,8 +267,8 @@ class BundlePanel extends AbstractModifier
                 'dataScope' => stripos($actualPath, self::CODE_BUNDLE_DATA) === 0
                     ? 'data.product.shipment_type' : 'shipment_type',
                 'validation' => [
-                    'required-entry' => false
-                ]
+                    'required-entry' => false,
+                ],
             ]
         );
 
@@ -308,7 +309,7 @@ class BundlePanel extends AbstractModifier
                                         'targetName' => 'product_form.product_form.'
                                             . self::CODE_BUNDLE_DATA . '.' . self::CODE_BUNDLE_OPTIONS,
                                         'actionName' => 'processingAddChild',
-                                    ]
+                                    ],
                                 ],
                             ],
                         ],
@@ -385,7 +386,7 @@ class BundlePanel extends AbstractModifier
                                                 'additionalClasses' => 'admin__field-wide',
                                                 'template' => 'Magento_Catalog/components/dynamic-rows-per-page',
                                                 'sizesConfig' => [
-                                                    'enabled' => true
+                                                    'enabled' => true,
                                                 ],
                                                 'provider' => 'product_form.product_form_data_source',
                                                 'dataProvider' => '${ $.dataScope }' . '.bundle_button_proxy',
@@ -403,7 +404,7 @@ class BundlePanel extends AbstractModifier
                                                     'selection_price_type' => '',
                                                     'selection_price_value' => '',
                                                     'selection_qty' => '',
-                                                    'selection_qty_is_integer'=> 'selection_qty_is_integer',
+                                                    'selection_qty_is_integer' => 'selection_qty_is_integer',
                                                 ],
                                                 'links' => [
                                                     'insertData' => '${ $.provider }:${ $.dataProvider }',
@@ -419,14 +420,14 @@ class BundlePanel extends AbstractModifier
                                     ],
                                     'children' => [
                                         'record' => $this->getBundleSelections(),
-                                    ]
+                                    ],
                                 ],
                                 'modal_set' => $this->getModalSet(),
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -477,13 +478,13 @@ class BundlePanel extends AbstractModifier
                         'actions' => [
                             [
                                 'targetName' => 'product_form.product_form.' . static::CODE_BUNDLE_DATA . '.modal',
-                                'actionName' => 'toggleModal'
+                                'actionName' => 'toggleModal',
                             ],
                             [
                                 'targetName' => 'product_form.product_form.' . static::CODE_BUNDLE_DATA
                                     . '.modal.bundle_product_listing',
-                                'actionName' => 'render'
-                            ]
+                                'actionName' => 'render',
+                            ],
                         ],
                         'title' => __('Add Products to Option'),
                     ],
@@ -564,27 +565,27 @@ class BundlePanel extends AbstractModifier
                                 'options' => [
                                     [
                                         'label' => __('Drop-down'),
-                                        'value' => 'select'
+                                        'value' => 'select',
                                     ],
                                     [
                                         'label' => __('Radio Buttons'),
-                                        'value' => 'radio'
+                                        'value' => 'radio',
                                     ],
                                     [
                                         'label' => __('Checkbox'),
-                                        'value' => 'checkbox'
+                                        'value' => 'checkbox',
                                     ],
                                     [
                                         'label' => __('Multiple Select'),
-                                        'value' => 'multi'
-                                    ]
+                                        'value' => 'multi',
+                                    ],
                                 ],
                                 'typeMap' => [
                                     'select' => 'radio',
                                     'radio' => 'radio',
                                     'checkbox' => 'checkbox',
-                                    'multi' => 'checkbox'
-                                ]
+                                    'multi' => 'checkbox',
+                                ],
                             ],
                         ],
                     ],
@@ -663,7 +664,7 @@ class BundlePanel extends AbstractModifier
                                 'prefer' => 'radio',
                                 'value' => '0',
                                 'sortOrder' => 50,
-                                'valueMap' => ['false' => '0', 'true' => '1']
+                                'valueMap' => ['false' => '0', 'true' => '1'],
                             ],
                         ],
                     ],
@@ -715,7 +716,7 @@ class BundlePanel extends AbstractModifier
                                 'validation' => [
                                     'required-entry' => true,
                                     'validate-number' => true,
-                                    'validate-greater-than-zero' => true
+                                    'validate-greater-than-zero' => true,
                                 ],
                                 'imports' => [
                                     'isInteger' => '${ $.provider }:${ $.parentScope }.selection_qty_is_integer',
@@ -812,12 +813,12 @@ class BundlePanel extends AbstractModifier
                         'options' => [
                             [
                                 'label' => __('Fixed'),
-                                'value' => '0'
+                                'value' => '0',
                             ],
                             [
                                 'label' => __('Percent'),
-                                'value' => '1'
-                            ]
+                                'value' => '1',
+                            ],
                         ],
                         'imports' => [
                             'visible' => '!ns = ${ $.ns }, index = ' . BundlePrice::CODE_PRICE_TYPE . ':checked',

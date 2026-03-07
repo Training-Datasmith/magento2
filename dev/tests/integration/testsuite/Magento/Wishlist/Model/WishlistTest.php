@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Wishlist\Model;
 
 use Magento\Bundle\Model\Product\OptionList;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
 use Magento\CatalogInventory\Model\StockStateException;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObjectFactory;
@@ -142,7 +142,7 @@ class WishlistTest extends TestCase
         $option = reset($configurableOptions[$attributeId]);
         $buyRequest = [
             'super_attribute' => [
-                $attributeId => $option['value_index']
+                $attributeId => $option['value_index'],
             ],
             'action' => 'add',
         ];
@@ -170,7 +170,7 @@ class WishlistTest extends TestCase
         $this->assertNotNull($productLinks[0]);
         $buyRequest = [
             'bundle_option' => [
-                $option->getOptionId() => $productLinks[0]->getId()
+                $option->getOptionId() => $productLinks[0]->getId(),
             ],
             'action' => 'add',
         ];

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,9 +19,9 @@ class AttributeMetadata extends AbstractExtensibleObject implements MetadataObje
     /**#@+
      * Constants used as keys into $_data
      */
-    const ATTRIBUTE_ID = 'attribute_id';
+    public const ATTRIBUTE_ID = 'attribute_id';
 
-    const ATTRIBUTE_CODE = 'attribute_code';
+    public const ATTRIBUTE_CODE = 'attribute_code';
     /**#@-*/
 
     /**

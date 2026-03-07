@@ -1,11 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Shipment\Sender;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Payment\Helper\Data;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -17,7 +21,6 @@ use Magento\Sales\Model\Order\Email\Container\Template;
 use Magento\Sales\Model\Order\Email\Sender;
 use Magento\Sales\Model\Order\Email\SenderBuilderFactory;
 use Magento\Sales\Model\Order\Shipment\SenderInterface;
-use Magento\Framework\DataObject;
 use Magento\Sales\Model\ResourceModel\Order\Shipment;
 use Psr\Log\LoggerInterface;
 
@@ -128,8 +131,8 @@ class EmailSender extends Sender implements SenderInterface
                     'customer_name' => $order->getCustomerName(),
                     'is_not_virtual' => $order->getIsNotVirtual(),
                     'email_customer_note' => $order->getEmailCustomerNote(),
-                    'frontend_status_label' => $order->getFrontendStatusLabel()
-                ]
+                    'frontend_status_label' => $order->getFrontendStatusLabel(),
+                ],
             ];
             $transportObject = new DataObject($transport);
 

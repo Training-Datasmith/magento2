@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Helper\Product\Options;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Api\Data\OptionValueInterface;
 use Magento\ConfigurableProduct\Api\Data\OptionValueInterfaceFactory;
@@ -16,6 +16,7 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute\Collection;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -58,7 +59,7 @@ class LoaderTest extends TestCase
     public function testLoad()
     {
         $option = [
-            'value_index' => 23
+            'value_index' => 23,
         ];
 
         $this->product->expects(static::once())

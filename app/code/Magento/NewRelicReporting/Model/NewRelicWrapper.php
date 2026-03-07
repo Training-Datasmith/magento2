@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model;
 
-use Magento\Framework\App\State;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\State;
 use Throwable;
 
 /**

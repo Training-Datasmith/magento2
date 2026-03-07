@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\Description\Mixin;
 
 use Magento\Setup\Model\Description\Mixin\BrakeMixin;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class BrakeMixinTest extends TestCase
 {
@@ -47,8 +48,8 @@ class BrakeMixinTest extends TestCase
                 . '</br>' . PHP_EOL
                 . 'Consectetur adipiscing elit.' . PHP_EOL
                 . '</br>' . PHP_EOL
-                . 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ]
+                . 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            ],
         ];
     }
 }

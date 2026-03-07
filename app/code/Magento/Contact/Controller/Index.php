@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Contact\Controller;
 
 use Magento\Contact\Model\ConfigInterface;
@@ -18,22 +21,22 @@ abstract class Index extends \Magento\Framework\App\Action\Action
     /**
      * Recipient email config path
      */
-    const XML_PATH_EMAIL_RECIPIENT = ConfigInterface::XML_PATH_EMAIL_RECIPIENT;
+    public const XML_PATH_EMAIL_RECIPIENT = ConfigInterface::XML_PATH_EMAIL_RECIPIENT;
 
     /**
      * Sender email config path
      */
-    const XML_PATH_EMAIL_SENDER = ConfigInterface::XML_PATH_EMAIL_SENDER;
+    public const XML_PATH_EMAIL_SENDER = ConfigInterface::XML_PATH_EMAIL_SENDER;
 
     /**
      * Email template config path
      */
-    const XML_PATH_EMAIL_TEMPLATE = ConfigInterface::XML_PATH_EMAIL_TEMPLATE;
+    public const XML_PATH_EMAIL_TEMPLATE = ConfigInterface::XML_PATH_EMAIL_TEMPLATE;
 
     /**
      * Enabled config path
      */
-    const XML_PATH_ENABLED = ConfigInterface::XML_PATH_ENABLED;
+    public const XML_PATH_ENABLED = ConfigInterface::XML_PATH_ENABLED;
 
     /**
      * @var ConfigInterface

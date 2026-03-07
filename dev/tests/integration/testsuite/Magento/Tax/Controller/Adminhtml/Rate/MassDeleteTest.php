@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 
 namespace Magento\Tax\Controller\Adminhtml\Rate;
 
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Message\ManagerInterface;
+use Magento\Tax\Model\Calculation\RateFactory;
+use Magento\Tax\Test\Fixture\TaxRate as TaxRateFixture;
 use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Tax\Test\Fixture\TaxRate as TaxRateFixture;
-use Magento\Tax\Model\Calculation\RateFactory;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\Message\ManagerInterface;
 
 /**
  * Test class for mass delete tax rate in admin grid

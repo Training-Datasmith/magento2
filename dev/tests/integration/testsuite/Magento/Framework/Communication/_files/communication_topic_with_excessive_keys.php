@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ return [
                 'request_type' => 'object_interface',
                 'response' =>  null,
                 'handlers' => [],
-                'some_incorrect_key' => 'value'
+                'some_incorrect_key' => 'value',
             ],
-        ]
-    ]
+        ],
+    ],
 ];

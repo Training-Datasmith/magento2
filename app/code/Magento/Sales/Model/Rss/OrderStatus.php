@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Rss;
 
-use Magento\Framework\App\Rss\DataProviderInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Rss\DataProviderInterface;
 
 /**
  * Rss renderer for order statuses.

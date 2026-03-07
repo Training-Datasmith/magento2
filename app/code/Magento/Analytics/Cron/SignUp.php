@@ -1,60 +1,34 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Cron;
 
 use Magento\Analytics\Model\Config\Backend\Enabled\SubscriptionHandler;
 use Magento\Analytics\Model\Connector;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\FlagManager;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\FlagManager;
 
 /**
  * Cron class for the Advanced Reporting signup process
  */
 class SignUp
 {
-    /**
-     * @var Connector
-     */
-    private $connector;
-
-    /**
-     * @var WriterInterface
-     */
-    private $configWriter;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * Reinitable Config Model.
-     *
-     * @var ReinitableConfigInterface
-     */
-    private $reinitableConfig;
-
-    /**
-     * @param Connector $connector
-     * @param WriterInterface $configWriter
-     * @param FlagManager $flagManager
-     * @param ReinitableConfigInterface $reinitableConfig
-     */
     public function __construct(
-        Connector $connector,
-        WriterInterface $configWriter,
-        FlagManager $flagManager,
-        ReinitableConfigInterface $reinitableConfig
+        private readonly Connector $connector,
+        private readonly WriterInterface $configWriter,
+        private readonly FlagManager $flagManager,
+        /**
+         * Reinitable Config Model.
+         */
+        private readonly ReinitableConfigInterface $reinitableConfig
     ) {
-        $this->connector = $connector;
-        $this->configWriter = $configWriter;
-        $this->flagManager = $flagManager;
-        $this->reinitableConfig = $reinitableConfig;
     }
 
     /**
@@ -62,10 +36,9 @@ class SignUp
      *
      * In case of failure writes message to notifications inbox
      *
-     * @return bool
      * @throws NotFoundException
      */
-    public function execute()
+    public function execute(): bool
     {
         $attemptsCount = (int)$this->flagManager->getFlagData(SubscriptionHandler::ATTEMPTS_REVERSE_COUNTER_FLAG_CODE);
 
@@ -92,10 +65,8 @@ class SignUp
      *
      * Delete cron schedule setting for subscription handler into config and
      * re-initialize config cache to avoid auto-generate new schedule items.
-     *
-     * @return bool
      */
-    private function deleteAnalyticsCronExpr()
+    private function deleteAnalyticsCronExpr(): bool
     {
         $this->configWriter->delete(SubscriptionHandler::CRON_STRING_PATH);
         $this->reinitableConfig->reinit();

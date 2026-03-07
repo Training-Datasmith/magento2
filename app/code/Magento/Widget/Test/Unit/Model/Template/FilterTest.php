@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,12 +78,12 @@ class FilterTest extends TestCase
         $objects = [
             [
                 StoreInformation::class,
-                $this->createMock(StoreInformation::class)
+                $this->createMock(StoreInformation::class),
             ],
             [
                 StateInterface::class,
-                $this->createMock(StateInterface::class)
-            ]
+                $this->createMock(StateInterface::class),
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
 
@@ -92,7 +93,7 @@ class FilterTest extends TestCase
                 'storeManager' => $this->storeManagerMock,
                 'widgetResource' => $this->widgetResourceMock,
                 'widget' => $this->widgetMock,
-                'layout' => $this->layoutMock
+                'layout' => $this->layoutMock,
             ]
         );
     }
@@ -121,7 +122,7 @@ class FilterTest extends TestCase
         $widgetBlock,
         $expectedResult
     ) {
-        if ($widgetBlock!=null) {
+        if ($widgetBlock != null) {
             $widgetBlock = $widgetBlock($this);
         }
         $this->generalForGenerateWidget($name, $type, $preConfigId, $params, $preconfigure, $widgetXml, $widgetBlock);
@@ -152,7 +153,7 @@ class FilterTest extends TestCase
         $widgetBlock,
         $expectedResult
     ) {
-        if ($widgetBlock!=null) {
+        if ($widgetBlock != null) {
             $widgetBlock = $widgetBlock($this);
         }
         $this->generalForGenerateWidget($name, $type, $preConfigId, $params, $preconfigure, $widgetXml, $widgetBlock);
@@ -169,7 +170,7 @@ class FilterTest extends TestCase
                 'construction' => [
                     '{{widget type="Widget\\Link" anchor_text="Test" template="block.phtml" id_path="p/1"}}',
                     'widget',
-                    ' type="" anchor_text="Test" template="block.phtml" id_path="p/1"'
+                    ' type="" anchor_text="Test" template="block.phtml" id_path="p/1"',
                 ],
                 'name' => null,
                 'type' => 'Widget\Link',
@@ -178,13 +179,13 @@ class FilterTest extends TestCase
                 'preconfigure' => [],
                 'widgetXml' => '',
                 'widgetBlock' => null,
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
             [
                 'construction' => [
                     '{{widget type="Widget\\Link" anchor_text="Test" template="block.phtml" id_path="p/1"}}',
                     'widget',
-                    ' type="" id="1" anchor_text="Test" template="block.phtml" id_path="p/1"'
+                    ' type="" id="1" anchor_text="Test" template="block.phtml" id_path="p/1"',
                 ],
                 'name' => null,
                 'type' => null,
@@ -193,28 +194,28 @@ class FilterTest extends TestCase
                 'preconfigure' => ['widget_type' => '', 'parameters' => ''],
                 'widgetXml' => null,
                 'widgetBlock' => null,
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
             [
                 'construction' => [
                     '{{widget type="Widget\\Link" anchor_text="Test" template="block.phtml" id_path="p/1"}}',
                     'widget',
-                    ' type="" name="testName" id="1" anchor_text="Test" template="block.phtml" id_path="p/1"'
+                    ' type="" name="testName" id="1" anchor_text="Test" template="block.phtml" id_path="p/1"',
                 ],
                 'name' => 'testName',
                 'type' => 'Widget\Link',
                 'preConfigId' => 1,
                 'params' => ['id' => '1'],
-                'preconfigure' => ['widget_type' => "Widget\\Link", 'parameters' => ['id' => '1']],
+                'preconfigure' => ['widget_type' => 'Widget\\Link', 'parameters' => ['id' => '1']],
                 'widgetXml' => 'some xml',
                 'widgetBlock' => static fn (self $testCase) => $testCase->getBlockMock('widget text'),
-                'expectedResult' => 'widget text'
+                'expectedResult' => 'widget text',
             ],
             [
                 'construction' => [
                     '{{widget type="Widget\\Link" anchor_text="Test" template="block.phtml" id_path="p/1"}}',
                     'widget',
-                    ' type="Widget\\Link" name="testName" anchor_text="Test" template="block.phtml" id_path="p/1"'
+                    ' type="Widget\\Link" name="testName" anchor_text="Test" template="block.phtml" id_path="p/1"',
                 ],
                 'name' => 'testName',
                 'type' => 'Widget\Link',
@@ -224,12 +225,12 @@ class FilterTest extends TestCase
                     'name' => 'testName',
                     'anchor_text' => 'Test',
                     'template' => 'block.phtml',
-                    'id_path' => 'p/1'
+                    'id_path' => 'p/1',
                 ],
                 'preconfigure' => [],
                 'widgetXml' => 'some xml',
                 'widgetBlock' => static fn (self $testCase) => $testCase->getBlockMock('widget text'),
-                'expectedResult' => 'widget text'
+                'expectedResult' => 'widget text',
             ],
         ];
     }

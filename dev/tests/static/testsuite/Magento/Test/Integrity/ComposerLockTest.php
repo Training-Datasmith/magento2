@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use PHPUnit\Framework\Attributes\Depends;
@@ -90,7 +93,7 @@ class ComposerLockTest extends \PHPUnit\Framework\TestCase
     {
         if (isset($lockData['content-hash'])) {
             $this->assertLockDataRelevantToMeaningfulComposerConfig($lockData, $composerFilePath);
-        } else if (isset($lockData['hash'])) {
+        } elseif (isset($lockData['hash'])) {
             $this->assertLockDataRelevantToFullComposerConfig($lockData, $composerFilePath);
         } else {
             $this->fail('composer.lock does not linked to composer.json data');

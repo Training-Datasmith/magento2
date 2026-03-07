@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Script to get changes between feature branch and the mainline
  *
@@ -205,9 +207,9 @@ function validateInput(array $options, array $requiredOptions)
 class GitRepo
 // @codingStandardsIgnoreEnd
 {
-    const CHANGE_TYPE_ADDED = 1;
-    const CHANGE_TYPE_MODIFIED = 2;
-    const CHANGE_TYPE_ALL = 3;
+    public const CHANGE_TYPE_ADDED = 1;
+    public const CHANGE_TYPE_MODIFIED = 2;
+    public const CHANGE_TYPE_ALL = 3;
 
     /**
      * Absolute path to git project

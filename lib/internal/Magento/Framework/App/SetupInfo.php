@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,14 +18,14 @@ class SetupInfo
     /**#@+
      * Initialization parameters for redirecting if the application is not installed
      */
-    const PARAM_NOT_INSTALLED_URL_PATH = 'MAGE_NOT_INSTALLED_URL_PATH';
-    const PARAM_NOT_INSTALLED_URL = 'MAGE_NOT_INSTALLED_URL';
+    public const PARAM_NOT_INSTALLED_URL_PATH = 'MAGE_NOT_INSTALLED_URL_PATH';
+    public const PARAM_NOT_INSTALLED_URL = 'MAGE_NOT_INSTALLED_URL';
     /**#@-*/
 
     /**
      * Default path relative to the project root
      */
-    const DEFAULT_PATH = 'setup';
+    public const DEFAULT_PATH = 'setup';
 
     /**
      * Environment variables

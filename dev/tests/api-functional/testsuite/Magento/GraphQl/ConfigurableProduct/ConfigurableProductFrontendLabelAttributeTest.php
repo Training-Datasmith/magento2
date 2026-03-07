@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ QUERY;
         $this->assertArrayHasKey('products', $response);
         $this->assertArrayHasKey('items', $response['products']);
         $this->assertArrayHasKey(0, $response['products']['items']);
-        
+
         $product = $response['products']['items'][0];
         $this->assertArrayHasKey('configurable_options', $product);
         $this->assertArrayHasKey(0, $product['configurable_options']);

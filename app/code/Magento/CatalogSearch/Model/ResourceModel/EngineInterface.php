@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\ResourceModel;
 
 /**
@@ -19,7 +22,7 @@ interface EngineInterface
      * @deprecated mysql search engine has been removed
      * @see \Magento\Framework\Search\EngineResolverInterface
      */
-    const FIELD_PREFIX = 'attr_';
+    public const FIELD_PREFIX = 'attr_';
 
     /**
      * Scope identifier constant
@@ -27,7 +30,7 @@ interface EngineInterface
      * @deprecated since using engine resolver
      * @see \Magento\Framework\Search\EngineResolverInterface
      */
-    const SCOPE_IDENTIFIER = 'scope';
+    public const SCOPE_IDENTIFIER = 'scope';
 
     /**
      * Configuration path by which current indexer handler stored
@@ -35,7 +38,7 @@ interface EngineInterface
      * @deprecated since using engine resolver
      * @see \Magento\Framework\Search\EngineResolverInterface
      */
-    const CONFIG_ENGINE_PATH = 'catalog/search/engine';
+    public const CONFIG_ENGINE_PATH = 'catalog/search/engine';
 
     /**
      * Retrieve allowed visibility values for current engine

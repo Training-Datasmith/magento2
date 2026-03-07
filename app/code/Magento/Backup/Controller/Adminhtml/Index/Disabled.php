@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class Disabled extends Action implements HttpGetActionInterface
     /**
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Backend::backup';
+    public const ADMIN_RESOURCE = 'Magento_Backend::backup';
 
     /**
      * @var PageFactory

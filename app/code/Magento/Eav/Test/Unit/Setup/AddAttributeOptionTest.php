@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class AddAttributeOptionTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['Black', 'White'],
-                'attribute_id' => 4
+                'attribute_id' => 4,
             ]
         );
     }
@@ -79,7 +80,7 @@ class AddAttributeOptionTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['Black', 'White'],
-                'attribute_id' => 4
+                'attribute_id' => 4,
             ]
         );
     }
@@ -102,7 +103,7 @@ class AddAttributeOptionTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['Black', 'White'],
-                'attribute_id' => 4
+                'attribute_id' => 4,
             ]
         );
     }
@@ -124,7 +125,7 @@ class AddAttributeOptionTest extends TestCase
         $this->operation->execute(
             [
                 'values' => ['Black', 'White'],
-                'attribute_id' => 4
+                'attribute_id' => 4,
             ]
         );
     }

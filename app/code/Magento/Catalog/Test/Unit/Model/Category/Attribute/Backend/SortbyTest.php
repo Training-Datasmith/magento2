@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Category\Attribute\Backend;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Category\Attribute\Backend\Sortby;
 use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -15,6 +15,7 @@ use Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class SortbyTest extends TestCase
@@ -61,7 +62,7 @@ class SortbyTest extends TestCase
                 'getEntity',
                 'getFrontend',
                 'getIsRequired',
-                'getIsUnique'
+                'getIsUnique',
             ]
         );
 
@@ -94,28 +95,28 @@ class SortbyTest extends TestCase
             'attribute with specified value' => [
                 self::DEFAULT_ATTRIBUTE_CODE,
                 [self::DEFAULT_ATTRIBUTE_CODE => 'test_value'],
-                'test_value'
+                'test_value',
             ],
             'attribute with default value' => [
                 self::DEFAULT_ATTRIBUTE_CODE,
                 [self::DEFAULT_ATTRIBUTE_CODE => null],
-                null
+                null,
             ],
             'attribute does not exist' => [
                 self::DEFAULT_ATTRIBUTE_CODE,
                 [],
-                null
+                null,
             ],
             'attribute sort by empty' => [
                 'available_sort_by',
                 ['available_sort_by' => null],
-                null
+                null,
             ],
             'attribute sort by' => [
                 'available_sort_by',
                 ['available_sort_by' => ['test', 'value']],
-                'test,value'
-            ]
+                'test,value',
+            ],
         ];
     }
 
@@ -145,18 +146,18 @@ class SortbyTest extends TestCase
             'attribute with specified value' => [
                 self::DEFAULT_ATTRIBUTE_CODE,
                 [self::DEFAULT_ATTRIBUTE_CODE => 'test_value'],
-                'test_value'
+                'test_value',
             ],
             'attribute sort by empty' => [
                 'available_sort_by',
                 ['available_sort_by' => null],
-                null
+                null,
             ],
             'attribute sort by' => [
                 'available_sort_by',
                 ['available_sort_by' => 'test,value'],
-                ['test', 'value']
-            ]
+                ['test', 'value'],
+            ],
         ];
     }
 
@@ -188,23 +189,23 @@ class SortbyTest extends TestCase
             'is not required' => [
                 ['code' => self::DEFAULT_ATTRIBUTE_CODE, 'isRequired' => false, 'isValueEmpty' => false],
                 [],
-                true
+                true,
             ],
             'required, empty, not use config case 1' => [
                 ['code' => self::DEFAULT_ATTRIBUTE_CODE, 'isRequired' => true, 'isValueEmpty' => true],
                 [self::DEFAULT_ATTRIBUTE_CODE => [], 'use_post_data_config' => []],
-                false
+                false,
             ],
             'required, empty, not use config case 2' => [
                 ['code' => self::DEFAULT_ATTRIBUTE_CODE, 'isRequired' => true, 'isValueEmpty' => true],
                 [self::DEFAULT_ATTRIBUTE_CODE => [], 'use_post_data_config' => ['config']],
-                false
+                false,
             ],
             'required, empty, use config' => [
                 ['code' => self::DEFAULT_ATTRIBUTE_CODE, 'isRequired' => true, 'isValueEmpty' => true],
                 [self::DEFAULT_ATTRIBUTE_CODE => [], 'use_post_data_config' => [self::DEFAULT_ATTRIBUTE_CODE]],
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -269,24 +270,24 @@ class SortbyTest extends TestCase
                 [
                     'available_sort_by' => ['value1', 'value2'],
                     'default_sort_by' => 'value2',
-                    'use_post_data_config' => []
-                ]
+                    'use_post_data_config' => [],
+                ],
             ],
             [
                 'default_sort_by',
                 [
                     'available_sort_by' => 'value1,value2',
-                    'use_post_data_config' => ['default_sort_by']
-                ]
+                    'use_post_data_config' => ['default_sort_by'],
+                ],
             ],
             [
                 'default_sort_by',
                 [
                     'available_sort_by' => null,
                     'default_sort_by' => null,
-                    'use_post_data_config' => ['available_sort_by', 'default_sort_by', 'filter_price_range']
-                ]
-            ]
+                    'use_post_data_config' => ['available_sort_by', 'default_sort_by', 'filter_price_range'],
+                ],
+            ],
         ];
     }
 
@@ -316,31 +317,31 @@ class SortbyTest extends TestCase
                 'default_sort_by',
                 [
                     'available_sort_by' => null,
-                    'use_post_data_config' => ['default_sort_by']
-                ]
+                    'use_post_data_config' => ['default_sort_by'],
+                ],
             ],
             [
                 'default_sort_by',
                 [
                     'available_sort_by' => null,
-                    'use_post_data_config' => []
-                ]
+                    'use_post_data_config' => [],
+                ],
             ],
             [
                 'default_sort_by',
                 [
                     'available_sort_by' => ['value1', 'value2'],
                     'default_sort_by' => 'another value',
-                    'use_post_data_config' => []
-                ]
+                    'use_post_data_config' => [],
+                ],
             ],
             [
                 'default_sort_by',
                 [
                     'available_sort_by' => 'value1',
-                    'use_post_data_config' => []
-                ]
-            ]
+                    'use_post_data_config' => [],
+                ],
+            ],
         ];
     }
 }

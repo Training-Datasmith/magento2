@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationRules;
 
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationInterface;
@@ -19,12 +22,12 @@ class PrimaryKeyCanBeCreated implements ValidationInterface
     /**
      * Error code.
      */
-    const ERROR_TYPE = 'primary_key_cant_be_applied';
+    public const ERROR_TYPE = 'primary_key_cant_be_applied';
 
     /**
      * Error message, that will be shown.
      */
-    const ERROR_MESSAGE = 'Primary key can`t be applied on table "%s". ';
+    public const ERROR_MESSAGE = 'Primary key can`t be applied on table "%s". ';
 
     /**
      * @inheritdoc
@@ -46,7 +49,7 @@ class PrimaryKeyCanBeCreated implements ValidationInterface
                     $errors[] = [
                         'column' => $column->getName(),
                         'message' => sprintf(self::ERROR_MESSAGE, $table->getName()) .
-                            "All columns should be not nullable"
+                            'All columns should be not nullable',
                     ];
                 }
             }

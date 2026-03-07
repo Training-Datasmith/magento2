@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class BundleOptionDataProvider
 
             $optionDetails = [
                 self::OPTION_TYPE,
-                $bundleOption->getOptionId()
+                $bundleOption->getOptionId(),
             ];
             $uidString = implode('/', $optionDetails);
 
@@ -155,7 +156,7 @@ class BundleOptionDataProvider
                 self::OPTION_TYPE,
                 $selection->getOptionId(),
                 $selection->getSelectionId(),
-                (int) $selection->getSelectionQty()
+                (int) $selection->getSelectionQty(),
             ];
             $uidString = implode('/', $optionValueDetails);
 

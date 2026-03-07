@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price;
 
+use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
+use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Model\Stock;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Select;
-use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
 
 /**
  * A Select object processor.

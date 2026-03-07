@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Sales\Model\Order\Creditmemo\Comment;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Sales\Model\Order\Creditmemo\Comment;
 use Magento\Sales\Helper\SalesEntityCommentValidator;
+use Magento\Sales\Model\Order\Creditmemo\Comment;
 
 /**
  * Sales credit memo comment validator

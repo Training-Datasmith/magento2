@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model;
 
 use Magento\Catalog\Api\Data\ProductOptionInterface;
 use Magento\Catalog\Model\ProductOptionProcessorInterface;
-use Magento\Downloadable\Model\DownloadableOptionFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\DataObject;
 use Magento\Framework\DataObject\Factory as DataObjectFactory;

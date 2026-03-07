@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchCriteriaResolverFactory;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchCriteriaResolverInterface;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplierFactory;
-use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolverFactory;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplierInterface;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolverFactory;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolverInterface;
 use Magento\CatalogUrlRewrite\Model\Storage\DbStorage;
 use Magento\Eav\Model\Entity\AbstractEntity;
@@ -114,32 +115,32 @@ class CollectionTest extends TestCase
         $objects = [
             [
                 TableMaintainer::class,
-                $this->createMock(TableMaintainer::class)
+                $this->createMock(TableMaintainer::class),
             ],
             [
                 PriceTableResolver::class,
-                $this->createMock(PriceTableResolver::class)
+                $this->createMock(PriceTableResolver::class),
             ],
             [
                 DimensionFactory::class,
-                $this->createMock(DimensionFactory::class)
+                $this->createMock(DimensionFactory::class),
             ],
             [
                 Category::class,
-                $this->createMock(Category::class)
+                $this->createMock(Category::class),
             ],
             [
                 DbStorage::class,
-                $this->createMock(DbStorage::class)
+                $this->createMock(DbStorage::class),
             ],
             [
             GalleryReadHandler::class,
-                $this->createMock(GalleryReadHandler::class)
+                $this->createMock(GalleryReadHandler::class),
             ],
             [
                 Gallery::class,
-                $this->createMock(Gallery::class)
-            ]
+                $this->createMock(Gallery::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -181,7 +182,7 @@ class CollectionTest extends TestCase
                 'productLimitationFactory' => $productLimitationFactoryMock,
                 'searchCriteriaResolverFactory' => $searchCriteriaResolverFactory,
                 'searchResultApplierFactory' => $this->searchResultApplierFactory,
-                'totalRecordsResolverFactory' => $totalRecordsResolverFactory
+                'totalRecordsResolverFactory' => $totalRecordsResolverFactory,
             ]
         );
 

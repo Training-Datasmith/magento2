@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Framework\Setup\Declaration\Schema;
 
 use Magento\Framework\Config\FileResolverByModule;
 use Magento\Framework\Setup\Declaration\Schema\Db\SchemaBuilder as DbSchemaBuilder;
-use Magento\Framework\Setup\Declaration\Schema\Declaration\SchemaBuilder as DeclarativeSchemaBuilder;
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ReaderComposite;
+use Magento\Framework\Setup\Declaration\Schema\Declaration\SchemaBuilder as DeclarativeSchemaBuilder;
 use Magento\Framework\Setup\Declaration\Schema\Dto\SchemaFactory;
 
 /**

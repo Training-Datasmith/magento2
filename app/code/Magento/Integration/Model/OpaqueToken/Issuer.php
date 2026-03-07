@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ declare(strict_types=1);
 namespace Magento\Integration\Model\OpaqueToken;
 
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 use Magento\Integration\Api\Data\UserTokenParametersInterface;
 use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\UserTokenIssuerInterface;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\TokenFactory as TokenModelFactory;
-use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 
 /**
  * Issues opaque tokens (legacy).
@@ -66,7 +67,6 @@ class Issuer implements UserTokenIssuerInterface
             $token->setCreatedAt($params->getForcedIssuedTime()->format('Y-m-d H:i:s'));
         }
         $token = $token->save();
-
 
         return $token->getToken();
     }

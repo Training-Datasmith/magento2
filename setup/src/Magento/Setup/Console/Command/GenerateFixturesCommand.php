@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +61,7 @@ class GenerateFixturesCommand extends Command
                     's',
                     InputOption::VALUE_NONE,
                     'Skip reindex'
-                )
+                ),
             ]);
         parent::configure();
     }
@@ -185,7 +187,7 @@ class GenerateFixturesCommand extends Command
         OutputInterface $output
     ): void {
         $connect = $objectManager->get(ResourceConnection::class)->getConnection();
-        $output->writeln("<info>Optimize tables</info>");
+        $output->writeln('<info>Optimize tables</info>');
         foreach ($connect->getTables() as $tableName) {
             $connect->query("OPTIMIZE TABLE `$tableName`");
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -131,17 +132,17 @@ class DocumentTest extends TestCase
     {
         return [
             'with valid gender label and value' => [
-                1, '1', 'Male'
+                1, '1', 'Male',
             ],
             'with empty gender label' => [
-                2, '2', ''
+                2, '2', '',
             ],
             'with empty gender value' => [
-                3, '', 'test'
+                3, '', 'test',
             ],
             'with empty gender label and value' => [
-                4, '', ''
-            ]
+                4, '', '',
+            ],
         ];
     }
 

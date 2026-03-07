@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -161,7 +163,7 @@ class DiffOldSchemaTest extends SetupTestCase
             'unsigned' => false,
             'identity' => false,
             'default' => 0,
-            'comment' => 'Bigint'
+            'comment' => 'Bigint',
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ $orderItems = [
             'info_buyRequest' => [
                 'bundle_option' => [1 => 1],
                 'bundle_option_qty' => 1,
-            ]
+            ],
         ],
         'children' => [
             [

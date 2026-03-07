@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -171,7 +173,7 @@ class PricePersistence
                     $this->attributeResource->getTable($this->table),
                     [
                         'attribute_id = ?' => $this->getAttributeId(),
-                        $this->getEntityLinkField() . ' IN (?)' => $idsBunch
+                        $this->getEntityLinkField() . ' IN (?)' => $idsBunch,
                     ]
                 );
             }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class MapperTest extends TestCase
         return [
             'wrongConfig' => [
                 ['config' => ['files']],
-                []
+                [],
             ],
             'validConfigWithFileNodes' => [
                 [
@@ -66,17 +67,17 @@ class MapperTest extends TestCase
                             'file' => [
                                 0 => [
                                     'name' => 'fileName',
-                                    'providers' => [[]]
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'providers' => [[]],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'fileName' => [
                         'name' => 'fileName',
-                        'providers' => []
-                    ]
+                        'providers' => [],
+                    ],
                 ],
             ],
             'validConfigWithProvidersNode' => [
@@ -88,21 +89,21 @@ class MapperTest extends TestCase
                                     'name' => 'fileName',
                                     'providers' => [
                                         0 => [
-                                            'reportProvider' => [0 => []]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'reportProvider' => [0 => []],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'fileName' => [
                         'name' => 'fileName',
                         'providers' => [
-                            'reportProvider' => ['parameters' => []]
-                        ]
-                    ]
+                            'reportProvider' => ['parameters' => []],
+                        ],
+                    ],
                 ],
             ],
             'validConfigWithParametersNode' => [
@@ -117,16 +118,16 @@ class MapperTest extends TestCase
                                             'reportProvider' => [
                                                 0 => [
                                                     'parameters' => [
-                                                        0 => ['name' => ['reportName']]
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                                        0 => ['name' => ['reportName']],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'fileName' => [
@@ -134,11 +135,11 @@ class MapperTest extends TestCase
                         'providers' => [
                             'reportProvider' => [
                                 'parameters' => [
-                                    'name' => 'reportName'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'name' => 'reportName',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];

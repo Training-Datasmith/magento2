@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class Amounts extends Dashboard implements HttpPostActionInterface
                 $this->_request->getParam('website'),
                 $this->_request->getParam('group')
             ),
-            'label' => __('Revenue')
+            'label' => __('Revenue'),
         ];
 
         return $this->resultJsonFactory->create()

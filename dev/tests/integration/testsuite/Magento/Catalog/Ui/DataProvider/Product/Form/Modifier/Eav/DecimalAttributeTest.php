@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class DecimalAttributeTest extends AbstractEavTest
             'validation' => [
                 'validate-zero-or-greater' => true,
             ],
-            'addbefore' => '$'
+            'addbefore' => '$',
         ];
     }
 }

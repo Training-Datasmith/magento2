@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,8 +53,8 @@ class ProductFieldsSelector
             if ($node->name->value !== $productNodeName) {
                 continue;
             }
-                $queryFields = $this->attributesJoiner->getQueryFields($node, $info);
-                $fieldNames[] = $queryFields;
+            $queryFields = $this->attributesJoiner->getQueryFields($node, $info);
+            $fieldNames[] = $queryFields;
         }
 
         return array_merge(...$fieldNames);

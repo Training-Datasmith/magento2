@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class FilterTest extends TestCase
         // Prepare ObjectManager for helpers used by parent blocks
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -79,7 +80,7 @@ class FilterTest extends TestCase
             Filter::class,
             [
                 'formFactory' => $this->formFactoryMock,
-                'setFactory' => $this->setFactoryMock
+                'setFactory' => $this->setFactoryMock,
             ]
         );
     }
@@ -95,12 +96,12 @@ class FilterTest extends TestCase
             'with attribute set options' => [
                 'attributeSetOptions' => [
                     ['value' => '1', 'label' => 'Default'],
-                    ['value' => '2', 'label' => 'Custom Set']
-                ]
+                    ['value' => '2', 'label' => 'Custom Set'],
+                ],
             ],
             'with empty attribute set collection' => [
-                'attributeSetOptions' => []
-            ]
+                'attributeSetOptions' => [],
+            ],
         ];
     }
 
@@ -160,24 +161,24 @@ class FilterTest extends TestCase
         return [
             'onchange handler for form submission' => [
                 'configKey' => 'onchange',
-                'expectedValue' => 'this.form.submit()'
+                'expectedValue' => 'this.form.submit()',
             ],
             'field is required' => [
                 'configKey' => 'required',
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'correct CSS class' => [
                 'configKey' => 'class',
-                'expectedValue' => 'left-col-block'
+                'expectedValue' => 'left-col-block',
             ],
             'no_span option enabled' => [
                 'configKey' => 'no_span',
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'correct field name' => [
                 'configKey' => 'name',
-                'expectedValue' => 'set_switcher'
-            ]
+                'expectedValue' => 'set_switcher',
+            ],
         ];
     }
 

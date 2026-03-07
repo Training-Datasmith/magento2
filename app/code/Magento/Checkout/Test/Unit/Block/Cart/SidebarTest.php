@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -121,7 +122,7 @@ class SidebarTest extends TestCase
                 'context' => $contextMock,
                 'imageHelper' => $this->imageHelper,
                 'checkoutSession' => $this->checkoutSessionMock,
-                'serializer' => $this->serializer
+                'serializer' => $this->serializer,
             ]
         );
     }
@@ -131,7 +132,7 @@ class SidebarTest extends TestCase
      */
     public function testGetTotalsHtml(): void
     {
-        $totalsHtml = "$134.36";
+        $totalsHtml = '$134.36';
         $totalsBlockMock = $this->getMockBuilder(Price::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['toHtml'])
@@ -175,14 +176,14 @@ class SidebarTest extends TestCase
             'websiteId' => 100,
             'maxItemsToDisplay' => 8,
             'storeId' => null,
-            'storeGroupId' => null
+            'storeGroupId' => null,
         ];
 
         $valueMap = [
             ['checkout/cart', [], $shoppingCartUrl],
             ['checkout', [], $checkoutUrl],
             ['checkout/sidebar/updateItemQty', ['_secure' => false], $updateItemQtyUrl],
-            ['checkout/sidebar/removeItem', ['_secure' => false], $removeItemUrl]
+            ['checkout/sidebar/removeItem', ['_secure' => false], $removeItemUrl],
         ];
 
         $this->requestMock->method('isSecure')->willReturn(false);

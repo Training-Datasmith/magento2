@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\Framework\Api\SortOrderBuilder;
@@ -17,17 +20,17 @@ class CreditmemoListTest extends WebapiAbstract
     /**
      * Resource path
      */
-    const RESOURCE_PATH = '/V1/creditmemos';
+    public const RESOURCE_PATH = '/V1/creditmemos';
 
     /**
      * Service read name
      */
-    const SERVICE_READ_NAME = 'salesCreditmemoRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesCreditmemoRepositoryV1';
 
     /**
      * Service version
      */
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

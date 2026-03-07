@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class PartialSearchModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
+                            ],
                         ],
                         'queries' => [
                             'partial_search' => [
@@ -102,7 +103,7 @@ class PartialSearchModifierTest extends TestCase
                                 'value' => '$search_term$',
                                 'match' => [
                                     [
-                                        'field' => '*'
+                                        'field' => '*',
                                     ],
                                     [
                                         'field' => 'sku',
@@ -112,9 +113,9 @@ class PartialSearchModifierTest extends TestCase
                                         'field' => 'name',
                                         'matchCondition' => 'match_phrase_prefix',
                                     ],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'search_2' => [
                         'filters' => [
@@ -122,9 +123,9 @@ class PartialSearchModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'search_1' => [
@@ -133,7 +134,7 @@ class PartialSearchModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
+                            ],
                         ],
                         'queries' => [
                             'partial_search' => [
@@ -141,21 +142,21 @@ class PartialSearchModifierTest extends TestCase
                                 'value' => '$search_term$',
                                 'match' => [
                                     [
-                                        'field' => '*'
+                                        'field' => '*',
                                     ],
                                     [
                                         'field' => 'sku',
                                         'matchCondition' => 'match_phrase_prefix',
-                                        'boost' => 10
+                                        'boost' => 10,
                                     ],
                                     [
                                         'field' => 'name',
                                         'matchCondition' => 'match_phrase_prefix',
-                                        'boost' => 10
+                                        'boost' => 10,
                                     ],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'search_2' => [
                         'filters' => [
@@ -163,11 +164,11 @@ class PartialSearchModifierTest extends TestCase
                                 'name' => 'category_filter',
                                 'field' => 'category_ids',
                                 'value' => '$category_ids$',
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

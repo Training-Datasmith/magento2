@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
-use Magento\Framework\Locale\ResolverInterfaceFactory;
 use Magento\Framework\Locale\ResolverInterface;
-use Magento\Framework\View\Asset\ConfigInterface;
-use Magento\RequireJs\Model\FileManagerFactory;
-use Magento\Framework\View\DesignInterfaceFactory;
-use Magento\Framework\View\Design\Theme\ListInterface;
-use Magento\Framework\View\Asset\RepositoryFactory;
+use Magento\Framework\Locale\ResolverInterfaceFactory;
 use Magento\Framework\RequireJs\ConfigFactory;
+use Magento\Framework\View\Asset\ConfigInterface;
+use Magento\Framework\View\Asset\RepositoryFactory;
+use Magento\Framework\View\Design\Theme\ListInterface;
+use Magento\Framework\View\DesignInterfaceFactory;
+use Magento\RequireJs\Model\FileManagerFactory;
 
 /**
  * Deploy RequireJS configuration service

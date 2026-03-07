@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Newsletter\Test\Unit\Observer;
 
@@ -86,7 +87,7 @@ class PredispatchNewsletterObserverTest extends TestCase
     /**
      * Test with enabled newsletter active config.
      */
-    public function testNewsletterEnabled() : void
+    public function testNewsletterEnabled(): void
     {
         $observerMock = $this->createPartialMockWithReflection(
             Observer::class,
@@ -112,7 +113,7 @@ class PredispatchNewsletterObserverTest extends TestCase
     /**
      * Test with disabled newsletter active config.
      */
-    public function testNewsletterDisabled() : void
+    public function testNewsletterDisabled(): void
     {
         $observerMock = $this->createPartialMockWithReflection(
             Observer::class,

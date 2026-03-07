@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class DeleteAssetsByPaths implements DeleteAssetsByPathsInterface
                 __(
                     'Could not delete media assets by paths: %paths',
                     [
-                        'paths' => implode(' ,', $failedPaths)
+                        'paths' => implode(' ,', $failedPaths),
                     ]
                 )
             );

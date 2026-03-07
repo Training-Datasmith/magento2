@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ $registry->register('isSecureArea', true);
 
 try {
     $productRepository->deleteById('simple_product_without_visibility');
-// phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+    // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
 } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
     /**
      * Tests which are wrapped with MySQL transaction clear all data by transaction rollback.

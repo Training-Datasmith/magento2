@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewriteGraphQl\Model\DataProvider\UrlRewrite;
 
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\UrlRewriteGraphQl\Model\DataProvider\EntityDataProviderInterface;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 
 class ProductDataProvider implements EntityDataProviderInterface
 {

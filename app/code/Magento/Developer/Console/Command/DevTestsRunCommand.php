@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -118,7 +121,7 @@ class DevTestsRunCommand extends Command
 
         $output->writeln(str_repeat('-', 70));
         if ($failures) {
-            $output->writeln("FAILED - " . count($failures) . ' of ' . count($runCommands) . ":");
+            $output->writeln('FAILED - ' . count($failures) . ' of ' . count($runCommands) . ':');
             foreach ($failures as $message) {
                 $output->writeln(' - ' . $message);
             }

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Customer\Block\Account;
 
-use Magento\Customer\Block\Account\SortLinkInterface;
+namespace Magento\Customer\Block\Account;
 
 /**
  * Class Link

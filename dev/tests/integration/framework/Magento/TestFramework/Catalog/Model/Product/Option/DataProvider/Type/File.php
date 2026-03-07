@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\TestFramework\Catalog\Model\Product\Option\DataProvider\Type;
 
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
-use Magento\TestFramework\Catalog\Model\Product\Option\DataProvider\Type\AbstractBase;
 
 /**
  * Data provider for options from file group with type "file".
@@ -23,7 +23,7 @@ class File extends AbstractBase
         return array_merge_recursive(
             parent::getDataForCreateOptions(),
             [
-                "type_{static::getType()}_option_file_extension" => [
+                'type_{static::getType()}_option_file_extension' => [
                     [
                         'record_id' => 0,
                         'sort_order' => 1,
@@ -39,7 +39,7 @@ class File extends AbstractBase
                         'image_size_y' => 20,
                     ],
                 ],
-                "type_{static::getType()}_option_maximum_file_size" => [
+                'type_{static::getType()}_option_maximum_file_size' => [
                     [
                         'record_id' => 0,
                         'sort_order' => 1,
@@ -66,12 +66,12 @@ class File extends AbstractBase
         return array_merge_recursive(
             parent::getDataForUpdateOptions(),
             [
-                "type_{static::getType()}_option_file_extension" => [
+                'type_{static::getType()}_option_file_extension' => [
                     [
                         'file_extension' => 'jpg',
                     ],
                 ],
-                "type_{static::getType()}_option_maximum_file_size" => [
+                'type_{static::getType()}_option_maximum_file_size' => [
                     [
                         'image_size_x' => 300,
                         'image_size_y' => 815,

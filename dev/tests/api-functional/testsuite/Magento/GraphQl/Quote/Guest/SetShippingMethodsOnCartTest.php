@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -191,49 +192,49 @@ QUERY;
         return [
             'shipping_methods_are_empty' => [
                 'cart_id: "cart_id_value" shipping_methods: []',
-                'Required parameter "shipping_methods" is missing'
+                'Required parameter "shipping_methods" is missing',
             ],
             'empty_carrier_code' => [
                 'cart_id: "cart_id_value", shipping_methods: [{
                     carrier_code: ""
                     method_code: "flatrate"
                 }]',
-                'Required parameter "carrier_code" is missing.'
+                'Required parameter "carrier_code" is missing.',
             ],
             'non_existent_carrier_code' => [
                 'cart_id: "cart_id_value", shipping_methods: [{
                     carrier_code: "wrong-carrier-code"
                     method_code: "flatrate"
                 }]',
-                'Carrier with such method not found: wrong-carrier-code, flatrate'
+                'Carrier with such method not found: wrong-carrier-code, flatrate',
             ],
             'empty_method_code' => [
                 'cart_id: "cart_id_value", shipping_methods: [{
                     carrier_code: "flatrate"
                     method_code: ""
                 }]',
-                'Required parameter "method_code" is missing.'
+                'Required parameter "method_code" is missing.',
             ],
             'non_existent_method_code' => [
                 'cart_id: "cart_id_value", shipping_methods: [{
                     carrier_code: "flatrate"
                     method_code: "wrong-carrier-code"
                 }]',
-                'Carrier with such method not found: flatrate, wrong-carrier-code'
+                'Carrier with such method not found: flatrate, wrong-carrier-code',
             ],
             'non_existent_shopping_cart' => [
                 'cart_id: "non_existent_masked_id", shipping_methods: [{
                     carrier_code: "flatrate"
                     method_code: "flatrate"
                 }]',
-                'Could not find a cart with ID "non_existent_masked_id"'
+                'Could not find a cart with ID "non_existent_masked_id"',
             ],
             'disabled_shipping_method' => [
                 'cart_id: "cart_id_value", shipping_methods: [{
                     carrier_code: "freeshipping"
                     method_code: "freeshipping"
                 }]',
-                'Carrier with such method not found: freeshipping, freeshipping'
+                'Carrier with such method not found: freeshipping, freeshipping',
             ],
         ];
     }

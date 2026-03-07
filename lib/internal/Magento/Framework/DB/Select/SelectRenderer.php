@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
@@ -14,7 +17,7 @@ class SelectRenderer implements RendererInterface
 {
     private const MANDATORY_SELECT_PARTS = [
         Select::COLUMNS => true,
-        Select::FROM    => true
+        Select::FROM    => true,
     ];
 
     /**

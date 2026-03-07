@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Image config field renderer
  */
+
 namespace Magento\Config\Block\System\Config\Form\Field;
 
 /**

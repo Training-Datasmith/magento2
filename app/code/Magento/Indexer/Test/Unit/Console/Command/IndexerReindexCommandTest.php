@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,16 +14,16 @@ use Magento\Framework\Indexer\ConfigInterface;
 use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Indexer\StateInterface;
-use Magento\Indexer\Model\Indexer\State;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Indexer\Console\Command\IndexerReindexCommand;
 use Magento\Indexer\Model\Config;
+use Magento\Indexer\Model\Indexer\State;
 use Magento\Indexer\Model\Processor\MakeSharedIndexValid;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Tester\CommandTester;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -125,7 +126,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
             ->willReturn(
                 [
                     'title' => 'Title_indexerOne',
-                    'shared_index' => null
+                    'shared_index' => null,
                 ]
             );
         $this->configureAdminArea();
@@ -134,7 +135,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
                 $this->getIndexerMock(
                     ['reindexAll', 'getStatus'],
                     ['indexer_id' => 'id_indexerOne', 'title' => self::STUB_INDEXER_NAME]
-                )
+                ),
             ]
         );
         $this->indexerFactory->expects($this->never())->method('create');
@@ -211,7 +212,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
 
         $this->makeSharedValidMock = $this->objectManagerHelper->getObject(MakeSharedIndexValid::class, [
             'config' => $this->configMock,
-            'indexerRegistry' => $this->indexerRegistryMock
+            'indexerRegistry' => $this->indexerRegistryMock,
         ]);
         $this->configureAdminArea();
 
@@ -294,7 +295,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
         return [
             'Without dependencies' => [
                 'inputIndexers' => [
-                    'indexer_1'
+                    'indexer_1',
                 ],
                 'indexers' => [
                     'indexer_1' => [
@@ -334,7 +335,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
             ],
             'With dependencies and some indexers is invalid' => [
                 'inputIndexers' => [
-                    'indexer_1'
+                    'indexer_1',
                 ],
                 'indexers' => [
                     'indexer_2' => [
@@ -395,7 +396,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
             'With dependencies and multiple indexers in request' => [
                 'inputIndexers' => [
                     'indexer_1',
-                    'indexer_3'
+                    'indexer_3',
                 ],
                 'indexers' => [
                     'indexer_2' => [
@@ -502,7 +503,7 @@ class IndexerReindexCommandTest extends AbstractIndexerCommandCommonSetup
             . join("', '", $inputIndexers)
             . "'." . PHP_EOL . 'Supported types: '
             . join(
-                ", ",
+                ', ',
                 array_map(
                     function ($item) {
                         /** @var IndexerInterface $item */

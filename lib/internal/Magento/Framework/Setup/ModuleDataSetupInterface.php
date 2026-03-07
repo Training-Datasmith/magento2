@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup;
 
 /**
@@ -13,17 +16,17 @@ namespace Magento\Framework\Setup;
  */
 interface ModuleDataSetupInterface extends SetupInterface
 {
-    const DEFAULT_SETUP_CONNECTION = 'default_setup';
+    public const DEFAULT_SETUP_CONNECTION = 'default_setup';
 
-    const VERSION_COMPARE_EQUAL = 0;
+    public const VERSION_COMPARE_EQUAL = 0;
 
-    const VERSION_COMPARE_LOWER = -1;
+    public const VERSION_COMPARE_LOWER = -1;
 
-    const VERSION_COMPARE_GREATER = 1;
+    public const VERSION_COMPARE_GREATER = 1;
 
-    const TYPE_DATA_INSTALL = 'data-install';
+    public const TYPE_DATA_INSTALL = 'data-install';
 
-    const TYPE_DATA_UPGRADE = 'data-upgrade';
+    public const TYPE_DATA_UPGRADE = 'data-upgrade';
 
     /**
      * Retrieve row or field from table by id or string and parent id

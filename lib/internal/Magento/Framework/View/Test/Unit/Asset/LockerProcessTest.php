@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  */
 class LockerProcessTest extends TestCase
 {
-    const LOCK_NAME = 'test-lock';
+    public const LOCK_NAME = 'test-lock';
 
     /**
      * @var string

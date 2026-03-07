@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class UrlRewrite extends AbstractModel
         $urlRewriteTarget = $this->urlFinder->findOneByData(
             [
                 'request_path' => $path,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
 
@@ -169,7 +170,7 @@ class UrlRewrite extends AbstractModel
             $urlRewriteTarget = $this->urlFinder->findOneByData(
                 [
                     'request_path' => $urlRewriteTarget->getTargetPath(),
-                    'store_id' => $urlRewriteTarget->getStoreId()
+                    'store_id' => $urlRewriteTarget->getStoreId(),
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\User\Controller\Adminhtml;
 
+use Magento\Config\Model\ResourceModel\Config as CoreConfig;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Mail\EmailMessage;
 use Magento\Framework\Message\MessageInterface;
@@ -28,8 +31,6 @@ use Magento\TestFramework\TestCase\AbstractBackendController;
 use Magento\User\Model\User as UserModel;
 use Magento\User\Model\UserFactory;
 use Magento\User\Test\Fixture\User as UserDataFixture;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Config\Model\ResourceModel\Config as CoreConfig;
 
 /**
  * Test class for user reset password email
@@ -126,7 +127,7 @@ class UserResetPasswordEmailTest extends AbstractBackendController
         $pattern = '#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#';
         preg_match_all($pattern, $messageContent, $match);
         $urlString = trim($match[0][0], $store->getBaseUrl('web'));
-        return substr($urlString, 0, strpos($urlString, "/key"));
+        return substr($urlString, 0, strpos($urlString, '/key'));
     }
 
     /**
@@ -159,11 +160,11 @@ class UserResetPasswordEmailTest extends AbstractBackendController
             'customer_password_reset_password_template'
         )->setTemplateVars([
             'customer' => [
-                'name' => $user->getDataByKey('firstname') . ' ' . $user->getDataByKey('lastname')
-            ]
+                'name' => $user->getDataByKey('firstname') . ' ' . $user->getDataByKey('lastname'),
+            ],
         ])->setTemplateOptions([
             'area' => Area::AREA_FRONTEND,
-            'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID
+            'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
         ])
         ->addTo($adminEmail)
         ->getTransport();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class CustomConditionProviderTest extends TestCase
                 [
                     'customConditionProcessors' => [
                         'my-valid-field' => $this->customConditionMock,
-                    ]
+                    ],
                 ]
             );
     }
@@ -86,8 +87,8 @@ class CustomConditionProviderTest extends TestCase
                 [
                     'customConditionProcessors' => [
                         'my-valid-field' => $this->customConditionMock,
-                        'my-invalid-field' => 'olo-lo'
-                    ]
+                        'my-invalid-field' => 'olo-lo',
+                    ],
                 ]
             );
     }

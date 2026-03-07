@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,13 +12,12 @@ use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute as AttributeResource;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ActionValidator\RemoveAction;
 use Magento\Framework\Model\Context;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute as AttributeResource;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -102,7 +102,7 @@ class AttributeTest extends TestCase
                 'indexerEavProcessor' => $this->_eavProcessor,
                 'resource' => $this->resourceMock,
                 'data' => ['id' => 1],
-                'eavConfig' => $this->eavConfigMock
+                'eavConfig' => $this->eavConfigMock,
             ]
         );
     }
@@ -165,8 +165,8 @@ class AttributeTest extends TestCase
                 'indexerEavProcessor' => $this->_eavProcessor,
                 'resource' => $this->resourceMock,
                 'data' => [
-                    'is_global' => ScopedAttributeInterface::SCOPE_GLOBAL
-                ]
+                    'is_global' => ScopedAttributeInterface::SCOPE_GLOBAL,
+                ],
             ]
         );
         $this->assertEquals('global', $this->_model->getScope());
@@ -183,8 +183,8 @@ class AttributeTest extends TestCase
                 'indexerEavProcessor' => $this->_eavProcessor,
                 'resource' => $this->resourceMock,
                 'data' => [
-                    'is_global' => ScopedAttributeInterface::SCOPE_WEBSITE
-                ]
+                    'is_global' => ScopedAttributeInterface::SCOPE_WEBSITE,
+                ],
             ]
         );
         $this->assertEquals('website', $this->_model->getScope());
@@ -201,8 +201,8 @@ class AttributeTest extends TestCase
                 'indexerEavProcessor' => $this->_eavProcessor,
                 'resource' => $this->resourceMock,
                 'data' => [
-                    'is_global' => 'some value'
-                ]
+                    'is_global' => 'some value',
+                ],
             ]
         );
         $this->assertEquals('store', $this->_model->getScope());

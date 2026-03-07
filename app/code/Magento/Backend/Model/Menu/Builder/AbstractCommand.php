@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\Menu\Builder;
 
 /**
@@ -17,7 +20,7 @@ abstract class AbstractCommand
      *
      * @var string[]
      */
-    protected $_requiredParams = ["id"];
+    protected $_requiredParams = ['id'];
 
     /**
      * Command params array
@@ -41,7 +44,7 @@ abstract class AbstractCommand
     {
         foreach ($this->_requiredParams as $param) {
             if (!isset($data[$param]) || $data[$param] === null) {
-                throw new \InvalidArgumentException("Missing required param " . $param);
+                throw new \InvalidArgumentException('Missing required param ' . $param);
             }
         }
         $this->_data = $data;

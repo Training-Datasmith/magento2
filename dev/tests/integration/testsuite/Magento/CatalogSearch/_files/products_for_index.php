@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -52,7 +54,7 @@ $products = [
         'status' => Status::STATUS_ENABLED,
         'visibility' => Visibility::VISIBILITY_NOT_VISIBLE,
 
-    ]
+    ],
 ];
 
 /** @var $productFactory ProductInterfaceFactory */

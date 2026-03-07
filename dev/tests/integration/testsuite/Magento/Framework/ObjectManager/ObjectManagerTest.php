@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager;
 
-use ReflectionClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionClass;
 
 class ObjectManagerTest extends \PHPUnit\Framework\TestCase
 {
@@ -162,7 +165,7 @@ class ObjectManagerTest extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage('Error occurred when creating object');
 
         self::$_objectManager->create(self::TEST_CLASS_WITH_TYPE_ERROR, [
-            'testArgument' => new \stdClass()
+            'testArgument' => new \stdClass(),
         ]);
     }
 }

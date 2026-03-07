@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -22,6 +24,7 @@
  * $validator->isValid('/path/to/my.xml'); //return true, because directory structure can't exist
  * </code>
  */
+
 namespace Magento\MediaStorage\Model\File\Validator;
 
 use Laminas\Validator\AbstractValidator;

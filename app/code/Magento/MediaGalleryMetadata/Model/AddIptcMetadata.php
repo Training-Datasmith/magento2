@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class AddIptcMetadata
 
         return $this->fileFactory->create([
                 'path' => $fileWithIptc->getPath(),
-                'segments' => $this->getSegmentsWithIptc($fileWithIptc, $file)
+                'segments' => $this->getSegmentsWithIptc($fileWithIptc, $file),
         ]);
     }
 

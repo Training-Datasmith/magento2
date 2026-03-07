@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 use Magento\Framework\Phrase\Renderer\Placeholder;
 use Magento\Framework\Phrase\RendererInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class LocalizedExceptionTest extends TestCase
 {
@@ -156,7 +157,7 @@ class LocalizedExceptionTest extends TestCase
     {
         $expectedCode = 42;
         $localizedException = new LocalizedException(
-            new Phrase("message %1", ['test']),
+            new Phrase('message %1', ['test']),
             new \Exception(),
             $expectedCode
         );

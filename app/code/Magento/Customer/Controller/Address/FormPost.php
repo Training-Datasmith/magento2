@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,6 +17,7 @@ use Magento\Customer\Model\Address\Mapper;
 use Magento\Customer\Model\Metadata\FormFactory;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Validator\Address\File as FileNameValidator;
+use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Directory\Helper\Data as HelperData;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\Api\DataObjectHelper;
@@ -24,12 +27,9 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
-use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Message\AbstractMessage;
-use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\View\Result\PageFactory;
 

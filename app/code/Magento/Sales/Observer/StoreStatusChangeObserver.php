@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Sales\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Sales\Model\Order;
 use Magento\Sales\Model\InsertOrderStatusChangeHistory;
+use Magento\Sales\Model\Order;
 
 class StoreStatusChangeObserver implements ObserverInterface
 {

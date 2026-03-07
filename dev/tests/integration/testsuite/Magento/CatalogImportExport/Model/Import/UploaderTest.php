@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class UploaderTest extends \Magento\TestFramework\Indexer\TestCase
     /**
      * Random string appended to downloaded image name
      */
-    const RANDOM_STRING = 'BRV8TAuR2AT88OH0';
+    public const RANDOM_STRING = 'BRV8TAuR2AT88OH0';
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
@@ -57,7 +58,7 @@ class UploaderTest extends \Magento\TestFramework\Indexer\TestCase
             \Magento\CatalogImportExport\Model\Import\Uploader::class,
             [
                 'random' => $random,
-                'readFactory' => $fileReadFactory
+                'readFactory' => $fileReadFactory,
             ]
         );
 

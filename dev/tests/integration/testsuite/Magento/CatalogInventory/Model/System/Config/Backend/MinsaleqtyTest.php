@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\CatalogInventory\Model\System\Config\Backend;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\GroupManagementInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
@@ -70,9 +72,9 @@ class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
                 [
                     [
                         'customer_group_id' => $allCustomersGroupID,
-                        'min_sale_qty' => 22
-                    ]
-                ]
+                        'min_sale_qty' => 22,
+                    ],
+                ],
             ],
             'invalid named group array' => [
                 ['customer_group_id' => 1, 'min_sale_qty' => 2.5],
@@ -80,13 +82,13 @@ class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
                 [
                     0 => [
                         'customer_group_id' => 'customer_group_id',
-                        'min_sale_qty' => 1
+                        'min_sale_qty' => 1,
                     ],
                     1 => [
                         'customer_group_id' => 'min_sale_qty',
-                        'min_sale_qty' => 2.5
-                    ]
-                ]
+                        'min_sale_qty' => 2.5,
+                    ],
+                ],
             ],
             'valid array - all customer group' => [
                 [['customer_group_id' => $allCustomersGroupID, 'min_sale_qty' => 2.5]],
@@ -94,9 +96,9 @@ class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
                 [
                     0 => [
                         'customer_group_id' => $allCustomersGroupID,
-                        'min_sale_qty' => 2.5
-                    ]
-                ]
+                        'min_sale_qty' => 2.5,
+                    ],
+                ],
             ],
             'valid named group' => [
                 [['customer_group_id' => 2, 'min_sale_qty' => 2.5]],
@@ -104,9 +106,9 @@ class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
                 [
                     0 => [
                         'customer_group_id' => 2,
-                        'min_sale_qty' => 2.5
-                    ]
-                ]
+                        'min_sale_qty' => 2.5,
+                    ],
+                ],
             ],
             'invalid - cannot override not logged in group' => [
                 [$notLoggedInGroupID => ['min_sale_qty' => 2.5]],
@@ -114,10 +116,10 @@ class MinsaleqtyTest extends \PHPUnit\Framework\TestCase
                 [
                     0 => [
                         'customer_group_id' => $notLoggedInGroupID,
-                        'min_sale_qty' => 1
-                    ]
-                ]
-            ]
+                        'min_sale_qty' => 1,
+                    ],
+                ],
+            ],
         ];
     }
 }

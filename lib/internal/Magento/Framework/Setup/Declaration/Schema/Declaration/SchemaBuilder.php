@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration;
 
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 use Magento\Framework\Setup\Declaration\Schema\Declaration\TableElement\ElementNameResolver;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -17,7 +19,6 @@ use Magento\Framework\Setup\Declaration\Schema\Dto\Index;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Schema;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\Setup\Declaration\Schema\Sharding;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\BooleanUtils;
 use Magento\Framework\Validation\ValidationException;
 
@@ -128,7 +129,7 @@ class SchemaBuilder
         if (!empty($errors)) {
             $messages = '';
             foreach ($errors as $error) {
-                $messages .= sprintf("%s%s", PHP_EOL, $error['message']);
+                $messages .= sprintf('%s%s', PHP_EOL, $error['message']);
             }
 
             throw new LocalizedException(new Phrase($messages));

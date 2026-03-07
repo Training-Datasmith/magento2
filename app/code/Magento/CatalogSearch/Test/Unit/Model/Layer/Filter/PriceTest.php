@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Theme\Block\Html\Pager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -208,16 +209,16 @@ class PriceTest extends TestCase
         return [
             [
                 'requestValue' => null,
-                'idValue' => 0
+                'idValue' => 0,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => false
+                'idValue' => false,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => null
-            ]
+                'idValue' => null,
+            ],
         ];
     }
 
@@ -254,20 +255,20 @@ class PriceTest extends TestCase
                 '10-50',
                 [
                     ['label' => '$10.00 - $49.99', 'value' => ['10', '50'], 'count' => '0'],
-                ]
+                ],
             ],
             [
                 '-50',
                 [
                     ['label' => '$0.00 - $49.99', 'value' => ['', '50'], 'count' => '0'],
-                ]
+                ],
             ],
             [
                 '10-',
                 [
                     ['label' => '$10.00 and above', 'value' => ['10', ''], 'count' => '0'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element\DataType;
 
 /**
@@ -10,7 +13,7 @@ namespace Magento\Ui\Component\Form\Element\DataType;
  */
 class Boolean extends AbstractDataType
 {
-    const NAME = 'boolean';
+    public const NAME = 'boolean';
 
     /**
      * Get component name

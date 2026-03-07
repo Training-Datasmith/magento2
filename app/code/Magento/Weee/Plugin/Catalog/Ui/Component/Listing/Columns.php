@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class Columns
      *
      * @param DefaultColumns $subject
      */
-    public function afterPrepare(DefaultColumns $subject) : void
+    public function afterPrepare(DefaultColumns $subject): void
     {
         foreach ($this->attributeRepository->getList() as $attribute) {
             if ($attribute->getBackendModel() === Tax::class) {

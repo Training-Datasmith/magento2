@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +9,14 @@
 namespace Magento\UrlRewrite\Model\Storage;
 
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * Url rewrites DB storage.

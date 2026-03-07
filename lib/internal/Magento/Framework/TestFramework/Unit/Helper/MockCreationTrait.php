@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ trait MockCreationTrait
         } else {
             $mockBuilder->setConstructorArgs($constructorArgs);
         }
-        
+
         return $mockBuilder->getMock();
     }
 

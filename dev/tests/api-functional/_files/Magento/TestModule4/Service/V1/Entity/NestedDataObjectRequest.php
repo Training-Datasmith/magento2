@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule4\Service\V1\Entity;
 
 class NestedDataObjectRequest extends \Magento\Framework\Api\AbstractExtensibleObject

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +45,7 @@ class StoreConfigManager implements \Magento\Store\Api\StoreConfigManagerInterfa
         'setBaseCurrencyCode' => 'currency/options/base',
         'setDefaultDisplayCurrencyCode' => 'currency/options/default',
         'setTimezone' => 'general/locale/timezone',
-        'setWeightUnit' => \Magento\Directory\Helper\Data::XML_PATH_WEIGHT_UNIT
+        'setWeightUnit' => \Magento\Directory\Helper\Data::XML_PATH_WEIGHT_UNIT,
     ];
 
     /**

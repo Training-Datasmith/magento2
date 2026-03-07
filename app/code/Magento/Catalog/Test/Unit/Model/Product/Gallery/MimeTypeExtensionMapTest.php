@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,11 +25,11 @@ class MimeTypeExtensionMapTest extends TestCase
 
     public function testGetMimeTypeExtension()
     {
-        $this->assertEquals("jpg", $this->model->getMimeTypeExtension("image/jpeg"));
-        $this->assertEquals("jpg", $this->model->getMimeTypeExtension("image/jpg"));
-        $this->assertEquals("png", $this->model->getMimeTypeExtension("image/png"));
-        $this->assertEquals("gif", $this->model->getMimeTypeExtension("image/gif"));
-        $this->assertEquals("", $this->model->getMimeTypeExtension("unknown"));
-        $this->assertEquals("", $this->model->getMimeTypeExtension(null));
+        $this->assertEquals('jpg', $this->model->getMimeTypeExtension('image/jpeg'));
+        $this->assertEquals('jpg', $this->model->getMimeTypeExtension('image/jpg'));
+        $this->assertEquals('png', $this->model->getMimeTypeExtension('image/png'));
+        $this->assertEquals('gif', $this->model->getMimeTypeExtension('image/gif'));
+        $this->assertEquals('', $this->model->getMimeTypeExtension('unknown'));
+        $this->assertEquals('', $this->model->getMimeTypeExtension(null));
     }
 }

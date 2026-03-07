@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class DescriptionGeneratorTest extends TestCase
      * @var array
      */
     private $paragraphs = [
-        'Paragraph#1', 'Paragraph#2', 'Paragraph#3'
+        'Paragraph#1', 'Paragraph#2', 'Paragraph#3',
     ];
 
     /**
@@ -38,11 +39,11 @@ class DescriptionGeneratorTest extends TestCase
     private $descriptionConfigWithMixin = [
         'paragraphs' => [
             'count-min' => 3,
-            'count-max' => 3
+            'count-max' => 3,
         ],
         'mixin' => [
-            'tags' => ['p', 'b', 'div']
-        ]
+            'tags' => ['p', 'b', 'div'],
+        ],
     ];
 
     /**
@@ -51,8 +52,8 @@ class DescriptionGeneratorTest extends TestCase
     private $descriptionConfigWithoutMixin = [
         'paragraphs' => [
             'count-min' => 3,
-            'count-max' => 3
-        ]
+            'count-max' => 3,
+        ],
     ];
 
     protected function setUp(): void
@@ -63,7 +64,7 @@ class DescriptionGeneratorTest extends TestCase
         $this->descriptionParagraphGeneratorMock
             ->expects($this->exactly(3))
             ->method('generate')
-            ->willReturnCallback(function() use (&$callCount) {
+            ->willReturnCallback(function () use (&$callCount) {
                 return $this->paragraphs[$callCount++];
             });
 

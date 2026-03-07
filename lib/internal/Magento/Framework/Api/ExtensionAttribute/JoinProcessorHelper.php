@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Framework\Api\ExtensionAttribute;
 
-use Magento\Framework\Api\ExtensionAttribute\Config;
 use Magento\Framework\Api\ExtensionAttribute\Config\Converter;
 use Magento\Framework\Api\SimpleDataObjectConverter;
 
@@ -63,7 +64,7 @@ class JoinProcessorHelper
                     . ($useFieldInAlias ? '.' . $selectField[Converter::JOIN_FIELD] : ''),
                 JoinDataInterface::SELECT_FIELD_INTERNAL_ALIAS => $referenceTableAlias . '_' . $internalFieldName,
                 JoinDataInterface::SELECT_FIELD_WITH_DB_PREFIX => $referenceTableAlias . '.' . $internalFieldName,
-                JoinDataInterface::SELECT_FIELD_SETTER => $setterName
+                JoinDataInterface::SELECT_FIELD_SETTER => $setterName,
             ];
         }
         return $selectFieldsAliases;

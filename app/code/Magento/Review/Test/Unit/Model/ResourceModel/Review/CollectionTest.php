@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Review\Model\ResourceModel\Review\Collection;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class CollectionTest extends TestCase
 {
@@ -151,8 +152,7 @@ class CollectionTest extends TestCase
     ): void {
         $this->readerAdapterMock
             ->method('quoteInto')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($quoteIntoArguments1, $quoteIntoArguments2, $quoteIntoReturn1, $quoteIntoReturn2) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($quoteIntoArguments1, $quoteIntoArguments2, $quoteIntoReturn1, $quoteIntoReturn2) {
                 if ($arg1 == $quoteIntoArguments1[1] && $arg2 == $quoteIntoArguments2[1]) {
                     return $quoteIntoReturn1;
                 } elseif ($arg1 == $quoteIntoArguments1[1] && $arg2 == $quoteIntoArguments2[1]) {
@@ -182,7 +182,7 @@ class CollectionTest extends TestCase
                 ['main_table.entity_pk_value=?', 2],
                 'quoteIntoReturn1',
                 'quoteIntoReturn2',
-                0
+                0,
             ],
             [
                 'entity',
@@ -191,8 +191,8 @@ class CollectionTest extends TestCase
                 ['main_table.entity_pk_value=?', 2],
                 'quoteIntoReturn1',
                 'quoteIntoReturn2',
-                1
-            ]
+                1,
+            ],
         ];
     }
 

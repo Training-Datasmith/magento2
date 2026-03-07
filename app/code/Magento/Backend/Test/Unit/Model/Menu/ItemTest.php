@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Module\ModuleListInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -100,7 +101,7 @@ class ItemTest extends TestCase
                 'urlModel' => $this->_urlModelMock,
                 'moduleList' => $this->_moduleListMock,
                 'moduleManager' => $this->_moduleManager,
-                'data' => $this->_params
+                'data' => $this->_params,
             ]
         );
     }
@@ -253,7 +254,7 @@ class ItemTest extends TestCase
                 'urlModel' => $this->_urlModelMock,
                 'moduleList' => $this->_moduleListMock,
                 'moduleManager' => $this->_moduleManager,
-                'data' => $data
+                'data' => $data,
             ]
         );
         $this->assertEquals($expected, $model->toArray());
@@ -292,7 +293,7 @@ class ItemTest extends TestCase
                 'urlModel' => $this->_urlModelMock,
                 'moduleList' => $this->_moduleListMock,
                 'moduleManager' => $this->_moduleManager,
-                'data' => $constructorData
+                'data' => $constructorData,
             ]
         );
         $model->populateFromArray($populateFromData);

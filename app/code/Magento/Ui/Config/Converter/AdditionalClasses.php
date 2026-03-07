@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Converter;
 
 use Magento\Framework\ObjectManager\Config\Reader\Dom;
@@ -49,7 +52,7 @@ class AdditionalClasses implements ConverterInterface
     {
         $result = [
             'name' => $this->converterUtils->getComponentName($node),
-            Dom::TYPE_ATTRIBUTE => 'array'
+            Dom::TYPE_ATTRIBUTE => 'array',
         ];
         if ($this->hasChildNodes($node)) {
             /** @var \DOMNode $childNode */
@@ -58,7 +61,7 @@ class AdditionalClasses implements ConverterInterface
                     $result['item'][$this->converterUtils->getComponentName($childNode)] = [
                         'name' => $childNode->getAttribute('name'),
                         Dom::TYPE_ATTRIBUTE => 'boolean',
-                        'value' => trim($childNode->nodeValue)
+                        'value' => trim($childNode->nodeValue),
                     ];
                 }
             }

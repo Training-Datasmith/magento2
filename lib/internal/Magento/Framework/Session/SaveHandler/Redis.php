@@ -1,19 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session\SaveHandler;
 
+use Cm\RedisSession\ConcurrentConnectionsExceededException;
+use Cm\RedisSession\ConnectionFailedException;
 use Cm\RedisSession\Handler\ConfigInterface;
 use Cm\RedisSession\Handler\LoggerInterface;
-use Cm\RedisSession\ConnectionFailedException;
-use Cm\RedisSession\ConcurrentConnectionsExceededException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\SessionException;
-use Magento\Framework\Phrase;
 use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Phrase;
 
 class Redis implements \SessionHandlerInterface
 {
@@ -83,7 +85,7 @@ class Redis implements \SessionHandlerInterface
         try {
             $result = $this->getConnection()->read($sessionId);
         } catch (ConcurrentConnectionsExceededException $e) {
-            throw new LocalizedException(__("Redis session exceeded concurrent connections"), $e);
+            throw new LocalizedException(__('Redis session exceeded concurrent connections'), $e);
         }
 
         return $result;

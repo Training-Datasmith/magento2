@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class AddCommentTest extends TestCase
                     'getActionFlag',
                     'getMessageManager',
                     'getResultRedirectFactory',
-                    'getView'
+                    'getView',
                 ]
             )
             ->getMock();
@@ -176,7 +177,7 @@ class AddCommentTest extends TestCase
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultRawFactory' => $this->resultRawFactoryMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
-                'invoiceRepository' => $this->invoiceRepository
+                'invoiceRepository' => $this->invoiceRepository,
             ]
         );
 
@@ -200,7 +201,7 @@ class AddCommentTest extends TestCase
 
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['id'] => $invoiceId,
                 ['invoice_id'] => $invoiceId
             });

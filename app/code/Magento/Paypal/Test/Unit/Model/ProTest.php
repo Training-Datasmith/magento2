@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ declare(strict_types=1);
  * Test class for \Magento\Paypal\Model\Pro
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
+
 namespace Magento\Paypal\Test\Unit\Model;
 
 use Magento\Framework\HTTP\Adapter\Curl;
@@ -54,7 +56,7 @@ class ProTest extends TestCase
             [
                 'configFactory' => $configFactory,
                 'infoFactory' => $infoFactory,
-                'apiFactory' => $apiFactory
+                'apiFactory' => $apiFactory,
             ]
         );
         /** @var \Magento\Paypal\Model\Pro $pro */
@@ -103,7 +105,7 @@ class ProTest extends TestCase
             [\Magento\Paypal\Model\Info::PAYMENTSTATUS_REVIEW, true, false],
             [\Magento\Paypal\Model\Info::PAYMENTSTATUS_REVIEW, false, false],
             ['another_pending_reason', false, false],
-            ['another_pending_reason', true, true]
+            ['another_pending_reason', true, true],
         ];
     }
 
@@ -179,7 +181,7 @@ class ProTest extends TestCase
             ->method('create')
             ->with($configType, ['params' => [
                 PaypalConfig::METHOD_PAYMENT_PRO,
-                $storeId
+                $storeId,
             ]])
             ->willReturn($configMock);
         return $configFactory;
@@ -215,7 +217,7 @@ class ProTest extends TestCase
         $args = $objectHelper->getConstructArguments(
             $apiType,
             [
-                'curlFactory' => $curlFactory
+                'curlFactory' => $curlFactory,
             ]
         );
         $this->apiMock = $this->createPartialMockWithReflection(
@@ -231,14 +233,14 @@ class ProTest extends TestCase
             ],
             $args
         );
-        
+
         // Mock call() to return expected response
         $this->apiMock->expects(static::any())
             ->method('call')
             ->willReturn([
                 'ACK' => 'Success',
                 'TRANSACTIONID' => '12345',
-                'CORRELATIONID' => '67890'
+                'CORRELATIONID' => '67890',
             ]);
 
         $apiFactory->expects(static::any())->method('create')->with($apiType)->willReturn($this->apiMock);
@@ -274,7 +276,7 @@ class ProTest extends TestCase
         $orderData = [
             'currency' => 'USD',
             'id' => 4,
-            'increment_id' => '0000004'
+            'increment_id' => '0000004',
         ];
         $orderMock = $this->createPartialMock(
             Order::class,

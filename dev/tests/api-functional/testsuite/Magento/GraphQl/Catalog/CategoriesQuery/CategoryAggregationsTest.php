@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ QUERY;
             ProductFixture::class,
             [
                 'sku' => 'product1',
-                'category_ids' => ['$c111.id$']
+                'category_ids' => ['$c111.id$'],
             ],
         ),
     ]

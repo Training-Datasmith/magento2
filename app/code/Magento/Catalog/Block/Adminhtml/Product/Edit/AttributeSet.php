@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit;
 
 use Magento\Framework\App\ObjectManager;
@@ -58,7 +61,7 @@ class AttributeSet extends \Magento\Backend\Block\Widget\Form
             'minLength' => 0,
             'currentlySelected' => $this->escapeHtml(
                 $this->_coreRegistry->registry('product')->getAttributeSetId()
-            )
+            ),
         ];
     }
 }

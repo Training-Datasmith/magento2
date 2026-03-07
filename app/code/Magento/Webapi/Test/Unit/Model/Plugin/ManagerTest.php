@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ManagerTest extends TestCase
                     'findByConsumerId',
                     'findActiveIntegrationByConsumerId',
                     'delete',
-                    'getSelectedResources'
+                    'getSelectedResources',
                 ]
             )->getMock();
 
@@ -103,7 +104,7 @@ class ManagerTest extends TestCase
             'Magento_Customer::manage',
             'Magento_Customer::online',
             'Magento_Sales::create',
-            'Magento_SalesRule::quote'
+            'Magento_SalesRule::quote',
         ];
         $testIntegration2Resource = ['Magento_Catalog::product_read'];
         $this->integrationConfigMock->expects(
@@ -113,7 +114,7 @@ class ManagerTest extends TestCase
         )->willReturn(
             [
                 'TestIntegration1' => ['resource' => $testIntegration1Resource],
-                'TestIntegration2' => ['resource' => $testIntegration2Resource]
+                'TestIntegration2' => ['resource' => $testIntegration2Resource],
             ]
         );
         $firstIntegrationId = 1;
@@ -123,7 +124,7 @@ class ManagerTest extends TestCase
                 Integration::NAME => 'TestIntegration1',
                 Integration::EMAIL => 'test-integration1@magento.com',
                 Integration::ENDPOINT => 'http://endpoint.com',
-                Integration::SETUP_TYPE => 1
+                Integration::SETUP_TYPE => 1,
             ]
         );
         $secondIntegrationId = 2;
@@ -132,12 +133,12 @@ class ManagerTest extends TestCase
                 'id' => $secondIntegrationId,
                 Integration::NAME => 'TestIntegration2',
                 Integration::EMAIL => 'test-integration2@magento.com',
-                Integration::SETUP_TYPE => 1
+                Integration::SETUP_TYPE => 1,
             ]
         );
         $this->integrationServiceMock
             ->method('findByName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['TestIntegration1'] => $integrationsData1,
                 ['TestIntegration2'] => $integrationsData2
             });
@@ -173,8 +174,8 @@ class ManagerTest extends TestCase
                 'Magento_Customer::manage',
                 'Magento_Customer::online',
                 'Magento_Sales::create',
-                'Magento_SalesRule::quote'
-            ]
+                'Magento_SalesRule::quote',
+            ],
         ];
         $integrationsData1Object = new DataObject($integrationsData1);
 
@@ -184,13 +185,13 @@ class ManagerTest extends TestCase
             Integration::NAME => 'TestIntegration2',
             Integration::EMAIL => 'test-integration2@magento.com',
             Integration::SETUP_TYPE => 1,
-            'resource' => ['Magento_Catalog::product_read']
+            'resource' => ['Magento_Catalog::product_read'],
         ];
         $integrationsData2Object = new DataObject($integrationsData2);
 
         $this->integrationServiceMock
             ->method('findByName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['TestIntegration1'] => $integrationsData1Object,
                 ['TestIntegration2'] => $integrationsData2Object
             });

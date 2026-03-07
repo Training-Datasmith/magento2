@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Flat\Action;
 
+use Magento\Catalog\Helper\Product\Flat\Indexer;
+use Magento\Catalog\Model\Indexer\Product\Flat\Action\Full as FlatIndexerFull;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Model\Indexer\Product\Flat\Action\Full as FlatIndexerFull;
-use Magento\Catalog\Helper\Product\Flat\Indexer;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**
@@ -89,7 +90,7 @@ class RelationTest extends \Magento\TestFramework\Indexer\TestCase
      * @throws LocalizedException
      * @throws \Exception
      */
-    public function testExecute() : void
+    public function testExecute(): void
     {
         $this->addChildColumns();
         try {

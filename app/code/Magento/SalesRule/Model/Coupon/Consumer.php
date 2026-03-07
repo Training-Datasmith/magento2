@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\SalesRule\Model\Coupon;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Notification\NotifierInterface;
 use Magento\SalesRule\Api\CouponManagementInterface;
 use Magento\SalesRule\Api\Data\CouponGenerationSpecInterface;
-use Magento\Framework\Notification\NotifierInterface;
 
 /**
  * Consumer for export coupons generation.

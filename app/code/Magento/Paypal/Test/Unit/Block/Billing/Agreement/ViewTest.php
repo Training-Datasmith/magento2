@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class ViewTest extends TestCase
             View::class,
             [
                 'orderCollectionFactory' => $this->orderCollectionFactory,
-                'orderConfig' => $this->orderConfig
+                'orderConfig' => $this->orderConfig,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixtu
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 
@@ -133,7 +134,7 @@ query GetCartDetails($cartId: String!) {
 QUERY;
 
         $variables = [
-            'cartId' => $maskedQuoteId
+            'cartId' => $maskedQuoteId,
         ];
 
         $response = $this->graphQlQuery($query, $variables);

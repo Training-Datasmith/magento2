@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,6 +18,7 @@ use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
 use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\ConfigurationMismatchException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\FileSystemException;
@@ -25,7 +27,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
 use Magento\Framework\Exception\ValidatorException;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\ObjectManagerInterface;
@@ -308,7 +309,7 @@ class UpdateHandlerTest extends TestCase
             'unassign_all_roles' => [
                 'roles' => [
                     'image' => 'no_selection',
-                    'small_image' =>'no_selection',
+                    'small_image' => 'no_selection',
                     'thumbnail' => 'no_selection',
                     'swatch_image' => 'no_selection',
                 ],
@@ -426,8 +427,8 @@ class UpdateHandlerTest extends TestCase
         foreach ($productImages as $image) {
             $imageToAssert = [
                 'label' => $image['label'],
-                'label_default' =>$image['label_default'],
-                'disabled' =>$image['disabled'],
+                'label_default' => $image['label_default'],
+                'disabled' => $image['disabled'],
                 'disabled_default' => $image['disabled_default'],
                 'position' => $image['position'],
                 'position_default' => $image['position_default'],
@@ -612,7 +613,7 @@ class UpdateHandlerTest extends TestCase
             'position' => 1,
             'label' => 'New Image Alt Text',
             'disabled' => 0,
-            'media_type' => 'image'
+            'media_type' => 'image',
         ];
         $newImageRoles = [
             'image' => $newFile,
@@ -644,23 +645,23 @@ class UpdateHandlerTest extends TestCase
             [
                 '/m/a/magento_image.jpg',
                 '/m/a/magento_image_1.jpg',
-                true
+                true,
             ],
             [
                 '/m/a/magento_image.jpg',
                 '/m/a/magento_image.jpg',
-                false
+                false,
             ],
             [
                 '/m/a/magento_small_image.jpg',
                 '/m/a/magento_small_image.jpg',
-                true
+                true,
             ],
             [
                 '/m/a/magento_small_image.jpg',
                 '/m/a/magento_small_image.jpg',
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -717,8 +718,8 @@ class UpdateHandlerTest extends TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'default',
                 [
@@ -732,7 +733,7 @@ class UpdateHandlerTest extends TestCase
                         'label' => null,
                         'position' => 2,
                     ],
-                ]
+                ],
             ],
             [
                 'fixture_second_store',
@@ -742,8 +743,8 @@ class UpdateHandlerTest extends TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'fixture_second_store',
                 [
@@ -757,11 +758,11 @@ class UpdateHandlerTest extends TestCase
                         'label' => 'New Image Alt Text',
                         'position' => 2,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
-    
+
     #[
         DataProvider('useDefaultWithMultipleStoresDataProvider'),
         DbIsolation(false),
@@ -779,41 +780,41 @@ class UpdateHandlerTest extends TestCase
         $fixtures = DataFixtureStorageManager::getStorage();
         $sku = $fixtures->get('p1')->getSku();
         $store2 = $fixtures->get('store_view_2');
-        
+
         $defaultImageData = [
             'position' => 1,
             'disabled' => 0,
-            'label' => 'test label'
+            'label' => 'test label',
         ];
         $defaultImageDataUpdated = [
             'position' => 3,
             'disabled' => 1,
-            'label' => 'global label updated'
+            'label' => 'global label updated',
         ];
         $storeImageDataUseDefault = [
             'position_use_default' => 1,
             'disabled_use_default' => 1,
-            'label_use_default' => 1
+            'label_use_default' => 1,
         ];
-        
+
         // Check image in store view 2
         $product = $this->productRepository->get($sku, true, $store2->getId(), true);
         $this->assertImage($defaultImageData, current($product->getData('media_gallery', 'images')));
         $this->assertEquals($defaultImageData['label'], $product->getData('image_label'));
-        
+
         // Update image in store view 2
         $this->updateImage($product, $storeImageData);
         $this->updateHandler->execute($product);
-        
+
         // Check image in global scope
         $product = $this->productRepository->get($sku, false, Store::DEFAULT_STORE_ID, true);
         $this->assertImage($defaultImageData, current($product->getData('media_gallery', 'images')));
         $this->assertEquals($defaultImageData['label'], $product->getData('image_label'));
-        
+
         // Check image in store view 2
         $product = $this->productRepository->get($sku, true, $store2->getId(), true);
         $this->assertImage($storeImageData, current($product->getData('media_gallery', 'images')));
-        
+
         // Use default values in store view 2
         $this->updateImage($product, $storeImageDataUseDefault);
         $this->updateHandler->execute($product);
@@ -822,12 +823,12 @@ class UpdateHandlerTest extends TestCase
         $product = $this->productRepository->get($sku, false, Store::DEFAULT_STORE_ID, true);
         $this->assertImage($defaultImageData, current($product->getData('media_gallery', 'images')));
         $this->assertEquals($defaultImageData['label'], $product->getData('image_label'));
-        
+
         // Check image in store view 2
         $product = $this->productRepository->get($sku, false, $store2->getId(), true);
         $this->assertImage($defaultImageData, current($product->getData('media_gallery', 'images')));
         $this->assertEquals($defaultImageData['label'], $product->getData('image_label'));
-        
+
         // Update image in global scope
         $product = $this->productRepository->get($sku, true, Store::DEFAULT_STORE_ID, true);
         $this->updateImage($product, $defaultImageDataUpdated);
@@ -837,7 +838,7 @@ class UpdateHandlerTest extends TestCase
         $product = $this->productRepository->get($sku, false, Store::DEFAULT_STORE_ID, true);
         $this->assertImage($defaultImageDataUpdated, current($product->getData('media_gallery', 'images')));
         $this->assertEquals($defaultImageDataUpdated['label'], $product->getData('image_label'));
-        
+
         // Check image in store view 2
         $product = $this->productRepository->get($sku, false, $store2->getId(), true);
         $this->assertImage($defaultImageDataUpdated, current($product->getData('media_gallery', 'images')));
@@ -851,16 +852,16 @@ class UpdateHandlerTest extends TestCase
                 [
                     'position' => 5,
                     'disabled' => 1,
-                    'label' => 'etiquette de test'
-                ]
+                    'label' => 'etiquette de test',
+                ],
             ],
             'empty store label' => [
                 [
                     'position' => 5,
                     'disabled' => 1,
-                    'label' => ''
-                ]
-            ]
+                    'label' => '',
+                ],
+            ],
         ];
     }
 
@@ -920,7 +921,7 @@ class UpdateHandlerTest extends TestCase
         $galleryData = [
             'images' => [
                 (int)$item->getValueId() => $item->getData(),
-            ]
+            ],
         ];
         $product->setData(ProductInterface::MEDIA_GALLERY, $galleryData);
         $product->setStoreId(0);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Ups\Plugin\Block\DataProviders\Tracking;
 
-use Magento\Ups\Model\Carrier;
-use Magento\Shipping\Model\Tracking\Result\Status;
 use Magento\Shipping\Block\DataProviders\Tracking\DeliveryDateTitle as Subject;
+use Magento\Shipping\Model\Tracking\Result\Status;
+use Magento\Ups\Model\Carrier;
 
 /**
  * Plugin to change the "Delivery on" title to a customized value for UPS

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payment\Method\Billing;
 
 use Magento\Paypal\Model\Billing\Agreement;
@@ -20,9 +23,9 @@ abstract class AbstractAgreement extends \Magento\Payment\Model\Method\AbstractM
     /**
      * Transport billing agreement id
      */
-    const TRANSPORT_BILLING_AGREEMENT_ID = 'ba_agreement_id';
+    public const TRANSPORT_BILLING_AGREEMENT_ID = 'ba_agreement_id';
 
-    const PAYMENT_INFO_REFERENCE_ID = 'ba_reference_id';
+    public const PAYMENT_INFO_REFERENCE_ID = 'ba_reference_id';
 
     /**
      * @var string

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Widget\Grid\Column\Renderer;
 
+use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Math\Random;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Integration\Model\Integration;
-use Magento\Backend\Block\Context;
 
 /**
  * Render HTML <button> tag.
@@ -202,7 +205,7 @@ class Button extends AbstractRenderer
             'disabled',
             'name',
             'type',
-            'value'
+            'value',
         ];
     }
 

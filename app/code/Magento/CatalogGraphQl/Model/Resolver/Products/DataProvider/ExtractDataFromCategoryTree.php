@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class ExtractDataFromCategoryTree
      * @param array $topLevelCategoryIds
      * @return array
      */
-    public function buildTree(Collection $collection, array $topLevelCategoryIds) : array
+    public function buildTree(Collection $collection, array $topLevelCategoryIds): array
     {
         $wrapper = $this->nodeWrapperFactory->create();
         /** @var Category $item */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Csp;
 use Magento\Csp\Model\Collector\DynamicCollector;
 use Magento\Csp\Model\Collector\DynamicCollectorMock;
 use Magento\Framework\Math\Random;
-use Magento\Framework\View\LayoutInterface;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test that inline util works fine with cached blocks.
@@ -42,8 +43,8 @@ class CachedBlockTest extends TestCase
     {
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
-                DynamicCollector::class => DynamicCollectorMock::class
-            ]
+                DynamicCollector::class => DynamicCollectorMock::class,
+            ],
         ]);
         $this->layout = Bootstrap::getObjectManager()->get(LayoutInterface::class);
         $this->dynamicCollected = Bootstrap::getObjectManager()->get(DynamicCollector::class);

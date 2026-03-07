@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -87,12 +89,12 @@ class PriceTest extends TestCase
             // expected: the price range includes only available selections
             'bundle1' => [
                 'min_price' => 13,
-                'max_price' => 13
+                'max_price' => 13,
             ],
             // bundle2: required option1 (product1) + required option2 (product3, product4)
             // bundle2 is out of stock: both product3 and product4 are out of stock
             // expected: no price data
-            'bundle2' => null
+            'bundle2' => null,
         ]);
     }
 
@@ -118,15 +120,15 @@ class PriceTest extends TestCase
             // expected: the price range includes only available selections
             'bundle1' => [
                 'min_price' => 13,
-                'max_price' => 13
+                'max_price' => 13,
             ],
             // bundle2: required option1 (product1) + required option2 (product3, product4)
             // bundle2 is out of stock: both product3 and product4 are out of stock
             // expected: the price range includes all out of stock selections
             'bundle2' => [
                 'min_price' => 15,
-                'max_price' => 18
-            ]
+                'max_price' => 18,
+            ],
         ]);
     }
 

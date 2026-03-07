@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -115,7 +116,7 @@ class ContextPluginTest extends TestCase
                 'getDefaultTaxBillingAddress',
                 'getDefaultTaxShippingAddress',
                 'getCustomerTaxClassId',
-                'getWebsiteId'
+                'getWebsiteId',
             ]
         );
 
@@ -137,7 +138,7 @@ class ContextPluginTest extends TestCase
                 'taxHelper' => $this->taxHelperMock,
                 'weeeHelper' => $this->weeeHelperMock,
                 'moduleManager' => $this->moduleManagerMock,
-                'cacheConfig' => $this->cacheConfigMock
+                'cacheConfig' => $this->cacheConfigMock,
             ]
         );
     }
@@ -211,7 +212,7 @@ class ContextPluginTest extends TestCase
             [true, true, false],
             [true, true, true],
             [true, false, true],
-            [true, true, true]
+            [true, true, true],
         ];
     }
 }

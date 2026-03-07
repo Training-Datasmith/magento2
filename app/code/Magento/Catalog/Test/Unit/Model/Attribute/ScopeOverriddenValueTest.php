@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Api\Data\AttributeSearchResultsInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\ResourceConnection;
@@ -22,10 +22,10 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for ScopeOverriddenValue class with 100% coverage
@@ -34,7 +34,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
  */
 class ScopeOverriddenValueTest extends TestCase
 {
-
     use MockCreationTrait;
     /**
      * Test containsValue method with default store ID (early return)
@@ -320,7 +319,7 @@ class ScopeOverriddenValueTest extends TestCase
         $connectionMock->method('fetchAll')->willReturn([
             ['attribute_code' => 'test_attr', 'value' => 'test_value', 'store_id' => '0'],
             ['attribute_code' => 'test_attr', 'value' => 'test_value', 'store_id' => '1'],
-            ['attribute_code' => 'test_attr', 'value' => 'test_value', 'store_id' => '2']
+            ['attribute_code' => 'test_attr', 'value' => 'test_value', 'store_id' => '2'],
         ]);
 
         // Setup metadata

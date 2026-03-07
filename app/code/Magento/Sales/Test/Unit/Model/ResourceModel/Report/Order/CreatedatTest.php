@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class CreatedatTest extends TestCase
         return [
             'from-to interval' => [new \DateTime('yesterday'), new \DateTime(), $randomDates],
             'from interval' => [new \DateTime('yesterday'), null, $randomDates],
-            'from interval no dates' => [new \DateTime('yesterday'), null, []]
+            'from interval no dates' => [new \DateTime('yesterday'), null, []],
         ];
     }
 

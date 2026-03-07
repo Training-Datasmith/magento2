@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQlCache\Controller\Catalog;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\GraphQlCache\Controller\AbstractGraphqlCacheTest;
 
 /**
@@ -27,7 +28,7 @@ class DeepNestedCategoriesAndProductsTest extends AbstractGraphqlCacheTest
      */
     public function testDispatchForCacheHeadersOnDeepNestedQueries(): void
     {
-        $baseCategoryId ='333';
+        $baseCategoryId = '333';
         $query
             = <<<QUERY
         {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Api\Data;
 
 /**
@@ -15,9 +18,9 @@ interface ConfigurableItemOptionValueInterface extends \Magento\Framework\Api\Ex
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const OPTION_ID = 'option_id';
+    public const OPTION_ID = 'option_id';
 
-    const OPTION_VALUE = 'option_value';
+    public const OPTION_VALUE = 'option_value';
 
     /**#@-*/
 

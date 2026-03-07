@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Layout;
 
+use Magento\Framework\View\Element\ComponentVisibilityInterface;
 use Magento\Framework\View\Element\UiComponent\BlockWrapperInterface;
 use Magento\Framework\View\Element\UiComponent\DataSourceInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\Element\ComponentVisibilityInterface;
 use Magento\Ui\Component\Layout\Tabs\TabInterface;
 
 /**
@@ -113,8 +116,8 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
                 'config' => $config,
                 'insertTo' => [
                     $this->namespace . '.sections' => [
-                        'position' => $this->getNextSortIncrement()
-                    ]
+                        'position' => $this->getNextSortIncrement(),
+                    ],
                 ],
                 'children' => $structure,
             ];
@@ -140,7 +143,7 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
                 'collection',
                 [
                     'component' => 'Magento_Ui/js/form/components/collection',
-                    'extends' => $this->namespace
+                    'extends' => $this->namespace,
                 ]
             );
             /**
@@ -169,10 +172,10 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
                             'config' => [
                                 'label' => __('New %1', $label),
                             ],
-                            'children' => $childrenStructure
-                        ]
-                    ]
-                ]
+                            'children' => $childrenStructure,
+                        ],
+                    ],
+                ],
             ];
         } else {
             /**
@@ -218,18 +221,18 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
             'dataScope' => $name,
             'insertTo' => [
                 $this->namespace . '.sections' => [
-                    'position' => $block->hasSortOrder() ? $block->getSortOrder() : $this->getNextSortIncrement()
-                ]
+                    'position' => $block->hasSortOrder() ? $block->getSortOrder() : $this->getNextSortIncrement(),
+                ],
             ],
             'config' => [
-                'label' => $block->getTabTitle()
+                'label' => $block->getTabTitle(),
             ],
             'children' => [
                 $name => [
                     'type' => 'html_content',
                     'dataScope' => $name,
                     'config' => $config,
-                ]
+                ],
             ],
         ];
     }
@@ -249,7 +252,7 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
             'tab',
             [
                 'context' => $this->component->getContext(),
-                'components' => [$childComponent->getName() => $childComponent]
+                'components' => [$childComponent->getName() => $childComponent],
             ]
         );
         $tabComponent->prepare();
@@ -289,8 +292,8 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
             $name => [
                 'type' => $component->getComponentName(),
                 'name' => $component->getName(),
-                'children' => $childrenStructure
-            ]
+                'children' => $childrenStructure,
+            ],
         ];
 
         list($config, $dataScope) = $this->prepareConfig((array) $component->getConfiguration(), $name, $parentName);
@@ -391,9 +394,9 @@ class Tabs extends \Magento\Framework\View\Layout\Generic
             [
                 'component' => 'Magento_Ui/js/form/components/tab_group',
                 'config' => [
-                    'template' => 'ui/tab'
+                    'template' => 'ui/tab',
                 ],
-                'extends' => $this->namespace
+                'extends' => $this->namespace,
             ]
         );
     }

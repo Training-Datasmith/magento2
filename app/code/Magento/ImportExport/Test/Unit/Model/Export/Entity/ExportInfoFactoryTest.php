@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\ImportExport\Api\Data\FieldsEnclosureAwareExportInfoInterface;
+use Magento\ImportExport\Model\Export\AbstractEntity as ExportAbstractEntity;
 use Magento\ImportExport\Model\Export\Adapter\AbstractAdapter as ExportWriterAdapter;
 use Magento\ImportExport\Model\Export\Adapter\Factory as AdapterFactory;
-use Magento\ImportExport\Model\Export\AbstractEntity as ExportAbstractEntity;
 use Magento\ImportExport\Model\Export\ConfigInterface;
 use Magento\ImportExport\Model\Export\Entity\ExportInfoFactory;
 use Magento\ImportExport\Model\Export\Entity\Factory as EntityFactory;
@@ -47,10 +48,10 @@ class ExportInfoFactoryTest extends TestCase
         $fieldsEnclosure = true;
 
         $exportConfig->method('getEntities')->willReturn([
-            $entity => ['model' => 'EntityModel']
+            $entity => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            $fileFormat => ['model' => 'WriterModel']
+            $fileFormat => ['model' => 'WriterModel'],
         ]);
 
         $entityAdapter = $this->getMockBuilder(ExportAbstractEntity::class)
@@ -62,7 +63,7 @@ class ExportInfoFactoryTest extends TestCase
                 'export',
                 'exportItem',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ])
             ->getMock();
         $entityAdapter->method('getEntityTypeCode')->willReturn($entity);
@@ -150,10 +151,10 @@ class ExportInfoFactoryTest extends TestCase
         $exportFilter = [];
 
         $exportConfig->method('getEntities')->willReturn([
-            $entity => ['model' => 'EntityModel']
+            $entity => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            $fileFormat => ['model' => 'WriterModel']
+            $fileFormat => ['model' => 'WriterModel'],
         ]);
 
         $entityAdapter = $this->getMockBuilder(ExportAbstractEntity::class)
@@ -165,7 +166,7 @@ class ExportInfoFactoryTest extends TestCase
                 'export',
                 'exportItem',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ])
             ->getMock();
         $entityAdapter->method('getEntityTypeCode')->willReturn($entity);
@@ -214,7 +215,7 @@ class ExportInfoFactoryTest extends TestCase
 
         $exportConfig->method('getEntities')->willReturn([]);
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
 
         $writer = $this->getMockBuilder(ExportWriterAdapter::class)
@@ -248,7 +249,7 @@ class ExportInfoFactoryTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
 
         $factory = new ExportInfoFactory(
@@ -274,10 +275,10 @@ class ExportInfoFactoryTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $exportConfig->method('getEntities')->willReturn([
-            'catalog_product' => ['model' => 'EntityModel']
+            'catalog_product' => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
 
         $writer = $this->getMockBuilder(ExportWriterAdapter::class)
@@ -313,7 +314,7 @@ class ExportInfoFactoryTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
         $adapterFactory->method('create')
             ->with('WriterModel')
@@ -343,7 +344,7 @@ class ExportInfoFactoryTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
         $adapterFactory->method('create')->with('WriterModel')->willReturn(new \stdClass());
 
@@ -370,10 +371,10 @@ class ExportInfoFactoryTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
 
         $exportConfig->method('getEntities')->willReturn([
-            'catalog_product' => ['model' => 'EntityModel']
+            'catalog_product' => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
 
         $writer = $this->getMockBuilder(ExportWriterAdapter::class)
@@ -411,10 +412,10 @@ class ExportInfoFactoryTest extends TestCase
 
         $entity = 'catalog_product';
         $exportConfig->method('getEntities')->willReturn([
-            $entity => ['model' => 'EntityModel']
+            $entity => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            'csv' => ['model' => 'WriterModel']
+            'csv' => ['model' => 'WriterModel'],
         ]);
 
         $writer = $this->getMockBuilder(ExportWriterAdapter::class)
@@ -460,10 +461,10 @@ class ExportInfoFactoryTest extends TestCase
         $skipAttr = [];
 
         $exportConfig->method('getEntities')->willReturn([
-            $entity => ['model' => 'EntityModel']
+            $entity => ['model' => 'EntityModel'],
         ]);
         $exportConfig->method('getFileFormats')->willReturn([
-            $fileFormat => ['model' => 'WriterModel']
+            $fileFormat => ['model' => 'WriterModel'],
         ]);
 
         $entityAdapter = $this->getMockBuilder(ExportAbstractEntity::class)
@@ -475,7 +476,7 @@ class ExportInfoFactoryTest extends TestCase
                 'export',
                 'exportItem',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ])
             ->getMock();
         $entityAdapter->method('getEntityTypeCode')->willReturn($entity);

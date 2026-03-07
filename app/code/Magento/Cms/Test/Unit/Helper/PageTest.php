@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,18 @@ declare(strict_types=1);
 namespace Magento\Cms\Test\Unit\Helper;
 
 use Magento\Cms\Helper\Page;
+use Magento\Cms\Model\Page as CmsPage;
 use Magento\Cms\Model\PageFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Escaper;
+use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Message\Collection;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\Element\AbstractBlock;
@@ -26,12 +29,10 @@ use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Layout\ProcessorInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Cms\Model\Page as CmsPage;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\View\Result\Page as ResultPage;
 use Magento\Framework\View\Result\PageFactory as ResultPageFactory;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -235,7 +236,7 @@ class PageTest extends TestCase
                 'pageConfig' => $this->pageConfigMock,
                 'escaper' => $this->escaperMock,
                 'messageManager' => $this->messageManagerMock,
-                'resultPageFactory' => $this->resultPageFactory
+                'resultPageFactory' => $this->resultPageFactory,
             ]
         );
     }
@@ -435,7 +436,7 @@ class PageTest extends TestCase
                 'customLayoutUpdateXml' => 'customLayoutUpdateXml',
                 'layoutUpdate' => 'customLayoutUpdateXml',
                 'expectedResult' => true,
-            ]
+            ],
         ];
     }
 
@@ -515,7 +516,7 @@ class PageTest extends TestCase
                 'internalPageId' => 234,
                 'pageLoadResultIndex' => 1,
                 'expectedResult' => '/some/url',
-            ]
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Dummy object to test creation of decorators for cache frontend
  */
+
 namespace Magento\Framework\App\Test\Unit\Cache\Frontend\FactoryTest;
 
 use Magento\Framework\Cache\Frontend\Decorator\Bare;

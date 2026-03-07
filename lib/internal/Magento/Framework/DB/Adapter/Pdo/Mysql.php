@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,12 +30,12 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 use Magento\Framework\Setup\SchemaListener;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\StringUtils;
 use Zend_Db_Adapter_Exception;
 use Zend_Db_Statement_Exception;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 
 // @codingStandardsIgnoreStart
 
@@ -321,7 +323,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     /**
      * @inheritdoc
      */
-    public function _resetState() : void
+    public function _resetState(): void
     {
         $this->_transactionLevel = 0;
         $this->_isRolledBack = false;
@@ -550,10 +552,9 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
      */
     private function getMysqlConstant(string $constantName): int
     {
-        if(version_compare(PHP_VERSION, '8.4') < 0){
+        if (version_compare(PHP_VERSION, '8.4') < 0) {
             return constant('PDO::MYSQL_' . $constantName);
-        }
-        else{
+        } else {
             return constant('Pdo\Mysql::' . $constantName);
         }
     }
@@ -846,13 +847,13 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     protected function _unQuote($string)
     {
         $translate = [
-            "\\000" => "\000",
-            "\\n"   => "\n",
-            "\\r"   => "\r",
-            "\\\\"  => "\\",
+            '\\000' => "\000",
+            '\\n'   => "\n",
+            '\\r'   => "\r",
+            '\\\\'  => '\\',
             "\'"    => "'",
-            "\\\""  => "\"",
-            "\\032" => "\032",
+            '\\"'  => '"',
+            '\\032' => "\032",
         ];
         return strtr($string, $translate);
     }
@@ -954,7 +955,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
 
         foreach ($parts as $i => $part) {
             // strings
-            if (($part === "'" || $part === '"') && ($i === 0 || $parts[$i-1] !== '\\')) {
+            if (($part === "'" || $part === '"') && ($i === 0 || $parts[$i - 1] !== '\\')) {
                 if ($q === false) {
                     $q = $part;
                 } elseif ($q === $part) {
@@ -963,7 +964,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
             }
 
             // single line comments
-            if (($part === '//' || $part === '--') && ($i === 0 || $parts[$i-1] === "\n")) {
+            if (($part === '//' || $part === '--') && ($i === 0 || $parts[$i - 1] === "\n")) {
                 $c = $part;
             } elseif ($part === "\n" && ($c === '//' || $c === '--')) {
                 $c = false;
@@ -1045,7 +1046,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
             || $onDelete == AdapterInterface::FK_ACTION_RESTRICT
         ) {
             $sql = sprintf(
-                "DELETE p.* FROM %s AS p LEFT JOIN %s AS r ON p.%s = r.%s WHERE r.%s IS NULL",
+                'DELETE p.* FROM %s AS p LEFT JOIN %s AS r ON p.%s = r.%s WHERE r.%s IS NULL',
                 $this->quoteIdentifier($tableName),
                 $this->quoteIdentifier($refTableName),
                 $this->quoteIdentifier($columnName),
@@ -1055,7 +1056,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
             $this->rawQuery($sql);
         } elseif ($onDelete == AdapterInterface::FK_ACTION_SET_NULL) {
             $sql = sprintf(
-                "UPDATE %s AS p LEFT JOIN %s AS r ON p.%s = r.%s SET p.%s = NULL WHERE r.%s IS NULL",
+                'UPDATE %s AS p LEFT JOIN %s AS r ON p.%s = r.%s SET p.%s = NULL WHERE r.%s IS NULL',
                 $this->quoteIdentifier($tableName),
                 $this->quoteIdentifier($refTableName),
                 $this->quoteIdentifier($columnName),
@@ -1113,7 +1114,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
         if (is_array($definition)) {
             $definition = array_change_key_case($definition, CASE_UPPER);
             if (empty($definition['COMMENT'])) {
-                throw new \Zend_Db_Exception("Impossible to create a column without comment.");
+                throw new \Zend_Db_Exception('Impossible to create a column without comment.');
             }
             if (!empty($definition['PRIMARY'])) {
                 $primaryKey = sprintf(', ADD PRIMARY KEY (%s)', $this->quoteIdentifier($columnName));
@@ -1422,7 +1423,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
                     'REF_SHEMA_NAME'    => isset($match[4]) ? $match[4] : $schemaName,
                     'REF_TABLE_NAME'    => $match[5],
                     'REF_COLUMN_NAME'   => $match[6],
-                    'ON_DELETE'         => isset($match[7]) ? $match[8] : ''
+                    'ON_DELETE'         => isset($match[7]) ? $match[8] : '',
                 ];
             }
 
@@ -1768,7 +1769,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
                 self::DDL_CREATE,
                 self::DDL_INDEX,
                 self::DDL_FOREIGN_KEY,
-                self::DDL_EXISTS
+                self::DDL_EXISTS,
             ];
             foreach ($ddlTypes as $ddlType) {
                 unset($this->_ddlCache[$ddlType][$cacheKey]);
@@ -2331,7 +2332,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
         $columns = $table->getColumns();
         foreach ($columns as $columnEntry) {
             if (empty($columnEntry['COMMENT'])) {
-                throw new \Zend_Db_Exception("Cannot create table without columns comments");
+                throw new \Zend_Db_Exception('Cannot create table without columns comments');
             }
         }
 
@@ -2345,7 +2346,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
             "CREATE TABLE IF NOT EXISTS %s (\n%s\n) %s",
             $this->quoteIdentifier($table->getName()),
             implode(",\n", $sqlFragment),
-            implode(" ", $tableOptions)
+            implode(' ', $tableOptions)
         );
 
         if ($this->getTransactionLevel() > 0) {
@@ -2378,7 +2379,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
             "CREATE TEMPORARY TABLE %s (\n%s\n) %s",
             $this->quoteIdentifier($table->getName()),
             implode(",\n", $sqlFragment),
-            implode(" ", $tableOptions)
+            implode(' ', $tableOptions)
         );
 
         return $this->query($sql);
@@ -3127,12 +3128,12 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function startSetup()
     {
         $this->rawQuery("SET SQL_MODE=''");
-        $this->rawQuery("SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0");
+        $this->rawQuery('SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0');
         $this->rawQuery("SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO'");
         $this->mysqlversion = $this->fetchPairs("SHOW variables LIKE 'version'")['version'] ?? '';
         if ($this->isMysql8EngineUsed() && str_contains($this->mysqlversion, '8.4')) {
-            $this->rawQuery("SET @OLD_RESTRICT_FK_ON_NON_STANDARD_KEY=@@RESTRICT_FK_ON_NON_STANDARD_KEY");
-            $this->rawQuery("SET RESTRICT_FK_ON_NON_STANDARD_KEY=0");
+            $this->rawQuery('SET @OLD_RESTRICT_FK_ON_NON_STANDARD_KEY=@@RESTRICT_FK_ON_NON_STANDARD_KEY');
+            $this->rawQuery('SET RESTRICT_FK_ON_NON_STANDARD_KEY=0');
         }
         return $this;
     }
@@ -3145,9 +3146,9 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function endSetup()
     {
         $this->rawQuery("SET SQL_MODE=IFNULL(@OLD_SQL_MODE,'')");
-        $this->rawQuery("SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS=0, 0, 1)");
+        $this->rawQuery('SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS=0, 0, 1)');
         if ($this->isMysql8EngineUsed() && str_contains($this->mysqlversion, '8.4')) {
-            $this->rawQuery("SET RESTRICT_FK_ON_NON_STANDARD_KEY=IF(@OLD_RESTRICT_FK_ON_NON_STANDARD_KEY=0, 0, 1)");
+            $this->rawQuery('SET RESTRICT_FK_ON_NON_STANDARD_KEY=IF(@OLD_RESTRICT_FK_ON_NON_STANDARD_KEY=0, 0, 1)');
         }
         return $this;
     }
@@ -3187,27 +3188,27 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function prepareSqlCondition($fieldName, $condition)
     {
         $conditionKeyMap = [
-            'eq'            => "{{fieldName}} = ?",
-            'neq'           => "{{fieldName}} != ?",
-            'like'          => "{{fieldName}} LIKE ?",
-            'nlike'         => "{{fieldName}} NOT LIKE ?",
-            'in'            => "{{fieldName}} IN(?)",
-            'nin'           => "{{fieldName}} NOT IN(?)",
-            'is'            => "{{fieldName}} IS ?",
-            'notnull'       => "{{fieldName}} IS NOT NULL",
-            'null'          => "{{fieldName}} IS NULL",
-            'gt'            => "{{fieldName}} > ?",
-            'lt'            => "{{fieldName}} < ?",
-            'gteq'          => "{{fieldName}} >= ?",
-            'lteq'          => "{{fieldName}} <= ?",
-            'finset'        => "FIND_IN_SET(?, {{fieldName}})",
-            'nfinset'       => "NOT FIND_IN_SET(?, {{fieldName}})",
-            'regexp'        => "{{fieldName}} REGEXP ?",
-            'from'          => "{{fieldName}} >= ?",
-            'to'            => "{{fieldName}} <= ?",
+            'eq'            => '{{fieldName}} = ?',
+            'neq'           => '{{fieldName}} != ?',
+            'like'          => '{{fieldName}} LIKE ?',
+            'nlike'         => '{{fieldName}} NOT LIKE ?',
+            'in'            => '{{fieldName}} IN(?)',
+            'nin'           => '{{fieldName}} NOT IN(?)',
+            'is'            => '{{fieldName}} IS ?',
+            'notnull'       => '{{fieldName}} IS NOT NULL',
+            'null'          => '{{fieldName}} IS NULL',
+            'gt'            => '{{fieldName}} > ?',
+            'lt'            => '{{fieldName}} < ?',
+            'gteq'          => '{{fieldName}} >= ?',
+            'lteq'          => '{{fieldName}} <= ?',
+            'finset'        => 'FIND_IN_SET(?, {{fieldName}})',
+            'nfinset'       => 'NOT FIND_IN_SET(?, {{fieldName}})',
+            'regexp'        => '{{fieldName}} REGEXP ?',
+            'from'          => '{{fieldName}} >= ?',
+            'to'            => '{{fieldName}} <= ?',
             'seq'           => null,
             'sneq'          => null,
-            'ntoa'          => "INET_NTOA({{fieldName}}) LIKE ?",
+            'ntoa'          => 'INET_NTOA({{fieldName}}) LIKE ?',
         ];
 
         $query = '';
@@ -3384,9 +3385,9 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function getCheckSql($expression, $true, $false)
     {
         if ($expression instanceof \Zend_Db_Expr || $expression instanceof \Zend_Db_Select) {
-            $expression = sprintf("IF((%s), %s, %s)", $expression, $true, $false);
+            $expression = sprintf('IF((%s), %s, %s)', $expression, $true, $false);
         } else {
-            $expression = sprintf("IF(%s, %s, %s)", $expression, $true, $false);
+            $expression = sprintf('IF(%s, %s, %s)', $expression, $true, $false);
         }
 
         return new \Zend_Db_Expr($expression);
@@ -3402,9 +3403,9 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function getIfNullSql($expression, $value = 0)
     {
         if ($expression instanceof \Zend_Db_Expr || $expression instanceof \Zend_Db_Select) {
-            $expression = sprintf("IFNULL((%s), %s)", $expression, $value);
+            $expression = sprintf('IFNULL((%s), %s)', $expression, $value);
         } else {
-            $expression = sprintf("IFNULL(%s, %s)", $expression, $value);
+            $expression = sprintf('IFNULL(%s, %s)', $expression, $value);
         }
 
         return new \Zend_Db_Expr($expression);
@@ -4342,7 +4343,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
      * @param int $position
      * @return string
      */
-    private function setDefaultCharsetAndCollation($columnType, $definition, $position) : string
+    private function setDefaultCharsetAndCollation($columnType, $definition, $position): string
     {
         $pattern = '/\b(' . implode('|', array_map('preg_quote', self::COLUMN_TYPE)) . ')\b/i';
         if (preg_match($pattern, $columnType) === 1) {

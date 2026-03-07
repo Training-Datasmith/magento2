@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
 
+use Magento\Bundle\Api\ProductOptionRepositoryInterface;
+use Magento\Bundle\Model\Product\Type;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Magento\Bundle\Model\Product\Type;
-use Magento\Bundle\Api\ProductOptionRepositoryInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 
 /**
  * Class Bundle customizes Bundle product creation flow

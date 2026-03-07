@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Customer\Controller\Section;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\TestFramework\TestCase\AbstractController;
-use Magento\Framework\Escaper;
 
 /**
  * Load customer data test class.

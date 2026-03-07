@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\Customer\Model\Context as CustomerContext;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Locale\FormatInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\GiftMessage\Api\CartRepositoryInterface;
 use Magento\GiftMessage\Api\ItemRepositoryInterface;
@@ -22,7 +24,6 @@ use Magento\GiftMessage\Model\GiftMessageConfigProvider;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Store\Model\ScopeInterface as Scope;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -133,7 +134,7 @@ class GiftMessageConfigProviderTest extends TestCase
         $this->scopeConfigMock->expects($this->atLeastOnce())->method('isSetFlag')->willReturnMap(
             [
                 [GiftMessageHelper::XPATH_CONFIG_GIFT_MESSAGE_ALLOW_ORDER, Scope::SCOPE_STORE, null, $orderLevel],
-                [GiftMessageHelper::XPATH_CONFIG_GIFT_MESSAGE_ALLOW_ITEMS, Scope::SCOPE_STORE, null, $itemLevel]
+                [GiftMessageHelper::XPATH_CONFIG_GIFT_MESSAGE_ALLOW_ITEMS, Scope::SCOPE_STORE, null, $itemLevel],
             ]
         );
 
@@ -170,7 +171,7 @@ class GiftMessageConfigProviderTest extends TestCase
                     $itemId => [
                         'message' => $messageDataMock,
                     ],
-                ]
+                ],
             ],
             'isOrderLevelGiftOptionsEnabled' => $orderLevel,
             'isItemLevelGiftOptionsEnabled' => $itemLevel,
@@ -178,7 +179,7 @@ class GiftMessageConfigProviderTest extends TestCase
             'storeCode' => $storeCode,
             'isCustomerLoggedIn' => $isCustomerLoggedIn,
             'formKey' => $formKey,
-            'baseUrl' => $baseUrl
+            'baseUrl' => $baseUrl,
         ];
         $this->assertSame($expectedResult, $this->model->getConfig());
     }

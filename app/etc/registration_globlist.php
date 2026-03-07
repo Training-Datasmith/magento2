@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,5 +17,5 @@ return [
     'app/i18n/*/*/registration.php',
     'lib/internal/*/*/registration.php',
     'lib/internal/*/*/*/registration.php',
-    'setup/src/*/*/registration.php'
+    'setup/src/*/*/registration.php',
 ];

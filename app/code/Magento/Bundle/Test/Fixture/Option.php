@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class Option implements DataFixtureInterface
         'type' => 'select',
         'position' => 1,
         'sku' => null,
-        'product_links' => []
+        'product_links' => [],
     ];
 
     /**

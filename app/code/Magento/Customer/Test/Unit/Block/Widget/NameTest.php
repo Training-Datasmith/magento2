@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -203,7 +204,7 @@ class NameTest extends TestCase
             'showMiddlename' => ['showMiddlename'],
             'isMiddlenameRequired' => ['isMiddlenameRequired'],
             'showSuffix' => ['showSuffix'],
-            'isSuffixRequired' => ['isSuffixRequired']
+            'isSuffixRequired' => ['isSuffixRequired'],
         ];
     }
 
@@ -416,8 +417,8 @@ class NameTest extends TestCase
                 self::DEFAULT_CLASS_NAME .
                 self::CONTAINER_CLASS_NAME_PREFIX .
                 self::CONTAINER_CLASS_NAME_MIDDLENAME .
-                self::CONTAINER_CLASS_NAME_SUFFIX
-            ]
+                self::CONTAINER_CLASS_NAME_SUFFIX,
+            ],
         ];
     }
 
@@ -445,7 +446,7 @@ class NameTest extends TestCase
     {
         return [
             [self::INVALID_ATTRIBUTE_CODE, '', ''],
-            [self::PREFIX_ATTRIBUTE_CODE, self::PREFIX_STORE_LABEL, self::PREFIX_STORE_LABEL]
+            [self::PREFIX_ATTRIBUTE_CODE, self::PREFIX_STORE_LABEL, self::PREFIX_STORE_LABEL],
         ];
     }
 

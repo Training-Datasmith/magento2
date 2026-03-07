@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Rollback for quote_with_virtual_product_and_address.php fixture.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class ReadIptc implements ReadMetadataInterface
         return $this->metadataFactory->create([
             'title' => null,
             'description' => null,
-            'keywords' => null
+            'keywords' => null,
         ]);
     }
 
@@ -72,7 +73,7 @@ class ReadIptc implements ReadMetadataInterface
         $title = null;
         $keywords = null;
 
-        $iptSegmentStartPosition = strpos($segment->getData(), pack("C", 0) . pack("C", 0) . 'x');
+        $iptSegmentStartPosition = strpos($segment->getData(), pack('C', 0) . pack('C', 0) . 'x');
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         $uncompressedData = gzuncompress(substr($segment->getData(), $iptSegmentStartPosition + 2));
 
@@ -81,7 +82,7 @@ class ReadIptc implements ReadMetadataInterface
         $iptcData = implode(array_slice($data, 2));
         $binData = hex2bin($iptcData);
 
-        $descriptionMarker = pack("C", 2) . 'x' . pack("C", 0);
+        $descriptionMarker = pack('C', 2) . 'x' . pack('C', 0);
         $descriptionStartPosition = strpos($binData, $descriptionMarker);
         if ($descriptionStartPosition) {
             $description = substr(
@@ -91,7 +92,7 @@ class ReadIptc implements ReadMetadataInterface
             );
         }
 
-        $titleMarker =  pack("C", 2) . 'i' . pack("C", 0);
+        $titleMarker =  pack('C', 2) . 'i' . pack('C', 0);
         $titleStartPosition = strpos($binData, $titleMarker);
         if ($titleStartPosition) {
             $title = substr(
@@ -101,7 +102,7 @@ class ReadIptc implements ReadMetadataInterface
             );
         }
 
-        $keywordsMarker = pack("C", 2) . pack("C", 25) . pack("C", 0);
+        $keywordsMarker = pack('C', 2) . pack('C', 25) . pack('C', 0);
         $keywordsStartPosition = strpos($binData, $keywordsMarker);
         if ($keywordsStartPosition) {
             $keywords = substr(
@@ -114,7 +115,7 @@ class ReadIptc implements ReadMetadataInterface
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => !empty($keywords) ? explode(',', $keywords) : null
+            'keywords' => !empty($keywords) ? explode(',', $keywords) : null,
         ]);
     }
 

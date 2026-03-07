@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Sales\Api\InvoiceManagementInterface;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/products_in_category.php');

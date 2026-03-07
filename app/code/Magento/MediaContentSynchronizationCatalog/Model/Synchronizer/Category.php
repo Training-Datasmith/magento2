@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class Category implements SynchronizeInterface
     {
         $columns = [
             self::CATEGORY_IDENTITY_FIELD,
-            self::CATEGORY_UPDATED_AT_FIELD
+            self::CATEGORY_UPDATED_AT_FIELD,
         ];
         foreach ($this->fetchBatches->execute(self::CATEGORY_TABLE, $columns, $columns[1]) as $batch) {
             foreach ($batch as $item) {
@@ -100,7 +101,7 @@ class Category implements SynchronizeInterface
                 [
                     self::TYPE => self::CONTENT_TYPE,
                     self::FIELD => $field,
-                    self::ENTITY_ID => $item[self::CATEGORY_IDENTITY_FIELD]
+                    self::ENTITY_ID => $item[self::CATEGORY_IDENTITY_FIELD],
                 ]
             );
             $this->updateContentAssetLinks->execute(

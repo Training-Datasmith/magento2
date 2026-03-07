@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Active record implementation
  */
+
 namespace Magento\Framework\Model\ResourceModel;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;

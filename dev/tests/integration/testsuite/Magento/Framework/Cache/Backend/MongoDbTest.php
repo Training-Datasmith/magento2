@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Cache\Backend;
 
 use Magento\Framework\Cache\CacheConstants;
@@ -93,7 +96,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'one tag' => [['tag1'], ['test1', 'test2', 'test3']],
-            'multiple tags' => [['tag1', 'tag2'], ['test1', 'test3']]
+            'multiple tags' => [['tag1', 'tag2'], ['test1', 'test3']],
         ];
     }
 
@@ -109,7 +112,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'one tag' => [['tag2'], ['test2', 'test4', 'test5']],
-            'multiple tags' => [['tag1', 'tag2'], ['test4', 'test5']]
+            'multiple tags' => [['tag1', 'tag2'], ['test4', 'test5']],
         ];
     }
 
@@ -126,7 +129,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
         return [
             'no tags' => [[], []],
             'one tag' => [['tag2'], ['test1', 'test3']],
-            'multiple tags' => [['tag1', 'tag2'], ['test1', 'test2', 'test3']]
+            'multiple tags' => [['tag1', 'tag2'], ['test1', 'test2', 'test3']],
         ];
     }
 
@@ -161,7 +164,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'not enough extra lifetime' => [0, self::isFalse()],
-            'enough extra lifetime' => [1000, self::logicalNot(self::isFalse())]
+            'enough extra lifetime' => [1000, self::logicalNot(self::isFalse())],
         ];
     }
 
@@ -186,7 +189,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
             'infinite lifetime with validity' => ['test data', null, false, 'test data'],
             'infinite lifetime without validity' => ['test data', null, true, 'test data'],
             'zero lifetime with validity' => ['test data', 0, false, false],
-            'zero lifetime without validity' => ['test data', 0, true, 'test data']
+            'zero lifetime without validity' => ['test data', 0, true, 'test data'],
         ];
     }
 
@@ -248,7 +251,7 @@ class MongoDbTest extends \PHPUnit\Framework\TestCase
                 CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG,
                 ['tag1', 'tag2'],
                 ['test4', 'test5'],
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,5 +16,5 @@ class FloatType extends \GraphQL\Type\Definition\FloatType implements InputTypeI
     /**
      * @var string
      */
-    public string $name = "Magento_Float";
+    public string $name = 'Magento_Float';
 }

@@ -1,10 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-use Magento\Vault\Model\PaymentToken;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\Vault\Model\PaymentToken;
 
 Resolver::getInstance()->requireDataFixture('Magento/Vault/_files/customer.php');
 
@@ -16,7 +18,7 @@ $paymentTokens = [
         'payment_method_code' => 'first',
         'type' => 'simple',
         'expires_at' => '2016-09-04 10:18:15',
-        'is_active' => 1
+        'is_active' => 1,
     ],
     [
         'customer_id' => 1,
@@ -24,7 +26,7 @@ $paymentTokens = [
         'payment_method_code' => 'second',
         'type' => 'simple',
         'expires_at' => '2016-10-04 10:18:15',
-        'is_active' => 1
+        'is_active' => 1,
     ],
     [
         'customer_id' => 1,
@@ -32,7 +34,7 @@ $paymentTokens = [
         'payment_method_code' => 'third',
         'type' => 'notsimple',
         'expires_at' => '2016-11-04 10:18:15',
-        'is_active' => 1
+        'is_active' => 1,
     ],
     [
         'customer_id' => 1,
@@ -40,7 +42,7 @@ $paymentTokens = [
         'payment_method_code' => 'fourth',
         'type' => 'simple',
         'expires_at' => '2016-12-04 10:18:15',
-        'is_active' => 0
+        'is_active' => 0,
     ],
     [
         'customer_id' => 1,
@@ -48,7 +50,7 @@ $paymentTokens = [
         'payment_method_code' => 'fifth',
         'type' => 'card',
         'expires_at' => date('Y-m-d h:i:s', strtotime('+1 month')),
-        'is_active' => 1
+        'is_active' => 1,
     ],
     [
         'customer_id' => 1,
@@ -56,7 +58,7 @@ $paymentTokens = [
         'payment_method_code' => 'sixth',
         'type' => 'account',
         'expires_at' => date('Y-m-d h:i:s', strtotime('+1 month')),
-        'is_active' => 1
+        'is_active' => 1,
     ],
 ];
 /** @var array $tokenData */

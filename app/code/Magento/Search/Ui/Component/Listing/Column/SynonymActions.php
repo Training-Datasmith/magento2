@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Search\Ui\Component\Listing\Column;
 
+use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Framework\UrlInterface;
 
 /**
  * Class SynonymActions provides grid actions for synonyms
@@ -17,8 +19,8 @@ use Magento\Framework\UrlInterface;
 class SynonymActions extends Column
 {
     /** Url path */
-    const SYNONYM_URL_PATH_DELETE = 'search/synonyms/delete';
-    const SYNONYM_URL_PATH_EDIT = 'search/synonyms/edit';
+    public const SYNONYM_URL_PATH_DELETE = 'search/synonyms/delete';
+    public const SYNONYM_URL_PATH_EDIT = 'search/synonyms/edit';
 
     /**
      * @var \Magento\Framework\UrlInterface
@@ -62,9 +64,9 @@ class SynonymActions extends Column
                     'label' => __('Delete'),
                     'confirm' => [
                         'title' => __('Delete'),
-                        'message' => __('Are you sure you want to delete synonym group with id: %1?', $item['group_id'])
+                        'message' => __('Are you sure you want to delete synonym group with id: %1?', $item['group_id']),
                     ],
-                    'post' => true
+                    'post' => true,
                 ];
                 $item[$name]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(self::SYNONYM_URL_PATH_EDIT, ['group_id' => $item['group_id']]),

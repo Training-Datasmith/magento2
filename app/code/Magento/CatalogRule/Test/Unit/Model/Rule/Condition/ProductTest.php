@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\CatalogRule\Test\Unit\Model\Rule\Condition;
 use Magento\Catalog\Model\Product as ProductModel;
 use Magento\Catalog\Model\ProductCategoryList;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\CatalogRule\Model\Rule\Condition\Product;
 use Magento\Eav\Model\Config;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -75,7 +76,7 @@ class ProductTest extends TestCase
                 'getData',
                 'getId',
                 'getStoreId',
-                'getResource'
+                'getResource',
             ]
         );
 
@@ -88,7 +89,7 @@ class ProductTest extends TestCase
                 'getAttributesByCode',
                 'getAttribute',
                 'getConnection',
-                'getTable'
+                'getTable',
             ]
         );
 
@@ -103,7 +104,7 @@ class ProductTest extends TestCase
                 'getAttributeCode',
                 'isScopeGlobal',
                 'getBackendType',
-                'getFrontendInput'
+                'getFrontendInput',
             ]
         );
 
@@ -126,7 +127,7 @@ class ProductTest extends TestCase
                 'config' => $this->config,
                 'product' => $this->productModel,
                 'productResource' => $this->productResource,
-                'productCategoryList' => $this->productCategoryList
+                'productCategoryList' => $this->productCategoryList,
             ]
         );
     }
@@ -172,7 +173,7 @@ class ProductTest extends TestCase
 
         $this->productModel->expects($this->any())->method('hasData')
             ->willReturn(true);
-        
+
         $callCount = 0;
         $this->productModel
             ->method('getData')
@@ -183,7 +184,7 @@ class ProductTest extends TestCase
                 }
                 return $newValue;
             });
-        
+
         $this->productModel->expects($this->any())->method('getId')
             ->willReturn('1');
         $this->productModel->expects($this->once())->method('getStoreId')
@@ -287,7 +288,7 @@ class ProductTest extends TestCase
             ->willReturn([
                 $productId => [
                     $storeId => $storeSpecificValue,
-                ]
+                ],
             ]);
 
         $this->product->collectValidatedAttributes($productCollection);
@@ -343,7 +344,7 @@ class ProductTest extends TestCase
         $reflection = new \ReflectionClass($this->product);
         $property = $reflection->getProperty('_entityAttributeValues');
         $property->setValue($this->product, [
-            $productId => []
+            $productId => [],
         ]);
 
         $this->assertFalse($this->product->validate($this->productModel));
@@ -360,22 +361,22 @@ class ProductTest extends TestCase
                 'parsedValue' => '12:12',
                 'newValue' => '12:13',
                 'operator' => '>=',
-                'input' => ['method' => 'getBackendType', 'type' => 'input_type']
+                'input' => ['method' => 'getBackendType', 'type' => 'input_type'],
             ],
             [
                 'attributeValue' => '1',
                 'parsedValue' => '1',
                 'newValue' => '2',
                 'operator' => '>=',
-                'input' => ['method' => 'getBackendType', 'type' => 'input_type']
+                'input' => ['method' => 'getBackendType', 'type' => 'input_type'],
             ],
             [
                 'attributeValue' => '1',
                 'parsedValue' => ['1' => '0'],
                 'newValue' => ['1' => '1'],
                 'operator' => '!()',
-                'input' => ['method' => 'getFrontendInput', 'type' => 'multiselect']
-            ]
+                'input' => ['method' => 'getFrontendInput', 'type' => 'multiselect'],
+            ],
         ];
     }
 }

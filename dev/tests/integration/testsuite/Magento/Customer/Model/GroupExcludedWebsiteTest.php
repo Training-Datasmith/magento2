@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,23 +12,27 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status as AttributeStatus;
+use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price;
+use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
 use Magento\CatalogRule\Model\Indexer\Product\ProductRuleProcessor;
+use Magento\CatalogRule\Model\ResourceModel\Rule as RuleResourceModel;
+use Magento\CatalogRule\Model\Rule;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
 use Magento\Customer\Api\Data\GroupInterfaceFactory;
 use Magento\Customer\Api\GroupRepositoryInterface;
-use Magento\Catalog\Model\ResourceModel\Layer\Filter\Price;
-use Magento\CatalogRule\Model\Rule;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\Indexer\Model\Indexer;
-use Magento\Store\Api\StoreRepositoryInterface;
-use Magento\Framework\App\ResourceConnection;
-use Magento\CatalogRule\Model\ResourceModel\Rule as RuleResourceModel;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Indexer\Model\Indexer;
+use Magento\Indexer\Model\Indexer\Collection as IndexerCollection;
+use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\ResourceModel\Group as StoreGroupResourceModel;
 use Magento\Store\Model\ResourceModel\Store as StoreResourceModel;
@@ -35,10 +40,6 @@ use Magento\Store\Model\ResourceModel\Website as WebsiteResourceModel;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\Website;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Registry;
-use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
-use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Indexer\Model\Indexer\Collection as IndexerCollection;
 
 /**
  * Checks excluding websites from customer group functionality that affects price and catalog rule indexes.

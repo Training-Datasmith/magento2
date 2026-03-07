@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -82,27 +84,27 @@ class TokenTest extends \PHPUnit\Framework\TestCase
         $tokensToBeGenerated = [
             '#1' => [
                 'userType' => UserContextInterface::USER_TYPE_ADMIN,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP,
             ],
             '#2' => [
                 'userType' => UserContextInterface::USER_TYPE_ADMIN,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP + 5
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP + 5,
             ],
             '#3' => [
                 'userType' => UserContextInterface::USER_TYPE_CUSTOMER,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP,
             ],
             '#4' => [
                 'userType' => UserContextInterface::USER_TYPE_CUSTOMER,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP - 5
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP - 5,
             ],
             '#5' => [
                 'userType' => UserContextInterface::USER_TYPE_INTEGRATION,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP,
             ],
             '#6' => [
                 'userType' => UserContextInterface::USER_TYPE_INTEGRATION,
-                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP + 5
+                'createdAt' => self::BASE_CREATED_AT_TIMESTAMP + 5,
             ],
         ];
         /** @var \Magento\Framework\Stdlib\DateTime $dateTimeUtils */
@@ -159,22 +161,22 @@ class TokenTest extends \PHPUnit\Framework\TestCase
     public static function deleteExpiredTokenUsingObserverDataProvider()
     {
         return [
-            "Clean up long before default admin and default customer token life time" => [
+            'Clean up long before default admin and default customer token life time' => [
                 3600 - 6, // time passed after base creation time
                 [], // expected to be removed
                 ['#1', '#2', '#3', '#4', '#5', '#6'], // expected to exist
             ],
-            "Clean up just before default admin and default customer token life time" => [
+            'Clean up just before default admin and default customer token life time' => [
                 3600 - 1, // time passed after base creation time
                 ['#4'], // expected to be removed
                 ['#1', '#2', '#3', '#5', '#6'], // expected to exist
             ],
-            "Clean up after default admin token life time, but before default customer token life time" => [
+            'Clean up after default admin token life time, but before default customer token life time' => [
                 3600 + 1, // time passed after base creation time
                 ['#3', '#4'], // expected to be removed
                 ['#1', '#2', '#5', '#6'], // expected to exist
             ],
-            "Clean up after default customer and default admin token life time" => [
+            'Clean up after default customer and default admin token life time' => [
                 14400 + 1, // time passed after base creation time
                 ['#1', '#3', '#4'], // expected to be removed
                 ['#2', '#5', '#6'], // expected to exist
@@ -231,7 +233,7 @@ class TokenTest extends \PHPUnit\Framework\TestCase
               [ // token types to clean up
                   UserContextInterface::USER_TYPE_ADMIN,
                   UserContextInterface::USER_TYPE_INTEGRATION,
-                  UserContextInterface::USER_TYPE_GUEST
+                  UserContextInterface::USER_TYPE_GUEST,
               ],
               ['#1', '#2', '#5', '#6'], // expected to be removed
               ['#3', '#4'], // expected to exist
@@ -241,7 +243,7 @@ class TokenTest extends \PHPUnit\Framework\TestCase
               [ // token types to clean up
                   UserContextInterface::USER_TYPE_ADMIN,
                   UserContextInterface::USER_TYPE_INTEGRATION,
-                  UserContextInterface::USER_TYPE_CUSTOMER
+                  UserContextInterface::USER_TYPE_CUSTOMER,
               ],
               ['#1', '#2', '#3', '#4', '#5', '#6'], // expected to be removed
               [], // expected to exist
@@ -251,7 +253,7 @@ class TokenTest extends \PHPUnit\Framework\TestCase
               [ // token types to clean up
                   UserContextInterface::USER_TYPE_ADMIN,
                   UserContextInterface::USER_TYPE_INTEGRATION,
-                  UserContextInterface::USER_TYPE_CUSTOMER
+                  UserContextInterface::USER_TYPE_CUSTOMER,
               ],
               ['#1', '#3', '#4', '#5'], // expected to be removed
               ['#2', '#6'], // expected to exist
@@ -299,7 +301,7 @@ class TokenTest extends \PHPUnit\Framework\TestCase
             [
                 'token' => $token,
                 'secret' => $tokenSecret,
-                 'type' => Token::TYPE_ACCESS
+                 'type' => Token::TYPE_ACCESS,
             ]
         );
         $model->save();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class PaymentVaultAttributesLoadTest extends TestCase
             PaymentVaultAttributesLoad::class,
             [
                 'paymentExtensionFactory' => $this->paymentExtensionFactoryMock,
-                'paymentTokenManagement' => $this->paymentTokenManagementMock
+                'paymentTokenManagement' => $this->paymentTokenManagementMock,
             ]
         );
     }

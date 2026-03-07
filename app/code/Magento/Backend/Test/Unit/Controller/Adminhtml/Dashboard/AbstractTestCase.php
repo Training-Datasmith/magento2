@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Backend\Test\Unit\Controller\Adminhtml\Dashboard;
 
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\LayoutFactory;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +32,7 @@ class AbstractTestCase extends TestCase
     protected function assertExecute($controllerName, $blockName)
     {
         $objectManager = new ObjectManager($this);
-        $outPut = "data";
+        $outPut = 'data';
         $resultRawMock = $this->createPartialMock(Raw::class, ['setContents']);
         $resultRawFactoryMock =
             $this->createPartialMock(RawFactory::class, ['create']);
@@ -50,7 +51,7 @@ class AbstractTestCase extends TestCase
             $controllerName,
             [
                 'resultRawFactory' => $resultRawFactoryMock,
-                'layoutFactory' => $layoutFactoryMock
+                'layoutFactory' => $layoutFactoryMock,
             ]
         );
         $result = $controller->execute();

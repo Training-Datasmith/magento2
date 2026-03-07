@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Test\Unit\Model\Layout\Config;
 
 use Magento\Theme\Model\Layout\Config\Converter;

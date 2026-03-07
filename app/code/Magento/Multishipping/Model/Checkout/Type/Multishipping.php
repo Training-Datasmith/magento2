@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,6 +10,9 @@ namespace Magento\Multishipping\Model\Checkout\Type;
 
 use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\AddressRepositoryInterface;
+use Magento\Directory\Model\AllowedCountries;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Quote\Model\CartMutexInterface;
@@ -16,9 +21,6 @@ use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order\Email\Sender\OrderSender;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\ObjectManager;
-use Magento\Directory\Model\AllowedCountries;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -495,7 +497,7 @@ class Multishipping extends \Magento\Framework\DataObject
                 throw new \Magento\Framework\Exception\LocalizedException(
                     __(
                         "The maximum quantity can't be more than %1 when shipping to multiple addresses. "
-                        . "Change the quantity and try again.",
+                        . 'Change the quantity and try again.',
                         $maxQty
                     )
                 );
@@ -591,7 +593,7 @@ class Multishipping extends \Magento\Framework\DataObject
             $quoteItem->setQty($quoteItem->getMultishippingQty());
             try {
                 $address = $this->addressRepository->getById($addressId);
-            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+                // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
             } catch (\Exception $e) {
             }
             if (isset($address)) {
@@ -631,9 +633,9 @@ class Multishipping extends \Magento\Framework\DataObject
         }
         try {
             $address = $this->addressRepository->getById($addressId);
-        // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
         } catch (\Exception $e) {
-            //
+
         }
         if (isset($address)) {
             $quoteAddress = $this->getQuote()->getShippingAddressByCustomerAddressId($addressId);
@@ -659,9 +661,9 @@ class Multishipping extends \Magento\Framework\DataObject
         }
         try {
             $address = $this->addressRepository->getById($addressId);
-        // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
         } catch (\Exception $e) {
-            //
+
         }
         if (isset($address)) {
             $quoteAddress = $this->getQuote()->getBillingAddress($addressId)->importCustomerAddressData($address);
@@ -719,7 +721,7 @@ class Multishipping extends \Magento\Framework\DataObject
             throw new \Magento\Framework\Exception\LocalizedException(
                 __(
                     "This payment method can't be used for shipping to multiple addresses. "
-                    . "Change the payment method and try again."
+                    . 'Change the payment method and try again.'
                 )
             );
         }

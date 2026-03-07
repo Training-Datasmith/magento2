@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\DeploymentConfig;
 use Magento\Setup\Console\Command\DbSchemaUpgradeCommand;
 use Magento\Setup\Model\Installer;
 use Magento\Setup\Model\InstallerFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -64,12 +65,12 @@ class DbSchemaUpgradeCommandTest extends TestCase
             [
                 'options' => [
                     '--magento-init-params' => '',
-                    '--convert-old-scripts' => false
+                    '--convert-old-scripts' => false,
                 ],
                 'expectedOptions' => [
                     'convert-old-scripts' => false,
                     'magento-init-params' => '',
-                ]
+                ],
             ],
         ];
     }

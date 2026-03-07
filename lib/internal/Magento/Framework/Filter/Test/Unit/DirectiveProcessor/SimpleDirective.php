@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class SimpleDirective extends TestCase
                     'quoteType' => '',
                     'value' => '',
                     'parameters' => 'param',
-                ]
+                ],
             ],
             [
                 '{{dir param|foo}}',
@@ -58,7 +59,7 @@ class SimpleDirective extends TestCase
                     'value' => '',
                     'parameters' => 'param',
                     'filters' => '|foo',
-                ]
+                ],
             ],
             [
                 '{{dir foo bar baz}}',
@@ -67,7 +68,7 @@ class SimpleDirective extends TestCase
                     'quoteType' => '',
                     'value' => '',
                     'parameters' => 'foo bar baz',
-                ]
+                ],
             ],
             [
                 '{{dir \'foo %var "is" my name\' bar baz="bash" bash=\'bash\'}}',
@@ -76,7 +77,7 @@ class SimpleDirective extends TestCase
                     'quoteType' => '\'',
                     'value' => 'foo %var "is" my name',
                     'parameters' => ' bar baz="bash" bash=\'bash\'',
-                ]
+                ],
             ],
             [
                 '{{dir "foo %var is m\'name. a + b=\\\'c\\\'" some nonsense !@#$%^&*()_+abc.,;\'}}',
@@ -85,7 +86,7 @@ class SimpleDirective extends TestCase
                     'quoteType' => '"',
                     'value' => 'foo %var is m\'name. a + b=\\\'c\\\'',
                     'parameters' => ' some nonsense !@#$%^&*()_+abc.,;\'',
-                ]
+                ],
             ],
             [
                 '{{dir "blah" some nonsense !=@#$%^&*()_+abc.,;\'|foo|bar:_123|ridiculous-filter}}' . "\n\t"
@@ -98,7 +99,7 @@ class SimpleDirective extends TestCase
                     'parameters' => ' some nonsense !=@#$%^&*()_+abc.,;\'',
                     'content' => "\n\t" . '<content>' . "\n\t\t" . '{{foo bar}}</content>',
                     'filters' => '|foo|bar:_123|ridiculous-filter',
-                ]
+                ],
             ],
         ];
     }

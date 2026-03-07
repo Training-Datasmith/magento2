@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -18,9 +19,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\AbstractValidator;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Quote\Api\Data\CartExtension;
-use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item;
@@ -35,6 +34,7 @@ use Magento\SalesRule\Model\Utility;
 use Magento\SalesRule\Model\Validator;
 use Magento\SalesRule\Model\Validator\Pool;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Zend_Db_Select_Exception;
@@ -125,7 +125,7 @@ class ValidatorTest extends TestCase
                 'getCustomAttributesCodes',
                 'getShippingAmountForDiscount',
                 'getBaseShippingAmountForDiscount',
-                'setCartFixedRules'
+                'setCartFixedRules',
             ]
         );
 
@@ -177,7 +177,7 @@ class ValidatorTest extends TestCase
                 'validators' => $this->validators,
                 'messageManager' => $this->messageManager,
                 'priceCurrency' => $this->priceCurrency,
-                'cartFixedDiscountHelper' => $this->cartFixedDiscountHelper
+                'cartFixedDiscountHelper' => $this->cartFixedDiscountHelper,
             ]
         );
         $this->model->setWebsiteId(1);
@@ -392,7 +392,7 @@ class ValidatorTest extends TestCase
                 'getParentItem',
                 'getQuote',
                 'getAddress',
-                'getOptionByCode'
+                'getOptionByCode',
             ]
         );
         $item2 = clone $item1;
@@ -614,7 +614,7 @@ class ValidatorTest extends TestCase
             [Rule::BY_PERCENT_ACTION, 50, 2.5],
             [Rule::TO_FIXED_ACTION, 5, 0],
             [Rule::BY_FIXED_ACTION, 5, 5],
-            [Rule::CART_FIXED_ACTION, 5, 0]
+            [Rule::CART_FIXED_ACTION, 5, 0],
         ];
     }
 
@@ -688,15 +688,15 @@ class ValidatorTest extends TestCase
                 100.00,
                 5.0,
                 5.0,
-                10.0
+                10.0,
             ],
             'verify shipping discount when shipping amount is zero' => [
                 Rule::BY_PERCENT_ACTION,
                 100.00,
                 5.0,
                 0,
-                10.0
-            ]
+                10.0,
+            ],
         ];
     }
 
@@ -720,7 +720,7 @@ class ValidatorTest extends TestCase
                 'getExtensionAttributes',
                 'isVirtual',
                 'setAppliedRuleIds',
-                'getBaseSubtotal'
+                'getBaseSubtotal',
             ]
         );
         $cartExtensionMock = $this->createPartialMockWithReflection(

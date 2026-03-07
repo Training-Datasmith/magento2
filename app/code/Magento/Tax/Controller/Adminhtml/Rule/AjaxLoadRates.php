@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Rule;
 
-use Magento\Framework\App\Action\Context;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Tax\Model\Rate\Provider as RatesProvider;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Tax\Model\Calculation\Rate;
+use Magento\Tax\Model\Rate\Provider as RatesProvider;
 
 /**
  * Class AjaxLoadRates is intended to load existing
@@ -75,12 +78,12 @@ class AjaxLoadRates extends Action implements HttpGetActionInterface
             $response = [
                 'success' => true,
                 'errorMessage' => '',
-                'result'=> $options,
+                'result' => $options,
             ];
         } catch (\Exception $e) {
             $response = [
                 'success' => false,
-                'errorMessage' => __('An error occurred while loading tax rates.')
+                'errorMessage' => __('An error occurred while loading tax rates.'),
             ];
         }
 

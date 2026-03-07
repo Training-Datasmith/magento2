@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All rights reserved.
  */
+
 namespace Magento\Paypal\Controller\Transparent;
 
 use Magento\Framework\App\Action\Action;

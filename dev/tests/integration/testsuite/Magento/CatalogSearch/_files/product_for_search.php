@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ProductFactory;
+use Magento\Eav\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Eav\Model\Config;
-use Magento\Catalog\Model\Product;
 
 Resolver::getInstance()->requireDataFixture('Magento/CatalogSearch/_files/searchable_attribute.php');
 

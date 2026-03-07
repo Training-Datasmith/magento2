@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Shipping\Test\Unit\Controller\Adminhtml\Order\Shipment;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\View;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Layout;
 use Magento\Shipping\Block\Adminhtml\Order\Packaging\Grid;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\GetShippingItemsGrid;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -119,7 +120,7 @@ class GetShippingItemsGridTest extends TestCase
             ->with($result)->willReturnSelf();
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['order_id'] => $orderId,
                 ['shipment_id'] => $shipmentId,
                 ['shipment'] => $shipment,

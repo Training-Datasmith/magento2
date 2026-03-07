@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ $attributesData = [
     [
         'attribute_code' => 'test_catalog_view',
         'is_filterable' => 1,
-    ]
+    ],
 ];
 
 foreach ($attributesData as $data) {

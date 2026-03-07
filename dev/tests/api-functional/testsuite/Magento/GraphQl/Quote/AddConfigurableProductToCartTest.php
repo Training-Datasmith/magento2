@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -44,15 +45,15 @@ class AddConfigurableProductToCartTest extends GraphQlAbstract
             'frontend_input' => 'select',
             'options' => ['40', '42'],
             'is_configurable' => true,
-            'is_global' => true
+            'is_global' => true,
         ], as: 'attribute'),
         DataFixture(
             ProductFixture::class,
             [
                 'price' => 100,
                 'custom_attributes' => [
-                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '40']
-                ]
+                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '40'],
+                ],
             ],
             as: 'product1'
         ),
@@ -61,8 +62,8 @@ class AddConfigurableProductToCartTest extends GraphQlAbstract
             [
                 'price' => 100,
                 'custom_attributes' => [
-                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '42']
-                ]
+                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '42'],
+                ],
             ],
             as: 'product2'
         ),
@@ -72,8 +73,8 @@ class AddConfigurableProductToCartTest extends GraphQlAbstract
                 '_options' => ['$attribute$'],
                 '_links' => ['$product1$', '$product2$'],
                 'custom_attributes' => [
-                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '40']
-                ]
+                    ['attribute_code' => '$attribute.attribute_code$', 'value' => '40'],
+                ],
             ],
             'configurable_product'
         ),
@@ -91,16 +92,16 @@ class AddConfigurableProductToCartTest extends GraphQlAbstract
                     'cart' => [
                         'id' => $maskedQuoteId,
                         'itemsV2' => [
-                            'items' => []
-                        ]
+                            'items' => [],
+                        ],
                     ],
                     'user_errors' => [
                         [
                             'code' => 'REQUIRED_PARAMETER_MISSING',
-                            'message' => 'You need to choose options for your item.'
-                        ]
-                    ]
-                ]
+                            'message' => 'You need to choose options for your item.',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getAddToCartMutation(
@@ -109,7 +110,7 @@ class AddConfigurableProductToCartTest extends GraphQlAbstract
                     2
                 ),
                 [],
-                "",
+                '',
                 $this->getCustomerAuthHeaders($this->fixtures->get('customer')->getEmail())
             )
         );

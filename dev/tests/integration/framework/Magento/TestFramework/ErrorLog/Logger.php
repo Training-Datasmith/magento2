@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\TestFramework\ErrorLog;
 
 use Magento\Framework\Logger\Monolog;
-use Monolog\Handler\HandlerInterface;
 use Monolog\DateTimeImmutable;
+use Monolog\Handler\HandlerInterface;
 use Monolog\Level;
 
 class Logger extends Monolog

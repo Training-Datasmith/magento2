@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Product;
 
-use Magento\Review\Controller\Product as ProductController;
-use Magento\Review\Model\Review;
 use Magento\Catalog\Model\Product as CatalogProduct;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Review\Controller\Product as ProductController;
 
 class ListAction extends ProductController
 {

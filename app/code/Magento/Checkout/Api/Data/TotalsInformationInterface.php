@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Api\Data;
 
 /**
@@ -15,11 +18,11 @@ interface TotalsInformationInterface extends \Magento\Framework\Api\CustomAttrib
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const ADDRESS = 'address';
+    public const ADDRESS = 'address';
 
-    const SHIPPING_METHOD_CODE = 'shipping_method_code';
+    public const SHIPPING_METHOD_CODE = 'shipping_method_code';
 
-    const SHIPPING_CARRIER_CODE = 'shipping_carrier_code';
+    public const SHIPPING_CARRIER_CODE = 'shipping_carrier_code';
 
     /**#@-*/
 

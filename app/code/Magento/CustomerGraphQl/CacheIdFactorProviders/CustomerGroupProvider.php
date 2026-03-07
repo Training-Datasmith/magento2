@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ use Magento\GraphQlCache\Model\CacheId\CacheIdFactorProviderInterface;
  */
 class CustomerGroupProvider implements CacheIdFactorProviderInterface
 {
-    const NAME = "CUSTOMER_GROUP";
+    public const NAME = 'CUSTOMER_GROUP';
 
     /**
      * @inheritdoc

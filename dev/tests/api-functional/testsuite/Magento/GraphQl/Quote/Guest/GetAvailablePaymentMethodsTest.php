@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class GetAvailablePaymentMethodsTest extends GraphQlAbstract
      * @magentoApiDataFixture Magento/GraphQl/Quote/_files/set_new_billing_address.php
      * @magentoApiDataFixture Magento/GraphQl/Quote/_files/set_freeshipping_shipping_method.php
      */
-    public function testGetAvailablePaymentMethodsForZeroSubTotalCheckout():void
+    public function testGetAvailablePaymentMethodsForZeroSubTotalCheckout(): void
     {
         $maskedQuoteId = $this->getMaskedQuoteIdByReservedOrderId->execute('test_quote');
         $query = $this->getQuery($maskedQuoteId);

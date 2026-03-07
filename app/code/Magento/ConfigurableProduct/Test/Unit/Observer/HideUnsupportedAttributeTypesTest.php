@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\ConfigurableProduct\Observer\HideUnsupportedAttributeTypes;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form;
@@ -15,6 +15,7 @@ use Magento\Framework\Data\Form\Element\Select;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -59,7 +60,7 @@ class HideUnsupportedAttributeTypesTest extends TestCase
             HideUnsupportedAttributeTypes::class,
             [
                 'request' => $request,
-                'supportedTypes' => $supportedTypes
+                'supportedTypes' => $supportedTypes,
             ]
         );
     }
@@ -143,7 +144,7 @@ class HideUnsupportedAttributeTypesTest extends TestCase
                     self::createFrontendInputValue('select', 'Select'),
                     self::createFrontendInputValue('second_custom_type', 'SecondCustomType'),
                 ],
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Webapi\Backpressure\BackpressureContextFactory;
 use Magento\Framework\Webapi\Backpressure\BackpressureRequestTypeExtractorInterface;
 use Magento\Framework\Webapi\Backpressure\RestContext;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BackpressureContextFactoryTest extends TestCase
 {
@@ -80,16 +81,16 @@ class BackpressureContextFactoryTest extends TestCase
         return [
             'guest' => [
                 ContextInterface::IDENTITY_TYPE_IP,
-                '127.0.0.1'
+                '127.0.0.1',
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
-                '42'
+                '42',
             ],
             'admin' => [
                 ContextInterface::IDENTITY_TYPE_ADMIN,
-                '42'
-            ]
+                '42',
+            ],
         ];
     }
 
@@ -107,7 +108,7 @@ class BackpressureContextFactoryTest extends TestCase
         $this->identityProvider->method('fetchIdentity')->willReturn($identity);
 
         /** @var RestContext $context */
-        $context = $this->model->create($service ='SomeService', $method = 'method', $path = '/api/route');
+        $context = $this->model->create($service = 'SomeService', $method = 'method', $path = '/api/route');
         $this->assertNotNull($context);
         $this->assertEquals($identityType, $context->getIdentityType());
         $this->assertEquals($identity, $context->getIdentity());

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SampleData\Console;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -36,7 +39,7 @@ class CommandList implements \Magento\Framework\Console\CommandListInterface
     {
         return [
             \Magento\SampleData\Console\Command\SampleDataDeployCommand::class,
-            \Magento\SampleData\Console\Command\SampleDataRemoveCommand::class
+            \Magento\SampleData\Console\Command\SampleDataRemoveCommand::class,
         ];
     }
 

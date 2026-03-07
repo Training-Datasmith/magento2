@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Indexer\Test\Unit\Block\Backend\Grid;
 
 use Magento\Framework\AuthorizationInterface;
 use Magento\Indexer\Block\Backend\Grid\ItemsUpdater;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ItemsUpdaterTest extends TestCase
 {
@@ -43,7 +44,7 @@ class ItemsUpdaterTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 }

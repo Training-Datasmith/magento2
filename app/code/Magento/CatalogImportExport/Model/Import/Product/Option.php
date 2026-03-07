@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -1203,7 +1205,7 @@ class Option extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity
                     self::COLUMN_STORE => '',
                     self::COLUMN_TITLE => $name,
                     self::COLUMN_SORT_ORDER => $i,
-                    self::COLUMN_ROW_SORT => $rowOrder
+                    self::COLUMN_ROW_SORT => $rowOrder,
                 ];
                 foreach ($this->processOptionRow($name, $optionRow) as $key => $value) {
                     $row[$key] = $value;
@@ -1228,7 +1230,7 @@ class Option extends \Magento\ImportExport\Model\Import\Entity\AbstractEntity
         $result = [
             self::COLUMN_TYPE => $name ? $optionRow['type'] : '',
             self::COLUMN_ROW_TITLE => '',
-            self::COLUMN_ROW_PRICE => ''
+            self::COLUMN_ROW_PRICE => '',
         ];
 
         $result = $this->addPriceData($result, $optionRow);

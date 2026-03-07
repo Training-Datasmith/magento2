@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Customer\Model\ResourceModel\Customer\Collection
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\ResourceModel\Customer;
 
 class CollectionTest extends \PHPUnit\Framework\TestCase

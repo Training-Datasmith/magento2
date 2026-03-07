@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class MediaTest extends TestCase
                 'name' => 'test_name',
                 'config' => [
                     'uploaderConfig' => [
-                        'url' => 'module/actionPath/path'
+                        'url' => 'module/actionPath/path',
                     ],
                 ],
             ]
@@ -54,7 +55,7 @@ class MediaTest extends TestCase
         $url = 'http://magento2.com/module/actionPath/path/key/34523456234523trdg';
         $expectedConfig = [
             'uploaderConfig' => ['url' => $url],
-            'dataScope' => 'test_name'
+            'dataScope' => 'test_name',
         ];
 
         $this->processor = $this->createMock(Processor::class);
@@ -76,7 +77,7 @@ class MediaTest extends TestCase
                 'config' => [
                     'dataScope' => 'other_data_scope',
                     'uploaderConfig' => [
-                        'url' => 'module/actionPath/path'
+                        'url' => 'module/actionPath/path',
                     ],
                 ],
             ]
@@ -84,7 +85,7 @@ class MediaTest extends TestCase
         $url = 'http://magento2.com/module/actionPath/path/key/34523456234523trdg';
         $expectedConfig = [
             'uploaderConfig' => ['url' => $url],
-            'dataScope' => 'other_data_scope'
+            'dataScope' => 'other_data_scope',
         ];
 
         $this->processor = $this->createMock(Processor::class);

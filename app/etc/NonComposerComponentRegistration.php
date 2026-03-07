@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 //Register components (via a list of glob patterns)
+
 namespace Magento\NonComposerComponentRegistration;
 
 use RuntimeException;

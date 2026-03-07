@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class AdvancedPricingTest extends AbstractModifierTestCase
                 'groupManagement' => $this->groupManagementMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'moduleManager' => $this->moduleManagerMock,
-                'directoryHelper' => $this->directoryHelperMock
+                'directoryHelper' => $this->directoryHelperMock,
             ]
         );
     }

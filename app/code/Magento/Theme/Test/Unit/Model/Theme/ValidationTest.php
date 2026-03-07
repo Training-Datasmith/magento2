@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Theme data validation
  */
+
 namespace Magento\Theme\Test\Unit\Model\Theme;
 
 use Magento\Framework\DataObject;
@@ -64,7 +66,7 @@ class ValidationTest extends TestCase
                 ],
                 false,
                 [
-                    'theme_title' => ['Field title can\'t be empty']
+                    'theme_title' => ['Field title can\'t be empty'],
                 ],
             ],
         ];

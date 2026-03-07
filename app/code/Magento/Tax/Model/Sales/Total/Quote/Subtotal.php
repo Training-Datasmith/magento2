@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Calculate items and address amounts including/excluding tax
  */
+
 namespace Magento\Tax\Model\Sales\Total\Quote;
 
-use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Model\Quote\Address;
 
 class Subtotal extends CommonTaxCollector
 {

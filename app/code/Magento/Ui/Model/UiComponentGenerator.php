@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Model;
 
 use Magento\Framework\View\Element\UiComponent\ContextFactory;
@@ -60,7 +63,7 @@ class UiComponentGenerator
             $name,
             null,
             [
-                'context' => $context
+                'context' => $context,
             ]
         );
         return $this->prepareComponent($component);

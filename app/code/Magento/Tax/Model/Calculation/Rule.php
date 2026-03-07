@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Calculation;
 
 use Magento\Framework\Api\AttributeValueFactory;
@@ -18,14 +21,14 @@ class Rule extends \Magento\Framework\Model\AbstractExtensibleModel implements T
      *
      * Tax rule field key.
      */
-    const KEY_ID       = 'id';
-    const KEY_CODE     = 'code';
-    const KEY_PRIORITY = 'priority';
-    const KEY_POSITION = 'position';
-    const KEY_CUSTOMER_TAX_CLASS_IDS = 'customer_tax_class_ids';
-    const KEY_PRODUCT_TAX_CLASS_IDS  = 'product_tax_class_ids';
-    const KEY_TAX_RATE_IDS           = 'tax_rate_ids';
-    const KEY_CALCULATE_SUBTOTAL     = 'calculate_subtotal';
+    public const KEY_ID       = 'id';
+    public const KEY_CODE     = 'code';
+    public const KEY_PRIORITY = 'priority';
+    public const KEY_POSITION = 'position';
+    public const KEY_CUSTOMER_TAX_CLASS_IDS = 'customer_tax_class_ids';
+    public const KEY_PRODUCT_TAX_CLASS_IDS  = 'product_tax_class_ids';
+    public const KEY_TAX_RATE_IDS           = 'tax_rate_ids';
+    public const KEY_CALCULATE_SUBTOTAL     = 'calculate_subtotal';
     /**#@-*/
 
     /**#@-*/

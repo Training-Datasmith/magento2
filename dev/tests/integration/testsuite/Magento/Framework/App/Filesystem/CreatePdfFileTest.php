@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\App\Filesystem;
 
+use Laminas\Http\Header\ContentType;
 use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\Filesystem;
 use Magento\TestFramework\Helper\Bootstrap;
-use Laminas\Http\Header\ContentType;
 
 /**
  * Class CreatePdfFileTest

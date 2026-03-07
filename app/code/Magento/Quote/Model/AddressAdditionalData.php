@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model;
 
-use Magento\Quote\Api\Data\AddressAdditionalDataInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
+use Magento\Quote\Api\Data\AddressAdditionalDataInterface;
 
 class AddressAdditionalData extends AbstractExtensibleModel implements AddressAdditionalDataInterface
 {

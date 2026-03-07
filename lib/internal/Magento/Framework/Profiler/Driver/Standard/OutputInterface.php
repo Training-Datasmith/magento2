@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Interface for output class of standard profiler driver.
  *

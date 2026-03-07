@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,8 +13,8 @@ use Magento\Catalog\Api\TierPriceStorageInterface;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceIndexerProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\TierPriceValidator;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
-use Magento\Framework\Exception\InputException;
 use Magento\Customer\Model\ResourceModel\Group\GetCustomerGroupCodesByIds;
+use Magento\Framework\Exception\InputException;
 
 class TierPriceStorage implements TierPriceStorageInterface
 {

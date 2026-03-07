@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Backend\Model\Url
  */
+
 namespace Magento\Backend\Test\Unit\Block\Widget\Grid;
 
 use Magento\Backend\Block\Widget\Grid\ColumnSet;
@@ -33,12 +35,12 @@ class ExtendedTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->_objectManager->prepareObjectManager($objects);
     }

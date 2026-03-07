@@ -1,17 +1,18 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductTierPriceExtensionFactory;
+use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Model\Group;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Customer\Model\Group;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/product_simple.php');
 
@@ -25,22 +26,22 @@ $tierPriceExtensionAttributes = $tpExtensionAttributesFactory->create()->setWebs
 $pricesForCustomerGroupsInput = [
     [
         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
-        'percentage_value'=> null,
-        'qty'=> 1,
-        'value'=> 50
+        'percentage_value' => null,
+        'qty' => 1,
+        'value' => 50,
     ],
     [
         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
-        'percentage_value'=> null,
-        'qty'=> 2,
-        'value'=> 80
-    ]
+        'percentage_value' => null,
+        'qty' => 2,
+        'value' => 80,
+    ],
 ];
 $productTierPrices = [];
 foreach ($pricesForCustomerGroupsInput as $price) {
     $productTierPrices[] = $tierPriceFactory->create(
         [
-            'data' => $price
+            'data' => $price,
         ]
     )->setExtensionAttributes($tierPriceExtensionAttributes);
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -25,7 +27,7 @@ class ForeignKey implements DbDefinitionProcessorInterface
     /**
      * Foreign key statement.
      */
-    const FOREIGN_KEY_STATEMENT = 'FOREIGN KEY';
+    public const FOREIGN_KEY_STATEMENT = 'FOREIGN KEY';
 
     /**
      * @var ResourceConnection
@@ -55,13 +57,13 @@ class ForeignKey implements DbDefinitionProcessorInterface
         );
         //CONSTRAINT `fk_name` FOREIGN KEY (`column`) REFERENCES `table` (`column`) option
         $foreignKeySql = sprintf(
-            "CONSTRAINT %s %s (%s) REFERENCES %s (%s) %s",
+            'CONSTRAINT %s %s (%s) REFERENCES %s (%s) %s',
             $adapter->quoteIdentifier($foreignKey->getName()),
             self::FOREIGN_KEY_STATEMENT,
             $adapter->quoteIdentifier($foreignKey->getColumn()->getName()),
             $adapter->quoteIdentifier($referenceTable),
             $adapter->quoteIdentifier($foreignKey->getReferenceColumn()->getName()),
-            $foreignKey->getOnDelete() ? sprintf(" ON DELETE %s", $foreignKey->getOnDelete()) : ''
+            $foreignKey->getOnDelete() ? sprintf(' ON DELETE %s', $foreignKey->getOnDelete()) : ''
         );
 
         return $foreignKeySql;
@@ -94,7 +96,7 @@ class ForeignKey implements DbDefinitionProcessorInterface
                     'column' => $match[2],
                     'referenceTable' => $match[5],
                     'referenceColumn' => $match[6],
-                    'onDelete' => isset($match[7]) ? $match[8] : 'NO ACTION'
+                    'onDelete' => isset($match[7]) ? $match[8] : 'NO ACTION',
                 ];
             }
         }

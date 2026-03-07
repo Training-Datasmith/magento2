@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\OfflineShipping\Test\Fixture;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
-use Magento\TestFramework\Fixture\Api\ServiceFactory;
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate;
 use Magento\TestFramework\Fixture\Api\DataMerger;
+use Magento\TestFramework\Fixture\Api\ServiceFactory;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate;
 
 class TablerateFixture implements RevertibleDataFixtureInterface
 {
@@ -27,7 +28,7 @@ class TablerateFixture implements RevertibleDataFixtureInterface
         'condition_name' => 'package_qty',
         'condition_value' => 1,
         'price' => 10,
-        'cost' => 0
+        'cost' => 0,
     ];
 
     /**
@@ -67,13 +68,13 @@ class TablerateFixture implements RevertibleDataFixtureInterface
             'condition_name',
             'condition_value',
             'price',
-            'cost'
+            'cost',
         ];
         $resourceModel->getConnection()->insertArray(
             $resourceModel->getMainTable(),
             $columns,
             [
-                $data
+                $data,
             ]
         );
         return new DataObject($data);

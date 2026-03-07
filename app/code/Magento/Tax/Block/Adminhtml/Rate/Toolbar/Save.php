@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Admin tax rate save toolbar
  */
+
 namespace Magento\Tax\Block\Adminhtml\Rate\Toolbar;
 
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 
 /**
  * Rate toolbar block
@@ -124,7 +127,7 @@ class Save extends \Magento\Backend\Block\Template implements \Magento\Backend\B
             [
                 'label' => __('Back'),
                 'onclick' => 'window.location.href=\'' . $this->getUrl('tax/*/') . '\'',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
 
@@ -146,7 +149,7 @@ class Save extends \Magento\Backend\Block\Template implements \Magento\Backend\B
                         'tax/*/delete',
                         ['rate' => $rate]
                     ) . '\', {data: {}})',
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
         }
@@ -158,7 +161,7 @@ class Save extends \Magento\Backend\Block\Template implements \Magento\Backend\B
                 'class' => 'save primary save-rate',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#rate-form']],
-                ]
+                ],
             ]
         );
         $this->toolbar->pushButtons($this, $this->buttonList);

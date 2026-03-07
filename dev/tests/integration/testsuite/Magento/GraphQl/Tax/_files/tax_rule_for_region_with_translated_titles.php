@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Framework\Api\DataObjectHelper;
 use Magento\Tax\Api\Data\TaxRateInterface;
-use Magento\Tax\Api\Data\TaxRateTitleInterface;
 use Magento\Tax\Api\Data\TaxRuleInterface;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
@@ -18,7 +20,6 @@ use Magento\Tax\Model\Calculation\Rule;
 use Magento\Tax\Model\Calculation\RuleFactory;
 use Magento\Tax\Model\TaxRuleRepository;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Api\DataObjectHelper;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var DataObjectHelper $dataObjectHelper */
@@ -47,14 +48,14 @@ $rateData = [
     Rate::KEY_POSTCODE => '*',
     Rate::KEY_CODE => 'US-TEST-*-Rate-1',
     Rate::KEY_PERCENTAGE_RATE => '7.5',
-    Rate::KEY_TITLES => [$rateTitleData]
+    Rate::KEY_TITLES => [$rateTitleData],
 ];
 $dataObjectHelper->populateWithArray($rate, $rateData, TaxRateInterface::class);
 $rateRepository->save($rate);
 
 $rule = $ruleFactory->create();
 $ruleData = [
-    Rule::KEY_CODE=> 'GraphQl Test Rule',
+    Rule::KEY_CODE => 'GraphQl Test Rule',
     Rule::KEY_PRIORITY => '0',
     Rule::KEY_POSITION => '0',
     Rule::KEY_CUSTOMER_TAX_CLASS_IDS => [3],

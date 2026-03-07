@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Stdlib\Test\Unit\Cookie;
 use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test PublicCookieMetadata
@@ -49,13 +50,13 @@ class PublicCookieMetadataTest extends TestCase
     public static function getMethodData()
     {
         return [
-            "getDomain" => ["setDomain", 'getDomain', "example.com"],
-            "getPath" => ["setPath", 'getPath', "path"],
-            "getDuration" => ["setDuration", 'getDuration', 125],
-            "getHttpOnly" => ["setHttpOnly", 'getHttpOnly', true],
-            "getSecure" => ["setSecure", 'getSecure', true],
-            "getDurationOneYear" => ["setDurationOneYear", 'getDuration', (3600*24*365)],
-            "getSameSite" => ["setSameSite", 'getSameSite', 'Lax']
+            'getDomain' => ['setDomain', 'getDomain', 'example.com'],
+            'getPath' => ['setPath', 'getPath', 'path'],
+            'getDuration' => ['setDuration', 'getDuration', 125],
+            'getHttpOnly' => ['setHttpOnly', 'getHttpOnly', true],
+            'getSecure' => ['setSecure', 'getSecure', true],
+            'getDurationOneYear' => ['setDurationOneYear', 'getDuration', (3600 * 24 * 365)],
+            'getSameSite' => ['setSameSite', 'getSameSite', 'Lax'],
         ];
     }
 
@@ -77,7 +78,7 @@ class PublicCookieMetadataTest extends TestCase
                     PublicCookieMetadata::KEY_PATH => 'path',
                     PublicCookieMetadata::KEY_SAME_SITE => 'Lax',
                 ],
-            ]
+            ],
         ];
     }
 

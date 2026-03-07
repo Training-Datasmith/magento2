@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\App\Config.
  */
+
 namespace Magento\Test\App;
 
 use Magento\Framework\App\Config\ScopeCodeResolver;
@@ -29,8 +32,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
 
     public function testGet()
     {
-        $configType = "system";
-        $path = "stores/one";
+        $configType = 'system';
+        $path = 'stores/one';
         $value = 1;
         $this->model->setValue($path, $value, 'default', 'one');
 
@@ -39,8 +42,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
 
     public function testClean()
     {
-        $configType = "system";
-        $path = "stores/one";
+        $configType = 'system';
+        $path = 'stores/one';
         $value = 1;
         $this->model->setValue($path, $value, 'default', 'one');
         $this->assertEquals($value, $this->model->get($configType, 'default/stores/one'));

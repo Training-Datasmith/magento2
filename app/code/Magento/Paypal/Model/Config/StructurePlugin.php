@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Config;
 
 use Magento\Config\Model\Config\ScopeDefiner;
 use Magento\Config\Model\Config\Structure;
 use Magento\Config\Model\Config\Structure\Element\Section;
 use Magento\Config\Model\Config\Structure\ElementInterface;
-use Magento\Paypal\Helper\Backend as BackendHelper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Paypal\Helper\Backend as BackendHelper;
 use Magento\Paypal\Model\Config\Structure\PaymentSectionModifier;
 
 /**
@@ -21,7 +24,7 @@ class StructurePlugin
     /**
      * Request parameter name
      */
-    const REQUEST_PARAM_COUNTRY = 'paypal_country';
+    public const REQUEST_PARAM_COUNTRY = 'paypal_country';
 
     /**
      * @var BackendHelper

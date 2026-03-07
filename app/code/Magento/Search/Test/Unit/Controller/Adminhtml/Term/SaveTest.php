@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Search\Controller\Adminhtml\Term\Save;
 use Magento\Search\Model\Query;
 use Magento\Search\Model\QueryFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -155,7 +156,7 @@ class SaveTest extends TestCase
     {
         return [
             [false, ['0' => '0']],
-            [true, []]
+            [true, []],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class CurrencyTest extends TestCase
                 'serializer' => $this->serializer,
                 'data' => [
                     'currency_code' => $this->currencyCode,
-                ]
+                ],
             ]
         );
     }
@@ -123,7 +124,7 @@ class CurrencyTest extends TestCase
         $this->serializer->method('serialize')->willReturnMap(
             [
                 [[], '[]'],
-                [['display' => 1], '{"display":1}']
+                [['display' => 1], '{"display":1}'],
             ]
         );
 
@@ -175,8 +176,8 @@ class CurrencyTest extends TestCase
         $problematicFormats = [
             'ar_DZ:EGP' => [
                 'old' => "\u{062C}.\u{0645}.\u{200F}\u{00A0}%s",
-                'new' => "%s\u{00A0}\u{062C}.\u{0645}.\u{200F}"
-            ]
+                'new' => "%s\u{00A0}\u{062C}.\u{0645}.\u{200F}",
+            ],
         ];
 
         $key = $locale . ':' . $currency;
@@ -191,7 +192,7 @@ class CurrencyTest extends TestCase
 
         // For non-problematic combinations, return a default format
         // This could be enhanced with more specific formats as needed
-        return "%s";
+        return '%s';
     }
 
     /**
@@ -245,7 +246,7 @@ class CurrencyTest extends TestCase
             );
         $this->serializer->method('serialize')->willReturnMap(
             [
-                [[], '[]']
+                [[], '[]'],
             ]
         );
 
@@ -277,14 +278,14 @@ class CurrencyTest extends TestCase
                 'USD',
                 '9999',
                 ['display' => CurrencyData::NO_SYMBOL],
-                "\u{0669}\u{066C}\u{0669}\u{0669}\u{0669}\u{066B}\u{0660}\u{0660}"
+                "\u{0669}\u{066C}\u{0669}\u{0669}\u{0669}\u{066B}\u{0660}\u{0660}",
             ],
             [
                 'ar_SA',
                 'AED',
                 '9999',
                 ['display' => CurrencyData::NO_SYMBOL],
-                "\u{0669}\u{066C}\u{0669}\u{0669}\u{0669}\u{066B}\u{0660}\u{0660}"
+                "\u{0669}\u{066C}\u{0669}\u{0669}\u{0669}\u{066B}\u{0660}\u{0660}",
             ],
             ['en_US', 'USD', ' 9999', ['display' => CurrencyData::NO_SYMBOL], '9,999.00'],
             ['en_US', 'USD', '9999', ['precision' => 1], '$9,999.0'],
@@ -294,7 +295,7 @@ class CurrencyTest extends TestCase
                 'USD',
                 '9999.99',
                 ['precision' => 2, 'symbol' => '#', 'display' => CurrencyData::NO_SYMBOL],
-                '9,999.99'
+                '9,999.99',
             ],
             ['he_IL', 'USD', '9999', [], '9,999.00 ‏$'],
             ['he_IL', 'USD', '9999', ['display' => CurrencyData::NO_SYMBOL], '9,999.00'],
@@ -317,7 +318,7 @@ class CurrencyTest extends TestCase
             ->willReturn(new CurrencyData($options, 'en_US'));
         $this->serializer->method('serialize')->willReturnMap(
             [
-                [[], '[]']
+                [[], '[]'],
             ]
         );
 
@@ -336,7 +337,7 @@ class CurrencyTest extends TestCase
             ['9999', ['display' => Currency::USE_SHORTNAME, 'foo' => 'bar'], 'USD9,999.00'],
             ['9999', ['currency' => 'USD'], '$9,999.00'],
             ['9999', ['currency' => 'CNY'], 'CN¥9,999.00'],
-            ['9999', ['locale' => 'fr_FR'], "9\u{202F}999,00\u{00A0}$"]
+            ['9999', ['locale' => 'fr_FR'], "9\u{202F}999,00\u{00A0}$"],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\GuestCart;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\Quote\Api\ShipmentEstimationInterface;
@@ -17,6 +17,7 @@ use Magento\Quote\Model\GuestCart\GuestShippingMethodManagement;
 use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Model\ShippingMethodManagement;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -67,10 +68,10 @@ class GuestShippingMethodManagementTest extends TestCase
             $this->createMock(ShippingMethodManagement::class);
 
         // Create QuoteIdMask mock
-        $this->quoteIdMask = $this->createPartialMockWithReflection(QuoteIdMask::class, ["load", "getQuoteId"]);
+        $this->quoteIdMask = $this->createPartialMockWithReflection(QuoteIdMask::class, ['load', 'getQuoteId']);
         $this->quoteIdMask->method('load')->with($this->maskedCartId)->willReturnSelf();
         $this->quoteIdMask->method('getQuoteId')->willReturn($this->cartId);
-        
+
         // Create QuoteIdMaskFactory mock
         $this->quoteIdMaskFactoryMock = $this->createMock(QuoteIdMaskFactory::class);
         $this->quoteIdMaskFactoryMock->method('create')->willReturn($this->quoteIdMask);

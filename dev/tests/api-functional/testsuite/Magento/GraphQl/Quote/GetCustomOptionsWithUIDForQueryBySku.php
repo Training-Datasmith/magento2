@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -48,14 +49,14 @@ class GetCustomOptionsWithUIDForQueryBySku
                     $enteredOptions[] = [
                         'type' => 'field',
                         'uid' => $this->encodeEnteredOption((int) $customOption->getOptionId()),
-                        'value' => 'test'
+                        'value' => 'test',
                     ];
                     break;
                 case 'date':
                     $enteredOptions[] = [
                         'type' => 'date',
                         'uid' => $this->encodeEnteredOption((int) $customOption->getOptionId()),
-                        'value' => '2012-12-12 00:00:00'
+                        'value' => '2012-12-12 00:00:00',
                     ];
                     break;
                 case 'drop_down':
@@ -78,7 +79,7 @@ class GetCustomOptionsWithUIDForQueryBySku
 
         return [
             'selected_options' => $selectedOptions,
-            'entered_options' => $enteredOptions
+            'entered_options' => $enteredOptions,
         ];
     }
 

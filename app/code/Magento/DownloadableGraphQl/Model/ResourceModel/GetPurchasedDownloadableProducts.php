@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\DownloadableGraphQl\Model\ResourceModel;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Downloadable\Model\Link\Purchased\Item;
+use Magento\Framework\App\ResourceConnection;
 
 /**
  * The model returns all purchased products for the specified customer

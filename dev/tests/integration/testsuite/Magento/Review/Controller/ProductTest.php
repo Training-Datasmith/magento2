@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller;
 
 class ProductTest extends \Magento\TestFramework\TestCase\AbstractController
@@ -18,6 +21,6 @@ class ProductTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->getRequest()->setParam('id', $product->getId());
         $this->dispatch('review/product/listAction');
         $result = $this->getResponse()->getBody();
-        $this->assertStringNotContainsString("/frontend/Magento/luma/en_US/", $result);
+        $this->assertStringNotContainsString('/frontend/Magento/luma/en_US/', $result);
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab;
 
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
@@ -182,7 +185,7 @@ class Actions extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'legend' => __(
                     'Apply the rule only to cart items matching the following conditions ' .
                     '(leave blank for all items).'
-                )
+                ),
             ]
         )->setRenderer(
             $renderer
@@ -196,7 +199,7 @@ class Actions extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'label' => __('Apply To'),
                 'title' => __('Apply To'),
                 'required' => true,
-                'data-form-part' => $formName
+                'data-form-part' => $formName,
             ]
         )->setRule(
             $model

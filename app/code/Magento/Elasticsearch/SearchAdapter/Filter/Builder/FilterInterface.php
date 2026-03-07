@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter\Filter\Builder;
 
 use Magento\Framework\Search\Request\FilterInterface as RequestFilterInterface;

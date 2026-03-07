@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -304,7 +305,7 @@ class BackendWrapperTest extends TestCase
     public function testCleanWithUnsupportedModeThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Backend clean only supports ALL and OLD modes");
+        $this->expectExceptionMessage('Backend clean only supports ALL and OLD modes');
 
         $this->backendWrapper->clean('unsupported_mode');
     }
@@ -315,7 +316,7 @@ class BackendWrapperTest extends TestCase
     public function testCleanWithMatchingTagModeThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Backend clean only supports ALL and OLD modes");
+        $this->expectExceptionMessage('Backend clean only supports ALL and OLD modes');
 
         $this->backendWrapper->clean(CacheConstants::CLEANING_MODE_MATCHING_TAG, ['tag1']);
     }

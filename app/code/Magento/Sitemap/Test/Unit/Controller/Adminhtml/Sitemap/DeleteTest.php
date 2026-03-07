@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class DeleteTest extends TestCase
         $this->response->expects($this->once())->method('setRedirect');
         $this->sessionMock->expects($this->any())->method('setIsUrlNotice')->willReturn($this->objectManager);
         $this->actionFlag = $this->createPartialMock(ActionFlag::class, ['get']);
-        $this->actionFlag->expects($this->any())->method("get")->willReturn($this->objectManager);
+        $this->actionFlag->expects($this->any())->method('get')->willReturn($this->objectManager);
         $this->objectManager = $this->createPartialMockWithReflection(
             ObjectManager::class,
             ['get']
@@ -136,7 +137,7 @@ class DeleteTest extends TestCase
         $this->contextMock->expects($this->any())
             ->method('getHelper')
             ->willReturn($this->helperMock);
-        $this->contextMock->expects($this->any())->method("getActionFlag")->willReturn($this->actionFlag);
+        $this->contextMock->expects($this->any())->method('getActionFlag')->willReturn($this->actionFlag);
         $this->fileSystem = $this->createMock(Filesystem::class);
         $this->siteMapFactory = $this->createMock(SitemapFactory::class);
         $this->deleteController = new Delete(

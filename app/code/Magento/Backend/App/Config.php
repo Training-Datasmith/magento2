@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,22 +17,12 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 class Config implements ConfigInterface
 {
     /**
-     * @var \Magento\Framework\App\Config
-     */
-    protected $appConfig;
-
-    /**
      * @var array
      */
     private $data;
 
-    /**
-     * @param \Magento\Framework\App\Config $appConfig
-     * @return void
-     */
-    public function __construct(\Magento\Framework\App\Config $appConfig)
+    public function __construct(protected \Magento\Framework\App\Config $appConfig)
     {
-        $this->appConfig = $appConfig;
     }
 
     /**
@@ -52,7 +44,7 @@ class Config implements ConfigInterface
     /**
      * @inheritdoc
      */
-    public function setValue($path, $value)
+    public function setValue($path, $value): void
     {
         $this->data[$path] = $value;
     }
@@ -60,7 +52,7 @@ class Config implements ConfigInterface
     /**
      * @inheritdoc
      */
-    public function isSetFlag($path)
+    public function isSetFlag($path): bool
     {
         $configPath = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
         if ($path) {

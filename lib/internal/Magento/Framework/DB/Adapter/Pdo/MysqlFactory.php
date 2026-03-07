@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Adapter\Pdo;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DB\LoggerInterface;
 use Magento\Framework\DB\SelectFactory;
 use Magento\Framework\ObjectManagerInterface;
@@ -53,7 +55,7 @@ class MysqlFactory
             throw new \InvalidArgumentException('Invalid class, ' . $className . ' must extend ' . Mysql::class . '.');
         }
         $arguments = [
-            'config' => $config
+            'config' => $config,
         ];
         if ($logger) {
             $arguments['logger'] = $logger;

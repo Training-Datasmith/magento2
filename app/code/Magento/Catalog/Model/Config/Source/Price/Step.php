@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Config\Source\Price;
 
 use Magento\Catalog\Model\Layer\Filter\Dynamic\AlgorithmFactory;
@@ -24,12 +27,12 @@ class Step implements ArrayInterface
             ],
             [
                 'value' => AlgorithmFactory::RANGE_CALCULATION_IMPROVED,
-                'label' => __('Automatic (equalize product counts)')
+                'label' => __('Automatic (equalize product counts)'),
             ],
             [
                 'value' => AlgorithmFactory::RANGE_CALCULATION_MANUAL,
-                'label' => __('Manual')
-            ]
+                'label' => __('Manual'),
+            ],
         ];
     }
 }

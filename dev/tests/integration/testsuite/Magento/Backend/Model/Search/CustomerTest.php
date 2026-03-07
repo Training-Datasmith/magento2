@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -68,8 +70,8 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
                         'id' => 'customer/1/2',
                         'type' => 'Customer',
                         'name' => 'Firstname2 Lastname2',
-                        'description' => null
-                    ]
+                        'description' => null,
+                    ],
                 ],
             ],
             'All items, second page' => [
@@ -82,7 +84,7 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
                         'type' => 'Customer',
                         'name' => 'Firstname3 Lastname3',
                         'description' => null,
-                    ]
+                    ],
                 ],
             ],
             'Search by last name, second item only' => [
@@ -95,7 +97,7 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
                         'type' => 'Customer',
                         'name' => 'Firstname2 Lastname2',
                         'description' => null,
-                    ]
+                    ],
                 ],
             ],
             'No results' => [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -74,8 +75,8 @@ class OptionsTest extends TestCase
         $expectedResult = [
             [
                 'value' => 'description',
-                'label' => 'description'
-            ]
+                'label' => 'description',
+            ],
         ];
 
         $this->assertEquals($expectedResult, $this->model->toOptionArray());

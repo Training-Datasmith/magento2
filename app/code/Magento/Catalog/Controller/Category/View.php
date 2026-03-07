@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -24,7 +25,6 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\ForwardFactory;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
@@ -418,7 +418,7 @@ class View extends Action implements HttpGetActionInterface, HttpPostActionInter
                 Toolbar::ORDER_PARAM_NAME,
                 Toolbar::DIRECTION_PARAM_NAME,
                 Toolbar::MODE_PARAM_NAME,
-                Toolbar::LIMIT_PARAM_NAME
+                Toolbar::LIMIT_PARAM_NAME,
             ], array_keys($params)));
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 use Magento\Framework\App\Config;
@@ -10,9 +13,9 @@ use Magento\Framework\App\ObjectManager;
 
 class DataTest extends \PHPUnit\Framework\TestCase
 {
-    const SAMPLE_CONFIG_PATH = 'web/unsecure/base_url';
+    public const SAMPLE_CONFIG_PATH = 'web/unsecure/base_url';
 
-    const SAMPLE_VALUE = 'http://example.com/';
+    public const SAMPLE_VALUE = 'http://example.com/';
 
     /**
      * @var \Magento\Framework\App\Config\Value

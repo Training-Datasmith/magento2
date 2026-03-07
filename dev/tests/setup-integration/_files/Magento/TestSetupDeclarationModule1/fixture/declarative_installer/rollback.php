@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,11 +19,11 @@ REFERENCES `store_owner` (`owner_id`) ON DELETE SET NULL
   `owner_id` smallint(6) NOT NULL AUTO_INCREMENT,
   `store_owner_name` varchar(255) DEFAULT NULL COMMENT \'Store Owner Name\',
   PRIMARY KEY (`owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=\'Store owner information\''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=\'Store owner information\'',
     ],
     'after' => [
         'store' => 'CREATE TABLE `store` (
   `store_owner` varchar(255) DEFAULT NULL COMMENT \'Store Owner Name\'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8'
-    ]
+) ENGINE=InnoDB DEFAULT CHARSET=utf8',
+    ],
 ];

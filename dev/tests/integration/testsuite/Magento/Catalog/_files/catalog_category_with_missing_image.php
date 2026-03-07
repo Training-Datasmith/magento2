@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ $filePath = 'catalog/category/' . $fileName;
 $mediaDirectory->create('catalog/category');
 $shortImageContent = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . $fileName);
 $mediaDirectory->getDriver()->filePutContents($mediaDirectory->getAbsolutePath($filePath), $shortImageContent);
-
 
 $filePath = 'catalog/category/magento_small_image.jpg';
 /** @var Category $category */

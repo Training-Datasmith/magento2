@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterfaceFactory;
-use Magento\Catalog\Model\Product\Type as ProductType;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Msrp\Model\Product\Attribute\Source\Type;
 use Magento\Store\Api\WebsiteRepositoryInterface;

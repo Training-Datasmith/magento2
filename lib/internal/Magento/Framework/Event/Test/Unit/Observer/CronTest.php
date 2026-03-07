@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Event\Test\Unit\Observer;
 
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer\Cron;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CronTest extends TestCase
 {
@@ -67,7 +68,7 @@ class CronTest extends TestCase
             ['SATupper-case & suffix', 6],
             [154, 154],
             [3.14, 3.14],
-            ['12', '12']
+            ['12', '12'],
         ];
     }
 
@@ -121,7 +122,7 @@ class CronTest extends TestCase
             [mktime(0, 0, 12, 7, 1, 2000), '* * * * *', true],
             [mktime(0, 0, 12, 7, 1, 2000), '* * * * * *', false],
             [mktime(12, 0, 0, 7, 1, 2000), '0 12 * * *', true],
-            [mktime(11, 0, 0, 7, 1, 2000), '0 12 * * *', false]
+            [mktime(11, 0, 0, 7, 1, 2000), '0 12 * * *', false],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class HttpRequestProcessor
      * @param Http $request
      * @return void
      */
-    public function processHeaders(Http $request) : void
+    public function processHeaders(Http $request): void
     {
         foreach ($this->headerProcessors as $headerName => $headerClass) {
             $headerClass->processHeaderValue((string)$request->getHeader($headerName));
@@ -53,7 +54,7 @@ class HttpRequestProcessor
      * @param Http $request
      * @return void
      */
-    public function validateRequest(Http $request) : void
+    public function validateRequest(Http $request): void
     {
         foreach ($this->requestValidators as $requestValidator) {
             $requestValidator->validate($request);

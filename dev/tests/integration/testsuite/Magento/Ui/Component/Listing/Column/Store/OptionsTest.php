@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class OptionsTest extends TestCase
     }
 
     #[
-        DataFixture(StoreFixture::class, ["name" =>"Default's Store"], 'store'),
+        DataFixture(StoreFixture::class, ['name' => "Default's Store"], 'store'),
     ]
     public function testStoreLabeleWithSingleQuote()
     {

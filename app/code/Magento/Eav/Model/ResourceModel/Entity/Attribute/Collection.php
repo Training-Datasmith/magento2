@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,7 +95,7 @@ class Collection extends AbstractCollection
             'backend_type',
             'backend_table',
             'frontend_input',
-            'source_model'
+            'source_model',
         ];
     }
 
@@ -339,7 +341,7 @@ class Collection extends AbstractCollection
             [
                 $connection->quoteInto('(main_table.frontend_input = ? AND ao.option_id > 0)', 'select'),
                 $connection->quoteInto('(main_table.frontend_input <> ?)', 'select'),
-                '(main_table.is_user_defined = 0)'
+                '(main_table.is_user_defined = 0)',
             ]
         );
 

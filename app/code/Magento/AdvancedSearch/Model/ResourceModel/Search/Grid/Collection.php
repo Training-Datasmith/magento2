@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\ResourceModel\Search\Grid;
 
 /**
@@ -12,18 +15,6 @@ namespace Magento\AdvancedSearch\Model\ResourceModel\Search\Grid;
 class Collection extends \Magento\Search\Model\ResourceModel\Query\Collection
 {
     /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $_registryManager;
-
-    /**
-     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\DB\Helper $resourceHelper
-     * @param \Magento\Framework\Registry $registry
      * @param mixed $connection
      * @param mixed $resource
      */
@@ -34,11 +25,10 @@ class Collection extends \Magento\Search\Model\ResourceModel\Query\Collection
         \Magento\Framework\Event\ManagerInterface $eventManager,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\DB\Helper $resourceHelper,
-        \Magento\Framework\Registry $registry,
+        protected \Magento\Framework\Registry $_registryManager,
         ?\Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        $resource = null
+        ?\Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
-        $this->_registryManager = $registry;
         parent::__construct(
             $entityFactory,
             $logger,
@@ -56,7 +46,7 @@ class Collection extends \Magento\Search\Model\ResourceModel\Query\Collection
      *
      * @return $this
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         parent::_initSelect();
         $queryId = $this->getQuery()->getId();

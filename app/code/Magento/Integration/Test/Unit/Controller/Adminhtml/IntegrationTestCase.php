@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Test\Unit\Controller\Adminhtml;
 
 use Magento\Backend\App\Action\Context;
@@ -25,12 +28,12 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate;
 use Magento\Framework\TranslateInterface;
+use Magento\Framework\View\Layout as LayoutModel;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Model\Layout\Merge;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Page;
-use Magento\Framework\View\Layout as LayoutModel;
 use Magento\Integration\Api\IntegrationServiceInterface;
 use Magento\Integration\Api\OauthServiceInterface;
 use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
@@ -324,7 +327,7 @@ abstract class IntegrationTestCase extends TestCase
             'resultRedirectFactory' => $this->resultRedirectFactory,
             'resultFactory' => $this->resultFactory,
             'auth' => $this->_authMock,
-            'eventManager' => $this->_eventManagerMock
+            'eventManager' => $this->_eventManagerMock,
         ];
 
         $this->_backendActionCtxMock = $this->_objectManagerHelper->getObject(

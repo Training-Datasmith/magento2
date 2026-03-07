@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Item;
 
 use Magento\Catalog\Model\Product;
-use Magento\Quote\Model\Quote\ItemFactory;
-use Magento\Quote\Model\Quote\Item;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\DataObject;
 use Magento\Quote\Api\Data\CartItemInterface;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Quote\Model\Quote\ItemFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Processor

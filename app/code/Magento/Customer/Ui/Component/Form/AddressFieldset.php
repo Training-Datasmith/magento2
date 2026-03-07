@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Ui\Component\Form;
 
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\ComponentVisibilityInterface;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 /**
  * Customer addresses fieldset class

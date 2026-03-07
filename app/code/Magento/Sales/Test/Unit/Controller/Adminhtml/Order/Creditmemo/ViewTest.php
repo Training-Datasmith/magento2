@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,6 +21,7 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Page\Config;
@@ -30,10 +32,9 @@ use Magento\Sales\Controller\Adminhtml\Order\Creditmemo\View;
 use Magento\Sales\Controller\Adminhtml\Order\CreditmemoLoader;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Invoice;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -170,7 +171,7 @@ class ViewTest extends TestCase
                 'getHelper',
                 'getActionFlag',
                 'getMessageManager',
-                'getResultRedirectFactory'
+                'getResultRedirectFactory',
             ]
         );
         $this->contextMock->expects($this->any())
@@ -230,7 +231,7 @@ class ViewTest extends TestCase
                 'creditmemoLoader' => $this->loaderMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultForwardFactory' => $this->resultForwardFactoryMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
     }
@@ -299,7 +300,7 @@ class ViewTest extends TestCase
     {
         return [
             [false],
-            [self::$invoiceMock]
+            [self::$invoiceMock],
         ];
     }
 

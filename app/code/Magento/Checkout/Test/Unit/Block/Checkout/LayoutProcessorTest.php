@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -206,31 +207,31 @@ class LayoutProcessorTest extends TestCase
                                                         'payment1' => [
                                                             'methods' => [
                                                                 'payment1_1' => [
-                                                                    'isBillingAddressRequired' => true
-                                                                ]
-                                                            ]
+                                                                    'isBillingAddressRequired' => true,
+                                                                ],
+                                                            ],
                                                         ],
                                                         'payment2' => [
                                                             'methods' => [
                                                                 'payment2_1' => [
-                                                                    'isBillingAddressRequired' => true
+                                                                    'isBillingAddressRequired' => true,
                                                                 ],
                                                                 'payment2_2' => [
-                                                                    'isBillingAddressRequired' => false
-                                                                ]
-                                                            ]
-                                                        ]
-                                                    ]
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                                                    'isBillingAddressRequired' => false,
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 

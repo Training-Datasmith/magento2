@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,14 +11,14 @@ namespace Magento\Shipping\Test\Unit\Model\Carrier;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Model\Stock\Item;
 use Magento\CatalogInventory\Model\StockRegistry;
-use Magento\Quote\Model\Quote\Item as QuoteItem;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Xml\Security;
 use Magento\Quote\Model\Quote\Address\RateRequest;
+use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
 use Magento\Shipping\Model\Simplexml\Element;
 use Magento\Store\Model\Store;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -116,7 +117,7 @@ class AbstractCarrierOnlineTest extends TestCase
 
     public function testParseXml()
     {
-        $xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><GetResponse><value>42</value>></GetResponse>";
+        $xmlString = '<?xml version="1.0" encoding="UTF-8"?><GetResponse><value>42</value>></GetResponse>';
         $simpleXmlElement = $this->carrier->parseXml($xmlString);
         $this->assertEquals('GetResponse', $simpleXmlElement->getName());
         $this->assertEquals(42, (int)$simpleXmlElement->value);

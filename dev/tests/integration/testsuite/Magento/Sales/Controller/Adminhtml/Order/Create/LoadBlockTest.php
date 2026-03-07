@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -411,7 +412,7 @@ class LoadBlockTest extends AbstractBackendController
         // Emulate grid submit where the first (already configured) product comes with only files_prefix.
         // Avoid rendering the sidebar (to prevent wishlist creation) and do not set a customer in session.
         $params = $this->hydrateParams([
-            'block' => 'items,shipping_method,billing_method,totals,giftmessage'
+            'block' => 'items,shipping_method,billing_method,totals,giftmessage',
         ]);
         $post = $this->hydratePost([
             'customer_id' => 0,
@@ -466,7 +467,7 @@ class LoadBlockTest extends AbstractBackendController
         $post = $this->hydratePost([
             'order' => [
                 'comment' => [
-                    CartInterface::KEY_CUSTOMER_NOTE => $customerNote
+                    CartInterface::KEY_CUSTOMER_NOTE => $customerNote,
                 ],
             ],
         ]);
@@ -573,7 +574,7 @@ class LoadBlockTest extends AbstractBackendController
                     'shipping_method' => 'flatrate_flatrate',
                     'payment_method' => 'checkmo',
                 ],
-                'collect_shipping_rates' => true
+                'collect_shipping_rates' => true,
             ]);
         $this->dispatch('backend/sales/order_create/save');
         $this->assertSessionMessages(

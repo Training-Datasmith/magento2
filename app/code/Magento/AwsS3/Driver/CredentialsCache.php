@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -16,30 +17,13 @@ use Magento\Framework\Serialize\Serializer\Json;
 class CredentialsCache implements CacheInterface
 {
     /**
-     * @var MagentoCacheInterface
-     */
-    private $magentoCache;
-
-    /**
-     * @var Json
-     */
-    private $json;
-
-    /**
      * @var CredentialsFactory
      */
     private $credentialsFactory;
 
-    /**
-     * @param MagentoCacheInterface $magentoCache
-     * @param CredentialsFactory $credentialsFactory
-     * @param Json $json
-     */
-    public function __construct(MagentoCacheInterface $magentoCache, CredentialsFactory $credentialsFactory, Json $json)
+    public function __construct(private readonly MagentoCacheInterface $magentoCache, CredentialsFactory $credentialsFactory, private readonly Json $json)
     {
-        $this->magentoCache = $magentoCache;
         $this->credentialsFactory = $credentialsFactory;
-        $this->json = $json;
     }
 
     /**
@@ -56,7 +40,7 @@ class CredentialsCache implements CacheInterface
         $result = $this->json->unserialize($value);
         try {
             return $this->credentialsFactory->create($result);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return $result;
         }
     }
@@ -64,7 +48,7 @@ class CredentialsCache implements CacheInterface
     /**
      * @inheritdoc
      */
-    public function set($key, $value, $ttl = 0)
+    public function set($key, $value, $ttl = 0): void
     {
         if (method_exists($value, 'toArray')) {
             $value = $value->toArray();
@@ -75,7 +59,7 @@ class CredentialsCache implements CacheInterface
     /**
      * @inheritdoc
      */
-    public function remove($key)
+    public function remove($key): void
     {
         $this->magentoCache->remove($key);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -26,7 +27,6 @@ use Stomp\Transport\Message;
  */
 class Queue implements QueueInterface
 {
-
     /**
      * @var Config
      */
@@ -169,7 +169,7 @@ class Queue implements QueueInterface
 
             if ($message) {
                 $properties = $message->getHeaders();
-                if($message->getBody()!=='') {
+                if ($message->getBody() !== '') {
                     $envelope = $this->envelopeFactory->create(['body' => $message->getBody(), 'properties' => $properties]);
                     if ($callback instanceof Closure) {
                         $callback($envelope);
@@ -185,10 +185,11 @@ class Queue implements QueueInterface
     /**
      * @inheritdoc
      */
-    public function reject(EnvelopeInterface $envelope, $requeue = true, $rejectionMessage = null) {
+    public function reject(EnvelopeInterface $envelope, $requeue = true, $rejectionMessage = null)
+    {
 
         $stompClient = $this->getStompConsumerClient();
-        if($this->lastMessage){
+        if ($this->lastMessage) {
             $stompClient->nackMessage($this->lastMessage);
         }
 
@@ -208,10 +209,10 @@ class Queue implements QueueInterface
     {
         $stompClient = $this->getStompProducerClient();
         $message = new Message($envelope->getBody(), $envelope->getProperties());
-        try{
+        try {
             $stompClient->send($this->queueName, $message);
             $stompClient->disconnect();
-        }catch (\Stomp\Exception\StompException $e){
+        } catch (\Stomp\Exception\StompException $e) {
             $this->logger->info("Stomp message push failed: '{$this->queueName}' error: {$e->getMessage()}");
         }
     }
@@ -233,17 +234,17 @@ class Queue implements QueueInterface
         $isSync = $topicData[CommunicationConfigInterface::TOPIC_IS_SYNCHRONOUS];
 
         $message = new Message($envelope->getBody(), $envelope->getProperties());
-        try{
+        try {
             $stompClient->send($this->queueName, $message);
             $stompClient->disconnect();
-            if ($isSync){
+            if ($isSync) {
                 $stompConsumerClient = $this->getStompConsumerClient();
                 $stompConsumerClient->subscribeQueue($this->queueName);
                 $message = $this->readMessage();
                 $stompConsumerClient->ackMessage($message);
                 return $message->getBody();
             }
-        }catch (\Stomp\Exception\StompException $e){
+        } catch (\Stomp\Exception\StompException $e) {
             $this->logger->info("Stomp rpc message push failed: '{$this->queueName}' error: '{$e->getMessage()}'");
         }
 
@@ -304,7 +305,7 @@ class Queue implements QueueInterface
 
         } catch (\Exception $e) {
             // Fallback to STOMP protocol if REST API fails
-            $this->logger->warning("REST API failed, falling back to STOMP protocol: " . $e->getMessage());
+            $this->logger->warning('REST API failed, falling back to STOMP protocol: ' . $e->getMessage());
             return $this->fallbackClearQueue();
         }
     }
@@ -349,7 +350,7 @@ class Queue implements QueueInterface
      */
     private function getStompConsumerClient(): StompClient
     {
-        if($this->stompConsumerClient === null) {
+        if ($this->stompConsumerClient === null) {
             $this->stompConsumerClient = $this->stompClientFactory->create(['clientId' => 'consumer']);
         }
         return $this->stompConsumerClient;
@@ -362,7 +363,7 @@ class Queue implements QueueInterface
      */
     private function getStompProducerClient(): StompClient
     {
-        if($this->stompProducerClient === null) {
+        if ($this->stompProducerClient === null) {
             $this->stompProducerClient = $this->stompClientFactory->create(['clientId' => 'producer']);
         }
         return $this->stompProducerClient;

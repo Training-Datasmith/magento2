@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -213,7 +214,7 @@ class FrontControllerTest extends TestCase
             ->method('setDispatched')
             ->willReturnCallback(
                 function ($arg1) {
-                        return null;
+                    return null;
                 }
             );
 
@@ -222,7 +223,7 @@ class FrontControllerTest extends TestCase
         $this->logger->expects($this->once())->method('debug')->with(
             'Request validation failed for action "'
             . get_class($controllerInstance) . '"',
-            ["exception" => $exception]
+            ['exception' => $exception]
         );
 
         $this->assertEquals($exceptionMessage, $this->model->dispatch($this->request));

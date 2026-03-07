@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class Csv implements \Magento\Framework\Setup\Declaration\Schema\DataSavior\Dump
     /**
      * Folder where will be persisted all csv dumps
      */
-    const DUMP_FOLDER = 'declarative_dumps_csv';
+    public const DUMP_FOLDER = 'declarative_dumps_csv';
 
     /**
      * @var int
@@ -70,7 +72,7 @@ class Csv implements \Magento\Framework\Setup\Declaration\Schema\DataSavior\Dump
         $fh = fopen($file, 'a');
 
         foreach ($data as $dataRow) {
-            fputcsv($fh, $dataRow,',','"','\\');
+            fputcsv($fh, $dataRow, ',', '"', '\\');
         }
 
         fclose($fh);

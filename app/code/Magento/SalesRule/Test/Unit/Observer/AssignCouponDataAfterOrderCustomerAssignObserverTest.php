@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class AssignCouponDataAfterOrderCustomerAssignObserverTest extends TestCase
         $this->observer = $this->objectManager->getObject(
             AssignCouponDataAfterOrderCustomerAssignObserver::class,
             [
-                'updateCouponUsages' => $this->updateCouponUsagesMock
+                'updateCouponUsages' => $this->updateCouponUsagesMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Observer;
 
+use Magento\Catalog\Model\Indexer\Category\Flat\State as FlatState;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor;
 use Magento\Elasticsearch\Model\Config;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Catalog\Model\Indexer\Category\Flat\State as FlatState;
 
 /**
  * Checks if a category has changed products and depends on indexer configuration.

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\CustomerData;
 
-use Magento\Catalog\Api\Data\ProductRenderInterface;
 use Magento\Catalog\Api\Data\ProductFrontendActionInterface;
+use Magento\Catalog\Api\Data\ProductRenderInterface;
 use Magento\Catalog\Model\Product\ProductFrontendAction\Synchronizer;
 use Magento\Catalog\Model\ProductRenderList;
 use Magento\Catalog\Model\ResourceModel\ProductFrontendAction\Collection;

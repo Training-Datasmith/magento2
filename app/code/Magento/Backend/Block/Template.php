@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Block;
 
+use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
-use Magento\Directory\Helper\Data as DirectoryHelper;
 
 /**
  * Standard admin block. Adds admin-specific behavior and event.

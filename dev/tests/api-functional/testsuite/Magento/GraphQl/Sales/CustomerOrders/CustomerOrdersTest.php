@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,10 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Sales\CustomerOrders;
 
-use Exception;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Class OrdersTest
@@ -57,37 +57,37 @@ QUERY;
             [
                 'number' => '100000002',
                 'status' => 'Processing',
-                'created_at' => "2022-09-04 00:00:00"
+                'created_at' => '2022-09-04 00:00:00',
             ],
             [
                 'number' => '100000004',
                 'status' => 'Closed',
-                'created_at' => "2022-09-05 00:00:00"
+                'created_at' => '2022-09-05 00:00:00',
             ],
             [
                 'number' => '100000005',
                 'status' => 'Complete',
-                'created_at' => "2022-09-08 00:00:00"
+                'created_at' => '2022-09-08 00:00:00',
             ],
             [
                 'number' => '100000006',
                 'status' => 'Complete',
-                'created_at' => "2022-09-09 00:00:00"
-            ]
+                'created_at' => '2022-09-09 00:00:00',
+            ],
         ];
-  
+
         $actualData = $response['customer']['orders']['items'];
         foreach ($expectedData as $key => $data) {
             $this->assertEquals(
                 $data['number'],
                 $actualData[$key]['number'],
-                "order_number is different than the expected for order - " . $data['number']
+                'order_number is different than the expected for order - ' . $data['number']
             );
-        
+
             $this->assertEquals(
                 $data['created_at'],
                 $actualData[$key]['created_at'],
-                "created_at is different than the expected for order - " . $data['created_at']
+                'created_at is different than the expected for order - ' . $data['created_at']
             );
         }
     }

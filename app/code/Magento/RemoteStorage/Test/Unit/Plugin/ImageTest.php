@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -109,7 +111,7 @@ class ImageTest extends TestCase
             ->willReturnMap(
                 [
                     [$tmpDestination, ['dirname' => $tmpDestination, 'basename' => 'old_name.file']],
-                    [$destination . $oldName, ['dirname' => $destination, 'basename' => 'old_name.file']]
+                    [$destination . $oldName, ['dirname' => $destination, 'basename' => 'old_name.file']],
                 ]
             );
         $this->plugin->aroundSave($subject, $proceed, $destination . $oldName, $newName);
@@ -125,14 +127,14 @@ class ImageTest extends TestCase
                 'destination' => 'destination/',
                 'newDestination' => 'destination/new_name.file',
                 'newName' => 'new_name.file',
-                'oldName' => null
+                'oldName' => null,
             ],
             'with_old_name' => [
                 'destination' => 'destination/',
                 'newDestination' => 'destination/old_name.file',
                 'newName' => null,
-                'oldName' => 'old_name.file'
-            ]
+                'oldName' => 'old_name.file',
+            ],
         ];
     }
 

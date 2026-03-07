@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class ExceptionFormatter
     public function create(Throwable $exception, $internalErrorMessage = null): array
     {
         if (!$this->shouldShowDetail()) {
-            $reportId = uniqid("graph-ql-");
+            $reportId = uniqid('graph-ql-');
             $message = "Report ID: {$reportId}; Message: {$exception->getMessage()}";
             $code = $exception->getCode();
             $loggedException = new Exception($message, $code, $exception);

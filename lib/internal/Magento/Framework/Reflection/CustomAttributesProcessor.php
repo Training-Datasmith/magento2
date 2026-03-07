@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +9,9 @@
 namespace Magento\Framework\Reflection;
 
 use Magento\Framework\Api\AttributeInterface;
+use Magento\Framework\Api\AttributeTypeResolverInterface;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\CustomAttributesDataInterface;
-use Magento\Framework\Api\AttributeTypeResolverInterface;
 
 /**
  * Processes custom attributes and produces an array for the data.

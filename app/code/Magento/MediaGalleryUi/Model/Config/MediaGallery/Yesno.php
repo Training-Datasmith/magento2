@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,7 +15,7 @@ class Yesno implements \Magento\Framework\Data\OptionSourceInterface
      *
      * @return array
      */
-    public function toOptionArray() :array
+    public function toOptionArray(): array
     {
         return [['value' => 0, 'label' => __('Yes')], ['value' => 1, 'label' => __('No')]];
     }

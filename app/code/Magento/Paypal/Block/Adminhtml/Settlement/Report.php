@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Settlement;
 
 /**
@@ -34,7 +37,7 @@ class Report extends \Magento\Backend\Block\Widget\Grid\Container
                 [
                     'label' => __('Fetch Updates'),
                     'onclick' => "confirmSetLocation('{$message}', '{$this->getUrl('*/*/fetch')}')",
-                    'class' => 'task'
+                    'class' => 'task',
                 ]
             );
         }

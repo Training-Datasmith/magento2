@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -71,12 +72,12 @@ class ContactFormTest extends TestCase
         return [
             'view model was not preset before' => [
                 false,  // $setViewModel
-                UserDataProvider::class  // $expectedViewModelType
+                UserDataProvider::class,  // $expectedViewModelType
             ],
             'view model was pre-installed before' => [
                 true,  // $setViewModel
-                ArgumentInterface::class  // $expectedViewModelType
-            ]
+                ArgumentInterface::class,  // $expectedViewModelType
+            ],
         ];
     }
 }

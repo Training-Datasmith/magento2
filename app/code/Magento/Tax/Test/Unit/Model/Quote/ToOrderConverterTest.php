@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class ToOrderConverterTest extends TestCase
                 'getBaseCustomerBalanceAmount',
                 'setBaseCustomerBalanceAmount',
                 'getGiftMessage',
-                'setGiftMessage'
+                'setGiftMessage',
             ]
         );
 
@@ -234,7 +235,7 @@ class ToOrderConverterTest extends TestCase
                                 'percent' => 6,
                                 'code' => 'IL',
                                 'title' => 'IL',
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -248,7 +249,7 @@ class ToOrderConverterTest extends TestCase
                                     'percent' => 6,
                                     'code' => 'IL',
                                     'title' => 'IL',
-                                ]
+                                ],
                             ],
                         ],
                     ],
@@ -282,7 +283,7 @@ class ToOrderConverterTest extends TestCase
                                     'title' => 'IL',
                                 ],
                             ],
-                        ]
+                        ],
                     ],
                 ],
                 'itemAppliedTaxesExpected' => [
@@ -302,10 +303,10 @@ class ToOrderConverterTest extends TestCase
                                             'percent' => 6,
                                             'code' => 'IL',
                                             'title' => 'IL',
-                                        ]
+                                        ],
                                     ],
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                     'shipping' => [
@@ -324,10 +325,10 @@ class ToOrderConverterTest extends TestCase
                                             'percent' => 6,
                                             'code' => 'IL',
                                             'title' => 'IL',
-                                        ]
+                                        ],
                                     ],
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -27,7 +28,6 @@ use Psr\Log\LoggerInterface;
  */
 class CommentRepositoryTest extends TestCase
 {
-
     /**
      * @var MockObject|CreditmemoCommentResourceInterface
      */
@@ -104,7 +104,7 @@ class CommentRepositoryTest extends TestCase
 
     public function testSave()
     {
-        $comment = "Comment text";
+        $comment = 'Comment text';
         $creditmemoId = 123;
         $this->commentResource->expects($this->once())
             ->method('save')
@@ -147,7 +147,7 @@ class CommentRepositoryTest extends TestCase
 
     public function testSaveSendCatchException()
     {
-        $comment = "Comment text";
+        $comment = 'Comment text';
         $creditmemoId = 123;
         $this->commentResource->expects($this->once())
             ->method('save')

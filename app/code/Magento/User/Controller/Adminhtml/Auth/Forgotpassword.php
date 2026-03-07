@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Controller\Adminhtml\Auth;
 
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Helper\Data;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\SecurityViolationException;
+use Magento\Framework\Validator\EmailAddress;
 use Magento\Framework\Validator\ValidateException;
 use Magento\Framework\Validator\ValidatorChain;
-use Magento\Security\Model\SecurityManager;
-use Magento\Backend\App\Action\Context;
-use Magento\User\Model\Spi\NotificationExceptionInterface;
-use Magento\User\Model\UserFactory;
-use Magento\User\Model\ResourceModel\User\CollectionFactory;
-use Magento\Framework\Validator\EmailAddress;
 use Magento\Security\Model\PasswordResetRequestEvent;
-use Magento\Framework\Exception\SecurityViolationException;
+use Magento\Security\Model\SecurityManager;
 use Magento\User\Controller\Adminhtml\Auth;
-use Magento\Backend\Helper\Data;
+use Magento\User\Model\ResourceModel\User\CollectionFactory;
+use Magento\User\Model\Spi\NotificationExceptionInterface;
 use Magento\User\Model\Spi\NotificatorInterface;
+use Magento\User\Model\UserFactory;
 
 /**
  * Initiate forgot-password process.

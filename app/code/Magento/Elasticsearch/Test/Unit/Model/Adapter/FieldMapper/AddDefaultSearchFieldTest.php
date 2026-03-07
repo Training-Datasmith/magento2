@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Elasticsearch\Test\Unit\Model\Adapter\FieldMapper;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\AddDefaultSearchField;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test mapping preprocessor AddDefaultSearchField
@@ -40,17 +41,17 @@ class AddDefaultSearchFieldTest extends TestCase
             '_search field should be prepended if not exist' => [
                 [
                     'name' => [
-                        'type' => 'text'
-                    ]
+                        'type' => 'text',
+                    ],
                 ],
                 [
                     '_search' => [
-                        'type' => 'text'
+                        'type' => 'text',
                     ],
                     'name' => [
-                        'type' => 'text'
-                    ]
-                ]
+                        'type' => 'text',
+                    ],
+                ],
             ],
             '_search field should be prepended and overwrite if exist' => [
                 [
@@ -58,18 +59,18 @@ class AddDefaultSearchFieldTest extends TestCase
                         'type' => 'text',
                     ],
                     '_search' => [
-                        'type' => 'keyword'
+                        'type' => 'keyword',
                     ],
                 ],
                 [
                     '_search' => [
-                        'type' => 'text'
+                        'type' => 'text',
                     ],
                     'name' => [
                         'type' => 'text',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

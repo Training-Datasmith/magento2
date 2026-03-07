@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,49 +18,49 @@ interface AddressInterface extends \Magento\Framework\Api\CustomAttributesDataIn
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_EMAIL = 'email';
+    public const KEY_EMAIL = 'email';
 
-    const KEY_COUNTRY_ID = 'country_id';
+    public const KEY_COUNTRY_ID = 'country_id';
 
-    const KEY_ID = 'id';
+    public const KEY_ID = 'id';
 
-    const KEY_REGION_ID = 'region_id';
+    public const KEY_REGION_ID = 'region_id';
 
-    const KEY_REGION_CODE = 'region_code';
+    public const KEY_REGION_CODE = 'region_code';
 
-    const KEY_REGION = 'region';
+    public const KEY_REGION = 'region';
 
-    const KEY_CUSTOMER_ID = 'customer_id';
+    public const KEY_CUSTOMER_ID = 'customer_id';
 
-    const KEY_STREET = 'street';
+    public const KEY_STREET = 'street';
 
-    const KEY_COMPANY = 'company';
+    public const KEY_COMPANY = 'company';
 
-    const KEY_TELEPHONE = 'telephone';
+    public const KEY_TELEPHONE = 'telephone';
 
-    const KEY_FAX = 'fax';
+    public const KEY_FAX = 'fax';
 
-    const KEY_POSTCODE = 'postcode';
+    public const KEY_POSTCODE = 'postcode';
 
-    const KEY_CITY = 'city';
+    public const KEY_CITY = 'city';
 
-    const KEY_FIRSTNAME = 'firstname';
+    public const KEY_FIRSTNAME = 'firstname';
 
-    const KEY_LASTNAME = 'lastname';
+    public const KEY_LASTNAME = 'lastname';
 
-    const KEY_MIDDLENAME = 'middlename';
+    public const KEY_MIDDLENAME = 'middlename';
 
-    const KEY_PREFIX = 'prefix';
+    public const KEY_PREFIX = 'prefix';
 
-    const KEY_SUFFIX = 'suffix';
+    public const KEY_SUFFIX = 'suffix';
 
-    const KEY_VAT_ID = 'vat_id';
+    public const KEY_VAT_ID = 'vat_id';
 
-    const SAME_AS_BILLING = 'same_as_billing';
+    public const SAME_AS_BILLING = 'same_as_billing';
 
-    const CUSTOMER_ADDRESS_ID = 'customer_address_id';
+    public const CUSTOMER_ADDRESS_ID = 'customer_address_id';
 
-    const SAVE_IN_ADDRESS_BOOK = 'save_in_address_book';
+    public const SAVE_IN_ADDRESS_BOOK = 'save_in_address_book';
 
     /**#@-*/
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Block\Adminhtml\Widget\Grid\Column\Renderer\Link;
 
 use Magento\Framework\DataObject;
@@ -45,7 +48,7 @@ class Activate extends Link
             'row-id' => $this->_row->getId(),
             'row-dialog' => 'permissions',
             'row-is-reauthorize' => $this->_row->getStatus() == Integration::STATUS_INACTIVE ? '0' : '1',
-            'row-is-token-exchange' => $this->_row->getEndpoint() && $this->_row->getIdentityLinkUrl() ? '1' : '0'
+            'row-is-token-exchange' => $this->_row->getEndpoint() && $this->_row->getIdentityLinkUrl() ? '1' : '0',
         ];
     }
 }

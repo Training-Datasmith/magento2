@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * HTML select element block
  */
+
 namespace Magento\CatalogInventory\Block\Adminhtml\Form\Field;
 
 use Magento\Framework\Data\Form;
@@ -21,7 +24,7 @@ use Magento\Framework\Data\Form;
  */
 class Stock extends \Magento\Framework\Data\Form\Element\Select
 {
-    const QUANTITY_FIELD_HTML_ID = 'qty';
+    public const QUANTITY_FIELD_HTML_ID = 'qty';
 
     /**
      * Quantity field element

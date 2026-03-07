@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ class OrderItem implements RevertibleDataFixtureInterface
 {
     private const DEFAULT_DATA = [
         'items' => [
-                ['sku' => '%uniqid%']
+                ['sku' => '%uniqid%'],
         ],
-        'payment'=> [ 'method' => 'checkmo']
+        'payment' => [ 'method' => 'checkmo'],
     ];
 
     /**

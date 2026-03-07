@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -98,8 +99,7 @@ class GetSearchableProductsSelect
         $productIds,
         int $lastProductId,
         int $batch
-    ): Select
-    {
+    ): Select {
         $websiteId = $this->storeManager->getStore($storeId)->getWebsiteId();
         $select = $this->connection->select()
             ->useStraightJoin(true)

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Ui;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -142,7 +145,7 @@ class ProductViewCounter extends Template
                 'items' => [],
                 'store' => $store->getId(),
                 'currency' => $store->getCurrentCurrency()->getCode(),
-                'productCurrentScope' => $productsScope
+                'productCurrentScope' => $productsScope,
             ]);
         }
 
@@ -157,11 +160,11 @@ class ProductViewCounter extends Template
 
         $currentProductData = [
             'items' => [
-                $product->getId() => $data
+                $product->getId() => $data,
             ],
             'store' => $store->getId(),
             'currency' => $store->getCurrentCurrency()->getCode(),
-            'productCurrentScope' => $productsScope
+            'productCurrentScope' => $productsScope,
         ];
 
         return $this->serialize->serialize($currentProductData);

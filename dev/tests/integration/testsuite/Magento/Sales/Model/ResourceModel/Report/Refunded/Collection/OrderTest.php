@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Report\Refunded\Collection;
 
 /**
@@ -63,7 +66,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                 'refunded' => 50,
                 'online_refunded' => 50,
                 'offline_refunded' => 0,
-                'period' => $creditmemoCreatedAtDate
+                'period' => $creditmemoCreatedAtDate,
             ],
         ];
         $actualResult = [];

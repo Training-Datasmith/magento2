@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit;
 
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Backend\Block\System\Store\Edit;
 use Magento\Framework\Code\NameBuilder;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Backend\Block\System\Store\Edit;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class NameBuilderTest extends TestCase
 {
@@ -43,7 +46,7 @@ class NameBuilderTest extends TestCase
             [['Checkout', 'Controller', 'Index'], 'Checkout\Controller\Index'],
             [['checkout', 'controller', 'index'], 'Checkout\Controller\Index'],
             [
-                ['magento_backend', 'block', 'system', 'store', 'edit'], Edit::class
+                ['magento_backend', 'block', 'system', 'store', 'edit'], Edit::class,
             ],
             [['MyNamespace', 'MyModule'], 'MyNamespace\MyModule'],
             [['uc', 'words', 'test'], 'Uc\Words\Test'],

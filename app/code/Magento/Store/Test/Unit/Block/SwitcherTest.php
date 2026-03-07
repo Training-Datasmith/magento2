@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class SwitcherTest extends TestCase
             1 => 2,
             2 => 4,
             3 => 1,
-            4 => 3
+            4 => 3,
         ];
 
         $currentStoreMock = $this->getMockBuilder(Store::class)
@@ -121,7 +122,7 @@ class SwitcherTest extends TestCase
                 Data::XML_PATH_DEFAULT_LOCALE,
                 ScopeInterface::SCOPE_STORE,
                 $item,
-                'en_US'
+                'en_US',
             ];
         }, $stores);
         $this->scopeConfigMock->method('getValue')

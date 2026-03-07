@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class SubresourceIntegrity extends \Magento\Framework\DataObject
      */
     public function getPath(): ?string
     {
-        return $this->getData("path");
+        return $this->getData('path');
     }
 
     /**
@@ -29,6 +30,6 @@ class SubresourceIntegrity extends \Magento\Framework\DataObject
      */
     public function getHash(): ?string
     {
-        return $this->getData("hash");
+        return $this->getData('hash');
     }
 }

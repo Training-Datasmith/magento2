@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
  */
 class NotSyncedDataProviderTest extends TestCase
 {
-
     public function testGetIdsEmpty()
     {
         /** @var TMapFactory|MockObject $tMapFactory */
@@ -55,7 +55,7 @@ class NotSyncedDataProviderTest extends TestCase
             ->with(self::equalTo(
                 [
                     'array' => [$provider1, $provider2],
-                    'type' => NotSyncedDataProviderInterface::class
+                    'type' => NotSyncedDataProviderInterface::class,
                 ]
             ))
             ->willReturn([$provider1, $provider2]);

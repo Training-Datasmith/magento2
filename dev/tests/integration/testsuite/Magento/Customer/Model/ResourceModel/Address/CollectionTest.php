@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tests for customer addresses collection
  */
+
 namespace Magento\Customer\Model\ResourceModel\Address;
 
 class CollectionTest extends \PHPUnit\Framework\TestCase

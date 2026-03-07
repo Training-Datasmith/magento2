@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class WeeeTest extends TestCase
                 'getTotalQty',
                 'getParentItem',
                 'getChildren',
-                'isChildrenCalculated'
+                'isChildrenCalculated',
             ]
         );
 
@@ -217,7 +218,7 @@ class WeeeTest extends TestCase
         $addressMock = $this->createPartialMock(Address::class, [
             'getAllItems',
             'getQuote',
-            'getCustomAttributesCodes'
+            'getCustomAttributesCodes',
         ]);
 
         $quoteMock = $this->createMock(Quote::class);
@@ -353,7 +354,7 @@ class WeeeTest extends TestCase
             'taxData' => $taxHelper,
             'calculation' => $calculator,
             'weeeData' => $weeeHelper,
-            'priceCurrency' => $this->priceCurrency
+            'priceCurrency' => $this->priceCurrency,
         ];
 
         $helper = new ObjectManager($this);
@@ -384,7 +385,7 @@ class WeeeTest extends TestCase
         $data['price_incl_tax_weee_taxable_unit_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -395,14 +396,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -412,20 +413,20 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
             'addressData' => [
                 'subtotal_incl_tax' => 20,
-                'base_subtotal_incl_tax' => 20
-            ]
+                'base_subtotal_incl_tax' => 20,
+            ],
         ];
 
         $data['price_incl_tax_weee_taxable_unit_not_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -438,12 +439,12 @@ class WeeeTest extends TestCase
                             'name' => 'Recycling Fee',
                             'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -453,20 +454,20 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
             'addressData' => [
                 'subtotal_incl_tax' => 20,
-                'base_subtotal_incl_tax' => 20
-            ]
+                'base_subtotal_incl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_taxable_unit_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -477,14 +478,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -494,20 +495,20 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
             'addressData' => [
                 'subtotal_incl_tax' => 20,
-                'base_subtotal_incl_tax' => 20
-            ]
+                'base_subtotal_incl_tax' => 20,
+            ],
         ];
 
         $data['price_incl_tax_weee_non_taxable_unit_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -518,14 +519,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -535,7 +536,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -543,14 +544,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 20,
-                'weee_base_total_excl_tax' => 20
-            ]
+                'weee_base_total_excl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_non_taxable_unit_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -561,14 +562,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -578,7 +579,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -586,14 +587,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 20,
-                'weee_base_total_excl_tax' => 20
-            ]
+                'weee_base_total_excl_tax' => 20,
+            ],
         ];
 
         $data['price_incl_tax_weee_taxable_row_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -604,14 +605,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -621,20 +622,20 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
             'addressData' => [
                 'subtotal_incl_tax' => 20,
-                'base_subtotal_incl_tax' => 20
-            ]
+                'base_subtotal_incl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_taxable_row_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -645,14 +646,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -662,20 +663,20 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
             'addressData' => [
                 'subtotal_incl_tax' => 20,
-                'base_subtotal_incl_tax' => 20
+                'base_subtotal_incl_tax' => 20,
             ],
         ];
 
         $data['price_incl_tax_weee_non_taxable_row_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -686,14 +687,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -703,7 +704,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -711,14 +712,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 20,
-                'weee_base_total_excl_tax' => 20
-            ]
+                'weee_base_total_excl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_non_taxable_row_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -729,14 +730,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -746,7 +747,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -754,14 +755,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 20,
-                'weee_base_total_excl_tax' => 20
-            ]
+                'weee_base_total_excl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_non_taxable_row_not_included_in_subtotal'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -772,14 +773,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -789,7 +790,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -797,14 +798,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 20,
-                'weee_base_total_excl_tax' => 20
-            ]
+                'weee_base_total_excl_tax' => 20,
+            ],
         ];
 
         $data['price_excl_tax_weee_taxable_unit_not_included_in_subtotal_PARENT_ITEM'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -815,14 +816,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -832,7 +833,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 60,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 60
+                'base_weee_tax_applied_row_amnt_incl_tax' => 60,
             ],
             'itemQty' => 2,
             'parentQty' => 3,
@@ -840,14 +841,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 60,
                 'base_subtotal_incl_tax' => 60,
                 'weee_total_excl_tax' => 0,
-                'weee_base_total_excl_tax' => 0
-            ]
+                'weee_base_total_excl_tax' => 0,
+            ],
         ];
 
         $data['price_excl_tax_weee_taxable_unit_included_in_subtotal_PARENT_ITEM'] = [
             'taxConfig' => [
                 'priceIncludesTax' => true,
-                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_UNIT_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -858,14 +859,14 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'FPT',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 10,
@@ -875,7 +876,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 10,
                 'base_weee_tax_applied_amount_incl_tax' => 10,
                 'weee_tax_applied_row_amount_incl_tax' => 20,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 20
+                'base_weee_tax_applied_row_amnt_incl_tax' => 20,
             ],
             'itemQty' => 2,
             'parentQty' => 1,
@@ -883,14 +884,14 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 20,
                 'base_subtotal_incl_tax' => 20,
                 'weee_total_excl_tax' => 0,
-                'weee_base_total_excl_tax' => 0
-            ]
+                'weee_base_total_excl_tax' => 0,
+            ],
         ];
 
         $data['price_excl_tax_weee_non_taxable_row_not_included_in_subtotal_dynamic_multiple_weee'] = [
             'taxConfig' => [
                 'priceIncludesTax' => false,
-                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE
+                'getCalculationAlgorithm' => Calculation::CALC_ROW_BASE,
             ],
             'weeeConfig' => [
                 'isEnabled' => true,
@@ -901,20 +902,20 @@ class WeeeTest extends TestCase
                     new DataObject(
                         [
                             'name' => 'Recycling Fee',
-                            'amount' => 10
+                            'amount' => 10,
                         ]
                     ),
                     new DataObject(
                         [
                             'name' => 'FPT Fee',
-                            'amount' => 5
+                            'amount' => 5,
                         ]
-                    )
-                ]
+                    ),
+                ],
             ],
             'taxRates' => [
                 'store_tax_rate' => 8.25,
-                'customer_tax_rate' => 8.25
+                'customer_tax_rate' => 8.25,
             ],
             'itemData' => [
                 'weee_tax_applied_amount' => 15,
@@ -924,7 +925,7 @@ class WeeeTest extends TestCase
                 'weee_tax_applied_amount_incl_tax' => 15,
                 'base_weee_tax_applied_amount_incl_tax' => 15,
                 'weee_tax_applied_row_amount_incl_tax' => 30,
-                'base_weee_tax_applied_row_amnt_incl_tax' => 30
+                'base_weee_tax_applied_row_amnt_incl_tax' => 30,
             ],
             'itemQty' => 2,
             'parentQty' => 0,
@@ -932,9 +933,9 @@ class WeeeTest extends TestCase
                 'subtotal_incl_tax' => 30,
                 'base_subtotal_incl_tax' => 30,
                 'weee_total_excl_tax' => 30,
-                'weee_base_total_excl_tax' => 30
+                'weee_base_total_excl_tax' => 30,
             ],
-            'assertSetApplied' => true
+            'assertSetApplied' => true,
         ];
 
         return $data;

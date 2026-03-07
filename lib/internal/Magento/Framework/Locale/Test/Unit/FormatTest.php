@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\Locale\Format;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests class for Number locale format
@@ -65,7 +66,7 @@ class FormatTest extends TestCase
                 'getId',
                 'getScopeType',
                 'getScopeTypeName',
-                'getName'
+                'getName',
             ]
         );
 
@@ -116,7 +117,7 @@ class FormatTest extends TestCase
             ['en_US', 'USD', ['decimalSymbol' => '.', 'groupSymbol' => ',']],
             ['de_DE', 'EUR', ['decimalSymbol' => ',', 'groupSymbol' => '.']],
             ['de_CH', 'CHF', ['decimalSymbol' => '.', 'groupSymbol' => $swissGroupSymbol]],
-            ['uk_UA', 'UAH', ['decimalSymbol' => ',', 'groupSymbol' => ' ']]
+            ['uk_UA', 'UAH', ['decimalSymbol' => ',', 'groupSymbol' => ' ']],
         ];
     }
 

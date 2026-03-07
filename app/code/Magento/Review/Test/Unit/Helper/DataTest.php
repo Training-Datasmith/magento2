@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class DataTest extends TestCase
             [
                 'context' => $this->context,
                 'escaper' => $this->escaper,
-                'filter' => $this->filter
+                'filter' => $this->filter,
             ]
         );
     }
@@ -90,7 +91,7 @@ class DataTest extends TestCase
     public function testGetDetail()
     {
         $origDetail = "This\nis\na\nstring";
-        $expected = "This<br />" . "\n" . "is<br />" . "\n" . "a<br />" . "\n" . "string";
+        $expected = 'This<br />' . "\n" . 'is<br />' . "\n" . 'a<br />' . "\n" . 'string';
 
         $this->filter->expects($this->any())->method('truncate')
             ->with($origDetail, ['length' => 50])
@@ -106,7 +107,7 @@ class DataTest extends TestCase
     {
         $origDetail = "<span>This\nis\na\nstring</span>";
         $origDetailEscapeHtml = "This\nis\na\nstring";
-        $expected = "This<br />" . "\n" . "is<br />" . "\n" . "a<br />" . "\n" . "string";
+        $expected = 'This<br />' . "\n" . 'is<br />' . "\n" . 'a<br />' . "\n" . 'string';
 
         $this->escaper->expects($this->any())->method('escapeHtml')
             ->with($origDetail)
@@ -139,7 +140,7 @@ class DataTest extends TestCase
         $expected = [
             1 => __('Approved'),
             2 => __('Pending'),
-            3 => __('Not Approved')
+            3 => __('Not Approved'),
         ];
         $this->assertEquals($expected, $this->helper->getReviewStatuses());
     }
@@ -152,7 +153,7 @@ class DataTest extends TestCase
         $expected = [
             ['value' => 1, 'label' => __('Approved')],
             ['value' => 2, 'label' => __('Pending')],
-            ['value' => 3, 'label' => __('Not Approved')]
+            ['value' => 3, 'label' => __('Not Approved')],
         ];
         $this->assertEquals($expected, $this->helper->getReviewStatusesOptionArray());
     }

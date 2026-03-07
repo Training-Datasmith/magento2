@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\ResourceModel\Order\Invoice;
 
 use Magento\Sales\Model\Order\Invoice;
+use Magento\Sales\Model\Order\Invoice\Comment as InvoiceCommentModel;
+use Magento\Sales\Model\Order\Invoice\Item as InvoiceItemModel;
+use Magento\Sales\Model\Order\Item as OrderItemModel;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Comment;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Item;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Relation;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Model\Order\Invoice\Item as InvoiceItemModel;
-use Magento\Sales\Model\Order\Invoice\Comment as InvoiceCommentModel;
-use Magento\Sales\Model\Order\Item as OrderItemModel;
 
 class RelationTest extends TestCase
 {
@@ -62,7 +63,7 @@ class RelationTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'save'
+                    'save',
                 ]
             )
             ->getMock();
@@ -71,7 +72,7 @@ class RelationTest extends TestCase
                 ->disableOriginalConstructor()
                 ->onlyMethods(
                     [
-                        'save'
+                        'save',
                     ]
                 )
                 ->getMock();
@@ -81,7 +82,7 @@ class RelationTest extends TestCase
                 [
                     'getId',
                     'getItems',
-                    'getComments'
+                    'getComments',
                 ]
             )
             ->getMock();

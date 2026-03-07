@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 namespace Magento\Framework\Setup\Test\Unit\Declaration\Schema\Db;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\SqlVersionProvider;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Adapter\SqlVersionProvider;
+use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\DbSchemaWriter;
 use Magento\Framework\Setup\Declaration\Schema\Db\Statement;
 use Magento\Framework\Setup\Declaration\Schema\Db\StatementAggregator;
 use Magento\Framework\Setup\Declaration\Schema\Db\StatementFactory;
 use Magento\Framework\Setup\Declaration\Schema\DryRunLogger;
-use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\DbSchemaWriter;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DbSchemaWriterTest extends TestCase
 {
@@ -97,7 +98,7 @@ class DbSchemaWriterTest extends TestCase
      * @return void
      *     */
     #[DataProvider('compileDataProvider')]
-    public function testCompileWithColumnModificationAndFK(string $dbVersion, int $numberOfQueries) : void
+    public function testCompileWithColumnModificationAndFK(string $dbVersion, int $numberOfQueries): void
     {
         $dryRun = false;
         $statementAggregator = $this->getMockBuilder(StatementAggregator::class)
@@ -151,7 +152,7 @@ class DbSchemaWriterTest extends TestCase
     /**
      * @return array
      */
-    public static function compileDataProvider() : array
+    public static function compileDataProvider(): array
     {
         return [
             [SqlVersionProvider::MARIA_DB_10_4_VERSION, 2],

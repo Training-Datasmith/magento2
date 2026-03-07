@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Code\Generator\Config\RemoteServiceReader;
 
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
-use Magento\Framework\ObjectManager\ConfigInterface as ObjectManagerConfig;
 use Magento\Framework\Communication\Config\ReflectionGenerator;
-use Magento\Framework\Reflection\MethodsMap as ServiceMethodsMap;
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\Framework\MessageQueue\Code\Generator\RemoteServiceGenerator;
+use Magento\Framework\ObjectManager\ConfigInterface as ObjectManagerConfig;
+use Magento\Framework\Reflection\MethodsMap as ServiceMethodsMap;
 
 /**
  * Remote service configuration reader.

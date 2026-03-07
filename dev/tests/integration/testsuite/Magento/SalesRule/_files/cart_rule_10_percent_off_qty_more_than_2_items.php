@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ $salesRule->setData(
             'store_id' => 0,
             'store_label' => '10% off with two items_Label',
 
-        ]
+        ],
     ]
 );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -115,7 +116,7 @@ class FilterInput
         self::ESCAPE_FILTER => 'HtmlEntities',
         self::MISSING_MESSAGE => "Field '%field%' is required by rule '%rule%', but the field is missing",
         self::NOT_EMPTY_MESSAGE => "You must give a non-empty value for field '%field%'",
-        self::PRESENCE => self::PRESENCE_OPTIONAL
+        self::PRESENCE => self::PRESENCE_OPTIONAL,
     ];
 
     /**
@@ -354,10 +355,10 @@ class FilterInput
     {
         $this->_process();
         if ($this->hasInvalid()) {
-            throw new FilterException("Input has invalid fields");
+            throw new FilterException('Input has invalid fields');
         }
         if ($this->hasMissing()) {
-            throw new FilterException("Input has missing fields");
+            throw new FilterException('Input has missing fields');
         }
 
         return $this;

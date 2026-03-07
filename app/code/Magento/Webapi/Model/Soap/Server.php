@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Soap;
 
 use Magento\Framework\Webapi\Request;
@@ -14,19 +17,19 @@ use Magento\Framework\Webapi\Request;
  */
 class Server
 {
-    const SOAP_DEFAULT_ENCODING = 'UTF-8';
+    public const SOAP_DEFAULT_ENCODING = 'UTF-8';
 
     /**#@+
      * Path in config to Webapi settings.
      */
-    const CONFIG_PATH_SOAP_CHARSET = 'webapi/soap/charset';
+    public const CONFIG_PATH_SOAP_CHARSET = 'webapi/soap/charset';
     /**#@-*/
 
-    const REQUEST_PARAM_SERVICES = 'services';
+    public const REQUEST_PARAM_SERVICES = 'services';
 
-    const REQUEST_PARAM_WSDL = 'wsdl';
+    public const REQUEST_PARAM_WSDL = 'wsdl';
 
-    const REQUEST_PARAM_LIST_WSDL = 'wsdl_list';
+    public const REQUEST_PARAM_LIST_WSDL = 'wsdl_list';
 
     /**
      * @var \Magento\Framework\App\AreaList

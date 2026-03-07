@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,11 +17,11 @@ use Magento\Customer\Model\Url;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Registry;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Registry;
 use Magento\Framework\Session\Generic;
 use Magento\Review\Helper\Data;
 use Magento\Review\Model\RatingFactory;
@@ -250,7 +251,7 @@ abstract class Product extends Action
             if ((!in_array($this->storeManager->getStore()->getWebsiteId(), $product->getWebsiteIds()))
                 || (!$product->isVisibleInCatalog() || !$product->isVisibleInSiteVisibility())
             ) {
-                    return false;
+                return false;
             }
         } catch (NoSuchEntityException $noEntityException) {
             return false;

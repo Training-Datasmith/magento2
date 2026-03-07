@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ImportTest extends TestCase
             Import::class,
             [
                 'productFlatIndexerProcessor' => $this->processorMock,
-                'flatState' => $this->flatStateMock
+                'flatState' => $this->flatStateMock,
             ]
         );
     }

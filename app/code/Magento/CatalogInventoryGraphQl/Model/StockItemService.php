@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\CatalogInventoryGraphQl\Model;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\CatalogInventory\Model\StockRegistry;
 use Magento\CatalogInventory\Model\Stock\Item;
+use Magento\CatalogInventory\Model\StockRegistry;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Service to provide stock item for given product
@@ -21,7 +22,7 @@ class StockItemService
     /**
      * Configurable product type code
      */
-    private const PRODUCT_TYPE_CONFIGURABLE = "configurable";
+    private const PRODUCT_TYPE_CONFIGURABLE = 'configurable';
 
     /**
      * @var ProductRepositoryInterface

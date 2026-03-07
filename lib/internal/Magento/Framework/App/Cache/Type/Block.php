@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @todo utilize the class for all manipulations with the cache type
  */
+
 namespace Magento\Framework\App\Cache\Type;
 
 class Block extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
@@ -16,12 +19,12 @@ class Block extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'block_html';
+    public const TYPE_IDENTIFIER = 'block_html';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'BLOCK_HTML';
+    public const CACHE_TAG = 'BLOCK_HTML';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool

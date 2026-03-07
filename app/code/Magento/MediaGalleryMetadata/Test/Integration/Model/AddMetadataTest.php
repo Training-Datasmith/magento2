@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\MediaGalleryMetadataApi\Api\AddMetadataInterface;
 use Magento\MediaGalleryMetadataApi\Api\Data\MetadataInterfaceFactory;
 use Magento\MediaGalleryMetadataApi\Api\ExtractMetadataInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * ExtractMetadata test
@@ -88,7 +89,7 @@ class AddMetadataTest extends TestCase
         $metadata = $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => $keywords
+            'keywords' => $keywords,
         ]);
 
         $this->addMetadata->execute($modifiableFilePath, $metadata);
@@ -116,8 +117,8 @@ class AddMetadataTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
+                    'mediagallery',
+                ],
             ],
             [
                 'macos-photos.jpeg',
@@ -125,14 +126,14 @@ class AddMetadataTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
+                    'mediagallery',
+                ],
             ],
              [
                 'macos-photos.jpeg',
                 'Updated Title',
                 null,
-                null
+                null,
             ],
             [
                 'iptc_only.jpeg',
@@ -140,14 +141,14 @@ class AddMetadataTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
+                    'mediagallery',
+                ],
             ],
             [
                 'empty_iptc.jpeg',
                 'Updated Title',
                 null,
-                null
+                null,
             ],
             [
                 'macos-preview.png',
@@ -155,8 +156,8 @@ class AddMetadataTest extends TestCase
                 'Description of the magento image 2',
                 [
                     'magento2',
-                    'community'
-                ]
+                    'community',
+                ],
             ],
             [
                 'empty_xmp_image.jpeg',
@@ -164,7 +165,7 @@ class AddMetadataTest extends TestCase
                 'Description of the magento image 2',
                 [
                     'magento2',
-                    'community'
+                    'community',
                 ],
             ],
             [
@@ -173,7 +174,7 @@ class AddMetadataTest extends TestCase
                 'Description of the magento image 2',
                 [
                     'magento2',
-                    'community'
+                    'community',
                 ],
             ],
             [
@@ -182,8 +183,8 @@ class AddMetadataTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
+                    'mediagallery',
+                ],
             ],
             [
                 'empty_exiftool.gif',
@@ -191,9 +192,9 @@ class AddMetadataTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
-            ]
+                    'mediagallery',
+                ],
+            ],
         ];
     }
 }

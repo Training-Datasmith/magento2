@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Paypal\Reports;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -14,7 +17,7 @@ class Index extends \Magento\Paypal\Controller\Adminhtml\Paypal\Reports implemen
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports_view';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports_view';
 
     /**
      * Grid action

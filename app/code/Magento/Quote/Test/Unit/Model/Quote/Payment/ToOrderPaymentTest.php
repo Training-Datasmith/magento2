@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class ToOrderPaymentTest extends TestCase
             [
                 'orderPaymentRepository' => $this->orderPaymentRepositoryMock,
                 'objectCopyService' => $this->objectCopyMock,
-                'dataObjectHelper' => $this->dataObjectHelper
+                'dataObjectHelper' => $this->dataObjectHelper,
             ]
         );
     }

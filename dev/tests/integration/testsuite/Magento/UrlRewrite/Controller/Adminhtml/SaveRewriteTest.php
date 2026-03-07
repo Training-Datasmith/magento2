@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class SaveRewriteTest extends AbstractBackendController
      *
      * @return void
      */
-    public function testSaveRewriteWithInvalidRequestPath() : void
+    public function testSaveRewriteWithInvalidRequestPath(): void
     {
         $requestPath = 'admin';
         $reservedWords = 'admin, soap, rest, graphql, standard';
@@ -31,7 +32,7 @@ class SaveRewriteTest extends AbstractBackendController
                 'description' => 'Some URL rewrite description',
                 'options' => 'R',
                 'request_path' => 'admin',
-                'target_path' => "target_path",
+                'target_path' => 'target_path',
                 'store_id' => 1,
             ]
         );

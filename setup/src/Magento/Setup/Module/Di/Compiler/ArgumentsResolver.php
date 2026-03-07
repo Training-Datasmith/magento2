@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +67,7 @@ class ArgumentsResolver
      */
     private $configuredPattern = [
         '_a_' => null,
-        '_d_' => null
+        '_d_' => null,
     ];
 
     /**

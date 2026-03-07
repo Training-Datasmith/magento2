@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Multishipping\Model\Checkout\Type;
 
 use Magento\Checkout\Model\Session as CheckoutSession;
@@ -22,9 +25,9 @@ use Magento\Sales\Model\Service\OrderService;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
-use \PHPUnit\Framework\MockObject\MockObject as MockObject;
-use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
+use PHPUnit\Framework\MockObject\MockObject as MockObject;
 use PHPUnit\Framework\MockObject\Stub\Exception as StubException;
+use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
 
 /**
  * @magentoAppArea frontend
@@ -32,9 +35,9 @@ use PHPUnit\Framework\MockObject\Stub\Exception as StubException;
  */
 class MultishippingTest extends \PHPUnit\Framework\TestCase
 {
-    const ADDRESS_TYPE_SHIPPING = 'shipping';
+    public const ADDRESS_TYPE_SHIPPING = 'shipping';
 
-    const ADDRESS_TYPE_BILLING = 'billing';
+    public const ADDRESS_TYPE_BILLING = 'billing';
 
     /**
      * @var ObjectManager
@@ -108,7 +111,7 @@ class MultishippingTest extends \PHPUnit\Framework\TestCase
         $addressId = $this->model->$methodName();
         $address = $this->addressRepository->getById($addressId);
 
-        self::assertEquals($secondFixtureAddressId, $address->getId(), "Invalid address loaded.");
+        self::assertEquals($secondFixtureAddressId, $address->getId(), 'Invalid address loaded.');
         self::assertEquals(
             $secondFixtureAddressStreet,
             $address->getStreet(),
@@ -126,7 +129,7 @@ class MultishippingTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             $secondFixtureAddressId,
             $address->getId(),
-            "Method results are not cached properly."
+            'Method results are not cached properly.'
         );
     }
 
@@ -164,7 +167,7 @@ class MultishippingTest extends \PHPUnit\Framework\TestCase
         $addressId = $this->model->$methodName();
         $address = $this->addressRepository->getById($addressId);
 
-        self::assertEquals($firstFixtureAddressId, $address->getId(), "Invalid address loaded.");
+        self::assertEquals($firstFixtureAddressId, $address->getId(), 'Invalid address loaded.');
         self::assertEquals(
             $firstFixtureAddressStreet,
             $address->getStreet(),
@@ -202,7 +205,7 @@ class MultishippingTest extends \PHPUnit\Framework\TestCase
         $methodName = 'getCustomerDefault' . ucfirst($addressType) . 'Address';
         $address = $this->model->$methodName();
 
-        self::assertNull($address, "When customer has no addresses, null is expected.");
+        self::assertNull($address, 'When customer has no addresses, null is expected.');
     }
 
     /**

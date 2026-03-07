@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Module\Di\App\Task\Operation;
 
 use Magento\Framework\Config\ScopeInterface;
-use Magento\Setup\Module\Di\App\Task\OperationInterface;
 use Magento\Framework\Interception\ConfigWriterInterface;
+use Magento\Setup\Module\Di\App\Task\OperationInterface;
 
 /**
  * Writes plugin list configuration data per scope to generated metadata.

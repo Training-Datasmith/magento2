@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Catalog\Model\ResourceModel\Category as CategoryResourceModel;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
-use Magento\UrlRewrite\Model\ResourceModel\UrlRewriteCollectionFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -189,7 +189,7 @@ class CategoryLinkManagementTest extends TestCase
         $select->from(
             $this->categoryResourceModel->getCategoryProductTable(),
             [
-                'row_count' => new \Zend_Db_Expr('COUNT(*)')
+                'row_count' => new \Zend_Db_Expr('COUNT(*)'),
             ]
         );
         $select->where('product_id = ?', $productId);
@@ -216,7 +216,7 @@ class CategoryLinkManagementTest extends TestCase
         $select->from(
             $this->tableMaintainer->getMainTable($storeId),
             [
-                'row_count' => new \Zend_Db_Expr('COUNT(*)')
+                'row_count' => new \Zend_Db_Expr('COUNT(*)'),
             ]
         );
         $select->where('product_id = ?', $productId);

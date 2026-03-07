@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\AsyncConfig\Setup;
 
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Config\Data\ConfigDataFactory;
 use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Setup\ConfigOptionsListInterface;
@@ -23,7 +23,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     /**
      * Input key for the option
      */
-    public const INPUT_KEY_ASYNC_CONFIG_SAVE ='config-async';
+    public const INPUT_KEY_ASYNC_CONFIG_SAVE = 'config-async';
 
     /**
      * Path to the values in the deployment config
@@ -37,37 +37,25 @@ class ConfigOptionsList implements ConfigOptionsListInterface
 
     /**
      * The available configuration values
-     *
-     * @var array
      */
-    private $selectOptions = [0, 1];
-
-    /**
-     * @var ConfigDataFactory
-     */
-    private $configDataFactory;
+    private array $selectOptions = [0, 1];
 
     /**
      * @var SelectConfigOptionFactory
      */
     private $selectConfigOptionFactory;
 
-    /**
-     * @param ConfigDataFactory $configDataFactory
-     * @param SelectConfigOptionFactory $selectConfigOptionFactory
-     */
     public function __construct(
-        ConfigDataFactory $configDataFactory,
+        private readonly ConfigDataFactory $configDataFactory,
         SelectConfigOptionFactory $selectConfigOptionFactory
     ) {
-        $this->configDataFactory = $configDataFactory;
         $this->selectConfigOptionFactory = $selectConfigOptionFactory;
     }
 
     /**
      * @inheritdoc
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             $this->selectConfigOptionFactory->create(
@@ -77,7 +65,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
                     'selectOptions' => $this->selectOptions,
                     'configPath' => self::CONFIG_PATH_ASYNC_CONFIG_SAVE,
                     'description' => 'Enable async Admin Config Save? 1 - Yes, 0 - No',
-                    'defaultValue' => self::DEFAULT_ASYNC_CONFIG
+                    'defaultValue' => self::DEFAULT_ASYNC_CONFIG,
                 ]
             ),
         ];
@@ -86,7 +74,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     /**
      * @inheritdoc
      */
-    public function createConfig(array $data, DeploymentConfig $deploymentConfig)
+    public function createConfig(array $data, DeploymentConfig $deploymentConfig): array
     {
         $configData = $this->configDataFactory->create(ConfigFilePool::APP_ENV);
 
@@ -102,8 +90,9 @@ class ConfigOptionsList implements ConfigOptionsListInterface
 
     /**
      * @inheritdoc
+     * @return list<'You can use only 1 or 0 for config-async option'>
      */
-    public function validate(array $options, DeploymentConfig $deploymentConfig)
+    public function validate(array $options, DeploymentConfig $deploymentConfig): array
     {
         $errors = [];
 
@@ -121,12 +110,8 @@ class ConfigOptionsList implements ConfigOptionsListInterface
 
     /**
      * Check if data ($data) with key ($key) is empty
-     *
-     * @param array $data
-     * @param string $key
-     * @return bool
      */
-    private function isDataEmpty(array $data, $key)
+    private function isDataEmpty(array $data, string $key): bool
     {
         if (isset($data[$key]) && $data[$key] !== '') {
             return false;

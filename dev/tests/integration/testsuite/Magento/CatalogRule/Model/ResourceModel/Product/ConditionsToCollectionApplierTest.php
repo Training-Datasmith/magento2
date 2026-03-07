@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRule\Model\ResourceModel\Product;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Model\Product;
+use Magento\TestFramework\Helper\Bootstrap;
 
 // @codingStandardsIgnoreFile
 
@@ -103,9 +104,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '====',
                     'value' => 42,
-                    'attribute' => 'attribute_set_id'
-                ]
-            ]
+                    'attribute' => 'attribute_set_id',
+                ],
+            ],
         ];
 
         $combineCondition = $this->getCombineConditionFromArray($conditions);
@@ -133,9 +134,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => 42,
-                    'attribute' => 'attribute_set_id'
-                ]
-            ]
+                    'attribute' => 'attribute_set_id',
+                ],
+            ],
         ];
 
         $combineCondition = $this->getCombineConditionFromArray($conditions);
@@ -159,8 +160,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-1',
                     'simple-product-2',
                     'simple-product-7',
-                    'simple-product-8'
-                ]
+                    'simple-product-8',
+                ],
             ],
 
             // test filter by root category
@@ -178,8 +179,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-9',
                     'simple-product-10',
                     'simple-product-11',
-                    'simple-product-12'
-                ]
+                    'simple-product-12',
+                ],
             ],
 
             // test filter by anchor category with children
@@ -195,20 +196,20 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-9',
                     'simple-product-10',
                     'simple-product-11',
-                    'simple-product-12'
-                ]
+                    'simple-product-12',
+                ],
             ],
 
             // test filter by non existing category
             'variation 4' => [
                 'condition' => $this->getConditionsForVariation4(),
-                'expected-sku' => []
+                'expected-sku' => [],
             ],
 
             // test filter by sku
             'variation 5' => [
                 'condition' => $this->getConditionsForVariation5(),
-                'expected-sku' => ['simple-product-2']
+                'expected-sku' => ['simple-product-2'],
             ],
 
             // test filter by attribute set
@@ -218,8 +219,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-1',
                     'simple-product-4',
                     'simple-product-7',
-                    'simple-product-10'
-                ]
+                    'simple-product-10',
+                ],
             ],
 
             // test filter by product name
@@ -228,8 +229,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                 'expected-sku' => [
                     'simple-product-1',
                     'simple-product-9',
-                    'simple-product-12'
-                ]
+                    'simple-product-12',
+                ],
             ],
 
             // test filter by not existing attribute
@@ -249,13 +250,13 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-11',
                     'simple-product-12',
                     'simple-product-13',
-                ]
+                ],
             ],
 
             // test filter by category with empty value
             'variation 9' => [
                 'condition' => $this->getConditionsForVariation9(),
-                'expected-sku' => []
+                'expected-sku' => [],
             ],
 
             // test filter by sku with empty value
@@ -275,13 +276,13 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-11',
                     'simple-product-12',
                     'simple-product-13',
-                ]
+                ],
             ],
 
             // test filter by name with empty value
             'variation 11' => [
                 'condition' => $this->getConditionsForVariation11(),
-                'expected-sku' => []
+                'expected-sku' => [],
             ],
 
             // test filter by like condition
@@ -297,8 +298,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-9',
                     'simple-product-10',
                     'simple-product-11',
-                    'simple-product-12'
-                ]
+                    'simple-product-12',
+                ],
             ],
 
             // test filter with ALL aggregation
@@ -306,8 +307,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                 'condition' => $this->getConditionsForVariation13(),
                 'expected-sku' => [
                     'simple-product-7',
-                    'simple-product-8'
-                ]
+                    'simple-product-8',
+                ],
             ],
 
             // test filter with ANY aggregation
@@ -319,8 +320,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-3',
                     'simple-product-4',
                     'simple-product-7',
-                    'simple-product-8'
-                ]
+                    'simple-product-8',
+                ],
             ],
 
             // test filter with array in product condition's value
@@ -332,8 +333,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-3',
                     'simple-product-4',
                     'simple-product-7',
-                    'simple-product-8'
-                ]
+                    'simple-product-8',
+                ],
             ],
 
             // test filter by multiple sku
@@ -342,8 +343,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                 'expected-sku' => [
                     'simple-product-1',
                     'simple-product-5',
-                    'simple-product-11'
-                ]
+                    'simple-product-11',
+                ],
             ],
 
             // test filter with multiple combined conditions
@@ -354,8 +355,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-2',
                     'simple-product-4',
                     'simple-product-8',
-                    'simple-product-10'
-                ]
+                    'simple-product-10',
+                ],
             ],
 
             // test filter with multiply levels in conditions
@@ -369,8 +370,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-5',
                     'simple-product-6',
                     'simple-product-10',
-                    'simple-product-11'
-                ]
+                    'simple-product-11',
+                ],
             ],
 
             // test filter with empty conditions
@@ -390,7 +391,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-11',
                     'simple-product-12',
                     'simple-product-13',
-                ]
+                ],
             ],
 
             // test filter for case "If ALL of these conditions are FALSE"
@@ -400,8 +401,8 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-2',
                     'simple-product-5',
                     'simple-product-8',
-                    'simple-product-11'
-                ]
+                    'simple-product-11',
+                ],
             ],
 
             // test filter for case "If ANY of these conditions are FALSE"
@@ -421,7 +422,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-11',
                     'simple-product-12',
                     'simple-product-13',
-                ]
+                ],
             ],
 
             // test filter for case "If ALL/ANY of these conditions are FALSE" with multiple levels
@@ -431,7 +432,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-7',
                     'simple-product-8',
                     'simple-product-13',
-                ]
+                ],
             ],
 
             // test filter by multiple sku and "is not one of" condition
@@ -447,7 +448,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'simple-product-11',
                     'simple-product-12',
                     'simple-product-13',
-                ]
+                ],
             ],
         ];
     }
@@ -470,9 +471,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', $category2Id),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -496,9 +497,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', $categoryId),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -522,9 +523,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', $category1Id),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -541,9 +542,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', [308567758103]),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -560,9 +561,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => 'product-2',
-                    'attribute' => 'sku'
-                ]
-            ]
+                    'attribute' => 'sku',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -582,9 +583,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => $attrSet->getId(),
-                    'attribute' => 'attribute_set_id'
-                ]
-            ]
+                    'attribute' => 'attribute_set_id',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -601,9 +602,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => 'Sale',
-                    'attribute' => 'name'
-                ]
-            ]
+                    'attribute' => 'name',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -620,9 +621,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => 'Sale',
-                    'attribute' => 'absolutely_random_attribute_name'
-                ]
-            ]
+                    'attribute' => 'absolutely_random_attribute_name',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -639,9 +640,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => '',
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -658,9 +659,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => '',
-                    'attribute' => 'sku'
-                ]
-            ]
+                    'attribute' => 'sku',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -677,9 +678,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => '',
-                    'attribute' => 'name'
-                ]
-            ]
+                    'attribute' => 'name',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -703,9 +704,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => implode(',', $category1Id),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -736,15 +737,15 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => implode(',', $category3Id),
-                    'attribute' => 'category_ids'
+                    'attribute' => 'category_ids',
                 ],
                 [
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', $category2Id),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -775,15 +776,15 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => implode(',', $category3Id),
-                    'attribute' => 'category_ids'
+                    'attribute' => 'category_ids',
                 ],
                 [
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => implode(',', $category2Id),
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -814,9 +815,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '{}',
                     'value' => [$category3Id[0], $category2Id[0]],
-                    'attribute' => 'category_ids'
-                ]
-            ]
+                    'attribute' => 'category_ids',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -833,9 +834,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '()',
                     'value' => 'simple-product-1,simple-product-5,simple-product-11',
-                    'attribute' => 'sku'
-                ]
-            ]
+                    'attribute' => 'sku',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -877,15 +878,15 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => implode(',', $category1Id),
-                            'attribute' => 'category_ids'
+                            'attribute' => 'category_ids',
                         ],
                         [
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => $attributeSetMuffins->getId(),
-                            'attribute' => 'attribute_set_id'
-                        ]
-                    ]
+                            'attribute' => 'attribute_set_id',
+                        ],
+                    ],
                 ],
                 [
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Combine::class,
@@ -896,17 +897,17 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => implode(',', $category2Id),
-                            'attribute' => 'category_ids'
+                            'attribute' => 'category_ids',
                         ],
                         [
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => $attributeSetRangers->getId(),
-                            'attribute' => 'attribute_set_id'
-                        ]
-                    ]
-                ]
-            ]
+                            'attribute' => 'attribute_set_id',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -938,7 +939,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => implode(',', $category1Id),
-                            'attribute' => 'category_ids'
+                            'attribute' => 'category_ids',
                         ],
                         [
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Combine::class,
@@ -949,19 +950,19 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                                     'operator' => '!{}',
                                     'value' => '(Sale)',
-                                    'attribute' => 'name'
+                                    'attribute' => 'name',
                                 ],
                                 [
                                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                                     'operator' => '==',
                                     'value' => $attributeSetMuffins->getId(),
-                                    'attribute' => 'attribute_set_id'
+                                    'attribute' => 'attribute_set_id',
                                 ],
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -973,7 +974,7 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
             'type' => \Magento\CatalogRule\Model\Rule\Condition\Combine::class,
             'aggregator' => 'all',
             'value' => 0,
-            'conditions' => []
+            'conditions' => [],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -996,15 +997,15 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => $attributeSetMuffins->getId(),
-                    'attribute' => 'attribute_set_id'
+                    'attribute' => 'attribute_set_id',
                 ],
                 [
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => $attributeSetGuardians->getId(),
-                    'attribute' => 'attribute_set_id'
-                ]
-            ]
+                    'attribute' => 'attribute_set_id',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -1027,15 +1028,15 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => $attributeSetMuffins->getId(),
-                    'attribute' => 'attribute_set_id'
+                    'attribute' => 'attribute_set_id',
                 ],
                 [
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '==',
                     'value' => $attributeSetGuardians->getId(),
-                    'attribute' => 'attribute_set_id'
-                ]
-            ]
+                    'attribute' => 'attribute_set_id',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -1064,11 +1065,11 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                             'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                             'operator' => '==',
                             'value' => implode(',', $category1Id),
-                            'attribute' => 'category_ids'
-                        ]
-                    ]
-                ]
-            ]
+                            'attribute' => 'category_ids',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);
@@ -1085,9 +1086,9 @@ class ConditionsToCollectionApplierTest extends \PHPUnit\Framework\TestCase
                     'type' => \Magento\CatalogRule\Model\Rule\Condition\Product::class,
                     'operator' => '!()',
                     'value' => 'simple-product-1, simple-product-2, simple-product-5, simple-product-10',
-                    'attribute' => 'sku'
-                ]
-            ]
+                    'attribute' => 'sku',
+                ],
+            ],
         ];
 
         return $this->getCombineConditionFromArray($conditions);

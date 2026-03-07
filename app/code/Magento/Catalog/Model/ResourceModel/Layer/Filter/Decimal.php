@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Layer\Filter;
 
 /**
@@ -136,7 +139,7 @@ class Decimal extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $select = $this->_getSelect($filter);
         $connection = $this->getConnection();
 
-        $countExpr = new \Zend_Db_Expr("COUNT(*)");
+        $countExpr = new \Zend_Db_Expr('COUNT(*)');
         $rangeExpr = new \Zend_Db_Expr("FLOOR(decimal_index.value / {$range}) + 1");
 
         $select->columns(['decimal_range' => $rangeExpr, 'count' => $countExpr]);

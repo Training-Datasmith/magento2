@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class CollectRatesTest extends \Magento\Shipping\Model\CollectRatesAbstract
      * @var string
      */
     protected $errorMessage = 'This shipping method is currently unavailable. ' .
-    'If you would like to ship using this shipping method, please contact us.';
+        'If you would like to ship using this shipping method, please contact us.';
 
     /**
      * @magentoConfigFixture default_store carriers/ups/active 1

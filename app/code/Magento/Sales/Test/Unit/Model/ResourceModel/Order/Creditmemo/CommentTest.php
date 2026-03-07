@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order\Creditmemo as OrderCreditmemo;
+use Magento\Sales\Model\Order\Creditmemo\Comment as CreditmemoComment;
 use Magento\Sales\Model\Order\Creditmemo\Comment\Validator;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Comment;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Model\Order\Creditmemo as OrderCreditmemo;
-use Magento\Sales\Model\Order\Creditmemo\Comment as CreditmemoComment;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -110,7 +111,7 @@ class CommentTest extends TestCase
             [
                 'context' => $contextMock,
                 'validator' => $this->validatorMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

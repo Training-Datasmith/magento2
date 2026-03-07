@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\ResourceModel;
 
 /**
@@ -32,7 +35,7 @@ class IntegrationTest extends \PHPUnit\Framework\TestCase
                 'secret' => md5(uniqid()),
                 // phpcs:enable
                 'callback_url' => 'http://example.com/callback',
-                'rejected_callback_url' => 'http://example.com/rejectedCallback'
+                'rejected_callback_url' => 'http://example.com/rejectedCallback',
             ]
         )->save();
         $this->integration = $objectManager->create(\Magento\Integration\Model\Integration::class);

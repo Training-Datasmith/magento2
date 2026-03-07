@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -130,8 +131,8 @@ class PublisherTest extends TestCase
                 'body' => $encodedMessage,
                 'properties' => [
                     'message_id' => $messageId,
-                    'topic_name' => $topicName
-                ]
+                    'topic_name' => $topicName,
+                ],
             ]
         )->willReturn($envelope);
         $publisher = $this

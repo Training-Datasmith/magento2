@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class InterceptorTest extends TestCase
             'plugin1' => new Plugin1(),
             'plugin2' => new Plugin2(),
             'plugin3' => new Plugin3(),
-            'plugin4' => new Plugin4()
+            'plugin4' => new Plugin4(),
         ];
 
         $this->sampleInterceptor->setPluginList($this->pluginListMock);
@@ -60,7 +61,7 @@ class InterceptorTest extends TestCase
             [$subjectType, 'plugin1', $this->samplePlugins['plugin1']],
             [$subjectType, 'plugin2', $this->samplePlugins['plugin2']],
             [$subjectType, 'plugin3', $this->samplePlugins['plugin3']],
-            [$subjectType, 'plugin4', $this->samplePlugins['plugin4']]
+            [$subjectType, 'plugin4', $this->samplePlugins['plugin4']],
         ];
         $pluginInfoMap = [
             [
@@ -70,8 +71,8 @@ class InterceptorTest extends TestCase
                 [
                     DefinitionInterface::LISTENER_BEFORE => ['plugin1', 'plugin2'],
                     DefinitionInterface::LISTENER_AROUND => 'plugin3',
-                    DefinitionInterface::LISTENER_AFTER => ['plugin1', 'plugin2', 'plugin3']
-                ]
+                    DefinitionInterface::LISTENER_AFTER => ['plugin1', 'plugin2', 'plugin3'],
+                ],
             ],
             [
                 $subjectType,
@@ -80,15 +81,15 @@ class InterceptorTest extends TestCase
                 [
                     DefinitionInterface::LISTENER_BEFORE => ['plugin4'],
                     DefinitionInterface::LISTENER_AROUND => 'plugin4',
-                    DefinitionInterface::LISTENER_AFTER => ['plugin4']
-                ]
+                    DefinitionInterface::LISTENER_AFTER => ['plugin4'],
+                ],
             ],
             [
                 $subjectType,
                 $method,
                 'plugin4',
-                null
-            ]
+                null,
+            ],
         ];
         $expectedPluginCalls = [
             Plugin1::class . '::before' . $capMethod,
@@ -100,7 +101,7 @@ class InterceptorTest extends TestCase
             Plugin4::class . '::after' . $capMethod,
             Plugin1::class . '::after' . $capMethod,
             Plugin2::class . '::after' . $capMethod,
-            Plugin3::class . '::after' . $capMethod
+            Plugin3::class . '::after' . $capMethod,
         ];
 
         $this->pluginListMock->expects(static::any())

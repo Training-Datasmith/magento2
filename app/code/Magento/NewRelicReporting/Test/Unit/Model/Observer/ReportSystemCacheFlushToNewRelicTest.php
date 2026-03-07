@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,20 +10,19 @@ namespace Magento\NewRelicReporting\Test\Unit\Model\Observer;
 
 use Magento\Backend\Model\Auth\Session;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\NewRelicReporting\Model\Apm\Deployments;
 use Magento\NewRelicReporting\Model\Apm\DeploymentsFactory;
 use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\Observer\ReportSystemCacheFlushToNewRelic;
 use Magento\User\Model\User;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ReportSystemCacheFlushToNewRelicTest extends TestCase
 {
-
     use MockCreationTrait;
-    
+
     /**
      * @var ReportSystemCacheFlushToNewRelic
      */

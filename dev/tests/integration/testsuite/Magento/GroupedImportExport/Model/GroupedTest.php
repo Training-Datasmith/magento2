@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedImportExport\Model;
 
 use Magento\CatalogImportExport\Model\AbstractProductExportImportTestCase;
@@ -17,7 +20,7 @@ class GroupedTest extends AbstractProductExportImportTestCase
         return [
             'grouped-product' => [
                 [
-                    'Magento/GroupedProduct/_files/product_grouped.php'
+                    'Magento/GroupedProduct/_files/product_grouped.php',
                 ],
                 [
                     'grouped-product',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class ConfigWriterTest extends TestCase
         $values = [
             'some1/config1/path1' => 'someValue1',
             'some2/config2/path2' => 'someValue2',
-            'some3/config3/path3' => 'someValue3'
+            'some3/config3/path3' => 'someValue3',
         ];
         $config = ['system' => []];
 
@@ -157,7 +158,7 @@ class ConfigWriterTest extends TestCase
         $values = [
             'some1/config1/path1' => 'someValue1',
             'some2/config2/path2' => 'someValue2',
-            'some3/config3/path3' => 'someValue3'
+            'some3/config3/path3' => 'someValue3',
         ];
         $config = ['system' => []];
 

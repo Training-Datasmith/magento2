@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -60,7 +61,7 @@ class EncryptedTest extends TestCase
                 'config' => $this->_configMock,
                 'context' => $contextMock,
                 'resource' => $this->_resourceMock,
-                'encryptor' => $this->_encryptorMock
+                'encryptor' => $this->_encryptorMock,
             ]
         );
     }

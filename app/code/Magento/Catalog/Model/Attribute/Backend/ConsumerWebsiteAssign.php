@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Attribute\Backend;
 
+use Magento\Framework\Bulk\OperationInterface;
+use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\TemporaryStateExceptionInterface;
-use Magento\Framework\Bulk\OperationInterface;
-use Magento\Framework\EntityManager\EntityManager;
 
 /**
  * Consumer for export message.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -75,12 +76,12 @@ class FileScannerTest extends TestCase
         return [
             [
                 'use' => 'Some\OtherNamespace\OtherClass',
-                'as' => null
+                'as' => null,
             ],
             [
                 'use' => 'Some\TestNamespace\TestInteface',
-                'as' => 'TestAlias'
-            ]
+                'as' => 'TestAlias',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\Mail\Template\Factory;
 use Magento\Framework\Mail\TemplateInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class FactoryTest extends TestCase
 {
@@ -73,12 +74,12 @@ class FactoryTest extends TestCase
         return [
             [
                 'expectedArgument' => TemplateInterface::class,
-                'namespace' => null
+                'namespace' => null,
             ],
             [
                 'expectedArgument' => 'Test\Namespace\Implements\TemplateInterface',
-                'namespace' => 'Test\Namespace\Implements\TemplateInterface'
-            ]
+                'namespace' => 'Test\Namespace\Implements\TemplateInterface',
+            ],
         ];
     }
 }

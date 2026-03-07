@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console\Command\App;
 
 use Magento\Config\Model\Config\Export\ExcludeList;
@@ -87,12 +90,12 @@ class ApplicationDumpCommandTest extends \PHPUnit\Framework\TestCase
                         'default' => [
                             'web' => [
                                 'test' => [
-                                    'test_value_3' => 'value from the file'
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'test_value_3' => 'value from the file',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             true
         );
@@ -157,8 +160,8 @@ class ApplicationDumpCommandTest extends \PHPUnit\Framework\TestCase
                         'web/test/test_environment8' => '0',
                         'web/test/test_environment9' => '1',
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $comment = implode(PHP_EOL, [
@@ -168,7 +171,7 @@ class ApplicationDumpCommandTest extends \PHPUnit\Framework\TestCase
             'CONFIG__DEFAULT__WEB__TEST__TEST_SENSITIVE for web/test/test_sensitive',
             'CONFIG__DEFAULT__WEB__TEST__TEST_SENSITIVE3 for web/test/test_sensitive3',
             'CONFIG__DEFAULT__WEB__TEST__TEST_SENSITIVE_ENVIRONMENT4 for web/test/test_sensitive_environment4',
-            'CONFIG__DEFAULT__WEB__TEST__TEST_SENSITIVE_ENVIRONMENT5 for web/test/test_sensitive_environment5'
+            'CONFIG__DEFAULT__WEB__TEST__TEST_SENSITIVE_ENVIRONMENT5 for web/test/test_sensitive_environment5',
         ]);
         $outputMock = $this->createMock(OutputInterface::class);
         $outputMock
@@ -254,7 +257,7 @@ class ApplicationDumpCommandTest extends \PHPUnit\Framework\TestCase
             'test_sensitive_environment4',
             'test_sensitive_environment5',
             'test_sensitive_environment6',
-            'test_environment9'
+            'test_environment9',
         ];
 
         $this->assertEmpty(

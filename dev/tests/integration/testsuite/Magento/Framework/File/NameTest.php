@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\File;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Filesystem;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -66,7 +67,7 @@ class NameTest extends \PHPUnit\Framework\TestCase
             [DirectoryList::VAR_DIR, 'image_one.jpg', 'image_one_1.jpg'],
             [DirectoryList::MEDIA, 'image.jpg', 'image.jpg'],
             [DirectoryList::MEDIA, 'image_one.jpg', 'image_one_1.jpg'],
-            [DirectoryList::MEDIA, 'image_two.jpg', 'image_two_2.jpg']
+            [DirectoryList::MEDIA, 'image_two.jpg', 'image_two_2.jpg'],
         ];
     }
 }

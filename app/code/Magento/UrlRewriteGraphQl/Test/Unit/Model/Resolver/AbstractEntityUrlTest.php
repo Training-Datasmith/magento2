@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\UrlRewriteGraphQl\Test\Unit\Model\Resolver;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Query\Uid;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GraphQl\Model\Query\ContextExtensionInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
@@ -113,7 +114,7 @@ class AbstractEntityUrlTest extends TestCase
             ->setConstructorArgs([
                 $this->urlFinderMock,
                 $this->customUrlLocatorMock,
-                $this->idEncoderMock
+                $this->idEncoderMock,
             ])
             ->onlyMethods([])
             ->getMock();
@@ -272,7 +273,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => $url,
             'redirectCode' => 0,
             'redirect_code' => 0,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(
@@ -323,7 +324,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => $targetPath,
             'redirectCode' => $redirectType,
             'redirect_code' => $redirectType,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(
@@ -372,7 +373,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => 'test-product?param1=value1&param2=value2',
             'redirectCode' => 0,
             'redirect_code' => 0,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(
@@ -422,7 +423,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => $customUrl,
             'redirectCode' => 0,
             'redirect_code' => 0,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(
@@ -506,7 +507,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => $url,
             'redirectCode' => 0,
             'redirect_code' => 0,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(
@@ -594,7 +595,7 @@ class AbstractEntityUrlTest extends TestCase
             'category' => 'CATEGORY',
             'cms-page' => 'CMS_PAGE',
             'custom-entity' => 'CUSTOM_ENTITY',
-            'multi-word-entity' => 'MULTI_WORD_ENTITY'
+            'multi-word-entity' => 'MULTI_WORD_ENTITY',
         ];
 
         $reflection = new \ReflectionClass($this->resolver);
@@ -636,7 +637,7 @@ class AbstractEntityUrlTest extends TestCase
                 'scheme' => 'http',
                 'host' => 'example.com',
                 'port' => 8080,
-                'path' => 'path'
+                'path' => 'path',
             ],
             // URL with user info
             'https://user:pass@example.com/path' => [
@@ -644,17 +645,17 @@ class AbstractEntityUrlTest extends TestCase
                 'user' => 'user',
                 'pass' => 'pass',
                 'host' => 'example.com',
-                'path' => 'path'
+                'path' => 'path',
             ],
             // Complex query string
             'product?color=red&size=large&in_stock=1' => [
                 'path' => 'product',
-                'query' => 'color=red&size=large&in_stock=1'
+                'query' => 'color=red&size=large&in_stock=1',
             ],
             // Path with encoded characters
             'category/special%20products' => ['path' => 'category/special%20products'],
             // Multiple slashes in path
-            '///multiple///slashes' => ['path' => 'multiple///slashes']
+            '///multiple///slashes' => ['path' => 'multiple///slashes'],
         ];
 
         $reflection = new \ReflectionClass($this->resolver);
@@ -677,7 +678,7 @@ class AbstractEntityUrlTest extends TestCase
         // Test cases where parse_url might return false or fail
         $malformedUrls = [
             // Very malformed URL that might cause parse_url to return false
-            "http:///",
+            'http:///',
             // URL with invalid characters
             "test\x00url",
             // Extremely long URL (though this might not fail parse_url)
@@ -773,7 +774,7 @@ class AbstractEntityUrlTest extends TestCase
             'relative_url' => 'product-url',
             'redirectCode' => 0,
             'redirect_code' => 0,
-            'type' => 'PRODUCT'
+            'type' => 'PRODUCT',
         ];
 
         $result = $this->resolver->resolve(

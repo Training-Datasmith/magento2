@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Downloadable checkout success page
  */
+
 namespace Magento\Downloadable\Block\Checkout;
 
 use Magento\Framework\View\Element\Template;
@@ -72,7 +75,7 @@ class Success extends \Magento\Checkout\Block\Onepage\Success
 
         $this->addData(
             [
-                'order_has_downloadable' => $this->orderHasDownloadableProducts()
+                'order_has_downloadable' => $this->orderHasDownloadableProducts(),
             ]
         );
     }

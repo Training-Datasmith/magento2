@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -147,7 +149,7 @@ class GuestValidationTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 __(
                     "The order wasn't placed. "
-                    . "First, agree to the terms and conditions, then try placing your order again."
+                    . 'First, agree to the terms and conditions, then try placing your order again.'
                 ),
                 $e->getMessage()
             );
@@ -159,7 +161,7 @@ class GuestValidationTest extends \PHPUnit\Framework\TestCase
         return [
             [[]],
             [['First Checkout Agreement (active)']],
-            [['First Checkout Agreement (active)', 'Second Checkout Agreement (active)']]
+            [['First Checkout Agreement (active)', 'Second Checkout Agreement (active)']],
         ];
     }
 

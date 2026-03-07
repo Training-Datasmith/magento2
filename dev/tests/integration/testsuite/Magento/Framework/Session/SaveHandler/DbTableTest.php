@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session\SaveHandler;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Encryption\EncryptorInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -14,25 +16,25 @@ class DbTableTest extends \PHPUnit\Framework\TestCase
     /**
      * Test session ID
      */
-    const SESSION_ID = 'session_id_value';
+    public const SESSION_ID = 'session_id_value';
 
     /**#@+
      * Session keys
      */
-    const SESSION_NEW = 'session_new';
+    public const SESSION_NEW = 'session_new';
 
-    const SESSION_EXISTS = 'session_exists';
+    public const SESSION_EXISTS = 'session_exists';
 
     /**#@-*/
 
     /**#@+
      * Table column names
      */
-    const COLUMN_SESSION_ID = 'session_id';
+    public const COLUMN_SESSION_ID = 'session_id';
 
-    const COLUMN_SESSION_DATA = 'session_data';
+    public const COLUMN_SESSION_DATA = 'session_data';
 
-    const COLUMN_SESSION_EXPIRES = 'session_expires';
+    public const COLUMN_SESSION_EXPIRES = 'session_expires';
 
     /**#@-*/
 
@@ -196,7 +198,7 @@ class DbTableTest extends \PHPUnit\Framework\TestCase
         $sessionData = serialize(self::$_sourceData[self::SESSION_NEW]);
         return [
             'session_encoded' => ['sessionData' => base64_encode($sessionData)],
-            'session_not_encoded' => ['sessionData' => $sessionData]
+            'session_not_encoded' => ['sessionData' => $sessionData],
         ];
     }
 

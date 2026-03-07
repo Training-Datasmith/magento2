@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -52,7 +54,7 @@ $addresses = [
         'address_type' => 'shipping',
         'email' => 'some_email@mail.com',
         'region_id' => 1,
-    ]
+    ],
 ];
 
 /** @var array $addresses */

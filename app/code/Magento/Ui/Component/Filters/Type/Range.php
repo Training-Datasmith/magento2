@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Ui\Component\Filters\Type;
  */
 class Range extends AbstractFilter
 {
-    const NAME = 'filter_range';
+    public const NAME = 'filter_range';
 
     /**
      * Prepare component configuration

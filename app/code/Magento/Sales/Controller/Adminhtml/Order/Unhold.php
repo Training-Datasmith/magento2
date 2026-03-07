@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
 class Unhold extends \Magento\Sales\Controller\Adminhtml\Order
@@ -12,7 +15,7 @@ class Unhold extends \Magento\Sales\Controller\Adminhtml\Order
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::unhold';
+    public const ADMIN_RESOURCE = 'Magento_Sales::unhold';
 
     /**
      * Unhold order

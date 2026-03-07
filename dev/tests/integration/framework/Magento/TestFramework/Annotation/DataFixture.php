@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\TestFramework\Annotation;
 
 use Magento\TestFramework\Event\Param\Transaction;
-use Magento\TestFramework\Fixture\Parser\DataFixtureAttributesParser;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 

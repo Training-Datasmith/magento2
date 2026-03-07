@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Framework\App;
 
-use Magento\Framework\App\Response\Http as ResponseHttp;
-use Magento\Framework\App\Request\Http as RequestHttp;
-use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Request\Http as RequestHttp;
+use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\Debug;
-use Magento\Framework\Filesystem;
-use Psr\Log\LoggerInterface;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\SessionException;
 use Magento\Framework\Exception\State\InitException;
+use Magento\Framework\Filesystem;
+use Psr\Log\LoggerInterface;
 
 /**
  * Handler of HTTP web application exception
@@ -239,7 +240,7 @@ class ExceptionHandler implements ExceptionHandlerInterface
                 true,
                 false,
                 (bool)getenv('MAGE_DEBUG_SHOW_ARGS')
-            )
+            ),
         ];
         $params = $bootstrap->getParams();
         if (isset($params['REQUEST_URI'])) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,13 +14,13 @@ use Magento\Framework\MessageQueue\ConnectionTypeResolver;
 use Magento\Framework\MessageQueue\Consumer\Config\ConsumerConfigItemInterface;
 use Magento\Framework\MessageQueue\Consumer\ConfigInterface as ConsumerConfigInterface;
 use Magento\Framework\ShellInterface;
-use Magento\MessageQueue\Model\Cron\ConsumersRunner;
 use Magento\MessageQueue\Model\CheckIsAvailableMessagesInQueue;
+use Magento\MessageQueue\Model\Cron\ConsumersRunner;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Process\PhpExecutableFinder;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Process\PhpExecutableFinder;
 
 /**
  * Unit tests for ConsumersRunner.
@@ -155,7 +156,7 @@ class ConsumersRunnerTest extends TestCase
                     ['cron_consumers_runner/max_messages', 10000, $maxMessages],
                     ['cron_consumers_runner/consumers', [], $allowedConsumers],
                     ['queue/only_spawn_when_message_available', null, 0],
-                    ['cron_consumers_runner/multiple_processes', [], []]
+                    ['cron_consumers_runner/multiple_processes', [], []],
                 ]
             );
 
@@ -310,8 +311,8 @@ class ConsumersRunnerTest extends TestCase
                     ['queue/only_spawn_when_message_available', null, 0],
                     ['cron_consumers_runner/multiple_processes',
                         [],
-                        ['consumerName' => 2]
-                    ]
+                        ['consumerName' => 2],
+                    ],
                 ]
             );
 
@@ -329,7 +330,7 @@ class ConsumersRunnerTest extends TestCase
 
         $this->lockManagerMock->expects(self::exactly(2))
             ->method('isLocked')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [md5($consumerName . '-' . 1)] => $isLocked[0],    //phpcs:ignore
                 [md5($consumerName . '-' . 2)] => $isLocked[1]     //phpcs:ignore
             });
@@ -355,16 +356,16 @@ class ConsumersRunnerTest extends TestCase
                     [
                         'php ' . BP . '/bin/magento queue:consumers:start %s %s %s',
                         ['consumerName', '--multi-process=1', '--max-messages=20000'],
-                        'value1'
+                        'value1',
                     ],
                     [
                         'php ' . BP . '/bin/magento queue:consumers:start %s %s %s',
                         ['consumerName', '--multi-process=2', '--max-messages=20000'],
-                        'value2'
-                    ]
+                        'value2',
+                    ],
                 ],
                 'allowedConsumers' => [],
-                'shellBackgroundExpects' => 2
+                'shellBackgroundExpects' => 2,
             ],
             [
                 'maxMessages' => 20000,
@@ -374,11 +375,11 @@ class ConsumersRunnerTest extends TestCase
                     [
                         'php ' . BP . '/bin/magento queue:consumers:start %s %s %s',
                         ['consumerName', '--multi-process=2', '--max-messages=20000'],
-                        'value2'
-                    ]
+                        'value2',
+                    ],
                 ],
                 'allowedConsumers' => [],
-                'shellBackgroundExpects' => 1
+                'shellBackgroundExpects' => 1,
             ],
             [
                 'maxMessages' => 20000,
@@ -388,11 +389,11 @@ class ConsumersRunnerTest extends TestCase
                     [
                         'php ' . BP . '/bin/magento queue:consumers:start %s %s %s',
                         ['consumerName', '--multi-process=2', '--max-messages=20000'],
-                        'value2'
-                    ]
+                        'value2',
+                    ],
                 ],
                 'allowedConsumers' => [],
-                'shellBackgroundExpects' => 0
+                'shellBackgroundExpects' => 0,
             ],
         ];
     }
@@ -425,7 +426,7 @@ class ConsumersRunnerTest extends TestCase
                     ['cron_consumers_runner/max_messages', 10000, 1000],
                     ['cron_consumers_runner/consumers', [], []],
                     ['queue/only_spawn_when_message_available', true, $globalOnlySpawnWhenMessageAvailable],
-                    ['cron_consumers_runner/multiple_processes', [], []]
+                    ['cron_consumers_runner/multiple_processes', [], []],
                 ]
             );
 
@@ -471,7 +472,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 1,
                 'globalOnlySpawnWhenMessageAvailable' => false,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 1,
-                'isMassagesAvailableInTheQueueCallCount' => 1
+                'isMassagesAvailableInTheQueueCallCount' => 1,
             ],
             [
                 'onlySpawnWhenMessageAvailable' => true,
@@ -479,7 +480,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 0,
                 'globalOnlySpawnWhenMessageAvailable' => false,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 1,
-                'isMassagesAvailableInTheQueueCallCount' => 1
+                'isMassagesAvailableInTheQueueCallCount' => 1,
             ],
             [
                 'onlySpawnWhenMessageAvailable' => false,
@@ -487,7 +488,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 1,
                 'globalOnlySpawnWhenMessageAvailable' => false,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 2,
-                'isMassagesAvailableInTheQueueCallCount' => 0
+                'isMassagesAvailableInTheQueueCallCount' => 0,
             ],
             [
                 'onlySpawnWhenMessageAvailable' => null,
@@ -495,7 +496,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 1,
                 'globalOnlySpawnWhenMessageAvailable' => true,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 2,
-                'isMassagesAvailableInTheQueueCallCount' => 1
+                'isMassagesAvailableInTheQueueCallCount' => 1,
             ],
             [
                 'onlySpawnWhenMessageAvailable' => null,
@@ -503,7 +504,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 1,
                 'globalOnlySpawnWhenMessageAvailable' => false,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 2,
-                'isMassagesAvailableInTheQueueCallCount' => 0
+                'isMassagesAvailableInTheQueueCallCount' => 0,
             ],
             [
                 'onlySpawnWhenMessageAvailable' => false,
@@ -511,7 +512,7 @@ class ConsumersRunnerTest extends TestCase
                 'shellBackgroundExpects' => 1,
                 'globalOnlySpawnWhenMessageAvailable' => true,
                 'getOnlySpawnWhenMessageAvailableCallCount' => 2,
-                'isMassagesAvailableInTheQueueCallCount' => 0
+                'isMassagesAvailableInTheQueueCallCount' => 0,
             ],
         ];
     }

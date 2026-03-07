@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class ProductPriceIndexFilterTest extends TestCase
                 $expectedArgs = [
                     [],
                     [],
-                    ['stock_item.product_id IN (?)', $entityIds]
+                    ['stock_item.product_id IN (?)', $entityIds],
                 ];
                 $returnValue = $index === 2 ? $selectMock : null;
                 $index++;

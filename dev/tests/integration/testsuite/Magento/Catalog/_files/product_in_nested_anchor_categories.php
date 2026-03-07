@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,31 +11,31 @@ $categories = [
         'id' => 444,
         'parentId' => 2,
         'level' => 2,
-        'path' => '1/2/3'
+        'path' => '1/2/3',
     ],
     [
         'id' => 445,
         'parentId' => 444,
         'level' => 3,
-        'path' => '1/2/3/4'
+        'path' => '1/2/3/4',
     ],
     [
         'id' => 446,
         'parentId' => 445,
         'level' => 4,
-        'path' => '1/2/3/4/5'
+        'path' => '1/2/3/4/5',
     ],
 ];
 
 $products = [
     [
         'id' => 444,
-        'categoryIDs' => [446]
+        'categoryIDs' => [446],
     ],
     [
         'id' => 445,
-        'categoryIDs' => [446]
-    ]
+        'categoryIDs' => [446],
+    ],
 ];
 
 foreach ($categories as $category) {

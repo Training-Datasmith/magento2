@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class DataMapperFactoryTest extends TestCase
             DataMapperFactory::class,
             [
                 'objectManager' => $this->objectManagerMock,
-                'dataMappers' => $this->dataMappers
+                'dataMappers' => $this->dataMappers,
             ]
         );
     }

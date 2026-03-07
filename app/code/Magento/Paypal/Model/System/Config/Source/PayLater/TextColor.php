@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class TextColor implements OptionSourceInterface
             ['value' => 'black', 'label' => __('Black')],
             ['value' => 'white', 'label' => __('White')],
             ['value' => 'monochrome', 'label' => __('Monochrome')],
-            ['value' => 'grayscale', 'label' => __('Grayscale')]
+            ['value' => 'grayscale', 'label' => __('Grayscale')],
         ];
     }
 }

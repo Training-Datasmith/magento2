@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class Comparator
         CollectedObject $after,
         array $skipList,
         string $serviceName = '',
-    ) : array {
+    ): array {
         $skippedObject = CollectedObject::getSkippedObject();
         if ($skippedObject === $before || $skippedObject === $after) {
             return []; // skipped
@@ -220,7 +221,7 @@ class Comparator
             return $data;
         } elseif (is_resource($value)) {
             return ['resource' =>
-                ['resourceId' => get_resource_id($value), 'resourceType' => get_resource_type($value)]
+                ['resourceId' => get_resource_id($value), 'resourceType' => get_resource_type($value)],
             ];
         }
         return $value;
@@ -299,7 +300,7 @@ class Comparator
                     );
                 }
                 // phpcs:ignore Magento2.Exceptions.DirectThrow
-                throw new \Exception("Unexpected object in checkValues()");
+                throw new \Exception('Unexpected object in checkValues()');
         }
         return [];
     }

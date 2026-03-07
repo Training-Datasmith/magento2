@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Ui\DataProvider\Product\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Ui\DataProvider\Product\Modifier\SpecialPriceAttributes;
 use Magento\Directory\Model\Currency as DirectoryCurrency;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\NumberFormatter;
 use Magento\Framework\NumberFormatterFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -83,16 +84,16 @@ class SpecialPriceAttributesTest extends TestCase
                         [
                             'type_id' => 'simple',
                             'attr1' => '99',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'items' => [
                         [
                             'type_id' => 'simple',
                             'attr1' => '99',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
             [
@@ -106,8 +107,8 @@ class SpecialPriceAttributesTest extends TestCase
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '99',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'items' => [
@@ -118,8 +119,8 @@ class SpecialPriceAttributesTest extends TestCase
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '99.000000%',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
             [
@@ -129,16 +130,16 @@ class SpecialPriceAttributesTest extends TestCase
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '9999',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'items' => [
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '9,999.000000%',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
             [
@@ -148,18 +149,18 @@ class SpecialPriceAttributesTest extends TestCase
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '9999',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'items' => [
                         [
                             'type_id' => Type::TYPE_CODE,
                             'attr1' => '9.999,000000 %',
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
     }
 }

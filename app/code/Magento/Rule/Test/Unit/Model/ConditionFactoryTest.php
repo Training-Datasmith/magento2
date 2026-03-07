@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ConditionFactoryTest extends TestCase
         $this->conditionFactory = $this->objectManagerHelper->getObject(
             ConditionFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -24,9 +26,9 @@ use Magento\Framework\Translate\InlineInterface;
  */
 class Tabs extends WidgetTabs
 {
-    const BASIC_TAB_GROUP_CODE = 'basic';
+    public const BASIC_TAB_GROUP_CODE = 'basic';
 
-    const ADVANCED_TAB_GROUP_CODE = 'advanced';
+    public const ADVANCED_TAB_GROUP_CODE = 'advanced';
 
     /**
      * @var string
@@ -195,7 +197,7 @@ class Tabs extends WidgetTabs
                                 \Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Websites::class
                             )->toHtml()
                         ),
-                        'group_code' => self::BASIC_TAB_GROUP_CODE
+                        'group_code' => self::BASIC_TAB_GROUP_CODE,
                     ]
                 );
             }
@@ -215,7 +217,7 @@ class Tabs extends WidgetTabs
                         'content' => $this->_translateHtml(
                             $this->getChildHtml('advanced-inventory')
                         ),
-                        'group_code' => self::ADVANCED_TAB_GROUP_CODE
+                        'group_code' => self::ADVANCED_TAB_GROUP_CODE,
                     ]
                 );
             }
@@ -234,7 +236,7 @@ class Tabs extends WidgetTabs
                     'label' => __('Related Products'),
                     'url' => $this->getUrl('catalog/*/related', ['_current' => true]),
                     'class' => 'ajax',
-                    'group_code' => self::ADVANCED_TAB_GROUP_CODE
+                    'group_code' => self::ADVANCED_TAB_GROUP_CODE,
                 ]
             );
 
@@ -244,7 +246,7 @@ class Tabs extends WidgetTabs
                     'label' => __('Up-sells'),
                     'url' => $this->getUrl('catalog/*/upsell', ['_current' => true]),
                     'class' => 'ajax',
-                    'group_code' => self::ADVANCED_TAB_GROUP_CODE
+                    'group_code' => self::ADVANCED_TAB_GROUP_CODE,
                 ]
             );
 
@@ -254,7 +256,7 @@ class Tabs extends WidgetTabs
                     'label' => __('Cross-sells'),
                     'url' => $this->getUrl('catalog/*/crosssell', ['_current' => true]),
                     'class' => 'ajax',
-                    'group_code' => self::ADVANCED_TAB_GROUP_CODE
+                    'group_code' => self::ADVANCED_TAB_GROUP_CODE,
                 ]
             );
 

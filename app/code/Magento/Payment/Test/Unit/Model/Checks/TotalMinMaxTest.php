@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class TotalMinMaxTest extends TestCase
         $paymentMethod = $this->createMock(MethodInterface::class);
         $paymentMethod
             ->method('getConfigData')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [TotalMinMax::MIN_ORDER_TOTAL] => self::PAYMENT_MIN_TOTAL,
                 [TotalMinMax::MAX_ORDER_TOTAL] => self::PAYMENT_MAX_TOTAL
             });

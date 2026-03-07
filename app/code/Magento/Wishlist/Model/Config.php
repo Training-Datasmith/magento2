@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Model;
 
 /**
@@ -11,13 +14,13 @@ namespace Magento\Wishlist\Model;
  */
 class Config
 {
-    const XML_PATH_SHARING_EMAIL_LIMIT = 'wishlist/email/number_limit';
+    public const XML_PATH_SHARING_EMAIL_LIMIT = 'wishlist/email/number_limit';
 
-    const XML_PATH_SHARING_TEXT_LIMIT = 'wishlist/email/text_limit';
+    public const XML_PATH_SHARING_TEXT_LIMIT = 'wishlist/email/text_limit';
 
-    const SHARING_EMAIL_LIMIT = 10;
+    public const SHARING_EMAIL_LIMIT = 10;
 
-    const SHARING_TEXT_LIMIT = 255;
+    public const SHARING_TEXT_LIMIT = 255;
 
     /**
      * @var \Magento\Catalog\Model\Config

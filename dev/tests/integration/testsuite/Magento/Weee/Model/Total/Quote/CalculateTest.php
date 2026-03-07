@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -150,8 +151,8 @@ class CalculateTest extends TestCase
                 'cart_id' => '$qt.id$',
                 'assignments' => [
                     ['item_id' => '$qti1.id$', 'address_id' => '$qta1.id$', 'qty' => 1],
-                    ['item_id' => '$qti2.id$', 'address_id' => '$qta2.id$', 'qty' => 1]
-                ]
+                    ['item_id' => '$qti2.id$', 'address_id' => '$qta2.id$', 'qty' => 1],
+                ],
             ]
         ),
     ]

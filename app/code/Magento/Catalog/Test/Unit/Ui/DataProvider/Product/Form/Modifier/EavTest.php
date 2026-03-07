@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductAttributeGroupRepositoryInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
@@ -17,7 +16,6 @@ use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Catalog\Model\ResourceModel\Eav\AttributeFactory as EavAttributeFactory;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav;
-use Magento\Eav\Api\Data\AttributeGroupInterface;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\Group;
 use Magento\Eav\Model\Entity\Attribute\Source\SourceInterface;
@@ -46,6 +44,8 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\DataProvider\EavValidationRules;
 use Magento\Ui\DataProvider\Mapper\FormElement as FormElementMapper;
 use Magento\Ui\DataProvider\Mapper\MetaProperties as MetaPropertiesMapper;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -137,7 +137,7 @@ class EavTest extends AbstractModifierTestCase
      * @var SearchCriteria|MockObject
      */
     private $searchCriteriaMock;
-    
+
     /**
      * @var SearchResultsInterface|MockObject
      */
@@ -306,7 +306,7 @@ class EavTest extends AbstractModifierTestCase
             ->method('load')
             ->willReturnSelf();
 
-        $this->eav =$this->getModel();
+        $this->eav = $this->getModel();
     }
 
     /**
@@ -333,7 +333,7 @@ class EavTest extends AbstractModifierTestCase
                 'eavAttributeFactory' => $this->eavAttributeFactoryMock,
                 'scopeOverriddenValue' => $this->scopeOverriddenValueMock,
                 '_eventManager' => $this->eventManagerMock,
-                'attributeCollectionFactory' => $this->attributeCollectionFactoryMock
+                'attributeCollectionFactory' => $this->attributeCollectionFactoryMock,
             ]
         );
     }
@@ -343,9 +343,9 @@ class EavTest extends AbstractModifierTestCase
         $sourceData = [
             '1' => [
                 'product' => [
-                    ProductAttributeInterface::CODE_PRICE => '19.99'
-                ]
-            ]
+                    ProductAttributeInterface::CODE_PRICE => '19.99',
+                ],
+            ],
         ];
 
         $this->attributeCollectionFactoryMock->expects($this->once())->method('create')
@@ -362,13 +362,13 @@ class EavTest extends AbstractModifierTestCase
         $this->searchCriteriaBuilderMock->expects($this->any())->method('addFilter')
             ->willReturnSelf();
         $this->searchCriteriaBuilderMock->method('create')->willReturn($this->searchCriteriaMock);
-        
+
         // Create separate search results for attribute groups (not attributes!)
         $groupSearchResultsMock = $this->createMock(SearchResultsInterface::class);
         $this->attributeGroupMock->method('getAttributeGroupCode')->willReturn('product-details');
         $groupSearchResultsMock->method('getItems')->willReturn([$this->attributeGroupMock]);
         $this->attributeGroupRepositoryMock->method('getList')->willReturn($groupSearchResultsMock);
-        
+
         $this->sortOrderBuilderMock->expects($this->once())->method('setField')
             ->willReturnSelf();
         $this->sortOrderBuilderMock->expects($this->once())->method('setAscendingDirection')
@@ -417,7 +417,7 @@ class EavTest extends AbstractModifierTestCase
         bool $locked = false,
         ?string $frontendInput = null,
         array $expectedCustomize = []
-    ) : void {
+    ): void {
         $configPath = 'arguments/data/config';
         $groupCode = 'product-details';
         $sortOrder = '0';

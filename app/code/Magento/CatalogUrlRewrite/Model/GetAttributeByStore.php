@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\CatalogUrlRewrite\Model;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
@@ -14,7 +16,6 @@ use Magento\Store\Model\Store;
 
 class GetAttributeByStore
 {
-
     /**
      * @param AttributeValue $attributeValue
      * @param MetadataPool $metadataPool

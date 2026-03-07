@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Observer;
 
+use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator;
-use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
 use Magento\CatalogUrlRewrite\Observer\ProductUrlKeyAutogeneratorObserver;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
@@ -57,7 +58,7 @@ class ProductUrlKeyAutogeneratorObserverTest extends TestCase
             ProductUrlKeyAutogeneratorObserver::class,
             [
                 'productUrlPathGenerator' => $this->productUrlPathGenerator,
-                'compositeUrlValidator' => $this->compositeUrlValidator
+                'compositeUrlValidator' => $this->compositeUrlValidator,
             ]
         );
     }

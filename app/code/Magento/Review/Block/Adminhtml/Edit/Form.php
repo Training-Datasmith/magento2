@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -77,7 +79,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
 
         $formActionParams = [
             'id' => $this->getRequest()->getParam('id'),
-            'ret' => $this->_coreRegistry->registry('ret')
+            'ret' => $this->_coreRegistry->registry('ret'),
         ];
         if ($this->getRequest()->getParam('productId')) {
             $formActionParams['productId'] = $this->getRequest()->getParam('productId');
@@ -115,7 +117,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     ['id' => $product->getId()]
                 ) . '" onclick="this.target=\'blank\'">' . $this->escapeHtml(
                     $product->getName()
-                ) . '</a>'
+                ) . '</a>',
             ]
         );
 
@@ -142,7 +144,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Summary Rating'),
                 'text' => $this->getLayout()->createBlock(
                     \Magento\Review\Block\Adminhtml\Rating\Summary::class
-                )->toHtml()
+                )->toHtml(),
             ]
         );
 
@@ -154,7 +156,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'text' => '<div id="rating_detail">' . $this->getLayout()->createBlock(
                     \Magento\Review\Block\Adminhtml\Rating\Detailed::class
-                )->toHtml() . '</div>'
+                )->toHtml() . '</div>',
             ]
         );
 
@@ -165,7 +167,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Status'),
                 'required' => true,
                 'name' => 'status_id',
-                'values' => $this->_reviewData->getReviewStatusesOptionArray()
+                'values' => $this->_reviewData->getReviewStatusesOptionArray(),
             ]
         );
 
@@ -180,7 +182,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Visibility'),
                     'required' => true,
                     'name' => 'stores[]',
-                    'values' => $this->_systemStore->getStoreValuesForForm()
+                    'values' => $this->_systemStore->getStoreValuesForForm(),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(

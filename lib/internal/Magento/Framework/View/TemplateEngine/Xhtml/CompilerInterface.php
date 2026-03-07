@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\TemplateEngine\Xhtml;
 
 use Magento\Framework\DataObject;
@@ -15,7 +18,7 @@ use Magento\Framework\DataObject;
  */
 interface CompilerInterface
 {
-    const PATTERN_TAG = '|@|';
+    public const PATTERN_TAG = '|@|';
 
     /**
      * The compilation of the template and filling in the data

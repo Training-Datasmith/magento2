@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class RenderFactoryTest extends TestCase
         $this->renderFactory = $this->objectManagerHelper->getObject(
             RenderFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }

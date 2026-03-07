@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -34,10 +35,10 @@ class GetDiscounts
                 'applied_to' => $discountData->getAppliedTo(),
                 'amount' => [
                     'value' => $discountData->getAmount(),
-                    'currency' => $quote->getQuoteCurrencyCode()
+                    'currency' => $quote->getQuoteCurrencyCode(),
                 ],
                 'discount_model' => $value,
-                'quote_model' => $quote
+                'quote_model' => $quote,
             ];
         }
 

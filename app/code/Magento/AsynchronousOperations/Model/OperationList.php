@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,16 +14,10 @@ namespace Magento\AsynchronousOperations\Model;
 class OperationList implements \Magento\AsynchronousOperations\Api\Data\OperationListInterface
 {
     /**
-     * @var array
-     */
-    private $items;
-
-    /**
      * @param array $items [optional]
      */
-    public function __construct(array $items = [])
+    public function __construct(private readonly array $items = [])
     {
-        $this->items = $items;
     }
 
     /**

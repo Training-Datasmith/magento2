@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Generator\TestAsset;
 
 use Laminas\Code\Generator\ClassGenerator;
@@ -114,7 +117,7 @@ class SourceClass extends ParentClass
     public static function publicChildStatic()
     {
     }
-    
+
     final public function publicChildFinal()
     {
     }

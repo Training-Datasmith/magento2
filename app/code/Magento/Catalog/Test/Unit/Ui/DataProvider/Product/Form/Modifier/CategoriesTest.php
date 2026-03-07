@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Authorization\Model\Role;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollection;
@@ -20,6 +20,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\Store;
 use Magento\User\Model\User;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -122,8 +123,8 @@ class CategoriesTest extends AbstractModifierTestCase
         $objects = [
             [
                 CacheInterface::class,
-                $this->createMock(CacheInterface::class)
-            ]
+                $this->createMock(CacheInterface::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         return $this->objectManager->getObject(
@@ -133,7 +134,7 @@ class CategoriesTest extends AbstractModifierTestCase
                 'categoryCollectionFactory' => $this->categoryCollectionFactoryMock,
                 'arrayManager' => $this->arrayManagerMock,
                 'authorization' => $this->authorizationMock,
-                'session' => $this->sessionMock
+                'session' => $this->sessionMock,
             ]
         );
     }

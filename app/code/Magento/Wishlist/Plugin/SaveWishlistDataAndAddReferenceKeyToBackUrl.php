@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Plugin;
 
-use Magento\Wishlist\Model\DataSerializer;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Customer\Model\EmailNotificationInterface;
-use Magento\Framework\UrlInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
+use Magento\Framework\UrlInterface;
+use Magento\Wishlist\Model\DataSerializer;
 
 /**
  * Cache wishlist data & Modify back Url

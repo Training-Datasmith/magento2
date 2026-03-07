@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Tests that existing widget.xml files are valid to schema individually and merged.
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Modular;
 
 use Magento\Framework\Component\ComponentRegistrar;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,19 +9,18 @@ declare(strict_types=1);
 namespace Magento\Bundle\Test\Unit\Model\Product;
 
 use Magento\Bundle\Model\Option as BundleOption;
-use Magento\Bundle\Model\ResourceModel\Option\Collection as OptionCollection;
-use Magento\Bundle\Model\Selection;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\OptionFactory;
+use Magento\Bundle\Model\Product\Price as BundleProductPrice;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\BundleFactory;
 use Magento\Bundle\Model\ResourceModel\Option\Collection;
+use Magento\Bundle\Model\ResourceModel\Option\Collection as OptionCollection;
 use Magento\Bundle\Model\ResourceModel\Selection\Collection as SelectionCollection;
 use Magento\Bundle\Model\ResourceModel\Selection\CollectionFactory;
+use Magento\Bundle\Model\Selection;
 use Magento\Bundle\Model\SelectionFactory;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Data;
-use Magento\Bundle\Model\Product\Price as BundleProductPrice;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Configuration\Item\Option as ProductConfigurationItemOption;
@@ -40,10 +40,11 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\ArrayUtils;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -179,7 +180,7 @@ class TypeTest extends TestCase
                 'priceCurrency' => $this->priceCurrency,
                 'serializer' => $this->serializer,
                 'metadataPool' => $this->metadataPool,
-                'arrayUtility' => $this->arrayUtility
+                'arrayUtility' => $this->arrayUtility,
             ]
         );
     }
@@ -1611,7 +1612,7 @@ class TypeTest extends TestCase
         return [
             [0, 0, 0],
             [1, 1, 0],
-            [-1, 0, 1]
+            [-1, 0, 1],
         ];
     }
 
@@ -1637,7 +1638,7 @@ class TypeTest extends TestCase
             'setPositionOrder',
             'addFilterByRequiredOptions',
             'setSelectionIdsFilter',
-            'joinPrices'
+            'joinPrices',
         ]);
         $productGetMap = [
             ['_cache_instance_used_selections', null, null],
@@ -1799,7 +1800,7 @@ class TypeTest extends TestCase
         $product = new DataObject(
             [
                 'is_salable' => false,
-                'status' => Status::STATUS_ENABLED
+                'status' => Status::STATUS_ENABLED,
             ]
         );
 
@@ -1815,7 +1816,7 @@ class TypeTest extends TestCase
             [
                 'is_salable' => true,
                 'status' => Status::STATUS_ENABLED,
-                'all_items_salable' => true
+                'all_items_salable' => true,
             ]
         );
 
@@ -2082,7 +2083,7 @@ class TypeTest extends TestCase
         $product->method('getCustomOption')->willReturnMap([
             ['bundle_selection_ids', new DataObject(['value' => '[]'])],
             ['info_buyRequest',
-                new DataObject(['value' => json_encode(['bundle_option' => ''])])]
+                new DataObject(['value' => json_encode(['bundle_option' => ''])])],
         ]);
         $product->setCustomOption(json_encode([]));
         $this->model->checkProductBuyState($product);
@@ -2190,7 +2191,7 @@ class TypeTest extends TestCase
         $optionCollectionCache->setItems([
             new DataObject([
                 'required' => true,
-                'id' => 1
+                'id' => 1,
             ]),
         ]);
         $product->setData('_cache_instance_options_collection', $optionCollectionCache);
@@ -2240,13 +2241,13 @@ class TypeTest extends TestCase
             [
                 false,
                 'The required options you selected are not available',
-                false
+                false,
             ],
             [
                 $falseSelection,
                 'The required options you selected are not available',
-                false
-            ]
+                false,
+            ],
         ];
     }
 

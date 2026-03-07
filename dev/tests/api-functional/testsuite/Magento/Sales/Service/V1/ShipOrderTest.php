@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -191,7 +192,7 @@ class ShipOrderTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 
         $requestData = [
             'orderId' => $existingOrder->getId(),
-            'items' => "[]",
+            'items' => '[]',
         ];
 
         try {

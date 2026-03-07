@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\MediaContent\Model;
 
-use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface;
 use Magento\MediaContentApi\Api\Data\ContentAssetLinkExtensionInterface;
+use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface;
 use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
 
 /**

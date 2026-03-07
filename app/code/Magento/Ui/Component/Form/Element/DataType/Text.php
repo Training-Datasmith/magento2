@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form\Element\DataType;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\Ui\Component\Form\Element\DataType;
  */
 class Text extends AbstractDataType
 {
-    const NAME = 'text';
+    public const NAME = 'text';
 
     /**
      * Get component name

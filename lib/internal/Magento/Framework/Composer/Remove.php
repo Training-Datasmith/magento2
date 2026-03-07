@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\Composer;
 
-use Magento\Composer\MagentoComposerApplication;
+namespace Magento\Framework\Composer;
 
 /**
  * Class to run composer remove command

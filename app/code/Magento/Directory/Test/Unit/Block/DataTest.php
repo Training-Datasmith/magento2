@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,7 +14,9 @@ use Magento\Directory\Model\ResourceModel\Country\Collection as CountryCollectio
 use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
 use Magento\Framework\App\Cache\Type\Config;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Html\Select;
 use Magento\Framework\View\Element\Template\Context;
@@ -21,8 +24,6 @@ use Magento\Framework\View\LayoutInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Escaper;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -95,7 +96,7 @@ class DataTest extends TestCase
                 'context' => $this->contextMock,
                 'directoryHelper' => $this->helperDataMock,
                 'configCacheType' => $this->cacheTypeConfigMock,
-                'countryCollectionFactory' => $this->countryCollectionFactoryMock
+                'countryCollectionFactory' => $this->countryCollectionFactoryMock,
             ]
         );
 
@@ -157,7 +158,7 @@ class DataTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'create'
+                    'create',
                 ]
             )
             ->getMock();

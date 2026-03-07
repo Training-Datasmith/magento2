@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Quote\Api;
 
 use Magento\Catalog\Test\Fixture\Product;
 use Magento\Customer\Test\Fixture\Customer;
-use Magento\Store\Test\Fixture\Website;
-use Magento\Store\Test\Fixture\Store;
 use Magento\Store\Test\Fixture\Group;
+use Magento\Store\Test\Fixture\Store;
+use Magento\Store\Test\Fixture\Website;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -62,7 +63,7 @@ class ValidateProductWebsiteAssignmentTest extends WebapiAbstract
                 'name' => 'Product Base Website',
                 'price' => 10.00,
                 'website_ids' => [1, '$website2.id$'], // Base website only
-                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1]
+                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1],
             ],
             'product_base'
         ),
@@ -116,14 +117,14 @@ class ValidateProductWebsiteAssignmentTest extends WebapiAbstract
                 'name' => 'Product Second Website',
                 'price' => 15.00,
                 'website_ids' => ['$website2.id$'], // Second website only
-                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1]
+                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1],
             ],
             'product_second'
         ),
         DataFixture(
             Customer::class,
             [
-                'website_id' => 1 // Base website
+                'website_id' => 1, // Base website
             ],
             'customer'
         )
@@ -174,7 +175,7 @@ class ValidateProductWebsiteAssignmentTest extends WebapiAbstract
                 'name' => 'Product Second Guest',
                 'price' => 18.00,
                 'website_ids' => ['$website2.id$'], // Second website only
-                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1]
+                'stock_data' => ['use_config_manage_stock' => 1, 'qty' => 100, 'is_in_stock' => 1],
             ],
             'product_second'
         )

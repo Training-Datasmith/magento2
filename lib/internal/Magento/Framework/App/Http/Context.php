@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class Context implements ResetAfterRequestInterface
     {
         return [
             'data' => $this->data,
-            'default' => $this->default
+            'default' => $this->default,
         ];
     }
 
@@ -160,7 +161,7 @@ class Context implements ResetAfterRequestInterface
      *
      * @return DeploymentConfig
      */
-    private function getDeploymentConfig() : DeploymentConfig
+    private function getDeploymentConfig(): DeploymentConfig
     {
         if ($this->deploymentConfig === null) {
             $this->deploymentConfig = ObjectManager::getInstance()

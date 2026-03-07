@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class GetComparableItems
             $items[] = [
                 'uid' => $item->getId(),
                 'product' => $this->getProductData((int)$item->getId()),
-                'attributes' => $this->getProductComparableAttributes($listId, $item, $context)
+                'attributes' => $this->getProductComparableAttributes($listId, $item, $context),
             ];
         }
 
@@ -113,7 +114,7 @@ class GetComparableItems
         foreach ($itemsCollection->getComparableAttributes() as $item) {
             $attributes[] = [
                 'code' =>  $item->getAttributeCode(),
-                'value' => $this->blockListCompare->getProductAttributeValue($product, $item)
+                'value' => $this->blockListCompare->getProductAttributeValue($product, $item),
             ];
         }
 

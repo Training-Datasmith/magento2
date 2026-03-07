@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
 {
-
     /**
      * @var Link
      */
@@ -55,7 +55,7 @@ class LinkTest extends TestCase
             [
                 'context' => $this->context,
                 'rssUrlBuilder' => $this->urlBuilderInterface,
-                'scopeConfig' => $this->scopeConfigInterface
+                'scopeConfig' => $this->scopeConfigInterface,
             ]
         );
     }

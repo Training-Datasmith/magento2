@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class AddDataForAustralia implements DataPatchInterface, PatchVersionInterface
             ['AU', 'SA',  'South Australia'],
             ['AU', 'TAS', 'Tasmania'],
             ['AU', 'WA',  'Western Australia'],
-            ['AU', 'NT',  'Northern Territory']
+            ['AU', 'NT',  'Northern Territory'],
         ];
     }
 

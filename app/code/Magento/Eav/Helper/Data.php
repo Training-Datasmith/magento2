@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @var string
      */
-    const XML_PATH_VALIDATOR_DATA_INPUT_TYPES = 'general/validator_data/input_types';
+    public const XML_PATH_VALIDATOR_DATA_INPUT_TYPES = 'general/validator_data/input_types';
 
     /**
      * @var array
@@ -68,7 +70,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             ['value' => 'validate-email', 'label' => __('Email')],
             ['value' => 'validate-url', 'label' => __('URL')],
             ['value' => 'validate-alpha', 'label' => __('Letters')],
-            ['value' => 'validate-alphanum', 'label' => __('Letters (a-z, A-Z) or Numbers (0-9)')]
+            ['value' => 'validate-alphanum', 'label' => __('Letters (a-z, A-Z) or Numbers (0-9)')],
         ];
     }
 
@@ -143,7 +145,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             'entity_type_id' => $attribute->getEntityTypeId(),
             'attribute_id' => $attribute->getAttributeId(),
             'attribute_table' => $attribute->getBackend()->getTable(),
-            'backend_type' => $attribute->getBackendType()
+            'backend_type' => $attribute->getBackendType(),
         ];
     }
 }

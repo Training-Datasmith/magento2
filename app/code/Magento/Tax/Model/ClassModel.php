@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -18,20 +20,20 @@ class ClassModel extends \Magento\Framework\Model\AbstractExtensibleModel implem
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_ID   = 'class_id';
-    const KEY_NAME = 'class_name';
-    const KEY_TYPE = 'class_type';
+    public const KEY_ID   = 'class_id';
+    public const KEY_NAME = 'class_name';
+    public const KEY_TYPE = 'class_type';
     /**#@-*/
 
     /**
      * Defines Customer Tax Class string
      */
-    const TAX_CLASS_TYPE_CUSTOMER = 'CUSTOMER';
+    public const TAX_CLASS_TYPE_CUSTOMER = 'CUSTOMER';
 
     /**
      * Defines Product Tax Class string
      */
-    const TAX_CLASS_TYPE_PRODUCT = 'PRODUCT';
+    public const TAX_CLASS_TYPE_PRODUCT = 'PRODUCT';
 
     /**
      * @var \Magento\Tax\Model\TaxClass\Factory

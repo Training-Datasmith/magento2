@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -35,11 +36,11 @@ class ArgumentApplierFactory
      * @return ArgumentApplierInterface
      * @throws \LogicException
      */
-    public function create(string $argumentName) : ArgumentApplierInterface
+    public function create(string $argumentName): ArgumentApplierInterface
     {
         $appliers = [
             ArgumentApplier\Filter::ARGUMENT_NAME => ArgumentApplier\Filter::class,
-            ArgumentApplier\Sort::ARGUMENT_NAME => ArgumentApplier\Sort::class
+            ArgumentApplier\Sort::ARGUMENT_NAME => ArgumentApplier\Sort::class,
         ];
         if (isset($appliers[$argumentName])) {
             return $this->objectManager->create($appliers[$argumentName]);

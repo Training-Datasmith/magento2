@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,11 +54,11 @@ class ProductEntityAttributesForAst implements FieldEntityAttributesInterface
      *
      * @return array
      */
-    public function getEntityAttributes() : array
+    public function getEntityAttributes(): array
     {
         $productTypeSchema = $this->config->getConfigElement(self::PRODUCT_BASE_TYPE);
         if (!$productTypeSchema instanceof Type) {
-            throw new \LogicException(__("%1 type not defined in schema.", self::PRODUCT_BASE_TYPE));
+            throw new \LogicException(__('%1 type not defined in schema.', self::PRODUCT_BASE_TYPE));
         }
 
         $fields = [];

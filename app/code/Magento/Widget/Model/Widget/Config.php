@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
      * @param \Magento\Framework\DataObject $config
      * @return \Magento\Framework\DataObject
      */
-    public function getConfig(\Magento\Framework\DataObject $config) : \Magento\Framework\DataObject
+    public function getConfig(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject
     {
         $settings = $this->getPluginSettings($config);
         return $config->addData($settings);
@@ -102,7 +103,7 @@ class Config implements \Magento\Framework\Data\Wysiwyg\ConfigProviderInterface
                     'error_image_url' => $this->getErrorImageUrl(),
                     'placeholders' => $this->getWidgetPlaceholderImageUrls(),
                 ],
-            ]
+            ],
         ];
 
         $configPlugins = (array) $config->getData('plugins');

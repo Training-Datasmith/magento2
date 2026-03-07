@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class OverviewTest extends TestCase
                 'totalsReader' => $this->totalsReaderMock,
                 'multishipping' => $this->checkoutMock,
                 'urlBuilder' => $this->urlBuilderMock,
-                '_scopeConfig' => $this->scopeConfigMock
+                '_scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }

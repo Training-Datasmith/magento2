@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class TMapTest extends TestCase
                 [
                     ['TClass', [], new \TClass()],
                     ['TInterface', [], new \TClass()],
-                    ['TClassVirtual', [], new \TClass()]
+                    ['TClassVirtual', [], new \TClass()],
                 ]
             );
 
@@ -80,7 +81,7 @@ class TMapTest extends TestCase
             'item',
             4,
             'item2',
-            5
+            5,
         ];
         $tMap = $this->getSimpleInitialized(6);
 
@@ -96,7 +97,7 @@ class TMapTest extends TestCase
                 [
                     ['TClass', [], new \TClass()],
                     ['TInterface', [], new \TClass()],
-                    ['TClassVirtual', [], new \TClass()]
+                    ['TClassVirtual', [], new \TClass()],
                 ]
             );
 
@@ -127,7 +128,7 @@ class TMapTest extends TestCase
         $testClasses = [
             0 => 'TClass',
             'item' => 'TClassVirtual',
-            3 => 'TInterface'
+            3 => 'TInterface',
         ];
 
         $this->omConfig->expects(static::exactly($exactlyCalls))
@@ -136,7 +137,7 @@ class TMapTest extends TestCase
                 [
                     ['TClass', 'TClass'],
                     ['TClassVirtual', 'TClassVirtual'],
-                    ['TInterface', 'TClassVirtual']
+                    ['TInterface', 'TClassVirtual'],
                 ]
             );
         $this->omConfig->expects(static::exactly($exactlyCalls))
@@ -144,7 +145,7 @@ class TMapTest extends TestCase
             ->willReturnMap(
                 [
                     ['TClass', 'TClass'],
-                    ['TClassVirtual', 'TClass']
+                    ['TClassVirtual', 'TClass'],
                 ]
             );
 

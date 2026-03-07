@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,8 +19,7 @@ namespace Magento\AsynchronousOperations\Api\Data;
  */
 interface DetailedBulkOperationsStatusInterface extends BulkSummaryInterface
 {
-
-    const OPERATIONS_LIST = 'operations_list';
+    public const OPERATIONS_LIST = 'operations_list';
 
     /**
      * Retrieve operations list.

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ $customer = $objectManager->create(
             'is_active' => true,
             'firstname' => 'John',
             'lastname' => 'Doe',
-        ]
+        ],
     ]
 );
 $customer->save();

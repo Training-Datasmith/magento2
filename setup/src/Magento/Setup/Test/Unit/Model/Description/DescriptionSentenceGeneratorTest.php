@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class DescriptionSentenceGeneratorTest extends TestCase
     private $sentenceConfig = [
         'words' => [
             'count-min' => 7,
-            'count-max' => 7
-        ]
+            'count-max' => 7,
+        ],
     ];
 
     protected function setUp(): void
@@ -50,7 +51,7 @@ class DescriptionSentenceGeneratorTest extends TestCase
         $this->dictionaryMock
             ->expects($this->exactly(7))
             ->method('getRandWord')
-            ->willReturnCallback(function() use (&$callCount, $words) {
+            ->willReturnCallback(function () use (&$callCount, $words) {
                 return $words[$callCount++];
             });
 

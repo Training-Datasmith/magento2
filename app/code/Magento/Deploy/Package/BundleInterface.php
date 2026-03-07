@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Package;
 
 /**
@@ -15,7 +18,7 @@ interface BundleInterface
     /**
      * Path relative to package directory where bundle files should be created
      */
-    const BUNDLE_JS_DIR = 'js/bundle';
+    public const BUNDLE_JS_DIR = 'js/bundle';
 
     /**
      * Add file that can be bundled

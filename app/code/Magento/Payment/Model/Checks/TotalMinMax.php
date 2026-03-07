@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Checks;
 
 use Magento\Payment\Model\MethodInterface;
@@ -19,12 +22,12 @@ class TotalMinMax implements SpecificationInterface
     /**
      * Config value key for min order total
      */
-    const MIN_ORDER_TOTAL = 'min_order_total';
+    public const MIN_ORDER_TOTAL = 'min_order_total';
 
     /**
      * Config value key for max order total
      */
-    const MAX_ORDER_TOTAL = 'max_order_total';
+    public const MAX_ORDER_TOTAL = 'max_order_total';
 
     /**
      * Check whether payment method is applicable to quote

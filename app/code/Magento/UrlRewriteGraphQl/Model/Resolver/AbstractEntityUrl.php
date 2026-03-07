@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
-use Magento\UrlRewrite\Model\UrlFinderInterface;
-use Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocatorInterface;
 use Magento\Framework\GraphQl\Query\Uid;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocatorInterface;
 
 abstract class AbstractEntityUrl implements ResolverInterface
 {
@@ -119,7 +120,7 @@ abstract class AbstractEntityUrl implements ResolverInterface
             'relative_url' => $url,
             'redirectCode' => $redirectType,
             'redirect_code' => $redirectType,
-            'type' => $entityId ? $this->sanitizeType($entityType) : null
+            'type' => $entityId ? $this->sanitizeType($entityType) : null,
         ];
     }
 
@@ -159,7 +160,7 @@ abstract class AbstractEntityUrl implements ResolverInterface
         return $this->urlFinder->findOneByData(
             [
                 'request_path' => $requestPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
     }
@@ -176,7 +177,7 @@ abstract class AbstractEntityUrl implements ResolverInterface
         return $this->urlFinder->findOneByData(
             [
                 'target_path' => $targetPath,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
     }

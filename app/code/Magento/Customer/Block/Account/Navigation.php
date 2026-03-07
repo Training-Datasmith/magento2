@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Customer\Block\Account;
 
 use Magento\Framework\View\Element\Html\Links;
-use Magento\Customer\Block\Account\SortLinkInterface;
 
 /**
  * Class for sorting links in navigation panels.
@@ -33,7 +33,7 @@ class Navigation extends Links
             }
         }
 
-        usort($sortableLink, [$this, "compare"]);
+        usort($sortableLink, [$this, 'compare']);
         return array_merge($sortableLink, $links);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\Catalog\Model\ResourceModel\Category\Tree;
 use Magento\Catalog\Model\ResourceModel\Category\TreeFactory;
 use Magento\Framework\Data\Tree\Node;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -214,7 +215,7 @@ class TreeTest extends TestCase
         );
         $node->method('hasChildren')->willReturn(false);
         $node->expects($this->never())->method('getChildren');
-        
+
         $node->expects($this->once())->method('getId')->willReturn($currentLevel);
         $node->expects($this->once())->method('getParentId')->willReturn($currentLevel - 1);
         $node->expects($this->once())->method('getName')->willReturn('Name' . $currentLevel);

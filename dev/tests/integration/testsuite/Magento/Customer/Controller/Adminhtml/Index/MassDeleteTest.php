@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Customer\Controller\Adminhtml\Index;
 use Magento\Backend\Model\Session;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
-use PHPUnit\Framework\Constraint\Constraint;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Constraint\Constraint;
 
 /**
  * @magentoAppArea adminhtml
@@ -147,7 +148,7 @@ class MassDeleteTest extends AbstractBackendController
                 'ids' => null,
                 'constraint' => self::equalTo(['An item needs to be selected. Select and try again.']),
                 'messageType' => MessageInterface::TYPE_ERROR,
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Model;
 
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Helper\View as CustomerViewHelper;
+use Magento\Customer\Model\Data\CustomerSecure;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Mail\Template\SenderResolverInterface;
-use Magento\Store\Model\App\Emulation;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Customer\Helper\View as CustomerViewHelper;
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Customer\Model\Data\CustomerSecure;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Customer email notification

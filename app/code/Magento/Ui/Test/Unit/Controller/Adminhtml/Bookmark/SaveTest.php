@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class SaveTest extends TestCase
      * @throws LocalizedException
      * @throws \ReflectionException
      */
-    public function testExecuteForCurrentBookmarkUpdate() : void
+    public function testExecuteForCurrentBookmarkUpdate(): void
     {
         $currentConfig = '{"activeIndex":"bookmark2"}';
         $updatedConfig = '{"current":' . json_encode($this->getConfigData('P2', 1, 2)) . '}';
@@ -152,7 +153,7 @@ class SaveTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
         $request->expects($this->exactly(2))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['data'] => '{"' . Save::ACTIVE_IDENTIFIER . '":"bookmark2"}',
                 ['namespace'] => 'product_listing'
             });
@@ -192,7 +193,7 @@ class SaveTest extends TestCase
      * @return void
      * @throws LocalizedException|\ReflectionException
      */
-    public function testExecuteForUpdateCurrentBookmarkConfig() : void
+    public function testExecuteForUpdateCurrentBookmarkConfig(): void
     {
         $updatedConfig = '{"views":{"bookmark1":{"data":' . json_encode($this->getConfigData('P1', 2, 1)) . '}}}';
         $currentConfig = '{"current":' . json_encode($this->getConfigData('P1', 2, 1)) . '}';
@@ -207,7 +208,7 @@ class SaveTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
         $request->expects($this->atLeast(3))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['data'] => $currentConfig,
                 ['namespace'] => 'product_listing'
             });
@@ -274,13 +275,13 @@ class SaveTest extends TestCase
             $config = [
                     'filters' => [
                         'applied' => [
-                            'placeholder' => true
+                            'placeholder' => true,
                         ]]
                     ,
                     'positions' => [
                         'entity_id' => 1,
-                        'sku' => 2
-                    ]
+                        'sku' => 2,
+                    ],
                 ];
         }
         $bookmark = $this->createPartialMockWithReflection(
@@ -302,16 +303,16 @@ class SaveTest extends TestCase
         $configData = [
             'views' => [
                 $identifier => [
-                    'data' => $config
-                ]
-            ]
+                    'data' => $config,
+                ],
+            ],
         ];
 
         if ($identifier === 'current') {
             $configData = [
                 $identifier => [
-                    'data' => $config
-                ]
+                    'data' => $config,
+                ],
             ];
         }
 
@@ -333,13 +334,13 @@ class SaveTest extends TestCase
             'filters' => [
                 'applied' => [
                     'placeholder' => true,
-                    'sku' => $sku
-                ]
+                    'sku' => $sku,
+                ],
             ],
             'positions' => [
                 'entity_id' => $entity_position,
-                'sku' => $sku_position
-            ]
+                'sku' => $sku_position,
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -99,7 +101,7 @@ class XmlCatalogGenerateCommand extends Command
                     self::IDE_FILE_PATH_ARGUMENT,
                     InputArgument::REQUIRED,
                     'Path to file to output the catalog. For PhpStorm use .idea/misc.xml'
-                )
+                ),
             ]);
 
         parent::configure();

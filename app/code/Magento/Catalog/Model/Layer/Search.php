@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
-use Magento\Catalog\Model\Layer;
-use Magento\Catalog\Model\ResourceModel;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as AttributeCollectionFactory;
 
 class Search extends \Magento\Catalog\Model\Layer

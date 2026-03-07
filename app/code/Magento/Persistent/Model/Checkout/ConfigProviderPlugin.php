@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Model\Checkout;
 
-use Magento\Persistent\Helper\Session as PersistentSession;
-use Magento\Persistent\Helper\Data as PersistentHelper;
 use Magento\Checkout\Model\Session as CheckoutSession;
-use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Persistent\Helper\Data as PersistentHelper;
+use Magento\Persistent\Helper\Session as PersistentSession;
+use Magento\Quote\Model\QuoteIdMaskFactory;
 
 class ConfigProviderPlugin
 {

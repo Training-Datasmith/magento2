@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget;
 
 /**
@@ -193,7 +196,7 @@ class Options extends \Magento\Backend\Block\Widget\Form\Generic
         // hidden element
         if (!$parameter->getVisible()) {
             $fieldType = 'hidden';
-        // just an element renderer
+            // just an element renderer
         } elseif ($fieldType && $this->_isClassName($fieldType)) {
             $fieldRenderer = $this->getLayout()->createBlock($fieldType);
             $fieldType = $this->_defaultElementType;

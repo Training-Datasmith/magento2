@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Legacy tests to find themes non-modular local.xml files declaration
  */
+
 namespace Magento\Test\Legacy;
 
 use Magento\Framework\Component\ComponentRegistrar;

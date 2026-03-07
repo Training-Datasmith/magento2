@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cookie\Model\Config\Backend;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -51,25 +54,25 @@ class DomainTest extends TestCase
         return [
             'notString' => [
                 ['array'],  // $value
-                'Invalid domain name: must be a string'  // $exceptionMessage
+                'Invalid domain name: must be a string',  // $exceptionMessage
             ],
             'invalidHostname' => [
                 'http://',  // $value
                 'Invalid domain name: The input does not match the expected structure for a DNS hostname; '
                 . 'The input does not appear to be a valid URI hostname; '
-                . 'The input does not appear to be a valid local network name'  // $exceptionMessage
+                . 'The input does not appear to be a valid local network name',  // $exceptionMessage
             ],
             'validHostname' => [
                 'hostname.com',  // $value
-                null  // $exceptionMessage
+                null,  // $exceptionMessage
             ],
             'emptyString' => [
                 '',  // $value
-                null  // $exceptionMessage
+                null,  // $exceptionMessage
             ],
             'invalidCharacter' => [
                 'hostname,com',  // $value
-                'Invalid domain name: invalid character in cookie domain'  // $exceptionMessage
+                'Invalid domain name: invalid character in cookie domain',  // $exceptionMessage
             ],
         ];
     }

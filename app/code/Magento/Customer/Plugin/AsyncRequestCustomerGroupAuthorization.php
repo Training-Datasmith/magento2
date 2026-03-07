@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -9,10 +10,10 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Plugin;
 
+use Magento\AsynchronousOperations\Model\MassSchedule;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Exception\AuthorizationException;
-use Magento\AsynchronousOperations\Model\MassSchedule;
 
 /**
  * Plugin to validate anonymous request for asynchronous operations containing group id.

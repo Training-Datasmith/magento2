@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -162,7 +163,7 @@ class File extends BackendFile
                         'name' => basename($value),
                         'type' => $this->getMimeType($fileName),
                         'exists' => true,
-                    ]
+                    ],
                 ];
             }
             $this->setValue($fileInfo);

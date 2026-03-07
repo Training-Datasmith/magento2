@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Plugin\Model\Attribute\Backend;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Plugin\Model\Attribute\Backend\AttributeValidation;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
@@ -18,6 +18,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -90,7 +91,7 @@ class AttributeValidationTest extends TestCase
         $this->attributeMock->method('getAttributeCode')->willReturnCallback(function () use (&$attributeCode) {
             return $attributeCode;
         });
-        
+
         $this->subjectMock = $this->createPartialMockWithReflection(
             AbstractBackend::class,
             ['setAttribute', 'getAttribute']
@@ -109,7 +110,7 @@ class AttributeValidationTest extends TestCase
         $this->storeMock->method('getId')->willReturnCallback(function () use (&$storeId) {
             return $storeId;
         });
-        
+
         $this->storeManagerMock = $this->createMock(StoreManagerInterface::class);
         $this->storeManagerMock->method('getStore')->willReturn($this->storeMock);
 
@@ -125,7 +126,7 @@ class AttributeValidationTest extends TestCase
             AttributeValidation::class,
             [
                 'storeManager' => $this->storeManagerMock,
-                'allowedEntityTypes' => $this->allowedEntityTypes
+                'allowedEntityTypes' => $this->allowedEntityTypes,
             ]
         );
     }
@@ -173,7 +174,7 @@ class AttributeValidationTest extends TestCase
             [true, false, '0'],
             [true, false, 0],
             [true, false, null],
-            [false, true, 1]
+            [false, true, 1],
         ];
     }
 }

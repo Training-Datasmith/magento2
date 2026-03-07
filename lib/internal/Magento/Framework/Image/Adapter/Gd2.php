@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class Gd2 extends AbstractAdapter
     /**
      * @var array
      */
-    protected $_requiredExtensions = ["gd"];
+    protected $_requiredExtensions = ['gd'];
 
     /**
      * Image output callbacks by type
@@ -89,7 +91,7 @@ class Gd2 extends AbstractAdapter
      * @param string $filename
      * @return bool
      */
-    private function validateURLScheme(string $filename) : bool
+    private function validateURLScheme(string $filename): bool
     {
         $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
         $url = parse_url($filename);
@@ -348,7 +350,7 @@ class Gd2 extends AbstractAdapter
                 $colorsForIndex = imagecolorsforindex($this->_imageHandler, $transparentIndex);
                 list($red, $green, $blue) = array_values($colorsForIndex);
                 $transparentColor = imagecolorallocate($imageResourceTo, (int) $red, (int) $green, (int) $blue);
-            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
+                // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
             } catch (\ValueError $e) {
             }
         }
@@ -485,7 +487,7 @@ class Gd2 extends AbstractAdapter
      */
     public function watermark($imagePath, $positionX = 0, $positionY = 0, $opacity = 30, $tile = false)
     {
-        list($watermarkSrcWidth, $watermarkSrcHeight, $watermarkFileType,) = $this->_getImageOptions($imagePath);
+        list($watermarkSrcWidth, $watermarkSrcHeight, $watermarkFileType, ) = $this->_getImageOptions($imagePath);
         $this->_getFileAttributes();
         $watermark = call_user_func(
             $this->_getCallback('create', $watermarkFileType, 'Unsupported watermark image format.'),

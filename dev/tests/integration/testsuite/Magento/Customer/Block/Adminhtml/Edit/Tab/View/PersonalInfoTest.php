@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab\View;
 
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
@@ -80,7 +83,7 @@ class PersonalInfoTest extends \PHPUnit\Framework\TestCase
             [
                 'context' => $this->_context,
                 'groupService' => $this->_groupRepository,
-                'registry' => $this->_coreRegistry
+                'registry' => $this->_coreRegistry,
             ]
         );
     }

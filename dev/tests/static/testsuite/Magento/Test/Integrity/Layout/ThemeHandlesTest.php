@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test declarations of handles in theme layout updates
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Layout;
 
 class ThemeHandlesTest extends \PHPUnit\Framework\TestCase

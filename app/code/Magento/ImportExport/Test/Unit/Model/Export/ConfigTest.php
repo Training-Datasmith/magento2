@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class ConfigTest extends TestCase
     {
         return [
             'entities_key_exist' => [['entities' => 'value'], 'value'],
-            'return_default_value' => [['key_one' => 'value'], null]
+            'return_default_value' => [['key_one' => 'value'], null],
         ];
     }
 
@@ -177,7 +178,7 @@ class ConfigTest extends TestCase
     {
         return [
             'fileFormats_key_exist' => [['fileFormats' => 'value'], 'value'],
-            'return_default_value' => [['key_one' => 'value'], null]
+            'return_default_value' => [['key_one' => 'value'], null],
         ];
     }
 }

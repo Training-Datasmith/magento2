@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\TestFramework\Catalog\Model\Layer\QuickSearchByQuery;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test founded products order after quick search with changed attribute search weight using mysql search engine.
@@ -144,7 +145,7 @@ class AttributeSearchWeightTest extends TestCase
                 [
                     'Xbox',
                     'Nintendo Wii',
-                ]
+                ],
             ],
         ];
     }
@@ -176,7 +177,7 @@ class AttributeSearchWeightTest extends TestCase
                 'sku',
                 'name',
                 'description',
-                'test_searchable_attribute'
+                'test_searchable_attribute',
             ];
             foreach ($attributeCodes as $attributeCode) {
                 $attribute = $this->productAttributeRepository->get($attributeCode);

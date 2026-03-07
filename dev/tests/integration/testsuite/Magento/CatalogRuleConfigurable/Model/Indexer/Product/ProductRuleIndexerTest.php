@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -121,21 +122,21 @@ class ProductRuleIndexerTest extends TestCase
                 [
                     'simple_10' => 5,
                     'simple_20' => 10,
-                ]
+                ],
             ],
             [
                 'simple_10',
                 [
                     'simple_10' => 5,
                     'simple_20' => 10,
-                ]
+                ],
             ],
             [
                 'simple_20',
                 [
                     'simple_10' => 5,
                     'simple_20' => 10,
-                ]
+                ],
             ],
         ];
     }

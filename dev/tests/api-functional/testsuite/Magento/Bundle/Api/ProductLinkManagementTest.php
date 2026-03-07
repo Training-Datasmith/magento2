@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +14,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductLinkManagementTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'bundleProductLinkManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/bundle-products';
+    public const SERVICE_NAME = 'bundleProductLinkManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/bundle-products';
 
     /**
      * @magentoApiDataFixture Magento/Bundle/_files/product.php

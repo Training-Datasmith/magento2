@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -407,7 +408,7 @@ class Rule extends AbstractModel implements RuleInterface, IdentityInterface, Re
                     [[$this, 'callbackValidateProduct']],
                     [
                         'attributes' => $this->getCollectedAttributes(),
-                        'product' => $this->_productFactory->create()
+                        'product' => $this->_productFactory->create(),
                     ]
                 );
             }

@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\CatalogRule\Test\Unit\Model\Indexer;
 
@@ -46,7 +46,7 @@ class AbstractIndexerTest extends TestCase
         $this->indexer = $this->getMockBuilder(AbstractIndexer::class)
             ->setConstructorArgs([
                 $this->indexBuilder,
-                $this->_eventManagerMock
+                $this->_eventManagerMock,
             ])
             ->onlyMethods(['doExecuteList', 'doExecuteRow'])
             ->getMock();

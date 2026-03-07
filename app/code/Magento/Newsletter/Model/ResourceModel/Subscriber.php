@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Model\ResourceModel;
 
 use Magento\Customer\Api\Data\CustomerInterface;

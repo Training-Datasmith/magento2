@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,7 +12,6 @@ use Magento\Framework\DB\Adapter\SqlVersionProvider;
 use Magento\TestFramework\Deploy\CliCommand;
 use Magento\TestFramework\Deploy\TestModuleManager;
 use Magento\TestFramework\TestCase\MutableDataInterface;
-use PHPUnit\Util\Test as TestUtil;
 
 /**
  * Handler for applying reinstallMagento annotation.
@@ -32,7 +33,7 @@ class DataProviderFromFile
         SqlVersionProvider::MARIA_DB_10_11_VERSION => 'mariadb1011',
         SqlVersionProvider::MYSQL_8_0_29_VERSION => 'mysql829',
         SqlVersionProvider::MARIA_DB_10_4_27_VERSION => 'mariadb10427',
-        SqlVersionProvider::MARIA_DB_10_6_11_VERSION => 'mariadb10611'
+        SqlVersionProvider::MARIA_DB_10_6_11_VERSION => 'mariadb10611',
     ];
 
     /**
@@ -72,12 +73,12 @@ class DataProviderFromFile
         if (isset($annotations['method']['dataProviderFromFile']) && $test instanceof MutableDataInterface) {
             $test->setData(
                 $test->name(),
-                $this->loadAllFiles(TESTS_MODULES_PATH . "/" . $annotations['method']['dataProviderFromFile'][0])
+                $this->loadAllFiles(TESTS_MODULES_PATH . '/' . $annotations['method']['dataProviderFromFile'][0])
             );
 
             self::setTestObject($test);
         } elseif (!$test instanceof MutableDataInterface) {
-            throw new \Exception("Test type do not supports @dataProviderFromFile annotation");
+            throw new \Exception('Test type do not supports @dataProviderFromFile annotation');
         }
     }
 

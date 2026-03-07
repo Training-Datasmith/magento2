@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\GiftMessage\Observer;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\QuoteFactory;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class SalesEventQuoteMergeTest extends \PHPUnit\Framework\TestCase
 {
@@ -31,7 +32,7 @@ class SalesEventQuoteMergeTest extends \PHPUnit\Framework\TestCase
             'sales_quote_merge_after',
             [
                 'quote' => $targetQuote,
-                'source' => $sourceQuote
+                'source' => $sourceQuote,
             ]
         );
 

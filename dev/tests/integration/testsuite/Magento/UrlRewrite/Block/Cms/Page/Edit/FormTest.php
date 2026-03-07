@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Cms\Page\Edit;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -83,7 +86,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
             [
                 'label' => '    Main Website Store',
                 'value' => [['label' => '    Default Store View', 'value' => 1]],
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
         ];
         $this->assertEquals($expectedStores, $form->getElement('store_id')->getValues());
@@ -122,7 +125,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 'cms_page/3',
                 'cms-page',
                 'cms/page/view/page_id/3',
-            ]
+            ],
         ];
     }
 

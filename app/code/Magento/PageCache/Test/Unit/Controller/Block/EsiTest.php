@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,11 +15,11 @@ use Magento\Framework\Serialize\Serializer\Base64Json;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
+use Magento\Framework\Validator\Regex;
+use Magento\Framework\Validator\RegexFactory;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\LayoutCacheKeyInterface;
-use Magento\Framework\Validator\Regex;
-use Magento\Framework\Validator\RegexFactory;
 use Magento\PageCache\Controller\Block;
 use Magento\PageCache\Controller\Block\Esi;
 use Magento\PageCache\Test\Unit\Block\Controller\StubBlock;
@@ -100,7 +101,7 @@ class EsiTest extends TestCase
         $contextMock->expects($this->any())->method('getRequest')->willReturn($this->requestMock);
         $contextMock->expects($this->any())->method('getResponse')->willReturn($this->responseMock);
         $contextMock->expects($this->any())->method('getView')->willReturn($this->viewMock);
-        
+
         $this->translateInline = $this->createMock(InlineInterface::class);
 
         $regexFactoryMock = $this->getMockBuilder(RegexFactory::class)
@@ -122,7 +123,7 @@ class EsiTest extends TestCase
                 'jsonSerializer' => new Json(),
                 'base64jsonSerializer' => new Base64Json(),
                 'layoutCacheKey' => $this->layoutCacheKeyMock,
-                'regexValidatorFactory' => $regexFactoryMock
+                'regexValidatorFactory' => $regexFactoryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\Setup;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Setup\Module\Setup\ResourceConfig;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ResourceConfigTest extends TestCase
 {
@@ -33,7 +34,7 @@ class ResourceConfigTest extends TestCase
         return [
             'validResourceName' => ['validResourceName'],
             'invalidResourceName' => ['invalidResourceName'],
-            'blankResourceName' => ['']
+            'blankResourceName' => [''],
         ];
     }
 }

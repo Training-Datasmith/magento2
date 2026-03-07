@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\Component\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Ui\Component\Product\MassAction;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\Processor;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +54,7 @@ class MassActionTest extends TestCase
             [
                 'authorization' => $this->authorizationMock,
                 'context' => $this->contextMock,
-                'data' => []
+                'data' => [],
             ]
         );
     }
@@ -83,7 +84,7 @@ class MassActionTest extends TestCase
                 'data' => [
                     'name' => $componentName,
                     'config' => $componentData,
-                ]
+                ],
             ]
         );
         $this->authorizationMock->method('isAllowed')
@@ -98,7 +99,7 @@ class MassActionTest extends TestCase
      * @return array
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public static function getPrepareDataProvider() : array
+    public static function getPrepareDataProvider(): array
     {
         return [
             [
@@ -107,7 +108,7 @@ class MassActionTest extends TestCase
                     'type' => 'first_action',
                     'label' => 'First Action',
                     'url' => '/module/controller/firstAction',
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
             ],
             [
@@ -119,15 +120,15 @@ class MassActionTest extends TestCase
                         [
                             'type' => 'second_sub_action1',
                             'label' => 'Second Sub Action 1',
-                            'url' => '/module/controller/secondSubAction1'
+                            'url' => '/module/controller/secondSubAction1',
                         ],
                         [
                             'type' => 'second_sub_action2',
                             'label' => 'Second Sub Action 2',
-                            'url' => '/module/controller/secondSubAction2'
+                            'url' => '/module/controller/secondSubAction2',
                         ],
                     ],
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
             ],
             [
@@ -139,15 +140,15 @@ class MassActionTest extends TestCase
                         [
                             'type' => 'enable',
                             'label' => 'Second Sub Action 1',
-                            'url' => '/module/controller/enable'
+                            'url' => '/module/controller/enable',
                         ],
                         [
                             'type' => 'disable',
                             'label' => 'Second Sub Action 2',
-                            'url' => '/module/controller/disable'
+                            'url' => '/module/controller/disable',
                         ],
                     ],
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
             ],
             [
@@ -159,18 +160,18 @@ class MassActionTest extends TestCase
                         [
                             'type' => 'enable',
                             'label' => 'Second Sub Action 1',
-                            'url' => '/module/controller/enable'
+                            'url' => '/module/controller/enable',
                         ],
                         [
                             'type' => 'disable',
                             'label' => 'Second Sub Action 2',
-                            'url' => '/module/controller/disable'
+                            'url' => '/module/controller/disable',
                         ],
                     ],
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
                 false,
-                false
+                false,
             ],
             [
                 'delete_component',
@@ -178,7 +179,7 @@ class MassActionTest extends TestCase
                     'type' => 'delete',
                     'label' => 'First Action',
                     'url' => '/module/controller/delete',
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
             ],
             [
@@ -187,10 +188,10 @@ class MassActionTest extends TestCase
                     'type' => 'delete',
                     'label' => 'First Action',
                     'url' => '/module/controller/delete',
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
                 false,
-                false
+                false,
             ],
             [
                 'attributes_component',
@@ -198,7 +199,7 @@ class MassActionTest extends TestCase
                     'type' => 'delete',
                     'label' => 'First Action',
                     'url' => '/module/controller/attributes',
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
             ],
             [
@@ -207,10 +208,10 @@ class MassActionTest extends TestCase
                     'type' => 'delete',
                     'label' => 'First Action',
                     'url' => '/module/controller/attributes',
-                    '__disableTmpl' => true
+                    '__disableTmpl' => true,
                 ],
                 false,
-                false
+                false,
             ],
         ];
     }

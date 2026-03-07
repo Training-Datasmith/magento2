@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\ImportExport\Controller\Adminhtml\History;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\ImportExport\Helper\Report;
 use Magento\ImportExport\Model\Import;
-use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\App\ResponseInterface;
 
 /**
  * Download history controller

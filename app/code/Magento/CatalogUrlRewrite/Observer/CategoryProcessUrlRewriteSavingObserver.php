@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,10 +15,10 @@ use Magento\CatalogUrlRewrite\Model\Map\DataCategoryUrlRewriteDatabaseMap;
 use Magento\CatalogUrlRewrite\Model\Map\DataProductUrlRewriteDatabaseMap;
 use Magento\CatalogUrlRewrite\Model\UrlRewriteBunchReplacer;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Store\Model\ResourceModel\Group\CollectionFactory;
-use Magento\Store\Model\ResourceModel\Group\Collection as StoreGroupCollection;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Event\ObserverInterface;
+use Magento\Store\Model\ResourceModel\Group\Collection as StoreGroupCollection;
+use Magento\Store\Model\ResourceModel\Group\CollectionFactory;
 
 /**
  * Generates Category Url Rewrites after save and Products Url Rewrites assigned to the category that's being saved
@@ -75,7 +77,7 @@ class CategoryProcessUrlRewriteSavingObserver implements ObserverInterface
         ScopeConfigInterface $scopeConfig,
         $dataUrlRewriteClassNames = [
             DataCategoryUrlRewriteDatabaseMap::class,
-            DataProductUrlRewriteDatabaseMap::class
+            DataProductUrlRewriteDatabaseMap::class,
         ],
         ?CollectionFactory $storeGroupFactory = null
     ) {

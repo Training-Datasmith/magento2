@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -13,13 +15,13 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\Data\ImageContentInterface;
 use Magento\Framework\Api\Data\ImageContentInterfaceFactory;
+use Magento\Framework\Api\ImageContentValidatorInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
-use Magento\Framework\Api\ImageContentValidatorInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Driver\File\Mime;
 use Magento\Framework\Filesystem\Io\File;
@@ -339,7 +341,7 @@ class GalleryManagement implements \Magento\Catalog\Api\ProductAttributeMediaGal
                 }
             }
         }
-        
+
         $product->setData('media_gallery', $processedData);
     }
 }

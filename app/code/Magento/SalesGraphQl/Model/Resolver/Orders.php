@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class Orders implements ResolverInterface
                 'created_at' => $order->getCreatedAt(),
                 'grand_total' => $order->getGrandTotal(),
                 'status' => $order->getStatus(),
-                'model' => $order
+                'model' => $order,
             ];
         }
         return ['items' => $items];

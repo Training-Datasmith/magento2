@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class IndexStructureTest extends TestCase
             IndexStructure::class,
             [
                 'adapter' => $this->adapter,
-                'scopeResolver' => $this->scopeResolver
+                'scopeResolver' => $this->scopeResolver,
             ]
         );
     }

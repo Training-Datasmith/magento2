@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class UpgradeHashAlgorithmCommandTest extends TestCase
         $this->command = $this->objectManager->getObject(
             UpgradeHashAlgorithmCommand::class,
             [
-                'customerCollectionFactory' => $this->customerCollectionFactory
+                'customerCollectionFactory' => $this->customerCollectionFactory,
             ]
         );
     }

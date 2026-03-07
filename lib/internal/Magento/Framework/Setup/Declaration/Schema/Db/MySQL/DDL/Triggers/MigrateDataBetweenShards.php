@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class MigrateDataBetweenShards implements DDLTriggerInterface
     /**
      * This flag says, whether we should to skip data migration from one shard to another
      */
-    const SKIP_MIGRATION_DATA_FLAG = 'skip-migration';
+    public const SKIP_MIGRATION_DATA_FLAG = 'skip-migration';
 
     /**
      * @var ResourceConnection
@@ -54,7 +55,7 @@ class MigrateDataBetweenShards implements DDLTriggerInterface
      *
      * @inheritdoc
      */
-    public function isApplicable(string $statement) : bool
+    public function isApplicable(string $statement): bool
     {
         return $statement !== self::SKIP_MIGRATION_DATA_FLAG;
     }
@@ -62,7 +63,7 @@ class MigrateDataBetweenShards implements DDLTriggerInterface
     /**
      * @inheritdoc
      */
-    public function getCallback(ElementHistory $elementHistory) : callable
+    public function getCallback(ElementHistory $elementHistory): callable
     {
         /** @var Table $newTable */
         $newTable = $elementHistory->getNew();

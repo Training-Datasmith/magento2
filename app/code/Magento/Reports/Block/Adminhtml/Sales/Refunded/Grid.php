@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -58,7 +60,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'totals_label' => __('Total'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -71,7 +73,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 
@@ -91,7 +93,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-ref-total',
                 'column_css_class' => 'col-ref-total',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 
@@ -107,7 +109,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-ref-online',
                 'column_css_class' => 'col-ref-online',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 
@@ -123,7 +125,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-ref-offline',
                 'column_css_class' => 'col-ref-offline',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 

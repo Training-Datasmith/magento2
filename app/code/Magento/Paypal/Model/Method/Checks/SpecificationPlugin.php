@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Method\Checks;
 
-use Magento\Payment\Model\MethodInterface;
 use Magento\Payment\Model\Checks\SpecificationInterface;
-use Magento\Paypal\Model\Config;
+use Magento\Payment\Model\MethodInterface;
 use Magento\Paypal\Model\Billing\AgreementFactory;
+use Magento\Paypal\Model\Config;
 use Magento\Quote\Model\Quote;
 
 /**

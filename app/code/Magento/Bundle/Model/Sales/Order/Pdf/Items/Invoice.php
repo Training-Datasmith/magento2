@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -156,7 +157,7 @@ class Invoice extends AbstractItems
             $lines[$index][] = [
                 'text' => $text,
                 'feed' => 290,
-                'align' => 'right'
+                'align' => 'right',
             ];
         }
 

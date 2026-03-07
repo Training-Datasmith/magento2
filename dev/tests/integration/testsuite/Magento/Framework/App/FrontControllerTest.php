@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\Request\ValidatorInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Phrase;
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.UnusedFormalParameter)
@@ -45,7 +48,7 @@ class FrontControllerTest extends TestCase
     private function createRequestValidator(): ValidatorInterface
     {
         if (!$this->fakeRequestValidator) {
-            $this->fakeRequestValidator = new class implements ValidatorInterface {
+            $this->fakeRequestValidator = new class () implements ValidatorInterface {
                 /**
                  * @var bool
                  */

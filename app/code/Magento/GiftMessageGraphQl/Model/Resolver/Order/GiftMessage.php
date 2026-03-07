@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class GiftMessage implements ResolverInterface
         return [
             'to' => $orderGiftMessage->getRecipient() ?? '',
             'from' =>  $orderGiftMessage->getSender() ?? '',
-            'message'=>  $orderGiftMessage->getMessage() ?? ''
+            'message' =>  $orderGiftMessage->getMessage() ?? '',
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Api\Data;
 
 /**
@@ -13,8 +16,8 @@ namespace Magento\SalesRule\Api\Data;
  */
 interface ConditionInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-    const AGGREGATOR_TYPE_ALL = 'all';
-    const AGGREGATOR_TYPE_ANY = 'any';
+    public const AGGREGATOR_TYPE_ALL = 'all';
+    public const AGGREGATOR_TYPE_ANY = 'any';
 
     /**
      * Get condition type

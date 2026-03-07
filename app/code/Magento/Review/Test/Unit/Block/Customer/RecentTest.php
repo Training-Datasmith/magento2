@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class RecentTest extends TestCase
             [
                 'context' => $this->context,
                 'collectionFactory' => $this->collectionFactory,
-                'currentCustomer' => $this->currentCustomer
+                'currentCustomer' => $this->currentCustomer,
             ]
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Observer;
 
 use Magento\Customer\Model\ResourceModel\Customer\Grid as CustomerGrid;

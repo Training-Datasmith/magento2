@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -64,14 +65,14 @@ class PlaceOrderTaxTitleTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
         DataFixture(
             ProductFixture::class,
             [
-                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$']
+                'custom_attributes' => ['tax_class_id' => '$product_tax_class.classId$'],
             ],
             'product'
         ),

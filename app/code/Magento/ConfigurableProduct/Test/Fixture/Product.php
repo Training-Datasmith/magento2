@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class Product extends \Magento\Catalog\Test\Fixture\Product
         'extension_attributes' => [
             'configurable_product_options' => [],
             'configurable_product_links' => [],
-        ]
+        ],
     ];
 
     /**
@@ -189,7 +190,7 @@ class Product extends \Magento\Catalog\Test\Fixture\Product
                                 return ['value' => $value['value_index']];
                             },
                             $option['values']
-                        )
+                        ),
                     ];
                 },
                 $options

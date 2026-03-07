@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Base router
  *
@@ -20,7 +21,7 @@ class Base implements \Magento\Framework\App\RouterInterface
     /**
      * No route constant used for request
      */
-    const NO_ROUTE = 'noroute';
+    public const NO_ROUTE = 'noroute';
 
     /**
      * @var \Magento\Framework\App\ActionFactory

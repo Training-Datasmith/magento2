@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\GraphQl\Config\ConfigElementInterface;
  */
 class Scalar implements ConfigElementInterface
 {
-    
     /**
      * @var string
      */

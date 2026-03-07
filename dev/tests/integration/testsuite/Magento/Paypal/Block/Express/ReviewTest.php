@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\Paypal\Block\Express\Review
  */
+
 namespace Magento\Paypal\Block\Express;
 
 class ReviewTest extends \PHPUnit\Framework\TestCase

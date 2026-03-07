@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Page\Config\Reader;
 
 use Magento\Framework\View\Layout;
@@ -16,13 +19,13 @@ class Body implements Layout\ReaderInterface
     /**#@+
      * Supported types
      */
-    const TYPE_BODY = 'body';
+    public const TYPE_BODY = 'body';
     /**#@-*/
 
     /**#@+
      * Supported body sub elements
      */
-    const BODY_ATTRIBUTE = 'attribute';
+    public const BODY_ATTRIBUTE = 'attribute';
     /**#@-*/
 
     /**#@-*/

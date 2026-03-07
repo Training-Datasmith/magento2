@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,23 +20,22 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  *  Unit Test for Magento\Checkout\Block\Cart\Shipping
  */
 class ShippingTest extends TestCase
 {
-
     /**
      * Stub Preinitialized Componets
      */
     private const STUB_PREINITIALIZED_COMPONENTS = [
         'components' => [
-            'firstComponent' => ['param' => 'value']
-        ]
+            'firstComponent' => ['param' => 'value'],
+        ],
     ];
 
     /**
@@ -117,7 +117,7 @@ class ShippingTest extends TestCase
                 'jsLayout' => self::$layout,
                 'serializer' => $this->serializerMock,
                 'jsonHexTagSerializer' => $this->jsonHexTagSerializerMock,
-                'storeManager' => $this->storeManagerInterfaceMock
+                'storeManager' => $this->storeManagerInterfaceMock,
             ]
         );
     }
@@ -169,8 +169,8 @@ class ShippingTest extends TestCase
         return [
             [
                 $layoutProcessed,
-                '{"components":{"firstComponent":{"param":"value"},"secondComponent":{"param":"value"}}}'
-            ]
+                '{"components":{"firstComponent":{"param":"value"},"secondComponent":{"param":"value"}}}',
+            ],
         ];
     }
 
@@ -223,8 +223,8 @@ class ShippingTest extends TestCase
         return [
             [
                 ['checkout', 'config'],
-                '["checkout","config"]'
-            ]
+                '["checkout","config"]',
+            ],
         ];
     }
 }

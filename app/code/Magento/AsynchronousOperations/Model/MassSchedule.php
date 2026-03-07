@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
 use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterfaceFactory;
 use Magento\AsynchronousOperations\Api\Data\ItemStatusInterface;
 use Magento\AsynchronousOperations\Api\Data\ItemStatusInterfaceFactory;
+use Magento\AsynchronousOperations\Api\SaveMultipleOperationsInterface;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Bulk\BulkManagementInterface;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
 use Magento\Framework\Encryption\Encryptor;
-use Magento\AsynchronousOperations\Api\SaveMultipleOperationsInterface;
 use Magento\Framework\Exception\BulkException;
 use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
@@ -28,11 +29,6 @@ use Psr\Log\LoggerInterface;
 class MassSchedule
 {
     /**
-     * @var IdentityGeneratorInterface
-     */
-    private $identityService;
-
-    /**
      * @var AsyncResponseInterfaceFactory
      */
     private $asyncResponseFactory;
@@ -43,75 +39,27 @@ class MassSchedule
     private $itemStatusInterfaceFactory;
 
     /**
-     * @var BulkManagementInterface
-     */
-    private $bulkManagement;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var OperationRepositoryInterface
-     */
-    private $operationRepository;
-
-    /**
-     * @var UserContextInterface
-     */
-    private $userContext;
-
-    /**
-     * @var Encryptor
-     */
-    private $encryptor;
-
-    /**
-     * @var SaveMultipleOperationsInterface
-     */
-    private $saveMultipleOperations;
-
-    /**
      * Initialize dependencies.
-     *
-     * @param IdentityGeneratorInterface $identityService
-     * @param ItemStatusInterfaceFactory $itemStatusInterfaceFactory
-     * @param AsyncResponseInterfaceFactory $asyncResponseFactory
-     * @param BulkManagementInterface $bulkManagement
-     * @param LoggerInterface $logger
-     * @param OperationRepositoryInterface $operationRepository
-     * @param UserContextInterface $userContext
-     * @param Encryptor $encryptor
-     * @param SaveMultipleOperationsInterface $saveMultipleOperations
      */
     public function __construct(
-        IdentityGeneratorInterface $identityService,
+        private readonly IdentityGeneratorInterface $identityService,
         ItemStatusInterfaceFactory $itemStatusInterfaceFactory,
         AsyncResponseInterfaceFactory $asyncResponseFactory,
-        BulkManagementInterface $bulkManagement,
-        LoggerInterface $logger,
-        OperationRepositoryInterface $operationRepository,
-        UserContextInterface $userContext,
-        Encryptor $encryptor,
-        SaveMultipleOperationsInterface $saveMultipleOperations
+        private readonly BulkManagementInterface $bulkManagement,
+        private readonly LoggerInterface $logger,
+        private readonly OperationRepositoryInterface $operationRepository,
+        private readonly UserContextInterface $userContext,
+        private readonly Encryptor $encryptor,
+        private readonly SaveMultipleOperationsInterface $saveMultipleOperations
     ) {
-        $this->identityService = $identityService;
         $this->itemStatusInterfaceFactory = $itemStatusInterfaceFactory;
         $this->asyncResponseFactory = $asyncResponseFactory;
-        $this->bulkManagement = $bulkManagement;
-        $this->logger = $logger;
-        $this->operationRepository = $operationRepository;
-        $this->userContext = $userContext;
-        $this->encryptor = $encryptor;
-        $this->saveMultipleOperations = $saveMultipleOperations;
     }
 
     /**
      * Schedule new bulk operation based on the list of entities
      *
      * @param string $topicName
-     * @param array $entitiesArray
      * @param string $groupId
      * @param string $userId
      * @return AsyncResponseInterface
@@ -186,9 +134,8 @@ class MassSchedule
             $asyncResponse->setErrors(true);
             $bulkException->addData($asyncResponse);
             throw $bulkException;
-        } else {
-            $asyncResponse->setErrors(false);
         }
+        $asyncResponse->setErrors(false);
 
         return $asyncResponse;
     }

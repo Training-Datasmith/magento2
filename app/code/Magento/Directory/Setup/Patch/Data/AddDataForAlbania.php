@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class AddDataForAlbania implements DataPatchInterface
             ['AL', 'AL-08', 'Lezhë'],
             ['AL', 'AL-10', 'Shkodër'],
             ['AL', 'AL-11', 'Tiranë'],
-            ['AL', 'AL-12', 'Vlorë']
+            ['AL', 'AL-12', 'Vlorë'],
         ];
     }
 

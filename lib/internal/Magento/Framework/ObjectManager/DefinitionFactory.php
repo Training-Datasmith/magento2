@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\ObjectManager;
 
+use Magento\Framework\Code\Generator\Autoloader;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\ObjectManager\Definition\Runtime;
-use Magento\Framework\Code\Generator\Autoloader;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

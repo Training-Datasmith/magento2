@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -11,6 +13,7 @@
  * Due to current architecture of DB adapters, they are copy-pasted.
  * So we need to make sure all these classes have exactly the same behavior.
  */
+
 namespace Magento\Test\Db\Adapter;
 
 use PHPUnit\Framework\Attributes\DataProvider;

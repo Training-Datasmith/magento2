@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -96,20 +97,20 @@ class PaymentSectionModifierTest extends TestCase
                 'children' => [
                     'some_payment_method2' => [
                         'id' => 'some_payment_method2',
-                        'displayIn' => 'recommended_solutions'
+                        'displayIn' => 'recommended_solutions',
                     ],
                     'some_payment_method3' => [
                         'id' => 'some_payment_method3',
-                        'displayIn' => 'other_payment_methods'
+                        'displayIn' => 'other_payment_methods',
                     ],
                     'some_payment_method4' => [
                         'id' => 'some_payment_method4',
-                        'displayIn' => 'recommended_solutions'
+                        'displayIn' => 'recommended_solutions',
                     ],
                     'some_payment_method5' => [
                         'id' => 'some_payment_method5',
                     ],
-                ]
+                ],
             ],
         ];
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Theme\Model\Theme;
 
 use InvalidArgumentException;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 
 /**
  * Store associated themes resolver.

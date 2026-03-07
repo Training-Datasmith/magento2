@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Attribute\Config;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\Config\ValidationStateInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
@@ -56,28 +57,28 @@ class XsdTest extends TestCase
                 '<config/>',
                 [
                     "Element 'config': Missing child element(s). Expected is ( group ).The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n",
                 ],
             ],
             'irrelevant root node' => [
                 '<attribute name="attr"/>',
                 [
                     "Element 'attribute': No matching global declaration available for the validation root.The " .
-                    "xml was: \n0:<?xml version=\"1.0\"?>\n1:<attribute name=\"attr\"/>\n2:\n"
+                    "xml was: \n0:<?xml version=\"1.0\"?>\n1:<attribute name=\"attr\"/>\n2:\n",
                 ],
             ],
             'empty node "group"' => [
                 '<config><group name="test"/></config>',
                 [
                     "Element 'group': Missing child element(s). Expected is ( attribute ).The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\"/></config>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\"/></config>\n2:\n",
                 ],
             ],
             'node "group" without attribute "name"' => [
                 '<config><group><attribute name="attr"/></group></config>',
                 [
                     "Element 'group': The attribute 'name' is required but missing.The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config><group><attribute name=\"attr\"/></group></config>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config><group><attribute name=\"attr\"/></group></config>\n2:\n",
                 ],
             ],
             'node "group" with invalid attribute' => [
@@ -85,7 +86,7 @@ class XsdTest extends TestCase
                 [
                     "Element 'group', attribute 'invalid': The attribute 'invalid' is not allowed.The xml was: \n" .
                     "0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\" invalid=\"true\">" .
-                    "<attribute name=\"attr\"/></group></config>\n2:\n"
+                    "<attribute name=\"attr\"/></group></config>\n2:\n",
                 ],
             ],
             'node "attribute" with value' => [
@@ -93,7 +94,7 @@ class XsdTest extends TestCase
                 [
                     "Element 'attribute': Character content is not allowed, because the content type is empty." .
                     "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\">" .
-                    "<attribute name=\"attr\">Invalid</attribute></group></config>\n2:\n"
+                    "<attribute name=\"attr\">Invalid</attribute></group></config>\n2:\n",
                 ],
             ],
             'node "attribute" with children' => [
@@ -101,14 +102,14 @@ class XsdTest extends TestCase
                 [
                     "Element 'attribute': Element content is not allowed, because the content type is empty." .
                     "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\">" .
-                    "<attribute name=\"attr\"><invalid/></attribute></group></config>\n2:\n"
+                    "<attribute name=\"attr\"><invalid/></attribute></group></config>\n2:\n",
                 ],
             ],
             'node "attribute" without attribute "name"' => [
                 '<config><group name="test"><attribute/></group></config>',
                 [
                     "Element 'attribute': The attribute 'name' is required but missing.The xml was: \n" .
-                    "0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\"><attribute/></group></config>\n2:\n"
+                    "0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\"><attribute/></group></config>\n2:\n",
                 ],
             ],
             'node "attribute" with invalid attribute' => [
@@ -116,9 +117,9 @@ class XsdTest extends TestCase
                 [
                     "Element 'attribute', attribute 'invalid': The attribute 'invalid' is not allowed.The xml " .
                     "was: \n0:<?xml version=\"1.0\"?>\n1:<config><group name=\"test\"><attribute " .
-                    "name=\"attr\" invalid=\"true\"/></group></config>\n2:\n"
+                    "name=\"attr\" invalid=\"true\"/></group></config>\n2:\n",
                 ],
-            ]
+            ],
         ];
     }
 }

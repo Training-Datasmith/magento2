@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogWidget\Test\Unit\Model\Rule\Condition;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ProductCategoryList;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product;
@@ -22,6 +22,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\SalesRule\Model\Rule;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -77,8 +78,8 @@ class ProductTest extends TestCase
                 'productCategoryList' => $productCategoryList,
                 'data' => [
                     'rule' => $ruleMock,
-                    'id' => 1
-                ]
+                    'id' => 1,
+                ],
             ]
         );
     }
@@ -142,16 +143,16 @@ class ProductTest extends TestCase
                 'getAllAttributeValues' => [
                    1 => [
                        0 => 10,
-                       1 => 11
-                   ]
-                ]
+                       1 => 11,
+                   ],
+                ],
             ]
         );
         $this->mockAttribute(
             [
                 'getAttributeCode' => 'price',
                 'isScopeGlobal' => $isScopeGlobal,
-                'getBackendType' => 'decimal'
+                'getBackendType' => 'decimal',
             ]
         );
         $this->model->setAttribute('price');
@@ -170,27 +171,27 @@ class ProductTest extends TestCase
             [
                 true,
                 true,
-                'price_index.min_price'
+                'price_index.min_price',
             ],
             [
                 true,
                 false,
-                'at_price.value'
+                'at_price.value',
             ],
             [
                 false,
                 true,
-                'price_index.min_price'
+                'price_index.min_price',
             ],
             [
                 false,
                 false,
-                'at_price.value'
+                'at_price.value',
             ],
             [
                 false,
                 true,
-                'price_index.min_price'
+                'price_index.min_price',
             ],
         ];
     }
@@ -235,21 +236,21 @@ class ProductTest extends TestCase
                 ],
                 [
                     'isScopeGlobal' => false,
-                    'getBackendType' => 'int'
+                    'getBackendType' => 'int',
                 ],
                 [
                     1 => [
                         0 => 1,
-                        1 => 2
+                        1 => 2,
                     ],
                     2 => [
-                        0 => 1
+                        0 => 1,
                     ],
                     3 => [
-                        1 => 2
-                    ]
+                        1 => 2,
+                    ],
                 ],
-                '2'
+                '2',
             ],
             [
                 [
@@ -259,21 +260,21 @@ class ProductTest extends TestCase
                 ],
                 [
                     'isScopeGlobal' => true,
-                    'getBackendType' => 'int'
+                    'getBackendType' => 'int',
                 ],
                 [
                     1 => [
                         0 => 1,
-                        1 => 2
+                        1 => 2,
                     ],
                     2 => [
-                        0 => 1
+                        0 => 1,
                     ],
                     3 => [
-                        1 => 2
-                    ]
+                        1 => 2,
+                    ],
                 ],
-                '2'
+                '2',
             ],
         ];
     }

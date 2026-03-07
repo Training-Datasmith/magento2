@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class WindowsSmtpConfigTest extends TestCase
             WindowsSmtpConfig::class,
             [
                 'config' => $this->configMock,
-                'osInfo' => $this->osInfoMock
+                'osInfo' => $this->osInfoMock,
             ]
         );
     }
@@ -74,7 +75,7 @@ class WindowsSmtpConfigTest extends TestCase
             ->method('getValue')
             ->willReturnMap([
                 [WindowsSmtpConfig::XML_SMTP_HOST, '127.0.0.1'],
-                [WindowsSmtpConfig::XML_SMTP_PORT, '80']
+                [WindowsSmtpConfig::XML_SMTP_PORT, '80'],
             ]);
 
         $this->windowsSmtpConfig->beforeSendMessage($this->transportMock);

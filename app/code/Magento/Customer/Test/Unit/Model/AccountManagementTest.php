@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -58,6 +59,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\Session\SaveHandlerInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Validator\Factory as ValidatorFactory;
 use Magento\Store\Model\ScopeInterface;
@@ -68,7 +70,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -351,47 +352,47 @@ class AccountManagementTest extends TestCase
         $objects = [
             [
                 AccountManagementInterface::class,
-                $this->createMock(AccountManagementInterface::class)
+                $this->createMock(AccountManagementInterface::class),
             ],
             [
                 CustomerInterfaceFactory::class,
-                $this->createMock(CustomerInterfaceFactory::class)
+                $this->createMock(CustomerInterfaceFactory::class),
             ],
             [
                 DataObjectHelper::class,
-                $this->createMock(DataObjectHelper::class)
+                $this->createMock(DataObjectHelper::class),
             ],
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 CustomerRepositoryInterface::class,
-                $this->createMock(CustomerRepositoryInterface::class)
+                $this->createMock(CustomerRepositoryInterface::class),
             ],
             [
                 ExtensibleDataObjectConverter::class,
-                $this->createMock(ExtensibleDataObjectConverter::class)
+                $this->createMock(ExtensibleDataObjectConverter::class),
             ],
             [
                 CustomerFactory::class,
-                $this->createMock(CustomerFactory::class)
+                $this->createMock(CustomerFactory::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
+                $this->createMock(Random::class),
             ],
             [
                 EncryptorInterface::class,
-                $this->createMock(EncryptorInterface::class)
+                $this->createMock(EncryptorInterface::class),
             ],
             [
                 MutableScopeConfigInterface::class,
-                $this->createMock(MutableScopeConfigInterface::class)
+                $this->createMock(MutableScopeConfigInterface::class),
             ],
             [
                 TemplateCollectionFactory::class,
-                $this->createMock(TemplateCollectionFactory::class)
+                $this->createMock(TemplateCollectionFactory::class),
             ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
@@ -949,14 +950,14 @@ class AccountManagementTest extends TestCase
                 'testNumber' => 1,
                 'password' => 'qwer',
                 'minPasswordLength' => 5,
-                'minCharacterSetsNum' => 1
+                'minCharacterSetsNum' => 1,
             ],
             [
                 'testNumber' => 2,
                 'password' => 'wrfewqedf1',
                 'minPasswordLength' => 5,
-                'minCharacterSetsNum' => 3
-            ]
+                'minCharacterSetsNum' => 3,
+            ],
         ];
     }
 
@@ -984,14 +985,14 @@ class AccountManagementTest extends TestCase
                         AccountManagement::XML_PATH_MINIMUM_PASSWORD_LENGTH,
                         'default',
                         null,
-                        $minPasswordLength
+                        $minPasswordLength,
                     ],
                     [
                         AccountManagement::XML_PATH_REQUIRED_CHARACTER_CLASSES_NUMBER,
                         'default',
                         null,
-                        $minCharacterSetsNum
-                    ]
+                        $minCharacterSetsNum,
+                    ],
                 ]
             );
 
@@ -1460,7 +1461,7 @@ class AccountManagementTest extends TestCase
                         $expectedArgs1 = [
                             AccountManagement::XML_PATH_REMIND_EMAIL_TEMPLATE,
                             ScopeInterface::SCOPE_STORE,
-                            $customerStoreId
+                            $customerStoreId,
                         ];
                         if ($args === $expectedArgs1) {
                             return $templateIdentifier;
@@ -1470,7 +1471,7 @@ class AccountManagementTest extends TestCase
                         $expectedArgs2 = [
                             AccountManagement::XML_PATH_FORGOT_EMAIL_IDENTITY,
                             ScopeInterface::SCOPE_STORE,
-                            $customerStoreId
+                            $customerStoreId,
                         ];
                         if ($args === $expectedArgs2) {
                             return $sender;
@@ -1681,7 +1682,7 @@ class AccountManagementTest extends TestCase
 
         $storeId = 1;
 
-        $hash = hash("sha256", uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
+        $hash = hash('sha256', uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
 
         $this->emailNotificationMock->expects($this->once())
             ->method('passwordReminder')
@@ -1705,7 +1706,7 @@ class AccountManagementTest extends TestCase
         $templateIdentifier = 'Template Identifier';
         $sender = 'Sender';
 
-        $hash = hash("sha256", uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
+        $hash = hash('sha256', uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
 
         $this->emailNotificationMock->expects($this->once())
             ->method('passwordResetConfirmation')
@@ -1729,7 +1730,7 @@ class AccountManagementTest extends TestCase
         $templateIdentifier = 'Template Identifier';
         $sender = 'Sender';
 
-        $hash = hash("sha256", uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
+        $hash = hash('sha256', uniqid(microtime() . random_int(0, PHP_INT_MAX), true));
 
         $this->prepareInitiatePasswordReset($email, $templateIdentifier, $sender, $storeId, $customerId, $hash);
 
@@ -1896,7 +1897,7 @@ class AccountManagementTest extends TestCase
                 'storeManager' => $this->storeManager,
                 'addressRegistry' => $this->addressRegistryMock,
                 'transportBuilder' => $this->transportBuilder,
-                'sessionCleaner' => $this->sessionCleanerMock
+                'sessionCleaner' => $this->sessionCleanerMock,
             ]
         );
         $this->objectManagerHelper->setBackwardCompatibleProperty(
@@ -1961,14 +1962,14 @@ class AccountManagementTest extends TestCase
                         AccountManagement::XML_PATH_MINIMUM_PASSWORD_LENGTH,
                         'default',
                         null,
-                        7
+                        7,
                     ],
                     [
                         AccountManagement::XML_PATH_REQUIRED_CHARACTER_CLASSES_NUMBER,
                         'default',
                         null,
-                        1
-                    ]
+                        1,
+                    ],
                 ]
             );
         $this->string->expects($this->any())
@@ -2128,7 +2129,7 @@ class AccountManagementTest extends TestCase
             [0, null, AccountManagement::ACCOUNT_CONFIRMATION_NOT_REQUIRED],
             [0, null, AccountManagement::ACCOUNT_CONFIRMATION_NOT_REQUIRED],
             [1, null, AccountManagement::ACCOUNT_CONFIRMED],
-            [1, 'test', AccountManagement::ACCOUNT_CONFIRMATION_REQUIRED]
+            [1, 'test', AccountManagement::ACCOUNT_CONFIRMATION_REQUIRED],
         ];
     }
 
@@ -2200,12 +2201,12 @@ class AccountManagementTest extends TestCase
 
         $existingAddress
             ->expects($this->any())
-            ->method("getId")
+            ->method('getId')
             ->willReturn($addressId);
         //Expects that id for existing address should be unset
         $existingAddress
             ->expects($this->once())
-            ->method("setId")
+            ->method('setId')
             ->with(null);
         //Handle Customer calls
         $customer = $this->createMock(Customer::class);
@@ -2219,7 +2220,7 @@ class AccountManagementTest extends TestCase
             ->willReturn($storeId);
         $customer
             ->expects($this->any())
-            ->method("getId")
+            ->method('getId')
             ->willReturn($customerId);
         //Return Customer from customer repository
         $this->customerRepository

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class InvoiceDocumentFactoryTest extends TestCase
 {
-
     /**
      * @var MockObject|InvoiceService
      */
@@ -70,7 +70,7 @@ class InvoiceDocumentFactoryTest extends TestCase
     {
         $orderId = 10;
         $orderQty = 3;
-        $comment = "Comment!";
+        $comment = 'Comment!';
 
         $this->itemMock->expects($this->once())
             ->method('getOrderItemId')

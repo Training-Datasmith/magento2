@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\TestFramework\TestCase\GraphQl;
 
-use Magento\TestFramework\TestCase\HttpClient\CurlClient;
-use Magento\TestFramework\Helper\JsonSerializer;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Helper\JsonSerializer;
+use Magento\TestFramework\TestCase\HttpClient\CurlClient;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -60,7 +62,7 @@ class Client
         $requestArray = [
             'query' => $query,
             'variables' => !empty($variables) ? $variables : null,
-            'operationName' => !empty($operationName) ? $operationName : null
+            'operationName' => !empty($operationName) ? $operationName : null,
         ];
         $postData = $this->json->jsonEncode($requestArray);
         try {
@@ -89,7 +91,7 @@ class Client
         $requestArray = [
             'query' => $query,
             'variables' => $variables ? $this->json->jsonEncode($variables) : null,
-            'operationName' => $operationName ? $operationName : null
+            'operationName' => $operationName ? $operationName : null,
         ];
         array_filter($requestArray);
 
@@ -153,7 +155,7 @@ class Client
         $requestArray = [
             'query' => $query,
             'variables' => $variables ? $this->json->jsonEncode($variables) : null,
-            'operationName' => !empty($operationName) ? $operationName : null
+            'operationName' => !empty($operationName) ? $operationName : null,
         ];
         array_filter($requestArray);
 
@@ -188,7 +190,7 @@ class Client
         $requestArray = [
             'query' => $query,
             'variables' => !empty($variables) ? $variables : null,
-            'operationName' => !empty($operationName) ? $operationName : null
+            'operationName' => !empty($operationName) ? $operationName : null,
         ];
         $postData = $this->json->jsonEncode($requestArray);
 
@@ -223,7 +225,7 @@ class Client
                     }
                     if (isset($error['trace'])) {
                         $traceString = $error['trace'];
-                        TestCase::assertNotEmpty($traceString, "trace is empty");
+                        TestCase::assertNotEmpty($traceString, 'trace is empty');
                     }
                 }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Sales\Controller\Adminhtml\Order\CreditmemoLoader;
-use Magento\Sales\Model\Order\Email\Sender\CreditmemoCommentSender;
 use Magento\Sales\Model\Order\Creditmemo\Comment as CreditmemoComment;
+use Magento\Sales\Model\Order\Email\Sender\CreditmemoCommentSender;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Comment as CreditmemoCommentResource;
 
 class AddComment extends Action implements HttpPostActionInterface

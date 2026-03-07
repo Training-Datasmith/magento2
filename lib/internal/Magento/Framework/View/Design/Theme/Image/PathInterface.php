@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme\Image;
 
 use Magento\Framework\View\Design\ThemeInterface;
@@ -17,7 +20,7 @@ interface PathInterface
     /**
      * Image preview path
      */
-    const PREVIEW_DIRECTORY_PATH = 'theme/preview';
+    public const PREVIEW_DIRECTORY_PATH = 'theme/preview';
 
     /**
      * Get preview image directory url

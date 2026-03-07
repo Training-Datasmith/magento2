@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Reflection;
 
 use Magento\Framework\Serialize\Serializer\Json;
@@ -50,23 +53,23 @@ class TypeCaster
             return $this->serializer->serialize($value);
         }
 
-        if ($type === "int" || $type === "integer") {
+        if ($type === 'int' || $type === 'integer') {
             return (int)$value;
         }
 
-        if ($type === "string") {
+        if ($type === 'string') {
             return (string)$value;
         }
 
-        if ($type === "bool" || $type === "boolean" || $type === "true" || $type == "false") {
+        if ($type === 'bool' || $type === 'boolean' || $type === 'true' || $type == 'false') {
             return (bool)$value;
         }
 
-        if ($type === "float") {
+        if ($type === 'float') {
             return (float)$value;
         }
 
-        if ($type === "double") {
+        if ($type === 'double') {
             return (float)$value;
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,27 +8,27 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Sales;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\OrderRepository;
 use Magento\Store\Test\Fixture\Store;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test coverage for order_status_change_date for type CustomerOrder
@@ -51,7 +52,7 @@ class OrderStatusChangeDateTest extends GraphQlAbstract
      */
     private const STATUS_MAPPER = [
         Order::STATE_HOLDED => 'On Hold',
-        Order::STATE_CANCELED => 'Canceled'
+        Order::STATE_CANCELED => 'Canceled',
     ];
 
     public function testOrderStatusChangeDateWithStatusChange(): void

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Set\CollectionFactory;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Ui\Component\Form\Field;
 
@@ -131,9 +131,9 @@ class AttributeSet extends AbstractModifier
             [
                 $productId => [
                     self::DATA_SOURCE_DEFAULT => [
-                        'attribute_set_id' => $this->locator->getProduct()->getAttributeSetId()
+                        'attribute_set_id' => $this->locator->getProduct()->getAttributeSetId(),
                     ],
-                ]
+                ],
             ]
         );
     }

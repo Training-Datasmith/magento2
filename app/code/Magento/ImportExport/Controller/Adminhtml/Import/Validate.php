@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class Validate extends ImportResultController implements HttpPostActionInterface
                 $rowNumber = array_unique([...$rowNumber , ...[$error->getRowNumber()]]);
             }
         }
-        (count($rowNumber) < $totalRows)? $this->_validateRowError = true : $this->_validateRowError = false;
+        (count($rowNumber) < $totalRows) ? $this->_validateRowError = true : $this->_validateRowError = false;
         return $this->_validateRowError;
     }
 

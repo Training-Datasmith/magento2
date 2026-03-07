@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -63,8 +64,8 @@ class ImageDetailsStandalone extends Template
                 'title' => __('Cancel'),
                 'handler' => 'closeModal',
                 'name' => 'cancel',
-                'classes' => 'action-default scalable cancel action-quaternary'
-            ]
+                'classes' => 'action-default scalable cancel action-quaternary',
+            ],
         ];
 
         if ($this->authorization->isAllowed('Magento_MediaGalleryUiApi::delete_assets')) {
@@ -72,7 +73,7 @@ class ImageDetailsStandalone extends Template
                 'title' => __('Delete Image'),
                 'handler' => 'deleteImageAction',
                 'name' => 'delete',
-                'classes' => 'action-default scalable delete action-quaternary'
+                'classes' => 'action-default scalable delete action-quaternary',
             ];
         }
 
@@ -81,7 +82,7 @@ class ImageDetailsStandalone extends Template
                 'title' => __('Edit Details'),
                 'handler' => 'editImageAction',
                 'name' => 'edit',
-                'classes' => 'action-default scalable edit action-quaternary'
+                'classes' => 'action-default scalable edit action-quaternary',
             ];
         }
 

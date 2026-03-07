@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Framework\Serialize\Test\Unit\Serializer;
 
@@ -16,7 +16,7 @@ class JsonConverterTest extends TestCase
     public function testConvert()
     {
         $data = [
-            'key' => 'value'
+            'key' => 'value',
         ];
 
         $this->assertEquals(json_encode($data), JsonConverter::convert($data));

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -23,11 +25,10 @@ use Magento\Framework\View\Element\Template\Context;
  */
 class Company extends AbstractWidget
 {
-
     /**
      * the attribute code
      */
-    const ATTRIBUTE_CODE = 'company';
+    public const ATTRIBUTE_CODE = 'company';
 
     /**
      * @var AddressMetadataInterface

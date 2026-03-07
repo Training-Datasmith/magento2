@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class HashGenerator
                 [
                     $customerId,
                     $timeStamp,
-                    $fromStore->getCode()
+                    $fromStore->getCode(),
                 ]
             );
             $signature = hash_hmac('sha256', $data, $key);
@@ -83,7 +84,7 @@ class HashGenerator
             $result = [
                 'customer_id' => $customerId,
                 'time_stamp' => $timeStamp,
-                'signature' => $signature
+                'signature' => $signature,
             ];
         }
 
@@ -104,7 +105,7 @@ class HashGenerator
             $timeStamp = $hashData->getTimestamp();
             $fromStoreCode = $hashData->getFromStoreCode();
             $customerId = $hashData->getCustomerId();
-            $value = implode(",", [$customerId, $timeStamp, $fromStoreCode]);
+            $value = implode(',', [$customerId, $timeStamp, $fromStoreCode]);
             $key = (string)$this->deploymentConfig->get(ConfigOptionsListConstants::CONFIG_PATH_CRYPT_KEY);
 
             if (time() - $timeStamp <= 5 && hash_equals($signature, hash_hmac('sha256', $value, $key))) {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Topology;
 
 use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
@@ -61,7 +64,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'arrayValue' => [
                 'element01' => '10',
                 'element02' => '20',
-            ]
+            ],
         ];
         $this->assertEquals($expectedArguments, $exchangeArguments);
 

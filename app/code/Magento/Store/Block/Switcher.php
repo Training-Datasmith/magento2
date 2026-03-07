@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +9,15 @@
 /**
  * Store and language switcher block
  */
+
 namespace Magento\Store\Block;
 
 use Magento\Directory\Helper\Data;
-use Magento\Store\Model\Group;
-use Magento\Store\Model\Store;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
+use Magento\Store\Model\Group;
+use Magento\Store\Model\Store;
 
 /**
  * Switcher block

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -48,8 +51,8 @@ class TypeTest extends \PHPUnit\Framework\TestCase
             [\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE, \Magento\Bundle\Model\Product\Type::class],
             [
                 \Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE,
-                \Magento\Downloadable\Model\Product\Type::class
-            ]
+                \Magento\Downloadable\Model\Product\Type::class,
+            ],
         ];
     }
 
@@ -79,7 +82,7 @@ class TypeTest extends \PHPUnit\Framework\TestCase
             [\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE],
             [\Magento\Catalog\Model\Product\Type::TYPE_VIRTUAL],
             [\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE],
-            [\Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE]
+            [\Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE],
         ];
     }
 
@@ -103,8 +106,8 @@ class TypeTest extends \PHPUnit\Framework\TestCase
             [\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE, \Magento\Bundle\Model\Product\Price::class],
             [
                 \Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE,
-                \Magento\Downloadable\Model\Product\Price::class
-            ]
+                \Magento\Downloadable\Model\Product\Price::class,
+            ],
         ];
     }
 
@@ -153,7 +156,7 @@ class TypeTest extends \PHPUnit\Framework\TestCase
             [\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE],
             [\Magento\Catalog\Model\Product\Type::TYPE_VIRTUAL],
             [\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE],
-            [\Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE]
+            [\Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE],
         ];
     }
 

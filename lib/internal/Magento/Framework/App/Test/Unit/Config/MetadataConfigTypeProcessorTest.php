@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class MetadataConfigTypeProcessorTest extends TestCase
         $this->_initialConfigMock = $this->getMockBuilder(Initial::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->_backendModelMock= $this->getMockBuilder(ProcessorInterface::class)
+        $this->_backendModelMock = $this->getMockBuilder(ProcessorInterface::class)
             ->getMock();
         $this->configSourceMock = $this->getMockBuilder(ConfigSourceInterface::class)
             ->getMock();
@@ -68,7 +69,7 @@ class MetadataConfigTypeProcessorTest extends TestCase
             ->willReturn([
                 'some/config/path1' => ['backendModel' => 'Custom_Backend_Model'],
                 'some/config/path2' => ['backendModel' => 'Custom_Backend_Model'],
-                'some/config/path3' => ['backendModel' => 'Custom_Backend_Model']
+                'some/config/path3' => ['backendModel' => 'Custom_Backend_Model'],
             ]);
 
         $this->_model = new MetadataConfigTypeProcessor(
@@ -139,9 +140,9 @@ class MetadataConfigTypeProcessorTest extends TestCase
                     'config' => [
                         'path1' => 'value1',
                         'path2' => 'value2',
-                        'path3' => 'value3'
-                    ]
-                ]
+                        'path3' => 'value3',
+                    ],
+                ],
             ],
             'websites' => [
                 'website_one' => [
@@ -150,10 +151,10 @@ class MetadataConfigTypeProcessorTest extends TestCase
                             'path1' => 'value1',
                             'path2' => 'value2',
                             'path3' => 'value3',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $expectedResult = $data;

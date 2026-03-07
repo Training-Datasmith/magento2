@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 
 class ProcessingErrorTest extends TestCase
 {
-
     /**
      * @var MockObject|ProcessingError
      */
@@ -72,8 +72,8 @@ class ProcessingErrorTest extends TestCase
                     'rowNumber' => 7,
                     'columnName' => 25,
                     'errorMessage' => 'some error message',
-                    'errorDescription' => 'some error description'
-                ]
+                    'errorDescription' => 'some error description',
+                ],
             ],
             [
                 [
@@ -82,8 +82,8 @@ class ProcessingErrorTest extends TestCase
                     'rowNumber' => null,
                     'columnName' => null,
                     'errorMessage' => null,
-                    'errorDescription' => null
-                ]
+                    'errorDescription' => null,
+                ],
             ],
         ];
     }
@@ -109,11 +109,11 @@ class ProcessingErrorTest extends TestCase
         return [
             [
                 ['errorCode' => 5],
-                5
+                5,
             ],
             [
                 ['errorCode' => null],
-                null
+                null,
             ],
         ];
     }
@@ -139,11 +139,11 @@ class ProcessingErrorTest extends TestCase
         return [
             [
                 ['errorCode' => 5, 'errorMessage' => 'Some error message'],
-                'Some error message'
+                'Some error message',
             ],
             [
                 ['errorCode' => 5],
-                null
+                null,
             ],
         ];
     }
@@ -169,11 +169,11 @@ class ProcessingErrorTest extends TestCase
         return [
             [
                 ['errorCode' => 5, 'errorMessage' => 'Some error message', 'rowNumber' => 43],
-                43
+                43,
             ],
             [
                 ['errorCode' => 5],
-                null
+                null,
             ],
         ];
     }
@@ -202,13 +202,13 @@ class ProcessingErrorTest extends TestCase
                     'errorCode' => 5,
                     'errorMessage' => 'Some error message',
                     'rowNumber' => 43,
-                    'columnName' => 'Some column name'
+                    'columnName' => 'Some column name',
                 ],
-                'Some column name'
+                'Some column name',
             ],
             [
                 ['errorCode' => 5],
-                null
+                null,
             ],
         ];
     }
@@ -238,13 +238,13 @@ class ProcessingErrorTest extends TestCase
                     'errorMessage' => 'Some error message',
                     'rowNumber' => 43,
                     'columnName' => 'Some column name',
-                    'errorLevel' => 'critical'
+                    'errorLevel' => 'critical',
                 ],
-                'critical'
+                'critical',
             ],
             [
                 ['errorCode' => 5],
-                null
+                null,
             ],
         ];
     }
@@ -275,13 +275,13 @@ class ProcessingErrorTest extends TestCase
                     'rowNumber' => 43,
                     'columnName' => 'Some column name',
                     'errorLevel' => 'critical',
-                    'errorDescription' => 'Some error description'
+                    'errorDescription' => 'Some error description',
                 ],
-                'Some error description'
+                'Some error description',
             ],
             [
                 ['errorCode' => 5],
-                null
+                null,
             ],
         ];
     }

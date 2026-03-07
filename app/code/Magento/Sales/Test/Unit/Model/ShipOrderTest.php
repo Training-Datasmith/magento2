@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -31,9 +32,9 @@ use Magento\Sales\Model\Order\Validation\ShipOrderInterface;
 use Magento\Sales\Model\OrderMutex;
 use Magento\Sales\Model\ShipOrder;
 use Magento\Sales\Model\ValidatorResultInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -45,7 +46,6 @@ use Psr\Log\LoggerInterface;
  */
 class ShipOrderTest extends TestCase
 {
-
     /**
      * @var ResourceConnection|MockObject
      */
@@ -179,7 +179,7 @@ class ShipOrderTest extends TestCase
                 'notifierInterface' => $this->notifierInterfaceMock,
                 'logger' => $this->loggerMock,
                 'orderRegistrar' => $this->orderRegistrarMock,
-                'orderMutex' => new OrderMutex($this->resourceConnectionMock)
+                'orderMutex' => new OrderMutex($this->resourceConnectionMock),
             ]
         );
     }

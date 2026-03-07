@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -561,7 +562,7 @@ QUERY;
          */
         $productRepository = ObjectManager::getInstance()->get(ProductRepositoryInterface::class);
         $product = $productRepository->get($productSku, false, null, true);
-        $this->assertNotNull($response['products']['items'][0]['product_links'], "product_links must not be null");
+        $this->assertNotNull($response['products']['items'][0]['product_links'], 'product_links must not be null');
         $this->assertProductLinks($product, $response['products']['items'][0]['product_links'][0]);
     }
 
@@ -641,7 +642,7 @@ QUERY;
         $productRepository = ObjectManager::getInstance()->get(ProductRepositoryInterface::class);
         $firstProduct = $productRepository->get($firstProductSku, false, null, true);
         $secondProduct = $productRepository->get($secondProductSku, false, null, true);
-        self::assertNotNull($response['products']['items'][0]['price'], "price must be not null");
+        self::assertNotNull($response['products']['items'][0]['price'], 'price must be not null');
         self::assertCount(2, $response['products']['items']);
 
         // by default sort order is: "newest id first"
@@ -656,12 +657,12 @@ QUERY;
     private function assertMediaGalleryEntries($product, $actualResponse)
     {
         $mediaGalleryEntries = $product->getMediaGalleryEntries();
-        $this->assertCount(1, $mediaGalleryEntries, "Precondition failed, incorrect number of media gallery entries.");
+        $this->assertCount(1, $mediaGalleryEntries, 'Precondition failed, incorrect number of media gallery entries.');
         $this->assertIsArray(
             [$actualResponse['media_gallery_entries']],
-            "Media galleries field must be of an array type."
+            'Media galleries field must be of an array type.'
         );
-        $this->assertCount(1, $actualResponse['media_gallery_entries'], "There must be 1 record in media gallery.");
+        $this->assertCount(1, $actualResponse['media_gallery_entries'], 'There must be 1 record in media gallery.');
         $mediaGalleryEntry = $mediaGalleryEntries[0];
         $this->assertResponseFields(
             $actualResponse['media_gallery_entries'][0],
@@ -738,8 +739,8 @@ QUERY;
                 ['response_field' => 'option_id', 'expected_value' => $option->getOptionId()],
                 [
                     'response_field' => 'uid',
-                    'expected_value' => base64_encode('custom-option/' . $option->getOptionId())
-                ]
+                    'expected_value' => base64_encode('custom-option/' . $option->getOptionId()),
+                ],
             ];
 
             if (!empty($option->getValues())) {
@@ -753,7 +754,7 @@ QUERY;
                     ['response_field' => 'price', 'expected_value' => $productValue->getPrice()],
                     ['response_field' => 'price_type', 'expected_value' => strtoupper($productValue->getPriceType())],
                     ['response_field' => 'sku', 'expected_value' => $productValue->getSku()],
-                    ['response_field' => 'option_type_id', 'expected_value' => $productValue->getOptionTypeId()]
+                    ['response_field' => 'option_type_id', 'expected_value' => $productValue->getOptionTypeId()],
                 ];
                 $this->assertResponseFields($value, $assertionMapValues);
             } else {
@@ -770,7 +771,7 @@ QUERY;
                     $valueAssertionMap = [
                         ['response_field' => 'file_extension', 'expected_value' => $option->getFileExtension()],
                         ['response_field' => 'image_size_x', 'expected_value' => $option->getImageSizeX()],
-                        ['response_field' => 'image_size_y', 'expected_value' => $option->getImageSizeY()]
+                        ['response_field' => 'image_size_y', 'expected_value' => $option->getImageSizeY()],
                     ];
                 } elseif ($option->getType() === 'area') {
                     $valueKeyName = 'area_option';
@@ -780,7 +781,7 @@ QUERY;
                 } elseif ($option->getType() === 'field') {
                     $valueKeyName = 'field_option';
                     $valueAssertionMap = [
-                        ['response_field' => 'max_characters', 'expected_value' => $option->getMaxCharacters()]
+                        ['response_field' => 'max_characters', 'expected_value' => $option->getMaxCharacters()],
                     ];
                 } else {
                     $valueKeyName = 'date_option';
@@ -792,7 +793,7 @@ QUERY;
                     [
                         ['response_field' => 'price', 'expected_value' => $option->getPrice()],
                         ['response_field' => 'price_type', 'expected_value' => strtoupper($option->getPriceType())],
-                        ['response_field' => 'sku', 'expected_value' => $option->getSku()]
+                        ['response_field' => 'sku', 'expected_value' => $option->getSku()],
                     ]
                 );
 
@@ -816,25 +817,25 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => $product->getSpecialPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => $product->getPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => $product->getSpecialPrice(),
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
-                        'adjustments' => []
+                        'adjustments' => [],
                     ],
-                ]
+                ],
             ],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
             ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()],
@@ -886,7 +887,7 @@ QUERY;
 
             $assertionMap[] = [
                 'response_field' => $this->eavAttributesToGraphQlSchemaFieldTranslator($attributeCode),
-                'expected_value' => $expectedAttribute ? $expectedAttribute->getValue() : null
+                'expected_value' => $expectedAttribute ? $expectedAttribute->getValue() : null,
             ];
         }
 
@@ -933,7 +934,7 @@ QUERY;
 }
 QUERY;
         $response = $this->graphQlQuery($query);
-        $this->assertNotEmpty($response['products']['items'][0]['categories'], "Categories must not be empty");
+        $this->assertNotEmpty($response['products']['items'][0]['categories'], 'Categories must not be empty');
         /** @var CategoryRepositoryInterface $categoryRepository */
         $categoryRepository = ObjectManager::getInstance()->get(CategoryRepositoryInterface::class);
         $categoryIds  = [3, 4, 5];
@@ -952,7 +953,7 @@ QUERY;
                     'name' => $category->getName(),
                     'id' => $category->getId(),
                     'uid' => base64_encode($category->getId()),
-                    'is_anchor' => $category->getIsAnchor()
+                    'is_anchor' => $category->getIsAnchor(),
                 ]
             );
         }
@@ -993,7 +994,7 @@ QUERY;
         $categoryIds  = [3, 4, 5];
 
         $response = $this->graphQlQuery($query);
-        $this->assertNotEmpty($response['products']['items'][0]['categories'], "Categories must not be empty");
+        $this->assertNotEmpty($response['products']['items'][0]['categories'], 'Categories must not be empty');
 
         $productItemsInResponse = $response['products']['items'];
         $this->assertCount(1, $productItemsInResponse);
@@ -1009,7 +1010,7 @@ QUERY;
                     'name' => $category->getName(),
                     'id' => $category->getId(),
                     'uid' => base64_encode($category->getId()),
-                    'is_anchor' => $category->getIsAnchor()
+                    'is_anchor' => $category->getIsAnchor(),
                 ]
             );
         }
@@ -1056,7 +1057,7 @@ QUERY;
         $categoryIds  = [4, 5];
 
         $response = $this->graphQlQuery($query);
-        $this->assertNotEmpty($response['products']['items'][0]['categories'], "Categories must not be empty");
+        $this->assertNotEmpty($response['products']['items'][0]['categories'], 'Categories must not be empty');
 
         $productItemsInResponse = $response['products']['items'];
         $this->assertCount(1, $productItemsInResponse);
@@ -1072,7 +1073,7 @@ QUERY;
                     'name' => $category->getName(),
                     'id' => $category->getId(),
                     'uid' => base64_encode($category->getId()),
-                    'is_anchor' => $category->getIsAnchor()
+                    'is_anchor' => $category->getIsAnchor(),
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Integration\Test\Unit\Model\Oauth\Token;
 
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Oauth\ConsumerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Integration\Model\Oauth\ConsumerFactory;
 use Magento\Integration\Model\Oauth\Token;
 use Magento\Integration\Model\Oauth\Token\Provider;
 use Magento\Integration\Model\Oauth\TokenFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -74,7 +75,7 @@ class ProviderTest extends TestCase
                 'getSecret',
                 'getCallbackUrl',
                 'getCreatedAt',
-                'isValidForTokenExchange'
+                'isValidForTokenExchange',
             ]
         );
 
@@ -90,7 +91,7 @@ class ProviderTest extends TestCase
                 'getId',
                 'getVerifier',
                 'createRequestToken',
-                'convertToAccess'
+                'convertToAccess',
             ]
         );
 
@@ -103,7 +104,7 @@ class ProviderTest extends TestCase
                 'getSecret',
                 'getConsumerId',
                 'getType',
-                'getRevoked'
+                'getRevoked',
             ]
         );
 
@@ -177,7 +178,7 @@ class ProviderTest extends TestCase
                 'getType',
                 'loadByConsumerIdAndUserType',
                 'getId',
-                'createRequestToken'
+                'createRequestToken',
             ]
         );
 
@@ -218,7 +219,7 @@ class ProviderTest extends TestCase
                 'getType',
                 'loadByConsumerIdAndUserType',
                 'getId',
-                'createRequestToken'
+                'createRequestToken',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Block\Sri;
 
-use Magento\Framework\UrlInterface;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
 use Magento\Deploy\Package\Package;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Element\Template;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
 
 /**
  * Block for Subresource Integrity hashes rendering.
@@ -66,7 +67,7 @@ class Hashes extends Template
         $result = [];
 
         $baseUrl = $this->_urlBuilder->getBaseUrl(
-            ["_type" => UrlInterface::URL_TYPE_STATIC]
+            ['_type' => UrlInterface::URL_TYPE_STATIC]
         );
 
         $integrityRepository = $this->integrityRepositoryPool->get(

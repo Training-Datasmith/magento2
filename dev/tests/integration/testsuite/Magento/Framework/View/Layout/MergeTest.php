@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 use Magento\Framework\App\State;
@@ -18,7 +21,7 @@ class MergeTest extends \PHPUnit\Framework\TestCase
      * Fixture XML instruction(s) to be used in tests
      */
     // @codingStandardsIgnoreStart
-    const FIXTURE_LAYOUT_XML = '<block class="Magento\Framework\View\Element\Template" template="Magento_Framework::fixture_template_one.phtml"/>';
+    public const FIXTURE_LAYOUT_XML = '<block class="Magento\Framework\View\Element\Template" template="Magento_Framework::fixture_template_one.phtml"/>';
     // @codingStandardsIgnoreEnd
 
     /**
@@ -285,8 +288,8 @@ class MergeTest extends \PHPUnit\Framework\TestCase
     public function testLoadCache()
     {
         $cacheValue = [
-            "pageLayout" => "1column",
-            "layout"     => self::FIXTURE_LAYOUT_XML
+            'pageLayout' => '1column',
+            'layout'     => self::FIXTURE_LAYOUT_XML,
         ];
 
         $this->_cache

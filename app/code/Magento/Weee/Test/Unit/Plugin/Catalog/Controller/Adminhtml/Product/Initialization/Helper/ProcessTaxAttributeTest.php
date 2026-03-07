@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Weee\Plugin\Catalog\Controller\Adminhtml\Product\Initialization\Helper\ProcessTaxAttribute;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\InvokedCount as InvokedCountMatcher;
 use PHPUnit\Framework\TestCase;
 
 class ProcessTaxAttributeTest extends TestCase
@@ -146,14 +146,14 @@ class ProcessTaxAttributeTest extends TestCase
         return [
             'Product data includes wee' => [
                 [
-                    self::STUB_WEEE_ATTRIBUTE_CODE => self::STUB_WEEE_ATTRIBUTE_VALUE
+                    self::STUB_WEEE_ATTRIBUTE_CODE => self::STUB_WEEE_ATTRIBUTE_VALUE,
                 ],
-                'never'
+                'never',
             ],
             'Product data does not include wee' => [
                 [],
-                'once'
-            ]
+                'once',
+            ],
         ];
     }
 }

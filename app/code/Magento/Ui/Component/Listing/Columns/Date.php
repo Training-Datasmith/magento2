@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +12,9 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Locale\Bundle\DataBundle;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Stdlib\BooleanUtils;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 
 /**
  * Date format column
@@ -88,10 +90,10 @@ class Date extends Column
                 'templates' => [
                     'date' => [
                         'options' => [
-                            'dateFormat' => $config['dateFormat'] ?? $this->timezone->getDateFormatWithLongYear()
-                        ]
-                    ]
-                ]
+                            'dateFormat' => $config['dateFormat'] ?? $this->timezone->getDateFormatWithLongYear(),
+                        ],
+                    ],
+                ],
             ];
         }
 
@@ -128,7 +130,7 @@ class Date extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item[$this->getData('name')])
-                    && $item[$this->getData('name')] !== "0000-00-00 00:00:00"
+                    && $item[$this->getData('name')] !== '0000-00-00 00:00:00'
                 ) {
                     $date = $this->timezone->date(new \DateTime($item[$this->getData('name')]));
                     $timezone = isset($this->getConfiguration()['timezone'])

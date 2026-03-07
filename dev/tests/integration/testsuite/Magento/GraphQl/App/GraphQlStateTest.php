@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -165,7 +166,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'navigationMenu',
-                '"id":4,"name":"Category 1.1","product_count":2,'
+                '"id":4,"name":"Category 1.1","product_count":2,',
             ],
             'Get Product Search by product_name' => [
                 <<<'QUERY'
@@ -216,7 +217,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'productDetailByName',
-                '"sku":"configurable","name":"Configurable Product"'
+                '"sku":"configurable","name":"Configurable Product"',
             ],
             'Get List of Products by category_id' => [
                 <<<'QUERY'
@@ -266,7 +267,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'category',
-                '"url_key":"category-1-1","name":"Category 1.1"'
+                '"url_key":"category-1-1","name":"Category 1.1"',
             ],
             'Get Simple Product Details by name' => [
                 <<<'QUERY'
@@ -331,7 +332,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'productDetail',
-                '"sku":"simple1","name":"Simple Product1"'
+                '"sku":"simple1","name":"Simple Product1"',
             ],
             'Get Url Info by url_key' => [
                 <<<'QUERY'
@@ -346,7 +347,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'resolveUrl',
-                '"type":"CMS_PAGE","id":1'
+                '"type":"CMS_PAGE","id":1',
             ],
             'Get available Stores' => [
                 <<<'QUERY'
@@ -385,7 +386,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'availableStores',
-                '"store_code":"default"'
+                '"store_code":"default"',
             ],
             'Get store config' => [
                 <<<'QUERY'
@@ -409,7 +410,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'storeConfig',
-                '"storeConfig":{"product_url_suffix":".html"'
+                '"storeConfig":{"product_url_suffix":".html"',
             ],
             'Get Categories by name' => [
                 <<<'QUERY'
@@ -435,7 +436,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'categories',
-                '"data":{"categories"'
+                '"data":{"categories"',
             ],
             'Get Products by name' => [
                 <<<'QUERY'
@@ -502,7 +503,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'products',
-                '"data":{"products":{"items":[{'
+                '"data":{"products":{"items":[{',
             ],
         ];
     }
@@ -555,7 +556,7 @@ class GraphQlStateTest extends \PHPUnit\Framework\TestCase
                 [],
                 [],
                 'getCart',
-                '"cart":{"applied_coupons":null,"available_payment_methods":[{"code":"checkmo"'
+                '"cart":{"applied_coupons":null,"available_payment_methods":[{"code":"checkmo"',
             ],
         ];
     }

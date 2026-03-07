@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Indexer\Fulltext;
 
 use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
 use Magento\CatalogSearch\Model\Indexer\IndexerHandlerFactory;
-use Magento\Framework\Search\Request\DimensionFactory;
-use Magento\Framework\Indexer\ConfigInterface;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Indexer\ConfigInterface;
+use Magento\Framework\Search\Request\DimensionFactory;
 
 /**
  * Catalog search indexer plugin for store.
@@ -55,7 +58,7 @@ class Store implements ObserverInterface
     private function clearIndex(\Magento\Store\Model\Store $store)
     {
         $dimensions = [
-            $this->dimensionFactory->create(['name' => 'scope', 'value' => $store->getId()])
+            $this->dimensionFactory->create(['name' => 'scope', 'value' => $store->getId()]),
         ];
         $configData = $this->indexerConfig->getIndexer(FulltextIndexer::INDEXER_ID);
         /** @var \Magento\Framework\Indexer\SaveHandler\IndexerInterface $indexHandler */

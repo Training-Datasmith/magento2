@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Data\Test\Unit;
 
 use Magento\Framework\Data\Graph;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class GraphTest extends TestCase
 {
@@ -32,7 +33,7 @@ class GraphTest extends TestCase
             'duplicate nodes' => [[1, 2, 2], []],
             'self-link' => [[1, 2], [[1, 2], [2, 2]]],
             'broken reference "from"' => [[1, 2], [[1, 2], [3, 1]]],
-            'broken reference "to"' => [[1, 2], [[1, 2], [1, 3]]]
+            'broken reference "to"' => [[1, 2], [[1, 2], [1, 3]]],
         ];
     }
 

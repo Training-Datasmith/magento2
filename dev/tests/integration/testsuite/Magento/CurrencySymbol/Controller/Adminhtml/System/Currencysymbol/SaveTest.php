@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CurrencySymbol\Controller\Adminhtml\System\Currencysymbol;
 
 use Magento\Framework\App\Request\Http as HttpRequest;
@@ -60,7 +63,7 @@ class SaveTest extends \Magento\TestFramework\TestCase\AbstractBackendController
     {
         return [
             ['USD', 'customSymbolUSD', 'customSymbolUSD'],
-            ['USD', '<script>customSymbolUSD</script>', 'customSymbolUSD']
+            ['USD', '<script>customSymbolUSD</script>', 'customSymbolUSD'],
         ];
     }
 }

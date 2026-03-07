@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -119,12 +120,12 @@ class CreditMemoItems implements ResolverInterface
             'product_sku' => $creditMemoItem->getSku(),
             'product_sale_price' => [
                 'value' => $creditMemoItem->getPrice(),
-                'currency' => $order->getOrderCurrencyCode()
+                'currency' => $order->getOrderCurrencyCode(),
             ],
             'quantity_refunded' => $creditMemoItem->getQty(),
             'model' => $creditMemoItem,
             'product_type' => $orderItem['product_type'],
-            'discounts' => $this->formatDiscountDetails($order, $creditMemoItem)
+            'discounts' => $this->formatDiscountDetails($order, $creditMemoItem),
         ];
     }
 
@@ -149,8 +150,8 @@ class CreditMemoItems implements ResolverInterface
                 'label' => $associatedOrder->getDiscountDescription() ?? __('Discount'),
                 'amount' => [
                     'value' => abs((float) $creditmemoItem->getDiscountAmount()),
-                    'currency' => $associatedOrder->getOrderCurrencyCode()
-                ]
+                    'currency' => $associatedOrder->getOrderCurrencyCode(),
+                ],
             ];
         }
         return $discounts;

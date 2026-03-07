@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class FormatMoneyTypeData
         if (isset($data['amount'])) {
             $data['amount'] = [
                 'value' => $data['amount'],
-                'currency' => $currencyCode
+                'currency' => $currencyCode,
             ];
         }
 
@@ -31,14 +32,14 @@ class FormatMoneyTypeData
         if (isset($data['price_excl_tax'])) {
             $data['price_excl_tax'] = [
                 'value' => $data['price_excl_tax'],
-                'currency' => $currencyCode
+                'currency' => $currencyCode,
             ];
         }
 
         if (isset($data['price_incl_tax'])) {
             $data['price_incl_tax'] = [
                 'value' => $data['price_incl_tax'],
-                'currency' => $currencyCode
+                'currency' => $currencyCode,
             ];
         }
         return $data;

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Controller\Adminhtml\Integration;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
-use Magento\Framework\Exception\IntegrationException;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\IntegrationException;
+use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
 
 class Delete extends \Magento\Integration\Controller\Adminhtml\Integration implements HttpPostActionInterface
 {

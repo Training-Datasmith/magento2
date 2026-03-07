@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config;
 
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Ui\Config\FileResolverStub;
 
 class ReaderTest extends \PHPUnit\Framework\TestCase
 {
@@ -22,15 +24,15 @@ class ReaderTest extends \PHPUnit\Framework\TestCase
         $objectManager->configure(
             [
                 'preferences' => [
-                    \Magento\Ui\Config\Reader\FileResolver::class => FileResolverStub::class
-                ]
+                    \Magento\Ui\Config\Reader\FileResolver::class => FileResolverStub::class,
+                ],
             ]
         );
 
         $this->reader = $objectManager->create(
             Reader::class,
             [
-                'fileName' => 'test_component.xml'
+                'fileName' => 'test_component.xml',
             ]
         );
     }
@@ -42,8 +44,8 @@ class ReaderTest extends \PHPUnit\Framework\TestCase
         $objectManager->configure(
             [
                 'preferences' => [
-                    \Magento\Ui\Config\Reader\FileResolver::class => \Magento\Ui\Config\Reader\FileResolver::class
-                ]
+                    \Magento\Ui\Config\Reader\FileResolver::class => \Magento\Ui\Config\Reader\FileResolver::class,
+                ],
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Config\Consolidated;
 
 /**
@@ -18,7 +21,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
     protected $_idAttributes = [
         '/config/integration' => 'name',
         '/config/integration/resources/resource' => 'name',
-        '/config/integration/'
+        '/config/integration/',
     ];
 
     /**

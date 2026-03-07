@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * List of blocks to be skipped from instantiation test
  *

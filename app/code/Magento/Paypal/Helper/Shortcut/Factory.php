@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,12 +13,12 @@ class Factory
     /**
      * Default validator
      */
-    const DEFAULT_VALIDATOR = \Magento\Paypal\Helper\Shortcut\Validator::class;
+    public const DEFAULT_VALIDATOR = \Magento\Paypal\Helper\Shortcut\Validator::class;
 
     /**
      * Checkout validator
      */
-    const CHECKOUT_VALIDATOR = \Magento\Paypal\Helper\Shortcut\CheckoutValidator::class;
+    public const CHECKOUT_VALIDATOR = \Magento\Paypal\Helper\Shortcut\CheckoutValidator::class;
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

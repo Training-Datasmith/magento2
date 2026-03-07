@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,9 +10,11 @@ namespace Magento\GraphQl\Quote;
 
 use Exception;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Catalog\Test\Fixture\ProductStock as ProductStockFixture;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
+use Magento\Quote\Test\Fixture\QuoteIdMask as QuoteMaskFixture;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
@@ -19,8 +22,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Test\Fixture\ProductStock as ProductStockFixture;
-use Magento\Quote\Test\Fixture\QuoteIdMask as QuoteMaskFixture;
 
 /**
  * Get add to cart through GraphQl query and variables
@@ -95,7 +96,7 @@ class AddProductsToCartTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'code' => 'INSUFFICIENT_STOCK',
-                'message' => 'Not enough items for sale'
+                'message' => 'Not enough items for sale',
             ],
             $response['addProductsToCart']['user_errors'][0]
         );
@@ -119,7 +120,7 @@ class AddProductsToCartTest extends GraphQlAbstract
         self::assertEquals(
             [
                 'code' => 'INSUFFICIENT_STOCK',
-                'message' => 'Only 90 of 100 available'
+                'message' => 'Only 90 of 100 available',
             ],
             $response['addProductsToCart']['user_errors'][0]
         );

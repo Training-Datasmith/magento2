@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Client;
 
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Search\EngineResolverInterface;
 
 /**
  * @api
@@ -24,33 +26,6 @@ class ClientResolver
      * @see not used
      */
     protected $scopeConfig;
-
-    /**
-     * Object Manager instance
-     *
-     * @var ObjectManagerInterface
-     * @since 100.1.0
-     */
-    protected $objectManager;
-
-    /**
-     * Pool of existing client factories
-     *
-     * @var array
-     */
-    private $clientFactoryPool;
-
-    /**
-     * Pool of client option classes
-     *
-     * @var array
-     */
-    private $clientOptionsPool;
-
-    /**
-     * @var EngineResolverInterface
-     */
-    private $engineResolver;
 
     /**
      * Config path
@@ -72,22 +47,23 @@ class ClientResolver
      */
     protected $scope;
 
-    /**
-     * @param ObjectManagerInterface $objectManager
-     * @param array $clientFactories
-     * @param array $clientOptions
-     * @param EngineResolverInterface $engineResolver
-     */
     public function __construct(
-        ObjectManagerInterface $objectManager,
-        array $clientFactories,
-        array $clientOptions,
-        EngineResolverInterface $engineResolver
+        /**
+         * Object Manager instance
+         *
+         * @since 100.1.0
+         */
+        protected \Magento\Framework\ObjectManagerInterface $objectManager,
+        /**
+         * Pool of existing client factories
+         */
+        private array $clientFactoryPool,
+        /**
+         * Pool of client option classes
+         */
+        private array $clientOptionsPool,
+        private readonly EngineResolverInterface $engineResolver
     ) {
-        $this->objectManager = $objectManager;
-        $this->clientFactoryPool = $clientFactories;
-        $this->clientOptionsPool = $clientOptions;
-        $this->engineResolver = $engineResolver;
     }
 
     /**
@@ -105,7 +81,6 @@ class ClientResolver
      * Create client instance
      *
      * @param string $engine
-     * @param array $data
      * @return ClientInterface
      * @since 100.1.0
      */
@@ -134,8 +109,6 @@ class ClientResolver
             );
         }
 
-        $client = $factory->create($clientOptions->prepareClientOptions($data));
-
-        return $client;
+        return $factory->create($clientOptions->prepareClientOptions($data));
     }
 }

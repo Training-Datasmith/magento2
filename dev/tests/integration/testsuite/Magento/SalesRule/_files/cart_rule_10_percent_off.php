@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ $salesRule->setData(
         'discount_amount' => 10,
         'discount_step' => 0,
         'stop_rules_processing' => 1,
-        'website_ids' => [$websiteId]
+        'website_ids' => [$websiteId],
     ]
 );
 

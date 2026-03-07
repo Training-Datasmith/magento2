@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\Framework\GraphQl\Schema\Type\Entity\MapperInterface;
  */
 class CustomizableOptionTypeResolver implements TypeResolverInterface
 {
-    const ENTITY_TYPE = 'customizable_options';
+    public const ENTITY_TYPE = 'customizable_options';
 
     /**
      * @var MapperInterface
@@ -33,7 +34,7 @@ class CustomizableOptionTypeResolver implements TypeResolverInterface
     /**
      * {@inheritDoc}
      */
-    public function resolveType(array $data) : string
+    public function resolveType(array $data): string
     {
         $map = $this->mapper->getMappedTypes(self::ENTITY_TYPE);
         if (isset($map[$data['type']])) {

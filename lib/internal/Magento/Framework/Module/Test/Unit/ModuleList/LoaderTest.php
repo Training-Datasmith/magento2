@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Module\Declaration\Converter\Dom;
 use Magento\Framework\Module\ModuleList\Loader;
 use Magento\Framework\Xml\Parser;
 use Magento\Framework\Xml\ParserFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class LoaderTest extends TestCase
 {
@@ -100,7 +101,7 @@ class LoaderTest extends TestCase
             'b' => ['name' => 'b', 'sequence' => ['d']], // b is after d
             'c' => ['name' => 'c', 'sequence' => ['e']], // c is after e
             'd' => ['name' => 'd', 'sequence' => ['c']], // d is after c
-            'e' => ['name' => 'e', 'sequence' => ['a']] // e is after a
+            'e' => ['name' => 'e', 'sequence' => ['a']], // e is after a
             // so expected sequence is a -> e -> c -> d -> b
         ];
         $this->driver->expects($this->exactly(5))->method('fileGetContents')->willReturnMap(
@@ -109,7 +110,7 @@ class LoaderTest extends TestCase
                 ['/path/to/b/etc/module.xml', null, null, self::$sampleXml],
                 ['/path/to/c/etc/module.xml', null, null, self::$sampleXml],
                 ['/path/to/d/etc/module.xml', null, null, self::$sampleXml],
-                ['/path/to/e/etc/module.xml', null, null, self::$sampleXml]
+                ['/path/to/e/etc/module.xml', null, null, self::$sampleXml],
             ]
         );
         $willReturnArgs = [];
@@ -143,8 +144,8 @@ class LoaderTest extends TestCase
                     '/path/to/b',
                     '/path/to/c',
                     '/path/to/d',
-                    '/path/to/e'
-                ]
+                    '/path/to/e',
+                ],
             ],
             'UnOrdered modules list returned by registrar' => [
                 [
@@ -152,9 +153,9 @@ class LoaderTest extends TestCase
                     '/path/to/a',
                     '/path/to/c',
                     '/path/to/e',
-                    '/path/to/d'
-                ]
-            ]
+                    '/path/to/d',
+                ],
+            ],
         ];
     }
 
@@ -167,7 +168,7 @@ class LoaderTest extends TestCase
             'a' => ['name' => 'a', 'sequence' => []],    // a is on its own
             'b' => ['name' => 'b', 'sequence' => ['c']], // b is after c
             'c' => ['name' => 'c', 'sequence' => ['a']], // c is after a
-            'd' => ['name' => 'd', 'sequence' => ['a']] // d is after a
+            'd' => ['name' => 'd', 'sequence' => ['a']], // d is after a
             // exclude d, so expected sequence is a -> c -> b
         ];
         $this->registry->expects($this->once())
@@ -178,7 +179,7 @@ class LoaderTest extends TestCase
                 ['/path/to/a/etc/module.xml', null, null, self::$sampleXml],
                 ['/path/to/b/etc/module.xml', null, null, self::$sampleXml],
                 ['/path/to/c/etc/module.xml', null, null, self::$sampleXml],
-                ['/path/to/d/etc/module.xml', null, null, self::$sampleXml]
+                ['/path/to/d/etc/module.xml', null, null, self::$sampleXml],
             ]
         );
         $this->converter
@@ -207,7 +208,7 @@ class LoaderTest extends TestCase
         $this->expectExceptionMessage('Circular sequence reference from \'b\' to \'a\'');
         $fixture = [
             'a' => ['name' => 'a', 'sequence' => ['b']],
-            'b' => ['name' => 'b', 'sequence' => ['a']]
+            'b' => ['name' => 'b', 'sequence' => ['a']],
         ];
         $this->converter
             ->method('convert')
@@ -216,7 +217,7 @@ class LoaderTest extends TestCase
         $this->driver->expects($this->exactly(2))->method('fileGetContents')->willReturnMap(
             [
                 ['/path/to/a/etc/module.xml', null, null, self::$sampleXml],
-                ['/path/to/b/etc/module.xml', null, null, self::$sampleXml]
+                ['/path/to/b/etc/module.xml', null, null, self::$sampleXml],
             ]
         );
         $this->loader->load();
@@ -232,7 +233,7 @@ class LoaderTest extends TestCase
             'Magento_Directory' => ['name' => 'Magento_Directory', 'sequence' => ['Magento_Store']],
             'Magento_Store' => ['name' => 'Magento_Store', 'sequence' => []],
             'Magento_Theme' => ['name' => 'Magento_Theme', 'sequence' => ['Magento_Store', 'Magento_Directory']],
-            'Test_HelloWorld' => ['name' => 'Test_HelloWorld', 'sequence' => ['Magento_Theme']]
+            'Test_HelloWorld' => ['name' => 'Test_HelloWorld', 'sequence' => ['Magento_Theme']],
         ];
 
         $willReturnArgs = [];
@@ -252,7 +253,7 @@ class LoaderTest extends TestCase
                     '/path/to/Magento_Directory',
                     '/path/to/Magento_Store',
                     '/path/to/Magento_Theme',
-                    '/path/to/Test_HelloWorld'
+                    '/path/to/Test_HelloWorld',
                 ]
             );
 
@@ -264,7 +265,7 @@ class LoaderTest extends TestCase
                     ['/path/to/Magento_Directory/etc/module.xml', null, null, self::$sampleXml],
                     ['/path/to/Magento_Store/etc/module.xml', null, null, self::$sampleXml],
                     ['/path/to/Magento_Theme/etc/module.xml', null, null, self::$sampleXml],
-                    ['/path/to/Test_HelloWorld/etc/module.xml', null, null, self::$sampleXml]
+                    ['/path/to/Test_HelloWorld/etc/module.xml', null, null, self::$sampleXml],
                 ]
             );
 

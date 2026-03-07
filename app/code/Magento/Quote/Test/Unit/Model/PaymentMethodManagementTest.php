@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class PaymentMethodManagementTest extends TestCase
             [
                 'quoteRepository' => $this->quoteRepositoryMock,
                 'methodList' => $this->methodListMock,
-                'zeroTotalValidator' => $this->zeroTotalMock
+                'zeroTotalValidator' => $this->zeroTotalMock,
             ]
         );
     }
@@ -138,7 +139,7 @@ class PaymentMethodManagementTest extends TestCase
                 'collectTotals',
                 'save',
                 'setTotalsCollectedFlag',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->quoteRepositoryMock->expects($this->once())->method('get')->with($cartId)->willReturn($quoteMock);
@@ -147,7 +148,7 @@ class PaymentMethodManagementTest extends TestCase
             Payment::class,
             [
                 'setChecks',
-                'getData'
+                'getData',
             ]
         );
         $methodMock->expects($this->once())
@@ -260,7 +261,7 @@ class PaymentMethodManagementTest extends TestCase
                 'collectTotals',
                 'save',
                 'setTotalsCollectedFlag',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->quoteRepositoryMock->expects($this->once())
@@ -292,7 +293,7 @@ class PaymentMethodManagementTest extends TestCase
             [
                 'setPaymentMethod',
                 'setCollectShippingRates',
-                'getCountryId'
+                'getCountryId',
             ]
         );
         $shippingAddressMock->expects($this->once())->method('getCountryId')->willReturn(100);

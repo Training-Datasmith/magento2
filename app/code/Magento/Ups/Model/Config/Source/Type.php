@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class Type implements OptionSourceInterface
         return [
             ['value' => 'UPS', 'label' => __('United Parcel Service')],
             ['value' => 'UPS_XML', 'label' => __('United Parcel Service XML')],
-            ['value' => 'UPS_REST', 'label' => __('United Parcel Service REST')]
+            ['value' => 'UPS_REST', 'label' => __('United Parcel Service REST')],
         ];
     }
 }

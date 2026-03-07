@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class Filter
      * @param string|array $value
      * @return Item
      */
-    public function generate(string $field, string $condition, $value) : Item
+    public function generate(string $field, string $condition, $value): Item
     {
         $this->filterBuilder->setField($field);
         $this->filterBuilder->setConditionType($condition);
@@ -61,7 +62,7 @@ class Filter
      * @param Item $filter
      * @return SearchCriteriaInterface
      */
-    public function add(SearchCriteriaInterface $searchCriteria, Item $filter) : SearchCriteriaInterface
+    public function add(SearchCriteriaInterface $searchCriteria, Item $filter): SearchCriteriaInterface
     {
         $filterGroups = $searchCriteria->getFilterGroups();
         $filterGroups[] = $this->filterGroupBuilder->addFilter($filter)->create();
@@ -77,7 +78,7 @@ class Filter
      * @param string $filterName
      * @return SearchCriteriaInterface
      */
-    public function remove(SearchCriteriaInterface $searchCriteria, string $filterName) : SearchCriteriaInterface
+    public function remove(SearchCriteriaInterface $searchCriteria, string $filterName): SearchCriteriaInterface
     {
         $filterGroups = [];
         foreach ($searchCriteria->getFilterGroups() as $filterGroup) {

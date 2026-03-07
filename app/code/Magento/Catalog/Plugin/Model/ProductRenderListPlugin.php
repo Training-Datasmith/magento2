@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Catalog\Plugin\Model;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Catalog\Model\ProductRenderList;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Model\Group;
 use Magento\Customer\Model\Context;
+use Magento\Customer\Model\Group;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\App\State;

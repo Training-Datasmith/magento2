@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Product;
 
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
-use Magento\UrlRewrite\Model\OptionProvider;
-use Magento\CatalogUrlRewrite\Model\ObjectRegistry;
-use Magento\UrlRewrite\Model\UrlFinderInterface;
-use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
-use Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator;
-use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
-use Magento\CatalogUrlRewrite\Model\Map\UrlRewriteFinder;
-use Magento\Framework\App\ObjectManager;
-use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 use Magento\CatalogUrlRewrite\Block\UrlKeyRenderer;
+use Magento\CatalogUrlRewrite\Model\Map\UrlRewriteFinder;
+use Magento\CatalogUrlRewrite\Model\ObjectRegistry;
+use Magento\CatalogUrlRewrite\Model\ProductUrlPathGenerator;
+use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
+use Magento\UrlRewrite\Model\MergeDataProviderFactory;
+use Magento\UrlRewrite\Model\OptionProvider;
+use Magento\UrlRewrite\Model\UrlFinderInterface;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -182,7 +185,7 @@ class CurrentUrlRewritesRegenerator
         );
         $anchorCategoryIds = array_merge(
             ...array_map(
-                fn($productCategory) => $productCategory->getAnchorsAbove(),
+                fn ($productCategory) => $productCategory->getAnchorsAbove(),
                 $productCategories->getList()
             )
         );

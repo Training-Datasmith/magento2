@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,14 +9,13 @@ declare(strict_types=1);
 namespace Magento\LoginAsCustomer\Test\Unit\Plugin\Authorization\Model\ResourceModel;
 
 use Exception;
-use Magento\Authorization\Model\Rules;
 use Magento\Authorization\Model\ResourceModel\Rules as Subject;
+use Magento\Authorization\Model\Rules;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\LoginAsCustomer\Model\Validator\UserRolePermission;
 use Magento\LoginAsCustomer\Plugin\Authorization\Model\ResourceModel\RulesPlugin;
 use Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForListOfUserInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -88,7 +88,7 @@ class RulesPluginTest extends TestCase
             [
                 'deleteAuthenticationDataForListOfUser' => $this->deleteAuthenticationDataForListOfUserMock,
                 'validator' => $this->validatorMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

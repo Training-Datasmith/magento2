@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class CsvTest extends TestCase
         return [
             [',', '"', ['column1', 'column2']],
             [',', "'", ['column1', '"column2"']],
-            ['.', '"', ['column1,"column2"']]
+            ['.', '"', ['column1,"column2"']],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -124,8 +125,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2', // Use database 2 for tests to avoid conflicts
                     'persistent' => '1',
                     'serializer' => 'igbinary',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Clean test database before each test
@@ -284,7 +285,7 @@ class SymfonyRedisAdapterTest extends TestCase
         $data = [
             'complex' => ['nested' => ['data' => 'value']],
             'array' => [1, 2, 3, 4, 5],
-            'object' => (object)['prop' => 'test']
+            'object' => (object)['prop' => 'test'],
         ];
 
         // Save complex data
@@ -314,8 +315,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'persistent' => '1',
                     'persistent_id' => 'magento_test',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $id = 'redis_persistent_' . uniqid();
@@ -346,8 +347,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'persistent' => '1',
                     'persistent_id' => $uniqueId,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Trigger cache operation to create connection
@@ -369,8 +370,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'persistent' => '1',
                     'persistent_id' => $uniqueId2,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Both caches should work independently
@@ -403,8 +404,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'read_timeout' => '2.0',      // Read timeout
                     'retry_interval' => 100,      // Retry interval in ms
                     'connect_retries' => 3,       // Number of connection retries
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Verify cache operations work with tuning parameters
@@ -494,7 +495,7 @@ class SymfonyRedisAdapterTest extends TestCase
 
         // Verify all removed
         foreach ($ids as $id) {
-            $this->assertFalse($this->cache->load($id), "Item should be removed after clean");
+            $this->assertFalse($this->cache->load($id), 'Item should be removed after clean');
         }
     }
 
@@ -657,8 +658,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'server' => self::$redisServer,
                     'port' => '6379',
                     'database' => '2',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Second instance should see same data (same database)
@@ -721,8 +722,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'use_lua' => '0',
                     'use_lua_on_gc' => '1',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Save items that will expire
@@ -759,8 +760,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'use_lua' => '1',
                     'use_lua_on_gc' => '1',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Save items with tags
@@ -798,8 +799,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'database' => '2',
                     'use_lua' => '0',
                     'use_lua_on_gc' => '0',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // All operations should still work using pipelines
@@ -844,8 +845,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'server' => self::$redisServer,
                     'port' => '6379',
                     'database' => '4',
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Save test data to Redis
@@ -867,8 +868,8 @@ class SymfonyRedisAdapterTest extends TestCase
                         $preloadKey2,
                         $preloadKey3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Test 1: Preloaded keys should be accessible
@@ -904,8 +905,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'port' => '6379',
                     'database' => '4',
                     'preload_keys' => [$taggedPreloadKey],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertEquals('tagged_data', $cache2->load($taggedPreloadKey), 'Tagged preloaded key should work');
@@ -953,8 +954,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     ],
                     'use_stale_cache' => false,
                     'cleanup_percentage' => 90,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $this->assertInstanceOf(
@@ -1026,8 +1027,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'local_backend_options' => [
                         'cache_dir' => '/dev/shm/magento_test_l2_node1',
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // Create second L2 cache instance (simulating second web node)
@@ -1045,8 +1046,8 @@ class SymfonyRedisAdapterTest extends TestCase
                     'local_backend_options' => [
                         'cache_dir' => '/dev/shm/magento_test_l2_node2',
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $syncKey = 'l2_sync_test_' . uniqid();
@@ -1104,8 +1105,8 @@ class SymfonyRedisAdapterTest extends TestCase
                         'cache_dir' => '/tmp/magento_stale_cache_test',
                     ],
                     'use_stale_cache' => true,  // Enable stale cache
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $testKey = 'stale_cache_test_' . uniqid();
@@ -1134,8 +1135,8 @@ class SymfonyRedisAdapterTest extends TestCase
                         'cache_dir' => '/tmp/magento_stale_cache_test',  // Same local cache
                     ],
                     'use_stale_cache' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
 
         // With use_stale_cache=true, should still return stale local data

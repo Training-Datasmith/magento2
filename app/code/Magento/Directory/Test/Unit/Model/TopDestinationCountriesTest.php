@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class TopDestinationCountriesTest extends TestCase
             ->getMock();
         $objectManager = new ObjectManager($this);
         $arguments = [
-            'scopeConfig' => $this->scopeConfigMock
+            'scopeConfig' => $this->scopeConfigMock,
         ];
         $this->model = $objectManager
             ->getObject(TopDestinationCountries::class, $arguments);
@@ -51,7 +52,7 @@ class TopDestinationCountriesTest extends TestCase
     {
         return [
             ['UA,AF', ['UA', 'AF']],
-            ['', []]
+            ['', []],
         ];
     }
 }

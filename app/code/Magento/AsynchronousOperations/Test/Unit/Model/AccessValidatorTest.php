@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class AccessValidatorTest extends TestCase
     {
         return [
             [2, false],
-            [1, true]
+            [1, true],
         ];
     }
 }

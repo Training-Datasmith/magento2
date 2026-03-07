@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ declare(strict_types=1);
 namespace Magento\MediaGalleryMetadataApi\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\MediaGalleryMetadataApi\Api\Data\MetadataExtensionInterface;
 
 /**
  * Media asset metadata data transfer object

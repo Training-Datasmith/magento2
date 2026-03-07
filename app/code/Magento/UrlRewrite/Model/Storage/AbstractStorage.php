@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Model\Storage;
 
+use Magento\Framework\Api\DataObjectHelper;
 use Magento\UrlRewrite\Model\StorageInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
-use Magento\Framework\Api\DataObjectHelper;
 
 /**
  * Abstract db storage

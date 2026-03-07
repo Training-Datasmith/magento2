@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml;
 
 use Magento\Framework\DB\Select;
@@ -12,49 +15,16 @@ use Magento\Framework\DB\Select;
  */
 class Query implements \JsonSerializable
 {
-    /**
-     * @var Select
-     */
-    private $select;
-
-    /**
-     * @var \Magento\Analytics\ReportXml\SelectHydrator
-     */
-    private $selectHydrator;
-
-    /**
-     * @var string
-     */
-    private $connectionName;
-
-    /**
-     * @var array
-     */
-    private $config;
-
-    /**
-     * @var Select
-     */
-    private $selectCount;
+    private ?object $selectCount = null;
 
     /**
      * Query constructor.
      *
-     * @param Select $select
-     * @param SelectHydrator $selectHydrator
      * @param string $connectionName
      * @param array $config
      */
-    public function __construct(
-        Select $select,
-        SelectHydrator $selectHydrator,
-        $connectionName,
-        $config
-    ) {
-        $this->select = $select;
-        $this->connectionName = $connectionName;
-        $this->selectHydrator = $selectHydrator;
-        $this->config = $config;
+    public function __construct(private readonly Select $select, private readonly SelectHydrator $selectHydrator, private $connectionName, private $config)
+    {
     }
 
     /**
@@ -96,14 +66,13 @@ class Query implements \JsonSerializable
         return [
             'connectionName' => $this->getConnectionName(),
             'select_parts' => $this->selectHydrator->extract($this->getSelect()),
-            'config' => $this->getConfig()
+            'config' => $this->getConfig(),
         ];
     }
 
     /**
      * Get SQL for get record count
      *
-     * @return Select
      * @throws \Zend_Db_Select_Exception
      */
     public function getSelectCountSql(): Select
@@ -123,7 +92,7 @@ class Query implements \JsonSerializable
 
             $this->selectCount->reset(\Magento\Framework\DB\Select::GROUP);
             $group = $this->getSelect()->getPart(\Magento\Framework\DB\Select::GROUP);
-            $this->selectCount->columns(new \Zend_Db_Expr(("COUNT(DISTINCT ".implode(", ", $group).")")));
+            $this->selectCount->columns(new \Zend_Db_Expr(('COUNT(DISTINCT '.implode(', ', $group).')')));
         }
         return $this->selectCount;
     }

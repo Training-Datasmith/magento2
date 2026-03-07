@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Model\ResourceModel\Db\Profiler
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\ResourceModel\Db;
 
 use Magento\Framework\Config\ConfigOptionsListConstants;
@@ -112,22 +115,22 @@ class ProfilerTest extends \PHPUnit\Framework\TestCase
     public static function profileQueryDataProvider()
     {
         return [
-            ["SELECT * FROM %s", \Magento\Framework\DB\Profiler::SELECT],
+            ['SELECT * FROM %s', \Magento\Framework\DB\Profiler::SELECT],
             [
-                "INSERT INTO %s (module, schema_version, data_version) " .
+                'INSERT INTO %s (module, schema_version, data_version) ' .
                 "VALUES ('" .
                 self::$_testResourceName .
                 "', '1.1', '1.1')",
-                \Magento\Framework\DB\Profiler::INSERT
+                \Magento\Framework\DB\Profiler::INSERT,
             ],
             [
                 "UPDATE %s SET schema_version = '1.2' WHERE module = '" . self::$_testResourceName . "'",
-                \Magento\Framework\DB\Profiler::UPDATE
+                \Magento\Framework\DB\Profiler::UPDATE,
             ],
             [
                 "DELETE FROM %s WHERE module = '" . self::$_testResourceName . "'",
-                \Magento\Framework\DB\Profiler::DELETE
-            ]
+                \Magento\Framework\DB\Profiler::DELETE,
+            ],
         ];
     }
 

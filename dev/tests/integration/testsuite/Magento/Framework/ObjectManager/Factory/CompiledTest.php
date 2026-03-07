@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -37,15 +39,15 @@ class CompiledTest extends AbstractFactoryRuntimeDefinitionsTestCases
                     'optionalIntegerParameter' => ['_v_' => self::ALIAS_OVERRIDDEN_INT],
                 ],
                 DependsOnAlias::class => [
-                    'object' => ['_i_' => 'Alias']
+                    'object' => ['_i_' => 'Alias'],
                 ],
             ],
             'instanceTypes' => [
-                'Alias' => HasOptionalParameters::class
+                'Alias' => HasOptionalParameters::class,
             ],
             'preferences' => [
-                TestAssetInterface::class => InterfaceImplementation::class
-            ]
+                TestAssetInterface::class => InterfaceImplementation::class,
+            ],
         ];
 
         $compiledConfig = new CompiledConfig($diConfig);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class Metadata
             'options_available_for_selection' => $availableSelections,
             'variant' => $variantData,
             'availableSelectionProducts' => array_unique($availableProducts),
-            'product' => $product
+            'product' => $product,
         ];
     }
 

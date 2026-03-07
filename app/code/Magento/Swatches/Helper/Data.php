@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Helper;
 
 use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface;
@@ -77,7 +80,7 @@ class Data
     protected $eavAttributeAdditionalDataKeys = [
         Swatch::SWATCH_INPUT_TYPE_KEY,
         'update_product_preview_image',
-        'use_product_image_for_swatch'
+        'use_product_image_for_swatch',
     ];
 
     /**
@@ -373,7 +376,7 @@ class Data
     {
         $image = $this->getAllSizeImages($mediaEntry->getFile());
         $image[ProductAttributeMediaGalleryEntryInterface::POSITION] =  $mediaEntry->getPosition();
-        $image['isMain'] =$this->isMainImage($mediaEntry);
+        $image['isMain'] = $this->isMainImage($mediaEntry);
         return $image;
     }
 
@@ -388,7 +391,7 @@ class Data
         return [
             'large' => $this->imageUrlBuilder->getUrl($imageFile, 'product_swatch_image_large'),
             'medium' => $this->imageUrlBuilder->getUrl($imageFile, 'product_swatch_image_medium'),
-            'small' => $this->imageUrlBuilder->getUrl($imageFile, 'product_swatch_image_small')
+            'small' => $this->imageUrlBuilder->getUrl($imageFile, 'product_swatch_image_small'),
         ];
     }
 

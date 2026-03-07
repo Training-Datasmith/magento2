@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\GraphQl\App\State\GraphQlStateDiff;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 
@@ -56,7 +56,7 @@ class GraphQlCheckoutMutationsStateTest extends \PHPUnit\Framework\TestCase
     /**
      * @return void
      */
-    public function testCreateEmptyCart() : void
+    public function testCreateEmptyCart(): void
     {
         $this->graphQlStateDiff->testState(
             $this->getEmptyCart(),
@@ -438,7 +438,7 @@ class GraphQlCheckoutMutationsStateTest extends \PHPUnit\Framework\TestCase
      * @param string $sku
      * @return array
      */
-    private function getProductsLinks(string $sku) : array
+    private function getProductsLinks(string $sku): array
     {
         $result = [];
         $productRepository = $this->graphQlStateDiff->getTestObjectManager()

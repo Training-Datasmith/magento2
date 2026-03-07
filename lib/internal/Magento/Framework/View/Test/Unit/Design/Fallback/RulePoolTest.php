@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\View\Design\Fallback\Rule\SimpleFactory;
 use Magento\Framework\View\Design\Fallback\Rule\ThemeFactory;
 use Magento\Framework\View\Design\Fallback\RulePool;
 use Magento\Framework\View\Design\ThemeInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RulePoolTest extends TestCase
 {

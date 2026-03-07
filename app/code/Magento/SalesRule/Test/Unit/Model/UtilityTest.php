@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Test\Unit\Model;
 
-use Magento\Framework\DataObject;
 use Magento\Framework\DataObjectFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
@@ -122,7 +122,7 @@ class UtilityTest extends TestCase
                 'getId',
                 'getUsageLimit',
                 'getTimesUsed',
-                'getUsagePerCustomer'
+                'getUsagePerCustomer',
             ]
         );
         $this->quote = $this->createPartialMock(Quote::class, ['getStore']);
@@ -138,7 +138,7 @@ class UtilityTest extends TestCase
                 'getIsValidForAddress',
                 'setIsValidForAddress',
                 'validate',
-                'afterLoad'
+                'afterLoad',
             ]
         );
         $this->address = $this->createPartialMockWithReflection(
@@ -156,7 +156,7 @@ class UtilityTest extends TestCase
                 'getQuote',
                 'getAddress',
                 'getOptionByCode',
-                'getTotalQty'
+                'getTotalQty',
             ]
         );
 
@@ -406,7 +406,7 @@ class UtilityTest extends TestCase
             ['', 'id3,id4', false, ['id3', 'id4']],
             ['', 'id3,id4', true, 'id3,id4'],
             [['id1', 'id2'], ['id3', 'id4'], false, ['id1', 'id2', 'id3', 'id4']],
-            [['id1', 'id2'], ['id3', 'id4'], true, 'id1,id2,id3,id4']
+            [['id1', 'id2'], ['id3', 'id4'], true, 'id1,id2,id3,id4'],
         ];
     }
 
@@ -504,7 +504,7 @@ class UtilityTest extends TestCase
                     [$discountAmount, $roundedDiscount],
                     [$baseDiscountAmount, $roundedBaseDiscount],
                     [$discountAmount + $delta, $secondRoundedDiscount], //?
-                    [$baseDiscountAmount + $baseDelta, $secondRoundedBaseDiscount] //?
+                    [$baseDiscountAmount + $baseDelta, $secondRoundedBaseDiscount], //?
                 ]
             );
 

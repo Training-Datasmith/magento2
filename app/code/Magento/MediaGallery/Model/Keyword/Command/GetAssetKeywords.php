@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model\Keyword\Command;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\IntegrationException;
 use Magento\MediaGalleryApi\Api\Data\KeywordInterface;
 use Magento\MediaGalleryApi\Api\Data\KeywordInterfaceFactory;
 use Magento\MediaGalleryApi\Model\Keyword\Command\GetAssetKeywordsInterface;
-use Magento\Framework\App\ResourceConnection;
 use Psr\Log\LoggerInterface;
 
 /**

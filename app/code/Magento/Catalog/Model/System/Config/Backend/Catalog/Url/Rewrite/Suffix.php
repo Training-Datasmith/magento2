@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Url rewrite suffix backend
  */
+
 namespace Magento\Catalog\Model\System\Config\Backend\Catalog\Url\Rewrite;
 
 use Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator;
@@ -134,7 +137,7 @@ class Suffix extends \Magento\Framework\App\Config\Value
             if ($this->isCategorySuffixChanged()) {
                 $this->cacheTypeList->invalidate([
                     \Magento\Framework\App\Cache\Type\Block::TYPE_IDENTIFIER,
-                    \Magento\Framework\App\Cache\Type\Collection::TYPE_IDENTIFIER
+                    \Magento\Framework\App\Cache\Type\Collection::TYPE_IDENTIFIER,
                 ]);
             }
         }
@@ -153,7 +156,7 @@ class Suffix extends \Magento\Framework\App\Config\Value
             if ($this->isCategorySuffixChanged()) {
                 $this->cacheTypeList->invalidate([
                     \Magento\Framework\App\Cache\Type\Block::TYPE_IDENTIFIER,
-                    \Magento\Framework\App\Cache\Type\Collection::TYPE_IDENTIFIER
+                    \Magento\Framework\App\Cache\Type\Collection::TYPE_IDENTIFIER,
                 ]);
             }
         }

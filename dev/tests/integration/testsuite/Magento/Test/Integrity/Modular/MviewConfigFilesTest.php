@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Modular;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class MviewConfigFilesTest extends \PHPUnit\Framework\TestCase

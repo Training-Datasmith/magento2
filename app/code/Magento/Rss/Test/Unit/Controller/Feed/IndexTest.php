@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class IndexTest extends TestCase
                 'scopeConfig' => $this->scopeConfigInterface,
                 'rssFactory' => $this->rssFactory,
                 'request' => $request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }

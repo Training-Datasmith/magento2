@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 /**
@@ -14,12 +17,12 @@ interface UrlInterface
     /**#@+
      * Possible URL types
      */
-    const URL_TYPE_LINK = 'link';
-    const URL_TYPE_DIRECT_LINK = 'direct_link';
-    const URL_TYPE_WEB = 'web';
-    const URL_TYPE_MEDIA = 'media';
-    const URL_TYPE_STATIC = 'static';
-    const URL_TYPE_JS = 'js';
+    public const URL_TYPE_LINK = 'link';
+    public const URL_TYPE_DIRECT_LINK = 'direct_link';
+    public const URL_TYPE_WEB = 'web';
+    public const URL_TYPE_MEDIA = 'media';
+    public const URL_TYPE_STATIC = 'static';
+    public const URL_TYPE_JS = 'js';
     /**#@-*/
 
     /**
@@ -27,18 +30,18 @@ interface UrlInterface
      *
      * Equals to self::URL_TYPE_LINK
      */
-    const DEFAULT_URL_TYPE = 'link';
+    public const DEFAULT_URL_TYPE = 'link';
 
-    const DEFAULT_CONTROLLER_NAME = 'index';
+    public const DEFAULT_CONTROLLER_NAME = 'index';
 
-    const DEFAULT_ACTION_NAME = 'index';
+    public const DEFAULT_ACTION_NAME = 'index';
 
-    const REWRITE_REQUEST_PATH_ALIAS = 'rewrite_request_path';
+    public const REWRITE_REQUEST_PATH_ALIAS = 'rewrite_request_path';
 
     /**
      * Session namespace to refer in other places
      */
-    const SESSION_NAMESPACE = 'frontend';
+    public const SESSION_NAMESPACE = 'frontend';
 
     /**
      * Retrieve use session rule

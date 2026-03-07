@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,7 +109,7 @@ class DataProvider extends ModifierPoolDataProvider
      */
     protected $ignoreFields = [
         'products_position',
-        'position'
+        'position',
     ];
 
     /**
@@ -308,7 +309,7 @@ class DataProvider extends ModifierPoolDataProvider
                         $category,
                         $attributeCode,
                         $this->request->getParam($this->requestScopeFieldName, Store::DEFAULT_STORE_ID)
-                    )
+                    ),
                 ]
             );
         }

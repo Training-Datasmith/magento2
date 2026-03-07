@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Api\SimpleDataObjectConverter;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Webapi\Controller\Rest\ParamOverriderCustomerId;
 use Magento\Webapi\Controller\Rest\ParamsOverrider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -68,7 +69,7 @@ class ParamsOverriderTest extends TestCase
             ParamsOverrider::class,
             [
                 'paramOverriders' => ['%customer_id%' => $paramOverriderCustomerId ],
-                'dataObjectConverter' => $objectConverter
+                'dataObjectConverter' => $objectConverter,
             ]
         );
 

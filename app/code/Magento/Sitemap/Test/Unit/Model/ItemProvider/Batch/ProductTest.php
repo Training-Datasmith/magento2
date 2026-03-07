@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ProductTest extends TestCase
         $itemData = [
             'url' => 'http://example.com/product.html',
             'updatedAt' => '2024-06-01',
-            'images' => ['img1.jpg', 'img2.jpg']
+            'images' => ['img1.jpg', 'img2.jpg'],
         ];
 
         $productObj = $this->createPartialMockWithReflection(\stdClass::class, ['getUrl', 'getUpdatedAt', 'getImages']);

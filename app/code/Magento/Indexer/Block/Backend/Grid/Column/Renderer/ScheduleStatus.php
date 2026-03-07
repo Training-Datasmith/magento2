@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class ScheduleStatus extends AbstractRenderer
             }
 
             $text = new Phrase(
-                "%status (%count in backlog)",
+                '%status (%count in backlog)',
                 [
                     'status' => $state->getStatus(),
                     'count' => $count,

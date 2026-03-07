@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaContent\Model;
 
-use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
-use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
 use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface;
+use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
+use Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\GetAssetIdsByContentIdentityInterface;
 use Magento\MediaContentApi\Api\GetContentByAssetIdsInterface;
-use Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface;
+use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,7 @@ class SaveDeleteContentAssetLinksTest extends TestCase
             [
                 'entityType' => $entityType,
                 'entityId' => $entityId,
-                'field' => $field
+                'field' => $field,
             ]
         );
 
@@ -79,7 +80,7 @@ class SaveDeleteContentAssetLinksTest extends TestCase
                 ContentAssetLinkInterface::class,
                 [
                     'assetId' => $assetId,
-                    'contentIdentity' => $contentIdentity
+                    'contentIdentity' => $contentIdentity,
                 ]
             );
         }

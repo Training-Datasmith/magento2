@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class InlineUtil implements InlineUtilInterface, SecurityProcessorInterface
         'link' => ['id' => 'style-src', 'remote' => ['href']],
         'form' => ['id' => 'form-action', 'remote' => ['action']],
         'iframe' => ['id' => 'frame-src', 'remote' => ['src']],
-        'frame' => ['id' => 'frame-src', 'remote' => ['src']]
+        'frame' => ['id' => 'frame-src', 'remote' => ['src']],
     ];
 
     /**

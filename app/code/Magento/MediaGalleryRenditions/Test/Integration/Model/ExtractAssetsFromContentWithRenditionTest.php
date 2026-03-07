@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\MediaGalleryRenditions\Test\Integration\Model;
 
 use Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Extracting assets from rendition paths/urls in content
@@ -64,52 +65,52 @@ class ExtractAssetsFromContentWithRenditionTest extends TestCase
         return [
             'Empty Content' => [
                 '',
-                []
+                [],
             ],
             'No paths in content' => [
                 'content without paths',
-                []
+                [],
             ],
             'Relevant rendition path in content' => [
                 'content {{media url=".renditions/testDirectory/path.jpg"}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant wysiwyg rendition path in content' => [
                 'content <img src="https://domain.com/media/.renditions/testDirectory/path.jpg"}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant rendition path content with pub' => [
                 '/pub/media/.renditions/testDirectory/path.jpg',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant rendition path content' => [
                 '/media/.renditions/testDirectory/path.jpg',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant existing media paths w/o rendition in content' => [
                 'content {{media url="testDirectory/path.jpg"}} content',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Relevant existing paths w/o rendition in content with pub' => [
                 '/pub/media/testDirectory/path.jpg',
                 [
-                    2020
-                ]
+                    2020,
+                ],
             ],
             'Non-existing rendition paths in content' => [
                 'content {{media url=".renditions/non-existing-path.png"}} content',
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

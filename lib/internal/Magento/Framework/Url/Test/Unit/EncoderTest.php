@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Url\Test\Unit;
 
 use Magento\Framework\Url\Encoder;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class EncoderTest extends TestCase
 {
@@ -70,7 +71,7 @@ class EncoderTest extends TestCase
         return [
             ['http://magento2.adobe/encoding/with/longer/url/'],
             ['http://magento2.adobe/some/other/random/url?currency=eur&price=2'],
-            ['http://magento2.adobe/yet/not/done/url#anchor']
+            ['http://magento2.adobe/yet/not/done/url#anchor'],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class DateFormatterFactory
     private const CUSTOM_DATE_FORMATS = [
         'ar_SA' => [
             \IntlDateFormatter::SHORT => 'd/MM/y',
-        ]
+        ],
     ];
 
     /**

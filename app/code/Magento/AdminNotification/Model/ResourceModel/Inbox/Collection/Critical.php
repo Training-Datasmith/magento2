@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\Inbox\Collection;
 
 /**
@@ -29,7 +32,7 @@ class Critical extends \Magento\Framework\Model\ResourceModel\Db\Collection\Abst
      *
      * @return $this
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         parent::_initSelect();
         $this->addOrder(

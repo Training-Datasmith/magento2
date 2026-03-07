@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Express\Review;
 
 use Magento\Customer\Model\Context;
@@ -25,13 +28,13 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /** @var \Magento\Customer\Api\CustomerRepositoryInterface */
     protected $_customerRepository;
 
-    const FIXTURE_CUSTOMER_ID = 1;
+    public const FIXTURE_CUSTOMER_ID = 1;
 
-    const FIXTURE_ADDRESS_ID = 1;
+    public const FIXTURE_ADDRESS_ID = 1;
 
-    const SAMPLE_FIRST_NAME = 'UpdatedFirstName';
+    public const SAMPLE_FIRST_NAME = 'UpdatedFirstName';
 
-    const SAMPLE_LAST_NAME = 'UpdatedLastName';
+    public const SAMPLE_LAST_NAME = 'UpdatedLastName';
 
     protected function setUp(): void
     {

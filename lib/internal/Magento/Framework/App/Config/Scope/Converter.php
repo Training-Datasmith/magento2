@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Configuration data converter. Converts associative array to tree array
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config\Scope;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
         $this->registry = $objectManager->getObject(Registry::class);
         $this->moduleListInterface = $this->createMock(ModuleListInterface::class);
         $this->moduleListInterface->method('getNames')->willReturn(['Magento_MessageQueue']);
-        $this->moduleListInterface->method('getOne')->with('Magento_MessageQueue')->willReturn(['setup_version'=>'']);
+        $this->moduleListInterface->method('getOne')->with('Magento_MessageQueue')->willReturn(['setup_version' => '']);
         $this->declarationInstaller = $this->createMock(DeclarationInstaller::class);
         $this->declarationInstaller->method('installSchema')->willReturn(true);
         $this->schemaListener = $this->createMock(SchemaListener::class);
@@ -130,9 +131,9 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
         $this->objectManagerProvider = $this->createMock(ObjectManagerProvider::class);
         $this->objectManagerMock = $this->createMock(\Magento\Framework\ObjectManager\ObjectManager::class);
         $this->deploymentConfig = $this->createMock(DeploymentConfig::class);
-        $this->deploymentConfig->method('get')->willReturn(['host'=>'localhost', 'dbname' => 'magento']);
+        $this->deploymentConfig->method('get')->willReturn(['host' => 'localhost', 'dbname' => 'magento']);
         $this->objectManagerMock->method('get')
-        ->willReturnCallback(fn($param) => match ([$param]) {
+        ->willReturnCallback(fn ($param) => match ([$param]) {
             [SchemaPersistor::class] => $this->schemaPersistor,
             [TriggerCleaner::class] => $this->triggerCleaner,
             [Registry::class] => $this->registry,
@@ -143,7 +144,7 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
         $this->recurring = new Recurring($this->poisonPillPut);
 
         $this->objectManagerMock->method('create')
-        ->willReturnCallback(fn($param) => match ([$param]) {
+        ->willReturnCallback(fn ($param) => match ([$param]) {
             [PatchApplierFactory::class] => $this->patchApplierFactory,
             [Recurring::class] => $this->recurring
         });
@@ -153,13 +154,13 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
         $this->adapterInterface->method('isTableExists')->willReturn(true);
         $this->adapterInterface->method('getTables')->willReturn([]);
         $this->adapterInterface->method('getSchemaListener')->willReturn($this->schemaListener);
-        $this->adapterInterface->method('describeTable')->willReturn(['flag_data'=>['DATA_TYPE'=>'mediumtext']]);
+        $this->adapterInterface->method('describeTable')->willReturn(['flag_data' => ['DATA_TYPE' => 'mediumtext']]);
         $this->resourceConnection = $objectManager->getObject(\Magento\Framework\App\ResourceConnection::class);
         $this->schemaSetupInterface = $this->createMock(\Magento\Framework\Setup\SchemaSetupInterface::class);
         $this->schemaSetupInterface->method('getConnection')->willReturn($this->adapterInterface);
         $this->schemaSetupInterface
             ->method('getTable')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['setup_module'] => 'setup_module',
                 ['session'] => 'session',
                 ['cache'] => 'cache',
@@ -184,9 +185,9 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
             Installer::class,
             [
                 'objectManagerProvider' => $this->objectManagerProvider,
-                'deploymentConfig'=>$this->deploymentConfig,
-                'setupFactory'=>$this->setupFactory,
-                'moduleList'=>$this->moduleListInterface,
+                'deploymentConfig' => $this->deploymentConfig,
+                'setupFactory' => $this->setupFactory,
+                'moduleList' => $this->moduleListInterface,
             ]
         );
     }
@@ -199,15 +200,15 @@ class PoisonPillApplyDuringSetupUpgradeTest extends TestCase
         $this->poisonPillPut->expects(self::once())->method('put');
         $this->installer->installSchema(
             [
-                'keep-generated'=>false,
-                'convert-old-scripts'=>false,
-                'help'=>false,
-                'quiet'=>false,
-                'verbose'=>false,
-                'version'=>false,
-                'ansi'=>false,
-                'no-ansi'=>false,
-                'no-interaction'=>false,
+                'keep-generated' => false,
+                'convert-old-scripts' => false,
+                'help' => false,
+                'quiet' => false,
+                'verbose' => false,
+                'version' => false,
+                'ansi' => false,
+                'no-ansi' => false,
+                'no-interaction' => false,
             ]
         );
     }

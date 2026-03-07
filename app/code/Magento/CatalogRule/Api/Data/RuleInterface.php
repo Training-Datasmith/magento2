@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Api\Data;
 
 /**
@@ -14,21 +17,21 @@ interface RuleInterface extends \Magento\Framework\Api\CustomAttributesDataInter
     /**#@+
      * Constants defined for keys of data array
      */
-    const RULE_ID = 'rule_id';
+    public const RULE_ID = 'rule_id';
 
-    const NAME = 'name';
+    public const NAME = 'name';
 
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
 
-    const IS_ACTIVE = 'is_active';
+    public const IS_ACTIVE = 'is_active';
 
-    const STOP_RULES_PROCESSING = 'stop_rules_processing';
+    public const STOP_RULES_PROCESSING = 'stop_rules_processing';
 
-    const SORT_ORDER = 'sort_order';
+    public const SORT_ORDER = 'sort_order';
 
-    const SIMPLE_ACTION = 'simple_action';
+    public const SIMPLE_ACTION = 'simple_action';
 
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
 
     /**#@-*/
 

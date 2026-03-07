@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,14 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Model\Rss;
 
 use Magento\Catalog\Model\Category as CategoryModel;
-use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Category as LayerCategory;
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\Product\Visibility;
-use Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Model\Rss\Category;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -62,7 +61,7 @@ class CategoryTest extends TestCase
         $this->visibility = $this->createPartialMock(
             Visibility::class,
             [
-                'getVisibleInCatalogIds'
+                'getVisibleInCatalogIds',
             ]
         );
 
@@ -79,7 +78,7 @@ class CategoryTest extends TestCase
             [
                 'layerResolver' => $layerResolver,
                 'collectionFactory' => $this->collectionFactory,
-                'visibility' => $this->visibility
+                'visibility' => $this->visibility,
             ]
         );
     }
@@ -148,7 +147,7 @@ class CategoryTest extends TestCase
                 'getResourceCollection',
                 'getChildren',
                 'getProductCollection',
-                'getId'
+                'getId',
             ]
         );
         $category->expects($this->once())
@@ -162,7 +161,7 @@ class CategoryTest extends TestCase
             ->willReturn($products);
         $category->method('getId')
             ->willReturn(1);
-        
+
         $this->categoryLayer->expects($this->once())
             ->method('setCurrentCategory')
             ->with($category)

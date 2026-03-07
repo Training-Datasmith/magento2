@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\Filter
 
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\App\ObjectManager;
 
 class Directory implements CustomFilterInterface
 {

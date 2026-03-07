@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -23,135 +26,135 @@ interface CreditmemoItemInterface extends \Magento\Framework\Api\ExtensibleDataI
     /*
      * Credit memo item ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Base price.
      */
-    const BASE_PRICE = 'base_price';
+    public const BASE_PRICE = 'base_price';
     /*
      * Tax amount.
      */
-    const TAX_AMOUNT = 'tax_amount';
+    public const TAX_AMOUNT = 'tax_amount';
     /*
      * Base row total.
      */
-    const BASE_ROW_TOTAL = 'base_row_total';
+    public const BASE_ROW_TOTAL = 'base_row_total';
     /*
      * Base row total.
      */
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
     /*
      * Row total.
      */
-    const ROW_TOTAL = 'row_total';
+    public const ROW_TOTAL = 'row_total';
     /*
      * Base discount amount.
      */
-    const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
     /*
      * Price including tax.
      */
-    const PRICE_INCL_TAX = 'price_incl_tax';
+    public const PRICE_INCL_TAX = 'price_incl_tax';
     /*
      * Base tax amount.
      */
-    const BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const BASE_TAX_AMOUNT = 'base_tax_amount';
     /*
      * Base price including tax.
      */
-    const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
+    public const BASE_PRICE_INCL_TAX = 'base_price_incl_tax';
     /*
      * Quantity.
      */
-    const QTY = 'qty';
+    public const QTY = 'qty';
     /*
      * Base cost.
      */
-    const BASE_COST = 'base_cost';
+    public const BASE_COST = 'base_cost';
     /*
      * Price.
      */
-    const PRICE = 'price';
+    public const PRICE = 'price';
     /*
      * Base row total including tax.
      */
-    const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
+    public const BASE_ROW_TOTAL_INCL_TAX = 'base_row_total_incl_tax';
     /*
      * Row total including tax.
      */
-    const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
+    public const ROW_TOTAL_INCL_TAX = 'row_total_incl_tax';
     /*
      * Product ID.
      */
-    const PRODUCT_ID = 'product_id';
+    public const PRODUCT_ID = 'product_id';
     /*
      * Order item ID.
      */
-    const ORDER_ITEM_ID = 'order_item_id';
+    public const ORDER_ITEM_ID = 'order_item_id';
     /*
      * Additional data.
      */
-    const ADDITIONAL_DATA = 'additional_data';
+    public const ADDITIONAL_DATA = 'additional_data';
     /*
      * Description.
      */
-    const DESCRIPTION = 'description';
+    public const DESCRIPTION = 'description';
     /*
      * SKU.
      */
-    const SKU = 'sku';
+    public const SKU = 'sku';
     /*
      * Name.
      */
-    const NAME = 'name';
+    public const NAME = 'name';
     /*
      * Discount tax compensation amount.
      */
-    const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /*
      * Base discount tax compensation amount.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
     /*
      * WEEE tax disposition.
      */
-    const WEEE_TAX_DISPOSITION = 'weee_tax_disposition';
+    public const WEEE_TAX_DISPOSITION = 'weee_tax_disposition';
     /*
      * WEEE tax row disposition.
      */
-    const WEEE_TAX_ROW_DISPOSITION = 'weee_tax_row_disposition';
+    public const WEEE_TAX_ROW_DISPOSITION = 'weee_tax_row_disposition';
     /*
      * Base WEEE tax disposition.
      */
-    const BASE_WEEE_TAX_DISPOSITION = 'base_weee_tax_disposition';
+    public const BASE_WEEE_TAX_DISPOSITION = 'base_weee_tax_disposition';
     /*
      * Base WEEE tax row disposition.
      */
-    const BASE_WEEE_TAX_ROW_DISPOSITION = 'base_weee_tax_row_disposition';
+    public const BASE_WEEE_TAX_ROW_DISPOSITION = 'base_weee_tax_row_disposition';
     /*
      * WEEE tax applied.
      */
-    const WEEE_TAX_APPLIED = 'weee_tax_applied';
+    public const WEEE_TAX_APPLIED = 'weee_tax_applied';
     /*
      * Base WEEE tax applied amount.
      */
-    const BASE_WEEE_TAX_APPLIED_AMOUNT = 'base_weee_tax_applied_amount';
+    public const BASE_WEEE_TAX_APPLIED_AMOUNT = 'base_weee_tax_applied_amount';
     /*
      * Base WEEE tax applied row amount.
      */
-    const BASE_WEEE_TAX_APPLIED_ROW_AMNT = 'base_weee_tax_applied_row_amnt';
+    public const BASE_WEEE_TAX_APPLIED_ROW_AMNT = 'base_weee_tax_applied_row_amnt';
     /*
      * WEEE tax applied amount.
      */
-    const WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
+    public const WEEE_TAX_APPLIED_AMOUNT = 'weee_tax_applied_amount';
     /*
      * WEEE tax applied row amount.
      */
-    const WEEE_TAX_APPLIED_ROW_AMOUNT = 'weee_tax_applied_row_amount';
+    public const WEEE_TAX_APPLIED_ROW_AMOUNT = 'weee_tax_applied_row_amount';
 
     /**
      * Gets the additional data for a credit memo item.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class VerticalTest extends TestCase
         $this->vertical = $objectManager->getObject(
             Vertical::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -76,11 +77,11 @@ class VerticalTest extends TestCase
             ->willReturn('New hint');
         $html = $this->vertical->render($this->abstractElementMock);
         $this->assertMatchesRegularExpression(
-            "/New comment/",
+            '/New comment/',
             $html
         );
         $this->assertMatchesRegularExpression(
-            "/New hint/",
+            '/New hint/',
             $html
         );
     }

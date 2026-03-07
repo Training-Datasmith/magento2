@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,22 +13,22 @@ use PHPUnit\Framework\TestCase;
 
 class AttributeValueTest extends TestCase
 {
-    const ATTRIBUTE_CODE = 'ATTRIBUTE_CODE';
+    public const ATTRIBUTE_CODE = 'ATTRIBUTE_CODE';
 
-    const STRING_VALUE = 'VALUE';
+    public const STRING_VALUE = 'VALUE';
 
-    const INTEGER_VALUE = 1;
+    public const INTEGER_VALUE = 1;
 
-    const FLOAT_VALUE = 1.0;
+    public const FLOAT_VALUE = 1.0;
 
-    const BOOLEAN_VALUE = true;
+    public const BOOLEAN_VALUE = true;
 
     public function testConstructorAndGettersWithString()
     {
         $attribute = new AttributeValue(
             [
                 AttributeValue::ATTRIBUTE_CODE => self::ATTRIBUTE_CODE,
-                AttributeValue::VALUE => self::STRING_VALUE
+                AttributeValue::VALUE => self::STRING_VALUE,
             ]
         );
 
@@ -40,7 +41,7 @@ class AttributeValueTest extends TestCase
         $attribute = new AttributeValue(
             [
                 AttributeValue::ATTRIBUTE_CODE => self::ATTRIBUTE_CODE,
-                AttributeValue::VALUE => self::INTEGER_VALUE
+                AttributeValue::VALUE => self::INTEGER_VALUE,
             ]
         );
 
@@ -53,7 +54,7 @@ class AttributeValueTest extends TestCase
         $attribute = new AttributeValue(
             [
                 AttributeValue::ATTRIBUTE_CODE => self::ATTRIBUTE_CODE,
-                AttributeValue::VALUE => self::FLOAT_VALUE
+                AttributeValue::VALUE => self::FLOAT_VALUE,
             ]
         );
 
@@ -66,7 +67,7 @@ class AttributeValueTest extends TestCase
         $attribute = new AttributeValue(
             [
                 AttributeValue::ATTRIBUTE_CODE => self::ATTRIBUTE_CODE,
-                AttributeValue::VALUE => self::BOOLEAN_VALUE
+                AttributeValue::VALUE => self::BOOLEAN_VALUE,
             ]
         );
 

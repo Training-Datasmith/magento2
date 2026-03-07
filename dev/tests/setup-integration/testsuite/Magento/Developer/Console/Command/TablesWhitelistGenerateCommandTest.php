@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Developer\Console\Command;
 
-use Symfony\Component\Console\Tester\CommandTester;
-use Magento\TestFramework\TestCase\SetupTestCase;
 use Magento\Framework\Console\Cli;
 use Magento\TestFramework\Deploy\CliCommand;
 use Magento\TestFramework\Deploy\TestModuleManager;
+use Magento\TestFramework\TestCase\SetupTestCase;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * The purpose of this test is to verify the declaration:generate:whitelist command.
@@ -125,7 +126,7 @@ class TablesWhitelistGenerateCommandTest extends SetupTestCase
                     '_files',
                     'WhitelistGenerate',
                     str_replace('Magento_', '', $moduleName),
-                    'db_schema_whitelist.json'
+                    'db_schema_whitelist.json',
                 ]
             )
         ), "\n");

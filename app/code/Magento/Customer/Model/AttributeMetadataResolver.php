@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Customer\Api\Data\AddressInterface;
@@ -246,7 +248,7 @@ class AttributeMetadataResolver
         if (isset($meta[AddressInterface::COUNTRY_ID]) && !$this->shareConfig->isGlobalScope()) {
             $meta[AddressInterface::COUNTRY_ID]['arguments']['data']['config']['filterBy'] = [
                 'target' => 'customer_form.customer_form_data_source:data.customer.website_id',
-                'field' => 'website_ids'
+                'field' => 'website_ids',
             ];
         }
 

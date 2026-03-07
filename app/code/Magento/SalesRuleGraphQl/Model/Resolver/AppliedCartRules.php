@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class AppliedCartRules implements ResolverInterface
 
         return $ruleIds ? array_map(
             fn ($rule) => ['uid' => $this->idEncoder->encode($rule)],
-            explode(",", $ruleIds)
+            explode(',', $ruleIds)
         ) : [];
     }
 }

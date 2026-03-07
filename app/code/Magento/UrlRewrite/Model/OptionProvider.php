@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ class OptionProvider implements OptionSourceInterface
     /**
      * Permanent redirect code
      */
-    const PERMANENT = 301;
+    public const PERMANENT = 301;
 
     /**
      * Temporary redirect code
      */
-    const TEMPORARY = 302;
+    public const TEMPORARY = 302;
 
     /**
      * Retrieve redirect type options
@@ -35,7 +36,7 @@ class OptionProvider implements OptionSourceInterface
         foreach ($this->getOptions() as $value => $label) {
             $options[] = [
                 'label' => $label,
-                'value' => $value
+                'value' => $value,
             ];
         }
         return $options;
@@ -51,7 +52,7 @@ class OptionProvider implements OptionSourceInterface
         return [
             0 => __('No'),
             self::TEMPORARY => __('Temporary (302)'),
-            self::PERMANENT => __('Permanent (301)')
+            self::PERMANENT => __('Permanent (301)'),
         ];
     }
 }

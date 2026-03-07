@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,5 +23,5 @@ class CategoriesJson extends \Magento\CatalogRule\Controller\Adminhtml\Promo\Wid
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_SalesRule::quote';
+    public const ADMIN_RESOURCE = 'Magento_SalesRule::quote';
 }

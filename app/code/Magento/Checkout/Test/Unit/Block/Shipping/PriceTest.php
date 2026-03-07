@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class PriceTest extends TestCase
     public function testGetShippingPrice()
     {
         $shippingPrice = 5;
-        $convertedPrice = "$5";
+        $convertedPrice = '$5';
 
         $rateReflection = new \ReflectionClass(Rate::class);
         $shippingRateMock = $rateReflection->newInstanceWithoutConstructor();

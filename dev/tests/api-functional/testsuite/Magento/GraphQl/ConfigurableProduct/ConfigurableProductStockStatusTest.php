@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\ConfigurableProduct;
 
-use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Checks if stock status correctly displays for configurable variants.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class BuilderTest extends TestCase
             AbstractCollection::class,
             [
                 'getResource',
-                'getSelect'
+                'getSelect',
             ]
         );
         $combine = $this->createPartialMockWithReflection(

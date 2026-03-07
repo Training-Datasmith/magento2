@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Profiler
  *
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\Reflection;
 
-use Magento\TestFramework\Helper\CacheCleaner;
+namespace Magento\Framework\Reflection;
 
 class MethodsMapTest extends \PHPUnit\Framework\TestCase
 {

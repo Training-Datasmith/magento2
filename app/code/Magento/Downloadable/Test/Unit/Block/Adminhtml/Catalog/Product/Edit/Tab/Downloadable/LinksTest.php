@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -92,13 +93,13 @@ class LinksTest extends TestCase
         $this->fileHelper = $this->createPartialMock(File::class, [
             'getFilePath',
             'ensureFileInFilesystem',
-            'getFileSize'
+            'getFileSize',
         ]);
         $this->productModel = $this->createPartialMock(Product::class, [
             '__wakeup',
             'getTypeId',
             'getTypeInstance',
-            'getStoreId'
+            'getStoreId',
         ]);
     }
 
@@ -114,7 +115,7 @@ class LinksTest extends TestCase
             Type::class,
             ['getLinks']
         );
-        
+
         $this->downloadableLinkModel = $this->createPartialMockWithReflection(
             Link::class,
             ['getId', 'getTitle', 'getPrice', 'getNumberOfDownloads', 'getLinkUrl', 'getLinkType',
@@ -145,7 +146,7 @@ class LinksTest extends TestCase
                 'urlFactory' => $urlFactory,
                 'coreRegistry' => $this->coreRegistry,
                 'escaper' => $this->escaper,
-                'downloadableFile' => $this->fileHelper
+                'downloadableFile' => $this->fileHelper,
             ]
         );
     }
@@ -178,7 +179,7 @@ class LinksTest extends TestCase
         $this->productModel->method('getTypeId')->willReturn('downloadable');
         $this->productModel->method('getTypeInstance')->willReturn($this->downloadableProductModel);
         $this->productModel->method('getStoreId')->willReturn(0);
-        
+
         // Configure the link model for this test with getter returns instead of setters
         $this->downloadableLinkModel->method('getId')->willReturn(1);
         $this->downloadableLinkModel->method('getTitle')->willReturn('Link Title');

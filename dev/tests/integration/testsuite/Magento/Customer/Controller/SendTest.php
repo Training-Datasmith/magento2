@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Controller;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Model\Session;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Model\Session;
+use Magento\TestFramework\TestCase\AbstractController;
 use Psr\Log\LoggerInterface;
 
 class SendTest extends AbstractController
@@ -50,7 +51,7 @@ class SendTest extends AbstractController
             ->setPostValue(
                 [
                     'form_key' => $this->formKey->getFormKey(),
-                    'emails' => 'example1@gmail.com, example2@gmail.com, example3@gmail.com'
+                    'emails' => 'example1@gmail.com, example2@gmail.com, example3@gmail.com',
                 ]
             );
 
@@ -78,8 +79,8 @@ class SendTest extends AbstractController
                     'form_key' => $this->formKey->getFormKey(),
                     'emails' => 'example1@gmail.com, example2@gmail.com, example3@gmail.com',
                     'captcha' => [
-                        'share_wishlist_form' => 'wrong_captcha_word'
-                        ]
+                        'share_wishlist_form' => 'wrong_captcha_word',
+                        ],
                 ]
             );
 

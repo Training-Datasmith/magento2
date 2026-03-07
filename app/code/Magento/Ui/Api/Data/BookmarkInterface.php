@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Api\Data;
 
 /**
@@ -16,15 +19,15 @@ interface BookmarkInterface extends BookmarkExtensionInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const BOOKMARK_ID      = 'bookmark_id';
-    const USER_ID          = 'user_id';
-    const BOOKMARKSPACE    = 'namespace';
-    const IDENTIFIER       = 'identifier';
-    const TITLE            = 'title';
-    const CONFIG           = 'config';
-    const CREATED_AT       = 'created_at';
-    const UPDATED_AT       = 'updated_at';
-    const CURRENT          = 'current';
+    public const BOOKMARK_ID      = 'bookmark_id';
+    public const USER_ID          = 'user_id';
+    public const BOOKMARKSPACE    = 'namespace';
+    public const IDENTIFIER       = 'identifier';
+    public const TITLE            = 'title';
+    public const CONFIG           = 'config';
+    public const CREATED_AT       = 'created_at';
+    public const UPDATED_AT       = 'updated_at';
+    public const CURRENT          = 'current';
     /**#@-*/
 
     /**

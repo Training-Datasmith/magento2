@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Obsolete methods
  * Format: array(<method_name = ''>[, <class_scope> = ''[, <replacement>[, <is_deprecated>]]])
@@ -284,7 +286,7 @@ return [
     [
         'getAllServiceDataInterfaces',
         'Magento\Framework\Webapi\CustomAttributeTypeLocatorInterface',
-        'Magento\Framework\Webapi\CustomAttribute\ServiceTypeListInterface::getDataTypes()'
+        'Magento\Framework\Webapi\CustomAttribute\ServiceTypeListInterface::getDataTypes()',
     ],
     [
         'canTestHeaders',
@@ -2110,12 +2112,12 @@ return [
     [
         'process',
         'Magento\Framework\Api\ExtensionAttributesFactory',
-        'Magento\Framework\Api\ExtensionAttribute\JoinProcessor::process'
+        'Magento\Framework\Api\ExtensionAttribute\JoinProcessor::process',
     ],
     [
         'extractExtensionAttributes',
         'Magento\Framework\Api\ExtensionAttributesFactory',
-        'Magento\Framework\Api\ExtensionAttribute\JoinProcessor::extractExtensionAttributes'
+        'Magento\Framework\Api\ExtensionAttribute\JoinProcessor::extractExtensionAttributes',
     ],
     ['isReviewOwner', 'Magento\Review\Block\Customer\View'],
     ['getRegistration', 'Magento\Customer\Block\Form\Login', 'Magento\Customer\Block\Form\Login\Info::getRegistration'],
@@ -2285,12 +2287,12 @@ return [
     [
         'getRelyUrl',
         'Magento\Authorizenet\Helper\Backend\Data',
-        'Magento\Authorizenet\Helper\Backend\Data::getRelayUrl()'
+        'Magento\Authorizenet\Helper\Backend\Data::getRelayUrl()',
     ],
     [
         'getRelyUrl',
         'Magento\Authorizenet\Helper\Data',
-        'Magento\Authorizenet\Helper\Data::getRelayUrl()'
+        'Magento\Authorizenet\Helper\Data::getRelayUrl()',
     ],
     ['setPartialAuthorizationLastActionState', 'Magento\Authorizenet\Model\Authorizenet'],
     ['getPartialAuthorizationLastActionState', 'Magento\Authorizenet\Model\Authorizenet'],
@@ -2301,12 +2303,12 @@ return [
     [
         'setHelper',
         'Magento\Authorizenet\Model\Directpost',
-        'Magento\Authorizenet\Model\Directpost::setDataHelper()'
+        'Magento\Authorizenet\Model\Directpost::setDataHelper()',
     ],
     [
         '_initCustomer',
         'Magento\Paypal\Controller\Adminhtml\Billing\Agreement\CustomerGrid',
-        'Magento\Paypal\Controller\Adminhtml\Billing\Agreement\CustomerGrid::initCurrentCustomer'
+        'Magento\Paypal\Controller\Adminhtml\Billing\Agreement\CustomerGrid::initCurrentCustomer',
     ],
     [
         '_initCustomer',
@@ -2336,7 +2338,7 @@ return [
     [
         'validateForPayment',
         'Magento\Sales\Model\Order\Address\Validator',
-        'Magento\Sales\Model\Order\Address\Validator::validateForCustomer'
+        'Magento\Sales\Model\Order\Address\Validator::validateForCustomer',
     ],
     ['getListForCustomer', '\Magento\Quote\Api\CartItemRepositoryInterface'],
     ['saveForCustomer', '\Magento\Quote\Api\CartItemRepositoryInterface'],
@@ -2452,17 +2454,17 @@ return [
     [
         'generateSimpleProducts',
         'Magento\ConfigurableProduct\Model\Product\Type\Configurable',
-        'Magento\ConfigurableProduct\Model\Product\VariationHandler::generateSimpleProducts'
+        'Magento\ConfigurableProduct\Model\Product\VariationHandler::generateSimpleProducts',
     ],
     [
         '_prepareAttributeSetToBeBaseForNewVariations',
         'Magento\ConfigurableProduct\Model\Product\Type\Configurable',
-        'Magento\ConfigurableProduct\Model\Product\VariationHandler::prepareAttributeSetToBeBaseForNewVariations'
+        'Magento\ConfigurableProduct\Model\Product\VariationHandler::prepareAttributeSetToBeBaseForNewVariations',
     ],
     [
         '_fillSimpleProductData',
         'Magento\ConfigurableProduct\Model\Product\Type\Configurable',
-        'Magento\ConfigurableProduct\Model\Product\VariationHandler::fillSimpleProductData'
+        'Magento\ConfigurableProduct\Model\Product\VariationHandler::fillSimpleProductData',
     ],
     ['mergeBookmarkConfig', 'Magento\Ui\Model\Manager'],
     ['addDefaultPattern', 'Magento\Theme\Model\Theme\Collection', 'addConstraint'],
@@ -2535,39 +2537,39 @@ return [
     [
             'getExchangeByTopic',
             'Magento\Framework\MessageQueue\Config\Data',
-            '\Magento\Framework\MessageQueue\ConfigInterface::getExchangeByTopic'
+            '\Magento\Framework\MessageQueue\ConfigInterface::getExchangeByTopic',
         ],
     [
             'getQueuesByTopic',
             'Magento\Framework\MessageQueue\Config\Data',
-            '\Magento\Framework\MessageQueue\ConfigInterface::getQueuesByTopic'
+            '\Magento\Framework\MessageQueue\ConfigInterface::getQueuesByTopic',
         ],
     [
             'getConnectionByTopic',
             'Magento\Framework\MessageQueue\Config\Data',
-            '\Magento\Framework\MessageQueue\ConfigInterface::getConnectionByTopic'
+            '\Magento\Framework\MessageQueue\ConfigInterface::getConnectionByTopic',
         ],
     [
             'getConnectionByConsumer',
             'Magento\Framework\MessageQueue\Config\Data',
-            '\Magento\Framework\MessageQueue\ConfigInterface::getConnectionByConsumer'
+            '\Magento\Framework\MessageQueue\ConfigInterface::getConnectionByConsumer',
         ],
     [
             'getMessageSchemaType',
             'Magento\Framework\MessageQueue\Config\Data',
-            '\Magento\Framework\MessageQueue\ConfigInterface::getMessageSchemaType'
+            '\Magento\Framework\MessageQueue\ConfigInterface::getMessageSchemaType',
         ],
     [
             'getCallback',
-            'Magento\Framework\MessageQueue\ConsumerConfiguration'
+            'Magento\Framework\MessageQueue\ConsumerConfiguration',
         ],
     [
             'getCallback',
-            'Magento\Framework\MessageQueue\ConsumerConfigurationInterface'
+            'Magento\Framework\MessageQueue\ConsumerConfigurationInterface',
         ],
     [
             'configure',
-            'Magento\Framework\MessageQueue\ConsumerInterface'
+            'Magento\Framework\MessageQueue\ConsumerInterface',
         ],
     ['isOrderIncrementIdUsed', 'Magento\Quote\Model\ResourceModel\Quote', 'Magento\Sales\Model\OrderIncrementIdChecker::isIncrementIdUsed'],
     ['update', 'Magento\Authorization\Model\Rules', 'Magento\Authorization\Model\Rules::update'],

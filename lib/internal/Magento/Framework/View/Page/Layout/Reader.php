@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class Reader
     /**
      * Merge cache suffix
      */
-    const MERGE_CACHE_SUFFIX = 'page_layout';
+    public const MERGE_CACHE_SUFFIX = 'page_layout';
 
     /**
      * @var \Magento\Framework\View\Design\Theme\ResolverInterface

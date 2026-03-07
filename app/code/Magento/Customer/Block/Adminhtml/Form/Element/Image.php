@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Customer Widget Form Image File Element Block
  */
+
 namespace Magento\Customer\Block\Adminhtml\Form\Element;
 
 class Image extends \Magento\Customer\Block\Adminhtml\Form\Element\File
@@ -49,7 +52,7 @@ class Image extends \Magento\Customer\Block\Adminhtml\Form\Element\File
                 'class' => 'small-image-preview v-middle',
                 'height' => 22,
                 'width' => 22,
-                'id' => $imageId
+                'id' => $imageId,
             ];
             $link = ['href' => $url, 'onclick' => "imagePreview('{$imageId}'); return false;"];
 

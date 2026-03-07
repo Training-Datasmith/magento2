@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Translation\Model;
 
+use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
 use Magento\Framework\App\State;
 use Magento\Framework\Translate\Inline;
-use Magento\Framework\App\Area;
 use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Translation\Model\Inline\Parser;
@@ -113,7 +114,7 @@ class InlineParserTest extends TestCase
     {
         return [
             [Area::AREA_ADMINHTML],
-            [Area::AREA_FRONTEND]
+            [Area::AREA_FRONTEND],
         ];
     }
 }

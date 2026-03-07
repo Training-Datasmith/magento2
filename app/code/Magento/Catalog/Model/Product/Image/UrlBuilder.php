@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\Product\Image;
 
 use Magento\Catalog\Helper\Image;
+use Magento\Catalog\Model\View\Asset\ImageFactory;
 use Magento\Catalog\Model\View\Asset\PlaceholderFactory;
 use Magento\Framework\View\ConfigInterface;
-use Magento\Catalog\Model\View\Asset\ImageFactory;
 
 /**
  * Used to build product image url
@@ -75,7 +76,7 @@ class UrlBuilder
         if ($baseFilePath === null || $baseFilePath === 'no_selection') {
             $asset = $this->placeholderFactory->create(
                 [
-                    'type' => $imageMiscParams['image_type']
+                    'type' => $imageMiscParams['image_type'],
                 ]
             );
         } else {

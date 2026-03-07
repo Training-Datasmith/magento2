@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Block\Product\Grouped;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GroupedProduct\Block\Product\Grouped\AssociatedProducts;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
 #[CoversClass(\Magento\GroupedProduct\Block\Product\Grouped\AssociatedProducts::class)]
 class AssociatedProductsTest extends TestCase

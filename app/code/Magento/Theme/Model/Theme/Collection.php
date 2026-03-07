@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Theme;
 
 /**
@@ -12,5 +15,4 @@ namespace Magento\Theme\Model\Theme;
  */
 class Collection extends \Magento\Framework\View\Design\Theme\ThemeList
 {
-    //
 }

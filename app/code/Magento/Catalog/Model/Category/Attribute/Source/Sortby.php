@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Category\Attribute\Source;
 
 /**
@@ -49,7 +52,7 @@ class Sortby extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
             foreach ($this->_getCatalogConfig()->getAttributesUsedForSortBy() as $attribute) {
                 $this->_options[] = [
                     'label' => __($attribute['frontend_label']),
-                    'value' => $attribute['attribute_code']
+                    'value' => $attribute['attribute_code'],
                 ];
             }
         }

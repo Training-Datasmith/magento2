@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +15,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CreditmemoCreateTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/creditmemo';
+    public const RESOURCE_PATH = '/V1/creditmemo';
 
-    const SERVICE_READ_NAME = 'salesCreditmemoRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesCreditmemoRepositoryV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

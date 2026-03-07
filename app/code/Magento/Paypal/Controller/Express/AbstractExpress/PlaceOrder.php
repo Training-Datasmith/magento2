@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -62,7 +64,7 @@ class PlaceOrder extends \Magento\Paypal\Controller\Express\AbstractExpress
         );
 
         $this->agreementsValidator = $agreementValidator;
-        $this->paymentFailures = $paymentFailures ? : $this->_objectManager->get(
+        $this->paymentFailures = $paymentFailures ?: $this->_objectManager->get(
             \Magento\Sales\Api\PaymentFailuresInterface::class
         );
     }
@@ -81,7 +83,7 @@ class PlaceOrder extends \Magento\Paypal\Controller\Express\AbstractExpress
             $e = new \Magento\Framework\Exception\LocalizedException(
                 __(
                     "The order wasn't placed. "
-                    . "First, agree to the terms and conditions, then try placing your order again."
+                    . 'First, agree to the terms and conditions, then try placing your order again.'
                 )
             );
             $this->messageManager->addExceptionMessage(
@@ -115,7 +117,7 @@ class PlaceOrder extends \Magento\Paypal\Controller\Express\AbstractExpress
                 'checkout_submit_all_after',
                 [
                     'order' => $order,
-                    'quote' => $this->_getQuote()
+                    'quote' => $this->_getQuote(),
                 ]
             );
 
@@ -123,7 +125,7 @@ class PlaceOrder extends \Magento\Paypal\Controller\Express\AbstractExpress
                 'paypal_express_place_order_success',
                 [
                     'order' => $order,
-                    'quote' => $this->_getQuote()
+                    'quote' => $this->_getQuote(),
                 ]
             );
 

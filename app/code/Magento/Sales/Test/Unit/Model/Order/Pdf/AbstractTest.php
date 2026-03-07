@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Payment\Helper\Data;
 use Magento\Sales\Model\Order\Address\Renderer;
@@ -22,7 +24,6 @@ use Magento\Sales\Model\Order\Pdf\Total\DefaultTotal;
 use Magento\Sales\Model\Order\Pdf\Total\Factory;
 use Magento\Tax\Helper\Data as TaxHelper;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -105,7 +106,7 @@ class AbstractTest extends TestCase
                 null,
                 null,
                 null,
-                $taxHelper
+                $taxHelper,
             ])
             ->onlyMethods(['drawLineBlocks', 'getPdf'])
             ->getMock();
@@ -154,7 +155,7 @@ class AbstractTest extends TestCase
                 null,
                 null,
                 null,
-                $taxHelper
+                $taxHelper,
             ])
             ->onlyMethods(['_setFontRegular', '_getPdf', 'getPdf'])
             ->getMock();
@@ -173,7 +174,7 @@ class AbstractTest extends TestCase
 
         $drawBlockLineData = $this->generateMultilineDrawBlock(200);
         $pageSettings = [
-            'table_header' => true
+            'table_header' => true,
         ];
 
         $reflectionMethod->invoke($abstractPdfMock, $page, $drawBlockLineData, $pageSettings);
@@ -199,12 +200,12 @@ class AbstractTest extends TestCase
                         [
                             [
                                 'text' => $lines,
-                                'feed' => 40
-                            ]
-                        ]
+                                'feed' => 40,
+                            ],
+                        ],
                     ],
-                'shift' => 5
-            ]
+                'shift' => 5,
+            ],
         ];
 
         return $block;

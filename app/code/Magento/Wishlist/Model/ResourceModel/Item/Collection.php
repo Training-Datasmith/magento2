@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Model\ResourceModel\Item;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -391,7 +394,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             $visibilityConditions = [
                 "cat_index.product_id = {$mainTableName}.product_id",
                 $connection->quoteInto('cat_index.category_id = ?', $rootCategoryId),
-                $connection->quoteInto('cat_index.visibility IN (?)', $visibleInSiteIds)
+                $connection->quoteInto('cat_index.visibility IN (?)', $visibleInSiteIds),
             ];
             $this->getSelect()->join(
                 ['cat_index' => $this->tableMaintainer->getMainTable($this->_storeManager->getStore()->getId())],

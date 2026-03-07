@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\Wysiwyg;
 
-use Magento\Framework\Filesystem;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Ui\Component\Wysiwyg\ConfigInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Filesystem;
+use Magento\Ui\Component\Wysiwyg\ConfigInterface;
 
 /**
  * Wysiwyg Config for Editor HTML Element
@@ -22,32 +25,32 @@ class Config extends \Magento\Framework\DataObject implements ConfigInterface
     /**
      * Wysiwyg status enabled
      */
-    const WYSIWYG_ENABLED = 'enabled';
+    public const WYSIWYG_ENABLED = 'enabled';
 
     /**
      * Wysiwyg status configuration path
      */
-    const WYSIWYG_STATUS_CONFIG_PATH = 'cms/wysiwyg/enabled';
+    public const WYSIWYG_STATUS_CONFIG_PATH = 'cms/wysiwyg/enabled';
 
     /**
      *
      */
-    const WYSIWYG_SKIN_IMAGE_PLACEHOLDER_ID = 'Magento_Cms::images/wysiwyg_skin_image.png';
+    public const WYSIWYG_SKIN_IMAGE_PLACEHOLDER_ID = 'Magento_Cms::images/wysiwyg_skin_image.png';
 
     /**
      * Wysiwyg status hidden
      */
-    const WYSIWYG_HIDDEN = 'hidden';
+    public const WYSIWYG_HIDDEN = 'hidden';
 
     /**
      * Wysiwyg status disabled
      */
-    const WYSIWYG_DISABLED = 'disabled';
+    public const WYSIWYG_DISABLED = 'disabled';
 
     /**
      * Wysiwyg image directory
      */
-    const IMAGE_DIRECTORY = 'wysiwyg';
+    public const IMAGE_DIRECTORY = 'wysiwyg';
 
     /**
      * @var \Magento\Framework\AuthorizationInterface
@@ -154,7 +157,7 @@ class Config extends \Magento\Framework\DataObject implements ConfigInterface
         $this->_storeManager = $storeManager;
         $this->filesystem = $filesystem;
         $this->configProvider = $configProvider ?: ObjectManager::getInstance()
-            ->get(\Magento\Cms\Model\Wysiwyg\CompositeConfigProvider ::class);
+            ->get(\Magento\Cms\Model\Wysiwyg\CompositeConfigProvider::class);
         parent::__construct($data);
     }
 

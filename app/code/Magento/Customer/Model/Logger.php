@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Framework\App\ResourceConnection;
@@ -51,7 +54,7 @@ class Logger
         $data = array_filter($data);
 
         if (!$data) {
-            throw new \InvalidArgumentException("Log data is empty");
+            throw new \InvalidArgumentException('Log data is empty');
         }
 
         /** @var \Magento\Framework\DB\Adapter\AdapterInterface $connection */
@@ -81,7 +84,7 @@ class Logger
                 'customerId' => isset($data['customer_id']) ? $data['customer_id'] : null,
                 'lastLoginAt' => isset($data['last_login_at']) ? $data['last_login_at'] : null,
                 'lastLogoutAt' => isset($data['last_logout_at']) ? $data['last_logout_at'] : null,
-                'lastVisitAt' => isset($data['last_visit_at']) ? $data['last_visit_at'] : null
+                'lastVisitAt' => isset($data['last_visit_at']) ? $data['last_visit_at'] : null,
             ]
         );
     }

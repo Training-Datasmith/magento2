@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -114,7 +116,7 @@ class Options extends \Magento\Wishlist\Block\AbstractBlock
                             $option['value'][$key] = $this->escapeHtml($value);
                         }
                     } else {
-                        $option['value'] = $this->escapeHtml($option['value'], ["a"]);
+                        $option['value'] = $this->escapeHtml($option['value'], ['a']);
                     }
                 }
                 $options[$index]['value'] = $option['value'];

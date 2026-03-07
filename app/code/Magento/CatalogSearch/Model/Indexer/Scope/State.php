@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -24,8 +26,8 @@ namespace Magento\CatalogSearch\Model\Indexer\Scope;
  */
 class State
 {
-    const USE_TEMPORARY_INDEX = 'use_temporary_table';
-    const USE_REGULAR_INDEX = 'use_main_table';
+    public const USE_TEMPORARY_INDEX = 'use_temporary_table';
+    public const USE_REGULAR_INDEX = 'use_main_table';
 
     /**
      * @var string

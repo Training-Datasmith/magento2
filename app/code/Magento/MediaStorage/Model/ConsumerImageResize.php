@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\MediaStorage\Model;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\Framework\Serialize\SerializerInterface;
-use Psr\Log\LoggerInterface;
-use Magento\MediaStorage\Service\ImageResize;
 use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\MediaStorage\Service\ImageResize;
+use Psr\Log\LoggerInterface;
 
 /**
  * Consumer for image resize

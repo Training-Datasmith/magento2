@@ -1,13 +1,15 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Setup\Patch\Schema;
 
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\Patch\SchemaPatchInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * Class EnableSegmentation.

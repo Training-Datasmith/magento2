@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Class to test Core Web API routing
  */
+
 namespace Magento\Webapi\Routing;
 
 use Magento\Framework\Webapi\Rest\Request;
@@ -32,7 +35,7 @@ class CoreRoutingTest extends BaseService
         ];
         $requestData = ['itemId' => $itemId];
         $item = $this->_webApiCall($serviceInfo, $requestData);
-        $this->assertEquals('testProduct1', $item['name'], "Item was retrieved unsuccessfully");
+        $this->assertEquals('testProduct1', $item['name'], 'Item was retrieved unsuccessfully');
     }
 
     public function testDisabledIntegrationAuthorizationException()
@@ -89,7 +92,7 @@ class CoreRoutingTest extends BaseService
             RestClient::class
         );
         $response = $curlClient->get('/V1/testmodule1/resource1/1', [], ['Accept:']);
-        $this->assertEquals('testProduct1', $response['name'], "Empty Accept header failed to return response.");
+        $this->assertEquals('testProduct1', $response['name'], 'Empty Accept header failed to return response.');
     }
 
     /**
@@ -100,8 +103,8 @@ class CoreRoutingTest extends BaseService
     public function testRequestParamsUnexpectedValueException(): void
     {
         $this->_markTestAsRestOnly();
-        $expectedMessage = "Internal Error. Details are available in Magento log file. Report ID: webapi-";
-        $unexpectedMessage = "\"%fieldName\" is required. Enter and try again.";
+        $expectedMessage = 'Internal Error. Details are available in Magento log file. Report ID: webapi-';
+        $unexpectedMessage = '"%fieldName" is required. Enter and try again.';
 
         $serviceInfo = [
             'rest' => [

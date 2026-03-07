@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class SwatchesGeneratorTest extends TestCase
     private $imagePathFixture = [
         'option_1' => '/<-o->',
         'option_2' => '/>o<',
-        'option_3' => '/|o|'
+        'option_3' => '/|o|',
     ];
 
     protected function setUp(): void

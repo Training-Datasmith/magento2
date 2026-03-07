@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,5 +69,5 @@ return [
             ],
         ],
         'order_shipment' => null,
-    ]
+    ],
 ];

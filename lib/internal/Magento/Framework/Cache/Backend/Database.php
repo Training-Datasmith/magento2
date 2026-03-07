@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -484,7 +485,7 @@ class Database extends AbstractBackend implements ExtendedBackendInterface
             'expired_read' => true,
             'priority' => false,
             'infinite_lifetime' => true,
-            'get_list' => true
+            'get_list' => true,
         ];
     }
 

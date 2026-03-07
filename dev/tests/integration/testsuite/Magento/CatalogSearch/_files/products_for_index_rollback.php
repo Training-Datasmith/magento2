@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ $productSkus = [
     'index_visible_search',
     'index_visible_category',
     'index_visible_both',
-    'index_not_visible'
+    'index_not_visible',
 ];
 /** @var SearchCriteriaBuilder $searchCriteriaBuilder */
 $searchCriteriaBuilder = Bootstrap::getObjectManager()->get(SearchCriteriaBuilder::class);

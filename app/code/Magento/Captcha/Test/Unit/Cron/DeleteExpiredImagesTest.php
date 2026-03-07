@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class DeleteExpiredImagesTest extends TestCase
     #[DataProvider('getExpiredImages')]
     public function testDeleteExpiredImages($website, $isFile, $filename, $mTime, $timeout)
     {
-        if ($website!=null) {
+        if ($website != null) {
             $website = $website($this);
         }
         $this->_storeManager->expects(
@@ -175,7 +176,7 @@ class DeleteExpiredImagesTest extends TestCase
             [null, true, 'test.png', 50, ($time - 60) / 60],
             [$website, false, 'test.png', 50, ($time - 60) / 60],
             [$website, true, 'test.jpg', 50, ($time - 60) / 60],
-            [$website, true, 'test.png', 50, ($time - 20) / 60]
+            [$website, true, 'test.png', 50, ($time - 20) / 60],
         ];
     }
 }

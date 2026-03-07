@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Console\Response;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Indexer\App\Indexer;
 use Magento\Indexer\Model\Processor;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class IndexerTest extends TestCase
 {
@@ -84,7 +85,7 @@ class IndexerTest extends TestCase
     {
         return [
             'set1' => ['isExist' => true, 'callCount' => 1],
-            'set2' => ['isExist' => false, 'callCount' => 0]
+            'set2' => ['isExist' => false, 'callCount' => 0],
         ];
     }
 

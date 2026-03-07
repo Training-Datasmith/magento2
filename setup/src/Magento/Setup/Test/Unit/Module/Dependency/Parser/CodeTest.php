@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\Dependency\Parser;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\Dependency\Parser\Code;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CodeTest extends TestCase
 {
@@ -44,7 +45,7 @@ class CodeTest extends TestCase
         return [
             [['files_for_parse' => [], 'declared_namespaces' => [1, 2]]],
             [['files_for_parse' => 'sting', 'declared_namespaces' => [1, 2]]],
-            [['there_are_no_files_for_parse' => [1, 3], 'declared_namespaces' => [1, 2]]]
+            [['there_are_no_files_for_parse' => [1, 3], 'declared_namespaces' => [1, 2]]],
         ];
     }
 
@@ -67,7 +68,7 @@ class CodeTest extends TestCase
         return [
             [['declared_namespaces' => [], 'files_for_parse' => [1, 2]]],
             [['declared_namespaces' => 'sting', 'files_for_parse' => [1, 2]]],
-            [['there_are_no_declared_namespaces' => [1, 3], 'files_for_parse' => [1, 2]]]
+            [['there_are_no_declared_namespaces' => [1, 3], 'files_for_parse' => [1, 2]]],
         ];
     }
 }

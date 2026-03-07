@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\ResourceModel\Entity\Attribute\Option;
 
 /**
@@ -107,7 +110,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 $joinCondition,
                 [
                     'store_default_value' => 'value',
-                    'value' => $connection->getCheckSql('tsv.value_id > 0', 'tsv.value', 'tdv.value')
+                    'value' => $connection->getCheckSql('tsv.value_id > 0', 'tsv.value', 'tdv.value'),
                 ]
             )->where(
                 'tdv.store_id = ?',

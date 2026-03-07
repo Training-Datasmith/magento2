@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class EditTest extends AbstractBackendController
 
         // Verify page title contains attribute set name
         $this->assertStringContainsString((string)$attributeSet->getAttributeSetName(), $body);
-        
+
         // Verify page content loaded (check for the actual form ID)
         $this->assertStringContainsString('set-prop-form', $body);
     }

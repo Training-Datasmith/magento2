@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class SessionCheckerTest extends TestCase
             ->willReturn($phpSessionCookieName);
         $this->cookieManager->expects($this->exactly(2))
             ->method('getCookie')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$phpSessionCookieName] => false,
                 [$frontendSessionCookieName] => $result
             });
@@ -101,7 +102,7 @@ class SessionCheckerTest extends TestCase
     {
         return [
             [true, 'once'],
-            [false, 'never']
+            [false, 'never'],
         ];
     }
 }

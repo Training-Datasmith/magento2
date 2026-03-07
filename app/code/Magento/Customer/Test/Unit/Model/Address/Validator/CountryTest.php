@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Magento\Directory\Helper\Data;
 use Magento\Directory\Model\AllowedCountries;
 use Magento\Directory\Model\ResourceModel\Region\Collection;
 use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Magento\Customer\Model\Address\Validator\Country tests.
@@ -59,7 +60,7 @@ class CountryTest extends TestCase
             [
                 'directoryData' => $this->directoryDataMock,
                 'allowedCountriesReader' => $this->allowedCountriesReaderMock,
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
     }
@@ -80,7 +81,7 @@ class CountryTest extends TestCase
                 'getCountryId',
                 'getRegion',
                 'getRegionId',
-                'getCountryModel'
+                'getCountryModel',
             ]
         );
 

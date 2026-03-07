@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +20,9 @@ use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\File\FileList;
 use Magento\Framework\View\File\FileList\Factory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests Library

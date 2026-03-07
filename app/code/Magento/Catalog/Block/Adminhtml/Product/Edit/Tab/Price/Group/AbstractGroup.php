@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Price\Group;
 
 use Magento\Backend\Block\Widget;
@@ -260,7 +263,7 @@ abstract class AbstractGroup extends Widget implements RendererInterface
         }
 
         $this->_websites = [
-            0 => ['name' => __('All Websites'), 'currency' => $this->_directoryHelper->getBaseCurrencyCode()]
+            0 => ['name' => __('All Websites'), 'currency' => $this->_directoryHelper->getBaseCurrencyCode()],
         ];
 
         if (!$this->isScopeGlobal() && $this->getProduct()->getStoreId()) {
@@ -269,7 +272,7 @@ abstract class AbstractGroup extends Widget implements RendererInterface
 
             $this->_websites[$website->getId()] = [
                 'name' => $website->getName(),
-                'currency' => $website->getBaseCurrencyCode()
+                'currency' => $website->getBaseCurrencyCode(),
             ];
         } elseif (!$this->isScopeGlobal()) {
             $websites = $this->_storeManager->getWebsites();
@@ -281,7 +284,7 @@ abstract class AbstractGroup extends Widget implements RendererInterface
                 }
                 $this->_websites[$website->getId()] = [
                     'name' => $website->getName(),
-                    'currency' => $website->getBaseCurrencyCode()
+                    'currency' => $website->getBaseCurrencyCode(),
                 ];
             }
         }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,13 +11,12 @@ namespace Magento\ImportExport\Controller\Adminhtml\Export;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 use Magento\ImportExport\Model\Export\EntityFiltersProviderInterface;
 
 class GetFilter extends ExportController implements HttpGetActionInterface, HttpPostActionInterface
 {
-
     /**
      * @param Context $context
      * @param EntityFiltersProviderInterface $filtersProvider

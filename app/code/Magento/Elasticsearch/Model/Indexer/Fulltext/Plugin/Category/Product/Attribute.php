@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\Elasticsearch\Model\Indexer\Fulltext\Plugin\Category\Product;
 
 use Magento\Catalog\Model\ResourceModel\Attribute as AttributeResourceModel;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor;
-use Magento\Elasticsearch\Model\Config;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
-use Magento\Elasticsearch\Model\Indexer\IndexerHandler as ElasticsearchIndexerHandler;
-use Magento\Framework\Indexer\DimensionProviderInterface;
 use Magento\CatalogSearch\Model\Indexer\IndexerHandlerFactory;
-use Magento\Framework\Model\AbstractModel;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
+use Magento\Elasticsearch\Model\Config;
+use Magento\Elasticsearch\Model\Indexer\IndexerHandler as ElasticsearchIndexerHandler;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Indexer\DimensionProviderInterface;
+use Magento\Framework\Model\AbstractModel;
 
 /**
  * Catalog search indexer plugin for catalog attribute.

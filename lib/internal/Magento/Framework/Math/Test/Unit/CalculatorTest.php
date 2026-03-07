@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Math\Test\Unit;
 
 use Magento\Framework\Math\Calculator;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase
 {

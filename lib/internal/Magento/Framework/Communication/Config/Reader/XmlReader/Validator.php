@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication\Config\Reader\XmlReader;
 
-use Magento\Framework\Stdlib\BooleanUtils;
 use Magento\Framework\Communication\Config\Validator as ConfigValidator;
-use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\Reflection\MethodsMap;
+use Magento\Framework\Reflection\TypeProcessor;
+use Magento\Framework\Stdlib\BooleanUtils;
 
 /**
  * Communication configuration validator.

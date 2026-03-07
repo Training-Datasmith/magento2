@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class ReportError
     {
         if (!empty($errors)) {
             $error = $errors[0];
-            if (($error instanceof Error ) && $error->getPrevious()) {
+            if (($error instanceof Error) && $error->getPrevious()) {
                 $error = $error->getPrevious();
             }
             $this->newRelicWrapper->reportError($error); // Note: We only log the first error because performance

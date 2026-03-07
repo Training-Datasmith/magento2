@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -18,11 +21,11 @@ class Dir
     /**#@+
      * Directories within modules
      */
-    const MODULE_ETC_DIR = 'etc';
-    const MODULE_I18N_DIR = 'i18n';
-    const MODULE_VIEW_DIR = 'view';
-    const MODULE_CONTROLLER_DIR = 'Controller';
-    const MODULE_SETUP_DIR = 'Setup';
+    public const MODULE_ETC_DIR = 'etc';
+    public const MODULE_I18N_DIR = 'i18n';
+    public const MODULE_VIEW_DIR = 'view';
+    public const MODULE_CONTROLLER_DIR = 'Controller';
+    public const MODULE_SETUP_DIR = 'Setup';
     /**#@-*/
 
     private const ALLOWED_DIR_TYPES = [
@@ -30,7 +33,7 @@ class Dir
         self::MODULE_I18N_DIR => true,
         self::MODULE_VIEW_DIR => true,
         self::MODULE_CONTROLLER_DIR => true,
-        self::MODULE_SETUP_DIR => true
+        self::MODULE_SETUP_DIR => true,
     ];
 
     /**#@-*/

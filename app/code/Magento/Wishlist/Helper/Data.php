@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Wishlist\Controller\WishlistProviderInterface;
 use Magento\Wishlist\Model\Item;
@@ -328,7 +328,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             [
                 'id' => $item->getWishlistItemId(),
                 'product_id' => $item->getProductId(),
-                'qty' => (int)$item->getQty()
+                'qty' => (int)$item->getQty(),
             ]
         );
         $url .= (isset($query['fragment']) && count($query['fragment'])) ?

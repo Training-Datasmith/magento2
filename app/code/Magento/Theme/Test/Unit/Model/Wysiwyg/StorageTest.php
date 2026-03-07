@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Storage model test
  */
+
 namespace Magento\Theme\Test\Unit\Model\Wysiwyg;
 
 use Magento\Backend\Model\Session;
@@ -19,16 +21,16 @@ use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Image\Adapter\Gd2;
 use Magento\Framework\Image\AdapterFactory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\Url\EncoderInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\MediaStorage\Model\File\Uploader;
 use Magento\Theme\Helper\Storage as HelperStorage;
 use Magento\Theme\Model\Wysiwyg\Storage;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionClass;
 
 /**
@@ -97,12 +99,12 @@ class StorageTest extends TestCase
         $objects = [
             [
                 \Magento\Framework\Filesystem\Io\File::class,
-                $this->createMock(\Magento\Framework\Filesystem\Io\File::class)
+                $this->createMock(\Magento\Framework\Filesystem\Io\File::class),
             ],
             [
                 DriverInterface::class,
-                $this->createMock(DriverInterface::class)
-            ]
+                $this->createMock(DriverInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->filesystem = $this->createMock(Filesystem::class);
@@ -127,7 +129,7 @@ class StorageTest extends TestCase
                 'getShortFilename',
                 'getSession',
                 'convertPathToId',
-                'getRequestParams'
+                'getRequestParams',
             ]
         );
 
@@ -280,7 +282,7 @@ class StorageTest extends TestCase
             'name' => $newDirectoryName,
             'short_name' => $newDirectoryName,
             'path' => '/' . $newDirectoryName,
-            'id' => $newDirectoryName
+            'id' => $newDirectoryName,
         ];
 
         $this->assertEquals(
@@ -418,7 +420,7 @@ class StorageTest extends TestCase
 
         $expectedResult = [
             ['text' => pathinfo($dirs[0], PATHINFO_BASENAME), 'id' => $dirs[0], 'cls' => 'folder'],
-            ['text' => pathinfo($dirs[1], PATHINFO_BASENAME), 'id' => $dirs[1], 'cls' => 'folder']
+            ['text' => pathinfo($dirs[1], PATHINFO_BASENAME), 'id' => $dirs[1], 'cls' => 'folder'],
         ];
 
         $this->directoryWrite->expects($this->once())->method('isExist')->with($currentPath)->willReturn(true);
@@ -451,7 +453,7 @@ class StorageTest extends TestCase
 
         $this->directoryWrite
             ->method('getRelativePath')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$this->storageRoot] => $this->storageRoot,
                 [$this->storageRoot . '/' . $image] => $this->storageRoot . '/' . $image
             });

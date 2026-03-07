@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Config\Source\Online;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -21,7 +24,7 @@ class Requesttype implements OptionSourceInterface
     {
         return [
             ['value' => 0, 'label' => __('Divide to equal weight (one request)')],
-            ['value' => 1, 'label' => __('Use origin weight (few requests)')]
+            ['value' => 1, 'label' => __('Use origin weight (few requests)')],
         ];
     }
 }

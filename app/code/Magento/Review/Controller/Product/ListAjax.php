@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Review\Controller\Product;
 
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Layout;
 use Magento\Review\Controller\Product as ProductController;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 
 class ListAjax extends ProductController implements HttpGetActionInterface
 {

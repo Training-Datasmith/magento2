@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\View\Design\Theme;
 
-use Magento\Framework\View\Design\Theme\ThemePackage;
+namespace Magento\Framework\View\Design\Theme;
 
 /**
  * Factory for theme packages

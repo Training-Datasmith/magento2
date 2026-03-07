@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class Resetter implements ResetterInterface
             $classList += $resetData;
         }
         $this->classList = $classList;
-        $this->resetAfterWeakMap = new WeakMap;
+        $this->resetAfterWeakMap = new WeakMap();
     }
 
     /**
@@ -89,7 +90,7 @@ class Resetter implements ResetterInterface
      * @param object $instance
      * @return void
      */
-    public function addInstance(object $instance) : void
+    public function addInstance(object $instance): void
     {
         if ($instance instanceof ResetAfterRequestInterface
             || \method_exists($instance, self::RESET_STATE_METHOD)
@@ -132,7 +133,7 @@ class Resetter implements ResetterInterface
     /**
      * @inheritDoc
      */
-    public function setObjectManager(ObjectManagerInterface $objectManager) : void
+    public function setObjectManager(ObjectManagerInterface $objectManager): void
     {
         $this->objectManager = $objectManager;
     }
@@ -200,7 +201,7 @@ class Resetter implements ResetterInterface
      * @param array $array
      * @return void
      */
-    private function sortClasses(array &$array) : void
+    private function sortClasses(array &$array): void
     {
         $i = 0;
         $count = count($array);
@@ -224,7 +225,7 @@ class Resetter implements ResetterInterface
      * @param string $b
      * @return bool
      */
-    private function sortClassesComparitor(string $a, string $b) : bool
+    private function sortClassesComparitor(string $a, string $b): bool
     {
         if (is_a($a, $b, true)) {
             return true;

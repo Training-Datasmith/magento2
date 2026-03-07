@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -118,7 +120,7 @@ class SaveHandlerTest extends \PHPUnit\Framework\TestCase
             ->willReturnCallback(function ($arg) use ($redisHandlerMock, $defaultHandlerMock) {
                 if ($arg == 'redis') {
                     return $redisHandlerMock;
-                } elseif($arg == SaveHandlerInterface::DEFAULT_HANDLER) {
+                } elseif ($arg == SaveHandlerInterface::DEFAULT_HANDLER) {
                     return $defaultHandlerMock;
                 }
             });

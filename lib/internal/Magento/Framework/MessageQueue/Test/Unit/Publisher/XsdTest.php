@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Publisher;
 use Magento\Framework\Config\Dom;
 use Magento\Framework\Config\Dom\UrnResolver;
 use Magento\Framework\Config\ValidationStateInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
 {
@@ -43,8 +44,8 @@ class XsdTest extends TestCase
         $dom = new Dom($fixtureXml, $validationState, [], null, null, $messageFormat);
         $actualErrors = [];
         $actualResult = $dom->validate($this->_schemaFile, $actualErrors);
-        $this->assertEquals(empty($expectedErrors), $actualResult, "Validation result is invalid.");
-        $this->assertEquals($expectedErrors, $actualErrors, "Validation errors does not match.");
+        $this->assertEquals(empty($expectedErrors), $actualResult, 'Validation result is invalid.');
+        $this->assertEquals($expectedErrors, $actualErrors, 'Validation errors does not match.');
     }
 
     /**
@@ -86,7 +87,7 @@ class XsdTest extends TestCase
                     "3:                        <connection name=\"amqp\" exchange=\"magento2\"/>\n" .
                     "4:                    </publisher>\n5:                    <publisher topic=\"topic.message.queue.config.01\">\n" .
                     "6:                        <connection name=\"amqp\" exchange=\"magento2\" disabled=\"true\"/>\n7:                    </publisher>\n" .
-                    "8:                </config>\n9:\n"
+                    "8:                </config>\n9:\n",
                 ],
             ],
             'non unique publisher connection name' => [
@@ -102,7 +103,7 @@ class XsdTest extends TestCase
                     "2:                    <publisher topic=\"topic.message.queue.config.01\">\n" .
                     "3:                        <connection name=\"amqp\" exchange=\"magento2\"/>\n" .
                     "4:                        <connection name=\"amqp\" exchange=\"magento2\"/>\n" .
-                    "5:                    </publisher>\n6:                </config>\n7:\n"
+                    "5:                    </publisher>\n6:                </config>\n7:\n",
                 ],
             ],
             'missed required publisher attribute' => [
@@ -116,8 +117,7 @@ class XsdTest extends TestCase
                     "0:<?xml version=\"1.0\"?>\n1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework-message-queue:etc/publisher.xsd\">\n" .
                     "2:                    <publisher disabled=\"false\">\n" .
                     "3:                        <connection name=\"amqp\" exchange=\"magento2\"/>\n" .
-                    "4:                    </publisher>\n5:                </config>\n6:\n"
-
+                    "4:                    </publisher>\n5:                </config>\n6:\n",
 
                 ],
             ],
@@ -139,7 +139,7 @@ class XsdTest extends TestCase
                     "0:<?xml version=\"1.0\"?>\n1:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework-message-queue:etc/publisher.xsd\">\n" .
                     "2:                    <unexpected name=\"10\">20</unexpected>\n" .
                     "3:                    <publisher topic=\"topic.message.queue.config.03\" disabled=\"true\"/>\n" .
-                    "4:                </config>\n5:\n"
+                    "4:                </config>\n5:\n",
                 ],
             ],
             'unexpected connection element' => [
@@ -155,7 +155,7 @@ class XsdTest extends TestCase
                     "2:                    <publisher topic=\"topic.message.queue.config.03\" disabled=\"true\">\n" .
                     "3:                        <connection name=\"amqp\" exchange=\"magento2\"/>\n" .
                     "4:                        <unexpected name=\"10\">20</unexpected>\n" .
-                    "5:                    </publisher>\n6:                </config>\n7:\n"
+                    "5:                    </publisher>\n6:                </config>\n7:\n",
                 ],
             ],
             'unexpected publisher attribute' => [

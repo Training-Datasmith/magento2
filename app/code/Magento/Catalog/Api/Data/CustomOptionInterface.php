@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -15,8 +18,8 @@ interface CustomOptionInterface extends \Magento\Framework\Api\ExtensibleDataInt
     /**#@+
      * Constants
      */
-    const OPTION_ID = 'option_id';
-    const OPTION_VALUE = 'option_value';
+    public const OPTION_ID = 'option_id';
+    public const OPTION_VALUE = 'option_value';
     /**#@-*/
 
     /**

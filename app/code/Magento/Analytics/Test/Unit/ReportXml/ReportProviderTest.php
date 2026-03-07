@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class ReportProviderTest extends TestCase
             [
                 'queryFactory' => $this->queryFactoryMock,
                 'connectionFactory' => $this->connectionFactoryMock,
-                'iteratorFactory' => $this->iteratorFactoryMock
+                'iteratorFactory' => $this->iteratorFactoryMock,
             ]
         );
     }
@@ -140,7 +141,7 @@ class ReportProviderTest extends TestCase
             ->method('getConfig')
             ->willReturn(
                 [
-                    'connection' => $connectionName
+                    'connection' => $connectionName,
                 ]
             );
 
@@ -184,7 +185,7 @@ class ReportProviderTest extends TestCase
                 [
                     'name' => $reportName,
                     'connection' => $connectionName,
-                    'source' => ['name' => $tableName]
+                    'source' => ['name' => $tableName],
                 ]
             );
         $this->queryMock->expects($this->once())->method('getSelect')->willReturn($this->selectMock);
@@ -194,7 +195,7 @@ class ReportProviderTest extends TestCase
         $rows = [
             [$cursorColumn => 1, 'other_field' => 'value1'],
             [$cursorColumn => 2, 'other_field' => 'value2'],
-            [$cursorColumn => 3, 'other_field' => 'value3']
+            [$cursorColumn => 3, 'other_field' => 'value3'],
         ];
         $this->connectionMock->expects($this->once())
             ->method('query')
@@ -236,7 +237,7 @@ class ReportProviderTest extends TestCase
                 [
                     'name' => $reportName,
                     'connection' => $connectionName,
-                    'source' => ['name' => $tableName]
+                    'source' => ['name' => $tableName],
                 ]
             );
         $countSelectMock = $this->createMock(Select::class);

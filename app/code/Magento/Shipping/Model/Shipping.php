@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -436,7 +438,7 @@ class Shipping implements RateCollectorInterface
                         $decimalItem['qty'] * $qty,
                         [
                             'weight' => $decimalItem['weight'],
-                            'price' => $item->getBasePrice()
+                            'price' => $item->getBasePrice(),
                         ]
                     );
                 }
@@ -446,7 +448,7 @@ class Shipping implements RateCollectorInterface
                     $qty,
                     [
                         'weight' => $itemWeight,
-                        'price' => $item->getBasePrice()
+                        'price' => $item->getBasePrice(),
                     ]
                 );
             }

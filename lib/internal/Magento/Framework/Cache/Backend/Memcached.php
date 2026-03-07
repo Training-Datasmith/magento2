@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class Memcached extends AbstractBackend implements ExtendedBackendInterface
         if (isset($options['slab_size'])) {
             if (!is_numeric($options['slab_size']) || $options['slab_size'] <= 0) {
                 throw new LocalizedException(
-                    new Phrase("Invalid value for the node <slab_size>. Expected to be positive integer.")
+                    new Phrase('Invalid value for the node <slab_size>. Expected to be positive integer.')
                 );
             }
             $this->_options['slab_size'] = (int)$options['slab_size'];
@@ -347,7 +348,7 @@ class Memcached extends AbstractBackend implements ExtendedBackendInterface
         return [
             'expire' => time() + 86400, // Default assumption
             'tags' => [],
-            'mtime' => time()
+            'mtime' => time(),
         ];
     }
 
@@ -382,7 +383,7 @@ class Memcached extends AbstractBackend implements ExtendedBackendInterface
             'expired_read' => false,
             'priority' => false,
             'infinite_lifetime' => false,
-            'get_list' => false
+            'get_list' => false,
         ];
     }
 

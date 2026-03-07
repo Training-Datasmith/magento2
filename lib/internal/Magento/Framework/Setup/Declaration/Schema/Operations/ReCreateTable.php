@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ class ReCreateTable implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'recreate_table';
+    public const OPERATION_NAME = 'recreate_table';
 
     /**
      * @var CreateTable
@@ -97,7 +99,7 @@ class ReCreateTable implements OperationInterface
      * @param ElementHistory $elementHistory
      * @return Table
      */
-    private function getRecreatedTable(ElementHistory $elementHistory) : Table
+    private function getRecreatedTable(ElementHistory $elementHistory): Table
     {
         /** @var Table $newTable */
         $newTable = $elementHistory->getNew();
@@ -118,7 +120,7 @@ class ReCreateTable implements OperationInterface
                 'comment' => $newTable->getOnCreate(),
                 'columns' => $oldTable->getColumns(),
                 'indexes' => $oldTable->getIndexes(),
-                'constraints' => array_merge($oldTable->getInternalConstraints(), $newTable->getReferenceConstraints())
+                'constraints' => array_merge($oldTable->getInternalConstraints(), $newTable->getReferenceConstraints()),
             ]
         );
 
@@ -134,7 +136,7 @@ class ReCreateTable implements OperationInterface
         $recreatedElementHistory = $this->elementHistoryFactory->create(
             [
                 'old' => $elementHistory->getOld(),
-                'new' => $recreatedTable
+                'new' => $recreatedTable,
             ]
         );
         $statements = $this->createTable->doOperation($recreatedElementHistory);

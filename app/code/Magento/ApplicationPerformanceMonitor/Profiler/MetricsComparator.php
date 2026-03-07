@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,9 +13,6 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class MetricsComparator
 {
-    /**
-     * @param MetricFactory $metricFactory
-     */
     public function __construct(private readonly MetricFactory $metricFactory)
     {
     }
@@ -22,13 +20,10 @@ class MetricsComparator
     /**
      * Compares with a previous Metrics and returns results as array.
      *
-     * @param Metrics $beforeMetrics
-     * @param Metrics $afterMetrics
-     * @param Metrics|null $previousAfterMetrics
      * @return Metric[]
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function compareMetrics(Metrics $beforeMetrics, Metrics $afterMetrics, ?Metrics $previousAfterMetrics)
+    public function compareMetrics(Metrics $beforeMetrics, Metrics $afterMetrics, ?Metrics $previousAfterMetrics): array
     {
         $metrics = [];
         $metrics['memoryUsageBefore'] = $this->metricFactory->create([

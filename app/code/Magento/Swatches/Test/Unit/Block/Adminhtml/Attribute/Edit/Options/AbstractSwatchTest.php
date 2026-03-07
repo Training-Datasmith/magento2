@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,14 +16,14 @@ use Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\Collection;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\CollectionFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\UniversalFactory;
+use Magento\Framework\View\Element\Html\Select as HtmlSelect;
 use Magento\Swatches\Block\Adminhtml\Attribute\Edit\Options\AbstractSwatch;
 use Magento\Swatches\Helper\Media;
-use Magento\Framework\Json\Helper\Data;
-use Magento\Framework\View\Element\Html\Select as HtmlSelect;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -84,12 +85,12 @@ class AbstractSwatchTest extends TestCase
         $objects = [
             [
                 Data::class,
-                $this->createMock(Data::class)
+                $this->createMock(Data::class),
             ],
             [
                 HtmlSelect::class,
-                $this->createMock(HtmlSelect::class)
-            ]
+                $this->createMock(HtmlSelect::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -115,7 +116,7 @@ class AbstractSwatchTest extends TestCase
                 $this->universalFactoryMock,
                 $this->mediaConfigMock,
                 $this->swatchHelperMock,
-                []
+                [],
             ]);
         }
         $this->connectionMock = $this->createMock(AdapterInterface::class);
@@ -192,9 +193,9 @@ class AbstractSwatchTest extends TestCase
                 14 => 'Blue',
                 'swatch' => [
                     14 => '#0000FF',
-                    15 => '#000000'
+                    15 => '#000000',
                 ],
-                15 =>'Black'
+                15 => 'Black',
             ];
         }
         $result = $this->block->getStoreOptionValues(1);
@@ -210,12 +211,12 @@ class AbstractSwatchTest extends TestCase
             [
                 [
                     14 => 'Blue',
-                    15 => 'Black'
-                ]
+                    15 => 'Black',
+                ],
             ],
             [
-                null
-            ]
+                null,
+            ],
         ];
     }
 }

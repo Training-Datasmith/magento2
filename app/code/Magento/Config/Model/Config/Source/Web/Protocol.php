@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Source\Web;
 
 /**
@@ -19,7 +22,7 @@ class Protocol implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => '', 'label' => ''],
             ['value' => 'http', 'label' => __('HTTP (unsecure)')],
-            ['value' => 'https', 'label' => __('HTTPS (SSL)')]
+            ['value' => 'https', 'label' => __('HTTPS (SSL)')],
         ];
     }
 }

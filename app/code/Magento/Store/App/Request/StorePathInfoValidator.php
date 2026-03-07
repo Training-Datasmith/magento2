@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class StorePathInfoValidator implements ResetAfterRequestInterface
      * @param string $pathInfo
      * @return string|null
      */
-    public function getValidStoreCode(Http $request, string $pathInfo = '') : ?string
+    public function getValidStoreCode(Http $request, string $pathInfo = ''): ?string
     {
         if (!$this->config->isSetFlag(Store::XML_PATH_STORE_IN_URL)) {
             return null;
@@ -109,7 +110,7 @@ class StorePathInfoValidator implements ResetAfterRequestInterface
      * @param string $pathInfo
      * @return string
      */
-    private function getStoreCode(string $pathInfo) : string
+    private function getStoreCode(string $pathInfo): string
     {
         $pathParts = explode('/', ltrim($pathInfo, '/'), 2);
         return current($pathParts);

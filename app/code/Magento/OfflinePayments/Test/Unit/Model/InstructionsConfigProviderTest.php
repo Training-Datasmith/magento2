@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -120,14 +121,14 @@ class InstructionsConfigProviderTest extends TestCase
                 'text one',
                 true,
                 'text two',
-                ['payment' => ['instructions' => [$oneCode => 'text one', $twoCode => 'text two']]]
+                ['payment' => ['instructions' => [$oneCode => 'text one', $twoCode => 'text two']]],
             ],
             [
                 true,
                 "\n",
                 true,
                 "\n",
-                ['payment' => ['instructions' => [$oneCode => "<br />\n", $twoCode => "<br />\n"]]]
+                ['payment' => ['instructions' => [$oneCode => "<br />\n", $twoCode => "<br />\n"]]],
             ],
         ];
     }

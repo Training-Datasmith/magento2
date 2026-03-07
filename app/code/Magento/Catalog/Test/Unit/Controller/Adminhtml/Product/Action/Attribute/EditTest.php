@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class EditTest extends TestCase
                 'attributeHelper' => $this->attributeHelper,
                 'filter' => $this->filter,
                 'resultPageFactory' => $resultPageFactory,
-                'collectionFactory' => $this->collectionFactory
+                'collectionFactory' => $this->collectionFactory,
             ]
         );
     }
@@ -121,7 +122,7 @@ class EditTest extends TestCase
             [
                 'namespace' => 'product_listing',
                 'exclude' => true,
-                'filters' => ['placeholder' => true]
+                'filters' => ['placeholder' => true],
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class SaveHandlerTest extends TestCase
         $this->saveHandlerAdapterMock->expects($this->never())
             ->method('read');
 
-        $this->assertTrue($this->saveHandler->write("test_session_id", "testdata"));
+        $this->assertTrue($this->saveHandler->write('test_session_id', 'testdata'));
     }
 
     public function testWriteSessionMaxSizeNull()
@@ -107,7 +108,7 @@ class SaveHandlerTest extends TestCase
         $this->saveHandlerAdapterMock->expects($this->never())
             ->method('read');
 
-        $this->assertTrue($this->saveHandler->write("test_session_id", "testdata"));
+        $this->assertTrue($this->saveHandler->write('test_session_id', 'testdata'));
     }
 
     public function testWriteMoreThanSessionMaxSize(): void
@@ -121,7 +122,7 @@ class SaveHandlerTest extends TestCase
             ->expects($this->never())
             ->method('read');
 
-        $this->assertTrue($this->saveHandler->write("test_session_id", "testdata"));
+        $this->assertTrue($this->saveHandler->write('test_session_id', 'testdata'));
     }
 
     public function testReadMoreThanSessionMaxSize(): void

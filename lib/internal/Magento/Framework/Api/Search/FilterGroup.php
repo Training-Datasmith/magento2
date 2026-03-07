@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ use Magento\Framework\Api\AbstractSimpleObject;
  */
 class FilterGroup extends AbstractSimpleObject
 {
-    const FILTERS = 'filters';
+    public const FILTERS = 'filters';
 
     /**
      * Returns a list of filters in this group

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Pricing\Amount\Base;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\Render\Amount;
-use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Weee\Helper\Data;
 use Magento\Weee\Model\Tax;
 use Magento\Weee\Pricing\Adjustment as PricingAdjustment;
@@ -98,10 +99,10 @@ class AdjustmentTest extends TestCase
         $this->priceCurrencyMock->expects($this->once())
             ->method('format')
             ->with(10, true, 2)
-            ->willReturn("$10.00");
+            ->willReturn('$10.00');
 
         $displayValue = 10;
-        $expectedValue = "$10.00";
+        $expectedValue = '$10.00';
         $typeOfDisplay = 1; //Just to set it to not false
         /** @var Amount $amountRender */
         $amountRender = $this->createPartialMock(

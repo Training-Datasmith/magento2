@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\CatalogRule\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ResourceModel\Product\BaseSelectProcessorInterface;
+use Magento\Catalog\Model\ResourceModel\Product\LinkedProductSelectBuilderInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DB\Select;
-use Magento\Catalog\Model\ResourceModel\Product\LinkedProductSelectBuilderInterface;
 
 /**
  * Provide Select object for retrieve product id with minimal price
@@ -86,7 +87,7 @@ class LinkedProductSelectBuilderByCatalogRulePrice implements LinkedProductSelec
     /**
      * @inheritdoc
      */
-    public function build(int $productId, int $storeId) : array
+    public function build(int $productId, int $storeId): array
     {
         $timestamp = $this->localeDate->scopeTimeStamp($this->storeManager->getStore($storeId));
         $currentDate = $this->dateTime->formatDate($timestamp, false);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class SystemTest extends AbstractModifierTestCase
         return $this->objectManager->getObject(System::class, [
             'locator' => $this->locatorMock,
             'urlBuilder' => $this->urlBuilderMock,
-            'productUrls' => []
+            'productUrls' => [],
         ]);
     }
 
@@ -82,7 +83,7 @@ class SystemTest extends AbstractModifierTestCase
                 System::KEY_SUBMIT_URL => $submitUrl,
                 System::KEY_VALIDATE_URL => $validateUrl,
                 System::KEY_RELOAD_URL => $reloadUrl,
-            ]
+            ],
         ];
 
         $this->assertSame($expectedData, $this->getModel()->modifyData([]));

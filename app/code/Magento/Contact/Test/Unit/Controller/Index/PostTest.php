@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -119,7 +120,7 @@ class PostTest extends TestCase
             [
                 'context' => $contextMock,
                 'mail' => $this->mailMock,
-                'dataPersistor' => $this->dataPersistorMock
+                'dataPersistor' => $this->dataPersistorMock,
             ]
         );
     }
@@ -175,7 +176,7 @@ class PostTest extends TestCase
             'name' => 'Name',
             'comment' => 'Comment',
             'email' => 'valid@mail.com',
-            'hideit' => ''
+            'hideit' => '',
         ];
 
         $this->dataPersistorMock->expects($this->once())

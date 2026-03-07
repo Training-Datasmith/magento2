@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model;
 
 /**
@@ -146,7 +149,7 @@ class History extends \Magento\Framework\Model\AbstractModel
     {
         if ($import->isReportEntityType()) {
             $this->load($this->getLastItemId());
-             $this->setExecutionTime(self::IMPORT_FAILED);
+            $this->setExecutionTime(self::IMPORT_FAILED);
             $this->save();
         }
         return $this;

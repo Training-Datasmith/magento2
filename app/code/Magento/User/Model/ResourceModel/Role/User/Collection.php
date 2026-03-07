@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Model\ResourceModel\Role\User;
 
 /**
@@ -29,7 +32,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         parent::_initSelect();
 
-        $this->getSelect()->where("user_id > 0");
+        $this->getSelect()->where('user_id > 0');
 
         return $this;
     }

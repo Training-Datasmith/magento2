@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Report Reviews collection
  */
+
 namespace Magento\Reports\Model\ResourceModel\Review;
 
 /**
@@ -64,7 +67,7 @@ class Collection extends \Magento\Review\Model\ResourceModel\Review\Collection
         $countSelect->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
         $countSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
         $countSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
-        $countSelect->columns("COUNT(main_table.review_id)");
+        $countSelect->columns('COUNT(main_table.review_id)');
 
         return $countSelect;
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Model\Category;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Catalog\Model\ResourceModel\Category;
+use Magento\Framework\App\ResourceConnection;
 
 /**
  * Determine level data for GraphQL Category request
@@ -43,12 +44,12 @@ class LevelCalculator
      * @param int $rootCategoryId
      * @return int
      */
-    public function calculate(int $rootCategoryId) : int
+    public function calculate(int $rootCategoryId): int
     {
         $connection = $this->resourceConnection->getConnection();
         $select = $connection->select()
             ->from($this->resourceConnection->getTableName('catalog_category_entity'), 'level')
-            ->where($this->resourceCategory->getEntityIdField() . " = ?", $rootCategoryId);
+            ->where($this->resourceCategory->getEntityIdField() . ' = ?', $rootCategoryId);
 
         return (int) $connection->fetchOne($select);
     }

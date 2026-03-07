@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Result;
 
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\Framework\View\Element\Template\Context;
@@ -22,7 +24,6 @@ use Magento\Framework\View\Page\Config\RendererFactory;
 use Magento\Framework\View\Result\Page;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Result Page Test
@@ -128,7 +129,7 @@ class PageTest extends TestCase
                 'layout' => $this->layout,
                 'request' => $this->request,
                 'viewFileSystem' => $this->viewFileSystem,
-                'pageConfig' => $this->pageConfig
+                'pageConfig' => $this->pageConfig,
             ]
         );
 
@@ -157,7 +158,7 @@ class PageTest extends TestCase
                 'context' => $this->context,
                 'translateInline' => $this->translateInline,
                 'pageConfigRendererFactory' => $pageConfigRendererFactory,
-                'entitySpecificHandlesList' => $this->entitySpecificHandlesListMock
+                'entitySpecificHandlesList' => $this->entitySpecificHandlesListMock,
             ]
         );
     }
@@ -248,12 +249,12 @@ class PageTest extends TestCase
         $defaultHandle = null;
         $parameters = [
             'key_one' => 'val_one',
-            'key_two' => 'val_two'
+            'key_two' => 'val_two',
         ];
         $expected = [
             'full_action_name',
             'full_action_name_key_one_val_one',
-            'full_action_name_key_two_val_two'
+            'full_action_name_key_two_val_two',
         ];
         $this->request->expects($this->any())
             ->method('getFullActionName')
@@ -286,12 +287,12 @@ class PageTest extends TestCase
         $defaultHandle = null;
         $parameters = [
             'key_one' => 'val_one',
-            'key_two' => 'val_two'
+            'key_two' => 'val_two',
         ];
         $expected = [
             'full_action_name',
             'full_action_name_key_one_val_one',
-            'full_action_name_key_two_val_two'
+            'full_action_name_key_two_val_two',
         ];
         $this->request->expects($this->any())
             ->method('getFullActionName')
@@ -315,12 +316,12 @@ class PageTest extends TestCase
         $defaultHandle = 'default_handle';
         $parameters = [
             'key_one' => 'val_one',
-            'key_two' => 'val_two'
+            'key_two' => 'val_two',
         ];
         $expected = [
             'default_handle',
             'default_handle_key_one_val_one',
-            'default_handle_key_two_val_two'
+            'default_handle_key_two_val_two',
         ];
         $this->request->expects($this->never())
             ->method('getFullActionName');

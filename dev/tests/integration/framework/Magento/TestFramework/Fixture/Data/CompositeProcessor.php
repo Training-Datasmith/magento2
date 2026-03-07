@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class CompositeProcessor implements ProcessorInterface
     private function getProcessors(): array
     {
         return [
-            UniqueIdProcessor::class
+            UniqueIdProcessor::class,
         ];
     }
 }

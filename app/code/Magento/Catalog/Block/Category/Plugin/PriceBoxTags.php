@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Catalog\Block\Category\Plugin;
 
-use Magento\Catalog\Model\Product;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -30,7 +31,7 @@ class PriceBoxTags
      * @var PriceCurrencyInterface
      */
     private $priceCurrency;
-    
+
     /**
      * @var ScopeResolverInterface
      */

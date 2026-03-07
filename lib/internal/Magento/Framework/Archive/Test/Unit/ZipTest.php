@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2015 Adobe
@@ -13,7 +15,6 @@ use PHPUnit\Framework\TestCase;
 
 class ZipTest extends TestCase
 {
-
     /**
      * @var Zip|MockObject
      */

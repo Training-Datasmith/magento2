@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,6 +29,7 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
 use Magento\Framework\Stdlib\CookieManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Wishlist\Controller\Index\Cart;
@@ -40,7 +42,6 @@ use Magento\Wishlist\Model\ItemFactory;
 use Magento\Wishlist\Model\LocaleQuantityProcessor;
 use Magento\Wishlist\Model\ResourceModel\Item\Option\Collection;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -233,7 +234,7 @@ class CartTest extends TestCase
             ->willReturnMap(
                 [
                     [ResultFactory::TYPE_REDIRECT, [], $this->resultRedirectMock],
-                    [ResultFactory::TYPE_JSON, [], $this->resultJsonMock]
+                    [ResultFactory::TYPE_JSON, [], $this->resultJsonMock],
                 ]
             );
 
@@ -461,7 +462,7 @@ class CartTest extends TestCase
                 'addToCart',
                 'getProduct',
                 'getWishlistId',
-                'getProductId'
+                'getProductId',
             ]
         );
 
@@ -670,7 +671,7 @@ class CartTest extends TestCase
                 'addToCart',
                 'getProduct',
                 'getWishlistId',
-                'getProductId'
+                'getProductId',
             ]
         );
 
@@ -837,7 +838,7 @@ class CartTest extends TestCase
                 'addToCart',
                 'getProduct',
                 'getWishlistId',
-                'getProductId'
+                'getProductId',
             ]
         );
 
@@ -1005,7 +1006,7 @@ class CartTest extends TestCase
                 'addToCart',
                 'getProduct',
                 'getWishlistId',
-                'getProductId'
+                'getProductId',
             ]
         );
 

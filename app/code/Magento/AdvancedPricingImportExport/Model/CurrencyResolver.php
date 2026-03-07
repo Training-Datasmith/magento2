@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,37 +17,17 @@ use Magento\Store\Model\StoreManagerInterface;
 class CurrencyResolver
 {
     /**
-     * @var StoreManagerInterface
-     */
-    private $storeManager;
-
-    /**
-     * @var DirectoryData
-     */
-    private $directoryData;
-
-    /**
      * @var string
      */
     private $defaultBaseCurrency;
 
     /**
      * Associative array with website code as the key and base currency as the value
-     *
-     * @var array
      */
-    private $websitesBaseCurrency;
+    private ?array $websitesBaseCurrency = null;
 
-    /**
-     * @param StoreManagerInterface $storeManager
-     * @param DirectoryData $directoryData
-     */
-    public function __construct(
-        StoreManagerInterface $storeManager,
-        DirectoryData $directoryData
-    ) {
-        $this->storeManager = $storeManager;
-        $this->directoryData = $directoryData;
+    public function __construct(private readonly StoreManagerInterface $storeManager, private readonly DirectoryData $directoryData)
+    {
     }
 
     /**
@@ -68,8 +49,6 @@ class CurrencyResolver
 
     /**
      * Get default scope base currency
-     *
-     * @return string
      */
     public function getDefaultBaseCurrency(): string
     {

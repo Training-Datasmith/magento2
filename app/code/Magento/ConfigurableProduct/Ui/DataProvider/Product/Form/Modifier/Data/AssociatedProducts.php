@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\Data;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -11,6 +14,7 @@ use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableType;
+use Magento\ConfigurableProduct\Model\Product\Type\VariationMatrix;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Currency\Exception\CurrencyException;
@@ -19,7 +23,6 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\UrlInterface;
-use Magento\ConfigurableProduct\Model\Product\Type\VariationMatrix;
 
 /**
  * Associated products helper
@@ -256,7 +259,7 @@ class AssociatedProducts
                     'attribute_label' => $attribute->getStoreLabel(0),
                     'id' => $valueId,
                     'label' => $attributeComposition['label'],
-                    'value' => $valueId
+                    'value' => $valueId,
                 ];
                 if ($valueId !== null) {
                     $attributes[$attribute->getAttributeId()]['chosen'][$valueId] = $variationOption;
@@ -415,7 +418,7 @@ class AssociatedProducts
             'label' => $attribute->getStoreLabel(),
             'id' => $attribute->getAttributeId(),
             'position' => $configurableAttributes[$attribute->getAttributeId()]['position'],
-            'chosen' => []
+            'chosen' => [],
         ];
 
         $options = $attribute->usesSource() ? $attribute->getSource()->getAllOptions() : [];
@@ -426,7 +429,7 @@ class AssociatedProducts
                     'attribute_label' => $attribute->getStoreLabel(0),
                     'id' => $option['value'],
                     'label' => $option['label'],
-                    'value' => $option['value']
+                    'value' => $option['value'],
                 ];
             }
         }
@@ -447,7 +450,7 @@ class AssociatedProducts
             'attribute_label' => $attributeDetails['attribute']->getStoreLabel(0),
             'id' => $attributeDetails['value_id'],
             'label' => $attributeDetails['label'],
-            'value' => $attributeDetails['value_id']
+            'value' => $attributeDetails['value_id'],
         ];
     }
 
@@ -489,7 +492,7 @@ class AssociatedProducts
             'name' => $product->getName(),
             'qty' => $this->getProductStockQty($product),
             'price' => $product->getPrice(),
-            'price_string' => $currency->toCurrency(sprintf("%f", $product->getPrice())),
+            'price_string' => $currency->toCurrency(sprintf('%f', $product->getPrice())),
             'price_currency' => $this->locator->getStore()->getBaseCurrency()->getCurrencySymbol(),
             'configurable_attribute' => $this->getJsonConfigurableAttributes($childProductOptions),
             'weight' => $product->getWeight(),
@@ -520,7 +523,7 @@ class AssociatedProducts
                             $attribute,
                             $product->getData($attribute->getAttributeCode())
                         ),
-                        'attribute' => $attribute
+                        'attribute' => $attribute,
                     ];
             }
         }

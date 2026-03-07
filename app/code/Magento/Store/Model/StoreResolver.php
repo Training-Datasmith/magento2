@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\StoreCookieManagerInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Api\StoreResolverInterface;
 use Magento\Store\App\Request\StorePathInfoValidator;
-use Magento\Framework\Stdlib\CookieManagerInterface;
 
 /**
  * Class used to resolve store from url path or get parameters or cookie.
@@ -163,7 +164,7 @@ class StoreResolver implements StoreResolverInterface
      *
      * @return array
      */
-    protected function getStoresData() : array
+    protected function getStoresData(): array
     {
         return $this->storesData->getStoresData($this->runMode, $this->scopeCode);
     }
@@ -175,7 +176,7 @@ class StoreResolver implements StoreResolverInterface
      * @deprecated 101.0.0
      * @see StoreResolver::getStoresData
      */
-    protected function readStoresData() : array
+    protected function readStoresData(): array
     {
         return $this->getStoresData();
     }
@@ -187,7 +188,7 @@ class StoreResolver implements StoreResolverInterface
      * @return StoreInterface
      * @throws NoSuchEntityException
      */
-    protected function getRequestedStoreByCode($storeCode) : StoreInterface
+    protected function getRequestedStoreByCode($storeCode): StoreInterface
     {
         try {
             $store = $this->storeRepository->getActiveStoreByCode($storeCode);
@@ -205,7 +206,7 @@ class StoreResolver implements StoreResolverInterface
      * @return StoreInterface
      * @throws NoSuchEntityException
      */
-    protected function getDefaultStoreById($id) : StoreInterface
+    protected function getDefaultStoreById($id): StoreInterface
     {
         try {
             $store = $this->storeRepository->getActiveStoreById($id);

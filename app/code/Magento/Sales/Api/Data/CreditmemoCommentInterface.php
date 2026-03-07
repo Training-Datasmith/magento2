@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -23,27 +26,27 @@ interface CreditmemoCommentInterface extends \Magento\Framework\Api\ExtensibleDa
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Parent ID.
      */
-    const PARENT_ID = 'parent_id';
+    public const PARENT_ID = 'parent_id';
     /*
      * Is-customer-notified flag.
      */
-    const IS_CUSTOMER_NOTIFIED = 'is_customer_notified';
+    public const IS_CUSTOMER_NOTIFIED = 'is_customer_notified';
     /*
      * Is-visible-on-storefront flag.
      */
-    const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
+    public const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
     /*
      * Comment.
      */
-    const COMMENT = 'comment';
+    public const COMMENT = 'comment';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
 
     /**
      * Gets the credit memo comment.

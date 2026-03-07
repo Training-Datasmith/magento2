@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Element\Html;
 
 use Magento\Framework\App\Config;
+use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Html\Link;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template\File\Resolver;
 use Magento\Framework\View\Element\Template\File\Validator;
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Magento\Framework\DataObject;
-use Magento\Framework\Event\ManagerInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test Link widget.

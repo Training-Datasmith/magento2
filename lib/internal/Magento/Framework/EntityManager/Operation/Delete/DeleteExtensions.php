@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\EntityManager\Operation\Delete;
 
-use Magento\Framework\EntityManager\TypeResolver;
 use Magento\Framework\EntityManager\Operation\ExtensionPool;
+use Magento\Framework\EntityManager\TypeResolver;
 
 /**
  * Class DeleteExtensions

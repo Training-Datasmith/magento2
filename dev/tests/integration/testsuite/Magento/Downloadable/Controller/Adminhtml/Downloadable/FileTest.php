@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -40,7 +42,7 @@ class FileTest extends \Magento\TestFramework\TestCase\AbstractBackendController
         $filePath = dirname(__DIR__) . '/_files/sample.tmp';
         // phpcs:ignore Magento2.Functions.DiscouragedFunction
         if (is_file($filePath)) {
-        // phpcs:ignore Magento2.Functions.DiscouragedFunction
+            // phpcs:ignore Magento2.Functions.DiscouragedFunction
             unlink($filePath);
         }
     }

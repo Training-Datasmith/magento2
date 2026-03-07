@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryIntegration\Test\Integration\Model;
 
+use Magento\Cms\Helper\Wysiwyg\Images;
 use Magento\Cms\Model\Wysiwyg\Config;
 use Magento\Cms\Model\Wysiwyg\Gallery\DefaultConfigProvider;
-use Magento\Cms\Helper\Wysiwyg\Images;
 use Magento\Framework\DataObject;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\UrlInterface;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\LoginAsCustomer\Model;
 
-use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterface;
 use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataExtensionInterface;
+use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterface;
 
 /**
  * @inheritdoc

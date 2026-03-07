@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,17 +11,16 @@ namespace Magento\Sales\Test\Unit\Model\Order\Webapi;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Block\Adminhtml\Items\Column\DefaultColumn;
 use Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer;
+use Magento\Sales\Model\Order\Webapi\ChangeOutputArray;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Sales\Model\Order\Webapi\ChangeOutputArray;
 
 /**
  * Test for \Magento\Sales\Model\Order\Webapi\ChangeOutputArray class
  */
 class ChangeOutputArrayTest extends TestCase
 {
-
     /**
      * @var ChangeOutputArray
      */
@@ -90,14 +90,14 @@ class ChangeOutputArrayTest extends TestCase
                     'baseTaxAmount' => 0.0000,
                     'baseDiscountTaxCompensationAmount' => 1.1400,
                     'baseWeeeTaxAppliedAmount' => null,
-                    'baseDiscountAmount' => 5.9000
+                    'baseDiscountAmount' => 5.9000,
                 ],
                 'expected' => [
                     OrderItemInterface::ROW_TOTAL => 0,
                     OrderItemInterface::BASE_ROW_TOTAL => 0,
                     OrderItemInterface::ROW_TOTAL_INCL_TAX => 0,
-                    OrderItemInterface::BASE_ROW_TOTAL_INCL_TAX => 0
-                ]
+                    OrderItemInterface::BASE_ROW_TOTAL_INCL_TAX => 0,
+                ],
             ],
             [
                 'totals' => [
@@ -108,15 +108,15 @@ class ChangeOutputArrayTest extends TestCase
                     'baseTaxAmount' => 0.0000,
                     'baseDiscountTaxCompensationAmount' => 2.83,
                     'baseWeeeTaxAppliedAmount' => null,
-                    'baseDiscountAmount' => 16.99
+                    'baseDiscountAmount' => 16.99,
                 ],
                 'expected' => [
                     OrderItemInterface::ROW_TOTAL => 0,
                     OrderItemInterface::BASE_ROW_TOTAL => 0,
                     OrderItemInterface::ROW_TOTAL_INCL_TAX => 0,
-                    OrderItemInterface::BASE_ROW_TOTAL_INCL_TAX => 0
-                ]
-            ]
+                    OrderItemInterface::BASE_ROW_TOTAL_INCL_TAX => 0,
+                ],
+            ],
         ];
     }
 }

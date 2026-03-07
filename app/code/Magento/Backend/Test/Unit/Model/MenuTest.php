@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class MenuTest extends TestCase
         $this->_model = $this->objectManagerHelper->getObject(
             Menu::class,
             [
-                'logger' => $this->_logger
+                'logger' => $this->_logger,
             ]
         );
     }
@@ -79,9 +80,9 @@ class MenuTest extends TestCase
     public function testAddToItem()
     {
         $subMenu = $this->createMock(Menu::class);
-        $subMenu->expects($this->once())->method("add")->with($this->_items['item2']);
+        $subMenu->expects($this->once())->method('add')->with($this->_items['item2']);
 
-        $this->_items['item1']->expects($this->once())->method("getChildren")->willReturn($subMenu);
+        $this->_items['item1']->expects($this->once())->method('getChildren')->willReturn($subMenu);
 
         $this->_model->add($this->_items['item1']);
         $this->_model->add($this->_items['item2'], 'item1');
@@ -127,13 +128,13 @@ class MenuTest extends TestCase
         $menuOne = $this->objectManagerHelper->getObject(
             Menu::class,
             [
-                'logger' => $this->_logger
+                'logger' => $this->_logger,
             ]
         );
         $menuTwo = $this->objectManagerHelper->getObject(
             Menu::class,
             [
-                'logger' => $this->_logger
+                'logger' => $this->_logger,
             ]
         );
 
@@ -160,14 +161,14 @@ class MenuTest extends TestCase
         $this->_model->add($this->_items['item3']);
 
         $subMenu = $this->createMock(Menu::class);
-        $subMenu->expects($this->once())->method("add")->with($this->_items['item3']);
+        $subMenu->expects($this->once())->method('add')->with($this->_items['item3']);
 
-        $this->_items['item1']->expects($this->once())->method("getChildren")->willReturn($subMenu);
+        $this->_items['item1']->expects($this->once())->method('getChildren')->willReturn($subMenu);
 
         $this->_model->move('item3', 'item1');
 
         $this->assertCount(2, $this->_model);
-        $this->assertArrayNotHasKey(2, $this->_model, "ttt");
+        $this->assertArrayNotHasKey(2, $this->_model, 'ttt');
     }
 
     public function testMoveNonExistentItemThrowsException()
@@ -240,13 +241,13 @@ class MenuTest extends TestCase
         $subMenu = $this->objectManagerHelper->getObject(
             Menu::class,
             [
-                'logger' => $this->_logger
+                'logger' => $this->_logger,
             ]
         );
 
-        $this->_items['item1']->expects($this->any())->method("hasChildren")->willReturn(true);
+        $this->_items['item1']->expects($this->any())->method('hasChildren')->willReturn(true);
 
-        $this->_items['item1']->expects($this->any())->method("getChildren")->willReturn($subMenu);
+        $this->_items['item1']->expects($this->any())->method('getChildren')->willReturn($subMenu);
 
         $this->_model->add($this->_items['item1']);
         $this->_model->add($this->_items['item2'], 'item1', 10);

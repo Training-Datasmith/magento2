@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -95,41 +96,41 @@ QUERY;
                 'optionDataProvider' => [
                     'options' => [
                         [
-                            'title' => 'test_option_code_1'
+                            'title' => 'test_option_code_1',
                         ],
                         [
-                            'title' => 'area option'
+                            'title' => 'area option',
                         ],
                         [
-                            'title' => 'file option'
+                            'title' => 'file option',
                         ],
                         [
-                            'title' => 'radio option'
+                            'title' => 'radio option',
                         ],
                         [
-                            'title' => 'multiple option'
+                            'title' => 'multiple option',
                         ],
                         [
                             'title' => 'date option',
                             'values' => [
-                                'type' => 'DATE'
-                            ]
+                                'type' => 'DATE',
+                            ],
                         ],
                         [
                             'title' => 'date_time option',
                             'values' => [
-                                'type' => 'DATE_TIME'
-                            ]
+                                'type' => 'DATE_TIME',
+                            ],
                         ],
                         [
                             'title' => 'time option',
                             'values' => [
-                                'type' => 'TIME'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'type' => 'TIME',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

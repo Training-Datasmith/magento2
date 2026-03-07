@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class FieldTest extends TestCase
      */
     protected $testConfigData = [
         ['config', null, ['test-key' => 'test-value']],
-        ['js_config', null, ['test-key' => 'test-value']]
+        ['js_config', null, ['test-key' => 'test-value']],
     ];
 
     /**
@@ -108,7 +109,7 @@ class FieldTest extends TestCase
                     'name' => self::NAME,
                     'config' => [
                         'formElement' => 'test',
-                    ]
+                    ],
                 ],
                 'expectedData' => [
                     'name' => self::NAME,
@@ -118,8 +119,8 @@ class FieldTest extends TestCase
                     'js_config' => [
                         'extends' => self::NAME,
                         'test-key' => 'test-value',
-                    ]
-                ]
+                    ],
+                ],
             ],
         ];
     }

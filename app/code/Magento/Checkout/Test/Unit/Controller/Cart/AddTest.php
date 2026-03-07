@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -133,7 +134,7 @@ class AddTest extends TestCase
                 'quantityProcessor' => $this->quantityProcessor,
                 'addProductToCart' => $this->addProductToCart,
                 'cart' => $this->cart,
-                '_response' => $this->response
+                '_response' => $this->response,
             ]
         );
     }
@@ -177,7 +178,7 @@ class AddTest extends TestCase
             ->willReturnMap([
                 ['product', null, $productId],
                 ['related_product', null, '2,3'],
-                ['return_url', null, '/sku.html']
+                ['return_url', null, '/sku.html'],
             ]);
         $this->request->expects($this->once())
             ->method('getParams')

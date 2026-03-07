@@ -1,12 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Uploader;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
@@ -22,6 +24,7 @@ use Magento\Framework\Math\Random;
 use Magento\MediaStorage\Helper\File\Storage;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\MediaStorage\Model\File\Validator\NotProtectedExtension;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -113,7 +116,7 @@ class UploaderTest extends TestCase
             Uploader::class,
             ['_setUploadFile', 'save', 'getTmpDir', 'checkAllowedExtension']
         );
-        
+
         // Call constructor manually via reflection
         $reflection = new \ReflectionClass($this->uploader);
         $constructor = $reflection->getConstructor();
@@ -175,7 +178,7 @@ class UploaderTest extends TestCase
         // and move the temp file to the destination directory
         $this->directoryMock->expects($this->exactly(2))
             ->method('isWritable')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$destDir] => true,
                 [$tmpDir] => true
             });
@@ -193,7 +196,7 @@ class UploaderTest extends TestCase
             ->willReturn([
                 'name' => $expectedFileName,
                 'path' => 'absPath',
-                'file' => $returnFile
+                'file' => $returnFile,
             ]);
 
         $this->uploader->setDestDir($destDir);
@@ -251,7 +254,7 @@ class UploaderTest extends TestCase
             ->with($destDir)
             ->willReturn([
                 'name' => $fileName,
-                'file' => $destDir . DIRECTORY_SEPARATOR . $fileName // 256 characters
+                'file' => $destDir . DIRECTORY_SEPARATOR . $fileName, // 256 characters
             ]);
 
         $this->uploader->setDestDir($destDir);
@@ -269,7 +272,7 @@ class UploaderTest extends TestCase
         $driverPool->method('getDriver')->willReturn($driverMock);
 
         $readFactory = $this->createPartialMock(ReadFactory::class, ['create']);
-        
+
         // Set driverPool via reflection
         $reflection = new \ReflectionClass($readFactory);
         if ($reflection->hasProperty('driverPool')) {
@@ -283,7 +286,7 @@ class UploaderTest extends TestCase
 
         /** @var Uploader $uploaderMock */
         $uploaderMock = $this->createMock(Uploader::class);
-        
+
         // Call constructor manually via reflection
         $reflection = new \ReflectionClass($uploaderMock);
         $constructor = $reflection->getConstructor();
@@ -335,62 +338,62 @@ class UploaderTest extends TestCase
                 'fileUrl' => 'https://test_uploader_file',
                 'expectedHost' => 'test_uploader_file',
                 'expectedFileName' => 'test_uploader_file_38GcEmPFKXXR8NMj',
-                'checkAllowedExtension' => 0
+                'checkAllowedExtension' => 0,
             ],
             'https_invalid_chars' => [
                 'fileUrl' => 'https://www.google.com/!:^&`;image.jpg',
                 'expectedHost' => 'www.google.com/!:^&`;image.jpg',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpg',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_invalid_chars_no_file_ext' => [
                 'fileUrl' => 'https://!:^&`;image',
                 'expectedHost' => '!:^&`;image',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj',
-                'checkAllowedExtension' => 0
+                'checkAllowedExtension' => 0,
             ],
             'http_jpg' => [
                 'fileUrl' => 'http://www.google.com/image.jpg',
                 'expectedHost' => 'www.google.com/image.jpg',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpg',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_jpg' => [
                 'fileUrl' => 'https://www.google.com/image.jpg',
                 'expectedHost' => 'www.google.com/image.jpg',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpg',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_jpeg' => [
                 'fileUrl' => 'https://www.google.com/image.jpeg',
                 'expectedHost' => 'www.google.com/image.jpeg',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpeg',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_png' => [
                 'fileUrl' => 'https://www.google.com/image.png',
                 'expectedHost' => 'www.google.com/image.png',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.png',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_gif' => [
                 'fileUrl' => 'https://www.google.com/image.gif',
                 'expectedHost' => 'www.google.com/image.gif',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.gif',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_one_query_param' => [
                 'fileUrl' => 'https://www.google.com/image.jpg?param=1',
                 'expectedHost' => 'www.google.com/image.jpg?param=1',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpg',
-                'checkAllowedExtension' => 1
+                'checkAllowedExtension' => 1,
             ],
             'https_two_query_params' => [
                 'fileUrl' => 'https://www.google.com/image.jpg?param=1&param=2',
                 'expectedHost' => 'www.google.com/image.jpg?param=1&param=2',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj.jpg',
-                'checkAllowedExtension' => 1
-            ]
+                'checkAllowedExtension' => 1,
+            ],
         ];
     }
 }

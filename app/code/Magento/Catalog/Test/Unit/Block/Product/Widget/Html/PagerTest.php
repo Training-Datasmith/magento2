@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -254,7 +255,7 @@ class PagerTest extends TestCase
         return [
             'empty_collection_is_last_page' => [0, true],
             'small_collection_is_last_page' => [10, true],
-            'large_collection_not_last_page' => [20, false]
+            'large_collection_not_last_page' => [20, false],
         ];
     }
 
@@ -379,7 +380,7 @@ class PagerTest extends TestCase
         return [
             'param_invalid_defaults' => [0, 20, 10, 1, null],
             'param_valid_within_range' => [2, 100, 10, 2, null],
-            'param_greater_clamped_to_last' => [5, 20, 10, 2, null]
+            'param_greater_clamped_to_last' => [5, 20, 10, 2, null],
         ];
     }
 

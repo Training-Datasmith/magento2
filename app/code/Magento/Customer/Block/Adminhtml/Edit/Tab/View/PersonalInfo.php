@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab\View;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Controller\RegistryConstants;
 use Magento\Customer\Model\Address\Mapper;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Customer\Model\Customer;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Adminhtml customer view personal information sales block.

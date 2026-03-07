@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RouterList model test class
  *
@@ -46,7 +47,7 @@ class DefaultRouterTest extends TestCase
             DefaultRouter::class,
             [
                 'actionFactory' => $actionFactory,
-                'noRouteHandlerList' => $noRouteHandlerList
+                'noRouteHandlerList' => $noRouteHandlerList,
             ]
         );
         $this->assertInstanceOf(AbstractAction::class, $this->_model->match($request));

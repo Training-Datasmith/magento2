@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class DownloadableTest extends TestCase
             Downloadable::class,
             [
                 'context' => $contextMock,
-                'purchasedLink' => $purchasedLink
+                'purchasedLink' => $purchasedLink,
             ]
         );
     }

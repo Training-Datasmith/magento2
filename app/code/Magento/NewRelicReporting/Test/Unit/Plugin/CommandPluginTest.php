@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class CommandPluginTest extends TestCase
         /** @var CommandPlugin $commandPlugin */
         $commandPlugin = $this->objectManager->getObject(CommandPlugin::class, [
             'skipCommands' => $skippedCommands,
-            'newRelicWrapper' => $this->newRelicWrapperMock
+            'newRelicWrapper' => $this->newRelicWrapperMock,
         ]);
 
         return $commandPlugin;

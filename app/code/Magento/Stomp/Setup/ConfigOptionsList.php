@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const INPUT_KEY_QUEUE_STOMP_PASSWORD = 'stomp-password';
     public const INPUT_KEY_QUEUE_STOMP_SSL = 'stomp-ssl';
     public const INPUT_KEY_QUEUE_STOMP_SSL_OPTIONS = 'stomp-ssl-options';
-    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION ='queue-default-connection';
+    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION = 'queue-default-connection';
 
     /**
      * Path to the values in the deployment config
@@ -192,7 +193,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
             );
 
             if (!$result) {
-                $errors[] = "Could not connect to the Stomp Server.";
+                $errors[] = 'Could not connect to the Stomp Server.';
             }
 
             if (isset($options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION])

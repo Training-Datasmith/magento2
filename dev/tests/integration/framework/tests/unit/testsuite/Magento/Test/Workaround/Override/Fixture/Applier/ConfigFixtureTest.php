@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Test\Workaround\Override\Fixture\Applier;
 
 use Magento\TestFramework\Workaround\Override\Fixture\Applier\ConfigFixture;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Provide tests for \Magento\TestFramework\Workaround\Override\Fixture\Applier\ConfigFixture
@@ -319,7 +320,7 @@ class ConfigFixtureTest extends TestCase
                         'newValue' => 'new_value',
                         'scopeType' => 'store',
                         'scopeCode' => 'current',
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [
                     'current_store section/group/field new_value',
@@ -421,8 +422,8 @@ class ConfigFixtureTest extends TestCase
                         'path' => 'section/group/field',
                         'scopeType' => 'store',
                         'scopeCode' => 'current',
-                        'remove' => true
-                    ]
+                        'remove' => true,
+                    ],
                 ],
                 'expectedOrder' => [
                     'current_store section/group/field_2 another_value',
@@ -446,7 +447,7 @@ class ConfigFixtureTest extends TestCase
                         'scopeType' => 'store',
                         'scopeCode' => 'current',
                         'remove' => true,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [
                     'current_store section/group/field_3 one_more_value',

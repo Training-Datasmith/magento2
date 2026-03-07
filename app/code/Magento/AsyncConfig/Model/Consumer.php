@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -19,48 +20,19 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 class Consumer
 {
     /**
-     * Backend Config Model Factory
-     *
-     * @var Factory
-     */
-    private $configFactory;
-
-    /**
-     * @var Json
-     */
-    private $serializer;
-
-    /**
-     * @var ScopeInterface
-     */
-    private $scope;
-
-    /**
      * @var Save
      */
     private $save;
 
-    /**
-     * @var ConsoleOutput
-     */
-    private $output;
-
-    /**
-     * @param Factory $configFactory
-     * @param Json $json
-     * @param ScopeInterface $scope
-     * @param ConsoleOutput $output
-     */
     public function __construct(
-        Factory $configFactory,
-        Json $json,
-        ScopeInterface $scope,
-        ConsoleOutput $output
+        /**
+         * Backend Config Model Factory
+         */
+        private readonly Factory $configFactory,
+        private readonly Json $serializer,
+        private readonly ScopeInterface $scope,
+        private readonly ConsoleOutput $output
     ) {
-        $this->configFactory = $configFactory;
-        $this->serializer = $json;
-        $this->scope = $scope;
-        $this->output = $output;
         $this->scope->setCurrentScope('adminhtml');
         $this->save = ObjectManager::getInstance()->get(Save::class);
         $this->scope->setCurrentScope('global');
@@ -68,8 +40,6 @@ class Consumer
     /**
      * Process Consumer
      *
-     * @param AsyncConfigMessageInterface $asyncConfigMessage
-     * @return void
      * @throws \Exception
      */
     public function process(AsyncConfigMessageInterface $asyncConfigMessage): void

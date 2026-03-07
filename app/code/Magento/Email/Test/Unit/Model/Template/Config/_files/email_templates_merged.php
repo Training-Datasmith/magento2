@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,5 +20,5 @@ return [
         'type' => 'text',
         'module' => 'Fixture_ModuleTwo',
         'area' => 'adminhtml',
-    ]
+    ],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
 class MultiselectTest extends TestCase
 {
@@ -73,12 +74,12 @@ class MultiselectTest extends TestCase
             ],
             [
                 'param' => false,
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'param' => ['value'],
-                'expectedResult' => ['value']
-            ]
+                'expectedResult' => ['value'],
+            ],
         ];
     }
 
@@ -117,8 +118,8 @@ class MultiselectTest extends TestCase
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_ONELINE,
-                'expectedResult' => 'value1, value2'
-            ]
+                'expectedResult' => 'value1, value2',
+            ],
         ];
     }
 
@@ -171,7 +172,7 @@ class MultiselectTest extends TestCase
                 'isRequired' => true,
                 'skipRequiredValidation' => false,
                 'expectedResult' => ['"Test" is a required value.'],
-            ]
+            ],
         ];
     }
 }

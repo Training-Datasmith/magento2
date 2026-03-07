@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -121,21 +122,21 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 10,
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             'rule_fixed'
         ),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 2,
                 'simple_action' => Rule::BUY_X_GET_Y_ACTION,
                 'discount_step' => 3,
-                'sort_order' => 4
+                'sort_order' => 4,
             ],
             'rule_bxgy'
         ),
@@ -218,7 +219,7 @@ class DiscountTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle.id$',
                 'selections' => [['$simple1.id$'], ['$simple2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         )
     ]
@@ -293,7 +294,7 @@ class DiscountTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle.id$',
                 'selections' => [['$simple1.id$'], ['$simple2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         )
     ]
@@ -373,7 +374,7 @@ class DiscountTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle.id$',
                 'selections' => [['$simple1.id$'], ['$simple2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         )
     ]
@@ -421,7 +422,7 @@ class DiscountTest extends TestCase
                     'simple1' => 3,
                     'simple2' => 7.99,
                 ],
-                -10.99
+                -10.99,
             ],
             [
                 'simple1_cc',
@@ -430,7 +431,7 @@ class DiscountTest extends TestCase
                     'simple1' => 3,
                     'simple2' => 0,
                 ],
-                -3
+                -3,
             ],
             [
                 'simple2_cc',
@@ -439,8 +440,8 @@ class DiscountTest extends TestCase
                     'simple1' => 0,
                     'simple2' => 8,
                 ],
-                -8
-            ]
+                -8,
+            ],
         ];
     }
 
@@ -455,22 +456,22 @@ class DiscountTest extends TestCase
         DataFixture(ProductFixture::class, [
             'price' => 40,
             'sku' => 'p1',
-            'category_ids' => ['$c1.id$']
+            'category_ids' => ['$c1.id$'],
         ], 'p1'),
         DataFixture(ProductFixture::class, [
             'price' => 30,
             'sku' => 'p2',
-            'category_ids' => ['$c1.id$', '$c2.id$']
+            'category_ids' => ['$c1.id$', '$c2.id$'],
         ], 'p2'),
         DataFixture(ProductFixture::class, [
             'price' => 20,
             'sku' => 'p3',
-            'category_ids' => ['$c2.id$', '$c3.id$']
+            'category_ids' => ['$c2.id$', '$c3.id$'],
         ], 'p3'),
         DataFixture(ProductFixture::class, [
             'price' => 10,
             'sku' => 'p4',
-            'category_ids' => ['$c3.id$']
+            'category_ids' => ['$c3.id$'],
         ], 'p4'),
 
         DataFixture(
@@ -491,7 +492,7 @@ class DiscountTest extends TestCase
                         'attribute' => 'category_ids',
                         'operator' => '==',
                         'value' => '$c1.id$',
-                    ]
+                    ],
                 ],
             ],
             'cond1'
@@ -514,7 +515,7 @@ class DiscountTest extends TestCase
                         'attribute' => 'category_ids',
                         'operator' => '==',
                         'value' => '$c2.id$',
-                    ]
+                    ],
                 ],
             ],
             'cond2'
@@ -537,7 +538,7 @@ class DiscountTest extends TestCase
                         'attribute' => 'category_ids',
                         'operator' => '==',
                         'value' => '$c3.id$',
-                    ]
+                    ],
                 ],
             ],
             'cond3'
@@ -545,12 +546,12 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'coupon_code' => 'test',
                 'discount_amount' => 10,
                 'actions' => ['$cond1$'],
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             'rule1'
         ),
@@ -560,18 +561,18 @@ class DiscountTest extends TestCase
                 'discount_amount' => 5,
                 'actions' => ['$cond2$'],
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 1
+                'sort_order' => 1,
             ],
             'rule2'
         ),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 2,
                 'actions' => ['$cond3$'],
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 2
+                'sort_order' => 2,
             ],
             'rule3'
         ),
@@ -688,7 +689,7 @@ class DiscountTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p1.id$', '$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         )
     ]
@@ -709,26 +710,26 @@ class DiscountTest extends TestCase
         DataFixture(ProductFixture::class, [
             'price' => 123,
             'sku' => 'p1',
-            'category_ids' => ['$c1.id$']
+            'category_ids' => ['$c1.id$'],
         ], 'p1'),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 10,
                 'simple_action' => Rule::BY_FIXED_ACTION,
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             'rule1'
         ),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 20,
                 'simple_action' => Rule::BY_PERCENT_ACTION,
                 'discount_step' => 3,
-                'sort_order' => 2
+                'sort_order' => 2,
             ],
             'rule2'
         ),
@@ -738,7 +739,7 @@ class DiscountTest extends TestCase
                 'discount_amount' => 3,
                 'simple_action' => Rule::BUY_X_GET_Y_ACTION,
                 'discount_step' => 5,
-                'sort_order' => 4
+                'sort_order' => 4,
             ],
             'rule3'
         ),
@@ -807,16 +808,16 @@ class DiscountTest extends TestCase
         DataFixture(ProductFixture::class, [
             'price' => 123,
             'sku' => 'p1',
-            'category_ids' => ['$c1.id$']
+            'category_ids' => ['$c1.id$'],
         ], 'p1'),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 33,
                 'simple_action' => Rule::CART_FIXED_ACTION,
                 'discount_step' => 3,
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             'rule1'
         ),
@@ -869,7 +870,7 @@ class DiscountTest extends TestCase
             [
                 'price' => 123,
                 'sku' => 'p1',
-                'category_ids' => ['$c1.id$']
+                'category_ids' => ['$c1.id$'],
             ],
             'p1'
         ),
@@ -928,23 +929,23 @@ class DiscountTest extends TestCase
             RuleFixture::class,
             [
                 'coupon_code' => '%uniqid%',
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 30,
                 'simple_action' => Rule::BY_PERCENT_ACTION,
-                'sort_order' => 1
+                'sort_order' => 1,
             ],
             'rule1'
         ),
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 10,
                 'simple_action' => Rule::BY_FIXED_ACTION,
                 'sort_order' => 2,
                 'apply_to_shipping' => 1,
                 'conditions' => [
-                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 75]
+                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 75],
                 ],
             ],
             'rule2'
@@ -1000,7 +1001,7 @@ class DiscountTest extends TestCase
             RuleFixture::class,
             [
                 'coupon_code' => '%uniqid%',
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 30,
                 'simple_action' => Rule::BY_PERCENT_ACTION,
                 'sort_order' => 1,
@@ -1010,13 +1011,13 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 10,
                 'simple_action' => Rule::BY_FIXED_ACTION,
                 'sort_order' => 2,
                 'apply_to_shipping' => 1,
                 'conditions' => [
-                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 75]
+                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 75],
                 ],
                 'actions' => [
                     // Ensures that the discount is applied to shipping only
@@ -1078,12 +1079,12 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 1,
+                'stop_rules_processing' => 1,
                 'discount_amount' => 50,
                 'simple_action' => Rule::BY_PERCENT_ACTION,
                 'sort_order' => 1,
                 'actions' => [
-                    ['attribute' => 'sku', 'value' => '$p1.sku$']
+                    ['attribute' => 'sku', 'value' => '$p1.sku$'],
                 ],
             ],
             'rule1'
@@ -1091,16 +1092,16 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 25,
                 'simple_action' => Rule::BY_PERCENT_ACTION,
                 'sort_order' => 2,
                 'apply_to_shipping' => 0,
                 'conditions' => [
-                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '<', 'value' => 300]
+                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '<', 'value' => 300],
                 ],
                 'actions' => [
-                    ['attribute' => 'sku', 'value' => '$p2.sku$']
+                    ['attribute' => 'sku', 'value' => '$p2.sku$'],
                 ],
             ],
             'rule2'
@@ -1108,12 +1109,12 @@ class DiscountTest extends TestCase
         DataFixture(
             RuleFixture::class,
             [
-                'stop_rules_processing'=> 0,
+                'stop_rules_processing' => 0,
                 'discount_amount' => 30,
                 'simple_action' => Rule::BY_FIXED_ACTION,
                 'sort_order' => 3,
                 'conditions' => [
-                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 250]
+                    ['attribute' => 'base_subtotal_with_discount', 'operator' => '>', 'value' => 250],
                 ],
             ],
             'rule3'
@@ -1147,7 +1148,7 @@ class DiscountTest extends TestCase
         // Check that rule3 is not applied because it requires subtotal with discount to be greater than 250
         $this->assertEquals([$rule1Id, $rule2Id], explode(',', $cart->getAppliedRuleIds()));
         // rule2 is applied shipping only
-        $items= [];
+        $items = [];
         foreach ($cart->getAllItems() as $item) {
             $items[$item->getProductId()] = $item;
         }

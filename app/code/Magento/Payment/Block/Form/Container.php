@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Block\Form;
 
 use Magento\Framework\App\ObjectManager;
@@ -97,7 +100,7 @@ class Container extends \Magento\Framework\View\Element\Template
                 AbstractMethod::CHECK_USE_FOR_COUNTRY,
                 AbstractMethod::CHECK_USE_FOR_CURRENCY,
                 AbstractMethod::CHECK_ORDER_TOTAL_MIN_MAX,
-                AbstractMethod::CHECK_ZERO_TOTAL
+                AbstractMethod::CHECK_ZERO_TOTAL,
             ],
             $this->additionalChecks
         );

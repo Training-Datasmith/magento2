@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\CatalogInventory\Model;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Catalog\Model\Product\Website as ProductWebsite;
 use Magento\CatalogInventory\Api\StockIndexInterface;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\Status as StockStatusResourceModel;
 use Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\Website;
 

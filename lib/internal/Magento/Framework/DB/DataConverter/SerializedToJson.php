@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All rights reserved.
  */
+
 namespace Magento\Framework\DB\DataConverter;
 
 use Magento\Framework\Serialize\Serializer\Json;

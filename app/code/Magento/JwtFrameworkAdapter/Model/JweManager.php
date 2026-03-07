@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,6 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\JwtFrameworkAdapter\Model;
 
+use Jose\Component\Core\JWK as AdapterJwk;
+use Jose\Component\Core\JWKSet as AdapterJwkSet;
 use Jose\Component\Encryption\JWEBuilder;
 use Jose\Component\Encryption\JWELoader;
 use Jose\Component\Encryption\Serializer\JWESerializerManager;
@@ -19,10 +22,7 @@ use Magento\Framework\Jwt\HeaderInterface;
 use Magento\Framework\Jwt\Jwe\JweEncryptionJwks;
 use Magento\Framework\Jwt\Jwe\JweHeader;
 use Magento\Framework\Jwt\Jwe\JweInterface;
-use Jose\Component\Core\JWK as AdapterJwk;
-use Jose\Component\Core\JWKSet as AdapterJwkSet;
 use Magento\Framework\Jwt\Jwk;
-use Magento\Framework\Jwt\Jws\JwsHeader;
 use Magento\Framework\Jwt\Payload\ClaimsPayloadInterface;
 use Magento\JwtFrameworkAdapter\Model\Data\Header;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -276,7 +277,7 @@ class SubscriberTest extends TestCase
         $emailXpath = new \DOMXPath($emailDom);
         $greeting = $emailXpath->query("//p[contains(text(), '$expectedMessage')]");
 
-        $this->assertSame(1, $greeting->length, "Cannot find the confirmation paragraph in e-mail contents");
+        $this->assertSame(1, $greeting->length, 'Cannot find the confirmation paragraph in e-mail contents');
     }
 
     /**

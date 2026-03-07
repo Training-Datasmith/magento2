@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for Magento\Cookie\Model\Config\Backend\Path
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cookie\Model\Config\Backend;
 
 class PathTest extends \PHPUnit\Framework\TestCase

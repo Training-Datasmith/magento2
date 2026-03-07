@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class AjaxTest extends TestCase
 
         $mockProduct = $this->createPartialMock(Product::class, ['getOptions']);
         $mockProduct->method('getOptions')->willReturn([]);
-        
+
         $optionsBlock = $this->createPartialMockWithReflection(
             Option::class,
             ['setIgnoreCaching', 'setProduct', 'getChildHtml', 'getProduct', 'toHtml', 'getOptionValues']
@@ -122,7 +123,7 @@ class AjaxTest extends TestCase
                 'context' => $this->context,
                 'jsonEncoder' => $this->encoderInterface,
                 'productFactory' => $this->productFactory,
-                'registry' => $this->registry
+                'registry' => $this->registry,
             ]
         );
         $this->block->toHtml();

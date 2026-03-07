@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class CategoryProcessUrlRewriteSavingObserverTest extends TestCase
                 'urlRewriteBunchReplacer' => $this->urlRewriteBunchReplacerMock,
                 'databaseMapPool' => $this->databaseMapPoolMock,
                 'storeGroupFactory' => $this->storeGroupFactory,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -149,7 +150,7 @@ class CategoryProcessUrlRewriteSavingObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['url_key', false],
-                    ['is_anchor', false]
+                    ['is_anchor', false],
                 ]
             );
         $this->category->expects($this->once())
@@ -178,7 +179,7 @@ class CategoryProcessUrlRewriteSavingObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['url_key', false],
-                    ['is_anchor', false]
+                    ['is_anchor', false],
                 ]
             );
         $this->category->expects($this->once())
@@ -209,7 +210,7 @@ class CategoryProcessUrlRewriteSavingObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['url_key', true],
-                    ['is_anchor', false]
+                    ['is_anchor', false],
                 ]
             );
         $this->category->expects($this->any())
@@ -230,7 +231,7 @@ class CategoryProcessUrlRewriteSavingObserverTest extends TestCase
             ->willReturn($result2);
         $this->urlRewriteBunchReplacerMock
             ->method('doBunchReplace')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 [$result1] => null,
                 [$result2] => null,
             });

@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Cart\Item\Renderer;
 
-use Magento\Catalog\Model\Config\Source\Product\Thumbnail as ThumbnailSource;
 use Magento\Checkout\Block\Cart\Item\Renderer;
 use Magento\Framework\DataObject\IdentityInterface;
 
@@ -22,7 +24,7 @@ class Configurable extends Renderer implements IdentityInterface
      * @deprecated moved to model because of class refactoring
      * @see \Magento\ConfigurableProduct\Model\Product\Configuration\Item\ItemProductResolver::CONFIG_THUMBNAIL_SOURCE
      */
-    const CONFIG_THUMBNAIL_SOURCE = 'checkout/cart/configurable_product_image';
+    public const CONFIG_THUMBNAIL_SOURCE = 'checkout/cart/configurable_product_image';
 
     /**
      * Get item configurable child product

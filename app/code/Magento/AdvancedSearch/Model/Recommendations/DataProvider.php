@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Recommendations;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Search\Model\QueryInterface;
 use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Search\Model\QueryInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class DataProvider implements SuggestedQueriesInterface
 {
@@ -41,30 +44,19 @@ class DataProvider implements SuggestedQueriesInterface
     protected $searchLayer;
 
     /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
      * @var \Magento\AdvancedSearch\Model\ResourceModel\RecommendationsFactory
      */
     private $recommendationsFactory;
 
     /**
      * DataProvider constructor.
-     *
-     * @param ScopeConfigInterface $scopeConfig
-     * @param \Magento\Catalog\Model\Layer\Resolver $layerResolver
-     * @param \Magento\AdvancedSearch\Model\ResourceModel\RecommendationsFactory $recommendationsFactory
-     * @param \Magento\Search\Model\QueryResultFactory $queryResultFactory
      */
     public function __construct(
-        ScopeConfigInterface $scopeConfig,
+        private readonly ScopeConfigInterface $scopeConfig,
         \Magento\Catalog\Model\Layer\Resolver $layerResolver,
         \Magento\AdvancedSearch\Model\ResourceModel\RecommendationsFactory $recommendationsFactory,
         \Magento\Search\Model\QueryResultFactory $queryResultFactory
     ) {
-        $this->scopeConfig = $scopeConfig;
         $this->searchLayer = $layerResolver->get();
         $this->recommendationsFactory = $recommendationsFactory;
         $this->queryResultFactory = $queryResultFactory;
@@ -85,8 +77,9 @@ class DataProvider implements SuggestedQueriesInterface
 
     /**
      * @inheritdoc
+     * @return mixed[]
      */
-    public function getItems(QueryInterface $query)
+    public function getItems(QueryInterface $query): array
     {
         $recommendations = [];
 
@@ -108,7 +101,6 @@ class DataProvider implements SuggestedQueriesInterface
     /**
      * Return Search Recommendations
      *
-     * @param QueryInterface $query
      * @return array
      */
     private function getSearchRecommendations(\Magento\Search\Model\QueryInterface $query)
@@ -146,10 +138,8 @@ class DataProvider implements SuggestedQueriesInterface
 
     /**
      * Return Search Recommendations Count
-     *
-     * @return int
      */
-    private function getSearchRecommendationsCount()
+    private function getSearchRecommendationsCount(): int
     {
         return (int)$this->scopeConfig->getValue(
             self::CONFIG_RESULTS_COUNT,

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Cache\Type;
 
 /**
@@ -13,12 +16,12 @@ class Notification extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'customer_notification';
+    public const TYPE_IDENTIFIER = 'customer_notification';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'CUSTOMER_NOTIFICATION';
+    public const CACHE_TAG = 'CUSTOMER_NOTIFICATION';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool

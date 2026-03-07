@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class CustomerGroup implements RevertibleDataFixtureInterface
     {
         $customerGroup = $this->serviceFactory->create(GroupRepositoryInterface::class, 'save')->execute(
             [
-                'group' => $this->dataProcessor->process($this, $this->dataMerger->merge(self::DEFAULT_DATA, $data))
+                'group' => $this->dataProcessor->process($this, $this->dataMerger->merge(self::DEFAULT_DATA, $data)),
             ]
         );
 
@@ -85,7 +86,7 @@ class CustomerGroup implements RevertibleDataFixtureInterface
     {
         $this->serviceFactory->create(GroupRepositoryInterface::class, 'deleteById')->execute(
             [
-                'id' => $data->getId()
+                'id' => $data->getId(),
             ]
         );
     }

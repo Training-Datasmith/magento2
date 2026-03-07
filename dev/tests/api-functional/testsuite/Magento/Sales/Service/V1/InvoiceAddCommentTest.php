@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class InvoiceAddCommentTest extends WebapiAbstract
             InvoiceCommentInterface::CREATED_AT => null,
             InvoiceCommentInterface::PARENT_ID => $invoice->getId(),
             InvoiceCommentInterface::IS_VISIBLE_ON_FRONT => 1,
-            InvoiceCommentInterface::IS_CUSTOMER_NOTIFIED => 1
+            InvoiceCommentInterface::IS_CUSTOMER_NOTIFIED => 1,
         ];
 
         $requestData = ['entity' => $commentData];

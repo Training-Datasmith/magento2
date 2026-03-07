@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Catalog;
 
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 class ProductAttributeOptionsTest extends GraphQlAbstract
 {
@@ -71,27 +72,27 @@ QUERY;
             [
                 [
                     'label' => 'Enabled',
-                    'value' => '1'
+                    'value' => '1',
                 ],
                 [
                     'label' => 'Disabled',
-                    'value' => '2'
-                ]
+                    'value' => '2',
+                ],
             ],
             [
                 [
                     'label' => 'Option 1',
-                    'value' => $optionValues[0]
+                    'value' => $optionValues[0],
                 ],
                 [
                     'label' => 'Option 2',
-                    'value' => $optionValues[1]
+                    'value' => $optionValues[1],
                 ],
                 [
                     'label' => 'Option 3',
-                    'value' => $optionValues[2]
-                ]
-            ]
+                    'value' => $optionValues[2],
+                ],
+            ],
         ];
 
         $this->assertNotEmpty($response['customAttributeMetadata']['items']);
@@ -139,7 +140,7 @@ QUERY;
             'use_in_product_listing' => true,
             'use_in_layered_navigation' => 'NO',
             'use_in_search_results_layered_navigation' => false,
-            'visible_on_catalog_pages' => true
+            'visible_on_catalog_pages' => true,
         ];
         $this->assertEquals($expectedStorefrontProperties, $actualStorefrontPropery);
     }

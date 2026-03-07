@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class XsdTest extends TestCase
     {
         return [
             'product_options' => ['export.xsd', 'export_valid.xml'],
-            'product_options_merged' => ['export_merged.xsd', 'export_merged_valid.xml']
+            'product_options_merged' => ['export_merged.xsd', 'export_merged_valid.xml'],
         ];
     }
 

@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestSetupDeclarationModule7\Setup\Patch\Data;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
@@ -54,7 +56,7 @@ class SomePatch implements
     public function apply()
     {
         $adapter = $this->resourceConnection->getConnection();
-        $adapter->insert('test_table', ['varchar' => "_ref"]);
+        $adapter->insert('test_table', ['varchar' => '_ref']);
     }
 
     /**

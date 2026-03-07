@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block\Role;
 
 /**
@@ -70,7 +73,7 @@ class Edit extends \Magento\Backend\Block\Widget\Tabs
                     'content' => $this->getLayout()->createBlock(
                         \Magento\User\Block\Role\Tab\Users::class,
                         'role.users.grid'
-                    )->toHtml()
+                    )->toHtml(),
                 ]
             );
         }

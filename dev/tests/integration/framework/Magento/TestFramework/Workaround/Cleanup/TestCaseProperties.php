@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Automatic cleanup of test case's properties, it isn't needed to unset properties manually in tearDown() anymore
  */
+
 namespace Magento\TestFramework\Workaround\Cleanup;
 
 class TestCaseProperties

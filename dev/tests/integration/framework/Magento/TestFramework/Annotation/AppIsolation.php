@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -131,8 +134,8 @@ class AppIsolation
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\AppIsolation::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\AppIsolation::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\AppIsolation::class),
+                    ],
                 ]
             );
         $values = $parsers->parse($test, ParserInterface::SCOPE_METHOD)

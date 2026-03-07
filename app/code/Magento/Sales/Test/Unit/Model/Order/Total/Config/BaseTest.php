@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,17 +11,16 @@ namespace Magento\Sales\Test\Unit\Model\Order\Total\Config;
 use Magento\Framework\App\Cache\Type\Config;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Config as SalesConfig;
 use Magento\Sales\Model\Order\Total\AbstractTotal;
 use Magento\Sales\Model\Order\Total\Config\Base;
 use Magento\Sales\Model\Order\TotalFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Sales\Model\Config as SalesConfig;
 
 class BaseTest extends TestCase
 {
-
     /** @var Base */
     private $object;
 

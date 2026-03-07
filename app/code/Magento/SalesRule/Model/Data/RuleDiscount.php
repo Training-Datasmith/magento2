@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Data;
 
+use Magento\Framework\Api\AbstractExtensibleObject;
 use Magento\Framework\Api\ExtensionAttributesInterface;
 use Magento\SalesRule\Api\Data\RuleDiscountInterface;
-use Magento\Framework\Api\AbstractExtensibleObject;
 
 /**
  * Data Model for Rule Discount
  */
 class RuleDiscount extends AbstractExtensibleObject implements RuleDiscountInterface
 {
-    const KEY_DISCOUNT_DATA = 'discount';
-    const KEY_RULE_LABEL = 'rule';
-    const KEY_RULE_ID = 'rule_id';
+    public const KEY_DISCOUNT_DATA = 'discount';
+    public const KEY_RULE_LABEL = 'rule';
+    public const KEY_RULE_ID = 'rule_id';
 
     /**
      * Get Discount Data

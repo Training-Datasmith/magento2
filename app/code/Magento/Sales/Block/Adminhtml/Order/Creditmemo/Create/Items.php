@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Creditmemo\Create;
 
 /**
@@ -67,7 +70,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
                     [
                         'label' => __('Refund'),
                         'class' => 'save submit-button refund primary',
-                        'onclick' => 'disableElements(\'submit-button\');submitCreditMemo()'
+                        'onclick' => 'disableElements(\'submit-button\');submitCreditMemo()',
                     ]
                 );
             }
@@ -77,7 +80,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
                 [
                     'label' => __('Refund Offline'),
                     'class' => 'save submit-button primary',
-                    'onclick' => 'disableElements(\'submit-button\');submitCreditMemoOffline()'
+                    'onclick' => 'disableElements(\'submit-button\');submitCreditMemoOffline()',
                 ]
             );
         } else {
@@ -87,7 +90,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
                 [
                     'label' => __('Refund Offline'),
                     'class' => 'save submit-button primary',
-                    'onclick' => 'disableElements(\'submit-button\');submitCreditMemoOffline()'
+                    'onclick' => 'disableElements(\'submit-button\');submitCreditMemoOffline()',
                 ]
             );
         }
@@ -187,7 +190,7 @@ class Items extends \Magento\Sales\Block\Adminhtml\Items\AbstractItems
             'sales/*/updateQty',
             [
                 'order_id' => $this->getCreditmemo()->getOrderId(),
-                'invoice_id' => $this->getRequest()->getParam('invoice_id', null)
+                'invoice_id' => $this->getRequest()->getParam('invoice_id', null),
             ]
         );
     }

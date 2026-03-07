@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\Model\Resolver\Products\Query;
 
 use Magento\AdvancedSearch\Model\SuggestedQueries;
-use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\CatalogGraphQl\Model\QueryProcessor;
+use Magento\GraphQl\Model\Query\ContextInterface;
 
 /**
  * Search suggestions implementations for GraphQL
@@ -45,7 +46,7 @@ class Suggestions
      * @param string $queryText
      * @return array
      */
-    public function execute(ContextInterface $context, string $queryText) : array
+    public function execute(ContextInterface $context, string $queryText): array
     {
         $result = [];
         $query = $this->queryProcessor->prepare($context, $queryText);

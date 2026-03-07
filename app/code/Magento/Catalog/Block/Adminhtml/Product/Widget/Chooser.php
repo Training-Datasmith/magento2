@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Widget;
 
 use Magento\Backend\Block\Widget\Grid;
@@ -277,7 +280,7 @@ class Chooser extends Extended
                     'values' => $this->getSelectedProducts(),
                     'align' => 'center',
                     'index' => 'entity_id',
-                    'use_index' => true
+                    'use_index' => true,
                 ]
             );
         }
@@ -289,7 +292,7 @@ class Chooser extends Extended
                 'sortable' => true,
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
         $this->addColumn(
@@ -299,7 +302,7 @@ class Chooser extends Extended
                 'name' => 'chooser_sku',
                 'index' => 'sku',
                 'header_css_class' => 'col-sku',
-                'column_css_class' => 'col-sku'
+                'column_css_class' => 'col-sku',
             ]
         );
         $this->addColumn(
@@ -309,7 +312,7 @@ class Chooser extends Extended
                 'name' => 'chooser_name',
                 'index' => 'name',
                 'header_css_class' => 'col-product',
-                'column_css_class' => 'col-product'
+                'column_css_class' => 'col-product',
             ]
         );
 
@@ -330,7 +333,7 @@ class Chooser extends Extended
                 '_current' => true,
                 'uniq_id' => $this->getId(),
                 'use_massaction' => $this->getUseMassaction(),
-                'product_type_id' => $this->getProductTypeId()
+                'product_type_id' => $this->getProductTypeId(),
             ]
         );
     }

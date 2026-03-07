@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Controller\Adminhtml\User;
 
 use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
@@ -14,7 +17,7 @@ abstract class Role extends \Magento\Backend\App\AbstractAction
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_User::acl_roles';
+    public const ADMIN_RESOURCE = 'Magento_User::acl_roles';
 
     /**
      * Core registry

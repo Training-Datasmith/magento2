@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -71,12 +72,12 @@ class StoreCodeValidatorTest extends TestCase
             'true' => [
                 'abc',
                 true,
-                []
+                [],
             ],
             'false' => [
                 '5',
                 false,
-                ['code is not valid']
+                ['code is not valid'],
             ],
         ];
     }

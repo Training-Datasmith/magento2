@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Magento\Bundle\Model\CartItemProcessor;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Framework\DataObject;
 use Magento\Framework\DataObject\Factory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\ProductOptionExtensionFactory;
 use Magento\Quote\Api\Data\ProductOptionExtensionInterface;
 use Magento\Quote\Api\Data\ProductOptionInterfaceFactory;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\ProductOption;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -88,7 +89,7 @@ class CartItemProcessorTest extends TestCase
         );
         $requestDataMock = [
             'bundle_option' => [$optionId => $optionSelections],
-            'bundle_option_qty' => [$optionId => $optionQty]
+            'bundle_option_qty' => [$optionId => $optionQty],
         ];
 
         $optionExtensionMock->method('getBundleOptions')->willReturn([$bundleOptionMock]);
@@ -115,13 +116,13 @@ class CartItemProcessorTest extends TestCase
         $optionId = 4;
         $optionSelections = 42;
         $optionQty = 1;
-        $bundleOption = [$optionId => $optionSelections, 5 => ""];
+        $bundleOption = [$optionId => $optionSelections, 5 => ''];
         $bundleOptionQty = [$optionId => $optionQty];
 
         $buyRequestMock = new DataObject(
             [
                 'bundle_option' => $bundleOption,
-                'bundle_option_qty' => $bundleOptionQty
+                'bundle_option_qty' => $bundleOptionQty,
             ]
         );
         $cartItemMock = $this->createMock(Item::class);

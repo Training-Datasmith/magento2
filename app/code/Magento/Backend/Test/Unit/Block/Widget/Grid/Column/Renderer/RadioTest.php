@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Converter;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio;
 use Magento\Framework\DataObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -95,7 +96,7 @@ class RadioTest extends TestCase
             'not checked' => [
                 ['id' => 2, 'label' => 'Two'],
                 '<input type="radio" name="test[]" value="2" class="radio"/>',
-            ]
+            ],
         ];
     }
 }

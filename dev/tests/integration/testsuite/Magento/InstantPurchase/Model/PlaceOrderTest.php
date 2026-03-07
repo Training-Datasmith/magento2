@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model;
 
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
@@ -13,8 +16,8 @@ use Magento\Customer\Model\Customer;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\TestCase;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @magentoAppIsolation enabled
@@ -115,7 +118,7 @@ class PlaceOrderTest extends TestCase
         $this->invokeTestProductPlacement(
             $downloadable->getSku(),
             [
-                'links' => $selectedLinks
+                'links' => $selectedLinks,
             ],
             'Downloadable Product Ordered.'
         );
@@ -162,7 +165,7 @@ class PlaceOrderTest extends TestCase
             array_merge(
                 [
                     'qty' => '1',
-                    'options' => $this->createProductOptionsRequest($product)
+                    'options' => $this->createProductOptionsRequest($product),
                 ],
                 $productRequest
             )
@@ -249,7 +252,7 @@ class PlaceOrderTest extends TestCase
                         'month' => date('n'),
                         'day' => date('j'),
                         'hour' => date('G'),
-                        'minute' => date('i')
+                        'minute' => date('i'),
                     ];
                     break;
                 case ProductCustomOptionInterface::OPTION_GROUP_SELECT:

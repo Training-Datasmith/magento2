@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class DeleteEntityRowTest extends TestCase
     public function testExecute()
     {
         $data = [
-            'entity_id' => 1
+            'entity_id' => 1,
         ];
 
         $this->connection->expects($this->once())

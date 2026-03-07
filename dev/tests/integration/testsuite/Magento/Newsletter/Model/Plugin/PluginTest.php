@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Model\Plugin;
 
 use Magento\Customer\Test\Fixture\Customer;
@@ -298,7 +301,7 @@ class PluginTest extends \PHPUnit\Framework\TestCase
             ],
         ])->setTemplateOptions([
             'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
-            'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID
+            'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
         ])
         ->addTo('customer@example.com')
         ->getTransport();
@@ -360,7 +363,7 @@ class PluginTest extends \PHPUnit\Framework\TestCase
 
         $expectedCustomerSubscriptionMap = [
             $customerDefaultWebsite->getId() => true,
-            $customerCustomWebsite->getId() => false
+            $customerCustomWebsite->getId() => false,
         ];
 
         $actualCustomerSubscriptionMap = [];

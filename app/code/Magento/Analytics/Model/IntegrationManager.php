@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Analytics\Model;
 
+use Magento\Config\Model\Config as SystemConfig;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Integration\Api\IntegrationServiceInterface;
-use Magento\Config\Model\Config as SystemConfig;
-use Magento\Integration\Model\Integration;
 use Magento\Integration\Api\OauthServiceInterface;
+use Magento\Integration\Model\Integration;
 
 /**
  * Manages the integration user at magento side.
@@ -20,44 +22,18 @@ use Magento\Integration\Api\OauthServiceInterface;
 class IntegrationManager
 {
     /**
-     * @var SystemConfig
-     */
-    private $config;
-
-    /**
-     * @var IntegrationServiceInterface
-     */
-    private $integrationService;
-
-    /**
-     * @var OauthServiceInterface
-     */
-    private $oauthService;
-
-    /**
      * IntegrationManager constructor
-     *
-     * @param SystemConfig $config
-     * @param IntegrationServiceInterface $integrationService
-     * @param OauthServiceInterface $oauthService
      */
-    public function __construct(
-        SystemConfig $config,
-        IntegrationServiceInterface $integrationService,
-        OauthServiceInterface $oauthService
-    ) {
-        $this->integrationService = $integrationService;
-        $this->config = $config;
-        $this->oauthService = $oauthService;
+    public function __construct(private readonly SystemConfig $config, private readonly IntegrationServiceInterface $integrationService, private readonly OauthServiceInterface $oauthService)
+    {
     }
 
     /**
      * Activate predefined integration user
      *
-     * @return bool
      * @throws NoSuchEntityException
      */
-    public function activateIntegration()
+    public function activateIntegration(): bool
     {
         $integration = $this->integrationService->findByName(
             $this->config->getConfigDataValue('analytics/integration_name')
@@ -81,7 +57,7 @@ class IntegrationManager
         $consumerId = $this->generateIntegration()->getConsumerId();
         $accessToken = $this->oauthService->getAccessToken($consumerId);
         if (!$accessToken && $this->oauthService->createAccessToken($consumerId, true)) {
-            $accessToken = $this->oauthService->getAccessToken($consumerId);
+            return $this->oauthService->getAccessToken($consumerId);
         }
         return $accessToken;
     }
@@ -97,28 +73,24 @@ class IntegrationManager
             $this->config->getConfigDataValue('analytics/integration_name')
         );
         if (!$integration->getId()) {
-            $integration = $this->integrationService->create($this->getIntegrationData());
+            return $this->integrationService->create($this->getIntegrationData());
         }
         return $integration;
     }
 
     /**
      * Returns default attributes for MA integration user
-     *
-     * @param int $status
-     * @return array
      */
-    private function getIntegrationData($status = Integration::STATUS_INACTIVE)
+    private function getIntegrationData(int $status = Integration::STATUS_INACTIVE): array
     {
-        $integrationData = [
+        return [
             'name' => $this->config->getConfigDataValue('analytics/integration_name'),
             'status' => $status,
             'all_resources' => false,
             'resource' => [
                 'Magento_Analytics::analytics',
-                'Magento_Analytics::analytics_api'
+                'Magento_Analytics::analytics_api',
             ],
         ];
-        return $integrationData;
     }
 }

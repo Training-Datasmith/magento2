@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,13 +59,13 @@ class Identifier
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterGetValue(\Magento\Framework\App\PageCache\Identifier $identifier, string $result) : string
+    public function afterGetValue(\Magento\Framework\App\PageCache\Identifier $identifier, string $result): string
     {
         if ($this->config->isEnabled()) {
             $data = [
                 $this->request->isSecure(),
                 $this->request->getUriString(),
-                $this->context->getVaryString()
+                $this->context->getVaryString(),
             ];
             $result = sha1($this->serializer->serialize($data));
         }

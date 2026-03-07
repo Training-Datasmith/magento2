@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -180,7 +181,7 @@ QUERY;
      * @param string $type option type
      * @return array
      */
-    private function buildExpectedValuesArray(string $assignedValue, string $type) : array
+    private function buildExpectedValuesArray(string $assignedValue, string $type): array
     {
         if ($type === 'date') {
             return [['value' => date('M d, Y', strtotime($assignedValue))]];

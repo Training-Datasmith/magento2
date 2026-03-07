@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\Form\Element\Multiline;
 use Magento\Ui\Component\Form\Field;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,7 +25,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MultilineTest extends TestCase
 {
-    const NAME = 'test-name';
+    public const NAME = 'test-name';
 
     /**
      * @var Multiline
@@ -108,7 +109,7 @@ class MultilineTest extends TestCase
                     'name' => self::NAME,
                     'config' => [
                         'size' => 2,
-                    ]
+                    ],
                 ],
             ],
             [
@@ -116,7 +117,7 @@ class MultilineTest extends TestCase
                     'name' => self::NAME,
                     'config' => [
                         'size' => 3,
-                    ]
+                    ],
                 ],
             ],
             [
@@ -124,7 +125,7 @@ class MultilineTest extends TestCase
                     'name' => self::NAME,
                     'config' => [
                         'size' => 1,
-                    ]
+                    ],
                 ],
             ],
             [
@@ -132,7 +133,7 @@ class MultilineTest extends TestCase
                     'name' => self::NAME,
                     'config' => [
                         'size' => 5,
-                    ]
+                    ],
                 ],
             ],
         ];

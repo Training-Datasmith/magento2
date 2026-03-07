@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,9 +39,9 @@ class ValueHandlerPoolTest extends TestCase
                 [
                     'array' => [
                         ValueHandlerPool::DEFAULT_HANDLER => ValueHandlerInterface::class,
-                        'some_value' => ValueHandlerInterface::class
+                        'some_value' => ValueHandlerInterface::class,
                     ],
-                    'type' => ValueHandlerInterface::class
+                    'type' => ValueHandlerInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -49,7 +50,7 @@ class ValueHandlerPoolTest extends TestCase
             ->willReturnMap(
                 [
                     [ValueHandlerPool::DEFAULT_HANDLER, true],
-                    ['some_value', true]
+                    ['some_value', true],
                 ]
             );
         $tMap->expects(static::exactly(3))
@@ -57,7 +58,7 @@ class ValueHandlerPoolTest extends TestCase
             ->willReturnMap(
                 [
                     [ValueHandlerPool::DEFAULT_HANDLER, $defaultHandler],
-                    ['some_value', $someValueHandler]
+                    ['some_value', $someValueHandler],
                 ]
             );
 
@@ -65,7 +66,7 @@ class ValueHandlerPoolTest extends TestCase
             $tMapFactory,
             [
                 ValueHandlerPool::DEFAULT_HANDLER => ValueHandlerInterface::class,
-                'some_value' => ValueHandlerInterface::class
+                'some_value' => ValueHandlerInterface::class,
             ]
         );
         static::assertSame($someValueHandler, $pool->get('some_value'));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -240,7 +241,7 @@ class ConditionsTest extends TestCase
                 '_scopeConfig' => $scopeConfigMock,
                 'validator' => $validatorMock,
                 'resolver' => $resolverMock,
-                'data' => $data
+                'data' => $data,
             ]
         );
 

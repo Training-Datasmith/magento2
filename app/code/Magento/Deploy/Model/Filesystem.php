@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Model;
 
-use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\State;
-use Magento\Framework\App\DeploymentConfig\Writer;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\State;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Validator\Locale;
 use Magento\User\Model\ResourceModel\User\Collection as UserCollection;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Generate static files, compile
@@ -32,7 +34,7 @@ class Filesystem
      * @link https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/next-steps/set-umask.html
      * @link https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/prerequisites/file-system/configure-permissions.html
      */
-    const PERMISSIONS_FILE = 0640;
+    public const PERMISSIONS_FILE = 0640;
 
     /**
      * Directory access permissions
@@ -44,12 +46,12 @@ class Filesystem
      * @link https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/next-steps/set-umask.html
      * @link https://experienceleague.adobe.com/docs/commerce-operations/installation-guide/prerequisites/file-system/configure-permissions.html
      */
-    const PERMISSIONS_DIR = 0750;
+    public const PERMISSIONS_DIR = 0750;
 
     /**
      * Default theme when no theme is stored in configuration
      */
-    const DEFAULT_THEME = 'Magento/blank';
+    public const DEFAULT_THEME = 'Magento/blank';
 
     /**
      * @var \Magento\Framework\App\DeploymentConfig\Writer
@@ -163,7 +165,7 @@ class Filesystem
                 DirectoryList::GENERATED_CODE,
                 DirectoryList::GENERATED_METADATA,
                 DirectoryList::TMP_MATERIALIZATION_DIR,
-                DirectoryList::STATIC_VIEW
+                DirectoryList::STATIC_VIEW,
             ]
         );
 

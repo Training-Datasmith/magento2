@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Config\Source\Online;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -21,7 +24,7 @@ class Mode implements OptionSourceInterface
     {
         return [
             ['value' => '0', 'label' => __('Development')],
-            ['value' => '1', 'label' => __('Live')]
+            ['value' => '1', 'label' => __('Live')],
         ];
     }
 }

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento profiler for requests to database
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB;
 
 class Profiler extends \Zend_Db_Profiler

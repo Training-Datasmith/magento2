@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin;
 
+use Magento\Catalog\Api\Data\EavAttributeInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Processor;
-use Magento\Catalog\Api\Data\EavAttributeInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Check catalogsearch_fulltext index status after create product attribute.
@@ -118,7 +119,7 @@ class AttributeTest extends TestCase
         return [
             [EavAttributeInterface::IS_SEARCHABLE],
             [EavAttributeInterface::IS_FILTERABLE],
-            [EavAttributeInterface::IS_VISIBLE_IN_ADVANCED_SEARCH]
+            [EavAttributeInterface::IS_VISIBLE_IN_ADVANCED_SEARCH],
         ];
     }
 

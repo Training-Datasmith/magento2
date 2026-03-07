@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product Child tab
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab;
 
 class ChildTab extends \Magento\Backend\Block\Template

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
@@ -90,7 +93,7 @@ class ProcessLayoutRenderElement implements ObserverInterface
                 'blocks' => $this->jsonSerializer->serialize([$block->getNameInLayout()]),
                 'handles' => $this->base64jsonSerializer->serialize(
                     array_values(array_diff($handles, $pageSpecificHandles))
-                )
+                ),
             ]
         );
         // Varnish does not support ESI over HTTPS must change to HTTP

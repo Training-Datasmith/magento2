@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Find "backend/system.xml" files and validate them
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Backend;
 
 class SystemConfigTest extends \PHPUnit\Framework\TestCase

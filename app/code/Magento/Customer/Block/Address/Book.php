@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Address;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
-use Magento\Customer\Model\Address\Mapper;
 use Magento\Customer\Block\Address\Grid as AddressesGrid;
+use Magento\Customer\Model\Address\Mapper;
 
 /**
  * Customer address book block

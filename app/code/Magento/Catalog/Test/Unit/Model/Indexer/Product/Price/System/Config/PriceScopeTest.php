@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class PriceScopeTest extends TestCase
                 'registry' => $registryMock,
                 'storeManager' => $storeManagerMock,
                 'config' => $configMock,
-                'indexerRegistry' => $this->indexerRegistryMock
+                'indexerRegistry' => $this->indexerRegistryMock,
             ]
         );
     }

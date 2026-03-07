@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\ProductAlert\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\DesignInterface;
-use Magento\ProductAlert\Block\Email\Stock;
 use Magento\Framework\View\Element\Template\File\Resolver;
+use Magento\ProductAlert\Block\Email\Stock;
 use Magento\ProductAlert\Model\UpdateThemeParams;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -104,14 +105,14 @@ class UpdateThemeParamsTest extends TestCase
                 'Magento_ProductAlert::email/stock.phtml',
                 'Magento_ProductAlert::email/stock.phtml',
                 1,
-                ['themeId' => 1]
+                ['themeId' => 1],
             ],
             'test cases with invalid template file name' => [
                 'test.phtml',
                 'Magento_ProductAlert::email/stock.phtml',
                 1,
-                ['themeId' => 1]
-            ]
+                ['themeId' => 1],
+            ],
         ];
     }
 }

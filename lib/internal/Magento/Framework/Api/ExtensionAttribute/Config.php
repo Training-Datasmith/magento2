@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api\ExtensionAttribute;
 
-use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Api\ExtensionAttribute\Config\Reader;
+use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 
 /**
@@ -17,7 +20,7 @@ class Config extends \Magento\Framework\Config\Data
     /**
      * Cache identifier
      */
-    const CACHE_ID = 'extension_attributes_config';
+    public const CACHE_ID = 'extension_attributes_config';
 
     /**
      * Constructor

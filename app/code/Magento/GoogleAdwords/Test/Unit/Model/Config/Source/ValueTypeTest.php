@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class ValueTypeTest extends TestCase
                 ],
                 [
                     'value' => Data::CONVERSION_VALUE_TYPE_CONSTANT,
-                    'label' => 'Constant'
+                    'label' => 'Constant',
                 ],
             ],
             $this->_model->toOptionArray()

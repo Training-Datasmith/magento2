@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\HostChecker;
 use Magento\Framework\Url\ScopeInterface;
 use Magento\Framework\Url\ScopeResolverInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class HostCheckerTest extends TestCase
 {
@@ -36,7 +37,7 @@ class HostCheckerTest extends TestCase
         $this->object = $objectManager->getObject(
             HostChecker::class,
             [
-                'scopeResolver' => $this->scopeResolver
+                'scopeResolver' => $this->scopeResolver,
             ]
         );
     }

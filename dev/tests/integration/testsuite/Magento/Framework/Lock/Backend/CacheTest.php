@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 namespace Magento\Framework\Lock\Backend;
-
-use Magento\Framework\Lock\Backend\Cache;
 
 /**
  * \Magento\Framework\Lock\Backend\Cache test case.

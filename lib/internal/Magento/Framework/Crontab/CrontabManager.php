@@ -1,9 +1,10 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 
 namespace Magento\Framework\Crontab;
 
@@ -49,7 +50,7 @@ class CrontabManager implements CrontabManagerInterface
     {
         $tasksBlockStart = self::TASKS_BLOCK_START;
         if (defined('BP')) {
-            $tasksBlockStart .= ' ' . hash("sha256", BP);
+            $tasksBlockStart .= ' ' . hash('sha256', BP);
         }
         return $tasksBlockStart;
     }
@@ -63,7 +64,7 @@ class CrontabManager implements CrontabManagerInterface
     {
         $tasksBlockEnd = self::TASKS_BLOCK_END;
         if (defined('BP')) {
-            $tasksBlockEnd .= ' ' . hash("sha256", BP);
+            $tasksBlockEnd .= ' ' . hash('sha256', BP);
         }
         return $tasksBlockEnd;
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 /**
@@ -12,7 +15,7 @@ namespace Magento\Ui\Component;
  */
 class DynamicRows extends AbstractComponent
 {
-    const NAME = 'dynamicRows';
+    public const NAME = 'dynamicRows';
 
     /**
      * {@inheritdoc}

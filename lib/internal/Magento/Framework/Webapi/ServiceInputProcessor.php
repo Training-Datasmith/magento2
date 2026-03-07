@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Webapi;
 
+use Laminas\Code\Reflection\ClassReflection;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -22,9 +24,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
 use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Reflection\TypeProcessor;
-use Magento\Framework\Webapi\Exception as WebapiException;
 use Magento\Framework\Webapi\CustomAttribute\PreprocessorInterface;
-use Laminas\Code\Reflection\ClassReflection;
+use Magento\Framework\Webapi\Exception as WebapiException;
 use Magento\Framework\Webapi\Validator\IOLimit\DefaultPageSizeSetter;
 use Magento\Framework\Webapi\Validator\ServiceInputValidatorInterface;
 
@@ -193,7 +194,7 @@ class ServiceInputProcessor implements ServicePayloadConverterInterface, ResetAf
         $inputError = [];
         foreach ($this->methodsMap->getMethodParams($serviceClassName, $serviceMethodName) as $param) {
             $paramName = $param[MethodsMap::METHOD_META_NAME];
-            $snakeCaseParamName = strtolower(preg_replace("/(?<=\\w)(?=[A-Z])/", "_$1", $paramName));
+            $snakeCaseParamName = strtolower(preg_replace('/(?<=\\w)(?=[A-Z])/', '_$1', $paramName));
             if (isset($inputArray[$paramName]) || isset($inputArray[$snakeCaseParamName])) {
                 $paramValue = isset($inputArray[$paramName])
                     ? $inputArray[$paramName]
@@ -247,7 +248,8 @@ class ServiceInputProcessor implements ServicePayloadConverterInterface, ResetAf
                 $parameterType = $this->typeProcessor->getParamType($parameter);
 
                 // Allow only simple types or Api Data Objects
-                if (!($this->typeProcessor->isTypeSimple($parameterType)
+                if (!(
+                    $this->typeProcessor->isTypeSimple($parameterType)
                     || preg_match('~\\\\?\w+\\\\\w+\\\\Api\\\\Data\\\\~', $parameterType) === 1
                 )) {
                     continue;
@@ -518,7 +520,7 @@ class ServiceInputProcessor implements ServicePayloadConverterInterface, ResetAf
      */
     protected function _createDataObjectForTypeAndArrayValue($type, $customAttributeValue)
     {
-        if ($type !== null && substr($type, -2) === "[]") {
+        if ($type !== null && substr($type, -2) === '[]') {
             $type = substr($type, 0, -2);
             $attributeValue = [];
             foreach ($customAttributeValue as $value) {

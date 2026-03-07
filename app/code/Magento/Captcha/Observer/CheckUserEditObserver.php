@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Captcha\Observer;
 
 use Magento\Customer\Model\AuthenticationInterface;
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Class CheckUserEditObserver
@@ -17,7 +20,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
  */
 class CheckUserEditObserver implements ObserverInterface
 {
-    const FORM_ID = 'user_edit';
+    public const FORM_ID = 'user_edit';
 
     /**
      * @var \Magento\Captcha\Helper\Data

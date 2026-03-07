@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class AclTest extends TestCase
      * @param string $filter
      * @return array
      */
-    private function getChildren(array $aclResource, string $filter) : array
+    private function getChildren(array $aclResource, string $filter): array
     {
         $filtered = array_filter(
             $aclResource,

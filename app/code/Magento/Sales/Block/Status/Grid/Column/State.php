@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Status\Grid\Column;
 
 /**
@@ -58,7 +61,7 @@ class State extends \Magento\Backend\Block\Widget\Grid\Column
         $states = $this->_config->getStates();
         if (isset($states[$value])) {
             return sprintf(
-                "%s[%s]",
+                '%s[%s]',
                 $value,
                 $states[$value]
             );

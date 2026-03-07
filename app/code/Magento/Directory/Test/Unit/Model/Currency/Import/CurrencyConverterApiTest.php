@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -150,7 +151,7 @@ class CurrencyConverterApiTest extends TestCase
         $responseBody = '';
         $expectedCurrencyRateList = ['USD' => ['EUR' => null, 'UAH' => null]];
         $cantRetrieveCurrencyMessage = "We can't retrieve a rate from "
-            . "https://free.currconv.com for %s.";
+            . 'https://free.currconv.com for %s.';
         $this->prepareFetchRatesTest($responseBody);
 
         self::assertEquals($expectedCurrencyRateList, $this->model->fetchRates());

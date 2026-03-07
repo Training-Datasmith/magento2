@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Model;
 
 use Magento\Framework\App\Cache\Type\Config;
@@ -293,7 +296,7 @@ class Widget
                     'description' => __((string)$widget['description']),
                 ];
             }
-            usort($result, [$this, "sortWidgets"]);
+            usort($result, [$this, 'sortWidgets']);
             $this->widgetsArray = $result;
         }
         return $this->widgetsArray;
@@ -481,7 +484,7 @@ class Widget
      */
     protected function sortWidgets($firstElement, $secondElement)
     {
-        return strcmp($firstElement["name"], $secondElement["name"]);
+        return strcmp($firstElement['name'], $secondElement['name']);
     }
 
     /**

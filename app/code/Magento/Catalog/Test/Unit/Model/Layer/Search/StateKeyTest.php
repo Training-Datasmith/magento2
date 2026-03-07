@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Search;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Model\Category;
 use Magento\CatalogSearch\Model\Layer\Search\StateKey;
 use Magento\Customer\Model\Session;
@@ -15,6 +15,7 @@ use Magento\Search\Model\Query;
 use Magento\Search\Model\QueryFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

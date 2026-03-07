@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Customer\Test\Unit\Model;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\SetCustomerStore;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class SetCustomerStoreTest extends TestCase
 {
@@ -85,7 +86,7 @@ class SetCustomerStoreTest extends TestCase
             [['key1' => 4, 'key2' => 'anonymous']],
             [[CustomerInterface::STORE_ID => 5]],
             [[CustomerInterface::STORE_ID => 5, CustomerInterface::WEBSITE_ID => 2]],
-            [[CustomerInterface::WEBSITE_ID => 7]]
+            [[CustomerInterface::WEBSITE_ID => 7]],
         ];
     }
 }

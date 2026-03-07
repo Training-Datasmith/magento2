@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\ResourceModel\Selection\Collection;
 
 use Magento\Bundle\Model\ResourceModel\Selection\Collection;
@@ -21,7 +24,7 @@ class FilterApplier
      */
     private $conditionTypesMap = [
         'eq' => ' = ?',
-        'in' => ' IN (?)'
+        'in' => ' IN (?)',
     ];
 
     /**

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ class ValidatorInfoTest extends TestCase
         );
 
         $this->model->validate($this->getOptionValue(), $this->getProductOption([
-            'file_extension' => 'png'
+            'file_extension' => 'png',
         ]));
     }
 
@@ -164,7 +166,7 @@ class ValidatorInfoTest extends TestCase
         return $this->objectManager->create(
             Option::class,
             [
-                'data' => array_merge($data, $options)
+                'data' => array_merge($data, $options),
             ]
         );
     }
@@ -182,7 +184,7 @@ class ValidatorInfoTest extends TestCase
             'title' => 'test.jpg',
             'quote_path' => $file,
             'order_path' => $file,
-            'secret_key' => substr(hash('sha256', $this->mediaDirectory->readFile($filePath)), 0, 20)
+            'secret_key' => substr(hash('sha256', $this->mediaDirectory->readFile($filePath)), 0, 20),
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Analytics\Model\SubscriptionStatusProvider;
 use Magento\Analytics\Model\System\Message\NotificationAboutFailedSubscription;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class NotificationAboutFailedSubscriptionTest extends TestCase
@@ -50,7 +51,7 @@ class NotificationAboutFailedSubscriptionTest extends TestCase
             NotificationAboutFailedSubscription::class,
             [
                 'subscriptionStatusProvider' => $this->subscriptionStatusMock,
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
     }

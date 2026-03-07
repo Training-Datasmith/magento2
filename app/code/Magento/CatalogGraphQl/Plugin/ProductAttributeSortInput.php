@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\CatalogGraphQl\Plugin;
 use GraphQL\Language\AST\Node;
 use GraphQL\Language\AST\NodeKind;
 use GraphQL\Language\Visitor;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\GraphQl\Model\Query\ContextInterface;
 
 class ProductAttributeSortInput
 {
@@ -129,15 +130,15 @@ class ProductAttributeSortInput
                                                         $sortFieldsOriginal[$node->name->value] =
                                                             $sortFields[$node->name->value];
                                                     }
-                                                }
-                                        ]
+                                                },
+                                        ],
                                     ]
                                 );
                             }
                             return Visitor::stop();
                         }
-                    }
-                ]
+                    },
+                ],
             ]
         );
         return $sortFieldsOriginal;

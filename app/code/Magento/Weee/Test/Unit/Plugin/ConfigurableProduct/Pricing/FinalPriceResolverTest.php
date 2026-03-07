@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -327,13 +328,13 @@ class FinalPriceResolverTest extends TestCase
     {
         return [
             [
-                "amount" => 119.0,
-                "expected" => 119.0
+                'amount' => 119.0,
+                'expected' => 119.0,
             ],
             [
-                "amount" => "119.0",
-                "expected" => 119.0
-            ]
+                'amount' => '119.0',
+                'expected' => 119.0,
+            ],
         ];
     }
 }

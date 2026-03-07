@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,18 +10,18 @@ namespace Magento\Store\Test\Fixture;
 
 use Magento\Framework\DataObject;
 use Magento\Store\Api\Data\WebsiteInterface;
+use Magento\Store\Api\Data\WebsiteInterfaceFactory;
+use Magento\Store\Model\ResourceModel\Website as WebsiteResource;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
-use Magento\Store\Api\Data\WebsiteInterfaceFactory;
-use Magento\Store\Model\ResourceModel\Website as WebsiteResource;
 
 class Website implements RevertibleDataFixtureInterface
 {
     private const DEFAULT_DATA = [
         'code' => 'test_website%uniqid%',
         'name' => 'Test Website%uniqid%',
-        'is_default' => '0'
+        'is_default' => '0',
     ];
 
     /**

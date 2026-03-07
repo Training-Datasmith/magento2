@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,11 @@ namespace Magento\Framework\Mail;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Mail\Exception\InvalidArgumentException;
-use Magento\Framework\Mail\MimeInterface;
-use Magento\Framework\Setup\Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Address as SymfonyAddress;
-use Symfony\Component\Mime\Part\TextPart;
 use Symfony\Component\Mime\Message as SymfonyMessage;
-use Psr\Log\LoggerInterface;
+use Symfony\Component\Mime\Part\TextPart;
 
 /**
  * Magento Framework Email message
@@ -262,7 +261,7 @@ class EmailMessage extends Message implements EmailMessageInterface
 
         return $this->addressFactory->create([
             'email' => $senderAddress->getAddress(),
-            'name' => $senderAddress->getName()
+            'name' => $senderAddress->getName(),
         ]);
     }
 
@@ -290,7 +289,7 @@ class EmailMessage extends Message implements EmailMessageInterface
         }
         return '';
     }
-    
+
     /**
      * @inheritDoc
      */
@@ -310,7 +309,7 @@ class EmailMessage extends Message implements EmailMessageInterface
         return array_map(function ($address) {
             return $this->addressFactory->create([
                 'email' => $this->sanitiseEmail($address->getAddress()),
-                'name' => $address->getName()
+                'name' => $address->getName(),
             ]);
         }, $addressList);
     }

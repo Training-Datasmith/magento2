@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Asset\PreProcessor;
 
 use Magento\Framework\View\Asset\Minification;
@@ -15,7 +18,7 @@ class MinificationFilenameResolver implements FilenameResolverInterface
     /**
      * Indicator of minification file
      */
-    const FILE_PART = '.min.';
+    public const FILE_PART = '.min.';
 
     /**
      * @var Minification

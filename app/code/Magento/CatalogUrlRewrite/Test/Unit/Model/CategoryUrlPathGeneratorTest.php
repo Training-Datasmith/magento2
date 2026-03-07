@@ -56,7 +56,7 @@ class CategoryUrlPathGeneratorTest extends TestCase
                 'formatUrlKey',
                 'getName',
                 'isObjectNew',
-                'getParentCategories'
+                'getParentCategories',
             ]
         );
         $this->storeManager = $this->createMock(StoreManagerInterface::class);
@@ -172,7 +172,7 @@ class CategoryUrlPathGeneratorTest extends TestCase
                 'dataHasChangedFor',
                 'load',
                 'getStoreId',
-                'getParentCategories'
+                'getParentCategories',
             ]
         );
         $parentCategory->method('getParentId')

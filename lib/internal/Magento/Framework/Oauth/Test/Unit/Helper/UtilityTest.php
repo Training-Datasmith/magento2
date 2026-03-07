@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Oauth\Test\Unit\Helper;
 
-use Magento\Framework\Oauth\Helper\Utility as OauthUtility;
 use Magento\Framework\Oauth\Helper\Signature\HmacInterface;
+use Magento\Framework\Oauth\Helper\Utility as OauthUtility;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

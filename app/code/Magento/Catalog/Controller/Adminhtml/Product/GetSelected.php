@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class GetSelected extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
@@ -49,7 +50,7 @@ class GetSelected extends \Magento\Backend\App\Action
     /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
-    public function execute() : \Magento\Framework\Controller\ResultInterface
+    public function execute(): \Magento\Framework\Controller\ResultInterface
     {
         $productId = $this->getRequest()->getParam('productId');
         /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $productCollection */

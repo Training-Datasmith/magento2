@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,6 @@ use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Module\Dir\Reader as ModuleReader;
 use Magento\Framework\Serialize\Serializer\Serialize;
 use Magento\Framework\Serialize\SerializerInterface;
-use ReflectionClass;
 use ReflectionException;
 
 /**

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -94,7 +97,7 @@ class TaxRuleFixtureFactory
             $postcode = '*';
             if (isset($rateData['postcode'])) {
                 $postcode = $rateData['postcode'];
-                $code = $code . " - " . $postcode;
+                $code = $code . ' - ' . $postcode;
             }
 
             $taxRate = $taxRateFactory->create();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class LoadCustomerQuoteObserverTest extends TestCase
             LoadCustomerQuoteObserver::class,
             [
                 'checkoutSession' => $this->checkoutSession,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
     }

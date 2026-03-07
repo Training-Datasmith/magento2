@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Cache;
 
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Lock\LockManagerInterface;
-use Magento\Framework\App\DeploymentConfig;
 
 /**
  * Default mutex that provide concurrent access to cache storage.

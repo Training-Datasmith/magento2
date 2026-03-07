@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -31,8 +32,8 @@ class ProcessOrderCreationDataObserver implements ObserverInterface
             $quoteShippingMethod = $observer->getEvent()->getShippingMethod();
             $checkIfCouponExists = array_key_exists('coupon', $request['order']);
             if (!$isVirtualQuote && !empty($quoteShippingMethod) && $checkIfCouponExists) {
-                    $shippingAddress = $quote->getShippingAddress();
-                    $shippingAddress->setShippingMethod($quoteShippingMethod);
+                $shippingAddress = $quote->getShippingAddress();
+                $shippingAddress->setShippingMethod($quoteShippingMethod);
             }
         }
         return $this;

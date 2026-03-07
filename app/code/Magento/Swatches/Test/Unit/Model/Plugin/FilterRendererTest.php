@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class FilterRendererTest extends TestCase
             FilterRendererPlugin::class,
             [
                 'layout' => $this->layoutMock,
-                'swatchHelper' => $this->swatchHelperMock
+                'swatchHelper' => $this->swatchHelperMock,
             ]
         );
     }

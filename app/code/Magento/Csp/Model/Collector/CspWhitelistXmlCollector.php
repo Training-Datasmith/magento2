@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Csp\Model\Collector;
 
 use Magento\Csp\Api\PolicyCollectorInterface;
-use Magento\Framework\Config\DataInterface as ConfigReader;
 use Magento\Csp\Model\Policy\FetchPolicy;
+use Magento\Framework\Config\DataInterface as ConfigReader;
 
 /**
  * Collects policies defined in csp_whitelist.xml configs.

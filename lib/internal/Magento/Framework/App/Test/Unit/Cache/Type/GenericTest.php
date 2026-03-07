@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * The test covers \Magento\Framework\App\Cache_Type_* classes all at once, as all of them are similar
  */
+
 namespace Magento\Framework\App\Test\Unit\Cache\Type;
 
 use Magento\Framework\App\Cache\Type\Block;
@@ -64,7 +66,7 @@ class GenericTest extends TestCase
             [Config::class],
             [Layout::class],
             [Translate::class],
-            [Block::class]
+            [Block::class],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,10 +16,10 @@ namespace Magento\Bundle\Model\Product;
 abstract class BundlePriceAbstract extends \PHPUnit\Framework\TestCase
 {
     /** Fixed price type for product custom option */
-    const CUSTOM_OPTION_PRICE_TYPE_FIXED = 'fixed';
+    public const CUSTOM_OPTION_PRICE_TYPE_FIXED = 'fixed';
 
     /** Percent price type for product custom option */
-    const CUSTOM_OPTION_PRICE_TYPE_PERCENT = 'percent';
+    public const CUSTOM_OPTION_PRICE_TYPE_PERCENT = 'percent';
 
     /** @var \Magento\TestFramework\Helper\Bootstrap */
     protected $objectManager;
@@ -55,7 +57,7 @@ abstract class BundlePriceAbstract extends \PHPUnit\Framework\TestCase
      * Get test cases
      * @return array
      */
-    abstract static public function getTestCases();
+    abstract public static function getTestCases();
 
     /**
      * @param array $strategyModifiers
@@ -136,7 +138,7 @@ abstract class BundlePriceAbstract extends \PHPUnit\Framework\TestCase
         foreach ($optionsData as $optionData) {
             $customOption = $customOptionFactory->create(
                 [
-                    'data' => $optionData
+                    'data' => $optionData,
                 ]
             );
             $customOption->setProductSku($bundleProduct->getSku());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class VisualSwatchAttributeTest extends SelectAttributeTest
     {
         $product = $this->getProduct();
         $attributeData = [
-            'color_swatch' => $this->getOptionValueByLabel('color_swatch', 'option 1')
+            'color_swatch' => $this->getOptionValueByLabel('color_swatch', 'option 1'),
         ];
         $this->saveProduct($product, $attributeData);
         $expectedData = $this->addDataNesting($attributeData);

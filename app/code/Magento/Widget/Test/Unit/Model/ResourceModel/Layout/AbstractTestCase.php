@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ abstract class AbstractTestCase extends TestCase
                 'getMainTable',
                 'getTable',
                 '__wakeup',
-                '_construct'
+                '_construct',
             ]
         );
         $resource->expects($this->any())

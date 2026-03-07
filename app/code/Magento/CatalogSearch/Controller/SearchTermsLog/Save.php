@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Controller\SearchTermsLog;
 
-use Magento\Framework\App\Action\Context;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Search\Model\QueryFactory;
-use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\CatalogSearch\Helper\Data as HelperData;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\Json;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Search\Model\QueryFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Controller for save search terms

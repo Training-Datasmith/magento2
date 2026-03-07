@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,13 +14,13 @@ use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\DB\FieldDataConversionException;
 use Magento\Framework\DB\FieldDataConverter;
-use Magento\Framework\DB\Select;
-use Magento\Framework\DB\Select\QueryModifierInterface;
-use Magento\Framework\DB\Select\InQueryModifier;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\DB\Query\Generator;
 use Magento\Framework\DB\Query\BatchIterator;
+use Magento\Framework\DB\Query\Generator;
+use Magento\Framework\DB\Select;
+use Magento\Framework\DB\Select\InQueryModifier;
+use Magento\Framework\DB\Select\QueryModifierInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -210,7 +212,7 @@ class DataConverterTest extends TestCase
                 'key_one' => 4,
                 'key_two' => 1,
                 'value' => '{"valid": "json value"}',
-            ]
+            ],
         ];
 
         $this->adapterMock->expects($this->any())
@@ -286,7 +288,7 @@ class DataConverterTest extends TestCase
             FieldDataConverter::class,
             [
                 'dataConverter' => $this->dataConverter,
-                'envBatchSize' => $batchSize
+                'envBatchSize' => $batchSize,
             ]
         );
         $fieldDataConverter->convert($resource->getConnection(), $tableName, 'key_one,key_two', 'value');
@@ -329,7 +331,7 @@ class DataConverterTest extends TestCase
                     'key_two',
                 ],
                 [
-                    'type' => AdapterInterface::INDEX_TYPE_PRIMARY
+                    'type' => AdapterInterface::INDEX_TYPE_PRIMARY,
                 ]
             );
         $resource->getConnection()->createTable($table);

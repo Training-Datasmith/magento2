@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,8 +105,8 @@ class PayflowproTest extends TestCase
         $objects = [
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->helper->prepareObjectManager($objects);
         $this->payflowpro = $this->helper->getObject(
@@ -116,7 +117,7 @@ class PayflowproTest extends TestCase
                 'httpClientFactory' => $clientFactory,
                 'storeManager' => $this->storeManagerMock,
                 'gateway' => $this->gatewayMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -148,7 +149,7 @@ class PayflowproTest extends TestCase
         return [
             ["Can void transaction if order's paid amount not set", null, true],
             ["Can void transaction if order's paid amount equals zero", 0, true],
-            ["Can't void transaction if order's paid amount greater than zero", 10, false]
+            ["Can't void transaction if order's paid amount greater than zero", 10, false],
         ];
     }
 
@@ -215,13 +216,13 @@ class PayflowproTest extends TestCase
                 'response' => new DataObject(
                     [
                         'pnref' => 'V19A3D27B61E',
-                        'result_code' => Payflowpro::RESPONSE_CODE_APPROVED
+                        'result_code' => Payflowpro::RESPONSE_CODE_APPROVED,
                     ]
                 ),
                 'paymentExpected' => new DataObject(
                     [
                         'transaction_id' => 'V19A3D27B61E',
-                        'is_transaction_closed' => 0
+                        'is_transaction_closed' => 0,
                     ]
                 ),
             ],
@@ -229,7 +230,7 @@ class PayflowproTest extends TestCase
                 'response' => new DataObject(
                     [
                         'pnref' => 'V19A3D27B61E',
-                        'result_code' => Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER
+                        'result_code' => Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER,
                     ]
                 ),
                 'paymentExpected' => new DataObject(
@@ -237,10 +238,10 @@ class PayflowproTest extends TestCase
                         'transaction_id' => 'V19A3D27B61E',
                         'is_transaction_closed' => 0,
                         'is_transaction_pending' => true,
-                        'is_fraud_detected' => true
+                        'is_fraud_detected' => true,
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 
@@ -260,7 +261,7 @@ class PayflowproTest extends TestCase
             $withArgs[] = [
                 "payment/{$method}/active",
                 ScopeInterface::SCOPE_STORE,
-                $storeId
+                $storeId,
             ];
             $willReturnArs[] = $isActive;
         }
@@ -316,23 +317,23 @@ class PayflowproTest extends TestCase
             [
                 'amount' => 14.13999999999999999999999999999999999999999999999999,
                 'setAmount' => 49.99,
-                'expectedResult' => 14.14
+                'expectedResult' => 14.14,
             ],
             [
                 'amount' => 14.13199999999999999999999999999999999999999999999999,
                 'setAmount' => 49.99,
-                'expectedResult' => 14.13
+                'expectedResult' => 14.13,
             ],
             [
                 'amount' => 14.14,
                 'setAmount' => 49.99,
-                'expectedResult' => 14.14
+                'expectedResult' => 14.14,
             ],
             [
                 'amount' => 14.13999999999999999999999999999999999999999999999999,
                 'setAmount' => 14.14,
-                'expectedResult' => 0
-            ]
+                'expectedResult' => 0,
+            ],
         ];
     }
 
@@ -422,23 +423,23 @@ class PayflowproTest extends TestCase
             [
                 'expectsMethods' => [
                     Config::METHOD_PAYFLOWPRO => 0,
-                    Config::METHOD_PAYMENT_PRO => 1
+                    Config::METHOD_PAYMENT_PRO => 1,
                 ],
-                'result' => true
+                'result' => true,
             ],
             [
                 'expectsMethods' => [
-                    Config::METHOD_PAYFLOWPRO => 1
+                    Config::METHOD_PAYFLOWPRO => 1,
                 ],
-                'result' => true
+                'result' => true,
             ],
             [
                 'expectsMethods' => [
                     Config::METHOD_PAYFLOWPRO => 0,
-                    Config::METHOD_PAYMENT_PRO => 0
+                    Config::METHOD_PAYMENT_PRO => 0,
                 ],
-                'result' => false
-            ]
+                'result' => false,
+            ],
         ];
     }
 
@@ -494,7 +495,7 @@ class PayflowproTest extends TestCase
                 'authcode' => '510PNI',
                 'hostcode' => 'A',
                 'request_id' => 'f930d3dc6824c1f7230c5529dc37ae5e',
-                'result_code' => '0'
+                'result_code' => '0',
             ]
         );
     }
@@ -534,7 +535,7 @@ class PayflowproTest extends TestCase
                 'getCcNumber',
                 'getCcExpMonth',
                 'getCcExpYear',
-                'getCcCid'
+                'getCcCid',
             ]
         );
 
@@ -542,7 +543,7 @@ class PayflowproTest extends TestCase
             'number' => 4111111111111111,
             'month' => 12,
             'year' => 18,
-            'cvv' => 123
+            'cvv' => 123,
         ];
         $paymentMock->expects(static::any())
             ->method('getCcNumber')
@@ -569,7 +570,7 @@ class PayflowproTest extends TestCase
         $orderData = [
             'currency' => 'USD',
             'id' => 4,
-            'increment_id' => '0000004'
+            'increment_id' => '0000004',
         ];
         $orderMock = $this->createPartialMock(
             Order::class,
@@ -578,7 +579,7 @@ class PayflowproTest extends TestCase
                 'getIncrementId',
                 'getId',
                 'getBillingAddress',
-                'getShippingAddress'
+                'getShippingAddress',
             ]
         );
 
@@ -644,13 +645,13 @@ class PayflowproTest extends TestCase
     {
         $orderData = [
             'id' => 1,
-            'increment_id' => '0000001'
+            'increment_id' => '0000001',
         ];
         $data = [
             'ponum' => $orderData['id'],
             'custref' => $orderData['increment_id'],
             'invnum' => $orderData['increment_id'],
-            'comment1' => $orderData['increment_id']
+            'comment1' => $orderData['increment_id'],
         ];
         $expectedData = new DataObject($data);
         $actualData = new DataObject();
@@ -681,7 +682,7 @@ class PayflowproTest extends TestCase
             'cc_type' => 'VI',
             'cc_last_4' => 1111,
             'cc_exp_month' => 12,
-            'cc_exp_year' => 2023
+            'cc_exp_year' => 2023,
         ];
         $dataObject = new DataObject($data);
 
@@ -744,7 +745,7 @@ class PayflowproTest extends TestCase
                     'CARDTYPE' => '0',
                     'AVSDATA' => 'NNN',
                     'AVSZIP' => 'N',
-                    'AVSADDR' => 'N'
+                    'AVSADDR' => 'N',
                 ],
                 new DataObject([
                     'billtoname' => 'John Doe',
@@ -783,9 +784,9 @@ class PayflowproTest extends TestCase
                     'email' => 'user@magento.com',
                     'cscmatch' => 'Y',
                     'ccavsstatus' => 'NNN',
-                    'cc_type' => 'VI'
-                ])
-            ]
+                    'cc_type' => 'VI',
+                ]),
+            ],
         ];
     }
 

@@ -1,71 +1,32 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Cron;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class BulkCleanup
 {
     /**
-     * @var DateTime
-     */
-    private $dateTime;
-
-    /**
-     * @var MetadataPool
-     */
-    private $metadataPool;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var \Magento\Framework\Stdlib\DateTime\DateTime
-     */
-    private $date;
-
-    /**
      * BulkCleanup constructor.
-     * @param MetadataPool $metadataPool
-     * @param ResourceConnection $resourceConnection
-     * @param DateTime $dateTime
-     * @param ScopeConfigInterface $scopeConfig
-     * @param DateTime\DateTime $time
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        ResourceConnection $resourceConnection,
-        DateTime $dateTime,
-        ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\Stdlib\DateTime\DateTime $time
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->resourceConnection = $resourceConnection;
-        $this->dateTime = $dateTime;
-        $this->scopeConfig = $scopeConfig;
-        $this->date = $time;
+    public function __construct(private readonly MetadataPool $metadataPool, private readonly ResourceConnection $resourceConnection, private readonly DateTime $dateTime, private readonly ScopeConfigInterface $scopeConfig, private readonly \Magento\Framework\Stdlib\DateTime\DateTime $date)
+    {
     }
 
     /**
      * Remove all expired bulks and corresponding operations
-     *
-     * @return void
      */
-    public function execute()
+    public function execute(): void
     {
         $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
         $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());

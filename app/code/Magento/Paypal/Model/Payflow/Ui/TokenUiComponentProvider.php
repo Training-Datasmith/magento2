@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Ui;
 
 use Magento\Paypal\Model\Payflow\Transparent;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterface;
-use Magento\Vault\Model\Ui\TokenUiComponentProviderInterface;
 use Magento\Vault\Model\Ui\TokenUiComponentInterfaceFactory;
+use Magento\Vault\Model\Ui\TokenUiComponentProviderInterface;
 
 /**
  * Class TokenUiComponentProvider
@@ -43,9 +46,9 @@ class TokenUiComponentProvider implements TokenUiComponentProviderInterface
                 'config' => [
                     'code' => Transparent::CC_VAULT_CODE,
                     TokenUiComponentProviderInterface::COMPONENT_DETAILS => $jsonDetails,
-                    TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH => $paymentToken->getPublicHash()
+                    TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH => $paymentToken->getPublicHash(),
                 ],
-                'name' => 'Magento_Paypal/js/view/payment/method-renderer/payflowpro/vault'
+                'name' => 'Magento_Paypal/js/view/payment/method-renderer/payflowpro/vault',
             ]
         );
 

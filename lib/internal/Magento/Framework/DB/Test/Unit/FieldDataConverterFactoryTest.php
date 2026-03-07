@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class FieldDataConverterFactoryTest extends TestCase
         $this->fieldDataConverterFactory = $objectManager->getObject(
             FieldDataConverterFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
     }
@@ -58,7 +59,7 @@ class FieldDataConverterFactoryTest extends TestCase
             ->with(
                 FieldDataConverter::class,
                 [
-                    'dataConverter' => $this->dataConverterMock
+                    'dataConverter' => $this->dataConverterMock,
                 ]
             )
             ->willReturn($fieldDataConverterInstance);

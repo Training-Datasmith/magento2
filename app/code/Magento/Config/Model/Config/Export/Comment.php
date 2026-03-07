@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Export;
 
 use Magento\Config\App\Config\Source\DumpConfigSourceInterface;
@@ -74,7 +77,7 @@ class Comment implements CommentInterface
             $comments = array_merge([
                 'Shared configuration was written to config.php and system-specific configuration to env.php.',
                 'Shared configuration file (config.php) doesn\'t contain sensitive data for security reasons.',
-                'Sensitive data can be stored in the following environment variables:'
+                'Sensitive data can be stored in the following environment variables:',
             ], $comments);
         }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Analytics\Api\Data\LinkInterface;
@@ -13,23 +16,11 @@ use Magento\Analytics\Api\Data\LinkInterface;
 class Link implements LinkInterface
 {
     /**
-     * @var string
-     */
-    private $url;
-
-    /**
-     * @var string
-     */
-    private $initializationVector;
-
-    /**
      * @param string $url
      * @param string $initializationVector
      */
-    public function __construct($url, $initializationVector)
+    public function __construct(private $url, private $initializationVector)
     {
-        $this->url = $url;
-        $this->initializationVector = $initializationVector;
     }
 
     /**

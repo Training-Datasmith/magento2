@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -220,7 +222,7 @@ class Collection extends \Magento\Sales\Model\ResourceModel\Report\Collection\Ab
         if (isset(
             $currentStoreIds
         ) && $currentStoreIds != \Magento\Store\Model\Store::DEFAULT_STORE_ID && $currentStoreIds != [
-            \Magento\Store\Model\Store::DEFAULT_STORE_ID
+            \Magento\Store\Model\Store::DEFAULT_STORE_ID,
         ]
         ) {
             if (!is_array($currentStoreIds)) {

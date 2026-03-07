@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model;
 
-use Magento\MediaGalleryApi\Api\Data\KeywordInterfaceFactory;
 use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
-use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterfaceFactory;
 use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterface;
+use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterfaceFactory;
+use Magento\MediaGalleryApi\Api\Data\KeywordInterfaceFactory;
+use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsKeywordsInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsKeywordsInterface;
-use Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -93,13 +94,13 @@ class AssetEndToEndTest extends TestCase
     {
         $keyword1 = $this->keywordFactory->create(
             [
-                'keyword' => 'pear'
+                'keyword' => 'pear',
             ]
         );
 
         $keyword2 = $this->keywordFactory->create(
             [
-                'keyword' => 'plum'
+                'keyword' => 'plum',
             ]
         );
 
@@ -111,7 +112,7 @@ class AssetEndToEndTest extends TestCase
                 'contentType' => 'image/jpeg',
                 'width' => 420,
                 'height' => 240,
-                'size' => 12877
+                'size' => 12877,
             ]
         );
         $this->saveAssets->execute([$asset]);
@@ -125,8 +126,8 @@ class AssetEndToEndTest extends TestCase
                 'assetId' => $loadedAsset->getId(),
                 'keywords' => [
                     $keyword1,
-                    $keyword2
-                ]
+                    $keyword2,
+                ],
             ]
         );
 

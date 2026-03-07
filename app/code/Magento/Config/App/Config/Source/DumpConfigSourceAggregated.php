@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\App\Config\Source;
 
 use Magento\Config\Model\Config\Export\ExcludeList;
@@ -19,12 +22,12 @@ class DumpConfigSourceAggregated implements DumpConfigSourceInterface
     /**
      * Rule name for include configuration data.
      */
-    const RULE_TYPE_INCLUDE = 'include';
+    public const RULE_TYPE_INCLUDE = 'include';
 
     /**
      * Rule name for exclude configuration data.
      */
-    const RULE_TYPE_EXCLUDE = 'exclude';
+    public const RULE_TYPE_EXCLUDE = 'exclude';
 
     /**
      * Checker for config type.

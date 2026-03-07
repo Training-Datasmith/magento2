@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,8 +18,8 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
     /**#@+
      * Constants
      */
-    const MESSAGE = 'message';
-    const PARAMETERS = 'parameters';
+    public const MESSAGE = 'message';
+    public const PARAMETERS = 'parameters';
     /**#@-*/
 
     /**

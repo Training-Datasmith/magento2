@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\DownloadableImportExport\Model\Import\Product\Type;
 
 use Magento\CatalogImportExport\Model\Import\Product as ImportProduct;
@@ -119,7 +122,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
         self::ERROR_LINK_URL_NOT_IN_DOMAIN_WHITELIST =>
             'Link URL\'s domain is not in list of downloadable_domains in env.php.',
         self::ERROR_SAMPLE_URL_NOT_IN_DOMAIN_WHITELIST =>
-            'Sample URL\'s domain is not in list of downloadable_domains in env.php.'
+            'Sample URL\'s domain is not in list of downloadable_domains in env.php.',
     ];
 
     /**
@@ -143,7 +146,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
      */
     protected $cachedOptions = [
         'link' => [],
-        'sample' => []
+        'sample' => [],
     ];
 
     /**
@@ -157,7 +160,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
         'sample_url' => null,
         'sample_file' => null,
         'sample_type' => null,
-        'sort_order' => self::DEFAULT_SORT_ORDER
+        'sort_order' => self::DEFAULT_SORT_ORDER,
     ];
 
     /**
@@ -168,7 +171,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
     protected $dataSampleTitle = [
         'sample_id' => null,
         'store_id' => Store::DEFAULT_STORE_ID,
-        'title' => null
+        'title' => null,
     ];
 
     /**
@@ -187,7 +190,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
         'link_type' => null,
         'sample_url' => null,
         'sample_file' => null,
-        'sample_type' => null
+        'sample_type' => null,
     ];
 
     /**
@@ -198,7 +201,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
     protected $dataLinkTitle = [
         'link_id' => null,
         'store_id' => Store::DEFAULT_STORE_ID,
-        'title' => null
+        'title' => null,
     ];
 
     /**
@@ -210,7 +213,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
         'price_id' => null,
         'link_id' => null,
         'website_id' => self::DEFAULT_WEBSITE_ID,
-        'price' => null
+        'price' => null,
     ];
 
     /**
@@ -481,7 +484,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
                 $rowData,
                 'purchased_separately',
                 self::DEFAULT_PURCHASED_SEPARATELY
-            )
+            ),
         ];
     }
 
@@ -682,7 +685,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
                     'link_type',
                     'sample_url',
                     'sample_file',
-                    'sample_type'
+                    'sample_type',
                 ]
             )->joinLeft(
                 ['dlp' => $this->_resource->getTableName('downloadable_link_price')],
@@ -1067,7 +1070,7 @@ class Downloadable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
     {
         $this->cachedOptions = [
             'link' => [],
-            'sample' => []
+            'sample' => [],
         ];
         $this->productIds = [];
         return $this;

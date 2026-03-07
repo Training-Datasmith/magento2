@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,7 +8,7 @@
 
 namespace Magento\Framework\Validator;
 
-use \Laminas\Uri\Uri;
+use Laminas\Uri\Uri;
 
 /**
  * Protocol validator

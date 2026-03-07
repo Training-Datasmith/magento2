@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\TestModuleGraphQlQuery\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * Resolver for Item
@@ -28,13 +29,13 @@ class Item implements ResolverInterface
     ) {
         $id = 0;
         foreach ($args as $key => $argValue) {
-            if ($key === "id") {
+            if ($key === 'id') {
                 $id = (int)$argValue;
             }
         }
         $itemData = [
             'item_id' => $id,
-            'name' => "itemName"
+            'name' => 'itemName',
         ];
         return $itemData;
     }

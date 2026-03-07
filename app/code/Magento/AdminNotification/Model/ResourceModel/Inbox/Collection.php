@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\Inbox;
 
 /**
@@ -31,7 +34,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      *
      * @return $this
      */
-    public function addRemoveFilter()
+    public function addRemoveFilter(): static
     {
         $this->getSelect()->where('is_remove=?', 0);
         return $this;

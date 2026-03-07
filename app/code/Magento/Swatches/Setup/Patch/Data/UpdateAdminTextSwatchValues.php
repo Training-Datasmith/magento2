@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,13 +8,12 @@
 
 namespace Magento\Swatches\Setup\Patch\Data;
 
+use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Store\Model\Store;
 use Magento\Swatches\Model\Swatch;
 use Zend_Db;
 use Zend_Db_Expr;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
  * Class UpdateAdminTextSwatchValues
@@ -51,7 +52,7 @@ class UpdateAdminTextSwatchValues implements DataPatchInterface, PatchVersionInt
     public static function getDependencies()
     {
         return [
-            AddSwatchImageToDefaultAttribtueSet::class
+            AddSwatchImageToDefaultAttribtueSet::class,
         ];
     }
 
@@ -80,8 +81,8 @@ class UpdateAdminTextSwatchValues implements DataPatchInterface, PatchVersionInt
         $storeData = $connection
             ->select()
             ->from($this->moduleDataSetup->getTable('store'))
-            ->where(Store::STORE_ID . "<> ? ", Store::DEFAULT_STORE_ID)
-            ->order("sort_order desc")
+            ->where(Store::STORE_ID . '<> ? ', Store::DEFAULT_STORE_ID)
+            ->order('sort_order desc')
             ->limit(1)
             ->query(Zend_Db::FETCH_ASSOC)
             ->fetch();
@@ -101,18 +102,18 @@ class UpdateAdminTextSwatchValues implements DataPatchInterface, PatchVersionInt
             $select = $connection
                 ->select()
                 ->joinLeft(
-                    ["ls" => $this->moduleDataSetup->getTable('eav_attribute_option_swatch')],
-                    new Zend_Db_Expr("ls.option_id = s.option_id AND ls.store_id = " . $storeData[Store::STORE_ID]),
-                    ["value"]
+                    ['ls' => $this->moduleDataSetup->getTable('eav_attribute_option_swatch')],
+                    new Zend_Db_Expr('ls.option_id = s.option_id AND ls.store_id = ' . $storeData[Store::STORE_ID]),
+                    ['value']
                 )
-                ->where("s.store_id = ? ", Store::DEFAULT_STORE_ID)
-                ->where("s.type = ? ", Swatch::SWATCH_TYPE_TEXTUAL)
-                ->where("s.value = ?  or s.value is null", "");
+                ->where('s.store_id = ? ', Store::DEFAULT_STORE_ID)
+                ->where('s.type = ? ', Swatch::SWATCH_TYPE_TEXTUAL)
+                ->where('s.value = ?  or s.value is null', '');
 
             $connection->query(
                 $connection->updateFromSelect(
                     $select,
-                    ["s" => $this->moduleDataSetup->getTable('eav_attribute_option_swatch')]
+                    ['s' => $this->moduleDataSetup->getTable('eav_attribute_option_swatch')]
                 )
             );
         }

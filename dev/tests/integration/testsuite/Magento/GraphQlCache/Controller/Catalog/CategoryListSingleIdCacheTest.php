@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class CategoryListSingleIdCacheTest extends AbstractGraphqlCacheTest
      */
     public function testSecondRequestIsServedFromCache()
     {
-        $categoryId ='333';
+        $categoryId = '333';
         $query
             = <<<QUERY
         {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Block\Transparent;
 
 use Magento\Framework\App\ObjectManager;
@@ -16,7 +19,7 @@ use Magento\Framework\Json\Helper\Data as JsonHelper;
  */
 class Iframe extends \Magento\Framework\View\Element\Template
 {
-    const REGISTRY_KEY = 'transparent_form_params';
+    public const REGISTRY_KEY = 'transparent_form_params';
 
     /**
      * Core registry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class ConfigModelTest extends TestCase
         $optionsSet = [
             $option,
             $option,
-            $option
+            $option,
         ];
         $configOption = $this->configOptionsList;
         $configOption->expects($this->once())->method('getOptions')->willReturn($optionsSet);
@@ -111,34 +112,34 @@ class ConfigModelTest extends TestCase
             ConfigFilePool::APP_CONFIG => [
                 'segment' => [
                     'someKey' => 'value',
-                    'test' => 'value1'
-                ]
-            ]
+                    'test' => 'value1',
+                ],
+            ],
         ];
 
         $testSet2 = [
             ConfigFilePool::APP_CONFIG => [
                 'segment' => [
-                    'test' => 'value2'
-                ]
-            ]
+                    'test' => 'value2',
+                ],
+            ],
         ];
 
         $testSetExpected1 = [
             ConfigFilePool::APP_CONFIG => [
                 'segment' => [
                     'someKey' => 'value',
-                    'test' => 'value1'
-                ]
-            ]
+                    'test' => 'value1',
+                ],
+            ],
         ];
 
         $testSetExpected2 = [
             ConfigFilePool::APP_CONFIG => [
                 'segment' => [
-                    'test' => 'value2'
-                ]
-            ]
+                    'test' => 'value2',
+                ],
+            ],
         ];
 
         $configData1 = clone $this->configData;
@@ -162,7 +163,7 @@ class ConfigModelTest extends TestCase
             ->willReturn([$configData1, $configData2]);
 
         $configOptionsList = [
-            'Fake_Module' => $configOption
+            'Fake_Module' => $configOption,
         ];
         $this->collector->expects($this->once())
             ->method('collectOptionsLists')
@@ -194,7 +195,7 @@ class ConfigModelTest extends TestCase
             ->willReturn([null]);
 
         $wrongData = [
-            'Fake_Module' => $configOption
+            'Fake_Module' => $configOption,
         ];
 
         $this->collector->expects($this->once())->method('collectOptionsLists')->willReturn($wrongData);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,10 +22,10 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Event\Manager;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\View\Layout;
-use Magento\Framework\View\Result\Layout as ResultLayout;
 use Magento\Framework\Session\Storage;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\View\Layout;
+use Magento\Framework\View\Result\Layout as ResultLayout;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -58,7 +59,7 @@ class ShowUpdateResultTest extends TestCase
         $session = $this->createPartialMockWithReflection(Session::class, [
             'hasCompositeProductResult',
             'getCompositeProductResult',
-            'unsCompositeProductResult'
+            'unsCompositeProductResult',
         ]);
 
         // Use reflection to set the storage property

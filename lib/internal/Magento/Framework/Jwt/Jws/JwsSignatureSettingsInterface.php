@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,5 +16,4 @@ use Magento\Framework\Jwt\EncryptionSettingsInterface;
  */
 interface JwsSignatureSettingsInterface extends EncryptionSettingsInterface
 {
-
 }

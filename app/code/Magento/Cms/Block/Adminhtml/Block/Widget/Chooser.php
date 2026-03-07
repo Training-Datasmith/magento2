@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Block\Widget;
 
 /**
@@ -152,7 +155,7 @@ class Chooser extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Status'),
                 'index' => 'is_active',
                 'type' => 'options',
-                'options' => [0 => __('Disabled'), 1 => __('Enabled')]
+                'options' => [0 => __('Disabled'), 1 => __('Enabled')],
             ]
         );
 

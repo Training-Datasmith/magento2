@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Express\AbstractExpress;
 
 use Magento\Framework\App\CsrfAwareActionInterface;
-use Magento\Paypal\Controller\Express\AbstractExpress;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
+use Magento\Paypal\Controller\Express\AbstractExpress;
 
 /**
  * Returns shipping rates by server-to-server request from PayPal.

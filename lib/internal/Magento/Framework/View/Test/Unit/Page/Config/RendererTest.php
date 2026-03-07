@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,10 +23,10 @@ use Magento\Framework\View\Page\Config\Generator\Head;
 use Magento\Framework\View\Page\Config\Metadata\MsApplicationTileImage;
 use Magento\Framework\View\Page\Config\Renderer;
 use Magento\Framework\View\Page\Title;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -182,7 +183,7 @@ class RendererTest extends TestCase
             'x_ua_compatible' => 'x_ua_compatible_value',
             'media_type' => 'media_type_value',
             'og:video:secure_url' => 'secure_url',
-            'msapplication-TileImage' => 'https://site.domain/ms-tile.jpg'
+            'msapplication-TileImage' => 'https://site.domain/ms-tile.jpg',
         ];
         $metadataValueCharset = 'newCharsetValue';
 
@@ -227,7 +228,7 @@ class RendererTest extends TestCase
     public function testRenderMetadataWithMsApplicationTileImageAsset(): void
     {
         $metadata = [
-            'msapplication-TileImage' => 'images/ms-tile.jpg'
+            'msapplication-TileImage' => 'images/ms-tile.jpg',
         ];
         $expectedMetaUrl = 'https://site.domain/images/ms-tile.jpg';
         $expected = '<meta name="msapplication-TileImage" content="' . $expectedMetaUrl . '"/>' . "\n";
@@ -252,7 +253,7 @@ class RendererTest extends TestCase
     public function testRenderTitle(): void
     {
         $title = 'some_title';
-        $expected = "<title>some_title</title>" . "\n";
+        $expected = '<title>some_title</title>' . "\n";
 
         $this->pageConfigMock->expects($this->any())
             ->method('getTitle')
@@ -361,7 +362,7 @@ class RendererTest extends TestCase
                     [GroupedCollection::PROPERTY_CAN_MERGE, true],
                     [GroupedCollection::PROPERTY_CONTENT_TYPE, $groupOne['type']],
                     ['attributes', $groupOne['attributes']],
-                    ['ie_condition', $groupOne['condition']]
+                    ['ie_condition', $groupOne['condition']],
                 ]
             );
 
@@ -385,7 +386,7 @@ class RendererTest extends TestCase
                     [GroupedCollection::PROPERTY_CAN_MERGE, true],
                     [GroupedCollection::PROPERTY_CONTENT_TYPE, $groupTwo['type']],
                     ['attributes', $groupTwo['attributes']],
-                    ['ie_condition', $groupTwo['condition']]
+                    ['ie_condition', $groupTwo['condition']],
                 ]
             );
 
@@ -427,7 +428,7 @@ class RendererTest extends TestCase
                 ['type' => 'js', 'attributes' => 'attr="value"', 'condition' => null],
                 '<link rel="stylesheet" type="text/css" media="all" href="url" />' . "\n"
                     . '<link rel="stylesheet" type="text/css" media="all" href="url" />' . "\n"
-                    . '<script type="text/javascript" attr="value" src="no_route_url"></script>' . "\n"
+                    . '<script type="text/javascript" attr="value" src="no_route_url"></script>' . "\n",
             ],
             [
                 ['type' => 'js', 'attributes' => ['attr' => 'value'], 'condition' => 'lt IE 7'],
@@ -436,28 +437,28 @@ class RendererTest extends TestCase
                     . '<!--[if lt IE 7]>' . "\n"
                     . '<script type="text/javascript" attr="value" src="url"></script>' . "\n"
                     . '<script type="text/javascript" attr="value" src="url"></script>' . "\n"
-                    . '<![endif]-->' . "\n"
+                    . '<![endif]-->' . "\n",
             ],
             [
                 ['type' => 'ico', 'attributes' => 'attr="value"', 'condition' => null],
                 ['type' => 'css', 'attributes' => '', 'condition' => null],
                 '<link rel="stylesheet" type="text/css" media="all" href="no_route_url" />' . "\n"
                     . '<link attr="value" href="url" />' . "\n"
-                    . '<link attr="value" href="url" />' . "\n"
+                    . '<link attr="value" href="url" />' . "\n",
             ],
             [
                 ['type' => 'js', 'attributes' => '', 'condition' => null],
                 ['type' => 'ico', 'attributes' => ['attr' => 'value'], 'condition' => null],
                 '<link attr="value" href="no_route_url" />' . "\n"
                     . '<script type="text/javascript" src="url"></script>' . "\n"
-                    . '<script type="text/javascript" src="url"></script>' . "\n"
+                    . '<script type="text/javascript" src="url"></script>' . "\n",
             ],
             [
                 ['type' => 'non', 'attributes' => ['attr' => 'value'], 'condition' => null],
                 ['type' => 'ico', 'attributes' => '', 'condition' => null],
                 '<link href="no_route_url" />' . "\n"
                     . '<link attr="value" href="url" />' . "\n"
-                    . '<link attr="value" href="url" />' . "\n"
+                    . '<link attr="value" href="url" />' . "\n",
             ],
         ];
     }
@@ -465,7 +466,7 @@ class RendererTest extends TestCase
     /**
      * @return void
      */
-    public function testRenderAssetWithNoContentType() : void
+    public function testRenderAssetWithNoContentType(): void
     {
         $type = '';
 
@@ -491,7 +492,7 @@ class RendererTest extends TestCase
                     [GroupedCollection::PROPERTY_CAN_MERGE, true],
                     [GroupedCollection::PROPERTY_CONTENT_TYPE, $type],
                     ['attributes', 'rel="some-rel"'],
-                    ['ie_condition', null]
+                    ['ie_condition', null],
                 ]
             );
 

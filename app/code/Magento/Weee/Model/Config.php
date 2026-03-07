@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Model;
 
 use Magento\Store\Model\Store;
@@ -15,21 +18,21 @@ class Config
     /**
      * Enabled config path
      */
-    const XML_PATH_FPT_ENABLED = 'tax/weee/enable';
+    public const XML_PATH_FPT_ENABLED = 'tax/weee/enable';
 
     // display settings
-    const XML_PATH_FPT_DISPLAY_PRODUCT_VIEW = 'tax/weee/display';
+    public const XML_PATH_FPT_DISPLAY_PRODUCT_VIEW = 'tax/weee/display';
 
-    const XML_PATH_FPT_DISPLAY_PRODUCT_LIST = 'tax/weee/display_list';
+    public const XML_PATH_FPT_DISPLAY_PRODUCT_LIST = 'tax/weee/display_list';
 
-    const XML_PATH_FPT_DISPLAY_SALES = 'tax/weee/display_sales';
+    public const XML_PATH_FPT_DISPLAY_SALES = 'tax/weee/display_sales';
 
-    const XML_PATH_FPT_DISPLAY_EMAIL = 'tax/weee/display_email';
+    public const XML_PATH_FPT_DISPLAY_EMAIL = 'tax/weee/display_email';
 
     // misc
-    const XML_PATH_FPT_INCLUDE_IN_SUBTOTAL = 'tax/weee/include_in_subtotal';
+    public const XML_PATH_FPT_INCLUDE_IN_SUBTOTAL = 'tax/weee/include_in_subtotal';
 
-    const XML_PATH_FPT_TAXABLE = 'tax/weee/apply_vat';
+    public const XML_PATH_FPT_TAXABLE = 'tax/weee/apply_vat';
 
     /**
      * Core store config

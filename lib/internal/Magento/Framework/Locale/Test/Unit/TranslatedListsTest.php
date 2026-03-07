@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class TranslatedListsTest extends TestCase
         'uk_UA',
         'de_DE',
         'sr_Cyrl_RS',
-        'sr_Latn_RS'
+        'sr_Latn_RS',
     ];
 
     /**
@@ -61,7 +62,7 @@ class TranslatedListsTest extends TestCase
         'uk_UA' => 'Ukrainian',
         'de_DE' => 'German',
         'sr_Cyrl_RS' => 'Serbian',
-        'sr_Latn_RS' => 'Serbian'
+        'sr_Latn_RS' => 'Serbian',
     ];
 
     /**
@@ -73,7 +74,7 @@ class TranslatedListsTest extends TestCase
         'uk_UA' => 'Ukraine',
         'de_DE' => 'Germany',
         'sr_Cyrl_RS' => 'Serbia',
-        'sr_Latn_RS' => 'Serbia'
+        'sr_Latn_RS' => 'Serbia',
     ];
 
     protected function setUp(): void

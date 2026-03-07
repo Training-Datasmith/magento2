@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,9 +36,9 @@ use Magento\Wishlist\Model\ResourceModel\Item\CollectionFactory;
 use Magento\Wishlist\Model\ResourceModel\Wishlist as WishlistResource;
 use Magento\Wishlist\Model\ResourceModel\Wishlist\Collection as WishlistCollection;
 use Magento\Wishlist\Model\Wishlist;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -337,7 +338,7 @@ class WishlistTest extends TestCase
     {
         $dataObjectMock = static fn (self $testCase) => $testCase->getMockForDataObject();
         return [
-            '0' => [1, $dataObjectMock, null]
+            '0' => [1, $dataObjectMock, null],
         ];
     }
 
@@ -362,7 +363,7 @@ class WishlistTest extends TestCase
                 'boolean' => true,
                 'collection' => [1, 2, 3],
                 'product' => 1,
-                'form_key' => 'abc'
+                'form_key' => 'abc',
             ]
         );
         $result = 'product';

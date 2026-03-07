@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Eav\Setup\Patch\Data;
 
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -109,7 +110,7 @@ class InitializeAttributeModels implements DataPatchInterface, PatchVersionInter
         $migrationSetup->doUpdateClassAliases();
         /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create([
-            'setup' => $this->moduleDataSetup
+            'setup' => $this->moduleDataSetup,
         ]);
         $groups = $eavSetup->getAttributeGroupCollectionFactory();
         foreach ($groups as $group) {

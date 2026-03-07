@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Authorization\Setup;
 
 /**
@@ -42,11 +45,6 @@ class AuthorizationFactory
 
     /**
      * Init
-     *
-     * @param \Magento\Authorization\Model\ResourceModel\Role\CollectionFactory $roleCollectionFactory
-     * @param \Magento\Authorization\Model\ResourceModel\Rules\CollectionFactory $rulesCollectionFactory
-     * @param \Magento\Authorization\Model\RoleFactory $roleFactory
-     * @param \Magento\Authorization\Model\RulesFactory $rulesFactory
      */
     public function __construct(
         \Magento\Authorization\Model\ResourceModel\Role\CollectionFactory $roleCollectionFactory,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -125,7 +126,7 @@ class Cart extends \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractS
             \Magento\Backend\Block\Widget\Button::class,
             [
                 'label' => __('Clear Shopping Cart'),
-                'onclick' => 'order.clearShoppingCart(\'' . $deleteAllConfirmString . '\')'
+                'onclick' => 'order.clearShoppingCart(\'' . $deleteAllConfirmString . '\')',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
@@ -23,6 +23,7 @@ use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
 use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Check async request for multistore product creation service, scheduling bulk
@@ -98,7 +99,7 @@ class AsyncScheduleMultiStoreTest extends WebapiAbstract
      */
     protected function setUp(): void
     {
-        $logFilePath = TESTS_TEMP_DIR . "/MessageQueueTestLog.txt";
+        $logFilePath = TESTS_TEMP_DIR . '/MessageQueueTestLog.txt';
         $this->objectManager = Bootstrap::getObjectManager();
         $this->registry = $this->objectManager->get(Registry::class);
 
@@ -153,7 +154,7 @@ class AsyncScheduleMultiStoreTest extends WebapiAbstract
             );
             $this->productRepository->save($productModel);
         } catch (\Exception $e) {
-            $this->fail("Precondition failed: product was not created.");
+            $this->fail('Precondition failed: product was not created.');
         }
 
         $this->asyncScheduleAndTest($product, $storeCode);
@@ -192,7 +193,7 @@ class AsyncScheduleMultiStoreTest extends WebapiAbstract
                 [$product]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Not all products were created");
+            $this->fail('Not all products were created');
         }
 
         $requestData = ['id' => $sku, 'sku' => $sku];
@@ -202,7 +203,7 @@ class AsyncScheduleMultiStoreTest extends WebapiAbstract
                 'rest' => [
                     'resourcePath' => self::REST_RESOURCE_PATH . '/' . $sku,
                     'httpMethod' => Request::HTTP_METHOD_GET,
-                ]
+                ],
             ];
             $storeResponse = $this->_webApiCall($serviceInfo, $requestData, null, $checkingStore);
             if ($checkingStore == $storeCode || $storeCode == self::STORE_CODE_ALL) {
@@ -272,7 +273,7 @@ class AsyncScheduleMultiStoreTest extends WebapiAbstract
 
         if ($size > 0) {
             //phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new Exception(new Phrase("Collection size after clearing the products: %size", ['size' => $size]));
+            throw new Exception(new Phrase('Collection size after clearing the products: %size', ['size' => $size]));
         }
         $this->skus = [];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ContainerTest extends AbstractContainerTestCase
             'page.top' => 'After Page Header',
             'footer-container' => 'Page Footer Container',
             'sidebar.main' => 'Sidebar Main',
-            'sidebar.additional' => 'Sidebar Additional'
+            'sidebar.additional' => 'Sidebar Additional',
         ];
         $layoutProcessorContainers = [
             'product.info.virtual.extra' => 'Product Extra Info',
@@ -60,7 +61,7 @@ class ContainerTest extends AbstractContainerTestCase
             'content.bottom' => 'Main Content Bottom',
             'page.bottom' => 'Before Page Footer',
             'footer' => 'Page Footer',
-            'cms_footer_links_container' => 'CMS Footer Links'
+            'cms_footer_links_container' => 'CMS Footer Links',
         ];
         $allowedContainers = ['content', 'content.top', 'content.bottom'];
         $expectedHtml = '<select name="block" id="" class="required-entry select" title="" '
@@ -100,7 +101,7 @@ class ContainerTest extends AbstractContainerTestCase
                 ['content.bottom', null, 'content.bottom'],
                 ['Main Content Bottom', null, 'Main Content Bottom'],
                 ['content.top', null, 'content.top'],
-                ['Main Content Top', null, 'Main Content Top']
+                ['Main Content Top', null, 'Main Content Top'],
             ]
         );
 
@@ -123,7 +124,7 @@ class ContainerTest extends AbstractContainerTestCase
             'page.top' => 'After Page Header',
             'footer-container' => 'Page Footer Container',
             'sidebar.main' => 'Sidebar Main',
-            'sidebar.additional' => 'Sidebar Additional'
+            'sidebar.additional' => 'Sidebar Additional',
         ];
         $layoutProcessorContainers = [
             'product.info.simple.extra' => 'Product Extra Info',
@@ -136,7 +137,7 @@ class ContainerTest extends AbstractContainerTestCase
             'content.bottom' => 'Main Content Bottom',
             'page.bottom' => 'Before Page Footer',
             'footer' => 'Page Footer',
-            'cms_footer_links_container' => 'CMS Footer Links'
+            'cms_footer_links_container' => 'CMS Footer Links',
         ];
         $allowedContainers = [];
         $expectedHtml = '<select name="block" id="" class="required-entry select" title="" '
@@ -221,7 +222,7 @@ class ContainerTest extends AbstractContainerTestCase
                 ['sidebar.additional', null, 'sidebar.additional'],
                 ['Sidebar Additional', null, 'Sidebar Additional'],
                 ['sidebar.main', null, 'sidebar.main'],
-                ['Sidebar Main', null, 'Sidebar Main']
+                ['Sidebar Main', null, 'Sidebar Main'],
             ]
         );
 
@@ -244,7 +245,7 @@ class ContainerTest extends AbstractContainerTestCase
             'page.top' => 'After Page Header',
             'footer-container' => 'Page Footer Container',
             'sidebar.main' => 'Sidebar Main',
-            'sidebar.additional' => 'Sidebar Additional'
+            'sidebar.additional' => 'Sidebar Additional',
         ];
         $layoutProcessorContainers = [
             'product.info.price' => 'Product info auxiliary container',
@@ -262,7 +263,7 @@ class ContainerTest extends AbstractContainerTestCase
             'content.bottom' => 'Main Content Bottom',
             'page.bottom' => 'Before Page Footer',
             'footer' => 'Page Footer',
-            'cms_footer_links_container' => 'CMS Footer Links'
+            'cms_footer_links_container' => 'CMS Footer Links',
         ];
         $allowedContainers = [];
         $expectedHtml = '<select name="block" id="" class="required-entry select" title="" '
@@ -362,7 +363,7 @@ class ContainerTest extends AbstractContainerTestCase
                 ['sidebar.additional', null, 'sidebar.additional'],
                 ['Sidebar Additional', null, 'Sidebar Additional'],
                 ['sidebar.main', null, 'sidebar.main'],
-                ['Sidebar Main', null, 'Sidebar Main']
+                ['Sidebar Main', null, 'Sidebar Main'],
             ]
         );
 
@@ -384,7 +385,7 @@ class ContainerTest extends AbstractContainerTestCase
             'page.top' => 'After Page Header',
             'footer-container' => 'Page Footer Container',
             'sidebar.main' => 'Sidebar Main',
-            'sidebar.additional' => 'Sidebar Additional'
+            'sidebar.additional' => 'Sidebar Additional',
         ];
         $layoutProcessorContainers = [
             'header.panel' => 'Page Header Panel',
@@ -396,7 +397,7 @@ class ContainerTest extends AbstractContainerTestCase
             'content.bottom' => 'Main Content Bottom',
             'page.bottom' => 'Before Page Footer',
             'footer' => 'Page Footer',
-            'cms_footer_links_container' => 'CMS Footer Links'
+            'cms_footer_links_container' => 'CMS Footer Links',
         ];
         $allowedContainers = ['sidebar.main', 'sidebar.additional'];
         $expectedHtml = '<select name="block" id="" class="required-entry select" title="" '
@@ -434,7 +435,7 @@ class ContainerTest extends AbstractContainerTestCase
                 ['sidebar.additional', null, 'sidebar.additional'],
                 ['Sidebar Additional', null, 'Sidebar Additional'],
                 ['sidebar.main', null, 'sidebar.main'],
-                ['Sidebar Main', null, 'Sidebar Main']
+                ['Sidebar Main', null, 'Sidebar Main'],
             ]
         );
 

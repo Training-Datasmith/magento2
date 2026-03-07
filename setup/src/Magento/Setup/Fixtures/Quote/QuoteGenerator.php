@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ class QuoteGenerator
      *
      * @var string
      */
-    const BATCH_SIZE = 1000;
+    public const BATCH_SIZE = 1000;
 
     /**
      * INSERT query templates.
@@ -190,7 +192,7 @@ class QuoteGenerator
             QuoteConfiguration::BIG_CONFIGURABLE_TYPE => random_int(
                 $this->config->getBigConfigurableCountFrom(),
                 $this->config->getBigConfigurableCountTo()
-            )
+            ),
         ];
         $quote = [
             '%itemsPerOrder%' => array_sum($productCount),
@@ -254,9 +256,9 @@ class QuoteGenerator
             '%code%' => 'info_buyRequest',
             '%value%' => $this->serializer->serialize([
                 'product' => $this->getStubProductId($entityId, $index, Type::TYPE_SIMPLE),
-                'qty' => "1",
-                'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw'
-            ])
+                'qty' => '1',
+                'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw',
+            ]),
         ]);
     }
 
@@ -279,25 +281,25 @@ class QuoteGenerator
             '%productOptions%' => $this->getStubProductBuyRequest($entityId, $index, $productType)['order'],
             '%itemId%' => $parentItemId,
             '%parentItemId%' => 'null',
-            '%productType%' => Configurable::TYPE_CODE
+            '%productType%' => Configurable::TYPE_CODE,
         ];
         $this->query('quote_item', $quote, $itemData);
         $this->query('quote_item_option', $quote, $itemData, [
             '%code%' => 'info_buyRequest',
-            '%value%' => $this->getStubProductBuyRequest($entityId, $index, $productType)['quote']
+            '%value%' => $this->getStubProductBuyRequest($entityId, $index, $productType)['quote'],
         ]);
         $this->query('quote_item_option', $quote, $itemData, [
             '%code%' => 'attributes',
-            '%value%' => $this->getStubProductBuyRequest($entityId, $index, $productType)['super_attribute']
+            '%value%' => $this->getStubProductBuyRequest($entityId, $index, $productType)['super_attribute'],
         ]);
         $itemData['%productId%'] = $this->getStubProductChildId($entityId, $index, $productType);
         $this->query('quote_item_option', $itemData, [
-            '%code%' => "product_qty_" . $this->getStubProductChildId($entityId, $index, $productType),
-            '%value%' => "1"
+            '%code%' => 'product_qty_' . $this->getStubProductChildId($entityId, $index, $productType),
+            '%value%' => '1',
         ]);
         $this->query('quote_item_option', $itemData, [
-            '%code%' => "simple_product",
-            '%value%' => $this->getStubProductChildId($entityId, $index, $productType)
+            '%code%' => 'simple_product',
+            '%value%' => $this->getStubProductChildId($entityId, $index, $productType),
         ]);
     }
 
@@ -321,17 +323,17 @@ class QuoteGenerator
             '%productOptions%' => $this->getStubProductChildBuyRequest($entityId, $index, $productType)['order'],
             '%itemId%' => $itemId,
             '%parentItemId%' => $parentItemId,
-            '%productType%' => Type::TYPE_SIMPLE
+            '%productType%' => Type::TYPE_SIMPLE,
         ];
 
         $this->query('quote_item', $quote, $itemData);
         $this->query('quote_item_option', $itemData, [
-            '%code%' => "info_buyRequest",
-            '%value%' => $this->getStubProductChildBuyRequest($entityId, $index, $productType)['quote']
+            '%code%' => 'info_buyRequest',
+            '%value%' => $this->getStubProductChildBuyRequest($entityId, $index, $productType)['quote'],
         ]);
         $this->query('quote_item_option', $itemData, [
-            '%code%' => "parent_product_id",
-            '%value%' => $this->getStubProductId($entityId, $index, $productType)
+            '%code%' => 'parent_product_id',
+            '%value%' => $this->getStubProductId($entityId, $index, $productType),
         ]);
     }
 
@@ -464,7 +466,7 @@ class QuoteGenerator
             '%state%' => 'Alabama',
             '%country%' => 'US',
             '%zip%' => '11111',
-            '%phone%' => '911'
+            '%phone%' => '911',
         ];
     }
 
@@ -508,9 +510,9 @@ class QuoteGenerator
                 implode(PHP_EOL, [
                     $this->storeManager->getWebsite($store->getWebsiteId())->getName(),
                     $this->storeManager->getGroup($store->getStoreGroupId())->getName(),
-                    $store->getName()
+                    $store->getName(),
                 ]),
-                $productsResult
+                $productsResult,
             ];
         }
 
@@ -541,19 +543,19 @@ class QuoteGenerator
                 $resource = $template['_resource'];
                 unset($template['_resource']);
             } else {
-                $resource = explode("_", $table);
+                $resource = explode('_', $table);
                 foreach ($resource as &$item) {
                     $item = ucfirst($item);
                 }
-                $resource = "Magento\\"
+                $resource = 'Magento\\'
                     . array_shift($resource)
-                    . "\\Model\\ResourceModel\\"
-                    . implode("\\", $resource);
+                    . '\\Model\\ResourceModel\\'
+                    . implode('\\', $resource);
             }
 
             $tableName = $this->getTableName($table, $resource);
 
-            $querySuffix = "";
+            $querySuffix = '';
             if (isset($template['_query_suffix'])) {
                 $querySuffix = $template['_query_suffix'];
                 unset($template['_query_suffix']);
@@ -656,11 +658,11 @@ class QuoteGenerator
             $productsResult[$key]['sku'] = $simpleProduct->getSku();
             $productsResult[$key]['name'] = $simpleProduct->getName();
             $productsResult[$key]['buyRequest'] = $this->serializer->serialize([
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,",
-                    "product" => $simpleId,
-                    "qty" => "1"
-                ]
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,',
+                    'product' => $simpleId,
+                    'qty' => '1',
+                ],
             ]);
         }
         return $productsResult;
@@ -688,36 +690,36 @@ class QuoteGenerator
             $superAttribute = [];
             foreach ($options as $option) {
                 $attributesInfo[] = [
-                    "label" => $option->getLabel(),
-                    "value" => $option['options']['0']['label'] ?? null,
-                    "option_id" => $option->getAttributeId(),
-                    "option_value" => $option->getValues()[0]->getValueIndex()
+                    'label' => $option->getLabel(),
+                    'value' => $option['options']['0']['label'] ?? null,
+                    'option_id' => $option->getAttributeId(),
+                    'option_value' => $option->getValues()[0]->getValueIndex(),
                 ];
                 $superAttribute[$option->getAttributeId()] = $option->getValues()[0]->getValueIndex();
             }
 
             $configurableBuyRequest = [
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw",
-                    "product" => $configurableId,
-                    "selected_configurable_option" => $simpleId,
-                    "related_product" => "",
-                    "super_attribute" => $superAttribute,
-                    "qty" => 1
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2UyLmNvbS9jYXRlZ29yeS0xLmh0bWw',
+                    'product' => $configurableId,
+                    'selected_configurable_option' => $simpleId,
+                    'related_product' => '',
+                    'super_attribute' => $superAttribute,
+                    'qty' => 1,
                 ],
-                "attributes_info" => $attributesInfo,
-                "simple_name" => $configurableChild->getName(),
-                "simple_sku" => $configurableChild->getSku(),
+                'attributes_info' => $attributesInfo,
+                'simple_name' => $configurableChild->getName(),
+                'simple_sku' => $configurableChild->getSku(),
             ];
             $simpleBuyRequest = [
-                "info_buyRequest" => [
-                    "uenc" => "aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,",
-                    "product" => $configurableId,
-                    "selected_configurable_option" => $simpleId,
-                    "related_product" => "",
-                    "super_attribute" => $superAttribute,
-                    "qty" => "1"
-                ]
+                'info_buyRequest' => [
+                    'uenc' => 'aHR0cDovL21hZ2VudG8uZGV2L2NvbmZpZ3VyYWJsZS1wcm9kdWN0LTEuaHRtbA,,',
+                    'product' => $configurableId,
+                    'selected_configurable_option' => $simpleId,
+                    'related_product' => '',
+                    'super_attribute' => $superAttribute,
+                    'qty' => '1',
+                ],
             ];
 
             $quoteConfigurableBuyRequest = $configurableBuyRequest['info_buyRequest'];
@@ -732,7 +734,7 @@ class QuoteGenerator
             $productsResult[$key]['buyRequest'] = [
                 'order' => $this->serializer->serialize($configurableBuyRequest),
                 'quote' => $this->serializer->serialize($quoteConfigurableBuyRequest),
-                'super_attribute' => $this->serializer->serialize($superAttribute)
+                'super_attribute' => $this->serializer->serialize($superAttribute),
             ];
             $productsResult[$key]['childBuyRequest'] = [
                 'order' => $this->serializer->serialize($simpleBuyRequest),

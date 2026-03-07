@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
                 [
                     'message_from' => $message->getSender(),
                     'message_to' => $message->getRecipient(),
-                    'message' => $message->getMessage()
+                    'message' => $message->getMessage(),
                 ],
                 $maskedQuoteId,
                 $this->getItemId(
@@ -123,14 +124,14 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
                                         'gift_message' => [
                                             'from' => $message->getSender(),
                                             'to' => $message->getRecipient(),
-                                            'message' => $message->getMessage()
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'message' => $message->getMessage(),
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(),
@@ -179,13 +180,13 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
                             [
                                 'items' => [
                                     [
-                                        'gift_message' => null
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'gift_message' => null,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(),
@@ -230,7 +231,7 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
     private function getCustomerAuthHeaders(string $email): array
     {
         return [
-            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password')
+            'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken($email, 'password'),
         ];
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Customer\Model\Attribute\Data\Postcode;
 use Magento\Customer\Model\Customer;
@@ -35,13 +37,13 @@ return [
                 'table' => 'table',
                 'field' => 'field',
                 'to' => Postcode::class,
-                'from' => ['`field` = ?' => 'customer/attribute_data_postcode']
+                'from' => ['`field` = ?' => 'customer/attribute_data_postcode'],
             ],
             [
                 'table' => 'table',
                 'field' => 'field',
                 'to' => 'Magento\Customer\Model\Attribute\Data\Postcode::someMethod',
-                'from' => ['`field` = ?' => 'customer/attribute_data_postcode::someMethod']
+                'from' => ['`field` = ?' => 'customer/attribute_data_postcode::someMethod'],
             ],
         ],
         'aliases_map' => [
@@ -55,5 +57,5 @@ return [
         Migration::ENTITY_TYPE_MODEL => [
             'customer/customer' => \Magento\Customer\Model\Customer_FROM_MAP::class,
         ],
-    ]
+    ],
 ];

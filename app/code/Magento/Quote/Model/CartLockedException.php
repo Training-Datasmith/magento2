@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -14,5 +15,4 @@ use Magento\Framework\Exception\StateException;
  */
 class CartLockedException extends StateException
 {
-
 }

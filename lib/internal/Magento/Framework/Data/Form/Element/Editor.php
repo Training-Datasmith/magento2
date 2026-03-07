@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -305,7 +307,7 @@ script
                     'title' => $this->translate('Insert Widget...'),
                     'onclick' => "widgetTools.openDialog('"
                         . $this->getPluginConfigOptions('magentowidget', 'window_url')
-                        . "widget_target_id/" . $this->getHtmlId() . "/')",
+                        . 'widget_target_id/' . $this->getHtmlId() . "/')",
                     'class' => 'action-add-widget plugin',
                     'style' => $visible ? '' : 'display:none',
                 ]

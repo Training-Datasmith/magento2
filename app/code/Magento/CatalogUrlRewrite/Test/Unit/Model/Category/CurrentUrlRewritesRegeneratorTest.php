@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class CurrentUrlRewritesRegeneratorTest extends TestCase
                 'categoryUrlPathGenerator' => $this->categoryUrlPathGenerator,
                 'urlRewriteFactory' => $this->urlRewriteFactory,
                 'mergeDataProviderFactory' => $mergeDataProviderFactory,
-                'urlRewriteFinder' => $this->urlRewriteFinder
+                'urlRewriteFinder' => $this->urlRewriteFinder,
             ]
         );
     }

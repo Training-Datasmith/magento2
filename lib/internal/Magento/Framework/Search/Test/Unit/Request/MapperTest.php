@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,6 @@ use Exception;
 use InvalidArgumentException;
 use Magento\Framework\Exception\StateException;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Search\Request\Aggregation\Metric;
-use Magento\Framework\Search\Request\Aggregation\RangeBucket;
-use Magento\Framework\Search\Request\Aggregation\TermBucket;
 use Magento\Framework\Search\Request\Filter\Range;
 use Magento\Framework\Search\Request\Filter\Term;
 use Magento\Framework\Search\Request\Filter\Wildcard;
@@ -24,9 +22,9 @@ use Magento\Framework\Search\Request\Query\Filter;
 use Magento\Framework\Search\Request\Query\MatchQuery;
 use Magento\Framework\Search\Request\QueryInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -137,7 +135,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -156,15 +154,15 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'value' => 'someValue',
                 'boost' => 3,
-                'match' => 'someMatches'
+                'match' => 'someMatches',
             ],
             'notUsedQuery' => [
                 'type' => QueryInterface::TYPE_MATCH,
                 'name' => 'someName',
                 'value' => 'someValue',
                 'boost' => 3,
-                'match' => 'someMatches'
-            ]
+                'match' => 'someMatches',
+            ],
         ];
         $query = $queries['someQuery'];
         $this->objectManager->expects($this->once())->method('create')
@@ -187,7 +185,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -212,14 +210,14 @@ class MapperTest extends TestCase
                         'queryReference' => [
                             [
                                 'clause' => 'someClause',
-                                'ref' => 'someQuery'
+                                'ref' => 'someQuery',
                             ],
                         ],
                     ],
                 ],
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -261,7 +259,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -280,11 +278,11 @@ class MapperTest extends TestCase
                 'queries' => [
                     'someQuery' => [
                         'type' => QueryInterface::TYPE_FILTER,
-                    ]
+                    ],
                 ],
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -324,7 +322,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -344,12 +342,12 @@ class MapperTest extends TestCase
                 'objectManager' => $this->objectManager,
                 'queries' => [
                     self::ROOT_QUERY => [
-                        'type' => 'invalid_type'
-                    ]
+                        'type' => 'invalid_type',
+                    ],
                 ],
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -369,7 +367,7 @@ class MapperTest extends TestCase
                 'objectManager' => $this->objectManager,
                 'queries' => [],
                 'rootQueryName' => self::ROOT_QUERY,
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -387,18 +385,18 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
                 'type' => FilterInterface::TYPE_TERM,
                 'name' => 'someName',
                 'field' => 'someField',
-                'value' => 'someValue'
-            ]
+                'value' => 'someValue',
+            ],
         ];
 
         $filter = $filters['someFilter'];
@@ -428,7 +426,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -446,18 +444,18 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
                 'type' => FilterInterface::TYPE_WILDCARD,
                 'name' => 'someName',
                 'field' => 'someField',
-                'value' => 'someValue'
-            ]
+                'value' => 'someValue',
+            ],
         ];
 
         $filter = $filters['someFilter'];
@@ -487,7 +485,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -505,10 +503,10 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
@@ -516,8 +514,8 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'field' => 'someField',
                 'from' => 'from',
-                'to' => 'to'
-            ]
+                'to' => 'to',
+            ],
         ];
 
         $filter = $filters['someFilter'];
@@ -548,7 +546,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -566,10 +564,10 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
@@ -578,16 +576,16 @@ class MapperTest extends TestCase
                 'filterReference' => [
                     [
                         'ref' => 'someFilterTerm',
-                        'clause' => 'someClause'
-                    ]
-                ]
+                        'clause' => 'someClause',
+                    ],
+                ],
             ],
             'someFilterTerm' => [
                 'type' => FilterInterface::TYPE_TERM,
                 'name' => 'someName',
                 'field' => 'someField',
-                'value' => 'someValue'
-            ]
+                'value' => 'someValue',
+            ],
         ];
 
         $someFilterTerm = $filters['someFilterTerm'];
@@ -623,7 +621,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -642,24 +640,24 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
                 'type' => FilterInterface::TYPE_TERM,
                 'name' => 'someName',
                 'field' => 'someField',
-                'value' => 'someValue'
+                'value' => 'someValue',
             ],
             'notUsedFilter' => [
                 'type' => FilterInterface::TYPE_TERM,
                 'name' => 'someName',
                 'field' => 'someField',
-                'value' => 'someValue'
-            ]
+                'value' => 'someValue',
+            ],
         ];
 
         $filter = $filters['someFilter'];
@@ -690,7 +688,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -714,10 +712,10 @@ class MapperTest extends TestCase
                         'name' => 'someName',
                         'filterReference' => [
                             [
-                                'ref' => 'someFilter'
-                            ]
-                        ]
-                    ]
+                                'ref' => 'someFilter',
+                            ],
+                        ],
+                    ],
                 ],
                 'rootQueryName' => self::ROOT_QUERY,
                 'filters' => [
@@ -727,12 +725,12 @@ class MapperTest extends TestCase
                         'filterReference' => [
                             [
                                 'ref' => 'someFilter',
-                                'clause' => 'someClause'
-                            ]
-                        ]
-                    ]
+                                'clause' => 'someClause',
+                            ],
+                        ],
+                    ],
                 ],
-                'aggregation' => []
+                'aggregation' => [],
             ]
         );
 
@@ -752,15 +750,15 @@ class MapperTest extends TestCase
                 'name' => 'someName',
                 'filterReference' => [
                     [
-                        'ref' => 'someFilter'
-                    ]
-                ]
-            ]
+                        'ref' => 'someFilter',
+                    ],
+                ],
+            ],
         ];
         $filters = [
             'someFilter' => [
-                'type' => 'invalid_type'
-            ]
+                'type' => 'invalid_type',
+            ],
         ];
 
         /** @var Mapper $mapper */
@@ -771,7 +769,7 @@ class MapperTest extends TestCase
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
                 'aggregation' => [],
-                'filters' => $filters
+                'filters' => $filters,
             ]
         );
 
@@ -792,10 +790,10 @@ class MapperTest extends TestCase
                 'filterReference' => [
                     [
                         'ref' => 'someQueryMatch',
-                        'clause' => 'someClause'
-                    ]
-                ]
-            ]
+                        'clause' => 'someClause',
+                    ],
+                ],
+            ],
         ];
 
         /** @var Mapper $mapper */
@@ -805,7 +803,7 @@ class MapperTest extends TestCase
                 'objectManager' => $this->objectManager,
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
-                'filters' => []
+                'filters' => [],
             ]
         );
 
@@ -825,9 +823,9 @@ class MapperTest extends TestCase
                         'name' => 'someName',
                         'value' => 'someValue',
                         'boost' => 3,
-                        'match' => 'someMatches'
-                    ]
-                ]
+                        'match' => 'someMatches',
+                    ],
+                ],
             ],
             [
                 [
@@ -835,10 +833,10 @@ class MapperTest extends TestCase
                         'type' => QueryInterface::TYPE_MATCH,
                         'name' => 'someName',
                         'value' => 'someValue',
-                        'match' => 'someMatches'
-                    ]
-                ]
-            ]
+                        'match' => 'someMatches',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -857,17 +855,17 @@ class MapperTest extends TestCase
                         'queryReference' => [
                             [
                                 'ref' => 'someQueryMatch',
-                                'clause' => 'someClause'
-                            ]
-                        ]
+                                'clause' => 'someClause',
+                            ],
+                        ],
                     ],
                     'someQueryMatch' => [
                         'type' => QueryInterface::TYPE_MATCH,
                         'value' => 'someValue',
                         'name' => 'someName',
-                        'match' => 'someMatches'
-                    ]
-                ]
+                        'match' => 'someMatches',
+                    ],
+                ],
             ],
             [
                 [
@@ -877,18 +875,18 @@ class MapperTest extends TestCase
                         'queryReference' => [
                             [
                                 'ref' => 'someQueryMatch',
-                                'clause' => 'someClause'
-                            ]
-                        ]
+                                'clause' => 'someClause',
+                            ],
+                        ],
                     ],
                     'someQueryMatch' => [
                         'type' => QueryInterface::TYPE_MATCH,
                         'value' => 'someValue',
                         'name' => 'someName',
-                        'match' => 'someMatches'
-                    ]
-                ]
-            ]
+                        'match' => 'someMatches',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -907,17 +905,17 @@ class MapperTest extends TestCase
                         'queryReference' => [
                             [
                                 'ref' => 'someQueryMatch',
-                                'clause' => 'someClause'
-                            ]
-                        ]
+                                'clause' => 'someClause',
+                            ],
+                        ],
                     ],
                     'someQueryMatch' => [
                         'type' => QueryInterface::TYPE_MATCH,
                         'value' => 'someValue',
                         'name' => 'someName',
-                        'match' => 'someMatches'
-                    ]
-                ]
+                        'match' => 'someMatches',
+                    ],
+                ],
             ],
             [
                 [
@@ -927,18 +925,18 @@ class MapperTest extends TestCase
                         'queryReference' => [
                             [
                                 'ref' => 'someQueryMatch',
-                                'clause' => 'someClause'
-                            ]
-                        ]
+                                'clause' => 'someClause',
+                            ],
+                        ],
                     ],
                     'someQueryMatch' => [
                         'type' => QueryInterface::TYPE_MATCH,
                         'value' => 'someValue',
                         'name' => 'someName',
-                        'match' => 'someMatches'
-                    ]
-                ]
-            ]
+                        'match' => 'someMatches',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -952,14 +950,14 @@ class MapperTest extends TestCase
                 'type' => QueryInterface::TYPE_MATCH,
                 'value' => 'someValue',
                 'name' => 'someName',
-                'match' => 'someMatches'
-            ]
+                'match' => 'someMatches',
+            ],
         ];
         $bucket = [
-            "name" => "price_bucket",
-            "field" => "price",
-            "method" => "test",
-            "type" => "invalidBucket"
+            'name' => 'price_bucket',
+            'field' => 'price',
+            'method' => 'test',
+            'type' => 'invalidBucket',
         ];
 
         /** @var Mapper $mapper */
@@ -969,7 +967,7 @@ class MapperTest extends TestCase
                 'objectManager' => $this->objectManager,
                 'queries' => $queries,
                 'rootQueryName' => self::ROOT_QUERY,
-                'aggregations' => [$bucket]
+                'aggregations' => [$bucket],
             ]
         );
 

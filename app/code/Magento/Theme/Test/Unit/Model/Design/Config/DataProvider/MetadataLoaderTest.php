@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Theme\Api\Data\DesignConfigExtensionInterface;
 use Magento\Theme\Api\Data\DesignConfigInterface;
 use Magento\Theme\Api\DesignConfigRepositoryInterface;
 use Magento\Theme\Model\Design\Config\DataProvider\MetadataLoader;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MetadataLoaderTest extends TestCase
 {
@@ -129,7 +130,7 @@ class MetadataLoaderTest extends TestCase
             ->method('getFieldConfig')
             ->willReturn([
                 'field' => 'field',
-                'fieldset' => 'fieldset1'
+                'fieldset' => 'fieldset1',
             ]);
         $this->designConfigData->expects($this->once())
             ->method('getValue')

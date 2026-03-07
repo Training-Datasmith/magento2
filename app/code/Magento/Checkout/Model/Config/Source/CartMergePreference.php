@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class CartMergePreference implements OptionSourceInterface
         return [
             ['value' => 'guest', 'label' => __('Guest Priority – Override with guest cart quantity')],
             ['value' => 'customer', 'label' => __('Customer Priority – Override with customer cart quantity')],
-            ['value' => 'merge', 'label' => __('Merge Quantities – Merge quantities of customer and guest cart')]
+            ['value' => 'merge', 'label' => __('Merge Quantities – Merge quantities of customer and guest cart')],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,55 +64,55 @@ class SecureTokenTest extends TestCase
                 'response' => new DataObject(
                     [
                         'securetoken' => 'kcsakc;lsakc;lksa;kcsa;',
-                        'result' => 0 // - good code
+                        'result' => 0, // - good code
                     ]
-                )
+                ),
             ],
             [
                 'result' => false,
                 'response' => new DataObject(
                     [
                         'securetoken' => 'kcsakc;lsakc;lksa;kcsa;',
-                        'result' => SecureToken::ST_ALREADY_USED
+                        'result' => SecureToken::ST_ALREADY_USED,
                     ]
-                )
+                ),
             ],
             [
                 'result' => false,
                 'response' => new DataObject(
                     [
                         'securetoken' => 'kcsakc;lsakc;lksa;kcsa;',
-                        'result' => SecureToken::ST_EXPIRED
+                        'result' => SecureToken::ST_EXPIRED,
                     ]
-                )
+                ),
             ],
             [
                 'result' => false,
                 'response' => new DataObject(
                     [
                         'securetoken' => 'kcsakc;lsakc;lksa;kcsa;',
-                        'result' => SecureToken::ST_TRANSACTION_IN_PROCESS
+                        'result' => SecureToken::ST_TRANSACTION_IN_PROCESS,
                     ]
-                )
+                ),
             ],
             [
                 'result' => false,
                 'response' => new DataObject(
                     [
                         'securetoken' => 'kcsakc;lsakc;lksa;kcsa;',
-                        'result' => 'BAD_CODE'
+                        'result' => 'BAD_CODE',
                     ]
-                )
+                ),
             ],
             [
                 'result' => false,
                 'response' => new DataObject(
                     [
                         'securetoken' => null, // -
-                        'result' => SecureToken::ST_TRANSACTION_IN_PROCESS
+                        'result' => SecureToken::ST_TRANSACTION_IN_PROCESS,
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 }

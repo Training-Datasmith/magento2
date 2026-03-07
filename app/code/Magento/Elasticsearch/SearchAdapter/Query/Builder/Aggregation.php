@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\SearchAdapter\Query\Builder;
 
+use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 use Magento\Framework\Search\Request\BucketInterface;
 use Magento\Framework\Search\RequestInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
 
 /**
  * @api
@@ -74,7 +77,7 @@ class Aggregation
         $field = $this->fieldMapper->getFieldName($bucket->getField());
         switch ($bucket->getType()) {
             case BucketInterface::TYPE_TERM:
-                $searchQuery['body']['aggregations'][$bucket->getName()]= [
+                $searchQuery['body']['aggregations'][$bucket->getName()] = [
                     'terms' => array_merge(
                         $bucket->getParameters(),
                         [
@@ -85,7 +88,7 @@ class Aggregation
                 ];
                 break;
             case BucketInterface::TYPE_DYNAMIC:
-                $searchQuery['body']['aggregations'][$bucket->getName()]= [
+                $searchQuery['body']['aggregations'][$bucket->getName()] = [
                     'extended_stats' => [
                         'field' => $field,
                     ],

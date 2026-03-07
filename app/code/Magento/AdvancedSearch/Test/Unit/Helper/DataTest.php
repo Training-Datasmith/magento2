@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,18 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\AdvancedSearch\Helper\Data;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Search\EngineResolverInterface;
 
 #[CoversClass(Data::class)]
 class DataTest extends TestCase
 {
-
     /**
      * @var Data
      */
@@ -57,7 +57,7 @@ class DataTest extends TestCase
             Data::class,
             [
                 'context' => $this->contextMock,
-                'engineResolver' => $this->engineResolverMock
+                'engineResolver' => $this->engineResolverMock,
             ]
         );
     }

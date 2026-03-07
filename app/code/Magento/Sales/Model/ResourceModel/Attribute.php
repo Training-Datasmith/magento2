@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +79,7 @@ class Attribute implements ResetAfterRequestInterface
                 [
                     $object->getEventObject() => $this,
                     'object' => $object,
-                    'attribute' => $attribute
+                    'attribute' => $attribute,
                 ]
             );
         }
@@ -139,7 +141,7 @@ class Attribute implements ResetAfterRequestInterface
                 [
                     $object->getEventObject() => $this,
                     'object' => $object,
-                    'attribute' => $attribute
+                    'attribute' => $attribute,
                 ]
             );
         }

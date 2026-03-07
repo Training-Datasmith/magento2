@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,10 +26,10 @@ use Magento\Framework\View\ConfigInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Context;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -131,7 +132,7 @@ class AbstractBlockTest extends TestCase
         $this->block = $this->getMockBuilder(AbstractBlock::class)
             ->setConstructorArgs([
                 $contextMock,
-                []
+                [],
             ])
             ->onlyMethods([])
             ->getMock();
@@ -175,19 +176,19 @@ class AbstractBlockTest extends TestCase
             [
                 ' data-ui-id="a0b1c2d3e4f5g6h7-i8-j9k0l1m2n-3o4p5q6r7-s8t9u0v1w2z3y4x5" ',
                 'a0b1c2d3e4f5g6h7',
-                ['i8-j9k0l1m2n-3o4p5q6r7', 's8t9u0v1w2z3y4x5']
+                ['i8-j9k0l1m2n-3o4p5q6r7', 's8t9u0v1w2z3y4x5'],
             ],
             [
                 ' data-ui-id="capsed-block-name-cap-ed-param1-caps2-but-ton" ',
                 'CaPSed BLOCK NAME',
-                ['cAp$Ed PaRaM1', 'caPs2', 'bUT-TOn']
+                ['cAp$Ed PaRaM1', 'caPs2', 'bUT-TOn'],
             ],
             [
                 ' data-ui-id="capsed-block-name-cap-ed-param1-caps2-but-ton-but-ton" ',
                 'CaPSed BLOCK NAME',
-                ['cAp$Ed PaRaM1', 'caPs2', 'bUT-TOn', 'bUT-TOn']
+                ['cAp$Ed PaRaM1', 'caPs2', 'bUT-TOn', 'bUT-TOn'],
             ],
-            [' data-ui-id="block-0-1-2-3-4" ', '!block!', range(0, 5)]
+            [' data-ui-id="block-0-1-2-3-4" ', '!block!', range(0, 5)],
         ];
     }
 
@@ -204,7 +205,7 @@ class AbstractBlockTest extends TestCase
             ->willReturnMap(
                 [
                     ['Magento_Theme', 'v1', 'one'],
-                    [$module, 'v2', 'two']
+                    [$module, 'v2', 'two'],
                 ]
             );
 

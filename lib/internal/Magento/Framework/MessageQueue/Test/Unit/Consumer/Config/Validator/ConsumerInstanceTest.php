@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Consumer\Config\Validator;
 use Magento\Framework\MessageQueue\BatchConsumer;
 use Magento\Framework\MessageQueue\Consumer\Config\Validator\ConsumerInstance as ConsumerInstanceValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ConsumerInstanceTest extends TestCase
 {
@@ -57,10 +58,10 @@ class ConsumerInstanceTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => false
-                    ]
-                ]
-            ]
+                        'onlySpawnWhenMessageAvailable' => false,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -92,13 +93,13 @@ class ConsumerInstanceTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
                 // @codingStandardsIgnoreStart
                 "'Magento\\Framework\\MessageQueue\\Test\\Unit\\Consumer\\Config\\Validator\\ConsumerInstanceTest'"
                 . " cannot be specified as 'consumerInstance' for 'consumer1' consumer, unless it implements"
-                . " 'Magento\\Framework\\MessageQueue\\ConsumerInterface' interface"
+                . " 'Magento\\Framework\\MessageQueue\\ConsumerInterface' interface",
                 // @codingStandardsIgnoreEnd
             ],
             'invalid, consumerInstance class does not exist' => [
@@ -108,18 +109,18 @@ class ConsumerInstanceTest extends TestCase
                         'queue' => 'queue1',
                         'consumerInstance' => 'consumerClass1',
                         'handlers' => [
-                            [['type' => 'handlerClassOne', 'method' => 'handlerMethodOne']]
+                            [['type' => 'handlerClassOne', 'method' => 'handlerMethodOne']],
                         ],
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
                 "'consumerClass1' does not exist and thus cannot be used as 'consumerInstance'"
-                . " for 'consumer1' consumer."
-            ]
+                . " for 'consumer1' consumer.",
+            ],
         ];
     }
 }

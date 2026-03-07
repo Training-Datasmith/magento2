@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Customer reports admin controller
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report;
 
 use Magento\Backend\App\Action;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,7 +70,7 @@ class Pattern
     public function setRowsSet(array $rowsSet)
     {
         if (!count($rowsSet)) {
-            throw new \Exception("Rows set must contain at least 1 array representing a row pattern");
+            throw new \Exception('Rows set must contain at least 1 array representing a row pattern');
         }
         $this->_rowsSet = $rowsSet;
         if (!isset($this->_headers)) {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Rule\Metadata;
 
 use Magento\Customer\Api\GroupRepositoryInterface;
@@ -117,7 +120,7 @@ class ValueProvider
                                 'config' => [
                                     'options' => [
                                         ['label' => __('Active'), 'value' => '1'],
-                                        ['label' => __('Inactive'), 'value' => '0']
+                                        ['label' => __('Inactive'), 'value' => '0'],
                                     ],
                                 ],
                             ],
@@ -147,13 +150,13 @@ class ValueProvider
                                 'config' => [
                                     'options' => [
                                         ['label' => __('Yes'), 'value' => '1'],
-                                        ['label' => __('No'), 'value' => '0']
+                                        ['label' => __('No'), 'value' => '0'],
                                     ],
                                 ],
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             'actions' => [
                 'children' => [
@@ -161,10 +164,10 @@ class ValueProvider
                         'arguments' => [
                             'data' => [
                                 'config' => [
-                                    'options' => $applyOptions
+                                    'options' => $applyOptions,
                                 ],
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
                     'discount_amount' => [
                         'arguments' => [
@@ -190,8 +193,8 @@ class ValueProvider
                                 'config' => [
                                     'options' => [
                                         ['label' => __('Yes'), 'value' => '1'],
-                                        ['label' => __('No'), 'value' => '0']
-                                    ]
+                                        ['label' => __('No'), 'value' => '0'],
+                                    ],
                                 ],
                             ],
                         ],
@@ -205,10 +208,10 @@ class ValueProvider
                                         ['label' => __('No'), 'value' => '0'],
                                     ],
                                 ],
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
-                ]
+                ],
             ],
             'labels' => [
                 'children' => [
@@ -218,10 +221,10 @@ class ValueProvider
                                 'config' => [
                                     'value' => isset($labels[0]) ? $labels[0] : '',
                                 ],
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
     }

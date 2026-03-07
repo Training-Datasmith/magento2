@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\View\Layout\Reader;
 
-use Magento\Framework\View\Layout;
 use Magento\Framework\Data\Argument\InterpreterInterface;
+use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\Reader\Visibility\Condition;
 
 /**

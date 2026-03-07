@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class JoinProcessorTest extends TestCase
         $customField = 'customJoinField';
         $joins = [$customField => $customJoinMock];
         $fieldMapping = [
-            'customJoinFieldAzaza' => 'customJoinField'
+            'customJoinFieldAzaza' => 'customJoinField',
         ];
 
         $model = $this->getModel($joins, $fieldMapping);

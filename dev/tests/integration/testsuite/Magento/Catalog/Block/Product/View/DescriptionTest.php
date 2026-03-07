@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -31,8 +32,8 @@ class DescriptionTest extends TestCase
         $objectManager = Bootstrap::getObjectManager();
         $this->block = $objectManager->create(Description::class, [
             'data' => [
-                'template' => 'Magento_Catalog::product/view/attribute.phtml'
-            ]
+                'template' => 'Magento_Catalog::product/view/attribute.phtml',
+            ],
         ]);
 
         $this->registry = $objectManager->get(Registry::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class ChildrenUrlRewriteGeneratorTest extends TestCase
                 'childrenCategoriesProvider' => $this->childrenCategoriesProvider,
                 'categoryUrlRewriteGeneratorFactory' => $this->categoryUrlRewriteGeneratorFactory,
                 'mergeDataProviderFactory' => $mergeDataProviderFactory,
-                'categoryRepository' => $this->categoryRepository
+                'categoryRepository' => $this->categoryRepository,
             ]
         );
     }

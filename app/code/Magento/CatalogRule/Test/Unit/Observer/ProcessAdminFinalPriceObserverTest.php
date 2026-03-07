@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class ProcessAdminFinalPriceObserverTest extends TestCase
                 'rulePricesStorage' => $this->rulePricesStorageMock,
                 'storeManager' => $this->storeManagerMock,
                 'resourceRuleFactory' => $this->resourceRuleFactoryMock,
-                'localeDate' => $this->localeDateMock
+                'localeDate' => $this->localeDateMock,
             ]
         );
     }
@@ -120,7 +121,7 @@ class ProcessAdminFinalPriceObserverTest extends TestCase
                 'getStoreId',
                 'getId',
                 'getData',
-                'setFinalPrice'
+                'setFinalPrice',
             ]
         );
         $dateMock = $this->createPartialMockWithReflection(

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Bootstrap\Profiler.
  */
+
 namespace Magento\Test\Bootstrap;
 
 class ProfilerTest extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class MigrateDataFrom implements DDLTriggerInterface
     /**
      * @inheritdoc
      */
-    public function isApplicable(string $statement) : bool
+    public function isApplicable(string $statement): bool
     {
         return (bool) preg_match(self::MATCH_PATTERN, $statement);
     }
@@ -50,7 +51,7 @@ class MigrateDataFrom implements DDLTriggerInterface
     /**
      * @inheritdoc
      */
-    public function getCallback(ElementHistory $columnHistory) : callable
+    public function getCallback(ElementHistory $columnHistory): callable
     {
         /** @var Column $column */
         $column = $columnHistory->getNew();
@@ -64,7 +65,7 @@ class MigrateDataFrom implements DDLTriggerInterface
                 ->update(
                     $this->resourceConnection->getTableName($tableName),
                     [
-                        $column->getName() => new Expression($matches[1])
+                        $column->getName() => new Expression($matches[1]),
                     ]
                 );
         };

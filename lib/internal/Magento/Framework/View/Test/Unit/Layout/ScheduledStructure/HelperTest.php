@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,16 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Layout\ScheduledStructure;
 
 use Magento\Framework\App\State;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout\Data\Structure;
 use Magento\Framework\View\Layout\Element;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\ScheduledStructure\Helper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -70,7 +71,7 @@ class HelperTest extends TestCase
             Helper::class,
             [
                 'logger' => $this->loggerMock,
-                'state' => $this->stateMock
+                'state' => $this->stateMock,
             ]
         );
     }
@@ -134,7 +135,7 @@ class HelperTest extends TestCase
     {
         return [
             ['current_node', 'current_node', 1, 1],
-            ['', 'parent_node_schedule_block0', 0, 0]
+            ['', 'parent_node_schedule_block0', 0, 0],
         ];
     }
 
@@ -161,10 +162,10 @@ class HelperTest extends TestCase
     public function testScheduleElementLog($loggerExpects, $stateMode)
     {
         // Convert string expectation to matcher
-        $loggerExpects = is_string($loggerExpects) 
-            ? $this->createInvocationMatcher($loggerExpects) 
+        $loggerExpects = is_string($loggerExpects)
+            ? $this->createInvocationMatcher($loggerExpects)
             : $loggerExpects;
-        
+
         $key = 'key';
         $parentName = 'parent';
         $alias = 'alias';
@@ -180,7 +181,7 @@ class HelperTest extends TestCase
                     Helper::SCHEDULED_STRUCTURE_INDEX_ALIAS => $alias,
                     Helper::SCHEDULED_STRUCTURE_INDEX_PARENT_NAME => $parentName,
                     Helper::SCHEDULED_STRUCTURE_INDEX_SIBLING_NAME => $siblingName,
-                    Helper::SCHEDULED_STRUCTURE_INDEX_IS_AFTER => $isAfter
+                    Helper::SCHEDULED_STRUCTURE_INDEX_IS_AFTER => $isAfter,
                 ]
             );
         $this->scheduledStructureMock->expects($this->once())
@@ -212,16 +213,16 @@ class HelperTest extends TestCase
         return [
             [
                 'loggerExpects' => 'once',
-                'stateMode' => State::MODE_DEVELOPER
+                'stateMode' => State::MODE_DEVELOPER,
             ],
             [
                 'loggerExpects' => 'never',
-                'stateMode' => State::MODE_DEFAULT
+                'stateMode' => State::MODE_DEFAULT,
             ],
             [
                 'loggerExpects' => 'never',
-                'stateMode' => State::MODE_PRODUCTION
-            ]
+                'stateMode' => State::MODE_PRODUCTION,
+            ],
         ];
     }
 
@@ -309,7 +310,7 @@ class HelperTest extends TestCase
                 'siblingName' => null,
                 'isAfter' => false,
                 'toSortList' => 0,
-            ]
+            ],
         ];
     }
 }

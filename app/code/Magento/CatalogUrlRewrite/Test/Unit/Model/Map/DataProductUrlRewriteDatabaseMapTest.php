@@ -50,7 +50,7 @@ class DataProductUrlRewriteDatabaseMapTest extends TestCase
             [
                 'connection' => $this->connectionMock,
                 'hashMapPool' => $this->hashMapPoolMock,
-                'temporaryTableService' => $this->temporaryTableServiceMock
+                'temporaryTableService' => $this->temporaryTableServiceMock,
             ]
         );
     }
@@ -94,7 +94,7 @@ class DataProductUrlRewriteDatabaseMapTest extends TestCase
                 [
                     'PRIMARY' => ['url_rewrite_id'],
                     'HASHKEY_ENTITY_STORE' => ['hash_key'],
-                    'ENTITY_STORE' => ['entity_id', 'store_id']
+                    'ENTITY_STORE' => ['entity_id', 'store_id'],
                 ]
             )
             ->willReturn('tempTableName');

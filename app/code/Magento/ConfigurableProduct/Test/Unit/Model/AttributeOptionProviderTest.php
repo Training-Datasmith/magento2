@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\ConfigurableProduct\Model\AttributeOptionProvider;
 use Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionSelectBuilderInterface;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Attribute;
@@ -18,6 +18,7 @@ use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -140,7 +141,7 @@ class AttributeOptionProviderTest extends TestCase
             ->willReturn([
                 ['value' => 13, 'label' => 'Option Value for index 13'],
                 ['value' => 14, 'label' => 'Option Value for index 14'],
-                ['value' => 15, 'label' => 'Option Value for index 15']
+                ['value' => 15, 'label' => 'Option Value for index 15'],
             ]);
 
         $this->abstractAttribute->method('getSource')->willReturn($source);

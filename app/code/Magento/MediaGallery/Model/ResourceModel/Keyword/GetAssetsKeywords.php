@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model\ResourceModel\Keyword;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\IntegrationException;
 use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterface;
 use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterfaceFactory;
 use Magento\MediaGalleryApi\Api\Data\KeywordInterfaceFactory;
 use Magento\MediaGalleryApi\Api\GetAssetsKeywordsInterface;
-use Magento\Framework\App\ResourceConnection;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -115,7 +116,7 @@ class GetAssetsKeywords implements GetAssetsKeywordsInterface
             $assetKeywords[$assetId] = $this->assetKeywordsFactory->create(
                 [
                     'assetId' => $assetId,
-                    'keywords' => $keywords
+                    'keywords' => $keywords,
                 ]
             );
         }

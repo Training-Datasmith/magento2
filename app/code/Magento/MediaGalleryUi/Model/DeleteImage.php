@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class DeleteImage
             throw new LocalizedException(
                 __(
                     'Could not delete "%image": destination directory is restricted.',
-                    ['image' => implode(",", $failedAssets)]
+                    ['image' => implode(',', $failedAssets)]
                 )
             );
         }

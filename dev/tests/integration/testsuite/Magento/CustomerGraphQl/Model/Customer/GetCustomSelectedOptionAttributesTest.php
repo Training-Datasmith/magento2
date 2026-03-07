@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Test\Fixture\Attribute;
 use Magento\Eav\Test\Fixture\AttributeOption;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,7 @@ use PHPUnit\Framework\TestCase;
         [
             'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => 'select_attr',
-            'frontend_input' => 'select'
+            'frontend_input' => 'select',
         ],
         'attribute'
     ),
@@ -33,7 +34,7 @@ use PHPUnit\Framework\TestCase;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$attribute.attribute_code$',
             'label' => 'option1 label',
-            'sort_order' => 10
+            'sort_order' => 10,
         ],
         'option1'
     ),
@@ -43,7 +44,7 @@ use PHPUnit\Framework\TestCase;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$attribute.attribute_code$',
             'label' => 'option2 label',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'option2'
     )
@@ -82,8 +83,8 @@ class GetCustomSelectedOptionAttributesTest extends TestCase
             [
                 [
                     'value' => $option1->getValue(),
-                    'label' => $option1->getLabel()
-                ]
+                    'label' => $option1->getLabel(),
+                ],
             ],
             $result
         );
@@ -106,7 +107,7 @@ class GetCustomSelectedOptionAttributesTest extends TestCase
 
         $customAttribute['attribute_code'] = $attribute->getAttributeCode();
 
-        $customAttribute['value'] = $option1->getValue().",".$option2->getValue();
+        $customAttribute['value'] = $option1->getValue().','.$option2->getValue();
 
         $result = $this->getCustomSelectedOptionAttributes->execute('customer', $customAttribute);
 
@@ -117,12 +118,12 @@ class GetCustomSelectedOptionAttributesTest extends TestCase
             [
                 [
                     'value' => $option1->getValue(),
-                    'label' => $option1->getLabel()
+                    'label' => $option1->getLabel(),
                 ],
                 [
                     'value' => $option2->getValue(),
-                    'label' => $option2->getLabel()
-                ]
+                    'label' => $option2->getLabel(),
+                ],
             ],
             $result
         );

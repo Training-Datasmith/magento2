@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -121,7 +122,7 @@ class RuleQuoteRecollectTotalsOnDemandTest extends TestCase
                                     $iteration * 1000 + 1,
                                     min(18999, ($iteration * 1000 + 1000))
                                 ),
-                            ]
+                            ],
                         ];
                         if ($arg1 === $expectedArg[0] && $arg2 === $expectedArg[1] && $arg3 === $expectedArg[2]) {
                             return null;

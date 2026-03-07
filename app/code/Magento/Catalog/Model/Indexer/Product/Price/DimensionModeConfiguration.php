@@ -1,14 +1,16 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Catalog\Model\Indexer\Product\Price;
 
+use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
-use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 
 class DimensionModeConfiguration
 {
@@ -30,14 +32,14 @@ class DimensionModeConfiguration
         self::DIMENSION_NONE => [
         ],
         self::DIMENSION_WEBSITE => [
-            WebsiteDimensionProvider::DIMENSION_NAME
+            WebsiteDimensionProvider::DIMENSION_NAME,
         ],
         self::DIMENSION_CUSTOMER_GROUP => [
-            CustomerGroupDimensionProvider::DIMENSION_NAME
+            CustomerGroupDimensionProvider::DIMENSION_NAME,
         ],
         self::DIMENSION_WEBSITE_AND_CUSTOMER_GROUP => [
             WebsiteDimensionProvider::DIMENSION_NAME,
-            CustomerGroupDimensionProvider::DIMENSION_NAME
+            CustomerGroupDimensionProvider::DIMENSION_NAME,
         ],
     ];
 

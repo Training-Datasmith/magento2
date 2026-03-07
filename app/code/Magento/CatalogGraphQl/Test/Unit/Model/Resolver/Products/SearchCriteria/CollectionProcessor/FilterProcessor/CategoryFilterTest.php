@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Test\Unit\Model\Resolver\Products\SearchCriteria\CollectionProcessor\FilterProcessor;
 
-use PHPUnit\Framework\Attributes\DataProvider;
+use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\Collection\JoinMinimalPosition;
-use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\CatalogGraphQl\Model\Resolver\Products\SearchCriteria\CollectionProcessor\FilterProcessor\CategoryFilter;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -67,19 +68,19 @@ class CategoryFilterTest extends TestCase
     public function testApplyWithConditionTypeInAndMultipleCategories(): void
     {
         $filter = new Filter();
-        
+
         // Create Category mocks - getIsAnchor() is a magic method via __call()
         $category1 = $this->createPartialMockWithReflection(CategoryModel::class, ['getIsAnchor', 'getChildren']);
         $category1->expects($this->once())->method('getIsAnchor')->willReturn(true);
         $category1->expects($this->once())->method('getChildren')->with(true)->willReturn('2');
-        
+
         $category3 = $this->createPartialMockWithReflection(CategoryModel::class, ['getIsAnchor', 'getChildren']);
         $category3->expects($this->once())->method('getIsAnchor')->willReturn(false);
-        
+
         $collection = $this->createMock(Collection::class);
         $filter->setConditionType('in');
         $filter->setValue('1,3');
-        
+
         $this->categoryFactory->expects($this->exactly(2))
             ->method('create')
             ->willReturnOnConsecutiveCalls($category1, $category3);
@@ -104,12 +105,12 @@ class CategoryFilterTest extends TestCase
     public function testApplyWithOtherSupportedConditionTypes(string $condition): void
     {
         $filter = new Filter();
-        
+
         // Create Category mock - getIsAnchor() is a magic method via __call()
         $category = $this->createPartialMockWithReflection(CategoryModel::class, ['getIsAnchor', 'getChildren']);
         $category->expects($this->once())->method('getIsAnchor')->willReturn(true);
         $category->expects($this->once())->method('getChildren')->with(true)->willReturn('2');
-        
+
         $collection = $this->createMock(Collection::class);
         $filter->setConditionType($condition);
         $categoryId = 1;

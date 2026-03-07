@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CreditmemoServiceTest extends TestCase
 {
-
     /**
      * @var CreditmemoRepositoryInterface|MockObject
      */

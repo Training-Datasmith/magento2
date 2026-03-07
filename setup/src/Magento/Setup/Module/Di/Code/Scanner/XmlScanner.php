@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\Code\Scanner;
 
 use Magento\Framework\ObjectManager\Code\Generator\Proxy as ProxyGenerator;
@@ -39,9 +41,9 @@ class XmlScanner implements ScannerInterface
             $dom = new \DOMDocument();
             $dom->load($file);
             $xpath = new \DOMXPath($dom);
-            $xpath->registerNamespace("php", "http://php.net/xpath");
+            $xpath->registerNamespace('php', 'http://php.net/xpath');
             $xpath->registerPhpFunctions('preg_match');
-            $virtualTypeQuery = "//virtualType/@name";
+            $virtualTypeQuery = '//virtualType/@name';
 
             foreach ($xpath->query($virtualTypeQuery) as $virtualNode) {
                 $virtualTypes[] = ltrim($virtualNode->nodeValue, '\\');

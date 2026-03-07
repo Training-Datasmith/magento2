@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,14 +9,14 @@
 namespace Magento\Catalog\Model\Attribute;
 
 use Magento\Catalog\Model\AbstractModel;
+use Magento\Eav\Api\AttributeRepositoryInterface as AttributeRepository;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+use Magento\Framework\Api\FilterBuilder;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DataObject;
 use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Eav\Api\AttributeRepositoryInterface as AttributeRepository;
-use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Api\FilterBuilder;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Store\Model\Store;
-use Magento\Framework\App\ResourceConnection;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -193,7 +195,7 @@ class ScopeOverriddenValue
                         ->setField('is_global')
                         ->setConditionType('in')
                         ->setValue([ScopedAttributeInterface::SCOPE_STORE, ScopedAttributeInterface::SCOPE_WEBSITE])
-                        ->create()
+                        ->create(),
                 ]
             )->create()
         );

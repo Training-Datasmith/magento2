@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\Config;
 
 /**
@@ -14,27 +17,27 @@ interface ManagerInterface
     /**
      * Search pattern
      */
-    const SEARCH_PATTERN = '%s.xml';
+    public const SEARCH_PATTERN = '%s.xml';
 
     /**
      * The anonymous template name
      */
-    const ANONYMOUS_TEMPLATE = 'anonymous_%s_component_%d';
+    public const ANONYMOUS_TEMPLATE = 'anonymous_%s_component_%d';
 
     /**
      * The key arguments in the data component
      */
-    const COMPONENT_ARGUMENTS_KEY = 'arguments';
+    public const COMPONENT_ARGUMENTS_KEY = 'arguments';
 
     /**
      * The key attributes in the data component
      */
-    const COMPONENT_ATTRIBUTES_KEY = 'attributes';
+    public const COMPONENT_ATTRIBUTES_KEY = 'attributes';
 
     /**
      * The array key sub components
      */
-    const CHILDREN_KEY = 'children';
+    public const CHILDREN_KEY = 'children';
 
     /**
      * Prepare the initialization data of UI components

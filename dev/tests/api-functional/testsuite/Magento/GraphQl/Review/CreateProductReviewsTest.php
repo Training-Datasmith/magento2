@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -87,15 +88,15 @@ class CreateProductReviewsTest extends GraphQlAbstract
             'ratings_breakdown' => [
                 [
                     'name' => 'Price',
-                    'value' => 3
+                    'value' => 3,
                 ], [
                     'name' => 'Quality',
-                    'value' => 2
+                    'value' => 2,
                 ], [
                     'name' => 'Value',
-                    'value' => 5
-                ]
-            ]
+                    'value' => 5,
+                ],
+            ],
         ];
         self::assertArrayHasKey('createProductReview', $response);
         self::assertArrayHasKey('review', $response['createProductReview']);

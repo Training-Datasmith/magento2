@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,14 +22,14 @@ $select = $adapter->select()
     ->where('parent_id = ?', 0)
     ->limit(1);
 $roleId = $adapter->fetchOne($select);
-$model->setFirstname("Web")
-    ->setLastname("Api")
+$model->setFirstname('Web')
+    ->setLastname('Api')
     ->setUsername('webapi_user')
     ->setPassword(\Magento\TestFramework\Bootstrap::ADMIN_PASSWORD)
     ->setEmail('webapi_user@example.com')
     ->setRoleType('G')
     ->setResourceId('Magento_Backend::all')
-    ->setPrivileges("")
+    ->setPrivileges('')
     ->setAssertId(0)
     ->setRoleId((int) $roleId)
     ->setPermission('allow');

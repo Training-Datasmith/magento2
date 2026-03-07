@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\App\Utility\Files;
-use Magento\Tax\Observer\GetPriceConfigurationObserver;
 
 /**
  * PAY ATTENTION: Current implementation does not support of virtual types

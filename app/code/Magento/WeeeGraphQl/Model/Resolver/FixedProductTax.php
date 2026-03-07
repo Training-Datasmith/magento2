@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\WeeeGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Weee\Helper\Data;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Tax\Helper\Data as TaxHelper;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Tax\Helper\Data as TaxHelper;
 use Magento\Tax\Model\Config;
+use Magento\Weee\Helper\Data;
 
 /**
  * Resolver for FixedProductTax object that retrieves an array of FPT attributes with prices
@@ -67,7 +68,7 @@ class FixedProductTax implements ResolverInterface
                         'value' => $amount,
                         'currency' => $value['final_price']['currency'],
                     ],
-                    'label' => $attribute->getData('name')
+                    'label' => $attribute->getData('name'),
                 ];
             }
         }

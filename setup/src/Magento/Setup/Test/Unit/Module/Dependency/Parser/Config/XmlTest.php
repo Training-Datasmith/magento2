@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Setup\Test\Unit\Module\Dependency\Parser\Config;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Module\Dependency\Parser\Config\Xml;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XmlTest extends TestCase
 {
@@ -44,7 +45,7 @@ class XmlTest extends TestCase
         return [
             [['files_for_parse' => []]],
             [['files_for_parse' => 'sting']],
-            [['there_are_no_files_for_parse' => [1, 3]]]
+            [['there_are_no_files_for_parse' => [1, 3]]],
         ];
     }
 }

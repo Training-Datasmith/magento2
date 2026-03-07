@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class LocalizedFileName
         'g' => '\d{1,2}',
         'G' => '\d{1,2}',
         'i' => '\d{2}',
-        's' => '\d{2}'
+        's' => '\d{2}',
     ];
 
     /**

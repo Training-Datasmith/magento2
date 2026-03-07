@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ use Magento\Framework\Search\Request\IndexScopeResolverInterface;
 
 class FlatScopeResolver implements IndexScopeResolverInterface
 {
-    const SUFFIX_FLAT = '_flat';
+    public const SUFFIX_FLAT = '_flat';
 
     /**
      * @var IndexScopeResolver

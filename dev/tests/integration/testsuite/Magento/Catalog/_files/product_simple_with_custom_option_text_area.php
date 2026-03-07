@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_with_custom_option_text_area')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')
@@ -59,8 +61,8 @@ $oldOptions = [
         'price' => 20.0,
         'price_type' => 'percent',
         'sku' => 'sku_test',
-        'max_characters' => 350
-    ]
+        'max_characters' => 350,
+    ],
 ];
 
 $options = [];

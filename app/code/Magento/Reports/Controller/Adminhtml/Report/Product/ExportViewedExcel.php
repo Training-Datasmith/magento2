@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report\Product;
 
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ResponseInterface;
 
 class ExportViewedExcel extends \Magento\Reports\Controller\Adminhtml\Report\Product
 {
@@ -15,7 +18,7 @@ class ExportViewedExcel extends \Magento\Reports\Controller\Adminhtml\Report\Pro
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::report_products';
+    public const ADMIN_RESOURCE = 'Magento_Reports::report_products';
 
     /**
      * Export products most viewed report to XML format

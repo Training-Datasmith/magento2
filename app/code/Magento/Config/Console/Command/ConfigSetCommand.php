@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -11,7 +13,6 @@ use Magento\Config\Console\Command\ConfigSet\ProcessorFacadeFactory;
 use Magento\Deploy\Model\DeploymentConfig\ChangeDetector;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Exception\FileSystemException;

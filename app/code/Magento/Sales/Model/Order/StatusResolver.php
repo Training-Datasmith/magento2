@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
 use Magento\Sales\Api\Data\OrderInterface;
@@ -20,7 +23,7 @@ class StatusResolver
             ->getConfigData('order_status');
 
         // PHP 8.5 Compatibility: Check for null before using in array_key_exists
-        return ($paymentMethodOrderStatus !== null 
+        return ($paymentMethodOrderStatus !== null
                 && array_key_exists($paymentMethodOrderStatus, $order->getConfig()->getStateStatuses($state)))
             ? $paymentMethodOrderStatus
             : $order->getConfig()->getStateDefaultStatus($state);

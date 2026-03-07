@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Api;
 
-use Magento\Framework\Webapi\Rest\Request;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Checkout\Api\Data\ShippingInformationInterfaceFactory;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Framework\Webapi\Rest\Request;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\AddressInterfaceFactory;
+use Magento\Quote\Model\QuoteIdMaskFactory;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Test GuestShippingInformationManagement API validation.

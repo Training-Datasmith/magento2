@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product attributes grid
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Attribute;
 
 use Magento\Eav\Block\Adminhtml\Attribute\Grid\AbstractGrid;
@@ -68,7 +71,7 @@ class Grid extends AbstractGrid
                 'index' => 'is_visible_on_front',
                 'type' => 'options',
                 'options' => ['1' => __('Yes'), '0' => __('No')],
-                'align' => 'center'
+                'align' => 'center',
             ],
             'frontend_label'
         );
@@ -85,7 +88,7 @@ class Grid extends AbstractGrid
                     \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_WEBSITE => __('Web Site'),
                     \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL => __('Global'),
                 ],
-                'align' => 'center'
+                'align' => 'center',
             ],
             'is_visible'
         );
@@ -98,7 +101,7 @@ class Grid extends AbstractGrid
                 'index' => 'is_searchable',
                 'type' => 'options',
                 'options' => ['1' => __('Yes'), '0' => __('No')],
-                'align' => 'center'
+                'align' => 'center',
             ]
         );
 
@@ -112,7 +115,7 @@ class Grid extends AbstractGrid
                 'index' => 'is_comparable',
                 'type' => 'options',
                 'options' => ['1' => __('Yes'), '0' => __('No')],
-                'align' => 'center'
+                'align' => 'center',
             ],
             'is_filterable'
         );

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Framework\EntityManager;
 
-use Magento\Framework\ObjectManagerInterface as ObjectManager;
 use Magento\Framework\EntityManager\Operation\CheckIfExists;
-use Magento\Framework\EntityManager\Operation\Read;
 use Magento\Framework\EntityManager\Operation\Create;
-use Magento\Framework\EntityManager\Operation\Update;
 use Magento\Framework\EntityManager\Operation\Delete;
+use Magento\Framework\EntityManager\Operation\Read;
+use Magento\Framework\EntityManager\Operation\Update;
+use Magento\Framework\ObjectManagerInterface as ObjectManager;
 
 /**
  * Class OperationPool

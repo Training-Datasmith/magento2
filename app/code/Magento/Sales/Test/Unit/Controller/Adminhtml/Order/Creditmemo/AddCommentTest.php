@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,6 @@ use PHPUnit\Framework\TestCase;
  */
 class AddCommentTest extends TestCase
 {
-
     /**
      * @var AddComment
      */
@@ -151,7 +151,7 @@ class AddCommentTest extends TestCase
                 'creditmemoSender' => $this->senderMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultJsonFactory' => $this->resultJsonFactoryMock,
-                'resultRawFactory' => $this->resultRawFactoryMock
+                'resultRawFactory' => $this->resultRawFactoryMock,
             ]
         );
     }

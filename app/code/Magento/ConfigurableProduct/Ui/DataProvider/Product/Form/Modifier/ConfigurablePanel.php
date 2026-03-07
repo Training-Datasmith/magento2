@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
@@ -20,10 +23,10 @@ use Magento\Ui\Component\Modal;
  */
 class ConfigurablePanel extends AbstractModifier
 {
-    const GROUP_CONFIGURABLE = 'configurable';
-    const ASSOCIATED_PRODUCT_MODAL = 'configurable_associated_product_modal';
-    const ASSOCIATED_PRODUCT_LISTING = 'configurable_associated_product_listing';
-    const CONFIGURABLE_MATRIX = 'configurable-matrix';
+    public const GROUP_CONFIGURABLE = 'configurable';
+    public const ASSOCIATED_PRODUCT_MODAL = 'configurable_associated_product_modal';
+    public const ASSOCIATED_PRODUCT_LISTING = 'configurable_associated_product_listing';
+    public const CONFIGURABLE_MATRIX = 'configurable-matrix';
 
     /**
      * @var string
@@ -142,9 +145,9 @@ class ConfigurablePanel extends AbstractModifier
                                                     'targetName' => 'ns= ' . $this->associatedListingPrefix
                                                         . static::ASSOCIATED_PRODUCT_LISTING
                                                         . ', index=' . static::ASSOCIATED_PRODUCT_LISTING,
-                                                    'actionName' => 'save'
+                                                    'actionName' => 'save',
                                                 ],
-                                                'closeModal'
+                                                'closeModal',
                                             ],
                                         ],
                                     ],
@@ -216,7 +219,7 @@ class ConfigurablePanel extends AbstractModifier
                                         'currentProductId' => $this->locator->getProduct()->getId(),
                                         'dataLinks' => [
                                             'imports' => false,
-                                            'exports' => true
+                                            'exports' => true,
                                         ],
                                         'changeProductProvider' => 'change_product',
                                         'productsProvider' => $this->associatedListingPrefix
@@ -399,7 +402,7 @@ class ConfigurablePanel extends AbstractModifier
                             '__disableTmpl' => [
                                 'insertDataFromGrid' => false,
                                 'insertDataFromWizard' => false,
-                                'changeDataFromGrid' => false
+                                'changeDataFromGrid' => false,
                             ],
                         ],
                         'sortOrder' => 20,
@@ -457,7 +460,7 @@ class ConfigurablePanel extends AbstractModifier
                                 '__disableTmpl' => [
                                     'thumbnailUrl' => false,
                                     'thumbnail' => false,
-                                    'smallImage' => false
+                                    'smallImage' => false,
                                 ],
                             ],
                             'uploaderConfig' => [
@@ -470,7 +473,7 @@ class ConfigurablePanel extends AbstractModifier
                         [
                             'elementTmpl' => 'ui/dynamic-rows/cells/thumbnail',
                             'fit' => true,
-                            'sortOrder' => 0
+                            'sortOrder' => 0,
                         ]
                     ),
                     'name_container' => $this->getColumn(
@@ -500,7 +503,7 @@ class ConfigurablePanel extends AbstractModifier
                                 'addbefore' => '${$.provider}:${$.parentScope}.price_currency',
                                 '__disableTmpl' => ['addbefore' => false],
                             ],
-                            'validation' => ['validate-zero-or-greater' => true]
+                            'validation' => ['validate-zero-or-greater' => true],
                         ],
                         ['dataScope' => 'price_string']
                     ),
@@ -612,7 +615,7 @@ class ConfigurablePanel extends AbstractModifier
             'component' => 'Magento_Ui/js/form/components/group',
             'label' => $label,
             'dataScope' => '',
-            'showLabel' => false
+            'showLabel' => false,
         ];
         $container['children'] = [
             $name . '_edit' => $fieldEdit,

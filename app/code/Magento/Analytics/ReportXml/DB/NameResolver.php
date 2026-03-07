@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml\DB;
 
 /**
@@ -13,10 +16,9 @@ class NameResolver
     /**
      * Returns element for name
      *
-     * @param array $elementConfig
      * @return string
      */
-    public function getName($elementConfig)
+    public function getName(array $elementConfig)
     {
         return $elementConfig['name'];
     }
@@ -24,15 +26,10 @@ class NameResolver
     /**
      * Returns alias
      *
-     * @param array $elementConfig
      * @return string
      */
-    public function getAlias($elementConfig)
+    public function getAlias(array $elementConfig)
     {
-        $alias = $this->getName($elementConfig);
-        if (isset($elementConfig['alias'])) {
-            $alias = $elementConfig['alias'];
-        }
-        return $alias;
+        return $elementConfig['alias'] ?? $this->getName($elementConfig);
     }
 }

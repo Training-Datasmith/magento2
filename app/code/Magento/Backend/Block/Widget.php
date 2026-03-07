@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block;
 
 /**
@@ -95,7 +98,7 @@ class Widget extends \Magento\Backend\Block\Template
                 'onclick' => $onclick,
                 'class' => $class,
                 'type' => 'button',
-                'id' => $buttonId
+                'id' => $buttonId,
             ]
         )->setDataAttribute(
             $dataAttr

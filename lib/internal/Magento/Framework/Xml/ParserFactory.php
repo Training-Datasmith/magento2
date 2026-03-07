@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ class ParserFactory
      *
      * @return Parser
      */
-    public function create() : Parser
+    public function create(): Parser
     {
-        return new Parser;
+        return new Parser();
     }
 }

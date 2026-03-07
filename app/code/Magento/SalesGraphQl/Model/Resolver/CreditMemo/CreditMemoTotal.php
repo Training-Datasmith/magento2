@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,26 +90,26 @@ class CreditMemoTotal implements ResolverInterface
             'shipping_handling' => [
                 'amount_excluding_tax' => [
                     'value' => $creditMemo->getShippingAmount() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'amount_including_tax' => [
                     'value' => $creditMemo->getShippingInclTax() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'total_amount' => [
                     'value' => $creditMemo->getShippingAmount() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'discounts' => $this->getShippingDiscountDetails($creditMemo, $orderModel),
                 'taxes' => $this->formatTaxes(
                     $orderModel,
                     $this->shippingTaxCalculator->calculateShippingTaxes($orderModel, $creditMemo),
-                )
+                ),
             ],
             'adjustment' => [
                 'value' =>  abs((float) $creditMemo->getAdjustment()),
-                'currency' => $currency
-            ]
+                'currency' => $currency,
+            ],
         ];
     }
 
@@ -133,8 +134,8 @@ class CreditMemoTotal implements ResolverInterface
             $shippingDiscounts[] = [
                 'amount' => [
                     'value' => sprintf('%.2f', abs((float) $calculatedCreditmemoShippingDiscount)),
-                    'currency' => $creditmemoModel->getOrderCurrencyCode()
-                ]
+                    'currency' => $creditmemoModel->getOrderCurrencyCode(),
+                ],
             ];
         }
         return $shippingDiscounts;
@@ -154,8 +155,8 @@ class CreditMemoTotal implements ResolverInterface
                 'label' => $creditmemo->getDiscountDescription() ?? __('Discount'),
                 'amount' => [
                     'value' => abs((float) $creditmemo->getDiscountAmount()),
-                    'currency' => $creditmemo->getOrderCurrencyCode()
-                ]
+                    'currency' => $creditmemo->getOrderCurrencyCode(),
+                ],
             ];
         }
         return $discounts;
@@ -177,8 +178,8 @@ class CreditMemoTotal implements ResolverInterface
                 'title' => $appliedTax['title'] ?? null,
                 'amount' => [
                     'value' => $appliedTax['tax_amount'] ?? 0,
-                    'currency' => $order->getOrderCurrencyCode()
-                ]
+                    'currency' => $order->getOrderCurrencyCode(),
+                ],
             ];
             $taxes[] = $appliedTaxesArray;
         }

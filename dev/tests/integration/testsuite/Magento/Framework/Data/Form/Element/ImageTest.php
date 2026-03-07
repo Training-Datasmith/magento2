@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Image
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 class ImageTest extends \PHPUnit\Framework\TestCase

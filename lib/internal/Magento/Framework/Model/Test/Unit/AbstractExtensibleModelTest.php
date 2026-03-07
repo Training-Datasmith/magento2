@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class AbstractExtensibleModelTest extends TestCase
             'commit',
             'delete',
             'getIdFieldName',
-            'rollBack'
+            'rollBack',
         ]);
         $this->resourceCollectionMock = $this->createPartialMock(
             \Magento\Framework\Data\Collection\AbstractDb::class,
@@ -125,11 +126,11 @@ class AbstractExtensibleModelTest extends TestCase
             AbstractExtensibleModel::class,
             ['getCustomAttributesCodes']
         );
-        
+
         // Inject extensionAttributesFactory and attributeValueFactory into model via reflection
         $this->setPropertyValue($this->model, 'extensionAttributesFactory', $extensionAttributesFactory);
         $this->setPropertyValue($this->model, 'customAttributeFactory', $this->attributeValueFactoryMock);
-        
+
         $this->customAttribute = new AttributeValue();
     }
 
@@ -142,11 +143,11 @@ class AbstractExtensibleModelTest extends TestCase
         $this->assertEquals(
             [],
             $this->model->getCustomAttributes(),
-            "Empty array is expected as a result of getCustomAttributes() when custom attributes are not set."
+            'Empty array is expected as a result of getCustomAttributes() when custom attributes are not set.'
         );
         $this->assertNull(
             $this->model->getCustomAttribute('not_existing_custom_attribute'),
-            "Null is expected as a result of getCustomAttribute(\$code) when custom attribute is not set."
+            'Null is expected as a result of getCustomAttribute($code) when custom attribute is not set.'
         );
         $attributesAsArray = ['attribute1' => true, 'attribute2' => 'Attribute Value', 'attribute3' => 333];
         $this->addCustomAttributesToModel($attributesAsArray, $this->model);
@@ -166,7 +167,7 @@ class AbstractExtensibleModelTest extends TestCase
         $this->assertEquals(
             [],
             $this->model->getCustomAttributes(),
-            "Empty array is expected as a result of getCustomAttributes() when custom attributes are not set."
+            'Empty array is expected as a result of getCustomAttributes() when custom attributes are not set.'
         );
         $this->attributeValueFactoryMock->expects($this->once())
             ->method('create')
@@ -176,20 +177,20 @@ class AbstractExtensibleModelTest extends TestCase
         $this->assertEquals(
             [$this->customAttribute],
             $this->model->getCustomAttributes(),
-            "One custom attribute expected"
+            'One custom attribute expected'
         );
         $this->assertNotNull($this->model->getCustomAttribute($customAttributeCode), 'customer attribute expected');
         $this->assertEquals(
             $customAttributeValue,
             $this->model->getCustomAttribute($customAttributeCode)->getValue(),
-            "Custom attribute value is incorrect"
+            'Custom attribute value is incorrect'
         );
         //unset the data
         $this->model->unsetData($customAttributeCode);
         $this->assertEquals(
             [],
             $this->model->getCustomAttributes(),
-            "Empty array is expected as a result of getCustomAttributes() when custom attributes are not set."
+            'Empty array is expected as a result of getCustomAttributes() when custom attributes are not set.'
         );
     }
 

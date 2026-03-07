@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,11 +11,9 @@ namespace Magento\Quote\Model\Quote;
 
 use Magento\Quote\Model\Quote\Address\Total\Collector;
 use Magento\Quote\Model\Quote\Address\Total\CollectorFactory;
-use Magento\Quote\Model\Quote\Address\Total\CollectorInterface;
 
 class TotalsCollectorList
 {
-
     /**
      * Total models collector
      *

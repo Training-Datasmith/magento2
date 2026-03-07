@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,11 +9,9 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product\Edit;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Form\Element\ElementCreator;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\AttributeSet;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Escaper;
-use Magento\Framework\Filesystem\Directory\ReadInterface as DirectoryHelper;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;

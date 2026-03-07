@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Sales\Model\Order\Config;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -97,7 +98,7 @@ class SuccessTest extends TestCase
             [
                 'context' => $context,
                 'orderConfig' => $this->orderConfig,
-                'checkoutSession' => $this->checkoutSession
+                'checkoutSession' => $this->checkoutSession,
             ]
         );
     }
@@ -160,7 +161,7 @@ class SuccessTest extends TestCase
     {
         return [
             [[Order::STATE_PENDING_PAYMENT, 'status2'],  false],
-            [['status1', 'status2'], true]
+            [['status1', 'status2'], true],
         ];
     }
 

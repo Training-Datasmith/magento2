@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class DeleteByPaths implements DeleteDirectoriesByPathsInterface
                 __(
                     'Could not delete directories: %paths',
                     [
-                        'paths' => implode(' ,', $failedPaths)
+                        'paths' => implode(' ,', $failedPaths),
                     ]
                 )
             );

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order;
 
+use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShippingAssignmentInterface;
 use Magento\Sales\Api\Data\ShippingAssignmentInterfaceFactory;
 use Magento\Sales\Model\OrderFactory;
-use Magento\Sales\Api\Data\OrderInterface;
 
 class ShippingAssignmentBuilder
 {
@@ -92,7 +95,7 @@ class ShippingAssignmentBuilder
      *
      * @return OrderInterface
      */
-    private function getOrder() : OrderInterface
+    private function getOrder(): OrderInterface
     {
         if ($this->order === null) {
             $this->order = $this->orderFactory->create()->load($this->getOrderId());

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Block\Adminhtml\Attribute\Edit\Options;
 
 /**
@@ -34,7 +37,7 @@ class Text extends AbstractSwatch
         $data = [
             'attributesData' => $values,
             'isSortable' => (int)(!$this->getReadOnly() && !$this->canManageOptionDefaultOnly()),
-            'isReadOnly' => (int)$this->getReadOnly()
+            'isReadOnly' => (int)$this->getReadOnly(),
         ];
 
         return json_encode($data);

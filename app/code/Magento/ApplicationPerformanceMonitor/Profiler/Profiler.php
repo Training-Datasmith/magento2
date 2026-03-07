@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -27,8 +28,6 @@ class Profiler
     /**
      * @param OutputInterface[] $outputs
      * @param InputInterface[] $inputs
-     * @param MetricsComparator $metricsComparator
-     * @param MetricsGatherer $metricsGatherer
      */
     public function __construct(
         private readonly array $outputs,
@@ -40,12 +39,8 @@ class Profiler
 
     /**
      * Does the actual profiling of the function being profiled and then sends results to the outputs.
-     *
-     * @param callable $functionBeingProfiled
-     * @param Application $application
-     * @return void
      */
-    public function doProfile(callable $functionBeingProfiled, Application $application) : void
+    public function doProfile(callable $functionBeingProfiled, Application $application): void
     {
         $previousAfterMetrics = $this->previousAfterMetrics;
         $previousRequestCount = $this->previousRequestCount;
@@ -71,18 +66,14 @@ class Profiler
     /**
      * Outputs the results of profiling to all enabled outputs.
      *
-     * @param Metrics $beforeMetrics
-     * @param Metrics $afterMetrics
-     * @param Metrics|null $previousAfterMetrics
      * @param array $information extra information that we send to output
-     * @return void
      */
     private function doOutput(
         Metrics $beforeMetrics,
         Metrics $afterMetrics,
         ?Metrics $previousAfterMetrics,
         array $information
-    ) : void {
+    ): void {
         if (!$this->isEnabled()) {
             return;
         }
@@ -94,10 +85,8 @@ class Profiler
 
     /**
      * Returns true if any of our outputs are enabled.
-     *
-     * @return bool
      */
-    public function isEnabled() : bool
+    public function isEnabled(): bool
     {
         foreach ($this->outputs as $output) {
             if ($output->isEnabled()) {

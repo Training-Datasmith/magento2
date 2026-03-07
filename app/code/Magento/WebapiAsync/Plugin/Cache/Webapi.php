@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Plugin\Cache;
 
-use Magento\WebapiAsync\Controller\Rest\AsynchronousSchemaRequestProcessor;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\WebapiAsync\Controller\Rest\AsynchronousSchemaRequestProcessor;
 
 /**
  * Class Webapi
@@ -19,7 +20,7 @@ class Webapi
     /**
      * Cache key for Async Routes
      */
-    const ASYNC_ROUTES_CONFIG_CACHE_ID = 'async-routes-services-config';
+    public const ASYNC_ROUTES_CONFIG_CACHE_ID = 'async-routes-services-config';
 
     /**
      * @var AsynchronousSchemaRequestProcessor

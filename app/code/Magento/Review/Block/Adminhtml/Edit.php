@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml;
 
+use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
+use Magento\Framework\Registry;
 use Magento\Review\Helper\Action\Pager;
 use Magento\Review\Model\ReviewFactory;
-use Magento\Framework\Registry;
-use Magento\Backend\Block\Widget\Context;
-use Magento\Framework\Escaper;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Review edit form.
@@ -100,7 +103,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                             'id' => $prevId,
                             'ret' => $this->getRequest()->getParam('ret'),
                         ]
-                    ) . '\')'
+                    ) . '\')',
                 ],
                 3,
                 10
@@ -122,7 +125,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                                 ]]],
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 3,
                 11
@@ -145,7 +148,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                                 ]]],
                             ],
                         ],
-                    ]
+                    ],
                 ],
                 3,
                 100
@@ -161,7 +164,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                             'id' => $nextId,
                             'ret' => $this->getRequest()->getParam('ret'),
                         ]
-                    ) . '\')'
+                    ) . '\')',
                 ],
                 3,
                 105

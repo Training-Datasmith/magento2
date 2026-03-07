@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config\Importer\Processor;
 
 use Magento\Framework\Event\ManagerInterface;
@@ -107,7 +110,7 @@ class Delete implements ProcessorInterface
             $entities = [
                 ScopeInterface::SCOPE_GROUPS,
                 ScopeInterface::SCOPE_STORES,
-                ScopeInterface::SCOPE_WEBSITES
+                ScopeInterface::SCOPE_WEBSITES,
             ];
 
             foreach ($entities as $scope) {

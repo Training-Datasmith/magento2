@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Url\Validator as UrlValidator;
 use Magento\Integration\Helper\Oauth\Data;
-use Magento\Integration\Model\ResourceModel\Oauth\Consumer as ConsumerResourceModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Integration\Model\Oauth\Consumer;
 use Magento\Integration\Model\Oauth\Consumer\Validator\KeyLength;
 use Magento\Integration\Model\Oauth\Consumer\Validator\KeyLengthFactory;
+use Magento\Integration\Model\ResourceModel\Oauth\Consumer as ConsumerResourceModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
@@ -127,7 +128,7 @@ class ConsumerTest extends TestCase
             'key' => md5(uniqid()), // phpcs:ignore Magento2.Security.InsecureFunction
             'secret' => md5(uniqid()), // phpcs:ignore Magento2.Security.InsecureFunction
             'callback_url' => 'http://example.com/callback',
-            'rejected_callback_url' => 'http://example.com/rejectedCallback'
+            'rejected_callback_url' => 'http://example.com/rejectedCallback',
         ];
     }
 

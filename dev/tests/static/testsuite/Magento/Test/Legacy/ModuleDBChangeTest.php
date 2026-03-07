@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Scan source code for DB schema or data updates for patch releases in non-actual branches
  * Backwards compatibility test
  */
+
 namespace Magento\Test\Legacy;
 
 class ModuleDBChangeTest extends \PHPUnit\Framework\TestCase

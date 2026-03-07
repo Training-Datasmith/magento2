@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Bundle\Plugin\Quote;
 
 use Magento\Bundle\Model\Product\OriginalPrice;
 use Magento\Bundle\Model\Product\Type;
-use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\Quote\Address\Total\Subtotal;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address\Total;
+use Magento\Quote\Model\Quote\Address\Total\Subtotal;
 
 /**
  * Update bundle base original price

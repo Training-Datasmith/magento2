@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Catalog\Model\Plugin\SpecialPricePluginForREST;
 
 use Magento\Authorization\Test\Fixture\Role as RoleFixture;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Integration\Api\AdminTokenServiceInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -16,7 +18,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\User\Test\Fixture\User as UserFixture;
 
@@ -58,7 +59,7 @@ class SpecialPriceStoragePluginTest extends WebapiAbstract
         $this->_markTestAsRestOnly();
         $product = $this->fixtures->get('product');
         $sku = $product->getSku();
-        $storeId= $product->getStoreId();
+        $storeId = $product->getStoreId();
         $product->setSpecialPrice(123.45);
 
         $Store = $this->storeManager->getStore($storeId);
@@ -75,8 +76,8 @@ class SpecialPriceStoragePluginTest extends WebapiAbstract
 
         $data = [
             'sku' => $sku,
-            'price' =>123.45,
-            'store_id' => $storeId
+            'price' => 123.45,
+            'store_id' => $storeId,
         ];
 
         $serviceInfo = [
@@ -90,8 +91,8 @@ class SpecialPriceStoragePluginTest extends WebapiAbstract
             $serviceInfo,
             [
                 'prices' => [
-                    $data
-                ]
+                    $data,
+                ],
             ]
         );
         foreach ($storeIds as $storeId) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class FixedAttributeTest extends AbstractEavTest
         $product = $this->getProduct();
         $attributeData = [
             'fixed_product_attribute' => [
-                ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 12.70, 'delete' => '']
-            ]
+                ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 12.70, 'delete' => ''],
+            ],
         ];
         $this->saveProduct($product, $attributeData);
         $expectedData = $this->addDataNesting(
@@ -50,8 +51,8 @@ class FixedAttributeTest extends AbstractEavTest
                         'state' => '0',
                         'value' => '12.7000',
                         'website_value' => 12.7,
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $this->callModifyDataAndAssert($this->getProduct(), $expectedData);

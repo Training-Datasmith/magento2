@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Adapter\Aggregation;
 
 use Magento\Catalog\Api\AttributeSetFinderInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as AttributeCollection;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Search\Adapter\Aggregation\AggregationResolverInterface;
 use Magento\Framework\Search\Request\BucketInterface;
 use Magento\Framework\Search\Request\Config;
 use Magento\Framework\Search\RequestInterface;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as AttributeCollection;
 
 /**
  * Aggregation resolver.

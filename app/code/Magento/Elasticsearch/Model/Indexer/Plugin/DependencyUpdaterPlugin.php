@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Model\Indexer\Plugin;
 
+use Magento\CatalogInventory\Model\Indexer\Stock\Processor as CatalogInventoryStockIndexer;
+use Magento\CatalogSearch\Model\Indexer\Fulltext as CatalogSearchFulltextIndexer;
 use Magento\Elasticsearch\Model\Config;
 use Magento\Framework\Indexer\Config\DependencyInfoProvider as Provider;
-use Magento\CatalogSearch\Model\Indexer\Fulltext as CatalogSearchFulltextIndexer;
-use Magento\CatalogInventory\Model\Indexer\Stock\Processor as CatalogInventoryStockIndexer;
 
 /**
  * Plugin for maintenance catalog search index dependency on stock index.

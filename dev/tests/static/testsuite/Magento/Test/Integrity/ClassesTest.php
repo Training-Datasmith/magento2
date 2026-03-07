@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Scan source code for references to classes and see if they indeed exist
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\App\Utility\Classes;
-use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\App\Utility\Files;
+use Magento\Framework\Component\ComponentRegistrar;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
@@ -31,7 +34,7 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
     /**
      * @var array
      */
-    private static $excludeKeywords = ["String", "Array", "Boolean", "Element"];
+    private static $excludeKeywords = ['String', 'Array', 'Boolean', 'Element'];
 
     /**
      * @var array|null
@@ -233,7 +236,7 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
              * @param array $file
              */
             function ($file) {
-                $relativePath = str_replace(BP . "/", "", $file);
+                $relativePath = str_replace(BP . '/', '', $file);
                 // exceptions made for fixture files from tests
                 if (strpos($relativePath, '/_files/') !== false) {
                     return;
@@ -306,15 +309,15 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
 
     public function testClassReferences()
     {
-        $this->markTestSkipped("To be fixed in MC-33329. The test is not working properly "
-            . "after excluded logic was fixed. Previously it was ignoring all files.");
+        $this->markTestSkipped('To be fixed in MC-33329. The test is not working properly '
+            . 'after excluded logic was fixed. Previously it was ignoring all files.');
         $invoker = new \Magento\Framework\App\Utility\AggregateInvoker($this);
         $invoker(
             /**
              * @param string $file
              */
             function ($file) {
-                $relativePath = str_replace(BP, "", $file);
+                $relativePath = str_replace(BP, '', $file);
                 // Due to the examples given with the regex patterns, we skip this test file itself
                 if (preg_match(
                     '/\/dev\/tests\/static\/testsuite\/Magento\/Test\/Integrity\/ClassesTest.php$/',
@@ -378,7 +381,7 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
                     $this->assertClassesExist($vendorClasses, $file);
                 }
 
-                if (!empty($result3['exception']) && $result3['exception'][0] != "") {
+                if (!empty($result3['exception']) && $result3['exception'][0] != '') {
                     $badClasses = array_merge($badClasses, array_filter($result3['exception'], 'strlen'));
                 }
 
@@ -568,7 +571,7 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
             $lib = array_shift($namespaceParts);
             if ($lib == 'framework') {
                 $subLib = $namespaceParts[0];
-                $subLib = strtolower(preg_replace('/(.)([A-Z])/', "$1-$2", $subLib));
+                $subLib = strtolower(preg_replace('/(.)([A-Z])/', '$1-$2', $subLib));
                 $libraryName = $vendor . '/' . $lib . '-' . $subLib;
                 $libraryDir = $this->componentRegistrar->getPath(
                     ComponentRegistrar::LIBRARY,
@@ -584,7 +587,7 @@ class ClassesTest extends \PHPUnit\Framework\TestCase
                     );
                 }
             } else {
-                $lib = strtolower(preg_replace('/(.)([A-Z])/', "$1-$2", $lib));
+                $lib = strtolower(preg_replace('/(.)([A-Z])/', '$1-$2', $lib));
                 $libraryName = $vendor . '/' . $lib;
                 $libraryDir = $this->componentRegistrar->getPath(
                     ComponentRegistrar::LIBRARY,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -42,9 +43,9 @@ class TypeTest extends TestCase
     {
         $testCase = [
             'dataset' => [
-                'template_type' => '1'
+                'template_type' => '1',
             ],
-            'expectedResult' => 'Text'
+            'expectedResult' => 'Text',
         ];
         $this->executeTestCase($testCase);
     }
@@ -56,9 +57,9 @@ class TypeTest extends TestCase
     {
         $testCase = [
             'dataset' => [
-                'template_type' => '2'
+                'template_type' => '2',
             ],
-            'expectedResult' => 'HTML'
+            'expectedResult' => 'HTML',
         ];
         $this->executeTestCase($testCase);
     }
@@ -70,9 +71,9 @@ class TypeTest extends TestCase
     {
         $testCase = [
             'dataset' => [
-                'template_type' => '5'
+                'template_type' => '5',
             ],
-            'expectedResult' => 'Unknown'
+            'expectedResult' => 'Unknown',
         ];
         $this->executeTestCase($testCase);
     }

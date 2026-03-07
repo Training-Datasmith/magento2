@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -80,7 +82,7 @@ class Provider extends SearchResult
             $data[$key]['thumbnail_url'] = $asset['path'];
             $data[$key]['content_type'] = strtoupper(str_replace('image/', '', $asset['content_type'] ?? ''));
             $data[$key]['preview_url'] = $asset['path'];
-            $data[$key]['keywords'] = isset($keywords[$asset['id']]) ? implode(",", $keywords[$asset['id']]) : '';
+            $data[$key]['keywords'] = isset($keywords[$asset['id']]) ? implode(',', $keywords[$asset['id']]) : '';
             $data[$key]['source'] = empty($asset['source']) ? __('Local') : $asset['source'];
         }
         return $data;

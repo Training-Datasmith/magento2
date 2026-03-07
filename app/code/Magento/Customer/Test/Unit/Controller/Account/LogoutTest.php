@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Stdlib\Cookie\CookieMetadata;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PhpCookieManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class LogoutTest extends TestCase
 {
@@ -54,7 +55,7 @@ class LogoutTest extends TestCase
     protected function setUp(): void
     {
         $this->contextMock = $this->createMock(Context::class);
-        
+
         $this->sessionMock = $this->createPartialMockWithReflection(
             Session::class,
             ['getId', 'logout', 'setBeforeAuthUrl', 'setLastCustomerId']
@@ -65,7 +66,7 @@ class LogoutTest extends TestCase
         $this->cookieMetadata = $this->createMock(CookieMetadata::class);
         $this->redirectFactory = $this->createMock(RedirectFactory::class);
         $this->resultRedirect = $this->createMock(Redirect::class);
-        
+
         $this->contextMock->expects($this->once())
             ->method('getResultRedirectFactory')
             ->willReturn($this->redirectFactory);

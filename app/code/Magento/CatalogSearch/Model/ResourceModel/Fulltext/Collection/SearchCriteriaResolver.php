@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,9 +8,8 @@
 
 namespace Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 
-use Magento\Framework\Data\Collection;
-use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\Api\Search\SearchCriteria;
+use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 
 /**
  * Resolve specific attributes for search criteria.
@@ -41,7 +42,7 @@ class SearchCriteriaResolver implements SearchCriteriaResolverInterface
     /**
      * @inheritdoc
      */
-    public function resolve() : SearchCriteria
+    public function resolve(): SearchCriteria
     {
         $searchCriteria = $this->builder->create();
         $searchCriteria->setRequestName($this->searchRequestName);

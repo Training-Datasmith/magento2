@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +56,7 @@ class AggregatedTest extends \PHPUnit\Framework\TestCase
                     [
                         'root' => BP,
                     ]
-                )
+                ),
             ]
         );
 
@@ -139,7 +141,7 @@ class AggregatedTest extends \PHPUnit\Framework\TestCase
                         '\\',
                         '/',
                         "$fixtureDir/_files/lib/web/2.file"
-                    )
+                    ),
                 ],
             ],
             'non-existing file' => [
@@ -165,7 +167,7 @@ class AggregatedTest extends \PHPUnit\Framework\TestCase
                         '\\',
                         '/',
                         "$fixtureDir/_files/design/frontend/Test/default/MagentoFrameworkCssTest_Third/web/3.less"
-                    )
+                    ),
                 ],
             ],
         ];

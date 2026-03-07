@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\Sales\Model\Order;
  */
 class CreditmemoValidator
 {
-
     /**
      * Check if no dummy order item can be refunded
      *

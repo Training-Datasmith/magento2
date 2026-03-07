@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -19,8 +21,8 @@ return [
             'Magento_Sales::capture',
             'Magento_Backend::marketing',
             'Magento_CatalogRule::promo',
-            'Magento_SalesRule::quote'
-        ]
+            'Magento_SalesRule::quote',
+        ],
     ],
     'TestIntegration2' => [
         'email' => 'test-integration2@example.com',
@@ -36,8 +38,8 @@ return [
             'Magento_Backend::stores',
             'Magento_Backend::stores_settings',
             'Magento_Config::config',
-            'Magento_SalesRule::config_promo'
-        ]
+            'Magento_SalesRule::config_promo',
+        ],
     ],
     'TestIntegration3' => [
         'email' => 'test-integration3@example.com',
@@ -50,7 +52,7 @@ return [
             'Magento_Sales::create',
             'Magento_Backend::marketing',
             'Magento_CatalogRule::promo',
-            'Magento_SalesRule::quote'
-        ]
-    ]
+            'Magento_SalesRule::quote',
+        ],
+    ],
 ];

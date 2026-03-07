@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class NavigationTest extends TestCase
         $this->navigation = $this->objectManagerHelper->getObject(
             Navigation::class,
             [
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -86,7 +87,7 @@ class NavigationTest extends TestCase
 
         $blockChildren = [
             'wishListLink' => $wishListLinkMock,
-            'customerAccountLink' => $customerAccountLinkMock
+            'customerAccountLink' => $customerAccountLinkMock,
         ];
 
         $this->navigation->setNameInLayout($nameInLayout);
@@ -99,7 +100,7 @@ class NavigationTest extends TestCase
         $this->assertEquals(
             [
                 0 => $wishListLinkMock,
-                1 => $customerAccountLinkMock
+                1 => $customerAccountLinkMock,
             ],
             $this->navigation->getLinks()
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\CatalogCustomerGraphQl\Model\Resolver\Customer\GetCustomerGroup;
 use Magento\CatalogCustomerGraphQl\Model\Resolver\Product\Price\Tiers;
 use Magento\CatalogCustomerGraphQl\Model\Resolver\Product\Price\TiersFactory;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Resolver\ValueFactory;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -103,7 +104,7 @@ class RendererTest extends TestCase
     {
         $basePrice = 3;
         $price = 4;
-        $display = "$3 [L4]";
+        $display = '$3 [L4]';
 
         $this->defaultColumnRenderer->expects($this->once())
             ->method('displayPrices')
@@ -116,7 +117,7 @@ class RendererTest extends TestCase
     public function testFormatPrice(): void
     {
         $price = 4;
-        $display = "$3";
+        $display = '$3';
 
         $this->itemPriceRenderer->expects($this->once())
             ->method('formatPrice')

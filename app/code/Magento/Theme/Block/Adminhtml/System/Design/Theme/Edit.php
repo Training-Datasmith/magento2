@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Theme editor container
  */
+
 namespace Magento\Theme\Block\Adminhtml\System\Design\Theme;
 
 /**
@@ -64,7 +67,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                             'mage-init' => [
                                 'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
                             ],
-                        ]
+                        ],
                     ],
                     1
                 );

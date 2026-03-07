@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Search\Test\Unit\Model\ResourceModel\Query;
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Data\Collection\EntityFactoryInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Helper;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Search\Model\ResourceModel\Query\Collection;
-use Magento\Framework\DB\Helper;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -98,8 +99,8 @@ class CollectionTest extends TestCase
         $select->expects($this->once())->method('order')->with(['main_table.popularity desc'])->willReturnSelf();
         $select->expects($this->once())->method('limit')->with($maxCountCacheableSearchTerms)->willReturnSelf();
         $select->expects($this->once())->method('assemble')->willReturn(
-            "SELECT COUNT(*) FROM (SELECT DISTINCT  `main_table`.`query_text` FROM `search_query` AS `main_table`" .
-            " WHERE (main_table.store_id IN (1)) AND (main_table.num_results > 0) " .
+            'SELECT COUNT(*) FROM (SELECT DISTINCT  `main_table`.`query_text` FROM `search_query` AS `main_table`' .
+            ' WHERE (main_table.store_id IN (1)) AND (main_table.num_results > 0) ' .
             " ORDER BY `main_table`.`popularity` desc LIMIT {$maxCountCacheableSearchTerms}) AS `result`
             WHERE (result.query_text = '{$term}')"
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,11 +15,6 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
-use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterfaceFactory;
-use Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface;
-use Magento\MediaGalleryApi\Api\SaveAssetsInterface;
-use Magento\MediaGalleryApi\Api\SaveAssetsKeywordsInterface;
 use Magento\MediaGalleryMetadataApi\Api\Data\MetadataInterfaceFactory;
 use Magento\MediaGalleryUi\Model\UpdateAsset;
 use Psr\Log\LoggerInterface;
@@ -97,7 +93,7 @@ class SaveDetails extends Action implements HttpPostActionInterface
                 $this->metadataFactory->create([
                     'title' => $title,
                     'description' => $description,
-                    'keywords' => $keywords
+                    'keywords' => $keywords,
                 ])
             );
             $responseCode = self::HTTP_OK;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class JwsSerializerPoolFactory
             [
                 new CompactSerializer(),
                 new JSONGeneralSerializer(),
-                new JSONFlattenedSerializer()
+                new JSONFlattenedSerializer(),
             ]
         );
     }

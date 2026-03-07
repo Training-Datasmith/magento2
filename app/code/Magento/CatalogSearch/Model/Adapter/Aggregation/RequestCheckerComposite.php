@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Adapter\Aggregation;
 
-use Magento\Framework\Search\RequestInterface;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Framework\Search\RequestInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**

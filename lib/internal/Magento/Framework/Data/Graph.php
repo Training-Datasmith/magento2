@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data;
 
 /**
@@ -13,11 +16,11 @@ class Graph
     /**#@+
      * Search modes
      */
-    const DIRECTIONAL = 1;
+    public const DIRECTIONAL = 1;
 
-    const INVERSE = 2;
+    public const INVERSE = 2;
 
-    const NON_DIRECTIONAL = 3;
+    public const NON_DIRECTIONAL = 3;
 
     /**#@-*/
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -142,7 +143,7 @@ class Queue
     {
         $this->packages[$package->getPath()] = [
             'package' => $package,
-            'dependencies' => $dependencies
+            'dependencies' => $dependencies,
         ];
 
         return true;
@@ -324,7 +325,7 @@ class Queue
     {
         $this->lastJobStarted = time();
         $this->logger->info(
-            "Execute: " . $package->getPath(),
+            'Execute: ' . $package->getPath(),
             [
                 'process' => $package->getPath(),
                 'count' => count($package->getFiles()),
@@ -395,7 +396,7 @@ class Queue
                     $exitStatus = pcntl_wexitstatus($status);
 
                     $this->logger->info(
-                        "Exited: " . $package->getPath() . "(status: $exitStatus)",
+                        'Exited: ' . $package->getPath() . "(status: $exitStatus)",
                         [
                             'process' => $package->getPath(),
                             'status' => $exitStatus,

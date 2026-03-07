@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\GraphQl\Quote\Customer;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\Quote\Model\QuoteIdMaskFactory;
-use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory as QuoteCollectionFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
+use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory as QuoteCollectionFactory;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -57,7 +58,7 @@ class CreateGuestCartTest extends GraphQlAbstract
     public function testFailForLoggedInUser()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Use `Query.customerCart` for logged in customer.");
+        $this->expectExceptionMessage('Use `Query.customerCart` for logged in customer.');
 
         $customer = DataFixtureStorageManager::getStorage()->get('customer');
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class GraphQlReaderTest extends \PHPUnit\Framework\TestCase
         $filePath2 = __DIR__ . '/../_files/schemaB.graphqls';
         $fileList = [
             $filePath1 => file_get_contents($filePath1),
-            $filePath2 => file_get_contents($filePath2)
+            $filePath2 => file_get_contents($filePath2),
         ];
         $fileResolverMock->expects($this->any())->method('get')->willReturn($fileList);
         $graphQlReader = $this->objectManager->create(
@@ -65,7 +66,7 @@ class GraphQlReaderTest extends \PHPUnit\Framework\TestCase
         );
         $data = $this->objectManager->create(
             // phpstan:ignore
-            \Magento\Framework\GraphQl\Config\Data ::class,
+            \Magento\Framework\GraphQl\Config\Data::class,
             ['reader' => $reader]
         );
         $this->configModel = $this->objectManager->create(
@@ -180,7 +181,7 @@ QUERY;
         $postData = [
             'query'         => $query,
             'variables'     => null,
-            'operationName' => 'IntrospectionQuery'
+            'operationName' => 'IntrospectionQuery',
         ];
         /** @var Http $request */
         $request = $this->objectManager->get(Http::class);

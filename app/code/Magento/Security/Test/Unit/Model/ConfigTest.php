@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ConfigTest extends TestCase
             Config::class,
             [
                 'scopeConfig' => $this->scopeConfigMock,
-                'scope' => $this->scopeMock
+                'scope' => $this->scopeMock,
             ]
         );
     }
@@ -225,7 +226,7 @@ class ConfigTest extends TestCase
     {
         return [
             [5, Area::AREA_ADMINHTML],
-            [5, Area::AREA_FRONTEND]
+            [5, Area::AREA_FRONTEND],
         ];
     }
 }

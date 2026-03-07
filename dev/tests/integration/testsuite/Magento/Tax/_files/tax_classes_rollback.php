@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ $taxClasses = [
     'CustomerTaxClass1',
     'CustomerTaxClass2',
 ];
-
 
 $taxRuleResource = $objectManager->get(\Magento\Tax\Model\ResourceModel\Calculation\Rule::class);
 foreach ($taxRules as $taxRuleCode) {

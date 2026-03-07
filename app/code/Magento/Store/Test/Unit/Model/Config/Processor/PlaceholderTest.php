@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,14 +49,14 @@ class PlaceholderTest extends TestCase
         $data = [
             'default' => ['key1' => 'value1'],
             'websites' => [
-                'code' => ['key2' => 'value2']
-            ]
+                'code' => ['key2' => 'value2'],
+            ],
         ];
         $expected = [
             'default' => ['key1' => 'value1-processed'],
             'websites' => [
-                'code' => ['key2' => 'value2-processed']
-            ]
+                'code' => ['key2' => 'value2-processed'],
+            ],
         ];
 
         $this->assertEquals($expected, $this->model->process($data));

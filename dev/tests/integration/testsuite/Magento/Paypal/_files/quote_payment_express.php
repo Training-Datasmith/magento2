@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
 
-use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\Quote;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\Quote\Model\QuoteFactory;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Paypal/_files/quote_express.php');
 

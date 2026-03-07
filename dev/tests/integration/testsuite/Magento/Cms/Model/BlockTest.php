@@ -1,26 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model;
 
 use Magento\Cms\Model\ResourceModel\Block;
-use Magento\Cms\Model\BlockFactory;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @magentoAppArea adminhtml
  */
 class BlockTest extends TestCase
 {
-
     /**
      * @var ObjectManagerInterface
      */
@@ -122,9 +121,9 @@ class BlockTest extends TestCase
                     'stores'     => [0],
                     'identifier' => 'test-identifier',
                     'content'    => 'Test content',
-                    'is_active'  => 1
-                ]
-            ]
+                    'is_active'  => 1,
+                ],
+            ],
         ];
     }
 }

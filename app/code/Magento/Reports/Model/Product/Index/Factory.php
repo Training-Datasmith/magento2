@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Model\Product\Index;
 
 /**
@@ -11,9 +14,9 @@ namespace Magento\Reports\Model\Product\Index;
  */
 class Factory
 {
-    const TYPE_COMPARED = 'compared';
+    public const TYPE_COMPARED = 'compared';
 
-    const TYPE_VIEWED = 'viewed';
+    public const TYPE_VIEWED = 'viewed';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

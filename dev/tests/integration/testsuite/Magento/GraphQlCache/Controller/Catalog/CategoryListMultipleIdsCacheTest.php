@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class CategoryListMultipleIdsCacheTest extends AbstractGraphqlCacheTest
      */
     public function testSecondRequestIsServedFromCacheOnMultipleIds()
     {
-        $categoryId1 ='400';
+        $categoryId1 = '400';
         $categoryId2 = '401';
         $query
             = <<<QUERY

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -30,13 +31,13 @@ use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Validator;
 use Magento\Framework\Validator\Factory;
 use Magento\Framework\Validator\UniversalFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -132,7 +133,7 @@ class AddressTest extends TestCase
                 'validateBeforeSave',
                 'beforeSave',
                 'afterSave',
-                'isSaveAllowed'
+                'isSaveAllowed',
             ]
         );
         $this->entitySnapshotMock->expects($this->once())->method('isModified')->willReturn(true);
@@ -380,7 +381,7 @@ class SubResourceModelAddress extends \Magento\Customer\Model\ResourceModel\Addr
         RelationComposite           $entityRelationComposite,
         Factory                     $validatorFactory,
         CustomerRepositoryInterface $customerRepository,
-                                    $data = [],
+        $data = [],
         ?OrphanedMultiselectCleaner $orphanedMultiselectCleaner = null,
         ?DeleteRelation             $deleteRelation = null,
         ?CustomerRegistry           $customerRegistry = null,

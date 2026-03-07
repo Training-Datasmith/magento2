@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\WebapiAsync\Model\Rest\Swagger;
 
 use Magento\Framework\Webapi\Authorization;
@@ -31,8 +34,8 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         $objectManager->configure([
             'preferences' => [
                 Authorization::class => AuthorizationMock::class,
-                AsynchronousSchemaRequestProcessor::class => AsynchronousSchemaRequestProcessorMock::class
-            ]
+                AsynchronousSchemaRequestProcessor::class => AsynchronousSchemaRequestProcessorMock::class,
+            ],
         ]);
 
         $this->generator = $objectManager->create(Generator::class);

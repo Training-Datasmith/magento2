@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Set;
 
 use Magento\Catalog\Model\Entity\Product\Attribute\Group\AttributeMapperInterface;
@@ -111,7 +114,7 @@ class Main extends \Magento\Backend\Block\Template
             [
                 'label' => __('Back'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/') . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
 
@@ -136,7 +139,7 @@ class Main extends \Magento\Backend\Block\Template
                         'catalog/*/delete',
                         ['id' => $setId]
                     ) . '\',{data: {}})',
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
         }
@@ -147,7 +150,7 @@ class Main extends \Magento\Backend\Block\Template
             [
                 'label' => __('Save'),
                 'onclick' => 'editSet.save();',
-                'class' => 'save primary save-attribute-set'
+                'class' => 'save primary save-attribute-set',
             ]
         );
 

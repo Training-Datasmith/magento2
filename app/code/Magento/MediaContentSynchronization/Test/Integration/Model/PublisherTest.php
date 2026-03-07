@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -110,15 +111,15 @@ class PublisherTest extends TestCase
                     [
                         'entityType' => 'catalog_category',
                         'field' => 'description',
-                        'entityId' => 28767
+                        'entityId' => 28767,
                     ],
                     [
                         'entityType' => 'catalog_product',
                         'field' => 'description',
-                        'entityId' => 1567
-                    ]
-                ]
-            ]
+                        'entityId' => 1567,
+                    ],
+                ],
+            ],
         ];
     }
 }

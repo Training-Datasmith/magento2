@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class CanonicalUrlRewriteGeneratorTest extends TestCase
             CanonicalUrlRewriteGenerator::class,
             [
                 'categoryUrlPathGenerator' => $this->categoryUrlPathGenerator,
-                'urlRewriteFactory' => $this->urlRewriteFactory
+                'urlRewriteFactory' => $this->urlRewriteFactory,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,15 +51,15 @@ class OptionsTest extends TestCase
         $options = [
             [
                 'value' => '1',
-                'label' => 'Label'
-            ]
+                'label' => 'Label',
+            ],
         ];
 
         $expectedOptions = [
             [
                 'value' => '1',
                 'label' => 'Label',
-            ]
+            ],
         ];
 
         $this->collectionFactoryMock->expects($this->once())

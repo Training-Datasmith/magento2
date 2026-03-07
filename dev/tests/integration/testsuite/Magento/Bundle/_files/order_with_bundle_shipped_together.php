@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ $product->setTypeId(Type::TYPE_CODE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
             [
@@ -91,7 +92,7 @@ $product->setTypeId(Type::TYPE_CODE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
         ],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery(),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('countries', $testStoreResponse['body']);
@@ -123,7 +124,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery(),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('countries', $testStoreResponseHit['body']);
@@ -178,7 +179,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery(),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('countries', $testStoreResponse['body']);
@@ -205,7 +206,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery(),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('countries', $testStoreResponseMiss['body']);
@@ -216,7 +217,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery(),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('countries', $testStoreResponseHit['body']);
@@ -268,7 +269,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertCount(1, $secondStoreResponse['body']['countries']);
@@ -287,7 +288,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertCount(1, $thirdStoreResponse['body']['countries']);
@@ -308,7 +309,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertCount(2, $secondStoreResponseMiss['body']['countries']);
@@ -317,7 +318,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -327,7 +328,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertCount(2, $thirdStoreResponseMiss['body']['countries']);
@@ -336,7 +337,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -383,7 +384,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertCount(1, $secondStoreResponse['body']['countries']);
@@ -402,7 +403,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertCount(1, $thirdStoreResponse['body']['countries']);
@@ -429,7 +430,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertCount(2, $secondStoreResponseMiss['body']['countries']);
@@ -438,7 +439,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -448,7 +449,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertCount(2, $thirdStoreResponseMiss['body']['countries']);
@@ -457,7 +458,7 @@ class CountriesCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -530,13 +531,13 @@ QUERY;
                 'path' => $path,
                 'value' => $this->configStorage->getValueFromDb($path, $scopeType, $scopeCode),
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         } else {
             $this->notExistingOrigConfigs[] = [
                 'path' => $path,
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         }
         $this->config->setValue($path, $value, $scopeType, $scopeCode);

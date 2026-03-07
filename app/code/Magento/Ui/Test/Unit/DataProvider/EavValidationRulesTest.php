@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -86,19 +87,19 @@ class EavValidationRulesTest extends TestCase
                 '',
                 ['input_validation' => 'other', 'max_text_length' => '254'],
                 ['required' => 1],
-                ['max_text_length' => 254, 'required-entry' => true]
+                ['max_text_length' => 254, 'required-entry' => true],
             ],
             [
                 '',
                 ['input_validation' => 'other', 'max_text_length' => '254', 'min_text_length' => 1],
                 [],
-                ['max_text_length' => 254, 'min_text_length' => 1]
+                ['max_text_length' => 254, 'min_text_length' => 1],
             ],
             [
                 '',
                 ['max_text_length' => '254', 'input_validation' => 'date'],
                 [],
-                ['max_text_length' => 254, 'validate-date' => true]
+                ['max_text_length' => 254, 'validate-date' => true],
             ],
         ];
     }

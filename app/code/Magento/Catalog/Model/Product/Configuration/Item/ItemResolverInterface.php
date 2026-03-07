@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,5 +25,5 @@ interface ItemResolverInterface
      * @return ProductInterface
      * @since 102.0.7
      */
-    public function getFinalProduct(ItemInterface $item) : ProductInterface;
+    public function getFinalProduct(ItemInterface $item): ProductInterface;
 }

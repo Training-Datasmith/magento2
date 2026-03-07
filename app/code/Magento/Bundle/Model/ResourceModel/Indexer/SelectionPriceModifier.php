@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\Bundle\Model\ResourceModel\Indexer;
 
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 
 class SelectionPriceModifier implements SelectionPriceModifierInterface
 {
@@ -41,7 +41,7 @@ class SelectionPriceModifier implements SelectionPriceModifierInterface
             ->from(['i' => $indexTable])
             ->joinInner(
                 ['selection' => $this->getTable('catalog_product_bundle_selection')],
-                "selection.selection_id = i.selection_id",
+                'selection.selection_id = i.selection_id',
                 []
             )->joinInner(
                 ['child_stock' => $stockIndexTableName],

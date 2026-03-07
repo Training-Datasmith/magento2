@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class TranslateTest extends TestCase
 
     public function testRenderTextWithDoubleQuotes()
     {
-        $translatedTextInDictionary = "That\"s translated text";
+        $translatedTextInDictionary = 'That"s translated text';
         $translatedTextInput = 'That\"s translated text';
         $translate = 'translate';
 

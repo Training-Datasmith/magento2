@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class GeneratorTest extends TestCase
                 'parser' => $this->parserMock,
                 'contextualParser' => $this->contextualParserMock,
                 'factory' => $this->factoryMock,
-                'optionsResolver' => $this->optionsResolverFactory
+                'optionsResolver' => $this->optionsResolverFactory,
             ]
         );
     }

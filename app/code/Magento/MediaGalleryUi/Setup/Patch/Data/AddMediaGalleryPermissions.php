@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\MediaGalleryUi\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
  * Add child resources permissions for user roles with Magento_Cms::media_gallery permission
@@ -68,7 +69,7 @@ class AddMediaGalleryPermissions implements
             'Magento_MediaGalleryUiApi::edit_assets',
             'Magento_MediaGalleryUiApi::delete_assets',
             'Magento_MediaGalleryUiApi::create_folder',
-            'Magento_MediaGalleryUiApi::delete_folder'
+            'Magento_MediaGalleryUiApi::delete_folder',
         ];
 
         $data = [];
@@ -78,7 +79,7 @@ class AddMediaGalleryPermissions implements
                 $data[] = [
                     'role_id' => $roleId,
                     'resource_id' => $resourceId,
-                    'permission' => 'allow'
+                    'permission' => 'allow',
                 ];
             }
         }

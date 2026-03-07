@@ -1,10 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
 
 namespace Magento\Dhl\Model;
+
+use const DATE_RFC3339;
 
 use Exception;
 use Laminas\Http\Request as HttpRequest;
@@ -60,7 +64,6 @@ use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 use SimpleXMLElement;
 use Throwable;
-use const DATE_RFC3339;
 
 /**
  * DHL International (API v1.4)
@@ -253,7 +256,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
      * @var string[]
      */
     protected $_debugReplacePrivateDataKeys = [
-        'SiteID', 'Password'
+        'SiteID', 'Password',
     ];
 
     /**
@@ -444,7 +447,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
 
                         return $this->_result;
                     }
-                )
+                ),
             ]
         );
     }
@@ -1043,7 +1046,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
                 $code = $bodyXml->xpath('//GetQuoteResponse/Note/Condition/ConditionCode');
                 if (isset($code[0]) && (int)$code[0] == self::CONDITION_CODE_SERVICE_DATE_UNAVAILABLE) {
                     $debugPoint['info'] = sprintf(
-                        __("DHL service is not available at %s date")->render(),
+                        __('DHL service is not available at %s date')->render(),
                         $responseData['date']
                     );
                     $unavailable = true;
@@ -1096,14 +1099,14 @@ class Carrier extends AbstractDhl implements CarrierInterface
                         )
                     ),
                     'date' => $date,
-                    'request' => $request
+                    'request' => $request,
                 ];
             } else {
                 $responseBodies[] = [
                     'body' => $responseBody,
                     'date' => $date,
                     'request' => $request,
-                    'from_cache' => true
+                    'from_cache' => true,
                 ];
             }
         }
@@ -1125,13 +1128,13 @@ class Carrier extends AbstractDhl implements CarrierInterface
                                 'body' => $responseBody,
                                 'date' => $deferredResponseData['date'],
                                 'request' => $deferredResponseData['request'],
-                                'from_cache' => false
+                                'from_cache' => false,
                             ];
                         }
 
                         return $this->processQuotesResponses($responseBodies);
                     }
-                )
+                ),
             ]
         );
     }
@@ -1220,7 +1223,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
                 ->getWebsite($this->_request->getWebsiteId())
                 ->getBaseCurrencyCode();
             $nodeDutiable->addChild('DeclaredCurrency', $baseCurrencyCode);
-            $nodeDutiable->addChild('DeclaredValue', sprintf("%.2F", $rawRequest->getValue()));
+            $nodeDutiable->addChild('DeclaredValue', sprintf('%.2F', $rawRequest->getValue()));
         }
 
         return $xml;
@@ -1367,7 +1370,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
             if (isset($shipmentDetails->GlobalProductCode)) {
                 $dhlProductDescription = $this->getDhlProductTitle((string)$shipmentDetails->GlobalProductCode);
             }
-            $dhlProductDescription = $dhlProductDescription ? $dhlProductDescription : __("DHL");
+            $dhlProductDescription = $dhlProductDescription ? $dhlProductDescription : __('DHL');
             $this->_errors[] = __("Zero shipping charge for '%1'", $dhlProductDescription);
         }
 
@@ -1388,63 +1391,63 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $packageWeightUnit = $this->_getRestPackageWeightUnit();
 
         /** Dutiable */
-        $dutiable = ["isCustomsDeclarable" => false];
+        $dutiable = ['isCustomsDeclarable' => false];
         if ($this->isDutiable($rawRequest->getOrigCountryId(), $rawRequest->getDestCountryId())) {
             $declaredValue = (int) $rawRequest->getValue();
             $baseCurrencyCode = $this->_storeManager
                 ->getWebsite($this->_request->getWebsiteId())
                 ->getBaseCurrencyCode();
             $dutiable = [
-                "isCustomsDeclarable" => true,
-                "monetaryAmount" => [
+                'isCustomsDeclarable' => true,
+                'monetaryAmount' => [
                     [
-                        "typeCode" => "declaredValue",
-                        "value" => $declaredValue,
-                        "currency" => $baseCurrencyCode
-                    ]
-                ]
+                        'typeCode' => 'declaredValue',
+                        'value' => $declaredValue,
+                        'currency' => $baseCurrencyCode,
+                    ],
+                ],
             ];
         }
 
         $rateParams = array_merge([
-            "customerDetails" => [
-                "shipperDetails" => [
-                    "postalCode" => $rawRequest->getOrigPostal(),
-                    "cityName" => $rawRequest->getOrigCity(),
-                    "countryCode" => $rawRequest->getOrigCountryId()
+            'customerDetails' => [
+                'shipperDetails' => [
+                    'postalCode' => $rawRequest->getOrigPostal(),
+                    'cityName' => $rawRequest->getOrigCity(),
+                    'countryCode' => $rawRequest->getOrigCountryId(),
                 ],
-                "receiverDetails" => [
-                    "postalCode" => $rawRequest->getDestPostal(),
-                    "cityName" => $rawRequest->getDestCity(),
-                    "countryCode" => $rawRequest->getDestCountryId()
-                ]
+                'receiverDetails' => [
+                    'postalCode' => $rawRequest->getDestPostal(),
+                    'cityName' => $rawRequest->getDestCity(),
+                    'countryCode' => $rawRequest->getDestCountryId(),
+                ],
             ],
-            "accounts" => [
+            'accounts' => [
                 [
-                    "typeCode" => "shipper",
-                    "number" => $this->getConfigData('account')
-                ]
+                    'typeCode' => 'shipper',
+                    'number' => $this->getConfigData('account'),
+                ],
             ],
-            "plannedShippingDateAndTime" => date('Y-m-d\TH:i:s\Z', strtotime($this->_getShipDate())),
-            "unitOfMeasurement" => $packageWeightUnit,
-            "getAdditionalInformation" => [
+            'plannedShippingDateAndTime' => date('Y-m-d\TH:i:s\Z', strtotime($this->_getShipDate())),
+            'unitOfMeasurement' => $packageWeightUnit,
+            'getAdditionalInformation' => [
                 [
-                    "typeCode" => "allValueAddedServices",
-                    "isRequested" => true
-                ]
+                    'typeCode' => 'allValueAddedServices',
+                    'isRequested' => true,
+                ],
             ],
-            "packages" => [
+            'packages' => [
                 [
-                    "typeCode" => "3BX",
-                    "weight" => (float) $this->_getWeight($rawRequest->getWeight()),
-                    "dimensions" => [
+                    'typeCode' => '3BX',
+                    'weight' => (float) $this->_getWeight($rawRequest->getWeight()),
+                    'dimensions' => [
                         // If no value is provided for the dimension, a default size of 3 will be used
-                        "length" => $this->_getDimension(max(3, $this->getConfigData('depth'))),
-                        "width" => $this->_getDimension(max(3, $this->getConfigData('width'))),
-                        "height" => $this->_getDimension(max(3, $this->getConfigData('height')))
-                    ]
-                ]
-            ]
+                        'length' => $this->_getDimension(max(3, $this->getConfigData('depth'))),
+                        'width' => $this->_getDimension(max(3, $this->getConfigData('width'))),
+                        'height' => $this->_getDimension(max(3, $this->getConfigData('height'))),
+                    ],
+                ],
+            ],
         ], $dutiable);
 
         $ratePayload = json_encode($rateParams, JSON_PRETTY_PRINT);
@@ -1473,7 +1476,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
                         $this->_debug($debugData);
                         return $this->_parseRestResponse($jsonResponse);
                     }
-                )
+                ),
             ]
         );
     }
@@ -1483,11 +1486,11 @@ class Carrier extends AbstractDhl implements CarrierInterface
      *
      * @return string
      */
-    private function getDhlAccessToken() : string
+    private function getDhlAccessToken(): string
     {
         $username = (string) $this->getConfigData('api_key');
         $password = (string) $this->getConfigData('api_secret');
-        $access_token = base64_encode($username . ":" . $password);
+        $access_token = base64_encode($username . ':' . $password);
         return $access_token;
     }
 
@@ -1499,9 +1502,9 @@ class Carrier extends AbstractDhl implements CarrierInterface
     private function getRestHeaders(): array
     {
         return [
-            "Authorization" => "Basic " . $this->getDhlAccessToken(),
-            "Content-Type" => "application/json",
-            "x-version" => self::DHL_REST_API_VERSION
+            'Authorization' => 'Basic ' . $this->getDhlAccessToken(),
+            'Content-Type' => 'application/json',
+            'x-version' => self::DHL_REST_API_VERSION,
         ];
     }
 
@@ -1631,7 +1634,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
             if (isset($product['productCode'])) {
                 $dhlProductDescription = $this->getDhlProductTitle((string)$product['productCode']);
             }
-            $dhlProductDescription = $dhlProductDescription ? $dhlProductDescription : __("DHL");
+            $dhlProductDescription = $dhlProductDescription ? $dhlProductDescription : __('DHL');
             $this->_errors[] = __("Zero shipping charge for '%1'", $dhlProductDescription);
         }
         return $this;
@@ -1649,7 +1652,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $measureUnit = $this->getCountryParams($countryId)->getMeasureUnit();
         if (empty($measureUnit)) {
             throw new LocalizedException(
-                __("Cannot identify measure unit for %1", $countryId)
+                __('Cannot identify measure unit for %1', $countryId)
             );
         }
 
@@ -1668,7 +1671,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $weightUnit = $this->getCountryParams($countryId)->getWeightUnit();
         if (empty($weightUnit)) {
             throw new LocalizedException(
-                __("Cannot identify weight unit for %1", $countryId)
+                __('Cannot identify weight unit for %1', $countryId)
             );
         }
 
@@ -1773,7 +1776,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
     {
         return [
             self::DHL_CONTENT_TYPE_DOC => __('Documents'),
-            self::DHL_CONTENT_TYPE_NON_DOC => __('Non Documents')
+            self::DHL_CONTENT_TYPE_NON_DOC => __('Non Documents'),
         ];
     }
 
@@ -1829,7 +1832,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
      */
     protected function _getMinDimension($dimensionUnit)
     {
-        return $dimensionUnit == "CENTIMETER" ? self::DIMENSION_MIN_CM : self::DIMENSION_MIN_IN;
+        return $dimensionUnit == 'CENTIMETER' ? self::DIMENSION_MIN_CM : self::DIMENSION_MIN_IN;
     }
 
     /**
@@ -1963,7 +1966,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
             $nodeDutiable = $xml->addChild('Dutiable', '', '');
             $nodeDutiable->addChild(
                 'DeclaredValue',
-                sprintf("%.2F", $rawRequest->getOrderShipment()->getOrder()->getSubtotal())
+                sprintf('%.2F', $rawRequest->getOrderShipment()->getOrder()->getSubtotal())
             );
             $baseCurrencyCode = $this->_storeManager->getWebsite($rawRequest->getWebsiteId())->getBaseCurrencyCode();
             $nodeDutiable->addChild('DeclaredCurrency', $baseCurrencyCode);
@@ -2153,11 +2156,11 @@ class Carrier extends AbstractDhl implements CarrierInterface
                 if ($addressLineNumber > 3) {
                     break;
                 }
-                $shipperAddress["addressLine".$addressLineNumber] = $addressLine;
+                $shipperAddress['addressLine'.$addressLineNumber] = $addressLine;
                 $addressLineNumber++;
             }
         } else {
-            $shipperAddress["addressLine1"] = $shipAddress;
+            $shipperAddress['addressLine1'] = $shipAddress;
         }
 
         $shipperContactPersonName = is_string($rawRequest->getShipperContactPersonName()) ?
@@ -2177,11 +2180,11 @@ class Carrier extends AbstractDhl implements CarrierInterface
                 if ($addressLineNumber > 3) {
                     break;
                 }
-                $receiverAddress["addressLine".$addressLineNumber] = $addressLine;
+                $receiverAddress['addressLine'.$addressLineNumber] = $addressLine;
                 $addressLineNumber++;
             }
         } else {
-            $receiverAddress["addressLine1"] = $recipientAddress;
+            $receiverAddress['addressLine1'] = $recipientAddress;
         }
         $recipientContactPersonName = is_string($rawRequest->getRecipientContactPersonName()) ?
             substr($rawRequest->getRecipientContactPersonName(), 0, 34) : '';
@@ -2212,12 +2215,12 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $packageWeightUnit = $this->_getRestPackageWeightUnit();
 
         /** Dutiable */
-        $dutiable = ["isCustomsDeclarable" => false];
+        $dutiable = ['isCustomsDeclarable' => false];
         if ($this->isDutiable(
             $rawRequest->getShipperAddressCountryCode(),
             $rawRequest->getRecipientAddressCountryCode()
         )) {
-            $declaredValue = sprintf("%.2F", $rawRequest->getOrderShipment()->getOrder()->getSubtotal());
+            $declaredValue = sprintf('%.2F', $rawRequest->getOrderShipment()->getOrder()->getSubtotal());
             $baseCurrencyCode = $this->_storeManager->getWebsite($rawRequest->getWebsiteId())->getBaseCurrencyCode();
             /** Export Declaration details */
             $nodeExportItems = [];
@@ -2238,71 +2241,71 @@ class Carrier extends AbstractDhl implements CarrierInterface
                 }
             }
             $dutiable = [
-                "isCustomsDeclarable" => true,
-                "declaredValue" => $declaredValue,
-                "declaredValueCurrency" => $baseCurrencyCode,
-                "exportDeclaration" => [
-                    "lineItems" => $nodeExportItems,
-                    "invoice" => [
-                        "number" => $rawRequest->getOrderShipment()->getOrder()->getIncrementId(),
-                        "date" => date('Y-m-d')
-                    ]
-                ]
+                'isCustomsDeclarable' => true,
+                'declaredValue' => $declaredValue,
+                'declaredValueCurrency' => $baseCurrencyCode,
+                'exportDeclaration' => [
+                    'lineItems' => $nodeExportItems,
+                    'invoice' => [
+                        'number' => $rawRequest->getOrderShipment()->getOrder()->getIncrementId(),
+                        'date' => date('Y-m-d'),
+                    ],
+                ],
             ];
         }
 
         /** Payload for shipping request REST */
 
         $shippingParams = [
-            "plannedShippingDateAndTime" => date('Y-m-d\TH:i:s\G\M\TP', strtotime($this->_getShipDate())),
-            "pickup" => [
-                "isRequested" => false
+            'plannedShippingDateAndTime' => date('Y-m-d\TH:i:s\G\M\TP', strtotime($this->_getShipDate())),
+            'pickup' => [
+                'isRequested' => false,
             ],
-            "productCode" => $rawRequest->getShippingMethod(),
-            "accounts" => [
+            'productCode' => $rawRequest->getShippingMethod(),
+            'accounts' => [
                 [
-                    "typeCode" => "shipper",
-                    "number" => $this->getConfigData('account'),
-                ]
-            ],
-            "valueAddedServices" => [
-                [
-                    "serviceCode" => "II",
-                    "value" => 10
-                ]
-            ],
-            "customerDetails" => [
-                "shipperDetails" => [
-                    "postalAddress" => array_merge([
-                        "postalCode" => $rawRequest->getShipperAddressPostalCode(),
-                        "cityName" => $rawRequest->getShipperAddressCity(),
-                        "countryCode" => $rawRequest->getShipperAddressCountryCode()
-                    ], $shipperAddress),
-                    "contactInformation" => [
-                        "phone" => $shipperContactPhoneNumber,
-                        "companyName" => $rawRequest->getShipperContactCompanyName(),
-                        "fullName" => $shipperContactPersonName
-                    ]
+                    'typeCode' => 'shipper',
+                    'number' => $this->getConfigData('account'),
                 ],
-                "receiverDetails" => [
-                    "postalAddress" => array_merge([
-                        "cityName" => $rawRequest->getRecipientAddressCity(),
-                        "countryCode" => $rawRequest->getRecipientAddressCountryCode(),
-                        "postalCode" => $rawRequest->getRecipientAddressPostalCode()
-                    ], $receiverAddress),
-                    "contactInformation" => [
-                        "phone" => $recipientContactPhoneNumber,
-                        "companyName" => is_string($companyName) ? substr($companyName, 0, 60) : '',
-                        "fullName" => $recipientContactPersonName
-                    ]
-                ]
             ],
-            "content" => array_merge([
-                "packages" => $packages,
-                "description" => "Shipment",
-                "incoterm" => "DAP",
-                "unitOfMeasurement" => $packageWeightUnit
-            ], $dutiable)
+            'valueAddedServices' => [
+                [
+                    'serviceCode' => 'II',
+                    'value' => 10,
+                ],
+            ],
+            'customerDetails' => [
+                'shipperDetails' => [
+                    'postalAddress' => array_merge([
+                        'postalCode' => $rawRequest->getShipperAddressPostalCode(),
+                        'cityName' => $rawRequest->getShipperAddressCity(),
+                        'countryCode' => $rawRequest->getShipperAddressCountryCode(),
+                    ], $shipperAddress),
+                    'contactInformation' => [
+                        'phone' => $shipperContactPhoneNumber,
+                        'companyName' => $rawRequest->getShipperContactCompanyName(),
+                        'fullName' => $shipperContactPersonName,
+                    ],
+                ],
+                'receiverDetails' => [
+                    'postalAddress' => array_merge([
+                        'cityName' => $rawRequest->getRecipientAddressCity(),
+                        'countryCode' => $rawRequest->getRecipientAddressCountryCode(),
+                        'postalCode' => $rawRequest->getRecipientAddressPostalCode(),
+                    ], $receiverAddress),
+                    'contactInformation' => [
+                        'phone' => $recipientContactPhoneNumber,
+                        'companyName' => is_string($companyName) ? substr($companyName, 0, 60) : '',
+                        'fullName' => $recipientContactPersonName,
+                    ],
+                ],
+            ],
+            'content' => array_merge([
+                'packages' => $packages,
+                'description' => 'Shipment',
+                'incoterm' => 'DAP',
+                'unitOfMeasurement' => $packageWeightUnit,
+            ], $dutiable),
         ];
 
         $shippingPayload = json_encode($shippingParams);
@@ -2544,7 +2547,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $trackingParams = [
             'shipmentTrackingNumber' => implode(',', $trackings),
             'language' => 'en',
-            'limit' => 10
+            'limit' => 10,
         ];
 
         $queryString = http_build_query($trackingParams);
@@ -2809,7 +2812,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
         $validPrefixes = [
             self::SERVICE_PREFIX_QUOTE,
             self::SERVICE_PREFIX_SHIPVAL,
-            self::SERVICE_PREFIX_TRACKING
+            self::SERVICE_PREFIX_TRACKING,
         ];
 
         if (!in_array($servicePrefix, $validPrefixes)) {
@@ -2893,7 +2896,7 @@ class Carrier extends AbstractDhl implements CarrierInterface
         );
         $nodeExportDeclaration->addChild(
             'InvoiceDate',
-            date("Y-m-d", strtotime((string)$rawRequest->getOrderShipment()->getOrder()->getCreatedAt()))
+            date('Y-m-d', strtotime((string)$rawRequest->getOrderShipment()->getOrder()->getCreatedAt()))
         );
         $exportItems = $rawRequest->getPackages();
         foreach ($exportItems as $exportItem) {

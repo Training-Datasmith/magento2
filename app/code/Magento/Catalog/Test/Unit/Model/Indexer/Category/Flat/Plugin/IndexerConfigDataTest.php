@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Category\Flat\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Category\Flat\Plugin\IndexerConfigData;
 use Magento\Catalog\Model\Indexer\Category\Flat\State;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Indexer\Model\Config\Data;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -77,7 +78,7 @@ class IndexerConfigDataTest extends TestCase
                 null,
                 null,
                 ['catalog_category_flat' => $flatIndexerData, 'other_indexer' => $otherIndexerData],
-                ['catalog_category_flat' => $flatIndexerData, 'other_indexer' => $otherIndexerData]
+                ['catalog_category_flat' => $flatIndexerData, 'other_indexer' => $otherIndexerData],
             ],
             // flat is disabled, path is absent, flat indexer is being removed
             [
@@ -85,7 +86,7 @@ class IndexerConfigDataTest extends TestCase
                 null,
                 null,
                 ['catalog_category_flat' => $flatIndexerData, 'other_indexer' => $otherIndexerData],
-                ['other_indexer' => $otherIndexerData]
+                ['other_indexer' => $otherIndexerData],
             ],
             // flat is disabled, path is null, flat indexer is being removed
             [
@@ -93,14 +94,14 @@ class IndexerConfigDataTest extends TestCase
                 null,
                 null,
                 ['catalog_category_flat' => $flatIndexerData, 'other_indexer' => $otherIndexerData],
-                ['other_indexer' => $otherIndexerData]
+                ['other_indexer' => $otherIndexerData],
             ],
             // flat is disabled, path is flat indexer, flat indexer is being removed
             [false, 'catalog_category_flat', null, $flatIndexerData, null],
             // flat is disabled, path is flat indexer, default is array(), flat indexer is being array()
             [false, 'catalog_category_flat', null, $flatIndexerData, null],
             // flat is disabled, path is other indexer, nothing is being changed
-            [false, 'other_indexer', null, $otherIndexerData, $otherIndexerData]
+            [false, 'other_indexer', null, $otherIndexerData, $otherIndexerData],
         ];
     }
 }

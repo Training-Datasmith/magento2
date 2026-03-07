@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class QueryResponseTest extends TestCase
             [
                 'documents' => $this->documents,
                 'aggregations' => $this->aggregations,
-                'total' => 1
+                'total' => 1,
             ]
         );
     }

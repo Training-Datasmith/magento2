@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,37 +91,37 @@ class ConfigTest extends TestCase
                     Config::XML_VARNISH_PAGECACHE_BACKEND_HOST,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    'example.com'
+                    'example.com',
                 ],
                 [
                     Config::XML_VARNISH_PAGECACHE_BACKEND_PORT,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    '8080'
+                    '8080',
                 ],
                 [
                     Config::XML_VARNISH_PAGECACHE_ACCESS_LIST,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    '127.0.0.1, 192.168.0.1,127.0.0.2'
+                    '127.0.0.1, 192.168.0.1,127.0.0.2',
                 ],
                 [
                     Config::XML_VARNISH_PAGECACHE_DESIGN_THEME_REGEX,
                     ScopeInterface::SCOPE_STORE,
                     null,
-                    'serializedConfig'
+                    'serializedConfig',
                 ],
                 [
                     Request::XML_PATH_OFFLOADER_HEADER,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    'X_Forwarded_Proto: https'
+                    'X_Forwarded_Proto: https',
                 ],
                 [
                     Config::XML_VARNISH_PAGECACHE_GRACE_PERIOD,
                     ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                     null,
-                    120
+                    120,
                 ],
             ]
         );
@@ -145,7 +146,7 @@ class ConfigTest extends TestCase
             'accessList' =>  explode(',', '127.0.0.1, 192.168.0.1,127.0.0.2'),
             'designExceptions' => [['regexp' => '(?i)pattern', 'value' => 'value_for_pattern']],
             'sslOffloadedHeader' => 'X_Forwarded_Proto: https',
-            'gracePeriod' => 120
+            'gracePeriod' => 120,
         ];
         $vclGeneratorFactory->expects($this->any())
             ->method('create')
@@ -167,7 +168,7 @@ class ConfigTest extends TestCase
                 'cacheState' => $this->cacheState,
                 'reader' => $this->moduleReader,
                 'serializer' => $this->serializerMock,
-                'vclGeneratorFactory' => $vclGeneratorFactory
+                'vclGeneratorFactory' => $vclGeneratorFactory,
             ]
         );
     }

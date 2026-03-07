@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class LinkRepositoryTest extends TestCase
                 'getStoreId',
                 'getStore',
                 'getWebsiteIds',
-                'getData'
+                'getData',
             ]
         );
         $this->service = new LinkRepository(
@@ -304,7 +305,7 @@ class LinkRepositoryTest extends TestCase
         $productSku = 'simple';
         $productId = 1;
         $linkFile = '/l/i/link.jpg';
-        $encodedFiles = "something";
+        $encodedFiles = 'something';
         $linkData = [
             'id' => $linkId,
             'title' => 'Updated Title',
@@ -340,8 +341,8 @@ class LinkRepositoryTest extends TestCase
                 [
                     [
                         'file' => $linkFile,
-                        'status' => 'old'
-                    ]
+                        'status' => 'old',
+                    ],
                 ]
             )->willReturn($encodedFiles);
 
@@ -469,7 +470,7 @@ class LinkRepositoryTest extends TestCase
                 'getSampleUrl',
                 'getLinkType',
                 'getLinkFile',
-                'getLinkUrl'
+                'getLinkUrl',
             ]
         );
 

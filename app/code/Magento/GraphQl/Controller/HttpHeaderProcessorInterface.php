@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,5 +24,5 @@ interface HttpHeaderProcessorInterface
      * @param string $headerValue
      * @return void
      */
-    public function processHeaderValue(string $headerValue) : void;
+    public function processHeaderValue(string $headerValue): void;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Store\Model\StoreSwitcher;
 
+use Magento\Framework\Url\Helper\Data as UrlHelper;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\StoreResolverInterface;
 use Magento\Store\Model\StoreSwitcherInterface;
-use Magento\Framework\Url\Helper\Data as UrlHelper;
 
 /**
  * Remove SID, from_store, store from target url.

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -197,7 +199,7 @@ class StoresFixture extends Fixture
         }
         //Get existing entities counts
         $storeGroups = $this->storeManager->getGroups();
-        $this->storeGroupsIds= array_keys($storeGroups);
+        $this->storeGroupsIds = array_keys($storeGroups);
         foreach ($storeGroups as $storeGroupId => $storeGroup) {
             $this->storeGroupsToWebsites[$storeGroupId] = $storeGroup->getWebsiteId();
         }
@@ -297,7 +299,7 @@ class StoresFixture extends Fixture
                     'name' => $storeName,
                     'website_id' => $websiteId,
                     'group_id' => $groupId,
-                    'code' => $storeCode
+                    'code' => $storeCode,
                 ]
             )->save();
             $this->saveStoreLocale($store->getId(), $localesList[$existedStoreViewsCount % $localesListCount]);
@@ -335,7 +337,7 @@ class StoresFixture extends Fixture
             //Generating category for store
             $category = $this->categoryFactory->create();
             $categoryPath = Category::TREE_ROOT_ID;
-            $category->setName("Category " . $storeGroupName)
+            $category->setName('Category ' . $storeGroupName)
                 ->setPath($categoryPath)
                 ->setLevel(1)
                 ->setAvailableSortBy('name')
@@ -362,7 +364,7 @@ class StoresFixture extends Fixture
         return [
             'websites' => 'Websites',
             'store_groups' => 'Store Groups Count',
-            'store_views' => 'Store Views Count'
+            'store_views' => 'Store Views Count',
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Dashboard\Tab\Products;
 
 use Magento\Catalog\Model\Product;
@@ -96,7 +99,7 @@ class Viewed extends \Magento\Backend\Block\Dashboard\Grid
                     (int)$this->getParam('store')
                 )->getBaseCurrencyCode(),
                 'sortable' => false,
-                'index' => 'price'
+                'index' => 'price',
             ]
         );
 
@@ -107,7 +110,7 @@ class Viewed extends \Magento\Backend\Block\Dashboard\Grid
                 'sortable' => false,
                 'index' => 'views',
                 'header_css_class' => 'col-views',
-                'column_css_class' => 'col-views'
+                'column_css_class' => 'col-views',
             ]
         );
 

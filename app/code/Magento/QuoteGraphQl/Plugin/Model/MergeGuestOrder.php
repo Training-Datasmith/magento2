@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Plugin\Model;
 
-use Magento\Quote\Model\QuoteManagement;
-use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Sales\Model\Order\CustomerAssignment;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Model\QuoteManagement;
+use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order\CustomerAssignment;
+use Magento\Store\Model\StoreManagerInterface;
 
 class MergeGuestOrder
 {

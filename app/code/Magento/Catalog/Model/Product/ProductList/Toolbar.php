@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\ProductList;
 
 /**
@@ -16,27 +19,27 @@ class Toolbar
     /**
      * GET parameter page variable name
      */
-    const PAGE_PARM_NAME = 'p';
+    public const PAGE_PARM_NAME = 'p';
 
     /**
      * Sort order cookie name
      */
-    const ORDER_PARAM_NAME = 'product_list_order';
+    public const ORDER_PARAM_NAME = 'product_list_order';
 
     /**
      * Sort direction cookie name
      */
-    const DIRECTION_PARAM_NAME = 'product_list_dir';
+    public const DIRECTION_PARAM_NAME = 'product_list_dir';
 
     /**
      * Sort mode cookie name
      */
-    const MODE_PARAM_NAME = 'product_list_mode';
+    public const MODE_PARAM_NAME = 'product_list_mode';
 
     /**
      * Products per page limit order cookie name
      */
-    const LIMIT_PARAM_NAME = 'product_list_limit';
+    public const LIMIT_PARAM_NAME = 'product_list_limit';
 
     /**
      * Request

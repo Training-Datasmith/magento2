@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class StockStatusApplier implements StockStatusApplierInterface
      * @deprecated
      * @see \Magento\InventoryCatalog\Plugin\Catalog\Model\ResourceModel\Product\CollectionPlugin::beforeSetOrder
      */
-    public function hasSearchResultApplier() : bool
+    public function hasSearchResultApplier(): bool
     {
         return $this->searchResultApplier;
     }

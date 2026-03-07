@@ -286,7 +286,7 @@ class DataMapperTest extends TestCase
                 'durable' => true,
                 'autoDelete' => false,
                 'arguments' => ['some' => 'arguments'],
-            ]
+            ],
         ];
         $this->assertEquals($expectedResult, $actualResult);
     }

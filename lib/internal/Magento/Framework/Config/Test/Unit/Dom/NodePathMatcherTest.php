@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Config\Test\Unit\Dom;
 
 use Magento\Framework\Config\Dom\NodePathMatcher;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class NodePathMatcherTest extends TestCase
 {
@@ -46,7 +47,7 @@ class NodePathMatcherTest extends TestCase
             'exact match' => ['/root/node', '/root/node', true],
             'regexp match' => ['/root/node/(sub-)+node', '/root/node/sub-node', true],
             'match with namespace' => ['/root/node', '/mage:root/node', true],
-            'match with predicate' => ['/root/node', '/root/node[@name="test"]', true]
+            'match with predicate' => ['/root/node', '/root/node[@name="test"]', true],
         ];
     }
 }

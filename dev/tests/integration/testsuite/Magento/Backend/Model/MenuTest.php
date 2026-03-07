@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model;
 
 /**
@@ -170,7 +173,7 @@ class MenuTest extends \PHPUnit\Framework\TestCase
                             'toolTip' => null,
                             'title' => 'Acl',
                             'sub_menu' => null,
-                            'target' => null
+                            'target' => null,
                         ],
                     ],
             ],

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,11 +9,10 @@ declare(strict_types=1);
 namespace Magento\Bundle\Model;
 
 use Magento\Bundle\Api\Data\LinkInterface;
-use Magento\Bundle\Api\Data\OptionInterface;
 use Magento\Bundle\Api\Data\LinkInterfaceFactory;
+use Magento\Bundle\Api\Data\OptionInterface;
 use Magento\Bundle\Api\Data\OptionInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 

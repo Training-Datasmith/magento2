@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order;
 
 use Magento\Sales\Model\ConfigInterface;
@@ -94,7 +97,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'onclick' => $onclickJs,
                     'data_attribute' => [
                         'mage-init' => '{"orderEditDialog":{}}',
-                    ]
+                    ],
                 ]
             );
         }
@@ -107,8 +110,8 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'class' => 'cancel',
                     'id' => 'order-view-cancel-button',
                     'data_attribute' => [
-                        'url' => $this->getCancelUrl()
-                    ]
+                        'url' => $this->getCancelUrl(),
+                    ],
                 ]
             );
         }
@@ -122,7 +125,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Send Email'),
                     'class' => 'send-email',
-                    'onclick' => "confirmSetLocation('{$message}', '{$this->getEmailUrl()}')"
+                    'onclick' => "confirmSetLocation('{$message}', '{$this->getEmailUrl()}')",
                 ]
             );
         }
@@ -154,7 +157,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 'void_payment',
                 [
                     'label' => __('Void'),
-                    'onclick' => "confirmSetLocation('{$message}', '{$this->getVoidPaymentUrl()}')"
+                    'onclick' => "confirmSetLocation('{$message}', '{$this->getVoidPaymentUrl()}')",
                 ]
             );
         }
@@ -167,8 +170,8 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'class' => __('hold'),
                     'id' => 'order-view-hold-button',
                     'data_attribute' => [
-                        'url' => $this->getHoldUrl()
-                    ]
+                        'url' => $this->getHoldUrl(),
+                    ],
                 ]
             );
         }
@@ -181,8 +184,8 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'class' => __('unhold'),
                     'id' => 'order-view-unhold-button',
                     'data_attribute' => [
-                        'url' => $this->getUnholdUrl()
-                    ]
+                        'url' => $this->getUnholdUrl(),
+                    ],
                 ]
             );
         }
@@ -196,7 +199,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'accept_payment',
                     [
                         'label' => __('Accept Payment'),
-                        'onclick' => "confirmSetLocation('{$message}', '{$this->getReviewPaymentUrl('accept')}')"
+                        'onclick' => "confirmSetLocation('{$message}', '{$this->getReviewPaymentUrl('accept')}')",
                     ]
                 );
                 $message = $this->escapeJs(
@@ -206,7 +209,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'deny_payment',
                     [
                         'label' => __('Deny Payment'),
-                        'onclick' => "confirmSetLocation('{$message}', '{$this->getReviewPaymentUrl('deny')}')"
+                        'onclick' => "confirmSetLocation('{$message}', '{$this->getReviewPaymentUrl('deny')}')",
                     ]
                 );
             }
@@ -215,7 +218,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                     'get_review_payment_update',
                     [
                         'label' => __('Get Payment Update'),
-                        'onclick' => 'setLocation(\'' . $this->getReviewPaymentUrl('update') . '\')'
+                        'onclick' => 'setLocation(\'' . $this->getReviewPaymentUrl('update') . '\')',
                     ]
                 );
             }
@@ -228,7 +231,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => $_label,
                     'onclick' => 'setLocation(\'' . $this->getInvoiceUrl() . '\')',
-                    'class' => 'invoice'
+                    'class' => 'invoice',
                 ]
             );
         }
@@ -242,7 +245,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Ship'),
                     'onclick' => 'setLocation(\'' . $this->getShipUrl() . '\')',
-                    'class' => 'ship'
+                    'class' => 'ship',
                 ]
             );
         }
@@ -258,7 +261,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Reorder'),
                     'onclick' => 'setLocation(\'' . $this->getReorderUrl() . '\')',
-                    'class' => 'reorder'
+                    'class' => 'reorder',
                 ]
             );
         }
@@ -451,7 +454,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
     public function getBackUrl()
     {
         if ($this->getRequest()->getParam('customer_id')) {
-            return $this->getUrl('customer/index/edit', ['id'=> $this->getRequest()->getParam('customer_id')]);
+            return $this->getUrl('customer/index/edit', ['id' => $this->getRequest()->getParam('customer_id')]);
         }
         if ($this->getOrder() && $this->getOrder()->getBackUrl()) {
             return $this->getOrder()->getBackUrl();

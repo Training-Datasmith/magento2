@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception\TemporaryState;
 
-use Magento\Framework\Exception\TemporaryStateExceptionInterface;
 use Magento\Framework\Exception\CouldNotSaveException as LocalizedCouldNotSaveException;
+use Magento\Framework\Exception\TemporaryStateExceptionInterface;
 use Magento\Framework\Phrase;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Controller\Download;
 
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\Downloadable\Controller\Download;
 use Magento\Downloadable\Helper\Download as DownloadHelper;
 use Magento\Downloadable\Helper\File;
@@ -15,8 +18,6 @@ use Magento\Downloadable\Model\RelatedProductRetriever;
 use Magento\Downloadable\Model\Sample as SampleModel;
 use Magento\Downloadable\Model\SampleFactory;
 use Magento\Framework\App\Action\Context;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResponseInterface;
 

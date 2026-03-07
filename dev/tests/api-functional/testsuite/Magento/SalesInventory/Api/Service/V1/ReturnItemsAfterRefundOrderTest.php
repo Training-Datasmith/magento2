@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesInventory\Api\Service\V1;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
@@ -87,7 +90,7 @@ class ReturnItemsAfterRefundOrderTest extends WebapiAbstract
                 'arguments' => [
                     'extension_attributes' => [
                         'return_to_stock_items' => [
-                            (int) $orderItem->getItemId()
+                            (int) $orderItem->getItemId(),
                         ],
                     ],
                 ],
@@ -158,7 +161,7 @@ class ReturnItemsAfterRefundOrderTest extends WebapiAbstract
     {
         return [
             [false, 99],
-            [true, 100]
+            [true, 100],
         ];
     }
 
@@ -213,7 +216,7 @@ class ReturnItemsAfterRefundOrderTest extends WebapiAbstract
                 'service' => self::SERVICE_REFUND_ORDER_NAME,
                 'serviceVersion' => 'V1',
                 'operation' => self::SERVICE_REFUND_ORDER_NAME . 'execute',
-            ]
+            ],
         ];
     }
 }

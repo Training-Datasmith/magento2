@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Setup\Console\Command;
 
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Setup\Model\InstallerFactory;
 use Magento\Framework\Setup\ConsoleLogger;
+use Magento\Setup\Model\InstallerFactory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -62,7 +64,7 @@ class DbDataUpgradeCommand extends AbstractSetupCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         if (!$this->deploymentConfig->isAvailable()) {
-            $output->writeln("<info>No information is available: the Magento application is not installed.</info>");
+            $output->writeln('<info>No information is available: the Magento application is not installed.</info>');
             // we must have an exit code higher than zero to indicate something was wrong
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
         }

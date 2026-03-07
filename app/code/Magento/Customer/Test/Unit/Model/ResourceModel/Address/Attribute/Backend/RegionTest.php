@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Customer\Test\Unit\Model\ResourceModel\Address\Attribute\Backe
 use Magento\Customer\Model\ResourceModel\Address\Attribute\Backend\Region;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class RegionTest extends TestCase
 {
@@ -39,7 +40,7 @@ class RegionTest extends TestCase
                 'getCountryId',
                 'load',
                 'getId',
-                'getName'
+                'getName',
             ]
         );
         $this->model = new Region($this->regionFactory);
@@ -49,7 +50,7 @@ class RegionTest extends TestCase
                 'getCountryId',
                 'setRegionId',
                 'setRegion',
-                'getData'
+                'getData',
             ]
         );
     }

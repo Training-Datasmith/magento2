@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Item;
 
-use Magento\Catalog\Model\ProductFactory;
-use Magento\Framework\Locale\FormatInterface;
-use Magento\Framework\DataObject\Factory as ObjectFactory;
-use Magento\Quote\Model\Quote\Item;
 use Laminas\Code\Exception\InvalidArgumentException;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Framework\DataObject\Factory as ObjectFactory;
+use Magento\Framework\Locale\FormatInterface;
+use Magento\Quote\Model\Quote\Item;
 
 /**
  * Quote item updater

@@ -1,10 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Bulk\OperationInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @var $resource Magento\Framework\App\ResourceConnection
@@ -67,7 +69,7 @@ $operations = [
         'status' => OperationInterface::STATUS_TYPE_COMPLETE,
         'error_code' => null,
         'result_message' => null,
-        'operation_key' => 0
+        'operation_key' => 0,
     ],
     [
         'bulk_uuid' => 'bulk-uuid-3',
@@ -76,7 +78,7 @@ $operations = [
         'status' => OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
         'error_code' => 1111,
         'result_message' => 'Something went wrong during your request',
-        'operation_key' => 0
+        'operation_key' => 0,
     ],
     [
         'bulk_uuid' => 'bulk-uuid-4',
@@ -85,7 +87,7 @@ $operations = [
         'status' => OperationInterface::STATUS_TYPE_COMPLETE,
         'error_code' => null,
         'result_message' => null,
-        'operation_key' => 0
+        'operation_key' => 0,
     ],
     [
         'bulk_uuid' => 'bulk-uuid-5',
@@ -94,7 +96,7 @@ $operations = [
         'status' => OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
         'error_code' => 1111,
         'result_message' => 'Something went wrong during your request',
-        'operation_key' => 0
+        'operation_key' => 0,
     ],
     [
         'bulk_uuid' => 'bulk-uuid-5',
@@ -103,19 +105,19 @@ $operations = [
         'status' => OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
         'error_code' => 2222,
         'result_message' => 'Entity with ID=4 does not exist',
-        'operation_key' => 1
+        'operation_key' => 1,
     ],
 ];
 
 $bulkQuery = "INSERT INTO {$bulkTable} (`uuid`, `user_id`, `user_type`, `description`, `operation_count`)"
-    . " VALUES (:uuid, :user_id, :user_type, :description, :operation_count);";
+    . ' VALUES (:uuid, :user_id, :user_type, :description, :operation_count);';
 foreach ($bulks as $bulk) {
     $connection->query($bulkQuery, $bulk);
 }
 
 $operationQuery = "INSERT INTO {$operationTable}"
-    . " (`bulk_uuid`, `topic_name`, `serialized_data`, `status`, `error_code`, `result_message`, `operation_key`)"
-    . " VALUES (:bulk_uuid, :topic_name, :serialized_data, :status, :error_code, :result_message, :operation_key);";
+    . ' (`bulk_uuid`, `topic_name`, `serialized_data`, `status`, `error_code`, `result_message`, `operation_key`)'
+    . ' VALUES (:bulk_uuid, :topic_name, :serialized_data, :status, :error_code, :result_message, :operation_key);';
 foreach ($operations as $operation) {
     $connection->query($operationQuery, $operation);
 }

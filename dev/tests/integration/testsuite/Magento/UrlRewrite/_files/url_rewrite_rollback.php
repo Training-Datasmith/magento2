@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ $collection = $urlRewriteCollection
             'http://example.com/external?param1=value1',
             'https://example.com/external2/?param2=value2',
             '/',
-            'contact?param1=1'
+            'contact?param1=1',
         ]
     )
     ->load()

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test indexer.xsd and xml files.
  *
@@ -8,6 +10,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Indexer;
 
 class ConfigTest extends \Magento\TestFramework\Integrity\AbstractConfig

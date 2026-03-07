@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -138,10 +139,10 @@ class ImageResizeTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->testfilename = "image.jpg";
-        $this->testImageHiddenFilename = "image_hidden.jpg";
-        $this->testfilepath = "/image.jpg";
-        $this->testImageHiddenfilepath = "/image_hidden.jpg";
+        $this->testfilename = 'image.jpg';
+        $this->testImageHiddenFilename = 'image_hidden.jpg';
+        $this->testfilepath = '/image.jpg';
+        $this->testImageHiddenfilepath = '/image_hidden.jpg';
 
         $this->appStateMock = $this->createMock(State::class);
         $this->imageConfigMock = $this->createMock(MediaConfig::class);
@@ -182,20 +183,20 @@ class ImageResizeTest extends TestCase
                     'background' => null,
                     'quality' => null,
                     'image_width' => null,
-                    'image_height' => null
+                    'image_height' => null,
                 ]
             );
 
         $this->imageConfigMock->expects($this->any())
             ->method('getMediaPath')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$this->testfilename] => $this->testfilepath,
                 [$this->testImageHiddenFilename] => $this->testImageHiddenfilepath
             });
 
         $this->mediaDirectoryMock->expects($this->any())
             ->method('getAbsolutePath')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$this->testfilepath] => $this->testfilepath,
                 [$this->testImageHiddenfilepath] => $this->testImageHiddenfilepath
             });

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Source\Email;
 
 /**
@@ -20,7 +23,7 @@ class Smtpauth implements \Magento\Framework\Option\ArrayInterface
             ['value' => 'NONE', 'label' => 'NONE'],
             ['value' => 'PLAIN', 'label' => 'PLAIN'],
             ['value' => 'LOGIN', 'label' => 'LOGIN'],
-            ['value' => 'CRAM-MD5', 'label' => 'CRAM-MD5']
+            ['value' => 'CRAM-MD5', 'label' => 'CRAM-MD5'],
         ];
     }
 }

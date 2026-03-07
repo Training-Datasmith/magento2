@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,12 +14,12 @@ use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Eav\Model\Entity\Attribute\Source\BooleanFactory;
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DefaultFrontendTest extends TestCase
 {
@@ -163,7 +164,7 @@ class DefaultFrontendTest extends TestCase
             ['numeric', 'validate-digits'],
             ['url', 'validate-url'],
             ['email', 'validate-email'],
-            ['length', 'validate-length']
+            ['length', 'validate-length'],
         ];
     }
 
@@ -204,7 +205,7 @@ class DefaultFrontendTest extends TestCase
                 'getIsRequired',
                 'getFrontendClass',
                 'getAttributeCode',
-                'getSource'
+                'getSource',
             ]
         );
     }

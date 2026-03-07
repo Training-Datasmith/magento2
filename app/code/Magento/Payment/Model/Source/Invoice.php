@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Source;
 
 /**
@@ -25,7 +28,7 @@ class Invoice implements \Magento\Framework\Option\ArrayInterface
                 'value' => \Magento\Payment\Model\Method\AbstractMethod::ACTION_AUTHORIZE_CAPTURE,
                 'label' => __('Yes'),
             ],
-            ['value' => '', 'label' => __('No')]
+            ['value' => '', 'label' => __('No')],
         ];
     }
 }

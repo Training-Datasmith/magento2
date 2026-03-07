@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,18 +8,18 @@
 
 namespace Magento\Setup\Console\Command;
 
-use Magento\Framework\Setup\ConsoleLogger;
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Setup\Model\InstallerFactory;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Setup\Model\StoreConfigurationDataMapper;
-use Magento\Setup\Model\ObjectManagerProvider;
+use Magento\Framework\Setup\ConsoleLogger;
+use Magento\Framework\Validator\Currency as CurrencyValidator;
 use Magento\Framework\Validator\Locale as LocaleValidator;
 use Magento\Framework\Validator\Timezone as TimezoneValidator;
-use Magento\Framework\Validator\Currency as CurrencyValidator;
 use Magento\Framework\Validator\Url as UrlValidator;
+use Magento\Setup\Model\InstallerFactory;
+use Magento\Setup\Model\ObjectManagerProvider;
+use Magento\Setup\Model\StoreConfigurationDataMapper;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Model\Data\Condition;
 
 class Converter
@@ -32,7 +35,7 @@ class Converter
             'operator' => $dataModel->getOperator(),
             'value' => $dataModel->getValue(),
             'is_value_processed' => $dataModel->getIsValueParsed(),
-            'aggregator' => $dataModel->getAggregator()
+            'aggregator' => $dataModel->getAggregator(),
         ];
 
         foreach ((array)$dataModel->getConditions() as $condition) {

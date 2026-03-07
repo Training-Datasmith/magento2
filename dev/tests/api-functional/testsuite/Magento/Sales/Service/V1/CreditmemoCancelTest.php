@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -12,11 +15,11 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CreditmemoCancelTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
-    const SERVICE_NAME = 'salesCreditmemoManagementV1';
+    public const SERVICE_NAME = 'salesCreditmemoManagementV1';
 
-    const CREDITMEMO_INCREMENT_ID = '100000001';
+    public const CREDITMEMO_INCREMENT_ID = '100000001';
 
     /**
      * @magentoApiDataFixture Magento/Sales/_files/creditmemo_with_list.php

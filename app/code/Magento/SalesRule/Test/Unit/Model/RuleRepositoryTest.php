@@ -114,7 +114,7 @@ class RuleRepositoryTest extends TestCase
                 'searchResultFactory' => $this->searchResultFactory,
                 'extensionAttributesJoinProcessor' => $this->extensionAttributesJoinProcessorMock,
                 'ruleCollectionFactory' => $this->collectionFactory,
-                'collectionProcessor' => $this->collectionProcessor
+                'collectionProcessor' => $this->collectionProcessor,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class SetupInstallMvcTest extends SetupTestCase
     {
         $modules = [
             'Magento_TestSetupDeclarationModule2',
-            'Magento_TestSetupDeclarationModule3'
+            'Magento_TestSetupDeclarationModule3',
         ];
 
         // Execute setup:install with multiple modules
@@ -570,7 +571,7 @@ class SetupInstallMvcTest extends SetupTestCase
     {
         $modules = [
             'Magento_TestSetupDeclarationModule1',
-            'Magento_TestSetupDeclarationModule2'
+            'Magento_TestSetupDeclarationModule2',
         ];
 
         // Install multiple modules first
@@ -828,7 +829,7 @@ class SetupInstallMvcTest extends SetupTestCase
                 'Cannot write to',
                 'Permission denied',
                 'modules are not enabled',
-                'module:enable --all'
+                'module:enable --all',
             ];
 
             $isAcceptableError = false;
@@ -877,7 +878,7 @@ class SetupInstallMvcTest extends SetupTestCase
         // Install multiple modules first
         $this->cliCommand->install([
             'Magento_TestSetupDeclarationModule1',
-            'Magento_TestSetupDeclarationModule2'
+            'Magento_TestSetupDeclarationModule2',
         ]);
 
         // Execute DI compilation after installation
@@ -1104,7 +1105,7 @@ class SetupInstallMvcTest extends SetupTestCase
             'No such file or directory',
             'is not writable',
             'modules are not enabled',
-            'module:enable --all'
+            'module:enable --all',
         ];
 
         $isAcceptableError = false;

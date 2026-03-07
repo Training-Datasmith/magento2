@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Event manager stub
  */
+
 namespace Magento\Framework\Event\Test\Unit;
 
 use Magento\Framework\Event\ManagerInterface;

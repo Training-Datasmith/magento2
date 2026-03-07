@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,14 +14,12 @@ declare(strict_types=1);
  * @group legacy
  * @group disabled
  */
+
 namespace Magento\Framework\Cache\Test\Unit;
 
 use Magento\Framework\Cache\Backend\Decorator\AbstractDecorator;
 use Magento\Framework\Cache\Backend\Redis;
 use Magento\Framework\Cache\Core;
-use Magento\Framework\Cache\Frontend\Adapter\Zend;
-use Magento\Framework\Cache\Frontend\Decorator\Bare;
-use Magento\Framework\Cache\FrontendInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 use PHPUnit\Framework\TestCase;
@@ -77,7 +76,7 @@ class CoreTest extends TestCase
 
     /**
      */
-     #[DataProvider('setBackendExceptionProvider')]
+    #[DataProvider('setBackendExceptionProvider')]
     public function testSetBackendException($decorators)
     {
         $this->expectException('Zend_Cache_Exception');
@@ -95,7 +94,7 @@ class CoreTest extends TestCase
             'decorator setting is not an array' => [['decorator' => 'string']],
             'decorator setting is empty array' => [['decorator' => []]],
             'no class index in array' => [['decorator' => ['somedata']]],
-            'non-existing class passed' => [['decorator' => ['class' => 'NonExistingClass']]]
+            'non-existing class passed' => [['decorator' => ['class' => 'NonExistingClass']]],
         ];
     }
 
@@ -225,7 +224,7 @@ class CoreTest extends TestCase
 
         $mockBackend = $this->createMock(Redis::class);
         $core = new Core([
-            'cache_id_prefix' => '{prefix}_'
+            'cache_id_prefix' => '{prefix}_',
         ]);
         $core->setBackend($mockBackend);
 
@@ -238,7 +237,7 @@ class CoreTest extends TestCase
         $id = 'abc';
 
         $core = new Core([
-            'cache_id_prefix' => '{prefix}_'
+            'cache_id_prefix' => '{prefix}_',
         ]);
         $core->setBackend($this->_mockBackend);
 

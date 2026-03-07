@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Ui\Component\Listing\Column;
 
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Store\Model\StoreManagerInterface as StoreManager;
 use Magento\Store\Model\System\Store as SystemStore;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Store\Model\StoreManagerInterface as StoreManager;
 
 /**
  * Class Store
@@ -110,11 +113,11 @@ class Store extends Column
         $data = $this->systemStore->getStoresStructure(false, $origStores);
 
         foreach ($data as $website) {
-            $content .= $website['label'] . "<br/>";
+            $content .= $website['label'] . '<br/>';
             foreach ($website['children'] as $group) {
-                $content .= str_repeat('&nbsp;', 3) . $this->escaper->escapeHtml($group['label']) . "<br/>";
+                $content .= str_repeat('&nbsp;', 3) . $this->escaper->escapeHtml($group['label']) . '<br/>';
                 foreach ($group['children'] as $store) {
-                    $content .= str_repeat('&nbsp;', 6) . $this->escaper->escapeHtml($store['label']) . "<br/>";
+                    $content .= str_repeat('&nbsp;', 6) . $this->escaper->escapeHtml($store['label']) . '<br/>';
                 }
             }
         }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model;
 
 /**
@@ -14,19 +17,19 @@ namespace Magento\SalesRule\Model;
 class Coupon extends \Magento\Framework\Model\AbstractExtensibleModel implements
     \Magento\SalesRule\Api\Data\CouponInterface
 {
-    const KEY_COUPON_ID = 'coupon_id';
-    const KEY_RULE_ID = 'rule_id';
-    const KEY_CODE = 'code';
-    const KEY_USAGE_LIMIT = 'usage_limit';
-    const KEY_USAGE_PER_CUSTOMER = 'usage_per_customer';
-    const KEY_TIMES_USED = 'times_used';
+    public const KEY_COUPON_ID = 'coupon_id';
+    public const KEY_RULE_ID = 'rule_id';
+    public const KEY_CODE = 'code';
+    public const KEY_USAGE_LIMIT = 'usage_limit';
+    public const KEY_USAGE_PER_CUSTOMER = 'usage_per_customer';
+    public const KEY_TIMES_USED = 'times_used';
     /**
      * @deprecated Coupon expiration must follow sales rule expiration date.
      */
-    const KEY_EXPIRATION_DATE = 'expiration_date';
-    const KEY_IS_PRIMARY = 'is_primary';
-    const KEY_CREATED_AT = 'created_at';
-    const KEY_TYPE = 'type';
+    public const KEY_EXPIRATION_DATE = 'expiration_date';
+    public const KEY_IS_PRIMARY = 'is_primary';
+    public const KEY_CREATED_AT = 'created_at';
+    public const KEY_TYPE = 'type';
 
     /**
      * Constructor

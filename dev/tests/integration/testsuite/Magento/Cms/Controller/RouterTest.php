@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -58,6 +60,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase
  * Event manager stub
  * @codingStandardsIgnoreStart
  */
+
 namespace Magento\Framework\Event;
 
 class ManagerStub extends Manager

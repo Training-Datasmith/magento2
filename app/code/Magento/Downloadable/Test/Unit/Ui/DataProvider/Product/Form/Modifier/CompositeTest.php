@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product\Type as CatalogType;
@@ -16,6 +16,7 @@ use Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Composite;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Ui\DataProvider\Modifier\ModifierFactory;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -71,7 +72,7 @@ class CompositeTest extends TestCase
             [
                 'modifierFactory' => $this->modifierFactoryMock,
                 'locator' => $this->locatorMock,
-                'modifiers' => $this->modifiers
+                'modifiers' => $this->modifiers,
             ]
         );
     }

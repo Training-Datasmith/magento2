@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product\Edit\Tab;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Backend\Block\Widget\Accordion;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Alerts;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Alerts\Price;
@@ -18,6 +18,7 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -82,7 +83,7 @@ class AlertsTest extends TestCase
         }
 
         $blockMap = [
-            [Accordion::class, '', [], $accordionMock]
+            [Accordion::class, '', [], $accordionMock],
         ];
 
         if ($includePriceBlock) {
@@ -231,7 +232,7 @@ class AlertsTest extends TestCase
                 'catalog/productalert/allow_stock',
                 ScopeInterface::SCOPE_STORE,
                 null,
-                $stockAllow
+                $stockAllow,
             ],
         ];
         $this->scopeConfigMock->expects($this->any())->method('getValue')->willReturnMap($valueMap);
@@ -444,7 +445,7 @@ class AlertsTest extends TestCase
             'alert_price_and_stock_allow' => [true, true, true],
             'alert_price_is_allowed_and_stock_is_unallowed' => [true, false, true],
             'alert_price_is_unallowed_and_stock_is_allowed' => [false, true, true],
-            'alert_price_is_unallowed_and_stock_is_unallowed' => [false, false, false]
+            'alert_price_is_unallowed_and_stock_is_unallowed' => [false, false, false],
         ];
     }
 }

@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session\SaveHandler\Redis;
 
 use Cm\RedisSession\Handler\ConfigInterface;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\App\Request\Http as Request;
+use Psr\Log\LoggerInterface;
 
 class Logger implements \Cm\RedisSession\Handler\LoggerInterface
 {

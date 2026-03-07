@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Wishlist\Test\Unit\Controller\Index;
 
@@ -17,6 +17,7 @@ use Magento\Framework\App\Response\RedirectInterface;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\App\Response\Redirect;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Wishlist\Controller\Index\Index;
@@ -24,7 +25,6 @@ use Magento\Wishlist\Controller\Index\Plugin;
 use Magento\Wishlist\Model\AuthenticationState;
 use Magento\Wishlist\Model\AuthenticationStateInterface;
 use Magento\Wishlist\Model\DataSerializer;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

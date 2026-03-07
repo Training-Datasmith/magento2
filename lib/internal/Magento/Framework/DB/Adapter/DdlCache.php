@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\DB\Adapter;
 
-use Magento\Framework\Cache\Frontend\Decorator\TagScope;
 use Magento\Framework\App\Cache\Type\FrontendPool;
+use Magento\Framework\Cache\Frontend\Decorator\TagScope;
 
 /**
  * Cache segment for DDL operations in database adapter
@@ -17,12 +19,12 @@ class DdlCache extends TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'db_ddl';
+    public const TYPE_IDENTIFIER = 'db_ddl';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'DB_DDL';
+    public const CACHE_TAG = 'DB_DDL';
 
     /**
      * Constructor

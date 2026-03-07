@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -37,7 +39,7 @@ $options = [
         'price' => 20.0,
         'price_type' => 'percent',
         'sku' => 'sku2',
-        'max_characters' => 20
+        'max_characters' => 20,
     ],
     [
         'title' => 'drop_down option',
@@ -82,7 +84,7 @@ $options = [
                 'sort_order' => 2,
             ],
         ],
-    ]
+    ],
 ];
 
 $customOptions = [];

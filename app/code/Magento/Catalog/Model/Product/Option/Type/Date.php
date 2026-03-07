@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -72,7 +74,7 @@ class Date extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
         if ($this->_dateExists()) {
             if ($this->useCalendar()) {
                 if (is_array($value) && $this->checkDateWithoutJSCalendar($value)) {
-                    $value['date'] = sprintf("%s/%s/%s", $value['day'], $value['month'], $value['year']);
+                    $value['date'] = sprintf('%s/%s/%s', $value['day'], $value['month'], $value['year']);
                 }
                 /* Fixed validation if the date was not saved correctly after re-saved the order
                 for example: "09\/24\/2020,2020-09-24 00:00:00" */
@@ -138,7 +140,7 @@ class Date extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
                 throw new \Magento\Framework\Exception\LocalizedException(
                     __(
                         "The product's required option(s) weren't entered. "
-                        . "Make sure the options are entered and try again."
+                        . 'Make sure the options are entered and try again.'
                     )
                 );
             }
@@ -396,7 +398,7 @@ class Date extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             $this->getOption()->getType(),
             [
                 ProductCustomOptionInterface::OPTION_TYPE_DATE,
-                ProductCustomOptionInterface::OPTION_TYPE_DATE_TIME
+                ProductCustomOptionInterface::OPTION_TYPE_DATE_TIME,
             ]
         );
     }
@@ -412,7 +414,7 @@ class Date extends \Magento\Catalog\Model\Product\Option\Type\DefaultType
             $this->getOption()->getType(),
             [
                 ProductCustomOptionInterface::OPTION_TYPE_DATE_TIME,
-                ProductCustomOptionInterface::OPTION_TYPE_TIME
+                ProductCustomOptionInterface::OPTION_TYPE_TIME,
             ]
         );
     }

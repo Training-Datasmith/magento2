@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Type;
 
-use Magento\Store\Model\Store;
-use Magento\Catalog\Model\ResourceModel\Product\Price\SpecialPrice;
 use Magento\Catalog\Api\Data\SpecialPriceInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Price\SpecialPrice;
 use Magento\Store\Api\Data\WebsiteInterface;
+use Magento\Store\Model\Store;
 
 /**
  * Product special price model.

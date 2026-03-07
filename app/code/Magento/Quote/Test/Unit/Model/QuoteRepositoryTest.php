@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
@@ -28,6 +28,7 @@ use Magento\Quote\Model\ResourceModel\Quote\Collection;
 use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Rule\InvokedCount as InvokedCountMatch;
 use PHPUnit\Framework\TestCase;
@@ -129,7 +130,7 @@ class QuoteRepositoryTest extends TestCase
                 'delete',
                 'getStoreId',
                 'getData',
-                'setSharedStoreIds'
+                'setSharedStoreIds',
             ]
         );
         $this->storeMock = $this->createMock(Store::class);
@@ -160,7 +161,7 @@ class QuoteRepositoryTest extends TestCase
                 'extensionAttributesJoinProcessor' => $this->extensionAttributesJoinProcessorMock,
                 'collectionProcessor' => $this->collectionProcessor,
                 'quoteCollectionFactory' => $this->quoteCollectionFactoryMock,
-                'cartFactory' => $this->cartFactoryMock
+                'cartFactory' => $this->cartFactoryMock,
             ]
         );
 
@@ -249,7 +250,7 @@ class QuoteRepositoryTest extends TestCase
                 'delete',
                 'getStoreId',
                 'getData',
-                'setSharedStoreIds'
+                'setSharedStoreIds',
             ]
         );
 
@@ -374,12 +375,12 @@ class QuoteRepositoryTest extends TestCase
         return [
             [
                 'invokeTimes' => 'never',
-                'sharedStoreIds' => []
+                'sharedStoreIds' => [],
             ],
             [
                 'invokeTimes' => 'once',
-                'sharedStoreIds' => [1]
-            ]
+                'sharedStoreIds' => [1],
+            ],
         ];
     }
 
@@ -598,7 +599,7 @@ class QuoteRepositoryTest extends TestCase
     {
         return [
             'asc' => [SortOrder::SORT_ASC, 'ASC'],
-            'desc' => [SortOrder::SORT_DESC, 'DESC']
+            'desc' => [SortOrder::SORT_DESC, 'DESC'],
         ];
     }
 }

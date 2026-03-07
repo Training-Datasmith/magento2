@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data;
 
 /**
@@ -10,7 +13,7 @@ namespace Magento\Framework\Data;
  */
 class SearchResultProcessorFactory
 {
-    const DEFAULT_INSTANCE_NAME = \Magento\Framework\Data\SearchResultProcessor::class;
+    public const DEFAULT_INSTANCE_NAME = \Magento\Framework\Data\SearchResultProcessor::class;
 
     /**
      * Object Manager instance

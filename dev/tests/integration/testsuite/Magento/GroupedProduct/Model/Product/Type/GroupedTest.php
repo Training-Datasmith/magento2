@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Model\Product\Type;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -95,15 +98,15 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
                 'name' => 'Simple Product',
                 'price' => '10.000000',
                 'qty' => '1',
-                'position' => '1'
+                'position' => '1',
             ],
             'virtual-product' => [
                 'sku' => 'virtual-product',
                 'name' => 'Virtual Product',
                 'price' => '10.000000',
                 'qty' => '2',
-                'position' => '2'
-            ]
+                'position' => '2',
+            ],
         ];
         $productId = $product->getSku();
         $this->assertEquals($data[$productId]['sku'], $product->getSku());
@@ -133,7 +136,7 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
 
         $processModes = [
             Grouped::PROCESS_MODE_FULL,
-            Grouped::PROCESS_MODE_LITE
+            Grouped::PROCESS_MODE_LITE,
         ];
         $expectedData = [
             Grouped::PROCESS_MODE_FULL => [
@@ -144,7 +147,7 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
             ],
             Grouped::PROCESS_MODE_LITE => [
                 $product->getId() => '{"value":{"qty":2}}',
-            ]
+            ],
         ];
 
         foreach ($processModes as $processMode) {
@@ -192,7 +195,7 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
             self::assertEquals(
                 $expected[$sku],
                 $product->getCartQty(),
-                "Failed asserting that Product Cart Quantity matches expected"
+                'Failed asserting that Product Cart Quantity matches expected'
             );
         }
     }
@@ -217,7 +220,7 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
                 ],
                 [
                     'virtual-product' => 5,
-                    'simple' => 4
+                    'simple' => 4,
                 ],
             ],
             'Out of stock product are shown #2' => [

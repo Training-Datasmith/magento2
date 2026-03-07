@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class DbIsolationState
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\DbIsolation::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\DbIsolation::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\DbIsolation::class),
+                    ],
                 ]
             );
         $values = $parsers->parse($test, ParserInterface::SCOPE_METHOD)

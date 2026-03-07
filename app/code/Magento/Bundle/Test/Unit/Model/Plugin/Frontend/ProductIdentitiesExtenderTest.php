@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ProductIdentitiesExtenderTest extends TestCase
         $id = 12345;
         $childIds = [
             1 => [1, 2, 5, 100500],
-            12 => [7, 22, 45, 24612]
+            12 => [7, 22, 45, 24612],
         ];
         $expectedIdentities = [
             'SomeCacheId',

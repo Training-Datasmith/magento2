@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -233,7 +234,7 @@ class AddIntegrityToAssetHtmlTest extends TestCase
             ->method('get')
             ->willReturnMap([
                 [Package::BASE_AREA, $baseRepository],
-                ['frontend', $areaRepository]
+                ['frontend', $areaRepository],
             ]);
 
         $this->state->expects($this->once())
@@ -319,7 +320,7 @@ class AddIntegrityToAssetHtmlTest extends TestCase
             ->method('getByPath')
             ->willReturnMap([
                 ['_cache/merged/abc123.min.js', $integrity1],
-                ['_cache/merged/def456.min.js', $integrity2]
+                ['_cache/merged/def456.min.js', $integrity2],
             ]);
 
         $this->integrityRepositoryPool->expects($this->exactly(2))

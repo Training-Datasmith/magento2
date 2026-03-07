@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Model\Client;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use InvalidArgumentException;
 use LogicException;
 use Magento\AdvancedSearch\Model\Client\ClientFactoryInterface;
@@ -16,6 +16,7 @@ use Magento\AdvancedSearch\Model\Client\ClientOptionsInterface;
 use Magento\AdvancedSearch\Model\Client\ClientResolver;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Search\EngineResolverInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

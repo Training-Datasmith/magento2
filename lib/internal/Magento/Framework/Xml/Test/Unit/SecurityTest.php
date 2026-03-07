@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Xml\Test\Unit;
 
 use Magento\Framework\Xml\Security;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
@@ -54,11 +55,11 @@ class SecurityTest extends TestCase
         return [
             [
                 'xmlContent' => '<?xml version="1.0"?><test></test>',
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'xmlContent' => '<!DOCTYPE note SYSTEM "Note.dtd"><?xml version="1.0"?><test></test>',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'xmlContent' => '<?xml version="1.0"?>
@@ -68,16 +69,16 @@ class SecurityTest extends TestCase
               <!ENTITY value2 "&value1;&value1;&value1;&value1;&value1;&value1;&value1;&value1;&value1;&value1;">
             ]>
             <test>&value2;</test>',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'xmlContent' => '<!DOCTYPE html><?xml version="1.0"?><test></test>',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'xmlContent' => '',
-                'expectedResult' => false
-            ]
+                'expectedResult' => false,
+            ],
         ];
     }
 }

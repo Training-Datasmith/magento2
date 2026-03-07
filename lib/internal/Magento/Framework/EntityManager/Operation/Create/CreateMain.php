@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\EntityManager\Operation\Create;
 
-use Magento\Framework\EntityManager\TypeResolver;
-use Magento\Framework\EntityManager\HydratorPool;
 use Magento\Framework\EntityManager\Db\CreateRow;
+use Magento\Framework\EntityManager\HydratorPool;
+use Magento\Framework\EntityManager\TypeResolver;
 
 /**
  * Class CreateMain

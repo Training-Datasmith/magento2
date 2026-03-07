@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -11,9 +13,11 @@ use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Customer\Model\Metadata\Form as CustomerForm;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Model\Checks\SpecificationFactory;
 use Magento\Payment\Model\MethodInterface;
+use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\CustomAttributeListInterface;
 use Magento\Quote\Model\Quote\Item;
@@ -22,8 +26,6 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
-use Magento\Quote\Model\Quote;
-use Magento\Framework\App\Request\Http as HttpRequest;
 
 /**
  * Order create model
@@ -468,7 +470,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                 [
                     'store_id' => $this->_session->getStore()->getId(),
                     'website_id' => $this->_session->getStore()->getWebsiteId(),
-                    'customer_group_id' => $this->getCustomerGroupId()
+                    'customer_group_id' => $this->getCustomerGroupId(),
                 ]
             )
         );
@@ -755,7 +757,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                         [
                             'product' => $item->getProduct(),
                             'code' => 'additional_options',
-                            'value' => $this->serializer->serialize($additionalOptions)
+                            'value' => $this->serializer->serialize($additionalOptions),
                         ]
                     )
                 );
@@ -934,7 +936,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                                 [
                                     'product_id' => $product->getId(),
                                     'qty' => $qty,
-                                    'options' => $this->_prepareOptionsForRequest($item)
+                                    'options' => $this->_prepareOptionsForRequest($item),
                                 ]
                             );
                         }
@@ -1352,7 +1354,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                     [
                         'product' => $item->getProduct(),
                         'code' => 'option_ids',
-                        'value' => implode(',', array_keys($options['options']))
+                        'value' => implode(',', array_keys($options['options'])),
                     ]
                 )
             );
@@ -1363,7 +1365,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                         [
                             'product' => $item->getProduct(),
                             'code' => 'option_' . $optionId,
-                            'value' => $optionValue
+                            'value' => $optionValue,
                         ]
                     )
                 );
@@ -1375,7 +1377,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                     [
                         'product' => $item->getProduct(),
                         'code' => 'additional_options',
-                        'value' => $this->serializer->serialize($options['additional_options'])
+                        'value' => $this->serializer->serialize($options['additional_options']),
                     ]
                 )
             );
@@ -2110,7 +2112,7 @@ class Create extends \Magento\Framework\DataObject implements \Magento\Checkout\
                 'relation_parent_id' => $oldOrder->getId(),
                 'relation_parent_real_id' => $oldOrder->getIncrementId(),
                 'edit_increment' => $oldOrder->getEditIncrement() + 1,
-                'increment_id' => $originalId . '-' . ($oldOrder->getEditIncrement() + 1)
+                'increment_id' => $originalId . '-' . ($oldOrder->getEditIncrement() + 1),
             ];
             $quote->setReservedOrderId($orderData['increment_id']);
         }

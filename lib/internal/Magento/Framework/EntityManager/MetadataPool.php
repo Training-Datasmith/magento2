@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -81,7 +83,7 @@ class MetadataPool
                 'connectionName' => $connectionName,
                 'identifierField' => $this->metadata[$entityType]['identifierField'],
                 'sequence' => $this->sequenceFactory->create($entityType, $this->metadata),
-                'entityContext' => $entityContext
+                'entityContext' => $entityContext,
             ]
         );
     }

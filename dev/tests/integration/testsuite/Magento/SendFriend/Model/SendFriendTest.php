@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\SendFriend\Model;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\CookieManagerInterface;
@@ -14,7 +16,6 @@ use Magento\SendFriend\Helper\Data as SendFriendHelper;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Laminas\Stdlib\Parameters;
 
 /**
  * Class checks send friend model behavior

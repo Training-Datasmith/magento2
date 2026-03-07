@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Config\Model\Config;
 
-use Magento\Framework\Module\Dir;
+namespace Magento\Config\Model\Config;
 
 /**
  * @api

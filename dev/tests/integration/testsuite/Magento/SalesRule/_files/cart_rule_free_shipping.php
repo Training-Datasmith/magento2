@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ $row =
                     'value' => '1',
                     'is_value_processed' => null,
                     'aggregator' => 'all',
-                ]
+                ],
 
         ],
         'actions' => [
@@ -42,9 +44,9 @@ $row =
                         'operator' => '==',
                         'value' => '7',
                         'is_value_processed' => false,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ],
         'is_advanced' => 1,
         'simple_action' => 'by_percent',
@@ -62,8 +64,8 @@ $row =
         'website_ids' => [
             \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
                 \Magento\Store\Model\StoreManagerInterface::class
-            )->getWebsite()->getId()
-        ]
+            )->getWebsite()->getId(),
+        ],
     ];
 $salesRule->loadPost($row);
 $salesRule->save();

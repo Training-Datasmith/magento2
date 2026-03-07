@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -105,11 +106,11 @@ return [
                             'options' => [
                                 [
                                     'label' => __('Yes'),
-                                    'value' => '1'
+                                    'value' => '1',
                                 ],
                                 [
                                     'label' => __('No'),
-                                    'value' => '0'
+                                    'value' => '0',
                                 ],
                             ],
                         ],
@@ -124,12 +125,12 @@ return [
                             'options' => [
                                 [
                                     'label' => __('Yes'),
-                                    'value' => '1'
+                                    'value' => '1',
                                 ],
 
                                 [
                                     'label' => __('No'),
-                                    'value' => '0'
+                                    'value' => '0',
                                 ],
                             ],
                         ],

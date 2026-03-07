@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,14 +9,12 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product\Edit\Tab;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Backend\Block\Widget\Form\Element\ElementCreator;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Websites;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Escaper;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Filesystem\Directory\ReadInterface as DirectoryHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\GroupFactory;
@@ -27,7 +26,6 @@ use Magento\Store\Model\StoreFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
 use Magento\Store\Model\WebsiteFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -513,7 +511,7 @@ class WebsitesTest extends TestCase
             'multiple_groups' => self::getMultipleGroupsData(),
             'skips_unassigned_websites' => self::getSkipsUnassignedWebsitesData(),
             'no_websites_assigned' => self::getNoWebsitesAssignedData(),
-            'html_escaping' => self::getHtmlEscapingData()
+            'html_escaping' => self::getHtmlEscapingData(),
         ];
     }
 
@@ -534,9 +532,9 @@ class WebsitesTest extends TestCase
                 '<select', 'name="copy_to_stores[2]"', 'disabled="disabled"',
                 '<option value="0">Default Values</option>', 'Main Website',
                 'Main Store', 'Default Store View', '<option value="1">',
-                '</optgroup>', '</select>'
+                '</optgroup>', '</select>',
             ],
-            'expectedNotContains' => []
+            'expectedNotContains' => [],
         ];
     }
 
@@ -552,19 +550,19 @@ class WebsitesTest extends TestCase
             'websiteData' => [['id' => 1, 'name' => 'Main Website']],
             'groupData' => [
                 ['id' => 1, 'name' => 'Store Group 1', 'website_id' => 1],
-                ['id' => 2, 'name' => 'Store Group 2', 'website_id' => 1]
+                ['id' => 2, 'name' => 'Store Group 2', 'website_id' => 1],
             ],
             'storeData' => [
                 ['id' => 1, 'name' => 'Store 1', 'group_id' => 1],
-                ['id' => 2, 'name' => 'Store 2', 'group_id' => 2]
+                ['id' => 2, 'name' => 'Store 2', 'group_id' => 2],
             ],
             'targetStoreId' => 5,
             'expectedContains' => [
                 'Main Website', 'Store Group 1', 'Store Group 2', 'Store 1',
                 'Store 2', '<option value="1">', '<option value="2">',
-                'name="copy_to_stores[5]"', '</optgroup>', '</select>'
+                'name="copy_to_stores[5]"', '</optgroup>', '</select>',
             ],
-            'expectedNotContains' => []
+            'expectedNotContains' => [],
         ];
     }
 
@@ -579,13 +577,13 @@ class WebsitesTest extends TestCase
             'productWebsites' => [1],
             'websiteData' => [
                 ['id' => 1, 'name' => 'Assigned Website'],
-                ['id' => 2, 'name' => 'Skipped Website']
+                ['id' => 2, 'name' => 'Skipped Website'],
             ],
             'groupData' => [['id' => 1, 'name' => 'Main Store', 'website_id' => 1]],
             'storeData' => [['id' => 1, 'name' => 'Default Store View', 'group_id' => 1]],
             'targetStoreId' => 2,
             'expectedContains' => ['Assigned Website', 'Main Store', 'Default Store View'],
-            'expectedNotContains' => ['Skipped Website']
+            'expectedNotContains' => ['Skipped Website'],
         ];
     }
 
@@ -603,7 +601,7 @@ class WebsitesTest extends TestCase
             'storeData' => [],
             'targetStoreId' => 1,
             'expectedContains' => ['<select', 'Default Values', '</select>'],
-            'expectedNotContains' => ['Unassigned Website']
+            'expectedNotContains' => ['Unassigned Website'],
         ];
     }
 
@@ -617,7 +615,7 @@ class WebsitesTest extends TestCase
         return [
             'productWebsites' => [1],
             'websiteData' => [
-                ['id' => 1, 'name' => '<script type="text/x-magento-init">alert("xss")</script>']
+                ['id' => 1, 'name' => '<script type="text/x-magento-init">alert("xss")</script>'],
             ],
             'groupData' => [['id' => 1, 'name' => '<b>Bold Store</b>', 'website_id' => 1]],
             'storeData' => [['id' => 1, 'name' => '"Quoted Store"', 'group_id' => 1]],
@@ -625,11 +623,11 @@ class WebsitesTest extends TestCase
             'expectedContains' => [
                 '&lt;script type=&quot;text/x-magento-init&quot;&gt;alert(&quot;xss&quot;)&lt;/script&gt;',
                 '&lt;b&gt;Bold Store&lt;/b&gt;', '&quot;Quoted Store&quot;',
-                '</optgroup>', '</select>', 'name="copy_to_stores[2]"'
+                '</optgroup>', '</select>', 'name="copy_to_stores[2]"',
             ],
             'expectedNotContains' => [
-                '<script type="text/x-magento-init">alert', '<b>Bold Store</b>'
-            ]
+                '<script type="text/x-magento-init">alert', '<b>Bold Store</b>',
+            ],
         ];
     }
 

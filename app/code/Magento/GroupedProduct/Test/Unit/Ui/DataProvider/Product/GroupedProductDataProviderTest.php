@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class GroupedProductDataProviderTest extends TestCase
                 'load',
                 'getSize',
                 'addFilterByRequiredOptions',
-                'addStoreFilter'
+                'addStoreFilter',
             ]
         );
         $this->collectionFactoryMock = $this->createPartialMock(CollectionFactory::class, ['create']);

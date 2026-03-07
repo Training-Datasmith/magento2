@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,10 +11,11 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Config\Block\System\Config;
 
-use \Magento\Framework\App\ObjectManager;
-use \Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\Serializer\Json;
 
 /**
  * @api
@@ -21,7 +24,7 @@ use \Magento\Framework\Serialize\Serializer\Json;
  */
 class Edit extends \Magento\Backend\Block\Widget
 {
-    const DEFAULT_SECTION_BLOCK = \Magento\Config\Block\System\Config\Form::class;
+    public const DEFAULT_SECTION_BLOCK = \Magento\Config\Block\System\Config\Form::class;
 
     /**
      * Form block class name
@@ -91,7 +94,7 @@ class Edit extends \Magento\Backend\Block\Widget
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#config-edit-form']],
-                ]
+                ],
             ]
         );
         $block = $this->getLayout()->createBlock($this->_formBlockName);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ declare(strict_types=1);
 use Magento\Framework\Config\ConfigOptionsListConstants;
 
 // phpcs:ignore Magento2.Functions.DiscouragedFunction
-register_shutdown_function("fatalErrorHandler");
+register_shutdown_function('fatalErrorHandler');
 
 try {
     // phpcs:ignore Magento2.Security.IncludeFile
@@ -42,7 +43,7 @@ foreach ($deploymentConfig->get(ConfigOptionsListConstants::CONFIG_PATH_DB_CONNE
         $dbAdapter->getConnection();
     } catch (\Exception $e) {
         http_response_code(500);
-        $logger->error("MySQL connection failed: " . $e->getMessage());
+        $logger->error('MySQL connection failed: ' . $e->getMessage());
         // phpcs:ignore Magento2.Security.LanguageConstruct
         exit(1);
     }
@@ -58,7 +59,7 @@ if ($cacheConfigs) {
         } elseif (!isset($cacheConfig[ConfigOptionsListConstants::CONFIG_PATH_BACKEND]) ||
             !isset($cacheConfig[ConfigOptionsListConstants::CONFIG_PATH_BACKEND_OPTIONS])) {
             http_response_code(500);
-            $logger->error("Cache configuration is invalid");
+            $logger->error('Cache configuration is invalid');
             // phpcs:ignore Magento2.Security.LanguageConstruct
             exit(1);
         }
@@ -71,7 +72,7 @@ if ($cacheConfigs) {
             $backend->test('test_cache_id');
         } catch (\Exception $e) {
             http_response_code(500);
-            $logger->error("Cache storage is not accessible");
+            $logger->error('Cache storage is not accessible');
             // phpcs:ignore Magento2.Security.LanguageConstruct
             exit(1);
         }

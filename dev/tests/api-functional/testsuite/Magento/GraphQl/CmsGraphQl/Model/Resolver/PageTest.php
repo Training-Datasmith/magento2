@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class PageTest extends ResolverCacheAbstract
             'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken(
                 'customer@example.com',
                 'password'
-            )
+            ),
         ];
 
         $page = $this->getPageByTitle('Page with 1column layout');
@@ -194,7 +195,7 @@ class PageTest extends ResolverCacheAbstract
             'Authorization' => 'Bearer ' . $this->customerTokenService->createCustomerAccessToken(
                 'customer@example.com',
                 'password'
-            )
+            ),
         ];
 
         $customer = $this->customerRepository->get('customer@example.com');
@@ -526,7 +527,7 @@ QUERY;
         $cacheKeyParts = [
             GraphQlResolverCache::CACHE_TAG,
             $cacheKeyFactor,
-            sha1($cacheKeyQueryPayloadMetadata)
+            sha1($cacheKeyQueryPayloadMetadata),
         ];
 
         // strtoupper is called in \Magento\Framework\Cache\Frontend\Adapter\Zend::_unifyId

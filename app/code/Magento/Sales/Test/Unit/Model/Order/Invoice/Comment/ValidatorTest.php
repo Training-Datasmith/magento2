@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Invoice\Comment;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Helper\SalesEntityCommentValidator;
 use Magento\Sales\Model\Order\Invoice\Comment;
 use Magento\Sales\Model\Order\Invoice\Comment\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Sales\Helper\SalesEntityCommentValidator;
 
 class ValidatorTest extends TestCase
 {
@@ -46,7 +47,7 @@ class ValidatorTest extends TestCase
         $this->validator = $objectManager->getObject(
             Validator::class,
             [
-                'salesEntityCommentValidator' => $this->salesEntityCommentValidator
+                'salesEntityCommentValidator' => $this->salesEntityCommentValidator,
             ]
         );
     }
@@ -86,11 +87,11 @@ class ValidatorTest extends TestCase
                 ],
                 [
                     'parent_id' => 25,
-                    'comment' => 'Hello World!'
+                    'comment' => 'Hello World!',
                 ],
                 [
-                    'comment' => 'User is not authorized to edit comment.'
-                ]
+                    'comment' => 'User is not authorized to edit comment.',
+                ],
             ],
             [
                 [
@@ -99,13 +100,13 @@ class ValidatorTest extends TestCase
                 ],
                 [
                     'parent_id' => 0,
-                    'comment' => null
+                    'comment' => null,
                 ],
                 [
                     'parent_id' => 'Parent Invoice Id can not be empty',
-                    'comment' => '"Comment" is required. Enter and try again.'
-                ]
-            ]
+                    'comment' => '"Comment" is required. Enter and try again.',
+                ],
+            ],
         ];
     }
 }

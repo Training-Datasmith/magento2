@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
@@ -103,7 +106,7 @@ class TierPrice extends AbstractModifier
         $priceMeta['arguments']['data']['config']['visible'] = $firstOption
             && $firstOption['value'] == ProductPriceOptionsInterface::VALUE_FIXED;
         $priceMeta['arguments']['data']['config']['validation'] = [
-            'validate-zero-or-greater' => true
+            'validate-zero-or-greater' => true,
         ];
         return [
             'price_value' => [
@@ -162,7 +165,7 @@ class TierPrice extends AbstractModifier
                                     'addbefore' => '%',
                                     'validation' => [
                                         'required-entry' => true,
-                                        'validate-positive-percent-decimal' => true
+                                        'validate-positive-percent-decimal' => true,
                                     ],
                                     'visible' => $firstOption
                                         && $firstOption['value'] == ProductPriceOptionsInterface::VALUE_PERCENT,
@@ -176,11 +179,11 @@ class TierPrice extends AbstractModifier
                                 'config' => [
                                     'componentType' => Container::NAME,
                                     'component' => 'Magento_Catalog/js/tier-price/percentage-processor',
-                                    'visible' => false
+                                    'visible' => false,
                                 ],
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ],
         ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class CustomerDataGeneratorTest extends TestCase
      * @var array
      */
     private $config = [
-        'addresses-count' => 10
+        'addresses-count' => 10,
     ];
 
     /**

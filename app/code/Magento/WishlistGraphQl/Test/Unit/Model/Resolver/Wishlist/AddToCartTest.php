@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,30 +8,30 @@ declare(strict_types=1);
 
 namespace Magento\WishlistGraphQl\Test\Unit\Model\Resolver\Wishlist;
 
+use Magento\Catalog\Model\Product;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartInterface;
-use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
-use Magento\QuoteGraphQl\Model\Cart\CreateEmptyCartForCustomer;
 use Magento\Quote\Model\Cart\AddProductsToCart as AddProductsToCartService;
 use Magento\Quote\Model\Cart\Data\AddProductsToCartOutput;
 use Magento\Quote\Model\Cart\Data\Error;
-use Magento\WishlistGraphQl\Mapper\WishlistDataMapper;
-use Magento\WishlistGraphQl\Model\CartItems\CartItemsRequestBuilder;
-use Magento\WishlistGraphQl\Model\Resolver\Wishlist\AddToCart;
+use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
+use Magento\QuoteGraphQl\Model\Cart\CreateEmptyCartForCustomer;
+use Magento\Wishlist\Model\Item as WishlistItem;
 use Magento\Wishlist\Model\ResourceModel\Item\Collection as WishlistItemsCollection;
 use Magento\Wishlist\Model\ResourceModel\Wishlist as WishlistResourceModel;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Wishlist\Model\WishlistFactory;
-use Magento\Wishlist\Model\Item as WishlistItem;
 use Magento\Wishlist\Model\Wishlist\Config as WishlistConfig;
-use Magento\Catalog\Model\Product;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Wishlist\Model\WishlistFactory;
+use Magento\WishlistGraphQl\Mapper\WishlistDataMapper;
+use Magento\WishlistGraphQl\Model\CartItems\CartItemsRequestBuilder;
+use Magento\WishlistGraphQl\Model\Resolver\Wishlist\AddToCart;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -449,7 +450,7 @@ class AddToCartTest extends TestCase
         $this->assertEquals([
             'wishlist' => $mappedWishlist,
             'status' => true,
-            'add_wishlist_items_to_cart_user_errors' => []
+            'add_wishlist_items_to_cart_user_errors' => [],
         ], $result);
     }
 
@@ -570,14 +571,14 @@ class AddToCartTest extends TestCase
                 'wishlistItemId' => 1,
                 'wishlistId' => $wishlistId,
                 'code' => 'PRODUCT_NOT_FOUND',
-                'message' => 'Product not found'
-            ]
+                'message' => 'Product not found',
+            ],
         ];
 
         $this->assertEquals([
             'wishlist' => $mappedWishlist,
             'status' => false,
-            'add_wishlist_items_to_cart_user_errors' => $expectedErrors
+            'add_wishlist_items_to_cart_user_errors' => $expectedErrors,
         ], $result);
     }
 

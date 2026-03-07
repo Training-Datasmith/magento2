@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order\Invoice as OrderInvoice;
+use Magento\Sales\Model\Order\Invoice\Comment as InvoiceComment;
 use Magento\Sales\Model\Order\Invoice\Comment\Validator;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Comment;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Model\Order\Invoice as OrderInvoice;
-use Magento\Sales\Model\Order\Invoice\Comment as InvoiceComment;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -107,7 +108,7 @@ class CommentTest extends TestCase
             [
                 'context' => $contextMock,
                 'validator' => $this->validatorMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

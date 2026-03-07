@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -42,8 +43,8 @@ class CommandLoaderTest extends TestCase
         $subj = new CommandLoader($this->objectManagerMock, [
             [
                 'name' => 'foo',
-                'class' => FooCommand::class
-            ]
+                'class' => FooCommand::class,
+            ],
         ]);
 
         $this->assertTrue($subj->has('foo'));
@@ -74,8 +75,8 @@ class CommandLoaderTest extends TestCase
         $subj = new CommandLoader($this->objectManagerMock, [
             [
                 'name' => 'foo',
-                'class' => FooCommand::class
-            ]
+                'class' => FooCommand::class,
+            ],
         ]);
 
         $this->assertInstanceOf(FooCommand::class, $subj->get('foo'));
@@ -99,12 +100,12 @@ class CommandLoaderTest extends TestCase
         $subj = new CommandLoader($this->objectManagerMock, [
             [
                 'name' => 'foo',
-                'class' => FooCommand::class
+                'class' => FooCommand::class,
             ],
             [
                 'name' => 'bar',
-                'class' => 'BarCommand'
-            ]
+                'class' => 'BarCommand',
+            ],
         ]);
 
         $this->assertEquals(['foo', 'bar'], $subj->getNames());

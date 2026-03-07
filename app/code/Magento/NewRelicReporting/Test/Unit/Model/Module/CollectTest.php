@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,24 +11,23 @@ namespace Magento\NewRelicReporting\Test\Unit\Model\Module;
 use Magento\Framework\Module\FullModuleList;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Module\ModuleListInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\NewRelicReporting\Model\Module;
 use Magento\NewRelicReporting\Model\Module\Collect;
 use Magento\NewRelicReporting\Model\ModuleFactory;
 use Magento\NewRelicReporting\Model\ResourceModel\Module\Collection;
 use Magento\NewRelicReporting\Model\ResourceModel\Module\CollectionFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use ReflectionException;
 
 class CollectTest extends TestCase
 {
-
     use MockCreationTrait;
-    
+
     /**
      * @var Collect
      */
@@ -112,8 +112,8 @@ class CollectTest extends TestCase
             'Module_Name' => [
                 'name' => 'Name',
                 'setup_version' => '2.0.0',
-                'sequence' => []
-            ]
+                'sequence' => [],
+            ],
         ];
         $testChangesMockArray = [
             ['entity' => '3',
@@ -133,7 +133,7 @@ class CollectTest extends TestCase
                 'active' => 'true',
                 'state' => 'uninstalled',
                 'setup_version' => '2.0.0',
-                'updated_at' => '2015-09-02 18:38:17']
+                'updated_at' => '2015-09-02 18:38:17'],
         ];
         $itemMockArray = [$itemMock];
         $enabledModulesMockArray = [];
@@ -199,8 +199,8 @@ class CollectTest extends TestCase
             'Module_Name1' => [
                 'name' => 'Module_Name1',
                 'setup_version' => '2.0.0',
-                'sequence' => []
-            ]
+                'sequence' => [],
+            ],
         ];
         $itemMock->setData($data);
         $testChangesMockArray = [
@@ -210,7 +210,7 @@ class CollectTest extends TestCase
             'state' => 'uninstalled',
             'setup_version' => '2.0.0',
             'some_param' => 'some_value',
-            'updated_at' => '2015-09-02 18:38:17'
+            'updated_at' => '2015-09-02 18:38:17',
         ];
         $itemMockArray = [$itemMock];
 
@@ -286,8 +286,8 @@ class CollectTest extends TestCase
             'Module_Name1' => [
                 'name' => 'Module_Name1',
                 'setup_version' => '2.0.0',
-                'sequence' => []
-            ]
+                'sequence' => [],
+            ],
         ];
         $itemMock->setData($data);
         $testChangesMockArray = [
@@ -297,7 +297,7 @@ class CollectTest extends TestCase
             'state' => 'enabled',
             'setup_version' => '2.0.0',
             'some_param' => 'some_value',
-            'updated_at' => '2015-09-02 18:38:17'
+            'updated_at' => '2015-09-02 18:38:17',
         ];
         $itemMockArray = [$itemMock];
 
@@ -363,8 +363,8 @@ class CollectTest extends TestCase
                     'name' => 'Module_Name1',
                     'active' => 'true',
                     'state' => 'enabled',
-                    'setup_version' => '2.0.0'
-                ]
+                    'setup_version' => '2.0.0',
+                ],
             ],
             [
                 [
@@ -372,8 +372,8 @@ class CollectTest extends TestCase
                     'name' => 'Module_Name2',
                     'active' => 'true',
                     'state' => 'disabled',
-                    'setup_version' => '2.0.0'
-                ]
+                    'setup_version' => '2.0.0',
+                ],
             ],
             [
                 [
@@ -381,9 +381,9 @@ class CollectTest extends TestCase
                     'name' => 'Module_Name2',
                     'active' => 'true',
                     'state' => 'uninstalled',
-                    'setup_version' => '2.0.0'
-                ]
-            ]
+                    'setup_version' => '2.0.0',
+                ],
+            ],
         ];
     }
 
@@ -448,7 +448,7 @@ class CollectTest extends TestCase
     {
         return [
             'module_enabled' => ['TestModule_Enabled', true, 'enabled'],
-            'module_disabled' => ['TestModule_Disabled', false, 'disabled']
+            'module_disabled' => ['TestModule_Disabled', false, 'disabled'],
         ];
     }
 

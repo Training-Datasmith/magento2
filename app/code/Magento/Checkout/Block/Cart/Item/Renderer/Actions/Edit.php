@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart\Item\Renderer\Actions;
 
 /**
@@ -22,7 +25,7 @@ class Edit extends Generic
             'checkout/cart/configure',
             [
                 'id' => $this->getItem()->getId(),
-                'product_id' => $this->getItem()->getProduct()->getId()
+                'product_id' => $this->getItem()->getProduct()->getId(),
             ]
         );
     }

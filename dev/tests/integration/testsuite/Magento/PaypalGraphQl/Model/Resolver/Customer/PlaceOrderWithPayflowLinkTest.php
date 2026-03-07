@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,15 +15,14 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\GraphQl\Service\GraphQlRequest;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\Integration\Model\Oauth\Token;
 use Magento\Paypal\Model\Payflow\Request;
+use Magento\Paypal\Model\Payflow\RequestFactory;
 use Magento\Paypal\Model\Payflow\Service\Gateway;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Paypal\Model\Payflow\RequestFactory;
 
 /**
  * End to end place order test using payflow_link via graphql endpoint for registered customer
@@ -150,7 +150,7 @@ QUERY;
             'result' => '0',
             'respmsg' => 'Approved',
             'pnref' => 'V19A3D27B61E',
-            'result_code' => '0'
+            'result_code' => '0',
             ]
         );
         $this->gateway->expects($this->once())
@@ -170,8 +170,8 @@ QUERY;
                             'BUTTONSOURCE' => $button,
                             'tender' => 'C',
                         ],
-                        $this->payflowRequest
-                    ]
+                        $this->payflowRequest,
+                    ],
                 ],
                 ['USER1', 1, $this->payflowRequest],
                 ['USER2', 'USER2SilentPostHash', $this->payflowRequest]
@@ -183,7 +183,7 @@ QUERY;
 
         $requestHeaders = [
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
         $response = $this->graphQlRequest->send($query, [], '', $requestHeaders);
         $responseData = $this->json->unserialize($response->getContent());

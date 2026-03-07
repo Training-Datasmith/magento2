@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,6 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\NewRelicReporting\Test\Unit\Model\NerdGraph;
 
+use Laminas\Http\Exception\RuntimeException;
+use Laminas\Http\Response;
 use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\HTTP\LaminasClientFactory;
 use Magento\Framework\Serialize\SerializerInterface;
@@ -15,8 +18,6 @@ use Magento\NewRelicReporting\Model\NerdGraph\Client;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Laminas\Http\Response;
-use Laminas\Http\Exception\RuntimeException;
 
 /**
  * Test for NerdGraph Client
@@ -325,9 +326,9 @@ class ClientTest extends TestCase
 
         $responseBody = [
             'errors' => [
-                ['message' => 'Field "invalidField" doesn\'t exist on type "Actor"']
+                ['message' => 'Field "invalidField" doesn\'t exist on type "Actor"'],
             ],
-            'data' => null
+            'data' => null,
         ];
 
         $this->responseMock->expects($this->once())
@@ -381,9 +382,9 @@ class ClientTest extends TestCase
 
         $responseBody = [
             'errors' => [
-                ['code' => 'VALIDATION_ERROR']
+                ['code' => 'VALIDATION_ERROR'],
             ],
-            'data' => null
+            'data' => null,
         ];
 
         $this->responseMock->expects($this->once())
@@ -445,13 +446,13 @@ class ClientTest extends TestCase
                                 [
                                     'guid' => $expectedGuid,
                                     'name' => $appName,
-                                    'reporting' => true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'reporting' => true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())
@@ -513,13 +514,13 @@ class ClientTest extends TestCase
                                     'guid' => $expectedGuid,
                                     'applicationId' => (int)$appId,
                                     'name' => 'App for ID ' . $appId,
-                                    'reporting' => true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'reporting' => true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())
@@ -580,13 +581,13 @@ class ClientTest extends TestCase
                                 [
                                     'guid' => $expectedGuid,
                                     'name' => 'Different App',
-                                    'reporting' => false
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'reporting' => false,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())
@@ -642,11 +643,11 @@ class ClientTest extends TestCase
                 'actor' => [
                     'entitySearch' => [
                         'results' => [
-                            'entities' => []
-                        ]
-                    ]
-                ]
-            ]
+                            'entities' => [],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())
@@ -747,13 +748,13 @@ class ClientTest extends TestCase
                                 [
                                     'guid' => $expectedGuid,
                                     'name' => $appName,
-                                    'reporting' => true
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                    'reporting' => true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())
@@ -808,11 +809,11 @@ class ClientTest extends TestCase
                 'actor' => [
                     'entitySearch' => [
                         'results' => [
-                            'entities' => []
-                        ]
-                    ]
-                ]
-            ]
+                            'entities' => [],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->responseMock->expects($this->once())

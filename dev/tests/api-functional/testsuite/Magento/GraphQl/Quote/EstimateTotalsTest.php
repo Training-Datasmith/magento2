@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,7 +9,11 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Quote;
 
 use Exception;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Quote\Test\Fixture\AddProductToCart;
+use Magento\Quote\Test\Fixture\GuestCart;
+use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\Tax\Test\Fixture\ProductTaxClass;
 use Magento\Tax\Test\Fixture\TaxRate as TaxRateFixture;
 use Magento\Tax\Test\Fixture\TaxRule as TaxRuleFixture;
@@ -16,10 +21,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Quote\Test\Fixture\GuestCart;
-use Magento\Quote\Test\Fixture\QuoteIdMask;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart;
 
 /**
  * Test for guest shipping methods estimate costs
@@ -42,7 +43,7 @@ class EstimateTotalsTest extends GraphQlAbstract
         DataFixture(
             TaxRateFixture::class,
             [
-                'tax_country_id' => 'ES'
+                'tax_country_id' => 'ES',
             ],
             'rate'
         ),
@@ -51,7 +52,7 @@ class EstimateTotalsTest extends GraphQlAbstract
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -59,7 +60,7 @@ class EstimateTotalsTest extends GraphQlAbstract
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -69,7 +70,7 @@ class EstimateTotalsTest extends GraphQlAbstract
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testEstimateTotals(string $countryCode, string $shipping, array $prices): void
@@ -111,9 +112,9 @@ QUERY;
             [
                 'estimateTotals' => [
                     'cart' => [
-                        'prices' => $prices
-                    ]
-                ]
+                        'prices' => $prices,
+                    ],
+                ],
             ],
             $response
         );
@@ -141,7 +142,7 @@ QUERY;
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.classId$'],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -149,7 +150,7 @@ QUERY;
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    'tax_class_id' => '$product_tax_class.classId$'
+                    'tax_class_id' => '$product_tax_class.classId$',
                 ],
             ],
             'product'
@@ -159,7 +160,7 @@ QUERY;
         DataFixture(AddProductToCart::class, [
             'cart_id' => '$cart.id$',
             'product_id' => '$product.id$',
-            'qty' => 1
+            'qty' => 1,
         ])
     ]
     public function testEstimateTotalsCleanPostCode(): void
@@ -203,13 +204,13 @@ QUERY;
                                 [
                                     'amount' => [
                                         'value' => 1,
-                                        'currency' => 'USD'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'currency' => 'USD',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -221,10 +222,10 @@ QUERY;
                 'estimateTotals' => [
                     'cart' => [
                         'prices' => [
-                            'applied_taxes' => []
-                        ]
-                    ]
-                ]
+                            'applied_taxes' => [],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -239,17 +240,17 @@ QUERY;
                 [
                     'grand_total' => [
                         'value' => 11,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
                     'applied_taxes' => [
                         [
                             'amount' => [
                                 'value' => 1,
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
-                ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 'IE',
@@ -257,11 +258,11 @@ QUERY;
                 [
                     'grand_total' => [
                         'value' => 15,
-                        'currency' => 'USD'
+                        'currency' => 'USD',
                     ],
-                    'applied_taxes' => []
-                ]
-            ]
+                    'applied_taxes' => [],
+                ],
+            ],
         ];
     }
 

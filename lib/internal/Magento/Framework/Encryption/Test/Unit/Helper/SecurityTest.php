@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Collection of various useful functions
  *
@@ -10,11 +11,12 @@ declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Encryption\Security
  */
+
 namespace Magento\Framework\Encryption\Test\Unit\Helper;
 
 use Magento\Framework\Encryption\Helper\Security;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SecurityTest extends TestCase
 {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Backend\Block\Widget\Form\Element;
 
+use Magento\Backend\Block\Template\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
-use Magento\Backend\Block\Template\Context;
 
 /**
  * Backend image gallery item renderer
@@ -89,7 +91,7 @@ class Gallery extends \Magento\Backend\Block\Template implements
         $this->addChild(
             'delete_button',
             \Magento\Backend\Block\Widget\Button::class,
-            ['label' => __('Delete'), 'onclick' => "deleteImage(#image#)", 'class' => 'delete']
+            ['label' => __('Delete'), 'onclick' => 'deleteImage(#image#)', 'class' => 'delete']
         );
 
         $this->addChild(

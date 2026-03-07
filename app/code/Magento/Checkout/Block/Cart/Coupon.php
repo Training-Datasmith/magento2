@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Cart;
 
 use Magento\Captcha\Block\Captcha;
@@ -58,7 +61,7 @@ class Coupon extends \Magento\Checkout\Block\Cart\AbstractCart
                     'after' => '-',
                     'form_id' => 'sales_rule_coupon_request',
                     'image_width' => 230,
-                    'image_height' => 230
+                    'image_height' => 230,
                 ]
             );
         }

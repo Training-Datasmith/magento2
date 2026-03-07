@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -119,20 +120,20 @@ class WebapiTest extends TestCase
         return [
             'null data' => [
                 'integrationData' => null,
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'empty integration data' => [
                 'integrationData' => [],
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'manual integration data' => [
                 'integrationData' => [Info::DATA_SETUP_TYPE => IntegrationModel::TYPE_MANUAL],
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'config integration data' => [
                 'integrationData' => [Info::DATA_SETUP_TYPE => IntegrationModel::TYPE_CONFIG],
-                'expectedValue' => false
-            ]
+                'expectedValue' => false,
+            ],
         ];
     }
 
@@ -172,19 +173,19 @@ class WebapiTest extends TestCase
                 2,
                 ['integration_id' => 1],
                 [1, 2, 3],
-                true
+                true,
             ],
             'root resource not in array' => [
                 1,
                 ['integration_id' => 1],
                 [2, 3, 4],
-                false
+                false,
             ],
             'no integration data' => [
                 1,
                 [],
                 [],
-                false
+                false,
             ],
         ];
     }
@@ -194,12 +195,12 @@ class WebapiTest extends TestCase
         $this->webapiBlock = $this->getWebapiBlock();
         $resources = [
             ['id' => 'Magento_Backend::admin', 'children' => ['resource1', 'resource2', 'resource3']],
-            ['id' => 'Invalid_Node', 'children' => ['resource4', 'resource5', 'resource6']]
+            ['id' => 'Invalid_Node', 'children' => ['resource4', 'resource5', 'resource6']],
         ];
         $this->aclResourceProvider->expects($this->once())
             ->method('getAclResources')
             ->willReturn($resources);
-        $rootArray = "rootArrayValue";
+        $rootArray = 'rootArrayValue';
         $this->integrationHelper->expects($this->once())
             ->method('mapResources')
             ->with(['resource1', 'resource2', 'resource3'])
@@ -240,13 +241,13 @@ class WebapiTest extends TestCase
             'root resource in array' => [
                 2,
                 ['all_resources' => 0, 'resource' => [2, 3]],
-                true
+                true,
             ],
             'root resource not in array' => [
                 2,
                 ['all_resources' => 1],
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -268,7 +269,7 @@ class WebapiTest extends TestCase
 
         $this->registry->expects($this->any())
             ->method('registry')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [IntegrationController::REGISTRY_KEY_CURRENT_RESOURCE] => false,
                 [IntegrationController::REGISTRY_KEY_CURRENT_INTEGRATION] => $integrationData
             });

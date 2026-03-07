@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Setup\Module\I18n\Dictionary\WriterInterface;
 use Magento\Setup\Module\I18n\Factory;
 use Magento\Setup\Module\I18n\Locale;
 use Magento\Setup\Module\I18n\Pack\Writer\File\Csv;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/_files/ioMock.php';
@@ -74,7 +75,7 @@ class CsvTest extends TestCase
             Csv::class,
             [
                 'context' => $this->contextMock,
-                'factory' => $this->factoryMock
+                'factory' => $this->factoryMock,
             ]
         );
         $this->object = $objectManagerHelper->getObject(Csv::class, $constructorArguments);
@@ -102,7 +103,7 @@ class CsvTest extends TestCase
         return [
             ['', []],
             ['module', []],
-            ['', ['Magento_Module']]
+            ['', ['Magento_Module']],
         ];
     }
 

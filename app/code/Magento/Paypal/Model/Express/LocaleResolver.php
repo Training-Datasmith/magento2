@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Paypal\Model\Express;
 
 use Magento\Framework\Locale\ResolverInterface;
-use Magento\Paypal\Model\ConfigFactory;
 use Magento\Paypal\Model\Config;
+use Magento\Paypal\Model\ConfigFactory;
 
 /**
  * Resolves locale for PayPal Express.
@@ -34,7 +35,7 @@ class LocaleResolver implements ResolverInterface
     private $localeMap = [
         'zh_Hans_CN' => 'zh_CN',
         'zh_Hant_HK' => 'zh_HK',
-        'zh_Hant_TW' => 'zh_TW'
+        'zh_Hant_TW' => 'zh_TW',
     ];
 
     /**
@@ -89,7 +90,7 @@ class LocaleResolver implements ResolverInterface
     public function getLocale(): string
     {
         $locale = $this->localeMap[$this->resolver->getLocale()] ?? $this->resolver->getLocale();
-        $allowedLocales =(bool)(int) $this->config->getValue('in_context')
+        $allowedLocales = (bool)(int) $this->config->getValue('in_context')
             ? $this->config->getValue('smart_buttons_supported_locales')
             : $this->config->getValue('supported_locales');
 

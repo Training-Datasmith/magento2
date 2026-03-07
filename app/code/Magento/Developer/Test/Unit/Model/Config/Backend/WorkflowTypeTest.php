@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Test\Unit\Model\Config\Backend;
 
 use Magento\Developer\Model\Config\Backend\WorkflowType;
@@ -51,7 +54,7 @@ class WorkflowTypeTest extends TestCase
             WorkflowType::class,
             [
                 'context' => $this->objectManagerHelper->getObject(Context::class, $contextArgs),
-                'cleaner' => $this->cleanerMock
+                'cleaner' => $this->cleanerMock,
             ]
         );
 

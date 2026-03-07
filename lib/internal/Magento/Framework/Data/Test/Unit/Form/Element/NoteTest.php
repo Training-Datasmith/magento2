@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Note
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
@@ -68,7 +70,7 @@ class NoteTest extends TestCase
         $this->_model->setValue('Note Text');
         $html = $this->_model->getElementHtml();
         $this->assertEquals(
-            "note_before<div id=\"note_id\" class=\"control-value admin__field-value\"></div>note_after",
+            'note_before<div id="note_id" class="control-value admin__field-value"></div>note_after',
             $html
         );
     }

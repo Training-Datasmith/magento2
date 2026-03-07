@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Widget Instance edit container
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance;
 
 /**
@@ -76,7 +79,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                         'mage-init' => [
                             'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
                         ],
-                    ]
+                    ],
                 ],
                 100
             );

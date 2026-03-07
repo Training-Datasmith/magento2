@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Configuration cache interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 /**

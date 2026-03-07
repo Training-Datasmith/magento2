@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -23,10 +25,8 @@ class Error extends \Magento\AdminNotification\Model\System\Message\Media\Abstra
 
     /**
      * Check whether
-     *
-     * @return bool
      */
-    protected function _shouldBeDisplayed()
+    protected function _shouldBeDisplayed(): bool
     {
         $data = $this->_syncFlag->getFlagData();
         return !empty($data['has_errors']);

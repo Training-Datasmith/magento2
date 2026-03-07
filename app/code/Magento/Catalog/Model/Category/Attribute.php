@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Category;
 
 /**
@@ -13,13 +16,13 @@ namespace Magento\Catalog\Model\Category;
 class Attribute extends \Magento\Catalog\Model\Entity\Attribute implements
     \Magento\Catalog\Api\Data\CategoryAttributeInterface
 {
-    const SCOPE_STORE = 0;
+    public const SCOPE_STORE = 0;
 
-    const SCOPE_GLOBAL = 1;
+    public const SCOPE_GLOBAL = 1;
 
-    const SCOPE_WEBSITE = 2;
+    public const SCOPE_WEBSITE = 2;
 
-    const KEY_IS_GLOBAL = 'is_global';
+    public const KEY_IS_GLOBAL = 'is_global';
 
     /**
      * Retrieve apply to products array

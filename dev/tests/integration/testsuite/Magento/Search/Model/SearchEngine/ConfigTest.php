@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model\SearchEngine;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -60,24 +63,24 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         return [
             'features-synonyms' => [
                 'searchEngine' => 'mysql',
-                'expectedResult' => ['synonyms']
+                'expectedResult' => ['synonyms'],
             ],
             'features-synonyms-stopwords' => [
                 'searchEngine' => 'other',
-                'expectedResult' => ['synonyms', 'stopwords']
+                'expectedResult' => ['synonyms', 'stopwords'],
             ],
             'features-none1' => [
                 'searchEngine' => 'none1',
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'features-none2' => [
                 'searchEngine' => 'none2',
-                'expectedResult' => []
+                'expectedResult' => [],
             ],
             'features-none_exist' => [
                 'searchEngine' => 'none_exist',
-                'expectedResult' => []
-            ]
+                'expectedResult' => [],
+            ],
 
         ];
     }
@@ -103,58 +106,58 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             [
                 'feature' => 'synonyms',
                 'searchEngine' => 'mysql',
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'feature' => 'stopwords',
                 'searchEngine' => 'mysql',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'synonyms',
                 'searchEngine' => 'other',
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'feature' => 'stopwords',
                 'searchEngine' => 'other',
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'feature' => 'synonyms',
                 'searchEngine' => 'none1',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'stopwords',
                 'searchEngine' => 'none1',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'synonyms',
                 'searchEngine' => 'none2',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'stopwords',
                 'searchEngine' => 'none2',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'stopwords',
                 'searchEngine' => 'none_exist',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'none_exist',
                 'searchEngine' => 'none_exist',
-                'expectedResult' => false
+                'expectedResult' => false,
             ],
             [
                 'feature' => 'none_exist',
                 'searchEngine' => 'mysql',
-                'expectedResult' => false
-            ]
+                'expectedResult' => false,
+            ],
         ];
     }
 

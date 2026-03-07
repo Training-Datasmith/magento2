@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\Data\Test\Unit\Argument\Interpreter;
 
 use Magento\Framework\Data\Argument\Interpreter\ArrayType;
 use Magento\Framework\Data\Argument\InterpreterInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ArrayTypeTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ $tierPriceExtensionAttribute = $tierPriceExtensionAttributesFactory->create(
         'data' => [
             'website_id' => 0,
             'percentage_value' => 25,
-        ]
+        ],
     ]
 );
 $tierPrices[] = $tierPriceFactory->create(
@@ -107,7 +108,7 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => Group::CUST_GROUP_ALL,
             'qty' => 1,
-        ]
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttribute);
 $bundleProduct->setTierPrices($tierPrices);

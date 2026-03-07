@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -106,10 +107,10 @@ class UpdateProductsInWishlist
             $this->wishlistItemResource->load($wishlistItem, $wishlistItemData->getId());
             $wishlistItem->setDescription($wishlistItemData->getDescription());
             if ((int)$wishlistItemData->getQuantity() === 0) {
-                throw new LocalizedException(__("The quantity of a wish list item cannot be 0"));
+                throw new LocalizedException(__('The quantity of a wish list item cannot be 0'));
             }
             if ($wishlistItem->getProduct()->getStatus() == Status::STATUS_DISABLED) {
-                throw new LocalizedException(__("The product is disabled"));
+                throw new LocalizedException(__('The product is disabled'));
             }
             $resultItem = $wishlist->updateItem($wishlistItem, $options);
 

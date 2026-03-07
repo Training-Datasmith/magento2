@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Captcha\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\DriverInterface;
 
 /**
  * Captcha image model
@@ -20,27 +22,27 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Used for "name" attribute of captcha's input field
      */
-    const INPUT_NAME_FIELD_VALUE = 'captcha';
+    public const INPUT_NAME_FIELD_VALUE = 'captcha';
 
     /**
      * Always show captcha
      */
-    const MODE_ALWAYS = 'always';
+    public const MODE_ALWAYS = 'always';
 
     /**
      * Show captcha only after certain number of unsuccessful attempts
      */
-    const MODE_AFTER_FAIL = 'after_fail';
+    public const MODE_AFTER_FAIL = 'after_fail';
 
     /**
      * Captcha fonts path
      */
-    const XML_PATH_CAPTCHA_FONTS = 'captcha/fonts';
+    public const XML_PATH_CAPTCHA_FONTS = 'captcha/fonts';
 
     /**
      * Default captcha type
      */
-    const DEFAULT_CAPTCHA_TYPE = 'Zend';
+    public const DEFAULT_CAPTCHA_TYPE = 'Zend';
 
     /**
      * List uses Models of Captcha

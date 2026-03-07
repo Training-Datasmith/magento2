@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml;
 
-use Magento\Backend\App\Action;
 use Magento\Framework\Registry;
-use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\View\Result\LayoutFactory;
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Sales\Api\OrderPaymentRepositoryInterface;
 
 /**

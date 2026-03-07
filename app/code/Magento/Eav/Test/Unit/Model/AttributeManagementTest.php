@@ -22,10 +22,10 @@ use Magento\Eav\Model\ResourceModel\Entity\Attribute;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Collection;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\CollectionFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -156,7 +156,7 @@ class AttributeManagementTest extends TestCase
         $attributeSetMock->expects($this->once())->method('getEntityTypeId')->willReturn(66);
         $entityTypeMock = $this->createMock(Type::class);
         $this->eavConfigMock->expects($this->once())->method('getEntityType')->with(66)->willReturn($entityTypeMock);
-        $entityTypeMock->expects($this->once())->method('getEntityTypeCode')->willReturn($entityTypeCode+1);
+        $entityTypeMock->expects($this->once())->method('getEntityTypeCode')->willReturn($entityTypeCode + 1);
 
         $this->attributeManagement->assign(
             $entityTypeCode,
@@ -275,7 +275,7 @@ class AttributeManagementTest extends TestCase
                 'setAttributeSetId',
                 'loadEntityAttributeIdBySet',
                 'getIsUserDefined',
-                'deleteEntity'
+                'deleteEntity',
             ]
         );
         $entityTypeMock->expects($this->once())->method('getEntityTypeCode')->willReturn('entity type code');
@@ -315,7 +315,7 @@ class AttributeManagementTest extends TestCase
                 'setAttributeSetId',
                 'loadEntityAttributeIdBySet',
                 'getIsUserDefined',
-                'deleteEntity'
+                'deleteEntity',
             ]
         );
         $entityTypeMock->expects($this->once())->method('getEntityTypeCode')->willReturn('entity type code');
@@ -375,7 +375,7 @@ class AttributeManagementTest extends TestCase
                 'setAttributeSetId',
                 'loadEntityAttributeIdBySet',
                 'getIsUserDefined',
-                'deleteEntity'
+                'deleteEntity',
             ]
         );
         $entityTypeMock->expects($this->once())->method('getEntityTypeCode')->willReturn('entity type code');

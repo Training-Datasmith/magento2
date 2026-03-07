@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +9,12 @@
 /**
  * Frontend form key content block
  */
+
 namespace Magento\Cookie\Block\Html;
 
+use Magento\Cookie\Helper\Cookie as CookieHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\Template;
-use Magento\Cookie\Helper\Cookie as CookieHelper;
 
 /**
  * @api

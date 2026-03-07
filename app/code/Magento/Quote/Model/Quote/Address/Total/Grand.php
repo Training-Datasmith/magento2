@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class Grand extends AbstractTotal
      */
     public function __construct(?PriceRounder $priceRounder)
     {
-        $this->priceRounder = $priceRounder?: ObjectManager::getInstance()->get(PriceRounder::class);
+        $this->priceRounder = $priceRounder ?: ObjectManager::getInstance()->get(PriceRounder::class);
     }
 
     /**

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml\Tax;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -37,7 +40,7 @@ class AjaxSave extends \Magento\Tax\Controller\Adminhtml\Tax
                 'success' => false,
                 'error_message' => $e->getMessage(),
                 'class_id' => '',
-                'class_name' => ''
+                'class_name' => '',
             ];
         } catch (\Exception $e) {
             $responseContent = [

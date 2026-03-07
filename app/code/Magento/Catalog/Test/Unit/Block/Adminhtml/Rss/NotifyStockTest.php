@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class NotifyStockTest extends TestCase
             [
                 'urlBuilder' => $this->urlBuilder,
                 'rssModel' => $this->rssModel,
-                'rssUrlBuilder' => $this->rssUrlBuilder
+                'rssUrlBuilder' => $this->rssUrlBuilder,
             ]
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Cache;
 
 use Magento\Framework\App\ObjectManager;
@@ -13,7 +16,7 @@ use Magento\Framework\Serialize\SerializerInterface;
  */
 class TypeList implements TypeListInterface
 {
-    const INVALIDATED_TYPES = 'core_cache_invalidate';
+    public const INVALIDATED_TYPES = 'core_cache_invalidate';
 
     /**
      * @var \Magento\Framework\Cache\ConfigInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ClearWishlist
                 new Error(
                     "Could not delete wishlist items for WishlistId '{$wishlist->getId()}'.",
                     self::ERROR_UNDEFINED
-                )
+                ),
             ]);
         }
     }

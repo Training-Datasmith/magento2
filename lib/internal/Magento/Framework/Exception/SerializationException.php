@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,12 +21,12 @@ class SerializationException extends LocalizedException
     /**
      * @deprecated
      */
-    const DEFAULT_MESSAGE = 'Invalid type';
+    public const DEFAULT_MESSAGE = 'Invalid type';
 
     /**
      * @deprecated
      */
-    const TYPE_MISMATCH = 'The "%value" value\'s type is invalid. The "%type" type was expected. Verify and try again.';
+    public const TYPE_MISMATCH = 'The "%value" value\'s type is invalid. The "%type" type was expected. Verify and try again.';
 
     /**
      * @param \Magento\Framework\Phrase $phrase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -80,9 +81,9 @@ class PaymentCaptchaConfigProvider implements ConfigProviderInterface
                     'imageSrc' => $imageSrc,
                     'refreshUrl' => $store->getUrl('captcha/refresh', ['_secure' => $store->isCurrentlySecure()]),
                     'isRequired' => $required,
-                    'timestamp' => time()
-                ]
-            ]
+                    'timestamp' => time(),
+                ],
+            ],
         ];
     }
 }

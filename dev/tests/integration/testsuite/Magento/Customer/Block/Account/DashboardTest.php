@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Account;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -35,7 +38,7 @@ class DashboardTest extends \PHPUnit\Framework\TestCase
             '',
             [
                 'customerSession' => $this->customerSession,
-                'customerRepository' => $this->customerRepository
+                'customerRepository' => $this->customerRepository,
             ]
         );
     }

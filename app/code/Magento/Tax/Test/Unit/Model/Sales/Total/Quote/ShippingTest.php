@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\Tax\Test\Unit\Model\Sales\Total\Quote;
 
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
 use Magento\Customer\Api\Data\RegionInterfaceFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\Total;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Tax\Api\Data\QuoteDetailsInterfaceFactory;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterfaceFactory;
 use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
@@ -174,7 +175,7 @@ class ShippingTest extends TestCase
         $total->setShippingInclTax($value);
         $expectedResult = [
             'code' => 'shipping',
-            'shipping_incl_tax' => $value
+            'shipping_incl_tax' => $value,
         ];
 
         $this->assertEquals($expectedResult, $this->model->fetch($this->quoteMock, $total));

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -55,7 +57,7 @@ class Factory
         if (!$serviceInstance instanceof \Magento\Directory\Model\Currency\Import\ImportInterface) {
             throw new \UnexpectedValueException(
                 "Class '{$serviceClass}' has to implement "
-                . "\\Magento\\Directory\\Model\\Currency\\Import\\ImportInterface."
+                . '\\Magento\\Directory\\Model\\Currency\\Import\\ImportInterface.'
             );
         }
         return $serviceInstance;

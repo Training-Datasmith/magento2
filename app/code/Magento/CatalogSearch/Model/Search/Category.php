@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class Category extends DataObject
             $filters[] = $this->filterBuilder
                 ->setField($field)
                 ->setConditionType('like')
-                ->setValue(sprintf("%%%s%%", $this->getQuery()))
+                ->setValue(sprintf('%%%s%%', $this->getQuery()))
                 ->create();
         }
         $this->searchCriteriaBuilder->addFilters($filters);

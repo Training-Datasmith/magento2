@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,10 +58,10 @@ class ActionsTest extends TestCase
             'data' => [
                 'items' => [
                     [
-                        'entity_id' => 1
+                        'entity_id' => 1,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
         $expectedDataSource = [
             'data' => [
@@ -72,11 +73,11 @@ class ActionsTest extends TestCase
                                 'href' => 'http://magento.com/customer/index/edit',
                                 'label' => new Phrase('Edit'),
                                 'hidden' => false,
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->context->expects($this->once())

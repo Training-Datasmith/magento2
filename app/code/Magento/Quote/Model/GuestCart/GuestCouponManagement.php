@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\GuestCart;
 
-use Magento\Quote\Api\GuestCouponManagementInterface;
 use Magento\Quote\Api\CouponManagementInterface;
+use Magento\Quote\Api\GuestCouponManagementInterface;
 use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 

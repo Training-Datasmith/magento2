@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Category;
 
-use Magento\Catalog\Model\Category;
-use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGeneratorFactory;
-use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
-use Magento\UrlRewrite\Model\MergeDataProviderFactory;
-use Magento\Framework\App\ObjectManager;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Model\Category;
+use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
+use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGeneratorFactory;
+use Magento\Framework\App\ObjectManager;
+use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 
 /**
  * Model for generate url rewrites for children categories

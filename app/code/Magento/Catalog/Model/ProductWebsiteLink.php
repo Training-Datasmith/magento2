@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +14,8 @@ class ProductWebsiteLink extends \Magento\Framework\Api\AbstractSimpleObject imp
     /**#@+
      * Field names
      */
-    const KEY_SKU = 'sku';
-    const WEBSITE_ID = 'website_id';
+    public const KEY_SKU = 'sku';
+    public const WEBSITE_ID = 'website_id';
     /**#@-*/
 
     /**

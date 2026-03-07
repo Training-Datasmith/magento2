@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,27 +24,11 @@ class IdentityProvider implements IdentityProviderInterface
      */
     private const USER_CONTEXT_IDENTITY_TYPE_MAP = [
         UserContextInterface::USER_TYPE_CUSTOMER => ContextInterface::IDENTITY_TYPE_CUSTOMER,
-        UserContextInterface::USER_TYPE_ADMIN => ContextInterface::IDENTITY_TYPE_ADMIN
+        UserContextInterface::USER_TYPE_ADMIN => ContextInterface::IDENTITY_TYPE_ADMIN,
     ];
 
-    /**
-     * @var UserContextInterface
-     */
-    private UserContextInterface $userContext;
-
-    /**
-     * @var RemoteAddress
-     */
-    private RemoteAddress $remoteAddress;
-
-    /**
-     * @param UserContextInterface $userContext
-     * @param RemoteAddress $remoteAddress
-     */
-    public function __construct(UserContextInterface $userContext, RemoteAddress $remoteAddress)
+    public function __construct(private readonly UserContextInterface $userContext, private readonly RemoteAddress $remoteAddress)
     {
-        $this->userContext = $userContext;
-        $this->remoteAddress = $remoteAddress;
     }
 
     /**

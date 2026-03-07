@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Connection adapter factory interface
  *

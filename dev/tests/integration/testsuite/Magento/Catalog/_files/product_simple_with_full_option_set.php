@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -29,8 +31,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
             'qty' => 2,
-            'value' => 8
-        ]
+            'value' => 8,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -39,8 +41,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
             'qty' => 5,
-            'value' => 5
-        ]
+            'value' => 5,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -49,8 +51,8 @@ $tierPrices[] = $tierPriceFactory->create(
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
             'qty' => 3,
-            'value' => 5
-        ]
+            'value' => 5,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes1);
 
@@ -62,8 +64,8 @@ $tierPrices[] = $tierPriceFactory->create(
     [
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::NOT_LOGGED_IN_ID,
-            'qty' => 10
-        ]
+            'qty' => 10,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttributes2);
 
@@ -78,7 +80,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->setSku('simple')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setTierPrices($tierPrices)
     ->setDescription('Description with <b>html tag</b>')
@@ -140,7 +142,7 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '3-2-select',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'select',
@@ -163,7 +165,7 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '4-2-radio',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'select',
@@ -231,7 +233,7 @@ $oldOptions = [
                 'sort_order' => 2,
             ],
         ],
-    ]
+    ],
 ];
 
 $options = [];

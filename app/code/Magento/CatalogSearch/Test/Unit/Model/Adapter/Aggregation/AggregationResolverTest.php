@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class AggregationResolverTest extends TestCase
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
                 'config' => $this->config,
                 'attributeCollection' => $this->attributeCollection,
-                'aggregationChecker' => $this->aggregationChecker
+                'aggregationChecker' => $this->aggregationChecker,
             ]
         );
     }

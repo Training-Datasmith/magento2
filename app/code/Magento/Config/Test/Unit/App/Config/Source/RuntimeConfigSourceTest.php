@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Value;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\DB\Adapter\TableNotFoundException;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -161,16 +162,16 @@ class RuntimeConfigSourceTest extends TestCase
         $this->assertEquals(
             [
                 'default' => [
-                    'dev/test/setting' => true
+                    'dev/test/setting' => true,
                 ],
                 'websites' => [
                     'myWebsites' => [
-                        'dev/test/setting2' => false
+                        'dev/test/setting2' => false,
                     ],
                     'mywebsites' => [
-                        'dev/test/setting2' => false
-                    ]
-                ]
+                        'dev/test/setting2' => false,
+                    ],
+                ],
             ],
             $this->model->get()
         );

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Config\Source;
 
 class Allspecificcountries implements \Magento\Framework\Option\ArrayInterface
@@ -14,7 +17,7 @@ class Allspecificcountries implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 0, 'label' => __('All Allowed Countries')],
-            ['value' => 1, 'label' => __('Specific Countries')]
+            ['value' => 1, 'label' => __('Specific Countries')],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Layout;
@@ -22,7 +24,6 @@ use Magento\Framework\View\Result\Page;
 use Magento\Multishipping\Controller\Checkout\Address\EditBilling;
 use Magento\Multishipping\Helper\Data;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -107,7 +108,7 @@ class EditBillingTest extends TestCase
         $this->stateMock = $this->createMock(State::class);
         $valueMap = [
             [State::class, $this->stateMock],
-            [Multishipping::class, $this->checkoutMock]
+            [Multishipping::class, $this->checkoutMock],
         ];
         $this->objectManagerMock->expects($this->any())->method('get')->willReturnMap($valueMap);
         $this->request = $this->createMock(RequestInterface::class);
@@ -163,7 +164,7 @@ class EditBillingTest extends TestCase
         $valueMap = [
             ['*/*/saveBilling', ['id' => 1], 'success/url'],
             ['*/*/*', ['id' => 1], 'error/url'],
-            ['*/checkout/overview', null, 'back/address']
+            ['*/checkout/overview', null, 'back/address'],
         ];
         $this->urlMock->expects($this->any())->method('getUrl')->willReturnMap($valueMap);
         $this->titleMock->expects($this->once())->method('getDefault')->willReturn('default_title');

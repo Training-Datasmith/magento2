@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
             $this->filterBuilder->setField($field)
                 ->setValue($value)
                 ->setConditionType($conditionType)
-                ->create()
+                ->create(),
         ]);
         return $this;
     }

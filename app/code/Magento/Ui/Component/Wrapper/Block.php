@@ -1,21 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Wrapper;
 
 use Magento\Framework\View\Element\BlockInterface;
+use Magento\Framework\View\Element\UiComponent\BlockWrapperInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\AbstractComponent;
-use Magento\Framework\View\Element\UiComponent\BlockWrapperInterface;
 
 /**
  * @deprecated 101.0.0
  */
 class Block extends AbstractComponent implements BlockWrapperInterface
 {
-    const NAME = 'blockWrapper';
+    public const NAME = 'blockWrapper';
 
     /**
      * @var BlockInterface

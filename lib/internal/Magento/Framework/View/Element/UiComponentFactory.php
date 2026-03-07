@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,14 +10,14 @@ namespace Magento\Framework\View\Element;
 
 use Magento\Framework\Config\DataInterface;
 use Magento\Framework\Config\DataInterfaceFactory;
+use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\Phrase;
 use Magento\Framework\View\Element\UiComponent\Config\ManagerInterface;
 use Magento\Framework\View\Element\UiComponent\ContextFactory;
-use Magento\Framework\Phrase;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\Sanitizer;
 use Magento\Framework\View\Element\UiComponent\Factory\ComponentFactoryInterface;
@@ -159,9 +161,9 @@ class UiComponentFactory extends DataObject
         $components = array_filter($components);
         $componentArguments['components'] = $components;
 
-       /**
-        * Prevent passing ACL restricted blocks to htmlContent constructor
-        */
+        /**
+         * Prevent passing ACL restricted blocks to htmlContent constructor
+         */
         if (isset($componentArguments['block']) && !$componentArguments['block']) {
             return null;
         }
@@ -329,7 +331,7 @@ class UiComponentFactory extends DataObject
             //Dynamic meta from data providers should not contain templates.
             $metadata = $dataProvider->getMeta();
             $metadata = [
-                $identifier => $this->sanitizer->sanitizeComponentMetadata(['children' => $metadata])
+                $identifier => $this->sanitizer->sanitizeComponentMetadata(['children' => $metadata]),
             ];
             $bundleComponents = $this->mergeMetadataItem($bundleComponents, $metadata, $reverseMerge);
         }

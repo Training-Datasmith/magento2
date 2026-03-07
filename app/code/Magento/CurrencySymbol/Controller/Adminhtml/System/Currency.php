@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CurrencySymbol\Controller\Adminhtml\System;
 
 /**
@@ -22,7 +25,7 @@ abstract class Currency extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_CurrencySymbol::currency_rates';
+    public const ADMIN_RESOURCE = 'Magento_CurrencySymbol::currency_rates';
 
     /**
      * Core registry

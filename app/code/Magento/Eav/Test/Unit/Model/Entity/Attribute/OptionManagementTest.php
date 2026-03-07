@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,10 +21,10 @@ use Magento\Eav\Model\ResourceModel\Entity\Attribute\Option as AttributeOptionRe
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Tests for Eav Option Management functionality
@@ -94,7 +95,7 @@ class OptionManagementTest extends TestCase
             ],
             'is_default' => [
                 'id_new_option' => true,
-            ]
+            ],
         ];
         $newOptionId = 10;
 
@@ -144,7 +145,7 @@ class OptionManagementTest extends TestCase
     {
         return [
             ['optionLabel'],
-            ['0']
+            ['0'],
         ];
     }
 
@@ -153,7 +154,7 @@ class OptionManagementTest extends TestCase
      */
     public function testAddWithEmptyAttributeCode()
     {
-        $this->expectExceptionMessage("The attribute code is empty. Enter the code and try again.");
+        $this->expectExceptionMessage('The attribute code is empty. Enter the code and try again.');
         $this->expectException(InputException::class);
         $entityType = 42;
         $attributeCode = '';
@@ -211,7 +212,7 @@ class OptionManagementTest extends TestCase
             ],
             'is_default' => [
                 'id_new_option' => true,
-            ]
+            ],
         ];
 
         $optionMock = $this->getAttributeOption();
@@ -263,7 +264,7 @@ class OptionManagementTest extends TestCase
                 $optionId => [
                     0 => $label,
                     $storeId => $storeLabel,
-                    5 => 'otherLabelLabel'
+                    5 => 'otherLabelLabel',
                 ],
             ],
             'order' => [
@@ -271,7 +272,7 @@ class OptionManagementTest extends TestCase
             ],
             'is_default' => [
                 $optionId => true,
-            ]
+            ],
         ];
 
         $this->optionResourceMock->expects($this->once())
@@ -279,7 +280,7 @@ class OptionManagementTest extends TestCase
             ->with($optionId)
             ->willReturn([
                 4 => 'oldLabelLabel',
-                5 => 'otherLabelLabel'
+                5 => 'otherLabelLabel',
             ]);
 
         $optionMock = $this->getAttributeOption();
@@ -452,7 +453,7 @@ class OptionManagementTest extends TestCase
      */
     public function testDeleteWithEmptyAttributeCode()
     {
-        $this->expectExceptionMessage("The attribute code is empty. Enter the code and try again.");
+        $this->expectExceptionMessage('The attribute code is empty. Enter the code and try again.');
         $this->expectException(InputException::class);
 
         $entityType = 42;
@@ -504,7 +505,7 @@ class OptionManagementTest extends TestCase
      */
     public function testGetItemsWithEmptyAttributeCode()
     {
-        $this->expectExceptionMessage("The attribute code is empty. Enter the code and try again.");
+        $this->expectExceptionMessage('The attribute code is empty. Enter the code and try again.');
         $this->expectException(InputException::class);
 
         $entityType = 42;

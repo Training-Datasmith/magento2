@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\ResourceModel\Entity;
 
 use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\DataObject;
 
 /**
  * Eav Entity store resource model

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -64,7 +66,7 @@ foreach ($productIds as $productId) {
         ->setStockData(['use_config_manage_stock' => 1, 'qty' => 100, 'is_qty_decimal' => 0, 'is_in_stock' => 1]);
     $customAttributes = [
         $firstAttribute->getAttributeCode() => $firstOption->getValue(),
-        $secondAttribute->getAttributeCode() => $secondOption->getValue()
+        $secondAttribute->getAttributeCode() => $secondOption->getValue(),
     ];
     foreach ($customAttributes as $attributeCode => $attributeValue) {
         $product->setCustomAttributes($customAttributes);
@@ -146,7 +148,7 @@ foreach ($productIds as $productId) {
         ->setStockData(['use_config_manage_stock' => 1, 'qty' => 100, 'is_qty_decimal' => 0, 'is_in_stock' => 1]);
     $customAttributes = [
         $firstAttribute->getAttributeCode() => $firstOption->getValue(),
-        $secondAttribute->getAttributeCode() => $secondOption->getValue()
+        $secondAttribute->getAttributeCode() => $secondOption->getValue(),
     ];
     foreach ($customAttributes as $attributeCode => $attributeValue) {
         $product->setCustomAttributes($customAttributes);

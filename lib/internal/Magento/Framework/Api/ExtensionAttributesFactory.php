@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ namespace Magento\Framework\Api;
  */
 class ExtensionAttributesFactory
 {
-    const EXTENSIBLE_INTERFACE_NAME = \Magento\Framework\Api\ExtensibleDataInterface::class;
+    public const EXTENSIBLE_INTERFACE_NAME = \Magento\Framework\Api\ExtensibleDataInterface::class;
 
     /**
      * Object Manager instance
@@ -53,7 +55,7 @@ class ExtensionAttributesFactory
             throw new \LogicException(
                 "Method 'getExtensionAttributes' must be overridden in the interfaces "
                 . "which extend '" . self::EXTENSIBLE_INTERFACE_NAME . "'. "
-                . "Concrete return type should be specified."
+                . 'Concrete return type should be specified.'
             );
         }
 
@@ -63,12 +65,12 @@ class ExtensionAttributesFactory
 
         /** Ensure that proper return type of getExtensionAttributes() method is specified */
         $methodDocBlock = $methodReflection->getDocComment();
-        $pattern = "/@return\s+" . str_replace('\\', '\\\\', $extensionInterfaceName) . "/";
+        $pattern = "/@return\s+" . str_replace('\\', '\\\\', $extensionInterfaceName) . '/';
         if (!preg_match($pattern, $methodDocBlock)) {
             throw new \LogicException(
                 "Method 'getExtensionAttributes' must be overridden in the interfaces "
                 . "which extend '" . self::EXTENSIBLE_INTERFACE_NAME . "'. "
-                . "Concrete return type must be specified. Please fix :" . $interfaceName
+                . 'Concrete return type must be specified. Please fix :' . $interfaceName
             );
         }
 

@@ -9,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Indexer\Test\Unit;
 
 use Magento\Framework\Indexer\CacheContext;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CacheContextTest extends TestCase
 {
@@ -47,12 +47,12 @@ class CacheContextTest extends TestCase
         return [
             'same entities and ids' => [
                 [['cat_p' => [1]], ['cat_p' => [1]]],
-                ['cat_p_1']
+                ['cat_p_1'],
             ],
             'same entities with overlapping ids' => [
                 [['cat_p' => [1, 2, 3]], ['cat_p' => [3]]],
-                ['cat_p_1', 'cat_p_2', 'cat_p_3']
-            ]
+                ['cat_p_1', 'cat_p_2', 'cat_p_3'],
+            ],
         ];
     }
 }

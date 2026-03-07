@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\DirectoryGraphQl\Model\Cache\Tag\Strategy\Config;
 
 use Magento\DirectoryGraphQl\Model\Resolver\Country\Identity;
 use Magento\Framework\App\Config\ValueInterface;
+use Magento\Store\Model\Config\Cache\Tag\Strategy\TagGeneratorInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Store\Model\Config\Cache\Tag\Strategy\TagGeneratorInterface;
 
 /**
  * Generator that generates cache tags for country configuration
@@ -23,7 +24,7 @@ class CountryTagGenerator implements TagGeneratorInterface
      */
     private $countryConfigPaths = [
         'general/locale/code',
-        'general/country/allow'
+        'general/country/allow',
     ];
 
     /**

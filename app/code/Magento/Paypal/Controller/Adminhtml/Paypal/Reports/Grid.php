@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Paypal\Reports;
 
 class Grid extends \Magento\Paypal\Controller\Adminhtml\Paypal\Reports

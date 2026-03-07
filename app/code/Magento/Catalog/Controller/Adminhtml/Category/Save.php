@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Catalog\Api\Data\CategoryAttributeInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -44,7 +46,7 @@ class Save extends \Magento\Catalog\Controller\Adminhtml\Category implements Htt
         'include_in_menu',
         'is_anchor',
         'use_default' => ['url_key'],
-        'use_config' => ['available_sort_by', 'filter_price_range', 'default_sort_by']
+        'use_config' => ['available_sort_by', 'filter_price_range', 'default_sort_by'],
     ];
 
     /**

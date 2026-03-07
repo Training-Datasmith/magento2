@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -177,7 +178,7 @@ QUERY;
             'simple_with_cross_two' => [
                 'name' => 'Simple Product With Related Product Two',
                 'url_key' => 'simple-product-with-related-product-two',
-            ]
+            ],
         ];
 
         foreach ($relatedProducts as $product) {
@@ -229,13 +230,13 @@ QUERY;
         self::assertCount(0, $relatedProducts);
     }
     #[
-        DataFixture(ProductFixture::class, ['name' =>'Simple related product', 'sku' => 'simple_related_product',
+        DataFixture(ProductFixture::class, ['name' => 'Simple related product', 'sku' => 'simple_related_product',
             'price' => 20], 'p1'),
-        DataFixture(ProductFixture::class, ['name' =>'Product as a related product',
+        DataFixture(ProductFixture::class, ['name' => 'Product as a related product',
             'sku' => 'product_as_a_related_product', 'price' => 30], 'p2'),
-        DataFixture(ProductFixture::class, ['name' =>'Simple product', 'sku' => 'simple_product', 'price' => 40], 'p3'),
+        DataFixture(ProductFixture::class, ['name' => 'Simple product', 'sku' => 'simple_product', 'price' => 40], 'p3'),
         DataFixture(ProductFixture::class, ['name' => 'Simple with related product',
-            'sku' =>'simple_with_related_product ', 'price' => 100,
+            'sku' => 'simple_with_related_product ', 'price' => 100,
             'product_links' => ['$p3.sku$','$p1.sku$','$p2.sku$' ]], 'p1'),
 
     ]
@@ -290,7 +291,7 @@ QUERY;
                 'name' => 'Product as a related product',
                 'url_key' => 'product-as-a-related-product',
 
-            ]
+            ],
         ];
 
         foreach ($relatedProducts as $product) {

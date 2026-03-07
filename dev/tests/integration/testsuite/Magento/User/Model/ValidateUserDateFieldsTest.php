@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -24,7 +25,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ValidateUserDateFieldsTest extends TestCase
 {
-
     /**
      * @var ObjectManagerInterface
      */

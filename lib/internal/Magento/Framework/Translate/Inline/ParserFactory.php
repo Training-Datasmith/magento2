@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Parser factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Translate\Inline;
 
 class ParserFactory
@@ -12,7 +15,7 @@ class ParserFactory
     /**
      * Default instance type
      */
-    const DEFAULT_INSTANCE_TYPE = \Magento\Framework\Translate\Inline\ParserInterface::class;
+    public const DEFAULT_INSTANCE_TYPE = \Magento\Framework\Translate\Inline\ParserInterface::class;
 
     /**
      * Object Manager

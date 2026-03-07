@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Category\Flat\Action;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -118,7 +121,7 @@ class Rows extends \Magento\Catalog\Model\Indexer\Category\Flat\AbstractAction
         )->where(
             "path = {$rootIdExpr} OR path = {$rootCatIdExpr} OR path like {$catIdExpr}"
         )->where(
-            "entity_id IN (?)",
+            'entity_id IN (?)',
             $ids,
             \Zend_Db::INT_TYPE
         );

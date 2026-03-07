@@ -1,14 +1,16 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Integration\Model\ResourceModel\Oauth;
 
 use Magento\Framework\Oauth\Helper\Oauth;
-use Magento\Integration\Model\Oauth\Consumer as ConsumerModel;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Integration\Model\Oauth\Consumer as ConsumerModel;
 
 /**
  * Integration test for @see \Magento\Integration\Model\ResourceModel\Oauth\Consumer
@@ -16,7 +18,6 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class ConsumerTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var ConsumerModel
      */

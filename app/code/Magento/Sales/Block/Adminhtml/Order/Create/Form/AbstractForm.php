@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Form;
 
 use IntlDateFormatter;
@@ -10,6 +13,7 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Form\Renderer\Element;
 use Magento\Backend\Block\Widget\Form\Renderer\Fieldset;
 use Magento\Backend\Model\Session\Quote;
+use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Customer\Api\Data\OptionInterface;
 use Magento\Customer\Block\Adminhtml\Edit\Renderer\Region;
 use Magento\Customer\Block\Adminhtml\Form\Element\Boolean;
@@ -20,7 +24,6 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Sales\Block\Adminhtml\Order\Create\AbstractCreate;
 use Magento\Sales\Model\AdminOrder\Create;
@@ -136,7 +139,7 @@ abstract class AbstractForm extends AbstractCreate
         return [
             'file' => File::class,
             'image' => Image::class,
-            'boolean' => Boolean::class
+            'boolean' => Boolean::class,
         ];
     }
 
@@ -151,7 +154,7 @@ abstract class AbstractForm extends AbstractCreate
         return [
             'region' => $this->getLayout()->createBlock(
                 Region::class
-            )
+            ),
         ];
     }
 
@@ -197,7 +200,7 @@ abstract class AbstractForm extends AbstractCreate
                         'label' => __($attribute->getStoreLabel()),
                         'class' => $this->getValidationClasses($attribute),
                         'required' => $attribute->isRequired(),
-                        'sort_order' => $attribute->getSortOrder()
+                        'sort_order' => $attribute->getSortOrder(),
                     ]
                 );
                 switch ($inputType) {
@@ -244,7 +247,7 @@ abstract class AbstractForm extends AbstractCreate
      *
      * @return string
      */
-    private function getValidationClasses(AttributeMetadataInterface $attribute) : string
+    private function getValidationClasses(AttributeMetadataInterface $attribute): string
     {
         $out = [];
         $out[] = $attribute->getFrontendClass();
@@ -264,7 +267,7 @@ abstract class AbstractForm extends AbstractCreate
      *
      * @return array
      */
-    private function getTextLengthValidateClasses(AttributeMetadataInterface $attribute) : array
+    private function getTextLengthValidateClasses(AttributeMetadataInterface $attribute): array
     {
         $classes = [];
 

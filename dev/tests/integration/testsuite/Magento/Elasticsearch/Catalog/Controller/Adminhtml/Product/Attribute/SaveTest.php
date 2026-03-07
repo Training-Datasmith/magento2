@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -65,11 +66,11 @@ class SaveTest extends AbstractSaveAttributeTest
         return [
             'should not create attribute with reserved code "category_name"' => [
                 [
-                    'attribute_code' => 'category_name'
+                    'attribute_code' => 'category_name',
                 ],
                 'The attribute code &#039;category_name&#039; is reserved by system. ' .
-                'Please try another attribute code'
-            ]
+                'Please try another attribute code',
+            ],
         ];
     }
 }

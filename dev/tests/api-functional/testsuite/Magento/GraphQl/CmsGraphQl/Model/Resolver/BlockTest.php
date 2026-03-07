@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -462,7 +463,7 @@ QUERY;
         $cacheKeyParts = [
             GraphQlResolverCache::CACHE_TAG,
             $cacheKeyFactor,
-            sha1($cacheKeyQueryPayloadMetadata)
+            sha1($cacheKeyQueryPayloadMetadata),
         ];
 
         // strtoupper is called in \Magento\Framework\Cache\Frontend\Adapter\Zend::_unifyId

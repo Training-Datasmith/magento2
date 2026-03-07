@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ReaderTest extends TestCase
         $this->objectManagerConfig->expects($this->any())->method('getPreferences')->willReturn(
             [
                 'Some\Service\NameInterface' => 'Some\Service\NameInterfaceRemote',
-                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote'
+                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote',
             ]
         );
 
@@ -83,7 +84,7 @@ class ReaderTest extends TestCase
         $this->reflectionGenerator->expects($this->exactly(2))->method('generateTopicName')->willReturnMap(
             [
                 ['Some\Service\NameInterface', 'methodOne', 'topicOne'],
-                ['Some\Service\NameInterface', 'methodTwo', 'topicTwo']
+                ['Some\Service\NameInterface', 'methodTwo', 'topicTwo'],
             ]
         );
 
@@ -91,12 +92,12 @@ class ReaderTest extends TestCase
             'topicOne' => [
                 'topic' => 'topicOne',
                 'disabled' => false,
-                'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false]]
+                'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false]],
             ],
             'topicTwo' => [
                 'topic' => 'topicTwo',
                 'disabled' => false,
-                'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false]]
+                'connections' => ['amqp' => ['name' => 'amqp', 'exchange' => 'magento', 'disabled' => false]],
             ],
         ];
 
@@ -113,7 +114,7 @@ class ReaderTest extends TestCase
         $this->objectManagerConfig->expects($this->any())->method('getPreferences')->willReturn(
             [
                 'Some\Service\NameInterface' => 'Some\Service\NameInterfaceRemote',
-                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote'
+                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote',
             ]
         );
 

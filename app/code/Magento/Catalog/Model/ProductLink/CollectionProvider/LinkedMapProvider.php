@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Catalog\Model\ProductLink\CollectionProvider;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\ProductLink\MapProviderInterface;
 use Magento\Catalog\Model\Product\Link;
-use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Catalog\Model\ProductLink\MapProviderInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection as LinkedProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\CollectionFactory as LinkedProductCollectionFactory;
+use Magento\Framework\EntityManager\MetadataPool;
 
 /**
  * Provides linked products.
@@ -31,7 +32,7 @@ class LinkedMapProvider implements MapProviderInterface
     private const PRODUCT_CACHE_KEY_MAP = [
         'crosssell' => 'cross_sell_products',
         'upsell' => 'up_sell_products',
-        'related' => 'related_products'
+        'related' => 'related_products',
     ];
 
     /**

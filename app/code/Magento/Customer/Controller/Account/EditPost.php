@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,42 +8,37 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Controller\Account;
 
+use Magento\Customer\Api\AccountManagementInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\SessionCleanerInterface;
+use Magento\Customer\Controller\AbstractAccount;
 use Magento\Customer\Model\AccountConfirmation;
 use Magento\Customer\Model\AddressRegistry;
-use Magento\Customer\Model\Url;
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Customer\Model\AuthenticationInterface;
 use Magento\Customer\Model\Customer\Mapper;
+use Magento\Customer\Model\CustomerExtractor;
 use Magento\Customer\Model\EmailNotificationInterface;
-use Magento\Customer\Model\Metadata\Form\File;
+use Magento\Customer\Model\Session;
+use Magento\Customer\Model\Url;
+use Magento\Customer\Model\ValidatorExceptionProcessor;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Data\Form\FormKey\Validator;
-use Magento\Customer\Api\AccountManagementInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Model\CustomerExtractor;
-use Magento\Customer\Model\Session;
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\Escaper;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\InvalidEmailOrPasswordException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\SessionException;
 use Magento\Framework\Exception\State\UserLockedException;
-use Magento\Customer\Controller\AbstractAccount;
-use Magento\Customer\Model\ValidatorExceptionProcessor;
-use Magento\Framework\Phrase;
-use Magento\Framework\Message\AbstractMessage;
-use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Phrase;
 
 /**
  * Customer edit account information controller
@@ -299,7 +295,7 @@ class EditPost extends AbstractAccount implements CsrfAwareActionInterface, Http
                 if ($this->validatorExceptionProcessor !== null) {
                     $this->validatorExceptionProcessor->processInputException(
                         $e,
-                        fn($message) => $this->escaper->escapeHtml($message)
+                        fn ($message) => $this->escaper->escapeHtml($message)
                     );
                 } else {
                     $this->messageManager->addErrorMessage($this->escaper->escapeHtml($e->getMessage()));

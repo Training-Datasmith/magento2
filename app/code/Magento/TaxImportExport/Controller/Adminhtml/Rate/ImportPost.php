@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
 use Magento\TaxImportExport\Controller\Adminhtml\Rate;
 
 class ImportPost extends Rate implements HttpPostActionInterface

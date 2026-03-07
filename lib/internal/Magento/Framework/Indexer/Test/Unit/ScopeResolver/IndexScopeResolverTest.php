@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 use Magento\Framework\Search\Request\Dimension;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver
@@ -52,7 +53,7 @@ class IndexScopeResolverTest extends TestCase
             IndexScopeResolver::class,
             [
                 'resource' => $this->resource,
-                'scopeResolver' => $this->scopeResolver
+                'scopeResolver' => $this->scopeResolver,
             ]
         );
     }
@@ -92,34 +93,34 @@ class IndexScopeResolverTest extends TestCase
             [
                 'indexName' => 'some_index',
                 'dimensions' => [],
-                'expected' => 'some_index'
+                'expected' => 'some_index',
             ],
             [
                 'indexName' => 'index_name',
                 'dimensions' => [['scope', 'name']],
-                'expected' => 'index_name_scope1'
+                'expected' => 'index_name_scope1',
             ],
             [
                 'indexName' => 'index_name',
                 'dimensions' => [['index', 20]],
-                'expected' => 'index_name_index20'
+                'expected' => 'index_name_index20',
             ],
             [
                 'indexName' => 'index_name',
                 'dimensions' => [['first', 10], ['second', 20]],
                 // actually you will get exception here thrown in ScopeResolverInterface
-                'expected' => 'index_name_first10_second20'
+                'expected' => 'index_name_first10_second20',
             ],
             [
                 'indexName' => 'index_name',
                 'dimensions' => [['second', 10], ['first', 20]],
-                'expected' => 'index_name_first20_second10'
+                'expected' => 'index_name_first20_second10',
             ],
             [
                 'indexName' => 'index_name',
                 'dimensions' => [[-1, 10], ['first', 20]],
-                'expected' => 'index_name_-110_first20'
-            ]
+                'expected' => 'index_name_-110_first20',
+            ],
         ];
     }
 

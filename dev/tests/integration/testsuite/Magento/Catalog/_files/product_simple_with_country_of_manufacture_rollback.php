@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,9 +7,9 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var \Magento\TestFramework\ObjectManager $objectManager */
 $objectManager = Bootstrap::getObjectManager();

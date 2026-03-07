@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -40,8 +41,8 @@ class Resetter extends OriginalResetter
      */
     public function __construct(?ComponentRegistrarInterface $componentRegistrar = null, array $classList = [])
     {
-        $this->collectedWeakMap = new WeakMap;
-        $this->skipListAndFilterList =  new SkipListAndFilterList;
+        $this->collectedWeakMap = new WeakMap();
+        $this->skipListAndFilterList =  new SkipListAndFilterList();
         parent::__construct($componentRegistrar, $classList);
     }
 
@@ -63,7 +64,7 @@ class Resetter extends OriginalResetter
      * @param object $instance
      * @return void
      */
-    public function addInstance(object $instance) : void
+    public function addInstance(object $instance): void
     {
         $this->collectedWeakMap[$instance] =
             $this->collector->getPropertiesFromObject($instance, CompareType::COMPARE_CONSTRUCTED_AGAINST_CURRENT);
@@ -75,7 +76,7 @@ class Resetter extends OriginalResetter
      *
      * @return WeakMap with CollectedObject as values
      */
-    public function getCollectedWeakMap() : WeakMap
+    public function getCollectedWeakMap(): WeakMap
     {
         return $this->collectedWeakMap;
     }

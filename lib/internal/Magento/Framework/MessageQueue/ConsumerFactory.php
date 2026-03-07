@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
@@ -89,7 +92,7 @@ class ConsumerFactory
         foreach ($consumerConfigItem->getHandlers() as $handlerConfig) {
             $customConsumerHandlers[] = [
                 $this->objectManager->create($handlerConfig->getType()),
-                $handlerConfig->getMethod()
+                $handlerConfig->getMethod(),
             ];
         }
         $topics = [];
@@ -100,7 +103,7 @@ class ConsumerFactory
                     ?: $this->getHandlersFromCommunicationConfig($topicName),
                 ConsumerConfigurationInterface::TOPIC_TYPE => $topicConfig[CommunicationConfig::TOPIC_IS_SYNCHRONOUS]
                     ? ConsumerConfiguration::TYPE_SYNC
-                    : ConsumerConfiguration::TYPE_ASYNC
+                    : ConsumerConfiguration::TYPE_ASYNC,
             ];
         }
         $configData = [
@@ -111,7 +114,7 @@ class ConsumerFactory
             ConsumerConfigurationInterface::MAX_IDLE_TIME => $consumerConfigItem->getMaxIdleTime(),
             ConsumerConfigurationInterface::SLEEP => $consumerConfigItem->getSleep(),
             ConsumerConfigurationInterface::ONLY_SPAWN_WHEN_MESSAGE_AVAILABLE =>
-                $consumerConfigItem->getOnlySpawnWhenMessageAvailable()
+                $consumerConfigItem->getOnlySpawnWhenMessageAvailable(),
         ];
 
         return $this->objectManager->create(
@@ -164,7 +167,7 @@ class ConsumerFactory
         foreach ($topicConfig[CommunicationConfig::TOPIC_HANDLERS] as $handlerConfig) {
             $handlers[] = [
                 $this->objectManager->create($handlerConfig[CommunicationConfig::HANDLER_TYPE]),
-                $handlerConfig[CommunicationConfig::HANDLER_METHOD]
+                $handlerConfig[CommunicationConfig::HANDLER_METHOD],
             ];
         }
         return $handlers;

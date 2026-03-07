@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\Component\Product\Form\Categories;
 
-use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollectionFactory;
 use Magento\Framework\App\RequestInterface;
-use Magento\Catalog\Model\Category as CategoryModel;
+use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Options tree for "Categories" field
@@ -85,7 +88,7 @@ class Options implements OptionSourceInterface
 
             $categoryById = [
                 CategoryModel::TREE_ROOT_ID => [
-                    'value' => CategoryModel::TREE_ROOT_ID
+                    'value' => CategoryModel::TREE_ROOT_ID,
                 ],
             ];
 

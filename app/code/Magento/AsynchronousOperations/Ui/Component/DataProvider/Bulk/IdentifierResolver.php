@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Ui\Component\DataProvider\Bulk;
 
 use Magento\Framework\App\RequestInterface;
@@ -12,18 +15,8 @@ use Magento\Framework\App\RequestInterface;
  */
 class IdentifierResolver
 {
-    /**
-     * @var RequestInterface
-     */
-    private $request;
-
-    /**
-     * @param RequestInterface $request
-     */
-    public function __construct(
-        RequestInterface $request
-    ) {
-        $this->request = $request;
+    public function __construct(private readonly RequestInterface $request)
+    {
     }
 
     /**

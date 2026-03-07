@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -98,22 +99,22 @@ class DeleteAssetsByPathsTest extends TestCase
             [
                 'assets' => self::getAssets(),
                 'assetPathToDelete' => 'catalog/category/folder/image.jpg',
-                'assetIdToAssert' => 1
+                'assetIdToAssert' => 1,
             ],
             [
                 'assets' => self::getAssets(),
                 'assetPathToDelete' => 'catalog/category/folder/Image.jpg',
-                'assetIdToAssert' => 2
+                'assetIdToAssert' => 2,
             ],
             [
                 'assets' => self::getAssets(),
                 'assetPathToDelete' => 'catalog/category/folder/IMAGE.JPG',
-                'assetIdToAssert' => 3
+                'assetIdToAssert' => 3,
             ],
             [
                 'assets' => self::getAssets(),
                 'assetPathToDelete' => 'catalog/category/FOLDER',
-                'assetIdToAssert' => 4
+                'assetIdToAssert' => 4,
             ],
         ];
     }
@@ -176,7 +177,7 @@ class DeleteAssetsByPathsTest extends TestCase
                 'size' => '101827',
                 'created_at' => '2023-11-09 16:37:36',
                 'updated_at' => '2023-11-09 16:37:36',
-            ]
+            ],
         ];
     }
 }

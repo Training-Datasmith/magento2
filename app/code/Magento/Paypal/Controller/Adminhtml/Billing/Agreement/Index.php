@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Billing\Agreement;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -14,7 +17,7 @@ class Index extends \Magento\Paypal\Controller\Adminhtml\Billing\Agreement imple
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement_actions_view';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement_actions_view';
 
     /**
      * Billing agreements

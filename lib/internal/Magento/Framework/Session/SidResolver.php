@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * SID resolver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session;
 
 use Magento\Framework\App\State;
@@ -19,7 +22,7 @@ class SidResolver implements SidResolverInterface
     /**
      * Config path for flag whether use SID on frontend
      */
-    const XML_PATH_USE_FRONTEND_SID = 'web/session/use_frontend_sid';
+    public const XML_PATH_USE_FRONTEND_SID = 'web/session/use_frontend_sid';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

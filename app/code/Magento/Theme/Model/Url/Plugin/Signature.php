@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,12 +16,12 @@ class Signature
     /**
      * XPath for configuration setting of signing static files
      */
-    const XML_PATH_STATIC_FILE_SIGNATURE = 'dev/static/sign';
+    public const XML_PATH_STATIC_FILE_SIGNATURE = 'dev/static/sign';
 
     /**
      * Template of signature component of URL, parametrized with the deployment version of static files
      */
-    const SIGNATURE_TEMPLATE = 'version%s';
+    public const SIGNATURE_TEMPLATE = 'version%s';
 
     /**
      * @var \Magento\Framework\View\Url\ConfigInterface

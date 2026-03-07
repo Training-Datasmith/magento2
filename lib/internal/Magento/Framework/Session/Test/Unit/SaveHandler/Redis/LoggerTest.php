@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Cm\RedisSession\Handler\LoggerInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\Session\SaveHandler\Redis\Logger;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class LoggerTest extends TestCase
 {
@@ -57,7 +58,7 @@ class LoggerTest extends TestCase
             [
                 'config' => $this->config,
                 'logger' => $this->psrLogger,
-                'request' => $this->request
+                'request' => $this->request,
             ]
         );
     }

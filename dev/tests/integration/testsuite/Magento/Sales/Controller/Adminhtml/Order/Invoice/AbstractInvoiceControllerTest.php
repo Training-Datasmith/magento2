@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ abstract class AbstractInvoiceControllerTest extends AbstractBackendController
                 'items' => $items,
                 'comment_text' => $commentText,
                 'do_shipment' => $doShipment,
-                'send_email' => $sendEmail
+                'send_email' => $sendEmail,
             ],
         ];
     }

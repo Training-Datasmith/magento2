@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Indexer\Console\Command;
 
 use Magento\Framework\Exception\LocalizedException;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Command for setting index mode for indexers.
@@ -67,7 +70,7 @@ class IndexerSetModeCommand extends AbstractIndexerManageCommand
                 // we must have an exit code higher than zero to indicate something was wrong
                 $returnValue =  \Magento\Framework\Console\Cli::RETURN_FAILURE;
             } catch (\Exception $e) {
-                $output->writeln($indexer->getTitle() . " indexer process unknown error:" . PHP_EOL);
+                $output->writeln($indexer->getTitle() . ' indexer process unknown error:' . PHP_EOL);
                 $output->writeln($e->getMessage() . PHP_EOL);
                 // we must have an exit code higher than zero to indicate something was wrong
                 $returnValue =  \Magento\Framework\Console\Cli::RETURN_FAILURE;

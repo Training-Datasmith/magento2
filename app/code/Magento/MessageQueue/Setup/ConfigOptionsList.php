@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\MessageQueue\Setup;
 
-use Magento\Framework\Setup\ConfigOptionsListInterface;
-use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Setup\ConfigOptionsListInterface;
+use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
 
 /**
@@ -22,8 +23,8 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     /**
      * Input key for the option
      */
-    public const INPUT_KEY_QUEUE_CONSUMERS_WAIT_FOR_MESSAGES ='consumers-wait-for-messages';
-    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION ='queue-default-connection';
+    public const INPUT_KEY_QUEUE_CONSUMERS_WAIT_FOR_MESSAGES = 'consumers-wait-for-messages';
+    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION = 'queue-default-connection';
 
     /**
      * Path to the values in the deployment config

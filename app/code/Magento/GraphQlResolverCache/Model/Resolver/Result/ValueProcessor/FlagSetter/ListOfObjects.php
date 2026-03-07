@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class ListOfObjects implements FlagSetterInterface
         foreach (array_keys($value) as $key) {
             $value[$key][ValueProcessorInterface::VALUE_PROCESSING_REFERENCE_KEY] = [
                 'cacheKey' => $flagValue,
-                'index' => $key
+                'index' => $key,
             ];
         }
     }

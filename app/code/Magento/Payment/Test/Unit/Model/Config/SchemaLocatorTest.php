@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class SchemaLocatorTest extends TestCase
      */
     protected $model;
 
-    const MODULE_DIR_PATH = '/path/to/payment/schema';
+    public const MODULE_DIR_PATH = '/path/to/payment/schema';
 
     protected function setUp(): void
     {

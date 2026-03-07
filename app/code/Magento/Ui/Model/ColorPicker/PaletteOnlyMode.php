@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ class PaletteOnlyMode implements ModeInterface
             'showPalette' => true,
             'showPaletteOnly' => true,
             'showAlpha' => false,
-            'showSelectionPalette' => false
+            'showSelectionPalette' => false,
         ];
     }
 }

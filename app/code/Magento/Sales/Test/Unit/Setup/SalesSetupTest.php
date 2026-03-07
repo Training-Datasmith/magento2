@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ use PHPUnit\Framework\TestCase;
  */
 class SalesSetupTest extends TestCase
 {
-
     /**
      * @var SalesSetup
      */
@@ -78,7 +78,7 @@ class SalesSetupTest extends TestCase
                 'context' => $this->contextMock,
                 'cache' => $this->cacheMock,
                 'attrGroupCollectionFactory' => $this->collectionFactoryMock,
-                'config' => $this->scopeConfigMock
+                'config' => $this->scopeConfigMock,
             ]
         );
     }

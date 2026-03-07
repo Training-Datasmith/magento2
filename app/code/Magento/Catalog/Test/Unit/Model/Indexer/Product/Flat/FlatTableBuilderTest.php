@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class FlatTableBuilderTest extends TestCase
                 'config' => $this->scopeConfigMock,
                 'storeManager' => $this->storeManagerMock,
                 'tableData' => $this->tableDataMock,
-                '_connection' => $this->connectionMock
+                '_connection' => $this->connectionMock,
             ]
         );
         $objectManagerHelper->setBackwardCompatibleProperty(
@@ -139,8 +140,8 @@ class FlatTableBuilderTest extends TestCase
                     'catalog_product_entity' => [$linkField => $statusAttributeMock],
                     'catalog_product_entity_int' => [
                         $linkField => $statusAttributeMock,
-                        $eavCustomField => $eavCustomAttributeMock
-                    ]
+                        $eavCustomField => $eavCustomAttributeMock,
+                    ],
                 ]
             );
         $this->flatIndexerMock->expects($this->atLeastOnce())->method('getTable')
@@ -201,17 +202,17 @@ class FlatTableBuilderTest extends TestCase
                             $statusId
                         )
                         && empty($arg3)) {
-                            return $selectMock;
+                        return $selectMock;
 
                     } elseif ($arg1 === $temporaryTableName &&
                         $arg2 === "e.{$linkField} = {$temporaryTableName}.{$linkField}" &&
                         $arg3 === [$linkField, $eavCustomField]) {
-                            return $selectMock;
+                        return $selectMock;
 
                     } elseif ($arg1 === $temporaryValueTableName &&
                         $arg2 === "e.{$linkField} = {$temporaryValueTableName}.{$linkField}" &&
                         $arg3 === [$eavCustomValueField]) {
-                            return $selectMock;
+                        return $selectMock;
                     }
                 }
             );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Result\PageFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -76,7 +77,7 @@ class AttributeTest extends TestCase
                 'getPostValue', 'getParam', 'has',
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getCookie', 'getDistroBaseUrl', 'getRequestUri', 'getScheme',
-                'setParams', 'getParams', 'isSecure'
+                'setParams', 'getParams', 'isSecure',
             ]
         );
         $this->requestMock->method('getModuleName')->willReturn('catalog');

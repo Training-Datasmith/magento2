@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class ProductValidationTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_with_invalid_multiselect_values.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
@@ -60,7 +61,7 @@ class ProductValidationTest extends ProductTestBase
         $this->assertTrue($errors->getErrorsCount() == 1);
         $this->assertEquals(
             "Value for 'multiselect_attribute' attribute contains incorrect value, "
-            . "see acceptable values on settings specified for Admin",
+            . 'see acceptable values on settings specified for Admin',
             $errors->getErrorByRowNumber(1)[0]->getErrorMessage()
         );
     }
@@ -195,7 +196,7 @@ class ProductValidationTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -230,7 +231,7 @@ class ProductValidationTest extends ProductTestBase
             Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setSource(
@@ -238,7 +239,7 @@ class ProductValidationTest extends ProductTestBase
         )->setParameters(
             [
                 'behavior' => Import::BEHAVIOR_APPEND,
-                'entity' => 'catalog_product'
+                'entity' => 'catalog_product',
             ]
         )->validateData();
 
@@ -315,14 +316,14 @@ class ProductValidationTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
             [
                 'behavior' => \Magento\ImportExport\Model\Import::BEHAVIOR_APPEND,
                 Import::FIELD_NAME_VALIDATION_STRATEGY => null,
-                'entity' => 'catalog_product'
+                'entity' => 'catalog_product',
             ]
         )->setSource(
             $source
@@ -344,9 +345,9 @@ class ProductValidationTest extends ProductTestBase
         foreach ($productCollection as $product) {
             $products[$product->getSku()] = $product;
         }
-        $this->assertArrayNotHasKey("simple1", $products, "Simple Product should not have been imported");
-        $this->assertArrayNotHasKey("simple3", $products, "Simple Product 3 should not have been imported");
-        $this->assertArrayNotHasKey("simple2", $products, "Simple Product2 should not have been imported");
+        $this->assertArrayNotHasKey('simple1', $products, 'Simple Product should not have been imported');
+        $this->assertArrayNotHasKey('simple3', $products, 'Simple Product 3 should not have been imported');
+        $this->assertArrayNotHasKey('simple2', $products, 'Simple Product2 should not have been imported');
     }
 
     /**
@@ -365,7 +366,7 @@ class ProductValidationTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => $pathToFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setSource(
@@ -399,7 +400,7 @@ class ProductValidationTest extends ProductTestBase
         $params = [
             'behavior' => Import::BEHAVIOR_ADD_UPDATE,
             'entity' => 'catalog_product',
-            Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => '|||'
+            Import::FIELD_FIELD_MULTIPLE_VALUE_SEPARATOR => '|||',
         ];
 
         $errors = $this->_model->setParameters($params)
@@ -419,7 +420,7 @@ class ProductValidationTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'product_type', 'additional_attributes'],
                     ['$p2.sku$', 'simple', 'uniq_test_attr=uniq_test_attr_val'],
-                ]
+                ],
             ],
             'file'
         )
@@ -447,7 +448,7 @@ class ProductValidationTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'product_type', 'additional_attributes'],
                     ['$p1.sku$', 'simple', 'uniq_test_attr=uniq_test_attr_val'],
-                ]
+                ],
             ],
             'file'
         )

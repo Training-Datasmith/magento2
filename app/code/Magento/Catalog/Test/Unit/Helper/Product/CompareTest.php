@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class CompareTest extends TestCase
             [
                 'context' => $this->context,
                 'postHelper' => $this->postDataHelper,
-                'catalogSession' => $this->catalogSessionMock
+                'catalogSession' => $this->catalogSessionMock,
             ]
         );
     }
@@ -193,11 +194,11 @@ class CompareTest extends TestCase
         $expectedResult = [
             'product' => $productId,
             Action::PARAM_NAME_URL_ENCODED => $encodedCompareUrl,
-            '_secure' => $isRequestSecure
+            '_secure' => $isRequestSecure,
         ];
 
         $productMock = $this->createMock(Product::class);
-    
+
         $productMock->expects($this->once())->method('getId')->willReturn($productId);
         $this->catalogSessionMock->expects($this->once())->method('getBeforeCompareUrl')
             ->willReturn($beforeCompareUrl);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Tax\Model\TaxClass\Factory;
 use Magento\Tax\Model\TaxClass\Type\Customer;
 use Magento\Tax\Model\TaxClass\Type\Product;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
@@ -64,8 +64,8 @@ class FactoryTest extends TestCase
             [
                 ClassModel::TAX_CLASS_TYPE_PRODUCT,
                 Product::class,
-                $productClassMock
-            ]
+                $productClassMock,
+            ],
         ];
     }
 

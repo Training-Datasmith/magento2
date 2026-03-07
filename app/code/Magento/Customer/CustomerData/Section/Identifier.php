@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\CustomerData\Section;
 
 /**
@@ -10,11 +13,11 @@ namespace Magento\Customer\CustomerData\Section;
  */
 class Identifier
 {
-    const COOKIE_KEY = 'storage_data_id';
+    public const COOKIE_KEY = 'storage_data_id';
 
-    const SECTION_KEY = 'data_id';
+    public const SECTION_KEY = 'data_id';
 
-    const UPDATE_MARK = 'sections_updated';
+    public const UPDATE_MARK = 'sections_updated';
 
     /**
      * @var int

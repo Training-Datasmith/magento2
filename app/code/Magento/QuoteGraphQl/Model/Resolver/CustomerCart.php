@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\QuoteGraphQl\Model\Resolver;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\GraphQl\Exception\GraphQlAuthorizationException;
-use Magento\QuoteGraphQl\Model\Cart\UpdateCartCurrency;
 use Magento\Quote\Model\Cart\CustomerCartResolver;
+use Magento\QuoteGraphQl\Model\Cart\UpdateCartCurrency;
 
 /**
  * Get cart for the customer
@@ -69,7 +70,7 @@ class CustomerCart implements ResolverInterface
         }
 
         return [
-            'model' => $cart
+            'model' => $cart,
         ];
     }
 }

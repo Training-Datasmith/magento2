@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ use Magento\Review\Block\Product\ReviewRenderer;
 class Review implements ProductRenderCollectorInterface
 {
     /** Review html key */
-    const KEY = "review_html";
+    public const KEY = 'review_html';
 
     /**
      * @var ReviewRenderer

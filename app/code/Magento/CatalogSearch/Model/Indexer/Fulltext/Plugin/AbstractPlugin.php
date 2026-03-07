@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin;
 
-use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
+use Magento\Framework\Indexer\IndexerRegistry;
 
 /**
  * Abstract plugin for indexers

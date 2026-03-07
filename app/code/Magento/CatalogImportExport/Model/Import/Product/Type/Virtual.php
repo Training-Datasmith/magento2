@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Import\Product\Type;
 
 /**
@@ -16,7 +19,7 @@ class Virtual extends \Magento\CatalogImportExport\Model\Import\Product\Type\Sim
     /**
      * Type virtual product
      */
-    const TYPE_VIRTUAL_PRODUCT = 'virtual';
+    public const TYPE_VIRTUAL_PRODUCT = 'virtual';
 
     /**
      * Prepare attributes with default value for save.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class CategoryTest extends GraphQlAbstract
      *
      * @return string
      */
-    private function getSearchQueryWithSCategoryUID() : string
+    private function getSearchQueryWithSCategoryUID(): string
     {
         return <<<QUERY
 {

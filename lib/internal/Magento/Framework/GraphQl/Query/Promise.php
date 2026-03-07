@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,5 +13,4 @@ namespace Magento\Framework\GraphQl\Query;
  */
 class Promise extends \GraphQL\Executor\Promise\Promise
 {
-
 }

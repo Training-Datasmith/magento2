@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +56,7 @@ class FileResolver extends \Magento\Framework\App\Config\FileResolver
     {
         $filePatterns = [
             'dev/tests/integration/testsuite/Magento/*/etc/extension_attributes.xml',
-            'dev/tests/integration/testsuite/Magento/Framework/*/etc/extension_attributes.xml'
+            'dev/tests/integration/testsuite/Magento/Framework/*/etc/extension_attributes.xml',
         ];
 
         $filesArray = [];

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Framework\Exception\NotFoundException;
@@ -15,32 +18,17 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class Connector
 {
-    /**
-     * A list of possible commands.
-     *
-     * An associative array in format: 'command_name' => 'command_class_name'.
-     *
-     * The list may be configured in each module via '/etc/di.xml'.
-     *
-     * @var string[]
-     */
-    private $commands;
-
-    /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * @param array $commands
-     * @param ObjectManagerInterface $objectManager
-     */
     public function __construct(
-        array $commands,
-        ObjectManagerInterface $objectManager
+        /**
+         * A list of possible commands.
+         *
+         * An associative array in format: 'command_name' => 'command_class_name'.
+         *
+         * The list may be configured in each module via '/etc/di.xml'.
+         */
+        private array $commands,
+        private readonly ObjectManagerInterface $objectManager
     ) {
-        $this->commands = $commands;
-        $this->objectManager = $objectManager;
     }
 
     /**

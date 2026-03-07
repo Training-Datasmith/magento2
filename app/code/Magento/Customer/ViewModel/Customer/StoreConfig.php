@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class StoreConfig implements ArgumentInterface
 {
-
     /**
      * @var ConfigShare
      */

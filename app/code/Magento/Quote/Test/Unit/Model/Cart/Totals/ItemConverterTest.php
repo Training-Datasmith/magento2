@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class ItemConverterTest extends TestCase
         $this->totalsFactoryMock->expects($this->once())->method('create');
 
         $expectedData = [
-            'options' => '{"1":{"data":"optionsData","label":"option1"},"2":{"data":"optionsData","label":"option2"}}'
+            'options' => '{"1":{"data":"optionsData","label":"option1"},"2":{"data":"optionsData","label":"option2"}}',
         ];
         $this->dataObjectHelperMock->expects($this->once())->method('populateWithArray')
             ->with(null, $expectedData, TotalsItemInterface::class);
@@ -106,12 +107,12 @@ class ItemConverterTest extends TestCase
         $optionData = [
             '1' => [
                 'data' => 'optionsData',
-                'label' => 'option1'
+                'label' => 'option1',
             ],
             '2' => [
                 'data' => 'optionsData',
-                'label' => 'option2'
-            ]
+                'label' => 'option2',
+            ],
         ];
         $this->serializerMock->expects($this->once())->method('serialize')
             ->willReturn(json_encode($optionData));

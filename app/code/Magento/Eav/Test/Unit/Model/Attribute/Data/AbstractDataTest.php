@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -89,12 +90,12 @@ class AbstractDataTest extends TestCase
             ],
             [
                 'index' => null,
-                'expectedResult' => ['index' => 'value', 'otherIndex' => 'otherValue']
+                'expectedResult' => ['index' => 'value', 'otherIndex' => 'otherValue'],
             ],
             [
                 'index' => 'customIndex',
-                'expectedResult' => null
-            ]
+                'expectedResult' => null,
+            ],
         ];
     }
 
@@ -193,8 +194,8 @@ class AbstractDataTest extends TestCase
                 'params' => [],
                 'requestScopeOnly' => false,
                 'expectedResult' => '1970-01-01',
-                'filter' => 'date'
-            ]
+                'filter' => 'date',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -81,18 +82,18 @@ class MinimalTierPriceCalculatorTest extends TestCase
 
         $tierPriceList = [
             [
-                'price' => $minAmount
+                'price' => $minAmount,
             ],
             [
-                'price' => $notMinAmount
-            ]
+                'price' => $notMinAmount,
+            ],
         ];
 
         $this->price->expects($this->once())->method('getTierPriceList')->willReturn($tierPriceList);
 
         $this->priceInfo->expects($this->atLeastOnce())
             ->method('getPrice')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [TierPrice::PRICE_CODE] => $this->price,
                 [FinalPrice::PRICE_CODE] => $notMinAmount
             });

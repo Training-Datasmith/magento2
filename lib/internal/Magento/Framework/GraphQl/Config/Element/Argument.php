@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class Argument implements FieldInterface
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -110,7 +111,7 @@ class Argument implements FieldInterface
      *
      * @return string
      */
-    public function getTypeName() : string
+    public function getTypeName(): string
     {
         return $this->type;
     }
@@ -120,7 +121,7 @@ class Argument implements FieldInterface
      *
      * @return string
      */
-    public function getBaseType() : string
+    public function getBaseType(): string
     {
         return $this->baseType;
     }
@@ -130,7 +131,7 @@ class Argument implements FieldInterface
      *
      * @return bool
      */
-    public function isList() : bool
+    public function isList(): bool
     {
         return $this->isList;
     }
@@ -140,7 +141,7 @@ class Argument implements FieldInterface
      *
      * @return bool
      */
-    public function isRequired() : bool
+    public function isRequired(): bool
     {
         return $this->required;
     }
@@ -150,7 +151,7 @@ class Argument implements FieldInterface
      *
      * @return bool
      */
-    public function areItemsRequired() : bool
+    public function areItemsRequired(): bool
     {
         return $this->itemsRequired;
     }
@@ -160,7 +161,7 @@ class Argument implements FieldInterface
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -170,7 +171,7 @@ class Argument implements FieldInterface
      *
      * @return string|null
      */
-    public function getDefaultValue() : ?string
+    public function getDefaultValue(): ?string
     {
         return $this->defaultValue;
     }
@@ -180,9 +181,9 @@ class Argument implements FieldInterface
      *
      * @return bool
      */
-    public function hasDefaultValue() : bool
+    public function hasDefaultValue(): bool
     {
-        return $this->defaultValue ? true: false;
+        return $this->defaultValue ? true : false;
     }
 
     /**
@@ -190,7 +191,7 @@ class Argument implements FieldInterface
      *
      * @return array
      */
-    public function getDeprecated() : array
+    public function getDeprecated(): array
     {
         return $this->deprecated;
     }

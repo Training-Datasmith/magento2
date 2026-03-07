@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ declare(strict_types=1);
 namespace Magento\Developer\Test\Unit\Model\TemplateEngine\Decorator;
 
 use Magento\Developer\Model\TemplateEngine\Decorator\DebugHints;
+use Magento\Framework\DataObject;
+use Magento\Framework\Math\Random;
 use Magento\Framework\View\Element\BlockInterface;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\View\TemplateEngineInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\DataObject;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 class DebugHintsTest extends TestCase
 {

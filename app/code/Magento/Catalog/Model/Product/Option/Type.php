@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,9 +17,9 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants
      */
-    const KEY_LABEL = 'label';
-    const KEY_CODE = 'code';
-    const KEY_GROUP = 'group';
+    public const KEY_LABEL = 'label';
+    public const KEY_CODE = 'code';
+    public const KEY_GROUP = 'group';
     /**#@-*/
 
     /**

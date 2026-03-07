@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Checkout\Model\Session;
 use Magento\Checkout\Model\Type\Onepage;
@@ -21,12 +21,12 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
 use Magento\Framework\HTTP\PhpEnvironment\RemoteAddress;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Lock\LockManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -55,8 +55,9 @@ use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as SalesOrderAddress;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -269,7 +270,7 @@ class QuoteManagementTest extends TestCase
                 'setCheckoutMethod',
                 'setCustomerIsGuest',
                 'getCustomer',
-                'getId'
+                'getId',
             ]
         );
 
@@ -317,7 +318,7 @@ class QuoteManagementTest extends TestCase
                 'accountManagement' => $this->accountManagementMock,
                 'quoteFactory' => $this->quoteFactoryMock,
                 'addressRepository' => $this->addressRepositoryMock,
-                'lockManager' => $this->lockManagerMock
+                'lockManager' => $this->lockManagerMock,
             ]
         );
 
@@ -564,7 +565,7 @@ class QuoteManagementTest extends TestCase
             ->willThrowException(new NoSuchEntityException());
 
         $this->expectExceptionMessage(
-            "No such entity."
+            'No such entity.'
         );
 
         $this->model->assignCustomer($cartId, $customerId, $storeId);
@@ -739,7 +740,7 @@ class QuoteManagementTest extends TestCase
             [
                 'getQuoteId',
                 'getShippingMethod',
-                'getId'
+                'getId',
             ]
         );
         $payment = $this->createMock(Payment::class);
@@ -772,8 +773,7 @@ class QuoteManagementTest extends TestCase
             ->willReturn($baseOrder);
         $this->quoteAddressToOrderAddress
             ->method('convert')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($shippingAddress, $billingAddress, $convertedShipping, $convertedBilling) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($shippingAddress, $billingAddress, $convertedShipping, $convertedBilling) {
                 if ($arg1 == $shippingAddress && $arg2['address_type'] == 'shipping') {
                     return $convertedShipping;
                 } elseif ($arg1 == $billingAddress && $arg2['address_type'] == 'billing') {
@@ -867,7 +867,7 @@ class QuoteManagementTest extends TestCase
                 'getEmail',
                 'getFirstname',
                 'getLastname',
-                'getMiddlename'
+                'getMiddlename',
             ]
         );
         $addressMock->expects($this->exactly($countSetAddress))->method('getEmail')->willReturn($email);
@@ -932,7 +932,7 @@ class QuoteManagementTest extends TestCase
                     'addressRepository' => $this->addressRepositoryMock,
                     'request' => $this->requestMock,
                     'remoteAddress' => $this->remoteAddressMock,
-                    'cartMutex' => $this->cartMutexMock
+                    'cartMutex' => $this->cartMutexMock,
                 ]
             )
             ->getMock();
@@ -1015,7 +1015,7 @@ class QuoteManagementTest extends TestCase
                     'addressRepository' => $this->addressRepositoryMock,
                     'request' => $this->requestMock,
                     'remoteAddress' => $this->remoteAddressMock,
-                    'cartMutex' => $this->cartMutexMock
+                    'cartMutex' => $this->cartMutexMock,
                 ]
             )
             ->getMock();
@@ -1114,7 +1114,7 @@ class QuoteManagementTest extends TestCase
                 'getAllItems',
                 'getPayment',
                 'reserveOrderId',
-                'addCustomerAddress'
+                'addCustomerAddress',
             ]
         );
         if ($setIsActive) {
@@ -1195,7 +1195,7 @@ class QuoteManagementTest extends TestCase
                 'setBillingAddress',
                 'setPayment',
                 'setItems',
-                'setQuoteId'
+                'setQuoteId',
             ]
         );
 
@@ -1326,8 +1326,7 @@ class QuoteManagementTest extends TestCase
             ->willReturn($baseOrder);
         $this->quoteAddressToOrderAddress
             ->method('convert')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($shippingAddress, $billingAddress, $convertedShipping, $convertedBilling) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($shippingAddress, $billingAddress, $convertedShipping, $convertedBilling) {
                 if ($arg1 == $shippingAddress &&
                 $arg2['address_type'] == 'shipping' &&
                 $arg2['email'] == 'customer@example.com') {

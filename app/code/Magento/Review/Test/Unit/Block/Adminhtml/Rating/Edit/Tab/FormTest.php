@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -178,10 +179,10 @@ class FormTest extends TestCase
         $objectManagerHelper = new ObjectManagerHelper($this);
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
-        
+
         $this->block = $objectManagerHelper->getObject(
             RatingEditForm::class,
             [
@@ -191,7 +192,7 @@ class FormTest extends TestCase
                 'systemStore' => $this->systemStore,
                 'session' => $this->session,
                 'viewFileSystem' => $this->viewFileSystem,
-                'filesystem' => $this->fileSystem
+                'filesystem' => $this->fileSystem,
             ]
         );
     }

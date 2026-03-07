@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -153,7 +154,7 @@ class EditTest extends TestCase
                 [
                     ['menu', $this->menuBlockMock],
                     ['breadcrumbs', $this->breadcrumbsBlockMock],
-                    ['edit', $this->editBlockMock]
+                    ['edit', $this->editBlockMock],
                 ]
             );
         $this->menuBlockMock->expects($this->any())
@@ -177,8 +178,8 @@ class EditTest extends TestCase
                 'template_edit',
                 [
                     'data' => [
-                        'email_template' => $this->templateMock
-                    ]
+                        'email_template' => $this->templateMock,
+                    ],
                 ]
             )->willReturn($this->editBlockMock);
         $this->editBlockMock->expects($this->once())
@@ -198,7 +199,7 @@ class EditTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'objectManager' => $objectManagerMock,
-                'view' => $this->viewMock
+                'view' => $this->viewMock,
             ]
         );
         $this->editController = $objectManager->getObject(

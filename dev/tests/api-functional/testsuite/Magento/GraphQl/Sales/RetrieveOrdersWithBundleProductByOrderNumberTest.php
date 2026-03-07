@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe.
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         parent::setUp();
         $objectManager = Bootstrap::getObjectManager();
@@ -71,7 +72,7 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
 
         $customerOrderResponse = $this->getCustomerOrderQueryBundleProduct($orderNumber);
         $customerOrderItems = $customerOrderResponse[0];
-        $this->assertEquals("Pending", $customerOrderItems['status']);
+        $this->assertEquals('Pending', $customerOrderItems['status']);
         $bundledItemInTheOrder = $customerOrderItems['items'][0];
         $this->assertEquals(
             'bundle-product-two-dropdown-options-simple1-simple2',
@@ -95,13 +96,13 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
                       [
                         'product_sku' => 'simple1',
                         'product_name' => 'Simple Product1',
-                        'quantity'=> 1,
+                        'quantity' => 1,
                           'price' => [
                             'value' => 1,
-                            'currency' => 'USD'
-                          ]
-                      ]
-                ]
+                            'currency' => 'USD',
+                          ],
+                      ],
+                ],
               ],
                 [  '__typename' => 'ItemSelectedBundleOption',
                     'label' => 'Drop Down Option 2',
@@ -109,13 +110,13 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
                         [
                             'product_sku' => 'simple2',
                             'product_name' => 'Simple Product2',
-                            'quantity'=> 2,
+                            'quantity' => 2,
                             'price' => [
                                 'value' => 2,
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
                 ],
             ];
         $this->assertEquals($expectedBundleOptions, $bundleOptionsFromResponse);
@@ -143,7 +144,7 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
         $orderNumber = $orderResponse['placeOrder']['order']['order_number'];
         $customerOrderResponse = $this->getCustomerOrderQueryBundleProduct($orderNumber);
         $customerOrderItems = $customerOrderResponse[0];
-        $this->assertEquals("Pending", $customerOrderItems['status']);
+        $this->assertEquals('Pending', $customerOrderItems['status']);
         $billingAddress = $customerOrderItems['billing_address'];
         $shippingAddress = $customerOrderItems['shipping_address'];
         $this->assertNull($billingAddress['telephone']);
@@ -174,7 +175,7 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
 
         $customerOrderResponse = $this->getCustomerOrderQueryBundleProduct($orderNumber);
         $customerOrderItems = $customerOrderResponse[0];
-        $this->assertEquals("Pending", $customerOrderItems['status']);
+        $this->assertEquals('Pending', $customerOrderItems['status']);
 
         $bundledItemInTheOrder = $customerOrderItems['items'][0];
         $this->assertEquals(
@@ -184,7 +185,7 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
         $this->assertEquals(6, $bundledItemInTheOrder['discounts'][0]['amount']['value']);
         $this->assertEquals(
             'Discount Label for 10% off',
-            $bundledItemInTheOrder["discounts"][0]['label']
+            $bundledItemInTheOrder['discounts'][0]['label']
         );
         $this->assertArrayHasKey('bundle_options', $bundledItemInTheOrder);
         $childItemsInTheOrder = $bundledItemInTheOrder['bundle_options'];
@@ -212,31 +213,31 @@ class RetrieveOrdersWithBundleProductByOrderNumberTest extends GraphQlAbstract
 
         unset($customerOrderItemTotal['taxes']);
         $assertionMap = [
-            'base_grand_total' => ['value' => 77.4, 'currency' =>'USD'],
-            'grand_total' => ['value' => 77.4, 'currency' =>'USD'],
-            'subtotal' => ['value' => 60, 'currency' =>'USD'],
-            'total_tax' => ['value' => 5.4, 'currency' =>'USD'],
-            'total_shipping' => ['value' => 20, 'currency' =>'USD'],
+            'base_grand_total' => ['value' => 77.4, 'currency' => 'USD'],
+            'grand_total' => ['value' => 77.4, 'currency' => 'USD'],
+            'subtotal' => ['value' => 60, 'currency' => 'USD'],
+            'total_tax' => ['value' => 5.4, 'currency' => 'USD'],
+            'total_shipping' => ['value' => 20, 'currency' => 'USD'],
             'shipping_handling' => [
                 'amount_including_tax' => ['value' => 21.5],
                 'amount_excluding_tax' => ['value' => 20],
                 'total_amount' => ['value' => 20],
                 'discounts' => [
-                    0 => ['amount'=>['value'=> 2]]
+                    0 => ['amount' => ['value' => 2]],
                 ],
-                'taxes'=> [
+                'taxes' => [
                     0 => [
-                        'amount'=>['value' => 1.35],
+                        'amount' => ['value' => 1.35],
                         'title' => 'US-TEST-*-Rate-1',
-                        'rate' => 7.5
-                    ]
-                ]
+                        'rate' => 7.5,
+                    ],
+                ],
             ],
             'discounts' => [
-                0 => ['amount' => [ 'value' => 8, 'currency' =>'USD'],
-                    'label' => 'Discount Label for 10% off'
-                ]
-            ]
+                0 => ['amount' => [ 'value' => 8, 'currency' => 'USD'],
+                    'label' => 'Discount Label for 10% off',
+                ],
+            ],
         ];
         $this->assertResponseFields($customerOrderItemTotal, $assertionMap);
     }

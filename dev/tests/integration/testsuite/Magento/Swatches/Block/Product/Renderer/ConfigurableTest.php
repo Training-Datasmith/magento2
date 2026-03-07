@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -267,9 +268,9 @@ class ConfigurableTest extends TestCase
                             'position' => 1,
                             'label' => 'Image Alt Text',
                             'disabled' => 0,
-                            'media_type' => 'image'
+                            'media_type' => 'image',
                         ],
-                    ]
+                    ],
                 ]
             )
             ->setCanSaveCustomOptions(true);

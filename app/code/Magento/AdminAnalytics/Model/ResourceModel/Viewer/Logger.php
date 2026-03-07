@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -24,32 +25,19 @@ class Logger
     public const LOG_TABLE_NAME = 'admin_analytics_usage_version_log';
 
     /**
-     * @var Resource
-     */
-    private $resource;
-
-    /**
      * @var LogFactory
      */
     private $logFactory;
 
-    /**
-     * @param ResourceConnection $resource
-     * @param LogFactory $logFactory
-     */
     public function __construct(
-        ResourceConnection $resource,
+        private readonly ResourceConnection $resource,
         LogFactory $logFactory
     ) {
-        $this->resource = $resource;
         $this->logFactory = $logFactory;
     }
 
     /**
      * Save (insert new or update existing) log.
-     *
-     * @param string $lastViewVersion
-     * @return bool
      */
     public function log(string $lastViewVersion): bool
     {
@@ -69,8 +57,6 @@ class Logger
 
     /**
      * Get log by the last view version.
-     *
-     * @return Log
      */
     public function get(): Log
     {
@@ -79,8 +65,6 @@ class Logger
 
     /**
      * Checks is log already exists.
-     *
-     * @return boolean
      */
     public function checkLogExists(): bool
     {
@@ -91,8 +75,6 @@ class Logger
 
     /**
      * Load release notification viewer log data by last view version
-     *
-     * @return array
      */
     private function loadLatestLogData(): array
     {
@@ -104,7 +86,7 @@ class Logger
 
         $data = $connection->fetchRow($select);
         if (!$data) {
-            $data = [];
+            return [];
         }
         return $data;
     }

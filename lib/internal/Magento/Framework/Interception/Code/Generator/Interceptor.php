@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -53,13 +54,13 @@ class Interceptor extends EntityAbstract
 
             $body .= count($parameters)
                 ? "parent::__construct({$this->_getParameterList($parameters)});"
-                : "parent::__construct();";
+                : 'parent::__construct();';
         }
 
         return [
             'name' => '__construct',
             'parameters' => $parameters,
-            'body' => $body
+            'body' => $body,
         ];
     }
 
@@ -113,12 +114,12 @@ class Interceptor extends EntityAbstract
                 [
                     '%method%',
                     '%return%',
-                    '%parameters%'
+                    '%parameters%',
                 ],
                 [
                     $method->getName(),
                     $returnTypeValue === 'void' ? '' : 'return ',
-                    $this->_getParameterList($parameters)
+                    $this->_getParameterList($parameters),
                 ],
                 <<<'METHOD_BODY'
 $pluginInfo = $this->pluginList->getNext($this->subjectType, '%method%');

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,16 +8,16 @@
 
 namespace Magento\Tax\Model\Sales\Total\Quote;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Quote\Model\Quote;
-use Magento\Tax\Model\Config;
-use Magento\Tax\Model\Calculation;
-use Magento\Quote\Model\Quote\Item\Updater;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\Search\FilterGroup;
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Item\Updater;
+use Magento\Tax\Model\Calculation;
+use Magento\Tax\Model\Config;
 
 /**
  * Setup utility for quote
@@ -41,14 +43,14 @@ class SetupUtil
         //@TODO: add config for cross border trade
     ];
 
-    const TAX_RATE_TX = 'tax_rate_tx';
-    const TAX_RATE_AUSTIN = 'tax_rate_austin';
-    const TAX_RATE_SHIPPING = 'tax_rate_shipping';
-    const TAX_STORE_RATE = 'tax_store_rate';
-    const REGION_TX = '57';
-    const REGION_CA = '12';
-    const COUNTRY_US = 'US';
-    const AUSTIN_POST_CODE = '79729';
+    public const TAX_RATE_TX = 'tax_rate_tx';
+    public const TAX_RATE_AUSTIN = 'tax_rate_austin';
+    public const TAX_RATE_SHIPPING = 'tax_rate_shipping';
+    public const TAX_STORE_RATE = 'tax_store_rate';
+    public const REGION_TX = '57';
+    public const REGION_CA = '12';
+    public const COUNTRY_US = 'US';
+    public const AUSTIN_POST_CODE = '79729';
 
     /**
      * Tax rates
@@ -98,9 +100,9 @@ class SetupUtil
         ],
     ];
 
-    const PRODUCT_TAX_CLASS_1 = 'product_tax_class_1';
-    const PRODUCT_TAX_CLASS_2 = 'product_tax_class_2';
-    const SHIPPING_TAX_CLASS = 'shipping_tax_class';
+    public const PRODUCT_TAX_CLASS_1 = 'product_tax_class_1';
+    public const PRODUCT_TAX_CLASS_2 = 'product_tax_class_2';
+    public const SHIPPING_TAX_CLASS = 'shipping_tax_class';
 
     /**
      * List of product tax class that will be created
@@ -113,8 +115,8 @@ class SetupUtil
         self::SHIPPING_TAX_CLASS => null,
     ];
 
-    const CUSTOMER_TAX_CLASS_1 = 'customer_tax_class_1';
-    const CUSTOMER_PASSWORD = 'password';
+    public const CUSTOMER_TAX_CLASS_1 = 'customer_tax_class_1';
+    public const CUSTOMER_PASSWORD = 'password';
 
     /**
      * List of customer tax class to be created
@@ -132,9 +134,9 @@ class SetupUtil
      */
     protected $taxRules = [];
 
-    const CONFIG_OVERRIDES = 'config_overrides';
-    const TAX_RATE_OVERRIDES = 'tax_rate_overrides';
-    const TAX_RULE_OVERRIDES = 'tax_rule_overrides';
+    public const CONFIG_OVERRIDES = 'config_overrides';
+    public const TAX_RATE_OVERRIDES = 'tax_rate_overrides';
+    public const TAX_RULE_OVERRIDES = 'tax_rule_overrides';
 
     /**
      * Default data for shopping cart rule
@@ -368,7 +370,7 @@ class SetupUtil
         //The default customer tax class id is used to calculate store tax rate
         $customerClassIds = [
             $this->customerTaxClasses[self::CUSTOMER_TAX_CLASS_1],
-            $this->getDefaultCustomerTaxClassId()
+            $this->getDefaultCustomerTaxClassId(),
         ];
 
         //By default create tax rule that covers all product tax classes except SHIPPING_TAX_CLASS
@@ -491,7 +493,7 @@ class SetupUtil
                     'use_config_manage_stock' => 1,
                     'qty' => 100,
                     'is_qty_decimal' => 0,
-                    'is_in_stock' => 1
+                    'is_in_stock' => 1,
                 ]
             )->setMetaTitle('meta title')
             ->setMetaKeyword('meta keyword')

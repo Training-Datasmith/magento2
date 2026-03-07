@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class AttributeTypeResolverTest extends TestCase
                 'some_code' => [
                     'type' => DataObject::class,
                 ],
-            ]
+            ],
         ];
 
         $this->typeProcessor->expects($this->once())
@@ -96,8 +97,8 @@ class AttributeTypeResolverTest extends TestCase
             'Some\Class' => [
                 'some_code' => [
                     'type' => '\Some\Class',
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->typeProcessor->expects($this->once())

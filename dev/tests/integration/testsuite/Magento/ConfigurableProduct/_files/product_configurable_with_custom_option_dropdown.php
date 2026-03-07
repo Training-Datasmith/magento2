@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ $dropdownOption = [
             'price_type' => 'fixed',
             'sku' => 'opt2',
         ],
-    ]
+    ],
 ];
 
 $createdOption = $optionRepository->create(['data' => $dropdownOption]);

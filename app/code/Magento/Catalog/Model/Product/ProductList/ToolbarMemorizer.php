@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class ToolbarMemorizer
     /**
      * XML PATH to enable/disable saving toolbar parameters to session
      */
-    const XML_PATH_CATALOG_REMEMBER_PAGINATION = 'catalog/frontend/remember_pagination';
+    public const XML_PATH_CATALOG_REMEMBER_PAGINATION = 'catalog/frontend/remember_pagination';
 
     /**
      * @var CatalogSession

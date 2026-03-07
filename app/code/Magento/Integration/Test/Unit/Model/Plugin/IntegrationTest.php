@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class IntegrationTest extends TestCase
                 'integrationAuthorizationService' => $this->integrationAuthServiceMock,
                 'aclRetriever' => $this->aclRetrieverMock,
                 'integrationConfig' => $this->integrationConfigMock,
-                'consolidatedConfig' => $this->consolidatedConfigMock
+                'consolidatedConfig' => $this->consolidatedConfigMock,
             ]
         );
     }
@@ -241,7 +242,7 @@ class IntegrationTest extends TestCase
             Integration::EMAIL => 'test-integration1@magento.com',
             Integration::ENDPOINT => 'http://endpoint.com',
             Integration::SETUP_TYPE => 1,
-            'resource' => ['testResource']
+            'resource' => ['testResource'],
         ];
         $consolidatedIntegrationsData = [
             Integration::ID => 2,
@@ -249,7 +250,7 @@ class IntegrationTest extends TestCase
             Integration::EMAIL => 'test-integration2@magento.com',
             Integration::ENDPOINT => 'http://endpoint2.com',
             Integration::SETUP_TYPE => 1,
-            'resource' => ['testResource']
+            'resource' => ['testResource'],
         ];
         $this->integrationConfigMock->method('getIntegrations')->willReturn($deprecatedIntegrationsData);
         $this->consolidatedConfigMock->method('getIntegrations')->willReturn($consolidatedIntegrationsData);

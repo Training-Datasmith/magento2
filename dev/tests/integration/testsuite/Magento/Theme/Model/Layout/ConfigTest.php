@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Theme\Model\Layout\Config
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Layout;
 
 class ConfigTest extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class CategoryLinkManagementTest extends TestCase
             'productResource' => $productResource,
             'categoryLinkRepository' => $categoryLinkRepository,
             'productLinkFactory' => $this->productLinkFactoryMock,
-            'indexerRegistry' => $indexerRegistry
+            'indexerRegistry' => $indexerRegistry,
         ]);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class ConfirmationKeySender
     public function execute(
         Order $order,
         array $confirmationDetails
-    ):void {
+    ): void {
         try {
             $storeId = (int)$order->getStoreId();
             $this->transportBuilder

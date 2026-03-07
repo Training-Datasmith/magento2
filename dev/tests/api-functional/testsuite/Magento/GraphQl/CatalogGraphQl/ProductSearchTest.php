@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\GraphQl\CatalogGraphQl;
 
 use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
+use Magento\Catalog\Test\Fixture\Product;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Indexer\Model\IndexerFactory;
+use Magento\Indexer\Test\Fixture\Indexer;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Catalog\Test\Fixture\Product;
-use Magento\Indexer\Test\Fixture\Indexer;
 
 /**
  * Test class to verify product search, used for GraphQL resolver
@@ -91,8 +92,8 @@ class ProductSearchTest extends GraphQlAbstract
             $this->getProductSearchQueryWithMultipleSkusFilter([
                 DataFixtureStorageManager::getStorage()->get('product1'),
                 DataFixtureStorageManager::getStorage()->get('product2'),
-                DataFixtureStorageManager::getStorage()->get('product3')
-            ], "simple")
+                DataFixtureStorageManager::getStorage()->get('product3'),
+            ], 'simple')
         );
 
         $this->assertNotEmpty($response['products']);

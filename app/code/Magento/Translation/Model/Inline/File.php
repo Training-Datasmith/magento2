@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Translation\Model\Inline;
 
-use Magento\Framework\Translate\ResourceInterface;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\Translate\ResourceInterface;
 
 /**
  * Prepares content of inline translations file.

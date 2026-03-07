@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ declare(strict_types=1);
  *
  * @link http://php.net/manual/en/function.stream-filter-register.php
  */
+
 namespace Magento\Test\Profiler;
 
 use PHPUnit\Framework\Assert;

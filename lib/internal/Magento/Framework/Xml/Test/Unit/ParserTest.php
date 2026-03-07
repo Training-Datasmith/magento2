@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class ParserTest extends TestCase
                     'cdata' => '  Some data here <strong>html</strong> tags are <i>allowed</i>  ',
                     'zero' => '0',
                     'null' => null,
-                ]
+                ],
             ]],
             $this->parser->load(__DIR__ . '/_files/data.xml')->xmlToArray()
         );

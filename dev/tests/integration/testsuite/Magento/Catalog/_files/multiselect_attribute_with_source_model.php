@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -36,7 +38,7 @@ if (!$attribute->loadByCode($entityType, 'multiselect_attr_with_source')->getAtt
             'frontend_label' => ['Multiselect Attribute with Source Model'],
             'backend_type' => 'text',
             'backend_model' => \Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend::class,
-            'source_model' => \Magento\Catalog\_files\MultiselectSourceMock::class
+            'source_model' => \Magento\Catalog\_files\MultiselectSourceMock::class,
         ]
     );
     $attribute->save();

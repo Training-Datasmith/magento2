@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model\ResourceModel;
 
+use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Model\Grid\LastUpdateTimeCache;
 use Magento\Sales\Model\ResourceModel\Provider\UpdatedAtListProvider;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\DB\Adapter\Pdo\Mysql;
 
 /**
  * @magentoDataFixture Magento/Sales/_files/order_with_invoice_shipment_creditmemo.php
@@ -180,7 +181,7 @@ class GridTest extends TestCase
                     'gridTableName' => 'sales_shipment_grid',
                 ],
                 'order_id',
-                'SALES_SHIPMENT_GRID_ORDER_ID'
+                'SALES_SHIPMENT_GRID_ORDER_ID',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Directory\Setup\DataInstaller;
 use Magento\Directory\Setup\DataInstallerFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
  * Add Regions/States for India.
@@ -65,7 +65,7 @@ class AddRegionsForIndia implements DataPatchInterface
     private function getDataForIndia(): array
     {
         return [
-            ['IN', 'LA', 'Ladakh']
+            ['IN', 'LA', 'Ladakh'],
         ];
     }
 

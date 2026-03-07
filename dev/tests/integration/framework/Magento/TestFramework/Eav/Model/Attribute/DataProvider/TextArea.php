@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -20,13 +21,13 @@ class TextArea extends AbstractBaseAttributeData
      */
     public static function getAttributeData(): array
     {
-        if(isset(static::$defaultAttributePostData['serialized_options_arr'])) {
+        if (isset(static::$defaultAttributePostData['serialized_options_arr'])) {
             unset(static::$defaultAttributePostData['serialized_options_arr']);
         }
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'default_value_text' => '',
                         'default_value_textarea' => 'Default attribute value',
@@ -41,7 +42,7 @@ class TextArea extends AbstractBaseAttributeData
      */
     public static function getUpdateProvider(): array
     {
-        if(isset(static::$defaultAttributePostData['serialized_options_arr'])) {
+        if (isset(static::$defaultAttributePostData['serialized_options_arr'])) {
             unset(static::$defaultAttributePostData['serialized_options_arr']);
         }
         $frontendInput = static::getFrontendInput();
@@ -62,7 +63,7 @@ class TextArea extends AbstractBaseAttributeData
                     ],
                     'expectedData' => [
                         'frontend_input' => 'textarea',
-                        'is_wysiwyg_enabled' => '1'
+                        'is_wysiwyg_enabled' => '1',
                     ],
                 ],
             ]

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -143,14 +144,14 @@ class ConfigurableViewOnCategoryPageTest extends TestCase
         DataFixture(CategoryFixture::class, [], 'category'),
         DataFixture(ProductFixture::class, [
             'price' => 10.0,
-            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE
+            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE,
         ], 'p1'),
         DataFixture(AttributeFixture::class, as: 'attr'),
         DataFixture(
             ConfigurableProductFixture::class,
             [
                 '_options' => ['$attr$'],
-                '_links' => ['$p1$']
+                '_links' => ['$p1$'],
             ],
             'configurable'
         ),
@@ -185,18 +186,18 @@ class ConfigurableViewOnCategoryPageTest extends TestCase
         DataFixture(CategoryFixture::class, [], 'category'),
         DataFixture(ProductFixture::class, [
             'price' => 10.0,
-            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE
+            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE,
         ], 'p1'),
         DataFixture(ProductFixture::class, [
             'price' => 12.0,
-            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE
+            'visibility' => Visibility::VISIBILITY_NOT_VISIBLE,
         ], 'p2'),
         DataFixture(AttributeFixture::class, as: 'attr'),
         DataFixture(
             ConfigurableProductFixture::class,
             [
                 '_options' => ['$attr$'],
-                '_links' => ['$p1$', '$p2$']
+                '_links' => ['$p1$', '$p2$'],
             ],
             'configurable'
         ),

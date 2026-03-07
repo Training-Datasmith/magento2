@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,16 +74,16 @@ class ExtensionAttributesInterfaceGeneratorTest extends TestCase
                 'config' => $configMock,
                 'sourceClassName' => \Magento\Catalog\Api\Data\Product::class,
                 'resultClassName' => \Magento\Catalog\Api\Data\ProductExtensionInterface::class,
-                'classGenerator' => null
+                'classGenerator' => null,
             ]
         );
-        
+
         // Inject typeProcessor via reflection to bypass ObjectManager::getInstance()
         $reflectionObject = new ReflectionObject($model);
         $parentClass = $reflectionObject->getParentClass();
         $typeProcessorProperty = $parentClass->getProperty('typeProcessor');
         $typeProcessorProperty->setValue($model, $typeProcessorMock);
-        
+
         $expectedResult = file_get_contents(__DIR__ . '/_files/SampleExtensionInterface.txt');
         $reflectionMethod = $reflectionObject->getMethod('_generateCode');
         $generatedCode = $reflectionMethod->invoke($model);
@@ -97,7 +98,7 @@ class ExtensionAttributesInterfaceGeneratorTest extends TestCase
             ExtensionAttributesInterfaceGenerator::class,
             [
                 'sourceClassName' => \Magento\Catalog\Api\Data\Product::class,
-                'resultClassName' => ProductInterface::class
+                'resultClassName' => ProductInterface::class,
             ]
         );
         $reflectionObject = new ReflectionObject($model);

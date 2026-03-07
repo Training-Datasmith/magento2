@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Adminhtml\Product\Edit\Tab;
 
+use Magento\Catalog\Block\Adminhtml\Helper\Form\Wysiwyg;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes\Create;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes\Search;
 use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Price\Tier;
+use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Boolean;
+use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery;
+use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Image;
+use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Price;
+use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Weight;
 use Magento\Catalog\Model\Product;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Group;
@@ -26,12 +33,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Price;
-use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Weight;
-use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery;
-use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Image;
-use Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Boolean;
-use \Magento\Catalog\Block\Adminhtml\Helper\Form\Wysiwyg;
 
 /**
  * Unit tests for Attributes block
@@ -144,7 +145,7 @@ class AttributesTest extends TestCase
     {
         $customTypes = [
             'custom_type' => 'Custom\Type\Class',
-            'another_type' => 'Another\Type\Class'
+            'another_type' => 'Another\Type\Class',
         ];
 
         $this->eventManagerMock->expects($this->once())
@@ -218,7 +219,7 @@ class AttributesTest extends TestCase
 
         $formMock->method('getElement')->willReturnMap([
             ['tier_price', $tierPriceElementMock],
-            ['media_gallery', null]
+            ['media_gallery', null],
         ]);
 
         $this->layoutMock->expects($this->once())
@@ -371,7 +372,7 @@ class AttributesTest extends TestCase
         $formMock->method('getElement')->willReturnMap([
             ['tier_price', null],
             ['media_gallery', null],
-            ['name', $elementMock]
+            ['name', $elementMock],
         ]);
 
         $elementMock->expects($this->once())
@@ -463,7 +464,7 @@ class AttributesTest extends TestCase
             '_layout' => $this->layoutMock,
             '_formFactory' => $this->formFactoryMock,
             '_coreRegistry' => $this->registryMock,
-            '_authorization' => $this->authorizationMock
+            '_authorization' => $this->authorizationMock,
         ];
 
         foreach ($dependencies as $propertyName => $value) {
@@ -565,7 +566,7 @@ class AttributesTest extends TestCase
     {
         $this->registryMock->method('registry')->willReturnMap([
             ['product', $productMock],
-            ['use_wrapper', $useWrapper]
+            ['use_wrapper', $useWrapper],
         ]);
     }
 
@@ -631,7 +632,7 @@ class AttributesTest extends TestCase
         return [
             'product' => $productMock,
             'form' => $formMock,
-            'group' => $groupMock
+            'group' => $groupMock,
         ];
     }
 
@@ -683,12 +684,12 @@ class AttributesTest extends TestCase
             DataObject::class,
             [
                 'setAttributeGroupCode', 'setTabId', 'setGroupId',
-                'setStoreId', 'setAttributeSetId', 'setTypeId', 'setProductId'
+                'setStoreId', 'setAttributeSetId', 'setTypeId', 'setProductId',
             ]
         );
         $fluentMethods = [
             'setAttributeGroupCode', 'setTabId', 'setGroupId', 'setStoreId',
-            'setAttributeSetId', 'setTypeId', 'setProductId'
+            'setAttributeSetId', 'setTypeId', 'setProductId',
         ];
 
         foreach ($fluentMethods as $method) {

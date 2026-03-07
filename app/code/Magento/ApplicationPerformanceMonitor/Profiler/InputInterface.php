@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -16,9 +17,6 @@ interface InputInterface
 {
     /**
      * Input for other information
-     *
-     * @param Application $application
-     * @return array
      */
-    public function doInput(Application $application) : array;
+    public function doInput(Application $application): array;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class CountryTest extends TestCase
             [true, '', []],
             [false, '', [['value' => '', 'label' => __('--Please Select--')]]],
             [true, ['US', 'CA'], []],
-            [false, ['US', 'CA'], [['value' => '', 'label' => __('--Please Select--')]]]
+            [false, ['US', 'CA'], [['value' => '', 'label' => __('--Please Select--')]]],
         ];
     }
 }

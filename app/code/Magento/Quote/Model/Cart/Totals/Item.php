@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Cart\Totals;
 
-use Magento\Quote\Api\Data\TotalsItemInterface;
 use Magento\Framework\Api\AbstractExtensibleObject;
+use Magento\Quote\Api\Data\TotalsItemInterface;
 
 /**
  * Cart item totals.

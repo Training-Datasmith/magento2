@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryMetadata\Model\Png;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryMetadataApi\Model\FileInterface;
 use Magento\MediaGalleryMetadataApi\Model\FileInterfaceFactory;
 use Magento\MediaGalleryMetadataApi\Model\ReadFileInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterfaceFactory;
-use Magento\Framework\Exception\ValidatorException;
 
 /**
  * File segments reader
@@ -85,7 +86,7 @@ class ReadFile implements ReadFileInterface
             $data = $this->read($resource, $segmentHeader['size']);
             $segments[] = $this->segmentFactory->create([
                 'name' => $segmentHeader['type'],
-                'data' => $data
+                'data' => $data,
             ]);
             $cyclicRedundancyCheck = $this->read($resource, 4);
 
@@ -101,7 +102,7 @@ class ReadFile implements ReadFileInterface
 
         return $this->fileFactory->create([
             'path' => $path,
-            'segments' => $segments
+            'segments' => $segments,
         ]);
     }
 

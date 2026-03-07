@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\ObjectManager\Test\Unit\Helper;
 
 use Magento\Framework\ObjectManager\Helper\SortItems as SortItemsHelper;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SortItemsTest extends TestCase
 {
@@ -79,18 +80,18 @@ class SortItemsTest extends TestCase
                     'key1' => ['value' => 'value 1'],
                     'key2' => ['value' => 'value 2'],
                     'item1' => [
-                        'key3'=>['value' => 'value 3', 'sortOrder' => 30],
-                        'key4'=>['value' => 'value 4', 'sortOrder' => 10],
-                        'key5'=>['value' => 'value 5', 'sortOrder' => 20],
+                        'key3' => ['value' => 'value 3', 'sortOrder' => 30],
+                        'key4' => ['value' => 'value 4', 'sortOrder' => 10],
+                        'key5' => ['value' => 'value 5', 'sortOrder' => 20],
                     ],
                 ],
                 [
                     'key1' => ['value' => 'value 1'],
                     'key2' => ['value' => 'value 2'],
                     'item1' => [
-                        'key4'=>['value' => 'value 4', 'sortOrder' => 10],
-                        'key5'=>['value' => 'value 5', 'sortOrder' => 20],
-                        'key3'=>['value' => 'value 3', 'sortOrder' => 30],
+                        'key4' => ['value' => 'value 4', 'sortOrder' => 10],
+                        'key5' => ['value' => 'value 5', 'sortOrder' => 20],
+                        'key3' => ['value' => 'value 3', 'sortOrder' => 30],
                     ],
 
                 ],
@@ -102,7 +103,7 @@ class SortItemsTest extends TestCase
                         'key4' => ['value' => 'value 4'],
                         'key3' => ['value' => 'value 3'],
                         'key2' => ['value' => 'value 2', 'sortOrder' => 10],
-                    ]
+                    ],
                 ],
                 [
                     'item' => [
@@ -110,7 +111,7 @@ class SortItemsTest extends TestCase
                         'key4' => ['value' => 'value 4'],
                         'key3' => ['value' => 'value 3'],
                         'key2' => ['value' => 'value 2', 'sortOrder' => 10],
-                    ]
+                    ],
                 ],
             ],
             'sort order edge case values' => [
@@ -130,7 +131,7 @@ class SortItemsTest extends TestCase
                         'key3' => ['value' => 'value 3'],
                         'key5' => ['value' => 'value 5', 'sortOrder' => 20],
                         'key1' => ['value' => 'value 1', 'sortOrder' => 101],
-                    ]
+                    ],
                 ],
             ],
         ];

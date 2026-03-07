@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Plugin\Model\Order\Invoice;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Type as Bundle;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Plugin\Model\Order\Invoice\UpdateConfigurableProductTotalQty;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -77,7 +78,7 @@ class UpdateConfigurableProductTotalQtyTest extends TestCase
         $orderItems = $orderItems($this);
         $this->invoiceMock->method('getOrder')->willReturn($this->orderMock);
         $this->orderMock->method('getAllItems')->willReturn($orderItems);
-        $expectedQty= $this->model->beforeSetTotalQty($this->invoiceMock, $totalQty);
+        $expectedQty = $this->model->beforeSetTotalQty($this->invoiceMock, $totalQty);
         $this->assertEquals($expectedQty, $productTotalQty);
     }
 
@@ -97,12 +98,12 @@ class UpdateConfigurableProductTotalQtyTest extends TestCase
                         [
                             'parent_item_id' => null,
                             'product_type' => 'simple',
-                            'qty_ordered' => 10
-                        ]
+                            'qty_ordered' => 10,
+                        ],
                     ]
                 ),
                 'totalQty' => 10.00,
-                'productTotalQty' => 10.00
+                'productTotalQty' => 10.00,
             ],
             'verify productQty for configurable products' => [
                 'orderItems' => static fn (self $testCase) => $testCase->getOrderItems(
@@ -110,12 +111,12 @@ class UpdateConfigurableProductTotalQtyTest extends TestCase
                         [
                             'parent_item_id' => '2',
                             'product_type' => Configurable::TYPE_CODE,
-                            'qty_ordered' => 10
-                        ]
+                            'qty_ordered' => 10,
+                        ],
                     ]
                 ),
                 'totalQty' => 10.00,
-                'productTotalQty' => 10.00
+                'productTotalQty' => 10.00,
             ],
             'verify productQty for simple configurable products' => [
                 'orderItems' => static fn (self $testCase) => $testCase->getOrderItems(
@@ -123,23 +124,23 @@ class UpdateConfigurableProductTotalQtyTest extends TestCase
                         [
                             'parent_item_id' => null,
                             'product_type' => 'simple',
-                            'qty_ordered' => 10
+                            'qty_ordered' => 10,
                         ],
                         [
                             'parent_item_id' => '2',
                             'product_type' => Configurable::TYPE_CODE,
-                            'qty_ordered' => 10
+                            'qty_ordered' => 10,
                         ],
                         [
                             'parent_item_id' => '2',
                             'product_type' => Bundle::TYPE_CODE,
-                            'qty_ordered' => 10
-                        ]
+                            'qty_ordered' => 10,
+                        ],
                     ]
                 ),
                 'totalQty' => 30.00,
-                'productTotalQty' => 30.00
-            ]
+                'productTotalQty' => 30.00,
+            ],
         ];
     }
 

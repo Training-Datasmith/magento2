@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Store\Test\Mftf\Helper;
 use Facebook\WebDriver\Remote\RemoteWebDriver as FacebookWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Magento\FunctionalTestingFramework\Helper\Helper;
-use Magento\FunctionalTestingFramework\Module\MagentoWebDriver;
 
 /**
  * Class for MFTF helpers for Store module.

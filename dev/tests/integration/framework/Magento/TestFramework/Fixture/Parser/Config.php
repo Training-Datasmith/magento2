@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class Config implements ParserInterface
         $scopeTypes = [
             ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
             ScopeInterface::SCOPE_STORE,
-            ScopeInterface::SCOPE_WEBSITE
+            ScopeInterface::SCOPE_WEBSITE,
         ];
         foreach ($attributes as $attribute) {
             $args = $attribute->getArguments();

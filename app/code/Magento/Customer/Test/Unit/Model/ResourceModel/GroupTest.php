@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,17 +16,16 @@ use Magento\Customer\Model\ResourceModel\Group;
 use Magento\Customer\Model\Vat;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -107,7 +107,7 @@ class GroupTest extends TestCase
                 'context' => $contextMock,
                 'groupManagement' => $this->groupManagement,
                 'customersFactory' => $this->customersFactory,
-                'entitySnapshot' => $this->snapshotMock
+                'entitySnapshot' => $this->snapshotMock,
             ]
         );
     }
@@ -142,7 +142,7 @@ class GroupTest extends TestCase
                 'lastInsertId', 'describeTable', 'update', 'select', 'beginTransaction',
                 'commit', 'rollBack', 'insert', 'fetchRow', 'prepareColumnValue',
                 'quoteIdentifier', 'quote', 'quoteInto', 'insertFromSelect', 'query', 'deleteFromSelect',
-                'getTransactionLevel'
+                'getTransactionLevel',
             ]
         );
         $dbAdapter->method('lastInsertId')->willReturn($expectedId);
@@ -220,7 +220,7 @@ class GroupTest extends TestCase
         $this->groupModel->expects($this->once())
             ->method('usesAsDefault')
             ->willReturn(true);
-        
+
         $this->groupModel->expects($this->once())
             ->method('getCode')
             ->willReturn('Default Group');
@@ -259,7 +259,7 @@ class GroupTest extends TestCase
         $customerCollection->expects($this->once())
             ->method('load')
             ->willReturn([]);
-        
+
         $this->customersFactory->expects($this->once())
             ->method('create')
             ->willReturn($customerCollection);
@@ -269,7 +269,7 @@ class GroupTest extends TestCase
 
         // Should not throw exception
         $result = $this->groupResourceModel->delete($this->groupModel);
-        
+
         $this->assertSame($this->groupResourceModel, $result);
     }
 
@@ -290,12 +290,12 @@ class GroupTest extends TestCase
         $this->groupModel->expects($this->any())->method('getData')->willReturn([]);
         $this->groupModel->expects($this->any())->method('isSaveAllowed')->willReturn(true);
         $this->groupModel->expects($this->any())->method('getStoredData')->willReturn([]);
-        
+
         // Key test: verify that setCode is called with correctly truncated multibyte string
         $this->groupModel->expects($this->once())
             ->method('getCode')
             ->willReturn($input);
-        
+
         $this->groupModel->expects($this->once())
             ->method('setCode')
             ->with($expected);
@@ -303,13 +303,13 @@ class GroupTest extends TestCase
         $selectMock = $this->getMockBuilder(Select::class)
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         $dbAdapter = $this->createMock(AdapterInterface::class);
         $dbAdapter->method('describeTable')->willReturn(['customer_group_id' => []]);
         $dbAdapter->method('update')->willReturnSelf();
         $dbAdapter->method('select')->willReturn($selectMock);
         $selectMock->method('from')->willReturnSelf();
-        
+
         $this->resource->expects($this->any())->method('getConnection')->willReturn($dbAdapter);
 
         $this->groupResourceModel->save($this->groupModel);
@@ -325,32 +325,32 @@ class GroupTest extends TestCase
         return [
             'ascii_within_limit' => [
                 'input' => str_repeat('a', 32),
-                'expected' => str_repeat('a', 32)
+                'expected' => str_repeat('a', 32),
             ],
             'ascii_over_limit' => [
                 'input' => str_repeat('a', 40),
-                'expected' => str_repeat('a', 32)
+                'expected' => str_repeat('a', 32),
             ],
             'multibyte_umlaut_within_limit' => [
                 'input' => str_repeat('ö', 32),
-                'expected' => str_repeat('ö', 32)
+                'expected' => str_repeat('ö', 32),
             ],
             'multibyte_umlaut_over_limit' => [
                 'input' => str_repeat('ö', 40),
-                'expected' => str_repeat('ö', 32)
+                'expected' => str_repeat('ö', 32),
             ],
             'multibyte_chinese_within_limit' => [
                 'input' => str_repeat('中', 32),
-                'expected' => str_repeat('中', 32)
+                'expected' => str_repeat('中', 32),
             ],
             'multibyte_chinese_over_limit' => [
                 'input' => str_repeat('中', 40),
-                'expected' => str_repeat('中', 32)
+                'expected' => str_repeat('中', 32),
             ],
             'mixed_multibyte' => [
                 'input' => str_repeat('aö', 20), // 40 characters
-                'expected' => str_repeat('aö', 16) // 32 characters
-            ]
+                'expected' => str_repeat('aö', 16), // 32 characters
+            ],
         ];
     }
 }

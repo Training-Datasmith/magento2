@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Integration\Plugin\Model;
 
+use Magento\Framework\Model\AbstractModel;
 use Magento\Integration\Model\AdminTokenService;
 use Magento\User\Model\User;
-use Magento\Framework\Model\AbstractModel;
 
 /**
  * Plugin to delete admin tokens when admin becomes inactive

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -60,7 +62,7 @@ class DefaultOrder extends \Magento\Framework\View\Element\Template
         if (is_array($value)) {
             return sprintf('%d', $value['qty'])
                 . ' x ' . $this->escapeHtml($value['title'])
-                . " " . $this->getItem()->getOrder()->formatPrice($value['price']);
+                . ' ' . $this->getItem()->getOrder()->formatPrice($value['price']);
         } else {
             return $this->escapeHtml($value);
         }

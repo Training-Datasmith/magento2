@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Edit;
 
 class Index extends \Magento\Sales\Controller\Adminhtml\Order\Create\Index
@@ -12,7 +15,7 @@ class Index extends \Magento\Sales\Controller\Adminhtml\Order\Create\Index
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
+    public const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
 
     /**
      * Index page

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Amqp;
 
 /**
@@ -59,7 +62,7 @@ class QueueFactory implements \Magento\Framework\MessageQueue\QueueFactoryInterf
             $this->instanceName,
             [
                 'amqpConfig' => $this->configPool->get($connectionName),
-                'queueName' => $queueName
+                'queueName' => $queueName,
             ]
         );
     }

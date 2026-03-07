@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filter;
 
 use Exception;
@@ -191,7 +194,7 @@ class Input implements FilterInterface
         array $filterData
     ) {
         if (!isset($filterData['method']) || empty($filterData['method'])) {
-            throw new FilterException("Helper filtration method is not set");
+            throw new FilterException('Helper filtration method is not set');
         }
         if (!isset($filterData['args']) || empty($filterData['args'])) {
             $filterData['args'] = [];

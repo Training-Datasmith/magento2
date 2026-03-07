@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model;
 
-use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Config\Model\Config\Source\Nooptreq;
 use Magento\Directory\Model\Currency;
@@ -16,6 +19,7 @@ use Magento\Directory\Model\ResourceModel\Region as RegionResource;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\ExtensionAttributesFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -36,6 +40,7 @@ use Magento\Sales\Model\Order\CreditmemoValidator;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\ProductOption;
 use Magento\Sales\Model\Order\Status\HistoryFactory;
+use Magento\Sales\Model\Order\StatusLabel;
 use Magento\Sales\Model\ResourceModel\Order\Address\Collection;
 use Magento\Sales\Model\ResourceModel\Order\Creditmemo\Collection as CreditmemoCollection;
 use Magento\Sales\Model\ResourceModel\Order\Invoice\Collection as InvoiceCollection;
@@ -46,8 +51,6 @@ use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection as ShipmentColle
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Track\Collection as TrackCollection;
 use Magento\Sales\Model\ResourceModel\Order\Status\History\Collection as HistoryCollection;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Area;
-use Magento\Sales\Model\Order\StatusLabel;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -574,7 +577,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
         $orderCollection = $this->getSalesOrderCollection(
             [
                 'increment_id' => $incrementId,
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ]
         );
         return $orderCollection->getFirstItem();
@@ -819,7 +822,7 @@ class Order extends AbstractModel implements EntityInterface, OrderInterface
             self::STATE_PAYMENT_REVIEW,
             self::STATE_COMPLETE,
             self::STATE_CLOSED,
-            self::STATE_HOLDED
+            self::STATE_HOLDED,
         ];
         if (in_array($this->getState(), $notHoldableStates)) {
             return false;

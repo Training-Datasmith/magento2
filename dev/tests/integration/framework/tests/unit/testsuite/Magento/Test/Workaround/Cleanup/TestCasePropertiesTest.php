@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Test\Workaround\Cleanup;
 
+use Magento\TestFramework\Workaround\Cleanup\TestCaseProperties;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite;
-use Magento\TestFramework\Workaround\Cleanup\TestCaseProperties;
 
 /**
  * Test class for \Magento\TestFramework\Workaround\Cleanup\TestCaseProperties.
@@ -28,7 +30,7 @@ class TestCasePropertiesTest extends TestCase
         '_testPropertyArray' => ['name' => '_testPropertyArray', 'is_static' => false],
         'testPublicStatic' => ['name' => 'testPublicStatic', 'is_static' => true],
         '_testProtectedStatic' => ['name' => '_testProtectedStatic', 'is_static' => true],
-        '_testPrivateStatic' => ['name' => '_testPrivateStatic', 'is_static' => true]
+        '_testPrivateStatic' => ['name' => '_testPrivateStatic', 'is_static' => true],
     ];
 
     /**

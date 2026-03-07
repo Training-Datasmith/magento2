@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Analytics\Block\Adminhtml\System\Config;
 
-use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Data\Form\Element\TimeFactory;
+use Magento\Framework\Data\FormFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 

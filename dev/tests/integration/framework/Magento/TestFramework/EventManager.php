@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,6 +14,7 @@
  *   fire event       - publish message
  *   event subscriber - message subscriber
  */
+
 namespace Magento\TestFramework;
 
 class EventManager

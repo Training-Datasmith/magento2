@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class MassDeleteTest extends TestCase
             MassDelete::class,
             [
                 'context' => $this->context,
-                'resultPageFactory' => $this->pageFactory
+                'resultPageFactory' => $this->pageFactory,
             ]
         );
     }

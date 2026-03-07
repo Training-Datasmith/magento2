@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Customer;
 
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Catalog\Test\Fixture\ProductStock as ProductStockFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetGuestEmail as SetGuestEmailFixture;
+use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\Registry;
 use Magento\Indexer\Test\Fixture\Indexer;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask;
@@ -27,11 +33,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
-use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 
 /**
  * Test for placing an order for customer
@@ -91,7 +92,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -135,7 +136,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -170,7 +171,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -207,7 +208,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -247,7 +248,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -292,7 +293,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -335,7 +336,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -348,7 +349,7 @@ class PlaceOrderTest extends GraphQlAbstract
             [
                 'prod_id' => '$product.id$',
                 'is_in_stock' => 0,
-                'prod_qty' => 0
+                'prod_qty' => 0,
             ],
             'prodStock'
         ),
@@ -387,7 +388,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -400,7 +401,7 @@ class PlaceOrderTest extends GraphQlAbstract
             [
                 'prod_id' => '$product.id$',
                 'is_in_stock' => 0,
-                'prod_qty' => 0
+                'prod_qty' => 0,
             ],
             'prodStock'
         ),
@@ -472,7 +473,7 @@ class PlaceOrderTest extends GraphQlAbstract
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),
@@ -532,7 +533,7 @@ QUERY;
             CustomerCart::class,
             [
                 'customer_id' => '$customer.id$',
-                'reserved_order_id' => 'test_quote'
+                'reserved_order_id' => 'test_quote',
             ],
             'cart'
         ),

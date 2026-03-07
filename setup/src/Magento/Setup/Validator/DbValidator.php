@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +17,6 @@ use Magento\Setup\Module\ConnectionFactory;
  */
 class DbValidator
 {
-
     /**
      * Db prefix max length
      */
@@ -142,13 +143,13 @@ class DbValidator
     private function checkDatabaseName(\Magento\Framework\DB\Adapter\AdapterInterface $connection, $dbName)
     {
         try {
-            $query = sprintf("SHOW TABLES FROM `%s`", $dbName);
+            $query = sprintf('SHOW TABLES FROM `%s`', $dbName);
             $connection->query($query)->fetchAll(\PDO::FETCH_COLUMN, 0);
             return true;
         } catch (\Exception $e) {
             throw new \Magento\Setup\Exception(
                 "Database '{$dbName}' does not exist "
-                . "or specified database server user does not have privileges to access this database."
+                . 'or specified database server user does not have privileges to access this database.'
             );
         }
     }
@@ -179,12 +180,12 @@ class DbValidator
             'SHOW VIEW',
             'CREATE ROUTINE',
             'ALTER ROUTINE',
-            'TRIGGER'
+            'TRIGGER',
         ];
 
         // check global privileges
         // phpcs:ignore Magento2.SQL.RawQuery
-        $userPrivilegesQuery = "SELECT PRIVILEGE_TYPE FROM USER_PRIVILEGES "
+        $userPrivilegesQuery = 'SELECT PRIVILEGE_TYPE FROM USER_PRIVILEGES '
             . "WHERE REPLACE(GRANTEE, '\'', '') = current_user()";
         $grantInfo = $connection->query($userPrivilegesQuery)->fetchAll(\PDO::FETCH_NUM);
         if (empty(array_diff($requiredPrivileges, $this->parseGrantInfo($grantInfo)))) {
@@ -193,7 +194,7 @@ class DbValidator
 
         // check database privileges
         // phpcs:ignore Magento2.SQL.RawQuery
-        $schemaPrivilegesQuery = "SELECT PRIVILEGE_TYPE FROM SCHEMA_PRIVILEGES " .
+        $schemaPrivilegesQuery = 'SELECT PRIVILEGE_TYPE FROM SCHEMA_PRIVILEGES ' .
             "WHERE '$dbName' LIKE TABLE_SCHEMA AND REPLACE(GRANTEE, '\'', '') = current_user()";
         $grantInfo = $connection->query($schemaPrivilegesQuery)->fetchAll(\PDO::FETCH_NUM);
         if (empty(array_diff($requiredPrivileges, $this->parseGrantInfo($grantInfo)))) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class CheckAndUpdateQtyObserver implements ObserverInterface
      * @param Observer $observer
      * @return void
      */
-    public function execute(Observer $observer):void
+    public function execute(Observer $observer): void
     {
         $item = $observer->getEvent()->getItem();
 

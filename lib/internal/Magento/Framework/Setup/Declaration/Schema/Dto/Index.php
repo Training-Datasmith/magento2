@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto;
 
 /**
@@ -17,12 +20,12 @@ class Index extends GenericElement implements
     /**
      * Element type.
      */
-    const TYPE = 'index';
+    public const TYPE = 'index';
 
     /**
      * Fulltext index type.
      */
-    const FULLTEXT_INDEX = "fulltext";
+    public const FULLTEXT_INDEX = 'fulltext';
 
     /**
      * @var Table
@@ -95,7 +98,7 @@ class Index extends GenericElement implements
         return [
             'type' => $this->getType(),
             'columns' => $this->getColumnNames(),
-            'indexType' => $this->getIndexType()
+            'indexType' => $this->getIndexType(),
         ];
     }
 

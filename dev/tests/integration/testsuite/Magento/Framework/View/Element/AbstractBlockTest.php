@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element;
 
 use Magento\Framework\Math\Random;
@@ -525,7 +528,7 @@ class AbstractBlockTest extends \PHPUnit\Framework\TestCase
                 'data' => '<two>three</two>',
                 'expected' => '&lt;two&gt;three&lt;/two&gt;',
             ],
-            'string data no conversion' => ['data' => 'one', 'expected' => 'one']
+            'string data no conversion' => ['data' => 'one', 'expected' => 'one'],
         ];
     }
 
@@ -659,17 +662,17 @@ class AbstractBlockTest extends \PHPUnit\Framework\TestCase
                 \Magento\Framework\View\LayoutInterface::class
             );
         }
-        
+
         if ($type === AbstractBlock::class) {
             $type = \Magento\Framework\View\Element\Text::class;
         }
-        
+
         $block = $this->_layout->createBlock($type, $name, ['data' => ['module_name' => 'Magento_Theme']]);
-        
+
         if ($alias !== null) {
             $block->setNameInLayout($name);
         }
-        
+
         return $block;
     }
 }

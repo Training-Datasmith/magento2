@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Translation\App\Config;
 
 use Magento\Framework\App\State\ReloadProcessorInterface;

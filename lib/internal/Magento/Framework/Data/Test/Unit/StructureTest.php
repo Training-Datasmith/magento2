@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Data\Test\Unit;
 
 use Magento\Framework\Data\Structure;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class StructureTest extends TestCase
 {
@@ -53,7 +54,7 @@ class StructureTest extends TestCase
                     'two' => [Structure::PARENT => 'one'],
                     'three' => [Structure::PARENT => 'one'],
                     'four' => [Structure::CHILDREN => []],
-                ]
+                ],
             ],
             [
                 [
@@ -65,8 +66,8 @@ class StructureTest extends TestCase
                     ],
                     'two' => [Structure::PARENT => 'one'],
                     'three' => [],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -136,7 +137,7 @@ class StructureTest extends TestCase
             ],
             'group references to non-existing element' => [
                 ['one' => [Structure::GROUPS => ['two' => 'two']]],
-            ]
+            ],
         ];
     }
 
@@ -256,7 +257,7 @@ class StructureTest extends TestCase
         return [
             [Structure::CHILDREN],
             [Structure::PARENT],
-            [Structure::GROUPS]
+            [Structure::GROUPS],
         ];
     }
 
@@ -358,7 +359,7 @@ class StructureTest extends TestCase
             [-2, 3],
             [-3, 2],
             [-4, 1],
-            [-5, 0]
+            [-5, 0],
         ];
     }
 
@@ -452,7 +453,7 @@ class StructureTest extends TestCase
             // 1 2 3 4 5 x*
             [5, 0, 1],
             [5, 1, 2],
-            [5, 5, 6]
+            [5, 5, 6],
         ];
     }
 
@@ -508,7 +509,7 @@ class StructureTest extends TestCase
             [2, 'x', 999, 6],
             [2, 'x', -1, 3],
             [2, 'x', -2, 2],
-            [2, 'x', -999, 1]
+            [2, 'x', -999, 1],
         ];
     }
 

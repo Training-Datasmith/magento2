@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class BundleQuantityTest extends AbstractModifierTestCase
                     BundleQuantity::CODE_QTY_CONTAINER  => [
                         'componentType' => 'testComponent',
                     ],
-                ]
+                ],
             ],
         ];
         $modifiedMeta = $this->getModel()->modifyMeta($sourceMeta);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Service\Response\Validator;
 
 use Magento\Framework\DataObject;
@@ -17,17 +20,17 @@ class SecureToken implements ValidatorInterface
     /**
      * Secure Token Error: Secure Token already been used
      */
-    const ST_ALREADY_USED = 160;
+    public const ST_ALREADY_USED = 160;
 
     /**
      * Secure Token Error: Transaction using secure token is already in progress
      */
-    const ST_TRANSACTION_IN_PROCESS = 161;
+    public const ST_TRANSACTION_IN_PROCESS = 161;
 
     /**
      * Secure Token Error: Secure Token Expired
      */
-    const ST_EXPIRED = 162;
+    public const ST_EXPIRED = 162;
 
     /**
      * Validate data

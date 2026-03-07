@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
+use Magento\Deploy\Console\InputValidator;
 use Magento\Deploy\Package\Package;
 use Magento\Deploy\Package\PackageFile;
 use Magento\Framework\App\State as AppState;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Locale\ResolverInterface as LocaleResolver;
 use Magento\Framework\View\Asset\ContentProcessorException;
-use Magento\Deploy\Console\InputValidator;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -258,7 +261,7 @@ class DeployPackage
     {
         $info = [
             'count' => $this->count,
-            'last' => $file ? $file->getSourcePath() : ''
+            'last' => $file ? $file->getSourcePath() : '',
         ];
         $this->deployStaticFile->writeTmpFile('info.json', $package->getPath(), json_encode($info));
 

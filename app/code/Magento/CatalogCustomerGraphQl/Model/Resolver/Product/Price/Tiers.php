@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\CatalogCustomerGraphQl\Model\Resolver\Product\Price;
 
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
-use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
-use Magento\Customer\Model\GroupManagement;
 use Magento\Catalog\Api\Data\ProductTierPriceInterface;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderPool as PriceProviderPool;
+use Magento\Customer\Model\GroupManagement;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 
 /**

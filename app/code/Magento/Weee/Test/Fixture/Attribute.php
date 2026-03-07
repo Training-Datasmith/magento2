@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ class Attribute extends \Magento\Catalog\Test\Fixture\Attribute
 {
     private const DEFAULT_DATA = [
         'frontend_input' => 'weee',
-        'backend_type' => null
+        'backend_type' => null,
     ];
 
     /**

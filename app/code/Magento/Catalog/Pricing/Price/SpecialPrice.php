@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Catalog\Pricing\Price;
 
+use Magento\Catalog\Model\Pricing\SpecialPriceService;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
@@ -13,7 +16,6 @@ use Magento\Framework\Pricing\Price\AbstractPrice;
 use Magento\Framework\Pricing\Price\BasePriceProviderInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
-use Magento\Catalog\Model\Pricing\SpecialPriceService;
 
 /**
  * Special price model

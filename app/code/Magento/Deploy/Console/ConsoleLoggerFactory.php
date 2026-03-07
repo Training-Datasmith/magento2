@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -58,7 +61,7 @@ class ConsoleLoggerFactory
         $logger = $this->objectManagerProvider->get()->create($this->type, ['output' => $output]);
         if (!$logger instanceof LoggerInterface) {
             throw new LocalizedException(
-                new Phrase("Wrong logger interface specified.")
+                new Phrase('Wrong logger interface specified.')
             );
         }
         return $logger;

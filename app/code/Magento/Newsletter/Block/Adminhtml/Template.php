@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter templates page content block
  */
+
 namespace Magento\Newsletter\Block\Adminhtml;
 
 class Template extends \Magento\Backend\Block\Template
@@ -29,7 +32,7 @@ class Template extends \Magento\Backend\Block\Template
             [
                 'label' => __('Add New Template'),
                 'onclick' => "window.location='" . $this->getCreateUrl() . "'",
-                'class' => 'add primary add-template'
+                'class' => 'add primary add-template',
             ]
         );
 

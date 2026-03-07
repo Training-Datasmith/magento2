@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,5 +20,5 @@ return [
     ['customer.*.one', '/^customer\.[^\.]+\.one$/'],
     ['*.created.*', '/^[^\.]+\.created\.[^\.]+$/'],
     ['*.created.#', '/^[^\.]+\.created\..+$/'],
-    ['#', '/^.+$/']
+    ['#', '/^.+$/'],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -29,14 +30,14 @@ class UiComponentTypeResolverTest extends TestCase
         $this->contentTypeMap = [
             'xml' => 'application/xml',
             'json' => 'application/json',
-            'html' => 'text/html'
+            'html' => 'text/html',
         ];
         $this->model = new UiComponentTypeResolver($this->contentTypeMap);
     }
 
     /**
      * @param string $acceptType
-     * @param string $contentType     
+     * @param string $contentType
      */
     #[DataProvider('resolveDataProvider')]
     public function testResolve(string $acceptType, string $contentType)
@@ -56,7 +57,7 @@ class UiComponentTypeResolverTest extends TestCase
             ['json', 'application/json'],
             ['xml', 'application/xml'],
             ['html', 'text/html'],
-            ['undefined', UiComponentTypeResolver::DEFAULT_CONTENT_TYPE]
+            ['undefined', UiComponentTypeResolver::DEFAULT_CONTENT_TYPE],
         ];
     }
 }

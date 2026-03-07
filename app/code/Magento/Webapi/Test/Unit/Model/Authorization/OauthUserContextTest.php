@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class OauthUserContextTest extends TestCase
                 'findByConsumerId',
                 'findActiveIntegrationByConsumerId',
                 'delete',
-                'getSelectedResources'
+                'getSelectedResources',
             ]
         );
 
@@ -93,7 +94,7 @@ class OauthUserContextTest extends TestCase
                 'request' => $this->request,
                 'integrationService' => $this->integrationService,
                 'oauthService' => $this->oauthService,
-                'oauthHelper' => $this->oauthRequestHelper
+                'oauthHelper' => $this->oauthRequestHelper,
             ]
         );
     }

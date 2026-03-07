@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -88,7 +90,7 @@ class ImageTest extends \PHPUnit\Framework\TestCase
                 'setWatermarkImageOpacity',
                 'setWatermarkWidth',
                 'setWatermarkHeight',
-                'watermark'
+                'watermark',
             ]
         );
         $processor->expects($this->once())

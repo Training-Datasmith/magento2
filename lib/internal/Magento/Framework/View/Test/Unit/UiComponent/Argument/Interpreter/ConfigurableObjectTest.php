@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\ObjectManager\ConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\Argument\Interpreter\ConfigurableObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit tests for ConfigurableObject
@@ -164,14 +165,14 @@ class ConfigurableObjectTest extends TestCase
                 ],
                 'MyObject',
                 [],
-                []
+                [],
             ],
             // Test alternative data syntax
             [
                 [
                     'argument' => [
-                        'class' => ['value' => 'MyFooClass']
-                    ]
+                        'class' => ['value' => 'MyFooClass'],
+                    ],
                 ],
                 'MyFooClass',
                 [
@@ -181,9 +182,9 @@ class ConfigurableObjectTest extends TestCase
                     ['skipme', []],
                     ['dontcare', []],
                     ['unrelated', []],
-                    [\Foo\Bar\ClassA::class, []]
+                    [\Foo\Bar\ClassA::class, []],
                 ],
-                []
+                [],
             ],
             // Test arguments
             [
@@ -191,7 +192,7 @@ class ConfigurableObjectTest extends TestCase
                     'argument' => [
                         'class' => ['value' => 'MyFooClass'],
                         'myarg' => ['value' => 'bar'],
-                    ]
+                    ],
                 ],
                 'MyFooClass',
                 [
@@ -201,9 +202,9 @@ class ConfigurableObjectTest extends TestCase
                     ['skipme', []],
                     ['dontcare', []],
                     ['unrelated', []],
-                    [\Foo\Bar\ClassA::class, []]
+                    [\Foo\Bar\ClassA::class, []],
                 ],
-                ['myarg' => 'bar']
+                ['myarg' => 'bar'],
             ],
             // Test multiple matching whitelisted classes
             [
@@ -211,7 +212,7 @@ class ConfigurableObjectTest extends TestCase
                     'argument' => [
                         'class' => ['value' => 'MyFooClass'],
                         'myarg' => ['value' => 'bar'],
-                    ]
+                    ],
                 ],
                 'MyFooClass',
                 [
@@ -222,9 +223,9 @@ class ConfigurableObjectTest extends TestCase
                     ['dontcare', []],
                     ['unrelated', [\Foo\Bar\InterfaceA::class]],
                     [\Foo\Bar\ClassA::class, []],
-                    [\Foo\Bar\InterfaceA::class, []]
+                    [\Foo\Bar\InterfaceA::class, []],
                 ],
-                ['myarg' => 'bar']
+                ['myarg' => 'bar'],
             ],
         ];
     }
@@ -234,30 +235,30 @@ class ConfigurableObjectTest extends TestCase
         return [
             [
                 [
-                    'notvalid' => 'sup'
+                    'notvalid' => 'sup',
                 ],
                 '',
                 [],
                 \InvalidArgumentException::class,
-                'Node "argument" required for this type.'
+                'Node "argument" required for this type.',
             ],
             [
                 [
                     'argument' => [
-                        'notclass' => ['value' => 'doesntmatter']
-                    ]
+                        'notclass' => ['value' => 'doesntmatter'],
+                    ],
                 ],
                 '',
                 [],
                 \InvalidArgumentException::class,
-                'Node "argument" with name "class" is required for this type.'
+                'Node "argument" with name "class" is required for this type.',
             ],
             [
                 [
                     'argument' => [
                         'class' => ['value' => 'MyFooClass'],
                         'myarg' => ['value' => 'bar'],
-                    ]
+                    ],
                 ],
                 'MyFooClass',
                 [
@@ -269,7 +270,7 @@ class ConfigurableObjectTest extends TestCase
                     ['unrelated', []],
                 ],
                 \InvalidArgumentException::class,
-                'Class argument is invalid: MyFooClass'
+                'Class argument is invalid: MyFooClass',
             ],
             [
                 [

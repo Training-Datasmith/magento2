@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Rest\Swagger;
 
 use Magento\Framework\Api\SimpleDataObjectConverter;
@@ -232,7 +235,7 @@ class Generator extends AbstractSchemaGenerator
     protected function generatePathInfo(string $methodName, array $httpMethodData, string $tagName, string $uri): array
     {
         $methodData = $httpMethodData[Converter::KEY_METHOD];
-        $uri = ucwords(str_replace(['/{', '}/', '{', '}'], '/', $uri), "/");
+        $uri = ucwords(str_replace(['/{', '}/', '{', '}'], '/', $uri), '/');
 
         $operationId = ucfirst($methodName) . str_replace(['/', '-'], '', $uri);
         $pathInfo = [
@@ -362,7 +365,7 @@ class Generator extends AbstractSchemaGenerator
                 'name' => $pathParam,
                 'in' => 'path',
                 'type' => 'string',
-                'required' => true
+                'required' => true,
             ];
         }
 
@@ -562,11 +565,11 @@ class Generator extends AbstractSchemaGenerator
                         ],
                         'fieldName' => [
                             'type' => 'string',
-                            'description' => 'Missing or invalid field name'
+                            'description' => 'Missing or invalid field name',
                         ],
                         'fieldValue' => [
                             'type' => 'string',
-                            'description' => 'Incorrect field value'
+                            'description' => 'Incorrect field value',
                         ],
                     ],
                 ],
@@ -638,7 +641,7 @@ class Generator extends AbstractSchemaGenerator
      */
     protected function toLowerCaseDashSeparated($typeName)
     {
-        return strtolower(preg_replace('/(.)([A-Z])/', "$1-$2", $typeName));
+        return strtolower(preg_replace('/(.)([A-Z])/', '$1-$2', $typeName));
     }
 
     /**
@@ -709,8 +712,8 @@ class Generator extends AbstractSchemaGenerator
             return [
                 $this->handlePrimitive($name, $prefix) => [
                     'type' => ($type && substr($type, -2) === '[]') ? $type : $this->getSimpleType($type),
-                    'description' => $description
-                ]
+                    'description' => $description,
+                ],
             ];
         }
         if ($this->typeProcessor->isArrayType($type)) {
@@ -781,7 +784,7 @@ class Generator extends AbstractSchemaGenerator
     {
         $parts = explode('/', $uri);
         $count = count($parts);
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             if (strpos($parts[$i] ?? '', ':') === 0) {
                 $parts[$i] = '{' . substr($parts[$i] ?? '', 1) . '}';
             }
@@ -803,7 +806,7 @@ class Generator extends AbstractSchemaGenerator
             'name' => $parameterName,
             'in' => 'path',
             'type' => $this->getSimpleType($parameterInfo['type']),
-            'required' => true
+            'required' => true,
         ];
         if ($description) {
             $param['description'] = $description;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Sales\Sales;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -95,8 +98,8 @@ class GridTest extends \PHPUnit\Framework\TestCase
     {
         $time = time();
         return [
-            [date("Y-m-d", $time + 48 * 60 * 60), date("Y-m-d", $time + 72 * 60 * 60), false],
-            [date("Y-m-d", $time - 48 * 60 * 60), date("Y-m-d", $time + 48 * 60 * 60), true],
+            [date('Y-m-d', $time + 48 * 60 * 60), date('Y-m-d', $time + 72 * 60 * 60), false],
+            [date('Y-m-d', $time - 48 * 60 * 60), date('Y-m-d', $time + 48 * 60 * 60), true],
             [null, null, false],
         ];
     }

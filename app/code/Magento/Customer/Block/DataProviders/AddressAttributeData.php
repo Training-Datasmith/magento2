@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Block\DataProviders;
 
-use Magento\Framework\Escaper;
-use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Customer\Api\AddressMetadataInterface;
+use Magento\Framework\Escaper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Provides address attribute data into template.

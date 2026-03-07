@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Dictionary\Options;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
 
 /**
@@ -83,12 +85,12 @@ class Resolver implements ResolverInterface
                                 $this->directory . '/lib/web/varien/',
                             ]
                         ),
-                        'fileMask' => '/\.(js|phtml)$/'
+                        'fileMask' => '/\.(js|phtml)$/',
                     ],
                     [
                         'type' => 'xml',
                         'paths' => array_merge($moduleDirs, $themeDirs),
-                        'fileMask' => '/\.xml$/'
+                        'fileMask' => '/\.xml$/',
                     ],
                 ];
             } else {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Block\Catalog\Product;
 
 use Magento\Catalog\Pricing\Price\FinalPrice;
@@ -106,7 +109,7 @@ class Links extends \Magento\Catalog\Block\Product\AbstractProduct
             $amount = $finalPrice->getCustomAmount($link->getPrice());
             $linksConfig[$link->getId()] = [
                 'finalPrice' => $amount->getValue(),
-                'basePrice' => $amount->getBaseAmount()
+                'basePrice' => $amount->getBaseAmount(),
             ];
         }
 

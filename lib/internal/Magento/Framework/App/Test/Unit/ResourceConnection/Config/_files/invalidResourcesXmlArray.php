@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,14 +11,14 @@ return [
         '<?xml version="1.0"?><config></config>',
         [
             "Element 'config': Missing child element(s). Expected is ( resource ).\nLine: 1\nThe xml was: \n" .
-            "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n"
+            "0:<?xml version=\"1.0\"?>\n1:<config/>\n2:\n",
         ],
     ],
     'resource_without_required_name_attribute' => [
         '<?xml version="1.0"?><config><resource /></config>',
         [
             "Element 'resource': The attribute 'name' is required but missing.\nLine: 1\nThe xml was: \n" .
-            "0:<?xml version=\"1.0\"?>\n1:<config><resource/></config>\n2:\n"
+            "0:<?xml version=\"1.0\"?>\n1:<config><resource/></config>\n2:\n",
         ],
     ],
     'resource_name_attribute_invalid_value' => [
@@ -25,7 +26,7 @@ return [
         [
             "Element 'resource', attribute 'name': [facet 'pattern'] The value 'testinvalidname$' is not " .
             "accepted by the pattern '[A-Za-z_0-9]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><resource name=\"testinvalidname$\"/></config>\n2:\n"
+            "1:<config><resource name=\"testinvalidname$\"/></config>\n2:\n",
         ],
     ],
     'resource_extends_attribute_invalid_value' => [
@@ -33,7 +34,7 @@ return [
         [
             "Element 'resource', attribute 'extends': [facet 'pattern'] The value 'test@' is not accepted " .
             "by the pattern '[A-Za-z_0-9]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><resource name=\"test_name\" extends=\"test@\"/></config>\n2:\n"
+            "1:<config><resource name=\"test_name\" extends=\"test@\"/></config>\n2:\n",
         ],
     ],
     'resource_connection_attribute_invalid_value' => [
@@ -41,7 +42,7 @@ return [
         [
             "Element 'resource', attribute 'connection': [facet 'pattern'] The value 'test#' is not accepted " .
             "by the pattern '[A-Za-z_0-9]+'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n" .
-            "1:<config><resource name=\"test_name\" connection=\"test#\"/></config>\n2:\n"
+            "1:<config><resource name=\"test_name\" connection=\"test#\"/></config>\n2:\n",
         ],
     ],
     'resource_with_notallowed_attribute' => [
@@ -49,7 +50,7 @@ return [
         [
             "Element 'resource', attribute 'notallowed': The attribute 'notallowed' is not allowed.\nLine: 1\n" .
             "The xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><resource name=\"test_name\" " .
-            "notallowed=\"test\"/></config>\n2:\n"
+            "notallowed=\"test\"/></config>\n2:\n",
         ],
     ],
     'resource_with_same_name_value' => [
@@ -57,7 +58,7 @@ return [
         [
             "Element 'resource': Duplicate key-sequence ['test_name'] in unique identity-constraint " .
             "'uniqueResourceName'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n1:<config>" .
-            "<resource name=\"test_name\"/><resource name=\"test_name\"/></config>\n2:\n"
+            "<resource name=\"test_name\"/><resource name=\"test_name\"/></config>\n2:\n",
         ],
-    ]
+    ],
 ];

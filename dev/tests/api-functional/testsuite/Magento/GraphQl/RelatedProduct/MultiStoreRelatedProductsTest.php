@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -36,22 +37,22 @@ class MultiStoreRelatedProductsTest extends GraphQlAbstract
             'website_id' => '$website2.id$'], as: 'store_group2'),
         DataFixture(StoreFixture::class, ['name' => 'Store 2',
             'store_group_id' => '$store_group2.id$'], as: 'store2'),
-        DataFixture(ProductFixture::class, ['name' =>'Website 1 Product A',
+        DataFixture(ProductFixture::class, ['name' => 'Website 1 Product A',
             'sku' => 'Website 1 Product A', 'price' => 20,
             'website_ids' => ['$website1.id$']], as: 'product2'),
-        DataFixture(ProductFixture::class, ['name' =>'Website 1 Product B',
+        DataFixture(ProductFixture::class, ['name' => 'Website 1 Product B',
             'sku' => 'Website 1 Product B', 'price' => 30,
             'website_ids' => ['$website1.id$']], as: 'product3'),
-        DataFixture(ProductFixture::class, ['name' =>'Website 2 Product Y',
+        DataFixture(ProductFixture::class, ['name' => 'Website 2 Product Y',
             'sku' => 'Website 2 Product Y', 'price' => 20,
             'website_ids' => ['$website2.id$']], as: 'product4'),
-        DataFixture(ProductFixture::class, ['name' =>'Website 2 Product Z',
+        DataFixture(ProductFixture::class, ['name' => 'Website 2 Product Z',
             'sku' => 'Website 2 Product Z', 'price' => 30,
             'website_ids' => ['$website2.id$']], as: 'product5'),
-        DataFixture(ProductFixture::class, ['name' =>'Website 1-2 Product M',
+        DataFixture(ProductFixture::class, ['name' => 'Website 1-2 Product M',
             'sku' => 'Website 1-2 Product M', 'price' => 30,
             'website_ids' => ['$website1.id$', '$website2.id$']], as: 'product6'),
-        DataFixture(ProductFixture::class, ['name' =>'Global Product', 'sku' => 'global-product', 'price' => 10,
+        DataFixture(ProductFixture::class, ['name' => 'Global Product', 'sku' => 'global-product', 'price' => 10,
             'website_ids' => [1, '$website1.id$', '$website2.id$'],
             'product_links' => ['$product2.sku$','$product3.sku$',
                 '$product4.sku$','$product5.sku$','$product6.sku$']], as: 'product1'),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class DbStorage extends BaseDbStorage
         $select = $this->connection->select();
         $select->from(
             [
-                'url_rewrite' => $this->resource->getTableName(self::TABLE_NAME)
+                'url_rewrite' => $this->resource->getTableName(self::TABLE_NAME),
             ]
         );
         $select->joinLeft(

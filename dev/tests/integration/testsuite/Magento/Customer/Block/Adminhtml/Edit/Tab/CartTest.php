@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -63,12 +64,12 @@ class CartTest extends AbstractCartTest
         $this->block->toHtml();
         if ($contains) {
             $this->assertStringContainsString(
-                "We couldn&#039;t find any records",
+                'We couldn&#039;t find any records',
                 $this->block->getGridParentHtml()
             );
         } else {
             $this->assertStringNotContainsString(
-                "We couldn&#039;t find any records",
+                'We couldn&#039;t find any records',
                 $this->block->getGridParentHtml()
             );
         }
@@ -85,12 +86,12 @@ class CartTest extends AbstractCartTest
             [
                  6,
                  false,
-                 true
+                 true,
             ],
             [
                  self::CUSTOMER_ID_VALUE,
                  true,
-                 false
+                 false,
             ],
         ];
     }
@@ -127,7 +128,7 @@ class CartTest extends AbstractCartTest
             ->getMock();
         $this->block->setCollection($mockCollection);
         $this->assertStringContainsString(
-            "<div class=\"admin__data-grid-header admin__data-grid-toolbar\"",
+            '<div class="admin__data-grid-header admin__data-grid-toolbar"',
             $this->block->getGridParentHtml()
         );
     }
@@ -152,9 +153,9 @@ class CartTest extends AbstractCartTest
     public function testGetHtml(): void
     {
         $html = $this->block->toHtml();
-        $this->assertStringContainsString("<div id=\"customer_cart_grid\"", $html);
-        $this->assertStringContainsString("<div class=\"admin__data-grid-header admin__data-grid-toolbar\"", $html);
-        $this->assertStringContainsString("customer_cart_gridJsObject = new varienGrid(\"customer_cart_grid\",", $html);
+        $this->assertStringContainsString('<div id="customer_cart_grid"', $html);
+        $this->assertStringContainsString('<div class="admin__data-grid-header admin__data-grid-toolbar"', $html);
+        $this->assertStringContainsString('customer_cart_gridJsObject = new varienGrid("customer_cart_grid",', $html);
         $this->assertStringContainsString(
             'backend\u002Fcustomer\u002Fcart_product_composite_cart\u002Fconfigure\u002Fcustomer_id\u002F'
             . self::CUSTOMER_ID_VALUE,

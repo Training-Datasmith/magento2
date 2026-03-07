@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Shipping\Controller\Adminhtml\Order\Shipment;
 
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Json\Helper\Data;
-use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
-use Magento\Backend\App\Action;
 use Magento\Framework\View\Result\LayoutFactory;
+use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
 use Magento\Sales\Model\Order\Shipment\Comment as ShipmentComment;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Comment as ShipmentCommentResource;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;

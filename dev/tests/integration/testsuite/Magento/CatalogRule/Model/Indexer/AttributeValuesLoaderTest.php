@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ namespace Magento\CatalogRule\Model\Indexer;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\CatalogRule\Model\Indexer\DynamicBatchSizeCalculator;
 use Magento\CatalogRule\Model\ResourceModel\Product\AttributeValuesLoader;
 use Magento\CatalogRule\Model\ResourceModel\Product\Collection;
 use Magento\Eav\Model\Config as EavConfig;

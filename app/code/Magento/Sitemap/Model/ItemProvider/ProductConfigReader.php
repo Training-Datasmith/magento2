@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ class ProductConfigReader implements ConfigReaderInterface
     /**#@+
      * Xpath config settings
      */
-    const XML_PATH_CHANGE_FREQUENCY = 'sitemap/product/changefreq';
-    const XML_PATH_PRIORITY = 'sitemap/product/priority';
+    public const XML_PATH_CHANGE_FREQUENCY = 'sitemap/product/changefreq';
+    public const XML_PATH_PRIORITY = 'sitemap/product/priority';
     /**#@-*/
 
     /**

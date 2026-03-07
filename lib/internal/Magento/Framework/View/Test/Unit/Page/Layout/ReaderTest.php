@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\View\Page\Layout\Reader
  */
+
 namespace Magento\Framework\View\Test\Unit\Page\Layout;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -90,7 +92,7 @@ class ReaderTest extends TestCase
                     'themeResolver' => $this->themeResolver,
                     'processorFactory' => $this->processorFactory,
                     'pageLayoutFileSource' => $this->pageLayoutFileSource,
-                    'reader' => $this->readerPool
+                    'reader' => $this->readerPool,
                 ]
             );
     }

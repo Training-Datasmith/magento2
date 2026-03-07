@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -57,7 +59,7 @@ class SqlCollector
 
             // process multi queries
             if ($sqlBindGroupAmount > 1) {
-                $valuesCount = count($bind)/$sqlBindGroupAmount;
+                $valuesCount = count($bind) / $sqlBindGroupAmount;
                 for ($i = 0; $i < $sqlBindGroupAmount; $i++) {
                     $binds[] = array_combine(
                         $fields,

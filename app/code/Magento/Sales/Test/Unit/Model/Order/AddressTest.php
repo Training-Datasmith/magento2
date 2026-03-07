@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\Sales\Test\Unit\Model\Order;
 
 use Magento\Directory\Model\Region;
 use Magento\Directory\Model\RegionFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AddressTest extends TestCase
 {
@@ -54,7 +55,7 @@ class AddressTest extends TestCase
         $this->address = $objectManager->getObject(
             Address::class,
             [
-                'regionFactory' => $this->regionFactoryMock
+                'regionFactory' => $this->regionFactoryMock,
             ]
         );
     }

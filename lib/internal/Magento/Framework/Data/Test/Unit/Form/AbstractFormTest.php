@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Data\Form\Element\Collection;
 use Magento\Framework\Data\Form\Element\CollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractFormTest extends TestCase
 {
@@ -189,7 +190,7 @@ class AbstractFormTest extends TestCase
                 [
                     'custom1' => 'custom_value1',
                 ],
-                'key1="value" custom1="custom_value1"'
+                'key1="value" custom1="custom_value1"',
             ],
             [
                 [
@@ -207,7 +208,7 @@ class AbstractFormTest extends TestCase
                     'custom4' => false,
                     'custom5' => null,
                 ],
-                'key1="value" custom1="custom_value1"'
+                'key1="value" custom1="custom_value1"',
             ],
         ];
     }

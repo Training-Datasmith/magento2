@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing\Address;
 
 use Magento\Customer\Model\ResourceModel\Address\Grid\Collection as GridCollection;

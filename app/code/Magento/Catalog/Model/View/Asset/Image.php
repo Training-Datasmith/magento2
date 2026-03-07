@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -177,7 +179,7 @@ class Image implements LocalInterface
             'width' => $this->miscParams['image_width'],
             'height' => $this->miscParams['image_height'],
             'store' => $this->storeManager->getStore()->getCode(),
-            'image-type' => $this->sourceContentType
+            'image-type' => $this->sourceContentType,
         ];
     }
 
@@ -275,7 +277,7 @@ class Image implements LocalInterface
         $data = implode('_', $this->convertToReadableFormat($this->miscParams));
 
         $pathTemplate = $this->getModule()
-            . DIRECTORY_SEPARATOR . "%s" . DIRECTORY_SEPARATOR
+            . DIRECTORY_SEPARATOR . '%s' . DIRECTORY_SEPARATOR
             . $this->getFilePath();
 
         /**

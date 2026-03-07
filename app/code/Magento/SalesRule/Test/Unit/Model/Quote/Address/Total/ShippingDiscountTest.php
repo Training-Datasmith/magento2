@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Test\Unit\Model\Quote\Address\Total;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Address\Total;
 use Magento\Quote\Model\Quote\Item;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Model\Quote\Address\Total\ShippingDiscount;
 use Magento\SalesRule\Model\Validator;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -78,7 +79,7 @@ class ShippingDiscountTest extends TestCase
                 'getBaseDiscountAmount',
                 'setDiscountDescription',
                 'addTotalAmount',
-                'addBaseTotalAmount'
+                'addBaseTotalAmount',
             ]
         );
 
@@ -93,7 +94,7 @@ class ShippingDiscountTest extends TestCase
                 'getDiscountDescription',
                 'setDiscountAmount',
                 'getQuote',
-                'setBaseDiscountAmount'
+                'setBaseDiscountAmount',
             ]
         );
 
@@ -217,7 +218,7 @@ class ShippingDiscountTest extends TestCase
         $expectedResult = [
             'code' => 'discount',
             'value' => 100,
-            'title' => __('Discount (%1)', $discountDescription)
+            'title' => __('Discount (%1)', $discountDescription),
         ];
         $this->totalMock->expects($this->once())->method('getDiscountAmount')
             ->willReturn($discountAmount);

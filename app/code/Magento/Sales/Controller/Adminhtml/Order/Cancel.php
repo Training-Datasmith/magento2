@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -14,7 +17,7 @@ class Cancel extends \Magento\Sales\Controller\Adminhtml\Order implements HttpPo
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::cancel';
+    public const ADMIN_RESOURCE = 'Magento_Sales::cancel';
 
     /**
      * Cancel order

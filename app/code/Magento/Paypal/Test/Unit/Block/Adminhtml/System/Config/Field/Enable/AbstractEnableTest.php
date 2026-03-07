@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class AbstractEnableTest extends TestCase
         $mockArguments = $this->createMocks([
             \Magento\Framework\Data\Form\Element\Factory::class,
             CollectionFactory::class,
-            Escaper::class
+            Escaper::class,
         ]);
         $mockArguments[] = [];
         $mockArguments[] = $this->createMock(SecureHtmlRenderer::class);
@@ -96,26 +97,26 @@ class AbstractEnableTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
+                $this->createMock(DirectoryHelper::class),
             ],
             [
                 \Magento\Framework\Translate\InlineInterface::class,
-                $this->createMock(\Magento\Framework\Translate\InlineInterface::class)
+                $this->createMock(\Magento\Framework\Translate\InlineInterface::class),
             ],
             [
                 \Magento\Framework\ZendEscaper::class,
-                $this->createMock(\Magento\Framework\ZendEscaper::class)
-            ]
+                $this->createMock(\Magento\Framework\ZendEscaper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->abstractEnable = $objectManager->getObject(
             Stub::class,
             [
-                '_escaper' => $objectManager->getObject(Escaper::class)
+                '_escaper' => $objectManager->getObject(Escaper::class),
             ]
         );
     }

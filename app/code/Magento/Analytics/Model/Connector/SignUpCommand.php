@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector;
 
 use Laminas\Http\Request;
-use Magento\Analytics\Model\AnalyticsToken;
 use Magento\Analytics\Model\Connector\Http\ResponseResolver;
 use Magento\Analytics\Model\IntegrationManager;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -18,65 +20,13 @@ use Psr\Log\LoggerInterface;
  */
 class SignUpCommand implements CommandInterface
 {
-    /**
-     * @var string
-     */
-    private $signUpUrlPath = 'analytics/url/signup';
-
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @var IntegrationManager
-     */
-    private $integrationManager;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $config;
-
-    /**
-     * @var Http\ClientInterface
-     */
-    private $httpClient;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var ResponseResolver
-     */
-    private $responseResolver;
+    private string $signUpUrlPath = 'analytics/url/signup';
 
     /**
      * SignUpCommand constructor.
-     *
-     * @param AnalyticsToken $analyticsToken
-     * @param IntegrationManager $integrationManager
-     * @param ScopeConfigInterface $config
-     * @param Http\ClientInterface $httpClient
-     * @param LoggerInterface $logger
-     * @param ResponseResolver $responseResolver
      */
-    public function __construct(
-        AnalyticsToken $analyticsToken,
-        IntegrationManager $integrationManager,
-        ScopeConfigInterface $config,
-        Http\ClientInterface $httpClient,
-        LoggerInterface $logger,
-        ResponseResolver $responseResolver
-    ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->integrationManager = $integrationManager;
-        $this->config = $config;
-        $this->httpClient = $httpClient;
-        $this->logger = $logger;
-        $this->responseResolver = $responseResolver;
+    public function __construct(private readonly IntegrationManager $integrationManager, private readonly ScopeConfigInterface $config, private readonly Http\ClientInterface $httpClient, private readonly LoggerInterface $logger, private readonly ResponseResolver $responseResolver)
+    {
     }
 
     /**
@@ -88,10 +38,8 @@ class SignUpCommand implements CommandInterface
      * Magento stores this token in System Configuration
      *
      * This method returns true in case of success
-     *
-     * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
         $result = false;
         $integrationToken = $this->integrationManager->generateToken();
@@ -101,8 +49,8 @@ class SignUpCommand implements CommandInterface
                 Request::METHOD_POST,
                 $this->config->getValue($this->signUpUrlPath),
                 [
-                    "token" => $integrationToken->getData('token'),
-                    "url" => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
+                    'token' => $integrationToken->getData('token'),
+                    'url' => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
                 ]
             );
 

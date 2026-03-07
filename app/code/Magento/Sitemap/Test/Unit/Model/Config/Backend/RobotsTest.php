@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class RobotsTest extends TestCase
                 'registry' => $this->registryMock,
                 'config' => $this->scopeConfigMock,
                 'cacheTypeList' => $this->cacheTypeListMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }

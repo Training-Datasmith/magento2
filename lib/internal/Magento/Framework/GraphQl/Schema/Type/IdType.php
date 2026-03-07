@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,5 +16,5 @@ class IdType extends \GraphQL\Type\Definition\IDType implements InputTypeInterfa
     /**
      * @var string
      */
-    public string $name = "Magento_Id";
+    public string $name = 'Magento_Id';
 }

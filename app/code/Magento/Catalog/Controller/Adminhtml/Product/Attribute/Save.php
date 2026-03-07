@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,20 +8,19 @@
 
 namespace Magento\Catalog\Controller\Adminhtml\Product\Attribute;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Controller\Adminhtml\Product\Attribute;
 use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Model\Product\Attribute\Frontend\Inputtype\Presentation;
-use Magento\Framework\Serialize\Serializer\FormData;
 use Magento\Catalog\Model\Product\AttributeSet\BuildFactory;
 use Magento\Catalog\Model\ResourceModel\Eav\AttributeFactory;
 use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\Validator;
 use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\ValidatorFactory;
 use Magento\Eav\Model\Entity\Attribute\Set;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\CollectionFactory;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\Controller\Result\Json;
@@ -28,6 +29,7 @@ use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Registry;
+use Magento\Framework\Serialize\Serializer\FormData;
 use Magento\Framework\View\LayoutFactory;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -142,7 +144,7 @@ class Save extends Attribute implements HttpPostActionInterface
                 ->unserialize($this->getRequest()->getParam('serialized_options', '[]'));
         } catch (\InvalidArgumentException $e) {
             $message = __("The attribute couldn't be saved due to an error. Verify your information and try again. "
-                . "If the error persists, please try again later.");
+                . 'If the error persists, please try again later.');
             $this->messageManager->addErrorMessage($message);
             return $this->returnResult('catalog/*/edit', ['_current' => true], ['error' => true]);
         }
@@ -279,7 +281,7 @@ class Save extends Attribute implements HttpPostActionInterface
                     }
                 }
                 if (!empty($defaultOptions)) {
-                    $data['default_value'] = implode(",", $defaultOptions);
+                    $data['default_value'] = implode(',', $defaultOptions);
                 }
             }
 

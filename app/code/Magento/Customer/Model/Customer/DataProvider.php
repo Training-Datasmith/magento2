@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,26 +12,25 @@ use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Address;
 use Magento\Customer\Model\Attribute;
+use Magento\Customer\Model\Config\Share;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\FileProcessorFactory;
+use Magento\Customer\Model\FileUploaderDataResolver;
 use Magento\Customer\Model\ResourceModel\Address\Attribute\Source\CountryWithWebsites;
 use Magento\Customer\Model\ResourceModel\Customer\Collection;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory as CustomerCollectionFactory;
-use Magento\Customer\Model\Config\Share;
-use Magento\Customer\Model\Customer\DataProviderWithDefaultAddresses;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Session\SessionManagerInterface;
-use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool;
 use Magento\Ui\Component\Form\Element\Multiline;
 use Magento\Ui\Component\Form\Field;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Ui\DataProvider\EavValidationRules;
-use Magento\Customer\Model\FileUploaderDataResolver;
 
 /**
  * Supplies the data for the customer UI component
@@ -377,7 +377,7 @@ class DataProvider extends AbstractDataProvider
             $meta[AddressInterface::COUNTRY_ID]['arguments']['data']['config']['filterBy'] = [
                 'target' => '${ $.provider }:data.customer.website_id',
                 '__disableTmpl' => ['target' => false],
-                'field' => 'website_ids'
+                'field' => 'website_ids',
             ];
         }
     }

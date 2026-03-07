@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -89,5 +90,5 @@ return [
                 </env:Reason>
             </env:Fault>
         </env:Body>
-    </env:Envelope>'
+    </env:Envelope>',
 ];

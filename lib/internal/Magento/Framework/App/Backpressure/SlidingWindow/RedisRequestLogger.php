@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\App\Backpressure\SlidingWindow;
 
 use Magento\Framework\App\Backpressure\ContextInterface;
+use Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger\RedisClient;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\RuntimeException;
-use Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger\RedisClient;
 
 /**
  * Logging requests to Redis

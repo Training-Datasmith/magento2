@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxClass;
 
 use Magento\Framework\Exception\InputException;
@@ -38,7 +41,7 @@ class RepositoryTest extends \PHPUnit\Framework\TestCase
      */
     private $predefinedTaxClasses;
 
-    const SAMPLE_TAX_CLASS_NAME = 'Wholesale Customer';
+    public const SAMPLE_TAX_CLASS_NAME = 'Wholesale Customer';
 
     protected function setUp(): void
     {

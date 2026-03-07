@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Express\InContext;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\Locale\ResolverInterface;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
 
 /**
  * Paypal Express InContext Component.
@@ -21,7 +24,7 @@ use Magento\Framework\Json\Helper\Data as JsonHelper;
  */
 class Component extends Template
 {
-    const IS_BUTTON_CONTEXT_INDEX = 'is_button_context';
+    public const IS_BUTTON_CONTEXT_INDEX = 'is_button_context';
 
     /**
      * @var ResolverInterface

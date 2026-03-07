@@ -1,20 +1,21 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Api\Data\AddressInterface;
+use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
-use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Quote\Api\Data\PaymentInterface;
-use Magento\Quote\Api\Data\AddressInterface;
-use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 /** @var ObjectManager $objectManager */
@@ -57,8 +58,8 @@ $addressList = [
         'postcode' => 80203,
         'country_id' => 'US',
         'email' => 'customer002@shipping.test',
-        'address_type' => 'shipping'
-    ]
+        'address_type' => 'shipping',
+    ],
 ];
 $methodCode = 'flatrate_flatrate';
 foreach ($addressList as $data) {

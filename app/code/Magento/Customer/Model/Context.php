@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,10 +18,10 @@ class Context
     /**
      * Customer group cache context
      */
-    const CONTEXT_GROUP = 'customer_group';
+    public const CONTEXT_GROUP = 'customer_group';
 
     /**
      * Customer authorization cache context
      */
-    const CONTEXT_AUTH = 'customer_logged_in';
+    public const CONTEXT_AUTH = 'customer_logged_in';
 }

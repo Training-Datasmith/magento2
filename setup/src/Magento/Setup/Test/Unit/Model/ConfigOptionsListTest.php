@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\Setup\Model\ConfigOptionsList;
 use Magento\Setup\Model\ConfigOptionsList\DriverOptions;
 use Magento\Setup\Model\ConfigOptionsList\Lock;
 use Magento\Setup\Validator\DbValidator;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -164,7 +165,7 @@ class ConfigOptionsListTest extends TestCase
             ConfigOptionsListConstants::INPUT_KEY_DB_HOST => 'host',
             ConfigOptionsListConstants::INPUT_KEY_DB_USER => 'user',
             ConfigOptionsListConstants::INPUT_KEY_DB_PASSWORD => 'pass',
-            Lock::INPUT_KEY_LOCK_PROVIDER => 'db'
+            Lock::INPUT_KEY_LOCK_PROVIDER => 'db',
         ];
         $this->prepareValidationMocks();
 
@@ -183,7 +184,7 @@ class ConfigOptionsListTest extends TestCase
             ConfigOptionsListConstants::INPUT_KEY_DB_HOST => 'host',
             ConfigOptionsListConstants::INPUT_KEY_DB_USER => 'user',
             ConfigOptionsListConstants::INPUT_KEY_DB_PASSWORD => 'pass',
-            Lock::INPUT_KEY_LOCK_PROVIDER => 'db'
+            Lock::INPUT_KEY_LOCK_PROVIDER => 'db',
         ];
         $this->prepareValidationMocks();
 
@@ -198,7 +199,7 @@ class ConfigOptionsListTest extends TestCase
         $options = [
             ConfigOptionsListConstants::INPUT_KEY_SKIP_DB_VALIDATION => true,
             ConfigOptionsListConstants::INPUT_KEY_ENCRYPTION_KEY => '',
-            Lock::INPUT_KEY_LOCK_PROVIDER => 'db'
+            Lock::INPUT_KEY_LOCK_PROVIDER => 'db',
         ];
         $this->assertEquals(
             ['Invalid encryption key. Encryption key must be 32 character string without any white space.'],
@@ -231,7 +232,7 @@ class ConfigOptionsListTest extends TestCase
         $options = [
             ConfigOptionsListConstants::INPUT_KEY_SKIP_DB_VALIDATION => true,
             ConfigOptionsListConstants::INPUT_KEY_CACHE_HOSTS => $hosts,
-            Lock::INPUT_KEY_LOCK_PROVIDER => 'db'
+            Lock::INPUT_KEY_LOCK_PROVIDER => 'db',
         ];
         $result = $this->object->validate($options, $this->deploymentConfig);
         if ($expectedError) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -254,8 +255,8 @@ class ConditionsToSearchCriteriaMapper
         return $this->combinedFilterGroupFactory->create([
             'data' => [
                 FilterGroup::FILTERS => $filters,
-                FilterGroup::COMBINATION_MODE => $this->mapRuleAggregatorToSQLAggregator($combinationMode)
-            ]
+                FilterGroup::COMBINATION_MODE => $this->mapRuleAggregatorToSQLAggregator($combinationMode),
+            ],
         ]);
     }
 
@@ -274,8 +275,8 @@ class ConditionsToSearchCriteriaMapper
             'data' => [
                 Filter::KEY_FIELD => $field,
                 Filter::KEY_VALUE => $value,
-                Filter::KEY_CONDITION_TYPE => $this->mapRuleOperatorToSQLCondition($conditionType)
-            ]
+                Filter::KEY_CONDITION_TYPE => $this->mapRuleOperatorToSQLCondition($conditionType),
+            ],
         ]);
     }
 
@@ -299,7 +300,7 @@ class ConditionsToSearchCriteriaMapper
             '!{}' => 'nlike', // does not contains
             '()' => 'in',    // is one of
             '!()' => 'nin',   // is not one of
-            '<=>' => 'is_null'
+            '<=>' => 'is_null',
         ];
 
         if (!array_key_exists($ruleOperator, $operatorsMap)) {

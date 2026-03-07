@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,16 +17,16 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\System\Store;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -107,7 +108,7 @@ class CurrencysymbolTest extends TestCase
                 'getDefaultLocale',
                 'setLocale',
                 'emulate',
-                'revert'
+                'revert',
             ]
         );
         $this->systemStoreMock = $this->createPartialMock(
@@ -157,14 +158,14 @@ class CurrencysymbolTest extends TestCase
                 'parentSymbol' => '€',
                 'displayName' => 'Euro',
                 'displaySymbol' => '€',
-                'inherited' => true
+                'inherited' => true,
             ],
             'USD' => [
                 'parentSymbol' => '$',
                 'displayName' => 'US Dollar',
                 'displaySymbol' => 'custom $',
-                'inherited' => false
-            ]
+                'inherited' => false,
+            ],
         ];
         $websiteId = 1;
         $groupId = 2;
@@ -334,21 +335,21 @@ class CurrencysymbolTest extends TestCase
                         Currencysymbol::XML_PATH_CUSTOM_CURRENCY_SYMBOL,
                         ScopeInterface::SCOPE_STORE,
                         null,
-                        $customSymbolsSerialized
+                        $customSymbolsSerialized,
                     ],
                     [
                         Currencysymbol::XML_PATH_ALLOWED_CURRENCIES,
                         ScopeInterface::SCOPE_STORE,
                         $storeMock,
-                        $currencies
+                        $currencies,
                     ],
                     [Currencysymbol::XML_PATH_ALLOWED_CURRENCIES, ScopeInterface::SCOPE_STORE, null, $currencies],
                     [
                         Currencysymbol::XML_PATH_ALLOWED_CURRENCIES,
                         ScopeInterface::SCOPE_STORE,
                         $storeMock,
-                        $currencies
-                    ]
+                        $currencies,
+                    ],
                 ]
             );
 

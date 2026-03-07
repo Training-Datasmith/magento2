@@ -1,29 +1,31 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\View\Element\Template;
 
 class Config
 {
     /**
      * Wysiwyg editor configuration path
      */
-    const WYSIWYG_EDITOR_CONFIG_PATH = 'cms/wysiwyg/editor';
+    public const WYSIWYG_EDITOR_CONFIG_PATH = 'cms/wysiwyg/editor';
 
     /**
      * Configuration path to session storage logging setting
      */
-    const XML_PATH_LOGGING = 'dev/js/session_storage_logging';
+    public const XML_PATH_LOGGING = 'dev/js/session_storage_logging';
 
     /**
      * Configuration path to session storage key setting
      */
-    const XML_PATH_KEY = 'dev/js/session_storage_key';
+    public const XML_PATH_KEY = 'dev/js/session_storage_key';
 
     /**
      * @var ScopeConfigInterface

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\Composer;
 
-use Composer\Package\Link;
 use Composer\Package\CompletePackageInterface;
+use Composer\Package\Link;
 use Magento\Framework\App\ObjectManager;
 
 /**
@@ -18,50 +20,50 @@ class ComposerInformation
     /**
      * Magento2 theme type
      */
-    const THEME_PACKAGE_TYPE = 'magento2-theme';
+    public const THEME_PACKAGE_TYPE = 'magento2-theme';
 
     /**
      * Magento2 module type
      */
-    const MODULE_PACKAGE_TYPE = 'magento2-module';
+    public const MODULE_PACKAGE_TYPE = 'magento2-module';
 
     /**
      * Magento2 language type
      */
-    const LANGUAGE_PACKAGE_TYPE = 'magento2-language';
+    public const LANGUAGE_PACKAGE_TYPE = 'magento2-language';
 
     /**
      * Magento2 metapackage type
      */
-    const METAPACKAGE_PACKAGE_TYPE = 'metapackage';
+    public const METAPACKAGE_PACKAGE_TYPE = 'metapackage';
 
     /**
      * Magento2 library type
      */
-    const LIBRARY_PACKAGE_TYPE = 'magento2-library';
+    public const LIBRARY_PACKAGE_TYPE = 'magento2-library';
 
     /**
      * Magento2 component type
      */
-    const COMPONENT_PACKAGE_TYPE = 'magento2-component';
+    public const COMPONENT_PACKAGE_TYPE = 'magento2-component';
 
     /**
      * Default composer repository key
      */
-    const COMPOSER_DEFAULT_REPO_KEY = 'packagist.org';
+    public const COMPOSER_DEFAULT_REPO_KEY = 'packagist.org';
 
     /**#@+
      * Composer command
      */
-    const COMPOSER_SHOW = 'show';
+    public const COMPOSER_SHOW = 'show';
     /**#@-*/
 
     /**#@+
      * Composer command params and options
      */
-    const PARAM_COMMAND = 'command';
-    const PARAM_PACKAGE = 'package';
-    const PARAM_AVAILABLE = '--available';
+    public const PARAM_COMMAND = 'command';
+    public const PARAM_PACKAGE = 'package';
+    public const PARAM_AVAILABLE = '--available';
     /**#@-*/
 
     /**#@-*/
@@ -81,7 +83,7 @@ class ComposerInformation
         self::MODULE_PACKAGE_TYPE,
         self::LIBRARY_PACKAGE_TYPE,
         self::COMPONENT_PACKAGE_TYPE,
-        self::METAPACKAGE_PACKAGE_TYPE
+        self::METAPACKAGE_PACKAGE_TYPE,
     ];
 
     /**
@@ -225,7 +227,7 @@ class ComposerInformation
                 $packages[$package->getName()] = [
                     'name' => $package->getName(),
                     'type' => $package->getType(),
-                    'version' => $package->getPrettyVersion()
+                    'version' => $package->getPrettyVersion(),
                 ];
             }
         }
@@ -246,7 +248,7 @@ class ComposerInformation
                 $packages[$package->getName()] = [
                     'name' => $package->getName(),
                     'type' => $package->getType(),
-                    'version' => $package->getPrettyVersion()
+                    'version' => $package->getPrettyVersion(),
                 ];
             }
         }

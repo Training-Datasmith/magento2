@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -172,7 +173,7 @@ class AdjustmentTest extends TestCase
     {
         return [
             [Adjustment::ADJUSTMENT_CODE, true],
-            ['not_tax', false]
+            ['not_tax', false],
         ];
     }
 

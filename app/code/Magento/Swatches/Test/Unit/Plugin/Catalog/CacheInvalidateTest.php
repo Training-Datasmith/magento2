@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class CacheInvalidateTest extends TestCase
             CacheInvalidate::class,
             [
                 'typeList' => $this->typeList,
-                'swatchHelper' => $this->swatchHelper
+                'swatchHelper' => $this->swatchHelper,
             ]
         );
     }

@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Msrp\Helper;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\ObjectManager;
 use Magento\Msrp\Model\Product\Attribute\Source\Type;
 use Magento\Msrp\Pricing\MsrpPriceCalculatorInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 
 /**
  * Msrp data helper
@@ -133,7 +136,7 @@ class Data extends AbstractHelper
      */
     public function getMsrpPriceMessage($product)
     {
-        $message = "";
+        $message = '';
         if ($this->canApplyMsrp($product, Type::TYPE_IN_CART)) {
             $message = __('To see product price, add this item to your cart. You can always remove it later.');
         } elseif ($this->canApplyMsrp($product, Type::TYPE_BEFORE_ORDER_CONFIRM)) {

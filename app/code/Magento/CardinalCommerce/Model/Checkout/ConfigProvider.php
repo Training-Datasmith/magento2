@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class ConfigProvider implements ConfigProviderInterface
     {
         $config['cardinal'] = [
             'environment' => $this->config->getEnvironment(),
-            'requestJWT' => $this->requestJwtBuilder->build()
+            'requestJWT' => $this->requestJwtBuilder->build(),
         ];
 
         return $config;

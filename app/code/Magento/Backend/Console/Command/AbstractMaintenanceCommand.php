@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Console\Command;
 
+use Magento\Backend\Model\Validator\IpValidator;
 use Magento\Framework\App\MaintenanceMode;
 use Magento\Framework\Console\Cli;
 use Magento\Setup\Console\Command\AbstractSetupCommand;
-use Magento\Backend\Model\Validator\IpValidator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,7 +24,7 @@ abstract class AbstractMaintenanceCommand extends AbstractSetupCommand
     /**
      * Names of input option
      */
-    const INPUT_KEY_IP = 'ip';
+    public const INPUT_KEY_IP = 'ip';
 
     /**
      * @var MaintenanceMode

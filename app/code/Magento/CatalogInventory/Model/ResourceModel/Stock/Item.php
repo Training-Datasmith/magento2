@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\ResourceModel\Stock;
 
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceIndexProcessor;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Model\Stock;
 use Magento\CatalogInventory\Model\Indexer\Stock\Processor;
+use Magento\CatalogInventory\Model\Stock;
+use Magento\Framework\DB\Select;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\DB\Select;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 
 /**
@@ -274,7 +277,7 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $select = $this->buildProductsSelectByConfigTypes();
         $where = [
             'website_id = ' . $websiteId,
-            'product_id IN (' . $select->assemble() . ')'
+            'product_id IN (' . $select->assemble() . ')',
         ];
         $manageStockWhere = '(use_config_manage_stock = 0 AND manage_stock = 1)';
         if ($this->stockConfiguration->getManageStock()) {

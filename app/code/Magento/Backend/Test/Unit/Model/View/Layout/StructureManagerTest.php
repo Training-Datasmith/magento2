@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -48,15 +49,15 @@ class StructureManagerTest extends TestCase
                     [
                         'element-0', [
                             'element-1' => [],
-                            'element-2' => []
-                        ]
+                            'element-2' => [],
+                        ],
                     ],
                     [
-                        'element-1', []
+                        'element-1', [],
                     ],
                     [
-                        'element-2', []
-                    ]
+                        'element-2', [],
+                    ],
                 ]
             );
         $this->scheduledStructureMock->expects($this->exactly(3))
@@ -65,7 +66,7 @@ class StructureManagerTest extends TestCase
                 [
                     ['element-0', true],
                     ['element-1', true],
-                    ['element-2', true]
+                    ['element-2', true],
                 ]
             );
         $this->structureMock->expects($this->once())

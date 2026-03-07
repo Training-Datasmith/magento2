@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Structure\Element;
 
 /**
@@ -16,7 +19,7 @@ class Field extends \Magento\Config\Model\Config\Structure\AbstractElement
     /**
      * Default value for useEmptyValueOption for service option
      */
-    const DEFAULT_INCLUDE_EMPTY_VALUE_OPTION = false;
+    public const DEFAULT_INCLUDE_EMPTY_VALUE_OPTION = false;
 
     /**
      * Backend model factory

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Validates that payment groups referenced from store configuration matches the groups declared in payment.xml
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Magento\Payment\Config;
 
 class ReferentialTest extends \PHPUnit\Framework\TestCase
@@ -86,7 +89,7 @@ class ReferentialTest extends \PHPUnit\Framework\TestCase
 
         if (!empty($missing)) {
             $message = sprintf(
-                "The groups, referenced in store configuration for the payment, " .
+                'The groups, referenced in store configuration for the payment, ' .
                 "don't correspond to any payment group declared in payment.xml: %s",
                 implode(', ', $missing)
             );

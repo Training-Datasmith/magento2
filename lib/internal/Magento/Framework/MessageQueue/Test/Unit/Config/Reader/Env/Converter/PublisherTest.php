@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class PublisherTest extends TestCase
     {
         $connectionToExchangeMap =  [
             'amqp' => 'magento',
-            'db'=> 'magento-db'
+            'db' => 'magento-db',
         ];
         $this->converter = new EnvPublisherConverter(
             $connectionToExchangeMap
@@ -36,8 +37,8 @@ class PublisherTest extends TestCase
             'amqp-magento-db' => [
                 'name' => 'amqp-magento-db',
                 'exchange' => 'magento-db',
-                'connection' =>'db'
-            ]
+                'connection' => 'db',
+            ],
         ];
         $actualResult = $this->converter->convert($source['config']);
         $this->assertEquals($expectedConfig, $actualResult[ReaderEnv::ENV_PUBLISHERS]);
@@ -53,22 +54,22 @@ class PublisherTest extends TestCase
                             'amqp' => [
                                 'name' => 'db',
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 'consumers' => [
                     'inventoryQtyCounter' => [
-                        'connection' => 'db'
-                    ]
-                ]
-            ]
+                        'connection' => 'db',
+                    ],
+                ],
+            ],
         ];
         $expectedConfig = [
             'amqp-magento' => [
                 'name' => 'amqp-magento',
                 'exchange' => 'magento',
-                'connection' =>'db'
-            ]
+                'connection' => 'db',
+            ],
         ];
         $actualResult = $this->converter->convert($source['config']);
         $this->assertEquals($expectedConfig, $actualResult[ReaderEnv::ENV_PUBLISHERS]);

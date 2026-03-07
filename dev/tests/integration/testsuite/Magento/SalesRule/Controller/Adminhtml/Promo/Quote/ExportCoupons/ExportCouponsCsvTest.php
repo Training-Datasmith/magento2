@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\SalesRule\Controller\Adminhtml\Promo\Quote\ExportCoupons;
 use Magento\Framework\App\ResourceConnection;
 use Magento\SalesRule\Model\ResourceModel\Rule\Collection as RuleCollection;
 use Magento\SalesRule\Model\Rule;
-use Magento\TestFramework\TestCase\AbstractBackendController;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\AbstractBackendController;
 
 /**
  * Test export coupon csv

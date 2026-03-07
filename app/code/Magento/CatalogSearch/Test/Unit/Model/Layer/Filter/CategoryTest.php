@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -146,7 +147,7 @@ class CategoryTest extends TestCase
                 'layer' => $this->layer,
                 'itemDataBuilder' => $this->itemDataBuilder,
                 'filterItemFactory' => $this->filterItemFactory,
-                'escaper' => $escaper
+                'escaper' => $escaper,
             ]
         );
     }
@@ -192,16 +193,16 @@ class CategoryTest extends TestCase
         return [
             [
                 'requestValue' => null,
-                'idValue' => 0
+                'idValue' => 0,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => false
+                'idValue' => false,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => null
-            ]
+                'idValue' => null,
+            ],
         ];
     }
 
@@ -295,7 +296,7 @@ class CategoryTest extends TestCase
         $categories = [
             $category1,
             $category2,
-            $category3
+            $category3,
         ];
         $this->category->expects($this->once())
             ->method('getChildrenCategories')
@@ -320,13 +321,13 @@ class CategoryTest extends TestCase
             [
                 'label' => 'Category 1',
                 'value' => 120,
-                'count' => 10
+                'count' => 10,
             ],
             [
                 'label' => 'Category 2',
                 'value' => 5641,
-                'count' => 45
-            ]
+                'count' => 45,
+            ],
         ];
 
         $this->itemDataBuilder

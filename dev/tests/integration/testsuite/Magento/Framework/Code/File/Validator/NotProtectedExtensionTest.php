@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class NotProtectedExtensionTest extends \PHPUnit\Framework\TestCase
     {
         return [
             ['phpt'],
-            ['pht']
+            ['pht'],
         ];
     }
 }

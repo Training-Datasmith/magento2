@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test for view Messages model
  */
+
 namespace Magento\Framework\View\Test\Unit\Element\UiComponent;
 
 use Magento\Framework\App\Request\Http;
@@ -23,8 +25,8 @@ use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\LayoutInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -236,7 +238,7 @@ class ContextTest extends TestCase
             image/avif, image/webp, image/apng, */*;q=0.8,
             application/signed-exchange;v=b3;q=0.9', 'html'],
             ['xml', 'xml'],
-            ['text/html, application/json', 'json']
+            ['text/html, application/json', 'json'],
         ];
     }
 
@@ -257,8 +259,8 @@ class ContextTest extends TestCase
                                 'component_1_config_value_2',
                                 'component_1_config_value_3',
                             ],
-                            'component_1_config_name_3' => 'component_1_config_value_1'
-                        ]
+                            'component_1_config_name_3' => 'component_1_config_value_1',
+                        ],
                     ],
                     [
                         'name' => 'component_2_Name',
@@ -269,8 +271,8 @@ class ContextTest extends TestCase
                                 'component_2_config_value_2',
                                 'component_2_config_value_3',
                             ],
-                            'component_2_config_name_3' => 'component_2_config_value_1'
-                        ]
+                            'component_2_config_name_3' => 'component_2_config_value_1',
+                        ],
                     ],
                     [
                         'name' => 'component_1_Name',
@@ -281,8 +283,8 @@ class ContextTest extends TestCase
                                 'component_1_config_value_2',
                                 'component_1_config_value_3',
                             ],
-                            'component_1_config_name_6' => 'component_1_config_value_1'
-                        ]
+                            'component_1_config_name_6' => 'component_1_config_value_1',
+                        ],
                     ],
                 ],
                 [
@@ -300,7 +302,7 @@ class ContextTest extends TestCase
                             'component_1_config_value_2',
                             'component_1_config_value_3',
                         ],
-                        'component_1_config_name_6' => 'component_1_config_value_1'
+                        'component_1_config_name_6' => 'component_1_config_value_1',
                     ],
                     'component_2_Name' => [
                         'component_2_config_name_1' => 'component_2_config_value_1',
@@ -309,10 +311,10 @@ class ContextTest extends TestCase
                             'component_2_config_value_2',
                             'component_2_config_value_3',
                         ],
-                        'component_2_config_name_3' => 'component_2_config_value_1'
-                    ]
-                ]
-            ]
+                        'component_2_config_name_3' => 'component_2_config_value_1',
+                    ],
+                ],
+            ],
         ];
     }
 }

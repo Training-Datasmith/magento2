@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableImportExport\Test\Unit\Model\Export;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\CatalogImportExport\Model\Import\Product as ImportProduct;
@@ -15,6 +15,7 @@ use Magento\ConfigurableImportExport\Model\Export\RowCustomizer as ExportRowCust
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableProductType;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\ImportExport\Model\Import;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -95,16 +96,16 @@ class RowCustomizerTest extends TestCase
                 'expected' => [
                     'key_1' => 'value_1',
                     'key_2' => 'value_2',
-                    'key_3' => 'value_3'
+                    'key_3' => 'value_3',
                 ],
                 'data' => [
                     'data_row' => [
                         'key_1' => 'value_1',
                         'key_2' => 'value_2',
-                        'key_3' => 'value_3'
+                        'key_3' => 'value_3',
                     ],
-                    'product_id' => 1
-                ]
+                    'product_id' => 1,
+                ],
             ],
             [
                 'expected' => [
@@ -112,17 +113,17 @@ class RowCustomizerTest extends TestCase
                     'key_2' => 'value_2',
                     'key_3' => 'value_3',
                     'configurable_variations' => $data['configurable_variations'],
-                    'configurable_variation_labels' => $data['configurable_variation_labels']
+                    'configurable_variation_labels' => $data['configurable_variation_labels'],
                 ],
                 'data' => [
                     'data_row' => [
                         'key_1' => 'value_1',
                         'key_2' => 'value_2',
-                        'key_3' => 'value_3'
+                        'key_3' => 'value_3',
                     ],
-                    'product_id' => self::$productId
-                ]
-            ]
+                    'product_id' => self::$productId,
+                ],
+            ],
         ];
     }
 
@@ -151,23 +152,23 @@ class RowCustomizerTest extends TestCase
                 [1, 2, 3],
                 [
                     'row_count' => [1, 2, 3],
-                    'product_id' => 1
-                ]
+                    'product_id' => 1,
+                ],
             ],
             [
                 [1, 2, 3],
                 [
                     'row_count' => [1, 2, 3],
-                    'product_id' => 11
-                ]
+                    'product_id' => 11,
+                ],
             ],
             [
                 [],
                 [
                     'row_count' => [],
-                    'product_id' => 11
-                ]
-            ]
+                    'product_id' => 11,
+                ],
+            ],
         ];
     }
 
@@ -184,7 +185,7 @@ class RowCustomizerTest extends TestCase
                     'attribute_code'        => 'code_of_attribute',
                     'option_title'          => 'Option Title',
                     'pricing_value'         => 112345,
-                    'super_attribute_label' => 'Super attribute label'
+                    'super_attribute_label' => 'Super attribute label',
                 ],
                 [
                     'pricing_is_percent'    => false,
@@ -192,7 +193,7 @@ class RowCustomizerTest extends TestCase
                     'attribute_code'        => 'code_of_attribute',
                     'option_title'          => 'Option Title',
                     'pricing_value'         => 212345,
-                    'super_attribute_label' => ''
+                    'super_attribute_label' => '',
                 ],
                 [
                     'pricing_is_percent'    => false,
@@ -200,9 +201,9 @@ class RowCustomizerTest extends TestCase
                     'attribute_code'        => 'code_of_attribute_2',
                     'option_title'          => 'Option Title 2',
                     'pricing_value'         => 312345,
-                    'super_attribute_label' => 'Super attribute label 2'
-                ]
-            ]
+                    'super_attribute_label' => 'Super attribute label 2',
+                ],
+            ],
         ];
 
         $productMock->expects(static::any())
@@ -219,7 +220,7 @@ class RowCustomizerTest extends TestCase
             ->willReturnMap(
                 [
                     ['entity_id', ['in' => $productIds], 'inner', $this->productCollectionMock],
-                    ['type_id', ['eq' => ConfigurableProductType::TYPE_CODE], 'inner', $this->productCollectionMock]
+                    ['type_id', ['eq' => ConfigurableProductType::TYPE_CODE], 'inner', $this->productCollectionMock],
                 ]
             );
         $this->productCollectionMock->expects(static::atLeastOnce())
@@ -254,17 +255,17 @@ class RowCustomizerTest extends TestCase
                             . implode(
                                 Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR,
                                 ['code_of_attribute_2=Option Title 2']
-                            )
+                            ),
                     ]
                 ),
                 'configurable_variation_labels' => implode(
                     Import::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR,
                     [
                         'code_of_attribute' => 'code_of_attribute=Super attribute label',
-                        'code_of_attribute_2' => 'code_of_attribute_2=Super attribute label 2'
+                        'code_of_attribute_2' => 'code_of_attribute_2=Super attribute label 2',
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 

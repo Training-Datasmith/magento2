@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Customer\Block\Form;
 
 use Magento\Customer\Model\Session;
-use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Element\ButtonLockManager;
+use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Helper\Xpath;
 use PHPUnit\Framework\TestCase;

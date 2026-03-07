@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -183,14 +183,14 @@ class TaxRuleRepositoryTest extends TestCase
         return [
             [
                 new LocalizedException(__('Could not save')), CouldNotSaveException::class,
-                'Could not save'
+                'Could not save',
             ], [
                 new AlreadyExistsException(__('Entity already exists')), AlreadyExistsException::class,
-                'Entity already exists'
+                'Entity already exists',
             ], [
                 new NoSuchEntityException(__('No such entity')), NoSuchEntityException::class,
-                'No such entity'
-            ]
+                'No such entity',
+            ],
         ];
     }
 

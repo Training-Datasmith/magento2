@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -23,17 +26,17 @@ class ShipmentRemoveTrackTest extends WebapiAbstract
     /**
      * Service read name
      */
-    const SERVICE_READ_NAME = 'salesShipmentTrackRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesShipmentTrackRepositoryV1';
 
     /**
      * Service version
      */
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * Shipment increment id
      */
-    const SHIPMENT_INCREMENT_ID = '100000001';
+    public const SHIPMENT_INCREMENT_ID = '100000001';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -72,7 +75,7 @@ class ShipmentRemoveTrackTest extends WebapiAbstract
                         ShipmentTrackInterface::DESCRIPTION => 'Shipment description',
                         ShipmentTrackInterface::TITLE => 'Shipment title',
                         ShipmentTrackInterface::CARRIER_CODE => Track::CUSTOM_CARRIER_CODE,
-                    ]
+                    ],
                 ]
             );
 

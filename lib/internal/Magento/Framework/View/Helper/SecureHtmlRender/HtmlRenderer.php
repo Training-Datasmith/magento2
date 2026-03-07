@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,7 +15,6 @@ use Magento\Framework\Escaper;
  */
 class HtmlRenderer
 {
-
     /**
      * List of void elements which require a self-closing tag and don't allow content
      *

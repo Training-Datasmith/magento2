@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -13,13 +14,13 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\GraphQl\Service\GraphQlRequest;
 use Magento\Paypal\Model\Api\Nvp;
+use Magento\Paypal\Model\Api\Type\Factory as ApiFactory;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\Hostedpro;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Paypal\Model\Api\Type\Factory as ApiFactory;
 
 /**
  * End to end place order test using hostedpro via graphql endpoint

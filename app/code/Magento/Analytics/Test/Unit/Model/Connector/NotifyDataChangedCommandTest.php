@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -83,18 +84,18 @@ class NotifyDataChangedCommandTest extends TestCase
                             JsonConverter::class,
                             ['serializer' => $serializerMock]
                         ),
-                        'responseHandlers' => [201 => $successHandler]
+                        'responseHandlers' => [201 => $successHandler],
                     ]
                 ),
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
 
     public function testExecuteSuccess()
     {
-        $configVal = "Config val";
-        $token = "Secret token!";
+        $configVal = 'Config val';
+        $token = 'Secret token!';
         $this->analyticsTokenMock->expects($this->once())
             ->method('isTokenExist')
             ->willReturn(true);

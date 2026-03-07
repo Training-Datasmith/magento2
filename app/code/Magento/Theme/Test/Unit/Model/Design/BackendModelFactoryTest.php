@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,15 +75,15 @@ class BackendModelFactoryTest extends TestCase
             'value' => 'value',
             'config' => [
                 'path' => 'design/head/default_title',
-                'backend_model' => Value::class
-            ]
+                'backend_model' => Value::class,
+            ],
         ];
         $this->metadataProviderMock->expects($this->once())
             ->method('get')
             ->willReturn([
                 'head_default_title' => [
-                    'path' => 'design/head/default_title'
-                ]
+                    'path' => 'design/head/default_title',
+                ],
             ]);
         $this->collectionFactoryMock->expects($this->once())
             ->method('create')
@@ -101,8 +102,8 @@ class BackendModelFactoryTest extends TestCase
             ->willReturn([
                 [
                     'config_id' => 1,
-                    'path' => 'design/head/default_title'
-                ]
+                    'path' => 'design/head/default_title',
+                ],
             ]);
         $this->objectManagerMock->expects($this->once())
             ->method('create')
@@ -114,8 +115,8 @@ class BackendModelFactoryTest extends TestCase
                         'scope' => $scope,
                         'scope_id' => $scopeId,
                         'field_config' => $data['config'],
-                        'config_id' => 1
-                    ]
+                        'config_id' => 1,
+                    ],
                 ]
             )
             ->willReturn($this->backendModel);
@@ -136,8 +137,8 @@ class BackendModelFactoryTest extends TestCase
             ->willReturn([
                 'head_default_title' => [
                     'path' => $path,
-                    'backend_model' => $backendModelType
-                ]
+                    'backend_model' => $backendModelType,
+                ],
             ]);
         $this->objectManagerMock->expects($this->once())
             ->method('create')

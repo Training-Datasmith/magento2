@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,13 +61,13 @@ class RestrictAdminBillingAgreementUsageObserverTest extends TestCase
             [
                 static fn (self $testCase) => $testCase->createMock(AbstractAgreement::class),
                 true,
-                true
+                true,
             ],
             [
                 static fn (self $testCase) => $testCase->createMock(AbstractAgreement::class),
                 false,
-                false
-            ]
+                false,
+            ],
         ];
     }
 

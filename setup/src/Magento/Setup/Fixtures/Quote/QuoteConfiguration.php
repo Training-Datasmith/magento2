@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,49 +20,49 @@ class QuoteConfiguration extends \Magento\Framework\DataObject
      *
      * @var string
      */
-    const BIG_CONFIGURABLE_TYPE = 'big_configurable';
+    public const BIG_CONFIGURABLE_TYPE = 'big_configurable';
 
     /**
      * Default value for minimum items (simple) per order configuration.
      *
      * @var int
      */
-    const SIMPLE_PRODUCT_COUNT_FROM = 2;
+    public const SIMPLE_PRODUCT_COUNT_FROM = 2;
 
     /**
      * Default value for maximum items (simple) per order configuration.
      *
      * @var int
      */
-    const SIMPLE_PRODUCT_COUNT_TO = 2;
+    public const SIMPLE_PRODUCT_COUNT_TO = 2;
 
     /**
      * Default value for minimum items (configurable) per order configuration.
      *
      * @var int
      */
-    const CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
+    public const CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
 
     /**
      * Default value for maximum items (configurable) per order configuration.
      *
      * @var int
      */
-    const CONFIGURABLE_PRODUCT_COUNT_TO = 0;
+    public const CONFIGURABLE_PRODUCT_COUNT_TO = 0;
 
     /**
      * Default value for minimum items (big configurable) per order configuration.
      *
      * @var int
      */
-    const BIG_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
+    public const BIG_CONFIGURABLE_PRODUCT_COUNT_FROM = 0;
 
     /**
      * Default value for maximum items (big configurable) per order configuration.
      *
      * @var int
      */
-    const BIG_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
+    public const BIG_CONFIGURABLE_PRODUCT_COUNT_TO = 0;
 
     /**
      * Mappings for number of different types of products in quote.
@@ -113,7 +115,7 @@ class QuoteConfiguration extends \Magento\Framework\DataObject
 
         $this->setData(
             'fixture_data_filename',
-            dirname(__DIR__) . DIRECTORY_SEPARATOR . "_files" . DIRECTORY_SEPARATOR . $this->fixtureDataFilename
+            dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . $this->fixtureDataFilename
         );
         $this->accumulateData();
 

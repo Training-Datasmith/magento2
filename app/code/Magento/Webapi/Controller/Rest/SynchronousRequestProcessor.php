@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,20 +8,20 @@ declare(strict_types=1);
 
 namespace Magento\Webapi\Controller\Rest;
 
+use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\Config\ConfigOptionsListConstants;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Webapi\Exception as WebapiException;
 use Magento\Framework\Webapi\Rest\Response as RestResponse;
-use Magento\Framework\Webapi\ServiceOutputProcessor;
 use Magento\Framework\Webapi\Rest\Response\FieldsFilter;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\Config\ConfigOptionsListConstants;
+use Magento\Framework\Webapi\ServiceOutputProcessor;
 
 /**
  * REST request processor for synchronous requests
  */
 class SynchronousRequestProcessor implements RequestProcessorInterface
 {
-    public const PROCESSOR_PATH = "/^\\/V\\d+/";
+    public const PROCESSOR_PATH = '/^\\/V\\d+/';
 
     /**
      * @var RestResponse

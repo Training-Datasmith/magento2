@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -179,7 +180,7 @@ QUERY;
             [
                 'sort_order' => $downloadableProductLink->getSortOrder(),
                 'title' => $downloadableProductLink->getTitle(),
-                'price' => $downloadableProductLink->getPrice()
+                'price' => $downloadableProductLink->getPrice(),
             ]
         );
     }
@@ -203,7 +204,7 @@ QUERY;
             [
                 'sort_order' => $downloadableProductLink->getSortOrder(),
                 'title' => $downloadableProductLink->getTitle(),
-                'price' => $downloadableProductLink->getPrice()
+                'price' => $downloadableProductLink->getPrice(),
             ]
         );
     }
@@ -226,7 +227,7 @@ QUERY;
             $actualResponse['downloadable_product_samples'][0],
             [
                 'title' => $downloadableProductSample->getTitle(),
-                'sort_order' => $downloadableProductSample->getSortOrder()
+                'sort_order' => $downloadableProductSample->getSortOrder(),
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Model\Product\Configuration\Item;
 
-use Magento\Catalog\Model\Config\Source\Product\Thumbnail;
-use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Catalog\Model\Config\Source\Product\Thumbnail;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemResolverInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * {@inheritdoc}
@@ -22,7 +23,7 @@ class ItemProductResolver implements ItemResolverInterface
     /**
      * Path in config to the setting which defines if parent or child product should be used to generate a thumbnail.
      */
-    const CONFIG_THUMBNAIL_SOURCE = 'checkout/cart/grouped_product_image';
+    public const CONFIG_THUMBNAIL_SOURCE = 'checkout/cart/grouped_product_image';
 
     /**
      * @var ScopeConfigInterface
@@ -40,7 +41,7 @@ class ItemProductResolver implements ItemResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function getFinalProduct(ItemInterface $item) : ProductInterface
+    public function getFinalProduct(ItemInterface $item): ProductInterface
     {
         /**
          * Show grouped product thumbnail if it must be always shown according to the related setting in system config
@@ -71,7 +72,7 @@ class ItemProductResolver implements ItemResolverInterface
      * @param ItemInterface $item
      * @return Product
      */
-    private function getParentProduct(ItemInterface $item) : Product
+    private function getParentProduct(ItemInterface $item): Product
     {
         $option = $item->getOptionByCode('product_type');
         $product = $item->getProduct();

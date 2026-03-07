@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\Template\File;
 
-use \Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
-use \Magento\Framework\Filesystem\Driver\File as FileDriver;
+use Magento\Framework\Filesystem\Driver\File as FileDriver;
 
 class Validator
 {

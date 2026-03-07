@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,19 +9,19 @@
 namespace Magento\Customer\Api;
 
 use Magento\Customer\Api\Data\CustomerInterface as Customer;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Model\Data\AttributeMetadata;
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Customer Metadata API test
  */
 class CustomerMetadataTest extends WebapiAbstract
 {
-    public const SERVICE_NAME = "customerCustomerMetadataV1";
-    public const SERVICE_VERSION = "V1";
-    public const RESOURCE_PATH = "/V1/attributeMetadata/customer";
+    public const SERVICE_NAME = 'customerCustomerMetadataV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/attributeMetadata/customer';
 
     /**
      * @var CustomerMetadataInterface
@@ -118,7 +120,7 @@ class CustomerMetadataTest extends WebapiAbstract
                         ['label' => ' ', 'value' => ''],
                         ['label' => 'Male', 'value' => '1'],
                         ['label' => 'Female', 'value' => '2'],
-                        ['label' => 'Not Specified', 'value' => '3']
+                        ['label' => 'Not Specified', 'value' => '3'],
                     ],
                     AttributeMetadata::FRONTEND_CLASS   => '',
                     AttributeMetadata::USER_DEFINED     => false,
@@ -161,7 +163,7 @@ class CustomerMetadataTest extends WebapiAbstract
                     AttributeMetadata::IS_SEARCHABLE_IN_GRID => false,
                     AttributeMetadata::ATTRIBUTE_CODE   => 'website_id',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -268,8 +270,8 @@ class CustomerMetadataTest extends WebapiAbstract
             ],
             [
                 'adminhtml_customer',
-                $attributeMetadata[Customer::GENDER][1]
-            ]
+                $attributeMetadata[Customer::GENDER][1],
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Backend\App\Response\Http\FileFactory as HttpFileFactory;
 use Magento\Backend\Model\Auth;
 use Magento\Backend\Model\Session;
 use Magento\Backend\Model\Url;
+use Magento\Framework\App\Response\FileFactory;
 use Magento\Framework\App\Response\Http;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\Response\FileFactory;
 
 class FileFactoryTest extends TestCase
 {
@@ -58,8 +59,8 @@ class FileFactoryTest extends TestCase
         $objects = [
             [
                 FileFactory::class,
-                $this->createMock(FileFactory::class)
-            ]
+                $this->createMock(FileFactory::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -87,7 +88,7 @@ class FileFactoryTest extends TestCase
                 'response' => $this->_responseMock,
                 'auth' => $this->_authMock,
                 'backendUrl' => $this->_backendUrl,
-                'session' => $this->_sessionMock
+                'session' => $this->_sessionMock,
             ]
         );
     }

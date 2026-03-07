@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Customer default address fixture with entity_id = 2,
  * this fixture also inherit other fixtures for creating simple product, a customer with entity_id=1

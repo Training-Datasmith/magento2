@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Model\Wishlist\Product;
 
-use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
-use Magento\Wishlist\Model\Item as WishlistItem;
-use Magento\GroupedProduct\Model\Product\Type\Grouped as TypeGrouped;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
+use Magento\GroupedProduct\Model\Product\Type\Grouped as TypeGrouped;
+use Magento\Wishlist\Model\Item as WishlistItem;
 
 /**
  * Wishlist logic for grouped product

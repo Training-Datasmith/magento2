@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,9 +12,8 @@ use Magento\Framework\View\Element\UiComponent\ContentType\ContentTypeInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Ui\Component\AbstractComponent;
-use Magento\Ui\Component\Container;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AbstractComponentTest extends TestCase
@@ -203,15 +203,15 @@ class AbstractComponentTest extends TestCase
         return [
             [
                 'jsConfig' => [],
-                'expectedResult' => ['extends' => 'my_namespace']
+                'expectedResult' => ['extends' => 'my_namespace'],
             ],
             [
                 'jsConfig' => ['name' => 'test'],
-                'expectedResult' => ['name' => 'test', 'extends' => 'my_namespace']
+                'expectedResult' => ['name' => 'test', 'extends' => 'my_namespace'],
             ],
             [
                 'jsConfig' => ['name' => 'test', 'extends' => 'some_extends'],
-                'expectedResult' => ['name' => 'test', 'extends' => 'some_extends']
+                'expectedResult' => ['name' => 'test', 'extends' => 'some_extends'],
             ],
         ];
     }

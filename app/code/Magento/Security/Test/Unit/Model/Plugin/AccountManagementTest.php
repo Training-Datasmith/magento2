@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class AccountManagementTest extends TestCase
                 'passwordRequestEvent' => $passwordRequestEvent,
                 'request' => $this->request,
                 'securityManager' => $this->securityManager,
-                'scope' => $this->scope
+                'scope' => $this->scope,
             ]
         );
 

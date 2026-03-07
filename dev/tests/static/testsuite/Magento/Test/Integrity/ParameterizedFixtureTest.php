@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ use ReflectionException;
 class ParameterizedFixtureTest extends TestCase
 {
     private const array MODULES_WITH_FIXTURES = [
-        'Magento\TestFramework\Fixture'
+        'Magento\TestFramework\Fixture',
     ];
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Locale\Currency;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManagerHelper;
 use Magento\Framework\View\Element\Template\Context as TemplateContext;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
@@ -31,12 +31,12 @@ class TaxTest extends TestCase
     public function testGetEscapedValue()
     {
         $objectManager = new ObjectManager($this);
-        
+
         $objects = [
             [
                 TemplateContext::class,
-                $this->createMock(TemplateContext::class)
-            ]
+                $this->createMock(TemplateContext::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -83,7 +83,7 @@ class TaxTest extends TestCase
                 'factoryElement' => $factory,
                 'factoryCollection' => $collectionFactory,
                 'storeManager' => $storeManager,
-                'localeCurrency' => $localeCurrency
+                'localeCurrency' => $localeCurrency,
             ]
         );
 

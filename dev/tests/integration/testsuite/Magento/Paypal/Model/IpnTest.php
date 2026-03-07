@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppArea frontend
@@ -56,7 +59,7 @@ class IpnTest extends \PHPUnit\Framework\TestCase
         $ipnModel = $ipnFactory->create(
             [
                 'data' => $ipnData,
-                'curlFactory' => $this->_createMockedHttpAdapter()
+                'curlFactory' => $this->_createMockedHttpAdapter(),
             ]
         );
 
@@ -95,7 +98,7 @@ class IpnTest extends \PHPUnit\Framework\TestCase
         $ipnModel = $ipnFactory->create(
             [
                 'data' => $ipnData,
-                'curlFactory' => $this->_createMockedHttpAdapter()
+                'curlFactory' => $this->_createMockedHttpAdapter(),
             ]
         );
 
@@ -139,7 +142,7 @@ class IpnTest extends \PHPUnit\Framework\TestCase
         $ipnModel = $ipnFactory->create(
             [
                 'data' => $ipnData,
-                'curlFactory' => $this->_createMockedHttpAdapter()
+                'curlFactory' => $this->_createMockedHttpAdapter(),
             ]
         );
 
@@ -179,7 +182,7 @@ class IpnTest extends \PHPUnit\Framework\TestCase
         $ipnModel = $ipnFactory->create(
             [
                 'data' => $ipnData,
-                'curlFactory' => $this->_createMockedHttpAdapter()
+                'curlFactory' => $this->_createMockedHttpAdapter(),
             ]
         );
 
@@ -218,7 +221,7 @@ class IpnTest extends \PHPUnit\Framework\TestCase
         $ipnModel = $ipnFactory->create(
             [
                 'data' => $ipnData,
-                'curlFactory' => $this->_createMockedHttpAdapter()
+                'curlFactory' => $this->_createMockedHttpAdapter(),
             ]
         );
 

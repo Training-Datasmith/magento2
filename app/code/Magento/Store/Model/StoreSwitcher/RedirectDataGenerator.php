@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class RedirectDataGenerator
             [
                 'data' => $dataStr,
                 'timestamp' => $timestamp,
-                'signature' => $signature
+                'signature' => $signature,
             ]
         );
     }

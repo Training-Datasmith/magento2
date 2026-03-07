@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\SalesRule\Model;
 
 use Magento\Framework\DataObjectFactory;
-use Magento\Quote\Model\Quote\Address;
 use Magento\SalesRule\Api\Data\CouponInterface;
 use Magento\SalesRule\Model\ResourceModel\Coupon\UsageFactory;
 

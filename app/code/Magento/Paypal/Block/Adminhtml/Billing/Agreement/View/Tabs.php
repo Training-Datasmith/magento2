@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml billing agreements tabs view
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Billing\Agreement\View;
 
 /**

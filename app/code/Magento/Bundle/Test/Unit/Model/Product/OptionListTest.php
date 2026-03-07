@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Bundle\Test\Unit\Model\Product;
 use Magento\Bundle\Api\Data\LinkInterface;
 use Magento\Bundle\Api\Data\OptionInterface;
 use Magento\Bundle\Api\Data\OptionInterfaceFactory;
+use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\LinksList;
 use Magento\Bundle\Model\Product\OptionList;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Bundle\Model\ResourceModel\Option\Collection;
-use Magento\Bundle\Model\Option;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product\Option as CatalogOption;
 use Magento\Framework\Api\DataObjectHelper;
@@ -90,7 +91,7 @@ class OptionListTest extends TestCase
                 'optionFactory' => $this->optionFactoryMock,
                 'linkList' => $this->linkListMock,
                 'dataObjectHelper' => $this->dataObjectHelperMock,
-                'extensionAttributesJoinProcessor' => $this->extensionAttributesFactoryMock
+                'extensionAttributesJoinProcessor' => $this->extensionAttributesFactoryMock,
             ]
         );
     }

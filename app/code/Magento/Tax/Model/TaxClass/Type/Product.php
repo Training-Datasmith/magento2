@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product Tax Class
  */
+
 namespace Magento\Tax\Model\TaxClass\Type;
 
 class Product extends \Magento\Tax\Model\TaxClass\AbstractType

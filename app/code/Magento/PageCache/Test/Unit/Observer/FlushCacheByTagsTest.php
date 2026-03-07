@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,14 +12,14 @@ use Magento\Framework\App\Cache\Tag\Resolver;
 use Magento\Framework\Cache\CacheConstants;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\Cache\Type;
 use Magento\PageCache\Model\Config;
 use Magento\PageCache\Observer\FlushCacheByTags;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -64,7 +65,7 @@ class FlushCacheByTagsTest extends TestCase
             [
                 'config' => $this->configMock,
                 'fullPageCache' => $this->fullPageCacheMock,
-                'tagResolver' => $this->tagResolverMock
+                'tagResolver' => $this->tagResolverMock,
             ]
         );
     }
@@ -109,7 +110,7 @@ class FlushCacheByTagsTest extends TestCase
     {
         return [
             'full_page cache type is enabled' => [true],
-            'full_page cache type is disabled' => [false]
+            'full_page cache type is disabled' => [false],
         ];
     }
 

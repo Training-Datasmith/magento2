@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,16 +15,15 @@ use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Sales\Ui\Component\Listing\Column\Price;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Contains tests for Price class
  */
 class PriceTest extends TestCase
 {
-
     /**
      * @var Price
      */
@@ -75,35 +75,35 @@ class PriceTest extends TestCase
         string $currencyCode,
         ?int $expectedStoreId = null
     ): void {
-         $itemName = 'itemName';
-         $oldItemValue = 'oldItemValue';
-         $newItemValue = 'newItemValue';
+        $itemName = 'itemName';
+        $oldItemValue = 'oldItemValue';
+        $newItemValue = 'newItemValue';
 
-         $store = $this->createMock(Store::class);
-         $currencyMock = $this->createMock(Currency::class);
-         $currencyMock->expects($hasCurrency ? $this->never() : $this->once())
-            ->method('getCurrencyCode')
-            ->willReturn($currencyCode);
-         $this->storeManagerMock->expects($hasCurrency ? $this->never() : $this->once())
-            ->method('getStore')
-            ->with($expectedStoreId)
-            ->willReturn($store);
-         $store->expects($hasCurrency ? $this->never() : $this->once())
-            ->method('getBaseCurrency')
-            ->willReturn($currencyMock);
+        $store = $this->createMock(Store::class);
+        $currencyMock = $this->createMock(Currency::class);
+        $currencyMock->expects($hasCurrency ? $this->never() : $this->once())
+           ->method('getCurrencyCode')
+           ->willReturn($currencyCode);
+        $this->storeManagerMock->expects($hasCurrency ? $this->never() : $this->once())
+           ->method('getStore')
+           ->with($expectedStoreId)
+           ->willReturn($store);
+        $store->expects($hasCurrency ? $this->never() : $this->once())
+           ->method('getBaseCurrency')
+           ->willReturn($currencyMock);
 
-         $this->currencyMock->expects($this->once())
-            ->method('load')
-            ->willReturnSelf();
+        $this->currencyMock->expects($this->once())
+           ->method('load')
+           ->willReturnSelf();
 
-         $this->currencyMock->expects($this->once())
-            ->method('format')
-            ->with($oldItemValue, [], false)
-            ->willReturn($newItemValue);
+        $this->currencyMock->expects($this->once())
+           ->method('format')
+           ->with($oldItemValue, [], false)
+           ->willReturn($newItemValue);
 
-         $this->model->setData('name', $itemName);
-         $dataSource = $this->model->prepareDataSource($dataSource);
-         $this->assertEquals($newItemValue, $dataSource['data']['items'][0][$itemName]);
+        $this->model->setData('name', $itemName);
+        $dataSource = $this->model->prepareDataSource($dataSource);
+        $this->assertEquals($newItemValue, $dataSource['data']['items'][0][$itemName]);
     }
 
     /**
@@ -118,39 +118,39 @@ class PriceTest extends TestCase
                 'items' => [
                     [
                         'itemName' => 'oldItemValue',
-                        'base_currency_code' => 'US'
-                    ]
-                ]
-            ]
+                        'base_currency_code' => 'US',
+                    ],
+                ],
+            ],
         ];
         $dataSource2 = [
             'data' => [
                 'items' => [
                     [
-                        'itemName' => 'oldItemValue'
-                    ]
-                ]
-            ]
+                        'itemName' => 'oldItemValue',
+                    ],
+                ],
+            ],
         ];
         $dataSource3 = [
             'data' => [
                 'items' => [
                     [
                         'itemName' => 'oldItemValue',
-                        'store_id' => '2'
-                    ]
-                ]
-            ]
+                        'store_id' => '2',
+                    ],
+                ],
+            ],
         ];
         $dataSource4 = [
             'data' => [
                 'items' => [
                     [
                         'itemName' => 'oldItemValue',
-                        'store_id' => 'abc'
-                    ]
-                ]
-            ]
+                        'store_id' => 'abc',
+                    ],
+                ],
+            ],
         ];
         $dataSource5 = [
             'data' => [
@@ -159,9 +159,9 @@ class PriceTest extends TestCase
                         'itemName' => 'oldItemValue',
                         'store_id' => '123Test',
                         'base_currency_code' => '',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         return [

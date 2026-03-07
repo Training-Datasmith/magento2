@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Helper\Form;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -54,7 +57,7 @@ class WeightTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [\Magento\Catalog\Model\Product\Type\Virtual::class],
-            [\Magento\Downloadable\Model\Product\Type::class]
+            [\Magento\Downloadable\Model\Product\Type::class],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductTierPriceInterface;
 use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
 use Magento\Catalog\Model\Product;
@@ -23,8 +23,9 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\TemporaryState\CouldNotSaveException;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-
 use Magento\Store\Model\Website;
+
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -183,14 +184,14 @@ class TierPriceManagementTest extends TestCase
                 0,
                 1,
                 ['website_price' => 10, 'price' => 5, 'all_groups' => 0, 'cust_group' => 1, 'price_qty' => 5],
-                ['value' => 5, 'qty' => 5]
+                ['value' => 5, 'qty' => 5],
             ],
             [
                 0,
                 'all',
                 ['website_price' => 10, 'price' => 5, 'all_groups' => 0, 'cust_group' => 1, 'price_qty' => 5],
-                []
-            ]
+                [],
+            ],
         ];
     }
 
@@ -270,8 +271,8 @@ class TierPriceManagementTest extends TestCase
                     'price' => 100,
                     'website_price' => 100,
                     'website_id' => 0,
-                    'price_qty' => 3
-                ]
+                    'price_qty' => 3,
+                ],
             ]
         );
         $this->repositoryMock->expects($this->once())->method('save')->with($this->productMock);
@@ -304,7 +305,7 @@ class TierPriceManagementTest extends TestCase
             'tier_price',
             [
                 ['cust_group' => 1, 'website_id' => 0, 'price_qty' => 4, 'price' => 50],
-                ['cust_group' => 1, 'website_id' => 0, 'price_qty' => 3, 'price' => 100, 'website_price' => 100]
+                ['cust_group' => 1, 'website_id' => 0, 'price_qty' => 3, 'price' => 100, 'website_price' => 100],
             ]
         );
         $this->repositoryMock->expects($this->once())->method('save')->with($this->productMock);
@@ -329,7 +330,7 @@ class TierPriceManagementTest extends TestCase
         $this->productMock->expects($this->once())->method('setData')->with(
             'tier_price',
             [
-                ['cust_group' => 1, 'website_id' => 0, 'price_qty' => 3, 'price' => 100]
+                ['cust_group' => 1, 'website_id' => 0, 'price_qty' => 3, 'price' => 100],
             ]
         );
         $this->repositoryMock->expects($this->once())->method('save')->with($this->productMock);
@@ -415,7 +416,7 @@ class TierPriceManagementTest extends TestCase
         return [
             ['string', 10],
             [10, '10string'],
-            [10, -15]
+            [10, -15],
         ];
     }
 }

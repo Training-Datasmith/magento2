@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -71,7 +73,7 @@ class BCMultiModuleTest extends SetupTestCase
     {
         $this->cliCommand->install([
             'Magento_TestSetupDeclarationModule6',
-            'Magento_TestSetupDeclarationModule7'
+            'Magento_TestSetupDeclarationModule7',
         ]);
         //Check if declaration is applied
         $indexes = $this->dbSchemaReader->readIndexes('test_table', 'default');
@@ -172,7 +174,7 @@ class BCMultiModuleTest extends SetupTestCase
     {
         $this->cliCommand->install([
             'Magento_TestSetupDeclarationModule6',
-            'Magento_TestSetupDeclarationModule7'
+            'Magento_TestSetupDeclarationModule7',
         ]);
         //Check no change upgrade with US
         $this->cliCommand->upgrade();
@@ -218,7 +220,7 @@ class BCMultiModuleTest extends SetupTestCase
     ) {
         $this->cliCommand->install(
             [
-                'Magento_TestSetupDeclarationModule1'
+                'Magento_TestSetupDeclarationModule1',
             ],
             [
                 'db-prefix' => $dbPrefix,
@@ -260,7 +262,7 @@ class BCMultiModuleTest extends SetupTestCase
                 'indexName' => 'SPEC_TEST_TABLE_TINYINT_BIGINT',
                 'constraintName' => 'SPEC_TEST_TABLE_SMALLINT_BIGINT',
                 'foreignKeyName' => 'SPEC_TEST_TABLE_TINYINT_SPEC_REFERENCE_TABLE_TINYINT_REF',
-            ]
+            ],
         ];
     }
 }

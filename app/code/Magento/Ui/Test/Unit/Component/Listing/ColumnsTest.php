@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,12 +60,12 @@ class ColumnsTest extends TestCase
                 'context' => $this->contextMock,
                 'data' => [
                     'js_config' => [
-                        'extends' => 'test_config_extends'
+                        'extends' => 'test_config_extends',
                     ],
                     'config' => [
-                        'dataType' => 'testType'
-                    ]
-                ]
+                        'dataType' => 'testType',
+                    ],
+                ],
             ]
         );
 

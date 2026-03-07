@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -79,7 +81,7 @@ class PageCache implements ConfigOptionsListInterface
      */
     private $validPageCacheOptions = [
         self::INPUT_VALUE_PAGE_CACHE_REDIS,
-        self::INPUT_VALUE_PAGE_CACHE_VALKEY
+        self::INPUT_VALUE_PAGE_CACHE_VALKEY,
     ];
 
     /**
@@ -229,7 +231,7 @@ class PageCache implements ConfigOptionsListInterface
                 TextConfigOption::FRONTEND_WIZARD_TEXT,
                 self::CONFIG_PATH_PAGE_CACHE_BACKEND_SERIALIZER,
                 'Serializer to use (igbinary is 70% faster, 58% smaller than PHP serialize)'
-            )
+            ),
         ];
     }
 
@@ -336,21 +338,21 @@ class PageCache implements ConfigOptionsListInterface
                 $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_SERVER)
             );
 
-              $config['port'] = $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PORT] ?? $deploymentConfig->get(
-                  self::CONFIG_PATH_PAGE_CACHE_BACKEND_PORT,
-                  $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PORT)
-              );
+            $config['port'] = $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PORT] ?? $deploymentConfig->get(
+                self::CONFIG_PATH_PAGE_CACHE_BACKEND_PORT,
+                $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PORT)
+            );
 
-              $config['db'] = $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_DATABASE] ?? $deploymentConfig->get(
-                  self::CONFIG_PATH_PAGE_CACHE_BACKEND_DATABASE,
-                  $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_DATABASE)
-              );
+            $config['db'] = $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_DATABASE] ?? $deploymentConfig->get(
+                self::CONFIG_PATH_PAGE_CACHE_BACKEND_DATABASE,
+                $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_DATABASE)
+            );
 
-              $config['password'] =
-                $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PASSWORD] ?? $deploymentConfig->get(
-                    self::CONFIG_PATH_PAGE_CACHE_BACKEND_PASSWORD,
-                    $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PASSWORD)
-                );
+            $config['password'] =
+              $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PASSWORD] ?? $deploymentConfig->get(
+                  self::CONFIG_PATH_PAGE_CACHE_BACKEND_PASSWORD,
+                  $this->getDefaultConfigValue(self::INPUT_KEY_PAGE_CACHE_BACKEND_VALKEY_PASSWORD)
+              );
         } else {
             $config['host'] = $options[self::INPUT_KEY_PAGE_CACHE_BACKEND_REDIS_SERVER] ?? $deploymentConfig->get(
                 self::CONFIG_PATH_PAGE_CACHE_BACKEND_SERVER,

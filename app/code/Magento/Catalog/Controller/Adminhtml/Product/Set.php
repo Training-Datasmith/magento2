@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 /**
@@ -17,7 +20,7 @@ abstract class Set extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::sets';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::sets';
 
     /**
      * Core registry

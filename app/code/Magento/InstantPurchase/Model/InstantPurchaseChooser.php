@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\InstantPurchase\Model;
 
 use Magento\Customer\Model\Customer;
 
+use Magento\InstantPurchase\Model\BillingAddressChoose\BillingAddressChooserInterface;
 use Magento\InstantPurchase\Model\PaymentMethodChoose\PaymentTokenChooserInterface;
 use Magento\InstantPurchase\Model\ShippingAddressChoose\ShippingAddressChooserInterface;
-use Magento\InstantPurchase\Model\BillingAddressChoose\BillingAddressChooserInterface;
 use Magento\InstantPurchase\Model\ShippingMethodChoose\ShippingMethodChooserInterface;
 use Magento\Store\Model\Store;
 

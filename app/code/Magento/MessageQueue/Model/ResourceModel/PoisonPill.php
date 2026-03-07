@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class PoisonPill extends AbstractDb implements PoisonPillPutInterface, PoisonPil
     /**
      * Table name.
      */
-    const QUEUE_POISON_PILL_TABLE = 'queue_poison_pill';
+    public const QUEUE_POISON_PILL_TABLE = 'queue_poison_pill';
 
     /**
      * @inheritdoc

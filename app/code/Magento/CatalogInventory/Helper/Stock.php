@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Helper;
 
 use Magento\Catalog\Model\Product;
@@ -127,7 +130,7 @@ class Stock
         );
         $cond = [
             '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=1 AND {{table}}.is_in_stock=1',
-            '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=0'
+            '{{table}}.use_config_manage_stock = 0 AND {{table}}.manage_stock=0',
         ];
 
         if ($manageStock) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -10,9 +11,8 @@ namespace Magento\Framework\GraphQl\Test\Unit\Query;
 
 use Magento\Framework\GraphQl\Query\Fields;
 use Magento\Framework\GraphQl\Query\QueryParser;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class FieldsTest extends TestCase
 {
@@ -82,8 +82,8 @@ class FieldsTest extends TestCase
                     'name' => 'name',
                     'user_errors' => 'user_errors',
                     'code' => 'code',
-                    'message' => 'message'
-                ]
+                    'message' => 'message',
+                ],
             ],
             'mutation with variables' => [
                 'query' => ['query' => 'mutation ($cartId: String!, $products: [CartItemInput!]!) {
@@ -122,9 +122,9 @@ class FieldsTest extends TestCase
                         [
                             'sku' => 'sku1',
                             'parent_sku' => 'sku2',
-                            'quantity' => 1
-                        ]
-                    ]
+                            'quantity' => 1,
+                        ],
+                    ],
                 ],
                 'expected' => [
                     'cartId' => 'cartId',
@@ -151,9 +151,9 @@ class FieldsTest extends TestCase
                     'user_errors' => 'user_errors',
                     'code' => 'code',
                     'message' => 'message',
-                    'parent_sku' => 'parent_sku'
-                ]
-            ]
+                    'parent_sku' => 'parent_sku',
+                ],
+            ],
         ];
     }
 

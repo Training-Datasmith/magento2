@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Controller\Adminhtml;
 
 /**
@@ -15,7 +18,7 @@ abstract class Sitemap extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sitemap::sitemap';
+    public const ADMIN_RESOURCE = 'Magento_Sitemap::sitemap';
 
     /**
      * Init actions

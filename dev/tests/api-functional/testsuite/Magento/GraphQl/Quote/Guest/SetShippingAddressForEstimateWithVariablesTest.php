@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class SetShippingAddressForEstimateWithVariablesTest extends GraphQlAbstract
         $cartItem = $result['cart']['items'][0];
         self::assertEquals($product->getSku(), $cartItem['product']['sku']);
         self::assertEquals(1, $cartItem['quantity']);
-        self::assertEquals("SetShippingAddressesOnCartOutput", $result['__typename']);
+        self::assertEquals('SetShippingAddressesOnCartOutput', $result['__typename']);
     }
 
     /**
@@ -128,8 +129,8 @@ MUTATION;
                     'telephone' => '1234567890',
                     'postcode' => '11371',
                     'region' => 'NY',
-                    'country_code' => 'US'
-                ]
+                    'country_code' => 'US',
+                ],
             ];
     }
 
@@ -186,9 +187,9 @@ MUTATION;
                     [
                         'sku' => $sku,
                         'parent_sku' => $sku,
-                        'quantity' => $qty
-                    ]
-                ]
+                        'quantity' => $qty,
+                    ],
+                ],
             ];
     }
 }

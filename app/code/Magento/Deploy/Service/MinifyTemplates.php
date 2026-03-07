@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
-use Magento\Framework\View\Template\Html\MinifierInterface;
 use Magento\Framework\App\Utility\Files;
+use Magento\Framework\View\Template\Html\MinifierInterface;
 
 /**
  * Minify PHTML templates service

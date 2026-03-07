@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -139,11 +140,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', $user],
-            ['revision', $revision]
+            ['revision', $revision],
         ], [
             ['commit', $commit],
             ['deep-link', $deepLink],
-            ['group-id', $groupId]
+            ['group-id', $groupId],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -184,7 +185,7 @@ class DeployMarkerTest extends TestCase
             'changelog' => 'New features',
             'commit' => $commit,
             'deepLink' => $deepLink,
-            'groupId' => $groupId
+            'groupId' => $groupId,
         ];
 
         $this->serviceShellUserMock->expects($this->once())
@@ -196,11 +197,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['change_log', 'New features'],
             ['user', $user],
-            ['revision', $revision]
+            ['revision', $revision],
         ], [
             ['commit', $commit],
             ['deep-link', $deepLink],
-            ['group-id', $groupId]
+            ['group-id', $groupId],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -242,11 +243,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -280,11 +281,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -314,11 +315,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -333,7 +334,7 @@ class DeployMarkerTest extends TestCase
         // Group related assertions - check for actual error format from DeployMarker command
         $expectedStrings = ['✗ Error:', $exceptionMessage];
         foreach ($expectedStrings as $expected) {
-                $this->assertStringContainsString($expected, $outputContent);
+            $this->assertStringContainsString($expected, $outputContent);
         }
         $this->assertMatchesRegularExpression('/(✗|ERROR)/', $outputContent);
     }
@@ -354,11 +355,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -389,7 +390,7 @@ class DeployMarkerTest extends TestCase
             'version' => 'v1.0.0',
             'description' => $message,
             'user' => 'deploy-user',
-            'timestamp' => 1609459200000 // 2021-01-01 00:00:00 UTC
+            'timestamp' => 1609459200000, // 2021-01-01 00:00:00 UTC
         ];
 
         $this->serviceShellUserMock->expects($this->once())
@@ -401,11 +402,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', 'v1.0.0']
+            ['revision', 'v1.0.0'],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -455,7 +456,7 @@ class DeployMarkerTest extends TestCase
             'changelog' => 'Added new features',
             'commit' => 'abc123def456',
             'deepLink' => 'https://github.com/test/releases/v2.0.0',
-            'groupId' => 'production'
+            'groupId' => 'production',
         ];
 
         $this->serviceShellUserMock->expects($this->once())
@@ -467,11 +468,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['change_log', 'Added new features'],
             ['user', 'complete-user'],
-            ['revision', 'v2.0.0']
+            ['revision', 'v2.0.0'],
         ], [
             ['commit', 'abc123def456'],
             ['deep-link', 'https://github.com/test/releases/v2.0.0'],
-            ['group-id', 'production']
+            ['group-id', 'production'],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -496,7 +497,7 @@ class DeployMarkerTest extends TestCase
         $expectedData = [
             'complete-deployment-id', 'complete-entity-guid', 'v2.0.0',
             $message, 'Added new features', 'complete-user', 'abc123def456',
-            'https://github.com/test/releases/v2.0.0', 'production'
+            'https://github.com/test/releases/v2.0.0', 'production',
         ];
         foreach ($expectedData as $expected) {
             $this->assertStringContainsString($expected, $outputContent);
@@ -529,7 +530,7 @@ class DeployMarkerTest extends TestCase
             'version' => 'v1.0.0',
             'description' => $message,
             'user' => 'test-user',
-            'timestamp' => null
+            'timestamp' => null,
         ];
 
         $this->serviceShellUserMock->expects($this->once())
@@ -541,11 +542,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', 'v1.0.0']
+            ['revision', 'v1.0.0'],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -613,11 +614,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         $this->deploymentMock->expects($this->once())
@@ -657,11 +658,11 @@ class DeployMarkerTest extends TestCase
             ['message', $message],
             ['changelog', null],
             ['user', null],
-            ['revision', null]
+            ['revision', null],
         ], [
             ['commit', null],
             ['deep-link', null],
-            ['group-id', null]
+            ['group-id', null],
         ]);
 
         // Should not call setDeployment when disabled

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Interception;
 
 /**
@@ -21,9 +24,9 @@ class TwoPluginTest extends AbstractPlugin
                         ], 'second' => [
                             'instance'  => \Magento\Framework\Interception\Fixture\Intercepted\Plugin::class,
                             'sortOrder' => 20,
-                        ]
+                        ],
                     ],
-                ]
+                ],
             ]
         );
 

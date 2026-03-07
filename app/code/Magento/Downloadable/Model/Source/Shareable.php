@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Source;
 
 use Magento\Downloadable\Model\Link;
@@ -20,7 +23,7 @@ class Shareable implements \Magento\Framework\Data\OptionSourceInterface
         return [
             ['value' => Link::LINK_SHAREABLE_YES, 'label' => __('Yes')],
             ['value' => Link::LINK_SHAREABLE_NO, 'label' => __('No')],
-            ['value' => Link::LINK_SHAREABLE_CONFIG, 'label' => __('Use config')]
+            ['value' => Link::LINK_SHAREABLE_CONFIG, 'label' => __('Use config')],
         ];
     }
 }

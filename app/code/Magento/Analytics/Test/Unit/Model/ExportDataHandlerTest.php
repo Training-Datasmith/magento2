@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,13 +13,13 @@ use Magento\Analytics\Model\EncodedContext;
 use Magento\Analytics\Model\ExportDataHandler;
 use Magento\Analytics\Model\FileRecorder;
 use Magento\Analytics\Model\ReportWriterInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Archive;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ExportDataHandlerTest extends TestCase
@@ -143,7 +144,7 @@ class ExportDataHandlerTest extends TestCase
         $this->directoryMock
             ->expects($this->exactly(4))
             ->method('delete')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$tmpFilesDirectoryPath] => true,
                 [$archiveRelativePath] => true
             });
@@ -151,7 +152,7 @@ class ExportDataHandlerTest extends TestCase
         $this->directoryMock
             ->expects($this->exactly(4))
             ->method('getAbsolutePath')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$tmpFilesDirectoryPath] => $archiveSource,
                 [$archiveRelativePath] => $archiveAbsolutePath
             });
@@ -164,7 +165,7 @@ class ExportDataHandlerTest extends TestCase
         $this->directoryMock
             ->expects($this->exactly(2))
             ->method('isExist')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$tmpFilesDirectoryPath] => true,
                 [$archiveRelativePath] => true
             });
@@ -236,7 +237,7 @@ class ExportDataHandlerTest extends TestCase
         $this->directoryMock
             ->expects($this->exactly(3))
             ->method('delete')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$tmpFilesDirectoryPath] => true,
                 [$archivePath] => true
             });

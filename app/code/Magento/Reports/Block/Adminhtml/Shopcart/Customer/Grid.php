@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Shopcart\Customer;
 
 /**
@@ -95,7 +98,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'width' => '70px',
                 'sortable' => false,
                 'align' => 'right',
-                'index' => 'items'
+                'index' => 'items',
             ]
         );
 
@@ -112,7 +115,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\Shopcart
                 'currency_code' => $currencyCode,
                 'index' => 'total',
                 'renderer' => \Magento\Reports\Block\Adminhtml\Grid\Column\Renderer\Currency::class,
-                'rate' => $this->getRate($currencyCode)
+                'rate' => $this->getRate($currencyCode),
             ]
         );
 

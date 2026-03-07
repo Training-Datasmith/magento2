@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -307,13 +309,13 @@ class AdvancedPricingTest extends TestCase
             ImportSourceCsv::class,
             [
                 'file' => $csvFile,
-                'directory' => $this->directory
+                'directory' => $this->directory,
             ]
         );
         $errors = $importModel->setParameters(
             [
                 'behavior' => Import::BEHAVIOR_APPEND,
-                'entity' => 'advanced_pricing'
+                'entity' => 'advanced_pricing',
             ]
         )->setSource(
             $source

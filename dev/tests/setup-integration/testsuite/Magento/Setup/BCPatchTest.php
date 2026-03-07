@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Setup;
 
 use Magento\Framework\Module\DbVersionInfo;
-use Magento\Framework\Module\ModuleList;
 use Magento\Framework\Module\ModuleResource;
 use Magento\TestFramework\Deploy\CliCommand;
 use Magento\TestFramework\Deploy\TableData;
@@ -82,7 +83,7 @@ class BCPatchTest extends SetupTestCase
             'SomePatch.php',
             'Setup/Patch/Data'
         );
-        
+
         $this->cliCommand->install(['Magento_TestSetupDeclarationModule5']);
         self::assertTrue($this->dbVersionInfo->isDataUpToDate('Magento_TestSetupDeclarationModule5'));
         self::assertTrue($this->dbVersionInfo->isSchemaUpToDate('Magento_TestSetupDeclarationModule5'));

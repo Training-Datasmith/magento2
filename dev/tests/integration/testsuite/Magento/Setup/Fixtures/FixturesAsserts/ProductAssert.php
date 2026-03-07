@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Fixtures\FixturesAsserts;
 
 /**
@@ -51,7 +54,7 @@ class ProductAssert
         $productCollection
             ->getSelect()
             ->where('sku ?', $this->expressionFactory->create([
-                'expression' => 'REGEXP \'^' . $productSkuPattern . '$\''
+                'expression' => 'REGEXP \'^' . $productSkuPattern . '$\'',
             ]));
 
         if ($expectedCount !== count($productCollection)) {

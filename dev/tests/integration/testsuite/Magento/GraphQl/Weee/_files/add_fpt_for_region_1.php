@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
-use Magento\Quote\Model\QuoteFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var ProductRepositoryInterface $productRepository */
@@ -24,8 +24,8 @@ if ($product && $product->getId()) {
                     'country' => 'US',
                     'state' => 1,
                     'price' => 5.00,
-                    'delete' => ''
-                ]
+                    'delete' => '',
+                ],
             ]
         )
     );

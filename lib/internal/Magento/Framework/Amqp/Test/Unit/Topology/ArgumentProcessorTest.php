@@ -27,8 +27,8 @@ class ArgumentProcessorTest extends TestCase
     public function testProcessArgumentsWhenAnyArgumentIsIncorrect(): void
     {
         $arguments = [
-            'test' => new class {
-            }
+            'test' => new class () {
+            },
         ];
 
         $this->expectException(InvalidArgumentException::class);
@@ -45,7 +45,7 @@ class ArgumentProcessorTest extends TestCase
             'numeric_value' => '25',
             'integer_value' => 26,
             'boolean_value' => false,
-            'string_value' => 'test'
+            'string_value' => 'test',
         ];
 
         $expected = [
@@ -53,7 +53,7 @@ class ArgumentProcessorTest extends TestCase
             'numeric_value' => ['I', 25],
             'integer_value' => ['I', 26],
             'boolean_value' => ['t', false],
-            'string_value' => ['S', 'test']
+            'string_value' => ['S', 'test'],
         ];
 
         $this->assertSame($expected, $this->argumentProcessor->processArguments($arguments));
@@ -66,7 +66,7 @@ class ArgumentProcessorTest extends TestCase
     {
         parent::setUp();
         // Create anonymous class that uses the trait
-        $this->argumentProcessor = new class {
+        $this->argumentProcessor = new class () {
             use ArgumentProcessor;
         };
     }

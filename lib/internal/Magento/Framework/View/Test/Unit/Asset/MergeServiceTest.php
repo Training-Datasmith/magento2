@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,9 +20,9 @@ use Magento\Framework\View\Asset\MergeService;
 use Magento\Framework\View\Asset\MergeStrategy\Checksum;
 use Magento\Framework\View\Asset\MergeStrategy\FileExists;
 use Magento\Framework\View\Asset\Remote;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -168,7 +169,7 @@ class MergeServiceTest extends TestCase
                 'css',
                 State::MODE_DEVELOPER,
                 Checksum::class,
-            ]
+            ],
         ];
     }
 

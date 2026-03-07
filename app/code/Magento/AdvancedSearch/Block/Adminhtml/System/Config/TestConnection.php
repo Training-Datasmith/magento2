@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Block\Adminhtml\System\Config;
 
 /**
@@ -18,7 +21,7 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
      * @return $this
      * @since 100.1.0
      */
-    protected function _prepareLayout()
+    protected function _prepareLayout(): static
     {
         parent::_prepareLayout();
         $this->setTemplate('Magento_AdvancedSearch::system/config/testconnection.phtml');
@@ -28,7 +31,6 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Unset some non-related element parameters
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
      * @since 100.1.0
      */
@@ -42,7 +44,6 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Get the button and scripts contents
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
      * @since 100.1.0
      */
@@ -54,7 +55,7 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
                 'button_label' => __($originalData['button_label']),
                 'html_id' => $element->getHtmlId(),
                 'ajax_url' => $this->_urlBuilder->getUrl('catalog/search_system_config/testconnection'),
-                'field_mapping' => str_replace('"', '\\"', json_encode($this->_getFieldMapping()))
+                'field_mapping' => str_replace('"', '\\"', json_encode($this->_getFieldMapping())),
             ]
         );
 
@@ -64,10 +65,9 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
     /**
      * Returns configuration fields required to perform the ping request
      *
-     * @return array
      * @since 100.1.0
      */
-    protected function _getFieldMapping()
+    protected function _getFieldMapping(): array
     {
         return ['engine' => 'catalog_search_engine'];
     }

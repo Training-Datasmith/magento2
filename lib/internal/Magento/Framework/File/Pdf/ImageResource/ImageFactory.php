@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ImageFactory
         $mediaReader = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
         if (!$mediaReader->isFile($filename)) {
             #require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Cannot create image resource. File not found.");
+            throw new Zend_Pdf_Exception('Cannot create image resource. File not found.');
         }
         $tempFilenameFromBucketOrDisk = $this->createTemporaryFileAndPutContent($mediaReader, $filename);
         $tempResourceFilePath = $this->getFilePathOfTemporaryFile($tempFilenameFromBucketOrDisk);
@@ -110,7 +111,7 @@ class ImageFactory
             $classicMimeType = $this->fetchFallbackMimeType($baseFileName);
         }
         if (!empty($classicMimeType)) {
-            return explode("/", $classicMimeType)[1] ?? '';
+            return explode('/', $classicMimeType)[1] ?? '';
         } else {
             return '';
         }
@@ -145,7 +146,7 @@ class ImageFactory
             default:
                 #require_once 'Zend/Pdf/Exception.php';
                 throw new Zend_Pdf_Exception(
-                    "Cannot create image resource. File extension not known or unsupported type."
+                    'Cannot create image resource. File extension not known or unsupported type.'
                 );
         }
         return $classicMimeType;

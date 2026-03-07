@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -11,16 +13,17 @@
  *
  * @method \Magento\Framework\Data\Form\Element\AbstractElement getElement()
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery;
 
-use Magento\Catalog\Helper\Image;
-use Magento\Framework\App\ObjectManager;
+use Magento\Backend\Block\DataProviders\ImageUploadConfig as ImageUploadConfigDataProvider;
 use Magento\Backend\Block\Media\Uploader;
+use Magento\Catalog\Helper\Image;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\View\Element\AbstractBlock;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Backend\Block\DataProviders\ImageUploadConfig as ImageUploadConfigDataProvider;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 
 /**
@@ -314,7 +317,7 @@ class Content extends \Magento\Backend\Block\Widget
      *
      * @return bool
      */
-    public function isEditEnabled() : bool
+    public function isEditEnabled(): bool
     {
         return true;
     }

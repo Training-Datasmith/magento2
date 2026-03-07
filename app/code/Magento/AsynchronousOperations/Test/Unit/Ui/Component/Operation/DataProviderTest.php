@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class DataProviderTest extends TestCase
                 'name' => 'test-name',
                 'bulkCollectionFactory' => $this->bulkCollectionFactoryMock,
                 'operationDetails' => $this->operationDetailsMock,
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
     }
@@ -91,15 +92,15 @@ class DataProviderTest extends TestCase
             'id' => '1',
             'uuid' => 'bulk-uuid1',
             'user_id' => '2',
-            'description' => 'Description'
+            'description' => 'Description',
         ];
         $testOperationData = [
             'operations_total' => 2,
             'operations_successful' => 1,
-            'operations_failed' => 2
+            'operations_failed' => 2,
         ];
         $testSummaryData = [
-            'summary' => '2 items selected for mass update, 1 successfully updated, 2 failed to update'
+            'summary' => '2 items selected for mass update, 1 successfully updated, 2 failed to update',
         ];
         $resultData[$testData['id']] = array_merge($testData, $testOperationData, $testSummaryData);
 
@@ -132,7 +133,7 @@ class DataProviderTest extends TestCase
         $testData = [
             'uuid' => 'bulk-uuid1',
             'failed_retriable' => 0,
-            'failed_not_retriable' => 0
+            'failed_not_retriable' => 0,
         ];
 
         $this->requestMock

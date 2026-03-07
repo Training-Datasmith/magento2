@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\CardinalCommerce\Model\Response\JwtParser;
 use Magento\CardinalCommerce\Model\Response\JwtPayloadValidatorInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class JwtParserTest extends TestCase
 {
@@ -70,7 +71,7 @@ class JwtParserTest extends TestCase
             [
                 'jwtManagement' => $this->jwtManagementMock,
                 'config' => $this->configMock,
-                'tokenValidator' => $this->jwtPayloadValidatorMock
+                'tokenValidator' => $this->jwtPayloadValidatorMock,
             ]
         );
 

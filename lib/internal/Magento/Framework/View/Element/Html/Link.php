@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\Html;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Math\Random;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
  * HTML anchor element block

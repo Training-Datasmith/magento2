@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -151,15 +153,15 @@ class LinkManagement implements LinkManagementInterface
     public function getMediaEntries(array $images): array
     {
         $media = $this->myModelFactory->create();
-        $mediaGalleryEntries=[];
+        $mediaGalleryEntries = [];
         foreach ($images as $image) {
-            $media->setId($image["value_id"]);
-            $media->setMediaType($image["media_type"]);
-            $media->setLabel($image["label"]);
-            $media->setPosition($image["position"]);
-            $media->setDisabled($image["disabled"]);
-            $media->setFile($image["file"]);
-            $mediaGalleryEntries[]=$media->getData();
+            $media->setId($image['value_id']);
+            $media->setMediaType($image['media_type']);
+            $media->setLabel($image['label']);
+            $media->setPosition($image['position']);
+            $media->setDisabled($image['disabled']);
+            $media->setFile($image['file']);
+            $mediaGalleryEntries[] = $media->getData();
         }
         return $mediaGalleryEntries;
     }
@@ -198,7 +200,7 @@ class LinkManagement implements LinkManagementInterface
                 );
             }
             $attributeData[$configurableProductOption->getAttributeId()] = [
-                'position' => $configurableProductOption->getPosition()
+                'position' => $configurableProductOption->getPosition(),
             ];
         }
         $configurableOptionData = $this->getConfigurableAttributesData($attributeData);

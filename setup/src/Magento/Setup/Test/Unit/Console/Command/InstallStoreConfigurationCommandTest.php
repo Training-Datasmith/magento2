@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Setup\Model\Installer;
 use Magento\Setup\Model\InstallerFactory;
 use Magento\Setup\Model\ObjectManagerProvider;
 use Magento\Setup\Model\StoreConfigurationDataMapper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -149,52 +150,52 @@ class InstallStoreConfigurationCommandTest extends TestCase
         return [
             [
                 ['--' . StoreConfigurationDataMapper::KEY_BASE_URL => 'sampleUrl'],
-                'Command option \'' . StoreConfigurationDataMapper::KEY_BASE_URL . '\': Invalid URL \'sampleUrl\'.'
+                'Command option \'' . StoreConfigurationDataMapper::KEY_BASE_URL . '\': Invalid URL \'sampleUrl\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_BASE_URL => 'http://example.com_test'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_BASE_URL
-                    . '\': Invalid URL \'http://example.com_test\'.'
+                    . '\': Invalid URL \'http://example.com_test\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_LANGUAGE => 'sampleLanguage'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_LANGUAGE
-                    . '\': Invalid value. To see possible values, run command \'bin/magento info:language:list\'.'
+                    . '\': Invalid value. To see possible values, run command \'bin/magento info:language:list\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_TIMEZONE => 'sampleTimezone'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_TIMEZONE
-                    . '\': Invalid value. To see possible values, run command \'bin/magento info:timezone:list\'.'
+                    . '\': Invalid value. To see possible values, run command \'bin/magento info:timezone:list\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_CURRENCY => 'sampleLanguage'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_CURRENCY
-                    . '\': Invalid value. To see possible values, run command \'bin/magento info:currency:list\'.'
+                    . '\': Invalid value. To see possible values, run command \'bin/magento info:currency:list\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_USE_SEF_URL => 'invalidValue'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_USE_SEF_URL
-                    . '\': Invalid value. Possible values (0|1).'
+                    . '\': Invalid value. Possible values (0|1).',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_IS_SECURE => 'invalidValue'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_IS_SECURE
-                    . '\': Invalid value. Possible values (0|1).'
+                    . '\': Invalid value. Possible values (0|1).',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_BASE_URL_SECURE => 'http://www.sample.com'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_BASE_URL_SECURE
-                    . '\': Invalid URL \'http://www.sample.com\'.'
+                    . '\': Invalid URL \'http://www.sample.com\'.',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_IS_SECURE_ADMIN => 'invalidValue'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_IS_SECURE_ADMIN
-                    . '\': Invalid value. Possible values (0|1).'
+                    . '\': Invalid value. Possible values (0|1).',
             ],
             [
                 ['--' . StoreConfigurationDataMapper::KEY_ADMIN_USE_SECURITY_KEY => 'invalidValue'],
                 'Command option \'' . StoreConfigurationDataMapper::KEY_ADMIN_USE_SECURITY_KEY
-                    . '\': Invalid value. Possible values (0|1).'
+                    . '\': Invalid value. Possible values (0|1).',
             ],
 
         ];

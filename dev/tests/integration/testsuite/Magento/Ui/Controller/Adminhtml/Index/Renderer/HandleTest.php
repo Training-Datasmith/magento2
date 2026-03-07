@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Ui\Controller\Adminhtml\Index\Renderer;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\AuthorizationInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoAppArea adminhtml
@@ -22,8 +23,8 @@ class HandleTest extends \Magento\TestFramework\TestCase\AbstractBackendControll
     {
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
-                AuthorizationInterface::class => \Magento\Ui\Model\AuthorizationMock::class
-            ]
+                AuthorizationInterface::class => \Magento\Ui\Model\AuthorizationMock::class,
+            ],
         ]);
         $this->getRequest()->setParam('handle', 'customer_index_index');
         $this->getRequest()->setParam('namespace', 'customer_listing');

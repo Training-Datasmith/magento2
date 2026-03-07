@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -108,7 +109,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('availableStores', $secondStoreResponse['body']);
@@ -118,7 +119,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('availableStores', $secondStoreResponseHit['body']);
@@ -144,7 +145,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('availableStores', $secondStoreCurrentStoreGroupResponse['body']);
@@ -154,7 +155,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('availableStores', $secondStoreCurrentStoreGroupResponseHit['body']);
@@ -205,7 +206,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -229,7 +230,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -252,7 +253,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -260,7 +261,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -271,7 +272,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -294,7 +295,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 5th time
@@ -302,7 +303,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -313,7 +314,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -321,7 +322,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -370,7 +371,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -394,7 +395,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -417,7 +418,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -425,7 +426,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -436,7 +437,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -444,7 +445,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -493,7 +494,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -517,7 +518,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -545,7 +546,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -553,7 +554,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -564,7 +565,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -572,7 +573,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -621,7 +622,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -645,7 +646,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -672,7 +673,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -680,7 +681,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -691,7 +692,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -718,7 +719,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 5th time
@@ -726,7 +727,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -737,7 +738,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -745,7 +746,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -794,7 +795,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -818,7 +819,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -845,7 +846,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -853,7 +854,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -864,7 +865,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -891,7 +892,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 5th time
@@ -899,7 +900,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -910,7 +911,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -918,7 +919,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -967,7 +968,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -991,7 +992,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1018,7 +1019,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1026,7 +1027,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1037,7 +1038,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1045,7 +1046,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
     }
@@ -1107,7 +1108,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1130,7 +1131,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1150,7 +1151,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1173,7 +1174,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCurrentStoreGroupCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1220,7 +1221,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1228,7 +1229,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1239,7 +1240,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1247,7 +1248,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1258,7 +1259,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1266,7 +1267,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1277,7 +1278,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCurrentStoreGroupCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -1339,7 +1340,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1362,7 +1363,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1382,7 +1383,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1405,7 +1406,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCurrentStoreGroupCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1453,7 +1454,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1461,7 +1462,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1472,7 +1473,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1480,7 +1481,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1491,7 +1492,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1499,7 +1500,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -1510,7 +1511,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCurrentStoreGroupCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -1560,7 +1561,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1584,7 +1585,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1611,7 +1612,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1622,7 +1623,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1647,7 +1648,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1658,7 +1659,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1689,7 +1690,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1700,7 +1701,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1760,7 +1761,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1784,7 +1785,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1828,7 +1829,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1839,7 +1840,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1898,7 +1899,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1922,7 +1923,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1964,7 +1965,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -1972,7 +1973,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -1983,7 +1984,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2043,7 +2044,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2067,7 +2068,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2109,7 +2110,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2120,7 +2121,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2142,7 +2143,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -2150,7 +2151,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2161,7 +2162,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2220,7 +2221,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2244,7 +2245,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2283,7 +2284,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -2291,7 +2292,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2302,7 +2303,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -2310,7 +2311,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2370,7 +2371,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2394,7 +2395,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2433,7 +2434,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2444,7 +2445,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2466,7 +2467,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -2474,7 +2475,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2485,7 +2486,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 4th time
@@ -2493,7 +2494,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2566,7 +2567,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2589,7 +2590,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2649,7 +2650,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2660,7 +2661,7 @@ class AvailableStoresCacheTest extends GraphQLPageCacheAbstract
             $currentStoreGroupQuery,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCurrentStoreGroupCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -2761,13 +2762,13 @@ QUERY;
                 'path' => $path,
                 'value' => $this->configStorage->getValueFromDb($path, $scopeType, $scopeCode),
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         } else {
             $this->notExistingOrigConfigs[] = [
                 'path' => $path,
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         }
         $this->config->setValue($path, $value, $scopeType, $scopeCode);

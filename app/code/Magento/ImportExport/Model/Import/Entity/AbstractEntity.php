@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\Import\Entity;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\ImportExport\Model\Import as ImportExport;
 use Magento\ImportExport\Model\Import\AbstractSource;
+use Magento\ImportExport\Model\Import as ImportExport;
 use Magento\ImportExport\Model\Import\EntityInterface;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingError;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
@@ -61,10 +64,10 @@ abstract class AbstractEntity implements EntityInterface
         self::ERROR_CODE_COLUMN_NAME_INVALID => 'Column names: "%s" are invalid',
         self::ERROR_CODE_ATTRIBUTE_NOT_VALID => "Please correct the value for '%s'.",
         self::ERROR_CODE_DUPLICATE_UNIQUE_ATTRIBUTE => "Duplicate Unique Attribute for '%s'",
-        self::ERROR_CODE_ILLEGAL_CHARACTERS => "Illegal character used for attribute %s",
+        self::ERROR_CODE_ILLEGAL_CHARACTERS => 'Illegal character used for attribute %s',
         self::ERROR_CODE_INVALID_ATTRIBUTE => 'Header contains invalid attribute(s): "%s"',
-        self::ERROR_CODE_WRONG_QUOTES => "Curly quotes used instead of straight quotes",
-        self::ERROR_CODE_COLUMNS_NUMBER => "Number of columns does not correspond to the number of rows in the header",
+        self::ERROR_CODE_WRONG_QUOTES => 'Curly quotes used instead of straight quotes',
+        self::ERROR_CODE_COLUMNS_NUMBER => 'Number of columns does not correspond to the number of rows in the header',
     ];
 
     /**
@@ -903,7 +906,7 @@ abstract class AbstractEntity implements EntityInterface
      *
      * @return array
      */
-    public function getIds() : array
+    public function getIds(): array
     {
         return $this->ids;
     }
@@ -924,7 +927,7 @@ abstract class AbstractEntity implements EntityInterface
      *
      * @return DataSourceModel
      */
-    public function getDataSourceModel() : DataSourceModel
+    public function getDataSourceModel(): DataSourceModel
     {
         return $this->_dataSourceModel;
     }

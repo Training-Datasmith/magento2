@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Paypal\Reports;
 
 class Details extends \Magento\Paypal\Controller\Adminhtml\Paypal\Reports
@@ -12,7 +15,7 @@ class Details extends \Magento\Paypal\Controller\Adminhtml\Paypal\Reports
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports_view';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports_view';
 
     /**
      * View transaction details action

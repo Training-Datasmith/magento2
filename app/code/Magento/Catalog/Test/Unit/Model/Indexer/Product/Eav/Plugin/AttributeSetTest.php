@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class AttributeSetTest extends TestCase
             [
                 'indexerEavProcessor' => $this->eavProcessorMock,
                 'filter' => $this->filterMock,
-                'attributeSetFactory' => $this->setFactoryMock
+                'attributeSetFactory' => $this->setFactoryMock,
             ]
         );
 
@@ -83,7 +84,7 @@ class AttributeSetTest extends TestCase
             ->willReturnMap(
                 [
                     [$this->originalSetMock, [1, 2, 3]],
-                    [$this->subjectMock, [1, 2]]
+                    [$this->subjectMock, [1, 2]],
                 ]
             );
 
@@ -104,7 +105,7 @@ class AttributeSetTest extends TestCase
                 [
                     'indexerEavProcessor' => $this->eavProcessorMock,
                     'filter' => $this->filterMock,
-                    'requiresReindex' => true
+                    'requiresReindex' => true,
                 ]
             );
 

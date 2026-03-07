@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Composer;
 
-use Composer\Console\Application;
 use Composer\Console\ApplicationFactory;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Symfony\Component\Console\Input\ArrayInput;

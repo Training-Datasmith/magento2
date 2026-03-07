@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Model\Source;
 
 use Magento\Config\Model\Config\Structure\SearchInterface;
@@ -16,8 +19,8 @@ class Variables implements \Magento\Framework\Option\ArrayInterface
     /**
      * Variable types
      */
-    const DEFAULT_VARIABLE_TYPE = "default";
-    const CUSTOM_VARIABLE_TYPE = "custom";
+    public const DEFAULT_VARIABLE_TYPE = 'default';
+    public const CUSTOM_VARIABLE_TYPE = 'custom';
 
     /**
      * Assoc array of configuration variables.
@@ -62,7 +65,7 @@ class Variables implements \Magento\Framework\Option\ArrayInterface
         if ($withGroup) {
             foreach ($this->getConfigVariables() as $configVariableGroup) {
                 $group = [
-                    'label' => $configVariableGroup['label']
+                    'label' => $configVariableGroup['label'],
                 ];
                 $groupElements = [];
                 foreach ($configVariableGroup['elements'] as $element) {

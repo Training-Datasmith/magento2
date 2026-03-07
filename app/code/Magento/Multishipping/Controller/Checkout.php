@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,10 +11,7 @@ namespace Magento\Multishipping\Controller;
 use Magento\Checkout\Controller\Action;
 use Magento\Checkout\Controller\Express\RedirectLoginInterface;
 use Magento\Checkout\Model\Session as ModelSession;
-use Magento\Customer\Api\AccountManagementInterface;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session;
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
@@ -30,7 +28,6 @@ use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
  */
 abstract class Checkout extends Action implements RedirectLoginInterface
 {
-
     /**
      * Retrieve checkout model
      *

@@ -1,23 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Payment\Model\Config;
 
-use Magento\Framework\Module\Dir;
+namespace Magento\Payment\Model\Config;
 
 class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface
 {
     /**
      * Merged config schema file name
      */
-    const MERGED_CONFIG_SCHEMA = 'payment.xsd';
+    public const MERGED_CONFIG_SCHEMA = 'payment.xsd';
 
     /**
      * Per file validation schema file name
      */
-    const PER_FILE_VALIDATION_SCHEMA = 'payment_file.xsd';
+    public const PER_FILE_VALIDATION_SCHEMA = 'payment_file.xsd';
 
     /**
      * Path to corresponding XSD file with validation rules for merged config

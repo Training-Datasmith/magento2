@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Product\View;
 
-use Magento\Catalog\Model\Product\Option\ValueFactory;
 use Magento\Catalog\Block\Adminhtml\Product\Composite\Fieldset\Options as ProductOptions;
 use Magento\Catalog\Block\Product\View\Options;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\OptionFactory;
+use Magento\Catalog\Model\Product\Option\ValueFactory;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Option;
 use Magento\CatalogInventory\Api\Data\StockItemInterfaceFactory;
@@ -98,7 +99,7 @@ class OptionsTest extends TestCase
                     'itemOptionFactory' => $itemOptFactoryMock,
                     'stockItemFactory' => $stockItemFactoryMock,
                     'productFactory' => $productFactoryMock,
-                    'categoryFactory' => $categoryFactoryMock
+                    'categoryFactory' => $categoryFactoryMock,
                 ]
             )
         );

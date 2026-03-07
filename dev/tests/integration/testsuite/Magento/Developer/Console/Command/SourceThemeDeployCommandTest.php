@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Console\Command;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Filesystem;
 use Magento\TestFramework\Helper\Bootstrap;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem;
 
 /**
  * Class SourceThemeDeployCommandTest
@@ -18,15 +21,15 @@ use Magento\Framework\Filesystem;
  */
 class SourceThemeDeployCommandTest extends \PHPUnit\Framework\TestCase
 {
-    const PUB_STATIC_DIRECTORY = 'pub/static';
+    public const PUB_STATIC_DIRECTORY = 'pub/static';
 
-    const AREA_TEST_VALUE = 'frontend';
+    public const AREA_TEST_VALUE = 'frontend';
 
-    const LOCALE_TEST_VALUE = 'en_US';
+    public const LOCALE_TEST_VALUE = 'en_US';
 
-    const THEME_TEST_VALUE = 'Magento/luma';
+    public const THEME_TEST_VALUE = 'Magento/luma';
 
-    const TYPE_TEST_VALUE = 'less';
+    public const TYPE_TEST_VALUE = 'less';
 
     /**
      * @var SourceThemeDeployCommand
@@ -132,7 +135,7 @@ class SourceThemeDeployCommandTest extends \PHPUnit\Framework\TestCase
                     ['area', self::AREA_TEST_VALUE],
                     ['locale', self::LOCALE_TEST_VALUE],
                     ['theme', self::THEME_TEST_VALUE],
-                    ['type', self::TYPE_TEST_VALUE]
+                    ['type', self::TYPE_TEST_VALUE],
                 ]
             );
         $inputMock->expects(self::once())

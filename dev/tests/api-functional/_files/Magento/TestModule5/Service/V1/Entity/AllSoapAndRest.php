@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule5\Service\V1\Entity;
 
 /**
@@ -16,14 +19,14 @@ class AllSoapAndRest extends \Magento\Framework\Api\AbstractExtensibleObject
     /**
      * Entity ID
      */
-    const ID = 'entity_id';
-    const NAME = 'name';
+    public const ID = 'entity_id';
+    public const NAME = 'name';
 
     /**
      * Is Enabled
      */
-    const ENABLED = 'enabled';
-    const HAS_ORDERS = 'orders';
+    public const ENABLED = 'enabled';
+    public const HAS_ORDERS = 'orders';
 
     /**
      * Retrieve item ID.

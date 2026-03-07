@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\GraphQl\Customer;
 use Exception;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\GraphQl\Query\Uid;
 
 /**
  * Test for create customer functionality
@@ -92,7 +93,7 @@ class CreateCustomerTest extends GraphQlAbstract
             'lastname' => 'Rowe',
             'email' => $email,
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ], ['id', 'firstname', 'lastname', 'email', 'is_subscribed']));
 
         // Track email for cleanup if customer was created successfully
@@ -108,9 +109,9 @@ class CreateCustomerTest extends GraphQlAbstract
                         'firstname' => 'Richard',
                         'lastname' => 'Rowe',
                         'email' => $email,
-                        'is_subscribed' => true
-                    ]
-                ]
+                        'is_subscribed' => true,
+                    ],
+                ],
             ],
             $response
         );
@@ -126,7 +127,7 @@ class CreateCustomerTest extends GraphQlAbstract
         return [
             ['customer_' . uniqid() . '@example.com'],
             ['jørgen_' . uniqid() . '@somedomain.com'],
-            ['email_' . uniqid() . '@example.com']
+            ['email_' . uniqid() . '@example.com'],
         ];
     }
 
@@ -143,7 +144,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'firstname' => 'Richard',
                     'lastname' => 'Rowe',
                     'email' => $newEmail,
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['id', 'firstname', 'lastname', 'email', 'is_subscribed']
             )
@@ -162,9 +163,9 @@ class CreateCustomerTest extends GraphQlAbstract
                         'firstname' => 'Richard',
                         'lastname' => 'Rowe',
                         'email' => $newEmail,
-                        'is_subscribed' => true
-                    ]
-                ]
+                        'is_subscribed' => true,
+                    ],
+                ],
             ],
             $response
         );
@@ -194,7 +195,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'firstname' => 'Richard',
                     'lastname' => 'Rowe',
                     'password' => 'test123#',
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['id', 'firstname', 'lastname', 'email', 'is_subscribed']
             )
@@ -216,7 +217,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'lastname' => 'Rowe',
                     'email' => $email,
                     'password' => 'test123#',
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['id', 'firstname', 'lastname', 'email', 'is_subscribed']
             )
@@ -238,7 +239,7 @@ class CreateCustomerTest extends GraphQlAbstract
             ['email.example.com'],
             ['email@example@example.com'],
             ['email@example.com (Joe Smith)'],
-            ['email@example']
+            ['email@example'],
         ];
     }
 
@@ -255,7 +256,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'test123' => '123test123',
                     'email' => 'customer_' . uniqid() . '@example.com',
                     'password' => 'test123#',
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['id', 'firstname', 'lastname', 'email', 'is_subscribed']
             )
@@ -274,7 +275,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'firstname' => '',
                     'lastname' => 'Rowe',
                     'password' => 'test123#',
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['id', 'firstname', 'lastname', 'email', 'is_subscribed']
             )
@@ -292,7 +293,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'firstname' => 'Richard',
                     'lastname' => 'Rowe',
                     'email' => $email,
-                    'is_subscribed' => true
+                    'is_subscribed' => true,
                 ],
                 ['email', 'is_subscribed']
             )
@@ -307,9 +308,9 @@ class CreateCustomerTest extends GraphQlAbstract
             'createCustomer' => [
                 'customer' => [
                     'email' => $email,
-                    'is_subscribed' => false
-                ]
-            ]
+                    'is_subscribed' => false,
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -329,7 +330,7 @@ class CreateCustomerTest extends GraphQlAbstract
                     'email' => 'customer@example.com',
                     'password' => 'test123#',
                     'firstname' => 'John',
-                    'lastname' => 'Smith'
+                    'lastname' => 'Smith',
                 ],
                 ['firstname', 'lastname', 'email']
             )

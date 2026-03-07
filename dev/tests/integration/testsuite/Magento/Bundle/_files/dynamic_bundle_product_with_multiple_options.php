@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -67,7 +69,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_price_value' => 2.75,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 11,
@@ -75,9 +77,9 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_price_value' => 6.75,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
-                ]
-            ]
+                    'option_id' => 1,
+                ],
+            ],
         ]
     );
 $productRepository = $objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
@@ -122,8 +124,8 @@ $tierPrices[] = $tierPriceFactory->create(
     [
         'data' => [
             'customer_group_id' => \Magento\Customer\Model\Group::CUST_GROUP_ALL,
-            'qty' => 2
-        ]
+            'qty' => 2,
+        ],
     ]
 )->setExtensionAttributes($tierPriceExtensionAttribute);
 $product->setTierPrices($tierPrices);

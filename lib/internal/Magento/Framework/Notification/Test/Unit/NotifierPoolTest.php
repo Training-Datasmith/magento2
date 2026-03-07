@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class NotifierPoolTest extends TestCase
         $this->notifierPool = $this->objectManagerHelper->getObject(
             NotifierPool::class,
             [
-                'notifierList' => $this->notifierList
+                'notifierList' => $this->notifierList,
             ]
         );
     }

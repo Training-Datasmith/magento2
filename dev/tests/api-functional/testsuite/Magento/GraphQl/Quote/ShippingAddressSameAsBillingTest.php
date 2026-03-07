@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -222,10 +223,10 @@ class ShippingAddressSameAsBillingTest extends GraphQlAbstract
                 'cart' => [
                     'shipping_addresses' => [
                         0 => [
-                            'same_as_billing' => $sameAsBilling
-                        ]
-                    ]
-                ]
+                            'same_as_billing' => $sameAsBilling,
+                        ],
+                    ],
+                ],
             ],
             $response
         );

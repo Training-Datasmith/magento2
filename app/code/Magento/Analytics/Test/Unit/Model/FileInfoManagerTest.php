@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Analytics\Model\FileInfoFactory;
 use Magento\Analytics\Model\FileInfoManager;
 use Magento\Framework\FlagManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +54,7 @@ class FileInfoManagerTest extends TestCase
      * @var array
      */
     private $encodedParameters = [
-        'initializationVector'
+        'initializationVector',
     ];
 
     /**

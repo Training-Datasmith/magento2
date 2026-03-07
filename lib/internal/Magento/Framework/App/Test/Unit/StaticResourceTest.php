@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ use Magento\Framework\Validator\Locale;
 use Magento\Framework\View\Asset\LocalInterface;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Design\Theme\ThemePackageList;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -163,7 +164,7 @@ class StaticResourceTest extends TestCase
         $this->object->launch();
     }
 
-        /**
+    /**
      */
     #[DataProvider('launchDataProvider')]
     public function testLaunch(
@@ -254,7 +255,7 @@ class StaticResourceTest extends TestCase
                 true,
                 'dir/file.js',
                 [
-                    'area' => 'area', 'locale' => 'locale', 'module' => 'Namespace_Module', 'theme' => 'Magento/theme'
+                    'area' => 'area', 'locale' => 'locale', 'module' => 'Namespace_Module', 'theme' => 'Magento/theme',
                 ],
                 0,
                 0,
@@ -276,7 +277,7 @@ class StaticResourceTest extends TestCase
                 true,
                 'dir/file.js',
                 [
-                    'area' => 'area', 'locale' => 'locale', 'module' => 'Namespace_Module', 'theme' => 'Magento/theme'
+                    'area' => 'area', 'locale' => 'locale', 'module' => 'Namespace_Module', 'theme' => 'Magento/theme',
                 ],
                 1,
                 1,

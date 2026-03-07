@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test for \Magento\Eav\Model\Validator\Attribute\Backend
  */
+
 namespace Magento\Eav\Model\Validator\Attribute;
 
 class BackendTest extends \PHPUnit\Framework\TestCase

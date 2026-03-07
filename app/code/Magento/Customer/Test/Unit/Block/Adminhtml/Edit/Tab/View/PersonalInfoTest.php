@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Framework\Phrase;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -101,7 +102,7 @@ class PersonalInfoTest extends TestCase
             ['loadByCustomer',
                             'getLastLoginAt',
                             'getLastVisitAt',
-                            'getLastLogoutAt'
+                            'getLastLogoutAt',
                             ]
         );
         $this->customerLog->expects($this->any())->method('loadByCustomer')->willReturnSelf();
@@ -194,7 +195,7 @@ class PersonalInfoTest extends TestCase
             ['Offline', null, null, null],
             ['Offline', '2015-03-04 11:00:00', null, '2015-03-04 12:00:00'],
             ['Offline', '2015-03-04 11:00:00', '2015-03-04 11:40:00', null],
-            ['Online', '2015-03-04 11:00:00', (new \DateTime())->format(DateTime::DATETIME_PHP_FORMAT), null]
+            ['Online', '2015-03-04 11:00:00', (new \DateTime())->format(DateTime::DATETIME_PHP_FORMAT), null],
         ];
     }
 
@@ -219,7 +220,7 @@ class PersonalInfoTest extends TestCase
     {
         return [
             ['2015-03-04 12:00:00', '2015-03-04 12:00:00'],
-            ['Never', null]
+            ['Never', null],
         ];
     }
 
@@ -246,7 +247,7 @@ class PersonalInfoTest extends TestCase
     {
         return [
             ['2015-03-04 12:00:00', '2015-03-04 12:00:00'],
-            ['Never', '']
+            ['Never', ''],
         ];
     }
 
@@ -271,7 +272,7 @@ class PersonalInfoTest extends TestCase
     {
         return [
             ['expectedResult' => 'Locked', 'value' => true],
-            ['expectedResult' => 'Unlocked', 'value' => false]
+            ['expectedResult' => 'Unlocked', 'value' => false],
         ];
     }
 }

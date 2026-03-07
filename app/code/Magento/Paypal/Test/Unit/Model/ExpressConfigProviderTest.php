@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class ExpressConfigProviderTest extends TestCase
         $currentCustomer = $this->createMock(CurrentCustomer::class);
         $currentCustomer->expects($this->atLeastOnce())->method('getCustomerId')->willReturn(12);
 
-        $paymentHelper= $this->createMock(Data::class);
+        $paymentHelper = $this->createMock(Data::class);
 
         $paypalHelper = $this->createMock(\Magento\Paypal\Helper\Data::class);
         $paypalHelper->expects($this->atLeastOnce())->method('shouldAskToCreateBillingAgreement')->willReturn(false);

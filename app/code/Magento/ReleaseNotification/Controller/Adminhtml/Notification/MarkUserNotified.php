@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,10 +10,10 @@ namespace Magento\ReleaseNotification\Controller\Adminhtml\Notification;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\ReleaseNotification\Model\ResourceModel\Viewer\Logger as NotificationLogger;
 use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\ReleaseNotification\Model\ResourceModel\Viewer\Logger as NotificationLogger;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -69,19 +71,19 @@ class MarkUserNotified extends Action implements HttpPostActionInterface
                     $this->_auth->getUser()->getId(),
                     $this->productMetadata->getVersion()
                 ),
-                'error_message' => ''
+                'error_message' => '',
             ];
         } catch (LocalizedException $e) {
             $this->logger->error($e->getMessage());
             $responseContent = [
                 'success' => false,
-                'error_message' => $e->getMessage()
+                'error_message' => $e->getMessage(),
             ];
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
             $responseContent = [
                 'success' => false,
-                'error_message' => __('It is impossible to log user action')
+                'error_message' => __('It is impossible to log user action'),
             ];
         }
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);

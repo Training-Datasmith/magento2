@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -45,8 +46,8 @@ class TargetUrlBuilder implements TargetUrlBuilderInterface
                 '_current' => false,
                 '_nosid' => true,
                 '_query' => [
-                    StoreManagerInterface::PARAM_NAME => $store
-                ]
+                    StoreManagerInterface::PARAM_NAME => $store,
+                ],
             ]
         );
     }

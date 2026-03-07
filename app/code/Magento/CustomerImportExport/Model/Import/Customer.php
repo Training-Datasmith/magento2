@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Indexer\Processor;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Stdlib\DateTime;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Model\Import\AbstractSource;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
-use Magento\Store\Model\Store;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
 
 /**
  * Customer entity import
@@ -519,7 +520,7 @@ class Customer extends AbstractCustomer
         return [
             self::ENTITIES_TO_CREATE_KEY => $entitiesToCreate,
             self::ENTITIES_TO_UPDATE_KEY => $entitiesToUpdate,
-            self::ATTRIBUTES_TO_SAVE_KEY => $attributesToSave
+            self::ATTRIBUTES_TO_SAVE_KEY => $attributesToSave,
         ];
     }
 

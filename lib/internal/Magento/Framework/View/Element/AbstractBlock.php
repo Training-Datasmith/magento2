@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -686,7 +687,7 @@ abstract class AbstractBlock extends \Magento\Framework\DataObject implements Bl
             'view_block_abstract_to_html_after',
             [
                 'block' => $this,
-                'transport' => $transportObject
+                'transport' => $transportObject,
             ]
         );
         $html = $transportObject->getHtml();
@@ -1221,7 +1222,7 @@ abstract class AbstractBlock extends \Magento\Framework\DataObject implements Bl
      *
      * @return DeploymentConfig
      */
-    private function getDeploymentConfig() : DeploymentConfig
+    private function getDeploymentConfig(): DeploymentConfig
     {
         if ($this->deploymentConfig === null) {
             $this->deploymentConfig = ObjectManager::getInstance()

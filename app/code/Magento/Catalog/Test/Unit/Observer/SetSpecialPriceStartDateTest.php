@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class SetSpecialPriceStartDateTest extends TestCase
         $this->observer = $this->objectManager->getObject(
             SetSpecialPriceStartDate::class,
             [
-                'localeDate' => $this->timezone
+                'localeDate' => $this->timezone,
             ]
         );
     }

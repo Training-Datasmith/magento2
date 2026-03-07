@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing\Column\Online;
 
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Customer\Model\Visitor;
+use Magento\Ui\Component\Listing\Columns\Column;
 
 /**
  * Class Type

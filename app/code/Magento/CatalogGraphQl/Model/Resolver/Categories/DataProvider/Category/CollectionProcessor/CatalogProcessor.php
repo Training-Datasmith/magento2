@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\CatalogGraphQl\Model\Resolver\Categories\DataProvider\Category
 use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\CatalogGraphQl\Model\Resolver\Categories\DataProvider\Category\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface as SearchCriteriaCollectionProcessor;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\DB\Sql\Expression;
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface as SearchCriteriaCollectionProcessor;
 
 /**
  * Apply pre-defined catalog filtering
@@ -73,7 +74,7 @@ class CatalogProcessor implements CollectionProcessorInterface
      * @param Collection $collection
      * @param string $storeRootCategoryPath
      */
-    private function addRootCategoryFilterForStoreByPath(Collection $collection, string $storeRootCategoryPath) : void
+    private function addRootCategoryFilterForStoreByPath(Collection $collection, string $storeRootCategoryPath): void
     {
         $collection->addFieldToFilter(
             'path',
@@ -81,7 +82,7 @@ class CatalogProcessor implements CollectionProcessorInterface
                 ['eq' => $storeRootCategoryPath],
                 ['like' => new Expression(
                     $collection->getConnection()->quoteInto('?', $storeRootCategoryPath . '/%')
-                )]
+                )],
             ]
         );
     }

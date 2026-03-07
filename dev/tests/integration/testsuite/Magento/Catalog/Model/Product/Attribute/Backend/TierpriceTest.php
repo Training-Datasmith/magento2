@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Magento\Catalog\Model\Product\Attribute\Backend\Tierprice.
@@ -210,7 +211,7 @@ class TierpriceTest extends TestCase
         $tierPrices = [];
         foreach ($tierPricesData as $tierPrice) {
             $tierPrices[] = $this->tierPriceFactory->create([
-                'data' => $tierPrice
+                'data' => $tierPrice,
             ]);
         }
         $product->setTierPrices($tierPrices);
@@ -235,7 +236,7 @@ class TierpriceTest extends TestCase
                         'website_id' => 0,
                         'customer_group_id' => 0,
                         'qty' => 10,
-                        'extension_attributes' => new DataObject(['percentage_value' => 50])
+                        'extension_attributes' => new DataObject(['percentage_value' => 50]),
                     ],
                 ],
                 5,
@@ -250,7 +251,7 @@ class TierpriceTest extends TestCase
                         'website_id' => 0,
                         'customer_group_id' => 0,
                         'qty' => 10,
-                        'extension_attributes' => new DataObject(['percentage_value' => 10])
+                        'extension_attributes' => new DataObject(['percentage_value' => 10]),
                     ],
                 ],
                 5,
@@ -264,7 +265,7 @@ class TierpriceTest extends TestCase
                         'website_id' => 0,
                         'customer_group_id' => 0,
                         'qty' => 10,
-                        'extension_attributes' => new DataObject(['percentage_value' => 50])
+                        'extension_attributes' => new DataObject(['percentage_value' => 50]),
                     ],
                 ],
                 4,
@@ -279,13 +280,13 @@ class TierpriceTest extends TestCase
                         'website_id' => 0,
                         'customer_group_id' => 32000,
                         'qty' => 20,
-                        'extension_attributes' => new DataObject(['percentage_value' => 90])
+                        'extension_attributes' => new DataObject(['percentage_value' => 90]),
                     ],
                     [
                         'website_id' => 0,
                         'customer_group_id' => 0,
                         'qty' => 10,
-                        'extension_attributes' => new DataObject(['percentage_value' => 50])
+                        'extension_attributes' => new DataObject(['percentage_value' => 50]),
                     ],
                 ],
                 6,
@@ -343,7 +344,7 @@ class TierpriceTest extends TestCase
                         'website_id' => 0,
                         'customer_group_id' => 0,
                         'qty' => 10,
-                        'extension_attributes' => new DataObject(['percentage_value' => 50])
+                        'extension_attributes' => new DataObject(['percentage_value' => 50]),
                     ],
                 ],
                 6,

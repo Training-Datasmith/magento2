@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model\Product\Plugin;
 
+use Magento\Catalog\Api\Data\TierPriceInterfaceFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Api\TierPriceStorageInterface;
+use Magento\Quote\Api\Data\CartItemInterfaceFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Quote\Api\Data\CartItemInterfaceFactory;
-use Magento\Catalog\Api\TierPriceStorageInterface;
-use Magento\Catalog\Api\Data\TierPriceInterfaceFactory;
 
 use PHPUnit\Framework\TestCase;
 

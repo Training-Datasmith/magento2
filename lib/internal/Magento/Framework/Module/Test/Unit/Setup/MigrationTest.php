@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for resource setup model needed for migration process between Magento versions
  */
+
 namespace Magento\Framework\Module\Test\Unit\Setup;
 
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
@@ -18,10 +20,10 @@ use Magento\Framework\Module\Setup\Migration;
 use Magento\Framework\Module\Setup\MigrationData;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MigrationTest extends TestCase
 {
@@ -97,7 +99,7 @@ class MigrationTest extends TestCase
             'path_to_map_file' => 'not_used',
             'connection' => $connectionMock,
             'core_helper' => $this->createMock(Data::class),
-            'aliases_map' => $aliasesMap
+            'aliases_map' => $aliasesMap,
         ];
     }
 
@@ -251,7 +253,7 @@ class MigrationTest extends TestCase
             'plain text replace with pk field' => include __DIR__ . '/_files/data_content_plain_pk_fields.php',
             'xml replace' => include __DIR__ . '/_files/data_content_xml.php',
             'wiki markup replace' => include __DIR__ . '/_files/data_content_wiki.php',
-            'serialized php replace' => include __DIR__ . '/_files/data_content_serialized.php'
+            'serialized php replace' => include __DIR__ . '/_files/data_content_serialized.php',
         ];
     }
 

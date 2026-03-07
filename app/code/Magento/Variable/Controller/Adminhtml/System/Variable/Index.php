@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Controller\Adminhtml\System\Variable;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;

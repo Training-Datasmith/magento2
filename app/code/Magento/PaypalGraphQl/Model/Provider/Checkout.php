@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Provider;
 
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Paypal\Model\AbstractConfig;
 use Magento\Paypal\Model\Express\Checkout as ExpressCheckout;
 use Magento\Paypal\Model\Express\Checkout\Factory as CheckoutFactory;
 use Magento\Quote\Api\Data\CartInterface;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
 /**
  * Provides correct Checkout instance for payment method

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Authorization\Model\RulesFactory;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Acl\Builder;
 use Magento\Framework\Acl\RootResource;
-use Magento\Integration\Model\AuthorizationService;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Integration\Model\AuthorizationService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -141,7 +142,7 @@ class AuthorizationServiceTest extends TestCase
             'Magento_Sales::sales',
             'Magento_Sales::sales_operations',
             'Magento_Cart::cart',
-            'Magento_Cart::manage'
+            'Magento_Cart::manage',
         ];
 
         $this->roleMock->expects($this->any())->method('getId')->willReturn(self::ROLE_ID);
@@ -163,7 +164,7 @@ class AuthorizationServiceTest extends TestCase
             'Magento_Sales::sales',
             'Magento_Sales::sales_operations',
             'Magento_Cart::cart',
-            'Magento_Cart::manage'
+            'Magento_Cart::manage',
         ];
 
         //Return invalid role
@@ -191,7 +192,7 @@ class AuthorizationServiceTest extends TestCase
             'Magento_Sales::sales',
             'Magento_Sales::sales_operations',
             'Magento_Cart::cart',
-            'Magento_Cart::manage'
+            'Magento_Cart::manage',
         ];
 
         $this->roleMock->expects($this->any())->method('getId')->willReturn(self::ROLE_ID);

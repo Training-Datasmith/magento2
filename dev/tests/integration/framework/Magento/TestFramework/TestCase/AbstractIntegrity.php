@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * An ancestor class for integrity tests
  */
+
 namespace Magento\TestFramework\TestCase;
 
 abstract class AbstractIntegrity extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class FieldFactory
     public function createFromConfigData(
         array $fieldData,
         array $arguments = []
-    ) : Field {
+    ): Field {
         $fieldType = $fieldData['type'];
         $isList = false;
 

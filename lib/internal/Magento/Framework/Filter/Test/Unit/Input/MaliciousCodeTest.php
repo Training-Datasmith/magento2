@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Filter\Test\Unit\Input;
 use Magento\Framework\Filter\Input\MaliciousCode;
 use Magento\Framework\Filter\Input\PurifierInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class MaliciousCodeTest extends TestCase
 {
@@ -70,7 +71,7 @@ class MaliciousCodeTest extends TestCase
                 ],
                 [
                     '<element ></element>',
-                    '<img src="test.gif" />'
+                    '<img src="test.gif" />',
                 ],
             ],
             'JS attributes (array of strings to be filtered)' => [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ $bundleSelectionsData = [
             'selection_price_value' => 0,
             'selection_can_change_qty' => 1,
         ],
-    ]
+    ],
 ];
 $bundleProduct = $prepareBundleLinks->execute($bundleProduct, $bundleOptionsData, $bundleSelectionsData);
 $productRepository->save($bundleProduct);

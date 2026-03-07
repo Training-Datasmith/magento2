@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,9 +10,6 @@ namespace Magento\AdminNotification\Model\System\Message;
 
 use Laminas\Http\Request;
 use Laminas\Http\Response;
-use Magento\Backend\App\ConfigInterface;
-use Magento\Framework\App\CacheInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\HTTP\Adapter\Curl;
 use Magento\Framework\HTTP\Adapter\CurlFactory;
 use Magento\Framework\Notification\MessageInterface;
@@ -31,62 +30,32 @@ class Security implements MessageInterface
 
     /**
      * File path for verification
-     *
-     * @var string
      */
-    private $_filePath = 'app/etc/config.php';
+    private string $_filePath = 'app/etc/config.php';
 
     /**
      * Time out for HTTP verification request
-     *
-     * @var int
      */
-    private $_verificationTimeOut = 2;
-
-    /**
-     * @var CacheInterface
-     */
-    protected $_cache;
-
-    /**
-     * @var ConfigInterface
-     */
-    protected $_backendConfig;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    protected $_config;
+    private int $_verificationTimeOut = 2;
 
     /**
      * @var CurlFactory
      */
     protected $_curlFactory;
 
-    /**
-     * @param CacheInterface $cache
-     * @param ConfigInterface $backendConfig
-     * @param ScopeConfigInterface $config
-     * @param CurlFactory $curlFactory
-     */
     public function __construct(
-        CacheInterface $cache,
-        ConfigInterface $backendConfig,
-        ScopeConfigInterface $config,
+        protected \Magento\Framework\App\CacheInterface $_cache,
+        protected \Magento\Backend\App\ConfigInterface $_backendConfig,
+        protected \Magento\Framework\App\Config\ScopeConfigInterface $_config,
         CurlFactory $curlFactory
     ) {
-        $this->_cache = $cache;
-        $this->_backendConfig = $backendConfig;
-        $this->_config = $config;
         $this->_curlFactory = $curlFactory;
     }
 
     /**
      * Check verification result and return true if system must to show notification message
-     *
-     * @return bool
      */
-    private function _canShowNotification()
+    private function _canShowNotification(): bool
     {
         if ($this->_cache->load(self::VERIFICATION_RESULT_CACHE_KEY)) {
             return false;
@@ -103,10 +72,8 @@ class Security implements MessageInterface
 
     /**
      * If file is accessible return true or false
-     *
-     * @return bool
      */
-    private function _isFileAccessible()
+    private function _isFileAccessible(): bool
     {
         $unsecureBaseURL = $this->_config->getValue(Store::XML_PATH_UNSECURE_BASE_URL, 'default');
 
@@ -123,10 +90,8 @@ class Security implements MessageInterface
 
     /**
      * Retrieve unique message identity
-     *
-     * @return string
      */
-    public function getIdentity()
+    public function getIdentity(): string
     {
         return 'security';
     }
@@ -156,10 +121,8 @@ class Security implements MessageInterface
 
     /**
      * Retrieve message severity
-     *
-     * @return int
      */
-    public function getSeverity()
+    public function getSeverity(): int
     {
         return MessageInterface::SEVERITY_CRITICAL;
     }
@@ -167,7 +130,6 @@ class Security implements MessageInterface
     /**
      * Extract the response code from a response string
      *
-     * @param string $responseString
      *
      * @return false|int
      */
@@ -175,7 +137,7 @@ class Security implements MessageInterface
     {
         try {
             $responseCode = Response::fromString($responseString)->getStatusCode();
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             $responseCode = false;
         }
 

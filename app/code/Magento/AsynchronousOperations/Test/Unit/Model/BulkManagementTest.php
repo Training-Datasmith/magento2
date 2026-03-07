@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class BulkManagementTest extends TestCase
                 'publisher' => $this->publisher,
                 'metadataPool' => $this->metadataPool,
                 'resourceConnection' => $this->resourceConnection,
-                'logger' => $this->logger
+                'logger' => $this->logger,
             ]
         );
     }
@@ -151,7 +152,7 @@ class BulkManagementTest extends TestCase
                 static $index = 0;
                 $expectedArgs = [
                     [$topicNames[0], [$operation]],
-                    [$topicNames[1], [$operation]]
+                    [$topicNames[1], [$operation]],
                 ];
                 $index++;
                 if ($args === $expectedArgs[$index - 1]) {

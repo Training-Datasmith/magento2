@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -49,24 +50,24 @@ class HydratorDehydratorProviderTest extends TestCase
                 'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [
                     'nested_items_hydrator' => [
                         'sortOrder' => 15,
-                        'class' => 'TestResolverNestedItemsHydrator'
+                        'class' => 'TestResolverNestedItemsHydrator',
                     ],
                 ],
                 'StoreConfigResolverDerivedMock' => [
                     'model_hydrator' => [
                         'sortOrder' => 10,
-                        'class' => 'TestResolverModelHydrator'
+                        'class' => 'TestResolverModelHydrator',
                     ],
-                ]
+                ],
             ],
             'dehydratorConfig' => [
                 'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [
                     'simple_dehydrator' => [
                         'sortOrder' => 10,
-                        'class' => 'TestResolverModelDehydrator'
+                        'class' => 'TestResolverModelDehydrator',
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -91,7 +92,7 @@ class HydratorDehydratorProviderTest extends TestCase
                     'id' => 2,
                     'name' => 'test name',
                 ]
-            )
+            ),
         ];
 
         $testModelDehydrator = $this->getMockBuilder(DehydratorInterface::class)
@@ -195,10 +196,10 @@ class HydratorDehydratorProviderTest extends TestCase
                     'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [
                         'simple_dehydrator' => [
                             'sortOrder' => 10,
-                            'class' => 'TestResolverModelDehydrator'
+                            'class' => 'TestResolverModelDehydrator',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $resolver = $this->createMock(StoreConfigResolver::class);
@@ -227,10 +228,10 @@ class HydratorDehydratorProviderTest extends TestCase
                     'Magento\StoreGraphQl\Model\Resolver\StoreConfigResolver' => [
                         'simple_dehydrator' => [
                             'sortOrder' => 10,
-                            'class' => 'TestResolverModelHydrator'
+                            'class' => 'TestResolverModelHydrator',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ]
         );
         $resolver = $this->createMock(StoreConfigResolver::class);

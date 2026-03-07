@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProductGraphQl\Test\Unit\Model\Cart\BuyRequest;
 
-use Magento\Framework\DataObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\ConfigurableProductGraphQl\Model\Cart\BuyRequest\SuperAttributeDataProvider;
 use Magento\ConfigurableProductGraphQl\Model\Options\Collection as OptionCollection;
+use Magento\Framework\DataObject;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\Stdlib\ArrayManagerFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -193,7 +194,7 @@ class SuperAttributeDataProviderTest extends TestCase
                     'attribute_code' => 'code',
                     'attribute_id' => 1,
                     'values' => [['value_index' => 1]],
-                ]
+                ],
             ]);
         $this->assertEquals(['super_attribute' => [1 => 1]], $this->superAttributeDataProvider->execute($cartItemData));
     }

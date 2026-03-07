@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class CollectionTest extends AbstractCollectionTestCase
             [
                 'field' => 'store',
                 'value' => ['in' => [1]],
-                'type' => 'public'
+                'type' => 'public',
             ]
         );
 

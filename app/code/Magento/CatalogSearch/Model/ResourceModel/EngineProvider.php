@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class EngineProvider
      * @deprecated since using engine resolver
      * @see \Magento\Framework\Search\EngineResolverInterface
      */
-    const CONFIG_ENGINE_PATH = 'catalog/search/engine';
+    public const CONFIG_ENGINE_PATH = 'catalog/search/engine';
 
     /**
      * @var EngineInterface

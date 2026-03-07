@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -104,16 +105,16 @@ class ConfigFactoryTest extends TestCase
         $scope = 'default';
         $scopeId = 0;
         $data = [
-            'header_default_title' => 'value'
+            'header_default_title' => 'value',
         ];
         $metadata = [
             'header_default_title' => [
                 'path' => 'design/header/default_title',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
             'head_default_description' => [
                 'path' => 'design/head/default_description',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
         ];
 
@@ -179,16 +180,16 @@ class ConfigFactoryTest extends TestCase
         $scope = 'default';
         $scopeId = 0;
         $data = [
-            'header_default_title' => 'value'
+            'header_default_title' => 'value',
         ];
         $metadata = [
             'header_default_title' => [
                 'path' => 'design/header/default_title',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
             'head_default_description' => [
                 'path' => 'design/head/default_description',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
         ];
 
@@ -259,16 +260,16 @@ class ConfigFactoryTest extends TestCase
         $scope = 'default';
         $scopeId = 0;
         $data = [
-            'header_default_title' => 'value'
+            'header_default_title' => 'value',
         ];
         $metadata = [
             'header_default_title' => [
                 'path' => 'design/header/default_title',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
             'head_default_description' => [
                 'path' => 'design/head/default_description',
-                'fieldset' => 'head'
+                'fieldset' => 'head',
             ],
         ];
 

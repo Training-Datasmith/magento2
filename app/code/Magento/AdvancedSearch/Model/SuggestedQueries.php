@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -12,42 +15,21 @@ use Magento\Search\Model\QueryInterface;
 class SuggestedQueries implements SuggestedQueriesInterface
 {
     /**
-     * @var EngineResolverInterface
-     */
-    private $engineResolver;
-
-    /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * Array of SuggestedQueriesInterface class names.
-     *
-     * @var array
-     */
-    private $data;
-
-    /**
      * @var SuggestedQueriesInterface
      */
     private $dataProvider;
 
     /**
      * SuggestedQueries constructor.
-     *
-     * @param EngineResolverInterface $engineResolver
-     * @param ObjectManagerInterface $objectManager
-     * @param array $data
      */
     public function __construct(
-        EngineResolverInterface $engineResolver,
-        ObjectManagerInterface $objectManager,
-        array $data
+        private readonly EngineResolverInterface $engineResolver,
+        private readonly ObjectManagerInterface $objectManager,
+        /**
+         * Array of SuggestedQueriesInterface class names.
+         */
+        private array $data
     ) {
-        $this->engineResolver = $engineResolver;
-        $this->objectManager = $objectManager;
-        $this->data = $data;
     }
 
     /**

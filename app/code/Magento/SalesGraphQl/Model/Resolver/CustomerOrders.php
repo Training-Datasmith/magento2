@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -176,12 +177,12 @@ class CustomerOrders implements ResolverInterface
                 $storeIds = $this->getStoresByFilter(null, null);
                 break;
             case 'WEBSITE':
-                    $websiteId = $store->getWebsiteId();
-                    $storeIds = $this->getStoresByFilter((int)$websiteId, null);
+                $websiteId = $store->getWebsiteId();
+                $storeIds = $this->getStoresByFilter((int)$websiteId, null);
                 break;
             case 'STORE':
-                    $storeGroupId = $store->getStoreGroupId();
-                    $storeIds = $this->getStoresByFilter(null, (int)$storeGroupId);
+                $storeGroupId = $store->getStoreGroupId();
+                $storeIds = $this->getStoresByFilter(null, (int)$storeGroupId);
                 break;
             default:
                 break;

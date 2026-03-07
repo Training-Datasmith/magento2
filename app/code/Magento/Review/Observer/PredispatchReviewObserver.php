@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Review\Observer;
 
@@ -11,7 +12,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\UrlInterface;
-use Magento\Review\Block\Product\ReviewRenderer;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -22,7 +22,7 @@ class PredispatchReviewObserver implements ObserverInterface
     /**
      * Configuration path to review active setting
      */
-    const XML_PATH_REVIEW_ACTIVE = 'catalog/review/active';
+    public const XML_PATH_REVIEW_ACTIVE = 'catalog/review/active';
 
     /**
      * @var ScopeConfigInterface

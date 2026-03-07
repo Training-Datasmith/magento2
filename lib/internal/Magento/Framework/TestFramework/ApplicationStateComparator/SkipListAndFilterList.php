@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class SkipListAndFilterList
      * @param string $serviceName
      * @return array
      */
-    public function getFilterListByClassNameAndServiceName(string $className, string $serviceName) : array
+    public function getFilterListByClassNameAndServiceName(string $className, string $serviceName): array
     {
         if ($this->filtersByClassNameAndServiceNameCache[$className][$serviceName] ?? false) {
             return $this->filtersByClassNameAndServiceNameCache[$className][$serviceName];

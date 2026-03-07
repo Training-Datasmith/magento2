@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Lock\Backend;
 
+use Magento\Framework\App\DeploymentConfig\FileReader;
+use Magento\Framework\Config\File\ConfigFilePool;
 use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
 use Magento\Framework\Lock\LockBackendFactory;
-use Magento\Framework\Config\File\ConfigFilePool;
-use Magento\Framework\App\DeploymentConfig\FileReader;
 use Magento\Framework\Stdlib\ArrayManager;
 
 /**

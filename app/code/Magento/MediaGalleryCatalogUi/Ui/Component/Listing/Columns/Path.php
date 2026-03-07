@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
@@ -17,7 +20,6 @@ use Magento\Ui\Component\Listing\Columns\Column;
  */
 class Path extends Column
 {
-
     /**
      * @var CategoryRepositoryInterface
      */

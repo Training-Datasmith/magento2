@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Element\Message;
 
 use Magento\Framework\View\Element\Message\MessageConfigurationsPool;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class MessageConfigurationsPoolTest extends TestCase
 {
@@ -23,7 +24,7 @@ class MessageConfigurationsPoolTest extends TestCase
         $expectedMessageConfigurations = [
             'message_identifier_1' => ['renderer' => 'RendererCode', 'data' => []],
             'message_identifier_2' => ['renderer' => 'RendererCode', 'data' => []],
-            'message_identifier_3' => null
+            'message_identifier_3' => null,
         ];
 
         $pool = new MessageConfigurationsPool($messageConfigurations);
@@ -78,13 +79,13 @@ class MessageConfigurationsPoolTest extends TestCase
         return [
             [
                 [
-                    'message_identifier' => ['renderer' => 'RendererCode', 'data' => 5]
-                ]
+                    'message_identifier' => ['renderer' => 'RendererCode', 'data' => 5],
+                ],
             ],
             [
                 [
-                    'message_identifier' => ['renderer' => 'RendererCode', 'data' => new \StdClass()]
-                ]
+                    'message_identifier' => ['renderer' => 'RendererCode', 'data' => new \StdClass()],
+                ],
             ],
         ];
     }

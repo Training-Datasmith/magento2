@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Framework\DataObject;
 
 class AsyncResponse extends DataObject implements AsyncResponseInterface, ExtensibleDataInterface
 {

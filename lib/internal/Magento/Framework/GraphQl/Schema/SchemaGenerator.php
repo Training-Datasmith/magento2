@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class SchemaGenerator implements SchemaGeneratorInterface
     /**
      * @inheritdoc
      */
-    public function generate() : Schema
+    public function generate(): Schema
     {
         $schema = $this->schemaFactory->create(
             [
@@ -70,7 +71,7 @@ class SchemaGenerator implements SchemaGeneratorInterface
                         $typesImplementors [] = $this->typeRegistry->get($type['name']);
                     }
                     return $typesImplementors;
-                }
+                },
             ]
         );
         return $schema;

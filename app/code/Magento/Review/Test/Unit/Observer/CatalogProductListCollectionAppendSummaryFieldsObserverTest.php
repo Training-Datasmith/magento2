@@ -1,15 +1,17 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Review\Test\Unit\Observer;
 
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Review\Model\ResourceModel\Review\Summary;
 use Magento\Review\Model\ResourceModel\Review\SummaryFactory;
 use Magento\Review\Observer\CatalogProductListCollectionAppendSummaryFieldsObserver;
@@ -17,7 +19,6 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -103,7 +104,7 @@ class CatalogProductListCollectionAppendSummaryFieldsObserverTest extends TestCa
     /**
      * Product listing test
      */
-    public function testAddSummaryFieldToProductsCollection() : void
+    public function testAddSummaryFieldToProductsCollection(): void
     {
         $this->eventMock
             ->expects($this->once())

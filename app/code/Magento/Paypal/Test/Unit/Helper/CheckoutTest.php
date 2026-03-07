@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Paypal\Helper\Checkout
  */
+
 namespace Magento\Paypal\Test\Unit\Helper;
 
 use Magento\Checkout\Model\Session;

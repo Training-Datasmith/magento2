@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 use Magento\Ui\DataProvider\Modifier\Pool;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -62,7 +63,7 @@ class ProductDataProviderTest extends TestCase
         $this->collectionFactoryMock = $this->createMock(CollectionFactory::class);
         $this->collectionFactoryMock->method('create')->willReturn($this->collectionMock);
         $this->poolMock = $this->createMock(Pool::class);
-        
+
         $this->modifierMockOne = $this->createMock(ModifierInterface::class);
         $this->modifierMockOne->method('modifyMeta')->willReturnCallback(
             function ($meta) {

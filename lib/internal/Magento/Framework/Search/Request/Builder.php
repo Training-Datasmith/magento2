@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -152,7 +154,7 @@ class Builder implements ResetAfterRequestInterface
     public function create()
     {
         if (!isset($this->data['requestName'])) {
-            throw new \InvalidArgumentException("Request name not defined.");
+            throw new \InvalidArgumentException('Request name not defined.');
         }
         $requestName = $this->data['requestName'];
         /** @var array $data */
@@ -227,7 +229,7 @@ class Builder implements ResetAfterRequestInterface
                 'rootQueryName' => $data['query'],
                 'queries' => $data['queries'],
                 'aggregations' => $data['aggregations'],
-                'filters' => $data['filters']
+                'filters' => $data['filters'],
             ]
         );
         $requestData = [
@@ -237,7 +239,7 @@ class Builder implements ResetAfterRequestInterface
             'size' => $data['size'],
             'query' => $mapper->getRootQuery(),
             'dimensions' => $this->buildDimensions(isset($data['dimensions']) ? $data['dimensions'] : []),
-            'buckets' => $mapper->getBuckets()
+            'buckets' => $mapper->getBuckets(),
         ];
         if (isset($data['sort'])) {
             $requestData['sort'] = $data['sort'];

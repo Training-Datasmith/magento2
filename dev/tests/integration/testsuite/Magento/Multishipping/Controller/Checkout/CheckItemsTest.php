@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Multishipping\Controller\Checkout;
 
-use Magento\Catalog\Model\Product;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Quote\Model\Quote;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Quote\Api\CartRepositoryInterface as QuoteRepository;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Quote\Api\CartRepositoryInterface as QuoteRepository;
+use Magento\Quote\Model\Quote;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -89,10 +90,10 @@ class CheckItemsTest extends \Magento\TestFramework\TestCase\AbstractController
 
         $request = [];
         if (!empty($requestQuantity) && is_array($requestQuantity)) {
-            $request= [
+            $request = [
                 'ship' => [
                     [$quoteItem->getId() => $requestQuantity],
-                ]
+                ],
             ];
         }
 
@@ -151,26 +152,26 @@ class CheckItemsTest extends \Magento\TestFramework\TestCase\AbstractController
                 'requestQuantity' => [],
                 'expectedResponse' => [
                     'success' => false,
-                    'error_message' => 'We are unable to process your request. Please, try again later.'
-                ]
+                    'error_message' => 'We are unable to process your request. Please, try again later.',
+                ],
             ],
             [
                 'requestQuantity' => ['qty' => 2],
                 'expectedResponse' => [
                     'success' => true,
-                ]
+                ],
             ],
             [
                 'requestQuantity' => ['qty' => 101],
                 'expectedResponse' => [
                     'success' => false,
-                    'error_message' => 'Not enough items for sale']
+                    'error_message' => 'Not enough items for sale'],
             ],
             [
                 'requestQuantity' => ['qty' => 230],
                 'expectedResponse' => [
                     'success' => false,
-                    'error_message' => 'Maximum qty allowed for Shipping to multiple addresses is 200']
+                    'error_message' => 'Maximum qty allowed for Shipping to multiple addresses is 200'],
             ],
         ];
     }

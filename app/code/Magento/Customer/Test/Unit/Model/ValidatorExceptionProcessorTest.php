@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processValidatorException($validatorException);
     }
@@ -91,7 +92,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processValidatorException($validatorException);
     }
@@ -116,7 +117,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->exactly(3))
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processStandardInputException($inputException);
     }
@@ -133,7 +134,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processStandardInputException($inputException);
     }
@@ -150,7 +151,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processInputException($validatorException);
     }
@@ -167,7 +168,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processInputException($inputException);
     }
@@ -209,7 +210,7 @@ class ValidatorExceptionProcessorTest extends TestCase
 
         $this->messageManagerMock->expects($this->once())
             ->method('addError')
-            ->with($this->callback(fn($value) => is_string($value)));
+            ->with($this->callback(fn ($value) => is_string($value)));
 
         $this->processor->processValidatorException($validatorException, null, 'addError');
     }

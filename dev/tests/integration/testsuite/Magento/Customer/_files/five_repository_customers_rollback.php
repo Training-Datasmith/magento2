@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,9 +7,9 @@
 declare(strict_types=1);
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Eav\Model\Config as EavModelConfig;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 

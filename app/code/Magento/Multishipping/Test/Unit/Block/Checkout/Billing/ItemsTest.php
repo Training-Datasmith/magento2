@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class ItemsTest extends TestCase
         $this->model = $objectManager->getObject(
             Items::class,
             [
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
     }

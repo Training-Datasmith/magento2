@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\GuestCart;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\CartManagementInterface;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\GuestCart\GuestCartManagement;
+use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
-use Magento\Quote\Model\Quote;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -81,7 +82,7 @@ class GuestCartManagementTest extends TestCase
             [
                 'quoteManagement' => $this->quoteManagementMock,
                 'quoteIdMaskFactory' => $this->quoteIdMaskFactoryMock,
-                'cartRepository' => $this->cartRepositoryMock
+                'cartRepository' => $this->cartRepositoryMock,
             ]
         );
     }

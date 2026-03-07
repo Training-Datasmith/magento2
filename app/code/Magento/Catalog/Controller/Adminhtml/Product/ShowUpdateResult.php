@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
-use Magento\Catalog\Helper\Product\Composite;
-use Magento\Backend\Model\Session;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Helper\Product\Composite;
 
 class ShowUpdateResult extends \Magento\Catalog\Controller\Adminhtml\Product
 {

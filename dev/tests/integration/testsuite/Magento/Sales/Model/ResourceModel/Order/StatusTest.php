@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +29,7 @@ class StatusTest extends \PHPUnit\Framework\TestCase
             ->create(
                 \Magento\Sales\Model\ResourceModel\Order\Status::class,
                 [
-                    'data' => ['status' => 'fake_status']
+                    'data' => ['status' => 'fake_status'],
                 ]
             );
     }

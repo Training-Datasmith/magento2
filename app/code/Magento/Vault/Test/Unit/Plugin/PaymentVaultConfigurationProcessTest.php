@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class PaymentVaultConfigurationProcessTest extends TestCase
             [
                 'vaultPaymentList' => $this->vaultList,
                 'paymentMethodList' => $this->paymentMethodList,
-                'storeManager' => $this->storeManager
+                'storeManager' => $this->storeManager,
             ]
         );
     }
@@ -124,34 +125,34 @@ class PaymentVaultConfigurationProcessTest extends TestCase
         $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']
         ['children']['payment']['children']['renders']['children'] = [
             'vault' => [
-                'methods' => []
+                'methods' => [],
             ],
             'paypal-payments' => [
                 'methods' => [
                     'payflowpro' => [],
-                    'payflow_link' => []
-                ]
-            ]
+                    'payflow_link' => [],
+                ],
+            ],
         ];
         $result1['components']['checkout']['children']['steps']['children']['billing-step']
         ['children']['payment']['children']['renders']['children'] = [];
         $result2['components']['checkout']['children']['steps']['children']['billing-step']
         ['children']['payment']['children']['renders']['children'] = [
             'vault' => [
-                'methods' => []
+                'methods' => [],
             ],
             'paypal-payments' => [
                 'methods' => [
                     'payflowpro' => [],
-                ]
-            ]
+                ],
+            ],
         ];
 
         $vaultPaymentMethod = static fn (self $testCase) => $testCase->getMockForVaultPayment();
 
         return [
             [$jsLayout, [], [], $result1],
-            [$jsLayout, [$vaultPaymentMethod], [$vaultPaymentMethod], $result2]
+            [$jsLayout, [$vaultPaymentMethod], [$vaultPaymentMethod], $result2],
         ];
     }
 }

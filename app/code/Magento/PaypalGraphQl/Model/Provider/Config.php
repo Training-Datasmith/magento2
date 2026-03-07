@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Provider;
 
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Paypal\Model\AbstractConfig;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
 /**
  * Provides correct Config instance for payment method

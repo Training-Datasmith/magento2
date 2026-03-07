@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class ShardingTest extends TestCase
             Sharding::class,
             [
                 'deploymentConfig' => $this->deploymentConfigMock,
-                'resources' => ['default', 'checkout', 'sales']
+                'resources' => ['default', 'checkout', 'sales'],
             ]
         );
     }

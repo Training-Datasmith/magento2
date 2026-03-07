@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Scan source code for incorrect or undeclared modules dependencies
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\App\Utility\Files;
@@ -43,7 +46,7 @@ class CircularDependencyTest extends \PHPUnit\Framework\TestCase
             preg_match('#/([^/]+?/[^/]+?)/etc/module\.xml$#', $configFile, $moduleName);
             $moduleName = str_replace('/', '_', $moduleName[1]);
             $config = simplexml_load_file($configFile);
-            $result = $config->xpath("/config/module/depends/module") ?: [];
+            $result = $config->xpath('/config/module/depends/module') ?: [];
             foreach ($result as $node) {
                 /** @var \SimpleXMLElement $node */
                 $this->moduleDependencies[$moduleName][] = (string) $node['name'];

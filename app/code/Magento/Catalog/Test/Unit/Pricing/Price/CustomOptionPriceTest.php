@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,13 +17,12 @@ use Magento\Catalog\Model\Product\Option\Value;
 use Magento\Catalog\Pricing\Price\CustomOptionPrice;
 use Magento\Catalog\Pricing\Price\CustomOptionPriceCalculator;
 use Magento\Framework\DataObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Pricing\Adjustment\Calculator;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Pricing\PriceInfoInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -142,7 +142,7 @@ class CustomOptionPriceTest extends TestCase
                     'getId',
                     'getType',
                     'getPriceType',
-                    'getPrice'
+                    'getPrice',
                 ]
             );
             $optionItemMock->method('getId')->willReturn($optionData['id']);
@@ -183,15 +183,15 @@ class CustomOptionPriceTest extends TestCase
                 'type' => $option1Type,
                 'max_option_price' => $option1MaxPrice,
                 'min_option_price' => $option1MinPrice,
-                'is_require' => true
+                'is_require' => true,
             ],
             [
                 'id' => $option2Id,
                 'type' => $option2Type,
                 'max_option_price' => $option2MaxPrice,
                 'min_option_price' => $option2MinPrice,
-                'is_require' => false
-            ]
+                'is_require' => false,
+            ],
         ];
 
         $singleValueOptionId = 3;
@@ -205,8 +205,8 @@ class CustomOptionPriceTest extends TestCase
                     'type' => $singleValueOptionType,
                     'price' => $singleValueOptionPrice,
                     'price_type' => 'fixed',
-                    'is_require' => true
-                ]
+                    'is_require' => true,
+                ],
             ]
         );
 
@@ -221,20 +221,20 @@ class CustomOptionPriceTest extends TestCase
                 'option_id' => $option1Id,
                 'type' => $option1Type,
                 'min' => $option1MinPrice,
-                'max' => $option1MaxPrice
+                'max' => $option1MaxPrice,
             ],
             [
                 'option_id' => $option2Id,
                 'type' => $option2Type,
                 'min' => 0.,
-                'max' => $option2MaxPrice + $option2MinPrice
+                'max' => $option2MaxPrice + $option2MinPrice,
             ],
             [
                 'option_id' => $singleValueOptionId,
                 'type' => $singleValueOptionType,
                 'min' => $singleValueOptionPrice,
-                'max' => $singleValueOptionPrice
-            ]
+                'max' => $singleValueOptionPrice,
+            ],
         ];
         $result = $this->object->getValue();
         $this->assertEquals($expectedResult, $result);
@@ -261,15 +261,15 @@ class CustomOptionPriceTest extends TestCase
                 'type' => $option1Type,
                 'max_option_price' => $option1MaxPrice,
                 'min_option_price' => $option1MinPrice,
-                'is_require' => true
+                'is_require' => true,
             ],
             [
                 'id' => $option2Id,
                 'type' => $option2Type,
                 'max_option_price' => $option2MaxPrice,
                 'min_option_price' => $option2MinPrice,
-                'is_require' => false
-            ]
+                'is_require' => false,
+            ],
         ];
         $options = $this->setupOptions($optionsData);
 
@@ -376,16 +376,16 @@ class CustomOptionPriceTest extends TestCase
             ->with($this->callback(function ($arg) use ($optionId1) {
                 return $arg->getId() === $optionId1;
             }))->willReturnSelf();
-        
+
         $groupMock->expects($this->once())
             ->method('setConfigurationItemOption')
             ->with($optionValueMock)->willReturnSelf();
-        
+
         $groupMock->expects($this->once())
             ->method('getOptionPrice')
             ->with($optionValue, 0.)
             ->willReturn($optionValue);
-        
+
         $optionMock = $this->createPartialMock(Option::class, ['getId', 'getType', 'groupFactory']);
         $optionMock
             ->method('getId')
@@ -397,11 +397,11 @@ class CustomOptionPriceTest extends TestCase
             ->method('groupFactory')
             ->with($optionType)
             ->willReturn($groupMock);
-        
+
         $optionValueMock->expects($this->once())
             ->method('getValue')
             ->willReturn($optionValue);
-        
+
         $optionIds = new DataObject(['value' => '1,2']);
 
         $customOptions = ['option_ids' => $optionIds, 'option_1' => $optionValueMock, 'option_2' => null];

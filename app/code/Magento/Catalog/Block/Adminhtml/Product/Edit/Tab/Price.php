@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml product edit price block
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab;
 
 class Price extends \Magento\Backend\Block\Widget\Form\Generic
@@ -30,7 +33,7 @@ class Price extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Default Price'),
                 'name' => 'default_price',
                 'bold' => true,
-                'value' => $product->getPrice()
+                'value' => $product->getPrice(),
             ]
         );
 

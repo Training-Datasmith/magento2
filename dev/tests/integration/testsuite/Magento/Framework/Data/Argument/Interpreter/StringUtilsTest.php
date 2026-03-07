@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,11 +46,9 @@ class StringUtilsTest extends \PHPUnit\Framework\TestCase
         /** @var RendererInterface|\PHPUnit\Framework\MockObject\MockObject $translateRenderer */
         $translateRenderer = $this->createMock(RendererInterface::class);
         $translateRenderer->expects($this->any())->method('render')->willReturnCallback(
-
-                function ($input) {
-                    return end($input) . ' (translated)';
-                }
-
+            function ($input) {
+                return end($input) . ' (translated)';
+            }
         );
         \Magento\Framework\Phrase::setRenderer($translateRenderer);
     }

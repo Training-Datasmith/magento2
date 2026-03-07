@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Test\Fixture;
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\TestFramework\Fixture\DataFixtureInterface;
 use Magento\TestFramework\Fixture\CallableDataFixture;
 use Magento\TestFramework\Fixture\DataFixtureFactory;
 use Magento\TestFramework\Fixture\LegacyDataFixture;

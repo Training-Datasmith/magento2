@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\App\PageCache\FormKey as CookieFormKey;
 use Magento\Framework\Data\Form\FormKey as DataFormKey;
+use Magento\Framework\Event\ObserverInterface;
 
 class FlushFormKey implements ObserverInterface
 {

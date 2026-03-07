@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CatalogRule\Controller\Adminhtml\Promo;
 
 use Magento\Backend\App\Action;
@@ -23,7 +26,7 @@ abstract class Catalog extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_CatalogRule::promo_catalog';
+    public const ADMIN_RESOURCE = 'Magento_CatalogRule::promo_catalog';
 
     /**
      * Dirty rules notice message

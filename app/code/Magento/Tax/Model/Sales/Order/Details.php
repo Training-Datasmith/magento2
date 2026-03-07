@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,8 +17,8 @@ class Details extends \Magento\Framework\Model\AbstractExtensibleModel implement
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_APPLIED_TAXES = 'applied_taxes';
-    const KEY_ITEMS         = 'items';
+    public const KEY_APPLIED_TAXES = 'applied_taxes';
+    public const KEY_ITEMS         = 'items';
     /**#@-*/
 
     /**

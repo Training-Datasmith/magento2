@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,9 +52,9 @@ class ConfigOptionsListTest extends TestCase
                 'file' => ConfigFilePool::APP_ENV,
                 'segment' => 'backend',
                 'data' => [
-                    'backend' => ['frontName' => 'admin']
-                ]
-            ]
+                    'backend' => ['frontName' => 'admin'],
+                ],
+            ],
         ];
 
         $this->assertIsArray($actualConfig);
@@ -92,7 +93,7 @@ class ConfigOptionsListTest extends TestCase
             [[ConfigOptionsList::INPUT_KEY_BACKEND_FRONTNAME => '**'], "Invalid backend frontname '**'"],
             [
                 [ConfigOptionsList::INPUT_KEY_BACKEND_FRONTNAME => 'invalid frontname'],
-                "Invalid backend frontname 'invalid frontname'"
+                "Invalid backend frontname 'invalid frontname'",
             ],
         ];
     }

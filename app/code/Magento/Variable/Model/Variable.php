@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Model;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Custom variable model

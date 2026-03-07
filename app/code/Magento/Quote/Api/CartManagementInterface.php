@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Quote\Api\Data\PaymentInterface;
@@ -17,7 +20,7 @@ interface CartManagementInterface
     /**
      * Checkout types: Checkout as Guest
      */
-    const METHOD_GUEST = 'guest';
+    public const METHOD_GUEST = 'guest';
 
     /**
      * Creates an empty cart and quote for a guest.

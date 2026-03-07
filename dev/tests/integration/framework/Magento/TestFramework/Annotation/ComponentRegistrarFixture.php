@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use FilesystemIterator;
@@ -160,8 +163,8 @@ class ComponentRegistrarFixture
                 [
                     'parsers' => [
                         $objectManager->get(\Magento\TestFramework\Annotation\Parser\ComponentsDir::class),
-                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\ComponentsDir::class)
-                    ]
+                        $objectManager->get(\Magento\TestFramework\Fixture\Parser\ComponentsDir::class),
+                    ],
                 ]
             );
         return array_merge(

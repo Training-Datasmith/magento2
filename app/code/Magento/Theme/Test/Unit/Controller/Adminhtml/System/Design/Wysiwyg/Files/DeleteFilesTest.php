@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class DeleteFilesTest extends TestCase
             [
                 'getModuleName', 'setModuleName', 'getActionName', 'setActionName',
                 'getParam', 'setParams', 'getParams', 'getCookie', 'isSecure',
-                'isPost'
+                'isPost',
             ]
         );
 
@@ -71,7 +72,7 @@ class DeleteFilesTest extends TestCase
             [
                 'objectManager' => $this->objectManager,
                 'request' => $this->request,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
     }
@@ -123,7 +124,7 @@ class DeleteFilesTest extends TestCase
             ->willReturn(['files' => 'file']);
         $this->objectManager
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Data::class] => $jsonData,
                 [WisiwygStorage::class] => $this->storage
             });

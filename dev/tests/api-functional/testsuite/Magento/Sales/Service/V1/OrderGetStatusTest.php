@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -13,13 +16,13 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class OrderGetStatusTest extends WebapiAbstract
 {
-    const RESOURCE_PATH = '/V1/orders/%d/statuses';
+    public const RESOURCE_PATH = '/V1/orders/%d/statuses';
 
-    const SERVICE_READ_NAME = 'salesOrderManagementV1';
+    public const SERVICE_READ_NAME = 'salesOrderManagementV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
-    const ORDER_INCREMENT_ID = '100000001';
+    public const ORDER_INCREMENT_ID = '100000001';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

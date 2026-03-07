@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Contact\Model;
 
 /**
@@ -16,22 +19,22 @@ interface ConfigInterface
     /**
      * Recipient email config path
      */
-    const XML_PATH_EMAIL_RECIPIENT = 'contact/email/recipient_email';
+    public const XML_PATH_EMAIL_RECIPIENT = 'contact/email/recipient_email';
 
     /**
      * Sender email config path
      */
-    const XML_PATH_EMAIL_SENDER = 'contact/email/sender_email_identity';
+    public const XML_PATH_EMAIL_SENDER = 'contact/email/sender_email_identity';
 
     /**
      * Email template config path
      */
-    const XML_PATH_EMAIL_TEMPLATE = 'contact/email/email_template';
+    public const XML_PATH_EMAIL_TEMPLATE = 'contact/email/email_template';
 
     /**
      * Enabled config path
      */
-    const XML_PATH_ENABLED = 'contact/contact/enabled';
+    public const XML_PATH_ENABLED = 'contact/contact/enabled';
 
     /**
      * Check if contacts module is enabled

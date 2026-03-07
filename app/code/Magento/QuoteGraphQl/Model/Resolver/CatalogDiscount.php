@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Model\Resolver;
 
+use Magento\CatalogGraphQl\Model\Resolver\Product\Price\Discount;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\CatalogGraphQl\Model\Resolver\Product\Price\Discount;
 use Magento\Quote\Api\Data\CartItemInterface;
 
 class CatalogDiscount implements ResolverInterface
@@ -35,7 +36,7 @@ class CatalogDiscount implements ResolverInterface
         ResolveInfo $info,
         ?array $value = null,
         ?array $args = null
-    ):array {
+    ): array {
         if (!(($value['model'] ?? null) instanceof CartItemInterface) ||
             empty($value['original_item_price']) ||
             empty($value['price'])

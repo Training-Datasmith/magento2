@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxClass\Type;
 
 class CustomerTest extends \PHPUnit\Framework\TestCase
@@ -12,7 +15,7 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
      */
     protected $_objectManager;
 
-    const GROUP_CODE = 'Test Group';
+    public const GROUP_CODE = 'Test Group';
 
     /**
      * @magentoDbIsolation enabled
@@ -25,7 +28,7 @@ class CustomerTest extends \PHPUnit\Framework\TestCase
 
         /* Create a tax class */
         $model = $this->_objectManager->create(\Magento\Tax\Model\ClassModel::class);
-        $model->setClassName("Test Group Tax Class")
+        $model->setClassName('Test Group Tax Class')
             ->setClassType(\Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_CUSTOMER)
             ->isObjectNew(true);
         $model->save();

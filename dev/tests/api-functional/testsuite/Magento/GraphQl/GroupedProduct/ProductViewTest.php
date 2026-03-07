@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 class ProductViewTest extends GraphQlAbstract
 {
-
     /**
      * @magentoApiDataFixture Magento/Store/_files/second_website_with_two_stores.php
      * @magentoApiDataFixture Magento/GroupedProduct/_files/product_grouped_in_multiple_websites.php
@@ -33,8 +33,8 @@ class ProductViewTest extends GraphQlAbstract
                     'sku' => 'simple',
                     'name' => 'Simple Product',
                     'type_id' => 'simple',
-                    'url_key' => 'simple-product'
-                ]
+                    'url_key' => 'simple-product',
+                ],
             ],
             [
                 'qty' => 2,
@@ -43,9 +43,9 @@ class ProductViewTest extends GraphQlAbstract
                     'sku' => 'virtual-product',
                     'name' => 'Virtual Product',
                     'type_id' => 'virtual',
-                    'url_key' => 'virtual-product'
-                ]
-            ]
+                    'url_key' => 'virtual-product',
+                ],
+            ],
         ];
         $this->assertGroupedProductItems($groupedProductLinks, $responseForSecondWebsite['products']['items'][0]);
     }
@@ -70,9 +70,9 @@ class ProductViewTest extends GraphQlAbstract
                     'sku' => 'simple',
                     'name' => 'Simple Product',
                     'type_id' => 'simple',
-                    'url_key' => 'simple-product'
-                ]
-            ]
+                    'url_key' => 'simple-product',
+                ],
+            ],
         ];
         $secondWebsiteGroupedProductLinks = [
             [
@@ -82,9 +82,9 @@ class ProductViewTest extends GraphQlAbstract
                     'sku' => 'virtual-product',
                     'name' => 'Virtual Product',
                     'type_id' => 'virtual',
-                    'url_key' => 'virtual-product'
-                ]
-            ]
+                    'url_key' => 'virtual-product',
+                ],
+            ],
         ];
 
         $this->assertGroupedProductItems(

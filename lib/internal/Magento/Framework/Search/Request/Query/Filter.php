@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Request\Query;
 
 use Magento\Framework\Search\Request\QueryInterface;
@@ -17,9 +20,9 @@ class Filter implements QueryInterface
     /**
      * #@+ Reference Types
      */
-    const REFERENCE_QUERY = 'query';
+    public const REFERENCE_QUERY = 'query';
 
-    const REFERENCE_FILTER = 'filter';
+    public const REFERENCE_FILTER = 'filter';
 
     /**#@-*/
 

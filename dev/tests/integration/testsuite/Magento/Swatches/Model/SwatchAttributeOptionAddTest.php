@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Model;
 
 use Magento\Catalog\Api\ProductAttributeOptionManagementInterface;
@@ -43,7 +46,7 @@ class SwatchAttributeOptionAddTest extends \PHPUnit\Framework\TestCase
             function ($values, $index) {
                 $values[] = [
                     'label' => 'option ' . $index,
-                    'value' => 'option_' . $index
+                    'value' => 'option_' . $index,
                 ];
                 return $values;
             },

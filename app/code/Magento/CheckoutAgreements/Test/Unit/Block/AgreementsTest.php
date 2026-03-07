@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class AgreementsTest extends TestCase
             Agreements::class,
             [
                 'agreementCollectionFactory' => $this->agreementCollFactoryMock,
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
     }

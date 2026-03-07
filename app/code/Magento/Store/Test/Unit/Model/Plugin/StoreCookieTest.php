@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class StoreCookieTest extends TestCase
             [
                 'storeManager' => $this->storeManagerMock,
                 'storeCookieManager' => $this->storeCookieManagerMock,
-                'storeRepository' => $this->storeRepositoryMock
+                'storeRepository' => $this->storeRepositoryMock,
             ]
         );
     }

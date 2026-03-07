@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model\QuoteRepository\Plugin;
 
-use Magento\Quote\Api\ChangeQuoteControlInterface;
 use Magento\Framework\Exception\StateException;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Quote\Api\ChangeQuoteControlInterface;
 use Magento\Quote\Api\Data\CartInterface;
 
 /**
@@ -44,7 +45,7 @@ class AccessChangeQuoteControl
     public function beforeSave(CartRepositoryInterface $subject, CartInterface $quote): void
     {
         if (!$this->changeQuoteControl->isAllowed($quote)) {
-            throw new StateException(__("Invalid state change requested"));
+            throw new StateException(__('Invalid state change requested'));
         }
     }
 }

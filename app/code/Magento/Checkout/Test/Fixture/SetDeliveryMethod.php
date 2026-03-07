@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class SetDeliveryMethod implements DataFixtureInterface
     private const DEFAULT_DATA = [
         'cart_id' => null,
         'carrier_code' => 'flatrate',
-        'method_code' => 'flatrate'
+        'method_code' => 'flatrate',
     ];
 
     /**

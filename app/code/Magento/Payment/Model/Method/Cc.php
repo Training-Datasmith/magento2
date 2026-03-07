@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model\Method;
 
 use Magento\Framework\DataObject;
@@ -166,7 +169,7 @@ class Cc extends \Magento\Payment\Model\Method\AbstractMethod
                         '(6516(5[2-9]|6[0-9]|7[0-9]))|(6550(0[0-9]|1[0-9]))|' .
                         '(6550(2[1-9]|3[0-9]|4[0-9]|5[0-8])))\d*$/',
                     //Aura
-                    'AU' => '/^5078\d*$/'
+                    'AU' => '/^5078\d*$/',
                 ];
 
                 $ccNumAndTypeMatches = isset(
@@ -294,7 +297,7 @@ class Cc extends \Magento\Payment\Model\Method\AbstractMethod
                 'cc_exp_year' => $additionalData->getCcExpYear(),
                 'cc_ss_issue' => $additionalData->getCcSsIssue(),
                 'cc_ss_start_month' => $additionalData->getCcSsStartMonth(),
-                'cc_ss_start_year' => $additionalData->getCcSsStartYear()
+                'cc_ss_start_year' => $additionalData->getCcSsStartYear(),
             ]
         );
 

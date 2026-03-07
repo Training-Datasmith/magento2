@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Api;
 
 use Magento\Framework\Api\Search\SearchInterface as FrameworkSearchInterface;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Validator encapsulates multiple validation rules for \Magento\Framework\DataObject.
  * Able to validate both individual fields and a whole object.
  */
+
 namespace Magento\Framework\Validator;
 
 use Laminas\Validator\ValidatorChain;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml VAT ID validation block
  */
+
 namespace Magento\Customer\Block\Adminhtml\System\Config;
 
 class Validatevat extends \Magento\Config\Block\System\Config\Form\Field

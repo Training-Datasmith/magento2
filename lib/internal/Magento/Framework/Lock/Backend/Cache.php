@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ class Cache implements \Magento\Framework\Lock\LockManagerInterface
     /**
      * Prefix for marking that key is locked or not.
      */
-    const LOCK_PREFIX = 'LOCKED_RECORD_INFO_';
+    public const LOCK_PREFIX = 'LOCKED_RECORD_INFO_';
 
     /**
      * @var FrontendInterface
@@ -144,7 +145,7 @@ class Cache implements \Magento\Framework\Lock\LockManagerInterface
         $sign = implode(
             '-',
             [
-                \getmypid(), \crc32(\gethostname())
+                \getmypid(), \crc32(\gethostname()),
             ]
         );
 

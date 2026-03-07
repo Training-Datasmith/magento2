@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Controller\Adminhtml\Dashboard;
 
-use Magento\TestFramework\TestCase\AbstractBackendController;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -47,16 +48,16 @@ class AjaxBlockTest extends AbstractBackendController
         return [
             [
                 'totals',
-                'dashboard_diagram_totals'
+                'dashboard_diagram_totals',
             ],
             [
                 '',
-                ''
+                '',
             ],
             [
                 'test_block',
-                ''
-            ]
+                '',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Customer;
 
-use Exception;
 use Magento\Framework\Registry;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
@@ -350,12 +350,12 @@ QUERY;
     public function testPlaceOrderWitMissingCartId()
     {
         $methodCode = Checkmo::PAYMENT_METHOD_CHECKMO_CODE;
-        $maskedQuoteId = "";
+        $maskedQuoteId = '';
 
         $query = $this->getQuery($maskedQuoteId, $methodCode);
 
         $this->expectExceptionMessage(
-            "Required parameter \"cart_id\" is missing"
+            'Required parameter "cart_id" is missing'
         );
         $this->graphQlMutation($query);
     }
@@ -371,13 +371,13 @@ QUERY;
      */
     public function testPlaceOrderWithMissingPaymentMethod()
     {
-        $methodCode = "";
+        $methodCode = '';
         $maskedQuoteId = $this->getMaskedQuoteIdByReservedOrderId->execute('test_quote');
 
         $query = $this->getQuery($maskedQuoteId, $methodCode);
 
         $this->expectExceptionMessage(
-            "Required parameter \"code\" for \"payment_method\" is missing."
+            'Required parameter "code" for "payment_method" is missing.'
         );
         $this->graphQlMutation($query);
     }
@@ -390,7 +390,7 @@ QUERY;
     private function getQuery(
         string $maskedQuoteId,
         string $methodCode
-    ) : string {
+    ): string {
         return <<<QUERY
 mutation {
   setPaymentMethodOnCart(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class CvvEmsCodeMapperTest extends TestCase
             ['cvvCode' => null, 'expected' => 'P'],
             ['cvvCode' => 'Y', 'expected' => 'M'],
             ['cvvCode' => 'N', 'expected' => 'N'],
-            ['cvvCode' => 'X', 'expected' => 'P']
+            ['cvvCode' => 'X', 'expected' => 'P'],
         ];
     }
 }

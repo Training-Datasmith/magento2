@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Service;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Pricing\SpecialPriceService;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -39,16 +40,16 @@ class SpecialPriceServiceTest extends TestCase
         return [
             'invalid_date' => [
                 'dateTo' => 'some date to',
-                'expected' => 'some date to'
+                'expected' => 'some date to',
             ],
             'date_without_time' => [
                 'dateTo' => '2025-05-12 00:00:00',
-                'expected' => '2025-05-12 00:00:00'
+                'expected' => '2025-05-12 00:00:00',
             ],
             'date_with_specific_time' => [
                 'dateTo' => '2025-05-12 17:00:00',
-                'expected' => '2025-05-11 17:00:00'
-            ]
+                'expected' => '2025-05-11 17:00:00',
+            ],
         ];
     }
 

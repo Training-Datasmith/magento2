@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 /** @var Attribute $attribute */
 
-use Magento\Catalog\Model\Category\AttributeFactory;
 use Magento\Catalog\Model\Category\Attribute;
+use Magento\Catalog\Model\Category\AttributeFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 
 $attributeFactory = Bootstrap::getObjectManager()->get(AttributeFactory::class);

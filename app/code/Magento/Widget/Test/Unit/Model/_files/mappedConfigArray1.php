@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Cms\Block\Adminhtml\Page\Widget\Chooser;
 use Magento\Cms\Block\Widget\Page\Link;
@@ -56,5 +58,5 @@ return [
             'template' => ['default' => 'default', 'names_only' => 'link_inline'],
         ],
         '1' => ['container_name' => 'content', 'template' => ['grid' => 'default', 'list' => 'list']],
-    ]
+    ],
 ];

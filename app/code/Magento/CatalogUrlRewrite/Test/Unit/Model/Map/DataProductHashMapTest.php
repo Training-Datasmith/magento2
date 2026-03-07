@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class DataProductHashMapTest extends TestCase
             DataProductHashMap::class,
             [
                 'collectionFactory' => $this->collectionFactoryMock,
-                'hashMapPool' => $this->hashMapPoolMock
+                'hashMapPool' => $this->hashMapPoolMock,
             ]
         );
     }

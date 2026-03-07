@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\Customer\Model\GroupManagement;
 use Magento\Customer\Model\ResourceModel\Group\Collection;
 use Magento\SalesRule\Api\CouponRepositoryInterface;
 use Magento\SalesRule\Model\Coupon;
@@ -36,7 +36,7 @@ $salesRule->setData(
 
             'store_id' => 0,
             'store_label' => 'cart_rule_with_coupon_5_off_no_condition',
-        ]
+        ],
     ]
 );
 $objectManager->get(\Magento\SalesRule\Model\ResourceModel\Rule::class)->save($salesRule);

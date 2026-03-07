@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Encryption;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -42,7 +45,7 @@ class EncryptorTest extends \PHPUnit\Framework\TestCase
             '32 numbers' => ['12345678901234567890123456789012'],
             '32 characters' => ['aBcdeFghIJKLMNOPQRSTUvwxYzabcdef'],
             '32 special characters' => ['!@#$%^&*()_+~`:;"<>,.?/|*&^%$#@!'],
-            '32 combination' =>['1234eFghI1234567^&*(890123456789'],
+            '32 combination' => ['1234eFghI1234567^&*(890123456789'],
         ];
     }
 

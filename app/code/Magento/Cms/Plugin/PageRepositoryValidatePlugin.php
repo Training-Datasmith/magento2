@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Cms\Plugin;
 
 use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Api\PageRepositoryInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Cms\Model\Validator\DirectiveValidator;
+use Magento\Framework\Exception\LocalizedException;
 
 class PageRepositoryValidatePlugin
 {

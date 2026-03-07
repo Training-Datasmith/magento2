@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -19,7 +22,7 @@ use Magento\Vault\Api\PaymentMethodListInterface;
  */
 class VaultConfigProvider implements ConfigProviderInterface
 {
-    const IS_ACTIVE_CODE = 'is_active_payment_token_enabler';
+    public const IS_ACTIVE_CODE = 'is_active_payment_token_enabler';
 
     /**
      * @var string
@@ -69,12 +72,12 @@ class VaultConfigProvider implements ConfigProviderInterface
 
         foreach ($vaultPayments as $method) {
             $availableMethods[$method->getCode()] = [
-                'is_enabled' => $customerId !== null && $method->isActive($storeId)
+                'is_enabled' => $customerId !== null && $method->isActive($storeId),
             ];
         }
 
         return [
-            self::$vaultCode => $availableMethods
+            self::$vaultCode => $availableMethods,
         ];
     }
 

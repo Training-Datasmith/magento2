@@ -141,7 +141,7 @@ class ItemTest extends TestCase
                 'stockConfiguration' => $this->stockConfiguration,
                 'stockItemRepository' => $this->stockItemRepository,
                 'resource' => $this->resource,
-                'stockItemRegistry' => $this->resourceCollection
+                'stockItemRegistry' => $this->resourceCollection,
             ]
         );
     }
@@ -177,12 +177,12 @@ class ItemTest extends TestCase
         $typeId = 'simple';
         $status = 1;
         $isChangedWebsites = false;
-        
+
         $product = $this->createPartialMockWithReflection(
             Product::class,
             ['getIsChangedWebsites','getId', 'getName', 'getStoreId', 'getTypeId', 'dataHasChangedFor', '__wakeup']
         );
-        
+
         $product->expects($this->any())->method('getId')->willReturn($productId);
         $product->expects($this->any())->method('getName')->willReturn($productName);
         $product->expects($this->any())->method('getTypeId')->willReturn($typeId);
@@ -239,8 +239,8 @@ class ItemTest extends TestCase
                     'use_config_max_sale_qty' => false,
                     'max_sale_qty' => 2.,
                 ],
-                2.
-            ]
+                2.,
+            ],
         ];
     }
 
@@ -423,7 +423,7 @@ class ItemTest extends TestCase
                     'use_config_qty_increments' => true,
                     'is_qty_decimal' => false,
                 ],
-                1
+                1,
             ],
             [
                 [
@@ -432,7 +432,7 @@ class ItemTest extends TestCase
                     'use_config_qty_increments' => true,
                     'is_qty_decimal' => true,
                 ],
-                1.5
+                1.5,
             ],
             [
                 [
@@ -441,7 +441,7 @@ class ItemTest extends TestCase
                     'use_config_qty_increments' => true,
                     'is_qty_decimal' => false,
                 ],
-                1
+                1,
             ],
             [
                 [
@@ -450,7 +450,7 @@ class ItemTest extends TestCase
                     'use_config_qty_increments' => true,
                     'is_qty_decimal' => false,
                 ],
-                false
+                false,
             ],
             [
                 [
@@ -459,7 +459,7 @@ class ItemTest extends TestCase
                     'use_config_qty_increments' => false,
                     'is_qty_decimal' => false,
                 ],
-                3
+                3,
             ],
         ];
     }

@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Catalog;
 
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Helper\CacheCleaner;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * The GraphQl test for product in non default store with different locale
@@ -27,7 +27,7 @@ class ProductSearchWithTranslatedMessageTest extends GraphQlAbstract
     public function testErrorMessageTranslationInNonDefaultLocale()
     {
         CacheCleaner::clean(['translate', 'config']);
-        $storeCode = "fixture_second_store";
+        $storeCode = 'fixture_second_store';
         $header = ['Store' => $storeCode];
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('currentPage-waarde moet groter zijn dan 0.');

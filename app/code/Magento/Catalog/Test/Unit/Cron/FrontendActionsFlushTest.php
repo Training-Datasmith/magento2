@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class FrontendActionsFlushTest extends TestCase
             FrontendActionsFlush::class,
             [
                 'productFrontendActionResource' => $this->productFrontendActionMock,
-                'frontendStorageConfigurationPool' => $this->frontendStorageConfigurationPoolMock
+                'frontendStorageConfigurationPool' => $this->frontendStorageConfigurationPoolMock,
             ]
         );
     }
@@ -65,7 +66,7 @@ class FrontendActionsFlushTest extends TestCase
         $frontendConfiguration->expects($this->once())
             ->method('get')
             ->willReturn([
-                'lifetime' => 1500
+                'lifetime' => 1500,
             ]);
 
         $this->frontendStorageConfigurationPoolMock->expects($this->once())
@@ -85,7 +86,7 @@ class FrontendActionsFlushTest extends TestCase
             ->method('fetchPairs')
             ->with($selectMock)
             ->willReturn([
-                'recently_viewed_product'
+                'recently_viewed_product',
             ]);
 
         $connectionMock->expects($this->once())

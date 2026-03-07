@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class ConfigurableTest extends TestCase
                 'attribute_code' => 'test_fpt_attr',
                 'frontend_input' => 'weee',
                 'backend_type' => null,
-                'frontend_label' => 'Test FPT'
+                'frontend_label' => 'Test FPT',
             ],
             'weee_attr'
         ),
@@ -100,8 +101,8 @@ class ConfigurableTest extends TestCase
                 'price' => 100,
                 'weight' => 1,
                 'test_fpt_attr' => [
-                    ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 10.50, 'delete' => '']
-                ]
+                    ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 10.50, 'delete' => ''],
+                ],
             ],
             'simple1'
         ),
@@ -111,8 +112,8 @@ class ConfigurableTest extends TestCase
                 'price' => 150,
                 'weight' => 1,
                 'test_fpt_attr' => [
-                    ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 15.75, 'delete' => '']
-                ]
+                    ['website_id' => 0, 'country' => 'US', 'state' => 0, 'price' => 15.75, 'delete' => ''],
+                ],
             ],
             'simple2'
         ),
@@ -126,7 +127,7 @@ class ConfigurableTest extends TestCase
             [
                 'sku' => 'configurable-weee-test',
                 '_options' => ['$attr$'],
-                '_links' => ['$simple1$', '$simple2$']
+                '_links' => ['$simple1$', '$simple2$'],
             ],
             'configurable'
         )
@@ -216,7 +217,7 @@ class ConfigurableTest extends TestCase
             [
                 'sku' => 'configurable-no-weee',
                 '_options' => ['$attr$'],
-                '_links' => ['$simple1$', '$simple2$']
+                '_links' => ['$simple1$', '$simple2$'],
             ],
             'configurable'
         )

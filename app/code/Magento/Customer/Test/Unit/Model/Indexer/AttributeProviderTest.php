@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class AttributeProviderTest extends TestCase
                     'dataType' => $attrBackendType,
                     'entity' => Customer::ENTITY,
                     'bind' => null,
-                    'index' => false
+                    'index' => false,
                 ],
             ],
             ],
@@ -216,7 +217,7 @@ class AttributeProviderTest extends TestCase
                     'type' => 'searchable',
                     'filters' => ['filter'],
                     'dataType' => 'data_type',
-                    'index' => false
+                    'index' => false,
                 ],
             ],
             ],
@@ -322,7 +323,7 @@ class AttributeProviderTest extends TestCase
                     'dataType' => 'varchar',
                     'entity' => Customer::ENTITY,
                     'bind' => 'to_field',
-                    'index' => false
+                    'index' => false,
                 ],
             ],
                 'references' => [

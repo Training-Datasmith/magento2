@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class NotifierListTest extends TestCase
             NotifierList::class,
             [
                 'objectManager' => $this->objectManager,
-                'notifiers' => [$notifier1, $notifier2]
+                'notifiers' => [$notifier1, $notifier2],
             ]
         );
         $this->expectException('InvalidArgumentException');
@@ -53,7 +54,7 @@ class NotifierListTest extends TestCase
             NotifierList::class,
             [
                 'objectManager' => $this->objectManager,
-                'notifiers' => [$notifierCorrect, $notifierIncorrect]
+                'notifiers' => [$notifierCorrect, $notifierIncorrect],
             ]
         );
         $this->expectException('InvalidArgumentException');

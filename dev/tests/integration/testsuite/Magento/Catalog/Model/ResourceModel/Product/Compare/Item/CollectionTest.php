@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -42,10 +43,10 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     {
         $this->collection->setVisitorId(0);
         $fromParts = $this->collection->getSelect()->getPart(\Magento\Framework\DB\Select::FROM);
-        
+
         self::assertArrayHasKey('t_compare', $fromParts);
         $joinCondition = $fromParts['t_compare']['joinCondition'];
-        
+
         self::assertStringContainsString('t_compare.list_id IS NULL', $joinCondition);
         self::assertStringContainsString('t_compare.customer_id IS NULL', $joinCondition);
         self::assertStringContainsString("t_compare.visitor_id = '0'", $joinCondition);

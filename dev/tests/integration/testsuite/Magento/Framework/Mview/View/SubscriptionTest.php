@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All rights reserved.
@@ -81,8 +82,8 @@ class SubscriptionTest extends TestCase
                     'name' => 'catalog_product_entity',
                     'column' => 'entity_id',
                     'subscription_model' => null,
-                    'processor' => DefaultProcessor::class
-                ]
+                    'processor' => DefaultProcessor::class,
+                ],
             ]);
 
         // Create changelog for the view
@@ -111,10 +112,10 @@ class SubscriptionTest extends TestCase
                         'name' => 'catalog_product_entity',
                         'column' => 'entity_id',
                         'subscription_model' => null,
-                        'processor' => DefaultProcessor::class
-                    ]
-                ]
-            ]
+                        'processor' => DefaultProcessor::class,
+                    ],
+                ],
+            ],
         ]);
 
         $this->subscription = new Subscription(
@@ -164,7 +165,7 @@ class SubscriptionTest extends TestCase
         foreach ($triggers as $trigger) {
             $triggerName = $trigger->getName();
             $result = $connection->fetchOne(
-                "SELECT TRIGGER_NAME FROM information_schema.TRIGGERS WHERE TRIGGER_NAME = ?",
+                'SELECT TRIGGER_NAME FROM information_schema.TRIGGERS WHERE TRIGGER_NAME = ?',
                 [$triggerName]
             );
             $this->assertNotEmpty(

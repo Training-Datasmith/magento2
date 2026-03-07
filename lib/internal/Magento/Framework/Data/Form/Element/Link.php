@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Magento Form element renderer to display link element
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\App\ObjectManager;
@@ -92,7 +95,7 @@ class Link extends AbstractElement
             'onkeypress',
             'onkeyup',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 }

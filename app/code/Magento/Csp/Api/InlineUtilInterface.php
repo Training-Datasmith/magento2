@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 namespace Magento\Csp\Api;
-
-use Magento\Csp\Api\Data\PolicyInterface;
 
 /**
  * Utility for classes responsible for rendering and templates that allows whitelist inline sources.

@@ -1,10 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Option;
 
+use Magento\Catalog\Helper\Data;
 use Magento\Catalog\Model\Product\Option\Value as OptionValue;
 use Magento\Directory\Model\Currency;
 use Magento\Directory\Model\CurrencyFactory;
@@ -17,7 +21,6 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Helper\Data;
 
 /**
  * Catalog product custom option resource model
@@ -267,7 +270,7 @@ class Value extends AbstractDb
             }
 
             /*** Checking whether title is not null ***/
-            if ($object->getTitle()!= null) {
+            if ($object->getTitle() != null) {
                 if ($existInCurrentStore) {
                     if ($storeId == $object->getStoreId()) {
                         $where = [

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\TestModule1\Controller\CookieTester;
 
-use \Magento\Framework\App\RequestInterface;
+namespace Magento\TestModule1\Controller\CookieTester;
 
 /**
  * Controller to test deletion of a cookie

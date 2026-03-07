@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class DefaultItems extends Template
                 $value['qty']
             ) . ' x ' . $this->escapeHtml(
                 $value['title']
-            ) . " " . $this->getItem()->getOrder()->formatPrice(
+            ) . ' ' . $this->getItem()->getOrder()->formatPrice(
                 $value['price']
             );
         } else {

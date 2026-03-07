@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class QuoteMutexTest extends \PHPUnit\Framework\TestCase
             [
                 'callable' => \Closure::fromCallable([QuoteMutexTest::class, 'privateMethod']),
                 'args' => ['test'],
-                'expectedResult' => 'test'
+                'expectedResult' => 'test',
             ],
         ];
     }

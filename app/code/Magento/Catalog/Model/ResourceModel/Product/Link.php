@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class Link extends AbstractDb
         $bind = [
             ':product_id' => (int)$parentId,
             ':link_type_id' => (int)$typeId,
-            ':linked_product_id' => (int)$linkedProductId
+            ':linked_product_id' => (int)$linkedProductId,
         ];
         $select = $connection->select()->from(
             $this->getMainTable(),
@@ -122,7 +123,7 @@ class Link extends AbstractDb
         return $connection->fetchOne(
             $select,
             [
-                'product_id' => $parentId
+                'product_id' => $parentId,
             ]
         ) > 0;
     }
@@ -186,7 +187,7 @@ class Link extends AbstractDb
                     $table,
                     [
                         'link_id = ?' => $deleteCondition['link_id'],
-                        'product_link_attribute_id = ?' => $deleteCondition['product_link_attribute_id']
+                        'product_link_attribute_id = ?' => $deleteCondition['product_link_attribute_id'],
                     ]
                 );
             }

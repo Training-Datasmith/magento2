@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Api\Data;
 
 /**
@@ -15,13 +18,13 @@ interface BlockInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const BLOCK_ID      = 'block_id';
-    const IDENTIFIER    = 'identifier';
-    const TITLE         = 'title';
-    const CONTENT       = 'content';
-    const CREATION_TIME = 'creation_time';
-    const UPDATE_TIME   = 'update_time';
-    const IS_ACTIVE     = 'is_active';
+    public const BLOCK_ID      = 'block_id';
+    public const IDENTIFIER    = 'identifier';
+    public const TITLE         = 'title';
+    public const CONTENT       = 'content';
+    public const CREATION_TIME = 'creation_time';
+    public const UPDATE_TIME   = 'update_time';
+    public const IS_ACTIVE     = 'is_active';
     /**#@-*/
 
     /**

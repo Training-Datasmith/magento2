@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Customer\Test\Fixture\CustomerWithAddresses;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
 
 /**
  * Test for customer address retrieval.
@@ -56,7 +57,7 @@ class GetAddressesTest extends GraphQlAbstract
         $this->assertArrayHasKey('addresses', $response['customer']);
         $this->assertIsArray(
             [$response['customer']['addresses']],
-            "Addresses field must be of an array type."
+            'Addresses field must be of an array type.'
         );
 
         /** @var CustomerRepositoryInterface $customerRepository */
@@ -118,7 +119,7 @@ class GetAddressesTest extends GraphQlAbstract
                 ['response_field' => 'postcode', 'expected_value' => $addresses[$addressKey]->getPostcode()],
                 ['response_field' => 'city', 'expected_value' => $addresses[$addressKey]->getCity()],
                 ['response_field' => 'firstname', 'expected_value' => $addresses[$addressKey]->getFirstname()],
-                ['response_field' => 'lastname', 'expected_value' => $addresses[$addressKey]->getLastname()]
+                ['response_field' => 'lastname', 'expected_value' => $addresses[$addressKey]->getLastname()],
             ];
             $this->assertResponseFields($actualResponse['customer']['addresses'][$addressKey], $assertionMap);
         }

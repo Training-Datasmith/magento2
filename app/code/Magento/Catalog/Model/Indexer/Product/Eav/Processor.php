@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Eav;
 
 /**
@@ -16,5 +19,5 @@ class Processor extends \Magento\Framework\Indexer\AbstractProcessor
     /**
      * Indexer ID
      */
-    const INDEXER_ID = 'catalog_product_attribute';
+    public const INDEXER_ID = 'catalog_product_attribute';
 }

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Authentication;
 
+use Laminas\Stdlib\Exception\LogicException;
 use Magento\Framework\Exception\IntegrationException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Oauth\Exception;
-use Magento\TestFramework\Helper\Bootstrap;
-use Laminas\Stdlib\Exception\LogicException;
 use Magento\Integration\Model\Integration;
 use Magento\TestFramework\Authentication\Rest\OauthClient;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Authentication Oauth helper
@@ -60,7 +63,7 @@ class OauthHelper
             'secret' => $consumer->getSecret(),
             'verifier' => $verifier,
             'consumer' => $consumer,
-            'token' => $token
+            'token' => $token,
         ];
     }
 
@@ -166,7 +169,7 @@ class OauthHelper
         /** Magento cache must be cleared to activate just created ACL role. */
         $varPath = realpath(BP . '/var');
         if (!$varPath) {
-            throw new LogicException("Magento cache cannot be cleared after new ACL role creation.");
+            throw new LogicException('Magento cache cannot be cleared after new ACL role creation.');
         } else {
             $cachePath = $varPath . '/cache';
             if (is_dir($cachePath)) {

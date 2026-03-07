@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +9,6 @@
 namespace Magento\Framework\Setup\Declaration\Schema\Operations;
 
 use Magento\Framework\Setup\Declaration\Schema\Db\DbSchemaWriterInterface;
-use Magento\Framework\Setup\Declaration\Schema\Db\DefinitionAggregator;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
 use Magento\Framework\Setup\Declaration\Schema\ElementHistory;
 use Magento\Framework\Setup\Declaration\Schema\OperationInterface;
@@ -23,7 +23,7 @@ class ModifyTable implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'modify_table';
+    public const OPERATION_NAME = 'modify_table';
 
     /**
      * @var DbSchemaWriterInterface

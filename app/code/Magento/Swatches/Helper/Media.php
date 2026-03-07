@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Helper;
 
 use Magento\Catalog\Helper\Image;
@@ -153,7 +156,7 @@ class Media extends \Magento\Framework\App\Helper\AbstractHelper
             'width' => $imageConfig[$swatchType]['width'],
             'height' => $imageConfig[$swatchType]['height'],
             'store' => $this->storeManager->getStore()->getCode(),
-            'image-type' => $swatchType
+            'image-type' => $swatchType,
         ]);
     }
 
@@ -285,7 +288,7 @@ class Media extends \Magento\Framework\App\Helper\AbstractHelper
         $absolutePath = $this->mediaDirectory->getAbsolutePath($this->getSwatchCachePath($swatchType));
         return [
             'path_for_save' => $absolutePath . $this->getFolderNameSize($swatchType, $imageConfig) . $fileName['path'],
-            'name' => $fileName['name']
+            'name' => $fileName['name'],
         ];
     }
 

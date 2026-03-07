@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor;
 
-use Magento\Framework\DB\Query\Generator;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\Handler\ErrorFactory;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\Query\Generator;
+use Magento\Framework\Encryption\EncryptorInterface;
 
 /**
  * Generic re-encryption handler.

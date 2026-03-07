@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -176,7 +178,7 @@ class Adjustment extends AbstractAdjustment
     public function renderWeeeTaxAttributeWithoutTax(\Magento\Framework\DataObject $attribute)
     {
         $price = $attribute->getData('amount_excl_tax');
-        return ($price > 0) ? $this->convertAndFormatCurrency($price): $this->convertAndFormatCurrency(0);
+        return ($price > 0) ? $this->convertAndFormatCurrency($price) : $this->convertAndFormatCurrency(0);
     }
 
     /**

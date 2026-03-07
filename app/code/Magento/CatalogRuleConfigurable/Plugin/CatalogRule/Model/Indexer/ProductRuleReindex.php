@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\Indexer;
 
 use Magento\CatalogRule\Model\Indexer\Product\ProductRuleIndexer;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\ConfigurableProductsProvider;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
 /**
  * Add configurable sub-products to reindex

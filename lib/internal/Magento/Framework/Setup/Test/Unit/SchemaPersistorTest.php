@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Setup\SchemaListener;
 use Magento\Framework\Setup\SchemaPersistor;
 use Magento\Framework\Setup\XmlPersistor;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for schema persistor.
@@ -54,7 +55,7 @@ class SchemaPersistorTest extends TestCase
             SchemaPersistor::class,
             [
                 'componentRegistrar' => $this->componentRegistrarMock,
-                'xmlPersistor' => $this->xmlPersistor
+                'xmlPersistor' => $this->xmlPersistor,
             ]
         );
     }
@@ -63,7 +64,7 @@ class SchemaPersistorTest extends TestCase
      * @param string $expectedXML
      */
     #[DataProvider('schemaListenerTablesDataProvider')]
-    public function testPersist(array $tables, $expectedXML) : void
+    public function testPersist(array $tables, $expectedXML): void
     {
         $moduleName = 'First_Module';
         /** @var SchemaListener|MockObject $schemaListenerMock */
@@ -91,7 +92,7 @@ class SchemaPersistorTest extends TestCase
      *
      * @return array
      */
-    public static function schemaListenerTablesDataProvider() : array
+    public static function schemaListenerTablesDataProvider(): array
     {
         return [
             [
@@ -113,16 +114,16 @@ class SchemaPersistorTest extends TestCase
                                     'name' => 'second_column',
                                     'xsi:type' => 'date',
                                     'nullable' => 0,
-                                ]
+                                ],
                             ],
                             'indexes' => [
                                 'TEST_INDEX' => [
                                     'name' => 'TEST_INDEX',
                                     'indexType' => 'btree',
                                     'columns' => [
-                                        'first_column'
-                                    ]
-                                ]
+                                        'first_column',
+                                    ],
+                                ],
                             ],
                             'constraints' => [
                                 'foreign' => [
@@ -130,21 +131,21 @@ class SchemaPersistorTest extends TestCase
                                         'referenceTable' => 'table',
                                         'referenceColumn' => 'column',
                                         'table' => 'first_table',
-                                        'column' => 'first_column'
-                                    ]
+                                        'column' => 'first_column',
+                                    ],
                                 ],
                                 'primary' => [
                                     'PRIMARY' => [
                                         'xsi:type' => 'primary',
                                         'name' => 'PRIMARY',
                                         'columns' => [
-                                            'second_column'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'second_column',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 // @codingStandardsIgnoreStart
                 'expectedXML' => '<?xml version="1.0"?>
@@ -164,9 +165,9 @@ class SchemaPersistorTest extends TestCase
                                     <column name="first_column"/>
                                 </index>
                             </table>
-                        </schema>'
+                        </schema>',
                 // @codingStandardsIgnoreEnd
-            ]
+            ],
         ];
     }
 }

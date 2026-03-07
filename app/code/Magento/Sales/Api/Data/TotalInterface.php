@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -20,75 +23,75 @@ interface TotalInterface extends ExtensibleDataInterface
     /*
      * Base shipping amount.
      */
-    const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
+    public const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
     /*
      * Base shipping canceled.
      */
-    const BASE_SHIPPING_CANCELED = 'base_shipping_canceled';
+    public const BASE_SHIPPING_CANCELED = 'base_shipping_canceled';
     /*
      * Base shipping invoiced.
      */
-    const BASE_SHIPPING_INVOICED = 'base_shipping_invoiced';
+    public const BASE_SHIPPING_INVOICED = 'base_shipping_invoiced';
     /*
      * Base shipping refunded.
      */
-    const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
+    public const BASE_SHIPPING_REFUNDED = 'base_shipping_refunded';
     /*
      * Base shipping tax amount.
      */
-    const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
+    public const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
     /*
      * Base shipping tax refunded.
      */
-    const BASE_SHIPPING_TAX_REFUNDED = 'base_shipping_tax_refunded';
+    public const BASE_SHIPPING_TAX_REFUNDED = 'base_shipping_tax_refunded';
     /*
      * Shipping amount.
      */
-    const SHIPPING_AMOUNT = 'shipping_amount';
+    public const SHIPPING_AMOUNT = 'shipping_amount';
     /*
      * Shipping canceled.
      */
-    const SHIPPING_CANCELED = 'shipping_canceled';
+    public const SHIPPING_CANCELED = 'shipping_canceled';
     /*
      * Shipping invoiced.
      */
-    const SHIPPING_INVOICED = 'shipping_invoiced';
+    public const SHIPPING_INVOICED = 'shipping_invoiced';
     /*
      * Shipping refunded.
      */
-    const SHIPPING_REFUNDED = 'shipping_refunded';
+    public const SHIPPING_REFUNDED = 'shipping_refunded';
     /*
      * Shipping tax amount.
      */
-    const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
+    public const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
     /*
      * Shipping tax refunded.
      */
-    const SHIPPING_TAX_REFUNDED = 'shipping_tax_refunded';
+    public const SHIPPING_TAX_REFUNDED = 'shipping_tax_refunded';
     /*
      * Base shipping discount amount.
      */
-    const BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
+    public const BASE_SHIPPING_DISCOUNT_AMOUNT = 'base_shipping_discount_amount';
     /*
      * Shipping discount amount.
      */
-    const SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
+    public const SHIPPING_DISCOUNT_AMOUNT = 'shipping_discount_amount';
     /*
      * Shipping discount tax compensation amount.
      */
-    const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
+    public const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
     /*
      * Base shipping discount tax compensation amount.
      */
-    const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
+    public const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
     /*
      * Shipping including tax.
      */
-    const SHIPPING_INCL_TAX = 'shipping_incl_tax';
+    public const SHIPPING_INCL_TAX = 'shipping_incl_tax';
     /*
      * Base shipping including tax.
      */
-    const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
+    public const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
     /**#@-*/
 
     /**

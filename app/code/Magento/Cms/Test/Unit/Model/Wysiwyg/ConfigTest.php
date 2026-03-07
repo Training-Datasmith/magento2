@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,6 @@ use Magento\Cms\Model\Wysiwyg\CompositeConfigProvider;
 use Magento\Cms\Model\Wysiwyg\Config;
 use Magento\Cms\Model\Wysiwyg\ConfigProviderFactory;
 use Magento\Cms\Model\WysiwygDefaultConfig;
-use Magento\Variable\Model\Variable\Config as VariableConfig;
-use Magento\Widget\Model\Widget\Config as WidgetConfig;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\DataObject;
@@ -25,6 +24,8 @@ use Magento\Framework\View\Asset\Repository;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Block\Wysiwyg\ActiveEditor;
+use Magento\Variable\Model\Variable\Config as VariableConfig;
+use Magento\Widget\Model\Widget\Config as WidgetConfig;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -161,7 +162,7 @@ class ConfigTest extends TestCase
                 'windowSize' => $this->windowSize,
                 'storeManager' => $this->storeManagerMock,
                 'filesystem' => $this->filesystemMock,
-                'configProvider' => $this->configProvider
+                'configProvider' => $this->configProvider,
             ]
         );
     }
@@ -235,7 +236,7 @@ class ConfigTest extends TestCase
                 ],
                 'isAuthorizationAllowed' => true,
                 'expectedResults' => ['important data', 'wysiwyg is here', 'plugins are here'],
-            ]
+            ],
         ];
     }
 
@@ -292,7 +293,7 @@ class ConfigTest extends TestCase
         return [
             ['wysiwygState' => 'enabled', 'expectedResult' => true],
             ['wysiwygState' => 'hidden', 'expectedResult' => true],
-            ['wysiwygState' => 'masked', 'expectedResult' => false]
+            ['wysiwygState' => 'masked', 'expectedResult' => false],
         ];
     }
 
@@ -320,7 +321,7 @@ class ConfigTest extends TestCase
         return [
             ['status' => 'hidden', 'expectedResult' => true],
             ['status' => 'enabled', 'expectedResult' => false],
-            ['status' => 'masked', 'expectedResult' => false]
+            ['status' => 'masked', 'expectedResult' => false],
         ];
     }
 }

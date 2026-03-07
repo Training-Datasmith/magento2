@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Observer\IsAllowedGuestCheckoutObserver;
@@ -21,6 +21,7 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -101,7 +102,7 @@ class IsAllowedGuestCheckoutObserverTest extends TestCase
                 IsAllowedGuestCheckoutObserver::class,
                 [
                     'scopeConfig' => $this->scopeConfigMock,
-                    'storeManager'=> $this->storeManagerMock
+                    'storeManager' => $this->storeManagerMock,
                 ]
             );
     }
@@ -179,7 +180,7 @@ class IsAllowedGuestCheckoutObserverTest extends TestCase
     {
         return [
             1 => [Type::TYPE_DOWNLOADABLE, true],
-            2 => ['unknown', false]
+            2 => ['unknown', false],
         ];
     }
 

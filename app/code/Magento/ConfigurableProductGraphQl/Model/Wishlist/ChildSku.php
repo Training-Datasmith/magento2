@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -30,7 +31,7 @@ class ChildSku implements ResolverInterface
     ) {
         if (!$value['model'] instanceof Product) {
             throw new LocalizedException(__('"itemModel" should be a "%instance" instance', [
-                'instance' => Product::class
+                'instance' => Product::class,
             ]));
         }
 
@@ -46,7 +47,7 @@ class ChildSku implements ResolverInterface
             $optionProduct = $product->getCustomOption('simple_product')->getProduct();
             return $optionProduct->getSku();
         } else {
-            return "";
+            return '';
         }
     }
 }

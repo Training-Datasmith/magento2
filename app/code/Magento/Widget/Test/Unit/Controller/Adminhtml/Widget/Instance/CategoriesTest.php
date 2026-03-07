@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Math\Random;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Widget\Block\Adminhtml\Widget\Catalog\Category\Chooser;
 use Magento\Widget\Controller\Adminhtml\Widget\Instance\Categories;
@@ -96,7 +97,7 @@ class CategoriesTest extends TestCase
         $this->request->expects($this->any())->method('getParam')->willReturnMap(
             [
                 ['selected', '', $selectedCategories],
-                ['is_anchor_only', 0, $isAnchorOnly]
+                ['is_anchor_only', 0, $isAnchorOnly],
             ]
         );
 
@@ -133,7 +134,7 @@ class CategoriesTest extends TestCase
                 [
                     'context' => $this->context,
                     'mathRandom' => $this->mathRandom,
-                    'layout' => $this->layout
+                    'layout' => $this->layout,
                 ]
             );
         $this->assertSame($this->resultRaw, $this->controller->execute());

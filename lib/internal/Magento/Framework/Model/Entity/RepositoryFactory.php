@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\Model\Entity;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Class RepositoryFactory

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Controller\Index;
 
 use Magento\Captcha\Helper\Data as CaptchaHelper;
@@ -381,7 +384,7 @@ class Send extends \Magento\Wishlist\Controller\AbstractIndex implements Action\
      * @param string $captchaFormName
      * @return bool
      */
-    private function validateCaptcha(CaptchaModel $captchaModel, string $captchaFormName) : bool
+    private function validateCaptcha(CaptchaModel $captchaModel, string $captchaFormName): bool
     {
         if ($captchaModel->isRequired()) {
             $word = $this->captchaStringResolver->resolve(

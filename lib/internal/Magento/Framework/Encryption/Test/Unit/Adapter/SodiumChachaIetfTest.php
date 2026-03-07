@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,11 +10,12 @@ declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Encryption\Adapter\SodiumChachaIetf
  */
+
 namespace Magento\Framework\Encryption\Test\Unit\Adapter;
 
 use Magento\Framework\Encryption\Adapter\SodiumChachaIetf;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SodiumChachaIetfTest extends TestCase
 {

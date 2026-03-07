@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,8 +25,8 @@ use Magento\Framework\DB\Transaction;
 use Magento\Framework\DB\TransactionFactory;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\MessageQueue\PoisonPill\PoisonPillPutInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeTypeNormalizer;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
@@ -224,7 +225,7 @@ class ConfigTest extends TestCase
         $this->eventManagerMock
             ->method('dispatch')
             ->willReturnCallback(function ($arg1, $arg2) {
-                if ($arg1== 'admin_system_config_changed_section_' &&
+                if ($arg1 == 'admin_system_config_changed_section_' &&
                     (array_key_exists('website', $arg2) || array_key_exists('store', $arg2))) {
                     return null;
                 }
@@ -259,7 +260,7 @@ class ConfigTest extends TestCase
 
         $this->configStructure
             ->method('getElement')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['section/1'] => $group,
                 ['section/1/key'] => $field
             });
@@ -291,7 +292,7 @@ class ConfigTest extends TestCase
         $this->eventManagerMock
             ->method('dispatch')
             ->willReturnCallback(function ($arg1, $arg2) {
-                if ($arg1== 'admin_system_config_changed_section_' &&
+                if ($arg1 == 'admin_system_config_changed_section_' &&
                     (array_key_exists('website', $arg2) || array_key_exists('store', $arg2))) {
                     return null;
                 }
@@ -306,7 +307,7 @@ class ConfigTest extends TestCase
 
         $this->configStructure
             ->method('getElement')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['section/1'] => $group,
                 ['section/1/key'] => $field
             });
@@ -350,7 +351,7 @@ class ConfigTest extends TestCase
                 'scope_id' => 1,
                 'scope_code' => 'website_code',
                 'field_config' => null,
-                'fieldset_data' => ['key' => null]
+                'fieldset_data' => ['key' => null],
             ]);
         $backendModel->expects($this->once())
             ->method('setPath')
@@ -391,7 +392,7 @@ class ConfigTest extends TestCase
                 [
                     'b' => [
                         'fields' => [
-                            'c' => ['value' => 'value1']
+                            'c' => ['value' => 'value1'],
                         ],
                     ],
                 ],
@@ -407,7 +408,7 @@ class ConfigTest extends TestCase
                                 'groups' => [
                                     'd' => [
                                         'fields' => [
-                                            'e' => ['value' => 'value1']
+                                            'e' => ['value' => 'value1'],
                                         ],
                                     ],
                                 ],
@@ -452,7 +453,7 @@ class ConfigTest extends TestCase
     {
         return [
             'depth 2' => ['section/group'],
-            'depth 1' => ['section']
+            'depth 1' => ['section'],
         ];
     }
 }

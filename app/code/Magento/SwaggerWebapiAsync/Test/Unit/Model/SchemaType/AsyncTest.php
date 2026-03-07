@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,12 +58,12 @@ class AsyncTest extends TestCase
         return [
             [
                 '/rest/all/async/schema?services=all',
-                null
+                null,
             ],
             [
                 '/rest/test/async/schema?services=all',
-                'test'
-            ]
+                'test',
+            ],
         ];
     }
 }

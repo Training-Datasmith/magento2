@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\File\Address;
 
 use Magento\Backend\App\Action;
@@ -26,7 +29,7 @@ class Upload extends Action implements HttpGetActionInterface, HttpPostActionInt
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::manage';
+    public const ADMIN_RESOURCE = 'Magento_Customer::manage';
 
     /**
      * @var FileUploaderFactory
@@ -129,7 +132,7 @@ class Upload extends Action implements HttpGetActionInterface, HttpPostActionInt
     {
         foreach ($_FILES as $itemKey => $item) {
             foreach ($item as $fieldName => $value) {
-                    $_FILES[$this->scope][$fieldName] = [$itemKey => $value];
+                $_FILES[$this->scope][$fieldName] = [$itemKey => $value];
             }
             unset($_FILES[$itemKey]);
         }

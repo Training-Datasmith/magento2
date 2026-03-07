@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
  */
 class CustomerGroupsFixture extends Fixture
 {
-    const DEFAULT_TAX_CLASS_ID = 3;
+    public const DEFAULT_TAX_CLASS_ID = 3;
 
     /**
      * @var int
@@ -86,7 +88,7 @@ class CustomerGroupsFixture extends Fixture
     public function introduceParamLabels()
     {
         return [
-            'customer_groups' => 'Customer groups'
+            'customer_groups' => 'Customer groups',
         ];
     }
 }

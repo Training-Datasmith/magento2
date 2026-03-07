@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -62,7 +64,7 @@ class InstallInitialConfigurableAttributes implements DataPatchInterface, PatchV
             'special_to_date',
             'tier_price',
             'weight',
-            'color'
+            'color',
         ];
         foreach ($attributes as $attributeCode) {
             $attribute = $eavSetup->getAttribute(\Magento\Catalog\Model\Product::ENTITY, $attributeCode, 'apply_to');

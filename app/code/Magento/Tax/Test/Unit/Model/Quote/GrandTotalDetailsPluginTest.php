@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class GrandTotalDetailsPluginTest extends TestCase
                 'ratesFactory' => $this->ratesFactoryMock,
                 'detailsFactory' => $this->detailsFactoryMock,
                 'taxConfig' => $this->taxConfigMock,
-                'serializer' => $serializer
+                'serializer' => $serializer,
             ]
         );
     }

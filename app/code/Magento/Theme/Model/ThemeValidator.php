@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model;
 
 use Magento\Framework\App\Config\ValueInterface;
@@ -16,7 +19,6 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class ThemeValidator
 {
-
     /**
      * Store Manager
      *

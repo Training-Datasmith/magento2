@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class TextSize implements OptionSourceInterface
             ['value' => '13', 'label' => '13px'],
             ['value' => '14', 'label' => '14px'],
             ['value' => '15', 'label' => '15px'],
-            ['value' => '16', 'label' => '16px']
+            ['value' => '16', 'label' => '16px'],
         ];
     }
 }

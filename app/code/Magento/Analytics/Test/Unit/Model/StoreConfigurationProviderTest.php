@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class StoreConfigurationProviderTest extends TestCase
         $this->configPaths = [
             'web/unsecure/base_url',
             'currency/options/base',
-            'general/locale/timezone'
+            'general/locale/timezone',
         ];
 
         $this->storeConfigurationProvider = new StoreConfigurationProvider(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,14 +56,14 @@ class IndexTest extends TestCase
                     Context::class,
                     [
                         'request' => $this->requestMock,
-                        'urlBuilder' => $this->urlBuilder
+                        'urlBuilder' => $this->urlBuilder,
                     ]
                 ),
                 'data' => [
                     'schema_types' => [
-                        'test' => $this->schemaTypeMock
-                    ]
-                ]
+                        'test' => $this->schemaTypeMock,
+                    ],
+                ],
             ]
         );
     }

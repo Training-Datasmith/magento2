@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ namespace Magento\Fedex\Test\Unit\Plugin\Block\DataProviders\Tracking;
 use Magento\Fedex\Model\Carrier;
 use Magento\Fedex\Plugin\Block\DataProviders\Tracking\ChangeTitle;
 use Magento\Framework\Phrase;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Shipping\Block\DataProviders\Tracking\DeliveryDateTitle;
 use Magento\Shipping\Model\Tracking\Result\Status;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

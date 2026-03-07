@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -252,7 +254,7 @@ class TotalsCollector
             [
                 'quote' => $quote,
                 'shipping_assignment' => $shippingAssignment,
-                'total' => $total
+                'total' => $total,
             ]
         );
 
@@ -266,7 +268,7 @@ class TotalsCollector
             [
                 'quote' => $quote,
                 'shipping_assignment' => $shippingAssignment,
-                'total' => $total
+                'total' => $total,
             ]
         );
         $total->setBaseSubtotalTotalInclTax($total->getBaseSubtotalInclTax());

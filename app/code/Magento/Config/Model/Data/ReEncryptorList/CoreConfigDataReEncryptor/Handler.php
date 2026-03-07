@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Config\Model\Data\ReEncryptorList\CoreConfigDataReEncryptor;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Encryption\EncryptorInterface;
-use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\HandlerInterface;
 use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\Handler\ErrorFactory;
+use Magento\EncryptionKey\Model\Data\ReEncryptorList\ReEncryptor\HandlerInterface;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Query\Generator;
+use Magento\Framework\Encryption\EncryptorInterface;
 
 /**
  * Handler for core configuration re-encryption.
@@ -21,12 +22,12 @@ class Handler implements HandlerInterface
     /**
      * @var string
      */
-    private const PATTERN = "^[[:digit:]]+:[[:digit:]]+:.*$";
+    private const PATTERN = '^[[:digit:]]+:[[:digit:]]+:.*$';
 
     /**
      * @var string
      */
-    private const TABLE_NAME = "core_config_data";
+    private const TABLE_NAME = 'core_config_data';
 
     /**
      * @var int
@@ -36,7 +37,7 @@ class Handler implements HandlerInterface
     /**
      * @var string
      */
-    private const IDENTIFIER = "config_id";
+    private const IDENTIFIER = 'config_id';
 
     /**
      * @var EncryptorInterface

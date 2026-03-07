@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Config\Model\Config\Structure\Element\Dependency\Mapper;
 use Magento\Config\Model\Config\Structure\Element\Field as StructureField;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class MapperTest extends TestCase
@@ -58,7 +59,7 @@ class MapperTest extends TestCase
     {
         $this->_testData = [
             'field_x' => ['id' => self::FIELD_ID1],
-            'field_y' => ['id' => self::FIELD_ID2]
+            'field_y' => ['id' => self::FIELD_ID2],
         ];
 
         $this->_configStructureMock = $this->createPartialMock(Structure::class, ['getElement']);
@@ -192,8 +193,7 @@ class MapperTest extends TestCase
         }
         $this->_configStructureMock
             ->method('getElement')
-            ->willReturnCallback(function (...$args)
- use ($configStructureMockWithArgs, $configStructureMockWillReturnArgs) {
+            ->willReturnCallback(function (...$args) use ($configStructureMockWithArgs, $configStructureMockWillReturnArgs) {
                 $index = array_search($args, $configStructureMockWithArgs);
                 if ($index !== false) {
                     return $configStructureMockWillReturnArgs[$index];

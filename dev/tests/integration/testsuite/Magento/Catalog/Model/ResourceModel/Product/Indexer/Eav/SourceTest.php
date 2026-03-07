@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav;
 
+use Magento\Catalog\_files\MultiselectSourceMock;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\_files\MultiselectSourceMock;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoAppIsolation enabled

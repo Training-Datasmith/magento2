@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Wishlist\Helper\Rss;
 use Magento\Wishlist\Model\Wishlist;
 use Magento\Wishlist\Model\WishlistFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -108,7 +109,7 @@ class RssTest extends TestCase
                 'customerSession' => $this->customerSessionMock,
                 'customerRepository' => $this->customerRepositoryMock,
                 'moduleManager' => $this->moduleManagerMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -262,7 +263,7 @@ class RssTest extends TestCase
             [false, false, false],
             [true, false, false],
             [false, true, false],
-            [true, true, true]
+            [true, true, true],
         ];
     }
 }

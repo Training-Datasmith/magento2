@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Observer;
 
 /**
@@ -50,7 +53,7 @@ class EmulateCustomerObserverTest extends \PHPUnit\Framework\TestCase
             \Magento\Persistent\Observer\EmulateCustomerObserver::class,
             [
                 'customerRepository' => $this->customerRepository,
-                'persistentSession' => $this->_persistentSessionHelper
+                'persistentSession' => $this->_persistentSessionHelper,
             ]
         );
     }

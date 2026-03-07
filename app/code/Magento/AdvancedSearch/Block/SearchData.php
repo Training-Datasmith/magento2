@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Block;
 
+use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Search\Model\QueryFactoryInterface;
 use Magento\Search\Model\QueryInterface;
-use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
 
 abstract class SearchData extends Template implements SearchDataInterface
 {
@@ -20,35 +23,19 @@ abstract class SearchData extends Template implements SearchDataInterface
     /**
      * @var string
      */
-    protected $title;
-
-    /**
-     * @var SuggestedQueriesInterface
-     */
-    private $searchDataProvider;
-
-    /**
-     * @var string
-     */
     protected $_template = 'Magento_AdvancedSearch::search_data.phtml';
 
     /**
-     * @param Template\Context $context
-     * @param SuggestedQueriesInterface $searchDataProvider
-     * @param QueryFactoryInterface $queryFactory
      * @param string $title
-     * @param array $data
      */
     public function __construct(
         Template\Context $context,
-        SuggestedQueriesInterface $searchDataProvider,
+        private readonly SuggestedQueriesInterface $searchDataProvider,
         QueryFactoryInterface $queryFactory,
-        $title,
+        protected $title,
         array $data = []
     ) {
-        $this->searchDataProvider = $searchDataProvider;
         $this->query = $queryFactory->get();
-        $this->title = $title;
         parent::__construct($context, $data);
     }
 

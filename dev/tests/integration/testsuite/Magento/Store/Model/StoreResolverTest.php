@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Store\Model;
 
-use Magento\TestFramework\Helper\CacheCleaner;
+namespace Magento\Store\Model;
 
 class StoreResolverTest extends \PHPUnit\Framework\TestCase
 {

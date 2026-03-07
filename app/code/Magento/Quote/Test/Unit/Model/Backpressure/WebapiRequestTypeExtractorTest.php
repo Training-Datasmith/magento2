@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Backpressure;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Quote\Model\Backpressure\WebapiRequestTypeExtractor;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
-use PHPUnit\Framework\TestCase;
 use Magento\Quote\Api\CartManagementInterface;
 use Magento\Quote\Api\GuestCartManagementInterface;
+use Magento\Quote\Model\Backpressure\OrderLimitConfigManager;
+use Magento\Quote\Model\Backpressure\WebapiRequestTypeExtractor;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the WebapiRequestTypeExtractor class

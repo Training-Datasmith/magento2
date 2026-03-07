@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,6 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Deploy\Package\Processor\PostProcessor;
 
+use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
+use Magento\Csp\Model\SubresourceIntegrityCollector;
+use Magento\Csp\Model\SubresourceIntegrityFactory;
 use Magento\Deploy\Package\Package;
 use Magento\Deploy\Package\PackageFileFactory;
 use Magento\Deploy\Service\DeployStaticFile;
@@ -14,12 +18,9 @@ use Magento\Framework\App\DeploymentConfig\Writer\PhpFormatter;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\View\Asset\Minification;
 use Magento\Framework\View\Asset\RepositoryMap;
-use Magento\Csp\Model\SubresourceIntegrityFactory;
-use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
-use Magento\Framework\Filesystem\DriverInterface;
-use Magento\Csp\Model\SubresourceIntegrityCollector;
 
 /**
  * Class Adds Integrity attribute to requirejs-map.js asset
@@ -28,7 +29,6 @@ use Magento\Csp\Model\SubresourceIntegrityCollector;
  */
 class Map extends \Magento\Deploy\Package\Processor\PostProcessor\Map
 {
-
     /**
      * @var HashGenerator
      */
@@ -112,10 +112,10 @@ class Map extends \Magento\Deploy\Package\Processor\PostProcessor\Map
             if ($fileContent) {
                 $integrity = $this->integrityFactory->create(
                     [
-                        "data" => [
+                        'data' => [
                             'hash' => $this->hashGenerator->generate($fileContent),
-                            'path' => $relativePath
-                        ]
+                            'path' => $relativePath,
+                        ],
                     ]
                 );
                 $this->integrityCollector->collect($integrity);

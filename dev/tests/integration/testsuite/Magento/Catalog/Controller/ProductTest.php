@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,11 +13,11 @@ use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
 use Magento\Bundle\Test\Fixture\Product as BundleProductFixture;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
-use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Catalog\Model\Session;
 use Magento\Catalog\Test\Fixture\Category;
 use Magento\Catalog\Test\Fixture\Product;
+use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
+use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -60,8 +61,8 @@ class ProductTest extends AbstractController
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager::class =>
-                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class
-            ]
+                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class,
+            ],
         ]);
         parent::setUp();
 
@@ -218,7 +219,7 @@ class ProductTest extends AbstractController
      */
     public function testImageAction(): void
     {
-        $this->markTestSkipped("All logic has been cut to avoid possible malicious usage of the method");
+        $this->markTestSkipped('All logic has been cut to avoid possible malicious usage of the method');
         ob_start();
         /* Preceding slash in URL is required in this case */
         $this->dispatch('/catalog/product/image' . $this->getProductImageFile());
@@ -290,7 +291,7 @@ class ProductTest extends AbstractController
             [
                 'short_description' => 'Configurable Product Short Description',
                 '_options' => ['$attr$'],
-                '_links' => ['$sp$']
+                '_links' => ['$sp$'],
             ],
             as: 'cp'
         ),
@@ -301,7 +302,7 @@ class ProductTest extends AbstractController
             [
                 'short_description' => 'Bundle Product Short Description',
                 'sku' => 'bundle1',
-                '_options' => ['$opt1$']
+                '_options' => ['$opt1$'],
             ],
             as:'bp'
         ),

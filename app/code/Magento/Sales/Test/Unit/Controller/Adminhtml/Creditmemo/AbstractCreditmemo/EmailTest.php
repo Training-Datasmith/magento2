@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,15 +18,15 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Api\CreditmemoManagementInterface;
-use Magento\Sales\Controller\Adminhtml\Creditmemo\AbstractCreditmemo\Email;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
+use Magento\Sales\Controller\Adminhtml\Creditmemo\AbstractCreditmemo\Email;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -104,7 +105,7 @@ class EmailTest extends TestCase
             'getSession',
             'getActionFlag',
             'getHelper',
-            'getResultRedirectFactory'
+            'getResultRedirectFactory',
         ]);
         $this->response = $this->createPartialMockWithReflection(
             ResponseInterface::class,
@@ -142,7 +143,7 @@ class EmailTest extends TestCase
         $this->creditmemoEmail = $objectManagerHelper->getObject(
             Email::class,
             [
-                'context' => $this->context
+                'context' => $this->context,
             ]
         );
     }
@@ -180,7 +181,7 @@ class EmailTest extends TestCase
 
         $this->objectManager->expects($this->exactly(2))
             ->method('create')
-            ->willReturnCallback(fn($param) => match ($param) {
+            ->willReturnCallback(fn ($param) => match ($param) {
                 CreditmemoRepositoryInterface::class => $creditmemoRepository,
                 $cmManagement => $cmManagementMock,
                 default => throw new \Exception("Unexpected create() parameter: $param")
@@ -190,7 +191,7 @@ class EmailTest extends TestCase
             ->method('notify')
             ->with($cmId)
             ->willReturn(true);
-        
+
         $this->messageManager->expects($this->once())
             ->method('addSuccessMessage')
             ->with('You sent the message.');
@@ -237,7 +238,7 @@ class EmailTest extends TestCase
 
         $this->objectManager->expects($this->once())
             ->method('create')
-            ->willReturnCallback(fn($param) => match ($param) {
+            ->willReturnCallback(fn ($param) => match ($param) {
                 CreditmemoRepositoryInterface::class => $creditmemoRepository,
                 default => null
             });

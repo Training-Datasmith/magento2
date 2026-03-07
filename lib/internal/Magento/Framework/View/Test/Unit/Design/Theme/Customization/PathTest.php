@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test of customization path model
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme\Customization;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -131,7 +133,7 @@ class PathTest extends TestCase
             [
                 Path::DIR_NAME,
                 '123',
-                ConfigInterface::CONFIG_FILE_NAME
+                ConfigInterface::CONFIG_FILE_NAME,
             ]
         );
         $this->_theme->expects($this->exactly(2))

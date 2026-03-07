@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -8,9 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\ResourceModel\Setup;
 
-use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogSearch\Model\ResourceModel\Setup\PropertyMapper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class PropertyMapperTest extends TestCase
@@ -36,12 +36,12 @@ class PropertyMapperTest extends TestCase
         return [
             [
                 ['search_weight' => 9, 'something_other' => '3'],
-                ['search_weight' => 9]
+                ['search_weight' => 9],
             ],
             [
                 ['something' => 3],
-                ['search_weight' => 1]
-            ]
+                ['search_weight' => 1],
+            ],
         ];
     }
 

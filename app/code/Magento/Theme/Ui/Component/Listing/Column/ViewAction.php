@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class ViewAction extends Column
      * @param array $dataSource
      * @return array
      */
-    public function prepareDataSource(array $dataSource) : array
+    public function prepareDataSource(array $dataSource): array
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
@@ -62,11 +63,11 @@ class ViewAction extends Column
                             'href' => $this->urlBuilder->getUrl(
                                 $viewUrlPath,
                                 [
-                                    $urlEntityParamName => $item[$indexField]
+                                    $urlEntityParamName => $item[$indexField],
                                 ]
                             ),
                             'label' => __('View'),
-                        ]
+                        ],
                     ];
                 }
             }

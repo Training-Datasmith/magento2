@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\SendFriend\Model;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException as CoreException;
 use Magento\Framework\Stdlib\Cookie\CookieMetadata;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Validator\EmailAddress;
 use Magento\Framework\Validator\ValidatorChain;
 
@@ -225,7 +226,7 @@ class SendFriend extends \Magento\Framework\Model\AbstractModel
                 'sender_email' => $sender['email'],
                 'product_image' => $productImage->getType() !== null
                     ? $productImage->getUrl()
-                    : $productImage->getDefaultPlaceholderUrl()
+                    : $productImage->getDefaultPlaceholderUrl(),
             ])->addTo(
                 $email,
                 $name
@@ -500,7 +501,7 @@ class SendFriend extends \Magento\Framework\Model\AbstractModel
         $newTimes = [];
         $sensitiveCookMetadata = $this->cookieMetadataFactory->createSensitiveCookieMetadata(
             [
-                CookieMetadata::KEY_SAME_SITE => 'Lax'
+                CookieMetadata::KEY_SAME_SITE => 'Lax',
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model;
 
 use Magento\Framework\Data\Form\FormKey;
@@ -49,7 +52,7 @@ class AuthTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'Invalid credentials' => ['not_exists', 'not_exists'],
-            'Empty credentials' => ['', 'not_exists']
+            'Empty credentials' => ['', 'not_exists'],
         ];
     }
 

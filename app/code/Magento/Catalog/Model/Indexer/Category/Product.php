@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Category;
 
 use Magento\Framework\App\ObjectManager;
@@ -21,7 +24,7 @@ class Product implements \Magento\Framework\Indexer\ActionInterface, \Magento\Fr
     /**
      * Indexer ID in configuration
      */
-    const INDEXER_ID = 'catalog_category_product';
+    public const INDEXER_ID = 'catalog_category_product';
 
     /**
      * @var Product\Action\FullFactory

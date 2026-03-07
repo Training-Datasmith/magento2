@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class EditTest extends IntegrationTestCase
                 ['setIntegrationData'],
                 [
                     'getIntegrationData',
-                    [Info::DATA_ID => self::INTEGRATION_ID, Info::DATA_NAME => 'testIntegration']
+                    [Info::DATA_ID => self::INTEGRATION_ID, Info::DATA_NAME => 'testIntegration'],
                 ],
             ]
         );
@@ -61,12 +62,12 @@ class EditTest extends IntegrationTestCase
         $objects = [
             [
                 Factory::class,
-                $this->createMock(Factory::class)
+                $this->createMock(Factory::class),
             ],
             [
                 SerializerInterface::class,
-                $this->createMock(SerializerInterface::class)
-            ]
+                $this->createMock(SerializerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $controller = $this->_createIntegrationController('Edit');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -173,7 +174,7 @@ class GetAssetsByPathsTest extends TestCase
                 'size' => '101827',
                 'created_at' => '2023-11-09 16:37:36',
                 'updated_at' => '2023-11-09 16:37:36',
-            ]
+            ],
         ];
     }
     public static function assetDeleteByPathDataProvider(): array
@@ -182,7 +183,7 @@ class GetAssetsByPathsTest extends TestCase
             [
                 'assets' => self::getAssets(),
                 'assetIndex' => 0,
-                'resultsCount' => 1
+                'resultsCount' => 1,
             ],
         ];
     }

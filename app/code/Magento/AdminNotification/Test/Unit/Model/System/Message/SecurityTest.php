@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class SecurityTest extends TestCase
         return [
             'cached_case' => [false, true, ''],
             'accessible_file' => [true, false, 'HTTP/1.1 200'],
-            'inaccessible_file' => [false, false, 'HTTP/1.1 403']
+            'inaccessible_file' => [false, false, 'HTTP/1.1 403'],
         ];
     }
 

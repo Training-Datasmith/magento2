@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Customer\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
@@ -13,5 +16,4 @@ use Magento\Framework\Data\OptionSourceInterface;
  */
 interface GroupSourceInterface extends OptionSourceInterface
 {
-
 }

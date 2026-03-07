@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -15,12 +16,12 @@ use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\SalesRule\Model\Rule as SalesRule;
 use Magento\SalesRule\Test\Fixture\AddressCondition as AddressConditionFixture;
 use Magento\SalesRule\Test\Fixture\Rule as SalesRuleFixture;
-use Magento\Quote\Test\Fixture\ApplyCoupon as ApplyCouponFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -54,7 +55,7 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
             [
                 'attribute' => 'total_qty',
                 'operator' => '>=',
-                'value' => 1
+                'value' => 1,
             ],
             'condition'
         ),
@@ -65,11 +66,11 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
                 'coupon_type' => SalesRule::COUPON_TYPE_SPECIFIC,
                 'simple_action' => SalesRule::BY_PERCENT_ACTION,
                 'discount_amount' => 100,
-                'coupon_code' => "SALE100",
+                'coupon_code' => 'SALE100',
                 'conditions' => ['$condition$'],
                 'uses_per_customer' => 1,
                 'stop_rules_processing' => true,
-                'simple_free_shipping' => 1
+                'simple_free_shipping' => 1,
             ],
             as: 'rule'
         ),
@@ -81,14 +82,14 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'coupon_codes' => ["SALE100"]
+                'coupon_codes' => ['SALE100'],
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -104,10 +105,10 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
                     'available_payment_methods' => [
                         0 => [
                             'code' => 'free',
-                            'title' => 'No Payment Information Required'
-                        ]
-                    ]
-                ]
+                            'title' => 'No Payment Information Required',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),
@@ -124,7 +125,7 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
             [
                 'attribute' => 'total_qty',
                 'operator' => '>=',
-                'value' => 1
+                'value' => 1,
             ],
             'condition'
         ),
@@ -135,11 +136,11 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
                 'coupon_type' => SalesRule::COUPON_TYPE_SPECIFIC,
                 'simple_action' => SalesRule::BY_PERCENT_ACTION,
                 'discount_amount' => 50,
-                'coupon_code' => "SALE50",
+                'coupon_code' => 'SALE50',
                 'conditions' => ['$condition$'],
                 'uses_per_customer' => 1,
                 'stop_rules_processing' => true,
-                'simple_free_shipping' => 1
+                'simple_free_shipping' => 1,
             ],
             as: 'rule'
         ),
@@ -151,14 +152,14 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(
             ApplyCouponFixture::class,
             [
                 'cart_id' => '$quote.id$',
-                'coupon_codes' => ["SALE50"]
+                'coupon_codes' => ['SALE50'],
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -175,9 +176,9 @@ class AvailablePaymentMethodsTest extends GraphQlAbstract
                         0 => [
                             'code' => 'checkmo',
                             'title' => 'Check / Money order',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),

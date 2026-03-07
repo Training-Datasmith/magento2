@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Routing;
 
 use Magento\TestModule5\Service\V1\Entity\AllSoapAndRest;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\ResourceModel;
 
 use Magento\SalesRule\Test\Fixture\ProductCondition as ProductConditionFixture;

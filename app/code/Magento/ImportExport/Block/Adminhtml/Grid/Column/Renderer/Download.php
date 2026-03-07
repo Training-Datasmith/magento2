@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\ImportExport\Block\Adminhtml\Grid\Column\Renderer;
 
-use Magento\ImportExport\Model\Import;
+namespace Magento\ImportExport\Block\Adminhtml\Grid\Column\Renderer;
 
 /**
  * Backup grid item renderer

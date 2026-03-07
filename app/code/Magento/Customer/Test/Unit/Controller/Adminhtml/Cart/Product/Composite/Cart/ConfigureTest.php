@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,6 +13,8 @@ use Magento\Catalog\Helper\Product\Composite;
 use Magento\Customer\Controller\Adminhtml\Cart\Product\Composite\Cart\Configure;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
@@ -22,8 +25,6 @@ use Magento\Quote\Model\ResourceModel\QuoteItemRetriever;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -83,7 +84,7 @@ class ConfigureTest extends TestCase
 
         $request->expects($this->exactly(3))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['customer_id'] => $customerId,
                 ['id'] => $this->quoteItemId,
                 ['website_id'] => $this->websiteId
@@ -140,7 +141,7 @@ class ConfigureTest extends TestCase
                 'context' => $context,
                 'quoteRepository' => $this->cartRepository,
                 'quoteFactory' => $quoteFactory,
-                'quoteItemRetriever' => $this->quoteItemRetriever
+                'quoteItemRetriever' => $this->quoteItemRetriever,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\Formatter;
 
+use Magento\Framework\GraphQl\Config\ConfigElementInterface;
 use Magento\Framework\GraphQl\Config\Data\WrappedTypeProcessor;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Config\Element\TypeInterface;
-use Magento\Framework\GraphQl\Config\ConfigElementInterface;
 use Magento\Framework\GraphQl\Query\Resolver\PromiseFactory;
 use Magento\Framework\GraphQl\Schema\Type\Input\InputMapper;
 use Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\FormatterInterface;
@@ -97,7 +98,7 @@ class Fields implements FormatterInterface
                         $fieldsConfig[$field->getName()] = $this->getFieldConfig($configElement, $outputType, $field);
                     }
                     return $fieldsConfig;
-                }
+                },
             ];
         }
         return $typeConfig;
@@ -170,7 +171,7 @@ class Fields implements FormatterInterface
      * @param array $config
      * @return array
      */
-    private function formatArguments(Field $field, array $config) : array
+    private function formatArguments(Field $field, array $config): array
     {
         foreach ($field->getArguments() as $argument) {
             $inputType = $this->inputMapper->getRepresentation($argument);

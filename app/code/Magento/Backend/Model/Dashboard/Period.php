@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class Period
             static::PERIOD_7_DAYS => __('Last 7 Days'),
             static::PERIOD_1_MONTH => __('Current Month'),
             static::PERIOD_1_YEAR => __('YTD'),
-            static::PERIOD_2_YEARS => __('2YTD')
+            static::PERIOD_2_YEARS => __('2YTD'),
         ];
     }
 
@@ -53,7 +54,7 @@ class Period
             static::PERIOD_7_DAYS => self::PERIOD_UNIT_DAY,
             static::PERIOD_1_MONTH => self::PERIOD_UNIT_DAY,
             static::PERIOD_1_YEAR => self::PERIOD_UNIT_MONTH,
-            static::PERIOD_2_YEARS => self::PERIOD_UNIT_MONTH
+            static::PERIOD_2_YEARS => self::PERIOD_UNIT_MONTH,
         ];
     }
 }

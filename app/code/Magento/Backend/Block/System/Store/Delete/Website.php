@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store\Delete;
 
 /**
@@ -22,7 +25,7 @@ class Website extends \Magento\Backend\Block\Template
         $this->addChild(
             'confirm_deletion_button',
             \Magento\Backend\Block\Widget\Button::class,
-            ['label' => __('Delete Web Site'), 'onclick' => "deleteForm.submit()", 'class' => 'cancel']
+            ['label' => __('Delete Web Site'), 'onclick' => 'deleteForm.submit()', 'class' => 'cancel']
         );
         $onClick = "setLocation('" . $this->getUrl('adminhtml/*/editWebsite', ['website_id' => $itemId]) . "')";
         $this->addChild(

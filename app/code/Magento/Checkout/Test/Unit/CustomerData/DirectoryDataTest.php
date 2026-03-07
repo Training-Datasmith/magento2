@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class DirectoryDataTest extends TestCase
         $this->model = $this->objectManager->getObject(
             DirectoryData::class,
             [
-                'directoryHelper' => $this->directoryHelperMock
+                'directoryHelper' => $this->directoryHelperMock,
             ]
         );
     }
@@ -57,9 +58,9 @@ class DirectoryDataTest extends TestCase
             'US' => [
                 'TX' => [
                     'code' => 'TX',
-                    'name' => 'Texas'
-                ]
-            ]
+                    'name' => 'Texas',
+                ],
+            ],
         ];
 
         $testCountryInfo = $this->objectManager->getObject(Country::class);
@@ -82,10 +83,10 @@ class DirectoryDataTest extends TestCase
                     'regions' => [
                         'TX' => [
                             'code' => 'TX',
-                            'name' => 'Texas'
-                        ]
-                    ]
-                ]
+                            'name' => 'Texas',
+                        ],
+                    ],
+                ],
             ],
             $this->model->getSectionData()
         );

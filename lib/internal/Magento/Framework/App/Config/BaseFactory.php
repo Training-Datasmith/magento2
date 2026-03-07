@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Base config model factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 class BaseFactory

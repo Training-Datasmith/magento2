@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Model\Entity;
 
 use Magento\Framework\DataObject;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Helper\CacheCleaner;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -86,7 +88,7 @@ class AttributeLoaderTest extends \PHPUnit\Framework\TestCase
             [
                 13,
                 2,
-                null
+                null,
             ],
             [
                 10,
@@ -94,7 +96,7 @@ class AttributeLoaderTest extends \PHPUnit\Framework\TestCase
                 new DataObject(
                     [
                         'attribute_set_id' => $attributeSetId,
-                        'store_id' => 0
+                        'store_id' => 0,
                     ]
                 ),
             ],
@@ -104,7 +106,7 @@ class AttributeLoaderTest extends \PHPUnit\Framework\TestCase
                 new DataObject(
                     [
                         'attribute_set_id' => $attributeSetId,
-                        'store_id' => 10
+                        'store_id' => 10,
                     ]
                 ),
             ],

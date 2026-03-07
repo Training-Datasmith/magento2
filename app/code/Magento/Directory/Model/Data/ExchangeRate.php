@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ namespace Magento\Directory\Model\Data;
 class ExchangeRate extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\Directory\Api\Data\ExchangeRateInterface
 {
-    const KEY_CURRENCY_TO = 'currency_to';
-    const KEY_RATE = 'rate';
+    public const KEY_CURRENCY_TO = 'currency_to';
+    public const KEY_RATE = 'rate';
     private const KEY_EXCHANGE_RATES = 'exchange_rates';
 
     /**

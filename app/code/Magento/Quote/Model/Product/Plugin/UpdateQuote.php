@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,15 +10,14 @@ namespace Magento\Quote\Model\Product\Plugin;
 
 use Magento\Catalog\Api\Data\TierPriceInterface;
 use Magento\Catalog\Api\TierPriceStorageInterface;
-use Magento\Quote\Model\ResourceModel\Quote;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
+use Magento\Quote\Model\ResourceModel\Quote;
 
 /**
  * UpdateQuote Plugin Class
  */
 class UpdateQuote
 {
-
     /**
      * @var Quote
      */

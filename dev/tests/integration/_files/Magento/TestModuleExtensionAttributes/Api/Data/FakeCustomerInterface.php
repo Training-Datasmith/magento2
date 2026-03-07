@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ interface FakeCustomerInterface extends \Magento\Framework\Api\CustomAttributesD
     /**#@+
      * Constants defined for keys of the data array. Identical to the name of the getter in snake case
      */
-    const ID = 'id';
-    const EMAIL = 'email';
-    const FIRSTNAME = 'firstname';
-    const LASTNAME = 'lastname';
-    const PREFIX = 'prefix';
+    public const ID = 'id';
+    public const EMAIL = 'email';
+    public const FIRSTNAME = 'firstname';
+    public const LASTNAME = 'lastname';
+    public const PREFIX = 'prefix';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -47,13 +48,13 @@ class DataDifferenceCalculatorTest extends TestCase
             'test' => [
                 'code' => 'test',
                 'name' => 'Test',
-            ]
+            ],
         ];
 
         $this->runtimeConfigSourceMock->expects($this->once())
             ->method('get')
             ->willReturn([
-                ScopeInterface::SCOPE_GROUPS => $data
+                ScopeInterface::SCOPE_GROUPS => $data,
             ]);
 
         $this->assertSame(
@@ -67,20 +68,20 @@ class DataDifferenceCalculatorTest extends TestCase
         $expectedData = [
             'test' => [
                 'code' => 'test',
-                'name' => 'Test'
-            ]
+                'name' => 'Test',
+            ],
         ];
         $data = [
             2 => [
                 'code' => 'test',
-                'name' => 'Test'
-            ]
+                'name' => 'Test',
+            ],
         ];
 
         $this->runtimeConfigSourceMock->expects($this->once())
             ->method('get')
             ->willReturn([
-                ScopeInterface::SCOPE_GROUPS => []
+                ScopeInterface::SCOPE_GROUPS => [],
             ]);
 
         $this->assertSame(
@@ -97,14 +98,14 @@ class DataDifferenceCalculatorTest extends TestCase
                 'name' => 'Test2',
                 'website_id' => '0',
                 'default_store_id' => '0',
-                'root_category_id' => '0'
-            ]
+                'root_category_id' => '0',
+            ],
         ];
         $data = [
             2 => [
                 'code' => 'test',
-                'name' => 'Test2'
-            ]
+                'name' => 'Test2',
+            ],
         ];
 
         $this->runtimeConfigSourceMock->expects($this->once())
@@ -113,9 +114,9 @@ class DataDifferenceCalculatorTest extends TestCase
                 ScopeInterface::SCOPE_GROUPS => [
                     2 => [
                         'code' => 'test',
-                        'name' => 'Test'
-                    ]
-                ]
+                        'name' => 'Test',
+                    ],
+                ],
             ]);
 
         $this->assertSame(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class ProductUrlPathGeneratorTest extends TestCase
             'path based on url key' => ['url-key', null, 1, 'url-key'],
             'path based on product name 1' => ['', 'product-name', 1, 'product-name'],
             'path based on product name 2' => [null, 'product-name', 1, 'product-name'],
-            'path based on product name 3' => [false, 'product-name', 1, 'product-name']
+            'path based on product name 3' => [false, 'product-name', 1, 'product-name'],
         ];
     }
 
@@ -157,7 +158,7 @@ class ProductUrlPathGeneratorTest extends TestCase
     {
         $this->product->expects($this->once())->method('getData')->with('url_path')
             ->willReturn(null);
-        
+
         $callCount = 0;
         $this->product->method('getUrlKey')
             ->willReturnCallback(function () use (&$callCount, $storedUrlKey) {
@@ -178,7 +179,7 @@ class ProductUrlPathGeneratorTest extends TestCase
     {
         return [
             ['default-store-view-url-key', null, 'default-store-view-url-key'],
-            [false, 'default-store-view-product-name', 'default-store-view-product-name']
+            [false, 'default-store-view-product-name', 'default-store-view-product-name'],
         ];
     }
 

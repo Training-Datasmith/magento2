@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
 use Magento\Framework\App\DeploymentConfig;
@@ -87,7 +90,7 @@ class DbStatusCommand extends AbstractSetupCommand
 
         if (!$this->deploymentConfig->isAvailable()) {
             $output->writeln(
-                "<info>No information is available: the Magento application is not installed.</info>"
+                '<info>No information is available: the Magento application is not installed.</info>'
             );
             return Cli::RETURN_FAILURE;
         }
@@ -100,7 +103,7 @@ class DbStatusCommand extends AbstractSetupCommand
             try {
                 $isUpToDate = $validator->isUpToDate();
                 $output->writeln(
-                    "<info>Validator {$validatorClass} isUpToDate: " . ($isUpToDate ? 'true' : 'false') . "</info>"
+                    "<info>Validator {$validatorClass} isUpToDate: " . ($isUpToDate ? 'true' : 'false') . '</info>'
                 );
 
                 if (!$isUpToDate) {
@@ -117,9 +120,9 @@ class DbStatusCommand extends AbstractSetupCommand
                 }
             } catch (\Throwable $e) {
                 $output->writeln(
-                    "<info>Validator {$validatorClass} failed with error: " . $e->getMessage() . "</info>"
+                    "<info>Validator {$validatorClass} failed with error: " . $e->getMessage() . '</info>'
                 );
-                $output->writeln("<info>Treating as upgrade required due to validation error.</info>");
+                $output->writeln('<info>Treating as upgrade required due to validation error.</info>');
                 $outDated = true;
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -42,12 +43,12 @@ class CcTest extends TestCase
             'cc_exp_year' => '30',
             'cc_ss_issue' => '9',
             'cc_ss_start_month' => '01',
-            'cc_ss_start_year' => '30'
+            'cc_ss_start_year' => '30',
         ];
 
         $inputData = new DataObject(
             [
-                PaymentInterface::KEY_ADDITIONAL_DATA => $additionalData
+                PaymentInterface::KEY_ADDITIONAL_DATA => $additionalData,
             ]
         );
 
@@ -63,7 +64,7 @@ class CcTest extends TestCase
             'cc_exp_year' => '30',
             'cc_ss_issue' => '9',
             'cc_ss_start_month' => '01',
-            'cc_ss_start_year' => '30'
+            'cc_ss_start_year' => '30',
         ];
 
         $payment->expects(static::once())

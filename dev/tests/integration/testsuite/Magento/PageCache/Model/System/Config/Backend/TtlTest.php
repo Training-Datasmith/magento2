@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Model\System\Config\Backend;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -60,7 +63,7 @@ class TtlTest extends \PHPUnit\Framework\TestCase
     {
         return [
             ['', 'ttl_3'],
-            ['sdfg', 'ttl_4']
+            ['sdfg', 'ttl_4'],
         ];
     }
 

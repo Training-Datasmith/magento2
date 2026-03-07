@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\ResourceModel;
 
-use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Model\Address as CustomerAddressModel;
 use Magento\Customer\Model\Customer as CustomerModel;
 use Magento\Customer\Model\ResourceModel\Address\Collection;

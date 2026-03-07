@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
+use Magento\SalesRule\Api\Data\DiscountAppliedToInterface as DiscountAppliedTo;
 use Magento\SalesRule\Api\RuleRepositoryInterface;
 use Magento\SalesRule\Model\ResourceModel\Rule\Collection;
 use Magento\SalesRule\Model\Rule;
@@ -19,7 +21,6 @@ use Magento\Tax\Model\ClassModel as TaxClassModel;
 use Magento\Tax\Model\ResourceModel\TaxClass\CollectionFactory as TaxClassCollectionFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\SalesRule\Api\Data\DiscountAppliedToInterface as DiscountAppliedTo;
 
 /**
  * Test cases for applying cart promotions to items in cart
@@ -34,7 +35,7 @@ class CartPromotionsTest extends GraphQlAbstract
      */
     private const EPSILON = 0.0000000001;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->customerAuthenticationHeader =
@@ -50,7 +51,7 @@ class CartPromotionsTest extends GraphQlAbstract
 
     public function testCartPromotionSingleCartRule()
     {
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $objectManager = Bootstrap::getObjectManager();
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $objectManager->get(ProductRepositoryInterface::class);
@@ -105,15 +106,15 @@ class CartPromotionsTest extends GraphQlAbstract
                 [
                     'quantity' => $qty,
                     'prices' => [
-                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
-                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
-                        'total_item_discount' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5],
+                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
+                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
+                        'total_item_discount' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5],
                         'discounts' => [
-                            0 =>[
-                                'amount' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5],
-                                'label' => $ruleLabels[0]
-                            ]
-                        ]
+                            0 => [
+                                'amount' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5],
+                                'label' => $ruleLabels[0],
+                            ],
+                        ],
                     ],
                 ]
             );
@@ -137,7 +138,7 @@ class CartPromotionsTest extends GraphQlAbstract
         $prod1 = $productRepository->get('simple1');
         $prod2 = $productRepository->get('simple2');
         $productsInCart = [$prod1, $prod2];
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $categoryId = 66;
         /** @var \Magento\Catalog\Api\CategoryLinkManagementInterface $categoryLinkManagement */
         $categoryLinkManagement = $objectManager->create(CategoryLinkManagementInterface::class);
@@ -168,10 +169,10 @@ class CartPromotionsTest extends GraphQlAbstract
         for ($itemIndex = 0; $itemIndex < $count; $itemIndex++) {
             $this->assertNotEmpty($productsInResponse[$itemIndex]);
             $lineItemDiscount = $productsInResponse[$itemIndex][0]['prices']['discounts'];
-            $expectedTotalDiscountValue = ($productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5) +
-                ($productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5*0.1);
+            $expectedTotalDiscountValue = ($productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5) +
+                ($productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5 * 0.1);
             $this->assertEqualsWithDelta(
-                $productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5,
+                $productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5,
                 current($lineItemDiscount)['amount']['value'],
                 self::EPSILON
             );
@@ -179,12 +180,12 @@ class CartPromotionsTest extends GraphQlAbstract
 
             $lineItemDiscountValue = next($lineItemDiscount)['amount']['value'];
             $this->assertEqualsWithDelta(
-                round($productsInCart[$itemIndex]->getSpecialPrice()*$qty*0.5)*0.1,
+                round($productsInCart[$itemIndex]->getSpecialPrice() * $qty * 0.5) * 0.1,
                 $lineItemDiscountValue,
                 self::EPSILON
             );
             $this->assertEquals('10% off with two items_Label', end($lineItemDiscount)['label']);
-            $actualTotalDiscountValue = $lineItemDiscount[0]['amount']['value']+$lineItemDiscount[1]['amount']['value'];
+            $actualTotalDiscountValue = $lineItemDiscount[0]['amount']['value'] + $lineItemDiscount[1]['amount']['value'];
             $this->assertEquals(round($expectedTotalDiscountValue, 2), $actualTotalDiscountValue);
 
             //removing the elements from the response so that the rest of the response values can be compared
@@ -195,8 +196,8 @@ class CartPromotionsTest extends GraphQlAbstract
                 [
                     'quantity' => $qty,
                     'prices' => [
-                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
-                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty]
+                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
+                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
                     ],
                 ]
             );
@@ -222,7 +223,7 @@ class CartPromotionsTest extends GraphQlAbstract
      */
     public function testShippingDiscountPresent(): void
     {
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $qty = 2;
         $quote = Bootstrap::getObjectManager()
             ->create(\Magento\Quote\Model\Quote::class)->load('test01', 'reserved_order_id');
@@ -270,7 +271,7 @@ class CartPromotionsTest extends GraphQlAbstract
         $prod1 = $productRepository->get('simple1');
         $prod2 = $productRepository->get('simple2');
         $productsInCart = [$prod1, $prod2];
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
 
         /** @var TaxClassCollectionFactory $taxClassCollectionFactory */
         $taxClassCollectionFactory = $objectManager->get(TaxClassCollectionFactory::class);
@@ -304,8 +305,8 @@ class CartPromotionsTest extends GraphQlAbstract
         for ($itemIndex = 0; $itemIndex < $count; $itemIndex++) {
             $this->assertNotEmpty($productsInResponse[$itemIndex]);
             $rowTotalIncludingTax = round(
-                $productsInCart[$itemIndex]->getSpecialPrice()*$qty +
-                $productsInCart[$itemIndex]->getSpecialPrice()*$qty*.075,
+                $productsInCart[$itemIndex]->getSpecialPrice() * $qty +
+                $productsInCart[$itemIndex]->getSpecialPrice() * $qty * .075,
                 2
             );
             $this->assertResponseFields(
@@ -314,17 +315,17 @@ class CartPromotionsTest extends GraphQlAbstract
                     'quantity' => $qty,
                     'prices' => [
                         // row_total is the line item price without the tax
-                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
+                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
                         // row_total including tax is the price + price * tax rate
                         'row_total_including_tax' => ['value' => $rowTotalIncludingTax],
                         // discount from cart rule after tax is applied : 50% of row_total_including_tax
-                        'total_item_discount' => ['value' => round($rowTotalIncludingTax/2, 2)],
+                        'total_item_discount' => ['value' => round($rowTotalIncludingTax / 2, 2)],
                         'discounts' => [
-                            0 =>[
-                                'amount' => ['value' => round($rowTotalIncludingTax/2, 2)],
-                                'label' => 'TestRule_Label'
-                            ]
-                        ]
+                            0 => [
+                                'amount' => ['value' => round($rowTotalIncludingTax / 2, 2)],
+                                'label' => 'TestRule_Label',
+                            ],
+                        ],
                     ],
                 ]
             );
@@ -349,7 +350,7 @@ class CartPromotionsTest extends GraphQlAbstract
         $prod2 = $productRepository->get('simple2');
         $productsInCart = [$prod1, $prod2];
 
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
 
         /** @var Collection $ruleCollection */
         $ruleCollection = $objectManager->get(Collection::class);
@@ -372,21 +373,21 @@ class CartPromotionsTest extends GraphQlAbstract
         for ($itemIndex = 0; $itemIndex < $count; $itemIndex++) {
             $this->assertNotEmpty($productsInResponse[$itemIndex]);
             $sumOfPricesForBothProducts = 43.96;
-            $rowTotal = ($productsInCart[$itemIndex]->getSpecialPrice()*$qty);
+            $rowTotal = ($productsInCart[$itemIndex]->getSpecialPrice() * $qty);
             $this->assertResponseFields(
                 $productsInResponse[$itemIndex][0],
                 [
                     'quantity' => $qty,
                     'prices' => [
-                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
-                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice()*$qty],
-                        'total_item_discount' => ['value' => round(($rowTotal/$sumOfPricesForBothProducts)*5, 2)],
+                        'row_total' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
+                        'row_total_including_tax' => ['value' => $productsInCart[$itemIndex]->getSpecialPrice() * $qty],
+                        'total_item_discount' => ['value' => round(($rowTotal / $sumOfPricesForBothProducts) * 5, 2)],
                         'discounts' => [
-                            0 =>[
-                                'amount' => ['value' => round(($rowTotal/$sumOfPricesForBothProducts)*5, 2)],
-                                'label' => $ruleLabels[0]
-                            ]
-                        ]
+                            0 => [
+                                'amount' => ['value' => round(($rowTotal / $sumOfPricesForBothProducts) * 5, 2)],
+                                'label' => $ruleLabels[0],
+                            ],
+                        ],
                     ],
                 ]
             );
@@ -402,7 +403,7 @@ class CartPromotionsTest extends GraphQlAbstract
      */
     public function testCartPromotionsWhenNoDiscountIsAvailable()
     {
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $qty = 2;
         $cartId = $this->createEmptyCart();
         $this->addMultipleSimpleProductsToCart($cartId, $qty, $skus[0], $skus[1]);
@@ -423,7 +424,7 @@ class CartPromotionsTest extends GraphQlAbstract
      */
     public function testCartPromotionsWithNoRuleLabels()
     {
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $qty = 1;
         $cartId = $this->createEmptyCart();
         $this->addMultipleSimpleProductsToCart($cartId, $qty, $skus[0], $skus[1]);
@@ -451,7 +452,7 @@ class CartPromotionsTest extends GraphQlAbstract
         $prod1 = $productRepository->get('simple1');
         $prod2 = $productRepository->get('simple2');
         $productsInCart = [$prod1, $prod2];
-        $skus =['simple1', 'simple2'];
+        $skus = ['simple1', 'simple2'];
         $qty = 2;
         $sumOfPricesForBothProducts = 43.96;
         $couponCode = '2?ds5!2d';
@@ -478,7 +479,7 @@ class CartPromotionsTest extends GraphQlAbstract
         $count = count($productsInCart);
         for ($itemIndex = 0; $itemIndex < $count; $itemIndex++) {
             $this->assertNotEmpty($productsInResponse[$itemIndex]);
-            $rowTotal = ($productsInCart[$itemIndex]->getSpecialPrice()*$qty);
+            $rowTotal = ($productsInCart[$itemIndex]->getSpecialPrice() * $qty);
             $this->assertResponseFields(
                 $productsInResponse[$itemIndex][0],
                 [
@@ -488,11 +489,11 @@ class CartPromotionsTest extends GraphQlAbstract
                         'row_total_including_tax' => ['value' => $rowTotal],
                         'total_item_discount' => ['value' => $rowTotal],
                         'discounts' => [
-                            0 =>[
+                            0 => [
                                 'amount' => ['value' => $rowTotal],
-                                'label' => $ruleLabels[0]
-                            ]
-                        ]
+                                'label' => $ruleLabels[0],
+                            ],
+                        ],
                     ],
                 ]
             );
@@ -712,7 +713,7 @@ QUERY;
      * @param string $cartId
      * @return void
      */
-    private function setShippingAddressOnCart(string $cartId) :void
+    private function setShippingAddressOnCart(string $cartId): void
     {
         $query = <<<QUERY
 mutation {

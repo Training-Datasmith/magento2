@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,11 +8,10 @@
 
 namespace Magento\Vault\Setup\Patch\Data;
 
-use Magento\Vault\Api\Data\PaymentTokenInterface;
-use Magento\Vault\Model\CreditCardTokenFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Vault\Api\Data\PaymentTokenInterface;
+use Magento\Vault\Model\CreditCardTokenFactory;
 
 /**
  * Class SetCreditCardAsDefaultTokenType
@@ -45,7 +46,7 @@ class SetCreditCardAsDefaultTokenType implements DataPatchInterface, PatchVersio
         $this->moduleDataSetup->getConnection()->update(
             $this->moduleDataSetup->getTable('vault_payment_token'),
             [
-                PaymentTokenInterface::TYPE => CreditCardTokenFactory::TOKEN_TYPE_CREDIT_CARD
+                PaymentTokenInterface::TYPE => CreditCardTokenFactory::TOKEN_TYPE_CREDIT_CARD,
             ],
             PaymentTokenInterface::TYPE . ' = ""'
         );

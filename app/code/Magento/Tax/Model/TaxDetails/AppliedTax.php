@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\TaxDetails;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
@@ -16,10 +19,10 @@ class AppliedTax extends AbstractExtensibleModel implements AppliedTaxInterface
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_TAX_RATE_KEY = 'tax_rate_key';
-    const KEY_PERCENT      = 'percent';
-    const KEY_AMOUNT       = 'amount';
-    const KEY_RATES        = 'rates';
+    public const KEY_TAX_RATE_KEY = 'tax_rate_key';
+    public const KEY_PERCENT      = 'percent';
+    public const KEY_AMOUNT       = 'amount';
+    public const KEY_RATES        = 'rates';
     /**#@-*/
 
     /**

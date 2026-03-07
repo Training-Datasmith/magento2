@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class QueueFactory implements \Magento\Framework\MessageQueue\QueueFactoryInterf
             $this->instanceName,
             [
                 'stompConfig' => $this->configPool->get($connectionName),
-                'queueName' => $queueName
+                'queueName' => $queueName,
             ]
         );
     }

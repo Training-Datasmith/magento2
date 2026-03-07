@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\Module\ConflictChecker;
 use Magento\Framework\Module\ModuleList;
 use Magento\Framework\Module\PackageInfo;
 use Magento\Framework\Module\PackageInfoFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ConflictCheckerTest extends TestCase
 {
@@ -57,37 +58,37 @@ class ConflictCheckerTest extends TestCase
                 [['Vendor_A', ['Vendor_B' => '0.1']], ['Vendor_B', []]],
                 ['Vendor_A'],
                 ['Vendor_B'],
-                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be 0.1)']]
+                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be 0.1)']],
             ],
             [
                 [['Vendor_A', ['Vendor_B' => '0.1']], ['Vendor_B', []]],
                 [],
                 ['Vendor_B'],
-                ['Vendor_B' => []]
+                ['Vendor_B' => []],
             ],
             [
                 [['Vendor_B', ['Vendor_A' => '0.1']], ['Vendor_A', []]],
                 ['Vendor_A'],
                 ['Vendor_B'],
-                ['Vendor_B' => ['Vendor_B conflicts with current Vendor_A version 0.1 (version should not be 0.1)']]
+                ['Vendor_B' => ['Vendor_B conflicts with current Vendor_A version 0.1 (version should not be 0.1)']],
             ],
             [
                 [['Vendor_B', ['Vendor_A' => '0.1']], ['Vendor_A', []]],
                 [],
                 ['Vendor_B'],
-                ['Vendor_B' => []]
+                ['Vendor_B' => []],
             ],
             [
                 [['Vendor_A', []], ['Vendor_B', []]],
                 ['Vendor_A'],
                 ['Vendor_B'],
-                ['Vendor_B' => []]
+                ['Vendor_B' => []],
             ],
             [
                 [['Vendor_A', []], ['Vendor_B', []], ['Vendor_C', []]],
                 ['Vendor_A'],
                 ['Vendor_B', 'Vendor_C'],
-                ['Vendor_B' => [], 'Vendor_C' => []]
+                ['Vendor_B' => [], 'Vendor_C' => []],
             ],
             [
                 [['Vendor_A', ['Vendor_C' => '0.1']], ['Vendor_B', []], ['Vendor_C', []]],
@@ -95,8 +96,8 @@ class ConflictCheckerTest extends TestCase
                 ['Vendor_B', 'Vendor_C'],
                 [
                     'Vendor_B' => [],
-                    'Vendor_C' => ['Vendor_A conflicts with current Vendor_C version 0.1 (version should not be 0.1)']
-                ]
+                    'Vendor_C' => ['Vendor_A conflicts with current Vendor_C version 0.1 (version should not be 0.1)'],
+                ],
             ],
             [
                 [['Vendor_A', []], ['Vendor_B', ['Vendor_C' => '0.1']], ['Vendor_C', []]],
@@ -104,20 +105,20 @@ class ConflictCheckerTest extends TestCase
                 ['Vendor_B', 'Vendor_C'],
                 [
                     'Vendor_B' => ['Vendor_B conflicts with current Vendor_C version 0.1 (version should not be 0.1)'],
-                    'Vendor_C' => ['Vendor_B conflicts with current Vendor_C version 0.1 (version should not be 0.1)']
-                ]
+                    'Vendor_C' => ['Vendor_B conflicts with current Vendor_C version 0.1 (version should not be 0.1)'],
+                ],
             ],
             [
                 [['Vendor_A', ['Vendor_B' => '>=0.1']], ['Vendor_B', []]],
                 ['Vendor_A'],
                 ['Vendor_B'],
-                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be >=0.1)']]
+                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be >=0.1)']],
             ],
             [
                 [['Vendor_A', ['Vendor_B' => '~0.1']], ['Vendor_B', []]],
                 ['Vendor_A'],
                 ['Vendor_B'],
-                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be ~0.1)']]
+                ['Vendor_B' => ['Vendor_A conflicts with current Vendor_B version 0.1 (version should not be ~0.1)']],
             ],
         ];
     }
@@ -134,7 +135,7 @@ class ConflictCheckerTest extends TestCase
             ->willReturnMap([
                 ['Vendor_A', []],
                 ['Vendor_B', []],
-                ['Vendor_C', ['Vendor_A' => '>=0.2,<0.3', 'Vendor_B' => '<0.4']]
+                ['Vendor_C', ['Vendor_A' => '>=0.2,<0.3', 'Vendor_B' => '<0.4']],
             ]);
         $packageInfoMock->expects($this->any())
             ->method('getVersion')
@@ -159,7 +160,7 @@ class ConflictCheckerTest extends TestCase
             ->willReturnMap([
                 ['Vendor_A', []],
                 ['Vendor_B', []],
-                ['Vendor_C', ['Vendor_A' => '>=0.2,<0.3', 'Vendor_B' => '<0.4']]
+                ['Vendor_C', ['Vendor_A' => '>=0.2,<0.3', 'Vendor_B' => '<0.4']],
             ]);
         $packageInfoMock->expects($this->any())
             ->method('getVersion')

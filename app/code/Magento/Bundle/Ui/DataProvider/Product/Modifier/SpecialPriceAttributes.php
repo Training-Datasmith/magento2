@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class SpecialPriceAttributes implements ModifierInterface
         }
         $numberFormatter = $this->numberFormatterFactory->create([
             'locale' => $this->localeResolver->getLocale(),
-            'style' => NumberFormatter::PERCENT
+            'style' => NumberFormatter::PERCENT,
         ]);
         $numberFormatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, 6);
         foreach ($data['items'] as &$item) {

@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sitemap\Model\ResourceModel\Catalog;
 
 use Magento\Catalog\Model\Product\Image\UrlBuilder;
-use Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
@@ -267,7 +269,7 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         if (isset($column)) {
             $this->_select->columns(
                 [
-                    $column => $columnValue
+                    $column => $columnValue,
                 ]
             );
         }

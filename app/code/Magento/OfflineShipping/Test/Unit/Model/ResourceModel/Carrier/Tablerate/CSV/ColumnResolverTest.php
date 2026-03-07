@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class ColumnResolverTest extends TestCase
             ColumnResolver::COLUMN_PRICE => [
                 ColumnResolver::COLUMN_PRICE,
                 self::$values[ColumnResolver::COLUMN_PRICE],
-            ]
+            ],
         ];
     }
 

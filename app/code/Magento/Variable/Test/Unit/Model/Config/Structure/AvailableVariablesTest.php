@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -37,23 +38,23 @@ class AvailableVariablesTest extends TestCase
                 [
                     'web' => [
                         'web/unsecure/base_url' => '1',
-                        'web/secure/base_url' => '1'
+                        'web/secure/base_url' => '1',
                     ],
                     'general/store_information' => [
                         'general/store_information/name' => '1',
-                        'general/store_information/hours' => '1'
+                        'general/store_information/hours' => '1',
                     ],
                 ],
                 [
                     'web' => [
                         'web/unsecure/base_url' => '1',
-                        'web/secure/base_url' => '1'
+                        'web/secure/base_url' => '1',
                     ],
                     'general/store_information' => [
                         'general/store_information/name' => '1',
-                        'general/store_information/hours' => '1'
+                        'general/store_information/hours' => '1',
                     ],
-                ]
+                ],
             ],
         ];
     }
@@ -66,18 +67,18 @@ class AvailableVariablesTest extends TestCase
         $configVariables = [
             'web' => [
                 'web/unsecure/base_url' => '1',
-                'web/secure/base_url' => '1'
+                'web/secure/base_url' => '1',
             ],
             'general/store_information' => [
                 'general/store_information/name' => '1',
-                'general/store_information/hours' => '1'
+                'general/store_information/hours' => '1',
             ],
         ];
         $expected = [
             'web/unsecure/base_url' => '1',
             'web/secure/base_url' => '1',
             'general/store_information/name' => '1',
-            'general/store_information/hours' => '1'
+            'general/store_information/hours' => '1',
         ];
         $model = new AvailableVariables($configVariables);
         $this->assertEquals($expected, $model->getFlatConfigPaths());

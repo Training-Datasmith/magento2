@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +16,6 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
  */
 class DiscountCalculator
 {
-
     /**
      * @param PriceCurrencyInterface $priceCurrency
      */
@@ -42,6 +43,6 @@ class DiscountCalculator
             }
         }
         return (null !== $discount) ?
-            $this->priceCurrency->roundPrice($discount/100 * $value, 2) : $value;
+            $this->priceCurrency->roundPrice($discount / 100 * $value, 2) : $value;
     }
 }

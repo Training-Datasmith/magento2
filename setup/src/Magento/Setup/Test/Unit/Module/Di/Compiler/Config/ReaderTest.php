@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class ReaderTest extends TestCase
                 $definitionCollection->getInstanceArguments($instanceType),
                 $this->getResolvedArguments(
                     $definitionCollection->getInstanceArguments($instanceType)
-                )
+                ),
             ];
         }
 
@@ -140,7 +141,7 @@ class ReaderTest extends TestCase
             'arguments' => [
                 'ConcreteType1' => ['resolved_argument1', 'resolved_argument2'],
                 'ConcreteType2' => ['resolved_argument1', 'resolved_argument2'],
-                'virtualType1' => ['resolved_argument1', 'resolved_argument2']
+                'virtualType1' => ['resolved_argument1', 'resolved_argument2'],
             ],
             'preferences' => $this->getPreferences(),
             'instanceTypes' => $this->getVirtualTypes(),
@@ -234,7 +235,7 @@ class ReaderTest extends TestCase
                 $definitionCollection->getInstanceArguments($concreteType),
                 $this->getResolvedArguments(
                     $definitionCollection->getInstanceArguments($concreteType)
-                )
+                ),
             ];
         }
         return $getResolvedConstructorArgumentsMap;

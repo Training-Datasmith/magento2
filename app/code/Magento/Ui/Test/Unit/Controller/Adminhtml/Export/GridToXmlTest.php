@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Ui\Controller\Adminhtml\Export\GridToXml;
 use Magento\Ui\Model\Export\ConvertToXml;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 class GridToXmlTest extends TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Image;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Image;
 use Magento\Catalog\Model\Product\Image\ParamsBuilder;
 use Magento\Framework\App\Area;
@@ -19,6 +19,7 @@ use Magento\Framework\View\Design\Theme\FlyweightFactory;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -78,7 +79,7 @@ class ParamsBuilderTest extends TestCase
                 'scopeConfig' => $this->scopeConfig,
                 'viewConfig' => $this->viewConfig,
                 'design' => $this->design,
-                'themeFactory' => $this->themeFactory
+                'themeFactory' => $this->themeFactory,
             ]
         );
         $this->scopeConfigData = [];
@@ -119,7 +120,7 @@ class ParamsBuilderTest extends TestCase
             'height' => '600',
             'width' => '400',
             'angle' => '45',
-            'background' => [110, 64, 224]
+            'background' => [110, 64, 224],
         ];
 
         $this->design->expects($this->once())
@@ -179,7 +180,7 @@ class ParamsBuilderTest extends TestCase
                     'design/watermark/small_image_position' => 'bottom-right',
                 ],
                 [
-                    'type' => 'small_image'
+                    'type' => 'small_image',
                 ],
                 [
                     'watermark_file' => 'stores/1/magento-logo.png',
@@ -187,8 +188,8 @@ class ParamsBuilderTest extends TestCase
                     'watermark_position' => 'bottom-right',
                     'watermark_width' => '60',
                     'watermark_height' => '40',
-                    'keep_frame' => true
-                ]
+                    'keep_frame' => true,
+                ],
             ],
             'watermark config empty' => [
                 1,
@@ -198,7 +199,7 @@ class ParamsBuilderTest extends TestCase
                     'design/watermark/small_image_image' => 'stores/1/magento-logo.png',
                 ],
                 [
-                    'type' => 'small_image'
+                    'type' => 'small_image',
                 ],
                 [
                     'watermark_file' => 'stores/1/magento-logo.png',
@@ -206,8 +207,8 @@ class ParamsBuilderTest extends TestCase
                     'watermark_position' => null,
                     'watermark_width' => null,
                     'watermark_height' => null,
-                    'keep_frame' => true
-                ]
+                    'keep_frame' => true,
+                ],
             ],
             'watermark empty with no border' => [
                 2,
@@ -217,7 +218,7 @@ class ParamsBuilderTest extends TestCase
                     'design/watermark/small_image_image' => 'stores/1/magento-logo.png',
                 ],
                 [
-                    'type' => 'small_image'
+                    'type' => 'small_image',
                 ],
                 [
                     'watermark_file' => 'stores/1/magento-logo.png',
@@ -225,9 +226,9 @@ class ParamsBuilderTest extends TestCase
                     'watermark_position' => null,
                     'watermark_width' => null,
                     'watermark_height' => null,
-                    'keep_frame' => false
-                ]
-            ]
+                    'keep_frame' => false,
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQlCache\Model\Resolver;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\GraphQl\Query\Resolver\IdentityInterface;
+use Magento\Framework\ObjectManagerInterface;
 
 /**
  * Pool of IdentityInterface objects

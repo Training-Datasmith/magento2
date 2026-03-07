@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Model\Layout;
 
 use Magento\Framework\View\EntitySpecificHandlesList;
@@ -46,7 +49,7 @@ class MergePlugin
         ) {
             throw new \LogicException(
                 "Handle '{$handle}' must not contain blocks with 'ttl' attribute specified. "
-                . "Otherwise, these blocks will be treated as ESI by Varnish, however will not be shared between pages "
+                . 'Otherwise, these blocks will be treated as ESI by Varnish, however will not be shared between pages '
                 . "because handle '{$handle}' is not generic. Such blocks will not be rendered on the page"
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\GraphQl\Tax;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Tax\Model\Config;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Tax\Model\Config;
 
 /**
  * @magentoAppIsolation enabled
@@ -285,7 +286,7 @@ QUERY;
                     'minimalPrice' => [
                         'amount' => [
                             'value' => 4.1065,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'adjustments' => [
                             0 =>
@@ -298,12 +299,12 @@ QUERY;
                                         'code' => 'TAX',
                                         'description' => 'INCLUDED',
                                 ],
-                        ]
+                        ],
                     ],
                     'regularPrice' => [
                         'amount' => [
                             'value' => 10.7500,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'adjustments' => [
                             0 =>
@@ -316,12 +317,12 @@ QUERY;
                                         'code' => 'TAX',
                                         'description' => 'INCLUDED',
                                 ],
-                        ]
+                        ],
                     ],
                     'maximalPrice' => [
                         'amount' => [
                             'value' => 4.1065,
-                            'currency' => 'USD'
+                            'currency' => 'USD',
                         ],
                         'adjustments' => [
                             0 =>
@@ -334,9 +335,9 @@ QUERY;
                                         'code' => 'TAX',
                                         'description' => 'INCLUDED',
                                 ],
-                        ]
+                        ],
                     ],
-                ]
+                ],
             ],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
             ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()],

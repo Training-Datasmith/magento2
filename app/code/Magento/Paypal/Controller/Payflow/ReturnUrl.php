@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Payflow;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
@@ -28,7 +31,7 @@ class ReturnUrl extends Payflow implements CsrfAwareActionInterface, HttpGetActi
     protected $allowedOrderStates = [
         Order::STATE_PROCESSING,
         Order::STATE_COMPLETE,
-        Order::STATE_PAYMENT_REVIEW
+        Order::STATE_PAYMENT_REVIEW,
     ];
 
     /**
@@ -37,7 +40,7 @@ class ReturnUrl extends Payflow implements CsrfAwareActionInterface, HttpGetActi
      */
     protected $allowedPaymentMethodCodes = [
         Config::METHOD_PAYFLOWPRO,
-        Config::METHOD_PAYFLOWLINK
+        Config::METHOD_PAYFLOWLINK,
     ];
 
     /**

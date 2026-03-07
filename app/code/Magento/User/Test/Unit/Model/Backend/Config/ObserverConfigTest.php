@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ObserverConfigTest extends TestCase
         $this->model = $objectManager->getObject(
             ObserverConfig::class,
             [
-                'backendConfig' => $this->backendConfigMock
+                'backendConfig' => $this->backendConfigMock,
             ]
         );
     }

@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console\Command\App\SensitiveConfigSet;
 
 use Magento\Deploy\Console\Command\App\SensitiveConfigSetCommand;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Exception\RuntimeException;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Magento\Deploy\Model\ConfigWriter;
 use Magento\Framework\App\Config\CommentParserInterface;
 use Magento\Framework\App\Scope\ValidatorInterface;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\RuntimeException;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Processes the sensitive:config:set command.
@@ -123,7 +126,7 @@ class SensitiveConfigSetFacade
             throw new RuntimeException(__(
                 'File app/etc/%1 can\'t be read. Please check if it exists and has read permissions.',
                 [
-                    $configFilePath
+                    $configFilePath,
                 ]
             ));
         }

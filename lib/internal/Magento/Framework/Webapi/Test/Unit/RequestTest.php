@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Webapi\Test\Unit;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Webapi\Request;
 use Magento\Webapi\Model\Soap\Server;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase
 {
@@ -56,7 +57,7 @@ class RequestTest extends TestCase
         return [
             ["{$testModuleA},{$testModuleB}", [$testModuleA, $testModuleB]],
             ["{$testModuleA},{$testModuleC}", [$testModuleA, $testModuleC]],
-            ["{$testModuleA}", [$testModuleA]]
+            ["{$testModuleA}", [$testModuleA]],
         ];
     }
 }

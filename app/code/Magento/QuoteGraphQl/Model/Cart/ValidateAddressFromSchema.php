@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class ValidateAddressFromSchema
      * @param array $address
      * @return bool
      */
-    public function execute(array $address = []) : bool
+    public function execute(array $address = []): bool
     {
         /** @var \Magento\Framework\GraphQL\Schema\Type\Input\InputObjectType $cartAddressInput */
         $cartAddressInput = $this->typeRegistry->get('CartAddressInput');

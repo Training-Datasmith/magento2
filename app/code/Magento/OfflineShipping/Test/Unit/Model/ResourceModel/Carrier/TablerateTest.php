@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -19,14 +20,14 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\Io\File as IoFile;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\OfflineShipping\Model\Config\Backend\Tablerate as TablerateBackend;
 use Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate;
 use Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate\Import;
 use Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate\RateQueryFactory;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\OfflineShipping\Model\Config\Backend\Tablerate as TablerateBackend;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -86,8 +87,8 @@ class TablerateTest extends TestCase
         $objects = [
             [
                 IoFile::class,
-                $configOptionClassMock
-            ]
+                $configOptionClassMock,
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         $contextMock = $this->createMock(Context::class);
@@ -122,7 +123,7 @@ class TablerateTest extends TestCase
     public function testUploadAndImport()
     {
         $files['groups']['tablerate']['fields']['import']['value'] = [
-            'tmp_name' => 'some/path/to/file/import.csv'
+            'tmp_name' => 'some/path/to/file/import.csv',
         ];
         $object = $this->createPartialMockWithReflection(
             TablerateBackend::class,

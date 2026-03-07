@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class RefundTest extends TestCase
 {
-
     /**
      * @var Refund
      */
@@ -58,7 +58,7 @@ class RefundTest extends TestCase
             [
                 'orderRepository' => $this->orderRepositoryMock,
                 'invoiceRepository' => $this->invoiceRepositoryMock,
-                'priceCurrency' => $this->priceCurrencyMock
+                'priceCurrency' => $this->priceCurrencyMock,
             ]
         );
     }

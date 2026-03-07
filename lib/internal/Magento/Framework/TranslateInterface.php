@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 /**
@@ -15,7 +18,7 @@ interface TranslateInterface
     /**
      * Default translation string
      */
-    const DEFAULT_STRING = 'Translate String';
+    public const DEFAULT_STRING = 'Translate String';
 
     /**
      * Initialize translation data

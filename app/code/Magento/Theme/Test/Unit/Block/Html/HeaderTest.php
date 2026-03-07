@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Theme\Test\Unit\Block\Html;
 
 use Magento\Framework\App\Config;
+use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Theme\Block\Html\Header;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Escaper;
 
 class HeaderTest extends TestCase
 {
@@ -49,7 +50,7 @@ class HeaderTest extends TestCase
             Header::class,
             [
                'context' => $context,
-               'escaper' => $this->escaper
+               'escaper' => $this->escaper,
             ]
         );
     }

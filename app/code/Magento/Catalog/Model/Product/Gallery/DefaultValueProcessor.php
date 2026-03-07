@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class DefaultValueProcessor
             }
         }
         $data['images'] = $images;
-        
+
         return $data;
     }
 

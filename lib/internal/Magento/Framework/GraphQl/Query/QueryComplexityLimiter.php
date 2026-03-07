@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use GraphQL\Language\AST\SelectionSetNode;
 use GraphQL\Language\Visitor;
 use GraphQL\Validator\DocumentValidator;
 use GraphQL\Validator\Rules\DisableIntrospection;
-use GraphQL\Validator\Rules\QueryDepth;
 use GraphQL\Validator\Rules\QueryComplexity;
+use GraphQL\Validator\Rules\QueryDepth;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 
@@ -136,8 +137,8 @@ class QueryComplexityLimiter
                     'leave' => [
                         NodeKind::FIELD => function () use (&$totalFieldCount) {
                             $totalFieldCount++;
-                        }
-                    ]
+                        },
+                    ],
                 ]
             );
             if ($totalFieldCount > $this->queryComplexity) {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -96,7 +99,7 @@ class ClassTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [\Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_CUSTOMER],
-            [\Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_PRODUCT]
+            [\Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_PRODUCT],
         ];
     }
 

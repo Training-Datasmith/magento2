@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Quote\Api\Data\AddressInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Api\Data\AddressInterface;
 
 class GuestShipmentEstimationWithExtensionAttributesTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteGuestShipmentEstimationV1';
-    const RESOURCE_PATH = '/V1/guest-carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteGuestShipmentEstimationV1';
+    public const RESOURCE_PATH = '/V1/guest-carts/';
 
     /**
      * @var ObjectManager
@@ -83,26 +86,26 @@ class GuestShipmentEstimationWithExtensionAttributesTest extends WebapiAbstract
                 AddressInterface::CUSTOMER_ADDRESS_ID => $address->getCustomerAddressId(),
                 AddressInterface::SAVE_IN_ADDRESS_BOOK => $address->getSaveInAddressBook(),
                 ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => [
-                    'discounts' => []
-                ]
+                    'discounts' => [],
+                ],
             ];
 
             $requestData = [
                 'cartId' => $cartId,
-                'address' => $data
+                'address' => $data,
             ];
         } else {
 
             $requestData = [
                 'address' => [
-                    'country_id' => "US",
+                    'country_id' => 'US',
                     'postcode' => null,
                     'region' => null,
                     'region_id' => null,
                     'extension_attributes' => [
-                        'discounts' => []
-                    ]
-                ]
+                        'discounts' => [],
+                    ],
+                ],
             ];
         }
 
@@ -114,7 +117,7 @@ class GuestShipmentEstimationWithExtensionAttributesTest extends WebapiAbstract
         $this->assertNotEmpty($result);
         $this->assertEquals(1, count($result));
         foreach ($result as $rate) {
-            $this->assertEquals("flatrate", $rate['carrier_code']);
+            $this->assertEquals('flatrate', $rate['carrier_code']);
             $this->assertEquals(0, $rate['amount']);
         }
     }

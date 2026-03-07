@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class ShipmentCommentSenderTest extends AbstractSenderTestCase
                         'customer_name' => $customerName,
                         'frontend_status_label' => $frontendStatusLabel,
                         'is_not_virtual' => $isNotVirtual,
-                    ]
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -154,7 +155,7 @@ class ShipmentCommentSenderTest extends AbstractSenderTestCase
                         'customer_name' => $customerName,
                         'frontend_status_label' => $frontendStatusLabel,
                         'is_not_virtual' => $isNotVirtual,
-                    ]
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -199,8 +200,8 @@ class ShipmentCommentSenderTest extends AbstractSenderTestCase
                     'order_data' => [
                         'customer_name' => $customerName,
                         'frontend_status_label' => $frontendStatusLabel,
-                        'is_not_virtual' => $isNotVirtual
-                    ]
+                        'is_not_virtual' => $isNotVirtual,
+                    ],
 
                 ]
             );

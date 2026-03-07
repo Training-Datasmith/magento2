@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,15 +11,15 @@ namespace Magento\Config\Test\Unit\Block\System\Config\Form\Field\Select;
 use Magento\Config\Block\System\Config\Form\Field\Select\Allowspecific;
 use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\Select;
+use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Magento\Framework\DataObject;
 
 class AllowspecificTest extends TestCase
 {
@@ -46,12 +47,12 @@ class AllowspecificTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
+                $this->createMock(SecureHtmlRenderer::class),
             ],
             [
                 Random::class,
-                $this->createMock(Random::class)
-            ]
+                $this->createMock(Random::class),
+            ],
         ];
         $testHelper->prepareObjectManager($objects);
         $randomMock = $this->createMock(Random::class);
@@ -76,7 +77,7 @@ class AllowspecificTest extends TestCase
             [
                 '_escaper' => $testHelper->getObject(Escaper::class),
                 'random' => $randomMock,
-                'secureRenderer' => $secureRendererMock
+                'secureRenderer' => $secureRendererMock,
             ]
         );
         $this->_object->setId('spec_element');
@@ -154,7 +155,7 @@ class AllowspecificTest extends TestCase
             'zero' => ['1' => 0],
             'null' => ['1' => null],
             'false' => ['1' => false],
-            'negative' => ['1' => -1]
+            'negative' => ['1' => -1],
         ];
     }
 }

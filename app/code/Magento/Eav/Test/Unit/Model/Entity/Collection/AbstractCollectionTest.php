@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Statement\Pdo\Mysql;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Validator\UniversalFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -267,7 +268,7 @@ class AbstractCollectionTest extends TestCase
         return [
             ['values' => [['id' => 1]], 'count' => 1],
             ['values' => [['id' => 1], ['id' => 2]], 'count' => 2],
-            ['values' => [['id' => 2], ['id' => 3]], 'count' => 2]
+            ['values' => [['id' => 2], ['id' => 3]], 'count' => 2],
         ];
     }
 
@@ -279,7 +280,7 @@ class AbstractCollectionTest extends TestCase
         return [
             ['values' => [['id' => 1]]],
             ['values' => [['id' => 1], ['id' => 2]]],
-            ['values' => [['id' => 2], ['id' => 3]]]
+            ['values' => [['id' => 2], ['id' => 3]]],
         ];
     }
 

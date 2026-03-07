@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\ResourceModel;
 
 /**
@@ -103,7 +106,7 @@ class Link extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     [
                         'link_id' => $linkObject->getId(),
                         'store_id' => (int)$linkObject->getStoreId(),
-                        'title' => $linkObject->getTitle()
+                        'title' => $linkObject->getTitle(),
                     ]
                 );
             }

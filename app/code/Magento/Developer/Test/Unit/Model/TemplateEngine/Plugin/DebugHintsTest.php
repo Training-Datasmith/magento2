@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class DebugHintsTest extends TestCase
                 'http' => $this->httpMock,
                 'debugHintsPath' => $debugHintsPath,
                 'debugHintsWithParam' => $debugHintsWithParam,
-                'debugHintsParameter' => $debugHintsParameter
+                'debugHintsParameter' => $debugHintsParameter,
             ]
         );
 
@@ -203,7 +204,7 @@ class DebugHintsTest extends TestCase
                 'http' => $this->httpMock,
                 'debugHintsPath' => $debugHintsPath,
                 'debugHintsWithParam' => $debugHintsWithParam,
-                'debugHintsParameter' => $debugHintsParameter
+                'debugHintsParameter' => $debugHintsParameter,
             ]
         );
 
@@ -249,8 +250,8 @@ class DebugHintsTest extends TestCase
                     DebugHints::XML_PATH_DEBUG_TEMPLATE_HINTS_BLOCKS,
                     ScopeInterface::SCOPE_STORE,
                     static::STORE_CODE,
-                    $showBlockHints
-                ]
+                    $showBlockHints,
+                ],
             ]);
     }
 }

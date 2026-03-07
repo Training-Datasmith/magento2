@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,9 +25,9 @@ use Magento\Framework\Setup\Patch\PatchRegistryFactory;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\SetupInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -117,7 +118,7 @@ class PatchApplierTest extends TestCase
         $this->patchBackwardCompatability = $objectManager->getObject(
             PatchBackwardCompatability::class,
             [
-                'moduleResource' => $this->moduleResourceMock
+                'moduleResource' => $this->moduleResourceMock,
             ]
         );
         $this->patchApllier = $objectManager->getObject(
@@ -133,7 +134,7 @@ class PatchApplierTest extends TestCase
                 'objectManager' => $this->objectManagerMock,
                 'schemaSetup' => $this->schemaSetupMock,
                 'moduleDataSetup' => $this->moduleDataSetupMock,
-                'patchBackwardCompatability' => $this->patchBackwardCompatability
+                'patchBackwardCompatability' => $this->patchBackwardCompatability,
             ]
         );
         require_once __DIR__ . '/../_files/data_patch_classes.php';
@@ -157,7 +158,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDataVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -165,7 +166,7 @@ class PatchApplierTest extends TestCase
         $patches = [
             \SomeDataPatch::class,
             // phpstan:ignore
-            \OtherDataPatch::class
+            \OtherDataPatch::class,
         ];
         $patchRegistryMock = $this->createAggregateIteratorMock(PatchRegistry::class, $patches, ['registerPatch']);
         $patchRegistryMock->expects($this->exactly(2))->method('registerPatch');
@@ -216,7 +217,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDataVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -252,7 +253,7 @@ class PatchApplierTest extends TestCase
                     // phpstan:ignore
                     \SomeDataPatch::class,
                     // phpstan:ignore
-                    \OtherDataPatch::class
+                    \OtherDataPatch::class,
                 ],
                 'moduleVersionInDb' => null,
             ],
@@ -276,7 +277,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDataVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -284,7 +285,7 @@ class PatchApplierTest extends TestCase
         $patches = [
             \SomeDataPatch::class,
             // phpstan:ignore
-            \OtherDataPatch::class
+            \OtherDataPatch::class,
         ];
         $patchRegistryMock = $this->createAggregateIteratorMock(
             PatchRegistry::class,
@@ -333,10 +334,10 @@ class PatchApplierTest extends TestCase
                     // phpstan:ignore
                     \SomeDataPatch::class,
                     // phpstan:ignore
-                    \OtherDataPatch::class
+                    \OtherDataPatch::class,
                 ],
                 'moduleVersionInDb' => '2.0.0',
-            ]
+            ],
         ];
     }
 
@@ -360,7 +361,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDataVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -368,7 +369,7 @@ class PatchApplierTest extends TestCase
         $patches = [
             \SomeDataPatch::class,
             // phpstan:ignore
-            \OtherDataPatch::class
+            \OtherDataPatch::class,
         ];
         $patchRegistryMock = $this->createAggregateIteratorMock(PatchRegistry::class, $patches, ['registerPatch']);
         $patchRegistryMock->expects($this->exactly(2))
@@ -426,7 +427,7 @@ class PatchApplierTest extends TestCase
                 [
                     '\\' . \stdClass::class,
                     ['moduleDataSetup' => $this->moduleDataSetupMock],
-                    $this->createMock(\stdClass::class)
+                    $this->createMock(\stdClass::class),
                 ],
             ]
         );
@@ -465,7 +466,7 @@ class PatchApplierTest extends TestCase
                 [
                     '\\' . $patches[0],
                     ['moduleDataSetup' => $this->moduleDataSetupMock],
-                    $patch1
+                    $patch1,
                 ],
             ]
         );
@@ -490,7 +491,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDbVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -498,7 +499,7 @@ class PatchApplierTest extends TestCase
         $patches = [
             \SomeSchemaPatch::class,
             // phpstan:ignore
-            \OtherSchemaPatch::class
+            \OtherSchemaPatch::class,
         ];
         $patchRegistryMock = $this->createAggregateIteratorMock(PatchRegistry::class, $patches, ['registerPatch']);
         $patchRegistryMock->expects($this->exactly(2))
@@ -547,7 +548,7 @@ class PatchApplierTest extends TestCase
 
         $this->moduleResourceMock->expects($this->any())->method('getDbVersion')->willReturnMap(
             [
-                [$moduleName, $moduleVersionInDb]
+                [$moduleName, $moduleVersionInDb],
             ]
         );
 
@@ -601,7 +602,7 @@ class PatchApplierTest extends TestCase
                 [
                     '\\' . $patches[0],
                     ['moduleDataSetup' => $this->moduleDataSetupMock],
-                    $patch1
+                    $patch1,
                 ],
             ]
         );
@@ -621,10 +622,10 @@ class PatchApplierTest extends TestCase
                     // phpstan:ignore
                     \SomeSchemaPatch::class,
                     // phpstan:ignore
-                    \OtherSchemaPatch::class
+                    \OtherSchemaPatch::class,
                 ],
                 'moduleVersionInDb' => '2.0.0',
-            ]
+            ],
         ];
     }
     /**

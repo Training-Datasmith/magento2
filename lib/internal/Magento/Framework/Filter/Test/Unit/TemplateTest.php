@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,10 +14,10 @@ use Magento\Framework\Filter\DirectiveProcessor\IfDirective;
 use Magento\Framework\Filter\DirectiveProcessor\LegacyDirective;
 use Magento\Framework\Filter\DirectiveProcessor\TemplateDirective;
 use Magento\Framework\Filter\Template;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Template Filter test.
@@ -52,7 +53,7 @@ class TemplateTest extends TestCase
         DependDirective::class,
         IfDirective::class,
         TemplateDirective::class,
-        LegacyDirective::class
+        LegacyDirective::class,
     ];
 
     protected function setUp(): void
@@ -88,7 +89,7 @@ class TemplateTest extends TestCase
             \Magento\Framework\Filter\Template::class,
             [
                 'signatureProvider' => $this->signatureProvider,
-                'filteringDepthMeter' => $this->filteringDepthMeter
+                'filteringDepthMeter' => $this->filteringDepthMeter,
             ]
         );
     }
@@ -278,14 +279,14 @@ TEMPLATE;
                 'sku' => 'ABC123',
                 'name' => 'Product ABC',
                 'price' => '123',
-                'ordered_qty' => '2'
+                'ordered_qty' => '2',
             ],
             [
                 'sku' => 'DOREMI',
                 'name' => 'Product DOREMI',
                 'price' => '456',
-                'ordered_qty' => '1'
-            ]
+                'ordered_qty' => '1',
+            ],
         ];
 
         $dataObject->setAllVisibleItems($visibleItems);

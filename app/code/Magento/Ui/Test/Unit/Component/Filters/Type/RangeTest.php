@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Filters\FilterModifier;
 use Magento\Ui\Component\Filters\Type\Range;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RangeTest extends TestCase
@@ -141,67 +142,67 @@ class RangeTest extends TestCase
             [
                 'test_date',
                 ['test_date' => ['from' => 0, 'to' => 1]],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => '', 'to' => 2]],
-                1
+                1,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => 1, 'to' => '']],
-                1
+                1,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => 1, 'to' => 0]],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => 1, 'to' => 2]],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => 0, 'to' => 0]],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => '0', 'to' => '0']],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => '0.0', 'to' => 1]],
-                2
+                2,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => '', 'to' => '']],
-                0
+                0,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => 'a', 'to' => 'b']],
-                0
+                0,
             ],
             [
                 'test_date',
                 ['test_date' => ['from' => '1']],
-                1
+                1,
             ],
             [
                 'test_date',
                 ['test_date' => ['to' => '1']],
-                1
+                1,
             ],
             [
                 'test_date',
                 ['test_date' => []],
-                0
+                0,
             ],
         ];
     }

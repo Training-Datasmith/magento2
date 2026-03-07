@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -55,7 +58,7 @@ class RenderingBasedOnIsProductListFlagTest extends \PHPUnit\Framework\TestCase
         $this->product = $productRepository->get('configurable');
         $this->finalPrice = Bootstrap::getObjectManager()->create(FinalPrice::class, [
             'saleableItem' => $this->product,
-            'quantity' => null
+            'quantity' => null,
         ]);
         $this->rendererPool = Bootstrap::getObjectManager()->create(RendererPool::class);
         $this->rendererPool->setData(
@@ -70,7 +73,7 @@ class RenderingBasedOnIsProductListFlagTest extends \PHPUnit\Framework\TestCase
         $this->finalPriceBox = Bootstrap::getObjectManager()->create(FinalPriceBox::class, [
             'saleableItem' => $this->product,
             'price' => $this->finalPrice,
-            'rendererPool' => $this->rendererPool
+            'rendererPool' => $this->rendererPool,
         ]);
         $this->finalPriceBox->setTemplate('Magento_ConfigurableProduct::product/price/final_price.phtml');
 

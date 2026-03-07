@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -71,12 +72,12 @@ class CancelOrder implements ResolverInterface
             $order = $this->cancelOrderAction->execute($order, $args['input']['reason']);
 
             return [
-                'order' => $this->orderFormatter->format($order)
+                'order' => $this->orderFormatter->format($order),
             ];
 
         } catch (LocalizedException $e) {
             return [
-                'error' => __($e->getMessage())
+                'error' => __($e->getMessage()),
             ];
         }
     }

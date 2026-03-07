@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid;
 
 /**
@@ -25,7 +28,7 @@ class ContainerTest extends \PHPUnit\Framework\TestCase
                     \Magento\Backend\Block\Widget\Grid\Container::PARAM_BLOCK_GROUP => 'Magento_Backend',
                     \Magento\Backend\Block\Widget\Grid\Container::PARAM_BUTTON_NEW => 'four',
                     \Magento\Backend\Block\Widget\Grid\Container::PARAM_BUTTON_BACK => 'five',
-                ]
+                ],
             ]
         );
         $this->assertStringEndsWith('widget', $block->getHeaderCssClass());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Backend\Block\Widget;
 
+use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\LayoutInterface;
 
 /**
  * Test for the button widget.
@@ -67,7 +68,7 @@ class ButtonTest extends TestCase
                 'element_name' => 'some-name',
                 'value' => 'Press a button',
                 'data-style' => 'width: 100px',
-                'style' => 'height: 200px'
+                'style' => 'height: 200px',
             ]
         );
 

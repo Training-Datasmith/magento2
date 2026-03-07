@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -49,12 +50,12 @@ class SendmailTest extends AbstractController
         'recipients' => [
             'name' => [
                 'Recipient 1',
-                'Recipient 2'
+                'Recipient 2',
             ],
             'email' => [
                 'r1@example.com',
-                'r2@example.com'
-            ]
+                'r2@example.com',
+            ],
         ],
     ];
 

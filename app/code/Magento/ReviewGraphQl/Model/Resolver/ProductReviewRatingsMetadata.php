@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class ProductReviewRatingsMetadata implements ResolverInterface
             $items[] = [
                 'id' => base64_encode($item->getData('rating_id')),
                 'name' => $item->getData('rating_code'),
-                'values' => $item->getData('options')
+                'values' => $item->getData('options'),
             ];
         }
 

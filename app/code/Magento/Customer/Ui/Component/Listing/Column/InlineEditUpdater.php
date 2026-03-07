@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponentInterface;
@@ -62,7 +65,7 @@ class InlineEditUpdater
                 }
 
                 $config['editor'] = [
-                    'editorType' => $editorType
+                    'editorType' => $editorType,
                 ];
             }
 

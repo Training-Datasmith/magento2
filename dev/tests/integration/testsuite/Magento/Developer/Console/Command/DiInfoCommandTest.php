@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Developer\Console\Command;
 
 use Magento\Developer\Model\Di\Information;
 use Magento\Framework\App\AreaList;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
-use Magento\Framework\ObjectManagerInterface;
 
 class DiInfoCommandTest extends TestCase
 {
@@ -63,7 +64,7 @@ class DiInfoCommandTest extends TestCase
             ->with('Magento\Framework\App\RouterList')
             ->willReturn([
                 ['objectManager', 'Magento\Framework\ObjectManagerInterface', null],
-                ['routerList', null, null]
+                ['routerList', null, null],
             ]);
 
         $this->informationMock->expects($this->once())
@@ -77,14 +78,14 @@ class DiInfoCommandTest extends TestCase
             ->willReturn([
                 'before' => [],
                 'around' => [],
-                'after' => []
+                'after' => [],
             ]);
 
         $commandTester = new CommandTester($this->command);
         $commandTester->execute(
             [
                 DiInfoCommand::CLASS_NAME => "Magento\Framework\App\RouterList",
-                DiInfoCommand::AREA_CODE => null
+                DiInfoCommand::AREA_CODE => null,
             ],
         );
         $this->assertStringContainsString(
@@ -109,7 +110,7 @@ class DiInfoCommandTest extends TestCase
             ->with($className)
             ->willReturn([
                 ['objectManager', 'Magento\Framework\ObjectManagerInterface', null],
-                ['routerList', null, null]
+                ['routerList', null, null],
             ]);
 
         $this->informationMock->expects($this->once())
@@ -123,7 +124,7 @@ class DiInfoCommandTest extends TestCase
             ->willReturn([
                 'before' => [],
                 'around' => [],
-                'after' => []
+                'after' => [],
             ]);
 
         $this->areaListMock->expects($this->once())
@@ -134,7 +135,7 @@ class DiInfoCommandTest extends TestCase
         $commandTester->execute(
             [
                 DiInfoCommand::CLASS_NAME => "$className",
-                DiInfoCommand::AREA_CODE => "adminhtml"
+                DiInfoCommand::AREA_CODE => 'adminhtml',
             ],
         );
 

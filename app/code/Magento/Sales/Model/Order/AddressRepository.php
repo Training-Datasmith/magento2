@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,13 +12,13 @@ use Magento\Customer\Model\AttributeMetadataDataProvider;
 use Magento\Customer\Model\ResourceModel\Form\Attribute\Collection as AttributeCollection;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\App\ObjectManager;
-use Magento\Sales\Api\Data\OrderAddressInterface;
-use Magento\Sales\Model\ResourceModel\Metadata;
-use Magento\Sales\Api\Data\OrderAddressSearchResultInterfaceFactory as SearchResultFactory;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Sales\Api\Data\OrderAddressInterface;
+use Magento\Sales\Api\Data\OrderAddressSearchResultInterfaceFactory as SearchResultFactory;
+use Magento\Sales\Model\ResourceModel\Metadata;
 
 /**
  * Repository class for @see \Magento\Sales\Api\Data\OrderAddressInterface

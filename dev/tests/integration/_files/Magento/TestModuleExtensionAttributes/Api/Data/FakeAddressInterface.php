@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,25 +18,25 @@ interface FakeAddressInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array
      */
-    const ID = 'id';
-    const CUSTOMER_ID = 'customer_id';
-    const REGION = 'region';
-    const REGIONS = 'regions';
-    const COUNTRY_ID = 'country_id';
-    const STREET = 'street';
-    const COMPANY = 'company';
-    const TELEPHONE = 'telephone';
-    const FAX = 'fax';
-    const POSTCODE = 'postcode';
-    const CITY = 'city';
-    const FIRSTNAME = 'firstname';
-    const LASTNAME = 'lastname';
-    const MIDDLENAME = 'middlename';
-    const PREFIX = 'prefix';
-    const SUFFIX = 'suffix';
-    const VAT_ID = 'vat_id';
-    const DEFAULT_BILLING = 'default_billing';
-    const DEFAULT_SHIPPING = 'default_shipping';
+    public const ID = 'id';
+    public const CUSTOMER_ID = 'customer_id';
+    public const REGION = 'region';
+    public const REGIONS = 'regions';
+    public const COUNTRY_ID = 'country_id';
+    public const STREET = 'street';
+    public const COMPANY = 'company';
+    public const TELEPHONE = 'telephone';
+    public const FAX = 'fax';
+    public const POSTCODE = 'postcode';
+    public const CITY = 'city';
+    public const FIRSTNAME = 'firstname';
+    public const LASTNAME = 'lastname';
+    public const MIDDLENAME = 'middlename';
+    public const PREFIX = 'prefix';
+    public const SUFFIX = 'suffix';
+    public const VAT_ID = 'vat_id';
+    public const DEFAULT_BILLING = 'default_billing';
+    public const DEFAULT_SHIPPING = 'default_shipping';
     /**#@-*/
 
     /**

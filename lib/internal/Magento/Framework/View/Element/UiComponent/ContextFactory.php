@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -12,7 +15,7 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class ContextFactory
 {
-    const INSTANCE_NAME = \Magento\Framework\View\Element\UiComponent\ContextInterface::class;
+    public const INSTANCE_NAME = \Magento\Framework\View\Element\UiComponent\ContextInterface::class;
 
     /**
      * @var ObjectManagerInterface

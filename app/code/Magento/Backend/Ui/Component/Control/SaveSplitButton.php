@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Ui\Component\Control;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -49,11 +52,11 @@ class SaveSplitButton implements ButtonProviderInterface
                                 'params' => [
                                     // first param is redirect flag
                                     false,
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),

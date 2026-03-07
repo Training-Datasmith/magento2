@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Model\Template;
 
 class FilterTest extends \PHPUnit\Framework\TestCase

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\ConfigurableProductGraphQl\Model\Options\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\CatalogInventory\Model\ResourceModel\Stock\StatusFactory;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Retrieve child products

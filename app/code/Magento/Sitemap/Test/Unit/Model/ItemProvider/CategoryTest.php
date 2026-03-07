@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -71,8 +72,8 @@ class CategoryTest extends TestCase
                     new DataObject(
                         ['url' => '/category/sub-category.html', 'updated_at' => '2012-12-21 00:00:00']
                     ),
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

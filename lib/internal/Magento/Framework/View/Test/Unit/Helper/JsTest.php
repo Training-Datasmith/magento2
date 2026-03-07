@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Framework\View\Test\Unit\Helper;
 
-use Magento\Framework\View\Helper\Js;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\DataObject;
+use Magento\Framework\View\Helper\Js;
 use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\TestCase;
 
 class JsTest extends TestCase
 {

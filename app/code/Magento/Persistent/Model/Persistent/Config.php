@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Model\Persistent;
 
 use Magento\Framework\Module\Dir;
@@ -106,9 +109,9 @@ class Config
     protected function _getConfigDomXPath()
     {
         if ($this->_configDomXPath === null) {
-            $dir = $this->_configFilePath !== null ? explode("/", $this->_configFilePath) : [];
+            $dir = $this->_configFilePath !== null ? explode('/', $this->_configFilePath) : [];
             array_pop($dir);
-            $dir = implode("/", $dir);
+            $dir = implode('/', $dir);
             $directoryRead = $this->readFactory->create($dir);
             $filePath = $directoryRead->getRelativePath($this->_configFilePath);
             $isFile = $directoryRead->isFile($filePath);

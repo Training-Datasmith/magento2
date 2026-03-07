@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\Setup\Model\Installer;
 use Magento\Setup\Model\InstallerFactory;
 use Magento\Setup\Model\SearchConfig;
 use Magento\Setup\Model\SearchConfigFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -73,8 +74,8 @@ class UpgradeCommandTest extends TestCase
         $objects = [
             [
                 CacheInterface::class,
-                $this->createMock(CacheInterface::class)
-            ]
+                $this->createMock(CacheInterface::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         $this->deploymentConfigMock = $this->getMockBuilder(DeploymentConfig::class)
@@ -158,7 +159,7 @@ class UpgradeCommandTest extends TestCase
             [
                 'options' => [
                     '--magento-init-params' => '',
-                    '--convert-old-scripts' => false
+                    '--convert-old-scripts' => false,
                 ],
                 'deployMode' => AppState::MODE_PRODUCTION,
                 'expectedString' => $cleanupMessage
@@ -170,14 +171,14 @@ class UpgradeCommandTest extends TestCase
                     'safe-mode' => false,
                     'data-restore' => false,
                     'dry-run' => false,
-                    'magento-init-params' => ''
-                ]
+                    'magento-init-params' => '',
+                ],
             ],
             [
                 'options' => [
                     '--magento-init-params' => '',
                     '--convert-old-scripts' => false,
-                    '--keep-generated' => true
+                    '--keep-generated' => true,
                 ],
                 'deployMode' => AppState::MODE_PRODUCTION,
                 'expectedString' => $cleanupMessage . $mediaGalleryNotice,
@@ -187,8 +188,8 @@ class UpgradeCommandTest extends TestCase
                     'safe-mode' => false,
                     'data-restore' => false,
                     'dry-run' => false,
-                    'magento-init-params' => ''
-                ]
+                    'magento-init-params' => '',
+                ],
             ],
             [
                 'options' => ['--magento-init-params' => '', '--convert-old-scripts' => false],
@@ -200,8 +201,8 @@ class UpgradeCommandTest extends TestCase
                     'safe-mode' => false,
                     'data-restore' => false,
                     'dry-run' => false,
-                    'magento-init-params' => ''
-                ]
+                    'magento-init-params' => '',
+                ],
             ],
             [
                 'options' => ['--magento-init-params' => '', '--convert-old-scripts' => false],
@@ -213,9 +214,9 @@ class UpgradeCommandTest extends TestCase
                     'safe-mode' => false,
                     'data-restore' => false,
                     'dry-run' => false,
-                    'magento-init-params' => ''
-                ]
-            ]
+                    'magento-init-params' => '',
+                ],
+            ],
         ];
     }
 }

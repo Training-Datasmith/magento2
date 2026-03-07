@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class CheckForgotpasswordObserverTest extends TestCase
                 'actionFlag' => $this->_actionFlag,
                 'messageManager' => $this->_messageManager,
                 'redirect' => $this->redirect,
-                'captchaStringResolver' => $this->captchaStringResolver
+                'captchaStringResolver' => $this->captchaStringResolver,
             ]
         );
         $this->_captcha = $this->createMock(DefaultModel::class);

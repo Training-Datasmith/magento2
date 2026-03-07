@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -13,15 +14,15 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Validator\Alnum;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Model\AbstractModel;
 
 /**
  * Eav text attribute model test
@@ -152,7 +153,7 @@ class TextTest extends TestCase
             'validate_rules' => [
                 'min_text_length' => 0,
                 'max_text_length' => 10,
-                'input_validation' => 'alphanumeric'
+                'input_validation' => 'alphanumeric',
             ],
         ];
 
@@ -171,13 +172,13 @@ class TextTest extends TestCase
             ['QazWsx', true],
             ['QazWsx123', true],
             ['QazWsx 123',
-                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.']
+                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.'],
             ],
             ['QazWsx_123',
-                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.']
+                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.'],
             ],
             ['QazWsx12345', [
-                __('"%1" length must be equal or less than %2 characters.', 'Test', 10)]
+                __('"%1" length must be equal or less than %2 characters.', 'Test', 10)],
             ],
         ];
     }
@@ -200,7 +201,7 @@ class TextTest extends TestCase
             'validate_rules' => [
                 'min_text_length' => 0,
                 'max_text_length' => 10,
-                'input_validation' => 'alphanum-with-spaces'
+                'input_validation' => 'alphanum-with-spaces',
             ],
         ];
 
@@ -220,10 +221,10 @@ class TextTest extends TestCase
             ['QazWsx123', true],
             ['QazWsx 123', true],
             ['QazWsx_123',
-                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.']
+                [Alnum::NOT_ALNUM => '"Test" contains non-alphabetic or non-numeric characters.'],
             ],
             ['QazWsx12345', [
-                __('"%1" length must be equal or less than %2 characters.', 'Test', 10)]
+                __('"%1" length must be equal or less than %2 characters.', 'Test', 10)],
             ],
         ];
     }
@@ -233,7 +234,7 @@ class TextTest extends TestCase
      */
     public function testValidateValueStringWithDiacritics(): void
     {
-        $inputValue = "á â à å ä ð é ê è ë í î ì ï ó ô ò ø õ ö ú û ù ü æ œ ç ß a ĝ ń ŕ ý ð ñ";
+        $inputValue = 'á â à å ä ð é ê è ë í î ì ï ó ô ò ø õ ö ú û ù ü æ œ ç ß a ĝ ń ŕ ý ð ñ';
         $expectedResult = true;
         self::assertEquals($expectedResult, $this->model->validateValue($inputValue));
     }
@@ -256,7 +257,7 @@ class TextTest extends TestCase
         $attribute->expects($this->any())
             ->method('getData')
             ->willReturnMap(array_map(
-                fn($key, $value) => [$key, null, $value],
+                fn ($key, $value) => [$key, null, $value],
                 array_keys($attributeData),
                 array_values($attributeData)
             ));

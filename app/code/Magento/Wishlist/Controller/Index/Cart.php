@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Wishlist\Controller\Index;
 
 use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Model\Product\Exception as ProductException;
-use Magento\Checkout\Model\Cart as CheckoutCart;
 use Magento\Checkout\Helper\Cart as CartHelper;
+use Magento\Checkout\Model\Cart as CheckoutCart;
 use Magento\Framework\App\Action;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\Result\Json;
@@ -230,7 +232,7 @@ class Cart extends AbstractIndex implements Action\HttpPostActionInterface
                     'addCartSuccessMessage',
                     [
                         'product_name' => $item->getProduct()->getName(),
-                        'cart_url' => $this->cartHelper->getCartUrl()
+                        'cart_url' => $this->cartHelper->getCartUrl(),
                     ]
                 );
                 $productsToAdd = [
@@ -239,7 +241,7 @@ class Cart extends AbstractIndex implements Action\HttpPostActionInterface
                         'name' => $item->getProduct()->getName(),
                         'price' => $item->getProduct()->getFinalPrice(),
                         'qty' => $item->getQty(),
-                    ]
+                    ],
                 ];
 
                 /** @var PublicCookieMetadata $publicCookieMetadata */

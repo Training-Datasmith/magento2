@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Quote\Test\Unit\Model\ValidationRules;
 
 use Magento\Framework\Phrase;
 use Magento\Framework\Validation\ValidationResult;
-use Magento\Quote\Model\Quote\Address;
-use PHPUnit\Framework\MockObject\MockObject;
 use Magento\Framework\Validation\ValidationResultFactory;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\ValidationRules\BillingAddressValidationRule;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class BillingAddressValidationRuleTest extends TestCase

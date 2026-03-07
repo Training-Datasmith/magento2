@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\CatalogSearch\Model\Autocomplete;
 
-use Magento\Search\Model\ResourceModel\Query\Collection;
-use Magento\Search\Model\QueryFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface as ScopeConfig;
 use Magento\Search\Model\Autocomplete\DataProviderInterface;
 use Magento\Search\Model\Autocomplete\ItemFactory;
-use Magento\Framework\App\Config\ScopeConfigInterface as ScopeConfig;
+use Magento\Search\Model\QueryFactory;
+use Magento\Search\Model\ResourceModel\Query\Collection;
 use Magento\Store\Model\ScopeInterface;
 
 /**

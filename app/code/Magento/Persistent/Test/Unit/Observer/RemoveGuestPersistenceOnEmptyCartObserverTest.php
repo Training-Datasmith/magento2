@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\Persistent\Test\Unit\Observer;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Data as PersistentHelper;
 use Magento\Persistent\Helper\Session as SessionHelper;
 use Magento\Persistent\Model\QuoteManager;
@@ -18,12 +20,10 @@ use Magento\Persistent\Observer\RemoveGuestPersistenceOnEmptyCartObserver;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class RemoveGuestPersistenceOnEmptyCartObserverTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**

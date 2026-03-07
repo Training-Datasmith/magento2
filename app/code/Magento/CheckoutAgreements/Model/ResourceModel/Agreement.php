@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Model\ResourceModel;
 
 /**
@@ -78,7 +81,7 @@ class Agreement extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         foreach ((array)$object->getData('stores') as $storeId) {
             $storeArray = [
                 'agreement_id' => $object->getId(),
-                'store_id' => $storeId
+                'store_id' => $storeId,
             ];
             $this->getConnection()->insert($this->getTable('checkout_agreement_store'), $storeArray);
         }

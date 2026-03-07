@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,25 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Model\Checkout;
 
-use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Model\DefaultConfigProvider;
 use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Persistent\Helper\Session as PersistentSessionHelper;
 use Magento\Persistent\Model\Session as PersistentSession;
 use Magento\Persistent\Model\SessionFactory as PersistentSessionFactory;
 use Magento\Quote\Model\QuoteIdMask;
 use Magento\Quote\Model\QuoteIdMaskFactory;
+use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Interception\PluginList;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
 use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\Config;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Quote\Test\Fixture\CustomerCart;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 
 /**
  * Test for checkout config provider plugin

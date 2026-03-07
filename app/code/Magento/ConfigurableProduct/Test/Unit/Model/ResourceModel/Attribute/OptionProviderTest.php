@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class OptionProviderTest extends TestCase
         $this->model = $this->objectManagerHelper->getObject(
             OptionProvider::class,
             [
-                'metadataPool' => $this->metadataPool
+                'metadataPool' => $this->metadataPool,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\BundleImportExport\Test\Unit\Model\Import\Product\Type;
 
-use Magento\BundleImportExport\Model\Import\Product\Type\Bundle\RelationsDataSaver;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\BundleImportExport\Model\Import\Product\Type\Bundle;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\BundleImportExport\Model\Import\Product\Type\Bundle\RelationsDataSaver;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Helper\Data as CatalogData;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as ProductAttributeCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as ProductAttributeCollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
@@ -23,10 +23,11 @@ use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Helper\Data as CatalogData;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Model\Import;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -89,12 +90,12 @@ class BundleTest extends AbstractImportTestCase
         $fetchAllForInitAttributes = [
             [
                 'attribute_set_name' => '1',
-                'attribute_id' => '1'
+                'attribute_id' => '1',
             ],
             [
                 'attribute_set_name' => '2',
-                'attribute_id' => '2'
-            ]
+                'attribute_id' => '2',
+            ],
         ];
 
         $fetchAllForOtherCalls = [[
@@ -103,7 +104,7 @@ class BundleTest extends AbstractImportTestCase
             'parent_product_id' => '1',
             'product_id' => '1',
             'position' => '1',
-            'is_default' => '1'
+            'is_default' => '1',
         ]];
 
         // Set up fetchAll responses for consecutive calls
@@ -142,14 +143,14 @@ class BundleTest extends AbstractImportTestCase
                 'isRowAllowedToImport',
                 'getRowScope',
                 'getConnection',
-                'getMultipleValueSeparator'
+                'getMultipleValueSeparator',
             ]
         );
         $this->entityModel->method('getMultipleValueSeparator')->willReturn(',');
         $this->entityModel->method('getErrorAggregator')->willReturn($this->getErrorAggregatorObject());
         $this->connection = $this->createPartialMockWithReflection(
             Mysql::class,
-            ["select", "fetchAll", "fetchPairs", "fetchAssoc", "quoteInto", "delete", "insertOnDuplicate"]
+            ['select', 'fetchAll', 'fetchPairs', 'fetchAssoc', 'quoteInto', 'delete', 'insertOnDuplicate']
         );
         $this->select = $this->createMock(Select::class);
         $this->select->expects($this->any())->method('from')->willReturnSelf();
@@ -173,7 +174,7 @@ class BundleTest extends AbstractImportTestCase
         $this->prodAttrColFac->method('create')->willReturn($attrCollection);
         $this->params = [
             0 => $this->entityModel,
-            1 => 'bundle'
+            1 => 'bundle',
         ];
         $this->scopeResolver = $this->createMock(ScopeResolverInterface::class);
 
@@ -183,16 +184,16 @@ class BundleTest extends AbstractImportTestCase
         $objects = [
             [
                 RelationsDataSaver::class,
-                $this->createMock(RelationsDataSaver::class)
+                $this->createMock(RelationsDataSaver::class),
             ],
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 CatalogData::class,
-                $catalogDataMock
-            ]
+                $catalogDataMock,
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
 
@@ -207,7 +208,7 @@ class BundleTest extends AbstractImportTestCase
                 'resource' => $this->resource,
                 'params' => $this->params,
                 'scopeResolver' => $this->scopeResolver,
-                'catalogData' => $catalogDataMockArg
+                'catalogData' => $catalogDataMockArg,
             ]
         );
 
@@ -269,9 +270,9 @@ class BundleTest extends AbstractImportTestCase
                                 'default_qty' => '1',
                                 'is_default' => '1',
                                 'position' => '1',
-                                'option_id' => '1'
-                            ]
-                        ]
+                                'option_id' => '1',
+                            ],
+                        ],
                     ],
                     '2' => [
                         'option_id' => '6',
@@ -294,10 +295,10 @@ class BundleTest extends AbstractImportTestCase
                                 'default_qty' => '2',
                                 'is_default' => '1',
                                 'position' => '6',
-                                'option_id' => '6'
-                            ]
-                        ]
-                    ]
+                                'option_id' => '6',
+                            ],
+                        ],
+                    ],
                 ]);
         $bundle = $this->bundle->saveData();
         $this->assertNotNull($bundle);
@@ -314,33 +315,33 @@ class BundleTest extends AbstractImportTestCase
             [
                 'skus' => ['newSku' => ['sku' => ['sku' => 'sku', 'entity_id' => 3, 'type_id' => 'bundle']]],
                 'bunch' => ['bundle_values' => 'value1', 'sku' => 'sku', 'name' => 'name'],
-                'allowImport' => true
+                'allowImport' => true,
             ],
             [
                 'skus' => ['newSku' => ['sku' => ['sku' => 'SKU', 'entity_id' => 3, 'type_id' => 'bundle']]],
                 'bunch' => ['bundle_values' => 'value1', 'sku' => 'SKU', 'name' => 'name'],
-                'allowImport' => true
+                'allowImport' => true,
             ],
             [
                 'skus' => ['newSku' => ['sku' => ['sku' => 'sku', 'entity_id' => 3, 'type_id' => 'simple']]],
                 'bunch' => ['bundle_values' => 'value1', 'sku' => 'sku', 'name' => 'name'],
-                'allowImport' => true
+                'allowImport' => true,
             ],
             [
                 'skus' => ['newSku' => ['sku' => ['sku' => 'sku', 'entity_id' => 3, 'type_id' => 'bundle']]],
                 'bunch' => ['bundle_values' => 'value1', 'sku' => 'sku', 'name' => 'name'],
-                'allowImport' => false
+                'allowImport' => false,
             ],
             'Import without bundle values' => [
                 'skus' => ['newSku' => ['sku' => ['sku' => 'sku', 'entity_id' => 3, 'type_id' => 'bundle']]],
                 'bunch' => ['sku' => 'sku', 'name' => 'name'],
-                'allowImport' => true
+                'allowImport' => true,
             ],
             [
                 'skus' => ['newSku' => [
                     'sku' => ['sku' => 'sku', 'entity_id' => 3, 'type_id' => 'bundle'],
                     'sku1' => ['sku1' => 'sku1', 'entity_id' => 3, 'type_id' => 'bundle'],
-                    'sku2' => ['sku2' => 'sku2', 'entity_id' => 3, 'type_id' => 'bundle']
+                    'sku2' => ['sku2' => 'sku2', 'entity_id' => 3, 'type_id' => 'bundle'],
                 ]],
                 'bunch' => [
                     'sku' => 'sku',
@@ -364,10 +365,10 @@ class BundleTest extends AbstractImportTestCase
                          . 'default_qty=1,'
                          . 'is_default=1,'
                          . 'position=2,'
-                         . 'option_id=2'
+                         . 'option_id=2',
                 ],
-                'allowImport' => true
-            ]
+                'allowImport' => true,
+            ],
         ];
     }
 
@@ -380,7 +381,7 @@ class BundleTest extends AbstractImportTestCase
     {
         $this->entityModel->method('getBehavior')->willReturn(Import::BEHAVIOR_DELETE);
         $this->entityModel->expects($this->once())->method('getNewSku')->willReturn([
-            'sku' => ['sku' => 'sku', 'entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'bundle']
+            'sku' => ['sku' => 'sku', 'entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'bundle'],
         ]);
         $callCount = 0;
         $this->entityModel
@@ -394,7 +395,7 @@ class BundleTest extends AbstractImportTestCase
         $select->expects($this->any())->method('where')->willReturnSelf();
         $select->expects($this->any())->method('joinLeft')->willReturnSelf();
         $this->connection->method('fetchAssoc')->willReturn([
-            ['id1', 'id2', 'id_3']
+            ['id1', 'id2', 'id_3'],
         ]);
         $bundle = $this->bundle->saveData();
         $this->assertNotNull($bundle);
@@ -438,7 +439,7 @@ class BundleTest extends AbstractImportTestCase
         $rowData = [
             'bundle_price_type' => 'dynamic',
             'bundle_shipment_type' => 'separately',
-            'bundle_price_view' => 'bundle_price_view'
+            'bundle_price_view' => 'bundle_price_view',
         ];
         $this->assertEquals($this->bundle->isRowValid($rowData, 0), true);
     }

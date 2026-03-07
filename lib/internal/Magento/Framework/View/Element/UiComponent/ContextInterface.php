@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\View\Element\UiComponent;
 
-use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\Element\UiComponent\ContentType\ContentTypeInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
-use Magento\Framework\View\LayoutInterface as PageLayoutInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Framework\View\Element\UiComponentInterface;
+use Magento\Framework\View\LayoutInterface as PageLayoutInterface;
 
 /**
  * Interface ContextInterface
@@ -23,7 +24,7 @@ interface ContextInterface
     /**
      * Filter variable name
      */
-    const FILTER_VAR = 'filters';
+    public const FILTER_VAR = 'filters';
 
     /**
      * Add components definition

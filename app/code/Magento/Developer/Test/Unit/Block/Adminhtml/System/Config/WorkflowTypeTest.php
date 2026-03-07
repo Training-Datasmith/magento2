@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Test\Unit\Block\Adminhtml\System\Config;
 
 use Magento\Backend\Block\Template\Context;
@@ -51,7 +54,7 @@ class WorkflowTypeTest extends TestCase
         $contextArgs = $this->objectManagerHelper->getConstructArguments(
             Context::class,
             [
-                'appState' => $this->appStateMock
+                'appState' => $this->appStateMock,
             ]
         );
 
@@ -78,7 +81,7 @@ class WorkflowTypeTest extends TestCase
                 [
                     'can_use_website_value' => false,
                     'can_use_default_value' => false,
-                    'can_restore_to_default' => false
+                    'can_restore_to_default' => false,
                 ]
             );
 
@@ -93,7 +96,7 @@ class WorkflowTypeTest extends TestCase
         return [
             [State::MODE_PRODUCTION, 1],
             [State::MODE_DEFAULT, 0],
-            [State::MODE_DEVELOPER, 0]
+            [State::MODE_DEVELOPER, 0],
         ];
     }
 }

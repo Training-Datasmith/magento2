@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\LoginAsCustomerGraphQl;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests for create customer (V2) with allow_remote_shopping_assistance input/output
@@ -57,16 +58,16 @@ class CreateCustomerV2Test extends GraphQlAbstract
         return [
             'with_allow_remote_shopping_assistance_true' => [
                 'allowValue' => true,
-                'expectedValue' => true
+                'expectedValue' => true,
             ],
             'with_allow_remote_shopping_assistance_false' => [
                 'allowValue' => false,
-                'expectedValue' => false
+                'expectedValue' => false,
             ],
             'without_allow_remote_shopping_assistance' => [
                 'allowValue' => null,
-                'expectedValue' => false
-            ]
+                'expectedValue' => false,
+            ],
         ];
     }
 
@@ -97,9 +98,9 @@ class CreateCustomerV2Test extends GraphQlAbstract
                     'lastname' => 'Rowe',
                     'email' => $email,
                     'is_subscribed' => true,
-                    'allow_remote_shopping_assistance' => $expectedValue
-                ]
-            ]
+                    'allow_remote_shopping_assistance' => $expectedValue,
+                ],
+            ],
         ], $response);
     }
 
@@ -127,7 +128,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'lastname' => 'Rowe',
             'email' => $email,
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ];
 
         if ($allowRemoteShoppingAssistance !== null) {
@@ -145,7 +146,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
                 '"is_subscribed":',
                 '"allow_remote_shopping_assistance":',
                 ':true',
-                ':false'
+                ':false',
             ],
             [
                 'firstname:',
@@ -155,7 +156,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
                 'is_subscribed:',
                 'allow_remote_shopping_assistance:',
                 ': true',
-                ': false'
+                ': false',
             ],
             $inputJson
         );

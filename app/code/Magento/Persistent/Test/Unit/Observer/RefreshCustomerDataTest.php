@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class RefreshCustomerDataTest extends TestCase
     {
         return [
             [true, 'once'],
-            [false, 'never']
+            [false, 'never'],
         ];
     }
 }

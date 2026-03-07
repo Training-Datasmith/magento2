@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestSetupDeclarationModule3\Setup\Patch\Data;
 
 use Magento\Framework\App\ResourceConnection;
@@ -61,7 +64,7 @@ class IncrementalSomeIntegerPatch implements
             ->where('`tinyint_ref` = ?', 7);
         $varchar = $adapter->fetchOne($select);
         $varchar2 = $adapter->fetchOne($refSelect);
-        $adapter->insert('test_table', ['varchar' => $varchar . "_ref", 'varbinary' => 0101010]);
+        $adapter->insert('test_table', ['varchar' => $varchar . '_ref', 'varbinary' => 0101010]);
         $adapter->insert('test_table', ['varchar' => $varchar2, 'varbinary' => 0]);
     }
 
@@ -74,7 +77,7 @@ class IncrementalSomeIntegerPatch implements
         $refSelect = $adapter->select()->from('reference_table', 'for_patch_testing')
             ->where('`tinyint_ref` = ?', 7);
         $varchar2 = $adapter->fetchOne($refSelect);
-        $adapter->delete('test_table', ['`varchar` = ?' => $varchar . "_ref"]);
+        $adapter->delete('test_table', ['`varchar` = ?' => $varchar . '_ref']);
         $adapter->delete('test_table', ['`varchar` = ?' => $varchar2]);
     }
 
@@ -85,7 +88,7 @@ class IncrementalSomeIntegerPatch implements
     {
         return [
             ReferenceIncrementalSomeIntegerPatch::class,
-            NextChainPatch::class
+            NextChainPatch::class,
         ];
     }
 }

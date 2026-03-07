@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -17,6 +17,7 @@ use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
 use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test order repository interface via async webapi
@@ -52,7 +53,7 @@ class OrderRepositoryInterfaceTest extends WebapiAbstract
             PublisherConsumerController::class,
             [
                 'consumers'     => ['async.operations.all'],
-                'logFilePath'   => TESTS_TEMP_DIR . "/MessageQueueTestLog.txt",
+                'logFilePath'   => TESTS_TEMP_DIR . '/MessageQueueTestLog.txt',
                 'appInitParams' => $params,
             ]
         );
@@ -92,7 +93,7 @@ class OrderRepositoryInterfaceTest extends WebapiAbstract
         /** @var Order $beforeUpdateOrder */
         $beforeUpdateOrder = $this->objectManager->get(Order::class)->loadByIncrementId('100000001');
         $requestData = [
-            'entity' => array_merge($data, [OrderInterface::ENTITY_ID => $beforeUpdateOrder->getEntityId()])
+            'entity' => array_merge($data, [OrderInterface::ENTITY_ID => $beforeUpdateOrder->getEntityId()]),
         ];
         if ($isBulk) {
             $requestData = [$requestData];
@@ -101,7 +102,7 @@ class OrderRepositoryInterfaceTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => $isBulk ? self::ASYNC_BULK_SAVE_ORDER : self::ASYNC_SAVE_ORDER,
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
         $this->makeAsyncRequest($serviceInfo, $requestData);
         try {
@@ -129,7 +130,7 @@ class OrderRepositoryInterfaceTest extends WebapiAbstract
                 [$beforeUpdateOrder, $data]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Order update via async webapi failed");
+            $this->fail('Order update via async webapi failed');
         }
     }
 
@@ -143,16 +144,16 @@ class OrderRepositoryInterfaceTest extends WebapiAbstract
         return [
             'update order in bulk mode' => [
                 [
-                    OrderInterface::CUSTOMER_EMAIL => 'customer.email.modified@magento.test'
+                    OrderInterface::CUSTOMER_EMAIL => 'customer.email.modified@magento.test',
                 ],
-                true
+                true,
             ],
             'update order in single mode' => [
                 [
-                    OrderInterface::CUSTOMER_EMAIL => 'customer.email.modified@magento.test'
+                    OrderInterface::CUSTOMER_EMAIL => 'customer.email.modified@magento.test',
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 

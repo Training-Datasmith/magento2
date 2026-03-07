@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryExtensionFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
@@ -15,7 +18,6 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
 use Magento\Eav\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryExtensionFactory;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 \Magento\TestFramework\Helper\Bootstrap::getInstance()->reinitialize();
@@ -43,7 +45,7 @@ $productIds = [10, 20];
 array_shift($options); //remove the first option which is empty
 $visibility = [
     10 => Visibility::VISIBILITY_NOT_VISIBLE,
-    20 => Visibility::VISIBILITY_IN_CATALOG
+    20 => Visibility::VISIBILITY_IN_CATALOG,
 ];
 
 $i = 0;
@@ -65,7 +67,7 @@ foreach ($options as $option) {
             ->setStockData(['use_config_manage_stock' => 1, 'qty' => 100, 'is_qty_decimal' => 0, 'is_in_stock' => 1]);
         $eavAttributeValues = [
             'category_ids' => [333],
-            $attribute->getAttributeCode() => $option->getValue()
+            $attribute->getAttributeCode() => $option->getValue(),
         ];
         foreach ($eavAttributeValues as $eavCategoryAttributeCode => $eavCategoryAttributeValues) {
             $product->setCustomAttribute($eavCategoryAttributeCode, $eavCategoryAttributeValues);
@@ -93,8 +95,8 @@ foreach ($options as $option) {
         $imageContent = $imageContentFactory->create();
         $testImagePath = __DIR__ .'/magento_image.jpg';
         $imageContent->setBase64EncodedData(base64_encode(file_get_contents($testImagePath)));
-        $imageContent->setType("image/jpeg");
-        $imageContent->setName("1.jpg");
+        $imageContent->setType('image/jpeg');
+        $imageContent->setName('1.jpg');
 
         $video = $mediaGalleryEntryFactory->create();
         $video->setDisabled(false);

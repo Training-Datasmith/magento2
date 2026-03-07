@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\SendFriend;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
@@ -15,13 +15,13 @@ use Magento\SendFriend\Model\SendFriend;
 use Magento\SendFriend\Model\SendFriendFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests for send email to friend
  */
 class SendFriendTest extends GraphQlAbstract
 {
-
     /**
      * @var SendFriendFactory
      */
@@ -324,7 +324,7 @@ QUERY;
                         email:"recipient2@mail.com"
                     }
                 ]',
-                'Please provide Name for all of recipients.'
+                'Please provide Name for all of recipients.',
             ],
             [
                 'product_id: 1
@@ -343,7 +343,7 @@ QUERY;
                        email:""
                     }
                 ]',
-                'Please provide Email for all of recipients.'
+                'Please provide Email for all of recipients.',
             ],
         ];
     }
@@ -371,7 +371,7 @@ QUERY;
                         email:"recipient2@mail.com"
                     }
                 ]',
-                'Please provide Name of sender.'
+                'Please provide Name of sender.',
             ],
             [
                 'product_id: 1
@@ -390,7 +390,7 @@ QUERY;
                         email:"recipient2@mail.com"
                     }
                 ]',
-                'Please provide Email of sender.'
+                'Please provide Email of sender.',
             ],
             [
                 'product_id: 1
@@ -409,7 +409,7 @@ QUERY;
                         email:"recipient2@mail.com"
                     }
                 ]',
-                'Please provide Message.'
+                'Please provide Message.',
             ],
         ];
     }

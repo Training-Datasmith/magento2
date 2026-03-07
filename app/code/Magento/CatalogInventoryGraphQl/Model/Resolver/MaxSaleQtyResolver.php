@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventoryGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\CatalogInventoryGraphQl\Model\StockItemService;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\CatalogInventoryGraphQl\Model\StockItemService;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 
 /**
  * Resolver for ProductInterface max quantity

@@ -1,16 +1,17 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Ui\Test\Unit\Component\Listing\Columns;
 
 use Magento\Catalog\Ui\Component\Listing\Columns\AttributeSetId;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\DB\Select;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 
 /**
  * Testing for the AttributeSetID UI column
@@ -41,7 +42,7 @@ class AttributeSetIdTest extends ColumnTest
                 'getName', 'getConfigData', 'setConfigData', 'getMeta', 'getFieldMetaInfo',
                 'getFieldSetMetaInfo', 'getFieldsMetaInfo', 'getPrimaryFieldName',
                 'getRequestFieldName', 'getData', 'addFilter', 'addOrder', 'setLimit',
-                'getSearchCriteria', 'getSearchResult', 'getCollection', 'getSelect'
+                'getSearchCriteria', 'getSearchResult', 'getCollection', 'getSelect',
             ]
         );
 

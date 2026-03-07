@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Integration\Setup;
 
-use Magento\Integration\Model\ConfigBasedIntegrationManager;
-use Magento\Integration\Model\ConsolidatedConfig;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
+use Magento\Integration\Model\ConfigBasedIntegrationManager;
+use Magento\Integration\Model\ConsolidatedConfig;
 
 /**
  * Class Recurring

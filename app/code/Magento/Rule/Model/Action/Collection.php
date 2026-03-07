@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -132,7 +134,7 @@ class Collection extends AbstractAction
             [
                 'name' => $this->elementName . '[actions][' . $this->getId() . '][new_child]',
                 'values' => $this->getNewChildSelectOptions(),
-                'value_name' => $this->getNewChildName()
+                'value_name' => $this->getNewChildName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Newchild::class)
@@ -163,7 +165,7 @@ class Collection extends AbstractAction
      */
     public function asString($format = '')
     {
-        $str = __("Perform following actions");
+        $str = __('Perform following actions');
         return $str;
     }
 

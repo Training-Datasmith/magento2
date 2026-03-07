@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Theme\Model\Theme\StoreUserAgentThemeResolver;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -70,11 +71,11 @@ class StoreUserAgentThemeResolverTest extends TestCase
         return [
             [
                 null,
-                []
+                [],
             ],
             [
                 [],
-                []
+                [],
             ],
             [
                 [
@@ -84,7 +85,7 @@ class StoreUserAgentThemeResolverTest extends TestCase
                         'value' => '1',
                     ],
                 ],
-                ['1']
+                ['1'],
             ],
             [
                 [
@@ -99,8 +100,8 @@ class StoreUserAgentThemeResolverTest extends TestCase
                         'value' => '2',
                     ],
                 ],
-                ['1', '2']
-            ]
+                ['1', '2'],
+            ],
         ];
     }
 }

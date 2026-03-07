@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Tax;
 
 /**
@@ -14,10 +17,10 @@ class Item extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_TYPE               = 'type';
-    const KEY_ITEM_ID            = 'item_id';
-    const KEY_ASSOCIATED_ITEM_ID = 'associated_item_id';
-    const KEY_APPLIED_TAXES      = 'applied_taxes';
+    public const KEY_TYPE               = 'type';
+    public const KEY_ITEM_ID            = 'item_id';
+    public const KEY_ASSOCIATED_ITEM_ID = 'associated_item_id';
+    public const KEY_APPLIED_TAXES      = 'applied_taxes';
     /**#@-*/
 
     /**

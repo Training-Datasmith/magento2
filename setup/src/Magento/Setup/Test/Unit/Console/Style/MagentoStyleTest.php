@@ -268,7 +268,7 @@ class MagentoStyleTest extends TestCase
                 'getFirstArgument', 'hasParameterOption', 'getParameterOption', 'bind',
                 'validate', 'getArguments', 'getArgument', 'setArgument', 'hasArgument',
                 'getOptions', 'getOption', 'setOption', 'hasOption', 'isInteractive', 'setInteractive',
-                '__toString'
+                '__toString',
             ])
             ->disableOriginalConstructor()
             ->getMock();
@@ -278,7 +278,7 @@ class MagentoStyleTest extends TestCase
         $output = $this->getMockBuilder(OutputInterface::class)
             ->onlyMethods([
                 'write', 'writeln', 'setVerbosity', 'getVerbosity', 'isQuiet', 'isVerbose',
-                'isVeryVerbose', 'isDebug', 'setDecorated', 'isDecorated', 'setFormatter', 'getFormatter'
+                'isVeryVerbose', 'isDebug', 'setDecorated', 'isDecorated', 'setFormatter', 'getFormatter',
             ])
             ->disableOriginalConstructor()
             ->getMock();

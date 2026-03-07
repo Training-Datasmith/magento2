@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class PatchRegirtryTest extends TestCase
             ->willReturnMap(
                 [
                     [\SomeDataPatch::class, false],
-                    [\OtherDataPatch::class, false]
+                    [\OtherDataPatch::class, false],
                 ]
             );
 

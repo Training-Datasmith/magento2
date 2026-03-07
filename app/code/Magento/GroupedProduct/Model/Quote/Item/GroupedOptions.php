@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Model\Quote\Item;
 
-use Magento\GroupedProduct\Api\Data\GroupedOptionsInterface;
 use Magento\GroupedProduct\Api\Data\GroupedOptionsExtensionInterface;
+use Magento\GroupedProduct\Api\Data\GroupedOptionsInterface;
 
 /**
  * @inheritDoc

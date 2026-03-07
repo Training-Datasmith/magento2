@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Paypal\Model\Api\Nvp;
 use Magento\PaypalGraphQl\PaypalExpressAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use PHPUnit\Framework\Attributes\DataProvider;
 
@@ -73,7 +74,7 @@ class PaypalExpressTokenTest extends PaypalExpressAbstractTest
         $paypalResponse = [
             'TOKEN' => 'EC-TOKEN1234',
             'CORRELATIONID' => 'c123456789',
-            'ACK' => 'Success'
+            'ACK' => 'Success',
         ];
 
         $this->nvpMock
@@ -121,7 +122,7 @@ class PaypalExpressTokenTest extends PaypalExpressAbstractTest
         if ($paymentMethod == 'payflow_express') {
             $paypalRequest['SOLUTIONTYPE'] = null;
         }
-        $expectedExceptionMessage = "PayPal gateway has rejected request. Sample PayPal Error.";
+        $expectedExceptionMessage = 'PayPal gateway has rejected request. Sample PayPal Error.';
         $expectedException = new LocalizedException(__($expectedExceptionMessage));
 
         $this->nvpMock
@@ -166,7 +167,7 @@ class PaypalExpressTokenTest extends PaypalExpressAbstractTest
         $cartId = $this->quoteIdToMaskedId->execute((int)$cart->getId());
 
         $query = $this->getCreateTokenMutationWithInvalidUrl($cartId, $paymentMethod);
-        $expectedExceptionMessage = "Invalid Url.";
+        $expectedExceptionMessage = 'Invalid Url.';
         $response = $this->graphQlRequest->send($query);
         $responseData = $this->json->unserialize($response->getContent());
         $this->assertArrayHasKey('createPaypalExpressToken', $responseData['data']);

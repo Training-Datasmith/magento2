@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -74,13 +75,13 @@ class SynchronizeIdentitiesTest extends TestCase
             [
                 'entityType' => 'cms_page',
                 'field' => 'content',
-                'entityId' => $pageId
+                'entityId' => $pageId,
             ],
             [
                 'entityType' => 'cms_block',
                 'field' => 'content',
-                'entityId' => $blockId
-            ]
+                'entityId' => $blockId,
+            ],
         ];
 
         $contentIdentities = [];
@@ -89,7 +90,7 @@ class SynchronizeIdentitiesTest extends TestCase
                 [
                     self::ENTITY_TYPE => $mediaContentIdentity[self::ENTITY_TYPE],
                     self::ENTITY_ID => $mediaContentIdentity[self::ENTITY_ID],
-                    self::FIELD => $mediaContentIdentity[self::FIELD]
+                    self::FIELD => $mediaContentIdentity[self::FIELD],
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class BuyRequestBuilder
         $requestData = [
             [
                 'qty' => $wishlistItemData->getQuantity(),
-            ]
+            ],
         ];
 
         foreach ($this->providers as $provider) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,8 +16,8 @@ use Magento\Framework\Phrase;
  */
 class ConfigParser
 {
-    const TYPE_NAME = 'typeName';
-    const METHOD_NAME = 'methodName';
+    public const TYPE_NAME = 'typeName';
+    public const METHOD_NAME = 'methodName';
 
     /**
      * Parse service method name.

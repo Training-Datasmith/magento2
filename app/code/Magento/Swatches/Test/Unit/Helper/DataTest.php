@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,9 +28,9 @@ use Magento\Store\Model\StoreManager;
 use Magento\Swatches\Helper\Data;
 use Magento\Swatches\Model\ResourceModel\Swatch\Collection;
 use Magento\Swatches\Model\SwatchAttributesProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -128,7 +129,7 @@ class DataTest extends TestCase
             \Magento\Catalog\Model\ResourceModel\Product\Collection::class,
             [
                 $this->productMock,
-                $this->productMock
+                $this->productMock,
             ]
         );
 
@@ -180,7 +181,7 @@ class DataTest extends TestCase
                 'swatchCollectionFactory' => $this->swatchCollectionFactoryMock,
                 'imageUrlBuilder' => $this->imageUrlBuilderMock,
                 'serializer' => $serializer,
-                'swatchAttributesProvider' => $this->swatchAttributesProvider
+                'swatchAttributesProvider' => $this->swatchAttributesProvider,
             ]
         );
         $this->objectManager->setBackwardCompatibleProperty(
@@ -198,23 +199,23 @@ class DataTest extends TestCase
         $additionalData = [
             'swatch_input_type' => 'visual',
             'update_product_preview_image' => 1,
-            'use_product_image_for_swatch' => 0
+            'use_product_image_for_swatch' => 0,
         ];
         return [
             [
                 json_encode($additionalData),
                 [
                     'getData' => 1,
-                    'setData' => 3
-                ]
+                    'setData' => 3,
+                ],
             ],
             [
                 null,
                 [
                     'getData' => 1,
-                    'setData' => 0
-                ]
-            ]
+                    'setData' => 0,
+                ],
+            ],
         ];
     }
 
@@ -253,7 +254,7 @@ class DataTest extends TestCase
         $additionalData = [
             'swatch_input_type' => 'visual',
             'update_product_preview_image' => 1,
-            'use_product_image_for_swatch' => 0
+            'use_product_image_for_swatch' => 0,
         ];
         return [
             [
@@ -261,17 +262,17 @@ class DataTest extends TestCase
                 [
                     'swatch_input_type' => 'visual',
                     'update_product_preview_image' => 1,
-                    'use_product_image_for_swatch' => 1
-                ]
+                    'use_product_image_for_swatch' => 1,
+                ],
             ],
             [
                 null,
                 [
                     'swatch_input_type' => null,
                     'update_product_preview_image' => 0,
-                    'use_product_image_for_swatch' => 0
-                ]
-            ]
+                    'use_product_image_for_swatch' => 0,
+                ],
+            ],
         ];
     }
 
@@ -304,20 +305,20 @@ class DataTest extends TestCase
                     'image' => '/m/a/magento.png',
                     'small_image' => '/m/a/magento.png',
                     'thumbnail' => '/m/a/magento.png',
-                    'swatch_image' => '/m/a/magento.png' //important
+                    'swatch_image' => '/m/a/magento.png', //important
                 ],
                 Product::class,
-                ['color' => 31]
+                ['color' => 31],
             ],
             [
                 [
                     'image' => '/m/a/magento.png',
                     'small_image' => '/m/a/magento.png',
-                    'thumbnail' => '/m/a/magento.png'
+                    'thumbnail' => '/m/a/magento.png',
                 ],
                 false,
-                ['size' => 31]
-            ]
+                ['size' => 31],
+            ],
         ];
     }
 
@@ -371,20 +372,20 @@ class DataTest extends TestCase
                     'image' => '/m/a/magento.png', //important
                     'small_image' => '/m/a/magento.png',
                     'thumbnail' => '/m/a/magento.png',
-                    'swatch_image' => '/m/a/magento.png'
+                    'swatch_image' => '/m/a/magento.png',
                 ],
                 Product::class,
-                ['color' => 31]
+                ['color' => 31],
             ],
             [
                 [
                     'small_image' => '/m/a/magento.png',
                     'thumbnail' => '/m/a/magento.png',
-                    'swatch_image' => '/m/a/magento.png'
+                    'swatch_image' => '/m/a/magento.png',
                 ],
                 false,
-                ['size' => 31]
-            ]
+                ['size' => 31],
+            ],
         ];
     }
 
@@ -469,22 +470,22 @@ class DataTest extends TestCase
                     'image' => '/m/a/magento1.png',
                     'small_image' => '/m/a/magento2.png',
                     'thumbnail' => '/m/a/magento3.png',
-                    'swatch_image' => '/m/a/magento4.png'
+                    'swatch_image' => '/m/a/magento4.png',
                 ],
-                '/m/a/magento1.png'
+                '/m/a/magento1.png',
             ],
             [
                 [
                     'small_image' => '/m/a/magento4.png',
                     'thumbnail' => '/m/a/magento5.png',
-                    'swatch_image' => '/m/a/magento6.png'
+                    'swatch_image' => '/m/a/magento6.png',
                 ],
-                '/m/a/magento4.png'
+                '/m/a/magento4.png',
             ],
             [
                 [],
-                ''
-            ]
+                '',
+            ],
         ];
     }
 
@@ -612,28 +613,28 @@ class DataTest extends TestCase
                     'image' => '',
                     'small_image' => '',
                     'thumbnail' => '',
-                    'swatch_image' => ''
-                ]
+                    'swatch_image' => '',
+                ],
             ],
             [
                 $productMock,
                 [
                     'small_image' => 'img1.png',
-                    'thumbnail' => 'img1.png'
-                ]
+                    'thumbnail' => 'img1.png',
+                ],
             ],
             [
                 $productMock,
-                []
+                [],
             ],
             [
                 $productMock,
                 [
                     'image' => 'img1.png',
                     'small_image' => 'img1.png',
-                    'thumbnail' => 'img1.png'
-                ]
-            ]
+                    'thumbnail' => 'img1.png',
+                ],
+            ],
         ];
     }
 
@@ -675,10 +676,10 @@ class DataTest extends TestCase
                     ['value' => 45, 'label' => 'green'],
                     ['value' => 46, 'label' => 'yellow'],
                     ['value' => 47, 'label' => 'red'],
-                    ['value' => 48, 'label' => 'blue']
+                    ['value' => 48, 'label' => 'blue'],
                 ],
                 [
-                    'attribute_id' => 52
+                    'attribute_id' => 52,
                 ],
                 [
                     52 => [
@@ -687,29 +688,29 @@ class DataTest extends TestCase
                             45 => 'green',
                             46 => 'yellow',
                             47 => 'red',
-                            48 => 'blue'
-                        ]
-                    ]
-                ]
+                            48 => 'blue',
+                        ],
+                    ],
+                ],
             ],
             [
                 [
                     ['value' => 45, 'label' => 'green'],
-                    ['value' => 46, 'label' => 'yellow']
+                    ['value' => 46, 'label' => 'yellow'],
                 ],
                 [
-                    'attribute_id' => 324
+                    'attribute_id' => 324,
                 ],
                 [
                     324 => [
                         'attribute_id' => 324,
                         'options' => [
                             45 => 'green',
-                            46 => 'yellow'
-                        ]
-                    ]
-                ]
-            ]
+                            46 => 'yellow',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -727,15 +728,15 @@ class DataTest extends TestCase
                 'store_id' => 1,
                 'value' => '#324234',
                 'option_id' => 35,
-                'id' => 423
+                'id' => 423,
             ],
             [
                 'type' => 0,
                 'store_id' => 0,
                 'value' => 'test2',
                 'option_id' => 35,
-                'id' => 424
-            ]
+                'id' => 424,
+            ],
         ];
 
         $swatchMock
@@ -786,15 +787,15 @@ class DataTest extends TestCase
                 'store_id' => 1,
                 'value' => 'test',
                 'option_id' => 35,
-                'id' => 487
+                'id' => 487,
             ],
             [
                 'type' => 0,
                 'store_id' => 1,
                 'value' => 'test2',
                 'option_id' => 36,
-                'id' => 488
-            ]
+                'id' => 488,
+            ],
         ];
         $swatchMock
             ->method('offsetGet')
@@ -849,11 +850,11 @@ class DataTest extends TestCase
             'store_id' => 0,
             'value' => 'test_test',
             'option_id' => 35,
-            'id' => 423
+            'id' => 423,
         ];
         $swatchMock
             ->method('offsetGet')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['type'] => $optionsData['type'],
                 ['store_id'] => $optionsData['store_id'],
                 ['option_id'] => $optionsData['option_id']

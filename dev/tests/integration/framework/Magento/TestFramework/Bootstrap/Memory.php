@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Bootstrap of the memory monitoring
  */
+
 namespace Magento\TestFramework\Bootstrap;
 
 class Memory
@@ -14,7 +17,7 @@ class Memory
     /**
      * Policy to perform requested actions on shutdown
      */
-    const POLICY_SHUTDOWN = 'register_shutdown_function';
+    public const POLICY_SHUTDOWN = 'register_shutdown_function';
 
     /**
      * @var \Magento\TestFramework\MemoryLimit

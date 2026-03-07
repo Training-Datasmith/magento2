@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product\Gallery;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
@@ -34,7 +37,7 @@ class Upload extends \Magento\Backend\App\Action implements HttpPostActionInterf
         'jpg' => 'image/jpg',
         'jpeg' => 'image/jpeg',
         'gif' => 'image/gif',
-        'png' => 'image/png'
+        'png' => 'image/png',
     ];
 
     /**

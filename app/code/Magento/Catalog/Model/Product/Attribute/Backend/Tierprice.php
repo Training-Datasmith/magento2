@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Model\Product\Attribute\Backend;
 
 use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
@@ -195,7 +198,7 @@ class Tierprice extends \Magento\Catalog\Model\Product\Attribute\Backend\GroupPr
                     [
                         'value_id' => $oldValues[$key]['price_id'],
                         'value' => $value['value'],
-                        'percentage_value' => $this->getPercentage($value)
+                        'percentage_value' => $this->getPercentage($value),
                     ]
                 );
                 $this->_getResource()->savePriceData($price);

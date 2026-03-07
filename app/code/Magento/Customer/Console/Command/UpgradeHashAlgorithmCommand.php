@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Console\Command;
 
 use Magento\Customer\Model\Customer;
-use Magento\Framework\Encryption\Encryptor;
 use Magento\Customer\Model\ResourceModel\Customer\Collection;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
+use Magento\Framework\Encryption\Encryptor;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -73,11 +76,11 @@ class UpgradeHashAlgorithmCommand extends Command
                 $hash = implode(Encryptor::DELIMITER, [$hash, $salt, $version .Encryptor::DELIMITER .$newVersion]);
                 $customer->setPasswordHash($hash);
                 $customer->save();
-                $output->write(".");
+                $output->write('.');
             }
         }
-        $output->writeln(".");
-        $output->writeln("<info>Finished</info>");
+        $output->writeln('.');
+        $output->writeln('<info>Finished</info>');
 
         return 0;
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -55,7 +57,7 @@ class GroupedTest extends \PHPUnit\Framework\TestCase
         $expectedResult = [
             'Simple Product' => 22,
             'Virtual Product' => 10,
-            'Grouped Product' => 0
+            'Grouped Product' => 0,
         ];
 
         /** @var $product \Magento\Catalog\Model\Product */

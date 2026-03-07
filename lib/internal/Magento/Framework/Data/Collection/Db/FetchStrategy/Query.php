@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Retrieving collection data by querying a database
  */
+
 namespace Magento\Framework\Data\Collection\Db\FetchStrategy;
 
 use Magento\Framework\DB\Select;

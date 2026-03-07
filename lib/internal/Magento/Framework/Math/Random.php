@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Math;
 
-use \Exception;
+use Exception;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 
@@ -92,7 +95,7 @@ class Random
      * @return string
      * @throws Exception
      */
-    public function getRandomBytes(int $length) : string
+    public function getRandomBytes(int $length): string
     {
         return base64_encode(random_bytes($length));
     }

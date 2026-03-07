@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\State;
 use Magento\Framework\Backup\Filesystem\Iterator\Filter;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Filter\ExcludeFilter;
-use Magento\Framework\App\State;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Checks permissions to files and folders.
@@ -93,7 +96,7 @@ class FilePermissions
             $data = [
                 DirectoryList::CONFIG,
                 DirectoryList::VAR_DIR,
-                DirectoryList::MEDIA
+                DirectoryList::MEDIA,
             ];
             if ($this->state->getMode() !== State::MODE_PRODUCTION) {
                 $data[] = DirectoryList::GENERATED;
@@ -288,7 +291,7 @@ class FilePermissions
     {
         $writableDirectories = [
             DirectoryList::CONFIG,
-            DirectoryList::VAR_DIR
+            DirectoryList::VAR_DIR,
         ];
 
         $requireWritePermission = [];

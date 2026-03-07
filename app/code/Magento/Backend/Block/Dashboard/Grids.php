@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class Grids extends Tabs
                 'content' => $this->getLayout()->createBlock(
                     Ordered::class
                 )->toHtml(),
-                'active' => true
+                'active' => true,
             ]
         );
 
@@ -69,7 +70,7 @@ class Grids extends Tabs
             [
                 'label' => __('Most Viewed Products'),
                 'url' => $this->getUrl('adminhtml/*/productsViewed', ['_current' => true]),
-                'class' => 'ajax'
+                'class' => 'ajax',
             ]
         );
 
@@ -78,7 +79,7 @@ class Grids extends Tabs
             [
                 'label' => __('New Customers'),
                 'url' => $this->getUrl('adminhtml/*/customersNewest', ['_current' => true]),
-                'class' => 'ajax'
+                'class' => 'ajax',
             ]
         );
 
@@ -87,7 +88,7 @@ class Grids extends Tabs
             [
                 'label' => __('Customers'),
                 'url' => $this->getUrl('adminhtml/*/customersMost', ['_current' => true]),
-                'class' => 'ajax'
+                'class' => 'ajax',
             ]
         );
 

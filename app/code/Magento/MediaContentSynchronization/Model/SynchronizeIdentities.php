@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,6 @@ declare(strict_types=1);
 namespace Magento\MediaContentSynchronization\Model;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\FlagManager;
-use Magento\Framework\Stdlib\DateTime\DateTimeFactory;
 use Magento\MediaContentSynchronizationApi\Api\SynchronizeIdentitiesInterface;
 use Magento\MediaContentSynchronizationApi\Model\SynchronizeIdentitiesPool;
 use Psr\Log\LoggerInterface;
@@ -62,7 +61,7 @@ class SynchronizeIdentities implements SynchronizeIdentitiesInterface
                 __(
                     'Failed to execute the following content synchronizers: %synchronizers',
                     [
-                        'synchronizers' => implode(', ', $failed)
+                        'synchronizers' => implode(', ', $failed),
                     ]
                 )
             );

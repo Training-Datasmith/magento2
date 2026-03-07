@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Data;
 
-use Magento\SalesRule\Api\Data\DiscountDataInterface;
-use Magento\SalesRule\Api\Data\DiscountAppliedToInterface;
 use Magento\Framework\Api\ExtensionAttributesInterface;
+use Magento\SalesRule\Api\Data\DiscountAppliedToInterface;
+use Magento\SalesRule\Api\Data\DiscountDataInterface;
 
 /**
  * Discount Data Model
@@ -18,7 +19,6 @@ class DiscountData extends \Magento\Framework\Api\AbstractExtensibleObject imple
     DiscountDataInterface,
     DiscountAppliedToInterface
 {
-
     public const AMOUNT = 'amount';
     public const BASE_AMOUNT = 'base_amount';
     public const ORIGINAL_AMOUNT = 'original_amount';

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class CheckmoTest extends TestCase
     {
         return [
             ['payable', 'payable'],
-            ['', null]
+            ['', null],
         ];
     }
 
@@ -110,7 +111,7 @@ class CheckmoTest extends TestCase
     {
         return [
             ['blah@blah.com', 'blah@blah.com'],
-            ['', null]
+            ['', null],
         ];
     }
 

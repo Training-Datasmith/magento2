@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Ui\Component\Modal;
-use Magento\Ui\Component\Form;
-use Magento\Ui\Component\Container;
 use Magento\Framework\UrlInterface;
+use Magento\Ui\Component\Container;
+use Magento\Ui\Component\Form;
+use Magento\Ui\Component\Modal;
 
 /**
  * Data provider for Attribute Set handler in the Configurable products
  */
 class ConfigurableAttributeSetHandler extends AbstractModifier
 {
-    const ATTRIBUTE_SET_HANDLER_MODAL = 'configurable_attribute_set_handler_modal';
+    public const ATTRIBUTE_SET_HANDLER_MODAL = 'configurable_attribute_set_handler_modal';
 
     /**
      * @var UrlInterface
@@ -172,7 +175,7 @@ class ConfigurableAttributeSetHandler extends AbstractModifier
                                     ],
                                 ],
                                 'title' => __('Confirm'),
-                                'sortOrder' => 10
+                                'sortOrder' => 10,
                             ],
                         ],
                     ],
@@ -205,7 +208,7 @@ class ConfigurableAttributeSetHandler extends AbstractModifier
                             'disabled' =>
                                 '!ns = ${ $.ns }, index = affectedAttributeSetNew:checked',
                             '__disableTmpl' => ['disabled' => false, 'visible' => false],
-                        ]
+                        ],
                     ],
                 ],
             ],

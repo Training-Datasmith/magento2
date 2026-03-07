@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model\ResourceModel;
 
 class AdminSessionInfoTest extends \PHPUnit\Framework\TestCase
@@ -40,7 +43,7 @@ class AdminSessionInfoTest extends \PHPUnit\Framework\TestCase
             'user_id'       => 1,
             'status'        => 1,
             'created_at'    => '2016-01-21 15:00:00',
-            'updated_at'    => '2016-01-21 18:00:00'
+            'updated_at'    => '2016-01-21 18:00:00',
         ];
     }
 

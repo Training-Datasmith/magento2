@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Framework\Url\Test\Unit;
 
 use Magento\Framework\Url\SecurityInfo;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class SecurityInfoTest extends TestCase
 {
@@ -50,7 +51,7 @@ class SecurityInfoTest extends TestCase
             ['/cart', true],
             ['/cart/add', true],
             ['/cart/remove', false],
-            ['/customer', false]
+            ['/customer', false],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,13 +10,13 @@ namespace Magento\GraphQl\Quote;
 
 use Exception;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
+use Magento\Downloadable\Test\Fixture\DownloadableProduct as DownloadableProductFixture;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
 use Magento\Quote\Test\Fixture\QuoteIdMask;
-use Magento\Downloadable\Test\Fixture\DownloadableProduct as DownloadableProductFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -56,19 +57,19 @@ class DownloadableProductCartItemPriceTest extends GraphQlAbstract
                 [
                     'title' => 'Example 1',
                     'price' => 0.00,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
                 [
                     'title' => 'Example 2',
                     'price' => 0.00,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
-            ]
+            ],
         ], as: 'product'),
         DataFixture(CustomerFixture::class, ['email' => 'customer@example.com'], as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'cart'),
         DataFixture(AddProductToCartFixture::class, [
-            'cart_id' => '$cart.id$', 'product_id' => '$product.id$', 'qty' => 1
+            'cart_id' => '$cart.id$', 'product_id' => '$product.id$', 'qty' => 1,
         ]),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
     ]
@@ -114,28 +115,28 @@ class DownloadableProductCartItemPriceTest extends GraphQlAbstract
                             'prices' => [
                                 'original_item_price' => [
                                     'value' => 100,
-                                    'currency' => 'USD'
+                                    'currency' => 'USD',
                                 ],
                                 'original_row_total' => [
                                     'value' => 100,
-                                    'currency' => 'USD'
-                                ]
+                                    'currency' => 'USD',
+                                ],
                             ],
                             'product' => [
                                 'price_range' => [
                                     'maximum_price' => [
                                         'regular_price' => [
-                                            'value' => 100
+                                            'value' => 100,
                                         ],
                                         'final_price' => [
-                                            'value' => 100
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'value' => 100,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($query, [], '', $this->getCustomerAuthHeaders())
         );
@@ -158,14 +159,14 @@ class DownloadableProductCartItemPriceTest extends GraphQlAbstract
                 [
                     'title' => 'Example 1',
                     'price' => 10,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
                 [
                     'title' => 'Example 2',
                     'price' => 10,
-                    'link_type' => 'url'
+                    'link_type' => 'url',
                 ],
-            ]
+            ],
         ], as: 'product'),
         DataFixture(CustomerFixture::class, ['email' => 'customer@example.com'], as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'cart'),
@@ -237,29 +238,29 @@ class DownloadableProductCartItemPriceTest extends GraphQlAbstract
                                 'prices' => [
                                     'original_item_price' => [
                                         'value' => 10,
-                                        'currency' => 'USD'
+                                        'currency' => 'USD',
                                     ],
                                     'original_row_total' => [
                                         'value' => 10,
-                                        'currency' => 'USD'
-                                    ]
+                                        'currency' => 'USD',
+                                    ],
                                 ],
                                 'product' => [
                                     'price_range' => [
                                         'maximum_price' => [
                                             'regular_price' => [
-                                                'value' => 20
+                                                'value' => 20,
                                             ],
                                             'final_price' => [
-                                                'value' => 20
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                                'value' => 20,
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlMutation($query, [], '', $this->getCustomerAuthHeaders())
         );

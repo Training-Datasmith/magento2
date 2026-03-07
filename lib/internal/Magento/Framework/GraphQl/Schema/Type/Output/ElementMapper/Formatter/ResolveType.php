@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\Formatter;
 
+use Magento\Framework\GraphQl\Config\ConfigElementInterface;
 use Magento\Framework\GraphQl\Config\Element\InterfaceType;
 use Magento\Framework\GraphQl\Config\Element\UnionType;
-use Magento\Framework\GraphQl\Config\ConfigElementInterface;
-use Magento\Framework\GraphQl\Schema\Type\OutputTypeInterface;
 use Magento\Framework\GraphQl\Schema\Type\Output\ElementMapper\FormatterInterface;
+use Magento\Framework\GraphQl\Schema\Type\OutputTypeInterface;
 use Magento\Framework\ObjectManagerInterface;
 
 /**
@@ -35,7 +36,7 @@ class ResolveType implements FormatterInterface
     /**
      * @inheritDoc
      */
-    public function format(ConfigElementInterface $configElement, OutputTypeInterface $outputType) : array
+    public function format(ConfigElementInterface $configElement, OutputTypeInterface $outputType): array
     {
         $config = [];
         if ($configElement instanceof InterfaceType || $configElement instanceof UnionType) {

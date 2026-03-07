@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Block\Adminhtml\Import\Edit;
 
 use Magento\Framework\App\ObjectManager;
@@ -137,7 +140,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'disabled' => true,
                     'values' => [
                         ProcessingErrorAggregatorInterface::VALIDATION_STRATEGY_STOP_ON_ERROR => __('Stop on Error'),
-                        ProcessingErrorAggregatorInterface::VALIDATION_STRATEGY_SKIP_ERRORS => __('Skip error entries')
+                        ProcessingErrorAggregatorInterface::VALIDATION_STRATEGY_SKIP_ERRORS => __('Skip error entries'),
                     ],
                     'after_element_html' => $this->getDownloadSampleFileHtml(),
                 ]

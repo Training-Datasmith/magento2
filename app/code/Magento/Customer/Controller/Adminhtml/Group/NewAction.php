@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Group;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Customer\Controller\RegistryConstants;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 
 class NewAction extends \Magento\Customer\Controller\Adminhtml\Group implements HttpGetActionInterface
 {

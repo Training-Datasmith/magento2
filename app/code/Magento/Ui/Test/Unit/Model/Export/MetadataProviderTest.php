@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -408,13 +409,13 @@ class MetadataProviderTest extends TestCase
                     [
                         'value' => 'value_1',
                         'label' => 'label_1',
-                    ]
+                    ],
                 ],
                 'columnsOptions' => [
                     [
                         'value' => 'value_1',
                         'label' => 'label_1',
-                    ]
+                    ],
                 ],
                 'expected' => [
                     'filter_name' => [
@@ -422,7 +423,7 @@ class MetadataProviderTest extends TestCase
                     ],
                     'column_name' => [
                         'value_1' => 'label_1',
-                    ]
+                    ],
                 ],
             ],
             [
@@ -436,7 +437,7 @@ class MetadataProviderTest extends TestCase
                             ],
                         ],
                         'label' => 'label_1',
-                    ]
+                    ],
                 ],
                 'columnsOptions' => [
                     [
@@ -447,7 +448,7 @@ class MetadataProviderTest extends TestCase
                             ],
                         ],
                         'label' => 'label_1',
-                    ]
+                    ],
                 ],
                 'expected' => [
                     'filter_name' => [
@@ -455,7 +456,7 @@ class MetadataProviderTest extends TestCase
                     ],
                     'column_name' => [
                         'value_2' => 'label_1label_2',
-                    ]
+                    ],
                 ],
             ],
             [
@@ -468,20 +469,20 @@ class MetadataProviderTest extends TestCase
                                     [
                                         'value' => 'value_3',
                                         'label' => 'label_3',
-                                    ]
+                                    ],
                                 ],
                                 'label' => 'label_2',
                             ],
                         ],
                         'label' => 'label_1',
-                    ]
+                    ],
                 ],
                 'columnsOptions' => [],
                 'expected' => [
                     'filter_name' => [
                         'value_3' => 'label_1label_2label_3',
                     ],
-                    'column_name' => []
+                    'column_name' => [],
                 ],
             ],
         ];

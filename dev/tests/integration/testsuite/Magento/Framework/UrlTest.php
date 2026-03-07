@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 use Laminas\Stdlib\Parameters;
@@ -191,12 +194,12 @@ class UrlTest extends \PHPUnit\Framework\TestCase
             [['_type' => \Magento\Framework\UrlInterface::URL_TYPE_WEB], 'http://sample.com/base_path/'],
             [
                 ['_type' => \Magento\Framework\UrlInterface::URL_TYPE_LINK],
-                'http://sample.com/base_link_path/index.php/'
+                'http://sample.com/base_link_path/index.php/',
             ],
             [
                 ['_type' => \Magento\Framework\UrlInterface::URL_TYPE_LINK, '_secure' => 1],
-                'https://sample.com/base_link_path/index.php/'
-            ]
+                'https://sample.com/base_link_path/index.php/',
+            ],
         ];
     }
 
@@ -336,7 +339,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_2/'
+                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -344,7 +347,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/a_1/'
+                'http://localhost/index.php/r_1/c_1/a_1/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -352,7 +355,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/a_1/p_2/v_2/'
+                'http://localhost/index.php/r_1/c_1/a_1/p_2/v_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -360,7 +363,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/a_1/'
+                'http://localhost/index.php/r_1/c_1/a_1/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -368,7 +371,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/a_2/'
+                'http://localhost/index.php/r_1/c_1/a_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -376,7 +379,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_1/'
+                'http://localhost/index.php/r_1/c_1/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -384,7 +387,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/c_2/'
+                'http://localhost/index.php/r_1/c_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -392,7 +395,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_1/'
+                'http://localhost/index.php/r_1/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -400,7 +403,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/r_2/'
+                'http://localhost/index.php/r_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -408,7 +411,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
-                'http://localhost/index.php/'
+                'http://localhost/index.php/',
             ],
             [
                 'r_1/c_1/a_1',
@@ -416,7 +419,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/r_1/c_1/a_1/',
-                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/'
+                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/',
             ],
             [
                 null,
@@ -424,7 +427,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 null,
                 null,
                 'http://localhost/index.php/',
-                'http://localhost/index.php/r_1/c_1/a_1/'
+                'http://localhost/index.php/r_1/c_1/a_1/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -432,7 +435,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 ['p_2' => 'v_2'],
                 ['p_2' => 'v_2'],
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/p_2/v_2/',
-                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/p_2/v_2/'
+                'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/p_2/v_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -440,7 +443,7 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 ['p_2' => 'v_2'],
                 ['p_2' => 'v_2'],
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/p_2/v_2/',
-                'http://localhost/index.php/r_1/c_1/a_1/p_2/v_2/'
+                'http://localhost/index.php/r_1/c_1/a_1/p_2/v_2/',
             ],
             [
                 'r_1/c_1/a_1/p_1/v_1',
@@ -448,8 +451,8 @@ class UrlTest extends \PHPUnit\Framework\TestCase
                 ['p_2' => 'v_2'],
                 ['p_1' => 'v_1', 'p_2' => 'v_2'],
                 'http://localhost/index.php/r_1/c_1/a_1/p_1/v_1/p_2/v_2/',
-                'http://localhost/index.php/p_1/v_1/p_2/v_2/'
-            ]
+                'http://localhost/index.php/p_1/v_1/p_2/v_2/',
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Filter\ArrayFilter;
 use Magento\Framework\Filter\Sprintf;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AbstractFactoryTest extends TestCase
 {
@@ -57,7 +58,7 @@ class AbstractFactoryTest extends TestCase
             ->setConstructorArgs([$this->_objectManager])
             ->onlyMethods([])
             ->getMock();
-            
+
         $property = new \ReflectionProperty(AbstractFactory::class, 'invokableClasses');
         $property->setValue($this->_factory, $this->_invokableList);
 
@@ -99,7 +100,7 @@ class AbstractFactoryTest extends TestCase
         return [
             'shared' => [Template::class, true],
             'not shared' => [ArrayFilter::class, false],
-            'default value' => [Sprintf::class, true]
+            'default value' => [Sprintf::class, true],
         ];
     }
 
@@ -147,7 +148,7 @@ class AbstractFactoryTest extends TestCase
             'not shared with args' => ['arrayFilter', ['123', '231'], false],
             'not shared without args' => ['arrayFilter', [], true],
             'shared' => ['template', [], true],
-            'default shared' => ['sprintf', [], true]
+            'default shared' => ['sprintf', [], true],
         ];
     }
 }

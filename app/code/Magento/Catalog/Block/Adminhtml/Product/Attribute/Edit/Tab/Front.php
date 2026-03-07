@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,8 +11,8 @@ namespace Magento\Catalog\Block\Adminhtml\Product\Attribute\Edit\Tab;
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Form;
 use Magento\Backend\Block\Widget\Form\Generic;
-use Magento\Config\Model\Config\Source\Yesno;
 use Magento\Catalog\Model\Entity\Attribute;
+use Magento\Config\Model\Config\Source\Yesno;
 use Magento\Eav\Block\Adminhtml\Attribute\PropertyLocker;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Exception\LocalizedException;
@@ -145,7 +147,7 @@ class Front extends Generic
                 'name' => 'is_visible_on_front',
                 'label' => __('Visible on Catalog Pages on Storefront'),
                 'title' => __('Visible on Catalog Pages on Storefront'),
-                'values' => $yesnoSource
+                'values' => $yesnoSource,
             ]
         );
 
@@ -157,7 +159,7 @@ class Front extends Generic
                 'label' => __('Used in Product Listing'),
                 'title' => __('Used in Product Listing'),
                 'note' => __('Depends on design theme.'),
-                'values' => $yesnoSource
+                'values' => $yesnoSource,
             ]
         );
 
@@ -169,7 +171,7 @@ class Front extends Generic
                 'label' => __('Used for Sorting in Product Listing'),
                 'title' => __('Used for Sorting in Product Listing'),
                 'note' => __('Depends on design theme.'),
-                'values' => $yesnoSource
+                'values' => $yesnoSource,
             ]
         );
 
@@ -181,16 +183,16 @@ class Front extends Generic
         $dependencies = $this->getLayout()->createBlock(
             \Magento\Backend\Block\Widget\Form\Element\Dependence::class
         )->addFieldMap(
-            "is_html_allowed_on_front",
+            'is_html_allowed_on_front',
             'html_allowed_on_front'
         )->addFieldMap(
-            "frontend_input",
+            'frontend_input',
             'frontend_input_type'
         )->addFieldMap(
-            "is_searchable",
+            'is_searchable',
             'searchable'
         )->addFieldMap(
-            "is_visible_in_advanced_search",
+            'is_visible_in_advanced_search',
             'advanced_search'
         )->addFieldDependence(
             'advanced_search',

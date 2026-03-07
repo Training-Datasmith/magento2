@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,13 +10,12 @@ namespace Magento\Multishipping\Test\Unit\Model\Cart;
 
 use Magento\Checkout\Controller\Cart;
 use Magento\Checkout\Controller\Sidebar\UpdateItemQty;
-use Magento\Checkout\Model\Session;
 use Magento\Checkout\Model\Cart as CartModel;
+use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Multishipping\Model\Cart\MultishippingClearItemAddress;
 use Magento\Multishipping\Model\DisableMultishipping;
 use Magento\Quote\Api\CartRepositoryInterface;
@@ -96,7 +96,7 @@ class MultishippingClearItemAddressTest extends TestCase
             'removeAddress',
             'getShippingAddress',
             'getCustomer',
-            'addShippingAddress'
+            'addShippingAddress',
         ]);
         $requestMock->method('getActionName')
             ->willReturn($actionName);
@@ -161,7 +161,7 @@ class MultishippingClearItemAddressTest extends TestCase
         return [
             'test with `add` action and multi shipping address enabled' => ['add', 100, 200, true],
             'test with `add` action and multi shipping address disabled' => ['add', 100, 200, false],
-            'test with `edit` action and multi shipping address disabled' => ['add', 110, 200, false]
+            'test with `edit` action and multi shipping address disabled' => ['add', 110, 200, false],
         ];
     }
 }

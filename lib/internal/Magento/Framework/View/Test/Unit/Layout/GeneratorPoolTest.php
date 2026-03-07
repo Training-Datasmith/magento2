@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\View\Layout\Element
  */
+
 namespace Magento\Framework\View\Test\Unit\Layout;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -17,9 +19,9 @@ use Magento\Framework\View\Layout\GeneratorPool;
 use Magento\Framework\View\Layout\Reader\Context;
 use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\ScheduledStructure\Helper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class GeneratorPoolTest extends TestCase
 {
@@ -86,7 +88,7 @@ class GeneratorPoolTest extends TestCase
             GeneratorPool::class,
             [
                 'helper' => $this->helperMock,
-                'generators' => $this->getGeneratorsMocks()
+                'generators' => $this->getGeneratorsMocks(),
             ]
         );
     }
@@ -130,9 +132,9 @@ class GeneratorPoolTest extends TestCase
         }
         $invocation = $this->structureMock->expects($this->any())->method('reorderChildElement');
         $invocation->willReturnCallback(function ($arg) use ($reorderMap) {
-                static $callCount = 0;
-                $expectedId = $reorderMap[$callCount][0];
-                $callCount++;
+            static $callCount = 0;
+            $expectedId = $reorderMap[$callCount][0];
+            $callCount++;
             if ($expectedId == $arg) {
                 return null;
             }

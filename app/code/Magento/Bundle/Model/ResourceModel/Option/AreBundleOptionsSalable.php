@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -83,7 +84,7 @@ class AreBundleOptionsSalable
             ['child_status_global' => $statusAttr->getBackendTable()],
             "child_status_global.{$linkField} = child_products.{$linkField}"
             . " AND child_status_global.attribute_id = {$statusAttr->getAttributeId()}"
-            . " AND child_status_global.store_id = 0",
+            . ' AND child_status_global.store_id = 0',
             []
         )->joinLeft(
             ['child_status_store' => $statusAttr->getBackendTable()],

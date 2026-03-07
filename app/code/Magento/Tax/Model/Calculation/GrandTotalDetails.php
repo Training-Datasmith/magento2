@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Tax\Model\Calculation;
 
-use Magento\Tax\Api\Data\GrandTotalDetailsInterface;
 use Magento\Framework\Api\AbstractSimpleObject;
+use Magento\Tax\Api\Data\GrandTotalDetailsInterface;
 
 /**
  * Grand Total Tax Details Model
@@ -17,9 +19,9 @@ class GrandTotalDetails extends AbstractSimpleObject implements GrandTotalDetail
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const AMOUNT = 'amount';
-    const RATES = 'rates';
-    const GROUP_ID = 'group_id';
+    public const AMOUNT = 'amount';
+    public const RATES = 'rates';
+    public const GROUP_ID = 'group_id';
     /**#@-*/
 
     /**

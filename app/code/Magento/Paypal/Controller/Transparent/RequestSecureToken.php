@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Transparent;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
@@ -105,7 +108,7 @@ class RequestSecureToken extends \Magento\Framework\App\Action\Action implements
                 [
                     $this->transparent->getCode() => ['fields' => $token->getData()],
                     'success' => true,
-                    'error' => false
+                    'error' => false,
                 ]
             );
         } catch (\Exception $e) {
@@ -124,7 +127,7 @@ class RequestSecureToken extends \Magento\Framework\App\Action\Action implements
             [
                 'success' => false,
                 'error' => true,
-                'error_messages' => __('Your payment has been declined. Please try again.')
+                'error_messages' => __('Your payment has been declined. Please try again.'),
             ]
         );
     }

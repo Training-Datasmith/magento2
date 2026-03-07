@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -20,14 +21,14 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Indexer\IndexerInterface;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\Page;
 use Magento\Indexer\Controller\Adminhtml\Indexer\MassInvalidate;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Mass invalidate action
@@ -161,7 +162,7 @@ class MassInvalidateTest extends TestCase
                 'setIsLayoutLoaded',
                 'isLayoutLoaded',
                 'getConfig',
-                'getTitle'
+                'getTitle',
             ]
         );
 
@@ -171,7 +172,7 @@ class MassInvalidateTest extends TestCase
         );
         $this->session->expects($this->any())->method('setIsUrlNotice')->willReturn($this->objectManager);
         $this->actionFlag = $this->createPartialMock(ActionFlag::class, ['get']);
-        $this->actionFlag->expects($this->any())->method("get")->willReturn($this->objectManager);
+        $this->actionFlag->expects($this->any())->method('get')->willReturn($this->objectManager);
         $this->objectManager = $this->createPartialMockWithReflection(
             ObjectManager::class,
             ['get']
@@ -191,7 +192,7 @@ class MassInvalidateTest extends TestCase
         $resultRedirectFactory->expects($this->any())->method('create')
             ->willReturn($this->resultRedirect);
 
-        $this->response->expects($this->any())->method("setRedirect")->willReturn(1);
+        $this->response->expects($this->any())->method('setRedirect')->willReturn(1);
         $this->page = $this->createMock(Page::class);
         $this->config = $this->createMock(Page::class);
         $this->title = $this->createMock(Title::class);
@@ -202,13 +203,13 @@ class MassInvalidateTest extends TestCase
             ['setScheduled', 'get']
         );
         $this->helper = $this->createPartialMock(Data::class, ['getUrl']);
-        $this->contextMock->expects($this->any())->method("getObjectManager")->willReturn($this->objectManager);
-        $this->contextMock->expects($this->any())->method("getRequest")->willReturn($this->request);
-        $this->contextMock->expects($this->any())->method("getResponse")->willReturn($this->response);
-        $this->contextMock->expects($this->any())->method("getMessageManager")->willReturn($this->messageManager);
-        $this->contextMock->expects($this->any())->method("getSession")->willReturn($this->session);
-        $this->contextMock->expects($this->any())->method("getActionFlag")->willReturn($this->actionFlag);
-        $this->contextMock->expects($this->any())->method("getHelper")->willReturn($this->helper);
+        $this->contextMock->expects($this->any())->method('getObjectManager')->willReturn($this->objectManager);
+        $this->contextMock->expects($this->any())->method('getRequest')->willReturn($this->request);
+        $this->contextMock->expects($this->any())->method('getResponse')->willReturn($this->response);
+        $this->contextMock->expects($this->any())->method('getMessageManager')->willReturn($this->messageManager);
+        $this->contextMock->expects($this->any())->method('getSession')->willReturn($this->session);
+        $this->contextMock->expects($this->any())->method('getActionFlag')->willReturn($this->actionFlag);
+        $this->contextMock->expects($this->any())->method('getHelper')->willReturn($this->helper);
     }
 
     /**
@@ -261,8 +262,8 @@ class MassInvalidateTest extends TestCase
             }
         }
 
-        $this->helper->expects($this->any())->method("getUrl")->willReturn("magento.com");
-        $this->response->expects($this->any())->method("setRedirect")->willReturn(1);
+        $this->helper->expects($this->any())->method('getUrl')->willReturn('magento.com');
+        $this->response->expects($this->any())->method('setRedirect')->willReturn(1);
         $this->resultRedirect->expects($this->once())->method('setPath')->with('*/*/list');
 
         $this->controller->execute();
@@ -289,7 +290,7 @@ class MassInvalidateTest extends TestCase
             'set4' => [
                 'indexerIds' => [2],
                 'exception' => new \Exception(),
-            ]
+            ],
         ];
     }
 }

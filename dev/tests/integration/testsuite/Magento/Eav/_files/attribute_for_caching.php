@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ $attributeSet->setData(
     [
         'attribute_set_name' => 'test_attribute_set',
         'entity_type_id' => $entityTypeId,
-        'sort_order' => 100
+        'sort_order' => 100,
     ]
 );
 $attributeSet->validate();
@@ -33,8 +35,8 @@ $attributeData = [
         'is_user_defined' => 1,
         'is_unique' => 0,
         'frontend_label' => ['foo'],
-        'attribute_set_id' => $entityType->getDefaultAttributeSetId()
-    ]
+        'attribute_set_id' => $entityType->getDefaultAttributeSetId(),
+    ],
 ];
 
 foreach ($attributeData as $data) {

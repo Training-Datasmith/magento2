@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,25 +10,25 @@ namespace Magento\Sales\Controller\Adminhtml\Order;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Customer\Model\AttributeMetadataDataProvider;
 use Magento\Directory\Model\RegionFactory;
+use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Magento\Framework\Controller\Result\RawFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
+use Magento\Framework\Translate\InlineInterface;
+use Magento\Framework\View\Result\LayoutFactory;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Sales\Api\Data\OrderAddressInterface;
 use Magento\Sales\Api\OrderAddressRepositoryInterface;
 use Magento\Sales\Api\OrderManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Api\Data\OrderAddressInterface;
 use Magento\Sales\Controller\Adminhtml\Order;
 use Magento\Sales\Model\Order\Address as AddressModel;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Registry;
-use Magento\Framework\App\Response\Http\FileFactory;
-use Magento\Framework\Translate\InlineInterface;
-use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\View\Result\LayoutFactory;
-use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Customer\Model\AttributeMetadataDataProvider;
 
 /**
  * Sales address save
@@ -40,7 +42,7 @@ class AddressSave extends Order implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
+    public const ADMIN_RESOURCE = 'Magento_Sales::actions_edit';
 
     /**
      * @var RegionFactory
@@ -133,7 +135,7 @@ class AddressSave extends Order implements HttpPostActionInterface
                 $this->_eventManager->dispatch(
                     'admin_sales_order_address_update',
                     [
-                        'order_id' => $address->getParentId()
+                        'order_id' => $address->getParentId(),
                     ]
                 );
                 $this->messageManager->addSuccessMessage(__('You updated the order address.'));

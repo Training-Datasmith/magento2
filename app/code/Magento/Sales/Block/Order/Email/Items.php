@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Sales Order Email order items
  */
+
 namespace Magento\Sales\Block\Order\Email;
 
 use Magento\Framework\App\ObjectManager;

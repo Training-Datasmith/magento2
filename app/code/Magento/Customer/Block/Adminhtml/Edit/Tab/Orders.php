@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab;
 
 use Magento\Customer\Controller\RegistryConstants;
@@ -130,7 +133,7 @@ class Orders extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'grand_total',
                 'type' => 'currency',
                 'currency' => 'order_currency_code',
-                'rate'  => 1
+                'rate'  => 1,
             ]
         );
 
@@ -149,7 +152,7 @@ class Orders extends \Magento\Backend\Block\Widget\Grid\Extended
                     'filter' => false,
                     'sortable' => false,
                     'width' => '100px',
-                    'renderer' => \Magento\Sales\Block\Adminhtml\Reorder\Renderer\Action::class
+                    'renderer' => \Magento\Sales\Block\Adminhtml\Reorder\Renderer\Action::class,
                 ]
             );
         }

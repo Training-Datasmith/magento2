@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Sales\Model\CronJob;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Sales\Api\OrderManagementInterface;
+use Magento\Sales\Model\Order;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 use Magento\Store\Model\StoresConfig;
-use Magento\Sales\Model\Order;
 
 /**
  * Class that provides functionality of cleaning expired quotes by cron

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use PHPUnit\Framework\TestCase;
 
 class ClassLoaderWrapperTest extends TestCase
 {
-    const PREFIX = 'Namespace\\Prefix\\';
+    public const PREFIX = 'Namespace\\Prefix\\';
 
-    const DIR = '/path/to/class/';
+    public const DIR = '/path/to/class/';
 
-    const DEFAULT_PREPEND = false;
+    public const DEFAULT_PREPEND = false;
 
     /**
      * @var ClassLoader|MockObject
@@ -37,7 +38,7 @@ class ClassLoaderWrapperTest extends TestCase
         $this->model = (new ObjectManager($this))->getObject(
             ClassLoaderWrapper::class,
             [
-                'autoloader' => $this->autoloaderMock
+                'autoloader' => $this->autoloaderMock,
             ]
         );
     }

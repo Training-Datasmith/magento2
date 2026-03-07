@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -28,7 +30,7 @@ class EntityStorage
     /**
      * Using for array concatenation
      */
-    const GLUE = '';
+    public const GLUE = '';
 
     /**
      * Adds entity using identifying fields mapping, entity should have an id

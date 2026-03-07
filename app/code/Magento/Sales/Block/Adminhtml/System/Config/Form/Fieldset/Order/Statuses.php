@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\System\Config\Form\Fieldset\Order;
 
 class Statuses extends \Magento\Config\Block\System\Config\Form\Fieldset
@@ -126,7 +129,7 @@ class Statuses extends \Magento\Config\Block\System\Config\Form\Fieldset
                 'old_value' => isset($data['old_value']) ? $data['old_value'] : '',
                 'inherit' => isset($data['inherit']) ? $data['inherit'] : '',
                 'can_use_default_value' => $this->getForm()->canUseDefaultValue($e),
-                'can_use_website_value' => $this->getForm()->canUseWebsiteValue($e)
+                'can_use_website_value' => $this->getForm()->canUseWebsiteValue($e),
             ]
         )->setRenderer(
             $this->_getFieldRenderer()

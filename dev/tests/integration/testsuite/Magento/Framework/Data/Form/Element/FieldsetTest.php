@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Fieldset
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -81,10 +84,10 @@ class FieldsetTest extends \PHPUnit\Framework\TestCase
                             'class' => 'required-entry',
                             'values' => ['A', 'B', 'C'],
                             'value' => 1,
-                            'required' => true
+                            'required' => true,
                         ],
                         false,
-                        false
+                        false,
                     ],
                     [
                         'priority',
@@ -95,10 +98,10 @@ class FieldsetTest extends \PHPUnit\Framework\TestCase
                             'class' => 'validate-not-negative-number',
                             'value' => 1,
                             'required' => true,
-                            'note' => 'Tax rates at the same priority are added, others are compounded.'
+                            'note' => 'Tax rates at the same priority are added, others are compounded.',
                         ],
                         false,
-                        true
+                        true,
                     ],
                     [
                         'priority',
@@ -109,10 +112,10 @@ class FieldsetTest extends \PHPUnit\Framework\TestCase
                             'class' => 'validate-not-negative-number',
                             'value' => 1,
                             'required' => true,
-                            'note' => 'Tax rates at the same priority are added, others are compounded.'
+                            'note' => 'Tax rates at the same priority are added, others are compounded.',
                         ],
                         false,
-                        true
+                        true,
                     ],
                 ],
                 true,
@@ -135,14 +138,14 @@ class FieldsetTest extends \PHPUnit\Framework\TestCase
                             'class' => 'required-entry',
                             'values' => ['A', 'B', 'C'],
                             'value' => 1,
-                            'required' => true
+                            'required' => true,
                         ],
                         false,
-                        false
+                        false,
                     ],
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\CreateEntityRow;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for CreateEntityRow class.
@@ -117,44 +118,44 @@ class CreateEntityRowTest extends TestCase
         $inputData = [
             'test_field_1' => 'test_value_1',
             'test_field_2' => 100,
-            'test_field_3' => 'test_value_2'
+            'test_field_3' => 'test_value_2',
         ];
 
         $tableData = [
             [
                 'COLUMN_NAME' => 'TEST_FIELD_1',
-                'DEFAULT' => null
+                'DEFAULT' => null,
             ],
             [
                 'COLUMN_NAME' => 'TEST_FIELD_2',
-                'DEFAULT' => null
+                'DEFAULT' => null,
             ],
             [
                 'COLUMN_NAME' => 'TEST_FIELD_3',
-                'DEFAULT' => 'CURRENT_TIMESTAMP'
+                'DEFAULT' => 'CURRENT_TIMESTAMP',
             ],
             [
                 'COLUMN_NAME' => 'TEST_FIELD_4',
-                'DEFAULT' => null
-            ]
+                'DEFAULT' => null,
+            ],
         ];
 
         $preparedData = [
             'test_field_1' => 'test_value_1',
             'test_field_2' => 100,
             'test_field_4' => null,
-            'identifier' => '100000001'
+            'identifier' => '100000001',
         ];
 
         $finalData = [
             'test_field_1' => 'test_value_1',
             'test_field_2' => 100,
             'test_field_3' => 'test_value_2',
-            'entity_id' => 1
+            'entity_id' => 1,
         ];
 
         return [
-            [$inputData, $tableData, $preparedData, $finalData]
+            [$inputData, $tableData, $preparedData, $finalData],
         ];
     }
 }

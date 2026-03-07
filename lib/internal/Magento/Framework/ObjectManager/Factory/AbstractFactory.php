@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Framework\ObjectManager\Factory;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\ObjectManager\ConfigInterface;
 use Magento\Framework\ObjectManager\Definition\Runtime;
@@ -13,7 +16,6 @@ use Magento\Framework\ObjectManager\DefinitionInterface;
 use Magento\Framework\ObjectManager\FactoryInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
-use Magento\Framework\App\ObjectManager;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -136,7 +138,7 @@ abstract class AbstractFactory implements FactoryInterface
             throw new RuntimeException(
                 new Phrase('Type Error occurred when creating object: %type, %msg', [
                     'type' => $type,
-                    'msg' => $exception->getMessage()
+                    'msg' => $exception->getMessage(),
                 ])
             );
         }

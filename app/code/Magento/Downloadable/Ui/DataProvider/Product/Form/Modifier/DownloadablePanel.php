@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Downloadable\Api\Data\ProductAttributeInterface;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Framework\Stdlib\ArrayManager;
@@ -70,7 +73,7 @@ class DownloadablePanel extends AbstractModifier
             'collapsible' => true,
             'opened' => $this->locator->getProduct()->getTypeId() === Type::TYPE_DOWNLOADABLE,
             'sortOrder' => '800',
-            'dataScope' => 'data'
+            'dataScope' => 'data',
         ];
         $this->meta = $this->arrayManager->set('downloadable', $this->meta, $panelConfig);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -140,7 +141,7 @@ class OptionsTest extends TestCase
                     ['label' => 'title', 'value' => 'value'],
                     ['label' => 'title', 'value' => ['value']],
                 ],
-            ]
+            ],
         ];
     }
 }

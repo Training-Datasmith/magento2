@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -89,9 +90,9 @@ class DeploymentTrackerTest extends TestCase
                     'change_log' => $changelog,
                     'commit' => $commit,
                     'deepLink' => $deepLink,
-                    'groupId' => $groupId
-                ]
-            ]
+                    'groupId' => $groupId,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -167,9 +168,9 @@ class DeploymentTrackerTest extends TestCase
                     'deploymentId' => '12345678-1234-1234-1234-123456789012',
                     'entityGuid' => $entityGuid,
                     'timestamp' => 1234567890000,
-                    'description' => $description
-                ]
-            ]
+                    'description' => $description,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -219,7 +220,7 @@ class DeploymentTrackerTest extends TestCase
 
         $this->nerdGraphClientMock->expects($this->once())
             ->method('getEntityGuidFromApplication')
-            ->with($appName, "")
+            ->with($appName, '')
             ->willReturn($resolvedGuid);
 
         $expectedMutationResponse = [
@@ -228,9 +229,9 @@ class DeploymentTrackerTest extends TestCase
                     'deploymentId' => '12345678-1234-1234-1234-123456789012',
                     'entityGuid' => $resolvedGuid,
                     'timestamp' => 1234567890000,
-                    'description' => $description
-                ]
-            ]
+                    'description' => $description,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -286,9 +287,9 @@ class DeploymentTrackerTest extends TestCase
                     'deploymentId' => '12345678-1234-1234-1234-123456789012',
                     'entityGuid' => $resolvedGuid,
                     'timestamp' => 1234567890000,
-                    'description' => $description
-                ]
-            ]
+                    'description' => $description,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -361,7 +362,7 @@ class DeploymentTrackerTest extends TestCase
 
         $this->nerdGraphClientMock->expects($this->once())
             ->method('getEntityGuidFromApplication')
-            ->with($appName, "")
+            ->with($appName, '')
             ->willReturn(null);
 
         $this->loggerMock->expects($this->atLeastOnce())->method('error');
@@ -385,9 +386,9 @@ class DeploymentTrackerTest extends TestCase
 
         $errorResponse = [
             'errors' => [
-                ['message' => 'Invalid entity GUID']
+                ['message' => 'Invalid entity GUID'],
             ],
-            'data' => null
+            'data' => null,
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -438,8 +439,8 @@ class DeploymentTrackerTest extends TestCase
 
         $malformedResponse = [
             'data' => [
-                'changeTrackingCreateDeployment' => null
-            ]
+                'changeTrackingCreateDeployment' => null,
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -494,9 +495,9 @@ class DeploymentTrackerTest extends TestCase
                     'deploymentId' => '12345678-1234-1234-1234-123456789012',
                     'entityGuid' => $entityGuid,
                     'timestamp' => 1234567890000,
-                    'description' => $description
-                ]
-            ]
+                    'description' => $description,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -543,9 +544,9 @@ class DeploymentTrackerTest extends TestCase
                     'timestamp' => 1234567890000,
                     'description' => $description,
                     'changelog' => $changelog,
-                    'user' => $user
-                ]
-            ]
+                    'user' => $user,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())
@@ -584,9 +585,9 @@ class DeploymentTrackerTest extends TestCase
             'data' => [
                 'changeTrackingCreateDeployment' => [
                     'deploymentId' => '12345678-1234-1234-1234-123456789012',
-                    'entityGuid' => $entityGuid
-                ]
-            ]
+                    'entityGuid' => $entityGuid,
+                ],
+            ],
         ];
 
         $this->nerdGraphClientMock->expects($this->once())

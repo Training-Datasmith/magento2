@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -43,12 +44,12 @@ class OptionsIndexer implements OptionsIndexerInterface
     {
         $select = $this->selectBuilder->execute($indexTable, $entityIds);
         $this->tableMaintainer->insertFromSelect($select, $tempIndexTable, [
-            "entity_id",
-            "customer_group_id",
-            "website_id",
-            "min_price",
-            "max_price",
-            "tier_price",
+            'entity_id',
+            'customer_group_id',
+            'website_id',
+            'min_price',
+            'max_price',
+            'tier_price',
         ]);
     }
 }

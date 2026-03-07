@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ProxyDeferredFactoryTest extends TestCase
         /** @var \TestDeferred\TestClass $proxy */
         $proxy = $this->factory->create(
             [
-                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback])
+                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback]),
             ]
         );
         $this->assertInstanceOf(\TestDeferred\TestClass::class, $proxy);
@@ -84,7 +85,7 @@ class ProxyDeferredFactoryTest extends TestCase
         /** @var \TestDeferred\TestClass $proxy */
         $proxy = $this->factory->create(
             [
-                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback])
+                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback]),
             ]
         );
         //phpcs:disable
@@ -111,7 +112,7 @@ class ProxyDeferredFactoryTest extends TestCase
         /** @var \TestDeferred\TestClass $proxy */
         $proxy = $this->factory->create(
             [
-                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback])
+                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback]),
             ]
         );
         $this->assertEquals(0, \TestDeferred\TestClass::$created);
@@ -134,7 +135,7 @@ class ProxyDeferredFactoryTest extends TestCase
         $this->expectExceptionMessage('Wrong instance returned by deferred');
 
         $callback = function () {
-            return new class {
+            return new class () {
                 public function getValue()
                 {
                     return 'test';
@@ -144,7 +145,7 @@ class ProxyDeferredFactoryTest extends TestCase
         /** @var \TestDeferred\TestClass $proxy */
         $proxy = $this->factory->create(
             [
-                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback])
+                'deferred' => $this->callbackDeferredFactory->create(['callback' => $callback]),
             ]
         );
         $this->assertInstanceOf(\TestDeferred\TestClass::class, $proxy);

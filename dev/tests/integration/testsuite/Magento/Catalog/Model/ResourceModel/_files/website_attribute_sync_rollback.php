@@ -1,16 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 
-use \Magento\Framework\App\ObjectManager;
-use \Magento\Store\Api\StoreRepositoryInterface;
-use \Magento\Framework\App\ResourceConnection;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use \Magento\Framework\Registry;
-use \Magento\TestFramework\Helper\Bootstrap;
-use \Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Registry;
+use Magento\Store\Api\StoreRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Roll back fixtures
@@ -29,7 +31,6 @@ $resourceConnection = $objectManager->get(ResourceConnection::class);
 $connection = $resourceConnection->getConnection();
 $registry = $objectManager->get(Registry::class);
 $productRepository = $objectManager->get(ProductRepositoryInterface::class);
-
 
 /**
  * Marks area as secure so Product repository would allow product removal

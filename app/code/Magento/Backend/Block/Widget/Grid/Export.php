@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -38,7 +40,7 @@ class Export extends \Magento\Backend\Block\Widget implements \Magento\Backend\B
      *
      * @var string
      */
-    protected $_template = "Magento_Backend::widget/grid/export.phtml";
+    protected $_template = 'Magento_Backend::widget/grid/export.phtml';
 
     /**
      * @var \Magento\Framework\Data\CollectionFactory
@@ -336,7 +338,7 @@ class Export extends \Magento\Backend\Block\Widget implements \Magento\Backend\B
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true,  // can delete file after use
         ];
     }
 
@@ -467,7 +469,7 @@ class Export extends \Magento\Backend\Block\Widget implements \Magento\Backend\B
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true,  // can delete file after use
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'attribute_set_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_group_id' => 1,
             'attribute_code' => 'random_attribute',
-            'sort_order' => 2
+            'sort_order' => 2,
         ],
         'random_attribute',
     ),
@@ -50,7 +51,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'backend_model' => ArrayBackend::class,
             'attribute_code' => 'multiselect_attribute',
             'frontend_input' => 'multiselect',
-            'sort_order' => 1
+            'sort_order' => 1,
         ],
         'multiselect_attribute',
     ),
@@ -60,7 +61,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'line 1',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'multiselect_attribute_option1'
     ),
@@ -70,7 +71,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'option 2',
-            'sort_order' => 30
+            'sort_order' => 30,
         ],
         'multiselect_attribute_option2'
     ),
@@ -80,7 +81,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             'attribute_code' => '$multiselect_attribute.attribute_code$',
             'label' => 'option 3',
-            'sort_order' => 10
+            'sort_order' => 10,
         ],
         'multiselect_attribute_option3'
     ),
@@ -91,20 +92,20 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'custom_attributes' => [
                 [
                     'attribute_code' => '$random_attribute.attribute_code$',
-                    'value' => 'value_one'
+                    'value' => 'value_one',
                 ],
                 [
                     'attribute_code' => '$multiselect_attribute.attribute_code$',
                     'selected_options' => [
                         [
-                            'value' => '$multiselect_attribute_option1.value$'
+                            'value' => '$multiselect_attribute_option1.value$',
                         ],
                         [
-                            'value' => '$multiselect_attribute_option2.value$'
-                        ]
-                    ]
-                ]
-            ]
+                            'value' => '$multiselect_attribute_option2.value$',
+                        ],
+                    ],
+                ],
+            ],
         ],
         'customer'
     )
@@ -239,7 +240,7 @@ QUERY;
                 $this->random_attribute->getAttributeCode(),
                 'new_value_for_attribute',
                 $this->multiselect_attribute->getAttributeCode(),
-                $this->option2->getValue() . "," . $this->option3->getValue()
+                $this->option2->getValue() . ',' . $this->option3->getValue()
             ),
             [],
             '',
@@ -261,19 +262,19 @@ QUERY;
                                                 'selected_options' => [
                                                     [
                                                         'label' => $this->option3->getLabel(),
-                                                        'value' => $this->option3->getValue()
+                                                        'value' => $this->option3->getValue(),
                                                     ],
                                                     [
                                                         'label' => $this->option2->getLabel(),
-                                                        'value' => $this->option2->getValue()
-                                                    ]
-                                                ]
+                                                        'value' => $this->option2->getValue(),
+                                                    ],
+                                                ],
                                             ],
                                         1 =>
                                             [
                                                 'code' => $this->random_attribute->getAttributeCode(),
-                                                'value' => 'new_value_for_attribute'
-                                            ]
+                                                'value' => 'new_value_for_attribute',
+                                            ],
                                     ],
                             ],
                     ],
@@ -298,7 +299,7 @@ QUERY;
                 'non_existing_custom_attribute',
                 'new_value_for_attribute',
                 $this->multiselect_attribute->getAttributeCode(),
-                $this->option2->getValue() . "," . $this->option3->getValue()
+                $this->option2->getValue() . ',' . $this->option3->getValue()
             ),
             [],
             '',
@@ -320,19 +321,19 @@ QUERY;
                                                 'selected_options' => [
                                                     [
                                                         'label' => $this->option3->getLabel(),
-                                                        'value' => $this->option3->getValue()
+                                                        'value' => $this->option3->getValue(),
                                                     ],
                                                     [
                                                         'label' => $this->option2->getLabel(),
-                                                        'value' => $this->option2->getValue()
-                                                    ]
-                                                ]
+                                                        'value' => $this->option2->getValue(),
+                                                    ],
+                                                ],
                                             ],
                                         1 =>
                                             [
                                                 'code' => $this->random_attribute->getAttributeCode(),
-                                                'value' => 'value_one'
-                                            ]
+                                                'value' => 'value_one',
+                                            ],
                                     ],
                             ],
                     ],
@@ -369,9 +370,9 @@ QUERY;
                 'custom_attributes' => [
                     [
                         'attribute_code' => '$date_attribute.attribute_code$',
-                        'value' => '2023-03-22 00:00:00'
-                    ]
-                ]
+                        'value' => '2023-03-22 00:00:00',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -379,7 +380,7 @@ QUERY;
     public function testAttemptToUpdateCustomerAttributeWithInvalidDataType(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Invalid date");
+        $this->expectExceptionMessage('Invalid date');
 
         /** @var CustomerInterface $customer */
         $customer = DataFixtureStorageManager::getStorage()->get('customer');
@@ -418,7 +419,7 @@ QUERY;
                 'backend_type' => 'datetime',
                 'input_filter' => 'date',
                 'validate_rules' =>
-                    '{"date_range_min":1679443200,"date_range_max":1679875200,"input_validation":"date"}'
+                    '{"date_range_min":1679443200,"date_range_max":1679875200,"input_validation":"date"}',
             ],
             'date_range_attribute',
         ),
@@ -429,9 +430,9 @@ QUERY;
                 'custom_attributes' => [
                     [
                         'attribute_code' => '$date_range_attribute.attribute_code$',
-                        'value' => '1679443200'
-                    ]
-                ]
+                        'value' => '1679443200',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -439,7 +440,7 @@ QUERY;
     public function testAttemptToUpdateCustomerAttributeWithInvalidValue(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Please enter a valid date between 22/03/2023 and 27/03/2023");
+        $this->expectExceptionMessage('Please enter a valid date between 22/03/2023 and 27/03/2023');
 
         /** @var CustomerInterface $customer */
         $customer = DataFixtureStorageManager::getStorage()->get('customer');
@@ -474,7 +475,7 @@ QUERY;
                 'attribute_set_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_group_id' => 1,
                 'frontend_input' => 'boolean',
-                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean'
+                'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
             ],
             'boolean_attribute',
         ),
@@ -485,9 +486,9 @@ QUERY;
                 'custom_attributes' => [
                     [
                         'attribute_code' => '$boolean_attribute.attribute_code$',
-                        'value' => '1'
-                    ]
-                ]
+                        'value' => '1',
+                    ],
+                ],
             ],
             'customer'
         )
@@ -495,7 +496,7 @@ QUERY;
     public function testAttemptToUpdateBooleanCustomerAttributeWithInvalidValue(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Attribute boolean_attribute does not contain option with Id 3");
+        $this->expectExceptionMessage('Attribute boolean_attribute does not contain option with Id 3');
 
         /** @var CustomerInterface $customer */
         $customer = DataFixtureStorageManager::getStorage()->get('customer');
@@ -507,7 +508,7 @@ QUERY;
             sprintf(
                 $this->simpleQuery,
                 $date_attribute->getAttributeCode(),
-                "3"
+                '3'
             ),
             [],
             '',

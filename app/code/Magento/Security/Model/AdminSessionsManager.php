@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -314,7 +315,7 @@ class AdminSessionsManager
                 [
                     'user_id' => $user ? $user->getId() : null,
                     'ip' => $this->remoteAddress->getRemoteAddress(),
-                    'status' => AdminSessionInfo::LOGGED_IN
+                    'status' => AdminSessionInfo::LOGGED_IN,
                 ]
             )->save();
 
@@ -348,7 +349,7 @@ class AdminSessionsManager
     {
         $lastUpdatedTime = $this->getCurrentSession()->getUpdatedAt();
         if ($lastUpdatedTime === null || is_numeric($lastUpdatedTime)) {
-            $lastUpdatedTime = "now";
+            $lastUpdatedTime = 'now';
         }
         $lastProlongTimestamp = strtotime($lastUpdatedTime);
         $nowTimestamp = $this->authSession->getUpdatedAt();

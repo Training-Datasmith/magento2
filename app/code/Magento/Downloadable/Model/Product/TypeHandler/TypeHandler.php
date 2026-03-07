@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Product\TypeHandler;
 
 use Magento\Catalog\Model\Product;
@@ -12,7 +15,6 @@ use Magento\Catalog\Model\Product;
  */
 class TypeHandler implements TypeHandlerInterface
 {
-
     /**
      * @var \Magento\Downloadable\Model\Product\TypeHandler\TypeHandlerInterface[]
      */

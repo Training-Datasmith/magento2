@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\OfflineShipping\Model\Config\Backend;
 
-use Magento\Framework\Model\AbstractModel;
+namespace Magento\OfflineShipping\Model\Config\Backend;
 
 /**
  * Backend model for shipping table rates CSV importing

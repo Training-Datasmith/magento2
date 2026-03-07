@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class ProductsRenderInfoSectionTest extends TestCase
                 'filterBuilder' => $this->filterBuilderMock,
                 'productRenderList' => $this->productRenderRepositoryMock,
                 'actionsSynchronizer' => $this->synchronizerMock,
-                'hydrator' => $this->hydratorMock
+                'hydrator' => $this->hydratorMock,
             ]
         );
     }
@@ -145,8 +146,8 @@ class ProductsRenderInfoSectionTest extends TestCase
                 [
                     'name' => 'One',
                     'price_info' => [
-                        'final_price' => 12
-                    ]
+                        'final_price' => 12,
+                    ],
                 ]
             );
 
@@ -159,9 +160,9 @@ class ProductsRenderInfoSectionTest extends TestCase
                 1 => [
                     'name' => 'One',
                     'price_info' => [
-                        'final_price' => 12
-                    ]
-                ]
+                        'final_price' => 12,
+                    ],
+                ],
             ],
             $this->model->getSectionData()
         );

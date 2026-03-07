@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class ProductPriceCalculatorTest extends TestCase
         $actionAmount = 50;
         $ruleData = [
             'action_operator' => 'to_fixed',
-            'action_amount' => $actionAmount
+            'action_amount' => $actionAmount,
         ];
         $productData = ['rule_price' => $rulePrice];
 
@@ -59,7 +60,7 @@ class ProductPriceCalculatorTest extends TestCase
         $expectedPrice = 100;
         $ruleData = [
             'action_operator' => 'to_percent',
-            'action_amount' => $actionAmount
+            'action_amount' => $actionAmount,
         ];
         $productData = ['rule_price' => $rulePrice];
 
@@ -78,7 +79,7 @@ class ProductPriceCalculatorTest extends TestCase
         $expectedPrice = 150;
         $ruleData = [
             'action_operator' => 'by_fixed',
-            'action_amount' => $actionAmount
+            'action_amount' => $actionAmount,
         ];
         $productData = ['rule_price' => $rulePrice];
 
@@ -97,7 +98,7 @@ class ProductPriceCalculatorTest extends TestCase
         $expectedPrice = 100;
         $ruleData = [
             'action_operator' => 'by_percent',
-            'action_amount' => $actionAmount
+            'action_amount' => $actionAmount,
         ];
         $productData = ['rule_price' => $rulePrice];
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class PostDataProcessorTest extends TestCase
             [
                 'dateFilter' => $this->dateFilterMock,
                 'messageManager' => $this->messageManagerMock,
-                'validatorFactory' => $this->validatorFactoryMock
+                'validatorFactory' => $this->validatorFactoryMock,
             ]
         );
     }
@@ -61,7 +62,7 @@ class PostDataProcessorTest extends TestCase
     public function testValidateRequireEntry()
     {
         $postData = [
-            'title' => ''
+            'title' => '',
         ];
         $this->messageManagerMock->expects($this->once())
             ->method('addErrorMessage')

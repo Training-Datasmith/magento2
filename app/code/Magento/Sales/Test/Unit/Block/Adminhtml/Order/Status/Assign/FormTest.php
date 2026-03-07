@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class FormTest extends TestCase
                 'formFactory' => $this->formFactory,
                 'collectionFactory' => $this->collectionFactory,
                 'orderConfig' => $this->orderConfig,
-                'data' => ['template' => null]
+                'data' => ['template' => null],
             ]
         );
     }

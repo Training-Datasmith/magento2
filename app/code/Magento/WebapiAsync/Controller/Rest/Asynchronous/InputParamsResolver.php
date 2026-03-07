@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -241,7 +242,7 @@ class InputParamsResolver
         $result = [];
 
         $data = array_filter($inputData, function ($k) use (&$result) {
-            $key = is_string($k) ? strtolower(str_replace('_', "", $k)) : $k;
+            $key = is_string($k) ? strtolower(str_replace('_', '', $k)) : $k;
             return !isset($result[$key]) && ($result[$key] = true);
         }, ARRAY_FILTER_USE_KEY);
 
@@ -284,9 +285,9 @@ class InputParamsResolver
         }
 
         if (!empty($paramOverriders)) {
-             $message = 'The current request does not expect the next parameters: '
-                 . implode(', ', $paramOverriders);
-             throw new \UnexpectedValueException(__($message)->__toString());
+            $message = 'The current request does not expect the next parameters: '
+                . implode(', ', $paramOverriders);
+            throw new \UnexpectedValueException(__($message)->__toString());
         }
     }
 }

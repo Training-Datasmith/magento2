@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Customer\Model\AccountManagement;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\Session;
 use Magento\Framework\DataObject\Copy;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\Express\Checkout;
 use Magento\Quote\Api\Data\CartExtensionInterface;
@@ -32,7 +33,7 @@ class CheckoutTest extends TestCase
 {
     use MockCreationTrait;
 
-    const SHIPPING_METHOD = 'new_shipping_method';
+    public const SHIPPING_METHOD = 'new_shipping_method';
     /**
      * @var Checkout|Checkout
      */
@@ -86,7 +87,7 @@ class CheckoutTest extends TestCase
                     'session' => $this->customerSessionMock,
                 ],
                 'accountManagement' => $this->customerAccountManagementMock,
-                'objectCopyService' => $this->objectCopyServiceMock
+                'objectCopyService' => $this->objectCopyServiceMock,
             ]
         );
         parent::setUp();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FrontClass model test class
  *

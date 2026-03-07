@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Framework\Module\DependencyChecker;
 use Magento\Framework\Module\ModuleList;
 use Magento\Framework\Module\ModuleList\Loader;
 use Magento\Framework\Module\PackageInfo;
-use Magento\Framework\Module\PackageInfoFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

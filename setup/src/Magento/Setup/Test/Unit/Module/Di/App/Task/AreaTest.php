@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -86,7 +87,7 @@ class AreaTest extends TestCase
         $generatedConfig = [
             'arguments' => $arguments,
             'preferences' => [],
-            'instanceTypes' => []
+            'instanceTypes' => [],
         ];
 
         $areaOperation = new Area(

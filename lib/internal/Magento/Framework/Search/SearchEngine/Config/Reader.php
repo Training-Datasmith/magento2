@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\SearchEngine\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem

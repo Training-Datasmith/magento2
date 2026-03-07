@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Catalog\Edit;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -208,15 +211,15 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 null,
                 'product/2',
                 'product.html',
-                'catalog/product/view/id/2'
+                'catalog/product/view/id/2',
             ],
             [
                 ['entity_id' => 2, 'name' => 'product', 'url_key' => 'product', 'store_id' => 1],
                 ['entity_id' => 3, 'parent_id' => 2, 'level' => 2, 'url_key' => 'category', 'store_id' => 1],
                 'product/2/category/3',
                 'category/product.html',
-                'catalog/product/view/id/2/category/3'
-            ]
+                'catalog/product/view/id/2/category/3',
+            ],
         ];
     }
 
@@ -241,8 +244,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
                     [
                         'label' => '    Main Website Store',
                         'value' => [['label' => '    Default Store View', 'value' => 1]],
-                        '__disableTmpl' => true
-                    ]
+                        '__disableTmpl' => true,
+                    ],
                 ],
             ],
             [
@@ -253,9 +256,9 @@ class FormTest extends \PHPUnit\Framework\TestCase
                     [
                         'label' => '    Main Website Store',
                         'value' => [['label' => '    Default Store View', 'value' => 1]],
-                        '__disableTmpl' => true
-                    ]
-                ]
+                        '__disableTmpl' => true,
+                    ],
+                ],
             ],
             [
                 ['entity_id' => 2, 'name' => 'product2', 'url_key' => 'product2', 'store_ids' => [1]],
@@ -265,10 +268,10 @@ class FormTest extends \PHPUnit\Framework\TestCase
                     [
                         'label' => '    Main Website Store',
                         'value' => [['label' => '    Default Store View', 'value' => 1]],
-                        '__disableTmpl' => true
-                    ]
-                ]
-            ]
+                        '__disableTmpl' => true,
+                    ],
+                ],
+            ],
         ];
     }
 }

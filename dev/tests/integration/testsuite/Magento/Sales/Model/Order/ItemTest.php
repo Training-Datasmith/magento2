@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -52,11 +53,11 @@ class ItemTest extends TestCase
         return [
             [
                 '{"option1":1,"option2":2}',
-                ["option1" => 1, "option2" => 2]
+                ['option1' => 1, 'option2' => 2],
             ],
             [
-                ["option1" => 1, "option2" => 2],
-                ["option1" => 1, "option2" => 2]
+                ['option1' => 1, 'option2' => 2],
+                ['option1' => 1, 'option2' => 2],
             ],
         ];
     }

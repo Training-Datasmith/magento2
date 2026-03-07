@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class FormKey
     /**
      * Form key
      */
-    const FORM_KEY = '_form_key';
+    public const FORM_KEY = '_form_key';
 
     /**
      * @var \Magento\Framework\Math\Random

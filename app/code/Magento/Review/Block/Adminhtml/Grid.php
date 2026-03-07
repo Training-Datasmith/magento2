@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -161,7 +162,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'filter_index' => 'rt.review_id',
                 'index' => 'review_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -173,7 +174,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'filter_index' => 'rt.created_at',
                 'index' => 'review_created_at',
                 'header_css_class' => 'col-date col-date-min-width',
-                'column_css_class' => 'col-date'
+                'column_css_class' => 'col-date',
             ]
         );
 
@@ -185,7 +186,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'type' => 'options',
                     'options' => $this->_reviewData->getReviewStatuses(),
                     'filter_index' => 'rt.status_id',
-                    'index' => 'status_id'
+                    'index' => 'status_id',
                 ]
             );
         }
@@ -198,7 +199,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'title',
                 'type' => 'text',
                 'truncate' => 50,
-                'escape' => true
+                'escape' => true,
             ]
         );
 
@@ -212,7 +213,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'truncate' => 50,
                 'escape' => true,
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'col-name'
+                'column_css_class' => 'col-name',
             ]
         );
 
@@ -225,7 +226,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'text',
                 'truncate' => 50,
                 'nl2br' => true,
-                'escape' => true
+                'escape' => true,
             ]
         );
 
@@ -240,7 +241,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'index' => 'stores',
                     'type' => 'store',
                     'store_view' => true,
-                    'sortable' => false
+                    'sortable' => false,
                 ]
             );
         }
@@ -252,7 +253,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'select',
                 'index' => 'type',
                 'filter' => \Magento\Review\Block\Adminhtml\Grid\Filter\Type::class,
-                'renderer' => \Magento\Review\Block\Adminhtml\Grid\Renderer\Type::class
+                'renderer' => \Magento\Review\Block\Adminhtml\Grid\Renderer\Type::class,
             ]
         );
 
@@ -267,7 +268,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('SKU'),
                 'type' => 'text',
                 'index' => 'sku',
-                'escape' => true
+                'escape' => true,
             ]
         );
 
@@ -292,7 +293,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     ],
                 ],
                 'filter' => false,
-                'sortable' => false
+                'sortable' => false,
             ]
         );
 
@@ -324,7 +325,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     '*/*/massDelete',
                     ['ret' => $this->_coreRegistry->registry('usePendingFilter') ? 'pending' : 'index']
                 ),
-                'confirm' => __('Are you sure?')
+                'confirm' => __('Are you sure?'),
             ]
         );
 
@@ -346,7 +347,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                         'label' => __('Status'),
                         'values' => $statuses,
                     ],
-                ]
+                ],
             ]
         );
     }
@@ -377,7 +378,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'id' => $row->getReviewId(),
                 'productId' => $this->getProductId(),
                 'customerId' => $this->getCustomerId(),
-                'ret' => $this->_coreRegistry->registry('usePendingFilter') ? 'pending' : null
+                'ret' => $this->_coreRegistry->registry('usePendingFilter') ? 'pending' : null,
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -253,7 +255,7 @@ class Form extends \Magento\Backend\Block\Widget
     {
         $types = array_merge(
             [
-                'datetime' => 'date'
+                'datetime' => 'date',
             ],
             $this->_getAdditionalElementTypes()
         );

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Tax\Setup\Patch\Data;
 
 use Magento\Directory\Model\RegionFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Tax\Setup\TaxSetup;
@@ -104,7 +105,7 @@ class AddTaxAttributeAndTaxClasses implements DataPatchInterface, PatchVersionIn
             [
                 'class_id' => 3,
                 'class_name' => 'Retail Customer',
-                'class_type' => \Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_CUSTOMER
+                'class_type' => \Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_CUSTOMER,
             ],
         ];
         foreach ($data as $row) {
@@ -133,7 +134,7 @@ class AddTaxAttributeAndTaxClasses implements DataPatchInterface, PatchVersionIn
                 'tax_region_id' => $region->loadByCode('NY', 'US')->getRegionId(),
                 'tax_postcode' => '*',
                 'code' => 'US-NY-*-Rate 1',
-                'rate' => '8.3750'
+                'rate' => '8.3750',
             ],
         ];
         foreach ($data as $row) {

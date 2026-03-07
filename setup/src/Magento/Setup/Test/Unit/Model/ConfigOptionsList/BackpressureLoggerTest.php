@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
 use Magento\Setup\Model\ConfigOptionsList\BackpressureLogger;
 use Magento\Setup\Validator\RedisConnectionValidator;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class BackpressureLoggerTest extends TestCase
@@ -128,11 +129,11 @@ class BackpressureLoggerTest extends TestCase
                                 'password' => null,
                                 'timeout' => null,
                                 'persistent' => '',
-                                'user' => null
+                                'user' => null,
                             ],
-                            'id-prefix' => self::expectedIdPrefix()
-                        ]
-                    ]
+                            'id-prefix' => self::expectedIdPrefix(),
+                        ],
+                    ],
                 ],
             ],
             'maximum options' => [
@@ -171,9 +172,9 @@ class BackpressureLoggerTest extends TestCase
                                 'persistent' => '<persistent>',
                                 'user' => '<some-user>',
                             ],
-                            'id-prefix' => '<some-prefix>'
-                        ]
-                    ]
+                            'id-prefix' => '<some-prefix>',
+                        ],
+                    ],
                 ],
             ],
             'update options' => [
@@ -212,9 +213,9 @@ class BackpressureLoggerTest extends TestCase
                                 'persistent' => '<tnetsisrep>',
                                 'user' => '<new-user>',
                             ],
-                            'id-prefix' => '<new-prefix>'
-                        ]
-                    ]
+                            'id-prefix' => '<new-prefix>',
+                        ],
+                    ],
                 ],
             ],
             'update-part-of-configuration' => [
@@ -249,11 +250,11 @@ class BackpressureLoggerTest extends TestCase
                                 'persistent' => '<persistent>',
                                 'user' => '<new-user>',
                             ],
-                            'id-prefix' => '<new-prefix>'
-                        ]
-                    ]
+                            'id-prefix' => '<new-prefix>',
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,26 +8,25 @@ declare(strict_types=1);
 
 namespace Magento\CatalogSearch\Test\Unit\Model\Indexer;
 
-use Magento\Framework\Registry;
+use ArrayObject;
+use Exception;
 use Magento\CatalogSearch\Model\Indexer\Fulltext;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Action\Full;
 use Magento\CatalogSearch\Model\Indexer\Fulltext\Action\FullFactory;
+use Magento\CatalogSearch\Model\Indexer\IndexerHandlerFactory;
+use Magento\CatalogSearch\Model\Indexer\Scope\State;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext as FulltextResource;
 use Magento\Elasticsearch\Model\Indexer\IndexerHandler;
 use Magento\Framework\Amqp\ConfigPool as AmqpConfigPool;
-use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
-use Magento\CatalogSearch\Model\Indexer\IndexerHandlerFactory;
-use Magento\CatalogSearch\Model\Indexer\Scope\State;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Indexer\Dimension;
 use Magento\Framework\Indexer\DimensionProviderInterface;
+use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
+use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Indexer\Model\ProcessManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use ArrayObject;
-use Exception;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -89,16 +89,16 @@ class FulltextTest extends TestCase
         $objects = [
             [
                 Registry::class,
-                $this->createMock(Registry::class)
+                $this->createMock(Registry::class),
             ],
             [
                 LoggerInterface::class,
-                $this->createMock(LoggerInterface::class)
+                $this->createMock(LoggerInterface::class),
             ],
             [
                 AmqpConfigPool::class,
-                $this->createMock(AmqpConfigPool::class)
-            ]
+                $this->createMock(AmqpConfigPool::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 

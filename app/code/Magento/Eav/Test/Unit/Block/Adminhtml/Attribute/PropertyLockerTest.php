@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class PropertyLockerTest extends TestCase
     {
         $lockedFields = [
             'is_searchable' => 'is_searchable',
-            'is_filterable' => 'is_filterable'
+            'is_filterable' => 'is_filterable',
         ];
         $this->attributeMock->expects($this->once())->method('getId')->willReturn(1);
         $this->attributeConfigMock->expects($this->once())->method('getLockedFields')->willReturn($lockedFields);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class CountryValidatorTest extends TestCase
     {
         return [
             [1, 'US', 1, 'US,UK,CA', true], //$storeId, $country, $allowspecific, $specificcountry, $isValid
-            [1, 'BJ', 1, 'US,UK,CA', false]
+            [1, 'BJ', 1, 'US,UK,CA', false],
         ];
     }
 
@@ -129,7 +130,7 @@ class CountryValidatorTest extends TestCase
     public static function validateAllowspecificFalseDataProvider(): array
     {
         return [
-            [1, 0, true] //$storeId, $allowspecific, $isValid
+            [1, 0, true], //$storeId, $allowspecific, $isValid
         ];
     }
 }

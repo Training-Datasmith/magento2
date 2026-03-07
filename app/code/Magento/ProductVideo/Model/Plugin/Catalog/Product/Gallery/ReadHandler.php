@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -89,7 +91,7 @@ class ReadHandler extends AbstractHandler
                 ' AND ',
                 [
                     $joinConditions,
-                    'store_value.store_id = ' . $storeId
+                    'store_value.store_id = ' . $storeId,
                 ]
             );
         }
@@ -98,11 +100,11 @@ class ReadHandler extends AbstractHandler
                 [
                     'store_value' => $this->resourceModel->getTable(
                         'catalog_product_entity_media_gallery_value_video'
-                    )
+                    ),
                 ],
                 $joinConditions,
-                $this->getVideoProperties()
-            ]
+                $this->getVideoProperties(),
+            ],
         ];
         $result = $this->resourceModel->loadDataFromTableByValueId(
             'catalog_product_entity_media_gallery_value_video',
@@ -114,7 +116,7 @@ class ReadHandler extends AbstractHandler
                 'video_url_default' => 'url',
                 'video_title_default' => 'title',
                 'video_description_default' => 'description',
-                'video_metadata_default' => 'metadata'
+                'video_metadata_default' => 'metadata',
             ],
             $joinTable
         );

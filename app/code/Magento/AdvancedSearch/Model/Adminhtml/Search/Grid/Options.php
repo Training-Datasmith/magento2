@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Model\Adminhtml\Search\Grid;
 
 /**
@@ -11,34 +14,8 @@ namespace Magento\AdvancedSearch\Model\Adminhtml\Search\Grid;
  */
 class Options implements \Magento\Framework\Option\ArrayInterface
 {
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    protected $_request;
-
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $_registryManager;
-
-    /**
-     * @var \Magento\AdvancedSearch\Model\ResourceModel\Recommendations $_searchResourceModel
-     */
-    protected $_searchResourceModel;
-
-    /**
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\AdvancedSearch\Model\ResourceModel\Recommendations $searchResourceModel
-     */
-    public function __construct(
-        \Magento\Framework\App\RequestInterface $request,
-        \Magento\Framework\Registry $registry,
-        \Magento\AdvancedSearch\Model\ResourceModel\Recommendations $searchResourceModel
-    ) {
-        $this->_request = $request;
-        $this->_registryManager = $registry;
-        $this->_searchResourceModel = $searchResourceModel;
+    public function __construct(protected \Magento\Framework\App\RequestInterface $_request, protected \Magento\Framework\Registry $_registryManager, protected \Magento\AdvancedSearch\Model\ResourceModel\Recommendations $_searchResourceModel)
+    {
     }
 
     /**
@@ -49,10 +26,9 @@ class Options implements \Magento\Framework\Option\ArrayInterface
         $queries = $this->_request->getPost('selected_queries');
 
         $currentQueryId = $this->_registryManager->registry('current_catalog_search')->getId();
-        $queryIds = [];
         if ($queries === null && !empty($currentQueryId)) {
-            $queryIds = $this->_searchResourceModel->getRelatedQueries($currentQueryId);
+            return $this->_searchResourceModel->getRelatedQueries($currentQueryId);
         }
-        return $queryIds;
+        return [];
     }
 }

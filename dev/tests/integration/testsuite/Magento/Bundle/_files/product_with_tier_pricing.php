@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -43,21 +45,21 @@ $product->setTypeId('bundle')
                'cust_group' => \Magento\Customer\Model\GroupManagement::CUST_GROUP_ALL,
                'price_qty'  => 2,
                'price'      => 8,
-               'percentage_value' => 8
+               'percentage_value' => 8,
            ],
             [
                 'website_id' => 0,
                 'cust_group' => \Magento\Customer\Model\GroupManagement::CUST_GROUP_ALL,
                 'price_qty'  => 5,
                 'price'      => 30,
-                'percentage_value' => 30
+                'percentage_value' => 30,
             ],
            [
                'website_id' => 0,
                'cust_group' => \Magento\Customer\Model\GroupManagement::NOT_LOGGED_IN_ID,
                'price_qty'  => 3,
                'price'      => 20,
-               'percentage_value' => 20
+               'percentage_value' => 20,
            ],
         ]
     )

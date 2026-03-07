@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class Pattern
     ) {
         $attributeSet = [
             'name' => $name,
-            'attributes' => []
+            'attributes' => [],
         ];
         for ($index = 1; $index <= $attributesPerSet; $index++) {
             $attributeData = $this->generateAttribute(
@@ -90,7 +91,7 @@ class Pattern
         for ($index = 1; $index <= $optionsPerAttribute; $index++) {
             $options[] = [
                 'label' => 'option ' . $index,
-                'value' => 'option_' . $index
+                'value' => 'option_' . $index,
             ];
         }
 

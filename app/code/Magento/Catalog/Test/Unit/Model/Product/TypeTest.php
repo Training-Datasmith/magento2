@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,9 +44,9 @@ class TypeTest extends TestCase
             'label' => 'label_3',
             'model' => 'some_model',
             'composite' => 'some_type',
-            'price_model' => 'some_model'
+            'price_model' => 'some_model',
         ],
-        'simple' => ['label' => 'label_4', 'composite' => false]
+        'simple' => ['label' => 'label_4', 'composite' => false],
     ];
 
     /**
@@ -208,7 +209,7 @@ class TypeTest extends TestCase
                 'config' => $mockedConfig,
                 'priceInfoFactory' => $mockedPriceInfoFactory,
                 'productTypePool' => $mockedProductTypePool,
-                'priceFactory' => $mockedTypePriceFactory
+                'priceFactory' => $mockedTypePriceFactory,
             ]
         );
     }
@@ -267,7 +268,7 @@ class TypeTest extends TestCase
             ->willReturnMap(
                 [
                     ['some_model', [], $this->getMockedProductTypeVirtual()],
-                    [Simple::class, [], $this->getMockedProductTypeSimple()]
+                    [Simple::class, [], $this->getMockedProductTypeSimple()],
                 ]
             );
 
@@ -323,7 +324,7 @@ class TypeTest extends TestCase
             ->willReturnMap(
                 [
                     ['some_model', [], $this->getMockedProductTypePrice()],
-                    [Price::class, [], $this->getMockedProductTypePrice()]
+                    [Price::class, [], $this->getMockedProductTypePrice()],
                 ]
             );
 

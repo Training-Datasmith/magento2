@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Validator;
 
-use Magento\SomeModule\Model\NamedArguments\TestNamedParameters;
-use Magento\SomeModule\Model\NamedArguments\TestMixedParameters;
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Code\Validator\ConstructorIntegrity;
 use Magento\Framework\Exception\ValidatorException;
+use Magento\SomeModule\Model\NamedArguments\TestMixedParameters;
+use Magento\SomeModule\Model\NamedArguments\TestNamedParameters;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../_files/app/code/Magento/SomeModule/Model/Three/TestThree.php';
 require_once __DIR__ . '/../_files/app/code/Magento/SomeModule/Model/Two/TestTwo.php';

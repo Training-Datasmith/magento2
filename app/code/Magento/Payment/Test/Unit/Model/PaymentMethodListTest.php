@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Payment\Api\Data\PaymentMethodInterfaceFactory;
 use Magento\Payment\Helper\Data;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Payment\Model\PaymentMethodList;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class PaymentMethodListTest extends TestCase
 {
@@ -57,7 +58,7 @@ class PaymentMethodListTest extends TestCase
             PaymentMethodList::class,
             [
                 'methodFactory' => $this->methodFactoryMock,
-                'helper' => $this->helperMock
+                'helper' => $this->helperMock,
             ]
         );
     }
@@ -144,7 +145,7 @@ class PaymentMethodListTest extends TestCase
                             'method_code_1',
                             'title',
                             true
-                        )
+                        ),
                     ],
                     [
                         'method_code_2',
@@ -154,11 +155,11 @@ class PaymentMethodListTest extends TestCase
                             'method_code_2',
                             'title',
                             true
-                        )
-                    ]
+                        ),
+                    ],
                 ],
-                ['method_code_2', 'method_code_1']
-            ]
+                ['method_code_2', 'method_code_1'],
+            ],
         ];
     }
 
@@ -213,7 +214,7 @@ class PaymentMethodListTest extends TestCase
                             'method_code_1',
                             'title',
                             false
-                        )
+                        ),
                     ],
                     [
                         'method_code_2',
@@ -223,11 +224,11 @@ class PaymentMethodListTest extends TestCase
                             'method_code_2',
                             'title',
                             true
-                        )
-                    ]
+                        ),
+                    ],
                 ],
-                ['method_code_2']
-            ]
+                ['method_code_2'],
+            ],
         ];
     }
 
@@ -247,7 +248,7 @@ class PaymentMethodListTest extends TestCase
         $paymentMethodInstance->expects($this->any())
             ->method('getConfigData')
             ->willReturnMap([
-                ['sort_order', $storeId, $sortOrder]
+                ['sort_order', $storeId, $sortOrder],
             ]);
         $paymentMethodInstance->expects($this->any())
             ->method('getCode')

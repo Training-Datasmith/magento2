@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -70,15 +72,15 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
+                    'option_id' => 1,
                 ],
                 [
                     'product_id' => 11,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 1,
                     'delete' => '',
-                    'option_id' => 1
-                ]
+                    'option_id' => 1,
+                ],
             ],
             [
                 [
@@ -86,16 +88,16 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 0,
                     'delete' => '',
-                    'option_id' => 2
+                    'option_id' => 2,
                 ],
                 [
                     'product_id' => 11,
                     'selection_qty' => 1,
                     'selection_can_change_qty' => 0,
                     'delete' => '',
-                    'option_id' => 2
-                ]
-            ]
+                    'option_id' => 2,
+                ],
+            ],
         ]
     );
 $productRepository = $objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);

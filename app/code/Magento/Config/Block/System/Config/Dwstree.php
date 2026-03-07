@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Admin customer left menu
  */
+
 namespace Magento\Config\Block\System\Config;
 
 class Dwstree extends \Magento\Backend\Block\Widget\Tabs
@@ -36,7 +39,7 @@ class Dwstree extends \Magento\Backend\Block\Widget\Tabs
             [
                 'label' => __('Default Config'),
                 'url' => $this->getUrl('*/*/*', ['section' => $section]),
-                'class' => 'default'
+                'class' => 'default',
             ]
         );
 
@@ -65,7 +68,7 @@ class Dwstree extends \Magento\Backend\Block\Widget\Tabs
                             '*/*/*',
                             ['section' => $section, 'website' => $wCode, 'store' => $sCode]
                         ),
-                        'class' => 'store'
+                        'class' => 'store',
                     ]
                 );
                 if ($curStore === $sCode) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\SearchAdapter\Query;
 
+use Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Query\Builder as ElasticsearchBuilder;
 use Magento\Elasticsearch\Model\Config;
 use Magento\Elasticsearch\SearchAdapter\Query\Builder\Aggregation as AggregationBuilder;
 use Magento\Elasticsearch\SearchAdapter\Query\Builder\Sort;
 use Magento\Elasticsearch\SearchAdapter\SearchIndexNameResolver;
 use Magento\Framework\App\ScopeResolverInterface;
 use Magento\Framework\Search\RequestInterface;
-use Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Query\Builder as ElasticsearchBuilder;
 
 /**
  * Query builder for search adapter.

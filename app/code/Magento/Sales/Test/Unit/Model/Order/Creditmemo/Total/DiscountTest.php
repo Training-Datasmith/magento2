@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Total;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\Creditmemo\Item;
@@ -15,7 +17,6 @@ use Magento\Sales\Model\Order\Creditmemo\Total\Discount;
 use Magento\Tax\Model\Config;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DiscountTest extends TestCase
 {
@@ -61,7 +62,7 @@ class DiscountTest extends TestCase
             Order::class,
             [
                 'isDummy', 'getQtyInvoiced', 'getQty', 'getQtyRefunded', 'getDiscountInvoiced',
-                'getBaseDiscountInvoiced', 'getDiscountRefunded'
+                'getBaseDiscountInvoiced', 'getDiscountRefunded',
             ]
         );
         $this->creditmemoMock = $this->createPartialMockWithReflection(
@@ -69,14 +70,14 @@ class DiscountTest extends TestCase
             [
                 'setBaseCost', 'getAllItems', 'getOrder', 'getBaseShippingAmount', 'roundPrice',
                 'setDiscountAmount', 'setBaseDiscountAmount', 'getBaseShippingInclTax',
-                'getBaseShippingTaxAmount'
+                'getBaseShippingTaxAmount',
             ]
         );
         $this->creditmemoItemMock = $this->createPartialMockWithReflection(
             Item::class,
             [
                 'getHasChildren', 'getBaseCost', 'getQty', 'getOrderItem', 'setDiscountAmount',
-                'setBaseDiscountAmount', 'isLast'
+                'setBaseDiscountAmount', 'isLast',
             ]
         );
         $this->taxConfig = $this->createMock(Config::class);
@@ -148,7 +149,7 @@ class DiscountTest extends TestCase
             ->willReturnMap(
                 [
                     [1, 'regular', true, 1],
-                    [1, 'base', true, 1]
+                    [1, 'base', true, 1],
                 ]
             );
         $this->assertEquals($this->total, $this->total->collect($this->creditmemoMock));
@@ -224,7 +225,7 @@ class DiscountTest extends TestCase
             ->willReturnMap(
                 [
                     [1, 'regular', true, 1],
-                    [1, 'base', true, 1]
+                    [1, 'base', true, 1],
                 ]
             );
         $this->assertEquals($this->total, $this->total->collect($this->creditmemoMock));
@@ -291,7 +292,7 @@ class DiscountTest extends TestCase
             ->willReturnMap(
                 [
                     [1, 'regular', true, 1],
-                    [1, 'base', true, 1]
+                    [1, 'base', true, 1],
                 ]
             );
         $this->assertEquals($this->total, $this->total->collect($this->creditmemoMock));

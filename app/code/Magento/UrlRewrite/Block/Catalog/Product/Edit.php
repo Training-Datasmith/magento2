@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Catalog\Product;
 
 /**
@@ -124,7 +127,7 @@ class Edit extends \Magento\UrlRewrite\Block\Edit
             [
                 'item_url' => $this->_adminhtmlData->getUrl('adminhtml/*/*') . 'product',
                 'item_name' => $this->_getProduct()->getName(),
-                'label' => __('Product:')
+                'label' => __('Product:'),
             ]
         );
     }
@@ -145,7 +148,7 @@ class Edit extends \Magento\UrlRewrite\Block\Edit
                     ['product' => $this->_getProduct()->getId()]
                 ) . 'category',
                 'item_name' => $this->_getCategory()->getName(),
-                'label' => __('Category:')
+                'label' => __('Category:'),
             ]
         );
     }
@@ -187,7 +190,7 @@ class Edit extends \Magento\UrlRewrite\Block\Edit
                     ['product' => $this->_getProduct()->getId()]
                 ) . '\'',
                 'class' => 'save',
-                'level' => -1
+                'level' => -1,
             ]
         );
     }
@@ -207,7 +210,7 @@ class Edit extends \Magento\UrlRewrite\Block\Edit
                     'product' => $this->_getProduct(),
                     'category' => $this->_getCategory(),
                     'url_rewrite' => $this->_getUrlRewrite(),
-                ]
+                ],
             ]
         );
     }

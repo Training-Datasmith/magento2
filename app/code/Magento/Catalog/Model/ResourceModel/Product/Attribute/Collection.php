@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Attribute;
 
 /**
@@ -115,7 +118,7 @@ class Collection extends \Magento\Eav\Model\ResourceModel\Entity\Attribute\Colle
             [
                 'additional_table.is_global',
                 'additional_table.is_html_allowed_on_front',
-                'additional_table.is_wysiwyg_enabled'
+                'additional_table.is_wysiwyg_enabled',
             ]
         );
 

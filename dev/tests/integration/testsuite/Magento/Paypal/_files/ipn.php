@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,5 +12,5 @@ return [
     'payment_status' => 'Completed',
     'auth_status' => 'Completed',
     'mc_currency' => 'USD',
-    'receiver_email' => 'merchant_2012050718_biz@example.com'
+    'receiver_email' => 'merchant_2012050718_biz@example.com',
 ];

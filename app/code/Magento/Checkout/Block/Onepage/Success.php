@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Onepage;
 
 use Magento\Customer\Model\Context;
@@ -95,7 +98,7 @@ class Success extends \Magento\Framework\View\Element\Template
                 ),
                 'can_print_order' => $this->isVisible($order),
                 'can_view_order'  => $this->canViewOrder($order),
-                'order_id'  => $order->getIncrementId()
+                'order_id'  => $order->getIncrementId(),
             ]
         );
     }

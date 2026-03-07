@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,8 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\AdminOrder;
 
 use Magento\Backend\Model\Session\Quote as SessionQuote;
+use Magento\Catalog\Model\Product;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\CustomerInterfaceFactory;
@@ -16,14 +19,13 @@ use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Customer\Model\Customer\Mapper;
 use Magento\Customer\Model\Metadata\Form;
 use Magento\Customer\Model\Metadata\FormFactory;
-use Magento\Catalog\Model\Product;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Console\Request as ConsoleRequest;
 use Magento\Framework\DataObject;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
@@ -36,11 +38,9 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\ResourceModel\Order\Item\Collection as ItemCollection;
 use Magento\Store\Api\Data\StoreInterface;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -143,7 +143,7 @@ class CreateTest extends TestCase
                 'getUseOldShippingMethod',
                 'getQuote',
                 'getData',
-                'getStore'
+                'getStore',
             ]
         );
 
@@ -241,7 +241,7 @@ class CreateTest extends TestCase
         $taxClassId = 1;
         $attributes = [
             ['email', 'user@example.com'],
-            ['group_id', 1]
+            ['group_id', 1],
         ];
         $attributeMocks = [];
 
@@ -262,7 +262,7 @@ class CreateTest extends TestCase
             ['getPostValue']
         );
         $requestMock->method('getPostValue')->willReturn(null);
-        
+
         $customerForm = $this->createMock(Form::class);
         $customerForm->method('getAttributes')
             ->willReturn([$attributeMocks[1]]);
@@ -285,7 +285,7 @@ class CreateTest extends TestCase
         $quote->method('addData')->with(
             [
                 'customer_group_id' => $attributes[1][1],
-                'customer_tax_class_id' => $taxClassId
+                'customer_tax_class_id' => $taxClassId,
             ]
         );
         $quote->method('getStoreId')->willReturn(1);
@@ -326,8 +326,8 @@ class CreateTest extends TestCase
             1 => [
                 'qty' => 10,
                 'configured' => false,
-                'action' => false
-            ]
+                'action' => false,
+            ],
         ];
 
         $item = $this->createMock(Item::class);
@@ -354,8 +354,8 @@ class CreateTest extends TestCase
             1 => [
                 'qty' => 10,
                 'configured' => true,
-                'action' => false
-            ]
+                'action' => false,
+            ],
         ];
 
         $item = $this->createMock(Item::class);
@@ -540,7 +540,7 @@ class CreateTest extends TestCase
             ->willReturnSelf();
         $quote = $this->createPartialMockWithReflection(Quote::class, array_merge(['setRecollect'], [
                     'getBillingAddress',
-                    'getShippingAddress'
+                    'getShippingAddress',
                 ]));
 
         $quote->expects($this->any())
@@ -574,7 +574,7 @@ class CreateTest extends TestCase
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
                     'weight' => '0.0000',
-                    'free_shipping' => '0'
+                    'free_shipping' => '0',
                 ],
                 [
                     'quote_id' => 1,
@@ -582,8 +582,8 @@ class CreateTest extends TestCase
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
                     'weight' => '0.0000',
-                    'free_shipping' => '0'
-                ]
+                    'free_shipping' => '0',
+                ],
             ],
             'testcase when sameAsBillingFlag is true and there is no `weight` property' => [
                 true,
@@ -592,15 +592,15 @@ class CreateTest extends TestCase
                     'entity_id' => 1,
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
-                    'free_shipping' => '0'
+                    'free_shipping' => '0',
                 ],
                 [
                     'quote_id' => 1,
                     'entity_id' => 1,
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
-                    'free_shipping' => '0'
-                ]
+                    'free_shipping' => '0',
+                ],
             ],
             'testcase when sameAsBillingFlag is true and there is `weight` property' => [
                 false,
@@ -610,7 +610,7 @@ class CreateTest extends TestCase
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
                     'weight' => '0.0000',
-                    'free_shipping' => '1'
+                    'free_shipping' => '1',
                 ],
                 [
                     'quote_id' => 1,
@@ -618,9 +618,9 @@ class CreateTest extends TestCase
                     'same_as_billing' => 1,
                     'customer_address_id' => null,
                     'weight' => '8.0000',
-                    'free_shipping' => '1'
-                ]
-            ]
+                    'free_shipping' => '1',
+                ],
+            ],
         ];
     }
 

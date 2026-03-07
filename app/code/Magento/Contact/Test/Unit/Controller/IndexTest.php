@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class IndexTest extends TestCase
             IndexStub::class,
             [
                 'context' => $contextMock,
-                'contactsConfig' => $this->configMock
+                'contactsConfig' => $this->configMock,
             ]
         );
     }

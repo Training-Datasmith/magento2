@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  */
 class BuilderTest extends \Magento\Framework\View\Test\Unit\Layout\BuilderTest
 {
-    const CLASS_NAME = Builder::class;
+    public const CLASS_NAME = Builder::class;
 
     /**
      * @param array $arguments

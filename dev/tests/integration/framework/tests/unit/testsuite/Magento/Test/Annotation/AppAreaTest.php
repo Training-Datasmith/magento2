@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -11,8 +13,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Annotation\TestCaseAnnotation;
 use Magento\TestFramework\Fixture\Parser\AppArea;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionProperty;
 
 class AppAreaTest extends \PHPUnit\Framework\TestCase
@@ -49,7 +51,7 @@ class AppAreaTest extends \PHPUnit\Framework\TestCase
             ->getMock();
 
         $sharedInstances = [
-            AppArea::class => $this->createConfiguredMock(AppArea::class, ['parse' => []])
+            AppArea::class => $this->createConfiguredMock(AppArea::class, ['parse' => []]),
         ];
         $objectManager->method('get')
             ->willReturnCallback(
@@ -108,7 +110,7 @@ class AppAreaTest extends \PHPUnit\Framework\TestCase
                 ],
                 'frontend',
             ],
-            'default area' => [[], 'global']
+            'default area' => [[], 'global'],
         ];
     }
 

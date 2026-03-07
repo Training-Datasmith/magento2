@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @method int getTaxCalculationRateId()
  */
+
 namespace Magento\Tax\Model\Calculation\Rate;
 
 use Magento\Tax\Api\Data\TaxRateTitleInterface;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -131,14 +132,14 @@ class BundleOptionRegularPriceTest extends TestCase
     private function createAmountInterfaceMock(): AmountInterface
     {
         $mock = $this->createMock(AmountInterface::class);
-        
+
         // Mock all abstract methods with default values
         $mock->method('__toString')->willReturn('0');
         $mock->method('getAdjustmentAmount')->willReturn(0.0);
         $mock->method('getTotalAdjustmentAmount')->willReturn(0.0);
         $mock->method('getAdjustmentAmounts')->willReturn([]);
         $mock->method('hasAdjustment')->willReturn(false);
-        
+
         return $mock;
     }
 }

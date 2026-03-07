@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface LogInterface extends ExtensibleDataInterface
 {
-    const LOG_ID = 'log_id';
-    const TIME = 'time';
-    const CUSTOMER_ID = 'customer_id';
-    const CUSTOMER_EMAIL = 'customer_email';
-    const USER_ID = 'user_id';
-    const USERNAME = 'user_name';
+    public const LOG_ID = 'log_id';
+    public const TIME = 'time';
+    public const CUSTOMER_ID = 'customer_id';
+    public const CUSTOMER_EMAIL = 'customer_email';
+    public const USER_ID = 'user_id';
+    public const USERNAME = 'user_name';
 
     /**
      * Set login as customer log id.

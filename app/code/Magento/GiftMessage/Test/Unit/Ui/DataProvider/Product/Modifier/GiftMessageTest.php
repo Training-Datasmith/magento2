@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class GiftMessageTest extends AbstractModifierTestCase
         $expectedResult = [$productId => [
             GiftMessage::DATA_SOURCE_DEFAULT => [
                 GiftMessage::FIELD_MESSAGE_AVAILABLE => $configValue,
-                'use_config_gift_message_available' => 1
+                'use_config_gift_message_available' => 1,
             ],
         ]];
 
@@ -108,7 +109,7 @@ class GiftMessageTest extends AbstractModifierTestCase
         $expectedResult = [$productId => [
             GiftMessage::DATA_SOURCE_DEFAULT => [
                 GiftMessage::FIELD_MESSAGE_AVAILABLE => $configValue,
-                'use_config_gift_message_available' => 1
+                'use_config_gift_message_available' => 1,
             ],
         ]];
 

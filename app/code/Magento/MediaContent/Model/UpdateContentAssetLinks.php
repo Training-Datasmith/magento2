@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\MediaContent\Model;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\IntegrationException;
-use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
-use Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterfaceFactory;
 use Magento\MediaContentApi\Api\Data\ContentIdentityInterface;
+use Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface;
 use Magento\MediaContentApi\Api\GetAssetIdsByContentIdentityInterface;
+use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\UpdateContentAssetLinksInterface;
 use Magento\MediaGalleryApi\Api\Data\AssetInterface;
 use Psr\Log\LoggerInterface;
@@ -112,7 +113,7 @@ class UpdateContentAssetLinks implements UpdateContentAssetLinksInterface
             if (!in_array($asset->getId(), $existingAssetIds)) {
                 $contentAssetLink = $this->contentAssetLinkFactory->create([
                     self::ASSET_ID => $asset->getId(),
-                    self::CONTENT_IDENTITY => $contentIdentity
+                    self::CONTENT_IDENTITY => $contentIdentity,
                 ]);
                 $this->saveContentAssetLinks->execute([$contentAssetLink]);
             }
@@ -122,7 +123,7 @@ class UpdateContentAssetLinks implements UpdateContentAssetLinksInterface
             if (!isset($currentAssets[$assetId])) {
                 $contentAssetLink = $this->contentAssetLinkFactory->create([
                     self::ASSET_ID => $assetId,
-                    self::CONTENT_IDENTITY => $contentIdentity
+                    self::CONTENT_IDENTITY => $contentIdentity,
                 ]);
                 $this->deleteContentAssetLinks->execute([$contentAssetLink]);
             }

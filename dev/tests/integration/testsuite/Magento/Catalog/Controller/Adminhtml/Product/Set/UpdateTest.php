@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -152,7 +153,7 @@ class UpdateTest extends AbstractBackendController
         $this->assertNotNull($customGroup);
         $postData = $this->prepareDataToRequest($currentAttrSet);
         $postData['removeGroups'] = [
-            $customGroup->getAttributeGroupId()
+            $customGroup->getAttributeGroupId(),
         ];
         $this->performRequest($attrSetId, $postData);
         $this->assertSessionMessages(
@@ -223,7 +224,7 @@ class UpdateTest extends AbstractBackendController
         $this->assertNotNull($jsonResponse);
         $this->assertEquals(1, $jsonResponse['error']);
         $this->assertStringContainsString(
-            "This group contains system attributes. Please move system attributes to another group and try again.",
+            'This group contains system attributes. Please move system attributes to another group and try again.',
             $jsonResponse['message']
         );
         $afterUpdateGroupCollection = $this->getAttributeSetGroupCollection($attrSetId)
@@ -252,7 +253,7 @@ class UpdateTest extends AbstractBackendController
         $this->assertNotNull($jsonResponse);
         $this->assertEquals(1, $jsonResponse['error']);
         $this->assertStringContainsString(
-            "The system attribute can&#039;t be deleted.",
+            'The system attribute can&#039;t be deleted.',
             $jsonResponse['message']
         );
         $afterUpdateAttributesCollection = $this->getAttributeCodes($attrSetId);

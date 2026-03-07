@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class TaxRuleCollectionTest extends TestCase
                 'getCalculateSubtotal',
                 'getCustomerTaxClassIds',
                 'getProductTaxClassIds',
-                'getTaxRateIds'
+                'getTaxRateIds',
             ]
         );
 

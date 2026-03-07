@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Cart\CustomerCartResolver;
 use Magento\Quote\Model\GuestCart\GuestCartResolver;
 use Magento\Quote\Model\Quote;
@@ -25,15 +26,13 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Sales\Model\Reorder\OrderInfoBuyRequestGetter;
-use Magento\Sales\Model\ResourceModel\Order\Item\Collection as ItemCollection;
-use Magento\Sales\Model\ResourceModel\Order\Status\History\CollectionFactory;
 use Magento\Sales\Model\Reorder\Reorder;
+use Magento\Sales\Model\ResourceModel\Order\Item\Collection as ItemCollection;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -134,7 +133,7 @@ class ReorderTest extends TestCase
                 'getId',
                 'getCustomerId',
                 'getItemsCollection',
-                'getStore'
+                'getStore',
             ]
         );
         $this->cartRepository = $this->createMock(CartRepositoryInterface::class);
@@ -337,7 +336,7 @@ class ReorderTest extends TestCase
                     'joinAttribute',
                     'addOptionsToResult',
                     'getIterator',
-                    'setStore'
+                    'setStore',
                 ], ['getStore']));
         $productCollection->expects($this->any())->method('setStore')->willReturnSelf();
         $productCollection->expects($this->any())->method('addIdFilter')->willReturnSelf();

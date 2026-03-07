@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Catalog\Controller\Adminhtml\Product\Builder;
 use Magento\Catalog\Controller\Adminhtml\Product\MassStatus;
+use Magento\Catalog\Helper\Product\Edit\Action\Attribute as AttributeHelper;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Action;
@@ -19,10 +21,8 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Test\Unit\Controller\Adminhtml\ProductTestCase;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Ui\Component\MassAction\Filter;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Catalog\Helper\Product\Edit\Action\Attribute as AttributeHelper;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -93,7 +93,7 @@ class MassStatusTest extends ProductTestCase
         $collectionFactoryMock->method('create')->willReturn($this->productCollectionMock);
 
         $additionalParams = [
-            'resultFactory' => $resultFactory
+            'resultFactory' => $resultFactory,
         ];
         /** @var Context $context */
         $context = $this->initContext($additionalParams);
@@ -130,7 +130,7 @@ class MassStatusTest extends ProductTestCase
                 [
                     ['store', null, $storeId],
                     ['status', null, $status],
-                    ['filters', [], $filters]
+                    ['filters', [], $filters],
                 ]
             );
         $this->attributeHelperMock->expects($this->once())

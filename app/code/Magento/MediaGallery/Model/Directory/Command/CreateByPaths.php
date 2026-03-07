@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class CreateByPaths implements CreateDirectoriesByPathsInterface
                 __(
                     'Could not create directories: %paths',
                     [
-                        'paths' => implode(' ,', $failedPaths)
+                        'paths' => implode(' ,', $failedPaths),
                     ]
                 )
             );

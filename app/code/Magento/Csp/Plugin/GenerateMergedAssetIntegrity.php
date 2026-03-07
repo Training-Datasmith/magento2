@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Plugin;
 
-use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Magento\Csp\Model\SubresourceIntegrityRepository;
 use Magento\Csp\Model\SubresourceIntegrity\HashGenerator;
 use Magento\Csp\Model\SubresourceIntegrityFactory;
+use Magento\Csp\Model\SubresourceIntegrityRepository;
+use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
@@ -83,12 +84,12 @@ class GenerateMergedAssetIntegrity
         $pubStaticDir = $this->filesystem->getDirectoryRead(DirectoryList::STATIC_VIEW);
         $integrity = $this->integrityFactory->create(
             [
-                "data" => [
+                'data' => [
                     'hash' => $this->hashGenerator->generate(
                         $pubStaticDir->readFile($resultAsset->getPath())
                     ),
-                    'path' => $resultAsset->getPath()
-                ]
+                    'path' => $resultAsset->getPath(),
+                ],
             ]
         );
 

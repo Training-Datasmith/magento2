@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryMetadata\Model\Gif;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Exception\ValidatorException;
+use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\MediaGalleryMetadata\Model\SegmentNames;
 use Magento\MediaGalleryMetadataApi\Model\FileInterface;
@@ -18,8 +21,6 @@ use Magento\MediaGalleryMetadataApi\Model\FileInterfaceFactory;
 use Magento\MediaGalleryMetadataApi\Model\ReadFileInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterfaceFactory;
-use Magento\Framework\Exception\ValidatorException;
-use Magento\Framework\Filesystem;
 
 /**
  * File segments reader
@@ -81,7 +82,7 @@ class ReadFile implements ReadFileInterface
 
         $header = $this->read($resource, 3);
 
-        if ($header != "GIF") {
+        if ($header != 'GIF') {
             $this->getDriver()->fileClose($resource);
             throw new ValidatorException(__('Not a GIF image'));
         }
@@ -95,7 +96,7 @@ class ReadFile implements ReadFileInterface
 
         $headerSegment = $this->segmentFactory->create([
             'name' => 'header',
-            'data' => $header . $version
+            'data' => $header . $version,
         ]);
 
         $width = $this->read($resource, 2);
@@ -107,7 +108,7 @@ class ReadFile implements ReadFileInterface
 
         $generalSegment = $this->segmentFactory->create([
             'name' => 'header2',
-            'data' => $width . $height . $bitPerPixelBinary . $backgroundAndAspectRatio . $globalColorTable
+            'data' => $width . $height . $bitPerPixelBinary . $backgroundAndAspectRatio . $globalColorTable,
         ]);
 
         $segments = $this->getSegments($resource);
@@ -118,7 +119,7 @@ class ReadFile implements ReadFileInterface
 
         return $this->fileFactory->create([
             'path' => $path,
-            'segments' => $segments
+            'segments' => $segments,
         ]);
     }
 
@@ -131,9 +132,9 @@ class ReadFile implements ReadFileInterface
      */
     private function getSegments($resource): array
     {
-        $gifFrameSeparator = pack("C", ord(","));
-        $gifExtensionSeparator = pack("C", ord("!"));
-        $gifTerminator = pack("C", ord(";"));
+        $gifFrameSeparator = pack('C', ord(','));
+        $gifExtensionSeparator = pack('C', ord('!'));
+        $gifTerminator = pack('C', ord(';'));
 
         $segments = [];
         do {
@@ -146,7 +147,7 @@ class ReadFile implements ReadFileInterface
             if ($separator == $gifFrameSeparator) {
                 $segments[] = $this->segmentFactory->create([
                     'name' => 'frame',
-                    'data' => $gifFrameSeparator . $this->readFrame($resource)
+                    'data' => $gifFrameSeparator . $this->readFrame($resource),
                 ]);
                 continue;
             }
@@ -170,7 +171,7 @@ class ReadFile implements ReadFileInterface
      */
     private function getExtensionSegment($resource): SegmentInterface
     {
-        $gifExtensionSeparator = pack("C", ord("!"));
+        $gifExtensionSeparator = pack('C', ord('!'));
         $extensionCodeBinary = $this->read($resource, 1);
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         $extensionCode = unpack('C', $extensionCodeBinary)[1];
@@ -178,21 +179,21 @@ class ReadFile implements ReadFileInterface
         if ($extensionCode == 0xF9) {
             return $this->segmentFactory->create([
                 'name' => 'Graphics Control Extension',
-                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource)
+                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource),
             ]);
         }
 
         if ($extensionCode == 0xFE) {
             return $this->segmentFactory->create([
                 'name' => 'comment',
-                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource)
+                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource),
             ]);
         }
 
         if ($extensionCode != 0xFF) {
             return $this->segmentFactory->create([
                 'name' => 'Programm extension',
-                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource)
+                'data' => $gifExtensionSeparator . $extensionCodeBinary . $this->readBlock($resource),
             ]);
         }
 
@@ -209,14 +210,14 @@ class ReadFile implements ReadFileInterface
             return $this->segmentFactory->create([
                 'name' => $name,
                 'data' =>  $gifExtensionSeparator . $extensionCodeBinary . $blockLengthBinary
-                    . $name . $this->readBlockWithSubblocks($resource)
+                    . $name . $this->readBlockWithSubblocks($resource),
             ]);
         }
 
         return $this->segmentFactory->create([
             'name' => $name,
             'data' => $gifExtensionSeparator . $extensionCodeBinary . $blockLengthBinary
-            . $name . $this->readBlock($resource)
+            . $name . $this->readBlock($resource),
         ]);
     }
 

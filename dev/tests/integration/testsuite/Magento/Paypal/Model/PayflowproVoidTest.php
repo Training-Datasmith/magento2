@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -118,7 +119,7 @@ class PayflowproVoidTest extends TestCase
                         'respmsg' => 'Declined: 10601-Authorization has expired.',
                         'result_code' => '10601',
                     ]
-                )
+                ),
             ],
             'Authorization voided successfully' => [
                 new DataObject(
@@ -126,8 +127,8 @@ class PayflowproVoidTest extends TestCase
                         'respmsg' => 'Approved',
                         'result_code' => '0',
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 
@@ -206,7 +207,7 @@ class PayflowproVoidTest extends TestCase
                 [
                     ['use_proxy', false],
                     ['sandbox_flag', '1'],
-                    ['transaction_url_test_mode', 'https://test_transaction_url']
+                    ['transaction_url_test_mode', 'https://test_transaction_url'],
                 ]
             );
 
@@ -230,7 +231,7 @@ class PayflowproVoidTest extends TestCase
                     $this->objectManager->get(HandlerInterface::class),
                     null,
                     null,
-                    []
+                    [],
                 ]
             )
             ->getMock();

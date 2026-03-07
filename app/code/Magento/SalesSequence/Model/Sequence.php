@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesSequence\Model;
 
 use Magento\Framework\App\ResourceConnection as AppResource;
@@ -19,7 +22,7 @@ class Sequence implements SequenceInterface
     /**
      * Default pattern for Sequence
      */
-    const DEFAULT_PATTERN  = "%s%'.09d%s";
+    public const DEFAULT_PATTERN  = "%s%'.09d%s";
 
     /**
      * @var string

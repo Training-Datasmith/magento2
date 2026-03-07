@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\TestCase;
@@ -78,8 +78,8 @@ class AddressTest extends TestCase
             'cart_id' => '$quote.id$',
             'address' => [
                 'customer_id' => '$customer.id$',
-                'telephone' => '009999999999'
-            ]
+                'telephone' => '009999999999',
+            ],
         ]),
         DataFixture(SetShippingAddress::class, ['cart_id' => '$quote.id$']),
         DataFixture(SetDeliveryMethodFixture::class, ['cart_id' => '$quote.id$']),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,16 +111,16 @@ class ConfigurableProductsFixtureTest extends TestCase
             ->willReturnMap([
                 [
                     StoreManager::class,
-                    $storeManagerMock
+                    $storeManagerMock,
                 ],
                 [
                     AttributeSetRepositoryInterface::class,
-                    $attributeSetRepositoryMock
+                    $attributeSetRepositoryMock,
                 ],
                 [
                     ProductAttributeOptionManagementInterface::class,
-                    $productAttributeOptionManagementInterface
-                ]
+                    $productAttributeOptionManagementInterface,
+                ],
             ]);
 
         $attributeCollectionFactoryMock = $this->getMockBuilder(CollectionFactory::class)
@@ -159,7 +160,7 @@ class ConfigurableProductsFixtureTest extends TestCase
         $valuesMap = [
             ['configurable_products', 0, 1],
             ['simple_products', 0, 1],
-            ['search_terms', null, ['search_term' =>[['term' => 'iphone 6', 'count' => '1']]]],
+            ['search_terms', null, ['search_term' => [['term' => 'iphone 6', 'count' => '1']]]],
             ['configurable_products_variation', 3, 1],
             [
                 'search_config',
@@ -168,8 +169,8 @@ class ConfigurableProductsFixtureTest extends TestCase
                     'max_amount_of_words_description' => '200',
                     'max_amount_of_words_short_description' => '20',
                     'min_amount_of_words_description' => '20',
-                    'min_amount_of_words_short_description' => '5'
-                ]
+                    'min_amount_of_words_short_description' => '5',
+                ],
             ],
             ['attribute_sets',
                 null,
@@ -194,17 +195,17 @@ class ConfigurableProductsFixtureTest extends TestCase
                                             'option' => [
                                                 [
                                                     'label' => 'yellow1',
-                                                    'value' => ''
-                                                ]
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                                    'value' => '',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->fixtureModelMock

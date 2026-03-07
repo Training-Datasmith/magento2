@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'backend_type' => 'varchar',
                 'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Table',
                 'backend_model' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
-                'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit']
+                'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
             ],
             'gql_customer_attr'
         ),
@@ -101,7 +102,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$gql_customer_attr.attribute_code$',
                 'label' => 'GQL Cust 1',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'gql_cust_opt1'
         ),
@@ -111,7 +112,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$gql_customer_attr.attribute_code$',
                 'label' => 'GQL Cust 2',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'gql_cust_opt2'
         ),
@@ -121,7 +122,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
                 'attribute_code' => '$gql_customer_attr.attribute_code$',
                 'label' => 'GQL Cust 3',
-                'sort_order' => 30
+                'sort_order' => 30,
             ],
             'gql_cust_opt3'
         ),
@@ -136,7 +137,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'backend_type' => 'varchar',
                 'source_model' => 'Magento\Eav\Model\Entity\Attribute\Source\Table',
                 'backend_model' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
-                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
+                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
             ],
             'gql_address_attr'
         ),
@@ -146,7 +147,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$gql_address_attr.attribute_code$',
                 'label' => 'GQL Addr 1',
-                'sort_order' => 10
+                'sort_order' => 10,
             ],
             'gql_addr_opt1'
         ),
@@ -156,7 +157,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$gql_address_attr.attribute_code$',
                 'label' => 'GQL Addr 2',
-                'sort_order' => 20
+                'sort_order' => 20,
             ],
             'gql_addr_opt2'
         ),
@@ -166,7 +167,7 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                 'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
                 'attribute_code' => '$gql_address_attr.attribute_code$',
                 'label' => 'GQL Addr 3',
-                'sort_order' => 30
+                'sort_order' => 30,
             ],
             'gql_addr_opt3'
         ),
@@ -181,9 +182,9 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                         'selected_options' => [
                             ['value' => '$gql_cust_opt1.value$'],
                             ['value' => '$gql_cust_opt2.value$'],
-                            ['value' => '$gql_cust_opt3.value$']
-                        ]
-                    ]
+                            ['value' => '$gql_cust_opt3.value$'],
+                        ],
+                    ],
                 ],
                 'addresses' => [
                     [
@@ -203,12 +204,12 @@ class OrphanedMultiselectAttributeTest extends GraphQlAbstract
                                 'selected_options' => [
                                     ['value' => '$gql_addr_opt1.value$'],
                                     ['value' => '$gql_addr_opt2.value$'],
-                                    ['value' => '$gql_addr_opt3.value$']
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    ['value' => '$gql_addr_opt3.value$'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'gql_customer'
         )

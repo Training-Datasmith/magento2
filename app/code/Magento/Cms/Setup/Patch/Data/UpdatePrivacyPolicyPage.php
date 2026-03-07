@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -37,7 +39,7 @@ class UpdatePrivacyPolicyPage implements DataPatchInterface, PatchVersionInterfa
      */
     public function apply()
     {
-                $newPageContent = <<<EOD
+        $newPageContent = <<<EOD
 <div class="privacy-policy cms-content">
     <div class="message info">
         <span>

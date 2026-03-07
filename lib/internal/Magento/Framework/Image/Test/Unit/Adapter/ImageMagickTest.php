@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Image\Adapter\ImageMagick;
 use Magento\Framework\Phrase;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 class ImageMagickTest extends TestCase
@@ -83,8 +84,8 @@ class ImageMagickTest extends TestCase
             ['not_exist', ImageMagick::ERROR_WATERMARK_IMAGE_ABSENT],
             [
                 __DIR__ . '/_files/invalid_image.jpg',
-                ImageMagick::ERROR_WRONG_IMAGE
-            ]
+                ImageMagick::ERROR_WRONG_IMAGE,
+            ],
         ];
     }
 

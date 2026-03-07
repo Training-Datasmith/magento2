@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Test\Di\Child;
 use Magento\Test\Di\ChildInterface;
 use Magento\Test\Di\DiInterface;
 use Magento\Test\Di\DiParent;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../_files/Child.php';
 
@@ -46,7 +47,7 @@ class RuntimeTest extends TestCase
         return [
             [DiInterface::class, []],
             [DiParent::class, [null, DiInterface::class]],
-            [Child::class, [DiParent::class, ChildInterface::class]]
+            [Child::class, [DiParent::class, ChildInterface::class]],
         ];
     }
 

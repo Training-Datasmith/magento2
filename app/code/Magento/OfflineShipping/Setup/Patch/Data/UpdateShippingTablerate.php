@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\OfflineShipping\Setup\Patch\Data;
 
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\OfflineShipping\Model\Carrier\Tablerate;
 
 /**
  * Update for shipping_tablerate table for using price with discount in condition.
@@ -47,7 +47,7 @@ class UpdateShippingTablerate implements DataPatchInterface
             ['value' => 'package_value_with_discount'],
             [
                 new \Zend_Db_Expr('value = \'package_value\''),
-                new \Zend_Db_Expr('path = \'carriers/tablerate/condition_name\'')
+                new \Zend_Db_Expr('path = \'carriers/tablerate/condition_name\''),
             ]
         );
         $this->moduleDataSetup->getConnection()->endSetup();

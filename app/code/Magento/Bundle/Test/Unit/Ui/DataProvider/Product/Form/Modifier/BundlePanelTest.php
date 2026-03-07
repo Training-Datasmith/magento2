@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Product\Attribute\Source\Shipment\Type as ShipmentType;
 use Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\BundlePanel;
 use Magento\Bundle\Ui\DataProvider\Product\Form\Modifier\BundlePrice;
@@ -18,6 +18,7 @@ use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -92,7 +93,7 @@ class BundlePanelTest extends TestCase
                 'locator' => $this->locatorMock,
                 'urlBuilder' => $this->urlBuilder,
                 'shipmentType' => $this->shipmentType,
-                'arrayManager' => $this->arrayManagerMock
+                'arrayManager' => $this->arrayManagerMock,
             ]
         );
     }
@@ -111,9 +112,9 @@ class BundlePanelTest extends TestCase
         $sourceMeta = [
             'bundle-items' => [
                 'children' => [
-                    BundlePrice::CODE_PRICE_TYPE => []
-                ]
-            ]
+                    BundlePrice::CODE_PRICE_TYPE => [],
+                ],
+            ],
         ];
         $this->arrayManagerMock->method('findPath')
             ->willReturnMap(
@@ -124,8 +125,8 @@ class BundlePanelTest extends TestCase
                         null,
                         'children',
                         ArrayManager::DEFAULT_PATH_DELIMITER,
-                        $shipmentTypePath
-                    ]
+                        $shipmentTypePath,
+                    ],
                 ]
             );
         $this->arrayManagerMock->method('merge')
@@ -141,9 +142,9 @@ class BundlePanelTest extends TestCase
             [
                 'dataScope' => $dataScope,
                 'validation' => [
-                    'required-entry' => false
-                ]
-            ]
+                    'required-entry' => false,
+                ],
+            ],
         ];
         $this->arrayManagerMock
             ->method('merge')
@@ -165,12 +166,12 @@ class BundlePanelTest extends TestCase
         return [
             [
                 'bundle-items/children',
-                'data.product.shipment_type'
+                'data.product.shipment_type',
             ],
             [
                 'someAttrGroup/children',
-                'shipment_type'
-            ]
+                'shipment_type',
+            ],
         ];
     }
 }

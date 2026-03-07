@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Constra
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Declaration\Schema\Db\DbDefinitionProcessorInterface;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
 use Magento\Framework\Setup\Declaration\Schema\Dto\ElementInterface;
 
 /**
@@ -23,17 +24,17 @@ class Internal implements DbDefinitionProcessorInterface
     /**
      * Name of Primary Key.
      */
-    const PRIMARY_NAME = 'PRIMARY';
+    public const PRIMARY_NAME = 'PRIMARY';
 
     /**
      * Primary key statement.
      */
-    const PRIMARY_KEY_NAME = 'PRIMARY KEY';
+    public const PRIMARY_KEY_NAME = 'PRIMARY KEY';
 
     /**
      * Unique key statement.
      */
-    const UNIQUE_KEY_NAME = 'UNIQUE KEY';
+    public const UNIQUE_KEY_NAME = 'UNIQUE KEY';
 
     /**
      * @var ResourceConnection
@@ -83,9 +84,9 @@ class Internal implements DbDefinitionProcessorInterface
         return [
             'name' => $data['Key_name'],
             'column' => [
-                $data['Column_name'] => $data['Column_name']
+                $data['Column_name'] => $data['Column_name'],
             ],
-            'type' => $data['Key_name'] === self::PRIMARY_NAME ? 'primary' : 'unique'
+            'type' => $data['Key_name'] === self::PRIMARY_NAME ? 'primary' : 'unique',
         ];
     }
 }

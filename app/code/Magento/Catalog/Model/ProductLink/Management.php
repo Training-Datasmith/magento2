@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Catalog\Model\ProductLink;
 
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\InputException;
+use Magento\Catalog\Api\ProductLinkManagementInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\LinkTypeProvider;
-use Magento\Catalog\Api\ProductLinkManagementInterface;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Manage product links from api
@@ -83,7 +85,7 @@ class Management implements ProductLinkManagementInterface
         foreach ($items as $newLink) {
             $type = $newLink->getLinkType();
             if ($type == null) {
-                throw InputException::requiredField("linkType");
+                throw InputException::requiredField('linkType');
             }
             if (!isset($linkTypes[$type])) {
                 throw new NoSuchEntityException(

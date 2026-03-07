@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Framework\Console\Test\Unit\QuestionPerformer;
 
 use Magento\Framework\Console\QuestionPerformer\YesNo;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -113,7 +114,7 @@ class YesNoTest extends TestCase
             ['n', false],
             ['N', false],
             ['Not', false],
-            ['anykey', false]
+            ['anykey', false],
         ];
     }
 }

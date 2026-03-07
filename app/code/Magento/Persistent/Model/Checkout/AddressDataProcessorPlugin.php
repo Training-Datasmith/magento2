@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Persistent\Model\Checkout;
 
-use Magento\Quote\Api\Data\AddressAdditionalDataInterface as AddressAdditionalData;
-use Magento\Persistent\Helper\Session as PersistentSession;
-use Magento\Persistent\Helper\Data as PersistentHelper;
 use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Persistent\Helper\Data as PersistentHelper;
+use Magento\Persistent\Helper\Session as PersistentSession;
+use Magento\Quote\Api\Data\AddressAdditionalDataInterface as AddressAdditionalData;
 use Magento\Quote\Model\AddressAdditionalDataProcessor;
 
 class AddressDataProcessorPlugin

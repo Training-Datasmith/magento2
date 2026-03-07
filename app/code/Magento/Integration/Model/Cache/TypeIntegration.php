@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,12 +16,12 @@ class TypeIntegration extends \Magento\Framework\Cache\Frontend\Decorator\TagSco
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'config_integration_api';
+    public const TYPE_IDENTIFIER = 'config_integration_api';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'INTEGRATION_API_CONFIG';
+    public const CACHE_TAG = 'INTEGRATION_API_CONFIG';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool

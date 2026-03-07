@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class SessionStartChecker
      *
      * @return bool
      */
-    public function check() : bool
+    public function check(): bool
     {
         return !($this->checkSapi && PHP_SAPI === 'cli');
     }

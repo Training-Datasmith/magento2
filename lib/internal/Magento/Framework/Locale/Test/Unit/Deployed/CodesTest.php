@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class CodesTest extends TestCase
             ->willReturn([
                 $fullPath . '/de_DE',
                 $fullPath . '/en_US',
-                $fullPath . '/fr_FR'
+                $fullPath . '/fr_FR',
             ]);
         $this->fileSystemMock->expects($this->once())
             ->method('getDirectoryRead')
@@ -88,7 +89,7 @@ class CodesTest extends TestCase
             [
                 'de_DE',
                 'en_US',
-                'fr_FR'
+                'fr_FR',
             ],
             $this->model->getList($code, $area)
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class NewActionTest extends AbstractController
             ],
             'with_invalid_email' => [
                 'email' => 'invalid_email.com',
-                'expectedMessage' => 'Please enter a valid email address.'
+                'expectedMessage' => 'Please enter a valid email address.',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\Component\Listing\Columns;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Ui\Component\Listing\Columns\Price;
+use Magento\Framework\Locale\CurrencyInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Locale\CurrencyInterface;
-use Magento\Store\Model\StoreManagerInterface;
 
 class PriceTest extends TestCase
 {
@@ -95,21 +96,21 @@ class PriceTest extends TestCase
                     'data' => [
                         'items' => [
                             [
-                                'price' => '10.00'
-                            ]
-                        ]
-                    ]
+                                'price' => '10.00',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'data' => [
                         'items' => [
                             [
-                                'price' => 'formatted'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'price' => 'formatted',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

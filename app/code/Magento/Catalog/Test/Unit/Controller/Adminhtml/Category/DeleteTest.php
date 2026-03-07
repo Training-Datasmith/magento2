@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -56,16 +57,16 @@ class DeleteTest extends TestCase
         $objects = [
             [
                 StoreManagerInterface::class,
-                $this->createMock(StoreManagerInterface::class)
+                $this->createMock(StoreManagerInterface::class),
             ],
             [
                 Config::class,
-                $this->createMock(Config::class)
+                $this->createMock(Config::class),
             ],
             [
                 Session::class,
-                $this->createMock(Session::class)
-            ]
+                $this->createMock(Session::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -104,7 +105,7 @@ class DeleteTest extends TestCase
             Delete::class,
             [
                 'context' => $context,
-                'categoryRepository' => $this->categoryRepository
+                'categoryRepository' => $this->categoryRepository,
             ]
         );
     }

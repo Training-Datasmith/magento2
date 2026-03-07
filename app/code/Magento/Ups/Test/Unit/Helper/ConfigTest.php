@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ConfigTest extends TestCase
             [false, 'not-exist-type', 'not-exist-code'],
             [false, 'action'],
             [['single' => '3', 'all' => '4'], 'action', ''],
-            ['3', 'action', 'single']
+            ['3', 'action', 'single'],
         ];
     }
 }

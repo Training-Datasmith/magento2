@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml tax rule Edit Container
  */
+
 namespace Magento\Tax\Block\Adminhtml\Rule;
 
 /**
@@ -59,7 +62,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                 'class' => 'save',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form']],
-                ]
+                ],
             ],
             10
         );

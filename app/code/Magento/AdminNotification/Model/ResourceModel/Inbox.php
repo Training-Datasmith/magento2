@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel;
 
 /**
@@ -26,10 +29,9 @@ class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Load latest notice
      *
-     * @param \Magento\AdminNotification\Model\Inbox $object
      * @return $this
      */
-    public function loadLatestNotice(\Magento\AdminNotification\Model\Inbox $object)
+    public function loadLatestNotice(\Magento\AdminNotification\Model\Inbox $object): static
     {
         $connection = $this->getConnection();
         $select = $connection->select()->from(
@@ -57,7 +59,6 @@ class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Get notifications grouped by severity
      *
-     * @param \Magento\AdminNotification\Model\Inbox $object
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
@@ -68,7 +69,7 @@ class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $this->getMainTable(),
             [
                 'severity' => 'severity',
-                'count_notice' => new \Zend_Db_Expr('COUNT(' . $this->getIdFieldName() . ')')
+                'count_notice' => new \Zend_Db_Expr('COUNT(' . $this->getIdFieldName() . ')'),
             ]
         )->group(
             'severity'
@@ -85,12 +86,9 @@ class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Save notifications (if not exists)
      *
-     * @param \Magento\AdminNotification\Model\Inbox $object
-     * @param array $data
-     * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function parse(\Magento\AdminNotification\Model\Inbox $object, array $data)
+    public function parse(\Magento\AdminNotification\Model\Inbox $object, array $data): void
     {
         $connection = $this->getConnection();
         foreach ($data as $item) {

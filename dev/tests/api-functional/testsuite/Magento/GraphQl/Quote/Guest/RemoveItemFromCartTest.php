@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -127,10 +128,10 @@ class RemoveItemFromCartTest extends GraphQlAbstract
      */
     public function testRemoveItemWithEmptyCartId()
     {
-        $cartId = "";
+        $cartId = '';
         $cartItemId = $this->getQuoteItemIdByReservedQuoteIdAndSku->execute('test_quote', 'simple_product');
 
-        $this->expectExceptionMessage("Required parameter \"cart_id\" is missing.");
+        $this->expectExceptionMessage('Required parameter "cart_id" is missing.');
 
         $query = $this->getQuery($cartId, $cartItemId);
         $this->graphQlMutation($query);
@@ -146,7 +147,7 @@ class RemoveItemFromCartTest extends GraphQlAbstract
         $cartId = $this->getMaskedQuoteIdByReservedOrderId->execute('test_quote');
         $cartItemId = 0;
 
-        $this->expectExceptionMessage("Required parameter \"cart_item_id\" is missing.");
+        $this->expectExceptionMessage('Required parameter "cart_item_id" is missing.');
 
         $query = $this->getQuery($cartId, $cartItemId);
         $this->graphQlMutation($query);

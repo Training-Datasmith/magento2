@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Ui\Component;
 
 use Magento\Cms\Api\Data\PageInterface;
@@ -53,7 +56,7 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
         PageInterface::CUSTOM_THEME,
         PageInterface::CUSTOM_THEME_FROM,
         PageInterface::CUSTOM_THEME_TO,
-        PageInterface::CUSTOM_ROOT_TEMPLATE
+        PageInterface::CUSTOM_ROOT_TEMPLATE,
     ];
 
     /**
@@ -131,13 +134,13 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
                             'data' => [
                                 'config' => [
                                     'editorConfig' => [
-                                        'enabled' => false
+                                        'enabled' => false,
                                     ],
-                                    'componentType' => Container::NAME
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'componentType' => Container::NAME,
+                                ],
+                            ],
+                        ],
+                    ],
                 ];
             }
 
@@ -149,12 +152,12 @@ class DataProvider extends \Magento\Framework\View\Element\UiComponent\DataProvi
                             'data' => [
                                 'config' => [
                                     'editor' => [
-                                        'editorType' => false
+                                        'editorType' => false,
                                     ],
-                                    'componentType' => Container::NAME
-                                ]
-                            ]
-                        ]
+                                    'componentType' => Container::NAME,
+                                ],
+                            ],
+                        ],
                     ];
                 }
             }

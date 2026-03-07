@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProductGraphQl\Model;
 
-use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as Type;
+use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 
 /**
  * @inheritdoc
@@ -18,7 +19,7 @@ class ConfigurableProductTypeResolver implements TypeResolverInterface
     /**
      * Configurable product type resolver code
      */
-    const TYPE_RESOLVER = 'ConfigurableProduct';
+    public const TYPE_RESOLVER = 'ConfigurableProduct';
 
     /**
      * @inheritdoc

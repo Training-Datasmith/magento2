@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Metadata;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AddressSnapshotTest extends TestCase
 {
@@ -71,7 +72,7 @@ class AddressSnapshotTest extends TestCase
                 'getDataByKey',
                 'getIsCustomerSaveTransaction',
                 'getIsDefaultBilling',
-                'getIsDefaultShipping'
+                'getIsDefaultShipping',
             ]
         );
 
@@ -128,7 +129,7 @@ class AddressSnapshotTest extends TestCase
             DataObject::class,
             [
                 'getId',
-                'getData'
+                'getData',
             ]
         );
 

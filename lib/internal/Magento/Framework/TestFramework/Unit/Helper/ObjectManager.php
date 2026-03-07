@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\TestFramework\Unit\Helper;
 
+use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\GetParameterClassTrait;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**

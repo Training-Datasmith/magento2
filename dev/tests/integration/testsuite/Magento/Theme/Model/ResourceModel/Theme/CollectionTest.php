@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\ResourceModel\Theme;
 
 use Magento\Framework\View\Design\ThemeInterface;
@@ -74,7 +77,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             ['', false],
             ['test_area', false],
             ['test_area/test', false],
-            ['test_area/test/something', false]
+            ['test_area/test/something', false],
         ];
     }
 
@@ -98,7 +101,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         return [
             ['area' => 'test_area', 'themeCount' => 1],
             ['area' => 'test_area2', 'themeCount' => 1],
-            ['area' => 'test_area4', 'themeCount' => 0]
+            ['area' => 'test_area4', 'themeCount' => 0],
         ];
     }
 
@@ -127,7 +130,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             ['themeType' => ThemeInterface::TYPE_PHYSICAL, 'themeCount' => 1],
             ['themeType' => ThemeInterface::TYPE_VIRTUAL, 'themeCount' => 1],
             ['themeType' => ThemeInterface::TYPE_STAGING, 'themeCount' => 1],
-            ['themeType' => false, 'themeCount' => 3]
+            ['themeType' => false, 'themeCount' => 3],
         ];
     }
 
@@ -250,7 +253,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test_default.jpg',
                 'is_featured' => '1',
                 'area' => 'test_area2',
-                'type' => ThemeInterface::TYPE_VIRTUAL
+                'type' => ThemeInterface::TYPE_VIRTUAL,
             ],
             [
                 'parent_id' => '0',
@@ -260,7 +263,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test_default.jpg',
                 'is_featured' => '1',
                 'area' => 'test_area3',
-                'type' => ThemeInterface::TYPE_STAGING
+                'type' => ThemeInterface::TYPE_STAGING,
             ],
             [
                 'parent_id' => '0',
@@ -270,7 +273,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test_default.jpg',
                 'is_featured' => '1',
                 'area' => 'test_area3',
-                'type' => ThemeInterface::TYPE_PHYSICAL
+                'type' => ThemeInterface::TYPE_PHYSICAL,
             ],
             [
                 'parent_id' => '0',
@@ -280,8 +283,8 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test_default.jpg',
                 'is_featured' => '1',
                 'area' => 'test_area3',
-                'type' => ThemeInterface::TYPE_VIRTUAL
-            ]
+                'type' => ThemeInterface::TYPE_VIRTUAL,
+            ],
         ];
     }
 
@@ -309,7 +312,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test1_test2.jpg',
                 'is_featured' => '1',
                 'area' => 'area51',
-                'type' => ThemeInterface::TYPE_VIRTUAL
+                'type' => ThemeInterface::TYPE_VIRTUAL,
             ],
             [
                 'parent_id' => 'area51/test1/test2',
@@ -319,7 +322,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test1_test3.jpg',
                 'is_featured' => '1',
                 'area' => 'area51',
-                'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL
+                'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL,
             ],
             [
                 'parent_id' => 'area51/test1/test0',
@@ -329,8 +332,8 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'preview_image' => 'test1_test4.jpg',
                 'is_featured' => '1',
                 'area' => 'area51',
-                'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL
-            ]
+                'type' => \Magento\Framework\View\Design\ThemeInterface::TYPE_VIRTUAL,
+            ],
         ];
     }
 

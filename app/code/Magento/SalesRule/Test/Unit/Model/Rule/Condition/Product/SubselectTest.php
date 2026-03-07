@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\SalesRule\Test\Unit\Model\Rule\Condition\Product;
 
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Framework\DataObject;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -15,7 +17,6 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Rule\Model\Condition\Context;
-use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\SalesRule\Model\Rule\Condition\Product as SalesRuleProduct;
 use Magento\SalesRule\Model\Rule\Condition\Product\Subselect as SalesRuleProductSubselect;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -78,7 +79,7 @@ class SubselectTest extends TestCase
                 'getChildren',
                 'getQuote',
                 'getAddress',
-                'getOptionByCode'
+                'getOptionByCode',
             ]
         );
         $this->quoteMock->expects($this->any())
@@ -320,30 +321,30 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'test conditions',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
                         [
-                            'id'=> 1,
+                            'id' => 1,
                             'type' => ProductType::TYPE_SIMPLE,
                             'qty' => 1,
                             'price' => 100,
                             'hasChildren' => false ,
                             'baseRowTotal' => 100,
-                            'valueParsed' => 100
+                            'valueParsed' => 100,
                         ],
                         [
-                            'id'=> 1,
+                            'id' => 1,
                             'type' => ProductType::TYPE_BUNDLE,
                             'qty' => 1,
                             'price' => 100,
                             'hasChildren' => true,
                             'baseRowTotal' => 100,
-                            'valueParsed' => 100
+                            'valueParsed' => 100,
                         ],
                     ],
                     true,
-                    true
+                    true,
                 ],
         ];
     }
@@ -363,19 +364,19 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'test conditions',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_BUNDLE,
                         'qty' => 1,
                         'price' => 100,
                         'hasChildren' => true,
                         'baseRowTotal' => 100,
-                        'valueParsed' => 100
+                        'valueParsed' => 100,
                     ],
                     true,
-                    true
+                    true,
                 ],
             'validate false for bundle product data with conditions w/o multi shipping' =>
                 [
@@ -383,34 +384,34 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'test conditions',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_BUNDLE,
                         'qty' => 1,
                         'price' => 100,
                         'hasChildren' => true ,
                         'baseRowTotal' => 100,
-                        'valueParsed' => 50
+                        'valueParsed' => 50,
                     ],
                     false,
-                    false
+                    false,
                 ],
             'validate product data without conditions with bundle product w/o multi shipping' =>
                 [
                     null,
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_BUNDLE,
                         'qty' => 1,
                         'price' => 100,
                         'hasChildren' => true ,
                         'baseRowTotal' => 100,
-                        'valueParsed' => 100
+                        'valueParsed' => 100,
                     ],
                     true,
-                    false
+                    false,
                 ],
             'validate true for bundle product
             data with conditions for attribute base_row_total w/o multi shipping' =>
@@ -419,19 +420,19 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'base_row_total',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_BUNDLE,
                         'qty' => 2,
                         'price' => 100,
                         'hasChildren' => true,
                         'baseRowTotal' => 200,
-                        'valueParsed' => 200
+                        'valueParsed' => 200,
                     ],
                     false,
-                    false
+                    false,
                 ],
             'validate true for simple product data with conditions with multi shipping' =>
                 [
@@ -439,19 +440,19 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'test conditions',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_SIMPLE,
                         'qty' => 1,
                         'price' => 100,
                         'hasChildren' => false ,
                         'baseRowTotal' => 100,
-                        'valueParsed' => 100
+                        'valueParsed' => 100,
                     ],
                     true,
-                    true
+                    true,
                 ],
             'validate false for simple product data with conditions w/o multi shipping' =>
                 [
@@ -459,20 +460,20 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'test conditions',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_SIMPLE,
                         'qty' => 1,
                         'price' => 100,
                         'hasChildren' => false,
                         'baseRowTotal' => 100,
-                        'valueParsed' => 50
+                        'valueParsed' => 50,
                     ],
                     false,
-                    false
-                ]
+                    false,
+                ],
         ];
     }
 
@@ -492,7 +493,7 @@ class SubselectTest extends TestCase
         array $productDetails,
         bool $isMultiShipping,
         bool $expectedResult
-    ):void {
+    ): void {
         $attributeResource = new DataObject();
         if ($attributeDetails) {
             $attributeResource->setAttribute($attributeDetails['id']);
@@ -559,20 +560,20 @@ class SubselectTest extends TestCase
                         'id' => 'attribute_set_id',
                         'name' => 'base_row_total_incl_tax',
                         'attributeScope' => 'frontend',
-                        'attributeOperator' => '=='
+                        'attributeOperator' => '==',
                     ],
                     [
-                        'id'=> 1,
+                        'id' => 1,
                         'type' => ProductType::TYPE_SIMPLE,
                         'qty' => 2,
                         'price' => 100,
                         'hasChildren' => true,
                         'baseRowTotalInclTax' => 200,
-                        'valueParsed' => 200
+                        'valueParsed' => 200,
                     ],
                     false,
-                    false
-                ]
+                    false,
+                ],
         ];
     }
 }

@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Unit Test for \Magento\Framework\Filesystem\Directory\Read
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Test\Unit\Directory;
 
 use Magento\Framework\Filesystem\Directory\Read;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Checkout\CustomerData\ItemPoolInterface;
 use Magento\Checkout\Helper\Data;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
@@ -22,7 +24,6 @@ use Magento\Quote\Model\Quote\Item\Option;
 use Magento\Store\Model\System\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -175,13 +176,13 @@ class CartTest extends TestCase
             'subtotal' => 200,
             'possible_onepage_checkout' => 1,
             'items' => [
-                ['item' => 'data']
+                ['item' => 'data'],
             ],
             'extra_actions' => '<span>Buttons</span>',
             'isGuestCheckoutAllowed' => 1,
             'website_id' => $websiteId,
             'subtotalAmount' => 200,
-            'storeId' => null
+            'storeId' => null,
         ];
         $this->assertEquals($expectedResult, $this->model->getSectionData());
     }
@@ -208,7 +209,7 @@ class CartTest extends TestCase
             ['getTotals', 'getStore', 'getAllVisibleItems', 'getStoreId']
         );
         $quoteMock->method('getTotals')->willReturn($totals);
-        
+
         $quoteItemMock = $this->createPartialMockWithReflection(
             Item::class,
             ['getStoreId', 'getProduct', 'getOptionByCode']
@@ -272,13 +273,13 @@ class CartTest extends TestCase
             'subtotal' => 200,
             'possible_onepage_checkout' => 1,
             'items' => [
-                ['item' => 'data']
+                ['item' => 'data'],
             ],
             'extra_actions' => '<span>Buttons</span>',
             'isGuestCheckoutAllowed' => 1,
             'website_id' => $websiteId,
             'subtotalAmount' => 200,
-            'storeId' => null
+            'storeId' => null,
         ];
         $this->assertEquals($expectedResult, $this->model->getSectionData());
     }

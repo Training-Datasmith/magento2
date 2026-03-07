@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -34,7 +36,7 @@ class DefaultProcessor implements AdditionalColumnProcessorInterface
         $resource = $this->resourceConnection->getConnection();
         $triggersColumns = [
             'column_names' => [],
-            'column_values' => []
+            'column_values' => [],
         ];
 
         foreach ($additionalColumns as $additionalColumn) {

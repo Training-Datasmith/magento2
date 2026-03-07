@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\EavGraphQl\Model\Resolver\Query;
 
-use Magento\Framework\Webapi\CustomAttributeTypeLocatorInterface;
-use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\Reflection\TypeProcessor;
+use Magento\Framework\Webapi\CustomAttributeTypeLocatorInterface;
 
 /**
  * Translate type names found by the custom type locator to GraphQL type names.
@@ -58,7 +59,7 @@ class Type
      * @throws GraphQlInputException
      * @since 100.3.0
      */
-    public function getType(string $attributeCode, string $entityType) : string
+    public function getType(string $attributeCode, string $entityType): string
     {
         $type = $this->typeLocator->getType($attributeCode, $entityType);
 
@@ -67,7 +68,7 @@ class Type
             $type = isset($this->customTypes[$attributeCode]) ? $this->customTypes[$attributeCode] : $type;
             return $type;
         } elseif ($type === TypeProcessor::ANY_TYPE) {
-            return "";
+            return '';
         } elseif ($isComplexType) {
             try {
                 $type = $this->typeProcessor->translateTypeName($type);

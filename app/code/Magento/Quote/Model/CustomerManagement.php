@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,15 +11,15 @@ namespace Magento\Quote\Model;
 use Magento\Customer\Api\AccountManagementInterface as AccountManagement;
 use Magento\Customer\Api\AddressRepositoryInterface as CustomerAddressRepository;
 use Magento\Customer\Api\CustomerRepositoryInterface as CustomerRepository;
+use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Customer\Api\Data\AddressInterfaceFactory;
+use Magento\Customer\Api\Data\RegionInterfaceFactory;
 use Magento\Customer\Model\AddressFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Validator\Factory as ValidatorFactory;
-use Magento\Quote\Model\Quote as QuoteEntity;
-use Magento\Customer\Api\Data\RegionInterfaceFactory;
-use Magento\Customer\Api\Data\AddressInterface;
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
+use Magento\Quote\Model\Quote as QuoteEntity;
 
 /**
  * Class Customer

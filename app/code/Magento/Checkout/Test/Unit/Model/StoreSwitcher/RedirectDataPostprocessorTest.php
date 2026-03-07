@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreSwitcher\ContextInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class RedirectDataPostprocessorTest extends TestCase
 {
@@ -125,27 +126,27 @@ class RedirectDataPostprocessorTest extends TestCase
             [
                 ['isLoggedIn' => false, 'getQuoteId' => 4],
                 ['quote_id' => 2],
-                false
+                false,
             ],
             [
                 ['isLoggedIn' => true, 'getQuoteId' => null],
                 ['quote_id' => 2],
-                false
+                false,
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => null],
                 ['quote_id' => 1],
-                false
+                false,
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => null, 'getIsActive' => false],
                 ['quote_id' => 2],
-                false
+                false,
             ],
             [
                 ['isLoggedIn' => false, 'getQuoteId' => null],
                 ['quote_id' => 2],
-                true
+                true,
             ],
         ];
     }

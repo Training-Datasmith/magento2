@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\ReleaseNotification\Ui\DataProvider\Modifier;
 
+use Magento\Backend\Model\Auth\Session;
+use Magento\Framework\App\CacheInterface;
+use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\ReleaseNotification\Model\ContentProviderInterface;
 use Magento\ReleaseNotification\Ui\Renderer\NotificationRenderer;
-use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\App\CacheInterface;
 use Magento\Ui\Component;
-use Magento\Framework\App\ProductMetadataInterface;
-use Magento\Backend\Model\Auth\Session;
+use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -137,12 +139,12 @@ class Notifications implements ModifierInterface
     {
         $meta['notification_modal_' . $page['name']]['arguments']['data']['config'] = [
             'isTemplate' => false,
-            'componentType' => Component\Modal::NAME
+            'componentType' => Component\Modal::NAME,
         ];
 
         $meta['notification_modal_' . $page['name']]['children']['notification_fieldset']['children']
         ['notification_text']['arguments']['data']['config'] = [
-            'text' => $this->renderer->getNotificationContent($page)
+            'text' => $this->renderer->getNotificationContent($page),
         ];
 
         if ($isLastPage) {
@@ -155,21 +157,21 @@ class Notifications implements ModifierInterface
                             [
                                 'targetName' => '${ $.name }',
                                 '__disableTmpl' => ['targetName' => false],
-                                'actionName' => 'closeReleaseNotes'
-                            ]
+                                'actionName' => 'closeReleaseNotes',
+                            ],
                         ],
-                        'class' => 'release-notification-button-next'
-                    ]
+                        'class' => 'release-notification-button-next',
+                    ],
                 ],
             ];
 
             $meta['notification_modal_' . $page['name']]['children']['notification_fieldset']['children']
             ['notification_buttons']['children']['notification_button_next']['arguments']['data']['config'] = [
-                'buttonClasses' => 'hide-release-notification'
+                'buttonClasses' => 'hide-release-notification',
             ];
         } else {
             $meta['notification_modal_' . $page['name']]['arguments']['data']['config']['options'] = [
-                'title' => $this->renderer->getNotificationTitle($page)
+                'title' => $this->renderer->getNotificationTitle($page),
             ];
         }
 
@@ -185,7 +187,7 @@ class Notifications implements ModifierInterface
     private function hideNotification(array $meta)
     {
         $meta['notification_modal_1']['arguments']['data']['config']['options'] = [
-            'autoOpen' => false
+            'autoOpen' => false,
         ];
 
         return $meta;
@@ -203,7 +205,7 @@ class Notifications implements ModifierInterface
         $locale = $this->session->getUser()->getInterfaceLocale();
         $locale = $locale !== null ? strtolower($locale) : '';
 
-        $cacheKey = self::$cachePrefix . $version . "-" . $edition . "-" . $locale;
+        $cacheKey = self::$cachePrefix . $version . '-' . $edition . '-' . $locale;
         $modalContent = $this->cacheStorage->load($cacheKey);
         if ($modalContent === false) {
             $modalContent = $this->contentProvider->getContent($version, $edition, $locale);

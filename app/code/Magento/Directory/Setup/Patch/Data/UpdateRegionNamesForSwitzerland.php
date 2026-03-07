@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class UpdateRegionNamesForSwitzerland implements DataPatchInterface
             $countryRegionNameDataToUpdate[] = [
                 self::REGION_NAME_KEY_LOCALE => AppInterface::DISTRO_LOCALE_CODE,
                 self::REGION_NAME_REGION_ID => $regionItem->getData(self::REGION_KEY_REGION_ID),
-                self::REGION_NAME_KEY_NAME => $newRegionName
+                self::REGION_NAME_KEY_NAME => $newRegionName,
             ];
         }
 

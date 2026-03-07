@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,7 +36,7 @@ class ComponentRegistrarFixtureTest extends \PHPUnit\Framework\TestCase
             ->getMock();
 
         $sharedInstances = [
-            ComponentsDir::class => $this->createConfiguredMock(ComponentsDir::class, ['parse' => []])
+            ComponentsDir::class => $this->createConfiguredMock(ComponentsDir::class, ['parse' => []]),
         ];
         $objectManager->method('get')
             ->willReturnCallback(

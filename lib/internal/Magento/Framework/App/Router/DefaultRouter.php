@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Default application router
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Router;
 
 use Magento\Framework\App\ActionFactory;
+use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\RouterInterface;
-use Magento\Framework\App\ActionInterface;
 
 class DefaultRouter implements RouterInterface
 {

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Http;
 
 /**
@@ -13,12 +16,12 @@ class Transfer implements TransferInterface
     /**
      * Name of Auth username field
      */
-    const AUTH_USERNAME = 'username';
+    public const AUTH_USERNAME = 'username';
 
     /**
      * Name of Auth password field
      */
-    const AUTH_PASSWORD = 'password';
+    public const AUTH_PASSWORD = 'password';
 
     /**
      * @var array

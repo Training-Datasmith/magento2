@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Cron;
 
 use Magento\Catalog\Model\FrontendStorageConfigurationInterface;
@@ -53,7 +56,7 @@ class FrontendActionsFlush
             $configuration = $configurationObject->get();
         } else {
             $configuration = [
-                'lifetime' => FrontendStorageConfigurationInterface::DEFAULT_LIFETIME
+                'lifetime' => FrontendStorageConfigurationInterface::DEFAULT_LIFETIME,
             ];
         }
 
@@ -87,7 +90,7 @@ class FrontendActionsFlush
             $lifeTime = $this->getLifeTimeByNamespace($namespace);
 
             $where = [
-                $adapter->quoteInto('added_at < ?', time() - $lifeTime)
+                $adapter->quoteInto('added_at < ?', time() - $lifeTime),
             ];
 
             $adapter->delete($this->productFrontendActionResource->getMainTable(), $where);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -22,7 +25,7 @@ class QueryFactory implements QueryFactoryInterface
     /**
      * Query variable
      */
-    const QUERY_VAR_NAME = 'q';
+    public const QUERY_VAR_NAME = 'q';
 
     /**
      * @var \Magento\Framework\App\RequestInterface

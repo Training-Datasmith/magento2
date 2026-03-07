@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Wishlist\Model\WishlistFactory;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
+use Magento\Wishlist\Model\WishlistFactory;
 
 Resolver::getInstance()->requireDataFixture('Magento/Customer/_files/customer.php');
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/multiple_products.php');

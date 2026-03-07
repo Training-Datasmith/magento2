@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class Chart
 
                 $data[] = [
                     'x' => $date,
-                    'y' => $item ? (float)$item->getData($chartParam) : 0
+                    'y' => $item ? (float)$item->getData($chartParam) : 0,
                 ];
             }
         }

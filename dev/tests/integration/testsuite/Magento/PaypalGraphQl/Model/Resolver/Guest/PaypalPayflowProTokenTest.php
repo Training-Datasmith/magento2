@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use Magento\Framework\DataObject;
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
+use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 
 /**
  * Test PaypalPayflowProTokenTest graphql endpoint for guest
@@ -122,7 +123,7 @@ mutation {
 }
 QUERY;
 
-        $expectedExceptionMessage = "Invalid Url.";
+        $expectedExceptionMessage = 'Invalid Url.';
 
         $response = $this->graphQlRequest->send($query);
         $responseData = $this->json->unserialize($response->getContent());

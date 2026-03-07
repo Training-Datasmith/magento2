@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for \Magento\GoogleAdwords\Model\Validator\Factory
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleAdwords\Model\Validator;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -24,7 +27,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
         $factory = $objectManager->get(\Magento\GoogleAdwords\Model\Validator\Factory::class);
 
         $validator = $factory->createConversionIdValidator($conversionId);
-        $this->assertNotNull($validator, "Conversion ID Validator");
+        $this->assertNotNull($validator, 'Conversion ID Validator');
     }
 
     /**
@@ -34,7 +37,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetConversionColorValidator()
     {
-        $conversionColor = "FFFFFF";
+        $conversionColor = 'FFFFFF';
 
         $objectManager = Bootstrap::getObjectManager();
         $factory = $objectManager->get(\Magento\GoogleAdwords\Model\Validator\Factory::class);

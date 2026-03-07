@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class AdvancedPricingTest extends AbstractBackendController
                         'price_qty' => '100',
                         'price' => 5,
                         'value_type' => 'fixed',
-                    ]
+                    ],
                 ],
             ],
         ];

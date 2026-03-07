@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -56,7 +58,7 @@ class TransportBuilderMock extends \Magento\Framework\Mail\Template\TransportBui
             \Magento\TestFramework\Mail\TransportInterfaceMock::class,
             [
                 'message' => $this->message,
-                'onMessageSentCallback' => $this->onMessageSentCallback
+                'onMessageSentCallback' => $this->onMessageSentCallback,
             ]
         );
     }

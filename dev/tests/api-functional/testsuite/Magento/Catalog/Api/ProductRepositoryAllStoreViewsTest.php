@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -31,9 +32,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class ProductRepositoryAllStoreViewsTest extends WebapiAbstract
 {
-    const PRODUCT_SERVICE_NAME = 'catalogProductRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const PRODUCTS_RESOURCE_PATH = '/V1/products';
+    public const PRODUCT_SERVICE_NAME = 'catalogProductRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const PRODUCTS_RESOURCE_PATH = '/V1/products';
 
     /**
      * @var ObjectManagerInterface
@@ -137,12 +138,12 @@ class ProductRepositoryAllStoreViewsTest extends WebapiAbstract
     private function saveProduct(array $product): array
     {
         $serviceInfo = [
-            'rest' => ['resourcePath' =>self::PRODUCTS_RESOURCE_PATH, 'httpMethod' => Request::HTTP_METHOD_POST],
+            'rest' => ['resourcePath' => self::PRODUCTS_RESOURCE_PATH, 'httpMethod' => Request::HTTP_METHOD_POST],
             'soap' => [
                 'service' => self::PRODUCT_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::PRODUCT_SERVICE_NAME . 'Save'
-            ]
+                'operation' => self::PRODUCT_SERVICE_NAME . 'Save',
+            ],
         ];
         $requestData = ['product' => $product];
         return $this->_webApiCall($serviceInfo, $requestData, null, 'all');
@@ -197,8 +198,8 @@ class ProductRepositoryAllStoreViewsTest extends WebapiAbstract
                 ProductInterface::CUSTOM_ATTRIBUTES => [
                     ['attribute_code' => 'url_key', 'value' => 'simple'],
                     ['attribute_code' => 'tax_class_id', 'value' => 2],
-                    ['attribute_code' => 'category_ids', 'value' => [333]]
-                ]
+                    ['attribute_code' => 'category_ids', 'value' => [333]],
+                ],
         ];
     }
 

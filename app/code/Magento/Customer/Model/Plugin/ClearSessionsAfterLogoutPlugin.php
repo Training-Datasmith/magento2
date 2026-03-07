@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Customer\Model\Plugin;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\SessionException;
 use Magento\Framework\Session\SaveHandlerInterface;
 use Magento\Framework\Session\StorageInterface;
-use Magento\Framework\Exception\SessionException;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Clears previous active sessions after logout

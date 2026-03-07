@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ $product->setTypeId('simple')
             'qty' => 0,
             'is_in_stock' => 1,
             'manage_stock' => 1,
-            'backorders' => 2
+            'backorders' => 2,
         ]
     )
     ->setWebsiteIds([$storeManager->getStore()->getWebsiteId()])

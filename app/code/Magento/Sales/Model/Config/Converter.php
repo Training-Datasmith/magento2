@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Converts sales totals (incl. creditmemo, invoice) from \DOMDocument to array
  */
+
 namespace Magento\Sales\Model\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface

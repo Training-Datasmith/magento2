@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Elasticsearch\SearchAdapter\Aggregation;
 
 use Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\BucketBuilderInterface;
 use Magento\Elasticsearch\SearchAdapter\QueryContainer;
-use Magento\Framework\Search\RequestInterface;
 use Magento\Framework\Search\Dynamic\DataProviderInterface;
+use Magento\Framework\Search\RequestInterface;
 
 /**
  * Elasticsearch aggregation builder

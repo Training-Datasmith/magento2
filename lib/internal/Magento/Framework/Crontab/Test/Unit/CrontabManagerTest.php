@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\DriverPool;
 use Magento\Framework\Phrase;
 use Magento\Framework\ShellInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests crontab manager functionality.
@@ -101,28 +102,28 @@ class CrontabManagerTest extends TestCase
         return [
             [
                 'content' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * /bin/php /var/www/magento/bin/magento cron:run' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL,
-                'tasks' => ['* * * * * /bin/php /var/www/magento/bin/magento cron:run']
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
+                'tasks' => ['* * * * * /bin/php /var/www/magento/bin/magento cron:run'],
             ],
             [
                 'content' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * /bin/php /var/www/magento/bin/magento cron:run' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL,
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
                 'tasks' => [
-                    '* * * * * /bin/php /var/www/magento/bin/magento cron:run'
-                ]
+                    '* * * * * /bin/php /var/www/magento/bin/magento cron:run',
+                ],
             ],
             [
                 'content' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL,
-                'tasks' => []
+                'tasks' => [],
             ],
             [
                 'content' => '',
-                'tasks' => []
-            ]
+                'tasks' => [],
+            ],
         ];
     }
 
@@ -188,26 +189,26 @@ class CrontabManagerTest extends TestCase
         return [
             [
                 'contentBefore' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * /bin/php /var/www/magento/bin/magento cron:run' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL,
-                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
+                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL,
             ],
             [
                 'contentBefore' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * /bin/php /var/www/magento/bin/magento cron:run' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL,
-                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
+                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL,
             ],
             [
                 'contentBefore' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL,
-                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
+                'contentAfter' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL,
             ],
             [
                 'contentBefore' => '',
-                'contentAfter' => ''
-            ]
+                'contentAfter' => '',
+            ],
         ];
     }
 
@@ -264,7 +265,7 @@ class CrontabManagerTest extends TestCase
             ]);
 
         $this->crontabManager->saveTasks([
-            'myCron' => ['expression' => '* * * * *']
+            'myCron' => ['expression' => '* * * * *'],
         ]);
     }
 
@@ -318,75 +319,75 @@ class CrontabManagerTest extends TestCase
     public static function saveTasksDataProvider(): array
     {
         $content = '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-            . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+            . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
             . '* * * * * /bin/php /var/www/magento/bin/magento cron:run' . PHP_EOL
-            . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL;
+            . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL;
 
         return [
             [
                 'tasks' => [
-                    ['expression' => '* * * * *', 'command' => 'run.php']
+                    ['expression' => '* * * * *', 'command' => 'run.php'],
                 ],
                 'content' => $content,
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * ' . PHP_BINARY . ' run.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
             ],
             [
                 'tasks' => [
-                    ['expression' => '1 2 3 4 5', 'command' => 'run.php']
+                    ['expression' => '1 2 3 4 5', 'command' => 'run.php'],
                 ],
                 'content' => $content,
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '1 2 3 4 5 ' . PHP_BINARY . ' run.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
             ],
             [
                 'tasks' => [
-                    ['command' => '{magentoRoot}run.php >> {magentoLog}cron.log']
+                    ['command' => '{magentoRoot}run.php >> {magentoLog}cron.log'],
                 ],
                 'content' => $content,
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * ' . PHP_BINARY . ' /var/www/magento2/run.php >>'
                     . ' /var/www/magento2/var/log/cron.log' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
             ],
             [
                 'tasks' => [
-                    ['command' => '{magentoRoot}run.php % cron:run | grep -v "Ran \'jobs\' by schedule"']
+                    ['command' => '{magentoRoot}run.php % cron:run | grep -v "Ran \'jobs\' by schedule"'],
                 ],
                 'content' => $content,
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * ' . PHP_BINARY . ' /var/www/magento2/run.php'
                     . ' %% cron:run | grep -v \"Ran \'jobs\' by schedule\"' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
             ],
             [
                 'tasks' => [
-                    ['command' => '{magentoRoot}run.php % cron:run | grep -v "Ran \'jobs\' by schedule"']
+                    ['command' => '{magentoRoot}run.php % cron:run | grep -v "Ran \'jobs\' by schedule"'],
                 ],
                 'content' => '* * * * * /bin/php /var/www/cron.php',
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * ' . PHP_BINARY . ' /var/www/magento2/run.php'
                     . ' %% cron:run | grep -v \"Ran \'jobs\' by schedule\"' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
             ],
             [
                 'tasks' => [
-                    ['command' => '{magentoRoot}run.php mysqldump --no-tablespaces db > db-$(date +%F).sql']
+                    ['command' => '{magentoRoot}run.php mysqldump --no-tablespaces db > db-$(date +%F).sql'],
                 ],
                 'content' => '* * * * * /bin/php /var/www/cron.php',
                 'contentToSave' => '* * * * * /bin/php /var/www/cron.php' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash("sha256", BP) . PHP_EOL
+                    . CrontabManagerInterface::TASKS_BLOCK_START . ' ' . hash('sha256', BP) . PHP_EOL
                     . '* * * * * ' . PHP_BINARY . ' /var/www/magento2/run.php'
                     . ' mysqldump --no-tablespaces db > db-\$(date +%%F).sql' . PHP_EOL
-                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash("sha256", BP) . PHP_EOL
-            ]
+                    . CrontabManagerInterface::TASKS_BLOCK_END . ' ' . hash('sha256', BP) . PHP_EOL,
+            ],
         ];
     }
 }

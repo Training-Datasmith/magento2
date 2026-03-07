@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,7 @@ use Magento\Catalog\Model\Category;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\Rule\Condition\Address;
 use Magento\SalesRule\Model\Rule\Condition\Combine;
@@ -21,10 +23,9 @@ use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\Website;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -96,7 +97,7 @@ class CartPriceRulesFixtureTest extends TestCase
             ->willReturn('category_id');
 
         $objectValueMap = [
-            [Category::class, $categoryMock]
+            [Category::class, $categoryMock],
         ];
 
         $objectManagerMock = $this->createMock(ObjectManager::class);
@@ -110,7 +111,7 @@ class CartPriceRulesFixtureTest extends TestCase
         $valueMap = [
             ['cart_price_rules', 0, 1],
             ['cart_price_rules_floor', 3, 3],
-            ['cart_price_rules_advanced_type', false, false]
+            ['cart_price_rules_advanced_type', false, false],
         ];
 
         $this->fixtureModelMock
@@ -195,7 +196,7 @@ class CartPriceRulesFixtureTest extends TestCase
                         'new_child' => '',
                     ],
                     '1--1--1' => $firstCondition,
-                    '1--2' => $secondCondition
+                    '1--2' => $secondCondition,
                 ],
                 'actions' => [
                     1 => [
@@ -204,7 +205,7 @@ class CartPriceRulesFixtureTest extends TestCase
                         'value' => '1',
                         'new_child' => '',
                     ],
-                ]
+                ],
             ];
         } else {
             // Shipping Region
@@ -238,7 +239,7 @@ class CartPriceRulesFixtureTest extends TestCase
                         'new_child' => '',
                     ],
                     '1--1' => $firstCondition,
-                    '1--2' => $secondCondition
+                    '1--2' => $secondCondition,
                 ],
                 'actions' => [
                     1 => [
@@ -247,7 +248,7 @@ class CartPriceRulesFixtureTest extends TestCase
                         'value' => '1',
                         'new_child' => '',
                     ],
-                ]
+                ],
             ];
         }
         $this->assertSame($expected, $result);
@@ -260,7 +261,7 @@ class CartPriceRulesFixtureTest extends TestCase
     {
         return [
             [1, [[0]], 1],
-            [1, [[0]], 300]
+            [1, [[0]], 300],
         ];
     }
 
@@ -273,7 +274,7 @@ class CartPriceRulesFixtureTest extends TestCase
     {
         $this->assertSame(
             [
-                'cart_price_rules' => 'Cart Price Rules'
+                'cart_price_rules' => 'Cart Price Rules',
             ],
             $this->model->introduceParamLabels()
         );

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test for an environment-dependent DB adapter that implements \Magento\Framework\DB\Adapter\AdapterInterface
  */
+
 namespace Magento\Framework\DB\Adapter;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -208,9 +211,9 @@ class InterfaceTest extends \PHPUnit\Framework\TestCase
                 [
                     ['id' => 1, 'column1' => 0, 'column2' => 0],
                     ['id' => 2, 'column1' => 1, 'column2' => 1],
-                    ['id' => 3, 'column1' => 2, 'column2' => 2]
+                    ['id' => 3, 'column1' => 2, 'column2' => 2],
                 ],
-            ]
+            ],
         ];
     }
 

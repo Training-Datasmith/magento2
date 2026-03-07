@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Rule\Model\Action;
 
 use Magento\Framework\Data\Form;
@@ -91,18 +94,18 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
      */
     public function asXml()
     {
-        $xml = "<type>" .
+        $xml = '<type>' .
             $this->getType() .
-            "</type>" .
-            "<attribute>" .
+            '</type>' .
+            '<attribute>' .
             $this->getAttribute() .
-            "</attribute>" .
-            "<operator>" .
+            '</attribute>' .
+            '<operator>' .
             $this->getOperator() .
-            "</operator>" .
-            "<value>" .
+            '</operator>' .
+            '<value>' .
             $this->getValue() .
-            "</value>";
+            '</value>';
         return $xml;
     }
 
@@ -258,7 +261,7 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
             [
                 'name' => $this->elementName . '[actions][' . $this->getId() . '][type]',
                 'value' => $this->getType(),
-                'no_span' => true
+                'no_span' => true,
             ]
         );
     }
@@ -275,7 +278,7 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
                 'name' => $this->elementName . '[actions][' . $this->getId() . '][attribute]',
                 'values' => $this->getAttributeSelectOptions(),
                 'value' => $this->getAttribute(),
-                'value_name' => $this->getAttributeName()
+                'value_name' => $this->getAttributeName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Editable::class)
@@ -294,7 +297,7 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
                 'name' => $this->elementName . '[actions][' . $this->getId() . '][operator]',
                 'values' => $this->getOperatorSelectOptions(),
                 'value' => $this->getOperator(),
-                'value_name' => $this->getOperatorName()
+                'value_name' => $this->getOperatorName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Editable::class)
@@ -312,7 +315,7 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
             [
                 'name' => $this->elementName . '[actions][' . $this->getId() . '][value]',
                 'value' => $this->getValue(),
-                'value_name' => $this->getValueName()
+                'value_name' => $this->getValueName(),
             ]
         )->setRenderer(
             $this->_layout->getBlockSingleton(\Magento\Rule\Block\Editable::class)
@@ -348,7 +351,7 @@ abstract class AbstractAction extends \Magento\Framework\DataObject implements A
      */
     public function asString($format = '')
     {
-        return "";
+        return '';
     }
 
     /**

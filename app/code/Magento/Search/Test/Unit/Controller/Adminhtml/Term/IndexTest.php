@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class IndexTest extends TestCase
         $this->indexController =  $this->objectManagerHelper->getObject(
             Index::class,
             [
-                'resultFactory' => $this->resultFactoryMock
+                'resultFactory' => $this->resultFactoryMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class CaptchaTest extends TestCase
         $this->helperMock = $this->createMock(CaptchaHelper::class);
         $this->customerSessionMock = $this->createMock(CustomerSession::class);
         $this->formIds = [
-            'user_login'
+            'user_login',
         ];
         $this->objectManagerHelper = new ObjectManagerHelper($this);
         $this->model = $this->objectManagerHelper->getObject(
@@ -60,7 +61,7 @@ class CaptchaTest extends TestCase
             [
                 'helper' => $this->helperMock,
                 'formIds' => $this->formIds,
-                'customerSession' => $this->customerSessionMock
+                'customerSession' => $this->customerSessionMock,
             ]
         );
     }
@@ -88,10 +89,10 @@ class CaptchaTest extends TestCase
         /* Assert to test */
         $this->assertEquals(
             [
-                "user_login" => [
-                    "isRequired" => true,
-                    "timestamp" => time()
-                ]
+                'user_login' => [
+                    'isRequired' => true,
+                    'timestamp' => time(),
+                ],
             ],
             $this->model->getSectionData()
         );

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model\ResourceModel\Query;
 
 use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
@@ -166,7 +169,7 @@ class Collection extends AbstractCollection
      * @return bool
      * @since 101.1.0
      */
-    public function isTopSearchResult(string $term, int $storeId, int $maxCountCacheableSearchTerms):bool
+    public function isTopSearchResult(string $term, int $storeId, int $maxCountCacheableSearchTerms): bool
     {
         $select = $this->getSelect();
         $select->reset(\Magento\Framework\DB\Select::FROM);

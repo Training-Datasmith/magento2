@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class ResetButtonTest extends TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $this->contextMock->expects($this->atLeastOnce())
-            ->method("getProcessor")
+            ->method('getProcessor')
             ->willReturn($this->processorMock);
         $this->wrappingComponentMock = $this->getMockBuilder(Field::class)
             ->disableOriginalConstructor()
@@ -71,8 +72,8 @@ class ResetButtonTest extends TestCase
             [],
             [
                 'config' => [
-                    'formElement' => 'button'
-                ]
+                    'formElement' => 'button',
+                ],
             ],
             $this->scopeConfigMock
         );
@@ -80,20 +81,20 @@ class ResetButtonTest extends TestCase
 
     public function testPrepare()
     {
-        $robotsContent = "Content";
+        $robotsContent = 'Content';
 
         $this->componentFactoryMock->expects($this->once())
-            ->method("create")
+            ->method('create')
             ->willReturn($this->wrappingComponentMock);
         $this->wrappingComponentMock->expects($this->once())
-            ->method("getContext")
+            ->method('getContext')
             ->willReturn($this->contextMock);
         $this->scopeConfigMock->expects($this->once())
-            ->method("getValue")
+            ->method('getValue')
             ->willReturn($robotsContent);
 
         $this->resetButton->prepare();
-        $actions = $this->resetButton->getData("config/actions");
-        $this->assertEquals(json_encode($robotsContent), $actions[0]["params"][0]);
+        $actions = $this->resetButton->getData('config/actions');
+        $this->assertEquals(json_encode($robotsContent), $actions[0]['params'][0]);
     }
 }

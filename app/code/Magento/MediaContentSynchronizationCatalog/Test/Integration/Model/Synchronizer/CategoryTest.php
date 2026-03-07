@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class CategoryTest extends TestCase
             [
                 'entityType' => 'catalog_category',
                 'field' => 'description',
-                'entityId' => $categoryId
+                'entityId' => $categoryId,
             ]
         );
 

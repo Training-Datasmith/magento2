@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -13,9 +14,8 @@ use Magento\Framework\Jwt\Jwe\JweEncryptionJwks;
 use Magento\Framework\Jwt\Jwe\JweEncryptionSettingsInterface;
 use Magento\Framework\Jwt\Jwk;
 use Magento\Framework\Jwt\JwkSet;
-use Magento\Framework\Jwt\Jws\JwsSignatureJwks;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JweEncryptionJwksTest extends TestCase
 {
@@ -27,21 +27,21 @@ class JweEncryptionJwksTest extends TestCase
                 [
                     [
                         ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION],
-                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION]
-                    ]
+                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION],
+                    ],
                 ],
-                true
+                true,
             ],
             'invalid-jwk' => [['use' => Jwk::PUBLIC_KEY_USE_SIGNATURE], false],
             'invalid-jwks' => [
                 [
                     [
                         ['use' => Jwk::PUBLIC_KEY_USE_SIGNATURE],
-                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION]
-                    ]
+                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION],
+                    ],
                 ],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -76,16 +76,16 @@ class JweEncryptionJwksTest extends TestCase
         return [
             'one-algo' => [
                 ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION, 'alg' => Jwk::ALGORITHM_RSA_OAEP],
-                Jwk::ALGORITHM_RSA_OAEP
+                Jwk::ALGORITHM_RSA_OAEP,
             ],
             'json' => [
                 [
                     [
                         ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION, 'alg' => Jwk::ALGORITHM_RSA_OAEP],
-                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION, 'alg' => Jwk::ALGORITHM_RSA_OAEP]
-                    ]
+                        ['use' => Jwk::PUBLIC_KEY_USE_ENCRYPTION, 'alg' => Jwk::ALGORITHM_RSA_OAEP],
+                    ],
                 ],
-                'jwe-json-serialization'
+                'jwe-json-serialization',
             ],
         ];
     }

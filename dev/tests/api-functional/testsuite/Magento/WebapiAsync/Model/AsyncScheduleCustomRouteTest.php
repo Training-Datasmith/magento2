@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,18 +10,17 @@ declare(strict_types=1);
 namespace Magento\WebapiAsync\Model;
 
 use Magento\Catalog\Api\Data\ProductInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\TestFramework\MessageQueue\PreconditionFailedException;
-use Magento\TestFramework\MessageQueue\PublisherConsumerController;
-use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\Webapi\Exception;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
+use Magento\TestFramework\MessageQueue\PreconditionFailedException;
+use Magento\TestFramework\MessageQueue\PublisherConsumerController;
+use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Check async request for product creation service using custom route, scheduling bulk to rabbitmq
@@ -76,7 +76,7 @@ class AsyncScheduleCustomRouteTest extends WebapiAbstract
     protected function setUp(): void
     {
         $this->objectManager = Bootstrap::getObjectManager();
-        $logFilePath = TESTS_TEMP_DIR . "/MessageQueueTestLog.txt";
+        $logFilePath = TESTS_TEMP_DIR . '/MessageQueueTestLog.txt';
         $this->registry = $this->objectManager->get(Registry::class);
 
         $params = array_merge_recursive(
@@ -128,7 +128,7 @@ class AsyncScheduleCustomRouteTest extends WebapiAbstract
                 [$product]
             );
         } catch (PreconditionFailedException $e) {
-            $this->fail("Not all products were created");
+            $this->fail('Not all products were created');
         }
     }
 
@@ -168,7 +168,7 @@ class AsyncScheduleCustomRouteTest extends WebapiAbstract
             ->getSize();
 
         if ($size > 0) {
-            throw new Exception(new Phrase("Collection size after clearing the products: %size", ['size' => $size]));
+            throw new Exception(new Phrase('Collection size after clearing the products: %size', ['size' => $size]));
         }
     }
 

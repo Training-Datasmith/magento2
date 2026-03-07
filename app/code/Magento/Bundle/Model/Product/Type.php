@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -253,7 +255,7 @@ class Type extends \Magento\Catalog\Model\Product\Type\AbstractType
 
         $this->selectionCollectionFilterApplier = $selectionCollectionFilterApplier
             ?: ObjectManager::getInstance()->get(SelectionCollectionFilterApplier::class);
-        $this->arrayUtility= $arrayUtility ?: ObjectManager::getInstance()->get(ArrayUtils::class);
+        $this->arrayUtility = $arrayUtility ?: ObjectManager::getInstance()->get(ArrayUtils::class);
         $this->areBundleOptionsSalable = $areBundleOptionsSalable
             ?? ObjectManager::getInstance()->get(AreBundleOptionsSalable::class);
 
@@ -1295,7 +1297,7 @@ class Type extends \Magento\Catalog\Model\Product\Type\AbstractType
             throw new \Magento\Framework\Exception\LocalizedException(
                 __(
                     'Option type (%types) should have only one element.',
-                    ['types' => implode(", ", $errorTypes)]
+                    ['types' => implode(', ', $errorTypes)]
                 )
             );
         }

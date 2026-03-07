@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use Magento\Wishlist\Model\ResourceModel\Wishlist as WishlistResourceModel;
 use Magento\Wishlist\Model\Wishlist;
 use Magento\Wishlist\Model\Wishlist\Config as WishlistConfig;
 use Magento\Wishlist\Model\Wishlist\Data\Error;
-use Magento\Wishlist\Model\Wishlist\Data\WishlistItemFactory;
 use Magento\Wishlist\Model\Wishlist\RemoveProductsFromWishlist as RemoveProductsFromWishlistModel;
 use Magento\Wishlist\Model\WishlistFactory;
 use Magento\WishlistGraphQl\Mapper\WishlistDataMapper;
@@ -117,7 +117,7 @@ class RemoveProductsFromWishlist implements ResolverInterface
                     ];
                 },
                 $wishlistOutput->getErrors()
-            )
+            ),
         ];
     }
 

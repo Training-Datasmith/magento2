@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class BundleDataProviderTest extends TestCase
             'load',
             'getSize',
             'addFilterByRequiredOptions',
-            'addStoreFilter'
+            'addStoreFilter',
         ]);
         $this->collectionFactoryMock = $this->createPartialMock(CollectionFactory::class, ['create']);
         $this->collectionFactoryMock->method('create')->willReturn($this->collectionMock);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Phpserver;
 
 use Symfony\Component\Process\PhpExecutableFinder;
@@ -20,7 +23,7 @@ use Symfony\Component\Process\Process;
  */
 class PhpserverTest extends \PHPUnit\Framework\TestCase
 {
-    const BASE_URL = '127.0.0.1:8082';
+    public const BASE_URL = '127.0.0.1:8082';
 
     /**
      * @var Process
@@ -48,7 +51,7 @@ class PhpserverTest extends \PHPUnit\Framework\TestCase
         $phpBinaryFinder = new PhpExecutableFinder();
         $phpBinaryPath = $phpBinaryFinder->find();
         $command = sprintf(
-            "%s -S %s -t ./pub ./phpserver/router.php",
+            '%s -S %s -t ./pub ./phpserver/router.php',
             $phpBinaryPath,
             self::BASE_URL
         );
@@ -58,7 +61,7 @@ class PhpserverTest extends \PHPUnit\Framework\TestCase
         );
         $this->serverProcess->start();
         $this->serverProcess->waitUntil(function ($type, $output) {
-            return strpos($output, "Development Server") !== false;
+            return strpos($output, 'Development Server') !== false;
         });
     }
 

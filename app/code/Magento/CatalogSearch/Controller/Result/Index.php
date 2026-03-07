@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,16 +8,16 @@
 
 namespace Magento\CatalogSearch\Controller\Result;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Catalog\Model\Layer\Resolver;
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+use Magento\Catalog\Model\Product\ProductList\ToolbarMemorizer;
 use Magento\Catalog\Model\Session;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Search\Model\QueryFactory;
 use Magento\Search\Model\PopularSearchTerms;
-use Magento\Catalog\Model\Product\ProductList\ToolbarMemorizer;
-use Magento\Catalog\Model\Product\ProductList\Toolbar;
+use Magento\Search\Model\QueryFactory;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Search result.
@@ -206,7 +208,7 @@ class Index extends \Magento\Framework\App\Action\Action implements HttpGetActio
                 Toolbar::ORDER_PARAM_NAME,
                 Toolbar::DIRECTION_PARAM_NAME,
                 Toolbar::MODE_PARAM_NAME,
-                Toolbar::LIMIT_PARAM_NAME
+                Toolbar::LIMIT_PARAM_NAME,
             ], array_keys($params))) === false;
     }
 }

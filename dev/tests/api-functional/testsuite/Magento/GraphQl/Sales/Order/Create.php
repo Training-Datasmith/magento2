@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -135,7 +136,7 @@ MUTATION;
         $countryCode = $addressData['country_code'] ?? 'US';
         $postCode = $addressData['postcode'] ?? '36013';
         $city = $addressData['city'] ?? 'Montgomery';
-        $street = $addressData['street'] ?? json_encode(["test street 1", "test street 2"]);
+        $street = $addressData['street'] ?? json_encode(['test street 1', 'test street 2']);
 
         return  <<<MUTATION
         address: {

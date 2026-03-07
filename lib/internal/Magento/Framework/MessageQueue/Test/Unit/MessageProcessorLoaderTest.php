@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\MessageQueue\MergedMessageInterface;
 use Magento\Framework\MessageQueue\MessageProcessorInterface;
 use Magento\Framework\MessageQueue\MessageProcessorLoader;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for MessageProcessorLoader.
@@ -57,7 +58,7 @@ class MessageProcessorLoaderTest extends TestCase
             MessageProcessorLoader::class,
             [
                 'mergedMessageProcessor' => $this->mergedMessageProcessor,
-                'defaultMessageProcessor' => $this->defaultMessageProcessor
+                'defaultMessageProcessor' => $this->defaultMessageProcessor,
             ]
         );
     }
@@ -75,7 +76,7 @@ class MessageProcessorLoaderTest extends TestCase
 
         $messageTopic = 'topic';
         $messages = [
-            $messageTopic => [$message]
+            $messageTopic => [$message],
         ];
 
         $this->assertInstanceOf(
@@ -96,15 +97,17 @@ class MessageProcessorLoaderTest extends TestCase
 
         return [
             [$mergedMessage],
-            [$message]
+            [$message],
         ];
     }
 
-    public function getMergedMessageInterfaceMock() {
+    public function getMergedMessageInterfaceMock()
+    {
         return $this->createMock(MergedMessageInterface::class);
     }
 
-    public function getEnvelopeInterfaceMock() {
+    public function getEnvelopeInterfaceMock()
+    {
         return $this->createMock(EnvelopeInterface::class);
     }
 }

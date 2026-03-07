@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Helper;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\Backend\Model\Validator\UrlKey\CompositeUrlKey;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 
 class UrlRewrite extends \Magento\Framework\App\Helper\AbstractHelper

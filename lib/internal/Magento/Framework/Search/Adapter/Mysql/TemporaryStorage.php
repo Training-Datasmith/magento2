@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,10 +24,10 @@ use Magento\Framework\DB\Select;
  */
 class TemporaryStorage
 {
-    const TEMPORARY_TABLE_PREFIX = 'search_tmp_';
+    public const TEMPORARY_TABLE_PREFIX = 'search_tmp_';
 
-    const FIELD_ENTITY_ID = 'entity_id';
-    const FIELD_SCORE = 'score';
+    public const FIELD_ENTITY_ID = 'entity_id';
+    public const FIELD_SCORE = 'score';
 
     /**
      * @var \Magento\Framework\App\ResourceConnection

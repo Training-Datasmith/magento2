@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Widget\Model;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Widget\Model\ResourceModel\Widget\Instance as InstanceResourceModel;
-use Magento\Widget\Model\Widget\InstanceFactory as WidgetInstanceFactory;
 use Magento\Widget\Model\Widget\Instance as WidgetInstance;
+use Magento\Widget\Model\Widget\InstanceFactory as WidgetInstanceFactory;
 
 /**
  * Class DeleteWidgetById
@@ -46,7 +47,7 @@ class DeleteWidgetById
      * @return void
      * @throws \Exception
      */
-    public function execute(int $instanceId) : void
+    public function execute(int $instanceId): void
     {
         $model = $this->getWidgetById($instanceId);
 

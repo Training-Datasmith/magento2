@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,6 +24,7 @@ use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart;
 use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\Quote\Test\Fixture\GuestCart;
 use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -30,7 +32,6 @@ use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Quote\Test\Fixture\GuestCart;
 
 class MergeCartsTest extends GraphQlAbstract
 {
@@ -84,7 +85,7 @@ class MergeCartsTest extends GraphQlAbstract
         $this->assertMergeCartsResponse(
             [
                 ['sku' => $this->fixtures->get('product1')->getSku(), 'quantity' => 5],
-                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3]
+                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3],
             ],
             8
         );
@@ -118,7 +119,7 @@ class MergeCartsTest extends GraphQlAbstract
         $this->assertMergeCartsResponse(
             [
                 ['sku' => $this->fixtures->get('product1')->getSku(), 'quantity' => 3],
-                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3]
+                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3],
             ],
             6
         );
@@ -152,7 +153,7 @@ class MergeCartsTest extends GraphQlAbstract
         $this->assertMergeCartsResponse(
             [
                 ['sku' => $this->fixtures->get('product1')->getSku(), 'quantity' => 8],
-                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3]
+                ['sku' => $this->fixtures->get('product2')->getSku(), 'quantity' => 3],
             ],
             11
         );
@@ -209,7 +210,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture(
@@ -218,7 +219,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 2
+                'qty' => 2,
             ],
         )
     ]
@@ -226,7 +227,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 1]
+                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 1],
             ],
             1
         );
@@ -254,7 +255,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture(
@@ -263,7 +264,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 2
+                'qty' => 2,
             ],
         )
     ]
@@ -271,7 +272,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 2]
+                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 2],
             ],
             2
         );
@@ -299,7 +300,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture(
@@ -308,7 +309,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$configurableProduct1.id$',
                 'child_product_id' => '$product1.id$',
-                'qty' => 2
+                'qty' => 2,
             ],
         )
     ]
@@ -316,7 +317,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 3]
+                ['sku' => $this->fixtures->get('configurableProduct1')->getSku(), 'quantity' => 3],
             ],
             3
         );
@@ -355,7 +356,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(GuestCart::class, as: 'guestCart'),
@@ -367,7 +368,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -375,7 +376,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 2]
+                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 2],
             ],
             2
         );
@@ -414,7 +415,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(GuestCart::class, as: 'guestCart'),
@@ -426,7 +427,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -434,7 +435,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 1]
+                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 1],
             ],
             1
         );
@@ -473,7 +474,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$customerCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(GuestCart::class, as: 'guestCart'),
@@ -485,7 +486,7 @@ class MergeCartsTest extends GraphQlAbstract
                 'cart_id' => '$guestCart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -493,7 +494,7 @@ class MergeCartsTest extends GraphQlAbstract
     {
         $this->assertMergeCartsResponse(
             [
-                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 3]
+                ['sku' => $this->fixtures->get('bp1')->getSku(), 'quantity' => 3],
             ],
             3
         );
@@ -549,8 +550,8 @@ class MergeCartsTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product1'
         ),
@@ -615,8 +616,8 @@ class MergeCartsTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product1'
         ),
@@ -681,8 +682,8 @@ class MergeCartsTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product1'
         ),

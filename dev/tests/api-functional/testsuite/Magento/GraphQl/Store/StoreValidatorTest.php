@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -47,12 +48,12 @@ QUERY;
         return [
             'non_existing' => [
                 'non_existing',
-                'Requested store is not found'
+                'Requested store is not found',
             ],
             'inactive_store' => [
                 'inactive_store',
-                'Requested store is not found'
-            ]
+                'Requested store is not found',
+            ],
         ];
     }
 }

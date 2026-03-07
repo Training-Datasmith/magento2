@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class PageRepositoryTest extends TestCase
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Cms\Model\Page\CustomLayoutManagerInterface::class =>
-                    \Magento\TestFramework\Cms\Model\CustomLayoutManager::class
-            ]
+                    \Magento\TestFramework\Cms\Model\CustomLayoutManager::class,
+            ],
         ]);
         $objectManager = Bootstrap::getObjectManager();
         $this->repo = $objectManager->get(PageRepositoryInterface::class);

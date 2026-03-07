@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Indexer\Config;
 
 use Magento\Framework\Config\ConverterInterface;
 use Magento\Framework\Exception\ConfigurationMismatchException;
-use Magento\Framework\Phrase;
 use Magento\Framework\Indexer\Config\Converter\SortingAdjustmentInterface;
+use Magento\Framework\Phrase;
 
 class Converter implements ConverterInterface
 {

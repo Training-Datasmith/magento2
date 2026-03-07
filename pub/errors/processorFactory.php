@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 // phpcs:disable PSR1.Files.SideEffects
+
 namespace Magento\Framework\Error;
 
 // phpcs:ignore Magento2.Functions.DiscouragedFunction,Magento2.Security.IncludeFile

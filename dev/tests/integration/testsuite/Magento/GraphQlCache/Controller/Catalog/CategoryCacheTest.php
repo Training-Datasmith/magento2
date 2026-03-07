@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ class CategoryCacheTest extends AbstractGraphqlCacheTest
      */
     public function testRequestCacheTagsForCategory(): void
     {
-        $categoryId ='333';
+        $categoryId = '333';
         $query
             = <<<QUERY
         {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Setup\Test\Unit\Module\Di\Code\Reader;
 use Magento\Framework\Code\Reader\ClassReader;
 use Magento\Setup\Module\Di\Code\Reader\ClassReaderDecorator;
 use Magento\Setup\Module\Di\Compiler\ConstructorArgument;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ClassReaderDecoratorTest extends TestCase
@@ -62,8 +63,8 @@ class ClassReaderDecoratorTest extends TestCase
             [
                 [new ConstructorArgument(['name', 'type', 'isRequired', 'defaultValue'])],
                 'array',
-                [['name', 'type', 'isRequired', 'defaultValue']]
-            ]
+                [['name', 'type', 'isRequired', 'defaultValue']],
+            ],
         ];
     }
 

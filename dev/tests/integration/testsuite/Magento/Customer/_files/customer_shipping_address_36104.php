@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Customer address fixture with postcode 36104
  *
@@ -34,7 +36,6 @@ $addressRepository = $objectManager->get(\Magento\Customer\Api\AddressRepository
 $customerAddress = $addressRepository->getById(1);
 $customerAddress->setCustomerId(1);
 $customerAddress = $addressRepository->save($customerAddress);
-
 
 /** @var \Magento\Customer\Model\Customer $customer */
 $customer = $objectManager->create(

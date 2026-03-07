@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class FileTest extends TestCase
                 'getCacheConfig',
                 'getUrlEncoder',
                 'getUrlDecoder',
-                'getScopeConfig'
+                'getScopeConfig',
             ]
         );
         $this->file = new File(

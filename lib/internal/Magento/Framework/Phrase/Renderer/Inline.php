@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Phrase\Renderer;
 
 use Magento\Framework\Phrase\RendererInterface;
-use Magento\Framework\TranslateInterface;
 use Magento\Framework\Translate\Inline\ProviderInterface;
+use Magento\Framework\TranslateInterface;
 use Psr\Log\LoggerInterface;
 
 /**

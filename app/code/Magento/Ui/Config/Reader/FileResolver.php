@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Reader;
 
 use Magento\Framework\Config\FileResolverInterface;
@@ -14,7 +17,6 @@ use Magento\Framework\View\Element\UiComponent\Config\FileCollector\AggregatedFi
  */
 class FileResolver implements FileResolverInterface
 {
-
     /**
      * @param AggregatedFileCollectorFactory $fileCollectorFactory
      */

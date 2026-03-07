@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,12 +24,12 @@ use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\Sales\Api\Data\OrderInterface;
+use Magento\TestFramework\Fixture\AppArea;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Fixture\AppArea;
 
 class ProductResolverTest extends GraphQlAbstract
 {
@@ -65,7 +66,7 @@ class ProductResolverTest extends GraphQlAbstract
             'name' => 'Test Product',
             'price' => self::PRODUCT_PRICE,
             'description' => 'Test product description',
-            'short_description' => 'Test short description'
+            'short_description' => 'Test short description',
         ], 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -74,7 +75,7 @@ class ProductResolverTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::PRODUCT_QTY
+                'qty' => self::PRODUCT_QTY,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -104,14 +105,14 @@ class ProductResolverTest extends GraphQlAbstract
                                         'product' => [
                                             'name' => $product->getName(),
                                             'sku' => $product->getSku(),
-                                            '__typename' => 'SimpleProduct'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            '__typename' => 'SimpleProduct',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrderWithProductQuery($order->getIncrementId()),
@@ -132,7 +133,7 @@ class ProductResolverTest extends GraphQlAbstract
         DataFixture(ProductFixture::class, [
             'name' => 'Guest Test Product',
             'price' => self::PRODUCT_PRICE,
-            'description' => 'Guest test product description'
+            'description' => 'Guest test product description',
         ], 'product'),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetGuestEmailFixture::class, ['cart_id' => '$cart.id$']),
@@ -141,7 +142,7 @@ class ProductResolverTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::PRODUCT_QTY
+                'qty' => self::PRODUCT_QTY,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -168,11 +169,11 @@ class ProductResolverTest extends GraphQlAbstract
                             'product' => [
                                 'name' => $product->getName(),
                                 'sku' => $product->getSku(),
-                                '__typename' => 'SimpleProduct'
-                            ]
-                        ]
-                    ]
-                ]
+                                '__typename' => 'SimpleProduct',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getGuestOrderWithProductQuery(),
@@ -180,8 +181,8 @@ class ProductResolverTest extends GraphQlAbstract
                     'input' => [
                         'number' => $order->getIncrementId(),
                         'email' => $order->getBillingAddress()->getEmail(),
-                        'lastname' => $order->getBillingAddress()->getLastname()
-                    ]
+                        'lastname' => $order->getBillingAddress()->getLastname(),
+                    ],
                 ]
             )
         );
@@ -197,7 +198,7 @@ class ProductResolverTest extends GraphQlAbstract
         AppArea('adminhtml'),
         DataFixture(ProductFixture::class, [
             'name' => 'To Be Deleted Product',
-            'price' => self::PRODUCT_PRICE
+            'price' => self::PRODUCT_PRICE,
         ], 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -206,7 +207,7 @@ class ProductResolverTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::PRODUCT_QTY
+                'qty' => self::PRODUCT_QTY,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -238,13 +239,13 @@ class ProductResolverTest extends GraphQlAbstract
                                         'product_name' => $product->getName(),
                                         'product_sku' => $product->getSku(),
                                         'quantity_ordered' => (float)self::PRODUCT_QTY,
-                                        'product' => null
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'product' => null,
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrderWithProductQuery($order->getIncrementId()),
@@ -270,7 +271,7 @@ class ProductResolverTest extends GraphQlAbstract
             'weight' => 2.5,
             'status' => 1,
             'visibility' => 4,
-            'type_id' => 'simple'
+            'type_id' => 'simple',
         ], 'product'),
         DataFixture(CustomerFixture::class, as: 'customer'),
         DataFixture(CustomerCartFixture::class, ['customer_id' => '$customer.id$'], as: 'quote'),
@@ -279,7 +280,7 @@ class ProductResolverTest extends GraphQlAbstract
             [
                 'cart_id' => '$quote.id$',
                 'product_id' => '$product.id$',
-                'qty' => self::PRODUCT_QTY
+                'qty' => self::PRODUCT_QTY,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -310,21 +311,21 @@ class ProductResolverTest extends GraphQlAbstract
                                             'name' => $product->getName(),
                                             'sku' => $product->getSku(),
                                             'description' => [
-                                                'html' => $product->getDescription()
+                                                'html' => $product->getDescription(),
                                             ],
                                             'short_description' => [
-                                                'html' => $product->getShortDescription()
+                                                'html' => $product->getShortDescription(),
                                             ],
                                             'type_id' => $product->getTypeId(),
                                             'weight' => (float)$product->getWeight(),
-                                            '__typename' => 'SimpleProduct'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            '__typename' => 'SimpleProduct',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrderWithDetailedProductQuery($order->getIncrementId()),

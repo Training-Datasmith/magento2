@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class GeneratorTest extends TestCase
             [
                 'dictionaryLoader' => $this->dictionaryLoaderMock,
                 'packWriter' => $this->packWriterMock,
-                'factory' => $this->factoryMock
+                'factory' => $this->factoryMock,
             ]
         );
     }

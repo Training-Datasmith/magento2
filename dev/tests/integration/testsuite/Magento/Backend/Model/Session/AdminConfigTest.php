@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Backend\Model\Session;
 
-use PHPUnit\Framework\TestCase;
+namespace Magento\Backend\Model\Session;
 
 /**
  * Test class for \Magento\Backend\Model\Session\AdminConfig.

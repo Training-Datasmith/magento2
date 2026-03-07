@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Controller\Adminhtml\Queue;
 
 class Preview extends \Magento\Newsletter\Controller\Adminhtml\Queue
@@ -19,7 +22,7 @@ class Preview extends \Magento\Newsletter\Controller\Adminhtml\Queue
 
         $isEmptyRequestData = empty($data) || !isset($data['id']);
         $isEmptyPreviewData = !$this->_getSession()->hasPreviewData() || empty($this->_getSession()->getPreviewData());
-        
+
         if ($isEmptyRequestData && $isEmptyPreviewData) {
             $this->_forward('noroute');
             return;

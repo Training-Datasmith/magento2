@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Framework\Api\DataObjectHelper;
 use Magento\Tax\Api\Data\TaxRateInterface;
 use Magento\Tax\Api\Data\TaxRuleInterface;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
@@ -15,7 +18,6 @@ use Magento\Tax\Model\Calculation\Rule;
 use Magento\Tax\Model\Calculation\RuleFactory;
 use Magento\Tax\Model\TaxRuleRepository;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Api\DataObjectHelper;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var DataObjectHelper $dataObjectHelper */
@@ -42,7 +44,7 @@ $rateRepository->save($rate);
 
 $rule = $ruleFactory->create();
 $ruleData = [
-    Rule::KEY_CODE=> 'GraphQl Test Rule',
+    Rule::KEY_CODE => 'GraphQl Test Rule',
     Rule::KEY_PRIORITY => '0',
     Rule::KEY_POSITION => '0',
     Rule::KEY_CUSTOMER_TAX_CLASS_IDS => [3],

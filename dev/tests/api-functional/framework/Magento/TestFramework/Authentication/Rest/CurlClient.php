@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Authentication\Rest;
 
 /**
@@ -10,7 +13,6 @@ namespace Magento\TestFramework\Authentication\Rest;
  */
 class CurlClient extends \Magento\Framework\HTTP\ClientFactory
 {
-
     /**
      * Fetch api response using curl client factory
      *

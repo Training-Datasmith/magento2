@@ -1,17 +1,19 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\LoginAsCustomer\Model\Validator;
 
-use Magento\Authorization\Model\Rules;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\User\Model\User as UserModel;
 use Magento\Authorization\Model\Acl\AclRetriever;
-use Magento\LoginAsCustomerApi\Api\ConfigInterface as LoginAsCustomerConfig;
+use Magento\Authorization\Model\Rules;
 use Magento\Framework\Acl\RootResource;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\LoginAsCustomerApi\Api\ConfigInterface as LoginAsCustomerConfig;
+use Magento\User\Model\User as UserModel;
 
 /**
  * User role permission validator

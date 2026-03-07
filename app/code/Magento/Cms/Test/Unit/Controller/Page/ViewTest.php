@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class ViewTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'pageHelper' => $this->pageHelperMock,
-                'resultForwardFactory' => $this->forwardFactoryMock
+                'resultForwardFactory' => $this->forwardFactoryMock,
             ]
         );
     }
@@ -89,7 +90,7 @@ class ViewTest extends TestCase
             ->willReturnMap(
                 [
                     ['page_id', null, self::STUB_PAGE_ID],
-                    ['id', null, self::STUB_PAGE_ID]
+                    ['id', null, self::STUB_PAGE_ID],
                 ]
             );
         $this->pageHelperMock->expects($this->once())
@@ -106,7 +107,7 @@ class ViewTest extends TestCase
             ->willReturnMap(
                 [
                     ['page_id', null, self::STUB_PAGE_ID],
-                    ['id', null, self::STUB_PAGE_ID]
+                    ['id', null, self::STUB_PAGE_ID],
                 ]
             );
         $this->forwardMock->expects($this->once())

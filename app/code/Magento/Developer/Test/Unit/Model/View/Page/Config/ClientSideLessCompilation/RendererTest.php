@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +49,7 @@ class RendererTest extends TestCase
             ->getMock();
         $overriddenMocks = [
             'assetRepo' => $this->assetRepo,
-            'pageConfig' => $pageConfigMock
+            'pageConfig' => $pageConfigMock,
         ];
 
         $objectManager->prepareObjectManager(
@@ -59,7 +61,7 @@ class RendererTest extends TestCase
                 [
                     ScopeConfigInterface::class,
                     $this->createMock(ScopeConfigInterface::class),
-                ]
+                ],
             ]
         );
         $mocks = $objectManager->getConstructArguments(
@@ -83,7 +85,7 @@ class RendererTest extends TestCase
         $propertyGroups = [
             $this->getMockBuilder(PropertyGroup::class)
                 ->disableOriginalConstructor()
-                ->getMock()
+                ->getMock(),
         ];
         $this->assetCollectionMock->expects($this->once())->method('getGroups')->willReturn($propertyGroups);
 
@@ -101,7 +103,7 @@ class RendererTest extends TestCase
 
         $assetMap = [
             ['less/config.less.js', [], $lessConfigFile],
-            ['less/less.min.js', [], $lessMinFile]
+            ['less/less.min.js', [], $lessMinFile],
         ];
         $this->assetRepo->expects($this->exactly(2))->method('createAsset')->willReturnMap($assetMap);
 

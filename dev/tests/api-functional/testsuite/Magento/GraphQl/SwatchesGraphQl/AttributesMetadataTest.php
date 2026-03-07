@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -25,7 +26,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'is_filterable_in_search' => true,
             'position' => 6,
             'additional_data' =>
-                '{"swatch_input_type":"visual","update_product_preview_image":1,"use_product_image_for_swatch":0}'
+                '{"swatch_input_type":"visual","update_product_preview_image":1,"use_product_image_for_swatch":0}',
         ],
         'product_attribute'
     ),
@@ -107,11 +108,11 @@ QRY;
                             'apply_to' => null,
                             'swatch_input_type' => 'VISUAL',
                             'update_product_preview_image' => true,
-                            'use_product_image_for_swatch' => false
-                        ]
+                            'use_product_image_for_swatch' => false,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

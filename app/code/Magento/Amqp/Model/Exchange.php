@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Amqp\Model;
 
-use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\Communication\ConfigInterface as CommunicationConfigInterface;
+use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
 use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
 use Magento\Framework\MessageQueue\Rpc\ResponseQueueNameBuilder;
 
@@ -21,9 +24,6 @@ class Exchange extends \Magento\Framework\Amqp\Exchange
     /**
      * Initialize dependencies.
      *
-     * @param Config $amqpConfig
-     * @param QueueConfig $queueConfig
-     * @param CommunicationConfigInterface $communicationConfig
      * @param int $rpcConnectionTimeout
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)

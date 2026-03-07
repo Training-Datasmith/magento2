@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Shipping\Test\Unit\Model\Order;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\OfflineShipping\Model\Carrier\Freeshipping;
 use Magento\Sales\Model\Order\ShipmentRepository;
 use Magento\Shipping\Model\CarrierFactory;
 use Magento\Shipping\Model\Order\Track;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class TrackTest extends TestCase

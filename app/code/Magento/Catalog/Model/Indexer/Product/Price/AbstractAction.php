@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -248,7 +250,7 @@ abstract class AbstractAction
                     'website_id' => $website->getId(),
                     'website_date' => $this->_dateTime->formatDate($timestamp, false),
                     'rate' => $rate,
-                    'default_store_id' => $store->getId()
+                    'default_store_id' => $store->getId(),
                 ];
             }
         }
@@ -299,7 +301,7 @@ abstract class AbstractAction
                 $indexer = $this->_indexerPriceFactory->create(
                     $modelName,
                     [
-                        'fullReindexAction' => $fullReindexAction
+                        'fullReindexAction' => $fullReindexAction,
                     ]
                 );
                 // left setters for backward compatibility

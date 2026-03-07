@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -6,6 +8,7 @@
 
 namespace Magento\Fedex\Model;
 
+use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
@@ -20,7 +23,6 @@ use Magento\Sales\Model\Order;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
 use Magento\Shipping\Model\Rate\Result;
-use Magento\Framework\App\CacheInterface;
 
 /**
  * Fedex shipping implementation
@@ -391,7 +393,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
         $r = $this->_rawRequest;
         $ratesRequest = [
             'accountNumber' => [
-                'value' => $r->getAccount()
+                'value' => $r->getAccount(),
             ],
             'requestedShipment' => [
                 'pickupType' => $this->getConfigData('pickup_type'),
@@ -411,23 +413,23 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'payor' => [
                             'responsibleParty' => [
                                 'accountNumber' => [
-                                    'value' => $r->getAccount()
+                                    'value' => $r->getAccount(),
                                 ],
                                 'address' => [
-                                    'countryCode' => $r->getOrigCountry()
-                                ]
-                            ]
+                                    'countryCode' => $r->getOrigCountry(),
+                                ],
+                            ],
                         ],
                         'paymentType' => 'SENDER',
                     ],
                     'commodities' => [
                         [
-                            'customsValue' => ['amount' => $r->getValue(), 'currency' => $this->getCurrencyCode()]
-                        ]
-                    ]
+                            'customsValue' => ['amount' => $r->getValue(), 'currency' => $this->getCurrencyCode()],
+                        ],
+                    ],
                 ],
-                'rateRequestType' => ['LIST', 'ACCOUNT']
-            ]
+                'rateRequestType' => ['LIST', 'ACCOUNT'],
+            ],
         ];
 
         foreach ($r->getPackages() as $packageNum => $package) {
@@ -542,7 +544,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                     $errorTitle = (string)$response['errors']['message'];
                 }
             } elseif (isset($response['output']['rateReplyDetails'])) {
-                $allowedMethods = explode(",", $this->getConfigData('allowed_methods'));
+                $allowedMethods = explode(',', $this->getConfigData('allowed_methods'));
                 if (is_array($response['output']['rateReplyDetails'])) {
                     foreach ($response['output']['rateReplyDetails'] as $rate) {
                         $serviceName = (string)$rate['serviceType'];
@@ -775,7 +777,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                             'method' => [
                                 'INTERNATIONAL_FIRST',
                                 'INTERNATIONAL_ECONOMY',
-                                'FEDEX_INTERNATIONAL_PRIORITY'
+                                'FEDEX_INTERNATIONAL_PRIORITY',
                             ],
                         ],
                     ],
@@ -801,7 +803,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                             'method' => [
                                 'INTERNATIONAL_FIRST',
                                 'INTERNATIONAL_ECONOMY',
-                                'FEDEX_INTERNATIONAL_PRIORITY'
+                                'FEDEX_INTERNATIONAL_PRIORITY',
                             ],
                         ],
                     ],
@@ -871,7 +873,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 'PACKAGE_RETURN_PROGRAM' => __('Package Return Program'),
                 'REGULAR_STOP' => __('Regular Stop'),
                 'TAG' => __('Tag'),
-            ]
+            ],
         ];
 
         if (!isset($codes[$type])) {
@@ -982,7 +984,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
         $requestArray = [
             'grant_type' => self::AUTHENTICATION_GRANT_TYPE,
             'client_id' => $apiKey,
-            'client_secret' => $secretKey
+            'client_secret' => $secretKey,
         ];
 
         $request = http_build_query($requestArray);
@@ -997,7 +999,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
             $expiresAt = time() + (int)$response['expires_in'];
             $cacheData = [
                 'access_token' => $accessToken,
-                'expires_at' => $expiresAt
+                'expires_at' => $expiresAt,
             ];
             $this->cache->save(json_encode($cacheData), $cacheKey, [$cacheType], (int)$response['expires_in']);
         }
@@ -1118,10 +1120,10 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 'trackingInfo' => [
                     [
                         'trackingNumberInfo' => [
-                            'trackingNumber'=> $tracking
-                        ]
-                    ]
-                ]
+                            'trackingNumber' => $tracking,
+                        ],
+                    ],
+                ],
             ];
 
             $requestString = $this->serializer->serialize($trackRequest);
@@ -1176,7 +1178,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
             $tracking->setTracking($trackingValue);
             $tracking->addData($this->processTrackingDetails($item));
             $result->append($tracking);
-            $counter ++;
+            $counter++;
         }
 
         // no available tracking details
@@ -1311,14 +1313,14 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'stateOrProvinceCode' => $request->getShipperAddressStateOrProvinceCode(),
                         'postalCode' => $request->getShipperAddressPostalCode(),
                         'countryCode' => $request->getShipperAddressCountryCode(),
-                    ]
+                    ],
                 ],
                 'recipients' => [
                     [
                         'contact' => [
                             'personName' => $request->getRecipientContactPersonName(),
                             'companyName' => $request->getRecipientContactCompanyName(),
-                            'phoneNumber' => $request->getRecipientContactPhoneNumber()
+                            'phoneNumber' => $request->getRecipientContactPhoneNumber(),
                         ],
                         'address' => [
                             'streetLines' => [$request->getRecipientAddressStreet()],
@@ -1327,14 +1329,14 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                             'postalCode' => $request->getRecipientAddressPostalCode(),
                             'countryCode' => $request->getRecipientAddressCountryCode(),
                             'residential' => (bool)$this->getConfigData('residence_delivery'),
-                        ]
+                        ],
                     ],
                 ],
                 'shippingChargesPayment' => [
                     'paymentType' => $paymentType,
                     'payor' => [
                         'responsibleParty' => [
-                            'accountNumber' => ['value' => $this->getConfigData('account')]
+                            'accountNumber' => ['value' => $this->getConfigData('account')],
                         ],
                     ],
                 ],
@@ -1344,10 +1346,10 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                     'labelStockType' => 'PAPER_85X11_TOP_HALF_LABEL',
                 ],
                 'rateRequestType' => ['ACCOUNT'],
-                'totalPackageCount' => 1
+                'totalPackageCount' => 1,
             ],
             'labelResponseOptions' => 'LABEL',
-            'accountNumber' => ['value' => $this->getConfigData('account')]
+            'accountNumber' => ['value' => $this->getConfigData('account')],
         ];
 
         // for international shipping
@@ -1377,8 +1379,8 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                         'quantityUnits' => 'pcs',
                         'unitPrice' => ['currency' => $request->getBaseCurrencyCode(), 'amount' => $unitPrice],
                         'customsValue' => ['currency' => $request->getBaseCurrencyCode(), 'amount' => $customsValue],
-                    ]
-                ]
+                    ],
+                ],
             ];
         }
 
@@ -1400,13 +1402,13 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 [
                     'customerReferenceType' => 'CUSTOMER_REFERENCE',
                     'value' => $referenceData,
-                ]
+                ],
             ],
             'packageSpecialServices' => [
                 'specialServiceTypes' => ['SIGNATURE_OPTION'],
-                'signatureOptionType' => $optionType
+                'signatureOptionType' => $optionType,
 
-            ]
+            ],
         ];
 
         // set dimensions
@@ -1456,8 +1458,8 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
             $trackingNumber = $this->getTrackingNumber(
                 reset($response['output']['transactionShipments'])['pieceResponses']
             );
-                    $result->setShippingLabelContent($this->decoderInterface->decode($shippingLabelContent));
-                    $result->setTrackingNumber($trackingNumber);
+            $result->setShippingLabelContent($this->decoderInterface->decode($shippingLabelContent));
+            $result->setTrackingNumber($trackingNumber);
         } else {
             $debugData['result'] = ['error' => '', 'code' => '', 'message' => $response];
             if (is_array($response['errors'])) {
@@ -1786,7 +1788,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
                 'activity' => (string) $event['eventDescription'],
                 'deliverydate' => null,
                 'deliverytime' => null,
-                'deliverylocation' => null
+                'deliverylocation' => null,
             ];
 
             $datetime = $this->parseDate(!empty($event['date']) ? $event['date'] : null);
@@ -1872,7 +1874,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
     {
         if (empty($packages)) {
             $dividedWeight = $this->getTotalNumOfBoxes($totalWeight);
-            for ($i=0; $i < $this->_numBoxes; $i++) {
+            for ($i = 0; $i < $this->_numBoxes; $i++) {
                 $packages[$i]['weight'] = $dividedWeight;
             }
         }

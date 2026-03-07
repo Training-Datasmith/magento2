@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +12,8 @@ use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 
 class ShippingAssignment extends \Magento\Framework\Model\AbstractExtensibleModel implements ShippingAssignmentInterface
 {
-    const SHIPPING = 'shipping';
-    const ITEMS = 'items';
+    public const SHIPPING = 'shipping';
+    public const ITEMS = 'items';
 
     /**
      * @inheritDoc

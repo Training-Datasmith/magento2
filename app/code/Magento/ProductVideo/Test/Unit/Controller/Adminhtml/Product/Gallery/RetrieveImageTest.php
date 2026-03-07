@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\ProductVideo\Test\Unit\Controller\Adminhtml\Product\Gallery;
 
+use Exception;
 use Magento\Backend\App\Action\Context;
 use Magento\Catalog\Model\Product\Media\Config;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
-use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -29,7 +30,6 @@ use Magento\MediaStorage\Model\ResourceModel\File\Storage\File;
 use Magento\ProductVideo\Controller\Adminhtml\Product\Gallery\RetrieveImage;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Exception;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -194,7 +194,7 @@ class RetrieveImageTest extends TestCase
                 'error' => 0,
                 'size' => 200,
                 'url' => null,
-                'file' => '/t/e/test.jpg'
+                'file' => '/t/e/test.jpg',
             ], JSON_THROW_ON_ERROR));
 
         $this->image->execute();

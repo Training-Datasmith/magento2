@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -72,9 +74,9 @@ class Frequency implements SecurityCheckerInterface
                 $longIp
             );
             if ($lastRecordCreationTimestamp && (
-                    $limitTimeBetweenRequests >
+                $limitTimeBetweenRequests >
                     ($this->dateTime->gmtTimestamp() - $lastRecordCreationTimestamp)
-                )) {
+            )) {
                 throw new SecurityViolationException(
                     __(
                         'We received too many requests for password resets. '

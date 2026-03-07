@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Cms\Model\ResourceModel\Page;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CollectionTest extends TestCase
 {
@@ -37,7 +38,7 @@ class CollectionTest extends TestCase
     #[DataProvider('getCollectionFiltersDataProvider')]
     public function testAddFieldToFilter($field): void
     {
-        $filterDate = "2021-12-05 00:00:00";
+        $filterDate = '2021-12-05 00:00:00';
         /** @var TimezoneInterface $timeZone */
         $timeZone = $this->objectManager->get(TimezoneInterface::class);
         /** @var Collection $gridCollection */
@@ -45,7 +46,7 @@ class CollectionTest extends TestCase
             Collection::class,
             [
                 'mainTable' => 'cms_block',
-                'resourceModel' => Page::class
+                'resourceModel' => Page::class,
             ]
         );
         $filterDate = new \DateTime($filterDate);

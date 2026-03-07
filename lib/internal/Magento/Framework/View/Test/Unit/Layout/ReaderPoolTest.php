@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ReaderPoolTest extends TestCase
             ReaderPool::class,
             [
                 'readerFactory' => $this->readerFactoryMock,
-                'readers' => ['move' => Move::class]
+                'readers' => ['move' => Move::class],
             ]
         );
     }

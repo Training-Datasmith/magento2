@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
+
 namespace Magento\Swatches\Block\Product\Renderer;
 
 use Magento\Catalog\Block\Product\Context;
@@ -13,6 +15,7 @@ use Magento\Catalog\Model\Product\Image\UrlBuilder;
 use Magento\ConfigurableProduct\Helper\Data;
 use Magento\ConfigurableProduct\Model\ConfigurableAttributeData;
 use Magento\Customer\Helper\Session\CurrentCustomer;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Stdlib\ArrayUtils;
@@ -20,7 +23,6 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Swatches\Helper\Data as SwatchData;
 use Magento\Swatches\Helper\Media;
 use Magento\Swatches\Model\Swatch;
-use Magento\Framework\App\ObjectManager;
 use Magento\Swatches\Model\SwatchAttributesProvider;
 
 /**
@@ -36,27 +38,27 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Path to template file with Swatch renderer.
      */
-    const SWATCH_RENDERER_TEMPLATE = 'Magento_Swatches::product/view/renderer.phtml';
+    public const SWATCH_RENDERER_TEMPLATE = 'Magento_Swatches::product/view/renderer.phtml';
 
     /**
      * Path to default template file with standard Configurable renderer.
      */
-    const CONFIGURABLE_RENDERER_TEMPLATE = 'Magento_ConfigurableProduct::product/view/type/options/configurable.phtml';
+    public const CONFIGURABLE_RENDERER_TEMPLATE = 'Magento_ConfigurableProduct::product/view/type/options/configurable.phtml';
 
     /**
      * Action name for ajax request
      */
-    const MEDIA_CALLBACK_ACTION = 'swatches/ajax/media';
+    public const MEDIA_CALLBACK_ACTION = 'swatches/ajax/media';
 
     /**
      * Name of swatch image for json config
      */
-    const SWATCH_IMAGE_NAME = 'swatchImage';
+    public const SWATCH_IMAGE_NAME = 'swatchImage';
 
     /**
      * Name of swatch thumbnail for json config
      */
-    const SWATCH_THUMBNAIL_NAME = 'swatchThumb';
+    public const SWATCH_THUMBNAIL_NAME = 'swatchThumb';
 
     /**
      * Config path which contains number of swatches per product

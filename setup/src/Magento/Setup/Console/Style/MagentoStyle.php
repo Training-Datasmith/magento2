@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -242,7 +244,7 @@ class MagentoStyle extends OutputStyle implements MagentoStyleInterface
      * @inheritdoc
      * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
      */
-    public function ask($question, $default = null, $validator = null, $maxAttempts = null):mixed
+    public function ask($question, $default = null, $validator = null, $maxAttempts = null): mixed
     {
         $question = new Question($question, $default);
         $question->setValidator($validator);
@@ -255,7 +257,7 @@ class MagentoStyle extends OutputStyle implements MagentoStyleInterface
      * @inheritdoc
      * @throws \Symfony\Component\Console\Exception\LogicException
      */
-    public function askHidden($question, $validator = null):mixed
+    public function askHidden($question, $validator = null): mixed
     {
         $question = new Question($question);
 
@@ -268,7 +270,7 @@ class MagentoStyle extends OutputStyle implements MagentoStyleInterface
     /**
      * @inheritdoc
      */
-    public function confirm($question, $default = true):bool
+    public function confirm($question, $default = true): bool
     {
         return $this->askQuestion(new ConfirmationQuestion($question, $default));
     }
@@ -276,7 +278,7 @@ class MagentoStyle extends OutputStyle implements MagentoStyleInterface
     /**
      * @inheritdoc
      */
-    public function choice($question, array $choices, $default = null):mixed
+    public function choice($question, array $choices, $default = null): mixed
     {
         if (null !== $default) {
             $values = array_flip($choices);

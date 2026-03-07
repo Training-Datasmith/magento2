@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,12 +15,12 @@ use Magento\Catalog\Model\Product\Price\SpecialPriceStorage;
 use Magento\Catalog\Model\Product\Price\Validation\InvalidSkuProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\Result;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\StoreRepositoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Exception\InputException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -139,7 +140,7 @@ class SpecialPriceStorageTest extends TestCase
         $this->specialPriceFactory->expects($this->atLeastOnce())->method('create')->willReturn($price);
         $this->productIdLocator->expects($this->atLeastOnce())->method('retrieveProductIdsBySkus')->willReturn(
             [
-                'sku_2' => [2 => 'prod']
+                'sku_2' => [2 => 'prod'],
             ]
         );
         $this->model->get($skus);
@@ -196,14 +197,14 @@ class SpecialPriceStorageTest extends TestCase
                         'SKU' => 'sku_1',
                         'storeId' => 1,
                         'priceFrom' => '2016-12-20 01:02:03',
-                        'priceTo' => '2016-12-21 01:02:03'
+                        'priceTo' => '2016-12-21 01:02:03',
                     ]
                 ),
                 [
                     'SKU' => 'sku_1',
                     'storeId' => 1,
                     'priceFrom' => '2016-12-20 01:02:03',
-                    'priceTo' => '2016-12-21 01:02:03'
+                    'priceTo' => '2016-12-21 01:02:03',
                 ]
             );
         $this->validationResult->expects($this->atLeastOnce())->method('getFailedRowIds')->willReturn([1]);
@@ -240,7 +241,7 @@ class SpecialPriceStorageTest extends TestCase
                         'SKU' => 'sku_1',
                         'storeId' => 1,
                         'priceFrom' => '2016-12-20 01:02:03',
-                        'priceTo' => '2016-12-21 01:02:03'
+                        'priceTo' => '2016-12-21 01:02:03',
                     ]
                 ),
                 [
@@ -248,7 +249,7 @@ class SpecialPriceStorageTest extends TestCase
                     'SKU' => 'sku_1',
                     'storeId' => 1,
                     'priceFrom' => '2016-12-20 01:02:03',
-                    'priceTo' => '2016-12-21 01:02:03'
+                    'priceTo' => '2016-12-21 01:02:03',
                 ]
             );
         $this->validationResult->expects($this->atLeastOnce())->method('getFailedRowIds')->willReturn([1]);
@@ -285,14 +286,14 @@ class SpecialPriceStorageTest extends TestCase
                         'SKU' => 'sku_1',
                         'storeId' => 1,
                         'priceFrom' => '2016-12-20 01:02:03',
-                        'priceTo' => '2016-12-21 01:02:03'
+                        'priceTo' => '2016-12-21 01:02:03',
                     ]
                 ),
                 [
                     'SKU' => 'sku_1',
                     'storeId' => 1,
                     'priceFrom' => '2016-12-20 01:02:03',
-                    'priceTo' => '2016-12-21 01:02:03'
+                    'priceTo' => '2016-12-21 01:02:03',
                 ]
             );
         $this->validationResult->expects($this->atLeastOnce())->method('getFailedRowIds')->willReturn([1]);
@@ -329,7 +330,7 @@ class SpecialPriceStorageTest extends TestCase
                         'SKU' => 'sku_1',
                         'storeId' => 1,
                         'priceFrom' => 'incorrect',
-                        'priceTo' => '2016-12-21 01:02:03'
+                        'priceTo' => '2016-12-21 01:02:03',
                     ]
                 ),
                 [
@@ -337,7 +338,7 @@ class SpecialPriceStorageTest extends TestCase
                     'SKU' => 'sku_1',
                     'storeId' => 1,
                     'priceFrom' => 'incorrect',
-                    'priceTo' => '2016-12-21 01:02:03'
+                    'priceTo' => '2016-12-21 01:02:03',
                 ]
             );
         $this->validationResult->expects($this->atLeastOnce())->method('getFailedRowIds')->willReturn([1]);
@@ -374,7 +375,7 @@ class SpecialPriceStorageTest extends TestCase
                         'SKU' => 'sku_1',
                         'storeId' => 1,
                         'priceFrom' => '2016-12-21 01:02:03',
-                        'priceTo' => 'incorrect'
+                        'priceTo' => 'incorrect',
                     ]
                 ),
                 [
@@ -382,7 +383,7 @@ class SpecialPriceStorageTest extends TestCase
                     'SKU' => 'sku_1',
                     'storeId' => 1,
                     'priceFrom' => '2016-12-21 01:02:03',
-                    'priceTo' => 'incorrect'
+                    'priceTo' => 'incorrect',
                 ]
             );
         $this->validationResult->expects($this->atLeastOnce())->method('getFailedRowIds')->willReturn([1]);

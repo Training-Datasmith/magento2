@@ -27,11 +27,11 @@ class ExcelTest extends TestCase
     private $_testData = [
         [
             'ID', 'Name', 'Email', 'Group', 'Telephone', '+Telephone', 'ZIP', '0ZIP', 'Country', 'State/Province',
-            'Symbol=', 'Symbol-', 'Symbol+', 'NumberWithSpace', 'NumberWithTabulation'
+            'Symbol=', 'Symbol-', 'Symbol+', 'NumberWithSpace', 'NumberWithTabulation',
         ],
         [
             1, 'Jon Doe', 'jon.doe@magento.com', 'General', '310-111-1111', '+310-111-1111', 90232, '090232',
-            'United States', 'California', '=', '-', '+', ' 3111', '\t3111'
+            'United States', 'California', '=', '-', '+', ' 3111', '\t3111',
         ],
     ];
 
@@ -41,7 +41,7 @@ class ExcelTest extends TestCase
     protected $_testHeader = [
         'HeaderID', 'HeaderName', 'HeaderEmail', 'HeaderGroup', 'HeaderPhone', 'Header+Phone', 'HeaderZIP',
         'Header0ZIP', 'HeaderCountry', 'HeaderRegion', 'HeaderSymbol=', 'HeaderSymbol-', 'HeaderSymbol+',
-        'HeaderNumberWithSpace', 'HeaderNumberWithTabulation'
+        'HeaderNumberWithSpace', 'HeaderNumberWithTabulation',
     ];
 
     /**
@@ -50,7 +50,7 @@ class ExcelTest extends TestCase
     protected $_testFooter = [
         'FooterID', 'FooterName', 'FooterEmail', 'FooterGroup', 'FooterPhone', 'Footer+Phone', 'FooterZIP',
         'Footer0ZIP', 'FooterCountry', 'FooterRegion', 'FooterSymbol=', 'FooterSymbol-', 'FooterSymbol+',
-        'FooterNumberWithSpace', 'FooterNumberWithTabulation'
+        'FooterNumberWithSpace', 'FooterNumberWithTabulation',
     ];
 
     /**

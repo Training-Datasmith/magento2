@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Store\Api\Data\GroupInterface;
 use Magento\Store\Api\Data\GroupInterfaceFactory;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\StoreInterfaceFactory;
-use \Magento\Store\Api\Data\WebsiteInterface;
-use \Magento\Store\Api\Data\WebsiteInterfaceFactory;
+use Magento\Store\Api\Data\WebsiteInterface;
+use Magento\Store\Api\Data\WebsiteInterfaceFactory;
 use Magento\Store\Model\ResourceModel\Group as GroupResource;
 use Magento\Store\Model\ResourceModel\Store as StoreResource;
 use Magento\Store\Model\ResourceModel\Website as WebsiteResource;
@@ -33,7 +34,6 @@ $groupResource = $objectManager->get(GroupResource::class);
 $defaultCategory = $objectManager->get(DefaultCategory::class);
 /** @var WebsiteInterface $website */
 
-
 $website = $objectManager->get(WebsiteInterfaceFactory::class)->create();
 $website->setCode('che')->setName('Test Website');
 $websiteResource->save($website);
@@ -45,8 +45,6 @@ $storeGroup->setCode('che_group')
     ->setWebsite($website);
 $groupResource->save($storeGroup);
 
-
-
 $websiteExp = $objectManager->get(WebsiteInterfaceFactory::class)->create();
 $websiteExp->setCode('exp')->setName('Test Website');
 $websiteResource->save($websiteExp);
@@ -57,8 +55,6 @@ $storeGroupExp->setCode('exp_group')
     ->setName('second store group')
     ->setWebsite($website);
 $groupResource->save($storeGroupExp);
-
-
 
 /* Refresh stores memory cache */
 $storeManager->reinitStores();
@@ -73,7 +69,6 @@ foreach (['de_ch', 'en_ch', 'es_ch', 'fr_ch', 'zh_ch'] as $storeCode) {
         ->setIsActive(1);
     $storeResource->save($store);
 }
-
 
 foreach (['de_ex', 'en_ex', 'es_ex', 'fr_ex', 'zh_ex'] as $storeCode) {
     /** @var StoreInterface $store */

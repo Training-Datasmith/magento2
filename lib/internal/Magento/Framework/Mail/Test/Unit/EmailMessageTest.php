@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class EmailMessageTest extends TestCase
         $this->logger = $this->createMock(LoggerInterface::class);
 
         $this->addressFactory->method('create')
-            ->willReturnCallback(fn(array $args): Address => new Address($args['email'], $args['name']));
+            ->willReturnCallback(fn (array $args): Address => new Address($args['email'], $args['name']));
     }
 
     /**
@@ -127,7 +128,7 @@ class EmailMessageTest extends TestCase
     {
         $message = $this->createMessage([
             'subject' => self::SUBJECT,
-            'from' => [new Address(self::EMAIL, self::NAME)]
+            'from' => [new Address(self::EMAIL, self::NAME)],
         ]);
 
         $this->assertInstanceOf(SymfonyMessage::class, $message->getSymfonyMessage());
@@ -428,7 +429,7 @@ class EmailMessageTest extends TestCase
      */
     public function testAllAddressTypesTogether(): void
     {
-        $address = fn(string $prefix): Address => new Address("$prefix@test.com", ucfirst($prefix));
+        $address = fn (string $prefix): Address => new Address("$prefix@test.com", ucfirst($prefix));
 
         $message = $this->createMessage([
             'from' => [$address('from')],

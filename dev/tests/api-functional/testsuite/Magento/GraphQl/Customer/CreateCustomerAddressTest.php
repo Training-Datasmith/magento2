@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class CreateCustomerAddressTest extends GraphQlAbstract
             'region' => [
                 'region' => 'Arizona',
                 'region_id' => 4,
-                'region_code' => 'AZ'
+                'region_code' => 'AZ',
             ],
             'country_code' => 'US',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -64,7 +65,7 @@ class CreateCustomerAddressTest extends GraphQlAbstract
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => false
+            'default_billing' => false,
         ];
 
         $mutation
@@ -144,7 +145,7 @@ MUTATION;
             'region' => [
                 'region' => 'Arizona',
                 'region_id' => 4,
-                'region_code' => 'AZ'
+                'region_code' => 'AZ',
             ],
             'country_code' => 'US',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -160,7 +161,7 @@ MUTATION;
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => false
+            'default_billing' => false,
         ];
 
         $mutation
@@ -242,7 +243,7 @@ MUTATION;
             'region' => [
                 'region' => 'Arizona',
                 'region_id' => 4,
-                'region_code' => 'AZ'
+                'region_code' => 'AZ',
             ],
             'country_id' => 'US',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -258,7 +259,7 @@ MUTATION;
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => false
+            'default_billing' => false,
         ];
 
         $mutation
@@ -402,7 +403,7 @@ MUTATION;
             'region' => [
                 'region' => 'Arizona',
                 'region_id' => 4,
-                'region_code' => 'AZ'
+                'region_code' => 'AZ',
             ],
             'country_code' => 'US',
             'street' => ['Line 1 Street', 'Line 2', 'Line 3'],
@@ -418,7 +419,7 @@ MUTATION;
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => false
+            'default_billing' => false,
         ];
 
         $mutation
@@ -481,7 +482,7 @@ MUTATION;
             'suffix' => 'Jr.',
             'vat_id' => '1',
             'default_shipping' => true,
-            'default_billing' => false
+            'default_billing' => false,
         ];
 
         $mutation
@@ -567,7 +568,7 @@ MUTATION;
             'postcode' => '10019',
             'city' => 'Manhattan',
             'firstname' => 'Adam',
-            'lastname' => 'Phillis'
+            'lastname' => 'Phillis',
         ];
 
         $mutation
@@ -629,7 +630,7 @@ MUTATION;
             'postcode' => '10019',
             'city' => 'London',
             'firstname' => 'Adams',
-            'lastname' => 'Phillips'
+            'lastname' => 'Phillips',
         ];
 
         $mutation
@@ -692,7 +693,7 @@ MUTATION;
             'postcode' => '10019',
             'city' => 'London',
             'firstname' => 'Adams',
-            'lastname' => 'Phillips'
+            'lastname' => 'Phillips',
         ];
 
         $mutation
@@ -746,7 +747,7 @@ MUTATION;
         $newAddress = [
             'region' => [
                 'region_code' => 'some',
-                'region' => 'some region'
+                'region' => 'some region',
             ],
             'country_code' => 'GB',
             'street' => ['Line 1 Street', 'Line 2'],
@@ -755,7 +756,7 @@ MUTATION;
             'postcode' => '10019',
             'city' => 'London',
             'firstname' => 'Adams',
-            'lastname' => 'Phillips'
+            'lastname' => 'Phillips',
         ];
 
         $mutation
@@ -801,8 +802,8 @@ MUTATION;
             '',
             $this->getCustomerAuthHeaders($userName, $password)
         );
-        $this->assertEquals("some region", $response["createCustomerAddress"]["region"]["region"]);
-        $this->assertEquals("some", $response["createCustomerAddress"]["region"]["region_code"]);
+        $this->assertEquals('some region', $response['createCustomerAddress']['region']['region']);
+        $this->assertEquals('some', $response['createCustomerAddress']['region']['region_code']);
     }
 
     /**
@@ -813,7 +814,7 @@ MUTATION;
         return [
             ['', 'Syntax Error: Expected Name, found )'],
             ['input: ""', 'Expected value of type "CustomerAddressInput", found "".'],
-            ['input: "foo"', 'Expected value of type "CustomerAddressInput", found "foo".']
+            ['input: "foo"', 'Expected value of type "CustomerAddressInput", found "foo".'],
         ];
     }
 
@@ -847,11 +848,11 @@ MUTATION;
             ['response_field' => 'default_billing', 'expected_value' => (bool)$address->isDefaultBilling()],
         ];
         $this->assertResponseFields($actualResponse, $assertionMap);
-        $this->assertIsArray([$actualResponse['region']], "region field must be of an array type.");
+        $this->assertIsArray([$actualResponse['region']], 'region field must be of an array type.');
         $assertionRegionMap = [
             ['response_field' => 'region', 'expected_value' => $address->getRegion()->getRegion()],
             ['response_field' => 'region_code', 'expected_value' => $address->getRegion()->getRegionCode()],
-            ['response_field' => 'region_id', 'expected_value' => $address->getRegion()->getRegionId()]
+            ['response_field' => 'region_id', 'expected_value' => $address->getRegion()->getRegionId()],
         ];
         $this->assertResponseFields($actualResponse['region'], $assertionRegionMap);
     }

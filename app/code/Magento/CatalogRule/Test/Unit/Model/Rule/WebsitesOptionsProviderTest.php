@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class WebsitesOptionsProviderTest extends TestCase
     public function testToOptionArray()
     {
         $options = [
-            ['label' => 'label', 'value' => 'value']
+            ['label' => 'label', 'value' => 'value'],
         ];
         $this->storeMock->expects($this->once())->method('getWebsiteValuesForForm')->willReturn($options);
         $this->assertEquals($options, $this->model->toOptionArray());

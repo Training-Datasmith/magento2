@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class PageFactoryTest extends TestCase
         $this->pageFactory = $this->objectManagerHelper->getObject(
             PageFactory::class,
             [
-                'objectManager' => $this->objectManagerMock
+                'objectManager' => $this->objectManagerMock,
             ]
         );
         $this->page = $this->getMockBuilder(Page::class)

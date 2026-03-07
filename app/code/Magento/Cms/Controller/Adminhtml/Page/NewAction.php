@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Page;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
@@ -17,7 +20,7 @@ class NewAction extends \Magento\Backend\App\Action implements HttpGetActionInte
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::save';
+    public const ADMIN_RESOURCE = 'Magento_Cms::save';
 
     /**
      * @var \Magento\Backend\Model\View\Result\Forward

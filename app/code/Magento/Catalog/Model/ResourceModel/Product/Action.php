@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\AbstractModel;
 use Magento\Catalog\Model\Factory;
 use Magento\Catalog\Model\Product;
@@ -174,7 +175,7 @@ class Action extends AbstractResource
                 [
                     'attribute_id = ?' => $attribute->getAttributeId(),
                     $this->getLinkField() . ' = ?' => $entityId,
-                    'store_id <> ?' => $storeId
+                    'store_id <> ?' => $storeId,
                 ]
             );
         }
@@ -256,8 +257,8 @@ class Action extends AbstractResource
             [
                 'in' => [
                     Type::TYPE_SIMPLE,
-                    Type::TYPE_VIRTUAL
-                ]
+                    Type::TYPE_VIRTUAL,
+                ],
             ]
         );
         $productCollection->addFieldToSelect(Product::TYPE_ID);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Schema;
 
-use Magento\Framework\GraphQl\Schema\Type\ObjectType;
-use Magento\Framework\GraphQl\Schema\Type\InterfaceType;
-use Magento\Framework\GraphQl\Schema\Type\InputObjectType;
 use Magento\Framework\GraphQl\Schema\Type\EnumType;
+use Magento\Framework\GraphQl\Schema\Type\InputObjectType;
+use Magento\Framework\GraphQl\Schema\Type\InterfaceType;
 use Magento\Framework\GraphQl\Schema\Type\ListOfType;
 use Magento\Framework\GraphQl\Schema\Type\NonNull;
+use Magento\Framework\GraphQl\Schema\Type\ObjectType;
 use Magento\Framework\GraphQl\Schema\Type\UnionType;
 
 /**
@@ -26,7 +27,7 @@ class TypeFactory
      * @param array $config
      * @return ObjectType
      */
-    public function createObject(array $config) : ObjectType
+    public function createObject(array $config): ObjectType
     {
         return new ObjectType($config);
     }
@@ -37,7 +38,7 @@ class TypeFactory
      * @param array $config
      * @return InterfaceType
      */
-    public function createInterface(array $config) : InterfaceType
+    public function createInterface(array $config): InterfaceType
     {
         return new InterfaceType($config);
     }
@@ -48,7 +49,7 @@ class TypeFactory
      * @param array $config
      * @return UnionType
      */
-    public function createUnion(array $config) : UnionType
+    public function createUnion(array $config): UnionType
     {
         return new UnionType($config);
     }
@@ -59,7 +60,7 @@ class TypeFactory
      * @param array $config
      * @return InputObjectType
      */
-    public function createInputObject(array $config) : InputObjectType
+    public function createInputObject(array $config): InputObjectType
     {
         return new InputObjectType($config);
     }
@@ -70,7 +71,7 @@ class TypeFactory
      * @param array $config
      * @return EnumType
      */
-    public function createEnum(array $config) : EnumType
+    public function createEnum(array $config): EnumType
     {
         return new EnumType($config);
     }
@@ -81,7 +82,7 @@ class TypeFactory
      * @param TypeInterface $definedType
      * @return ListOfType
      */
-    public function createList(TypeInterface $definedType) : ListOfType
+    public function createList(TypeInterface $definedType): ListOfType
     {
         return new ListOfType($definedType);
     }
@@ -92,7 +93,7 @@ class TypeFactory
      * @param TypeInterface $definedType
      * @return NonNull
      */
-    public function createNonNull(TypeInterface $definedType) : NonNull
+    public function createNonNull(TypeInterface $definedType): NonNull
     {
         return new NonNull($definedType);
     }

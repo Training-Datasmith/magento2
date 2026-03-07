@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Csp\Test\Unit\Plugin;
 
 use Magento\Csp\Model\SubresourceIntegrity;
+use Magento\Csp\Model\SubresourceIntegrityCollector;
 use Magento\Csp\Model\SubresourceIntegrityRepository;
 use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
+use Magento\Csp\Plugin\StoreAssetIntegrityHashes;
 use Magento\Deploy\Service\DeployStaticContent;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Csp\Plugin\StoreAssetIntegrityHashes;
-use Magento\Csp\Model\SubresourceIntegrityCollector;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -76,14 +77,14 @@ class StoreAssetIntegrityHashesTest extends TestCase
         $bunch1 = new SubresourceIntegrity(
             [
                 'hash' => 'testhash',
-                'path' => 'adminhtml/js/jquery.js'
+                'path' => 'adminhtml/js/jquery.js',
             ]
         );
 
         $bunch2 = new SubresourceIntegrity(
             [
                 'hash' => 'testhash2',
-                'path' => 'frontend/js/test.js'
+                'path' => 'frontend/js/test.js',
             ]
         );
 

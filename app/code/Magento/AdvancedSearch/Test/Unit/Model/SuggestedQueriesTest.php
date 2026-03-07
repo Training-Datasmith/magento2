@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use InvalidArgumentException;
 use Magento\AdvancedSearch\Model\SuggestedQueries;
 use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
@@ -16,6 +16,7 @@ use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Search\Model\EngineResolver;
 use Magento\Search\Model\QueryInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -73,7 +74,7 @@ class SuggestedQueriesTest extends TestCase
             [
                 'engineResolver' => $this->engineResolverMock,
                 'objectManager' => $this->objectManagerMock,
-                'data' => ['my_engine' => 'search_engine']
+                'data' => ['my_engine' => 'search_engine'],
             ]
         );
     }
@@ -108,7 +109,7 @@ class SuggestedQueriesTest extends TestCase
             [
                 'engineResolver' => $this->engineResolverMock,
                 'objectManager' => $objectManagerMock,
-                'data' => ['my_engine' => 'search_engine']
+                'data' => ['my_engine' => 'search_engine'],
             ]
         );
         $this->expectException(InvalidArgumentException::class);

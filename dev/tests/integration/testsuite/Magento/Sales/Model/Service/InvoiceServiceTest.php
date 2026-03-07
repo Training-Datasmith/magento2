@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'full invoice' => [2],
-            'partial invoice' => [1]
+            'partial invoice' => [1],
         ];
     }
 
@@ -121,7 +122,7 @@ class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
     {
         return [
             'full invoice' => [2],
-            'partial invoice' => [1]
+            'partial invoice' => [1],
         ];
     }
 
@@ -212,7 +213,7 @@ class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
                 'simple_action' => Rule::BY_PERCENT_ACTION,
                 'discount_amount' => 20,
                 'actions' => ['$cond1$'],
-                'simple_free_shipping' => \Magento\OfflineShipping\Model\SalesRule\Rule::FREE_SHIPPING_ITEM
+                'simple_free_shipping' => \Magento\OfflineShipping\Model\SalesRule\Rule::FREE_SHIPPING_ITEM,
             ]
         ),
         DataFixture(GuestCartFixture::class, as: 'cart'),
@@ -222,7 +223,7 @@ class InvoiceServiceTest extends \PHPUnit\Framework\TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),

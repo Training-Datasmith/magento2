@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Cart\Totals;
 
 use Magento\Catalog\Helper\Product\ConfigurationPool;
@@ -107,7 +110,7 @@ class ItemConverter
         foreach ($options as $index => $optionValue) {
             $params = [
                 'max_length' => 55,
-                'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>'
+                'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>',
             ];
             $option = $helper->getFormattedOptionValue($optionValue, $params);
             $optionsData[$index] = $option;

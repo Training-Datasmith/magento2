@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory as BulkCollectionFactory;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Data\Collection;
+use Magento\Framework\EntityManager\MetadataPool;
 
 /**
  * Class for bulk notification manager
@@ -17,53 +20,19 @@ use Magento\Framework\Data\Collection;
 class BulkNotificationManagement
 {
     /**
-     * @var MetadataPool
-     */
-    private $metadataPool;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var BulkCollectionFactory
-     */
-    private $bulkCollectionFactory;
-
-    /**
      * BulkManagement constructor.
-     *
-     * @param MetadataPool $metadataPool
-     * @param ResourceConnection $resourceConnection
-     * @param BulkCollectionFactory $bulkCollectionFactory
-     * @param \Psr\Log\LoggerInterface $logger
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        ResourceConnection $resourceConnection,
-        BulkCollectionFactory $bulkCollectionFactory,
-        \Psr\Log\LoggerInterface $logger
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->resourceConnection = $resourceConnection;
-        $this->bulkCollectionFactory = $bulkCollectionFactory;
-        $this->logger = $logger;
+    public function __construct(private readonly MetadataPool $metadataPool, private readonly ResourceConnection $resourceConnection, private readonly BulkCollectionFactory $bulkCollectionFactory, private readonly \Psr\Log\LoggerInterface $logger)
+    {
     }
 
     /**
      * Mark given bulks as acknowledged.
      * Notifications related to these bulks will not appear in notification area.
      *
-     * @param array $bulkUuids
      * @return bool true on success or false on failure
      */
-    public function acknowledgeBulks(array $bulkUuids)
+    public function acknowledgeBulks(array $bulkUuids): bool
     {
         $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
         $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
@@ -85,10 +54,9 @@ class BulkNotificationManagement
      * Remove given bulks from acknowledged list.
      * Notifications related to these bulks will appear again in notification area.
      *
-     * @param array $bulkUuids
      * @return bool true on success or false on failure
      */
-    public function ignoreBulks(array $bulkUuids)
+    public function ignoreBulks(array $bulkUuids): bool
     {
         $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
         $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
@@ -113,7 +81,7 @@ class BulkNotificationManagement
      */
     public function getAcknowledgedBulksByUser($userId)
     {
-        $bulks = $this->bulkCollectionFactory->create()
+        return $this->bulkCollectionFactory->create()
             ->join(
                 ['acknowledged_bulk' => $this->resourceConnection->getTableName('magento_acknowledged_bulk')],
                 'main_table.uuid = acknowledged_bulk.bulk_uuid',
@@ -121,8 +89,6 @@ class BulkNotificationManagement
             )->addFieldToFilter('user_id', $userId)
             ->addOrder('start_time', Collection::SORT_ORDER_DESC)
             ->getItems();
-
-        return $bulks;
     }
 
     /**
@@ -140,11 +106,10 @@ class BulkNotificationManagement
             'main_table.uuid = acknowledged_bulk.bulk_uuid',
             ['acknowledged_bulk.bulk_uuid']
         );
-        $bulks = $bulkCollection->addFieldToFilter('user_id', $userId)
+
+        return $bulkCollection->addFieldToFilter('user_id', $userId)
             ->addFieldToFilter('acknowledged_bulk.bulk_uuid', ['null' => true])
             ->addOrder('start_time', Collection::SORT_ORDER_DESC)
             ->getItems();
-
-        return $bulks;
     }
 }

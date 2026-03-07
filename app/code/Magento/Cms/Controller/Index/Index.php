@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Index;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Cms\Helper\Page;
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Controller\Result\Forward;
 use Magento\Framework\Controller\Result\ForwardFactory;
+use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page as ResultPage;
-use Magento\Cms\Helper\Page;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\App\Action\Action;
 
 /**
  * Home page. Needs to be accessible by POST because of the store switching.
@@ -54,8 +57,8 @@ class Index extends Action implements HttpGetActionInterface, HttpPostActionInte
         ?Page $page = null
     ) {
         $this->resultForwardFactory = $resultForwardFactory;
-        $this->scopeConfig = $scopeConfig ? : ObjectManager::getInstance()->get(ScopeConfigInterface::class);
-        $this->page = $page ? : ObjectManager::getInstance()->get(Page::class);
+        $this->scopeConfig = $scopeConfig ?: ObjectManager::getInstance()->get(ScopeConfigInterface::class);
+        $this->page = $page ?: ObjectManager::getInstance()->get(Page::class);
         parent::__construct($context);
     }
 

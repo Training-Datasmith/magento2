@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Page\Config\Reader;
 
 use Magento\Framework\View\Layout;
@@ -17,19 +20,19 @@ class Head implements Layout\ReaderInterface
     /**#@+
      * Supported types
      */
-    const TYPE_HEAD = 'head';
+    public const TYPE_HEAD = 'head';
     /**#@-*/
 
     /**#@+
      * Supported head elements
      */
-    const HEAD_CSS = 'css';
-    const HEAD_SCRIPT = 'script';
-    const HEAD_LINK = 'link';
-    const HEAD_REMOVE = 'remove';
-    const HEAD_TITLE = 'title';
-    const HEAD_META = 'meta';
-    const HEAD_ATTRIBUTE = 'attribute';
+    public const HEAD_CSS = 'css';
+    public const HEAD_SCRIPT = 'script';
+    public const HEAD_LINK = 'link';
+    public const HEAD_REMOVE = 'remove';
+    public const HEAD_TITLE = 'title';
+    public const HEAD_META = 'meta';
+    public const HEAD_ATTRIBUTE = 'attribute';
     private const HEAD_FONT = 'font';
     /**#@-*/
 

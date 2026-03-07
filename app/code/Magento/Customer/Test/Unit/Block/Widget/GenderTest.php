@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -173,7 +174,7 @@ class GenderTest extends TestCase
         $options = [
             ['label' => __('Male'), 'value' => 'M'],
             ['label' => __('Female'), 'value' => 'F'],
-            ['label' => __('Not Specified'), 'value' => 'NA']
+            ['label' => __('Not Specified'), 'value' => 'NA'],
         ];
 
         $this->attribute->expects($this->once())->method('getOptions')->willReturn($options);

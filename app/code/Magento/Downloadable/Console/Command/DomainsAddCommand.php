@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Console\Command;
 
 use Exception;
@@ -56,7 +59,7 @@ class DomainsAddCommand extends Command
                         self::INPUT_KEY_DOMAINS,
                         InputArgument::IS_ARRAY,
                         'Domains name'
-                    )
+                    ),
                 ]
             );
         parent::configure();

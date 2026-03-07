@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\SalesRule\Test\Unit\Model\Converter;
 
 use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\SalesRule\Api\Data\ConditionInterfaceFactory;
 use Magento\SalesRule\Api\Data\RuleExtensionFactory;
@@ -23,7 +25,6 @@ use Magento\SalesRule\Model\Rule\Condition\Address;
 use Magento\SalesRule\Model\Rule\Condition\Combine;
 use Magento\SalesRule\Model\Rule\Condition\Product;
 use Magento\SalesRule\Model\Rule\Condition\Product\Found;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Model\RuleFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -268,7 +269,7 @@ class ToDataModelTest extends TestCase
 
     public function testArrayToConditionDataModel()
     {
-        $array=[
+        $array = [
             'type' => Combine::class,
             'attribute' => null,
             'operator' => null,
@@ -288,7 +289,7 @@ class ToDataModelTest extends TestCase
                     'attribute' => 'total_qty',
                     'operator' => '>',
                     'value' => 2,
-                    'is_value_processed' => null
+                    'is_value_processed' => null,
                 ],
                 [
                     'type' => Found::class,
@@ -303,13 +304,13 @@ class ToDataModelTest extends TestCase
                             'attribute' => 'category_ids',
                             'operator' => '==',
                             'value' => 3,
-                            'is_value_processed' => null
-                        ]
+                            'is_value_processed' => null,
+                        ],
 
-                    ]
+                    ],
 
                 ],
-            ]
+            ],
 
         ];
 

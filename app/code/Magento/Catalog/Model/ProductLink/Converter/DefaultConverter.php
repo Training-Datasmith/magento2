@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class DefaultConverter implements ConverterInterface
         return [
             'type' => $product->getTypeId(),
             'sku' => $product->getSku(),
-            'position' => $product->getPosition()
+            'position' => $product->getPosition(),
         ];
     }
 }

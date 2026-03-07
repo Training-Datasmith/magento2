@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Escaper;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\TestCase\AbstractController;
 use Magento\TestFramework\Wishlist\Model\GetWishlistByCustomerId;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 
 /**
  * Test for add product to cart from wish list.
@@ -103,7 +104,7 @@ class CartTest extends AbstractController
         $item = $this->getWishlistByCustomerId->getItemBySku(1, 'Configurable product');
         $this->assertNotNull($item);
         $this->performAddToCartRequest(['item' => $item->getId(), 'qty' => 1]);
-        $redirectUrl = sprintf("wishlist/index/configure/id/%s/product_id/%s", $item->getId(), $item->getProductId());
+        $redirectUrl = sprintf('wishlist/index/configure/id/%s/product_id/%s', $item->getId(), $item->getProductId());
         $this->assertRedirect($this->stringContains($redirectUrl));
         $message = 'You need to choose options for your item.';
         $this->assertSessionMessages($this->equalTo([(string)__($message)]), MessageInterface::TYPE_NOTICE);

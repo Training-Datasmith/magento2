@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order\Payment\Transaction;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\Transaction;
 use Magento\Sales\Model\Order\Payment\Transaction\Builder;
 use Magento\Sales\Model\Order\Payment\Transaction\Repository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class BuilderTest extends TestCase
 {
@@ -53,7 +54,7 @@ class BuilderTest extends TestCase
             Payment::class,
             [
                 'hasIsTransactionClosed', 'getIsTransactionClosed', 'getId',
-                'getParentTransactionId', 'getShouldCloseParentTransaction'
+                'getParentTransactionId', 'getShouldCloseParentTransaction',
             ]
         );
         $this->orderMock = $this->createMock(Order::class);
@@ -89,23 +90,23 @@ class BuilderTest extends TestCase
         bool $document,
         bool $isTransactionExists
     ): void {
-         $parentTransactionId = '12';
-         $shouldCloseParentTransaction = true;
-         $parentTransactionIsClosed = false;
+        $parentTransactionId = '12';
+        $shouldCloseParentTransaction = true;
+        $parentTransactionIsClosed = false;
         if ($document) {
             $document = $this->expectDocument($transactionId);
         }
-         $parentTransaction = $this->expectTransaction($orderId, $paymentId);
-         $transaction = $this->expectTransaction($orderId, $paymentId);
-         $transaction->expects($this->atLeastOnce())->method('getTxnId')->willReturn($transactionId);
-         $transaction->expects($this->once())
-            ->method('setPayment')
-            ->withAnyParameters()
-            ->willReturnSelf();
-         $transaction->expects($this->once())
-            ->method('setOrder')
-            ->withAnyParameters()
-            ->willReturnSelf();
+        $parentTransaction = $this->expectTransaction($orderId, $paymentId);
+        $transaction = $this->expectTransaction($orderId, $paymentId);
+        $transaction->expects($this->atLeastOnce())->method('getTxnId')->willReturn($transactionId);
+        $transaction->expects($this->once())
+           ->method('setPayment')
+           ->withAnyParameters()
+           ->willReturnSelf();
+        $transaction->expects($this->once())
+           ->method('setOrder')
+           ->withAnyParameters()
+           ->willReturnSelf();
 
         if ($isTransactionExists) {
             $this->repositoryMock->method('getByTransactionId')
@@ -140,11 +141,11 @@ class BuilderTest extends TestCase
                    $parentTransactionId,
                    $parentTransaction
                ) {
-                if ($arg1 == $transactionId && $arg2 == $paymentId && $arg3 ==  $orderId) {
-                    return false;
-                } elseif ($arg1 == $parentTransactionId && $arg2 == $paymentId && $arg3 ==  $orderId) {
-                    return $parentTransaction;
-                }
+                   if ($arg1 == $transactionId && $arg2 == $paymentId && $arg3 ==  $orderId) {
+                       return false;
+                   } elseif ($arg1 == $parentTransactionId && $arg2 == $paymentId && $arg3 ==  $orderId) {
+                       return $parentTransaction;
+                   }
                });
 
             $this->repositoryMock->method('create')
@@ -153,29 +154,29 @@ class BuilderTest extends TestCase
                ->with($transactionId)
                ->willReturn($transaction);
         }
-         $this->expectSetPaymentObject($transaction, $type, $failSafe);
-         $this->expectsIsPaymentTransactionClosed($isPaymentTransactionClosed, $transaction);
-         $this->expectsIsPaymentTransactionClosed($isPaymentTransactionClosed, $transaction);
-         $this->expectSetPaymentObject($transaction, $type, $failSafe);
-         $this->expectsLinkWithParentTransaction(
-             $transaction,
-             $parentTransactionId,
-             $shouldCloseParentTransaction,
-             $parentTransaction,
-             $parentTransactionIsClosed
-         );
+        $this->expectSetPaymentObject($transaction, $type, $failSafe);
+        $this->expectsIsPaymentTransactionClosed($isPaymentTransactionClosed, $transaction);
+        $this->expectsIsPaymentTransactionClosed($isPaymentTransactionClosed, $transaction);
+        $this->expectSetPaymentObject($transaction, $type, $failSafe);
+        $this->expectsLinkWithParentTransaction(
+            $transaction,
+            $parentTransactionId,
+            $shouldCloseParentTransaction,
+            $parentTransaction,
+            $parentTransactionIsClosed
+        );
         if ($additionalInfo) {
             $transaction->expects($this->exactly(count($additionalInfo)))->method('setAdditionalInformation');
         }
-         $builder = $this->builder->setPayment($this->paymentMock)
-            ->setOrder($this->orderMock)
-            ->setAdditionalInformation($additionalInfo)
-            ->setFailSafe($failSafe)
-            ->setTransactionId($transactionId);
+        $builder = $this->builder->setPayment($this->paymentMock)
+           ->setOrder($this->orderMock)
+           ->setAdditionalInformation($additionalInfo)
+           ->setFailSafe($failSafe)
+           ->setTransactionId($transactionId);
         if ($document) {
             $builder->setSalesDocument($document);
         }
-         $this->assertSame($transaction, $builder->build($type));
+        $this->assertSame($transaction, $builder->build($type));
     }
 
     /**
@@ -248,7 +249,7 @@ class BuilderTest extends TestCase
                     'close',
                     'getIsClosed',
                     'setOrder',
-                    'setIsClosed'
+                    'setIsClosed',
                 ]
             )
         );
@@ -330,7 +331,7 @@ class BuilderTest extends TestCase
                 'isPaymentTransactionClosed' => false,
                 'additionalInfo' => ['some_key' => '332-ou'],
                 'document' => true,
-                'isTransactionExists' => false
+                'isTransactionExists' => false,
             ],
             'transactionExists' => [
                 'transactionId' => 33,
@@ -341,7 +342,7 @@ class BuilderTest extends TestCase
                 'isPaymentTransactionClosed' => false,
                 'additionalInfo' => ['some_key' => '332-ou'],
                 'document' => true,
-                'isTransactionExists' => true
+                'isTransactionExists' => true,
             ],
             'transactionWithoutDocument' => [
                 'transactionId' => 33,
@@ -352,8 +353,8 @@ class BuilderTest extends TestCase
                 'isPaymentTransactionClosed' => false,
                 'additionalInfo' => ['some_key' => '332-ou'],
                 'document' => false,
-                'isTransactionExists' => true
-            ]
+                'isTransactionExists' => true,
+            ],
         ];
     }
 }

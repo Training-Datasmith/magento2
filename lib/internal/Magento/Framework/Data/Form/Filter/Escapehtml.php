@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Form Input/Output Escape HTML entities Filter
  */
+
 namespace Magento\Framework\Data\Form\Filter;
 
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 
 /**
  * EscapeHtml Form Filter Data

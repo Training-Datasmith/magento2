@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,13 +108,13 @@ class AreaListTest extends TestCase
         $this->assertSame('test', $model->getArea($code));
     }
 
-    public function testGetFrontNameWhenFrontNameIsInvalid() : void
+    public function testGetFrontNameWhenFrontNameIsInvalid(): void
     {
         $this->_model = new AreaList(
             $this->objectManagerMock,
             $this->_resolverFactory,
             [
-                'testAreaCode' => []
+                'testAreaCode' => [],
             ]
         );
 

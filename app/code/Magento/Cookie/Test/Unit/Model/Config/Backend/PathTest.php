@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class PathTest extends TestCase
             Path::class,
             [
                 'configValidator' => $this->validatorMock,
-                'resource' => $this->resourceMock
+                'resource' => $this->resourceMock,
             ]
         );
     }

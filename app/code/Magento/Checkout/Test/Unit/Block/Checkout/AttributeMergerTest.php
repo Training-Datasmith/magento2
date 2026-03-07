@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Customer\Api\CustomerRepositoryInterface as CustomerRepository;
 use Magento\Customer\Helper\Address as AddressHelper;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Directory\Helper\Data as DirectoryHelper;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Directory\Model\AllowedCountries;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AttributeMergerTest extends TestCase
 {
@@ -85,9 +86,9 @@ class AttributeMergerTest extends TestCase
                 'value' =>  null,
                 'sortOrder' => 1,
                 'validation' => [
-                    'input_validation' => $validationRule
+                    'input_validation' => $validationRule,
                 ],
-            ]
+            ],
         ];
 
         $actualResult = $this->attributeMerger->merge(
@@ -95,14 +96,14 @@ class AttributeMergerTest extends TestCase
             'provider',
             'dataScope',
             ['field' => [
-                'validation' => ['length' => true]
-            ]
+                'validation' => ['length' => true],
+            ],
             ]
         );
 
         $expectedResult = [
             $expectedValidation => true,
-            'length' => true
+            'length' => true,
         ];
 
         self::assertEquals($expectedResult, $actualResult['field']['validation']);
@@ -122,7 +123,7 @@ class AttributeMergerTest extends TestCase
             ['alphanum-with-spaces', 'validate-alphanum-with-spaces'],
             ['url', 'validate-url'],
             ['email', 'email2'],
-            ['length', 'validate-length']
+            ['length', 'validate-length'],
         ];
     }
 }

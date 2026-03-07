@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Block\Adminhtml\Synonyms\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -21,7 +24,7 @@ class ResetButton implements ButtonProviderInterface
             'label' => __('Reset'),
             'class' => 'reset',
             'on_click' => 'location.reload();',
-            'sort_order' => 30
+            'sort_order' => 30,
         ];
     }
 }

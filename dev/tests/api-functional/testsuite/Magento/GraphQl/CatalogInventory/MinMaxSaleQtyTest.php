@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\GraphQl\CatalogInventory;
 
 use Exception;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorage;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test for product min/max allowed quantity for shopping cart

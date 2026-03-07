@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * \Magento\Framework\DB\Profiler test case
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Test\Unit;
 
 use Magento\Framework\DB\Profiler;

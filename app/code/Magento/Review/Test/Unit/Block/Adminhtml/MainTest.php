@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Review\Test\Unit\Block\Adminhtml;
 
+use Magento\Backend\Block\Template\Context;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -16,7 +18,6 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Review\Block\Adminhtml\Main as MainBlock;
-use Magento\Backend\Block\Template\Context;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -92,8 +93,8 @@ class MainTest extends TestCase
         $objects = [
             [
                 Context::class,
-                $this->createMock(Context::class)
-            ]
+                $this->createMock(Context::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 
@@ -103,7 +104,7 @@ class MainTest extends TestCase
                 'request' => $this->request,
                 'customerRepository' => $this->customerRepository,
                 'customerViewHelper' => $this->customerViewHelper,
-                'productCollectionFactory' => $this->collectionFactory
+                'productCollectionFactory' => $this->collectionFactory,
             ]
         );
     }

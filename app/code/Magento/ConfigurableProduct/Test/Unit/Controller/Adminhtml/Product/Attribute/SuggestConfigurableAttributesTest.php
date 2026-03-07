@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class SuggestConfigurableAttributesTest extends TestCase
                 'response' => $this->responseMock,
                 'request' => $this->requestMock,
                 'jsonHelper' => $this->helperMock,
-                'attributeList' => $this->attributeListMock
+                'attributeList' => $this->attributeListMock,
             ]
         );
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model;
 
 /**
@@ -14,12 +17,12 @@ interface UrlInterface extends \Magento\Framework\UrlInterface
     /**
      * Secret key query param name
      */
-    const SECRET_KEY_PARAM_NAME = 'key';
+    public const SECRET_KEY_PARAM_NAME = 'key';
 
     /**
      * xpath to startup page in configuration
      */
-    const XML_PATH_STARTUP_MENU_ITEM = 'admin/startup/menu_item_id';
+    public const XML_PATH_STARTUP_MENU_ITEM = 'admin/startup/menu_item_id';
 
     /**
      * Generate secret key for controller and action based on form key

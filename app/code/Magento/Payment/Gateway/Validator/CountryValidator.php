@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Validator;
 
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Payment\Gateway\ConfigInterface;
-use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
 
 /**
  * @api

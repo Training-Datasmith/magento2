@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class LayoutProcessorTest extends TestCase
         ['children']['shippingAddress']['children']['shipping-address-fieldset']['children'] = [];
         $data = $layoutProcessor->process($jsLayout);
 
-        $countryId = $data["components"]["checkout"]["children"]["steps"]["children"]["shipping-step"]["children"]
-        ["shippingAddress"]["children"]["shipping-address-fieldset"]["children"]["country_id"];
+        $countryId = $data['components']['checkout']['children']['steps']['children']['shipping-step']['children']
+        ['shippingAddress']['children']['shipping-address-fieldset']['children']['country_id'];
 
         $isCountryValueExists = array_key_exists('value', $countryId);
 
@@ -56,11 +57,11 @@ class LayoutProcessorTest extends TestCase
         return [
             'Default country isn\'t in allowed country list' => [
                 'defaultCountryId' => 'US',
-                'isCountryValueExpected' => false
+                'isCountryValueExpected' => false,
             ],
             'Default country is in allowed country list' => [
                 'defaultCountryId' => 'FR',
-                'isCountryValueExpected' => true
+                'isCountryValueExpected' => true,
             ],
         ];
     }

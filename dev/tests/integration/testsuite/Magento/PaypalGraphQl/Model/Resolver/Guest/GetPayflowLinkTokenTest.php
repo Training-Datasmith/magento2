@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class GetPayflowLinkTokenTest extends TestCase
      * @magentoDataFixture Magento/Paypal/_files/order_payflow_link_with_payment.php
      * @return void
      */
-    public function testResolvePayflowLinkToken() : void
+    public function testResolvePayflowLinkToken(): void
     {
         $reservedQuoteId = 'test_quote';
         $cartId = $this->getMaskedQuoteIdByReservedOrderId->execute($reservedQuoteId);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\Item\Option;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\DataObject;
 use Magento\Quote\Model\Quote\Item\Option\Comparator;
 use Magento\Quote\Model\Quote\Item\Option\ComparatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -38,7 +39,7 @@ class ComparatorTest extends TestCase
         $this->customComparator = $this->createMock(ComparatorInterface::class);
         $this->model = new Comparator(
             [
-                'custom' => $this->customComparator
+                'custom' => $this->customComparator,
             ]
         );
     }
@@ -70,42 +71,42 @@ class ComparatorTest extends TestCase
             [
                 ['code' => 'test', 'value' => '1'],
                 ['code' => 'test', 'value' => '1'],
-                true
+                true,
             ],
             [
                 ['code' => 'test', 'value' => '1'],
                 ['code' => 'test', 'value' => 1],
-                true
+                true,
             ],
             [
                 ['code' => 'test', 'value' => '1'],
                 ['code' => 'test', 'value' => '2'],
-                false
+                false,
             ],
             [
                 ['code' => 'test', 'value' => '1'],
                 ['code' => 'test1', 'value' => '1'],
-                false
+                false,
             ],
             [
                 ['code' => 'custom', 'value' => '1'],
                 ['code' => 'custom', 'value' => '1'],
-                true
+                true,
             ],
             [
                 ['code' => 'custom', 'value' => '1'],
                 ['code' => 'custom', 'value' => 1],
-                false
+                false,
             ],
             [
                 ['code' => 'custom', 'value' => '1'],
                 ['code' => 'custom', 'value' => '2'],
-                false
+                false,
             ],
             [
                 ['code' => 'custom', 'value' => '1'],
                 ['code' => 'test1', 'value' => '1'],
-                false
+                false,
             ],
         ];
     }

@@ -246,7 +246,7 @@ class ProductProcessUrlRewriteSavingObserverTest extends TestCase
                     1 => false,
                     2 => false,
                 ],
-                'expectedStoresToRemove' => [1, 2]
+                'expectedStoresToRemove' => [1, 2],
             ],
             'visibility changed to invisible in global scope - 2' => [
                 'origData' => [
@@ -268,7 +268,7 @@ class ProductProcessUrlRewriteSavingObserverTest extends TestCase
                     1 => false,
                     2 => true,
                 ],
-                'expectedStoresToRemove' => [1]
+                'expectedStoresToRemove' => [1],
             ],
             'visibility changed from invisible to visible in global scope - 1' => [
                 'origData' => [
@@ -289,7 +289,7 @@ class ProductProcessUrlRewriteSavingObserverTest extends TestCase
                 'doesEntityHaveOverriddenVisibilityForStore' => [
                     1 => false,
                     2 => false,
-                ]
+                ],
             ],
             'visibility changed from invisible to visible in global scope - 2' => [
                 'origData' => [
@@ -310,7 +310,7 @@ class ProductProcessUrlRewriteSavingObserverTest extends TestCase
                 'doesEntityHaveOverriddenVisibilityForStore' => [
                     1 => false,
                     2 => true,
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,28 +8,28 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Unit\Controller\Account;
 
-use Magento\Customer\Api\SessionCleanerInterface;
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Api\SessionCleanerInterface;
 use Magento\Customer\Controller\Account\EditPost;
+use Magento\Customer\Model\AccountConfirmation;
+use Magento\Customer\Model\AddressRegistry;
+use Magento\Customer\Model\Customer\Mapper;
+use Magento\Customer\Model\CustomerExtractor;
 use Magento\Customer\Model\EmailNotificationInterface;
 use Magento\Customer\Model\Metadata\Form\File;
 use Magento\Customer\Model\Session;
-use Magento\Customer\Model\AddressRegistry;
-use Magento\Customer\Model\CustomerExtractor;
-use Magento\Customer\Model\AccountConfirmation;
 use Magento\Customer\Model\Url;
-use Magento\Customer\Model\Customer\Mapper;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\Data\Form\FormKey\Validator;
 use Magento\Framework\Escaper;
+use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Exception\SessionException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\Result\RedirectFactory;
-use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\Data\Form\FormKey\Validator;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
@@ -123,8 +124,8 @@ class EditPostTest extends TestCase
         $objects = [
             [
                 EmailNotificationInterface::class,
-                $this->createMock(EmailNotificationInterface::class)
-            ]
+                $this->createMock(EmailNotificationInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->context = $this->createMock(Context::class);

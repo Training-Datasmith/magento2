@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  *  XML Renderer allows to format array or object as valid XML document.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi\Rest\Response\Renderer;
 
 /**
@@ -15,17 +18,17 @@ class Xml implements \Magento\Framework\Webapi\Rest\Response\RendererInterface
     /**
      * Renderer mime type.
      */
-    const MIME_TYPE = 'application/xml';
+    public const MIME_TYPE = 'application/xml';
 
     /**
      * Root node in XML output.
      */
-    const XML_ROOT_NODE = 'response';
+    public const XML_ROOT_NODE = 'response';
 
     /**
      * This value is used to replace numeric keys while formatting data for XML output.
      */
-    const DEFAULT_ENTITY_ITEM_NAME = 'item';
+    public const DEFAULT_ENTITY_ITEM_NAME = 'item';
 
     /**
      * @var \Magento\Framework\Xml\Generator

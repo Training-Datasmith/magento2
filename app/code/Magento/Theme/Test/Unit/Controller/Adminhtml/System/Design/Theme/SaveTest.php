@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -34,8 +35,7 @@ class SaveTest extends ThemeTestCase
 
         $this->_request
             ->method('getParam')
-            ->willReturnCallback(function ($arg1, $arg2)
- use ($themeData, $customCssContent, $jsRemovedFiles, $jsOrder) {
+            ->willReturnCallback(function ($arg1, $arg2) use ($themeData, $customCssContent, $jsRemovedFiles, $jsOrder) {
                 if ($arg1 == 'back' && $arg2 === false) {
                     return true;
                 } elseif ($arg1 == 'theme') {
@@ -67,7 +67,7 @@ class SaveTest extends ThemeTestCase
 
         $this->_objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [FlyweightFactory::class] => $themeFactory,
                 [CustomCss::class] => null
             });

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,21 +9,21 @@
 namespace Magento\Customer\Api;
 
 use Magento\Config\Model\ResourceModel\Config;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\Data\AddressInterface as Address;
 use Magento\Customer\Model\Data\AttributeMetadata;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Customer Address Metadata API test
  */
 class AddressMetadataTest extends WebapiAbstract
 {
-    private const SERVICE_NAME = "customerAddressMetadataV1";
-    private const SERVICE_VERSION = "V1";
-    private const RESOURCE_PATH = "/V1/attributeMetadata/customerAddress";
+    private const SERVICE_NAME = 'customerAddressMetadataV1';
+    private const SERVICE_VERSION = 'V1';
+    private const RESOURCE_PATH = '/V1/attributeMetadata/customerAddress';
 
     /**
      * @var Config $config
@@ -119,7 +121,7 @@ class AddressMetadataTest extends WebapiAbstract
                 'prefix',
                 [
                     ['path' => 'customer/address/prefix_show', 'value' => 'opt'],
-                    ['path' => 'customer/address/prefix_options', 'value' => 'prefA;prefB']
+                    ['path' => 'customer/address/prefix_options', 'value' => 'prefA;prefB'],
                 ],
                 [
                     AttributeMetadata::FRONTEND_INPUT => 'text',
@@ -158,7 +160,7 @@ class AddressMetadataTest extends WebapiAbstract
                 'suffix',
                 [
                     ['path' => 'customer/address/suffix_show', 'value' => 'opt'],
-                    ['path' => 'customer/address/suffix_options', 'value' => 'suffA;suffB']
+                    ['path' => 'customer/address/suffix_options', 'value' => 'suffA;suffB'],
                 ],
                 [
                     AttributeMetadata::FRONTEND_INPUT => 'text',
@@ -296,7 +298,7 @@ class AddressMetadataTest extends WebapiAbstract
             [
                 'customer_address_edit',
                 $attributeMetadata[Address::POSTCODE][2],
-            ]
+            ],
         ];
     }
 

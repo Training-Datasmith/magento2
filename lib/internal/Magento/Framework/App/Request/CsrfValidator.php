@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ namespace Magento\Framework\App\Request;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\CsrfAwareActionInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\State as AppState;
-use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
 use Magento\Framework\Controller\Result\RedirectFactory;
-use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 

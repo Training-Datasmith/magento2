@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\Sales\Model\Order\ItemFactory;
 use Magento\Sales\Model\Order\PaymentFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
-use Random\RandomException;
 
 /**
  * Generic order fixture that supports both customer and guest orders.
@@ -116,10 +116,10 @@ class PlaceOrderWithCustomerOrGuest implements RevertibleDataFixtureInterface
             ->setStoreId($this->storeManager->getStore()->getId());
 
         $billingAddress  = $this->addressFactory->create([
-            'data' => array_replace(self::DEFAULT_ADDRESS, $data['billing_address'])
+            'data' => array_replace(self::DEFAULT_ADDRESS, $data['billing_address']),
         ]);
         $shippingAddress = $this->addressFactory->create([
-            'data' => array_replace(self::DEFAULT_ADDRESS, $data['shipping_address'])
+            'data' => array_replace(self::DEFAULT_ADDRESS, $data['shipping_address']),
         ]);
         $billingAddress->setAddressType('billing');
         $shippingAddress->setAddressType('shipping')->setId(null);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter templates grid block action item renderer
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Template\Grid\Renderer;
 
 class Action extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Action

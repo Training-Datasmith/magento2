@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use PHPUnit\Framework\TestCase;
  */
 class SplitButtonTest extends TestCase
 {
-
     /**
      * @var LayoutInterface
      */
@@ -72,8 +72,8 @@ class SplitButtonTest extends TestCase
                         'title' => 'An option',
                         'label' => 'An option',
                         'onclick' => $onclick = 'console.log("option")',
-                        'style' => 'width: 100px'
-                    ]
+                        'style' => 'width: 100px',
+                    ],
                 ],
                 'dropdown_button_aria_label' => 'Split button options',
             ]

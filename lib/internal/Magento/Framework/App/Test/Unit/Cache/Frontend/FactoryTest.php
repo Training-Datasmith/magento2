@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Framework\App\Test\Unit\Cache\Frontend;
 
 use Magento\Framework\App\Cache\Frontend\Factory;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapterProvider;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\App\Test\Unit\Cache\Frontend\FactoryTest\CacheDecoratorDummy;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
 use Magento\Framework\Cache\Frontend\Adapter\Symfony;
 use Magento\Framework\Cache\Frontend\Adapter\Symfony\BackendWrapper;
 use Magento\Framework\Cache\Frontend\Adapter\Symfony\LowLevelBackend;
 use Magento\Framework\Cache\Frontend\Adapter\Symfony\LowLevelFrontend;
+use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapterProvider;
+use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface as DbAdapterInterface;
 use Magento\Framework\Filesystem;
@@ -23,8 +24,8 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\Serializer\Serialize;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Adapter\NullAdapter;
@@ -134,7 +135,7 @@ class FactoryTest extends TestCase
             'id prefix in "prefix" option' => [
                 ['backend' => NullAdapter::class, 'prefix' => 'prefix_value'],
                 'prefix_value',
-            ]
+            ],
         ];
     }
 
@@ -146,7 +147,7 @@ class FactoryTest extends TestCase
                 [
                     'class' => CacheDecoratorDummy::class,
                     'parameters' => ['param' => 'value'],
-                ]
+                ],
             ]
         );
         $result = $model->create(['backend' => NullAdapter::class]);

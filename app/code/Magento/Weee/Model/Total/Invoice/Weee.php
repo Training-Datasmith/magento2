@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Model\Total\Invoice;
 
-use Magento\Weee\Helper\Data as WeeeHelper;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Weee\Helper\Data as WeeeHelper;
 
 class Weee extends \Magento\Sales\Model\Order\Invoice\Total\AbstractTotal
 {
@@ -208,9 +211,9 @@ class Weee extends \Magento\Sales\Model\Order\Invoice\Total\AbstractTotal
             $invoice->setBaseSubtotal($invoice->getBaseSubtotal() + $baseTotalWeeeAmount);
         }
 
-            // need to add the Weee amounts including all their taxes
-            $invoice->setSubtotalInclTax($invoice->getSubtotalInclTax() + $totalWeeeAmountInclTax);
-            $invoice->setBaseSubtotalInclTax($invoice->getBaseSubtotalInclTax() + $baseTotalWeeeAmountInclTax);
+        // need to add the Weee amounts including all their taxes
+        $invoice->setSubtotalInclTax($invoice->getSubtotalInclTax() + $totalWeeeAmountInclTax);
+        $invoice->setBaseSubtotalInclTax($invoice->getBaseSubtotalInclTax() + $baseTotalWeeeAmountInclTax);
 
         $invoice->setGrandTotal($invoice->getGrandTotal() + $totalWeeeAmount + $totalWeeeTaxAmount);
         $invoice->setBaseGrandTotal($invoice->getBaseGrandTotal() + $baseTotalWeeeAmount + $baseTotalWeeeTaxAmount);

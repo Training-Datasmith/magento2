@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -21,12 +22,12 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 use Magento\Framework\Validator\EmailAddress as EmailValidator;
 use Magento\Newsletter\Controller\Subscriber as SubscriberController;
+use Magento\Newsletter\Model\Config as NewsletterConfig;
 use Magento\Newsletter\Model\Subscriber;
+use Magento\Newsletter\Model\SubscriberFactory;
 use Magento\Newsletter\Model\SubscriptionManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Newsletter\Model\Config as NewsletterConfig;
-use Magento\Newsletter\Model\SubscriberFactory;
 
 /**
  * New newsletter subscription action
@@ -92,7 +93,7 @@ class NewAction extends SubscriberController implements HttpPostActionInterface
         $this->emailValidator = $emailValidator ?: ObjectManager::getInstance()->get(EmailValidator::class);
         $this->customerRepository = $customerRepository ?: ObjectManager::getInstance()
             ->get(CustomerRepositoryInterface::class);
-        $this->newsletterConfig = $newsletterConfig?: ObjectManager::getInstance()
+        $this->newsletterConfig = $newsletterConfig ?: ObjectManager::getInstance()
             ->get(NewsletterConfig::class);
         parent::__construct(
             $context,

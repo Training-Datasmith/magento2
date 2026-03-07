@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\CacheInterface;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Csp\Model\SubresourceIntegrity\StorageInterface;
+use Magento\Framework\App\CacheInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Class contains methods equivalent to repository design to manage SRI hashes.
@@ -99,7 +100,7 @@ class SubresourceIntegrityRepository
         $this->data = $data;
 
         // Transform the data before saving.
-        $transformedData = array_map(fn($integrity) => $integrity->getHash(), $this->data);
+        $transformedData = array_map(fn ($integrity) => $integrity->getHash(), $this->data);
 
         return $this->storage->save(
             $this->serializer->serialize($transformedData),
@@ -125,7 +126,7 @@ class SubresourceIntegrityRepository
         $this->data = $data;
 
         // Transform the data before saving.
-        $transformedData = array_map(fn($integrity) => $integrity->getHash(), $this->data);
+        $transformedData = array_map(fn ($integrity) => $integrity->getHash(), $this->data);
 
         return $this->storage->save(
             $this->serializer->serialize($transformedData),
@@ -158,7 +159,7 @@ class SubresourceIntegrityRepository
             $this->data = $rawData ? $this->serializer->unserialize($rawData) : [];
 
             foreach ($this->data as $path => $hash) {
-                $this->data[$path] = new SubresourceIntegrity(["path" => $path, "hash" => $hash]);
+                $this->data[$path] = new SubresourceIntegrity(['path' => $path, 'hash' => $hash]);
             }
         }
 

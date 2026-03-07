@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\AdvancedSearch\Test\Unit\Model\DataProvider;
 
 use Magento\AdvancedSearch\Model\DataProvider\AutocompleteSuggestions;
-use Magento\Search\Model\Autocomplete\ItemFactory;
-use Magento\Search\Model\QueryFactory;
-use Magento\Framework\App\Config\ScopeConfigInterface as ScopeConfig;
 use Magento\AdvancedSearch\Model\SuggestedQueries;
-use Magento\CatalogSearch\Model\Autocomplete\DataProvider;
 use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
-use Magento\Store\Model\ScopeInterface;
+use Magento\CatalogSearch\Model\Autocomplete\DataProvider;
+use Magento\Framework\App\Config\ScopeConfigInterface as ScopeConfig;
+use Magento\Search\Model\Autocomplete\ItemFactory;
 use Magento\Search\Model\Query;
+use Magento\Search\Model\QueryFactory;
+use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Config\Integration;
 
 /**
@@ -15,9 +18,9 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     /**#@+
      * Array keys for config internal representation.
      */
-    const API_RESOURCES = 'resource';
+    public const API_RESOURCES = 'resource';
 
-    const API_RESOURCE_NAME = 'name';
+    public const API_RESOURCE_NAME = 'name';
 
     /**#@-*/
 

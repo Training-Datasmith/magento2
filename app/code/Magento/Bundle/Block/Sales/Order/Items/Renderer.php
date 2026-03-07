@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Block\Sales\Order\Items;
 
 use Magento\Catalog\Model\Product\Type\AbstractType;
@@ -150,7 +153,7 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
     public function getValueHtml($item)
     {
         if ($attributes = $this->getSelectionAttributes($item)) {
-            return (float) $attributes['qty'] . ' x ' . $this->escapeHtml($item->getName()) . " "
+            return (float) $attributes['qty'] . ' x ' . $this->escapeHtml($item->getName()) . ' '
                 . $this->getOrder()->formatPrice($attributes['price']);
         }
         return $this->escapeHtml($item->getName());

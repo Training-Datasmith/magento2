@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class ViewTest extends TestCase
         $this->context = $this->objectManagerHelper->getObject(
             Context::class,
             [
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
         $this->viewController = $this->objectManagerHelper->getObject(
@@ -87,7 +88,7 @@ class ViewTest extends TestCase
             [
                 'context' => $this->context,
                 'guestHelper' => $this->guestHelperMock,
-                'resultPageFactory' => $this->resultPageFactoryMock
+                'resultPageFactory' => $this->resultPageFactoryMock,
             ]
         );
     }

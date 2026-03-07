@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Model\Rule;
 
-use Magento\Authorization\Model\UserContextInterface;
 use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Bulk\BulkManagementInterface;
 use Magento\Framework\Bulk\OperationInterface;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
@@ -86,7 +87,7 @@ class RuleQuoteRecollectTotalsAsync implements RuleQuoteRecollectTotalsInterface
                 'topic_name' => self::TOPIC_NAME,
                 'serialized_data' => $this->serializer->serialize(['rule_id' => $ruleId]),
                 'status' => OperationInterface::STATUS_TYPE_OPEN,
-            ]
+            ],
         ];
         $operation = $this->operationFactory->create($data);
 

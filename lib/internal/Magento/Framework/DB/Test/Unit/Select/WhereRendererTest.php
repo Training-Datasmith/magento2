@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\DB\Test\Unit\Select;
 use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\WhereRenderer;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class WhereRendererTest extends TestCase
 {
@@ -69,7 +70,7 @@ class WhereRendererTest extends TestCase
         $expectedResult = $sql . ' ' . Select::SQL_WHERE . ' where1 where2';
         $mapValues = [
             [Select::FROM, true],
-            [Select::WHERE, ['where1', 'where2']]
+            [Select::WHERE, ['where1', 'where2']],
         ];
         $this->selectMock->expects($this->any())
             ->method('getPart')

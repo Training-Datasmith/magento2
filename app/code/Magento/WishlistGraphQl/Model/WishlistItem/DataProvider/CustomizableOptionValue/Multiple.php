@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class Multiple implements CustomizableOptionValueInterface
                 $optionDetails = [
                     self::OPTION_TYPE,
                     $option->getOptionId(),
-                    $optionValue->getOptionTypeId()
+                    $optionValue->getOptionTypeId(),
                 ];
 
                 $uuid = $this->uidEncoder->encode((string)implode('/', $optionDetails));

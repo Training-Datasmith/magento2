@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class PaymentTokenAssignerTest extends TestCase
         $dataObject = new DataObject();
         $observer = $this->getPreparedObserverWithMap(
             [
-                [AbstractDataAssignObserver::DATA_CODE, $dataObject]
+                [AbstractDataAssignObserver::DATA_CODE, $dataObject],
             ]
         );
 
@@ -62,8 +63,8 @@ class PaymentTokenAssignerTest extends TestCase
         $dataObject = new DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    PaymentTokenInterface::PUBLIC_HASH => 'public_hash_value'
-                ]
+                    PaymentTokenInterface::PUBLIC_HASH => 'public_hash_value',
+                ],
             ]
         );
         $paymentModel = $this->createMock(InfoInterface::class);
@@ -71,7 +72,7 @@ class PaymentTokenAssignerTest extends TestCase
         $observer = $this->getPreparedObserverWithMap(
             [
                 [AbstractDataAssignObserver::DATA_CODE, $dataObject],
-                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel]
+                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel],
             ]
         );
 
@@ -87,8 +88,8 @@ class PaymentTokenAssignerTest extends TestCase
         $dataObject = new DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
-                ]
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
+                ],
             ]
         );
 
@@ -114,7 +115,7 @@ class PaymentTokenAssignerTest extends TestCase
         $observer = $this->getPreparedObserverWithMap(
             [
                 [AbstractDataAssignObserver::DATA_CODE, $dataObject],
-                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel]
+                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel],
             ]
         );
 
@@ -131,8 +132,8 @@ class PaymentTokenAssignerTest extends TestCase
         $dataObject = new DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
-                ]
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
+                ],
             ]
         );
 
@@ -161,14 +162,14 @@ class PaymentTokenAssignerTest extends TestCase
             ->with(
                 [
                     PaymentTokenInterface::CUSTOMER_ID => $customerId,
-                    PaymentTokenInterface::PUBLIC_HASH => $publicHash
+                    PaymentTokenInterface::PUBLIC_HASH => $publicHash,
                 ]
             );
 
         $observer = $this->getPreparedObserverWithMap(
             [
                 [AbstractDataAssignObserver::DATA_CODE, $dataObject],
-                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel]
+                [AbstractDataAssignObserver::MODEL_CODE, $paymentModel],
             ]
         );
 

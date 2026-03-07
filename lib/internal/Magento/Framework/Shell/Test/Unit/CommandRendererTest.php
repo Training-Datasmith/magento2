@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Shell\Test\Unit;
 
 use Magento\Framework\Shell\CommandRenderer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CommandRendererTest extends TestCase
 {
@@ -35,7 +36,7 @@ class CommandRendererTest extends TestCase
         $testArgument  = 'argument';
         $testArgument2 = 'argument2';
 
-        $expectedCommand = "php -r %s 2>&1 | grep %s 2>&1";
+        $expectedCommand = 'php -r %s 2>&1 | grep %s 2>&1';
         $expectedCommandArgs = "php -r '" . $testArgument . "' 2>&1 | grep '" . $testArgument2 . "' 2>&1";
 
         return [

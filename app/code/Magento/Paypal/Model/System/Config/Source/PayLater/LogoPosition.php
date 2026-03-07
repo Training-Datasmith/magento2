@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class LogoPosition implements OptionSourceInterface
         return [
             ['value' => 'left', 'label' => __('Left')],
             ['value' => 'right', 'label' => __('Right')],
-            ['value' => 'top', 'label' => __('Top')]
+            ['value' => 'top', 'label' => __('Top')],
         ];
     }
 }

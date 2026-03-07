@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Store\Model\Store;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Store\Model\Store;
 
 /**
  * Block for rendering option of bundle product
@@ -181,7 +182,7 @@ class Option extends \Magento\Backend\Block\Widget
             [
                 'id' => $this->getFieldId() . '_<%- data.index %>_add_button',
                 'label' => __('Add Products to Option'),
-                'class' => 'add add-selection'
+                'class' => 'add add-selection',
             ]
         );
 
@@ -192,7 +193,7 @@ class Option extends \Magento\Backend\Block\Widget
                 'id' => $this->getFieldId() . '_<%- data.index %>_close_button',
                 'label' => __('Close'),
                 'on_click' => 'bSelection.closeSearch(event)',
-                'class' => 'back no-display'
+                'class' => 'back no-display',
             ]
         );
 

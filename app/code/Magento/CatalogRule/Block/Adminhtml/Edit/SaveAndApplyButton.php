@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -33,13 +35,13 @@ class SaveAndApplyButton extends GenericButton implements ButtonProviderInterfac
                                     'params' => [
                                         true,
                                         ['auto_apply' => 1],
-                                    ]
-                                ]
-                            ]
-                        ]
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
 
-                ]
+                ],
             ];
         }
         return $data;

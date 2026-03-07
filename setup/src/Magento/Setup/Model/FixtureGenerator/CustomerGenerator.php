@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -62,12 +64,12 @@ class CustomerGenerator
                 'entityType' => CustomerInterface::class,
                 'customTableMap' => [
                     'customer_entity' => [
-                        'handler' => $this->getCustomerEntityHandler()
+                        'handler' => $this->getCustomerEntityHandler(),
                     ],
 
                     'customer_address_entity' => [
-                        'handler' => $this->getCustomerAddressEntityHandler()
-                    ]
+                        'handler' => $this->getCustomerAddressEntityHandler(),
+                    ],
                 ],
             ])->generate(
                 $this->customerTemplateGenerator,
@@ -130,7 +132,7 @@ class CustomerGenerator
         $customerMaxId = $this->getConnection()->fetchOne("select max(entity_id) from `$customerTableName`");
         for ($i = 1; $i < $customerMaxId; $i += $batchSize) {
             $this->getConnection()->query(
-            "
+                "
                     update `$customerTableName` customer
                         join (
                             select
@@ -145,7 +147,7 @@ class CustomerGenerator
                 ",
                 [
                     'min' => $i,
-                    'max' => $i + $batchSize
+                    'max' => $i + $batchSize,
                 ]
             );
         }

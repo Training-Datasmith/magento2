@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\Address;
 
 /**
@@ -20,7 +23,7 @@ class AddressDataGenerator
         return [
             // mt_rand() here is not for cryptographic use.
             // phpcs:ignore Magento2.Security.InsecureFunction
-            'postcode' => mt_rand(10000, 99999)
+            'postcode' => mt_rand(10000, 99999),
         ];
     }
 }

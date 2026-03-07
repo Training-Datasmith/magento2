@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Tax\Helper\Data;
 use Magento\Tax\Model\ResourceModel\Sales\Order\Tax\Collection;
 use Magento\Tax\Model\Sales\Order\Tax as TaxModel;
 use Magento\Tax\Model\Sales\Order\TaxFactory;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -186,7 +187,7 @@ class TaxTest extends TestCase
             'source is an instance of \Magento\Sales\Model\Order and has reasonable data' => [
                 $salesModelOrderMock,
                 self::$calculatedData,
-            ]
+            ],
         ];
     }
 
@@ -204,7 +205,7 @@ class TaxTest extends TestCase
 
         return [
             'invoice' => [$invoiceMock, self::$calculatedData],
-            'creditMemo' => [$creditMemoMock, self::$calculatedData]
+            'creditMemo' => [$creditMemoMock, self::$calculatedData],
         ];
     }
 }

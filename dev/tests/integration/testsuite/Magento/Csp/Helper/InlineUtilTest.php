@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -46,8 +47,8 @@ class InlineUtilTest extends TestCase
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 DynamicCollector::class => DynamicCollectorMock::class,
-                CspNonceProvider::class => CspNonceProviderMock::class
-            ]
+                CspNonceProvider::class => CspNonceProviderMock::class,
+            ],
         ]);
         $this->util = Bootstrap::getObjectManager()->get(InlineUtil::class);
         $this->secureHtmlRenderer = Bootstrap::getObjectManager()->get(SecureHtmlRenderer::class);
@@ -112,7 +113,7 @@ class InlineUtilTest extends TestCase
                 ['src' => 'http://magento.com/static/some-script.js'],  // $attributes
                 null,  // $content
                 '<script src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;some-script.js"></script>',  // $result
-                [new FetchPolicy('script-src', false, ['http://magento.com'])]  // $policiesExpected
+                [new FetchPolicy('script-src', false, ['http://magento.com'])],  // $policiesExpected
             ],
             'inline-script' => [
                 'script',
@@ -131,8 +132,8 @@ class InlineUtilTest extends TestCase
                         false,
                         ['nonce-1234567890abcdef'],
                         []
-                    )
-                ]
+                    ),
+                ],
             ],
             'remote-style' => [
                 'link',
@@ -140,7 +141,7 @@ class InlineUtilTest extends TestCase
                 null,
                 '<link rel="stylesheet" type="text&#x2F;css"'
                     . ' href="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;style.css"/>',
-                [new FetchPolicy('style-src', false, ['http://magento.com'])]
+                [new FetchPolicy('style-src', false, ['http://magento.com'])],
             ],
             'inline-style' => [
                 'style',
@@ -158,15 +159,15 @@ class InlineUtilTest extends TestCase
                         false,
                         [],
                         ['KISO7smrk+XdGrEsiPvVjX6qx4wNef/UKjNb26RaKGM=' => 'sha256']
-                    )
-                ]
+                    ),
+                ],
             ],
             'remote-image' => [
                 'img',
                 ['src' => 'http://magento.com/static/my.jpg'],
                 null,
                 '<img src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;my.jpg"/>',
-                [new FetchPolicy('img-src', false, ['http://magento.com'])]
+                [new FetchPolicy('img-src', false, ['http://magento.com'])],
             ],
             'remote-font' => [
                 'style',
@@ -178,7 +179,7 @@ class InlineUtilTest extends TestCase
                     ."\n             url(static/font.ttf),"
                     ."\n             url(https://devdocs.magento.com/static/another-font.woff),"
                     ."\n             url(http://devdocs.magento.com/static/font.woff);\n    }\n",
-                "<style type=\"text&#x2F;css\">"
+                '<style type="text&#x2F;css">'
                     ."\n    @font-face {\n        font-family: \"MyCustomFont\";"
                     ."\n        src: url(\"http://magento.com/static/font.ttf\");\n    }\n"
                     ."    @font-face {\n        font-family: \"MyCustomFont2\";"
@@ -186,7 +187,7 @@ class InlineUtilTest extends TestCase
                     ."\n             url(static/font.ttf),"
                     ."\n             url(https://devdocs.magento.com/static/another-font.woff),"
                     ."\n             url(http://devdocs.magento.com/static/font.woff);\n    }\n"
-                    ."</style>",
+                    .'</style>',
                 [
                     new FetchPolicy(
                         'style-src',
@@ -195,7 +196,7 @@ class InlineUtilTest extends TestCase
                             'http://magento.com',
                             'https://magento.com',
                             'https://devdocs.magento.com',
-                            'http://devdocs.magento.com'
+                            'http://devdocs.magento.com',
                         ]
                     ),
                     new FetchPolicy(
@@ -208,66 +209,66 @@ class InlineUtilTest extends TestCase
                         false,
                         [],
                         ['TP6Ulnz1kstJ8PYUKvowgJm0phHhtqJnJCnWxKLXkf0=' => 'sha256']
-                    )
-                ]
+                    ),
+                ],
             ],
             'cross-origin-form' => [
                 'form',
                 ['action' => 'https://magento.com/submit', 'method' => 'post'],
                 "\n    <input type=\"text\" name=\"test\" /><input type=\"submit\" value=\"Submit\" />\n",
-                "<form action=\"https&#x3A;&#x2F;&#x2F;magento.com&#x2F;submit\" method=\"post\">"
+                '<form action="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;submit" method="post">'
                     ."\n    <input type=\"text\" name=\"test\" /><input type=\"submit\" value=\"Submit\" />\n"
-                    ."</form>",
-                [new FetchPolicy('form-action', false, ['https://magento.com'])]
+                    .'</form>',
+                [new FetchPolicy('form-action', false, ['https://magento.com'])],
             ],
             'cross-origin-iframe' => [
                 'iframe',
                 ['src' => 'http://magento.com/some-page'],
                 null,
                 '<iframe src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;some-page"></iframe>',
-                [new FetchPolicy('frame-src', false, ['http://magento.com'])]
+                [new FetchPolicy('frame-src', false, ['http://magento.com'])],
             ],
             'remote-track' => [
                 'track',
                 ['src' => 'http://magento.com/static/track.vtt', 'kind' => 'subtitles'],
                 null,
                 '<track src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;track.vtt" kind="subtitles"/>',
-                [new FetchPolicy('media-src', false, ['http://magento.com'])]
+                [new FetchPolicy('media-src', false, ['http://magento.com'])],
             ],
             'remote-source' => [
                 'source',
                 ['src' => 'http://magento.com/static/track.ogg', 'type' => 'audio/ogg'],
                 null,
                 '<source src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;track.ogg" type="audio&#x2F;ogg"/>',
-                [new FetchPolicy('media-src', false, ['http://magento.com'])]
+                [new FetchPolicy('media-src', false, ['http://magento.com'])],
             ],
             'remote-video' => [
                 'video',
                 ['src' => 'https://magento.com/static/video.mp4'],
                 null,
                 '<video src="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;video.mp4"></video>',
-                [new FetchPolicy('media-src', false, ['https://magento.com'])]
+                [new FetchPolicy('media-src', false, ['https://magento.com'])],
             ],
             'remote-audio' => [
                 'audio',
                 ['src' => 'https://magento.com/static/audio.mp3'],
                 null,
                 '<audio src="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;audio.mp3"></audio>',
-                [new FetchPolicy('media-src', false, ['https://magento.com'])]
+                [new FetchPolicy('media-src', false, ['https://magento.com'])],
             ],
             'remote-object' => [
                 'object',
                 ['data' => 'http://magento.com/static/flash.swf'],
                 null,
                 '<object data="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;flash.swf"></object>',
-                [new FetchPolicy('object-src', false, ['http://magento.com'])]
+                [new FetchPolicy('object-src', false, ['http://magento.com'])],
             ],
             'remote-embed' => [
                 'embed',
                 ['src' => 'http://magento.com/static/flash.swf'],
                 null,
                 '<embed src="http&#x3A;&#x2F;&#x2F;magento.com&#x2F;static&#x2F;flash.swf"/>',
-                [new FetchPolicy('object-src', false, ['http://magento.com'])]
+                [new FetchPolicy('object-src', false, ['http://magento.com'])],
             ],
             'remote-applet' => [
                 'applet',
@@ -275,8 +276,8 @@ class InlineUtilTest extends TestCase
                 null,
                 '<applet code="SomeApplet.class" '
                     . 'archive="https&#x3A;&#x2F;&#x2F;magento.com&#x2F;applet&#x2F;my-applet.jar"></applet>',
-                [new FetchPolicy('object-src', false, ['https://magento.com'])]
-            ]
+                [new FetchPolicy('object-src', false, ['https://magento.com'])],
+            ],
         ];
     }
 

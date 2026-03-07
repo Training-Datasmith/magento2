@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Setup\Model;
 
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\App\DeploymentConfig\Writer;
-use Magento\Framework\Setup\Option\AbstractConfigOption;
+use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Setup\FilePermissions;
+use Magento\Framework\Setup\Option\AbstractConfigOption;
 use Magento\Setup\Exception as SetupException;
 
 class ConfigModel
@@ -167,7 +169,7 @@ class ConfigModel
     {
         $results = $this->filePermissions->getMissingWritablePathsForInstallation();
         if ($results) {
-            $errorMsg = "Missing write permissions to the following paths:" . PHP_EOL . implode(PHP_EOL, $results);
+            $errorMsg = 'Missing write permissions to the following paths:' . PHP_EOL . implode(PHP_EOL, $results);
             throw new SetupException($errorMsg);
         }
     }

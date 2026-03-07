@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -48,7 +50,8 @@ class FixtureConfig
         $this->parser->getDom()->xinclude();
         $this->config = $this->parser->xmlToArray();
         $this->config['config']['profile']['di'] = dirname($filename) . '/'
-            . (isset($this->config['config']['profile']['di'])
+            . (
+                isset($this->config['config']['profile']['di'])
                 ? $this->config['config']['profile']['di']
                 : '../../config/di.xml'
             );
@@ -68,8 +71,8 @@ class FixtureConfig
             (
                 // Work around for how attributes are handled in the XML parser when injected via xinclude due to the
                 // files existing outside of the current working directory.
-            isset($this->config['config']['profile'][$key]['_value']) ?
-                $this->config['config']['profile'][$key]['_value'] : $this->config['config']['profile'][$key]
+                isset($this->config['config']['profile'][$key]['_value']) ?
+                    $this->config['config']['profile'][$key]['_value'] : $this->config['config']['profile'][$key]
             ) : $default;
     }
 }

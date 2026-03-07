@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
+use Magento\Quote\Api\Data\ShippingMethodInterface;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Quote\Api\Data\ShippingMethodInterface;
 
 class ShippingMethodManagementTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteShippingMethodManagementV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteShippingMethodManagementV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var ObjectManager
@@ -46,7 +49,7 @@ class ShippingMethodManagementTest extends WebapiAbstract
         $quote = $this->objectManager->create(\Magento\Quote\Model\Quote::class);
         $cartId = $quote->load('test_order_with_virtual_product', 'reserved_order_id')->getId();
 
-        $this->assertEquals([], $this->_webApiCall($this->getListServiceInfo($cartId), ["cartId" => $cartId]));
+        $this->assertEquals([], $this->_webApiCall($this->getListServiceInfo($cartId), ['cartId' => $cartId]));
     }
 
     /**
@@ -66,7 +69,7 @@ class ShippingMethodManagementTest extends WebapiAbstract
 
         $expectedData = $this->convertRates($expectedRates, $quote->getQuoteCurrencyCode());
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
 
         $returnedRates = $this->_webApiCall($this->getListServiceInfo($cartId), $requestData);
         $this->assertEquals($expectedData, $returnedRates);
@@ -98,8 +101,8 @@ class ShippingMethodManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine/shipping-methods',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $result = $this->_webApiCall($serviceInfo, []);

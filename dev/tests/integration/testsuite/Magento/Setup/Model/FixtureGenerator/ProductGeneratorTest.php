@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -106,7 +108,7 @@ class ProductGeneratorTest extends \PHPUnit\Framework\TestCase
             },
             'website_ids' => function () use ($secondWebsiteId) {
                 return [1, $secondWebsiteId];
-            }
+            },
         ];
         $this->productGenerator->generate(1, $fixtureMap);
 

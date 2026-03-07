@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -23,8 +24,8 @@ class CustomerStoreConfigTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'graphql_share_customer_group' => true
-                ]
+                    'graphql_share_customer_group' => true,
+                ],
             ],
             $this->graphQlQuery($this->getStoreConfigQuery())
         );
@@ -38,8 +39,8 @@ class CustomerStoreConfigTest extends GraphQlAbstract
         $this->assertEquals(
             [
                 'storeConfig' => [
-                    'graphql_share_customer_group' => false
-                ]
+                    'graphql_share_customer_group' => false,
+                ],
             ],
             $this->graphQlQuery($this->getStoreConfigQuery())
         );

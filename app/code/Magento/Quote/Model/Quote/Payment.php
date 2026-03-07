@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote;
 
 use Magento\Quote\Api\Data\PaymentInterface;
@@ -215,7 +218,7 @@ class Payment extends \Magento\Payment\Model\Info implements PaymentInterface
             PaymentInterface::KEY_METHOD => null,
             PaymentInterface::KEY_PO_NUMBER => null,
             PaymentInterface::KEY_ADDITIONAL_DATA => [],
-            'checks' => []
+            'checks' => [],
         ];
 
         foreach (array_keys($rawData) as $requestKey) {

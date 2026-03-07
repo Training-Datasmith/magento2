@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Create;
 
-use Magento\Backend\Model\View\Result\ForwardFactory;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Result\PageFactory;
 use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Catalog\Helper\Product;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Escaper;
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
 class ConfigureProductToAdd extends \Magento\Sales\Controller\Adminhtml\Order\Create

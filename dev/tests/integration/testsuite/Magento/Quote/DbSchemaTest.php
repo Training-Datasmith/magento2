@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -42,8 +43,8 @@ class DbSchemaTest extends TestCase
             [
                 'quote',
                 'QUOTE_STORE_ID_UPDATED_AT',
-                ['store_id', 'updated_at']
-            ]
+                ['store_id', 'updated_at'],
+            ],
         ];
     }
 }

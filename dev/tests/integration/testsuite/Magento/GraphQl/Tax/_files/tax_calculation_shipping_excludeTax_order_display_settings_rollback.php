@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\Writer;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var Writer $configWriter */

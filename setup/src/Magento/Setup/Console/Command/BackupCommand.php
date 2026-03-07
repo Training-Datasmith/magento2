@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
 use Magento\Framework\App\Console\MaintenanceModeEnabler;
@@ -117,7 +120,7 @@ class BackupCommand extends AbstractSetupCommand
     {
         if (!$this->deploymentConfig->isAvailable()
             && ($input->getOption(self::INPUT_KEY_MEDIA) || $input->getOption(self::INPUT_KEY_DB))) {
-            $output->writeln("<info>No information is available: the Magento application is not installed.</info>");
+            $output->writeln('<info>No information is available: the Magento application is not installed.</info>');
             // We need exit code higher than 0 here as an indication
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
         }

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Customer;
 
-use Magento\Review\Controller\Customer as CustomerController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Review\Controller\Customer as CustomerController;
 
 class Index extends CustomerController
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,5 +12,4 @@ use Magento\Framework\Exception\StateException;
 
 class ProductMutexException extends StateException
 {
-
 }

@@ -8,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Unit\Model\Metadata\Form;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\Data\OptionInterface;
 use Magento\Customer\Model\Metadata\Form\Select;
 use Magento\Framework\Phrase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * test Magento\Customer\Model\Metadata\Form\Select
@@ -59,7 +59,7 @@ class SelectTest extends AbstractFormTestCase
             'string' => ['some text', true],
             'number' => [123, true],
             'true' => [true, true],
-            'false' => [false, true]
+            'false' => [false, true],
         ];
     }
 
@@ -102,7 +102,7 @@ class SelectTest extends AbstractFormTestCase
             'string' => ['some text', true],
             'number' => [123, true],
             'true' => [true, true],
-            'false' => [false, '"" is a required value.']
+            'false' => [false, '"" is a required value.'],
         ];
     }
 
@@ -162,7 +162,7 @@ class SelectTest extends AbstractFormTestCase
             'string' => ['some key', 'some string'],
             'boolean' => [true, ''],
             'unknown' => ['unknownKey', ''],
-            'true' => ['true', 'True']
+            'true' => ['true', 'True'],
         ];
     }
 }

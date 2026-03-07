@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Directory\Model\Currency;
@@ -18,8 +18,8 @@ use Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Links;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -125,9 +125,9 @@ class LinksTest extends TestCase
                     'links_purchased_separately' => $isPurchasedSeparatelyStr,
                 ],
                 'downloadable' => [
-                    'link' => $linksData
-                ]
-            ]
+                    'link' => $linksData,
+                ],
+            ],
         ];
 
         $this->locatorMock->expects($this->once())

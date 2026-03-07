@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,27 +18,27 @@ interface AttributeMetadataInterface extends \Magento\Framework\Api\MetadataObje
     /**#@+
      * Constants used as keys of data array
      */
-    const ATTRIBUTE_CODE = 'attribute_code';
-    const FRONTEND_INPUT = 'frontend_input';
-    const INPUT_FILTER = 'input_filter';
-    const STORE_LABEL = 'store_label';
-    const VALIDATION_RULES = 'validation_rules';
-    const OPTIONS = 'options';
-    const VISIBLE = 'visible';
-    const REQUIRED = 'required';
-    const MULTILINE_COUNT = 'multiline_count';
-    const DATA_MODEL = 'data_model';
-    const USER_DEFINED = 'user_defined';
-    const FRONTEND_CLASS = 'frontend_class';
-    const SORT_ORDER = 'sort_order';
-    const FRONTEND_LABEL = 'frontend_label';
-    const SYSTEM = 'system';
-    const NOTE = 'note';
-    const BACKEND_TYPE = 'backend_type';
-    const IS_USED_IN_GRID = 'is_used_in_grid';
-    const IS_VISIBLE_IN_GRID = 'is_visible_in_grid';
-    const IS_FILTERABLE_IN_GRID = 'is_filterable_in_grid';
-    const IS_SEARCHABLE_IN_GRID = 'is_searchable_in_grid';
+    public const ATTRIBUTE_CODE = 'attribute_code';
+    public const FRONTEND_INPUT = 'frontend_input';
+    public const INPUT_FILTER = 'input_filter';
+    public const STORE_LABEL = 'store_label';
+    public const VALIDATION_RULES = 'validation_rules';
+    public const OPTIONS = 'options';
+    public const VISIBLE = 'visible';
+    public const REQUIRED = 'required';
+    public const MULTILINE_COUNT = 'multiline_count';
+    public const DATA_MODEL = 'data_model';
+    public const USER_DEFINED = 'user_defined';
+    public const FRONTEND_CLASS = 'frontend_class';
+    public const SORT_ORDER = 'sort_order';
+    public const FRONTEND_LABEL = 'frontend_label';
+    public const SYSTEM = 'system';
+    public const NOTE = 'note';
+    public const BACKEND_TYPE = 'backend_type';
+    public const IS_USED_IN_GRID = 'is_used_in_grid';
+    public const IS_VISIBLE_IN_GRID = 'is_visible_in_grid';
+    public const IS_FILTERABLE_IN_GRID = 'is_filterable_in_grid';
+    public const IS_SEARCHABLE_IN_GRID = 'is_searchable_in_grid';
     /**#@-*/
 
     /**

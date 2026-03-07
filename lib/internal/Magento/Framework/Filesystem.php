@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento filesystem facade
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework;
 
 use Magento\Framework\Filesystem\DriverPool;

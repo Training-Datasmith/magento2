@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,39 +92,39 @@ class HeadTest extends TestCase
                 'src' => 'file-url-css',
                 'src_type' => 'url',
                 'content_type' => 'css',
-                'media' => 'all'
+                'media' => 'all',
             ],
             'remoteCssOrderedLast' => [
                 'src' => 'file-url-css-last',
                 'src_type' => 'url',
                 'content_type' => 'css',
                 'media' => 'all',
-                'order' => 30
+                'order' => 30,
             ],
             'remoteCssOrderedFirst' => [
                 'src' => 'file-url-css-first',
                 'src_type' => 'url',
                 'content_type' => 'css',
                 'media' => 'all',
-                'order' => 10
+                'order' => 10,
             ],
             'remoteLink' => [
                 'src' => 'file-url-link',
                 'src_type' => 'url',
-                'media' => 'all'
+                'media' => 'all',
             ],
             'controllerCss' => [
                 'src' => 'customcss/render/css',
                 'src_type' => 'controller',
                 'content_type' => 'css',
-                'media' => 'all'
+                'media' => 'all',
             ],
             'name' => [
                 'src' => 'file-path',
                 'ie_condition' => 'lt IE 7',
                 'content_type' => 'css',
-                'media' => 'print'
-            ]
+                'media' => 'print',
+            ],
         ];
 
         $this->pageConfigMock
@@ -184,10 +185,10 @@ class HeadTest extends TestCase
         $elementAttributes = [
             PageConfig::ELEMENT_TYPE_BODY => [
                 'body_attr_1' => 'body_value_1',
-                'body_attr_2' => 'body_value_2'
+                'body_attr_2' => 'body_value_2',
             ],
             PageConfig::ELEMENT_TYPE_HTML => [
-                'html_attr_1' => 'html_attr_1'
+                'html_attr_1' => 'html_attr_1',
             ],
         ];
         $structureMock->expects($this->once())

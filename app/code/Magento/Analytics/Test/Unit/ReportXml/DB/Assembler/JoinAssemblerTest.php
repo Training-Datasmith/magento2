@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Analytics\ReportXml\DB\NameResolver;
 use Magento\Analytics\ReportXml\DB\SelectBuilder;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -91,7 +92,7 @@ class JoinAssemblerTest extends TestCase
                 'conditionResolver' => $this->conditionResolverMock,
                 'nameResolver' => $this->nameResolverMock,
                 'columnsResolver' => $this->columnsResolverMock,
-                'resourceConnection' => $this->resourceConnection
+                'resourceConnection' => $this->resourceConnection,
             ]
         );
     }
@@ -104,8 +105,8 @@ class JoinAssemblerTest extends TestCase
         $queryConfigMock = [
             'source' => [
                 'name' => 'sales_order',
-                'alias' => 'sales'
-            ]
+                'alias' => 'sales',
+            ],
         ];
 
         $this->selectBuilderMock->expects($this->never())
@@ -156,7 +157,7 @@ class JoinAssemblerTest extends TestCase
             $this->selectBuilderMock,
             $queryConfigMock['source']['link-source'][0]['using'],
             $queryConfigMock['source']['link-source'][0]['alias'],
-            $queryConfigMock['source']['alias']
+            $queryConfigMock['source']['alias'],
         ];
         $willReturnArgs[] = '(billing.parent_id = `sales`.`entity_id`)';
 
@@ -167,7 +168,7 @@ class JoinAssemblerTest extends TestCase
                 $this->selectBuilderMock,
                 $queryConfigMock['source']['link-source'][0]['filter'],
                 $queryConfigMock['source']['link-source'][0]['alias'],
-                $queryConfigMock['source']['alias']
+                $queryConfigMock['source']['alias'],
             ];
             $willReturnArgs[] = $filtersMock[0];
 
@@ -177,7 +178,7 @@ class JoinAssemblerTest extends TestCase
                 ->willReturn(
                     [
                         'entity_id' => 'sales.entity_id',
-                        'billing_address_id' => 'billing.entity_id'
+                        'billing_address_id' => 'billing.entity_id',
                     ]
                 );
 
@@ -186,7 +187,7 @@ class JoinAssemblerTest extends TestCase
                 ->with(
                     [
                         'entity_id' => 'sales.entity_id',
-                        'billing_address_id' => 'billing.entity_id'
+                        'billing_address_id' => 'billing.entity_id',
                     ]
                 );
         }
@@ -231,8 +232,8 @@ class JoinAssemblerTest extends TestCase
                                 'attribute' => [
                                     [
                                         'alias' => 'billing_address_id',
-                                        'name' => 'entity_id'
-                                    ]
+                                        'name' => 'entity_id',
+                                    ],
                                 ],
                                 'using' => [
                                     [
@@ -242,10 +243,10 @@ class JoinAssemblerTest extends TestCase
                                                 'attribute' => 'parent_id',
                                                 'operator' => 'eq',
                                                 'type' => 'identifier',
-                                                '_value' => 'entity_id'
-                                            ]
-                                        ]
-                                    ]
+                                                '_value' => 'entity_id',
+                                            ],
+                                        ],
+                                    ],
                                 ],
                                 'filter' => [
                                     [
@@ -253,26 +254,26 @@ class JoinAssemblerTest extends TestCase
                                         'condition' => [
                                             [
                                                 'attribute' => 'entity_id',
-                                                'operator' => 'null'
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                                'operator' => 'null',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'billing' => [
                         'link-type' => 'left',
                         'table' => [
-                            'billing' => 'pref_sales_order_address'
+                            'billing' => 'pref_sales_order_address',
                         ],
-                        'condition' => '(billing.parent_id = `sales`.`entity_id`)'
-                    ]
+                        'condition' => '(billing.parent_id = `sales`.`entity_id`)',
+                    ],
                 ],
-                ['sales_order_address' => 'pref_sales_order_address']
-            ]
+                ['sales_order_address' => 'pref_sales_order_address'],
+            ],
         ];
     }
 }

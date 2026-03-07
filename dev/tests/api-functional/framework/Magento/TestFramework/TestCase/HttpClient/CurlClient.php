@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase\HttpClient;
 
 /**
@@ -29,7 +32,7 @@ class CurlClient
         $curlOpts = [];
         $curlOpts[CURLOPT_CUSTOMREQUEST] = \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET;
         $resp = $this->invokeApi($url, $curlOpts, $headers);
-        return $resp["body"];
+        return $resp['body'];
     }
 
     /**
@@ -90,7 +93,7 @@ class CurlClient
         $curlOpts[CURLOPT_CUSTOMREQUEST] = \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE;
 
         $resp = $this->invokeApi($url, $curlOpts, $headers);
-        return $resp["body"];
+        return $resp['body'];
     }
 
     /**
@@ -109,7 +112,7 @@ class CurlClient
         $curlOpts[CURLOPT_POSTFIELDS] = $data;
 
         $resp = $this->invokeApi($url, $curlOpts, $headers);
-        return $resp["body"];
+        return $resp['body'];
     }
 
     /**
@@ -128,7 +131,7 @@ class CurlClient
         $curlOpts[CURLOPT_POSTFIELDS] = $data;
 
         $resp = $this->invokeApi($url, $curlOpts, $headers);
-        return $resp["body"];
+        return $resp['body'];
     }
 
     /**
@@ -147,7 +150,7 @@ class CurlClient
         $curl = curl_init($url);
         if ($curl === false) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception("Error Initializing cURL for baseUrl: " . $url);
+            throw new \Exception('Error Initializing cURL for baseUrl: ' . $url);
         }
 
         // get cURL options
@@ -171,22 +174,22 @@ class CurlClient
         $resp = [];
         // phpcs:ignore Magento2.Functions.DiscouragedFunction
         $headerSize = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-        $resp["header"] = substr($response, 0, $headerSize);
-        $resp["body"] = substr($response, $headerSize);
+        $resp['header'] = substr($response, 0, $headerSize);
+        $resp['body'] = substr($response, $headerSize);
 
         // phpcs:ignore Magento2.Functions.DiscouragedFunction
-        $resp["meta"] = curl_getinfo($curl);
-        if ($resp["meta"] === false) {
+        $resp['meta'] = curl_getinfo($curl);
+        if ($resp['meta'] === false) {
             // phpcs:ignore Magento2.Functions.DiscouragedFunction
             $error = curl_error($curl);
             // phpcs:ignore Magento2.Exceptions.DirectThrow
             throw new \Exception($error);
         }
 
-        $meta = $resp["meta"];
+        $meta = $resp['meta'];
         if ($meta && $meta['http_code'] >= 400) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception($resp["body"], $meta['http_code']);
+            throw new \Exception($resp['body'], $meta['http_code']);
         }
 
         return $resp;

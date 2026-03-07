@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -13,41 +16,16 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 class RetryButton implements ButtonProviderInterface
 {
     /**
-     * @var \Magento\AsynchronousOperations\Model\Operation\Details
-     */
-    private $details;
-
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @var string
-     */
-    private $targetName;
-
-    /**
      * RetryButton constructor.
-     *
-     * @param \Magento\AsynchronousOperations\Model\Operation\Details $details
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @param string $targetName
      */
-    public function __construct(
-        \Magento\AsynchronousOperations\Model\Operation\Details $details,
-        \Magento\Framework\App\RequestInterface $request,
-        $targetName = 'bulk_details_form.bulk_details_form'
-    ) {
-        $this->details = $details;
-        $this->request = $request;
-        $this->targetName = $targetName;
+    public function __construct(private readonly \Magento\AsynchronousOperations\Model\Operation\Details $details, private readonly \Magento\Framework\App\RequestInterface $request)
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         $uuid = $this->request->getParam('uuid');
         $details = $this->details->getDetails($uuid);

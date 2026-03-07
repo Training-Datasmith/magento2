@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class InvalidateCacheOnCategoryDesignChange implements ObserverInterface
             'page_layout' => $this->scopeConfig->getValue(
                 'web/default_layouts/default_category_layout',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            )
+            ),
         ];
     }
 
@@ -68,7 +69,7 @@ class InvalidateCacheOnCategoryDesignChange implements ObserverInterface
                     $this->cacheTypeList->invalidate(
                         [
                             \Magento\PageCache\Model\Cache\Type::TYPE_IDENTIFIER,
-                            \Magento\Framework\App\Cache\Type\Layout::TYPE_IDENTIFIER
+                            \Magento\Framework\App\Cache\Type\Layout::TYPE_IDENTIFIER,
                         ]
                     );
                     break;

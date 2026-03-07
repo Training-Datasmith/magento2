@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -169,7 +170,7 @@ class DiCompileCommandTest extends TestCase
             ->willReturn(
                 [
                     'Magento_Catalog' => 1,
-                    'Module_Test' => 0
+                    'Module_Test' => 0,
                 ]
             );
         $this->componentRegistrarMock->expects($this->exactly(2))->method('getPaths');

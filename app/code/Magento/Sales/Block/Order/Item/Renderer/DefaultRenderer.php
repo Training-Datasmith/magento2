@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,7 +11,6 @@ namespace Magento\Sales\Block\Order\Item\Renderer;
 use Magento\Catalog\Model\Product\OptionFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Stdlib\StringUtils;
-use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Sales\Model\Order\Creditmemo\Item as CreditMemoItem;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;

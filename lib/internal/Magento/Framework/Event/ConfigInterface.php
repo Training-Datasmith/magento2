@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event configuration model interface
  *
@@ -19,8 +20,8 @@ interface ConfigInterface
     /**#@+
      * Event types
      */
-    const TYPE_CORE = 'core';
-    const TYPE_CUSTOM = 'custom';
+    public const TYPE_CORE = 'core';
+    public const TYPE_CUSTOM = 'custom';
     /**#@-*/
 
     /**

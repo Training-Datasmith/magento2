@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,7 +26,6 @@ use Magento\TestFramework\Request;
 use Magento\TestFramework\TestCase\AbstractController;
 use Magento\Theme\Controller\Result\MessagePlugin;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Symfony\Component\Mime\Test\Constraint\EmailTextBodyContains;
 
 /**
  * Tests from customer account create post action.
@@ -336,7 +336,7 @@ class CreatePostTest extends AbstractController
             'non-encoded' => [
                 'email' => 'test@sómething.com',
                 'expectedEmail' => 'test@sómething.com',
-            ]
+            ],
         ];
     }
 
@@ -382,7 +382,7 @@ class CreatePostTest extends AbstractController
                     'fieldName' => 'email',
                     'fieldValue' => $email,
                     'field2Name' => 'websiteId',
-                    'field2Value' => 1
+                    'field2Value' => 1,
                 ]
             )
         );

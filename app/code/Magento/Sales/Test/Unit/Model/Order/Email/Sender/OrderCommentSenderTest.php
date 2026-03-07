@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,8 +48,8 @@ class OrderCommentSenderTest extends AbstractSenderTestCase
     {
         $billingAddress = $this->addressMock;
         $comment = 'comment_test';
-        $customerName='Test Customer';
-        $frontendStatusLabel='Processing';
+        $customerName = 'Test Customer';
+        $frontendStatusLabel = 'Processing';
         $this->stepAddressFormat($billingAddress);
         $this->orderMock->expects($this->once())
             ->method('getCustomerIsGuest')
@@ -75,8 +76,8 @@ class OrderCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -91,8 +92,8 @@ class OrderCommentSenderTest extends AbstractSenderTestCase
         $isVirtualOrder = true;
         $this->orderMock->setData(OrderInterface::IS_VIRTUAL, $isVirtualOrder);
         $this->stepAddressFormat($this->addressMock, $isVirtualOrder);
-        $customerName='Test Customer';
-        $frontendStatusLabel='Complete';
+        $customerName = 'Test Customer';
+        $frontendStatusLabel = 'Complete';
 
         $this->identityContainerMock->expects($this->once())
             ->method('isEnabled')
@@ -115,8 +116,8 @@ class OrderCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');

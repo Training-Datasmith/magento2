@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Api;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -13,8 +16,8 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class StockStatusTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/stockStatuses';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/stockStatuses';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/product_simple.php

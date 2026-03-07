@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Email\Test\Unit\Block\Adminhtml\Template;
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Block\Widget\Button\ButtonList;
 use Magento\Backend\Block\Widget\Button\ToolbarInterface;
-use Magento\Backend\Model\Menu\Item\Factory;
 use Magento\Backend\Helper\Data;
 use Magento\Backend\Model\Menu;
 use Magento\Backend\Model\Menu\Config;
 use Magento\Backend\Model\Menu\Item;
+use Magento\Backend\Model\Menu\Item\Factory;
 use Magento\Config\Model\Config\Structure;
 use Magento\Config\Model\Config\Structure\Element\Field;
 use Magento\Config\Model\Config\Structure\Element\Group;
@@ -31,13 +32,13 @@ use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\File\Resolver;
 use Magento\Framework\View\Element\Template\File\Validator;
 use Magento\Framework\View\FileSystem as FilesystemView;
 use Magento\Framework\View\Layout;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -97,7 +98,7 @@ class EditTest extends TestCase
                     $this->createMock(LoggerInterface::class),
                     '',
                     $this->createMock(Factory::class),
-                    $this->createMock(SerializerInterface::class)
+                    $this->createMock(SerializerInterface::class),
                 ]
             )->getMock();
         $menuItemMock = $this->createMock(Item::class);
@@ -167,7 +168,7 @@ class EditTest extends TestCase
             $buttonList,
             $toolbar,
             [
-                'directoryHelper' => $this->createMock(\Magento\Directory\Helper\Data::class)
+                'directoryHelper' => $this->createMock(\Magento\Directory\Helper\Data::class),
             ]
         );
     }
@@ -244,7 +245,7 @@ class EditTest extends TestCase
                 ['title' => 'Section_1_Label', 'url' => 'adminhtml/system_config/edit'],
                 ['title' => 'Group_1_Label'],
                 ['title' => 'Group_2_Label'],
-                ['title' => 'Field_1_Label', 'scope' => __('Default Config')]
+                ['title' => 'Field_1_Label', 'scope' => __('Default Config')],
             ],
             [
                 ['title' => __('Title')],
@@ -253,7 +254,7 @@ class EditTest extends TestCase
                 ['title' => 'Group_1_Label'],
                 ['title' => 'Group_2_Label'],
                 ['title' => 'Group_3_Label'],
-                ['title' => 'Field_1_Label', 'scope' => __('Default Config')]
+                ['title' => 'Field_1_Label', 'scope' => __('Default Config')],
             ],
         ];
         $this->assertEquals($expected, $actual);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class ValidatorPoolTest extends TestCase
             ->with(
                 [
                     'array' => ['validator' => ValidatorInterface::class],
-                    'type' => ValidatorInterface::class
+                    'type' => ValidatorInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -71,7 +72,7 @@ class ValidatorPoolTest extends TestCase
             ->with(
                 [
                     'array' => [],
-                    'type' => ValidatorInterface::class
+                    'type' => ValidatorInterface::class,
                 ]
             )
             ->willReturn($tMap);

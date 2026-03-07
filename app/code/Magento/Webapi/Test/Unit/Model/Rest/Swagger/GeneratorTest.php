@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,8 +22,8 @@ use Magento\Webapi\Model\Rest\Swagger;
 use Magento\Webapi\Model\Rest\Swagger\Generator;
 use Magento\Webapi\Model\Rest\SwaggerFactory;
 use Magento\Webapi\Model\ServiceMetadata;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -124,8 +125,8 @@ class GeneratorTest extends TestCase
         $objects = [
             [
                 Json::class,
-                $this->createMock(Json::class)
-            ]
+                $this->createMock(Json::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->generator = $this->objectManager->getObject(
@@ -138,7 +139,7 @@ class GeneratorTest extends TestCase
                 'serviceTypeList' => $this->customAttributeTypeLocatorMock,
                 'authorization' => $authorizationMock,
                 'serializer' => $this->serializer,
-                'productMetadata' => $this->productMetadata
+                'productMetadata' => $this->productMetadata,
             ]
         );
     }
@@ -200,7 +201,7 @@ class GeneratorTest extends TestCase
                             'inputRequired' => false,
                             'isSecure' => false,
                             'resources' => [
-                                "anonymous"
+                                'anonymous',
                             ],
                             'methodAlias' => 'execute',
                             'parameters' => [],
@@ -211,21 +212,21 @@ class GeneratorTest extends TestCase
                                         'searchRequest' => [
                                             'type' => 'DreamVendorDreamModuleApiDataSearchRequestInterface',
                                             'required' => true,
-                                            'documentation' => ""
-                                        ]
-                                    ]
+                                            'documentation' => '',
+                                        ],
+                                    ],
                                 ],
                                 'out' => [
                                     'parameters' => [
                                         'result' => [
                                             'type' => 'DreamVendorDreamModuleApiDataSearchResultInterface',
                                             'documentation' => null,
-                                            'required' => true
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
+                                            'required' => true,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     'class' => 'DreamVendor\DreamModule\Api\ExecuteStuff',
                     'description' => '',
@@ -233,10 +234,10 @@ class GeneratorTest extends TestCase
                         '/V1/dream-vendor/dream-module/execute-stuff' => [
                             'GET' => [
                                 'method' => 'execute',
-                                'parameters' => []
-                            ]
-                        ]
-                    ]
+                                'parameters' => [],
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     [
@@ -247,10 +248,10 @@ class GeneratorTest extends TestCase
                                 'stuff' => [
                                     'type' => 'DreamVendorDreamModuleApiDataStuffInterface',
                                     'required' => true,
-                                    'documentation' => 'Empty Extension Point'
-                                ]
-                            ]
-                        ]
+                                    'documentation' => 'Empty Extension Point',
+                                ],
+                            ],
+                        ],
                     ],
                     [
                         'DreamVendorDreamModuleApiDataSearchResultInterface',
@@ -260,26 +261,26 @@ class GeneratorTest extends TestCase
                                 'totalCount' => [
                                     'type' => 'int',
                                     'required' => true,
-                                    'documentation' => 'Processed count.'
+                                    'documentation' => 'Processed count.',
                                 ],
                                 'stuff' => [
                                     'type' => 'DreamVendorDreamModuleApiDataStuffInterface',
                                     'required' => true,
-                                    'documentation' => 'Empty Extension Point'
-                                ]
-                            ]
-                        ]
+                                    'documentation' => 'Empty Extension Point',
+                                ],
+                            ],
+                        ],
                     ],
                     [
                         'DreamVendorDreamModuleApiDataStuffInterface',
                         [
                             'documentation' => '',
-                            'parameters' => []
-                        ]
-                    ]
+                            'parameters' => [],
+                        ],
+                    ],
                 ],
                 // @codingStandardsIgnoreStart
-                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":""}],"paths":{"/V1/dream-vendor/dream-module/execute-stuff":{"get":{"tags":["testModule5AllSoapAndRestV2"],"description":"Do Magic!","operationId":"GetV1DreamvendorDreammoduleExecutestuff","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/dream-vendor-dream-module-api-data-search-result-interface"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"dream-vendor-dream-module-api-data-search-result-interface":{"type":"object","description":"","properties":{"total_count":{"type":"integer","description":"Processed count."},"stuff":{"$ref":"#/definitions/dream-vendor-dream-module-api-data-stuff-interface"}},"required":["total_count","stuff"]},"dream-vendor-dream-module-api-data-stuff-interface":{"type":"object","description":""}}}'
+                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":""}],"paths":{"/V1/dream-vendor/dream-module/execute-stuff":{"get":{"tags":["testModule5AllSoapAndRestV2"],"description":"Do Magic!","operationId":"GetV1DreamvendorDreammoduleExecutestuff","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/dream-vendor-dream-module-api-data-search-result-interface"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"dream-vendor-dream-module-api-data-search-result-interface":{"type":"object","description":"","properties":{"total_count":{"type":"integer","description":"Processed count."},"stuff":{"$ref":"#/definitions/dream-vendor-dream-module-api-data-stuff-interface"}},"required":["total_count","stuff"]},"dream-vendor-dream-module-api-data-stuff-interface":{"type":"object","description":""}}}',
                 // @codingStandardsIgnoreEnd
             ],
             [
@@ -334,14 +335,14 @@ class GeneratorTest extends TestCase
                                 'price' => [
                                     'type' => 'int',
                                     'required' => true,
-                                    'documentation' => ""
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'documentation' => '',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 // @codingStandardsIgnoreStart
-                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":"AllSoapAndRestInterface"}],"paths":{"/V1/testModule5":{"post":{"tags":["testModule5AllSoapAndRestV2"],"description":"Add new item.","operationId":"PostV1TestModule5","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"name":"PostV1TestModule5Body","in":"body","schema":{"required":["item"],"properties":{"item":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"type":"object","xml":{"name":"request"}}}],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"401":{"description":"401 Unauthorized","schema":{"$ref":"#/definitions/error-response"}},"500":{"description":"Internal Server error","schema":{"$ref":"#/definitions/error-response"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"test-module5-v2-entity-all-soap-and-rest":{"type":"object","description":"Some Data Object","properties":{"price":{"type":"integer"}},"required":["price"]}}}'
+                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":"AllSoapAndRestInterface"}],"paths":{"/V1/testModule5":{"post":{"tags":["testModule5AllSoapAndRestV2"],"description":"Add new item.","operationId":"PostV1TestModule5","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"parameters":[{"name":"PostV1TestModule5Body","in":"body","schema":{"required":["item"],"properties":{"item":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"type":"object","xml":{"name":"request"}}}],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"401":{"description":"401 Unauthorized","schema":{"$ref":"#/definitions/error-response"}},"500":{"description":"Internal Server error","schema":{"$ref":"#/definitions/error-response"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"test-module5-v2-entity-all-soap-and-rest":{"type":"object","description":"Some Data Object","properties":{"price":{"type":"integer"}},"required":["price"]}}}',
                 // @codingStandardsIgnoreEnd
             ],
             [
@@ -358,7 +359,7 @@ class GeneratorTest extends TestCase
                                     'parameters' => [
                                         'result' => [
                                             'type' => 'TestModule5V2EntityAllSoapAndRest',
-                                            'documentation' => "",
+                                            'documentation' => '',
                                             'required' => true,
                                         ],
                                     ],
@@ -387,14 +388,14 @@ class GeneratorTest extends TestCase
                                 'price' => [
                                     'type' => 'int',
                                     'required' => true,
-                                    'documentation' => ""
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'documentation' => '',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 // @codingStandardsIgnoreStart
-                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":"AllSoapAndRestInterface"}],"paths":{"/V1/testModule5":{"get":{"tags":["testModule5AllSoapAndRestV2"],"description":"Retrieve existing item.","operationId":"GetV1TestModule5","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"401":{"description":"401 Unauthorized","schema":{"$ref":"#/definitions/error-response"}},"500":{"description":"Internal Server error","schema":{"$ref":"#/definitions/error-response"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"test-module5-v2-entity-all-soap-and-rest":{"type":"object","description":"Some Data Object","properties":{"price":{"type":"integer"}},"required":["price"]}}}'
+                '{"securityDefinitions":{"api_key":{"type":"apiKey","name":"api_key","in":"header"}},"swagger":"2.0","info":{"version":"","title":""},"host":"magento.host","basePath":"/rest/default","schemes":["http://"],"tags":[{"name":"testModule5AllSoapAndRestV2","description":"AllSoapAndRestInterface"}],"paths":{"/V1/testModule5":{"get":{"tags":["testModule5AllSoapAndRestV2"],"description":"Retrieve existing item.","operationId":"GetV1TestModule5","consumes":["application/json","application/xml"],"produces":["application/json","application/xml"],"responses":{"200":{"description":"200 Success.","schema":{"$ref":"#/definitions/test-module5-v2-entity-all-soap-and-rest"}},"401":{"description":"401 Unauthorized","schema":{"$ref":"#/definitions/error-response"}},"500":{"description":"Internal Server error","schema":{"$ref":"#/definitions/error-response"}},"default":{"description":"Unexpected error","schema":{"$ref":"#/definitions/error-response"}}}}}},"definitions":{"error-response":{"type":"object","properties":{"message":{"type":"string","description":"Error message"},"errors":{"$ref":"#/definitions/error-errors"},"code":{"type":"integer","description":"Error code"},"parameters":{"$ref":"#/definitions/error-parameters"},"trace":{"type":"string","description":"Stack trace"}},"required":["message"]},"error-errors":{"type":"array","description":"Errors list","items":{"$ref":"#/definitions/error-errors-item"}},"error-errors-item":{"type":"object","description":"Error details","properties":{"message":{"type":"string","description":"Error message"},"parameters":{"$ref":"#/definitions/error-parameters"}}},"error-parameters":{"type":"array","description":"Error parameters list","items":{"$ref":"#/definitions/error-parameters-item"}},"error-parameters-item":{"type":"object","description":"Error parameters item","properties":{"resources":{"type":"string","description":"ACL resource"},"fieldName":{"type":"string","description":"Missing or invalid field name"},"fieldValue":{"type":"string","description":"Incorrect field value"}}},"test-module5-v2-entity-all-soap-and-rest":{"type":"object","description":"Some Data Object","properties":{"price":{"type":"integer"}},"required":["price"]}}}',
                 // @codingStandardsIgnoreEnd
             ],
         ];
@@ -425,22 +426,22 @@ class GeneratorTest extends TestCase
             [
                 'string',
                 '',
-                ['type' => 'string']
+                ['type' => 'string'],
             ],
             [
                 'string[]',
                 '',
-                ['type' => 'array', 'items' => ['type' => 'string']]
+                ['type' => 'array', 'items' => ['type' => 'string']],
             ],
             [
                 'CustomerDataCustomerInterface',
                 '',
-                ['$ref' => '#/definitions/customer-data-customer-interface']
+                ['$ref' => '#/definitions/customer-data-customer-interface'],
             ],
             [
                 'CustomerDataCustomerInterface[]',
                 '',
-                ['type' => 'array', 'items' => ['$ref' => '#/definitions/customer-data-customer-interface']]
+                ['type' => 'array', 'items' => ['$ref' => '#/definitions/customer-data-customer-interface']],
             ],
             [
                 'CustomerDataCustomerInterface[]',
@@ -449,7 +450,7 @@ class GeneratorTest extends TestCase
                     'type' => 'array',
                     'description' => 'Customer interface',
                     'items' => ['$ref' => '#/definitions/customer-data-customer-interface']],
-            ]
+            ],
         ];
     }
 
@@ -491,24 +492,24 @@ class GeneratorTest extends TestCase
                             'id' => [
                                 'type' => 'int',
                                 'required' => false,
-                                'documentation' => 'Customer id'
+                                'documentation' => 'Customer id',
                             ],
                             'group_id' => [
                                 'type' => 'int',
                                 'required' => false,
-                                'documentation' => 'Customer group ID'
+                                'documentation' => 'Customer group ID',
                             ],
                             'email' => [
                                 'type' => 'string',
                                 'required' => false,
-                                'documentation' => 'Customer email'
+                                'documentation' => 'Customer email',
                             ],
                             'addresses' => [
                                 'type' => 'CustomerDataAddressInterface[]',
                                 'required' => false,
-                                'documentation' => 'Customer addresses'
-                            ]
-                        ]
+                                'documentation' => 'Customer addresses',
+                            ],
+                        ],
                     ],
                     'CustomerDataAddressInterface' => [
                         'documentation' => 'Customer entity',
@@ -516,15 +517,15 @@ class GeneratorTest extends TestCase
                             'id' => [
                                 'type' => 'int',
                                 'required' => false,
-                                'documentation' => 'Customer id'
+                                'documentation' => 'Customer id',
                             ],
                             'group_id' => [
                                 'type' => 'int',
                                 'required' => false,
-                                'documentation' => 'Customer group ID'
+                                'documentation' => 'Customer group ID',
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'type' => 'object',
@@ -532,11 +533,11 @@ class GeneratorTest extends TestCase
                     'properties' => [
                         'id' => [
                             'type' => 'integer',
-                            'description' => 'Customer id'
+                            'description' => 'Customer id',
                         ],
                         'group_id' => [
                             'type' => 'integer',
-                            'description' => 'Customer group ID'
+                            'description' => 'Customer group ID',
                         ],
                         'email' => [
                             'type' => 'string',
@@ -546,12 +547,12 @@ class GeneratorTest extends TestCase
                             'type' => 'array',
                             'description' => 'Customer addresses',
                             'items' => [
-                                '$ref' => '#/definitions/customer-data-address-interface'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                '$ref' => '#/definitions/customer-data-address-interface',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 

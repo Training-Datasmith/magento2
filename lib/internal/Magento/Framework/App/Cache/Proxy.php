@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\App\Cache;
 
-use \Magento\Framework\App\CacheInterface;
-use \Magento\Framework\ObjectManager\NoninterceptableInterface;
+use Magento\Framework\App\CacheInterface;
+use Magento\Framework\ObjectManager\NoninterceptableInterface;
 
 /**
  * System cache proxy model

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class CustomerTest extends TestCase
             [
                 'taxClassRepository' => $this->taxClassRepositoryMock,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'filterBuilder' => $this->filterBuilderMock
+                'filterBuilder' => $this->filterBuilderMock,
             ]
         );
     }
@@ -156,7 +157,7 @@ class CustomerTest extends TestCase
     {
         return [
             ['isEmpty' => false, 'expected' => [['value' => 10, 'label' => 'class-name']]],
-            ['isEmpty' => true, 'expected' => []]
+            ['isEmpty' => true, 'expected' => []],
         ];
     }
 
@@ -210,8 +211,8 @@ class CustomerTest extends TestCase
             ->method('getItems')
             ->willReturn($items);
 
-        $result=($this->customer->getAllOptions());
-        $expected=$value;
+        $result = ($this->customer->getAllOptions());
+        $expected = $value;
         $this->assertEquals([$expected], $result);
     }
 

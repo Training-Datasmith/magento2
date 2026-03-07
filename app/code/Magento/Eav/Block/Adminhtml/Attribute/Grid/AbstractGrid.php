@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Block\Adminhtml\Attribute\Grid;
 
 /**
@@ -49,7 +52,7 @@ abstract class AbstractGrid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => true,
                 'index' => 'attribute_code',
                 'header_css_class' => 'col-attr-code',
-                'column_css_class' => 'col-attr-code'
+                'column_css_class' => 'col-attr-code',
             ]
         );
 
@@ -60,7 +63,7 @@ abstract class AbstractGrid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'sortable' => true,
                 'index' => 'frontend_label',
                 'header_css_class' => 'col-label',
-                'column_css_class' => 'col-label'
+                'column_css_class' => 'col-label',
             ]
         );
 
@@ -73,7 +76,7 @@ abstract class AbstractGrid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => ['1' => __('Yes'), '0' => __('No')],
                 'header_css_class' => 'col-required',
-                'column_css_class' => 'col-required'
+                'column_css_class' => 'col-required',
             ]
         );
 
@@ -89,7 +92,7 @@ abstract class AbstractGrid extends \Magento\Backend\Block\Widget\Grid\Extended
                     '1' => __('No'), // intended reverted use
                 ],
                 'header_css_class' => 'col-system',
-                'column_css_class' => 'col-system'
+                'column_css_class' => 'col-system',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -19,50 +20,13 @@ use Magento\Framework\Message\ManagerInterface;
 
 class SaveAsyncConfigPlugin
 {
-    /**
-     * @var DeploymentConfig
-     */
-    private $deploymentConfig;
-
-    /**
-     * @var AsyncConfigPublisherInterface
-     */
-    private $asyncConfigPublisher;
-
-    /**
-     * @var RedirectFactory
-     */
-    private $resultRedirectFactory;
-
-    /**
-     * @var ManagerInterface
-     */
-    private $messageManager;
-
-    /**
-     *
-     * @param DeploymentConfig $deploymentConfig
-     * @param AsyncConfigPublisherInterface $asyncConfigPublisher
-     * @param RedirectFactory $resultRedirectFactory
-     * @param ManagerInterface $messageManager
-     */
-    public function __construct(
-        DeploymentConfig $deploymentConfig,
-        AsyncConfigPublisherInterface $asyncConfigPublisher,
-        RedirectFactory $resultRedirectFactory,
-        ManagerInterface $messageManager
-    ) {
-        $this->deploymentConfig = $deploymentConfig;
-        $this->asyncConfigPublisher = $asyncConfigPublisher;
-        $this->resultRedirectFactory = $resultRedirectFactory;
-        $this->messageManager = $messageManager;
+    public function __construct(private readonly DeploymentConfig $deploymentConfig, private readonly AsyncConfigPublisherInterface $asyncConfigPublisher, private readonly RedirectFactory $resultRedirectFactory, private readonly ManagerInterface $messageManager)
+    {
     }
 
     /**
      * Around Config save controller
      *
-     * @param Save $subject
-     * @param callable $proceed
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws FileSystemException
      * @throws LocalizedException
@@ -72,20 +36,19 @@ class SaveAsyncConfigPlugin
     {
         if (!$this->deploymentConfig->get(ConfigOptionsList::CONFIG_PATH_ASYNC_CONFIG_SAVE)) {
             return $proceed();
-        } else {
-            $configData = $subject->getConfigData();
-            $this->asyncConfigPublisher->saveConfigData($configData);
-            $this->messageManager->addSuccessMessage(__('Configuration changes will be applied by consumer soon.'));
-            $subject->_saveState($subject->getRequest()->getPost('config_state'));
-            /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-            $resultRedirect = $this->resultRedirectFactory->create();
-            return $resultRedirect->setPath(
-                'adminhtml/system_config/edit',
-                [
-                    '_current' => ['section', 'website', 'store'],
-                    '_nosid' => true
-                ]
-            );
         }
+        $configData = $subject->getConfigData();
+        $this->asyncConfigPublisher->saveConfigData($configData);
+        $this->messageManager->addSuccessMessage(__('Configuration changes will be applied by consumer soon.'));
+        $subject->_saveState($subject->getRequest()->getPost('config_state'));
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        $resultRedirect = $this->resultRedirectFactory->create();
+        return $resultRedirect->setPath(
+            'adminhtml/system_config/edit',
+            [
+                '_current' => ['section', 'website', 'store'],
+                '_nosid' => true,
+            ]
+        );
     }
 }

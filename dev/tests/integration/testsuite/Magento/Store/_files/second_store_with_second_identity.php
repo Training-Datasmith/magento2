@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create fixture store with second identity
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -133,7 +134,7 @@ class FileTest extends TestCase
         $data = [
             'frontend/path/file.js' => 'sha256-individual',
             '_cache/merged/abc123.min.js' => 'sha256-merged',
-            'frontend/another.js' => 'sha256-individual2'
+            'frontend/another.js' => 'sha256-individual2',
         ];
 
         $staticDir = $this->createMock(WriteInterface::class);

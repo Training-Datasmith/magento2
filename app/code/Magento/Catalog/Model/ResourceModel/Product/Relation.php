@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
+use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Api\Data\ProductInterface;
 
 /**
  * Catalog Product Relations Resource model
@@ -125,7 +128,7 @@ class Relation extends AbstractDb
                 ' AND ',
                 [
                     $this->getConnection()->quoteInto('parent_id = ?', $parentId),
-                    $this->getConnection()->quoteInto('child_id IN(?)', $childIds)
+                    $this->getConnection()->quoteInto('child_id IN(?)', $childIds),
                 ]
             );
             $this->getConnection()->delete($this->getMainTable(), $where);

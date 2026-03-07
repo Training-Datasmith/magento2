@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,12 +12,11 @@ namespace Magento\Catalog\Api;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\TestFramework\Fixture\DataFixtureStorage;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\Integration\Api\CustomerTokenServiceInterface;
 
 /**
  * Test tier pricing functionality in products-render-info API
@@ -51,9 +51,9 @@ class ProductRenderListTierPricingTest extends WebapiAbstract
                     [
                         'customer_group_id' => 2,
                         'qty' => 1,
-                        'value' => 6
-                    ]
-                ]
+                        'value' => 6,
+                    ],
+                ],
             ]
         ),
         DataFixture(CustomerFixture::class, ['group_id' => 2], as: 'customer_a'),
@@ -66,10 +66,10 @@ class ProductRenderListTierPricingTest extends WebapiAbstract
                 'page_size' => 1,
             ],
             'store_id' => 1,
-            'currencyCode' => 'USD'
+            'currencyCode' => 'USD',
         ];
         $customerEmail = DataFixtureStorageManager::getStorage()->get('customer_a')->getEmail();
-        $customerPassword = "password";
+        $customerPassword = 'password';
         $token = $this->customerTokenService
             ->createCustomerAccessToken($customerEmail, $customerPassword);
         $serviceInfo = [

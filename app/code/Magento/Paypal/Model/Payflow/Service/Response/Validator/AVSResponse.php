@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Service\Response\Validator;
 
 use Magento\Framework\DataObject;
@@ -19,14 +22,14 @@ class AVSResponse implements ValidatorInterface
      * process does not affect the outcome of the
      * authorization.
      */
-    const AVSADDR = 'avsaddr';
+    public const AVSADDR = 'avsaddr';
 
     /**
      * AVS ZIP code responses are for advice only. This
      * process does not affect the outcome of the
      * authorization.
      */
-    const AVSZIP = 'avszip';
+    public const AVSZIP = 'avszip';
 
     /**
      * International AVS address responses are for advice
@@ -38,20 +41,20 @@ class AVSResponse implements ValidatorInterface
      * @deprecated
      * @see \Magento\Paypal\Model\Payflow\Service\Response\Validator\IAVSResponse
      */
-    const IAVS = 'iavs';
+    public const IAVS = 'iavs';
 
     /**#@+ Values of the response */
-    const RESPONSE_YES = 'y';
+    public const RESPONSE_YES = 'y';
 
-    const RESPONSE_NO = 'n';
+    public const RESPONSE_NO = 'n';
 
-    const RESPONSE_NOT_SUPPORTED = 'x';
+    public const RESPONSE_NOT_SUPPORTED = 'x';
     /**#@-*/
 
     /**#@+ Values of the validation settings payments */
-    const CONFIG_ON = 1;
+    public const CONFIG_ON = 1;
 
-    const CONFIG_OFF = 0;
+    public const CONFIG_OFF = 0;
     /**#@-*/
 
     /**#@-*/

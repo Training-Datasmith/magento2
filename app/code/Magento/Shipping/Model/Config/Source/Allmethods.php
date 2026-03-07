@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Model\Config\Source;
 
 /**
@@ -45,13 +48,13 @@ class Allmethods implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray($isActiveOnlyFlag = false)
     {
         $methods = [['value' => '', 'label' => '']];
-        
+
         if ($isActiveOnlyFlag) {
             $carriers = $this->_shippingConfig->getActiveCarriers();
         } else {
             $carriers = $this->_shippingConfig->getAllCarriers();
         }
-        
+
         foreach ($carriers as $carrierCode => $carrierModel) {
             $carrierMethods = $carrierModel->getAllowedMethods();
             if (!$carrierMethods) {
@@ -66,7 +69,7 @@ class Allmethods implements \Magento\Framework\Option\ArrayInterface
 
                 /** Check it $carrierMethods array was well formed */
                 if (!$methodCode) {
-                     continue;
+                    continue;
                 }
                 $methods[$carrierCode]['value'][] = [
                     'value' => $carrierCode . '_' . $methodCode,

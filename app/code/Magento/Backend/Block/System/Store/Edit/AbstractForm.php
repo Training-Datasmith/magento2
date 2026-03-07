@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store\Edit;
 
 /**
@@ -49,7 +52,7 @@ abstract class AbstractForm extends \Magento\Backend\Block\Widget\Form\Generic
             [
                 'name' => 'store_action',
                 'no_span' => true,
-                'value' => $this->_coreRegistry->registry('store_action')
+                'value' => $this->_coreRegistry->registry('store_action'),
             ]
         );
 

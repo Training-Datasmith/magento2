@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,14 +69,14 @@ class TypeFactory implements ConfigElementFactoryInterface
     public function create(
         array $typeData,
         array $fields
-    ) : Type {
+    ): Type {
         return $this->objectManager->create(
             Type::class,
             [
                 'name' => $typeData['name'],
                 'fields' => $fields,
                 'interfaces' => isset($typeData['implements']) ? $typeData['implements'] : [],
-                'description' => isset($typeData['description']) ? $typeData['description'] : ''
+                'description' => isset($typeData['description']) ? $typeData['description'] : '',
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class SpecialPriceBulkResolver implements SpecialPriceBulkResolverInterface, Arg
                     'link.product_id',
                     '(price.final_price < price.price) AS hasSpecialPrice',
                     'e.' . $metadata->getLinkField() . ' AS identifier',
-                    'e.entity_id'
+                    'e.entity_id',
                 ]
             );
         $data = $connection->fetchAll($select);

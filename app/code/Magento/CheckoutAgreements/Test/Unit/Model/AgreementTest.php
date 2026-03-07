@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\CheckoutAgreements\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CheckoutAgreements\Model\Agreement;
 use Magento\Framework\DataObject;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(\Magento\CheckoutAgreements\Model\Agreement::class)]
@@ -51,31 +52,31 @@ class AgreementTest extends TestCase
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('1.1px'),
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('0.1in'),
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('5%'),
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('5'),
-                'expectedResult' => true
+                'expectedResult' => true,
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('px'),
                 'expectedResult' => [
-                    "Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.",
-                ]
+                    'Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.',
+                ],
             ],
             [
                 'inputData' => (new DataObject())->setContentHeight('abracadabra'),
                 'expectedResult' => [
-                    "Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.",
-                ]
+                    'Please input a valid CSS-height. For example 100px or 77pt or 20em or .5ex or 50%.',
+                ],
             ],
         ];
     }

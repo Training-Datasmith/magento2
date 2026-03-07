@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Review\Controller\Product;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Review\Controller\Product as ProductController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Review\Controller\Product as ProductController;
 use Magento\Review\Model\Review;
 
 /**

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Framework\MessageQueue\ConsumerInterface;
 
@@ -14,14 +16,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassOne',
-                'method' => 'handlerMethodOne'
+                'method' => 'handlerMethodOne',
             ],
         ],
         'connection' => 'connection1',
         'maxMessages' => '200',
         'maxIdleTime' => '500',
         'sleep' => '5',
-        'onlySpawnWhenMessageAvailable' => true
+        'onlySpawnWhenMessageAvailable' => true,
     ],
     'consumer2' => [
         'name' => 'consumer2',
@@ -30,14 +32,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassTwo',
-                'method' => 'handlerMethodTwo'
+                'method' => 'handlerMethodTwo',
             ],
         ],
         'connection' => 'connection2',
         'maxMessages' => '100',
         'maxIdleTime' => '1000',
         'sleep' => '2',
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer3' => [
         'name' => 'consumer3',
@@ -46,14 +48,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassThree',
-                'method' => 'handlerMethodThree'
+                'method' => 'handlerMethodThree',
             ],
         ],
         'connection' => 'connection3',
         'maxMessages' => '50',
         'maxIdleTime' => '100',
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer4' => [
         'name' => 'consumer4',
@@ -63,14 +65,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassFour',
-                'method' => 'handlerMethodFour'
+                'method' => 'handlerMethodFour',
             ],
         ],
         'connection' => 'connection4',
         'maxMessages' => '10',
         'maxIdleTime' => null,
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer5' => [
         'name' => 'consumer5',
@@ -79,14 +81,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassFive',
-                'method' => 'handlerMethodFive'
+                'method' => 'handlerMethodFive',
             ],
         ],
         'connection' => 'connection5',
         'maxMessages' => null,
         'maxIdleTime' => null,
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer6' => [
         'name' => 'consumer6',
@@ -95,14 +97,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassSix',
-                'method' => 'handlerMethodSix'
+                'method' => 'handlerMethodSix',
             ],
         ],
         'connection' => 'amqp',
         'maxMessages' => null,
         'maxIdleTime' => null,
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer7' => [
         'name' => 'consumer7',
@@ -111,14 +113,14 @@ return [
         'handlers' => [
             0 => [
                 'type' => 'handlerClassSeven',
-                'method' => 'handlerMethodSeven'
+                'method' => 'handlerMethodSeven',
             ],
         ],
         'connection' => 'amqp',
         'maxMessages' => null,
         'maxIdleTime' => null,
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
     'consumer8' => [
         'name' => 'consumer8',
@@ -129,6 +131,6 @@ return [
         'maxMessages' => null,
         'maxIdleTime' => null,
         'sleep' => null,
-        'onlySpawnWhenMessageAvailable' => false
+        'onlySpawnWhenMessageAvailable' => false,
     ],
 ];

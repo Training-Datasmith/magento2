@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,11 +18,11 @@ interface CartSearchResultsInterface extends \Magento\Framework\Api\SearchResult
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_ITEMS = 'items';
+    public const KEY_ITEMS = 'items';
 
-    const KEY_SEARCH_CRITERIA = 'search_criteria';
+    public const KEY_SEARCH_CRITERIA = 'search_criteria';
 
-    const KEY_TOTAL_COUNT = 'total_count';
+    public const KEY_TOTAL_COUNT = 'total_count';
 
     /**#@-*/
 

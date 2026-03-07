@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\VaultGraphQl\Test\Unit\Model\Resolver;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GraphQl\Model\Query\ContextExtensionInterface;
 use Magento\GraphQl\Model\Query\ContextInterface;
@@ -19,7 +21,6 @@ use Magento\Vault\Api\PaymentTokenRepositoryInterface;
 use Magento\VaultGraphQl\Model\Resolver\DeletePaymentToken;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test class for \Magento\VaultGraphQl\Model\Resolver\DeletePaymentToken
@@ -146,7 +147,7 @@ class DeletePaymentTokenTest extends TestCase
 
         $this->assertEquals(
             [
-                'result' => true
+                'result' => true,
             ],
             $this->resolver->resolve(
                 $this->fieldMock,

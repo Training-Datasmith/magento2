@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,6 +12,6 @@ $result += [
     'handling_tax' => ['after' => ['tax_shipping'], 'before' => ['tax']],
     'own_subtotal' => ['after' => [], 'before' => ['subtotal']],
     'own_total1' => ['after' => [], 'before' => ['subtotal']],
-    'own_total2' => ['after' => [], 'before' => ['subtotal']]
+    'own_total2' => ['after' => [], 'before' => ['subtotal']],
 ];
 return $result;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\NewRelicReporting\Test\Unit\Model;
 
-use Magento\NewRelicReporting\Model\NewRelicWrapper;
-use Magento\NewRelicReporting\Model\Config;
 use Magento\Framework\App\State;
-use PHPUnit\Framework\TestCase;
+use Magento\NewRelicReporting\Model\Config;
+use Magento\NewRelicReporting\Model\NewRelicWrapper;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class NewRelicWrapperTest extends TestCase
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,10 +20,10 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for \Magento\Eav\Model\Validator\Attribute\Data
@@ -58,7 +59,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -100,7 +101,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -131,65 +132,65 @@ class DataTest extends TestCase
                     'attribute_code' => 'attribute',
                     'data_model' => static fn (self $testCase) => $testCase->_getDataModelMock(null),
                     'frontend_input' => 'text',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => true,
                 'expected' => true,
-                'messages' => []
+                'messages' => [],
             ],
             'is_invalid' => [
                 'attributeData' => [
                     'attribute_code' => 'attribute',
                     'data_model' => static fn (self $testCase) => $testCase->_getDataModelMock(null),
                     'frontend_input' => 'text',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => ['Error'],
                 'expected' => false,
-                'messages' => ['attribute' => ['Error']]
+                'messages' => ['attribute' => ['Error']],
             ],
             'no_data_models' => [
                 'attributeData' => [
                     'attribute_code' => 'attribute',
                     'frontend_input' => 'text',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => ['Error'],
                 'expected' => false,
-                'messages' => ['attribute' => ['Error']]
+                'messages' => ['attribute' => ['Error']],
             ],
             'no_data_models_no_frontend_input' => [
                 'attributeData' => [
                     'attribute_code' => 'attribute',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => ['Error'],
                 'expected' => true,
-                'messages' => []
+                'messages' => [],
             ],
             'no_data_for attribute' => [
                 'attributeData' => [
                     'attribute_code' => 'attribute',
                     'data_model' => static fn (self $testCase) => $testCase->_getDataModelMock(null),
                     'frontend_input' => 'text',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => true,
                 'expected' => true,
                 'messages' => [],
-                'data' => ['attribute2' => 'new_test']
+                'data' => ['attribute2' => 'new_test'],
             ],
             'is_valid_data_from_entity' => [
                 'attributeData' => [
                     'attribute_code' => 'attribute',
                     'data_model' => static fn (self $testCase) => $testCase->_getDataModelMock(null),
                     'frontend_input' => 'text',
-                    'is_visible' => true
+                    'is_visible' => true,
                 ],
                 'result' => true,
                 'expected' => true,
                 'messages' => [],
-                'data' => []
+                'data' => [],
             ],
             'is_invisible' => [
                 'attributeData' => [
@@ -248,7 +249,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -281,7 +282,7 @@ class DataTest extends TestCase
                 'attribute_code' => 'attribute',
                 'data_model' => $this->_getDataModelMock(null),
                 'frontend_input' => 'text',
-                'is_visible' => true
+                'is_visible' => true,
             ]
         );
         $secondAttribute = $this->_getAttributeMock(
@@ -289,7 +290,7 @@ class DataTest extends TestCase
                 'attribute_code' => 'attribute2',
                 'data_model' => $this->_getDataModelMock(null),
                 'frontend_input' => 'text',
-                'is_visible' => true
+                'is_visible' => true,
             ]
         );
         $data = ['attribute' => 'new_test_data', 'attribute2' => 'some data'];
@@ -300,7 +301,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -348,7 +349,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -372,7 +373,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -395,7 +396,7 @@ class DataTest extends TestCase
                 'attribute_code' => 'attribute1',
                 'data_model' => $firstDataModel = $this->_getDataModelMock(['Error1']),
                 'frontend_input' => 'text',
-                'is_visible' => true
+                'is_visible' => true,
             ]
         );
         $secondAttribute = $this->_getAttributeMock(
@@ -403,7 +404,7 @@ class DataTest extends TestCase
                 'attribute_code' => 'attribute2',
                 'data_model' => $secondDataModel = $this->_getDataModelMock(['Error2']),
                 'frontend_input' => 'text',
-                'is_visible' => true
+                'is_visible' => true,
             ]
         );
         $expectedMessages = ['attribute1' => ['Error1'], 'attribute2' => ['Error2']];
@@ -413,7 +414,7 @@ class DataTest extends TestCase
             ->setConstructorArgs(
                 [
                     'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                    'string' => $this->createMock(StringUtils::class)
+                    'string' => $this->createMock(StringUtils::class),
                 ]
             )
             ->getMock();
@@ -540,7 +541,7 @@ class DataTest extends TestCase
      *
      * @return void
      */
-    public function testIsValidWithoutData() : void
+    public function testIsValidWithoutData(): void
     {
         $attributeData = ['attribute_code' => 'attribute', 'frontend_input' => 'text', 'is_visible' => true];
         $entity = $this->_getEntityMock();

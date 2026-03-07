@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestSetupDeclarationModule3\Setup\Patch\Data;
 
 use Magento\Framework\App\ResourceConnection;
@@ -70,7 +73,7 @@ class ReferenceIncrementalSomeIntegerPatch implements
     public static function getDependencies()
     {
         return [
-            ZFirstPatch::class
+            ZFirstPatch::class,
         ];
     }
 }

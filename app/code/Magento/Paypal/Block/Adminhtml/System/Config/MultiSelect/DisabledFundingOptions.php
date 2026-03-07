@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Block\Adminhtml\System\Config\MultiSelect;
 
-use Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\AbstractEnable;
-use Magento\Paypal\Model\Config\StructurePlugin;
 use Magento\Backend\Block\Template\Context;
+use Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\AbstractEnable;
 use Magento\Paypal\Model\Config;
-use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
  * Class DisabledFundingOptions

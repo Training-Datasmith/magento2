@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +15,7 @@ namespace Magento\AsynchronousOperations\Api\Data;
  */
 interface BulkSummaryInterface extends \Magento\Framework\Bulk\BulkSummaryInterface
 {
-    const USER_TYPE = 'user_type';
+    public const USER_TYPE = 'user_type';
 
     /**
      * Retrieve existing extension attributes object.
@@ -26,7 +28,6 @@ interface BulkSummaryInterface extends \Magento\Framework\Bulk\BulkSummaryInterf
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\AsynchronousOperations\Api\Data\BulkSummaryExtensionInterface $extensionAttributes
      * @return $this
      * @since 100.2.0
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class InputObjectType extends \Magento\Framework\GraphQl\Schema\Type\InputObject
 
         $config = [
             'name' => $configElement->getName(),
-            'description' => $configElement->getDescription()
+            'description' => $configElement->getDescription(),
         ];
         foreach ($configElement->getFields() as $field) {
             if ($this->scalarTypes->isScalarType($field->getTypeName())) {
@@ -69,7 +70,7 @@ class InputObjectType extends \Magento\Framework\GraphQl\Schema\Type\InputObject
             $config['fields'][$field->getName()] = [
                 'name' => $field->getName(),
                 'type' => $type,
-                'description'=> $field->getDescription()
+                'description' => $field->getDescription(),
             ];
         }
         parent::__construct($config);

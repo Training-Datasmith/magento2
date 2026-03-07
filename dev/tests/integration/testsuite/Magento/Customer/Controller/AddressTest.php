@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Model\CustomerRegistry;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Request\Http as HttpRequest;
 
 class AddressTest extends \Magento\TestFramework\TestCase\AbstractController
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Reflection\FieldNamer;
 use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Reflection\TypeCaster;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ExtensionAttributesProcessorTest extends TestCase
 {
@@ -123,8 +124,8 @@ class ExtensionAttributesProcessorTest extends TestCase
             ->method('get')
             ->willReturn([
                 $dataObjectType => [
-                    $attributeName => [ Converter::RESOURCE_PERMISSIONS => [ $permissionName ] ]
-                ]
+                    $attributeName => [ Converter::RESOURCE_PERMISSIONS => [ $permissionName ] ],
+                ],
             ]);
         $this->authorizationMock->expects($this->once())
             ->method('isAllowed')

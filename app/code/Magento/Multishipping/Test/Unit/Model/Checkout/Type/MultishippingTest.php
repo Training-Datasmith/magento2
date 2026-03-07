@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -243,7 +244,7 @@ class MultishippingTest extends TestCase
             ->onlyMethods(['getAllowedCountries'])
             ->getMock();
         $allowedCountryReaderMock->method('getAllowedCountries')
-            ->willReturn(['EN'=>'EN']);
+            ->willReturn(['EN' => 'EN']);
         $this->dataObjectHelperMock = $this->getMockBuilder(DataObjectHelper::class)
             ->disableOriginalConstructor()
             ->onlyMethods(['mergeDataObjects'])
@@ -309,9 +310,9 @@ class MultishippingTest extends TestCase
             [
                 1 => [
                     'qty' => 2,
-                    'address' => 42
-                ]
-            ]
+                    'address' => 42,
+                ],
+            ],
         ];
         $this->quoteMock->expects($this->once())->method('getAllShippingAddresses')->willReturn([]);
         $this->checkoutSessionMock->expects($this->any())->method('getQuote')->willReturn($this->quoteMock);
@@ -362,14 +363,14 @@ class MultishippingTest extends TestCase
             [
                 1 => [
                     'qty' => 2,
-                    'address' => 43
-                ]
-            ]
+                    'address' => 43,
+                ],
+            ],
         ];
         $customerAddressId = 42;
 
         $customerAddresses = [
-            $this->getCustomerAddressMock($customerAddressId)
+            $this->getCustomerAddressMock($customerAddressId),
         ];
 
         $quoteItemMock = $this->createSimpleMock(Item::class);
@@ -397,7 +398,7 @@ class MultishippingTest extends TestCase
         $customerAddressId = 42;
 
         $customerAddresses = [
-            $this->getCustomerAddressMock($customerAddressId)
+            $this->getCustomerAddressMock($customerAddressId),
         ];
 
         $this->customerMock->expects($this->once())->method('getAddresses')->willReturn($customerAddresses);
@@ -418,7 +419,7 @@ class MultishippingTest extends TestCase
         $customerAddressId = 42;
 
         $customerAddresses = [
-            $this->getCustomerAddressMock($customerAddressId)
+            $this->getCustomerAddressMock($customerAddressId),
         ];
         $this->customerMock->expects($this->once())->method('getAddresses')->willReturn($customerAddresses);
         $this->expectExceptionMessage('Verify the shipping address information and continue.');
@@ -438,7 +439,7 @@ class MultishippingTest extends TestCase
         $customerAddressId = 42;
 
         $customerAddresses = [
-            $this->getCustomerAddressMock($customerAddressId)
+            $this->getCustomerAddressMock($customerAddressId),
         ];
         $this->customerMock->expects($this->once())->method('getAddresses')->willReturn($customerAddresses);
 
@@ -457,7 +458,7 @@ class MultishippingTest extends TestCase
         $customerAddressId = 42;
 
         $customerAddresses = [
-            $this->getCustomerAddressMock($customerAddressId)
+            $this->getCustomerAddressMock($customerAddressId),
         ];
         $this->customerMock->expects($this->once())->method('getAddresses')->willReturn($customerAddresses);
         $this->expectExceptionMessage('Verify the billing address information and continue.');
@@ -936,7 +937,7 @@ class MultishippingTest extends TestCase
                 'setShippingMethod',
                 'getStore',
                 'setShippingAmount',
-                'setBaseShippingAmount'
+                'setBaseShippingAmount',
             ]
         );
         $orderMock->method('setQuote')->with($this->quoteMock);
@@ -1213,7 +1214,7 @@ class MultishippingTest extends TestCase
                     'quoteId'       => 1,
                     'addressTotal'  => 5,
                     'productType'  =>  Type::TYPE_SIMPLE,
-                    'infoBuyRequest'=> [
+                    'infoBuyRequest' => [
                         'info_buyRequest' => [
                             'product' => '1',
                             'qty' => 1,
@@ -1223,8 +1224,8 @@ class MultishippingTest extends TestCase
                     'paymentProviderCode' => 'checkmo',
                     'shippingPrice' => '0.00',
                     'currencyCode' => 'USD',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

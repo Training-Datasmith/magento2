@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -59,7 +61,7 @@ class Product extends AbstractEntity
     /**
      * Filter chain const
      */
-    private const FILTER_CHAIN = "php://filter";
+    private const FILTER_CHAIN = 'php://filter';
 
     /**
      * Size of bunch - part of products to save in one step.
@@ -263,7 +265,7 @@ class Product extends AbstractEntity
         'news_from_date',
         'news_to_date',
         'custom_design_from',
-        'custom_design_to'
+        'custom_design_to',
     ];
 
     /**
@@ -328,7 +330,7 @@ class Product extends AbstractEntity
         // Can't add new translated strings in patch release
         'invalidLayoutUpdate' => 'Invalid format.',
         'insufficientPermissions' => 'Invalid format.',
-        ValidatorInterface::ERROR_SKU_MARGINAL_WHITESPACES => 'SKU contains marginal whitespaces'
+        ValidatorInterface::ERROR_SKU_MARGINAL_WHITESPACES => 'SKU contains marginal whitespaces',
     ];
     //@codingStandardsIgnoreEnd
 
@@ -339,7 +341,7 @@ class Product extends AbstractEntity
      */
     protected $_fieldsMap = [
         'image' => 'base_image',
-        'image_label' => "base_image_label",
+        'image_label' => 'base_image_label',
         'thumbnail' => 'thumbnail_image',
         'thumbnail_label' => 'thumbnail_image_label',
         self::COL_MEDIA_IMAGE => 'additional_images',
@@ -1016,7 +1018,7 @@ class Product extends AbstractEntity
                         return [
                             'disabled' => 1,
                             'imageData' => $existingImage,
-                            'exists' => true
+                            'exists' => true,
                         ];
                     }
                 }
@@ -1459,7 +1461,7 @@ class Product extends AbstractEntity
                 $categoriesIn[] = [
                     'product_id' => $productId,
                     'category_id' => $categoryId,
-                    'position' => --$minCategoryPosition[$categoryId]
+                    'position' => --$minCategoryPosition[$categoryId],
                 ];
             }
         }
@@ -1784,7 +1786,7 @@ class Product extends AbstractEntity
      * @return void
      * @throws LocalizedException
      */
-    private function saveProductEntityPhase(array $rowData, array &$entityRowsUp, array &$entityRowsIn) : void
+    private function saveProductEntityPhase(array $rowData, array &$entityRowsUp, array &$entityRowsIn): void
     {
         $rowSku = $rowData[self::COL_SKU];
         if ($this->isSkuExist($rowSku)) {
@@ -1810,7 +1812,7 @@ class Product extends AbstractEntity
             $entityRowsUp[] = [
                 'updated_at' => (new \DateTime())->format(DateTime::DATETIME_PHP_FORMAT),
                 'attribute_set_id' => $attributeSetId,
-                $entityLinkField => $this->getExistingSku($rowSku)[$entityLinkField]
+                $entityLinkField => $this->getExistingSku($rowSku)[$entityLinkField],
             ];
         } else {
             $entityRowsIn[strtolower($rowSku)] = [
@@ -1830,7 +1832,7 @@ class Product extends AbstractEntity
      * @param array $rowData
      * @return void
      */
-    private function saveProductToWebsitePhase(array $rowData) : void
+    private function saveProductToWebsitePhase(array $rowData): void
     {
         $rowSku = $rowData[self::COL_SKU];
         if (!array_key_exists($rowSku, $this->websitesCache)) {
@@ -1865,7 +1867,7 @@ class Product extends AbstractEntity
      * @param array $rowData
      * @return void
      */
-    private function saveProductCategoriesPhase(int $rowNum, array $rowData) : void
+    private function saveProductCategoriesPhase(int $rowNum, array $rowData): void
     {
         $rowSku = $rowData[self::COL_SKU];
         if (!array_key_exists($rowSku, $this->categoriesCache)) {
@@ -1886,7 +1888,7 @@ class Product extends AbstractEntity
      * @param array $tierPrices
      * @return void
      */
-    private function saveProductTierPricesPhase(array $rowData, bool $priceIsGlobal, array &$tierPrices) : void
+    private function saveProductTierPricesPhase(array $rowData, bool $priceIsGlobal, array &$tierPrices): void
     {
         $rowSku = $rowData[self::COL_SKU];
         if (!empty($rowData['_tier_price_website'])) {
@@ -1929,7 +1931,7 @@ class Product extends AbstractEntity
         array &$imagesForChangeVisibility,
         array &$labelsForUpdate,
         array &$mediaGallery
-    ) : void {
+    ): void {
         $rowSku = $rowData[self::COL_SKU];
         $rowSkuNormalized = mb_strtolower($rowSku);
         $rowExistingImages = $existingImages[$storeId][$rowSkuNormalized] ?? [];
@@ -2012,7 +2014,7 @@ class Product extends AbstractEntity
                         $imagesForChangeVisibility[] = [
                             'disabled' => $imageHiddenStates[$uploadedFile],
                             'imageData' => $currentFileData,
-                            'exists' => $storeMediaGalleryValueExists
+                            'exists' => $storeMediaGalleryValueExists,
                         ];
                         $storeMediaGalleryValueExists = true;
                     }
@@ -2022,7 +2024,7 @@ class Product extends AbstractEntity
                         $labelsForUpdate[] = [
                             'label' => $rowLabels[$column][$columnImageKey],
                             'imageData' => $currentFileData,
-                            'exists' => $storeMediaGalleryValueExists
+                            'exists' => $storeMediaGalleryValueExists,
                         ];
                     }
                 } else {
@@ -2070,7 +2072,7 @@ class Product extends AbstractEntity
         &$previousType,
         &$prevAttributeSet,
         array &$attributes
-    ) : void {
+    ): void {
         $rowSku = $rowData[self::COL_SKU];
         $rowStore = (self::SCOPE_STORE == $rowScope)
             ? $this->storeResolver->getStoreCodeToId($rowData[self::COL_STORE])
@@ -2231,7 +2233,7 @@ class Product extends AbstractEntity
     {
         $statesArray = [];
         $mappingArray = [
-            '_media_is_disabled' => '1'
+            '_media_is_disabled' => '1',
         ];
 
         foreach ($mappingArray as $key => $value) {
@@ -2587,7 +2589,7 @@ class Product extends AbstractEntity
         if (is_array($productIdsToReindex) && !empty($productIdsToReindex)) {
             $indexersToReindex = [
                 ProductCategoryIndexer::INDEXER_ID,
-                ProductPriceIndexer::INDEXER_ID
+                ProductPriceIndexer::INDEXER_ID,
             ];
             foreach ($indexersToReindex as $id) {
                 $indexer = $this->indexerRegistry->get($id);
@@ -3226,11 +3228,11 @@ class Product extends AbstractEntity
                         [
                             'request_path',
                             'store_id',
-                            'entity_type'
+                            'entity_type',
                         ]
                     )->joinLeft(
                         ['cpe' => $resource->getTable('catalog_product_entity')],
-                        "cpe.entity_id = url_rewrite.entity_id"
+                        'cpe.entity_id = url_rewrite.entity_id'
                     )->where('request_path IN (?)', array_map('strval', array_keys($urlKeys)))
                         ->where('store_id IN (?)', $storeId)
                         ->where('cpe.sku not in (?)', array_values($urlKeys))

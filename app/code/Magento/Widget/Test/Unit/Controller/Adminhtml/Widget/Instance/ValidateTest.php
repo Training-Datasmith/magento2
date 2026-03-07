@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,14 +11,12 @@ namespace Magento\Widget\Test\Unit\Controller\Adminhtml\Widget\Instance;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Response\Http as ResponseHttp;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\ViewInterface;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Messages;
 use Magento\Framework\View\Layout;
-use Magento\Framework\View\LayoutInterface;
 use Magento\Widget\Controller\Adminhtml\Widget\Instance\Validate;
 use Magento\Widget\Model\Widget\Instance;
 use Magento\Widget\Model\Widget\InstanceFactory;
@@ -104,7 +103,7 @@ class ValidateTest extends TestCase
             [
                 'widgetFactory' => $widgetFactoryMock,
                 'context' => $context,
-                'layout' => $this->layout
+                'layout' => $this->layout,
             ]
         );
     }

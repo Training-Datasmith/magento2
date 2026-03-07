@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Model;
 
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
@@ -16,7 +19,7 @@ use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteService;
  */
 class MergeDataProvider
 {
-    const SEPARATOR = '_';
+    public const SEPARATOR = '_';
 
     /**
      * @var $rewritesArray[]

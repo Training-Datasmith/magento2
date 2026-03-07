@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 /**
  * Implementation of the @magentoAdminConfigFixture DocBlock annotation
  */
+
 namespace Magento\TestFramework\Annotation;
 
 use Magento\Framework\App\Config\MutableScopeConfigInterface;
-use Magento\TestFramework\Annotation\TestCaseAnnotation;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use PHPUnit\Framework\TestCase;

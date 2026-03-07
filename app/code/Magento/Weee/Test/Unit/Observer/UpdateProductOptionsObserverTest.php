@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Weee\Test\Unit\Observer;
 
-use Magento\Bundle\Model\Product\Type;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Registry;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Tax\Helper\Data as TaxHelperData;
 use Magento\Tax\Model\Config as TaxConfig;
 use Magento\Weee\Helper\Data;
@@ -64,7 +64,7 @@ class UpdateProductOptionsObserverTest extends TestCase
             ]
         );
 
-        $weeeHelper=$this->createMock(Data::class);
+        $weeeHelper = $this->createMock(Data::class);
         $weeeHelper->expects($this->any())
             ->method('isEnabled')
             ->willReturn($weeeEnabled);
@@ -79,9 +79,9 @@ class UpdateProductOptionsObserverTest extends TestCase
             ->willReturn($weeeDisplay == WeeeDisplayConfig::DISPLAY_EXCL);
         $weeeHelper->expects($this->any())
             ->method('getWeeeAttributesForBundle')
-            ->willReturn([['fpt1' => $weeeObject1], ['fpt1'=>$weeeObject1, 'fpt2'=>$weeeObject2]]);
+            ->willReturn([['fpt1' => $weeeObject1], ['fpt1' => $weeeObject1, 'fpt2' => $weeeObject2]]);
 
-        $taxHelper=$this->createMock(TaxHelperData::class);
+        $taxHelper = $this->createMock(TaxHelperData::class);
         $taxHelper->expects($this->any())
             ->method('displayPriceExcludingTax')
             ->willReturn($priceDisplay == TaxConfig::DISPLAY_TYPE_EXCLUDING_TAX);
@@ -89,12 +89,12 @@ class UpdateProductOptionsObserverTest extends TestCase
             ->method('priceIncludesTax')
             ->willReturn(true);
 
-        $responseObject=$this->createPartialMockWithReflection(Observer::class, ['getResponseObject']);
+        $responseObject = $this->createPartialMockWithReflection(Observer::class, ['getResponseObject']);
         $responseObject->expects($this->any())
             ->method('getResponseObject')
             ->willReturn($configObj);
 
-        $observerObject=$this->createPartialMock(Observer::class, ['getEvent']);
+        $observerObject = $this->createPartialMock(Observer::class, ['getEvent']);
         $observerObject->expects($this->any())
             ->method('getEvent')
             ->willReturn($responseObject);
@@ -107,7 +107,7 @@ class UpdateProductOptionsObserverTest extends TestCase
             ->method('getTypeId')
             ->willReturn('bundle');
 
-        $registry=$this->createMock(Registry::class);
+        $registry = $this->createMock(Registry::class);
         $registry->expects($this->any())
             ->method('registry')
             ->with('current_product')

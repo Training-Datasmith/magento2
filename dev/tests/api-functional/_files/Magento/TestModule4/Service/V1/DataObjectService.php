@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule4\Service\V1;
 
 use Magento\TestModule4\Service\V1\Entity\DataObjectRequest;
@@ -30,7 +33,7 @@ class DataObjectService implements \Magento\TestModule4\Service\V1\DataObjectSer
      */
     public function getData($id)
     {
-        return $this->responseFactory->create()->setEntityId($id)->setName("Test");
+        return $this->responseFactory->create()->setEntityId($id)->setName('Test');
     }
 
     /**

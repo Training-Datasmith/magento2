@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class ParentProductEntityId implements ParentValueFactorProviderInterface
     /**
      * Factor name.
      */
-    private const NAME = "PARENT_ENTITY_PRODUCT_ID";
+    private const NAME = 'PARENT_ENTITY_PRODUCT_ID';
 
     /**
      * @inheritdoc
@@ -41,8 +42,8 @@ class ParentProductEntityId implements ParentValueFactorProviderInterface
         } elseif (array_key_exists('model', $parentValue) && $parentValue['model'] instanceof AbstractModel) {
             return (string)$parentValue['model']->getId();
         }
-        throw new \InvalidArgumentException(__CLASS__ . " factor provider requires parent value " .
-            "to contain product model id or product model.");
+        throw new \InvalidArgumentException(__CLASS__ . ' factor provider requires parent value ' .
+            'to contain product model id or product model.');
     }
 
     /**

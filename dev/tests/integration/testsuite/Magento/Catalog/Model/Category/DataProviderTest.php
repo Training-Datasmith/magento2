@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class DataProviderTest extends TestCase
             [
                 'name' => 'category_form_data_source',
                 'primaryFieldName' => 'entity_id',
-                'requestFieldName' => 'id'
+                'requestFieldName' => 'id',
             ]
         );
     }
@@ -77,8 +78,8 @@ class DataProviderTest extends TestCase
         $objectManager = Bootstrap::getObjectManager();
         $objectManager->configure([
             'preferences' => [
-                LayoutUpdateManager::class => CategoryLayoutUpdateManager::class
-            ]
+                LayoutUpdateManager::class => CategoryLayoutUpdateManager::class,
+            ],
         ]);
         parent::setUp();
         $this->dataProvider = $this->createDataProvider();
@@ -217,10 +218,10 @@ class DataProviderTest extends TestCase
             [
                 'label' => 'No update',
                 'value' => \Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate::VALUE_NO_UPDATE,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             ['label' => 'test1', 'value' => 'test1', '__disableTmpl' => true],
-            ['label' => 'test2', 'value' => 'test2', '__disableTmpl' => true]
+            ['label' => 'test2', 'value' => 'test2', '__disableTmpl' => true],
         ];
         sort($expectedList);
         sort($list);
@@ -235,12 +236,12 @@ class DataProviderTest extends TestCase
             [
                 'label' => 'No update',
                 'value' => \Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate::VALUE_NO_UPDATE,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             [
                 'label' => 'Use existing',
                 'value' => LayoutUpdate::VALUE_USE_UPDATE_XML,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             ['label' => 'test3', 'value' => 'test3', '__disableTmpl' => true],
         ];
@@ -263,7 +264,7 @@ class DataProviderTest extends TestCase
 
         $this->registry->register('category', $category);
         $meta = $this->dataProvider->getMeta();
-        $categoryPageLayout = $meta["design"]["children"]["page_layout"]["arguments"]["data"]["config"]["default"];
+        $categoryPageLayout = $meta['design']['children']['page_layout']['arguments']['data']['config']['default'];
         $this->registry->unregister('category');
 
         $this->assertNull($categoryPageLayout);
@@ -288,7 +289,7 @@ class DataProviderTest extends TestCase
 
         $this->registry->register('category', $category);
         $meta = $this->dataProvider->getMeta();
-        $categoryPageLayout = $meta["design"]["children"]["page_layout"]["arguments"]["data"]["config"]["default"];
+        $categoryPageLayout = $meta['design']['children']['page_layout']['arguments']['data']['config']['default'];
         $this->registry->unregister('category');
 
         $this->assertEquals($categoryDefaultPageLayout, $categoryPageLayout);

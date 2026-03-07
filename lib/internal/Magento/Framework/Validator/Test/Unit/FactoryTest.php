@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class FactoryTest extends TestCase
             Factory::class,
             [
                 'objectManager' => $this->objectManagerMock,
-                'moduleReader' => $this->readerMock
+                'moduleReader' => $this->readerMock,
             ]
         );
     }

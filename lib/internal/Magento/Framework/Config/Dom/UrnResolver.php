@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Resolve URN path to a real schema path
  */
+
 namespace Magento\Framework\Config\Dom;
 
 use Magento\Framework\Component\ComponentRegistrar;
@@ -84,6 +87,6 @@ class UrnResolver
                 throw new LocalizedException(new Phrase("File '%system' cannot be found", ['system' => $system]));
             }
         }
-        return fopen($filePath, "r");
+        return fopen($filePath, 'r');
     }
 }

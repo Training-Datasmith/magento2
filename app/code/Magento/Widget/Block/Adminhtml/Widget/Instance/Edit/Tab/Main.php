@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 /**
  * Widget Instance Main tab block
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance\Edit\Tab;
 
 /**
@@ -141,7 +143,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Type'),
                 'class' => '',
                 'values' => $this->getTypesOptionsArray(),
-                'disabled' => true
+                'disabled' => true,
             ]
         );
 
@@ -157,7 +159,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Design Package/Theme'),
                 'required' => false,
                 'values' => $options,
-                'disabled' => true
+                'disabled' => true,
             ]
         );
 
@@ -169,7 +171,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label' => __('Widget Title'),
                 'title' => __('Widget Title'),
                 'class' => '',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -182,7 +184,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                     'label' => __('Assign to Store Views'),
                     'title' => __('Assign to Store Views'),
                     'required' => true,
-                    'values' => $this->_store->getStoreValuesForForm(false, true)
+                    'values' => $this->_store->getStoreValuesForForm(false, true),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -200,7 +202,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Sort Order'),
                 'class' => 'validate-number',
                 'required' => false,
-                'note' => __('Sort Order of widget instances in the same container')
+                'note' => __('Sort Order of widget instances in the same container'),
             ]
         );
 

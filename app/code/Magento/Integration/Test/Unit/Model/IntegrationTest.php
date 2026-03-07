@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class IntegrationTest extends TestCase
         $consumerId = 1;
         $integrationData = [
             'integration_id' => 1,
-            'name' => 'Test Integration'
+            'name' => 'Test Integration',
         ];
 
         $this->resourceMock->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class InfoTest extends TestCase
             [
                 'customerUrl' => $this->customerUrl,
                 'checkoutData' => $this->checkoutData,
-                'coreUrl' => $this->coreUrl
+                'coreUrl' => $this->coreUrl,
             ]
         );
     }

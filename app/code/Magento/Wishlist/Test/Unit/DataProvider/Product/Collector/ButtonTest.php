@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Wishlist\Test\Unit\DataProvider\Product\Collector;
 
@@ -14,9 +14,9 @@ use Magento\Catalog\Api\Data\ProductRender\ButtonInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductRenderExtensionFactory;
 use Magento\Catalog\Api\Data\ProductRenderExtensionInterface;
 use Magento\Catalog\Api\Data\ProductRenderInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Wishlist\Helper\Data;
 use Magento\Wishlist\Ui\DataProvider\Product\Collector\Button;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

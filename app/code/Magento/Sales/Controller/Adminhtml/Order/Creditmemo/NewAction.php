@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Creditmemo;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 
 class NewAction extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
@@ -71,10 +74,10 @@ class NewAction extends \Magento\Backend\App\Action implements HttpGetActionInte
             $resultPage->getConfig()->getTitle()->prepend(__('Credit Memos'));
             if ($creditmemo->getInvoice()) {
                 $resultPage->getConfig()->getTitle()->prepend(
-                    __("New Memo for #%1", $creditmemo->getInvoice()->getIncrementId())
+                    __('New Memo for #%1', $creditmemo->getInvoice()->getIncrementId())
                 );
             } else {
-                $resultPage->getConfig()->getTitle()->prepend(__("New Memo"));
+                $resultPage->getConfig()->getTitle()->prepend(__('New Memo'));
             }
             return $resultPage;
         } else {

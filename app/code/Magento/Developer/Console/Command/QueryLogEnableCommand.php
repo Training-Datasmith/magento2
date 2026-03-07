@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -35,7 +37,7 @@ class QueryLogEnableCommand extends Command
 
     public const COMMAND_NAME = 'dev:query-log:enable';
 
-    public const SUCCESS_MESSAGE = "DB query logging enabled.";
+    public const SUCCESS_MESSAGE = 'DB query logging enabled.';
 
     public const INPUT_ARG_LOG_INDEX_CHECK = 'include-index-check';
 
@@ -71,29 +73,29 @@ class QueryLogEnableCommand extends Command
                         null,
                         InputOption::VALUE_OPTIONAL,
                         'Log all queries. [true|false]',
-                        "true"
+                        'true'
                     ),
                     new InputOption(
                         self::INPUT_ARG_LOG_QUERY_TIME,
                         null,
                         InputOption::VALUE_OPTIONAL,
                         'Query time thresholds.',
-                        "0.001"
+                        '0.001'
                     ),
                     new InputOption(
                         self::INPUT_ARG_LOG_CALL_STACK,
                         null,
                         InputOption::VALUE_OPTIONAL,
                         'Include call stack. [true|false]',
-                        "true"
+                        'true'
                     ),
                     new InputOption(
                         self::INPUT_ARG_LOG_INDEX_CHECK,
                         null,
                         InputOption::VALUE_OPTIONAL,
                         'Include index check. Warning: may cause performance degradation. [true|false]',
-                        "false"
-                    )
+                        'false'
+                    ),
                 ]
             );
 
@@ -123,7 +125,7 @@ class QueryLogEnableCommand extends Command
 
         $this->deployConfigWriter->saveConfig([ConfigFilePool::APP_ENV => $configGroup]);
 
-        $output->writeln("<info>". self::SUCCESS_MESSAGE . "</info>");
+        $output->writeln('<info>'. self::SUCCESS_MESSAGE . '</info>');
 
         return Cli::RETURN_SUCCESS;
     }

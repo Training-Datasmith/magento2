@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
@@ -139,7 +142,7 @@ class Websites extends AbstractModifier
                                         $meta,
                                         'search-engine-optimization',
                                         self::SORT_ORDER
-                                    )
+                                    ),
                                 ],
                             ],
                         ],
@@ -222,7 +225,7 @@ class Websites extends AbstractModifier
      * @param array $children
      * @return array
      */
-    private function setDefaultWebsiteIdIfNoneAreSelected(array $children):array
+    private function setDefaultWebsiteIdIfNoneAreSelected(array $children): array
     {
         $websitesList = $this->getWebsitesList();
         $defaultSelectedWebsite = false;
@@ -321,7 +324,7 @@ class Websites extends AbstractModifier
                                         ],
                                     ],
                                 ],
-                            ]
+                            ],
                         ],
                         'copy_to' => [
                             'arguments' => [
@@ -333,7 +336,7 @@ class Websites extends AbstractModifier
                                         'dataScope' => 'copy_to',
                                     ],
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],

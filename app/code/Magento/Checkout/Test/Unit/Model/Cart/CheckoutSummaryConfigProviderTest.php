@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class CheckoutSummaryConfigProviderTest extends TestCase
         $cartUrl = 'url/to/cart/page';
         $expectedResult = [
             'maxCartItemsToDisplay' => $maxItemsCount,
-            'cartUrl' => $cartUrl
+            'cartUrl' => $cartUrl,
         ];
 
         $this->urlBuilderMock->expects($this->once())->method('getUrl')->with('checkout/cart')->willReturn($cartUrl);

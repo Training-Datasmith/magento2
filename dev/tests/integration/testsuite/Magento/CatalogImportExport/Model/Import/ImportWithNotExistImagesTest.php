@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
-use Magento\CatalogImportExport\Model\Import\ProductImport;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
@@ -140,7 +140,7 @@ class ImportWithNotExistImagesTest extends TestCase
         $this->import->setParameters([
             'entity' => Product::ENTITY,
             'behavior' => ImportModel::BEHAVIOR_ADD_UPDATE,
-            ImportModel::FIELD_NAME_IMG_FILE_DIR => $mediaDirectory->getAbsolutePath('import')
+            ImportModel::FIELD_NAME_IMG_FILE_DIR => $mediaDirectory->getAbsolutePath('import'),
         ]);
         $this->assertImportErrors();
         $this->assertProductImages('/m/a/magento_image.jpg', 'simple');

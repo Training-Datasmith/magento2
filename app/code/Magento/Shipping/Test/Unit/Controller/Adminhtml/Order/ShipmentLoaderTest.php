@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -119,7 +120,7 @@ class ShipmentLoaderTest extends TestCase
                 'documentFactory' => $this->documentFactoryMock,
                 'trackFactory' => $this->trackFactoryMock,
                 'itemFactory' => $this->itemFactoryMock,
-                'data' => $data
+                'data' => $data,
             ]
         );
     }

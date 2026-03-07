@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report\Product;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -14,7 +17,7 @@ class Sold extends \Magento\Reports\Controller\Adminhtml\Report\Product implemen
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::sold';
+    public const ADMIN_RESOURCE = 'Magento_Reports::sold';
 
     /**
      * Sold Products Report Action

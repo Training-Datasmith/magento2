@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModuleDefaultHydrator\Model\Address;
 
 use Magento\Framework\EntityManager\MapperInterface;
@@ -33,7 +36,7 @@ class Mapper implements MapperInterface
         $region = [
             'region' => $data['region'],
             'region_code' => $data['region_code'],
-            'region_id' => $data['region_id']
+            'region_id' => $data['region_id'],
         ];
         $data['region'] = $region;
         unset($data['region_id'], $data['region_code']);

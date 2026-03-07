@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -86,10 +87,10 @@ QRY;
                             'is_unique' => false,
                             'input_filter' => $attribute->getInputFilter(),
                             'sort_order' => $attribute->getSortOrder(),
-                        ]
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $result
         );

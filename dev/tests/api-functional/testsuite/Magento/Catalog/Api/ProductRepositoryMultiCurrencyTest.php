@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class ProductRepositoryMultiCurrencyTest extends WebapiAbstract
 {
-    const PRODUCT_SERVICE_NAME = 'catalogProductRepositoryV1';
-    const WEBSITES_SERVICE_NAME = 'storeWebsiteRepositoryV1';
-    const WEBSITE_LINK_SERVICE_NAME = 'catalogProductWebsiteLinkRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const PRODUCTS_RESOURCE_PATH = '/V1/products';
-    const WEBSITES_RESOURCE_PATH = '/V1/store/websites';
+    public const PRODUCT_SERVICE_NAME = 'catalogProductRepositoryV1';
+    public const WEBSITES_SERVICE_NAME = 'storeWebsiteRepositoryV1';
+    public const WEBSITE_LINK_SERVICE_NAME = 'catalogProductWebsiteLinkRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const PRODUCTS_RESOURCE_PATH = '/V1/products';
+    public const WEBSITES_RESOURCE_PATH = '/V1/store/websites';
 
     /**
      * @magentoApiDataFixture Magento/Catalog/_files/category.php
@@ -40,13 +43,13 @@ class ProductRepositoryMultiCurrencyTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/' . $product['sku'],
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::PRODUCT_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::PRODUCT_SERVICE_NAME . 'Save'
-            ]
+                'operation' => self::PRODUCT_SERVICE_NAME . 'Save',
+            ],
         ];
 
         $requestData = ['product' => $product];
@@ -58,13 +61,13 @@ class ProductRepositoryMultiCurrencyTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::PRODUCTS_RESOURCE_PATH . '/' . $sku,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::PRODUCT_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::PRODUCT_SERVICE_NAME . 'get'
-            ]
+                'operation' => self::PRODUCT_SERVICE_NAME . 'get',
+            ],
         ];
 
         $requestData = ['sku' => $sku];
@@ -76,13 +79,13 @@ class ProductRepositoryMultiCurrencyTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::WEBSITES_RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
                 'service' => self::WEBSITES_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::WEBSITES_SERVICE_NAME . 'GetList'
-            ]
+                'operation' => self::WEBSITES_SERVICE_NAME . 'GetList',
+            ],
         ];
 
         $response = $this->_webApiCall($serviceInfo);
@@ -101,20 +104,20 @@ class ProductRepositoryMultiCurrencyTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => '/V1/products/' . $sku . '/websites',
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::WEBSITE_LINK_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::WEBSITE_LINK_SERVICE_NAME . 'save'
-            ]
+                'operation' => self::WEBSITE_LINK_SERVICE_NAME . 'save',
+            ],
         ];
 
         $requestData = [
-            "productWebsiteLink" => [
-                "websiteId" => $websiteId,
-                "sku" => $sku
-            ]
+            'productWebsiteLink' => [
+                'websiteId' => $websiteId,
+                'sku' => $sku,
+            ],
         ];
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));
     }

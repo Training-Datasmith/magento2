@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Model\Option as BundleOption;
 use Magento\Bundle\Model\Product\Type as BundleProductType;
 use Magento\Bundle\Model\ResourceModel\Option\Collection as BundleOptionCollection;
@@ -27,6 +27,7 @@ use Magento\Framework\Pricing\PriceInfo\Base as BasePriceInfo;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Tax\Helper\Data as TaxHelperData;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -113,7 +114,7 @@ class BundleOptionsTest extends TestCase
                 'selectionFactory' => $this->selectionFactoryMock,
                 'taxHelper' => $taxData,
                 'priceCurrency' => $priceCurrency,
-                'selectionPriceListProvider' => $this->selectionPriceListProviderMock
+                'selectionPriceListProvider' => $this->selectionPriceListProviderMock,
             ]
         );
         $this->objectManagerHelper = new ObjectManagerHelper($this);
@@ -179,7 +180,7 @@ class BundleOptionsTest extends TestCase
     /**
      * @return array
      */
-    public static function getOptionsDataProvider() : array
+    public static function getOptionsDataProvider(): array
     {
         return [
             [

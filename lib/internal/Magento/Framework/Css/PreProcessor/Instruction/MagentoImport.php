@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\Framework\Module\Manager as ModuleManager;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\View\Asset\File\FallbackContext;
 use Magento\Framework\View\Asset\LocalInterface;
+use Magento\Framework\View\Asset\PreProcessor\Chain;
 use Magento\Framework\View\Asset\PreProcessorInterface;
 use Magento\Framework\View\Asset\Repository as AssetRepository;
 use Magento\Framework\View\Design\Theme\ListInterface as ThemeListInterface;
@@ -21,7 +23,6 @@ use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\File\CollectorInterface;
-use Magento\Framework\View\Asset\PreProcessor\Chain;
 
 /**
  * @magento_import instruction preprocessor

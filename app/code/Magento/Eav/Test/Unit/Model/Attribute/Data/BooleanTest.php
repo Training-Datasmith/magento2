@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Eav\Model\AttributeDataFactory;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class BooleanTest extends TestCase
@@ -67,12 +68,12 @@ class BooleanTest extends TestCase
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => '1',
-                'expectedResult' => 'Yes'
+                'expectedResult' => 'Yes',
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
                 'value' => '2',
-                'expectedResult' => ''
+                'expectedResult' => '',
             ],
         ];
     }

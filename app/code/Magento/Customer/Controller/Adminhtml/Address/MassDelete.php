@@ -1,21 +1,23 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Address;
 
 use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Customer\Api\AddressRepositoryInterface;
+use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Json;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Ui\Component\MassAction\Filter;
-use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
-use Magento\Customer\Api\AddressRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -28,7 +30,7 @@ class MassDelete extends Action implements HttpPostActionInterface
      *
      * @see MassDelete::_isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::manage';
+    public const ADMIN_RESOURCE = 'Magento_Customer::manage';
 
     /**
      * @var Filter

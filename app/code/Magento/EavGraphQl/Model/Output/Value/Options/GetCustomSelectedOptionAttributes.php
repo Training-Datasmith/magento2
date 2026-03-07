@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class GetCustomSelectedOptionAttributes implements GetAttributeSelectedOptionInt
             }
             $result[] = [
                 'value' => $option->getValue(),
-                'label' => $option->getLabel()
+                'label' => $option->getLabel(),
             ];
         }
         return $result;

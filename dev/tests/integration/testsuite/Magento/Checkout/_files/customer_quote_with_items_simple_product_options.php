@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Option;
 use Magento\Catalog\Model\Product\Option\Type\File\ValidatorFile;
 use Magento\Catalog\Model\Product\Option\Value;
-use Magento\TestFramework\Catalog\Model\Product\Option\Type\File\ValidatorFileMock;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\DataObject;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Catalog\Model\Product\Option\Type\File\ValidatorFileMock;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;

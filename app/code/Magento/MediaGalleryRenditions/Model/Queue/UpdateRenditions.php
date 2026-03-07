@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -115,7 +116,7 @@ class UpdateRenditions
                 __(
                     'Incorrect rendition path provided for update: %path',
                     [
-                        'path' => $renditionPath
+                        'path' => $renditionPath,
                     ]
                 )
             );

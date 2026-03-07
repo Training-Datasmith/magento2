@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Test class for \Magento\TestFramework\Annotation\AppIsolation.
  */
+
 namespace Magento\Test\Annotation;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -47,7 +50,7 @@ class AppIsolationTest extends \PHPUnit\Framework\TestCase
             // New-style attribute parser (PHP 8+)
             AttributeParser::class => new AttributeParser(),
             // Old-style annotation parser (docblock comments)
-            AnnotationParser::class => new AnnotationParser()
+            AnnotationParser::class => new AnnotationParser(),
         ];
         $objectManager->method('get')
             ->willReturnCallback(

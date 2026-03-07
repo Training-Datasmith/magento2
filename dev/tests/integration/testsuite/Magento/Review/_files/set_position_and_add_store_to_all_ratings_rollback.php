@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,8 +7,8 @@
 
 declare(strict_types=1);
 
-use Magento\Review\Model\ResourceModel\Rating\Collection as RatingCollection;
 use Magento\Review\Model\ResourceModel\Rating as RatingResourceModel;
+use Magento\Review\Model\ResourceModel\Rating\Collection as RatingCollection;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,17 +10,17 @@ namespace Magento\SalesRuleGraphQl\Test\Unit\Model\Resolver;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Api\Data\CartInterface;
+use Magento\Sales\Api\Data\OrderInterface;
 use Magento\SalesRule\Api\Data\CouponInterface;
 use Magento\SalesRule\Api\Data\RuleDiscountInterface;
 use Magento\SalesRule\Model\GetCoupons;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\SalesRule\Model\Quote\GetCouponCodes;
 use Magento\SalesRuleGraphQl\Model\Resolver\Coupon;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 
 class CouponTest extends TestCase
 {

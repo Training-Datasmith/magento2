@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model;
 
 class AttributesList implements AttributesListInterface
@@ -37,7 +40,7 @@ class AttributesList implements AttributesListInterface
                 'id' => $attribute->getId(),
                 'label' => $attribute->getFrontendLabel(),
                 'code' => $attribute->getAttributeCode(),
-                'options' => $attribute->getSource()->getAllOptions(false)
+                'options' => $attribute->getSource()->getAllOptions(false),
             ];
         }
         return $attributes;

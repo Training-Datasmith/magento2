@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -20,57 +22,57 @@ class Info
      *
      * @var string
      */
-    const PAYER_ID = 'payer_id';
+    public const PAYER_ID = 'payer_id';
 
-    const PAYER_EMAIL = 'email';
+    public const PAYER_EMAIL = 'email';
 
-    const PAYER_STATUS = 'payer_status';
+    public const PAYER_STATUS = 'payer_status';
 
-    const ADDRESS_ID = 'address_id';
+    public const ADDRESS_ID = 'address_id';
 
-    const ADDRESS_STATUS = 'address_status';
+    public const ADDRESS_STATUS = 'address_status';
 
-    const PROTECTION_EL = 'protection_eligibility';
+    public const PROTECTION_EL = 'protection_eligibility';
 
-    const FRAUD_FILTERS = 'collected_fraud_filters';
+    public const FRAUD_FILTERS = 'collected_fraud_filters';
 
-    const CORRELATION_ID = 'correlation_id';
+    public const CORRELATION_ID = 'correlation_id';
 
-    const AVS_CODE = 'avs_result';
+    public const AVS_CODE = 'avs_result';
 
-    const AVSADDR = 'avsaddr';
+    public const AVSADDR = 'avsaddr';
 
-    const AVSZIP = 'avszip';
+    public const AVSZIP = 'avszip';
 
-    const IAVS = 'iavs';
+    public const IAVS = 'iavs';
 
-    const CVV2MATCH = 'cvv2match';
+    public const CVV2MATCH = 'cvv2match';
 
-    const CVV_2_MATCH = 'cvv_2_check_result';
+    public const CVV_2_MATCH = 'cvv_2_check_result';
 
     // Next two fields are required for Brazil
-    const BUYER_TAX_ID = 'buyer_tax_id';
+    public const BUYER_TAX_ID = 'buyer_tax_id';
 
-    const BUYER_TAX_ID_TYPE = 'buyer_tax_id_type';
+    public const BUYER_TAX_ID_TYPE = 'buyer_tax_id_type';
 
-    const PAYMENT_STATUS = 'payment_status';
+    public const PAYMENT_STATUS = 'payment_status';
 
-    const PENDING_REASON = 'pending_reason';
+    public const PENDING_REASON = 'pending_reason';
 
-    const IS_FRAUD = 'is_fraud_detected';
+    public const IS_FRAUD = 'is_fraud_detected';
 
-    const PAYMENT_STATUS_GLOBAL = 'paypal_payment_status';
+    public const PAYMENT_STATUS_GLOBAL = 'paypal_payment_status';
 
-    const PENDING_REASON_GLOBAL = 'paypal_pending_reason';
+    public const PENDING_REASON_GLOBAL = 'paypal_pending_reason';
 
-    const IS_FRAUD_GLOBAL = 'paypal_is_fraud_detected';
+    public const IS_FRAUD_GLOBAL = 'paypal_is_fraud_detected';
 
     /**
      * Possible buyer's tax id types (Brazil only)
      */
-    const BUYER_TAX_ID_TYPE_CPF = 'BR_CPF';
+    public const BUYER_TAX_ID_TYPE_CPF = 'BR_CPF';
 
-    const BUYER_TAX_ID_TYPE_CNPJ = 'BR_CNPJ';
+    public const BUYER_TAX_ID_TYPE_CNPJ = 'BR_CNPJ';
 
     /**
      * All payment information map
@@ -93,7 +95,7 @@ class Info
         self::AVSADDR => self::PAYPAL_AVSADDR,
         self::AVSZIP => self::PAYPAL_AVSZIP,
         self::IAVS => self::PAYPAL_IAVS,
-        self::CVV2MATCH => self::PAYPAL_CVV2MATCH
+        self::CVV2MATCH => self::PAYPAL_CVV2MATCH,
     ];
 
     /**
@@ -112,55 +114,55 @@ class Info
      *
      * @var string
      */
-    const PAYMENTSTATUS_NONE = 'none';
+    public const PAYMENTSTATUS_NONE = 'none';
 
-    const PAYMENTSTATUS_COMPLETED = 'completed';
+    public const PAYMENTSTATUS_COMPLETED = 'completed';
 
-    const PAYMENTSTATUS_DENIED = 'denied';
+    public const PAYMENTSTATUS_DENIED = 'denied';
 
-    const PAYMENTSTATUS_EXPIRED = 'expired';
+    public const PAYMENTSTATUS_EXPIRED = 'expired';
 
-    const PAYMENTSTATUS_FAILED = 'failed';
+    public const PAYMENTSTATUS_FAILED = 'failed';
 
-    const PAYMENTSTATUS_INPROGRESS = 'in_progress';
+    public const PAYMENTSTATUS_INPROGRESS = 'in_progress';
 
-    const PAYMENTSTATUS_PENDING = 'pending';
+    public const PAYMENTSTATUS_PENDING = 'pending';
 
-    const PAYMENTSTATUS_REFUNDED = 'refunded';
+    public const PAYMENTSTATUS_REFUNDED = 'refunded';
 
-    const PAYMENTSTATUS_REFUNDEDPART = 'partially_refunded';
+    public const PAYMENTSTATUS_REFUNDEDPART = 'partially_refunded';
 
-    const PAYMENTSTATUS_REVERSED = 'reversed';
+    public const PAYMENTSTATUS_REVERSED = 'reversed';
 
-    const PAYMENTSTATUS_UNREVERSED = 'canceled_reversal';
+    public const PAYMENTSTATUS_UNREVERSED = 'canceled_reversal';
 
-    const PAYMENTSTATUS_PROCESSED = 'processed';
+    public const PAYMENTSTATUS_PROCESSED = 'processed';
 
-    const PAYMENTSTATUS_VOIDED = 'voided';
+    public const PAYMENTSTATUS_VOIDED = 'voided';
 
-    const PAYMENTSTATUS_REVIEW = 'paymentreview';
+    public const PAYMENTSTATUS_REVIEW = 'paymentreview';
 
     /**
      * PayPal payment transaction type
      */
-    const TXN_TYPE_ADJUSTMENT = 'adjustment';
+    public const TXN_TYPE_ADJUSTMENT = 'adjustment';
 
-    const TXN_TYPE_NEW_CASE = 'new_case';
+    public const TXN_TYPE_NEW_CASE = 'new_case';
 
     /**
      * PayPal payment reason code when payment_status is Reversed, Refunded, or Canceled_Reversal.
      */
-    const PAYMENT_REASON_CODE_REFUND = 'refund';
+    public const PAYMENT_REASON_CODE_REFUND = 'refund';
 
     /**
      * PayPal order status for Reverse payment status
      */
-    const ORDER_STATUS_REVERSED = 'paypal_reversed';
+    public const ORDER_STATUS_REVERSED = 'paypal_reversed';
 
     /**
      * PayPal order status for Canceled Reversal payment status
      */
-    const ORDER_STATUS_CANCELED_REVERSAL = 'paypal_canceled_reversal';
+    public const ORDER_STATUS_CANCELED_REVERSAL = 'paypal_canceled_reversal';
 
     /**
      * Map of payment information available to customer
@@ -186,77 +188,77 @@ class Info
     /**
      * Paypal payer id code key
      */
-    const PAYPAL_PAYER_ID = 'paypal_payer_id';
+    public const PAYPAL_PAYER_ID = 'paypal_payer_id';
 
     /**
      * Paypal payer email code key
      */
-    const PAYPAL_PAYER_EMAIL = 'paypal_payer_email';
+    public const PAYPAL_PAYER_EMAIL = 'paypal_payer_email';
 
     /**
      * Paypal payer status code key
      */
-    const PAYPAL_PAYER_STATUS = 'paypal_payer_status';
+    public const PAYPAL_PAYER_STATUS = 'paypal_payer_status';
 
     /**
      * Paypal address id code key
      */
-    const PAYPAL_ADDRESS_ID = 'paypal_address_id';
+    public const PAYPAL_ADDRESS_ID = 'paypal_address_id';
 
     /**
      * Paypal address status code key
      */
-    const PAYPAL_ADDRESS_STATUS = 'paypal_address_status';
+    public const PAYPAL_ADDRESS_STATUS = 'paypal_address_status';
 
     /**
      * Paypal protection eligibility code key
      */
-    const PAYPAL_PROTECTION_ELIGIBILITY = 'paypal_protection_eligibility';
+    public const PAYPAL_PROTECTION_ELIGIBILITY = 'paypal_protection_eligibility';
 
     /**
      * Paypal fraud filters code key
      */
-    const PAYPAL_FRAUD_FILTERS = 'paypal_fraud_filters';
+    public const PAYPAL_FRAUD_FILTERS = 'paypal_fraud_filters';
 
     /**
      * Paypal correlation id code key
      */
-    const PAYPAL_CORRELATION_ID = 'paypal_correlation_id';
+    public const PAYPAL_CORRELATION_ID = 'paypal_correlation_id';
 
     /**
      * Paypal avs code key
      */
-    const PAYPAL_AVS_CODE = 'paypal_avs_code';
+    public const PAYPAL_AVS_CODE = 'paypal_avs_code';
 
     /**
      * Paypal cvv2 code key
      */
-    const PAYPAL_CVV_2_MATCH = 'paypal_cvv_2_match';
+    public const PAYPAL_CVV_2_MATCH = 'paypal_cvv_2_match';
 
     /**
      * Item labels key for label codes cache
      */
-    const ITEM_LABELS = 'item labels';
+    public const ITEM_LABELS = 'item labels';
 
     /**
      * Paypal avs street code key
      */
-    const PAYPAL_AVSADDR = 'avsaddr';
+    public const PAYPAL_AVSADDR = 'avsaddr';
 
     /**
      * Paypal avs zip code key
      */
-    const PAYPAL_AVSZIP = 'avszip';
+    public const PAYPAL_AVSZIP = 'avszip';
 
     /**
      * Paypal avs international code key
      */
-    const PAYPAL_IAVS = 'iavs';
+    public const PAYPAL_IAVS = 'iavs';
 
     /**
      * Paypal cvv2 code key
      */
-    const PAYPAL_CVV2MATCH = 'cvv2match';
+    public const PAYPAL_CVV2MATCH = 'cvv2match';
 
     /**
      * All available payment info getter
@@ -393,7 +395,7 @@ class Info
                 self::PAYMENTSTATUS_REFUNDED,
                 self::PAYMENTSTATUS_REFUNDEDPART,
                 self::PAYMENTSTATUS_UNREVERSED,
-                self::PAYMENTSTATUS_PROCESSED
+                self::PAYMENTSTATUS_PROCESSED,
             ]
         )
         ) {
@@ -423,7 +425,7 @@ class Info
                 self::PAYMENTSTATUS_EXPIRED,
                 self::PAYMENTSTATUS_FAILED,
                 self::PAYMENTSTATUS_REVERSED,
-                self::PAYMENTSTATUS_VOIDED
+                self::PAYMENTSTATUS_VOIDED,
             ]
         );
     }

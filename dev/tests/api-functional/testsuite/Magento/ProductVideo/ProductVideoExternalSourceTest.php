@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ProductVideo;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Gallery\DefaultValueProcessor;
@@ -20,6 +20,7 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\ScopeFixture;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for \Magento\ProductVideo feature
@@ -59,7 +60,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
                             'video_metadata' => 'Video meta',
                         ],
                     ],
-                ]
+                ],
             ],
             'vimeo-external-video' => [
                 [
@@ -79,8 +80,8 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
                             'video_metadata' => 'Video meta',
                         ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -111,7 +112,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
         $simpleProductBaseData = $this->getSimpleProductData(
             [
                 ProductInterface::NAME => 'Product With Ext. Video',
-                ProductInterface::SKU => 'prod-with-ext-video'
+                ProductInterface::SKU => 'prod-with-ext-video',
             ]
         );
 
@@ -120,7 +121,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
         $response = $this->saveProduct($simpleProductBaseData);
         $this->assertEquals(
             $simpleProductBaseData['media_gallery_entries'][0]['extension_attributes'],
-            $response["media_gallery_entries"][0]["extension_attributes"]
+            $response['media_gallery_entries'][0]['extension_attributes']
         );
     }
 
@@ -146,8 +147,8 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
                                 'video_metadata' => 'Video meta',
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             as: 'p1',
             scope: 'global_scope'
@@ -238,7 +239,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
             'custom_attributes' => [
                 ['attribute_code' => 'cost', 'value' => ''],
                 ['attribute_code' => 'description', 'value' => 'Description'],
-            ]
+            ],
         ];
     }
 
@@ -257,7 +258,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
                 if ($attribute['attribute_code'] == 'category_ids'
                     && !is_array($attribute['value'])
                 ) {
-                    $attribute['value'] = [""];
+                    $attribute['value'] = [''];
                 }
             }
         }
@@ -291,7 +292,7 @@ class ProductVideoExternalSourceTest extends WebapiAbstract
         }
         return $product;
     }
-    
+
     private function getProductData(string $sku, ?string $storeCode = null): array
     {
         $serviceInfo = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,7 +12,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem;
-use \Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Filesystem\DriverInterface;
 
 /**
  * Utility for generating a unique file name

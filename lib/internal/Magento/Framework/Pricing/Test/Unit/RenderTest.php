@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class RenderTest extends TestCase
         $this->model = $objectManager->getObject(
             Render::class,
             [
-                'priceLayout' => $this->priceLayout
+                'priceLayout' => $this->priceLayout,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ use Magento\Framework\Phrase\Renderer\Translate;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Translation\Model\Js\Config;
 use Magento\Translation\Model\Js\DataProvider as ModelDataProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Verify data provider translation
@@ -84,7 +85,7 @@ class DataProviderTest extends TestCase
                 'translate' => $this->translateMock,
                 'dirSearch' => $dirSearch,
                 'filesUtility' => $this->filesUtilityMock,
-                'componentRegistrar' => $this->createMock(ComponentRegistrar::class)
+                'componentRegistrar' => $this->createMock(ComponentRegistrar::class),
             ]
         );
     }
@@ -106,11 +107,11 @@ class DataProviderTest extends TestCase
 
         $jsFilesMap = [
             ['base', $themePath, '*', '*', [$filePaths[0]]],
-            [$areaCode, $themePath, '*', '*', [$filePaths[1]]]
+            [$areaCode, $themePath, '*', '*', [$filePaths[1]]],
         ];
         $staticFilesMap = [
             ['base', $themePath, '*', '*', [$filePaths[2]]],
-            [$areaCode, $themePath, '*', '*', [$filePaths[3]]]
+            [$areaCode, $themePath, '*', '*', [$filePaths[3]]],
         ];
 
         $this->appStateMock->expects($this->once())
@@ -144,7 +145,7 @@ class DataProviderTest extends TestCase
         $this->assertEquals(
             json_encode($config['expectedResult']),
             json_encode($actualResult),
-            "Translations should be sorted by key"
+            'Translations should be sorted by key'
         );
     }
 
@@ -200,7 +201,7 @@ class DataProviderTest extends TestCase
                         '~(?:i18n\:|_\.i18n\()\s*(["\'])(.*?)(?<!\\\\)\1~',
                         '~translate\=("\')([^\'].*?)\'\"~',
                         '~(?s)\$t\(\s*([\'"])(\?\<translate\>.+?)(?<!\\\)\1\s*(*SKIP)\)(?s)~',
-                        '~translate args\=("|\'|"\'|\\\"\')([^\'].*?)(\'\\\"|\'"|\'|")~'
+                        '~translate args\=("|\'|"\'|\\\"\')([^\'].*?)(\'\\\"|\'"|\'|")~',
                     ],
                     'expectedResult' => [
                         'hello1' => 'hello1translated',
@@ -208,13 +209,13 @@ class DataProviderTest extends TestCase
                         'hello3' => 'hello3translated',
                         'hello4' => 'hello4translated',
                         'ko i18' => 'ko i18 translated',
-                        'underscore i18' => 'underscore i18 translated'
+                        'underscore i18' => 'underscore i18 translated',
                     ],
                     'contentsMap' => [
                         'content1$.mage.__("hello1")content1',
                         'content2$.mage.__("hello2")content2',
                         'content2$.mage.__("hello4")content4 <!-- ko i18n: "ko i18" --><!-- /ko -->',
-                        'content2$.mage.__("hello3")content3 <% _.i18n("underscore i18") %>'
+                        'content2$.mage.__("hello3")content3 <% _.i18n("underscore i18") %>',
                     ],
                     'translateMap' => [
                         [['hello1'], [], 'hello1translated'],
@@ -222,10 +223,10 @@ class DataProviderTest extends TestCase
                         [['hello3'], [], 'hello3translated'],
                         [['hello4'], [], 'hello4translated'],
                         [['ko i18'], [], 'ko i18 translated'],
-                        [['underscore i18'], [], 'underscore i18 translated']
-                    ]
-                ]
-            ]
+                        [['underscore i18'], [], 'underscore i18 translated'],
+                    ],
+                ],
+            ],
         ];
     }
 }

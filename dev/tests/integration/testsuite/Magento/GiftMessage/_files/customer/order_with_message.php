@@ -1,17 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\GiftMessage\Model\Message;
 use Magento\GiftMessage\Model\ResourceModel\Message as MessageResource;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/product_simple.php');
 
@@ -44,7 +46,7 @@ $orders = [
         'total_paid' => 130.00,
         'store_id' => 1,
         'website_id' => 1,
-    ]
+    ],
 ];
 
 /** @var OrderRepositoryInterface $orderRepository */

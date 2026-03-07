@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Persistent\Test\Unit\Model\Customer;
 
+use Magento\Customer\Model\Customer\AuthorizationComposite as CustomerAuthorizationComposite;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Persistent\Helper\Session as PersistentSession;
@@ -14,7 +16,6 @@ use Magento\Persistent\Model\Customer\Authorization as PersistentAuthorization;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Customer\Model\Customer\AuthorizationComposite as CustomerAuthorizationComposite;
 
 /**
  * A test class for the persistent customers authorization
@@ -86,7 +87,7 @@ class AuthorizationTest extends TestCase
     ): void {
         $this->persistentSessionMock->expects($this->any())->method('isPersistent')->willReturn($isPersistent);
         $this->customerSessionMock->expects($this->any())->method('getCustomerId')->willReturn($customerId);
-        
+
         // getIsCustomerEmulated() is only called when isPersistent is true AND customerId is truthy
         // This is due to short-circuit evaluation in the Authorization::isAllowed() method
         if ($isPersistent && $customerId) {
@@ -113,26 +114,26 @@ class AuthorizationTest extends TestCase
                 'isPersistent' => true,
                 'customerId' => 1,
                 'isCustomerEmulated' => true,
-                'shouldBeAllowed' => false
+                'shouldBeAllowed' => false,
             ],
             'Logged-in persistent Customer ID#1 should be authorized' => [
                 'isPersistent' => true,
                 'customerId' => 1,
                 'isCustomerEmulated' => false,
-                'shouldBeAllowed' => true
+                'shouldBeAllowed' => true,
             ],
             'Logged-in Customer ID#1 without persistency should be authorized' => [
                 'isPersistent' => false,
                 'customerId' => 1,
                 'isCustomerEmulated' => false,
-                'shouldBeAllowed' => true
+                'shouldBeAllowed' => true,
             ],
             'Persistent Customer ID/ isCustomerEmulated = null (API Request) should be authorized' => [
                 'isPersistent' => true,
                 'customerId' => null,
                 'isCustomerEmulated' => null,
-                'shouldBeAllowed' => true
-            ]
+                'shouldBeAllowed' => true,
+            ],
         ];
     }
 }

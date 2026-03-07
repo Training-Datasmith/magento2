@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Most viewed product report aggregate resource model
  */
+
 namespace Magento\Reports\Model\ResourceModel\Report\Product;
 
 /**

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Profiler driver factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Driver;
 
 use Magento\Framework\Profiler\DriverInterface;

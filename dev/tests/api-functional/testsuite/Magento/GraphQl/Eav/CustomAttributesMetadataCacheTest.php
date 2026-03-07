@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheHitMiss()
     {
-        $query = $this->getAttributeQuery("dropdown_attribute", "catalog_product");
+        $query = $this->getAttributeQuery('dropdown_attribute', 'catalog_product');
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $this->assertResponseFields(
             $response['body']['customAttributeMetadata']['items'][0],
@@ -72,14 +73,14 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheDifferentStores()
     {
-        $query = $this->getAttributeQuery("dropdown_attribute", "catalog_product");
+        $query = $this->getAttributeQuery('dropdown_attribute', 'catalog_product');
         /** @var AttributeRepository $eavAttributeRepo */
         $eavAttributeRepo = $this->objectManager->get(AttributeRepository::class);
         /** @var StoreRepository $storeRepo */
         $storeRepo = $this->objectManager->get(StoreRepository::class);
 
         $stores = $storeRepo->getList();
-        $attribute = $eavAttributeRepo->get("catalog_product", "dropdown_attribute");
+        $attribute = $eavAttributeRepo->get('catalog_product', 'dropdown_attribute');
         $options = $attribute->getOptions();
 
         //prepare unique option values per-store
@@ -146,7 +147,7 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheInvalidation()
     {
-        $query = $this->getAttributeQuery("dropdown_attribute", "catalog_product");
+        $query = $this->getAttributeQuery('dropdown_attribute', 'catalog_product');
         // check cache missed on first query
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $this->assertResponseFields(
@@ -162,7 +163,7 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
         $this->assertCacheHitAndReturnResponse($query, []);
         /** @var AttributeRepository $eavAttributeRepo */
         $eavAttributeRepo = $this->objectManager->get(AttributeRepository::class);
-        $attribute = $eavAttributeRepo->get("catalog_product", "dropdown_attribute");
+        $attribute = $eavAttributeRepo->get('catalog_product', 'dropdown_attribute');
         $attribute->setIsRequired(1);
         $eavAttributeRepo->save($attribute);
         // assert cache miss after changes
@@ -188,7 +189,7 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheInvalidationOnAttributeDelete()
     {
-        $query = $this->getAttributeQuery("dropdown_attribute", "catalog_product");
+        $query = $this->getAttributeQuery('dropdown_attribute', 'catalog_product');
         // check cache missed on first query
         $response = $this->assertCacheMissAndReturnResponse($query, []);
         $this->assertResponseFields(
@@ -204,11 +205,11 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
         $this->assertCacheHitAndReturnResponse($query, []);
         /** @var AttributeRepository $eavAttributeRepo */
         $eavAttributeRepo = $this->objectManager->get(AttributeRepository::class);
-        $attribute = $eavAttributeRepo->get("catalog_product", "dropdown_attribute");
+        $attribute = $eavAttributeRepo->get('catalog_product', 'dropdown_attribute');
         $eavAttributeRepo->delete($attribute);
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "GraphQL response contains errors: Internal server error"
+            'GraphQL response contains errors: Internal server error'
         );
     }
 
@@ -220,26 +221,26 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheMissingAttributeParam()
     {
-        $query = $this->getAttributeQueryNoCode("catalog_product");
+        $query = $this->getAttributeQueryNoCode('catalog_product');
         // check cache missed on each query
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing attribute_code for the input entity_type: catalog_product."
+            'Missing attribute_code for the input entity_type: catalog_product.'
         );
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing attribute_code for the input entity_type: catalog_product."
+            'Missing attribute_code for the input entity_type: catalog_product.'
         );
 
-        $query = $this->getAttributeQueryNoEntityType("dropdown_attribute");
+        $query = $this->getAttributeQueryNoEntityType('dropdown_attribute');
         // check cache missed on each query
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing entity_type for the input attribute_code: dropdown_attribute."
+            'Missing entity_type for the input attribute_code: dropdown_attribute.'
         );
         $this->assertQueryResultIsCacheMissWithError(
             $query,
-            "Missing entity_type for the input attribute_code: dropdown_attribute."
+            'Missing entity_type for the input attribute_code: dropdown_attribute.'
         );
     }
 
@@ -286,13 +287,13 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      */
     public function testCacheInvalidationMultiEntitySameCode()
     {
-        $queryProduct = $this->getAttributeQuery("name", "catalog_product");
-        $queryCategory = $this->getAttributeQuery("name", "catalog_category");
+        $queryProduct = $this->getAttributeQuery('name', 'catalog_product');
+        $queryCategory = $this->getAttributeQuery('name', 'catalog_category');
         // precache both product and category response
         $this->assertCacheMissAndReturnResponse($queryProduct, []);
         $this->assertCacheMissAndReturnResponse($queryCategory, []);
         $eavAttributeRepo = $this->objectManager->get(AttributeRepository::class);
-        $attribute = $eavAttributeRepo->get("catalog_product", "name");
+        $attribute = $eavAttributeRepo->get('catalog_product', 'name');
         $eavAttributeRepo->save($attribute);
         // assert that product is invalidated for the same code but category is not touched
         $this->assertCacheMissAndReturnResponse($queryProduct, []);
@@ -306,7 +307,7 @@ class CustomAttributesMetadataCacheTest extends GraphQLPageCacheAbstract
      * @param string $entityType
      * @return string
      */
-    private function getAttributeQuery(string $code, string $entityType) : string
+    private function getAttributeQuery(string $code, string $entityType): string
     {
         return <<<QUERY
 {
@@ -342,7 +343,7 @@ QUERY;
      *
      * @return string
      */
-    private function getAttributeQueryNoCode(string $entityType) : string
+    private function getAttributeQueryNoCode(string $entityType): string
     {
         return <<<QUERY
 {
@@ -371,7 +372,7 @@ QUERY;
      *
      * @return string
      */
-    private function getAttributeQueryNoEntityType(string $code) : string
+    private function getAttributeQueryNoEntityType(string $code): string
     {
         return <<<QUERY
 {

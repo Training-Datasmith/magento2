@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\ConfigurableProductSales\Test\Unit\ViewModel;
 use Magento\ConfigurableProductSales\ViewModel\ItemRendererTypeResolver;
 use Magento\Framework\DataObject;
 use Magento\Sales\Model\Order\Item;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test configurable order item renderer type resolver

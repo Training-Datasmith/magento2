@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class UrlBuilder
                 [
                     '_current' => false,
                     '_nosid' => true,
-                    '_query' => $this->prepareRequestQuery($store, $targetUrl)
+                    '_query' => $this->prepareRequestQuery($store, $targetUrl),
                 ]
             );
         } else {
@@ -84,7 +85,7 @@ class UrlBuilder
                 $routePath,
                 [
                     '_current' => false,
-                    '_nosid' => true
+                    '_nosid' => true,
                 ]
             );
         }
@@ -99,12 +100,12 @@ class UrlBuilder
      * @param string $href
      * @return array
      */
-    private function prepareRequestQuery(string $store, string $href) : array
+    private function prepareRequestQuery(string $store, string $href): array
     {
         $storeView = $this->storeManager->getDefaultStoreView();
         $query = [
             StoreManagerInterface::PARAM_NAME => $store,
-            ActionInterface::PARAM_NAME_URL_ENCODED => $this->urlEncoder->encode($href)
+            ActionInterface::PARAM_NAME_URL_ENCODED => $this->urlEncoder->encode($href),
         ];
         if (null !== $storeView && $storeView->getCode() !== $store) {
             $query['___from_store'] = $storeView->getCode();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Indexer\Test\Unit\Console\Command;
 
 use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Indexer\Console\Command\IndexerShowModeCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Symfony\Component\Console\Tester\CommandTester;
 
 class IndexerShowModeCommandTest extends AbstractIndexerCommandCommonSetup
 {
@@ -94,27 +95,27 @@ class IndexerShowModeCommandTest extends AbstractIndexerCommandCommonSetup
             [
                 'inputIndexers' => [
                     'id_indexerOne',
-                    'id_indexerTwo'
+                    'id_indexerTwo',
                 ],
                 'indexers' => [
                     'id_indexerOne' => [
                         'indexer_id' => 'id_indexerOne',
-                        'title' => 'Title_indexerOne'
+                        'title' => 'Title_indexerOne',
                     ],
                     'id_indexerTwo' => [
                         'indexer_id' => 'id_indexerTwo',
-                        'title' => 'Title_indexerTwo'
+                        'title' => 'Title_indexerTwo',
                     ],
                     'id_indexerThree' => [
                         'indexer_id' => 'id_indexerThree',
-                        'title' => 'Title_indexerThree'
+                        'title' => 'Title_indexerThree',
                     ],
                 ],
                 'isScheduled' => [
                     'id_indexerOne' => true,
                     'id_indexerTwo' => false,
                     'id_indexerThree' => false,
-                ]
+                ],
             ],
         ];
     }

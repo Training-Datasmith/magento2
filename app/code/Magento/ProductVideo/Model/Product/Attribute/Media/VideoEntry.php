@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Model\Product\Attribute\Media;
 
-use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Framework\Api\Data\VideoContentInterface;
+use Magento\Framework\Model\AbstractExtensibleModel;
 
 /**
  * VideoEntry class

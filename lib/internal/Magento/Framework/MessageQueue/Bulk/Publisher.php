@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Bulk;
 
 use Magento\Framework\MessageQueue\EnvelopeFactory;
-use Magento\Framework\MessageQueue\PublisherInterface;
 use Magento\Framework\MessageQueue\MessageEncoder;
 use Magento\Framework\MessageQueue\MessageValidator;
 use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
+use Magento\Framework\MessageQueue\PublisherInterface;
 
 /**
  * A MessageQueue Publisher to handle publishing messages in bulk.
@@ -85,7 +88,7 @@ class Publisher implements PublisherInterface
                     'properties' => [
                         'topic_name' => $topicName,
                         'message_id' => $this->messageIdGenerator->generate($topicName),
-                    ]
+                    ],
                 ]
             );
         }

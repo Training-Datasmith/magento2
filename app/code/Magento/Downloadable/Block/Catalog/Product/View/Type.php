@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Catalog downloadable product part block
  */
+
 namespace Magento\Downloadable\Block\Catalog\Product\View;
 
 /**

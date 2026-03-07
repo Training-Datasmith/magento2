@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class ConfigTest extends TestCase
             [
                 'deploymentConfig' => $this->deploymentConfigMock,
                 'appState' => $this->appStateMock,
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }

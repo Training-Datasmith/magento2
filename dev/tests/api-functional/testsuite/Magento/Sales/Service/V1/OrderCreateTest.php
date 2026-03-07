@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -140,11 +143,11 @@ class OrderCreateTest extends WebapiAbstract
                 [
                     'shipping' => [
                         'address' => $address,
-                        'method' => 'flatrate_flatrate'
+                        'method' => 'flatrate_flatrate',
                     ],
                     'items' => [$orderItem->getData()],
                     'stock_id' => null,
-                ]
+                ],
             ];
         $orderData['extension_attributes']['taxes'] = [
             [
@@ -156,7 +159,7 @@ class OrderCreateTest extends WebapiAbstract
                 'base_real_amount' => 0.75,
                 'position' => 0,
                 'priority' => 0,
-                'process' => 0
+                'process' => 0,
             ],
         ];
         $orderData['extension_attributes']['additional_itemized_taxes'] = [
@@ -168,7 +171,7 @@ class OrderCreateTest extends WebapiAbstract
                 'real_amount' => 0.25,
                 'real_base_amount' => 0.25,
                 'taxable_item_type' => 'shipping',
-            ]
+            ],
         ];
         $orderData['items'][0]['extension_attributes']['itemized_taxes'] = [
             [
@@ -179,7 +182,7 @@ class OrderCreateTest extends WebapiAbstract
                 'real_amount' => 0.5,
                 'real_base_amount' => 0.5,
                 'taxable_item_type' => 'product',
-            ]
+            ],
         ];
         return $orderData;
     }

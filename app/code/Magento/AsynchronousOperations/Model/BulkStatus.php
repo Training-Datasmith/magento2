@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,39 +34,18 @@ class BulkStatus implements BulkStatusInterface
     private $operationCollectionFactory;
 
     /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var CalculatedStatusSql
-     */
-    private $calculatedStatusSql;
-
-    /**
-     * @var MetadataPool
-     */
-    private $metadataPool;
-
-    /**
      * @param ResourceModel\Bulk\CollectionFactory $bulkCollection
      * @param ResourceModel\Operation\CollectionFactory $operationCollection
-     * @param ResourceConnection $resourceConnection
-     * @param CalculatedStatusSql $calculatedStatusSql
-     * @param MetadataPool $metadataPool
      */
     public function __construct(
         ResourceModel\Bulk\CollectionFactory $bulkCollection,
         ResourceModel\Operation\CollectionFactory $operationCollection,
-        ResourceConnection $resourceConnection,
-        CalculatedStatusSql $calculatedStatusSql,
-        MetadataPool $metadataPool
+        private readonly ResourceConnection $resourceConnection,
+        private readonly CalculatedStatusSql $calculatedStatusSql,
+        private readonly MetadataPool $metadataPool
     ) {
         $this->bulkCollectionFactory = $bulkCollection;
         $this->operationCollectionFactory = $operationCollection;
-        $this->resourceConnection = $resourceConnection;
-        $this->calculatedStatusSql = $calculatedStatusSql;
-        $this->metadataPool = $metadataPool;
     }
 
     /**
@@ -76,13 +57,12 @@ class BulkStatus implements BulkStatusInterface
             ? [$failureType]
             : [
                 OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
-                OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED
+                OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
             ];
-        $operations = $this->operationCollectionFactory->create()
+        return $this->operationCollectionFactory->create()
             ->addFieldToFilter('bulk_uuid', $bulkUuid)
             ->addFieldToFilter('status', $failureCodes)
             ->getItems();
-        return $operations;
     }
 
     /**
@@ -123,7 +103,7 @@ class BulkStatus implements BulkStatusInterface
             OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
             BulkSummaryInterface::NOT_STARTED,
             OperationInterface::STATUS_TYPE_OPEN,
-            OperationInterface::STATUS_TYPE_COMPLETE
+            OperationInterface::STATUS_TYPE_COMPLETE,
         ];
         $select = $collection->getSelect();
         $select->columns(['status' => $this->calculatedStatusSql->get($operationTableName)])
@@ -137,7 +117,7 @@ class BulkStatus implements BulkStatusInterface
     /**
      * @inheritDoc
      */
-    public function getBulkStatus($bulkUuid)
+    public function getBulkStatus($bulkUuid): int
     {
         /**
          * Number of operations that has been processed (i.e. operations with any status but 'open')
@@ -184,9 +164,8 @@ class BulkStatus implements BulkStatusInterface
      * Get total number of operations that has been scheduled within the given bulk.
      *
      * @param string $bulkUuid
-     * @return int
      */
-    private function getOperationCount($bulkUuid)
+    private function getOperationCount($bulkUuid): int
     {
         $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
         $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());

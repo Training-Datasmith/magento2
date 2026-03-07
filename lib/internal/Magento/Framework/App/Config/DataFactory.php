@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Data Factory.
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
 class DataFactory

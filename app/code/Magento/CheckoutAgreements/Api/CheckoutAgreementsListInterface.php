@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,5 +26,5 @@ interface CheckoutAgreementsListInterface
      * @return \Magento\CheckoutAgreements\Api\Data\AgreementInterface[]
      * @since 100.3.0
      */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria) : array;
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria): array;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Block\PayLater;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\Template;
+use Magento\Paypal\Model\Config as PaypalConfig;
 use Magento\Paypal\Model\PayLaterConfig;
 use Magento\Paypal\Model\SdkUrl;
-use Magento\Paypal\Model\Config as PaypalConfig;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * PayPal PayLater component block
@@ -110,9 +111,9 @@ class Banner extends Template
             'components' => [
                 'payLater' => [
                     'component' => $jsComponent,
-                    'config' => $config
-                ]
-            ]
+                    'config' => $config,
+                ],
+            ],
         ];
 
         return parent::getJsLayout();

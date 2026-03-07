@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Console\Command\App;
 
 use Magento\Deploy\Console\Command\App\SensitiveConfigSet\CollectorFactory;
@@ -155,7 +158,7 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
                         'sensitiveValue',
                         $config['system']['default']['some']['config']['path_three']
                     );
-                }
+                },
             ],
             [
                 'website',
@@ -170,8 +173,8 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
                         'sensitiveValue',
                         $config['system']['website']['test']['some']['config']['path_three']
                     );
-                }
-            ]
+                },
+            ],
         ];
     }
 
@@ -234,7 +237,7 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
                         'sensitiveValue',
                         $config['system']['default']['some']['config']['path_three']
                     );
-                }
+                },
             ],
             [
                 'website',
@@ -255,8 +258,8 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
                         'sensitiveValue',
                         $config['system']['website']['test']['some']['config']['path_three']
                     );
-                }
-            ]
+                },
+            ],
         ];
     }
 
@@ -356,7 +359,7 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
         $interactiveCollectorMock = $this->objectManager->create(
             InteractiveCollector::class,
             [
-                'questionHelper' => $questionHelperMock
+                'questionHelper' => $questionHelperMock,
             ]
         );
         $collectorFactoryMock = $this->getMockBuilder(CollectorFactory::class)
@@ -375,9 +378,9 @@ class SensitiveConfigSetCommandTest extends \PHPUnit\Framework\TestCase
                 'facade' => $this->objectManager->create(
                     SensitiveConfigSetFacade::class,
                     [
-                        'collectorFactory' => $collectorFactoryMock
+                        'collectorFactory' => $collectorFactoryMock,
                     ]
-                )
+                ),
             ]
         );
 

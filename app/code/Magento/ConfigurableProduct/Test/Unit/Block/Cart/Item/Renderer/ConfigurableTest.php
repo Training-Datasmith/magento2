@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class ConfigurableTest extends TestCase
                 'viewConfig' => $this->configManager,
                 'imageHelper' => $this->imageHelper,
                 'scopeConfig' => $this->scopeConfig,
-                'productConfig' => $this->productConfigMock
+                'productConfig' => $this->productConfigMock,
             ]
         );
     }

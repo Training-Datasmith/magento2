@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
@@ -200,7 +203,7 @@ class CategoryLink
         $connection = $this->resourceConnection->getConnection();
         $connection->delete($this->getCategoryLinkMetadata()->getEntityTable(), [
             'product_id = ?' => (int)$product->getId(),
-            'category_id IN(?)' => array_column($deleteLinks, 'category_id')
+            'category_id IN(?)' => array_column($deleteLinks, 'category_id'),
         ]);
 
         return array_column($deleteLinks, 'category_id');

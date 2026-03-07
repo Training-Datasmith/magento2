@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CheckoutAgreements\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CheckoutAgreements\Model\AgreementsProviderInterface;
 use Magento\CheckoutAgreements\Model\AgreementsValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class AgreementsValidatorTest extends TestCase
@@ -33,7 +34,7 @@ class AgreementsValidatorTest extends TestCase
     {
         return [
             [[], true],
-            [[1], true]
+            [[1], true],
         ];
     }
 

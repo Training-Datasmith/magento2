@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Console;
 
+use Laminas\ServiceManager\ServiceManager;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem\Directory\WriteFactory;
 use Magento\Framework\Filesystem\DriverPool;
-use Laminas\ServiceManager\ServiceManager;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
 
 /**
@@ -49,7 +52,7 @@ class GenerationDirectoryAccess
         $generationDirs = [
             DirectoryList::GENERATED,
             DirectoryList::GENERATED_CODE,
-            DirectoryList::GENERATED_METADATA
+            DirectoryList::GENERATED_METADATA,
         ];
 
         foreach ($generationDirs as $generationDirectory) {

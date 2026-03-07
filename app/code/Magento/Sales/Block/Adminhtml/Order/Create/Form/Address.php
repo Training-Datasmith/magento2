@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create\Form;
 
 use Magento\Backend\Model\Session\Quote;
+use Magento\Customer\Api\Data\AddressInterface;
+use Magento\Eav\Model\AttributeDataFactory;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Customer\Api\Data\AddressInterface;
-use Magento\Eav\Model\AttributeDataFactory;
 
 /**
  * Order create address form

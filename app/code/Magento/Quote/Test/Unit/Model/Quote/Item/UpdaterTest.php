@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\Item;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\DataObject;
 use Magento\Framework\Locale\Format;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\Updater;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,7 @@ class UpdaterTest extends TestCase
             Format::class,
             [
                 'getNumber',
-                'getPriceFormat'
+                'getPriceFormat',
             ]
         );
 
@@ -86,7 +87,7 @@ class UpdaterTest extends TestCase
                 'addOption',
                 'setCustomPrice',
                 'setData',
-                'hasData'
+                'hasData',
             ]
         );
 
@@ -94,7 +95,7 @@ class UpdaterTest extends TestCase
             \Magento\CatalogInventory\Model\Stock\Item::class,
             [
                 'getIsQtyDecimal',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $this->serializer = $this->createMock(Json::class);
@@ -104,7 +105,7 @@ class UpdaterTest extends TestCase
                 Updater::class,
                 [
                     'localeFormat' => $this->localeFormat,
-                    'serializer' => $this->serializer
+                    'serializer' => $this->serializer,
                 ]
             );
     }
@@ -150,7 +151,7 @@ class UpdaterTest extends TestCase
             ['test', 1],
             [-3, 1],
             [0, 1],
-            [-2.99, 1]
+            [-2.99, 1],
         ];
     }
 
@@ -165,7 +166,7 @@ class UpdaterTest extends TestCase
             ['test', 1],
             [-3, 1],
             [0, 1],
-            [-2.99, 1]
+            [-2.99, 1],
         ];
     }
 

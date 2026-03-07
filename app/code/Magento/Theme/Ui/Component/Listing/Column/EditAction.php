@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Ui\Component\Listing\Column;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -74,7 +77,7 @@ class EditAction extends Column
                                 ]
                             ),
                             'label' => __('Edit'),
-                        ]
+                        ],
                     ];
                 }
             }

@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\ObjectManager;
 use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Framework\DataObject;
 use Magento\Framework\Phrase;
 use Magento\Framework\Phrase\RendererInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class TextTest extends \PHPUnit\Framework\TestCase
@@ -60,14 +63,14 @@ class TextTest extends \PHPUnit\Framework\TestCase
         $column = $this->objectManager->create(
             Column::class,
             [
-                'data' => $columnData
+                'data' => $columnData,
             ]
         );
         /** @var DataObject $row */
         $row = $this->objectManager->create(
             DataObject::class,
             [
-                'data' => $rowData
+                'data' => $rowData,
             ]
         );
         $this->assertEquals(
@@ -85,59 +88,59 @@ class TextTest extends \PHPUnit\Framework\TestCase
             [
                 [
                     'index' => 'title',
-                    'translate' => true
+                    'translate' => true,
                 ],
                 [
-                    'title' => 'String'
+                    'title' => 'String',
                 ],
-                'String translated'
+                'String translated',
             ],
             [
                 [
-                    'index' => 'title'
+                    'index' => 'title',
                 ],
                 [
-                    'title' => 'Doesn\'t need to be translated'
+                    'title' => 'Doesn\'t need to be translated',
                 ],
-                'Doesn&#039;t need to be translated'
+                'Doesn&#039;t need to be translated',
             ],
             [
                 [
-                    'format' => '#$subscriber_id $customer_name ($subscriber_email)'
+                    'format' => '#$subscriber_id $customer_name ($subscriber_email)',
                 ],
                 [
                     'subscriber_id' => '10',
                     'customer_name' => 'John Doe',
-                    'subscriber_email' => 'john@doe.com'
+                    'subscriber_email' => 'john@doe.com',
                 ],
-                '#10 John Doe (john@doe.com)'
+                '#10 John Doe (john@doe.com)',
             ],
             [
                 [
                     'format' => '$customer_name, email: $subscriber_email',
-                    'translate' => true
+                    'translate' => true,
                 ],
                 [
                     'customer_name' => 'John Doe',
-                    'subscriber_email' => 'john@doe.com'
+                    'subscriber_email' => 'john@doe.com',
                 ],
-                'John Doe, email: john@doe.com translated'
+                'John Doe, email: john@doe.com translated',
             ],
             [
                 [
                     'format' => 'String',
-                    'translate' => true
+                    'translate' => true,
                 ],
                 [],
-                'String translated'
+                'String translated',
             ],
             [
                 [
-                    'format' => 'Doesn\'t need to be translated'
+                    'format' => 'Doesn\'t need to be translated',
                 ],
                 [],
-                'Doesn&#039;t need to be translated'
-            ]
+                'Doesn&#039;t need to be translated',
+            ],
         ];
     }
 }

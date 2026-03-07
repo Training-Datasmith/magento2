@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -467,8 +469,8 @@ class Structure implements ResetAfterRequestInterface
      */
     public function getChildren($parentId)
     {
-        return ($parentId !== null && isset($this->_elements[$parentId][self::CHILDREN])) 
-            ? $this->_elements[$parentId][self::CHILDREN] 
+        return ($parentId !== null && isset($this->_elements[$parentId][self::CHILDREN]))
+            ? $this->_elements[$parentId][self::CHILDREN]
             : [];
     }
 
@@ -673,7 +675,7 @@ class Structure implements ResetAfterRequestInterface
     {
         if (!is_array($value)) {
             throw new LocalizedException(
-                new \Magento\Framework\Phrase("An array expected: %1", [var_export($value, 1)])
+                new \Magento\Framework\Phrase('An array expected: %1', [var_export($value, 1)])
             );
         }
     }

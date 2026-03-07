@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\ResourceModel\Quote\Item\Collection;
 use Magento\Quote\Model\ResourceModel\Quote\Item\CollectionFactory;
 use Magento\Store\Api\Data\StoreInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Theme\Block\Html\Pager;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -111,7 +111,7 @@ class GridTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'checkoutSession' => $this->checkoutSessionMock,
                 'layout' => $this->layoutMock,
-                'data' => ['template' => 'cart/form1.phtml']
+                'data' => ['template' => 'cart/form1.phtml'],
             ]
         );
     }
@@ -145,7 +145,7 @@ class GridTest extends TestCase
         $this->quoteMock->expects($this->once())->method('getItemsCount')->willReturn($itemsCount);
         $this->scopeConfigMock
             ->method('getValue')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 [Grid::XPATH_CONFIG_NUMBER_ITEMS_TO_DISPLAY_PAGER] => 20,
                 [Grid::XPATH_CONFIG_NUMBER_ITEMS_TO_DISPLAY_PAGER] => $availableLimit
             });
@@ -223,7 +223,7 @@ class GridTest extends TestCase
                 'checkoutSession' => $this->checkoutSessionMock,
                 'layout' => $this->layoutMock,
                 'data' => ['custom_items' => [$itemMock]],
-                'storeManager' => $storeManager
+                'storeManager' => $storeManager,
             ]
         );
         $this->assertEquals([$itemMock], $this->block->getItems());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class ExtensionAttributesProcessor
         }
 
         $mergedExtensionAttributes = $this->shipmentExtensionFactory->create([
-            'data' => array_merge($shipmentExtensionAttributes, $argumentsExtensionAttributes)
+            'data' => array_merge($shipmentExtensionAttributes, $argumentsExtensionAttributes),
         ]);
 
         $shipment->setExtensionAttributes($mergedExtensionAttributes);

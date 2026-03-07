@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Category\Rss;
 
 /**
@@ -69,7 +72,7 @@ class Link extends \Magento\Framework\View\Element\Template
         return [
             'type' => 'category',
             'cid' => $this->registry->registry('current_category')->getId(),
-            'store_id' => $this->_storeManager->getStore()->getId()
+            'store_id' => $this->_storeManager->getStore()->getId(),
         ];
     }
 

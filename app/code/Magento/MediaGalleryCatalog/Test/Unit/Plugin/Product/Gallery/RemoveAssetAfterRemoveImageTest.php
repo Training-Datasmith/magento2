@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class RemoveAssetAfterRemoveImageTest extends TestCase
             RemoveAssetAfterRemoveImage::class,
             [
                 'deleteByPaths' => $this->deleteMediaAssetByPathMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

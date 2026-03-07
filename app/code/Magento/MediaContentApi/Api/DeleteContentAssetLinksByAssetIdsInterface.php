@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,6 @@
 declare(strict_types=1);
 
 namespace Magento\MediaContentApi\Api;
-
-use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface;
 
 /**
  * Delete the relation between media asset and the piece of content. I.e media asset no longer part of the content

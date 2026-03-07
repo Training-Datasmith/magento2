@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class TierpriceTest extends TestCase
                 'website_id' => null,
                 'cust_group' => 32000,
                 'price_qty' => 1,
-            ]
+            ],
         ];
         $object = $this->createMock(Product::class);
         $this->attribute->setName($attributeName);
@@ -163,7 +164,7 @@ class TierpriceTest extends TestCase
                 'website_id' => null,
                 'cust_group' => null,
                 'price_qty' => 1,
-            ]
+            ],
         ];
         $object = $this->createMock(Product::class);
         $this->attribute->setName($attributeName);

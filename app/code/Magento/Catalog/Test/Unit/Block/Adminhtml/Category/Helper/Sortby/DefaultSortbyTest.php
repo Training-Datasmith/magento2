@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -91,14 +92,14 @@ class DefaultSortbyTest extends TestCase
         $this->secureRendererMock->method('renderEventListenerAsTag')
             ->willReturnCallback(
                 function (string $event, string $listener, string $selector): string {
-                    return "<script type=\"text/x-magento-template\">"
+                    return '<script type="text/x-magento-template">'
                         . "document.querySelector('{$selector}').{$event} = () => { {$listener} };"
-                        . "</script>";
+                        . '</script>';
                 }
             );
         $this->randomMock = $this->createMock(Random::class);
         $this->randomMock->method('getRandomString')->willReturn('test123456');
-        
+
         $this->formMock = $this->createPartialMockWithReflection(
             Form::class,
             ['getHtmlIdPrefix', 'getFieldNameSuffix', 'getHtmlIdSuffix', 'addSuffixToName']
@@ -255,7 +256,7 @@ class DefaultSortbyTest extends TestCase
             $this->randomMock
         );
         $model->setForm($this->formMock);
-        
+
         $result = $model->getToggleCode();
 
         $this->assertIsString($result);
@@ -275,7 +276,7 @@ class DefaultSortbyTest extends TestCase
             'simple_id' => ['test_element', 'use_config_test_element'],
             'with_underscore' => ['category_sortby', 'use_config_category_sortby'],
             'with_numbers' => ['sortby_123', 'use_config_sortby_123'],
-            'complex_id' => ['default_category_sortby_config', 'use_config_default_category_sortby_config']
+            'complex_id' => ['default_category_sortby_config', 'use_config_default_category_sortby_config'],
         ];
     }
 }

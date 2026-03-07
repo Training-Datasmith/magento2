@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,16 +22,16 @@ class Dbautoup implements \Magento\Framework\Option\ArrayInterface
         return [
             [
                 'value' => \Magento\Framework\App\ResourceConnection::AUTO_UPDATE_ALWAYS,
-                'label' => __('Always (during development)')
+                'label' => __('Always (during development)'),
             ],
             [
                 'value' => \Magento\Framework\App\ResourceConnection::AUTO_UPDATE_ONCE,
-                'label' => __('Only Once (version upgrade)')
+                'label' => __('Only Once (version upgrade)'),
             ],
             [
                 'value' => \Magento\Framework\App\ResourceConnection::AUTO_UPDATE_NEVER,
-                'label' => __('Never (production)')
-            ]
+                'label' => __('Never (production)'),
+            ],
         ];
     }
 }

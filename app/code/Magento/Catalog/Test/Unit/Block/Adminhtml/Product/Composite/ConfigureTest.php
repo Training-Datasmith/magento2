@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ConfigureTest extends TestCase
         // Prepare ObjectManager for helpers used by parent blocks
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -70,7 +71,7 @@ class ConfigureTest extends TestCase
             Configure::class,
             [
                 'product' => $this->catalogProductMock,
-                'registry' => $this->registryMock
+                'registry' => $this->registryMock,
             ]
         );
     }
@@ -85,12 +86,12 @@ class ConfigureTest extends TestCase
         return [
             'registry has current_product returns registry product' => [
                 'hasRegistryProduct' => true,
-                'expectedRegistryCalls' => 2
+                'expectedRegistryCalls' => 2,
             ],
             'registry has no current_product returns catalog product' => [
                 'hasRegistryProduct' => false,
-                'expectedRegistryCalls' => 1
-            ]
+                'expectedRegistryCalls' => 1,
+            ],
         ];
     }
 
@@ -180,11 +181,11 @@ class ConfigureTest extends TestCase
     {
         return [
             'setProduct with product mock returns self' => [
-                'setNull' => false
+                'setNull' => false,
             ],
             'setProduct with null value returns self' => [
-                'setNull' => true
-            ]
+                'setNull' => true,
+            ],
         ];
     }
 

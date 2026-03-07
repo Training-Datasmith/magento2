@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Quote\Model\Quote\Payment;
 
-use Magento\Quote\Model\Quote\Payment;
-use Magento\Sales\Api\OrderPaymentRepositoryInterface as OrderPaymentRepository;
-use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Framework\DataObject\Copy;
 use Magento\Payment\Model\Method\Substitution;
+use Magento\Quote\Model\Quote\Payment;
+use Magento\Sales\Api\Data\OrderPaymentInterface;
+use Magento\Sales\Api\OrderPaymentRepositoryInterface as OrderPaymentRepository;
 
 /**
  * Class ToOrderPayment

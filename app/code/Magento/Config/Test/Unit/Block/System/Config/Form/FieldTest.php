@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Config\Test\Unit\Block\System\Config\Form;
 use Magento\Backend\Model\Url;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\Text;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
  * Test how class render field html element in Stores Configuration
@@ -69,7 +70,7 @@ class FieldTest extends TestCase
         $data = [
             'storeManager' => $this->_storeManagerMock,
             'urlBuilder' => $this->createMock(Url::class),
-            'secureRenderer' => $secureRendererMock
+            'secureRenderer' => $secureRendererMock,
         ];
         $helper = new ObjectManager($this);
         $helper->prepareObjectManager();
@@ -99,7 +100,7 @@ class FieldTest extends TestCase
                 'getHtmlId',
                 'getName',
                 'getElementHtml',
-                'setReadonly'
+                'setReadonly',
             ]
         );
 

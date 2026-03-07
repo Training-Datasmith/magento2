@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -57,8 +58,8 @@ class ProductStockTest extends ProductTestBase
                         'qty' => 100,
                         'is_qty_decimal' => false,
                         'is_in_stock' => true,
-                        'min_qty' => 200
-                    ]
+                        'min_qty' => 200,
+                    ],
                 ],
             ],
             'product'
@@ -69,7 +70,7 @@ class ProductStockTest extends ProductTestBase
                 'rows' => [
                     ['sku', 'store_view_code', 'out_of_stock_qty'],
                     ['$product.sku$', '', '1'],
-                ]
+                ],
             ],
             'file'
         ),
@@ -156,7 +157,7 @@ class ProductStockTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_qty.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 

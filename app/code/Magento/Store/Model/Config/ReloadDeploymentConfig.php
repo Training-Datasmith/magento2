@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Store\Model\Config;
 
 use Magento\Framework\App\State\ReloadProcessorInterface;
@@ -17,7 +19,6 @@ use Magento\Store\Model\WebsiteRepository;
  */
 class ReloadDeploymentConfig implements ReloadProcessorInterface
 {
-
     /**
      * @param StoreRepository $storeRepository
      * @param WebsiteRepository $websiteRepository

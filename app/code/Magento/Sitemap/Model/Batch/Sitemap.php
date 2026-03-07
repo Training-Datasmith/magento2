@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -27,9 +28,9 @@ use Magento\Sitemap\Model\ItemProvider\CmsPage;
 use Magento\Sitemap\Model\ItemProvider\ItemProviderInterface;
 use Magento\Sitemap\Model\ItemProvider\ProductConfigReader;
 use Magento\Sitemap\Model\ItemProvider\StoreUrl;
-use Magento\Sitemap\Model\ResourceModel\Catalog\ProductFactory as BaseProductFactory;
 use Magento\Sitemap\Model\ResourceModel\Catalog\Batch\ProductFactory;
 use Magento\Sitemap\Model\ResourceModel\Catalog\CategoryFactory;
+use Magento\Sitemap\Model\ResourceModel\Catalog\ProductFactory as BaseProductFactory;
 use Magento\Sitemap\Model\ResourceModel\Cms\PageFactory;
 use Magento\Sitemap\Model\Sitemap as BaseSitemap;
 use Magento\Sitemap\Model\SitemapConfigReaderInterface;

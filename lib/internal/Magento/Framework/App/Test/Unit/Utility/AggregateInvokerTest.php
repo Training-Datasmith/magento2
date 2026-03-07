@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\Framework\App\Test\Unit\Utility;
 
 use Magento\Framework\App\Utility\AggregateInvoker;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\IncompleteTestError;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\SkippedWithMessageException as SkippedTestError;
 use PHPUnit\Framework\Test;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AggregateInvokerTest extends TestCase
 {
@@ -79,18 +80,18 @@ class AggregateInvokerTest extends TestCase
             [
                 'Passed: 0, Failed: 1, Incomplete: 0, Skipped: 0.',
                 'fail',
-                ExpectationFailedException::class
+                ExpectationFailedException::class,
             ],
             [
                 'Passed: 0, Failed: 0, Incomplete: 1, Skipped: 0.',
                 'markTestIncomplete',
-                IncompleteTestError::class
+                IncompleteTestError::class,
             ],
             [
                 'Passed: 0, Failed: 0, Incomplete: 0, Skipped: 1.',
                 'markTestSkipped',
-                SkippedTestError::class
-            ]
+                SkippedTestError::class,
+            ],
         ];
     }
 }

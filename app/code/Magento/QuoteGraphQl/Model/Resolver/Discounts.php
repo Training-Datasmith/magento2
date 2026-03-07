@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,16 +12,16 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\QuoteGraphQl\Model\GetDiscounts;
 use Magento\Quote\Model\Quote;
+use Magento\QuoteGraphQl\Model\GetDiscounts;
 
 /**
  * @inheritdoc
  */
 class Discounts implements ResolverInterface
 {
-    public const TYPE_SHIPPING = "SHIPPING";
-    public const TYPE_ITEM = "ITEM";
+    public const TYPE_SHIPPING = 'SHIPPING';
+    public const TYPE_ITEM = 'ITEM';
 
     /**
      * @param GetDiscounts $getDiscounts

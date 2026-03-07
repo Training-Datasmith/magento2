@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -128,7 +129,7 @@ class ReportModulesInfoTest extends TestCase
                     ['name' => 'name', 'setup_version' => '2.0.0', 'type' => 'disabled'],
                     ['name' => 'name', 'setup_version' => '2.0.0', 'type' => 'installed'],
                     ['name' => 'name', 'setup_version' => '2.0.0', 'type' => 'uninstalled'],
-                ]
+                ],
             ]);
         $this->systemModelMock->expects($this->any())->method('setData')->willReturnSelf();
         $this->systemModelMock->expects($this->any())->method('save')->willReturnSelf();

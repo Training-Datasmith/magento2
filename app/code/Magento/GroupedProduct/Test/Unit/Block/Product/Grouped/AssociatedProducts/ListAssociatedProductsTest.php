@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,31 +8,31 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProduct\Test\Unit\Block\Product\Grouped\AssociatedProducts;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Backend\Block\Template\Context;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\DataObject;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\GroupedProduct\Block\Product\Grouped\AssociatedProducts\ListAssociatedProducts;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
 #[CoversClass(\Magento\GroupedProduct\Block\Product\Grouped\AssociatedProducts\ListAssociatedProducts::class)]
 class ListAssociatedProductsTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /**
      * @var ObjectManager
      */
     private $objectManagerHelper;
-    
+
     /**
      * @var MockObject
      */
@@ -77,7 +78,7 @@ class ListAssociatedProductsTest extends TestCase
         // Initialize ObjectManager to avoid "ObjectManager isn't initialized" errors
         $this->objectManagerHelper = new ObjectManager($this);
         $this->objectManagerHelper->prepareObjectManager();
-        
+
         $this->contextMock = $this->createMock(Context::class);
         $this->registryMock = $this->createMock(Registry::class);
         $this->productMock = $this->createMock(Product::class);

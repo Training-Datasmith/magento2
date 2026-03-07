@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,19 +9,19 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order;
 
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order\Config;
 use Magento\Sales\Model\Order\Status;
 use Magento\Sales\Model\Order\StatusFactory;
+use Magento\Sales\Model\Order\StatusLabel;
 use Magento\Sales\Model\ResourceModel\Order\Status\Collection;
 use Magento\Sales\Model\ResourceModel\Order\Status\CollectionFactory;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Sales\Model\Order\StatusLabel;
 
 /**
  * Test for Magento\Sales\Model\Order\Config class
@@ -100,7 +101,7 @@ class ConfigTest extends TestCase
                 [
                     'orderStatusFactory' => $this->statusFactoryMock,
                     'orderStatusCollectionFactory' => $this->orderStatusCollectionFactoryMock,
-                    'statusLabel' => $this->statusLabel
+                    'statusLabel' => $this->statusLabel,
                 ]
             );
     }
@@ -176,7 +177,7 @@ class ConfigTest extends TestCase
                     'state' => 'processing',
                     'label' => 'Processing',
                 ]
-            )
+            ),
         ];
         $collectionMock = $this->createPartialMockWithReflection(
             Collection::class,
@@ -275,7 +276,7 @@ class ConfigTest extends TestCase
                 ],
                 'expectedResult' => [
                     0 => 'fraud',
-                    1 => 'processing'
+                    1 => 'processing',
                 ],
             ],
             'pending state' => [
@@ -291,7 +292,7 @@ class ConfigTest extends TestCase
                     ),
                 ],
                 'expectedResult' => [
-                    'pending_status' => 'Pending label'
+                    'pending_status' => 'Pending label',
                 ],
             ],
         ];

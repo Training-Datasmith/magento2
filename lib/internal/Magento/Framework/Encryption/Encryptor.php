@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class Encryptor implements EncryptorInterface
      */
     private $hashVersionMap = [
         self::HASH_VERSION_MD5 => 'md5',
-        self::HASH_VERSION_SHA256 => 'sha256'
+        self::HASH_VERSION_SHA256 => 'sha256',
     ];
 
     /**
@@ -233,7 +234,7 @@ class Encryptor implements EncryptorInterface
             [
                 $hash,
                 $salt,
-                $version
+                $version,
             ]
         );
     }
@@ -429,21 +430,21 @@ class Encryptor implements EncryptorInterface
                 $initVector = $iv ? $iv : null;
                 $keyVersion = (int)$keyVersion;
                 $cryptVersion = self::CIPHER_RIJNDAEL_256;
-            // specified key, specified crypt
+                // specified key, specified crypt
             } elseif (3 === $partsCount) {
                 list($keyVersion, $cryptVersion, $data) = $parts;
                 $keyVersion = (int)$keyVersion;
                 $cryptVersion = (int)$cryptVersion;
-            // no key version = oldest key, specified crypt
+                // no key version = oldest key, specified crypt
             } elseif (2 === $partsCount) {
                 list($cryptVersion, $data) = $parts;
                 $keyVersion = 0;
                 $cryptVersion = (int)$cryptVersion;
-            // no key version = oldest key, no crypt version = oldest crypt
+                // no key version = oldest key, no crypt version = oldest crypt
             } elseif (1 === $partsCount) {
                 $keyVersion = 0;
                 $cryptVersion = self::CIPHER_BLOWFISH;
-            // not supported format
+                // not supported format
             } else {
                 return '';
             }
@@ -609,7 +610,7 @@ class Encryptor implements EncryptorInterface
      * @param string $key
      * @return false|string
      */
-    private function decodeKey(string $key) : string|bool
+    private function decodeKey(string $key): string|bool
     {
         return (str_starts_with($key, ConfigOptionsListConstants::STORE_KEY_ENCODED_RANDOM_STRING_PREFIX)) ?
             base64_decode(substr($key, strlen(ConfigOptionsListConstants::STORE_KEY_ENCODED_RANDOM_STRING_PREFIX))) :

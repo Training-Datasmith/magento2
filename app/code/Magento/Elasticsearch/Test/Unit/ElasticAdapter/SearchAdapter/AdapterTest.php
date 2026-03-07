@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\Test\Unit\ElasticAdapter\SearchAdapter;
 
 use Magento\AdvancedSearch\Model\Client\ClientException;
-use Magento\Elasticsearch\SearchAdapter\QueryContainer;
-use Magento\Elasticsearch8\Model\Client\Elasticsearch;
+use Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Adapter;
 use Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Mapper;
 use Magento\Elasticsearch\SearchAdapter\Aggregation\Builder as AggregationBuilder;
 use Magento\Elasticsearch\SearchAdapter\ConnectionManager;
+use Magento\Elasticsearch\SearchAdapter\QueryContainer;
 use Magento\Elasticsearch\SearchAdapter\QueryContainerFactory;
 use Magento\Elasticsearch\SearchAdapter\ResponseFactory;
+use Magento\Elasticsearch8\Model\Client\Elasticsearch;
 use Magento\Framework\Search\RequestInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Elasticsearch\ElasticAdapter\SearchAdapter\Adapter;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

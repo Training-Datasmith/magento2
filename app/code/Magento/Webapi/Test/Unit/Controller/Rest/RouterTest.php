@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class RouterTest extends TestCase
         $this->_router = $objectManager->getObject(
             Router::class,
             [
-                'apiConfig' => $this->_apiConfigMock
+                'apiConfig' => $this->_apiConfigMock,
             ]
         );
     }

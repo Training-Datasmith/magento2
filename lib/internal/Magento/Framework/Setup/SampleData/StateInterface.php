@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ interface StateInterface
     /**
      * Current state
      */
-    const ERROR = 'error';
-    const INSTALLED = 'installed';
+    public const ERROR = 'error';
+    public const INSTALLED = 'installed';
 
     /**
      * Set error flag to Sample Data state

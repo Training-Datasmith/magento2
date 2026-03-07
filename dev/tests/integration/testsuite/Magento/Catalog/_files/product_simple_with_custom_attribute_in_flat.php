@@ -1,20 +1,21 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
-use Magento\Catalog\Setup\CategorySetup;
-use Magento\Eav\Model\Entity;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Catalog\Setup\CategorySetup;
+use Magento\Eav\Model\Entity;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var \Magento\TestFramework\ObjectManager $objectManager */
 $objectManager = Bootstrap::getObjectManager();
@@ -24,7 +25,6 @@ $productRepository = $objectManager->get(ProductRepositoryInterface::class);
 $productFactory = $objectManager->get(ProductFactory::class);
 /** @var ProductAttributeRepositoryInterface $attributeRepository */
 $attributeRepository = $objectManager->get(ProductAttributeRepositoryInterface::class);
-
 
 /** @var $installer CategorySetup */
 $installer = $objectManager->create(CategorySetup::class);

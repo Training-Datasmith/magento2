@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data;
 
 /**
@@ -61,7 +64,7 @@ abstract class AbstractSearchResult extends AbstractDataObject implements Search
      * @var \Magento\Framework\DB\QueryInterface
      */
     protected $query;
-    
+
     /**
      * @var \Magento\Framework\DB\Select
      * @deprecated 101.0.0

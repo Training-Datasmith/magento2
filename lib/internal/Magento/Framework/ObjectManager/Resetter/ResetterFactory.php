@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -23,9 +24,9 @@ class ResetterFactory
      * @return ResetterInterface
      * @phpcs:disable Magento2.Functions.StaticFunction
      */
-    public static function create() : ResetterInterface
+    public static function create(): ResetterInterface
     {
-        return new static::$resetterClassName;
+        return new static::$resetterClassName();
     }
 
     /**
@@ -35,7 +36,7 @@ class ResetterFactory
      * @return void
      * @phpcs:disable Magento2.Functions.StaticFunction
      */
-    public static function setResetterClassName($resetterClassName) : void
+    public static function setResetterClassName($resetterClassName): void
     {
         static::$resetterClassName = $resetterClassName;
     }

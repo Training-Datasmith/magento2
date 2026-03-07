@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class AreaTest extends TestCase
 
         $constructors = [
             ['NameSpace1\ClassName1', ['arg1' => 'NameSpace1\class5', 'arg2' => 'NameSpace1\ClassName4']],
-            ['NameSpace1\ClassName2', ['arg1' => 'NameSpace1\class5']]
+            ['NameSpace1\ClassName2', ['arg1' => 'NameSpace1\class5']],
         ];
 
         $this->classReaderDecoratorMock->expects($this->exactly(count($classes)))
@@ -74,7 +75,7 @@ class AreaTest extends TestCase
 
         $expected = [
             $classes[0] => $constructors[0][1],
-            $classes[1] => $constructors[1][1]
+            $classes[1] => $constructors[1][1],
         ];
 
         $this->assertEquals($result, $expected);

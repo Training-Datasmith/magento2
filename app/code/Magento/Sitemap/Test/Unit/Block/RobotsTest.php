@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -92,7 +93,7 @@ class RobotsTest extends TestCase
                 'context' => $context,
                 'sitemapCollectionFactory' => $this->sitemapCollectionFactory,
                 'storeManager' => $this->storeManager,
-                'sitemapConfigReader' => $this->siteMapConfigReader
+                'sitemapConfigReader' => $this->siteMapConfigReader,
             ]
         );
     }

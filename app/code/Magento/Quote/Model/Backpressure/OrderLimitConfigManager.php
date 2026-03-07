@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class OrderLimitConfigManager implements LimitConfigManagerInterface
                 $limit = $this->fetchGuestLimit();
                 break;
             default:
-                throw new RuntimeException(__("Identity type not found"));
+                throw new RuntimeException(__('Identity type not found'));
         }
 
         return new LimitConfig($limit, $this->fetchPeriod());

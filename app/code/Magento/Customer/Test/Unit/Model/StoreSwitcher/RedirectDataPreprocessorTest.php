@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class RedirectDataPreprocessorTest extends TestCase
             [1, []],
             [2, []],
             [3, []],
-            [4, ['customer_id' => 4]]
+            [4, ['customer_id' => 4]],
         ];
     }
 }

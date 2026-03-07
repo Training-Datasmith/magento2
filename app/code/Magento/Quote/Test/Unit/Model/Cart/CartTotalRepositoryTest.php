@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Cart;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CouponManagementInterface;
@@ -22,7 +23,7 @@ use Magento\Quote\Model\Cart\TotalsConverter;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -98,7 +99,7 @@ class CartTotalRepositoryTest extends TestCase
         $this->totalsFactoryMock = $this->createPartialMock(
             TotalsInterfaceFactory::class,
             [
-                'create'
+                'create',
             ]
         );
         $this->quoteMock = $this->createPartialMockWithReflection(
@@ -111,7 +112,7 @@ class CartTotalRepositoryTest extends TestCase
                 'getQuoteCurrencyCode',
                 'getItemsQty',
                 'isVirtual',
-                'collectTotals'
+                'collectTotals',
             ]
         );
         $this->quoteRepositoryMock = $this->createMock(
@@ -121,7 +122,7 @@ class CartTotalRepositoryTest extends TestCase
             Address::class,
             [
                 'getData',
-                'getTotals'
+                'getTotals',
             ]
         );
         $this->dataObjectHelperMock = $this->getMockBuilder(
@@ -265,12 +266,12 @@ class CartTotalRepositoryTest extends TestCase
         return [
             'Virtual Quote' => [
                 'isVirtual' => true,
-                'getAddressType' => 'getBillingAddress'
+                'getAddressType' => 'getBillingAddress',
             ],
             'Non-virtual Quote' => [
                 'isVirtual' => false,
-                'getAddressType' => 'getShippingAddress'
-            ]
+                'getAddressType' => 'getShippingAddress',
+            ],
         ];
     }
 }

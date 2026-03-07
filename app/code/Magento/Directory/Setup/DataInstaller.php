@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -75,7 +77,7 @@ class DataInstaller
         $adapter->update(
             $this->resourceConnection->getTableName('core_config_data'),
             [
-                'value' => implode(',', $currRequiredStates)
+                'value' => implode(',', $currRequiredStates),
             ],
             $where
         );

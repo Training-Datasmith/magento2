@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Api\CustomAttributesDataInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -55,7 +56,7 @@ class AttributeAdapterTest extends TestCase
             'isVisibleInAdvancedSearch' => false,
             'backendType' => 'varchar',
             'frontendInput' => 'text',
-            'usesSource' => false
+            'usesSource' => false,
         ];
 
         $this->attribute->method('getIsFilterable')->willReturnCallback(function () use (&$data) {
@@ -349,7 +350,7 @@ class AttributeAdapterTest extends TestCase
     public static function isAlwaysIndexableProvider()
     {
         return [
-            [false]
+            [false],
         ];
     }
 
@@ -376,7 +377,7 @@ class AttributeAdapterTest extends TestCase
         return [
             [true, false, true],
             [true, false, true],
-            [false, false, false]
+            [false, false, false],
         ];
     }
 
@@ -387,7 +388,7 @@ class AttributeAdapterTest extends TestCase
     {
         return [
             ['string', 'text', false],
-            ['text', 'text', true]
+            ['text', 'text', true],
         ];
     }
 
@@ -397,7 +398,7 @@ class AttributeAdapterTest extends TestCase
     public static function getFieldNameProvider()
     {
         return [
-            ['name', [], 'name']
+            ['name', [], 'name'],
         ];
     }
 
@@ -407,7 +408,7 @@ class AttributeAdapterTest extends TestCase
     public static function getFieldTypeProvider()
     {
         return [
-            ['type', 'type']
+            ['type', 'type'],
         ];
     }
 
@@ -417,7 +418,7 @@ class AttributeAdapterTest extends TestCase
     public static function getFieldIndexProvider()
     {
         return [
-            ['type', 'no', 'no']
+            ['type', 'no', 'no'],
         ];
     }
 }

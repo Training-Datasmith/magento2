@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +15,8 @@ use Magento\Catalog\Model\Product\Option\Type\File\ImageContentProcessor;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Api\Data\CartItemInterface;
-use Magento\Quote\Model\Quote\Item\CartItemProcessorInterface;
 use Magento\Quote\Api\Data\ProductOptionExtensionFactory;
+use Magento\Quote\Model\Quote\Item\CartItemProcessorInterface;
 use Magento\Quote\Model\Quote\ProductOptionFactory;
 
 /**

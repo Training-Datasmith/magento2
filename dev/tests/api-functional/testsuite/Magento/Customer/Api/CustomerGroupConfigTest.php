@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,9 +15,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CustomerGroupConfigTest extends WebapiAbstract
 {
-    const SERVICE_NAME = "customerCustomerGroupConfigV1";
-    const SERVICE_VERSION = "V1";
-    const RESOURCE_PATH = "/V1/customerGroups";
+    public const SERVICE_NAME = 'customerCustomerGroupConfigV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/customerGroups';
 
     /**
      * @return void
@@ -37,7 +39,7 @@ class CustomerGroupConfigTest extends WebapiAbstract
         $requestData = ['id' => $customerGroupId];
         $groupData = $this->_webApiCall($serviceInfo, $requestData);
 
-        $this->assertEquals($customerGroupId, $groupData, "The default group does not match.");
+        $this->assertEquals($customerGroupId, $groupData, 'The default group does not match.');
     }
 
     /**
@@ -63,18 +65,18 @@ class CustomerGroupConfigTest extends WebapiAbstract
         $requestData = ['id' => $customerGroupId];
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
             $this->assertStringContainsString((string)$customerGroupId, $e->getMessage());
         }

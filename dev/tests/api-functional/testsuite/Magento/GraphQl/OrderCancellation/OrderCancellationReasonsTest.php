@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -54,22 +55,22 @@ QUERY;
                 'storeConfig' => [
                     'order_cancellation_reasons' => [
                         [
-                            'description' => 'The item(s) are no longer needed'
+                            'description' => 'The item(s) are no longer needed',
                         ],
                         [
-                            'description' => 'The order was placed by mistake'
+                            'description' => 'The order was placed by mistake',
                         ],
                         [
-                            'description' => 'Item(s) not arriving within the expected timeframe'
+                            'description' => 'Item(s) not arriving within the expected timeframe',
                         ],
                         [
-                            'description' => 'Found a better price elsewhere'
+                            'description' => 'Found a better price elsewhere',
                         ],
                         [
-                            'description' => 'Other'
-                        ]
+                            'description' => 'Other',
+                        ],
                     ],
-                ]
+                ],
             ],
             $response
         );
@@ -81,7 +82,7 @@ QUERY;
         DataFixture(StoreFixture::class, [
             'store_group_id' => '$store_group2.id$',
             'code' => 'some_store_2',
-            'name' => 'Some Store 2'
+            'name' => 'Some Store 2',
         ], 'store2'),
         Config(
             'sales/cancellation/reasons',
@@ -107,16 +108,16 @@ QUERY;
                 'storeConfig' => [
                     'order_cancellation_reasons' => [
                         [
-                            'description' => 'Reason 1'
+                            'description' => 'Reason 1',
                         ],
                         [
-                            'description' => 'Reason 2'
+                            'description' => 'Reason 2',
                         ],
                         [
-                            'description' => 'Another'
-                        ]
+                            'description' => 'Another',
+                        ],
                     ],
-                ]
+                ],
             ],
             $response
         );
@@ -128,7 +129,7 @@ QUERY;
         DataFixture(StoreFixture::class, [
             'store_group_id' => '$store_group3.id$',
             'code' => 'some_store_3',
-            'name' => 'Some Store 3'
+            'name' => 'Some Store 3',
         ], 'store3'),
         Config(
             'sales/cancellation/reasons',
@@ -154,10 +155,10 @@ QUERY;
                 'storeConfig' => [
                     'order_cancellation_reasons' => [
                         [
-                            'description' => 'Dummy reason'
-                        ]
+                            'description' => 'Dummy reason',
+                        ],
                     ],
-                ]
+                ],
             ],
             $response
         );

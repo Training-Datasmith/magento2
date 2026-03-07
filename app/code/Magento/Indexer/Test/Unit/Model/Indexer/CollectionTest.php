@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Indexer\Model\Indexer\Collection;
 use Magento\Indexer\Model\Indexer\State;
 use Magento\Indexer\Model\ResourceModel\Indexer\State\Collection as StateCollection;
 use Magento\Indexer\Model\ResourceModel\Indexer\State\CollectionFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
@@ -154,7 +155,7 @@ class CollectionTest extends TestCase
                     'indexer_2' => static fn (self $testCase) => $testCase->getStateMock(['indexer_id' => 'indexer_2']),
                     'indexer_3' => static fn (self $testCase) => $testCase->getStateMock(['indexer_id' => 'indexer_3']),
                 ],
-            ]
+            ],
         ];
     }
 
@@ -206,7 +207,7 @@ class CollectionTest extends TestCase
                         'indexer_id' => 'indexer_1',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -244,27 +245,27 @@ class CollectionTest extends TestCase
             ],
             [
                 'getItemsByColumnValue',
-                ['colName', 'value']
+                ['colName', 'value'],
             ],
             [
                 'getItemByColumnValue',
-                ['colName', 'value']
+                ['colName', 'value'],
             ],
             [
                 'toXml',
-                []
+                [],
             ],
             [
                 'toArray',
-                []
+                [],
             ],
             [
                 'toOptionArray',
-                []
+                [],
             ],
             [
                 'toOptionHash',
-                []
+                [],
             ],
         ];
     }
@@ -299,11 +300,11 @@ class CollectionTest extends TestCase
         return [
             [
                 'setDataToAll',
-                ['colName', 'value']
+                ['colName', 'value'],
             ],
             [
                 'setItemObjectClass',
-                ['notValidClassName']
+                ['notValidClassName'],
             ],
         ];
     }

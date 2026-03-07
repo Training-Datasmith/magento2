@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model;
 
 /**
@@ -15,15 +18,15 @@ class Link extends \Magento\Framework\Model\AbstractExtensibleModel implements
     /**#@+
      * Constants
      */
-    const KEY_ID = 'id';
-    const KEY_SKU = 'sku';
-    const KEY_OPTION_ID = 'option_id';
-    const KEY_QTY = 'qty';
-    const KEY_POSITION = 'position';
-    const KEY_IS_DEFAULT = 'is_default';
-    const KEY_PRICE = 'price';
-    const KEY_PRICE_TYPE = 'price_type';
-    const KEY_CAN_CHANGE_QUANTITY = 'selection_can_change_quantity';
+    public const KEY_ID = 'id';
+    public const KEY_SKU = 'sku';
+    public const KEY_OPTION_ID = 'option_id';
+    public const KEY_QTY = 'qty';
+    public const KEY_POSITION = 'position';
+    public const KEY_IS_DEFAULT = 'is_default';
+    public const KEY_PRICE = 'price';
+    public const KEY_PRICE_TYPE = 'price_type';
+    public const KEY_CAN_CHANGE_QUANTITY = 'selection_can_change_quantity';
     /**#@-*/
 
     /**

@@ -87,7 +87,7 @@ class ResourceConnection implements ResetAfterRequestInterface
     /**
      * @inheritdoc
      */
-    public function _resetState() : void
+    public function _resetState(): void
     {
         $this->mappedTableNames = [];
         foreach ($this->connections as $connection) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -61,12 +62,12 @@ class EditTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
         $this->model = $this->objectManagerHelper->getObject(
@@ -76,7 +77,7 @@ class EditTest extends TestCase
                 'rootResource' => $this->rootResourceMock,
                 'rulesCollectionFactory' => $this->rulesCollectionFactoryMock,
                 'aclResourceProvider' => $this->aclResourceProviderMock,
-                'integrationData' => $this->integrationDataMock
+                'integrationData' => $this->integrationDataMock,
             ]
         );
         $this->model->setCoreRegistry($this->coreRegistryMock);
@@ -86,7 +87,7 @@ class EditTest extends TestCase
     {
         $resources = [
             ['id' => 'Magento_Backend::admin', 'children' => ['resource1', 'resource2', 'resource3']],
-            ['id' => 'Invalid_Node', 'children' => ['resource4', 'resource5', 'resource6']]
+            ['id' => 'Invalid_Node', 'children' => ['resource4', 'resource5', 'resource6']],
         ];
         $mappedResources = ['mapped1', 'mapped2', 'mapped3'];
         $this->coreRegistryMock->expects($this->once())

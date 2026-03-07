@@ -1,8 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Test\Unit\Model\Metadata\Form;
 
 use Magento\Customer\Model\Metadata\Form\Boolean;
@@ -39,7 +42,7 @@ class BooleanTest extends AbstractFormTestCase
             'int 5' => [5, ''],
             'Null' => [null, ''],
             'Invalid' => ['Invalid', ''],
-            'Empty string' => ['', '']
+            'Empty string' => ['', ''],
         ];
     }
 }

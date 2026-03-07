@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Tab;
 
 use Magento\Framework\App\Area;
@@ -134,7 +137,7 @@ class General extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Ab
                     'values'   => $themesCollections->toOptionArray(!$parentTheme->getId()),
                     'required' => true,
                     'class'    => 'no-changes',
-                    'onchange' => $onChangeScript
+                    'onchange' => $onChangeScript,
                 ]
             );
         } elseif (!empty($formData['parent_id'])) {
@@ -145,7 +148,7 @@ class General extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Ab
                     'label'    => __('Parent Theme'),
                     'title'    => __('Parent Theme'),
                     'name'     => 'parent_title',
-                    'text'     => $parentTheme->getId() ? $parentTheme->getThemeTitle() : ''
+                    'text'     => $parentTheme->getId() ? $parentTheme->getThemeTitle() : '',
                 ]
             );
         }
@@ -165,7 +168,7 @@ class General extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Ab
                 'label' => __('Theme Title'),
                 'title' => __('Theme Title'),
                 'name' => 'theme_title',
-                'required' => $this->_isFieldAttrRequired()
+                'required' => $this->_isFieldAttrRequired(),
             ]
         );
 
@@ -179,7 +182,7 @@ class General extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Ab
                     'name'     => 'preview',
                     'required' => false,
                     'note'     => $this->_getPreviewImageNote(),
-                    'theme'    => $theme
+                    'theme'    => $theme,
                 ]
             );
         } elseif ($theme->hasPreviewImage()) {
@@ -195,7 +198,7 @@ class General extends \Magento\Theme\Block\Adminhtml\System\Design\Theme\Edit\Ab
                     . '" onclick="imagePreview(\'theme_preview_image\'); return false;">'
                     . '<img width="50" src="'
                     . $theme->getThemeImage()->getPreviewImageUrl()
-                    . '" id="theme_preview_image" /></a>'
+                    . '" id="theme_preview_image" /></a>',
                 ]
             );
         }

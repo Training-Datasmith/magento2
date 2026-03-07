@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Tax\Model\Calculation;
 
-use Magento\Tax\Api\Data\GrandTotalRatesInterface;
 use Magento\Framework\Api\AbstractSimpleObject;
+use Magento\Tax\Api\Data\GrandTotalRatesInterface;
 
 /**
  * Grand Total Tax Details Model
@@ -17,8 +19,8 @@ class GrandTotalRates extends AbstractSimpleObject implements GrandTotalRatesInt
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const PERCENT = 'percent';
-    const TITLE   = 'title';
+    public const PERCENT = 'percent';
+    public const TITLE   = 'title';
     /**#@-*/
 
     /**

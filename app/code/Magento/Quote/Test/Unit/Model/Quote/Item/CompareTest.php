@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\Quote\Test\Unit\Model\Quote\Item;
 
 use Magento\Framework\Serialize\JsonValidator;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Quote\Model\Quote\Item\Compare;
 use Magento\Quote\Model\Quote\Item\Option;
 use Magento\Quote\Model\Quote\Item\Option\Comparator;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +54,7 @@ class CompareTest extends TestCase
         $constrArgs = $objectManagerHelper->getConstructArguments(
             Item::class,
             [
-                'itemOptionComparator' => new Comparator()
+                'itemOptionComparator' => new Comparator(),
             ]
         );
         $this->itemMock = $this->getMockBuilder(Item::class)
@@ -81,7 +82,7 @@ class CompareTest extends TestCase
             Compare::class,
             [
                 'serializer' => $serializer,
-                'jsonValidator' => $this->jsonValidatorMock
+                'jsonValidator' => $this->jsonValidatorMock,
             ]
         );
     }

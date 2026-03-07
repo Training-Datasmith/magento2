@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Attribute;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Helper\Product;
@@ -21,15 +21,16 @@ use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\Validator;
 use Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype\ValidatorFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\FrontendLabel;
+use Magento\Eav\Model\Validator\Attribute\Code;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Validator\Attribute\Code;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -266,7 +267,7 @@ class RepositoryTest extends TestCase
         string $field,
         string $method,
         bool $filterable
-    ) : void {
+    ): void {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('Invalid value of "'.$filterable.'" provided for the '.$field.' field.');
         $attributeMock = $this->createPartialMock(
@@ -286,7 +287,7 @@ class RepositoryTest extends TestCase
     {
         return [
             [ProductAttributeInterface::IS_FILTERABLE, 'getIsFilterable', true],
-            [ProductAttributeInterface::IS_FILTERABLE_IN_SEARCH, 'getIsFilterableInSearch', true]
+            [ProductAttributeInterface::IS_FILTERABLE_IN_SEARCH, 'getIsFilterableInSearch', true],
         ];
     }
 
@@ -394,7 +395,7 @@ class RepositoryTest extends TestCase
                 'setAttributeId',
                 'getAttributeCode',
                 'getBackendTypeByInput',
-                'getBackendType'
+                'getBackendType',
             ]
         );
         $attributeMock->expects($this->once())->method('getAttributeId')->willReturn(null);
@@ -512,7 +513,7 @@ class RepositoryTest extends TestCase
                 'setIsUserDefined',
                 'getData',
                 'getOptions',
-                'setEntityTypeId'
+                'setEntityTypeId',
             ]
         );
         $attributeMock->expects($this->any())->method('getAttributeId')->willReturn(null);
@@ -542,12 +543,12 @@ class RepositoryTest extends TestCase
         $expectedOptions = [
             'value' => [
                 'option_value_1' => [0 => 'Option 1', 1 => 'Store Label'],
-                'option_2' => [0 => 'Option 2']
+                'option_2' => [0 => 'Option 2'],
             ],
             'order' => [
                 'option_value_1' => 10,
-                'option_2' => 0
-            ]
+                'option_2' => 0,
+            ],
         ];
         $attributeMock->expects($this->once())->method('setDefault')->with(['option_value_1']);
         $attributeMock->expects($this->once())->method('setOption')->with($expectedOptions);

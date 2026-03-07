@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ declare(strict_types=1);
 /**
  * Registry for fixtures
  */
+
 namespace Magento\Setup\Fixtures;
 
 class FixtureRegistry
 {
-
     /**
      * List of fixtures applied to the application
      *
@@ -34,7 +35,7 @@ class FixtureRegistry
      *
      * @return string[]
      */
-    public function getFixtures() :array
+    public function getFixtures(): array
     {
         return $this->fixtures;
     }

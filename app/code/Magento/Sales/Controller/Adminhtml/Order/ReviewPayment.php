@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class ReviewPayment extends \Magento\Sales\Controller\Adminhtml\Order implements
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::review_payment';
+    public const ADMIN_RESOURCE = 'Magento_Sales::review_payment';
 
     /**
      * Manage payment state

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product\Option;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -174,7 +177,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 'store_price' => 'price',
                 'store_price_type' => 'price_type',
                 'price' => $priceExpr,
-                'price_type' => $priceTypeExpr
+                'price_type' => $priceTypeExpr,
             ]
         );
 

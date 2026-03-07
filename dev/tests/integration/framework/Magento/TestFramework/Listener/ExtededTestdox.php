@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Listener;
 
-use PHPUnit\Framework\Test;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Runner\BaseTestRunner;
@@ -330,7 +333,7 @@ class ExtededTestdox extends \PHPUnit\Util\Printer implements \PHPUnit\Framework
                 0 ? ' (skipped)' : '') . ($data['time'] > 1 ? ' - ' . number_format(
                     $data['time'],
                     2
-                ) . "s" : '')
+                ) . 's' : '')
             );
         }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Theme\Model\Design\Config;
 
-use \Magento\Framework\Exception\LocalizedException;
-use \Magento\Theme\Api\Data\DesignConfigInterface;
-use \Magento\Theme\Api\Data\DesignConfigDataInterface;
-use \Magento\Framework\Mail\TemplateInterfaceFactory as TemplateFactory;
-use \Magento\Framework\Filter\Template;
-use \Magento\Framework\Filter\Template\Tokenizer\Parameter as ParameterTokenizer;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filter\Template;
+use Magento\Framework\Filter\Template\Tokenizer\Parameter as ParameterTokenizer;
+use Magento\Framework\Mail\TemplateInterfaceFactory as TemplateFactory;
+use Magento\Theme\Api\Data\DesignConfigDataInterface;
+use Magento\Theme\Api\Data\DesignConfigInterface;
 
 /**
  * Design configuration validator
@@ -68,7 +70,7 @@ class Validator
                             __(
                                 'The "%templateName" template contains an incorrect configuration, with a reference '
                                 . 'to itself. Remove or change the reference, then try again.',
-                                ["templateName" => $name]
+                                ['templateName' => $name]
                             )
                         );
                     }
@@ -95,7 +97,7 @@ class Validator
             /* Save mapping between field names and config paths */
             $elements[$designElement->getFieldConfig()['field']] = [
                 'config_path' => $designElement->getPath(),
-                'value' => $designElement->getValue()
+                'value' => $designElement->getValue(),
             ];
         }
         return $elements;

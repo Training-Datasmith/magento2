@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Backend\Controller\Adminhtml\Cache;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\TestFramework\Helper\Bootstrap;
 
 class CleanStaticFilesTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
@@ -28,7 +30,7 @@ class CleanStaticFilesTest extends \Magento\TestFramework\TestCase\AbstractBacke
         $dirStatic->create($subStaticDir);
         $this->assertTrue($dirStatic->isExist($subStaticDir));
 
-        $dirVar= $filesystem->getDirectoryWrite(DirectoryList::VAR_DIR);
+        $dirVar = $filesystem->getDirectoryWrite(DirectoryList::VAR_DIR);
         $subVarDir = DirectoryList::TMP_MATERIALIZATION_DIR . '/subdir';
         $dirVar->create($subVarDir);
         $this->assertTrue($dirVar->isExist($subVarDir));
@@ -36,7 +38,7 @@ class CleanStaticFilesTest extends \Magento\TestFramework\TestCase\AbstractBacke
         // test
         parent::testAclHasAccess();
         $this->assertSessionMessages(
-            $this->containsEqual("The static files cache has been cleaned."),
+            $this->containsEqual('The static files cache has been cleaned.'),
             \Magento\Framework\Message\MessageInterface::TYPE_SUCCESS,
             \Magento\Framework\Message\ManagerInterface::class
         );

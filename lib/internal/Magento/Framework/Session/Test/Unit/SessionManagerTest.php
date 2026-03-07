@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 
 // @codingStandardsIgnoreStart
+
 namespace {
     $mockPHPFunctions = false;
 }
@@ -27,8 +29,8 @@ namespace Magento\Framework\Session\Test\Unit {
      */
     class SessionManagerTest extends TestCase
     {
-        const SESSION_USE_ONLY_COOKIES = 'session.use_only_cookies';
-        const SESSION_USE_ONLY_COOKIES_ENABLE = '1';
+        public const SESSION_USE_ONLY_COOKIES = 'session.use_only_cookies';
+        public const SESSION_USE_ONLY_COOKIES_ENABLE = '1';
 
         /**
          * @var ObjectManager

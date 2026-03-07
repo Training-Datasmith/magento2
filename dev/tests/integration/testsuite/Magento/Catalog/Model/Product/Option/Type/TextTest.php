@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -74,7 +76,7 @@ class TextTest extends TestCase
             [self::STUB_OPTION_DATA, 'string string', 'string string'],
             [self::STUB_OPTION_DATA, "string \r\n string", "string \n string"],
             [self::STUB_OPTION_DATA, "string \n\r string", "string \n string"],
-            [self::STUB_OPTION_DATA, "string \r string", "string \n string"]
+            [self::STUB_OPTION_DATA, "string \r string", "string \n string"],
         ];
     }
 }

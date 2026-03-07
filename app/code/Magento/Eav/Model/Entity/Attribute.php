@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,8 @@
 
 namespace Magento\Eav\Model\Entity;
 
+use Magento\Eav\Model\Cache\AttributesFormIdentity;
+use Magento\Eav\Model\Config;
 use Magento\Eav\Model\ReservedAttributeCheckerInterface;
 use Magento\Eav\Model\Validator\Attribute\Code as AttributeCodeValidator;
 use Magento\Framework\Api\AttributeValueFactory;
@@ -14,8 +18,6 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
-use Magento\Eav\Model\Config;
-use Magento\Eav\Model\Cache\AttributesFormIdentity;
 
 /**
  * EAV Entity attribute model
@@ -532,7 +534,7 @@ class Attribute extends \Magento\Eav\Model\Entity\Attribute\AbstractAttribute im
 
         if (($this->hasDataChanges() || $this->isDeleted())) {
             $identities[] = sprintf(
-                "%s_%s_ENTITY",
+                '%s_%s_ENTITY',
                 Config::ENTITIES_CACHE_ID,
                 strtoupper($this->getEntityType()->getEntityTypeCode())
             );
@@ -548,7 +550,7 @@ class Attribute extends \Magento\Eav\Model\Entity\Attribute\AbstractAttribute im
 
                 foreach ($formsToInvalidate as $form) {
                     $identities[] = sprintf(
-                        "%s_%s_FORM",
+                        '%s_%s_FORM',
                         AttributesFormIdentity::CACHE_TAG,
                         $form
                     );

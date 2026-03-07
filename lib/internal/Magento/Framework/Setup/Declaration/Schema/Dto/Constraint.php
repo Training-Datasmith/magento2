@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto;
 
 /**
@@ -17,17 +20,17 @@ class Constraint extends GenericElement implements
      * In case if we will need to change this object: add, modify or drop, we will need
      * to define it by its type.
      */
-    const TYPE = 'constraint';
+    public const TYPE = 'constraint';
 
     /**
      * Means PRIMARY KEY
      */
-    const PRIMARY_TYPE = 'primary';
+    public const PRIMARY_TYPE = 'primary';
 
     /**
      * Means UNIQUE KEY
      */
-    const UNIQUE_TYPE = 'unique';
+    public const UNIQUE_TYPE = 'unique';
 
     /**
      * @var Table

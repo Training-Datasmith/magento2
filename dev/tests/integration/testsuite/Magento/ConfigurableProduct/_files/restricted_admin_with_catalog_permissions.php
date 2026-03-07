@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,8 +7,8 @@
 declare(strict_types=1);
 
 use Magento\Authorization\Model\Acl\Role\Group;
-use Magento\Authorization\Model\RoleFactory;
 use Magento\Authorization\Model\Role;
+use Magento\Authorization\Model\RoleFactory;
 use Magento\Authorization\Model\Rules;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\TestFramework\Helper\Bootstrap;

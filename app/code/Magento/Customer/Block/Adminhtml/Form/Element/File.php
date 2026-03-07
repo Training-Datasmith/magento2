@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Form\Element;
 
 /**
@@ -90,7 +93,7 @@ class File extends \Magento\Framework\Data\Form\Element\AbstractElement
                 'name' => sprintf('%s[delete]', $this->getName()),
                 'value' => '1',
                 'class' => 'checkbox',
-                'id' => $checkboxId
+                'id' => $checkboxId,
             ];
             $label = ['for' => $checkboxId];
             if ($this->getDisabled()) {
@@ -139,7 +142,7 @@ class File extends \Magento\Framework\Data\Form\Element\AbstractElement
                 'alt' => __('Download'),
                 'title' => __('Download'),
                 'src'   => $this->_assetRepo->getUrl('images/fam_bullet_disk.gif'),
-                'class' => 'v-middle'
+                'class' => 'v-middle',
             ];
             $url = $this->_getPreviewUrl();
             $html .= '<span>';
@@ -163,7 +166,7 @@ class File extends \Magento\Framework\Data\Form\Element\AbstractElement
                 'type' => 'hidden',
                 'name' => sprintf('%s[value]', $this->getName()),
                 'id' => sprintf('%s_value', $this->getHtmlId()),
-                'value' => $this->getEscapedValue()
+                'value' => $this->getEscapedValue(),
             ]
         );
     }

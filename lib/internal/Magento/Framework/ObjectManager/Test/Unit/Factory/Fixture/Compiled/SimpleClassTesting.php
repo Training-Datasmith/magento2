@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class SimpleClassTesting
         $value = 'value',
         array $valueArray = [
             'default_value1',
-            'default_value2'
+            'default_value2',
         ],
         $globalValue = '',
         $nullValue = null

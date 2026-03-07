@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class Formset extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'attribute_set_name',
                 'required' => true,
                 'class' => 'required-entry validate-no-html-tags',
-                'value' => $data->getAttributeSetName()
+                'value' => $data->getAttributeSetName(),
             ]
         );
 
@@ -79,7 +80,7 @@ class Formset extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'skeleton_set',
                     'required' => true,
                     'class' => 'required-entry',
-                    'values' => $sets
+                    'values' => $sets,
                 ]
             );
         }

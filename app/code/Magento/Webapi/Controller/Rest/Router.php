@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Controller\Rest;
 
-use \Magento\Framework\Webapi\Rest\Request;
+use Magento\Framework\Webapi\Rest\Request;
 
 class Router
 {

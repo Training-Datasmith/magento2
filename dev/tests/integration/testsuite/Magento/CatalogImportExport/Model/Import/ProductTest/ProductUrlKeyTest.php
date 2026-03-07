@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_without_url_keys_and_name.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -93,7 +94,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/' . $importFile,
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         /** @var ProcessingErrorAggregatorInterface $errors */
@@ -117,27 +118,27 @@ class ProductUrlKeyTest extends ProductTestBase
             [
                 'products_to_check_valid_url_keys.csv',
                 [
-                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 0
-                ]
+                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 0,
+                ],
             ],
             [
                 'products_to_check_valid_url_keys_with_different_language.csv',
                 [
-                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 0
-                ]
+                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 0,
+                ],
             ],
             [
                 'products_to_check_duplicated_url_keys.csv',
                 [
-                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 2
-                ]
+                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 2,
+                ],
             ],
             [
                 'products_to_check_duplicated_names.csv' ,
                 [
-                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 1
-                ]
-            ]
+                    RowValidatorInterface::ERROR_DUPLICATE_URL_KEY => 1,
+                ],
+            ],
         ];
     }
 
@@ -157,7 +158,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_check_valid_url_keys_multiple_stores.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
@@ -177,7 +178,7 @@ class ProductUrlKeyTest extends ProductTestBase
         $products = [
             'simple1' => 'url-key1',
             'simple2' => 'url-key2',
-            'simple3' => 'url-key3'
+            'simple3' => 'url-key3',
         ];
         // added by _files/products_to_import_with_valid_url_keys.csv
         $this->importedProducts[] = 'simple3';
@@ -189,7 +190,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_valid_url_keys.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -213,12 +214,12 @@ class ProductUrlKeyTest extends ProductTestBase
     /**
      * @magentoDataFixture Magento/Catalog/_files/product_simple_with_wrong_url_key.php
      */
-    public function testAddUpdateProductWithInvalidUrlKeys() : void
+    public function testAddUpdateProductWithInvalidUrlKeys(): void
     {
         $products = [
             'simple1' => 'cuvee-merlot-cabernet-igp-pays-d-oc-frankrijk',
             'simple2' => 'normal-url',
-            'simple3' => 'some-wrong-url'
+            'simple3' => 'some-wrong-url',
         ];
         // added by _files/products_to_import_with_invalid_url_keys.csv
         $this->importedProducts[] = 'simple3';
@@ -230,7 +231,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_invalid_url_keys.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -262,7 +263,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_without_url_key_column.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -286,7 +287,7 @@ class ProductUrlKeyTest extends ProductTestBase
         $products = [
             'simple1' => 'simple-1',
             'simple2' => 'simple-2',
-            'simple3' => 'simple-3'
+            'simple3' => 'simple-3',
         ];
         // added by _files/products_to_import_without_url_keys.csv
         $this->importedProducts[] = 'simple3';
@@ -297,7 +298,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_without_url_keys.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -371,7 +372,7 @@ class ProductUrlKeyTest extends ProductTestBase
     {
         $products = [
             'simple1' => 'url-with-spaces-1',
-            'simple2' => 'url-with-spaces-2'
+            'simple2' => 'url-with-spaces-2',
         ];
         $filesystem = $this->objectManager->create(Filesystem::class);
         $directory = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
@@ -411,7 +412,7 @@ class ProductUrlKeyTest extends ProductTestBase
             ProductFixture::class,
             [
                 'url_key' => '1234t',
-                'url_path' => '1234t'
+                'url_path' => '1234t',
             ],
         ),
     ]
@@ -426,7 +427,7 @@ class ProductUrlKeyTest extends ProductTestBase
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_check_valid_url_keys_mixed_chars_nums.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
 
@@ -451,8 +452,8 @@ class ProductUrlKeyTest extends ProductTestBase
                     ['simple1%uniqid%', '$store2.code$', 'Default', 'simple', '', '', ''],
                     // simple2 has no url_key specified in the main row
                     ['simple2%uniqid%', '', 'Default', 'simple', '10.00', 'Simple Product 1%uniqid%', ''],
-                    ['simple2%uniqid%', '$store2.code$', 'Default', 'simple', '', '', '']
-                ]
+                    ['simple2%uniqid%', '$store2.code$', 'Default', 'simple', '', '', ''],
+                ],
             ],
             'file'
         ),

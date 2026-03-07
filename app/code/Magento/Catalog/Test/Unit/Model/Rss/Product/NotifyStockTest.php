@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class NotifyStockTest extends TestCase
                 'productFactory' => $this->productFactory,
                 'stockFactory' => $this->stockFactory,
                 'productStatus' => $this->status,
-                'eventManager' => $this->eventManager
+                'eventManager' => $this->eventManager,
             ]
         );
     }

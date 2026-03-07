@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Model;
 
-use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\CatalogUrlRewrite\Model\GetVisibleForStores;
 use Magento\CatalogUrlRewrite\Model\ObjectRegistryFactory;
@@ -118,7 +119,7 @@ class ProductUrlRewriteGeneratorTest extends TestCase
                 'objectRegistryFactory' => $this->objectRegistryFactory,
                 'storeViewService' => $this->storeViewService,
                 'storeManager' => $this->storeManager,
-                'visibleForStores' => $this->visibleForStores
+                'visibleForStores' => $this->visibleForStores,
             ]
         );
 
@@ -146,7 +147,7 @@ class ProductUrlRewriteGeneratorTest extends TestCase
             ->getMock();
         $productCategoriesMock->expects($this->exactly(2))
             ->method('addAttributeToSelect')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['url_key'] => $productCategoriesMock,
                 ['url_path'] => $productCategoriesMock
             });

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -130,7 +131,7 @@ class SaveAssetKeywordsTest extends TestCase
             ->willReturn($this->selectMock);
         $this->connectionMock
             ->method('fetchCol')
-            ->willReturn([['id'=> 1], ['id' => 2]]);
+            ->willReturn([['id' => 1], ['id' => 2]]);
         $this->resourceConnectionMock->expects($this->any())
             ->method('getConnection')
             ->willReturn($this->connectionMock);
@@ -151,15 +152,15 @@ class SaveAssetKeywordsTest extends TestCase
             [
                 [],
                 1,
-                []
+                [],
             ], [
                 [
                     new DataObject(['keyword' => 'keyword-1']),
                     new DataObject(['keyword' => 'keyword-2']),
                 ],
                 1,
-                ['keyword-1', 'keyword-2']
-            ]
+                ['keyword-1', 'keyword-2'],
+            ],
         ];
     }
 }

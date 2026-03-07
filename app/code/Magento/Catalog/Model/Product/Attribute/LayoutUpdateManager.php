@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use Magento\Framework\View\Model\Layout\MergeFactory as LayoutProcessorFactory;
  */
 class LayoutUpdateManager
 {
-
     /**
      * @var FlyweightFactory
      */
@@ -81,7 +81,7 @@ class LayoutUpdateManager
                 [
                     'theme' => $this->themeFactory->create(
                         $this->design->getConfigurationDesignTheme(Area::AREA_FRONTEND)
-                    )
+                    ),
                 ]
             );
             $this->themeFactory = null;
@@ -108,7 +108,7 @@ class LayoutUpdateManager
 
         return array_filter(
             array_map(
-                function (string $handle) use ($identifier) : ?string {
+                function (string $handle) use ($identifier): ?string {
                     preg_match(
                         '/^catalog\_product\_view\_selectable\_' .preg_quote($identifier) .'\_([a-z0-9]+)/i',
                         $handle,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class AttributeFixedProductTaxTest extends TestCase
                         'country' => 'US',
                         'state' => '0',
                         'value' => '35.0000',
-                        'website_value' => 35.0
+                        'website_value' => 35.0,
                     ],
                 ],
             ],

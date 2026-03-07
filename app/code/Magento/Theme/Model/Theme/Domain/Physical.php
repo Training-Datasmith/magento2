@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Physical theme model class
  */
+
 namespace Magento\Theme\Model\Theme\Domain;
 
 class Physical implements \Magento\Framework\View\Design\Theme\Domain\PhysicalInterface
@@ -93,7 +96,7 @@ class Physical implements \Magento\Framework\View\Design\Theme\Domain\PhysicalIn
             $theme->getId()
         )->count();
 
-        $title = sprintf("%s - %s #%s", $theme->getThemeTitle(), __('Copy'), $themeCopyCount + 1);
+        $title = sprintf('%s - %s #%s', $theme->getThemeTitle(), __('Copy'), $themeCopyCount + 1);
         return $title;
     }
 }

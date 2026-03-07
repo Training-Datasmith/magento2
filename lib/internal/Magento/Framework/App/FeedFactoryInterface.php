@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,7 +18,7 @@ interface FeedFactoryInterface
     /**
      * RSS feed input format
      */
-    const FORMAT_RSS = 'rss';
+    public const FORMAT_RSS = 'rss';
 
     /**
      * Returns FeedInterface object from a custom array

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class IndexerDimensionMode implements ParserInterface
             if (count($args) !== 2) {
                 throw new LocalizedException(
                     __(
-                        "Invalid annotation format: @%1 %2. The valid format is: @%1 <indexer> <dimension>.",
+                        'Invalid annotation format: @%1 %2. The valid format is: @%1 <indexer> <dimension>.',
                         self::ANNOTATION,
                         $value
                     )

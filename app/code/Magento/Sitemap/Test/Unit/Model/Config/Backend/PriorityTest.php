@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class PriorityTest extends TestCase
     public static function dataProviderTestBeforeSaveValueCorrect()
     {
         return [
-            ['0'], ['0.0'], ['0.5'], ['1']
+            ['0'], ['0.0'], ['0.5'], ['1'],
         ];
     }
 
@@ -89,7 +90,7 @@ class PriorityTest extends TestCase
     public static function dataProviderTestBeforeSaveValueOutOfRange()
     {
         return [
-            ['-1'], ['2'], ['nan']
+            ['-1'], ['2'], ['nan'],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,7 +96,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                 'required' => 0,
                 'position' => 5,
                 'delete' => '',
-            ]
+            ],
         ]
     )->setBundleSelectionsData(
         [
@@ -106,7 +108,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 1,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -115,8 +117,8 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 1,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
-                ]
+                    'selection_price_value' => 5,
+                ],
             ],
             [
                 [
@@ -126,7 +128,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 2,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -135,8 +137,8 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 2,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
-                ]
+                    'selection_price_value' => 5,
+                ],
             ],
             [
                 [
@@ -145,7 +147,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 3,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -153,8 +155,8 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 3,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
-                ]
+                    'selection_price_value' => 5,
+                ],
             ],
             [
                 [
@@ -163,7 +165,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 4,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -171,8 +173,8 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 4,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
-                ]
+                    'selection_price_value' => 5,
+                ],
             ],
             [
                 [
@@ -181,7 +183,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 5,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -189,9 +191,9 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_BUNDLE)
                     'delete' => '',
                     'option_id' => 5,
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
-                ]
-            ]
+                    'selection_price_value' => 5,
+                ],
+            ],
         ]
     );
 

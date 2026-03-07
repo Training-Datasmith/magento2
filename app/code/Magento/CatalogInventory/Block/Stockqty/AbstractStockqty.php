@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ abstract class AbstractStockqty extends \Magento\Framework\View\Element\Template
      * @deprecated
      * @see \Magento\CatalogInventory\Model\Configuration::XML_PATH_STOCK_THRESHOLD_QTY
      */
-    const XML_PATH_STOCK_THRESHOLD_QTY = 'cataloginventory/options/stock_threshold_qty';
+    public const XML_PATH_STOCK_THRESHOLD_QTY = 'cataloginventory/options/stock_threshold_qty';
 
     /**
      * Core registry

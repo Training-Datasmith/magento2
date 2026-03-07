@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class Synchronize implements SynchronizeInterface
                 __(
                     'Failed to execute the following synchronizers: %synchronizers',
                     [
-                        'synchronizers' => implode(', ', $failed)
+                        'synchronizers' => implode(', ', $failed),
                     ]
                 )
             );

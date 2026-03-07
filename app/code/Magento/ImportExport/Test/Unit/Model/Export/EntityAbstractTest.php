@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\ImportExport\Model\Export\AbstractEntity
  */
+
 namespace Magento\ImportExport\Test\Unit\Model\Export;
 
 use Magento\ImportExport\Model\Export\AbstractEntity;
@@ -32,7 +34,7 @@ class EntityAbstractTest extends TestCase
                 'getEntityTypeCode',
                 'getAttributeCollection',
                 '_getHeaderColumns',
-                '_getEntityCollection'
+                '_getEntityCollection',
             ]
         );
 

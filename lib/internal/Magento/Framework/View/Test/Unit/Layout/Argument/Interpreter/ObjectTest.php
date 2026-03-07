@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,16 +12,16 @@ use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Stdlib\BooleanUtils;
 use Magento\Framework\View\Layout\Argument\Interpreter\DataObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests layout argument interpreter data object.
  */
 class ObjectTest extends TestCase
 {
-    const EXPECTED_CLASS = \Magento\Framework\View\Test\Unit\Layout\Argument\Interpreter\ObjectTest::class;
+    public const EXPECTED_CLASS = \Magento\Framework\View\Test\Unit\Layout\Argument\Interpreter\ObjectTest::class;
 
     /**
      * @var ObjectManagerInterface|MockObject
@@ -160,7 +161,7 @@ class ObjectTest extends TestCase
                 ['value' => ObjectManagerInterface::class],
                 '\UnexpectedValueException',
                 'Instance of ' . self::EXPECTED_CLASS . ' is expected',
-            ]
+            ],
         ];
     }
 }

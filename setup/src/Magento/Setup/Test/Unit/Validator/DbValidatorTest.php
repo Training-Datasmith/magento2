@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class DbValidatorTest extends TestCase
             ->willReturnMap(
                 [
                     [\PDO::FETCH_COLUMN, 0, $accessibleDbs],
-                    [\PDO::FETCH_NUM, null, $listOfPrivileges]
+                    [\PDO::FETCH_NUM, null, $listOfPrivileges],
                 ]
             );
         $this->assertTrue($this->dbValidator->checkDatabaseConnection('name', 'host', 'user', 'password'));
@@ -105,7 +106,7 @@ class DbValidatorTest extends TestCase
             ->willReturnMap(
                 [
                     [\PDO::FETCH_COLUMN, 0, $accessibleDbs],
-                    [\PDO::FETCH_NUM, null, $listOfPrivileges]
+                    [\PDO::FETCH_NUM, null, $listOfPrivileges],
                 ]
             );
         $this->dbValidator->checkDatabaseConnection('name', 'host', 'user', 'password');

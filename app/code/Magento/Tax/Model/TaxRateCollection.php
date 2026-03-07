@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,13 +8,13 @@
 
 namespace Magento\Tax\Model;
 
-use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\Api\AbstractServiceCollection;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Tax\Api\Data\TaxRateInterface as TaxRate;
+use Magento\Tax\Api\TaxRateRepositoryInterface;
 
 /**
  * Tax rate collection for a grid backed by Services
@@ -90,7 +92,7 @@ class TaxRateCollection extends AbstractServiceCollection
 
         if ($taxRate->getZipTo() != null && $taxRate->getZipFrom() != null) {
             /* must be a "1" for existing code (e.g. JavaScript) to work */
-            $collectionItem->setZipIsRange("1");
+            $collectionItem->setZipIsRange('1');
             $collectionItem->setZipFrom($taxRate->getZipFrom());
             $collectionItem->setZipTo($taxRate->getZipTo());
         } else {

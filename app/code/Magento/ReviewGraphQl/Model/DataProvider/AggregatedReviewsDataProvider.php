@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -68,8 +69,8 @@ class AggregatedReviewsDataProvider
             'page_info' => [
                 'page_size' => $reviewsCollection->getPageSize(),
                 'current_page' => $currentPage,
-                'total_pages' => $maxPages
-            ]
+                'total_pages' => $maxPages,
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ class GroupRegistryTest extends \PHPUnit\Framework\TestCase
     /**
      * The group code from the fixture data.
      */
-    const GROUP_CODE = 'custom_group';
+    public const GROUP_CODE = 'custom_group';
 
     /**
      * @var \Magento\Customer\Model\GroupRegistry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\ProductAlert\Model\ResourceModel\Price as PriceResource;
 use Magento\ProductAlert\Model\PriceFactory;
+use Magento\ProductAlert\Model\ResourceModel\Price as PriceResource;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
@@ -34,7 +35,6 @@ $priceResource = $objectManager->get(PriceResource::class);
 /** @var CustomerRepositoryInterface $customerRepository */
 $customerRepository = $objectManager->get(CustomerRepositoryInterface::class);
 $customer = $customerRepository->get('customer_second_ws_with_addr@example.com', (int)$secondWebsite->getId());
-
 
 $product = $productFactory->create();
 $product

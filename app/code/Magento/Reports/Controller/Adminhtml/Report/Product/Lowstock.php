@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Controller\Adminhtml\Report\Product;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -14,7 +17,7 @@ class Lowstock extends \Magento\Reports\Controller\Adminhtml\Report\Product impl
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Reports::lowstock';
+    public const ADMIN_RESOURCE = 'Magento_Reports::lowstock';
 
     /**
      * Low stock action

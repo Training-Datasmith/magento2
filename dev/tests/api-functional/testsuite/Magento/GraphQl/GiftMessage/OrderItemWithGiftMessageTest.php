@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -96,11 +97,11 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
                             'gift_message' => [
                                 'from' => $message->getSender(),
                                 'to' => $message->getRecipient(),
-                                'message' => $message->getMessage()
-                            ]
-                        ]
-                    ]
-                ]
+                                'message' => $message->getMessage(),
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery($this->getGuestOrderByTokenQuery($orderResponse['placeOrder']['orderV2']['token']))
         );
@@ -136,10 +137,10 @@ class OrderItemWithGiftMessageTest extends GraphQlAbstract
                 'guestOrderByToken' => [
                     'items' => [
                         [
-                            'gift_message' => null
-                        ]
-                    ]
-                ]
+                            'gift_message' => null,
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getGuestOrderByTokenQuery(

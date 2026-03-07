@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Session config interface
  *
@@ -19,5 +20,5 @@ interface SaveHandlerInterface extends \SessionHandlerInterface
     /**
      * Default session save handler
      */
-    const DEFAULT_HANDLER = 'files';
+    public const DEFAULT_HANDLER = 'files';
 }

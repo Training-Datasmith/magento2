@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class TextTest extends TestCase
             Text::class,
             [
                 'context' => $this->context,
-                'resourceHelper' => $this->helper
+                'resourceHelper' => $this->helper,
             ]
         );
     }

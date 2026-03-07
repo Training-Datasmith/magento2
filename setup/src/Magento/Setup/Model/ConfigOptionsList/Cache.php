@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Setup\Model\ConfigOptionsList;
 
-use Magento\Framework\Setup\ConfigOptionsListInterface;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Config\Data\ConfigData;
 use Magento\Framework\Config\File\ConfigFilePool;
+use Magento\Framework\Setup\ConfigOptionsListInterface;
 use Magento\Framework\Setup\Option\FlagConfigOption;
 use Magento\Framework\Setup\Option\SelectConfigOption;
 use Magento\Framework\Setup\Option\TextConfigOption;
@@ -95,7 +96,7 @@ class Cache implements ConfigOptionsListInterface
      */
     private $validBackendCacheOptions = [
         self::INPUT_VALUE_CACHE_REDIS,
-        self::INPUT_VALUE_CACHE_VALKEY
+        self::INPUT_VALUE_CACHE_VALKEY,
     ];
 
     /**
@@ -111,7 +112,7 @@ class Cache implements ConfigOptionsListInterface
         self::INPUT_KEY_CACHE_BACKEND_REDIS_SERIALIZER => self::CONFIG_PATH_CACHE_BACKEND_SERIALIZER,
         self::INPUT_KEY_CACHE_ALLOW_PARALLEL_CACHE_GENERATION => self::CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION,
         self::INPUT_KEY_CACHE_BACKEND_REDIS_USE_LUA => self::CONFIG_PATH_CACHE_BACKEND_USE_LUA,
-        self::INPUT_KEY_CACHE_BACKEND_REDIS_USE_LUA_ON_GC=> self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
+        self::INPUT_KEY_CACHE_BACKEND_REDIS_USE_LUA_ON_GC => self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
     ];
 
     /**
@@ -127,7 +128,7 @@ class Cache implements ConfigOptionsListInterface
         self::INPUT_KEY_CACHE_BACKEND_VALKEY_SERIALIZER => self::CONFIG_PATH_CACHE_BACKEND_SERIALIZER,
         self::INPUT_KEY_CACHE_ALLOW_PARALLEL_CACHE_GENERATION => self::CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION,
         self::INPUT_KEY_CACHE_BACKEND_VALKEY_USE_LUA => self::CONFIG_PATH_CACHE_BACKEND_USE_LUA,
-        self::INPUT_KEY_CACHE_BACKEND_VALKEY_USE_LUA_ON_GC=> self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
+        self::INPUT_KEY_CACHE_BACKEND_VALKEY_USE_LUA_ON_GC => self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
     ];
 
     /**
@@ -225,7 +226,7 @@ class Cache implements ConfigOptionsListInterface
                 TextConfigOption::FRONTEND_WIZARD_TEXT,
                 self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
                 'Set to 0 to disable lua on garbage collection (default is 1, enabled)'
-            )
+            ),
         ];
     }
 
@@ -290,7 +291,7 @@ class Cache implements ConfigOptionsListInterface
                 TextConfigOption::FRONTEND_WIZARD_TEXT,
                 self::CONFIG_PATH_CACHE_BACKEND_USE_LUA_ON_GC,
                 'Set to 0 to disable lua on garbage collection (default is 1, enabled)'
-            )
+            ),
         ];
     }
 
@@ -312,7 +313,7 @@ class Cache implements ConfigOptionsListInterface
                 self::INPUT_KEY_CACHE_ALLOW_PARALLEL_CACHE_GENERATION,
                 self::CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION,
                 'Allow generate cache in non-blocking way'
-            )
+            ),
         ];
     }
 

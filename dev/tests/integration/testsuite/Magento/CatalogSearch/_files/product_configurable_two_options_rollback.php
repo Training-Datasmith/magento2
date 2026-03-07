@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ $list = [
     'configurable2_option_12',
     'configurable2_option_21',
     'configurable2_option_22',
-    'configurable_with_2_opts'
+    'configurable_with_2_opts',
 ];
 
 foreach ($list as $sku) {

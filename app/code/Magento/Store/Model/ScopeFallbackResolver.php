@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -45,7 +48,7 @@ class ScopeFallbackResolver implements ScopeFallbackResolverInterface
                 case ScopeInterface::SCOPE_GROUP:
                     $fallback = [
                         ScopeInterface::SCOPE_WEBSITES,
-                        $this->storeManager->getGroup($scopeId)->getWebsiteId()
+                        $this->storeManager->getGroup($scopeId)->getWebsiteId(),
                     ];
                     break;
                 case ScopeInterface::SCOPE_STORE:

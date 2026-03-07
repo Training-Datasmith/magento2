@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
             case 'old':
                 $this->log(
                     "Magento\Framework\Cache\Backend\Eaccelerator::clean() : ".
-                    "CLEANING_MODE_OLD is unsupported by the Eaccelerator backend"
+                    'CLEANING_MODE_OLD is unsupported by the Eaccelerator backend'
                 );
                 return false;
             case CacheConstants::CLEANING_MODE_MATCHING_TAG:
@@ -327,7 +328,7 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
             'expired_read' => false,
             'priority' => false,
             'infinite_lifetime' => false,
-            'get_list' => true
+            'get_list' => true,
         ];
     }
 }

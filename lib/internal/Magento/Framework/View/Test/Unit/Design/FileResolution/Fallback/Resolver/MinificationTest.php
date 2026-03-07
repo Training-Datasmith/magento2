@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Framework\View\Test\Unit\Design\FileResolution\Fallback\Resolv
 
 use Magento\Framework\View\Design\FileResolution\Fallback\Resolver\Minification;
 use Magento\Framework\View\Design\FileResolution\Fallback\ResolverInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for Magento\Framework\View\Design\FileResolution\Fallback\Resolver\Minification
@@ -85,7 +86,7 @@ class MinificationTest extends TestCase
             ->method('resolve')
             ->willReturnMap([
                 ['', $requested, null, null, null, null, $resolvedOriginal],
-                ['', $alternative, null, null, null, null, $resolvedAlternative]
+                ['', $alternative, null, null, null, null, $resolvedAlternative],
             ]);
 
         $this->assertEquals($expected, $this->minification->resolve('', $requested));

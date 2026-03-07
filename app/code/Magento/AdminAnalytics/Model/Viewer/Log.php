@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class Log extends DataObject
      *
      * @return int
      */
-    public function getId() : ?int
+    public function getId(): ?int
     {
         return $this->getData('id');
     }
@@ -29,7 +30,7 @@ class Log extends DataObject
      *
      * @return string
      */
-    public function getLastViewVersion() : ?string
+    public function getLastViewVersion(): ?string
     {
         return $this->getData('last_viewed_in_version');
     }

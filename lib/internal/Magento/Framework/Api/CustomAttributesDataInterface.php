@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ interface CustomAttributesDataInterface extends ExtensibleDataInterface
     /**
      * Array key for custom attributes
      */
-    const CUSTOM_ATTRIBUTES = 'custom_attributes';
+    public const CUSTOM_ATTRIBUTES = 'custom_attributes';
 
     /**
      * Get an attribute value.

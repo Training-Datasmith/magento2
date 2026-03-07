@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model;
 
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Url\HostChecker;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class \Magento\Backend\Model\UrlInterface

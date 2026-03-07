@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use PHPUnit\Framework\TestCase;
 
 class ProcessInvoiceOperationTest extends TestCase
 {
-
     /**
      * @var TransactionManagerInterface|MockObject
      */

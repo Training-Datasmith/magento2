@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class AddStockStatusToCollectionTest extends TestCase
             AddStockStatusToCollection::class,
             [
                 'stockHelper' => $this->stockHelper,
-                'engineResolver' => $this->engineResolver
+                'engineResolver' => $this->engineResolver,
             ]
         );
     }

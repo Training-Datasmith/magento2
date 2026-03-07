@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -69,7 +71,7 @@ class GiftMessageManager
                         try {
                             $giftMessage->delete();
                             $entity->setGiftMessageId(0)->save();
-                        // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
+                            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
                         } catch (\Exception $e) {
                         }
                     }
@@ -88,7 +90,7 @@ class GiftMessageManager
                     )->save();
 
                     $entity->setGiftMessageId($giftMessage->getId())->save();
-                // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
+                    // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock.DetectedCatch
                 } catch (\Exception $e) {
                 }
             }

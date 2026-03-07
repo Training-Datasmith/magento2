@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Framework\UrlInterface;
-use Magento\Framework\Registry;
-use Magento\Framework\AuthorizationInterface;
-use Magento\Ui\Component;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\UrlInterface;
+use Magento\Ui\Component;
 use Magento\Ui\Component\Container;
 
 /**
@@ -20,9 +23,9 @@ use Magento\Ui\Component\Container;
  */
 class Attributes extends AbstractModifier
 {
-    const GROUP_SORT_ORDER = 15;
-    const GROUP_NAME = 'Attributes';
-    const GROUP_CODE = 'attributes';
+    public const GROUP_SORT_ORDER = 15;
+    public const GROUP_NAME = 'Attributes';
+    public const GROUP_CODE = 'attributes';
 
     /**
      * @var UrlInterface
@@ -128,7 +131,7 @@ class Attributes extends AbstractModifier
             'dataScope' => '',
             'provider' => 'product_form.product_form_data_source',
             'imports' => [
-                'state' => '!index=product_attribute_add_form:responseStatus'
+                'state' => '!index=product_attribute_add_form:responseStatus',
             ],
             'options' => [
                 'title' => __('Add Attribute'),
@@ -139,9 +142,9 @@ class Attributes extends AbstractModifier
                             [
                                 'targetName' => '${ $.name }',
                                 '__disableTmpl' => ['targetName' => false],
-                                'actionName' => 'actionCancel'
-                            ]
-                        ]
+                                'actionName' => 'actionCancel',
+                            ],
+                        ],
                     ],
                     [
                         'text' => __('Add Selected'),
@@ -150,13 +153,13 @@ class Attributes extends AbstractModifier
                             [
                                 'targetName' => '${ $.name }.product_attributes_grid',
                                 '__disableTmpl' => ['targetName' => false],
-                                'actionName' => 'save'
+                                'actionName' => 'save',
                             ],
                             [
-                                'closeModal'
-                            ]
-                        ]
-                    ]
+                                'closeModal',
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -193,14 +196,14 @@ class Attributes extends AbstractModifier
                                         [
                                             'targetName' => 'product_form.product_form.add_attribute_modal'
                                                 . '.create_new_attribute_modal.product_attribute_add_form',
-                                            'actionName' => 'destroyInserted'
+                                            'actionName' => 'destroyInserted',
                                         ],
                                         [
                                             'targetName'
                                             => 'product_form.product_form.add_attribute_modal'
                                                 . '.create_new_attribute_modal.product_attribute_add_form',
-                                            'actionName' => 'render'
-                                        ]
+                                            'actionName' => 'render',
+                                        ],
                                     ],
                                     'title' => __('Create New Attribute'),
                                     'provider' => null,
@@ -231,7 +234,7 @@ class Attributes extends AbstractModifier
             'type' => $this->locator->getProduct()->getTypeId(),
             'set' => $this->locator->getProduct()->getAttributeSetId(),
             'message_key' => 'messages',
-            'popup' => 1
+            'popup' => 1,
         ];
 
         $meta['add_attribute_modal']['children']['create_new_attribute_modal'] = [
@@ -243,13 +246,13 @@ class Attributes extends AbstractModifier
                         'dataScope' => 'data.new_attribute',
                         'provider' => 'product_form.product_form_data_source',
                         'options' => [
-                            'title' => __('New Attribute')
+                            'title' => __('New Attribute'),
                         ],
                         'imports' => [
-                            'state' => '!index=product_attribute_add_form:responseStatus'
+                            'state' => '!index=product_attribute_add_form:responseStatus',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'children' => [
                 'product_attribute_add_form' => [
@@ -265,7 +268,7 @@ class Attributes extends AbstractModifier
                                     'mui/index/render_handle',
                                     [
                                         'handle' => 'catalog_product_attribute_edit_form',
-                                        'buttons' => 1
+                                        'buttons' => 1,
                                     ]
                                 ),
                                 'autoRender' => false,
@@ -293,14 +296,14 @@ class Attributes extends AbstractModifier
                                     '__disableTmpl' => [
                                         'saveUrl' => false,
                                         'validateUrl' => false,
-                                        'attributeSetId' => false
+                                        'attributeSetId' => false,
                                     ],
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
         return $meta;
     }
@@ -346,10 +349,10 @@ class Attributes extends AbstractModifier
                         'exports' => [
                             'attributeSetId' => '${ $.externalProvider }:params.template_id',
                             '__disableTmpl' => ['attributeSetId' => false],
-                        ]
+                        ],
                     ],
                 ],
-            ]
+            ],
         ];
         return $meta;
     }

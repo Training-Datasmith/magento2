@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\ReleaseNotification\Model\ContentProvider\Http;
 
+use Magento\Framework\HTTP\ClientInterface;
 use Magento\ReleaseNotification\Model\ContentProviderInterface;
 use Magento\Setup\Module\I18n\Locale;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\HTTP\ClientInterface;
 
 /**
  * Requests the release notification content data via an HTTP call to a REST API

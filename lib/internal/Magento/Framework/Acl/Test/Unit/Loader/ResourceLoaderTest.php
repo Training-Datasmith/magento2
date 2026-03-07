@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Acl\Loader\ResourceLoader
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Acl\Test\Unit\Loader;
 
 use Magento\Framework\Acl;
@@ -59,10 +62,10 @@ class ResourceLoaderTest extends TestCase
                                 'id' => 'child_resource::id',
                                 'title' => 'Child Resource Title',
                                 'sortOrder' => 10,
-                                'children' => []
-                            ]
-                        ]
-                    ]
+                                'children' => [],
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -104,10 +107,10 @@ class ResourceLoaderTest extends TestCase
                                 'id' => 'child_resource::id',
                                 'title' => 'Child Resource Title',
                                 'sortOrder' => 10,
-                                'children' => []
-                            ]
-                        ]
-                    ]
+                                'children' => [],
+                            ],
+                        ],
+                    ],
                 ]
             );
 

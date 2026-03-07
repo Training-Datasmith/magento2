@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Reader\Visibility;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
@@ -19,7 +22,7 @@ class Condition
     /**
      * Supported subtypes for visibility conditions.
      */
-    const TYPE_ARGUMENTS = 'arguments';
+    public const TYPE_ARGUMENTS = 'arguments';
 
     /**
      * @var Parser
@@ -56,7 +59,7 @@ class Condition
             $visibilityConditions['ifconfig'] = [
                 'name' => ConfigCondition::class,
                 'arguments' => [
-                    'configPath' => $configPath
+                    'configPath' => $configPath,
                 ],
             ];
         }
@@ -66,7 +69,7 @@ class Condition
             $visibilityConditions['acl'] = [
                 'name' => AclCondition::class,
                 'arguments' => [
-                    'acl' => $aclResource
+                    'acl' => $aclResource,
                 ],
             ];
         }

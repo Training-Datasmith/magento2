@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Test\Unit\Model\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Checkout\Helper\Data;
 use Magento\Checkout\Model\Session;
 use Magento\Checkout\Model\Type\Onepage;
@@ -35,6 +35,7 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Email\Sender\OrderSender;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -209,7 +210,7 @@ class OnepageTest extends TestCase
                 'extensibleDataObjectConverter' => $this->extensibleDataObjectConverterMock,
                 'quoteRepository' => $this->quoteRepositoryMock,
                 'quoteManagement' => $this->quoteManagementMock,
-                'totalsCollector' => $this->totalsCollectorMock
+                'totalsCollector' => $this->totalsCollectorMock,
             ]
         );
     }
@@ -363,7 +364,7 @@ class OnepageTest extends TestCase
                 'extensibleDataObjectConverter' => $this->extensibleDataObjectConverterMock,
                 'quoteRepository' => $this->quoteRepositoryMock,
                 'quoteManagement' => $this->quoteManagementMock,
-                'totalsCollector' => $this->totalsCollectorMock
+                'totalsCollector' => $this->totalsCollectorMock,
             ]
         );
 

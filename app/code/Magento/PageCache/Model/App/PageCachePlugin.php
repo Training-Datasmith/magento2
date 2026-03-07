@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ class PageCachePlugin
     /**
      * Label for compressed cache entries
      */
-    const COMPRESSION_PREFIX = 'COMPRESSED_CACHE_';
+    public const COMPRESSION_PREFIX = 'COMPRESSED_CACHE_';
 
     /**
      * Enable type management by adding type tag, and enable cache compression

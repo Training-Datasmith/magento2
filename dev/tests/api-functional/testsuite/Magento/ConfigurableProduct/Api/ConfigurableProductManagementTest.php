@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Api;
 
 use Magento\TestFramework\Helper\Bootstrap;
 
 class ConfigurableProductManagementTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'configurableProductConfigurableProductManagementV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/configurable-products/variation';
+    public const SERVICE_NAME = 'configurableProductConfigurableProductManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/configurable-products/variation';
 
     /**
      * @magentoApiDataFixture Magento/ConfigurableProduct/_files/configurable_attribute.php
@@ -21,13 +24,13 @@ class ConfigurableProductManagementTest extends \Magento\TestFramework\TestCase\
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::SERVICE_NAME . 'GenerateVariation'
-            ]
+                'operation' => self::SERVICE_NAME . 'GenerateVariation',
+            ],
         ];
         /** @var \Magento\Catalog\Api\ProductAttributeRepositoryInterface $attributeRepository */
         $attributeRepository = Bootstrap::getObjectManager()->get(
@@ -38,7 +41,7 @@ class ConfigurableProductManagementTest extends \Magento\TestFramework\TestCase\
         $data = [
             'product' => [
                 'sku' => 'test',
-                'price' => 10
+                'price' => 10,
             ],
             'options' => [
                 [
@@ -46,10 +49,10 @@ class ConfigurableProductManagementTest extends \Magento\TestFramework\TestCase\
                     'values' => [
                         [
                             'value_index' => $attributeOptionValue,
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
 
         ];
         $actual = $this->_webApiCall($serviceInfo, $data);
@@ -65,11 +68,11 @@ class ConfigurableProductManagementTest extends \Magento\TestFramework\TestCase\
                 'custom_attributes' => [
                     [
                         'attribute_code' => 'test_configurable',
-                        'value' => $attributeOptionValue
-                    ]
+                        'value' => $attributeOptionValue,
+                    ],
                 ],
-                'tier_prices' => []
-            ]
+                'tier_prices' => [],
+            ],
         ];
         ksort($expectedItems);
         ksort($actual);

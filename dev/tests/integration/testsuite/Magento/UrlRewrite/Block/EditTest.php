@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -210,8 +213,8 @@ class EditTest extends \PHPUnit\Framework\TestCase
                     'save_button' => true,
                     'reset_button' => false,
                     'delete_button' => false,
-                    'form' => ['url_rewrite' => $urlRewrite]
-                ]
+                    'form' => ['url_rewrite' => $urlRewrite],
+                ],
             ],
             // Editing URL rewrite
             [
@@ -222,9 +225,9 @@ class EditTest extends \PHPUnit\Framework\TestCase
                     'save_button' => true,
                     'reset_button' => true,
                     'delete_button' => true,
-                    'form' => ['url_rewrite' => $existingUrlRewrite]
-                ]
-            ]
+                    'form' => ['url_rewrite' => $existingUrlRewrite],
+                ],
+            ],
         ];
     }
 }

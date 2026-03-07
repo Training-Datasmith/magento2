@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,10 +16,10 @@ use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class AbstractAttributeTest extends TestCase
 {
@@ -105,8 +106,8 @@ class AbstractAttributeTest extends TestCase
                 'optionDataFactory' => $dataFactoryMock,
                 'dataObjectHelper' => $dataObjectHelperMock,
                 'data' => [
-                    AttributeInterface::OPTIONS => [['some value']]
-                ]
+                    AttributeInterface::OPTIONS => [['some value']],
+                ],
 
             ]
         );
@@ -125,8 +126,8 @@ class AbstractAttributeTest extends TestCase
             Attribute::class,
             [
                 'data' => [
-                    AttributeInterface::VALIDATE_RULES => ['some value']
-                ]
+                    AttributeInterface::VALIDATE_RULES => ['some value'],
+                ],
 
             ]
         );
@@ -174,8 +175,8 @@ class AbstractAttributeTest extends TestCase
             Attribute::class,
             [
                 'data' => [
-                    AttributeInterface::VALIDATE_RULES => null
-                ]
+                    AttributeInterface::VALIDATE_RULES => null,
+                ],
 
             ]
         );

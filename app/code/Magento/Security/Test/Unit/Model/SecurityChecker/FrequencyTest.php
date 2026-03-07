@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -88,7 +89,7 @@ class FrequencyTest extends TestCase
                 'securityConfig' => $this->securityConfigMock,
                 'collectionFactory' => $this->collectionFactoryMock,
                 'dateTime' => $this->dateTimeMock,
-                'remoteAddress' => $this->remoteAddressMock
+                'remoteAddress' => $this->remoteAddressMock,
             ]
         );
     }
@@ -112,7 +113,7 @@ class FrequencyTest extends TestCase
         /** @var PasswordResetRequestEvent $record */
         $record = $this->objectManager->getObject(PasswordResetRequestEvent::class);
         $record->setCreatedAt(
-            date("Y-m-d H:i:s", $timestamp - $limitTimeBetweenPasswordResetRequests)
+            date('Y-m-d H:i:s', $timestamp - $limitTimeBetweenPasswordResetRequests)
         );
 
         $this->collectionMock->expects($this->once())
@@ -142,7 +143,7 @@ class FrequencyTest extends TestCase
         /** @var PasswordResetRequestEvent $record */
         $record = $this->objectManager->getObject(PasswordResetRequestEvent::class);
         $record->setCreatedAt(
-            date("Y-m-d H:i:s", $timestamp - $limitTimeBetweenPasswordResetRequests + 1)
+            date('Y-m-d H:i:s', $timestamp - $limitTimeBetweenPasswordResetRequests + 1)
         );
 
         $this->collectionMock->expects($this->once())
@@ -165,27 +166,27 @@ class FrequencyTest extends TestCase
         return [
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP_AND_EMAIL
+                ResetMethod::OPTION_BY_IP_AND_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP
+                ResetMethod::OPTION_BY_IP,
             ],
             [
                 PasswordResetRequestEvent::CUSTOMER_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_EMAIL
+                ResetMethod::OPTION_BY_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP_AND_EMAIL
+                ResetMethod::OPTION_BY_IP_AND_EMAIL,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_IP
+                ResetMethod::OPTION_BY_IP,
             ],
             [
                 PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
-                ResetMethod::OPTION_BY_EMAIL
+                ResetMethod::OPTION_BY_EMAIL,
             ],
         ];
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Factory for helpers, used in Magento testing framework
  */
+
 namespace Magento\TestFramework\Helper;
 
 class Factory

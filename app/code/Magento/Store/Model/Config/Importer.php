@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config;
 
 use Magento\Framework\App\CacheInterface;
@@ -10,9 +13,9 @@ use Magento\Framework\App\DeploymentConfig\ImporterInterface;
 use Magento\Framework\Exception\State\InvalidTransitionException;
 use Magento\Store\Model\Config\Importer\DataDifferenceCalculator;
 use Magento\Store\Model\Config\Importer\Processor\ProcessorFactory;
+use Magento\Store\Model\ResourceModel\Website;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Store\Model\ResourceModel\Website;
 
 /**
  * Imports stores, websites and groups from transmitted data.
@@ -86,7 +89,7 @@ class Importer implements ImporterInterface
         $actions = [
             ProcessorFactory::TYPE_CREATE,
             ProcessorFactory::TYPE_DELETE,
-            ProcessorFactory::TYPE_UPDATE
+            ProcessorFactory::TYPE_UPDATE,
         ];
         $messages = ['Stores were processed'];
 

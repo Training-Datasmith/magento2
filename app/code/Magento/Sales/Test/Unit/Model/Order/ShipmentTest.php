@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class ShipmentTest extends TestCase
         $this->initCommentsCollectionFactoryMock();
 
         $this->shipmentModel = $helperManager->getObject(Shipment::class, [
-            'commentCollectionFactory' => $this->commentCollectionFactory
+            'commentCollectionFactory' => $this->commentCollectionFactory,
         ]);
     }
 

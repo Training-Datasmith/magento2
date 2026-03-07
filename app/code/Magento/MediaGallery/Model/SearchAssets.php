@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\MediaGallery\Model\ResourceModel\GetAssetsBySearchCriteria;
+use Magento\MediaGalleryApi\Api\Data\AssetInterfaceFactory;
 use Magento\MediaGalleryApi\Api\SearchAssetsInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Get media assets by searchCriteria

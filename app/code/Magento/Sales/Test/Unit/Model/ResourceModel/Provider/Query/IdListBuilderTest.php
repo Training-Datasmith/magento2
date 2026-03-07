@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class IdListBuilderTest extends TestCase
             ->with('sales')
             ->willReturn($this->connection);
         $this->resourceConnection->method('getTableName')
-            ->willReturnCallback(static fn(string $table): string => $table);
+            ->willReturnCallback(static fn (string $table): string => $table);
 
         $this->connection->method('select')
             ->willReturn($this->select);

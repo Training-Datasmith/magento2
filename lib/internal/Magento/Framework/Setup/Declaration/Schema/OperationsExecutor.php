@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -28,8 +30,8 @@ class OperationsExecutor
     /**
      * Request keys.
      */
-    const KEY_SAFE_MODE = 'safe-mode';
-    const KEY_DATA_RESTORE = 'data-restore';
+    public const KEY_SAFE_MODE = 'safe-mode';
+    public const KEY_DATA_RESTORE = 'data-restore';
 
     /**
      * @var OperationInterface[]

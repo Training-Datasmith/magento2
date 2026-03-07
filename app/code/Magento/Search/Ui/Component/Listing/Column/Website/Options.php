@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,17 +8,16 @@
 
 namespace Magento\Search\Ui\Component\Listing\Column\Website;
 
-use Magento\Framework\Escaper;
 use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Escaper;
 use Magento\Store\Model\System\Store as SystemStore;
 
 class Options implements OptionSourceInterface
 {
-
     /**
      * All Store Views value
      */
-    const ALL_WEBSITES = '0';
+    public const ALL_WEBSITES = '0';
 
     /**
      * Escaper

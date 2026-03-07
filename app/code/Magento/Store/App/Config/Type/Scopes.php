@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\App\Config\Type;
 
-use Magento\Framework\App\Config\ConfigTypeInterface;
 use Magento\Framework\App\Config\ConfigSourceInterface;
+use Magento\Framework\App\Config\ConfigTypeInterface;
 use Magento\Framework\DataObject;
 use Magento\Store\Model\ScopeInterface;
 

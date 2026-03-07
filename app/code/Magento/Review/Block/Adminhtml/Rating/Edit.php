@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml\Rating;
 
 /**
@@ -73,7 +76,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     {
         $ratingData = $this->_coreRegistry->registry('rating_data');
         if ($ratingData && $ratingData->getId()) {
-            return __("Edit Rating #%1", $this->escapeHtml($ratingData->getRatingCode()));
+            return __('Edit Rating #%1', $this->escapeHtml($ratingData->getRatingCode()));
         } else {
             return __('New Rating');
         }

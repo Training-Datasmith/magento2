@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\Stdlib\Test\Unit\DateTime;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatter;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DateTimeFormatterTest extends TestCase
 {
@@ -156,7 +157,7 @@ class DateTimeFormatterTest extends TestCase
             $format,
             'en_US'
         );
-        $this->assertEquals($expected, str_replace(' ', " ", $result));
+        $this->assertEquals($expected, str_replace(' ', ' ', $result));
     }
 
     public static function formatObjectNumericFormatDataProvider()

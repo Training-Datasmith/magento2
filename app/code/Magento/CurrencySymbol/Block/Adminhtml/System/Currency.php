@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author     Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\CurrencySymbol\Block\Adminhtml\System;
 
 /**
@@ -37,7 +40,7 @@ class Currency extends \Magento\Backend\Block\Template
                 'class' => 'save primary save-currency-rates',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#rate-form']],
-                ]
+                ],
             ]
         );
 
@@ -45,7 +48,7 @@ class Currency extends \Magento\Backend\Block\Template
             'adminhtml/system_config/edit',
             [
                 'section' => 'currency',
-                '_fragment' => 'currency_options-link'
+                '_fragment' => 'currency_options-link',
             ]
         );
         $onClick = "setLocation('$currencyOptionPath')";

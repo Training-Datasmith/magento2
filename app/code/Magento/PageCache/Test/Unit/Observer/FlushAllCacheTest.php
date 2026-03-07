@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class FlushAllCacheTest extends TestCase
             FlushAllCache::class,
             [
                 'config' => $this->configMock,
-                'fullPageCache' => $this->fullPageCacheMock
+                'fullPageCache' => $this->fullPageCacheMock,
             ]
         );
     }

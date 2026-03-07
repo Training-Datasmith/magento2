@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SwaggerWebapi\Block\Swagger;
 
 /**
@@ -30,10 +33,10 @@ class IndexTest extends \PHPUnit\Framework\TestCase
                     'schema_types' => [
                         'rest' => \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(
                             \Magento\SwaggerWebapi\Model\SchemaType\Rest::class
-                        )
+                        ),
                     ],
-                    'default_schema_type_code' => 'rest'
-                ]
+                    'default_schema_type_code' => 'rest',
+                ],
             ]
         );
     }

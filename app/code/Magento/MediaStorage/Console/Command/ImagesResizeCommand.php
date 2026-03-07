@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Framework\App\State;
 use Magento\Framework\Console\Cli;
 use Magento\MediaStorage\Service\ImageResize;
 use Magento\MediaStorage\Service\ImageResizeScheduler;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\ProgressBarFactory;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Resizes product images according to theme view definitions.
@@ -94,7 +95,7 @@ class ImagesResizeCommand extends Command
      *
      * @return array
      */
-    private function getOptionsList() : array
+    private function getOptionsList(): array
     {
         return [
             new InputOption(
@@ -143,7 +144,7 @@ class ImagesResizeCommand extends Command
             $progress = $this->progressBarFactory->create(
                 [
                     'output' => $output,
-                    'max' => $generator->current()
+                    'max' => $generator->current(),
                 ]
             );
             $progress->setFormat(
@@ -175,12 +176,12 @@ class ImagesResizeCommand extends Command
 
         $output->write(PHP_EOL);
         if (count($errors)) {
-            $output->writeln("<info>Product images resized with errors:</info>");
+            $output->writeln('<info>Product images resized with errors:</info>');
             foreach ($errors as $error) {
                 $output->writeln("<error>{$error}</error>");
             }
         } else {
-            $output->writeln("<info>Product images resized successfully</info>");
+            $output->writeln('<info>Product images resized successfully</info>');
         }
 
         return Cli::RETURN_SUCCESS;
@@ -202,7 +203,7 @@ class ImagesResizeCommand extends Command
             $progress = $this->progressBarFactory->create(
                 [
                     'output' => $output,
-                    'max' => $this->imageResize->getCountProductImages($this->skipHiddenImages)
+                    'max' => $this->imageResize->getCountProductImages($this->skipHiddenImages),
                 ]
             );
             $progress->setFormat(
@@ -231,12 +232,12 @@ class ImagesResizeCommand extends Command
 
         $output->write(PHP_EOL);
         if (count($errors)) {
-            $output->writeln("<info>Product images resized with errors:</info>");
+            $output->writeln('<info>Product images resized with errors:</info>');
             foreach ($errors as $error) {
                 $output->writeln("<error>{$error}</error>");
             }
         } else {
-            $output->writeln("<info>Product images scheduled successfully</info>");
+            $output->writeln('<info>Product images scheduled successfully</info>');
         }
 
         return Cli::RETURN_SUCCESS;

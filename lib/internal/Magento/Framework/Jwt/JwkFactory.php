@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ class JwkFactory
     private const EC_CURVE_MAP = [
         '1.2.840.10045.3.1.7' => ['name' => 'P-256', 'bits' => 256],
         '1.3.132.0.34' => ['name' => 'P-384', 'bits' => 384],
-        '1.3.132.0.35' => ['name' => 'P-521', 'bits' => 512]
+        '1.3.132.0.35' => ['name' => 'P-521', 'bits' => 512],
     ];
 
     /**
@@ -794,7 +795,7 @@ class JwkFactory
             'q' => 'q',
             'dp' => 'dmp1',
             'dq' => 'dmq1',
-            'qi' => 'iqmp'
+            'qi' => 'iqmp',
         ];
         $jwkData = [];
         foreach ($keysMap as $jwkKey => $rsaKey) {
@@ -824,7 +825,7 @@ class JwkFactory
         $this->freeResource($resource);
         $keysMap = [
             'n' => 'n',
-            'e' => 'e'
+            'e' => 'e',
         ];
         $jwkData = [];
         foreach ($keysMap as $jwkKey => $rsaKey) {
@@ -873,7 +874,7 @@ class JwkFactory
                 'd' => self::base64Encode($keyData['d']),
                 'x' => self::base64Encode($keyData['x']),
                 'y' => self::base64Encode($keyData['y']),
-                'crv' => self::EC_CURVE_MAP[$keyData['curve_oid']]['name']
+                'crv' => self::EC_CURVE_MAP[$keyData['curve_oid']]['name'],
             ],
             $use,
             null,
@@ -910,7 +911,7 @@ class JwkFactory
             [
                 'x' => self::base64Encode($keyData['x']),
                 'y' => self::base64Encode($keyData['y']),
-                'crv' => self::EC_CURVE_MAP[$keyData['curve_oid']]['name']
+                'crv' => self::EC_CURVE_MAP[$keyData['curve_oid']]['name'],
             ],
             $use,
             null,

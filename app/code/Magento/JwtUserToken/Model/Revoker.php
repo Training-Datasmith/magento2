@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,7 +10,6 @@ declare(strict_types=1);
 namespace Magento\JwtUserToken\Model;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Integration\Api\Exception\UserTokenException;
 use Magento\Integration\Api\UserTokenRevokerInterface;
 use Magento\JwtUserToken\Api\Data\Revoked;
 use Magento\JwtUserToken\Api\RevokedRepositoryInterface;

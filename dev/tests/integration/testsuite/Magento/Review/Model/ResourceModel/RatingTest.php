@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Model\ResourceModel;
 
 /**
@@ -31,7 +34,7 @@ class RatingTest extends \PHPUnit\Framework\TestCase
             'rating_code' => 'Test Rating',
             'position' => 0,
             'is_active' => true,
-            'entity_id' => 1
+            'entity_id' => 1,
         ]);
         $rating->setRatingCodes([$storeId => 'Test Rating']);
         $rating->setStores([$storeId]);

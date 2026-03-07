@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -57,7 +59,6 @@ class StaticFilesTest extends \PHPUnit\Framework\TestCase
      * @var \Magento\Framework\Filesystem
      */
     private $filesystem;
-
 
     protected function setUp(): void
     {

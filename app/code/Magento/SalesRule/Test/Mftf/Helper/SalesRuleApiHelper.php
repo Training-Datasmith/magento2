@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\SalesRule\Test\Mftf\Helper;
 
-use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\DataGenerator\Objects\EntityDataObject;
+use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\FunctionalTestingFramework\ObjectManagerFactory;
 use Magento\FunctionalTestingFramework\Util\Logger\LoggingUtil;
@@ -40,7 +41,7 @@ class SalesRuleApiHelper extends Helper
             'total_failed' => 0,
         ];
 
-        $this->logMessage($enableLog, "Starting cart price rule deletion via API...");
+        $this->logMessage($enableLog, 'Starting cart price rule deletion via API...');
 
         try {
             $allRules = $this->getAllSalesRules($pageNum);
@@ -55,7 +56,7 @@ class SalesRuleApiHelper extends Helper
             $this->logMessage($enableLog, $message);
 
         } catch (\Exception $e) {
-            $this->logMessage($enableLog, "ERROR: Cart price rule deletion failed: " . $e->getMessage());
+            $this->logMessage($enableLog, 'ERROR: Cart price rule deletion failed: ' . $e->getMessage());
         }
     }
 
@@ -70,7 +71,7 @@ class SalesRuleApiHelper extends Helper
     private function deleteByRuleId(int $ruleId, array &$stats): void
     {
         if (empty($ruleId)) {
-            throw new \Exception("Rule ID cannot be empty");
+            throw new \Exception('Rule ID cannot be empty');
         }
 
         $ruleEntity = new EntityDataObject(
@@ -90,7 +91,7 @@ class SalesRuleApiHelper extends Helper
             [
                 'operation' => 'delete',
                 'entityObject' => $ruleEntity,
-                'storeCode' => null
+                'storeCode' => null,
             ]
         );
         $response = $curlHandler->executeRequest([]);
@@ -127,7 +128,7 @@ class SalesRuleApiHelper extends Helper
     private function handleEmptyRuleList(array $allRules, bool $enableLog): bool
     {
         if (empty($allRules)) {
-            $this->logMessage($enableLog, "No cart price rules found.");
+            $this->logMessage($enableLog, 'No cart price rules found.');
             return true;
         }
         return false;
@@ -220,7 +221,7 @@ class SalesRuleApiHelper extends Helper
                 data: [
                     'pageSize' => $pageSize,
                     'currentPage' => 1,
-                    'fields' => 'items[rule_id,name,is_active]'
+                    'fields' => 'items[rule_id,name,is_active]',
                 ],
                 linkedEntities: [],
                 uniquenessData: [],
@@ -236,7 +237,7 @@ class SalesRuleApiHelper extends Helper
                 [
                     'operation' => 'get',
                     'entityObject' => $ruleListEntity,
-                    'storeCode' => null
+                    'storeCode' => null,
                 ]
             );
 
@@ -253,7 +254,7 @@ class SalesRuleApiHelper extends Helper
             return $responseData['items'] ?? [];
 
         } catch (\Exception $e) {
-            $errorMessage = "Failed to retrieve cart price rules: " . $e->getMessage();
+            $errorMessage = 'Failed to retrieve cart price rules: ' . $e->getMessage();
             throw new \Exception($errorMessage, 0, $e);
         }
     }

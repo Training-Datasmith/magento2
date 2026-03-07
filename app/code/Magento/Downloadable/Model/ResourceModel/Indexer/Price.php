@@ -1,22 +1,25 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\ResourceModel\Indexer;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BasePriceModifier;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructure;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructureFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice;
 use Magento\Downloadable\Model\Product\Type;
 use Magento\Eav\Model\Config;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Indexer\DimensionalIndexerInterface;
 use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructureFactory;
-use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\IndexTableStructure;
+use Magento\Framework\Indexer\DimensionalIndexerInterface;
 
 /**
  * Downloadable Product Price Indexer Resource model
@@ -177,7 +180,7 @@ class Price implements DimensionalIndexerInterface
             ['entity_id', 'customer_group_id', 'website_id']
         )->join(
             ['dl' => $dlType->getBackend()->getTable()],
-            "dl.{$linkField} = i.entity_id AND dl.attribute_id = {$dlType->getAttributeId()}" . " AND dl.store_id = 0",
+            "dl.{$linkField} = i.entity_id AND dl.attribute_id = {$dlType->getAttributeId()}" . ' AND dl.store_id = 0',
             []
         )->join(
             ['dll' => $this->getTable('downloadable_link')],
@@ -256,15 +259,15 @@ class Price implements DimensionalIndexerInterface
     ) {
         $select = $this->baseFinalPrice->getQuery($dimensions, Type::TYPE_DOWNLOADABLE, iterator_to_array($entityIds));
         $this->tableMaintainer->insertFromSelect($select, $temporaryPriceTable->getTableName(), [
-            "entity_id",
-            "customer_group_id",
-            "website_id",
-            "tax_class_id",
-            "price",
-            "final_price",
-            "min_price",
-            "max_price",
-            "tier_price",
+            'entity_id',
+            'customer_group_id',
+            'website_id',
+            'tax_class_id',
+            'price',
+            'final_price',
+            'min_price',
+            'max_price',
+            'tier_price',
         ]);
     }
 

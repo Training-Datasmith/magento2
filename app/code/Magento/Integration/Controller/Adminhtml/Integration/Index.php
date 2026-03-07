@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Controller\Adminhtml\Integration;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -19,8 +22,9 @@ class Index extends \Magento\Integration\Controller\Adminhtml\Integration implem
         $unsecureIntegrationsCount = $this->_integrationCollection->addUnsecureUrlsFilter()->getSize();
         if ($unsecureIntegrationsCount > 0) {
             // @codingStandardsIgnoreStart
-            $this->messageManager->addNotice(__('Warning! Integrations not using HTTPS are insecure and potentially expose private or personally identifiable information')
-            // @codingStandardsIgnoreEnd
+            $this->messageManager->addNotice(
+                __('Warning! Integrations not using HTTPS are insecure and potentially expose private or personally identifiable information')
+                // @codingStandardsIgnoreEnd
             );
         }
 

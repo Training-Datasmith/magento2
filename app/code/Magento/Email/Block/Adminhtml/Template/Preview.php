@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class Preview extends \Magento\Backend\Block\Widget
         $templateProcessed = $this->_maliciousCode->filter($templateProcessed);
 
         if ($template->isPlain()) {
-            $templateProcessed = "<pre>" . $this->escapeHtml($templateProcessed) . "</pre>";
+            $templateProcessed = '<pre>' . $this->escapeHtml($templateProcessed) . '</pre>';
         }
 
         \Magento\Framework\Profiler::stop($this->profilerName);

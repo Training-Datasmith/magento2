@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Customer\Helper\Session\CurrentCustomer;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Model\AbstractModel;
@@ -33,11 +34,11 @@ use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Stdlib\ArrayUtils;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\UrlInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Swatches\Block\Product\Renderer\Configurable;
 use Magento\Swatches\Block\Product\Renderer\Listing\Configurable as ConfigurableRenderer;
 use Magento\Swatches\Helper\Media;
-use Magento\Framework\UrlInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -173,7 +174,7 @@ class ConfigurableTest extends TestCase
                 'configurableAttributeData' => $this->configurableAttributeData,
                 'data' => [],
                 'variationPrices' => $this->variationPricesMock,
-                'customerSession' => $customerSession
+                'customerSession' => $customerSession,
             ]
         );
     }
@@ -226,13 +227,13 @@ class ConfigurableTest extends TestCase
     {
         $products = [
             1 => 'testA',
-            3 => 'testB'
+            3 => 'testB',
         ];
         $expected =
             [
                 'type' => null,
                 'value' => 'hello',
-                'label' => $products[3]
+                'label' => $products[3],
             ];
         $this->prepareGetJsonSwatchConfig();
         $this->configurable->setProduct($this->product);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use PHPUnit\Framework\TestCase;
 
 class VclGeneratorTest extends TestCase
 {
-
     /**
      * @var VclGenerator
      */
@@ -26,10 +26,10 @@ class VclGeneratorTest extends TestCase
             'accessList' => ['127.0.0.1', '192.168.0.1', '127.0.0.2'],
             'designExceptions' => ['_' => [
                 'regexp' => '/firefox/i',
-                'value' => 'Magento/blank'
+                'value' => 'Magento/blank',
             ]],
             'sslOffloadedHeader' => 'X-Forwarded-Proto',
-            'gracePeriod' => 1234
+            'gracePeriod' => 1234,
         ];
 
         $generatorFactory = Bootstrap::getObjectManager()->get(VclGeneratorFactory::class);

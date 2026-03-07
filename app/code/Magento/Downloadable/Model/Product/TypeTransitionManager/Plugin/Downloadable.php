@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\Product\TypeTransitionManager\Plugin;
 
 use Closure;
-use Magento\Framework\App\RequestInterface;
 use Magento\Catalog\Model\Product\Edit\WeightResolver;
+use Magento\Framework\App\RequestInterface;
 
 /**
  * Plugin for product type transition manager
@@ -55,7 +58,7 @@ class Downloadable
             [
                 \Magento\Catalog\Model\Product\Type::TYPE_SIMPLE,
                 \Magento\Catalog\Model\Product\Type::TYPE_VIRTUAL,
-                \Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE
+                \Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE,
             ]
         );
         $downloadableData = $this->request->getPost('downloadable');

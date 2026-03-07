@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ManagerTest extends TestCase
             Manager::class,
             [
                 'resourceSequenceMeta' => $this->resourceSequenceMeta,
-                'sequenceFactory' => $this->sequenceFactory
+                'sequenceFactory' => $this->sequenceFactory,
             ]
         );
     }
@@ -83,7 +84,7 @@ class ManagerTest extends TestCase
             ->with($entityType, $storeId)
             ->willReturn($this->meta);
         $this->sequenceFactory->expects($this->once())->method('create')->with([
-            'meta' => $this->meta
+            'meta' => $this->meta,
         ])->willReturn($this->sequence);
         $this->assertSame($this->sequence, $this->sequenceManager->getSequence($entityType, $storeId));
     }

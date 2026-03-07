@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,82 +22,20 @@ use Magento\Framework\Serialize\Serializer\Json;
 class QueryFactory
 {
     /**
-     * @var Config
-     */
-    private $config;
-
-    /**
-     * @var SelectBuilderFactory
-     */
-    private $selectBuilderFactory;
-
-    /**
-     * @var DB\Assembler\AssemblerInterface[]
-     */
-    private $assemblers;
-
-    /**
-     * @var CacheInterface
-     */
-    private $queryCache;
-
-    /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * @var SelectHydrator
-     */
-    private $selectHydrator;
-
-    /**
-     * @var Json
-     */
-    private $jsonSerializer;
-
-    /**
      * QueryFactory constructor.
-     *
-     * @param CacheInterface $queryCache
-     * @param SelectHydrator $selectHydrator
-     * @param ObjectManagerInterface $objectManager
-     * @param SelectBuilderFactory $selectBuilderFactory
-     * @param Config $config
-     * @param array $assemblers
-     * @param Json $jsonSerializer
      */
-    public function __construct(
-        CacheInterface $queryCache,
-        SelectHydrator $selectHydrator,
-        ObjectManagerInterface $objectManager,
-        SelectBuilderFactory $selectBuilderFactory,
-        Config $config,
-        array $assemblers,
-        Json $jsonSerializer
-    ) {
-        $this->config = $config;
-        $this->selectBuilderFactory = $selectBuilderFactory;
-        $this->assemblers = $assemblers;
-        $this->queryCache = $queryCache;
-        $this->objectManager = $objectManager;
-        $this->selectHydrator = $selectHydrator;
-        $this->jsonSerializer = $jsonSerializer;
+    public function __construct(private readonly CacheInterface $queryCache, private readonly SelectHydrator $selectHydrator, private readonly ObjectManagerInterface $objectManager, private readonly SelectBuilderFactory $selectBuilderFactory, private readonly Config $config, private readonly array $assemblers, private readonly Json $jsonSerializer)
+    {
     }
 
     /**
      * Returns query connection name according to configuration
      *
      * @param string $queryConfig
-     * @return string
      */
-    private function getQueryConnectionName($queryConfig)
+    private function getQueryConnectionName($queryConfig): string
     {
-        $connectionName = 'default';
-        if (isset($queryConfig['connection'])) {
-            $connectionName = $queryConfig['connection'];
-        }
-        return $connectionName;
+        return $queryConfig['connection'] ?? 'default';
     }
 
     /**
@@ -148,9 +88,6 @@ class QueryFactory
     /**
      * Create query class using objectmanger
      *
-     * @param Select $select
-     * @param string $connection
-     * @param array $queryConfig
      * @return Query
      */
     private function createQueryObject(
@@ -164,7 +101,7 @@ class QueryFactory
                 'select' => $select,
                 'selectHydrator' => $this->selectHydrator,
                 'connectionName' => $connection,
-                'config' => $queryConfig
+                'config' => $queryConfig,
             ]
         );
     }

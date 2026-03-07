@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,10 +28,10 @@ use Magento\Framework\ObjectManager\ObjectManager as FakeObjectManager;
 use Magento\Framework\Stdlib\Cookie\CookieMetadata;
 use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\CookieManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -125,7 +126,7 @@ class LoginTest extends TestCase
                 'regenerateId',
                 'getData',
                 'getLastCustomerId',
-                'getBeforeAuthUrl'
+                'getBeforeAuthUrl',
             ]
         );
         $this->objectManager = $this->createPartialMock(FakeObjectManager::class, ['get']);
@@ -177,7 +178,7 @@ class LoginTest extends TestCase
                 'objectManager' => $this->objectManager,
                 'customerAccountManagement' => $this->accountManagement,
                 'cookieManager' => $this->cookieManager,
-                'cookieMetadataFactory' => $this->cookieMetadataFactory
+                'cookieMetadataFactory' => $this->cookieMetadataFactory,
             ]
         );
     }
@@ -265,7 +266,7 @@ class LoginTest extends TestCase
 
         $result = [
             'errors' => true,
-            'message' => __('Invalid login or password.')
+            'message' => __('Invalid login or password.'),
         ];
         $this->resultJson->method('setData')
             ->with($result)

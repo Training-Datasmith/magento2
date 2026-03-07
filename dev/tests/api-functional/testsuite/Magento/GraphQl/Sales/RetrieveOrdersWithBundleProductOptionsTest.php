@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class RetrieveOrdersWithBundleProductOptionsTest extends GraphQlAbstract
         );
         $customerOrderResponse = $this->getCustomerOrderQueryBundleProduct();
         $customerOrderItems = $customerOrderResponse[0];
-        $this->assertEquals("Pending", $customerOrderItems['status']);
+        $this->assertEquals('Pending', $customerOrderItems['status']);
         $bundledItemInTheOrder = $customerOrderItems['items'][0];
         $this->assertEquals(
             'bundle-product-single-dropdown-option-simple1',
@@ -79,10 +80,10 @@ class RetrieveOrdersWithBundleProductOptionsTest extends GraphQlAbstract
                             'product_sku' => 'simple1',
                             'price' => [
                                 'value' => 1,
-                                'currency' => 'USD'
-                            ]
-                        ]
-                    ]
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
                 ],
             ];
         $this->assertEquals($expectedBundleOptions, $bundleOptionsFromResponse);

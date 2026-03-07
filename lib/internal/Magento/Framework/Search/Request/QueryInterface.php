@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Request;
 
 /**
@@ -16,11 +19,11 @@ interface QueryInterface
     /**
      * #@+ Query Types
      */
-    const TYPE_MATCH = 'matchQuery';
+    public const TYPE_MATCH = 'matchQuery';
 
-    const TYPE_BOOL = 'boolQuery';
+    public const TYPE_BOOL = 'boolQuery';
 
-    const TYPE_FILTER = 'filteredQuery';
+    public const TYPE_FILTER = 'filteredQuery';
 
     /**#@-*/
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class DependantFieldsTest extends TestCase
 
     public function testValidateMissingTopicField()
     {
-        $expectedMessage = "Topic name is required for topic based exchange: ex01";
+        $expectedMessage = 'Topic name is required for topic based exchange: ex01';
         $this->expectException('\LogicException');
         $this->expectExceptionMessage($expectedMessage);
         $configData = [
@@ -89,7 +90,7 @@ class DependantFieldsTest extends TestCase
                         'arguments' => ['some' => 'arguments'],
                     ],
                 ],
-            ]
+            ],
         ];
         $this->model->validate($configData);
     }

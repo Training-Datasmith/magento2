@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,19 +16,16 @@ use Magento\Customer\Api\GroupRepositoryInterface;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeAdapter;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeProvider;
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\DynamicField;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface
-    as IndexTypeConverterInterface;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface
-    as FieldNameResolver;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface
-    as FieldTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldIndex\ConverterInterface as IndexTypeConverterInterface;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface as FieldNameResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldType\ConverterInterface as FieldTypeConverterInterface;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -143,7 +141,7 @@ class DynamicFieldTest extends TestCase
         $websiteIdByStoreId = [
             1 => 1,
             2 => 1,
-            3 => 2
+            3 => 2,
         ];
         $this->storeManager->method('getStore')
             ->willReturnCallback(
@@ -152,7 +150,7 @@ class DynamicFieldTest extends TestCase
                         StoreInterface::class,
                         [
                             'getId' => $storeId,
-                            'getWebsiteId' => $websiteIdByStoreId[$storeId]
+                            'getWebsiteId' => $websiteIdByStoreId[$storeId],
                         ]
                     );
                 }
@@ -168,7 +166,7 @@ class DynamicFieldTest extends TestCase
             $groups[] = $this->createConfiguredMock(
                 GroupInterface::class,
                 [
-                    'getId' => $groupId
+                    'getId' => $groupId,
                 ]
             );
         }
@@ -203,7 +201,7 @@ class DynamicFieldTest extends TestCase
                     return $this->createConfiguredMock(
                         AttributeAdapter::class,
                         [
-                            'getAttributeCode' => $code
+                            'getAttributeCode' => $code,
                         ]
                     );
                 }
@@ -236,35 +234,16 @@ class DynamicFieldTest extends TestCase
                 [
                     'category_name_1' => [
                         'type' => 'string',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'position_1' => [
                         'type' => 'integer',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'price_1_1' => [
                         'type' => 'double',
-                        'store' => true
-                    ]
-                ]
-            ],
-            [
-                [1],
-                [1],
-                ['websiteId' => 1],
-                [
-                    'category_name_1' => [
-                        'type' => 'string',
-                        'index' => 'no_index'
+                        'store' => true,
                     ],
-                    'position_1' => [
-                        'type' => 'integer',
-                        'index' => 'no_index'
-                    ],
-                    'price_1_1' => [
-                        'type' => 'double',
-                        'store' => true
-                    ]
                 ],
             ],
             [
@@ -274,40 +253,59 @@ class DynamicFieldTest extends TestCase
                 [
                     'category_name_1' => [
                         'type' => 'string',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'position_1' => [
                         'type' => 'integer',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'price_1_1' => [
                         'type' => 'double',
-                        'store' => true
-                    ]
-                ]
+                        'store' => true,
+                    ],
+                ],
+            ],
+            [
+                [1],
+                [1],
+                ['websiteId' => 1],
+                [
+                    'category_name_1' => [
+                        'type' => 'string',
+                        'index' => 'no_index',
+                    ],
+                    'position_1' => [
+                        'type' => 'integer',
+                        'index' => 'no_index',
+                    ],
+                    'price_1_1' => [
+                        'type' => 'double',
+                        'store' => true,
+                    ],
+                ],
             ],
             [
                 [1],
                 [1],
                 [
                     'storeId' => 3,
-                    'websiteId' => 3
+                    'websiteId' => 3,
                 ],
                 [
                     'category_name_1' => [
                         'type' => 'string',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'position_1' => [
                         'type' => 'integer',
-                        'index' => 'no_index'
+                        'index' => 'no_index',
                     ],
                     'price_1_2' => [
                         'type' => 'double',
-                        'store' => true
-                    ]
-                ]
-            ]
+                        'store' => true,
+                    ],
+                ],
+            ],
         ];
     }
 }

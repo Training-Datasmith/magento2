@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Cache\Type;
 
 /**
@@ -13,12 +16,12 @@ class Translate extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'translate';
+    public const TYPE_IDENTIFIER = 'translate';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'TRANSLATE';
+    public const CACHE_TAG = 'TRANSLATE';
 
     /**
      * @param FrontendPool $cacheFrontendPool

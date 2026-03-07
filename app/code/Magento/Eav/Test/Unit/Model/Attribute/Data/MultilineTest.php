@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,18 +11,17 @@ namespace Magento\Eav\Test\Unit\Model\Attribute\Data;
 use Magento\Eav\Model\Attribute;
 use Magento\Eav\Model\Attribute\Data\Multiline;
 use Magento\Eav\Model\AttributeDataFactory;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class MultilineTest extends TestCase
 {
@@ -93,7 +93,7 @@ class MultilineTest extends TestCase
             ],
             [
                 'param' => ['param'],
-                'expectedResult' => ['param']
+                'expectedResult' => ['param'],
             ],
         ];
     }
@@ -132,16 +132,16 @@ class MultilineTest extends TestCase
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_HTML,
-                'expectedResult' => 'value1<br />value2'
+                'expectedResult' => 'value1<br />value2',
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_ONELINE,
-                'expectedResult' => 'value1 value2'
+                'expectedResult' => 'value1 value2',
             ],
             [
                 'format' => AttributeDataFactory::OUTPUT_FORMAT_TEXT,
-                'expectedResult' => "value1\nvalue2"
-            ]
+                'expectedResult' => "value1\nvalue2",
+            ],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Product;
 
 use Magento\Catalog\Model\Product;
@@ -48,7 +51,7 @@ class CanonicalUrlRewriteGenerator
                 ->setEntityId($product->getId())
                 ->setRequestPath($this->productUrlPathGenerator->getUrlPathWithSuffix($product, $storeId))
                 ->setTargetPath($this->productUrlPathGenerator->getCanonicalUrlPath($product))
-                ->setStoreId($storeId)
+                ->setStoreId($storeId),
         ];
     }
 }

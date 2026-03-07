@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -53,31 +54,31 @@ class JsTest extends TestCase
         return [
             'Decoding empty serialized string' => [
                 '',
-                []
+                [],
             ],
             'Decoding a simplified serialized string' => [
                 '1&2&3&4',
-                [1, 2, 3, 4]
+                [1, 2, 3, 4],
             ],
             'Decoding encoded serialized string' => [
                 '2=dGVzdC1zdHJpbmc=',
                 [
                     2 => [
-                        'test-string' => ''
-                    ]
-                ]
+                        'test-string' => '',
+                    ],
+                ],
             ],
             'Decoding multiple encoded serialized strings' => [
                 '2=dGVzdC1zdHJpbmc=&3=bmV3LXN0cmluZw==',
                 [
                     2 => [
-                        'test-string' => ''
+                        'test-string' => '',
                     ],
                     3 => [
-                        'new-string' => ''
-                    ]
-                ]
-            ]
+                        'new-string' => '',
+                    ],
+                ],
+            ],
         ];
     }
 }

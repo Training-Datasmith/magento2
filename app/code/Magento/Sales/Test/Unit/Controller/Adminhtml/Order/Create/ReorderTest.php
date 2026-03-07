@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,6 +19,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Controller\Adminhtml\Order\Create\Reorder;
@@ -27,7 +29,6 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Reorder\UnavailableProductsProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -160,7 +161,7 @@ class ReorderTest extends TestCase
                 'request' => $this->requestMock,
                 'objectManager' => $this->objectManagerMock,
                 'messageManager' => $this->messageManagerMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
 
@@ -172,7 +173,7 @@ class ReorderTest extends TestCase
                 'reorderHelper' => $this->reorderHelperMock,
                 'context' => $this->context,
                 'resultForwardFactory' => $this->resultForwardFactoryMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }
@@ -248,7 +249,7 @@ class ReorderTest extends TestCase
             ->willReturnSelf();
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Quote::class] => $this->quoteSessionMock,
                 [Create::class] => $this->orderCreateMock
             });
@@ -370,7 +371,7 @@ class ReorderTest extends TestCase
     {
         $this->objectManagerMock
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [Quote::class] => $this->quoteSessionMock
             });
         $this->quoteSessionMock->expects($this->once())->method('clearStorage')->willReturnSelf();

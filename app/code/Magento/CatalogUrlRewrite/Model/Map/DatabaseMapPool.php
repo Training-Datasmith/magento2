@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Model\Map;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -47,7 +50,7 @@ class DatabaseMapPool
             $instance = $this->objectManager->create(
                 $instanceName,
                 [
-                    'category' => $categoryId
+                    'category' => $categoryId,
                 ]
             );
             if (!$instance instanceof DatabaseMapInterface) {

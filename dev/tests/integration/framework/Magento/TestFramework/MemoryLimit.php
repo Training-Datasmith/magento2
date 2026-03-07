@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * A tool for limiting allowed memory usage and memory leaks
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework;
 
 class MemoryLimit

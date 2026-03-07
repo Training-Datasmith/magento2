@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Columns;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -140,7 +143,7 @@ class StringBinary extends Column implements
             'nullable' => $this->isNullable(),
             'default' => $this->getDefault(),
             'length' => $this->getLength(),
-            'comment' => $this->getComment()
+            'comment' => $this->getComment(),
         ];
         if ($this->getType() === 'varchar') {
             $param['collation'] = $this->getCollation();

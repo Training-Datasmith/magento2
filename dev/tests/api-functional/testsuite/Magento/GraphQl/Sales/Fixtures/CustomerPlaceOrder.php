@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -208,7 +209,7 @@ QUERY;
     private function setBillingAddress(?array $addressData = null): array
     {
         $telephone = $addressData['telephone'] ?? '5123456677';
-            $setBillingAddress = <<<QUERY
+        $setBillingAddress = <<<QUERY
 mutation {
   setBillingAddressOnCart(
     input: {

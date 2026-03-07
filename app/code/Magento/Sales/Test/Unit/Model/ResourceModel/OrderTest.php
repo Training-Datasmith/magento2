@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,19 +15,19 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Sales\Model\Order as SalesOrder;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\ResourceModel\Order;
 use Magento\SalesSequence\Model\Manager;
 use Magento\SalesSequence\Model\Sequence;
 use Magento\Store\Model\Group;
 use Magento\Store\Model\Store;
+
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\MockObject;
-
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Sales\Model\Order as SalesOrder;
 
 /**
  *
@@ -129,7 +130,7 @@ class OrderTest extends TestCase
                     'beginTransaction',
                     'commit',
                     'quoteInto',
-                    'update'
+                    'update',
                 ]
             )
             ->disableOriginalConstructor()
@@ -158,7 +159,7 @@ class OrderTest extends TestCase
                 'context' => $contextMock,
                 'sequenceManager' => $this->salesSequenceManagerMock,
                 'entitySnapshot' => $this->entitySnapshotMock,
-                'entityRelationComposite' => $this->relationCompositeMock
+                'entityRelationComposite' => $this->relationCompositeMock,
             ]
         );
     }

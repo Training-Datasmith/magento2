@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ class SetGuestEmail implements DataFixtureInterface
 {
     private const DEFAULT_DATA = [
         'cart_id' => null,
-        'email' => 'guestuser%uniqid%@example.com'
+        'email' => 'guestuser%uniqid%@example.com',
     ];
 
     /**

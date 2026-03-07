@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Model\ResourceModel\Block\Relation\Store;
 
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
 use Magento\Cms\Api\Data\BlockInterface;
 use Magento\Cms\Model\ResourceModel\Block;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\EntityManager\Operation\ExtensionInterface;
 
 /**
  * Class SaveHandler

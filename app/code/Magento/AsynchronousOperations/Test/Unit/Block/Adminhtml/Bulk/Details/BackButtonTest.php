@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class BackButtonTest extends TestCase
             'label' => __('Back'),
             'on_click' => sprintf("location.href = '%s';", $backUrl),
             'class' => 'back',
-            'sort_order' => 10
+            'sort_order' => 10,
         ];
 
         $this->urlBuilderMock->expects($this->once())

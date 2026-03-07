@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Filesystem\Directory\Write;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Url\EncoderInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Store\Model\Store;
@@ -168,18 +169,18 @@ class ImagesTest extends TestCase
                     [
                         WysiwygConfig::IMAGE_DIRECTORY,
                         null,
-                        $this->getAbsolutePath(WysiwygConfig::IMAGE_DIRECTORY)
+                        $this->getAbsolutePath(WysiwygConfig::IMAGE_DIRECTORY),
                     ],
                     [
                         null,
                         null,
-                        $this->getAbsolutePath(null)
+                        $this->getAbsolutePath(null),
                     ],
                     [
                         '',
                         null,
-                        $this->getAbsolutePath('')
-                    ]
+                        $this->getAbsolutePath(''),
+                    ],
                 ]);
         $this->directoryReadMock->expects($this->any())
                 ->method('getAbsolutePath')
@@ -187,18 +188,18 @@ class ImagesTest extends TestCase
                         [
                             $this->path,
                             null,
-                            $this->path
+                            $this->path,
                         ],
                         [
                             $this->path . '/test_path',
                             null,
-                            $this->path . '/test_path'
+                            $this->path . '/test_path',
                         ],
                         [
                             $this->path . '/tmp',
                             null,
-                            $this->path . '/tmp'
-                        ]
+                            $this->path . '/tmp',
+                        ],
                     ]);
     }
 
@@ -273,7 +274,7 @@ class ImagesTest extends TestCase
         $this->directoryReadMock->expects($this->any())
             ->method('getAbsolutePath')
             ->will(
-                $this->throwException(new ValidatorException(__("Error")))
+                $this->throwException(new ValidatorException(__('Error')))
             );
         $this->imagesHelper->convertIdToPath('Ly4uLy4uLy4uLy4uLy4uL3dvcms-');
     }

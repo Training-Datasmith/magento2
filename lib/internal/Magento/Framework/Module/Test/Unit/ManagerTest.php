@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,16 +11,16 @@ namespace Magento\Framework\Module\Test\Unit;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Module\ModuleListInterface;
 use Magento\Framework\Module\Output\ConfigInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ManagerTest extends TestCase
 {
     /**
      * XPath in the configuration of a module output flag
      */
-    const XML_PATH_OUTPUT_ENABLED = 'custom/is_module_output_enabled';
+    public const XML_PATH_OUTPUT_ENABLED = 'custom/is_module_output_enabled';
 
     /**
      * @var Manager
@@ -48,7 +49,7 @@ class ManagerTest extends TestCase
                 [
                     ['Module_One', ['name' => 'One_Module', 'setup_version' => '1']],
                     ['Module_Two', ['name' => 'Two_Module', 'setup_version' => '2']],
-                    ['Module_Three', ['name' => 'Two_Three']]
+                    ['Module_Three', ['name' => 'Two_Three']],
                 ]
             );
         $this->_outputConfig = $this->createMock(ConfigInterface::class);
@@ -67,7 +68,7 @@ class ManagerTest extends TestCase
         $this->_moduleList->expects($this->exactly(2))->method('has')->willReturnMap(
             [
                 ['Module_Exists', true],
-                ['Module_NotExists', false]
+                ['Module_NotExists', false],
             ]
         );
         $this->assertTrue($this->_model->isEnabled('Module_Exists'));
@@ -130,7 +131,7 @@ class ManagerTest extends TestCase
     {
         return [
             'path literal, output disabled' => [false, false],
-            'path literal, output enabled'  => [true, true]
+            'path literal, output enabled'  => [true, true],
         ];
     }
 }

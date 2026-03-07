@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Model\Url;
 
+use Laminas\Uri\Uri as UriHandler;
 use Magento\Downloadable\Api\DomainManagerInterface as DomainManager;
 use Magento\Framework\Validator\Ip as IpValidator;
-use Laminas\Uri\Uri as UriHandler;
 
 /**
  * Class is responsible for checking if downloadable product link domain is allowed.

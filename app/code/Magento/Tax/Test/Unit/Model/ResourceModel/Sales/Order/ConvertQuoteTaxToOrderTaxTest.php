@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
             ConvertQuoteTaxToOrderTax::class,
             [
                 'orderTaxFactory' => $this->orderTaxFactoryMock,
-                'taxItemFactory' => $this->taxItemFactoryMock
+                'taxItemFactory' => $this->taxItemFactoryMock,
             ]
         );
     }
@@ -85,7 +86,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                 'getItemByQuoteItemId',
                 'getEntityId',
                 'getAppliedTaxIsSaved',
-                'setAppliedTaxIsSaved'
+                'setAppliedTaxIsSaved',
             ]
         );
 
@@ -126,7 +127,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                 'getBaseCustomerBalanceAmount',
                 'setBaseCustomerBalanceAmount',
                 'getGiftMessage',
-                'setGiftMessage'
+                'setGiftMessage',
             ]
         );
 
@@ -270,15 +271,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                 [
                                     'percent' => 6,
                                     'code' => 'IL',
-                                    'title' => 'IL'
+                                    'title' => 'IL',
                                 ],
                                 [
                                     'percent' => 5,
                                     'code' => 'US',
-                                    'title' => 'US'
-                                ]
-                            ]
-                        ]
+                                    'title' => 'US',
+                                ],
+                            ],
+                        ],
                     ],
                     [
                         'amount' => 0.2,
@@ -290,11 +291,11 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                 [
                                     'percent' => 3,
                                     'code' => 'CityTax',
-                                    'title' => 'CityTax'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'title' => 'CityTax',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'itemAppliedTaxes' => [
                     //item tax, three tax rates
@@ -314,15 +315,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 6,
                                             'code' => 'IL',
-                                            'title' => 'IL'
+                                            'title' => 'IL',
                                         ],
                                         [
                                             'percent' => 5,
                                             'code' => 'US',
-                                            'title' => 'US'
-                                        ]
-                                    ]
-                                ]
+                                            'title' => 'US',
+                                        ],
+                                    ],
+                                ],
                             ],
                             //city tax
                             [
@@ -335,12 +336,12 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 3,
                                             'code' => 'CityTax',
-                                            'title' => 'CityTax'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
+                                            'title' => 'CityTax',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     //shipping tax
                     [
@@ -359,15 +360,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 6,
                                             'code' => 'IL',
-                                            'title' => 'IL'
+                                            'title' => 'IL',
                                         ],
                                         [
                                             'percent' => 5,
                                             'code' => 'US',
-                                            'title' => 'US'
-                                        ]
-                                    ]
-                                ]
+                                            'title' => 'US',
+                                        ],
+                                    ],
+                                ],
                             ],
                             //city tax
                             [
@@ -380,13 +381,13 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 3,
                                             'code' => 'CityTax',
-                                            'title' => 'CityTax'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'title' => 'CityTax',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'expectedTaxes' => [
                     //state tax
@@ -401,7 +402,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.66,
                         'base_amount' => 0.66,
                         'process' => 0,
-                        'base_real_amount' => 0.36000000000000004
+                        'base_real_amount' => 0.36000000000000004,
                     ],
                     //federal tax
                     '36' => [
@@ -415,7 +416,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.66, //combined amount
                         'base_amount' => 0.66,
                         'process' => 0,
-                        'base_real_amount' => 0.30000000000000004 //portion for specific rate
+                        'base_real_amount' => 0.30000000000000004, //portion for specific rate
                     ],
                     //city tax
                     '37' => [
@@ -429,8 +430,8 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.2, //combined amount
                         'base_amount' => 0.2,
                         'process' => 0,
-                        'base_real_amount' => 0.18018018018018017 //this number is meaningless since this is single rate
-                    ]
+                        'base_real_amount' => 0.18018018018018017, //this number is meaningless since this is single rate
+                    ],
                 ],
                 'expectedItemTaxes' => [
                     [
@@ -443,7 +444,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.11,
                         'real_amount' => 0.060000000000000005,
                         'real_base_amount' => 0.060000000000000005,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //state tax for shipping
@@ -455,7 +456,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.55,
                         'real_amount' => 0.30000000000000004,
                         'real_base_amount' => 0.30000000000000004,
-                        'taxable_item_type' => 'shipping'
+                        'taxable_item_type' => 'shipping',
                     ],
                     [
                         //federal tax for item
@@ -467,7 +468,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.11,
                         'real_amount' => 0.05,
                         'real_base_amount' => 0.05,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //federal tax for shipping
@@ -479,7 +480,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.55,
                         'real_amount' => 0.25,
                         'real_base_amount' => 0.25,
-                        'taxable_item_type' => 'shipping'
+                        'taxable_item_type' => 'shipping',
                     ],
                     [
                         //city tax for item
@@ -491,7 +492,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.03,
                         'real_amount' => 0.03,
                         'real_base_amount' => 0.03,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //city tax for shipping
@@ -503,10 +504,10 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.17,
                         'real_amount' => 0.17,
                         'real_base_amount' => 0.17,
-                        'taxable_item_type' => 'shipping'
-                    ]
+                        'taxable_item_type' => 'shipping',
+                    ],
                 ],
-                'itemId' => self::ORDER_ITEM_ID
+                'itemId' => self::ORDER_ITEM_ID,
             ],
             'associated_item_with_empty_order_quote_item' => [
                 'appliedTaxes' => [
@@ -520,15 +521,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                 [
                                     'percent' => 6,
                                     'code' => 'IL',
-                                    'title' => 'IL'
+                                    'title' => 'IL',
                                 ],
                                 [
                                     'percent' => 5,
                                     'code' => 'US',
-                                    'title' => 'US'
-                                ]
-                            ]
-                        ]
+                                    'title' => 'US',
+                                ],
+                            ],
+                        ],
                     ],
                     [
                         'amount' => 0.2,
@@ -540,11 +541,11 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                 [
                                     'percent' => 3,
                                     'code' => 'CityTax',
-                                    'title' => 'CityTax'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'title' => 'CityTax',
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'itemAppliedTaxes' => [
                     //item tax, three tax rates
@@ -564,15 +565,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 6,
                                             'code' => 'IL',
-                                            'title' => 'IL'
+                                            'title' => 'IL',
                                         ],
                                         [
                                             'percent' => 5,
                                             'code' => 'US',
-                                            'title' => 'US'
-                                        ]
-                                    ]
-                                ]
+                                            'title' => 'US',
+                                        ],
+                                    ],
+                                ],
                             ],
                             //city tax
                             [
@@ -585,12 +586,12 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 3,
                                             'code' => 'CityTax',
-                                            'title' => 'CityTax'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
+                                            'title' => 'CityTax',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
                     ],
                     //shipping tax
                     [
@@ -609,15 +610,15 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 6,
                                             'code' => 'IL',
-                                            'title' => 'IL'
+                                            'title' => 'IL',
                                         ],
                                         [
                                             'percent' => 5,
                                             'code' => 'US',
-                                            'title' => 'US'
-                                        ]
-                                    ]
-                                ]
+                                            'title' => 'US',
+                                        ],
+                                    ],
+                                ],
                             ],
                             //city tax
                             [
@@ -630,13 +631,13 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                                         [
                                             'percent' => 3,
                                             'code' => 'CityTax',
-                                            'title' => 'CityTax'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
+                                            'title' => 'CityTax',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
                 ],
                 'expectedTaxes' => [
                     //state tax
@@ -651,7 +652,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.66,
                         'base_amount' => 0.66,
                         'process' => 0,
-                        'base_real_amount' => 0.36000000000000004
+                        'base_real_amount' => 0.36000000000000004,
                     ],
                     //federal tax
                     '36' => [
@@ -665,7 +666,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.66, //combined amount
                         'base_amount' => 0.66,
                         'process' => 0,
-                        'base_real_amount' => 0.30000000000000004 //portion for specific rate
+                        'base_real_amount' => 0.30000000000000004, //portion for specific rate
                     ],
                     //city tax
                     '37' => [
@@ -679,8 +680,8 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'amount' => 0.2, //combined amount
                         'base_amount' => 0.2,
                         'process' => 0,
-                        'base_real_amount' => 0.18018018018018017 //this number is meaningless since this is single rate
-                    ]
+                        'base_real_amount' => 0.18018018018018017, //this number is meaningless since this is single rate
+                    ],
                 ],
                 'expectedItemTaxes' => [
                     [
@@ -693,7 +694,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.11,
                         'real_amount' => 0.060000000000000005,
                         'real_base_amount' => 0.060000000000000005,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //state tax for shipping
@@ -705,7 +706,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.55,
                         'real_amount' => 0.30000000000000004,
                         'real_base_amount' => 0.30000000000000004,
-                        'taxable_item_type' => 'shipping'
+                        'taxable_item_type' => 'shipping',
                     ],
                     [
                         //federal tax for item
@@ -717,7 +718,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.11,
                         'real_amount' => 0.05,
                         'real_base_amount' => 0.05,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //federal tax for shipping
@@ -729,7 +730,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.55,
                         'real_amount' => 0.25,
                         'real_base_amount' => 0.25,
-                        'taxable_item_type' => 'shipping'
+                        'taxable_item_type' => 'shipping',
                     ],
                     [
                         //city tax for item
@@ -741,7 +742,7 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.03,
                         'real_amount' => 0.03,
                         'real_base_amount' => 0.03,
-                        'taxable_item_type' => 'product'
+                        'taxable_item_type' => 'product',
                     ],
                     [
                         //city tax for shipping
@@ -753,11 +754,11 @@ class ConvertQuoteTaxToOrderTaxTest extends TestCase
                         'base_amount' => 0.17,
                         'real_amount' => 0.17,
                         'real_base_amount' => 0.17,
-                        'taxable_item_type' => 'shipping'
-                    ]
+                        'taxable_item_type' => 'shipping',
+                    ],
                 ],
-                'itemId' => null
-            ]
+                'itemId' => null,
+            ],
         ];
     }
 }

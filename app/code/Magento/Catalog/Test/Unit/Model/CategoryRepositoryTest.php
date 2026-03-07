@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category as CategoryModel;
 use Magento\Catalog\Model\CategoryFactory;
@@ -22,6 +22,7 @@ use Magento\Framework\Exception\StateException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -107,8 +108,8 @@ class CategoryRepositoryTest extends TestCase
         $objects = [
             [
                 PopulateWithValues::class,
-                $this->createMock(PopulateWithValues::class)
-            ]
+                $this->createMock(PopulateWithValues::class),
+            ],
         ];
         $objectHelper->prepareObjectManager($objects);
 
@@ -183,8 +184,8 @@ class CategoryRepositoryTest extends TestCase
                 [
                     'store_id' => 1,
                     'name' => 'category',
-                    'entity_id' => null
-                ]
+                    'entity_id' => null,
+                ],
             ],
             [
                 4,
@@ -192,9 +193,9 @@ class CategoryRepositoryTest extends TestCase
                 [
                     'store_id' => 1,
                     'name' => 'category',
-                    'entity_id' => null
-                ]
-            ]
+                    'entity_id' => null,
+                ],
+            ],
         ];
     }
 
@@ -320,11 +321,11 @@ class CategoryRepositoryTest extends TestCase
         return [
             [
                 true, CouldNotSaveException::class,
-                'Could not save category: The "ValidateCategoryTest" attribute is required. Enter and try again.'
+                'Could not save category: The "ValidateCategoryTest" attribute is required. Enter and try again.',
             ], [
                 'Something went wrong', CouldNotSaveException::class,
-                'Could not save category: Something went wrong'
-            ]
+                'Could not save category: Something went wrong',
+            ],
         ];
     }
 

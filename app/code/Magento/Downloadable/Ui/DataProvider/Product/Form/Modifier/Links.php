@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -357,7 +359,7 @@ class Links extends AbstractModifier
             [
                 'type' => $fileTypeField,
                 'link_url' => $fileLinkUrl,
-                'links_file' => $fileUploader
+                'links_file' => $fileUploader,
             ]
         );
     }

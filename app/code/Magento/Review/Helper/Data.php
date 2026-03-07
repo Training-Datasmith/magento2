@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ namespace Magento\Review\Helper;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const XML_REVIEW_GUETS_ALLOW = 'catalog/review/allow_guest';
+    public const XML_REVIEW_GUETS_ALLOW = 'catalog/review/allow_guest';
 
     /**
      * Filter manager
@@ -91,7 +93,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return [
             \Magento\Review\Model\Review::STATUS_APPROVED => __('Approved'),
             \Magento\Review\Model\Review::STATUS_PENDING => __('Pending'),
-            \Magento\Review\Model\Review::STATUS_NOT_APPROVED => __('Not Approved')
+            \Magento\Review\Model\Review::STATUS_NOT_APPROVED => __('Not Approved'),
         ];
     }
 

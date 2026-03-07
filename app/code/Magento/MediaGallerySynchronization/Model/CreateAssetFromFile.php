@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -89,8 +90,8 @@ class CreateAssetFromFile implements CreateAssetFromFileInterface
                 'basename' => $file->getBasename(),
                 'extra' => [
                     'image-width' => $width,
-                    'image-height' => $height
-                ]
+                    'image-height' => $height,
+                ],
             ];
         }
 
@@ -104,7 +105,7 @@ class CreateAssetFromFile implements CreateAssetFromFileInterface
                 'hash' => $this->getHash($path),
                 'size' => $meta['size'] ?? 0,
                 'contentType' => sprintf('%s/%s', 'image', $meta['extension'] ?? ''),
-                'source' => 'Local'
+                'source' => 'Local',
             ]
         );
     }

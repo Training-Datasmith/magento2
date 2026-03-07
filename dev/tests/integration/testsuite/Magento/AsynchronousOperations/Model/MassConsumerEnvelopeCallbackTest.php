@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class MassConsumerEnvelopeCallbackTest extends TestCase
             [
                 'queue' => $this->queue,
                 'configuration' => $this->configuration,
-                'operationProcessorFactory' => $operationProcessorFactory
+                'operationProcessorFactory' => $operationProcessorFactory,
             ]
         );
     }
@@ -109,13 +110,13 @@ class MassConsumerEnvelopeCallbackTest extends TestCase
         $product->setSku('simple');
         $product->setName('random name update');
         $message = [
-            'product' => $product
+            'product' => $product,
         ];
         $topicName = 'async.magento.catalog.api.productrepositoryinterface.save.post';
         $buuid = uniqid('bulk-');
         $messageProps = [
             'message_id' => uniqid('msg-'),
-            'topic_name' => $topicName
+            'topic_name' => $topicName,
         ];
         $consumerName = 'async.operations.all';
         $this->bulkManagement->scheduleBulk($buuid, [], 'test bulk');

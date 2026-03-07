@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogImportExport\Model\Indexer\Product\Flat\Plugin;
 
 use Magento\Catalog\Model\Indexer\Product\Flat\State as FlatState;

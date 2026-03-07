@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Model\ResourceModel\Report\Product\Viewed;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -76,10 +79,10 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             $count = count($union);
             if ($period !== null && $dateFrom !== null && $dateTo !== null && $period != 'month') {
                 if ($period == 'year') {
-                    if ($dbTableName == "report_viewed_product_aggregated_daily") {
+                    if ($dbTableName == 'report_viewed_product_aggregated_daily') {
                         $this->assertEquals(2, $count);
                     }
-                    if ($dbTableName == "report_viewed_product_aggregated_yearly") {
+                    if ($dbTableName == 'report_viewed_product_aggregated_yearly') {
                         $this->assertEquals(3, $count);
                     }
                 } else {
@@ -210,7 +213,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'expectedTable'     => 'report_viewed_product_aggregated_yearly',
                 'dateFrom' => null,
                 'dateTo'   => null,
-            ]
+            ],
         ];
     }
 }

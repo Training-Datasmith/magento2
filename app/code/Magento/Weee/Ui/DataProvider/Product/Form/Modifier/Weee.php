@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
@@ -26,7 +29,7 @@ use Magento\Weee\Ui\DataProvider\Product\Form\Modifier\Manager\Website as Websit
  */
 class Weee extends AbstractModifier
 {
-    const FORM_ELEMENT_WEEE = 'weee';
+    public const FORM_ELEMENT_WEEE = 'weee';
 
     /**
      * @var LocatorInterface
@@ -215,7 +218,7 @@ class Weee extends AbstractModifier
                                                 'dataScope' => 'state',
                                                 'options' => $this->getRegions(),
                                                 'filterBy' => [
-                                                    'field' => 'country'
+                                                    'field' => 'country',
                                                 ],
                                                 'caption' => '*',
                                                 'visible' => true,
@@ -235,7 +238,7 @@ class Weee extends AbstractModifier
                                                 'visible' => true,
                                                 'additionalClasses' => 'weee_hidden',
                                                 'validation' => [
-                                                    'validate-fpt-group' => true
+                                                    'validate-fpt-group' => true,
                                                 ],
                                                 'showLabel' => false,
                                             ],
@@ -255,7 +258,7 @@ class Weee extends AbstractModifier
                                         'enableLabel' => true,
                                         'dataScope' => 'value',
                                         'validation' => [
-                                            'required-entry' => true
+                                            'required-entry' => true,
                                         ],
                                         'showLabel' => false,
                                     ],

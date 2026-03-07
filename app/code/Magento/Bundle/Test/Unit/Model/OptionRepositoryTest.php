@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -268,7 +269,7 @@ class OptionRepositoryTest extends TestCase
             ->willReturn(
                 [
                     'title' => 'Option title',
-                    'option_id' => $optionId
+                    'option_id' => $optionId,
                 ]
             );
 

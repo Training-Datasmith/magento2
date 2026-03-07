@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -163,8 +164,8 @@ class AssociatedProductsTest extends TestCase
                                 'product_super_attribute_id' => '10',
                                 'default_label' => 'attribute_label',
                                 'store_label' => 'attribute_label',
-                                'use_default_value' => true
-                            ]
+                                'use_default_value' => true,
+                            ],
                         ],
                         'attribute_id' => '1',
                         'attribute_code' => 'attribute_code',
@@ -173,10 +174,10 @@ class AssociatedProductsTest extends TestCase
                         'options' => [
                             0 => [
                                 'label' => 'attribute_label',
-                                'value' => 'attribute_value'
-                            ]
-                        ]
-                    ]
+                                'value' => 'attribute_value',
+                            ],
+                        ],
+                    ],
                 ]
             );
         $image = $this->createMock(Image::class);
@@ -229,7 +230,7 @@ class AssociatedProductsTest extends TestCase
                 'newProduct' => 0,
                 'attributes' => ': attribute_label',
                 'thumbnail_image' => 'image_url',
-            ]
+            ],
         ];
         $this->assertSame($expected, $associatedProducts->getProductMatrix());
     }

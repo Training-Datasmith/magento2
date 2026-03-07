@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -27,8 +28,8 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Magento\Catalog\Model\Category.
@@ -308,8 +309,8 @@ class CategoryTest extends TestCase
     {
         $this->_model->addData(
             [
-                "include_in_menu" => false,
-                "is_active" => false,
+                'include_in_menu' => false,
+                'is_active' => false,
                 'name' => 'test',
             ]
         );
@@ -449,7 +450,7 @@ class CategoryTest extends TestCase
             'name' => 'Test Category',
             'attribute_set_id' => '3',
             'parent_id' => 2,
-            'description' => $longDescription
+            'description' => $longDescription,
         ];
         $this->_model->setData($requiredData);
         $this->categoryResource->save($this->_model);
@@ -467,14 +468,14 @@ class CategoryTest extends TestCase
                 'data' => [
                     'is_active' => '1',
                     'include_in_menu' => '1',
-                ]
+                ],
             ],
             'disable_fields' => [
                 'data' => [
                     'is_active' => '0',
                     'include_in_menu' => '0',
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

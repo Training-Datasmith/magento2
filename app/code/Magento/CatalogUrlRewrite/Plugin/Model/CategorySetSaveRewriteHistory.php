@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogUrlRewrite\Plugin\Model;
 
 use Magento\Catalog\Model\Category;
-use Magento\Framework\Webapi\Rest\Request as RestRequest;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
+use Magento\Framework\Webapi\Rest\Request as RestRequest;
 
 class CategorySetSaveRewriteHistory
 {

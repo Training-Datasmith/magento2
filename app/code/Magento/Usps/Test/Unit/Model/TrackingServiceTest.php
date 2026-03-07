@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Framework\HTTP\AsyncClient\Response;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Shipping\Model\Tracking\Result;
 use Magento\Shipping\Model\Tracking\Result\Error;
-use Magento\Shipping\Model\Tracking\Result\Status;
-use Magento\Shipping\Model\Tracking\ResultFactory;
 use Magento\Shipping\Model\Tracking\Result\ErrorFactory;
+use Magento\Shipping\Model\Tracking\Result\Status;
 use Magento\Shipping\Model\Tracking\Result\StatusFactory;
+use Magento\Shipping\Model\Tracking\ResultFactory;
 use Magento\Usps\Model\Carrier;
 use Magento\Usps\Model\TrackingService;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -276,7 +277,7 @@ class TrackingServiceTest extends TestCase
         return [
             ['1234567890'],
             ['636376342634'],
-            ['0987654321']
+            ['0987654321'],
         ];
     }
 
@@ -290,7 +291,7 @@ class TrackingServiceTest extends TestCase
         return [
             [''],
             ['invalid_tracking_number'],
-            [null]
+            [null],
         ];
     }
 
@@ -309,9 +310,9 @@ class TrackingServiceTest extends TestCase
                     'eventCity' => 'New York',
                     'eventState' => 'NY',
                     'eventCountry' => 'US',
-                    'eventTimestamp' => '2024-03-20T14:30:00Z'
-                ]
-            ]
+                    'eventTimestamp' => '2024-03-20T14:30:00Z',
+                ],
+            ],
         ];
         return json_encode($successResponse);
     }
@@ -323,8 +324,8 @@ class TrackingServiceTest extends TestCase
     {
         $errorResponse = [
             'error' => [
-                'message' => 'Tracking number not found'
-            ]
+                'message' => 'Tracking number not found',
+            ],
         ];
         return json_encode($errorResponse);
     }

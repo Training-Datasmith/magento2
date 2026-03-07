@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Model\Adminhtml;
 
 use Magento\Framework\Option\ArrayInterface;
@@ -27,12 +30,12 @@ class BillingAddressDisplayOptions implements ArrayInterface
         return [
             [
                 'label' => __('Payment Method'),
-                'value' => 0
+                'value' => 0,
             ],
             [
                 'label' => __('Payment Page'),
-                'value' => 1
-            ]
+                'value' => 1,
+            ],
         ];
     }
 }

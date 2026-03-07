@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Model\Indexer\Fulltext\Plugin\Category\Product\Action;
 
-use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
 use Magento\Catalog\Model\Indexer\Category\Product\Action\Rows as ActionRows;
-use Magento\Store\Model\StoreManagerInterface;
+use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
+use Magento\CatalogSearch\Model\Indexer\Fulltext as FulltextIndexer;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Indexer\IndexerRegistry;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Catalog search indexer plugin for catalog category products assignment.

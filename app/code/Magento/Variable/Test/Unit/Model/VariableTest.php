@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ class VariableTest extends TestCase
                 'escaper' => $this->escaperMock,
                 'resource' => $this->resourceMock,
                 'resourceCollection' => $this->resourceCollectionMock,
-                'wysiwygValidator' => $this->wysiwygValidator
+                'wysiwygValidator' => $this->wysiwygValidator,
             ]
         );
         $this->validationFailedPhrase = __('Validation has failed.');
@@ -90,10 +91,10 @@ class VariableTest extends TestCase
     {
         $value = $this->resourceCollectionMock;
         $objectManagerMock = $this->createMock(ObjectManagerInterface::class);
-        $objectManagerMock->method('create')->willReturnCallback(function () use ($value){
+        $objectManagerMock->method('create')->willReturnCallback(function () use ($value) {
             return $value;
         });
-        $objectManagerMock->method('get')->willReturnCallback(function () use ($value){
+        $objectManagerMock->method('get')->willReturnCallback(function () use ($value) {
             return $value;
         });
 
@@ -278,7 +279,7 @@ class VariableTest extends TestCase
             'changed-html-value-without-exception' => ['<b>Test Html</b>',true,true,false],
             'changed-html-value-with-exception' => ['<b>Test Html</b>',true,false,true],
             'no-changed-html-value-without-exception' => ['<b>Test Html</b>',false,false,false],
-            'no-html-value-with-exception' => ['',true,false,false]
+            'no-html-value-with-exception' => ['',true,false,false],
         ];
     }
 }

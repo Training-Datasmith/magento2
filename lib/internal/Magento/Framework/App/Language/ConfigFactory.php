@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Application language config factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Language;
 
 /**

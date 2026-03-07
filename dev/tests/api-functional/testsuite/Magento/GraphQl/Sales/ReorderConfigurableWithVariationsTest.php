@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
@@ -104,7 +104,7 @@ class ReorderConfigurableWithVariationsTest extends GraphQlAbstract
                             [
                                 'option_label' => 'Test Configurable',
                                 'value_label' => 'Option 1',
-                            ]
+                            ],
                         ],
                     ],
                     [

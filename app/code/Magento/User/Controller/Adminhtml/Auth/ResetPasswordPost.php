@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\User\Controller\Adminhtml\Auth;
 
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Helper\Data;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\User\Controller\Adminhtml\Auth;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ObjectManager;
-use Magento\Backend\Helper\Data;
-use Magento\User\Model\UserFactory;
+use Magento\User\Controller\Adminhtml\Auth;
 use Magento\User\Helper\ForceSignIn;
+use Magento\User\Model\UserFactory;
 
 class ResetPasswordPost extends Auth implements HttpGetActionInterface, HttpPostActionInterface
 {

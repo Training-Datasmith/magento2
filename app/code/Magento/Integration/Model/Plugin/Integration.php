@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,11 +10,11 @@ namespace Magento\Integration\Model\Plugin;
 
 use Magento\Authorization\Model\Acl\AclRetriever;
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Integration\Model\Integration as IntegrationModel;
 use Magento\Integration\Api\AuthorizationServiceInterface;
 use Magento\Integration\Api\IntegrationServiceInterface;
-use Magento\Integration\Model\IntegrationConfig;
 use Magento\Integration\Model\ConsolidatedConfig;
+use Magento\Integration\Model\Integration as IntegrationModel;
+use Magento\Integration\Model\IntegrationConfig;
 
 /**
  * Plugin for \Magento\Integration\Model\IntegrationService.

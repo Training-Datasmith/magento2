@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,9 +19,8 @@ use Magento\Catalog\Model\ResourceModel\Product\Compare\Item\Collection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Store\Model\Website;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -79,7 +79,7 @@ class CompareProductsTest extends TestCase
      */
     private $productValueMap = [
         'id' => 'getId',
-        ProductInterface::NAME => 'getName'
+        ProductInterface::NAME => 'getName',
     ];
 
     protected function setUp(): void
@@ -104,7 +104,7 @@ class CompareProductsTest extends TestCase
                 'outputHelper' => $this->outputHelperMock,
                 'scopeConfig'  => $this->scopeConfigMock,
                 'storeManager' => $this->storeManagerMock,
-                'urlBuilder' => $this->urlBuilder
+                'urlBuilder' => $this->urlBuilder,
             ]
         );
     }
@@ -115,7 +115,7 @@ class CompareProductsTest extends TestCase
      * @param array $items
      * @return MockObject
      */
-    private function getItemCollectionMock(array $items) : MockObject
+    private function getItemCollectionMock(array $items): MockObject
     {
         $itemCollectionMock = $this->createMock(Collection::class);
         $itemCollectionMock->method('getIterator')->willReturn(new \ArrayIterator($items));
@@ -129,7 +129,7 @@ class CompareProductsTest extends TestCase
      * @param array $dataSet
      * @return array
      */
-    private function prepareProductsWithCorrespondingMocks(array $dataSet) : array
+    private function prepareProductsWithCorrespondingMocks(array $dataSet): array
     {
         $items = [];
         $urlMap = [];
@@ -170,7 +170,7 @@ class CompareProductsTest extends TestCase
      * @param array $data
      * @return MockObject
      */
-    private function getProductMock(array $data) : MockObject
+    private function getProductMock(array $data): MockObject
     {
         $product = $this->createMock(Product::class);
 
@@ -188,7 +188,7 @@ class CompareProductsTest extends TestCase
         $dataSet = [
             ['id' => 1, 'name' => 'product#1'],
             ['id' => 2, 'name' => 'product#2'],
-            ['id' => 3, 'name' => 'product#3']
+            ['id' => 3, 'name' => 'product#3'],
         ];
 
         $count = count($dataSet);
@@ -222,24 +222,24 @@ class CompareProductsTest extends TestCase
                         'product_url' => 'http://product.url/1',
                         'name' => 'productName#1',
                         'remove_url' => 'http://remove.url/1',
-                        'productScope' => null
+                        'productScope' => null,
                     ],
                     [
                         'id' => 2,
                         'product_url' => 'http://product.url/2',
                         'name' => 'productName#2',
                         'remove_url' => 'http://remove.url/2',
-                        'productScope' => null
+                        'productScope' => null,
                     ],
                     [
                         'id' => 3,
                         'product_url' => 'http://product.url/3',
                         'name' => 'productName#3',
                         'remove_url' => 'http://remove.url/3',
-                        'productScope' => null
-                    ]
+                        'productScope' => null,
+                    ],
                 ],
-                'storeId' => 1
+                'storeId' => 1,
             ],
             $this->model->getSectionData()
         );
@@ -269,7 +269,7 @@ class CompareProductsTest extends TestCase
                 'countCaption' =>  __('%1 items', $count),
                 'listUrl' => 'http://list.url',
                 'items' => [],
-                'storeId' => 1
+                'storeId' => 1,
             ],
             $this->model->getSectionData()
         );
@@ -290,8 +290,8 @@ class CompareProductsTest extends TestCase
             [
                 [
                     'id' => 12345,
-                    'name' => 'SingleProduct'
-                ]
+                    'name' => 'SingleProduct',
+                ],
             ]
         );
 
@@ -316,10 +316,10 @@ class CompareProductsTest extends TestCase
                         'product_url' => 'http://product.url/12345',
                         'name' => 'productName#12345',
                         'remove_url' => 'http://remove.url/12345',
-                        'productScope' => null
-                    ]
+                        'productScope' => null,
+                    ],
                 ],
-                'storeId' => 1
+                'storeId' => 1,
             ],
             $this->model->getSectionData()
         );

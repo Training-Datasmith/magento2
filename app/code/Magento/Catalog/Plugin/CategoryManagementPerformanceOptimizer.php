@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Plugin;
 
 use Magento\Catalog\Api\CategoryManagementInterface;
-use Magento\Catalog\Api\Data\CategoryTreeInterface;
 
 /**
  * Performance optimizer plugin for CategoryManagement

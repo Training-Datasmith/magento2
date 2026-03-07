@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Eav\Model\Validator\Attribute;
 
+use InvalidArgumentException;
 use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Validator\AbstractValidator;
-use InvalidArgumentException;
 
 /**
  * Validate EAV entities using attribute backend models.

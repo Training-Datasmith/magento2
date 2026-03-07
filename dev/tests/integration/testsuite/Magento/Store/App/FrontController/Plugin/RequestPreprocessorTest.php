@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,12 +8,12 @@
 
 namespace Magento\Store\App\FrontController\Plugin;
 
+use Laminas\Stdlib\Parameters;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\Value;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\TestFramework\Response;
-use Laminas\Stdlib\Parameters;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -125,72 +127,72 @@ class RequestPreprocessorTest extends \Magento\TestFramework\TestCase\AbstractCo
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c/d/e.html',
-                'redirectUrl' => 'http://magento.com/us/a/b/c/d/e.html'
+                'redirectUrl' => 'http://magento.com/us/a/b/c/d/e.html',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c/d.html',
-                'redirectUrl' => 'http://magento.com/us/a/b/c/d.html'
+                'redirectUrl' => 'http://magento.com/us/a/b/c/d.html',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c.html',
-                'redirectUrl' => 'http://magento.com/us/a/b/c.html'
+                'redirectUrl' => 'http://magento.com/us/a/b/c.html',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b.html',
-                'redirectUrl' => 'http://magento.com/us/a/b.html'
+                'redirectUrl' => 'http://magento.com/us/a/b.html',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a.html',
-                'redirectUrl' => 'http://magento.com/us/a.html'
+                'redirectUrl' => 'http://magento.com/us/a.html',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c/d/e',
-                'redirectUrl' => 'http://magento.com/us/a/b/c/d/e'
+                'redirectUrl' => 'http://magento.com/us/a/b/c/d/e',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c/d',
-                'redirectUrl' => 'http://magento.com/us/a/b/c/d'
+                'redirectUrl' => 'http://magento.com/us/a/b/c/d',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b/c',
-                'redirectUrl' => 'http://magento.com/us/a/b/c'
+                'redirectUrl' => 'http://magento.com/us/a/b/c',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a/b',
-                'redirectUrl' => 'http://magento.com/us/a/b'
+                'redirectUrl' => 'http://magento.com/us/a/b',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/a',
-                'redirectUrl' => 'http://magento.com/us/a'
+                'redirectUrl' => 'http://magento.com/us/a',
             ],
             [
                 'config' => $baseConfig,
                 'requestUrl' => 'http://magento.com/',
-                'redirectUrl' => 'http://magento.com/us/'
+                'redirectUrl' => 'http://magento.com/us/',
             ],
             [
                 'config' => array_merge($baseConfig, ['web/seo/use_rewrites' => 0]),
                 'requestUrl' => 'http://magento.com/',
-                'redirectUrl' => 'http://magento.com/us/index.php/'
+                'redirectUrl' => 'http://magento.com/us/index.php/',
             ],
             [
                 'config' => array_merge($baseConfig, ['web/seo/use_rewrites' => 0]),
                 'requestUrl' => 'http://magento.com/a/b/c/d.html',
-                'redirectUrl' => 'http://magento.com/us/index.php/a/b/c/d.html'
+                'redirectUrl' => 'http://magento.com/us/index.php/a/b/c/d.html',
             ],
             [
                 'config' => array_merge($baseConfig, ['web/seo/use_rewrites' => 0]),
                 'requestUrl' => 'http://magento.com/a/b/c/d',
-                'redirectUrl' => 'http://magento.com/us/index.php/a/b/c/d'
+                'redirectUrl' => 'http://magento.com/us/index.php/a/b/c/d',
             ],
         ];
     }
@@ -221,8 +223,8 @@ class RequestPreprocessorTest extends \Magento\TestFramework\TestCase\AbstractCo
                 'form_key' => $this->_objectManager->get(FormKey::class)->getFormKey(),
                 'login' => [
                     'username' => 'customer@example.com',
-                    'password' => 'password'
-                ]
+                    'password' => 'password',
+                ],
             ]
         );
         $request = $this->getRequest();
@@ -233,7 +235,7 @@ class RequestPreprocessorTest extends \Magento\TestFramework\TestCase\AbstractCo
             $server = new Parameters(
                 [
                     'HTTPS' => 'on',
-                    'SERVER_PORT' => 443
+                    'SERVER_PORT' => 443,
                 ]
             );
             $request->setServer($server);

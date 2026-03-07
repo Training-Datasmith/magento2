@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\ProductMetadata;
 use Magento\Framework\Composer\ComposerInformation;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ProductMetadataTest extends TestCase
@@ -79,19 +80,19 @@ class ProductMetadataTest extends TestCase
                 [
                     0 => [
                         'name'    => 'magento/product-community-edition',
-                        'version' => '123.456.789'
+                        'version' => '123.456.789',
                     ],
                     1 => [
                         'name'    => 'magento/product-other-edition',
-                        'version' => '987.654.321'
+                        'version' => '987.654.321',
                     ],
                 ],
-                '123.456.789'
+                '123.456.789',
             ],
             [
                 [],
-                'UNKNOWN'
-            ]
+                'UNKNOWN',
+            ],
         ];
     }
 

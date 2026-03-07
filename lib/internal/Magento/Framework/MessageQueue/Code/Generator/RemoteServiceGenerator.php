@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Code\Generator;
 
 use Laminas\Code\Reflection\MethodReflection;
@@ -83,7 +86,7 @@ class RemoteServiceGenerator extends \Magento\Framework\Code\Generator\EntityAbs
             'parameters' => [
                 ['name' => 'publisher', 'type' => '\\' . \Magento\Framework\MessageQueue\PublisherInterface::class],
             ],
-            'body' => "\$this->publisher = \$publisher;",
+            'body' => '$this->publisher = $publisher;',
             'docblock' => [
                 'shortDescription' => 'Initialize dependencies.',
                 'tags' => [
@@ -150,8 +153,8 @@ class RemoteServiceGenerator extends \Magento\Framework\Code\Generator\EntityAbs
             $methodBody = $topicConfig[CommunicationConfig::TOPIC_IS_SYNCHRONOUS] ? 'return ' : '';
             $methodBody .= "\$this->publisher->publish(\n"
                 . "    '{$topicName}',\n"
-                . "    [" . implode(', ', $topicParameters) . "]\n"
-                . ");";
+                . '    [' . implode(', ', $topicParameters) . "]\n"
+                . ');';
             $annotations = [['name' => 'inheritdoc']];
             $method = [
                 'name' => $methodName,

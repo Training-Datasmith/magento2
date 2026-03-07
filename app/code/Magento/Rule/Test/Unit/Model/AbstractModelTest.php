@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class AbstractModelTest extends TestCase
         $customAttributeFactory = $this->createMock(AttributeValueFactory::class);
 
         $this->model = $this->createPartialMock(AbstractModel::class, ['getConditionsInstance', 'getActionsInstance']);
-        
+
         $constructorArgs = [
             $this->contextMock,
             $this->registryMock,
@@ -97,7 +98,7 @@ class AbstractModelTest extends TestCase
             $customAttributeFactory,
             $this->getSerializerMock(),
         ];
-        
+
         $this->model->__construct(...$constructorArgs);
     }
 

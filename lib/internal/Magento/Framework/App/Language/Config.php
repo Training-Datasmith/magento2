@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -90,7 +92,7 @@ class Config
             'vendor'     => $vendorNode->nodeValue,
             'package'    => $packageNode->nodeValue,
             'sort_order' => $sortOrderNode ? $sortOrderNode->nodeValue : 0,
-            'use'        => $use
+            'use'        => $use,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,6 +24,7 @@ use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Filesystem\File\Read;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\InlineInterface;
 use Magento\ImportExport\Model\Import;
@@ -37,7 +39,6 @@ use Magento\ImportExport\Model\ResourceModel\Helper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * The test for Customer composite model
@@ -187,8 +188,8 @@ class CustomerCompositeTest extends TestCase
         $objects = [
             [
                 Json::class,
-                $this->createMock(Json::class)
-            ]
+                $this->createMock(Json::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -232,7 +233,7 @@ class CustomerCompositeTest extends TestCase
         );
         $customerStorage->method('getCustomerId')->willReturn(1);
         $customerStorage->method('setCustomerId')->willReturnSelf();
-        
+
         $customerEntity = $this->_getCustomerEntityMock();
         $customerEntity->expects($this->any())->method('validateRow')->willReturn(true);
         $customerEntity->expects($this->any())
@@ -406,7 +407,7 @@ class CustomerCompositeTest extends TestCase
         );
         $customerStorage->method('getCustomerId')->willReturn(true);
         $customerStorage->method('setCustomerId')->willReturnSelf();
-        
+
         $addressEntity->expects($this->any())
             ->method('getCustomerStorage')
             ->willReturn($customerStorage);
@@ -448,7 +449,7 @@ class CustomerCompositeTest extends TestCase
         );
         $customerStorage->method('getCustomerId')->willReturn(true);
         $customerStorage->method('setCustomerId')->willReturnSelf();
-        
+
         $addressEntity->expects($this->any())
             ->method('getCustomerStorage')
             ->willReturn($customerStorage);
@@ -512,7 +513,7 @@ class CustomerCompositeTest extends TestCase
                     [
                         Customer::COLUMN_EMAIL => '',
                         Customer::COLUMN_WEBSITE => '',
-                        Address::COLUMN_ADDRESS_ID => 1
+                        Address::COLUMN_ADDRESS_ID => 1,
                     ],
                 ],
                 'calls' => ['customerValidationCalls' => 1, 'addressValidationCalls' => 2],
@@ -530,7 +531,7 @@ class CustomerCompositeTest extends TestCase
                     [
                         Customer::COLUMN_EMAIL => '',
                         Customer::COLUMN_WEBSITE => '',
-                        Address::COLUMN_ADDRESS_ID => 1
+                        Address::COLUMN_ADDRESS_ID => 1,
                     ],
                 ],
                 'calls' => ['customerValidationCalls' => 1, 'addressValidationCalls' => 0],
@@ -548,12 +549,12 @@ class CustomerCompositeTest extends TestCase
                     [
                         Customer::COLUMN_EMAIL => '',
                         Customer::COLUMN_WEBSITE => '',
-                        Address::COLUMN_ADDRESS_ID => 1
+                        Address::COLUMN_ADDRESS_ID => 1,
                     ],
                     [
                         Customer::COLUMN_EMAIL => '',
                         Customer::COLUMN_WEBSITE => '',
-                        Address::COLUMN_ADDRESS_ID => 2
+                        Address::COLUMN_ADDRESS_ID => 2,
                     ],
                 ],
                 'calls' => ['customerValidationCalls' => 1, 'addressValidationCalls' => 3],
@@ -694,7 +695,7 @@ class CustomerCompositeTest extends TestCase
                 'customerImport' => false,
                 'addressImport' => false,
                 'result' => false,
-            ]
+            ],
         ];
     }
 

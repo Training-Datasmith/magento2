@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,6 +23,6 @@ class Reader extends Filesystem
      */
     protected $_idAttributes = [
         '/csp_whitelist/policies/policy' => ['id'],
-        '/csp_whitelist/policies/policy/values/value' => ['id']
+        '/csp_whitelist/policies/policy/values/value' => ['id'],
     ];
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class RowCustomizerTest extends TestCase
         $productData = [0 => 'sku'];
         $expectedData = [
             0 => 'sku',
-            1 => 'associated_skus'
+            1 => 'associated_skus',
         ];
         $this->assertEquals($expectedData, $this->rowCustomizerMock->addHeaderColumns($productData));
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class AccountTokensTest extends TestCase
         $this->tokenManagement = $this->createMock(CustomerTokenManagement::class);
 
         $this->block = $this->objectManager->getObject(AccountTokens::class, [
-            'customerTokenManagement' => $this->tokenManagement
+            'customerTokenManagement' => $this->tokenManagement,
         ]);
     }
 
@@ -51,10 +52,10 @@ class AccountTokensTest extends TestCase
     public function testGetPaymentTokens()
     {
         $cardToken = $this->objectManager->getObject(PaymentToken::class, [
-            'data' => [PaymentTokenInterface::TYPE => CreditCardTokenFactory::TOKEN_TYPE_CREDIT_CARD]
+            'data' => [PaymentTokenInterface::TYPE => CreditCardTokenFactory::TOKEN_TYPE_CREDIT_CARD],
         ]);
         $token = $this->objectManager->getObject(PaymentToken::class, [
-            'data' => [PaymentTokenInterface::TYPE => AccountPaymentTokenFactory::TOKEN_TYPE_ACCOUNT]
+            'data' => [PaymentTokenInterface::TYPE => AccountPaymentTokenFactory::TOKEN_TYPE_ACCOUNT],
         ]);
         $this->tokenManagement->expects(static::once())
             ->method('getCustomerSessionTokens')

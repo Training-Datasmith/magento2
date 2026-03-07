@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -36,12 +37,12 @@ class TotalsProcessorTest extends TestCase
         $jsLayoutData = [
             'sub-total' => [],
             'grand-total' => [],
-            'non-existant-total' => null
+            'non-existant-total' => null,
         ];
         $expectedResultData = [
             'sub-total' => ['sortOrder' => 10],
             'grand-total' => ['sortOrder' => 20],
-            'non-existant-total' => null
+            'non-existant-total' => null,
         ];
         $jsLayout['components']['checkout']['children']['sidebar']['children']['summary']
             ['children']['totals']['children'] = $jsLayoutData;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -33,12 +34,12 @@ class UpdateBmltoPayLater implements DataPatchInterface
             'pages' => ['productpage', 'checkout'],
             'data' => [
                 'position' => [
-                    'name' =>'position',
-                    'values' => [['options' =>['0' => 'header', '1' => 'near_pp_button']]],
+                    'name' => 'position',
+                    'values' => [['options' => ['0' => 'header', '1' => 'near_pp_button']]],
                     'requires' => [
                         'header' => ['name' => 'stylelayout', 'value' => 'flex'],
-                        'near_pp_button' => ['name' => 'stylelayout', 'value' => 'text']
-                    ]
+                        'near_pp_button' => ['name' => 'stylelayout', 'value' => 'text'],
+                    ],
                 ],
                 'size' => [
                     'name' => 'ratio',
@@ -50,24 +51,24 @@ class UpdateBmltoPayLater implements DataPatchInterface
                                 '300x50' => '8x1',
                                 '468x60' => '8x1',
                                 '728x90' => '20x1',
-                                '800x66' => '20x1'
+                                '800x66' => '20x1',
                             ],
-                            'depends' => ['name' => 'position', 'value' => '0']
-                        ]
-                    ]
-                ]
-            ]
+                            'depends' => ['name' => 'position', 'value' => '0'],
+                        ],
+                    ],
+                ],
+            ],
         ],
         [
             'pages' => ['homepage', 'categorypage'],
             'data' => [
                 'position' => [
-                    'name' =>'position',
+                    'name' => 'position',
                     'values' => [['options' => ['0' => 'header', '1' => 'sidebar']]],
                     'requires' => [
                         'header' => ['name' => 'stylelayout', 'value' => 'flex'],
-                        'sidebar' => ['name' => 'stylelayout', 'value' => 'flex']
-                    ]
+                        'sidebar' => ['name' => 'stylelayout', 'value' => 'flex'],
+                    ],
                 ],
                 'size' => [
                     'name' => 'ratio',
@@ -79,9 +80,9 @@ class UpdateBmltoPayLater implements DataPatchInterface
                                 '300x50' => '8x1',
                                 '468x60' => '8x1',
                                 '728x90' => '20x1',
-                                '800x66' => '20x1'
+                                '800x66' => '20x1',
                             ],
-                            'depends' => ['name' => 'position', 'value' => '0']
+                            'depends' => ['name' => 'position', 'value' => '0'],
                         ],
                         [
                             'options' => [
@@ -91,14 +92,14 @@ class UpdateBmltoPayLater implements DataPatchInterface
                                 '120x240' => '1x1',
                                 '120x600' => '1x4',
                                 '234x400' => '1x1',
-                                '250x250' => '1x1'
+                                '250x250' => '1x1',
                             ],
-                            'depends' => ['name' => 'position', 'value' => '1']
-                        ]
-                    ]
-                ]
-            ]
-        ]
+                            'depends' => ['name' => 'position', 'value' => '1'],
+                        ],
+                    ],
+                ],
+            ],
+        ],
     ];
 
     /**
@@ -195,7 +196,7 @@ class UpdateBmltoPayLater implements DataPatchInterface
                         'scope' => 'default',
                         'scope_id' => 0,
                         'path' => $path,
-                        'value' => $value
+                        'value' => $value,
                     ]
                 );
                 if (array_key_exists('requires', $pageSetting)
@@ -209,7 +210,7 @@ class UpdateBmltoPayLater implements DataPatchInterface
                             'scope' => 'default',
                             'scope_id' => 0,
                             'path' => $requiredPath,
-                            'value' => $requiredValue
+                            'value' => $requiredValue,
                         ]
                     );
                 }

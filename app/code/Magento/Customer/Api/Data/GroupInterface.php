@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,13 +20,13 @@ interface GroupInterface extends ExtensibleDataInterface
     /**#@+
      * Constants for keys of data array
      */
-    const ID = 'id';
-    const CODE = 'code';
-    const TAX_CLASS_ID = 'tax_class_id';
-    const TAX_CLASS_NAME = 'tax_class_name';
-    const NOT_LOGGED_IN_ID = 0;
-    const CUST_GROUP_ALL = 32000;
-    const GROUP_CODE_MAX_LENGTH = 32;
+    public const ID = 'id';
+    public const CODE = 'code';
+    public const TAX_CLASS_ID = 'tax_class_id';
+    public const TAX_CLASS_NAME = 'tax_class_name';
+    public const NOT_LOGGED_IN_ID = 0;
+    public const CUST_GROUP_ALL = 32000;
+    public const GROUP_CODE_MAX_LENGTH = 32;
     /**#@-*/
 
     /**

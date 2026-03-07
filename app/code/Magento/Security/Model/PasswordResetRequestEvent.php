@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model;
 
 /**
@@ -28,12 +31,12 @@ class PasswordResetRequestEvent extends \Magento\Framework\Model\AbstractModel
     /**
      * Customer request a password reset
      */
-    const CUSTOMER_PASSWORD_RESET_REQUEST = 0;
+    public const CUSTOMER_PASSWORD_RESET_REQUEST = 0;
 
     /**
      * Admin User request a password reset
      */
-    const ADMIN_PASSWORD_RESET_REQUEST = 1;
+    public const ADMIN_PASSWORD_RESET_REQUEST = 1;
 
     /**
      * Initialize resource model

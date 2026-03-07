@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe.
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class XmlScannerTest extends TestCase
         $objects = [
             [
                 LoggerInterface::class,
-                $this->createMock(LoggerInterface::class)
+                $this->createMock(LoggerInterface::class),
             ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);

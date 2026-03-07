@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -10,7 +11,6 @@ namespace Magento\Framework\Cache\Frontend\Adapter;
 use Closure;
 use InvalidArgumentException;
 use Magento\Framework\Cache\CacheConstants;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapterProvider;
 use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\GenericTagAdapter;
 use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
 use Magento\Framework\Cache\FrontendInterface;
@@ -229,7 +229,7 @@ class Symfony implements FrontendInterface
         if (count($this->responseCache) < self::RESPONSE_CACHE_MAX_SIZE) {
             $this->responseCache[$cacheKey] = [
                 'result' => $result,
-                'time' => time()
+                'time' => time(),
             ];
         }
 
@@ -274,7 +274,7 @@ class Symfony implements FrontendInterface
         if ($result !== false && count($this->responseCache) < self::RESPONSE_CACHE_MAX_SIZE) {
             $this->responseCache[$cacheKey] = [
                 'result' => $result,
-                'time' => time()
+                'time' => time(),
             ];
         }
 
@@ -323,7 +323,7 @@ class Symfony implements FrontendInterface
         if ($this->alwaysDeferSaves) {
             $this->batchedItems[$cleanId] = [
                 'item' => $item,
-                'tags' => $cleanTags
+                'tags' => $cleanTags,
             ];
             $this->hasPendingWrites = true;
             return $cache->saveDeferred($item);
@@ -334,7 +334,7 @@ class Symfony implements FrontendInterface
         if ($this->batchMode) {
             $this->batchedItems[$cleanId] = [
                 'item' => $item,
-                'tags' => $cleanTags
+                'tags' => $cleanTags,
             ];
             $this->hasPendingWrites = true;
             return $cache->saveDeferred($item);
@@ -363,7 +363,7 @@ class Symfony implements FrontendInterface
         if ($this->hasPendingWrites) {
             try {
                 $this->commitPendingWrites();
-            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+                // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
             } catch (\Exception $e) {
                 // Intentional no-op: Silently fail in destructor (request is ending anyway)
                 // In production, this would be logged
@@ -510,7 +510,7 @@ class Symfony implements FrontendInterface
             'data' => $data,
             'mtime' => $now,
             'expire' => $expiry,
-            'tags' => array_values(array_unique($tagsToSet))
+            'tags' => array_values(array_unique($tagsToSet)),
         ];
 
         $item->set($wrappedData);
@@ -588,13 +588,13 @@ class Symfony implements FrontendInterface
             CacheConstants::CLEANING_MODE_OLD,
             CacheConstants::CLEANING_MODE_MATCHING_TAG,
             CacheConstants::CLEANING_MODE_NOT_MATCHING_TAG,
-            CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG
+            CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG,
         ];
 
         if (!in_array($mode, $validModes, true)) {
             throw new InvalidArgumentException(
                 "Invalid cleaning mode '{$mode}'. Supported modes: " .
-                "ALL, OLD, MATCHING_TAG, NOT_MATCHING_TAG, MATCHING_ANY_TAG"
+                'ALL, OLD, MATCHING_TAG, NOT_MATCHING_TAG, MATCHING_ANY_TAG'
             );
         }
 

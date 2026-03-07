@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ class LocaleTest extends TestCase
         'en_US' => 'English (United States)',
         'en_GB' => 'English (United Kingdom)',
         'uk_UA' => 'Ukrainian (Ukraine)',
-        'de_DE' => 'German (Germany)'
+        'de_DE' => 'German (Germany)',
     ];
 
     public function testIsValid()

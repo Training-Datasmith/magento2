@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class ReaderTest extends TestCase
             ['es', ['<payment/>'], 'adminhtml/rules/payment_es.xml'],
             ['hk', ['<payment/>'], 'adminhtml/rules/payment_hk.xml'],
             ['nz', ['<payment/>'], 'adminhtml/rules/payment_nz.xml'],
-            ['de', ['<payment/>'], 'adminhtml/rules/payment_de.xml']
+            ['de', ['<payment/>'], 'adminhtml/rules/payment_de.xml'],
         ];
     }
 
@@ -154,7 +155,7 @@ class ReaderTest extends TestCase
     public static function dataProviderReadOtherCountryConfig(): array
     {
         return [
-            ['no', ['<payment/>'], 'adminhtml/rules/payment_other.xml']
+            ['no', ['<payment/>'], 'adminhtml/rules/payment_other.xml'],
         ];
     }
 }

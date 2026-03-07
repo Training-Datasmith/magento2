@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test of file abstract service
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme\Customization;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -19,9 +21,9 @@ use Magento\Framework\View\Design\Theme\Customization\Path;
 use Magento\Framework\View\Design\Theme\FileFactory;
 use Magento\Theme\Model\Theme;
 use Magento\Theme\Model\Theme\File;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractFileTest extends TestCase
 {
@@ -187,7 +189,7 @@ class AbstractFileTest extends TestCase
                     ['id' => 4, 'file_path' => 'js/test_4.js', 'content' => 'test content', 'sort_order' => 9],
                     ['id' => 5, 'file_path' => 'js/test_5.js', 'content' => 'test content', 'sort_order' => 11],
                 ],
-            ]
+            ],
         ];
     }
 

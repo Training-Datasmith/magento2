@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ use Magento\TestFramework\TestCase\AbstractBackendController;
  */
 class ExportBase extends AbstractBackendController
 {
-    const CSV_FORMAT = 'csv';
-    const XML_FORMAT = 'xml';
+    public const CSV_FORMAT = 'csv';
+    public const XML_FORMAT = 'xml';
 
     /**
      * @var OrderInterfaceFactory

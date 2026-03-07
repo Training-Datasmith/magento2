@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class ManagerTest extends TestCase
                     'findByConsumerId',
                     'findActiveIntegrationByConsumerId',
                     'delete',
-                    'getSelectedResources'
+                    'getSelectedResources',
                 ]
             )->getMock();
 
@@ -73,7 +74,7 @@ class ManagerTest extends TestCase
             [
                 'integrationService' => $this->integrationServiceMock,
                 'aclRetriever' => $this->aclRetriever,
-                'integrationConfig' => $this->configMock
+                'integrationConfig' => $this->configMock,
             ]
         );
     }
@@ -110,9 +111,9 @@ class ManagerTest extends TestCase
                 'TestIntegration1' => [
                     'email' => 'test-integration1@magento.com',
                     'endpoint_url' => 'http://endpoint.com',
-                    'identity_link_url' => 'http://www.example.com/identity'
+                    'identity_link_url' => 'http://www.example.com/identity',
                 ],
-                'TestIntegration2' => ['email' => 'test-integration2@magento.com']
+                'TestIntegration2' => ['email' => 'test-integration2@magento.com'],
             ]
         );
         $intLookupData1 = $this->getMockBuilder(Integration::class)
@@ -142,7 +143,7 @@ class ManagerTest extends TestCase
         $this->integrationServiceMock->expects($this->once())->method('create')->with($integrationsData2);
         $this->integrationServiceMock
             ->method('findByName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['TestIntegration1'] => $intLookupData1,
                 ['TestIntegration2'] => $intLookupData2
             });
@@ -163,7 +164,7 @@ class ManagerTest extends TestCase
             Integration::EMAIL => 'test-integration1@magento.com',
             Integration::ENDPOINT => 'http://endpoint.com',
             Integration::IDENTITY_LINK_URL => 'http://www.example.com/identity',
-            Integration::SETUP_TYPE => 1
+            Integration::SETUP_TYPE => 1,
         ];
         $integrations = [
             'TestIntegration1' => [
@@ -172,16 +173,16 @@ class ManagerTest extends TestCase
                 Integration::IDENTITY_LINK_URL => 'http://www.example.com/identity',
                 'resources' => [
                     'Magento_Customer::manage',
-                    'Magento_Customer::customer'
-                ]
-            ]
+                    'Magento_Customer::customer',
+                ],
+            ],
         ];
         $originalResources = [
-            'Magento_Customer::manage'
+            'Magento_Customer::manage',
         ];
         $newResources = [
             'Magento_Customer::manage',
-            'Magento_Customer::customer'
+            'Magento_Customer::customer',
         ];
 
         $integrationObject = $this->getMockBuilder(Integration::class)
@@ -219,14 +220,14 @@ class ManagerTest extends TestCase
                 Integration::IDENTITY_LINK_URL => 'http://www.example.com/identity',
                 'resources' => [
                     'Magento_Customer::manage',
-                    'Magento_Customer::customer'
-                ]
+                    'Magento_Customer::customer',
+                ],
             ],
             'TestIntegration2' => [
                 Integration::EMAIL => 'test-integration2@magento.com',
                 Integration::ENDPOINT => 'http://endpoint.com',
-                Integration::IDENTITY_LINK_URL => 'http://www.example.com/identity'
-            ]
+                Integration::IDENTITY_LINK_URL => 'http://www.example.com/identity',
+            ],
         ];
 
         $integrationObject = $this->getMockBuilder(Integration::class)
@@ -241,7 +242,7 @@ class ManagerTest extends TestCase
         // Integration2 does not exist, so create it
         $this->integrationServiceMock
             ->method('findByName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['TestIntegration1'] => $integrationObject,
                 ['TestIntegration2'] => $integrationObject
             });

@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Metadata\Form;
 
 use Magento\Customer\Api\Data\AttributeMetadataInterface;
 use Magento\Directory\Helper\Data as DirectoryHelper;
-use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\Locale\ResolverInterface;
-use Psr\Log\LoggerInterface as PsrLogger;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface as MagentoTimezone;
+use Magento\Framework\Stdlib\StringUtils;
+use Psr\Log\LoggerInterface as PsrLogger;
 
 /**
  * Customer Address Postal/Zip Code Attribute Data Model

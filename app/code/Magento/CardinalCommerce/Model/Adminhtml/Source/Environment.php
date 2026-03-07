@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -29,8 +30,8 @@ class Environment implements \Magento\Framework\Data\OptionSourceInterface
             ],
             [
                 'value' => self::ENVIRONMENT_PRODUCTION,
-                'label' => 'Production'
-            ]
+                'label' => 'Production',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ class ConfiguredRegularPrice extends ConfiguredPrice
     /**
      * Price type configured.
      */
-    const PRICE_CODE = 'configured_regular_price';
+    public const PRICE_CODE = 'configured_regular_price';
 
     /**
      * Create Selection Price List.

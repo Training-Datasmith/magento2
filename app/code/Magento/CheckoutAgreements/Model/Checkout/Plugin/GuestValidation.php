@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,6 +12,7 @@ use Magento\Checkout\Api\AgreementsValidatorInterface;
 use Magento\Checkout\Api\GuestPaymentInformationManagementInterface;
 use Magento\CheckoutAgreements\Api\CheckoutAgreementsListInterface;
 use Magento\CheckoutAgreements\Model\AgreementsProvider;
+use Magento\CheckoutAgreements\Model\Api\SearchCriteria\ActiveStoreAgreementsFilter;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -18,7 +21,6 @@ use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Api\GuestCartRepositoryInterface;
 use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\ScopeInterface;
-use Magento\CheckoutAgreements\Model\Api\SearchCriteria\ActiveStoreAgreementsFilter;
 
 /**
  * Guest checkout agreements validation.
@@ -131,7 +133,7 @@ class GuestValidation
             throw new CouldNotSaveException(
                 __(
                     "The order wasn't placed. "
-                    . "First, agree to the terms and conditions, then try placing your order again."
+                    . 'First, agree to the terms and conditions, then try placing your order again.'
                 )
             );
         }

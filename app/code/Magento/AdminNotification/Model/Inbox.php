@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Model;
 
 use Magento\Framework\Notification\MessageInterface;
 use Magento\Framework\Notification\NotifierInterface;
-use Magento\AdminNotification\Model\InboxInterface;
 
 /**
  * AdminNotification Inbox model
@@ -43,7 +45,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
     /**
      * @inheritdoc
      */
-    public function getSeverities($severity = null)
+    public function getSeverities($severity = null): \Magento\Framework\Phrase|null|array
     {
         $severities = [
             MessageInterface::SEVERITY_CRITICAL => __('critical'),
@@ -53,10 +55,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
         ];
 
         if ($severity !== null) {
-            if (isset($severities[$severity])) {
-                return $severities[$severity];
-            }
-            return null;
+            return $severities[$severity] ?? null;
         }
 
         return $severities;
@@ -65,7 +64,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
     /**
      * @inheritdoc
      */
-    public function loadLatestNotice()
+    public function loadLatestNotice(): static
     {
         $this->setData([]);
         $this->getResource()->loadLatestNotice($this);
@@ -83,10 +82,9 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
     /**
      * Parse and save new data
      *
-     * @param array $data
      * @return $this
      */
-    public function parse(array $data)
+    public function parse(array $data): static
     {
         $this->getResource()->parse($this, $data);
         return $this;
@@ -103,7 +101,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return $this
      */
-    public function add($severity, $title, $description, $url = '', $isInternal = true)
+    public function add($severity, $title, $description, $url = '', $isInternal = true): static
     {
         if (!$this->getSeverities($severity)) {
             throw new \Magento\Framework\Exception\LocalizedException(__('Wrong message type'));
@@ -136,7 +134,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
      * @param bool $isInternal
      * @return $this
      */
-    public function addCritical($title, $description, $url = '', $isInternal = true)
+    public function addCritical($title, $description, $url = '', $isInternal = true): static
     {
         $this->add(MessageInterface::SEVERITY_CRITICAL, $title, $description, $url, $isInternal);
         return $this;
@@ -151,7 +149,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
      * @param bool $isInternal
      * @return $this
      */
-    public function addMajor($title, $description, $url = '', $isInternal = true)
+    public function addMajor($title, $description, $url = '', $isInternal = true): static
     {
         $this->add(MessageInterface::SEVERITY_MAJOR, $title, $description, $url, $isInternal);
         return $this;
@@ -166,7 +164,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
      * @param bool $isInternal
      * @return $this
      */
-    public function addMinor($title, $description, $url = '', $isInternal = true)
+    public function addMinor($title, $description, $url = '', $isInternal = true): static
     {
         $this->add(MessageInterface::SEVERITY_MINOR, $title, $description, $url, $isInternal);
         return $this;
@@ -181,7 +179,7 @@ class Inbox extends \Magento\Framework\Model\AbstractModel implements NotifierIn
      * @param bool $isInternal
      * @return $this
      */
-    public function addNotice($title, $description, $url = '', $isInternal = true)
+    public function addNotice($title, $description, $url = '', $isInternal = true): static
     {
         $this->add(MessageInterface::SEVERITY_NOTICE, $title, $description, $url, $isInternal);
         return $this;

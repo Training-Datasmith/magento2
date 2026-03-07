@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Model\Plugin;
 
-use Magento\Integration\Model\ConfigBasedIntegrationManager;
 use Magento\Integration\Api\AuthorizationServiceInterface as IntegrationAuthorizationInterface;
+use Magento\Integration\Model\ConfigBasedIntegrationManager;
 use Magento\Integration\Model\IntegrationConfig;
 
 /**

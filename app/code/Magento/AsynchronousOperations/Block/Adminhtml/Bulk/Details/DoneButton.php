@@ -1,38 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Framework\Bulk\OperationInterface;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Back button configuration provider
  */
 class DoneButton implements ButtonProviderInterface
 {
-    /**
-     * @var \Magento\Framework\Bulk\BulkStatusInterface
-     */
-    private $bulkStatus;
-
-    /**
-     * @var \Magento\Framework\App\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @param \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus
-     * @param \Magento\Framework\App\RequestInterface $request
-     */
-    public function __construct(
-        \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus,
-        \Magento\Framework\App\RequestInterface $request
-    ) {
-        $this->bulkStatus = $bulkStatus;
-        $this->request = $request;
+    public function __construct(private readonly \Magento\Framework\Bulk\BulkStatusInterface $bulkStatus, private readonly \Magento\Framework\App\RequestInterface $request)
+    {
     }
 
     /**
@@ -40,17 +25,16 @@ class DoneButton implements ButtonProviderInterface
      *
      * @return array button configuration
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         $uuid = $this->request->getParam('uuid');
         $operationsCount = $this->bulkStatus->getOperationsCountByBulkIdAndStatus(
             $uuid,
             OperationInterface::STATUS_TYPE_RETRIABLY_FAILED
         );
-        $button = [];
 
         if ($this->request->getParam('buttons') && $operationsCount === 0) {
-            $button = [
+            return [
                 'label' => __('Done'),
                 'class' => 'primary',
                 'sort_order' => 10,
@@ -61,7 +45,7 @@ class DoneButton implements ButtonProviderInterface
                             'actions' => [
                                 [
                                     'targetName' => 'notification_area.notification_area.modalContainer.modal',
-                                    'actionName' => 'closeModal'
+                                    'actionName' => 'closeModal',
                                 ],
                             ],
                         ],
@@ -70,6 +54,6 @@ class DoneButton implements ButtonProviderInterface
             ];
         }
 
-        return $button;
+        return [];
     }
 }

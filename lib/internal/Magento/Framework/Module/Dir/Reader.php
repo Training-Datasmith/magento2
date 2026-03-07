@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Module configuration file reader
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module\Dir;
 
 use Magento\Framework\Config\FileIterator;
@@ -159,7 +162,7 @@ class Reader
             /** @var \SplFileInfo $actionFile */
             foreach ($recursiveIterator as $actionFile) {
                 $actionName = str_replace('/', '\\', str_replace($actionDir, '', $actionFile->getPathname()));
-                $action = $namespace . "\\" . Dir::MODULE_CONTROLLER_DIR . substr($actionName, 0, -4);
+                $action = $namespace . '\\' . Dir::MODULE_CONTROLLER_DIR . substr($actionName, 0, -4);
                 $actions[strtolower($action)] = $action;
             }
         }

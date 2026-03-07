@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class ProxyDeferredGenerator extends EntityAbstract
             'body' => "\$this->wait();\nreturn ['instance'];",
             'docblock' => [
                 'shortDescription' => 'Serialize only the instance',
-                'tags' => [['name' => 'return', 'description' => 'array']]
+                'tags' => [['name' => 'return', 'description' => 'array']],
             ],
         ];
         //Only cloning the result.
@@ -93,7 +94,7 @@ class ProxyDeferredGenerator extends EntityAbstract
                 "        throw new \\RuntimeException('Wrong instance returned by deferred');\n" .
                 "    }\n" .
                 "}\n" .
-                "return \$this->instance;",
+                'return $this->instance;',
             'docblock' => [
                 'shortDescription' => 'Get proxied instance',
                 'tags' => [['name' => 'return', 'description' => $sourceClassName]],
@@ -103,11 +104,11 @@ class ProxyDeferredGenerator extends EntityAbstract
         $publicMethods = $reflectionClass->getMethods(\ReflectionMethod::IS_PUBLIC);
         foreach ($publicMethods as $method) {
             if (!(
-                    $method->isConstructor() ||
+                $method->isConstructor() ||
                     $method->isFinal() ||
                     $method->isStatic() ||
                     $method->isDestructor()
-                )
+            )
                 && !in_array(
                     $method->getName(),
                     ['__sleep', '__wakeup', '__clone']
@@ -179,7 +180,7 @@ class ProxyDeferredGenerator extends EntityAbstract
             'parameters' => [
                 ['name' => 'deferred', 'type' => '\\' . DeferredInterface::class],
             ],
-            'body' => "\$this->deferred = \$deferred;",
+            'body' => '$this->deferred = $deferred;',
             'docblock' => [
                 'shortDescription' => ucfirst(static::ENTITY_TYPE) . ' constructor',
                 'tags' => [
@@ -188,7 +189,7 @@ class ProxyDeferredGenerator extends EntityAbstract
                         'description' => '\\' . DefinitionFactory::class .' $objectManager',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

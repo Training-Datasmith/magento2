@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,18 +10,18 @@ declare(strict_types=1);
 namespace Magento\Backend\App\Request;
 
 use Magento\Backend\App\AbstractAction;
+use Magento\Backend\Model\Auth;
+use Magento\Backend\Model\UrlInterface as BackendUrl;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\Request\ValidatorInterface;
 use Magento\Framework\App\RequestInterface;
-use Magento\Backend\Model\Auth;
-use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Controller\Result\Raw as RawResult;
+use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
-use Magento\Backend\Model\UrlInterface as BackendUrl;
 use Magento\Framework\Phrase;
 
 /**
@@ -31,58 +32,24 @@ use Magento\Framework\Phrase;
 class BackendValidator implements ValidatorInterface
 {
     /**
-     * @var Auth
-     */
-    private $auth;
-
-    /**
-     * @var FormKeyValidator
-     */
-    private $formKeyValidator;
-
-    /**
-     * @var BackendUrl
-     */
-    private $backendUrl;
-
-    /**
-     * @var RedirectFactory
-     */
-    private $redirectFactory;
-
-    /**
      * @var RawFactory
      */
     private $rawResultFactory;
 
-    /**
-     * @param Auth $auth
-     * @param FormKeyValidator $formKeyValidator
-     * @param BackendUrl $backendUrl
-     * @param RedirectFactory $redirectFactory
-     * @param RawFactory $rawResultFactory
-     */
     public function __construct(
-        Auth $auth,
-        FormKeyValidator $formKeyValidator,
-        BackendUrl $backendUrl,
-        RedirectFactory $redirectFactory,
+        private readonly Auth $auth,
+        private readonly FormKeyValidator $formKeyValidator,
+        private readonly BackendUrl $backendUrl,
+        private readonly RedirectFactory $redirectFactory,
         RawFactory $rawResultFactory
     ) {
-        $this->auth = $auth;
-        $this->formKeyValidator = $formKeyValidator;
-        $this->backendUrl = $backendUrl;
-        $this->redirectFactory = $redirectFactory;
         $this->rawResultFactory = $rawResultFactory;
     }
 
     /**
      * Validate request
      *
-     * @param RequestInterface $request
-     * @param ActionInterface $action
      *
-     * @return bool
      */
     private function validateRequest(
         RequestInterface $request,
@@ -104,8 +71,7 @@ class BackendValidator implements ValidatorInterface
                 && $this->backendUrl->useSecretKey()
             ) {
                 $secretKeyValue = (string)$request->getParam(
-                    BackendUrl::SECRET_KEY_PARAM_NAME,
-                    null
+                    BackendUrl::SECRET_KEY_PARAM_NAME
                 );
                 $secretKey = $this->backendUrl->getSecretKey();
                 $validSecretKey = ($secretKeyValue === $secretKey);
@@ -119,10 +85,7 @@ class BackendValidator implements ValidatorInterface
     /**
      * Create exception
      *
-     * @param RequestInterface $request
-     * @param ActionInterface $action
      *
-     * @return InvalidRequestException
      */
     private function createException(
         RequestInterface $request,
@@ -154,7 +117,7 @@ class BackendValidator implements ValidatorInterface
                     [
                         new Phrase(
                             'Invalid security or form key. Please refresh the page.'
-                        )
+                        ),
                     ]
                 );
             }

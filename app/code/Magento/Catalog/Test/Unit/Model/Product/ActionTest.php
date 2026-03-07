@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Product\Category;
 use Magento\Catalog\Model\Product\Action;
 use Magento\Catalog\Model\Product\Website;
@@ -20,6 +20,7 @@ use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Indexer\Model\Indexer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -111,7 +112,7 @@ class ActionTest extends TestCase
                 'resource' => $this->resource,
                 'productWebsiteFactory' => $this->productWebsiteFactory,
                 'indexerRegistry' => $this->indexerRegistryMock,
-                'eavConfig' => $this->eavConfig
+                'eavConfig' => $this->eavConfig,
             ]
         );
     }
@@ -171,7 +172,7 @@ class ActionTest extends TestCase
     {
         return [
             ['type' => 'add', 'methodName' => 'addProducts'],
-            ['type' => 'remove', 'methodName' => 'removeProducts']
+            ['type' => 'remove', 'methodName' => 'removeProducts'],
         ];
     }
 

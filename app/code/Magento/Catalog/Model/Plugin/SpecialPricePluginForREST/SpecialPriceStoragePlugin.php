@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\Plugin\SpecialPricePluginForREST;
 
 use Magento\Catalog\Model\Product\Price\SpecialPriceStorage;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Exception\InputException;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Special price storage Plugin to handle website scope issue at the frontend (only for REST API calls)

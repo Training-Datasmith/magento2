@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Steps;
 
-use Magento\Backend\Helper\Js;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Media\Config;
@@ -13,8 +15,8 @@ use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
+use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Adminhtml block for fieldset of configurable product

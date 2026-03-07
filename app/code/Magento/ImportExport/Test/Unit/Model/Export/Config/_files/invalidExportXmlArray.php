@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ return [
             [
                 "Element 'entity': Duplicate key-sequence ['name_one'] in unique identity-constraint " .
                 "'uniqueEntityName'.\nLine: 1\nThe xml was: \n0:<?xml version=\"1.0\"?>\n1:<config><entity " .
-                "name=\"name_one\" entityAttributeFilterType=\"name_one\"/><entity name=\"name_one\" " .
+                'name="name_one" entityAttributeFilterType="name_one"/><entity name="name_one" ' .
                 "entityAttributeFilterType=\"name_one\"/></config>\n2:\n",
                 false,
             ],
@@ -94,5 +95,5 @@ return [
                 false,
             ],
         ],
-    ]
+    ],
 ];

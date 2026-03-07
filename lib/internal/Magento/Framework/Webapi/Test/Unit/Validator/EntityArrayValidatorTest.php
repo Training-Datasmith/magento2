@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ declare(strict_types=1);
 namespace Magento\Framework\Webapi\Test\Unit\Validator;
 
 use Magento\Framework\Exception\InvalidArgumentException;
-use Magento\Framework\Webapi\Validator\IOLimit\IOLimitConfigProvider;
 use Magento\Framework\Webapi\Validator\EntityArrayValidator;
 use Magento\Framework\Webapi\Validator\EntityArrayValidator\InputArraySizeLimitValue;
+use Magento\Framework\Webapi\Validator\IOLimit\IOLimitConfigProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -65,7 +66,7 @@ class EntityArrayValidatorTest extends TestCase
             ->willReturn(5);
         $this->configMock->expects(self::never())
             ->method('getComplexArrayItemLimit');
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 5, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 5, []));
     }
 
     /**
@@ -86,7 +87,7 @@ class EntityArrayValidatorTest extends TestCase
             ->willReturn(4);
         $this->configMock->expects(self::never())
             ->method('getComplexArrayItemLimit');
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 5, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 5, []));
     }
 
     /**
@@ -106,7 +107,7 @@ class EntityArrayValidatorTest extends TestCase
         $this->configMock->expects(self::once())
             ->method('getComplexArrayItemLimit')
             ->willReturn(null);
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 3, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 3, []));
     }
 
     /**
@@ -126,7 +127,7 @@ class EntityArrayValidatorTest extends TestCase
         $this->configMock->expects(self::once())
             ->method('getComplexArrayItemLimit')
             ->willReturn(6);
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 5, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 5, []));
     }
 
     /**
@@ -148,7 +149,7 @@ class EntityArrayValidatorTest extends TestCase
         $this->configMock->expects(self::once())
             ->method('getComplexArrayItemLimit')
             ->willReturn(null);
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 4, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 4, []));
     }
 
     /**
@@ -170,7 +171,7 @@ class EntityArrayValidatorTest extends TestCase
         $this->configMock->expects(self::once())
             ->method('getComplexArrayItemLimit')
             ->willReturn(6);
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 7, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 7, []));
     }
 
     /**
@@ -186,6 +187,6 @@ class EntityArrayValidatorTest extends TestCase
             ->willReturn(false);
         $this->configMock->expects(self::never())
             ->method('getComplexArrayItemLimit');
-        $this->validator->validateComplexArrayType("foo", array_fill(0, 7, []));
+        $this->validator->validateComplexArrayType('foo', array_fill(0, 7, []));
     }
 }

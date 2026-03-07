@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
@@ -64,7 +67,7 @@ class GuestItemRepositoryTest extends WebapiAbstract
             'message' => 'Gift Message Text',
         ];
 
-        $requestData = ["cartId" => $cartId, "itemId" => $itemId];
+        $requestData = ['cartId' => $cartId, 'itemId' => $itemId];
         $resultMessage = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertCount(5, $resultMessage);
         unset($resultMessage['gift_message_id']);

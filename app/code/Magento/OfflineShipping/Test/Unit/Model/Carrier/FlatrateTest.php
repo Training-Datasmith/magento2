@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\OfflineShipping\Test\Unit\Model\Carrier;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\OfflineShipping\Model\Carrier\Flatrate;
 use Magento\OfflineShipping\Model\Carrier\Flatrate\ItemPriceCalculator;
@@ -21,7 +23,6 @@ use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Constraint\Callback;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -115,7 +116,7 @@ class FlatrateTest extends TestCase
                 'logger' => $this->loggerMock,
                 'rateResultFactory' => $this->resultFactoryMock,
                 'rateMethodFactory' => $this->methodFactoryMock,
-                'itemPriceCalculator' => $this->priceCalculatorMock
+                'itemPriceCalculator' => $this->priceCalculatorMock,
             ]
         );
     }
@@ -145,7 +146,7 @@ class FlatrateTest extends TestCase
                     'isShipSeparately',
                     'getChildren',
                     'getQty',
-                    'getFreeShipping'
+                    'getFreeShipping',
                 ]
             )
             ->getMock();
@@ -165,13 +166,13 @@ class FlatrateTest extends TestCase
                 'carriers/flatrate/handling_type',
                 ScopeInterface::SCOPE_STORE,
                 null,
-                AbstractCarrier::HANDLING_TYPE_FIXED
+                AbstractCarrier::HANDLING_TYPE_FIXED,
             ],
             [
                 'carriers/flatrate/handling_action',
                 ScopeInterface::SCOPE_STORE,
                 null,
-                AbstractCarrier::HANDLING_ACTION_PERORDER
+                AbstractCarrier::HANDLING_ACTION_PERORDER,
             ],
         ]);
 
@@ -242,7 +243,7 @@ class FlatrateTest extends TestCase
     {
         return [
             ['freeshipping' => true],
-            ['freeshipping' => false]
+            ['freeshipping' => false],
         ];
     }
 }

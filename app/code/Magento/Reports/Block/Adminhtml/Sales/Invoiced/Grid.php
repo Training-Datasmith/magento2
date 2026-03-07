@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -59,7 +61,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'totals_label' => __('Total'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
         $this->addColumn(
@@ -71,7 +73,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
         $this->addColumn(
@@ -83,7 +85,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'total' => 'sum',
                 'sortable' => false,
                 'header_css_class' => 'col-invoiced',
-                'column_css_class' => 'col-invoiced'
+                'column_css_class' => 'col-invoiced',
             ]
         );
         $this->setStoreIds($this->_getStoreIds());
@@ -102,7 +104,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced',
                 'column_css_class' => 'col-total-invoiced',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
         $this->addColumn(
@@ -117,7 +119,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced-paid',
                 'column_css_class' => 'col-total-invoiced-paid',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
         $this->addColumn(
@@ -132,7 +134,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-total-invoiced-not-paid',
                 'column_css_class' => 'col-total-invoiced-not-paid',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 

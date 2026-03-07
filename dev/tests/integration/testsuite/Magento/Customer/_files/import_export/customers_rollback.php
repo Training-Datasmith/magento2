@@ -1,14 +1,15 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Customer\Model\Customer;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Model\Customer;
 
 /** @var $objectManager ObjectManagerInterface */
 $objectManager = Bootstrap::getObjectManager();

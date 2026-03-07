@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Ui\Controller\Index;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Laminas\Http\Headers;
+use Magento\TestFramework\TestCase\AbstractController;
 
 /**
  * Test component rendering on storefront.

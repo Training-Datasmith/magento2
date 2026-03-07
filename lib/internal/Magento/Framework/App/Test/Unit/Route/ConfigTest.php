@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class ConfigTest extends TestCase
                 'reader' => $this->_readerMock,
                 'cache' => $this->_cacheMock,
                 'configScope' => $this->_configScopeMock,
-                'areaList' => $this->_areaList
+                'areaList' => $this->_areaList,
             ]
         );
         $this->serializerMock = $this->createMock(SerializerInterface::class);

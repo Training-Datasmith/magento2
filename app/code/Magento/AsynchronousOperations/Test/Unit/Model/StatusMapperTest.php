@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class StatusMapperTest extends TestCase
             [
                 OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
                 OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
-                OperationInterface::STATUS_TYPE_REJECTED
+                OperationInterface::STATUS_TYPE_REJECTED,
             ]
         );
 

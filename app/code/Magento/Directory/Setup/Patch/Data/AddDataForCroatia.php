@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Directory\Setup\Patch\Data;
 
 use Magento\Directory\Setup\DataInstaller;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
@@ -83,7 +84,7 @@ class AddDataForCroatia implements DataPatchInterface, PatchVersionInterface
             ['HR', 'HR-18', 'Istarska županija'],
             ['HR', 'HR-19', 'Dubrovačko-neretvanska županija'],
             ['HR', 'HR-20', 'Međimurska županija'],
-            ['HR', 'HR-21', 'Grad Zagreb']
+            ['HR', 'HR-21', 'Grad Zagreb'],
         ];
     }
 

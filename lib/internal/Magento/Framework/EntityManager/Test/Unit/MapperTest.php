@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class MapperTest extends TestCase
     {
         $config = [
             CustomerInterface::class => ['entity_id' => 'id'],
-            AddressInterface::class => ['parent_id' => 'customer_id', 'invalid' => '']
+            AddressInterface::class => ['parent_id' => 'customer_id', 'invalid' => ''],
         ];
         $this->mapper = new Mapper($config);
     }
@@ -33,7 +34,7 @@ class MapperTest extends TestCase
         $inputData = [
             'group_id' => 1,
             'extension_attributes' => ['extension_attribute' => ['value' => 'some value']],
-            'id' => 123
+            'id' => 123,
         ];
         $expectedOutput = $inputData;
         $expectedOutput['entity_id'] = 123;
@@ -63,7 +64,7 @@ class MapperTest extends TestCase
         $inputData = [
             'group_id' => 1,
             'extension_attributes' => ['extension_attribute' => ['value' => 'some value']],
-            'entity_id' => 123
+            'entity_id' => 123,
         ];
         $expectedOutput = $inputData;
         $expectedOutput['id'] = 123;
@@ -84,7 +85,7 @@ class MapperTest extends TestCase
         $inputData = [
             'group_id' => 1,
             'extension_attributes' => ['extension_attribute' => ['value' => 'some value']],
-            'invalid' => 123
+            'invalid' => 123,
         ];
         $this->mapper->databaseToEntity(AddressInterface::class, $inputData);
     }

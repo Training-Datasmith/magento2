@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Analytics\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Archive;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
@@ -20,74 +21,36 @@ class ExportDataHandler implements ExportDataHandlerInterface
 {
     /**
      * Subdirectory path for all temporary files.
-     *
-     * @var string
      */
-    private $subdirectoryPath = 'analytics/';
+    private string $subdirectoryPath = 'analytics/';
 
     /**
      * Filename of archive with collected data.
-     *
-     * @var string
      */
-    private $archiveName = 'data.tgz';
+    private string $archiveName = 'data.tgz';
 
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-
-    /**
-     * @var Archive
-     */
-    private $archive;
-
-    /**
-     * Resource for write data of reports into separate files.
-     *
-     * @var ReportWriterInterface
-     */
-    private $reportWriter;
-
-    /**
-     * Resource for encrypting data.
-     *
-     * @var Cryptographer
-     */
-    private $cryptographer;
-
-    /**
-     * Resource for registration a new file.
-     *
-     * @var FileRecorder
-     */
-    private $fileRecorder;
-
-    /**
-     * @param Filesystem $filesystem
-     * @param Archive $archive
-     * @param ReportWriterInterface $reportWriter
-     * @param Cryptographer $cryptographer
-     * @param FileRecorder $fileRecorder
-     */
     public function __construct(
-        Filesystem $filesystem,
-        Archive $archive,
-        ReportWriterInterface $reportWriter,
-        Cryptographer $cryptographer,
-        FileRecorder $fileRecorder
+        private readonly Filesystem $filesystem,
+        private readonly Archive $archive,
+        /**
+         * Resource for write data of reports into separate files.
+         */
+        private readonly ReportWriterInterface $reportWriter,
+        /**
+         * Resource for encrypting data.
+         */
+        private readonly Cryptographer $cryptographer,
+        /**
+         * Resource for registration a new file.
+         */
+        private readonly FileRecorder $fileRecorder
     ) {
-        $this->filesystem = $filesystem;
-        $this->archive = $archive;
-        $this->reportWriter = $reportWriter;
-        $this->cryptographer = $cryptographer;
-        $this->fileRecorder = $fileRecorder;
     }
 
     /**
      * @inheritdoc
      */
-    public function prepareExportData()
+    public function prepareExportData(): bool
     {
         try {
             $tmpDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::SYS_TMP);
@@ -117,30 +80,24 @@ class ExportDataHandler implements ExportDataHandlerInterface
 
     /**
      * Return relative path to a directory for temporary files with reports data.
-     *
-     * @return string
      */
-    private function getTmpFilesDirRelativePath()
+    private function getTmpFilesDirRelativePath(): string
     {
         return $this->subdirectoryPath . 'tmp/' . $this->getInstanceIdentifier() . '/';
     }
 
     /**
      * Return unique identifier for an instance.
-     *
-     * @return string
      */
-    private function getInstanceIdentifier()
+    private function getInstanceIdentifier(): string
     {
         return hash('sha256', BP);
     }
 
     /**
      * Return relative path to a directory for an archive.
-     *
-     * @return string
      */
-    private function getArchiveRelativePath()
+    private function getArchiveRelativePath(): string
     {
         return $this->subdirectoryPath . $this->archiveName;
     }
@@ -148,7 +105,6 @@ class ExportDataHandler implements ExportDataHandlerInterface
     /**
      * Clean up a directory.
      *
-     * @param WriteInterface $directory
      * @param string $path
      * @return string
      */
@@ -162,7 +118,6 @@ class ExportDataHandler implements ExportDataHandlerInterface
     /**
      * Remove a file and a create parent directory a file.
      *
-     * @param WriteInterface $directory
      * @param string $path
      * @return string
      */
@@ -183,9 +138,8 @@ class ExportDataHandler implements ExportDataHandlerInterface
      *
      * @param string $source
      * @param string $destination
-     * @return bool
      */
-    private function pack($source, $destination)
+    private function pack($source, $destination): bool
     {
         $this->archive->pack(
             $source,
@@ -202,7 +156,6 @@ class ExportDataHandler implements ExportDataHandlerInterface
      *
      * Return absolute path in a validated data source.
      *
-     * @param WriteInterface $directory
      * @param string $path
      * @return string
      * @throws LocalizedException If source is not exist.

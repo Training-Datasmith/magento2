@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class DataProviderTest extends TestCase
     {
         $this->objectManager = Bootstrap::getObjectManager();
         $this->objectManager->configure([
-            'preferences' => [CustomLayoutManagerInterface::class => CustomLayoutManager::class]
+            'preferences' => [CustomLayoutManagerInterface::class => CustomLayoutManager::class],
         ]);
         $this->repo = $this->objectManager->get(GetPageByIdentifierInterface::class);
         $this->filesFaker = $this->objectManager->get(CustomLayoutManager::class);
@@ -141,7 +142,7 @@ class DataProviderTest extends TestCase
         $expectedList = [
             ['label' => 'No update', 'value' => '_no_update_'],
             ['label' => 'test1', 'value' => 'test1'],
-            ['label' => 'test2', 'value' => 'test2']
+            ['label' => 'test2', 'value' => 'test2'],
         ];
         $metaList = $meta['design']['children']['custom_layout_update_select']['arguments']['data']['options'];
         sort($expectedList);

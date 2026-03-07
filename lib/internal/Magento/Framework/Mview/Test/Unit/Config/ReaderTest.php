@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Mview\Config\Reader;
 use Magento\Framework\Mview\Config\SchemaLocator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ReaderTest extends TestCase
 {
@@ -119,7 +120,7 @@ class ReaderTest extends TestCase
                     'mview_three.xml' => file_get_contents(__DIR__ . '/../_files/mview_three.xml'),
                 ],
                 'mview_merged_two.xml',
-            ]
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Eav\Model\TypeLocator;
 use Magento\Eav\Model\TypeLocator\ComplexType as ComplexTypeLocator;
 use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test class for \Magento\Eav\Model\TypeLocator
@@ -48,7 +49,7 @@ class TypeLocatorTest extends TestCase
         $this->customAttributeTypeLocator = $this->objectManger->getObject(
             TypeLocator::class,
             [
-                'typeLocators' => [$this->complexType]
+                'typeLocators' => [$this->complexType],
             ]
         );
     }
@@ -88,44 +89,44 @@ class TypeLocatorTest extends TestCase
     {
         $serviceInterface = ProductInterface::class;
         $eavEntityType = 'catalog_product';
-//        $mediaBackEndModelClass = ProductAttributeMediaGalleryEntryInterface::class;
+        //        $mediaBackEndModelClass = ProductAttributeMediaGalleryEntryInterface::class;
         $mediaAttributeDataInterface = ProductAttributeMediaGalleryEntryInterface::class;
 
         // There is no use of below mock, uncomment to paas in result
-//        $attribute = $this->createPartialMock(
-//            Attribute::class,
-//            ['getBackendModel']
-//        );
-//
-//        $attribute->expects($this->any())
-//            ->method('getBackendModel')
-//            ->willReturn($mediaBackEndModelClass);
-//
-//        $attributeNoBackendModel = $this->createPartialMock(
-//            Attribute::class,
-//            ['getBackendModel', 'getFrontendInput']
-//        );
-//
-//        $attributeNoBackendModel->expects($this->any())
-//            ->method('getBackendModel')
-//            ->willReturn(null);
-//
-//        $attributeNoBackendModel->expects($this->any())
-//            ->method('getFrontendInput')
-//            ->willReturn('image');
+        //        $attribute = $this->createPartialMock(
+        //            Attribute::class,
+        //            ['getBackendModel']
+        //        );
+        //
+        //        $attribute->expects($this->any())
+        //            ->method('getBackendModel')
+        //            ->willReturn($mediaBackEndModelClass);
+        //
+        //        $attributeNoBackendModel = $this->createPartialMock(
+        //            Attribute::class,
+        //            ['getBackendModel', 'getFrontendInput']
+        //        );
+        //
+        //        $attributeNoBackendModel->expects($this->any())
+        //            ->method('getBackendModel')
+        //            ->willReturn(null);
+        //
+        //        $attributeNoBackendModel->expects($this->any())
+        //            ->method('getFrontendInput')
+        //            ->willReturn('image');
 
         return [
             [
                 'attributeCode' => 'media_galley',
                 'serviceClass' => $serviceInterface,
                 'serviceEntityTypeMapData' => [$serviceInterface => $eavEntityType],
-                'expected' => $mediaAttributeDataInterface
+                'expected' => $mediaAttributeDataInterface,
             ],
             [
                 'attributeCode' => null,
                 'serviceClass' => $serviceInterface,
                 'serviceEntityTypeMapData' => [$serviceInterface => $eavEntityType],
-                'expected' => 'anyType'
+                'expected' => 'anyType',
             ],
         ];
     }

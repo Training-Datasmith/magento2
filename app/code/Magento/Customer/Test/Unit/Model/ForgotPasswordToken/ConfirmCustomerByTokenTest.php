@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Data\Customer;
 use Magento\Customer\Model\ForgotPasswordToken\ConfirmCustomerByToken;
 use Magento\Customer\Model\ForgotPasswordToken\GetCustomerByToken;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Test for \Magento\Customer\Model\ForgotPasswordToken\ConfirmCustomerByToken.

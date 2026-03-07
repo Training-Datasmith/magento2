@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Xml\Security;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\Error;
 use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
@@ -36,6 +36,7 @@ use Magento\Shipping\Model\Simplexml\Element;
 use Magento\Shipping\Model\Simplexml\ElementFactory;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -163,7 +164,7 @@ class CarrierTest extends TestCase
                 'data' => ['id' => 'dhl', 'store' => '1'],
                 'xmlValidator' => $this->xmlValidator,
                 'coreDate' => $this->coreDateMock,
-                'productMetadata' => $this->productMetadataMock
+                'productMetadata' => $this->productMetadataMock,
             ]
         );
     }
@@ -198,7 +199,7 @@ class CarrierTest extends TestCase
             'carriers/dhl/width' => '1.6',
             'carriers/dhl/depth' => '1.6',
             'carriers/dhl/debug' => 1,
-            'shipping/origin/country_id' => 'GB'
+            'shipping/origin/country_id' => 'GB',
         ];
         return $pathMap[$path] ?? null;
     }
@@ -377,7 +378,7 @@ class CarrierTest extends TestCase
         return [
             'quote_prefix' => ['QUOT'],
             'shipval_prefix' => ['SHIP'],
-            'tracking_prefix' => ['TRCK']
+            'tracking_prefix' => ['TRCK'],
         ];
     }
 
@@ -419,7 +420,7 @@ class CarrierTest extends TestCase
     {
         return [
             'valid_length' => ['Magento'],
-            'exceeds_length' => ['Product_Name_Longer_Than_30_Char']
+            'exceeds_length' => ['Product_Name_Longer_Than_30_Char'],
         ];
     }
 
@@ -449,7 +450,7 @@ class CarrierTest extends TestCase
     {
         return [
             'valid_length' => ['2.3.1'],
-            'exceeds_length' => ['dev-MC-1000']
+            'exceeds_length' => ['dev-MC-1000'],
         ];
     }
 
@@ -470,7 +471,7 @@ class CarrierTest extends TestCase
             ['carriers/dhl/sandbox_xml_url', 'store', null, 'https://xmlpitest-ea.dhl.com/XMLShippingServlet'],
             ['carriers/dhl/sandbox_rest_url', 'store', null, 'https://express.api.dhl.com/mydhlapi/test'],
             ['carriers/dhl/gateway_xml_url', 'store', null, 'https://xmlpi-ea.dhl.com/XMLShippingServlet'],
-            ['carriers/dhl/gateway_rest_url', 'store', null, 'https://express.api.dhl.com/mydhlapi']
+            ['carriers/dhl/gateway_rest_url', 'store', null, 'https://express.api.dhl.com/mydhlapi'],
         ];
 
         $this->scope->method('getValue')
@@ -479,7 +480,7 @@ class CarrierTest extends TestCase
         $this->model = $this->objectManager->getObject(
             Carrier::class,
             [
-                'scopeConfig' => $this->scope
+                'scopeConfig' => $this->scope,
             ]
         );
 
@@ -498,7 +499,7 @@ class CarrierTest extends TestCase
             'standard_xml_url' => [0, 'DHL_XML', 'https://xmlpi-ea.dhl.com/XMLShippingServlet'],
             'sandbox_xml_url' => [1, 'DHL_XML', 'https://xmlpitest-ea.dhl.com/XMLShippingServlet'],
             'standard_rest_url' => [0, 'DHL_REST', 'https://express.api.dhl.com/mydhlapi'],
-            'sandbox_rest_url' => [1, 'DHL_REST', 'https://express.api.dhl.com/mydhlapi/test']
+            'sandbox_rest_url' => [1, 'DHL_REST', 'https://express.api.dhl.com/mydhlapi/test'],
         ];
     }
 
@@ -707,7 +708,7 @@ class CarrierTest extends TestCase
         unset($invalidResponse['documents'][0]['content']);
 
         if (!isset($invalidResponse['documents'][0]['content'])) {
-            throw new \Exception("Shipping label content is missing");
+            throw new \Exception('Shipping label content is missing');
         }
 
         $labelContent = base64_decode($invalidResponse['documents'][0]['content']);

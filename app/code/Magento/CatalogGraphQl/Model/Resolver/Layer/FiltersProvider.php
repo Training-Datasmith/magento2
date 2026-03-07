@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,14 +52,14 @@ class FiltersProvider
      * @param string $layerType
      * @return array
      */
-    public function getFilters(string $layerType) : array
+    public function getFilters(string $layerType): array
     {
         $filterableAttributesList = $this->filterableAttributesListFactory->create(
             $layerType
         );
         $filterList = $this->filterListFactory->create(
             [
-                'filterableAttributes' => $filterableAttributesList
+                'filterableAttributes' => $filterableAttributesList,
             ]
         );
         return $filterList->getFilters($this->layerResolver->get());

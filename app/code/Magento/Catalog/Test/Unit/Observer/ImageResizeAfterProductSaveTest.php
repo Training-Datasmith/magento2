@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Observer;
 
-use Magento\Catalog\Observer\ImageResizeAfterProductSave;
+use Magento\Catalog\Model\Config\CatalogMediaConfig;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Observer\ImageResizeAfterProductSave;
+use Magento\Framework\App\State;
+use Magento\Framework\DataObject;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\State;
 use Magento\MediaStorage\Service\ImageResize;
 use Magento\MediaStorage\Service\ImageResizeScheduler;
-use Magento\Catalog\Model\Config\CatalogMediaConfig;
-use Magento\Framework\DataObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class ImageResizeAfterProductSaveTest extends TestCase
 {

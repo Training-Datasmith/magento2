@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,17 +20,17 @@ class ProcessableException extends LocalizedException
     /**#@+
      * Error code returned by PayPal
      */
-    const API_INTERNAL_ERROR = 10001;
-    const API_UNABLE_PROCESS_PAYMENT_ERROR_CODE = 10417;
-    const API_MAX_PAYMENT_ATTEMPTS_EXCEEDED = 10416;
-    const API_UNABLE_TRANSACTION_COMPLETE = 10486;
-    const API_TRANSACTION_EXPIRED = 10411;
-    const API_DO_EXPRESS_CHECKOUT_FAIL = 10422;
-    const API_COUNTRY_FILTER_DECLINE = 10537;
-    const API_MAXIMUM_AMOUNT_FILTER_DECLINE = 10538;
-    const API_OTHER_FILTER_DECLINE = 10539;
-    const API_ADDRESS_MATCH_FAIL = 10736;
-    const API_TRANSACTION_HAS_BEEN_COMPLETED = 10415;
+    public const API_INTERNAL_ERROR = 10001;
+    public const API_UNABLE_PROCESS_PAYMENT_ERROR_CODE = 10417;
+    public const API_MAX_PAYMENT_ATTEMPTS_EXCEEDED = 10416;
+    public const API_UNABLE_TRANSACTION_COMPLETE = 10486;
+    public const API_TRANSACTION_EXPIRED = 10411;
+    public const API_DO_EXPRESS_CHECKOUT_FAIL = 10422;
+    public const API_COUNTRY_FILTER_DECLINE = 10537;
+    public const API_MAXIMUM_AMOUNT_FILTER_DECLINE = 10538;
+    public const API_OTHER_FILTER_DECLINE = 10539;
+    public const API_ADDRESS_MATCH_FAIL = 10736;
+    public const API_TRANSACTION_HAS_BEEN_COMPLETED = 10415;
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 class DependencyCheckerTest extends TestCase
 {
-
     /**
      * @var ApplicationFactory|MockObject
      */
@@ -119,7 +119,7 @@ class DependencyCheckerTest extends TestCase
         $expected = [
             'magento/package-a' => [],
             'magento/package-b' => ['magento/package-d'],
-            'magento/package-c' => ['magento/package-d']
+            'magento/package-c' => ['magento/package-d'],
         ];
         $this->assertEquals(
             $expected,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -43,9 +44,9 @@ class UpdateSmartButtonLabel implements DataPatchInterface
                 'path IN (?)' => [
                     'paypal/style/checkout_page_button_label',
                     'paypal/style/cart_page_button_label',
-                    'paypal/style/mini_cart_page_button_label'
+                    'paypal/style/mini_cart_page_button_label',
                 ],
-                'value = ? ' => 'credit'
+                'value = ? ' => 'credit',
             ]
         );
         $this->moduleDataSetup->getConnection()->update(
@@ -53,7 +54,7 @@ class UpdateSmartButtonLabel implements DataPatchInterface
             ['value' => 'buynow'],
             [
                 'path IN (?)' => ['paypal/style/product_page_button_label'],
-                'value = ? ' => 'credit'
+                'value = ? ' => 'credit',
             ]
         );
         return $this->moduleDataSetup->getConnection()->endSetup();

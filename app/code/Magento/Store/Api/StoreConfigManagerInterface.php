@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Store\Api;
 
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Store\Model\StoreIsInactiveException;
+namespace Magento\Store\Api;
 
 /**
  * Store config manager interface

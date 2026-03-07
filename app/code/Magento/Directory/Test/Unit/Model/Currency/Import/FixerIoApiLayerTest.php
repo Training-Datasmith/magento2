@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class FixerIoApiLayerTest extends TestCase
         $responseBody = '{"success":"true","base":"USD","date":"2015-10-07","rates":{"EUR":0.9022}}';
         $expectedCurrencyRateList = ['USD' => ['EUR' => 0.9022, 'UAH' => null]];
         $message = "We can't retrieve a rate from "
-            . "https://api.apilayer.com for UAH.";
+            . 'https://api.apilayer.com for UAH.';
 
         $this->scopeConfig->method('getValue')
             ->willReturnCallback(

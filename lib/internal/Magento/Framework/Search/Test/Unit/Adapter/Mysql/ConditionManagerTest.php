@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Search\Adapter\Mysql\ConditionManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConditionManagerTest extends TestCase
 {
@@ -60,7 +61,7 @@ class ConditionManagerTest extends TestCase
         $this->conditionManager = $objectManager->getObject(
             ConditionManager::class,
             [
-                'resource' => $this->resource
+                'resource' => $this->resource,
             ]
         );
     }
@@ -94,7 +95,7 @@ class ConditionManagerTest extends TestCase
             'invalidQuery' => [
                 'query' => '1',
                 'expectedResult' => '(1)',
-            ]
+            ],
         ];
     }
 
@@ -142,7 +143,7 @@ class ConditionManagerTest extends TestCase
                 'field' => 'a',
                 'operator' => '=',
                 'value' => '123',
-                'expectedResult' => '`a` = \'123\''
+                'expectedResult' => '`a` = \'123\'',
             ],
         ];
     }

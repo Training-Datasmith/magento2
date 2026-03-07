@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Block;
 
 use Magento\Framework\App\RequestInterface;
@@ -11,8 +14,8 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Text;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Search\Model\QueryFactory;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Search\ViewModel\ConfigProvider;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class ResultTest extends \PHPUnit\Framework\TestCase

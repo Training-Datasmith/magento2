@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,11 +16,11 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface ProductTierPriceInterface extends ExtensibleDataInterface
 {
-    const QTY = 'qty';
+    public const QTY = 'qty';
 
-    const VALUE = 'value';
+    public const VALUE = 'value';
 
-    const CUSTOMER_GROUP_ID = 'customer_group_id';
+    public const CUSTOMER_GROUP_ID = 'customer_group_id';
 
     /**
      * Retrieve customer group id

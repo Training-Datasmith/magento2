@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class Export extends ExportController implements HttpPostActionInterface
 
                 $this->messagePublisher->publish('import_export.export', $dataObject);
                 $this->_eventManager->dispatch('log_admin_export', [
-                    'exportObject' => $dataObject
+                    'exportObject' => $dataObject,
                 ]);
                 $this->messageManager->addSuccessMessage(
                     __(

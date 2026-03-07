@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Test\Unit\Model;
 
+use Magento\Cms\Helper\Page as CmsPageHelperPage;
 use Magento\Cms\Model\Page;
 use Magento\Cms\Model\ResourceModel\Page as PageResource;
-use Magento\Cms\Helper\Page as CmsPageHelperPage;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -139,8 +140,8 @@ class PageTest extends TestCase
                         CmsPageHelperPage::XML_PATH_NO_ROUTE_PAGE,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        'no-route'
-                    ]
+                        'no-route',
+                    ],
                 ]
             );
 
@@ -163,8 +164,8 @@ class PageTest extends TestCase
                         CmsPageHelperPage::XML_PATH_HOME_PAGE,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        'home'
-                    ]
+                        'home',
+                    ],
                 ]
             );
 
@@ -187,8 +188,8 @@ class PageTest extends TestCase
                         CmsPageHelperPage::XML_PATH_NO_COOKIES_PAGE,
                         ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                         null,
-                        'no-cookies'
-                    ]
+                        'no-cookies',
+                    ],
                 ]
             );
 

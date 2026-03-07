@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -150,7 +151,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'hidden',
             [
                 'name' => 'entity_type',
-                'value' => $this->_formValues['entity_type']
+                'value' => $this->_formValues['entity_type'],
             ]
         );
 
@@ -159,7 +160,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             'hidden',
             [
                 'name' => 'entity_id',
-                'value' => $this->_formValues['entity_id']
+                'value' => $this->_formValues['entity_id'],
             ]
         );
 
@@ -173,7 +174,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Request Path'),
                 'name' => 'request_path',
                 'required' => true,
-                'value' => $this->_formValues['request_path']
+                'value' => $this->_formValues['request_path'],
             ]
         );
 
@@ -186,7 +187,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'target_path',
                 'required' => true,
                 'disabled' => false,
-                'value' => $this->_formValues['target_path']
+                'value' => $this->_formValues['target_path'],
             ]
         );
 
@@ -198,7 +199,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Redirect Type'),
                 'name' => 'redirect_type',
                 'options' => $this->optionProvider->getOptions(),
-                'value' => $this->_formValues['redirect_type']
+                'value' => $this->_formValues['redirect_type'],
             ]
         );
 
@@ -212,7 +213,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'cols' => 20,
                 'rows' => 5,
                 'value' => $this->_formValues['description'],
-                'wrap' => 'soft'
+                'wrap' => 'soft',
             ]
         );
 
@@ -245,7 +246,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'title' => __('Store'),
                     'name' => 'store_id',
                     'required' => true,
-                    'value' => $this->_formValues['store_id']
+                    'value' => $this->_formValues['store_id'],
                 ]
             );
             try {

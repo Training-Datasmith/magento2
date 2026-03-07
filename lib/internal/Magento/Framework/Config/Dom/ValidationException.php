@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * \Exception that should be thrown by DOM model when incoming xml is not valid.
  */
+
 namespace Magento\Framework\Config\Dom;
 
 /**

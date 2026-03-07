@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Config
 {
-    public const CART_PREFERENCE_CUSTOMER = "customer";
-    public const CART_PREFERENCE_GUEST = "guest";
+    public const CART_PREFERENCE_CUSTOMER = 'customer';
+    public const CART_PREFERENCE_GUEST = 'guest';
     private const XML_PATH_CART_MERGE_PREFERENCE = 'checkout/cart/cart_merge_preference';
 
     /**

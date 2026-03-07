@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,12 +9,12 @@
 /**
  * Workaround for decreasing memory consumption by cleaning up static properties
  */
+
 namespace Magento\TestFramework\Workaround\Cleanup;
 
 use Magento\Framework\App\CacheInterface;
 use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**

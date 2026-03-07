@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Controller\Cart;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Checkout\Model\Session;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -75,11 +76,11 @@ class UpdateItemQtyTest extends \Magento\TestFramework\TestCase\AbstractControll
 
         $request = [];
         if (!empty($requestQuantity) && is_array($requestQuantity)) {
-            $request= [
+            $request = [
                 'form_key' => $this->formKey->getFormKey(),
                 'cart' => [
                     $quoteItem->getId() => $requestQuantity,
-                ]
+                ],
             ];
         }
 
@@ -121,20 +122,20 @@ class UpdateItemQtyTest extends \Magento\TestFramework\TestCase\AbstractControll
                 'expectedResponse' => [
                     'success' => false,
                     'error_message' => 'Something went wrong while saving the page.'.
-                        ' Please refresh the page and try again.'
-                ]
+                        ' Please refresh the page and try again.',
+                ],
             ],
             [
                 'requestQuantity' => ['qty' => 2],
                 'expectedResponse' => [
                     'success' => true,
-                ]
+                ],
             ],
             [
                 'requestQuantity' => ['qty' => 230],
                 'expectedResponse' => [
                     'success' => false,
-                    'error_message' => '[{"error":"Not enough items for sale","itemId":3}]']
+                    'error_message' => '[{"error":"Not enough items for sale","itemId":3}]'],
             ],
         ];
     }

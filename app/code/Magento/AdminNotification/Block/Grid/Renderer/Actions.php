@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -13,36 +14,21 @@ use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\DataObject;
-use Magento\Framework\Url\Helper\Data;
 
 /**
  * Renderer class for action in the admin notifications grid
  */
 class Actions extends AbstractRenderer
 {
-    /**
-     * @var \Magento\Framework\Url\Helper\Data
-     */
-    protected $_urlHelper;
-
-    /**
-     * @param \Magento\Backend\Block\Context $context
-     * @param \Magento\Framework\Url\Helper\Data $urlHelper
-     * @param array $data
-     */
-    public function __construct(Context $context, Data $urlHelper, array $data = [])
+    public function __construct(Context $context, protected \Magento\Framework\Url\Helper\Data $_urlHelper, array $data = [])
     {
-        $this->_urlHelper = $urlHelper;
         parent::__construct($context, $data);
     }
 
     /**
      * Renders grid column
-     *
-     * @param   \Magento\Framework\DataObject $row
-     * @return  string
      */
-    public function render(DataObject $row)
+    public function render(DataObject $row): string
     {
         $readDetailsHtml = $row->getUrl() ?
             '<a class="action-details" target="_blank" href="' .
@@ -64,7 +50,7 @@ class Actions extends AbstractRenderer
             [
                 '_current' => true,
                 'id' => $row->getNotificationId(),
-                ActionInterface::PARAM_NAME_URL_ENCODED => $this->_urlHelper->getEncodedUrl()
+                ActionInterface::PARAM_NAME_URL_ENCODED => $this->_urlHelper->getEncodedUrl(),
             ]
         );
 

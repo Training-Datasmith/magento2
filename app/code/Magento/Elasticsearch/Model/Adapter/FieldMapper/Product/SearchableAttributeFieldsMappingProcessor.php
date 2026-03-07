@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class SearchableAttributeFieldsMappingProcessor implements AttributeFieldsMappin
             ProductAttributeInterface::ENTITY_TYPE_CODE,
             $attributeCode
         );
-        
+
         if ($attribute && !$attribute->getIsSearchable()) {
             $this->copySearchableFieldsToSearchField->addExclude(array_keys($mapping));
         }

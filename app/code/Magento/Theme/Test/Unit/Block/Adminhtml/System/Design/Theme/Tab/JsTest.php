@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class JsTest extends TestCase
             [
                 'formFactory' => $this->createMock(FormFactory::class),
                 'objectManager' => $this->createMock(ObjectManagerInterface::class),
-                'urlBuilder' => $this->_urlBuilder
+                'urlBuilder' => $this->_urlBuilder,
             ]
         );
 

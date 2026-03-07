@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,12 +9,13 @@ declare(strict_types=1);
 /**
  * Test for view BlockPool model
  */
+
 namespace Magento\Framework\View\Test\Unit\Element\Text\TextList;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Text\TextList\Item;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase
 {
@@ -63,13 +65,13 @@ class ItemTest extends TestCase
             [
                 'liParams' => ['class' => 'some-css-class'],
                 'innerText' => 'text',
-                'expectedHtml' => '<li class="some-css-class">text</li>' . "\r\n"
+                'expectedHtml' => '<li class="some-css-class">text</li>' . "\r\n",
             ],
             [
                 'liParams' => 'class="some-css-class"',
                 'innerText' => 'text',
-                'expectedHtml' => '<li class="some-css-class">text</li>' . "\r\n"
-            ]
+                'expectedHtml' => '<li class="some-css-class">text</li>' . "\r\n",
+            ],
         ];
     }
 }

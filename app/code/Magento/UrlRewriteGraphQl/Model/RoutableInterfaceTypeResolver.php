@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\UrlRewriteGraphQl\Model;
 
-use \Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
+use Magento\Framework\GraphQl\Query\Resolver\TypeResolverInterface;
 
 /**
  * Resolver for Media Gallery type.
@@ -44,7 +45,7 @@ class RoutableInterfaceTypeResolver implements TypeResolverInterface
      * @param array $data
      * @return string
      */
-    public function resolveType(array $data) : string
+    public function resolveType(array $data): string
     {
         $resolvedType = null;
 
@@ -55,7 +56,7 @@ class RoutableInterfaceTypeResolver implements TypeResolverInterface
 
             $resolvedType = $productTypeNameResolver->resolveType($data);
             if (!empty($resolvedType)) {
-                 break;
+                break;
             }
         }
 

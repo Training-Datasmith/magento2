@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -31,8 +32,8 @@ class Bootstrap
     /**#@+
      * Possible errors that can be triggered by the bootstrap
      */
-    const ERR_MAINTENANCE = 901;
-    const ERR_IS_INSTALLED = 902;
+    public const ERR_MAINTENANCE = 901;
+    public const ERR_IS_INSTALLED = 902;
     /**#@- */
 
     /**#@+
@@ -47,26 +48,26 @@ class Bootstrap
      * @see DEFAULT_REQUIRE_MAINTENANCE
      * @see DEFAULT_REQUIRE_IS_INSTALLED
      */
-    const PARAM_REQUIRE_MAINTENANCE = 'MAGE_REQUIRE_MAINTENANCE';
-    const PARAM_REQUIRE_IS_INSTALLED = 'MAGE_REQUIRE_IS_INSTALLED';
+    public const PARAM_REQUIRE_MAINTENANCE = 'MAGE_REQUIRE_MAINTENANCE';
+    public const PARAM_REQUIRE_IS_INSTALLED = 'MAGE_REQUIRE_IS_INSTALLED';
     /**#@- */
 
     /**#@+
      * Default behavior of bootstrap assertions
      */
-    const DEFAULT_REQUIRE_MAINTENANCE = false;
-    const DEFAULT_REQUIRE_IS_INSTALLED = true;
+    public const DEFAULT_REQUIRE_MAINTENANCE = false;
+    public const DEFAULT_REQUIRE_IS_INSTALLED = true;
     /**#@- */
 
     /**
      * Initialization parameter for custom directory paths
      */
-    const INIT_PARAM_FILESYSTEM_DIR_PATHS = 'MAGE_DIRS';
+    public const INIT_PARAM_FILESYSTEM_DIR_PATHS = 'MAGE_DIRS';
 
     /**
      * Initialization parameter for additional filesystem drivers
      */
-    const INIT_PARAM_FILESYSTEM_DRIVERS = 'MAGE_FILESYSTEM_DRIVERS';
+    public const INIT_PARAM_FILESYSTEM_DRIVERS = 'MAGE_FILESYSTEM_DRIVERS';
 
     /**
      * The initialization parameters (normally come from the $_SERVER)

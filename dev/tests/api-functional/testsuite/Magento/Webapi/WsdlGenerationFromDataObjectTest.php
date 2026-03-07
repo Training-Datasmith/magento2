@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -29,7 +31,7 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
 
     protected function setUp(): void
     {
-        $this->_markTestAsSoapOnly("WSDL generation tests are intended to be executed for SOAP adapter only.");
+        $this->_markTestAsSoapOnly('WSDL generation tests are intended to be executed for SOAP adapter only.');
         $this->_storeCode = Bootstrap::getObjectManager()->get(\Magento\Store\Model\StoreManagerInterface::class)
             ->getStore()->getCode();
         parent::setUp();
@@ -44,7 +46,7 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
         $accessCredentials = \Magento\TestFramework\Authentication\OauthHelper::getApiAccessCredentials()['key'];
         $connection = curl_init($wsdlUrl);
         curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($connection, CURLOPT_HTTPHEADER, ['header' => "Authorization: Bearer " . $accessCredentials]);
+        curl_setopt($connection, CURLOPT_HTTPHEADER, ['header' => 'Authorization: Bearer ' . $accessCredentials]);
         $responseContent = curl_exec($connection);
         $this->assertEquals(curl_getinfo($connection, CURLINFO_HTTP_CODE), 401);
         $this->assertStringContainsString(
@@ -71,7 +73,7 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
     public function testMultiServiceWsdl()
     {
         $this->_soapUrl = "{$this->_baseUrl}/soap/{$this->_storeCode}"
-            . "?services=testModule5AllSoapAndRestV1%2CtestModule5AllSoapAndRestV2";
+            . '?services=testModule5AllSoapAndRestV1%2CtestModule5AllSoapAndRestV2';
         $wsdlUrl = $this->_getBaseWsdlUrl() . 'testModule5AllSoapAndRestV1,testModule5AllSoapAndRestV2';
         $wsdlContent = $this->_convertXmlToString($this->_getWsdlContent($wsdlUrl));
         $this->isSingleService = false;
@@ -105,14 +107,14 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
     public function testInvalidWsdlUrlNoServices()
     {
         $responseContent = $this->_getWsdlContent($this->_getBaseWsdlUrl());
-        $this->assertStringContainsString("Requested services are missing.", $responseContent);
+        $this->assertStringContainsString('Requested services are missing.', $responseContent);
     }
 
     public function testInvalidWsdlUrlInvalidParameter()
     {
         $wsdlUrl = $this->_getBaseWsdlUrl() . '&invalid';
         $responseContent = $this->_getWsdlContent($wsdlUrl);
-        $this->assertStringContainsString("Not allowed parameters", $responseContent);
+        $this->assertStringContainsString('Not allowed parameters', $responseContent);
     }
 
     /**
@@ -123,7 +125,7 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
      */
     protected function _convertXmlToString($xml)
     {
-        return str_replace(['    ', "\n", "\r", "&#13;", "&#10;"], '', $xml);
+        return str_replace(['    ', "\n", "\r", '&#13;', '&#10;'], '', $xml);
     }
 
     /**
@@ -137,12 +139,12 @@ class WsdlGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
         $accessCredentials = \Magento\TestFramework\Authentication\OauthHelper::getApiAccessCredentials()['key'];
         $connection = curl_init($wsdlUrl);
         curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($connection, CURLOPT_HTTPHEADER, ['header' => "Authorization: Bearer " . $accessCredentials]);
+        curl_setopt($connection, CURLOPT_HTTPHEADER, ['header' => 'Authorization: Bearer ' . $accessCredentials]);
         $responseContent = curl_exec($connection);
         $responseDom = new \DOMDocument();
         $this->assertTrue(
             $responseDom->loadXML($responseContent),
-            "Valid XML is always expected as a response for WSDL request."
+            'Valid XML is always expected as a response for WSDL request.'
         );
         return $responseDom->saveXML();
     }

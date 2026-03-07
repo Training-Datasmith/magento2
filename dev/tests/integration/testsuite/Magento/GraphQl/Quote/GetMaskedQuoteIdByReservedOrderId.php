@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Quote;
 
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
-use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Model\QuoteFactory;
+use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
+use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 
 /**
  * Get masked quote id by reserved order id

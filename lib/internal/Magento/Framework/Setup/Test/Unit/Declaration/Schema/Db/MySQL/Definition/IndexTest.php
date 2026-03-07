@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Index;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Index as IndexDto;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for index (key) definition.
@@ -46,7 +47,7 @@ class IndexTest extends TestCase
         $this->index = $this->objectManager->getObject(
             Index::class,
             [
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -95,25 +96,25 @@ class IndexTest extends TestCase
                 'name' => 'ft_index',
                 'type' => IndexDto::FULLTEXT_INDEX,
                 'columns' => ['title', 'content'],
-                'expectedExpression' => "FULLTEXT INDEX `ft_index` (`title`,`content`)"
+                'expectedExpression' => 'FULLTEXT INDEX `ft_index` (`title`,`content`)',
             ],
             [
                 'name' => 'ft_index',
                 'type' => IndexDto::FULLTEXT_INDEX,
                 'columns' => ['title'],
-                'expectedExpression' => "FULLTEXT INDEX `ft_index` (`title`)"
+                'expectedExpression' => 'FULLTEXT INDEX `ft_index` (`title`)',
             ],
             [
                 'name' => 'ft_index',
                 'type' => 'btree',
                 'columns' => ['title'],
-                'expectedExpression' => "INDEX `ft_index` (`title`)"
+                'expectedExpression' => 'INDEX `ft_index` (`title`)',
             ],
             [
                 'name' => 'ft_index',
                 'type' => 'HASH',
                 'columns' => ['title'],
-                'expectedExpression' => "INDEX `ft_index` (`title`)"
+                'expectedExpression' => 'INDEX `ft_index` (`title`)',
             ],
         ];
     }
@@ -176,7 +177,7 @@ class IndexTest extends TestCase
                     'column' => ['text' => 'text'],
                     'type' => 'index',
                 ],
-            ]
+            ],
         ];
     }
 }

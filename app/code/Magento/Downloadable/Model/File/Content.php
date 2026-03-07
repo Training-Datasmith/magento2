@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model\File;
 
 use Magento\Downloadable\Api\Data\File\ContentInterface;
@@ -12,8 +15,8 @@ use Magento\Downloadable\Api\Data\File\ContentInterface;
  */
 class Content extends \Magento\Framework\Model\AbstractExtensibleModel implements ContentInterface
 {
-    const DATA = 'file_data';
-    const NAME = 'name';
+    public const DATA = 'file_data';
+    public const NAME = 'name';
 
     /**
      * {@inheritdoc}

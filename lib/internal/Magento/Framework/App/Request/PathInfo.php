@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class PathInfo
      * @param string $baseUrl
      * @return string
      */
-    public function getPathInfo(string $requestUri, string $baseUrl) : string
+    public function getPathInfo(string $requestUri, string $baseUrl): string
     {
         if ($requestUri === '/') {
             return '';
@@ -41,7 +42,7 @@ class PathInfo
      * @param string $requestUri
      * @return string
      */
-    public function getQueryString(string $requestUri) : string
+    public function getQueryString(string $requestUri): string
     {
         $requestUri = $this->removeRepeatedSlashes($requestUri);
         $parsedRequestUri = explode('?', $requestUri, 2);
@@ -55,7 +56,7 @@ class PathInfo
      * @param string $pathInfo
      * @return string
      */
-    private function removeRepeatedSlashes($pathInfo) : string
+    private function removeRepeatedSlashes($pathInfo): string
     {
         $firstChar = (string)substr($pathInfo, 0, 1);
         if ($firstChar == '/') {
@@ -72,7 +73,7 @@ class PathInfo
      * @param string $pathInfo
      * @return bool
      */
-    private function isNoRouteUri($baseUrl, $pathInfo) : bool
+    private function isNoRouteUri($baseUrl, $pathInfo): bool
     {
         $firstChar = (string)substr($pathInfo, 0, 1);
         return $baseUrl !== '' && !in_array($firstChar, ['/', '']);

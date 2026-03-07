@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class UrlRewriteContextTest extends TestCase
         $this->assertEquals(
             [
                 ['value' => 'website', 'label' => __('Website')],
-                ['value' => 'store_view', 'label' => __('Store View')]
+                ['value' => 'store_view', 'label' => __('Store View')],
             ],
             $contextRewriteOptions->toOptionArray()
         );

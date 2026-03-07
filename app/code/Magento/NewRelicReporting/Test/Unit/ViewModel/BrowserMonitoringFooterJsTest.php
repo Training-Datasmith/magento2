@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\NewRelicReporting\Test\Unit\ViewModel;
 
 use Magento\NewRelicReporting\Model\NewRelicWrapper;
 use Magento\NewRelicReporting\ViewModel\BrowserMonitoringFooterJs;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -54,11 +55,11 @@ class BrowserMonitoringFooterJsTest extends TestCase
         return [
             'enabled_with_content' => [true,
                 '<script type="text/x-magento-init">{"*":{"newRelicFooter":{"enabled":true}}}</script>',
-                '<script type="text/x-magento-init">{"*":{"newRelicFooter":{"enabled":true}}}</script>'
+                '<script type="text/x-magento-init">{"*":{"newRelicFooter":{"enabled":true}}}</script>',
             ],
             'enabled_with_null' => [true, null, null],
             'enabled_with_empty' => [true, '', ''],
-            'disabled' => [false, null, null]
+            'disabled' => [false, null, null],
         ];
     }
 

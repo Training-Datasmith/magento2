@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Locale\Deployed\Options;
 use Magento\Framework\Locale\ListsInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for Options class.
@@ -224,11 +225,11 @@ class OptionsTest extends TestCase
     {
         $deLocale = [
             'value' => 'de_DE',
-            'label' => 'German (German)'
+            'label' => 'German (German)',
         ];
         $daLocale = [
             'value' => 'da_DK',
-            'label' => 'Danish (Denmark)'
+            'label' => 'Danish (Denmark)',
         ];
 
         return [
@@ -267,11 +268,11 @@ class OptionsTest extends TestCase
     {
         $deLocale = [
             'value' => 'de_DE',
-            'label' => 'German (German)'
+            'label' => 'German (German)',
         ];
         $daLocale = [
             'value' => 'da_DK',
-            'label' => 'Danish (Denmark)'
+            'label' => 'Danish (Denmark)',
         ];
 
         return [
@@ -280,30 +281,30 @@ class OptionsTest extends TestCase
                 0,
                 [
                     $daLocale,
-                    $deLocale
+                    $deLocale,
                 ],
                 [
-                    $deLocale
+                    $deLocale,
                 ],
                 [
-                    'de_DE'
-                ]
+                    'de_DE',
+                ],
             ],
             [
                 State::MODE_PRODUCTION,
                 0,
                 [
                     $daLocale,
-                    $deLocale
+                    $deLocale,
                 ],
                 [
                     $daLocale,
-                    $deLocale
+                    $deLocale,
                 ],
                 [
                     'da_DK',
-                    'de_DE'
-                ]
+                    'de_DE',
+                ],
             ],
         ];
     }

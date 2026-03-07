@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class ForgotPasswordTest extends TestCase
 
     /** @var string */
     private $newPasswordLinkPath = "//a[contains(@href, 'customer/account/createPassword') "
-    . "and contains(text(), 'Set a New Password')]";
+        . "and contains(text(), 'Set a New Password')]";
 
     /** @var StoreManagerInterface */
     private $storeManager;

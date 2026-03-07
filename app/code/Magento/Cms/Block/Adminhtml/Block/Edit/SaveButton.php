@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Block\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
@@ -30,13 +33,13 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                 'params' => [
                                     true,
                                     [
-                                        'back' => 'continue'
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        'back' => 'continue',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'class_name' => Container::SPLIT_BUTTON,
             'options' => $this->getOptions(),
@@ -65,14 +68,14 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                     'params' => [
                                         true,
                                         [
-                                            'back' => 'duplicate'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            'back' => 'duplicate',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             [
                 'id_hard' => 'save_and_close',
@@ -87,15 +90,15 @@ class SaveButton extends GenericButton implements ButtonProviderInterface
                                     'params' => [
                                         true,
                                         [
-                                            'back' => 'close'
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                            'back' => 'close',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         return $options;

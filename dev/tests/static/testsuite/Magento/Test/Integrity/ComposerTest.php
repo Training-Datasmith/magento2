@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity;
 
 use Magento\Framework\App\Bootstrap;
@@ -14,7 +17,6 @@ use Magento\Framework\Composer\MagentoComponent;
  */
 class ComposerTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var string
      */
@@ -253,7 +255,7 @@ class ComposerTest extends \PHPUnit\Framework\TestCase
         $error = 'There must be an "autoload->files" node in composer.json of each Magento component.';
         $this->assertObjectHasProperty('autoload', $json, $error);
         $this->assertObjectHasProperty('files', $json->autoload, $error);
-        $this->assertTrue(in_array("registration.php", $json->autoload->files), $error);
+        $this->assertTrue(in_array('registration.php', $json->autoload->files), $error);
         $this->assertFileExists("$dir/registration.php");
     }
 

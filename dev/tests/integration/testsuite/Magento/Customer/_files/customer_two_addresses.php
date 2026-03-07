@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Customer address fixture with entity_id = 2, this fixture also creates address with entity_id = 1
  *

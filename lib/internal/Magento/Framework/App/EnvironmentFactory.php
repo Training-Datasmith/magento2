@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
+use Magento\Framework\App\ObjectManager\ConfigLoader;
 use Magento\Framework\App\ObjectManager\Environment\Compiled;
 use Magento\Framework\App\ObjectManager\Environment\Developer;
-use Magento\Framework\App\ObjectManager\ConfigLoader;
-use Magento\Framework\ObjectManager\RelationsInterface;
 use Magento\Framework\ObjectManager\DefinitionInterface;
+use Magento\Framework\ObjectManager\RelationsInterface;
 
 class EnvironmentFactory
 {

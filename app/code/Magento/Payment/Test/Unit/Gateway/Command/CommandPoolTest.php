@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class CommandPoolTest extends TestCase
             ->with(
                 [
                     'array' => [CommandInterface::class],
-                    'type' => CommandInterface::class
+                    'type' => CommandInterface::class,
                 ]
             )
             ->willReturn($tMap);
@@ -57,7 +58,7 @@ class CommandPoolTest extends TestCase
             ->with(
                 [
                     'array' => [],
-                    'type' => CommandInterface::class
+                    'type' => CommandInterface::class,
                 ]
             )
             ->willReturn($tMap);

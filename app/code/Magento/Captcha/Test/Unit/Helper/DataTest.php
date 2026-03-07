@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Captcha\Test\Unit\Helper;
 
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Captcha\Helper\Data;
 use Magento\Captcha\Model\CaptchaFactory;
 use Magento\Captcha\Model\DefaultModel;
@@ -16,6 +18,7 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Filesystem\Directory\Write;
+use Magento\Framework\Math\Random;
 use Magento\Framework\Session\SessionManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
@@ -23,8 +26,6 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
-use Magento\Authorization\Model\UserContextInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

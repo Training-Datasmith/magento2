@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,9 +23,9 @@ use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\DesignInterface;
 use Magento\Framework\View\File\CollectorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -184,7 +185,7 @@ class MagentoImportTest extends TestCase
                 ],
                 "@import 'some/file.css';\n@import 'some/file.css';\n",
                 [],
-                true
+                true,
             ],
             'modular' => [
                 '//@magento_import "Magento_Module::some/file.css";',
@@ -196,7 +197,7 @@ class MagentoImportTest extends TestCase
                 ],
                 "@import 'Magento_Module::some/file.css';\n@import 'Magento_Two::some/file.css';\n",
                 ['Magento_Module', 'Magento_Two'],
-                true
+                true,
             ],
             'modular with disabled module' => [
                 '//@magento_import "Magento_Module::some/file.css";',
@@ -208,7 +209,7 @@ class MagentoImportTest extends TestCase
                 ],
                 "@import 'Magento_Two::some/file.css';\n",
                 ['Magento_Two'],
-                true
+                true,
             ],
             'modular with disabled all modules' => [
                 '//@magento_import "Magento_Module::some/file.css";',
@@ -220,7 +221,7 @@ class MagentoImportTest extends TestCase
                 ],
                 '',
                 [],
-                true
+                true,
             ],
             'non-modular reference notation' => [
                 '//@magento_import (reference) "some/file.css";',
@@ -232,7 +233,7 @@ class MagentoImportTest extends TestCase
                 ],
                 "@import (reference) 'some/file.css';\n@import (reference) 'some/file.css';\n",
                 [],
-                true
+                true,
             ],
             'modular reference' => [
                 '//@magento_import (reference) "Magento_Module::some/file.css";',
@@ -245,7 +246,7 @@ class MagentoImportTest extends TestCase
                 "@import (reference) 'Magento_Module::some/file.css';\n" .
                 "@import (reference) 'Magento_Two::some/file.css';\n",
                 ['Magento_Module', 'Magento_Two'],
-                true
+                true,
             ],
             'modular reference with disabled module' => [
                 '//@magento_import (reference) "Magento_Module::some/file.css";',
@@ -257,7 +258,7 @@ class MagentoImportTest extends TestCase
                 ],
                 "@import (reference) 'Magento_Module::some/file.css';\n",
                 ['Magento_Module'],
-                true
+                true,
             ],
             'modular reference with disabled module and disabled "only enabled modules" flag' => [
                 '//@magento_import (reference) "Magento_Module::some/file.css";',
@@ -270,7 +271,7 @@ class MagentoImportTest extends TestCase
                 "@import (reference) 'Magento_Module::some/file.css';\n" .
                 "@import (reference) 'Magento_Two::some/file.css';\n",
                 ['Magento_Module'],
-                false
+                false,
             ],
             'modular reference with disabled all modules' => [
                 '//@magento_import (reference) "Magento_Module::some/file.css";',
@@ -282,7 +283,7 @@ class MagentoImportTest extends TestCase
                 ],
                 '',
                 [],
-                true
+                true,
             ],
             'modular reference with disabled all modules and disabled "only enabled modules" flag' => [
                 '//@magento_import (reference) "Magento_Module::some/file.css";',
@@ -295,7 +296,7 @@ class MagentoImportTest extends TestCase
                 "@import (reference) 'Magento_Module::some/file.css';\n" .
                 "@import (reference) 'Magento_Two::some/file.css';\n",
                 [],
-                false
+                false,
             ],
         ];
     }

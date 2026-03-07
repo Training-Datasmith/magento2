@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Sales\Model\Reorder\Data;
 
 use Magento\Quote\Api\Data\CartInterface;

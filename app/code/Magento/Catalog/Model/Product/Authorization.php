@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,12 +11,12 @@ namespace Magento\Catalog\Model\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Product as ProductModel;
+use Magento\Catalog\Model\Product\Attribute\Backend\LayoutUpdate;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\Exception\AuthorizationException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Catalog\Model\Product\Attribute\Backend\LayoutUpdate;
 
 /**
  * Additional authorization for product operations.
@@ -63,7 +64,8 @@ class Authorization
         }
 
         if (empty($newValue)
-            || ($attr->getBackend() instanceof LayoutUpdate
+            || (
+                $attr->getBackend() instanceof LayoutUpdate
                 && ($newValue === LayoutUpdate::VALUE_USE_UPDATE_XML || $newValue === LayoutUpdate::VALUE_NO_UPDATE)
             )
         ) {
@@ -113,7 +115,7 @@ class Authorization
             'custom_layout_update',
             'custom_design_from',
             'custom_design_to',
-            'custom_layout_update_file'
+            'custom_layout_update_file',
         ];
         $attributes = $product->getAttributes();
 

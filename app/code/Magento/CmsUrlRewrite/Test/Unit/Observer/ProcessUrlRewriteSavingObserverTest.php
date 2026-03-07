@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\CmsUrlRewrite\Model\CmsPageUrlRewriteGenerator;
 use Magento\CmsUrlRewrite\Observer\ProcessUrlRewriteSavingObserver;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer as EventObserver;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use PHPUnit\Framework\Attributes\DataProvider;

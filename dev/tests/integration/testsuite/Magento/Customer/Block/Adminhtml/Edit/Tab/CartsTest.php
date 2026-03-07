@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -56,12 +58,12 @@ class CartsTest extends \PHPUnit\Framework\TestCase
         );
 
         $html = $this->_block->toHtml();
-        $this->assertStringContainsString("<div id=\"customer_cart_grid\"", $html);
+        $this->assertStringContainsString('<div id="customer_cart_grid"', $html);
         $this->assertMatchesRegularExpression(
             '/<div class=".*admin__data-grid-toolbar"/',
             $html
         );
-        $this->assertStringContainsString("customer_cart_gridJsObject = new varienGrid(\"customer_cart_grid\",", $html);
+        $this->assertStringContainsString('customer_cart_gridJsObject = new varienGrid("customer_cart_grid",', $html);
         $this->assertStringContainsString(
             'backend\u002Fcustomer\u002Fcart_product_composite_cart\u002Fconfigure\u002Fwebsite_id\u002F1',
             $html
@@ -82,12 +84,12 @@ class CartsTest extends \PHPUnit\Framework\TestCase
         );
 
         $html = $this->_block->toHtml();
-        $this->assertStringContainsString("<div id=\"customer_cart_grid\"", $html);
+        $this->assertStringContainsString('<div id="customer_cart_grid"', $html);
         $this->assertMatchesRegularExpression(
             '/<div class=".*admin__data-grid-toolbar"/',
             $html
         );
-        $this->assertStringContainsString("customer_cart_gridJsObject = new varienGrid(\"customer_cart_grid\",", $html);
+        $this->assertStringContainsString('customer_cart_gridJsObject = new varienGrid("customer_cart_grid",', $html);
         $this->assertStringContainsString(
             'backend\u002Fcustomer\u002Fcart_product_composite_cart\u002Fupdate\u002Fkey',
             $html

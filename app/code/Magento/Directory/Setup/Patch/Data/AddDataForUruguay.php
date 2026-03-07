@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class AddDataForUruguay implements DataPatchInterface
             ['UY', 'UY-SJ', 'San José'],
             ['UY', 'UY-SO', 'Soriano'],
             ['UY', 'UY-TA', 'Tacuarembó'],
-            ['UY', 'UY-TT', 'Treinta y Tres']
+            ['UY', 'UY-TT', 'Treinta y Tres'],
         ];
     }
 

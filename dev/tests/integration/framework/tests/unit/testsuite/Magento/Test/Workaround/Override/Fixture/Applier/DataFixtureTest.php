@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Test\Workaround\Override\Fixture\Applier;
 
 use Magento\TestFramework\Workaround\Override\Fixture\Applier\DataFixture;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Provide tests for \Magento\TestFramework\Workaround\Override\Fixture\Applier\DataFixture
@@ -87,7 +88,7 @@ class DataFixtureTest extends TestCase
                         'before' => '-',
                         'after' => null,
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'added_fixture'], ['factory' => 'fixture']],
             ],
@@ -100,7 +101,7 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => '-',
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'fixture'], ['factory' => 'added_fixture']],
             ],
@@ -113,19 +114,19 @@ class DataFixtureTest extends TestCase
                         'before' => 'fixture2',
                         'after' => null,
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [
                     ['factory' => 'fixture1'],
                     ['factory' => 'added_fixture'],
-                    ['factory' => 'fixture2']
+                    ['factory' => 'fixture2'],
                 ],
             ],
             'sort_fixture_after_specific' => [
                 'existingFixtures' => [
                     ['factory' => 'fixture1'],
                     ['factory' => 'fixture2'],
-                    ['factory' => 'fixture3']
+                    ['factory' => 'fixture3'],
                 ],
                 'config' => [
                     [
@@ -134,13 +135,13 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => 'fixture2',
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [
                     ['factory' => 'fixture1'],
                     ['factory' => 'fixture2'],
                     ['factory' => 'added_fixture'],
-                    ['factory' => 'fixture3']
+                    ['factory' => 'fixture3'],
                 ],
             ],
         ];
@@ -174,7 +175,7 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => null,
                         'remove' => true,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'fixture2']],
             ],
@@ -187,7 +188,7 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => null,
                         'remove' => true,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'fixture'], ['factory' => 'fixture2']],
             ],
@@ -207,7 +208,7 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => null,
                         'remove' => true,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'fixture2']],
             ],
@@ -242,7 +243,7 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => null,
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [['factory' => 'new_fixture'], ['factory' => 'fixture2']],
             ],
@@ -255,12 +256,12 @@ class DataFixtureTest extends TestCase
                         'before' => null,
                         'after' => null,
                         'remove' => false,
-                    ]
+                    ],
                 ],
                 'expectedOrder' => [
                     ['factory' => 'new_fixture'],
                     ['factory' => 'new_fixture'],
-                    ['factory' => 'fixture2']
+                    ['factory' => 'fixture2'],
                 ],
             ],
         ];

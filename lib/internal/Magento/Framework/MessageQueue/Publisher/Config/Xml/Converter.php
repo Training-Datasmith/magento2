@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Publisher\Config\Xml;
 
-use Magento\Framework\Stdlib\BooleanUtils;
 use Magento\Framework\MessageQueue\DefaultValueProvider;
+use Magento\Framework\Stdlib\BooleanUtils;
 
 /**
  * Converts MessageQueue publishers config from \DOMDocument to array
@@ -76,7 +79,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                 $connections[$defaultConnection] = [
                     'name' => $defaultConnection,
                     'exchange' => $this->defaultValueProvider->getExchange(),
-                    'disabled' => false
+                    'disabled' => false,
                 ];
             }
             $isDisabled = $this->getAttributeValue($publisherConfig, 'disabled', false);

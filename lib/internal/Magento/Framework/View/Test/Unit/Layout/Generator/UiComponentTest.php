@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Layout\Generator;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\View\Element\BlockFactory;
 use Magento\Framework\View\Element\BlockInterface;
@@ -19,12 +21,11 @@ use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\Data\Structure;
 use Magento\Framework\View\Layout\Generator\UiComponent;
 use Magento\Framework\View\Layout\Reader\Context;
-use Magento\Framework\View\Layout\ScheduledStructure;
 
+use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -94,7 +95,7 @@ class UiComponentTest extends TestCase
             [
                 'uiComponentFactory' => $this->uiComponentFactoryMock,
                 'blockFactory' => $this->blockFactoryMock,
-                'contextFactory' => $this->contextFactoryMock
+                'contextFactory' => $this->contextFactoryMock,
             ]
         );
     }
@@ -166,7 +167,7 @@ class UiComponentTest extends TestCase
             ->with(
                 [
                     'namespace' => 'uiComponent',
-                    'pageLayout' => $layoutMock
+                    'pageLayout' => $layoutMock,
                 ]
             )->willReturn($contextMock);
 
@@ -213,7 +214,7 @@ class UiComponentTest extends TestCase
                         'arguments'  => [
                             'attribute_1' => ['key_1' => 'value_1'],
                             'attribute_2' => ['key_2' => 'value_2'],
-                        ]
+                        ],
                     ],
                 ],
             ]);

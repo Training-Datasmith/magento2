@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,8 +7,6 @@
 declare(strict_types=1);
 
 namespace Magento\MediaGallerySynchronization\Model\Filesystem;
-
-use Magento\MediaGallerySynchronization\Model\Filesystem\FileInfoFactory;
 
 /**
  * Get file information
@@ -46,7 +45,7 @@ class GetFileInfo
             'basename' => $splFileInfo->getBasename('.' . $splFileInfo->getExtension()),
             'size' => $splFileInfo->getSize(),
             'mTime' => $splFileInfo->getMTime(),
-            'cTime' => $splFileInfo->getCTime()
+            'cTime' => $splFileInfo->getCTime(),
         ]);
     }
 }

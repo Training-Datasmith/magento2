@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Option;
 
 /**
@@ -13,8 +16,8 @@ class MultiSelectConfigOption extends AbstractConfigOption
     /**#@+
      * Frontend input types
      */
-    const FRONTEND_WIZARD_CHECKBOX = 'checkbox';
-    const FRONTEND_WIZARD_MULTISELECT = 'multiselect';
+    public const FRONTEND_WIZARD_CHECKBOX = 'checkbox';
+    public const FRONTEND_WIZARD_MULTISELECT = 'multiselect';
     /**#@- */
 
     /**#@- */

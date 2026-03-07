@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class Title
     /**
      * Default title glue
      */
-    const TITLE_GLUE = ' / ';
+    public const TITLE_GLUE = ' / ';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

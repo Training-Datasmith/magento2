@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class FrontControllerEventsTest extends TestCase
     public function setupEventManagerSpy(): void
     {
         $eventManager = $this->objectManager->get(ManagerInterface::class);
-        $eventManagerSpy = new class($eventManager) implements ManagerInterface {
+        $eventManagerSpy = new class ($eventManager) implements ManagerInterface {
             /**
              * @var ManagerInterface
              */

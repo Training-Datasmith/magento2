@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -18,12 +21,12 @@ class Real implements FactoryInterface
     /**
      * Default SQL precision.
      */
-    const DEFAULT_PRECISION = "10";
+    public const DEFAULT_PRECISION = '10';
 
     /**
      * Default SQL scale.
      */
-    const DEFAULT_SCALE = "0";
+    public const DEFAULT_SCALE = '0';
 
     /**
      * @var ObjectManagerInterface

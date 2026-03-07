@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGallerySynchronization\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -94,7 +97,7 @@ class FetchMediaStorageFileBatches
             }
 
             $batch[] = $file;
-            
+
             if (++$i == $this->batchSize) {
                 yield $batch;
                 $i = 0;
@@ -117,7 +120,7 @@ class FetchMediaStorageFileBatches
         try {
             return $path
                 && !$this->isPathExcluded->execute($path)
-                && preg_match('#\.(' . implode("|", $this->fileExtensions) . ')$# i', $path);
+                && preg_match('#\.(' . implode('|', $this->fileExtensions) . ')$# i', $path);
         } catch (\Exception $exception) {
             $this->log->critical($exception);
             return false;

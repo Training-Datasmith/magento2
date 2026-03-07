@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +21,7 @@ class Sharding
     /**
      * Name of default connection.
      */
-    const DEFAULT_CONNECTION = 'default';
+    public const DEFAULT_CONNECTION = 'default';
 
     /**
      * @var DeploymentConfig

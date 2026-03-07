@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Price;
 
+use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Api\ScopedProductTierPriceManagementInterface;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\Catalog\Pricing\Price\TierPrice;
 use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Customer\Model\Group as CustomerGroup;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Fixture\IndexerDimensionMode;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\ScopedProductTierPriceManagementInterface;
-use Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory;
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
-use Magento\Catalog\Pricing\Price\TierPrice;
-use Magento\Customer\Model\Group as CustomerGroup;
 
 /**
  * @group indexer_dimension

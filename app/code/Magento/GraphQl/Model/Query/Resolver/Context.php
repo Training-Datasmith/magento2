@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      *
      * @return \Magento\Framework\GraphQl\Query\Resolver\ContextExtensionInterface
      */
-    public function getExtensionAttributes() : \Magento\Framework\GraphQl\Query\Resolver\ContextExtensionInterface
+    public function getExtensionAttributes(): \Magento\Framework\GraphQl\Query\Resolver\ContextExtensionInterface
     {
         return $this->_getExtensionAttributes();
     }
@@ -45,7 +46,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      */
     public function setExtensionAttributes(
         \Magento\Framework\GraphQl\Query\Resolver\ContextExtensionInterface $extensionAttributes
-    ) : ContextInterface {
+    ): ContextInterface {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
 
@@ -54,7 +55,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      *
      * @return int
      */
-    public function getUserId() : int
+    public function getUserId(): int
     {
         return (int) $this->getData(self::USER_ID);
     }
@@ -65,7 +66,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      * @param int $userId
      * @return ContextInterface
      */
-    public function setUserId(int $userId) : ContextInterface
+    public function setUserId(int $userId): ContextInterface
     {
         return $this->setData(self::USER_ID, $userId);
     }
@@ -75,7 +76,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      *
      * @return int
      */
-    public function getUserType() : int
+    public function getUserType(): int
     {
         return (int) $this->getData(self::USER_TYPE_ID);
     }
@@ -86,7 +87,7 @@ class Context extends \Magento\Framework\Model\AbstractExtensibleModel implement
      * @param int $typeId
      * @return ContextInterface
      */
-    public function setUserType(int $typeId) : ContextInterface
+    public function setUserType(int $typeId): ContextInterface
     {
         return $this->setData(self::USER_TYPE_ID, $typeId);
     }

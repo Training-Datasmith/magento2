@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class LocalizedFileNameTest extends TestCase
             $this->timezone,
             [
                 'Y-m-d_H-i-s',
-                'YmdHis'
+                'YmdHis',
             ]
         );
     }

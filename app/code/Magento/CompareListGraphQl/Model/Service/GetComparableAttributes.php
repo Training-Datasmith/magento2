@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class GetComparableAttributes
         foreach ($itemsCollection->getComparableAttributes() as $item) {
             $attributes[] = [
                 'code' => $item->getAttributeCode(),
-                'label' => $item->getStoreLabel()
+                'label' => $item->getStoreLabel(),
             ];
         }
 

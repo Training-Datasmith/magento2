@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Api;
 
 /**
@@ -12,5 +15,5 @@ namespace Magento\Customer\Api;
  */
 interface AddressMetadataManagementInterface extends MetadataManagementInterface
 {
-    const ENTITY_TYPE_ADDRESS = 'customer_address';
+    public const ENTITY_TYPE_ADDRESS = 'customer_address';
 }

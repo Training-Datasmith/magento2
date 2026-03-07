@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\TestCase\Webapi\Adapter\Rest;
 
-use Magento\TestFramework\TestCase\HttpClient\CurlClient;
-use Magento\TestFramework\Helper\JsonSerializer;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Helper\JsonSerializer;
+use Magento\TestFramework\TestCase\HttpClient\CurlClient;
 
 /**
  * Client for invoking REST API
  */
 class RestClient
 {
-    const EMPTY_REQUEST_BODY = 'Empty body';
+    public const EMPTY_REQUEST_BODY = 'Empty body';
 
     /**
      * @var string REST URL base path
@@ -38,8 +41,8 @@ class RestClient
         ?\Magento\TestFramework\Helper\JsonSerializer $jsonSerializer = null
     ) {
         $objectManager = Bootstrap::getObjectManager();
-        $this->curlClient = $curlClient ? : $objectManager->get(CurlClient::class);
-        $this->jsonSerializer = $jsonSerializer ? : $objectManager->get(JsonSerializer::class);
+        $this->curlClient = $curlClient ?: $objectManager->get(CurlClient::class);
+        $this->jsonSerializer = $jsonSerializer ?: $objectManager->get(JsonSerializer::class);
     }
 
     /**
@@ -72,7 +75,7 @@ class RestClient
     public function post($resourcePath, $data, $headers = [])
     {
         $url = $this->constructResourceUrl($resourcePath);
-        if (in_array("Content-Type: application/json", $headers)) {
+        if (in_array('Content-Type: application/json', $headers)) {
             // json encode data
             if ($data != self::EMPTY_REQUEST_BODY) {
                 $data = $this->jsonSerializer->jsonEncode($data);
@@ -95,7 +98,7 @@ class RestClient
     public function put($resourcePath, $data, $headers = [])
     {
         $url = $this->constructResourceUrl($resourcePath);
-        if (in_array("Content-Type: application/json", $headers)) {
+        if (in_array('Content-Type: application/json', $headers)) {
             // json encode data
             if ($data != self::EMPTY_REQUEST_BODY) {
                 $data = $this->jsonSerializer->jsonEncode($data);

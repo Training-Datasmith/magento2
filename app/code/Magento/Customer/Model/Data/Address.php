@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Data;
 
 use Magento\Customer\Api\Data\RegionInterface;
-use \Magento\Framework\Api\AttributeValueFactory;
+use Magento\Framework\Api\AttributeValueFactory;
 
 /**
  * Class Address Data Model implementing the Address interface

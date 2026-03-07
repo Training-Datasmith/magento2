@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -132,7 +133,7 @@ class DataTest extends TestCase
             [true, true, true],
             [false, true, false],
             [false, false, false],
-            [true, false, false]
+            [true, false, false],
         ];
     }
 }

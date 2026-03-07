@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\Framework\App\Test\Unit\Request\Backpressure;
 
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Backpressure\ContextInterface;
+use Magento\Framework\App\Backpressure\IdentityProviderInterface;
 use Magento\Framework\App\Request\Backpressure\ContextFactory;
 use Magento\Framework\App\Request\Backpressure\ControllerContext;
-use Magento\Framework\App\Backpressure\IdentityProviderInterface;
 use Magento\Framework\App\Request\Backpressure\RequestTypeExtractorInterface;
 use Magento\Framework\App\RequestInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ContextFactoryTest extends TestCase
@@ -85,12 +86,12 @@ class ContextFactoryTest extends TestCase
             ],
             'customer' => [
                 ContextInterface::IDENTITY_TYPE_CUSTOMER,
-                '42'
+                '42',
             ],
             'admin' => [
                 ContextInterface::IDENTITY_TYPE_ADMIN,
-                '42'
-            ]
+                '42',
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class BindCustomerLoginObserverTest extends TestCase
             [
                 'code'      => 'fixture_second_store',
                 'name'      => 'Fixture Store',
-                'is_active'=> 1,
+                'is_active' => 1,
             ],
             'second_store'
         ),

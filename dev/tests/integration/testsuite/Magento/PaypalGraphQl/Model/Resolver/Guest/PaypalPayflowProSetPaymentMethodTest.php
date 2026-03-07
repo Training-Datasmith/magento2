@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 
-use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use Magento\Framework\DataObject;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
+use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 
 /**
  * Test ExpressSetPaymentMethodTest graphql endpoint for guest
@@ -161,7 +162,7 @@ QUERY;
                         'expdate' => '0221',
                         'cardtype' => '0',
                         'iavs' => 'N',
-                        'result_code' => '0'
+                        'result_code' => '0',
                     ]
                 )
             );

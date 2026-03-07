@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class StartTest extends ExpressTestCase
             ->with((bool)$buttonParam);
 
         $this->request->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['bml'] => $buttonParam,
                 [Checkout::PAYMENT_INFO_BUTTON] => $buttonParam
             });

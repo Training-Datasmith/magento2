@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -408,7 +409,7 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
         ProductInterface $product,
         int $optionId,
         array $linkedProducts
-    ) : void {
+    ): void {
         if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
             throw new InputException(
                 __('The product with the "%1" SKU isn\'t a bundle product.', $product->getSku())

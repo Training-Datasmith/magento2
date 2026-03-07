@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class AbstractResourceTest extends TestCase
             AbstractResourceStub::class,
             [
                 'resource' => $this->_resourceMock,
-                'tableStrategy' => $this->_tableStrategyInterface
+                'tableStrategy' => $this->_tableStrategyInterface,
             ]
         );
         $this->model = $objectManager->getObject(

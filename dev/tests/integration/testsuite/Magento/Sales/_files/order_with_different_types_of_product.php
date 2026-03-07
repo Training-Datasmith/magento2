@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\Customer\Model\CustomerRegistry;
+use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var CustomerRegistry $customerRegistry */
@@ -50,7 +52,7 @@ $customerIdFromFixture = 1;
  */
 $simpleProductItem = $objectManager->create(\Magento\Sales\Model\Order\Item::class);
 $requestInfo = [
-    'qty' => 1
+    'qty' => 1,
 ];
 $simpleProductItem->setProductId($simpleProduct->getId())
     ->setQtyOrdered(1)
@@ -111,7 +113,7 @@ if ($configurableProduct->getExtensionAttributes()
  */
 $virtualProductItem = $objectManager->create(\Magento\Sales\Model\Order\Item::class);
 $requestInfo = [
-    'qty' => 1
+    'qty' => 1,
 ];
 $virtualProductItem->setProductId($virtualProduct->getId())
     ->setQtyOrdered(1)
@@ -141,7 +143,7 @@ $linkCollection = Bootstrap::getObjectManager()->create(
 $links = $linkCollection->getItems();
 $requestInfo = [
     'qty' => 1,
-    'links' => array_keys($links)
+    'links' => array_keys($links),
 ];
 
 $downloadableProductItem = $objectManager->create(\Magento\Sales\Model\Order\Item::class);

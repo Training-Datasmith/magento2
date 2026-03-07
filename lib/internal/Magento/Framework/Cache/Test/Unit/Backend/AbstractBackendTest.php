@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Framework\Cache\Test\Unit\Backend;
 
 use Magento\Framework\Cache\Backend\AbstractBackend;
-use Magento\Framework\Cache\Exception\CacheException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -106,7 +106,7 @@ class AbstractBackendTest extends TestCase
             'option1' => 'value1',
             'option2' => 100,
             'option3' => true,
-            'option4' => ['nested' => 'array']
+            'option4' => ['nested' => 'array'],
         ];
 
         $backend = $this->getMockBuilder(AbstractBackend::class)

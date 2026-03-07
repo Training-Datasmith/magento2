@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,6 @@ declare(strict_types=1);
 namespace Magento\RelatedProductGraphQl\Model\Resolver\Batch;
 
 use Magento\Catalog\Model\Product\Link;
-use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\Resolver\BatchResponse;
-use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 
 /**
  * CrossSell Products Resolver

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Object Manager class definition interface
  *

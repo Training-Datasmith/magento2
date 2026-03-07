@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Logger\Handler;
 
-use InvalidArgumentException;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Monolog\Formatter\LineFormatter;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -19,12 +21,12 @@ class ResultFactory
     /**#@+
      * Allowed result types
      */
-    const TYPE_JSON     = 'json';
-    const TYPE_RAW      = 'raw';
-    const TYPE_REDIRECT = 'redirect';
-    const TYPE_FORWARD  = 'forward';
-    const TYPE_LAYOUT   = 'layout';
-    const TYPE_PAGE     = 'page';
+    public const TYPE_JSON     = 'json';
+    public const TYPE_RAW      = 'raw';
+    public const TYPE_REDIRECT = 'redirect';
+    public const TYPE_FORWARD  = 'forward';
+    public const TYPE_LAYOUT   = 'layout';
+    public const TYPE_PAGE     = 'page';
     /**#@-*/
 
     /**#@-*/

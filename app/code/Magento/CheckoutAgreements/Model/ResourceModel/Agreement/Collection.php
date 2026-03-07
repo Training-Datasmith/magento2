@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Model\ResourceModel\Agreement;
 
 /**
@@ -15,8 +18,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected $_map = [
         'fields' => [
-            'agreement_id' => 'main_table.agreement_id'
-        ]
+            'agreement_id' => 'main_table.agreement_id',
+        ],
     ];
 
     /**

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Source;
 
 /**
@@ -15,12 +18,12 @@ class Enabledisable implements \Magento\Framework\Option\ArrayInterface
     /**
      * Value which equal Enable for Enabledisable dropdown.
      */
-    const ENABLE_VALUE = 1;
+    public const ENABLE_VALUE = 1;
 
     /**
      * Value which equal Disable for Enabledisable dropdown.
      */
-    const DISABLE_VALUE = 0;
+    public const DISABLE_VALUE = 0;
 
     /**
      * @return array

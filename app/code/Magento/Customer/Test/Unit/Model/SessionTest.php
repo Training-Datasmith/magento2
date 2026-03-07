@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -21,12 +22,12 @@ use Magento\Framework\App\Response\Http;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Session\SessionStartChecker;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\Url;
 use Magento\Framework\UrlFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -95,7 +96,7 @@ class SessionTest extends TestCase
             [
                 'getIsCustomerEmulated',
                 'unsIsCustomerEmulated',
-                'getData'
+                'getData',
             ]
         );
         $this->_eventManagerMock = $this->createMock(ManagerInterface::class);
@@ -113,8 +114,8 @@ class SessionTest extends TestCase
         $objects = [
             [
                 SessionStartChecker::class,
-                $this->createMock(SessionStartChecker::class)
-            ]
+                $this->createMock(SessionStartChecker::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
         $this->responseMock = $this->createMock(Http::class);
@@ -163,7 +164,7 @@ class SessionTest extends TestCase
 
         $this->_httpContextMock->expects($this->once())
             ->method('setValue')
-            ->with(CustomerContext::CONTEXT_GROUP, self::callback(fn($value): bool => $value === '1'), 0);
+            ->with(CustomerContext::CONTEXT_GROUP, self::callback(fn ($value): bool => $value === '1'), 0);
 
         $_SESSION = [];
         $this->_model->setCustomerAsLoggedIn($customer);
@@ -264,7 +265,7 @@ class SessionTest extends TestCase
                 'getConfirmation',
                 'getId',
                 'updateData',
-                'getGroupId'
+                'getGroupId',
             ]
         );
         $customerMock->expects($this->exactly(3))
@@ -353,7 +354,7 @@ class SessionTest extends TestCase
             ->willReturn(1);
         $this->_httpContextMock->expects($this->once())
             ->method('setValue')
-            ->with(CustomerContext::CONTEXT_GROUP, self::callback(fn($value): bool => $value === '1'), 0);
+            ->with(CustomerContext::CONTEXT_GROUP, self::callback(fn ($value): bool => $value === '1'), 0);
 
         $this->_model->setCustomer($customer);
     }

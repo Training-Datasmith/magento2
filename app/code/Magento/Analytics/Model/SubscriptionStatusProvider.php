@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Analytics\Model\Config\Backend\Baseurl\SubscriptionUpdateHandler;
@@ -18,51 +21,25 @@ class SubscriptionStatusProvider
     /**
      * Represents an enabled subscription state.
      */
-    public const ENABLED = "Enabled";
+    public const ENABLED = 'Enabled';
 
     /**
      * Represents a failed subscription state.
      */
-    public const FAILED = "Failed";
+    public const FAILED = 'Failed';
 
     /**
      * Represents a pending subscription state.
      */
-    public const PENDING = "Pending";
+    public const PENDING = 'Pending';
 
     /**
      * Represents a disabled subscription state.
      */
-    public const DISABLED = "Disabled";
+    public const DISABLED = 'Disabled';
 
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $scopeConfig;
-
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * @param ScopeConfigInterface $scopeConfig
-     * @param AnalyticsToken $analyticsToken
-     * @param FlagManager $flagManager
-     */
-    public function __construct(
-        ScopeConfigInterface $scopeConfig,
-        AnalyticsToken $analyticsToken,
-        FlagManager $flagManager
-    ) {
-        $this->scopeConfig = $scopeConfig;
-        $this->analyticsToken = $analyticsToken;
-        $this->flagManager = $flagManager;
+    public function __construct(private readonly ScopeConfigInterface $scopeConfig, private readonly AnalyticsToken $analyticsToken, private readonly FlagManager $flagManager)
+    {
     }
 
     /**

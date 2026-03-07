@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -21,10 +22,6 @@ class LoggerOutput implements OutputInterface
     public const CONFIG_ENABLE_KEY = 'application/performance_monitor/logger_output_enable';
     public const CONFIG_VERBOSE_KEY = 'application/performance_monitor/logger_output_verbose';
 
-    /**
-     * @param LoggerInterface $logger
-     * @param DeploymentConfig $deploymentConfig
-     */
     public function __construct(
         private readonly LoggerInterface $logger,
         private readonly DeploymentConfig $deploymentConfig,
@@ -37,7 +34,7 @@ class LoggerOutput implements OutputInterface
     public function isEnabled(): bool
     {
         return match ($this->deploymentConfig->get(static::CONFIG_ENABLE_KEY)) {
-            1, "1", "true", true => true,
+            1, '1', 'true', true => true,
             default => false,
         };
     }
@@ -45,7 +42,7 @@ class LoggerOutput implements OutputInterface
     /**
      * @inheritDoc
      */
-    public function doOutput(array $metrics, array $information) : void
+    public function doOutput(array $metrics, array $information): void
     {
         if (!$this->isEnabled()) {
             return;
@@ -75,12 +72,8 @@ class LoggerOutput implements OutputInterface
 
     /**
      * Make the metrics pretty and checks verbosity
-     *
-     * @param array $metrics
-     * @param bool $verbose
-     * @return array
      */
-    private function doOutputMetrics(array $metrics, bool $verbose)
+    private function doOutputMetrics(array $metrics, bool $verbose): array
     {
         $prettyMetrics = [];
         /** @var Metric $metric */
@@ -88,86 +81,67 @@ class LoggerOutput implements OutputInterface
             if (!$verbose && $metric->isVerbose()) {
                 continue;
             }
-            switch ($metric->getType()) {
-                case MetricType::SECONDS_ELAPSED_FLOAT:
-                    $prettyMetrics[$metric->getName()] = $this->prettyElapsedTime($metric->getValue());
-                    break;
-                case MetricType::UNIX_TIMESTAMP_FLOAT:
-                    $prettyMetrics[$metric->getName()] = $this->prettyUnixTime($metric->getValue());
-                    break;
-                case MetricType::MEMORY_SIZE_INT:
-                    $prettyMetrics[$metric->getName()] = $this->prettyMemorySize($metric->getValue());
-                    break;
-                default:
-                    $prettyMetrics[$metric->getName()] = $metric->getValue();
-                    break;
-            }
+            $prettyMetrics[$metric->getName()] = match ($metric->getType()) {
+                MetricType::SECONDS_ELAPSED_FLOAT => $this->prettyElapsedTime($metric->getValue()),
+                MetricType::UNIX_TIMESTAMP_FLOAT => $this->prettyUnixTime($metric->getValue()),
+                MetricType::MEMORY_SIZE_INT => $this->prettyMemorySize($metric->getValue()),
+                default => $metric->getValue(),
+            };
         }
         return $prettyMetrics;
     }
 
     /**
      * Returns a string format of memory with units.
-     *
-     * @param int $size
-     * @return string
      */
     private function prettyMemorySize(int $size): string
     {
         if (!$this->isVerbose()) {
             $absSize = abs($size);
             if ($absSize > 1000000000) {
-                return sprintf("%.3g GB", $size / 1000000000.0);
+                return sprintf('%.3g GB', $size / 1000000000.0);
             }
             if ($absSize > 1000000) {
-                return sprintf("%.3g MB", $size / 1000000.0);
+                return sprintf('%.3g MB', $size / 1000000.0);
             }
             if ($absSize > 1000) {
-                return sprintf("%.3g KB", $size / 1000.0);
+                return sprintf('%.3g KB', $size / 1000.0);
             }
         }
-        return ((string)($size)) . ' B';
+        return ($size) . ' B';
     }
 
     /**
      * Returns a string format of elapsed time with units.
-     *
-     * @param string $time
-     * @return string
      */
     private function prettyElapsedTime(float $time): string
     {
         if ($this->isVerbose()) {
-            return ((string)($time)) . ' s';
+            return ($time) . ' s';
         }
         $time = (int) $time;
         if ($time > 60) {
-            return sprintf("%.3g m", $time / 60.0);
+            return sprintf('%.3g m', $time / 60.0);
         }
-        return ((string)($time)) . ' s';
+        return ($time) . ' s';
     }
 
     /**
      * Returns a string format of unix time with units.
-     *
-     * @param string $time
-     * @return string
      */
     private function prettyUnixTime(float $time): string
     {
-        $timeAsString = sprintf("%.1f", $time);
+        $timeAsString = sprintf('%.1f', $time);
         return \DateTime::createFromFormat('U.u', $timeAsString)->format('Y-m-d\TH:i:s.u');
     }
 
     /**
      * Returns true when verbose is enabled in configuration.
-     *
-     * @return bool
      */
     private function isVerbose(): bool
     {
         return match ($this->deploymentConfig->get(static::CONFIG_VERBOSE_KEY)) {
-            1, "1", "true", true => true,
+            1, '1', 'true', true => true,
             default => false,
         };
     }

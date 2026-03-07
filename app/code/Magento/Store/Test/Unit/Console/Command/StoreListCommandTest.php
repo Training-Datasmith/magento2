@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class StoreListCommandTest extends TestCase
     {
         $this->storeManagerMock->expects($this->any())
             ->method('getStores')
-            ->willThrowException(new \Exception("Dummy test exception"));
+            ->willThrowException(new \Exception('Dummy test exception'));
 
         $tester = new CommandTester($this->command);
         $this->assertEquals(Cli::RETURN_FAILURE, $tester->execute([]));
@@ -84,8 +85,8 @@ class StoreListCommandTest extends TestCase
         $linesOutput = array_filter(explode(PHP_EOL, $tester->getDisplay()));
         $this->assertCount(5, $linesOutput, 'There should be 5 lines output. 3 Spacers, 1 header, 1 content.');
 
-        $this->assertEquals($linesOutput[0], $linesOutput[2], "Lines 0, 2, 4 should be spacer lines");
-        $this->assertEquals($linesOutput[2], $linesOutput[4], "Lines 0, 2, 4 should be spacer lines");
+        $this->assertEquals($linesOutput[0], $linesOutput[2], 'Lines 0, 2, 4 should be spacer lines');
+        $this->assertEquals($linesOutput[2], $linesOutput[4], 'Lines 0, 2, 4 should be spacer lines');
 
         $headerValues = array_values(array_filter(explode('|', $linesOutput[1])));
         //trim to remove the whitespace left from the exploding pipe separation

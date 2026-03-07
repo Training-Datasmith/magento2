@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote\ShippingAssignment;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\CartInterface;
@@ -15,6 +15,7 @@ use Magento\Quote\Api\Data\ShippingInterface;
 use Magento\Quote\Model\Quote\ShippingAssignment\ShippingProcessor;
 use Magento\Quote\Model\ShippingAddressManagement;
 use Magento\Quote\Model\ShippingMethodManagement;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -51,7 +52,7 @@ class ShippingProcessorTest extends TestCase
 
         $this->shippingProcessor = $objectManager->getObject(ShippingProcessor::class, [
             'shippingAddressManagement' => $this->shippingAddressManagement,
-            'shippingMethodManagement' => $this->shippingMethodManagement
+            'shippingMethodManagement' => $this->shippingMethodManagement,
         ]);
     }
 

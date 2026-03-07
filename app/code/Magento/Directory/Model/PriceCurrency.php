@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe.
  * All rights reserved.
  */
+
 namespace Magento\Directory\Model;
 
 use Magento\Framework\App\ScopeInterface;
+use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface as Logger;
-use Magento\Store\Model\Store;
 
 /**
  * Class PriceCurrency model for convert and format price value

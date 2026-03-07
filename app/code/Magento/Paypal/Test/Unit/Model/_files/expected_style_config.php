@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,16 +24,16 @@ return [
                 'color' => 'blue',
                 'shape' => 'pill',
                 'label' => 'installment',
-                'period' => 5
+                'period' => 5,
             ],
             'isVisibleOnProductPage' => false,
             'isGuestCheckoutAllowed' => true,
             'sdkUrl' => 'http://mock.url',
             'dataAttributes' => [
                 'data-partner-attribution-id' => '',
-                'data-csp-nonce' => ''
-            ]
-        ]
+                'data-csp-nonce' => '',
+            ],
+        ],
     ],
     'checkout' => [
         'cart',
@@ -51,16 +52,16 @@ return [
                 'color' => 'blue',
                 'shape' => 'pill',
                 'label' => 'installment',
-                'period' => 6
+                'period' => 6,
             ],
             'isVisibleOnProductPage' => false,
             'isGuestCheckoutAllowed' => true,
             'sdkUrl' => 'http://mock.url',
             'dataAttributes' => [
                 'data-partner-attribution-id' => '',
-                'data-csp-nonce' => ''
-            ]
-        ]
+                'data-csp-nonce' => '',
+            ],
+        ],
     ],
     'mini_cart' => [
         'cart',
@@ -78,16 +79,16 @@ return [
                 'size' => 'responsive',
                 'color' => 'gold',
                 'shape' => 'rect',
-                'label' => 'paypal'
+                'label' => 'paypal',
             ],
             'isVisibleOnProductPage' => false,
             'isGuestCheckoutAllowed' => true,
             'sdkUrl' => 'http://mock.url',
             'dataAttributes' => [
                 'data-partner-attribution-id' => '',
-                'data-csp-nonce' => ''
-            ]
-        ]
+                'data-csp-nonce' => '',
+            ],
+        ],
     ],
     'product' => [
         'cart',
@@ -112,8 +113,8 @@ return [
             'sdkUrl' => 'http://mock.url',
             'dataAttributes' => [
                 'data-partner-attribution-id' => '',
-                'data-csp-nonce' => ''
-            ]
-        ]
+                'data-csp-nonce' => '',
+            ],
+        ],
     ],
 ];

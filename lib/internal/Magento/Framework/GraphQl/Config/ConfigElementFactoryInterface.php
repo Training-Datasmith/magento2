@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,5 +21,5 @@ interface ConfigElementFactoryInterface
      * @param array $data
      * @return ConfigElementInterface
      */
-    public function createFromConfigData(array $data) : ConfigElementInterface;
+    public function createFromConfigData(array $data): ConfigElementInterface;
 }

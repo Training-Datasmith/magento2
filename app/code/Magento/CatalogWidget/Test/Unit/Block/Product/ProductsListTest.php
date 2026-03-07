@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -197,7 +198,7 @@ class ProductsListTest extends TestCase
             'some_serialized_conditions',
             json_encode('request_params'),
             'test_template',
-            'test_title'
+            'test_title',
         ];
         $this->assertEquals($cacheKey, $this->productsList->getCacheKeyInfo());
     }
@@ -214,7 +215,7 @@ class ProductsListTest extends TestCase
                 'include_container' => false,
                 'display_minimal_price' => false,
                 'zone' => 'item_list',
-                'price_id' => 'old-price-1-some-price-type'
+                'price_id' => 'old-price-1-some-price-type',
             ])
             ->willReturn('<html>');
         $this->layout->expects($this->once())->method('getBlock')->willReturn($priceRenderer);
@@ -225,7 +226,7 @@ class ProductsListTest extends TestCase
             Render::ZONE_ITEM_LIST,
             [
                 'include_container' => false,
-                'display_minimal_price' => false
+                'display_minimal_price' => false,
             ]
         ));
     }
@@ -344,7 +345,7 @@ class ProductsListTest extends TestCase
             [false, 5, null, 5],
             [false, 1, 3, 1],
             [false, 3, 5, 3],
-            [false, 5, 10, 5]
+            [false, 5, 10, 5],
         ];
     }
 

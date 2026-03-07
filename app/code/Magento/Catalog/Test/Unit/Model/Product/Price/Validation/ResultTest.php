@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -45,7 +46,7 @@ class ResultTest extends TestCase
         $this->model = $this->objectManager->getObject(
             Result::class,
             [
-                'priceUpdateResultFactory' => $this->priceUpdateResultFactory
+                'priceUpdateResultFactory' => $this->priceUpdateResultFactory,
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
 use Magento\Payment\Api\Data\PaymentMethodInterface;
@@ -70,7 +73,7 @@ class PaymentMethodList implements PaymentMethodListInterface
                     'code' => (string)$methodInstance->getCode(),
                     'title' => (string)$methodInstance->getTitle(),
                     'storeId' => (int)$storeId,
-                    'isActive' => (bool)$methodInstance->isActive($storeId)
+                    'isActive' => (bool)$methodInstance->isActive($storeId),
                 ]);
             },
             $methodsInstances

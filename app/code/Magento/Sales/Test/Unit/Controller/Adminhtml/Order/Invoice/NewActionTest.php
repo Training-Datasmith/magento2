@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,6 +21,7 @@ use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\App\View;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
@@ -31,7 +33,6 @@ use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Service\InvoiceService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -169,7 +170,7 @@ class NewActionTest extends TestCase
                 'getActionFlag',
                 'getMessageManager',
                 'getResultRedirectFactory',
-                'getView'
+                'getView',
             ])
             ->getMock();
         $contextMock->expects($this->any())
@@ -223,7 +224,7 @@ class NewActionTest extends TestCase
                 'context' => $contextMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'invoiceService' => $this->invoiceServiceMock,
-                'orderRepository' => $this->orderRepositoryMock
+                'orderRepository' => $this->orderRepositoryMock,
             ]
         );
     }

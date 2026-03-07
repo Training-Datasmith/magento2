@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,7 +11,7 @@ declare(strict_types=1);
  * @param array $params
  * @return String
  */
-function generateExpectedPaypalSdkUrl(array $params) : String
+function generateExpectedPaypalSdkUrl(array $params): String
 {
     return 'https://www.paypal.com/sdk/js?' . http_build_query($params);
 }
@@ -44,13 +45,13 @@ return [
                             'ideal',
                             'mybank',
                             'p24',
-                            'sofort'
+                            'sofort',
                         ]
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'capture' => [
         'en_BR',
@@ -74,8 +75,8 @@ return [
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'order' => [
         'en_US',
@@ -99,8 +100,8 @@ return [
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'paypal_guest_checkout_disabled' => [
         'en_BR',
@@ -130,13 +131,13 @@ return [
                             'ideal',
                             'mybank',
                             'p24',
-                            'sofort'
+                            'sofort',
                         ]
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'paypal_guest_checkout_enabled' => [
         'en_BR',
@@ -160,8 +161,8 @@ return [
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'buyer_country_enabled' => [
         'en_BR',
@@ -186,8 +187,8 @@ return [
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'buyer_country_disabled' => [
         'en_BR',
@@ -211,8 +212,8 @@ return [
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
     'venmo_disabled' => [
         'en_US',
@@ -243,12 +244,12 @@ return [
                             'ideal',
                             'mybank',
                             'p24',
-                            'sofort'
+                            'sofort',
                         ]
                     ),
                     'components' => implode(',', ['messages', 'buttons']),
                 ]
-            )
-        ]
+            ),
+        ],
     ],
 ];

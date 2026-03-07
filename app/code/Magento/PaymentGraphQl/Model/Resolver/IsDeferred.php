@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaymentGraphQl\Model\Resolver;
 
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Payment\Helper\Data as PaymentData;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Payment\Helper\Data as PaymentData;
 
 /**
  * Checks if payment method is deferred (online)

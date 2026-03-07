@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,13 +38,13 @@ class ConfigPluginTest extends TestCase
     {
         $resultMock = [
             'result' => [
-                'data' => 'resultDataMock'
-            ]
+                'data' => 'resultDataMock',
+            ],
         ];
         $configMock = [
             'config' => [
-                'data' => 'configDataMock'
-            ]
+                'data' => 'configDataMock',
+            ],
         ];
         $expectedResult = array_merge_recursive($resultMock, $configMock);
         $sidebarMock = $this->createMock(Sidebar::class);

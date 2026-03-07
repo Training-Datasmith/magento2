@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test for \Magento\Framework\Filesystem\Io\File
  *
@@ -9,7 +10,6 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Filesystem\Io;
 
-use Magento\Framework\Exception\FileSystemException;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -18,7 +18,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FileTest extends TestCase
 {
-
     /**
      * @var File
      */

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Block\Adminhtml\Widget\Instance\Edit\Chooser;
 
 /**
@@ -42,7 +45,7 @@ class LayoutTest extends \PHPUnit\Framework\TestCase
                 'name' => 'page_type',
                 'id' => 'page_types_select',
                 'class' => 'page-types-select',
-                'title' => 'Page Types Select'
+                'title' => 'Page Types Select',
             ]
         );
     }

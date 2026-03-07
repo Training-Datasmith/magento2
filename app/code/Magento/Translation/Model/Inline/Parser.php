@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,15 +10,15 @@ namespace Magento\Translation\Model\Inline;
 
 use Laminas\Filter\FilterInterface;
 use Magento\Backend\App\Area\FrontNameResolver;
+use Magento\Framework\App\Cache\TypeListInterface;
+use Magento\Framework\App\State;
+use Magento\Framework\Escaper;
 use Magento\Framework\Translate\Inline\ParserInterface;
+use Magento\Framework\Translate\InlineInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Translation\Model\ResourceModel\StringFactory;
 use Magento\Translation\Model\ResourceModel\StringUtils;
 use Magento\Translation\Model\ResourceModel\StringUtilsFactory;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\State;
-use Magento\Framework\App\Cache\TypeListInterface;
-use Magento\Framework\Translate\InlineInterface;
-use Magento\Framework\Escaper;
 
 /**
  * Parses content and applies necessary html element wrapping and client scripts for inline translation.
@@ -500,12 +501,12 @@ class Parser implements ParserInterface
                     $trAttr = ' ' . $this->_getHtmlAttribute(
                         self::DATA_TRANSLATE,
                         '[' . $this->escaper->escapeHtml($matches[1]) . ',' .
-                        str_replace("\"", "'", join(',', $trArr)) . ']'
+                        str_replace('"', "'", join(',', $trArr)) . ']'
                     );
                 } else {
                     $trAttr = ' ' . $this->_getHtmlAttribute(
                         self::DATA_TRANSLATE,
-                        '[' . str_replace("\"", "&quot;", join(',', $trArr)) . ']'
+                        '[' . str_replace('"', '&quot;', join(',', $trArr)) . ']'
                     );
                 }
                 $trAttr = $this->_addTranslateAttribute($trAttr);

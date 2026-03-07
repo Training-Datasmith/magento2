@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class GetCustomerByTokenTest extends TestCase
             GetCustomerByToken::class,
             [
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
-                'customerRepository' => $this->customerRepositoryMock
+                'customerRepository' => $this->customerRepositoryMock,
             ]
         );
 

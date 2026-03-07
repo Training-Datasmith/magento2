@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Service;
 
 use Magento\Deploy\Console\DeployStaticOptions as Options;
@@ -87,7 +90,7 @@ class DeployStaticContent
         $this->versionStorage->save($version);
 
         if ($this->isRefreshContentVersionOnly($options)) {
-            $this->logger->warning("New content version: " . $version);
+            $this->logger->warning('New content version: ' . $version);
             return;
         }
 
@@ -98,9 +101,9 @@ class DeployStaticContent
             'deployPackageService' => $this->objectManager->create(
                 \Magento\Deploy\Service\DeployPackage::class,
                 [
-                    'logger' => $this->logger
+                    'logger' => $this->logger,
                 ]
-            )
+            ),
         ];
 
         if (isset($options[Options::MAX_EXECUTION_TIME])) {

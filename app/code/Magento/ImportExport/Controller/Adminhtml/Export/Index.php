@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Controller\Adminhtml\Export;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
-use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 
 class Index extends ExportController implements HttpGetActionInterface
 {

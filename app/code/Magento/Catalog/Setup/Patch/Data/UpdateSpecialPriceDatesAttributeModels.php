@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -65,14 +66,14 @@ class UpdateSpecialPriceDatesAttributeModels implements DataPatchInterface, Patc
             \Magento\Catalog\Model\Product::ENTITY,
             'special_from_date',
             [
-                'attribute_model' => SpecialFromDate::class
+                'attribute_model' => SpecialFromDate::class,
             ]
         );
         $eavSetup->updateAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
             'special_to_date',
             [
-                'attribute_model' => SpecialToDate::class
+                'attribute_model' => SpecialToDate::class,
             ]
         );
         return $this;
@@ -89,14 +90,14 @@ class UpdateSpecialPriceDatesAttributeModels implements DataPatchInterface, Patc
             \Magento\Catalog\Model\Product::ENTITY,
             'special_from_date',
             [
-                'attribute_model' => ''
+                'attribute_model' => '',
             ]
         );
         $eavSetup->updateAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
             'special_to_date',
             [
-                'attribute_model' => ''
+                'attribute_model' => '',
             ]
         );
     }

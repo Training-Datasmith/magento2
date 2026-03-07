@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 /**
@@ -77,7 +80,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     {
         return $this->getConfigInstance(
             [
-                __DIR__ . '/_files/valid_new_queue.xml'
+                __DIR__ . '/_files/valid_new_queue.xml',
             ]
         );
     }
@@ -108,7 +111,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $topicConverter = $objectManager->create(
             \Magento\Framework\MessageQueue\Config\Reader\Xml\Converter\TopicConfig::class,
             [
-                'communicationConfig' => $this->getCommunicationConfigInstance()
+                'communicationConfig' => $this->getCommunicationConfigInstance(),
             ]
         );
 
@@ -116,8 +119,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             \Magento\Framework\MessageQueue\Config\Reader\Xml\CompositeConverter::class,
             [
                 'converters' => [
-                    ['converter' => $topicConverter, 'sortOrder' => 10]
-                ]
+                    ['converter' => $topicConverter, 'sortOrder' => 10],
+                ],
             ]
         );
         $xmlReader = $objectManager->create(
@@ -140,14 +143,14 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $envReader = $objectManager->create(
             \Magento\Framework\MessageQueue\Config\Reader\Env::class,
             [
-                'deploymentConfig' => $deploymentConfig
+                'deploymentConfig' => $deploymentConfig,
             ]
         );
         $methodsMap = $objectManager->create(\Magento\Framework\Reflection\MethodsMap::class);
         $envValidator = $objectManager->create(
             \Magento\Framework\MessageQueue\Config\Reader\Env\Validator::class,
             [
-                'methodsMap' => $methodsMap
+                'methodsMap' => $methodsMap,
             ]
         );
 
@@ -156,7 +159,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             [
                 'readers' => [
                     ['reader' => $xmlReader, 'sortOrder' => 10],
-                    ['reader' => $envReader, 'sortOrder' => 20]
+                    ['reader' => $envReader, 'sortOrder' => 20],
                 ],
             ]
         );
@@ -166,7 +169,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             \Magento\Framework\MessageQueue\Config\Data::class,
             [
                 'reader' => $compositeReader,
-                'envValidator' => $envValidator
+                'envValidator' => $envValidator,
             ]
         );
         return $objectManager->create(
@@ -204,8 +207,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
                         'reader' => $objectManager->create(
                             \Magento\Framework\Communication\Config\Reader\EnvReader::class
                         ),
-                        'sortOrder' => 20
-                    ]
+                        'sortOrder' => 20,
+                    ],
                 ],
             ]
         );
@@ -214,14 +217,14 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $configData = $objectManager->create(
             \Magento\Framework\Communication\Config\Data::class,
             [
-                'reader' => $compositeReader
+                'reader' => $compositeReader,
             ]
         );
 
         $config = $objectManager->create(
             \Magento\Framework\Communication\ConfigInterface::class,
             [
-                'configData' => $configData
+                'configData' => $configData,
             ]
         );
         return $config;

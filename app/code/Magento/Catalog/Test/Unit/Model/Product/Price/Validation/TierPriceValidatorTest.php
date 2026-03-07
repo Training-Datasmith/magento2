@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,15 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Price\Validation;
 
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Model\Product\Type\AbstractType;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\TierPriceInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Price\Validation\InvalidSkuProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\Result;
 use Magento\Catalog\Model\Product\Price\Validation\TierPriceValidator;
 use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -26,6 +26,7 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -112,7 +113,7 @@ class TierPriceValidatorTest extends TestCase
                 'invalidSkuProcessor' => $this->invalidSkuProcessor,
                 'productRepository' => $this->productRepository,
                 'resourceConnection' => $this->resourceConnectionMock,
-                'storeManager' => $this->storeManager
+                'storeManager' => $this->storeManager,
             ]
         );
     }
@@ -179,7 +180,7 @@ class TierPriceValidatorTest extends TestCase
         $productId = 3346346;
         $productType = Type::TYPE_BUNDLE;
         $idsBySku = [
-            $sku => [$productId => $productType]
+            $sku => [$productId => $productType],
         ];
         $this->productIdLocator->expects($this->atLeastOnce())->method('retrieveProductIdsBySkus')
             ->willReturn($idsBySku);
@@ -256,15 +257,15 @@ class TierPriceValidatorTest extends TestCase
             [
                 [
                     'tierPrice_getCustomerGroup' => $customerGroupName,
-                    'tierPrice_getPriceType' => TierPriceInterface::PRICE_TYPE_DISCOUNT
-                ]
+                    'tierPrice_getPriceType' => TierPriceInterface::PRICE_TYPE_DISCOUNT,
+                ],
             ],
             [
                 [
                     'tierPrice_getCustomerGroup' => $customerGroupName,
-                    'tierPrice_getPriceType' => TierPriceInterface::PRICE_TYPE_FIXED
-                ]
-            ]
+                    'tierPrice_getPriceType' => TierPriceInterface::PRICE_TYPE_FIXED,
+                ],
+            ],
         ];
     }
 

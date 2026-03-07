@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,37 +10,37 @@ namespace Magento\Checkout\Test\Unit\Model;
 
 use Magento\Checkout\Api\Data\PaymentDetailsInterface;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
+use Magento\Checkout\Model\AddressComparatorInterface;
 use Magento\Checkout\Model\PaymentDetailsFactory;
 use Magento\Checkout\Model\ShippingInformationManagement;
-use Magento\Checkout\Model\AddressComparatorInterface;
+use Magento\Customer\Api\AddressRepositoryInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\CartTotalRepositoryInterface;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\CartExtension;
 use Magento\Quote\Api\Data\CartExtensionFactory;
+use Magento\Quote\Api\Data\CartExtensionInterface;
 use Magento\Quote\Api\Data\PaymentMethodInterface;
 use Magento\Quote\Api\Data\TotalsInterface;
 use Magento\Quote\Api\PaymentMethodManagementInterface;
 use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\Quote\Address;
+use Magento\Quote\Model\Quote\TotalsCollector;
+use Magento\Quote\Model\QuoteAddressValidationService;
+use Magento\Quote\Model\QuoteAddressValidator;
 use Magento\Quote\Model\Shipping;
 use Magento\Quote\Model\ShippingAssignment;
 use Magento\Quote\Model\ShippingAssignmentFactory;
 use Magento\Quote\Model\ShippingFactory;
-use Magento\Customer\Api\AddressRepositoryInterface;
-use Magento\Quote\Model\Quote\TotalsCollector;
-use Psr\Log\LoggerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Quote\Model\QuoteAddressValidationService;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Quote\Api\Data\CartExtensionInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Test for \Magento\Checkout\Model\ShippingInformationManagement.
@@ -273,10 +274,10 @@ class ShippingInformationManagementTest extends TestCase
     public function testSaveAddressInformationIfShippingAddressNotSet(): void
     {
         $cartId = self::STUB_CART_ID;
-        
+
         $addressMock = $this->createMock(Address::class);
         $addressMock->method('getCountryId')->willReturn(null);
-        
+
         /** @var ShippingInformationInterface|MockObject $addressInformationMock */
         $addressInformationMock = $this->createMock(ShippingInformationInterface::class);
         $addressInformationMock->expects($this->once())

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Wishlist\Model\ResourceModel\Item;
 
+use Magento\Catalog\Model\Attribute\Config;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Catalog\Model\Attribute\Config;
 
 class CollectionTest extends \PHPUnit\Framework\TestCase
 {
@@ -85,7 +87,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     private function addAttributesToWishlistConfig($attributes)
     {
         $this->attributeConfig->merge([
-            'wishlist_item' => $attributes
+            'wishlist_item' => $attributes,
         ]);
     }
 }

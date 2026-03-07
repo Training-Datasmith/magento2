@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class UnionExpressionTest extends TestCase
             ->willReturn('test_assemble');
         $parts = [
             $sqlMock,
-            '(test_column)'
+            '(test_column)',
         ];
         $model = new UnionExpression($parts);
         $this->assertEquals('(test_assemble)' . Select::SQL_UNION . '(test_column)', $model->__toString());

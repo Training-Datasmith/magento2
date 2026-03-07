@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Framework\Model\ActionValidator\RemoveAction;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Registry;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -79,13 +80,13 @@ class AbstractModelTest extends TestCase
             'commit',
             'delete',
             'getIdFieldName',
-            'rollBack'
+            'rollBack',
         ]);
         $this->resourceCollectionMock = $this->createPartialMock(
             \Magento\Framework\Data\Collection\AbstractDb::class,
             ['getResource']
         );
-        
+
         // Use getMockBuilder with onlyMethods([]) to allow real implementations
         // This creates a partial mock that doesn't override any methods
         $this->model = $this->getMockBuilder(AbstractModel::class)
@@ -93,11 +94,11 @@ class AbstractModelTest extends TestCase
                 $this->contextMock,
                 $this->registryMock,
                 $this->resourceMock,
-                $this->resourceCollectionMock
+                $this->resourceCollectionMock,
             ])
             ->onlyMethods([])
             ->getMock();
-        
+
         $this->connectionMock = $this->createMock(AdapterInterface::class);
         $this->resourceMock->expects($this->any())
             ->method('getConnection')
@@ -115,7 +116,7 @@ class AbstractModelTest extends TestCase
         $this->model->setData(
             [
                 'id'   => 1000,
-                'name' => 'Test Name'
+                'name' => 'Test Name',
             ]
         );
         $this->assertEmpty($this->model->getStoredData());
@@ -244,7 +245,7 @@ class AbstractModelTest extends TestCase
             'when test data is 0 and compare data is null' => [['key' => 0], 'key', null, false],
             'when test data is null and compare data is 0' => [['key' => null], 'key', 0, false],
             'when test data is string array and compare data is int' => [['key' => '10'], 'key', 10, false],
-            'when test data is string array and compare data is float' => [['key' => '22.00'], 'key', 22.00, false]
+            'when test data is string array and compare data is float' => [['key' => '22.00'], 'key', 22.00, false],
         ];
     }
 }

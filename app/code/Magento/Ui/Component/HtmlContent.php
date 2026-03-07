@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\View\Element\BlockInterface;
@@ -11,7 +14,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 class HtmlContent extends AbstractComponent implements BlockWrapperInterface
 {
-    const NAME = 'html_content';
+    public const NAME = 'html_content';
 
     /**
      * @var BlockInterface

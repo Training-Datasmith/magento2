@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Category;
 
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\DB\Select;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\DB\Select;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Category resource collection
@@ -377,7 +380,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
     private function getCountFromCategoryTableBulk(
         array $categoryIds,
         int $websiteId
-    ) : array {
+    ): array {
         $connection = $this->_conn;
         $tempTableName = 'temp_category_descendants_' . uniqid();
         $tempTable = $connection->newTable($tempTableName)

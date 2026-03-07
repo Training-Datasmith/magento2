@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class StructureLazy extends Structure implements NoninterceptableInterface
     public function getElementByPathParts(array $pathParts)
     {
         $this->loadStructureData();
-        return parent:: getElementByPathParts($pathParts);
+        return parent::getElementByPathParts($pathParts);
     }
 
     /**

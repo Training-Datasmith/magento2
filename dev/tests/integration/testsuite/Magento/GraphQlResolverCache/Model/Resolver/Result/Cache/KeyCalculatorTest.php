@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Config\ConfigOptionsListConstants;
 use Magento\GraphQl\Model\Query\ContextFactoryInterface;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\CalculationException;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator;
-use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\ParentValueFactorProviderInterface;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\GenericFactorProviderInterface;
+use Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\ParentValueFactorProviderInterface;
 use Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessorInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -51,8 +52,8 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
     public function testKeyCalculatorException()
     {
         $this->expectException(CalculationException::class);
-        $this->expectExceptionMessage("Test message");
-        $exceptionMessage = "Test message";
+        $this->expectExceptionMessage('Test message');
+        $exceptionMessage = 'Test message';
 
         $mock = $this->getMockBuilder(GenericFactorProviderInterface::class)
             ->disableOriginalConstructor()
@@ -72,8 +73,8 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
             Calculator::class,
             [
                 'factorProviders' => [
-                    'test' => 'TestFactorProviderMock'
-                ]
+                    'test' => 'TestFactorProviderMock',
+                ],
             ]
         );
         $keyCalculator->calculateCacheKey();
@@ -101,7 +102,7 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
         $keyCalculator = $this->objectManager->create(
             Calculator::class,
             [
-                'factorProviders' => $keyFactorProvidersConfig
+                'factorProviders' => $keyFactorProvidersConfig,
             ]
         );
         $key = $keyCalculator->calculateCacheKey($parentResolverData);
@@ -189,14 +190,14 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
             'no factors' => [
                 'factorDataArray' => [],
                 'parentResolverData' => null,
-                'expectedCacheKey' => null
+                'expectedCacheKey' => null,
             ],
             'single factor' => [
                 'factorDataArray' => [
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'test',
-                        'value' => 'testValue'
+                        'value' => 'testValue',
                     ],
                 ],
                 'parentResolverData' => null,
@@ -207,17 +208,17 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'ctest',
-                        'value' => 'c_testValue'
+                        'value' => 'c_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'atest',
-                        'value' => 'a_testValue'
+                        'value' => 'a_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'btest',
-                        'value' => 'b_testValue'
+                        'value' => 'b_testValue',
                     ],
                 ],
                 'parentResolverData' => null,
@@ -231,21 +232,21 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'ctest',
-                        'value' => 'c_testValue'
+                        'value' => 'c_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'atest',
-                        'value' => 'a_testValue'
+                        'value' => 'a_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'btest',
-                        'value' => 'object_123'
+                        'value' => 'object_123',
                     ],
                 ],
                 'parentResolverData' => [
-                    'object_id' => 123
+                    'object_id' => 123,
                 ],
                 'expectedCacheKey' => hash(
                     'sha256',
@@ -257,17 +258,17 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'ctest',
-                        'value' => 'c_testValue'
+                        'value' => 'c_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'atest',
-                        'value' => 'a_testValue'
+                        'value' => 'a_testValue',
                     ],
                     [
                         'interface' => GenericFactorProviderInterface::class,
                         'name' => 'btest',
-                        'value' => 'some value'
+                        'value' => 'some value',
                     ],
                 ],
                 'parentResolverData' => null,
@@ -288,7 +289,7 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
     {
         $value = [
             'data' => 'some data',
-            ValueProcessorInterface::VALUE_PROCESSING_REFERENCE_KEY => 'preprocess me'
+            ValueProcessorInterface::VALUE_PROCESSING_REFERENCE_KEY => 'preprocess me',
         ];
 
         $this->initFactorMocks();
@@ -305,8 +306,8 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
             'factorProviders' => [
                 'context' => 'TestContextFactorMock',
                 'parent_value' => 'TestValueFactorMock',
-                'parent_processed_value' => 'TestProcessedValueFactorMock'
-            ]
+                'parent_processed_value' => 'TestProcessedValueFactorMock',
+            ],
         ]);
 
         $key = $keyCalculator->calculateCacheKey($value);
@@ -347,7 +348,7 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
     public function testValueProcessingIsNotCalledForParentValueFromResolver()
     {
         $value = [
-            'data' => 'some data'
+            'data' => 'some data',
         ];
 
         $this->initFactorMocks();
@@ -363,8 +364,8 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
             'factorProviders' => [
                 'context' => 'TestContextFactorMock',
                 'parent_value' => 'TestValueFactorMock',
-                'parent_processed_value' => 'TestProcessedValueFactorMock'
-            ]
+                'parent_processed_value' => 'TestProcessedValueFactorMock',
+            ],
         ]);
 
         $key = $keyCalculator->calculateCacheKey($value);
@@ -400,7 +401,7 @@ class KeyCalculatorTest extends \PHPUnit\Framework\TestCase
             'valueProcessor' => $valueProcessorMock,
             'factorProviders' => [
                 'context' => 'TestContextFactorMock',
-            ]
+            ],
         ]);
 
         $key = $keyCalculator->calculateCacheKey($value);

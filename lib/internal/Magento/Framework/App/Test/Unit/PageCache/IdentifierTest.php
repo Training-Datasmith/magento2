@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\App\PageCache\Identifier;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class IdentifierTest extends TestCase
@@ -85,7 +86,7 @@ class IdentifierTest extends TestCase
             [
                 'request'    => $this->requestMock,
                 'context'    => $this->contextMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
         parent::setUp();
@@ -239,7 +240,7 @@ class IdentifierTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         '',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),
@@ -292,7 +293,7 @@ class IdentifierTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         'a=1&b=2',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),
@@ -332,7 +333,7 @@ class IdentifierTest extends TestCase
                         true,
                         'http://example.com/path1/',
                         'abc=123',
-                        self::VARY
+                        self::VARY,
                     ]
                 )
             ),

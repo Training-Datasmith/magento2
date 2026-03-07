@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filter\Test\Unit;
 
 use Magento\Framework\Filter\RemoveAccents;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RemoveAccentsTest extends TestCase
 {
@@ -32,7 +33,7 @@ class RemoveAccentsTest extends TestCase
     {
         return [
             'general conversion' => ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', false, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
-            'conversion with german specifics' => ['äöüÄÖÜß', true, 'aeoeueAeOeUess']
+            'conversion with german specifics' => ['äöüÄÖÜß', true, 'aeoeueAeOeUess'],
         ];
     }
 }

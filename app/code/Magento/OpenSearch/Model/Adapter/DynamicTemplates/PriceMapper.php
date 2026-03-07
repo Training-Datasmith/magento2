@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class PriceMapper implements MapperInterface
     {
         $templates[] = [
             'price_mapping' => [
-                "match_pattern" => "regex",
+                'match_pattern' => 'regex',
                 'match' => 'price_\\d+_\\d+',
                 'match_mapping_type' => 'string',
                 'mapping' => [

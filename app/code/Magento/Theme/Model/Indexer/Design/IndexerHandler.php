@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -34,7 +35,7 @@ class IndexerHandler extends Grid
     /***
      * table design_config_grid_flat
      */
-    private const DESIGN_CONFIG_GRID_FLAT = "design_config_grid_flat";
+    private const DESIGN_CONFIG_GRID_FLAT = 'design_config_grid_flat';
 
     /***
      * @var DtoFactoriesTable
@@ -93,7 +94,7 @@ class IndexerHandler extends Grid
                     preg_match('/\b('. self::OLDCOLLATION .')\b/', $getTableSchema['Collation'])) {
                     $charset = $this->columnConfig->getDefaultCharset();
                     $collate = $this->columnConfig->getDefaultCollation();
-                    $columnEncoding = " CHARACTER SET ".$charset." COLLATE ".$collate;
+                    $columnEncoding = ' CHARACTER SET '.$charset.' COLLATE '.$collate;
                     $this->connection->query(
                         sprintf(
                             'ALTER TABLE `%s` MODIFY COLUMN `theme_theme_id` varchar(255) %s %s,

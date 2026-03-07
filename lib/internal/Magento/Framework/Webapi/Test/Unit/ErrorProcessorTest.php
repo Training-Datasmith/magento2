@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Webapi Error Processor.
  *
@@ -18,12 +19,12 @@ use Magento\Framework\Message\AbstractMessage;
 use Magento\Framework\Phrase;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Framework\Validator\Exception as ValidatorException;
 use Magento\Framework\Webapi\ErrorProcessor;
 use Magento\Framework\Webapi\Exception as WebapiException;
-use Magento\Framework\Validator\Exception as ValidatorException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -49,8 +50,8 @@ class ErrorProcessorTest extends TestCase
         $objects = [
             [
                 Json::class,
-                $this->createMock(Json::class)
-            ]
+                $this->createMock(Json::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
         /** Set up mocks for SUT. */
@@ -313,7 +314,7 @@ class ErrorProcessorTest extends TestCase
                 WebapiException::HTTP_INTERNAL_ERROR,
                 'Internal Error. Details are available in Magento log file. Report ID:',
                 [],
-            ]
+            ],
         ];
     }
 
@@ -436,6 +437,6 @@ class ErrorProcessorTest extends TestCase
             "Masked exception message is invalid: expected '{$expectedMessage}', " .
             "given '{$maskedException->getMessage()}'."
         );
-        $this->assertEquals($expectedDetails, $maskedException->getDetails(), "Masked exception details are invalid.");
+        $this->assertEquals($expectedDetails, $maskedException->getDetails(), 'Masked exception details are invalid.');
     }
 }

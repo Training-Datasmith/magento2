@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Edit;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Catalog\Block\Adminhtml\Category\AbstractCategory;
 use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class DeleteButton extends AbstractCategory implements ButtonProviderInterface
 {
@@ -57,7 +60,7 @@ class DeleteButton extends AbstractCategory implements ButtonProviderInterface
                 'label' => __('Delete'),
                 'on_click' => "deleteConfirm('" . $confirmMessage . "', '" . $this->getDeleteUrl() . "', {data: {}})",
                 'class' => 'delete',
-                'sort_order' => 10
+                'sort_order' => 10,
             ];
         }
 

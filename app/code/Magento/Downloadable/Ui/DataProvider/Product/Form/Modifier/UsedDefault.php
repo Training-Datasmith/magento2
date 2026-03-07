@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier;
 
+use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Ui\Component\Form;
 
@@ -91,7 +94,7 @@ class UsedDefault extends AbstractModifier
                 'disabled' => $usedDefault,
                 'service' => [
                     'template' => 'ui/form/element/helper/service',
-                ]
+                ],
             ];
             $linksTitlePath = $this->arrayManager->findPath($titleIndex, $this->meta, null, 'children')
                 . static::META_CONFIG_PATH;

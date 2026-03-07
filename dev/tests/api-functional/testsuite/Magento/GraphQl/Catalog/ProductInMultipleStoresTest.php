@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class ProductInMultipleStoresTest extends GraphQlAbstract
      */
     public function testProductFromNonExistingStore()
     {
-        $nonExistingStoreCode = "non_existent_store";
+        $nonExistingStoreCode = 'non_existent_store';
         $headerMapInvalidStoreCode = ['Store' => $nonExistingStoreCode];
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Requested store is not found');

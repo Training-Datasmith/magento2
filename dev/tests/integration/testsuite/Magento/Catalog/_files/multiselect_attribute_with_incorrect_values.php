@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -39,7 +41,7 @@ $attribute->setData(
             'value' => [
                 'option_1' => ['Opt|,=ion 1'],
                 'option_2' => ['Opt||,ion 2'],
-                'option_3' => ['Option 3 "!@#$%^&*, "|"']
+                'option_3' => ['Option 3 "!@#$%^&*, "|"'],
             ],
             'order' => [
                 'option_1' => 1,

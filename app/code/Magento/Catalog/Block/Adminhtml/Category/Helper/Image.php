@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Category form image field helper
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Helper;
 
 class Image extends \Magento\Framework\Data\Form\Element\Image

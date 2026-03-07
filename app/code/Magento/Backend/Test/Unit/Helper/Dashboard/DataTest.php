@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class DataTest extends TestCase
             HelperData::class,
             [
                 'storeManager' => $this->storeManagerMock,
-                'deploymentConfig' => $this->deploymentConfigMock
+                'deploymentConfig' => $this->deploymentConfigMock,
             ]
         );
     }

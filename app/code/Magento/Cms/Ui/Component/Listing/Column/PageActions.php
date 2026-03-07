@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Ui\Component\Listing\Column;
 
 use Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action\UrlBuilder;
@@ -110,7 +113,7 @@ class PageActions extends Column
                             isset($item['store_code']) ? $item['store_code'] : null
                         ),
                         'label' => __('View'),
-                        'target' => '_blank'
+                        'target' => '_blank',
                     ];
                 }
             }

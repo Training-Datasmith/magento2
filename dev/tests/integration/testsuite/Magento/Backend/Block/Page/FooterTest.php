@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ class FooterTest extends \PHPUnit\Framework\TestCase
     /**
      * Test Product Version Value
      */
-    const TEST_PRODUCT_VERSION = '222.333.444';
+    public const TEST_PRODUCT_VERSION = '222.333.444';
 
     /**
      * @var \Magento\Backend\Block\Page\Footer

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -15,7 +18,7 @@ class Blob implements FactoryInterface
     /**
      * Default blob length.
      */
-    const DEFAULT_BLOB_LENGTH = 65536;
+    public const DEFAULT_BLOB_LENGTH = 65536;
 
     /**
      * @var ObjectManagerInterface

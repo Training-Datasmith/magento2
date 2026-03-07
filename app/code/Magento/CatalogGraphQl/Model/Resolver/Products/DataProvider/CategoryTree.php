@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\CatalogGraphQl\Model\AttributesJoiner;
 use Magento\CatalogGraphQl\Model\Category\DepthCalculator;
 use Magento\CatalogGraphQl\Model\Resolver\Categories\DataProvider\Category\CollectionProcessorInterface;
-use Magento\Framework\DB\Sql\Expression;
 use Magento\Framework\Api\Search\SearchCriteria;
+use Magento\Framework\DB\Sql\Expression;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
@@ -150,7 +151,7 @@ class CategoryTree
      * @return Collection
      * @throws LocalizedException
      */
-    private function getRawTreeCollection(ResolveInfo $resolveInfo, array $topLevelCategoryIds) : Collection
+    private function getRawTreeCollection(ResolveInfo $resolveInfo, array $topLevelCategoryIds): Collection
     {
         $categoryQuery = $resolveInfo->fieldNodes[0];
         $collection = $this->collectionFactory->create();
@@ -171,13 +172,13 @@ class CategoryTree
             'path',
             [
                 ['eq' => new Expression('base.path')],
-                ['like' => new Expression('concat(base.path, \'/%\')')]
+                ['like' => new Expression('concat(base.path, \'/%\')')],
             ]
         );
 
         //Add `is_anchor` attribute to selected field
         $collection->addAttributeToSelect('is_anchor');
-        $collection->addAttributeToFilter('is_active', 1, "left");
+        $collection->addAttributeToFilter('is_active', 1, 'left');
         $collection->setOrder('level');
         $collection->setOrder(
             'position',

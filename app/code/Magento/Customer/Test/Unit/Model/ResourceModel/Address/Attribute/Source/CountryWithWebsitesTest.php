@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Directory\Model\AllowedCountries;
 use Magento\Directory\Model\ResourceModel\Country\CollectionFactory;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\OptionFactory;
 use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -69,7 +70,7 @@ class CountryWithWebsitesTest extends TestCase
                 'countriesFactory' => $this->countriesFactoryMock,
                 'allowedCountriesReader' => $this->allowedCountriesMock,
                 'storeManager' => $this->storeManagerMock,
-                'shareConfig' => $this->shareConfigMock
+                'shareConfig' => $this->shareConfigMock,
             ]
         );
     }
@@ -110,11 +111,11 @@ class CountryWithWebsitesTest extends TestCase
         $collectionMock->expects($this->once())
             ->method('toOptionArray')
             ->willReturn([
-                ['value' => 'AM', 'label' => 'UZ']
+                ['value' => 'AM', 'label' => 'UZ'],
             ]);
 
         $this->assertEquals([
-            ['value' => 'AM', 'label' => 'UZ', 'website_ids' => [1, 2]]
+            ['value' => 'AM', 'label' => 'UZ', 'website_ids' => [1, 2]],
         ], $this->countryByWebsite->getAllOptions());
     }
 }

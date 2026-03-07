@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class Product implements SynchronizeInterface
                 [
                     self::TYPE => self::CONTENT_TYPE,
                     self::FIELD => $field,
-                    self::ENTITY_ID => $item[self::PRODUCT_TABLE_ENTITY_ID]
+                    self::ENTITY_ID => $item[self::PRODUCT_TABLE_ENTITY_ID],
                 ]
             );
             $this->updateContentAssetLinks->execute(

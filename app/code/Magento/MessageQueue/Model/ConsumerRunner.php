@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MessageQueue\Model;
 
-use Magento\Framework\MessageQueue\ConsumerFactory;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\MaintenanceMode;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\MessageQueue\ConsumerFactory;
 
 /**
  * Consumer runner class is used to run consumer, which name matches the magic method invoked on this class.

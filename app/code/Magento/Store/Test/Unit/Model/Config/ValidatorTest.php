@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,44 +41,44 @@ class ValidatorTest extends TestCase
         return [
             [
                 [],
-                [$errorMessage]
+                [$errorMessage],
             ],
             [
                 [
                     ScopeInterface::SCOPE_GROUPS => [],
                     ScopeInterface::SCOPE_STORES => [],
                 ],
-                [$errorMessage]
+                [$errorMessage],
             ],
             [
                 [
                     ScopeInterface::SCOPE_GROUPS => [0 => ['name' => 'group one']],
                     ScopeInterface::SCOPE_STORES => ['admin' => ['name' => 'admin store']],
-                    ScopeInterface::SCOPE_WEBSITES => ['admin' => ['name' => 'admin website']]
+                    ScopeInterface::SCOPE_WEBSITES => ['admin' => ['name' => 'admin website']],
                 ],
-                [$errorMessage]
+                [$errorMessage],
             ],
             [
                 [
                     ScopeInterface::SCOPE_GROUPS => [
                         0 => ['name' => 'group one'],
-                        1 => ['name' => 'group two']
+                        1 => ['name' => 'group two'],
                     ],
                     ScopeInterface::SCOPE_STORES => [
                         'admin' => ['name' => 'admin store'],
                         'store-two' => ['name' => 'store two'],
                     ],
                     ScopeInterface::SCOPE_WEBSITES => [
-                        'admin' => ['name' => 'admin website']
-                    ]
+                        'admin' => ['name' => 'admin website'],
+                    ],
                 ],
-                [$errorMessage]
+                [$errorMessage],
             ],
             [
                 [
                     ScopeInterface::SCOPE_GROUPS => [
                         0 => ['name' => 'group one'],
-                        1 => ['name' => 'group two']
+                        1 => ['name' => 'group two'],
                     ],
                     ScopeInterface::SCOPE_STORES => [
                         'admin' => ['name' => 'admin store'],
@@ -86,10 +87,10 @@ class ValidatorTest extends TestCase
                     ScopeInterface::SCOPE_WEBSITES => [
                         'admin' => ['name' => 'admin website'],
                         'website-two' => ['name' => 'website two'],
-                    ]
+                    ],
                 ],
-                []
-            ]
+                [],
+            ],
         ];
     }
 }

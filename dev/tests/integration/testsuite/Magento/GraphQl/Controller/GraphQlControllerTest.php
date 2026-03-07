@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -75,7 +76,7 @@ class GraphQlControllerTest extends \Magento\TestFramework\Indexer\TestCase
      *
      * @return void
      */
-    public function testDispatch() : void
+    public function testDispatch(): void
     {
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
@@ -99,7 +100,7 @@ QUERY;
         $postData = [
             'query' => $query,
             'variables' => null,
-            'operationName' => null
+            'operationName' => null,
         ];
 
         $this->request->setPathInfo('/graphql');
@@ -125,7 +126,7 @@ QUERY;
      *
      * @return void
      */
-    public function testDispatchWithGet() : void
+    public function testDispatchWithGet(): void
     {
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
@@ -166,7 +167,7 @@ QUERY;
      *
      * @return void
      */
-    public function testDispatchGetWithParameterizedVariables() : void
+    public function testDispatchGetWithParameterizedVariables(): void
     {
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
@@ -189,13 +190,13 @@ QUERY;
 
         $variables = [
             'filterInput' => [
-                'sku' => ['eq' => 'simple1']
-            ]
+                'sku' => ['eq' => 'simple1'],
+            ],
         ];
         $queryParams = [
             'query' => $query,
             'variables' => json_encode($variables),
-            'operationName' => 'GetProducts'
+            'operationName' => 'GetProducts',
         ];
 
         $this->request->setPathInfo('/graphql');
@@ -218,7 +219,7 @@ QUERY;
      *
      * @return void
      */
-    public function testError() : void
+    public function testError(): void
     {
         $query
             = <<<QUERY
@@ -242,7 +243,7 @@ QUERY;
         $postData = [
             'query' => $query,
             'variables' => null,
-            'operationName' => null
+            'operationName' => null,
         ];
 
         $this->request->setPathInfo('/graphql');

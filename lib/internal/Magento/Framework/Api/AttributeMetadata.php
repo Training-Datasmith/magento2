@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,7 +13,7 @@ namespace Magento\Framework\Api;
  */
 class AttributeMetadata extends AbstractSimpleObject implements MetadataObjectInterface
 {
-    const ATTRIBUTE_CODE = 'attribute_code';
+    public const ATTRIBUTE_CODE = 'attribute_code';
 
     /**
      * Retrieve code of the attribute.

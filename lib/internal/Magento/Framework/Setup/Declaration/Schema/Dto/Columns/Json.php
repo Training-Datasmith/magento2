@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -63,7 +65,7 @@ class Json extends Column implements ElementDiffAwareInterface, ColumnNullableAw
         return [
             'type' => $this->getType(),
             'nullable' => $this->isNullable(),
-            'comment' => $this->getComment()
+            'comment' => $this->getComment(),
         ];
     }
 }

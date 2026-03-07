@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\TemplateEngine\Xhtml\Compiler;
 
 use Magento\Framework\DataObject;
@@ -21,6 +24,6 @@ class Comment implements CommentInterface
      */
     public function compile(\DOMComment $node, DataObject $processedObject)
     {
-        //
+
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Checkout\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\State;
@@ -27,6 +27,7 @@ use Magento\Sales\Model\Order;
 use Magento\Sales\Model\OrderFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -60,8 +61,8 @@ class SessionTest extends TestCase
         $objects = [
             [
                 SessionStartChecker::class,
-                $this->createMock(SessionStartChecker::class)
-            ]
+                $this->createMock(SessionStartChecker::class),
+            ],
         ];
         $this->helper->prepareObjectManager($objects);
     }
@@ -102,7 +103,7 @@ class SessionTest extends TestCase
                 'orderFactory' => $orderFactory,
                 'messageCollectionFactory' => $messageCollectionFactory,
                 'quoteRepository' => $quoteRepository,
-                'storage' => new Storage()
+                'storage' => new Storage(),
             ]
         );
         $this->session = $this->helper->getObject(Session::class, $constructArguments);
@@ -122,7 +123,7 @@ class SessionTest extends TestCase
         return [
             [null, 1, static fn (self $testCase) => $testCase->_getOrderMock(1, null)],
             [1, 1, static fn (self $testCase) => $testCase->_getOrderMock(1, 1)],
-            [1, null, static fn (self $testCase) => $testCase->_getOrderMock(null, 1)]
+            [1, null, static fn (self $testCase) => $testCase->_getOrderMock(null, 1)],
         ];
     }
 
@@ -170,7 +171,7 @@ class SessionTest extends TestCase
             ['redirect_url'],
             ['last_order_id'],
             ['last_real_order_id'],
-            ['additional_messages']
+            ['additional_messages'],
         ];
     }
 
@@ -206,7 +207,7 @@ class SessionTest extends TestCase
                 'quoteRepository' => $quoteRepository,
                 'storage' => $storage,
                 'storeManager' => $storeManager,
-                'eventManager' => $eventManager
+                'eventManager' => $eventManager,
             ]
         );
         $lastOrderId = 'last order id';
@@ -341,7 +342,7 @@ class SessionTest extends TestCase
             [
                 'storeManager' => $storeManager,
                 'storage' => $storage,
-                'quoteIdMaskFactory' => $quoteIdMaskFactoryMock
+                'quoteIdMaskFactory' => $quoteIdMaskFactoryMock,
             ]
         );
 
@@ -366,7 +367,7 @@ class SessionTest extends TestCase
         $session = $this->helper->getObject(
             Session::class,
             [
-                'storage' => $storage
+                'storage' => $storage,
             ]
         );
 
@@ -396,8 +397,8 @@ class SessionTest extends TestCase
         $stepData = [
             'simple' => 'data',
             'complex' => [
-                'key' => 'value'
-            ]
+                'key' => 'value',
+            ],
         ];
         /** @var $session \Magento\Checkout\Model\Session */
         $session = $this->helper->getObject(
@@ -465,7 +466,7 @@ class SessionTest extends TestCase
                 'customerSession' => $customerSession,
                 'storage' => $storage,
                 'quoteFactory' => $quoteFactory,
-                'logger' => $logger
+                'logger' => $logger,
             ]
         );
         $this->session = $this->helper->getObject(Session::class, $constructArguments);
@@ -495,12 +496,12 @@ class SessionTest extends TestCase
         $expectedResult = [
             'complex' => [
                 'key' => 'value',
-                'key2' => 'value2'
+                'key2' => 'value2',
             ],
             'simple' => [
                 'key' => 'value',
-                'key2' => 'value2'
-            ]
+                'key2' => 'value2',
+            ],
         ];
         $this->assertEquals($expectedResult, $session->getSteps());
     }
@@ -568,7 +569,7 @@ class SessionTest extends TestCase
             [
                 'eventManager' => $eventManager,
                 'storeManager' => $storeManager,
-                'storage' => $storage
+                'storage' => $storage,
             ]
         );
     }

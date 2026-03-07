@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,13 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Product\Attribute\Backend\TierPrice;
 
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
 use Magento\Customer\Api\GroupManagementInterface;
 use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Catalog\Model\ResourceModel\Product\Attribute\Backend\Tierprice;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Process tier price data for handled new product

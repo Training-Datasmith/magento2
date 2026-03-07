@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Block\Product\ListProduct;
 
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Customer\Model\Group;
@@ -83,7 +84,7 @@ class CheckProductPriceTest extends TestCase
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => [2],
-                'tax_rate_ids' => ['$rate.id$']
+                'tax_rate_ids' => ['$rate.id$'],
             ],
             'rule'
         ),
@@ -97,9 +98,9 @@ class CheckProductPriceTest extends TestCase
                     [
                         'customer_group_id' => Group::NOT_LOGGED_IN_ID,
                         'qty' => 2,
-                        'value' => 5
-                    ]
-                ]
+                        'value' => 5,
+                    ],
+                ],
             ]
         )
     ]

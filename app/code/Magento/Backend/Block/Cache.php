@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block;
 
 /**
@@ -30,7 +33,7 @@ class Cache extends \Magento\Backend\Block\Widget\Grid\Container
                     'label' => __('Flush Magento Cache'),
                     'title' => __('Removes only Magento-generated cache. Safe to use when refreshing outdated data.'),
                     'onclick' => 'setLocation(\'' . $this->getFlushSystemUrl() . '\')',
-                    'class' => 'primary flush-cache-magento'
+                    'class' => 'primary flush-cache-magento',
                 ]
             );
         }
@@ -50,7 +53,7 @@ class Cache extends \Magento\Backend\Block\Widget\Grid\Container
                         'Use if standard cache refresh does not resolve issues.'
                     ),
                     'onclick' => 'confirmSetLocation(\'' . $message . '\', \'' . $this->getFlushStorageUrl() . '\')',
-                    'class' => 'flush-cache-storage'
+                    'class' => 'flush-cache-storage',
                 ]
             );
         }

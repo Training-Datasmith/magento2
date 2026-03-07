@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -109,7 +110,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                     'minimalPrice' => 120,
                     // 110 + 10 (sum of simple price)
                     'maximalPrice' => 120,
-                ]
+                ],
             ],
 
             '#2 Testing price for fixed bundle product with three simples and different qty' => [
@@ -119,7 +120,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                     'minimalPrice' => 120,
                     //  110 + (3 * 10) + (2 * 10) + 10
                     'maximalPrice' => 170,
-                ]
+                ],
             ],
 
             '#3 Testing price for fixed bundle product with three simples and different price' => [
@@ -129,7 +130,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                     'minimalPrice' => 120,
                     // 110 + 60
                     'maximalPrice' => 170,
-                ]
+                ],
             ],
 
             '#4 Testing price for fixed bundle product with three simples' => [
@@ -139,7 +140,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                     'minimalPrice' => 120,
                     // 110 + 30
                     'maximalPrice' => 140,
-                ]
+                ],
             ],
 
             '
@@ -156,7 +157,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
 
                     // 110 + 1 * 20 + 100
                     'maximalPrice' => 230,
-                ]
+                ],
             ],
 
             '
@@ -173,7 +174,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
 
                     // 110 + 110 * 0.2 + 110 * 1
                     'maximalPrice' => 242,
-                ]
+                ],
             ],
 
             '
@@ -190,7 +191,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
 
                     // 110 + 1 * 20 + 110 * 1
                     'maximalPrice' => 240,
-                ]
+                ],
             ],
 
             '
@@ -207,7 +208,7 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
 
                     // 110 + 110 * 0.2 + 100
                     'maximalPrice' => 232,
-                ]
+                ],
             ],
         ];
     }
@@ -230,14 +231,14 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                         'qty' => 1,
                         'price_type' => LinkInterface::PRICE_TYPE_FIXED,
                     ],
-                ]
+                ],
             ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -272,14 +273,14 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                         'qty' => 1,
                         'price_type' => LinkInterface::PRICE_TYPE_FIXED,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -313,15 +314,15 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                         'price' => 10,
                         'qty' => 1,
                         'price_type' => LinkInterface::PRICE_TYPE_FIXED,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -355,15 +356,15 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                         'price' => 30,
                         'qty' => 1,
                         'price_type' => LinkInterface::PRICE_TYPE_FIXED,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -386,9 +387,9 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                         'sku' => 'simple1',
                         'qty' => 1,
                         'price' => 20,
-                        'price_type' => $selectionsPriceType
+                        'price_type' => $selectionsPriceType,
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -400,17 +401,17 @@ class FixedBundlePriceCalculatorWithDimensionTest extends BundlePriceAbstract
                 'is_require' => 1,
                 'price' => 100,
                 'sku' => '1-text',
-            ]
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
             [
                 'modifierName' => 'addCustomOption',
-                'data' => [$customOptionsData]
+                'data' => [$customOptionsData],
             ],
         ];
     }

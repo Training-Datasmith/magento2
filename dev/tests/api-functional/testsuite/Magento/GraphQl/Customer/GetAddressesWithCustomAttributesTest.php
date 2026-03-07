@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'entity_type' => AddressMetadataInterface::ATTRIBUTE_SET_ID_ADDRESS,
             'attribute_code' => '$multiselect_customer_address_attribute.attribute_code$',
             'label' => 'far',
-            'sort_order' => 20
+            'sort_order' => 20,
         ],
         'multiselect_customer_address_attribute_option_1'
     ),
@@ -70,7 +71,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
             'attribute_code' => '$multiselect_customer_address_attribute.attribute_code$',
             'sort_order' => 10,
             'label' => 'foreign',
-            'is_default' => true
+            'is_default' => true,
         ],
         'multiselect_customer_address_attribute_option_2'
     ),
@@ -93,13 +94,13 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
                             'attribute_code' => 'labels',
                             'selected_options' => [
                                 ['value' => '$multiselect_customer_address_attribute_option_1.value$'],
-                                ['value' => '$multiselect_customer_address_attribute_option_2.value$']
+                                ['value' => '$multiselect_customer_address_attribute_option_2.value$'],
                             ],
                         ],
                         [
                             'attribute_code' => 'planet',
-                            'value' => 'Earth'
-                        ]
+                            'value' => 'Earth',
+                        ],
                     ],
                 ],
             ],
@@ -233,7 +234,7 @@ QUERY;
                             'custom_attributesV2' => [
                                 [
                                     'code' => $this->varcharCustomerAddressAttribute->getAttributeCode(),
-                                    'value' => 'Earth'
+                                    'value' => 'Earth',
                                 ],
                                 [
                                     'code' => $this->multiselectCustomerAddressAttribute->getAttributeCode(),
@@ -245,13 +246,13 @@ QUERY;
                                         [
                                             'label' => $this->multiselectCustomerAttributeOption1->getLabel(),
                                             'value' => $this->multiselectCustomerAttributeOption1->getValue(),
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );
@@ -311,13 +312,13 @@ QUERY;
                                         [
                                             'label' => $this->multiselectCustomerAttributeOption1->getLabel(),
                                             'value' => $this->multiselectCustomerAttributeOption1->getValue(),
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );

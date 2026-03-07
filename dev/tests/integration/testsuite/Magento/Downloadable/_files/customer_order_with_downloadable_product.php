@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -20,7 +21,7 @@ $billingAddress = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->c
             AddressInterface::KEY_LASTNAME => 'Smith',
             AddressInterface::KEY_FIRSTNAME => 'John',
             AddressInterface::KEY_REGION_ID => 1,
-        ]
+        ],
     ]
 );
 $billingAddress->setAddressType('billing');

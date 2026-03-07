@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\ResourceModel\Indexer;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -446,7 +449,7 @@ class Price implements DimensionalIndexerInterface
                 'select' => $select,
                 'entity_field' => new \Zend_Db_Expr('e.entity_id'),
                 'website_field' => new \Zend_Db_Expr('pw.website_id'),
-                'store_field' => new \Zend_Db_Expr('cwd.default_store_id')
+                'store_field' => new \Zend_Db_Expr('cwd.default_store_id'),
             ]
         );
 
@@ -745,21 +748,21 @@ class Price implements DimensionalIndexerInterface
             'group_type',
             'is_required',
             'price',
-            'tier_price'
+            'tier_price',
         ];
         $insertColumns = array_map(function ($item) use ($connection) {
             return $connection->quoteIdentifier($item);
         }, $insertColumns);
         $updateValues = [];
         foreach ($insertColumns as $column) {
-            $updateValues[] = sprintf("%s = VALUES(%s)", $column, $column);
+            $updateValues[] = sprintf('%s = VALUES(%s)', $column, $column);
         }
 
         $connection->query(sprintf(
-            "INSERT INTO `" . $this->getBundleSelectionTable() . "` (%s) %s ON DUPLICATE KEY UPDATE %s",
-            implode(",", $insertColumns),
+            'INSERT INTO `' . $this->getBundleSelectionTable() . '` (%s) %s ON DUPLICATE KEY UPDATE %s',
+            implode(',', $insertColumns),
             $query,
-            implode(",", $updateValues)
+            implode(',', $updateValues)
         ));
     }
 
@@ -782,7 +785,7 @@ class Price implements DimensionalIndexerInterface
             null
         )->join(
             ['e' => $this->getTable('catalog_product_entity')],
-            "i.entity_id=e.entity_id",
+            'i.entity_id=e.entity_id',
             []
         )->where(
             'e.type_id=?',
@@ -866,15 +869,15 @@ class Price implements DimensionalIndexerInterface
         );
 
         $this->tableMaintainer->insertFromSelect($select, $priceTable->getTableName(), [
-            "entity_id",
-            "customer_group_id",
-            "website_id",
-            "tax_class_id",
-            "price",
-            "final_price",
-            "min_price",
-            "max_price",
-            "tier_price",
+            'entity_id',
+            'customer_group_id',
+            'website_id',
+            'tax_class_id',
+            'price',
+            'final_price',
+            'min_price',
+            'max_price',
+            'tier_price',
         ]);
     }
 

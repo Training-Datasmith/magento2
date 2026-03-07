@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -52,7 +53,7 @@ class PaymentMethodListTest extends TestCase
         $paymentMethodInterface2 = $this->createMock(PaymentMethodInterface::class);
         $activePayments = [
             $paymentMethodInterface1,
-            $paymentMethodInterface2
+            $paymentMethodInterface2,
         ];
 
         $this->paymentMethodList->expects(static::once())
@@ -64,7 +65,7 @@ class PaymentMethodListTest extends TestCase
             ->method('create')
             ->willReturnMap([
                 [$paymentMethodInterface1, $this->createMock(MethodInterface::class)],
-                [$paymentMethodInterface2, $vaultPayment]
+                [$paymentMethodInterface2, $vaultPayment],
             ]);
 
         $vaultPayments = $this->vaultPaymentList->getActiveList($storeId);

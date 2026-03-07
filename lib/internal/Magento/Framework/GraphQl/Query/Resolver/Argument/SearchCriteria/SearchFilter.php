@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ use Magento\Framework\Api\Search\SearchCriteriaInterface;
 
 class SearchFilter
 {
-    const ARGUMENT_NAME = 'search';
+    public const ARGUMENT_NAME = 'search';
 
     /**
      * @var FilterBuilder
@@ -42,7 +43,7 @@ class SearchFilter
      * @param SearchCriteriaInterface $searchCriteria
      * @return SearchCriteriaInterface
      */
-    public function add(string $searchTerm, SearchCriteriaInterface $searchCriteria) : SearchCriteriaInterface
+    public function add(string $searchTerm, SearchCriteriaInterface $searchCriteria): SearchCriteriaInterface
     {
         $searchTermFilter = $this->filterBuilder->setField('search_term')->setValue($searchTerm)->create();
         $this->filterGroupBuilder->addFilter($searchTermFilter);

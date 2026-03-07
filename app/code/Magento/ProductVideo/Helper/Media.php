@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Helper;
 
 use Magento\Framework\App\Helper\Context;
@@ -19,32 +22,32 @@ class Media extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Catalog Module
      */
-    const MODULE_NAME = 'Magento_ProductVideo';
+    public const MODULE_NAME = 'Magento_ProductVideo';
 
     /**
      * Configuration path
      */
-    const XML_PATH_YOUTUBE_API_KEY = 'catalog/product_video/youtube_api_key';
+    public const XML_PATH_YOUTUBE_API_KEY = 'catalog/product_video/youtube_api_key';
 
     /**
      * Configuration path for video play
      */
-    const XML_PATH_PLAY_IF_BASE = 'catalog/product_video/play_if_base';
+    public const XML_PATH_PLAY_IF_BASE = 'catalog/product_video/play_if_base';
 
     /**
      * Configuration path for show related
      */
-    const XML_PATH_SHOW_RELATED = 'catalog/product_video/show_related';
+    public const XML_PATH_SHOW_RELATED = 'catalog/product_video/show_related';
 
     /**
      * Configuration path for video auto restart
      */
-    const XML_PATH_VIDEO_AUTO_RESTART = 'catalog/product_video/video_auto_restart';
+    public const XML_PATH_VIDEO_AUTO_RESTART = 'catalog/product_video/video_auto_restart';
 
     /**
      * Media config node
      */
-    const MEDIA_TYPE_CONFIG_NODE = 'videos';
+    public const MEDIA_TYPE_CONFIG_NODE = 'videos';
 
     /**
      * @param Context $context

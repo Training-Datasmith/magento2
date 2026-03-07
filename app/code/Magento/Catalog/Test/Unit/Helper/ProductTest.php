@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Helper;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Helper\Product;
 use Magento\Catalog\Model\Product as ProductModel;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TestCase
@@ -49,7 +50,7 @@ class ProductTest extends TestCase
     protected function getMockForCatalogProduct($method)
     {
         $product = $this->createMock(ProductModel::class);
-        if ($method!=null) {
+        if ($method != null) {
             $product->expects(
                 $this->once()
             )->method(
@@ -70,9 +71,9 @@ class ProductTest extends TestCase
     {
         $product1 = static fn (self $testCase) => $testCase->getMockForCatalogProduct(null);
 
-        $product2 = static fn (self $testCase) => $testCase->getMockForCatalogProduct("getData");
+        $product2 = static fn (self $testCase) => $testCase->getMockForCatalogProduct('getData');
 
-        $product3 = static fn (self $testCase) => $testCase->getMockForCatalogProduct("dataHasChangedFor");
+        $product3 = static fn (self $testCase) => $testCase->getMockForCatalogProduct('dataHasChangedFor');
 
         return [
             [$product1, false],
@@ -80,7 +81,7 @@ class ProductTest extends TestCase
             [$product3, true],
             [['attribute' => ''], true],
             [['param' => ''], false],
-            ['test', false]
+            ['test', false],
         ];
     }
 }

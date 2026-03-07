@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +26,6 @@ interface OperationInterface extends \Magento\Framework\Bulk\OperationInterface
     /**
      * Set an extension attributes object.
      *
-     * @param \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface $extensionAttributes
      * @return $this
      * @since 100.2.0
      */

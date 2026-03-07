@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -100,10 +101,10 @@ class AgreementsConfigProviderTest extends TestCase
                         'checkboxText' => $checkboxText,
                         'mode' => $mode,
                         'agreementId' => $agreementId,
-                        'contentHeight' => $contentHeight
-                    ]
-                ]
-            ]
+                        'contentHeight' => $contentHeight,
+                    ],
+                ],
+            ],
         ];
 
         $this->scopeConfigMock->expects($this->once())
@@ -154,10 +155,10 @@ class AgreementsConfigProviderTest extends TestCase
                         'checkboxText' => $escapedCheckboxText,
                         'mode' => $mode,
                         'agreementId' => $agreementId,
-                        'contentHeight' => $contentHeight
-                    ]
-                ]
-            ]
+                        'contentHeight' => $contentHeight,
+                    ],
+                ],
+            ],
         ];
 
         $this->scopeConfigMock->expects($this->once())
@@ -177,7 +178,7 @@ class AgreementsConfigProviderTest extends TestCase
 
         $this->escaperMock
             ->method('escapeHtml')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$content] => $escapedContent,
                 [$checkboxText] => $escapedCheckboxText
             });

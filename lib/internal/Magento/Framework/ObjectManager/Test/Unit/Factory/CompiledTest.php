@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,8 +55,8 @@ class CompiledTest extends TestCase
         $objects = [
             [
                 LoggerInterface::class,
-                $this->createMock(LoggerInterface::class)
-            ]
+                $this->createMock(LoggerInterface::class),
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
         $this->objectManagerMock = $this->createMock(ObjectManagerInterface::class);
@@ -89,7 +90,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $expectedConfig],
                     [$sharedType, null],
-                    [$nonSharedType, null]
+                    [$nonSharedType, null],
                 ]
             );
         $this->config
@@ -98,7 +99,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $type],
                     [$sharedType, $sharedType],
-                    [$nonSharedType, $nonSharedType]
+                    [$nonSharedType, $nonSharedType],
                 ]
             );
 
@@ -141,7 +142,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $expectedConfig],
                     [$sharedType, null],
-                    [$nonSharedType, null]
+                    [$nonSharedType, null],
                 ]
             );
         $this->config
@@ -150,7 +151,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $type],
                     [$sharedType, $sharedType],
-                    [$nonSharedType, $nonSharedType]
+                    [$nonSharedType, $nonSharedType],
                 ]
             );
 
@@ -207,7 +208,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $expectedConfig],
                     [$sharedType, null],
-                    [$nonSharedType, null]
+                    [$nonSharedType, null],
                 ]
             );
         $this->config
@@ -216,7 +217,7 @@ class CompiledTest extends TestCase
                 [
                     [$requestedType, $type],
                     [$sharedType, $sharedType],
-                    [$nonSharedType, $nonSharedType]
+                    [$nonSharedType, $nonSharedType],
                 ]
             );
 
@@ -247,7 +248,7 @@ class CompiledTest extends TestCase
                 ],
                 'array_global_argument' => null,
                 'array_global_existing_argument' => 'GLOBAL_ARGUMENT',
-                'array_global_argument_def' => 'DEFAULT_VALUE'
+                'array_global_argument_def' => 'DEFAULT_VALUE',
             ],
             $result->getValueArray()
         );
@@ -265,7 +266,7 @@ class CompiledTest extends TestCase
         $this->objectManagerMock->method('get')->willReturnMap(
             [
                 [DependencyTesting::class, new DependencyTesting()],
-                [DependencySharedTesting::class, new DependencySharedTesting()]
+                [DependencySharedTesting::class, new DependencySharedTesting()],
             ]
         );
 
@@ -314,11 +315,11 @@ class CompiledTest extends TestCase
             ],
             'globalValue' => [
                 '_a_' => 'globalValue',
-                '_d_' => null
+                '_d_' => null,
             ],
             'nullValue' => [
-                '_vn_' => true
-            ]
+                '_vn_' => true,
+            ],
         ];
     }
 
@@ -371,25 +372,25 @@ class CompiledTest extends TestCase
                     ],
                     'array_global_argument' => [
                         '_a_' => 'global_argument_configured',
-                        '_d_' => null
+                        '_d_' => null,
                     ],
                     'array_global_existing_argument' => [
                         '_a_' => 'array_global_existing_argument',
-                        '_d_' => null
+                        '_d_' => null,
                     ],
                     'array_global_argument_def' => [
                         '_a_' => 'array_global_argument_def',
-                        '_d_' => 'DEFAULT_VALUE'
-                    ]
+                        '_d_' => 'DEFAULT_VALUE',
+                    ],
                 ],
             ],
             'globalValue' => [
                 '_a_' => 'globalValue',
-                '_d_' => null
+                '_d_' => null,
             ],
             'nullValue' => [
-                '_vn_' => true
-            ]
+                '_vn_' => true,
+            ],
         ];
     }
 

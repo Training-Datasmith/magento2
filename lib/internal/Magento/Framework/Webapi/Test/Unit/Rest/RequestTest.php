@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Webapi Request model.
  *
@@ -14,12 +15,12 @@ use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Webapi\Rest\Request;
 use Magento\Framework\Webapi\Rest\Request\Deserializer\Json;
 use Magento\Framework\Webapi\Rest\Request\DeserializerFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase
 {
@@ -65,7 +66,7 @@ class RequestTest extends TestCase
                     $converterMock,
                     $areaListMock,
                     $configScopeMock,
-                    $this->_deserializerFactory
+                    $this->_deserializerFactory,
                 ]
             )
             ->getMock();
@@ -205,7 +206,7 @@ class RequestTest extends TestCase
             ['', ['*/*']],
             [
                 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                ['text/html', 'application/xhtml+xml', 'application/xml', '*/*']
+                ['text/html', 'application/xhtml+xml', 'application/xml', '*/*'],
             ],
             ['text/html, application/*, text, */*', ['text/html', 'application/*', 'text', '*/*']],
             [
@@ -220,9 +221,9 @@ class RequestTest extends TestCase
                     'image/gif',
                     'image/x-xbitmap',
                     'application/xml',
-                    '*/*'
-                ]
-            ]
+                    '*/*',
+                ],
+            ],
         ];
     }
 
@@ -243,7 +244,7 @@ class RequestTest extends TestCase
             ['text/html; charset=', null, 'Content-Type header is invalid.'],
             ['text/html;', null, 'Content-Type header is invalid.'],
             ['application/dialog.dot-info7+xml', 'application/dialog.dot-info7+xml'],
-            ['application/x-www-form-urlencoded; charset=cp1251', null, 'UTF-8 is the only supported charset.']
+            ['application/x-www-form-urlencoded; charset=cp1251', null, 'UTF-8 is the only supported charset.'],
         ];
     }
 }

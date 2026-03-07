@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\ResourceModel;
 
+use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
+use Magento\Eav\Model\Config;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\CategoryRepositoryInterface;
-use Magento\Eav\Model\Config;
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Search\Request\IndexScopeResolverInterface as TableResolver;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Elasticsearch index resource model
@@ -169,7 +172,7 @@ class Index extends \Magento\AdvancedSearch\Model\ResourceModel\Index
                 $categoryData[$productId][] = [
                     'id' => $categoryId,
                     'name' => $categoryName,
-                    'position' => $position
+                    'position' => $position,
                 ];
             }
         }

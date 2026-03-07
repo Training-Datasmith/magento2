@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Wishlist;
 
 use Exception;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\AuthenticationException;
+use Magento\Framework\Registry;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\Wishlist\Model\Item;
 use Magento\Wishlist\Model\ResourceModel\Wishlist\CollectionFactory;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Registry;
 
 /**
  * Test coverage for customer wishlists

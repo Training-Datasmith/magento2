@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\ProductAlert\Model\Mailing;
 
-use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
+use Magento\AsynchronousOperations\Api\Data\OperationInterfaceFactory;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Bulk\BulkManagementInterface;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
@@ -93,7 +94,7 @@ class Publisher
                 [
                     'alert_type' => $alertType,
                     'customer_ids' => $bunchOfIds,
-                    'website_id' => $websiteId
+                    'website_id' => $websiteId,
                 ]
             );
             /** @var OperationInterface $operation */
@@ -104,7 +105,7 @@ class Publisher
                         'topic_name' => 'product_alert',
                         'serialized_data' => $serializedData,
                         'status' => OperationInterface::STATUS_TYPE_OPEN,
-                    ]
+                    ],
                 ]
             );
             $userId = $this->userContext->getUserId();

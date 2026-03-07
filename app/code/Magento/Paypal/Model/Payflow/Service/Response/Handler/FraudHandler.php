@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Service\Response\Handler;
 
 use Magento\Framework\DataObject;
@@ -62,7 +65,7 @@ class FraudHandler implements HandlerInterface
             $response->getData('result'),
             [
                 Payflowpro::RESPONSE_CODE_DECLINED_BY_FILTER,
-                Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER
+                Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER,
             ]
         )) {
             return;
@@ -81,7 +84,7 @@ class FraudHandler implements HandlerInterface
                 Info::FRAUD_FILTERS => array_merge(
                     $fraudMessages,
                     (array)$payment->getAdditionalInformation(Info::FRAUD_FILTERS)
-                )
+                ),
             ],
             $payment
         );

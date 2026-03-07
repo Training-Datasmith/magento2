@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class CommonTaxCollector
         QuoteDetailsItemInterface $result,
         QuoteDetailsItemInterfaceFactory $itemDataObjectFactory,
         AbstractItem $item
-    ) : QuoteDetailsItemInterface {
+    ): QuoteDetailsItemInterface {
         if ($item->getProduct()->getTypeId() === Configurable::TYPE_CODE && $item->getHasChildren()) {
             $childItem = $item->getChildren()[0];
             $result->getTaxClassKey()->setValue($childItem->getProduct()->getTaxClassId());

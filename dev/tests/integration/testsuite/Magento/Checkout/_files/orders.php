@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ $payment->setMethod('checkmo');
 $payment->setAdditionalInformation('last_trans_id', '11122');
 $payment->setAdditionalInformation('metadata', [
     'type' => 'free',
-    'fraudulent' => false
+    'fraudulent' => false,
 ]);
 
 /** @var \Magento\Sales\Model\Order $order */
@@ -61,7 +63,6 @@ $order->setIncrementId(
 $order->isObjectNew(true);
 $order->save();
 
-
 $order->setIncrementId(
     '100000002'
 )->setState(
@@ -93,7 +94,6 @@ $order->setIncrementId(
 );
 $order->isObjectNew(true);
 $order->save();
-
 
 $order->setIncrementId(
     '100000003'

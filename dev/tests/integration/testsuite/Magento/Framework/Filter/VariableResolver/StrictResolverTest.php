@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filter\Template;
 use Magento\Framework\Filter\VariableResolverInterface;
-use PHPUnit\Framework\TestCase;
-
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\TestCase;
 
 class StrictResolverTest extends TestCase
 {
@@ -37,8 +38,7 @@ class StrictResolverTest extends TestCase
     #[DataProvider('useCasesProvider')]
     public function testResolve($value, array $variables, $expected)
     {
-        if(str_contains($value, 'foo.email.getUrl'))
-        {
+        if (str_contains($value, 'foo.email.getUrl')) {
             $variables['store'] = $variables['store']($this);
             $variables['foo']['email'] = $variables['foo']['email']($this);
         }
@@ -64,7 +64,7 @@ class StrictResolverTest extends TestCase
 
     public static function useCasesProvider()
     {
-        $classStub = new class {
+        $classStub = new class () {
             public function doThing()
             {
                 return 'abc';
@@ -74,7 +74,7 @@ class StrictResolverTest extends TestCase
                 return 'abc';
             }
         };
-        $dataClassStub = new class extends DataObject {
+        $dataClassStub = new class () extends DataObject {
             public function doThing()
             {
                 return 'abc';
@@ -87,7 +87,8 @@ class StrictResolverTest extends TestCase
         $dataClassStub->setData('foo', 'bar');
 
         $storeMock = static fn (self $testCase) => $testCase->getMockForStoreClass();
-        $emailTemplate = static fn (self $testCase) => $testCase->getMockForEmailTemplate($storeMock);;
+        $emailTemplate = static fn (self $testCase) => $testCase->getMockForEmailTemplate($storeMock);
+        ;
 
         return [
             ['', [], null],
@@ -114,11 +115,11 @@ class StrictResolverTest extends TestCase
                     'store' => $storeMock,
                     'foo' => [
                         'email' => $emailTemplate,
-                        'bar' => new DataObject(['baz' => ['bash' => 'abc']])
-                    ]
+                        'bar' => new DataObject(['baz' => ['bash' => 'abc']]),
+                    ],
                 ],
-                'a url'
-            ]
+                'a url',
+            ],
         ];
     }
 }

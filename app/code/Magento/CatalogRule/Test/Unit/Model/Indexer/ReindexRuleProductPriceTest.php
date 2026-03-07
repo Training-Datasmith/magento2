@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class ReindexRuleProductPriceTest extends TestCase
             'customer_group_id' => 2,
             'from_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') - 100),
             'to_time' => mktime(0, 0, 0, (int)date('m'), (int)date('d') + 100),
-            'action_stop' => true
+            'action_stop' => true,
         ];
 
         $statementMock

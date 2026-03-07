@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Encryption\Test\Unit;
 
 use Magento\Framework\Encryption\KeyValidator;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class KeyValidatorTest extends TestCase
 {
@@ -37,13 +38,13 @@ class KeyValidatorTest extends TestCase
     /**
      * @return array
      */
-    public static function isValidDataProvider() : array
+    public static function isValidDataProvider(): array
     {
         return [
             '32 numbers' => ['12345678901234567890123456789012'],
             '32 characters' => ['aBcdeFghIJKLMNOPQRSTUvwxYzabcdef'],
             '32 special characters' => ['!@#$%^&*()_+~`:;"<>,.?/|*&^%$#@!'],
-            '32 combination' =>['1234eFghI1234567^&*(890123456789'],
+            '32 combination' => ['1234eFghI1234567^&*(890123456789'],
             'empty string' => ['', false],
             'leading space' => [' 1234567890123456789012345678901', false],
             'tailing space' => ['1234567890123456789012345678901 ', false],

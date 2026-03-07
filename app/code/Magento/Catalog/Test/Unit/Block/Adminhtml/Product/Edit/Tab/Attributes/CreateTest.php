@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class CreateTest extends TestCase
         // Prepare ObjectManager for helpers used by parent blocks
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -65,7 +66,7 @@ class CreateTest extends TestCase
         $this->block = $objectManager->getObject(
             Create::class,
             [
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
     }
@@ -133,16 +134,16 @@ class CreateTest extends TestCase
         return [
             'with simple id' => [
                 'id' => 'test_button',
-                'expectedResult' => 'test_buttonJsObject'
+                'expectedResult' => 'test_buttonJsObject',
             ],
             'with numeric id' => [
                 'id' => 'button_123',
-                'expectedResult' => 'button_123JsObject'
+                'expectedResult' => 'button_123JsObject',
             ],
             'with group id' => [
                 'id' => 'create_attribute_5',
-                'expectedResult' => 'create_attribute_5JsObject'
-            ]
+                'expectedResult' => 'create_attribute_5JsObject',
+            ],
         ];
     }
 
@@ -247,7 +248,7 @@ class CreateTest extends TestCase
                     'store' => $storeId,
                     'product' => $productId,
                     'type' => $typeId,
-                    'popup' => 1
+                    'popup' => 1,
                 ]
             )
             ->willReturn($expectedUrl);
@@ -361,7 +362,7 @@ class CreateTest extends TestCase
         // Prepare ObjectManager for helpers used by parent blocks
         $objects = [
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ];
         $objectManager->prepareObjectManager($objects);
 

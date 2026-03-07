@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class Profiler extends \Magento\Framework\Cache\Frontend\Decorator\Bare
             'group' => 'cache',
             'operation' => 'cache:' . $operation,
             'frontend_type' => get_class($this->getLowLevelFrontend()),
-            'backend_type' => $this->_getBackendType()
+            'backend_type' => $this->_getBackendType(),
         ];
     }
 

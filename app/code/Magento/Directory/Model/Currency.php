@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -372,7 +374,7 @@ class Currency extends \Magento\Framework\Model\AbstractModel implements ResetAf
          * %f - the argument is treated as a float, and presented as a floating-point number (locale aware).
          * %F - the argument is treated as a float, and presented as a floating-point number (non-locale aware).
          */
-        $price = sprintf("%F", $price);
+        $price = sprintf('%F', $price);
 
         if ($this->canUseNumberFormatter($options)) {
             return $this->formatCurrency($price, $options);
@@ -392,7 +394,7 @@ class Currency extends \Magento\Framework\Model\AbstractModel implements ResetAf
         $allowedOptions = [
             'precision',
             LocaleCurrency::CURRENCY_OPTION_DISPLAY,
-            LocaleCurrency::CURRENCY_OPTION_SYMBOL
+            LocaleCurrency::CURRENCY_OPTION_SYMBOL,
         ];
 
         if (!empty(array_diff(array_keys($options), $allowedOptions))) {

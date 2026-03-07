@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class AppIsolation implements ParserInterface
             if (!in_array($value, ['enabled', 'disabled'])) {
                 throw new LocalizedException(
                     __(
-                        "Invalid annotation format: @%1 %2. The valid format is: @%1 enabled|disabled.",
+                        'Invalid annotation format: @%1 %2. The valid format is: @%1 enabled|disabled.',
                         self::ANNOTATION,
                         $value
                     )

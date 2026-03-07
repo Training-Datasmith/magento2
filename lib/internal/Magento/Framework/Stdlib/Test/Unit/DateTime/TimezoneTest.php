@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
@@ -15,9 +16,9 @@ use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\Intl\DateFormatterFactory;
 use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for @see Timezone
@@ -133,69 +134,69 @@ class TimezoneTest extends TestCase
                 '19/05/2017', // date
                 'ar_KW', // locale
                 false, // include time
-                1495170000 // expected timestamp
+                1495170000, // expected timestamp
             ],
             'Parse d/m/y date with time' => [
                 '19/05/2017 00:01 صباحاً', // datetime (00:01 am)
                 'ar_KW', // locale
                 true, // include time
-                1495170060 // expected timestamp
+                1495170060, // expected timestamp
             ],
             'Parse m/d/y date without time' => [
                 '05/19/2017', // date
                 'en_US', // locale
                 false, // include time
-                1495170000 // expected timestamp
+                1495170000, // expected timestamp
             ],
             'Parse m/d/y date with time' => [
                 '05/19/2017 00:01 am', // datetime
                 'en_US', // locale
                 true, // include time
-                1495170060 // expected timestamp
+                1495170060, // expected timestamp
             ],
             'Parse greek d/m/y date without time' => [
                 '30/10/2021', // datetime
                 'el_GR', // locale
                 false, // include time
-                1635570000 // expected timestamp
+                1635570000, // expected timestamp
             ],
             'Parse Saudi Arabia date without time' => [
                 '4/09/2020',
                 'ar_SA',
                 false,
-                '2020-09-04'
+                '2020-09-04',
             ],
             'Parse Saudi Arabia date with time' => [
                 '4/09/2020 10:10 مساء',
                 'ar_SA',
                 true,
                 '2020-09-04 22:10:00',
-                null
+                null,
             ],
             'Parse Saudi Arabia date with zero time' => [
                 '4/09/2020',
                 'ar_SA',
                 true,
                 '2020-09-04 00:00:00',
-                null
+                null,
             ],
             'Parse date in short style with long year 1999' => [
                 '8/11/1999',
                 'en_US',
                 false,
-                '1999-08-11'
+                '1999-08-11',
             ],
             'Parse date in short style with long year 2099' => [
                 '9/2/2099',
                 'en_US',
                 false,
-                '2099-09-02'
+                '2099-09-02',
             ],
             'Parse date in short style with short year 1999' => [
                 '8/11/99',
                 'en_US',
                 false,
-                '1999-08-11'
+                '1999-08-11',
             ],
         ];
     }
@@ -219,7 +220,7 @@ class TimezoneTest extends TestCase
     {
         return [
             ['en_US', \IntlDateFormatter::SHORT, 'M/d/yy h:mm a'],
-            ['ar_SA', \IntlDateFormatter::SHORT, 'd/MM/y h:mm a']
+            ['ar_SA', \IntlDateFormatter::SHORT, 'd/MM/y h:mm a'],
         ];
     }
 
@@ -268,18 +269,18 @@ class TimezoneTest extends TestCase
             'string' => [
                 '2016-10-10 10:00:00',
                 'UTC',
-                '2016-10-10 10:00:00'
+                '2016-10-10 10:00:00',
             ],
             'datetime' => [
                 new \DateTime('2016-10-10 10:00:00', new \DateTimeZone('UTC')),
                 'UTC',
-                '2016-10-10 10:00:00'
+                '2016-10-10 10:00:00',
             ],
             'datetimeimmutable' => [
                 new \DateTimeImmutable('2016-10-10 10:00:00', new \DateTimeZone('UTC')),
                 'UTC',
-                '2016-10-10 10:00:00'
-            ]
+                '2016-10-10 10:00:00',
+            ],
         ];
     }
 
@@ -306,8 +307,8 @@ class TimezoneTest extends TestCase
     {
         return [
             'datetime' => [
-                new \DateTime('2016-10-10 10:00:00', new \DateTimeZone('UTC'))
-            ]
+                new \DateTime('2016-10-10 10:00:00', new \DateTimeZone('UTC')),
+            ],
         ];
     }
 
@@ -333,42 +334,42 @@ class TimezoneTest extends TestCase
                     return new \DateTime('now', new \DateTimeZone('UTC'));
                 },
                 'UTC',
-                null
+                null,
             ],
             'fixed_datetime_utc' => [
                 function () {
                     return new \DateTime('2017-01-01 10:00:00', new \DateTimeZone('UTC'));
                 },
                 'UTC',
-                new \DateTime('2017-01-01 10:00:00', new \DateTimeZone('UTC'))
+                new \DateTime('2017-01-01 10:00:00', new \DateTimeZone('UTC')),
             ],
             'now_datetime_vancouver' => [
                 function () {
                     return new \DateTime('now', new \DateTimeZone('America/Vancouver'));
                 },
                 'America/Vancouver',
-                null
+                null,
             ],
             'now_datetimeimmutable_utc' => [
                 function () {
                     return new \DateTimeImmutable('now', new \DateTimeZone('UTC'));
                 },
                 'UTC',
-                null
+                null,
             ],
             'fixed_datetimeimmutable_utc' => [
                 function () {
                     return new \DateTime('2017-01-01 10:00:00', new \DateTimeZone('UTC'));
                 },
                 'UTC',
-                new \DateTimeImmutable('2017-01-01 10:00:00', new \DateTimeZone('UTC'))
+                new \DateTimeImmutable('2017-01-01 10:00:00', new \DateTimeZone('UTC')),
             ],
             'now_datetimeimmutable_vancouver' => [
                 function () {
                     return new \DateTimeImmutable('now', new \DateTimeZone('America/Vancouver'));
                 },
                 'America/Vancouver',
-                null
+                null,
             ],
         ];
     }

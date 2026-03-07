@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,14 +8,12 @@
 
 namespace Magento\Rule\Model\Condition\Sql;
 
+use Magento\Eav\Api\AttributeRepositoryInterface;
+use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DB\Select;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Rule\Model\Condition\AbstractCondition;
 use Magento\Rule\Model\Condition\Combine;
-use Magento\Eav\Api\AttributeRepositoryInterface;
-use Magento\Catalog\Model\Product;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 
 /**
  * Class SQL Builder
@@ -227,7 +227,7 @@ class Builder
         foreach ($conditions as $key => $condition) {
             /** @var $condition AbstractCondition|Combine */
             $con = ($getAggregator == 'any' ? Select::SQL_OR : Select::SQL_AND);
-            $con = (isset($conditions[$key+1]) ? $con : '');
+            $con = (isset($conditions[$key + 1]) ? $con : '');
             if ($condition instanceof Combine) {
                 $out .= $this->_getMappedSqlCombination($condition, $value, $isDefaultStoreUsed);
             } else {
@@ -267,7 +267,7 @@ class Builder
      * @param Combine $combine
      * @return void
      */
-    private function buildConditions(AbstractCollection $collection, Combine $combine) : void
+    private function buildConditions(AbstractCollection $collection, Combine $combine): void
     {
         if (!empty($combine->getConditions())) {
             $conditions = '';

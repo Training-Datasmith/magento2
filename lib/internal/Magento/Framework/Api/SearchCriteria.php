@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,10 +17,10 @@ class SearchCriteria extends AbstractSimpleObject implements SearchCriteriaInter
     /**#@+
      * Constants for Data Object keys
      */
-    const FILTER_GROUPS = 'filter_groups';
-    const SORT_ORDERS = 'sort_orders';
-    const PAGE_SIZE = 'page_size';
-    const CURRENT_PAGE = 'current_page';
+    public const FILTER_GROUPS = 'filter_groups';
+    public const SORT_ORDERS = 'sort_orders';
+    public const PAGE_SIZE = 'page_size';
+    public const CURRENT_PAGE = 'current_page';
 
     /**
      * Get a list of filter groups.

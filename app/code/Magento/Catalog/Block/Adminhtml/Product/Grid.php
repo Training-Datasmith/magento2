@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product;
 
 use Magento\Store\Model\Store;
@@ -224,7 +227,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'number',
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
         $this->addColumn(
@@ -232,7 +235,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'header' => __('Name'),
                 'index' => 'name',
-                'class' => 'xxx'
+                'class' => 'xxx',
             ]
         );
 
@@ -244,7 +247,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'header' => __('Name in %1', $store->getName()),
                     'index' => 'custom_name',
                     'header_css_class' => 'col-name',
-                    'column_css_class' => 'col-name'
+                    'column_css_class' => 'col-name',
                 ]
             );
         }
@@ -255,7 +258,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Type'),
                 'index' => 'type_id',
                 'type' => 'options',
-                'options' => $this->_type->getOptionArray()
+                'options' => $this->_type->getOptionArray(),
             ]
         );
 
@@ -271,7 +274,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => $sets,
                 'header_css_class' => 'col-attr-name',
-                'column_css_class' => 'col-attr-name'
+                'column_css_class' => 'col-attr-name',
             ]
         );
 
@@ -279,7 +282,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             'sku',
             [
                 'header' => __('SKU'),
-                'index' => 'sku'
+                'index' => 'sku',
             ]
         );
 
@@ -292,7 +295,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'currency_code' => $store->getBaseCurrency()->getCode(),
                 'index' => 'price',
                 'header_css_class' => 'col-price',
-                'column_css_class' => 'col-price'
+                'column_css_class' => 'col-price',
             ]
         );
 
@@ -302,7 +305,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 [
                     'header' => __('Quantity'),
                     'type' => 'number',
-                    'index' => 'qty'
+                    'index' => 'qty',
                 ]
             );
         }
@@ -315,7 +318,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => $this->_visibility->getOptionArray(),
                 'header_css_class' => 'col-visibility',
-                'column_css_class' => 'col-visibility'
+                'column_css_class' => 'col-visibility',
             ]
         );
 
@@ -325,7 +328,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Status'),
                 'index' => 'status',
                 'type' => 'options',
-                'options' => $this->_status->getOptionArray()
+                'options' => $this->_status->getOptionArray(),
             ]
         );
 
@@ -339,7 +342,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'type' => 'options',
                     'options' => $this->_websiteFactory->create()->getCollection()->toOptionHash(),
                     'header_css_class' => 'col-websites',
-                    'column_css_class' => 'col-websites'
+                    'column_css_class' => 'col-websites',
                 ]
             );
         }
@@ -355,16 +358,16 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                         'caption' => __('Edit'),
                         'url' => [
                             'base' => '*/*/edit',
-                            'params' => ['store' => $this->getRequest()->getParam('store')]
+                            'params' => ['store' => $this->getRequest()->getParam('store')],
                         ],
-                        'field' => 'id'
-                    ]
+                        'field' => 'id',
+                    ],
                 ],
                 'filter' => false,
                 'sortable' => false,
                 'index' => 'stores',
                 'header_css_class' => 'col-action',
-                'column_css_class' => 'col-action'
+                'column_css_class' => 'col-action',
             ]
         );
 
@@ -385,7 +388,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             [
                 'label' => __('Delete'),
                 'url' => $this->getUrl('catalog/*/massDelete'),
-                'confirm' => __('Are you sure?')
+                'confirm' => __('Are you sure?'),
             ]
         );
 
@@ -403,9 +406,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                         'type' => 'select',
                         'class' => 'required-entry',
                         'label' => __('Status'),
-                        'values' => $statuses
-                    ]
-                ]
+                        'values' => $statuses,
+                    ],
+                ],
             ]
         );
 
@@ -414,7 +417,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'attributes',
                 [
                     'label' => __('Update Attributes'),
-                    'url' => $this->getUrl('catalog/product_action_attribute/edit', ['_current' => true])
+                    'url' => $this->getUrl('catalog/product_action_attribute/edit', ['_current' => true]),
                 ]
             );
         }

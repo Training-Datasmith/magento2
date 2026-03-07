@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Express;
 
-use Magento\Paypal\Model\Config;
 use Magento\Catalog\Block as CatalogBlock;
 use Magento\Paypal\Helper\Shortcut\ValidatorInterface;
+use Magento\Paypal\Model\Config;
 
 /**
  * Paypal express checkout shortcut link

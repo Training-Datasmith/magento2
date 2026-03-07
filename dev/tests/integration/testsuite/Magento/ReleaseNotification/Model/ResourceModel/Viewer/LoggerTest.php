@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ReleaseNotification\Model\ResourceModel\Viewer;
 
 use Magento\ReleaseNotification\Model\Viewer\Log;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class ReadHandlerTest extends TestCase
         $this->subject = $objectManager->getObject(
             ReadHandler::class,
             [
-                'resourceModel' => $this->resourceModel
+                'resourceModel' => $this->resourceModel,
             ]
         );
     }
@@ -107,9 +108,9 @@ class ReadHandlerTest extends TestCase
                     'label_default' => null,
                     'position_default' => '4',
                     'disabled_default' => '0',
-                ]
+                ],
             ],
-            'values' => []
+            'values' => [],
         ];
 
         $resourceEntryResult = [
@@ -138,7 +139,7 @@ class ReadHandlerTest extends TestCase
                 'video_title' => 'Some second title',
                 'video_description' => 'Description second',
                 'video_metadata' => '',
-            ]
+            ],
         ];
 
         $this->product->expects($this->any())
@@ -176,9 +177,9 @@ class ReadHandlerTest extends TestCase
                     'label_default' => null,
                     'position_default' => '4',
                     'disabled_default' => '0',
-                ]
+                ],
             ],
-            'values' => []
+            'values' => [],
         ];
 
         $this->product->expects($this->once())

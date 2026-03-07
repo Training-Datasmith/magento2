@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -47,7 +49,7 @@ return [
                             'name' => 'openDialogTitle',
                             'xsi:type' => 'string',
                             'value' => 'string',
-                            'translate' => 'true'
+                            'translate' => 'true',
                         ],
                         'initialMediaGalleryOpenSubpath' => [
                             'name' => 'initialMediaGalleryOpenSubpath',

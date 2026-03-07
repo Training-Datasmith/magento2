@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Sales\Test\Unit\Block\Adminhtml\Order\Create\Search\Grid\Rende
 use Magento\Backend\Block\Widget\Grid\Column;
 use Magento\Catalog\Model\ProductTypes\ConfigInterface;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\Renderer\Qty;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class QtyTest extends TestCase
 {

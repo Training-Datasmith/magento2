@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Framework\Cache;
 
 use Magento\Framework\App\Cache\Frontend\Factory;
-use Magento\Framework\Cache\FrontendInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
@@ -44,9 +44,9 @@ class SymfonyFileAdapterTest extends TestCase
             'frontend' => [
                 'backend' => 'file',
                 'backend_options' => [
-                    'cache_dir' => BP . '/var/cache/test_symfony'
-                ]
-            ]
+                    'cache_dir' => BP . '/var/cache/test_symfony',
+                ],
+            ],
         ]);
     }
 
@@ -390,7 +390,7 @@ class SymfonyFileAdapterTest extends TestCase
         $data = [
             'key1' => 'value1',
             'key2' => 'value2',
-            'nested' => ['a' => 1, 'b' => 2]
+            'nested' => ['a' => 1, 'b' => 2],
         ];
 
         $this->cache->save($data, $id);
@@ -528,7 +528,7 @@ class SymfonyFileAdapterTest extends TestCase
 
         // Verify all removed
         foreach ($ids as $id) {
-            $this->assertFalse($this->cache->load($id), "Item should be removed after clean");
+            $this->assertFalse($this->cache->load($id), 'Item should be removed after clean');
         }
     }
 

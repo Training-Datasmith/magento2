@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector\Http;
 
 /**
@@ -13,7 +16,6 @@ interface ResponseHandlerInterface
     /**
      * Process response body
      *
-     * @param array $responseBody
      * @return bool|string
      */
     public function handleResponse(array $responseBody);

@@ -1,13 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\View\Page;
 
-use Magento\Backend\Model\View\Layout;
-use Magento\Framework\App;
-use Magento\Framework\Event;
 use Magento\Framework\View;
 
 /**

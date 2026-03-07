@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Wishlist Report collection
  */
+
 namespace Magento\Reports\Model\ResourceModel\Wishlist\Product;
 
 /**
@@ -78,7 +81,7 @@ class Collection extends \Magento\Wishlist\Model\ResourceModel\Item\Collection
         $countSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
         $countSelect->reset(\Magento\Framework\DB\Select::GROUP);
         $countSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
-        $countSelect->columns("COUNT(*)");
+        $countSelect->columns('COUNT(*)');
 
         return $countSelect;
     }

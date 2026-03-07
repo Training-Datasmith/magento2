@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Ui\Controller\UiActionInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Controller\UiActionInterface;
 
 /**
  * Class Render

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class RenderersPoolTest extends TestCase
             ),
             'renderer_3' => $this->createMock(
                 RendererInterface::class
-            )
+            ),
         ];
 
         $expectationMap = [

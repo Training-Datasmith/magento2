@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class KeyValidator
      * @param string $value
      * @return bool
      */
-    public function isValid($value) : bool
+    public function isValid($value): bool
     {
         if (str_starts_with($value, ConfigOptionsListConstants::STORE_KEY_ENCODED_RANDOM_STRING_PREFIX)) {
             return (bool)$value

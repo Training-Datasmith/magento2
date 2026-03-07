@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\AsynchronousOperations\Model;
 
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
+use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
 
 /**
  * Class for accessing to Webapi_Async configuration.
@@ -22,17 +23,17 @@ interface ConfigInterface
     /**#@+
      * Constants for Webapi Asynchronous Config generation
      */
-    const CACHE_ID = 'webapi_async_config';
-    const TOPIC_PREFIX = 'async.';
-    const DEFAULT_CONSUMER_INSTANCE = MassConsumer::class;
-    const DEFAULT_CONSUMER_CONNECTION = 'amqp';
-    const DEFAULT_CONSUMER_MAX_MESSAGE = null;
-    const SERVICE_PARAM_KEY_INTERFACE = 'interface';
-    const SERVICE_PARAM_KEY_METHOD = 'method';
-    const SERVICE_PARAM_KEY_TOPIC = 'topic';
-    const DEFAULT_HANDLER_NAME = 'async';
-    const SYSTEM_TOPIC_NAME = 'async.system.required.wrapper.topic';
-    const SYSTEM_TOPIC_CONFIGURATION =  [
+    public const CACHE_ID = 'webapi_async_config';
+    public const TOPIC_PREFIX = 'async.';
+    public const DEFAULT_CONSUMER_INSTANCE = MassConsumer::class;
+    public const DEFAULT_CONSUMER_CONNECTION = 'amqp';
+    public const DEFAULT_CONSUMER_MAX_MESSAGE = null;
+    public const SERVICE_PARAM_KEY_INTERFACE = 'interface';
+    public const SERVICE_PARAM_KEY_METHOD = 'method';
+    public const SERVICE_PARAM_KEY_TOPIC = 'topic';
+    public const DEFAULT_HANDLER_NAME = 'async';
+    public const SYSTEM_TOPIC_NAME = 'async.system.required.wrapper.topic';
+    public const SYSTEM_TOPIC_CONFIGURATION =  [
         CommunicationConfig::TOPIC_NAME           => self::SYSTEM_TOPIC_NAME,
         CommunicationConfig::TOPIC_IS_SYNCHRONOUS => false,
         CommunicationConfig::TOPIC_REQUEST        => OperationInterface::class,

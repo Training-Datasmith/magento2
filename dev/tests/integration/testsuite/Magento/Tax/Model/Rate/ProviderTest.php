@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\Rate;
 
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Tax\Model\Calculation\Rate;
-use Magento\Tax\Model\Rate\Provider;
 use Magento\Tax\Model\ResourceModel\Calculation\Rate\Collection;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 
 /**
  * Class ProviderTest provides coverage

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class MassUpdateProductAttribute
      * @var array
      */
     private $useConfigFieldMap = [
-        'enable_qty_increments' => 'use_config_enable_qty_inc'
+        'enable_qty_increments' => 'use_config_enable_qty_inc',
     ];
 
     /**

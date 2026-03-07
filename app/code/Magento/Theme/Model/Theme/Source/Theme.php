@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Source model for eav attribute custom_design
  */
+
 namespace Magento\Theme\Model\Theme\Source;
 
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;

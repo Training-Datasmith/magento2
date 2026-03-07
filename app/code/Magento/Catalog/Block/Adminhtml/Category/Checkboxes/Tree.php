@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Categories tree with checkboxes
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Checkboxes;
 
 use Magento\Catalog\Block\Adminhtml\Category\Tree as CategoryTree;

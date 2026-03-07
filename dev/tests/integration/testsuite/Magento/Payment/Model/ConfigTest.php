@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * \Magento\Payment\Model\Config
  *
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Model;
 
-use Magento\Payment\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /**

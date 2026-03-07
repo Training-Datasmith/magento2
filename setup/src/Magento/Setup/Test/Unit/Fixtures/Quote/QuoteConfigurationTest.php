@@ -42,7 +42,7 @@ class QuoteConfigurationTest extends TestCase
         $this->fixture = $objectManager->getObject(
             QuoteConfiguration::class,
             [
-                'fixtureModel' => $this->fixtureModelMock
+                'fixtureModel' => $this->fixtureModelMock,
             ]
         );
     }
@@ -62,7 +62,7 @@ class QuoteConfigurationTest extends TestCase
             'configurable_count_from' => 1,
             'big_configurable_count_to' => 1,
             'big_configurable_count_from' => 1,
-            'fixture_data_filename' => $dir . DIRECTORY_SEPARATOR . "_files"
+            'fixture_data_filename' => $dir . DIRECTORY_SEPARATOR . '_files'
                 . DIRECTORY_SEPARATOR . 'orders_fixture_data.json',
             'order_quotes_enable' => 1,
         ];

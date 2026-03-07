@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -24,14 +26,14 @@ $product->setStoreId(0)
             'position' => 1,
             'label' => 'Image Alt Text',
             'disabled' => 0,
-            'media_type' => 'image'
+            'media_type' => 'image',
         ],
         [
             'file' => '/m/a/magento_thumbnail.jpg',
             'position' => 2,
             'label' => 'Thumbnail Image',
             'disabled' => 0,
-            'media_type' => 'image'
+            'media_type' => 'image',
         ],
     ]])
     ->setCanSaveCustomOptions(true)

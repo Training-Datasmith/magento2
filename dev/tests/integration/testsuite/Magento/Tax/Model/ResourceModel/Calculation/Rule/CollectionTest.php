@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\ResourceModel\Calculation\Rule;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -47,8 +50,8 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             [
                 \Magento\Tax\Model\ClassModel::TAX_CLASS_TYPE_CUSTOMER,
                 1,
-                '/`?cd`?\.`?customer_tax_class_id`? = [\S]{0,1}1[\S]{0,1}/'
-            ]
+                '/`?cd`?\.`?customer_tax_class_id`? = [\S]{0,1}1[\S]{0,1}/',
+            ],
         ];
     }
 

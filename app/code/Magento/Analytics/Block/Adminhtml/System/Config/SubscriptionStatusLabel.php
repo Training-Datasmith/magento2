@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Block\Adminhtml\System\Config;
 
 use Magento\Analytics\Model\SubscriptionStatusProvider;
@@ -14,29 +17,17 @@ use Magento\Backend\Block\Template\Context;
  */
 class SubscriptionStatusLabel extends \Magento\Config\Block\System\Config\Form\Field
 {
-    /**
-     * @var SubscriptionStatusProvider
-     */
-    private $subscriptionStatusProvider;
-
-    /**
-     * @param Context $context
-     * @param SubscriptionStatusProvider $labelStatusProvider
-     * @param array $data
-     */
     public function __construct(
         Context $context,
-        SubscriptionStatusProvider $labelStatusProvider,
+        private readonly SubscriptionStatusProvider $subscriptionStatusProvider,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->subscriptionStatusProvider = $labelStatusProvider;
     }
 
     /**
      * Add Subscription status to comment
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
      * @return string
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
@@ -50,10 +41,8 @@ class SubscriptionStatusLabel extends \Magento\Config\Block\System\Config\Form\F
 
     /**
      * Prepare label for subscription status
-     *
-     * @return string
      */
-    private function prepareLabelValue()
+    private function prepareLabelValue(): string
     {
         return __('Subscription status') . ': ' . $this->subscriptionStatusProvider->getStatus();
     }

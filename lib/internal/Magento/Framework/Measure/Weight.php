@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -461,6 +462,6 @@ class Weight extends AbstractMeasure
         'ZENTNER' => ['50', 'Ztr'],
         'ZEPTOGRAM' => ['1.0e-24', 'zg'],
         'ZETTAGRAM' => ['1.0e+18', 'Zg'],
-        'STANDARD' => 'KILOGRAM'
+        'STANDARD' => 'KILOGRAM',
     ];
 }

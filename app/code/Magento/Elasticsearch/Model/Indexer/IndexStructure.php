@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Indexer;
 
-use Magento\Framework\Indexer\IndexStructureInterface;
 use Magento\Elasticsearch\Model\Adapter\Elasticsearch as ElasticsearchAdapter;
 use Magento\Framework\App\ScopeResolverInterface;
+use Magento\Framework\Indexer\IndexStructureInterface;
 
 /**
  * @deprecated Elasticsearch is no longer supported by Adobe

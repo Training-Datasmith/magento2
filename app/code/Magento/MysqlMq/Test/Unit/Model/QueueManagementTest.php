@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -158,7 +159,7 @@ class QueueManagementTest extends TestCase
                         QueueManagement::MESSAGE_STATUS_ERROR,
                         QueueManagement::MESSAGE_STATUS_NEW,
                         QueueManagement::MESSAGE_STATUS_IN_PROGRESS,
-                    ]
+                    ],
                 ]
             )->willReturnSelf();
         $messageStatuses =

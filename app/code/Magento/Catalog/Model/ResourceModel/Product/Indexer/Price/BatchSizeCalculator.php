@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Catalog\Model\ResourceModel\Product\Indexer\Price;
 
+use Magento\Catalog\Model\Indexer\Product\Price\Processor;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
-use Magento\Catalog\Model\Indexer\Product\Price\Processor;
 
 /**
  * Ensure that size of index MEMORY table is enough for configured rows count in batch.

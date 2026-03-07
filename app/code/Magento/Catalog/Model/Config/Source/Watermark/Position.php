@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Model\Config\Source\Watermark;
 
 class Position implements \Magento\Framework\Option\ArrayInterface
@@ -28,7 +31,7 @@ class Position implements \Magento\Framework\Option\ArrayInterface
             ['value' => 'top-right', 'label' => __('Top/Right')],
             ['value' => 'bottom-left', 'label' => __('Bottom/Left')],
             ['value' => 'bottom-right', 'label' => __('Bottom/Right')],
-            ['value' => 'center', 'label' => __('Center')]
+            ['value' => 'center', 'label' => __('Center')],
         ];
     }
 }

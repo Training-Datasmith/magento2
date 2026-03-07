@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class CanViewNotificationTest extends TestCase
         $this->cacheStorageMock->expects($this->once())
             ->method('load')
             ->with('release-notification-popup-1')
-            ->willReturn("0");
+            ->willReturn('0');
         $this->assertFalse($this->canViewNotification->isVisible([]));
     }
 

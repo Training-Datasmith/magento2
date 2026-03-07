@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class StockStatusFilter implements StockStatusFilterInterface
             $select->getConnection()->quoteInto(
                 "{$stockStatusTableAlias}.stock_id = ?",
                 Stock::DEFAULT_STOCK_ID
-            )
+            ),
         ];
         $select->join(
             [$stockStatusTableAlias => $stockStatusTable],

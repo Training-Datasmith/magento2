@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Dhl\Model;
 
 use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
@@ -12,17 +15,17 @@ abstract class AbstractDhl extends AbstractCarrierOnline
     /**
      * Response condition code for service is unavailable at the requested date
      */
-    const CONDITION_CODE_SERVICE_DATE_UNAVAILABLE = 1003;
+    public const CONDITION_CODE_SERVICE_DATE_UNAVAILABLE = 1003;
 
     /**
      * Count of days to look forward if day is not unavailable
      */
-    const UNAVAILABLE_DATE_LOOK_FORWARD = 5;
+    public const UNAVAILABLE_DATE_LOOK_FORWARD = 5;
 
     /**
      * Date format for request
      */
-    const REQUEST_DATE_FORMAT = 'Y-m-d';
+    public const REQUEST_DATE_FORMAT = 'Y-m-d';
 
     /**
      * Get shipping date

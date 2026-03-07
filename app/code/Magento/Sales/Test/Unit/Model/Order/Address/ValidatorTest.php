@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\Validator\EmailAddress;
 use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\Order\Address\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ValidatorTest extends TestCase
 {
@@ -148,9 +149,9 @@ class ValidatorTest extends TestCase
                 [
                     '"Street" is required. Enter and try again.',
                     'Email has a wrong format',
-                    'Address type doesn\'t match required options'
-                ]
-            ]
+                    'Address type doesn\'t match required options',
+                ],
+            ],
         ];
     }
 }

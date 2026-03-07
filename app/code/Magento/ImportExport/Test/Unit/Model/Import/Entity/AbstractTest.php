@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\ImportExport\Model\Import\Entity\AbstractEntity
  */
+
 namespace Magento\ImportExport\Test\Unit\Model\Import\Entity;
 
 use Magento\ImportExport\Model\Import;
@@ -37,7 +39,7 @@ class AbstractTest extends AbstractImportTestCase
                 'getErrorAggregator',
                 '_importData',
                 'getEntityTypeCode',
-                'validateRow'
+                'validateRow',
             ]
         );
 
@@ -190,7 +192,7 @@ class AbstractTest extends AbstractImportTestCase
             ['created_at', ['type' => 'datetime'], ['created_at' => '02/30/-2012'], 1, false],
             ['dob', ['type' => 'datetime'], ['dob' => '2012-13-29 21:12:59'], 1, false],
             ['created_at', ['type' => 'datetime'], ['created_at' => '11.02.4 11:12:59'], 1, false],
-            ['dob', ['type' => 'datetime'], ['dob' => '02/29/2012 11:12:67'], 1, false]
+            ['dob', ['type' => 'datetime'], ['dob' => '02/29/2012 11:12:67'], 1, false],
         ];
     }
 

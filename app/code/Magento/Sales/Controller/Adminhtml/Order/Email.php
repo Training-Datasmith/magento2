@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Sales\Controller\Adminhtml\Order;
 
 class Email extends Order implements HttpPostActionInterface, HttpGetActionInterface
@@ -49,7 +52,7 @@ class Email extends Order implements HttpPostActionInterface, HttpGetActionInter
             return $this->resultRedirectFactory->create()->setPath(
                 'sales/order/view',
                 [
-                    'order_id' => $order->getEntityId()
+                    'order_id' => $order->getEntityId(),
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class CustomerAfterPluginTest extends WebapiAbstract
                 Customer::LASTNAME => $updatedLastName,
                 Customer::EMAIL => $customer->getEmail(),
                 Customer::ID => $customerId,
-                Customer::EXTENSION_ATTRIBUTES_KEY => ['assistance_allowed' => $state]
+                Customer::EXTENSION_ATTRIBUTES_KEY => ['assistance_allowed' => $state],
             ];
 
         $serviceInfo = $this->getServiceInfo($customerId, 'Save');
@@ -134,7 +135,7 @@ class CustomerAfterPluginTest extends WebapiAbstract
                 Customer::LASTNAME => $updatedLastName,
                 Customer::EMAIL => $customer->getEmail(),
                 Customer::ID => $customerId,
-                Customer::EXTENSION_ATTRIBUTES_KEY => ['assistance_allowed' => $state]
+                Customer::EXTENSION_ATTRIBUTES_KEY => ['assistance_allowed' => $state],
             ];
 
         $serviceInfo = $this->getServiceInfo($customerId, 'Save');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ return [
             'toolTip' => 'Item tooltip',
             'title' => 'Item Title',
             'sub_menu' => null,
-            'target' => null
-        ]
+            'target' => null,
+        ],
     ],
     'with submenu' => [
         [
@@ -77,8 +78,8 @@ return [
                 'dependsOnConfig' => 'system/config/isEnabled',
                 'toolTip' => 'Item tooltip',
             ],
-            'target' => null
-        ]
+            'target' => null,
+        ],
     ],
     'small set of data' => [
         [
@@ -116,7 +117,7 @@ return [
                 'dependsOnConfig' => 'system/config/isEnabled',
                 'toolTip' => 'Item tooltip',
             ],
-            'target' => null
-        ]
-    ]
+            'target' => null,
+        ],
+    ],
 ];

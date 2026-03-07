@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -20,5 +21,5 @@ interface SortingAdjustmentInterface
      * @param array $indexersList
      * @return array
      */
-    public function adjust(array $indexersList) : array;
+    public function adjust(array $indexersList): array;
 }

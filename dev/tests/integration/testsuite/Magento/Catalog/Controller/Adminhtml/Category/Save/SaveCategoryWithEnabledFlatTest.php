@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -215,8 +216,8 @@ class SaveCategoryWithEnabledFlatTest extends AbstractSaveCategoryTest
                     ],
                 ],
                 [
-                    'is_active' => '0'
-                ]
+                    'is_active' => '0',
+                ],
             ],
             'include_in_menu_is_enabled' => [
                 [

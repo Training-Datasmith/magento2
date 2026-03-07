@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class CollectionTest extends TestCase
                     $arg == Select::LIMIT_OFFSET ||
                     $arg == Select::COLUMNS ||
                     $arg == Select::HAVING) {
-                        return null;
+                    return null;
                 }
             });
         $this->selectMock->expects($this->atLeastOnce())->method('reset')->willReturnSelf();
@@ -82,7 +83,7 @@ class CollectionTest extends TestCase
     {
         $havingClauses = [
             'clause-1' => '(review_cnt LIKE %4%)',
-            'clause-2' => '(avg_rating LIKE %55.00%)'
+            'clause-2' => '(avg_rating LIKE %55.00%)',
         ];
 
         $this->selectMock->expects($this->atLeastOnce())->method('getPart')->willReturn($havingClauses);

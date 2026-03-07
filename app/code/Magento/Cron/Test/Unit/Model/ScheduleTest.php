@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Cron\Test\Unit\Model;
 
+use Magento\Cron\Model\DeadlockRetrierInterface;
 use Magento\Cron\Model\ResourceModel\Schedule as SchoduleResourceModel;
 use Magento\Cron\Model\Schedule;
-use Magento\Cron\Model\DeadlockRetrierInterface;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Exception\CronException;
 use Magento\Framework\Intl\DateTimeFactory;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -64,7 +65,7 @@ class ScheduleTest extends TestCase
                 'getIdFieldName',
                 'getConnection',
                 'getTable',
-                '_construct'
+                '_construct',
             ]
         );
 
@@ -211,7 +212,7 @@ class ScheduleTest extends TestCase
             [''],
             [false],
             ['1 2 3 4'],
-            ['1 2 3 4 5 6 7']
+            ['1 2 3 4 5 6 7'],
         ];
     }
 

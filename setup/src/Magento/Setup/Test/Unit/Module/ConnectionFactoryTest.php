@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Model\ObjectManagerProvider;
 use Magento\Setup\Module\ConnectionFactory;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ConnectionFactoryTest extends TestCase
 {
@@ -40,7 +41,7 @@ class ConnectionFactoryTest extends TestCase
         $this->connectionFactory = $objectManager->getObject(
             ConnectionFactory::class,
             [
-                'serviceLocator' => $serviceLocatorMock
+                'serviceLocator' => $serviceLocatorMock,
             ]
         );
     }
@@ -63,13 +64,13 @@ class ConnectionFactoryTest extends TestCase
     {
         return [
             [
-                []
+                [],
             ],
             [
-                ['value']
+                ['value'],
             ],
             [
-                ['active' => 0]
+                ['active' => 0],
             ],
         ];
     }

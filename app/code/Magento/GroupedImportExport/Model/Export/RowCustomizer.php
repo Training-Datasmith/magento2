@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedImportExport\Model\Export;
 
 use Magento\CatalogImportExport\Model\Export\RowCustomizerInterface;
@@ -33,7 +36,7 @@ class RowCustomizer implements RowCustomizerInterface
         $columns = array_merge(
             $columns,
             [
-                'associated_skus'
+                'associated_skus',
             ]
         );
         return $columns;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -131,7 +132,7 @@ abstract class AbstractGraphqlCacheTest extends TestCase
      */
     private function enableCachebleQueryTestProxy(): void
     {
-        $cacheableQueryProxy = new class($this->objectManager) extends CacheableQuery {
+        $cacheableQueryProxy = new class ($this->objectManager) extends CacheableQuery {
             /** @var CacheableQuery */
             private $delegate;
 

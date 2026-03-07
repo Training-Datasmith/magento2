@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class ServiceConfigTest extends TestCase
             [
                 'cache' => $this->webapiCacheMock,
                 'configReader' => $this->configReaderMock,
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }

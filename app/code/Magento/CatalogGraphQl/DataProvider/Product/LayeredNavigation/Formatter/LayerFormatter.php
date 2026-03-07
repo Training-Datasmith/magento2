@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class LayerFormatter
             'label' => __($layerName),
             'count' => $itemsCount,
             'attribute_code' => $requestName,
-            'position' => isset($position) ? (int)$position : null
+            'position' => isset($position) ? (int)$position : null,
         ];
     }
 

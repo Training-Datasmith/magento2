@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +49,7 @@ class TaxRatesFixture extends Fixture
         /**
          * Import tax rates with import handler
          */
-        $filename = realpath(__DIR__ . DIRECTORY_SEPARATOR . "_files" . DIRECTORY_SEPARATOR . $taxRatesFile);
+        $filename = realpath(__DIR__ . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . $taxRatesFile);
         $file = [
             'name' => $filename,
             'type' => 'fixtureModel/vnd.ms-excel',

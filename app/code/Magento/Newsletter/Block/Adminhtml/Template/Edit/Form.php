@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter Template Edit Form Block
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Template\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
@@ -89,7 +92,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Template Name'),
                 'title' => __('Template Name'),
                 'required' => true,
-                'value' => $model->getTemplateCode()
+                'value' => $model->getTemplateCode(),
             ]
         );
 
@@ -101,7 +104,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Template Subject'),
                 'title' => __('Template Subject'),
                 'required' => true,
-                'value' => $model->getTemplateSubject()
+                'value' => $model->getTemplateSubject(),
             ]
         );
 
@@ -113,7 +116,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Sender Name'),
                 'title' => __('Sender Name'),
                 'required' => true,
-                'value' => $model->getId() !== null ? $model->getTemplateSenderName() : $identityName
+                'value' => $model->getId() !== null ? $model->getTemplateSenderName() : $identityName,
             ]
         );
 
@@ -126,7 +129,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Sender Email'),
                 'class' => 'validate-email',
                 'required' => true,
-                'value' => $model->getId() !== null ? $model->getTemplateSenderEmail() : $identityEmail
+                'value' => $model->getId() !== null ? $model->getTemplateSenderEmail() : $identityEmail,
             ]
         );
 
@@ -146,7 +149,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'state' => 'html',
                 'style' => 'height:36em;',
                 'value' => $model->getTemplateText(),
-                'config' => $wysiwygConfig
+                'config' => $wysiwygConfig,
             ]
         );
 
@@ -158,7 +161,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'name' => 'styles',
                     'label' => __('Template Styles'),
                     'container_id' => 'field_template_styles',
-                    'value' => $model->getTemplateStyles()
+                    'value' => $model->getTemplateStyles(),
                 ]
             );
         }

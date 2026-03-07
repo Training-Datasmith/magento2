@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -57,17 +58,17 @@ class UspsPaymentAuthToken extends AbstractCarrier
         $requestParam = [
             'roles' => [
                 [
-                    "roleName" => "PAYER",
-                    "CRID" => $accountInfo['CRID'],
-                    "accountNumber" => $accountInfo['accountNumber'],
-                    "accountType" => $accountInfo['accountType'],
+                    'roleName' => 'PAYER',
+                    'CRID' => $accountInfo['CRID'],
+                    'accountNumber' => $accountInfo['accountNumber'],
+                    'accountType' => $accountInfo['accountType'],
                 ],
                 [
-                    "roleName" => "LABEL_OWNER",
-                    "CRID" => $accountInfo['CRID'],
-                    "MID" => $accountInfo['MID'],
-                    "manifestMID" => $accountInfo['manifestMID'],
-                ]
+                    'roleName' => 'LABEL_OWNER',
+                    'CRID' => $accountInfo['CRID'],
+                    'MID' => $accountInfo['MID'],
+                    'manifestMID' => $accountInfo['manifestMID'],
+                ],
             ],
         ];
 
@@ -107,7 +108,7 @@ class UspsPaymentAuthToken extends AbstractCarrier
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * phpcs:disable
      */
-    public function collectRates(RateRequest $request) : string
+    public function collectRates(RateRequest $request): string
     {
         return ''; // This block is empty as not required.
     }

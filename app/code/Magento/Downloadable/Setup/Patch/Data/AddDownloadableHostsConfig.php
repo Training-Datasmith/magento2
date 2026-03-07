@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -165,7 +166,8 @@ class AddDownloadableHostsConfig implements DataPatchInterface
         try {
             $this->addHost($scope->getBaseUrl(UrlInterface::URL_TYPE_STATIC, false));
             $this->addHost($scope->getBaseUrl(UrlInterface::URL_TYPE_STATIC, true));
-        } catch (\UnexpectedValueException $e) {} //@codingStandardsIgnoreLine
+        } catch (\UnexpectedValueException $e) {
+        } //@codingStandardsIgnoreLine
 
         try {
             $website = $scope->getWebsite();

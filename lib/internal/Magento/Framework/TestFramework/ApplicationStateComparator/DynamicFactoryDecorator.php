@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class DynamicFactoryDecorator extends Developer implements ResetAfterRequestInte
             $this->$key = $value;
         }
         $this->objectManager = $objectManager;
-        $skipListAndFilterList =  new SkipListAndFilterList;
+        $skipListAndFilterList =  new SkipListAndFilterList();
         $this->skipList = $skipListAndFilterList->getSkipList('', CompareType::COMPARE_CONSTRUCTED_AGAINST_CURRENT);
         $this->collector = new Collector($this->objectManager, $skipListAndFilterList);
         $this->objectManager->addSharedInstance($skipListAndFilterList, SkipListAndFilterList::class);
@@ -86,7 +87,7 @@ class DynamicFactoryDecorator extends Developer implements ResetAfterRequestInte
      *
      * @return ResetterInterface
      */
-    public function getResetter() : ResetterInterface
+    public function getResetter(): ResetterInterface
     {
         return $this->resetter;
     }

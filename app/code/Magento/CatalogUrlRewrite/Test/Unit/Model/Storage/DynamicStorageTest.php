@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Model\Storage;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Product;
 use Magento\Catalog\Model\ResourceModel\ProductFactory;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator;
@@ -18,15 +18,15 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\Store\Model\ScopeInterface;
+use Magento\UrlRewrite\Model\OptionProvider;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewriteFactory;
-use Magento\UrlRewrite\Service\V1\Data\UrlRewrite as UrlRewriteData;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use ReflectionMethod;
 use Psr\Log\LoggerInterface;
+use ReflectionMethod;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -144,8 +144,8 @@ class DynamicStorageTest extends TestCase
         $objects = [
             [
                 LoggerInterface::class,
-                $this->createMock(LoggerInterface::class)
-            ]
+                $this->createMock(LoggerInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -184,8 +184,8 @@ class DynamicStorageTest extends TestCase
                 CategoryUrlPathGenerator::XML_PATH_CATEGORY_URL_SUFFIX,
                 ScopeInterface::SCOPE_STORE,
                 $data['store_id'],
-                $categorySuffix
-            ]
+                $categorySuffix,
+            ],
         ];
 
         $this->scopeConfigMock
@@ -211,19 +211,19 @@ class DynamicStorageTest extends TestCase
                 // Non-existing product
                 [
                     'request_path' => 'test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 false,
                 '',
                 null,
                 true,
-                null
+                null,
             ],
             [
                 // Non-existing category
                 [
                     'request_path' => 'a/test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -235,13 +235,13 @@ class DynamicStorageTest extends TestCase
                 '.html',
                 false,
                 true,
-                null
+                null,
             ],
             [
                 // Existing category
                 [
                     'request_path' => 'shop/test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -265,13 +265,13 @@ class DynamicStorageTest extends TestCase
                     'request_path' => 'shop/test.html',
                     'target_path' => 'catalog/product/view/id/1/category/3',
                     'redirect_type' => '0',
-                ]
+                ],
             ],
             [
                 // Existing category, but can't be shown in category
                 [
                     'request_path' => 'shop/test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -289,13 +289,13 @@ class DynamicStorageTest extends TestCase
                     'redirect_type' => '0',
                 ],
                 false,
-                null
+                null,
             ],
             [
                 // Existing category, with product 301 redirect type
                 [
                     'request_path' => 'shop/test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -319,13 +319,13 @@ class DynamicStorageTest extends TestCase
                     'request_path' => 'shop/test.html',
                     'target_path' => 'shop/test-new.html',
                     'redirect_type' => OptionProvider::PERMANENT,
-                ]
+                ],
             ],
             [
                 // Existing category, with category 301 redirect type
                 [
                     'request_path' => 'shop/test.html',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -349,13 +349,13 @@ class DynamicStorageTest extends TestCase
                     'request_path' => 'shop/test.html',
                     'target_path' => 'shop-new/test.html',
                     'redirect_type' => OptionProvider::PERMANENT,
-                ]
+                ],
             ],
             [
                 // Category has product url key at the beginning of its url key
                 [
                     'request_path' => 'test-category/test-sub-category/test',
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 [
                     'entity_type' => 'product',
@@ -379,7 +379,7 @@ class DynamicStorageTest extends TestCase
                     'request_path' => 'test-category/test-sub-category/test',
                     'target_path' => 'catalog/product/view/id/1/category/38',
                     'redirect_type' => '0',
-                ]
+                ],
             ],
         ];
     }
@@ -423,7 +423,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::REQUEST_PATH => 'test.html',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $productFromDb = [
@@ -453,7 +453,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::TARGET_PATH => 'catalog/product/view/id/1/category/3',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $productFromDb = [
@@ -491,7 +491,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::TARGET_PATH => 'cms/page/view/id/1',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $this->connectionMock->expects($this->any())
@@ -511,7 +511,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             'entity_type' => 'product',
-            'store_id' => 1
+            'store_id' => 1,
         ];
 
         $this->connectionMock->method('fetchAll')
@@ -530,7 +530,7 @@ class DynamicStorageTest extends TestCase
         $data = [
             UrlRewrite::ENTITY_TYPE => 'product',
             UrlRewrite::ENTITY_ID => '1',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $productFromDb = [
@@ -559,7 +559,7 @@ class DynamicStorageTest extends TestCase
         $data = [
             UrlRewrite::ENTITY_TYPE => 'product',
             UrlRewrite::ENTITY_ID => ['1', '2', '3'],
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $productFromDb1 = [
@@ -598,7 +598,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::TARGET_PATH => 'catalog/product/view/id/5/category/10',
-            UrlRewrite::STORE_ID => 2
+            UrlRewrite::STORE_ID => 2,
         ];
 
         $productFromDb = [
@@ -637,7 +637,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::TARGET_PATH => 'catalog/category/view/id/5',
-            UrlRewrite::STORE_ID => 2
+            UrlRewrite::STORE_ID => 2,
         ];
 
         $method = new ReflectionMethod($this->object, 'findProductRewriteByTargetPath');
@@ -652,7 +652,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::TARGET_PATH => 'catalog/product/view/id/999/category/10',
-            UrlRewrite::STORE_ID => 2
+            UrlRewrite::STORE_ID => 2,
         ];
 
         $this->connectionMock->expects($this->any())
@@ -673,7 +673,7 @@ class DynamicStorageTest extends TestCase
             UrlRewrite::ENTITY_TYPE => 'product',
             UrlRewrite::ENTITY_ID => '1',
             UrlRewrite::STORE_ID => 1,
-            UrlRewrite::METADATA => ['category_id' => '3']
+            UrlRewrite::METADATA => ['category_id' => '3'],
         ];
 
         $productFromDb = [
@@ -718,7 +718,7 @@ class DynamicStorageTest extends TestCase
         $data = [
             UrlRewrite::ENTITY_TYPE => 'product',
             UrlRewrite::ENTITY_ID => '1',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $productFromDb = [
@@ -745,7 +745,7 @@ class DynamicStorageTest extends TestCase
     public function testFindProductRewritesByFilterEmptyWithoutEntityType(): void
     {
         $data = [
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $method = new ReflectionMethod($this->object, 'findProductRewritesByFilter');
@@ -761,7 +761,7 @@ class DynamicStorageTest extends TestCase
         $data = [
             UrlRewrite::ENTITY_TYPE => 'product',
             UrlRewrite::STORE_ID => 1,
-            UrlRewrite::METADATA => ['category_id' => '5']
+            UrlRewrite::METADATA => ['category_id' => '5'],
         ];
 
         $this->selectMock->expects($this->atLeastOnce())
@@ -786,7 +786,7 @@ class DynamicStorageTest extends TestCase
     {
         $data = [
             UrlRewrite::ENTITY_TYPE => 'product',
-            UrlRewrite::STORE_ID => 1
+            UrlRewrite::STORE_ID => 1,
         ];
 
         $whereConditions = [];

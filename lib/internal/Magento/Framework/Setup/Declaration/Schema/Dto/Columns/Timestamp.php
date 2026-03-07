@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Columns;
 
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
@@ -91,7 +94,7 @@ class Timestamp extends Column implements
             'type' => $this->getType(),
             'default' => $this->getDefault(),
             'onUpdate' => $this->getOnUpdate(),
-            'comment' => $this->getComment()
+            'comment' => $this->getComment(),
         ];
     }
 

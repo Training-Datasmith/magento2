@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Price display type source model
  */
+
 namespace Magento\Tax\Model\System\Config\Source\Tax\Display;
 
 class Type implements \Magento\Framework\Option\ArrayInterface

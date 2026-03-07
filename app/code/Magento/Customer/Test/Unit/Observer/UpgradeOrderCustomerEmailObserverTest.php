@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,13 +14,13 @@ use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\ResourceModel\Order\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * For testing upgrade order customer email
@@ -28,8 +29,8 @@ class UpgradeOrderCustomerEmailObserverTest extends TestCase
 {
     use MockCreationTrait;
 
-    private const NEW_CUSTOMER_EMAIL = "test@test.com";
-    private const ORIGINAL_CUSTOMER_EMAIL = "origtest@test.com";
+    private const NEW_CUSTOMER_EMAIL = 'test@test.com';
+    private const ORIGINAL_CUSTOMER_EMAIL = 'origtest@test.com';
 
     /**
      * @var UpgradeOrderCustomerEmailObserver

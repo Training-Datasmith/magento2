@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -210,11 +211,11 @@ class Extended extends \Magento\Backend\Block\Widget\Grid implements \Magento\Ba
                 [
                     'label' => __('Reset Filter'),
                     'onclick' => $this->getJsObjectName() . '.resetFilter()',
-                    'class' => 'action-reset action-tertiary'
+                    'class' => 'action-reset action-tertiary',
                 ]
             )->setDataAttribute(
                 [
-                    'action' => 'grid-filter-reset'
+                    'action' => 'grid-filter-reset',
                 ]
             )
         );
@@ -228,7 +229,7 @@ class Extended extends \Magento\Backend\Block\Widget\Grid implements \Magento\Ba
                 ]
             )->setDataAttribute(
                 [
-                    'action' => 'grid-filter-apply'
+                    'action' => 'grid-filter-apply',
                 ]
             )
         );
@@ -1036,7 +1037,7 @@ class Extended extends \Magento\Backend\Block\Widget\Grid implements \Magento\Ba
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true,  // can delete file after use
         ];
     }
 
@@ -1182,7 +1183,7 @@ class Extended extends \Magento\Backend\Block\Widget\Grid implements \Magento\Ba
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true // can delete file after use
+            'rm' => true, // can delete file after use
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Mview\View;
 
 abstract class AbstractFactory
@@ -15,7 +18,7 @@ abstract class AbstractFactory
     /**
      * Instance name
      */
-    const INSTANCE_NAME = '';
+    public const INSTANCE_NAME = '';
 
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager

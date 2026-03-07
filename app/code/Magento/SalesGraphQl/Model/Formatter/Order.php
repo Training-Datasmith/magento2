@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\SalesGraphQl\Model\Formatter;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\SalesGraphQl\Model\Order\OrderAddress;
 use Magento\SalesGraphQl\Model\Order\OrderPayments;
@@ -59,7 +60,7 @@ class Order
             'payment_methods' => $this->orderPayments->getOrderPaymentMethod($orderModel),
             'applied_coupons' => $orderModel->getCouponCode() ? [['code' => $orderModel->getCouponCode()]] : [],
             'model' => $orderModel,
-            'comments' => $this->getOrderComments($orderModel)
+            'comments' => $this->getOrderComments($orderModel),
         ];
     }
 
@@ -69,14 +70,14 @@ class Order
      * @param OrderInterface $order
      * @return array
      */
-    public function getOrderComments(OrderInterface $order):array
+    public function getOrderComments(OrderInterface $order): array
     {
         $comments = [];
         foreach ($order->getStatusHistories() as $comment) {
             if ($comment->getIsVisibleOnFront()) {
                 $comments[] = [
                     'message' => $comment->getComment(),
-                    'timestamp' => $comment->getCreatedAt()
+                    'timestamp' => $comment->getCreatedAt(),
                 ];
             }
         }

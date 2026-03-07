@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ declare(strict_types=1);
 namespace Magento\Framework\App\Request;
 
 use Magento\Framework\App\ActionInterface;
-use Magento\Framework\App\RequestInterface;
-use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\RequestInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 class HttpMethodValidatorTest extends TestCase
 {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +9,6 @@
 namespace Magento\Msrp\Setup\Patch\Data;
 
 use Magento\Catalog\Setup\CategorySetupFactory;
-use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\UpgradeDataInterface;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -57,7 +55,7 @@ class ChangePriceAttributeDefaultScope implements DataPatchInterface, PatchVersi
     public static function getDependencies()
     {
         return [
-            InitializeMsrpAttributes::class
+            InitializeMsrpAttributes::class,
         ];
     }
 

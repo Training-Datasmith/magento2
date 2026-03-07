@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,19 +18,19 @@ use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Framework\App\ActionFlag;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Response\Http as ResponseHttp;
+use Magento\Framework\App\View as AppView;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
-use Magento\Framework\App\View as AppView;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Sales\Block\Adminhtml\Order\Invoice\View as InvoiceViewBlock;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
+use Magento\Sales\Block\Adminhtml\Order\Invoice\View as InvoiceViewBlock;
 use Magento\Sales\Controller\Adminhtml\Order\Invoice\View;
 use Magento\Sales\Model\Order\Invoice;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -151,7 +152,7 @@ class ViewTest extends TestCase
                 'getMessageManager',
                 'getResultRedirectFactory',
                 'getView',
-                'getTitle'
+                'getTitle',
             ]
         );
         $contextMock->expects($this->any())
@@ -200,7 +201,7 @@ class ViewTest extends TestCase
                 'context' => $contextMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
                 'resultForwardFactory' => $this->resultForwardFactoryMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
 
@@ -220,7 +221,7 @@ class ViewTest extends TestCase
 
         $this->requestMock
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['invoice_id'] => $invoiceId,
                 ['come_from'] => 'anything'
             });

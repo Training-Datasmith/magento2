@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -181,7 +182,7 @@ class AttributeSetLayoutHandleTest extends TestCase
             $hasFullHandle || $hasShortHandle,
             sprintf(
                 "Product '%s' (ID: %d, AttributeSet: %d) should have handle '%s' or '%s'. "
-                . "Available handles: %s",
+                . 'Available handles: %s',
                 $product->getSku(),
                 $product->getId(),
                 $product->getAttributeSetId(),
@@ -211,7 +212,7 @@ class AttributeSetLayoutHandleTest extends TestCase
             $hasFullHandle || $hasShortHandle,
             sprintf(
                 "Product '%s' (Type: %s) should have type handle '%s' or '%s'. "
-                . "Available handles: %s",
+                . 'Available handles: %s',
                 $product->getSku(),
                 $product->getTypeId(),
                 $expectedHandleFull,

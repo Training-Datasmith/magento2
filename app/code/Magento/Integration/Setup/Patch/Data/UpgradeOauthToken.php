@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Integration\Model\Oauth\Token as TokenModel;
+use Magento\Integration\Model\ResourceModel\Oauth\Token;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\Collection as TokenCollection;
 use Magento\Integration\Model\ResourceModel\Oauth\Token\CollectionFactory as TokenCollectionFactory;
-use Magento\Integration\Model\ResourceModel\Oauth\Token;
-use Magento\Integration\Model\Oauth\Token as TokenModel;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -63,7 +64,7 @@ class UpgradeOauthToken implements DataPatchInterface, PatchVersionInterface
         LoggerInterface $logger
     ) {
 
-        $this->tokenCollection= $tokenCollectionFactory->create();
+        $this->tokenCollection = $tokenCollectionFactory->create();
         $this->encryptor = $encryptor;
         $this->tokenResourceModel = $tokenResourceModel;
         $this->logger = $logger;

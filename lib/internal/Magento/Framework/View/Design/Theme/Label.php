@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Theme_Label class used for system configuration
  */
+
 namespace Magento\Framework\View\Design\Theme;
 
 class Label implements \Magento\Framework\Option\ArrayInterface

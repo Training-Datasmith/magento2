@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Setup\Validator\DbValidator;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class ConfigOptionsListCollectorTest extends \PHPUnit\Framework\TestCase
 {
@@ -31,7 +34,7 @@ class ConfigOptionsListCollectorTest extends \PHPUnit\Framework\TestCase
         $componentRegistrar = $this->createMock(ComponentRegistrarInterface::class);
         $componentRegistrar->expects($this->once())
             ->method('getPaths')
-            ->willReturn(['Magento_Backend'=>'app/code/Magento/Backend']);
+            ->willReturn(['Magento_Backend' => 'app/code/Magento/Backend']);
 
         $dbValidator = $this->createMock(DbValidator::class);
         $configGenerator = $this->createMock(ConfigGenerator::class);
@@ -41,7 +44,7 @@ class ConfigOptionsListCollectorTest extends \PHPUnit\Framework\TestCase
                 \Magento\Setup\Model\ConfigOptionsList::class,
                 [
                     'configGenerator' => $configGenerator,
-                    'dbValidator' => $dbValidator
+                    'dbValidator' => $dbValidator,
                 ]
             );
 
@@ -58,7 +61,7 @@ class ConfigOptionsListCollectorTest extends \PHPUnit\Framework\TestCase
             [
                 'objectManagerProvider' => $this->objectManagerProvider,
                 'componentRegistrar' => $componentRegistrar,
-                'serviceLocator' => $serviceLocator
+                'serviceLocator' => $serviceLocator,
             ]
         );
         $result = $object->collectOptionsLists();

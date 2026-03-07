@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,17 +14,17 @@ use Magento\Customer\Model\Metadata\Form;
 use Magento\Customer\Model\Session;
 use Magento\Customer\Model\Url;
 use Magento\Directory\Helper\Data;
+use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
 use Magento\Directory\Model\ResourceModel\Region\CollectionFactory;
+use Magento\Framework\App\Cache\Type\Config as CacheConfig;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Module\Manager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Newsletter\Model\Config;
-use Magento\Framework\App\Cache\Type\Config as CacheConfig;
-use Magento\Directory\Model\ResourceModel\Country\CollectionFactory as CountryCollectionFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -117,7 +118,7 @@ class RegisterTest extends TestCase
     {
         return [
             ['/path/to/config/value', 'config value'],
-            ['/path/to/config/value/that/does/not/exist', null]
+            ['/path/to/config/value/that/does/not/exist', null],
         ];
     }
 

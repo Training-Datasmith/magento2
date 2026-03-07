@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -114,13 +115,13 @@ class NameTest extends TestCase
             [
                 'https://myurl',
                 'Custom Integration',
-                'Custom Integration'
+                'Custom Integration',
             ],
             [
                 'http://myurl',
                 'Custom Integration',
-                'Custom Integration<span class="security-notice"><span>Integration not secure</span></span>'
-            ]
+                'Custom Integration<span class="security-notice"><span>Integration not secure</span></span>',
+            ],
         ];
     }
 }

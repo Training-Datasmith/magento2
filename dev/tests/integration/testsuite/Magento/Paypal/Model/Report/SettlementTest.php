@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Report;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -73,7 +76,7 @@ class SettlementTest extends \PHPUnit\Framework\TestCase
             [['username' => 'test', 'password' => 'test', 'path' => '/']],
             [['hostname' => 'example.com', 'password' => 'test', 'path' => '/']],
             [['hostname' => 'example.com', 'username' => 'test', 'path' => '/']],
-            [['hostname' => 'example.com', 'username' => 'test', 'password' => 'test']]
+            [['hostname' => 'example.com', 'username' => 'test', 'password' => 'test']],
         ];
     }
 
@@ -91,9 +94,9 @@ class SettlementTest extends \PHPUnit\Framework\TestCase
                         'path' => '/tmp',
                         'username' => 'login',
                         'password' => 'password',
-                        'sandbox' => '0'
-                    ]
-                ]
+                        'sandbox' => '0',
+                    ],
+                ],
             ],
             [
                 false,
@@ -103,9 +106,9 @@ class SettlementTest extends \PHPUnit\Framework\TestCase
                         'path' => '/tmp',
                         'username' => 'login',
                         'password' => 'password',
-                        'sandbox' => '0'
-                    ]
-                ]
+                        'sandbox' => '0',
+                    ],
+                ],
             ],
         ];
     }

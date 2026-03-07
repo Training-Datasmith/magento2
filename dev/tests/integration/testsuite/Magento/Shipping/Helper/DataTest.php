@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Shipping\Helper;
 
 use Magento\Store\Model\StoreManagerInterface;
@@ -146,14 +149,14 @@ class DataTest extends \PHPUnit\Framework\TestCase
                 'setId',
                 42,
                 'abc',
-                'http://localhost/index.php/shipping/tracking/popup?hash=c2hpcF9pZDo0MjphYmM%7E'
+                'http://localhost/index.php/shipping/tracking/popup?hash=c2hpcF9pZDo0MjphYmM%7E',
             ],
             [\Magento\Sales\Model\Order\Shipment\Track::class,
                 'setEntityId',
                 42,
                 'abc',
-                'http://localhost/index.php/shipping/tracking/popup?hash=dHJhY2tfaWQ6NDI6YWJj'
-            ]
+                'http://localhost/index.php/shipping/tracking/popup?hash=dHJhY2tfaWQ6NDI6YWJj',
+            ],
         ];
     }
 }

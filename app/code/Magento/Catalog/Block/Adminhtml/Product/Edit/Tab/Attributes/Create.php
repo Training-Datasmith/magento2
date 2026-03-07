@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -9,6 +11,7 @@
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Attributes;
 
 use Magento\Backend\Block\Widget\Button;
@@ -60,7 +63,7 @@ class Create extends Button
                                 'store' => $this->getConfig()->getStoreId(),
                                 'product' => $this->getConfig()->getProductId(),
                                 'type' => $this->getConfig()->getTypeId(),
-                                'popup' => 1
+                                'popup' => 1,
                             ]
                         ),
                     ],
@@ -76,7 +79,7 @@ class Create extends Button
                     'store' => $this->getConfig()->getStoreId(),
                     'product' => $this->getConfig()->getProductId(),
                     'type' => $this->getConfig()->getTypeId(),
-                    'popup' => 1
+                    'popup' => 1,
                 ]
             )
         );

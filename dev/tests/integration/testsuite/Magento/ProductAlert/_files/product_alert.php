@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -26,7 +28,7 @@ $price->setCustomerId(
 )->setProductId(
     $product->getId()
 )->setPrice(
-    $product->getPrice()+1
+    $product->getPrice() + 1
 )->setWebsiteId(
     1
 )->setStoreId(

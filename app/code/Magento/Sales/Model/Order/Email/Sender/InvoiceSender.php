@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -143,8 +144,8 @@ class InvoiceSender extends Sender
                     'customer_name' => $order->getCustomerName(),
                     'is_not_virtual' => $order->getIsNotVirtual(),
                     'email_customer_note' => $order->getEmailCustomerNote(),
-                    'frontend_status_label' => $order->getFrontendStatusLabel()
-                ]
+                    'frontend_status_label' => $order->getFrontendStatusLabel(),
+                ],
             ];
             $transportObject = new DataObject($transport);
             $this->appEmulation->stopEnvironmentEmulation();

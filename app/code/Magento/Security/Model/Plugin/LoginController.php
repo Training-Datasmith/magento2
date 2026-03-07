@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model\Plugin;
 
-use Magento\Security\Model\AdminSessionsManager;
 use Magento\Backend\Controller\Adminhtml\Auth\Login;
+use Magento\Security\Model\AdminSessionsManager;
 
 /**
  * Magento\Backend\Controller\Adminhtml\Auth\Login decorator

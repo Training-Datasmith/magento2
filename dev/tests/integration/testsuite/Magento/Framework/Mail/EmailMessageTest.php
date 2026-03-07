@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Mail;
 use Magento\Framework\Exception\MailException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -55,7 +56,7 @@ class EmailMessageTest extends TestCase
      */
     private $addressList = [
         'to' => [
-            ['email' => 'to@adobe.com', 'name' => 'Addressee']
+            ['email' => 'to@adobe.com', 'name' => 'Addressee'],
         ],
         'replyTo' => ['email' => 'replyTo@adobe.com', 'name' => 'Reply To Address'],
         'from' => 'from@adobe.com',
@@ -67,7 +68,7 @@ class EmailMessageTest extends TestCase
         ],
         'bcc' => [
             'bcc1@adobe.com' => 'BCC 1 Address',
-            'bcc2@adobe.com' => 'BCC 2 Address'
+            'bcc2@adobe.com' => 'BCC 2 Address',
         ],
     ];
 
@@ -102,12 +103,12 @@ class EmailMessageTest extends TestCase
         return [
             [
                 'Content Test',
-                MimeInterface::TYPE_TEXT
+                MimeInterface::TYPE_TEXT,
             ],
             [
                 '<h1>Html message</h1>',
-                MimeInterface::TYPE_HTML
-            ]
+                MimeInterface::TYPE_HTML,
+            ],
         ];
     }
 
@@ -126,13 +127,13 @@ class EmailMessageTest extends TestCase
             [
                 'content' => $content,
                 'description' => $this->description,
-                'type' => $type
+                'type' => $type,
             ]
         );
 
         $mimeMessage = $this->mimeMessageFactory->create(
             [
-                'parts' => [$mimePart]
+                'parts' => [$mimePart],
             ]
         );
 
@@ -142,9 +143,9 @@ class EmailMessageTest extends TestCase
             $this->addressFactory->create(
                 [
                     'email' => $this->addressList['to'][0]['email'],
-                    'name' => $this->addressList['to'][0]['name']
+                    'name' => $this->addressList['to'][0]['name'],
                 ]
-            )
+            ),
         ];
 
         $from = [$this->messageConverter->convert($this->addressList['from'])];
@@ -153,7 +154,7 @@ class EmailMessageTest extends TestCase
             $this->messageConverter->convert(
                 $this->addressList['replyTo']['email'],
                 $this->addressList['replyTo']['name']
-            )
+            ),
         ];
         $bcc = $this->messageConverter->convertMany($this->addressList['bcc']);
         $sender = $this->messageConverter->convert(
@@ -231,13 +232,13 @@ class EmailMessageTest extends TestCase
                 'type' => self::XML_TYPE,
                 'fileName' => self::ATTACHMENT_FILE_NAME,
                 'disposition' => MimeInterface::DISPOSITION_ATTACHMENT,
-                'encoding' => MimeInterface::ENCODING_QUOTED_PRINTABLE
+                'encoding' => MimeInterface::ENCODING_QUOTED_PRINTABLE,
             ]
         );
 
         $mimeMessage = $this->mimeMessageFactory->create(
             [
-                'parts' => [$mimePartMain]
+                'parts' => [$mimePartMain],
             ]
         );
 
@@ -247,14 +248,14 @@ class EmailMessageTest extends TestCase
             ->create(
                 [
                     'email' => $this->addressList['to'][0]['email'],
-                    'name' => $this->addressList['to'][0]['name']
+                    'name' => $this->addressList['to'][0]['name'],
                 ]
             );
 
         $from = $this->addressFactory->create(
             [
                 'email' => $this->addressList['from'],
-                'name' => 'name'
+                'name' => 'name',
             ]
         );
 

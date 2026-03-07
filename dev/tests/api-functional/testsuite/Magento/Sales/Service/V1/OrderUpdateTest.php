@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Service\V1;
 
+use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Sales\Api\Data\OrderInterface;
 
 /**
  * Test order updating via webapi
@@ -180,7 +181,7 @@ class OrderUpdateTest extends WebapiAbstract
 
         $entityData = $this->getOrderData($order);
         if (TESTS_WEB_API_ADAPTER == self::ADAPTER_SOAP) {
-            $this->markTestSkipped("Soap calls are more strict and contains attributes.");
+            $this->markTestSkipped('Soap calls are more strict and contains attributes.');
             return;
         }
 
@@ -257,7 +258,7 @@ class OrderUpdateTest extends WebapiAbstract
                 'real_amount' => 0.5,
                 'real_base_amount' => 0.5,
                 'taxable_item_type' => 'product',
-            ]
+            ],
         ];
         $this->_webApiCall($postServiceInfo, ['entity' => $data]);
         $result = $this->_webApiCall($getServiceInfo, ['id' => $order->getEntityId()]);
@@ -337,17 +338,17 @@ class OrderUpdateTest extends WebapiAbstract
                     [
                         'shipping' => [
                             'address' => $shippingAddress,
-                            'method' => 'flatrate_flatrate'
+                            'method' => 'flatrate_flatrate',
                         ],
                         'items' => $order->getItems(),
                         'stock_id' => null,
-                    ]
+                    ],
                 ];
         } else {
             $orderData = [
                 OrderInterface::ENTITY_ID => $order->getId(),
                 OrderInterface::STATE => 'processing',
-                OrderInterface::STATUS => 'processing'
+                OrderInterface::STATUS => 'processing',
             ];
         }
         return $orderData;
@@ -522,9 +523,9 @@ class OrderUpdateTest extends WebapiAbstract
                 [
                     'track_number' => 'TEST_TRACK_0001',
                     'title' => 'Simple shipment track',
-                    'carrier_code' => 'UPS'
-                ]
-            ]
+                    'carrier_code' => 'UPS',
+                ],
+            ],
         ];
 
         foreach ($order->getAllItems() as $item) {

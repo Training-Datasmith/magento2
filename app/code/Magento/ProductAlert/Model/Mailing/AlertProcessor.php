@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All rights reserved.
@@ -18,8 +19,8 @@ use Magento\ProductAlert\Model\Email;
 use Magento\ProductAlert\Model\EmailFactory;
 use Magento\ProductAlert\Model\Price;
 use Magento\ProductAlert\Model\ProductSalability;
-use Magento\ProductAlert\Model\ResourceModel\Stock\CollectionFactory as StockCollectionFactory;
 use Magento\ProductAlert\Model\ResourceModel\Price\CollectionFactory as PriceCollectionFactory;
+use Magento\ProductAlert\Model\ResourceModel\Stock\CollectionFactory as StockCollectionFactory;
 use Magento\ProductAlert\Model\Stock;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;

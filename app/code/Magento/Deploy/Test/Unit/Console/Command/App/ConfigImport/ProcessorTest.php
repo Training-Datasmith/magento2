@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -199,22 +200,22 @@ class ProcessorTest extends TestCase
             [
                 'doImport' => false,
                 'skipImport' => false,
-                'warningMessages' => []
+                'warningMessages' => [],
             ],
             [
                 'doImport' => true,
                 'skipImport' => false,
-                'warningMessages' => []
+                'warningMessages' => [],
             ],
             [
                 'doImport' => true,
                 'skipImport' => false,
-                'warningMessages' => ['Some message']
+                'warningMessages' => ['Some message'],
             ],
             [
                 'doImport' => false,
                 'skipImport' => true,
-                'warningMessages' => ['Some message']
+                'warningMessages' => ['Some message'],
             ],
         ];
     }
@@ -325,7 +326,7 @@ class ProcessorTest extends TestCase
         return [
             ['importers' => [], 'isValid' => false],
             ['importers' => [], 'isValid' => true],
-            ['importers' => ['someImporter'], 'isValid' => false]
+            ['importers' => ['someImporter'], 'isValid' => false],
         ];
     }
 }

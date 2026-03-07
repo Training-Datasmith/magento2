@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Block\Adminhtml;
 
 use Magento\Framework\View\Element\AbstractBlock;
@@ -35,7 +38,7 @@ class Backup extends \Magento\Backend\Block\Template
             [
                 'label' => __('System Backup'),
                 'onclick' => "return backup.backup('" . \Magento\Framework\Backup\Factory::TYPE_SYSTEM_SNAPSHOT . "')",
-                'class' => 'primary system-backup'
+                'class' => 'primary system-backup',
             ]
         );
         $this->getToolbar()->addChild(
@@ -44,7 +47,7 @@ class Backup extends \Magento\Backend\Block\Template
             [
                 'label' => __('Database and Media Backup'),
                 'onclick' => "return backup.backup('" . \Magento\Framework\Backup\Factory::TYPE_MEDIA . "')",
-                'class' => 'primary database-media-backup'
+                'class' => 'primary database-media-backup',
             ]
         );
         $this->getToolbar()->addChild(
@@ -53,7 +56,7 @@ class Backup extends \Magento\Backend\Block\Template
             [
                 'label' => __('Database Backup'),
                 'onclick' => "return backup.backup('" . \Magento\Framework\Backup\Factory::TYPE_DB . "')",
-                'class' => 'task primary database-backup'
+                'class' => 'task primary database-backup',
             ]
         );
 

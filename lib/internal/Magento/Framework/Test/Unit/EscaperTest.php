@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Framework\Test\Unit;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Translate\Inline;
+use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Framework\ZendEscaper;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\Translate\Inline\StateInterface;
 
 /**
  * \Magento\Framework\Escaper test case
@@ -258,7 +259,7 @@ class EscaperTest extends TestCase
             ],
             'text with special characters' => [
                 'data' => '&<>"\'&amp;&lt;&gt;&quot;&#039;&#9;',
-                'expected' => '&amp;&lt;&gt;&quot;&#039;&amp;&lt;&gt;&quot;&#039;&#9;'
+                'expected' => '&amp;&lt;&gt;&quot;&#039;&amp;&lt;&gt;&quot;&#039;&#9;',
             ],
             'text with special characters and allowed tag' => [
                 'data' => '&<br/>"\'&amp;&lt;&gt;&quot;&#039;&#9;',
@@ -401,7 +402,7 @@ class EscaperTest extends TestCase
             [
                 'data' => '*%string{foo}%::',
                 'expected' => '\2A \25 string\7B foo\7D \25 \3A \3A ',
-            ]
+            ],
         ];
     }
 
@@ -425,21 +426,21 @@ class EscaperTest extends TestCase
     {
         return [
             [
-                'data' => "a3==",
-                'expected' => "a3%3D%3D",
+                'data' => 'a3==',
+                'expected' => 'a3%3D%3D',
             ],
             [
-                'data' => "example string",
-                'expected' => "example%20string",
+                'data' => 'example string',
+                'expected' => 'example%20string',
             ],
             [
                 'data' => 1,
-                'expected' => "1",
+                'expected' => '1',
             ],
             [
                 'data' => null,
-                'expected' => "",
-            ]
+                'expected' => '',
+            ],
         ];
     }
 
@@ -450,16 +451,16 @@ class EscaperTest extends TestCase
     {
         return [
             [
-                'data' => "http://example.com/search?term=this+%26+that&view=list",
-                'expected' => "http://example.com/search?term=this+%26+that&amp;view=list",
+                'data' => 'http://example.com/search?term=this+%26+that&view=list',
+                'expected' => 'http://example.com/search?term=this+%26+that&amp;view=list',
             ],
             [
                 'data' => "http://exam\r\nple.com/search?term=this+%26+that&view=list",
-                'expected' => "http://example.com/search?term=this+%26+that&amp;view=list",
+                'expected' => 'http://example.com/search?term=this+%26+that&amp;view=list',
             ],
             [
-                'data' => "http://&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#x6d;/",
-                'expected' => "http://example.com/",
+                'data' => 'http://&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#x6f;&#x6d;/',
+                'expected' => 'http://example.com/',
             ],
         ];
     }
@@ -482,8 +483,8 @@ class EscaperTest extends TestCase
     {
         $data = "Text with 'single' and \"double\" quotes";
         $expected = [
-            "Text with &#039;single&#039; and &quot;double&quot; quotes",
-            "Text with \\&#039;single\\&#039; and \\&quot;double\\&quot; quotes",
+            'Text with &#039;single&#039; and &quot;double&quot; quotes',
+            'Text with \\&#039;single\\&#039; and \\&quot;double\\&quot; quotes',
         ];
         $this->assertEquals($expected[0], $this->escaper->escapeQuote($data));
         $this->assertEquals($expected[1], $this->escaper->escapeQuote($data, true));
@@ -515,7 +516,7 @@ class EscaperTest extends TestCase
                 'javascript%3Aalert%28String.fromCharCode%280x78%29%2BString.'
                 . 'fromCharCode%280x73%29%2BString.fromCharCode%280x73%29%29',
                 ':alert%28String.fromCharCode%280x78%29%2BString.'
-                . 'fromCharCode%280x73%29%2BString.fromCharCode%280x73%29%29'
+                . 'fromCharCode%280x73%29%2BString.fromCharCode%280x73%29%29',
             ],
             [
                 'http://test.com/?redirect=JAVASCRIPT:alert%281%29',
@@ -1048,8 +1049,7 @@ class EscaperTest extends TestCase
 
         $rp = new \ReflectionProperty(\Magento\Framework\App\ObjectManager::class, '_instance');
         $originalOm = $rp->getValue();
-        $stubOm = new class($zendEscaper) implements \Magento\Framework\ObjectManagerInterface
-        {
+        $stubOm = new class ($zendEscaper) implements \Magento\Framework\ObjectManagerInterface {
             /**
              * @var \Magento\Framework\ZendEscaper
              */
@@ -1123,8 +1123,7 @@ class EscaperTest extends TestCase
 
         $rp = new \ReflectionProperty(\Magento\Framework\App\ObjectManager::class, '_instance');
         $originalOm = $rp->getValue();
-        $stubOm = new class($inlineMock) implements \Magento\Framework\ObjectManagerInterface
-        {
+        $stubOm = new class ($inlineMock) implements \Magento\Framework\ObjectManagerInterface {
             /**
              * @var \Magento\Framework\Translate\InlineInterface
              */
@@ -1186,8 +1185,7 @@ class EscaperTest extends TestCase
 
         $rp = new \ReflectionProperty(\Magento\Framework\App\ObjectManager::class, '_instance');
         $originalOm = $rp->getValue();
-        $stubOm = new class($loggerMock) implements \Magento\Framework\ObjectManagerInterface
-        {
+        $stubOm = new class ($loggerMock) implements \Magento\Framework\ObjectManagerInterface {
             /**
              * @var \Psr\Log\LoggerInterface
              */

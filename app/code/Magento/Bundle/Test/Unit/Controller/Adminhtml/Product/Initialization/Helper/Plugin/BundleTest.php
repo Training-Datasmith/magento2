@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 class BundleTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /**
      * @var Bundle
      */
@@ -66,7 +67,7 @@ class BundleTest extends TestCase
             Product::class,
             [
                 'setBundleOptionsData', 'setBundleSelectionsData', 'setCanSaveCustomOptions',
-                'setCanSaveBundleSelections', 'setOptions'
+                'setCanSaveBundleSelections', 'setOptions',
             ]
         );
 

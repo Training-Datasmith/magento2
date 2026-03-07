@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ namespace Magento\NewRelicReporting\Test\Unit\Model\Cron;
 use Magento\Catalog\Api\CategoryManagementInterface;
 use Magento\Catalog\Api\ProductManagementInterface;
 use Magento\ConfigurableProduct\Api\ConfigurableProductManagementInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\Counts;
 use Magento\NewRelicReporting\Model\CountsFactory;
@@ -17,14 +19,12 @@ use Magento\NewRelicReporting\Model\Cron\ReportCounts;
 use Magento\NewRelicReporting\Model\ResourceModel\Counts\Collection;
 use Magento\NewRelicReporting\Model\ResourceModel\Counts\CollectionFactory;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ReportCountsTest extends TestCase
 {
-
     use MockCreationTrait;
-    
+
     /**
      * @var ReportCounts
      */

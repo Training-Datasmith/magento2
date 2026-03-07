@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Catalog\Model\Product;
 use Magento\CatalogInventory\Model\Config\Source\NotAvailableMessage;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Model\Quote\Item;
 use Magento\QuoteGraphQl\Model\CartItem\ProductStock;
 
@@ -27,12 +28,12 @@ class QuantityResolver implements ResolverInterface
     /**
      * Configurable product type code
      */
-    private const PRODUCT_TYPE_CONFIGURABLE = "configurable";
+    private const PRODUCT_TYPE_CONFIGURABLE = 'configurable';
 
     /**
      * Scope config path for not_available_message
      */
-    private const CONFIG_PATH_NOT_AVAILABLE_MESSAGE = "cataloginventory/options/not_available_message";
+    private const CONFIG_PATH_NOT_AVAILABLE_MESSAGE = 'cataloginventory/options/not_available_message';
 
     /**
      * QuantityResolver Constructor

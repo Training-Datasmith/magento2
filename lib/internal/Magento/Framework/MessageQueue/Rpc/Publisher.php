@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -105,8 +107,8 @@ class Publisher implements PublisherInterface
                     'correlation_id' => rand(),
                     // md5() here is not for cryptographic use.
                     // phpcs:ignore Magento2.Security.InsecureFunction
-                    'message_id' => md5(uniqid($topicName))
-                ]
+                    'message_id' => md5(uniqid($topicName)),
+                ],
             ]
         );
         $connectionName = $this->publisherConfig->getPublisher($topicName)->getConnection()->getName();

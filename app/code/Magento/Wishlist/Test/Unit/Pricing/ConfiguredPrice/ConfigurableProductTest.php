@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Wishlist\Test\Unit\Pricing\ConfiguredPrice;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
 use Magento\Catalog\Model\Product\Configuration\Item\Option\OptionInterface;
-use Magento\Catalog\Model\Product\Option\Type\DefaultType;
 use Magento\Catalog\Model\Product\Option as ProductOption;
+use Magento\Catalog\Model\Product\Option\Type\DefaultType;
 use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
@@ -20,9 +21,9 @@ use Magento\Framework\Pricing\PriceInfoInterface;
 use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Wishlist\Model\Item\Option;
 use Magento\Wishlist\Pricing\ConfiguredPrice\ConfigurableProduct;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -211,9 +212,9 @@ class ConfigurableProductTest extends TestCase
                     'default_price' => null,
                     'default_price_type' => null,
                     'price' => null,
-                    'price_type' => null
+                    'price_type' => null,
                 ],
-                '1'
+                '1',
             ],
             [
                 [
@@ -226,10 +227,10 @@ class ConfigurableProductTest extends TestCase
                     'default_price' => '100.000000',
                     'default_price_type' => 'fixed',
                     'price' => '100.000000',
-                    'price_type' => 'fixed'
+                    'price_type' => 'fixed',
                 ],
-                '2'
-            ]
+                '2',
+            ],
         ];
     }
 }

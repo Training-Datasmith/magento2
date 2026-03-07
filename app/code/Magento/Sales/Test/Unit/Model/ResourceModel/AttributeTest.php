@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class AttributeTest extends TestCase
                 [
                     'event_object' =>  $this->attribute,
                     'object' => $this->modelMock,
-                    'attribute' => ['attribute']
+                    'attribute' => ['attribute'],
                 ]
             );
         $this->attribute->saveAttribute($this->modelMock, 'attribute');

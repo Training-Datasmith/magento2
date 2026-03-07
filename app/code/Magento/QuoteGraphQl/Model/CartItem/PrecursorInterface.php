@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\QuoteGraphQl\Model\CartItem;
 
 use Magento\GraphQl\Model\Query\ContextInterface;
-use Magento\Quote\Model\Cart\Data\CartItem;
 use Magento\QuoteGraphQl\Model\CartItem\DataProvider\Processor\ItemDataProcessorInterface;
 
 /**

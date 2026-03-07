@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Quote\Setup\Patch\Data;
 
 use Magento\Framework\DB\Ddl\Table;
-use Magento\Quote\Setup\QuoteSetup;
-use Magento\Quote\Setup\QuoteSetupFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Quote\Setup\QuoteSetup;
+use Magento\Quote\Setup\QuoteSetupFactory;
 
 /***
  * Class InstallEntityTypes

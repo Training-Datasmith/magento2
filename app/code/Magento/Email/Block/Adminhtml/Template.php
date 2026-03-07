@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Adminhtml system templates page content block
  */
+
 namespace Magento\Email\Block\Adminhtml;
 
 /**
@@ -70,7 +73,7 @@ class Template extends \Magento\Backend\Block\Template implements \Magento\Backe
             [
                 'label' => __('Add New Template'),
                 'onclick' => "window.location='" . $this->getCreateUrl() . "'",
-                'class' => 'add primary add-template'
+                'class' => 'add primary add-template',
             ]
         );
         $this->toolbar->pushButtons($this, $this->buttonList);

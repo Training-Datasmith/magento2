@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Model\Theme;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\CustomizationInterface;
 use Magento\Framework\View\Design\Theme\Image;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Model\ResourceModel\Theme\Data\Collection as ThemeDataCollection;
 use Magento\Theme\Model\ResourceModel\Theme\Data\CollectionFactory as ThemeDataCollectionFactory;
 use Magento\Theme\Model\Theme\Data\Collection;
@@ -68,7 +69,7 @@ class RegistrationTest extends TestCase
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
                 'setParentId', 'getCustomization', 'getPreviewImage',
-                'getThemeImage', 'setType', 'save'
+                'getThemeImage', 'setType', 'save',
             ]
         );
         $parentTheme = $this->createMock(ThemeInterface::class);
@@ -78,7 +79,7 @@ class RegistrationTest extends TestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'getType'
+                'getType',
             ]
         );
         $themeFromCollection = $this->createPartialMockWithReflection(
@@ -86,7 +87,7 @@ class RegistrationTest extends TestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'setType', 'save', 'getType', 'getParentId', 'setParentId'
+                'setType', 'save', 'getType', 'getParentId', 'setParentId',
             ]
         );
         $collection = $this->createMock(ThemeDataCollection::class);

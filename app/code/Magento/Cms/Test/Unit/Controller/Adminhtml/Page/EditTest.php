@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,23 +9,23 @@ declare(strict_types=1);
 namespace Magento\Cms\Test\Unit\Controller\Adminhtml\Page;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\View\Result\Page as BackendModelViewResultPage;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Cms\Controller\Adminhtml\Page\Edit;
 use Magento\Cms\Model\Page;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
-use Magento\Backend\Model\View\Result\Page as BackendModelViewResultPage;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -136,7 +137,7 @@ class EditTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'resultPageFactory' => $this->resultPageFactoryMock,
-                'registry' => $this->coreRegistryMock
+                'registry' => $this->coreRegistryMock,
             ]
         );
     }
@@ -260,13 +261,13 @@ class EditTest extends TestCase
             'new_page' => [
                 null,        // $pageId
                 'New Page',  // $label
-                'New Page'   // $title
+                'New Page',   // $title
             ],
             'edit_page' => [
                 2,           // $pageId
                 'Edit Page', // $label
-                'Edit Page'  // $title
-            ]
+                'Edit Page',  // $title
+            ],
         ];
     }
 }

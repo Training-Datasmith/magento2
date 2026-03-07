@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 
 class BillingAgreementTest extends TestCase
 {
-
     /**
      * @var CurrentCustomer|MockObject
      */
@@ -52,8 +52,8 @@ class BillingAgreementTest extends TestCase
         $objects = [
             [
                 InlineInterface::class,
-                $this->createMock(InlineInterface::class)
-            ]
+                $this->createMock(InlineInterface::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
         $this->paypalConfig = $this->createMock(Config::class);
@@ -84,7 +84,7 @@ class BillingAgreementTest extends TestCase
                 'paypalConfigFactory' => $paypalConfigFactory,
                 'paypalData' => $this->paypalData,
                 'currentCustomer' => $this->currentCustomer,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }

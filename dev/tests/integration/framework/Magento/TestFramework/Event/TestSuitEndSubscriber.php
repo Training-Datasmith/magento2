@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +9,12 @@
 /**
  * TestSuite Finished Subscriber
  */
+
 namespace Magento\TestFramework\Event;
 
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Event\TestSuite\Finished;
 use PHPUnit\Event\TestSuite\FinishedSubscriber;
-use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestSuite;
 
 class TestSuitEndSubscriber implements FinishedSubscriber

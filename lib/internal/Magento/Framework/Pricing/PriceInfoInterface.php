@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ interface PriceInfoInterface
     /**
      * Default product quantity
      */
-    const PRODUCT_QUANTITY_DEFAULT = 1.;
+    public const PRODUCT_QUANTITY_DEFAULT = 1.;
 
     /**
      * Returns array of prices

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 class TrackValidatorTest extends TestCase
 {
-
     /**
      * @var TrackValidator
      */

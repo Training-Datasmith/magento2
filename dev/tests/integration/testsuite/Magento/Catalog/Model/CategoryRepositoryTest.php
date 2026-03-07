@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,8 +59,8 @@ class CategoryRepositoryTest extends TestCase
         $this->objectManager->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Category\Attribute\LayoutUpdateManager::class
-                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class
-            ]
+                => \Magento\TestFramework\Catalog\Model\CategoryLayoutUpdateManager::class,
+            ],
         ]);
         $this->layoutManager = $this->objectManager->get(CategoryLayoutUpdateManager::class);
         $this->productCollectionFactory = $this->objectManager->get(CollectionFactory::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -47,9 +48,9 @@ class ImporterPoolTest extends TestCase
                 'firstSection' => ['importer_class' => 'Magento\Importer\SomeImporter', 'sort_order' => 20],
                 'secondSection' => [
                     'importer_class' => 'Magento\Importer\SomeImporter',
-                    'validator_class' => 'Validator\SomeValidator\Class'
+                    'validator_class' => 'Validator\SomeValidator\Class',
                 ],
-                'thirdSection' => ['importer_class' => 'Magento\Importer\SomeImporter', 'sort_order' => 10]
+                'thirdSection' => ['importer_class' => 'Magento\Importer\SomeImporter', 'sort_order' => 10],
             ]
         );
     }

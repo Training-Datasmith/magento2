@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class SelectAttributeTest extends AbstractEavTest
     {
         $product = $this->getProduct();
         $attributeData = [
-            'dropdown_attribute' => $this->getOptionValueByLabel('dropdown_attribute', 'Option 3')
+            'dropdown_attribute' => $this->getOptionValueByLabel('dropdown_attribute', 'Option 3'),
         ];
         $this->saveProduct($product, $attributeData);
         $expectedData = $this->addDataNesting($attributeData);

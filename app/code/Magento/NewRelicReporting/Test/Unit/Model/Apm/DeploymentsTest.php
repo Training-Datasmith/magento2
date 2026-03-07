@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\NewRelicReporting\Model\Apm\Deployments;
 use Magento\NewRelicReporting\Model\Config;
 use Magento\NewRelicReporting\Model\NerdGraph\DeploymentTracker;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -314,7 +315,7 @@ class DeploymentsTest extends TestCase
             'commit' => $commit,
             'deepLink' => $deepLink,
             'groupId' => $groupId,
-            'timestamp' => 1234567890000
+            'timestamp' => 1234567890000,
         ];
 
         // Mock config to return NerdGraph mode
@@ -442,7 +443,7 @@ class DeploymentsTest extends TestCase
                 'deploymentId' => 'enhanced-test',
                 'commit' => $commit,
                 'deepLink' => $deepLink,
-                'groupId' => $groupId
+                'groupId' => $groupId,
             ]);
 
         $result = $this->model->setDeployment(
@@ -645,7 +646,7 @@ class DeploymentsTest extends TestCase
             'Status 211 (just above valid range)' => [211, false],
             'Status 300 (redirect)' => [300, false],
             'Status 404 (not found)' => [404, false],
-            'Status 500 (server error)' => [500, false]
+            'Status 500 (server error)' => [500, false],
         ];
     }
 
@@ -876,8 +877,8 @@ class DeploymentsTest extends TestCase
                 'description' => $description,
                 'changelog' => $changelog,
                 'user' => $user,
-                'revision' => $revision
-            ]
+                'revision' => $revision,
+            ],
         ];
 
         $selfUri = sprintf($selfUri, $appId);
@@ -895,7 +896,7 @@ class DeploymentsTest extends TestCase
             'status_bad' => $statusBad,
             'response_body' => $responseBody,
             'params' => $params,
-            'revision' => $revision
+            'revision' => $revision,
         ];
     }
 }

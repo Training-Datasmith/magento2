@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Collection of unread notifications
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\Inbox\Collection;
 
 /**
@@ -17,10 +20,8 @@ class Unread extends \Magento\AdminNotification\Model\ResourceModel\Inbox\Collec
 {
     /**
      * Init collection select
-     *
-     * @return \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Unread
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         parent::_initSelect();
         $this->addFilter('is_remove', 0);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,9 +25,9 @@ use Magento\Theme\Model\Theme\ThemeDependencyChecker;
 use Magento\Theme\Model\Theme\ThemePackageInfo;
 use Magento\Theme\Model\Theme\ThemeUninstaller;
 use Magento\Theme\Model\ThemeValidator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -187,7 +188,7 @@ class ThemeUninstallCommandTest extends TestCase
                     ['area/vendor/test1', 'dummy1'],
                     ['area/vendor/test2', 'magento/theme-b'],
                     ['area/vendor/test3', ''],
-                    ['area/vendor/test4', 'dummy2']
+                    ['area/vendor/test4', 'dummy2'],
                 ]
             );
         $this->collection->expects($this->any())
@@ -203,7 +204,7 @@ class ThemeUninstallCommandTest extends TestCase
                 'area/vendor/test1',
                 'area/vendor/test2',
                 'area/vendor/test3',
-                'area/vendor/test4'
+                'area/vendor/test4',
             ],
         ]);
         $this->assertStringContainsString(
@@ -404,7 +405,7 @@ class ThemeUninstallCommandTest extends TestCase
             ['vendor/test1/'],
             ['/vendor/test1/'],
             ['area/vendor/test1/'],
-            ['/area/vendor/test1']
+            ['/area/vendor/test1'],
         ];
     }
 }

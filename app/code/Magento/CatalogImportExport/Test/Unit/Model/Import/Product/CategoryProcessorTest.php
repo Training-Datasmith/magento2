@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class CategoryProcessorTest extends TestCase
             ->willReturnMap($map);
         $categoryCollection->expects($this->exactly(3))
             ->method('addAttributeToSelect')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['name'] => $categoryCollection,
                 ['url_key'] => $categoryCollection,
                 ['url_path'] => $categoryCollection
@@ -141,7 +142,7 @@ class CategoryProcessorTest extends TestCase
             [
                 'category' => 'dummy category',
                 'exception' => 'dummy exception',
-            ]
+            ],
         ];
 
         $this->setPropertyValue($this->categoryProcessor, 'failedCategories', $dummyFailedCategory);

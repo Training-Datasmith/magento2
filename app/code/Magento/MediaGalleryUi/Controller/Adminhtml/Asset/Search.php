@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -117,7 +118,7 @@ class Search extends Action implements HttpGetActionInterface
         if (!$searchKey) {
             return $resultJson->setData([
                 'options' => [],
-                'total' => 0
+                'total' => 0,
             ]);
         }
 
@@ -139,7 +140,7 @@ class Search extends Action implements HttpGetActionInterface
                     $responseContent['options'][] = [
                         'value' => (string) $asset->getId(),
                         'label' => $asset->getTitle(),
-                        'src' => $this->storage->getThumbnailUrl($this->images->getStorageRoot() . $asset->getPath())
+                        'src' => $this->storage->getThumbnailUrl($this->images->getStorageRoot() . $asset->getPath()),
                     ];
                     $responseContent['total'] = count($responseContent['options']);
                 }

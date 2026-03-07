@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Config\Topology;
 
 use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
@@ -78,7 +81,7 @@ class ConfigReaderPlugin
                 'destination' => $destination,
                 'disabled' => false,
                 'topic' => $topic,
-                'arguments' => []
+                'arguments' => [],
             ];
 
             $exchangeName = $this->queueConfig->getExchangeByTopic($topic);

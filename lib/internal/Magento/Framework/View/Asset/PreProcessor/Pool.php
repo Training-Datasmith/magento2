@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class Pool
     /**
      * Name of property referenced to pre-processor implementation class
      */
-    const PREPROCESSOR_CLASS = 'class';
+    public const PREPROCESSOR_CLASS = 'class';
 
     /**
      * @var array
@@ -95,7 +97,7 @@ class Pool
             $preprocessors = $this->sorter->sort($this->preprocessors[$type]);
         } else {
             $preprocessors = [
-                'default' => [self::PREPROCESSOR_CLASS => $this->defaultPreprocessor]
+                'default' => [self::PREPROCESSOR_CLASS => $this->defaultPreprocessor],
             ];
         }
 

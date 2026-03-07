@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class SectionConfigTest extends TestCase
             SectionConfig::class,
             [
                 'context' => $this->context,
-                'sectionConfig' => $this->sectionConfig
+                'sectionConfig' => $this->sectionConfig,
             ]
         );
     }

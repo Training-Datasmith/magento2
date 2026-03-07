@@ -1,13 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Filesystem;
 
 /**
  *  Context
@@ -17,16 +18,16 @@ class Context
     /**
      * Locale directory
      */
-    const LOCALE_DIRECTORY = 'i18n';
+    public const LOCALE_DIRECTORY = 'i18n';
 
     /**#@+
      * Context info
      */
-    const CONTEXT_TYPE_MODULE = 'module';
+    public const CONTEXT_TYPE_MODULE = 'module';
 
-    const CONTEXT_TYPE_THEME = 'theme';
+    public const CONTEXT_TYPE_THEME = 'theme';
 
-    const CONTEXT_TYPE_LIB = 'lib';
+    public const CONTEXT_TYPE_LIB = 'lib';
 
     /**#@-*/
 

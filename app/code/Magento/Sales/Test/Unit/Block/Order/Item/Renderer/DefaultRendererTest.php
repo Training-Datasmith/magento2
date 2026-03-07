@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Sales\Test\Unit\Block\Order\Item\Renderer;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Quote\Model\Quote\Item;
@@ -16,7 +18,6 @@ use Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer;
 use Magento\Sales\Model\Order\Item as OrderItem;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class DefaultRendererTest extends TestCase
 {
@@ -63,7 +64,7 @@ class DefaultRendererTest extends TestCase
                 'context' => $this->objectManager->getObject(
                     Context::class,
                     ['layout' => $this->layoutMock]
-                )
+                ),
             ]
         );
 

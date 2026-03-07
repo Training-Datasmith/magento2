@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Controller\Advanced;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\CatalogSearch\Model\Advanced as ModelAdvanced;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\UrlFactory;
 
@@ -19,7 +22,7 @@ class Result extends \Magento\Framework\App\Action\Action implements HttpGetActi
     /**
      * No results default handle.
      */
-    const DEFAULT_NO_RESULT_HANDLE = 'catalogsearch_advanced_result_noresults';
+    public const DEFAULT_NO_RESULT_HANDLE = 'catalogsearch_advanced_result_noresults';
 
     /**
      * Url factory

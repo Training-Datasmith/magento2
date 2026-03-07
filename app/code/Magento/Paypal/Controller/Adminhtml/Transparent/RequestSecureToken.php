@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Transparent;
 
 /**
@@ -12,5 +15,4 @@ namespace Magento\Paypal\Controller\Adminhtml\Transparent;
  */
 class RequestSecureToken extends \Magento\Paypal\Controller\Transparent\RequestSecureToken
 {
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Test\Unit\Model\Recommendations;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\AdvancedSearch\Model\Recommendations\DataProvider;
 use Magento\AdvancedSearch\Model\ResourceModel\Recommendations;
 use Magento\AdvancedSearch\Model\ResourceModel\RecommendationsFactory;
@@ -20,6 +20,7 @@ use Magento\Search\Model\QueryInterface;
 use Magento\Search\Model\QueryResult;
 use Magento\Search\Model\QueryResultFactory;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -107,7 +108,7 @@ class DataProviderTest extends TestCase
                 'scopeConfig' => $this->scopeConfigMock,
                 'layerResolver' => $this->layerResolverMock,
                 'recommendationsFactory' => $this->recommendationsFactoryMock,
-                'queryResultFactory' => $this->queryResultFactoryMock
+                'queryResultFactory' => $this->queryResultFactoryMock,
             ]
         );
     }
@@ -172,12 +173,12 @@ class DataProviderTest extends TestCase
                 [
                     [
                         'query_text' => 'a',
-                        'num_results' => 3
+                        'num_results' => 3,
                     ],
                     [
                         'query_text' => 'b',
-                        'num_results' => 2
-                    ]
+                        'num_results' => 2,
+                    ],
                 ]
             );
         $queryResultMock = $this->createMock(QueryResult::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Locale\CurrencyInterface;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Website;
 
 /**
@@ -83,7 +84,7 @@ class CurrencySymbolProvider
         $product = $this->locator->getProduct();
         $websitesList = $this->storeManager->getWebsites();
         $productWebsiteIds = $product->getWebsiteIds();
-        if ($catalogPriceScope!=0) {
+        if ($catalogPriceScope != 0) {
             foreach ($websitesList as $website) {
                 /** @var Website $website */
                 if (!in_array($website->getId(), $productWebsiteIds)) {

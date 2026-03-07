@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Directory\Model\Currency\Import;
 
+use Exception;
 use Laminas\Http\Request;
 use Magento\Directory\Model\CurrencyFactory;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface as ScopeConfig;
 use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\HTTP\LaminasClientFactory;
-use Exception;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Currency rate converter (free.currconv.com).

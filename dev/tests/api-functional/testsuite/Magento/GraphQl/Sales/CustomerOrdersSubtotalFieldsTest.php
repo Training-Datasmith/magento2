@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -79,12 +80,12 @@ class CustomerOrdersSubtotalFieldsTest extends GraphQlAbstract
                             [
                                 'total' => [
                                     'subtotal_incl_tax' => ['value' => $order->getSubtotalInclTax()],
-                                    'subtotal_excl_tax' => ['value' => $order->getSubtotal()]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'subtotal_excl_tax' => ['value' => $order->getSubtotal()],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCustomerOrdersQuery(),

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ class DependenciesShowFrameworkCommandTest extends \PHPUnit\Framework\TestCase
     {
         $modules = [
             'Magento_A' => __DIR__ . '/_files/root/app/code/Magento/A',
-            'Magento_B' => __DIR__ . '/_files/root/app/code/Magento/B'
+            'Magento_B' => __DIR__ . '/_files/root/app/code/Magento/B',
         ];
         $objectManagerProvider = $this->createMock(\Magento\Setup\Model\ObjectManagerProvider::class);
         $objectManager = $this->createMock(\Magento\Framework\App\ObjectManager::class);
@@ -37,13 +39,13 @@ class DependenciesShowFrameworkCommandTest extends \PHPUnit\Framework\TestCase
         $dirSearchMock->expects($this->once())->method('collectFiles')->willReturn(
             [
                 __DIR__ . '/_files/root/app/code/Magento/A/etc/module.xml',
-                __DIR__ . '/_files/root/app/code/Magento/B/etc/module.xml'
+                __DIR__ . '/_files/root/app/code/Magento/B/etc/module.xml',
             ]
         );
         $objectManager->expects($this->any())->method('get')->willReturnMap([
             [\Magento\Framework\View\Design\Theme\ThemePackageList::class, $themePackageListMock],
             [\Magento\Framework\Component\ComponentRegistrar::class, $componentRegistrarMock],
-            [\Magento\Framework\Component\DirSearch::class, $dirSearchMock]
+            [\Magento\Framework\Component\DirSearch::class, $dirSearchMock],
         ]);
 
         $this->command = new DependenciesShowFrameworkCommand($componentRegistrarMock, $objectManagerProvider);

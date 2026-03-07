@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class LoginAsCustomerUi implements SectionSourceInterface
 
         return [
             'adminUserId' => $adminId,
-            'websiteName' => $this->storeManager->getWebsite()->getName()
+            'websiteName' => $this->storeManager->getWebsite()->getName(),
         ];
     }
 }

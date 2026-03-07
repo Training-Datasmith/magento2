@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class CspWhitelistXmlCollectorTest extends TestCase
                 $this->assertEquals(
                     [
                         'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=' => 'sha256',
-                        'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF9=' => 'sha256'
+                        'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF9=' => 'sha256',
                     ],
                     $policy->getHashes()
                 );
@@ -103,14 +104,14 @@ class CspWhitelistXmlCollectorTest extends TestCase
                     [
                         'https://admin.magento.com',
                         'https://devdocs.magento.com',
-                        'example.magento.com'
+                        'example.magento.com',
                     ],
                     $policy->getHostSources()
                 );
                 $this->assertEquals(
                     [
                         'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=' => 'sha256',
-                        'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF9=' => 'sha256'
+                        'B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF9=' => 'sha256',
                     ],
                     $policy->getHashes()
                 );
@@ -122,7 +123,7 @@ class CspWhitelistXmlCollectorTest extends TestCase
                         '*.adobe.com',
                         'https://admin.magento.com',
                         'https://devdocs.magento.com',
-                        'example.magento.com'
+                        'example.magento.com',
                     ],
                     $policy->getHostSources()
                 );

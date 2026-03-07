@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,20 +8,20 @@
 
 namespace Magento\Store\Model\Address;
 
+use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface as EventManager;
 use Magento\Framework\Filter\FilterManager;
-use Magento\Framework\DataObject;
 
 /**
  * Class Renderer used for formatting a store address
  */
 class Renderer
 {
-    const DEFAULT_TEMPLATE = "{{var name}}\n" .
+    public const DEFAULT_TEMPLATE = "{{var name}}\n" .
         "{{var street_line1}}\n" .
         "{{depend street_line2}}{{var street_line2}}\n{{/depend}}" .
         "{{depend city}}{{var city}},{{/depend}} {{var region}} {{depend postcode}}{{var postcode}},{{/depend}}\n" .
-        "{{var country}}";
+        '{{var country}}';
 
     /**
      * @var EventManager

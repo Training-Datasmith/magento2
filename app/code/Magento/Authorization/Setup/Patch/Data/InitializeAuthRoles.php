@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,12 +8,11 @@
 
 namespace Magento\Authorization\Setup\Patch\Data;
 
-use Magento\Framework\App\ResourceConnection;
+use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
+use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
-use Magento\Authorization\Model\UserContextInterface;
 
 /**
  * Class InitializeAuthRoles
@@ -20,32 +21,16 @@ use Magento\Authorization\Model\UserContextInterface;
 class InitializeAuthRoles implements DataPatchInterface, PatchVersionInterface
 {
     /**
-     * @var ModuleDataSetupInterface
-     */
-    private $moduleDataSetup;
-
-    /**
-     * @var \Magento\Authorization\Setup\AuthorizationFactory
-     */
-    private $authFactory;
-
-    /**
      * InitializeAuthRoles constructor.
-     * @param ModuleDataSetupInterface $moduleDataSetup
-     * @param \Magento\Authorization\Setup\AuthorizationFactory $authorizationFactory
      */
-    public function __construct(
-        ModuleDataSetupInterface $moduleDataSetup,
-        \Magento\Authorization\Setup\AuthorizationFactory $authorizationFactory
-    ) {
-        $this->moduleDataSetup = $moduleDataSetup;
-        $this->authFactory = $authorizationFactory;
+    public function __construct(private readonly ModuleDataSetupInterface $moduleDataSetup, private readonly \Magento\Authorization\Setup\AuthorizationFactory $authFactory)
+    {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function apply()
+    public function apply(): void
     {
         $roleCollection = $this->authFactory->createRoleCollection()
             ->addFieldToFilter('parent_id', 0)
@@ -110,7 +95,7 @@ class InitializeAuthRoles implements DataPatchInterface, PatchVersionInterface
     /**
      * {@inheritdoc}
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
@@ -118,7 +103,7 @@ class InitializeAuthRoles implements DataPatchInterface, PatchVersionInterface
     /**
      * {@inheritdoc}
      */
-    public static function getVersion()
+    public static function getVersion(): string
     {
         return '2.0.0';
     }
@@ -126,7 +111,7 @@ class InitializeAuthRoles implements DataPatchInterface, PatchVersionInterface
     /**
      * {@inheritdoc}
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }

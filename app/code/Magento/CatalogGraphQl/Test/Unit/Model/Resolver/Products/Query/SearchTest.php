@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,15 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Test\Unit\Model\Resolver\Products\Query;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\AdvancedSearch\Model\Client\ClientException;
 use Magento\CatalogGraphQl\DataProvider\Product\SearchCriteriaBuilder;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\ProductSearch;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Query\FieldSelection;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Query\Search;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Query\Search\QueryPopularity;
-use Magento\CatalogGraphQl\Model\Resolver\Products\SearchResultFactory;
 use Magento\CatalogGraphQl\Model\Resolver\Products\Query\Suggestions;
+use Magento\CatalogGraphQl\Model\Resolver\Products\SearchResultFactory;
 use Magento\Framework\Api\Search\SearchCriteriaInterface;
 use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
@@ -23,6 +23,7 @@ use Magento\Framework\GraphQl\Query\Resolver\ArgumentsProcessorInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GraphQl\Model\Query\ContextInterface;
 use Magento\Search\Api\SearchInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -170,7 +171,7 @@ class SearchTest extends TestCase
             ],
             'client_exception' => [
                 'exception' => ClientException::class,
-            ]
+            ],
         ];
     }
 }

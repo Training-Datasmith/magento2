@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @category    Magento
  * @package     Magento_Indexer
@@ -14,7 +16,7 @@ abstract class AbstractProcessor
     /**
      * Indexer ID
      */
-    const INDEXER_ID = '';
+    public const INDEXER_ID = '';
 
     /**
      * @var \Magento\Framework\Indexer\IndexerRegistry

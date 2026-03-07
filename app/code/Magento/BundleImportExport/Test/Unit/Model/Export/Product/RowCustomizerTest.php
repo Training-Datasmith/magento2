@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\App\ScopeInterface;
 use Magento\Framework\App\ScopeResolverInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -79,23 +80,23 @@ class RowCustomizerTest extends TestCase
             ScopeResolverInterface::class,
             ['getScope', 'getScopes']
         );
-        
+
         // Mock StoreManager with Website and Store
         $websiteMock = $this->createMock(\Magento\Store\Model\Website::class);
         $websiteMock->method('getCode')->willReturn('base');
         $websiteMock->method('getDefaultGroupId')->willReturn(1);
-        
+
         $storeMock = $this->createMock(\Magento\Store\Model\Store::class);
         $storeMock->method('getId')->willReturn(1);
-        
+
         $groupMock = $this->createMock(\Magento\Store\Model\Group::class);
         $groupMock->method('getDefaultStoreId')->willReturn(1);
-        
+
         $storeManager = $this->createMock(\Magento\Store\Model\StoreManagerInterface::class);
         $storeManager->method('getWebsite')->willReturn($websiteMock);
         $storeManager->method('getStore')->willReturn($storeMock);
         $storeManager->method('getGroup')->willReturn($groupMock);
-        
+
         $this->rowCustomizerMock = $this->objectManagerHelper->getObject(
             RowCustomizer::class,
             [
@@ -170,7 +171,7 @@ class RowCustomizerTest extends TestCase
         $this->selectionsCollection->method('getItems')->willReturn([$this->selection]);
         $this->option->setData('selections', [$this->selection]);
         $this->product->setSelectionsCollection($this->selectionsCollection);
-        
+
         // Mock type instance - needed by production code
         $typeInstance = $this->createPartialMock(
             \Magento\Bundle\Model\Product\Type::class,
@@ -181,7 +182,7 @@ class RowCustomizerTest extends TestCase
         $typeInstance->method('getOptionsIds')->willReturn([1]);
         $typeInstance->method('setStoreFilter')->willReturnSelf();
         $this->product->method('getTypeInstance')->willReturn($typeInstance);
-        
+
         $this->product->setSku(1);
         $this->productResourceCollection->method('addAttributeToFilter')->willReturnSelf();
         $this->productResourceCollection->method('getIterator')->willReturn(
@@ -213,7 +214,7 @@ class RowCustomizerTest extends TestCase
             'bundle_price_view',
             'bundle_weight_type',
             'bundle_values',
-            'bundle_shipment_type'
+            'bundle_shipment_type',
         ];
         $this->assertEquals($expectedData, $this->rowCustomizerMock->addHeaderColumns($productData));
     }
@@ -230,7 +231,7 @@ class RowCustomizerTest extends TestCase
             . 'values=values,shipment_type=1,attribute3=One,Two,Three';
         $dataRow = [
             'sku' => 'sku1',
-            'additional_attributes' => $attributes
+            'additional_attributes' => $attributes,
         ];
         $preparedRow = $preparedData->addData($dataRow, 1);
 
@@ -254,7 +255,7 @@ class RowCustomizerTest extends TestCase
             'bundle_sku_type' => 'fixed',
             'bundle_price_view' => 'As low as',
             'bundle_weight_type' => 'fixed',
-            'bundle_values' => implode(',', $bundleValues)
+            'bundle_values' => implode(',', $bundleValues),
         ];
         $this->assertEquals($expected, $preparedRow);
     }

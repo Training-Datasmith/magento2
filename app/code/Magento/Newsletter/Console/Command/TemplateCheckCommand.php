@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Newsletter\Console\Command;
 
 use Magento\Email\Console\Command\DatabaseTemplateCompatibilityCommand;
 use Magento\Email\Model\ResourceModel\Template\CollectionFactory as EmailCollectionFactory;
-use Magento\Newsletter\Model\ResourceModel\Template\CollectionFactory;
 use Magento\Email\Model\Template\VariableCompatibilityChecker;
+use Magento\Framework\Console\Cli;
+use Magento\Newsletter\Model\ResourceModel\Template\CollectionFactory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\Console\Cli;
 
 /**
  * Scan DB templates for directive incompatibilities

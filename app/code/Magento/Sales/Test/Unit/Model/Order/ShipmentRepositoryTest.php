@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,9 +19,9 @@ use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\Order\ShipmentRepository;
 use Magento\Sales\Model\ResourceModel\Metadata;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Collection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for shipment repository class.
@@ -28,7 +29,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 class ShipmentRepositoryTest extends TestCase
 {
-
     /**
      * Subject of testing.
      *
@@ -74,7 +74,7 @@ class ShipmentRepositoryTest extends TestCase
             [
                 'metadata' => $this->metadata,
                 'searchResultFactory' => $this->searchResultFactory,
-                'collectionProcessor' => $this->collectionProcessor
+                'collectionProcessor' => $this->collectionProcessor,
             ]
         );
     }
@@ -137,7 +137,7 @@ class ShipmentRepositoryTest extends TestCase
         return [
             [null, null],
             [1, null],
-            [1, 1]
+            [1, 1],
         ];
     }
 

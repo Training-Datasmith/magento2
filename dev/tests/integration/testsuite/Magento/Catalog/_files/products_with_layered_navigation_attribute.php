@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ $attributeModel->setData(
             'value' => ['option_0' => ['Option 1'], 'option_1' => ['Option 2']],
             'order' => ['option_0' => 1, 'option_1' => 2],
         ],
-        'default' => ['option_0']
+        'default' => ['option_0'],
     ]
 );
 $attribute = $attributeRepository->save($attributeModel);
@@ -168,7 +169,7 @@ $category->setId(333)
         [
             $simple1->getId() => 10,
             $simple2->getId() => 11,
-            $simple3->getId() => 12
+            $simple3->getId() => 12,
         ]
     );
 $category->save();

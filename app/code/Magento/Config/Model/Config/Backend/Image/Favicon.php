@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * System config image field backend model for Zend PDF generator
  */
+
 namespace Magento\Config\Model\Config\Backend\Image;
 
 /**
@@ -19,7 +22,7 @@ class Favicon extends \Magento\Config\Model\Config\Backend\Image
      * The tail part of directory path for uploading
      *
      */
-    const UPLOAD_DIR = 'favicon';
+    public const UPLOAD_DIR = 'favicon';
 
     /**
      * Return path to directory for upload file

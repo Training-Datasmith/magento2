@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\User\Controller\Adminhtml\User\Role;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\State\UserLockedException;
@@ -113,7 +115,7 @@ class SaveRole extends \Magento\User\Controller\Adminhtml\User\Role implements H
                 'role_id' => $role->getId(),
                 'resources' => $resource,
                 'role_assigned_users' => $roleUsers,
-                'role_unassigned_users' => array_diff($oldRoleUsers, $roleUsers)
+                'role_unassigned_users' => array_diff($oldRoleUsers, $roleUsers),
             ];
             $this->_rulesFactory->create()->setData($roleData)->saveRel();
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class GetSpecifiedBillingAddressTest extends GraphQlAbstract
             'lastname' => 'Smith',
             'company' => 'CompanyName',
             'street' => [
-                'Green str, 67'
+                'Green str, 67',
             ],
             'city' => 'CityM',
             'region' => [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -169,7 +170,7 @@ class UpdatePostTest extends TestCase
         $this->requestMock->method('getParam')
             ->willReturnMap([
                 ['update_cart_action', null, 'update_qty'],
-                ['cart', null, ['1' => ['qty' => 10]]]
+                ['cart', null, ['1' => ['qty' => 10]]],
             ]);
 
         // Setup form key validation to pass

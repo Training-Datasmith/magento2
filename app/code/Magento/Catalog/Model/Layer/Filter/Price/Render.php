@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\Price;
 
 use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
@@ -12,7 +15,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Render
 {
-    const XML_PATH_ONE_PRICE_INTERVAL = 'catalog/layered_navigation/one_price_interval';
+    public const XML_PATH_ONE_PRICE_INTERVAL = 'catalog/layered_navigation/one_price_interval';
 
     /**
      * @var PriceCurrencyInterface

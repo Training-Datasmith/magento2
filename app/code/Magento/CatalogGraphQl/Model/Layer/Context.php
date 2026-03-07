@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -49,7 +50,7 @@ class Context implements \Magento\Catalog\Model\Layer\ContextInterface
     /**
      * @return ItemCollectionProviderInterface
      */
-    public function getCollectionProvider() : ItemCollectionProviderInterface
+    public function getCollectionProvider(): ItemCollectionProviderInterface
     {
         return $this->collectionProvider;
     }
@@ -57,7 +58,7 @@ class Context implements \Magento\Catalog\Model\Layer\ContextInterface
     /**
      * @return StateKeyInterface
      */
-    public function getStateKey() : StateKeyInterface
+    public function getStateKey(): StateKeyInterface
     {
         return $this->stateKey;
     }
@@ -65,7 +66,7 @@ class Context implements \Magento\Catalog\Model\Layer\ContextInterface
     /**
      * @return CollectionFilterInterface
      */
-    public function getCollectionFilter() : CollectionFilterInterface
+    public function getCollectionFilter(): CollectionFilterInterface
     {
         return $this->collectionFilter;
     }

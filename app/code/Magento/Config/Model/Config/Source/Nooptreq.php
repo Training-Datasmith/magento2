@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Source;
 
 /**
@@ -11,9 +14,9 @@ namespace Magento\Config\Model\Config\Source;
  */
 class Nooptreq implements \Magento\Framework\Option\ArrayInterface
 {
-    const VALUE_NO = '';
-    const VALUE_OPTIONAL = 'opt';
-    const VALUE_REQUIRED = 'req';
+    public const VALUE_NO = '';
+    public const VALUE_OPTIONAL = 'opt';
+    public const VALUE_REQUIRED = 'req';
 
     /**
      * @return array
@@ -23,7 +26,7 @@ class Nooptreq implements \Magento\Framework\Option\ArrayInterface
         return [
             ['value' => self::VALUE_NO, 'label' => __('No')],
             ['value' => self::VALUE_OPTIONAL, 'label' => __('Optional')],
-            ['value' => self::VALUE_REQUIRED, 'label' => __('Required')]
+            ['value' => self::VALUE_REQUIRED, 'label' => __('Required')],
         ];
     }
 }

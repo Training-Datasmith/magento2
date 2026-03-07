@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Order\Creditmemo;
 
-use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Backend\App\Action;
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\Model\Product\Type\AbstractType;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
 use Magento\Sales\Helper\Data as SalesData;
 use Magento\Sales\Model\Order\Creditmemo;
-use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
-use Magento\Catalog\Model\Product\Type\AbstractType;
 use Magento\Sales\Model\Order\Creditmemo\Item;
-use Magento\Catalog\Model\Product\Type;
+use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)

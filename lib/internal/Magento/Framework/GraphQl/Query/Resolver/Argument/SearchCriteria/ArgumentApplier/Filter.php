@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\ArgumentApplier;
 
-use Magento\Framework\GraphQl\Query\Resolver\Argument\AstConverter;
 use Magento\Framework\Api\Search\SearchCriteriaInterface;
+use Magento\Framework\GraphQl\Query\Resolver\Argument\AstConverter;
+use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\ConnectiveFactory;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\ArgumentApplierInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\FilterGroupFactory;
-use Magento\Framework\GraphQl\Query\Resolver\Argument\Filter\ConnectiveFactory;
 
 /**
  * Class for Filter Argument
  */
 class Filter implements ArgumentApplierInterface
 {
-    const ARGUMENT_NAME = 'filter';
+    public const ARGUMENT_NAME = 'filter';
 
     /**
      * @var FilterGroupFactory
@@ -58,7 +59,7 @@ class Filter implements ArgumentApplierInterface
         string $fieldName,
         string $argumentName,
         array $argument
-    ) : SearchCriteriaInterface {
+    ): SearchCriteriaInterface {
         $filters = $this->astConverter->getClausesFromAst($fieldName, $argument);
         $filtersForGroup = $this->connectiveFactory->create($filters);
         $filterGroups = $searchCriteria->getFilterGroups();

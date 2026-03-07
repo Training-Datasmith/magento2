@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Wishlist\Model\Config\Source;
 
 class Summary implements \Magento\Framework\Option\ArrayInterface
@@ -14,7 +17,7 @@ class Summary implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 0, 'label' => __('Display number of items in wish list')],
-            ['value' => 1, 'label' => __('Display item quantities')]
+            ['value' => 1, 'label' => __('Display item quantities')],
         ];
     }
 }

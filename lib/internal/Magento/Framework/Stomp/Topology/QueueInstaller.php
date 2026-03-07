@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class QueueInstaller
             // Queue creation with blank message.
             $properties = [
                 'destination-type' => self::DESTINATION_TYPE,
-                'expires' => (string)((int)(microtime(true) * 100))
+                'expires' => (string)((int)(microtime(true) * 100)),
             ];
             $message = new Message('queue-created', $properties);
             $stompProducerClient = $this->getStompProducerClient();

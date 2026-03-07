@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Category\Flat\Action;
 
 /**
@@ -13,7 +16,7 @@ class Full extends \Magento\Catalog\Model\Indexer\Category\Flat\AbstractAction
     /**
      * Suffix for table to show it is old
      */
-    const OLD_TABLE_SUFFIX = '_old';
+    public const OLD_TABLE_SUFFIX = '_old';
 
     /**
      * Whether table changes are allowed

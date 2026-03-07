@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Plugin\Catalog\ViewModel\Product;
 
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\ViewModel\Product\OptionsData as Subject;
-use Magento\Catalog\Model\Product\Type;
 use Magento\Bundle\Model\Product\SingleChoiceProvider;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Type;
+use Magento\Catalog\ViewModel\Product\OptionsData as Subject;
 
 /**
  * Plugin to add bundle options data
@@ -31,7 +32,7 @@ class AddBundleOptionsData
         $this->singleChoiceProvider = $singleChoiceProvider;
     }
 
-    public function afterGetOptionsData(Subject $subject, array $result, Product $product) : array
+    public function afterGetOptionsData(Subject $subject, array $result, Product $product): array
     {
         if ($product->getTypeId() === Type::TYPE_BUNDLE) {
             if ($this->singleChoiceProvider->isSingleChoiceAvailable($product) === true) {
@@ -53,7 +54,7 @@ class AddBundleOptionsData
                         }
                         $result[] = [
                             'name' => $name,
-                            'value' => $selection['selection_id']
+                            'value' => $selection['selection_id'],
                         ];
                     }
                 }

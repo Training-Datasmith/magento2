@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Rss\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Rss\Product\NewProducts;
 use Magento\Catalog\Helper\Image;
 use Magento\Catalog\Model\Product;
@@ -20,6 +20,7 @@ use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -112,7 +113,7 @@ class NewProductsTest extends TestCase
     {
         return [
             [1, true],
-            [0, false]
+            [0, false],
         ];
     }
 
@@ -140,7 +141,7 @@ class NewProductsTest extends TestCase
         $item->expects($this->once())->method('getDescription')->willReturn('Product Description');
         $item->expects($this->once())->method('getName')->willReturn('Product Name');
         $item->method('getProductUrl')->willReturn('http://magento.com/product-name.html');
-        
+
         return $item;
     }
 

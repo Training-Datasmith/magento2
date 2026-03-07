@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class ConfigPluginTest extends TestCase
     {
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
-            'price' => $this->createMock(AbstractAttribute::class)
+            'price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->specialPriceAttributeMock->expects($this->once())
@@ -88,7 +89,7 @@ class ConfigPluginTest extends TestCase
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
             'price' => $this->createMock(AbstractAttribute::class),
-            'special_price' => $this->createMock(AbstractAttribute::class)
+            'special_price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->eavConfigMock->expects($this->never())
@@ -110,7 +111,7 @@ class ConfigPluginTest extends TestCase
     {
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
-            'price' => $this->createMock(AbstractAttribute::class)
+            'price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->eavConfigMock->expects($this->once())
@@ -135,7 +136,7 @@ class ConfigPluginTest extends TestCase
     {
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
-            'price' => $this->createMock(AbstractAttribute::class)
+            'price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->specialPriceAttributeMock->expects($this->once())
@@ -164,7 +165,7 @@ class ConfigPluginTest extends TestCase
     {
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
-            'price' => $this->createMock(AbstractAttribute::class)
+            'price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->specialPriceAttributeMock->expects($this->once())
@@ -193,7 +194,7 @@ class ConfigPluginTest extends TestCase
     {
         $existingAttributes = [
             'name' => $this->createMock(AbstractAttribute::class),
-            'price' => $this->createMock(AbstractAttribute::class)
+            'price' => $this->createMock(AbstractAttribute::class),
         ];
 
         $this->specialPriceAttributeMock->expects($this->once())
@@ -248,7 +249,7 @@ class ConfigPluginTest extends TestCase
     {
         $reflection = new \ReflectionClass(ConfigPlugin::class);
         $constant = $reflection->getConstant('SPECIAL_PRICE_ATTR_CODE');
-        
+
         $this->assertEquals('special_price', $constant);
     }
 

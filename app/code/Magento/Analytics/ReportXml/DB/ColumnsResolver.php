@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -15,32 +17,15 @@ use Magento\Framework\DB\Sql\ColumnValueExpression;
 class ColumnsResolver
 {
     /**
-     * @var NameResolver
-     */
-    private $nameResolver;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     private $connection;
 
     /**
      * ColumnsResolver constructor.
-     *
-     * @param NameResolver $nameResolver
-     * @param ResourceConnection $resourceConnection
      */
-    public function __construct(
-        NameResolver $nameResolver,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->nameResolver = $nameResolver;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(private readonly NameResolver $nameResolver, private readonly ResourceConnection $resourceConnection)
+    {
     }
 
     /**
@@ -59,11 +44,9 @@ class ColumnsResolver
     /**
      * Set columns list to SelectBuilder
      *
-     * @param SelectBuilder $selectBuilder
-     * @param array $entityConfig
      * @return array
      */
-    public function getColumns(SelectBuilder $selectBuilder, $entityConfig)
+    public function getColumns(SelectBuilder $selectBuilder, array $entityConfig)
     {
         if (!isset($entityConfig['attribute'])) {
             return [];

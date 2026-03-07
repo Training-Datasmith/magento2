@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Message;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -41,7 +44,7 @@ class FactoryTest extends \PHPUnit\Framework\TestCase
             [MessageInterface::TYPE_SUCCESS],
             [MessageInterface::TYPE_NOTICE],
             [MessageInterface::TYPE_WARNING],
-            [MessageInterface::TYPE_ERROR]
+            [MessageInterface::TYPE_ERROR],
         ];
     }
 

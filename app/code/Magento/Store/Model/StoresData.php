@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ class StoresData
     /**
      * Cache tag
      */
-    const CACHE_TAG = 'store_relations';
+    public const CACHE_TAG = 'store_relations';
 
     /**
      * @var \Magento\Framework\Cache\FrontendInterface
@@ -54,7 +55,7 @@ class StoresData
      * @param string|null $scopeCode
      * @return array
      */
-    public function getStoresData(string $runMode, ?string $scopeCode = null) : array
+    public function getStoresData(string $runMode, ?string $scopeCode = null): array
     {
         // md5() here is not for cryptographic use.
         // phpcs:ignore Magento2.Security.InsecureFunction
@@ -70,7 +71,7 @@ class StoresData
                 $cacheKey,
                 [
                     self::CACHE_TAG,
-                    \Magento\Store\Model\Store::CACHE_TAG
+                    \Magento\Store\Model\Store::CACHE_TAG,
                 ]
             );
         }

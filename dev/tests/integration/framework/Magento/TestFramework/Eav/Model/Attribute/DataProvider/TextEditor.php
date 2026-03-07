@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class TextEditor extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeData(),
             [
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     [
                         'default_value_text' => '',
                         'default_value_textarea' => 'Default attribute value',
@@ -50,69 +51,69 @@ class TextEditor extends AbstractBaseAttributeData
         return array_replace_recursive(
             parent::getAttributeDataWithCheckArray(),
             [
-                "{static::getFrontendInput()}_with_required_fields" => [
+                '{static::getFrontendInput()}_with_required_fields' => [
                     1 => [
                         'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_store_view_scope" => [
+                '{static::getFrontendInput()}_with_store_view_scope' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_global_scope" => [
+                '{static::getFrontendInput()}_with_global_scope' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_website_scope" => [
+                '{static::getFrontendInput()}_with_website_scope' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_attribute_code" => [
+                '{static::getFrontendInput()}_with_attribute_code' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_default_value" => [
+                '{static::getFrontendInput()}_with_default_value' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_default_value" => [
+                '{static::getFrontendInput()}_without_default_value' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_unique_value" => [
+                '{static::getFrontendInput()}_with_unique_value' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_unique_value" => [
+                '{static::getFrontendInput()}_without_unique_value' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_enabled_add_to_column_options" => [
+                '{static::getFrontendInput()}_with_enabled_add_to_column_options' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_enabled_add_to_column_options" => [
+                '{static::getFrontendInput()}_without_enabled_add_to_column_options' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_with_enabled_use_in_filter_options" => [
+                '{static::getFrontendInput()}_with_enabled_use_in_filter_options' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
-                "{static::getFrontendInput()}_without_enabled_use_in_filter_options" => [
+                '{static::getFrontendInput()}_without_enabled_use_in_filter_options' => [
                     1 => [
-                        'frontend_input' => 'textarea'
+                        'frontend_input' => 'textarea',
                     ],
                 ],
             ]
@@ -142,7 +143,7 @@ class TextEditor extends AbstractBaseAttributeData
                     ],
                     'expectedData' => [
                         'frontend_input' => 'textarea',
-                        'is_wysiwyg_enabled' => '0'
+                        'is_wysiwyg_enabled' => '0',
                     ],
                 ],
             ]

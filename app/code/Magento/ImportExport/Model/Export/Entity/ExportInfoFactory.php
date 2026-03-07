@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,15 +8,15 @@ declare(strict_types=1);
 
 namespace Magento\ImportExport\Model\Export\Entity;
 
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\ImportExport\Api\Data\ExportInfoInterface;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\ImportExport\Api\Data\FieldsEnclosureAwareExportInfoInterface;
-use \Psr\Log\LoggerInterface;
+use Magento\ImportExport\Model\Export\AbstractEntity;
+use Magento\ImportExport\Model\Export\Adapter\Factory as AdapterFactory;
 use Magento\ImportExport\Model\Export\ConfigInterface;
 use Magento\ImportExport\Model\Export\Entity\Factory as EntityFactory;
-use Magento\ImportExport\Model\Export\Adapter\Factory as AdapterFactory;
-use Magento\ImportExport\Model\Export\AbstractEntity;
+use Psr\Log\LoggerInterface;
 
 /**
  * Factory for Export Info

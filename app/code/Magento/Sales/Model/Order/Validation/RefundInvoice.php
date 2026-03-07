@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\Order\Validation;
 
 use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Sales\Model\Order\Invoice\InvoiceValidatorInterface;
 use Magento\Sales\Model\Order\Creditmemo\CreditmemoValidatorInterface;
 use Magento\Sales\Model\Order\Creditmemo\Item\Validation\CreationQuantityValidator;
 use Magento\Sales\Model\Order\Creditmemo\ItemCreationValidatorInterface;
 use Magento\Sales\Model\Order\Creditmemo\Validation\QuantityValidator;
 use Magento\Sales\Model\Order\Creditmemo\Validation\TotalsValidator;
+use Magento\Sales\Model\Order\Invoice\InvoiceValidatorInterface;
 use Magento\Sales\Model\Order\OrderValidatorInterface;
 use Magento\Sales\Model\ValidatorResultMerger;
 
@@ -86,14 +89,14 @@ class RefundInvoice implements RefundInvoiceInterface
         $orderValidationResult = $this->orderValidator->validate(
             $order,
             [
-                CanRefund::class
+                CanRefund::class,
             ]
         );
         $creditmemoValidationResult = $this->creditmemoValidator->validate(
             $creditmemo,
             [
                 QuantityValidator::class,
-                TotalsValidator::class
+                TotalsValidator::class,
             ]
         );
 
@@ -109,7 +112,7 @@ class RefundInvoice implements RefundInvoiceInterface
         $invoiceValidationResult = $this->invoiceValidator->validate(
             $invoice,
             [
-                \Magento\Sales\Model\Order\Invoice\Validation\CanRefund::class
+                \Magento\Sales\Model\Order\Invoice\Validation\CanRefund::class,
             ]
         );
 

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DataObject;
 
 class IdentityValidatorTest extends \PHPUnit\Framework\TestCase
 {
-    const VALID_UUID = 'fe563e12-cf9d-4faf-82cd-96e011b557b7';
-    const INVALID_UUID = 'abcdef';
+    public const VALID_UUID = 'fe563e12-cf9d-4faf-82cd-96e011b557b7';
+    public const INVALID_UUID = 'abcdef';
 
     /**
      * @var IdentityValidator

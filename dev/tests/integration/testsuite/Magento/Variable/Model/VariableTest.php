@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Model;
 
 class VariableTest extends \PHPUnit\Framework\TestCase
@@ -87,7 +90,7 @@ class VariableTest extends \PHPUnit\Framework\TestCase
         $expectedLabel = '&lt;b&gt;HTML Name value&lt;/b&gt;';
         $data = [
             'code' => 'html_name',
-            'name' => '<b>HTML Name value</b>'
+            'name' => '<b>HTML Name value</b>',
         ];
         $this->_model->setData($data)->save();
         $actualLabel = current(current($this->_model->getVariablesOptionArray())['label']->getArguments());

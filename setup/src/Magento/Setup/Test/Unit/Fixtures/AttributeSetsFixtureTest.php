@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class AttributeSetsFixtureTest extends TestCase
     {
         $this->assertSame([
             'attribute_sets' => 'Attribute Sets (Default)',
-            'product_attribute_sets' => 'Attribute Sets (Extra)'
+            'product_attribute_sets' => 'Attribute Sets (Extra)',
         ], $this->model->introduceParamLabels());
     }
 }

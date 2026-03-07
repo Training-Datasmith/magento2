@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Widget\Model\Widget;
 
 use Magento\Catalog\Model\Product\Type;
@@ -503,7 +506,7 @@ class Instance extends \Magento\Framework\Model\AbstractModel
                         'module' => $this->_namespaceResolver->determineOmittedNamespace(
                             preg_replace('/^(.+?)\/.+$/', '\\1', $this->getType()),
                             true
-                        )
+                        ),
                     ]
                 );
 
@@ -656,7 +659,7 @@ class Instance extends \Magento\Framework\Model\AbstractModel
             [
                 'area' => $this->getArea(),
                 'themeId' => $this->getThemeId(),
-                'module' => \Magento\Framework\View\Element\AbstractBlock::extractModuleName($this->getType())
+                'module' => \Magento\Framework\View\Element\AbstractBlock::extractModuleName($this->getType()),
             ]
         );
         // phpcs:ignore Magento2.Functions.DiscouragedFunction

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,12 +18,12 @@ class Substitution extends AbstractMethod
     /**
      * Method code
      */
-    const CODE = 'substitution';
+    public const CODE = 'substitution';
 
     /**
      * Key of title in instance additional information
      */
-    const INFO_KEY_TITLE = 'method_title';
+    public const INFO_KEY_TITLE = 'method_title';
 
     /**
      * @var string

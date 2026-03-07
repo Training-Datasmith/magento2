@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml;
 
 use Magento\Customer\Api\AccountManagementInterface;
@@ -81,7 +84,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Create Order'),
                     'onclick' => 'setLocation(\'' . $this->getCreateOrderUrl() . '\')',
-                    'class' => 'add'
+                    'class' => 'add',
                 ],
                 0
             );
@@ -108,7 +111,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                 [
                     'label' => __('Reset Password'),
                     'onclick' => 'setLocation(\'' . $url . '\')',
-                    'class' => 'reset reset-password'
+                    'class' => 'reset reset-password',
                 ],
                 0
             );
@@ -123,7 +126,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                     'label' => __('Force Sign-In'),
                     'onclick' => 'deleteConfirm(\'' . $this->escapeJs($this->escapeHtml($deleteConfirmMsg)) .
                         '\', \'' . $url . '\')',
-                    'class' => 'invalidate-token'
+                    'class' => 'invalidate-token',
                 ],
                 10
             );
@@ -209,7 +212,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                         'mage-init' => [
                             'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
                         ],
-                    ]
+                    ],
                 ],
                 10
             );

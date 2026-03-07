@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,20 +9,20 @@
 namespace Magento\Customer\Api;
 
 use Magento\Customer\Model\Data\Group as CustomerGroup;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Model\GroupRegistry;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Customer Group Management API test
  */
 class GroupManagementTest extends WebapiAbstract
 {
-    public const SERVICE_NAME = "customerGroupManagementV1";
-    public const SERVICE_VERSION = "V1";
-    public const RESOURCE_PATH = "/V1/customerGroups";
+    public const SERVICE_NAME = 'customerGroupManagementV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/customerGroups';
 
     /**
      * @var GroupRegistry
@@ -65,7 +67,7 @@ class GroupManagementTest extends WebapiAbstract
         $requestData = ['storeId' => $storeId];
         $groupData = $this->_webApiCall($serviceInfo, $requestData);
 
-        $this->assertEquals($defaultGroupData, $groupData, "The default group does not match.");
+        $this->assertEquals($defaultGroupData, $groupData, 'The default group does not match.');
     }
 
     /**
@@ -82,7 +84,7 @@ class GroupManagementTest extends WebapiAbstract
                     CustomerGroup::ID => 1,
                     CustomerGroup::CODE => 'General',
                     CustomerGroup::TAX_CLASS_ID => 3,
-                    CustomerGroup::TAX_CLASS_NAME => 'Retail Customer'
+                    CustomerGroup::TAX_CLASS_NAME => 'Retail Customer',
                 ],
             ],
             'base' => [
@@ -91,9 +93,9 @@ class GroupManagementTest extends WebapiAbstract
                     CustomerGroup::ID => 1,
                     CustomerGroup::CODE => 'General',
                     CustomerGroup::TAX_CLASS_ID => 3,
-                    CustomerGroup::TAX_CLASS_NAME => 'Retail Customer'
+                    CustomerGroup::TAX_CLASS_NAME => 'Retail Customer',
                 ],
-            ]
+            ],
         ];
     }
 
@@ -121,18 +123,18 @@ class GroupManagementTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception");
+            $this->fail('Expected exception');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
             $this->assertStringContainsString((string)$nonExistentStoreId, $e->getMessage());
         }
@@ -179,7 +181,7 @@ class GroupManagementTest extends WebapiAbstract
             'NOT LOGGED IN' => [0, false],
             'General' => [1, false],
             'Wholesale' => [2, true],
-            'Retailer' => [3, true]
+            'Retailer' => [3, true],
         ];
     }
 
@@ -209,18 +211,18 @@ class GroupManagementTest extends WebapiAbstract
 
         try {
             $this->_webApiCall($serviceInfo, $requestData);
-            $this->fail("Expected exception.");
+            $this->fail('Expected exception.');
         } catch (\SoapFault $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "SoapFault does not contain expected message."
+                'SoapFault does not contain expected message.'
             );
         } catch (\Exception $e) {
             $this->assertStringContainsString(
                 $expectedMessage,
                 $e->getMessage(),
-                "Exception does not contain expected message."
+                'Exception does not contain expected message.'
             );
             $this->assertStringContainsString((string)$groupId, $e->getMessage());
         }

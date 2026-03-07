@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -133,7 +134,7 @@ class ObjectManager extends TestFrameworkObjectManager implements ObjectManagerI
      *
      * @return object[]
      */
-    public function getSharedInstances() : array
+    public function getSharedInstances(): array
     {
         return $this->_sharedInstances;
     }

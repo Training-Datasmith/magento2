@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Config;
 
 use Magento\Framework\App\DeploymentConfig\ValidatorInterface;
@@ -25,7 +28,7 @@ class Validator implements ValidatorInterface
         $entities = [
             ScopeInterface::SCOPE_GROUPS => 0,
             ScopeInterface::SCOPE_STORES => 'admin',
-            ScopeInterface::SCOPE_WEBSITES => 'admin'
+            ScopeInterface::SCOPE_WEBSITES => 'admin',
         ];
         foreach ($entities as $scopeName => $key) {
             if (empty($data[$scopeName])

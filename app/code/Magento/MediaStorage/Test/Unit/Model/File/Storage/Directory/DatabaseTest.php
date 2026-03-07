@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +12,12 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\MediaStorage\Helper\File\Storage\Database as DatabaseHelper;
-use Magento\MediaStorage\Model\File\Storage\Directory\Database as DirectoryDatabase;
 use Magento\MediaStorage\Model\File\Storage;
+use Magento\MediaStorage\Model\File\Storage\Directory\Database as DirectoryDatabase;
 use Magento\MediaStorage\Model\File\Storage\Directory\DatabaseFactory;
 use Magento\MediaStorage\Model\ResourceModel\File\Storage\Directory\Database;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -98,7 +99,7 @@ class DatabaseTest extends TestCase
         $dataProperty->setValue($this->directoryMock, [
             'path' => '',
             'name' => '',
-            'parent_id' => 1
+            'parent_id' => 1,
         ]);
         $this->directoryMock->method('save')->willReturnSelf();
 

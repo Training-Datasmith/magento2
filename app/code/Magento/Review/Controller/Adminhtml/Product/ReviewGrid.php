@@ -1,20 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product;
 
-use Magento\Review\Controller\Adminhtml\Product as ProductController;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Registry;
-use Magento\Review\Model\ReviewFactory;
-use Magento\Review\Model\RatingFactory;
-use Magento\Framework\View\LayoutFactory;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Registry;
+use Magento\Framework\View\LayoutFactory;
+use Magento\Review\Controller\Adminhtml\Product as ProductController;
+use Magento\Review\Model\RatingFactory;
+use Magento\Review\Model\ReviewFactory;
 
 /**
  * Review grid.

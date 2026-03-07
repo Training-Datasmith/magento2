@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -819,7 +820,7 @@ class Filter extends Template
      * @return void
      * @throws MailException
      */
-    private function validateProtocolDirectiveHttpScheme(array $params) : void
+    private function validateProtocolDirectiveHttpScheme(array $params): void
     {
         $parsed_http = parse_url($params['http']);
         $parsed_https = parse_url($params['https']);

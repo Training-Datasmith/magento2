@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,15 +18,15 @@ use Magento\Framework\Data\Form\Element\CollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Text;
 use Magento\Framework\Module\ModuleListInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Helper\Js;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\View\Layout;
 use Magento\User\Model\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -172,7 +173,7 @@ class DisableOutputTest extends TestCase
                 'group'          => $groupMock,
                 'form'           => $formMock,
             ],
-            'secureRenderer' => $secureRendererMock
+            'secureRenderer' => $secureRendererMock,
         ];
 
         $this->objectManager->prepareObjectManager();
@@ -186,7 +187,7 @@ class DisableOutputTest extends TestCase
             [
                 'getExpanded', 'getLegend', 'getComment', 'getTooltip', 'getIsNested',
                 'getId', 'getHtmlId', 'getName', 'toHtml',
-                'addField', 'setRenderer', 'getElements'
+                'addField', 'setRenderer', 'getElements',
             ]
         );
 

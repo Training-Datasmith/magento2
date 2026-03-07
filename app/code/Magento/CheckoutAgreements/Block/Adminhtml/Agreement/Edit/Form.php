@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Block\Adminhtml\Agreement\Edit;
 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
@@ -79,7 +82,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'name',
                 'label' => __('Condition Name'),
                 'title' => __('Condition Name'),
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -91,7 +94,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Status'),
                 'name' => 'is_active',
                 'required' => true,
-                'options' => ['1' => __('Enabled'), '0' => __('Disabled')]
+                'options' => ['1' => __('Enabled'), '0' => __('Disabled')],
             ]
         );
 
@@ -103,7 +106,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Show Content as'),
                 'name' => 'is_html',
                 'required' => true,
-                'options' => [0 => __('Text'), 1 => __('HTML')]
+                'options' => [0 => __('Text'), 1 => __('HTML')],
             ]
         );
 
@@ -115,7 +118,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Applied'),
                 'name' => 'mode',
                 'required' => true,
-                'options' => $this->agreementModeOptions->getOptionsArray()
+                'options' => $this->agreementModeOptions->getOptionsArray(),
             ]
         );
 
@@ -128,7 +131,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                     'label' => __('Store View'),
                     'title' => __('Store View'),
                     'required' => true,
-                    'values' => $this->_systemStore->getStoreValuesForForm(false, true)
+                    'values' => $this->_systemStore->getStoreValuesForForm(false, true),
                 ]
             );
             $renderer = $this->getLayout()->createBlock(
@@ -154,7 +157,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'rows' => '5',
                 'cols' => '30',
                 'wysiwyg' => false,
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -167,7 +170,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'title' => __('Content'),
                 'style' => 'height:24em;',
                 'wysiwyg' => false,
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -179,7 +182,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'label' => __('Content Height (css)'),
                 'title' => __('Content Height'),
                 'maxlength' => 25,
-                'class' => 'validate-css-length'
+                'class' => 'validate-css-length',
             ]
         );
 

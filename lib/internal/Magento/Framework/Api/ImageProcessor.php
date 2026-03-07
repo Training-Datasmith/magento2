@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -190,7 +192,7 @@ class ImageProcessor implements ImageProcessorInterface, ImageContentUploaderInt
         $tmpDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::SYS_TMP);
         $this->uploader->processFileAttributes([
             'tmp_name' => $tmpDirectory->getAbsolutePath() . $tmpFileName,
-            'name' => $fileName
+            'name' => $fileName,
         ]);
         $this->uploader->setFilesDispersion((bool)($flags & self::PATH_DISPERSION));
         // setFilenamesCaseSensitivity is actually setting whether the filenames are case-insensitive,

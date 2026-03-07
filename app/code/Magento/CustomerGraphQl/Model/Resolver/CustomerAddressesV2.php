@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\CustomerGraphQl\Model\Resolver;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Customer\Model\Customer;
+use Magento\CustomerGraphQl\Model\Formatter\CustomerAddresses as AddressFormatter;
 use Magento\CustomerGraphQl\Model\ValidateAddressRequest;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\InputException;
@@ -16,7 +18,6 @@ use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Magento\CustomerGraphQl\Model\Formatter\CustomerAddresses as AddressFormatter;
 
 /**
  * Provides data for customer.addressesV2 with pagination

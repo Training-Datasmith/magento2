@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow;
 
 use Magento\Payment\Api\PaymentVerificationInterface;
@@ -32,7 +35,7 @@ class CvvEmsCodeMapper implements PaymentVerificationInterface
      */
     private static $cvvMap = [
         'Y' => 'M',
-        'N' => 'N'
+        'N' => 'N',
     ];
 
     /**

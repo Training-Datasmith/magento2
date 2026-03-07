@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test class for Form
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Order\Create;
 
 use Magento\Backend\Model\Session\Quote as QuoteSession;
@@ -98,13 +101,13 @@ class FormTest extends \PHPUnit\Framework\TestCase
             'customer_id' => $customerId,
             'addresses' => [
                 $addressIds[0] => $addressData[0],
-                $addressIds[1] => $addressData[1]
+                $addressIds[1] => $addressData[1],
             ],
             'store_id' => 1,
             'currency_symbol' => '$',
             'shipping_method_reseted' => true,
             'payment_method' => 'checkmo',
-            'quote_id' => $quote->getId()
+            'quote_id' => $quote->getId(),
         ];
 
         self::assertEquals($expected, json_decode($this->block->getOrderDataJson(), true));
@@ -164,7 +167,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 'region_id' => 1,
                 'postcode' => '75477',
                 'telephone' => '3468676',
-                'vat_id' => false
+                'vat_id' => false,
             ],
             [
                 'firstname' => 'John',
@@ -178,7 +181,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 'postcode' => '47676',
                 'telephone' => '3234676',
                 'vat_id' => false,
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -100,26 +101,26 @@ class PageTest extends TestCase
 
         $cacheProxy = $this->getMockBuilder(GraphQlResolverCache::class)
             ->setConstructorArgs([
-                $frontendPool
+                $frontendPool,
             ])
             ->onlyMethods(['load', 'save'])
             ->getMock();
 
         // Track call counts and delegate to real implementation
         $realCache = $objectManager->create(GraphQlResolverCache::class, ['frontendPool' => $frontendPool]);
-        
+
         // assert cache proxy calls load at least once for the same CMS page query
         $cacheProxy
             ->expects($this->atLeastOnce())
             ->method('load')
-            ->willReturnCallback(fn($identifier) => $realCache->load($identifier));
+            ->willReturnCallback(fn ($identifier) => $realCache->load($identifier));
 
         // assert save is called at most once for the same CMS page query
         $cacheProxy
             ->expects($this->once())
             ->method('save')
             ->willReturnCallback(
-                fn($data, $identifier, $tags = [], $lifeTime = null) => $realCache->save(
+                fn ($data, $identifier, $tags = [], $lifeTime = null) => $realCache->save(
                     $data,
                     $identifier,
                     $tags,
@@ -168,7 +169,7 @@ class PageTest extends TestCase
 
         $cacheProxy = $this->getMockBuilder(GraphQlResolverCache::class)
             ->setConstructorArgs([
-                $frontendPool
+                $frontendPool,
             ])
             ->onlyMethods(['load', 'save'])
             ->getMock();
@@ -205,7 +206,7 @@ class PageTest extends TestCase
 
         $cacheProxy = $this->getMockBuilder(GraphQlResolverCache::class)
             ->setConstructorArgs([
-                $frontendPool
+                $frontendPool,
             ])
             ->onlyMethods(['save'])
             ->getMock();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -700,7 +701,7 @@ class AccountManagement implements AccountManagementInterface
                     'value' => $template,
                     'fieldName' => 'template',
                     'template1' => AccountManagement::EMAIL_REMINDER,
-                    'template2' => AccountManagement::EMAIL_RESET
+                    'template2' => AccountManagement::EMAIL_RESET,
                 ]
             )
         );
@@ -856,7 +857,7 @@ class AccountManagement implements AccountManagementInterface
         $customerEmail = $customer->getEmail();
         if ($customerEmail === null) {
             throw new LocalizedException(
-                __("The email address is required to create a customer account.")
+                __('The email address is required to create a customer account.')
             );
         }
         if ($password !== null) {
@@ -1119,7 +1120,7 @@ class AccountManagement implements AccountManagementInterface
         $result = $this->eavValidator->isValid($customerModel);
         if ($result === false && is_array($this->eavValidator->getMessages())) {
             return $validationResults->setIsValid(false)->setMessages(
-            // phpcs:ignore Magento2.Functions.DiscouragedFunction
+                // phpcs:ignore Magento2.Functions.DiscouragedFunction
                 call_user_func_array(
                     'array_merge',
                     array_values($this->eavValidator->getMessages())
@@ -1390,7 +1391,7 @@ class AccountManagement implements AccountManagementInterface
             ->setTemplateOptions(
                 [
                     'area' => Area::AREA_FRONTEND,
-                    'store' => $storeId
+                    'store' => $storeId,
                 ]
             )
             ->setTemplateVars($templateParams)
@@ -1443,7 +1444,7 @@ class AccountManagement implements AccountManagementInterface
         /* If an email was used to start the registration process and it is the same email as the one
            used to register, then this can skip confirmation.
            */
-        $skipConfirmationIfEmail = $this->registry->registry("skip_confirmation_if_email");
+        $skipConfirmationIfEmail = $this->registry->registry('skip_confirmation_if_email');
         if (!$skipConfirmationIfEmail) {
             return false;
         }

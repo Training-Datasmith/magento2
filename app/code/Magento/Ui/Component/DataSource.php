@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Framework\View\Element\UiComponent\DataSourceInterface;
 use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
+use Magento\Framework\View\Element\UiComponent\DataSourceInterface;
 
 /**
  * @api
@@ -15,7 +18,7 @@ use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterfac
  */
 class DataSource extends AbstractComponent implements DataSourceInterface
 {
-    const NAME = 'dataSource';
+    public const NAME = 'dataSource';
 
     /**
      * @var DataProviderInterface

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Html;
 
 use Magento\Backend\Model\Menu;
@@ -98,7 +101,7 @@ class Topmenu extends Template implements IdentityInterface
                     $this->getMenu(),
                     $childrenWrapClass,
                     $limit
-                )
+                ),
             ]
         );
 
@@ -293,7 +296,7 @@ class Topmenu extends Template implements IdentityInterface
     {
         return [
             'class' => implode(' ', $this->_getMenuItemClasses($item)),
-            'role' => 'presentation'
+            'role' => 'presentation',
         ];
     }
 
@@ -372,7 +375,7 @@ class Topmenu extends Template implements IdentityInterface
                 [
                     'data' => [],
                     'idField' => 'root',
-                    'tree' => $this->treeFactory->create()
+                    'tree' => $this->treeFactory->create(),
                 ]
             );
         }

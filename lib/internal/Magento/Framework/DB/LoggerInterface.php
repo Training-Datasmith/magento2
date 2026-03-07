@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ interface LoggerInterface
     /**#@+
      * Types of connections to be logged
      */
-    const TYPE_CONNECT     = 'connect';
-    const TYPE_TRANSACTION = 'transaction';
-    const TYPE_QUERY       = 'query';
+    public const TYPE_CONNECT     = 'connect';
+    public const TYPE_TRANSACTION = 'transaction';
+    public const TYPE_QUERY       = 'query';
     /**#@-*/
 
     /**

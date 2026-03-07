@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Control;
 
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\Element\UiComponent\Context;
-use Magento\Framework\View\Element\UiComponentInterface;
 use Magento\Framework\View\Element\UiComponent\Control\ActionPoolInterface;
+use Magento\Framework\View\Element\UiComponentInterface;
 
 /**
  * Class ActionPool
@@ -19,7 +22,7 @@ class ActionPool implements ActionPoolInterface
     /**
      * Actions toolbar block name
      */
-    const ACTIONS_PAGE_TOOLBAR = 'page.actions.toolbar';
+    public const ACTIONS_PAGE_TOOLBAR = 'page.actions.toolbar';
 
     /**
      * Render context
@@ -150,7 +153,7 @@ class ActionPool implements ActionPoolInterface
                 'data' => [
                     'button_item' => $this->items[$key],
                     'context' => $view,
-                ]
+                ],
             ]
         );
 

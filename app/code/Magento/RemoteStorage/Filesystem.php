@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\RemoteStorage;
 
+use Magento\Framework\Filesystem as BaseFilesystem;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
 use Magento\Framework\Filesystem\Directory\WriteFactory;
-use Magento\Framework\Filesystem as BaseFilesystem;
 use Magento\RemoteStorage\Driver\DriverPool;
 use Magento\RemoteStorage\Model\Config;
 

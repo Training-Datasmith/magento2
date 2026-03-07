@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,9 +9,6 @@ declare(strict_types=1);
 namespace Magento\Backup\Test\Unit\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\Forward;
-use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Backup\Controller\Adminhtml\Index\Rollback;
 use Magento\Backup\Helper\Data;
 use Magento\Backup\Model\Backup;
@@ -22,9 +20,9 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Backup\BackupInterface;
 use Magento\Framework\Backup\Factory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -150,7 +148,7 @@ class RollbackTest extends TestCase
             [
                 'objectManager' => $this->objectManagerMock,
                 'request' => $this->requestMock,
-                'response' => $this->responseMock
+                'response' => $this->responseMock,
             ]
         );
         $this->rollbackController = $this->objectManager->getObject(
@@ -159,7 +157,7 @@ class RollbackTest extends TestCase
                 'context' => $this->context,
                 'backupFactory' => $this->backupFactoryMock,
                 'backupModelFactory' => $this->backupModelFactoryMock,
-                'fileFactory' => $this->fileFactoryMock
+                'fileFactory' => $this->fileFactoryMock,
             ]
         );
     }
@@ -214,7 +212,7 @@ class RollbackTest extends TestCase
             ->willReturnMap(
                 [
                     ['time', null, $time],
-                    ['type', null, $type]
+                    ['type', null, $type],
                 ]
             );
         $this->backupModelFactoryMock->expects($this->once())

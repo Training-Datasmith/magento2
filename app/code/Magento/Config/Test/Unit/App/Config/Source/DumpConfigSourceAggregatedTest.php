@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -65,17 +66,17 @@ class DumpConfigSourceAggregatedTest extends TestCase
                         'secure' => ['environment_type' => 'some_environment_value'],
                         'some_key' => [
                             'without_type' => 'some_value',
-                            'sensitive_type' => 'some_sensitive_value'
+                            'sensitive_type' => 'some_sensitive_value',
                         ],
-                    ]
+                    ],
                 ],
                 'test' => [
                     'test' => [
                         'test1' => [
-                            'test2' => ['without_type' => 5]
-                        ]
-                    ]
-                ]
+                            'test2' => ['without_type' => 5],
+                        ],
+                    ],
+                ],
             ]);
 
         $this->sourceTwoMock->expects($this->once())
@@ -84,9 +85,9 @@ class DumpConfigSourceAggregatedTest extends TestCase
             ->willReturn([
                 'default' => [
                     'web' => [
-                        'another_key' => ['sensitive_type' => 'some_sensitive_value']
-                    ]
-                ]
+                        'another_key' => ['sensitive_type' => 'some_sensitive_value'],
+                    ],
+                ],
             ]);
 
         $this->typePoolMock->expects($this->any())
@@ -105,11 +106,11 @@ class DumpConfigSourceAggregatedTest extends TestCase
             [
                 [
                     'source' => $this->sourceTwoMock,
-                    'sortOrder' => 100
+                    'sortOrder' => 100,
                 ],
                 [
                     'source' => $this->sourceMock,
-                    'sortOrder' => 10
+                    'sortOrder' => 10,
                 ],
 
             ],
@@ -129,8 +130,8 @@ class DumpConfigSourceAggregatedTest extends TestCase
                 'test' => [
                     'test' => [
                         'test1' => [
-                            'test2' => ['without_type' => 5]
-                        ]
+                            'test2' => ['without_type' => 5],
+                        ],
                     ],
                 ],
                 'default' => [
@@ -141,7 +142,7 @@ class DumpConfigSourceAggregatedTest extends TestCase
                         'some_key' => [
                             'without_type' => 'some_value',
                         ],
-                    ]
+                    ],
                 ],
             ],
             $this->model->get('')
@@ -166,10 +167,10 @@ class DumpConfigSourceAggregatedTest extends TestCase
                     'web' => [
                         'secure' => ['environment_type' => 'some_environment_value'],
                         'some_key' => [
-                            'sensitive_type' => 'some_sensitive_value'
+                            'sensitive_type' => 'some_sensitive_value',
                         ],
-                        'another_key' => ['sensitive_type' => 'some_sensitive_value']
-                    ]
+                        'another_key' => ['sensitive_type' => 'some_sensitive_value'],
+                    ],
                 ],
             ],
             $this->model->get('')
@@ -182,7 +183,7 @@ class DumpConfigSourceAggregatedTest extends TestCase
             [
                 'web/secure/environment_type',
                 'web/some_key/sensitive_type',
-                'web/another_key/sensitive_type'
+                'web/another_key/sensitive_type',
             ],
             $this->model->getExcludedFields()
         );

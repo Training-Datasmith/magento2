@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class AttributesList implements ResolverInterface
         return [
             'items' => $this->getAttributesMetadata($attributesList['items'], $entityType, $storeId),
             'entity_type' => $entityType,
-            'errors' => $attributesList['errors']
+            'errors' => $attributesList['errors'],
         ];
     }
 

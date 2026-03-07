@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,10 +13,10 @@ use Magento\Checkout\Model\Cart\RequestQuantityProcessor;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Locale\ResolverInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\Plugin;
 use Magento\Multishipping\Model\Checkout\Type\Multishipping\State;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -68,7 +69,7 @@ class PluginTest extends TestCase
                 'getCheckoutState',
                 'setCheckoutState',
                 'getMultiShippingAddressesFlag',
-                'setMultiShippingAddressesFlag'
+                'setMultiShippingAddressesFlag',
             ]
         );
         $this->cartRepositoryMock = $this->createMock(CartRepositoryInterface::class);
@@ -131,7 +132,7 @@ class PluginTest extends TestCase
         $quoteMock = $this->createPartialMock(Quote::class, [
             'getItemsQty',
             'setItemsQty',
-            'collectTotals'
+            'collectTotals',
         ]);
 
         $this->cartMock->method('getQuote')

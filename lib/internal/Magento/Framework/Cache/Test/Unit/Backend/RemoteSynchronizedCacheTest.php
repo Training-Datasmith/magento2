@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ use Magento\Framework\Cache\Backend\Database;
 use Magento\Framework\Cache\Backend\ExtendedBackendInterface;
 use Magento\Framework\Cache\Backend\RemoteSynchronizedCache;
 use Magento\Framework\Cache\Exception\CacheException;
-use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -43,7 +43,7 @@ class RemoteSynchronizedCacheTest extends TestCase
         $this->remoteSyncCacheInstance = new RemoteSynchronizedCache(
             [
                 'remote_backend' => $this->remoteCacheMockExample,
-                'local_backend' => $this->localCacheMockExample
+                'local_backend' => $this->localCacheMockExample,
             ]
         );
     }
@@ -70,21 +70,21 @@ class RemoteSynchronizedCacheTest extends TestCase
             'empty_backend_option' => [
                 'options' => [
                     'remote_backend' => null,
-                    'local_backend' => null
-                ]
+                    'local_backend' => null,
+                ],
             ],
             'empty_remote_backend_option' => [
                 'options' => [
                     'remote_backend' => Database::class,
-                    'local_backend' => null
-                ]
+                    'local_backend' => null,
+                ],
             ],
             'empty_local_backend_option' => [
                 'options' => [
                     'remote_backend' => null,
-                    'local_backend' => 'InvalidBackend'
-                ]
-            ]
+                    'local_backend' => 'InvalidBackend',
+                ],
+            ],
         ];
     }
 
@@ -97,12 +97,12 @@ class RemoteSynchronizedCacheTest extends TestCase
     {
         $remoteMock = $this->createMock(ExtendedBackendInterface::class);
         $localMock = $this->createMock(ExtendedBackendInterface::class);
-        
+
         $options = [
             'remote_backend' => $remoteMock,
-            'local_backend' => $localMock
+            'local_backend' => $localMock,
         ];
-        
+
         $result = new RemoteSynchronizedCache($options);
         $this->assertInstanceOf(RemoteSynchronizedCache::class, $result);
     }

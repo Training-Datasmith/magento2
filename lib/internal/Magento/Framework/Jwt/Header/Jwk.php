@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Jwt\Header;
 
 use Magento\Framework\Jwt\Jwe\JweHeaderParameterInterface;
-use Magento\Framework\Jwt\Jws\JwsHeaderParameterInterface;
 use Magento\Framework\Jwt\Jwk as JwkData;
+use Magento\Framework\Jwt\Jws\JwsHeaderParameterInterface;
 
 /**
  * "jwk" header.

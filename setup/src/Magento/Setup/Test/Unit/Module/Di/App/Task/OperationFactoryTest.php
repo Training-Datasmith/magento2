@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Setup\Module\Di\App\Task\Operation\InterceptionCache;
 use Magento\Setup\Module\Di\App\Task\OperationException;
 use Magento\Setup\Module\Di\App\Task\OperationFactory;
 use Magento\Setup\Module\Di\App\Task\OperationInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class OperationFactoryTest extends TestCase
@@ -81,7 +82,7 @@ class OperationFactoryTest extends TestCase
             [
                 OperationFactory::INTERCEPTION_CACHE,
                 1,
-                InterceptionCache::class
+                InterceptionCache::class,
             ],
         ];
     }

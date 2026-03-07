@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Menu configuration schema locator
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 use Magento\Framework\Config\Dom\UrnResolver;

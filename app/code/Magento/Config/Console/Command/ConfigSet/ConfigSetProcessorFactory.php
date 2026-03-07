@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,15 +29,15 @@ class ConfigSetProcessorFactory
      * default - save configuration
      * lock - save and lock configuration
      */
-    const TYPE_DEFAULT = 'default';
-    
+    public const TYPE_DEFAULT = 'default';
+
     /**
      * @deprecated
      * @see TYPE_LOCK_ENV or TYPE_LOCK_CONFIG
      */
-    const TYPE_LOCK = 'lock';
-    const TYPE_LOCK_ENV = 'lock-env';
-    const TYPE_LOCK_CONFIG = 'lock-config';
+    public const TYPE_LOCK = 'lock';
+    public const TYPE_LOCK_ENV = 'lock-env';
+    public const TYPE_LOCK_CONFIG = 'lock-config';
     /**#@-*/
 
     /**#@-*/

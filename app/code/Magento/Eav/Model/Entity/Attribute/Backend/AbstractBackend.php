@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -213,7 +214,7 @@ abstract class AbstractBackend implements \Magento\Eav\Model\Entity\Attribute\Ba
             if ($this->getAttribute()->getDefaultValue() !== null) {
                 $this->_defaultValue = $this->getAttribute()->getDefaultValue();
             } else {
-                $this->_defaultValue = "";
+                $this->_defaultValue = '';
             }
         }
 

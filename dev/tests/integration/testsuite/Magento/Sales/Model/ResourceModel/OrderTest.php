@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Model\Order as OrderModel;
 use Magento\Sales\Model\Order\Address;
+use Magento\Sales\Model\Order as OrderModel;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory as OrderCollectionFactory;
@@ -117,7 +118,7 @@ class OrderTest extends TestCase
             'city' => 'Los Angeles',
             'email' => 'admin@example.com',
             'telephone' => '11111111',
-            'country_id' => 'US'
+            'country_id' => 'US',
         ];
 
         $billingAddress = $this->objectManager->create(Address::class, ['data' => $addressData]);
@@ -176,10 +177,10 @@ class OrderTest extends TestCase
                 'sku' => 'simple1',
                 'options' => [
                     [
-                        'type' => 'field'
-                    ]
+                        'type' => 'field',
+                    ],
                 ],
-                'price' => 10
+                'price' => 10,
             ],
             'p1'
         ),
@@ -195,7 +196,7 @@ class OrderTest extends TestCase
             'city' => 'Los Angeles',
             'email' => 'admin@example.com',
             'telephone' => '11111111',
-            'country_id' => 'US'
+            'country_id' => 'US',
         ];
 
         $billingAddress = $this->objectManager->create(Address::class, ['data' => $addressData]);
@@ -209,8 +210,8 @@ class OrderTest extends TestCase
         $buyRequest = [
             'qty' => 2,
             'options' => [
-                $this->getLongTextOption()
-            ]
+                $this->getLongTextOption(),
+            ],
         ];
 
         $product = $this->productRepository->get('simple1');

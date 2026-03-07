@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Theme\Test\Unit\Model\Design\Config;
 
 use Magento\Framework\App\Config\Value;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Model\Design\BackendModelFactory;
 use Magento\Theme\Model\Design\Config\ValueProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 class ValueProcessorTest extends TestCase
@@ -53,7 +54,7 @@ class ValueProcessorTest extends TestCase
                     'value' => $value,
                     'field_config' => ['path' => $path],
                     'scope' => $scope,
-                    'scope_id' => $scopeId
+                    'scope_id' => $scopeId,
                 ]
             )
             ->willReturn($this->backendModel);

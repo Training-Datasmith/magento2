@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -55,8 +56,8 @@ class UpdateKeywords
         $this->saveAssetKeywords->execute([
             $this->assetKeywordsFactory->create([
                 'assetId' => $assetId,
-                'keywords' => $this->createKeywords($keywords)
-            ])
+                'keywords' => $this->createKeywords($keywords),
+            ]),
         ]);
     }
 
@@ -72,7 +73,7 @@ class UpdateKeywords
         foreach ($keywords as $keyword) {
             $keywordObjects[] = $this->keywordFactory->create(
                 [
-                    'keyword' => $keyword
+                    'keyword' => $keyword,
                 ]
             );
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Eav\Test\Unit\Model\ResourceModel\Entity;
 
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Attribute\Source\Layout;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\Source\Table;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute;
@@ -70,7 +71,7 @@ class AttributeTest extends TestCase
             'source_model' => Status::class,
             'is_required' => 1,
             'is_user_defined' => 0,
-            'is_unique' => 0
+            'is_unique' => 0,
         ];
 
         $objectManagerHelper = new ObjectManager($this);
@@ -143,7 +144,7 @@ class AttributeTest extends TestCase
             'is_required' => 0,
             'is_user_defined' => 1,
             'is_unique' => 0,
-            'default_value' => "option_3",
+            'default_value' => 'option_3',
         ];
 
         $attributeData = [
@@ -160,7 +161,7 @@ class AttributeTest extends TestCase
             'is_required' => 0,
             'is_user_defined' => 1,
             'is_unique' => 0,
-            'default_value' => "option_3",
+            'default_value' => 'option_3',
             'default' => ['option_1'],
             'sort_order' => 1,
         ];
@@ -180,14 +181,14 @@ class AttributeTest extends TestCase
                     [
                         'option_1' => ['choice_1', 'Frontend choice_1'],
                         'option_2' => ['choice_2', 'Frontend choice_2'],
-                        'option_3' => ['choice_3', 'Frontend choice_3']
-                    ]
+                        'option_3' => ['choice_3', 'Frontend choice_3'],
+                    ],
             ]
         );
 
         $connectionMock->expects($this->any())
             ->method('update')
-            ->with('eav_attribute', $this->logicalOr($originalData, ['default_value' => "option_1"]));
+            ->with('eav_attribute', $this->logicalOr($originalData, ['default_value' => 'option_1']));
 
         $resourceModel->save($model);
     }
@@ -241,7 +242,7 @@ class AttributeTest extends TestCase
             'update'
         )->willReturnMap(
             [
-                ['eav_attribute', ['default_value' => ''], ['attribute_id = ?' => 123], 1]
+                ['eav_attribute', ['default_value' => ''], ['attribute_id = ?' => 123], 1],
             ]
         );
         $connectionMock->expects(
@@ -275,12 +276,12 @@ class AttributeTest extends TestCase
                 [
                     'eav_attribute_option_value',
                     ['option_id' => 123, 'store_id' => 0, 'value' => 'Backend Label'],
-                    1
+                    1,
                 ],
                 [
                     'eav_attribute_option_value',
                     ['option_id' => 123, 'store_id' => 1, 'value' => 'Frontend Label'],
-                    1
+                    1,
                 ],
             ]
         );
@@ -338,7 +339,7 @@ class AttributeTest extends TestCase
                     'beginTransaction',
                     'commit',
                     'select',
-                    'getTransactionLevel'
+                    'getTransactionLevel',
                 ]
             )
             ->disableOriginalConstructor()
@@ -385,7 +386,7 @@ class AttributeTest extends TestCase
         )->willReturn(
             [
                 new DataObject(['id' => 0]),
-                new DataObject(['id' => 1])
+                new DataObject(['id' => 1]),
             ]
         );
 

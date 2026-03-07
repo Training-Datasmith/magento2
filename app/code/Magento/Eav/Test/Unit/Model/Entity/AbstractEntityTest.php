@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class AbstractEntityTest extends TestCase
                 'attribute1Sort' => ['group_sort' => 7, 'sort' => 5],
                 'attribute2Sort' => ['group_sort' => 7, 'sort' => 5],
                 'expected' => 0,
-            ]
+            ],
         ];
     }
 
@@ -143,7 +144,7 @@ class AbstractEntityTest extends TestCase
             'prepareColumnValue',
             'select',
             'query',
-            'delete'
+            'delete',
         ]);
         $statement = $this->createPartialMock(
             \Zend_Db_Statement::class,
@@ -187,9 +188,9 @@ class AbstractEntityTest extends TestCase
                 [
                     'PK_ENTITYTABLE' => [
                         'COLUMNS_LIST' => [
-                            'entity_id'
-                        ]
-                    ]
+                            'entity_id',
+                        ],
+                    ],
                 ]
             );
 
@@ -294,8 +295,8 @@ class AbstractEntityTest extends TestCase
                 'data' => [
                     'type' => $entityType,
                     'entityTable' => 'entityTable',
-                    'attributesByCode' => $attributes
-                ]
+                    'attributesByCode' => $attributes,
+                ],
             ]
         );
         /** @var AbstractEntity|MockObject $model */
@@ -328,7 +329,7 @@ class AbstractEntityTest extends TestCase
                     'test_attr' => 'test_attr',
                     'attribute_set_id' => $attributeSetId,
                     'entity_id' => null,
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
                 null,
             ],
@@ -339,16 +340,16 @@ class AbstractEntityTest extends TestCase
                     'test_attr' => 'test_attr',
                     'attribute_set_id' => $attributeSetId,
                     'entity_id' => 12345,
-                    'store_id' => 1
+                    'store_id' => 1,
                 ],
-                ['test_attr' => 'test_attr']
+                ['test_attr' => 'test_attr'],
             ],
             [
                 'test_attr',
                 $attributeSetId,
                 ['test_attr' => '99.99', 'attribute_set_id' => $attributeSetId, 'entity_id' => 12345, 'store_id' => 1],
-                ['test_attr' => '99.9900']
-            ]
+                ['test_attr' => '99.9900'],
+            ],
         ];
     }
 

@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\TemplateEngine;
 
 use Magento\Framework\View\Element\BlockInterface;
-use Magento\Framework\View\TemplateEngineInterface;
-use Magento\Framework\View\TemplateEngine\Xhtml\Template;
+use Magento\Framework\View\Element\UiComponent\Config\Provider\Template as TemplateProvider;
+use Magento\Framework\View\TemplateEngine\Xhtml\CompilerFactory;
 use Magento\Framework\View\TemplateEngine\Xhtml\ResultFactory;
 use Magento\Framework\View\TemplateEngine\Xhtml\ResultInterface;
-use Magento\Framework\View\TemplateEngine\Xhtml\CompilerFactory;
+use Magento\Framework\View\TemplateEngine\Xhtml\Template;
 use Magento\Framework\View\TemplateEngine\Xhtml\TemplateFactory;
-use Magento\Framework\View\Element\UiComponent\Config\Provider\Template as TemplateProvider;
+use Magento\Framework\View\TemplateEngineInterface;
 
 /**
  * Class Xhtml
@@ -81,7 +84,7 @@ class Xhtml implements TemplateEngineInterface
             [
                 'template' => $template,
                 'compiler' => $this->compilerFactory->create(),
-                'component' => $block
+                'component' => $block,
             ]
         );
 

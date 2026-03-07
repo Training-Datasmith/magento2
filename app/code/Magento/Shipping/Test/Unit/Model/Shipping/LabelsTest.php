@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,10 +11,11 @@ namespace Magento\Shipping\Test\Unit\Model\Shipping;
 use Magento\Backend\Model\Auth\Session;
 use Magento\Directory\Model\Region;
 use Magento\Directory\Model\RegionFactory;
-use Magento\Quote\Model\Quote\Address\RateRequestFactory;
 use Magento\Framework\App\Config;
 use Magento\Framework\DataObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Quote\Model\Quote\Address\RateRequestFactory;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\Order\Shipment;
@@ -26,7 +28,6 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\User\Model\User;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -106,8 +107,8 @@ class LabelsTest extends TestCase
         $objects = [
             [
                 RateRequestFactory::class,
-                $this->createMock(RateRequestFactory::class)
-            ]
+                $this->createMock(RateRequestFactory::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 
@@ -119,7 +120,7 @@ class LabelsTest extends TestCase
                 'storeManager' => $storeManager,
                 'scopeConfig' => $this->scopeConfig,
                 'authSession' => $authSession,
-                'regionFactory' => $regionFactory
+                'regionFactory' => $regionFactory,
             ]
         );
     }
@@ -174,7 +175,7 @@ class LabelsTest extends TestCase
                 [Shipment::XML_PATH_STORE_REGION_ID, ScopeInterface::SCOPE_STORE, $storeId, $regionId],
                 [Shipment::XML_PATH_STORE_ADDRESS1, ScopeInterface::SCOPE_STORE, $storeId, 'Beverly Heals'],
                 ['general/store_information', ScopeInterface::SCOPE_STORE, $storeId, [
-                    'name' => 'General Store', 'phone' => '(244)1500301'
+                    'name' => 'General Store', 'phone' => '(244)1500301',
                 ]],
                 [Shipment::XML_PATH_STORE_CITY, ScopeInterface::SCOPE_STORE, $storeId, 'LA'],
                 [Shipment::XML_PATH_STORE_ZIP, ScopeInterface::SCOPE_STORE, $storeId, '90304'],
@@ -296,11 +297,11 @@ class LabelsTest extends TestCase
     {
         return [
             [
-                'CA'
+                'CA',
             ],
             [
-                null
-            ]
+                null,
+            ],
         ];
     }
 
@@ -312,11 +313,11 @@ class LabelsTest extends TestCase
     {
         return [
             [
-                true
+                true,
             ],
             [
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

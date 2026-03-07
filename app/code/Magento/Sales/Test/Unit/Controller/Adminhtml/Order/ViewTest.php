@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -164,7 +165,7 @@ class ViewTest extends TestCase
                 'objectManager' => $this->objectManagerMock,
                 'actionFlag' => $this->actionFlagMock,
                 'messageManager' => $this->messageManagerMock,
-                'resultRedirectFactory' => $this->resultRedirectFactoryMock
+                'resultRedirectFactory' => $this->resultRedirectFactoryMock,
             ]
         );
         $this->viewAction = $objectManager->getObject(
@@ -176,7 +177,7 @@ class ViewTest extends TestCase
                 'resultRedirectFactory' => $this->resultRedirectFactoryMock,
                 'orderManagement' => $this->orderManagementMock,
                 'orderRepository' => $this->orderRepositoryMock,
-                'logger' => $this->loggerMock
+                'logger' => $this->loggerMock,
             ]
         );
     }

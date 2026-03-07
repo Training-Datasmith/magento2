@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
     /**
      * Entity type
      */
-    const ENTITY_TYPE = 'persistor';
+    public const ENTITY_TYPE = 'persistor';
 
     /**
      * Retrieve class properties
@@ -48,7 +50,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                             'description' => $this->_getSourceResourceClassName(),
                         ],
                     ],
-                ]
+                ],
             ],
             [
                 'name' => 'resource',
@@ -61,7 +63,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                             'description' => '\\' . \Magento\Framework\App\ResourceConnection::class,
                         ],
                     ],
-                ]
+                ],
             ],
             [
                 'name' => 'connection',
@@ -74,7 +76,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                             'description' => '\\' . \Magento\Framework\DB\Adapter\AdapterInterface::class,
                         ],
                     ],
-                ]
+                ],
             ],
             [
                 'name' => 'entitiesPool',
@@ -88,7 +90,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                             'description' => 'array',
                         ],
                     ],
-                ]
+                ],
             ],
             [
                 'name' => 'stack',
@@ -102,7 +104,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                             'description' => 'array',
                         ],
                     ],
-                ]
+                ],
             ],
         ];
         return $properties;
@@ -124,7 +126,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
      */
     protected function _getSourceResourcePropertyName() // InvoiceResource
     {
-        return lcfirst($this->getSourceClassNameWithoutNamespace()) . "Resource";
+        return lcfirst($this->getSourceClassNameWithoutNamespace()) . 'Resource';
     }
 
     /**
@@ -156,7 +158,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
             $this->_getRegisterNewMethod(),
             $this->_getRegisterFromArrayMethod(),
             $this->_getDoPersistMethod(),
-            $this->_getDoPersistEntityMethod()
+            $this->_getDoPersistEntityMethod(),
         ];
     }
 
@@ -176,20 +178,20 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 ],
                 [
                     'name' => $this->_getSourceFactoryPropertyName(),
-                    'type' => $this->getSourceClassName() . 'Factory'
+                    'type' => $this->getSourceClassName() . 'Factory',
                 ],
                 [
                     'name' => 'resource',
-                    'type' => '\\' . \Magento\Framework\App\ResourceConnection::class
+                    'type' => '\\' . \Magento\Framework\App\ResourceConnection::class,
                 ],
             ],
-            'body' => "\$this->"
+            'body' => '$this->'
                 . $this->_getSourceResourcePropertyName()
-                . " = \$" . $this->_getSourceResourcePropertyName() . ";\n"
-                . "\$this->"
+                . ' = $' . $this->_getSourceResourcePropertyName() . ";\n"
+                . '$this->'
                 . $this->_getSourceFactoryPropertyName()
-                . " = \$" . $this->_getSourceFactoryPropertyName() . ";\n"
-                . "\$this->resource = \$resource;"
+                . ' = $' . $this->_getSourceFactoryPropertyName() . ";\n"
+                . '$this->resource = $resource;'
             ,
             'docblock' => [
                 'shortDescription' => ucfirst(static::ENTITY_TYPE) . ' constructor',
@@ -197,19 +199,19 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                     [
                         'name' => 'param',
                         'description' => $this->_getSourceResourceClassName()
-                            . " \$" . $this->_getSourceResourcePropertyName(),
+                            . ' $' . $this->_getSourceResourcePropertyName(),
                     ],
                     [
                         'name' => 'param',
                         'description' => $this->getSourceClassName() . 'Factory'
-                            . " \$" . $this->_getSourceFactoryPropertyName()
+                            . ' $' . $this->_getSourceFactoryPropertyName(),
                     ],
                     [
                         'name' => 'param',
-                        'description' => '\Magento\Framework\App\ResourceConnection $resource'
+                        'description' => '\Magento\Framework\App\ResourceConnection $resource',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -219,10 +221,10 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
     protected function _getGetConnectionMethod()
     {
         $body = "if (!\$this->connection) {\n"
-        . "    \$this->connection = \$this->resource->getConnection("
+        . '    $this->connection = $this->resource->getConnection('
         . "\\Magento\\Framework\\App\\ResourceConnection::DEFAULT_CONNECTION);\n"
         . "}\n"
-        . "return \$this->connection;";
+        . 'return $this->connection;';
 
         return [
             'name' => 'getConnection',
@@ -233,10 +235,10 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'return',
-                        'description' => "array \\Magento\\Framework\\DB\\Adapter\\AdapterInterface",
+                        'description' => 'array \\Magento\\Framework\\DB\\Adapter\\AdapterInterface',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -248,7 +250,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
     protected function _getLoadEntityMethod()
     {
         $body = "\$entity = \$this->{$this->_getSourceFactoryPropertyName()}->create()->load(\$key);\n"
-            . "return \$entity;";
+            . 'return $entity;';
         return [
             'name' => 'loadEntity',
             'parameters' => [
@@ -262,14 +264,14 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'param',
-                        'description' => "int \$key",
+                        'description' => 'int $key',
                     ],
                     [
                         'name' => 'return',
-                        'description' => $this->_getResultClassName() . " \$entity"
+                        'description' => $this->_getResultClassName() . ' $entity',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -285,7 +287,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
             . "\$this->entitiesPool[\$hash] = [\n"
             . "    'entity' => \$entity,\n"
             . "    'action' => 'removed'\n"
-            . "];";
+            . '];';
         return [
             'name' => 'registerDeleted',
             'parameters' => [
@@ -300,10 +302,10 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'param',
-                        'description' => $this->getSourceClassName() . " \$entity",
+                        'description' => $this->getSourceClassName() . ' $entity',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -336,7 +338,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
             . "} catch (\\Exception \$e) {\n"
             . "    \$this->getConnection()->rollback();\n"
             . "    throw \$e;\n"
-            . "}";
+            . '}';
         return [
             'name' => 'doPersist',
             'parameters' => [
@@ -352,14 +354,14 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'param',
-                        'description' => "int \$items",
+                        'description' => 'int $items',
                     ],
                     [
                         'name' => 'return',
-                        'description' => "array",
+                        'description' => 'array',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -381,7 +383,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
             . "     unset(\$this->entitiesPool[\$hash]);\n"
             . "}\n"
             . "\$action == 'created' ? \$this->registerNew(\$entity) : \$this->registerDeleted(\$entity);\n"
-            . "return \$this->doPersist(1);";
+            . 'return $this->doPersist(1);';
         return [
             'name' => 'doPersistEntity',
             'parameters' => [
@@ -396,10 +398,10 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'param',
-                        'description' => $this->getSourceClassName() . " \$entity",
+                        'description' => $this->getSourceClassName() . ' $entity',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -412,7 +414,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
     {
         $body = "\$entity = \$this->{$this->_getSourceFactoryPropertyName()}->create(['data' => \$data]);\n"
             . "\$this->registerNew(\$entity);\n"
-            . "return \$entity;";
+            . 'return $entity;';
         return [
             'name' => 'registerFromArray',
             'parameters' => [
@@ -427,14 +429,14 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
                 'tags' => [
                     [
                         'name' => 'param',
-                        'description' => "array \$data",
+                        'description' => 'array $data',
                     ],
                     [
                         'name' => 'param',
-                        'description' => $this->getSourceClassName() . " \$entity",
+                        'description' => $this->getSourceClassName() . ' $entity',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -451,7 +453,7 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
             . "     'action' => 'created'\n"
             . "];\n"
             . "array_push(\$this->stack, \$hash);\n"
-            . "\$this->entitiesPool[\$hash] = \$data;";
+            . '$this->entitiesPool[$hash] = $data;';
         return [
             'name' => 'registerNew',
             'parameters' => [
@@ -467,10 +469,10 @@ class Persistor extends \Magento\Framework\Code\Generator\EntityAbstract
 
                     [
                         'name' => 'param',
-                        'description' => $this->getSourceClassName() . " \$entity",
+                        'description' => $this->getSourceClassName() . ' $entity',
                     ],
                 ],
-            ]
+            ],
         ];
     }
 

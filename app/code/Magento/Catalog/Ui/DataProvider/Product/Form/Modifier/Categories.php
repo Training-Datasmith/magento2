@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -197,7 +198,7 @@ class Categories extends AbstractModifier
                                 'title' => __('New Category'),
                             ],
                             'imports' => [
-                                'state' => '!index=create_category:responseStatus'
+                                'state' => '!index=create_category:responseStatus',
                             ],
                         ],
                     ],
@@ -217,7 +218,7 @@ class Categories extends AbstractModifier
                                         [
                                             'handle' => 'catalog_category_create',
                                             'store' => $this->locator->getStore()->getId(),
-                                            'buttons' => 1
+                                            'buttons' => 1,
                                         ]
                                     ),
                                     'autoRender' => false,
@@ -228,9 +229,9 @@ class Categories extends AbstractModifier
                                     'formSubmitType' => 'ajax',
                                 ],
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ]
         );
     }
@@ -286,7 +287,7 @@ class Categories extends AbstractModifier
                                 'options' => $this->getCategoriesTree(),
                                 'listens' => [
                                     'index=create_category:responseData' => 'setParsed',
-                                    'newOption' => 'toggleOptionSelected'
+                                    'newOption' => 'toggleOptionSelected',
                                 ],
                                 'config' => [
                                     'dataScope' => $fieldCode,
@@ -296,7 +297,7 @@ class Categories extends AbstractModifier
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
         if ($this->isAllowed()) {
             $value['children']['create_category_button'] = [
@@ -317,12 +318,12 @@ class Categories extends AbstractModifier
                                 ],
                                 [
                                     'targetName' => 'product_form.product_form.create_category_modal.create_category',
-                                    'actionName' => 'render'
+                                    'actionName' => 'render',
                                 ],
                                 [
                                     'targetName' => 'product_form.product_form.create_category_modal.create_category',
-                                    'actionName' => 'resetForm'
-                                ]
+                                    'actionName' => 'resetForm',
+                                ],
                             ],
                             'additionalForGroup' => true,
                             'provider' => false,
@@ -332,7 +333,7 @@ class Categories extends AbstractModifier
                             'dataScope'  => $fieldCode,
                         ],
                     ],
-                ]
+                ],
             ];
         }
         $meta = $this->arrayManager->merge($containerPath, $meta, $value);
@@ -368,7 +369,7 @@ class Categories extends AbstractModifier
             $this->getCategoriesTreeCacheId($storeId, (string) $filter),
             [
                 \Magento\Catalog\Model\Category::CACHE_TAG,
-                \Magento\Framework\App\Cache\Type\Block::CACHE_TAG
+                \Magento\Framework\App\Cache\Type\Block::CACHE_TAG,
             ]
         );
 
@@ -403,7 +404,7 @@ class Categories extends AbstractModifier
      * @return array
      * @throws LocalizedException
      */
-    private function retrieveShownCategoriesIds(int $storeId, string $filter = '') : array
+    private function retrieveShownCategoriesIds(int $storeId, string $filter = ''): array
     {
         /* @var $matchingNamesCollection \Magento\Catalog\Model\ResourceModel\Category\Collection */
         $matchingNamesCollection = $this->categoryCollectionFactory->create();
@@ -439,7 +440,7 @@ class Categories extends AbstractModifier
      * @return array|null
      * @throws LocalizedException
      */
-    private function retrieveCategoriesTree(int $storeId, array $shownCategoriesIds) : ?array
+    private function retrieveCategoriesTree(int $storeId, array $shownCategoriesIds): ?array
     {
         /* @var $collection \Magento\Catalog\Model\ResourceModel\Category\Collection */
         $collection = $this->categoryCollectionFactory->create();

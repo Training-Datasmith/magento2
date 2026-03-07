@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,12 +13,6 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class Metrics
 {
-    /**
-     * @param int $peakMemoryUsage
-     * @param int $memoryUsage
-     * @param array $rusage
-     * @param float $microtime
-     */
     public function __construct(
         private readonly int $peakMemoryUsage,
         private readonly int $memoryUsage,
@@ -28,40 +23,32 @@ class Metrics
 
     /**
      * Gets peak memory usage
-     *
-     * @return int
      */
-    public function getPeakMemoryUsage() : int
+    public function getPeakMemoryUsage(): int
     {
         return $this->peakMemoryUsage;
     }
 
     /**
      * Gets memory usage
-     *
-     * @return int
      */
-    public function getMemoryUsage() : int
+    public function getMemoryUsage(): int
     {
         return $this->memoryUsage;
     }
 
     /**
      * Gets fusage
-     *
-     * @return array
      */
-    public function getRusage() : array
+    public function getRusage(): array
     {
         return $this->rusage;
     }
 
     /**
      * Gets microtime
-     *
-     * @return float
      */
-    public function getMicrotime() : float
+    public function getMicrotime(): float
     {
         return $this->microtime;
     }

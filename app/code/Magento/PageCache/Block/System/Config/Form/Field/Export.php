@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Block\System\Config\Form\Field;
 
 /**
@@ -27,7 +30,7 @@ class Export extends \Magento\Config\Block\System\Config\Form\Field
 
         $params = [
             'website' => $buttonBlock->getRequest()->getParam('website'),
-            'varnish' => $this->getVarnishVersion()
+            'varnish' => $this->getVarnishVersion(),
         ];
 
         $data = [

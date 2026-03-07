@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\ReportXml;
 
 use Magento\Framework\Config\DataInterface;
@@ -13,19 +16,10 @@ use Magento\Framework\Config\DataInterface;
 class Config implements ConfigInterface
 {
     /**
-     * @var DataInterface
-     */
-    private $data;
-
-    /**
      * Config constructor.
-     *
-     * @param DataInterface $data
      */
-    public function __construct(
-        DataInterface $data
-    ) {
-        $this->data = $data;
+    public function __construct(private readonly DataInterface $data)
+    {
     }
 
     /**

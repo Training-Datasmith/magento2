@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\GiftMessage\Setup\Patch\Data;
 
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Setup\CategorySetupFactory;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
@@ -52,12 +53,12 @@ class UpdateGiftMessageAttribute implements DataPatchInterface, PatchVersionInte
         $categorySetup = $this->categorySetupFactory->create(['setup' => $this->moduleDataSetup]);
         $entityTypeId = $categorySetup->getEntityTypeId(Product::ENTITY);
         $attribute = $categorySetup->getAttribute($entityTypeId, 'gift_message_available');
-            $categorySetup->updateAttribute(
-                $entityTypeId,
-                $attribute['attribute_id'],
-                'source_model',
-                \Magento\Catalog\Model\Product\Attribute\Source\Boolean::class
-            );
+        $categorySetup->updateAttribute(
+            $entityTypeId,
+            $attribute['attribute_id'],
+            'source_model',
+            \Magento\Catalog\Model\Product\Attribute\Source\Boolean::class
+        );
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
@@ -67,7 +68,7 @@ class UpdateGiftMessageAttribute implements DataPatchInterface, PatchVersionInte
     public static function getDependencies()
     {
         return [
-            MoveGiftMessageToGiftOptionsGroup::class
+            MoveGiftMessageToGiftOptionsGroup::class,
         ];
     }
 

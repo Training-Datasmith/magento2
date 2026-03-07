@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Checkout\Api;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Checkout\Api\Data\ShippingInformationInterfaceFactory;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Framework\Exception\InputException;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Exception\InputException;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -104,7 +105,7 @@ class ShippingInformationManagementTest extends TestCase
     {
         return [
             'Shipping address swap' => [true],
-            'Billing address swap' => [false]
+            'Billing address swap' => [false],
         ];
     }
 }

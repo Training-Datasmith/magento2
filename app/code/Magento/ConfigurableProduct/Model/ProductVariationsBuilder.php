@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -64,7 +66,7 @@ class ProductVariationsBuilder
                 $customAttributes = array_merge(
                     $item->getCustomAttributes(),
                     [
-                        $attributes[$attributeId]['attribute_code'] => $customAttribute
+                        $attributes[$attributeId]['attribute_code'] => $customAttribute,
                     ]
                 );
                 $item->setData('custom_attributes', $customAttributes);

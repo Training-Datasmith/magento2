@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Serialize\Test\Unit\Serializer;
 use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JsonTest extends TestCase
 {
@@ -115,7 +116,7 @@ class JsonTest extends TestCase
             ['', 'Unable to unserialize value.'],
             [false, 'Unable to unserialize value.'],
             [null, 'Unable to unserialize value. Error: Parameter must be a string type, null given.'],
-            ['{', 'Unable to unserialize value.']
+            ['{', 'Unable to unserialize value.'],
         ];
     }
 }

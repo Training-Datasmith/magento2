@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\Customer\ViewModel;
 
-use Magento\Directory\Helper\Data as DataHelper;
 use Magento\Customer\Helper\Address as AddressHelper;
+use Magento\Directory\Helper\Data as DataHelper;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
- /**
-  * Custom address view model
-  */
+/**
+ * Custom address view model
+ */
 class Address implements ArgumentInterface
 {
     /**
@@ -37,8 +39,8 @@ class Address implements ArgumentInterface
         DataHelper $helperData,
         AddressHelper $helperAddress
     ) {
-        $this->helperData= $helperData;
-        $this->helperAddress= $helperAddress;
+        $this->helperData = $helperData;
+        $this->helperAddress = $helperAddress;
     }
 
     /**

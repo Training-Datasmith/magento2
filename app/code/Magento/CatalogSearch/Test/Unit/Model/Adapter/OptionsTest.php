@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class OptionsTest extends TestCase
         $this->options = $helper->getObject(
             Options::class,
             [
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
     }
@@ -51,7 +52,7 @@ class OptionsTest extends TestCase
             'interval_division_limit' => 15,
             'range_step' => 3.3,
             'min_range_power' => 10,
-            'max_intervals_number' => 33
+            'max_intervals_number' => 33,
         ];
 
         $this->scopeConfig

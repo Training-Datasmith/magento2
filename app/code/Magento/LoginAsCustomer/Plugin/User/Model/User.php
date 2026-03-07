@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\LoginAsCustomer\Plugin\User\Model;
 
 use Exception;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\LoginAsCustomer\Model\Validator\UserRolePermission;
 use Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForUserInterface;
 use Magento\User\Api\Data\UserInterface;
 use Magento\User\Model\User as UserModel;
-use Magento\LoginAsCustomer\Model\Validator\UserRolePermission;
 use Psr\Log\LoggerInterface;
 
 /**

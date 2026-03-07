@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -97,7 +98,7 @@ class ValueCheckerTest extends TestCase
             ->with($path, 'default', 0)
             ->willReturn([
                 [
-                    'qwe' => 123
+                    'qwe' => 123,
                 ],
             ]);
         $this->valueProcessor->expects($this->atLeastOnce())
@@ -107,7 +108,7 @@ class ValueCheckerTest extends TestCase
             $this->valueChecker->isDifferentFromDefault(
                 [
                     [
-                        'sdf' => 1
+                        'sdf' => 1,
                     ],
 
                 ],

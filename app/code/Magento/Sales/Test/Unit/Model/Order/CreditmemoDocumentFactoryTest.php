@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,22 +10,22 @@ namespace Magento\Sales\Test\Unit\Model\Order;
 
 use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\EntityManager\HydratorPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\CreditmemoCommentCreationInterface;
 use Magento\Sales\Api\Data\CreditmemoCommentInterface;
-use Magento\Sales\Model\Order\Creditmemo\Comment as CreditmemoComment;
 use Magento\Sales\Api\Data\CreditmemoCommentInterfaceFactory;
 use Magento\Sales\Api\Data\CreditmemoCreationArgumentsInterface;
 use Magento\Sales\Api\Data\CreditmemoItemCreationInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Creditmemo;
+use Magento\Sales\Model\Order\Creditmemo\Comment as CreditmemoComment;
 use Magento\Sales\Model\Order\CreditmemoDocumentFactory;
 use Magento\Sales\Model\Order\CreditmemoFactory;
 use Magento\Sales\Model\Order\Invoice;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -132,7 +133,7 @@ class CreditmemoDocumentFactoryTest extends TestCase
                 'creditmemoFactory' => $this->creditmemoFactoryMock,
                 'commentFactory' => $this->commentFactoryMock,
                 'hydratorPool' => $this->hydratorPoolMock,
-                'orderRepository' => $this->orderRepositoryMock
+                'orderRepository' => $this->orderRepositoryMock,
             ]
         );
     }
@@ -157,15 +158,15 @@ class CreditmemoDocumentFactoryTest extends TestCase
             ->method('extract')
             ->willReturnMap([
                 [$this->commentCreationArgumentsMock, ['shipping_amount' => '20.00']],
-                [$this->commentCreationMock, ['comment' => 'text']]
+                [$this->commentCreationMock, ['comment' => 'text']],
             ]);
         $this->commentFactoryMock->expects($this->once())
             ->method('create')
             ->with(
                 [
                     'data' => [
-                        'comment' => 'text'
-                    ]
+                        'comment' => 'text',
+                    ],
                 ]
             )
             ->willReturn($this->commentMock);
@@ -202,7 +203,7 @@ class CreditmemoDocumentFactoryTest extends TestCase
                 $this->orderMock,
                 [
                     'shipping_amount' => '20.00',
-                    'qtys' => [7 => 3]
+                    'qtys' => [7 => 3],
                 ]
             )
             ->willReturn($this->creditmemoMock);
@@ -224,7 +225,7 @@ class CreditmemoDocumentFactoryTest extends TestCase
                 $this->invoiceMock,
                 [
                     'shipping_amount' => '20.00',
-                    'qtys' => [7 => 3]
+                    'qtys' => [7 => 3],
                 ]
             )
             ->willReturn($this->creditmemoMock);

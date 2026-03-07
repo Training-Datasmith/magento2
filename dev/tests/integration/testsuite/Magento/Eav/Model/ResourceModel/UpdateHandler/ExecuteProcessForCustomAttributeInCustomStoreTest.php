@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\Eav\Model\ResourceModel\UpdateHandler;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-
 use Magento\Catalog\Model\Product;
+
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use Magento\Eav\Model\ResourceModel\UpdateHandler;
 use Magento\Eav\Model\ResourceModel\UpdateHandlerAbstract;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\ResourceModel\UpdateHandler;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppArea adminhtml
@@ -100,7 +102,6 @@ class ExecuteProcessForCustomAttributeInCustomStoreTest extends UpdateHandlerAbs
 
         $this->assertSame($expected, $resultEntity->getData($code));
     }
-
 
     /**
      * @return array

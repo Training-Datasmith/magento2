@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Unit\Model\Metadata\Form;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Model\Metadata\Form\Multiline;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /** Test Magento\Customer\Model\Metadata\Form\Multiline */
 class MultilineTest extends TextTest
@@ -54,7 +55,7 @@ class MultilineTest extends TextTest
             [
                 'lines' => [['one', 'two'], true],
                 'mixed lines' => [['one', '', ''], true],
-                'empty lines' => [['', '', ''], '"" is a required value.']
+                'empty lines' => [['', '', ''], '"" is a required value.'],
             ]
         );
     }
@@ -89,7 +90,7 @@ class MultilineTest extends TextTest
                 'short and long' => [
                     ['01', '0123456789'],
                     '"" length must be equal or greater than 4 characters.',
-                ]
+                ],
             ]
         );
     }
@@ -101,7 +102,7 @@ class MultilineTest extends TextTest
     #[DataProvider('compactValueDataProvider')]
     public function testCompactValue($value, $expected)
     {
-        $this->assertSame($expected, $this->getClass("line")->compactValue($value));
+        $this->assertSame($expected, $this->getClass('line')->compactValue($value));
     }
 
     /**
@@ -111,9 +112,9 @@ class MultilineTest extends TextTest
     {
         return [
             [
-                ["b"=>"element1", "a"=>"element2"],
+                ['b' => 'element1', 'a' => 'element2'],
                 ["element2\nelement1"],
-            ]
+            ],
         ];
     }
 }

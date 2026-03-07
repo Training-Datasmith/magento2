@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 /**
@@ -14,5 +17,5 @@ class EmailNotConfirmedException extends AuthenticationException
     /**
      * @deprecated
      */
-    const EMAIL_NOT_CONFIRMED = 'Email not confirmed';
+    public const EMAIL_NOT_CONFIRMED = 'Email not confirmed';
 }

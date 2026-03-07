@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\ElasticAdapter\Model\Adapter\BatchDataMapper;
 
 use Magento\AdvancedSearch\Model\Adapter\DataMapper\AdditionalFieldsProviderInterface;

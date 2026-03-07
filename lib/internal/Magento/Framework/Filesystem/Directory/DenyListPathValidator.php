@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class DenyListPathValidator implements PathValidatorInterface
      *
      * @var string[]
      */
-    private $fileDenyList = ["htaccess"];
+    private $fileDenyList = ['htaccess'];
 
     /**
      * Deny list exception list

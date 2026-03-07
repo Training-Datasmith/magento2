@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Quote\Model\Webapi;
 
 use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Webapi\Rest\Request\ParamOverriderInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Webapi\Rest\Request\ParamOverriderInterface;
 use Magento\Quote\Api\CartManagementInterface;
 
 /**

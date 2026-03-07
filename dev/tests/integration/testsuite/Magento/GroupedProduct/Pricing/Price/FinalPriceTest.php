@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -48,7 +50,7 @@ class FinalPriceTest extends \PHPUnit\Framework\TestCase
         $simpleProduct = $productRepository->get('simple');
         $simpleProduct->setTierPrices(
             [
-                $tierPrice
+                $tierPrice,
             ]
         );
         $productRepository->save($simpleProduct);

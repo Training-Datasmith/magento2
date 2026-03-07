@@ -67,7 +67,7 @@ class GtagConfigTest extends TestCase
         $this->gtagConfig = $objectManager->getObject(
             GtagConfig::class,
             [
-                'scopeConfig' => self::$scopeConfigMock
+                'scopeConfig' => self::$scopeConfigMock,
             ]
         );
     }
@@ -98,7 +98,7 @@ class GtagConfigTest extends TestCase
         self::$scopeConfigMock
             ->method('getValue')
             ->willReturnMap([
-                [self::XML_PATH_MEASUREMENT_ID, ScopeInterface::SCOPE_STORE, null, $testMeasurementId]
+                [self::XML_PATH_MEASUREMENT_ID, ScopeInterface::SCOPE_STORE, null, $testMeasurementId],
             ]);
         self::$scopeConfigMock->expects($this->any())
             ->method('isSetFlag')
@@ -117,7 +117,7 @@ class GtagConfigTest extends TestCase
     {
         return [
             [true, 'G-1234', 'G-1234', true],
-            [false, 'G-1234', 'G-1234', false]
+            [false, 'G-1234', 'G-1234', false],
         ];
     }
 
@@ -136,7 +136,7 @@ class GtagConfigTest extends TestCase
         self::$scopeConfigMock
             ->method('getValue')
             ->willReturnMap([
-                [self::XML_PATH_MEASUREMENT_ID, ScopeInterface::SCOPE_STORE, null, $testMeasurementId]
+                [self::XML_PATH_MEASUREMENT_ID, ScopeInterface::SCOPE_STORE, null, $testMeasurementId],
             ]);
         $this->assertEquals($result, $this->gtagConfig->getMeasurementId());
     }
@@ -150,7 +150,7 @@ class GtagConfigTest extends TestCase
             [true, 'AW-1234', true],
             [true, 'conversionId', true],
             [true, '', false],
-            [false, '', false]
+            [false, '', false],
         ];
     }
 
@@ -193,7 +193,7 @@ class GtagConfigTest extends TestCase
     {
         return [
             ['getConversionId', self::XML_PATH_CONVERSION_ID, 'AW-123'],
-            ['getConversionLabel', self::XML_PATH_CONVERSION_LABEL, 'Label']
+            ['getConversionLabel', self::XML_PATH_CONVERSION_LABEL, 'Label'],
         ];
     }
 
@@ -228,7 +228,7 @@ class GtagConfigTest extends TestCase
     public static function dataGetMeasurementId(): array
     {
         return [
-            ['G-1234', 'G-1234']
+            ['G-1234', 'G-1234'],
         ];
     }
 }

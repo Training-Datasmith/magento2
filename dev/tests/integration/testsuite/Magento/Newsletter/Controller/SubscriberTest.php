@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class SubscriberTest extends AbstractController
             ->create(SubscriberLoader::class);
 
         // check customer subscribed to newsletter
-        $this->assertTrue($subscriberResource->loadByCustomerData($customer)['subscriber_status'] === "1");
+        $this->assertTrue($subscriberResource->loadByCustomerData($customer)['subscriber_status'] === '1');
 
         $config->setValue(
             AccountConfirmation::XML_PATH_IS_CONFIRM,

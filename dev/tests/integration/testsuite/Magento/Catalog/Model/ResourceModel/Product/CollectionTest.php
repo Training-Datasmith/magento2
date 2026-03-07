@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -255,7 +256,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             [
                 'productSku' => 'simple_not_saleable',
                 'order' => Collection::SORT_ORDER_ASC,
-            ]
+            ],
         ];
     }
 
@@ -291,7 +292,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             [
                 'productSku' => 'simple-2',
                 'order' => Collection::SORT_ORDER_ASC,
-            ]
+            ],
         ];
     }
 
@@ -355,7 +356,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             'condition is array' => [['eq' => 8]],
             'condition is string' => ['8'],
             'condition is int' => [8],
-            'condition is null' => [null]
+            'condition is null' => [null],
         ];
     }
 
@@ -381,7 +382,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             'condition is array' => [['eq' => 1]],
             'condition is string' => ['1'],
             'condition is int' => [1],
-            'condition is null' => [null]
+            'condition is null' => [null],
         ];
     }
 }

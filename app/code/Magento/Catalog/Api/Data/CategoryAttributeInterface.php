@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -11,5 +14,5 @@ namespace Magento\Catalog\Api\Data;
  */
 interface CategoryAttributeInterface extends \Magento\Catalog\Api\Data\EavAttributeInterface
 {
-    const ENTITY_TYPE_CODE = 'catalog_category';
+    public const ENTITY_TYPE_CODE = 'catalog_category';
 }

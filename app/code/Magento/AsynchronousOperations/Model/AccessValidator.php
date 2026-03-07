@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,32 +14,15 @@ use Magento\Authorization\Model\UserContextInterface;
 class AccessValidator
 {
     /**
-     * @var UserContextInterface
-     */
-    private $userContext;
-
-    /**
-     * @var \Magento\Framework\EntityManager\EntityManager
-     */
-    private $entityManager;
-
-    /**
      * @var \Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory
      */
     private $bulkSummaryFactory;
 
-    /**
-     * @param UserContextInterface $userContext
-     * @param \Magento\Framework\EntityManager\EntityManager $entityManager
-     * @param \Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory $bulkSummaryFactory
-     */
     public function __construct(
-        UserContextInterface $userContext,
-        \Magento\Framework\EntityManager\EntityManager $entityManager,
+        private readonly UserContextInterface $userContext,
+        private readonly \Magento\Framework\EntityManager\EntityManager $entityManager,
         \Magento\AsynchronousOperations\Api\Data\BulkSummaryInterfaceFactory $bulkSummaryFactory
     ) {
-        $this->userContext = $userContext;
-        $this->entityManager = $entityManager;
         $this->bulkSummaryFactory = $bulkSummaryFactory;
     }
 

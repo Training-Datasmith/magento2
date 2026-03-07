@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 
 class NotificationStorageTest extends TestCase
 {
-
     /**
      * @var NotificationStorage
      */
@@ -50,7 +50,7 @@ class NotificationStorageTest extends TestCase
         $notificationType = 'some_type';
         $data = [
             'customer_id' => $customerId,
-            'notification_type' => $notificationType
+            'notification_type' => $notificationType,
         ];
         $serializedData = 'serialized data';
         $this->serializerMock->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -113,7 +114,7 @@ class AddDownloadableProductWithCustomOptionsToCartTest extends GraphQlAbstract
      * @param string $sku
      * @return array
      */
-    private function getProductsLinks(string $sku) : array
+    private function getProductsLinks(string $sku): array
     {
         $result = [];
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
@@ -137,7 +138,7 @@ class AddDownloadableProductWithCustomOptionsToCartTest extends GraphQlAbstract
      * @param string $assignedValue
      * @return array
      */
-    private function buildExpectedValuesArray(string $assignedValue) : array
+    private function buildExpectedValuesArray(string $assignedValue): array
     {
         $assignedOptionsArray = explode(',', trim($assignedValue, '[]'));
         $expectedArray = [];

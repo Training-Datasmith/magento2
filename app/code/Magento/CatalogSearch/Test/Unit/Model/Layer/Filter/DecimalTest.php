@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -192,16 +193,16 @@ class DecimalTest extends TestCase
         return [
             [
                 'requestValue' => null,
-                'idValue' => 0
+                'idValue' => 0,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => false
+                'idValue' => false,
             ],
             [
                 'requestValue' => 0,
-                'idValue' => null
-            ]
+                'idValue' => null,
+            ],
         ];
     }
 
@@ -264,12 +265,12 @@ class DecimalTest extends TestCase
                 [
                     '0_10' => ['count' => 5],
                     '10_20' => ['count' => 2],
-                    '30_' => ['count' => 1]
+                    '30_' => ['count' => 1],
                 ],
                 [
                     ['label' => '$10.00 - $19.99', 'value' => '10-20', 'count' => '2'],
                     ['label' => '$30.00 and above', 'value' => '30-', 'count' => '1'],
-                ]
+                ],
             ],
             [
                 [
@@ -279,8 +280,8 @@ class DecimalTest extends TestCase
                 [
                     ['label' => '$0.00 - $99.99', 'value' => '-100', 'count' => '3'],
                     ['label' => '$200.00 and above', 'value' => '200-', 'count' => '1'],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }

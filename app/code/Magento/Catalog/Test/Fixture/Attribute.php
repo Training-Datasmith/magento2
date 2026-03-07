@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\DataObject;
 use Magento\TestFramework\Fixture\Api\DataMerger;
 use Magento\TestFramework\Fixture\Api\ServiceFactory;
-use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 use Magento\TestFramework\Fixture\Data\ProcessorInterface;
+use Magento\TestFramework\Fixture\RevertibleDataFixtureInterface;
 
 /**
  * Product attribute fixture
@@ -77,7 +78,7 @@ class Attribute implements RevertibleDataFixtureInterface
         ProductAttributeInterface::FRONTEND_LABELS => [],
         'default_frontend_label' => 'Product Attribute%uniqid%',
         'validation_rules' => [],
-        "default_value" => null,
+        'default_value' => null,
     ];
 
     private const DEFAULT_ATTRIBUTE_SET_DATA = [
@@ -125,7 +126,7 @@ class Attribute implements RevertibleDataFixtureInterface
         $attributeSetData = $this->prepareAttributeSetData(
             array_intersect_key($data, self::DEFAULT_ATTRIBUTE_SET_DATA)
         );
-        
+
         $attribute = $this->attributeFactory->create();
         $attributeData = $this->prepareData($attributeData);
 
@@ -159,7 +160,7 @@ class Attribute implements RevertibleDataFixtureInterface
         $service = $this->serviceFactory->create(ProductAttributeRepositoryInterface::class, 'deleteById');
         $service->execute(
             [
-                'attributeCode' => $data->getAttributeCode()
+                'attributeCode' => $data->getAttributeCode(),
             ]
         );
     }

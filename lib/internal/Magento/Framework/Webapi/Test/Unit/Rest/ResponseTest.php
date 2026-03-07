@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test Rest response controller.
  *

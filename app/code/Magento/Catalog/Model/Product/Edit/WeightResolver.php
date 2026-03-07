@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,12 +13,12 @@ class WeightResolver
     /**
      * Product has weight
      */
-    const HAS_WEIGHT = 1;
+    public const HAS_WEIGHT = 1;
 
     /**
      * Product don't have weight
      */
-    const HAS_NO_WEIGHT = 0;
+    public const HAS_NO_WEIGHT = 0;
 
     /**
      * @param \Magento\Catalog\Model\Product $product

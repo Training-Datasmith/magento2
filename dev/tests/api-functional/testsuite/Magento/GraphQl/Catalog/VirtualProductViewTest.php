@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ QUERY;
         $this->assertArrayNotHasKey(
             'weight',
             $response['products']['items'][0],
-            "response does contain the key weight"
+            'response does contain the key weight'
         );
     }
 
@@ -113,7 +114,7 @@ QUERY;
             ['response_field' => 'id', 'expected_value' => $product->getId()],
             ['response_field' => 'name', 'expected_value' => $product->getName()],
             ['response_field' => 'sku', 'expected_value' => $product->getSku()],
-            ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()]
+            ['response_field' => 'type_id', 'expected_value' => $product->getTypeId()],
         ];
 
         $this->assertResponseFields($actualResponse, $assertionMap);

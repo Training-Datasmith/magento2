@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class CollectionTest extends TestCase
                 'collectionProvider' => null,
                 'searchCriteriaResolverFactory' => $searchCriteriaResolverFactory,
                 'searchResultApplierFactory' => $this->searchResultApplierFactory,
-                'totalRecordsResolverFactory' => $totalRecordsResolverFactory
+                'totalRecordsResolverFactory' => $totalRecordsResolverFactory,
             ]
         );
     }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -105,7 +107,7 @@ class Tax extends \Magento\Backend\Block\Widget implements
             [
                 'label' => __('Delete Tax'),
                 'data_attribute' => ['action' => 'delete-fpt-item'],
-                'class' => 'delete'
+                'class' => 'delete',
             ]
         );
         return parent::_prepareLayout();

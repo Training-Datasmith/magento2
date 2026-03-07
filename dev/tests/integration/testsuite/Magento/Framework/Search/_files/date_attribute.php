@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -54,7 +56,7 @@ $objectManager->get(\Magento\Catalog\Model\Product\Action::class)
     ->updateAttributes(
         [$product->getId()],
         [
-            $dateAttribute->getAttributeCode() => '01/01/2000' // m/d/Y
+            $dateAttribute->getAttributeCode() => '01/01/2000', // m/d/Y
         ],
         $product->getStoreId()
     );

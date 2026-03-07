@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -8,14 +9,14 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Order\Creditmemo\Item\Validation;
 
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\OrderItemRepositoryInterface;
 use Magento\Sales\Model\Order\Creditmemo\Item\Validation\CreationQuantityValidator;
 use Magento\Sales\Model\Order\Item;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class CreateQuantityValidatorTest extends TestCase
 {
@@ -105,12 +106,12 @@ class CreateQuantityValidatorTest extends TestCase
             ],
             'testValidateWithException' => [
                 null,
-                [__('The creditmemo contains product item that is not part of the original order.')]
+                [__('The creditmemo contains product item that is not part of the original order.')],
             ],
             'testValidateWithContext' => [
                 1,
                 [__('The quantity to refund must not be greater than the unrefunded quantity.')],
-                true
+                true,
             ],
         ];
     }

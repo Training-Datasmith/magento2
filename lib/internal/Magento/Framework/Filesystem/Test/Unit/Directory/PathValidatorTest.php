@@ -1,15 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Test\Unit\Directory;
 
 use Magento\Framework\Filesystem\Directory\PathValidator;
 use Magento\Framework\Filesystem\Driver\File;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class PathValidatorTest extends TestCase
 {

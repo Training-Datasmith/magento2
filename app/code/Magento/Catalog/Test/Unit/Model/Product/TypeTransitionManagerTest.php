@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Edit\WeightResolver;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\TypeTransitionManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -48,7 +49,7 @@ class TypeTransitionManagerTest extends TestCase
                     'compatibleTypes' => [
                         'simple' => Type::TYPE_SIMPLE,
                         'virtual' => Type::TYPE_VIRTUAL,
-                    ]
+                    ],
                 ]
             );
     }
@@ -103,7 +104,7 @@ class TypeTransitionManagerTest extends TestCase
                 false,
                 Type::TYPE_VIRTUAL,
                 Type::TYPE_VIRTUAL,
-            ]
+            ],
         ];
     }
 }

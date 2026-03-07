@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -17,14 +18,14 @@ $productRepository = $objectManager->get(ProductRepositoryInterface::class);
 $categoryLinkRepository = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkRepositoryInterface::class,
     [
-        'productRepository' => $productRepository
+        'productRepository' => $productRepository,
     ]
 );
 $categoryLinkManagement = $objectManager->create(
     \Magento\Catalog\Api\CategoryLinkManagementInterface::class,
     [
         'productRepository' => $productRepository,
-        'categoryLinkRepository' => $categoryLinkRepository
+        'categoryLinkRepository' => $categoryLinkRepository,
     ]
 );
 $category = $objectManager->create(\Magento\Catalog\Model\Category::class);

@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Console;
 
 use Magento\Framework\Console\Cli;
+use Magento\User\Model\ResourceModel\User as AdminUser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\User\Model\ResourceModel\User as AdminUser;
 
 /**
  * Command for unlocking an account.

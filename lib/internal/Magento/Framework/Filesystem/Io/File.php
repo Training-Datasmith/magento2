@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -202,7 +204,7 @@ class File extends AbstractIo
                 $row[$key] = ' ' . $value;
             }
         }
-        return @fputcsv($this->_streamHandler, $row, $delimiter, $enclosure,'\\');
+        return @fputcsv($this->_streamHandler, $row, $delimiter, $enclosure, '\\');
     }
 
     /**
@@ -368,7 +370,7 @@ class File extends AbstractIo
     protected static function _recursiveCallback($dir, array $fileCallback, array $dirCallback = [])
     {
         if (empty($fileCallback) || !is_array($fileCallback) || !is_array($dirCallback)) {
-            throw new \InvalidArgumentException("file/dir callback is not specified");
+            throw new \InvalidArgumentException('file/dir callback is not specified');
         }
         if (empty($dirCallback)) {
             $dirCallback = $fileCallback;
@@ -839,13 +841,13 @@ class File extends AbstractIo
 
         /* Adjust for SUID, SGID and sticky bit */
         if ($mode & 0x800) {
-            $owner["execute"] = $owner['execute'] == 'x' ? 's' : 'S';
+            $owner['execute'] = $owner['execute'] == 'x' ? 's' : 'S';
         }
         if ($mode & 0x400) {
-            $group["execute"] = $group['execute'] == 'x' ? 's' : 'S';
+            $group['execute'] = $group['execute'] == 'x' ? 's' : 'S';
         }
         if ($mode & 0x200) {
-            $world["execute"] = $world['execute'] == 'x' ? 't' : 'T';
+            $world['execute'] = $world['execute'] == 'x' ? 't' : 'T';
         }
 
         $s = sprintf('%1s', $type);

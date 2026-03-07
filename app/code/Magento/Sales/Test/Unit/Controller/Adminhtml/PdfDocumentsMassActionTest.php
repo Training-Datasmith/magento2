@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class PdfDocumentsMassActionTest extends TestCase
             [
                 'filter' => $this->filterMock,
                 'resultFactory' => $resultRedirectFactory,
-                'messageManager' => $this->messageManager
+                'messageManager' => $this->messageManager,
             ]
         );
         $objectManagerHelper

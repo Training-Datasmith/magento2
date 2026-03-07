@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\DB\Test\Unit\Adapter;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\SqlVersionProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class SqlVersionProviderTest extends TestCase
 {
@@ -36,7 +37,7 @@ class SqlVersionProviderTest extends TestCase
                 '^8\.4\.',
                 '^5\.7\.',
                 '^10\.(?:[2-6]|11)\.',
-                '^11\.4\.'
+                '^11\.4\.',
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class FormTest extends TestCase
             'taxClassService' => $this->taxClassRepository,
             'customerTaxClassSource' => $this->taxClassCustomer,
             'productTaxClassSource' => $this->product,
-            '_urlBuilder' => $this->urlBuilder
+            '_urlBuilder' => $this->urlBuilder,
         ]);
     }
 
@@ -175,7 +176,7 @@ class FormTest extends TestCase
         return [
             [['tax_rate' => [1, 2, 3]], [1, 2, 3]],
             [['tax_rate' => []], []],
-            [['tax_rate' => null], []]
+            [['tax_rate' => null], []],
         ];
     }
 }

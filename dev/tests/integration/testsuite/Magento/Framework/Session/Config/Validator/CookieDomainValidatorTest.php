@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for Magento\Framework\Session\Config\Validator\CookieDomainValidator
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session\Config\Validator;
 
 class CookieDomainValidatorTest extends \PHPUnit\Framework\TestCase

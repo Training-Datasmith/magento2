@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\Framework\App\Http\ContextFactory;
 use Magento\Framework\App\PageCache\Cache;
 use Magento\Framework\App\PageCache\Identifier;
 use Magento\Framework\App\PageCache\Kernel;
-use Magento\Framework\App\PageCache\NotCacheableInterface;
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Response\HttpFactory;
 use Magento\Framework\App\State as AppState;
@@ -22,8 +22,8 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Stdlib\CookieDisablerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\PageCache\Model\Cache\Type;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -108,16 +108,16 @@ class KernelTest extends TestCase
         $objects = [
             [
                 CookieDisablerInterface::class,
-                $this->createMock(CookieDisablerInterface::class)
+                $this->createMock(CookieDisablerInterface::class),
             ],
             [
                 AppState::class,
-                $this->createMock(AppState::class)
+                $this->createMock(AppState::class),
             ],
             [
                 \Magento\Framework\App\PageCache\IdentifierInterface::class,
-                $this->createMock(\Magento\Framework\App\PageCache\IdentifierInterface::class)
-            ]
+                $this->createMock(\Magento\Framework\App\PageCache\IdentifierInterface::class),
+            ],
         ];
         $objectManagerHelper->prepareObjectManager($objects);
 
@@ -155,7 +155,7 @@ class KernelTest extends TestCase
             ->with(
                 [
                     'data' => ['context_data'],
-                    'default' => ['context_default_data']
+                    'default' => ['context_default_data'],
                 ]
             )
             ->willReturn($this->contextMock);
@@ -192,16 +192,16 @@ class KernelTest extends TestCase
         $data = [
             'context' => [
                 'data' => ['context_data'],
-                'default' => ['context_default_data']
+                'default' => ['context_default_data'],
             ],
             'status_code' => 'status_code',
             'content' => 'content',
-            'headers' => ['header']
+            'headers' => ['header'],
         ];
 
         return [
             ['existing key', $data, true, false],
-            ['existing key', $data, false, true]
+            ['existing key', $data, false, true],
         ];
     }
 
@@ -233,7 +233,7 @@ class KernelTest extends TestCase
         return [
             ['existing key', [], false, false],
             ['non existing key', false, true, false],
-            ['non existing key', false, false, false]
+            ['non existing key', false, false, false],
         ];
     }
 
@@ -292,7 +292,7 @@ class KernelTest extends TestCase
     {
         return [
             [200],
-            [404]
+            [404],
         ];
     }
 
@@ -334,13 +334,13 @@ class KernelTest extends TestCase
             ['no-store, no-cache, must-revalidate, max-age=0', 404, true, false],
             ['no-store, no-cache, must-revalidate, max-age=0', 500, true, false],
             ['public, max-age=100, s-maxage=100', 500, true, true],
-            ['public, max-age=100, s-maxage=100', 200, false, true]
+            ['public, max-age=100, s-maxage=100', 200, false, true],
         ];
     }
 
     public function testProcessNotSaveCacheForNotCacheableResponse(): void
     {
-        $header = CacheControl::fromString("Cache-Control: public, max-age=100, s-maxage=100");
+        $header = CacheControl::fromString('Cache-Control: public, max-age=100, s-maxage=100');
         $notCacheableResponse = $this->getMockBuilder(\Magento\Framework\App\Response\File::class)
             ->disableOriginalConstructor()
             ->getMock();

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Model\Rule\Action;
 
 /**
@@ -36,7 +39,7 @@ class Collection extends \Magento\Rule\Model\Action\Collection
         $actions = array_merge_recursive(
             $actions,
             [
-                ['value' => \Magento\CatalogRule\Model\Rule\Action\Product::class, 'label' => __('Update the Product')]
+                ['value' => \Magento\CatalogRule\Model\Rule\Action\Product::class, 'label' => __('Update the Product')],
             ]
         );
         return $actions;

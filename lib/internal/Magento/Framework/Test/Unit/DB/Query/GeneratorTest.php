@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -64,15 +65,15 @@ class GeneratorTest extends TestCase
             [
                 Select::FROM,
                 [
-                    'cp' => ['joinType' => Select::FROM]
-                ]
+                    'cp' => ['joinType' => Select::FROM],
+                ],
             ],
             [
                 Select::COLUMNS,
                 [
-                    ['cp', 'entity_id', 'product_id']
-                ]
-            ]
+                    ['cp', 'entity_id', 'product_id'],
+                ],
+            ],
         ];
         $this->selectMock->expects($this->exactly(2))->method('getPart')->willReturnMap($map);
         $this->factoryMock->expects($this->once())->method('create')->with(
@@ -81,7 +82,7 @@ class GeneratorTest extends TestCase
                 'batchSize' => 100,
                 'correlationName' => 'cp',
                 'rangeField' => 'entity_id',
-                'rangeFieldAlias' => 'product_id'
+                'rangeFieldAlias' => 'product_id',
             ]
         )->willReturn($this->iteratorMock);
         $this->assertEquals($this->iteratorMock, $this->model->generate('entity_id', $this->selectMock, 100));
@@ -101,9 +102,9 @@ class GeneratorTest extends TestCase
             [
                 Select::COLUMNS,
                 [
-                    ['cp', 'entity_id', 'product_id']
-                ]
-            ]
+                    ['cp', 'entity_id', 'product_id'],
+                ],
+            ],
         ];
         $this->selectMock->expects($this->any())->method('getPart')->willReturnMap($map);
         $this->factoryMock->expects($this->never())->method('create');
@@ -120,15 +121,15 @@ class GeneratorTest extends TestCase
             [
                 Select::FROM,
                 [
-                    'cp' => ['joinType' => Select::FROM]
-                ]
+                    'cp' => ['joinType' => Select::FROM],
+                ],
             ],
             [
                 Select::COLUMNS,
                 [
-                    ['cp', 'entity_id', null]
-                ]
-            ]
+                    ['cp', 'entity_id', null],
+                ],
+            ],
         ];
         $this->selectMock->expects($this->exactly(2))->method('getPart')->willReturnMap($map);
         $this->factoryMock->expects($this->once())->method('create')->with(
@@ -137,7 +138,7 @@ class GeneratorTest extends TestCase
                 'batchSize' => 100,
                 'correlationName' => 'cp',
                 'rangeField' => 'entity_id',
-                'rangeFieldAlias' => 'entity_id'
+                'rangeFieldAlias' => 'entity_id',
             ]
         )->willReturn($this->iteratorMock);
         $this->assertEquals($this->iteratorMock, $this->model->generate('entity_id', $this->selectMock, 100));
@@ -154,15 +155,15 @@ class GeneratorTest extends TestCase
             [
                 Select::FROM,
                 [
-                    'cp' => ['joinType' => Select::FROM]
-                ]
+                    'cp' => ['joinType' => Select::FROM],
+                ],
             ],
             [
                 Select::COLUMNS,
                 [
-                    ['cp', '*', null]
-                ]
-            ]
+                    ['cp', '*', null],
+                ],
+            ],
         ];
         $this->selectMock->expects($this->exactly(2))->method('getPart')->willReturnMap($map);
         $this->factoryMock->expects($this->once())->method('create')->with(
@@ -171,7 +172,7 @@ class GeneratorTest extends TestCase
                 'batchSize' => 100,
                 'correlationName' => 'cp',
                 'rangeField' => 'entity_id',
-                'rangeFieldAlias' => 'entity_id'
+                'rangeFieldAlias' => 'entity_id',
             ]
         )->willReturn($this->iteratorMock);
         $this->assertEquals($this->iteratorMock, $this->model->generate('entity_id', $this->selectMock, 100));
@@ -187,15 +188,15 @@ class GeneratorTest extends TestCase
             [
                 Select::FROM,
                 [
-                    'cp' => ['joinType' => Select::FROM]
-                ]
+                    'cp' => ['joinType' => Select::FROM],
+                ],
             ],
             [
                 Select::COLUMNS,
                 [
-                    ['cp', 'entity_id', 'product_id']
-                ]
-            ]
+                    ['cp', 'entity_id', 'product_id'],
+                ],
+            ],
         ];
         $this->selectMock->expects($this->exactly(2))->method('getPart')->willReturnMap($map);
         $this->factoryMock->expects($this->once())->method('create')->with(
@@ -204,7 +205,7 @@ class GeneratorTest extends TestCase
                 'batchSize' => 100,
                 'correlationName' => 'cp',
                 'rangeField' => 'entity_id',
-                'rangeFieldAlias' => 'product_id'
+                'rangeFieldAlias' => 'product_id',
             ]
         )->willReturn($this->iteratorMock);
         $this->assertEquals(

@@ -1,18 +1,20 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
+
 namespace Magento\Integration\Setup\Patch\Data;
 
 use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Oauth\Helper\Oauth as OauthHelper;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
+use Magento\Integration\Model\ResourceModel\Oauth\Consumer;
 use Magento\Integration\Model\ResourceModel\Oauth\Consumer\Collection as ConsumerCollection;
 use Magento\Integration\Model\ResourceModel\Oauth\Consumer\CollectionFactory as ConsumerCollectionFactory;
-use Magento\Integration\Model\ResourceModel\Oauth\Consumer;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -20,7 +22,6 @@ use Psr\Log\LoggerInterface;
  */
 class UpgradeConsumerSecret implements DataPatchInterface, PatchVersionInterface
 {
-
     /**
      * @var ConsumerCollection
      */
@@ -62,7 +63,7 @@ class UpgradeConsumerSecret implements DataPatchInterface, PatchVersionInterface
         LoggerInterface $logger
     ) {
 
-        $this->consumerCollection= $consumerCollectionFactory->create();
+        $this->consumerCollection = $consumerCollectionFactory->create();
         $this->encryptor = $encryptor;
         $this->consumerResourceModel = $consumerResourceModel;
         $this->logger = $logger;

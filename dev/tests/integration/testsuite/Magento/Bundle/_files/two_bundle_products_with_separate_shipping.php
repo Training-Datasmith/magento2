@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ $bundleProduct->setTypeId(BundleProductType::TYPE_BUNDLE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 11,
@@ -80,7 +81,7 @@ $bundleProduct->setTypeId(BundleProductType::TYPE_BUNDLE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
             [
@@ -90,7 +91,7 @@ $bundleProduct->setTypeId(BundleProductType::TYPE_BUNDLE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
                 [
                     'product_id' => 13,
@@ -98,7 +99,7 @@ $bundleProduct->setTypeId(BundleProductType::TYPE_BUNDLE)
                     'selection_can_change_qty' => 1,
                     'delete' => '',
                     'selection_price_type' => 0,
-                    'selection_price_value' => 5
+                    'selection_price_value' => 5,
                 ],
             ],
         ]

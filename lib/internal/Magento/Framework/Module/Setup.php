@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Base Resource Setup Model
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module;
 
 use Magento\Framework\App\ResourceConnection;

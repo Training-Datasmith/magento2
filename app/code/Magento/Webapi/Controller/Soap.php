@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Webapi\Controller;
 
 use Magento\Framework\Webapi\ErrorProcessor;
@@ -20,9 +23,9 @@ class Soap implements \Magento\Framework\App\FrontControllerInterface
     /**#@+
      * Content types used for responses processed by SOAP web API.
      */
-    const CONTENT_TYPE_SOAP_CALL = 'application/soap+xml';
+    public const CONTENT_TYPE_SOAP_CALL = 'application/soap+xml';
 
-    const CONTENT_TYPE_WSDL_REQUEST = 'text/xml';
+    public const CONTENT_TYPE_WSDL_REQUEST = 'text/xml';
 
     /**#@-*/
 

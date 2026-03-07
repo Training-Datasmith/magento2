@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -35,10 +36,10 @@ class GraphQlIntrospectionTest extends \PHPUnit\Framework\TestCase
                 'query' => new ObjectType(
                     [
                         'name' => 'Query',
-                        'description' =>'Description at type level',
-                        'fields' => ['a' => \GraphQL\Type\Definition\Type::string()]
+                        'description' => 'Description at type level',
+                        'fields' => ['a' => \GraphQL\Type\Definition\Type::string()],
                     ]
-                )
+                ),
             ]
         );
         $request =
@@ -90,9 +91,9 @@ QUERY;
                 'fields' => [
                     [
                         'name' => 'a',
-                        'args' => []
-                    ]
-                ]
+                        'args' => [],
+                    ],
+                ],
             ];
         $this->assertContains($expectedFragment, $output['types']);
     }
@@ -111,20 +112,20 @@ QUERY;
                         'type' => \GraphQL\Type\Definition\Type::nonNull(
                             \GraphQL\Type\Definition\Type::string()
                         ),
-                        'description' => 'testDescriptionForA'
+                        'description' => 'testDescriptionForA',
                     ],
                     'attributeB' => [
                         'type' => \GraphQL\Type\Definition\Type::listOf(
                             \GraphQL\Type\Definition\Type::string()
-                        )
+                        ),
                     ],
                     'attributeC' => ['type' => \GraphQL\Type\Definition\Type::string(), 'defaultValue' => null],
                     'attributeD' => [
                         'type' => \GraphQL\Type\Definition\Type::string(),
                         'defaultValue' => 'test',
-                        'description' => 'testDescriptionForD'
+                        'description' => 'testDescriptionForD',
                     ],
-                ]
+                ],
             ]
         );
         $TestType = new ObjectType([
@@ -135,9 +136,9 @@ QUERY;
                     'args' => ['complex' => ['type' => $testInputObject]],
                     'resolve' => function ($args) {
                         return json_encode($args['complex']);
-                    }
-                ]
-            ]
+                    },
+                ],
+            ],
         ]);
         $testSchema = $this->schemaFactory->create(
             ['query' => $TestType]
@@ -179,58 +180,58 @@ QUERY;
         $response = \GraphQL\GraphQL::executeQuery($testSchema, $request);
         $expectedResult =
             [
-                'kind'=> 'INPUT_OBJECT',
-                'name'=> 'ProductFilterInput',
-                'inputFields'=> [
+                'kind' => 'INPUT_OBJECT',
+                'name' => 'ProductFilterInput',
+                'inputFields' => [
                     [
-                        'name'=> 'attributeA',
-                        'description'=> 'testDescriptionForA',
-                        'type'=> [
-                            'kind'=> 'NON_NULL',
-                            'name'=> null,
-                            'ofType'=> [
-                                'kind'=> 'SCALAR',
-                                'name'=> 'String',
-                                'ofType'=> null
-                            ]
+                        'name' => 'attributeA',
+                        'description' => 'testDescriptionForA',
+                        'type' => [
+                            'kind' => 'NON_NULL',
+                            'name' => null,
+                            'ofType' => [
+                                'kind' => 'SCALAR',
+                                'name' => 'String',
+                                'ofType' => null,
+                            ],
                         ],
-                        'defaultValue'=> null
+                        'defaultValue' => null,
                     ],
                     [
-                        'name'=> 'attributeB',
-                        'description'=> null,
-                        'type'=> [
-                            'kind'=> 'LIST',
-                            'name'=> null,
-                            'ofType'=> [
-                                'kind'=> 'SCALAR',
-                                'name'=> 'String',
-                                'ofType'=> null
-                            ]
+                        'name' => 'attributeB',
+                        'description' => null,
+                        'type' => [
+                            'kind' => 'LIST',
+                            'name' => null,
+                            'ofType' => [
+                                'kind' => 'SCALAR',
+                                'name' => 'String',
+                                'ofType' => null,
+                            ],
                         ],
-                        'defaultValue'=> null
+                        'defaultValue' => null,
                     ],
                     [
-                        'name'=> 'attributeC',
-                        'description'=> null,
-                        'type'=> [
-                            'kind'=> 'SCALAR',
-                            'name'=> 'String',
-                            'ofType'=> null
+                        'name' => 'attributeC',
+                        'description' => null,
+                        'type' => [
+                            'kind' => 'SCALAR',
+                            'name' => 'String',
+                            'ofType' => null,
                         ],
-                        'defaultValue'=> 'null'
+                        'defaultValue' => 'null',
                     ],
                     [
-                        'name'=> 'attributeD',
-                        'description'=> 'testDescriptionForD',
-                        'type'=> [
-                            'kind'=> 'SCALAR',
-                            'name'=> 'String',
-                            'ofType'=> null
+                        'name' => 'attributeD',
+                        'description' => 'testDescriptionForD',
+                        'type' => [
+                            'kind' => 'SCALAR',
+                            'name' => 'String',
+                            'ofType' => null,
                         ],
-                        'defaultValue'=> '"test"'
-                    ]
-                ]
+                        'defaultValue' => '"test"',
+                    ],
+                ],
             ];
         $output = $response->toArray()['data']['__schema']['types'];
         $this->assertContains($expectedResult, $output);
@@ -249,14 +250,14 @@ QUERY;
                     'fields' => [
                        'deprecated' => [
                          'type' => \GraphQL\Type\Definition\Type::string(),
-                         'deprecationReason' =>'Deprecated in an older version'
+                         'deprecationReason' => 'Deprecated in an older version',
                        ],
                          'nonDeprecated' => [
-                            'type' => \GraphQL\Type\Definition\Type::string()
-                         ]
+                            'type' => \GraphQL\Type\Definition\Type::string(),
+                         ],
+                    ],
                     ]
-                    ]
-                )
+                ),
               ]
         );
         $request =
@@ -285,30 +286,30 @@ QUERY;
         $output = $response->toArray()['data']['__type'];
         $expectedResult =
             [
-                "name" =>"Query",
-                "kind" =>"OBJECT",
-                "fields" => [
+                'name' => 'Query',
+                'kind' => 'OBJECT',
+                'fields' => [
            [
-            'name'=> 'deprecated',
-            'type'=> [
-                'kind'=> 'SCALAR',
-                'name'=> 'String'
+            'name' => 'deprecated',
+            'type' => [
+                'kind' => 'SCALAR',
+                'name' => 'String',
             ],
-            'description'=> null,
-            'isDeprecated'=> true,
-            'deprecationReason'=> 'Deprecated in an older version'
+            'description' => null,
+            'isDeprecated' => true,
+            'deprecationReason' => 'Deprecated in an older version',
            ],
            [
-            'name'=> 'nonDeprecated',
-            'type'=> [
-                'kind'=> 'SCALAR',
-                'name'=> 'String'
+            'name' => 'nonDeprecated',
+            'type' => [
+                'kind' => 'SCALAR',
+                'name' => 'String',
             ],
-            'description'=> null,
-            'isDeprecated'=> false,
-            'deprecationReason'=> null
-           ]
-                ]
+            'description' => null,
+            'isDeprecated' => false,
+            'deprecationReason' => null,
+           ],
+                ],
                 ];
         $this->assertEquals($expectedResult, $output);
     }

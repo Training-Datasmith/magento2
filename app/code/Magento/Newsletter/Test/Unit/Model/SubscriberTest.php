@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -120,7 +121,7 @@ class SubscriberTest extends TestCase
                 'setFrom',
                 'setFromByScope',
                 'addTo',
-                'getTransport'
+                'getTransport',
             ]
         );
         $this->storeManager = $this->createMock(StoreManagerInterface::class);
@@ -129,7 +130,7 @@ class SubscriberTest extends TestCase
             [
                 'isLoggedIn',
                 'getCustomerDataObject',
-                'getCustomerId'
+                'getCustomerId',
             ]
         );
         $this->customerRepository = $this->createMock(CustomerRepositoryInterface::class);
@@ -139,7 +140,7 @@ class SubscriberTest extends TestCase
             SubscriberResourceModel::class,
             [
                 'loadByEmail', 'getIdFieldName', 'save', 'received',
-                'loadBySubscriberEmail', 'loadByCustomerId', 'loadByCustomer'
+                'loadBySubscriberEmail', 'loadByCustomerId', 'loadByCustomer',
             ]
         );
         $this->objectManager = new ObjectManager($this);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Block\Role\Tab;
 
 /**
@@ -17,7 +20,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     /**
      * Password input filed name
      */
-    const IDENTITY_VERIFICATION_PASSWORD_FIELD = 'current_password';
+    public const IDENTITY_VERIFICATION_PASSWORD_FIELD = 'current_password';
 
     /**
      * Get tab label
@@ -91,7 +94,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label' => __('Role Name'),
                 'id' => 'role_name',
                 'class' => 'required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
 
@@ -114,7 +117,7 @@ class Info extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'id' => self::IDENTITY_VERIFICATION_PASSWORD_FIELD,
                 'title' => __('Your Password'),
                 'class' => 'validate-current-password required-entry',
-                'required' => true
+                'required' => true,
             ]
         );
 

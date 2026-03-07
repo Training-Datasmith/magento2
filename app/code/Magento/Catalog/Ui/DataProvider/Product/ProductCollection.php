@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product;
 
 use Magento\Framework\DB\Select;
@@ -44,7 +47,7 @@ class ProductCollection extends \Magento\Catalog\Model\ResourceModel\Product\Col
                     $sql->reset(Select::COLUMNS);
 
                     foreach ($columns as &$column) {
-                        if ($column[1] instanceof \Zend_Db_Expr && $column[1] == "COUNT(DISTINCT e.entity_id)") {
+                        if ($column[1] instanceof \Zend_Db_Expr && $column[1] == 'COUNT(DISTINCT e.entity_id)') {
                             $column[1] = new \Zend_Db_Expr('e.entity_id');
                         }
                     }

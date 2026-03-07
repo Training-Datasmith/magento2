@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\CatalogUrlRewrite\Plugin\Catalog\Block\Adminhtml\Category\Tab;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category\DataProvider;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\CatalogUrlRewrite\Block\UrlKeyRenderer;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -69,7 +71,7 @@ class Attributes
             'value' => $this->isSaveRewriteHistory($category->getStoreId()) ? $category->getUrlKey() : '',
             'valueMap' => [
                 'false' => '',
-                'true' => $category->getUrlKey()
+                'true' => $category->getUrlKey(),
             ],
             'disabled' => true,
         ];

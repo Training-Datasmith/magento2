@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Item;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -17,7 +20,7 @@ class RepositoryTest extends \PHPUnit\Framework\TestCase
         $expectedExtensionAttributes = [
             'firstname' => 'firstname',
             'lastname' => 'lastname',
-            'email' => 'admin@example.com'
+            'email' => 'admin@example.com',
         ];
 
         /** @var \Magento\Quote\Api\CartItemRepositoryInterface $quoteItemRepository */

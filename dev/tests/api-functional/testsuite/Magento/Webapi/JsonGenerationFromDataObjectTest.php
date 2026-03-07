@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,9 +8,9 @@
 
 namespace Magento\Webapi;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Test REST schema generation mechanisms.
@@ -31,7 +33,7 @@ class JsonGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
 
     protected function setUp(): void
     {
-        $this->_markTestAsRestOnly("JSON generation tests are intended to be executed for REST adapter only.");
+        $this->_markTestAsRestOnly('JSON generation tests are intended to be executed for REST adapter only.');
 
         $this->storeCode = Bootstrap::getObjectManager()->get(StoreManagerInterface::class)
             ->getStore()->getCode();
@@ -189,13 +191,13 @@ class JsonGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
                                 'name' => 'parentId',
                                 'in' => 'path',
                                 'type' => 'string',
-                                'required' => true
+                                'required' => true,
                             ],
                             [
                                 'name' => 'entityId',
                                 'in' => 'path',
                                 'type' => 'string',
-                                'required' => true
+                                'required' => true,
                             ],
                             [
                                 'name' => 'PutV1TestModule5ParentIdNestedResourceEntityIdBody',
@@ -209,9 +211,9 @@ class JsonGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
                                             '$ref' => '#/definitions/test-module5-v1-entity-all-soap-and-rest',
                                         ],
                                     ],
-                                    'type' => 'object'
+                                    'type' => 'object',
                                 ],
-                            ]
+                            ],
                         ],
                         'responses' => [
                             200 => [
@@ -320,7 +322,7 @@ class JsonGenerationFromDataObjectTest extends \Magento\TestFramework\TestCase\W
                                 'name' => 'id',
                                 'in' => 'path',
                                 'type' => 'string',
-                                'required' => true
+                                'required' => true,
                             ],
                         ],
                         'responses' => [

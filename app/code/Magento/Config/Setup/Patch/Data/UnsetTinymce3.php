@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -48,7 +50,7 @@ class UnsetTinymce3 implements DataPatchInterface, PatchVersionInterface
 
             if (strpos($connection->fetchOne($select) ?? '', 'Tinymce3/tinymce3Adapter') !== false) {
                 $row = [
-                    'value' => 'mage/adminhtml/wysiwyg/tiny_mce/tinymce4Adapter'
+                    'value' => 'mage/adminhtml/wysiwyg/tiny_mce/tinymce4Adapter',
                 ];
                 $where = $connection->quoteInto(
                     'path = ?',

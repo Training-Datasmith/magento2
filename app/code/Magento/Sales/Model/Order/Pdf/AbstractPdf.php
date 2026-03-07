@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -220,7 +222,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
             'UTF-8',
             'UTF-16BE//IGNORE',
             $string
-        // phpcs:ignore Generic.PHP.NoSilencedErrors
+            // phpcs:ignore Generic.PHP.NoSilencedErrors
         ) : @iconv(
             'UTF-8',
             'UTF-16BE',
@@ -449,10 +451,10 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
 
         if ($putOrderId) {
             $page->drawText(__('Order # ') . $order->getRealOrderId(), 35, $top -= 30, 'UTF-8');
-            $top +=15;
+            $top += 15;
         }
 
-        $top -=30;
+        $top -= 30;
         $page->drawText(
             __('Order Date: ') .
             $this->_localeDate->formatDate(
@@ -613,7 +615,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
             }
 
             $yShipments = $this->y;
-            $totalShippingChargesText = "(" . __('Total Shipping Charges') . " ";
+            $totalShippingChargesText = '(' . __('Total Shipping Charges') . ' ';
             if ($this->taxHelper->displayShippingPriceIncludingTax()) {
                 $totalShippingChargesText .= $order->formatPriceTxt($order->getShippingInclTax());
             } else {
@@ -622,9 +624,9 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
 
             if ($this->taxHelper->displayShippingBothPrices()
                 && $order->getShippingInclTax() != $order->getShippingAmount()) {
-                $totalShippingChargesText .= "(Incl. Tax " . $order->getShippingInclTax() . ")";
+                $totalShippingChargesText .= '(Incl. Tax ' . $order->getShippingInclTax() . ')';
             }
-            $totalShippingChargesText .= ")";
+            $totalShippingChargesText .= ')';
 
             $page->drawText($totalShippingChargesText, 285, $yShipments - $topMargin, 'UTF-8');
             $yShipments -= $topMargin + 10;
@@ -758,7 +760,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
                             'feed' => 565,
                             'align' => 'right',
                             'font_size' => $totalData['font_size'],
-                            'font' => 'bold'
+                            'font' => 'bold',
                         ],
                     ];
                 }
@@ -825,7 +827,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
             $resultValue .= $value['title'];
 
             if (isset($value['price'])) {
-                $resultValue .= " " . $order->formatPrice($value['price']);
+                $resultValue .= ' ' . $order->formatPrice($value['price']);
             }
             return $resultValue;
         } else {
@@ -1051,7 +1053,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
                             $column['text'] = [$column['text']];
                         }
                         $top = 0;
-                        //
+
                         foreach ($column['text'] as $part) {
                             $top += $lineSpacing;
                         }
@@ -1081,7 +1083,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
      * @throws \Zend_Pdf_Exception
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    private function correctLines($lines, $page, $height) :void
+    private function correctLines($lines, $page, $height): void
     {
         foreach ($lines as $line) {
             $maxHeight = 0;
@@ -1127,7 +1129,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
      * @return int
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    private function correctText($column, $height, $font, $page) :int
+    private function correctText($column, $height, $font, $page): int
     {
         $top = 0;
         $lineSpacing = !empty($column['height']) ? $column['height'] : $height;

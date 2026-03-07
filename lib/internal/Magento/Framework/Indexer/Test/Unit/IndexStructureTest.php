@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class IndexStructureTest extends TestCase
             [
                 'resource' => $this->resource,
                 'indexScopeResolver' => $this->indexScopeResolver,
-                'flatScopeResolver' => $this->flatScopeResolver
+                'flatScopeResolver' => $this->flatScopeResolver,
             ]
         );
     }
@@ -91,7 +92,7 @@ class IndexStructureTest extends TestCase
         $dimensions = [
             'index_name_scope_3' => $this->createDimensionMock('scope', 3),
             'index_name_scope_5' => $this->createDimensionMock('scope', 5),
-            'index_name_scope_1' => $this->createDimensionMock('scope', 1)
+            'index_name_scope_1' => $this->createDimensionMock('scope', 1),
         ];
         $expectedTable = 'index_name_scope3_scope5_scope1';
         $this->indexScopeResolver->expects($this->once())
@@ -137,43 +138,43 @@ class IndexStructureTest extends TestCase
             [
                 'name' => 'fieldName1',
                 'type' => 'fieldType1',
-                'size' => 'fieldSize1'
+                'size' => 'fieldSize1',
             ],
             [
                 'name' => 'fieldName2',
                 'type' => 'fieldType2',
-                'size' => 'fieldSize2'
+                'size' => 'fieldSize2',
             ],
             [
                 'name' => 'fieldName3',
                 'type' => 'fieldType3',
-                'size' => 'fieldSize3'
+                'size' => 'fieldSize3',
             ],
             [
                 'name' => 'fieldName3',
                 'dataType' => 'varchar',
                 'type' => 'text',
-                'size' => '255'
+                'size' => '255',
             ],
             [
                 'name' => 'fieldName3',
                 'dataType' => 'mediumtext',
                 'type' => 'text',
-                'size' => '16777216'
+                'size' => '16777216',
             ],
             [
                 'name' => 'fieldName3',
                 'dataType' => 'text',
                 'type' => 'text',
-                'size' => '65536'
-            ]
+                'size' => '65536',
+            ],
         ];
         $index = 'index_name';
         $expectedTable = 'index_name_scope3_scope5_scope1';
         $dimensions = [
             'index_name_scope_3' => $this->createDimensionMock('scope', 3),
             'index_name_scope_5' => $this->createDimensionMock('scope', 5),
-            'index_name_scope_1' => $this->createDimensionMock('scope', 1)
+            'index_name_scope_1' => $this->createDimensionMock('scope', 1),
         ];
         $this->indexScopeResolver->expects($this->once())
             ->method('resolve')

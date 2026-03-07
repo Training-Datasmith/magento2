@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Jwt\Exception\EncryptionException;
 use Magento\Framework\Jwt\Jwk;
 use Magento\Framework\Jwt\JwkSet;
 use Magento\Framework\Jwt\Jws\JwsSignatureJwks;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class JwsSignatureJwksTest extends TestCase
 {
@@ -23,13 +24,13 @@ class JwsSignatureJwksTest extends TestCase
             'valid-jwk' => [Jwk::PUBLIC_KEY_USE_SIGNATURE, true],
             'valid-jwks' => [
                 [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::PUBLIC_KEY_USE_SIGNATURE],
-                true
+                true,
             ],
             'invalid-jwk' => [Jwk::PUBLIC_KEY_USE_ENCRYPTION, false],
             'invalid-jwks' => [
                 [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::PUBLIC_KEY_USE_ENCRYPTION],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -63,15 +64,15 @@ class JwsSignatureJwksTest extends TestCase
         return [
             'one-algo' => [
                 [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::ALGORITHM_HS384],
-                Jwk::ALGORITHM_HS384
+                Jwk::ALGORITHM_HS384,
             ],
             'json' => [
                 [
                     [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::ALGORITHM_HS256],
-                    [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::ALGORITHM_HS256]
+                    [Jwk::PUBLIC_KEY_USE_SIGNATURE, Jwk::ALGORITHM_HS256],
                 ],
-                'jws-json-serialization'
-            ]
+                'jws-json-serialization',
+            ],
         ];
     }
 

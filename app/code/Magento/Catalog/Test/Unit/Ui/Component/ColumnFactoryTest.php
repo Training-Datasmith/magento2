@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\Component;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Ui\Component\ColumnFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
@@ -16,6 +16,7 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Filters\FilterModifier;
 use Magento\Ui\Component\Listing\Columns\ColumnInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -185,8 +186,8 @@ class ColumnFactoryTest extends TestCase
                     'timezone' => $expectedTimezone,
                     'dateFormat' => $expectedDateFormat,
                     'options' => [
-                        'showsTime' => $showsTime
-                    ]
+                        'showsTime' => $showsTime,
+                    ],
                 ],
             ],
             'context' => $this->context,

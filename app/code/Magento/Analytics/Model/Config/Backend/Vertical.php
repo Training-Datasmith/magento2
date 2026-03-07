@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config\Backend;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -21,7 +24,7 @@ class Vertical extends \Magento\Framework\App\Config\Value
      * @return $this
      * @throws LocalizedException if the value of the selected vertical is empty.
      */
-    public function beforeSave()
+    public function beforeSave(): static
     {
         if (empty($this->getValue())) {
             throw new LocalizedException(__('Please select an industry.'));

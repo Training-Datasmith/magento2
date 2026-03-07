@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -38,11 +39,11 @@ use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Quote\Model\GetQuoteByReservedOrderId;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -257,7 +258,7 @@ class QuoteTest extends TestCase
         $quote = $this->quoteFactory->create();
         $quote->setCustomer($customerData);
         $quote->unsetData('customer_group_id');
-        $this->assertEquals($customerGroupId, $quote->getCustomerGroupId(), "Customer group ID is invalid");
+        $this->assertEquals($customerGroupId, $quote->getCustomerGroupId(), 'Customer group ID is invalid');
     }
 
     /**
@@ -404,7 +405,7 @@ class QuoteTest extends TestCase
         $this->assertEquals(1, $quote->getItemsQty());
         $this->expectException(LocalizedException::class);
         // TODO: fix test or implementation as described in https://github.com/magento-engcom/msi/issues/1037
-//        $this->expectExceptionMessage('The requested qty is not available');
+        //        $this->expectExceptionMessage('The requested qty is not available');
         $updateParams['qty'] = $productStockQty + 1;
         $quote->updateItem($updateParams['id'], $updateParams);
     }
@@ -731,11 +732,11 @@ class QuoteTest extends TestCase
         $customerData = $customer->getDataModel();
         $this->assertEmpty(
             $quote->getBillingAddress()->getId(),
-            "Precondition failed: billing address should be empty."
+            'Precondition failed: billing address should be empty.'
         );
         $this->assertEmpty(
             $quote->getShippingAddress()->getId(),
-            "Precondition failed: shipping address should be empty."
+            'Precondition failed: shipping address should be empty.'
         );
 
         return $customerData;
@@ -829,12 +830,12 @@ class QuoteTest extends TestCase
             $this->assertEquals(
                 1,
                 $quote->getIsMultiShipping(),
-                "Multi-shipping mode is disabled after quote item removal"
+                'Multi-shipping mode is disabled after quote item removal'
             );
         } else {
             $this->assertTrue(
                 !is_null($idToDelete),
-                "No Simple Product item with qty 1 to delete exists"
+                'No Simple Product item with qty 1 to delete exists'
             );
         }
     }
@@ -900,7 +901,7 @@ class QuoteTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bp1.id$',
                 'selections' => [['$p1.id$'], ['$p2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture('deleteProduct')

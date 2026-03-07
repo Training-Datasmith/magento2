@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Report\Filter;
 
 /**
@@ -66,7 +69,7 @@ class Form extends \Magento\Reports\Block\Adminhtml\Filter\Form
                     'name' => 'show_order_statuses',
                     'label' => __('Order Status'),
                     'options' => ['0' => __('Any'), '1' => __('Specified')],
-                    'note' => __('Applies to Any of the Specified Order Statuses except canceled orders')
+                    'note' => __('Applies to Any of the Specified Order Statuses except canceled orders'),
                 ],
                 'to'
             );
@@ -78,7 +81,7 @@ class Form extends \Magento\Reports\Block\Adminhtml\Filter\Form
                     'name' => 'order_statuses',
                     'label' => '',
                     'values' => $values,
-                    'display' => 'none'
+                    'display' => 'none',
                 ],
                 'show_order_statuses'
             );

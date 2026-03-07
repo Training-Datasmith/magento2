@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -43,7 +44,8 @@ class FactoryTest extends TestCase
 
         $this->dummyStrategy = $this->createMock(Dummy::class);
 
-        $this->customStrategy = $this->createMock(StrategyInterface::class
+        $this->customStrategy = $this->createMock(
+            StrategyInterface::class
         );
 
         $this->model = new Factory(

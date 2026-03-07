@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ QUERY;
 
         $this->assertEquals(
             [
-                'resendConfirmationEmail' => true
+                'resendConfirmationEmail' => true,
             ],
             $response
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -16,14 +17,13 @@ use Magento\Customer\Model\ResourceModel\Address\Collection;
 use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
 use Magento\Directory\Model\Country;
 use Magento\Directory\Model\CountryFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
-use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Theme\Block\Html\Pager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit tests for \Magento\Customer\Block\Address\Grid class
@@ -90,7 +90,7 @@ class GridTest extends TestCase
                 'addressCollectionFactory' => $this->addressCollectionFactory,
                 'currentCustomer' => $this->currentCustomer,
                 'countryFactory' => $this->countryFactory,
-                '_urlBuilder' => $this->urlBuilder
+                '_urlBuilder' => $this->urlBuilder,
             ]
         );
     }

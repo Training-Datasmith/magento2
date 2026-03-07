@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,16 +10,15 @@ namespace Magento\Cron\Test\Unit\Model;
 
 use Magento\Cron\Model\DeadlockRetrier;
 use Magento\Cron\Model\DeadlockRetrierInterface;
-use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\DeadlockException;
+use Magento\Framework\Model\AbstractModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class DeadlockRetrierTest extends TestCase
 {
-
     /**
      * @var DeadlockRetrier
      */

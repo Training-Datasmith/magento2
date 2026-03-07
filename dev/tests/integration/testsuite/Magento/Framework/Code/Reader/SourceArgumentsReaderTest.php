@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Reader;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -50,13 +53,13 @@ class SourceArgumentsReaderTest extends \PHPUnit\Framework\TestCase
                     '',
                     '\Imported\Name\Space\ClassName',
                     'array',
-                    ''
+                    '',
                 ],
             ],
             [
                 '\stdClass',
-                [null]
-            ]
+                [null],
+            ],
         ];
     }
 }

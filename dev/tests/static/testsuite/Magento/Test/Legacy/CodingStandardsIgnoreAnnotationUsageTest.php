@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Test\Legacy;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\App\Utility\Files;
+use PHPUnit\Framework\TestCase;
 
 class CodingStandardsIgnoreAnnotationUsageTest extends TestCase
 {

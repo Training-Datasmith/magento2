@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Wishlist\Controller\Index;
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\TestCase\AbstractController;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Catalog\Api\ProductRepositoryInterface;
 
 /**
  * Test for wishlist plugin before dispatch

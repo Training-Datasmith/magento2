@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\AsynchronousOperations\Model;
 
 use Magento\AsynchronousOperations\Api\Data\OperationInterface;
 use Magento\AsynchronousOperations\Api\Data\SummaryOperationStatusInterface;
-use Magento\Framework\DataObject;
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Framework\DataObject;
 
 /**
  * Class OperationShortDetails

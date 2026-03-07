@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,19 +8,19 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Image;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\App\Area;
 use Magento\Catalog\Model\Product\Image\ConvertImageMiscParamsToReadableFormat;
 use Magento\Catalog\Model\Product\Image\ParamsBuilder;
 use Magento\Catalog\Model\Product\Image\RemoveDeletedImagesFromCache;
 use Magento\Catalog\Model\Product\Media\Config;
+use Magento\Framework\App\Area;
 use Magento\Framework\Config\View;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Phrase;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
+use Magento\Framework\Phrase;
 use Magento\Framework\View\ConfigInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -184,7 +185,7 @@ class RemoveDeletedImagesFromCacheTest extends TestCase
     public static function createDataProvider(): array
     {
         return [
-            self::getTestDataWithAttributes()
+            self::getTestDataWithAttributes(),
         ];
     }
 
@@ -203,7 +204,7 @@ class RemoveDeletedImagesFromCacheTest extends TestCase
                     'frame' => true,
                     'transparency' => false,
                     'background' => '255,255,255',
-                    'type' => 'thumbnail' //thumbnail,small_image,image,swatch_image,swatch_thumb
+                    'type' => 'thumbnail', //thumbnail,small_image,image,swatch_image,swatch_thumb
                 ],
                 'imageParamsBuilder' => [
                     'image_width' => 100,
@@ -215,7 +216,7 @@ class RemoveDeletedImagesFromCacheTest extends TestCase
                     'background' => '255,255,255',
                     'image_type' => 'thumbnail', //thumbnail,small_image,image,swatch_image,swatch_thumb
                     'quality' => 80,
-                    'angle' => null
+                    'angle' => null,
                 ],
                 'convertImageParamsToReadableFormat' => [
                     'image_height' => 'h: 50',
@@ -226,9 +227,9 @@ class RemoveDeletedImagesFromCacheTest extends TestCase
                     'keep_frame' => 'no frame',
                     'keep_transparency' => 'no transparency',
                     'constrain_only' => 'not constrainonly',
-                    'background' => 'rgb 255,255,255'
-                ]
-            ]
+                    'background' => 'rgb 255,255,255',
+                ],
+            ],
         ];
     }
 }

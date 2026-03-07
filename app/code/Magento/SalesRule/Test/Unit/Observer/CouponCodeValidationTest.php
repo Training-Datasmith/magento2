@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,13 +13,13 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartSearchResultsInterface;
 use Magento\Quote\Model\Quote;
 use Magento\SalesRule\Api\Exception\CodeRequestLimitException;
 use Magento\SalesRule\Model\Spi\CodeLimitManagerInterface;
 use Magento\SalesRule\Observer\CouponCodeValidation;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -85,7 +86,7 @@ class CouponCodeValidationTest extends TestCase
             ->onlyMethods(['addFilter', 'create'])
             ->disableOriginalConstructor()
             ->getMock();
-        
+
         $this->searchCriteriaBuilderMockFactory = $this->getMockBuilder(SearchCriteriaBuilderFactory::class)
             ->onlyMethods(['create'])
             ->disableOriginalConstructor()

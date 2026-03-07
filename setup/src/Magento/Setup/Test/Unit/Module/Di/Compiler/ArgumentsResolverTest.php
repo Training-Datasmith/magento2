@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ArgumentsResolverTest extends TestCase
             ->willReturnMap(
                 [
                     ['Type\Dependency', false],
-                    ['Type\Dependency\Shared', true]
+                    ['Type\Dependency\Shared', true],
                 ]
             );
 
@@ -84,7 +85,7 @@ class ArgumentsResolverTest extends TestCase
                     ['Type\Dependency', false],
                     ['Type\Dependency\Shared', true],
                     ['Type\Dependency\Configured', false],
-                    ['Type\Dependency\Shared\Configured', true]
+                    ['Type\Dependency\Shared\Configured', true],
                 ]
             );
 
@@ -148,10 +149,10 @@ class ArgumentsResolverTest extends TestCase
                     'array_array_value' => 'value',
                     'array_array_configured_instance' => [
                         'instance' => 'Type\Dependency\Shared\Configured',
-                        'shared' => false
-                    ]
+                        'shared' => false,
+                    ],
                 ],
-                'array_global_argument' => ['argument' => 'global_argument_configured']
+                'array_global_argument' => ['argument' => 'global_argument_configured'],
             ],
             'value_null' => null,
         ];
@@ -173,11 +174,11 @@ class ArgumentsResolverTest extends TestCase
             ],
             'global_argument' => [
                 '_a_' => 'global_argument_configured',
-                '_d_' => null
+                '_d_' => null,
             ],
             'global_argument_def' => [
                 '_a_' => 'global_argument_configured',
-                '_d_' => []
+                '_d_' => [],
             ],
             'value_configured' => [
                 '_v_' => 'value_configured',
@@ -196,8 +197,8 @@ class ArgumentsResolverTest extends TestCase
                     ],
                     'array_global_argument' => [
                         '_a_' => 'global_argument_configured',
-                        '_d_' => null
-                    ]
+                        '_d_' => null,
+                    ],
                 ],
             ],
             'value_null' => [

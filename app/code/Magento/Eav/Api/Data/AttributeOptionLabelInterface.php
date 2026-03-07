@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Api\Data;
 
 /**
@@ -12,9 +15,9 @@ namespace Magento\Eav\Api\Data;
  */
 interface AttributeOptionLabelInterface
 {
-    const LABEL = 'label';
+    public const LABEL = 'label';
 
-    const STORE_ID = 'store_id';
+    public const STORE_ID = 'store_id';
 
     /**
      * Get store id

@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Object manager configuration cache
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\ObjectManager;
 
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Serialize\Serializer\Serialize;
+use Magento\Framework\Serialize\SerializerInterface;
 
 class ConfigCache implements \Magento\Framework\ObjectManager\ConfigCacheInterface
 {

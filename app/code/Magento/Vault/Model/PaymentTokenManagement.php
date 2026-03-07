@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model;
 
 use Magento\Framework\Api\FilterBuilder;
@@ -131,17 +134,17 @@ class PaymentTokenManagement implements PaymentTokenManagementInterface
         $customerFilter = [
             $this->filterBuilder->setField(PaymentTokenInterface::CUSTOMER_ID)
                 ->setValue($customerId)
-                ->create()
+                ->create(),
             ];
         $visibleFilter = [
             $this->filterBuilder->setField(PaymentTokenInterface::IS_VISIBLE)
                 ->setValue(1)
-                ->create()
+                ->create(),
             ];
         $isActiveFilter = [
             $this->filterBuilder->setField(PaymentTokenInterface::IS_ACTIVE)
                 ->setValue(1)
-                ->create()
+                ->create(),
             ];
         $expiresAtFilter = [
             $this->filterBuilder->setField(PaymentTokenInterface::EXPIRES_AT)
@@ -152,7 +155,7 @@ class PaymentTokenManagement implements PaymentTokenManagementInterface
                         new \DateTimeZone('UTC')
                     )->format('Y-m-d 00:00:00')
                 )
-                ->create()
+                ->create(),
             ];
         $this->searchCriteriaBuilder->addFilters($customerFilter);
         $this->searchCriteriaBuilder->addFilters($visibleFilter);

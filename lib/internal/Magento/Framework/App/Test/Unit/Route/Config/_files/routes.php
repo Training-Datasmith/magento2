@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,5 +26,5 @@ return [
             'wishlist' => ['id' => 'wishlist', 'frontName' => 'wishlist', 'modules' => ['Magento_ModuleC']],
         ],
     ],
-    'front' => ['id' => 'front']
+    'front' => ['id' => 'front'],
 ];

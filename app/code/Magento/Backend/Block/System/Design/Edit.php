@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Design;
 
-use Magento\Framework\Escaper;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Escaper;
 
 /**
  * Edit store design schedule block.
@@ -74,7 +77,7 @@ class Edit extends \Magento\Backend\Block\Widget
             [
                 'label' => __('Back'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('adminhtml/*/') . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ]
         );
 
@@ -90,7 +93,7 @@ class Edit extends \Magento\Backend\Block\Widget
                 [
                     'label' => __('Delete'),
                     'onclick' => $deleteOnClick,
-                    'class' => 'delete'
+                    'class' => 'delete',
                 ]
             );
         }
@@ -103,7 +106,7 @@ class Edit extends \Magento\Backend\Block\Widget
                 'class' => 'save primary',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#design-edit-form']],
-                ]
+                ],
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\User\Helper;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Security\Model\ResourceModel\AdminSessionInfo;
 use Magento\Security\Model\AdminSessionInfo as AdminSessionInfoModel;
+use Magento\Security\Model\ResourceModel\AdminSessionInfo;
 
 /**
  * Update admin user session status to logged out

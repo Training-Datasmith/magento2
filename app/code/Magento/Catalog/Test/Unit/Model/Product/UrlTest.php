@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,22 +8,22 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Magento\Store\Model\ScopeInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Helper\Category;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Url;
 use Magento\Catalog\Model\Product\Url as ProductUrl;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Filter\FilterManager;
 use Magento\Framework\Session\SidResolverInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlFactory;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -112,7 +113,7 @@ class UrlTest extends TestCase
                 'storeManager' => $storeManager,
                 'urlFactory' => $urlFactory,
                 'sidResolver' => $this->sidResolver,
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
     }
@@ -294,7 +295,7 @@ class UrlTest extends TestCase
                 ['_direct' => '/product/url/path', '_query' => [], '_nosid' => true],
                 null,
                 null,
-            ]
+            ],
         ];
     }
 }

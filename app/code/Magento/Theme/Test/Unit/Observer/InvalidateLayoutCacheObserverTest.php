@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Observer;
 
-use Magento\Theme\Model\LayoutCacheTagResolverFactory;
-use Magento\Theme\Observer\InvalidateLayoutCacheObserver;
 use Magento\Framework\App\Cache\StateInterface as CacheState;
 use Magento\Framework\App\Cache\Type\Layout as LayoutCache;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Theme\Model\LayoutCacheTagResolverFactory;
+use Magento\Theme\Observer\InvalidateLayoutCacheObserver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class InvalidateLayoutCacheObserverTest extends TestCase
 {
@@ -61,21 +62,21 @@ class InvalidateLayoutCacheObserverTest extends TestCase
     protected function setUp(): void
     {
         $this->cacheStateMock = $this->createMock(CacheState::class);
-        
+
         $this->layoutCacheMock = $this->createPartialMock(LayoutCache::class, ['clean']);
-        
+
         $this->tagResolverMock = $this->createPartialMockWithReflection(
             LayoutCacheTagResolverFactory::class,
             ['getTags', 'getStrategy']
         );
-        
+
         $this->observerMock = $this->createMock(Observer::class);
-        
+
         $this->eventMock = $this->createPartialMockWithReflection(
             Event::class,
             ['getObject']
         );
-        
+
         $this->objectMock = $this->createPartialMockWithReflection(
             DataObject::class,
             ['getIdentifier', 'dataHasChangedFor', 'isObjectNew']

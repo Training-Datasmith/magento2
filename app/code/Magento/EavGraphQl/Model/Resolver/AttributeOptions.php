@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class AttributeOptions implements ResolverInterface
         ResolveInfo $info,
         ?array $value = null,
         ?array $args = null
-    ) : Value {
+    ): Value {
 
         return $this->valueFactory->create(
             function () use ($value) {

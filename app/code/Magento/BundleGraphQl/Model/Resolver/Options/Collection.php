@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class Collection implements ResetAfterRequestInterface
      * @param int $parentEntityId
      * @param string $sku
      */
-    public function addParentFilterData(int $parentId, int $parentEntityId, string $sku) : void
+    public function addParentFilterData(int $parentId, int $parentEntityId, string $sku): void
     {
         $this->skuMap[$parentId] = ['sku' => $sku, 'entity_id' => $parentEntityId];
     }
@@ -89,7 +90,7 @@ class Collection implements ResetAfterRequestInterface
      * @param int $parentId
      * @return array
      */
-    public function getOptionsByParentId(int $parentId) : array
+    public function getOptionsByParentId(int $parentId): array
     {
         $options = $this->fetch();
         return $options[$parentId] ?? [];
@@ -100,7 +101,7 @@ class Collection implements ResetAfterRequestInterface
      *
      * @return array
      */
-    private function fetch() : array
+    private function fetch(): array
     {
         if (empty($this->skuMap) || !empty($this->optionMap)) {
             return $this->optionMap;
@@ -120,7 +121,7 @@ class Collection implements ResetAfterRequestInterface
             'cpe.' . $linkField . ' = main_table.parent_id',
             []
         )->where(
-            "cpe.entity_id IN (?)",
+            'cpe.entity_id IN (?)',
             $entityIds
         );
         $optionsCollection->setPositionOrder();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -28,13 +29,13 @@ class MapperTest extends TestCase
             [
                 'source' => ['product'],
                 'name' => 'Product',
-            ]
+            ],
         ];
         $expectedResult = [
             'Product' => [
                 'source' => 'product',
                 'name' => 'Product',
-            ]
+            ],
         ];
         $this->assertEquals($this->mapper->execute($configData), $expectedResult);
     }

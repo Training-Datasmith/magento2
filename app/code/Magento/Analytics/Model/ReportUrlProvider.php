@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 use Magento\Analytics\Model\Config\Backend\Baseurl\SubscriptionUpdateHandler;
@@ -17,59 +20,27 @@ use Magento\Framework\FlagManager;
 class ReportUrlProvider
 {
     /**
-     * Resource for handling MBI token value.
-     *
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * Resource which provide OTP.
-     *
-     * @var OTPRequest
-     */
-    private $otpRequest;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $config;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
      * Path to config value with URL which provide reports.
-     *
-     * @var string
      */
-    private $urlReportConfigPath = 'analytics/url/report';
+    private string $urlReportConfigPath = 'analytics/url/report';
 
     /**
      * Path to Advanced Reporting documentation URL.
-     *
-     * @var string
      */
-    private $urlReportDocConfigPath = 'analytics/url/documentation';
+    private string $urlReportDocConfigPath = 'analytics/url/documentation';
 
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param OTPRequest $otpRequest
-     * @param ScopeConfigInterface $config
-     * @param FlagManager $flagManager
-     */
     public function __construct(
-        AnalyticsToken $analyticsToken,
-        OTPRequest $otpRequest,
-        ScopeConfigInterface $config,
-        FlagManager $flagManager
+        /**
+         * Resource for handling MBI token value.
+         */
+        private readonly AnalyticsToken $analyticsToken,
+        /**
+         * Resource which provide OTP.
+         */
+        private readonly OTPRequest $otpRequest,
+        private readonly ScopeConfigInterface $config,
+        private readonly FlagManager $flagManager
     ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->otpRequest = $otpRequest;
-        $this->config = $config;
-        $this->flagManager = $flagManager;
     }
 
     /**

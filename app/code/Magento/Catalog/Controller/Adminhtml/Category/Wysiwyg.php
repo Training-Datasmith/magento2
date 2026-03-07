@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
 class Wysiwyg extends \Magento\Catalog\Controller\Adminhtml\Product\Wysiwyg
@@ -12,5 +15,5 @@ class Wysiwyg extends \Magento\Catalog\Controller\Adminhtml\Product\Wysiwyg
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::categories';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::categories';
 }

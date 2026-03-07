@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\CatalogRuleConfigurable\Test\Unit\Plugin\CatalogRule\Model\Rule;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogRule\Model\Rule;
 use Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\ConfigurableProductsProvider;
 use Magento\CatalogRuleConfigurable\Plugin\CatalogRule\Model\Rule\ConfigurableProductHandler;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -104,7 +105,7 @@ class ConfigurableProductHandlerTest extends TestCase
                 ],
                 'simple2' => [
                     3 => true,
-                ]
+                ],
             ],
             $this->configurableProductHandler->aroundGetMatchingProductIds(
                 $this->ruleMock,

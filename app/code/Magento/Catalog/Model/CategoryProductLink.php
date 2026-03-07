@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -15,9 +17,9 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     /**#@+
      * Constant for confirmation status
      */
-    const KEY_SKU = 'sku';
-    const KEY_POSITION = 'position';
-    const KEY_CATEGORY_ID = 'category_id';
+    public const KEY_SKU = 'sku';
+    public const KEY_POSITION = 'position';
+    public const KEY_CATEGORY_ID = 'category_id';
     /**#@-*/
 
     /**

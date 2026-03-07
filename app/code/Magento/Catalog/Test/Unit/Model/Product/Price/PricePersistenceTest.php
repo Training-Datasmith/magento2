@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\Product\Price\PricePersistence;
@@ -22,6 +22,7 @@ use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -82,13 +83,13 @@ class PricePersistenceTest extends TestCase
         $this->attributeResource = $this->createMock(Attribute::class);
         $this->attributeRepository = $this->createMock(ProductAttributeRepositoryInterface::class);
         $this->productIdLocator = $this->createMock(ProductIdLocatorInterface::class);
-        
+
         $metadata = $this->createMock(EntityMetadata::class);
         $metadata->method('getLinkField')->willReturn('row_id');
-        
+
         $this->metadataPool = $this->createMock(MetadataPool::class);
         $this->metadataPool->method('getMetadata')->willReturn($metadata);
-        
+
         $this->connection = $this->createMock(AdapterInterface::class);
         $this->productAttribute = $this->createMock(ProductAttributeInterface::class);
         $this->basePriceFactory = $this->createMock(BasePriceFactory::class);
@@ -117,11 +118,11 @@ class PricePersistenceTest extends TestCase
         $skus = ['sku_1', 'sku_2'];
         $idsBySku = [
             'sku_1' => [
-                1 => Type::TYPE_SIMPLE
+                1 => Type::TYPE_SIMPLE,
             ],
             'sku_2' => [
-                2 => Type::TYPE_VIRTUAL
-            ]
+                2 => Type::TYPE_VIRTUAL,
+            ],
         ];
         $select = $this->createMock(Select::class);
         $this->productIdLocator
@@ -163,13 +164,13 @@ class PricePersistenceTest extends TestCase
             [
                 'store_id' => 1,
                 'row_id' => 1,
-                'value' => 15
+                'value' => 15,
             ],
             [
                 'store_id' => 0,
                 'row_id' => 2,
-                'value' => 20
-            ]
+                'value' => 20,
+            ],
         ];
         $basePrice = $this->createMock(BasePrice::class);
         $basePrice->expects($this->once())
@@ -194,8 +195,8 @@ class PricePersistenceTest extends TestCase
             [
                 'store_id' => 1,
                 'row_id' => 1,
-                'value' => 15
-            ]
+                'value' => 15,
+            ],
         ];
         $basePrice = $this->createMock(BasePrice::class);
         $basePrice->expects($this->once())
@@ -220,11 +221,11 @@ class PricePersistenceTest extends TestCase
         $skus = ['sku_1', 'sku_2'];
         $idsBySku = [
             'sku_1' => [
-                1 => Type::TYPE_SIMPLE
+                1 => Type::TYPE_SIMPLE,
             ],
             'sku_2' => [
-                2 => Type::TYPE_VIRTUAL
-            ]
+                2 => Type::TYPE_VIRTUAL,
+            ],
         ];
         $this->productIdLocator
             ->expects($this->once())
@@ -246,7 +247,7 @@ class PricePersistenceTest extends TestCase
                 'catalog_product_entity_decimal',
                 [
                     'attribute_id = ?' => $attributeId,
-                    'row_id IN (?)' => [1, 2]
+                    'row_id IN (?)' => [1, 2],
                 ]
             )
             ->willReturnSelf();
@@ -265,11 +266,11 @@ class PricePersistenceTest extends TestCase
         $skus = ['sku_1', 'sku_2'];
         $idsBySku = [
             'sku_1' => [
-                1 => Type::TYPE_SIMPLE
+                1 => Type::TYPE_SIMPLE,
             ],
             'sku_2' => [
-                2 => Type::TYPE_VIRTUAL
-            ]
+                2 => Type::TYPE_VIRTUAL,
+            ],
         ];
         $this->productIdLocator
             ->expects($this->once())
@@ -292,7 +293,7 @@ class PricePersistenceTest extends TestCase
                 'catalog_product_entity_decimal',
                 [
                     'attribute_id = ?' => $attributeId,
-                    'row_id IN (?)' => [1, 2]
+                    'row_id IN (?)' => [1, 2],
                 ]
             )
             ->willReturnSelf();
@@ -330,17 +331,17 @@ class PricePersistenceTest extends TestCase
             [
                 null,
                 2,
-                ['sku_1' => [1 => 1]]
+                ['sku_1' => [1 => 1]],
             ],
             [
                 'sku_1',
                 1,
-                ['sku_1' => [1 => 1]]
+                ['sku_1' => [1 => 1]],
             ],
             [
                 null,
                 1,
-                ['sku_1' => [2 => 1]]
+                ['sku_1' => [2 => 1]],
             ],
         ];
     }

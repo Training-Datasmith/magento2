@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * Various methods for parsing Zip codes
  *
  */
+
 namespace Magento\Framework\Parse;
 
 class Zip
@@ -54,7 +57,7 @@ class Zip
         $zipLength = 5;
         $zipPattern = [];
 
-        if (!preg_match("/^(.+)-(.+)$/", $zipRange, $zipParts)) {
+        if (!preg_match('/^(.+)-(.+)$/', $zipRange, $zipParts)) {
             return [$zipRange];
         }
 

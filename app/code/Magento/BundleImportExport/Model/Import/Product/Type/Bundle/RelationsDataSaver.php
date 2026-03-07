@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\BundleImportExport\Model\Import\Product\Type\Bundle;
 
 use Magento\Catalog\Model\ResourceModel\Product\Relation;
@@ -54,7 +57,7 @@ class RelationsDataSaver
                 [
                     'required',
                     'position',
-                    'type'
+                    'type',
                 ]
             );
         }
@@ -99,7 +102,7 @@ class RelationsDataSaver
                     'selection_price_type',
                     'selection_price_value',
                     'selection_qty',
-                    'selection_can_change_qty'
+                    'selection_can_change_qty',
                 ]
             );
         }

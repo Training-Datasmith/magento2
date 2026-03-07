@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Obsolete pathes
  *
@@ -18,7 +20,7 @@ return [
     ['/lib/Magento/Filesystem', '/lib/Magento/Framework/Filesystem'],
     [
         '/dev/tests/integration/testsuite/Magento/Filesystem',
-        '/dev/tests/integration/testsuite/Magento/Framework/Filesystem'
+        '/dev/tests/integration/testsuite/Magento/Framework/Filesystem',
     ],
     ['/dev/tests/unit/testsuite/Magento/Filesystem', '/dev/tests/unit/testsuite/Magento/Framework/Filesystem'],
     ['/lib/Magento/Config', '/lib/Magento/Framework/Config'],
@@ -40,14 +42,14 @@ return [
     ['/lib/Magento/Archive', '/lib/Magento/Framework/Archive'],
     [
         '/dev/tests/integration/testsuite/Magento/Archive',
-        '/dev/tests/integration/testsuite/Magento/Framework/Archive'
+        '/dev/tests/integration/testsuite/Magento/Framework/Archive',
     ],
     ['/dev/tests/unit/testsuite/Magento/Archive', '/dev/tests/unit/testsuite/Magento/Framework/Archive'],
     ['/lib/Magento/Backup', '/lib/Magento/Framework/Backup'],
     ['/lib/Magento/Session', '/lib/Magento/Framework/Session'],
     [
         '/dev/tests/integration/testsuite/Magento/Session',
-        '/dev/tests/integration/testsuite/Magento/Framework/Session'
+        '/dev/tests/integration/testsuite/Magento/Framework/Session',
     ],
     ['/dev/tests/unit/testsuite/Magento/Session', '/dev/tests/unit/testsuite/Magento/Framework/Session'],
     ['/lib/Magento/Authorization', '/lib/Magento/Framework/Authorization'],
@@ -57,25 +59,25 @@ return [
     ['/lib/Magento/ObjectManager', '/lib/Magento/Framework/ObjectManager'],
     [
         '/dev/tests/integration/testsuite/Magento/ObjectManager',
-        '/dev/tests/integration/testsuite/Magento/Framework/ObjectManager'
+        '/dev/tests/integration/testsuite/Magento/Framework/ObjectManager',
     ],
     ['/dev/tests/unit/testsuite/Magento/ObjectManager', '/dev/tests/unit/testsuite/Magento/Framework/ObjectManager'],
     ['/lib/Magento/Exception', '/lib/Magento/Framework/Exception'],
     [
         '/dev/tests/integration/testsuite/Magento/Exception',
-        '/dev/tests/integration/testsuite/Magento/Framework/Exception'
+        '/dev/tests/integration/testsuite/Magento/Framework/Exception',
     ],
     ['/dev/tests/unit/testsuite/Magento/Exception', '/dev/tests/unit/testsuite/Magento/Framework/Exception'],
     ['/lib/Magento/Autoload', '/lib/Magento/Framework/Autoload'],
     [
         '/dev/tests/integration/testsuite/Magento/Autoload',
-        '/dev/tests/integration/testsuite/Magento/Framework/Autoload'
+        '/dev/tests/integration/testsuite/Magento/Framework/Autoload',
     ],
     ['/dev/tests/unit/testsuite/Magento/Autoload', '/dev/tests/unit/testsuite/Magento/Framework/Autoload'],
     ['/lib/Magento/Translate', '/lib/Magento/Framework/Translate'],
     [
         '/dev/tests/integration/testsuite/Magento/Translate',
-        '/dev/tests/integration/testsuite/Magento/Framework/Translate'
+        '/dev/tests/integration/testsuite/Magento/Framework/Translate',
     ],
     ['/dev/tests/unit/testsuite/Magento/Translate', '/dev/tests/unit/testsuite/Magento/Framework/Translate'],
     ['/lib/Magento/Code', '/lib/Magento/Framework/Code'],
@@ -105,7 +107,7 @@ return [
     ['/lib/Magento/DomDocument', '/lib/Magento/Framework/DomDocument'],
     [
         '/dev/tests/integration/testsuite/Magento/DomDocument',
-        '/dev/tests/integration/testsuite/Magento/Framework/DomDocument'
+        '/dev/tests/integration/testsuite/Magento/Framework/DomDocument',
     ],
     ['/dev/tests/unit/testsuite/Magento/DomDocument', '/dev/tests/unit/testsuite/Magento/Framework/DomDocument'],
     ['/lib/Magento/Module', '/lib/Magento/Framework/Module'],
@@ -127,18 +129,18 @@ return [
     ['/dev/tests/unit/testsuite/Magento/Profiler', '/dev/tests/unit/testsuite/Magento/Framework/Profiler'],
     [
         '/dev/tests/integration/testsuite/Magento/Profiler',
-        '/dev/tests/integration/testsuite/Magento/Framework/Profiler'
+        '/dev/tests/integration/testsuite/Magento/Framework/Profiler',
     ],
     ['/lib/Magento/Simplexml', '/lib/Magento/Framework/Simplexml'],
     ['/dev/tests/unit/testsuite/Magento/Simplexml', '/dev/tests/unit/testsuite/Magento/Framework/Simplexml'],
     [
         '/dev/tests/integration/testsuite/Magento/Simplexml',
-        '/dev/tests/integration/testsuite/Magento/Framework/Simplexml'
+        '/dev/tests/integration/testsuite/Magento/Framework/Simplexml',
     ],
     ['/lib/Magento/Controller', '/lib/Magento/Framework/Controller'],
     [
         '/dev/tests/integration/testsuite/Magento/Controller',
-        '/dev/tests/integration/testsuite/Magento/Framework/Controller'
+        '/dev/tests/integration/testsuite/Magento/Framework/Controller',
     ],
     ['/dev/tests/unit/testsuite/Magento/Controller', '/dev/tests/unit/testsuite/Magento/Framework/Controller'],
     ['/lib/Magento/Convert', '/lib/Magento/Framework/Convert'],
@@ -150,7 +152,7 @@ return [
     ['/lib/Magento/Encryption', '/lib/Magento/Framework/Encryption'],
     [
         '/dev/tests/integration/testsuite/Magento/Encryption',
-        '/dev/tests/integration/testsuite/Magento/Framework/Encryption'
+        '/dev/tests/integration/testsuite/Magento/Framework/Encryption',
     ],
     ['/dev/tests/unit/testsuite/Magento/Encryption', '/dev/tests/unit/testsuite/Magento/Framework/Encryption'],
     ['/lib/Magento/Option', '/lib/Magento/Framework/Option'],
@@ -172,7 +174,7 @@ return [
     ['/dev/tests/unit/testsuite/Magento/Validator', '/dev/tests/unit/testsuite/Magento/Framework/Validator'],
     [
         '/dev/tests/integration/testsuite/Magento/Validator',
-        '/dev/tests/integration/testsuite/Magento/Framework/Validator'
+        '/dev/tests/integration/testsuite/Magento/Framework/Validator',
     ],
     ['/lib/Magento/Xml', '/lib/Magento/Framework/Xml'],
     ['/dev/tests/unit/testsuite/Magento/Xml', '/dev/tests/unit/testsuite/Magento/Framework/Xml'],
@@ -181,7 +183,7 @@ return [
     ['/dev/tests/unit/testsuite/Magento/Interception', '/dev/tests/unit/testsuite/Magento/Framework/Interception'],
     [
         '/dev/tests/integration/testsuite/Magento/Interception',
-        '/dev/tests/integration/testsuite/Magento/Framework/Interception'
+        '/dev/tests/integration/testsuite/Magento/Framework/Interception',
     ],
     ['/lib/Magento/Json', '/lib/Magento/Framework/Json'],
     ['/dev/tests/unit/testsuite/Magento/Json', '/dev/tests/unit/testsuite/Magento/Framework/Json'],
@@ -225,12 +227,12 @@ return [
     ['/app/code/Magento/Core/Model/Design/Backend', '/app/code/Magento/Theme/Model/Design/Backend'],
     [
         '/dev/tests/integration/testsuite/Magento/Core/Model/Design/Backend',
-        '/dev/tests/integration/testsuite/Magento/Theme/Model/Design/Backend'
+        '/dev/tests/integration/testsuite/Magento/Theme/Model/Design/Backend',
     ],
     ['/app/code/Magento/Core/Model/Resource/Theme', '/app/code/Magento/Theme/Model/Resource/Theme'],
     [
         '/dev/tests/integration/testsuite/Magento/Core/Model/Resource/Theme',
-        '/dev/tests/integration/testsuite/Magento/Theme/Model/Resource/Theme'
+        '/dev/tests/integration/testsuite/Magento/Theme/Model/Resource/Theme',
     ],
     ['/dev/tests/unit/testsuite/Magento/Webapi/Service/Entity'],
     ['/app/code/Magento/Install'],

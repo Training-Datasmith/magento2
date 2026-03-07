@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Test\Fixture;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\TestFramework\Fixture\LegacyDataFixturePathResolver;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test fixture path resolver for file based data fixture
@@ -76,12 +77,12 @@ class LegacyDataFixturePathResolverTest extends TestCase
         return [
             [
                 'Magento/Test/_files/fixture.php',
-                '{{basePath}}Magento/Test/_files/fixture.php'
+                '{{basePath}}Magento/Test/_files/fixture.php',
             ],
             [
                 'Bar_DataFixtureTest::foo/bar/baz/fixture.php',
-                '{{basePath}}Bar/DataFixtureTest/foo/bar/baz/fixture.php'
-            ]
+                '{{basePath}}Bar/DataFixtureTest/foo/bar/baz/fixture.php',
+            ],
         ];
     }
 }

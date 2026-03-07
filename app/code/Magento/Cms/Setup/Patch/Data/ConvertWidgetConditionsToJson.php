@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,18 +8,17 @@
 
 namespace Magento\Cms\Setup\Patch\Data;
 
+use Magento\Cms\Api\Data\BlockInterface;
+use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Setup\ContentConverter;
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\DB\AggregatedFieldDataConverter;
+use Magento\Framework\DB\FieldToConvert;
 use Magento\Framework\DB\Select\QueryModifierFactory;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\Framework\DB\AggregatedFieldDataConverter;
-use Magento\Framework\DB\FieldToConvert;
-use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Widget\Setup\LayoutUpdateConverter;
-use Magento\Cms\Api\Data\BlockInterface;
-use Magento\Cms\Api\Data\PageInterface;
 
 /**
  * Class ConvertWidgetConditionsToJson
@@ -73,24 +74,24 @@ class ConvertWidgetConditionsToJson implements DataPatchInterface, PatchVersionI
             'like',
             [
                 'values' => [
-                    'content' => '%conditions_encoded%'
-                ]
+                    'content' => '%conditions_encoded%',
+                ],
             ]
         );
         $layoutUpdateXmlFieldQueryModifier = $this->queryModifierFactory->create(
             'like',
             [
                 'values' => [
-                    'layout_update_xml' => '%conditions_encoded%'
-                ]
+                    'layout_update_xml' => '%conditions_encoded%',
+                ],
             ]
         );
         $customLayoutUpdateXmlFieldQueryModifier = $this->queryModifierFactory->create(
             'like',
             [
                 'values' => [
-                    'custom_layout_update_xml' => '%conditions_encoded%'
-                ]
+                    'custom_layout_update_xml' => '%conditions_encoded%',
+                ],
             ]
         );
         $blockMetadata = $this->metadataPool->getMetadata(BlockInterface::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\App\Test\Unit\Config;
 
 use Magento\Framework\App\Config\Data;
 use Magento\Framework\App\Config\MetadataProcessor;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DataTest extends TestCase
@@ -48,7 +49,7 @@ class DataTest extends TestCase
     {
         return [
             'simple value' => ['some/config/value', 'test'],
-            'complex value' => ['some/config/value', ['level1' => ['level2' => 'test']]]
+            'complex value' => ['some/config/value', ['level1' => ['level2' => 'test']]],
         ];
     }
 

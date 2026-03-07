@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Indexer\Block\Backend\Grid;
 
 class ItemsUpdater implements \Magento\Framework\View\Layout\Argument\UpdaterInterface

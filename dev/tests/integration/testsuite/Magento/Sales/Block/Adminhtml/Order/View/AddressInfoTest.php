@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Sales\Block\Adminhtml\Order\View;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Address\Renderer as OrderAddressRenderer;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Sales\Model\Order\Address\Renderer as OrderAddressRenderer;
 use PHPUnit\Framework\TestCase;
 
 /**

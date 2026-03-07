@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     'value' => $storeModel->getGroupId(),
                     'values' => $this->_getStoreGroups(),
                     'required' => true,
-                    'disabled' => $storeModel->isReadOnly()
+                    'disabled' => $storeModel->isReadOnly(),
                 ]
             );
             $fieldset = $this->prepareGroupIdField($form, $storeModel, $fieldset);
@@ -84,7 +85,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Name'),
                 'value' => $storeModel->getName(),
                 'required' => true,
-                'disabled' => $storeModel->isReadOnly()
+                'disabled' => $storeModel->isReadOnly(),
             ]
         );
         $fieldset->addField(
@@ -95,7 +96,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Code'),
                 'value' => $storeModel->getCode(),
                 'required' => true,
-                'disabled' => $storeModel->isReadOnly()
+                'disabled' => $storeModel->isReadOnly(),
             ]
         );
         $isDisabledStatusField = $storeModel->isReadOnly()
@@ -109,7 +110,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'value' => $storeModel->isActive(),
                 'options' => [0 => __('Disabled'), 1 => __('Enabled')],
                 'required' => true,
-                'disabled' => $isDisabledStatusField
+                'disabled' => $isDisabledStatusField,
             ]
         );
         if ($isDisabledStatusField) {
@@ -131,7 +132,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'value' => $storeModel->getSortOrder(),
                 'required' => false,
                 'class' => 'validate-number validate-zero-or-greater',
-                'disabled' => $storeModel->isReadOnly()
+                'disabled' => $storeModel->isReadOnly(),
             ]
         );
         $fieldset->addField(
@@ -146,7 +147,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'name' => 'store[store_id]',
                 'no_span' => true,
                 'value' => $storeModel->getId(),
-                'disabled' => $storeModel->isReadOnly()
+                'disabled' => $storeModel->isReadOnly(),
             ]
         );
     }
@@ -202,7 +203,7 @@ class Store extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     [
                         'name' => 'store[original_group_id]',
                         'no_span' => true,
-                        'value' => $storeModel->getGroupId()
+                        'value' => $storeModel->getGroupId(),
                     ]
                 );
             }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria;
 
-use Magento\Framework\Api\Search\SearchCriteriaInterfaceFactory;
 use Magento\Framework\Api\Search\SearchCriteriaInterface;
+use Magento\Framework\Api\Search\SearchCriteriaInterfaceFactory;
 
 /**
  * Builder to create search criteria and apply corespondent filters from arguments
@@ -41,7 +42,7 @@ class Builder
      * @param array $arguments
      * @return SearchCriteriaInterface
      */
-    public function build(string $fieldName, array $arguments) : SearchCriteriaInterface
+    public function build(string $fieldName, array $arguments): SearchCriteriaInterface
     {
         $searchCriteria = $this->searchCriteriaFactory->create();
         foreach ($arguments as $argumentName => $argument) {

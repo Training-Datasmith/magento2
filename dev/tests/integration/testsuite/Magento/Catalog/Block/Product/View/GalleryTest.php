@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -450,8 +451,8 @@ class GalleryTest extends \PHPUnit\Framework\TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'default',
                 [
@@ -465,7 +466,7 @@ class GalleryTest extends \PHPUnit\Framework\TestCase
                         'caption' => 'Simple Product',
                         'position' => 2,
                     ],
-                ]
+                ],
             ],
             [
                 'fixture_second_store',
@@ -475,8 +476,8 @@ class GalleryTest extends \PHPUnit\Framework\TestCase
                         'position' => 2,
                         'label' => 'New Image Alt Text',
                         'disabled' => 0,
-                        'media_type' => 'image'
-                    ]
+                        'media_type' => 'image',
+                    ],
                 ],
                 'fixture_second_store',
                 [
@@ -490,8 +491,8 @@ class GalleryTest extends \PHPUnit\Framework\TestCase
                         'caption' => 'New Image Alt Text',
                         'position' => 2,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

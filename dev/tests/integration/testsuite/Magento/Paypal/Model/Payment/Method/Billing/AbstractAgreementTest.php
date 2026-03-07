@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payment\Method\Billing;
 
 use Magento\Quote\Api\Data\PaymentInterface;
@@ -76,8 +79,8 @@ class AbstractAgreementTest extends \Magento\TestFramework\Indexer\TestCase
         $data = new \Magento\Framework\DataObject(
             [
                 PaymentInterface::KEY_ADDITIONAL_DATA => [
-                    AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID => $billingAgreement->getId()
-                ]
+                    AbstractAgreement::TRANSPORT_BILLING_AGREEMENT_ID => $billingAgreement->getId(),
+                ],
             ]
         );
         $this->_model->assignData($data);

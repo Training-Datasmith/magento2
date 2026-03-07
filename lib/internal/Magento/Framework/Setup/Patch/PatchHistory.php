@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,22 +18,22 @@ class PatchHistory
     /**
      * Table name where patche names will be persisted
      */
-    const TABLE_NAME = 'patch_list';
+    public const TABLE_NAME = 'patch_list';
 
     /**
      * Name of a patch
      */
-    const CLASS_NAME = "patch_name";
+    public const CLASS_NAME = 'patch_name';
 
     /**
      * Patch type for schema patches
      */
-    const SCHEMA_PATCH_TYPE = 'schema';
+    public const SCHEMA_PATCH_TYPE = 'schema';
 
     /**
      * Patch type for data patches
      */
-    const DATA_PATCH_TYPE = 'data';
+    public const DATA_PATCH_TYPE = 'data';
 
     /**
      * @var array
@@ -82,7 +84,7 @@ class PatchHistory
     public function fixPatch($patchName)
     {
         if ($this->isApplied($patchName)) {
-            throw new \LogicException(sprintf("Patch %s cannot be applied twice", $patchName));
+            throw new \LogicException(sprintf('Patch %s cannot be applied twice', $patchName));
         }
 
         $adapter = $this->resourceConnection->getConnection();
@@ -101,14 +103,14 @@ class PatchHistory
     {
         if (!$this->isApplied($patchName)) {
             throw new \LogicException(
-                sprintf("Patch %s should be applied, before you can revert it", $patchName)
+                sprintf('Patch %s should be applied, before you can revert it', $patchName)
             );
         }
 
         $adapter = $this->resourceConnection->getConnection();
         $adapter->delete(
             $this->resourceConnection->getTableName(self::TABLE_NAME),
-            [self::CLASS_NAME . "= ?" => $patchName]
+            [self::CLASS_NAME . '= ?' => $patchName]
         );
     }
 

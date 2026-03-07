@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Interface of Magento filesystem driver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem;
 
 use Magento\Framework\Exception\FileSystemException;
@@ -22,14 +25,14 @@ interface DriverInterface
      *
      * @deprecated
      */
-    const WRITEABLE_DIRECTORY_MODE = 0770;
+    public const WRITEABLE_DIRECTORY_MODE = 0770;
 
     /**
      * Permissions to give read/write access to owner and owning group, but not to all users
      *
      * @deprecated
      */
-    const WRITEABLE_FILE_MODE = 0660;
+    public const WRITEABLE_FILE_MODE = 0660;
 
     /**
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,8 +22,8 @@ class Config
     /**#@+
      * Product listing attributes cache ids
      */
-    const PRODUCT_LISTING_ATTRIBUTES_CACHE_ID = 'PRODUCT_LISTING_ATTRIBUTES';
-    const PRODUCT_LISTING_SORT_BY_ATTRIBUTES_CACHE_ID = 'PRODUCT_LISTING_SORT_BY_ATTRIBUTES';
+    public const PRODUCT_LISTING_ATTRIBUTES_CACHE_ID = 'PRODUCT_LISTING_ATTRIBUTES';
+    public const PRODUCT_LISTING_SORT_BY_ATTRIBUTES_CACHE_ID = 'PRODUCT_LISTING_SORT_BY_ATTRIBUTES';
     /**#@-*/
 
     /**#@-*/
@@ -75,7 +76,7 @@ class Config
                 $cacheId,
                 [
                     Type::CACHE_TAG,
-                    Attribute::CACHE_TAG
+                    Attribute::CACHE_TAG,
                 ]
             );
         }
@@ -105,7 +106,7 @@ class Config
                 $cacheId,
                 [
                     Type::CACHE_TAG,
-                    Attribute::CACHE_TAG
+                    Attribute::CACHE_TAG,
                 ]
             );
         }

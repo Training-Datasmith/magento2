@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -188,9 +190,10 @@ class Rule extends AbstractResource
         }
 
         // Update auto geterated specific coupons if exists
-        if (($object->getUseAutoGeneration()
+        if ((
+            $object->getUseAutoGeneration()
             || ((int) $object->getCouponType()) === \Magento\SalesRule\Model\Rule::COUPON_TYPE_AUTO
-            ) && $object->hasDataChanges()
+        ) && $object->hasDataChanges()
         ) {
             $this->_resourceCoupon->updateSpecificCoupons($object);
         }
@@ -435,7 +438,7 @@ class Rule extends AbstractResource
      *
      * @return string
      */
-    public function getLinkField() :string
+    public function getLinkField(): string
     {
         if ($this->linkedField === null) {
             $metadata = $this->metadataPool->getMetadata(RuleInterface::class);

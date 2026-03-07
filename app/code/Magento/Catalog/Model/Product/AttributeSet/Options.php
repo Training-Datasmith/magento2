@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\AttributeSet;
 
 /**
@@ -10,7 +13,6 @@ namespace Magento\Catalog\Model\Product\AttributeSet;
  */
 class Options implements \Magento\Framework\Data\OptionSourceInterface
 {
-
     /**
      * @var array
      */

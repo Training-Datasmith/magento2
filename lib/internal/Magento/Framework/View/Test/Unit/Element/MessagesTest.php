@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test for view Messages model
  */
+
 namespace Magento\Framework\View\Test\Unit\Element;
 
 use Magento\Framework\Escaper;
@@ -80,7 +82,7 @@ class MessagesTest extends TestCase
                 'collectionFactory' => $this->collectionFactory,
                 'messageFactory' => $this->messageFactory,
                 'interpretationStrategy' => $this->messageInterpretationStrategy,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }
@@ -288,7 +290,7 @@ class MessagesTest extends TestCase
             MessageInterface::TYPE_ERROR,
             MessageInterface::TYPE_WARNING,
             MessageInterface::TYPE_NOTICE,
-            MessageInterface::TYPE_SUCCESS
+            MessageInterface::TYPE_SUCCESS,
         ];
         $this->assertEquals($types, $this->messages->getMessageTypes());
     }
@@ -358,7 +360,7 @@ class MessagesTest extends TestCase
                     [$errorMock, 'Error message without HTML!'],
                     [$warningMock, 'Warning message with <strong>HTML</strong>!'],
                     [$noticeMock, 'Notice message without HTML!'],
-                    [$successMock, 'Success message with <strong>HTML</strong>!']
+                    [$successMock, 'Success message with <strong>HTML</strong>!'],
                 ]
             );
 
@@ -370,7 +372,7 @@ class MessagesTest extends TestCase
                     [MessageInterface::TYPE_ERROR, [$errorMock]],
                     [MessageInterface::TYPE_WARNING, [$warningMock, $warningMock]],
                     [MessageInterface::TYPE_NOTICE, [$noticeMock, $noticeMock, $noticeMock]],
-                    [MessageInterface::TYPE_SUCCESS, [$successMock, $successMock, $successMock, $successMock]]
+                    [MessageInterface::TYPE_SUCCESS, [$successMock, $successMock, $successMock, $successMock]],
                 ]
             );
 

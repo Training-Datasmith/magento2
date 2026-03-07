@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Generator;
 
-use PHPUnit\Framework\TestCase;
 use Magento\Framework\Code\Generator\Io;
-use Magento\Framework\Filesystem;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Filesystem;
+use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Phrase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class IoTest extends TestCase
 {
@@ -25,7 +28,7 @@ class IoTest extends TestCase
 
     public const CLASS_FILE_NAME = 'class/file/name';
 
-    public const FILE_CONTENT = "content";
+    public const FILE_CONTENT = 'content';
 
     /**#@-*/
 
@@ -101,7 +104,7 @@ class IoTest extends TestCase
                 $this->stringContains($resultFileName),
                 $resultFileName
             );
-        
+
         if (!$exceptionDuringRename) {
             $renameMock->willReturn(true);
         } elseif ($fileExists) {
@@ -126,21 +129,21 @@ class IoTest extends TestCase
                 'resultFileName' => self::$nonExistingFile,
                 'fileExists' => false,
                 'exceptionDuringRename' => false,
-                'success' => true
+                'success' => true,
 
             ],
             'Writing file fails because class already exists on disc: writeResultFile succeeds' => [
                 'resultFileName' => self::$existingFile,
                 'fileExists' => true,
                 'exceptionDuringRename' => true,
-                'success' => true
+                'success' => true,
             ],
             'Error renaming file, btu class does not exist on disc: writeResultFile throws exception and fails' => [
                 'resultFileName' => self::$nonExistingFile,
                 'fileExists' => false,
                 'exceptionDuringRename' => true,
-                'success' => false
-            ]
+                'success' => false,
+            ],
         ];
     }
 
@@ -216,7 +219,7 @@ class IoTest extends TestCase
     {
         return [
             ['fileName' => self::$existingFile, 'exists' => true],
-            ['fileName' => self::$nonExistingFile, 'exists' => false]
+            ['fileName' => self::$nonExistingFile, 'exists' => false],
         ];
     }
 }

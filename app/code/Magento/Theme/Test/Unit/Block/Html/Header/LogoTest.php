@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Theme\Test\Unit\Block\Html\Header;
 
-use Magento\Theme\ViewModel\Block\Html\Header\LogoPathResolverInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
@@ -15,6 +15,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\Theme\Block\Html\Header\Logo;
+use Magento\Theme\ViewModel\Block\Html\Header\LogoPathResolverInterface;
 use PHPUnit\Framework\TestCase;
 
 class LogoTest extends TestCase

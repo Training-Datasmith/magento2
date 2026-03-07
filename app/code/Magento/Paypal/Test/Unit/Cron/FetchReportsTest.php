@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class FetchReportsTest extends TestCase
         $this->fetchReports = $this->objectManager->getObject(
             FetchReports::class,
             [
-                'settlementFactory' => $this->settlementFactoryMock
+                'settlementFactory' => $this->settlementFactoryMock,
             ]
         );
     }
@@ -68,7 +69,7 @@ class FetchReportsTest extends TestCase
             'hostname' => ['test_hostname'],
             'username' => ['test_username'],
             'password' => ['test_password'],
-            'path' => ['test_path']
+            'path' => ['test_path'],
         ];
         $settlementMock = $this->getMockBuilder(Settlement::class)
             ->disableOriginalConstructor()

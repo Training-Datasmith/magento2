@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,7 +12,7 @@ use Magento\Paypal\Model\Payment\Method\Billing\AbstractAgreement;
 
 class AbstractAgreementStub extends AbstractAgreement
 {
-    const STUB_CODE = 'stub-code';
+    public const STUB_CODE = 'stub-code';
 
     /**
      * @return string

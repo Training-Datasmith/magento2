@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -24,15 +25,15 @@ use Magento\Config\Model\Config\Structure\Element\Section;
 use Magento\Config\Model\Config\Structure\ElementVisibilityInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ObjectManager as AppObjectManager;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Form as FormData;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Data\Form\Element\Fieldset as FieldsetElement;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -167,7 +168,7 @@ class FormTest extends TestCase
                 'scopeConfig' => $this->_coreConfigMock,
                 'request' => $requestMock,
                 'urlBuilder' => $this->_urlModelMock,
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
 
@@ -193,7 +194,7 @@ class FormTest extends TestCase
         $objectManagerMock = $this->createMock(ObjectManagerInterface::class);
         $objectManagerMock->method('get')
             ->willReturnMap([
-                [DeploymentConfig::class, $deploymentConfigMock]
+                [DeploymentConfig::class, $deploymentConfigMock],
             ]);
         AppObjectManager::setInstance($objectManagerMock);
         $this->object = $helper->getObject(Form::class, $data);
@@ -222,7 +223,7 @@ class FormTest extends TestCase
             $sectionMock->expects($this->once())
                 ->method('getChildren')
                 ->willReturn([
-                    $this->createMock(Group::class)
+                    $this->createMock(Group::class),
                 ]);
         }
 
@@ -255,7 +256,7 @@ class FormTest extends TestCase
     {
         return [
             [false],
-            [true]
+            [true],
         ];
     }
 
@@ -517,7 +518,7 @@ class FormTest extends TestCase
             'can_use_website_value' => false,
             'can_restore_to_default' => false,
             'disabled' => $expectedDisable,
-            'is_disable_inheritance' => $expectedDisable
+            'is_disable_inheritance' => $expectedDisable,
         ];
 
         $formFieldMock->expects($this->once())->method('setRenderer')->with($fieldRendererMock);
@@ -571,7 +572,7 @@ class FormTest extends TestCase
                 1,
                 false,
                 false,
-                false
+                false,
             ],
             [
                 [],
@@ -583,7 +584,7 @@ class FormTest extends TestCase
                 1,
                 true,
                 false,
-                true
+                true,
             ],
             [
                 [],
@@ -595,7 +596,7 @@ class FormTest extends TestCase
                 0,
                 false,
                 true,
-                true
+                true,
             ],
             [
                 [],
@@ -607,8 +608,8 @@ class FormTest extends TestCase
                 0,
                 true,
                 true,
-                true
-            ]
+                true,
+            ],
         ];
     }
 }

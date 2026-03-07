@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Store\Model\Store;
 use Magento\Store\Model\Information as StoreInformation;
-use Psr\Log\LoggerInterface as PsrLogger;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\Store;
+use Psr\Log\LoggerInterface as PsrLogger;
 
 /**
  * Customer VAT model
@@ -250,7 +253,8 @@ class Vat
      */
     public function canCheckVatNumber($countryCode, $vatNumber, $requesterCountryCode, $requesterVatNumber)
     {
-        return !(!is_string($countryCode)
+        return !(
+            !is_string($countryCode)
             || !is_string($vatNumber)
             || !is_string($requesterCountryCode)
             || !is_string($requesterVatNumber)

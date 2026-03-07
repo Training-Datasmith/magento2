@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter;
 
 /**
@@ -32,7 +35,7 @@ class DecimalTest extends \PHPUnit\Framework\TestCase
             ->create(
                 \Magento\Catalog\Model\Layer\Category::class,
                 [
-                    'data' => ['current_category' => $category]
+                    'data' => ['current_category' => $category],
                 ]
             );
 

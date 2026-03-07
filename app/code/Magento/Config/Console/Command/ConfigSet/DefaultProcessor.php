@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Console\Command\ConfigSet;
 
 use Magento\Config\App\Config\Type\System;
 use Magento\Config\Console\Command\ConfigSetCommand;
 use Magento\Config\Model\Config\Factory as ConfigFactory;
+use Magento\Config\Model\PreparedValueFactory;
 use Magento\Framework\App\Config\ConfigPathResolver;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Config\Model\PreparedValueFactory;
 
 /**
  * Processes default flow of config:set command.

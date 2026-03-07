@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Code\Test\Unit\Minifier\Adapter\Css;
 
+use Magento\Framework\Code\Minifier\Adapter\Css\CSSmin;
 use PHPUnit\Framework\TestCase;
 use tubalmartin\CssMin\Minifier;
-use Magento\Framework\Code\Minifier\Adapter\Css\CSSmin;
 
 class CssMinTest extends TestCase
 {

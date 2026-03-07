@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryUi\Ui\Component\Listing\Massactions;
 
-use Magento\Ui\Component\Container;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Ui\Component\Container;
 
 /**
  * Massaction comntainer
@@ -17,7 +18,7 @@ use Magento\Framework\AuthorizationInterface;
 class Massaction extends Container
 {
     private const ACL_IMAGE_ACTIONS = [
-        'delete_assets' => 'Magento_MediaGalleryUiApi::delete_assets'
+        'delete_assets' => 'Magento_MediaGalleryUiApi::delete_assets',
     ];
 
     /**
@@ -54,7 +55,7 @@ class Massaction extends Container
             array_replace_recursive(
                 (array)$this->getData('config'),
                 [
-                    'allowedActions' => $this->getAllowedActions()
+                    'allowedActions' => $this->getAllowedActions(),
                 ]
             )
         );

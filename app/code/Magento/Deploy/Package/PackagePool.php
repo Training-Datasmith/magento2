@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Package;
 
 use Magento\Deploy\Collector\Collector;
 use Magento\Deploy\Console\DeployStaticOptions as Options;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\Design\Theme\ListInterface;
+use Magento\Framework\View\Design\ThemeInterface;
 
 /**
  * Deployment Packages Pool class
@@ -212,7 +215,7 @@ class PackagePool
                             'area' => $package->getArea(),
                             'theme' => $theme->getThemePath(),
                             'locale' => $package->getLocale(),
-                            'isVirtual' => $package->getLocale() == Package::BASE_LOCALE
+                            'isVirtual' => $package->getLocale() == Package::BASE_LOCALE,
                         ]);
                     }
                 }
@@ -244,7 +247,7 @@ class PackagePool
                 $this->ensurePackage([
                     'area' => $package->getArea(),
                     'theme' => $package->getTheme(),
-                    'locale' => $locale
+                    'locale' => $locale,
                 ]);
             }
         }

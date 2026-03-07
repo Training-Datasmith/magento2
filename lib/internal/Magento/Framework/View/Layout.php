@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\View;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\App\State as AppState;
 use Magento\Framework\Cache\FrontendInterface;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\App\Response\Http as ResponseHttp;
 use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\View\Design\Theme\ResolverInterface;
@@ -19,10 +20,10 @@ use Magento\Framework\View\Layout\Data\Structure;
 use Magento\Framework\View\Layout\Element;
 use Magento\Framework\View\Layout\GeneratorPool;
 use Magento\Framework\View\Layout\ProcessorFactory;
+use Magento\Framework\View\Layout\Reader\Context;
 use Magento\Framework\View\Layout\Reader\ContextFactory;
 use Magento\Framework\View\Layout\ReaderPool;
 use Psr\Log\LoggerInterface as Logger;
-use Magento\Framework\View\Layout\Reader\Context;
 
 /**
  * Layout model
@@ -36,7 +37,6 @@ use Magento\Framework\View\Layout\Reader\Context;
  */
 class Layout extends \Magento\Framework\Simplexml\Config implements \Magento\Framework\View\LayoutInterface
 {
-
     /**
      * Empty layout xml
      */
@@ -415,7 +415,7 @@ class Layout extends \Magento\Framework\Simplexml\Config implements \Magento\Fra
         // Create new reader context with isolated structures
         return $this->readerContextFactory->create([
             'scheduledStructure' => $isolatedScheduledStructure,
-            'pageConfigStructure' => $isolatedPageConfig
+            'pageConfigStructure' => $isolatedPageConfig,
         ]);
     }
 

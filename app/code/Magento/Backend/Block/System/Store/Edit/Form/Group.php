@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store\Edit\Form;
 
 /**
@@ -80,7 +83,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     'value' => $groupModel->getWebsiteId(),
                     'values' => $websites,
                     'required' => true,
-                    'disabled' => $groupModel->isReadOnly()
+                    'disabled' => $groupModel->isReadOnly(),
                 ]
             );
 
@@ -100,7 +103,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                         [
                             'name' => 'group[original_website_id]',
                             'no_span' => true,
-                            'value' => $groupModel->getWebsiteId()
+                            'value' => $groupModel->getWebsiteId(),
                         ]
                     );
                 }
@@ -115,7 +118,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Name'),
                 'value' => $groupModel->getName(),
                 'required' => true,
-                'disabled' => $groupModel->isReadOnly()
+                'disabled' => $groupModel->isReadOnly(),
             ]
         );
 
@@ -127,7 +130,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'label' => __('Code'),
                 'value' => $groupModel->getCode(),
                 'required' => true,
-                'disabled' => $groupModel->isReadOnly()
+                'disabled' => $groupModel->isReadOnly(),
             ]
         );
 
@@ -142,7 +145,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                 'value' => $groupModel->getRootCategoryId(),
                 'values' => $categories,
                 'required' => true,
-                'disabled' => $groupModel->isReadOnly()
+                'disabled' => $groupModel->isReadOnly(),
             ]
         );
         if ($this->_coreRegistry->registry('store_action') == 'edit') {
@@ -160,7 +163,7 @@ class Group extends \Magento\Backend\Block\System\Store\Edit\AbstractForm
                     'value' => $groupModel->getDefaultStoreId(),
                     'values' => $stores,
                     'required' => false,
-                    'disabled' => $groupModel->isReadOnly()
+                    'disabled' => $groupModel->isReadOnly(),
                 ]
             );
         }

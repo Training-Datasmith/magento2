@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -48,7 +50,7 @@ class CircularDependencyTest extends \PHPUnit\Framework\TestCase
                 \Magento\Framework\App\Language\Config::class,
                 [
                     'source' => file_get_contents($language . '/language.xml'),
-                    'domFactory' => $domFactoryMock
+                    'domFactory' => $domFactoryMock,
                 ]
             );
             $this->packs[$languageConfig->getVendor()][$languageConfig->getPackage()] = $languageConfig;

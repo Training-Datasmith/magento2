@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class QueryIndexAnalyzer implements QueryAnalyzerInterface
 
         $issues = $this->analyzeQueries($explainOutput);
         if ($issues === null) {
-            throw new QueryAnalyzerException("Small table");
+            throw new QueryAnalyzerException('Small table');
         }
 
         return array_values(array_unique($issues));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Backend\Model\Session;
+use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Newsletter\Model\Subscriber;
 use Magento\Newsletter\Model\SubscriberFactory;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\Data\CustomerInterface;
 
 /**
  * @magentoAppArea adminhtml
@@ -108,7 +109,7 @@ class MassSubscribeTest extends \Magento\TestFramework\TestCase\AbstractBackendC
     public function testMassSubscriberActionNoSelection()
     {
         $params = [
-            'namespace' => 'customer_listing'
+            'namespace' => 'customer_listing',
         ];
 
         $this->getRequest()->setParams($params)

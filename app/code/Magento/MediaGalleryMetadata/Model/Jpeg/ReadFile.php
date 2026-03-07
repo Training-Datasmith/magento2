@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryMetadata\Model\Jpeg;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
@@ -128,14 +129,14 @@ class ReadFile implements ReadFileInterface
 
         $segments[] = $this->segmentFactory->create([
             'name' => 'CompressedImage',
-            'data' => $this->readCompressedImage($resource)
+            'data' => $this->readCompressedImage($resource),
         ]);
 
         $this->getDriver()->fileClose($resource);
 
         return $this->fileFactory->create([
             'path' => $path,
-            'segments' => $segments
+            'segments' => $segments,
         ]);
     }
 
@@ -195,7 +196,7 @@ class ReadFile implements ReadFileInterface
         $segmentSize = unpack('nsize', $this->read($resource, 2))['size'] - 2;
         return $this->segmentFactory->create([
             'name' => $this->segmentNames->getSegmentName($segmentType),
-            'data' => $this->read($resource, $segmentSize)
+            'data' => $this->read($resource, $segmentSize),
         ]);
     }
 

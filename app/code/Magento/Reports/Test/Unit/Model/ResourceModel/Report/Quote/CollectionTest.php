@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -140,7 +141,7 @@ class CollectionTest extends TestCase
                     '_initSelect',
                     'getTable',
                     'getItems',
-                    'getOrdersData'
+                    'getOrdersData',
                 ]
             )
             ->setConstructorArgs($constructArgs)

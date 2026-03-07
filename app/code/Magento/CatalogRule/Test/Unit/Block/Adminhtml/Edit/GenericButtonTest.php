@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -54,13 +55,13 @@ class GenericButtonTest extends TestCase
 
     public function testCanRender()
     {
-        $name = "Catalog Rule";
+        $name = 'Catalog Rule';
         $this->assertEquals($name, $this->model->canRender($name));
     }
 
     public function testGetUrl()
     {
-        $url = "http://magento.com/catalogRule/";
+        $url = 'http://magento.com/catalogRule/';
         $route = 'button';
         $params = ['unit' => 'test'];
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Developer\Console\Command;
 
 use Magento\Developer\Model\Setup\Declaration\Schema\WhitelistGenerator;
 use Magento\Framework\Config\FileResolverByModule;
-use Magento\Framework\Exception\ConfigurationMismatchException;
 use Magento\Framework\Console\Cli;
+use Magento\Framework\Exception\ConfigurationMismatchException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -26,7 +27,7 @@ class TablesWhitelistGenerateCommand extends Command
     /**
      * Module name key, that will be used in whitelist generate command.
      */
-    const MODULE_NAME_KEY = 'module-name';
+    public const MODULE_NAME_KEY = 'module-name';
 
     /**
      * @var WhitelistGenerator
@@ -64,7 +65,7 @@ class TablesWhitelistGenerateCommand extends Command
                         InputOption::VALUE_OPTIONAL,
                         'Name of the module where whitelist will be generated',
                         FileResolverByModule::ALL_MODULES
-                    )
+                    ),
                 ]
             );
         parent::configure();
@@ -73,7 +74,7 @@ class TablesWhitelistGenerateCommand extends Command
     /**
      * @inheritdoc
      */
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $moduleName = $input->getOption(self::MODULE_NAME_KEY);
 

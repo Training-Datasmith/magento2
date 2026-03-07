@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,15 +8,15 @@
 
 namespace Magento\TestFramework\TestCase\HttpClient;
 
-use Magento\TestFramework\Helper\JsonSerializer;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Helper\JsonSerializer;
 
 /**
  * A Curl client that can be called independently, outside of any Web API controller used by CookieManager tests.
  */
 class CurlClientWithCookies
 {
-    const COOKIE_HEADER = 'Set-Cookie: ';
+    public const COOKIE_HEADER = 'Set-Cookie: ';
 
     /** @var CurlClient */
     protected $curlClient;
@@ -31,8 +33,8 @@ class CurlClientWithCookies
         \Magento\TestFramework\Helper\JsonSerializer $jsonSerializer
     ) {
         $objectManager = Bootstrap::getObjectManager();
-        $this->curlClient = $curlClient ? : $objectManager->get(CurlClient::class);
-        $this->jsonSerializer = $jsonSerializer ? : $objectManager->get(JsonSerializer::class);
+        $this->curlClient = $curlClient ?: $objectManager->get(CurlClient::class);
+        $this->jsonSerializer = $jsonSerializer ?: $objectManager->get(JsonSerializer::class);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ QUERY;
             [],
             '',
             [
-                'Store' => $store
+                'Store' => $store,
             ]
         );
         $response = $this->json->unserialize($response->getContent());
@@ -185,7 +186,7 @@ QUERY;
                  'Réinitialiser votre mot de passe %1',
                  'Si vous êtes bien à l’origine de cette demande, veuillez cliquer ci-dessous pour' .
                     ' définir un nouveau mot de passe',
-            ]
+            ],
         ];
     }
 
@@ -200,13 +201,13 @@ QUERY;
             'request_from_default_store' => [
                 'default',
                 'Reset your %1 password',
-                'There was recently a request to change the password for your account'
+                'There was recently a request to change the password for your account',
             ],
             'request_from_french_store' => [
                 'fr_store_view',
                 'Reset your %1 password',
-                'There was recently a request to change the password for your account'
-            ]
+                'There was recently a request to change the password for your account',
+            ],
         ];
     }
 }

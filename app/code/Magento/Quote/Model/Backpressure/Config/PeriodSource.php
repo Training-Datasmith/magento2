@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class PeriodSource implements OptionSourceInterface
         return [
             '60' => ['value' => '60', 'label' => __('Minute')],
             '3600' => ['value' => '3600', 'label' => __('Hour')],
-            '86400' => ['value' => '86400', 'label' => __('Day')]
+            '86400' => ['value' => '86400', 'label' => __('Day')],
         ];
     }
 }

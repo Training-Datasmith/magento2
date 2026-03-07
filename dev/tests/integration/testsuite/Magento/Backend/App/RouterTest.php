@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\App;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -77,7 +80,7 @@ class RouterTest extends \PHPUnit\Framework\TestCase
                     'cache' => $this->objectManager->get(\Magento\Framework\Config\CacheInterface::class),
                     'configScope' => $this->objectManager->get(\Magento\Framework\Config\ScopeInterface::class),
                     'areaList' => $this->objectManager->get(\Magento\Framework\App\AreaList::class),
-                    'cacheId' => 'RoutesConfig'
+                    'cacheId' => 'RoutesConfig',
                 ]
             )
             ->getMock();

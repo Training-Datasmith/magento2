@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Paypal\Controller\Hostedpro;
 
-use Magento\TestFramework\TestCase\AbstractController;
 use Laminas\Stdlib\Parameters;
+use Magento\TestFramework\TestCase\AbstractController;
 
 /**
  * Tests PayPal HostedPro return controller.

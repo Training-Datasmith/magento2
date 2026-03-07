@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Indexer\Product\Price;
 
-use Magento\Framework\Search\Request\Dimension;
-use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
-use Magento\Indexer\Model\DimensionModes;
+use Magento\Framework\Search\Request\Dimension;
 use Magento\Indexer\Model\DimensionMode;
+use Magento\Indexer\Model\DimensionModes;
+use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 
 /**
  * Class to prepare new tables for new indexer mode

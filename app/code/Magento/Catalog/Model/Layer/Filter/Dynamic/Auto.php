@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Layer\Filter\Dynamic;
 
 use Magento\Catalog\Model\Layer\Filter\Price\Range;
@@ -18,7 +21,7 @@ use Magento\Framework\Search\Dynamic\Algorithm;
  */
 class Auto implements AlgorithmInterface
 {
-    const MIN_RANGE_POWER = 10;
+    public const MIN_RANGE_POWER = 10;
 
     /**
      * @var Algorithm

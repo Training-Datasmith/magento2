@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class UploadTest extends TestCase
         $allowedExtensions = ['csv', 'zip'];
         $savedFileName = 'testString';
         $importFileId = 'import_file';
-        $randomStringLength=32;
+        $randomStringLength = 32;
         $this->adapterMock->method('isValid')->willReturn(true);
         $this->httpFactoryMock->method('create')->willReturn($this->adapterMock);
         $this->uploaderMock = $this->createMock(Uploader::class);

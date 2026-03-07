@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class SortbyTest extends TestCase
         $this->model = $helper->getObject(
             Sortby::class,
             [
-                'catalogConfig' => $this->getMockedConfig()
+                'catalogConfig' => $this->getMockedConfig(),
             ]
         );
     }

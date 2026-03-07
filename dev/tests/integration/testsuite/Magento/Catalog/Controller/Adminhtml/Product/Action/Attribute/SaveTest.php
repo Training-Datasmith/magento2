@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -8,22 +9,22 @@ declare(strict_types=1);
 namespace Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute;
 
 use Magento\Backend\Model\Session;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Helper\Product\Edit\Action\Attribute;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ProductRepository;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\Framework\UrlInterface;
+use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\MessageQueue\EnvironmentPreconditionException;
 use Magento\TestFramework\MessageQueue\PreconditionFailedException;
 use Magento\TestFramework\MessageQueue\PublisherConsumerController;
 use Magento\TestFramework\TestCase\AbstractBackendController;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\TestFramework\Fixture\DataFixture;
 
 /**
  * @covers \Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute\Save::execute
@@ -159,7 +160,7 @@ class SaveTest extends AbstractBackendController
     {
         return [
             [['visibility' => Visibility::VISIBILITY_BOTH]],
-            [['visibility' => Visibility::VISIBILITY_IN_CATALOG]]
+            [['visibility' => Visibility::VISIBILITY_IN_CATALOG]],
         ];
     }
 
@@ -280,7 +281,7 @@ class SaveTest extends AbstractBackendController
         );
 
         $updatedProduct = $productRepository->get('simple', forceReload: true);
-        
+
         if ($expectFromDate) {
             $this->assertNotNull($updatedProduct->getSpecialFromDate());
         }

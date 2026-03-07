@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Test registry locator
@@ -38,7 +39,6 @@ class RegistryLocatorTest extends TestCase
 
     /** @var ProductRepositoryInterface */
     private $productRepository;
-
 
     /**
      * @inheritdoc
@@ -65,7 +65,6 @@ class RegistryLocatorTest extends TestCase
 
         parent::tearDown();
     }
-
 
     /**
      * @magentoDbIsolation disabled

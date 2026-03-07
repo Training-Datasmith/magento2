@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class AllcartTest extends TestCase
             ->willReturnMap(
                 [
                     [ResultFactory::TYPE_REDIRECT, [], $this->resultRedirectMock],
-                    [ResultFactory::TYPE_FORWARD, [], $this->resultForwardMock]
+                    [ResultFactory::TYPE_FORWARD, [], $this->resultForwardMock],
                 ]
             );
 
@@ -88,7 +89,7 @@ class AllcartTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'resultFactory' => $resultFactoryMock
+                'resultFactory' => $resultFactoryMock,
             ]
         );
         $this->allcartController = $objectManagerHelper->getObject(
@@ -96,7 +97,7 @@ class AllcartTest extends TestCase
             [
                 'context' => $context,
                 'wishlistProvider' => $this->wishlistProviderMock,
-                'itemCarrier' => $this->itemCarrierMock
+                'itemCarrier' => $this->itemCarrierMock,
             ]
         );
     }

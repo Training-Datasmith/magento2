@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,23 +9,22 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Catalog\Model\ResourceModel\Attribute\AttributeConditionsBuilder
  */
+
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Attribute;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Entity\Attribute;
 use Magento\Catalog\Model\ResourceModel\Attribute\ConditionBuilder;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as CatalogEavAttribute;
-use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\EntityMetadataInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Model\Entity\ScopeInterface;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -99,7 +99,7 @@ class ConditionBuilderTest extends TestCase
                 $attribute,
                 $metadata,
                 $scopes,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -150,7 +150,7 @@ class ConditionBuilderTest extends TestCase
                 $attribute,
                 $metadata,
                 $scopes,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -211,7 +211,7 @@ class ConditionBuilderTest extends TestCase
                 $metadata,
                 $store,
                 $scopes,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -272,7 +272,7 @@ class ConditionBuilderTest extends TestCase
                 'entity_id = ?' => $linkFieldValue,
                 'attribute_id = ?' => 12,
                 '`store_id` = ?' => Store::DEFAULT_STORE_ID,
-            ]
+            ],
         ];
         return [
             [
@@ -281,7 +281,7 @@ class ConditionBuilderTest extends TestCase
                 $store,
                 $scopes,
                 $expectedConditions,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -363,7 +363,7 @@ class ConditionBuilderTest extends TestCase
                 $store,
                 $scopes,
                 $expectedConditions,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -414,7 +414,7 @@ class ConditionBuilderTest extends TestCase
                 $attribute,
                 $metadata,
                 $scopes,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -459,7 +459,7 @@ class ConditionBuilderTest extends TestCase
     {
         $attribute = static fn (self $testCase) => $testCase->getValidAttributeMock();
 
-        $metadata = static fn (self $testCase) => $testCase->getMockForMetadataClass("entity_id");
+        $metadata = static fn (self $testCase) => $testCase->getMockForMetadataClass('entity_id');
 
         $scopes = [
             static fn (self $testCase) => $testCase->getValidScopeMock(),
@@ -494,7 +494,7 @@ class ConditionBuilderTest extends TestCase
                 $store,
                 $scopes,
                 $expectedConditions,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -543,7 +543,7 @@ class ConditionBuilderTest extends TestCase
     {
         $attribute = static fn (self $testCase) => $testCase->getValidAttributeMock();
 
-        $metadata = static fn (self $testCase) => $testCase->getMockForMetadataClass("entity_id");
+        $metadata = static fn (self $testCase) => $testCase->getMockForMetadataClass('entity_id');
 
         $store = static fn (self $testCase) => $testCase->getMockForStoreClass('website');
 
@@ -557,7 +557,7 @@ class ConditionBuilderTest extends TestCase
                 'entity_id' => $linkFieldValue,
                 'attribute_id' => 12,
                 'store_id' => Store::DEFAULT_STORE_ID,
-            ]
+            ],
         ];
 
         return [
@@ -567,7 +567,7 @@ class ConditionBuilderTest extends TestCase
                 $store,
                 $scopes,
                 $expectedConditions,
-                $linkFieldValue
+                $linkFieldValue,
             ],
         ];
     }
@@ -631,10 +631,10 @@ class ConditionBuilderTest extends TestCase
 
     protected function getMockForAttributeClass($atr)
     {
-        $attribute = "";
-        if ($atr == "Attribute") {
+        $attribute = '';
+        if ($atr == 'Attribute') {
             $attribute = $this->createMock(Attribute::class);
-        } elseif ($atr == "CatalogEavAttribute") {
+        } elseif ($atr == 'CatalogEavAttribute') {
             $attribute = $this->createPartialMock(CatalogEavAttribute::class, ['isScopeWebsite']);
 
             $attribute->expects($this->never())

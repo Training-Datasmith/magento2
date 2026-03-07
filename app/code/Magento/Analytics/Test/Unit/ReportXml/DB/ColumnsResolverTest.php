@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Sql\ColumnValueExpression;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ColumnsResolverTest extends TestCase
@@ -56,7 +57,7 @@ class ColumnsResolverTest extends TestCase
             ColumnsResolver::class,
             [
                 'nameResolver' => new NameResolver(),
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }
@@ -102,10 +103,10 @@ class ColumnsResolverTest extends TestCase
         return [
             'COUNT( DISTINCT `cpe`.`name`) AS name' => [
                 'expectedColumns' => [
-                    'name' => new ColumnValueExpression('COUNT( DISTINCT `cpe`.`name`)')
+                    'name' => new ColumnValueExpression('COUNT( DISTINCT `cpe`.`name`)'),
                 ],
                 'expectedGroup' => [
-                    'name' => new ColumnValueExpression('COUNT( DISTINCT `cpe`.`name`)')
+                    'name' => new ColumnValueExpression('COUNT( DISTINCT `cpe`.`name`)'),
                 ],
                 'entityConfig' => [
                     'name' => 'catalog_product_entity',
@@ -115,14 +116,14 @@ class ColumnsResolverTest extends TestCase
                             'name' => 'name',
                             'function' => 'COUNT',
                             'distinct' => true,
-                            'group' => true
-                        ]
+                            'group' => true,
+                        ],
                     ],
                 ],
             ],
             'AVG(`cpe`.`name`) AS avg_name' => [
                 'expectedColumns' => [
-                    'avg_name' => new ColumnValueExpression('AVG(`cpe`.`name`)')
+                    'avg_name' => new ColumnValueExpression('AVG(`cpe`.`name`)'),
                 ],
                 'expectedGroup' => [],
                 'entityConfig' => [
@@ -133,10 +134,10 @@ class ColumnsResolverTest extends TestCase
                             'name' => 'name',
                             'alias' => 'avg_name',
                             'function' => 'AVG',
-                        ]
+                        ],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

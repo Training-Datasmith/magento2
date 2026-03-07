@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -16,8 +18,8 @@ class Type extends \Magento\Framework\Api\AbstractExtensibleObject implements Pr
     /**#@+
      * Constants
      */
-    const KEY_CODE = 'code';
-    const KEY_NAME = 'name';
+    public const KEY_CODE = 'code';
+    public const KEY_NAME = 'name';
     /**#@-*/
 
     /**

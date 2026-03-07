@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class StoreValidatorTest extends TestCase
         $this->storeValidator = $objectManager->getObject(
             StoreValidator::class,
             [
-                'storeManager' => $this->storeManagerMock
+                'storeManager' => $this->storeManagerMock,
             ]
         );
     }
@@ -132,9 +133,9 @@ class StoreValidatorTest extends TestCase
             [
                 [
                     'default'   =>  self::DEFAULT_STORE_VIEW_CODE,
-                    'store'     =>  self::STORE_CODE
-                ]
-            ]
+                    'store'     =>  self::STORE_CODE,
+                ],
+            ],
         ];
     }
 }

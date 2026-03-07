@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\Validator\UniversalFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -76,8 +77,8 @@ class ConfigTest extends TestCase
         $objects = [
             [
                 ScopeConfigInterface::class,
-                $this->createMock(ScopeConfigInterface::class)
-            ]
+                $this->createMock(ScopeConfigInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
 
@@ -114,7 +115,7 @@ class ConfigTest extends TestCase
     {
         $attributeData = [
             'attribute_code' => 'attribute_code_1',
-            'attribute_id' => 1
+            'attribute_id' => 1,
         ];
         $attributeCollectionMock = $this->createPartialMock(
             Collection::class,
@@ -138,18 +139,18 @@ class ConfigTest extends TestCase
             [
                 Collection::class,
                 [],
-                $attributeCollectionMock
+                $attributeCollectionMock,
             ],
             [
                 Attribute::class,
                 [],
-                $entityAttributeMock
+                $entityAttributeMock,
             ],
         ];
 
         $entityTypeData = [
             'entity_type_id' => 'entity_type_id',
-            'entity_type_code' => 'entity_type_code'
+            'entity_type_code' => 'entity_type_code',
         ];
         $collectionStub = new DataObject([$entityTypeData]);
         $this->collectionFactoryMock
@@ -219,7 +220,7 @@ class ConfigTest extends TestCase
     {
         $attributeData = [
             'attribute_code' => 'attribute_code_1',
-            'attribute_id' => 1
+            'attribute_id' => 1,
         ];
         $attributeCollectionMock = $this->createPartialMock(
             Collection::class,
@@ -248,12 +249,12 @@ class ConfigTest extends TestCase
             [
                 Collection::class,
                 [],
-                $attributeCollectionMock
+                $attributeCollectionMock,
             ],
             [
                 Attribute::class,
                 [],
-                $entityAttributeMock
+                $entityAttributeMock,
             ],
         ];
 
@@ -265,7 +266,7 @@ class ConfigTest extends TestCase
 
         $entityTypeData = [
             'entity_type_id' => 'entity_type_id',
-            'entity_type_code' => 'entity_type_code'
+            'entity_type_code' => 'entity_type_code',
         ];
         $collectionStub = new DataObject([$entityTypeData]);
         $this->collectionFactoryMock
@@ -321,8 +322,8 @@ class ConfigTest extends TestCase
         $entityTypeCode = 'catalog_product';
         $data = [
             $entityTypeCode => [
-                'entity_type_id' => 1
-            ]
+                'entity_type_id' => 1,
+            ],
         ];
         $serializedData = 'serialized data';
         $this->cacheStateMock->expects($this->once())
@@ -359,15 +360,15 @@ class ConfigTest extends TestCase
         $collectionData = [
             [
                 'entity_type_id' => 1,
-                'entity_type_code' => $entityTypeCode
-            ]
+                'entity_type_code' => $entityTypeCode,
+            ],
         ];
         $data = [
             $entityTypeCode => [
                 'entity_type_id' => 1,
                 'entity_type_code' => $entityTypeCode,
-                'attribute_model' => Attribute::class
-            ]
+                'attribute_model' => Attribute::class,
+            ],
         ];
         $serializedData = 'serialized data';
         $this->cacheStateMock->expects($this->once())
@@ -398,7 +399,7 @@ class ConfigTest extends TestCase
                 Config::ENTITIES_CACHE_ID,
                 [
                     Cache::CACHE_TAG,
-                    Attribute::CACHE_TAG
+                    Attribute::CACHE_TAG,
                 ]
             );
         $this->typeMock->expects($this->exactly(2))

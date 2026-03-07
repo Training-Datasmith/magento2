@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Model;
 
 use Magento\Downloadable\Api\Data\SampleInterface;
@@ -17,17 +20,17 @@ use Magento\Downloadable\Api\Data\SampleInterface;
  */
 class Sample extends \Magento\Framework\Model\AbstractExtensibleModel implements ComponentInterface, SampleInterface
 {
-    const XML_PATH_SAMPLES_TITLE = 'catalog/downloadable/samples_title';
+    public const XML_PATH_SAMPLES_TITLE = 'catalog/downloadable/samples_title';
 
     /**#@+
      * Constants for field names
      */
-    const KEY_TITLE = 'title';
-    const KEY_SORT_ORDER = 'sort_order';
-    const KEY_SAMPLE_TYPE = 'sample_type';
-    const KEY_SAMPLE_FILE = 'sample_file';
-    const KEY_SAMPLE_FILE_CONTENT = 'sample_file_content';
-    const KEY_SAMPLE_URL = 'sample_url';
+    public const KEY_TITLE = 'title';
+    public const KEY_SORT_ORDER = 'sort_order';
+    public const KEY_SAMPLE_TYPE = 'sample_type';
+    public const KEY_SAMPLE_FILE = 'sample_file';
+    public const KEY_SAMPLE_FILE_CONTENT = 'sample_file_content';
+    public const KEY_SAMPLE_URL = 'sample_url';
     /**#@-*/
 
     /**

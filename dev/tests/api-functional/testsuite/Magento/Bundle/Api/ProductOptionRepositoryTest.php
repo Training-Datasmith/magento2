@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Api;
 
 class ProductOptionRepositoryTest extends \Magento\TestFramework\TestCase\WebapiAbstract
 {
-    const SERVICE_NAME = 'bundleProductOptionRepositoryV1';
-    const SERVICE_VERSION = 'V1';
-    const RESOURCE_PATH = '/V1/bundle-products/:sku/options';
+    public const SERVICE_NAME = 'bundleProductOptionRepositoryV1';
+    public const SERVICE_VERSION = 'V1';
+    public const RESOURCE_PATH = '/V1/bundle-products/:sku/options';
 
     /**
      * @magentoApiDataFixture Magento/Bundle/_files/product.php

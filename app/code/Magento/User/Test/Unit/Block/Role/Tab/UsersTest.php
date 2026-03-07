@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -36,12 +37,12 @@ class UsersTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         /** @var Collection|MockObject $userCollectionFactoryMock $userCollectionMock */
@@ -60,7 +61,7 @@ class UsersTest extends TestCase
             [
                 'userCollectionFactory' => $userCollectionFactoryMock,
                 'request' => $requestMock,
-                'layout' => $this->layoutMock
+                'layout' => $this->layoutMock,
             ]
         );
     }

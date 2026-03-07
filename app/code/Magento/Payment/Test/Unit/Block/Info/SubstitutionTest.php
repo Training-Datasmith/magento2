@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -115,7 +116,7 @@ class SubstitutionTest extends TestCase
                 'context' => $context,
                 'data' => [
                     'template' => null,
-                ]
+                ],
             ]
         );
     }

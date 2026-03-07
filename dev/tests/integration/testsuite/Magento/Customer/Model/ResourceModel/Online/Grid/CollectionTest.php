@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class CollectionTest extends TestCase
         DataFixture(
             CustomerVisitors::class,
             [
-                'customer_id' => '$customer.id$', 'count' => 3, 'include_guest' => true
+                'customer_id' => '$customer.id$', 'count' => 3, 'include_guest' => true,
             ],
             as: 'visitors'
         )

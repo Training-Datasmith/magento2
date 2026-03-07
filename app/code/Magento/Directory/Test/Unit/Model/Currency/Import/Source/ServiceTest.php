@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ServiceTest extends TestCase
         );
         $this->_importConfig
             ->method('getServiceLabel')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['service_one'] => 'Service One',
                 ['service_two'] => 'Service Two'
             });

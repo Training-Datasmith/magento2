@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -107,7 +109,7 @@ class Advanced extends Generic
                     'This is used internally. Make sure you don\'t use spaces or more than %1 symbols.',
                     \Magento\Eav\Model\Entity\Attribute::ATTRIBUTE_CODE_MAX_LENGTH
                 ),
-                'class' => $validateClass
+                'class' => $validateClass,
             ]
         );
 
@@ -118,7 +120,7 @@ class Advanced extends Generic
                 'name' => 'default_value_text',
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -130,7 +132,7 @@ class Advanced extends Generic
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
                 'values' => $yesno,
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -168,7 +170,7 @@ class Advanced extends Generic
                 'name' => 'default_value_textarea',
                 'label' => __('Default Value'),
                 'title' => __('Default Value'),
-                'value' => $attributeObject->getDefaultValue()
+                'value' => $attributeObject->getDefaultValue(),
             ]
         );
 
@@ -180,7 +182,7 @@ class Advanced extends Generic
                 'label' => __('Unique Value'),
                 'title' => __('Unique Value (not shared with other products)'),
                 'note' => __('Not shared with other products.'),
-                'values' => $yesno
+                'values' => $yesno,
             ]
         );
 
@@ -191,7 +193,7 @@ class Advanced extends Generic
                 'name' => 'frontend_class',
                 'label' => __('Input Validation for Store Owner'),
                 'title' => __('Input Validation for Store Owner'),
-                'values' => $this->_eavData->getFrontendClasses($attributeObject->getEntityType()->getEntityTypeCode())
+                'values' => $this->_eavData->getFrontendClasses($attributeObject->getEntityType()->getEntityTypeCode()),
             ]
         );
 
@@ -256,7 +258,7 @@ class Advanced extends Generic
                 'label' => __('Scope'),
                 'title' => __('Scope'),
                 'note' => __('Declare attribute value saving scope.'),
-                'values' => $scopes
+                'values' => $scopes,
             ],
             'attribute_code'
         );

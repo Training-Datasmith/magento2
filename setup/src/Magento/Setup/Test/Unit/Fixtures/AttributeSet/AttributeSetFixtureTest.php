@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -45,13 +46,13 @@ class AttributeSetFixtureTest extends TestCase
                             'option' => [
                                 [
                                     'label' => 'option 1',
-                                    'value' => 'option_1'
+                                    'value' => 'option_1',
                                 ],
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         // Mock Attribute Sets
@@ -60,7 +61,7 @@ class AttributeSetFixtureTest extends TestCase
             ->getMock();
         $attributeSetMock->expects($this->once())
             ->method('setAttributeSetName')
-            ->with("attribute set name");
+            ->with('attribute set name');
         $attributeSetMock->expects($this->once())
             ->method('setEntityTypeId')
             ->with(ProductAttributeInterface::ENTITY_TYPE_CODE);

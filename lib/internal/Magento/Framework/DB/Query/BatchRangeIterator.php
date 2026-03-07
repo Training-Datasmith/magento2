@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -190,7 +192,7 @@ class BatchRangeIterator implements BatchIteratorInterface
             $wrapperSelect->from(
                 $object,
                 [
-                    new \Zend_Db_Expr('COUNT(*) as cnt')
+                    new \Zend_Db_Expr('COUNT(*) as cnt'),
                 ]
             );
             $row = $this->connection->fetchRow($wrapperSelect);

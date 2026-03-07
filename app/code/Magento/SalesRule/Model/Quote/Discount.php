@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesRule\Model\Quote;
 
 use Magento\Framework\App\ObjectManager;
@@ -346,7 +349,7 @@ class Discount extends AbstractTotal
             $result = [
                 'code' => $this->getCode(),
                 'title' => strlen($description) ? __('Discount (%1)', $description) : __('Discount'),
-                'value' => $amount
+                'value' => $amount,
             ];
         }
         return $result;
@@ -387,7 +390,7 @@ class Discount extends AbstractTotal
                         'amount' => $discount->getAmount(),
                         'base_amount' => $discount->getBaseAmount(),
                         'original_amount' => $discount->getOriginalAmount(),
-                        'base_original_amount' => $discount->getBaseOriginalAmount()
+                        'base_original_amount' => $discount->getBaseOriginalAmount(),
                     ];
                     $discountData = $this->discountDataInterfaceFactory->create(['data' => $data]);
                     $data = [

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Setup\Test\Unit\Module\Dependency\Report\Writer\Csv;
 use Magento\Framework\File\Csv;
 use Magento\Setup\Module\Dependency\Report\Data\ConfigInterface;
 use Magento\Setup\Module\Dependency\Report\Writer\Csv\AbstractWriter;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractWriterTest extends TestCase
 {
@@ -76,7 +77,7 @@ class AbstractWriterTest extends TestCase
     {
         return [
             [['report_filename' => '']],
-            [['there_are_no_report_filename' => 'some_name']]
+            [['there_are_no_report_filename' => 'some_name']],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Api;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -56,7 +59,7 @@ class PayflowNvpTest extends \PHPUnit\Framework\TestCase
             ->willReturn($this->httpClient);
 
         $this->nvpApi = $this->objectManager->create(PayflowNvp::class, [
-            'curlFactory' => $httpFactory
+            'curlFactory' => $httpFactory,
         ]);
 
         /** @var ProductMetadataInterface|MockObject $productMetadata */

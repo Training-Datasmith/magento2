@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Model;
 
+use Magento\Checkout\Model\AddressComparatorInterface;
 use Magento\Framework\Exception\InputException;
+use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Magento\Quote\Model\Address\Validator\AddressAttributeValidatorInterface;
-use Magento\Quote\Api\Data\AddressInterface;
-use Magento\Checkout\Model\AddressComparatorInterface;
 
 /**
  * Centralized address validation service for quotes.

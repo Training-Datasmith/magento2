@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -159,16 +160,16 @@ class UpdateProductsFromWishlistTest extends GraphQlAbstract
     }
 
     #[
-      Config('wishlist/general/active', true),
-      DataFixture(ProductFixture::class, as: 'product'),
-      DataFixture(CustomerFixture::class, as: 'customer'),
-      DataFixture(AddProductToWishlistFixture::class, [
-          'customer_id' => '$customer.id$',
-          'product_ids' => [
-              '$product.id$'
-          ],
-          'name' => 'Test Wish List',
-      ], as: 'wishlist')
+        Config('wishlist/general/active', true),
+        DataFixture(ProductFixture::class, as: 'product'),
+        DataFixture(CustomerFixture::class, as: 'customer'),
+        DataFixture(AddProductToWishlistFixture::class, [
+            'customer_id' => '$customer.id$',
+            'product_ids' => [
+                '$product.id$',
+            ],
+            'name' => 'Test Wish List',
+        ], as: 'wishlist')
     ]
     public function testClearWishlistDescription(): void
     {
@@ -190,7 +191,7 @@ class UpdateProductsFromWishlistTest extends GraphQlAbstract
         $this->assertEquals($qty, $wishlistResponse['items_v2']['items'][0]['quantity']);
         $this->assertEquals($description, $wishlistResponse['items_v2']['items'][0]['description']);
 
-        $updateWishlistQueryNoDescription = $this->getQuery($wishlistId, $wishlistItem['id'], $qty, "");
+        $updateWishlistQueryNoDescription = $this->getQuery($wishlistId, $wishlistItem['id'], $qty, '');
         $responseNoDescription = $this->graphQlMutation(
             $updateWishlistQueryNoDescription,
             [],

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -10,8 +12,8 @@ use Magento\Paypal\Model\Config;
 use Magento\Sales\Api\InvoiceManagementInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Address;
+use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Service\InvoiceService;
 use Magento\TestFramework\Helper\Bootstrap;

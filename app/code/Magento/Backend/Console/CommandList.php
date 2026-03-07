@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Console;
 
 use Magento\Backend\Console\Command\MaintenanceAllowIpsCommand;
@@ -41,7 +44,7 @@ class CommandList implements CommandListInterface
             MaintenanceAllowIpsCommand::class,
             MaintenanceDisableCommand::class,
             MaintenanceEnableCommand::class,
-            MaintenanceStatusCommand::class
+            MaintenanceStatusCommand::class,
         ];
     }
 

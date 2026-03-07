@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
+use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\Order\Payment;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
@@ -29,7 +31,7 @@ $orders = [
         'subtotal' => 120.00,
         'base_grand_total' => 120.00,
         'store_id' => 1,
-        'website_id' => 1
+        'website_id' => 1,
     ],
     [
         'increment_id' => '100000003',
@@ -39,7 +41,7 @@ $orders = [
         'base_grand_total' => 140.00,
         'subtotal' => 140.00,
         'store_id' => 0,
-        'website_id' => 0
+        'website_id' => 0,
     ],
     [
         'increment_id' => '100000004',
@@ -49,7 +51,7 @@ $orders = [
         'base_grand_total' => 140.00,
         'subtotal' => 140.00,
         'store_id' => 1,
-        'website_id' => 1
+        'website_id' => 1,
     ],
 ];
 

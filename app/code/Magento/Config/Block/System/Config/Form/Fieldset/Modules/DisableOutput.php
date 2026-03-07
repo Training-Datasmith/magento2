@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Block\System\Config\Form\Fieldset\Modules;
 
 /**
@@ -168,7 +171,7 @@ class DisableOutput extends \Magento\Config\Block\System\Config\Form\Fieldset
                 'values' => $this->_getValues(),
                 'inherit' => $inherit,
                 'can_use_default_value' => $this->getForm()->canUseDefaultValue($element),
-                'can_use_website_value' => $this->getForm()->canUseWebsiteValue($element)
+                'can_use_website_value' => $this->getForm()->canUseWebsiteValue($element),
             ]
         )->setRenderer(
             $this->_getFieldRenderer()

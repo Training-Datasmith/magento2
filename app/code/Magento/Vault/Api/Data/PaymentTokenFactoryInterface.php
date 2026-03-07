@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,8 +19,8 @@ interface PaymentTokenFactoryInterface
      * Payment Token types
      * @var string
      */
-    const TOKEN_TYPE_ACCOUNT = 'account';
-    const TOKEN_TYPE_CREDIT_CARD = 'card';
+    public const TOKEN_TYPE_ACCOUNT = 'account';
+    public const TOKEN_TYPE_CREDIT_CARD = 'card';
 
     /**
      * Create payment token entity

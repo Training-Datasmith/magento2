@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -127,7 +128,7 @@ class HttpContentProviderTest extends TestCase
 
         $this->httpClientMock->expects($this->exactly(2))
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$urlLocale] => null,
                 [$urlDefaultLocale] => null
             });
@@ -180,7 +181,7 @@ class HttpContentProviderTest extends TestCase
 
         $this->httpClientMock->expects($this->exactly(3))
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$urlLocale] => null,
                 [$urlDefaultLocale] => null,
                 [$urlDefault] => null
@@ -208,26 +209,26 @@ class HttpContentProviderTest extends TestCase
                 '2.3.0',
                 'Community',
                 'fr_FR',
-                '{"return":"default-fr_FR"}'
+                '{"return":"default-fr_FR"}',
             ],
             'default-en_US' => [
                 '2.3.0',
                 'Community',
                 'en_US',
-                '{"return":"default-en_US"}'
+                '{"return":"default-en_US"}',
             ],
             'empty-fr_FR' => [
                 '2.3.0',
                 'Community',
                 'fr_FR',
-                '{"return":"empty-fr_FR"}'
+                '{"return":"empty-fr_FR"}',
             ],
             'empty-en_US' => [
                 '2.3.0',
                 'Community',
                 'en_US',
-                '{"return":"empty-en_US"}'
-            ]
+                '{"return":"empty-en_US"}',
+            ],
         ];
     }
 }

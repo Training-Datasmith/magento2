@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
             CollectionFactory::class,
             [
                 ObjectManager::class,
-                'instanceName' => ProductCollection::class
+                'instanceName' => ProductCollection::class,
             ]
         );
         $dataProvider = $this->objectManager->create(
@@ -55,7 +56,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
                 'name' => 'product_listing_data_source',
                 'primaryFieldName' => 'entity_id',
                 'requestFieldName' => 'id',
-                'collectionFactory' => $productCollection
+                'collectionFactory' => $productCollection,
             ]
         );
 
@@ -83,7 +84,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
             CollectionFactory::class,
             [
                 ObjectManager::class,
-                'instanceName' => ProductCollection::class
+                'instanceName' => ProductCollection::class,
             ]
         );
         $dataProvider = $this->objectManager->create(
@@ -92,7 +93,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
                 'name' => 'product_listing_data_source',
                 'primaryFieldName' => 'entity_id',
                 'requestFieldName' => 'id',
-                'collectionFactory' => $productCollection
+                'collectionFactory' => $productCollection,
             ]
         );
 
@@ -120,7 +121,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
             CollectionFactory::class,
             [
                 ObjectManager::class,
-                'instanceName' => ProductCollection::class
+                'instanceName' => ProductCollection::class,
             ]
         );
         $dataProvider = $this->objectManager->create(
@@ -129,7 +130,7 @@ class LimitTotalNumberOfProductsTest extends TestCase
                 'name' => 'product_listing_data_source',
                 'primaryFieldName' => 'entity_id',
                 'requestFieldName' => 'id',
-                'collectionFactory' => $productCollection
+                'collectionFactory' => $productCollection,
             ]
         );
 

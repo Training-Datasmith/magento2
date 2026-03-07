@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
@@ -10,15 +13,13 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\AddressRegistry;
 use Magento\Customer\Model\EmailNotificationInterface;
+use Magento\Customer\Model\ValidatorExceptionProcessor;
 use Magento\Customer\Ui\Component\Listing\AttributeRepository;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Message\MessageInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Customer\Model\ValidatorExceptionProcessor;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Message\AbstractMessage;
-use Magento\Framework\Validator\Exception as ValidatorException;
 
 /**
  * Customer inline edit action
@@ -156,7 +157,7 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
             return $resultJson->setData(
                 [
                     'messages' => [
-                        __('Please correct the data sent.')
+                        __('Please correct the data sent.'),
                     ],
                     'error' => true,
                 ]
@@ -179,7 +180,7 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
         return $resultJson->setData(
             [
                 'messages' => $this->getErrorMessages(),
-                'error' => $this->isErrorExists()
+                'error' => $this->isErrorExists(),
             ]
         );
     }
@@ -268,7 +269,7 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
             if ($this->validatorExceptionProcessor !== null) {
                 $this->validatorExceptionProcessor->processInputException(
                     $e,
-                    fn($message) => $this->getErrorWithCustomerId($this->escaper->escapeHtml($message)),
+                    fn ($message) => $this->getErrorWithCustomerId($this->escaper->escapeHtml($message)),
                     'addError'
                 );
             } else {

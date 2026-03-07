@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,7 +10,6 @@ namespace Magento\Framework\Setup\Declaration\Schema\Diff;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Constraint;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Constraints\Reference;
 use Magento\Framework\Setup\Declaration\Schema\Dto\ElementInterface;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Index;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Table;
@@ -30,7 +31,7 @@ class Diff implements DiffInterface
     /**
      * Whitelist file name.
      */
-    const GENERATED_WHITELIST_FILE_NAME = 'db_schema_whitelist.json';
+    public const GENERATED_WHITELIST_FILE_NAME = 'db_schema_whitelist.json';
 
     /**
      * @var array
@@ -236,7 +237,7 @@ class Diff implements DiffInterface
      * @param string $operation
      * @return int
      */
-    private function findTableIndex(ElementInterface $element, string $operation) : int
+    private function findTableIndex(ElementInterface $element, string $operation): int
     {
         $elementName = $element instanceof TableElementInterface ?
             $element->getTable()->getName() : $element->getName();

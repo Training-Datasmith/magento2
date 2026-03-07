@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -50,9 +51,9 @@ class FileTest extends TestCase
                     [
                         'label' => 'label 1.1',
                         'name' => 'name 1.1',
-                        'disabled' => false
-                    ]
-                ]
+                        'disabled' => false,
+                    ],
+                ],
             ],
             [
                 'label' => 'group label 2',
@@ -60,10 +61,10 @@ class FileTest extends TestCase
                     [
                         'label' => 'label 2.2',
                         'name' => 'name 2.2',
-                        'disabled' => true
-                    ]
-                ]
-            ]
+                        'disabled' => true,
+                    ],
+                ],
+            ],
         ];
         $configMock->expects($this->once())->method('getAll')->willReturn($config);
         $methods = ['getTitle', 'getType', 'getPriceType', 'getPrice', 'getImageSizeX', 'getImageSizeY','__wakeup'];

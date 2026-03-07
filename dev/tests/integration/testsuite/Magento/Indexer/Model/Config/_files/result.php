@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -25,7 +27,7 @@ return [
         'description' => '',
         'fieldsets' => [],
         'dependencies' => [
-            'indexer_4'
+            'indexer_4',
         ],
     ],
     'catalogsearch_fulltext' =>  [
@@ -86,7 +88,7 @@ return [
                             'fieldset' => 'first',
                             'from' => 'id_field',
                             'to' => 'second_entity_id',
-                        ]
+                        ],
                 ],
             ],
         ],

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\ResourceModel;
 
-use Magento\CatalogSearch\Model\ResourceModel\EngineInterface;
 use Magento\Catalog\Model\Product\Visibility;
+use Magento\CatalogSearch\Model\ResourceModel\EngineInterface;
 use Magento\Framework\Indexer\ScopeResolver\IndexScopeResolver;
 
 /**

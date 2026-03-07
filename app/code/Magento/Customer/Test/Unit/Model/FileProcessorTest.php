@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -197,38 +198,38 @@ class FileProcessorTest extends TestCase
                 [
                     'entityTypeCode' => CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER,
                     'customerFileUrlPath' => 'customer/index/viewfile',
-                    'addressFileUrlPath' => 'customer/address/viewfile'
+                    'addressFileUrlPath' => 'customer/address/viewfile',
                 ],
                 '/i/m/image1.jpeg',
-                'http://example.com/customer/index/viewfile/file/57523c876842c97ab9d5fd92f8d8d9ec'
+                'http://example.com/customer/index/viewfile/file/57523c876842c97ab9d5fd92f8d8d9ec',
             ],
             [
                 [
                     'entityTypeCode' => AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
                     'customerFileUrlPath' => 'customer/index/viewfile',
-                    'addressFileUrlPath' => 'customer/address/viewfile'
+                    'addressFileUrlPath' => 'customer/address/viewfile',
                 ],
                 '/i/m/image2.png',
-                'http://example.com/customer/address/viewfile/file/4498819248a7f824893bd3dac4babdfc'
+                'http://example.com/customer/address/viewfile/file/4498819248a7f824893bd3dac4babdfc',
             ],
             [
                 [
                     'entityTypeCode' => CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER,
                     'customerFileUrlPath' => 'custom_module/customer/preview',
-                    'addressFileUrlPath' => 'custom_module/address/preview'
+                    'addressFileUrlPath' => 'custom_module/address/preview',
                 ],
                 '/i/m/image1.jpeg',
-                'http://example.com/custom_module/customer/preview/file/57523c876842c97ab9d5fd92f8d8d9ec'
+                'http://example.com/custom_module/customer/preview/file/57523c876842c97ab9d5fd92f8d8d9ec',
             ],
             [
                 [
                     'entityTypeCode' => AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
                     'customerFileUrlPath' => 'custom_module/customer/preview',
-                    'addressFileUrlPath' => 'custom_module/address/preview'
+                    'addressFileUrlPath' => 'custom_module/address/preview',
                 ],
                 '/i/m/image2.png',
-                'http://example.com/custom_module/address/preview/file/4498819248a7f824893bd3dac4babdfc'
-            ]
+                'http://example.com/custom_module/address/preview/file/4498819248a7f824893bd3dac4babdfc',
+            ],
         ];
     }
 
@@ -257,17 +258,17 @@ class FileProcessorTest extends TestCase
 
         $allowedExtensions = [
             'ext1',
-            'ext2'
+            'ext2',
         ];
 
         $absolutePath = '/absolute/filepath';
 
         $expectedResult = [
-            'file' => 'filename.ext1'
+            'file' => 'filename.ext1',
         ];
         $resultWithPath = [
             'file' => 'filename.ext1',
-            'path' => 'filepath'
+            'path' => 'filepath',
         ];
 
         $uploaderMock = $this->createMock(Uploader::class);
@@ -320,7 +321,7 @@ class FileProcessorTest extends TestCase
 
         $allowedExtensions = [
             'ext1',
-            'ext2'
+            'ext2',
         ];
 
         $absolutePath = '/absolute/filepath';
@@ -565,7 +566,7 @@ class FileProcessorTest extends TestCase
     {
         $this->mediaDirectory
             ->method('isExist')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['customer/tmp/filename.ext1'] => true,
                 ['customer/filename.ext1'] => false
             });

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Helper\Product;
 
 use Magento\Catalog\Model\Product;
@@ -147,7 +150,7 @@ class Compare extends \Magento\Framework\Url\Helper\Data
     public function getListUrl()
     {
         $params = [
-            \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl()
+            \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl(),
         ];
         return $this->_getUrl('catalog/product_compare', $params);
     }
@@ -192,7 +195,7 @@ class Compare extends \Magento\Framework\Url\Helper\Data
         $beforeCompareUrl = $this->_catalogSession->getBeforeCompareUrl();
 
         $encodedUrl = [
-            \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl($beforeCompareUrl)
+            \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl($beforeCompareUrl),
         ];
 
         return $this->_wishlistHelper->getAddParams($product, $encodedUrl);
@@ -210,7 +213,7 @@ class Compare extends \Magento\Framework\Url\Helper\Data
         $params = [
             'product' => $product->getId(),
             \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => $this->getEncodedUrl($beforeCompareUrl),
-            '_secure' => $this->_getRequest()->isSecure()
+            '_secure' => $this->_getRequest()->isSecure(),
         ];
 
         return $this->_getUrl('checkout/cart/add', $params);
@@ -238,7 +241,7 @@ class Compare extends \Magento\Framework\Url\Helper\Data
             \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => '',
             'product' => $product->getId(),
             'confirmation' => true,
-            'confirmationMessage' => __('Are you sure you want to remove this item from your Compare Products list?')
+            'confirmationMessage' => __('Are you sure you want to remove this item from your Compare Products list?'),
         ];
         return $this->postHelper->getPostData($this->getRemoveUrl(), $data);
     }

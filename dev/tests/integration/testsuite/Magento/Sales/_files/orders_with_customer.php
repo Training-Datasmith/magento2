@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Sales\Api\Data\OrderInterfaceFactory;
-use Magento\Sales\Model\Order;
 use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
@@ -34,7 +35,7 @@ $orders = [
         'base_grand_total' => 120.00,
         'store_id' => 1,
         'website_id' => 1,
-        'created_at' => '2022-09-04'
+        'created_at' => '2022-09-04',
     ],
     [
         'increment_id' => '100000003',
@@ -46,7 +47,7 @@ $orders = [
         'total_paid' => 130.00,
         'store_id' => 0,
         'website_id' => 0,
-        'created_at' => '2022-09-10'
+        'created_at' => '2022-09-10',
     ],
     [
         'increment_id' => '100000004',
@@ -57,7 +58,7 @@ $orders = [
         'subtotal' => 140.00,
         'store_id' => 1,
         'website_id' => 1,
-        'created_at' => '2022-09-05'
+        'created_at' => '2022-09-05',
     ],
     [
         'increment_id' => '100000005',
@@ -69,7 +70,7 @@ $orders = [
         'total_paid' => 150.00,
         'store_id' => 1,
         'website_id' => 1,
-        'created_at' => '2022-09-08'
+        'created_at' => '2022-09-08',
     ],
     [
         'increment_id' => '100000006',
@@ -81,7 +82,7 @@ $orders = [
         'total_paid' => 160.00,
         'store_id' => 1,
         'website_id' => 1,
-        'created_at' => '2022-09-09'
+        'created_at' => '2022-09-09',
     ],
 ];
 

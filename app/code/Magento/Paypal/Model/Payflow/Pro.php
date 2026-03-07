@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow;
 
 /**
@@ -29,7 +32,7 @@ class Pro extends \Magento\Paypal\Model\Pro
     /**
      * Payflow trx_id key in transaction info
      */
-    const TRANSPORT_PAYFLOW_TXN_ID = 'payflow_trxid';
+    public const TRANSPORT_PAYFLOW_TXN_ID = 'payflow_trxid';
 
     /**
      * Refund a capture transaction

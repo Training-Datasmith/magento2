@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ use Magento\Msrp\Model\Config;
 class MsrpPrice implements ProductRenderCollectorInterface
 {
     /** msrp price key */
-    const KEY = "msrp_price";
+    public const KEY = 'msrp_price';
 
     /**
      * @var PriceCurrencyInterface

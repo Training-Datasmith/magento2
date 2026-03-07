@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -76,7 +78,7 @@ class AttributeReader implements ReaderInterface
      * @throws GraphQlInputException
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function read($scope = null) : array
+    public function read($scope = null): array
     {
         $config = [];
         if ($this->config->isSetFlag(self::XML_PATH_INCLUDE_DYNAMIC_ATTRIBUTES, ScopeInterface::SCOPE_STORE)) {

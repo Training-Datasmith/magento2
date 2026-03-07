@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Search\Model\ResourceModel\Query\Collection;
 use Magento\Search\Model\ResourceModel\Query\CollectionFactory;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests for Terms block
@@ -71,7 +72,7 @@ class TermsTest extends TestCase
             [
                 'context' => $this->contextMock,
                 '_queryCollectionFactory' => $this->collectionFactoryMock,
-                '_urlFactory' => $this->urlFactoryMock
+                '_urlFactory' => $this->urlFactoryMock,
             ]
         );
     }
@@ -157,12 +158,12 @@ class TermsTest extends TestCase
         return [
             [
                 'search',
-                true
+                true,
             ],
             [
                 '',
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns;
 
-use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
 
 class Price extends \Magento\Ui\Component\Listing\Columns\Column
 {
     /**
      * Column name
      */
-    const NAME = 'column.price';
+    public const NAME = 'column.price';
 
     /**
      * @var \Magento\Framework\Locale\CurrencyInterface
@@ -64,11 +67,11 @@ class Price extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item[$fieldName])) {
                     $item['price_number'] = $currency->toCurrency(
-                        sprintf("%f", $item[$fieldName]),
+                        sprintf('%f', $item[$fieldName]),
                         ['display' => false]
                     );
                     $item['price_currency'] = $store->getBaseCurrency()->getCurrencySymbol();
-                    $item[$fieldName] = $currency->toCurrency(sprintf("%f", $item[$fieldName]));
+                    $item[$fieldName] = $currency->toCurrency(sprintf('%f', $item[$fieldName]));
                 }
             }
         }

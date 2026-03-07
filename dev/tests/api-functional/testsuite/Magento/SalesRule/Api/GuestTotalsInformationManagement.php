@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -50,8 +52,8 @@ class GuestTotalsInformationManagement extends WebapiAbstract
         /** @var PublisherConsumerController publisherConsumerController */
         $this->publisherConsumerController = $objectManager->create(PublisherConsumerController::class, [
             'consumers' => $this->consumers,
-            'logFilePath' => TESTS_TEMP_DIR . "/MessageQueueTestLog.txt",
-            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams()
+            'logFilePath' => TESTS_TEMP_DIR . '/MessageQueueTestLog.txt',
+            'appInitParams' => \Magento\TestFramework\Helper\Bootstrap::getInstance()->getAppInitParams(),
         ]);
 
         try {
@@ -113,8 +115,8 @@ class GuestTotalsInformationManagement extends WebapiAbstract
             ],
             [
                 'addressInformation' => [
-                    'address' => []
-                ]
+                    'address' => [],
+                ],
             ]
         );
         $this->assertNotEmpty($response);
@@ -129,7 +131,7 @@ class GuestTotalsInformationManagement extends WebapiAbstract
      * @return void
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    private function assertQuoteTriggerRecollectIsUpdated(Quote $quote) : void
+    private function assertQuoteTriggerRecollectIsUpdated(Quote $quote): void
     {
         $quoteResource = Bootstrap::getObjectManager()->get(QuoteResourceModel::class);
         $resourceConnection = Bootstrap::getObjectManager()->get(ResourceConnection::class);

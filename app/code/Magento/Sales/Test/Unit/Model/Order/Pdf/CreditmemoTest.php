@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Test\Unit\Model\Order\Pdf;
 
 use Magento\Framework\App\Area;
@@ -10,6 +13,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write as DirectoryWrite;
 use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template;
 use Magento\MediaStorage\Helper\File\Storage\Database;
@@ -25,7 +29,6 @@ use Magento\Store\Model\App\Emulation;
 use Magento\Store\Model\ScopeInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Class CreditmemoTest
@@ -115,7 +118,7 @@ class CreditmemoTest extends TestCase
                 'addressRenderer' => $this->addressRendererMock,
                 'string' => new StringUtils(),
                 'paymentData' => $this->paymentDataMock,
-                'appEmulation' => $this->appEmulation
+                'appEmulation' => $this->appEmulation,
             ]
         );
     }

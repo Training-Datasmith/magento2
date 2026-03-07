@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Index Engine Interface
  */
+
 namespace Magento\Framework\Indexer\SaveHandler;
 
 use Magento\Framework\Search\Request\Dimension;

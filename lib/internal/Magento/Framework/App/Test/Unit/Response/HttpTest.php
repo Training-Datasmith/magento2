@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class HttpTest extends TestCase
                 'cookieMetadataFactory' => $this->cookieMetadataFactoryMock,
                 'context' => $this->contextMock,
                 'dateTime' => $this->dateTimeMock,
-                'sessionConfig' => $this->sessionConfigMock
+                'sessionConfig' => $this->sessionConfigMock,
             ]
         );
         $this->model->setHeader('Name', 'Value');
@@ -156,7 +157,7 @@ class HttpTest extends TestCase
             ->with(
                 [
                     CookieMetadata::KEY_DURATION => $this->cookieLifeTime,
-                    CookieMetadata::KEY_SAME_SITE => 'Lax'
+                    CookieMetadata::KEY_SAME_SITE => 'Lax',
                 ]
             )
             ->willReturn($sensitiveCookieMetadataMock);
@@ -219,7 +220,7 @@ class HttpTest extends TestCase
         $timestamp = 1000000;
         $pragma = 'cache';
         $cacheControl = 'max-age=' . $ttl . ', public, s-maxage=' . $ttl;
-        $expiresResult ='Thu, 01 Jan 1970 00:00:00 GMT';
+        $expiresResult = 'Thu, 01 Jan 1970 00:00:00 GMT';
 
         $this->dateTimeMock->expects($this->once())
             ->method('strToTime')
@@ -259,7 +260,7 @@ class HttpTest extends TestCase
         $timestamp = 1000000;
         $pragma = 'cache';
         $cacheControl = 'max-age=' . $ttl . ', private';
-        $expiresResult ='Thu, 01 Jan 1970 00:00:00 GMT';
+        $expiresResult = 'Thu, 01 Jan 1970 00:00:00 GMT';
 
         $this->dateTimeMock->expects($this->once())
             ->method('strToTime')
@@ -298,7 +299,7 @@ class HttpTest extends TestCase
         $timestamp = 1000000;
         $pragma = 'no-cache';
         $cacheControl = 'max-age=0, must-revalidate, no-cache, no-store';
-        $expiresResult ='Thu, 01 Jan 1970 00:00:00 GMT';
+        $expiresResult = 'Thu, 01 Jan 1970 00:00:00 GMT';
 
         $this->dateTimeMock->expects($this->once())
             ->method('strToTime')

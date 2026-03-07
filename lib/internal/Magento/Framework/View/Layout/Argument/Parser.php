@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Argument;
 
 use Magento\Framework\Config\Converter\Dom\Flat as FlatConverter;
@@ -47,7 +50,7 @@ class Parser
                     'argument(/item)+/param' => 'name',
                     'argument(/argument)+' => 'name',
                     'argument((/argument)+(/item)+)+' => 'name',
-                    'argument((/argument)+(/item)+)+/param' => 'name'
+                    'argument((/argument)+(/item)+)+/param' => 'name',
                 ],
                 ['argument/updater']
             );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class SimpleTest extends TestCase
                 'fileStorageDb' => $fileStorageDbMock,
                 'filesystem' => $filesystem,
                 'coreRegistry' => $coreRegistry,
-                'logger' => $logger
+                'logger' => $logger,
             ]
         );
     }

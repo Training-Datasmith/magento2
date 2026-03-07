@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +34,7 @@ class AuthorizationServiceTest extends \PHPUnit\Framework\TestCase
         $this->_service = $objectManager->create(
             \Magento\Integration\Model\AuthorizationService::class,
             [
-                'logger' => $loggerMock
+                'logger' => $loggerMock,
             ]
         );
 
@@ -102,7 +104,7 @@ class AuthorizationServiceTest extends \PHPUnit\Framework\TestCase
                 'integrationId' => rand(1, 1000),
                 'initialResources' => ['Magento_Sales::capture', 'Magento_Cms::page_delete'],
                 'newResources' => [],
-            ]
+            ],
         ];
     }
 

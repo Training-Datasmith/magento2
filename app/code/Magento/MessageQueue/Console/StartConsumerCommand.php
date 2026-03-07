@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MessageQueue\Console;
 
+use Magento\Framework\Lock\LockManagerInterface;
+use Magento\Framework\MessageQueue\ConsumerFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Magento\Framework\MessageQueue\ConsumerFactory;
-use Magento\Framework\Lock\LockManagerInterface;
 
 /**
  * Command for starting MessageQueue consumers.
@@ -78,12 +81,12 @@ class StartConsumerCommand extends Command
         $singleThread = $input->getOption(self::OPTION_SINGLE_THREAD);
         $multiProcess = $input->getOption(self::OPTION_MULTI_PROCESS);
 
-        if ($multiProcess && !$this->lockManager->lock(md5($consumerName . '-' . $multiProcess),0)) { //phpcs:ignore
+        if ($multiProcess && !$this->lockManager->lock(md5($consumerName . '-' . $multiProcess), 0)) { //phpcs:ignore
             $output->writeln('<error>Consumer with the same name is running</error>');
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
         }
 
-        if ($singleThread && !$this->lockManager->lock(md5($consumerName),0)) { //phpcs:ignore
+        if ($singleThread && !$this->lockManager->lock(md5($consumerName), 0)) { //phpcs:ignore
             $output->writeln('<error>Consumer with the same name is running</error>');
             return \Magento\Framework\Console\Cli::RETURN_FAILURE;
         }

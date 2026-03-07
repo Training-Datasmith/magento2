@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\Setup;
 
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class ConsoleLogger implements ConsoleLoggerInterface
 {
@@ -42,7 +44,7 @@ class ConsoleLogger implements ConsoleLoggerInterface
     public function logSuccess($message)
     {
         $this->terminateLine();
-        $this->console->writeln("<info>[SUCCESS]" . ($message ? ": $message" : '') . '</info>');
+        $this->console->writeln('<info>[SUCCESS]' . ($message ? ": $message" : '') . '</info>');
     }
 
     /**
@@ -51,7 +53,7 @@ class ConsoleLogger implements ConsoleLoggerInterface
     public function logError(\Exception $e)
     {
         $this->terminateLine();
-        $this->console->writeln("<error>[ERROR]: " . $e . '</error>');
+        $this->console->writeln('<error>[ERROR]: ' . $e . '</error>');
     }
 
     /**

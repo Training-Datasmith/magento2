@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 return [
     'scopes' => [
-        'websites' => []
+        'websites' => [],
     ],
     /**
      * Shared configuration was written to config.php and system-specific configuration to env.php.
@@ -19,11 +21,11 @@ return [
     'integrationTestImporter' => [
         'someGroup' => [
             'someField' => 'testValue',
-        ]
+        ],
     ],
     'integrationTestSecondImporter' => [
         'someGroup' => [
             'someField' => 'testSecondValue',
-        ]
+        ],
     ],
 ];

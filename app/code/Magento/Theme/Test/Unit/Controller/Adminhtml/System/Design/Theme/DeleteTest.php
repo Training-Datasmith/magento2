@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,13 +18,13 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Controller\Adminhtml\System\Design\Theme\Delete;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -137,7 +138,7 @@ class DeleteTest extends TestCase
             ThemeInterface::class,
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme', 'getCode', 'isPhysical',
-                'getInheritedThemes', 'getId', 'load', 'isVirtual', 'delete'
+                'getInheritedThemes', 'getId', 'load', 'isVirtual', 'delete',
             ]
         );
         $this->request->expects($this->any())
@@ -209,7 +210,7 @@ class DeleteTest extends TestCase
             ThemeInterface::class,
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme', 'getCode', 'isPhysical',
-                'getInheritedThemes', 'getId', 'load', 'isVirtual'
+                'getInheritedThemes', 'getId', 'load', 'isVirtual',
             ]
         );
         $this->request->expects($this->any())

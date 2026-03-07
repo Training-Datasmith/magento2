@@ -1,4 +1,5 @@
 <?php
+
 /**
  * RouterList model test class
  *
@@ -41,7 +42,7 @@ class RouterListTest extends TestCase
             'frontendRouter' => ['class' => 'FrontClass', 'disable' => false, 'sortOrder' => 10],
             'default' => ['class' => 'DefaultClass', 'disable' => false, 'sortOrder' => 5],
             'someRouter' => ['class' => 'SomeClass', 'disable' => false, 'sortOrder' => 10],
-            'anotherRouter' => ['class' => 'AnotherClass', 'disable' => false, 'sortOrder' => 15]
+            'anotherRouter' => ['class' => 'AnotherClass', 'disable' => false, 'sortOrder' => 15],
         ];
 
         $this->objectManagerMock = $this->createStub(ObjectManagerInterface::class);

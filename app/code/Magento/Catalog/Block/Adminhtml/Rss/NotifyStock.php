@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Rss;
 
 use Magento\Framework\App\Rss\DataProviderInterface;
@@ -55,7 +58,7 @@ class NotifyStock extends \Magento\Backend\Block\AbstractBlock implements DataPr
      */
     public function getRssData()
     {
-         $newUrl = $this->rssUrlBuilder->getUrl(['_secure' => true, '_nosecret' => true, 'type' => 'notifystock']);
+        $newUrl = $this->rssUrlBuilder->getUrl(['_secure' => true, '_nosecret' => true, 'type' => 'notifystock']);
         $title = __('Low Stock Products')->render();
         $data = ['title' => $title, 'description' => $title, 'link' => $newUrl, 'charset' => 'UTF-8'];
 

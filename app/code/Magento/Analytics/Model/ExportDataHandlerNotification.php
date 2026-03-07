@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model;
 
 /**
@@ -11,23 +14,10 @@ namespace Magento\Analytics\Model;
 class ExportDataHandlerNotification implements ExportDataHandlerInterface
 {
     /**
-     * @var ExportDataHandler
-     */
-    private $exportDataHandler;
-
-    /**
-     * @var Connector
-     */
-    private $analyticsConnector;
-
-    /**
      * @param ExportDataHandlerInterface $exportDataHandler
-     * @param Connector $connector
      */
-    public function __construct(ExportDataHandler $exportDataHandler, Connector $connector)
+    public function __construct(private readonly ExportDataHandler $exportDataHandler, private readonly Connector $analyticsConnector)
     {
-        $this->exportDataHandler = $exportDataHandler;
-        $this->analyticsConnector = $connector;
     }
 
     /**

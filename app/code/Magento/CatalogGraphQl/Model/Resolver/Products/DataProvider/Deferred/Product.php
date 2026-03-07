@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class Product implements ResetAfterRequestInterface
      * @param string $sku
      * @return void
      */
-    public function addProductSku(string $sku) : void
+    public function addProductSku(string $sku): void
     {
         if (!in_array($sku, $this->productSkus)) {
             $this->productSkus[] = $sku;
@@ -74,7 +75,7 @@ class Product implements ResetAfterRequestInterface
      * @param array $skus
      * @return void
      */
-    public function addProductSkus(array $skus) : void
+    public function addProductSkus(array $skus): void
     {
         foreach ($skus as $sku) {
             $this->addProductSku($sku);
@@ -87,7 +88,7 @@ class Product implements ResetAfterRequestInterface
      * @param array $attributeCodes
      * @return void
      */
-    public function addEavAttributes(array $attributeCodes) : void
+    public function addEavAttributes(array $attributeCodes): void
     {
         $this->attributeCodes = array_unique(array_merge($this->attributeCodes, $attributeCodes));
     }
@@ -99,7 +100,7 @@ class Product implements ResetAfterRequestInterface
      * @param null|ContextInterface $context
      * @return array
      */
-    public function getProductBySku(string $sku, ?ContextInterface $context = null) : array
+    public function getProductBySku(string $sku, ?ContextInterface $context = null): array
     {
         if (isset($this->productList[$sku])) {
             return $this->productList[$sku];

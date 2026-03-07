@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * * All Rights Reserved.
@@ -22,8 +23,8 @@ use Magento\ImportExport\Model\Import\Source\Csv;
 use Magento\Store\Model\ScopeInterface;
 use Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException;
 use Magento\UrlRewrite\Model\OptionProvider;
-use Psr\Log\LoggerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class for product url rewrites tests
@@ -93,7 +94,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                         'sku' => 'test-product',
                         'name' => 'test product',
                         'price' => 150,
-                        'website_ids' => [1]
+                        'website_ids' => [1],
                     ],
                     'expected_data' => [
                         [
@@ -113,7 +114,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                         'name' => 'test product',
                         'price' => 150,
                         'url_key' => 'test-product-url-key',
-                        'website_ids' => [1]
+                        'website_ids' => [1],
                     ],
                     'expected_data' => [
                         [
@@ -133,7 +134,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                         'name' => 'test product',
                         'price' => 150,
                         'url_key' => 'test-product-url-key',
-                        'website_ids' => [1]
+                        'website_ids' => [1],
                     ],
                     'expected_data' => [],
                 ],
@@ -224,7 +225,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                     'name' => 'test-simple-product',
                     'price' => 150,
                     'url_key' => 'simple-product',
-                    'store_ids' => [1]
+                    'store_ids' => [1],
                 ],
                 [
                     'type_id' => Type::TYPE_SIMPLE,
@@ -232,7 +233,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                     'sku' => 'test-simple-product',
                     'name' => 'simple product',
                     'price' => 150,
-                    'store_ids' => [1]
+                    'store_ids' => [1],
                 ],
                 [
                     'type_id' => Type::TYPE_SIMPLE,
@@ -241,7 +242,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                     'name' => 'test-simple-product',
                     'price' => 150,
                     'url_key' => 'category-1',
-                    'store_ids' => [1]
+                    'store_ids' => [1],
                 ],
                 [
                     'type_id' => Type::TYPE_SIMPLE,
@@ -249,7 +250,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
                     'sku' => 'test-simple-product',
                     'name' => 'category 1',
                     'price' => 150,
-                    'store_ids' => [1]
+                    'store_ids' => [1],
                 ],
             ],
         ];
@@ -335,7 +336,7 @@ class ProductUrlRewriteTest extends AbstractUrlRewriteTest
             Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_rewrites.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $productImport->setParameters(

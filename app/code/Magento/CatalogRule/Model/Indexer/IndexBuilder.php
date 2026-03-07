@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,14 +9,14 @@
 namespace Magento\CatalogRule\Model\Indexer;
 
 use Exception;
+use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceIndexProcessor;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ResourceModel\Indexer\ActiveTableSwitcher;
-use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceIndexProcessor;
-use Magento\CatalogRule\Model\Indexer\Rule\RuleProductProcessor;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\CatalogRule\Model\Indexer\IndexBuilder\ProductLoader;
 use Magento\CatalogRule\Model\Indexer\IndexerTableSwapperInterface as TableSwapper;
+use Magento\CatalogRule\Model\Indexer\Rule\RuleProductProcessor;
 use Magento\CatalogRule\Model\ResourceModel\Rule\Collection as RuleCollection;
 use Magento\CatalogRule\Model\ResourceModel\Rule\CollectionFactory as RuleCollectionFactory;
 use Magento\CatalogRule\Model\ResourceModel\Rule\RuleIdProvider;
@@ -385,7 +387,7 @@ class IndexBuilder
         } catch (Exception $e) {
             $this->critical($e);
             throw new LocalizedException(
-                __("Catalog rule indexing failed. See details in exception log.")
+                __('Catalog rule indexing failed. See details in exception log.')
             );
         }
     }
@@ -440,7 +442,7 @@ class IndexBuilder
         } catch (Exception $e) {
             $this->critical($e);
             throw new LocalizedException(
-                __("Catalog rule indexing failed. See details in exception log.")
+                __('Catalog rule indexing failed. See details in exception log.')
             );
         }
     }
@@ -484,7 +486,7 @@ class IndexBuilder
             [
                 $this->getTable('catalogrule_product'),
                 $this->getTable('catalogrule_product_price'),
-                $this->getTable('catalogrule_group_website')
+                $this->getTable('catalogrule_group_website'),
             ]
         );
     }
@@ -606,12 +608,12 @@ class IndexBuilder
         $renameTables = [
             [
                 'oldName' => $tableName,
-                'newName' => $backupTable
+                'newName' => $backupTable,
             ],
             [
                 'oldName' => $temporaryTable,
-                'newName' => $tableName
-            ]
+                'newName' => $tableName,
+            ],
         ];
         $this->connection->renameTablesBatch($renameTables);
 

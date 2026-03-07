@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFac
  */
 class UserExpirationManager
 {
-
     /**
      * @var DateTime
      */

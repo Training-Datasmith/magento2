@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Design\Theme;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -19,12 +22,12 @@ class Image
     /**
      * Preview image width
      */
-    const PREVIEW_IMAGE_WIDTH = 800;
+    public const PREVIEW_IMAGE_WIDTH = 800;
 
     /**
      * Preview image height
      */
-    const PREVIEW_IMAGE_HEIGHT = 800;
+    public const PREVIEW_IMAGE_HEIGHT = 800;
 
     /**
      * Media directory

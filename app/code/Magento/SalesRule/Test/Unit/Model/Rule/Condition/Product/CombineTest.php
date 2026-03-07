@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class CombineTest extends TestCase
             ->method('getAttributeOption')
             ->willReturn([
                 'parent::quote_item_qty' => __('Quantity in cart'),
-                'name' => __('Name')
+                'name' => __('Name'),
             ]);
         $this->assertEquals([
             [
@@ -74,8 +75,8 @@ class CombineTest extends TestCase
                     [
                         'value' => SalesRuleProduct::class . '|' . 'parent::quote_item_qty',
                         'label' => __('Quantity in cart'),
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'label' => __('Product Attribute'),
@@ -83,9 +84,9 @@ class CombineTest extends TestCase
                     [
                         'value' => SalesRuleProduct::class . '|' . 'name',
                         'label' => __('Name'),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ], $this->model->getNewChildSelectOptions());
     }
 }

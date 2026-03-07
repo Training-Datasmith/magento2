@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -88,8 +89,8 @@ class SerializedTest extends TestCase
                 ['string array'],
                 'string array',
                 1,
-                ['string array']
-            ]
+                ['string array'],
+            ],
         ];
     }
 
@@ -140,8 +141,8 @@ class SerializedTest extends TestCase
                 'string array',
                 ['string array'],
                 1,
-                'string array'
-            ]
+                'string array',
+            ],
         ];
     }
 

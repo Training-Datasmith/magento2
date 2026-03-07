@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
 use Magento\CatalogInventory\Api\Data\StockInterface;
@@ -17,7 +20,7 @@ class Stock extends AbstractExtensibleModel implements StockInterface
     /**
      * Stock entity code
      */
-    const ENTITY = 'cataloginventory_stock';
+    public const ENTITY = 'cataloginventory_stock';
 
     /**
      * Prefix of model events names
@@ -34,22 +37,22 @@ class Stock extends AbstractExtensibleModel implements StockInterface
      */
     protected $_eventObject = 'stock';
 
-    const BACKORDERS_NO = 0;
+    public const BACKORDERS_NO = 0;
 
-    const BACKORDERS_YES_NONOTIFY = 1;
+    public const BACKORDERS_YES_NONOTIFY = 1;
 
-    const BACKORDERS_YES_NOTIFY = 2;
+    public const BACKORDERS_YES_NOTIFY = 2;
 
-    const STOCK_OUT_OF_STOCK = 0;
+    public const STOCK_OUT_OF_STOCK = 0;
 
-    const STOCK_IN_STOCK = 1;
+    public const STOCK_IN_STOCK = 1;
 
-    const WEBSITE_ID = 'website_id';
+    public const WEBSITE_ID = 'website_id';
 
     /**
      * Default stock id
      */
-    const DEFAULT_STOCK_ID = 1;
+    public const DEFAULT_STOCK_ID = 1;
 
     /**
      * @return void

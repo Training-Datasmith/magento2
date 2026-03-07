@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\BundleGraphQl\Model\Cart;
 
 use Magento\Bundle\Helper\Catalog\Product\Configuration;
+use Magento\Bundle\Model\Product\OriginalPrice;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\GraphQl\Query\Uid;
-use Magento\Quote\Model\Quote\Item;
 use Magento\Framework\Pricing\Helper\Data;
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Bundle\Model\Product\OriginalPrice;
+use Magento\Quote\Model\Quote\Item;
 
 /**
  * Data provider for bundled product options
@@ -135,7 +136,7 @@ class BundleOptionDataProvider
                 self::OPTION_TYPE,
                 $selection->getData('option_id'),
                 $selection->getData('selection_id'),
-                (int) $selection->getData('selection_qty')
+                (int) $selection->getData('selection_qty'),
             ];
             $price = $this->pricingHelper->currency($selectionPrice, false, false);
             $values[] = [
@@ -148,7 +149,7 @@ class BundleOptionDataProvider
                 'original_price' => [
                     'currency' => $currencyCode,
                     'value' => $this->originalPrice
-                        ->getSelectionOriginalPrice($item->getProduct(), $selection)
+                        ->getSelectionOriginalPrice($item->getProduct(), $selection),
                 ],
             ];
         }

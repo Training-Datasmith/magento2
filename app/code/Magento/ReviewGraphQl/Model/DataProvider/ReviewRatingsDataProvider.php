@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ReviewRatingsDataProvider
         foreach ($ratingVotes->getItems() as $ratingVote) {
             $data[] = [
                 'name' => $ratingVote->getData('rating_code'),
-                'value' => $ratingVote->getData('value')
+                'value' => $ratingVote->getData('value'),
             ];
         }
 

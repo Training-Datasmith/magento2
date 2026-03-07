@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type\Simple;
 use Magento\Customer\Api\AddressRepositoryInterface;
@@ -21,7 +21,6 @@ use Magento\Customer\Model\Address\AbstractAddress;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\GroupManagement;
 use Magento\Directory\Model\Currency;
-use Magento\Eav\Model\Entity\Collection\AbstractCollection;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\FilterBuilder;
@@ -46,15 +45,16 @@ use Magento\Quote\Model\Quote\Item\Processor;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Quote\Model\Quote\PaymentFactory;
 use Magento\Quote\Model\ResourceModel\Quote\Address\Collection;
+use Magento\Quote\Model\ResourceModel\Quote\Item\Collection as QuoteItemCollection;
 use Magento\Quote\Model\ResourceModel\Quote\Item\CollectionFactory;
 use Magento\Sales\Model\OrderIncrementIdChecker;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Quote\Model\ResourceModel\Quote\Item\Collection as QuoteItemCollection;
 
 /**
  * Test class for \Magento\Quote\Model
@@ -217,7 +217,7 @@ class QuoteTest extends TestCase
                 'getId',
                 'getCustomerAddressId',
                 'validateMinimumAmount',
-                'setData'
+                'setData',
             ]
         );
         $this->quoteAddressCollectionMock = $this->createMock(
@@ -320,8 +320,8 @@ class QuoteTest extends TestCase
                     'itemProcessor' => $this->itemProcessor,
                     'orderIncrementIdChecker' => $this->orderIncrementIdChecker,
                     'data' => [
-                        'reserved_order_id' => 1000001
-                    ]
+                        'reserved_order_id' => 1000001,
+                    ],
                 ]
             );
     }
@@ -364,7 +364,7 @@ class QuoteTest extends TestCase
         $this->assertEquals(
             GroupManagement::NOT_LOGGED_IN_ID,
             $this->quote->getCustomerGroupId(),
-            "Customer group ID is invalid"
+            'Customer group ID is invalid'
         );
     }
 
@@ -383,7 +383,7 @@ class QuoteTest extends TestCase
         $this->assertEquals(
             $customerGroupId,
             $this->quote->getCustomerGroupId(),
-            "Customer group ID is invalid"
+            'Customer group ID is invalid'
         );
     }
 
@@ -401,8 +401,8 @@ class QuoteTest extends TestCase
             [
                 [static fn (self $testCase) => $testCase->getAddressMock(Address::TYPE_SHIPPING),
                     static fn (self $testCase) => $testCase->getAddressMock(Address::TYPE_BILLING)],
-                false
-            ]
+                false,
+            ],
         ];
     }
 
@@ -735,7 +735,7 @@ class QuoteTest extends TestCase
     {
         return [
             [1, true],
-            [2, false]
+            [2, false],
         ];
     }
 
@@ -777,7 +777,7 @@ class QuoteTest extends TestCase
     {
         return [
             [false, 1, true],
-            [false, 2, false]
+            [false, 2, false],
         ];
     }
 
@@ -828,7 +828,7 @@ class QuoteTest extends TestCase
     {
         return [
             [false, AbstractAddress::TYPE_SHIPPING, 1, true],
-            [false, AbstractAddress::TYPE_SHIPPING, 2, false]
+            [false, AbstractAddress::TYPE_SHIPPING, 2, false],
         ];
     }
 
@@ -925,7 +925,7 @@ class QuoteTest extends TestCase
         $typeInstanceMock = $this->createPartialMock(
             Simple::class,
             [
-                'prepareForCartAdvanced'
+                'prepareForCartAdvanced',
             ]
         );
         $typeInstanceMock->expects($this->once())
@@ -958,7 +958,7 @@ class QuoteTest extends TestCase
         $typeInstanceMock = $this->createPartialMock(
             Simple::class,
             [
-                'prepareForCartAdvanced'
+                'prepareForCartAdvanced',
             ]
         );
 
@@ -1030,7 +1030,7 @@ class QuoteTest extends TestCase
         $typeInstanceMock = $this->createPartialMock(
             Simple::class,
             [
-                'prepareForCartAdvanced'
+                'prepareForCartAdvanced',
             ]
         );
 
@@ -1093,11 +1093,11 @@ class QuoteTest extends TestCase
                 new DataObject(
                     [
                         'add_to_cart_invalid_product' => true,
-                        'qty' => 1
+                        'qty' => 1,
                     ]
                 ),
-                true
-            ]
+                true,
+            ],
         ];
     }
 
@@ -1114,7 +1114,7 @@ class QuoteTest extends TestCase
             ['sales/minimum_order/multi_address', ScopeInterface::SCOPE_STORE, $storeId, true],
             ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, $storeId, 20],
             ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, $storeId, true],
-            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true]
+            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true],
         ];
         $this->scopeConfig->expects($this->any())
             ->method('isSetFlag')
@@ -1144,7 +1144,7 @@ class QuoteTest extends TestCase
             ['sales/minimum_order/multi_address', ScopeInterface::SCOPE_STORE, $storeId, true],
             ['sales/minimum_order/amount', ScopeInterface::SCOPE_STORE, $storeId, 20],
             ['sales/minimum_order/include_discount_amount', ScopeInterface::SCOPE_STORE, $storeId, true],
-            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true]
+            ['sales/minimum_order/tax_including', ScopeInterface::SCOPE_STORE, $storeId, true],
         ];
         $this->scopeConfig->expects($this->any())
             ->method('isSetFlag')
@@ -1326,7 +1326,7 @@ class QuoteTest extends TestCase
             [[true, true], 1],
             [[false], 0],
             [[true, false], 0],
-            [[false, false], 0]
+            [[false, false], 0],
         ];
     }
 
@@ -1414,7 +1414,7 @@ class QuoteTest extends TestCase
     {
         return [
             'id_already_in_use' => [true, 100002],
-            'id_not_in_use' => [false, 1000001]
+            'id_not_in_use' => [false, 1000001],
         ];
     }
 }

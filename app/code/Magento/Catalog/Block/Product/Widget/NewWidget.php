@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product\Widget;
 
 use Magento\Framework\App\Http\Context as HttpContext;
@@ -144,7 +147,7 @@ class NewWidget extends \Magento\Catalog\Block\Product\NewProduct implements \Ma
                 $this->getProductsPerPage(),
                 (int) $this->getRequest()->getParam($this->getData('page_var_name'), 1),
                 $this->serializer->serialize($this->getRequest()->getParams()),
-                $this->httpContext->getValue(HttpContext::CONTEXT_CURRENCY) ?: $store->getDefaultCurrency()->getCode()
+                $this->httpContext->getValue(HttpContext::CONTEXT_CURRENCY) ?: $store->getDefaultCurrency()->getCode(),
             ]
         );
     }

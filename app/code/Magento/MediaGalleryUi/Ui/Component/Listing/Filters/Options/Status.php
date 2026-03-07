@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class Status implements OptionSourceInterface
     {
         return [
             ['value' => '1', 'label' => __('Enabled')],
-            ['value' => '0', 'label' => __('Disabled')]
+            ['value' => '0', 'label' => __('Disabled')],
         ];
     }
 }

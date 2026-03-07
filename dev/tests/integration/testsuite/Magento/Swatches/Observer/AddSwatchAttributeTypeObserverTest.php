@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\Swatches\Observer;
 
 use Magento\Framework\DataObject;
+use Magento\Framework\Event\ManagerInterface;
 use Magento\Swatches\Model\Swatch;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Event\ManagerInterface;
 
 /**
  * Test checks that swatch types are added to the other attribute types

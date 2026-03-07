@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Translation\App\Config\Type;
 
 use Magento\Framework\App\Config\ConfigSourceInterface;
@@ -14,7 +17,7 @@ use Magento\Framework\DataObject;
  */
 class Translation implements ConfigTypeInterface
 {
-    const CONFIG_TYPE = "i18n";
+    public const CONFIG_TYPE = 'i18n';
 
     /**
      * @var DataObject[]

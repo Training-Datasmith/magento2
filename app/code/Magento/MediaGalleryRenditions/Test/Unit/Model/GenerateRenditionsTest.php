@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -87,10 +88,10 @@ class GenerateRenditionsTest extends TestCase
     public function testGetImageFileNamePattern(): void
     {
         $pattern = $this->model->getImageFileNamePattern();
-        
+
         // Assert the pattern is the expected string
         $this->assertEquals('#\.(jpg|jpeg|gif|png)$# i', $pattern);
-        
+
         // Test that the pattern correctly validates supported file types
         $validExtensions = ['test.jpg', 'test.jpeg', 'test.gif', 'test.png', 'TEST.JPG', 'TEST.PNG'];
         foreach ($validExtensions as $filename) {
@@ -100,7 +101,7 @@ class GenerateRenditionsTest extends TestCase
                 "Pattern should match valid image file: $filename"
             );
         }
-        
+
         // Test that the pattern correctly rejects unsupported file types
         $invalidExtensions = ['test.txt', 'test.pdf', 'test.webp', 'test.bmp', 'test'];
         foreach ($invalidExtensions as $filename) {
@@ -126,9 +127,9 @@ class GenerateRenditionsTest extends TestCase
             'image.GIF',
             'image.Gif',
             'image.PNG',
-            'image.Png'
+            'image.Png',
         ];
-        
+
         foreach ($mixedCaseFiles as $filename) {
             $this->assertEquals(
                 1,

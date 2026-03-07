@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel\Order;
 
 use Magento\Framework\DataObject;
@@ -68,7 +71,8 @@ class Invoice extends SalesResource implements InvoiceResourceInterface
             ['credit_memo' => $this->getTable('sales_creditmemo')],
             ['total' => new \Zend_Db_Expr("SUM(credit_memo.{$filed})")]
         )->where(
-            "credit_memo.invoice_id = ?", $invoiceId
+            'credit_memo.invoice_id = ?',
+            $invoiceId
         );
 
         return (float) $this->getConnection()->fetchOne($select);

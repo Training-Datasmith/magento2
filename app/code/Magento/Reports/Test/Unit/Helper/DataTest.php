@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -125,50 +126,50 @@ class DataTest extends TestCase
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2000-01-15 11:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_DAY,
-                'results' => ['2000-01-15']
+                'results' => ['2000-01-15'],
             ],
             [
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2000-01-17 10:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_MONTH,
-                'results' => ['2000-01']
+                'results' => ['2000-01'],
             ],
             [
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2000-02-15 10:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_YEAR,
-                'results' => ['2000']
+                'results' => ['2000'],
             ],
             [
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2000-01-16 11:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_DAY,
-                'results' => ['2000-01-15', '2000-01-16']
+                'results' => ['2000-01-15', '2000-01-16'],
             ],
             [
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2000-02-17 10:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_MONTH,
-                'results' => ['2000-01', '2000-02']
+                'results' => ['2000-01', '2000-02'],
             ],
             [
                 'from' => '2000-01-15 10:00:00',
                 'to' => '2003-02-15 10:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_YEAR,
-                'results' => ['2000', '2001', '2002', '2003']
+                'results' => ['2000', '2001', '2002', '2003'],
             ],
             [
                 'from' => '2000-12-31 10:00:00',
                 'to' => '2001-01-01 10:00:00',
                 'period' => Data::REPORT_PERIOD_TYPE_YEAR,
-                'results' => ['2000', '2001']
+                'results' => ['2000', '2001'],
             ],
             [
                 'from' => '',
                 'to' => '',
                 'period' => Data::REPORT_PERIOD_TYPE_YEAR,
-                'results' => []
-            ]
+                'results' => [],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class IdentifierForSave implements IdentifierInterface
             $baseUrl,
             $query,
             $this->request->get(\Magento\Framework\App\Response\Http::COOKIE_VARY_STRING)
-                ?: $this->context->getVaryString()
+                ?: $this->context->getVaryString(),
         ];
 
         $data = $this->identifierStoreReader->getPageTagsWithStoreCacheTags($data);

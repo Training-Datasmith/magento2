@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -135,7 +136,7 @@ class Attributes extends Form implements TabInterface
             'price' => Price::class,
             'weight' => Weight::class,
             'image' => Image::class,
-            'boolean' => Boolean::class
+            'boolean' => Boolean::class,
         ];
     }
 
@@ -167,7 +168,7 @@ HTML;
         $html .= /* @noEscape */ $this->secureRenderer->renderEventListenerAsTag(
             'onclick',
             "toogleFieldEditMode(this, '{$elementId}')",
-            "#". $dataCheckboxName
+            '#'. $dataCheckboxName
         );
 
         // @codingStandardsIgnoreEnd

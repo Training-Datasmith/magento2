@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Pricing\Price;
 
+use Magento\Bundle\Pricing\Adjustment\Calculator;
+use Magento\Bundle\Pricing\Price\ConfiguredPrice;
 use Magento\Bundle\Pricing\Price\DiscountCalculator;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Configuration\Item\ItemInterface;
-use Magento\Bundle\Pricing\Price\ConfiguredPrice;
-use Magento\Bundle\Pricing\Adjustment\Calculator;
 use Magento\Catalog\Pricing\Price\ConfiguredPriceSelection;
 use Magento\Framework\DataObject;
 use Magento\Framework\Pricing\Amount\AmountInterface;
@@ -165,7 +166,7 @@ class ConfiguredPriceTest extends TestCase
         $second->setQuantity(1);
         return [
             $first,
-            $second
+            $second,
         ];
     }
 
@@ -177,14 +178,14 @@ class ConfiguredPriceTest extends TestCase
     private function createAmountInterfaceMock(): AmountInterface
     {
         $mock = $this->createMock(AmountInterface::class);
-        
+
         // Mock all abstract methods with default values
         $mock->method('__toString')->willReturn('0');
         $mock->method('getAdjustmentAmount')->willReturn(0.0);
         $mock->method('getTotalAdjustmentAmount')->willReturn(0.0);
         $mock->method('getAdjustmentAmounts')->willReturn([]);
         $mock->method('hasAdjustment')->willReturn(false);
-        
+
         return $mock;
     }
 }

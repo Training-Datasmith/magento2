@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model\Product\Type;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Type;
 use Magento\ConfigurableProduct\Model\Product\Type\Plugin;
 use Magento\Framework\Module\Manager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class PluginTest extends TestCase
@@ -62,7 +63,7 @@ class PluginTest extends TestCase
                     'result' => [
                         'configurable' => true,
                         'not_configurable' => true,
-                    ]
+                    ],
                 ],
             ],
             [
@@ -75,9 +76,9 @@ class PluginTest extends TestCase
                     'result' => [
                         'configurable' => true,
                         'not_configurable' => true,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

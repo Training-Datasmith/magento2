@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\GraphQlCache\Model\Plugin\Query;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Resolver\Value;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\GraphQlCache\Model\CacheableQueryHandler;
 
 /**

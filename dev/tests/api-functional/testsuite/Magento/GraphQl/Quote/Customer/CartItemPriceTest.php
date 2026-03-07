@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class CartItemPriceTest extends GraphQlAbstract
                 'uses_per_customer' => 1,
                 'discount_amount' => 10,
                 'stop_rules_processing' => false,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(
@@ -73,7 +74,7 @@ class CartItemPriceTest extends GraphQlAbstract
                 'uses_per_customer' => 1,
                 'discount_amount' => 0.5,
                 'stop_rules_processing' => false,
-                'conditions' => ['$condition$']
+                'conditions' => ['$condition$'],
             ]
         ),
         DataFixture(ProductFixture::class, as: 'product'),
@@ -100,16 +101,16 @@ class CartItemPriceTest extends GraphQlAbstract
                             'prices' => [
                                 'original_item_price' => [
                                     'value' => 10,
-                                    'currency' => 'USD'
+                                    'currency' => 'USD',
                                 ],
                                 'original_row_total' => [
                                     'value' => 20,
-                                    'currency' => 'USD'
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'currency' => 'USD',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $response
         );

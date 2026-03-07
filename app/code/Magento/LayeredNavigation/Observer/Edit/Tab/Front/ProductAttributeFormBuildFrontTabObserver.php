@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\LayeredNavigation\Observer\Edit\Tab\Front;
 
 use Magento\Config\Model\Config\Source;
-use Magento\Framework\Module\Manager;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Module\Manager;
 
 /**
  * Observer for Product Attribute Form
@@ -56,7 +59,7 @@ class ProductAttributeFormBuildFrontTabObserver implements ObserverInterface
             'select',
             [
                 'name' => 'is_filterable',
-                'label' => __("Use in Layered Navigation"),
+                'label' => __('Use in Layered Navigation'),
                 'title' => __('Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price'),
                 'note' => __(
                     'Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price.
@@ -76,7 +79,7 @@ class ProductAttributeFormBuildFrontTabObserver implements ObserverInterface
             'select',
             [
                 'name' => 'is_filterable_in_search',
-                'label' => __("Use in Search Results Layered Navigation"),
+                'label' => __('Use in Search Results Layered Navigation'),
                 'title' => __('Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price'),
                 'note' => __('Can be used only with catalog input type Yes/No, Dropdown, Multiple Select and Price.'),
                 'values' => $this->optionList->toOptionArray(),
@@ -91,7 +94,7 @@ class ProductAttributeFormBuildFrontTabObserver implements ObserverInterface
                 'label' => __('Position'),
                 'title' => __('Position in Layered Navigation'),
                 'note' => __('Position of attribute in layered navigation block.'),
-                'class' => 'validate-digits'
+                'class' => 'validate-digits',
             ]
         );
     }

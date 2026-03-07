@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -89,7 +90,7 @@ class ErrorTest extends TestCase
             [true, ['has_errors' => 1]],
             [true, ['has_errors' => true]],
             [false, []],
-            [false, ['has_errors' => 0]]
+            [false, ['has_errors' => 0]],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\View\Asset\Minification;
 use Magento\Framework\View\Asset\PreProcessor\Chain;
 use Magento\Framework\View\Asset\PreProcessor\MinificationConfigProvider;
 use Magento\Framework\View\Asset\PreProcessor\Minify;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for Magento\Framework\View\Asset\PreProcessor\Minify
@@ -112,7 +113,7 @@ class MinifyTest extends TestCase
                 [
                     ['test.min.css', true],
                     ['test.jpeg', false],
-                    ['test.css', false]
+                    ['test.css', false],
                 ]
             );
 
@@ -131,7 +132,7 @@ class MinifyTest extends TestCase
             ['test.css', 'test.css', 0, 0, true],
             ['test.jpeg', 'test.jpeg', 0, 0, true],
             ['test.css', 'test.css', 0, 0, true],
-            ['test.css', 'test.css', 0, 0, false]
+            ['test.css', 'test.css', 0, 0, false],
         ];
     }
 }

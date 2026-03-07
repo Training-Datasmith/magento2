@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogUrlRewrite\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Stdlib\ArrayManager;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Ui\Component\Form\Element\Checkbox;
 use Magento\Ui\Component\Form\Element\DataType\Text;
 use Magento\Ui\Component\Form\Field;
-use Magento\Framework\Stdlib\ArrayManager;
 
 /**
  * Class adds a checkbox "url_key_create_redirect" after input "url_key" for product form
  */
 class ProductUrlRewrite extends AbstractModifier
 {
-    const XML_PATH_SEO_SAVE_HISTORY = 'catalog/seo/save_rewrites_history';
+    public const XML_PATH_SEO_SAVE_HISTORY = 'catalog/seo/save_rewrites_history';
 
     /**
      * @var LocatorInterface
@@ -118,7 +121,7 @@ class ProductUrlRewrite extends AbstractModifier
                 'component' => 'Magento_Catalog/js/components/url-key-handle-changes',
                 'valueMap' => [
                     'false' => '',
-                    'true' => $urlKey
+                    'true' => $urlKey,
                 ],
                 'imports' => [
                     'urlKey' => '${ $.provider }:data.product.' . ProductAttributeInterface::CODE_SEO_FIELD_URL_KEY,

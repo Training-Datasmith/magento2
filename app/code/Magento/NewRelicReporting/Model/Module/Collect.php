@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model\Module;
 
 use Magento\Framework\Module\FullModuleList;
@@ -113,7 +116,7 @@ class Collect
         $moduleChanges = [
             'name' => $data['name'],
             'setup_version' => $data['setup_version'],
-            'type' => Config::INSTALLED
+            'type' => Config::INSTALLED,
         ];
 
         return $moduleChanges;
@@ -161,7 +164,7 @@ class Collect
             Config::UNINSTALLED => $uninstalledCount,
             Config::ENABLED => $enabledCount,
             Config::DISABLED => $disabledCount,
-            'changes' => $moduleChanges
+            'changes' => $moduleChanges,
         ];
 
         return $finalObject;
@@ -234,7 +237,7 @@ class Collect
                 $moduleChanges = [
                     'name' => $module->getName(),
                     'setup_version' => $module->getSetupVersion(),
-                    'type' => Config::UNINSTALLED
+                    'type' => Config::UNINSTALLED,
                 ];
                 $module->setData(['entity_id' => $module->getEntityId(), 'state' => Config::UNINSTALLED]);
                 $module->save();
@@ -294,7 +297,7 @@ class Collect
                     $moduleChanges[] = [
                         'name' => $data['name'],
                         'setup_version' => $data['setup_version'],
-                        'type' => $state
+                        'type' => $state,
                     ];
                 }
             }

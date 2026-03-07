@@ -1,19 +1,20 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Newsletter\Observer;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\UrlInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Newsletter\Model\Config;
-use Magento\Framework\App\ObjectManager;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class PredispatchNewsletterObserver
@@ -24,7 +25,7 @@ class PredispatchNewsletterObserver implements ObserverInterface
      * @deprecated
      * @see \Magento\Newsletter\Model\Config::isActive()
      */
-    const XML_PATH_NEWSLETTER_ACTIVE = 'newsletter/general/active';
+    public const XML_PATH_NEWSLETTER_ACTIVE = 'newsletter/general/active';
 
     /**
      * @var Config
@@ -63,7 +64,7 @@ class PredispatchNewsletterObserver implements ObserverInterface
      *
      * @param Observer $observer
      */
-    public function execute(Observer $observer) : void
+    public function execute(Observer $observer): void
     {
         if (!$this->newsletterConfig->isActive(ScopeInterface::SCOPE_STORE)) {
             $defaultNoRouteUrl = $this->scopeConfig->getValue(

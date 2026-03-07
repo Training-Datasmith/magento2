@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class LayoutTest extends TestCase
             Layout::class,
             [
                 'layoutFactory' => $layoutFactory,
-                'generalLayout' => $this->generalLayout
+                'generalLayout' => $this->generalLayout,
             ]
         );
     }

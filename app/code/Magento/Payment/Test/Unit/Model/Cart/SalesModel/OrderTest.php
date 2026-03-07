@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,7 +36,7 @@ class OrderTest extends TestCase
             ['getBaseSubtotal'],
             ['getBaseTaxAmount'],
             ['getBaseShippingAmount'],
-            ['getBaseDiscountAmount']
+            ['getBaseDiscountAmount'],
         ];
     }
 

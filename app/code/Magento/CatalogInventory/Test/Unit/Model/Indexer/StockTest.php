@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Model\Indexer;
 
+use Magento\CatalogInventory\Model\Indexer\Stock;
+use Magento\CatalogInventory\Model\Indexer\Stock\Action\Full;
 use Magento\CatalogInventory\Model\Indexer\Stock\Action\Row;
 use Magento\CatalogInventory\Model\Indexer\Stock\Action\Rows;
-use Magento\CatalogInventory\Model\Indexer\Stock\Action\Full;
-use Magento\CatalogInventory\Model\Indexer\Stock;
 use Magento\Framework\Indexer\CacheContext;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

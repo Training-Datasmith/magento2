@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -6,15 +7,15 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Api\Data\CategoryInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductInterfaceFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\Data\CategoryInterfaceFactory;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type;
 use Magento\Catalog\Model\Product\Visibility;
+use Magento\Eav\Model\Config;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\Config;
 
 $objectManager = Bootstrap::getObjectManager();
 $categoryFactory = $objectManager->get(CategoryInterfaceFactory::class);
@@ -30,7 +31,7 @@ $categoryA = $categoryFactory->create(
             'level' => 2,
             'position' => 1,
             'is_active' => true,
-            'available_sort_by' =>['position', 'name'],
+            'available_sort_by' => ['position', 'name'],
             'default_sort_by' => 'name',
         ],
     ]
@@ -46,7 +47,7 @@ $categoryB = $categoryFactory->create(
             'level' => 2,
             'position' => 1,
             'is_active' => true,
-            'available_sort_by' =>['position', 'name'],
+            'available_sort_by' => ['position', 'name'],
             'default_sort_by' => 'name',
         ],
     ]
@@ -62,7 +63,7 @@ $categoryC = $categoryFactory->create(
             'level' => 2,
             'position' => 1,
             'is_active' => true,
-            'available_sort_by' =>['position', 'name'],
+            'available_sort_by' => ['position', 'name'],
             'default_sort_by' => 'name',
         ],
     ]

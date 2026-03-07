@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Widget;
 
 use Magento\Catalog\Model\FrontendStorageConfigurationInterface;
@@ -14,7 +17,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 class RecentlyComparedStorageConfiguration implements FrontendStorageConfigurationInterface
 {
     /** Recently Viewed lifetime */
-    const XML_LIFETIME_PATH = "catalog/recently_products/recently_compared_lifetime";
+    public const XML_LIFETIME_PATH = 'catalog/recently_products/recently_compared_lifetime';
 
     /**
      * @var ScopeConfigInterface
@@ -38,7 +41,7 @@ class RecentlyComparedStorageConfiguration implements FrontendStorageConfigurati
     public function get()
     {
         return [
-            'lifetime' => $this->scopeConfig->getValue(self::XML_LIFETIME_PATH)
+            'lifetime' => $this->scopeConfig->getValue(self::XML_LIFETIME_PATH),
         ];
     }
 }

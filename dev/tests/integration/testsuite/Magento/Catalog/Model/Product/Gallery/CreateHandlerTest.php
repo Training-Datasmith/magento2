@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -266,7 +267,7 @@ class CreateHandlerTest extends \PHPUnit\Framework\TestCase
             'small_image' => 'no_selection',
             'swatch_image' => 'no_selection',
             'thumbnail' => 'no_selection',
-            'image_attribute' => self::$fileName
+            'image_attribute' => self::$fileName,
         ];
         $product = $this->initProduct($data);
         $this->createHandler->execute($product);

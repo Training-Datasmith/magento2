@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -31,9 +32,9 @@ use Magento\Framework\Message\Error;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Message\Warning;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for \Magento\Customer\Controller\Adminhtml\Index controller
@@ -42,7 +43,6 @@ use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
  */
 class ResetPasswordTest extends TestCase
 {
-
     use MockCreationTrait;
 
     /**
@@ -193,7 +193,7 @@ class ResetPasswordTest extends TestCase
         $addContextArgs = [
             'getTranslator',
             'getFrontController',
-            'getLayoutFactory'
+            'getLayoutFactory',
         ];
 
         $contextArgs = [
@@ -207,7 +207,7 @@ class ResetPasswordTest extends TestCase
             'getRequest',
             'getResponse',
             'getView',
-            'getResultRedirectFactory'
+            'getResultRedirectFactory',
         ];
 
         $allMethods = array_merge($contextArgs, $addContextArgs);

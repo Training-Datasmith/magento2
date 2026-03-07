@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Model\Inventory;
 
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Catalog\Api\Data\ProductInterface as Product;
+use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Observer\ParentItemProcessorInterface;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Framework\App\ObjectManager;
 
 /**

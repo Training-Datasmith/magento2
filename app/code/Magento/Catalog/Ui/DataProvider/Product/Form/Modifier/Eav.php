@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
@@ -15,13 +18,16 @@ use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Catalog\Model\ResourceModel\Eav\AttributeFactory as EavAttributeFactory;
 use Magento\Catalog\Ui\DataProvider\CatalogEavValidationRules;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav\CompositeConfigProcessor;
 use Magento\Eav\Api\Data\AttributeGroupInterface;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\Source\SpecificSourceInterface;
+use Magento\Eav\Model\ResourceModel\Entity\Attribute\CollectionFactory as AttributeCollectionFactory;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute\Group\CollectionFactory as GroupCollectionFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrderBuilder;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\App\RequestInterface;
@@ -34,9 +40,6 @@ use Magento\Ui\Component\Form\Field;
 use Magento\Ui\Component\Form\Fieldset;
 use Magento\Ui\DataProvider\Mapper\FormElement as FormElementMapper;
 use Magento\Ui\DataProvider\Mapper\MetaProperties as MetaPropertiesMapper;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav\CompositeConfigProcessor;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Eav\Model\ResourceModel\Entity\Attribute\CollectionFactory as AttributeCollectionFactory;
 
 /**
  * Class Eav data provider for product editing form
@@ -378,7 +381,7 @@ class Eav extends AbstractModifier
             ltrim(static::META_CONFIG_PATH, ArrayManager::DEFAULT_PATH_DELIMITER),
             $attributeContainer,
             [
-                'sortOrder' => $sortOrder * self::SORT_ORDER_MULTIPLIER
+                'sortOrder' => $sortOrder * self::SORT_ORDER_MULTIPLIER,
             ]
         );
 
@@ -704,7 +707,7 @@ class Eav extends AbstractModifier
                 [
                     'service' => [
                         'template' => 'ui/form/element/helper/service',
-                    ]
+                    ],
                 ]
             );
         }
@@ -792,7 +795,7 @@ class Eav extends AbstractModifier
      * @param array $options
      * @return array
      */
-    private function convertOptionsValueToString(array $options) : array
+    private function convertOptionsValueToString(array $options): array
     {
         array_walk(
             $options,

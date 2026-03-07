@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test theme image model
  */
+
 namespace Magento\Framework\View\Test\Unit\Design\Theme;
 
 use Magento\Framework\App\Area;
@@ -18,6 +20,7 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Image\Factory;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Design\Theme\Image;
 use Magento\Framework\View\Design\Theme\Image\Uploader;
@@ -27,7 +30,6 @@ use Magento\Theme\Model\Theme\Image\Path;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -140,7 +142,7 @@ class ImageTest extends TestCase
                 'uploader' => $this->_uploaderMock,
                 'themeImagePath' => $this->imagePathMock,
                 'logger' => $logger,
-                'theme' => $this->_themeMock
+                'theme' => $this->_themeMock,
             ]
         );
     }
@@ -192,7 +194,7 @@ class ImageTest extends TestCase
             'theme_title' => 'Sample theme',
             'preview_image' => 'images/preview.png',
             'area' => Area::AREA_FRONTEND,
-            'type' => ThemeInterface::TYPE_VIRTUAL
+            'type' => ThemeInterface::TYPE_VIRTUAL,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -17,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 class AuthorizationTest extends TestCase
 {
-
     /**
      * @var ObjectManager
      */

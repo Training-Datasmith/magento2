@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -16,7 +17,7 @@ $objectManager = Bootstrap::getObjectManager();
 /** @var StockFactory $stockFactory */
 $stockFactory = $objectManager->get(StockFactory::class);
 /** @var PriceFactory $priceFactory */
-$priceFactory = $objectManager->get(PriceFactory::Class);
+$priceFactory = $objectManager->get(PriceFactory::class);
 /** @var CustomerRepositoryInterface $customerRepository */
 $customerRepository = $objectManager->get(CustomerRepositoryInterface::class);
 $customer = $customerRepository->get('customer@example.com');

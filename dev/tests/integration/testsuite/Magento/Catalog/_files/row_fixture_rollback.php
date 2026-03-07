@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,7 +11,6 @@ $registry = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->get(\Ma
 
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', true);
-
 
 $productSkuList = ['simple', '12345'];
 foreach ($productSkuList as $sku) {

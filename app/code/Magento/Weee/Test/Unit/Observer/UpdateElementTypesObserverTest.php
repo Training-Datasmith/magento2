@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Weee\Test\Unit\Observer;
 
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Reports\Model\Event;
 use Magento\Weee\Block\Element\Weee\Tax;
 use Magento\Weee\Observer\UpdateElementTypesObserver;

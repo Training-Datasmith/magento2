@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Bulk;
 
 /**
@@ -15,24 +18,24 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const ID = 'operation_key';
-    const BULK_ID = 'bulk_uuid';
-    const TOPIC_NAME = 'topic_name';
-    const SERIALIZED_DATA = 'serialized_data';
-    const RESULT_SERIALIZED_DATA = 'result_serialized_data';
-    const STATUS = 'status';
-    const RESULT_MESSAGE = 'result_message';
-    const ERROR_CODE = 'error_code';
+    public const ID = 'operation_key';
+    public const BULK_ID = 'bulk_uuid';
+    public const TOPIC_NAME = 'topic_name';
+    public const SERIALIZED_DATA = 'serialized_data';
+    public const RESULT_SERIALIZED_DATA = 'result_serialized_data';
+    public const STATUS = 'status';
+    public const RESULT_MESSAGE = 'result_message';
+    public const ERROR_CODE = 'error_code';
     /**#@-*/
 
     /**#@+
      * Status types
      */
-    const STATUS_TYPE_COMPLETE = 1;
-    const STATUS_TYPE_RETRIABLY_FAILED = 2;
-    const STATUS_TYPE_NOT_RETRIABLY_FAILED = 3;
-    const STATUS_TYPE_OPEN = 4;
-    const STATUS_TYPE_REJECTED = 5;
+    public const STATUS_TYPE_COMPLETE = 1;
+    public const STATUS_TYPE_RETRIABLY_FAILED = 2;
+    public const STATUS_TYPE_NOT_RETRIABLY_FAILED = 3;
+    public const STATUS_TYPE_OPEN = 4;
+    public const STATUS_TYPE_REJECTED = 5;
     /**#@-*/
 
     /**

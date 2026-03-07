@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,12 +66,12 @@ class ItemTest extends TestCase
             'setBaseTaxInvoiced', 'setDiscountTaxCompensationInvoiced',
             'setBaseDiscountTaxCompensationInvoiced', 'setDiscountInvoiced',
             'setBaseDiscountInvoiced', 'setRowInvoiced', 'setBaseRowInvoiced', 'getQtyOrdered', 'getRowTotal',
-            'getBaseRowTotal', 'getRowTotalInclTax', 'getBaseRowTotalInclTax'
+            'getBaseRowTotal', 'getRowTotalInclTax', 'getBaseRowTotalInclTax',
         ]);
         $this->item = $this->objectManager->getObject(
             Item::class,
             [
-                'orderItemFactory' => $this->orderItemFactoryMock
+                'orderItemFactory' => $this->orderItemFactoryMock,
             ]
         );
     }
@@ -135,7 +136,7 @@ class ItemTest extends TestCase
                 'discount_amount' => 1,
                 'base_discount_amount' => 1,
                 'row_total' => 1,
-                'base_row_total' => 1
+                'base_row_total' => 1,
             ]
         );
         $this->assertEquals($this->item->register(), $this->item);
@@ -177,7 +178,7 @@ class ItemTest extends TestCase
                 'discount_amount' => 1,
                 'base_discount_amount' => 1,
                 'row_total' => 1,
-                'base_row_total' => 1
+                'base_row_total' => 1,
             ]
         );
         $this->assertEquals($this->item->cancel(), $this->item);

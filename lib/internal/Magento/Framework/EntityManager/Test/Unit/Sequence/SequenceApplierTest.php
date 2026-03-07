@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class SequenceApplierTest extends TestCase
                 'typeResolver' => $this->typeResolverMock,
                 'sequenceManager' => $this->sequenceManagerMock,
                 'sequenceRegistry' => $this->sequenceRegistryMock,
-                'hydratorPool' => $this->hydratorPoolMock
+                'hydratorPool' => $this->hydratorPoolMock,
             ]
         );
     }

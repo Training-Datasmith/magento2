@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\LoginAsCustomer\Model;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
-use Magento\LoginAsCustomerApi\Api\GenerateAuthenticationSecretInterface;
 use Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterface;
+use Magento\LoginAsCustomerApi\Api\GenerateAuthenticationSecretInterface;
 
 /**
  * Generates authentication secret
@@ -68,7 +69,7 @@ class GenerateAuthenticationSecret implements GenerateAuthenticationSecretInterf
             [
                 self::ADMIN_ID => $adminId,
                 self::CUSTOMER_ID => $customerId,
-                self::TIME_STAMP => $currentTimestamp
+                self::TIME_STAMP => $currentTimestamp,
             ]
         ));
     }

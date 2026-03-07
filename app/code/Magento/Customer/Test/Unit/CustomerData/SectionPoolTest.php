@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -56,8 +57,8 @@ class SectionPoolTest extends TestCase
         $allSectionsData = [
             'section1' => [
                 'data1',
-                'data2'
-            ]
+                'data2',
+            ],
         ];
         $identifierResult = [1, 2, 3];
 

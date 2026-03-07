@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Catalog\Test\Mftf\Helper;
 
 use Magento\FunctionalTestingFramework\DataGenerator\Handlers\DataObjectHandler;
 use Magento\FunctionalTestingFramework\DataGenerator\Handlers\PersistedObjectHandler;
-use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\DataGenerator\Objects\EntityDataObject;
+use Magento\FunctionalTestingFramework\DataGenerator\Persist\CurlHandler;
 use Magento\FunctionalTestingFramework\DataGenerator\Persist\DataPersistenceHandler;
 use Magento\FunctionalTestingFramework\Helper\Helper;
 use Magento\FunctionalTestingFramework\ObjectManagerFactory;
@@ -62,7 +63,7 @@ class ProductApiHelper extends Helper
                 $overrideFields = [
                     'sku' => $uniqueSku,
                     'name' => $uniqueName,
-                    'quantity' => $quantity  // Override the default quantity (100) with our value
+                    'quantity' => $quantity,  // Override the default quantity (100) with our value
                 ];
 
                 // Use actual entity object as dependent object!
@@ -92,7 +93,7 @@ class ProductApiHelper extends Helper
                 usleep(100000);
             } catch (\Exception $e) {
                 // Log error and continue with fallback SKU
-                error_log("Product creation failed : " . $e->getMessage());
+                error_log('Product creation failed : ' . $e->getMessage());
             }
         }
         return $createdSkus;
@@ -150,7 +151,7 @@ class ProductApiHelper extends Helper
             'total_failed' => 0,
         ];
 
-        $this->logMessage($enableLog, "Starting product deletion...");
+        $this->logMessage($enableLog, 'Starting product deletion...');
 
         try {
             $allProducts = $this->getAllProducts($pageNum);
@@ -165,7 +166,7 @@ class ProductApiHelper extends Helper
             $this->logMessage($enableLog, $message);
 
         } catch (\Exception $e) {
-            $this->logMessage($enableLog, "ERROR: Product deletion failed: " . $e->getMessage());
+            $this->logMessage($enableLog, 'ERROR: Product deletion failed: ' . $e->getMessage());
         }
     }
 
@@ -180,7 +181,7 @@ class ProductApiHelper extends Helper
     public function deleteBySku(string $sku, array &$stats): void
     {
         if (empty($sku)) {
-            throw new \Exception("SKU cannot be empty");
+            throw new \Exception('SKU cannot be empty');
         }
 
         $encodedSku = urlencode($sku);
@@ -201,7 +202,7 @@ class ProductApiHelper extends Helper
             [
                 'operation' => 'delete',
                 'entityObject' => $productEntity,
-                'storeCode' => null
+                'storeCode' => null,
             ]
         );
         $response = $curlHandler->executeRequest([]);
@@ -238,7 +239,7 @@ class ProductApiHelper extends Helper
     private function handleEmptyProductList(array $allProducts, bool $enableLog): bool
     {
         if (empty($allProducts)) {
-            $this->logMessage($enableLog, "No products found.");
+            $this->logMessage($enableLog, 'No products found.');
             return true;
         }
         return false;
@@ -329,7 +330,7 @@ class ProductApiHelper extends Helper
                 [
                     'pageSize' => $pageSize,
                     'currentPage' => 1,
-                    'fields' => 'items[sku,name,type_id,status]'  // Include type_id to see all types
+                    'fields' => 'items[sku,name,type_id,status]',  // Include type_id to see all types
                 ],
                 [],
                 [],
@@ -345,7 +346,7 @@ class ProductApiHelper extends Helper
                 [
                     'operation' => 'get',
                     'entityObject' => $productListEntity,
-                    'storeCode' => null
+                    'storeCode' => null,
                 ]
             );
 
@@ -362,7 +363,7 @@ class ProductApiHelper extends Helper
             return $responseData['items'] ?? [];
 
         } catch (\Exception $e) {
-            $errorMessage = "Failed to retrieve products: " . $e->getMessage();
+            $errorMessage = 'Failed to retrieve products: ' . $e->getMessage();
             throw new \Exception($errorMessage, 0, $e);
         }
     }

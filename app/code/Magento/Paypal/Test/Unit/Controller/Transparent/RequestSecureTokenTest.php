@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -108,10 +109,10 @@ class RequestSecureTokenTest extends TestCase
         $secureToken = 'token_hash';
         $resultExpectation = [
             'transparent' => [
-                'fields' => ['fields-1', 'fields-2', 'fields-3']
+                'fields' => ['fields-1', 'fields-2', 'fields-3'],
             ],
             'success' => true,
-            'error' => false
+            'error' => false,
         ];
 
         $quoteMock = $this->getMockBuilder(Quote::class)
@@ -149,7 +150,7 @@ class RequestSecureTokenTest extends TestCase
             ->willReturnMap(
                 [
                     ['', null, $tokenFields],
-                    ['securetoken', null, $secureToken]
+                    ['securetoken', null, $secureToken],
                 ]
             );
         $this->resultJsonFactory->expects($this->once())
@@ -170,7 +171,7 @@ class RequestSecureTokenTest extends TestCase
         $resultExpectation = [
             'success' => false,
             'error' => true,
-            'error_messages' => __('Your payment has been declined. Please try again.')
+            'error_messages' => __('Your payment has been declined. Please try again.'),
         ];
 
         $quoteMock = $this->getMockBuilder(Quote::class)
@@ -214,7 +215,7 @@ class RequestSecureTokenTest extends TestCase
         $resultExpectation = [
             'success' => false,
             'error' => true,
-            'error_messages' => __('Your payment has been declined. Please try again.')
+            'error_messages' => __('Your payment has been declined. Please try again.'),
         ];
 
         $quoteMock = null;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -203,7 +204,7 @@ class StockRegistryProviderTest extends TestCase
                 'stockCriteriaFactory' => $this->stockCriteriaFactory,
                 'stockItemCriteriaFactory' => $this->stockItemCriteriaFactory,
                 'stockStatusCriteriaFactory' => $this->stockStatusCriteriaFactory,
-                'stockRegistryStorage' => $this->createMock(StockRegistryStorage::class)
+                'stockRegistryStorage' => $this->createMock(StockRegistryStorage::class),
             ]
         );
     }
@@ -221,7 +222,7 @@ class StockRegistryProviderTest extends TestCase
             Collection::class,
             ['getItems', 'setItems', 'getSize', 'setSize']
         );
-        
+
         // Implement stateful behavior for getItems/setItems
         $items = [];
         $stockCollection->method('setItems')->willReturnCallback(function ($value) use (&$items, $stockCollection) {
@@ -231,7 +232,7 @@ class StockRegistryProviderTest extends TestCase
         $stockCollection->method('getItems')->willReturnCallback(function () use (&$items) {
             return $items;
         });
-        
+
         $stockCollection->setItems([$this->stock]);
         $this->stockRepository->expects($this->once())->method('getList')->willReturn($stockCollection);
         $this->stock->expects($this->once())->method('getStockId')->willReturn(true);
@@ -246,7 +247,7 @@ class StockRegistryProviderTest extends TestCase
             StockItemCollection::class,
             ['addFieldToFilter', 'getFirstItem', 'getItems', 'setItems']
         );
-        
+
         // Implement stateful behavior for getItems/setItems
         $items = [];
         $stockItemCollection->method('setItems')->willReturnCallback(
@@ -258,7 +259,7 @@ class StockRegistryProviderTest extends TestCase
         $stockItemCollection->method('getItems')->willReturnCallback(function () use (&$items) {
             return $items;
         });
-        
+
         $stockItemCollection->setItems([$this->stockItem]);
         $this->stockItemRepository->expects($this->once())->method('getList')->willReturn($stockItemCollection);
         $this->stockItem->expects($this->once())->method('getItemId')->willReturn(true);
@@ -279,7 +280,7 @@ class StockRegistryProviderTest extends TestCase
             StockStatusCollection::class,
             ['addFieldToFilter', 'getFirstItem', 'getItems', 'setItems']
         );
-        
+
         // Implement stateful behavior for getItems/setItems
         $items = [];
         $stockStatusCollection->method('setItems')->willReturnCallback(
@@ -291,7 +292,7 @@ class StockRegistryProviderTest extends TestCase
         $stockStatusCollection->method('getItems')->willReturnCallback(function () use (&$items) {
             return $items;
         });
-        
+
         $stockStatusCollection->setItems([$this->stockStatus]);
         $this->stockStatusRepository->expects($this->once())->method('getList')->willReturn($stockStatusCollection);
         $this->stockStatus->expects($this->once())->method('getProductId')->willReturn($this->productId);

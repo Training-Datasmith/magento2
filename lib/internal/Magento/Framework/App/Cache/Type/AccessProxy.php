@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -10,6 +11,7 @@ declare(strict_types=1);
  * It's typical for "access proxies" to have a decorator-like implementation, the difference is logical -
  * controlling access rather than attaching additional responsibility to a subject.
  */
+
 namespace Magento\Framework\App\Cache\Type;
 
 use Magento\Framework\Cache\CacheConstants;

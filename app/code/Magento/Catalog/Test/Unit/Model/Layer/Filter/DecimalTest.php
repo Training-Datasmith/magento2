@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -32,7 +33,7 @@ class DecimalTest extends TestCase
                 'data' => [
                     'attribute_model' => $attributeModel,
                 ],
-                'dataProviderFactory' => $dataProviderFactory
+                'dataProviderFactory' => $dataProviderFactory,
             ]
         );
         $this->assertSame('price1', $instance->getRequestVar());

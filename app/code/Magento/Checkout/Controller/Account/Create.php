@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\Account;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -66,7 +69,7 @@ class Create extends \Magento\Framework\App\Action\Action
             return $resultJson->setData(
                 [
                     'errors' => true,
-                    'message' => __('Customer is already registered')
+                    'message' => __('Customer is already registered'),
                 ]
             );
         }
@@ -75,7 +78,7 @@ class Create extends \Magento\Framework\App\Action\Action
             return $resultJson->setData(
                 [
                     'errors' => true,
-                    'message' => __('Your session has expired')
+                    'message' => __('Your session has expired'),
                 ]
             );
         }
@@ -84,7 +87,7 @@ class Create extends \Magento\Framework\App\Action\Action
             return $resultJson->setData(
                 [
                     'errors' => false,
-                    'message' => __('A letter with further instructions will be sent to your email.')
+                    'message' => __('A letter with further instructions will be sent to your email.'),
                 ]
             );
         } catch (\Exception $e) {

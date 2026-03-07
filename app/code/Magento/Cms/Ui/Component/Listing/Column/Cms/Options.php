@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Ui\Component\Listing\Column\Cms;
 
 use Magento\Store\Ui\Component\Listing\Column\Store\Options as StoreOptions;
@@ -15,7 +18,7 @@ class Options extends StoreOptions
     /**
      * All Store Views value
      */
-    const ALL_STORE_VIEWS = '0';
+    public const ALL_STORE_VIEWS = '0';
 
     /**
      * Get options

@@ -8,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Block\Adminhtml\Sales\Order\View\Items;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Bundle\Block\Adminhtml\Sales\Order\View\Items\Renderer;
-use Magento\Sales\Model\Order\Item;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Framework\Json\Helper\Data as JsonHelper;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order\Item;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -42,12 +42,12 @@ class RendererTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->model = $objectManager->getObject(
@@ -73,7 +73,7 @@ class RendererTest extends TestCase
         return [
             [['shipment_type' => 1], true],
             [['shipment_type' => 0], false],
-            [[], false]
+            [[], false],
         ];
     }
 
@@ -232,7 +232,7 @@ class RendererTest extends TestCase
             'escapeHtml',
             'isShipmentSeparately',
             'getSelectionAttributes',
-            'isChildCalculated'
+            'isChildCalculated',
         ]);
         $model->method('escapeHtml')->willReturn('Test');
         $model->method('isShipmentSeparately')->willReturn(false);

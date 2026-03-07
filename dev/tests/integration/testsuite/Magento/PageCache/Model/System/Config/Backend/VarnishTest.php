@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Model\System\Config\Backend;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -68,7 +71,7 @@ class VarnishTest extends \PHPUnit\Framework\TestCase
             ['localhost', 'access_list', 'localhost', true],
             ['', 'backend_host', 'localhost', true],
             [0, 'backend_port', 8080, true],
-            [0, 'ttl', 120, true]
+            [0, 'ttl', 120, true],
         ];
     }
 
@@ -98,7 +101,7 @@ class VarnishTest extends \PHPUnit\Framework\TestCase
             ['access_list', 'localhost', true],
             ['backend_host', 'localhost', true],
             ['backend_port', 8080, true],
-            ['ttl', 120, true]
+            ['ttl', 120, true],
         ];
     }
 }

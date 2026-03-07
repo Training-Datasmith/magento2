@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 class AvailableStoresTest extends GraphQlAbstract
 {
-
     /**
      * @var ObjectManagerInterface
      */
@@ -114,7 +114,7 @@ QUERY;
         $expectedAvailableStores = [];
         $expectedAvailableStoreCodes = [
             'default',
-            'test'
+            'test',
         ];
 
         foreach ($storeConfigs as $storeConfig) {
@@ -226,7 +226,7 @@ QUERY;
                 'fixture_second_store',
                 'fixture_third_store',
                 'fixture_fourth_store',
-                'fixture_fifth_store'
+                'fixture_fifth_store',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
+use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Store\Model\Store;
-use Magento\Catalog\Model\ResourceModel\Product as ProductResource;
 use Magento\Framework\Message\MessageInterface;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Store\Model\Store;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 
 /**
  * Test for mass product deleting.

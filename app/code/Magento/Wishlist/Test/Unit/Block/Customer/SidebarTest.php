@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class SidebarTest extends TestCase
             Sidebar::class,
             [
                 'context' => $this->productContext,
-                'httpContext' => $this->httpContext
+                'httpContext' => $this->httpContext,
             ]
         );
     }

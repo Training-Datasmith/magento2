@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,21 +18,21 @@ interface CartItemInterface extends \Magento\Framework\Api\ExtensibleDataInterfa
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_ITEM_ID = 'item_id';
+    public const KEY_ITEM_ID = 'item_id';
 
-    const KEY_SKU = 'sku';
+    public const KEY_SKU = 'sku';
 
-    const KEY_QTY = 'qty';
+    public const KEY_QTY = 'qty';
 
-    const KEY_NAME = 'name';
+    public const KEY_NAME = 'name';
 
-    const KEY_PRICE = 'price';
+    public const KEY_PRICE = 'price';
 
-    const KEY_PRODUCT_TYPE = 'product_type';
+    public const KEY_PRODUCT_TYPE = 'product_type';
 
-    const KEY_QUOTE_ID = 'quote_id';
+    public const KEY_QUOTE_ID = 'quote_id';
 
-    const KEY_PRODUCT_OPTION = 'product_option';
+    public const KEY_PRODUCT_OPTION = 'product_option';
 
     /**#@-*/
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -26,9 +27,9 @@ use Magento\Framework\View\Asset\Source;
 use Magento\Framework\View\Design\FileResolution\Fallback\StaticFile;
 use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 use Magento\Framework\View\Design\ThemeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -127,7 +128,7 @@ class SourceTest extends TestCase
             'preProcessorPool' => $this->preProcessorPool,
             'fallback' => $this->viewFileResolution,
             'themeProvider' => $themeProvider,
-            'chainFactory' => $this->chainFactory
+            'chainFactory' => $this->chainFactory,
         ]);
     }
 
@@ -211,7 +212,7 @@ class SourceTest extends TestCase
         return [
             ['', ''],
             ['path/file', ''],
-            ['path/file.ext', 'ext']
+            ['path/file.ext', 'ext'],
         ];
     }
 
@@ -237,7 +238,7 @@ class SourceTest extends TestCase
             ['/root/some/file.ext', 'file.ext', 'processed', false, true],
             ['/root/some/file.ext', 'file.ext', 'not_processed', true, false],
             ['/root/some/file.ext2', 'file.ext2', 'processed', true, true],
-            ['/root/some/file.ext2', 'file.ext2', 'not_processed', true, false]
+            ['/root/some/file.ext2', 'file.ext2', 'not_processed', true, false],
         ];
     }
 
@@ -258,7 +259,7 @@ class SourceTest extends TestCase
         $readDirMap = [
             [DirectoryList::ROOT, DriverPool::FILE, $this->rootDirRead],
             [DirectoryList::STATIC_VIEW, DriverPool::FILE, $this->staticDirRead],
-            [DirectoryList::TMP_MATERIALIZATION_DIR, DriverPool::FILE, $this->tmpDir]
+            [DirectoryList::TMP_MATERIALIZATION_DIR, DriverPool::FILE, $this->tmpDir],
         ];
 
         $this->filesystem->expects($this->any())

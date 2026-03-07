@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -22,19 +23,19 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
  */
 #[
     DataFixture(ProductFixture::class, [
-        'sku' => 'aaaaaa'
+        'sku' => 'aaaaaa',
     ], as: 'p1'),
     DataFixture(ProductFixture::class, [
-        'sku' => 'hhhhhh'
+        'sku' => 'hhhhhh',
     ], as: 'p2'),
     DataFixture(ProductFixture::class, [
-        'sku' => 'ddddddd'
+        'sku' => 'ddddddd',
     ], as: 'p3'),
     DataFixture(ProductFixture::class, [
-        'sku' => 'wwwwww'
+        'sku' => 'wwwwww',
     ], as: 'p4'),
     DataFixture(ProductFixture::class, [
-        'sku' => 'rrrrrr'
+        'sku' => 'rrrrrr',
     ], as: 'p5'),
     DataFixture(GuestCartFixture::class, as: 'cart'),
     DataFixture(Indexer::class, as: 'indexer'),
@@ -43,7 +44,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'cart_id' => '$cart.id$',
             'product_id' => '$p1.id$',
-            'qty' => 1
+            'qty' => 1,
         ],
         as: 'cart_item1'
     ),
@@ -52,7 +53,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'cart_id' => '$cart.id$',
             'product_id' => '$p2.id$',
-            'qty' => 5
+            'qty' => 5,
         ],
         as: 'cart_item2'
     ),
@@ -61,7 +62,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'cart_id' => '$cart.id$',
             'product_id' => '$p3.id$',
-            'qty' => 2
+            'qty' => 2,
         ],
         as: 'cart_item3'
     ),
@@ -70,7 +71,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'cart_id' => '$cart.id$',
             'product_id' => '$p4.id$',
-            'qty' => 8
+            'qty' => 8,
         ],
         as: 'cart_item4'
     ),
@@ -79,7 +80,7 @@ use Magento\TestFramework\TestCase\GraphQlAbstract;
         [
             'cart_id' => '$cart.id$',
             'product_id' => '$p5.id$',
-            'qty' => 3
+            'qty' => 3,
         ],
         as: 'cart_item5'
     )
@@ -108,7 +109,7 @@ class GetCartSortedItemsTest extends GraphQlAbstract
         $cart = $this->fixtures->get('cart');
         $maskedQuoteId = $this->quoteIdToMaskedQuoteIdInterface->execute((int) $cart->getId());
 
-        $query = $this->getQuery($maskedQuoteId, "QTY", "ASC");
+        $query = $this->getQuery($maskedQuoteId, 'QTY', 'ASC');
         $response = $this->graphQlQuery($query);
         $expected = [
             'cart' => [
@@ -119,36 +120,36 @@ class GetCartSortedItemsTest extends GraphQlAbstract
                         [
                             'quantity' => 1,
                             'product' => [
-                                'sku' => 'aaaaaa'
-                            ]
+                                'sku' => 'aaaaaa',
+                            ],
                         ],
                         [
                             'quantity' => 2,
                             'product' => [
-                                'sku' => 'ddddddd'
-                            ]
+                                'sku' => 'ddddddd',
+                            ],
                         ],
                         [
                             'quantity' => 3,
                             'product' => [
-                                'sku' => 'rrrrrr'
-                            ]
+                                'sku' => 'rrrrrr',
+                            ],
                         ],
                         [
                             'quantity' => 5,
                             'product' => [
-                                'sku' => 'hhhhhh'
-                            ]
+                                'sku' => 'hhhhhh',
+                            ],
                         ],
                         [
                             'quantity' => 8,
                             'product' => [
-                                'sku' => 'wwwwww'
-                            ]
-                        ]
-                    ]
+                                'sku' => 'wwwwww',
+                            ],
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
         $this->assertEquals(
             $expected,
@@ -162,7 +163,7 @@ class GetCartSortedItemsTest extends GraphQlAbstract
         $cart = $this->fixtures->get('cart');
         $maskedQuoteId = $this->quoteIdToMaskedQuoteIdInterface->execute((int) $cart->getId());
 
-        $query = $this->getQuery($maskedQuoteId, "SKU", "DESC");
+        $query = $this->getQuery($maskedQuoteId, 'SKU', 'DESC');
         $response = $this->graphQlQuery($query);
         $expected = [
             'cart' => [
@@ -173,36 +174,36 @@ class GetCartSortedItemsTest extends GraphQlAbstract
                         [
                             'quantity' => 8,
                             'product' => [
-                                'sku' => 'wwwwww'
-                            ]
+                                'sku' => 'wwwwww',
+                            ],
                         ],
                         [
                             'quantity' => 3,
                             'product' => [
-                                'sku' => 'rrrrrr'
-                            ]
+                                'sku' => 'rrrrrr',
+                            ],
                         ],
                         [
                             'quantity' => 5,
                             'product' => [
-                                'sku' => 'hhhhhh'
-                            ]
+                                'sku' => 'hhhhhh',
+                            ],
                         ],
                         [
                             'quantity' => 2,
                             'product' => [
-                                'sku' => 'ddddddd'
-                            ]
+                                'sku' => 'ddddddd',
+                            ],
                         ],
                         [
                             'quantity' => 1,
                             'product' => [
-                                'sku' => 'aaaaaa'
-                            ]
-                        ]
-                    ]
+                                'sku' => 'aaaaaa',
+                            ],
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ];
         $this->assertEquals(
             $expected,

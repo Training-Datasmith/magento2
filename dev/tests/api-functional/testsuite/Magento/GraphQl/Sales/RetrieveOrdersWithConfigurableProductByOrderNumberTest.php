@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe.
  * All Rights Reserved.
@@ -8,19 +9,19 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Sales;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
-use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart as AddConfigurableProductToCartFixture;
-use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
 use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
 use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
+use Magento\ConfigurableProduct\Test\Fixture\AddProductToCart as AddConfigurableProductToCartFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Customer\Test\Fixture\Customer;
 use Magento\Framework\Exception\AuthenticationException;
 use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Helper\Bootstrap;
@@ -55,7 +56,7 @@ class RetrieveOrdersWithConfigurableProductByOrderNumberTest extends GraphQlAbst
         DataFixture(
             CustomerCart::class,
             [
-                'customer_id' => '$customer.id$'
+                'customer_id' => '$customer.id$',
             ],
             'quote'
         ),
@@ -66,7 +67,7 @@ class RetrieveOrdersWithConfigurableProductByOrderNumberTest extends GraphQlAbst
                 'cart_id' => '$quote.id$',
                 'product_id' => '$configurable_product.id$',
                 'child_product_id' => '$product.id$',
-                'qty' => 1
+                'qty' => 1,
             ],
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$quote.id$']),
@@ -95,7 +96,7 @@ class RetrieveOrdersWithConfigurableProductByOrderNumberTest extends GraphQlAbst
             'product_name' => $configurableProduct->getName(),
             'parent_sku' => $configurableProduct->getSku(),
             'product_url_key' => $configurableProduct->getUrlKey(),
-            'quantity_ordered' => 1
+            'quantity_ordered' => 1,
         ];
         $this->assertEquals($expectedConfigurableOptions, $configurableItemInTheOrder);
     }

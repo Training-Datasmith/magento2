@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace Magento\WishlistGraphQl\Model\Resolver\Wishlist;
 
@@ -14,18 +15,18 @@ use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
-use Magento\QuoteGraphQl\Model\Cart\CreateEmptyCartForCustomer;
 use Magento\Quote\Model\Cart\AddProductsToCart as AddProductsToCartService;
 use Magento\Quote\Model\Cart\Data\CartItemFactory;
 use Magento\Quote\Model\Cart\Data\Error;
-use Magento\WishlistGraphQl\Mapper\WishlistDataMapper;
-use Magento\WishlistGraphQl\Model\CartItems\CartItemsRequestBuilder;
+use Magento\Quote\Model\MaskedQuoteIdToQuoteIdInterface;
+use Magento\QuoteGraphQl\Model\Cart\CreateEmptyCartForCustomer;
 use Magento\Wishlist\Model\ResourceModel\Item\Collection as WishlistItemsCollection;
 use Magento\Wishlist\Model\ResourceModel\Wishlist as WishlistResourceModel;
 use Magento\Wishlist\Model\Wishlist;
-use Magento\Wishlist\Model\WishlistFactory;
 use Magento\Wishlist\Model\Wishlist\Config as WishlistConfig;
+use Magento\Wishlist\Model\WishlistFactory;
+use Magento\WishlistGraphQl\Mapper\WishlistDataMapper;
+use Magento\WishlistGraphQl\Model\CartItems\CartItemsRequestBuilder;
 
 /**
  * Adding products to wishlist resolver

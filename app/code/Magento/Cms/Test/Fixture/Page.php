@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class Page implements RevertibleDataFixtureInterface
         PageInterface::CONTENT => 'PageContent%uniqid%',
         PageInterface::CREATION_TIME => null,
         PageInterface::UPDATE_TIME => null,
-        'active' => true
+        'active' => true,
     ];
 
     /**

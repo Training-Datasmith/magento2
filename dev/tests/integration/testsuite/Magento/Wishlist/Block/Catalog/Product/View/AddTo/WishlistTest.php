@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -26,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 class WishlistTest extends TestCase
 {
     private const ADD_TO_WISHLIST_XPATH = "//a[@data-action='add-to-wishlist']"
-    . "/span[contains(text(), 'Add to Wish List')]";
+        . "/span[contains(text(), 'Add to Wish List')]";
 
     /** @var ObjectManagerInterface */
     private $objectManager;

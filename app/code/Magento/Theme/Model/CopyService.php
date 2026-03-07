@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Service of copying customizations from one theme to another
  */
+
 namespace Magento\Theme\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;

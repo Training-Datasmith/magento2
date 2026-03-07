@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Search\Controller\Adminhtml\Synonyms;
 
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Search\Model\ResourceModel\SynonymGroup\Collection;
 use Magento\Search\Model\SynonymGroup;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractBackendController;
-use Magento\Search\Model\ResourceModel\SynonymGroup\Collection;
 
 /**
  * Test for class \Magento\Search\Controller\Adminhtml\Synonyms\Delete
@@ -20,7 +21,6 @@ use Magento\Search\Model\ResourceModel\SynonymGroup\Collection;
  */
 class DeleteTest extends AbstractBackendController
 {
-
     /** Test Delete Synonyms
      * @magentoAppIsolation enabled
      * @magentoDbIsolation enabled
@@ -29,7 +29,7 @@ class DeleteTest extends AbstractBackendController
      */
     public function testExecute(): void
     {
-        $synonymGroupModel=$this->getTestFixture();
+        $synonymGroupModel = $this->getTestFixture();
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
         $this->getRequest()->setPostValue(['group_id' => $synonymGroupModel->getGroupId()]);
         $this->dispatch('backend/search/synonyms/delete');

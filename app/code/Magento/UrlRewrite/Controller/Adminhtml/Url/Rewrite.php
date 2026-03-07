@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Controller\Adminhtml\Url;
 
 use Magento\Backend\App\Action;
@@ -19,15 +22,15 @@ abstract class Rewrite extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_UrlRewrite::urlrewrite';
+    public const ADMIN_RESOURCE = 'Magento_UrlRewrite::urlrewrite';
 
     /**#@+
      * Entity types
      */
-    const ENTITY_TYPE_CUSTOM = 'custom';
-    const ENTITY_TYPE_PRODUCT = 'product';
-    const ENTITY_TYPE_CATEGORY = 'category';
-    const ENTITY_TYPE_CMS_PAGE = 'cms-page';
+    public const ENTITY_TYPE_CUSTOM = 'custom';
+    public const ENTITY_TYPE_PRODUCT = 'product';
+    public const ENTITY_TYPE_CATEGORY = 'category';
+    public const ENTITY_TYPE_CMS_PAGE = 'cms-page';
     /**#@-*/
 
     /**#@-*/

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -70,8 +71,8 @@ abstract class AbstractDataProviderTestCase extends TestCase
         $objects = [
             [
                 PoolInterface::class,
-                $this->createMock(PoolInterface::class)
-            ]
+                $this->createMock(PoolInterface::class),
+            ],
         ];
         $helper->prepareObjectManager($objects);
         $this->objectManager = new ObjectManager($this);

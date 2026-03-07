@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Model\Cache;
 
-use Magento\Framework\UrlInterface;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Config\ConfigOptionsListConstants;
-use Magento\Framework\App\RequestInterface;
 use Laminas\Uri\Uri;
 use Laminas\Uri\UriFactory;
+use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Config\ConfigOptionsListConstants;
+use Magento\Framework\UrlInterface;
 
 /**
  * Cache server model.
@@ -32,7 +35,7 @@ class Server
      */
     private $request;
 
-    const DEFAULT_PORT = 80;
+    public const DEFAULT_PORT = 80;
 
     /**
      * Constructor

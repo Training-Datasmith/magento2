@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * SID resolver interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session;
 
 /**
@@ -17,7 +20,7 @@ interface SidResolverInterface
     /**
      * Session ID in query param
      */
-    const SESSION_ID_QUERY_PARAM = 'SID';
+    public const SESSION_ID_QUERY_PARAM = 'SID';
 
     /**
      * Get SID

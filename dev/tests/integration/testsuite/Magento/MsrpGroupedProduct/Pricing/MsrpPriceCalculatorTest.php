@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\MsrpGroupedProduct\Pricing;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test group product minimum advertised price model
@@ -92,18 +93,18 @@ class MsrpPriceCalculatorTest extends TestCase
             [
                 12.0,
                 8.0,
-                8.0
+                8.0,
             ],
             [
                 12.0,
                 null,
-                12.0
+                12.0,
             ],
             [
                 null,
                 null,
-                0.0
-            ]
+                0.0,
+            ],
         ];
     }
 }

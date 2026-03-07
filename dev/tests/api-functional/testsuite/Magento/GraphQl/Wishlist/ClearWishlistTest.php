@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class ClearWishlistTest extends GraphQlAbstract
                 '$product1.id$',
                 '$product2.id$',
                 '$product3.id$',
-                '$product4.id$'
+                '$product4.id$',
             ],
             'name' => 'Test Wish List',
         ], as: 'wishlist')
@@ -70,9 +71,9 @@ class ClearWishlistTest extends GraphQlAbstract
                     'user_errors' => [],
                     'wishlist' => [
                         'id' => $wishlistId,
-                        'items_count' => 0
-                    ]
-                ]
+                        'items_count' => 0,
+                    ],
+                ],
             ],
             $this->graphQlMutation(
                 $this->getClearWishlistMutation($wishlistId),
@@ -96,7 +97,7 @@ class ClearWishlistTest extends GraphQlAbstract
                 '$product1.id$',
                 '$product2.id$',
                 '$product3.id$',
-                '$product4.id$'
+                '$product4.id$',
             ],
             'name' => 'Test Wish List',
         ], as: 'wishlist')
@@ -127,7 +128,7 @@ class ClearWishlistTest extends GraphQlAbstract
                 '$product1.id$',
                 '$product2.id$',
                 '$product3.id$',
-                '$product4.id$'
+                '$product4.id$',
             ],
             'name' => 'Test Wish List',
         ], as: 'wishlist')
@@ -153,7 +154,7 @@ class ClearWishlistTest extends GraphQlAbstract
                 '$product1.id$',
                 '$product2.id$',
                 '$product3.id$',
-                '$product4.id$'
+                '$product4.id$',
             ],
             'name' => 'Test Wish List',
         ], as: 'wishlist')

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ namespace Magento\Framework\ObjectManager\Test\Unit\Factory\Fixture;
  */
 class SemiVariadic
 {
-    const DEFAULT_FOO_VALUE = 'bar';
+    public const DEFAULT_FOO_VALUE = 'bar';
 
     /**
      * @var OneScalar[]

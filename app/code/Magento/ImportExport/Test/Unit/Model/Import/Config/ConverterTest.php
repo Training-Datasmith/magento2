@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ConverterTest extends TestCase
         $this->model = $objectManagerHelper->getObject(
             Converter::class,
             [
-                'moduleManager' => $this->moduleManager
+                'moduleManager' => $this->moduleManager,
             ]
         );
     }

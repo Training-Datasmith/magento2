@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class UnlockButtonTest extends TestCase
                 'context' => $this->contextMock,
                 'customerRegistry' => $this->customerRegistryMock,
                 'urlBuilder' => $this->urlBuilderMock,
-                'registry' => $this->registryMock
+                'registry' => $this->registryMock,
             ]
         );
     }
@@ -104,9 +105,9 @@ class UnlockButtonTest extends TestCase
                     'on_click' => "location.href = 'http://website.com/';",
                     'sort_order' => 50,
                 ],
-                'expectedValue' => 'true'
+                'expectedValue' => 'true',
             ],
-            ['result' => [], 'expectedValue' => false]
+            ['result' => [], 'expectedValue' => false],
         ];
     }
 }

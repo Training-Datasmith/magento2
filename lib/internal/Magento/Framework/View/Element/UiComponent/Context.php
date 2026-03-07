@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent;
 
 use Magento\Framework\App\ObjectManager;
@@ -254,7 +257,7 @@ class Context implements ContextInterface
         $config = $this->sanitizer->sanitize(array_merge($dataSource, $dataProviderConfig));
 
         $params = [
-            'namespace' => $this->getNamespace()
+            'namespace' => $this->getNamespace(),
         ];
 
         $providerRequestFieldName = $this->getDataProvider()->getRequestFieldName();
@@ -272,8 +275,8 @@ class Context implements ContextInterface
                     [
                         'params' => $params,
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 

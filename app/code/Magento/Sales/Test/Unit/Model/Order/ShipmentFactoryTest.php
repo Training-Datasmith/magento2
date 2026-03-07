@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,16 +11,16 @@ namespace Magento\Sales\Test\Unit\Model\Order;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Convert\Order;
 use Magento\Sales\Model\Convert\OrderFactory;
+use Magento\Sales\Model\Order as SalesOrder;
 use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\Order\Shipment\Item as ShipmentItem;
 use Magento\Sales\Model\Order\Shipment\Track;
 use Magento\Sales\Model\Order\Shipment\TrackFactory;
 use Magento\Sales\Model\Order\ShipmentFactory;
-use Magento\Sales\Model\Order as SalesOrder;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for shipment factory class.

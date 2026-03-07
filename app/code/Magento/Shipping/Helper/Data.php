@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Shipping data helper
  */
+
 namespace Magento\Shipping\Helper;
 
 use Magento\Framework\App\ObjectManager;
@@ -79,7 +82,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             '_scope' => $model->getStoreId(),
             '_nosid' => true,
             '_direct' => 'shipping/tracking/popup',
-            '_query' => ['hash' => $this->urlEncoder->encode($urlPart)]
+            '_query' => ['hash' => $this->urlEncoder->encode($urlPart)],
         ];
 
         return $this->url->getUrl('', $params);

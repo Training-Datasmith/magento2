@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -95,7 +96,7 @@ class BuiltinPluginTest extends TestCase
             ->willReturnMap(
                 [
                     ['X-Magento-Tags', $this->httpHeaderMock],
-                    ['Cache-Control', $this->httpHeaderMock]
+                    ['Cache-Control', $this->httpHeaderMock],
                 ]
             );
         $this->configMock->expects(static::any())
@@ -112,7 +113,7 @@ class BuiltinPluginTest extends TestCase
                 'registry' => $this->registryMock,
                 'config' => $this->configMock,
                 'kernel' => $this->kernelMock,
-                'state' => $this->stateMock
+                'state' => $this->stateMock,
             ]
         );
     }

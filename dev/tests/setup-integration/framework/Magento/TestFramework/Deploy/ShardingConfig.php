@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Deploy;
 
 use Magento\Framework\App\DeploymentConfig\Reader as ConfigReader;
@@ -51,10 +54,10 @@ class ShardingConfig
                     'dbname' => $dbData['dbname'],
                     'model' => 'mysql4',
                     'engine' => 'innodb',
-                    'active' => '1'
+                    'active' => '1',
                 ];
                 $config['resource'][$connectionName] = [
-                    'connection' => $connectionName
+                    'connection' => $connectionName,
                 ];
                 $this->configWriter->saveConfig([ConfigFilePool::APP_ENV => $config], true);
             }

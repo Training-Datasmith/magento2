@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -124,7 +125,7 @@ class CopyServiceTest extends TestCase
                 'file_path' => 'fixture_file_path_one',
                 'file_type' => 'fixture_file_type_one',
                 'content' => 'fixture_content_one',
-                'sort_order' => 10
+                'sort_order' => 10,
             ]
         );
         $sourceFileTwo = $this->createPartialMock(File::class, ['__wakeup', 'delete']);
@@ -133,7 +134,7 @@ class CopyServiceTest extends TestCase
                 'file_path' => 'fixture_file_path_two',
                 'file_type' => 'fixture_file_type_two',
                 'content' => 'fixture_content_two',
-                'sort_order' => 20
+                'sort_order' => 20,
             ]
         );
         $this->sourceFiles = [$sourceFileOne, $sourceFileTwo];
@@ -144,7 +145,7 @@ class CopyServiceTest extends TestCase
 
         $this->targetFiles = [
             $this->createPartialMock(File::class, ['__wakeup', 'delete']),
-            $this->createPartialMock(File::class, ['__wakeup', 'delete'])
+            $this->createPartialMock(File::class, ['__wakeup', 'delete']),
         ];
         $this->targetTheme = $this->createPartialMock(
             Theme::class,
@@ -332,7 +333,7 @@ class CopyServiceTest extends TestCase
             $this->updateFactoryReturn,
             [
                 $targetUpdateOne,
-                $targetUpdateTwo
+                $targetUpdateTwo,
             ]
         );
         $this->object->copy($this->sourceTheme, $this->targetTheme);
@@ -412,7 +413,7 @@ class CopyServiceTest extends TestCase
                     'file_path' => 'fixture_file_path_one',
                     'file_type' => 'fixture_file_type_one',
                     'content' => 'fixture_content_one',
-                    'sort_order' => 10
+                    'sort_order' => 10,
                 ]
             );
         $newFileOne->method('save');
@@ -425,7 +426,7 @@ class CopyServiceTest extends TestCase
                     'file_path' => 'fixture_file_path_two',
                     'file_type' => 'fixture_file_type_two',
                     'content' => 'fixture_content_two',
-                    'sort_order' => 20
+                    'sort_order' => 20,
                 ]
             );
         $newFileTwo->method('save');
@@ -505,7 +506,7 @@ class CopyServiceTest extends TestCase
             'isExist'
         )->willReturnMap(
             [
-                ['target/path', true]
+                ['target/path', true],
             ]
         );
 
@@ -517,7 +518,7 @@ class CopyServiceTest extends TestCase
             [
                 ['target/path', ['target/path/subdir']],
                 ['source/path', ['source/path/subdir']],
-                ['source/path/subdir', ['source/path/subdir/file_one.jpg', 'source/path/subdir/file_two.png']]
+                ['source/path/subdir', ['source/path/subdir/file_one.jpg', 'source/path/subdir/file_two.png']],
             ]
         );
 

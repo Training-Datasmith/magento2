@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Amqp\Topology\BindingInstallerType;
 
-use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
-use Magento\Framework\Amqp\Topology\BindingInstallerInterface;
-use PhpAmqpLib\Channel\AMQPChannel;
 use Magento\Framework\Amqp\Topology\ArgumentProcessor;
+use Magento\Framework\Amqp\Topology\BindingInstallerInterface;
+use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
+use PhpAmqpLib\Channel\AMQPChannel;
 
 /**
  * {@inheritdoc}

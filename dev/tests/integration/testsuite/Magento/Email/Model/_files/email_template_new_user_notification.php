@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +17,7 @@ $template->setData(
         'template_text' => $templateText,
         'template_code' => 'New User Notification Custom Code',
         'template_type' => \Magento\Email\Model\Template::TYPE_TEXT,
-        'orig_template_code' => 'admin_emails_new_user_notification_template'
+        'orig_template_code' => 'admin_emails_new_user_notification_template',
     ]
 );
 $template->save();

@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Wishlist\Test\Unit\Model\Rss;
 
@@ -18,6 +18,7 @@ use Magento\Directory\Helper\Data;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Pricing\Render;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\LayoutInterface;
@@ -26,9 +27,8 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Wishlist\Block\Customer\Wishlist;
 use Magento\Wishlist\Helper\Rss;
 use Magento\Wishlist\Model\Item;
-use Magento\Wishlist\Model\Wishlist as WishlistModel;
 use Magento\Wishlist\Model\Rss\Wishlist as RssWishlistModel;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Wishlist\Model\Wishlist as WishlistModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -129,7 +129,7 @@ class WishlistTest extends TestCase
                 'rssFactory' => $this->rssFactoryMock,
                 'layout' => $this->layoutMock,
                 'request' => $requestMock,
-                'customerFactory' => $this->customerFactory
+                'customerFactory' => $this->customerFactory,
             ]
         );
     }
@@ -180,7 +180,7 @@ class WishlistTest extends TestCase
                     Data::XML_PATH_DEFAULT_LOCALE,
                     ScopeInterface::SCOPE_STORE,
                     null,
-                    $locale
+                    $locale,
                 ],
             ]);
 

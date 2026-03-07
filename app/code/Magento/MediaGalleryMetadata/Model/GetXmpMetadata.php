@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class GetXmpMetadata
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => $keywords
+            'keywords' => $keywords,
         ]);
     }
 }

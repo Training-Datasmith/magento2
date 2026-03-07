@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Backend\Block\Widget\Grid\Column\Filter\Store;
 use Magento\Framework\DB\Helper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\System\Store as SystemStore;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class StoreTest extends TestCase
@@ -45,7 +46,7 @@ class StoreTest extends TestCase
             [
                 'context' => $this->context,
                 'resourceHelper' => $this->helper,
-                'systemStore' => $this->store
+                'systemStore' => $this->store,
             ]
         );
     }

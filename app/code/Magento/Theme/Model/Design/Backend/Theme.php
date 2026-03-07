@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Backend;
 
 use Magento\Framework\App\Config\Value;
@@ -21,7 +24,7 @@ class Theme extends Value
      *
      * @var string
      */
-    const XML_PATH_INVALID_CACHES = 'design/invalid_caches';
+    public const XML_PATH_INVALID_CACHES = 'design/invalid_caches';
 
     /**
      * Initialize dependencies

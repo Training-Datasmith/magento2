@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Rss\Product;
 
 /**
@@ -65,7 +68,7 @@ class NewProducts
                 'or' => [
                     0 => ['date' => true, 'to' => $todayEndOfDayDate],
                     1 => ['is' => new \Zend_Db_Expr('null')],
-                ]
+                ],
             ],
             'left'
         )->addAttributeToFilter(
@@ -74,7 +77,7 @@ class NewProducts
                 'or' => [
                     0 => ['date' => true, 'from' => $todayStartOfDayDate],
                     1 => ['is' => new \Zend_Db_Expr('null')],
-                ]
+                ],
             ],
             'left'
         )->addAttributeToFilter([

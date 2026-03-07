@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -272,7 +273,7 @@ QUERY;
             'missed_cart_item_qty' => [
                 'cart_items: [{ cart_item_id: 1 }]',
                 'Required parameter "quantity" for "cart_items" is missing.',
-                'REQUIRED_PARAMETER_MISSING'
+                'REQUIRED_PARAMETER_MISSING',
             ],
         ];
     }
@@ -338,9 +339,9 @@ QUERY;
      */
     public function testUpdateGiftMessageCartForItemNotAllow()
     {
-        $messageTo = "";
-        $messageFrom = "";
-        $message = "";
+        $messageTo = '';
+        $messageFrom = '';
+        $message = '';
         $query = $this->getUpdateGiftMessageQuery($messageTo, $messageFrom, $message);
         foreach ($this->graphQlMutation($query)['updateCartItems']['cart']['items'] as $item) {
             self::assertNull($item['gift_message']);
@@ -354,9 +355,9 @@ QUERY;
      */
     public function testUpdateGiftMessageCartForItem()
     {
-        $messageTo = "Alex";
-        $messageFrom = "Mike";
-        $message = "Best regards";
+        $messageTo = 'Alex';
+        $messageFrom = 'Mike';
+        $message = 'Best regards';
         $query = $this->getUpdateGiftMessageQuery($messageTo, $messageFrom, $message);
         foreach ($this->graphQlMutation($query)['updateCartItems']['cart']['items'] as $item) {
             self::assertArrayHasKey('gift_message', $item);
@@ -364,9 +365,9 @@ QUERY;
             self::assertSame('Mike', $item['gift_message']['from']);
             self::assertSame('Best regards', $item['gift_message']['message']);
         }
-        $messageTo = "";
-        $messageFrom = "";
-        $message = "";
+        $messageTo = '';
+        $messageFrom = '';
+        $message = '';
         $query = $this->getUpdateGiftMessageQuery($messageTo, $messageFrom, $message);
         foreach ($this->graphQlMutation($query)['updateCartItems']['cart']['items'] as $item) {
             self::assertArrayHasKey('gift_message', $item);
@@ -391,7 +392,7 @@ QUERY;
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurableProduct.id$',
                 'child_product_id' => '$configProd1.id$',
-                'qty' => 10
+                'qty' => 10,
             ],
         ),
         DataFixture(
@@ -399,7 +400,7 @@ QUERY;
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$simpleProduct.id$',
-                'qty' => 10
+                'qty' => 10,
             ]
         ),
         //We are reducing the stock of confProd1 to 6, which is less than the quantity (10) in cart

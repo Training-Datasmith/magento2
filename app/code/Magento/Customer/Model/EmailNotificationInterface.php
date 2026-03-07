@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model;
 
 use Magento\Customer\Api\Data\CustomerInterface;
@@ -17,22 +20,22 @@ interface EmailNotificationInterface
     /**
      * Constants for the type of new account email to be sent
      */
-    const NEW_ACCOUNT_EMAIL_REGISTERED = 'registered';
+    public const NEW_ACCOUNT_EMAIL_REGISTERED = 'registered';
 
     /**
      * Welcome email, when password setting is required
      */
-    const NEW_ACCOUNT_EMAIL_REGISTERED_NO_PASSWORD = 'registered_no_password';
+    public const NEW_ACCOUNT_EMAIL_REGISTERED_NO_PASSWORD = 'registered_no_password';
 
     /**
      * Welcome email, when confirmation is enabled
      */
-    const NEW_ACCOUNT_EMAIL_CONFIRMATION = 'confirmation';
+    public const NEW_ACCOUNT_EMAIL_CONFIRMATION = 'confirmation';
 
     /**
      * Confirmation email, when account is confirmed
      */
-    const NEW_ACCOUNT_EMAIL_CONFIRMED = 'confirmed';
+    public const NEW_ACCOUNT_EMAIL_CONFIRMED = 'confirmed';
 
     /**
      * Send notification to customer when email and/or password changed

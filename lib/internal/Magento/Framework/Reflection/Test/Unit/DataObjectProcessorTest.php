@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\Reflection\TypeCaster;
 use Magento\Framework\Reflection\TypeProcessor;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -97,7 +98,7 @@ class DataObjectProcessorTest extends TestCase
             [
                 'extensionAttributes' => $this->createMock(
                     ExtensionAttributesInterface::class
-                )
+                ),
             ]
         );
 
@@ -194,7 +195,7 @@ class DataObjectProcessorTest extends TestCase
             ['sku' => 'product2', 'name' => 'Product 2'],
             'some_string_value',
             123,
-            ['nested' => ['array' => 'value']]
+            ['nested' => ['array' => 'value']],
         ];
 
         $testDataObject = $objectManager->getObject(

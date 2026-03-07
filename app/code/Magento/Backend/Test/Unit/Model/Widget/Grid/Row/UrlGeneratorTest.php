@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class UrlGeneratorTest extends TestCase
             [
                 'path' => $urlPath,
                 'params' => ['flag' => 1],
-                'extraParamsTemplate' => ['item_id' => 'getItemId']
+                'extraParamsTemplate' => ['item_id' => 'getItemId'],
             ]
         );
 

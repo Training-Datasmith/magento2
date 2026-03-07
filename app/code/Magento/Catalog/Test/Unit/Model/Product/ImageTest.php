@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -170,7 +171,7 @@ class ImageTest extends TestCase
                 'viewAssetImageFactory' => $this->viewAssetImageFactory,
                 'viewAssetPlaceholderFactory' => $this->viewAssetPlaceholderFactory,
                 'serializer' => $this->serializer,
-                'paramsBuilder' => $this->paramsBuilder
+                'paramsBuilder' => $this->paramsBuilder,
             ]
         );
 
@@ -261,7 +262,7 @@ class ImageTest extends TestCase
             'constrain_only' => 'doconstrainonly',
             'background' => 'ffffff',
             'angle' => null,
-            'quality' => 80
+            'quality' => 80,
         ];
         $this->paramsBuilder->expects(self::once())
             ->method('build')
@@ -275,7 +276,7 @@ class ImageTest extends TestCase
             ->with(
                 [
                     'miscParams' => $miscParams,
-                    'filePath' => '/somefile.png'
+                    'filePath' => '/somefile.png',
                 ]
             )
             ->willReturn($this->imageAsset);
@@ -376,7 +377,7 @@ class ImageTest extends TestCase
             [
                 'keepAspectRatio', 'keepFrame', 'keepTransparency', 'constrainOnly', 'backgroundColor', 'quality',
                 'setWatermarkPosition', 'setWatermarkImageOpacity', 'setWatermarkWidth', 'setWatermarkHeight',
-                'watermark'
+                'watermark',
             ]
         );
         $imageProcessor->expects($this->once())->method('setWatermarkPosition')->with('center')

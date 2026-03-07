@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace Magento\GraphQl\Wishlist;
 
@@ -131,8 +132,8 @@ class AddWishlistItemsToCartTest extends GraphQlAbstract
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage(
-            "The account sign-in was incorrect or your account is disabled temporarily. " .
-            "Please wait and try again later."
+            'The account sign-in was incorrect or your account is disabled temporarily. ' .
+            'Please wait and try again later.'
         );
 
         $wishlist = $this->getWishlist();
@@ -225,13 +226,13 @@ class AddWishlistItemsToCartTest extends GraphQlAbstract
         $this->graphQlMutation($query, [], '', $this->getHeaderMap());
     }
 
-     /**
-      * Add all items from customer's wishlist to cart
-      *
-      * @magentoApiDataFixture Magento/GraphQl/Catalog/_files/simple_product.php
-      * @magentoConfigFixture wishlist/general/active 1
-      * @magentoApiDataFixture Magento/Wishlist/_files/wishlist_with_simple_product.php
-      */
+    /**
+     * Add all items from customer's wishlist to cart
+     *
+     * @magentoApiDataFixture Magento/GraphQl/Catalog/_files/simple_product.php
+     * @magentoConfigFixture wishlist/general/active 1
+     * @magentoApiDataFixture Magento/Wishlist/_files/wishlist_with_simple_product.php
+     */
     public function testAddAllWishlistItemsToCart(): void
     {
         $wishlist = $this->getWishlist();
@@ -269,7 +270,7 @@ class AddWishlistItemsToCartTest extends GraphQlAbstract
             [
                 'name' => 'Configurable Product',
                 '_options' => ['$attribute$'],
-                '_links' => ['$conf_option_product1$', '$conf_option_product2$']
+                '_links' => ['$conf_option_product1$', '$conf_option_product2$'],
             ],
             'configurable_product'
         ),

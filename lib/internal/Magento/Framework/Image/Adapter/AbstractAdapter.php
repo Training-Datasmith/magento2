@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -587,7 +588,7 @@ abstract class AbstractAdapter implements AdapterInterface
             'src' => ['x' => $srcX, 'y' => $srcY],
             'dst' => ['x' => $dstX, 'y' => $dstY, 'width' => round($dstWidth), 'height' => round($dstHeight)],
             // size for new image
-            'frame' => ['width' => round($frameWidth), 'height' => round($frameHeight)]
+            'frame' => ['width' => round($frameWidth), 'height' => round($frameHeight)],
         ];
     }
 

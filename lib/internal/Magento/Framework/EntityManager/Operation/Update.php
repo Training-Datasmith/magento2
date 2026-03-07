@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\EntityManager\Operation;
 
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\DuplicateException;
-use Magento\Framework\EntityManager\Operation\Update\UpdateMain;
+use Magento\Framework\EntityManager\EventManager;
+use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\EntityManager\Operation\Update\UpdateAttributes;
 use Magento\Framework\EntityManager\Operation\Update\UpdateExtensions;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\EventManager;
+use Magento\Framework\EntityManager\Operation\Update\UpdateMain;
 use Magento\Framework\EntityManager\TypeResolver;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Phrase;
 
@@ -100,7 +103,7 @@ class Update implements UpdateInterface
                 'entity_manager_save_before',
                 [
                     'entity_type' => $entityType,
-                    'entity' => $entity
+                    'entity' => $entity,
                 ]
             );
             $this->eventManager->dispatchEntityEvent($entityType, 'save_before', ['entity' => $entity]);
@@ -112,7 +115,7 @@ class Update implements UpdateInterface
                 'entity_manager_save_after',
                 [
                     'entity_type' => $entityType,
-                    'entity' => $entity
+                    'entity' => $entity,
                 ]
             );
             $connection->commit();

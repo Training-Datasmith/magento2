@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\Country\Postcode\Config;
 
 class Converter implements \Magento\Framework\Config\ConverterInterface
@@ -49,7 +52,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                     }
                     $result[$groupName][$code->attributes->getNamedItem('id')->nodeValue] = [
                         'example' => $code->attributes->getNamedItem('example')->nodeValue,
-                        'pattern' => $code->nodeValue
+                        'pattern' => $code->nodeValue,
                     ];
                 }
             }

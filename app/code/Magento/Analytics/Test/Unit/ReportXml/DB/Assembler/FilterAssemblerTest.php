@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class FilterAssemblerTest extends TestCase
             FilterAssembler::class,
             [
                 'conditionResolver' => $this->conditionResolverMock,
-                'nameResolver' => $this->nameResolverMock
+                'nameResolver' => $this->nameResolverMock,
             ]
         );
     }
@@ -79,8 +80,8 @@ class FilterAssemblerTest extends TestCase
         $queryConfigMock = [
             'source' => [
                 'name' => 'sales_order',
-                'alias' => 'sales'
-            ]
+                'alias' => 'sales',
+            ],
         ];
 
         $this->selectBuilderMock->expects($this->never())
@@ -107,12 +108,12 @@ class FilterAssemblerTest extends TestCase
                         'condition' => [
                             [
                                 'attribute' => 'entity_id',
-                                'operator' => 'null'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'operator' => 'null',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->nameResolverMock

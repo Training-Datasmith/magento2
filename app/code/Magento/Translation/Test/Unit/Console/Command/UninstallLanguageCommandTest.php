@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,7 +88,7 @@ class UninstallLanguageCommandTest extends TestCase
             ->method('getRootRequiredPackageTypesByName')
             ->willReturn(
                 [
-                    'vendor/language-ua_ua' => 'magento2-language'
+                    'vendor/language-ua_ua' => 'magento2-language',
                 ]
             );
 
@@ -118,7 +119,7 @@ class UninstallLanguageCommandTest extends TestCase
             ->method('getRootRequiredPackageTypesByName')
             ->willReturn(
                 [
-                    'vendor/language-ua_ua' => 'magento2-language'
+                    'vendor/language-ua_ua' => 'magento2-language',
                 ]
             );
 
@@ -147,7 +148,7 @@ class UninstallLanguageCommandTest extends TestCase
             ->method('getRootRequiredPackageTypesByName')
             ->willReturn(
                 [
-                    'vendor/language-ua_ua' => 'magento2-language'
+                    'vendor/language-ua_ua' => 'magento2-language',
                 ]
             );
 
@@ -175,7 +176,7 @@ class UninstallLanguageCommandTest extends TestCase
             ->method('getRootRequiredPackageTypesByName')
             ->willReturn(
                 [
-                    'vendor/language-ua_ua' => 'library'
+                    'vendor/language-ua_ua' => 'library',
                 ]
             );
 

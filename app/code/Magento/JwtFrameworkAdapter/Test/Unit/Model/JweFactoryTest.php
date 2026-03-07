@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -41,14 +42,14 @@ class JweFactoryTest extends TestCase
                 'some-value',
                 null,
                 null,
-                ArbitraryPayload::class
+                ArbitraryPayload::class,
             ],
             'compact-claims' => [
                 ['typ' => 'JWT'],
                 '{"tst1":"val1","tst2":2,"tst3":true}',
                 null,
                 null,
-                ClaimsPayloadInterface::class
+                ClaimsPayloadInterface::class,
             ],
             'compact-nested' => [
                 ['typ' => 'JWT', 'cty' => NestedPayloadInterface::CONTENT_TYPE],
@@ -56,22 +57,22 @@ class JweFactoryTest extends TestCase
                 .'eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ.',
                 null,
                 null,
-                NestedPayloadInterface::class
+                NestedPayloadInterface::class,
             ],
             'json-arbitrary' => [
                 ['typ' => 'JWT'],
                 'arbitrary',
                 ['cty' => 'SomeType'],
                 ['crit' => 'exp'],
-                ArbitraryPayload::class
+                ArbitraryPayload::class,
             ],
             'json-claims' => [
                 ['typ' => 'JWT'],
                 '{"tst1":"val1","tst2":2,"tst3":true}',
                 ['aud' => 'magento'],
                 ['custom' => 'value'],
-                ClaimsPayloadInterface::class
-            ]
+                ClaimsPayloadInterface::class,
+            ],
         ];
     }
 

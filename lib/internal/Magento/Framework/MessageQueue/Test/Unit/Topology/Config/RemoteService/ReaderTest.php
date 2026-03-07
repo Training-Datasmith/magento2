@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ReaderTest extends TestCase
         $this->objectManagerConfig->expects($this->any())->method('getPreferences')->willReturn(
             [
                 'Some\Service\NameInterface' => 'Some\Service\NameInterfaceRemote',
-                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote'
+                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote',
             ]
         );
 
@@ -83,7 +84,7 @@ class ReaderTest extends TestCase
         $this->reflectionGenerator->expects($this->exactly(2))->method('generateTopicName')->willReturnMap(
             [
                 ['Some\Service\NameInterface', 'methodOne', 'topicOne'],
-                ['Some\Service\NameInterface', 'methodTwo', 'topicTwo']
+                ['Some\Service\NameInterface', 'methodTwo', 'topicTwo'],
             ]
         );
 
@@ -102,7 +103,7 @@ class ReaderTest extends TestCase
                         'destination' => 'queue.topicOne',
                         'disabled' => false,
                         'topic' => 'topicOne',
-                        'arguments' => []
+                        'arguments' => [],
                     ],
                     'topicTwo--magento--queue.topicTwo' => [
                         'id' => 'topicTwo--magento--queue.topicTwo',
@@ -110,11 +111,11 @@ class ReaderTest extends TestCase
                         'destination' => 'queue.topicTwo',
                         'disabled' => false,
                         'topic' => 'topicTwo',
-                        'arguments' => []
-                    ]
+                        'arguments' => [],
+                    ],
                 ],
-                'arguments' => []
-            ]
+                'arguments' => [],
+            ],
         ];
 
         $this->assertEquals($expectedResult, $this->reader->read());
@@ -130,7 +131,7 @@ class ReaderTest extends TestCase
         $this->objectManagerConfig->expects($this->any())->method('getPreferences')->willReturn(
             [
                 'Some\Service\NameInterface' => 'Some\Service\NameInterfaceRemote',
-                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote'
+                'Some\Service\NonRemoteInterface' => 'Some\Service\NonRemote',
             ]
         );
 

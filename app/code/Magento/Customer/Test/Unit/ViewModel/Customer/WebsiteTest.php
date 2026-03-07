@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ namespace Magento\Customer\Test\Unit\ViewModel\Customer;
 use Magento\Customer\ViewModel\Customer\Website as CustomerWebsite;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Store\Model\Store;
 use Magento\Store\Model\System\Store as SystemStore;
+use Magento\Store\Model\Website;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Magento\Store\Model\Website;
-use Magento\Store\Model\Store;
 
 /**
  * Test for customer's website view model
@@ -49,7 +50,7 @@ class WebsiteTest extends TestCase
             CustomerWebsite::class,
             [
                 'systemStore' => $this->systemStore,
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
         $websiteMock1 = $this->createPartialMock(Website::class, ['getId', 'getDefaultStore']);

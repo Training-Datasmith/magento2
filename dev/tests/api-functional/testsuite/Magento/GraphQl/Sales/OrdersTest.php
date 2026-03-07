@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Sales;
 
-use Exception;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Webapi functional test for customerOrders graphql query
@@ -59,32 +59,32 @@ QUERY;
                 'number' => '100000002',
                 'order_number' => '100000002',
                 'status' => 'processing',
-                'grand_total' => 120.00
+                'grand_total' => 120.00,
             ],
             [
                 'number' => '100000003',
                 'order_number' => '100000003',
                 'status' => 'processing',
-                'grand_total' => 130.00
+                'grand_total' => 130.00,
             ],
             [
                 'number' => '100000004',
                 'order_number' => '100000004',
                 'status' => 'closed',
-                'grand_total' => 140.00
+                'grand_total' => 140.00,
             ],
             [
                 'number' => '100000005',
                 'order_number' => '100000005',
                 'status' => 'complete',
-                'grand_total' => 150.00
+                'grand_total' => 150.00,
             ],
             [
                 'number' => '100000006',
                 'order_number' => '100000006',
                 'status' => 'complete',
-                'grand_total' => 160.00
-            ]
+                'grand_total' => 160.00,
+            ],
         ];
 
         $actualData = $response['customerOrders']['items'];
@@ -93,22 +93,22 @@ QUERY;
             $this->assertEquals(
                 $data['number'],
                 $actualData[$key]['number'],
-                "number is different than the expected for order - " . $data['number']
+                'number is different than the expected for order - ' . $data['number']
             );
             $this->assertEquals(
                 $data['order_number'],
                 $actualData[$key]['order_number'],
-                "order_number is different than the expected for order - " . $data['order_number']
+                'order_number is different than the expected for order - ' . $data['order_number']
             );
             $this->assertEquals(
                 $data['grand_total'],
                 $actualData[$key]['grand_total'],
-                "grand_total is different than the expected for order - " . $data['order_number']
+                'grand_total is different than the expected for order - ' . $data['order_number']
             );
             $this->assertEquals(
                 $data['status'],
                 $actualData[$key]['status'],
-                "status is different than the expected for order - " . $data['order_number']
+                'status is different than the expected for order - ' . $data['order_number']
             );
         }
     }

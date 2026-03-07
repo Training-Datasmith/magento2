@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -65,8 +66,7 @@ class ProductLinkQueryTest extends TestCase
             //Not always providing product entity or the default criteria implementation for testing purposes.
             //Getting 1 list with types filter and one without.
             $criteriaList[] = new ListCriteria($sku, $typesFilter, $product);
-            $criteria = new class implements ListCriteriaInterface
-            {
+            $criteria = new class () implements ListCriteriaInterface {
                 /**
                  * @var string
                  */

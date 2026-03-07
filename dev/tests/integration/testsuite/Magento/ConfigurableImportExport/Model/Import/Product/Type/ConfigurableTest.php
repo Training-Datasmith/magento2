@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableImportExport\Model\Import\Product\Type;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -11,6 +14,7 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
+use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
@@ -20,9 +24,8 @@ use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Filesystem;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\ImportExport\Model\Import;
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\ImportExport\Model\Import\Adapter as ImportAdapter;
-use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\ImportExport\Test\Fixture\CsvFile as CsvFileFixture;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -201,7 +204,7 @@ class ConfigurableTest extends TestCase
         $productSku = 'Configurable 1';
         $products = [
             'default' => 'Configurable 1',
-            'fixture_second_store' => 'Configurable 1 Second Store'
+            'fixture_second_store' => 'Configurable 1 Second Store',
         ];
         $pathToFile = __DIR__ . '/../../_files/import_configurable_for_multiple_store_views.csv';
         $errors = $this->doImport($pathToFile, Import::BEHAVIOR_APPEND);
@@ -281,7 +284,7 @@ class ConfigurableTest extends TestCase
                 'rows' => [
                     ['sku', 'configurable_variations'],
                     ['$cp1.sku$', 'sku=cp1-10,2cm,size=10,2cm|sku=cp1-15,5cm,size=15,5cm'],
-                ]
+                ],
             ],
             'file'
         )
@@ -325,7 +328,7 @@ class ConfigurableTest extends TestCase
         bool $validateOnly = false
     ): ProcessingErrorAggregatorInterface {
         /** @var Filesystem $filesystem */
-        $filesystem =$this->objectManager->create(Filesystem::class);
+        $filesystem = $this->objectManager->create(Filesystem::class);
         $directoryWrite = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
         $source = ImportAdapter::findAdapterFor($file, $directoryWrite);
         $errors = $this->model

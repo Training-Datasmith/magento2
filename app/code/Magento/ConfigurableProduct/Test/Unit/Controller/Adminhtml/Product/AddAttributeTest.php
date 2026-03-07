@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class AddAttributeTest extends TestCase
             AddAttribute::class,
             [
                 'context' => $this->context,
-                'productBuilder' => $this->productBuilder
+                'productBuilder' => $this->productBuilder,
             ]
         );
     }

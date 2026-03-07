@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\System\Store;
 
 /**
@@ -40,7 +43,7 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Container
             [
                 'label' => __('Create Store'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('adminhtml/*/newGroup') . '\')',
-                'class' => 'add add-store'
+                'class' => 'add add-store',
             ],
             1
         );
@@ -51,7 +54,7 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Container
             [
                 'label' => __('Create Store View'),
                 'onclick' => 'setLocation(\'' . $this->getUrl('adminhtml/*/newStore') . '\')',
-                'class' => 'add add-store-view'
+                'class' => 'add add-store-view',
             ]
         );
     }

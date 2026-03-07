@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -71,8 +72,8 @@ class DefaultShipment extends \Magento\Sales\Model\Order\Pdf\Items\AbstractItems
             [
                 // phpcs:ignore Magento2.Functions.DiscouragedFunction
                 'text' => $this->string->split(html_entity_decode($item->getName()), 60, true, true),
-                'feed' => 100
-            ]
+                'feed' => 100,
+            ],
         ];
 
         // draw QTY

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class NotificationsTest extends TestCase
     {
         return [
             [true, true],
-            [false, false]
+            [false, false],
         ];
     }
 

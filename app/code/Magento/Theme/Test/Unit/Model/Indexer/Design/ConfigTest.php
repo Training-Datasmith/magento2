@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,12 @@ declare(strict_types=1);
 /**
  * Test design config indexer model
  */
+
 namespace Magento\Theme\Test\Unit\Model\Indexer\Design;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Data\Collection;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Indexer\FieldsetInterface;
 use Magento\Framework\Indexer\FieldsetPool;
 use Magento\Framework\Indexer\HandlerInterface;
@@ -25,11 +28,10 @@ use Magento\Framework\Indexer\StructureFactory;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 use Magento\Theme\Model\Data\Design\Config as DesignConfig;
 use Magento\Theme\Model\Indexer\Design\Config;
+use Magento\Theme\Model\Indexer\Design\IndexerHandler;
 use Magento\Theme\Model\ResourceModel\Design\Config\Scope\CollectionFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Theme\Model\Indexer\Design\IndexerHandler;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -174,7 +176,7 @@ class ConfigTest extends TestCase
             $this->flatScopeResolver,
             [
                 'fieldsets' => [],
-                'indexer_id' => DesignConfig::DESIGN_CONFIG_GRID_INDEXER_ID
+                'indexer_id' => DesignConfig::DESIGN_CONFIG_GRID_INDEXER_ID,
             ],
             [],
             $this->dtoFactoriesTable
@@ -223,7 +225,7 @@ class ConfigTest extends TestCase
                         ],
                     ],
                     'provider' => $this->indexerFieldset,
-                ]
+                ],
                 ],
                 'saveHandler' => 'saveHandlerClass',
                 'structure' => 'structureClass',

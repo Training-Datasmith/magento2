@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager;
  */
 class LayoutUpdate extends AbstractLayoutUpdate
 {
-
     /**
      * @var LayoutUpdateManager
      */

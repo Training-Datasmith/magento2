@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Controller\Adminhtml\Shipment\AbstractShipment;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Magento\Ui\Component\MassAction\Filter;
-use Magento\Sales\Model\Order\Pdf\Shipment;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Sales\Model\Order\Pdf\Shipment;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\CollectionFactory;
+use Magento\Ui\Component\MassAction\Filter;
 
 abstract class Pdfshipments extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
@@ -22,7 +25,7 @@ abstract class Pdfshipments extends \Magento\Sales\Controller\Adminhtml\Order\Ab
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Sales::shipment';
+    public const ADMIN_RESOURCE = 'Magento_Sales::shipment';
 
     /**
      * @var FileFactory

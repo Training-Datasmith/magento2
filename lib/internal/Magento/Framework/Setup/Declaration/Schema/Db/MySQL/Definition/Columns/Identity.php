@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class Identity implements DbDefinitionProcessorInterface
     /**
      * Auto increment flag.
      */
-    const IDENTITY_FLAG = 'auto_increment';
+    public const IDENTITY_FLAG = 'auto_increment';
 
     /**
      * @param ColumnIdentityAwareInterface $column

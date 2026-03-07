@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Plugin\Api\ProductLinkRepositoryInterface;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\Catalog\Api\ProductLinkRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterface;
+use Magento\Catalog\Api\ProductLinkRepositoryInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Indexer\Product\Full as FullProductIndexer;
 
 /**

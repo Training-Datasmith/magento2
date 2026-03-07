@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Quote\Guest;
 
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
+use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\GuestCart as GuestCartFixture;
-use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
-use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -201,7 +202,7 @@ class CartTotalsTest extends GraphQlAbstract
         self::assertEquals(9, $cartItem['prices']['total_item_discount']['value']);
 
         $discount = $cartItem['prices']['discounts'][0];
-        self::assertEquals("50% Off for all orders", $discount['label']);
+        self::assertEquals('50% Off for all orders', $discount['label']);
         self::assertEquals(9, $discount['amount']['value']);
 
         self::assertArrayHasKey('prices', $response['cart']);
@@ -270,8 +271,8 @@ class CartTotalsTest extends GraphQlAbstract
         DataFixture(ProductFixture::class, [
             'price' => 15,
             'custom_attributes' => [
-                'special_price' => 10
-             ]
+                'special_price' => 10,
+             ],
         ], 'p'),
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(AddProductToCartFixture::class, ['cart_id' => '$cart.id$', 'product_id' => '$p.id$', 'qty' => 2]),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Catalog\Model\ResourceModel\Product\Link\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection as ProductCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,7 @@ class LinkTest extends TestCase
             AbstractResource::class,
             [
                 'getIdFieldName', 'getConnection', 'getMainTable', 'getTable', 'getAttributeTypeTable',
-                'getAttributesByType', 'setTable', 'setAttributeTypeTable', 'setAttributesByType', '_construct'
+                'getAttributesByType', 'setTable', 'setAttributeTypeTable', 'setAttributesByType', '_construct',
             ]
         );
         $resourceData = [];
@@ -104,7 +105,7 @@ class LinkTest extends TestCase
                 'linkCollectionFactory' => $linkCollectionFactory,
                 'productCollectionFactory' => $productCollectionFactory,
                 'resource' => $this->resource,
-                'saveProductLinks' => $this->saveProductLinksMock
+                'saveProductLinks' => $this->saveProductLinksMock,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class Visitor extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         return [
             'customer_id' => $visitor->getCustomerId(),
-            'last_visit_at' => $visitor->getLastVisitAt()
+            'last_visit_at' => $visitor->getLastVisitAt(),
         ];
     }
 

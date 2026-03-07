@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class ContentTypeValidator implements HttpRequestValidatorInterface
      * @return void
      * @throws UnsupportedMediaTypeException
      */
-    public function validate(HttpRequestInterface $request) : void
+    public function validate(HttpRequestInterface $request): void
     {
         $headerName = 'Content-Type';
         $requiredHeaderValue = 'application/json';

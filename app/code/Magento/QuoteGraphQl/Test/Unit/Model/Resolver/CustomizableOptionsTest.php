@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -127,19 +128,19 @@ class CustomizableOptionsTest extends TestCase
             'id' => 1,
             'label' => 'Option 1',
             'type' => 'field',
-            'values' => []
+            'values' => [],
         ];
         $expectedOptionData2 = [
             'id' => 2,
             'label' => 'Option 2',
             'type' => 'dropdown',
-            'values' => []
+            'values' => [],
         ];
         $expectedOptionData3 = [
             'id' => 3,
             'label' => 'Option 3',
             'type' => 'area',
-            'values' => []
+            'values' => [],
         ];
 
         $this->quoteItemMock->expects($this->once())
@@ -191,13 +192,13 @@ class CustomizableOptionsTest extends TestCase
             'id' => 1,
             'label' => 'Option 1',
             'type' => 'field',
-            'values' => []
+            'values' => [],
         ];
         $expectedOptionData3 = [
             'id' => 3,
             'label' => 'Option 3',
             'type' => 'area',
-            'values' => []
+            'values' => [],
         ];
 
         $this->quoteItemMock->expects($this->once())
@@ -276,7 +277,7 @@ class CustomizableOptionsTest extends TestCase
             'id' => 1,
             'label' => 'Valid Option',
             'type' => 'field',
-            'values' => []
+            'values' => [],
         ];
 
         $this->quoteItemMock->expects($this->once())
@@ -325,7 +326,7 @@ class CustomizableOptionsTest extends TestCase
             'id' => 1,
             'label' => 'Single Option',
             'type' => 'field',
-            'values' => []
+            'values' => [],
         ];
 
         $this->quoteItemMock->expects($this->once())
@@ -415,9 +416,9 @@ class CustomizableOptionsTest extends TestCase
             'values' => [
                 [
                     'label' => 'Valid Value',
-                    'value' => 'test'
-                ]
-            ]
+                    'value' => 'test',
+                ],
+            ],
         ];
         $validOption2 = [
             'id' => 2,
@@ -426,9 +427,9 @@ class CustomizableOptionsTest extends TestCase
             'values' => [
                 [
                     'label' => 'Another Valid Value',
-                    'value' => 'test2'
-                ]
-            ]
+                    'value' => 'test2',
+                ],
+            ],
         ];
 
         $this->quoteItemMock->expects($this->once())

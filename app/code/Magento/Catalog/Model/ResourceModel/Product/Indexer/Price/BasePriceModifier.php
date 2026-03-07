@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class BasePriceModifier implements PriceModifierInterface
     /**
      * {@inheritdoc}
      */
-    public function modifyPrice(IndexTableStructure $priceTable, array $entityIds = []) : void
+    public function modifyPrice(IndexTableStructure $priceTable, array $entityIds = []): void
     {
         foreach ($this->priceModifiers as $priceModifier) {
             $priceModifier->modifyPrice($priceTable, $entityIds);

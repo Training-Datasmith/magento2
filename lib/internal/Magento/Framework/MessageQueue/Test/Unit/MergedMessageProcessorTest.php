@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class MergedMessageProcessorTest extends TestCase
         $this->mergedMessageProcessor = $objectManagerHelper->getObject(
             MergedMessageProcessor::class,
             [
-                'messageStatusProcessor' => $this->messageStatusProcessor
+                'messageStatusProcessor' => $this->messageStatusProcessor,
             ]
         );
     }
@@ -71,7 +72,7 @@ class MergedMessageProcessorTest extends TestCase
         $mergedMessage = $this->createMock(MergedMessageInterface::class);
         $mergedMessage->expects($this->atLeastOnce())->method('getOriginalMessagesIds')->willReturn([$messageId]);
         $mergedMessages = [
-            $topicName => [$mergedMessage]
+            $topicName => [$mergedMessage],
         ];
         $messages = [$messageId => $originalMessage];
 
@@ -103,7 +104,7 @@ class MergedMessageProcessorTest extends TestCase
         $originalMessage = $this->createMock(EnvelopeInterface::class);
         $mergedMessage = $this->createMock(MergedMessageInterface::class);
         $mergedMessages = [
-            $topicName => [$mergedMessage]
+            $topicName => [$mergedMessage],
         ];
         $messages = [$messageId => $originalMessage];
 

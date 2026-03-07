@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -27,16 +28,6 @@ use Magento\RemoteStorage\Model\Config;
 class AwsS3Factory implements DriverFactoryInterface
 {
     /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * @var Config
-     */
-    private $config;
-
-    /**
      * @var MetadataProviderInterfaceFactory
      */
     private $metadataProviderFactory;
@@ -52,39 +43,22 @@ class AwsS3Factory implements DriverFactoryInterface
     private $cachedAdapterInterfaceFactory;
 
     /**
-     * @var string|null
-     */
-    private $cachePrefix;
-
-    /**
      * @var CachedCredentialsProvider
      */
     private $cachedCredentialsProvider;
 
-    /**
-     * @param ObjectManagerInterface $objectManager
-     * @param Config $config
-     * @param MetadataProviderInterfaceFactory $metadataProviderFactory
-     * @param CacheInterfaceFactory $cacheInterfaceFactory
-     * @param CachedAdapterInterfaceFactory $cachedAdapterInterfaceFactory
-     * @param string|null $cachePrefix
-     * @param CachedCredentialsProvider|null $cachedCredentialsProvider
-     */
     public function __construct(
-        ObjectManagerInterface $objectManager,
-        Config $config,
+        private readonly ObjectManagerInterface $objectManager,
+        private readonly Config $config,
         MetadataProviderInterfaceFactory $metadataProviderFactory,
         CacheInterfaceFactory $cacheInterfaceFactory,
         CachedAdapterInterfaceFactory $cachedAdapterInterfaceFactory,
-        ?string $cachePrefix = null,
+        private readonly ?string $cachePrefix = null,
         ?CachedCredentialsProvider $cachedCredentialsProvider = null,
     ) {
-        $this->objectManager = $objectManager;
-        $this->config = $config;
         $this->metadataProviderFactory = $metadataProviderFactory;
         $this->cacheInterfaceFactory = $cacheInterfaceFactory;
         $this->cachedAdapterInterfaceFactory = $cachedAdapterInterfaceFactory;
-        $this->cachePrefix = $cachePrefix;
         $this->cachedCredentialsProvider = $cachedCredentialsProvider ??
             $this->objectManager->get(CachedCredentialsProvider::class);
     }
@@ -107,11 +81,9 @@ class AwsS3Factory implements DriverFactoryInterface
     /**
      * Prepare config for S3Client
      *
-     * @param array $config
-     * @return array
      * @throws DriverException
      */
-    private function prepareConfig(array $config)
+    private function prepareConfig(array $config): array
     {
         $config['version'] = 'latest';
 
@@ -155,7 +127,7 @@ class AwsS3Factory implements DriverFactoryInterface
         $metadataProvider = $this->metadataProviderFactory->create(
             [
                 'adapter' => $adapter,
-                'cache' => $cache
+                'cache' => $cache,
             ]
         );
         $objectUrl = rtrim($client->getObjectUrl($config['bucket'], './'), '/') . trim($prefix, '\\/') . '/';
@@ -166,7 +138,7 @@ class AwsS3Factory implements DriverFactoryInterface
                     [
                         'adapter' => $adapter,
                         'cache' => $cache,
-                        'metadataProvider' => $metadataProvider
+                        'metadataProvider' => $metadataProvider,
                     ]
                 ),
                 'objectUrl' => $objectUrl,

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class CustomerGroup implements ResolverInterface
         }
 
         return [
-            'uid' => $this->idEncoder->encode((string)$value['model']->getGroupId())
+            'uid' => $this->idEncoder->encode((string)$value['model']->getGroupId()),
         ];
     }
 }

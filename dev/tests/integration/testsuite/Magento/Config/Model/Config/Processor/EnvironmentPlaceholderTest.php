@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model\Config\Processor;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -39,22 +42,22 @@ class EnvironmentPlaceholderTest extends \PHPUnit\Framework\TestCase
                 'CONFIG__DEFAULT__WEB__UNSECURE__BASE_URL' => 'http://expected.local',
                 'CONFIG__TEST__TEST__DESIGN__HEADER__WELCOME' => 'Expected header',
                 'TEST__TEST__WEB__SECURE__BASE_URL' => 'http://wrong_pattern.local',
-                'CONFIG__DEFAULT__GENERAL__REGION__DISPLAY_ALL' => 1
+                'CONFIG__DEFAULT__GENERAL__REGION__DISPLAY_ALL' => 1,
             ]
         );
         $expected = [
             'default' => [
                 'web' => [
                     'unsecure' => [
-                        'base_url' => 'http://expected.local'
+                        'base_url' => 'http://expected.local',
                     ],
                     'secure' => [
-                        'base_url' => 'https://original.local'
-                    ]
+                        'base_url' => 'https://original.local',
+                    ],
                 ],
                 'general' => [
                     'region' => [
-                        'display_all' => 1
+                        'display_all' => 1,
                     ],
                 ],
             ],
@@ -62,11 +65,11 @@ class EnvironmentPlaceholderTest extends \PHPUnit\Framework\TestCase
                 'test' => [
                     'design' => [
                         'header' => [
-                            'welcome' => 'Expected header'
-                        ]
+                            'welcome' => 'Expected header',
+                        ],
                     ],
                 ],
-            ]
+            ],
         ];
         $config = [
             'default' => [
@@ -75,19 +78,19 @@ class EnvironmentPlaceholderTest extends \PHPUnit\Framework\TestCase
                         'base_url' => 'http://original.local',
                     ],
                     'secure' => [
-                        'base_url' => 'https://original.local'
-                    ]
-                ]
+                        'base_url' => 'https://original.local',
+                    ],
+                ],
             ],
             'test' => [
                 'test' => [
                     'design' => [
                         'header' => [
-                            'welcome' => 'Original header'
-                        ]
+                            'welcome' => 'Original header',
+                        ],
                     ],
                 ],
-            ]
+            ],
         ];
 
         $this->assertSame(

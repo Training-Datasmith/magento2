@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,8 +21,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Order\Email\Sender\OrderSender;
 use Magento\Sales\Model\Order\Address as OrderAddress;
+use Magento\Sales\Model\Order\Email\Sender\OrderSender;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -116,17 +117,17 @@ class RendererTest extends TestCase
                 'bundle_options' => [
                     [
                         'value' => [
-                            ['title' => '']
+                            ['title' => ''],
                         ],
                     ],
                 ],
-                'bundle_selection_attributes' => '{"qty":5 ,"price":99}'
+                'bundle_selection_attributes' => '{"qty":5 ,"price":99}',
             ]);
             $this->block->setItem($item);
             $priceBlockHtml[] = $this->block->getValueHtml($item);
         }
 
-        $this->assertStringContainsString("€99", $priceBlockHtml[0]);
+        $this->assertStringContainsString('€99', $priceBlockHtml[0]);
     }
 
     /**

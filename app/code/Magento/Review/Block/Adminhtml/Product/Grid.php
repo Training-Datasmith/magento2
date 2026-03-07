@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml\Product;
 
 /**
@@ -87,7 +90,7 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
                 'header' => __('ID'),
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -113,7 +116,7 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
                 'index' => 'status',
                 'type' => 'options',
                 'source' => \Magento\Catalog\Model\Product\Attribute\Source\Status::class,
-                'options' => $this->_status->getOptionArray()
+                'options' => $this->_status->getOptionArray(),
             ]
         );
 
@@ -128,7 +131,7 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
                     'sortable' => false,
                     'index' => 'websites',
                     'type' => 'options',
-                    'options' => $this->_websitesFactory->create()->toOptionHash()
+                    'options' => $this->_websitesFactory->create()->toOptionHash(),
                 ]
             );
         }

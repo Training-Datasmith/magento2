@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -17,11 +18,11 @@ return [
   `owner_id` smallint NOT NULL AUTO_INCREMENT,
   `store_owner_name` varchar(255) DEFAULT NULL COMMENT \'Store Owner Name\',
   PRIMARY KEY (`owner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT=\'Store owner information\''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT=\'Store owner information\'',
     ],
     'after' => [
         'store' => 'CREATE TABLE `store` (
   `store_owner` varchar(255) DEFAULT NULL COMMENT \'Store Owner Name\'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3'
-    ]
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3',
+    ],
 ];

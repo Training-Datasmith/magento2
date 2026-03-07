@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -274,7 +275,7 @@ class SitemapTest extends TestCase
                 $this->cmsPageProvider,
                 $this->storeUrlProvider,
                 $this->batchProductFactory,
-                $this->productConfigReader
+                $this->productConfigReader,
             ])
             ->onlyMethods([
                 'save',
@@ -284,7 +285,7 @@ class SitemapTest extends TestCase
                 '_createSitemapIndex',
                 '_createSitemap',
                 '_writeSitemapRow',
-                '_isSplitRequired'
+                '_isSplitRequired',
             ])
             ->getMock();
 
@@ -435,12 +436,12 @@ class SitemapTest extends TestCase
         $tagsProperty->setValue($this->sitemap, [
             'url' => [
                 'open' => '<?xml version="1.0" encoding="UTF-8"?><urlset>',
-                'close' => '</urlset>'
+                'close' => '</urlset>',
             ],
             'sitemap' => [
                 'open' => '<?xml version="1.0" encoding="UTF-8"?><sitemapindex>',
-                'close' => '</sitemapindex>'
-            ]
+                'close' => '</sitemapindex>',
+            ],
         ]);
 
         $sitemapItemsProperty = $reflection->getProperty('_sitemapItems');
@@ -546,8 +547,8 @@ class SitemapTest extends TestCase
         $tagsProperty->setValue($this->sitemap, [
             'url' => [
                 'open' => '<?xml version="1.0" encoding="UTF-8"?><urlset>',
-                'close' => '</urlset>'
-            ]
+                'close' => '</urlset>',
+            ],
         ]);
 
         $fileProperty = $reflection->getProperty('_fileSize');
@@ -631,7 +632,7 @@ class SitemapTest extends TestCase
                 $this->cmsPageProvider,
                 $this->storeUrlProvider,
                 $this->batchProductFactory,
-                $this->productConfigReader
+                $this->productConfigReader,
             ])
             ->onlyMethods([
                 'save',
@@ -641,7 +642,7 @@ class SitemapTest extends TestCase
                 '_createSitemap',
                 '_writeSitemapRow',
                 '_isSplitRequired',
-                '_createSitemapIndex'
+                '_createSitemapIndex',
             ])
             ->getMock();
 

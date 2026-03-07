@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -80,7 +81,7 @@ class TaxAddressManagerTest extends TestCase
                 'getPostcode',
                 'getId',
                 'getCustomer',
-                'getRegion'
+                'getRegion',
             ]
         );
 

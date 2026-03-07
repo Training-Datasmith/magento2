@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -134,7 +135,7 @@ class CliStateTest extends TestCase
             'config' => [
                 DirectoryList::CACHE => [DirectoryList::PATH => $cachePath],
                 DirectoryList::VAR_DIR => [DirectoryList::PATH => $varPath],
-            ]
+            ],
         ]);
 
         // Assert that State::getMode() returns the correct mode
@@ -190,7 +191,7 @@ class CliStateTest extends TestCase
         return [
             ['production'],
             ['developer'],
-            ['default']
+            ['default'],
         ];
     }
 }

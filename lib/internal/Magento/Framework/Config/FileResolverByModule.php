@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Module\Dir;
-use Magento\Framework\Oauth\Exception;
 
 /**
  * Application config file resolver.
@@ -18,7 +20,7 @@ class FileResolverByModule extends \Magento\Framework\App\Config\FileResolver
     /**
      * This flag says, that we need to read from all modules.
      */
-    const ALL_MODULES = 'all';
+    public const ALL_MODULES = 'all';
 
     /**
      * @var ComponentRegistrar
@@ -66,7 +68,7 @@ class FileResolverByModule extends \Magento\Framework\App\Config\FileResolver
         }
         $primaryFile = parent::get($filename, 'primary')->toArray();
         if (!$this->driver->isFile(key($primaryFile))) {
-            throw new \Exception("Primary db_schema file doesn`t exists");
+            throw new \Exception('Primary db_schema file doesn`t exists');
         }
         /** Load primary configurations */
         $iterator += $primaryFile;

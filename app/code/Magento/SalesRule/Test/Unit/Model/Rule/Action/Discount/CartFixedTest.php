@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -110,7 +111,7 @@ class CartFixedTest extends TestCase
                 'setCartFixedRules',
                 'getStore',
                 'getExtensionAttributes',
-                'isVirtual'
+                'isVirtual',
             ]
         );
         $this->address = $this->createPartialMockWithReflection(
@@ -189,10 +190,10 @@ class CartFixedTest extends TestCase
         $this->cartFixedDiscountHelper->expects($this->any())
             ->method('applyDiscountOnPricesIncludedTax')
             ->willReturn(true);
-            $cartExtensionMock = $this->createPartialMockWithReflection(
-                CartExtensionInterface::class,
-                ['getShippingAssignments']
-            );
+        $cartExtensionMock = $this->createPartialMockWithReflection(
+            CartExtensionInterface::class,
+            ['getShippingAssignments']
+        );
         $this->quote->expects($this->any())->method('getCartFixedRules')->willReturn([]);
         $store = $this->createMock(Store::class);
         $this->priceCurrency
@@ -273,7 +274,7 @@ class CartFixedTest extends TestCase
                 [
                     'shipping_method' => 'flatrate_flatrate',
                     'is_applied_to_shipping' => 0,
-                    'shipping_assignment' => ['test_assignment_1']
+                    'shipping_assignment' => ['test_assignment_1'],
                 ],
                 [   'id' => 1,
                     'base_items_price' => 10.0,
@@ -282,14 +283,14 @@ class CartFixedTest extends TestCase
                     'rounded_amount' => 0.0,
                     'discounted_amount' => 10.0,
                     'cart_rules' => 0.0,
-                    'affected_items' => []
-                ]
+                    'affected_items' => [],
+                ],
             ],
             'regular shipping with two items and single shipping' => [
                 [
                     'shipping_method' => 'flatrate_flatrate',
                     'is_applied_to_shipping' => 0,
-                    'shipping_assignment' => ['test_assignment_1']
+                    'shipping_assignment' => ['test_assignment_1'],
                 ],
                 [   'id' => 1,
                     'base_items_price' => 10.0,
@@ -298,14 +299,14 @@ class CartFixedTest extends TestCase
                     'rounded_amount' => 0.0,
                     'discounted_amount' => 10.0,
                     'cart_rules' => 0.0,
-                    'affected_items' => []
-                ]
+                    'affected_items' => [],
+                ],
             ],
             'regular shipping with two items and multiple shipping' => [
                 [
                     'shipping_method' => 'flatrate_flatrate',
                     'is_applied_to_shipping' => 0,
-                    'shipping_assignment' => ['test_assignment_1', 'test_assignment_2']
+                    'shipping_assignment' => ['test_assignment_1', 'test_assignment_2'],
                 ],
                 [   'id' => 1,
                     'base_items_price' => 10.0,
@@ -314,9 +315,9 @@ class CartFixedTest extends TestCase
                     'rounded_amount' => 0.0,
                     'discounted_amount' => 10.0,
                     'cart_rules' => 0.0,
-                    'affected_items' => []
-                ]
-            ]
+                    'affected_items' => [],
+                ],
+            ],
 
         ];
     }

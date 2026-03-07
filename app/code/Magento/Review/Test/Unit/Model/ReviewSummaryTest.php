@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class ReviewSummaryTest extends TestCase
         $this->reviewSummary = $this->objectManagerHelper->getObject(
             ReviewSummary::class,
             [
-                'sumColFactory' => $this->reviewSummaryCollectionFactoryMock
+                'sumColFactory' => $this->reviewSummaryCollectionFactoryMock,
             ]
         );
     }
@@ -58,7 +59,7 @@ class ReviewSummaryTest extends TestCase
         $storeId = 4;
         $testSummaryData = [
             'reviews_count' => 2,
-            'rating_summary' => 80
+            'rating_summary' => 80,
         ];
         $product = $this->createPartialMock(
             Product::class,
@@ -76,7 +77,7 @@ class ReviewSummaryTest extends TestCase
         $summaryData->expects($this->atLeastOnce())->method('getData')->willReturnMap(
             [
                 ['reviews_count', null, $testSummaryData['reviews_count']],
-                ['rating_summary', null, $testSummaryData['rating_summary']]
+                ['rating_summary', null, $testSummaryData['rating_summary']],
             ]
         );
         $summaryCollection = $this->createPartialMock(

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,7 +8,6 @@
 
 namespace Magento\Checkout\Model;
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Checkout\Api\Data\ShippingInformationInterface;
 use Magento\Checkout\Api\PaymentInformationManagementInterface;
 use Magento\Checkout\Api\ShippingInformationManagementInterface;
@@ -18,6 +19,7 @@ use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Api\ShipmentEstimationInterface;
 use Magento\Sales\Api\InvoiceOrderInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * Shipping information managment test.

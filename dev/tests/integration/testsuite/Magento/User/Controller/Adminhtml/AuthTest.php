@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Controller\Adminhtml;
 
 use Magento\Framework\Intl\DateTimeFactory;
 use Magento\Framework\Stdlib\DateTime;
-use Magento\TestFramework\Mail\Template\TransportBuilderMock;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Mail\Template\TransportBuilderMock;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -234,7 +237,7 @@ class AuthTest extends \Magento\TestFramework\TestCase\AbstractBackendController
             [$password, '', false],
             [$password, $password . '123', false],
             ['', '', false],
-            ['', $password, false]
+            ['', $password, false],
         ];
     }
 
@@ -331,7 +334,7 @@ class AuthTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'setTemplateIdentifier',
                     'setTemplateVars',
                     'setTemplateOptions',
-                    'getTransport'
+                    'getTransport',
                 ]
             )
             ->getMock();
@@ -375,7 +378,7 @@ class AuthTest extends \Magento\TestFramework\TestCase\AbstractBackendController
             ->disableOriginalConstructor()
             ->onlyMethods(
                 [
-                    'create'
+                    'create',
                 ]
             )
             ->getMock();

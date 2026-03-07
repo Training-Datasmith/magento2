@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Framework\Pricing\Render;
 
 use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
+use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\View\Element\AbstractBlock;
 
 /**
@@ -20,17 +22,17 @@ class RendererPool extends AbstractBlock
     /**
      * Default price group type
      */
-    const DEFAULT_PRICE_GROUP_TYPE = 'default';
+    public const DEFAULT_PRICE_GROUP_TYPE = 'default';
 
     /**
      * Default price renderer
      */
-    const PRICE_RENDERER_DEFAULT = \Magento\Framework\Pricing\Render\PriceBox::class;
+    public const PRICE_RENDERER_DEFAULT = \Magento\Framework\Pricing\Render\PriceBox::class;
 
     /**
      * Default amount renderer
      */
-    const AMOUNT_RENDERER_DEFAULT = \Magento\Framework\Pricing\Render\Amount::class;
+    public const AMOUNT_RENDERER_DEFAULT = \Magento\Framework\Pricing\Render\Amount::class;
 
     /**
      * Create amount renderer
@@ -164,7 +166,7 @@ class RendererPool extends AbstractBlock
             "{$itemType}/adjustments/{$priceType}",
             "{$itemType}/adjustments/default",
             "default/adjustments/{$priceType}",
-            "default/adjustments/default",
+            'default/adjustments/default',
         ];
         $renders = $this->findDataByPattern($fallbackPattern);
         if ($renders) {

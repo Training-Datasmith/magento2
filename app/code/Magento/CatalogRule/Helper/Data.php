@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * CatalogRule data helper
  */
+
 namespace Magento\CatalogRule\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper

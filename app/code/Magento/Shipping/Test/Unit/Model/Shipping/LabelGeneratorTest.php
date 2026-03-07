@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,6 +13,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\Order\Shipment\Track;
@@ -22,7 +24,6 @@ use Magento\Shipping\Model\Shipping\LabelGenerator;
 use Magento\Shipping\Model\Shipping\Labels;
 use Magento\Shipping\Model\Shipping\LabelsFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -269,7 +270,7 @@ class LabelGeneratorTest extends TestCase
     {
         return [
             [['tracking_number' => ['111111', '222222', '333333'], 'label_content' => 'some']],
-            [['tracking_number' => '111111', 'label_content' => 'some']]
+            [['tracking_number' => '111111', 'label_content' => 'some']],
         ];
     }
 

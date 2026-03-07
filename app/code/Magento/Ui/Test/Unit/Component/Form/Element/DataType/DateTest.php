@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Ui\Test\Unit\Component\Form\Element\DataType;
 
-use Exception;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Stdlib\DateTime\Intl\DateFormatterFactory;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
@@ -15,8 +15,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\Context;
 use Magento\Framework\View\Element\UiComponent\Processor;
 use Magento\Ui\Component\Form\Element\DataType\Date;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class DateTest extends TestCase
@@ -144,7 +144,7 @@ class DateTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'localeDate' => $this->localeDateMock,
-                'localeResolver' => $this->localeResolverMock
+                'localeResolver' => $this->localeResolverMock,
             ]
         );
         $this->localeDateMock->expects($this->any())->method('getConfigTimezone')->willReturn('America/Chicago');
@@ -207,20 +207,20 @@ class DateTest extends TestCase
         string $expected
     ): void {
         $realDateFormatterFactory = new DateFormatterFactory();
-        
+
         $this->localeResolverMock
             ->expects($this->any())
             ->method('getLocale')
             ->willReturn($locale);
-            
+
         $this->date = $this->objectManagerHelper->getObject(
             Date::class,
             [
                 'localeResolver' => $this->localeResolverMock,
-                'dateFormatterFactory' => $realDateFormatterFactory
+                'dateFormatterFactory' => $realDateFormatterFactory,
             ]
         );
-        
+
         $result = $this->date->convertDateFormat($date);
         $this->assertEquals($expected, $result);
     }
@@ -236,33 +236,33 @@ class DateTest extends TestCase
             [
                 '2023-10-15',
                 'en_US',
-                '10/15/2023'
+                '10/15/2023',
             ],
             [
                 '10/15/2023',
                 'en_US',
-                '10/15/2023'
+                '10/15/2023',
             ],
             [
                 '2023-10-15',
                 'en_GB',
-                '15/10/2023'
+                '15/10/2023',
             ],
             [
                 '15/10/2023',
                 'en_GB',
-                '15/10/2023'
+                '15/10/2023',
             ],
             [
                 '2023-10-15',
                 'ja_JP',
-                '2023/10/15'
+                '2023/10/15',
             ],
             [
                 '2023/10/15',
                 'ja_JP',
-                '2023/10/15'
-            ]
+                '2023/10/15',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -177,7 +178,7 @@ class CatalogProductViewObserverTest extends TestCase
                 'customerSession' => $this->customerSessionMock,
                 'customerVisitor' => $this->customerVisitorMock,
                 'eventSaver' => $this->eventSaverMock,
-                'reportStatus' => $this->reportStatusMock
+                'reportStatus' => $this->reportStatusMock,
             ]
         );
     }

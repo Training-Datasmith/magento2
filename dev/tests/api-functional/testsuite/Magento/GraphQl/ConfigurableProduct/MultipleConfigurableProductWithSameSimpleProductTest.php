@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -44,8 +45,8 @@ class MultipleConfigurableProductWithSameSimpleProductTest extends GraphQlAbstra
                 'category_ids' => ['$test_category.id$'],
                 '_options' => ['$attribute$'],
                 '_links' => [
-                    '$simple_product_1$'
-                ]
+                    '$simple_product_1$',
+                ],
             ],
             'configurable-product-1'
         ),
@@ -57,8 +58,8 @@ class MultipleConfigurableProductWithSameSimpleProductTest extends GraphQlAbstra
                 'category_ids' => ['$test_category.id$'],
                 '_options' => ['$attribute$'],
                 '_links' => [
-                    '$simple_product_1$'
-                ]
+                    '$simple_product_1$',
+                ],
             ],
             'configurable-product-2'
         ),

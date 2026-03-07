@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class Type implements TypeInterface
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -65,7 +66,7 @@ class Type implements TypeInterface
      *
      * @return Field[]
      */
-    public function getFields() : array
+    public function getFields(): array
     {
         return $this->fields;
     }
@@ -83,7 +84,7 @@ class Type implements TypeInterface
      *
      * @return array
      */
-    public function getInterfaces() : array
+    public function getInterfaces(): array
     {
         return $this->interfaces;
     }
@@ -93,7 +94,7 @@ class Type implements TypeInterface
      *
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }

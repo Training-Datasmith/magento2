@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Framework\App\ObjectManager\Environment;
 
 use Magento\Framework\App\EnvironmentFactory;
-use Magento\Framework\Interception\ObjectManager\ConfigInterface;
 use Magento\Framework\App\EnvironmentInterface;
-use Magento\Framework\ObjectManager\Profiler\FactoryDecorator;
+use Magento\Framework\Interception\ObjectManager\ConfigInterface;
 use Magento\Framework\ObjectManager\FactoryInterface;
+use Magento\Framework\ObjectManager\Profiler\FactoryDecorator;
 use Magento\Framework\ObjectManager\Profiler\Log;
 
 abstract class AbstractEnvironment implements EnvironmentInterface

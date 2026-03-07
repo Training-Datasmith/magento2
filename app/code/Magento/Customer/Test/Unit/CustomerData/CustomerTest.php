@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -50,7 +51,7 @@ class CustomerTest extends TestCase
             CustomerData::class,
             [
                 'currentCustomer' => $this->currentCustomerMock,
-                'customerViewHelper' => $this->customerViewHelperMock
+                'customerViewHelper' => $this->customerViewHelperMock,
             ]
         );
     }

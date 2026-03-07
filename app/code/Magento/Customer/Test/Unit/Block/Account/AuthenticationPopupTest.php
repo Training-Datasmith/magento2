@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -12,13 +13,12 @@ use Magento\Customer\Model\Form;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -152,7 +152,7 @@ class AuthenticationPopupTest extends TestCase
                     'customerRegisterUrl' => 'escapeUrlreg',
                     'customerForgotPasswordUrl' => 'escapeUrlforgot',
                     'baseUrl' => 'escapeUrlbase',
-                    'customerLoginUrl'=>'loginUrl',
+                    'customerLoginUrl' => 'loginUrl',
                 ],
             ],
             [
@@ -166,7 +166,7 @@ class AuthenticationPopupTest extends TestCase
                     'customerRegisterUrl' => 'escapeUrlreg',
                     'customerForgotPasswordUrl' => 'escapeUrlforgot',
                     'baseUrl' => 'escapeUrl',
-                    'customerLoginUrl'=>'loginUrl',
+                    'customerLoginUrl' => 'loginUrl',
                 ],
             ],
             [
@@ -180,7 +180,7 @@ class AuthenticationPopupTest extends TestCase
                     'customerRegisterUrl' => 'escapeUrl',
                     'customerForgotPasswordUrl' => 'escapeUrlforgot',
                     'baseUrl' => 'escapeUrlbase',
-                    'customerLoginUrl'=>'loginUrl',
+                    'customerLoginUrl' => 'loginUrl',
                 ],
             ],
             [
@@ -194,7 +194,7 @@ class AuthenticationPopupTest extends TestCase
                     'customerRegisterUrl' => 'escapeUrlreg',
                     'customerForgotPasswordUrl' => 'escapeUrl',
                     'baseUrl' => 'escapeUrlbase',
-                    'customerLoginUrl'=>'loginUrl',
+                    'customerLoginUrl' => 'loginUrl',
                 ],
             ],
         ];

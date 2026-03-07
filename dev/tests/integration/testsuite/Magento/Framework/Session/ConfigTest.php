@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 // @codingStandardsIgnoreStart
+
 namespace {
     $mockPHPFunctions = false;
 }
@@ -153,7 +155,7 @@ namespace Magento\Framework\Session {
                 ['use_trans_sid', 'getUseTransSid', true],
                 ['hash_function', 'getHashFunction', 'md5'],
                 ['hash_bits_per_character', 'getHashBitsPerCharacter', 5],
-                ['url_rewriter_tags', 'getUrlRewriterTags', 'a=href']
+                ['url_rewriter_tags', 'getUrlRewriterTags', 'a=href'],
             ];
         }
 

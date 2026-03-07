@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -59,9 +60,9 @@ foreach ($attributeOptions as $attributeOption) {
         [
             'product_id' => $productConfigurable->getId(),
             'super_attribute' => [
-                $attribute->getAttributeId() => $attributeOption->getValue()
+                $attribute->getAttributeId() => $attributeOption->getValue(),
             ],
-            'qty' => 1
+            'qty' => 1,
         ]
     );
     $quote->addProduct($productConfigurable, $request);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -30,16 +31,16 @@ return [
                         'sortOrder' => 10,
                         'instance' => ItemPluginSimple::class,
                     ],
-                ]
+                ],
             ],
             [],
-            []
+            [],
         ],
     ],
     [
         [
             'global',
-            'backend'
+            'backend',
         ],
         [],
         [],
@@ -49,11 +50,11 @@ return [
             [],
             [
                 'global',
-                'backend'
+                'backend',
             ],
             [
                 'global' => true,
-                'backend' => true
+                'backend' => true,
             ],
             [
                 Item::class => [
@@ -77,10 +78,10 @@ return [
                         'sortOrder' => 20,
                         'instance' => Plugin::class,
                     ],
-                ]
+                ],
             ],
             [],
-            []
-        ]
-    ]
+            [],
+        ],
+    ],
 ];

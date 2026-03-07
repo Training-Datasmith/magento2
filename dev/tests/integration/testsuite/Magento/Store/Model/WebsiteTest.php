@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model;
 
 use Magento\Framework\App\Cache\Type\Config;
@@ -263,7 +266,7 @@ class WebsiteTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 $expectedStatus,
                 $invalidatedCacheTypes[Type::TYPE_IDENTIFIER]->getData('status'),
-                "Full page cache " . $messageEnd
+                'Full page cache ' . $messageEnd
             );
         }
 
@@ -271,7 +274,7 @@ class WebsiteTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(
                 $expectedStatus,
                 $invalidatedCacheTypes[Config::TYPE_IDENTIFIER]->getData('status'),
-                "Configuration cache " . $messageEnd
+                'Configuration cache ' . $messageEnd
             );
         }
     }

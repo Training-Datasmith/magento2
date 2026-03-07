@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Test\GraphQl;
 
 use Exception;
 use Magento\Framework\App\Utility\Files;
+use Magento\Test\Php\LiveCodeTest as PHPCodeTest;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer;
 use Magento\TestFramework\CodingStandard\Tool\CodeSniffer\Wrapper;
-use Magento\Test\Php\LiveCodeTest as PHPCodeTest;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -75,13 +76,13 @@ class LiveCodeTest extends TestCase
     {
         $this->markTestSkipped('AC-9497 written incorrectly');
         $modulesRequireGraphQLChange = self::getModulesRequiringGraphQLChange();
-        $graphQlModules = implode(", ", $modulesRequireGraphQLChange);
+        $graphQlModules = implode(', ', $modulesRequireGraphQLChange);
         $this->assertEmpty(
             $modulesRequireGraphQLChange,
-            "The view layer changes have been detected in the " .
-            str_replace("GraphQl", "", $graphQlModules) . " module. " .
-            "The " . $graphQlModules ." module is expected to be updated to reflect these changes. " .
-            "The test failure can be ignored if the changes can not be covered with GraphQL API."
+            'The view layer changes have been detected in the ' .
+            str_replace('GraphQl', '', $graphQlModules) . ' module. ' .
+            'The ' . $graphQlModules .' module is expected to be updated to reflect these changes. ' .
+            'The test failure can be ignored if the changes can not be covered with GraphQL API.'
         );
     }
 
@@ -117,7 +118,7 @@ class LiveCodeTest extends TestCase
             }
 
             if (!in_array($moduleName, $requireGraphQLChanges) && self::isViewLayerClass($whitelistFile, $moduleName)) {
-                $requireGraphQLChanges[] = $moduleName . "GraphQl";
+                $requireGraphQLChanges[] = $moduleName . 'GraphQl';
             }
         }
         return array_diff($requireGraphQLChanges, $updatedGraphQlModules);
@@ -164,7 +165,7 @@ class LiveCodeTest extends TestCase
     {
         $className = str_replace('.php', '', basename($filePath));
         if (preg_match('#^namespace\s+(.+?);$#sm', file_get_contents($filePath), $m)) {
-            return ($m[1] && $className) ? $m[1] . "\\" . $className : '';
+            return ($m[1] && $className) ? $m[1] . '\\' . $className : '';
         }
         return '';
     }

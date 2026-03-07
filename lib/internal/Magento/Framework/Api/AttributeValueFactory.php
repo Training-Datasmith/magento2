@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Factory class for \Magento\Framework\Authorization
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Api;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -14,7 +17,7 @@ class AttributeValueFactory
     /**
      * Entity class name
      */
-    const CLASS_NAME = \Magento\Framework\Api\AttributeValue::class;
+    public const CLASS_NAME = \Magento\Framework\Api\AttributeValue::class;
 
     /**
      * Object Manager instance

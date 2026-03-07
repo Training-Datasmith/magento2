@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -31,8 +33,8 @@ $requestInfo = new \Magento\Framework\DataObject(
         'selected_configurable_option' => 1,
         'qty' => 1,
         'super_attribute' => [
-            $attribute->getId() => $option->getId()
-        ]
+            $attribute->getId() => $option->getId(),
+        ],
     ]
 );
 

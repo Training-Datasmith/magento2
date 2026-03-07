@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model;
 
 use Magento\CatalogInventory\Api\Data\StockInterface;
@@ -74,8 +77,8 @@ class StockRegistryStorage implements ResetAfterRequestInterface
      */
     public function getStockItem(?int $productId, ?int $scopeId)
     {
-        $productId= $productId ?? '';
-        $scopeId= $scopeId ?? '';
+        $productId = $productId ?? '';
+        $scopeId = $scopeId ?? '';
         return $this->stockItems[$productId][$scopeId] ?? null;
     }
 

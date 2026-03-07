@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -364,7 +365,7 @@ class CreditmemoLoaderTest extends TestCase
 
         $this->creditmemoFactoryMock->expects($this->once())
             ->method('createByOrder')
-            ->with($orderMock, $this->callback(fn($arg) => is_array($arg)))
+            ->with($orderMock, $this->callback(fn ($arg) => is_array($arg)))
             ->willReturn($creditmemoMock);
 
         $this->assertSame($creditmemoMock, $this->loader->load());
@@ -422,7 +423,7 @@ class CreditmemoLoaderTest extends TestCase
 
         $this->creditmemoFactoryMock->expects($this->once())
             ->method('createByOrder')
-            ->with($orderMock, $this->callback(fn($arg) => is_array($arg)))
+            ->with($orderMock, $this->callback(fn ($arg) => is_array($arg)))
             ->willReturn($creditmemoMock);
 
         $this->assertSame($creditmemoMock, $this->loader->load());

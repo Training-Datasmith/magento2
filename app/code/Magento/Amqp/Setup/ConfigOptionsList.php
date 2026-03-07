@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Amqp\Setup;
 
 use Magento\Framework\App\DeploymentConfig;
@@ -26,7 +29,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST = 'amqp-virtualhost';
     public const INPUT_KEY_QUEUE_AMQP_SSL = 'amqp-ssl';
     public const INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS = 'amqp-ssl-options';
-    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION ='queue-default-connection';
+    public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION = 'queue-default-connection';
 
     /**
      * Path to the values in the deployment config
@@ -49,23 +52,14 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const DEFAULT_AMQP_VIRTUAL_HOST = '/';
     public const DEFAULT_AMQP_SSL = '';
 
-    /**
-     * @var ConnectionValidator
-     */
-    private $connectionValidator;
-
-    /**
-     * @param ConnectionValidator $connectionValidator
-     */
-    public function __construct(ConnectionValidator $connectionValidator)
+    public function __construct(private readonly ConnectionValidator $connectionValidator)
     {
-        $this->connectionValidator = $connectionValidator;
     }
 
     /**
      * @inheritdoc
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             new TextConfigOption(
@@ -124,7 +118,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
      * @inheritdoc
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function createConfig(array $data, DeploymentConfig $deploymentConfig)
+    public function createConfig(array $data, DeploymentConfig $deploymentConfig): array
     {
         $configData = new ConfigData(ConfigFilePool::APP_ENV);
 
@@ -153,7 +147,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
                 self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS
             )) {
                 $options = json_decode(
-                    $data[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
+                    (string) $data[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
                     true
                 );
                 if ($options !== null) {
@@ -170,8 +164,9 @@ class ConfigOptionsList implements ConfigOptionsListInterface
 
     /**
      * @inheritdoc
+     * @return list<'Could not connect to the Amqp Server.'>
      */
-    public function validate(array $options, DeploymentConfig $deploymentConfig)
+    public function validate(array $options, DeploymentConfig $deploymentConfig): array
     {
         $errors = [];
 
@@ -182,7 +177,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
                 self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS
             )) {
                 $sslOptions = json_decode(
-                    $options[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
+                    (string) $options[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
                     true
                 );
             } else {
@@ -202,7 +197,7 @@ class ConfigOptionsList implements ConfigOptionsListInterface
             );
 
             if (!$result) {
-                $errors[] = "Could not connect to the Amqp Server.";
+                $errors[] = 'Could not connect to the Amqp Server.';
             }
 
             if (isset($options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION])
@@ -216,12 +211,8 @@ class ConfigOptionsList implements ConfigOptionsListInterface
 
     /**
      * Check if data ($data) with key ($key) is empty
-     *
-     * @param array $data
-     * @param string $key
-     * @return bool
      */
-    private function isDataEmpty(array $data, $key)
+    private function isDataEmpty(array $data, string $key): bool
     {
         if (isset($data[$key]) && $data[$key] !== '') {
             return false;

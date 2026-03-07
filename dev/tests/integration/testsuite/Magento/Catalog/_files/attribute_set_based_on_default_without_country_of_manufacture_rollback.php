@@ -1,19 +1,20 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
+use Magento\Catalog\Api\AttributeSetRepositoryInterface;
 use Magento\Eav\Model\AttributeSetSearchResults;
 use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrderBuilder;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Registry;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\AttributeSetRepositoryInterface;
-use Magento\Eav\Model\Entity\Type;
 
 $objectManager = Bootstrap::getObjectManager();
 

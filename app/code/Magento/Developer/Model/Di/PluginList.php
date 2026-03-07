@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,16 +19,16 @@ class PluginList extends Interception\PluginList\PluginList
     /**#@+
      * Constants for the plugin types
      */
-    const PLUGIN_TYPE_BEFORE = 'before';
-    const PLUGIN_TYPE_AROUND = 'around';
-    const PLUGIN_TYPE_AFTER = 'after';
+    public const PLUGIN_TYPE_BEFORE = 'before';
+    public const PLUGIN_TYPE_AROUND = 'around';
+    public const PLUGIN_TYPE_AFTER = 'after';
     /**#@-*/
 
     /**#@-*/
     private $pluginList = [
        self::PLUGIN_TYPE_BEFORE => [],
        self::PLUGIN_TYPE_AROUND => [],
-       self::PLUGIN_TYPE_AFTER  => []
+       self::PLUGIN_TYPE_AFTER  => [],
     ];
 
     /**
@@ -36,7 +38,7 @@ class PluginList extends Interception\PluginList\PluginList
     private $pluginTypeMapping = [
         DefinitionInterface::LISTENER_AROUND => self::PLUGIN_TYPE_AROUND,
         DefinitionInterface::LISTENER_BEFORE => self::PLUGIN_TYPE_BEFORE,
-        DefinitionInterface::LISTENER_AFTER => self::PLUGIN_TYPE_AFTER
+        DefinitionInterface::LISTENER_AFTER => self::PLUGIN_TYPE_AFTER,
     ];
 
     /**

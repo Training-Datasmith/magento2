@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
@@ -83,7 +86,7 @@ class LinkedProductSelectBuilderByTierPrice implements LinkedProductSelectBuilde
     /**
      * @inheritdoc
      */
-    public function build(int $productId, int $storeId) : array
+    public function build(int $productId, int $storeId): array
     {
         $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
         $productTable = $this->resource->getTableName('catalog_product_entity');

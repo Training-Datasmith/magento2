@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\Category;
 
 use Magento\Catalog\Model\Category;
@@ -15,7 +18,7 @@ use Magento\Catalog\Model\Category;
  */
 class ProductIndexerTest extends \PHPUnit\Framework\TestCase
 {
-    const DEFAULT_ROOT_CATEGORY = 2;
+    public const DEFAULT_ROOT_CATEGORY = 2;
 
     /**
      * @var \Magento\Framework\Indexer\IndexerInterface

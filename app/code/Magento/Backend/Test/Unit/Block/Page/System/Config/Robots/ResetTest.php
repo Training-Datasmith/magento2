@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Backend\Block\Page\System\Config\Robots\Reset
  */
+
 namespace Magento\Backend\Test\Unit\Block\Page\System\Config\Robots;
 
 use Magento\Backend\Block\Page\System\Config\Robots\Reset;
@@ -42,8 +44,8 @@ class ResetTest extends TestCase
         $objects = [
             [
                 SecureHtmlRenderer::class,
-                $this->createMock(SecureHtmlRenderer::class)
-            ]
+                $this->createMock(SecureHtmlRenderer::class),
+            ],
         ];
         $objectHelper->prepareObjectManager($objects);
         $context = $objectHelper->getObject(

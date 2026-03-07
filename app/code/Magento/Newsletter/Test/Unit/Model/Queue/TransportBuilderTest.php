@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpDeprecationInspection */
+<?php
+
+/** @noinspection PhpDeprecationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /**
  * Copyright 2014 Adobe

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class WizardTest extends TestCase
             Wizard::class,
             [
                 'context' => $context,
-                'productBuilder' => $this->productBuilder
+                'productBuilder' => $this->productBuilder,
             ]
         );
     }

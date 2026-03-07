@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class CollectionTest extends TestCase
             ->willReturn($this->selectMock);
         $this->collection->expects($this->exactly(2))
             ->method('getTable')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['sales_order_item'] => 'sales_order_item',
                 ['sales_order'] => 'sales_order'
             });
@@ -121,7 +122,7 @@ class CollectionTest extends TestCase
                 [
                     'ordered_qty' => 'order_items.qty_ordered',
                     'order_items_name' => 'order_items.name',
-                    'order_items_sku' => 'order_items.sku'
+                    'order_items_sku' => 'order_items.sku',
                 ]
             )
             ->willReturnSelf();

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Downloadable\Helper;
 
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\MediaStorage\Model\File\Uploader;
 
@@ -781,6 +784,6 @@ class File extends \Magento\Framework\App\Helper\AbstractHelper
         'xxyz' => 'chemical/x-xyz',
         'xzaz' => 'application/vnd.zzazz.deck+xml',
         'xzip' => 'application/zip',
-        'xzmm' => 'application/vnd.handheld-entertainment+xml'
+        'xzmm' => 'application/vnd.handheld-entertainment+xml',
     ];
 }

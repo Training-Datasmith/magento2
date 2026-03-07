@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductAlert\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DB\Select;
 use Magento\ProductAlert\Model\Mailing\AlertProcessor;
 use Magento\ProductAlert\Model\Mailing\Publisher;
-use Magento\ProductAlert\Model\ResourceModel\Stock\CollectionFactory as StockCollectionFactory;
 use Magento\ProductAlert\Model\ResourceModel\Price\CollectionFactory as PriceCollectionFactory;
+use Magento\ProductAlert\Model\ResourceModel\Stock\CollectionFactory as StockCollectionFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -25,7 +28,7 @@ class Observer
      * @deprecated
      * @see \Magento\ProductAlert\Model\Mailing\ErrorEmailSender::XML_PATH_ERROR_TEMPLATE
      */
-    const XML_PATH_ERROR_TEMPLATE = 'catalog/productalert_cron/error_email_template';
+    public const XML_PATH_ERROR_TEMPLATE = 'catalog/productalert_cron/error_email_template';
 
     /**
      * Error email identity configuration
@@ -33,7 +36,7 @@ class Observer
      * @deprecated
      * @see \Magento\ProductAlert\Model\Mailing\ErrorEmailSender::XML_PATH_ERROR_IDENTITY
      */
-    const XML_PATH_ERROR_IDENTITY = 'catalog/productalert_cron/error_email_identity';
+    public const XML_PATH_ERROR_IDENTITY = 'catalog/productalert_cron/error_email_identity';
 
     /**
      * 'Send error emails to' configuration
@@ -41,19 +44,19 @@ class Observer
      * @deprecated
      * @see \Magento\ProductAlert\Model\Mailing\ErrorEmailSender::XML_PATH_ERROR_RECIPIENT
      */
-    const XML_PATH_ERROR_RECIPIENT = 'catalog/productalert_cron/error_email';
+    public const XML_PATH_ERROR_RECIPIENT = 'catalog/productalert_cron/error_email';
 
     /**
      * Allow price alert
      *
      */
-    const XML_PATH_PRICE_ALLOW = 'catalog/productalert/allow_price';
+    public const XML_PATH_PRICE_ALLOW = 'catalog/productalert/allow_price';
 
     /**
      * Allow stock alert
      *
      */
-    const XML_PATH_STOCK_ALLOW = 'catalog/productalert/allow_stock';
+    public const XML_PATH_STOCK_ALLOW = 'catalog/productalert/allow_stock';
 
     /**
      * Core store config
@@ -81,7 +84,6 @@ class Observer
      * @var Publisher
      */
     private $publisher;
-
 
     /**
      * @param ScopeConfigInterface $scopeConfig

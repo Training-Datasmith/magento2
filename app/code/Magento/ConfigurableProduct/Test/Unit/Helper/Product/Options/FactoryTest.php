@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Helper\Product\Options;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\ConfigurableProduct\Api\Data\OptionValueInterface;
@@ -17,6 +17,7 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\AttributeFactory;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -86,8 +87,8 @@ class FactoryTest extends TestCase
         $attributeId = 90;
         $data = [
             ['attribute_id' => $attributeId, 'values' => [
-                ['value_index' => 12], ['value_index' => 13]
-            ]]
+                ['value_index' => 12], ['value_index' => 13],
+            ]],
         ];
 
         $attribute = $this->createPartialMock(Attribute::class, ['setValues', 'getData']);

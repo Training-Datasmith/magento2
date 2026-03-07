@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,10 +17,10 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
  */
 class CartManagementTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteCartManagementV1';
-    const RESOURCE_PATH = '/V1/carts/';
-    const RESOURCE_PATH_CUSTOMER_TOKEN = "/V1/integration/customer/token";
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteCartManagementV1';
+    public const RESOURCE_PATH = '/V1/carts/';
+    public const RESOURCE_PATH_CUSTOMER_TOKEN = '/V1/integration/customer/token';
 
     protected $createdQuotes = [];
 
@@ -114,8 +115,8 @@ class CartManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         $quoteId = $this->_webApiCall($serviceInfo, ['customerId' => 999]); // customerId 999 will get overridden
@@ -126,8 +127,8 @@ class CartManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
-            ]
+                'token' => $token,
+            ],
         ];
 
         /** @var \Magento\Quote\Api\Data\CartInterface $cart */
@@ -408,7 +409,7 @@ class CartManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine/order',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
-                'token' => $token
+                'token' => $token,
             ],
         ];
 
@@ -442,13 +443,13 @@ class CartManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => '/V1/carts/mine',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
+                'token' => $token,
             ],
             'soap' => [
                 'service' => 'quoteCartManagementV1',
                 'serviceVersion' => 'V1',
                 'operation' => 'quoteCartManagementV1GetCartForCustomer',
-                'token' => $token
+                'token' => $token,
             ],
         ];
 

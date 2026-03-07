@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Config backend model for "Use Custom Admin URL" option
  */
+
 namespace Magento\Config\Model\Config\Backend\Admin;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Weee\Test\Unit\Model\Total\Quote;
 
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
 use Magento\Quote\Model\Quote;
@@ -22,8 +23,8 @@ use Magento\Tax\Model\Calculation;
 use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector as CTC;
 use Magento\Weee\Helper\Data as WeeeHelperData;
 use Magento\Weee\Model\Total\Quote\WeeeTax;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -108,7 +109,7 @@ class WeeeTaxTest extends TestCase
                 'getProduct',
                 'getQuote',
                 'getAddress',
-                'getTotalQty'
+                'getTotalQty',
             ]
         );
 
@@ -161,7 +162,7 @@ class WeeeTaxTest extends TestCase
             }
             $extraDetails = [
                 'weee' => [
-                    'sequence-1' => $weeeTaxDetails
+                    'sequence-1' => $weeeTaxDetails,
                 ],
             ];
         } else {

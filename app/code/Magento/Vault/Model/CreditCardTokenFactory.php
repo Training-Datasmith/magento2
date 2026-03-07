@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model;
 
 /**
@@ -15,7 +18,7 @@ class CreditCardTokenFactory extends AbstractPaymentTokenFactory
     /**
      * @var string
      */
-    const TOKEN_TYPE_CREDIT_CARD = 'card';
+    public const TOKEN_TYPE_CREDIT_CARD = 'card';
 
     /**
      * @inheritdoc

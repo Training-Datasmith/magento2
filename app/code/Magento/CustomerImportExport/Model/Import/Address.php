@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
@@ -6,14 +8,14 @@
 
 namespace Magento\CustomerImportExport\Model\Import;
 
+use Magento\Customer\Model\Indexer\Processor;
 use Magento\CustomerImportExport\Model\Import\CountryWithWebsites as CountryWithWebsitesSource;
+use Magento\CustomerImportExport\Model\ResourceModel\Import\Address\Storage as AddressStorage;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\App\ObjectManager;
+use Magento\ImportExport\Model\Import\AbstractSource;
 use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Store\Model\Store;
-use Magento\CustomerImportExport\Model\ResourceModel\Import\Address\Storage as AddressStorage;
-use Magento\ImportExport\Model\Import\AbstractSource;
-use Magento\Customer\Model\Indexer\Processor;
 
 /**
  * Customer address import
@@ -218,11 +220,11 @@ class Address extends AbstractCustomer
      * @var string[]
      */
     protected $validColumnNames = [
-        "region_id",
-        "vat_is_valid",
-        "vat_request_date",
-        "vat_request_id",
-        "vat_request_success"
+        'region_id',
+        'vat_is_valid',
+        'vat_request_date',
+        'vat_request_id',
+        'vat_request_success',
     ];
 
     /**
@@ -683,7 +685,7 @@ class Address extends AbstractCustomer
             'entity_row_new' => $entityRowNew,
             'entity_row_update' => $entityRowUpdate,
             'attributes' => $attributes,
-            'defaults' => $defaults
+            'defaults' => $defaults,
         ];
     }
 

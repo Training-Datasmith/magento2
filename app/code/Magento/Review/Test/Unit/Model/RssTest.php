@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class RssTest extends TestCase
             Rss::class,
             [
                 'eventManager' => $this->managerInterface,
-                'reviewFactory' => $this->reviewFactory
+                'reviewFactory' => $this->reviewFactory,
             ]
         );
     }
@@ -57,14 +58,14 @@ class RssTest extends TestCase
     {
         $reviewModel = $this->createPartialMock(Review::class, [
             '__wakeUp',
-            'getProductCollection'
+            'getProductCollection',
         ]);
         $productCollection = $this->createPartialMock(
             Collection::class,
             [
                 'addStatusFilter',
                 'addAttributeToSelect',
-                'setDateOrder'
+                'setDateOrder',
             ]
         );
         $reviewModel->expects($this->once())->method('getProductCollection')

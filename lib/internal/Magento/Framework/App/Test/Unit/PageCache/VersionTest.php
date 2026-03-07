@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Stdlib\Cookie\CookieMetadataFactory;
 use Magento\Framework\Stdlib\Cookie\PublicCookieMetadata;
 use Magento\Framework\Stdlib\CookieManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
-
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class VersionTest extends TestCase
@@ -68,7 +69,7 @@ class VersionTest extends TestCase
             [
                 'cookieManager' => $this->cookieManagerMock,
                 'cookieMetadataFactory' => $this->cookieMetadataFactoryMock,
-                'request' => $this->requestMock
+                'request' => $this->requestMock,
             ]
         );
     }
@@ -130,8 +131,8 @@ class VersionTest extends TestCase
     public static function processProvider()
     {
         return [
-            "post" => [true],
-            "notPost" => [false]
+            'post' => [true],
+            'notPost' => [false],
         ];
     }
 }

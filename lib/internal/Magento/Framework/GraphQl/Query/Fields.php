@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -57,8 +58,8 @@ class Fields implements ResetAfterRequestInterface
                     'leave' => [
                         NodeKind::NAME => function (Node $node) use (&$queryFields) {
                             $queryFields[$node->value] = $node->value;
-                        }
-                    ]
+                        },
+                    ],
                 ]
             );
             if (isset($variables)) {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +13,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class BillingAddressManagementTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
-    const SERVICE_NAME = 'quoteBillingAddressManagementV1';
-    const RESOURCE_PATH = '/V1/carts/';
+    public const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'quoteBillingAddressManagementV1';
+    public const RESOURCE_PATH = '/V1/carts/';
 
     /**
      * @var \Magento\TestFramework\ObjectManager
@@ -53,7 +55,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             AddressInterface::KEY_EMAIL => $address->getEmail(),
             AddressInterface::SAME_AS_BILLING => $address->getSameAsBilling(),
             AddressInterface::CUSTOMER_ADDRESS_ID => $address->getCustomerAddressId(),
-            AddressInterface::SAVE_IN_ADDRESS_BOOK => $address->getSaveInAddressBook()
+            AddressInterface::SAVE_IN_ADDRESS_BOOK => $address->getSaveInAddressBook(),
 
         ];
 
@@ -71,7 +73,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $response = $this->_webApiCall($serviceInfo, $requestData);
 
         asort($data);
@@ -116,7 +118,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             'fax' => '44332255',
         ];
         $requestData = [
-            "cartId" => $quote->getId(),
+            'cartId' => $quote->getId(),
             'address' => $addressData,
         ];
 
@@ -179,7 +181,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             AddressInterface::KEY_EMAIL => $address->getEmail(),
             AddressInterface::SAME_AS_BILLING => $address->getSameAsBilling(),
             AddressInterface::CUSTOMER_ADDRESS_ID => $address->getCustomerAddressId(),
-            AddressInterface::SAVE_IN_ADDRESS_BOOK => $address->getSaveInAddressBook()
+            AddressInterface::SAVE_IN_ADDRESS_BOOK => $address->getSaveInAddressBook(),
 
         ];
 
@@ -187,7 +189,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . 'mine/billing-address',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
-                'token' => $token
+                'token' => $token,
             ],
         ];
 
@@ -220,7 +222,7 @@ class BillingAddressManagementTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . 'mine/billing-address',
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
-                'token' => $token
+                'token' => $token,
             ],
         ];
 

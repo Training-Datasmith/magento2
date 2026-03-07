@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Config\Reader\Definition;
 
 use Magento\Framework\Config\CacheInterface;
+use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Ui\Config\Converter;
-use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Ui\Config\Reader\Definition;
 use Magento\Ui\Config\Reader\DefinitionFactory;
 
@@ -17,9 +20,9 @@ use Magento\Ui\Config\Reader\DefinitionFactory;
  */
 class Data implements \Magento\Framework\Config\DataInterface
 {
-    const CACHE_ID = 'ui_component_configuration_definition_data';
+    public const CACHE_ID = 'ui_component_configuration_definition_data';
 
-    const SEARCH_PATTERN = '%s.xml';
+    public const SEARCH_PATTERN = '%s.xml';
 
     /**
      * Config data

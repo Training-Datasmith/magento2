@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CustomerImportExport\Model\Import;
 
-use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 use Magento\Customer\Model\Indexer\Processor;
+use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface;
 
 /**
  * Import entity customer combined model
@@ -321,7 +324,7 @@ class CustomerComposite extends \Magento\ImportExport\Model\Import\AbstractEntit
         foreach ($source as $row) {
             $rows[] = [
                 Address::COLUMN_EMAIL => $row[Customer::COLUMN_EMAIL] ?? null,
-                Address::COLUMN_WEBSITE => $row[Customer::COLUMN_WEBSITE] ?? null
+                Address::COLUMN_WEBSITE => $row[Customer::COLUMN_WEBSITE] ?? null,
             ];
         }
         $source->rewind();

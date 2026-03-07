@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class ImplementsReader
      * @param \GraphQL\Language\AST\NodeList $directives
      * @return string[]|null
      */
-    public function read(\GraphQL\Language\AST\NodeList $directives) : array
+    public function read(\GraphQL\Language\AST\NodeList $directives): array
     {
         foreach ($directives as $directive) {
             if ($directive->name->value == 'implements') {

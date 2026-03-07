@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -443,7 +444,7 @@ class ProductTest extends AbstractBackendController
                 $optionId = $attribute->getSource()->getOptionId($optionLabel);
                 if (empty($result[$attribute->getAttributeId()])) {
                     $result[$attribute->getAttributeId()] = [
-                        'attribute_id' =>$attribute->getAttributeId(),
+                        'attribute_id' => $attribute->getAttributeId(),
                         'code' => $attribute->getAttributeCode(),
                         'label' => $attribute->getAttributeCode(),
                         'position' => '0',

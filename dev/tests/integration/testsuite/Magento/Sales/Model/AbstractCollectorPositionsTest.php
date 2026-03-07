@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Abstract test case to test positions of a module's total collectors as compared to other collectors
  */
+
 namespace Magento\Sales\Model;
 
 use PHPUnit\Framework\Attributes\DataProvider;

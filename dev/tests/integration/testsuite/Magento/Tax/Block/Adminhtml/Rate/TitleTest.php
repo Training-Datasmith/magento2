@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Block\Adminhtml\Rate;
 
 use Magento\Tax\Controller\RegistryConstants;
-use Magento\Tax\Model\Calculation\Rate;
 
 class TitleTest extends \PHPUnit\Framework\TestCase
 {

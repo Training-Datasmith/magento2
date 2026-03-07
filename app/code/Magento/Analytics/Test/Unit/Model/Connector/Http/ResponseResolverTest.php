@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class ResponseResolverTest extends TestCase
                 'responseHandlers' => [
                     201 => $this->successResponseHandlerMock,
                     404 => $this->notFoundResponseHandlerMock,
-                ]
+                ],
             ]
         );
     }

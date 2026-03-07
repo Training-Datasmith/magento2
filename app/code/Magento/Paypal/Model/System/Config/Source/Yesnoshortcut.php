@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\System\Config\Source;
 
 /**
@@ -19,7 +22,7 @@ class Yesnoshortcut implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => 1, 'label' => __('Yes (PayPal recommends this option)')],
-            ['value' => 0, 'label' => __('No')]
+            ['value' => 0, 'label' => __('No')],
         ];
     }
 }

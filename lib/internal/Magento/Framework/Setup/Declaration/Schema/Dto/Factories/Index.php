@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Dto\Factories;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Setup\Declaration\Schema\Declaration\TableElement\ElementNameResolver;
 use Magento\Framework\Setup\Declaration\Schema\TableNameResolver;
@@ -19,7 +21,7 @@ class Index implements FactoryInterface
     /**
      * Default index type.
      */
-    const DEFAULT_INDEX_TYPE = "btree";
+    public const DEFAULT_INDEX_TYPE = 'btree';
 
     /**
      * @var ObjectManagerInterface

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -146,7 +147,7 @@ class StockItemRepositoryTest extends TestCase
                 'getWebsiteId',
                 'setWebsiteId',
                 'getStockId',
-                'setStockId'
+                'setStockId',
             ]
         );
         $this->stockConfigurationMock = $this->createMock(StockConfigurationInterface::class);
@@ -446,7 +447,7 @@ class StockItemRepositoryTest extends TestCase
             'should set stockStatusChangedAuto=true if: stockStatusChangedAutomaticallyFlag=true' => [
                 'stockStateProviderMockConfig' => [],
                 'stockItemMockConfig' => [
-                    'getStockStatusChangedAuto' => ['expects' =>'once', 'willReturn' => false,],
+                    'getStockStatusChangedAuto' => ['expects' => 'once', 'willReturn' => false,],
                     'setIsInStock' => ['expects' => 'never',],
                     'setStockStatusChangedAuto' => ['expects' => 'once', 'with' => [1],],
                     'hasStockStatusChangedAutomaticallyFlag' => ['expects' => 'once', 'willReturn' => true,],
@@ -465,7 +466,7 @@ class StockItemRepositoryTest extends TestCase
                 ],
                 'existingStockItemMockConfig' => [
                 ],
-            ]
+            ],
         ];
     }
 
@@ -482,7 +483,7 @@ class StockItemRepositoryTest extends TestCase
             if (is_string($expects)) {
                 $expects = $this->createInvocationMatcher($expects);
             }
-            
+
             $mockMethod = $mockObject->expects($expects)->method($method);
             if (isset($config['with'])) {
                 $mockMethod->with(...$config['with']);

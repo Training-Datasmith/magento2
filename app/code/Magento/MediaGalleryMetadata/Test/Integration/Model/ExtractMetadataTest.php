@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\MediaGalleryMetadataApi\Api\ExtractMetadataInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ExtractMetadata
@@ -91,13 +92,13 @@ class ExtractMetadataTest extends TestCase
                 'exif_image.png',
                 'Exif title png imge',
                 'Exif description png imge',
-                null
+                null,
             ],
             [
                 'exif-image.jpeg',
                 'Exif Magento title',
                 'Exif description metadata',
-                 null
+                 null,
             ],
             [
                 'macos-photos.jpeg',
@@ -105,8 +106,8 @@ class ExtractMetadataTest extends TestCase
                 'Description of the magento image',
                 [
                     'magento',
-                    'mediagallerymetadata'
-                ]
+                    'mediagallerymetadata',
+                ],
             ],
             [
                 'macos-preview.png',
@@ -114,8 +115,8 @@ class ExtractMetadataTest extends TestCase
                 'Description of the magento image',
                 [
                     'magento',
-                    'mediagallerymetadata'
-                ]
+                    'mediagallerymetadata',
+                ],
             ],
             [
                 'iptc_only.jpeg',
@@ -123,8 +124,8 @@ class ExtractMetadataTest extends TestCase
                 'Description of the magento image',
                 [
                     'magento',
-                    'mediagallerymetadata'
-                ]
+                    'mediagallerymetadata',
+                ],
             ],
             [
                 'exiftool.gif',
@@ -132,8 +133,8 @@ class ExtractMetadataTest extends TestCase
                 'Description of the magento image',
                 [
                     'magento',
-                    'mediagallerymetadata'
-                ]
+                    'mediagallerymetadata',
+                ],
             ],
             [
                 'iptc_only.png',
@@ -141,8 +142,8 @@ class ExtractMetadataTest extends TestCase
                 'PNG format is awesome',
                 [
                     'png',
-                    'awesome'
-                ]
+                    'awesome',
+                ],
             ],
         ];
     }

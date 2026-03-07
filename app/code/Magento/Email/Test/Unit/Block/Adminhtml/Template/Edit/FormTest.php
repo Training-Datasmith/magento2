@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Email\Test\Unit\Block\Adminhtml\Template\Edit;
 
 use Magento\Email\Block\Adminhtml\Template\Edit\Form;
 use Magento\Email\Model\Template;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Variable\Model\Source\Variables;
 use Magento\Variable\Model\Variable;
 use Magento\Variable\Model\VariableFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

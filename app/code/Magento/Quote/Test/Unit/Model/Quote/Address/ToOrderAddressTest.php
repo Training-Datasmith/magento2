@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class ToOrderAddressTest extends TestCase
             [
                 'orderAddressRepository' => $this->orderAddressRepositoryMock,
                 'objectCopyService' => $this->objectCopyMock,
-                'dataObjectHelper' => $this->dataObjectHelper
+                'dataObjectHelper' => $this->dataObjectHelper,
             ]
         );
     }

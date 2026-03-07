@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,8 +8,7 @@
 
 namespace Magento\Framework\View\Element\UiComponent\Config\Provider;
 
-use \Magento\TestFramework\Helper\Bootstrap;
-use Magento\TestFramework\Helper\CacheCleaner;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoComponentsDir Magento/Framework/View/_files/UiComponent/theme

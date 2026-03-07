@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Framework\GraphQlSchemaStitching\GraphQlReader\Reader;
 
-use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\MetaReader\DocReader;
+use Magento\Framework\GraphQlSchemaStitching\GraphQlReader\TypeMetaReaderInterface;
 
 /**
  * Composite configuration reader to handle the enum type meta
@@ -34,20 +35,20 @@ class EnumType implements TypeMetaReaderInterface
     /**
      * @inheritDoc
      */
-    public function read(\GraphQL\Type\Definition\Type $typeMeta) : array
+    public function read(\GraphQL\Type\Definition\Type $typeMeta): array
     {
         if ($typeMeta instanceof \GraphQL\Type\Definition\EnumType) {
             $result = [
                 'name' => $typeMeta->name,
                 'type' => self::GRAPHQL_ENUM,
-                'items' => [] // Populated later
+                'items' => [], // Populated later
             ];
             foreach ($typeMeta->getValues() as $enumValueMeta) {
                 $result['items'][$enumValueMeta->value] = [
                     'name' => $enumValueMeta->name !== null ? strtolower($enumValueMeta->name) : '',
                     '_value' => $enumValueMeta->value,
                     'description' => $enumValueMeta->description,
-                    'deprecationReason' =>$enumValueMeta->deprecationReason
+                    'deprecationReason' => $enumValueMeta->deprecationReason,
                 ];
 
                 if ($this->docReader->read($enumValueMeta->astNode->directives)) {

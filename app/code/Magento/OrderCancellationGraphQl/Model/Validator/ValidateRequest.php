@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ValidateRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'order_id'
+                        'field' => 'order_id',
                     ]
                 )
             );
@@ -54,7 +55,7 @@ class ValidateRequest
                 __(
                     'Required parameter "%field" is missing or incorrect.',
                     [
-                        'field' => 'reason'
+                        'field' => 'reason',
                     ]
                 )
             );

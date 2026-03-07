@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Console\Command;
 
-use Magento\Framework\Component\ComponentRegistrar;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class DependenciesShowModulesCircularCommandTest extends \PHPUnit\Framework\TestCase
@@ -24,7 +26,7 @@ class DependenciesShowModulesCircularCommandTest extends \PHPUnit\Framework\Test
     {
         $modules = [
             'Magento_A' => __DIR__ . '/_files/root/app/code/Magento/A',
-            'Magento_B' => __DIR__ . '/_files/root/app/code/Magento/B'
+            'Magento_B' => __DIR__ . '/_files/root/app/code/Magento/B',
         ];
 
         $objectManagerProvider = $this->createMock(\Magento\Setup\Model\ObjectManagerProvider::class);
@@ -38,7 +40,7 @@ class DependenciesShowModulesCircularCommandTest extends \PHPUnit\Framework\Test
         $objectManager->expects($this->any())->method('get')->willReturnMap([
             [\Magento\Framework\View\Design\Theme\ThemePackageList::class, $themePackageListMock],
             [\Magento\Framework\Component\ComponentRegistrar::class, $componentRegistrarMock],
-            [\Magento\Framework\Component\DirSearch::class, $dirSearchMock]
+            [\Magento\Framework\Component\DirSearch::class, $dirSearchMock],
         ]);
 
         $this->command = new DependenciesShowModulesCircularCommand($objectManagerProvider);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -108,8 +109,8 @@ class AddColumnTest extends TestCase
                 'addComplexElement' => $this->addComplexElementMock,
                 'dropElement' => $this->dropElementMock,
                 'triggers' => [
-                    'migrateDataFrom' => $this->migrateDataTrigger
-                ]
+                    'migrateDataFrom' => $this->migrateDataTrigger,
+                ],
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ declare(strict_types=1);
  * Cache frontend decorator that attaches no additional responsibility to a decorated instance.
  * To be used as an ancestor for concrete decorators to conveniently override only methods of interest.
  */
+
 namespace Magento\Framework\Cache\Frontend\Decorator;
 
 use Magento\Framework\Cache\CacheConstants;

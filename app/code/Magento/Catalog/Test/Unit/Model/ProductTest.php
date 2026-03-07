@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,17 +13,17 @@ use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface;
 use Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
-use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
-use Magento\Catalog\Api\ProductLinkRepositoryInterface;
-use Magento\Catalog\Model\Category;
-use Magento\Catalog\Model\FilterProductCustomAttribute;
-use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
 use Magento\Catalog\Api\Data\ProductLinkExtensionFactory;
 use Magento\Catalog\Api\Data\ProductLinkInterface;
 use Magento\Catalog\Api\Data\ProductLinkInterfaceFactory;
+use Magento\Catalog\Api\ProductAttributeRepositoryInterface;
+use Magento\Catalog\Api\ProductLinkRepositoryInterface;
 use Magento\Catalog\Helper\Product as HelperProduct;
+use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\FilterProductCustomAttribute;
 use Magento\Catalog\Model\Indexer\Product\Category as CategoryIndexer;
 use Magento\Catalog\Model\Indexer\Product\Eav\Processor as EavProcessor;
+use Magento\Catalog\Model\Indexer\Product\Flat\Processor;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceProcessor;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Attribute\Backend\Media\EntryConverterPool;
@@ -44,10 +45,8 @@ use Magento\Catalog\Model\Product\Type\Virtual;
 use Magento\Catalog\Model\Product\Url as ProductUrl;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ProductLink\CollectionProvider as ProductLinkCollectionProvider;
-use Magento\Catalog\Model\ProductLink\Link;
 use Magento\Catalog\Model\ResourceModel\Product as ProductResourceMOdel;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
-use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterfaceFactory;
 use Magento\Eav\Model\Config;
@@ -59,6 +58,7 @@ use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\Data\ImageContentInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\Api\ExtensionAttributesFactory;
 use Magento\Framework\Api\ExtensionAttributesInterface;
 use Magento\Framework\App\CacheInterface;
@@ -77,11 +77,11 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Pricing\PriceInfo\Base;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -319,7 +319,7 @@ class ProductTest extends TestCase
             ['getAreaCode', 'isAreaCodeEmulated']
         );
         $this->appStateMock->method('getAreaCode')->willReturn(FrontNameResolver::AREA_CODE);
-      
+
         $this->eventManagerMock = $this->createMock(ManagerInterface::class);
         $actionValidatorMock = $this->createMock(
             RemoveAction::class
@@ -512,10 +512,10 @@ class ProductTest extends TestCase
     {
         return [
             [
-                false
+                false,
             ],
             [
-                true
+                true,
             ],
         ];
     }
@@ -556,7 +556,7 @@ class ProductTest extends TestCase
             [
                 '_getResource',
                 'setCategoryCollection',
-                'getId'
+                'getId',
             ]
         );
 
@@ -604,13 +604,13 @@ class ProductTest extends TestCase
             [
                 'initCategoryCollection' => null,
                 'getIdResult' => 'getIdResult value',
-                'productIdCached' => 'productIdCached value'
+                'productIdCached' => 'productIdCached value',
             ],
             [
                 'initCategoryCollection' => 'value',
                 'getIdResult' => 'getIdResult value',
-                'productIdCached' => 'not getIdResult value'
-            ]
+                'productIdCached' => 'not getIdResult value',
+            ],
         ];
     }
 
@@ -743,7 +743,7 @@ class ProductTest extends TestCase
         return [
             'set 1' => [true, false, 1, 1],
             'set 2' => [true, true, 1, 0],
-            'set 3' => [false, false, 1, 0]
+            'set 3' => [false, false, 1, 0],
         ];
     }
 
@@ -891,7 +891,7 @@ class ProductTest extends TestCase
             'no changes' => [
                 ['cat_p_1'],
                 ['id' => 1, 'name' => 'value', 'category_ids' => [1]],
-                ['id' => 1, 'name' => 'value', 'category_ids' => [1]]
+                ['id' => 1, 'name' => 'value', 'category_ids' => [1]],
             ],
             'new product' => self::getNewProductProviderData(),
             'new disabled product' => self::getNewDisabledProductProviderData(),
@@ -904,8 +904,8 @@ class ProductTest extends TestCase
                     'category_ids' => [2],
                     'status' => Status::STATUS_ENABLED,
                     'affected_category_ids' => [1, 2],
-                    'is_changed_categories' => true
-                ]
+                    'is_changed_categories' => true,
+                ],
             ],
             'category change for disabled product' => [
                 [0 => 'cat_p_1'],
@@ -916,24 +916,24 @@ class ProductTest extends TestCase
                     'category_ids' => [2],
                     'status' => Status::STATUS_DISABLED,
                     'affected_category_ids' => [1, 2],
-                    'is_changed_categories' => true
-                ]
+                    'is_changed_categories' => true,
+                ],
             ],
             'status change to disabled' => [
                 [0 => 'cat_p_1', 1 => 'cat_c_p_7'],
                 ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_ENABLED],
-                ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_DISABLED]
+                ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_DISABLED],
             ],
             'status change to enabled' => [
                 [0 => 'cat_p_1', 1 => 'cat_c_p_7'],
                 ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_DISABLED],
-                ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_ENABLED]
+                ['id' => 1, 'name' => 'value', 'category_ids' => [7], 'status' => Status::STATUS_ENABLED],
             ],
             'status changed, category unassigned' => self::getStatusAndCategoryChangesData(),
             'no status changes' => [
                 [0 => 'cat_p_1'],
                 ['id' => 1, 'name' => 'value', 'category_ids' => [1], 'status' => Status::STATUS_ENABLED],
-                ['id' => 1, 'name' => 'value', 'category_ids' => [1], 'status' => Status::STATUS_ENABLED]
+                ['id' => 1, 'name' => 'value', 'category_ids' => [1], 'status' => Status::STATUS_ENABLED],
             ],
             'no stock status changes' => self::getNoStockStatusChangesData($extensionAttributesMock),
             'no stock status data 1' => [
@@ -944,8 +944,8 @@ class ProductTest extends TestCase
                     'name' => 'value',
                     'category_ids' => [1],
                     'status' => Status::STATUS_ENABLED,
-                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock
-                ]
+                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock,
+                ],
             ],
             'no stock status data 2' => [
                 [0 => 'cat_p_1'],
@@ -955,8 +955,8 @@ class ProductTest extends TestCase
                     'name' => 'value',
                     'category_ids' => [1],
                     'status' => Status::STATUS_ENABLED,
-                    'stock_data' => ['is_in_stock' => true]
-                ]
+                    'stock_data' => ['is_in_stock' => true],
+                ],
             ],
             'stock status changes for enabled product' => self::getStatusStockProviderData($extensionAttributesMock),
             'stock status changes for disabled product' => [
@@ -968,9 +968,9 @@ class ProductTest extends TestCase
                     'category_ids' => [1],
                     'status' => Status::STATUS_DISABLED,
                     'stock_data' => ['is_in_stock' => false],
-                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock
-                ]
-            ]
+                    ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock,
+                ],
+            ],
         ];
     }
 
@@ -988,8 +988,8 @@ class ProductTest extends TestCase
                 'category_ids' => [],
                 'status' => Status::STATUS_ENABLED,
                 'is_changed_categories' => true,
-                'affected_category_ids' => [5]
-            ]
+                'affected_category_ids' => [5],
+            ],
         ];
     }
 
@@ -1009,8 +1009,8 @@ class ProductTest extends TestCase
                 'category_ids' => [1],
                 'status' => Status::STATUS_ENABLED,
                 'stock_data' => ['is_in_stock' => false],
-                ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock
-            ]
+                ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock,
+            ],
         ];
     }
 
@@ -1027,10 +1027,10 @@ class ProductTest extends TestCase
                 'name' => 'value',
                 'category_ids' => [1],
                 'affected_category_ids' => [1],
-                'is_changed_categories' => true
+                'is_changed_categories' => true,
             ],
             false,
-            true
+            true,
         ];
     }
 
@@ -1048,10 +1048,10 @@ class ProductTest extends TestCase
                 'category_ids' => [1],
                 'status' => Status::STATUS_DISABLED,
                 'affected_category_ids' => [1],
-                'is_changed_categories' => true
+                'is_changed_categories' => true,
             ],
             false,
-            true
+            true,
         ];
     }
 
@@ -1071,8 +1071,8 @@ class ProductTest extends TestCase
                 'category_ids' => [1],
                 'status' => Status::STATUS_ENABLED,
                 'stock_data' => ['is_in_stock' => true],
-                ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock
-            ]
+                ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY => $extensionAttributesMock,
+            ],
         ];
     }
 
@@ -1211,8 +1211,8 @@ class ProductTest extends TestCase
      */
     public function testSaveWithProvidedRequiredOptions(): void
     {
-        $this->model->setData("has_options", "1");
-        $this->model->setData("required_options", "1");
+        $this->model->setData('has_options', '1');
+        $this->model->setData('required_options', '1');
         $this->configureSaveTest();
         $this->model->beforeSave();
         $this->model->afterSave();
@@ -1227,9 +1227,9 @@ class ProductTest extends TestCase
      */
     public function testSaveWithProvidedRequiredOptionsValue(): void
     {
-        $this->model->setHasOptions("1");
-        $this->model->setRequiredOptions("1");
-        $this->model->setData("options", null);
+        $this->model->setHasOptions('1');
+        $this->model->setRequiredOptions('1');
+        $this->model->setData('options', null);
         $this->configureSaveTest();
         $this->model->beforeSave();
         $this->model->afterSave();
@@ -1294,7 +1294,7 @@ class ProductTest extends TestCase
     public function testFromArray(): void
     {
         $data = [
-            'stock_item' => ['stock-item-data']
+            'stock_item' => ['stock-item-data'],
         ];
 
         $stockItemMock = $this->createPartialMockWithReflection(
@@ -1335,10 +1335,10 @@ class ProductTest extends TestCase
     public function testGetProductLinks(): void
     {
         $outputRelatedLink = $this->createMock(ProductLinkInterface::class);
-        $outputRelatedLink->setSku("Simple Product 1");
-        $outputRelatedLink->setLinkType("related");
-        $outputRelatedLink->setLinkedProductSku("Simple Product 2");
-        $outputRelatedLink->setLinkedProductType("simple");
+        $outputRelatedLink->setSku('Simple Product 1');
+        $outputRelatedLink->setLinkType('related');
+        $outputRelatedLink->setLinkedProductSku('Simple Product 2');
+        $outputRelatedLink->setLinkedProductType('simple');
         $outputRelatedLink->setPosition(0);
         $expectedOutput = [$outputRelatedLink];
         $this->productLinkRepositoryMock->expects($this->once())->method('getList')->willReturn($expectedOutput);
@@ -1361,10 +1361,10 @@ class ProductTest extends TestCase
     public function testSetProductLinks(): void
     {
         $link = $this->createMock(ProductLinkInterface::class);
-        $link->setSku("Simple Product 1");
-        $link->setLinkType("upsell");
-        $link->setLinkedProductSku("Simple Product 2");
-        $link->setLinkedProductType("simple");
+        $link->setSku('Simple Product 1');
+        $link->setLinkType('upsell');
+        $link->setLinkedProductSku('Simple Product 2');
+        $link->setLinkedProductType('simple');
         $link->setPosition(0);
         $productLinks = [$link];
         $this->model->setProductLinks($productLinks);
@@ -1451,14 +1451,14 @@ class ProductTest extends TestCase
                 [
                     'value_id' => 1,
                     'file' => 'imageFile.jpg',
-                    'media_type' => 'image'
+                    'media_type' => 'image',
                 ],
                 [
                     'value_id' => 2,
                     'file' => 'smallImageFile.jpg',
-                    'media_type' => 'image'
-                ]
-            ]
+                    'media_type' => 'image',
+                ],
+            ],
         ];
         $this->model->setData('media_gallery', $mediaEntries);
 
@@ -1491,12 +1491,12 @@ class ProductTest extends TestCase
                         'data' => [
                             ImageContentInterface::NAME => 'product_image',
                             ImageContentInterface::TYPE => 'image/jpg',
-                            ImageContentInterface::BASE64_ENCODED_DATA => 'content_data'
-                        ]
+                            ImageContentInterface::BASE64_ENCODED_DATA => 'content_data',
+                        ],
                     ],
-                    'media_type' => 'image'
-                ]
-            ]
+                    'media_type' => 'image',
+                ],
+            ],
         ];
 
         $entryMock = $this->createMock(ProductAttributeMediaGalleryEntryInterface::class);
@@ -1512,10 +1512,10 @@ class ProductTest extends TestCase
                 'data' => [
                     ImageContentInterface::NAME => 'product_image',
                     ImageContentInterface::TYPE => 'image/jpg',
-                    ImageContentInterface::BASE64_ENCODED_DATA => 'content_data'
-                ]
+                    ImageContentInterface::BASE64_ENCODED_DATA => 'content_data',
+                ],
             ],
-            'media_type' => 'image'
+            'media_type' => 'image',
         ];
 
         $this->converterMock->expects($this->once())->method('convertFrom')->with($entryMock)->willReturn($result);
@@ -1535,18 +1535,18 @@ class ProductTest extends TestCase
                     [
                         'value_id' => 1,
                         'file' => 'imageFile.jpg',
-                        'media_type' => 'image'
+                        'media_type' => 'image',
                     ],
                     [
                         'value_id' => 3,
-                        'file' => 'imageFile.jpg'
+                        'file' => 'imageFile.jpg',
                     ],
                     [
                         'value_id' => 2,
                         'file' => 'smallImageFile.jpg',
-                        'media_type' => 'image'
-                    ]
-                ]
+                        'media_type' => 'image',
+                    ],
+                ],
             ];
         $expectedImageDataObject = new DataObject(
             [
@@ -1555,7 +1555,7 @@ class ProductTest extends TestCase
                 'media_type' => 'image',
                 'url' => 'http://magento.dev/pub/imageFile.jpg',
                 'id' => 1,
-                'path' => '/var/www/html/pub/imageFile.jpg'
+                'path' => '/var/www/html/pub/imageFile.jpg',
             ]
         );
         $expectedSmallImageDataObject = new DataObject(
@@ -1565,7 +1565,7 @@ class ProductTest extends TestCase
                 'media_type' => 'image',
                 'url' => 'http://magento.dev/pub/smallImageFile.jpg',
                 'id' => 2,
-                'path' => '/var/www/html/pub/smallImageFile.jpg'
+                'path' => '/var/www/html/pub/smallImageFile.jpg',
             ]
         );
 
@@ -1586,7 +1586,7 @@ class ProductTest extends TestCase
             [
                 [1, null],
                 [2, null],
-                [3, 'not_null_skeep_foreache']
+                [3, 'not_null_skeep_foreache'],
             ]
         );
         $imagesCollectionMock->expects(self::exactly(2))->method('addItem')
@@ -1684,9 +1684,9 @@ class ProductTest extends TestCase
                     'value_id' => 1,
                     'file' => 'imageFile.jpg',
                     'media_type' => 'image',
-                    'disabled' => 1  // This image should be skipped
-                ]
-            ]
+                    'disabled' => 1,  // This image should be skipped
+                ],
+            ],
         ];
 
         $directoryMock = $this->createMock(ReadInterface::class);
@@ -1715,9 +1715,9 @@ class ProductTest extends TestCase
                     'value_id' => 1,
                     'file' => 'imageFile.jpg',
                     'media_type' => 'image',
-                    'removed' => 1  // This image should be skipped
-                ]
-            ]
+                    'removed' => 1,  // This image should be skipped
+                ],
+            ],
         ];
 
         $directoryMock = $this->createMock(ReadInterface::class);
@@ -1744,10 +1744,10 @@ class ProductTest extends TestCase
             'images' => [
                 [
                     'file' => 'imageFile.jpg',
-                    'media_type' => 'image'
+                    'media_type' => 'image',
                     // No value_id - this image should be skipped
-                ]
-            ]
+                ],
+            ],
         ];
 
         $directoryMock = $this->createMock(ReadInterface::class);
@@ -1813,7 +1813,7 @@ class ProductTest extends TestCase
         return [
             'receive empty array' => [[]],
             'receive null' => [null],
-            'receive non-empty array' => [['non-empty', 'array', 'of', 'values']]
+            'receive non-empty array' => [['non-empty', 'array', 'of', 'values']],
         ];
     }
 
@@ -1828,7 +1828,7 @@ class ProductTest extends TestCase
         $optionMock2 = $this->createPartialMock(Option::class, ['getId', 'setProduct']);
         $expectedOptions = [
             $option1Id => $optionMock1,
-            $option2Id => $optionMock2
+            $option2Id => $optionMock2,
         ];
         $this->model->setOptions($expectedOptions);
         $this->assertEquals($expectedOptions, $this->model->getOptions());

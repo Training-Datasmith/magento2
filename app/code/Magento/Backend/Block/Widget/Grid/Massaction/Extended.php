@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Widget\Grid\Massaction;
 
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -244,7 +247,7 @@ class Extended extends \Magento\Backend\Block\Widget
      */
     public function getApplyButtonHtml()
     {
-        return $this->getButtonHtml(__('Submit'), $this->getJsObjectName() . ".apply()");
+        return $this->getButtonHtml(__('Submit'), $this->getJsObjectName() . '.apply()');
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\ProductVideo\Test\Unit\Model\Plugin\Catalog\Product\Gallery;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Gallery;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\CreateHandler;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -69,7 +70,7 @@ class CreateHandlerTest extends TestCase
         $this->subject = $objectManager->getObject(
             CreateHandler::class,
             [
-                'resourceModel' => $this->resourceModel
+                'resourceModel' => $this->resourceModel,
             ]
         );
     }
@@ -136,7 +137,7 @@ class CreateHandlerTest extends TestCase
                     'description' => 'Description second',
                     'metadata' => 'meta two',
                 ],
-                2
+                2,
             ],
             'image' => [
                 [
@@ -157,7 +158,7 @@ class CreateHandlerTest extends TestCase
                     ],
                 ],
                 [],
-                0
+                0,
             ],
             'new_video_with_additional_data' => [
                 [
@@ -184,7 +185,7 @@ class CreateHandlerTest extends TestCase
                                 'video_description' => 'Description second',
                                 'video_metadata' => 'meta two',
                             ],
-                        ]
+                        ],
                     ],
                 ],
                 [
@@ -196,7 +197,7 @@ class CreateHandlerTest extends TestCase
                     'description' => 'Description second',
                     'metadata' => 'meta two',
                 ],
-                3
+                3,
             ],
             'not_new_video' => [
                 [
@@ -227,7 +228,7 @@ class CreateHandlerTest extends TestCase
                     'description' => 'Description second',
                     'metadata' => 'meta two',
                 ],
-                1
+                1,
             ],
         ];
     }
@@ -341,7 +342,7 @@ class CreateHandlerTest extends TestCase
                 'video_title' => 'Some second title',
                 'video_description' => 'Description second',
                 'video_metadata' => '',
-            ]
+            ],
         ];
 
         $this->resourceModel->expects($this->once())

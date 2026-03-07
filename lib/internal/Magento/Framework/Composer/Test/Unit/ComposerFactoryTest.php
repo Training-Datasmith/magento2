@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ComposerFactoryTest extends TestCase
             ComposerFactory::class,
             [
                 'directoryList' => $dirListMock,
-                'composerJsonFinder' => $composerJsonFinderMock
+                'composerJsonFinder' => $composerJsonFinderMock,
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class BundleItemOptionUid implements ResolverInterface
             self::OPTION_TYPE,
             $value['option_id'],
             $value['selection_id'],
-            (int) $value['selection_qty']
+            (int) $value['selection_qty'],
         ];
 
         $content = implode('/', $optionDetails);

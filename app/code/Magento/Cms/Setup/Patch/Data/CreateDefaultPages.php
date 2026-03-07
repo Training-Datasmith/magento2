@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Cms\Setup\Patch\Data;
 
-use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchVersionInterface;
 use Magento\Framework\Module\Setup\Migration;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchVersionInterface;
 
 /**
  * Class CreateDefaultPages
@@ -62,11 +64,11 @@ class CreateDefaultPages implements DataPatchInterface, PatchVersionInterface
                     . "<ul class=\"disc\">\r\n<li><a href=\"#\" onclick=\"history.go(-1); return false;\">Go back</a> "
                     . "to the previous page.</li>\r\n<li>Use the search bar at the top of the page to search for your"
                     . " products.</li>\r\n<li>Follow these links to get you back on track!<br />"
-                    . "<a href=\"{{store url=\"\"}}\">Store Home</a> <span class=\"separator\">|</span> "
+                    . '<a href="{{store url=""}}">Store Home</a> <span class="separator">|</span> '
                     . "<a href=\"{{store url=\"customer/account\"}}\">My Account</a></li></ul></dd></dl>\r\n",
                 'is_active' => 1,
                 'stores' => [0],
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             [
                 'title' => 'Home page',
@@ -76,7 +78,7 @@ class CreateDefaultPages implements DataPatchInterface, PatchVersionInterface
                 'content' => "<p>CMS homepage content goes here.</p>\r\n",
                 'is_active' => 1,
                 'stores' => [0],
-                'sort_order' => 0
+                'sort_order' => 0,
             ],
             [
                 'title' => 'Enable Cookies',
@@ -84,20 +86,20 @@ class CreateDefaultPages implements DataPatchInterface, PatchVersionInterface
                 'identifier' => 'enable-cookies',
                 'content_heading' => 'What are Cookies?',
                 'content' => "<div class=\"enable-cookies cms-content\">\r\n<p>\"Cookies\" are little pieces of data"
-                    . " we send when you visit our store. Cookies help us get to know you better and personalize your"
+                    . ' we send when you visit our store. Cookies help us get to know you better and personalize your'
                     . " experience. Plus they help protect you and other shoppers from fraud.</p>\r\n"
-                    . "<p style=\"margin-bottom: 20px;\">Set your browser to accept cookies so you can buy items, "
+                    . '<p style="margin-bottom: 20px;">Set your browser to accept cookies so you can buy items, '
                     . "save items, and receive customized recommendations. Here’s how:</p>\r\n<ul>\r\n<li>"
-                    . "<a href=\"https://support.google.com/accounts/answer/61416?hl=en\" target=\"_blank\">Google "
+                    . '<a href="https://support.google.com/accounts/answer/61416?hl=en" target="_blank">Google '
                     . "Chrome</a></li>\r\n<li>"
-                    . "<a href=\"http://windows.microsoft.com/en-us/internet-explorer/delete-manage-cookies\""
+                    . '<a href="http://windows.microsoft.com/en-us/internet-explorer/delete-manage-cookies"'
                     . " target=\"_blank\">Internet Explorer</a></li>\r\n<li>"
                     . "<a href=\"http://support.apple.com/kb/PH19214\" target=\"_blank\">Safari</a></li>\r\n<li>"
-                    . "<a href=\"https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences\""
+                    . '<a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences"'
                     . " target=\"_blank\">Mozilla/Firefox</a></li>\r\n</ul>\r\n</div>",
                 'is_active' => 1,
-                'stores' => [0]
-            ]
+                'stores' => [0],
+            ],
         ];
 
         /**
@@ -335,7 +337,7 @@ EOD;
             if (preg_match('/<ul>(.*?)<\\/ul>/ims', $content)) {
                 $content = preg_replace('/<li class="last">/ims', '<li>', $content);
                 $replacment = '<li class="last privacy">' .
-                    "<a href=\"{{store direct_url=\"privacy-policy-cookie-restriction-mode\"}}\">" .
+                    '<a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">' .
                     __('Privacy and Cookie Policy') . "</a></li>\r\n</ul>";
                 $content = preg_replace('/<\\/ul>/ims', $replacment, $content);
                 $footerLinksBlock->setContent($content)->save();

@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Magento application product metadata
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
-use Magento\Framework\Composer\ComposerFactory;
-use Magento\Framework\Composer\ComposerJsonFinder;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Composer\ComposerFactory;
 use Magento\Framework\Composer\ComposerInformation;
+use Magento\Framework\Composer\ComposerJsonFinder;
 
 /**
  * Magento application product metadata
@@ -20,17 +23,17 @@ class ProductMetadata implements ProductMetadataInterface
     /**
      * Magento product edition
      */
-    const EDITION_NAME  = 'Community';
+    public const EDITION_NAME  = 'Community';
 
     /**
      * Magento product name
      */
-    const PRODUCT_NAME  = 'Magento';
+    public const PRODUCT_NAME  = 'Magento';
 
     /**
      * Magento version cache key
      */
-    const VERSION_CACHE_KEY = 'mage-version';
+    public const VERSION_CACHE_KEY = 'mage-version';
 
     /**
      * Product version

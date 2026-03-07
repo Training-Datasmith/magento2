@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -33,12 +34,11 @@ if ($storeId = $store->load('fixture_second_store', 'code')->getId()) {
     $config->clean();
 }
 
-
 /** @var \Magento\Directory\Model\ResourceModel\Currency $rate */
 $rate = $objectManager->create(\Magento\Directory\Model\ResourceModel\Currency::class);
 $rate->saveRates(
     [
         'USD' => ['EUR' => 2],
-        'EUR' => ['USD' => 0.5]
+        'EUR' => ['USD' => 0.5],
     ]
 );

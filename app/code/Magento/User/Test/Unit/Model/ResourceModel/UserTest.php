@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\User\Model\ResourceModel\User;
+use Magento\User\Model\User as UserModel;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\User\Model\User as UserModel;
 
 /**
  * Test class for \Magento\User\Model\ResourceModel\User testing
@@ -365,7 +366,7 @@ class UserTest extends TestCase
     {
         $this->resourceMock->expects($this->atLeastOnce())->method('getConnection')->willReturn($this->dbAdapterMock);
         $this->dbAdapterMock->expects($this->once())->method('insert')->willReturn($this->selectMock);
-        $this->model->trackPassword($this->userMock, "myPas#w0rd", 1);
+        $this->model->trackPassword($this->userMock, 'myPas#w0rd', 1);
     }
 
     public function testGetLatestPassword()

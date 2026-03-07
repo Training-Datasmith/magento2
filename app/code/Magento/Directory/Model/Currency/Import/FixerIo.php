@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Exception;
 use Laminas\Http\Request;
 use Magento\Directory\Model\CurrencyFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\HTTP\LaminasClient;
 use Magento\Framework\HTTP\LaminasClientFactory as HttpClientFactory;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Framework\HTTP\LaminasClient;
 
 /**
  * Currency rate import model (From http://fixer.io/)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -178,7 +179,7 @@ class CategoryTest extends TestCase
             ->with(
                 [
                     \Magento\Catalog\Model\Category::CACHE_TAG,
-                    \Magento\Catalog\Model\Product::CACHE_TAG
+                    \Magento\Catalog\Model\Product::CACHE_TAG,
                 ]
             );
         $this->model->executeFull();

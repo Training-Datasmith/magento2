@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class BeforeOrderPaymentSaveObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['payable_to', static::STORE_ID, 'payable to'],
-                    ['mailing_address', static::STORE_ID, 'mailing address']
+                    ['mailing_address', static::STORE_ID, 'mailing address'],
                 ]
             );
         $this->paymentMock->expects(self::once())
@@ -175,7 +176,7 @@ class BeforeOrderPaymentSaveObserverTest extends TestCase
             ->willReturnMap(
                 [
                     ['payable_to', static::STORE_ID, null],
-                    ['mailing_address', static::STORE_ID, null]
+                    ['mailing_address', static::STORE_ID, null],
                 ]
             );
         $this->paymentMock->expects(self::once())

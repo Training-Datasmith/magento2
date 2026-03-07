@@ -1,15 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Element\UiComponent\DataProvider;
 
 use Magento\Framework\Api\AttributeInterface;
+use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\DataObject;
-use Magento\Framework\Api\AttributeValueFactory;
-use Magento\Framework\Profiler;
 
 /**
  * The document data provider

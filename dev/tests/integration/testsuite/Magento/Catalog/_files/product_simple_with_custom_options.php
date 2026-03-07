@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -22,7 +24,7 @@ $product->setTypeId(\Magento\Catalog\Model\Product\Type::TYPE_SIMPLE)
     ->setSku('simple_with_custom_options')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setDescription('Description with <b>html tag</b>')
     ->setMetaTitle('meta title')
@@ -62,7 +64,7 @@ $oldOptions = [
                 'price_type' => 'fixed',
                 'sku' => '3-2-select',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'select',
@@ -85,7 +87,7 @@ $oldOptions = [
                 'price_type' => 'fixed',
                 'sku' => '4-2-radio',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'text',

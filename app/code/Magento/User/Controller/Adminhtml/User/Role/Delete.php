@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\User\Controller\Adminhtml\User\Role;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -35,7 +38,7 @@ class Delete extends \Magento\User\Controller\Adminhtml\User\Role implements Htt
         if (!$role->getId()) {
             $this->messageManager->addError(__('We can\'t find a role to delete.'));
 
-            return $resultRedirect->setPath("*/*/");
+            return $resultRedirect->setPath('*/*/');
         }
 
         try {
@@ -45,6 +48,6 @@ class Delete extends \Magento\User\Controller\Adminhtml\User\Role implements Htt
             $this->messageManager->addError(__('An error occurred while deleting this role.'));
         }
 
-        return $resultRedirect->setPath("*/*/");
+        return $resultRedirect->setPath('*/*/');
     }
 }

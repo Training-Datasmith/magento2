@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Magento\WebapiAsync\Plugin;
 
-use Magento\Webapi\Model\Config\Converter as WebapiConverter;
 use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
+use Magento\Webapi\Model\Config\Converter as WebapiConverter;
 use Magento\WebapiAsync\Controller\Rest\AsynchronousSchemaRequestProcessor;
 use Magento\WebapiAsync\Model\ServiceConfig\Converter;
 
@@ -43,7 +44,7 @@ class ServiceMetadata
      * @var array
      */
     private $synchronousOnlyHttpMethods = [
-        'GET'
+        'GET',
     ];
 
     /**
@@ -262,11 +263,11 @@ class ServiceMetadata
                         'response_codes' => [
                             'success' => [
                                 'code' => '202',
-                                'description' => '202 Accepted.'
-                            ]
-                        ]
-                    ]
-                ]
+                                'description' => '202 Accepted.',
+                            ],
+                        ],
+                    ],
+                ],
             ];
         }
 

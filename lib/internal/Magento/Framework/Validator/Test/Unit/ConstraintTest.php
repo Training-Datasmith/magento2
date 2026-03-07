@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test case for \Magento\Framework\Validator\Constraint
  */
+
 namespace Magento\Framework\Validator\Test\Unit;
 
 use Magento\Framework\Translate\AbstractAdapter;
@@ -15,9 +17,9 @@ use Magento\Framework\Translate\AdapterInterface;
 use Magento\Framework\Validator\AbstractValidator;
 use Magento\Framework\Validator\Constraint;
 use Magento\Framework\Validator\ValidatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ConstraintTest extends TestCase
 {

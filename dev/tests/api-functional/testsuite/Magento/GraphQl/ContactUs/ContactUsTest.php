@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,7 +13,7 @@ use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 #[
-    Config("contact/contact/enabled", "1")
+    Config('contact/contact/enabled', '1')
 ]
 class ContactUsTest extends GraphQlAbstract
 {
@@ -36,12 +37,12 @@ mutation {
 MUTATION;
 
         $expected = [
-            "contactUs" => [
-                "status" => true
-            ]
+            'contactUs' => [
+                'status' => true,
+            ],
         ];
         $response = $this->graphQlMutation($query, [], '', []);
-        $this->assertEquals($expected, $response, "Contact Us form can not be send");
+        $this->assertEquals($expected, $response, 'Contact Us form can not be send');
     }
 
     /**
@@ -121,7 +122,7 @@ MUTATION;
      * Failed send contact us form - missing name
      */
     #[
-        Config("contact/contact/enabled", "0")
+        Config('contact/contact/enabled', '0')
     ]
     public function testContactUsDisabled()
     {

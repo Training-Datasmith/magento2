@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -78,7 +80,7 @@ class Url implements ProductRenderCollectorInterface
             $this->postHelper->getPostData(
                 $this->abstractProduct->getAddToCartUrl($product, ['useUencPlaceholder' => true]),
                 ['product' => $product->getId(),
-                    \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => "%uenc%"
+                    \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED => '%uenc%',
                 ]
             )
         );

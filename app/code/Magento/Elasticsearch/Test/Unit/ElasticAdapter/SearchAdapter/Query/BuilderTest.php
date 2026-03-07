@@ -72,8 +72,8 @@ class BuilderTest extends TestCase
         $objects = [
             [
                 Sort::class,
-                $this->createMock(Sort::class)
-            ]
+                $this->createMock(Sort::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->clientConfig = $this->getMockBuilder(Config::class)

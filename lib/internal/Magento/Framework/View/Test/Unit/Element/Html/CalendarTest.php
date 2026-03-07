@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Html\Calendar;
 use Magento\Framework\View\Element\Template\Context;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @see Calendar
@@ -32,7 +33,7 @@ class CalendarTest extends TestCase
         $calendarBlock = (new ObjectManager($this))->getObject(
             Calendar::class,
             [
-                'localeResolver' => $this->getLocalResolver($locale)
+                'localeResolver' => $this->getLocalResolver($locale),
             ]
         );
 
@@ -63,7 +64,7 @@ class CalendarTest extends TestCase
         $calendarBlock = (new ObjectManager($this))->getObject(
             Calendar::class,
             [
-                'context' => $this->getContext()
+                'context' => $this->getContext(),
             ]
         );
 

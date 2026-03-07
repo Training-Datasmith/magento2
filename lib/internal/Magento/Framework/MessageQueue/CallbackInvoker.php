@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +75,7 @@ class CallbackInvoker implements CallbackInvokerInterface
         $this->poisonPillVersion = $this->poisonPillRead->getLatestVersion();
         $sleep = (int) $sleep ?: 1;
         $maxIdleTime = $maxIdleTime ? (int) $maxIdleTime : PHP_INT_MAX;
-        $connectionName = method_exists($queue, 'getConnectionName') ? $queue->getConnectionName(): null;
+        $connectionName = method_exists($queue, 'getConnectionName') ? $queue->getConnectionName() : null;
         if ($connectionName === 'stomp') {
             $queue->subscribeQueue();
         }

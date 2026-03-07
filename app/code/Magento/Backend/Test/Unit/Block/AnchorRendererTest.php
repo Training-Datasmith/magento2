@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Backend\Block\MenuItemChecker;
 use Magento\Backend\Model\Menu\Item;
 use Magento\Framework\Escaper;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AnchorRendererTest extends TestCase
@@ -60,7 +61,7 @@ class AnchorRendererTest extends TestCase
             AnchorRenderer::class,
             [
                 'menuItemChecker' => $this->menuItemCheckerMock,
-                'escaper' => $this->escaperMock
+                'escaper' => $this->escaperMock,
             ]
         );
     }
@@ -142,7 +143,7 @@ class AnchorRendererTest extends TestCase
     {
         return [
             'item has target' => [true],
-            'item does not have target' => [false]
+            'item does not have target' => [false],
         ];
     }
 }

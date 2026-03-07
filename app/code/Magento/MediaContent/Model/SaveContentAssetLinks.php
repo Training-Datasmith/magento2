@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\MediaContent\Model;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
 use Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface;
+use Magento\MediaContentApi\Api\SaveContentAssetLinksInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -61,7 +62,7 @@ class SaveContentAssetLinks implements SaveContentAssetLinksInterface
                     self::ASSET_ID => $contentAssetLink->getAssetId(),
                     self::ENTITY_TYPE => $contentAssetLink->getContentId()->getEntityType(),
                     self::ENTITY_ID => $contentAssetLink->getContentId()->getEntityId(),
-                    self::FIELD => $contentAssetLink->getContentId()->getField()
+                    self::FIELD => $contentAssetLink->getContentId()->getField(),
                 ];
             }
             $connection->insertMultiple($tableName, $data);

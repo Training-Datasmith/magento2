@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote\Address\Total;
 
 use Magento\Quote\Model\Quote\Address;
@@ -177,7 +180,7 @@ class Subtotal extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
         return [
             'code' => $this->getCode(),
             'title' => $this->getLabel(),
-            'value' => $total->getSubtotal()
+            'value' => $total->getSubtotal(),
         ];
     }
 

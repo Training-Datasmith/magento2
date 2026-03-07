@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Product\SkuProcessor;
 use Magento\CatalogImportExport\Model\Import\Product\SkuStorage;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\SuperProductsSku;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
 
@@ -85,25 +86,25 @@ class SuperProductsSkuTest extends TestCase
             ],
             [
                 [],
-                ['sku1' => []]
+                ['sku1' => []],
             ],
             [
                 ['_super_products_sku' => 'SKU1'],
                 ['sku2' => []],
                 false,
-                false
+                false,
             ],
             [
                 ['_super_products_sku' => 'SKU1'],
                 ['sku2' => []],
                 true,
-                true
+                true,
             ],
             [
                 ['_super_products_sku' => 'SKU1'],
                 ['sku1' => []],
                 false,
-                true
+                true,
             ],
         ];
     }

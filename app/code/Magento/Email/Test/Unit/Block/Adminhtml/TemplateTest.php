@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,14 +65,14 @@ class TemplateTest extends TestCase
         $this->context = $this->objectManager->getObject(
             Context::class,
             [
-                'urlBuilder' => $this->urlBuilderMock
+                'urlBuilder' => $this->urlBuilderMock,
             ]
         );
         $this->template = $this->objectManager->getObject(
             Template::class,
             [
                 'context' => $this->context,
-                'buttonList' => $this->buttonList
+                'buttonList' => $this->buttonList,
             ]
         );
     }

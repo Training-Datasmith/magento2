@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Multishipping\Block\Checkout;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -12,7 +15,7 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class AddressesTest extends \PHPUnit\Framework\TestCase
 {
-    const FIXTURE_CUSTOMER_ID = 1;
+    public const FIXTURE_CUSTOMER_ID = 1;
 
     /**
      * @var \Magento\Multishipping\Block\Checkout\Addresses

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -256,7 +257,7 @@ abstract class AbstractMassaction extends Widget
      */
     public function getApplyButtonHtml()
     {
-        return $this->getButtonHtml(__('Submit'), $this->getJsObjectName() . ".apply()");
+        return $this->getButtonHtml(__('Submit'), $this->getJsObjectName() . '.apply()');
     }
 
     /**

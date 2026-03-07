@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Customer\Test\Unit\Model\Validator;
 
-use Magento\Customer\Model\Validator\Telephone;
 use Magento\Customer\Model\Address;
+use Magento\Customer\Model\Validator\Telephone;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Customer telephone validator tests
@@ -36,7 +37,7 @@ class TelephoneTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->nameValidator = new Telephone;
+        $this->nameValidator = new Telephone();
         $this->addressMock = $this->createPartialMockWithReflection(
             Address::class,
             ['getTelephone']
@@ -86,32 +87,32 @@ class TelephoneTest extends TestCase
         return [
             [
                 'telephone' => '(1)99887766',
-                'message' => 'parentheses must be allowed in telephone'
+                'message' => 'parentheses must be allowed in telephone',
             ],
             [
                 'telephone' => '+6255554444',
-                'message' => 'plus sign be allowed in telephone'
+                'message' => 'plus sign be allowed in telephone',
             ],
             [
                 'telephone' => '555-555-555',
-                'message' => 'hyphen must be allowed in telephone'
+                'message' => 'hyphen must be allowed in telephone',
             ],
             [
                 'telephone' => '123456789',
-                'message' => 'Digits (numbers) must be allowed in telephone'
+                'message' => 'Digits (numbers) must be allowed in telephone',
             ],
             [
                 'telephone' => '(123) 456-7890',
-                'message' => 'spaces must be allowed in telephone'
+                'message' => 'spaces must be allowed in telephone',
             ],
             [
                 'telephone' => '06.76.40.32.22',
-                'message' => 'dots should be allowed in telephone (e.g. 06.76.40.32.22)'
+                'message' => 'dots should be allowed in telephone (e.g. 06.76.40.32.22)',
             ],
             [
                 'telephone' => '+43680/2149568',
-                'message' => 'slash should be allowed in telephone (e.g. +43680/2149568)'
-            ]
+                'message' => 'slash should be allowed in telephone (e.g. +43680/2149568)',
+            ],
         ];
     }
 
@@ -125,36 +126,36 @@ class TelephoneTest extends TestCase
         return [
             [
                 'telephone' => '123абв456',
-                'message' => 'Cyrillic characters should not be allowed in telephone'
+                'message' => 'Cyrillic characters should not be allowed in telephone',
             ],
             [
                 'telephone' => '123abc456',
-                'message' => 'Latin letters should not be allowed in telephone'
+                'message' => 'Latin letters should not be allowed in telephone',
             ],
             [
                 'telephone' => 'aaaaaa',
-                'message' => 'Pure alphabetic string should not be allowed in telephone'
+                'message' => 'Pure alphabetic string should not be allowed in telephone',
             ],
             [
                 'telephone' => '123@456',
-                'message' => 'Special character @ should not be allowed in telephone'
+                'message' => 'Special character @ should not be allowed in telephone',
             ],
             [
                 'telephone' => '123#456',
-                'message' => 'Special character # should not be allowed in telephone'
+                'message' => 'Special character # should not be allowed in telephone',
             ],
             [
                 'telephone' => '123$456',
-                'message' => 'Special character $ should not be allowed in telephone'
+                'message' => 'Special character $ should not be allowed in telephone',
             ],
             [
                 'telephone' => '123456789012345678901',
-                'message' => 'Telephone number longer than 20 characters should not be allowed'
+                'message' => 'Telephone number longer than 20 characters should not be allowed',
             ],
             [
                 'telephone' => '<' . 'script>alert("xss")<' . '/script>',
-                'message' => 'XSS attempt should not be allowed in telephone'
-            ]
+                'message' => 'XSS attempt should not be allowed in telephone',
+            ],
         ];
     }
 }

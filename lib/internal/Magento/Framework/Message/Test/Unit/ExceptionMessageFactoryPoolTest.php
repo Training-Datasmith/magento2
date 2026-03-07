@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class ExceptionMessageFactoryPoolTest extends TestCase
         $this->defaultExceptionMessageFactoryMock = $this->createMock(ExceptionMessageFactoryInterface::class);
 
         $this->exceptionMessageFactoryMapMock = [
-            LocalizedException::class => $this->specificExceptionMessageFactoryMock
+            LocalizedException::class => $this->specificExceptionMessageFactoryMock,
         ];
         $this->exceptionMessageFactoryPool = new ExceptionMessageFactoryPool(
             $this->defaultExceptionMessageFactoryMock,

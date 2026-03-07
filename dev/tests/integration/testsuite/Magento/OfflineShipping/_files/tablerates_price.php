@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -21,7 +23,7 @@ $tableRatesData = [
             'condition_name' => 'package_value_with_discount',
             'condition_value' => 0.00,
             'price' => 15,
-            'cost' => 0
+            'cost' => 0,
         ],
         [
             'website_id' => 1,
@@ -31,7 +33,7 @@ $tableRatesData = [
             'condition_name' => 'package_value_with_discount',
             'condition_value' => 50.00,
             'price' => 10,
-            'cost' => 0
+            'cost' => 0,
         ],
         [
             'website_id' => 1,
@@ -41,8 +43,8 @@ $tableRatesData = [
             'condition_name' => 'package_value_with_discount',
             'condition_value' => 100.00,
             'price' => 5,
-            'cost' => 0
-        ]
+            'cost' => 0,
+        ],
     ];
 $columns = [
     'website_id',
@@ -52,6 +54,6 @@ $columns = [
     'condition_name',
     'condition_value',
     'price',
-    'cost'
+    'cost',
 ];
 $resourceModel->getConnection()->insertArray($resourceModel->getMainTable(), $columns, $tableRatesData);

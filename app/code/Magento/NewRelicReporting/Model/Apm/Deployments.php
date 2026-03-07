@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\NewRelicReporting\Model\Apm;
 
 use Laminas\Http\Exception\RuntimeException;
@@ -140,7 +143,7 @@ class Deployments
         $client->setHeaders(
             [
                 'Api-Key' => $this->config->getNewRelicApiKey(),
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
             ]
         );
 
@@ -153,8 +156,8 @@ class Deployments
                 'description' => $description,
                 'changelog' => $changelog,
                 'user' => $user,
-                'revision' => $revision
-            ]
+                'revision' => $revision,
+            ],
         ];
         $client->setRawBody($this->serializer->serialize($params));
 
@@ -172,7 +175,7 @@ class Deployments
                     'status_code' => $response->getStatusCode(),
                     'response_body' => $response->getBody(),
                     'request_url' => $apiUrl,
-                    'request_params' => $params
+                    'request_params' => $params,
                 ]
             );
             return false;

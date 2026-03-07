@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Weee;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
@@ -15,6 +15,7 @@ use Magento\Framework\ObjectManager\ObjectManager;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for cart item fixed product tax
@@ -58,7 +59,7 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
             'tax/weee/display',
             'tax/defaults/region',
             'tax/weee/apply_vat',
-            'tax/calculation/price_includes_tax'
+            'tax/calculation/price_includes_tax',
         ];
 
         foreach ($currentSettingsArray as $configPath) {
@@ -141,22 +142,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.0
-                        ]
+                            'value' => 10.0,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 12.7
-                        ]
+                            'value' => 12.7,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.0
-                        ]
+                            'value' => 5.0,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -169,22 +170,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.0
-                        ]
+                            'value' => 10.0,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 12.7
-                        ]
+                            'value' => 12.7,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.0
-                        ]
+                            'value' => 5.0,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -197,22 +198,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.0
-                        ]
+                            'value' => 10.0,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 12.7
-                        ]
+                            'value' => 12.7,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.0
-                        ]
+                            'value' => 5.0,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -225,22 +226,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.75
-                        ]
+                            'value' => 10.75,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 13.66
-                        ]
+                            'value' => 13.66,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.38
-                        ]
+                            'value' => 5.38,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -253,22 +254,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.0
-                        ]
+                            'value' => 10.0,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 12.7
-                        ]
+                            'value' => 12.7,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.01
-                        ]
+                            'value' => 5.01,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -281,22 +282,22 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 10.75
-                        ]
+                            'value' => 10.75,
+                        ],
                     ],
                     [
                         'label' => 'fpt_for_all_front_label',
                         'amount' => [
-                            'value' => 13.65
-                        ]
+                            'value' => 13.65,
+                        ],
                     ],
                     [
                         'label' => 'fixed_product_attribute_front_label',
                         'amount' => [
-                            'value' => 5.38
-                        ]
+                            'value' => 5.38,
+                        ],
                     ],
-                ]
+                ],
             ],
             [
                 'taxSettings' => [
@@ -305,8 +306,8 @@ class CartItemPricesWithFPTTest extends GraphQlAbstract
                     'tax/calculation/price_includes_tax' => '1',
                     'tax/display/type' => '1',
                 ],
-                'expectedFtps' => []
-            ]
+                'expectedFtps' => [],
+            ],
         ];
     }
 

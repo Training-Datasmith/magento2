@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class ManagementTest extends TestCase
             Management::class,
             [
                 'productRepository' => $this->productRepositoryMock,
-                'linkTypeProvider' => $this->linkTypeProviderMock
+                'linkTypeProvider' => $this->linkTypeProviderMock,
             ]
         );
     }
@@ -191,7 +192,7 @@ class ManagementTest extends TestCase
 
         $inputRelatedLink = $this->objectManager->getObject(Link::class);
         $inputRelatedLink->setProductSku($productSku);
-        $inputRelatedLink->setData("sku", self::STUB_PRODUCT_SKU_2);
+        $inputRelatedLink->setData('sku', self::STUB_PRODUCT_SKU_2);
         $inputRelatedLink->setPosition(0);
         $links = [$inputRelatedLink];
 
@@ -334,13 +335,13 @@ class ManagementTest extends TestCase
             ->method('save')
             ->willThrowException(
                 new CouldNotSaveException(
-                    __("The linked products data is invalid. Verify the data and try again.")
+                    __('The linked products data is invalid. Verify the data and try again.')
                 )
             );
 
         $this->expectException(CouldNotSaveException::class);
         $this->expectExceptionMessage(
-            "The linked products data is invalid. Verify the data and try again."
+            'The linked products data is invalid. Verify the data and try again.'
         );
 
         $this->model->setProductLinks($productSku, $links);
@@ -357,7 +358,7 @@ class ManagementTest extends TestCase
             'related' => 1,
             'upsell' => 4,
             'crosssell' => 5,
-            'associated' => 3
+            'associated' => 3,
         ];
 
         $this->linkTypeProviderMock->expects($this->once())
@@ -383,8 +384,8 @@ class ManagementTest extends TestCase
         $inputRelatedLinkMock = $this->objectManager->getObject(Link::class);
         $inputRelatedLinkMock->setProductSku($productSku1);
         $inputRelatedLinkMock->setLinkType($linkType);
-        $inputRelatedLinkMock->setData("sku", $productSku2);
-        $inputRelatedLinkMock->setData("type_id", $typeId);
+        $inputRelatedLinkMock->setData('sku', $productSku2);
+        $inputRelatedLinkMock->setData('type_id', $typeId);
         $inputRelatedLinkMock->setPosition(0);
 
         return [$inputRelatedLinkMock];

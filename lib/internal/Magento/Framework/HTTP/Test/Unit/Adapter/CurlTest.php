@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\HTTP\Test\Unit\Adapter;
 
 use Magento\Framework\HTTP\Adapter\Curl;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class CurlTest extends TestCase
 {
@@ -136,7 +137,7 @@ class CurlTest extends TestCase
                     [CURLOPT_POSTFIELDS, '{"key": "value"}'],
                     [CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1],
                     [CURLOPT_HTTPHEADER, []],
-                ]
+                ],
             ],
             'headers is an indexed array' => [
                 'POST',
@@ -150,7 +151,7 @@ class CurlTest extends TestCase
                     [CURLOPT_POSTFIELDS, '{"key": "value"}'],
                     [CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1],
                     [CURLOPT_HTTPHEADER, ['Content-Type: application/json']],
-                ]
+                ],
             ],
             'headers is an associative array' => [
                 'POST',
@@ -164,7 +165,7 @@ class CurlTest extends TestCase
                     [CURLOPT_POSTFIELDS, '{"key": "value"}'],
                     [CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1],
                     [CURLOPT_HTTPHEADER, ['Content-Type: application/json']],
-                ]
+                ],
             ],
         ];
     }

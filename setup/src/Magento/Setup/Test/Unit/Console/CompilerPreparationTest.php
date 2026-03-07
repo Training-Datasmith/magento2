@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Setup\Console\Command\DiCompileCommand;
 use Magento\Setup\Console\CompilerPreparation;
 use Magento\Setup\Mvc\Bootstrap\InitParamListener;
-use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArgvInput;
 
@@ -122,19 +123,19 @@ class CompilerPreparationTest extends TestCase
                 'commandName' => DiCompileCommand::NAME,
                 'isCompileCommand' => true,
                 'isHelpOption' => false,
-                'dirExists' => true
+                'dirExists' => true,
             ],
             'ST compiler, directory does not exist' => [
                 'commandName' => DiCompileCommand::NAME,
                 'isCompileCommand' => true,
                 'isHelpOption' => false,
-                'dirExists' => false
+                'dirExists' => false,
             ],
             'ST compiler, help option' => [
                 'commandName' => DiCompileCommand::NAME,
                 'isCompileCommand' => true,
                 'isHelpOption' => true,
-                'dirExists' => false
+                'dirExists' => false,
             ],
             'Other command' => [
                 'commandName' => 'not:a:compiler',
@@ -145,19 +146,19 @@ class CompilerPreparationTest extends TestCase
                 'commandName' => 's:d:c',
                 'isCompileCommand' => true,
                 'isHelpOption' => false,
-                'dirExists' => true
+                'dirExists' => true,
             ],
             'ST compiler, directory exists, abbreviation 2' => [
                 'commandName' => 'se:di:co',
                 'isCompileCommand' => true,
                 'isHelpOption' => false,
-                'dirExists' => true
+                'dirExists' => true,
             ],
             'ST compiler, directory exists, abbreviation ambiguous' => [
                 'commandName' => 'se:di',
                 'isCompileCommand' => false,
                 'isHelpOption' => false,
-                'dirExists' => true
+                'dirExists' => true,
             ],
         ];
     }
@@ -170,12 +171,12 @@ class CompilerPreparationTest extends TestCase
         $dirValueMap = [
             [
                 $customGenerationDirectory,
-                $defaultDiDirectory
+                $defaultDiDirectory,
             ],
             [
                 true,
-                true
-            ]
+                true,
+            ],
         ];
 
         $this->inputMock->expects($this->once())
@@ -205,12 +206,12 @@ class CompilerPreparationTest extends TestCase
         $dirResultMap = [
             [
                 $this->logicalNot($this->equalTo($customGenerationDirectory)),
-                $this->logicalNot($this->equalTo($customDiDirectory))
+                $this->logicalNot($this->equalTo($customDiDirectory)),
             ],
             [
                 true,
-                true
-            ]
+                true,
+            ],
         ];
 
         $this->inputMock->expects($this->once())

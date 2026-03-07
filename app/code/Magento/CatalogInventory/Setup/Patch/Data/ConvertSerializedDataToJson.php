@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -72,8 +74,8 @@ class ConvertSerializedDataToJson implements DataPatchInterface, PatchVersionInt
             'in',
             [
                 'values' => [
-                    'config_id' => array_keys($serializedRows)
-                ]
+                    'config_id' => array_keys($serializedRows),
+                ],
             ]
         );
 

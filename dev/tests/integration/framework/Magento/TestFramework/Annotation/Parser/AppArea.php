@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class AppArea implements ParserInterface
         \Magento\Framework\App\Area::AREA_WEBAPI_REST,
         \Magento\Framework\App\Area::AREA_WEBAPI_SOAP,
         \Magento\Framework\App\Area::AREA_CRONTAB,
-        \Magento\Framework\App\Area::AREA_GRAPHQL
+        \Magento\Framework\App\Area::AREA_GRAPHQL,
     ];
 
     /**
@@ -46,7 +47,7 @@ class AppArea implements ParserInterface
             if (!in_array($value, self::ALLOWED_AREAS, true)) {
                 throw new LocalizedException(
                     __(
-                        "Invalid annotation format: @%1 %2. The valid format is: @%1 [%3].",
+                        'Invalid annotation format: @%1 %2. The valid format is: @%1 [%3].',
                         self::ANNOTATION,
                         $value,
                         implode('|', self::ALLOWED_AREAS)

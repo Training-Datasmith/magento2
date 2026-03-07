@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\DataObject;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteIdInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test adding bundled products to cart using the unified mutation mutation
@@ -226,7 +227,7 @@ QUERY;
         $response = $this->graphQlMutation($query);
 
         self::assertEquals(
-            "Please select all required options.",
+            'Please select all required options.',
             $response['addProductsToCart']['user_errors'][0]['message']
         );
     }
@@ -249,7 +250,7 @@ QUERY;
             'reserved_order_id'
         );
         $maskedQuoteId = $this->quoteIdToMaskedId->execute((int)$this->quote->getId());
-        $response = $this->graphQlQuery($this->getProductQuery("bundle-product"));
+        $response = $this->graphQlQuery($this->getProductQuery('bundle-product'));
         $bundleItem = $response['products']['items'][0];
         $sku = $bundleItem['sku'];
         $bundleOptions = $bundleItem['items'];

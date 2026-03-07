@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class DepersonalizePluginTest extends TestCase
                 'getCustomerTaxClassId',
                 'setDefaultTaxBillingAddress',
                 'setDefaultTaxShippingAddress',
-                'setCustomerTaxClassId'
+                'setCustomerTaxClassId',
             ]
         );
         $this->depersonalizeCheckerMock = $this->createMock(DepersonalizeChecker::class);

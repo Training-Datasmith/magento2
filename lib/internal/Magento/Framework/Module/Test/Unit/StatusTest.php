@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Module\DependencyChecker;
 use Magento\Framework\Module\ModuleList;
 use Magento\Framework\Module\ModuleList\Loader;
 use Magento\Framework\Module\Status;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class StatusTest extends TestCase
 {
@@ -100,18 +101,18 @@ class StatusTest extends TestCase
             ->method('checkDependenciesWhenEnableModules')
             ->willReturn([
                 'Module_Foo' => ['Module_Baz' => ['Module_Foo', 'Module_Baz']],
-                'Module_Bar' => ['Module_Baz' => ['Module_Bar', 'Module_Baz']]
+                'Module_Bar' => ['Module_Baz' => ['Module_Bar', 'Module_Baz']],
             ]);
         $result = $this->object->checkConstraints(true, ['Module_Foo' => '', 'Module_Bar' => ''], [], false);
         $expect = [
             'Cannot enable Module_Foo because it depends on disabled modules:',
-            "Module_Baz: Module_Foo->Module_Baz",
+            'Module_Baz: Module_Foo->Module_Baz',
             'Cannot enable Module_Bar because it depends on disabled modules:',
-            "Module_Baz: Module_Bar->Module_Baz",
+            'Module_Baz: Module_Bar->Module_Baz',
             'Cannot enable Module_Foo because it conflicts with other modules:',
-            "Module_Bar",
+            'Module_Bar',
             'Cannot enable Module_Bar because it conflicts with other modules:',
-            "Module_Foo"
+            'Module_Foo',
         ];
         $this->assertEquals($expect, $result);
     }
@@ -128,16 +129,16 @@ class StatusTest extends TestCase
             ->method('checkDependenciesWhenEnableModules')
             ->willReturn([
                 'Module_Foo' => ['Module_Baz' => ['Module_Foo', 'Module_Baz']],
-                'Module_Bar' => ['Module_Baz' => ['Module_Bar', 'Module_Baz']]
+                'Module_Bar' => ['Module_Baz' => ['Module_Bar', 'Module_Baz']],
             ]);
         $result = $this->object->checkConstraints(true, ['Module_Foo' => '', 'Module_Bar' => ''], [], true);
         $expect = [
             'Cannot enable Module_Foo',
             'Cannot enable Module_Bar',
             'Cannot enable Module_Foo because it conflicts with other modules:',
-            "Module_Bar",
+            'Module_Bar',
             'Cannot enable Module_Bar because it conflicts with other modules:',
-            "Module_Foo"
+            'Module_Foo',
         ];
         $this->assertEquals($expect, $result);
     }
@@ -160,14 +161,14 @@ class StatusTest extends TestCase
             ->method('checkDependenciesWhenDisableModules')
             ->willReturn([
                 'Module_Foo' => ['Module_Baz' => ['Module_Baz', 'Module_Foo']],
-                'Module_Bar' => ['Module_Baz' => ['Module_Baz', 'Module_Bar']]
+                'Module_Bar' => ['Module_Baz' => ['Module_Baz', 'Module_Bar']],
             ]);
         $result = $this->object->checkConstraints(false, ['Module_Foo' => '', 'Module_Bar' => '']);
         $expect = [
             'Cannot disable Module_Foo because modules depend on it:',
-            "Module_Baz: Module_Baz->Module_Foo",
+            'Module_Baz: Module_Baz->Module_Foo',
             'Cannot disable Module_Bar because modules depend on it:',
-            "Module_Baz: Module_Baz->Module_Bar"
+            'Module_Baz: Module_Baz->Module_Bar',
         ];
         $this->assertEquals($expect, $result);
     }
@@ -256,7 +257,7 @@ class StatusTest extends TestCase
             [true, false, false, false, ['Module_Foo']],
             [false, true, false, false, ['Module_Bar']],
             [false, true, true, false, ['Module_Bar', 'Module_Baz']],
-            [true, true, true, false, ['Module_Foo', 'Module_Bar', 'Module_Baz']]
+            [true, true, true, false, ['Module_Foo', 'Module_Bar', 'Module_Baz']],
         ];
     }
 }

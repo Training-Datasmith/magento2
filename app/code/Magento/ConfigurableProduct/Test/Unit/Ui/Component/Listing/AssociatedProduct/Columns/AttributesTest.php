@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class AttributesTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'attributeRepository' => $this->attributeRepositoryMock,
-                'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock
+                'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
             ]
         );
     }
@@ -106,9 +107,9 @@ class AttributesTest extends TestCase
                     ['attribute2_1_code' => 'attribute2_1_option3', 'required_options' => '0'],
                     ['attribute3_1_code' => 'attribute3_1_option3', 'attribute3_2_code' => 'attribute3_2_option1',
                         'required_options' => '0'],
-                    ['attribute4_1_code' => 'attribute4_1_option1', 'required_options' => '1']
-                ]
-            ]
+                    ['attribute4_1_code' => 'attribute4_1_option1', 'required_options' => '1'],
+                ],
+            ],
         ];
         $attributes = [
             $this->createAttributeMock(
@@ -116,7 +117,7 @@ class AttributesTest extends TestCase
                 'attribute1_1_label',
                 [
                     $this->createAttributeOptionMock('attribute1_1_option1', 'attribute1_1_option1_label'),
-                    $this->createAttributeOptionMock('attribute1_1_option2', 'attribute1_1_option2_label')
+                    $this->createAttributeOptionMock('attribute1_1_option2', 'attribute1_1_option2_label'),
                 ]
             ),
             $this->createAttributeMock(
@@ -124,7 +125,7 @@ class AttributesTest extends TestCase
                 'attribute2_1_label',
                 [
                     $this->createAttributeOptionMock('attribute2_1_option1', 'attribute2_1_option1_label'),
-                    $this->createAttributeOptionMock('attribute2_1_option2', 'attribute2_1_option2_label')
+                    $this->createAttributeOptionMock('attribute2_1_option2', 'attribute2_1_option2_label'),
                 ]
             ),
             $this->createAttributeMock(
@@ -133,7 +134,7 @@ class AttributesTest extends TestCase
                 [
                     $this->createAttributeOptionMock('attribute3_1_option1', 'attribute3_1_option1_label'),
                     $this->createAttributeOptionMock('attribute3_1_option2', 'attribute3_1_option2_label'),
-                    $this->createAttributeOptionMock('attribute3_1_option3', 'attribute3_1_option3_label')
+                    $this->createAttributeOptionMock('attribute3_1_option3', 'attribute3_1_option3_label'),
                 ]
             ),
             $this->createAttributeMock(
@@ -142,13 +143,13 @@ class AttributesTest extends TestCase
                 [
                     $this->createAttributeOptionMock('attribute3_2_option1', 'attribute3_2_option1_label'),
                     $this->createAttributeOptionMock('attribute3_2_option2', 'attribute3_2_option2_label'),
-                    $this->createAttributeOptionMock('attribute3_2_option3', 'attribute3_2_option3_label')
+                    $this->createAttributeOptionMock('attribute3_2_option3', 'attribute3_2_option3_label'),
                 ]
             ),
             $this->createAttributeMock(
                 'attribute4_1_code',
                 'attribute4_1_label'
-            )
+            ),
         ];
         $resultData = [
             'data' => [
@@ -157,22 +158,22 @@ class AttributesTest extends TestCase
                     [
                         'attribute1_1_code' => 'attribute1_1_option2',
                         'required_options' => '0',
-                        $name => 'attribute1_1_label: attribute1_1_option2_label'
+                        $name => 'attribute1_1_label: attribute1_1_option2_label',
                     ],
                     [
                         'attribute2_1_code' => 'attribute2_1_option3',
                         'required_options' => '0',
-                        $name => ''
+                        $name => '',
                     ],
                     [
                         'attribute3_1_code' => 'attribute3_1_option3',
                         'attribute3_2_code' => 'attribute3_2_option1',
                         'required_options' => '0',
                         $name => 'attribute3_1_label: attribute3_1_option3_label,'
-                            . ' attribute3_2_label: attribute3_2_option1_label'
-                    ]
-                ]
-            ]
+                            . ' attribute3_2_label: attribute3_2_option1_label',
+                    ],
+                ],
+            ],
         ];
 
         $this->attributesColumn->setData('name', $name);

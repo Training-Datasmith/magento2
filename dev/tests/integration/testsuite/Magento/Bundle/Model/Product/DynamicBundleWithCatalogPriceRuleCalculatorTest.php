@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -60,8 +62,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 10 * 0.9
-                    'maximalPrice' => 9
-                ]
+                    'maximalPrice' => 9,
+                ],
             ],
 
             '#3 Testing price for dynamic bundle with one non required option' => [
@@ -71,8 +73,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 18,
 
                     // 0.9 * 2 * 10
-                    'maximalPrice' => 18
-                ]
+                    'maximalPrice' => 18,
+                ],
             ],
 
             '#4 Testing price for dynamic bundle with one required checkbox type option and 2 simples' => [
@@ -82,8 +84,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 0.9 * 1 * 10 + 3 * 0.9 * 20
-                    'maximalPrice' => 63
-                ]
+                    'maximalPrice' => 63,
+                ],
             ],
 
             '#5 Testing price for dynamic bundle with one required multi type option and 2 simples' => [
@@ -93,8 +95,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 0.9 * 1 * 10 + 3 * 0.9 * 20
-                    'maximalPrice' => 63
-                ]
+                    'maximalPrice' => 63,
+                ],
             ],
 
             '#6 Testing price for dynamic bundle with one required radio type option and 2 simples' => [
@@ -104,8 +106,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 0.9 * 3 * 20
-                    'maximalPrice' => 54
-                ]
+                    'maximalPrice' => 54,
+                ],
             ],
 
             '#7 Testing price for dynamic bundle with two required options' => [
@@ -115,8 +117,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 18,
 
                     // 3 * 0.9 * 20 + 1 * 0.9 * 10 + 3 * 0.9 * 20
-                    'maximalPrice' => 117
-                ]
+                    'maximalPrice' => 117,
+                ],
             ],
 
             '#8 Testing price for dynamic bundle with one required option and one non required' => [
@@ -126,8 +128,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 3 * 0.9 * 20 + 1 * 0.9 * 10 + 3 * 0.9 * 20
-                    'maximalPrice' => 117
-                ]
+                    'maximalPrice' => 117,
+                ],
             ],
 
             '#9 Testing price for dynamic bundle with two non required options' => [
@@ -137,8 +139,8 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                     'minimalPrice' => 9,
 
                     // 3 * 0.9 * 20 + 1 * 0.9 * 10 + 3 * 0.9 * 20
-                    'maximalPrice' => 117
-                ]
+                    'maximalPrice' => 117,
+                ],
             ],
         ];
     }
@@ -159,14 +161,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple1',
                         'qty' => 1,
                     ],
-                ]
+                ],
             ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -187,14 +189,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple1',
                         'qty' => 2,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -219,14 +221,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -251,14 +253,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -283,14 +285,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -315,7 +317,7 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -330,14 +332,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -362,7 +364,7 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -377,14 +379,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }
@@ -409,7 +411,7 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
+                ],
             ],
             [
                 'title' => 'Op2',
@@ -424,14 +426,14 @@ class DynamicBundleWithCatalogPriceRuleCalculatorTest extends BundlePriceAbstrac
                         'sku' => 'simple2',
                         'qty' => 3,
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         return [
             [
                 'modifierName' => 'addSimpleProduct',
-                'data' => [$optionsData]
+                'data' => [$optionsData],
             ],
         ];
     }

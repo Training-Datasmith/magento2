@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class ProductIdLocatorTest extends TestCase
             return $productData[$key] ?? null;
         });
         $product->method('getTypeId')->willReturn('simple');
-        
+
         $product->setData($this->linkField, 1);
 
         $this->collection->expects($this->once())
@@ -133,7 +134,7 @@ class ProductIdLocatorTest extends TestCase
                 return $productData[$key] ?? null;
             });
             $product->method('getTypeId')->willReturn('simple');
-            
+
             $products[] = $product;
         }
 

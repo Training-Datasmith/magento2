@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Api;
 
 use Magento\Catalog\Api\Data\ProductCustomOptionInterfaceFactory;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions as CustomOptionsModifier;
 use Magento\ConfigurableProduct\Test\Fixture\Attribute as AttributeFixture;
 use Magento\ConfigurableProduct\Test\Fixture\Product as ConfigurableProductFixture;
 use Magento\Framework\App\RequestInterface;
@@ -29,7 +30,7 @@ use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\CustomOptions as CustomOptionsModifier;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -165,13 +166,13 @@ class ProductCustomOptionsTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::CONFIG_RESOURCE_PATH . '/' . $productSku . '/child',
-                'httpMethod' => Request::HTTP_METHOD_POST
+                'httpMethod' => Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::CONFIG_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::CONFIG_SERVICE_NAME . 'AddChild'
-            ]
+                'operation' => self::CONFIG_SERVICE_NAME . 'AddChild',
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, ['sku' => $productSku, 'childSku' => $childSku], null, $storeCode);
@@ -191,13 +192,13 @@ class ProductCustomOptionsTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => sprintf($resourcePath, $productSku, $childSku),
-                'httpMethod' => Request::HTTP_METHOD_DELETE
+                'httpMethod' => Request::HTTP_METHOD_DELETE,
             ],
             'soap' => [
                 'service' => self::CONFIG_SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
-                'operation' => self::CONFIG_SERVICE_NAME . 'RemoveChild'
-            ]
+                'operation' => self::CONFIG_SERVICE_NAME . 'RemoveChild',
+            ],
         ];
         $requestData = ['sku' => $productSku, 'childSku' => $childSku];
         return $this->_webApiCall($serviceInfo, $requestData, null, $storeCode);
@@ -225,8 +226,8 @@ class ProductCustomOptionsTest extends WebapiAbstract
         return $this->customOptionModifier->modifyData(
             [
                 $productId => [
-                    'product' => $product->getData()
-                ]
+                    'product' => $product->getData(),
+                ],
             ]
         );
     }

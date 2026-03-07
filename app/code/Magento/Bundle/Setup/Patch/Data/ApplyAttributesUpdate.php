@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,12 +8,11 @@
 
 namespace Magento\Bundle\Setup\Patch\Data;
 
-use Magento\Framework\App\ResourceConnection;
+use Magento\Eav\Setup\EavSetup;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchVersionInterface;
-use Magento\Eav\Setup\EavSetup;
-use Magento\Eav\Setup\EavSetupFactory;
 
 /**
  * Class \Magento\Bundle\Setup\Patch\ApplyAttributesUpdate
@@ -105,7 +106,7 @@ class ApplyAttributesUpdate implements DataPatchInterface, PatchVersionInterface
                 'visible_on_front' => false,
                 'used_in_product_listing' => true,
                 'unique' => false,
-                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
+                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE,
             ]
         );
 
@@ -130,7 +131,7 @@ class ApplyAttributesUpdate implements DataPatchInterface, PatchVersionInterface
                 'comparable' => false,
                 'visible_on_front' => false,
                 'unique' => false,
-                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
+                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE,
             ]
         );
 
@@ -156,7 +157,7 @@ class ApplyAttributesUpdate implements DataPatchInterface, PatchVersionInterface
                 'visible_on_front' => false,
                 'used_in_product_listing' => true,
                 'unique' => false,
-                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
+                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE,
             ]
         );
 
@@ -183,7 +184,7 @@ class ApplyAttributesUpdate implements DataPatchInterface, PatchVersionInterface
                 'visible_on_front' => false,
                 'used_in_product_listing' => true,
                 'unique' => false,
-                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
+                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE,
             ]
         );
 
@@ -209,7 +210,7 @@ class ApplyAttributesUpdate implements DataPatchInterface, PatchVersionInterface
                 'visible_on_front' => false,
                 'used_in_product_listing' => true,
                 'unique' => false,
-                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
+                'apply_to' => \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE,
             ]
         );
     }

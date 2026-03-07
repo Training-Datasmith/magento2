@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,11 +18,11 @@ interface PaymentInterface extends \Magento\Framework\Api\ExtensibleDataInterfac
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const KEY_PO_NUMBER = 'po_number';
+    public const KEY_PO_NUMBER = 'po_number';
 
-    const KEY_METHOD = 'method';
+    public const KEY_METHOD = 'method';
 
-    const KEY_ADDITIONAL_DATA = 'additional_data';
+    public const KEY_ADDITIONAL_DATA = 'additional_data';
 
     /**#@-*/
 

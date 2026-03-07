@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Reader;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Layout\Element;
-use Magento\Framework\View\Layout\ScheduledStructure;
 use Magento\Framework\View\Layout\Reader\Visibility\Condition;
+use Magento\Framework\View\Layout\ScheduledStructure;
 
 /**
  * Block structure reader
@@ -19,26 +22,26 @@ class Block implements Layout\ReaderInterface
     /**#@+
      * Supported types
      */
-    const TYPE_BLOCK = 'block';
-    const TYPE_REFERENCE_BLOCK = 'referenceBlock';
+    public const TYPE_BLOCK = 'block';
+    public const TYPE_REFERENCE_BLOCK = 'referenceBlock';
     /**#@-*/
 
     /**#@+
      * Supported subtypes for blocks
      */
-    const TYPE_ARGUMENTS = 'arguments';
-    const TYPE_ACTION = 'action';
+    public const TYPE_ARGUMENTS = 'arguments';
+    public const TYPE_ACTION = 'action';
     /**#@-*/
 
     /**#@+
      * Names of block attributes in layout
      */
-    const ATTRIBUTE_GROUP = 'group';
-    const ATTRIBUTE_CLASS = 'class';
-    const ATTRIBUTE_TEMPLATE = 'template';
-    const ATTRIBUTE_TTL = 'ttl';
-    const ATTRIBUTE_DISPLAY = 'display';
-    const ATTRIBUTE_ACL = 'aclResource';
+    public const ATTRIBUTE_GROUP = 'group';
+    public const ATTRIBUTE_CLASS = 'class';
+    public const ATTRIBUTE_TEMPLATE = 'template';
+    public const ATTRIBUTE_TTL = 'ttl';
+    public const ATTRIBUTE_DISPLAY = 'display';
+    public const ATTRIBUTE_ACL = 'aclResource';
     /**#@-*/
 
     /**#@-*/
@@ -47,7 +50,7 @@ class Block implements Layout\ReaderInterface
         self::ATTRIBUTE_CLASS,
         self::ATTRIBUTE_TEMPLATE,
         self::ATTRIBUTE_TTL,
-        self::ATTRIBUTE_DISPLAY
+        self::ATTRIBUTE_DISPLAY,
     ];
 
     /**

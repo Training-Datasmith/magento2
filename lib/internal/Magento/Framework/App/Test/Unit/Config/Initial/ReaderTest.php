@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -192,7 +193,7 @@ class ReaderTest extends TestCase
                 'fileResolver' => $this->fileResolverMock,
                 'converter' => $this->converterMock,
                 'schemaLocator' => $this->schemaLocatorMock,
-                'domFactory' => $this->domFactoryMock
+                'domFactory' => $this->domFactoryMock,
             ]
         );
     }

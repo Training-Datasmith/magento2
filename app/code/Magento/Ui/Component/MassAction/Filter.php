@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,9 +24,9 @@ use Magento\Framework\View\Element\UiComponentInterface;
  */
 class Filter
 {
-    const SELECTED_PARAM = 'selected';
+    public const SELECTED_PARAM = 'selected';
 
-    const EXCLUDED_PARAM = 'excluded';
+    public const EXCLUDED_PARAM = 'excluded';
 
     /**
      * @var UiComponentFactory

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Price;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\BasePriceInterface;
 use Magento\Catalog\Api\Data\BasePriceInterfaceFactory;
 use Magento\Catalog\Api\Data\PriceUpdateResultInterface;
@@ -20,15 +20,16 @@ use Magento\Catalog\Model\Product\Price\Validation\InvalidSkuProcessor;
 use Magento\Catalog\Model\Product\Price\Validation\Result;
 use Magento\Catalog\Model\ProductIdLocatorInterface;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\Data\WebsiteInterface;
-use Magento\Framework\Exception\InputException;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\Website;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -123,7 +124,7 @@ class BasePriceStorageTest extends TestCase
                 'invalidSkuProcessor' => $this->invalidSkuProcessor,
                 'validationResult' => $this->validationResult,
                 'allowedProductTypes' => ['simple', 'virtual', 'bundle', 'downloadable'],
-                'productAttributeRepository' => $this->productAttributeRepository
+                'productAttributeRepository' => $this->productAttributeRepository,
             ]
         );
     }
@@ -141,13 +142,13 @@ class BasePriceStorageTest extends TestCase
             [
                 'row_id' => 1,
                 'value' => 15,
-                'store_id' => 1
+                'store_id' => 1,
             ],
             [
                 'row_id' => 2,
                 'value' => 35,
-                'store_id' => 1
-            ]
+                'store_id' => 1,
+            ],
         ];
         $this->invalidSkuProcessor->expects($this->once())
             ->method('filterSkuList')
@@ -241,9 +242,9 @@ class BasePriceStorageTest extends TestCase
         $idsBySku = [
             'sku_1' => [
                 1 => [
-                    $this->basePriceInterface
-                ]
-            ]
+                    $this->basePriceInterface,
+                ],
+            ],
         ];
         $this->basePriceInterface->expects($this->atLeastOnce())->method('getSku')->willReturn($sku);
         $this->invalidSkuProcessor->expects($this->any())
@@ -359,9 +360,9 @@ class BasePriceStorageTest extends TestCase
                         [
                             'store_id' => 1,
                             'row_id' => 1,
-                            'value' => 15
-                        ]
-                    ]
+                            'value' => 15,
+                        ],
+                    ],
                 ],
                 [
                     'isScopeWebsite' => true,
@@ -370,14 +371,14 @@ class BasePriceStorageTest extends TestCase
                         [
                             'store_id' => 1,
                             'row_id' => 1,
-                            'value' => 15
+                            'value' => 15,
                         ],
                         [
                             'store_id' => 2,
                             'row_id' => 1,
-                            'value' => 15
-                        ]
-                    ]
+                            'value' => 15,
+                        ],
+                    ],
                 ],
                 [
                     'isScopeWebsite' => false,
@@ -386,10 +387,10 @@ class BasePriceStorageTest extends TestCase
                         [
                             'store_id' => 0,
                             'row_id' => 1,
-                            'value' => 15
-                        ]
-                    ]
-                ]
+                            'value' => 15,
+                        ],
+                    ],
+                ],
             ];
     }
 

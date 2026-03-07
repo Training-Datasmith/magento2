@@ -308,7 +308,7 @@ class PaymentTokenManagementTest extends TestCase
         $paymentId = 1;
         $publicHash = 'existing-token';
         $duplicateTokenData = [
-            'entity_id' => $entityId
+            'entity_id' => $entityId,
         ];
 
         $tokenMock->expects(static::atLeastOnce())
@@ -370,7 +370,7 @@ class PaymentTokenManagementTest extends TestCase
         $gatewayToken = 'xs4vf3';
         $publicHash = 'existing-token';
         $duplicateTokenData = [
-            'entity_id' => $entityId
+            'entity_id' => $entityId,
         ];
         $newHash = 'new-token2';
 
@@ -446,7 +446,7 @@ class PaymentTokenManagementTest extends TestCase
         $date = $this->createMock(\DateTime::class);
         $this->dateTimeFactory->expects(static::once())
             ->method('create')
-            ->with("now", new \DateTimeZone('UTC'))
+            ->with('now', new \DateTimeZone('UTC'))
             ->willReturn($date);
         $date->expects(static::once())
             ->method('format')

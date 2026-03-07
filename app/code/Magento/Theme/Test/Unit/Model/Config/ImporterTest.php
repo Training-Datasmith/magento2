@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -14,8 +15,8 @@ use Magento\Theme\Model\ResourceModel\Theme\Data\CollectionFactory;
 use Magento\Theme\Model\Theme\Collection as ThemeFilesystemCollection;
 use Magento\Theme\Model\Theme\Data;
 use Magento\Theme\Model\Theme\Registration;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ImporterTest extends TestCase
@@ -132,7 +133,7 @@ class ImporterTest extends TestCase
         $this->assertSame(
             [
                 '<info>Theme import was started.</info>',
-                '<info>Theme import finished.</info>'
+                '<info>Theme import finished.</info>',
             ],
             $result
         );
@@ -181,34 +182,34 @@ class ImporterTest extends TestCase
                 ['frontend/Magento/luma' => ['Data of theme']],
                 ['frontend/Magento/luma'],
                 ['frontend/Magento/luma'],
-                []
+                [],
             ],
             [
                 ['frontend/Magento/luma' => ['Data of theme']],
                 ['frontend/Magento/luma'],
                 [],
-                []
+                [],
             ],
             [
                 [
                     'frontend/Magento/luma' => ['Data of theme'],
-                    'frontend/Magento/blank' => ['Data of theme']
+                    'frontend/Magento/blank' => ['Data of theme'],
                 ],
                 [],
                 ['frontend/Magento/luma', 'frontend/Magento/blank'],
                 [
                     '<info>The following themes will be registered:</info>'
                     . ' frontend/Magento/luma, frontend/Magento/blank',
-                ]
+                ],
             ],
             [
                 [
                     'frontend/Magento/luma' => ['Data of theme'],
-                    'frontend/Magento/blank' => ['Data of theme']
+                    'frontend/Magento/blank' => ['Data of theme'],
                 ],
                 [],
                 [],
-                []
+                [],
             ],
             [
                 [],
@@ -216,7 +217,7 @@ class ImporterTest extends TestCase
                 ['frontend/Magento/luma'],
                 [
                     '<info>The following themes will be registered:</info> frontend/Magento/luma',
-                ]
+                ],
             ],
             [
                 [],
@@ -224,13 +225,13 @@ class ImporterTest extends TestCase
                 [],
                 [
                     '<info>The following themes will be removed:</info> frontend/Magento/luma, frontend/Magento/blank',
-                ]
+                ],
             ],
             [
                 [],
                 ['frontend/Magento/luma'],
                 ['frontend/Magento/luma'],
-                []
+                [],
             ],
         ];
     }

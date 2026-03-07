@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Backend\Test\Unit\Console\Command;
 
 use Magento\Backend\Console\Command\MaintenanceDisableCommand;
-use Magento\Framework\App\MaintenanceMode;
 use Magento\Backend\Model\Validator\IpValidator;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Framework\App\MaintenanceMode;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -68,23 +69,23 @@ class MaintenanceDisableCommandTest extends TestCase
                 ['--ip' => ['127.0.0.1', '127.0.0.2']],
                 [],
                 'Disabled maintenance mode' . PHP_EOL .
-                'Set exempt IP-addresses: 127.0.0.1, 127.0.0.2' . PHP_EOL
+                'Set exempt IP-addresses: 127.0.0.1, 127.0.0.2' . PHP_EOL,
             ],
             [
                 ['--ip' => ['none']],
                 [],
                 'Disabled maintenance mode' . PHP_EOL .
-                'Set exempt IP-addresses: none' . PHP_EOL
+                'Set exempt IP-addresses: none' . PHP_EOL,
             ],
             [
                 [],
                 [],
-                'Disabled maintenance mode' . PHP_EOL
+                'Disabled maintenance mode' . PHP_EOL,
             ],
             [
                 ['--ip' => ['127.0']],
                 ['Invalid IP 127.0'],
-                'Invalid IP 127.0' . PHP_EOL
+                'Invalid IP 127.0' . PHP_EOL,
             ],
         ];
     }
@@ -112,11 +113,11 @@ class MaintenanceDisableCommandTest extends TestCase
         return [
             [
                 'ip' => ['127.0.0.1', '127.0.0.2'],
-                'expected' => true
+                'expected' => true,
             ],
             [
                 'ip' => [],
-                'expected' => false
+                'expected' => false,
             ],
         ];
     }

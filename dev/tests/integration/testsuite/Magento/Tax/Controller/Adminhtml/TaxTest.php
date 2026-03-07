@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Controller\Adminhtml;
 
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -84,7 +87,7 @@ class TaxTest extends \Magento\TestFramework\TestCase\AbstractBackendController
         } catch (NoSuchEntityException $e) {
             $isFound = false;
         }
-        $this->assertFalse($isFound, "Tax Class was found when it should have been deleted.");
+        $this->assertFalse($isFound, 'Tax Class was found when it should have been deleted.');
     }
 
     /**
@@ -99,12 +102,12 @@ class TaxTest extends \Magento\TestFramework\TestCase\AbstractBackendController
             ],
             [
                 ['class_type' => 'PRODUCT', 'class_name' => '11111<22222'],
-                ['class_name' => '11111<22222']
+                ['class_name' => '11111<22222'],
             ],
             [
                 ['class_type' => 'CUSTOMER', 'class_name' => '   12<>sa&df    '],
-                ['class_name' => '12<>sa&df']
-            ]
+                ['class_name' => '12<>sa&df'],
+            ],
         ];
     }
 }

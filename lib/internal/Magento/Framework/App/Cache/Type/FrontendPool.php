@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Cache\Type;
 
 use Magento\Framework\App\Cache\Frontend\Pool;
-use Magento\Framework\App\DeploymentConfig;
 
 /**
  * In-memory readonly pool of cache front-ends with enforced access control, specific to cache types
@@ -19,17 +21,17 @@ class FrontendPool
     /**
      * Array key for cache type
      */
-    const KEY_CACHE_TYPE = 'type';
+    public const KEY_CACHE_TYPE = 'type';
 
     /**
      * Array key for cache frontend
      */
-    const KEY_FRONTEND_CACHE = 'frontend';
+    public const KEY_FRONTEND_CACHE = 'frontend';
 
     /**
      * Config key for cache
      */
-    const KEY_CACHE = 'cache';
+    public const KEY_CACHE = 'cache';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

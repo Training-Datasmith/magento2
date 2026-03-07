@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Gateway\Command;
 
 use Magento\Framework\Exception\NotFoundException;
@@ -33,7 +36,7 @@ class CommandManagerPool implements CommandManagerPoolInterface
         $this->executors = $tmapFactory->createSharedObjectsMap(
             [
                 'array' => $executors,
-                'type' => CommandManagerInterface::class
+                'type' => CommandManagerInterface::class,
             ]
         );
     }

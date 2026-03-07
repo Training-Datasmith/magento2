@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -84,7 +85,7 @@ class CustomerAttribute implements RevertibleDataFixtureInterface
                 __(
                     '"%field" value is required to create an attribute',
                     [
-                        'field' => 'entity_type_id'
+                        'field' => 'entity_type_id',
                     ]
                 )
             );

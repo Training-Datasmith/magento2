@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogUrlRewrite\Test\Unit\Model\Category\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogUrlRewrite\Model\Category\Plugin\Storage as CategoryStoragePlugin;
 use Magento\CatalogUrlRewrite\Model\ResourceModel\Category\Product as ProductResourceModel;
 use Magento\Framework\Serialize\Serializer\Json;
@@ -16,6 +16,7 @@ use Magento\UrlRewrite\Model\MergeDataProviderFactory;
 use Magento\UrlRewrite\Model\StorageInterface;
 use Magento\UrlRewrite\Model\UrlFinderInterface;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -129,19 +130,19 @@ class StorageTest extends TestCase
                         UrlRewrite::ENTITY_TYPE => 'category',
                         UrlRewrite::REQUEST_PATH => 'cat1/cat11.html',
                         UrlRewrite::STORE_ID => 1,
-                    ]
+                    ],
                 ],
                 [
                     [
                         UrlRewrite::ENTITY_TYPE => 'category',
                         UrlRewrite::REQUEST_PATH => 'cat1/cat11.html',
                         UrlRewrite::STORE_ID => 1,
-                    ]
+                    ],
                 ],
                 [
                     'findAllByData' => false,
                     'saveMultiple' => false,
-                ]
+                ],
             ],
             [
                 [
@@ -186,10 +187,10 @@ class StorageTest extends TestCase
                             'url_rewrite_id' => 3,
                             'category_id' => 4,
                             'product_id' => 2,
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

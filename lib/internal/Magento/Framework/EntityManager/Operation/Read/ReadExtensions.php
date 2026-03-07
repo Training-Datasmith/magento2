@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\EntityManager\Operation\Read;
 
-use Magento\Framework\EntityManager\TypeResolver;
 use Magento\Framework\EntityManager\Operation\ExtensionPool;
+use Magento\Framework\EntityManager\TypeResolver;
 
 /**
  * Class ReadExtensions
@@ -45,7 +48,7 @@ class ReadExtensions
         $entityType = $this->typeResolver->resolve($entity);
         $actions = $this->extensionPool->getActions($entityType, 'read');
         foreach ($actions as $action) {
-                $entity = $action->execute($entity, $arguments);
+            $entity = $action->execute($entity, $arguments);
         }
         return $entity;
     }

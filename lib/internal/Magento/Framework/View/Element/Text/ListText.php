@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Framework\View\Element\Text;
 
-use Magento\Framework\View\Element\Text;
+namespace Magento\Framework\View\Element\Text;
 
 /**
  * Class ListText

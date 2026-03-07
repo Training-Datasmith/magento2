@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Customer;
 
 use Magento\Framework\App\ObjectManager;
@@ -11,7 +14,7 @@ use Magento\Framework\Serialize\SerializerInterface;
 
 class NotificationStorage
 {
-    const UPDATE_CUSTOMER_SESSION = 'update_customer_session';
+    public const UPDATE_CUSTOMER_SESSION = 'update_customer_session';
 
     /**
      * @var FrontendInterface
@@ -48,7 +51,7 @@ class NotificationStorage
         $this->cache->save(
             $this->serializer->serialize([
                 'customer_id' => $customerId,
-                'notification_type' => $notificationType
+                'notification_type' => $notificationType,
             ]),
             $this->getCacheKey($notificationType, $customerId)
         );

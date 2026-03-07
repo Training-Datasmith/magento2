@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use Magento\Framework\View\TemplateEngine\Xhtml\Template;
 use Magento\Ui\Component\Listing;
 use Magento\Ui\TemplateEngine\Xhtml\Result;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 

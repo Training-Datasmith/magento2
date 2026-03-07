@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class NameTest extends TestCase
             NameColumn::class,
             [
                 'urlBuilder' => $this->urlBuilderMock,
-                'context' => $this->contextMock
+                'context' => $this->contextMock,
             ]
         );
     }
@@ -70,42 +71,42 @@ class NameTest extends TestCase
                 'items' => [
                     [
                         $fieldName => 'special_value1',
-                        'entity_id' => null
+                        'entity_id' => null,
                     ],
                     [
-                        'entity_id' => '2'
+                        'entity_id' => '2',
                     ],
                     [
                         $fieldName => 'special_value3',
-                        'entity_id' => '3'
-                    ]
-                ]
-            ]
+                        'entity_id' => '3',
+                    ],
+                ],
+            ],
         ];
         $result = [
             'data' => [
                 'items' => [
                     [
                         $fieldName => 'special_value1',
-                        'entity_id' => null
+                        'entity_id' => null,
                     ],
                     [
-                        'entity_id' => '2'
+                        'entity_id' => '2',
                     ],
                     [
                         $fieldName => 'special_value3',
                         'entity_id' => '3',
-                        'product_link' => '<a href="/catalog/product/edit/id/3" target="_blank">special_value3</a>'
-                    ]
-                ]
-            ]
+                        'product_link' => '<a href="/catalog/product/edit/id/3" target="_blank">special_value3</a>',
+                    ],
+                ],
+            ],
         ];
 
         $this->urlBuilderMock->expects(static::any())
             ->method('getUrl')
             ->willReturnMap(
                 [
-                    ['catalog/product/edit', ['id' => '3'], '/catalog/product/edit/id/3']
+                    ['catalog/product/edit', ['id' => '3'], '/catalog/product/edit/id/3'],
                 ]
             );
 

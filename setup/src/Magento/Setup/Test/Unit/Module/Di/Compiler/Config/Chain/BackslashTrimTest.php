@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ class BackslashTrimTest extends TestCase
     public function testModifyArgumentsDoNotExist()
     {
         $inputConfig = [
-            'data' => []
+            'data' => [],
         ];
         $modifier = new BackslashTrim();
         $this->assertSame($inputConfig, $modifier->modify($inputConfig));
@@ -45,10 +46,10 @@ class BackslashTrimTest extends TestCase
                         'array' => [
                             'argument_type' => ['_i_' => '\\Class\\Dependency'],
                             'argument_not_shared' => ['_ins_' => '\\Class\\Dependency'],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -70,10 +71,10 @@ class BackslashTrimTest extends TestCase
                         'array' => [
                             'argument_type' => ['_i_' => 'Class\\Dependency'],
                             'argument_not_shared' => ['_ins_' => 'Class\\Dependency'],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

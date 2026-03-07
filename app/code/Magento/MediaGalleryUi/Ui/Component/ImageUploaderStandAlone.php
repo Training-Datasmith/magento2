@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ namespace Magento\MediaGalleryUi\Ui\Component;
  */
 class ImageUploaderStandAlone extends ImageUploader
 {
-
     /**
      * @inheritdoc
      */
@@ -28,7 +28,7 @@ class ImageUploaderStandAlone extends ImageUploader
                         '.media_gallery_columns.thumbnail_url',
                     'directoriesPath' => 'standalone_media_gallery_listing.standalone_media_gallery_listing' .
                         '.media_gallery_directories',
-                    'messagesPath' => 'standalone_media_gallery_listing.standalone_media_gallery_listing.messages'
+                    'messagesPath' => 'standalone_media_gallery_listing.standalone_media_gallery_listing.messages',
                 ]
             )
         );

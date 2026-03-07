@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Fixture;
 
 use Magento\Catalog\Api\CategoryLinkManagementInterface;
-use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\Framework\DataObject;
+use Magento\Framework\Exception\InvalidArgumentException;
 use Magento\TestFramework\Fixture\DataFixtureInterface;
 
 /**

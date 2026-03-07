@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Paypal;
 
 /**
@@ -15,7 +18,7 @@ abstract class Reports extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::paypal_settlement_reports';
 
     /**
      * Core registry

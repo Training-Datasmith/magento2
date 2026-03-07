@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -17,8 +18,8 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Rss\UrlBuilderInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Msrp\Helper\Data as MsrpHelper;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
@@ -101,7 +102,7 @@ class SpecialTest extends TestCase
         $this->request = $this->createMock(RequestInterface::class);
         $this->request
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['store_id'] => null,
                 ['cid'] => null
             });
@@ -141,7 +142,7 @@ class SpecialTest extends TestCase
                 'rssUrlBuilder' => $this->rssUrlBuilder,
                 'storeManager' => $this->storeManager,
                 'scopeConfig' => $this->scopeConfig,
-                'localeDate' => $this->localeDate
+                'localeDate' => $this->localeDate,
             ]
         );
     }
@@ -175,9 +176,9 @@ class SpecialTest extends TestCase
             'entries' => [
                 [
                     'title' => 'Product Name',
-                    'link' => 'http://magento.com/product-name.html'
-                ]
-            ]
+                    'link' => 'http://magento.com/product-name.html',
+                ],
+            ],
         ];
         $rssData = $this->block->getRssData();
         $description = $rssData['entries'][0]['description'];
@@ -250,7 +251,7 @@ class SpecialTest extends TestCase
             ->willReturn('http://magento.com/rss/feed/index/type/special_products/store_id/1');
         $expected = [
             'label' => 'Special Products',
-            'link' => 'http://magento.com/rss/feed/index/type/special_products/store_id/1'
+            'link' => 'http://magento.com/rss/feed/index/type/special_products/store_id/1',
         ];
         $this->assertEquals($expected, $this->block->getFeeds());
     }

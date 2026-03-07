@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,8 +19,8 @@ use Magento\Framework\ObjectManager\TestAsset\TestAssetInterface;
 
 abstract class AbstractFactoryRuntimeDefinitionsTestCases extends \PHPUnit\Framework\TestCase
 {
-    const ALIAS_OVERRIDDEN_STRING = 'overridden';
-    const ALIAS_OVERRIDDEN_INT = 99;
+    public const ALIAS_OVERRIDDEN_STRING = 'overridden';
+    public const ALIAS_OVERRIDDEN_INT = 99;
 
     /** @var ComplexDependencies */
     protected $complexDependenciesObject;

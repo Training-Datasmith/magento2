@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -98,7 +99,7 @@ class TemporaryTableStrategyTest extends TestCase
 
         $this->resourceMock
             ->method('getTableName')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [$expectedResult] => $expectedResult,
                 [$tempTableName] => $tempTableName,
             });

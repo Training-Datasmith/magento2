@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\LayeredNavigation\Observer\Grid;
 
-use Magento\Framework\Module\Manager;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\Module\Manager;
 
 /**
  * Product attribute grid build observer

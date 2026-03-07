@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,7 +14,7 @@ namespace Magento\Ui\Component\Form\Element;
  */
 class UrlInput extends \Magento\Ui\Component\Form\Element\AbstractElement
 {
-    const NAME = 'urlInput';
+    public const NAME = 'urlInput';
 
     /**
      * Get component name

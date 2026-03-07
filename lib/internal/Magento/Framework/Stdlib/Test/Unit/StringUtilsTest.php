@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Stdlib\Test\Unit;
 
 use Magento\Framework\Stdlib\StringUtils;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Magento\Framework\Stdlib\StringUtilsTest test case
@@ -100,7 +101,7 @@ class StringUtilsTest extends TestCase
         return [
             ['test test2', 'Test_Test2'],
             ['test_test2', 'Test_Test2'],
-            ['test_test2 test3', 'Test_Test2_Test3']
+            ['test_test2 test3', 'Test_Test2_Test3'],
         ];
     }
 

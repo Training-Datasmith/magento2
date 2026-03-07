@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ use Magento\Framework\App\Request\DataPersistorInterface;
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const XML_PATH_ENABLED = ConfigInterface::XML_PATH_ENABLED;
+    public const XML_PATH_ENABLED = ConfigInterface::XML_PATH_ENABLED;
 
     /**
      * Customer session

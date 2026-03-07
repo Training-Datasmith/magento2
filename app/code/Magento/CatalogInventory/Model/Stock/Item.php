@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\Stock;
 
 use Magento\Catalog\Model\Product;
@@ -25,7 +28,7 @@ class Item extends AbstractExtensibleModel implements StockItemInterface
     /**
      * Stock item entity code
      */
-    const ENTITY = 'cataloginventory_stock_item';
+    public const ENTITY = 'cataloginventory_stock_item';
 
     /**
      * Prefix of model events names
@@ -34,7 +37,7 @@ class Item extends AbstractExtensibleModel implements StockItemInterface
      */
     protected $_eventPrefix = 'cataloginventory_stock_item';
 
-    const WEBSITE_ID = 'website_id';
+    public const WEBSITE_ID = 'website_id';
 
     /**
      * Parameter name in event

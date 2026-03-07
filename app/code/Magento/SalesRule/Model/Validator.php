@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -15,8 +17,8 @@ use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\SalesRule\Helper\CartFixedDiscount;
-use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 use Magento\SalesRule\Model\ResourceModel\Rule\Collection as RulesCollection;
+use Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -300,7 +302,7 @@ class Validator extends \Magento\Framework\Model\AbstractModel implements ResetA
                 $this->getWebsiteId(),
                 $this->getCustomerGroupId(),
                 $couponKey,
-                $addressId
+                $addressId,
             ]
         );
     }
@@ -448,8 +450,8 @@ class Validator extends \Magento\Framework\Model\AbstractModel implements ResetA
             switch ($rule->getSimpleAction()) {
                 case Rule::TO_PERCENT_ACTION:
                     $rulePercent = max(0, 100 - $rule->getDiscountAmount());
-                // break is intentionally omitted
-                // no break
+                    // break is intentionally omitted
+                    // no break
                 case Rule::BY_PERCENT_ACTION:
                     $discountAmount = ($shippingAmount - $address->getShippingDiscountAmount()) * $rulePercent / 100;
                     $baseDiscountAmount = ($baseShippingAmount -
@@ -515,7 +517,7 @@ class Validator extends \Magento\Framework\Model\AbstractModel implements ResetA
             if ($address->getShippingDiscountAmount() + $discountAmount <= $shippingAmount) {
                 $data = [
                     'amount' => $discountAmount,
-                    'base_amount' => $baseDiscountAmount
+                    'base_amount' => $baseDiscountAmount,
                 ];
                 $this->rulesApplier->addShippingDiscountDescription(
                     $address,
@@ -599,7 +601,7 @@ class Validator extends \Magento\Framework\Model\AbstractModel implements ResetA
                 'base_items_price' => $ruleTotalBaseItemsPrice,
                 'base_items_discount_amount' => $ruleTotalBaseItemsDiscountAmount,
                 'items_count' => $validItemsCount,
-                'affected_items' => $affectedItems
+                'affected_items' => $affectedItems,
             ];
         }
 

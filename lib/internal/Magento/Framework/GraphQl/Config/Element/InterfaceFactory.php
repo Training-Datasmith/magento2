@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -79,14 +80,14 @@ class InterfaceFactory implements ConfigElementFactoryInterface
     public function create(
         array $interfaceData,
         array $fields
-    ) : InterfaceType {
+    ): InterfaceType {
         return $this->objectManager->create(
             InterfaceType::class,
             [
                 'name' => $interfaceData['name'],
                 'typeResolver' => $interfaceData['typeResolver'],
                 'fields' => $fields,
-                'description' => isset($interfaceData['description']) ? $interfaceData['description'] : ''
+                'description' => isset($interfaceData['description']) ? $interfaceData['description'] : '',
             ]
         );
     }

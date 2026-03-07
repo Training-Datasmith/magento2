@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ $catalogRule = $catalogRuleFactory->create(
             RuleInterface::SORT_ORDER => 0,
             'sub_is_enable' => 0,
             'sub_discount_amount' => 0,
-        ]
+        ],
     ]
 );
 $catalogRuleRepository->save($catalogRule);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class ContentsTest extends TestCase
                 'view' => $this->view,
                 'session' => $this->session,
                 'response' => $this->response,
-                'storage' => $this->storage
+                'storage' => $this->storage,
             ]
         );
     }
@@ -121,7 +122,7 @@ class ContentsTest extends TestCase
 
         $this->objectManager
             ->method('get')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [WysiwygStorage::class] => $storage,
                 [Data::class] => $jsonData
             });

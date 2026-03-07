@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -71,13 +72,13 @@ class ContextPluginTest extends TestCase
                 switch ($callCount) {
                     case 1:
                         if ($arg1 === Context::CONTEXT_GROUP && $arg3 === 0) {
-                             return $this->httpContextMock;
+                            return $this->httpContextMock;
                         }
                         break;
                     case 2:
                         if ($arg1 === Context::CONTEXT_AUTH && $arg2 === true &&
                             $arg3 === self::STUB_CUSTOMER_NOT_LOGGED_IN) {
-                             return $this->httpContextMock;
+                            return $this->httpContextMock;
                         }
                         break;
                 }

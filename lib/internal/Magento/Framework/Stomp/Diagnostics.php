@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class Diagnostics
         $results = [
             'configuration' => $this->checkConfiguration(),
             'connections' => [],
-            'recommendations' => []
+            'recommendations' => [],
         ];
 
         if ($connectionName) {
@@ -117,8 +118,8 @@ class Diagnostics
                 'amqp' => $queueConfig['amqp'] ?? null,
                 'stomp' => isset($queueConfig['stomp']) ? $this->sanitizeConfig($queueConfig['stomp']) : null,
                 'connections' => isset($queueConfig['connections']) ?
-                    array_map([$this, 'sanitizeConfig'], $queueConfig['connections']) : []
-            ]
+                    array_map([$this, 'sanitizeConfig'], $queueConfig['connections']) : [],
+            ],
         ];
     }
 
@@ -143,14 +144,14 @@ class Diagnostics
             return [
                 'status' => 'error',
                 'message' => "Unknown connection type: {$connectionType}",
-                'connection_type' => $connectionType
+                'connection_type' => $connectionType,
             ];
 
         } catch (\Exception $e) {
             return [
                 'status' => 'error',
                 'message' => $e->getMessage(),
-                'connection_type' => 'unknown'
+                'connection_type' => 'unknown',
             ];
         }
     }
@@ -167,7 +168,7 @@ class Diagnostics
             'connection_type' => 'stomp',
             'connection_name' => $connectionName,
             'status' => 'unknown',
-            'tests' => []
+            'tests' => [],
         ];
 
         try {
@@ -213,14 +214,14 @@ class Diagnostics
         $result = [
             'connection_type' => 'amqp',
             'status' => 'unknown',
-            'tests' => []
+            'tests' => [],
         ];
 
         try {
             // Test configuration
             $result['tests']['config'] = [
                 'status' => !empty($config) ? 'pass' : 'fail',
-                'message' => !empty($config) ? 'AMQP configuration found' : 'AMQP configuration missing'
+                'message' => !empty($config) ? 'AMQP configuration found' : 'AMQP configuration missing',
             ];
 
             // Test network connectivity (basic check)
@@ -255,12 +256,12 @@ class Diagnostics
 
             return [
                 'status' => 'pass',
-                'message' => "Configuration loaded successfully (Host: {$host}, Port: {$port})"
+                'message' => "Configuration loaded successfully (Host: {$host}, Port: {$port})",
             ];
         } catch (\Exception $e) {
             return [
                 'status' => 'fail',
-                'message' => "Configuration load failed: " . $e->getMessage()
+                'message' => 'Configuration load failed: ' . $e->getMessage(),
             ];
         }
     }
@@ -282,7 +283,7 @@ class Diagnostics
         } catch (\Exception $e) {
             return [
                 'status' => 'fail',
-                'message' => "Network test failed: " . $e->getMessage()
+                'message' => 'Network test failed: ' . $e->getMessage(),
             ];
         }
     }
@@ -303,12 +304,12 @@ class Diagnostics
             fclose($socket);
             return [
                 'status' => 'pass',
-                'message' => "Successfully connected to {$host}:{$port}"
+                'message' => "Successfully connected to {$host}:{$port}",
             ];
         } else {
             return [
                 'status' => 'fail',
-                'message' => "Failed to connect to {$host}:{$port} - {$errstr} ({$errno})"
+                'message' => "Failed to connect to {$host}:{$port} - {$errstr} ({$errno})",
             ];
         }
     }
@@ -328,12 +329,12 @@ class Diagnostics
 
             return [
                 'status' => 'pass',
-                'message' => 'STOMP client created successfully'
+                'message' => 'STOMP client created successfully',
             ];
         } catch (\Exception $e) {
             return [
                 'status' => 'fail',
-                'message' => "STOMP client creation failed: " . $e->getMessage()
+                'message' => 'STOMP client creation failed: ' . $e->getMessage(),
             ];
         }
     }
@@ -357,12 +358,12 @@ class Diagnostics
 
             return [
                 'status' => 'pass',
-                'message' => 'Basic STOMP operations successful'
+                'message' => 'Basic STOMP operations successful',
             ];
         } catch (\Exception $e) {
             return [
                 'status' => 'fail',
-                'message' => "Basic operations failed: " . $e->getMessage()
+                'message' => 'Basic operations failed: ' . $e->getMessage(),
             ];
         }
     }
@@ -380,11 +381,11 @@ class Diagnostics
 
         // Configuration recommendations
         if (!$results['configuration']['queue_config_exists']) {
-            $recommendations[] = "Add queue configuration to env.php";
+            $recommendations[] = 'Add queue configuration to env.php';
         }
 
         if (!$results['configuration']['amqp_configured'] && !$results['configuration']['stomp_configured']) {
-            $recommendations[] = "Configure at least one message queue connection (AMQP or STOMP)";
+            $recommendations[] = 'Configure at least one message queue connection (AMQP or STOMP)';
         }
 
         // Connection-specific recommendations
@@ -405,8 +406,8 @@ class Diagnostics
 
         // Performance recommendations
         if ($results['configuration']['stomp_configured']) {
-            $recommendations[] = "Consider tuning STOMP heartbeat and timeout settings for your workload";
-            $recommendations[] = "Monitor queue depth and implement alerts for queue buildup";
+            $recommendations[] = 'Consider tuning STOMP heartbeat and timeout settings for your workload';
+            $recommendations[] = 'Monitor queue depth and implement alerts for queue buildup';
         }
 
         return $recommendations;

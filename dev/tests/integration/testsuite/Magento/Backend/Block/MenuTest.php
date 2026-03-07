@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block;
 
 use Magento\Framework\App\State;
@@ -72,7 +75,7 @@ class MenuTest extends \PHPUnit\Framework\TestCase
             'Invited Customers',
         ];
         foreach ($menu->xpath('/ul//ul//ul/li/a/span') as $sortOrder => $item) {
-            if ($sortOrder>2) {
+            if ($sortOrder > 2) {
                 break;
             }
             $this->assertEquals(
@@ -104,7 +107,7 @@ class MenuTest extends \PHPUnit\Framework\TestCase
                 ComponentRegistrar::MODULE => [],
                 ComponentRegistrar::THEME => [],
                 ComponentRegistrar::LANGUAGE => [],
-                ComponentRegistrar::LIBRARY => []
+                ComponentRegistrar::LIBRARY => [],
             ]
         );
 
@@ -132,7 +135,7 @@ class MenuTest extends \PHPUnit\Framework\TestCase
             \Magento\Backend\Model\Menu\Config::class,
             [
                 'configReader' => $configReader,
-                'configCacheType' => $this->configCacheType
+                'configCacheType' => $this->configCacheType,
             ]
         );
     }

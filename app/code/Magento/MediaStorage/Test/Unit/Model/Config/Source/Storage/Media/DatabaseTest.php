@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\MediaStorage\Test\Unit\Model\Config\Source\Storage\Media;
 
@@ -52,7 +52,7 @@ class DatabaseTest extends TestCase
             $this->mediaDatabase->toOptionArray(),
             [
                 ['value' => 'default_setup', 'label' => 'default_setup'],
-                ['value' => 'custom_resource', 'label' => 'custom_resource']
+                ['value' => 'custom_resource', 'label' => 'custom_resource'],
             ]
         );
 
@@ -60,7 +60,7 @@ class DatabaseTest extends TestCase
             $this->mediaDatabase->toOptionArray(),
             [
                 ['value' => 'custom_resource', 'label' => 'custom_resource'],
-                ['value' => 'default_setup', 'label' => 'default_setup']
+                ['value' => 'default_setup', 'label' => 'default_setup'],
             ]
         );
         $this->assertEquals(

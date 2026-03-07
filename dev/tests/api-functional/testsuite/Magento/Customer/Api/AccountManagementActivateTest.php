@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Customer\Api;
 
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
+use Magento\Framework\Webapi\Rest\Request as RestRequest;
 use Magento\TestFramework\Fixture\Config as ConfigFixture;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\TestCase\WebapiAbstract;
-use Magento\Framework\Webapi\Rest\Request as RestRequest;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class AccountManagementActivateTest extends WebapiAbstract
 {
@@ -26,7 +27,7 @@ class AccountManagementActivateTest extends WebapiAbstract
     }
 
     #[
-        ConfigFixture("customer/create_account/confirm", 1),
+        ConfigFixture('customer/create_account/confirm', 1),
         DataFixture(
             CustomerFixture::class,
             ['confirmation' => 'CONFIRM-INIT'],
@@ -69,7 +70,7 @@ class AccountManagementActivateTest extends WebapiAbstract
             CustomerFixture::class,
             [
                 'email' => 'anon.activate.invalidkey@example.com',
-                'confirmation' => 'CONFIRM-ABCDE'
+                'confirmation' => 'CONFIRM-ABCDE',
             ],
             'customer_invalid_key'
         )

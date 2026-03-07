@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Controller\Cart;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
@@ -217,7 +220,7 @@ class Add extends \Magento\Checkout\Controller\Cart implements HttpPostActionInt
         } else {
             if ($product && !$product->getIsSalable()) {
                 $result['product'] = [
-                    'statusText' => __('Out of stock')
+                    'statusText' => __('Out of stock'),
                 ];
             }
         }

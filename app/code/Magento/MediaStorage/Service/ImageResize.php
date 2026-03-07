@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,23 +11,23 @@ namespace Magento\MediaStorage\Service;
 use Generator;
 use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Model\Product\Image\ParamsBuilder;
+use Magento\Catalog\Model\Product\Media\ConfigInterface as MediaConfig;
+use Magento\Catalog\Model\ResourceModel\Product\Image as ProductImage;
 use Magento\Catalog\Model\View\Asset\ImageFactory as AssertImageFactory;
 use Magento\Framework\App\Area;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\State;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Image;
 use Magento\Framework\Image\Factory as ImageFactory;
-use Magento\Catalog\Model\Product\Media\ConfigInterface as MediaConfig;
-use Magento\Framework\App\State;
 use Magento\Framework\View\ConfigInterface as ViewConfig;
-use Magento\Catalog\Model\ResourceModel\Product\Image as ProductImage;
+use Magento\MediaStorage\Helper\File\Storage\Database as FileStorageDatabase;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Theme\Model\Config\Customization as ThemeCustomizationConfig;
 use Magento\Theme\Model\ResourceModel\Theme\Collection as ThemeCollection;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\MediaStorage\Helper\File\Storage\Database as FileStorageDatabase;
 use Magento\Theme\Model\Theme;
 
 /**

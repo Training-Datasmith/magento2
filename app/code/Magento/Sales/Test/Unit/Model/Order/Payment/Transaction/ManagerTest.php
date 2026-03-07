@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\Payment\Transaction;
 use Magento\Sales\Model\Order\Payment\Transaction\Manager;
 use Magento\Sales\Model\Order\Payment\Transaction\Repository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ManagerTest extends TestCase
 {
@@ -106,28 +107,28 @@ class ManagerTest extends TestCase
         $type,
         $expectedResult
     ) {
-         $transactionBasedOn = false;
+        $transactionBasedOn = false;
 
-         $payment = $this->createPartialMock(
-             Payment::class,
-             ["setParentTransactionId", "getParentTransactionId", "getTransactionId"]
-         );
-         $payment->expects($this->atLeastOnce())->method('getTransactionId')->willReturn($transactionId);
+        $payment = $this->createPartialMock(
+            Payment::class,
+            ['setParentTransactionId', 'getParentTransactionId', 'getTransactionId']
+        );
+        $payment->expects($this->atLeastOnce())->method('getTransactionId')->willReturn($transactionId);
 
         if (!$parentTransactionId && !$transactionId && $transactionBasedTxnId) {
             $transactionBasedOn = $this->createMock(Transaction::class);
             $transactionBasedOn->expects($this->once())->method('getTxnId')->willReturn($transactionBasedTxnId);
-            $payment->expects($this->once())->method("setParentTransactionId")->with($transactionBasedTxnId);
+            $payment->expects($this->once())->method('setParentTransactionId')->with($transactionBasedTxnId);
         }
-         $payment->expects($this->exactly(2))->method('getParentTransactionId')->willReturnOnConsecutiveCalls(
-             $parentTransactionId,
-             $transactionBasedOn ? $transactionBasedTxnId : $parentTransactionId
-         );
+        $payment->expects($this->exactly(2))->method('getParentTransactionId')->willReturnOnConsecutiveCalls(
+            $parentTransactionId,
+            $transactionBasedOn ? $transactionBasedTxnId : $parentTransactionId
+        );
 
-         $this->assertEquals(
-             $expectedResult,
-             $this->manager->generateTransactionId($payment, $type, $transactionBasedOn)
-         );
+        $this->assertEquals(
+            $expectedResult,
+            $this->manager->generateTransactionId($payment, $type, $transactionBasedOn)
+        );
     }
 
     /**
@@ -141,21 +142,21 @@ class ManagerTest extends TestCase
                 'parentTransactionId' => 2,
                 'transactionBasedTxnId' => 1,
                 'type' => Transaction::TYPE_REFUND,
-                'expectedResult' => "2-" . Transaction::TYPE_REFUND
+                'expectedResult' => '2-' . Transaction::TYPE_REFUND,
             ],
             'withTransactionId' => [
                 'transactionId' => 33,
                 'parentTransactionId' => 2,
                 'transactionBasedTxnId' => 1,
                 'type' => Transaction::TYPE_REFUND,
-                'expectedResult' => 33
+                'expectedResult' => 33,
             ],
             'withBasedTransactionId' => [
                 'transactionId' => null,
                 'parentTransactionId' => null,
                 'transactionBasedTxnId' => 4,
                 'type' => Transaction::TYPE_REFUND,
-                'expectedResult' => "4-" . Transaction::TYPE_REFUND
+                'expectedResult' => '4-' . Transaction::TYPE_REFUND,
             ],
         ];
     }
@@ -166,9 +167,9 @@ class ManagerTest extends TestCase
     public static function isTransactionExistsDataProvider()
     {
         return [
-            'withTransactionIdAndTransaction' => ["100-refund", true, true],
+            'withTransactionIdAndTransaction' => ['100-refund', true, true],
             'withoutTransactionIdAndWithTransaction' => [null, true, false],
-            'withTransactionIdAndWithoutTransaction' => ["100-refund", false, false],
+            'withTransactionIdAndWithoutTransaction' => ['100-refund', false, false],
             'withoutTransactionIdAndWithoutTransaction' => [null, false, false],
         ];
     }
@@ -180,7 +181,7 @@ class ManagerTest extends TestCase
     {
         return [
             'withParentId' => [false, 1, 1],
-            'withoutParentId' => [1, 2, 1]
+            'withoutParentId' => [1, 2, 1],
         ];
     }
 }

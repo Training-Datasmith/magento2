@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\PaypalGraphQl\Model\Resolver\Guest;
 
 use Laminas\Http\Exception\RuntimeException;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
 use Magento\Framework\Serialize\SerializerInterface;
+use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
 use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 
 /**
@@ -60,7 +61,7 @@ class PaypalPayflowProTokenExceptionTest extends PaypalPayflowProAbstractTest
         $cartId = $this->quoteIdToMaskedId->execute((int)$cart->getId());
         $query = $this->getCreatePayflowTokenMutation($cartId);
 
-        $expectedExceptionMessage = "Payment Gateway is unreachable at the moment. Please use another payment option.";
+        $expectedExceptionMessage = 'Payment Gateway is unreachable at the moment. Please use another payment option.';
         $expectedException = new RuntimeException($expectedExceptionMessage);
 
         $this->gatewayMock

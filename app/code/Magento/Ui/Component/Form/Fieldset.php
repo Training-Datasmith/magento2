@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form;
 
 use Magento\Ui\Component\AbstractComponent;
@@ -15,7 +18,7 @@ use Magento\Ui\Component\AbstractComponent;
  */
 class Fieldset extends AbstractComponent
 {
-    const NAME = 'fieldset';
+    public const NAME = 'fieldset';
 
     /**
      * @var bool

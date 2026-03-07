@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Checkout\Model\Cart;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\UrlInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -45,7 +47,7 @@ class CheckoutSummaryConfigProvider implements ConfigProviderInterface
     {
         return [
             'maxCartItemsToDisplay' => $this->getMaxCartItemsToDisplay(),
-            'cartUrl' => $this->urlBuilder->getUrl('checkout/cart')
+            'cartUrl' => $this->urlBuilder->getUrl('checkout/cart'),
         ];
     }
 

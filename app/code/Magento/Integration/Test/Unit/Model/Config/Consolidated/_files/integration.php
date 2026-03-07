@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,14 +16,14 @@ return [
             'Magento_Customer::manageParent',
             'Magento_Customer::manage',
             'Magento_SalesRule::quoteParent',
-            'Magento_SalesRule::quote'
-        ]
+            'Magento_SalesRule::quote',
+        ],
     ],
     'TestIntegration2' => [
         'email' => 'test-integration2@magento.com',
         'resource' => [
             'Magento_Backend::admin',
-            'Magento_Sales::sales'
-        ]
-    ]
+            'Magento_Sales::sales',
+        ],
+    ],
 ];

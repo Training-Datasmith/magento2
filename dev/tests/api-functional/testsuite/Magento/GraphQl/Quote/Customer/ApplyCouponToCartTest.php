@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class ApplyCouponToCartTest extends GraphQlAbstract
         $query = $this->getQuery($maskedQuoteId, $couponCode);
         $response = $this->graphQlMutation($query, [], '', $this->getHeaderMap());
 
-        self::assertArrayHasKey("applyCouponToCart", $response);
+        self::assertArrayHasKey('applyCouponToCart', $response);
         self::assertEquals($couponCode, $response['applyCouponToCart']['cart']['applied_coupon']['code']);
 
         $this->graphQlMutation($query, [], '', $this->getHeaderMap());

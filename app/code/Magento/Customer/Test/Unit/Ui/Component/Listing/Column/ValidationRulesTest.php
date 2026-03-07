@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class ValidationRulesTest extends TestCase
             ['alphanumeric', 'validate-alphanum'],
             ['alphanum-with-spaces', 'validate-alphanum-with-spaces'],
             ['url', 'validate-url'],
-            ['email', 'validate-email']
+            ['email', 'validate-email'],
         ];
     }
 

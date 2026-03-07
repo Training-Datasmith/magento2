@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Config\Model;
 
 use Magento\Config\Model\Config\BackendFactory;
 use Magento\Config\Model\Config\Structure;
 use Magento\Config\Model\Config\StructureFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\Config\ValueInterface;
 use Magento\Framework\App\Config\Value;
+use Magento\Framework\App\Config\ValueInterface;
 use Magento\Framework\App\ScopeInterface;
-use Magento\Store\Model\ScopeTypeNormalizer;
 use Magento\Framework\App\ScopeResolverPool;
 use Magento\Framework\Exception\RuntimeException;
+use Magento\Store\Model\ScopeTypeNormalizer;
 
 /**
  * Creates a prepared instance of Value.

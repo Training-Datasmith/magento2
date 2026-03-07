@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -123,7 +124,7 @@ class CronInstallCommandTest extends TestCase
     {
         return [
             ['existingTasks' => [], 'options' => []],
-            ['existingTasks' => ['* * * * * /bin/php /var/www/run.php'], 'options' => ['-f'=> true]]
+            ['existingTasks' => ['* * * * * /bin/php /var/www/run.php'], 'options' => ['-f' => true]],
         ];
     }
 }

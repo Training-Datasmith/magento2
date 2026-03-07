@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Creates a simple product to be used for test cases.
  *
@@ -36,7 +38,7 @@ $product->setTypeId(Type::TYPE_SIMPLE)
     ->setSku('simple_77')
     ->setPrice(10)
     ->setWeight(1)
-    ->setShortDescription("Short description")
+    ->setShortDescription('Short description')
     ->setTaxClassId(0)
     ->setTierPrice(
         [
@@ -127,7 +129,7 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '3-2-select',
             ],
-        ]
+        ],
     ],
     [
         'previous_group' => 'select',
@@ -150,8 +152,8 @@ $oldOptions = [
                 'price_type'    => 'fixed',
                 'sku'           => '4-2-radio',
             ],
-        ]
-    ]
+        ],
+    ],
 ];
 
 $options = [];

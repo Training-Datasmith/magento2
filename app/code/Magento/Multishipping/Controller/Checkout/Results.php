@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -12,5 +13,4 @@ namespace Magento\Multishipping\Controller\Checkout;
  */
 class Results extends Success
 {
-
 }

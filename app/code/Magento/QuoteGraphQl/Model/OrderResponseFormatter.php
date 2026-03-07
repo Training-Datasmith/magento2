@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class OrderResponseFormatter implements QueryResponseFormatterInterface
                 if (isset($error['extensions']['error_code'])) {
                     $dataErrors[] = [
                         'message' => $error['message'],
-                        'code' => $error['extensions']['error_code']
+                        'code' => $error['extensions']['error_code'],
                     ];
                 }
             }

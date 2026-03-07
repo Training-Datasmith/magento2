@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Model\Quote;
 
 use Magento\Customer\Api\AddressRepositoryInterface;
@@ -332,13 +335,13 @@ class AddressTest extends TestCase
         $this->assertNotEquals(
             $customerId,
             $this->_address->getCustomerId(),
-            "Precondition failed: Customer ID was not set."
+            'Precondition failed: Customer ID was not set.'
         );
-        $this->assertNotEquals(1, $this->_address->getQuoteId(), "Precondition failed: Quote ID was not set.");
+        $this->assertNotEquals(1, $this->_address->getQuoteId(), 'Precondition failed: Quote ID was not set.');
         $this->assertNotEquals(
             $customerAddressId,
             $this->_address->getCustomerAddressId(),
-            "Precondition failed: Customer address ID was not set."
+            'Precondition failed: Customer address ID was not set.'
         );
 
         /** @var AddressInterfaceFactory $addressFactory */
@@ -378,7 +381,7 @@ class AddressTest extends TestCase
     {
         return [
             ['test', 'test'],
-            [[123, true], [123, true]]
+            [[123, true], [123, true]],
         ];
     }
 

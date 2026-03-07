@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -147,7 +149,7 @@ class Attribute extends AbstractDb
             ];
             $select = $connection->select()->from(
                 $this->getTable('eav_entity_attribute'),
-                new \Zend_Db_Expr("MAX(sort_order)")
+                new \Zend_Db_Expr('MAX(sort_order)')
             )->where(
                 'attribute_set_id = :attribute_set_id'
             )->where(
@@ -403,7 +405,7 @@ class Attribute extends AbstractDb
             $frontendInput = $object->getFrontendInput();
             if ($frontendInput === 'multiselect') {
                 $defaultValue =
-                    array_unique(array_merge($defaultValue, explode(",", $object->getDefaultValue())));
+                    array_unique(array_merge($defaultValue, explode(',', $object->getDefaultValue())));
             }
         }
 
@@ -543,7 +545,7 @@ class Attribute extends AbstractDb
         $update = [];
 
         if ($object->getBackendType() === 'text') {
-            $where.= ' AND ' . $connection->prepareSqlCondition('value', ['finset' => $optionId]);
+            $where .= ' AND ' . $connection->prepareSqlCondition('value', ['finset' => $optionId]);
             $concat = $connection->getConcatSql(["','", 'value', "','"]);
             $expr = $connection->quoteInto(
                 "TRIM(BOTH ',' FROM REPLACE($concat,',?,',','))",
@@ -551,7 +553,7 @@ class Attribute extends AbstractDb
             );
             $update['value'] = new \Zend_Db_Expr($expr);
         } else {
-            $where.= $connection->quoteInto(' AND value = ?', $optionId);
+            $where .= $connection->quoteInto(' AND value = ?', $optionId);
             $update['value'] = null;
         }
 
@@ -657,12 +659,12 @@ class Attribute extends AbstractDb
     public function getFlatUpdateSelect(AbstractAttribute $attribute, $storeId)
     {
         $connection = $this->getConnection();
-        $joinConditionTemplate = "%s.entity_id=%s.entity_id" .
-            " AND %s.entity_type_id = " .
+        $joinConditionTemplate = '%s.entity_id=%s.entity_id' .
+            ' AND %s.entity_type_id = ' .
             $attribute->getEntityTypeId() .
-            " AND %s.attribute_id = " .
+            ' AND %s.attribute_id = ' .
             $attribute->getId() .
-            " AND %s.store_id = %d";
+            ' AND %s.store_id = %d';
         $joinCondition = sprintf(
             $joinConditionTemplate,
             'e',
@@ -689,7 +691,7 @@ class Attribute extends AbstractDb
             [$attribute->getAttributeCode() => $valueExpr]
         );
         if ($attribute->getFlatAddChildData()) {
-            $select->where("e.is_child = ?", 0);
+            $select->where('e.is_child = ?', 0);
         }
 
         return $select;

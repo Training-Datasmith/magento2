@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 /**
@@ -16,10 +19,10 @@ class ScheduledStructure
     /**#@+
      * Keys for array of elements to sort
      */
-    const ELEMENT_NAME = 'elementName';
-    const ELEMENT_PARENT_NAME = 'parentName';
-    const ELEMENT_OFFSET_OR_SIBLING  = 'offsetOrSibling';
-    const ELEMENT_IS_AFTER = 'isAfter';
+    public const ELEMENT_NAME = 'elementName';
+    public const ELEMENT_PARENT_NAME = 'parentName';
+    public const ELEMENT_OFFSET_OR_SIBLING  = 'offsetOrSibling';
+    public const ELEMENT_IS_AFTER = 'isAfter';
     /**#@-*/
 
     /**#@-*/
@@ -113,7 +116,7 @@ class ScheduledStructure
             self::ELEMENT_NAME => $elementName,
             self::ELEMENT_PARENT_NAME => $parentName,
             self::ELEMENT_OFFSET_OR_SIBLING => $offsetOrSibling,
-            self::ELEMENT_IS_AFTER => $isAfter
+            self::ELEMENT_IS_AFTER => $isAfter,
         ];
     }
 

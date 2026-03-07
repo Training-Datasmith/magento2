@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Billing\Agreement;
 
 /**
@@ -60,7 +63,7 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
             [
                 'label' => __('Back'),
                 'onclick' => 'setLocation(\'' . $this->getBackUrl() . '\')',
-                'class' => 'back'
+                'class' => 'back',
             ],
             -1
         );
@@ -74,8 +77,8 @@ class View extends \Magento\Backend\Block\Widget\Form\Container
                 'cancel',
                 [
                     'label' => __('Cancel'),
-                    'onclick' => "confirmSetLocation(" . "'{$confirmText}', '{$this->_getCancelUrl()}'" . ")",
-                    'class' => 'cancel'
+                    'onclick' => 'confirmSetLocation(' . "'{$confirmText}', '{$this->_getCancelUrl()}'" . ')',
+                    'class' => 'cancel',
                 ],
                 -1
             );

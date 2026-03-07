@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 
 namespace Magento\Ui\Component\Form\Element;
 
-use Magento\Ui\Model\ColorPicker\ColorModesProvider;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Ui\Model\ColorPicker\ColorModesProvider;
 
 /**
  * Prepares Color Picker UI component with mode and format
@@ -21,9 +22,9 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
  */
 class ColorPicker extends AbstractElement
 {
-    const NAME = 'colorPicker';
+    public const NAME = 'colorPicker';
 
-    const DEFAULT_MODE = 'full';
+    public const DEFAULT_MODE = 'full';
 
     /**
      * Provides color picker modes configuration
@@ -68,7 +69,7 @@ class ColorPicker extends AbstractElement
      * @return void
      * @since 101.1.0
      */
-    public function prepare() : void
+    public function prepare(): void
     {
         $modes = $this->modesProvider->getModes();
         $colorPickerModeSetting = $this->getData('config/colorPickerMode');

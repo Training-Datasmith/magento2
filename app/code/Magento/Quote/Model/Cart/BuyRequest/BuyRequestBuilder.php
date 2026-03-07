@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ class BuyRequestBuilder
     public function build(CartItem $cartItem): DataObject
     {
         $requestData = [
-            ['qty' => $cartItem->getQuantity()]
+            ['qty' => $cartItem->getQuantity()],
         ];
 
         /** @var BuyRequestDataProviderInterface $provider */

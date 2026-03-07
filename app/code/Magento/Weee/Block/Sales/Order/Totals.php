@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Block\Sales\Order;
 
 /**
@@ -64,7 +67,7 @@ class Totals extends \Magento\Framework\View\Element\Template
                     'code' => $this->getNameInLayout(),
                     'label' => __('FPT'),
                     'value' => $weeeTotal,
-                    'base_value' => $weeeBaseTotal
+                    'base_value' => $weeeBaseTotal,
                 ]
             );
             if (isset($totals['grand_total_incl'])) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Indexer\Product\Eav\Plugin;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Indexer\Product\Eav\Plugin\StoreView;
 use Magento\Catalog\Model\Indexer\Product\Eav\Processor;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\ResourceModel\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -85,7 +86,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 1,
                     'has_group_id_changed' => false,
                     'is_active' => true,
-                ]
+                ],
             ],
             [
                 [
@@ -93,7 +94,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 1,
                     'has_group_id_changed' => true,
                     'is_active' => false,
-                ]
+                ],
             ],
             [
                 [
@@ -101,7 +102,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 1,
                     'has_group_id_changed' => false,
                     'is_active' => false,
-                ]
+                ],
             ],
             [
                 [
@@ -109,7 +110,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 0,
                     'has_group_id_changed' => true,
                     'is_active' => true,
-                ]
+                ],
             ],
             [
                 [
@@ -117,7 +118,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 0,
                     'has_group_id_changed' => false,
                     'is_active' => true,
-                ]
+                ],
             ],
             [
                 [
@@ -125,7 +126,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 0,
                     'has_group_id_changed' => true,
                     'is_active' => false,
-                ]
+                ],
             ],
             [
                 [
@@ -133,7 +134,7 @@ class StoreViewTest extends TestCase
                     'object_id' => 0,
                     'has_group_id_changed' => false,
                     'is_active' => false,
-                ]
+                ],
             ],
         ];
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Model;
 
 use Magento\Captcha\Api\CaptchaConfigPostProcessorInterface;
@@ -22,6 +25,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Escaper;
 use Magento\Framework\Locale\FormatInterface as LocaleFormat;
 use Magento\Framework\UrlInterface;
 use Magento\Quote\Api\CartItemRepositoryInterface as QuoteItemRepository;
@@ -31,7 +35,6 @@ use Magento\Quote\Api\ShippingMethodManagementInterface as ShippingMethodManager
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Ui\Component\Form\Element\Multiline;
-use Magento\Framework\Escaper;
 
 /**
  * Default Config Provider for checkout
@@ -358,7 +361,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
                 'shipping/shipping_policy/enable_shipping_policy',
                 ScopeInterface::SCOPE_STORE
             ),
-            'shippingPolicyContent' => $policyContent ? nl2br($policyContent) : ''
+            'shippingPolicyContent' => $policyContent ? nl2br($policyContent) : '',
         ];
         $output['useQty'] = $this->scopeConfig->isSetFlag(
             'checkout/cart_link/use_qty',
@@ -469,7 +472,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
             $helper = $this->configurationPool->getByProductType('default');
             $params = [
                 'max_length' => 55,
-                'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>'
+                'cut_replacer' => ' <a href="#" class="dots tooltip toggle" onclick="return false">...</a>',
             ];
             $option = $helper->getFormattedOptionValue($optionValue, $params);
             $optionsData[$index] = $option;
@@ -714,7 +717,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
             foreach ($this->paymentMethodManagement->getList($quote->getId()) as $paymentMethod) {
                 $paymentMethods[] = [
                     'code' => $paymentMethod->getCode(),
-                    'title' => $paymentMethod->getTitle()
+                    'title' => $paymentMethod->getTitle(),
                 ];
             }
         }

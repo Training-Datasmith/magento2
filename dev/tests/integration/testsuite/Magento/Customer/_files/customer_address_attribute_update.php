@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * this fixture update customer_address `input_validation` to `alphanum-with-spaces` for `street` field.
  *
@@ -13,7 +15,7 @@ $entityType = \Magento\Customer\Model\Metadata\AddressMetadata::ENTITY_TYPE_ADDR
 $model = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(\Magento\Customer\Model\Attribute::class);
 $model->loadByCode($entityType, $attributeCode);
 
-$validationRules = array_replace_recursive($model->getValidationRules(),['input_validation'=>'alphanum-with-spaces']);
+$validationRules = array_replace_recursive($model->getValidationRules(), ['input_validation' => 'alphanum-with-spaces']);
 $model->setValidationRules($validationRules);
 
 $model->save();

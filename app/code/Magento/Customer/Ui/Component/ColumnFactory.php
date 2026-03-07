@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Ui\Component;
 
 use Magento\Customer\Api\Data\AttributeMetadataInterface as AttributeMetadata;
 use Magento\Customer\Ui\Component\Listing\Column\InlineEditUpdater;
-use Magento\Customer\Api\CustomerMetadataInterface;
 
 /**
  * Class ColumnFactory. Responsible for the column object generation

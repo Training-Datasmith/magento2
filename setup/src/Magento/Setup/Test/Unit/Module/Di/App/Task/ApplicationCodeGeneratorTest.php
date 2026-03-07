@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Setup\Module\Di\Code\Reader\ClassesScanner;
 use Magento\Setup\Module\Di\Code\Scanner;
 use Magento\Setup\Module\Di\Code\Scanner\DirectoryScanner;
 use Magento\Setup\Module\Di\Code\Scanner\PhpScanner;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class ApplicationCodeGeneratorTest extends TestCase
@@ -88,7 +89,7 @@ class ApplicationCodeGeneratorTest extends TestCase
         $data = [
             'paths' => ['path/to/app'],
             'filePatterns' => ['php' => '.php'],
-            'excludePatterns' => ['/\/Test\//']
+            'excludePatterns' => ['/\/Test\//'],
         ];
         $files = ['php' => []];
         $model = new ApplicationCodeGenerator(

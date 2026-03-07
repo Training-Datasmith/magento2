@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Plugin\Catalog\Model\Product\Pricing\Renderer;
 
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable as TypeConfigurable;

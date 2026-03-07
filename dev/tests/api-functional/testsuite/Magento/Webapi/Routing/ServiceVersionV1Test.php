@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Class to test routing based on Service Versioning(for V1 version of a service)
  */
+
 namespace Magento\Webapi\Routing;
 
 use Magento\Framework\Api\AttributeValue;
@@ -146,7 +149,7 @@ class ServiceVersionV1Test extends \Magento\Webapi\Routing\BaseService
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => $this->_restResourcePath,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => ['service' => $this->_soapService, 'operation' => $this->_soapService . 'Items'],
         ];
@@ -163,7 +166,7 @@ class ServiceVersionV1Test extends \Magento\Webapi\Routing\BaseService
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => $this->_restResourcePath,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => ['service' => $this->_soapService, 'operation' => $this->_soapService . 'Create'],
         ];
@@ -181,7 +184,7 @@ class ServiceVersionV1Test extends \Magento\Webapi\Routing\BaseService
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => $this->_restResourcePath,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => ['service' => $this->_soapService, 'operation' => $this->_soapService . 'Create'],
         ];

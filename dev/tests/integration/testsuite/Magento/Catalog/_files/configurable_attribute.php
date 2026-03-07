@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Eav\Api\AttributeRepositoryInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $eavConfig = Bootstrap::getObjectManager()->create(\Magento\Eav\Model\Config::class);
 $attribute = $eavConfig->getAttribute('catalog_product', 'test_configurable');

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Api\Data;
 
 /**
@@ -15,25 +18,25 @@ interface PageInterface
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
      */
-    const PAGE_ID                  = 'page_id';
-    const IDENTIFIER               = 'identifier';
-    const TITLE                    = 'title';
-    const PAGE_LAYOUT              = 'page_layout';
-    const META_TITLE               = 'meta_title';
-    const META_KEYWORDS            = 'meta_keywords';
-    const META_DESCRIPTION         = 'meta_description';
-    const CONTENT_HEADING          = 'content_heading';
-    const CONTENT                  = 'content';
-    const CREATION_TIME            = 'creation_time';
-    const UPDATE_TIME              = 'update_time';
-    const SORT_ORDER               = 'sort_order';
-    const LAYOUT_UPDATE_XML        = 'layout_update_xml';
-    const CUSTOM_THEME             = 'custom_theme';
-    const CUSTOM_ROOT_TEMPLATE     = 'custom_root_template';
-    const CUSTOM_LAYOUT_UPDATE_XML = 'custom_layout_update_xml';
-    const CUSTOM_THEME_FROM        = 'custom_theme_from';
-    const CUSTOM_THEME_TO          = 'custom_theme_to';
-    const IS_ACTIVE                = 'is_active';
+    public const PAGE_ID                  = 'page_id';
+    public const IDENTIFIER               = 'identifier';
+    public const TITLE                    = 'title';
+    public const PAGE_LAYOUT              = 'page_layout';
+    public const META_TITLE               = 'meta_title';
+    public const META_KEYWORDS            = 'meta_keywords';
+    public const META_DESCRIPTION         = 'meta_description';
+    public const CONTENT_HEADING          = 'content_heading';
+    public const CONTENT                  = 'content';
+    public const CREATION_TIME            = 'creation_time';
+    public const UPDATE_TIME              = 'update_time';
+    public const SORT_ORDER               = 'sort_order';
+    public const LAYOUT_UPDATE_XML        = 'layout_update_xml';
+    public const CUSTOM_THEME             = 'custom_theme';
+    public const CUSTOM_ROOT_TEMPLATE     = 'custom_root_template';
+    public const CUSTOM_LAYOUT_UPDATE_XML = 'custom_layout_update_xml';
+    public const CUSTOM_THEME_FROM        = 'custom_theme_from';
+    public const CUSTOM_THEME_TO          = 'custom_theme_to';
+    public const IS_ACTIVE                = 'is_active';
     /**#@-*/
 
     /**

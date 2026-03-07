@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\ResourceModel;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
-use Magento\Catalog\Model\ResourceModel\Product\Website\Link as ProductWebsiteLink;
-use Magento\Eav\Api\AttributeManagementInterface;
-use Magento\Framework\App\ObjectManager;
 use Magento\Catalog\Model\Indexer\Category\Product\TableMaintainer;
 use Magento\Catalog\Model\Product as ProductEntity;
+use Magento\Catalog\Model\ResourceModel\Product\Website\Link as ProductWebsiteLink;
+use Magento\Eav\Api\AttributeManagementInterface;
 use Magento\Eav\Model\Entity\Attribute\UniqueValidationInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\Model\AbstractModel;
@@ -573,7 +576,7 @@ class Product extends AbstractResource implements ResetAfterRequestInterface
                     'attribute_id',
                     'store_id',
                     $this->getLinkField() => new \Zend_Db_Expr($connection->quote($newId)),
-                    'value'
+                    'value',
                 ]
             )->where(
                 $this->getLinkField() . ' = ?',

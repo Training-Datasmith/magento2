@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -32,9 +33,9 @@ $firstSimple->setStoreId(Store::DEFAULT_STORE_ID)
                     'position' => 1,
                     'label' => 'Image Alt Text',
                     'disabled' => 0,
-                    'media_type' => 'image'
+                    'media_type' => 'image',
                 ],
-            ]
+            ],
         ]
     )
     ->setCanSaveCustomOptions(true)
@@ -54,9 +55,9 @@ $secondSimple->setStoreId(Store::DEFAULT_STORE_ID)
                     'position' => 2,
                     'label' => 'Thumbnail Image',
                     'disabled' => 0,
-                    'media_type' => 'image'
+                    'media_type' => 'image',
                 ],
-            ]
+            ],
         ]
     )
     ->setCanSaveCustomOptions(true)

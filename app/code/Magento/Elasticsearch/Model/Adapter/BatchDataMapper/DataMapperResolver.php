@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter\BatchDataMapper;
 
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\ConfigurationMismatchException;
 use Magento\Elasticsearch\Model\Adapter\BatchDataMapperInterface;
 use Magento\Elasticsearch\Model\Config;
+use Magento\Framework\Exception\ConfigurationMismatchException;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Map index data to search engine metadata

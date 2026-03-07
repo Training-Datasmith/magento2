@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ declare(strict_types=1);
 namespace Magento\Integration\Controller\Adminhtml\Integration;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
 use Magento\Framework\Exception\IntegrationException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Integration\Model\Integration as IntegrationModel;
 use Magento\Framework\Exception\State\UserLockedException;
+use Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Info;
+use Magento\Integration\Model\Integration as IntegrationModel;
 use Magento\Security\Model\SecurityCookie;
 
 /**

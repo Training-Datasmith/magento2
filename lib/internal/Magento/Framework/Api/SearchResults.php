@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ namespace Magento\Framework\Api;
  */
 class SearchResults extends AbstractSimpleObject implements SearchResultsInterface
 {
-    const KEY_ITEMS = 'items';
-    const KEY_SEARCH_CRITERIA = 'search_criteria';
-    const KEY_TOTAL_COUNT = 'total_count';
+    public const KEY_ITEMS = 'items';
+    public const KEY_SEARCH_CRITERIA = 'search_criteria';
+    public const KEY_TOTAL_COUNT = 'total_count';
 
     /**
      * Get items

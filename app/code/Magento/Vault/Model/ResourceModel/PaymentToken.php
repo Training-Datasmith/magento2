@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Vault\Model\ResourceModel;
 
-use Magento\Vault\Setup\InstallSchema;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\AbstractDb;
 
 /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,9 +13,6 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class MetricsGatherer
 {
-    /**
-     * @param MetricsFactory $metricsFactory
-     */
     public function __construct(private readonly MetricsFactory $metricsFactory)
     {
     }

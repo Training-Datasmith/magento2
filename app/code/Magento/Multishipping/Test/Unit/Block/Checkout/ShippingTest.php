@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class ShippingTest extends TestCase
                 'multishipping' => $this->multiShippingMock,
                 'scopeConfig' => $this->scopeConfigMock,
                 'priceCurrency' => $this->priceCurrencyMock,
-                'taxHelper' => $this->taxHelperMock
+                'taxHelper' => $this->taxHelperMock,
             ]
         );
     }

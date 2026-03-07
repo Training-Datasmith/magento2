@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Backend\Block\Widget;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Filter\Input\MaliciousCode;
 use Magento\Framework\Profiler;
-use Magento\Newsletter\Model\TemplateFactory;
-use Magento\Newsletter\Model\Template;
 use Magento\Newsletter\Model\SubscriberFactory;
+use Magento\Newsletter\Model\Template;
+use Magento\Newsletter\Model\TemplateFactory;
 
 /**
  * Newsletter template preview block
@@ -29,7 +30,7 @@ class Preview extends Widget
      *
      * @var string
      */
-    protected $profilerName = "newsletter_template_proccessing";
+    protected $profilerName = 'newsletter_template_proccessing';
 
     /**
      * @var TemplateFactory
@@ -105,7 +106,7 @@ class Preview extends Widget
         $template->revertDesign();
         $templateProcessed = $this->maliciousCode->filter($templateProcessed);
         if ($template->isPlain()) {
-            $templateProcessed = "<pre>" . $this->escapeHtml($templateProcessed) . "</pre>";
+            $templateProcessed = '<pre>' . $this->escapeHtml($templateProcessed) . '</pre>';
         }
 
         Profiler::stop($this->profilerName);

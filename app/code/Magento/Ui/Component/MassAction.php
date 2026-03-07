@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 /**
@@ -13,7 +16,7 @@ namespace Magento\Ui\Component;
  */
 class MassAction extends AbstractComponent
 {
-    const NAME = 'massaction';
+    public const NAME = 'massaction';
 
     /**
      * @inheritDoc

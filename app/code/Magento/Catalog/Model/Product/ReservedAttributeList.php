@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,7 +30,7 @@ class ReservedAttributeList
         foreach ($methods as $method) {
             if (preg_match('/^get([A-Z]{1}.+)/', $method, $matches)) {
                 $method = $matches[1];
-                $tmp = strtolower(preg_replace('/(.)([A-Z])/', "$1_$2", $method));
+                $tmp = strtolower(preg_replace('/(.)([A-Z])/', '$1_$2', $method));
                 $reservedAttributes[] = $tmp;
             }
         }

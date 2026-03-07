@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ConfiguredVariant implements ResolverInterface
     ) {
         if (!$value['itemModel'] instanceof ItemInterface) {
             throw new LocalizedException(__('"itemModel" should be a "%instance" instance', [
-                'instance' => ItemInterface::class
+                'instance' => ItemInterface::class,
             ]));
         }
 

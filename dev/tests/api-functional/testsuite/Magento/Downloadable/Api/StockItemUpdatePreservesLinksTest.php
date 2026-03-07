@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -10,10 +11,10 @@ namespace Magento\Downloadable\Api;
 
 use Magento\Downloadable\Test\Fixture\DownloadableProduct;
 use Magento\Framework\Webapi\Rest\Request;
-use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
  * Test to verify REST-API updating product stock_item does not delete downloadable_product_links
@@ -67,7 +68,7 @@ class StockItemUpdatePreservesLinksTest extends WebapiAbstract
                     'link_type' => 'url',
                     'is_shareable' => 0,
                     'number_of_downloads' => 5,
-                    'sort_order' => 1
+                    'sort_order' => 1,
                 ],
                 [
                     'title' => 'Another Link',
@@ -76,10 +77,10 @@ class StockItemUpdatePreservesLinksTest extends WebapiAbstract
                     'link_file' => 'test-file.txt',
                     'is_shareable' => 1,
                     'number_of_downloads' => 10,
-                    'sort_order' => 2
-                ]
-            ]
-        ]
+                    'sort_order' => 2,
+                ],
+            ],
+        ],
     ], 'downloadable_product')]
     public function testStockItemUpdatePreservesDownloadableLinks(): void
     {
@@ -132,10 +133,10 @@ class StockItemUpdatePreservesLinksTest extends WebapiAbstract
                 'type_id' => 'downloadable',
                 'extension_attributes' => [
                     'stock_item' => [
-                        'qty' => 1
-                    ]
-                ]
-            ]
+                        'qty' => 1,
+                    ],
+                ],
+            ],
         ];
 
         return $this->_webApiCall($serviceInfo, $productData);

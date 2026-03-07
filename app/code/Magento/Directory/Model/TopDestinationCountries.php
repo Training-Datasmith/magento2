@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,15 +8,15 @@
 
 namespace Magento\Directory\Model;
 
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class TopDestinationCountries
  */
 class TopDestinationCountries
 {
-    const CONFIG_DESTINATIONS_PATH = 'general/country/destinations';
+    public const CONFIG_DESTINATIONS_PATH = 'general/country/destinations';
 
     /**
      * @var ScopeConfigInterface

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Service\V1;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class OrderCommentsListTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'salesOrderManagementV1';
+    public const SERVICE_NAME = 'salesOrderManagementV1';
 
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * @magentoApiDataFixture Magento/Sales/_files/order.php

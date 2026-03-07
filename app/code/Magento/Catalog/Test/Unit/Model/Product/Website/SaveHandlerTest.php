@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class SaveHandlerTest extends TestCase
     {
         $websiteIds = [1,2];
         $this->storeManager->expects($this->once())
-            ->method("isSingleStoreMode")
+            ->method('isSingleStoreMode')
             ->willReturn(false);
         $extensionAttributes = $this->createPartialMockWithReflection(
             ExtensionAttributesInterface::class,
@@ -95,7 +96,7 @@ class SaveHandlerTest extends TestCase
             ->method('getDefaultStoreView')
             ->willReturn($store);
         $this->storeManager->expects($this->once())
-            ->method("isSingleStoreMode")
+            ->method('isSingleStoreMode')
             ->willReturn(true);
 
         $this->productWebsiteLink->expects($this->once())

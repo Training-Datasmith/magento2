@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Translation\Model\Js;
 
-use Magento\Framework\Translate\Js\Config as FrameworkJsConfig;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Translate\Js\Config as FrameworkJsConfig;
 
 /**
  * Js Translation config
@@ -16,27 +19,27 @@ class Config extends FrameworkJsConfig
     /**
      * Both translation strategies are disabled
      */
-    const NO_TRANSLATION = 'none';
+    public const NO_TRANSLATION = 'none';
 
     /**
      * Strategy when all js files are translated while publishing
      */
-    const EMBEDDED_STRATEGY = 'embedded';
+    public const EMBEDDED_STRATEGY = 'embedded';
 
     /**
      * Strategy when dictionary is generated for dynamic translation
      */
-    const DICTIONARY_STRATEGY = 'dictionary';
+    public const DICTIONARY_STRATEGY = 'dictionary';
 
     /**
      * Configuration path to translation strategy
      */
-    const XML_PATH_STRATEGY = 'dev/js/translate_strategy';
+    public const XML_PATH_STRATEGY = 'dev/js/translate_strategy';
 
     /**
      * Dictionary file name
      */
-    const DICTIONARY_FILE_NAME = 'js-translation.json';
+    public const DICTIONARY_FILE_NAME = 'js-translation.json';
 
     /**
      * Core store config

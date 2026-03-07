@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -58,12 +59,12 @@ class DisabledFundingOptionsTest extends TestCase
         $this->jsHelper = $this->createMock(Js::class);
         $this->config = $this->createMock(Config::class);
         $this->element->setValues($this->getDefaultFundingOptions());
-        
+
         $helper->prepareObjectManager([
             [JsonHelper::class, $this->createMock(JsonHelper::class)],
-            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)]
+            [DirectoryHelper::class, $this->createMock(DirectoryHelper::class)],
         ]);
-        
+
         $this->model = $helper->getObject(
             DisabledFundingOptions::class,
             ['request' => $this->request, 'jsHelper' => $this->jsHelper, 'config' => $this->config]
@@ -101,7 +102,7 @@ class DisabledFundingOptionsTest extends TestCase
         $this->model->render($this->element);
         $payPalCreditOption = [
             'value' => 'CREDIT',
-            'label' => __('PayPal Credit')->getText()
+            'label' => __('PayPal Credit')->getText(),
         ];
         $elementValues = $this->element->getValues();
         if ($shouldContainPaypalCredit) {
@@ -134,16 +135,16 @@ class DisabledFundingOptionsTest extends TestCase
         return [
             [
                 'value' => 'CREDIT',
-                'label' => __('PayPal Credit')->getText()
+                'label' => __('PayPal Credit')->getText(),
             ],
             [
                 'value' => 'CARD',
-                'label' => __('PayPal Guest Checkout Credit Card Icons')->getText()
+                'label' => __('PayPal Guest Checkout Credit Card Icons')->getText(),
             ],
             [
                 'value' => 'ELV',
-                'label' => __('Elektronisches Lastschriftverfahren - German ELV')->getText()
-            ]
+                'label' => __('Elektronisches Lastschriftverfahren - German ELV')->getText(),
+            ],
         ];
     }
 }

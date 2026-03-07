@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -600,7 +601,7 @@ class Configurable extends \Magento\CatalogImportExport\Model\Import\Product\Typ
                 $additionalRow['_super_attribute_position'] = $position;
                 $additionalRows[] = $additionalRow;
                 $additionalRow = [];
-                $position ++;
+                $position++;
             }
         }
 

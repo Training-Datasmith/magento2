@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,12 +18,12 @@ use Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend;
 use Magento\Eav\Model\ResourceModel\Entity\Type;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface as Adapter;
+use Magento\Framework\DB\Select;
 use Magento\Framework\MessageQueue\PoisonPill\PoisonPillPutInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\DB\Select;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -88,8 +89,8 @@ class AttributeTest extends TestCase
         $objects = [
             [
                 PoisonPillPutInterface::class,
-                $this->createMock(PoisonPillPutInterface::class)
-            ]
+                $this->createMock(PoisonPillPutInterface::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->selectMock = $this->createPartialMock(
@@ -121,14 +122,14 @@ class AttributeTest extends TestCase
      * @return void
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function testDeleteEntity() : void
+    public function testDeleteEntity(): void
     {
         $entityAttributeId = 196;
         $entityTypeId = 4;
         $result = [
             'entity_attribute_id' => 196,
             'entity_type_id' => 4,
-            'attribute_set_id'=> 4,
+            'attribute_set_id' => 4,
             'attribute_group_id' => 7,
             'attribute_id' => 177,
             'sort_order' => 3,
@@ -146,10 +147,10 @@ class AttributeTest extends TestCase
                 $this->eavConfigMock,
                 $this->lockValidatorMock,
                 null,
-                $this->removeProductAttributeDataMock
+                $this->removeProductAttributeDataMock,
             ]
         );
-        
+
         $attributeModel->expects($this->any())
             ->method('getEntityAttribute')
             ->with($entityAttributeId)

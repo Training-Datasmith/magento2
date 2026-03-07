@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -14,6 +15,7 @@ use Magento\Framework\Exception\ValidatorException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Read;
 use Magento\Framework\Filesystem\DriverPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;
@@ -26,7 +28,6 @@ use Magento\Store\Model\StoreManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -125,7 +126,7 @@ class TemplateTest extends TestCase
                 'logger' => $this->loggerMock,
                 'storeManager' => $storeManagerMock,
                 'urlBuilder' => $urlBuilderMock,
-                'data' => ['template' => 'template.phtml', 'module_name' => 'Fixture_Module']
+                'data' => ['template' => 'template.phtml', 'module_name' => 'Fixture_Module'],
             ]
         );
     }

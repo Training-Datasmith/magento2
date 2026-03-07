@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -99,7 +100,7 @@ class ConfigTest extends TestCase
     /**
      * Current year value in ISO
      */
-    const CURRENT_YEAR = '2250';
+    public const CURRENT_YEAR = '2250';
 
     protected function setUp(): void
     {
@@ -117,7 +118,7 @@ class ConfigTest extends TestCase
                 'paymentMethodFactory' => $this->paymentMethodFactory,
                 'localeResolver' => $this->localeResolver,
                 'dataStorage' => $this->dataStorage,
-                'date' => $this->date
+                'date' => $this->date,
             ]
         );
     }

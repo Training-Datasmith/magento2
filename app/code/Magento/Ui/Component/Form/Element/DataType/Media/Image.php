@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,18 +9,18 @@ declare(strict_types=1);
 
 namespace Magento\Ui\Component\Form\Element\DataType\Media;
 
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Ui\Component\Form\Element\DataType\Media;
 use Magento\Framework\File\Size;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Ui\Component\Form\Element\DataType\Media;
 
 /**
  * Image Form UI Component
  */
 class Image extends Media
 {
-    const NAME = 'image';
+    public const NAME = 'image';
 
     /**
      * @var StoreManagerInterface
@@ -74,7 +75,7 @@ class Image extends Media
         // dynamically set max file size based on php ini config if not present in XML
         $maxFileSize = min(array_filter([
             $this->getConfiguration()['maxFileSize'] ?? 0,
-            $this->fileSize->getMaxFileSize()
+            $this->fileSize->getMaxFileSize(),
         ]));
 
         $data = array_replace_recursive(

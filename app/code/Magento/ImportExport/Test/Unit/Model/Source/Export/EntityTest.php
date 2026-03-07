@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class EntityTest extends TestCase
         $this->model = $objectManager->getObject(
             Entity::class,
             [
-                'exportConfig' => $this->exportConfigMock
+                'exportConfig' => $this->exportConfigMock,
             ]
         );
     }
@@ -70,27 +71,27 @@ class EntityTest extends TestCase
                 [
                     [
                         'label' => (string)__('-- Please Select --'),
-                        'value' => ''
-                    ]
-                ]
+                        'value' => '',
+                    ],
+                ],
             ],
             'Has entities' => [
                 [
                     'entity1' => [
-                        'label' => 'Entity 1'
-                    ]
+                        'label' => 'Entity 1',
+                    ],
                 ],
                 [
                     [
                         'label' => (string)__('-- Please Select --'),
-                        'value' => ''
+                        'value' => '',
                     ],
                     [
                         'label' => (string)__('Entity 1'),
-                        'value' => 'entity1'
-                    ]
-                ]
-            ]
+                        'value' => 'entity1',
+                    ],
+                ],
+            ],
         ];
     }
 }

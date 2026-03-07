@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\CatalogSearch\Model\Search;
 
-use Magento\Framework\Search\EngineResolverInterface;
 use Magento\Framework\Data\Collection;
+use Magento\Framework\Search\EngineResolverInterface;
 
 /**
  * Search collection provider.

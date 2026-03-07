@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,9 +16,9 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\Data\OrderPaymentSearchResultInterfaceFactory;
+use Magento\Sales\Model\Order\Payment as OrderPayment;
 use Magento\Sales\Model\Order\Payment\Repository;
 use Magento\Sales\Model\ResourceModel\Metadata;
-use Magento\Sales\Model\Order\Payment as OrderPayment;
 use Magento\Sales\Model\ResourceModel\Order\Payment;
 use Magento\Sales\Model\ResourceModel\Order\Payment\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -101,7 +102,7 @@ class RepositoryTest extends TestCase
 
     public function testCreate()
     {
-        $expected = "expect";
+        $expected = 'expect';
         $this->metaData->expects($this->once())->method('getNewInstance')->willReturn($expected);
         $this->assertEquals($expected, $this->repository->create());
     }

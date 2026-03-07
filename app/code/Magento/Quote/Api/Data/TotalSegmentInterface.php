@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api\Data;
 
 /**
@@ -15,10 +18,10 @@ interface TotalSegmentInterface extends \Magento\Framework\Api\ExtensibleDataInt
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const CODE  = 'code';
-    const TITLE = 'title';
-    const VALUE = 'value';
-    const AREA  = 'area';
+    public const CODE  = 'code';
+    public const TITLE = 'title';
+    public const VALUE = 'value';
+    public const AREA  = 'area';
     /**#@-*/
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Tax\Model\Config\TaxClass
  */
+
 namespace Magento\Tax\Test\Unit\Model\Config;
 
 use Magento\Eav\Model\Entity\Attribute;
@@ -67,7 +69,7 @@ class TaxClassTest extends TestCase
             TaxClass::class,
             [
                 'resource' => $resourceMock,
-                'attributeFactory' => $attributeFactoryMock
+                'attributeFactory' => $attributeFactoryMock,
             ]
         );
 

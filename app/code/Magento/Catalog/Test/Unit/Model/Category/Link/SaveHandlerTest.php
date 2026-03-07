@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Category\Link;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\CategoryLinkInterface;
 use Magento\Catalog\Api\Data\ProductExtensionInterface;
 use Magento\Catalog\Model\Category\Link\SaveHandler;
@@ -16,6 +16,7 @@ use Magento\Catalog\Model\ResourceModel\Product\CategoryLink;
 use Magento\Framework\EntityManager\HydratorInterface;
 use Magento\Framework\EntityManager\HydratorPool;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -135,80 +136,80 @@ class SaveHandlerTest extends TestCase
                 null, // dto category links
                 [
                     ['category_id' => 3, 'position' => 10],
-                    ['category_id' => 4, 'position' => 20]
+                    ['category_id' => 4, 'position' => 20],
                 ],
                 [
                     ['category_id' => 3, 'position' => 10],
                     ['category_id' => 4, 'position' => 20],
-                    ['category_id' => 5, 'position' => 0]
+                    ['category_id' => 5, 'position' => 0],
                 ],
-                [3,4,5] //affected category_ids
+                [3,4,5], //affected category_ids
             ],
             [
                 [3, 4], //model category_ids
                 [], // dto category links
                 [
                     ['category_id' => 3, 'position' => 10],
-                    ['category_id' => 4, 'position' => 20]
+                    ['category_id' => 4, 'position' => 20],
                 ],
                 [],
-                [3,4] //affected category_ids
+                [3,4], //affected category_ids
             ],
             [
                 [], //model category_ids
                 [
-                    ['category_id' => 3, 'position' => 20]
+                    ['category_id' => 3, 'position' => 20],
                 ], // dto category links
                 [
                     ['category_id' => 3, 'position' => 10],
-                    ['category_id' => 4, 'position' => 20]
+                    ['category_id' => 4, 'position' => 20],
                 ],
                 [
-                    ['category_id' => 3, 'position' => 20]
+                    ['category_id' => 3, 'position' => 20],
                 ],
-                [3,4] //affected category_ids
+                [3,4], //affected category_ids
             ],
             [
                 [3], //model category_ids
                 [
-                    ['category_id' => 3, 'position' => 20]
+                    ['category_id' => 3, 'position' => 20],
                 ], // dto category links
                 [
-                    ['category_id' => 3, 'position' => 10]
+                    ['category_id' => 3, 'position' => 10],
                 ],
                 [
-                    ['category_id' => 3, 'position' => 20]
+                    ['category_id' => 3, 'position' => 20],
                 ],
-                [3] //affected category_ids
+                [3], //affected category_ids
             ],
             [
                 [], //model category_ids
                 [
-                    ['category_id' => 3, 'position' => 10]
+                    ['category_id' => 3, 'position' => 10],
                 ], // dto category links
                 [
-                    ['category_id' => 3, 'position' => 10]
+                    ['category_id' => 3, 'position' => 10],
                 ],
                 [
-                    ['category_id' => 3, 'position' => 10]
+                    ['category_id' => 3, 'position' => 10],
                 ],
-                [] //affected category_ids
+                [], //affected category_ids
             ],
             [
                 [3], //model category_ids
                 [
                     ['category_id' => 3, 'position' => 20],
-                    ['category_id' => 4, 'position' => 30]
+                    ['category_id' => 4, 'position' => 30],
                 ], // dto category links
                 [
-                    ['category_id' => 3, 'position' => 10]
+                    ['category_id' => 3, 'position' => 10],
                 ],
                 [
                     ['category_id' => 3, 'position' => 20],
-                    ['category_id' => 4, 'position' => 30]
+                    ['category_id' => 4, 'position' => 30],
                 ],
-                [3, 4] //affected category_ids
-            ]
+                [3, 4], //affected category_ids
+            ],
         ];
     }
 

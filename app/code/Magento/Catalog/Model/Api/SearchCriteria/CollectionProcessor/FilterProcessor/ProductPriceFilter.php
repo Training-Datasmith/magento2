@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class ProductPriceFilter implements CustomFilterInterface
      * @param Collection $collection
      * @return bool Whether the filter is applied
      */
-    public function apply(Filter $filter, AbstractDb $collection) : bool
+    public function apply(Filter $filter, AbstractDb $collection): bool
     {
         $collection->addFinalPrice();
         $collection->addMinimalPrice();

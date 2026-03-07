@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Filesystem\Directory\Read
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\Directory;
 
 use Magento\Framework\Exception\ValidatorException;
@@ -123,7 +126,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
         return [
             ['foo', null, ['bar', 'file_three.txt']],
             ['foo/bar', null, ['baz', 'file_two.txt']],
-            ['foo', 'bar', ['bar/baz', 'bar/file_two.txt']]
+            ['foo', 'bar', ['bar/baz', 'bar/file_two.txt']],
         ];
     }
 
@@ -176,7 +179,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
         return [
             ['foo', 'bar/*', ['bar/file_two.txt', 'bar/baz']],
             ['foo', '/*/*.txt', ['bar/file_two.txt']],
-            ['foo', '/notfound/', []]
+            ['foo', '/notfound/', []],
         ];
     }
 
@@ -228,7 +231,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
             ['foo', 'bar/baz', true],
             ['foo', 'bar/notexists', false],
             ['foo', 'foo/../bar', true],
-            ['foo', 'foo/../notexists', false]
+            ['foo', 'foo/../notexists', false],
         ];
     }
 
@@ -507,8 +510,8 @@ class ReadTest extends \PHPUnit\Framework\TestCase
             ['popup.csv', 'var myData = 5;'],
             [
                 'data.csv',
-                '"field1", "field2"' . PHP_EOL . '"field3", "field4"' . PHP_EOL
-            ]
+                '"field1", "field2"' . PHP_EOL . '"field3", "field4"' . PHP_EOL,
+            ],
         ];
     }
 

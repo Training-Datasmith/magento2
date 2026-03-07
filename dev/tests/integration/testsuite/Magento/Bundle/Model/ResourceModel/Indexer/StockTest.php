@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -65,7 +67,7 @@ class StockTest extends \PHPUnit\Framework\TestCase
         $expectedResult = [
             'Simple Product' => 22,
             'Custom Design Simple Product' => 24,
-            'Bundle Product' => 0
+            'Bundle Product' => 0,
         ];
 
         /** @var $product \Magento\Catalog\Model\Product */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,14 +11,13 @@ namespace Magento\MediaGalleryMetadata\Test\Integration\Model\Jpeg\Segment;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\DriverInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\MediaGalleryMetadata\Model\Jpeg\Segment\WriteIptc;
-use Magento\MediaGalleryMetadata\Model\Jpeg\Segment\ReadIptc;
 use Magento\MediaGalleryMetadata\Model\Jpeg\ReadFile;
+use Magento\MediaGalleryMetadata\Model\Jpeg\Segment\ReadIptc;
+use Magento\MediaGalleryMetadata\Model\Jpeg\Segment\WriteIptc;
 use Magento\MediaGalleryMetadata\Model\MetadataFactory;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for IPTC reader and writer
@@ -103,7 +103,7 @@ class IptcTest extends TestCase
             $this->metadataFactory->create([
                 'title' => $title,
                 'description' => $description,
-                'keywords' => $keywords
+                'keywords' => $keywords,
             ])
         );
 
@@ -128,9 +128,9 @@ class IptcTest extends TestCase
                 'Updated Description',
                 [
                     'magento2',
-                    'mediagallery'
-                ]
-            ]
+                    'mediagallery',
+                ],
+            ],
         ];
     }
 }

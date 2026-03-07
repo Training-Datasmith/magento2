@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,10 @@ declare(strict_types=1);
 /**
  * Test for view filesystem model
  */
+
 namespace Magento\Framework\View\Test\Unit;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Design\FileResolution\Fallback\EmailTemplateFile;
 use Magento\Framework\View\Design\FileResolution\Fallback\File;
@@ -19,10 +22,9 @@ use Magento\Framework\View\Design\FileResolution\Fallback\TemplateFile;
 use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\FileSystem;
 use Magento\Setup\Module\I18n\Locale;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class FileSystemTest extends TestCase
 {
@@ -202,7 +204,7 @@ class FileSystemTest extends TestCase
             'standard path' => ['/dir/somedir/somefile.ext', '/dir/somedir/somefile.ext'],
             'one dot path' => ['/dir/somedir/./somefile.ext', '/dir/somedir/somefile.ext'],
             'two dots path' => ['/dir/somedir/../somefile.ext', '/dir/somefile.ext'],
-            'two times two dots path' => ['/dir/../somedir/../somefile.ext', '/somefile.ext']
+            'two times two dots path' => ['/dir/../somedir/../somefile.ext', '/somefile.ext'],
         ];
     }
 
@@ -258,7 +260,7 @@ class FileSystemTest extends TestCase
             'area'       => 'some_area',
             'themeModel' => $this->createMock(ThemeInterface::class),
             'module'     => 'Some_Module',
-            'locale'     => $locale
+            'locale'     => $locale,
         ];
         $file = 'Some_Module::some_file.ext';
         $expected = 'path/to/some_file.ext';

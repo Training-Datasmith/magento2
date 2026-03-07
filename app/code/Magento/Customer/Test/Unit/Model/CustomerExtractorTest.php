@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -168,8 +169,8 @@ class CustomerExtractorTest extends TestCase
                     'firstname' => 'firstname-1',
                     'lastname' => 'firstname-1',
                     'email' => 'email-1.example.com',
-                    'group_id' => null
-                ]
+                    'group_id' => null,
+                ],
             ],
             'extract data when group id is not null and default' => [
                 1,
@@ -178,8 +179,8 @@ class CustomerExtractorTest extends TestCase
                     'firstname' => 'firstname-2',
                     'lastname' => 'firstname-3',
                     'email' => 'email-2.example.com',
-                    'group_id' => 1
-                ]
+                    'group_id' => 1,
+                ],
             ],
             'extract data when group id is different from default' => [
                 1,
@@ -188,8 +189,8 @@ class CustomerExtractorTest extends TestCase
                     'firstname' => 'firstname-3',
                     'lastname' => 'firstname-3',
                     'email' => 'email-3.example.com',
-                    'group_id' => 2
-                ]
+                    'group_id' => 2,
+                ],
             ],
         ];
     }

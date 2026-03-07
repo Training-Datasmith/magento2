@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Backup grid item renderer
  */
+
 namespace Magento\Backup\Block\Adminhtml\Grid\Column\Renderer;
 
 class Download extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Text

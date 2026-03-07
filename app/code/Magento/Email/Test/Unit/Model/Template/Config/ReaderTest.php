@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class ReaderTest extends TestCase
         $fileResolver = $this->createMock(FileResolver::class);
         $this->_paths = [
             __DIR__ . '/_files/Fixture/ModuleOne/etc/email_templates_one.xml',
-            __DIR__ . '/_files/Fixture/ModuleTwo/etc/email_templates_two.xml'
+            __DIR__ . '/_files/Fixture/ModuleTwo/etc/email_templates_two.xml',
         ];
 
         $this->_converter = $this->createPartialMock(

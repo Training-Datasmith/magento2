@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -18,28 +19,16 @@ use Magento\Framework\View\DesignLoader;
  */
 class LoadDesignPlugin
 {
-    /**
-     * @var DesignLoader
-     */
-    private $designLoader;
-
-    /**
-     * @param DesignLoader $designLoader
-     */
-    public function __construct(DesignLoader $designLoader)
+    public function __construct(private readonly DesignLoader $designLoader)
     {
-        $this->designLoader = $designLoader;
     }
 
     /**
      * Initiates design before dispatching Backend Actions.
      *
-     * @param AbstractAction $backendAction
-     * @param RequestInterface $request
-     * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function beforeDispatch(AbstractAction $backendAction, RequestInterface $request)
+    public function beforeDispatch(AbstractAction $backendAction, RequestInterface $request): void
     {
         $this->designLoader->load();
     }

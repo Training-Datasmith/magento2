@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Exception;
 use IntlDateFormatter;
 use Magento\Framework\Stdlib\DateTime\Filter\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class DateTimeTest extends TestCase
 {

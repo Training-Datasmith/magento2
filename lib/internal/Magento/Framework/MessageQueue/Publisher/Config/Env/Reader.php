@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\MessageQueue\Publisher\Config\Env;
 
-use Magento\Framework\MessageQueue\Config\Data as MessageQueueConfigData;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\MessageQueue\Config\Data as MessageQueueConfigData;
 use Magento\Framework\MessageQueue\Config\Reader\Env as MessageQueueEnvReader;
 
 /**

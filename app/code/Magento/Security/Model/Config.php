@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -17,49 +20,49 @@ class Config implements ConfigInterface
     /**
      * Period of time which will be used to limit frequency of password reset requests
      */
-    const LIMITATION_TIME_PERIOD = 3600;
+    public const LIMITATION_TIME_PERIOD = 3600;
 
     /**
      * Configuration path to admin area
      */
-    const XML_PATH_ADMIN_AREA = 'admin/security/';
+    public const XML_PATH_ADMIN_AREA = 'admin/security/';
 
     /**
      * Configuration path to frontend area
      */
-    const XML_PATH_FRONTEND_AREA = 'customer/password/';
+    public const XML_PATH_FRONTEND_AREA = 'customer/password/';
 
     /**
      * Configuration path to fronted area
      * @deprecated
      * @see \Magento\Security\Model\Config::XML_PATH_FRONTEND_AREA
      */
-    const XML_PATH_FRONTED_AREA = self::XML_PATH_FRONTEND_AREA;
+    public const XML_PATH_FRONTED_AREA = self::XML_PATH_FRONTEND_AREA;
 
     /**
      * Configuration path to admin account sharing
      */
-    const XML_PATH_ADMIN_ACCOUNT_SHARING = 'admin/security/admin_account_sharing';
+    public const XML_PATH_ADMIN_ACCOUNT_SHARING = 'admin/security/admin_account_sharing';
 
     /**
      * Configuration key to limit password reset requests method
      */
-    const XML_PATH_PASSWORD_RESET_PROTECTION_TYPE = 'password_reset_protection_type';
+    public const XML_PATH_PASSWORD_RESET_PROTECTION_TYPE = 'password_reset_protection_type';
 
     /**
      * Configuration key to max number password reset requests
      */
-    const XML_PATH_MAX_NUMBER_PASSWORD_RESET_REQUESTS = 'max_number_password_reset_requests';
+    public const XML_PATH_MAX_NUMBER_PASSWORD_RESET_REQUESTS = 'max_number_password_reset_requests';
 
     /**
      * Configuration key to minimum time between password reset requests
      */
-    const XML_PATH_MIN_TIME_BETWEEN_PASSWORD_RESET_REQUESTS = 'min_time_between_password_reset_requests';
+    public const XML_PATH_MIN_TIME_BETWEEN_PASSWORD_RESET_REQUESTS = 'min_time_between_password_reset_requests';
 
     /**
      * Recipient email config path
      */
-    const XML_PATH_EMAIL_RECIPIENT = 'contact/email/recipient_email';
+    public const XML_PATH_EMAIL_RECIPIENT = 'contact/email/recipient_email';
 
     /**
      * @var ScopeConfigInterface

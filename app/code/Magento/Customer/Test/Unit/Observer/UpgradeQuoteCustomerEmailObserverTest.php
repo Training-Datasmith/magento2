@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -11,10 +12,10 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Observer\UpgradeQuoteCustomerEmailObserver;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Model\Quote;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /** for testing upgrade quote customer email
  */
@@ -69,8 +70,8 @@ class UpgradeQuoteCustomerEmailObserverTest extends TestCase
      */
     public function testUpgradeQuoteCustomerEmail()
     {
-        $email = "test@test.com";
-        $origEmail = "origtest@test.com";
+        $email = 'test@test.com';
+        $origEmail = 'origtest@test.com';
 
         $customer = $this->getMockBuilder(CustomerInterface::class)
             ->disableOriginalConstructor()

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -74,7 +75,7 @@ class CreateAssetFromFileMetadata
                 'hash' => $asset->getHash(),
                 'size' => $asset->getSize(),
                 'contentType' => $asset->getContentType(),
-                'source' => $asset->getSource()
+                'source' => $asset->getSource(),
             ]
         );
     }

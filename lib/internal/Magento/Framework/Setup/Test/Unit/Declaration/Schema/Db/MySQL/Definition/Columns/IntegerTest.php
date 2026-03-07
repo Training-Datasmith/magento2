@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,9 +18,9 @@ use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\Nulla
 use Magento\Framework\Setup\Declaration\Schema\Db\MySQL\Definition\Columns\Unsigned;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Columns\Integer as IntegerColumnDto;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class IntegerTest extends TestCase
 {
@@ -92,7 +93,7 @@ class IntegerTest extends TestCase
                 'nullable' => $this->nullableMock,
                 'identity' => $this->identityMock,
                 'comment' => $this->commentMock,
-                'resourceConnection' => $this->resourceConnectionMock
+                'resourceConnection' => $this->resourceConnectionMock,
             ]
         );
     }

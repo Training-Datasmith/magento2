@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -149,7 +150,7 @@ class TagScopeTest extends TestCase
             'failure, failure' => [false, false, false],
             'failure, success' => [false, true, true],
             'success, failure' => [true, false, true],
-            'success, success' => [true, true, true]
+            'success, success' => [true, true, true],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,14 +22,14 @@ use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Review\Block\Form;
 use Magento\Review\Helper\Data;
+use Magento\Review\Model\Rating;
+use Magento\Review\Model\RatingFactory;
+use Magento\Review\Model\ResourceModel\Rating\Collection as RatingCollection;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Review\Model\RatingFactory;
-use Magento\Review\Model\Rating;
-use Magento\Review\Model\ResourceModel\Rating\Collection as RatingCollection;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -116,10 +117,10 @@ class FormTest extends TestCase
                 'productRepository' => $this->productRepository,
                 'data' => [
                     'jsLayout' => [
-                        'some-layout' => 'layout information'
-                    ]
+                        'some-layout' => 'layout information',
+                    ],
                 ],
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
     }
@@ -154,7 +155,7 @@ class FormTest extends TestCase
     public function testGetProductInfoNonIntParam()
     {
         $productId = 3;
-        $productIdNonInt = "3abc";
+        $productIdNonInt = '3abc';
         $storeId = 1;
 
         $this->storeManager->expects(
@@ -216,7 +217,7 @@ class FormTest extends TestCase
     public function testGetJsLayout()
     {
         $jsLayout = [
-            'some-layout' => 'layout information'
+            'some-layout' => 'layout information',
         ];
 
         $this->serializerMock->expects($this->once())->method('serialize')

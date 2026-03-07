@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Block\Adminhtml\Agreement;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\CheckoutAgreements\Model\ResourceModel\Agreement\Grid\CollectionFactory as GridCollectionFactory;
+use Magento\Framework\App\ObjectManager;
 
 class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -39,7 +42,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 
         $this->_collectionFactory = $collectionFactory;
         $this->gridCollectionFactory = $gridColFactory
-            ? : ObjectManager::getInstance()->get(GridCollectionFactory::class);
+            ?: ObjectManager::getInstance()->get(GridCollectionFactory::class);
 
         parent::__construct($context, $backendHelper, $data);
     }
@@ -77,7 +80,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('ID'),
                 'index' => 'agreement_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -87,7 +90,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Condition'),
                 'index' => 'name',
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'col-name'
+                'column_css_class' => 'col-name',
             ]
         );
 
@@ -103,7 +106,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                     'sortable' => false,
                     'filter_condition_callback' => [$this, '_filterStoreCondition'],
                     'header_css_class' => 'col-store-view',
-                    'column_css_class' => 'col-store-view'
+                    'column_css_class' => 'col-store-view',
                 ]
             );
         }
@@ -116,7 +119,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'options',
                 'options' => [0 => __('Disabled'), 1 => __('Enabled')],
                 'header_css_class' => 'col-status',
-                'column_css_class' => 'col-status'
+                'column_css_class' => 'col-status',
             ]
         );
 

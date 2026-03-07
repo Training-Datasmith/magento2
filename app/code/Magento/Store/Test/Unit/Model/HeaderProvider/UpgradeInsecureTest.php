@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -83,65 +84,65 @@ class UpgradeInsecureTest extends TestCase
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                 ],
-                true
+                true,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
-                    [ Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false]
+                    [ Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                 ],
-                false
+                false,
             ],
             [
                 [
                     [Store::XML_PATH_SECURE_IN_FRONTEND, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
                     [Store::XML_PATH_SECURE_IN_ADMINHTML, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, false],
-                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true]
+                    [Store::XML_PATH_ENABLE_UPGRADE_INSECURE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT , null, true],
                 ],
-                false
+                false,
             ],
         ];
     }

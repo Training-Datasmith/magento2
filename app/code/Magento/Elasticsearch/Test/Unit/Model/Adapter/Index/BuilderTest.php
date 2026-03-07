@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Locale\Resolver as LocaleResolver;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Search\Model\ResourceModel\SynonymReader;
 use Magento\Store\Model\Store;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class BuilderTest extends TestCase
 {
@@ -49,7 +50,7 @@ class BuilderTest extends TestCase
             ->disableOriginalConstructor()
             ->onlyMethods([
                 'emulate',
-                'getLocale'
+                'getLocale',
             ])
             ->getMock();
 
@@ -79,7 +80,7 @@ class BuilderTest extends TestCase
             [
                 'localeResolver' => $this->localeResolver,
                 'esConfig' => $this->esConfig,
-                'synonymReader' => $this->synonymReaderMock
+                'synonymReader' => $this->synonymReaderMock,
             ]
         );
     }
@@ -107,9 +108,9 @@ class BuilderTest extends TestCase
         $this->model->setStoreId(Store::DEFAULT_STORE_ID);
         $result = $this->model->build();
 
-        $analysisFilters = $result["analysis"]["filter"];
-        $prefixSearchAnalyzerFilters = $result["analysis"]["analyzer"]["prefix_search"]["filter"];
-        $skuPrefixSearchAnalyzerFilters = $result["analysis"]["analyzer"]["sku_prefix_search"]["filter"];
+        $analysisFilters = $result['analysis']['filter'];
+        $prefixSearchAnalyzerFilters = $result['analysis']['analyzer']['prefix_search']['filter'];
+        $skuPrefixSearchAnalyzerFilters = $result['analysis']['analyzer']['sku_prefix_search']['filter'];
 
         $this->assertArrayNotHasKey(
             $synonymsFilterName,

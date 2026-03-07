@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -97,26 +98,26 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
         if ($this->_options['remote_backend'] === null) {
             throw new CacheException(__('remote_backend option must be set'));
         }
-        
+
         if (!($this->_options['remote_backend'] instanceof ExtendedBackendInterface)) {
             throw new CacheException(
                 __('remote_backend must implement ExtendedBackendInterface')
             );
         }
-        
+
         $this->remote = $this->_options['remote_backend'];
 
         // Validate and set local backend
         if ($this->_options['local_backend'] === null) {
             throw new CacheException(__('local_backend option must be set'));
         }
-        
+
         if (!($this->_options['local_backend'] instanceof ExtendedBackendInterface)) {
             throw new CacheException(
                 __('local_backend must implement ExtendedBackendInterface')
             );
         }
-        
+
         $this->local = $this->_options['local_backend'];
 
         $this->lockSign = $this->generateLockSign();
@@ -455,7 +456,7 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
         $sign = \implode(
             '-',
             [
-                \getmypid(), \crc32(\gethostname())
+                \getmypid(), \crc32(\gethostname()),
             ]
         );
 

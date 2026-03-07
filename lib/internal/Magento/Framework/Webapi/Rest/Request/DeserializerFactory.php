@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Factory of REST request deserializers.
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Webapi\Rest\Request;
 
 use Magento\Framework\Phrase;

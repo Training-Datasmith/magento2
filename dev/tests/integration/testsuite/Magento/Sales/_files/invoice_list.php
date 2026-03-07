@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -24,7 +26,7 @@ $invoices = [
         'send_email' => 0,
         'increment_id' => '123',
         'can_void_flag' => 1,
-        'state'     => 1
+        'state'     => 1,
     ],
     [
         'store_id' => 1,
@@ -34,7 +36,7 @@ $invoices = [
         'send_email' => 1,
         'increment_id' => '456',
         'can_void_flag' => 1,
-        'state'     => 1
+        'state'     => 1,
     ],
     [
         'store_id' => 0,
@@ -44,7 +46,7 @@ $invoices = [
         'send_email' => 1,
         'increment_id' => '789',
         'can_void_flag' => 0,
-        'state'     => 1
+        'state'     => 1,
     ],
     [
         'store_id' => 1,
@@ -54,7 +56,7 @@ $invoices = [
         'increment_id' => '012',
         'send_email' => 1,
         'can_void_flag' => 1,
-        'state'     => 0
+        'state'     => 0,
     ],
 ];
 

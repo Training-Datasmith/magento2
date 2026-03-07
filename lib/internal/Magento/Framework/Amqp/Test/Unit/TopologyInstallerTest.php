@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class TopologyInstallerTest extends TestCase
      */
     public function testInstallException()
     {
-        $exceptionMessage = "Exception message";
+        $exceptionMessage = 'Exception message';
 
         $this->topologyConfigMock
             ->expects($this->once())

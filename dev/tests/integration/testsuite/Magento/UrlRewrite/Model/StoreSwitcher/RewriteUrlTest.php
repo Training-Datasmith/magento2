@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -106,8 +107,8 @@ class RewriteUrlTest extends TestCase
         $fromStore = $this->getStoreByCode('default');
         $toStore = $this->getStoreByCode('fixture_second_store');
 
-        $redirectUrl = "http://localhost/index.php/page-c/";
-        $expectedUrl = "http://localhost/index.php/page-c-on-2nd-store";
+        $redirectUrl = 'http://localhost/index.php/page-c/';
+        $expectedUrl = 'http://localhost/index.php/page-c-on-2nd-store';
 
         $this->assertEquals($expectedUrl, $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl));
     }
@@ -126,20 +127,20 @@ class RewriteUrlTest extends TestCase
         $toStore = $this->getStoreByCode('fixture_second_store');
 
         //test with CMS page with url rewrite for from and target store
-        $redirectUrl1 = "http://localhost/index.php/page-c/";
-        $expectedUrl1 = "http://localhost/index.php/page-c-on-2nd-store";
+        $redirectUrl1 = 'http://localhost/index.php/page-c/';
+        $expectedUrl1 = 'http://localhost/index.php/page-c-on-2nd-store';
 
         $this->assertEquals($expectedUrl1, $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl1));
 
         //test with CMS page without url rewrite for second/target store
-        $redirectUrl2 = "http://localhost/index.php/fixture_second_store/page-e/";
-        $expectedUrl2 = "http://localhost/index.php/fixture_second_store/page-e/";
+        $redirectUrl2 = 'http://localhost/index.php/fixture_second_store/page-e/';
+        $expectedUrl2 = 'http://localhost/index.php/fixture_second_store/page-e/';
 
         $this->assertEquals($expectedUrl2, $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl2));
 
         //test with custom url rewrite without CMS page
-        $redirectUrl3 = "http://localhost/index.php/fixture_second_store/contact/";
-        $expectedUrl3 = "http://localhost/index.php/fixture_second_store/contact/";
+        $redirectUrl3 = 'http://localhost/index.php/fixture_second_store/contact/';
+        $expectedUrl3 = 'http://localhost/index.php/fixture_second_store/contact/';
 
         $this->assertEquals($expectedUrl3, $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl3));
     }
@@ -156,8 +157,8 @@ class RewriteUrlTest extends TestCase
     {
         $fromStore = $this->getStoreByCode('default');
         $toStore = $this->getStoreByCode('fixture_second_store');
-        $redirectUrl = "http://localhost/index.php/page100/";
-        $expectedUrl = "http://localhost/index.php/page100/";
+        $redirectUrl = 'http://localhost/index.php/page100/';
+        $expectedUrl = 'http://localhost/index.php/page100/';
         $this->assertEquals($expectedUrl, $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl));
     }
 
@@ -181,8 +182,8 @@ class RewriteUrlTest extends TestCase
         $fromStore = $this->getStoreByCode('default');
         $toStore = $this->getStoreByCode('fixture_second_store');
 
-        $redirectUrl = "http://localhost/index.php/page-c/";
-        $expectedUrl = "http://localhost/index.php/page-c-on-2nd-store";
+        $redirectUrl = 'http://localhost/index.php/page-c/';
+        $expectedUrl = 'http://localhost/index.php/page-c-on-2nd-store';
 
         $secureRedirectUrl = $this->storeSwitcher->switch($fromStore, $toStore, $redirectUrl);
         $this->assertEquals($expectedUrl, $secureRedirectUrl);

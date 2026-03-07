@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Controller\Adminhtml\Product\Initialization;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\CategoryLinkInterface;
 use Magento\Catalog\Api\Data\CategoryLinkInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductCustomOptionInterfaceFactory;
@@ -31,11 +31,11 @@ use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Locale\Format;
 use Magento\Framework\Locale\FormatInterface;
-use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Api\Data\WebsiteInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -172,8 +172,8 @@ class HelperTest extends TestCase
         $objects = [
             [
                 ProductCustomOptionInterfaceFactory::class,
-                $this->customOptionFactoryMock
-            ]
+                $this->customOptionFactoryMock,
+            ],
         ];
         $this->objectManager->prepareObjectManager($objects);
 
@@ -264,7 +264,7 @@ class HelperTest extends TestCase
                 [
                     'code' => 'special_from_date',
                     'backend_type' => 'datetime',
-                ]
+                ],
             ]
         );
 
@@ -574,7 +574,7 @@ class HelperTest extends TestCase
                 'tierPrice' => [],
                 'isReadOnlyRelatedItems' => true,
                 'isReadOnlyUpSellItems' => true,
-                'ignoreLinksFlag' => true
+                'ignoreLinksFlag' => true,
             ],
         ];
     }

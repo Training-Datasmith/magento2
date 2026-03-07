@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class CollectionTest extends TestCase
      */
     public function testAddFieldToFilter(): void
     {
-        $filterDate = "2021-01-19 00:00:00";
+        $filterDate = '2021-01-19 00:00:00';
         /** @var TimezoneInterface $timeZone */
         $timeZone = $this->objectManager->get(TimezoneInterface::class);
         /** @var Collection $gridCollection */
@@ -76,7 +77,7 @@ class CollectionTest extends TestCase
             'created_at',
             ['qteq' => $filterDate->format('Y-m-d H:i:s')]
         );
-        $expectedSelect = "SELECT `main_table`.* FROM `sales_order_grid` AS `main_table` " .
+        $expectedSelect = 'SELECT `main_table`.* FROM `sales_order_grid` AS `main_table` ' .
             "WHERE (((`main_table`.`created_at` = '{$convertedDate}')))";
 
         $this->assertEquals($expectedSelect, $collection->getSelectSql(true));

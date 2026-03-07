@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContentType\ContentTypeFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Ui\Component\Listing\Columns;
 
 /**
  * @api

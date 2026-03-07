@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -40,39 +41,39 @@ class UnsecuredJwtFactoryTest extends TestCase
                 [['cty' => 'MyType', 'typ' => 'JWT']],
                 'some-value',
                 null,
-                ArbitraryPayload::class
+                ArbitraryPayload::class,
             ],
             'compact-claims' => [
                 [['typ' => 'JWT']],
                 '{"tst1":"val1","tst2":2,"tst3":true}',
                 null,
-                ClaimsPayloadInterface::class
+                ClaimsPayloadInterface::class,
             ],
             'compact-nested' => [
                 [['typ' => 'JWT', 'cty' => NestedPayloadInterface::CONTENT_TYPE]],
                 'eyJhbGciOiJub25lIn0.'
                 .'eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ.',
                 null,
-                NestedPayloadInterface::class
+                NestedPayloadInterface::class,
             ],
             'json-flat-arbitrary' => [
                 [['typ' => 'JWT']],
                 'arbitrary',
                 [['cty' => 'SomeType']],
-                ArbitraryPayload::class
+                ArbitraryPayload::class,
             ],
             'json-flat-claims' => [
                 [['typ' => 'JWT']],
                 '{"tst1":"val1","tst2":2,"tst3":true}',
                 [['aud' => 'magento']],
-                ClaimsPayloadInterface::class
+                ClaimsPayloadInterface::class,
             ],
             'json-arbitrary' => [
                 [['typ' => 'JWT'], ['typ' => 'JWT', 'aud' => 'magento']],
                 'value',
                 [['cty' => 'MyType'], ['cty' => 'MyType', 'crit' => 'exp']],
-                ArbitraryPayload::class
-            ]
+                ArbitraryPayload::class,
+            ],
         ];
     }
 

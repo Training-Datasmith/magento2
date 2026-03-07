@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class CartItemCustomOptionsValidator implements CartItemValidatorInterface
                         'No such entity with %fieldName = %fieldValue',
                         [
                             'fieldName' => 'option_id',
-                            'fieldValue' => $option->getOptionId()
+                            'fieldValue' => $option->getOptionId(),
                         ]
                     );
                 }

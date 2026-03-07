@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ class FullMode implements ModeInterface
             'showInitial' => false,
             'showPalette' => true,
             'showAlpha' => true,
-            'showSelectionPalette' => true
+            'showSelectionPalette' => true,
         ];
     }
 }

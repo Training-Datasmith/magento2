@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -88,7 +90,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'subtotals_label' => __('Subtotal'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -100,7 +102,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'type' => 'string',
                 'sortable' => false,
                 'header_css_class' => 'col-tax-name',
-                'column_css_class' => 'col-tax-name'
+                'column_css_class' => 'col-tax-name',
             ]
         );
 
@@ -112,7 +114,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'type' => 'number',
                 'sortable' => false,
                 'header_css_class' => 'col-rate',
-                'column_css_class' => 'col-rate'
+                'column_css_class' => 'col-rate',
             ]
         );
 
@@ -124,7 +126,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'type' => 'number',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 
@@ -142,7 +144,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'sortable' => false,
                 'rate' => $this->getRate($currencyCode),
                 'header_css_class' => 'col-tax-amount',
-                'column_css_class' => 'col-tax-amount'
+                'column_css_class' => 'col-tax-amount',
             ]
         );
 

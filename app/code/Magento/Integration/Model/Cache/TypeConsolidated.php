@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Model\Cache;
 
 /**
@@ -13,12 +16,12 @@ class TypeConsolidated extends \Magento\Framework\Cache\Frontend\Decorator\TagSc
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'config_integration_consolidated';
+    public const TYPE_IDENTIFIER = 'config_integration_consolidated';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'INTEGRATION_CONSOLIDATED';
+    public const CACHE_TAG = 'INTEGRATION_CONSOLIDATED';
 
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool

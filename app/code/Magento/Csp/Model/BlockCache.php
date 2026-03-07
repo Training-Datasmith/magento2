@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class BlockCache implements CacheInterface
                     $policiesData[] = [
                         'id' => $policy->getId(),
                         'hosts' => $policy->getHostSources(),
-                        'hashes' => $policy->getHashes()
+                        'hashes' => $policy->getHashes(),
                     ];
                 }
             }

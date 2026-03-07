@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -161,7 +162,7 @@ class ModeTest extends TestCase
             ->method('getConfigs')
             ->willReturn([]);
         $this->writerMock->expects($this->once())
-            ->method("saveConfig")
+            ->method('saveConfig')
             ->willReturnCallback(function ($data) use (&$dataStorage) {
                 $dataStorage = $data;
             });
@@ -171,7 +172,7 @@ class ModeTest extends TestCase
                 return $dataStorage[ConfigFilePool::APP_ENV];
             });
         $this->filesystemMock->expects($this->once())
-            ->method("regenerateStatic")
+            ->method('regenerateStatic')
             ->willReturnCallback(function () use (&$modeModel, &$mode) {
                 $mode = $modeModel->getMode();
             });
@@ -199,7 +200,7 @@ class ModeTest extends TestCase
             ->method('getConfigs')
             ->willReturn([]);
         $this->writerMock->expects($this->exactly(2))
-            ->method("saveConfig")
+            ->method('saveConfig')
             ->willReturnCallback(
                 function ($data) use (&$dataStorage) {
                     if ($data === [ConfigFilePool::APP_ENV => [State::PARAM_MODE => State::MODE_PRODUCTION]]) {
@@ -215,7 +216,7 @@ class ModeTest extends TestCase
                 return $dataStorage[ConfigFilePool::APP_ENV];
             });
         $this->filesystemMock->expects($this->once())
-            ->method("regenerateStatic")
+            ->method('regenerateStatic')
             ->willThrowException(new LocalizedException(__('Exception')));
         $this->model->enableProductionMode();
         $this->assertEquals(State::MODE_PRODUCTION, $mode);

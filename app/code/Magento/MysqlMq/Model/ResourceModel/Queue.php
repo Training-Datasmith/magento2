@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model\ResourceModel;
 
 use Magento\Framework\DB\Select;
@@ -117,7 +120,7 @@ class Queue extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 $data[] = [
                     $queueId,
                     $messageId,
-                    QueueManagement::MESSAGE_STATUS_NEW
+                    QueueManagement::MESSAGE_STATUS_NEW,
                 ];
             }
         }
@@ -169,7 +172,7 @@ class Queue extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                     QueueManagement::MESSAGE_ID => 'message_id',
                     QueueManagement::MESSAGE_STATUS => 'status',
                     QueueManagement::MESSAGE_UPDATED_AT => 'updated_at',
-                    QueueManagement::MESSAGE_NUMBER_OF_TRIALS => 'number_of_trials'
+                    QueueManagement::MESSAGE_NUMBER_OF_TRIALS => 'number_of_trials',
                 ]
             )->join(
                 ['queue' => $this->getQueueTable()],
@@ -253,7 +256,7 @@ class Queue extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $this->getMessageStatusTable(),
             [
                 'status' => QueueManagement::MESSAGE_STATUS_RETRY_REQUIRED,
-                'number_of_trials' => new \Zend_Db_Expr('number_of_trials+1')
+                'number_of_trials' => new \Zend_Db_Expr('number_of_trials+1'),
             ],
             ['id = ?' => $relationId]
         );

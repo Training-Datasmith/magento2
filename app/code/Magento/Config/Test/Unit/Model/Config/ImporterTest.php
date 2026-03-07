@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Flag;
 use Magento\Framework\FlagManager;
 use Magento\Framework\Stdlib\ArrayUtils;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject as Mock;
 use PHPUnit\Framework\TestCase;
 
@@ -137,7 +138,7 @@ class ImporterTest extends TestCase
             ->method('recursiveDiff')
             ->willReturnMap([
                 [$data, $currentData, []],
-                [$currentData, $data, []]
+                [$currentData, $data, []],
             ]);
         $this->scopeMock->expects($this->once())
             ->method('getCurrentScope')
@@ -183,7 +184,7 @@ class ImporterTest extends TestCase
             ->method('recursiveDiff')
             ->willReturnMap([
                 [$data, $currentData, []],
-                [$currentData, $data, []]
+                [$currentData, $data, []],
             ]);
         $this->scopeMock->expects($this->once())
             ->method('getCurrentScope')

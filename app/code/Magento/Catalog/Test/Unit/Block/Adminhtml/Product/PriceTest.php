@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -12,8 +13,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -59,17 +60,17 @@ class PriceTest extends TestCase
     {
         return [
             'integer store id' => [
-                'storeId' => 1
+                'storeId' => 1,
             ],
             'string store id' => [
-                'storeId' => '2'
+                'storeId' => '2',
             ],
             'null store id' => [
-                'storeId' => null
+                'storeId' => null,
             ],
             'boolean false store id' => [
-                'storeId' => false
-            ]
+                'storeId' => false,
+            ],
         ];
     }
 

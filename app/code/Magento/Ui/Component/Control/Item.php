@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Control;
 
 use Magento\Framework\DataObject;
@@ -12,5 +15,4 @@ use Magento\Framework\DataObject;
  */
 class Item extends DataObject
 {
-    //
 }

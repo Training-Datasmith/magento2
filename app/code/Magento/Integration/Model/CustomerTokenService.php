@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,14 +10,14 @@ namespace Magento\Integration\Model;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Exception\AuthenticationException;
 use Magento\Framework\Exception\EmailNotConfirmedException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Integration\Api\TokenManager;
-use Magento\Integration\Api\Exception\UserTokenException;
-use Magento\Integration\Model\Oauth\Token\RequestThrottler;
-use Magento\Framework\Exception\AuthenticationException;
-use Magento\Framework\Event\ManagerInterface;
 use Magento\Integration\Api\CustomerTokenServiceInterface;
+use Magento\Integration\Api\Exception\UserTokenException;
+use Magento\Integration\Api\TokenManager;
+use Magento\Integration\Model\Oauth\Token\RequestThrottler;
 
 /**
  * @inheritdoc

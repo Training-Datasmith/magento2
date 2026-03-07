@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Payment\Block\Transparent;
 
+use Magento\Checkout\Model\Session;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Payment\Model\Config;
 use Magento\Payment\Model\Method\Adapter;
 use Magento\Payment\Model\Method\TransparentInterface;
-use Magento\Checkout\Model\Session;
-use Magento\Payment\Model\Config;
-use Magento\Framework\View\Element\Template\Context;
 
 /**
  * Transparent form block
@@ -143,7 +146,7 @@ class Form extends \Magento\Payment\Block\Form\Cc
         return $this->_urlBuilder->getUrl(
             $this->getMethodConfigData('place_order_url'),
             [
-                '_secure' => $this->getRequest()->isSecure()
+                '_secure' => $this->getRequest()->isSecure(),
             ]
         );
     }

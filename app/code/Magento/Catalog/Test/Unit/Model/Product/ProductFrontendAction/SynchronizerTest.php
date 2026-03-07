@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class SynchronizerTest extends TestCase
                 'productFrontendActionFactory' => $this->productFrontendActionFactoryMock,
                 'entityManager' => $this->entityManagerMock,
                 'collectionFactory' => $this->collectionFactoryMock,
-                'frontendStorageConfigurationPool' => $this->frontendStorageConfigurationPoolMock
+                'frontendStorageConfigurationPool' => $this->frontendStorageConfigurationPoolMock,
             ]
         );
     }
@@ -104,22 +105,22 @@ class SynchronizerTest extends TestCase
         $productsData = [
             'website-1-1' => [
                 'added_at' => 12,
-                'product_id' => 1
+                'product_id' => 1,
             ],
             'website-1-2' => [
                 'added_at' => 13,
-                'product_id' => '2'
+                'product_id' => '2',
             ],
             'website-2-3' => [
                 'added_at' => 14,
-                'product_id' => 3
-            ]
+                'product_id' => 3,
+            ],
         ];
         $frontendConfiguration = $this->createMock(FrontendStorageConfigurationInterface::class);
         $frontendConfiguration->expects($this->once())
             ->method('get')
             ->willReturn([
-                'lifetime' => 2
+                'lifetime' => 2,
             ]);
         $this->frontendStorageConfigurationPoolMock->expects($this->once())
             ->method('get')

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler\Driver\Standard\Output;
 
 use Magento\Framework\Profiler\Driver\Standard\AbstractOutput;
@@ -10,7 +13,7 @@ use Magento\Framework\Profiler\Driver\Standard\Stat;
 
 class Csvfile extends AbstractOutput
 {
-    const DEFAULT_FILEPATH = '/var/log/profiler.csv';
+    public const DEFAULT_FILEPATH = '/var/log/profiler.csv';
 
     /**
      *

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Model\Search\Config\Structure\Element\Builder;
 
 use Magento\Backend\Model\Search\Config\Structure\ElementBuilderInterface;

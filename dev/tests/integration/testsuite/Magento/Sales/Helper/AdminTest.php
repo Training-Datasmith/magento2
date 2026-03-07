@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class AdminTest extends \PHPUnit\Framework\TestCase
                 'allowedTags' => ['a'],
             ],
             [
-                "<a><script>alert(1)</script></a>",
+                '<a><script>alert(1)</script></a>',
                 '<a>alert(1)</a>',
                 'allowedTags' => ['a'],
             ],
@@ -80,22 +81,22 @@ class AdminTest extends \PHPUnit\Framework\TestCase
                 'allowedTags' => ['a'],
             ],
             [
-                "<a href=http://example.com?foo=1&bar=2&baz[name]=BAZ>Foo</a>",
+                '<a href=http://example.com?foo=1&bar=2&baz[name]=BAZ>Foo</a>',
                 '<a href="http://example.com?foo=1&amp;bar=2&amp;baz%5Bname%5D=BAZ">Foo</a>',
                 'allowedTags' => ['a'],
             ],
             [
-                "<a href=\"javascript&colon;alert(59)\">Foo</a>",
+                '<a href="javascript&colon;alert(59)">Foo</a>',
                 '<a href="javascript&amp;colon;alert(59)">Foo</a>',
                 'allowedTags' => ['a'],
             ],
             [
-                "<a href=\"http://example1.com\" href=\"http://example2.com\">Foo</a>",
+                '<a href="http://example1.com" href="http://example2.com">Foo</a>',
                 '<a href="http://example1.com">Foo</a>',
                 'allowedTags' => ['a'],
             ],
             [
-                "<a href=\"http://example.com?foo=text with space\">Foo</a>",
+                '<a href="http://example.com?foo=text with space">Foo</a>',
                 '<a href="http://example.com?foo=text%20with%20space">Foo</a>',
                 'allowedTags' => ['a'],
             ],

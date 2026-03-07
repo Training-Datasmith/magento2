@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,17 +22,17 @@ class InstallSchema implements InstallSchemaInterface
     /**
      * The name of the main table of Module8.
      */
-    const MAIN_TABLE = 'module8_test_main_table';
+    public const MAIN_TABLE = 'module8_test_main_table';
 
     /**
      * The name of the second table of Module8.
      */
-    const SECOND_TABLE = 'module8_test_second_table';
+    public const SECOND_TABLE = 'module8_test_second_table';
 
     /**
      * The name of the second table of Module8.
      */
-    const TEMP_TABLE = 'module8_test_install_temp_table';
+    public const TEMP_TABLE = 'module8_test_install_temp_table';
 
     /**
      * @inheritdoc
@@ -107,7 +108,7 @@ class InstallSchema implements InstallSchemaInterface
                     'primary' => true,
                     'identity' => true,
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ],
                 'Email Contact ID'
             )->addColumn(
@@ -116,7 +117,7 @@ class InstallSchema implements InstallSchemaInterface
                 10,
                 [
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ],
                 'Contact Group ID'
             )->addColumn(
@@ -125,7 +126,7 @@ class InstallSchema implements InstallSchemaInterface
                 null,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Is Guest'
             )->addColumn(
@@ -134,7 +135,7 @@ class InstallSchema implements InstallSchemaInterface
                 15,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Contact ID'
             )->addColumn(
@@ -197,7 +198,7 @@ class InstallSchema implements InstallSchemaInterface
                     'primary' => true,
                     'identity' => true,
                     'unsigned' => true,
-                    'nullable' => false
+                    'nullable' => false,
                 ],
                 'Entity ID'
             )->addColumn(
@@ -221,7 +222,7 @@ class InstallSchema implements InstallSchemaInterface
                 [
                     'unsigned' => true,
                     'nullable' => true,
-                    'default' => 0
+                    'default' => 0,
                 ],
                 'Empty
                 Counter
@@ -233,7 +234,7 @@ class InstallSchema implements InstallSchemaInterface
                 15,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Second Address'
             )->addColumn(
@@ -242,7 +243,7 @@ class InstallSchema implements InstallSchemaInterface
                 15,
                 [
                     'unsigned' => true,
-                    'nullable' => true
+                    'nullable' => true,
                 ],
                 'Temp column for remove'
             );
@@ -325,7 +326,7 @@ class InstallSchema implements InstallSchemaInterface
                 [
                     'unsigned' => true,
                     'nullable' => true,
-                    'default' => 100
+                    'default' => 100,
                 ],
                 'Counter'
             );

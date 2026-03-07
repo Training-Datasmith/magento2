@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -74,13 +75,13 @@ class ProductFrontendActionSectionTest extends TestCase
                 'items' => [
                     1 => [
                         'added_at' => 12,
-                        'product_id' => 1
+                        'product_id' => 1,
                     ],
                     2 => [
                         'added_at' => 13,
-                        'product_id' => 2
-                    ]
-                ]
+                        'product_id' => 2,
+                    ],
+                ],
             ],
             $this->model->getSectionData()
         );
@@ -97,7 +98,7 @@ class ProductFrontendActionSectionTest extends TestCase
             [
                 'count' => 0,
                 'items' => [
-                ]
+                ],
             ],
             $this->model->getSectionData()
         );

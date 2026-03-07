@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -35,9 +37,9 @@ $orderItems = [
                 'product_options'                                        => [
                     'bundle_selection_attributes' => '{"qty":2}',
                 ],
-            ]
+            ],
         ],
-    ]
+    ],
 ];
 
 // Invoiced all existing order items.

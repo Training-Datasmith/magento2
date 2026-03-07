@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model\ResourceModel;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -42,7 +45,7 @@ abstract class AbstractGrid extends AbstractDb implements GridInterface
      */
     protected function _construct()
     {
-        //
+
     }
 
     /**

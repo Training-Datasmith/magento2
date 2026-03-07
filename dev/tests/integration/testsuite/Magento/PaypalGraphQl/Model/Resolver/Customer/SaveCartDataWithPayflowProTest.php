@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\PaypalGraphQl\Model\Resolver\Customer;
 
-use Magento\Integration\Api\CustomerTokenServiceInterface;
-use Magento\Integration\Model\Oauth\Token;
-use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use Magento\Framework\DataObject;
+use Magento\Framework\Serialize\SerializerInterface;
+use Magento\Integration\Api\CustomerTokenServiceInterface;
+use Magento\PaypalGraphQl\PaypalPayflowProAbstractTest;
+use Magento\Quote\Model\QuoteIdToMaskedQuoteId;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Model\PaymentTokenManagement;
 use Magento\Vault\Model\PaymentTokenRepository;
@@ -190,7 +190,7 @@ QUERY;
         $requestHeaders = [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
         $paypalResponse = new DataObject(
             [

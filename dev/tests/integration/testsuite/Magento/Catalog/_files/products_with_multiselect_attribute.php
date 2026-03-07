@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Model\Config;
 use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\Config;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/multiselect_attribute.php');
 
@@ -27,7 +29,6 @@ $multiSelectAttributeOptions = \Magento\TestFramework\Helper\Bootstrap::getObjec
 
 $multiSelectAttributeOptions->setAttributeFilter($multiSelectAttribute->getId());
 $multiSelectAttributeOptionsIds = $multiSelectAttributeOptions->getAllIds();
-
 
 /** @var $multiSelectAttributeOptionsText \Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\Collection */
 $multiSelectAttributeOptionsText = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(

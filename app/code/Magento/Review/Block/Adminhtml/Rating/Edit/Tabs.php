@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml\Rating\Edit;
 
 /**
@@ -37,7 +40,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                 'title' => __('Rating Information'),
                 'content' => $this->getLayout()
                         ->createBlock(\Magento\Review\Block\Adminhtml\Rating\Edit\Tab\Form::class)
-                        ->toHtml()
+                        ->toHtml(),
             ]
         );
         return parent::_beforeToHtml();

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Communication;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Communication\Config\Data as ConfigData;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
 
 /**

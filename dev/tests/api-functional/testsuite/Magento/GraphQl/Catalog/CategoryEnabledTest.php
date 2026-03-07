@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -112,7 +113,7 @@ class CategoryEnabledTest extends GraphQlAbstract
                         'id' => 44,
                         'name' => 'Category_UA',
                     ],
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedPricingImportExport\Test\Unit\Model\Import\AdvancedPricing\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing as AdvancedPricing;
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator;
 use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator\TierPrice;
@@ -16,16 +16,10 @@ use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Api\Data\GroupSearchResultsInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
-use Magento\Eav\Model\Config;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Json\Helper\Data;
-use Magento\Framework\Stdlib\StringUtils;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\ImportExport\Helper\Data as ImportExportHelperData;
-use Magento\ImportExport\Model\ResourceModel\Helper;
-use Magento\ImportExport\Model\ResourceModel\Import\Data as ResourceImportData;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -187,7 +181,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             [
@@ -199,7 +193,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             [
@@ -211,7 +205,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             [
@@ -223,7 +217,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             [
@@ -235,7 +229,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => true,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             // Second if condition  cases.
@@ -248,7 +242,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             // Third if condition cases.
@@ -261,7 +255,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
             [
@@ -273,7 +267,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
             ],
         ];
@@ -295,7 +289,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
                 'expectedMessages' => [Validator::ERROR_TIER_DATA_INCOMPLETE],
             ],
@@ -309,7 +303,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
                 'expectedMessages' => [Validator::ERROR_INVALID_TIER_PRICE_GROUP],
             ],
@@ -323,7 +317,7 @@ class TierPriceTest extends TestCase
                 ],
                 'hasEmptyColumns' => null,
                 'customerGroups' => [
-                    'value' => 'value'
+                    'value' => 'value',
                 ],
                 'expectedMessages' => [Validator::ERROR_INVALID_TIER_PRICE_QTY],
             ],

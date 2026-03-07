@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,31 +8,31 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\OrderCancellation;
 
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\GraphQl\Query\Uid;
-use Magento\GraphQl\GetCustomerAuthenticationHeader;
-use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Model\Order;
-use Magento\Sales\Model\OrderRepository;
-use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
-use Magento\Sales\Test\Fixture\Shipment as ShipmentFixture;
-use Magento\Store\Test\Fixture\Store;
-use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\Fixture\DataFixture;
-use Magento\Customer\Test\Fixture\Customer;
-use Magento\Framework\Exception\AuthenticationException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\TestFramework\Fixture\Config;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Checkout\Test\Fixture\PlaceOrder as PlaceOrderFixture;
 use Magento\Checkout\Test\Fixture\SetBillingAddress as SetBillingAddressFixture;
 use Magento\Checkout\Test\Fixture\SetDeliveryMethod as SetDeliveryMethodFixture;
 use Magento\Checkout\Test\Fixture\SetPaymentMethod as SetPaymentMethodFixture;
 use Magento\Checkout\Test\Fixture\SetShippingAddress as SetShippingAddressFixture;
-use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\Customer\Test\Fixture\Customer;
+use Magento\Framework\Exception\AuthenticationException;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\GraphQl\Query\Uid;
+use Magento\GraphQl\GetCustomerAuthenticationHeader;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
+use Magento\Quote\Test\Fixture\CustomerCart;
+use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\OrderRepository;
+use Magento\Sales\Test\Fixture\Invoice as InvoiceFixture;
+use Magento\Sales\Test\Fixture\Shipment as ShipmentFixture;
+use Magento\Store\Test\Fixture\Store;
+use Magento\TestFramework\Fixture\Config;
+use Magento\TestFramework\Fixture\DataFixture;
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test coverage for cancel order mutation
@@ -44,7 +45,7 @@ use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
         Customer::class,
         [
             'email' => 'customer@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ],
         'customer'
     ),
@@ -52,7 +53,7 @@ use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
         Customer::class,
         [
             'email' => 'customer_b@example.com',
-            'password' => 'password'
+            'password' => 'password',
         ],
         'customer_b'
     ),
@@ -104,9 +105,9 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
                         'order' => null,
                         'errorV2' => [
                             'code' => 'ORDER_NOT_FOUND',
-                            'message' => "The entity that was requested doesn't exist. Verify the entity and try again."
-                        ]
-                    ]
+                            'message' => "The entity that was requested doesn't exist. Verify the entity and try again.",
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getQuery('MTAwMDA='),
@@ -134,9 +135,9 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
                         'order' => null,
                         'errorV2' => [
                             'code' => 'UNAUTHORISED',
-                            'message' => "Current user is not authorized to cancel this order"
-                        ]
-                    ]
+                            'message' => 'Current user is not authorized to cancel this order',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getQuery($this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())),
@@ -168,13 +169,13 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
                 'cancelOrder' =>
                     [
                         'order' => [
-                            'status' => $expectedStatus
+                            'status' => $expectedStatus,
                         ],
                         'errorV2' => [
                             'code' => 'INVALID_ORDER_STATUS',
-                            'message' => "Order already closed, complete, cancelled or on hold"
-                        ]
-                    ]
+                            'message' => 'Order already closed, complete, cancelled or on hold',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getQuery($this->idEncoder->encode((string)$order->getEntityId())),
@@ -196,7 +197,7 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -207,7 +208,7 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -220,7 +221,7 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
             ShipmentFixture::class,
             [
                 'order_id' => '$order.id$',
-                'items' => [['product_id' => '$product.id$', 'qty' => 1]]
+                'items' => [['product_id' => '$product.id$', 'qty' => 1]],
             ]
         ),
         Config('sales/cancellation/enabled', 1)
@@ -232,13 +233,13 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
                 'cancelOrder' =>
                     [
                         'order' => [
-                            'status' => 'Processing'
+                            'status' => 'Processing',
                         ],
                         'errorV2' => [
                             'code' => 'PARTIAL_ORDER_ITEM_SHIPPED',
-                            'message' => "Order with one or more items shipped cannot be cancelled"
-                        ]
-                    ]
+                            'message' => 'Order with one or more items shipped cannot be cancelled',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getQuery($this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())),
@@ -260,7 +261,7 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
             Customer::class,
             [
                 'email' => 'customer@example.com',
-                'password' => 'password'
+                'password' => 'password',
             ],
             'customer'
         ),
@@ -271,7 +272,7 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$product.id$',
-                'qty' => 3
+                'qty' => 3,
             ]
         ),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
@@ -290,9 +291,9 @@ class CancelOrderErrorCodeTest extends GraphQlAbstract
                         'order' => null,
                         'errorV2' => [
                             'code' => 'ORDER_CANCELLATION_DISABLED',
-                            'message' => "Order cancellation is not enabled for requested store."
-                        ]
-                    ]
+                            'message' => 'Order cancellation is not enabled for requested store.',
+                        ],
+                    ],
             ],
             $this->graphQlMutation(
                 $this->getQuery($this->idEncoder->encode((string)$this->fixtures->get('order')->getEntityId())),
@@ -347,20 +348,20 @@ QUERY;
         return [
             'On Hold status' => [
                 Order::STATE_HOLDED,
-                'On Hold'
+                'On Hold',
             ],
             'Canceled status' => [
                 Order::STATE_CANCELED,
-                'Canceled'
+                'Canceled',
             ],
             'Closed status' => [
                 Order::STATE_CLOSED,
-                'Closed'
+                'Closed',
             ],
             'Complete status' => [
                 Order::STATE_COMPLETE,
-                'Complete'
-            ]
+                'Complete',
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -72,7 +73,7 @@ class DefaultValueProviderTest extends TestCase
             [
                 ['queue/default_connection', null, null],
                 ['queue/amqp', null, ['host' => '127.0.0.1', 'port' => '5672']],
-                ['queue', null, ['amqp' => ['host' => '127.0.0.1', 'port' => '5672']]]
+                ['queue', null, ['amqp' => ['host' => '127.0.0.1', 'port' => '5672']]],
             ]
         );
 

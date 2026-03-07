@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
 
 use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
@@ -11,16 +14,10 @@ use Magento\Framework\Validator\AbstractValidator;
 class Validator extends AbstractValidator implements RowValidatorInterface
 {
     /**
-     * @var RowValidatorInterface[]|AbstractValidator[]
-     */
-    protected $validators = [];
-
-    /**
      * @param RowValidatorInterface[] $validators
      */
-    public function __construct($validators = [])
+    public function __construct(protected $validators = [])
     {
-        $this->validators = $validators;
     }
 
     /**
@@ -45,7 +42,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
     /**
      * @inheritdoc
      */
-    public function init($context)
+    public function init($context): static
     {
         foreach ($this->validators as $validator) {
             $validator->init($context);

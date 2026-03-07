@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Page;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Cms\Api\Data\PageInterface;
 use Magento\Cms\Api\PageRepositoryInterface as PageRepository;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Cms\Api\Data\PageInterface;
 
 /**
  * Cms page grid inline edit controller
@@ -21,7 +24,7 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
     /**
      * Authorization level of a basic admin session
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::save';
+    public const ADMIN_RESOURCE = 'Magento_Cms::save';
 
     /**
      * @var \Magento\Cms\Controller\Adminhtml\Page\PostDataProcessor
@@ -106,7 +109,7 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
         return $resultJson->setData(
             [
                 'messages' => $messages,
-                'error' => $error
+                'error' => $error,
             ]
         );
     }
@@ -139,17 +142,17 @@ class InlineEdit extends \Magento\Backend\App\Action implements HttpPostActionIn
         $newPageData = $this->filterPost($postData);
         if (
             !empty($newPageData['custom_theme_from'])
-            && date("Y-m-d", strtotime($postData['custom_theme_from']))
-                === date("Y-m-d", strtotime($pageData['custom_theme_from']))
+            && date('Y-m-d', strtotime($postData['custom_theme_from']))
+                === date('Y-m-d', strtotime($pageData['custom_theme_from']))
         ) {
-            $newPageData['custom_theme_from'] = date("Y-m-d", strtotime($postData['custom_theme_from']));
+            $newPageData['custom_theme_from'] = date('Y-m-d', strtotime($postData['custom_theme_from']));
         }
         if (
             !empty($newPageData['custom_theme_to'])
-            && date("Y-m-d", strtotime($postData['custom_theme_to']))
-                === date("Y-m-d", strtotime($pageData['custom_theme_to']))
+            && date('Y-m-d', strtotime($postData['custom_theme_to']))
+                === date('Y-m-d', strtotime($pageData['custom_theme_to']))
         ) {
-            $newPageData['custom_theme_to'] = date("Y-m-d", strtotime($postData['custom_theme_to']));
+            $newPageData['custom_theme_to'] = date('Y-m-d', strtotime($postData['custom_theme_to']));
         }
 
         return $newPageData;

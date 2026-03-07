@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Model\Grouped;
 
 use Magento\Framework\Data\Collection\AbstractDb as DbCollection;

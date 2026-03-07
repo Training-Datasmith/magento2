@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\GuestCart;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Api\CouponManagementInterface;
 use Magento\Quote\Model\GuestCart\GuestCouponManagement;
 use Magento\Quote\Model\QuoteIdMask;
@@ -64,19 +65,19 @@ class GuestCouponManagementTest extends TestCase
         $this->cartId = 123;
 
         // Create QuoteIdMask mock
-        $this->quoteIdMaskMock = $this->createPartialMockWithReflection(QuoteIdMask::class, ["load", "getQuoteId"]);
-        $this->quoteIdMaskMock->method("load")->willReturnSelf();
-        $this->quoteIdMaskMock->method("getQuoteId")->willReturn($this->cartId);
-        
+        $this->quoteIdMaskMock = $this->createPartialMockWithReflection(QuoteIdMask::class, ['load', 'getQuoteId']);
+        $this->quoteIdMaskMock->method('load')->willReturnSelf();
+        $this->quoteIdMaskMock->method('getQuoteId')->willReturn($this->cartId);
+
         // Create QuoteIdMaskFactory mock
         $this->quoteIdMaskFactoryMock = $this->createMock(QuoteIdMaskFactory::class);
-        $this->quoteIdMaskFactoryMock->method("create")->willReturn($this->quoteIdMaskMock);
+        $this->quoteIdMaskFactoryMock->method('create')->willReturn($this->quoteIdMaskMock);
 
         $this->model = $objectManager->getObject(
             GuestCouponManagement::class,
             [
                 'couponManagement' => $this->couponManagementMock,
-                'quoteIdMaskFactory' => $this->quoteIdMaskFactoryMock
+                'quoteIdMaskFactory' => $this->quoteIdMaskFactoryMock,
             ]
         );
     }

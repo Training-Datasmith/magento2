@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\Data\Test\Unit\Argument\Interpreter;
 use Magento\Framework\Data\Argument\Interpreter\Composite;
 use Magento\Framework\Data\Argument\InterpreterInterface;
 use Magento\Framework\ObjectManagerInterface;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class CompositeTest extends TestCase
 {
@@ -73,7 +74,7 @@ class CompositeTest extends TestCase
             'nonexistent interpreter ' => [
                 ['interpreter' => 'nonexistent'],
                 "Argument interpreter named 'nonexistent' has not been defined",
-            ]
+            ],
         ];
     }
 

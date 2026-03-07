@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Cms\Block\Widget\Page\Link;
 use Magento\Cms\Model\Config\Source\Page;
@@ -17,5 +19,5 @@ return [
             'visible' => '1',
             'source_model' => Page::class,
         ],
-    ]
+    ],
 ];

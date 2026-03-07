@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Theme controller
  */
+
 namespace Magento\Theme\Controller\Adminhtml\System\Design;
 
 abstract class Theme extends \Magento\Backend\App\Action
@@ -16,7 +19,7 @@ abstract class Theme extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Theme::theme';
+    public const ADMIN_RESOURCE = 'Magento_Theme::theme';
 
     /**
      * Core registry

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,14 +8,14 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Lock;
 
-use Magento\Framework\Phrase;
-use Magento\Framework\Exception\RuntimeException;
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Lock\Backend\Database as DatabaseLock;
-use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
+use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Lock\Backend\Cache as CacheLock;
+use Magento\Framework\Lock\Backend\Database as DatabaseLock;
 use Magento\Framework\Lock\Backend\FileLock;
+use Magento\Framework\Lock\Backend\Zookeeper as ZookeeperLock;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Phrase;
 
 /**
  * The factory to create object that implements LockManagerInterface
@@ -40,28 +41,28 @@ class LockBackendFactory
      *
      * @const string
      */
-    const LOCK_DB = 'db';
+    public const LOCK_DB = 'db';
 
     /**
      * Zookeeper lock provider name
      *
      * @const string
      */
-    const LOCK_ZOOKEEPER = 'zookeeper';
+    public const LOCK_ZOOKEEPER = 'zookeeper';
 
     /**
      * Cache lock provider name
      *
      * @const string
      */
-    const LOCK_CACHE = 'cache';
+    public const LOCK_CACHE = 'cache';
 
     /**
      * File lock provider name
      *
      * @const string
      */
-    const LOCK_FILE = 'file';
+    public const LOCK_FILE = 'file';
 
     /**
      * The list of lock providers with mapping on classes

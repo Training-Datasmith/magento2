@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Layer\Search;
 
-use PHPUnit\Framework\Attributes\CoversClass;
 use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\Config;
 use Magento\Catalog\Model\Layer\Search\CollectionFilter;
@@ -15,6 +15,7 @@ use Magento\Catalog\Model\Product\Visibility;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +55,7 @@ class CollectionFilterTest extends TestCase
             [
                 'catalogConfig' => $this->catalogConfigMock,
                 'storeManager' => $this->storeManagerMock,
-                'productVisibility' => $this->visibilityMock
+                'productVisibility' => $this->visibilityMock,
             ]
         );
     }
@@ -63,7 +64,7 @@ class CollectionFilterTest extends TestCase
     {
         $collectionMock = $this->createPartialMock(Collection::class, [
             'addAttributeToSelect', 'setStore', 'addMinimalPrice', 'addFinalPrice',
-            'addTaxPercents', 'addStoreFilter', 'addUrlRewrite', 'setVisibility'
+            'addTaxPercents', 'addStoreFilter', 'addUrlRewrite', 'setVisibility',
         ]);
         $categoryMock = $this->createMock(Category::class);
 

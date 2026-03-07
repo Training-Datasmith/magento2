@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,11 +21,11 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Url\DecoderInterface;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Controller\Adminhtml\System\Design\Theme\DownloadCss;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -173,7 +174,7 @@ class DownloadCssTest extends TestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'load'
+                'load',
             ]
         );
         $urlDecoder = $this->createMock(DecoderInterface::class);
@@ -241,7 +242,7 @@ class DownloadCssTest extends TestCase
             [
                 'getArea', 'getThemePath', 'getFullPath', 'getParentTheme',
                 'getCode', 'isPhysical', 'getInheritedThemes', 'getId',
-                'load'
+                'load',
             ]
         );
         $urlDecoder = $this->createMock(DecoderInterface::class);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,26 +9,26 @@ declare(strict_types=1);
 namespace Magento\Tax\Model\Sales\Total\Quote;
 
 use Magento\Customer\Api\AccountManagementInterface as CustomerAccountManagement;
-use Magento\Customer\Api\Data\AddressInterfaceFactory as CustomerAddressFactory;
 use Magento\Customer\Api\Data\AddressInterface as CustomerAddress;
+use Magento\Customer\Api\Data\AddressInterfaceFactory as CustomerAddressFactory;
 use Magento\Customer\Api\Data\RegionInterfaceFactory as CustomerAddressRegionFactory;
+use Magento\Framework\App\ObjectManager;
+use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Model\Quote\Address as QuoteAddress;
 use Magento\Quote\Model\Quote\Address\Total\AbstractTotal;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Store\Model\Store;
+use Magento\Tax\Api\Data\QuoteDetailsInterface;
 use Magento\Tax\Api\Data\QuoteDetailsInterfaceFactory;
+use Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterfaceFactory;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterface;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterfaceFactory;
-use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
 use Magento\Tax\Api\Data\TaxClassKeyInterface;
+use Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory;
 use Magento\Tax\Api\Data\TaxDetailsInterface;
 use Magento\Tax\Api\Data\TaxDetailsItemInterface;
-use Magento\Tax\Api\Data\QuoteDetailsInterface;
-use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Tax\Api\TaxCalculationInterface;
 use Magento\Tax\Helper\Data as TaxHelper;
-use Magento\Framework\App\ObjectManager;
-use Magento\Tax\Api\Data\QuoteDetailsItemExtensionInterfaceFactory;
 use Magento\Tax\Model\Config;
 
 /**
@@ -217,8 +218,8 @@ class CommonTaxCollector extends AbstractTotal
                 'data' => [
                     'region_id' => $address->getRegionId(),
                     'region_code' => $address->getRegionCode(),
-                    'region' => $address->getRegion()
-                ]
+                    'region' => $address->getRegion(),
+                ],
             ]
         );
 
@@ -229,8 +230,8 @@ class CommonTaxCollector extends AbstractTotal
                     'region' => $region,
                     'postcode' => $address->getPostcode(),
                     'city' => $address->getCity(),
-                    'street' => $address->getStreet()
-                ]
+                    'street' => $address->getStreet(),
+                ],
             ]
         );
     }
@@ -988,8 +989,8 @@ class CommonTaxCollector extends AbstractTotal
      */
     private function getQuoteItemId(array $keyedAddressItems, string $itemTaxCalculationId)
     {
-        if (isset($keyedAddressItems[$itemTaxCalculationId]["quote_item"])) {
-            return $keyedAddressItems[$itemTaxCalculationId]["quote_item"]->getId();
+        if (isset($keyedAddressItems[$itemTaxCalculationId]['quote_item'])) {
+            return $keyedAddressItems[$itemTaxCalculationId]['quote_item']->getId();
         } else {
             return $keyedAddressItems[$itemTaxCalculationId]->getId();
         }

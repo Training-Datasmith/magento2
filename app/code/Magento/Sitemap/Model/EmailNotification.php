@@ -1,18 +1,19 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Magento\Sitemap\Model;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Translate\Inline\StateInterface;
-use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Backend\App\Area\FrontNameResolver;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
 use Magento\Sitemap\Model\Observer as Observer;
+use Magento\Store\Model\ScopeInterface;
 use Psr\Log\LoggerInterface;
 
 /**

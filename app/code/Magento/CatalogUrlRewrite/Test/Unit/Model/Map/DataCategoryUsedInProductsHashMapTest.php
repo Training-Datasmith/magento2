@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class DataCategoryUsedInProductsHashMapTest extends TestCase
             DataCategoryUsedInProductsHashMap::class,
             [
                 'connection' => $this->connectionMock,
-                'hashMapPool' => $this->hashMapPoolMock
+                'hashMapPool' => $this->hashMapPoolMock,
             ]
         );
     }

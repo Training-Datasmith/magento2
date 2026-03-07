@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Controller\Adminhtml\Index\Render;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
+use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\UiComponent\ContextFactory;
+use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Control\ActionPool;
 use Magento\Ui\Component\Wrapper\UiComponent;
 use Magento\Ui\Controller\Adminhtml\AbstractAction;
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Framework\View\Element\UiComponent\ContextFactory;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Class Handle
@@ -57,7 +60,7 @@ class Handle extends AbstractAction implements HttpGetActionInterface
         $context = $this->contextFactory->create(
             [
                 'namespace' => $namespace,
-                'pageLayout' => $layout
+                'pageLayout' => $layout,
             ]
         );
 

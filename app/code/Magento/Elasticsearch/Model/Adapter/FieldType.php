@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Elasticsearch\Model\Adapter;
 
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
@@ -25,13 +28,13 @@ class FieldType
      *
      * Text flags for Elasticsearch field types
      */
-    const ES_DATA_TYPE_STRING = 'string';
-    const ES_DATA_TYPE_FLOAT = 'float';
-    const ES_DATA_TYPE_INT = 'integer';
-    const ES_DATA_TYPE_DATE = 'date';
+    public const ES_DATA_TYPE_STRING = 'string';
+    public const ES_DATA_TYPE_FLOAT = 'float';
+    public const ES_DATA_TYPE_INT = 'integer';
+    public const ES_DATA_TYPE_DATE = 'date';
 
     /** @deprecated */
-    const ES_DATA_TYPE_ARRAY = 'array';
+    public const ES_DATA_TYPE_ARRAY = 'array';
     /**#@-*/
 
     /**

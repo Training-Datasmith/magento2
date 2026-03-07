@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Filesystem\File\Read
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem\File;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -92,7 +95,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
     {
         return [
             ['popup.csv', 'var myData = 5;'],
-            ['data.csv', '"field1", "field2"' . "\n" . '"field3", "field4"' . "\n"]
+            ['data.csv', '"field1", "field2"' . "\n" . '"field3", "field4"' . "\n"],
         ];
     }
 
@@ -123,7 +126,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
             ['popup.csv', ['var myData = 5;'], 999],
             ['data.csv', ['"field1", "field2"', '"field3", "field4"'], 999],
             ['popup.csv', ['var'], 3],
-            ['data.csv', ['"f', 'ie', 'ld', '1"'], 2]
+            ['data.csv', ['"f', 'ie', 'ld', '1"'], 2],
         ];
     }
 
@@ -248,7 +251,7 @@ class ReadTest extends \PHPUnit\Framework\TestCase
         return [
             ['popup.csv', 5, SEEK_SET, 5],
             ['popup.csv', 10, SEEK_CUR, 10],
-            ['popup.csv', -10, SEEK_END, 5]
+            ['popup.csv', -10, SEEK_END, 5],
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,17 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Model\Order;
 
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Config;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Sales\Model\Order\StatusResolver;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class StatusResolverTest extends TestCase
 {
@@ -46,11 +46,11 @@ class StatusResolverTest extends TestCase
         return [
             [
                 static fn (self $testCase) => $testCase->getOrder('pending', ['pending' => 'pending']),
-                'pending'
+                'pending',
             ],
             [
                 static fn (self $testCase) => $testCase->getOrder('processing', ['pending' => 'pending']),
-                'processing'
+                'processing',
             ],
         ];
     }

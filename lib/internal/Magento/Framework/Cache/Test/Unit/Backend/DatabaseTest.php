@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\Cache\Exception\CacheException;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
 
@@ -38,10 +39,10 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('initializeWithExceptionDataProvider')]
+    #[DataProvider('initializeWithExceptionDataProvider')]
     public function testInitializeWithException($options): void
     {
-        if ($options['adapter']!='' && is_callable($options['adapter'])) {
+        if ($options['adapter'] != '' && is_callable($options['adapter'])) {
             $options['adapter'] = $options['adapter']($this);
         }
         $this->expectException(CacheException::class);
@@ -64,8 +65,8 @@ class DatabaseTest extends TestCase
                     'data_table_callback' => 'data_table_callback',
                     'tags_table' => 'tags_table',
                     'tags_table_callback' => 'tags_table_callback',
-                    'adapter' => ''
-                ]
+                    'adapter' => '',
+                ],
             ],
             'empty_data_table' => [
                 'options' => [
@@ -74,8 +75,8 @@ class DatabaseTest extends TestCase
                     'data_table_callback' => '',
                     'tags_table' => 'tags_table',
                     'tags_table_callback' => 'tags_table_callback',
-                    'adapter' => static fn (self $testCase) => $testCase->createMock(Mysql::class)
-                ]
+                    'adapter' => static fn (self $testCase) => $testCase->createMock(Mysql::class),
+                ],
             ],
             'empty_tags_table' => [
                 'options' => [
@@ -84,9 +85,9 @@ class DatabaseTest extends TestCase
                     'data_table_callback' => 'data_table_callback',
                     'tags_table' => '',
                     'tags_table_callback' => '',
-                    'adapter' => static fn (self $testCase) => $testCase->createMock(Mysql::class)
-                ]
-            ]
+                    'adapter' => static fn (self $testCase) => $testCase->createMock(Mysql::class),
+                ],
+            ],
         ];
     }
 
@@ -96,7 +97,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('loadDataProvider')]
+    #[DataProvider('loadDataProvider')]
     public function testLoad($options, $expected): void
     {
         $options = $options($this);
@@ -145,13 +146,13 @@ class DatabaseTest extends TestCase
         return [
             'with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
-                'expected' => 'loaded_value'
+                'expected' => 'loaded_value',
 
             ],
             'without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData(),
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 
@@ -172,7 +173,7 @@ class DatabaseTest extends TestCase
             'tags_table' => 'tags_table',
             'tags_table_callback' => 'tags_table_callback',
             'store_data' => 'store_data',
-            'adapter' => $connectionMock
+            'adapter' => $connectionMock,
         ];
     }
 
@@ -198,7 +199,7 @@ class DatabaseTest extends TestCase
             'tags_table' => 'tags_table',
             'tags_table_callback' => 'tags_table_callback',
             'store_data' => '',
-            'adapter' => $connectionMock
+            'adapter' => $connectionMock,
         ];
     }
 
@@ -208,7 +209,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('loadDataProvider')]
+    #[DataProvider('loadDataProvider')]
     public function testTest($options, $expected): void
     {
         $options = $options($this);
@@ -228,7 +229,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('saveDataProvider')]
+    #[DataProvider('saveDataProvider')]
     public function testSave($options, $expected): void
     {
         $options = $options($this);
@@ -251,18 +252,18 @@ class DatabaseTest extends TestCase
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData(
                     static fn (self $testCase) => $testCase->getSaveAdapterMock(true)
                 ),
-                'expected' => true
+                'expected' => true,
             ],
             'minor_case_with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData(
                     static fn (self $testCase) => $testCase->getSaveAdapterMock(false)
                 ),
-                'expected' => false
+                'expected' => false,
             ],
             'without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData(),
-                'expected' => true
-            ]
+                'expected' => true,
+            ],
         ];
     }
 
@@ -300,7 +301,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('removeDataProvider')]
+    #[DataProvider('removeDataProvider')]
     public function testRemove($options, $expected): void
     {
         $options = $options($this);
@@ -336,13 +337,13 @@ class DatabaseTest extends TestCase
         return [
             'with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
-                'expected' => true
+                'expected' => true,
 
             ],
             'without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData(),
-                'expected' => false
-            ]
+                'expected' => false,
+            ],
         ];
     }
 
@@ -353,7 +354,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('cleanDataProvider')]
+    #[DataProvider('cleanDataProvider')]
     public function testClean($options, $mode, $expected): void
     {
         $options = $options($this);
@@ -394,40 +395,40 @@ class DatabaseTest extends TestCase
             'mode_all_with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_ALL,
-                'expected' => false
+                'expected' => false,
 
             ],
             'mode_all_without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_ALL,
-                'expected' => false
+                'expected' => false,
             ],
             'mode_old_with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_OLD,
-                'expected' => true
+                'expected' => true,
 
             ],
             'mode_old_without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_OLD,
-                'expected' => true
+                'expected' => true,
             ],
             'mode_matching_tag_without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_MATCHING_TAG,
-                'expected' => true
+                'expected' => true,
             ],
             'mode_not_matching_tag_without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_NOT_MATCHING_TAG,
-                'expected' => true
+                'expected' => true,
             ],
             'mode_matching_any_tag_without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData($connectionMock),
                 'mode' => CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG,
-                'expected' => true
-            ]
+                'expected' => true,
+            ],
         ];
     }
 
@@ -452,7 +453,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('getIdsDataProvider')]
+    #[DataProvider('getIdsDataProvider')]
     public function testGetIds($options, $expected): void
     {
         $options = $options($this);
@@ -496,12 +497,12 @@ class DatabaseTest extends TestCase
         return [
             'with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
-                'expected' => ['value_one', 'value_two']
+                'expected' => ['value_one', 'value_two'],
             ],
             'without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData(),
-                'expected' => []
-            ]
+                'expected' => [],
+            ],
         ];
     }
 
@@ -709,7 +710,7 @@ class DatabaseTest extends TestCase
             [
                 'expire' => 3,
                 'mtime' => 2,
-                'tags' => ['some_value_one', 'some_value_two']
+                'tags' => ['some_value_one', 'some_value_two'],
             ],
             $database->getMetadatas(5)
         );
@@ -721,7 +722,7 @@ class DatabaseTest extends TestCase
      *
      * @return void
      */
-     #[DataProvider('touchDataProvider')]
+    #[DataProvider('touchDataProvider')]
     public function testTouch($options, $expected): void
     {
         $options = $options($this);
@@ -758,13 +759,13 @@ class DatabaseTest extends TestCase
         return [
             'with_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithStoreData($connectionMock),
-                'expected' => false
+                'expected' => false,
 
             ],
             'without_store_data' => [
                 'options' => static fn (self $testCase) => $testCase->getOptionsWithoutStoreData(),
-                'expected' => true
-            ]
+                'expected' => true,
+            ],
         ];
     }
 }

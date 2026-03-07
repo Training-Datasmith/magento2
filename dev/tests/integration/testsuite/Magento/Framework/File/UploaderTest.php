@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Framework\File;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use PHPUnit\Framework\TestCase;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\Filesystem;
+use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for \Magento\Framework\File\Uploader
@@ -92,7 +93,7 @@ class UploaderTest extends TestCase
             [
                 'customer_address/new_magento.jpg',
                 'new_magento.jpg',
-            ]
+            ],
         ];
     }
 }

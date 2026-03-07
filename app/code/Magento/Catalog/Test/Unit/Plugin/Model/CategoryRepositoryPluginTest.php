@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Plugin\Model;
 
-use Magento\Catalog\Plugin\Model\CategoryRepositoryPlugin;
-use Magento\Catalog\Model\CategoryRepository;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\Api\AttributeInterface;
 use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\CategoryRepository;
+use Magento\Catalog\Plugin\Model\CategoryRepositoryPlugin;
+use Magento\Framework\Api\AttributeInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class CategoryRepositoryPluginTest extends TestCase
 {

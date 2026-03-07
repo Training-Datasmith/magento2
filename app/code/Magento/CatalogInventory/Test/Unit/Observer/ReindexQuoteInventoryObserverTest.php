@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Test\Unit\Observer;
 
-use PHPUnit\Framework\Attributes\Test;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as PriceProcessor;
 use Magento\CatalogInventory\Model\Indexer\Stock\Processor as StockProcessor;
 use Magento\CatalogInventory\Observer\ItemsForReindex;
@@ -18,6 +18,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Item;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -117,13 +118,13 @@ class ReindexQuoteInventoryObserverTest extends TestCase
 
         $this->quoteItem->expects($this->exactly(6))
             ->method('getData')
-        ->willReturnCallback(fn($param) => match ([$param]) {
-                ['product_id']=> 1,
-                ['product_id'] => 1,
-                ['children_items']=> [$this->quoteItem],
-                ['product_id']=> 1,
-                ['product_id']=> 1,
-                ['product_id']=> 1,
+        ->willReturnCallback(fn ($param) => match ([$param]) {
+            ['product_id'] => 1,
+            ['product_id'] => 1,
+            ['children_items'] => [$this->quoteItem],
+            ['product_id'] => 1,
+            ['product_id'] => 1,
+            ['product_id'] => 1,
         });
         $this->stockIndexerProcessor->expects($this->once())
             ->method('reindexList')
@@ -167,10 +168,10 @@ class ReindexQuoteInventoryObserverTest extends TestCase
 
         $this->quoteItem->expects($this->exactly(3))
             ->method('getData')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
-                ['product_id']=> 1,
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['product_id'] => 1,
-                ['children_items']=> []
+                ['product_id'] => 1,
+                ['children_items'] => []
             });
 
         $this->stockIndexerProcessor->expects($this->once())

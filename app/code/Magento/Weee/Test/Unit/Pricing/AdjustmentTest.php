@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Weee\Helper\Data;
 use Magento\Weee\Model\Tax;
 use Magento\Weee\Pricing\Adjustment;
-use PHPUnit\Framework\MockObject\MockObject;
-
 use PHPUnit\Framework\Attributes\DataProvider;
+
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class AdjustmentTest extends TestCase
@@ -144,7 +145,7 @@ class AdjustmentTest extends TestCase
         return [
             ['weee', true],
             ['tax', true],
-            ['not_tax_and_not_weee', false]
+            ['not_tax_and_not_weee', false],
         ];
     }
 
@@ -171,7 +172,7 @@ class AdjustmentTest extends TestCase
     {
         return [
             [true, self::$sortOrder],
-            [false, self::$sortOrder]
+            [false, self::$sortOrder],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -19,6 +21,6 @@ class DataHashGenerator
         $zipCode = $data['dest_zip'];
         $conditionValue = $data['condition_value'];
 
-        return sprintf("%s-%d-%s-%F", $countryId, $regionId, $zipCode, $conditionValue);
+        return sprintf('%s-%d-%s-%F', $countryId, $regionId, $zipCode, $conditionValue);
     }
 }

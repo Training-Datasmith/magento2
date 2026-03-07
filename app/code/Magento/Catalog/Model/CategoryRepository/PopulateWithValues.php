@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\CategoryRepository;
 
+use Magento\Catalog\Api\CategoryAttributeRepositoryInterface as AttributeRepository;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Attribute\ScopeOverriddenValue;
 use Magento\Catalog\Model\Category;
-use Magento\Catalog\Api\CategoryAttributeRepositoryInterface as AttributeRepository;
 use Magento\Eav\Api\Data\AttributeInterface;
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Api\FilterBuilder;
@@ -139,7 +140,7 @@ class PopulateWithValues implements ResetAfterRequestInterface
                         ->setField('is_global')
                         ->setConditionType('in')
                         ->setValue([ScopedAttributeInterface::SCOPE_STORE, ScopedAttributeInterface::SCOPE_WEBSITE])
-                        ->create()
+                        ->create(),
                 ]
             )->create()
         );

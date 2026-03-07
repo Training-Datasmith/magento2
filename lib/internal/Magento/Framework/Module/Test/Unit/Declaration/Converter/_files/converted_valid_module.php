@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,5 +21,5 @@ return [
         'name' => 'Module_Two',
         'setup_version' => null,
         'sequence' => ['Module_One'],
-    ]
+    ],
 ];

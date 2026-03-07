@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Preferences for classes like in di.xml (for integration tests)
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-use \Magento\Framework\App;
-use \Magento\Framework as MF;
-use \Magento\TestFramework as TF;
+use Magento\Framework\App;
+use Magento\Framework as MF;
+use Magento\TestFramework as TF;
 
 return [
     MF\Stdlib\CookieManagerInterface::class => TF\CookieManager::class,
@@ -26,5 +28,5 @@ return [
     App\ResourceConnection\ConfigInterface::class => App\ResourceConnection\Config::class,
     MF\Lock\Backend\Database::class => TF\Lock\Backend\DummyLocker::class,
     MF\Session\SessionStartChecker::class => TF\Session\SessionStartChecker::class,
-    MF\HTTP\AsyncClientInterface::class => TF\HTTP\AsyncClientInterfaceMock::class
+    MF\HTTP\AsyncClientInterface::class => TF\HTTP\AsyncClientInterfaceMock::class,
 ];

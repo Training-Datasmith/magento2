@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\CatalogGraphQl\Test\Unit\Model\Resolver\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Exception;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Gallery\Entry;
 use Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery;
+use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\GraphQl\Config\Element\Field;
 
 class MediaGalleryTest extends TestCase
 {
@@ -67,7 +68,7 @@ class MediaGalleryTest extends TestCase
         $existingEntryMock = $this->createPartialMock(Entry::class, ['getExtensionAttributes']);
         $existingEntryMock->method('getExtensionAttributes')->willReturn(false);
         $existingEntryMock->setData($expected);
-        
+
         $this->productMock->method('getName')->willReturn($productName);
         $this->productMock->method('getMediaGalleryEntries')->willReturn([$existingEntryMock]);
         $result = $this->mediaGallery->resolve(
@@ -75,7 +76,7 @@ class MediaGalleryTest extends TestCase
             $this->contextMock,
             $this->infoMock,
             [
-                'model' => $this->productMock
+                'model' => $this->productMock,
             ],
             []
         );
@@ -91,34 +92,34 @@ class MediaGalleryTest extends TestCase
         return [
             [
                 [
-                    "file" => "/w/b/wb01-black-0.jpg",
-                    "media_type" => "image",
-                    "label" => null,
-                    "position" => "1",
-                    "disabled" => "0",
-                    "types" => [
-                        "image",
-                        "small_image"
+                    'file' => '/w/b/wb01-black-0.jpg',
+                    'media_type' => 'image',
+                    'label' => null,
+                    'position' => '1',
+                    'disabled' => '0',
+                    'types' => [
+                        'image',
+                        'small_image',
                     ],
-                    "id" => "11"
+                    'id' => '11',
                 ],
-                "TestImage"
+                'TestImage',
             ],
             [
                 [
-                    "file" => "/w/b/wb01-black-0.jpg",
-                    "media_type" => "image",
-                    "label" => "HelloWorld",
-                    "position" => "1",
-                    "disabled" => "0",
-                    "types" => [
-                        "image",
-                        "small_image"
+                    'file' => '/w/b/wb01-black-0.jpg',
+                    'media_type' => 'image',
+                    'label' => 'HelloWorld',
+                    'position' => '1',
+                    'disabled' => '0',
+                    'types' => [
+                        'image',
+                        'small_image',
                     ],
-                    "id" => "11"
+                    'id' => '11',
                 ],
-                "HelloWorld"
-            ]
+                'HelloWorld',
+            ],
         ];
     }
 }

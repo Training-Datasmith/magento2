@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHe
 use Magento\Framework\View\Result\Layout;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Theme\Controller\Result\JsFooterPlugin;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Unit test for Magento\Theme\Test\Unit\Controller\Result\JsFooterPlugin.
@@ -50,7 +51,7 @@ class JsFooterPluginTest extends TestCase
         $this->plugin = $objectManager->getObject(
             JsFooterPlugin::class,
             [
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -64,27 +65,27 @@ class JsFooterPluginTest extends TestCase
     {
         return [
             'content_with_script_tag' => [
-                "content" => "<body><h1>Test Title</h1>" .
-                    "<script type=\"text/x-magento-init\">test</script>" .
-                    "<script type=\"text/x-magento-template\">test</script>" .
-                    "<p>Test Content</p></body>",
-                "isSetFlag" => true,
-                "result" => "<body><h1>Test Title</h1>" .
-                    "<script type=\"text/x-magento-template\">test</script>" .
+                'content' => '<body><h1>Test Title</h1>' .
+                    '<script type="text/x-magento-init">test</script>' .
+                    '<script type="text/x-magento-template">test</script>' .
+                    '<p>Test Content</p></body>',
+                'isSetFlag' => true,
+                'result' => '<body><h1>Test Title</h1>' .
+                    '<script type="text/x-magento-template">test</script>' .
                     "<p>Test Content</p>\n" .
                     "<script type=\"text/x-magento-init\">test</script>\n" .
-                    "</body>"
+                    '</body>',
             ],
             'content_with_config_disable' => [
-                "content" => "<body><p>Test Content</p></body>",
-                "isSetFlag" => false,
-                "result" => "<body><p>Test Content</p></body>"
+                'content' => '<body><p>Test Content</p></body>',
+                'isSetFlag' => false,
+                'result' => '<body><p>Test Content</p></body>',
             ],
             'content_without_script_tag' => [
-                "content" => "<body><p>Test Content</p></body>",
-                "isSetFlag" => true,
-                "result" => "<body><p>Test Content</p>\n</body>"
-            ]
+                'content' => '<body><p>Test Content</p></body>',
+                'isSetFlag' => true,
+                'result' => "<body><p>Test Content</p>\n</body>",
+            ],
         ];
     }
 
@@ -125,8 +126,8 @@ class JsFooterPluginTest extends TestCase
     {
         return [
             'null' => [
-                'content' => null
-            ]
+                'content' => null,
+            ],
         ];
     }
 

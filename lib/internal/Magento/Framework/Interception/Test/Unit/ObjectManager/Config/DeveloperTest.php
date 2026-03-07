@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class DeveloperTest extends TestCase
      *
      * @return void
      */
-    public function testGetInstanceTypeWithPluginOnVirtualTypeParent() : void
+    public function testGetInstanceTypeWithPluginOnVirtualTypeParent(): void
     {
         $reflectionClass = new \ReflectionClass(get_class($this->model));
         $reflectionProperty = $reflectionClass->getProperty('_virtualTypes');

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test for \Magento\Framework\Model\ResourceModel
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model;
 
 class ResourceTest extends \PHPUnit\Framework\TestCase
@@ -59,7 +62,7 @@ class ResourceTest extends \PHPUnit\Framework\TestCase
                     'host' => 'host',
                     'type' => 'type',
                     'dbname' => 'dbname',
-                ]
+                ],
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer;
 
 use Magento\Store\Model\ScopeInterface;
@@ -16,12 +19,12 @@ abstract class AbstractFlatState
     /**
      * Indexer ID in configuration
      */
-    const INDEXER_ID = '';
+    public const INDEXER_ID = '';
 
     /**
      * Flat Is Enabled Config XML Path
      */
-    const INDEXER_ENABLED_XML_PATH = '';
+    public const INDEXER_ENABLED_XML_PATH = '';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

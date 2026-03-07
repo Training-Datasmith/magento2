@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -129,7 +130,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('US'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreUsCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreUsCountryResponse['body']);
@@ -140,7 +141,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('US'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreUsCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreUsCountryResponseHit['body']);
@@ -161,7 +162,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreDeCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreDeCountryResponse['body']);
@@ -173,7 +174,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreDeCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreDeCountryResponseHit['body']);
@@ -226,10 +227,10 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
         $this->assertNotEquals($testStoreCacheId, $defaultStoreCacheId);
         // Verify we obtain a cache MISS at the 1st time
         $testStoreUsCountryResponse = $this->assertCacheMissAndReturnResponse(
-            $this->getQuery("US"),
+            $this->getQuery('US'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreUsCountryResponse['body']);
@@ -247,10 +248,10 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
         $testStoreDeCountryCacheId = $responseTestStoreDeCountry['headers'][CacheIdCalculator::CACHE_ID_HEADER];
         // Verify we obtain a cache MISS at the 1st time
         $testStoreDeCountryResponse = $this->assertCacheMissAndReturnResponse(
-            $this->getQuery("DE"),
+            $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreDeCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreDeCountryResponse['body']);
@@ -273,10 +274,10 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
         // Query test store DE country after test store country config is changed
         // Verify we obtain a cache MISS at the 2nd time
         $testStoreDeCountryResponse = $this->assertCacheMissAndReturnResponse(
-            $this->getQuery("DE"),
+            $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreDeCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreDeCountryResponse['body']);
@@ -284,10 +285,10 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
         $this->assertEquals('DE', $testStoreDeCountryResponseResult['id']);
         // Verify we obtain a cache HIT at the 3rd time
         $testStoreDeCountryResponseHit = $this->assertCacheHitAndReturnResponse(
-            $this->getQuery("DE"),
+            $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreDeCountryCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $testStoreDeCountryResponseHit['body']);
@@ -302,7 +303,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('US'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $testStoreCacheId,
-                'Store' => $testStoreCode
+                'Store' => $testStoreCode,
             ]
         );
     }
@@ -351,7 +352,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -369,7 +370,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -389,7 +390,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -397,7 +398,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -414,7 +415,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreDeCountryCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $secondStoreDeCountryResponse['body']);
@@ -425,7 +426,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreDeCountryCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $secondStoreDeCountryResponseHit['body']);
@@ -438,7 +439,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -446,7 +447,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -463,7 +464,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreDeCountryCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $thirdStoreDeCountryResponse['body']);
@@ -474,7 +475,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $this->getQuery('DE'),
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreDeCountryCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         $this->assertArrayHasKey('country', $thirdStoreDeCountryResponseHit['body']);
@@ -524,7 +525,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -542,7 +543,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
 
@@ -567,7 +568,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -575,7 +576,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $secondStoreCacheId,
-                'Store' => $secondStoreCode
+                'Store' => $secondStoreCode,
             ]
         );
 
@@ -585,7 +586,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
         // Verify we obtain a cache HIT at the 3rd time
@@ -593,7 +594,7 @@ class CountryCacheTest extends GraphQLPageCacheAbstract
             $query,
             [
                 CacheIdCalculator::CACHE_ID_HEADER => $thirdStoreCacheId,
-                'Store' => $thirdStoreCode
+                'Store' => $thirdStoreCode,
             ]
         );
     }
@@ -667,13 +668,13 @@ QUERY;
                 'path' => $path,
                 'value' => $this->configStorage->getValueFromDb($path, $scopeType, $scopeCode),
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         } else {
             $this->notExistingOrigConfigs[] = [
                 'path' => $path,
                 'scopeType' => $scopeType,
-                'scopeCode' => $scopeCode
+                'scopeCode' => $scopeCode,
             ];
         }
         $this->config->setValue($path, $value, $scopeType, $scopeCode);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -18,8 +19,8 @@ use Magento\Framework\App\Config\Value;
 use Magento\Framework\App\ScopeInterface;
 use Magento\Framework\App\ScopeResolver;
 use Magento\Framework\App\ScopeResolverPool;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface as StoreScopeInterface;
 use Magento\Store\Model\ScopeTypeNormalizer;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -115,7 +116,7 @@ class PreparedValueFactoryTest extends TestCase
             Value::class,
             [
                 'setPath', 'setScope', 'setScopeId', 'setValue', 'setField',
-                'setGroupId', 'setFieldConfig', 'setScopeCode'
+                'setGroupId', 'setFieldConfig', 'setScopeCode',
             ]
         );
         $this->configMock = $this->createMock(ScopeConfigInterface::class);

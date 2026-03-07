@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Indexer\Model\ResourceModel\Indexer;
 
 use Magento\Framework\Indexer\StateInterface;
@@ -36,7 +39,7 @@ class State extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 [
                     StateInterface::STATUS_WORKING,
                     StateInterface::STATUS_SUSPENDED,
-                    StateInterface::STATUS_INVALID
+                    StateInterface::STATUS_INVALID,
                 ]
             );
             $data['status'] = $this->getConnection()->getCheckSql(

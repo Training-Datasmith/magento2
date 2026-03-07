@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Framework\Data\Form;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\TestCase;
 
 class RegionTest extends TestCase
 {
@@ -88,7 +89,7 @@ class RegionTest extends TestCase
                 'toOptionArray',
                 'setId',
                 'getLoadedRegionCollection',
-                '__wakeup'
+                '__wakeup',
             ]
         );
         $formMock = $this->createPartialMock(Form::class, ['getElement']);
@@ -161,7 +162,7 @@ class RegionTest extends TestCase
                     new DataObject(['value' => 'Bavaria']),
                     new DataObject(['value' => 'Saxony']),
                 ],
-            ]
+            ],
         ];
     }
 }

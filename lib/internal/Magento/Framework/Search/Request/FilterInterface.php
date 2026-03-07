@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Search\Request;
 
 /**
@@ -16,13 +19,13 @@ interface FilterInterface
     /**
      * #@+ Filter Types
      */
-    const TYPE_TERM = 'termFilter';
+    public const TYPE_TERM = 'termFilter';
 
-    const TYPE_BOOL = 'boolFilter';
+    public const TYPE_BOOL = 'boolFilter';
 
-    const TYPE_RANGE = 'rangeFilter';
+    public const TYPE_RANGE = 'rangeFilter';
 
-    const TYPE_WILDCARD = 'wildcardFilter';
+    public const TYPE_WILDCARD = 'wildcardFilter';
 
     /**#@-*/
 

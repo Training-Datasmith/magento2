@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model\Payflow\Service\Response\Handler;
 
 use Magento\Framework\DataObject;
@@ -18,7 +21,7 @@ class CreditCardValidationHandler implements HandlerInterface
         Info::PAYPAL_CVV2MATCH,
         Info::PAYPAL_AVSZIP,
         Info::PAYPAL_AVSADDR,
-        Info::PAYPAL_IAVS
+        Info::PAYPAL_IAVS,
     ];
 
     /**

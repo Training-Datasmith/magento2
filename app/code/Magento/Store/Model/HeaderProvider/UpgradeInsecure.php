@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,7 +8,7 @@
 
 namespace Magento\Store\Model\HeaderProvider;
 
-use \Magento\Store\Model\Store;
+use Magento\Store\Model\Store;
 
 /**
  * Adds an Content-Security-Policy header to HTTP responses.

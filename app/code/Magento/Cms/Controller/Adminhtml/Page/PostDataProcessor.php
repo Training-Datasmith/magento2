@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Controller\Adminhtml\Page;
 
+use Magento\Cms\Model\Page\CustomLayout\CustomLayoutValidator;
 use Magento\Cms\Model\Page\DomValidationState;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Config\Dom\ValidationException;
 use Magento\Framework\Config\Dom\ValidationSchemaException;
-use Magento\Cms\Model\Page\CustomLayout\CustomLayoutValidator;
 use Magento\Framework\Filter\FilterInput;
 
 /**
@@ -124,7 +127,7 @@ class PostDataProcessor
         $requiredFields = [
             'title' => __('Page Title'),
             'stores' => __('Store View'),
-            'is_active' => __('Status')
+            'is_active' => __('Status'),
         ];
         $errorNo = true;
         foreach ($data as $field => $value) {

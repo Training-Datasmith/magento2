@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -114,7 +115,7 @@ class SubscribeEmailToNewsletter implements ResolverInterface
         }
 
         return [
-            'status' => $status
+            'status' => $status,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -100,7 +101,7 @@ class CacheTest extends TestCase
         $imageItem = $this->objectManager->getObject(
             DataObject::class,
             [
-                'data' => ['file' => $imageFile]
+                'data' => ['file' => $imageFile],
             ]
         );
         $this->mediaGalleryCollection->expects($this->once())
@@ -139,19 +140,19 @@ class CacheTest extends TestCase
                     $this->product,
                     'product_image',
                     $this->getImageData('product_image'),
-                    $this->imageHelper
+                    $this->imageHelper,
                 ],
                 [
                     $this->product,
                     'product_small_image',
                     $this->getImageData('product_small_image'),
-                    $this->imageHelper
+                    $this->imageHelper,
                 ],
                 [
                     $this->product,
                     'product_thumbnail',
                     $this->getImageData('product_thumbnail'),
-                    $this->imageHelper
+                    $this->imageHelper,
                 ],
             ]);
         $this->imageHelper->expects($this->exactly(3))

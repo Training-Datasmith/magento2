@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -139,7 +140,7 @@ class Customer implements RevertibleDataFixtureInterface
         $customerSaveService->execute(
             [
                 'customer' => $data,
-                'passwordHash' => $passwordHash
+                'passwordHash' => $passwordHash,
             ]
         );
         return $this->customerRegistry->retrieveByEmail($data['email'], $data['website_id']);
@@ -154,7 +155,7 @@ class Customer implements RevertibleDataFixtureInterface
         $service = $this->serviceFactory->create(CustomerRepositoryInterface::class, 'deleteById');
         $service->execute(
             [
-                'customerId' => $data->getId()
+                'customerId' => $data->getId(),
             ]
         );
     }

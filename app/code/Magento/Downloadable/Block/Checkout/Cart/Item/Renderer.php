@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Shopping cart downloadable item render block
  */
+
 namespace Magento\Downloadable\Block\Checkout\Cart\Item;
 
 use Magento\Framework\Pricing\PriceCurrencyInterface;

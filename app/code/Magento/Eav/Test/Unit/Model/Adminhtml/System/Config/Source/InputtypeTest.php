@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class InputtypeTest extends TestCase
             ['value' => 'date', 'label' => 'Date'],
             ['value' => 'boolean', 'label' => 'Yes/No'],
             ['value' => 'multiselect', 'label' => 'Multiple Select'],
-            ['value' => 'select', 'label' => 'Dropdown']
+            ['value' => 'select', 'label' => 'Dropdown'],
         ];
     }
 }

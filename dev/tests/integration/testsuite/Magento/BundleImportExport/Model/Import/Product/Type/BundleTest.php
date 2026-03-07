@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\BundleImportExport\Model\Import\Product\Type;
 
 use Magento\Bundle\Test\Fixture\Link as BundleSelectionFixture;
@@ -17,6 +20,7 @@ use Magento\CatalogInventory\Api\Data\StockItemInterface;
 use Magento\CatalogInventory\Api\StockConfigurationInterface;
 use Magento\CatalogInventory\Api\StockItemCriteriaInterfaceFactory;
 use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filesystem;
 use Magento\ImportExport\Model\Import;
@@ -28,11 +32,10 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\TestFramework\Fixture\DbIsolation;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\TestFramework\Fixture\ScopeFixture;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @magentoAppArea adminhtml
@@ -362,14 +365,14 @@ class BundleTest extends \Magento\TestFramework\Indexer\TestCase
                 true,
                 true,
                 'outOfStockImportFile' => 'import_bundle_set_option1_products_out_of_stock.csv',
-                'inStockImportFile' => 'import_bundle_set_option1_products_in_stock.csv'
+                'inStockImportFile' => 'import_bundle_set_option1_products_in_stock.csv',
             ],
             'all options are optional' => [
                 false,
                 false,
                 'outOfStockImportFile' => 'import_bundle_set_all_products_out_of_stock.csv',
-                'inStockImportFile' => 'import_bundle_set_option1_products_in_stock.csv'
-            ]
+                'inStockImportFile' => 'import_bundle_set_option1_products_in_stock.csv',
+            ],
         ];
     }
 
@@ -401,9 +404,9 @@ class BundleTest extends \Magento\TestFramework\Indexer\TestCase
                             ',price_website_base=40.000000,price_type_website_base=percent' .
                             '|name=opt2,type=select,required=1,sku=bundle_child_2,price=20.0000' .
                             ',default=0,default_qty=1.0000,price_type=percent,can_change_qty=0' .
-                            ',price_website_base=50.000000,price_type_website_base=percent'
-                    ]
-                ]
+                            ',price_website_base=50.000000,price_type_website_base=percent',
+                    ],
+                ],
             ],
             'importFile',
         ),
@@ -414,13 +417,13 @@ class BundleTest extends \Magento\TestFramework\Indexer\TestCase
         $pathToFile = $fixtures->get('importFile')->getAbsolutePath();
         $sku = $fixtures->get('bundle')->getSku();
         $store = $fixtures->get('default_store');
-        
+
         // import data from CSV file
         $errors = $this->doImport($pathToFile, Import::BEHAVIOR_APPEND);
         $this->assertEquals(0, $errors->getErrorsCount());
         /** @var ProductRepositoryInterface $productRepository */
         $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
-        
+
         // verify selection prices in default scope
         /** @var ProductInterface $product */
         $product = $productRepository->get($sku, false, 0, true);
@@ -430,7 +433,7 @@ class BundleTest extends \Magento\TestFramework\Indexer\TestCase
         $this->assertEquals(0, $options[0]->getProductLinks()[0]->getPriceType());
         $this->assertEquals(20, $options[1]->getProductLinks()[0]->getPrice());
         $this->assertEquals(1, $options[1]->getProductLinks()[0]->getPriceType());
-        
+
         // verify selection prices in default store
         $product = $productRepository->get($sku, false, $store->getId(), true);
         $options = $product->getExtensionAttributes()->getBundleProductOptions();

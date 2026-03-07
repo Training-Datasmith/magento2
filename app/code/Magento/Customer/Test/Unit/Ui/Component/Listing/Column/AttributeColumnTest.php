@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -65,25 +66,25 @@ class AttributeColumnTest extends TestCase
             'data' => [
                 'items' => [
                     [
-                        'name' => 'testName'
+                        'name' => 'testName',
                     ],
                     [
-                        'gender' => $genderOptionId
-                    ]
-                ]
-            ]
+                        'gender' => $genderOptionId,
+                    ],
+                ],
+            ],
         ];
         $expectedSource = [
             'data' => [
                 'items' => [
                     [
-                        'name' => 'testName'
+                        'name' => 'testName',
                     ],
                     [
-                        'gender' => $genderOptionLabel
-                    ]
-                ]
-            ]
+                        'gender' => $genderOptionLabel,
+                    ],
+                ],
+            ],
         ];
 
         $this->attributeRepository->expects($this->once())
@@ -97,8 +98,8 @@ class AttributeColumnTest extends TestCase
                 'options' => [
                     [
                         'label' => $genderOptionLabel,
-                        'value' => $genderOptionId
-                    ]
+                        'value' => $genderOptionId,
+                    ],
                 ],
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,

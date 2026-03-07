@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ QRY;
         DataFixture(
             Attribute::class,
             [
-                'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER
+                'entity_type_id' => CustomerMetadataInterface::ATTRIBUTE_SET_ID_CUSTOMER,
             ],
             'attribute'
         )
@@ -64,11 +65,11 @@ QRY;
                             'frontend_input' => 'TEXT',
                             'is_required' => false,
                             'default_value' => $attribute->getDefaultValue(),
-                            'is_unique' => false
-                        ]
+                            'is_unique' => false,
+                        ],
                     ],
-                    'errors' => []
-                ]
+                    'errors' => [],
+                ],
             ],
             $this->graphQlQuery(sprintf(self::QUERY, $attribute->getAttributeCode(), 'customer'))
         );
@@ -83,10 +84,10 @@ QRY;
                     'errors' => [
                         [
                             'type' => 'ENTITY_NOT_FOUND',
-                            'message' => 'Entity "non_existing_entity_type" could not be found.'
-                        ]
-                    ]
-                ]
+                            'message' => 'Entity "non_existing_entity_type" could not be found.',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 sprintf(
@@ -107,10 +108,10 @@ QRY;
                     'errors' => [
                         [
                             'type' => 'ATTRIBUTE_NOT_FOUND',
-                            'message' => 'Attribute code "non_existing_code" could not be found.'
-                        ]
-                    ]
-                ]
+                            'message' => 'Attribute code "non_existing_code" could not be found.',
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 sprintf(

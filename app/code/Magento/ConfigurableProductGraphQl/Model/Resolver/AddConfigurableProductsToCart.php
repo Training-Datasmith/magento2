@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,12 +10,12 @@ namespace Magento\ConfigurableProductGraphQl\Model\Resolver;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
+use Magento\Quote\Model\QuoteMutexInterface;
 use Magento\QuoteGraphQl\Model\Cart\AddProductsToCart;
 use Magento\QuoteGraphQl\Model\Cart\GetCartForUser;
-use Magento\Quote\Model\QuoteMutexInterface;
-use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
 
 /**
  * Add configurable products to cart GraphQl resolver

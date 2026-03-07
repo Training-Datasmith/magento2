@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\App\Language;
 
 use Magento\Framework\App\Utility\Files;
 use Magento\Framework\Component\ComponentRegistrar;
+use Magento\Framework\Filesystem\Driver\File;
 use Magento\Setup\Module\I18n\Dictionary\Options\ResolverFactory;
 use Magento\Setup\Module\I18n\Locale;
 use Magento\Setup\Module\I18n\Pack\Writer\File\Csv;
-use Magento\Framework\Filesystem\Driver\File;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -105,7 +108,7 @@ class TranslationFilesTest extends TranslationFiles
         $phraseCollector = new \Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer\PhraseCollector(
             new \Magento\Setup\Module\I18n\Parser\Adapter\Php\Tokenizer()
         );
-        $fileSystem = new File;
+        $fileSystem = new File();
         $adapters = [
             'php' => new \Magento\Setup\Module\I18n\Parser\Adapter\Php($phraseCollector),
             'js' =>  new \Magento\Setup\Module\I18n\Parser\Adapter\Js($fileSystem),

@@ -74,7 +74,7 @@ class FraudHandlerTest extends TestCase
                 [
                     [FraudHandler::RESPONSE_MESSAGE, null, $message],
                     [FraudHandler::FRAUD_RULES_XML, null, $rulesString],
-                    ['result', null, Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER]
+                    ['result', null, Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER],
                 ]
             );
 
@@ -86,7 +86,7 @@ class FraudHandlerTest extends TestCase
             ->method('importToPayment')
             ->with(
                 [
-                    Info::FRAUD_FILTERS => $expectedMessage
+                    Info::FRAUD_FILTERS => $expectedMessage,
                 ]
             );
 
@@ -104,23 +104,23 @@ class FraudHandlerTest extends TestCase
                 'New fraud message',
                 '<?xml version="1.0"?>',
                 ['RESPMSG' => 'Existing fraud message'],
-                ['RESPMSG' => 'Existing fraud message']
+                ['RESPMSG' => 'Existing fraud message'],
             ],
             [
                 'New fraud message',
                 self::getRulesXmlString(),
                 [
                     'Total Purchase Price Ceiling' => 'Existing fraud message',
-                    'RESPMSG' => 'Existing fraud message'
+                    'RESPMSG' => 'Existing fraud message',
                 ],
                 array_merge(
                     self::getRulesExpectedDictionary(),
                     [
                         'Total Purchase Price Ceiling' => 'Existing fraud message',
-                        'RESPMSG' => 'Existing fraud message'
+                        'RESPMSG' => 'Existing fraud message',
                     ]
-                )
-            ]
+                ),
+            ],
         ];
     }
 
@@ -149,7 +149,7 @@ class FraudHandlerTest extends TestCase
             'Shipping/BillingMismatch' => 'Thebilling and shipping addresses did not match',
             'BIN Risk List Match' => 'The card number is in a high risk bin list',
             'Zip Risk List Match' => 'High risk shipping zip',
-            'USPS Address Validation Failure' => 'The billing address is not a valid USAddress'
+            'USPS Address Validation Failure' => 'The billing address is not a valid USAddress',
         ];
     }
 
@@ -167,7 +167,7 @@ class FraudHandlerTest extends TestCase
                 [
                     [FraudHandler::RESPONSE_MESSAGE, null, 'New fraud message'],
                     [FraudHandler::FRAUD_RULES_XML, null, $rulesString],
-                    ['result', null, Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER]
+                    ['result', null, Payflowpro::RESPONSE_CODE_FRAUDSERVICE_FILTER],
                 ]
             );
         $this->paymentMock->expects($this->once())
@@ -176,7 +176,7 @@ class FraudHandlerTest extends TestCase
             ->willReturn(
                 [
                     'Total Purchase Price Ceiling' => 'Existing fraud message',
-                    'RESPMSG' => 'Existing fraud message'
+                    'RESPMSG' => 'Existing fraud message',
                 ]
             );
 
@@ -186,8 +186,8 @@ class FraudHandlerTest extends TestCase
                 [
                     Info::FRAUD_FILTERS => [
                         'RESPMSG' => 'Existing fraud message',
-                        'Total Purchase Price Ceiling' => 'Existing fraud message'
-                    ]
+                        'Total Purchase Price Ceiling' => 'Existing fraud message',
+                    ],
                 ]
             );
 

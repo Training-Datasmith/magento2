@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class MsrpPrice extends FinalPrice implements MsrpPriceInterface
     /**
      * Price type MSRP
      */
-    const PRICE_CODE = 'msrp_price';
+    public const PRICE_CODE = 'msrp_price';
 
     /**
      * @var \Magento\Msrp\Helper\Data

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App;
 
 /**
@@ -15,9 +18,9 @@ interface TemplateTypesInterface
     /**
      * Types of template
      */
-    const TYPE_TEXT = 1;
+    public const TYPE_TEXT = 1;
 
-    const TYPE_HTML = 2;
+    public const TYPE_HTML = 2;
 
     /**
      * Return true if template type eq text

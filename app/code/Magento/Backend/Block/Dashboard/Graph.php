@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -184,7 +185,7 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
             'chm' => 'B,f4d4b2,0,0,0',
             'chco' => 'db4814',
             'chxs' => '0,0,11|1,0,11',
-            'chma' => '15,15,15,15'
+            'chma' => '15,15,15,15',
         ];
 
         $this->_allSeries = $this->getRowsData($this->_dataRows);
@@ -273,10 +274,10 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
         $this->_allSeries = $datas;
 
         // Image-Charts Awesome data format values
-        $params['chd'] = "a:";
-        $dataDelimiter = ",";
-        $dataSetdelimiter = "|";
-        $dataMissing = "_";
+        $params['chd'] = 'a:';
+        $dataDelimiter = ',';
+        $dataSetdelimiter = '|';
+        $dataMissing = '_';
 
         // process each string in the array, and find the max length
         $localmaxvalue = [0];
@@ -337,7 +338,7 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
         if (count($this->_axisLabels) > 0) {
             $params['chxt'] = implode(',', array_keys($this->_axisLabels));
             $this->formatAxisLabelDate($xAxis, (string)$timezoneLocal);
-            $customAxisLabels = $xAxisIndex . ":|" . implode('|', $this->_axisLabels[$xAxis]);
+            $customAxisLabels = $xAxisIndex . ':|' . implode('|', $this->_axisLabels[$xAxis]);
             $params['chxl'] = $customAxisLabels . $dataSetdelimiter;
         }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -164,7 +166,7 @@ class Pool implements \Iterator
             throw new \InvalidArgumentException(
                 "Cache frontend '{$identifier}' is not recognized. As well as " .
                 self::DEFAULT_FRONTEND_ID .
-                "cache is not configured"
+                'cache is not configured'
             );
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Invoice\Item;
 use Magento\Sales\Model\Order\Invoice\Total\Tax;
 use Magento\Sales\Model\Order\Item as OrderItem;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class TaxTest extends TestCase
 {
@@ -51,7 +52,7 @@ class TaxTest extends TestCase
         $this->model = $this->objectManager->getObject(Tax::class);
 
         $this->order = $this->createPartialMock(Order::class, [
-            'getInvoiceCollection'
+            'getInvoiceCollection',
         ]);
 
         $this->invoice = $this->createPartialMock(Invoice::class, [
@@ -368,7 +369,7 @@ class TaxTest extends TestCase
     {
         /** @var OrderItem|MockObject $orderItem */
         $orderItem = $this->createPartialMock(OrderItem::class, [
-            'isDummy'
+            'isDummy',
         ]);
         foreach ($invoiceItemData['order_item'] as $key => $value) {
             $orderItem->setData($key, $value);
@@ -377,7 +378,7 @@ class TaxTest extends TestCase
         /** @var Item|MockObject $invoiceItem */
         $invoiceItem = $this->createPartialMock(Item::class, [
             'getOrderItem',
-            'isLast'
+            'isLast',
         ]);
         $invoiceItem->expects($this->any())->method('getOrderItem')->willReturn($orderItem);
         $invoiceItem->expects($this->any())

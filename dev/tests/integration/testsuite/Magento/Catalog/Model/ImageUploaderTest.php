@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\MediaStorage\Model\File\Storage;
 use Magento\MediaStorage\Helper\File\Storage\Database;
+use Magento\MediaStorage\Model\File\Storage;
 use Magento\MediaStorage\Model\File\Storage\Directory\DatabaseFactory;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for the \Magento\Catalog\Model\ImageUploader class
@@ -72,7 +73,7 @@ class ImageUploaderTest extends TestCase
                 'basePath' => self::BASE_PATH,
                 'coreFileStorageDatabase' => $dbStorage,
                 'allowedExtensions' => ['jpg', 'jpeg', 'gif', 'png'],
-                'allowedMimeTypes' => ['image/jpg', 'image/jpeg', 'image/gif', 'image/png']
+                'allowedMimeTypes' => ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'],
             ]
         );
     }
@@ -157,7 +158,7 @@ class ImageUploaderTest extends TestCase
         $storage->synchronize(
             [
                 'type' => 1,
-                'connection' => 'default_setup'
+                'connection' => 'default_setup',
             ]
         );
         // Upload file.
@@ -191,7 +192,7 @@ class ImageUploaderTest extends TestCase
 
         $fileName = 'text.txt';
         $filePath = $this->tmpDirectory->getAbsolutePath($fileName);
-        $file = fopen($filePath, "wb");
+        $file = fopen($filePath, 'wb');
         fwrite($file, 'just a text');
 
         $_FILES['image'] = [
@@ -217,7 +218,7 @@ class ImageUploaderTest extends TestCase
 
         $fileName = 'file.gif';
         $filePath = $this->tmpDirectory->getAbsolutePath($fileName);
-        $file = fopen($filePath, "wb");
+        $file = fopen($filePath, 'wb');
         fwrite($file, 'just a text');
 
         $_FILES['image'] = [

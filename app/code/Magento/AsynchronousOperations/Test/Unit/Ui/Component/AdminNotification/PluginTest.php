@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -41,11 +42,11 @@ class PluginTest extends TestCase
                 'arguments' => [
                     'data' => [
                         'config' => [
-                            'isAllowed' => true
-                        ]
-                    ]
-                ]
-            ]
+                            'isAllowed' => true,
+                        ],
+                    ],
+                ],
+            ],
         ];
         $dataProviderMock = $this->createMock(DataProvider::class);
         $this->authorizationMock->expects($this->once())->method('isAllowed')->willReturn(true);

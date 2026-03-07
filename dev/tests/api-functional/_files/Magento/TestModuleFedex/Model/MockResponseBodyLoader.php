@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 namespace Magento\TestModuleFedex\Model;
 
 use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\Module\Dir;
-use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Stdlib\ArrayManager;
 
 /**
@@ -77,9 +78,9 @@ class MockResponseBodyLoader
         return $this->fileIo->read($responsePath);
     }
 
-     /**
-      * Load mock json response for a given request
-      */
+    /**
+     * Load mock json response for a given request
+     */
     public function loadForAuthRequest()
     {
         $moduleDir = $this->moduleDirectory->getDir('Magento_TestModuleFedex');

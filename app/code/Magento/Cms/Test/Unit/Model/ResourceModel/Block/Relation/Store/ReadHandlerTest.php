@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Test\Unit\Model\ResourceModel\Block\Relation\Store;
 
+use Magento\Cms\Model\Block as CmsModelBlock;
 use Magento\Cms\Model\ResourceModel\Block;
 use Magento\Cms\Model\ResourceModel\Block\Relation\Store\ReadHandler;
-use Magento\Cms\Model\Block as CmsModelBlock;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

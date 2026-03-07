@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\HTTP\AsyncClient\HttpResponseDeferredInterface;
 use Magento\Framework\HTTP\AsyncClient\Request;
 use Magento\Framework\HTTP\AsyncClientInterface;
 use Magento\Shipping\Model\Tracking\Result;
-use Magento\Shipping\Model\Rate\Result as RateResult;
 use Magento\Shipping\Model\Tracking\Result\ErrorFactory;
 use Magento\Shipping\Model\Tracking\Result\StatusFactory;
 use Magento\Shipping\Model\Tracking\ResultFactory;
@@ -84,7 +84,7 @@ class TrackingService
      * @param Carrier $carrierModel
      * @return void
      */
-    public function setCarrierModel(Carrier $carrierModel) : void
+    public function setCarrierModel(Carrier $carrierModel): void
     {
         $this->carrierModel = $carrierModel;
     }
@@ -102,7 +102,7 @@ class TrackingService
         $url = $this->carrierModel->getUrl(self::TRACK_REQUEST_END_POINT);
         $accessToken = $this->carrierModel->getOauthAccessRequest();
         $queryParams = [
-            "expand" => "DETAIL"
+            'expand' => 'DETAIL',
         ];
 
         /** @var HttpResponseDeferredInterface[] $trackingResponses */
@@ -117,14 +117,14 @@ class TrackingService
             $trackPayload = json_encode($trackParams);
             $headers = [
                 'Content-Type' => self::CONTENT_TYPE_JSON,
-                'Authorization' => self::AUTHORIZATION_BEARER . $accessToken
+                'Authorization' => self::AUTHORIZATION_BEARER . $accessToken,
             ];
             $debugData[$tracking] = ['request' => $trackPayload];
             try {
                 $trackingResponses[$tracking] = $this->httpClient->request(
                     new Request(
                         $url . '/' . urlencode($tracking) .
-                        "?" . http_build_query($queryParams),
+                        '?' . http_build_query($queryParams),
                         Request::METHOD_GET,
                         $headers,
                         null
@@ -225,7 +225,7 @@ class TrackingService
         $addressArr = array_filter([
             $activityTag['eventCity'] ?? null,
             $activityTag['eventState'] ?? null,
-            $activityTag['eventCountry'] ?? null
+            $activityTag['eventCountry'] ?? null,
         ]);
 
         $eventTimestamp = (new \DateTime((string)$activityTag['eventTimestamp']));
@@ -236,7 +236,7 @@ class TrackingService
             'activity' => (string)$activityTag['eventType'],
             'deliverydate' => $date,
             'deliverytime' => $time,
-            'deliverylocation' => implode(', ', $addressArr)
+            'deliverylocation' => implode(', ', $addressArr),
         ];
     }
 

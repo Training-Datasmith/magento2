@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery;
 
 /**
@@ -20,7 +23,7 @@ abstract class AbstractHandler
         'video_url' => 'url',
         'video_title' => 'title',
         'video_description' => 'description',
-        'video_metadata' => 'metadata'
+        'video_metadata' => 'metadata',
     ];
 
     /**

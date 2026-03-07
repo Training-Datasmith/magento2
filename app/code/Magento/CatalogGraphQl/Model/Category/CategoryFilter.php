@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\CatalogGraphQl\Model\Category;
 
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
-use Magento\CatalogGraphQl\Model\Resolver\Categories\DataProvider\Category\CollectionProcessorInterface;
 use Magento\CatalogGraphQl\Model\Category\Filter\SearchCriteria;
+use Magento\CatalogGraphQl\Model\Resolver\Categories\DataProvider\Category\CollectionProcessorInterface;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 use Magento\Framework\DB\Select;
 use Magento\Framework\Exception\InputException;
@@ -108,7 +109,7 @@ class CategoryFilter
                 'total_pages' => $totalPages,
                 'page_size' => $searchCriteria->getPageSize(),
                 'current_page' => $searchCriteria->getCurrentPage(),
-            ]
+            ],
         ];
     }
 }

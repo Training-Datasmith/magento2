@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class CollectionTest extends TestCase
                 'filesystem' => $filesystem,
                 'backupData' => $backupData,
                 'directoryWrite' => $directoryWrite,
-                'targetDirectory' => $targetDirectory
+                'targetDirectory' => $targetDirectory,
             ]
         );
         $this->assertNotNull($classObject);

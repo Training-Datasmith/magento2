@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,9 +12,9 @@ use Magento\Checkout\Api\Exception\PaymentProcessingRateLimitExceededException;
 use Magento\Checkout\Api\PaymentProcessingRateLimiterInterface;
 use Magento\Checkout\Api\PaymentSavingRateLimiterInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteAddressValidationService;
 use Psr\Log\LoggerInterface as Logger;
@@ -26,7 +27,6 @@ use Psr\Log\LoggerInterface as Logger;
  */
 class GuestPaymentInformationManagement implements \Magento\Checkout\Api\GuestPaymentInformationManagementInterface
 {
-
     /**
      * @var \Magento\Quote\Api\GuestBillingAddressManagementInterface
      */
@@ -157,7 +157,7 @@ class GuestPaymentInformationManagement implements \Magento\Checkout\Api\GuestPa
                 [
                     'quote_id' => $cartId,
                     'exception' => (string)$e,
-                    'is_guest_checkout' => true
+                    'is_guest_checkout' => true,
                 ]
             );
             throw new CouldNotSaveException(
@@ -238,7 +238,7 @@ class GuestPaymentInformationManagement implements \Magento\Checkout\Api\GuestPa
      * @return void
      * @see \Magento\Shipping\Model\Shipping::collectRates
      */
-    private function limitShippingCarrier(Quote $quote) : void
+    private function limitShippingCarrier(Quote $quote): void
     {
         $shippingAddress = $quote->getShippingAddress();
         if ($shippingAddress && $shippingAddress->getShippingMethod()) {

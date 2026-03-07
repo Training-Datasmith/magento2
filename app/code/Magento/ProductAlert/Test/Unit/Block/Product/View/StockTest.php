@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\ProductAlert\Test\Unit\Block\Product\View;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Layout;
 use Magento\ProductAlert\Block\Product\View\Stock;
 use Magento\ProductAlert\Helper\Data;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -147,7 +148,7 @@ class StockTest extends TestCase
         return [
             'stock alert not allowed' => [false, false],
             'product is available (no alert)' => [true, true],
-            'stock alert not allowed and product is available' => [false, true]
+            'stock alert not allowed and product is available' => [false, true],
         ];
     }
 

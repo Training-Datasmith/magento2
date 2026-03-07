@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\ConfigurableProduct\Test\Unit\Plugin\Tax\Model\Sales\Total\Quo
 use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\ConfigurableProduct\Plugin\Tax\Model\Sales\Total\Quote\CommonTaxCollector as CommonTaxCollectorPlugin;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterface;
 use Magento\Tax\Api\Data\QuoteDetailsItemInterfaceFactory;
@@ -58,7 +59,7 @@ class CommonTaxCollectorTest extends TestCase
             ['getTaxClassId']
         );
         $childProductMock->method('getTaxClassId')->willReturn($childTaxClassId);
-        
+
         /* @var AbstractItem|MockObject $childQuoteItemMock */
         $childQuoteItemMock = $this->createPartialMockWithReflection(
             AbstractItem::class,
@@ -72,7 +73,7 @@ class CommonTaxCollectorTest extends TestCase
             ['getTypeId']
         );
         $productMock->method('getTypeId')->willReturn(Configurable::TYPE_CODE);
-        
+
         /* @var AbstractItem|MockObject $quoteItemMock */
         $quoteItemMock = $this->createPartialMockWithReflection(
             AbstractItem::class,

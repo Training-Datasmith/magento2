@@ -1,15 +1,17 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 
 declare(strict_types=1);
+
 namespace Magento\Framework\Setup\Patch;
 
 use Magento\Framework\Module\ModuleList;
-use Magento\Framework\Setup\UpToDateValidatorInterface;
 use Magento\Framework\Setup\DetailProviderInterface;
+use Magento\Framework\Setup\UpToDateValidatorInterface;
 
 /**
  * Allows to validate if data patches is up to date or not
@@ -60,7 +62,7 @@ class UpToDateSchema implements UpToDateValidatorInterface, DetailProviderInterf
      *
      * @return string
      */
-    public function getNotUpToDateMessage() : string
+    public function getNotUpToDateMessage(): string
     {
         return 'Schema patches are not up to date';
     }
@@ -70,7 +72,7 @@ class UpToDateSchema implements UpToDateValidatorInterface, DetailProviderInterf
      *
      * @return bool
      */
-    public function isUpToDate() : bool
+    public function isUpToDate(): bool
     {
         foreach ($this->moduleList->getNames() as $moduleName) {
             foreach ($this->patchReader->read($moduleName) as $patchName) {
@@ -99,7 +101,7 @@ class UpToDateSchema implements UpToDateValidatorInterface, DetailProviderInterf
                     !$this->patchHistory->isApplied($patchName)) {
                     $unappliedPatches[] = [
                         'patch' => $patchName,
-                        'module' => $moduleName
+                        'module' => $moduleName,
                     ];
                 }
             }
@@ -111,7 +113,7 @@ class UpToDateSchema implements UpToDateValidatorInterface, DetailProviderInterf
 
         return [
             'timestamp' => date('Y-m-d H:i:s'),
-            'unapplied_patches' => $unappliedPatches
+            'unapplied_patches' => $unappliedPatches,
         ];
     }
 }

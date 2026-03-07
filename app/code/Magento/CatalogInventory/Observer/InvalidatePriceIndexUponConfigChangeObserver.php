@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\CatalogInventory\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Event\Observer;
-use Magento\CatalogInventory\Model\Configuration;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor;
+use Magento\CatalogInventory\Model\Configuration;
+use Magento\Framework\Event\Observer;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Catalog inventory config changes module observer.

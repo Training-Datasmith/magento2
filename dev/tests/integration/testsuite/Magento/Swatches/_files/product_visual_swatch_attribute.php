@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -48,7 +49,7 @@ if (!$attribute->loadByCode($entityType, 'visual_swatch_attribute')->getAttribut
                 'value' => [
                     'option_1' => ['option 1'],
                     'option_2' => ['option 2'],
-                    'option_3' => ['option 3']
+                    'option_3' => ['option 3'],
                 ],
             ],
             'options' => [

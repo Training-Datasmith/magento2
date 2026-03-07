@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\GraphQlCache\Model;
 
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\RequestInterface;
 use Magento\GraphQlCache\Model\Resolver\IdentityPool;
 
 /**
@@ -56,7 +57,7 @@ class CacheableQueryHandler
      * @param array $cacheAnnotation Eg: ['cacheable' => true, 'cacheTag' => 'someTag', cacheIdentity=>'\Mage\Class']
      * @return void
      */
-    public function handleCacheFromResolverResponse(array $resolvedValue, array $cacheAnnotation) : void
+    public function handleCacheFromResolverResponse(array $resolvedValue, array $cacheAnnotation): void
     {
         $cacheable = $cacheAnnotation['cacheable'] ?? true;
         $cacheIdentityClass = $cacheAnnotation['cacheIdentity'] ?? '';

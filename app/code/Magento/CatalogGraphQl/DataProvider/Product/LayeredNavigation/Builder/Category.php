@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class Category implements LayerBuilderInterface, ResetAfterRequestInterface
     private static $bucketMap = [
         self::CATEGORY_BUCKET => [
             'request_name' => 'category_uid',
-            'label' => 'Category'
+            'label' => 'Category',
         ],
     ];
 
@@ -211,7 +212,7 @@ class Category implements LayerBuilderInterface, ResetAfterRequestInterface
         self::$bucketMap = [
             self::CATEGORY_BUCKET => [
                 'request_name' => 'category_uid',
-                'label' => 'Category'
+                'label' => 'Category',
             ],
         ];
     }

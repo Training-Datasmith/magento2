@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class PreviewTest extends TestCase
             Context::class,
             [
                 'request' => $this->requestMock,
-                'view' => $this->viewMock
+                'view' => $this->viewMock,
             ]
         );
         $this->object = $objectManager->getObject(

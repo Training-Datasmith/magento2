@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\LoginAsCustomerLog\Api\Data\LogInterface;
  */
 class Log extends AbstractDb
 {
-    const TABLE_NAME_LOG = 'magento_login_as_customer_log';
+    public const TABLE_NAME_LOG = 'magento_login_as_customer_log';
 
     /**
      * @inheritdoc

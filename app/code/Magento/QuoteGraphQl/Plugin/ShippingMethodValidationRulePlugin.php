@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -7,10 +8,10 @@ declare(strict_types=1);
 
 namespace Magento\QuoteGraphQl\Plugin;
 
-use Magento\Quote\Model\ValidationRules\ShippingMethodValidationRule;
-use Magento\Quote\Model\Quote;
 use Magento\Framework\Validation\ValidationResult;
 use Magento\Framework\Validation\ValidationResultFactory;
+use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\ValidationRules\ShippingMethodValidationRule;
 
 class ShippingMethodValidationRulePlugin
 {
@@ -57,7 +58,7 @@ class ShippingMethodValidationRulePlugin
         $existing = $result[0] ?? null;
         if ($existing instanceof ValidationResult && $existing->isValid()) {
             $result[0] = $this->validationResultFactory->create([
-                'errors' => [__('The shipping method is missing. Select the shipping method and try again')]
+                'errors' => [__('The shipping method is missing. Select the shipping method and try again')],
             ]);
         }
 

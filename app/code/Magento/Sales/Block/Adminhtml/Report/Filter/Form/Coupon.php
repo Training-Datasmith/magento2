@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Block\Adminhtml\Report\Filter\Form;
 
 /**
@@ -67,7 +70,7 @@ class Coupon extends \Magento\Sales\Block\Adminhtml\Report\Filter\Form
                 [
                     'name' => 'price_rule_type',
                     'options' => [__('Any'), __('Specified')],
-                    'label' => __('Cart Price Rule')
+                    'label' => __('Cart Price Rule'),
                 ]
             );
 
@@ -86,7 +89,7 @@ class Coupon extends \Magento\Sales\Block\Adminhtml\Report\Filter\Form
                     'name' => 'rules_list',
                     'label' => '',
                     'values' => $rulesListOptions,
-                    'display' => 'none'
+                    'display' => 'none',
                 ],
                 'price_rule_type'
             );

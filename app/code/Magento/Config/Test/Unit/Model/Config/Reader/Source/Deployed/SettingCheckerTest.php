@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Config\Model\Placeholder\PlaceholderInterface;
 use Magento\Framework\App\Config;
 use Magento\Framework\App\Config\ScopeCodeResolver;
 use Magento\Framework\App\DeploymentConfig;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -93,7 +94,7 @@ class SettingCheckerTest extends TestCase
             ->method('resolve')
             ->willReturnMap(
                 [
-                    ['website', 'myWebsite', ($scopeCode ? $scopeCode : '')]
+                    ['website', 'myWebsite', ($scopeCode ? $scopeCode : '')],
                 ]
             );
 
@@ -105,9 +106,9 @@ class SettingCheckerTest extends TestCase
                 array_merge(
                     [
                         [
-                            'system/' . $scope . "/" . ($scopeCode ? $scopeCode . '/' : '') . $path,
+                            'system/' . $scope . '/' . ($scopeCode ? $scopeCode . '/' : '') . $path,
                             null,
-                            $confValue
+                            $confValue,
                         ],
                     ],
                     $configMap
@@ -199,7 +200,7 @@ class SettingCheckerTest extends TestCase
                     ],
                 ],
                 'expectedResult' => true,
-            ]
+            ],
         ];
     }
 

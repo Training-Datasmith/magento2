@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GroupedProduct\Block\Adminhtml\Items\Column\Name;
 
 /**
@@ -11,7 +14,7 @@ namespace Magento\GroupedProduct\Block\Adminhtml\Items\Column\Name;
  */
 class Grouped extends \Magento\Sales\Block\Adminhtml\Items\Column\Name
 {
-    const COLUMN_NAME = 'name';
+    public const COLUMN_NAME = 'name';
 
     /**
      * Prepare item html

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class Store implements RevertibleDataFixtureInterface
         'code' => 'test_store_view%uniqid%',
         'name' => 'Test Store View%uniqid%',
         'sort_order' => '0',
-        'is_active' => '1'
+        'is_active' => '1',
     ];
 
     /**

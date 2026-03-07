@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -15,5 +16,4 @@ class NonNull extends \GraphQL\Type\Definition\NonNull implements
     InputTypeInterface,
     OutputTypeInterface
 {
-
 }

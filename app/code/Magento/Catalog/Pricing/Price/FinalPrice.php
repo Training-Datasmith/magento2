@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Pricing\Price;
 
-use Magento\Catalog\Model\Product;
 use Magento\Framework\Pricing\Price\AbstractPrice;
 
 /**
@@ -20,7 +20,7 @@ class FinalPrice extends AbstractPrice implements FinalPriceInterface
     /**
      * Price type final
      */
-    const PRICE_CODE = 'final_price';
+    public const PRICE_CODE = 'final_price';
 
     /**
      * @var BasePrice

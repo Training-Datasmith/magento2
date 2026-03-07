@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,13 +13,13 @@ use Magento\Framework\Indexer\IndexerInterfaceFactory;
 use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Indexer\StateInterface;
 use Magento\Framework\Mview\ProcessorInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Indexer\Model\Indexer;
 use Magento\Indexer\Model\Indexer\Collection;
 use Magento\Indexer\Model\Indexer\CollectionFactory;
 use Magento\Indexer\Model\Indexer\State;
 use Magento\Indexer\Model\Processor;
 use Magento\Indexer\Model\Processor\MakeSharedIndexValid;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -105,12 +106,12 @@ class ProcessorTest extends TestCase
         $indexers = [
             'indexer1' => [],
             'indexer2' => [],
-            'indexer3' => []
+            'indexer3' => [],
         ];
         $indexerReturnMap = [
             ['indexer1', ['shared_index' => null]],
             ['indexer2', ['shared_index' => null]],
-            ['indexer3', ['shared_index' => null]]
+            ['indexer3', ['shared_index' => null]],
         ];
 
         $this->configMock->expects($this->once())->method('getIndexers')->willReturn($indexers);
@@ -332,36 +333,36 @@ class ProcessorTest extends TestCase
                         'indexer_id' => 'indexer_1',
                         'title' => 'Title_indexer_1',
                         'shared_index' => null,
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_2' => [
                         'indexer_id' => 'indexer_2',
                         'title' => 'Title_indexer_2',
                         'shared_index' => 'with_indexer_3',
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_3' => [
                         'indexer_id' => 'indexer_3',
                         'title' => 'Title_indexer_3',
                         'shared_index' => 'with_indexer_3',
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                 ],
                 'indexerStates' => [
                     'indexer_1' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
+                        StateInterface::STATUS_VALID,
                     ],
                     'indexer_2' => [StateInterface::STATUS_VALID],
-                    'indexer_3' => [StateInterface::STATUS_VALID]
+                    'indexer_3' => [StateInterface::STATUS_VALID],
                 ],
                 'expectedReindexAllCalls' => [
                     'indexer_1' => 'once',
                     'indexer_2' => 'never',
-                    'indexer_3' => 'never'
+                    'indexer_3' => 'never',
                 ],
-                'executedSharedIndexers' => []
+                'executedSharedIndexers' => [],
             ],
             'With dependencies and some indexers is invalid' => [
                 'indexers' => [
@@ -369,49 +370,49 @@ class ProcessorTest extends TestCase
                         'indexer_id' => 'indexer_1',
                         'title' => 'Title_indexer_1',
                         'shared_index' => null,
-                        'dependencies' => ['indexer_2', 'indexer_3']
+                        'dependencies' => ['indexer_2', 'indexer_3'],
                     ],
                     'indexer_2' => [
                         'indexer_id' => 'indexer_2',
                         'title' => 'Title_indexer_2',
                         'shared_index' => 'with_indexer_3',
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_3' => [
                         'indexer_id' => 'indexer_3',
                         'title' => 'Title_indexer_3',
                         'shared_index' => 'with_indexer_3',
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_4' => [
                         'indexer_id' => 'indexer_4',
                         'title' => 'Title_indexer_4',
                         'shared_index' => null,
-                        'dependencies' => ['indexer_1']
-                    ]
+                        'dependencies' => ['indexer_1'],
+                    ],
                 ],
                 'indexerStates' => [
                     'indexer_1' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
+                        StateInterface::STATUS_VALID,
                     ],
                     'indexer_2' => [StateInterface::STATUS_VALID],
                     'indexer_3' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
+                        StateInterface::STATUS_VALID,
                     ],
-                    'indexer_4' => [StateInterface::STATUS_VALID]
+                    'indexer_4' => [StateInterface::STATUS_VALID],
                 ],
                 'expectedReindexAllCalls' => [
                     'indexer_1' => 'once',
                     'indexer_2' => 'never',
                     'indexer_3' => 'once',
-                    'indexer_4' => 'never'
+                    'indexer_4' => 'never',
                 ],
-                'executedSharedIndexers' => [['indexer_2'], ['indexer_3']]
-            ]
+                'executedSharedIndexers' => [['indexer_2'], ['indexer_3']],
+            ],
         ];
     }
 
@@ -427,44 +428,44 @@ class ProcessorTest extends TestCase
                         'indexer_id' => 'indexer_1',
                         'title' => 'Title indexer 1',
                         'shared_index' => null,
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_2' => [
                         'indexer_id' => 'indexer_2',
                         'title' => 'Title indexer 2',
                         'shared_index' => 'common_shared_index',
-                        'dependencies' => []
+                        'dependencies' => [],
                     ],
                     'indexer_3' => [
                         'indexer_id' => 'indexer_3',
                         'title' => 'Title indexer 3',
                         'shared_index' => 'common_shared_index',
-                        'dependencies' => []
-                    ]
+                        'dependencies' => [],
+                    ],
                 ],
                 'indexerStates' => [
                     'indexer_1' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
+                        StateInterface::STATUS_VALID,
                     ],
                     'indexer_2' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
+                        StateInterface::STATUS_VALID,
                     ],
                     'indexer_3' => [
                         StateInterface::STATUS_INVALID,
                         StateInterface::STATUS_INVALID,
-                        StateInterface::STATUS_VALID
-                    ]
+                        StateInterface::STATUS_VALID,
+                    ],
                 ],
                 'expectedReindexAllCalls' => [
                     'indexer_1' => 'once',
                     'indexer_2' => 'never',
-                    'indexer_3' => 'never'
-                ]
-            ]
+                    'indexer_3' => 'never',
+                ],
+            ],
         ];
     }
 

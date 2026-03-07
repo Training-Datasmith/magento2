@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,18 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Bundle\Test\Unit\Model\Sales\Order;
 
-use Magento\Sales\Model\Order;
-use Magento\Sales\Api\Data\ShipmentItemInterface;
-use Magento\Sales\Model\Order\Item;
 use Laminas\Uri\Http as HttpUri;
 use Magento\Bundle\Model\Sales\Order\BundleOrderTypeValidator;
 use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Type;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\Webapi\Request;
+use Magento\Sales\Api\Data\ShipmentItemInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Item;
 use Magento\Sales\Model\Order\Shipment;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Model\Product\Type;
 
 class BundleOrderTypeValidatorTest extends TestCase
 {

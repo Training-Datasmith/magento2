@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -10,6 +12,7 @@
  * @author      Magento Core Team <core@magentocommerce.com>
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product;
 
 use Magento\Framework\App\ObjectManager;
@@ -123,7 +126,7 @@ class Edit extends \Magento\Backend\Block\Widget
                             'catalog/*/',
                             ['store' => $this->getRequest()->getParam('store', 0)]
                         ) . '\')',
-                        'class' => 'action-back'
+                        'class' => 'action-back',
                     ]
                 );
             }
@@ -141,7 +144,7 @@ class Edit extends \Magento\Backend\Block\Widget
                 \Magento\Backend\Block\Widget\Button::class,
                 [
                     'label' => __('Reset'),
-                    'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/*', ['_current' => true]) . '\')'
+                    'onclick' => 'setLocation(\'' . $this->getUrl('catalog/*/*', ['_current' => true]) . '\')',
                 ]
             );
         }
@@ -155,7 +158,7 @@ class Edit extends \Magento\Backend\Block\Widget
                     'label' => __('Save'),
                     'class_name' => \Magento\Backend\Block\Widget\Button\SplitButton::class,
                     'button_class' => 'widget-button-save',
-                    'options' => $this->_getSaveSplitButtonOptions()
+                    'options' => $this->_getSaveSplitButtonOptions(),
                 ]
             );
         }

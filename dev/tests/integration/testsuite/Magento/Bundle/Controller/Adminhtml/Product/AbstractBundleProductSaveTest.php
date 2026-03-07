@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -155,7 +156,7 @@ abstract class AbstractBundleProductSaveTest extends AbstractBackendController
         $staticData = [
             'price' => '10.000000',
             'selection_qty' => '5.0000',
-            'selection_can_change_qty' => '0'
+            'selection_can_change_qty' => '0',
         ];
         $selection['product_id'] = $productIdsBySkus[$selection['sku']];
         $selection = array_merge($selection, $staticData);

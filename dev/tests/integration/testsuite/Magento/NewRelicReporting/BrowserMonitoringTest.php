@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class BrowserMonitoringTest extends \Magento\TestFramework\TestCase\AbstractBack
                 'getBrowserTimingHeader',
                 'getBrowserTimingFooter',
                 'disableAutorum',
-                'isAutoInstrumentEnabled'
+                'isAutoInstrumentEnabled',
             ])
             ->getMock();
         $this->_objectManager->addSharedInstance($this->newRelicWrapperMock, NewRelicWrapper::class);

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SendFriend\Block;
 
 use Magento\Captcha\Block\Captcha;
@@ -236,7 +239,7 @@ class Send extends \Magento\Framework\View\Element\Template
                     'after' => '-',
                     'form_id' => 'product_sendtofriend_form',
                     'image_width' => 230,
-                    'image_height' => 230
+                    'image_height' => 230,
                 ]
             );
         }

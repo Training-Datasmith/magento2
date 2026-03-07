@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product\View;
 
 /**
@@ -117,7 +120,7 @@ class OptionsTest extends \PHPUnit\Framework\TestCase
                     ['oldPrice' =>
                         ['amount' => 10, 'adjustments' => []],
                         'basePrice' => ['amount' => 10],
-                        'finalPrice' => ['amount' => 10]
+                        'finalPrice' => ['amount' => 10],
                     ],
                 'type' => 'fixed',
                 'name' => 'drop_down option 1',

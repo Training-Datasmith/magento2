@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\Auth;
 
 class DeniedIframe extends \Magento\Backend\Controller\Adminhtml\Auth

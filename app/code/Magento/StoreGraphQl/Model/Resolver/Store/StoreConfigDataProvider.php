@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\StoreGraphQl\Model\Resolver\Store;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Api\Data\StoreConfigInterface;
+use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Api\StoreConfigManagerInterface;
 use Magento\Store\Model\ResourceModel\StoreWebsiteRelation;
 use Magento\Store\Model\ScopeInterface;
-use Magento\Store\Api\Data\StoreInterface;
 
 /**
  * StoreConfig field data provider, used for GraphQL request processing.

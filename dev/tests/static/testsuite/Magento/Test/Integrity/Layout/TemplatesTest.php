@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Test layout declaration and usage of block elements
  *
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Test\Integrity\Layout;
 
 use Magento\Framework\App\Utility\Files;

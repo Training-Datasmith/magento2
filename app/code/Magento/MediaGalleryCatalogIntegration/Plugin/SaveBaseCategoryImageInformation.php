@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -101,7 +102,7 @@ class SaveBaseCategoryImageInformation
 
         $this->synchronizeFiles->execute(
             [
-                $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getRelativePath($absolutePath)
+                $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getRelativePath($absolutePath),
             ]
         );
 

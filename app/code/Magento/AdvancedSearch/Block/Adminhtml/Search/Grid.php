@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdvancedSearch\Block\Adminhtml\Search;
 
 /**
@@ -13,41 +16,15 @@ namespace Magento\AdvancedSearch\Block\Adminhtml\Search;
  */
 class Grid extends \Magento\Backend\Block\Widget\Grid
 {
-    /**
-     * @var \Magento\AdvancedSearch\Model\Adminhtml\Search\Grid\Options
-     */
-    protected $_options;
-
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $_registryManager;
-
-    /**
-     * @var \Magento\Framework\Json\Helper\Data
-     */
-    protected $jsonHelper;
-
-    /**
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \Magento\AdvancedSearch\Model\Adminhtml\Search\Grid\Options $options
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
-     * @param array $data
-     */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \Magento\AdvancedSearch\Model\Adminhtml\Search\Grid\Options $options,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Json\Helper\Data $jsonHelper,
+        protected \Magento\AdvancedSearch\Model\Adminhtml\Search\Grid\Options $_options,
+        protected \Magento\Framework\Registry $_registryManager,
+        protected \Magento\Framework\Json\Helper\Data $jsonHelper,
         array $data = []
     ) {
-        $this->jsonHelper = $jsonHelper;
         parent::__construct($context, $backendHelper, $data);
-        $this->_options = $options;
-        $this->_registryManager = $registry;
         $this->setDefaultFilter(['query_id_selected' => 1]);
     }
 
@@ -67,7 +44,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return $this
      */
-    protected function _addColumnFilterToCollection($column)
+    protected function _addColumnFilterToCollection($column): static
     {
         // Set custom filter for query selected flag
         if ($column->getId() == 'query_id_selected' && $this->getQuery()->getId()) {

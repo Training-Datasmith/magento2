@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backup\Model;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -24,7 +27,7 @@ class Backup extends \Magento\Framework\DataObject implements \Magento\Framework
     /**
      * Compress rate
      */
-    const COMPRESS_RATE = 9;
+    public const COMPRESS_RATE = 9;
 
     /**
      * Type of backup file
@@ -181,7 +184,7 @@ class Backup extends \Magento\Framework\DataObject implements \Magento\Framework
      */
     public function getFileName()
     {
-        $filename = $this->getTime() . "_" . $this->getType();
+        $filename = $this->getTime() . '_' . $this->getType();
         $backupName = $this->getName();
 
         if (!empty($backupName)) {

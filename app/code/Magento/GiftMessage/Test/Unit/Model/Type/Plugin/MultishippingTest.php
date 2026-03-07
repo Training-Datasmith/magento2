@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class MultishippingTest extends TestCase
     {
         return [
             [null],
-            [[]]
+            [[]],
         ];
     }
 }

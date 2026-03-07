@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\MediaGallery\Model;
 
-use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterface;
 use Magento\MediaGalleryApi\Api\Data\AssetKeywordsExtensionInterface;
+use Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterface;
 
 /**
  * Asset Id and Keywords combination data object for bulk operations with keyword services

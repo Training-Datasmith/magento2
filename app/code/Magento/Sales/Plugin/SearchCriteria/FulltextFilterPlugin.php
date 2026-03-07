@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -9,12 +10,11 @@ namespace Magento\Sales\Plugin\SearchCriteria;
 
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Data\Collection;
-use Magento\Sales\Model\ResourceModel\Order\Grid\Collection as OrderGridCollection;
 use Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter as UiFulltextFilter;
+use Magento\Sales\Model\ResourceModel\Order\Grid\Collection as OrderGridCollection;
 
 class FulltextFilterPlugin
 {
-
     /**
      * Use LIKE instead of MATCH AGAINST in sales order grid to bypass MySQL stopword limitations
      *

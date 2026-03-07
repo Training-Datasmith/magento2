@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,18 +20,18 @@ class DryRunLogger
     /**
      * We will run installation or upgrade in Dry Run mode
      */
-    const INPUT_KEY_DRY_RUN_MODE = 'dry-run';
+    public const INPUT_KEY_DRY_RUN_MODE = 'dry-run';
 
     /**
      * File name, where all dry-run SQL`s will be puted
      */
-    const FILE_NAME = 'dry-run-installation.log';
+    public const FILE_NAME = 'dry-run-installation.log';
 
     /**
      * Allows to separate 2 different sql statements with this separator
      * Be default is used 2 empty lines
      */
-    const LINE_SEPARATOR = "\n\n";
+    public const LINE_SEPARATOR = "\n\n";
 
     /**
      * @var \Magento\Framework\Filesystem\Driver\File
@@ -66,7 +68,7 @@ class DryRunLogger
         }
 
         if (!$this->fileDriver->isDirectory($logFolderPath)) {
-            throw new \Exception(sprintf("Can`t create log directory: %s", $logFolderPath));
+            throw new \Exception(sprintf('Can`t create log directory: %s', $logFolderPath));
         }
     }
 
@@ -81,7 +83,7 @@ class DryRunLogger
         }
 
         if (!$this->fileDriver->isExists($fileName)) {
-            throw new \Exception(sprintf("Can`t create file %s", $fileName));
+            throw new \Exception(sprintf('Can`t create file %s', $fileName));
         }
     }
 

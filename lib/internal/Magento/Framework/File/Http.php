@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\Exception\InputException;
 
 class Http implements HttpInterface
 {
-
     /**
      * Internal list of validators
      * @var array
@@ -90,9 +90,9 @@ class Http implements HttpInterface
      *
      * @return HttpInterface
      */
-    protected function prepareFiles() : HttpInterface
+    protected function prepareFiles(): HttpInterface
     {
-        
+
         $this->files = [];
         $options = $this->options;
         foreach ($_FILES as $form => $content) {
@@ -124,7 +124,7 @@ class Http implements HttpInterface
      */
     public function addValidator(
         string|ValidatorInterface $validator
-    ):HttpInterface {
+    ): HttpInterface {
         if (! $validator instanceof ValidatorInterface) {
             throw new InputException(
                 'Invalid validator provided to addValidator; ' .

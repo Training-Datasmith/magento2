@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 namespace Magento\Checkout\Test\Unit\Controller\Account;
 
 use Magento\Checkout\Controller\Account\Create;
+use Magento\Checkout\Model\Session;
+use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\Controller\Result\Json;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Api\OrderCustomerManagementInterface;
-use Magento\Checkout\Model\Session;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Customer\Model\Session as CustomerSession;
 
 /**
  * Shopping cart edit tests
@@ -92,7 +93,7 @@ class CreateTest extends TestCase
                 'customerSession' => $this->customerSession,
                 'orderCustomerService' => $this->orderCustomerService,
                 'messageManager' => $this->messageManager,
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
     }

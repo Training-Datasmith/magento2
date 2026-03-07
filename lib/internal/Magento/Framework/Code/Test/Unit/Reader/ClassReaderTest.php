@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,14 +9,13 @@ declare(strict_types=1);
 namespace Magento\Framework\Code\Test\Unit\Reader;
 
 use Magento\Framework\Code\Reader\ClassReader;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/_files/ClassesForArgumentsReader.php';
 
 class ClassReaderTest extends TestCase
 {
-
     /**
      * @var ClassReader $model
      */
@@ -63,7 +63,7 @@ class ClassReaderTest extends TestCase
      */
     public function testGetConstructorWithNonexistentDependency()
     {
-        $testClass = new class {
+        $testClass = new class () {
             private $arg;
 
             // phpstan:ignore
@@ -102,7 +102,7 @@ class ClassReaderTest extends TestCase
                             1 => 'ClassExtendsDefaultPhpType',
                             2 => true,
                             3 => null,
-                            4 => false
+                            4 => false,
                         ],
                         2 => [
                             0 => 'arrayVariable',
@@ -111,10 +111,10 @@ class ClassReaderTest extends TestCase
                             3 => [
                                 'key' => 'value',
                             ],
-                            4 => false
-                        ]
-                    ]
-                ]
+                            4 => false,
+                        ],
+                    ],
+                ],
             ];
     }
 }

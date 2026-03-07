@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Api\Data;
 
 /**
@@ -15,9 +18,9 @@ interface PaymentDetailsInterface extends \Magento\Framework\Api\ExtensibleDataI
     /**#@+
      * Constants defined for keys of array, makes typos less likely
      */
-    const PAYMENT_METHODS = 'payment_methods';
+    public const PAYMENT_METHODS = 'payment_methods';
 
-    const TOTALS = 'totals';
+    public const TOTALS = 'totals';
 
     /**#@-*/
 

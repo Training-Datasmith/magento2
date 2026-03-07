@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Weee\Model\Attribute\Backend\Weee\Tax
  */
+
 namespace Magento\Weee\Test\Unit\Model\Attribute\Backend\Weee;
 
 use Magento\Catalog\Model\Product;
@@ -91,11 +93,11 @@ class TaxTest extends TestCase
                     ['state' => 12, 'country' => 'US', 'website_id' => '1'],
                     ['state' => 99, 'country' => 'ES', 'website_id' => '1'],
                     ['state' => 12, 'country' => 'US', 'website_id' => '1'],
-                    ['state' => null, 'country' => 'ES', 'website_id' => '1']
+                    ['state' => null, 'country' => 'ES', 'website_id' => '1'],
                 ],
                 'expected' => 'Set unique country-state combinations within the same fixed product tax. '
                     . 'Verify the combinations and try again.',
-            ]
+            ],
         ];
     }
 
@@ -119,7 +121,7 @@ class TaxTest extends TestCase
             Tax::class,
             [
                 'attributeTax' => $attributeTaxMock,
-                '_attribute' => $attributeMock
+                '_attribute' => $attributeMock,
             ]
         );
 
@@ -179,7 +181,7 @@ class TaxTest extends TestCase
             Tax::class,
             [
                 'attributeTax' => $attributeTaxMock,
-                '_attribute' => $attributeMock
+                '_attribute' => $attributeMock,
             ]
         );
 
@@ -202,7 +204,7 @@ class TaxTest extends TestCase
                 'origData' => [['country' => 'US', 'website_id' => '1']],
                 'currentData' => [['country' => 'US', 'website_id' => '2', 'price' => 100]],
                 'expectedData' => ['state' => 0, 'country' => 'US', 'website_id' => '2', 'value' => 100,
-                    'attribute_id' => 1]]
+                    'attribute_id' => 1]],
         ];
     }
 
@@ -249,7 +251,7 @@ class TaxTest extends TestCase
      *
      * @return void
      */
-    public function testGetEntityIdField() : void
+    public function testGetEntityIdField(): void
     {
         $attributeTaxMock = $this->createPartialMock(AttributeTaxResource::class, ['getIdFieldName']);
 

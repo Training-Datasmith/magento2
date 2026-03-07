@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,6 +13,7 @@
  * @method string getItemUrl()
  * @method string getItemName()
  */
+
 namespace Magento\UrlRewrite\Block;
 
 class Link extends \Magento\Framework\View\Element\AbstractBlock

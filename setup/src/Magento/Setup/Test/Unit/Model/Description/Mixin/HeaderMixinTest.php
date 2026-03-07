@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Setup\Test\Unit\Model\Description\Mixin;
 
 use Magento\Setup\Model\Description\Mixin\HeaderMixin;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class HeaderMixinTest extends TestCase
 {
@@ -48,8 +49,8 @@ class HeaderMixinTest extends TestCase
                 . '<h1>Consectetur</h1>' . PHP_EOL
                 . 'Consectetur adipiscing elit.' . PHP_EOL
                 . '<h1>Sed do eiusmod</h1>' . PHP_EOL
-                . 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            ]
+                . 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            ],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Model\ResourceModel\Type\Db\Pdo;
 
 use Magento\Framework\App\ObjectManager;
@@ -15,7 +18,7 @@ use Magento\Framework\DB\SelectFactory;
 
 class Mysql extends \Magento\Framework\Model\ResourceModel\Type\Db implements
     ConnectionAdapterInterface
-// @codingStandardsIgnoreEnd
+    // @codingStandardsIgnoreEnd
 {
     /**
      * @var array

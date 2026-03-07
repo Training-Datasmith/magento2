@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 class SuggestAttributeSets extends \Magento\Backend\App\Action
@@ -12,8 +15,8 @@ class SuggestAttributeSets extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::sets';
-    
+    public const ADMIN_RESOURCE = 'Magento_Catalog::sets';
+
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
      */

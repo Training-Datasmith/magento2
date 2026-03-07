@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Customer\Block\Account;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
+namespace Magento\Customer\Block\Account;
 
 /**
  * @api

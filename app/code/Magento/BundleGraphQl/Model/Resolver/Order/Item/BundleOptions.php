@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Query\Uid;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Sales\Api\Data\CreditmemoItemInterface;
 use Magento\Sales\Api\Data\InvoiceItemInterface;
 use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\Sales\Api\Data\ShipmentItemInterface;
-use Magento\Sales\Api\Data\CreditmemoItemInterface;
 
 /**
  * Resolve bundle options items for order item
@@ -147,7 +148,7 @@ class BundleOptions implements ResolverInterface
                     self::OPTION_TYPE,
                     $bundleChildAttributes['option_id'],
                     is_array($options) ? implode(',', $options) : $options,
-                    (int) $childOrderItemOptions['info_buyRequest']['qty']
+                    (int) $childOrderItemOptions['info_buyRequest']['qty'],
                 ];
 
                 $optionItems[$childrenOrderItem->getItemId()] = [
@@ -161,7 +162,7 @@ class BundleOptions implements ResolverInterface
                         'value' => $bundleChildAttributes['price'],
                         //use currency from order
                         'currency' => $formattedItem['product_sale_price']['currency'] ?? null,
-                    ]
+                    ],
                 ];
             }
         }

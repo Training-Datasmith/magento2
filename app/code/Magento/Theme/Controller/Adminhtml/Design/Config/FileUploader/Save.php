@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Controller\Adminhtml\Design\Config\FileUploader;
 
 use Magento\Backend\App\Action;
@@ -27,7 +30,7 @@ class Save extends Action
     /**
      * Authorization level
      */
-    const ADMIN_RESOURCE = 'Magento_Theme::theme';
+    public const ADMIN_RESOURCE = 'Magento_Theme::theme';
 
     /**
      * @param Context $context

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Model\ResourceModel;
 
 use Magento\Framework\Model\AbstractModel;
@@ -192,7 +195,7 @@ class Review extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $detailId = $connection->fetchOne($select, [':review_id' => $object->getId()]);
 
         if ($detailId) {
-            $condition = ["detail_id = ?" => $detailId];
+            $condition = ['detail_id = ?' => $detailId];
             $connection->update($this->_reviewDetailTable, $detail, $condition);
         } else {
             $detail['store_id'] = $object->getStoreId();
@@ -484,14 +487,14 @@ class Review extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $this->_reviewTable,
             [
                 'entity_pk_value=?' => $productId,
-                'entity_id=?' => $this->getEntityIdByCode(\Magento\Review\Model\Review::ENTITY_PRODUCT_CODE)
+                'entity_id=?' => $this->getEntityIdByCode(\Magento\Review\Model\Review::ENTITY_PRODUCT_CODE),
             ]
         );
         $this->getConnection()->delete(
             $this->getTable('review_entity_summary'),
             [
                 'entity_pk_value=?' => $productId,
-                'entity_type=?' => $this->getEntityIdByCode(\Magento\Review\Model\Review::ENTITY_PRODUCT_CODE)
+                'entity_type=?' => $this->getEntityIdByCode(\Magento\Review\Model\Review::ENTITY_PRODUCT_CODE),
             ]
         );
         return $this;

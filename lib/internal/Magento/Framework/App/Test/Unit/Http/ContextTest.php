@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class ContextTest extends TestCase
         $this->object = $this->objectManager->getObject(
             Context::class,
             [
-                'serializer' => $this->serializerMock
+                'serializer' => $this->serializerMock,
             ]
         );
         $this->deploymentConfig = $this->createPartialMock(
@@ -115,7 +116,7 @@ class ContextTest extends TestCase
         $this->object->setValue('key1', 'value1', 'default1');
         $data = [
             'key2' => 'value2',
-            'key1' => 'value1'
+            'key1' => 'value1',
         ];
         ksort($data);
 
@@ -134,7 +135,7 @@ class ContextTest extends TestCase
         $this->assertEquals(
             [
                 'data' => ['key' => 'value', 'key1' => 'value1', 'key2' => 'value2'],
-                'default' => ['key1' => 'default1', 'key2' => 'default2']
+                'default' => ['key1' => 'default1', 'key2' => 'default2'],
             ],
             $newObject->toArray()
         );

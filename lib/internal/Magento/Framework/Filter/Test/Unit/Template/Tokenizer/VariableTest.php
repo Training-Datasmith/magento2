@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filter\Test\Unit\Template\Tokenizer;
 
 use Magento\Framework\Filter\Template\Tokenizer\Variable;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class VariableTest extends TestCase
 {
@@ -39,10 +40,10 @@ class VariableTest extends TestCase
     public static function sampleTokenizeStringProvider()
     {
         return [
-            ["firstname", [['type' => 'variable', 'name' => 'firstname']]],
+            ['firstname', [['type' => 'variable', 'name' => 'firstname']]],
             [
                 "invoke(arg1, arg2, 2, 2.7, -1, 'Mike\\'s')",
-                [['type' => 'method', 'name' => 'invoke', 'args' => ['arg1', 'arg2', 2, 2.7, -1, "Mike's"]]]
+                [['type' => 'method', 'name' => 'invoke', 'args' => ['arg1', 'arg2', 2, 2.7, -1, "Mike's"]]],
             ],
             [
                 'var.method("value_1", [ _param_1:$bogus.prop,
@@ -65,12 +66,12 @@ class VariableTest extends TestCase
                             'id' => 'foobar',
                             0 => [123, 'foobar'],
                             'bar' => ['foo', 1234, '$foo.bar'],
-                            'foo:bar' => ['bar', "1234", '$foo.bar'],
+                            'foo:bar' => ['bar', '1234', '$foo.bar'],
                         ],
                     ]],
                 ],
             ],
-            ["  ", []],
+            ['  ', []],
         ];
     }
 }

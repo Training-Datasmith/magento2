@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,12 +13,12 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Invoice\Item;
-use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Sales\Model\Order\Invoice\Total\Tax;
+use Magento\Sales\Model\Order\Item as OrderItem;
 use Magento\Weee\Helper\Data;
 use Magento\Weee\Model\Total\Invoice\Weee;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class WeeeTest extends TestCase
@@ -76,7 +77,7 @@ class WeeeTest extends TestCase
             Weee::class,
             [
                 'weeeData' => $this->weeeData,
-                'serializer' => $serializer
+                'serializer' => $serializer,
             ]
         );
 
@@ -89,7 +90,7 @@ class WeeeTest extends TestCase
             'getOrder',
             'roundPrice',
             'isLast',
-            'getStore'
+            'getStore',
             ]
         );
         $this->invoice->expects($this->atLeastOnce())->method('getOrder')->willReturn($this->order);
@@ -173,7 +174,7 @@ class WeeeTest extends TestCase
                         $value['weee'],
                         $taxRatio['weee'],
                         self::EPSILON,
-                        "Tax ratio is incorrect"
+                        'Tax ratio is incorrect'
                     );
                 } else {
                     $this->assertEqualsWithDelta(
@@ -280,7 +281,7 @@ class WeeeTest extends TestCase
                         ],
                         'weee_tax_applied_row_amount' => 30,
                         'base_weee_tax_applied_row_amount' => 30,
-                        'tax_ratio' => ["weee" => 1.0],
+                        'tax_ratio' => ['weee' => 1.0],
                     ],
                 ],
                 'invoice_data' => [
@@ -707,7 +708,7 @@ class WeeeTest extends TestCase
         $orderItem = $this->createPartialMock(
             OrderItem::class,
             [
-            'isDummy'
+            'isDummy',
             ]
         );
         foreach ($invoiceItemData['order_item'] as $key => $value) {
@@ -745,7 +746,7 @@ class WeeeTest extends TestCase
             Item::class,
             [
             'getOrderItem',
-            'isLast'
+            'isLast',
             ]
         );
         $invoiceItem->expects($this->any())->method('getOrderItem')->willReturn($orderItem);

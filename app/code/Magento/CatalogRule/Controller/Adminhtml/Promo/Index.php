@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Controller\Adminhtml\Promo;
 
 class Index extends \Magento\Backend\App\Action
@@ -12,7 +15,7 @@ class Index extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_CatalogRule::promo';
+    public const ADMIN_RESOURCE = 'Magento_CatalogRule::promo';
 
     /**
      * @return void

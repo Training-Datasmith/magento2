@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -24,10 +25,10 @@ use Magento\Framework\Search\Request\QueryInterface;
 class RequestGenerator
 {
     /** Filter name suffix */
-    const FILTER_SUFFIX = '_filter';
+    public const FILTER_SUFFIX = '_filter';
 
     /** Bucket name suffix */
-    const BUCKET_SUFFIX = '_bucket';
+    public const BUCKET_SUFFIX = '_bucket';
 
     /**
      * @var CollectionFactory
@@ -96,7 +97,7 @@ class RequestGenerator
                             [
                                 'clause' => 'must',
                                 'ref' => $filterName,
-                            ]
+                            ],
                         ],
                     ];
                     $bucketName = $attribute->getAttributeCode() . self::BUCKET_SUFFIX;

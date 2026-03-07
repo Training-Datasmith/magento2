@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Swatches\Controller\Adminhtml\Iframe;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -17,7 +20,7 @@ class Show extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Swatches::iframe';
+    public const ADMIN_RESOURCE = 'Magento_Swatches::iframe';
 
     /**
      * Helper to move image from tmp to catalog

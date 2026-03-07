@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 namespace Magento\Csp\Test\Unit\Plugin;
 
 use Magento\Csp\Model\SubresourceIntegrity;
+use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
 use Magento\Csp\Model\SubresourceIntegrityRepository;
 use Magento\Csp\Model\SubresourceIntegrityRepositoryPool;
-use Magento\Framework\Exception\LocalizedException;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Magento\Csp\Plugin\AddDefaultPropertiesToGroupPlugin;
+use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\State;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Asset\File;
 use Magento\Framework\View\Asset\GroupedCollection;
-use Magento\Framework\App\State;
-use Magento\Framework\App\Request\Http;
-use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for class Magento\Csp\Plugin\AddDefaultPropertiesToGroupPlugin
@@ -26,7 +27,6 @@ use Magento\Csp\Model\SubresourceIntegrity\SriEnabledActions;
  */
 class AddDefaultPropertiesToGroupPluginTest extends TestCase
 {
-
     /**
      * @var MockObject
      */
@@ -92,7 +92,7 @@ class AddDefaultPropertiesToGroupPluginTest extends TestCase
      */
     public function testBeforeGetFilteredProperties(): void
     {
-        $actionName = "sales_order_create_index";
+        $actionName = 'sales_order_create_index';
         $this->sriEnabledActionsMock->expects($this->once())->method('isPaymentPageAction')->willReturn(true);
         $this->httpMock->expects($this->once())->method('getFullActionName')->willReturn($actionName);
         $integrityRepositoryMock = $this->createPartialMock(
@@ -106,7 +106,7 @@ class AddDefaultPropertiesToGroupPluginTest extends TestCase
         $data = new SubresourceIntegrity(
             [
                 'hash' => 'testhash',
-                'path' => $path
+                'path' => $path,
             ]
         );
         $properties['attributes']['integrity'] = $data->getHash();

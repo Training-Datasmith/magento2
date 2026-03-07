@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\Data\OrderInterface;
-use Magento\Tax\Api\OrderTaxManagementInterface;
 use Magento\SalesGraphQl\Model\SalesItem\ShippingTaxCalculator;
+use Magento\Tax\Api\OrderTaxManagementInterface;
 use Magento\Tax\Helper\Data as TaxHelper;
 
 /**
@@ -90,22 +91,22 @@ class InvoiceTotal implements ResolverInterface
             'shipping_handling' => [
                 'amount_excluding_tax' => [
                     'value' => $invoiceModel->getShippingAmount() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'amount_including_tax' => [
                     'value' => $invoiceModel->getShippingInclTax() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'total_amount' => [
                     'value' => $invoiceModel->getShippingAmount() ?? 0,
-                    'currency' => $currency
+                    'currency' => $currency,
                 ],
                 'discounts' => $this->getShippingDiscountDetails($invoiceModel, $orderModel),
                 'taxes' => $this->formatTaxes(
                     $orderModel,
                     $this->shippingTaxCalculator->calculateShippingTaxes($orderModel, $invoiceModel),
-                )
-            ]
+                ),
+            ],
         ];
     }
 
@@ -130,8 +131,8 @@ class InvoiceTotal implements ResolverInterface
                 [
                     'amount' => [
                         'value' => sprintf('%.2f', abs($calculatedInvoiceShippingDiscount)),
-                        'currency' => $invoiceModel->getOrderCurrencyCode()
-                    ]
+                        'currency' => $invoiceModel->getOrderCurrencyCode(),
+                    ],
                 ];
         }
         return $shippingDiscounts;
@@ -151,8 +152,8 @@ class InvoiceTotal implements ResolverInterface
                 'label' => $invoice->getDiscountDescription() ?? __('Discount'),
                 'amount' => [
                     'value' => abs((float) $invoice->getDiscountAmount()),
-                    'currency' => $invoice->getOrderCurrencyCode()
-                ]
+                    'currency' => $invoice->getOrderCurrencyCode(),
+                ],
             ];
         }
         return $discounts;
@@ -174,8 +175,8 @@ class InvoiceTotal implements ResolverInterface
                 'title' => $appliedTax['title'] ?? null,
                 'amount' => [
                     'value' => $appliedTax['tax_amount'] ?? 0,
-                    'currency' => $order->getOrderCurrencyCode()
-                ]
+                    'currency' => $order->getOrderCurrencyCode(),
+                ],
             ];
             $taxes[] = $appliedTaxesArray;
         }

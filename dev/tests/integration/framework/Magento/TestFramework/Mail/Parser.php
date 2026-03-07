@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\TestFramework\Mail;
 
-use Magento\Framework\Mail\AddressInterface;
 use Magento\Framework\Mail\AddressFactory;
+use Magento\Framework\Mail\AddressInterface;
 use Magento\Framework\Mail\EmailMessageInterface;
 use Magento\Framework\Mail\EmailMessageInterfaceFactory;
 use Magento\Framework\Mail\MimeMessageInterfaceFactory;
@@ -90,11 +91,11 @@ class Parser
             'boundary' => $boundary,
             'location' => $headers['Content-Location'] ?? '',
             'language' => $headers['Content-Language'] ?? '',
-            'isStream' => false
+            'isStream' => false,
         ]);
 
         $mimeMessage = $this->mimeMessageInterfaceFactory->create([
-            'parts' => [$mimePart]
+            'parts' => [$mimePart],
         ]);
 
         $to = $this->parseAddresses($headers['To'] ?? '');
@@ -184,7 +185,7 @@ class Parser
                 if (!empty($email)) {
                     $addresses[] = $this->addressFactory->create([
                         'email' => $email,
-                        'name' => $name
+                        'name' => $name,
                     ]);
                 }
             }

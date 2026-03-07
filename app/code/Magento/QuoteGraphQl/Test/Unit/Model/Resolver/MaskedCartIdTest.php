@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ class MaskedCartIdTest extends TestCase
                     'No such entity with %fieldName = %fieldValue',
                     [
                         'fieldName' => 'quoteId',
-                        'fieldValue' => $cartId
+                        'fieldValue' => $cartId,
                     ]
                 )
             )

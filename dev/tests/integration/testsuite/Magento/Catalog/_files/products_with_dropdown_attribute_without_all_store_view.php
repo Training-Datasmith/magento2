@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -6,20 +7,20 @@
 declare(strict_types=1);
 
 use Magento\Catalog\Api\Data\ProductAttributeInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Eav\Api\AttributeRepositoryInterface;
-use Magento\Eav\Model\Config as EavConfig;
-use Magento\Catalog\Setup\CategorySetup;
-use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Type as ProductType;
 use Magento\Catalog\Model\Product\Visibility;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute as EavAttribute;
+use Magento\Catalog\Setup\CategorySetup;
 use Magento\Eav\Api\AttributeOptionManagementInterface;
+use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Eav\Api\Data\AttributeOptionInterface;
-use Magento\Store\Model\StoreManagerInterface;
+use Magento\Eav\Model\Config as EavConfig;
 use Magento\Store\Api\Data\StoreInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 $storeManager = $objectManager->get(StoreManagerInterface::class);

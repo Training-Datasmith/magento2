@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,13 +10,13 @@ namespace Magento\CatalogWidget\Block\Product;
 
 use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
 use Magento\Bundle\Test\Fixture\Product as BundleProductFixture;
-use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
-use Magento\Catalog\Test\Fixture\MultiselectAttribute as MultiselectAttributeFixture;
-use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
-use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Catalog\Model\Indexer\Product\Eav\Processor;
+use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
 use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollection;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
+use Magento\Catalog\Test\Fixture\Category as CategoryFixture;
+use Magento\Catalog\Test\Fixture\MultiselectAttribute as MultiselectAttributeFixture;
+use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\TestFramework\Fixture\DataFixture;
@@ -109,7 +111,7 @@ class ProductsListTest extends TestCase
         $this->assertEquals(
             1,
             $productCollection->count(),
-            "Product collection was not filtered according to the widget condition."
+            'Product collection was not filtered according to the widget condition.'
         );
     }
 
@@ -163,7 +165,7 @@ class ProductsListTest extends TestCase
         $this->assertEquals(
             $count,
             $productCollection->count(),
-            "Product collection was not filtered according to the widget condition."
+            'Product collection was not filtered according to the widget condition.'
         );
     }
 
@@ -187,7 +189,7 @@ class ProductsListTest extends TestCase
         $this->assertEquals(
             1,
             $productCollection->count(),
-            "Product collection was not filtered according to the widget condition."
+            'Product collection was not filtered according to the widget condition.'
         );
         $this->assertEquals($sku, $productCollection->getFirstItem()->getSku());
     }
@@ -205,7 +207,7 @@ class ProductsListTest extends TestCase
             'not contains' => ['^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,'
                 . '`aggregator`:`all`,`value`:`1`,`new_child`:``^],'
                 . '`1--1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Product`,'
-                . '`attribute`:`sku`,`operator`:`!^[^]`,`value`:`virtual`^]^]', 'product-with-xss']
+                . '`attribute`:`sku`,`operator`:`!^[^]`,`value`:`virtual`^]^]', 'product-with-xss'],
         ];
     }
 
@@ -229,7 +231,7 @@ class ProductsListTest extends TestCase
         $this->assertEquals(
             1,
             $productCollection->count(),
-            "Product collection was not filtered according to the widget condition."
+            'Product collection was not filtered according to the widget condition.'
         );
     }
 
@@ -391,7 +393,7 @@ class ProductsListTest extends TestCase
                 10,
                 [
                     'simple1001',
-                ]
+                ],
             ],
             [
                 '>=',
@@ -400,12 +402,12 @@ class ProductsListTest extends TestCase
                     'simple1000',
                     'simple1001',
                     'configurable',
-                ]
+                ],
             ],
             [
                 '<',
                 10,
-                []
+                [],
             ],
             [
                 '<',
@@ -413,7 +415,7 @@ class ProductsListTest extends TestCase
                 [
                     'simple1000',
                     'configurable',
-                ]
+                ],
             ],
             [
                 '<=',
@@ -422,7 +424,7 @@ class ProductsListTest extends TestCase
                     'simple1000',
                     'simple1001',
                     'configurable',
-                ]
+                ],
             ],
         ];
     }
@@ -433,7 +435,7 @@ class ProductsListTest extends TestCase
             MultiselectAttributeFixture::class,
             [
                 'scope' => 'global',
-                'options' => ['option_1', 'option_2']
+                'options' => ['option_1', 'option_2'],
             ],
             'gl_multiselect'
         ),
@@ -441,7 +443,7 @@ class ProductsListTest extends TestCase
         DataFixture(
             ProductFixture::class,
             [
-                'category_ids' => ['$category.id$']
+                'category_ids' => ['$category.id$'],
             ],
             as: 'product1'
         ),
@@ -449,8 +451,8 @@ class ProductsListTest extends TestCase
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_1$']
-                ]
+                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_1$'],
+                ],
             ],
             as: 'product2'
         ),
@@ -458,8 +460,8 @@ class ProductsListTest extends TestCase
             ProductFixture::class,
             [
                 'custom_attributes' => [
-                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_2$']
-                ]
+                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_2$'],
+                ],
             ],
             as: 'product3'
         ),
@@ -468,8 +470,8 @@ class ProductsListTest extends TestCase
             [
                 'category_ids' => ['$category.id$'],
                 'custom_attributes' => [
-                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_1$']
-                ]
+                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_1$'],
+                ],
             ],
             as: 'product4'
         ),
@@ -478,8 +480,8 @@ class ProductsListTest extends TestCase
             [
                 'category_ids' => ['$category.id$'],
                 'custom_attributes' => [
-                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_2$']
-                ]
+                    ['attribute_code' => '$gl_multiselect.attribute_code$', 'value' => '$gl_multiselect.option_2$'],
+                ],
             ],
             as: 'product5'
         )
@@ -542,7 +544,7 @@ class ProductsListTest extends TestCase
                         'value' => fn ($fixtures) => $fixtures->get('gl_multiselect')->getData('option_1'),
                     ],
                 ],
-                ['product1', 'product2', 'product4', 'product5']
+                ['product1', 'product2', 'product4', 'product5'],
             ],
             'global multiselect with match AND' => [
                 [
@@ -565,7 +567,7 @@ class ProductsListTest extends TestCase
                         'value' => fn ($fixtures) => $fixtures->get('gl_multiselect')->getData('option_1'),
                     ],
                 ],
-                ['product4']
+                ['product4'],
             ],
             'global multiselect with single value' => [
                 [
@@ -582,8 +584,8 @@ class ProductsListTest extends TestCase
                         'value' => fn ($fixtures) => $fixtures->get('gl_multiselect')->getData('option_2'),
                     ],
                 ],
-                ['product3', 'product5']
-            ]
+                ['product3', 'product5'],
+            ],
         ];
     }
 
@@ -596,67 +598,67 @@ class ProductsListTest extends TestCase
             'is - category1,category2' => [
                 '==',
                 'category1,category2',
-                ['product111', 'product21', 'product11', 'product2', 'product1']
+                ['product111', 'product21', 'product11', 'product2', 'product1'],
             ],
             'is not - category1,category2' => [
                 '!=',
                 'category1,category2',
-                 ['product31', 'product4', 'product3']
+                 ['product31', 'product4', 'product3'],
             ],
             'contains - category1,category2' => [
                 '{}',
                 'category1,category2',
-               ['product111', 'product21', 'product11', 'product2', 'product1']
+               ['product111', 'product21', 'product11', 'product2', 'product1'],
             ],
             'does not contain - category1,category2' => [
                 '!{}',
                 'category1,category2',
-                 ['product31', 'product4', 'product3']
+                 ['product31', 'product4', 'product3'],
             ],
             'is one of - category1,category2' => [
                 '()',
                 'category1,category2',
-                ['product111', 'product21', 'product11', 'product2', 'product1']
+                ['product111', 'product21', 'product11', 'product2', 'product1'],
             ],
             'is not one of - category1,category2' => [
                 '!()',
                 'category1,category2',
-                ['product31', 'product4', 'product3']
+                ['product31', 'product4', 'product3'],
             ],
             // single anchor category
             'is - category1' => [
                 '==',
                 'category1',
-                ['product111', 'product11', 'product1']
+                ['product111', 'product11', 'product1'],
             ],
             'is not - category1' => [
                 '!=',
                 'category1',
-                ['product31', 'product21', 'product4', 'product3', 'product2']
+                ['product31', 'product21', 'product4', 'product3', 'product2'],
             ],
             // single non-anchor category
             'is - category3' => [
                 '==',
                 'category3',
-                ['product3']
+                ['product3'],
             ],
             'is not - category3' => [
                 '!=',
                 'category3',
-                ['product111', 'product31', 'product21', 'product11', 'product4', 'product2', 'product1']
+                ['product111', 'product31', 'product21', 'product11', 'product4', 'product2', 'product1'],
             ],
             // anchor and non-anchor category
             'is - category1,category3' => [
                 '==',
                 // spaces are intentional to check trimming functionality
                 'category1 , category3',
-                ['product111', 'product11', 'product3', 'product1']
+                ['product111', 'product11', 'product3', 'product1'],
             ],
             'is not - category1,category3' => [
                 '!=',
                 // spaces are intentional to check trimming functionality
                 'category1 , category3',
-                ['product31', 'product21', 'product4', 'product2']
+                ['product31', 'product21', 'product4', 'product2'],
             ],
         ];
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\Import\Source;
 
 use Magento\Framework\Filesystem\Directory\Read as DirectoryRead;

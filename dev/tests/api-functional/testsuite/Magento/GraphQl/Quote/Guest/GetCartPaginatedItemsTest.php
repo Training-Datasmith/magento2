@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -109,14 +110,14 @@ class GetCartPaginatedItemsTest extends GraphQlAbstract
             ProductStockFixture::class,
             [
                 'prod_id' => '$p1.id$',
-                'prod_qty' => 100
+                'prod_qty' => 100,
             ],
             'p1Stock'
         ),
         DataFixture(
             BundleSelectionFixture::class,
             [
-                'sku' => '$p1.sku$', 'price' => 100, 'price_type' => 0
+                'sku' => '$p1.sku$', 'price' => 100, 'price_type' => 0,
             ],
             as:'link'
         ),
@@ -125,7 +126,7 @@ class GetCartPaginatedItemsTest extends GraphQlAbstract
             [   'title' => 'Checkbox Options',
                 'type' => 'checkbox',
                 'required' => 1,
-                'product_links' => ['$link$']
+                'product_links' => ['$link$'],
             ],
             'option'
         ),
@@ -141,7 +142,7 @@ class GetCartPaginatedItemsTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product.id$',
                 'selections' => [['$p1.id$']],
-                'qty' => 100
+                'qty' => 100,
             ],
             as: 'cart_item'
         ),
@@ -179,29 +180,29 @@ class GetCartPaginatedItemsTest extends GraphQlAbstract
                                 'price' => [
                                     'value' => 10,
                                     'currency' => 'USD',
-                                ]
+                                ],
                             ],
                             'errors' => [
                                 [
                                     'code' => 'ITEM_QTY',
-                                    'message' => 'This product is out of stock.'
+                                    'message' => 'This product is out of stock.',
                                 ],
                                 [
                                     'code' => 'UNDEFINED',
                                     'message' => 'There are no source items with the in stock status
 This product is out of stock.
-The required options you selected are not available.'
-                                ]
-                            ]
+The required options you selected are not available.',
+                                ],
+                            ],
                         ],
                     ],
                     'page_info' => [
                         'page_size' => 20,
                         'current_page' => 1,
                         'total_pages' => 1,
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ];
         $this->assertEquals(
             $expected,
@@ -247,9 +248,9 @@ The required options you selected are not available.'
                                 'price' => [
                                     'value' => 10,
                                     'currency' => 'USD',
-                                ]
+                                ],
                             ],
-                            'errors' => null
+                            'errors' => null,
                         ],
                         [
                             'id' => $cartItem2->getId(),
@@ -262,18 +263,18 @@ The required options you selected are not available.'
                                 'price' => [
                                     'value' => 10,
                                     'currency' => 'USD',
-                                ]
+                                ],
                             ],
-                            'errors' => null
+                            'errors' => null,
                         ],
                     ],
                     'page_info' => [
                         'page_size' => 2,
                         'current_page' => 1,
                         'total_pages' => 3,
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ];
         $this->assertEquals(
             $expected,

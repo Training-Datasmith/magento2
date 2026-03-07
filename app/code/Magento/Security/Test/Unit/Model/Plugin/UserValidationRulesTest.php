@@ -21,7 +21,6 @@ use PHPUnit\Framework\TestCase;
  */
 class UserValidationRulesTest extends TestCase
 {
-
     /**
      * @var UserValidationRules|MockObject
      */

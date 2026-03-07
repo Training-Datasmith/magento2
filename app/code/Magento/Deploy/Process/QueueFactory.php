@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Process;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Phrase;
 
 /**
@@ -52,7 +55,7 @@ class QueueFactory
         $queue = $this->objectManager->create($this->type, $arguments);
         if (!$queue instanceof Queue) {
             throw new LocalizedException(
-                new Phrase("Wrong queue type specified.")
+                new Phrase('Wrong queue type specified.')
             );
         }
         return $queue;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,8 +10,8 @@ namespace Magento\Sales\Block\Order\Email\Shipment;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
 

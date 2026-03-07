@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -60,7 +62,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'subtotals_label' => __('Subtotal'),
                 'html_decorators' => ['nobr'],
                 'header_css_class' => 'col-period',
-                'column_css_class' => 'col-period'
+                'column_css_class' => 'col-period',
             ]
         );
 
@@ -71,7 +73,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'index' => 'shipping_description',
                 'sortable' => false,
                 'header_css_class' => 'col-method',
-                'column_css_class' => 'col-method'
+                'column_css_class' => 'col-method',
             ]
         );
 
@@ -84,7 +86,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'type' => 'number',
                 'sortable' => false,
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 
@@ -104,7 +106,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-total-sales-shipping',
                 'column_css_class' => 'col-total-sales-shipping',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 
@@ -120,7 +122,7 @@ class Grid extends \Magento\Reports\Block\Adminhtml\Grid\AbstractGrid
                 'rate' => $rate,
                 'header_css_class' => 'col-total-shipping',
                 'column_css_class' => 'col-total-shipping',
-                'renderer' => Currency::class
+                'renderer' => Currency::class,
             ]
         );
 

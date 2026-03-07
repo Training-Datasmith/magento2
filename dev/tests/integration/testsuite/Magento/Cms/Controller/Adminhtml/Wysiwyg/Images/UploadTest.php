@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Cms\Controller\Adminhtml\Wysiwyg\Images;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Controller\Result\Json as JsonResponse;
-use Magento\Framework\App\Response\HttpFactory as ResponseFactory;
 use Magento\Framework\App\Response\Http as Response;
+use Magento\Framework\App\Response\HttpFactory as ResponseFactory;
+use Magento\Framework\Controller\Result\Json as JsonResponse;
 use Magento\Framework\Filesystem\Driver\File;
 
 /**

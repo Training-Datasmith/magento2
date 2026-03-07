@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Authorization\Model\Role;
 use Magento\Authorization\Model\RoleFactory;
 use Magento\Authorization\Model\Rules;
@@ -29,6 +29,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Tests for cms page service.
@@ -502,7 +503,7 @@ class PageRepositoryTest extends WebapiAbstract
         $serviceInfo = $this->getServiceInfo(
             'GetList',
             Request::HTTP_METHOD_GET,
-            self::RESOURCE_PATH . "/search" . '?' . http_build_query($requestData)
+            self::RESOURCE_PATH . '/search' . '?' . http_build_query($requestData)
         );
 
         $searchResult = $this->_webApiCall($serviceInfo, $requestData);
@@ -652,14 +653,14 @@ class PageRepositoryTest extends WebapiAbstract
                 'service' => self::SERVICE_NAME,
                 'serviceVersion' => self::SERVICE_VERSION,
                 'operation' => self::SERVICE_NAME . 'Save',
-                'token' => $token
+                'token' => $token,
             ],
         ];
         $requestData = [
             'page' => [
                 PageInterface::IDENTIFIER => $id,
                 PageInterface::TITLE => self::PAGE_TITLE,
-                PageInterface::CUSTOM_THEME => 1
+                PageInterface::CUSTOM_THEME => 1,
             ],
         ];
 
@@ -798,7 +799,7 @@ class PageRepositoryTest extends WebapiAbstract
                 'active'                    => true,
                 PageInterface::PAGE_LAYOUT  => '1column',
                 PageInterface::CONTENT      => self::PAGE_CONTENT,
-            ]
+            ],
         ];
     }
 

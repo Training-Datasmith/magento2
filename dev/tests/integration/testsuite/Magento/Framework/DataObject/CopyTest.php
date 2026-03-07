@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DataObject;
 
 class CopyTest extends \PHPUnit\Framework\TestCase
@@ -66,7 +69,7 @@ class CopyTest extends \PHPUnit\Framework\TestCase
             'firstname'            => $firstName,
             'lastname'             => 'Last',
             // see declaration in dev/tests/integration/testsuite/Magento/Framework/Api/etc/extension_attributes.xml
-            'extension_attributes' => ['test_group_code' => $groupCode]
+            'extension_attributes' => ['test_group_code' => $groupCode],
         ];
         $dataWithExtraField = array_merge($data, ['undeclared_field' => 'will be omitted']);
 
@@ -90,17 +93,17 @@ class CopyTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(\Magento\TestModuleExtensionAttributes\Api\Data\FakeCustomerInterface::class, $target);
         $this->assertNull(
             $target->getEmail(),
-            "Email should not be set because it is not defined in the fieldset."
+            'Email should not be set because it is not defined in the fieldset.'
         );
         $this->assertEquals(
             $firstName,
             $target->getFirstname(),
-            "First name was not copied."
+            'First name was not copied.'
         );
         $this->assertEquals(
             $groupCode,
             $target->getExtensionAttributes()->getTestGroupCode(),
-            "Extension attribute was not copied."
+            'Extension attribute was not copied.'
         );
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class DefinitionAggregator implements DbDefinitionProcessorInterface
         $type = $column->getType();
         if (!isset($this->definitionProcessors[$type])) {
             throw new \InvalidArgumentException(
-                sprintf("Cannot process object to definition for type %s", $type)
+                sprintf('Cannot process object to definition for type %s', $type)
             );
         }
 
@@ -63,7 +64,7 @@ class DefinitionAggregator implements DbDefinitionProcessorInterface
         $type = $data['type'];
         if (!isset($this->definitionProcessors[$type])) {
             throw new \InvalidArgumentException(
-                sprintf("Cannot process definition to array for type %s", $type)
+                sprintf('Cannot process definition to array for type %s', $type)
             );
         }
 
@@ -88,9 +89,9 @@ class DefinitionAggregator implements DbDefinitionProcessorInterface
             return $defaultValue;
         }
         if ($defaultValue === "'NULL'") {
-            return "NULL";
+            return 'NULL';
         }
-        if ($defaultValue === "NULL" && $this->isMariaDbSqlConnection()) {
+        if ($defaultValue === 'NULL' && $this->isMariaDbSqlConnection()) {
             return null;
         }
         /*
@@ -102,11 +103,11 @@ class DefinitionAggregator implements DbDefinitionProcessorInterface
             [
                 'current_timestamp()' => 'CURRENT_TIMESTAMP',
                 'curdate()' => 'CURRENT_DATE',
-                'curtime()' => 'CURRENT_TIME'
+                'curtime()' => 'CURRENT_TIME',
             ]
         );
         //replace escaped single quotes
-        $defaultValue = str_replace("'", "", $defaultValue);
+        $defaultValue = str_replace("'", '', $defaultValue);
 
         return $defaultValue;
     }

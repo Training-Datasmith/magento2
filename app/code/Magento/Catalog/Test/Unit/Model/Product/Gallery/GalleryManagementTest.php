@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,6 +16,7 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Gallery\DefaultValueProcessor;
 use Magento\Catalog\Model\Product\Gallery\DeleteValidator;
 use Magento\Catalog\Model\Product\Gallery\GalleryManagement;
+use Magento\Catalog\Model\Product\Media\ConfigInterface as MediaConfig;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Api\Data\ImageContentInterface;
@@ -25,10 +27,9 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\Filesystem\Driver\File\Mime;
 use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\Filesystem\Io\File;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Filesystem\Io\File;
-use Magento\Catalog\Model\Product\Media\ConfigInterface as MediaConfig;
 
 /**
  * Tests for \Magento\Catalog\Model\Product\Gallery\GalleryManagement.
@@ -131,7 +132,7 @@ class GalleryManagementTest extends TestCase
                 'getMediaGalleryEntries',
                 'setMediaGalleryEntries',
                 'getMediaAttributes',
-                'getMediaConfig'
+                'getMediaConfig',
             ]
         );
         $this->mediaGalleryEntryMock =
@@ -169,7 +170,7 @@ class GalleryManagementTest extends TestCase
         $this->contentValidatorMock->expects($this->once())->method('isValid')->with($entryContentMock)
             ->willReturn(false);
 
-        $this->model->create("sku", $this->mediaGalleryEntryMock);
+        $this->model->create('sku', $this->mediaGalleryEntryMock);
     }
 
     /**
@@ -426,7 +427,7 @@ class GalleryManagementTest extends TestCase
         $mediaConfigMock = $this->createMock(MediaConfig::class);
         $mediaConfigMock->expects($this->once())
             ->method('getMediaPath')
-            ->willReturn("base/path/test123.jpg");
+            ->willReturn('base/path/test123.jpg');
         $this->productMock->expects($this->once())
             ->method('getMediaConfig')
             ->willReturn($mediaConfigMock);
@@ -483,7 +484,7 @@ class GalleryManagementTest extends TestCase
         $mediaConfigMock = $this->createMock(MediaConfig::class);
         $mediaConfigMock->expects($this->once())
             ->method('getMediaPath')
-            ->willReturn("base/path/test123.jpg");
+            ->willReturn('base/path/test123.jpg');
         $this->productMock->expects($this->once())
             ->method('getMediaConfig')
             ->willReturn($mediaConfigMock);

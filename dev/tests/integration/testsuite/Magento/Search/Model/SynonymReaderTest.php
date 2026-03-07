@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -31,55 +34,55 @@ class SynonymReaderTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [
-                'ELIZABETH', []
+                'ELIZABETH', [],
             ],
             [
-                '-+<(ELIZABETH)>*~', []
+                '-+<(ELIZABETH)>*~', [],
             ],
             [
-                'ENGLISH', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]]
+                'ENGLISH', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]],
             ],
             [
-                'English', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]]
+                'English', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]],
             ],
             [
-                'QUEEN', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]]
+                'QUEEN', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]],
             ],
             [
-                'Monarch', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]]
+                'Monarch', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]],
             ],
             [
-                '-+<(Monarch)>*~', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]]
+                '-+<(Monarch)>*~', [['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0]],
             ],
             [
                 'MONARCH English', [
                 ['synonyms' => 'queen,monarch', 'store_id' => 1, 'website_id' => 0],
-                ['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]
-                ]
+                ['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0],
+                ],
             ],
             [
-                'query_value', []
+                'query_value', [],
             ],
             [
-                'query_value+', []
+                'query_value+', [],
             ],
             [
-                'query_value-', []
+                'query_value-', [],
             ],
             [
-                'query_@value', []
+                'query_@value', [],
             ],
             [
-                'query_value+@', []
+                'query_value+@', [],
             ],
             [
-                '<', []
+                '<', [],
             ],
             [
-                '>', []
+                '>', [],
             ],
             [
-                '<english>', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]]
+                '<english>', [['synonyms' => 'british,english', 'store_id' => 1, 'website_id' => 0]],
             ],
         ];
     }

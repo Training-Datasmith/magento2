@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Rollback for quote_with_shipping_method.php fixture.
  *

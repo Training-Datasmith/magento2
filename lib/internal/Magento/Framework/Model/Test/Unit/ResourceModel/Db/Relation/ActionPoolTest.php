@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class ActionPoolTest extends TestCase
             ActionPool::class,
             [
                 'objectManager' => $this->objectManagerMock,
-                'relationActions' => $relationActions
+                'relationActions' => $relationActions,
             ]
         );
     }

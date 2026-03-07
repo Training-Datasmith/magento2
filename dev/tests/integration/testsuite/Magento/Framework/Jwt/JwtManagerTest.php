@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -18,7 +19,6 @@ use Magento\Framework\Jwt\Header\Critical;
 use Magento\Framework\Jwt\Header\KeyId;
 use Magento\Framework\Jwt\Header\PrivateHeaderParameter;
 use Magento\Framework\Jwt\Header\PublicHeaderParameter;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Jwt\Jwe\Jwe;
 use Magento\Framework\Jwt\Jwe\JweEncryptionJwks;
 use Magento\Framework\Jwt\Jwe\JweEncryptionSettingsInterface;
@@ -35,6 +35,7 @@ use Magento\Framework\Jwt\Unsecured\NoEncryption;
 use Magento\Framework\Jwt\Unsecured\UnsecuredJwt;
 use Magento\Framework\Jwt\Unsecured\UnsecuredJwtInterface;
 use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class JwtManagerTest extends TestCase
@@ -160,9 +161,9 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('custom-header', 'value'),
-                        new PrivateHeaderParameter('another-custom-header', 'value2')
+                        new PrivateHeaderParameter('another-custom-header', 'value2'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -170,7 +171,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2'),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             ),
             null
@@ -180,23 +181,23 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('custom-header', 'value'),
-                        new Critical(['magento'])
+                        new Critical(['magento']),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
                     new PrivateClaim('custom-claim', 'value'),
                     new PrivateClaim('custom-claim2', 'value2'),
-                    new ExpirationTime(new \DateTimeImmutable())
+                    new ExpirationTime(new \DateTimeImmutable()),
                 ]
             ),
             [
                 new JwsHeader(
                     [
-                        new PublicHeaderParameter('public-header', 'magento', 'public-value')
+                        new PublicHeaderParameter('public-header', 'magento', 'public-value'),
                     ]
-                )
+                ),
             ]
         );
         $compactJws = new Jws(
@@ -204,31 +205,31 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test', true),
-                        new PublicHeaderParameter('test2', 'magento', 'value')
+                        new PublicHeaderParameter('test2', 'magento', 'value'),
                     ]
                 ),
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test3', true),
-                        new PublicHeaderParameter('test4', 'magento', 'value-another')
+                        new PublicHeaderParameter('test4', 'magento', 'value-another'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload([
                 new Issuer('magento.com'),
                 new JwtId(),
-                new Subject('stuff')
+                new Subject('stuff'),
             ]),
             [
                 new JwsHeader([new PrivateHeaderParameter('public', 'header1')]),
-                new JwsHeader([new PrivateHeaderParameter('public2', 'header')])
+                new JwsHeader([new PrivateHeaderParameter('public2', 'header')]),
             ]
         );
         $flatJwe = new Jwe(
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             null,
@@ -239,7 +240,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -247,12 +248,12 @@ class JwtManagerTest extends TestCase
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             new JweHeader(
                 [
-                    new PrivateHeaderParameter('mage', 'test')
+                    new PrivateHeaderParameter('mage', 'test'),
                 ]
             ),
             null,
@@ -262,7 +263,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -270,16 +271,16 @@ class JwtManagerTest extends TestCase
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             null,
             [
                 new JweHeader(
                     [
-                        new PrivateHeaderParameter('mage', 'test')
+                        new PrivateHeaderParameter('mage', 'test'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -287,7 +288,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -295,17 +296,17 @@ class JwtManagerTest extends TestCase
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             new JweHeader(
                 [
-                    new PrivateHeaderParameter('mage', 'test')
+                    new PrivateHeaderParameter('mage', 'test'),
                 ]
             ),
             [
                 new JweHeader([new PrivateHeaderParameter('tst', 2)]),
-                new JweHeader([new PrivateHeaderParameter('test2', 3)])
+                new JweHeader([new PrivateHeaderParameter('test2', 3)]),
             ],
             new ClaimsPayload(
                 [
@@ -313,7 +314,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -326,7 +327,7 @@ class JwtManagerTest extends TestCase
             null,
             [
                 new JweHeader([new PrivateHeaderParameter('tst', 2), new KeyId('2')]),
-                new JweHeader([new PrivateHeaderParameter('test2', 3), new KeyId('1')])
+                new JweHeader([new PrivateHeaderParameter('test2', 3), new KeyId('1')]),
             ],
             new ClaimsPayload(
                 [
@@ -334,7 +335,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -343,9 +344,9 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test', true),
-                        new PublicHeaderParameter('test2', 'magento', 'value')
+                        new PublicHeaderParameter('test2', 'magento', 'value'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -353,7 +354,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             ),
             null
@@ -368,32 +369,32 @@ class JwtManagerTest extends TestCase
             'jws-HS256' => [
                 $flatJws,
                 $enc = new JwsSignatureJwks($jwkFactory->createHs256($sharedSecret)),
-                [$enc]
+                [$enc],
             ],
             'jws-HS384' => [
                 $flatJws,
                 $enc = new JwsSignatureJwks($jwkFactory->createHs384($sharedSecret, '3')),
-                [$enc]
+                [$enc],
             ],
             'jws-HS512' => [
                 $jwsWithUnprotectedHeader,
                 $enc = new JwsSignatureJwks($jwkFactory->createHs512($sharedSecret)),
-                [$enc]
+                [$enc],
             ],
             'jws-RS256' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignRs256($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyRs256($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyRs256($rsaPublic))],
             ],
             'jws-RS384' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignRs384($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyRs384($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyRs384($rsaPublic))],
             ],
             'jws-RS512' => [
                 $jwsWithUnprotectedHeader,
                 new JwsSignatureJwks($jwkFactory->createSignRs512($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyRs512($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyRs512($rsaPublic))],
             ],
             'jws-json-multiple-signatures' => [
                 $compactJws,
@@ -401,7 +402,7 @@ class JwtManagerTest extends TestCase
                     new JwkSet(
                         [
                             $jwkFactory->createHs384($sharedSecret),
-                            $jwkFactory->createSignRs256($rsaPrivate, 'pass')
+                            $jwkFactory->createSignRs256($rsaPrivate, 'pass'),
                         ]
                     )
                 ),
@@ -410,8 +411,8 @@ class JwtManagerTest extends TestCase
                         new JwkSet(
                             [$jwkFactory->createHs384($sharedSecret), $jwkFactory->createVerifyRs256($rsaPublic)]
                         )
-                    )
-                ]
+                    ),
+                ],
             ],
             'jws-json-multiple-signatures-one-read' => [
                 $compactJws,
@@ -419,41 +420,41 @@ class JwtManagerTest extends TestCase
                     new JwkSet(
                         [
                             $jwkFactory->createHs384($sharedSecret),
-                            $jwkFactory->createSignRs256($rsaPrivate, 'pass')
+                            $jwkFactory->createSignRs256($rsaPrivate, 'pass'),
                         ]
                     )
                 ),
-                [new JwsSignatureJwks($jwkFactory->createVerifyRs256($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyRs256($rsaPublic))],
             ],
             'jws-ES256' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignEs256($ecKeys[256][0], 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyEs256($ecKeys[256][1]))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyEs256($ecKeys[256][1]))],
             ],
             'jws-ES384' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignEs384($ecKeys[384][0], 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyEs384($ecKeys[384][1]))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyEs384($ecKeys[384][1]))],
             ],
             'jws-ES512' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignEs512($ecKeys[512][0], 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyEs512($ecKeys[512][1]))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyEs512($ecKeys[512][1]))],
             ],
             'jws-PS256' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignPs256($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyPs256($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyPs256($rsaPublic))],
             ],
             'jws-PS384' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignPs384($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyPs384($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyPs384($rsaPublic))],
             ],
             'jws-PS512' => [
                 $flatJws,
                 new JwsSignatureJwks($jwkFactory->createSignPs512($rsaPrivate, 'pass')),
-                [new JwsSignatureJwks($jwkFactory->createVerifyPs512($rsaPublic))]
+                [new JwsSignatureJwks($jwkFactory->createVerifyPs512($rsaPublic))],
             ],
             'jwe-A128KW' => [
                 $flatJwe,
@@ -465,8 +466,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA128KW($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-A192KW' => [
                 $jsonFlatSharedHeaderJwe,
@@ -478,8 +479,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA192KW($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-A256KW' => [
                 $jsonFlatJwe,
@@ -491,8 +492,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA256KW($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-multiple-recipients' => [
                 $jsonJwe,
@@ -500,7 +501,7 @@ class JwtManagerTest extends TestCase
                     new JwkSet(
                         [
                             $jwkFactory->createA256KW($sharedSecret),
-                            $jwkFactory->createA128KW($sharedSecret)
+                            $jwkFactory->createA128KW($sharedSecret),
                         ]
                     ),
                     JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
@@ -513,8 +514,8 @@ class JwtManagerTest extends TestCase
                             ]
                         ),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-rsa-oaep' => [
                 $flatJwe,
@@ -526,8 +527,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptRsaOaep($rsaPrivate, 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-rsa-oaep-256' => [
                 $flatJwe,
@@ -539,8 +540,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptRsaOaep256($rsaPrivate, 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-dir' => [
                 $flatJwe,
@@ -558,8 +559,8 @@ class JwtManagerTest extends TestCase
                             JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192_HS384
                         ),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A192_HS384
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-multiple-recipients-kids' => [
                 $jsonJweKids,
@@ -567,7 +568,7 @@ class JwtManagerTest extends TestCase
                     new JwkSet(
                         [
                             $jwkFactory->createEncryptRsaOaep256($rsaPublic, '2'),
-                            $jwkFactory->createA256KW($sharedSecret, '1')
+                            $jwkFactory->createA256KW($sharedSecret, '1'),
                         ]
                     ),
                     JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
@@ -576,12 +577,12 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         new JwkSet(
                             [
-                                $jwkFactory->createDecryptRsaOaep256($rsaPrivate, 'pass', '2')
+                                $jwkFactory->createDecryptRsaOaep256($rsaPrivate, 'pass', '2'),
                             ]
                         ),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-ECDH-ES-with-EC' => [
                 $flatJwe,
@@ -593,8 +594,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptEcdhEsWithEc($ecKeys[256][0], 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-ECDH-ES-A128-with-EC' => [
                 $flatJwe,
@@ -606,8 +607,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptEcdhEsA128kwWithEc($ecKeys[256][0], 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-ECDH-ES-A192-with-EC' => [
                 $flatJwe,
@@ -619,8 +620,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptEcdhEsA192kwWithEc($ecKeys[256][0], 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-ECDH-ES-A256-with-EC' => [
                 $flatJwe,
@@ -632,8 +633,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createDecryptEcdhEsA256kwWithEc($ecKeys[256][0], 'pass'),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128_HS256
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-A128GCMKW' => [
                 $flatJwe,
@@ -645,8 +646,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA128Gcmkw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-A192GCMKW' => [
                 $flatJwe,
@@ -658,8 +659,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA192Gcmkw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-A256GCMKW' => [
                 $flatJwe,
@@ -671,8 +672,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createA256Gcmkw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-PBES2-HS256+A128KW' => [
                 $flatJwe,
@@ -684,8 +685,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createPbes2Hs256A128kw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-PBES2-HS384+A192KW' => [
                 $flatJwe,
@@ -697,8 +698,8 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createPbes2Hs384A192kw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'jwe-PBES2-HS512+A256KW' => [
                 $flatJwe,
@@ -710,14 +711,14 @@ class JwtManagerTest extends TestCase
                     new JweEncryptionJwks(
                         $jwkFactory->createPbes2Hs512A256kw($sharedSecret),
                         JweEncryptionSettingsInterface::CONTENT_ENCRYPTION_ALGO_A128GCM
-                    )
-                ]
+                    ),
+                ],
             ],
             'unsecured-jwt' => [
                 $flatUnsecured,
                 new NoEncryption(),
-                [new NoEncryption()]
-            ]
+                [new NoEncryption()],
+            ],
         ];
     }
 
@@ -771,9 +772,9 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('custom-header', 'value'),
-                        new PrivateHeaderParameter('another-custom-header', 'value2')
+                        new PrivateHeaderParameter('another-custom-header', 'value2'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -781,7 +782,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2'),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             ),
             null
@@ -791,23 +792,23 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('custom-header', 'value'),
-                        new Critical(['magento'])
+                        new Critical(['magento']),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
                     new PrivateClaim('custom-claim', 'value'),
                     new PrivateClaim('custom-claim2', 'value2'),
-                    new ExpirationTime(new \DateTimeImmutable())
+                    new ExpirationTime(new \DateTimeImmutable()),
                 ]
             ),
             [
                 new JwsHeader(
                     [
-                        new PublicHeaderParameter('public-header', 'magento', 'public-value')
+                        new PublicHeaderParameter('public-header', 'magento', 'public-value'),
                     ]
-                )
+                ),
             ]
         );
         $jsonJws = new Jws(
@@ -815,31 +816,31 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test', true),
-                        new PublicHeaderParameter('test2', 'magento', 'value')
+                        new PublicHeaderParameter('test2', 'magento', 'value'),
                     ]
                 ),
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test3', true),
-                        new PublicHeaderParameter('test4', 'magento', 'value-another')
+                        new PublicHeaderParameter('test4', 'magento', 'value-another'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload([
                 new Issuer('magento.com'),
                 new JwtId(),
-                new Subject('stuff')
+                new Subject('stuff'),
             ]),
             [
                 new JwsHeader([new PrivateHeaderParameter('public', 'header1')]),
-                new JwsHeader([new PrivateHeaderParameter('public2', 'header')])
+                new JwsHeader([new PrivateHeaderParameter('public2', 'header')]),
             ]
         );
         $flatJwe = new Jwe(
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             null,
@@ -850,7 +851,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -858,16 +859,16 @@ class JwtManagerTest extends TestCase
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             null,
             [
                 new JweHeader(
                     [
-                        new PrivateHeaderParameter('mage', 'test')
+                        new PrivateHeaderParameter('mage', 'test'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -875,7 +876,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -883,17 +884,17 @@ class JwtManagerTest extends TestCase
             new JweHeader(
                 [
                     new PrivateHeaderParameter('test', true),
-                    new PublicHeaderParameter('test2', 'magento', 'value')
+                    new PublicHeaderParameter('test2', 'magento', 'value'),
                 ]
             ),
             new JweHeader(
                 [
-                    new PrivateHeaderParameter('mage', 'test')
+                    new PrivateHeaderParameter('mage', 'test'),
                 ]
             ),
             [
                 new JweHeader([new PrivateHeaderParameter('tst', 2)]),
-                new JweHeader([new PrivateHeaderParameter('test2', 3)])
+                new JweHeader([new PrivateHeaderParameter('test2', 3)]),
             ],
             new ClaimsPayload(
                 [
@@ -901,7 +902,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             )
         );
@@ -910,9 +911,9 @@ class JwtManagerTest extends TestCase
                 new JwsHeader(
                     [
                         new PrivateHeaderParameter('test', true),
-                        new PublicHeaderParameter('test2', 'magento', 'value')
+                        new PublicHeaderParameter('test2', 'magento', 'value'),
                     ]
-                )
+                ),
             ],
             new ClaimsPayload(
                 [
@@ -920,7 +921,7 @@ class JwtManagerTest extends TestCase
                     new PrivateClaim('custom-claim2', 'value2', true),
                     new PrivateClaim('custom-claim3', 'value3'),
                     new IssuedAt(new \DateTimeImmutable()),
-                    new Issuer('magento.com')
+                    new Issuer('magento.com'),
                 ]
             ),
             null
@@ -947,7 +948,7 @@ class JwtManagerTest extends TestCase
             'jwe' => [$flatJwe, $jweJwkSettings],
             'flat-jwe' => [$jsonFlatJwe, $jweJwkSettings],
             'json-jwe' => [$jsonJwe, $jsonJweSettings],
-            'none-jws' => [$flatUnsecured, new NoEncryption()]
+            'none-jws' => [$flatUnsecured, new NoEncryption()],
         ];
     }
 
@@ -1011,7 +1012,7 @@ class JwtManagerTest extends TestCase
         $curveNameMap = [
             256 => 'prime256v1',
             384 => 'secp384r1',
-            512 => 'secp521r1'
+            512 => 'secp521r1',
         ];
         $ecKeys = [];
         foreach ($curveNameMap as $bits => $curve) {

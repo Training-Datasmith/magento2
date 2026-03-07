@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ use Stomp\Transport\Message;
  */
 class Queue implements QueueInterface
 {
-
     /**
      * @var Config
      */

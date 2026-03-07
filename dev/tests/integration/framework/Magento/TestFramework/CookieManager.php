@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Replacement for PhpCookieManager model that doesn't send cookie headers in testing environment
  */
+
 namespace Magento\TestFramework;
 
 class CookieManager extends \Magento\Framework\Stdlib\Cookie\PhpCookieManager

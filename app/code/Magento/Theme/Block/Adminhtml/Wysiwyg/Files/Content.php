@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Adminhtml\Wysiwyg\Files;
 
 /**
@@ -58,7 +61,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
                 'class' => 'save',
                 'label' => __('Create Folder'),
                 'type' => 'button',
-                'onclick' => 'MediabrowserInstance.newFolder();'
+                'onclick' => 'MediabrowserInstance.newFolder();',
             ]
         );
 
@@ -69,7 +72,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
                 'label' => __('Delete Folder'),
                 'type' => 'button',
                 'onclick' => 'MediabrowserInstance.deleteFolder();',
-                'id' => 'button_delete_folder'
+                'id' => 'button_delete_folder',
             ]
         );
 
@@ -80,7 +83,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
                 'label' => __('Delete File'),
                 'type' => 'button',
                 'onclick' => 'MediabrowserInstance.deleteFiles();',
-                'id' => 'button_delete_files'
+                'id' => 'button_delete_files',
             ]
         );
 
@@ -91,7 +94,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
                 'label' => __('Insert File'),
                 'type' => 'button',
                 'onclick' => 'MediabrowserInstance.insert();',
-                'id' => 'button_insert_files'
+                'id' => 'button_insert_files',
             ]
         );
     }

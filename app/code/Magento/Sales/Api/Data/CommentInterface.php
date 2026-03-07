@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Api\Data;
 
 /**
@@ -16,12 +19,12 @@ interface CommentInterface
     /*
      * Is-visible-on-storefront flag.
      */
-    const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
+    public const IS_VISIBLE_ON_FRONT = 'is_visible_on_front';
 
     /*
      * Comment.
      */
-    const COMMENT = 'comment';
+    public const COMMENT = 'comment';
 
     /**
      * Gets the comment text.

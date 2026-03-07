@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class CreditmemoAddCommentTest extends WebapiAbstract
             Comment::CREATED_AT => null,
             Comment::PARENT_ID => $creditmemo->getId(),
             Comment::IS_VISIBLE_ON_FRONT => 1,
-            Comment::IS_CUSTOMER_NOTIFIED => 1
+            Comment::IS_CUSTOMER_NOTIFIED => 1,
         ];
 
         $requestData = ['entity' => $commentData];

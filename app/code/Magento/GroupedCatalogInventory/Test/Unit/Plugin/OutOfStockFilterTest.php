@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -205,7 +206,7 @@ class OutOfStockFilterTest extends TestCase
         return [
             [123],
             ['abc'],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 

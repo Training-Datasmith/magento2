@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AdminNotification\Controller\Adminhtml\System\Message;
 
 use Magento\Framework\Controller\ResultFactory;
@@ -18,31 +21,17 @@ class ListAction extends \Magento\Backend\App\AbstractAction
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::show_list';
 
     /**
-     * @var \Magento\Framework\Json\Helper\Data
-     * @deprecated 100.3.0
-     * @see \Magento\Framework\Serialize\Serializer\Json
-     */
-    protected $jsonHelper;
-
-    /**
-     * @var \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection
-     */
-    protected $messageCollection;
-
-    /**
      * Initialize ListAction
-     *
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
-     * @param \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection $messageCollection
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection $messageCollection
+        /**
+         * @deprecated 100.3.0
+         * @see \Magento\Framework\Serialize\Serializer\Json
+         */
+        protected \Magento\Framework\Json\Helper\Data $jsonHelper,
+        protected \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection $messageCollection
     ) {
-        $this->jsonHelper = $jsonHelper;
-        $this->messageCollection = $messageCollection;
         parent::__construct($context);
     }
 
@@ -68,7 +57,7 @@ class ListAction extends \Magento\Backend\App\AbstractAction
                 'text' => __(
                     'You have viewed and resolved all recent system notices. '
                     . 'Please refresh the web page to clear the notice alert.'
-                )
+                ),
             ];
         }
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */

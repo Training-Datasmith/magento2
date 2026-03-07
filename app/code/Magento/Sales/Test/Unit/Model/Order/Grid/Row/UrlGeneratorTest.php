@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,13 +12,12 @@ use Magento\Backend\Model\UrlInterface;
 use Magento\Framework\AuthorizationInterface;
 use Magento\Framework\DataObject;
 use Magento\Sales\Model\Order\Grid\Row\UrlGenerator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class UrlGeneratorTest extends TestCase
 {
-
     /**
      * @var UrlGenerator
      */
@@ -53,7 +53,7 @@ class UrlGeneratorTest extends TestCase
     {
         return [
             [true, null],
-            [false, false]
+            [false, false],
         ];
     }
 

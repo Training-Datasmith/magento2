@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\View\Test\Unit\Layout\Argument\Interpreter;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\Layout\Argument\Interpreter\HelperMethod;
 use Magento\Framework\View\Layout\Argument\Interpreter\NamedParams;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class HelperMethodTest extends TestCase
 {
@@ -94,7 +95,7 @@ class HelperMethodTest extends TestCase
                 'help',
                 'Helper method name in format "\Class\Name::methodName" is expected',
             ],
-            'non-existing method' => [$nonExistingHelper, "Helper method '{$nonExistingHelper}' does not exist"]
+            'non-existing method' => [$nonExistingHelper, "Helper method '{$nonExistingHelper}' does not exist"],
         ];
     }
 }

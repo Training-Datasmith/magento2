@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ use Magento\Framework\GraphQl\Query\Resolver\Argument\SearchCriteria\ArgumentApp
  */
 class Sort implements ArgumentApplierInterface
 {
-    const ARGUMENT_NAME = 'sort';
+    public const ARGUMENT_NAME = 'sort';
 
     /** @var SortOrderBuilder */
     private $sortOrderBuilder;
@@ -40,7 +41,7 @@ class Sort implements ArgumentApplierInterface
         string $fieldName,
         string $argumentName,
         array $argument
-    ) : SearchCriteriaInterface {
+    ): SearchCriteriaInterface {
         $sortOrders = [];
         foreach ($argument as $fieldName => $fieldValue) {
             /** @var SortOrder $sortOrder */

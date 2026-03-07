@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -30,8 +31,8 @@ class OrderPayments
             [
                 'name' => $orderPayment->getAdditionalInformation()['method_title'] ?? '',
                 'type' => $orderPayment->getMethod(),
-                'additional_data' => []
-            ]
+                'additional_data' => [],
+            ],
         ];
     }
 }

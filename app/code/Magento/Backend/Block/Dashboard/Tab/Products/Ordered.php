@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Dashboard\Tab\Products;
 
 /**
@@ -93,7 +96,7 @@ class Ordered extends \Magento\Backend\Block\Dashboard\Grid
                 'sortable' => false,
                 'index' => 'product_name',
                 'header_css_class' => 'col-product',
-                'column_css_class' => 'col-product'
+                'column_css_class' => 'col-product',
             ]
         );
 
@@ -106,7 +109,7 @@ class Ordered extends \Magento\Backend\Block\Dashboard\Grid
                     (int)$this->getParam('store')
                 )->getBaseCurrencyCode(),
                 'sortable' => false,
-                'index' => 'product_price'
+                'index' => 'product_price',
             ]
         );
 
@@ -118,7 +121,7 @@ class Ordered extends \Magento\Backend\Block\Dashboard\Grid
                 'index' => 'qty_ordered',
                 'type' => 'number',
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 

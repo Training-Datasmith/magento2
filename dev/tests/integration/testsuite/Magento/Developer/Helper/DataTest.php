@@ -1,11 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Helper;
 
-use \Laminas\Stdlib\Parameters;
+use Laminas\Stdlib\Parameters;
 
 class DataTest extends \PHPUnit\Framework\TestCase
 {

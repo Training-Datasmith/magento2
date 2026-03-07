@@ -21,13 +21,13 @@ use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
 use Magento\Eav\Model\Config;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
 use Magento\Eav\Model\Entity\Type;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Ui\Component\Form\Element\Multiline;
 use Magento\Ui\Component\Form\Field;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -134,10 +134,10 @@ class DataProviderTest extends TestCase
                                 'sortOrder' => 'sort_order',
                                 'default' => 'default_value',
                                 'size' => 'multiline_count',
-                                'componentType' => Field::NAME
-                            ]
-                        ]
-                    ]
+                                'componentType' => Field::NAME,
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'arguments' => [
@@ -155,11 +155,11 @@ class DataProviderTest extends TestCase
                                 'prefer' => 'toggle',
                                 'valueMap' => [
                                     'true' => 1,
-                                    'false' => 0
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'false' => 0,
+                                ],
+                            ],
+                        ],
+                    ],
                 ]
             );
 
@@ -179,7 +179,7 @@ class DataProviderTest extends TestCase
                 [],
                 [],
                 true,
-                'addressRegistry' => $this->addressRegistry
+                'addressRegistry' => $this->addressRegistry,
             ]
         );
     }
@@ -193,8 +193,8 @@ class DataProviderTest extends TestCase
             '' => [
                 'parent_id' => 1,
                 'firstname' => 'John',
-                'lastname' => 'Doe'
-            ]
+                'lastname' => 'Doe',
+            ],
         ];
 
         $this->collection->expects($this->once())
@@ -231,15 +231,15 @@ class DataProviderTest extends TestCase
                 'lastname' => 'Doe',
                 'street' => [
                     '42000 Ave W 55 Cedar City',
-                    'Apt. 33'
-                ]
-            ]
+                    'Apt. 33',
+                ],
+            ],
         ];
 
         $this->collection->expects($this->once())
             ->method('getItems')
             ->willReturn([
-                $this->address
+                $this->address,
             ]);
 
         $this->customerRepository->expects($this->once())
@@ -265,7 +265,7 @@ class DataProviderTest extends TestCase
                 'parent_id' => '1',
                 'firstname' => 'John',
                 'lastname' => 'Doe',
-                'street' => "42000 Ave W 55 Cedar City\nApt. 33"
+                'street' => "42000 Ave W 55 Cedar City\nApt. 33",
             ]);
         $this->fileUploaderDataResolver->expects($this->once())
             ->method('overrideFileUploaderData')
@@ -324,7 +324,7 @@ class DataProviderTest extends TestCase
                 'getIsUserDefined',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
 
@@ -347,7 +347,7 @@ class DataProviderTest extends TestCase
                 'getSource',
                 'getEntityType',
                 'getIsVisible',
-                'getUsedInForms'
+                'getUsedInForms',
             ]
         );
 

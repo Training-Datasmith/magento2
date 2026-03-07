@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Setup\Declaration\Schema;
 
 use Magento\Framework\Setup\Declaration\Schema\Diff\SchemaDiff;
-use Magento\Framework\Setup\UpToDateValidatorInterface;
 use Magento\Framework\Setup\DetailProviderInterface;
+use Magento\Framework\Setup\UpToDateValidatorInterface;
 
 /**
  * Allows to validate if schema is up to date or not
@@ -50,7 +51,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
      *
      * @return string
      */
-    public function getNotUpToDateMessage() : string
+    public function getNotUpToDateMessage(): string
     {
         return 'Declarative Schema is not up to date';
     }
@@ -60,7 +61,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
      *
      * @return bool
      */
-    public function isUpToDate() : bool
+    public function isUpToDate(): bool
     {
         return empty($this->calculateDiff());
     }
@@ -70,7 +71,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
      *
      * @return array
      */
-    public function getDetails() : array
+    public function getDetails(): array
     {
         $diffData = $this->calculateDiff();
         $summary = $this->buildSummary($diffData);
@@ -84,7 +85,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
      *
      * @return array
      */
-    private function calculateDiff() : array
+    private function calculateDiff(): array
     {
         if ($this->cachedDiff === null) {
             $declarativeSchema = $this->schemaConfig->getDeclarationConfig();
@@ -109,7 +110,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
             'total_differences' => 0,
             'by_change_type' => [],
             'affected_tables' => [],
-            'changes' => []
+            'changes' => [],
         ];
         try {
             foreach ($diffData as $operations) {
@@ -166,7 +167,7 @@ class UpToDateDeclarativeSchema implements UpToDateValidatorInterface, DetailPro
     {
         $changeInfo = [
             'operation' => $operationType,
-            'index' => $changeIndex
+            'index' => $changeIndex,
         ];
 
         $tableName = $this->safeGetTableName($change);

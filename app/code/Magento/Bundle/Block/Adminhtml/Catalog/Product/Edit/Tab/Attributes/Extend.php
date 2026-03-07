@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -89,16 +91,16 @@ class Extend extends \Magento\Catalog\Block\Adminhtml\Form\Renderer\Fieldset\Ele
         return [
             [
                 'value' => '',
-                'label' => __('-- Select --')
+                'label' => __('-- Select --'),
             ],
             [
                 'value' => self::DYNAMIC,
-                'label' => __('Dynamic')
+                'label' => __('Dynamic'),
             ],
             [
                 'value' => self::FIXED,
-                'label' => __('Fixed')
-            ]
+                'label' => __('Fixed'),
+            ],
         ];
     }
 
@@ -110,7 +112,8 @@ class Extend extends \Magento\Catalog\Block\Adminhtml\Form\Renderer\Fieldset\Ele
     public function isDisabledField()
     {
         return $this->_getData('is_disabled_field')
-            || ($this->getProduct()->getId()
+            || (
+                $this->getProduct()->getId()
                 && $this->getAttribute()->getAttributeCode() === 'price'
             )
             || $this->getElement()->getReadonly();

@@ -107,7 +107,7 @@ class CurrencyTest extends TestCase
                 'options' => [
                     'locale' => 'en_US',
                     'currency' => 'USD',
-                    'precision'=> 1,
+                    'precision' => 1,
                 ],
                 'expectedResult' => '$12.2',
             ],
@@ -116,7 +116,7 @@ class CurrencyTest extends TestCase
                 'options' => [
                     'locale' => 'en_US',
                     'currency' => 'USD',
-                    'precision'=> 0,
+                    'precision' => 0,
                 ],
                 'expectedResult' => '$12',
             ],

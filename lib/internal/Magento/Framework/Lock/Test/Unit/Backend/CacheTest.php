@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 class CacheTest extends TestCase
 {
-    const LOCK_PREFIX = 'LOCKED_RECORD_INFO_';
+    public const LOCK_PREFIX = 'LOCKED_RECORD_INFO_';
 
     /**
      * @var FrontendInterface|MockObject
@@ -39,7 +40,7 @@ class CacheTest extends TestCase
         $this->cache = $objectManager->getObject(
             Cache::class,
             [
-                'cache' => $this->frontendCacheMock
+                'cache' => $this->frontendCacheMock,
             ]
         );
     }

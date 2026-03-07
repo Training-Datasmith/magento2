@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -8,17 +9,17 @@ declare(strict_types=1);
 
 namespace Magento\User\Model;
 
+use Magento\Backend\App\Area\FrontNameResolver;
+use Magento\Backend\App\ConfigInterface;
+use Magento\Email\Model\BackendTemplate;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\MailException;
+use Magento\Framework\Mail\Template\TransportBuilder;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\User\Api\Data\UserInterface;
 use Magento\User\Model\Spi\NotificatorInterface;
-use Magento\Backend\App\ConfigInterface;
-use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Backend\App\Area\FrontNameResolver;
-use Magento\Email\Model\BackendTemplate;
 
 /**
  * @inheritDoc
@@ -87,7 +88,7 @@ class Notificator implements NotificatorInterface
             ->setTemplateModel(BackendTemplate::class)
             ->setTemplateOptions([
                 'area' => FrontNameResolver::AREA_CODE,
-                'store' => Store::DEFAULT_STORE_ID
+                'store' => Store::DEFAULT_STORE_ID,
             ])
             ->setTemplateVars($templateVars)
             ->setFrom(
@@ -111,7 +112,7 @@ class Notificator implements NotificatorInterface
                     'user' => $user,
                     'store' => $this->storeManager->getStore(
                         Store::DEFAULT_STORE_ID
-                    )
+                    ),
                 ],
                 $user->getEmail(),
                 $user->getFirstName().' '.$user->getLastName()
@@ -148,7 +149,7 @@ class Notificator implements NotificatorInterface
                         'user' => $user,
                         'store' => $this->storeManager->getStore(
                             Store::DEFAULT_STORE_ID
-                        )
+                        ),
                     ],
                     $toEmail,
                     __('Administrator')->getText()
@@ -180,7 +181,7 @@ class Notificator implements NotificatorInterface
                     'store' => $this->storeManager->getStore(
                         Store::DEFAULT_STORE_ID
                     ),
-                    'changes' => implode(', ', $changed)
+                    'changes' => implode(', ', $changed),
                 ],
                 $email,
                 $user->getFirstName().' '.$user->getLastName()

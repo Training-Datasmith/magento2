@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\Wishlist\Test\Unit\Model\ResourceModel\Item;
 
@@ -17,16 +17,16 @@ use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\SelectRendererTrait;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use ReflectionClass;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Wishlist\Model\ResourceModel\Item;
 use Magento\Wishlist\Model\ResourceModel\Item\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -166,7 +166,7 @@ class CollectionTest extends TestCase
                 'resource' => $resource,
                 'catalogConfFactory' => $catalogConfFactory,
                 'catalogAttrFactory' => $catalogAttrFactory,
-                'storeManager' => $storeManager
+                'storeManager' => $storeManager,
             ]
         );
 

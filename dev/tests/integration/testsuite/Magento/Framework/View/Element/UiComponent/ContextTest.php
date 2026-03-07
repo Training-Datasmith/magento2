@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,13 +11,12 @@ namespace Magento\Framework\View\Element\UiComponent;
 
 use Magento\Framework\Api\Search\SearchCriteria;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\TestCase;
 use Magento\Ui\Component\Form;
 use Magento\Ui\Component\FormFactory;
-use Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface;
-use PHPUnit\Framework\Attributes\DataProvider as DataProviderAttribute;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test UI component context.
@@ -95,9 +95,9 @@ class ContextTest extends TestCase
                         'data' => ['some_field' => '${\'some_value\'}', '__disableTmpl' => ['some_field' => true]],
                         'params' => [
                             'namespace' => null,
-                            'id' => 'id'
-                        ]]
-                ]
+                            'id' => 'id',
+                        ]],
+                ],
             ],
             $data
         );

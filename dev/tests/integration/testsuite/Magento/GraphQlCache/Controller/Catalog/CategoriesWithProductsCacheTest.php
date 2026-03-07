@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -61,13 +62,13 @@ query GetCategoryWithProducts(\$id: Int!, \$pageSize: Int!, \$currentPage: Int!)
 QUERY;
         $variables = [
             'id' => $categoryId,
-            'pageSize'=> 10,
-            'currentPage' => 1
+            'pageSize' => 10,
+            'currentPage' => 1,
         ];
         $queryParams = [
             'query' => $query,
             'variables' => json_encode($variables),
-            'operationName' => 'GetCategoryWithProducts'
+            'operationName' => 'GetCategoryWithProducts',
         ];
 
         $response = $this->dispatchGraphQlGETRequest($queryParams);

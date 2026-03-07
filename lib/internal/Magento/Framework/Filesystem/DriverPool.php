@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,10 +16,10 @@ class DriverPool
     /**#@+
      * Available driver types
      */
-    const FILE = 'file';
-    const HTTP = 'http';
-    const HTTPS = 'https';
-    const ZLIB = 'compress.zlib';
+    public const FILE = 'file';
+    public const HTTP = 'http';
+    public const HTTPS = 'https';
+    public const ZLIB = 'compress.zlib';
     /**#@- */
 
     /**#@- */

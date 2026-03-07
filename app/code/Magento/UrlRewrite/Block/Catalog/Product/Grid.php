@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block\Catalog\Product;
 
 /**
@@ -35,7 +38,7 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
                 'header' => __('ID'),
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -49,7 +52,7 @@ class Grid extends \Magento\Catalog\Block\Adminhtml\Product\Grid
                 'width' => 50,
                 'index' => 'status',
                 'type' => 'options',
-                'options' => $this->_status->getOptionArray()
+                'options' => $this->_status->getOptionArray(),
             ]
         );
         return $this;

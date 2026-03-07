@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Customer\Controller\Adminhtml\Index;
 
 use Magento\Backend\Model\Session;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractBackendController;
@@ -75,7 +76,7 @@ class MassAssignGroupTest extends AbstractBackendController
         $params = [
             'group' => 0,
             'namespace' => 'customer_listing',
-            'selected' => [$customer->getId()]
+            'selected' => [$customer->getId()],
         ];
 
         $this->getRequest()->setParams($params)
@@ -135,7 +136,7 @@ class MassAssignGroupTest extends AbstractBackendController
      */
     public function testMassAssignGroupActionNoCustomerIds()
     {
-        $params = ['group'=> 0,'namespace'=> 'customer_listing',
+        $params = ['group' => 0,'namespace' => 'customer_listing',
         ];
         $this->getRequest()->setParams($params)->setMethod(HttpRequest::METHOD_POST);
         $this->dispatch('backend/customer/index/massAssignGroup');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,7 @@ class RuleTest extends TestCase
     /**
      * Test table name
      */
-    const TABLE_NAME = 'test';
+    public const TABLE_NAME = 'test';
 
     /**
      * List of test rules;
@@ -96,7 +97,7 @@ class RuleTest extends TestCase
         $createdatFactoryMock = $this->createConfiguredMock(
             CreatedatFactory::class,
             [
-                'create' => $createdatResourceModel
+                'create' => $createdatResourceModel,
             ]
         );
         $updatedatFactoryMock = $this->createPartialMock(
@@ -110,7 +111,7 @@ class RuleTest extends TestCase
             [
                 'reportsFlagFactory' => $flagFactory,
                 'createdatFactory' => $createdatFactoryMock,
-                'updatedatFactory' => $updatedatFactoryMock
+                'updatedatFactory' => $updatedatFactoryMock,
             ]
         );
 
@@ -131,7 +132,7 @@ class RuleTest extends TestCase
     {
         $whereParts = $select->getPart(Select::WHERE);
         $this->assertCount(2, $whereParts);
-        $this->assertStringContainsString("rule_name IS NOT NULL", $whereParts[0]);
+        $this->assertStringContainsString('rule_name IS NOT NULL', $whereParts[0]);
         $this->assertStringContainsString("rule_name <> ''", $whereParts[1]);
 
         $orderParts = $select->getPart(Select::ORDER);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test class for \Magento\Framework\Profiler\Driver\Standard
  *
@@ -124,10 +125,10 @@ class StandardTest extends TestCase
         $config = [
             'outputs' => [
                 'outputTypeOne' => ['baseDir' => '/custom/base/dir'],
-                'outputTypeTwo' => ['type' => 'specificOutputTypeTwo']
+                'outputTypeTwo' => ['type' => 'specificOutputTypeTwo'],
             ],
             'baseDir' => '/base/dir',
-            'outputFactory' => $outputFactory
+            'outputFactory' => $outputFactory,
         ];
 
         $outputOne = $this->createMock(OutputInterface::class);

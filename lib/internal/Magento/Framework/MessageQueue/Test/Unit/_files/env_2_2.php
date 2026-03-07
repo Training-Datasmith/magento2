@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,15 +13,15 @@ return [
                 'connections' => [
                     'amqp' => [
                         'name' => 'db',
-                        'exchange' => 'magento-db'
+                        'exchange' => 'magento-db',
                     ],
-                ]
-            ]
+                ],
+            ],
         ],
         'consumers' => [
             'inventoryQtyCounter' => [
-                'connection' => 'db'
-            ]
-        ]
-    ]
+                'connection' => 'db',
+            ],
+        ],
+    ],
 ];

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class FinalPriceResolverTest extends AbstractController
                 'tax_region_id' => 0,
                 'tax_postcode' => '*',
                 'code' => 'US-Tax-Rate-19',
-                'rate' => 19
+                'rate' => 19,
             ],
             'tax_rate'
         ),
@@ -92,7 +93,7 @@ class FinalPriceResolverTest extends AbstractController
                 'product_tax_class_ids' => ['$product_tax_class.id$'],
                 'tax_rate_ids' => ['$tax_rate.id$'],
                 'code' => 'Test Tax Rule',
-                'priority' => 0
+                'priority' => 0,
             ],
             'tax_rule'
         ),
@@ -126,7 +127,7 @@ class FinalPriceResolverTest extends AbstractController
                 'sku' => 'configurable-with-fpt',
                 'tax_class_id' => '$product_tax_class.id$',
                 '_options' => ['$configurable_attr$'],
-                '_links' => ['$simple1$', '$simple2$']
+                '_links' => ['$simple1$', '$simple2$'],
             ],
             'configurable'
         )
@@ -179,7 +180,7 @@ class FinalPriceResolverTest extends AbstractController
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.id$'],
-                'tax_rate_ids' => ['$tax_rate.id$']
+                'tax_rate_ids' => ['$tax_rate.id$'],
             ]
         ),
         DataFixture(ConfigurableAttributeFixture::class, ['attribute_code' => 'test_configurable'], 'cfg_attr'),
@@ -199,7 +200,7 @@ class FinalPriceResolverTest extends AbstractController
                 'sku' => 'cfg-test',
                 'tax_class_id' => '$product_tax_class.id$',
                 '_options' => ['$cfg_attr$'],
-                '_links' => ['$s1$', '$s2$']
+                '_links' => ['$s1$', '$s2$'],
             ],
             'cfg'
         )
@@ -235,7 +236,7 @@ class FinalPriceResolverTest extends AbstractController
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.id$'],
-                'tax_rate_ids' => ['$tax_rate.id$']
+                'tax_rate_ids' => ['$tax_rate.id$'],
             ]
         ),
         DataFixture(ConfigurableAttributeFixture::class, ['attribute_code' => 'test_configurable'], 'cfg_attr'),
@@ -255,7 +256,7 @@ class FinalPriceResolverTest extends AbstractController
                 'sku' => 'cfg-fpt-desc',
                 'tax_class_id' => '$product_tax_class.id$',
                 '_options' => ['$cfg_attr$'],
-                '_links' => ['$s1$', '$s2$']
+                '_links' => ['$s1$', '$s2$'],
             ],
             'cfg'
         )
@@ -303,7 +304,7 @@ class FinalPriceResolverTest extends AbstractController
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.id$'],
-                'tax_rate_ids' => ['$tax_rate.id$']
+                'tax_rate_ids' => ['$tax_rate.id$'],
             ]
         ),
         DataFixture(ConfigurableAttributeFixture::class, ['attribute_code' => 'test_configurable'], 'cfg_attr'),
@@ -323,7 +324,7 @@ class FinalPriceResolverTest extends AbstractController
                 'sku' => 'cfg-incl-tax',
                 'tax_class_id' => '$product_tax_class.id$',
                 '_options' => ['$cfg_attr$'],
-                '_links' => ['$s1$', '$s2$']
+                '_links' => ['$s1$', '$s2$'],
             ],
             'cfg'
         )
@@ -376,7 +377,7 @@ class FinalPriceResolverTest extends AbstractController
             [
                 'customer_tax_class_ids' => [3],
                 'product_tax_class_ids' => ['$product_tax_class.id$'],
-                'tax_rate_ids' => ['$tax_rate.id$']
+                'tax_rate_ids' => ['$tax_rate.id$'],
             ]
         ),
         DataFixture(ConfigurableAttributeFixture::class, ['attribute_code' => 'test_configurable'], 'cfg_attr'),
@@ -405,7 +406,7 @@ class FinalPriceResolverTest extends AbstractController
                 'name' => 'Configurable Product Frontend',
                 'tax_class_id' => '$product_tax_class.id$',
                 '_options' => ['$cfg_attr$'],
-                '_links' => ['$s1$', '$s2$']
+                '_links' => ['$s1$', '$s2$'],
             ],
             'configurable'
         ),

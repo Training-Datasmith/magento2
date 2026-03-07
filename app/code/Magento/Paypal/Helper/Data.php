@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Helper;
 
 use Magento\Framework\App\ObjectManager;
@@ -17,7 +20,7 @@ use Magento\Paypal\Model\Billing\Agreement\MethodInterface as BillingAgreementMe
  */
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const HTML_TRANSACTION_ID =
+    public const HTML_TRANSACTION_ID =
         '<a target="_blank" href="https://www%1$s.paypal.com/cgi-bin/webscr?cmd=_view-a-trans&id=%2$s">%2$s</a>';
 
     /**

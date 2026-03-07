@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\GraphQl\Quote\Guest;
 
 use Magento\Quote\Api\GuestCartRepositoryInterface;
 use Magento\Quote\Model\QuoteIdMaskFactory;
-use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory as QuoteCollectionFactory;
 use Magento\Quote\Model\ResourceModel\Quote as QuoteResource;
+use Magento\Quote\Model\ResourceModel\Quote\CollectionFactory as QuoteCollectionFactory;
 use Magento\Store\Test\Fixture\Store;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -117,7 +118,7 @@ class CreateGuestCartTest extends GraphQlAbstract
     public function testFailIfPredefinedCartIdAlreadyExists()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Cart with ID \"572cda51902b5b517c0e1a2b2fd004b4\" already exists.");
+        $this->expectExceptionMessage('Cart with ID "572cda51902b5b517c0e1a2b2fd004b4" already exists.');
 
         $predefinedCartId = '572cda51902b5b517c0e1a2b2fd004b4';
 
@@ -129,7 +130,7 @@ class CreateGuestCartTest extends GraphQlAbstract
     public function testFailWithWrongPredefinedCartId()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Cart ID length should to be 32 symbols.");
+        $this->expectExceptionMessage('Cart ID length should to be 32 symbols.');
 
         $predefinedCartId = '1234567890';
 

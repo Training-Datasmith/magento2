@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Tax\Model\System\Config\Source\Tax;
 
 class Country extends \Magento\Directory\Model\Config\Source\Country

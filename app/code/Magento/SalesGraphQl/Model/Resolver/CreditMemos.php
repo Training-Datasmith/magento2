@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class CreditMemos implements ResolverInterface
                 'id' => base64_encode($creditMemo->getEntityId()),
                 'number' => $creditMemo->getIncrementId(),
                 'order' => $orderModel,
-                'model' => $creditMemo
+                'model' => $creditMemo,
             ];
         }
         return $creditMemos;

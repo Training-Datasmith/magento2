@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,5 +17,5 @@ class ConfigurationMismatchException extends LocalizedException
     /**
      * @deprecated
      */
-    const AUTHENTICATION_ERROR = 'Configuration mismatch detected.';
+    public const AUTHENTICATION_ERROR = 'Configuration mismatch detected.';
 }

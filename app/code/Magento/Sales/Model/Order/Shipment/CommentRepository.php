@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,9 +17,9 @@ use Magento\Sales\Api\Data\ShipmentCommentInterface;
 use Magento\Sales\Api\Data\ShipmentCommentInterfaceFactory;
 use Magento\Sales\Api\Data\ShipmentCommentSearchResultInterfaceFactory;
 use Magento\Sales\Api\ShipmentCommentRepositoryInterface;
-use Magento\Sales\Model\Spi\ShipmentCommentResourceInterface;
-use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
 use Magento\Sales\Api\ShipmentRepositoryInterface;
+use Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender;
+use Magento\Sales\Model\Spi\ShipmentCommentResourceInterface;
 use Psr\Log\LoggerInterface;
 
 /**

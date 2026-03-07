@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
-use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Catalog/_files/multiple_products_rollback.php');
 
@@ -14,7 +16,6 @@ $objectManager = Bootstrap::getObjectManager();
 $productRepository = $objectManager->create(\Magento\Catalog\Api\ProductRepositoryInterface::class);
 /** @var \Magento\Framework\Registry $registry */
 $registry = Bootstrap::getObjectManager()->get(\Magento\Framework\Registry::class);
-
 
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', true);

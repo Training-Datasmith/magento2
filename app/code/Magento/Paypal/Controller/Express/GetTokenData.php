@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,23 +9,23 @@ declare(strict_types=1);
 namespace Magento\Paypal\Controller\Express;
 
 use Magento\Authorization\Model\UserContextInterface;
+use Magento\Checkout\Model\Session as CheckoutSession;
+use Magento\Customer\Model\ResourceModel\CustomerRepository;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Customer\Model\Url as CustomerUrl;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Paypal\Model\Express\Checkout;
-use Magento\Paypal\Model\Config;
-use Magento\Framework\App\Action\Context;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Checkout\Model\Session as CheckoutSession;
-use Magento\Sales\Model\OrderFactory;
-use Magento\Paypal\Model\Express\Checkout\Factory as CheckoutFactory;
 use Magento\Framework\Session\Generic as PayPalSession;
 use Magento\Framework\Url\Helper\Data as UrlHelper;
-use Magento\Customer\Model\Url as CustomerUrl;
-use Magento\Customer\Model\ResourceModel\CustomerRepository;
+use Magento\Paypal\Model\Config;
+use Magento\Paypal\Model\Express\Checkout;
+use Magento\Paypal\Model\Express\Checkout\Factory as CheckoutFactory;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\GuestCartRepositoryInterface;
+use Magento\Sales\Model\OrderFactory;
 use Psr\Log\LoggerInterface;
 
 /**

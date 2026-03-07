@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -24,7 +25,7 @@ $mediaAsset = $mediaAssetFactory->create(
         'source' => 'Local',
         'width' => 420,
         'height' => 240,
-        'size' => 12877
+        'size' => 12877,
     ]
 );
 /** @var SaveAssetsInterface $mediaSave */

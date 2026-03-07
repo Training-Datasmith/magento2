@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class SuffixTest extends TestCase
         $this->storeManager->method('getStores')->willReturn([]);
 
         $this->appResource = $this->createMock(ResourceConnection::class);
-        $this->urlFinder =$this->createMock(UrlFinderInterface::class);
+        $this->urlFinder = $this->createMock(UrlFinderInterface::class);
         $this->urlFinder->method('findAllByData')->willReturn([]);
 
         $this->suffixModel = new Suffix(

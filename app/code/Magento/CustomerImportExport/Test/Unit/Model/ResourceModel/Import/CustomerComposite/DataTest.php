@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\CustomerImportExport\Model\ResourceModel\Import\CustomerComposite\Data
  */
+
 namespace Magento\CustomerImportExport\Test\Unit\Model\ResourceModel\Import\CustomerComposite;
 
 use Magento\CustomerImportExport\Model\Import\Address;
@@ -19,8 +21,8 @@ use Magento\Framework\DB\Statement\Pdo\Mysql;
 use Magento\Framework\Json\DecoderInterface;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -222,7 +224,7 @@ class DataTest extends TestCase
                     ]
                 ),
                 'expectedData' => [],
-            ]
+            ],
         ];
     }
 }

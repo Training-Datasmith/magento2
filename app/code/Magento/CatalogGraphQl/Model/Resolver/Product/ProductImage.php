@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class ProductImage implements ResolverInterface
     private static $catalogImageLabelTypes = [
         'image' => 'image_label',
         'small_image' => 'small_image_label',
-        'thumbnail' => 'thumbnail_label'
+        'thumbnail' => 'thumbnail_label',
     ];
 
     /** @var array */
@@ -62,7 +63,7 @@ class ProductImage implements ResolverInterface
         return [
             'model' => $product,
             'image_type' => $field->getName(),
-            'label' => $label
+            'label' => $label,
         ];
     }
 }

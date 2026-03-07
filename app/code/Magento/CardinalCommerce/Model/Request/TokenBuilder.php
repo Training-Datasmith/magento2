@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,8 +8,8 @@ declare(strict_types=1);
 
 namespace Magento\CardinalCommerce\Model\Request;
 
-use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\CardinalCommerce\Model\Config;
+use Magento\CardinalCommerce\Model\JwtManagement;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\DataObject\IdentityGeneratorInterface;
 use Magento\Framework\Intl\DateTimeFactory;
@@ -79,8 +80,8 @@ class TokenBuilder
             'OrderDetails' => [
                 'OrderNumber' => $quote->getId(),
                 'Amount' => $quote->getBaseGrandTotal() * 100,
-                'CurrencyCode' => $quote->getBaseCurrencyCode()
-            ]
+                'CurrencyCode' => $quote->getBaseCurrencyCode(),
+            ],
         ];
 
         $token = [
@@ -89,7 +90,7 @@ class TokenBuilder
             'iat' => $currentDate->getTimestamp(),
             'OrgUnitId' => $this->config->getOrgUnitId(),
             'Payload' => $orderDetails,
-            'ObjectifyPayload' => true
+            'ObjectifyPayload' => true,
         ];
 
         $jwt = $this->jwtManagement->encode($token, $this->config->getApiKey());

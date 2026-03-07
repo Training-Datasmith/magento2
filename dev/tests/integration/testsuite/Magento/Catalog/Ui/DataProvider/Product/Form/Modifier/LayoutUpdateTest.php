@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -10,13 +11,13 @@ namespace Magento\Catalog\Ui\DataProvider\Product\Form\Modifier;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
+use Magento\Catalog\Model\Product\Attribute\Backend\LayoutUpdate as LayoutUpdateAttribute;
+use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav as EavModifier;
 use Magento\Store\Api\Data\StoreInterface;
 use Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Catalog\Model\Product\Attribute\Backend\LayoutUpdate as LayoutUpdateAttribute;
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Eav as EavModifier;
 
 /**
  * Test the modifier.
@@ -61,8 +62,8 @@ class LayoutUpdateTest extends TestCase
         Bootstrap::getObjectManager()->configure([
             'preferences' => [
                 \Magento\Catalog\Model\Product\Attribute\LayoutUpdateManager::class =>
-                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class
-            ]
+                    \Magento\TestFramework\Catalog\Model\ProductLayoutUpdateManager::class,
+            ],
         ]);
         $this->locator = $this->createMock(LocatorInterface::class);
         $store = Bootstrap::getObjectManager()->create(StoreInterface::class);
@@ -77,16 +78,16 @@ class LayoutUpdateTest extends TestCase
                     \Magento\Ui\DataProvider\Mapper\FormElement::class,
                     [
                         'mappings' => [
-                            "text" => "input",
-                            "hidden" => "input",
-                            "boolean" => "checkbox",
-                            "media_image" => "image",
-                            "price" => "input",
-                            "weight" => "input",
-                            "gallery" => "image"
-                        ]
+                            'text' => 'input',
+                            'hidden' => 'input',
+                            'boolean' => 'checkbox',
+                            'media_image' => 'image',
+                            'price' => 'input',
+                            'weight' => 'input',
+                            'gallery' => 'image',
+                        ],
                     ]
-                )
+                ),
             ]
         );
         $this->fakeFiles = Bootstrap::getObjectManager()->get(ProductLayoutUpdateManager::class);
@@ -158,10 +159,10 @@ class LayoutUpdateTest extends TestCase
             [
                 'label' => 'No update',
                 'value' => \Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate::VALUE_NO_UPDATE,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             ['label' => 'testOne', 'value' => 'testOne', '__disableTmpl' => true],
-            ['label' => 'test_two', 'value' => 'test_two', '__disableTmpl' => true]
+            ['label' => 'test_two', 'value' => 'test_two', '__disableTmpl' => true],
         ];
         sort($expectedList);
         sort($list);
@@ -177,12 +178,12 @@ class LayoutUpdateTest extends TestCase
             [
                 'label' => 'No update',
                 'value' => \Magento\Catalog\Model\Attribute\Backend\AbstractLayoutUpdate::VALUE_NO_UPDATE,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             [
                 'label' => 'Use existing',
                 'value' => LayoutUpdateAttribute::VALUE_USE_UPDATE_XML,
-                '__disableTmpl' => true
+                '__disableTmpl' => true,
             ],
             ['label' => 'test3', 'value' => 'test3', '__disableTmpl' => true],
         ];

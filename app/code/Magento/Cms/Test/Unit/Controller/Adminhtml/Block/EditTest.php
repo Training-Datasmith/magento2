@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,16 +16,16 @@ use Magento\Cms\Controller\Adminhtml\Block\Edit;
 use Magento\Cms\Model\Block;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Message\ManagerInterface;
+use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
 use Magento\Framework\Phrase;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\ObjectManager\ObjectManager as FrameworkObjectManager;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -136,7 +137,7 @@ class EditTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'coreRegistry' => $this->coreRegistryMock,
-                'resultPageFactory' => $this->resultPageFactoryMock
+                'resultPageFactory' => $this->resultPageFactoryMock,
             ]
         );
     }
@@ -261,13 +262,13 @@ class EditTest extends TestCase
             'new_block' => [
                 null,         // $blockId
                 'New Block',  // $label
-                'New Block'   // $title
+                'New Block',   // $title
             ],
             'edit_block' => [
                 2,            // $blockId
                 'Edit Block', // $label
-                'Edit Block'  // $title
-            ]
+                'Edit Block',  // $title
+            ],
         ];
     }
 }

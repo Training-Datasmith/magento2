@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model\Source\Import\Behavior;
 
 /**
@@ -21,7 +24,7 @@ class Custom extends \Magento\ImportExport\Model\Source\Import\AbstractBehavior
         return [
             \Magento\ImportExport\Model\Import::BEHAVIOR_ADD_UPDATE => __('Add/Update Complex Data'),
             \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE => __('Delete Entities'),
-            \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM => __('Custom Action')
+            \Magento\ImportExport\Model\Import::BEHAVIOR_CUSTOM => __('Custom Action'),
         ];
     }
 

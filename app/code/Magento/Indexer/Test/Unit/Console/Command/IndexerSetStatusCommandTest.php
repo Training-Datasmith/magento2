@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -13,9 +14,9 @@ use Magento\Framework\Indexer\StateInterface;
 use Magento\Indexer\Console\Command\IndexerSetStatusCommand;
 use Magento\Indexer\Model\Indexer\State;
 use Magento\Indexer\Model\ResourceModel\Indexer\State as StateResourceModel;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Tester\CommandTester;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class IndexerSetStatusCommandTest extends AbstractIndexerCommandCommonSetup
 {
@@ -59,7 +60,7 @@ class IndexerSetStatusCommandTest extends AbstractIndexerCommandCommonSetup
     public function testExecuteFailsDueToMissingStatusArgument()
     {
         $this->expectException('Symfony\Component\Console\Exception\RuntimeException');
-        $this->expectExceptionMessage("Not enough arguments (missing: \"status\").");
+        $this->expectExceptionMessage('Not enough arguments (missing: "status").');
         $commandTester = new CommandTester($this->command);
         $commandTester->execute([]);
     }
@@ -221,16 +222,16 @@ class IndexerSetStatusCommandTest extends AbstractIndexerCommandCommonSetup
             ],
             [
                 StateInterface::STATUS_INVALID,
-                StateInterface::STATUS_VALID
+                StateInterface::STATUS_VALID,
             ],
             [
                 StateInterface::STATUS_INVALID,
-                StateInterface::STATUS_SUSPENDED
+                StateInterface::STATUS_SUSPENDED,
             ],
             [
                 StateInterface::STATUS_SUSPENDED,
-                StateInterface::STATUS_INVALID
-            ]
+                StateInterface::STATUS_INVALID,
+            ],
         ];
     }
 
@@ -261,7 +262,7 @@ class IndexerSetStatusCommandTest extends AbstractIndexerCommandCommonSetup
         $actualValue = $commandTester->getDisplay();
         $this->assertSame(
             sprintf(
-                "Exception while indexer status update.%s",
+                'Exception while indexer status update.%s',
                 PHP_EOL
             ),
             $actualValue

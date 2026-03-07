@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestFramework\Deploy;
 
 use Magento\Framework\App\DeploymentConfig;
@@ -91,7 +94,7 @@ class CliCommand
         $upgradeCommand = $this->getCliScriptCommandWithDI() . 'setup:upgrade -vvv -n --magento-init-params="'
             . $initParams['magento-init-params'] . '"';
         $installParams = $this->toCliArguments($installParams);
-        $upgradeCommand .= ' ' . implode(" ", array_keys($installParams));
+        $upgradeCommand .= ' ' . implode(' ', array_keys($installParams));
 
         return $this->shell->execute($upgradeCommand, array_values($installParams));
     }
@@ -128,7 +131,7 @@ class CliCommand
             $this->parametersHolder->getDbData('checkout')
         );
         $command = $this->getCliScriptCommand() . ' setup:db-schema:split-quote ' .
-            implode(" ", array_keys($installParams)) .
+            implode(' ', array_keys($installParams)) .
             ' -vvv  --no-interaction --magento-init-params="' .
             $initParams['magento-init-params'] . '"';
 
@@ -152,7 +155,7 @@ class CliCommand
             $this->parametersHolder->getDbData('sales')
         );
         $command = $this->getCliScriptCommand() . ' setup:db-schema:split-sales ' .
-            implode(" ", array_keys($installParams)) .
+            implode(' ', array_keys($installParams)) .
             ' -vvv --magento-init-params="' .
             $initParams['magento-init-params'] . '"';
 
@@ -218,13 +221,13 @@ class CliCommand
     public function install(array $modules, array $installParams = [])
     {
         if (empty($modules)) {
-            throw new \Exception("Cannot install Magento without modules");
+            throw new \Exception('Cannot install Magento without modules');
         }
 
         $params = $this->parametersHolder->getInitParams();
         $installParams += [
-            InstallCommand::INPUT_KEY_ENABLE_MODULES => implode(",", $modules),
-            InstallCommand::INPUT_KEY_DISABLE_MODULES => 'all'
+            InstallCommand::INPUT_KEY_ENABLE_MODULES => implode(',', $modules),
+            InstallCommand::INPUT_KEY_DISABLE_MODULES => 'all',
         ];
         $installParams = $this->toCliArguments(
             array_merge(

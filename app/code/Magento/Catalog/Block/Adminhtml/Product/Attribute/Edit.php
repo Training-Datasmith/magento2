@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Attribute;
 
 /**
@@ -69,7 +72,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                     [
                         'label' => __('Save in New Attribute Set'),
                         'class' => 'save',
-                        'onclick' => 'saveAttributeInNewSet(\'' . __('Enter Name for New Attribute Set') . '\')'
+                        'onclick' => 'saveAttributeInNewSet(\'' . __('Enter Name for New Attribute Set') . '\')',
                     ],
                     100
                 );
@@ -86,7 +89,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                         'mage-init' => [
                             'button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form'],
                         ],
-                    ]
+                    ],
                 ]
             );
         }

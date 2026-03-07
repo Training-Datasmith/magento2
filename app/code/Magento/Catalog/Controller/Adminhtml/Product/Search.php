@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,7 +22,7 @@ class Search extends \Magento\Backend\App\Action implements HttpGetActionInterfa
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
@@ -53,7 +54,7 @@ class Search extends \Magento\Backend\App\Action implements HttpGetActionInterfa
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
-    public function execute() : \Magento\Framework\Controller\ResultInterface
+    public function execute(): \Magento\Framework\Controller\ResultInterface
     {
         $searchKey = $this->getRequest()->getParam('searchKey');
         $pageNum = (int)$this->getRequest()->getParam('page');
@@ -71,14 +72,14 @@ class Search extends \Magento\Backend\App\Action implements HttpGetActionInterfa
                 'label' => $product->getName(),
                 'is_active' => $product->getStatus(),
                 'path' => $product->getSku(),
-                'optgroup' => false
+                'optgroup' => false,
             ];
         }
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */
         $resultJson = $this->resultJsonFactory->create();
         return $resultJson->setData([
             'options' => $productById,
-            'total' => empty($productById) ? 0 : $totalValues
+            'total' => empty($productById) ? 0 : $totalValues,
         ]);
     }
 }

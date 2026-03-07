@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class DropReference implements OperationInterface
     /**
      * Operation name.
      */
-    const OPERATION_NAME = 'drop_reference';
+    public const OPERATION_NAME = 'drop_reference';
 
     /**
      * @var DropElement

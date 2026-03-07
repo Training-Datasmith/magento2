@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Interface for profiler driver.
  *
@@ -7,6 +9,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Profiler;
 
 /**

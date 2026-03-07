@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Block\Adminhtml\Attribute;
 
-use Magento\Framework\Registry;
 use Magento\Eav\Model\Entity\Attribute\Config;
+use Magento\Framework\Registry;
 
 /**
  * Disable form fields

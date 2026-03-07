@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Backup\Filesystem;
 
 use Magento\Framework\Backup\Filesystem\Iterator\Filter;
@@ -22,7 +25,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_WRITABLE = 1;
+    public const INFO_WRITABLE = 1;
 
     /**
      * Constant can be used in getInfo() function as second parameter.
@@ -30,7 +33,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_READABLE = 2;
+    public const INFO_READABLE = 2;
 
     /**
      * Constant can be used in getInfo() function as second parameter.
@@ -38,7 +41,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_SIZE = 4;
+    public const INFO_SIZE = 4;
 
     /**
      * Constant can be used in getInfo() function as second parameter.
@@ -46,7 +49,7 @@ class Helper
      *
      * @const int
      */
-    const INFO_ALL = 7;
+    public const INFO_ALL = 7;
 
     /**
      * Recursively delete $path

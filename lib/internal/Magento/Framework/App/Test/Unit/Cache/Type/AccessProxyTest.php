@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -62,7 +63,7 @@ class AccessProxyTest extends TestCase
             ['load', ['record_id'], false, '111'],
             ['save', ['record_value', 'record_id', ['tag'], 555], true, false],
             ['remove', ['record_id'], true, false],
-            ['clean', [CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG, ['tag']], true, false]
+            ['clean', [CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG, ['tag']], true, false],
         ];
     }
 }

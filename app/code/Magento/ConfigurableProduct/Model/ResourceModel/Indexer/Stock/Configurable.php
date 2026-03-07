@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Model\ResourceModel\Indexer\Stock;
 
 /**
@@ -93,7 +96,7 @@ class Configurable extends \Magento\CatalogInventory\Model\ResourceModel\Indexer
         );
         $statusExpr = $this->getStatusExpression($connection);
 
-        $optExpr = $connection->getCheckSql("le.required_options = 0", 'i.stock_status', 0);
+        $optExpr = $connection->getCheckSql('le.required_options = 0', 'i.stock_status', 0);
         $stockStatusExpr = $connection->getLeastSql(["MAX({$optExpr})", "MIN({$statusExpr})"]);
 
         $select->columns(['status' => $stockStatusExpr]);

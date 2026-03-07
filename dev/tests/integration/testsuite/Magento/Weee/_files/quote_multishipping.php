@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -50,18 +51,18 @@ $shipping = [
     'address_type' => 'shipping',
 ];
 $methodCode = 'flatrate_flatrate';
-    /** @var Rate $rate */
-    $rate = $objectManager->create(Rate::class);
-    $rate->setCode($methodCode)
-        ->setPrice(5.00);
+/** @var Rate $rate */
+$rate = $objectManager->create(Rate::class);
+$rate->setCode($methodCode)
+    ->setPrice(5.00);
 
-    $address = $objectManager->create(AddressInterface::class, ['data' => $shipping]);
-    $address->setShippingMethod($methodCode)
-        ->addShippingRate($rate)
-        ->setShippingAmount(5.00)
-        ->setBaseShippingAmount(5.00);
+$address = $objectManager->create(AddressInterface::class, ['data' => $shipping]);
+$address->setShippingMethod($methodCode)
+    ->addShippingRate($rate)
+    ->setShippingAmount(5.00)
+    ->setBaseShippingAmount(5.00);
 
-    $quote->addAddress($address);
+$quote->addAddress($address);
 
 /** @var AddressInterface $address */
 $address = $objectManager->create(

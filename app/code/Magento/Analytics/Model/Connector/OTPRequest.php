@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector;
 
 use Laminas\Http\Request;
@@ -23,59 +26,21 @@ use Psr\Log\LoggerInterface;
 class OTPRequest
 {
     /**
-     * Resource for handling MBI token value.
-     *
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @var Http\ClientInterface
-     */
-    private $httpClient;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * @var ScopeConfigInterface
-     */
-    private $config;
-
-    /**
-     * @var ResponseResolver
-     */
-    private $responseResolver;
-
-    /**
      * Path to the configuration value which contains
      * an URL that provides an OTP.
-     *
-     * @var string
      */
-    private $otpUrlConfigPath = 'analytics/url/otp';
+    private string $otpUrlConfigPath = 'analytics/url/otp';
 
-    /**
-     * @param AnalyticsToken $analyticsToken
-     * @param Http\ClientInterface $httpClient
-     * @param ScopeConfigInterface $config
-     * @param ResponseResolver $responseResolver
-     * @param LoggerInterface $logger
-     */
     public function __construct(
-        AnalyticsToken $analyticsToken,
-        Http\ClientInterface $httpClient,
-        ScopeConfigInterface $config,
-        ResponseResolver $responseResolver,
-        LoggerInterface $logger
+        /**
+         * Resource for handling MBI token value.
+         */
+        private readonly AnalyticsToken $analyticsToken,
+        private readonly Http\ClientInterface $httpClient,
+        private readonly ScopeConfigInterface $config,
+        private readonly ResponseResolver $responseResolver,
+        private readonly LoggerInterface $logger
     ) {
-        $this->analyticsToken = $analyticsToken;
-        $this->httpClient = $httpClient;
-        $this->config = $config;
-        $this->responseResolver = $responseResolver;
-        $this->logger = $logger;
     }
 
     /**
@@ -94,8 +59,8 @@ class OTPRequest
                 Request::METHOD_POST,
                 $this->config->getValue($this->otpUrlConfigPath),
                 [
-                    "access-token" => $this->analyticsToken->getToken(),
-                    "url" => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
+                    'access-token' => $this->analyticsToken->getToken(),
+                    'url' => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
                 ]
             );
 

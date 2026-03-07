@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -144,8 +145,8 @@ class ImageTest extends AbstractFormTestCase
         $objects = [
             [
                 File::class,
-                $this->ioFileSystemMock
-            ]
+                $this->ioFileSystemMock,
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
     }
@@ -221,7 +222,7 @@ class ImageTest extends AbstractFormTestCase
             'tmp_name' => __DIR__ . '/_files/logo.gif',
             'name' => 'logo.gif',
             'basename' => 'logo.gif',
-            'extension' => 'gif'
+            'extension' => 'gif',
         ];
 
         $this->ioFileSystemMock->expects($this->any())
@@ -257,7 +258,7 @@ class ImageTest extends AbstractFormTestCase
             'name' => 'logo.gif',
             'basename' => 'logo.gif',
             'size' => 2,
-            'extension' => 'gif'
+            'extension' => 'gif',
         ];
 
         $maxFileSize = 1;
@@ -305,7 +306,7 @@ class ImageTest extends AbstractFormTestCase
             'tmp_name' => __DIR__ . '/_files/logo.gif',
             'name' => 'logo.gif',
             'basename' => 'logo.gif',
-            'extension' => 'gif'
+            'extension' => 'gif',
         ];
 
         $this->ioFileSystemMock->expects($this->any())
@@ -353,7 +354,7 @@ class ImageTest extends AbstractFormTestCase
             'tmp_name' => __DIR__ . '/_files/logo.gif',
             'name' => 'logo.gif',
             'basename' => 'logo.gif',
-            'extension' => 'gif'
+            'extension' => 'gif',
         ];
 
         $maxImageHeight = 1;

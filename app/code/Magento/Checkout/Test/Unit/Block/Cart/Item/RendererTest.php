@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -145,7 +146,7 @@ class RendererTest extends TestCase
                 [
                     'include_container' => true,
                     'display_minimal_price' => true,
-                    'zone' => Render::ZONE_ITEM_LIST
+                    'zone' => Render::ZONE_ITEM_LIST,
                 ]
             )->willReturn($priceHtml);
 

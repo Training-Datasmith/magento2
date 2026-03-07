@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -137,7 +138,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
                 'prefix' => false,
                 'middlename' => false,
                 'suffix' => false,
-                'fax' => false
+                'fax' => false,
             ],
             $addresses[1]->getId() => [
                 'telephone' => '845454465',
@@ -154,8 +155,8 @@ class AddressTest extends \PHPUnit\Framework\TestCase
                 'prefix' => false,
                 'middlename' => false,
                 'suffix' => false,
-                'fax' => false
-            ]
+                'fax' => false,
+            ],
         ];
 
         $actual = json_decode($this->block->getAddressCollectionJson(), true);

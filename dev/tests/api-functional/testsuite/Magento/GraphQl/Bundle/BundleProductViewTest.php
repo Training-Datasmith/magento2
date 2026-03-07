@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -12,8 +13,10 @@ use Magento\Bundle\Test\Fixture\Option as BundleOptionFixture;
 use Magento\Bundle\Test\Fixture\Product as BundleProductFixture;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Test\Fixture\Group as GroupFixture;
 use Magento\Store\Test\Fixture\Store as StoreFixture;
 use Magento\Store\Test\Fixture\Website as WebsiteFixture;
@@ -21,8 +24,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\TestCase\GraphQlAbstract;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Model\Product\Attribute\Source\Status as ProductStatus;
 
 /**
  * Test querying Bundle products
@@ -235,7 +236,7 @@ QUERY;
             ['response_field' => 'weight', 'expected_value' => $product->getWeight()],
             ['response_field' => 'dynamic_price', 'expected_value' => !(bool)$product->getPriceType()],
             ['response_field' => 'dynamic_weight', 'expected_value' => !(bool)$product->getWeightType()],
-            ['response_field' => 'dynamic_sku', 'expected_value' => !(bool)$product->getSkuType()]
+            ['response_field' => 'dynamic_sku', 'expected_value' => !(bool)$product->getSkuType()],
         ];
 
         $this->assertResponseFields($actualResponse, $assertionMap);
@@ -267,10 +268,10 @@ QUERY;
             [
                 'option_id' => $option->getOptionId(),
                 'title' => $option->getTitle(),
-                'required' =>(bool)$option->getRequired(),
+                'required' => (bool)$option->getRequired(),
                 'type' => $option->getType(),
                 'position' => $option->getPosition(),
-                'sku' => $option->getSku()
+                'sku' => $option->getSku(),
             ]
         );
         $this->assertResponseFields(
@@ -281,7 +282,7 @@ QUERY;
                 'position' => $bundleProductLink->getPosition(),
                 'is_default' => (bool)$bundleProductLink->getIsDefault(),
                 'price_type' => self::KEY_PRICE_TYPE_FIXED,
-                'can_change_quantity' => $bundleProductLink->getCanChangeQuantity()
+                'can_change_quantity' => $bundleProductLink->getCanChangeQuantity(),
             ]
         );
         $this->assertEquals(
@@ -294,7 +295,7 @@ QUERY;
                 'id' => $childProduct->getId(),
                 'name' => $childProduct->getName(),
                 'type_id' => $childProduct->getTypeId(),
-                'sku' => $childProduct->getSku()
+                'sku' => $childProduct->getSku(),
             ]
         );
     }

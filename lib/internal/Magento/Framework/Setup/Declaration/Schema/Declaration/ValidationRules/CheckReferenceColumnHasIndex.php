@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationRules;
 
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationInterface;
@@ -21,12 +24,12 @@ class CheckReferenceColumnHasIndex implements ValidationInterface
     /**
      * Error code.
      */
-    const ERROR_TYPE = 'reference_column_without_unique_index';
+    public const ERROR_TYPE = 'reference_column_without_unique_index';
 
     /**
      * Error message, that will be shown.
      */
-    const ERROR_MESSAGE = 'Reference column %s in reference table %s do not have index';
+    public const ERROR_MESSAGE = 'Reference column %s in reference table %s do not have index';
 
     /**
      * @inheritdoc
@@ -55,7 +58,7 @@ class CheckReferenceColumnHasIndex implements ValidationInterface
                         self::ERROR_MESSAGE,
                         $referenceColumnName,
                         $constraint->getReferenceTable()->getName()
-                    )
+                    ),
                 ];
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class DesignConfig implements RevertibleDataFixtureInterface
     private const DEFAULT_DATA = [
         'scope_type' => ScopeInterface::SCOPE_STORES,
         'scope_id' => 1,
-        'data' => []
+        'data' => [],
     ];
 
     /**
@@ -104,7 +105,7 @@ class DesignConfig implements RevertibleDataFixtureInterface
             if (array_key_exists($fieldData->getPath(), $data)) {
                 $origData[] = [
                     'path' => $fieldData->getPath(),
-                    'value' => $fieldData->getValue()
+                    'value' => $fieldData->getValue(),
                 ];
                 $fieldData->setValue($data[$fieldData->getPath()]);
             }

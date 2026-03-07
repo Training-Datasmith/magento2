@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model;
 
 use Magento\Framework\App\ObjectManager;
@@ -12,9 +15,9 @@ use Magento\Sales\Api\ShipmentRepositoryInterface;
 use Magento\Sales\Api\ShipOrderInterface;
 use Magento\Sales\Model\Order\Config as OrderConfig;
 use Magento\Sales\Model\Order\OrderStateResolverInterface;
-use Magento\Sales\Model\Order\ShipmentDocumentFactory;
 use Magento\Sales\Model\Order\Shipment\NotifierInterface;
 use Magento\Sales\Model\Order\Shipment\OrderRegistrarInterface;
+use Magento\Sales\Model\Order\ShipmentDocumentFactory;
 use Magento\Sales\Model\Order\Validation\ShipOrderInterface as ShipOrderValidator;
 use Psr\Log\LoggerInterface;
 
@@ -160,7 +163,7 @@ class ShipOrder implements ShipOrderInterface
                 $comment,
                 $tracks,
                 $packages,
-                $arguments
+                $arguments,
             ]
         );
     }

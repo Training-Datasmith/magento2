@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Validator\Test\Unit;
 
 use Magento\Framework\Validator\StringLength;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test case for \Magento\Framework\Validator\StringLength
@@ -51,7 +52,7 @@ class StringLengthTest extends TestCase
             ['строка', 6, true],
             ['строка', 5, false],
             ['string', 6, true],
-            ['string', 5, false]
+            ['string', 5, false],
         ];
     }
 }

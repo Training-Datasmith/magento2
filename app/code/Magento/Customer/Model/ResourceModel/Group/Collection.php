@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\ResourceModel\Group;
 
 /**
@@ -58,7 +61,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->getSelect()->joinLeft(
             ['tax_class_table' => $this->getTable('tax_class')],
-            "main_table.tax_class_id = tax_class_table.class_id"
+            'main_table.tax_class_id = tax_class_table.class_id'
         );
         return $this;
     }

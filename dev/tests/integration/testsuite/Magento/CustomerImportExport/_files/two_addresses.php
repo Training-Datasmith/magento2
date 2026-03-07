@@ -1,15 +1,16 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Customer\Model\Address;
 use Magento\Customer\Model\Customer;
-use Magento\Store\Model\Website;
 use Magento\Store\Model\Store;
+use Magento\Store\Model\Website;
+use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
 
 Resolver::getInstance()->requireDataFixture('Magento/Store/_files/websites_different_countries.php');

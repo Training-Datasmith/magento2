@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Framework\MessageQueue;
 
 use Magento\TestFramework\Helper\Amqp;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @see dev/tests/integration/_files/Magento/TestModuleMessageQueueConfiguration
@@ -113,7 +114,7 @@ class TopologyTest extends TestCase
                     'auto_delete' => false,
                     'internal' => false,
                     'arguments' => [
-                        'alternate-exchange' => 'magento-log-exchange'
+                        'alternate-exchange' => 'magento-log-exchange',
                     ],
                 ],
                 'bindingConfig' => [
@@ -124,10 +125,10 @@ class TopologyTest extends TestCase
                         'destination_type' => 'queue',
                         'routing_key' => 'anotherTopic1',
                         'arguments' => [
-                            'argument1' => 'value'
+                            'argument1' => 'value',
                         ],
                     ],
-                ]
+                ],
             ],
             'magento-topic-based-exchange2' => [
                 'expectedConfig' => [
@@ -139,7 +140,7 @@ class TopologyTest extends TestCase
                     'internal' => false,
                     'arguments' => [
                         'alternate-exchange' => 'magento-log-exchange',
-                        'arrayValue' => ['10', '20']
+                        'arrayValue' => ['10', '20'],
                     ],
                 ],
                 'bindingConfig' => [
@@ -155,7 +156,7 @@ class TopologyTest extends TestCase
                             'argument3' => 150,
                         ],
                     ],
-                ]
+                ],
             ],
             'magento-topic-based-exchange3' => [
                 'expectedConfig' => [
@@ -187,7 +188,7 @@ class TopologyTest extends TestCase
                         'destination_type' => 'queue',
                         'routing_key' => '#',
                         'arguments' => [
-                            'test' => 'one'
+                            'test' => 'one',
                         ],
                     ],
                     [
@@ -198,7 +199,7 @@ class TopologyTest extends TestCase
                         'routing_key' => '*.*.*',
                         'arguments' => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

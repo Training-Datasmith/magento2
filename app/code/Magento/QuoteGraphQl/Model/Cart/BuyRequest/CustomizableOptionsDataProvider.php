@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -62,8 +63,8 @@ class CustomizableOptionsDataProvider implements BuyRequestDataProviderInterface
     private function convertCustomOptionValue(string $value)
     {
         $value = trim($value);
-        if (substr($value, 0, 1) === "[" &&
-            substr($value, strlen($value) - 1, 1) === "]") {
+        if (substr($value, 0, 1) === '[' &&
+            substr($value, strlen($value) - 1, 1) === ']') {
             return explode(',', substr($value, 1, -1));
         }
         return $value;

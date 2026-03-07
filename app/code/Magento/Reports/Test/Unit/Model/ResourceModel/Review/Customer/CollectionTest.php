@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -59,8 +60,8 @@ class CollectionTest extends TestCase
         $this->selectMock
             ->method('reset')
             ->willReturnCallback(function ($arg1) {
-                if ($arg1 == [Select::ORDER] || $arg1 == [Select::LIMIT_COUNT] || $arg1 ==[Select::LIMIT_OFFSET] ||
-                    $arg1 ==[Select::WHERE] || $arg1 ==[Select::HAVING]) {
+                if ($arg1 == [Select::ORDER] || $arg1 == [Select::LIMIT_COUNT] || $arg1 == [Select::LIMIT_OFFSET] ||
+                    $arg1 == [Select::WHERE] || $arg1 == [Select::HAVING]) {
                     return null;
                 }
             });
@@ -80,10 +81,10 @@ class CollectionTest extends TestCase
     {
         $havingClauses = [
             'clause-1' => '(review_cnt LIKE %4%)',
-            'clause-2' => '(avg_rating LIKE %55.00%)'
+            'clause-2' => '(avg_rating LIKE %55.00%)',
         ];
         $whereClauses = [
-            'customer name LIKE %test%'
+            'customer name LIKE %test%',
         ];
 
         $this->selectMock->expects($this->atLeastOnce())->method('getPart')->willReturn($havingClauses);
@@ -91,7 +92,7 @@ class CollectionTest extends TestCase
         $this->selectMock
             ->method('reset')
             ->willReturnCallback(function ($arg1) {
-                if ($arg1 == [Select::ORDER] || $arg1 == [Select::LIMIT_COUNT] || $arg1 ==[Select::LIMIT_OFFSET]) {
+                if ($arg1 == [Select::ORDER] || $arg1 == [Select::LIMIT_COUNT] || $arg1 == [Select::LIMIT_OFFSET]) {
                     return null;
                 }
             });

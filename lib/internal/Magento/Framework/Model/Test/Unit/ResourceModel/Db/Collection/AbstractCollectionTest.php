@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -264,9 +265,9 @@ class AbstractCollectionTest extends TestCase
                 [['correlation', $columnMock, 'alias']],
                 [
                     ['main_table', ['column_alias' => $columnMock], null],
-                    'alias' => ['correlation', $columnMock, 'alias']
+                    'alias' => ['correlation', $columnMock, 'alias'],
                 ],
-            ]
+            ],
         ];
     }
 
@@ -293,7 +294,7 @@ class AbstractCollectionTest extends TestCase
             ['*', null, null],
             [['alias' => 'column', 1 => 'column2'], null, ['alias' => 'column', 'column2']],
             ['some_field', null, ['some_field']],
-            ['some_field', 'alias', ['alias' => 'some_field']]
+            ['some_field', 'alias', ['alias' => 'some_field']],
         ];
     }
 
@@ -312,7 +313,7 @@ class AbstractCollectionTest extends TestCase
     {
         return [
             ['alias', '', 'some_field', ['alias' => '']],
-            ['alias', 'SUM({{var}})', ['var' => 'some_field'], ['alias' => 'SUM(some_field)']]
+            ['alias', 'SUM({{var}})', ['var' => 'some_field'], ['alias' => 'SUM(some_field)']],
         ];
     }
 
@@ -340,7 +341,7 @@ class AbstractCollectionTest extends TestCase
             ['some_field', false, [], [], false],
             ['field_to_remove', false, ['field_to_remove' => 'field_name'], ['field_to_remove' => 'field_name'], false],
             ['field_to_remove', true, ['field_to_remove' => 'field_name'], [], true],
-            ['r', false, ['a' => 'r', 'b' => 'c'], ['b' => 'c'], true]
+            ['r', false, ['a' => 'r', 'b' => 'c'], ['b' => 'c'], true],
         ];
     }
 
@@ -425,7 +426,7 @@ class AbstractCollectionTest extends TestCase
     {
         return [
             ['table', '', '*', ['table' => true]],
-            [['alias' => 'table'], '', '*', ['alias' => true]]
+            [['alias' => 'table'], '', '*', ['alias' => true]],
         ];
     }
 

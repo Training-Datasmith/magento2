@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,8 +14,8 @@ use Magento\Framework\HTTP\PhpEnvironment\Response;
 use Magento\Framework\Oauth\Helper\Request;
 use Magento\Framework\Oauth\OauthInputException;
 use Magento\Framework\Phrase;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase
 {
@@ -70,15 +71,15 @@ class RequestTest extends TestCase
             ],
             [
                 new \Exception('msg'),
-                ['internal_error&message=msg', Request::HTTP_INTERNAL_ERROR]
+                ['internal_error&message=msg', Request::HTTP_INTERNAL_ERROR],
             ],
             [
                 new \Exception(),
                 [
                     'internal_error&message=empty_message',
-                    Request::HTTP_INTERNAL_ERROR
-                ]
-            ]
+                    Request::HTTP_INTERNAL_ERROR,
+                ],
+            ],
         ];
     }
 
@@ -109,12 +110,12 @@ class RequestTest extends TestCase
         return  [
             'hostWithoutPort' => [
                 'url' => 'http://localhost/',
-                'host' => 'localhost'
+                'host' => 'localhost',
             ],
             'hostWithPort' => [
                 'url' => 'http://localhost:81/',
-                'host' => 'localhost:81'
-            ]
+                'host' => 'localhost:81',
+            ],
         ];
     }
 
@@ -158,28 +159,28 @@ class RequestTest extends TestCase
         return [
             [
                 null,
-                []
+                [],
             ],
             [
                 '',
-                []
+                [],
             ],
             [
                 'OAuth oauth_consumer_key="x",oauth_token="x", Basic d2luZHNvcm0yOldpTmRzb1JTbWlUSDAwMTQ=',
-                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x']
+                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x'],
             ],
             [
                 'Basic d2luZHNvcm0yOldpTmRzb1JTbWlUSDAwMTQ=, OAuth oauth_consumer_key="x",oauth_token="x"',
-                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x']
+                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x'],
             ],
             [
                 'Basic d2luZHNvcm0yOldpTmRzb1JTbWlUSDAwMTQ=, oauth oauth_consumer_key="x", oauth_token="x"',
-                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x']
+                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x'],
             ],
             [
                 'oauth oauth_consumer_key="x", oauth_token="x", Basic d2luZHNvcm0yOldpTmRzb1JTbWlUSDAwMTQ=',
-                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x']
-            ]
+                ['oauth_consumer_key' => 'x', 'oauth_token' => 'x'],
+            ],
         ];
     }
 }

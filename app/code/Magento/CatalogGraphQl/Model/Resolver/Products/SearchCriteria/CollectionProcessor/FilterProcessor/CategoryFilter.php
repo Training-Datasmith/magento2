@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class CategoryFilter implements CustomFilterInterface
             }
             $collection->addCategoriesFilter(
                 [
-                    $conditionType => array_map('intval', $this->getCategoryIds($ids))
+                    $conditionType => array_map('intval', $this->getCategoryIds($ids)),
                 ]
             );
         }

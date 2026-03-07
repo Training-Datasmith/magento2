@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\App\Task;
 
 use Magento\Setup\Module\Di\App\Task\Operation\AppActionListGenerator;
@@ -21,47 +24,47 @@ class OperationFactory
     /**
      * Area config generator operation definition
      */
-    const AREA_CONFIG_GENERATOR = 'area';
+    public const AREA_CONFIG_GENERATOR = 'area';
 
     /**
      * Interception operation definition
      */
-    const INTERCEPTION = 'interception';
+    public const INTERCEPTION = 'interception';
 
     /**
      * Interception cache operation definition
      */
-    const INTERCEPTION_CACHE = 'interception_cache';
+    public const INTERCEPTION_CACHE = 'interception_cache';
 
     /**
      * Repository generator operation definition
      */
-    const REPOSITORY_GENERATOR = 'repository_generator';
+    public const REPOSITORY_GENERATOR = 'repository_generator';
 
     /**
      * Proxy generator operation definition
      */
-    const PROXY_GENERATOR = 'proxy_generator';
+    public const PROXY_GENERATOR = 'proxy_generator';
 
     /**
      * Service data attributes generator operation definition
      */
-    const DATA_ATTRIBUTES_GENERATOR = 'extension_attributes_generator';
+    public const DATA_ATTRIBUTES_GENERATOR = 'extension_attributes_generator';
 
     /**
      * Application code generator operation definition
      */
-    const APPLICATION_CODE_GENERATOR = 'application_code_generator';
+    public const APPLICATION_CODE_GENERATOR = 'application_code_generator';
 
     /**
      * Application action list generator operation definition
      */
-    const APPLICATION_ACTION_LIST_GENERATOR = 'application_action_list_generator';
+    public const APPLICATION_ACTION_LIST_GENERATOR = 'application_action_list_generator';
 
     /**
      * Plugin list generator operation definition
      */
-    const PLUGIN_LIST_GENERATOR = 'plugin_list_generator';
+    public const PLUGIN_LIST_GENERATOR = 'plugin_list_generator';
 
     /**
      * Operations definitions

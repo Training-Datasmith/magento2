@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -23,7 +24,6 @@ use Magento\Customer\Model\ResourceModel\AddressRepository;
 use Magento\Customer\Model\ResourceModel\Customer;
 use Magento\Customer\Model\ResourceModel\Customer\Collection;
 use Magento\Customer\Model\ResourceModel\CustomerRepository;
-use Magento\Framework\Api\CustomAttributesDataInterface;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
@@ -31,10 +31,10 @@ use Magento\Framework\Api\ImageProcessorInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -224,7 +224,7 @@ class CustomerRepositoryTest extends TestCase
                 'getAttributeSetId',
                 'getDataModel',
                 'save',
-                'setOrigData'
+                'setOrigData',
             ]
         );
 
@@ -242,7 +242,7 @@ class CustomerRepositoryTest extends TestCase
                     'getPasswordHash',
                     'getFailuresNum',
                     'getFirstFailure',
-                    'getLockExpires'
+                    'getLockExpires',
                 ]
         );
         $this->customer->expects($this->atLeastOnce())
@@ -272,7 +272,7 @@ class CustomerRepositoryTest extends TestCase
             ->with($this->customer, CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER, $this->customer)
             ->willReturn($customerAttributesMetaData);
         $this->customerRegistry->expects($this->atLeastOnce())
-            ->method("remove")
+            ->method('remove')
             ->with($customerId);
         $this->extensibleDataObjectConverter->expects($this->once())
             ->method('toNestedArray')
@@ -319,7 +319,7 @@ class CustomerRepositoryTest extends TestCase
             ->willReturnMap(
                 [
                     ['rpToken', $customerModel],
-                    [null, $customerModel]
+                    [null, $customerModel],
                 ]
             );
         $customerModel->expects($this->once())
@@ -327,7 +327,7 @@ class CustomerRepositoryTest extends TestCase
             ->willReturnMap(
                 [
                     ['rpTokenCreatedAt', $customerModel],
-                    [null, $customerModel]
+                    [null, $customerModel],
                 ]
             );
 
@@ -368,7 +368,7 @@ class CustomerRepositoryTest extends TestCase
                 [
                     'customer_data_object' => $this->customer,
                     'orig_customer_data_object' => $origCustomer,
-                    'delegate_data' => []
+                    'delegate_data' => [],
                 ]
             );
 
@@ -392,7 +392,7 @@ class CustomerRepositoryTest extends TestCase
                     'getPasswordHash',
                     'getFailuresNum',
                     'getFirstFailure',
-                    'getLockExpires'
+                    'getLockExpires',
                 ]
         );
         $origCustomer = $this->customer;
@@ -410,7 +410,7 @@ class CustomerRepositoryTest extends TestCase
                 'setId',
                 'getAttributeSetId',
                 'getDataModel',
-                'save'
+                'save',
             ]
         );
         $customerAttributesMetaData = $this->createPartialMockWithReflection(
@@ -509,7 +509,7 @@ class CustomerRepositoryTest extends TestCase
                 [
                     'customer_data_object' => $this->customer,
                     'orig_customer_data_object' => $origCustomer,
-                    'delegate_data' => []
+                    'delegate_data' => [],
                 ]
             );
 
@@ -539,7 +539,7 @@ class CustomerRepositoryTest extends TestCase
                 'setAttributeSetId',
                 'setRpToken',
                 'setRpTokenCreatedAt',
-                'setPasswordHash'
+                'setPasswordHash',
             ]
         );
         $metadata = $this->createMock(AttributeMetadataInterface::class);

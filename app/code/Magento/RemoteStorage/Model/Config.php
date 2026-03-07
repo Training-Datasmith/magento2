@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\RemoteStorage\Model;
 use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\RuntimeException;
-use Magento\RemoteStorage\Driver\DriverPool;
 use Magento\Framework\Filesystem\DriverPool as BaseDriverPool;
+use Magento\RemoteStorage\Driver\DriverPool;
 
 /**
  * Configuration for remote storage.

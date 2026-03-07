@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,7 +20,7 @@ class ProductsViewedTest extends \Magento\TestFramework\TestCase\AbstractBackend
      */
     public function testExecute()
     {
-        $this->getRequest()->setMethod("POST");
+        $this->getRequest()->setMethod('POST');
         $this->dispatch('backend/admin/dashboard/productsViewed/');
 
         $this->assertEquals(200, $this->getResponse()->getHttpResponseCode());

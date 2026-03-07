@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Category chooser for Wysiwyg CMS widget
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Category\Widget;
 
 class Chooser extends \Magento\Catalog\Block\Adminhtml\Category\Tree

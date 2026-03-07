@@ -1,18 +1,18 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
 
-
 namespace Magento\Wishlist\Test\Unit\Block\Rss;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Rss\UrlBuilderInterface;
-use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Url\EncoderInterface;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Wishlist\Block\Rss\Link;
 use Magento\Wishlist\Helper\Data;

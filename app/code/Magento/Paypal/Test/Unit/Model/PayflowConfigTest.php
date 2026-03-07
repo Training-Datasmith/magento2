@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class PayflowConfigTest extends TestCase
         $this->config = $om->getObject(
             PayflowConfig::class,
             [
-                'scopeConfig' => $this->scopeConfigMock
+                'scopeConfig' => $this->scopeConfigMock,
             ]
         );
     }
@@ -76,7 +77,7 @@ class PayflowConfigTest extends TestCase
         return [
             [PayflowConfig::PAYMENT_ACTION_AUTH, PayflowConfig::TRXTYPE_AUTH_ONLY],
             [PayflowConfig::PAYMENT_ACTION_SALE, PayflowConfig::TRXTYPE_SALE],
-            ['other', null]
+            ['other', null],
         ];
     }
 
@@ -104,7 +105,7 @@ class PayflowConfigTest extends TestCase
         return [
             [PayflowConfig::PAYMENT_ACTION_AUTH, AbstractMethod::ACTION_AUTHORIZE],
             [PayflowConfig::PAYMENT_ACTION_SALE, AbstractMethod::ACTION_AUTHORIZE_CAPTURE],
-            ['other', null]
+            ['other', null],
         ];
     }
 
@@ -197,7 +198,7 @@ class PayflowConfigTest extends TestCase
             $withArgs[] = [
                 "payment/{$method}/active",
                 ScopeInterface::SCOPE_STORE,
-                5
+                5,
             ];
             $willReturnArgs[] = $isActive;
         }
@@ -222,26 +223,26 @@ class PayflowConfigTest extends TestCase
             [
                 'expectsMethods' => [
                     Config::METHOD_PAYMENT_PRO => 0,
-                    Config::METHOD_PAYFLOWPRO => 1
+                    Config::METHOD_PAYFLOWPRO => 1,
                 ],
                 'currentMethod' => Config::METHOD_PAYMENT_PRO,
-                'result' => true
+                'result' => true,
             ],
             [
                 'expectsMethods' => [
-                    Config::METHOD_PAYMENT_PRO => 1
+                    Config::METHOD_PAYMENT_PRO => 1,
                 ],
                 'currentMethod' => Config::METHOD_PAYFLOWPRO,
-                'result' => true
+                'result' => true,
             ],
             [
                 'expectsMethods' => [
                     Config::METHOD_PAYMENT_PRO => 0,
-                    Config::METHOD_PAYFLOWPRO => 0
+                    Config::METHOD_PAYFLOWPRO => 0,
                 ],
                 'currentMethod' => 777,
-                'result' => false
-            ]
+                'result' => false,
+            ],
         ];
     }
 }

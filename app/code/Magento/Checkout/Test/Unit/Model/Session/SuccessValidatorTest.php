@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -52,11 +53,11 @@ class SuccessValidatorTest extends TestCase
 
         $checkoutSession
             ->method('__call')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['getLastSuccessQuoteId'] => 1,
                 ['getLastQuoteId'] => 0
             });
-        
+
         $this->assertFalse($this->createSuccessValidator($checkoutSession)->isValid($checkoutSession));
     }
 
@@ -72,7 +73,7 @@ class SuccessValidatorTest extends TestCase
 
         $checkoutSession
             ->method('__call')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['getLastSuccessQuoteId'] => 1,
                 ['getLastQuoteId'] => 1,
                 ['getLastOrderId'] => 0
@@ -93,7 +94,7 @@ class SuccessValidatorTest extends TestCase
 
         $checkoutSession
             ->method('__call')
-            ->willReturnCallback(fn($operation) => match ([$operation]) {
+            ->willReturnCallback(fn ($operation) => match ([$operation]) {
                 ['getLastSuccessQuoteId'] => 1,
                 ['getLastQuoteId'] => 1,
                 ['getLastOrderId'] => 1

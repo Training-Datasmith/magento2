@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Developer\Model\Di;
 
 class Information
@@ -92,7 +95,7 @@ class Information
         }
 
         foreach ($originalParameters as $parameter) {
-            $paramArray = [$parameter[0], $parameter[1], is_array($parameter[3]) ? "<empty array>" : $parameter[3]];
+            $paramArray = [$parameter[0], $parameter[1], is_array($parameter[3]) ? '<empty array>' : $parameter[3]];
             if (isset($diConfiguration[$parameter[0]])) {
                 $paramArray[2] = $this->renderParameters($diConfiguration[$parameter[0]]);
             }

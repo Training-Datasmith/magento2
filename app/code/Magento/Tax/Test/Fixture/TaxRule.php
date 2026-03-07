@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -56,7 +57,7 @@ class TaxRule implements RevertibleDataFixtureInterface
 
         return $service->execute(
             [
-                'rule' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data))
+                'rule' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data)),
             ]
         );
     }

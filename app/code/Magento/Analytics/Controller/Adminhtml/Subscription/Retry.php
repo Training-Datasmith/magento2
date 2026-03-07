@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -20,26 +22,17 @@ use Magento\Framework\Exception\LocalizedException;
 class Retry extends Action
 {
     /**
-     * Resource for managing subscription to Magento Analytics.
-     *
-     * @var SubscriptionHandler
-     */
-    private $subscriptionHandler;
-
-    /**
      * @inheritdoc
      */
     public const ADMIN_RESOURCE = 'Magento_Analytics::analytics_settings';
 
-    /**
-     * @param Context $context
-     * @param SubscriptionHandler $subscriptionHandler
-     */
     public function __construct(
         Context $context,
-        SubscriptionHandler $subscriptionHandler
+        /**
+         * Resource for managing subscription to Magento Analytics.
+         */
+        private readonly SubscriptionHandler $subscriptionHandler
     ) {
-        $this->subscriptionHandler = $subscriptionHandler;
         parent::__construct($context);
     }
 

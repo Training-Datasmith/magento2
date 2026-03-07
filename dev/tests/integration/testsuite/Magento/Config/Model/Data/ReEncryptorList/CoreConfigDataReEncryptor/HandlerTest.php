@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,13 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Config\Model\Data\ReEncryptorList\CoreConfigDataReEncryptor;
 
-use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\Config;
-use Magento\Framework\App\Config\Initial;
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Config\Model\ResourceModel\Config as ConfigResource;
 use Magento\Config\Model\Config\Backend\Encrypted;
+use Magento\Config\Model\ResourceModel\Config as ConfigResource;
+use Magento\Framework\App\Config;
 use Magento\Framework\Encryption\EncryptorInterface;
+use Magento\TestFramework\Helper\Bootstrap;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for the core configuration re-encryption handler.
@@ -61,26 +61,26 @@ class HandlerTest extends TestCase
      * @magentoDbIsolation enabled
      * @return void
      */
-    public function testReEncrypt():void
+    public function testReEncrypt(): void
     {
-        $testConfigPath1 = "test/correct_enc_value";
-        $testConfigPath2 = "test/incorrect_enc_value";
-        $testConfigPath3 = "test/empty_enc_value";
+        $testConfigPath1 = 'test/correct_enc_value';
+        $testConfigPath2 = 'test/incorrect_enc_value';
+        $testConfigPath3 = 'test/empty_enc_value';
 
         $this->configResource->saveConfig(
             $testConfigPath1,
-            $this->encryptor->encrypt("Encrypted Config Value")
+            $this->encryptor->encrypt('Encrypted Config Value')
         );
         $this->configResource->saveConfig(
             $testConfigPath2,
             substr_replace(
-                $this->encryptor->encrypt("Encrypted Config Value"),
-                "9",
+                $this->encryptor->encrypt('Encrypted Config Value'),
+                '9',
                 2,
                 1
             )
         );
-        $this->configResource->saveConfig($testConfigPath3, "");
+        $this->configResource->saveConfig($testConfigPath3, '');
 
         $this->config->clean();
 
@@ -106,8 +106,8 @@ class HandlerTest extends TestCase
         // Asserting that the handler reacts properly to DB row level errors
         // during re-encryption.
         $this->assertEquals(1, count($errors));
-        $this->assertEquals("config_id", $errors[0]->getRowIdField());
-        $this->assertEquals("Not supported cipher version", $errors[0]->getMessage());
+        $this->assertEquals('config_id', $errors[0]->getRowIdField());
+        $this->assertEquals('Not supported cipher version', $errors[0]->getMessage());
 
         $this->config->clean();
 
@@ -125,7 +125,7 @@ class HandlerTest extends TestCase
         );
         // It still should be possible to decrypt the value.
         $this->assertEquals(
-            "Encrypted Config Value",
+            'Encrypted Config Value',
             $this->encryptor->decrypt($configValue1AfterReEncryption)
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -93,7 +94,7 @@ class CustomerWithAddresses implements RevertibleDataFixtureInterface
             AddressInterface::DEFAULT_SHIPPING => false,
             AddressInterface::CUSTOM_ATTRIBUTES => [],
             AddressInterface::EXTENSION_ATTRIBUTES_KEY => [],
-        ]
+        ],
     ];
 
     private const DEFAULT_DATA = [
@@ -158,7 +159,7 @@ class CustomerWithAddresses implements RevertibleDataFixtureInterface
         $customerSave->execute(
             [
                 'customer' => $data,
-                'passwordHash' => $passwordHash
+                'passwordHash' => $passwordHash,
             ]
         );
 
@@ -178,7 +179,7 @@ class CustomerWithAddresses implements RevertibleDataFixtureInterface
 
         $customerService->execute(
             [
-                'customerId' => $data->getId()
+                'customerId' => $data->getId(),
             ]
         );
     }

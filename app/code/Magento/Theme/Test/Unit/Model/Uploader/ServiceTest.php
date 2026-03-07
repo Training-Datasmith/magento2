@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test for uploader service
  */
+
 namespace Magento\Theme\Test\Unit\Model\Uploader;
 
 use Magento\Framework\Convert\DataSize;
@@ -59,7 +61,7 @@ class ServiceTest extends TestCase
     /**
      * @var int
      */
-    const MB_MULTIPLIER = 1048576;
+    public const MB_MULTIPLIER = 1048576;
 
     protected function setUp(): void
     {

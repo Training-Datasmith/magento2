@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,11 +28,11 @@ class ConfigProvider implements \Magento\Framework\Data\Wysiwyg\ConfigProviderIn
         $this->variableConfig = $variableConfig;
     }
 
-   /**
-    * {@inheritdoc}
-    *
-    */
-    public function getConfig(\Magento\Framework\DataObject $config) : \Magento\Framework\DataObject
+    /**
+     * {@inheritdoc}
+     *
+     */
+    public function getConfig(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject
     {
         $settings = $this->variableConfig->getWysiwygPluginSettings($config);
         return $config->addData($settings);

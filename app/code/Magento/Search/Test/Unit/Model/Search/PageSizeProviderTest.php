@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Search\Test\Unit\Model\Search;
 
 use Magento\Search\Model\EngineResolver;
 use Magento\Search\Model\Search\PageSizeProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class PageSizeProviderTest extends TestCase
 {
@@ -34,7 +35,7 @@ class PageSizeProviderTest extends TestCase
         $this->model = new PageSizeProvider(
             $this->pageSizeBySearchEngineMock,
             ['search' => 10,
-                'catalogSearch3' => 11
+                'catalogSearch3' => 11,
             ]
         );
     }
@@ -61,7 +62,7 @@ class PageSizeProviderTest extends TestCase
         return [
             ['search', 10],
             ['catalogSearch3', 11],
-            ['newSearch', PHP_INT_MAX]
+            ['newSearch', PHP_INT_MAX],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,7 +14,6 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\StoreManager;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Weee\Model\ResourceModel\Tax;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -76,7 +76,7 @@ class TaxTest extends TestCase
         $this->model = $objectManager->getObject(
             Tax::class,
             [
-                'context' => $contextMock
+                'context' => $contextMock,
             ]
         );
     }
@@ -123,7 +123,7 @@ class TaxTest extends TestCase
                 [
                     'eavTable.attribute_code',
                     'eavTable.attribute_id',
-                    'eavTable.frontend_label'
+                    'eavTable.frontend_label',
                 ]
             )->willReturn($this->selectMock);
 

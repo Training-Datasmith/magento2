@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class IndexTest extends TestCase
             [
                 'request' => $this->requestMock,
                 'view' => $this->viewMock,
-                'resultPageFactory' => $this->resultFactoryMock
+                'resultPageFactory' => $this->resultFactoryMock,
 
             ]
         );

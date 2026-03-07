@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class CreditMemoComments implements ResolverInterface
                 $comments[] = [
                     'message' => $comment->getComment(),
                     'timestamp' => $this->timezone->date($comment->getCreatedAt())
-                        ->format(DateTime::DATETIME_SLASH_PHP_FORMAT)
+                        ->format(DateTime::DATETIME_SLASH_PHP_FORMAT),
                 ];
             }
         }

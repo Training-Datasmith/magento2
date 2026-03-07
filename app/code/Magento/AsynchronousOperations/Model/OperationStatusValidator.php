@@ -1,13 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-namespace Magento\AsynchronousOperations\Model;
 
-use Magento\AsynchronousOperations\Model\OperationStatusPool;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
+namespace Magento\AsynchronousOperations\Model;
 
 /**
  * Class OperationStatusValidator to validate operation status
@@ -15,18 +14,10 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
 class OperationStatusValidator
 {
     /**
-     * @var OperationStatusPool
-     */
-    private $operationStatusPool;
-
-    /**
      * OperationStatusValidator constructor.
-     *
-     * @param OperationStatusPool $operationStatusPool
      */
-    public function __construct(OperationStatusPool $operationStatusPool)
+    public function __construct(private readonly OperationStatusPool $operationStatusPool)
     {
-        $this->operationStatusPool = $operationStatusPool;
     }
 
     /**
@@ -34,9 +25,8 @@ class OperationStatusValidator
      *
      * @param int $status
      * @throws \InvalidArgumentException
-     * @return void
      */
-    public function validate($status)
+    public function validate($status): void
     {
         $statuses = $this->operationStatusPool->getStatuses();
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -37,7 +38,7 @@ class ConnectiveFactory
     public function create(
         array $conditions,
         ?string $operator = null
-    ) : Connective {
+    ): Connective {
         return $this->objectManager->create(
             Connective::class,
             [
@@ -45,7 +46,7 @@ class ConnectiveFactory
                 'operator' => $this->objectManager->create(
                     Operator::class,
                     ['value' => $operator ?: Operator::AND]
-                )
+                ),
             ]
         );
     }

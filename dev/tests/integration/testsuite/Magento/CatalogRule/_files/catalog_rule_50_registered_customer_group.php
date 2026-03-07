@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,7 +12,6 @@ declare(strict_types=1);
  */
 use Magento\CatalogRule\Model\Indexer\IndexBuilder;
 use Magento\CatalogRule\Model\Rule;
-use Magento\Customer\Model\GroupManagement;
 use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var $banner Rule */

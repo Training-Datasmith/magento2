@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -59,8 +60,8 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                     'label' => __('Delete User'),
                     'class' => 'delete',
                     'data_attribute' => [
-                        'role' => 'delete-user'
-                    ]
+                        'role' => 'delete-user',
+                    ],
                 ]
             );
 

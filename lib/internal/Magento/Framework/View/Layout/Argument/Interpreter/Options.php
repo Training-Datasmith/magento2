@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Argument\Interpreter;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
@@ -41,7 +44,7 @@ class Options implements InterpreterInterface
         $modelInstance = $this->objectManager->get($modelClass);
         if (!$modelInstance instanceof \Magento\Framework\Data\OptionSourceInterface) {
             throw new \UnexpectedValueException(
-                sprintf("Instance of the options source model is expected, got %s instead.", get_class($modelInstance))
+                sprintf('Instance of the options source model is expected, got %s instead.', get_class($modelInstance))
             );
         }
         $result = [];

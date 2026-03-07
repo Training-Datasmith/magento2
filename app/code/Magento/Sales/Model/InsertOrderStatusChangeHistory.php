@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,8 +8,7 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Model;
 
-use Magento\Sales\Model\ResourceModel\SalesOrderStatusChangeHistory
-    as SalesOrderStatusChangeHistoryResourceModel;
+use Magento\Sales\Model\ResourceModel\SalesOrderStatusChangeHistory as SalesOrderStatusChangeHistoryResourceModel;
 
 class InsertOrderStatusChangeHistory
 {

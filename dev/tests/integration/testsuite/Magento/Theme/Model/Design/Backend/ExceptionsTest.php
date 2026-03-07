@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Model\Design\Backend;
 
 use Magento\Framework\Serialize\Serializer\Json;
@@ -92,7 +95,7 @@ class ExceptionsTest extends \PHPUnit\Framework\TestCase
             [['search' => '#iPad|iPhone#i', 'value' => 'Magento/blank'], '#iPad|iPhone#i'],
             [
                 ['search' => 'Mozilla (3.6+)/Firefox', 'value' => 'Magento/blank'],
-                '/Mozilla \\(3\\.6\\+\\)\\/Firefox/i'
+                '/Mozilla \\(3\\.6\\+\\)\\/Firefox/i',
             ],
         ];
 
@@ -124,31 +127,31 @@ class ExceptionsTest extends \PHPUnit\Framework\TestCase
                 [
                     '1' => ['search' => '/invalid_regexp', 'value' => 'Magento/blank'],
                     '2' => ['search' => '/Opera/', 'value' => 'Magento/blank'],
-                ]
+                ],
             ],
             [
                 [
                     '1' => ['search' => 'invalid_regexp/iU', 'value' => 'Magento/blank'],
                     '2' => ['search' => '/Opera/', 'value' => 'Magento/blank'],
-                ]
+                ],
             ],
             [
                 [
                     '1' => ['search' => 'invalid_regexp#', 'value' => 'Magento/blank'],
                     '2' => ['search' => '/Opera/', 'value' => 'Magento/blank'],
-                ]
+                ],
             ],
             [
                 [
                     '1' => ['search' => '/Firefox/'],
                     '2' => ['search' => '/Opera/', 'value' => 'Magento/blank'],
-                ]
+                ],
             ],
             [
                 [
                     '1' => ['value' => 'Magento/blank'],
                     '2' => ['search' => '/Opera/', 'value' => 'Magento/blank'],
-                ]
+                ],
             ],
         ];
 

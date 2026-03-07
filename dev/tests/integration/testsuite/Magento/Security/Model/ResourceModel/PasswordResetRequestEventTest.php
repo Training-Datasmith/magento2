@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Security\Model\ResourceModel;
 
 /**
@@ -51,7 +54,7 @@ class PasswordResetRequestEventTest extends \PHPUnit\Framework\TestCase
             'request_type'      => \Magento\Security\Model\PasswordResetRequestEvent::ADMIN_PASSWORD_RESET_REQUEST,
             'account_reference' => 'test27.dev@gmail.com',
             'created_at'        => '2016-01-20 13:00:13',
-            'ip'                => '3232249856'
+            'ip'                => '3232249856',
         ];
     }
 

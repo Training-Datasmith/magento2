@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,16 +11,16 @@ namespace Magento\Framework\Validator\Test\Unit\Constraint;
 use Magento\Framework\DataObject;
 use Magento\Framework\Validator\Constraint\Property;
 use Magento\Framework\Validator\ValidatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test case for \Magento\Framework\Validator\Constraint\Property
  */
 class PropertyTest extends TestCase
 {
-    const PROPERTY_NAME = 'test';
+    public const PROPERTY_NAME = 'test';
 
     /**
      * @var Property
@@ -113,7 +114,7 @@ class PropertyTest extends TestCase
             [
                 new DataObject([self::PROPERTY_NAME => 'Property value']),
                 'Property value',
-                true
+                true,
             ],
             [new \ArrayObject([self::PROPERTY_NAME => 'Property value']), 'Property value', true],
             [
@@ -121,22 +122,22 @@ class PropertyTest extends TestCase
                 'Property value',
                 false,
                 ['Error message 1', 'Error message 2'],
-                [self::PROPERTY_NAME => ['Error message 1', 'Error message 2']]
+                [self::PROPERTY_NAME => ['Error message 1', 'Error message 2']],
             ],
             [
                 ['foo' => 'Foo value'],
                 null,
                 false,
                 ['Error message 1'],
-                [self::PROPERTY_NAME => ['Error message 1']]
+                [self::PROPERTY_NAME => ['Error message 1']],
             ],
             [
                 'scalar',
                 null,
                 false,
                 ['Error message 1'],
-                [self::PROPERTY_NAME => ['Error message 1']]
-            ]
+                [self::PROPERTY_NAME => ['Error message 1']],
+            ],
         ];
     }
 }

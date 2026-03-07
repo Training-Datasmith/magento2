@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\GroupedImportExport\Test\Unit\Model\Import\Product\Type;
 
 use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Model\ProductTypes\ConfigInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection as ProductAttributeCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory as ProductAttributeCollectionFactory;
 use Magento\CatalogImportExport\Model\Import\Product;
@@ -18,11 +20,10 @@ use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\EntityManager\EntityMetadata;
 use Magento\Framework\EntityManager\MetadataPool;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\GroupedImportExport;
 use Magento\GroupedImportExport\Model\Import\Product\Type\Grouped;
 use Magento\GroupedImportExport\Model\Import\Product\Type\Grouped\Links;
-use Magento\Catalog\Model\ProductTypes\ConfigInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\ImportExport\Test\Unit\Model\Import\AbstractImportTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -116,14 +117,14 @@ class GroupedTest extends AbstractImportTestCase
                 'getOldSku',
                 'getNextBunch',
                 'isRowAllowedToImport',
-                'getRowScope'
+                'getRowScope',
             ]
         );
         $this->skuStorage = $this->createMock(Product\SkuStorage::class);
         $this->entityModel->method('getErrorAggregator')->willReturn($this->getErrorAggregatorObject());
         $this->params = [
             0 => $this->entityModel,
-            1 => 'grouped'
+            1 => 'grouped',
         ];
         $this->links = $this->createMock(Links::class);
         $this->configMock = $this->createMock(ConfigInterface::class);
@@ -134,7 +135,7 @@ class GroupedTest extends AbstractImportTestCase
             [
                 'attribute_set_name' => 'attribute_id',
                 'attribute_id' => 'attributeSetName',
-            ]
+            ],
         ];
         $this->connection = $this->createPartialMockWithReflection(
             Mysql::class,
@@ -164,12 +165,12 @@ class GroupedTest extends AbstractImportTestCase
         $objects = [
             [
                 ConfigInterface::class,
-                $this->createMock(ConfigInterface::class)
+                $this->createMock(ConfigInterface::class),
             ],
             [
                 SkuStorage::class,
-                $this->createMock(SkuStorage::class)
-            ]
+                $this->createMock(SkuStorage::class),
+            ],
         ];
         $this->objectManagerHelper->prepareObjectManager($objects);
         $this->grouped = $this->objectManagerHelper->getObject(
@@ -181,7 +182,7 @@ class GroupedTest extends AbstractImportTestCase
                 'params' => $this->params,
                 'links' => $this->links,
                 'config' => $this->configMock,
-                'skuStorage' => $this->skuStorage
+                'skuStorage' => $this->skuStorage,
             ]
         );
         $metadataPoolMock = $this->createMock(MetadataPool::class);
@@ -255,51 +256,51 @@ class GroupedTest extends AbstractImportTestCase
                 'skus' => [
                     'newSku' => [
                         'sku_assoc1' => ['entity_id' => 1, 'type_id' => 'simple'],
-                        'productsku' => ['entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'grouped']
+                        'productsku' => ['entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'grouped'],
                     ],
-                    'oldSku' => ['sku_assoc2' => ['entity_id' => 2, 'type_id' => 'simple']]
+                    'oldSku' => ['sku_assoc2' => ['entity_id' => 2, 'type_id' => 'simple']],
                 ],
                 'bunch' => [
                     'associated_skus' => 'sku_assoc1=1, sku_assoc2=2',
                     'sku' => 'productsku',
-                    'product_type' => 'grouped'
-                ]
+                    'product_type' => 'grouped',
+                ],
             ],
             [
                 'skus' => [
                     'newSku' => [
-                        'productsku' => ['entity_id' => 1, 'attr_set_code' => 'Default', 'type_id' => 'grouped']
+                        'productsku' => ['entity_id' => 1, 'attr_set_code' => 'Default', 'type_id' => 'grouped'],
                     ],
-                    'oldSku' => []
+                    'oldSku' => [],
                 ],
                 'bunch' => [
                     'associated_skus' => '',
                     'sku' => 'productsku',
-                    'product_type' => 'grouped'
-                ]
+                    'product_type' => 'grouped',
+                ],
             ],
             [
                 'skus' => ['newSku' => [],'oldSku' => []],
                 'bunch' => [
                     'associated_skus' => 'sku_assoc1=1, sku_assoc2=2',
                     'sku' => 'productsku',
-                    'product_type' => 'grouped'
-                ]
+                    'product_type' => 'grouped',
+                ],
             ],
             [
                 'skus' => [
                     'newSku' => [
                         'sku_assoc1' => ['entity_id' => 1, 'type_id' => 'simple'],
-                        'productsku' => ['entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'grouped']
+                        'productsku' => ['entity_id' => 3, 'attr_set_code' => 'Default', 'type_id' => 'grouped'],
                     ],
-                    'oldSku' => []
+                    'oldSku' => [],
                 ],
                 'bunch' => [
                     'associated_skus' => 'sku_assoc1=1',
                     'sku' => 'productsku',
-                    'product_type' => 'simple'
-                ]
-            ]
+                    'product_type' => 'simple',
+                ],
+            ],
         ];
     }
 
@@ -313,11 +314,11 @@ class GroupedTest extends AbstractImportTestCase
         $this->entityModel->expects($this->once())->method('getNewSku')->willReturn(
             [
                 'sku_assoc1' => ['entity_id' => 1, 'type_id' => 'simple'],
-                'productsku' => ['entity_id' => 2, 'attr_set_code' => 'Default', 'type_id' => 'grouped']
+                'productsku' => ['entity_id' => 2, 'attr_set_code' => 'Default', 'type_id' => 'grouped'],
             ]
         );
         $oldSkusData = [
-            'sku_assoc2' => ['entity_id' => 3, 'type_id' => 'simple']
+            'sku_assoc2' => ['entity_id' => 3, 'type_id' => 'simple'],
         ];
         $this->entityModel->expects($this->never())->method('getOldSku');
 
@@ -340,8 +341,8 @@ class GroupedTest extends AbstractImportTestCase
             [
                 'associated_skus' => 'sku_assoc1=1, sku_assoc2=2',
                 'sku' => 'productsku',
-                'product_type' => 'grouped'
-            ]
+                'product_type' => 'grouped',
+            ],
         ];
         $this->entityModel->expects($this->any())->method('isRowAllowedToImport')->willReturn(true);
         $callCount = 0;
@@ -368,7 +369,7 @@ class GroupedTest extends AbstractImportTestCase
         $this->entityModel->expects($this->once())->method('getNewSku')->willReturn(
             [
                 'sku_assoc1' => ['entity_id' => 1, 'type_id' => 'configurable'],
-                'productsku' => ['entity_id' => 2, 'attr_set_code' => 'Default', 'type_id' => 'grouped']
+                'productsku' => ['entity_id' => 2, 'attr_set_code' => 'Default', 'type_id' => 'grouped'],
             ]
         );
         $this->entityModel->expects($this->never())->method('getOldSku');
@@ -379,8 +380,8 @@ class GroupedTest extends AbstractImportTestCase
             [
                 'associated_skus' => 'sku_assoc1=1',
                 'sku' => 'productsku',
-                'product_type' => 'grouped'
-            ]
+                'product_type' => 'grouped',
+            ],
         ];
 
         $this->entityModel->expects($this->any())->method('isRowAllowedToImport')->willReturn(true);
@@ -399,7 +400,7 @@ class GroupedTest extends AbstractImportTestCase
             'attr_product_ids' => [],
             'position' => [],
             'qty' => [],
-            'relation' => []
+            'relation' => [],
         ];
         $this->links->expects($this->once())->method('saveLinksData')->with($expectedLinkData);
         $this->grouped->saveData();

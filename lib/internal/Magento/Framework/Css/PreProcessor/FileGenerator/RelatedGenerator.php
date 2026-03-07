@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Css\PreProcessor\FileGenerator;
 
-use Magento\Framework\View\Asset\Repository;
 use Magento\Framework\Css\PreProcessor\File\Temporary;
 use Magento\Framework\Css\PreProcessor\Instruction\Import;
 use Magento\Framework\View\Asset\LocalInterface;
+use Magento\Framework\View\Asset\Repository;
 
 /**
  * Class RelatedGenerator

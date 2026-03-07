@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,10 +9,10 @@ declare(strict_types=1);
 namespace Magento\Theme\Test\Unit\Model\Theme\Customization\File;
 
 use Magento\Framework\Filesystem;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Design\Theme\Customization\Path;
 use Magento\Framework\View\Design\Theme\FileFactory;
 use Magento\Framework\View\Design\Theme\FileInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Theme\Model\Theme\Customization\File\CustomCss;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -77,7 +78,7 @@ class CustomCssTest extends TestCase
                 'getFullPath', 'getFileName', 'setFileName',
                 'getTheme', 'setTheme',
                 'getCustomizationService', 'setCustomizationService',
-                'getId', 'setData'
+                'getId', 'setData',
             ]
         );
         $file->expects($this->any())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -15,9 +16,7 @@ use Magento\Framework\DB\Select;
 use Magento\Framework\DB\Select\SelectRenderer;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Review\Model\ResourceModel\Review\Summary\Collection;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -103,7 +102,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 'entityFactory' => $this->entityFactoryMock,
                 'logger' => $this->loggerMock,
                 'fetchStrategy' => $this->fetchStrategyMock,
-                'resource' => $this->resourceMock
+                'resource' => $this->resourceMock,
             ]
         );
     }
@@ -126,7 +125,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
     {
         return [
             [1, 'store_id = ?'],
-            [[1,2], 'store_id IN (?)']
+            [[1,2], 'store_id IN (?)'],
         ];
     }
 }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Model\ResourceModel\Subscriber;
 
 use Magento\Newsletter\Model\Queue as ModelQueue;
@@ -114,10 +117,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->getSelect()->join(
             ['link' => $this->_queueLinkTable],
-            "link.subscriber_id = main_table.subscriber_id",
+            'link.subscriber_id = main_table.subscriber_id',
             []
         )->where(
-            "link.queue_id = ? ",
+            'link.queue_id = ? ',
             $queue->getId()
         );
         $this->_queueJoinedFlag = true;
@@ -147,7 +150,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->getSelect()->joinLeft(
             [
-                'customer' => $this->getTable('customer_entity')
+                'customer' => $this->getTable('customer_entity'),
             ],
             'main_table.customer_id = customer.entity_id',
             ['firstname', 'lastname']

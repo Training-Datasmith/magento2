@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -71,7 +72,7 @@ class TruncateFilter implements FilterInterface
      * @param string $string
      * @return Result
      */
-    public function filter($string) : Result
+    public function filter($string): Result
     {
         /** @var Result $result */
         $result = $this->resultFactory->create(['value' => $string, 'remainder' => '']);

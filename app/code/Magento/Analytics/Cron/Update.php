@@ -1,67 +1,28 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Cron;
 
 use Magento\Analytics\Model\AnalyticsToken;
 use Magento\Analytics\Model\Config\Backend\Baseurl\SubscriptionUpdateHandler;
 use Magento\Analytics\Model\Connector;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\FlagManager;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\FlagManager;
 
 /**
  * Executes by cron schedule in case base url was changed
  */
 class Update
 {
-    /**
-     * @var Connector
-     */
-    private $connector;
-
-    /**
-     * @var WriterInterface
-     */
-    private $configWriter;
-
-    /**
-     * @var ReinitableConfigInterface
-     */
-    private $reinitableConfig;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @param Connector $connector
-     * @param WriterInterface $configWriter
-     * @param ReinitableConfigInterface $reinitableConfig
-     * @param FlagManager $flagManager
-     * @param AnalyticsToken $analyticsToken
-     */
-    public function __construct(
-        Connector $connector,
-        WriterInterface $configWriter,
-        ReinitableConfigInterface $reinitableConfig,
-        FlagManager $flagManager,
-        AnalyticsToken $analyticsToken
-    ) {
-        $this->connector = $connector;
-        $this->configWriter = $configWriter;
-        $this->reinitableConfig = $reinitableConfig;
-        $this->flagManager = $flagManager;
-        $this->analyticsToken = $analyticsToken;
+    public function __construct(private readonly Connector $connector, private readonly WriterInterface $configWriter, private readonly ReinitableConfigInterface $reinitableConfig, private readonly FlagManager $flagManager, private readonly AnalyticsToken $analyticsToken)
+    {
     }
 
     /**

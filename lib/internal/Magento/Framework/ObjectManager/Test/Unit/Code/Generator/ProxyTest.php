@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -39,7 +40,7 @@ class ProxyTest extends TestCase
                     $this->ioObjectMock,
                     null,
                     null,
-                    $this->createMock(FileResolver::class)
+                    $this->createMock(FileResolver::class),
                 ]
             )
             ->getMock();
@@ -71,7 +72,7 @@ class ProxyTest extends TestCase
                     $this->ioObjectMock,
                     null,
                     null,
-                    $this->createMock(FileResolver::class)
+                    $this->createMock(FileResolver::class),
                 ]
             )
             ->getMock();

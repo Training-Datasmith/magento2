@@ -1,29 +1,31 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2012 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogRule\Model;
 
 use Exception;
 use Magento\Catalog\Model\Indexer\Product\Price\Processor as ProductPriceIndexerProcessor;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Test\Fixture\Product as ProductFixture;
+use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
+use Magento\CatalogRule\Model\Indexer\Rule\RuleProductProcessor;
 use Magento\CatalogRule\Test\Fixture\Rule as CatalogRuleFixture;
-use Magento\Checkout\Model\CartFactory;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Indexer\Cron\UpdateMview;
-use Magento\Indexer\Test\Fixture\UpdateMview as UpdateMviewCron;
 use Magento\Indexer\Test\Fixture\ScheduleMode;
+use Magento\Indexer\Test\Fixture\UpdateMview as UpdateMviewCron;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Test\Fixture\AddProductToCart as AddProductToCartFixture;
 use Magento\Quote\Test\Fixture\CustomerCart as CustomerCartFixture;
-use Magento\CatalogRule\Model\Indexer\Rule\RuleProductProcessor;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorage;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\CatalogRule\Api\CatalogRuleRepositoryInterface;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -106,13 +108,13 @@ class RuleTest extends TestCase
             [
                 'action_operator' => 'by_percent',
                 'action_amount' => '50.0000',
-                'action_stop' => '0'
+                'action_stop' => '0',
             ],
             [
                 'action_operator' => 'by_percent',
                 'action_amount' => '10.0000',
-                'action_stop' => '0'
-            ]
+                'action_stop' => '0',
+            ],
         ];
     }
 
@@ -134,7 +136,7 @@ class RuleTest extends TestCase
                 'actions' => [],
                 'website_ids' => [1],
                 'customer_group_ids' => [0, 1],
-                'is_active' => 1
+                'is_active' => 1,
             ],
             as: 'catalog_rule'
         ),

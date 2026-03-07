@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -40,8 +41,8 @@ class VerticalTest extends TestCase
                 'verticals' => [
                     'Apps and Games',
                     'Athletic/Sporting Goods',
-                    'Art and Design'
-                ]
+                    'Art and Design',
+                ],
             ]
         );
     }
@@ -55,7 +56,7 @@ class VerticalTest extends TestCase
             ['value' => '', 'label' => __('--Please Select--')],
             ['value' => 'Apps and Games', 'label' => __('Apps and Games')],
             ['value' => 'Athletic/Sporting Goods', 'label' => __('Athletic/Sporting Goods')],
-            ['value' => 'Art and Design', 'label' => __('Art and Design')]
+            ['value' => 'Art and Design', 'label' => __('Art and Design')],
         ];
 
         $this->assertEquals(

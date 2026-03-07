@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 use Magento\Framework\Exception\LocalizedException;
@@ -15,5 +18,4 @@ use Magento\Framework\Exception\LocalizedException;
  */
 class MessageLockException extends LocalizedException
 {
-
 }

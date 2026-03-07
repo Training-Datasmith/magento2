@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,18 +14,17 @@ use Magento\Framework\App\Config\MutableScopeConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\Phrase;
+use Magento\Store\Model\ScopeInterface;
+use Magento\TestFramework\Bootstrap as TestFrameworkBootstrap;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Mail\Template\TransportBuilderMock;
-use Magento\TestFramework\Bootstrap as TestFrameworkBootstrap;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class NewAccountEmailTemplateTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var ObjectManagerInterface
      */
@@ -117,11 +117,11 @@ class NewAccountEmailTemplateTest extends \PHPUnit\Framework\TestCase
 
         $storeText = implode(',', $this->storeData);
 
-        $this->assertStringContainsString("John,", $mailTemplate);
-        $this->assertStringContainsString("TestStore", $storeText);
-        $this->assertStringContainsString("5124666492", $storeText);
-        $this->assertStringContainsString("Austin", $storeText);
-        $this->assertStringContainsString("US", $storeText);
+        $this->assertStringContainsString('John,', $mailTemplate);
+        $this->assertStringContainsString('TestStore', $storeText);
+        $this->assertStringContainsString('5124666492', $storeText);
+        $this->assertStringContainsString('Austin', $storeText);
+        $this->assertStringContainsString('US', $storeText);
     }
 
     /**

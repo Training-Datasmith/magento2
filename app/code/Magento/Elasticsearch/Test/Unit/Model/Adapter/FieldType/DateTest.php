@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class DateTest extends TestCase
             [
                 'dateTime' => $this->dateTime,
                 'localeDate' => $this->localeDate,
-                'scopeConfig' => $this->scopeConfig
+                'scopeConfig' => $this->scopeConfig,
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -17,5 +18,4 @@ use Magento\Framework\App\ActionInterface;
  */
 interface HttpOptionsActionInterface extends ActionInterface
 {
-
 }

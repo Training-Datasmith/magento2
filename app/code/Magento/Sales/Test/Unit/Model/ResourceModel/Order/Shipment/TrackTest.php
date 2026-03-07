@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,11 +15,11 @@ use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Model\ResourceModel\Db\ObjectRelationProcessor;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Sales\Model\Order\Shipment\Track as ShipmentTrack;
 use Magento\Sales\Model\Order\Shipment\Track\Validator;
 use Magento\Sales\Model\ResourceModel\Order\Shipment\Track;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Model\Order\Shipment\Track as ShipmentTrack;
 
 class TrackTest extends TestCase
 {
@@ -91,7 +92,7 @@ class TrackTest extends TestCase
             [
                 'context' => $contextMock,
                 'validator' => $this->validatorMock,
-                'entitySnapshot' => $this->entitySnapshotMock
+                'entitySnapshot' => $this->entitySnapshotMock,
             ]
         );
     }

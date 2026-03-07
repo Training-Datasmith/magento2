@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +53,7 @@ class SaveRatesTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
         $request->setPostValue(
             'rate',
             [
-                $currencyCode => [$currencyTo => $rate]
+                $currencyCode => [$currencyTo => $rate],
             ]
         );
         $this->dispatch('backend/admin/system_currency/saveRates');
@@ -84,7 +86,7 @@ class SaveRatesTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
         $request->setPostValue(
             'rate',
             [
-                $currencyCode => [$currencyTo => $rate]
+                $currencyCode => [$currencyTo => $rate],
             ]
         );
         $this->dispatch('backend/admin/system_currency/saveRates');
@@ -115,7 +117,7 @@ class SaveRatesTest extends \Magento\TestFramework\TestCase\AbstractBackendContr
         $request->setPostValue(
             'rate',
             [
-                $currencyCode => [$currencyTo => $rate]
+                $currencyCode => [$currencyTo => $rate],
             ]
         );
         $this->dispatch('backend/admin/system_currency/saveRates');

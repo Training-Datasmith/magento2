@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Filters\Type;
 
 /**
@@ -13,7 +16,7 @@ namespace Magento\Ui\Component\Filters\Type;
  */
 class Search extends \Magento\Ui\Component\Filters\Type\AbstractFilter
 {
-    const NAME = 'keyword_search';
+    public const NAME = 'keyword_search';
 
     /**
      * Prepare component configuration

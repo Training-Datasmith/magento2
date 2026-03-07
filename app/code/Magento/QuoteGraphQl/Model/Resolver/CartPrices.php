@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -81,11 +82,11 @@ class CartPrices implements ResolverInterface
             'subtotal_excluding_tax' => ['value' => $cartTotals->getSubtotal(), 'currency' => $currency],
             'subtotal_with_discount_excluding_tax' => [
                 'value' => $this->getSubtotalWithDiscountExcludingTax($cartTotals),
-                'currency' => $currency
+                'currency' => $currency,
             ],
             'applied_taxes' => $appliedTaxes,
             'discount' => $this->getDiscount($cartTotals, $currency),
-            'model' => $quote
+            'model' => $quote,
         ];
     }
 
@@ -123,7 +124,7 @@ class CartPrices implements ResolverInterface
         foreach ($rates as $title => $amount) {
             $appliedTaxesData[] = [
                 'label' => $title,
-                'amount' => ['value' => $amount, 'currency' => $currency]
+                'amount' => ['value' => $amount, 'currency' => $currency],
             ];
         }
 
@@ -144,7 +145,7 @@ class CartPrices implements ResolverInterface
         }
         return [
             'label' => $total->getDiscountDescription() !== null ? explode(', ', $total->getDiscountDescription()) : [],
-            'amount' => ['value' => $total->getDiscountAmount(), 'currency' => $currency]
+            'amount' => ['value' => $total->getDiscountAmount(), 'currency' => $currency],
         ];
     }
 

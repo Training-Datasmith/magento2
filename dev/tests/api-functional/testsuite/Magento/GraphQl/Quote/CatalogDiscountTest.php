@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'actions' => [],
                 'website_ids' => [1],
                 'customer_group_ids' => [0, 1],
-                'is_active' => 1
+                'is_active' => 1,
             ],
             as: 'catalog_rule'
         ),
@@ -90,16 +91,16 @@ class CatalogDiscountTest extends GraphQlAbstract
                             'prices' => [
                                 'catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 20
+                                    'amount_off' => 20,
                                 ],
                                 'row_catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 40
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'amount_off' => 40,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),
@@ -124,7 +125,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'actions' => [],
                 'website_ids' => [1],
                 'customer_group_ids' => [0, 1],
-                'is_active' => 1
+                'is_active' => 1,
             ],
             as: 'catalog_rule'
         ),
@@ -145,7 +146,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$configurableProduct.id$',
                 'child_product_id' => '$configProd1.id$',
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
@@ -160,16 +161,16 @@ class CatalogDiscountTest extends GraphQlAbstract
                             'prices' => [
                                 'catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 30
+                                    'amount_off' => 30,
                                 ],
                                 'row_catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 60
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'amount_off' => 60,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),
@@ -194,7 +195,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'actions' => [],
                 'website_ids' => [1],
                 'customer_group_ids' => [0, 1],
-                'is_active' => 1
+                'is_active' => 1,
             ],
             as: 'catalog_rule'
         ),
@@ -209,7 +210,7 @@ class CatalogDiscountTest extends GraphQlAbstract
             [
                 'sku' => 'bundle-product-fixed-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
-                '_options' => ['$opt1$', '$opt2$']
+                '_options' => ['$opt1$', '$opt2$'],
             ],
             'bundle_product_1'
         ),
@@ -222,7 +223,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
@@ -237,16 +238,16 @@ class CatalogDiscountTest extends GraphQlAbstract
                             'prices' => [
                                 'catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 30
+                                    'amount_off' => 30,
                                 ],
                                 'row_catalog_discount' => [
                                     'percent_off' => 10,
-                                    'amount_off' => 60
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'amount_off' => 60,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),
@@ -271,7 +272,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'actions' => [],
                 'website_ids' => [1],
                 'customer_group_ids' => [0, 1],
-                'is_active' => 1
+                'is_active' => 1,
             ],
             as: 'catalog_rule'
         ),
@@ -286,7 +287,7 @@ class CatalogDiscountTest extends GraphQlAbstract
             [
                 'sku' => 'bundle-product-fixed-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
-                '_options' => ['$opt1$', '$opt2$']
+                '_options' => ['$opt1$', '$opt2$'],
             ],
             'bundle_product_1'
         ),
@@ -299,7 +300,7 @@ class CatalogDiscountTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(QuoteIdMask::class, ['cart_id' => '$cart.id$'], 'quoteIdMask')
@@ -314,16 +315,16 @@ class CatalogDiscountTest extends GraphQlAbstract
                             'prices' => [
                                 'catalog_discount' => [
                                     'percent_off' => 20,
-                                    'amount_off' => 60
+                                    'amount_off' => 60,
                                 ],
                                 'row_catalog_discount' => [
                                     'percent_off' => 20,
-                                    'amount_off' => 60
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'amount_off' => 60,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             $this->graphQlQuery(
                 $this->getCartQuery($this->fixtures->get('quoteIdMask')->getMaskedId()),

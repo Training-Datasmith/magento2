@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -76,8 +77,8 @@ class CustomerTest extends TestCase
         return [
             'array' => [
                 'options' => ['Default', 'Admin', 'US'],
-                'expectedResult' => ['Default', 'Admin', 'US']
-            ]
+                'expectedResult' => ['Default', 'Admin', 'US'],
+            ],
         ];
     }
 }

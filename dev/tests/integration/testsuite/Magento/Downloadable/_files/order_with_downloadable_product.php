@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ $billingAddress = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->c
             'postcode' => '1',
             'country_id' => 'US',
             'telephone' => '1',
-        ]
+        ],
     ]
 );
 $billingAddress->setAddressType('billing');

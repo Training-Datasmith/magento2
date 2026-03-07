@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
@@ -33,7 +36,7 @@ class NoSuchEntityExceptionTest extends \PHPUnit\Framework\TestCase
                     'fieldName' => 'field1',
                     'fieldValue' => 'value1',
                     'field2Name' => 'field2',
-                    'field2Value' => 'value2'
+                    'field2Value' => 'value2',
                 ]
             )
         );

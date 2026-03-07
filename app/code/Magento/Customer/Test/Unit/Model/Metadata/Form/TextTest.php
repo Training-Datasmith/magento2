@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Customer\Test\Unit\Model\Metadata\Form;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Customer\Api\Data\ValidationRuleInterface;
 use Magento\Customer\Model\Metadata\Form\Text;
 use Magento\Framework\Phrase;
 use Magento\Framework\Stdlib\StringUtils;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class TextTest extends AbstractFormTestCase
 {
@@ -69,7 +71,7 @@ class TextTest extends AbstractFormTestCase
             'string' => ['some text', true],
             'number' => [123, true],
             'true' => [true, true],
-            'false' => [false, true]
+            'false' => [false, true],
         ];
     }
 
@@ -112,7 +114,7 @@ class TextTest extends AbstractFormTestCase
             'string' => ['some text', true],
             'number' => [123, true],
             'true' => [true, true],
-            'false' => [false, '"" is a required value.']
+            'false' => [false, '"" is a required value.'],
         ];
     }
 
@@ -193,7 +195,7 @@ class TextTest extends AbstractFormTestCase
             'L8' => ['abcdefgh', true],
             'L9' => ['abcdefghi', '"" length must be equal or less than 8 characters.'],
             'L12' => ['abcdefghjkl', '"" length must be equal or less than 8 characters.'],
-            'billion' => [1000000000, '"" length must be equal or less than 8 characters.']
+            'billion' => [1000000000, '"" length must be equal or less than 8 characters.'],
         ];
     }
 }

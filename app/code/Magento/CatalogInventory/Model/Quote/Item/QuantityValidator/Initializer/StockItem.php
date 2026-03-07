@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\Initializer;
 
 use Magento\Catalog\Model\ProductTypes\ConfigInterface;
-use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\CatalogInventory\Api\Data\StockItemInterface;
+use Magento\CatalogInventory\Api\StockStateInterface;
 use Magento\CatalogInventory\Model\Quote\Item\QuantityValidator\QuoteItemQtyList;
 use Magento\CatalogInventory\Model\Spi\StockStateProviderInterface;
 use Magento\Framework\App\ObjectManager;
@@ -140,11 +143,12 @@ class StockItem
          * qty of child products are declared just during add process
          * exception for updating also managed by product type
          */
-        if ($result->getHasQtyOptionUpdate() && (!$quoteItem->getParentItem() ||
+        if ($result->getHasQtyOptionUpdate() && (
+            !$quoteItem->getParentItem() ||
                 $quoteItem->getParentItem()->getProduct()->getTypeInstance()->getForceChildItemQtyChanges(
                     $quoteItem->getParentItem()->getProduct()
                 )
-            )
+        )
         ) {
             $quoteItem->setData('qty', $result->getOrigQty());
         }

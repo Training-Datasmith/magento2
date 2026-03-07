@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
@@ -33,10 +35,10 @@ return [
         'top.04--magento--q.06' => ['queue' => 'q.06', 'exchange' => 'magento', 'topic' => 'top.04'],
         'top.03--magento--q.04' => ['queue' => 'q.04', 'exchange' => 'magento', 'topic' => 'top.03'],
         'user.created.remote--magento--q.log' => [
-            'queue' => 'q.log', 'exchange' => 'magento', 'topic' => 'user.created.remote'
+            'queue' => 'q.log', 'exchange' => 'magento', 'topic' => 'user.created.remote',
         ],
         'product.created.local--magento--q.log' => [
-            'queue' => 'q.log', 'exchange' => 'magento', 'topic' => 'product.created.local'
+            'queue' => 'q.log', 'exchange' => 'magento', 'topic' => 'product.created.local',
         ],
     ],
     'exchange_topic_to_queues_map' => [
@@ -44,7 +46,7 @@ return [
         'db-magento--top.04' => ['q.04', 'q.05', 'q.06'],
         '-magento--user.created.remote' => ['q.log'],
         '-magento--product.created.local' => ['q.log'],
-        '-magento--top.03' => ['q.03','q.04']
+        '-magento--top.03' => ['q.03','q.04'],
     ],
     'consumers' => [
         'cons.01' => [
@@ -53,15 +55,15 @@ return [
                 'top.01' => [
                     '0' => [
                         'type' => 'Magento\Handler\Class\Name',
-                        'method' => 'methodName'
-                    ]
-                ]
+                        'method' => 'methodName',
+                    ],
+                ],
             ],
             'instance_type' => 'Magento\Consumer\Instance',
             'consumer_type' => 'async',
             'max_messages' => '512',
             'connection' => 'amqp',
-            'queue' => 'q.01'
+            'queue' => 'q.01',
         ],
         'cons.03' => [
             'name' => 'cons.03',
@@ -75,13 +77,13 @@ return [
                         'type' => CustomerRepositoryInterface::class,
                         'method' => 'delete',
                     ],
-                ]
+                ],
             ],
             'instance_type' => 'Magento\Framework\MessageQueue\ConsumerInterface',
             'consumer_type' => 'async',
             'max_messages' => null,
             'connection' => null,
-            'queue' => 'q.03'
+            'queue' => 'q.03',
         ],
         'cons.04' => [
             'name' => 'cons.04',
@@ -89,15 +91,15 @@ return [
                 'top.04' => [
                     '0' => [
                         'type' => 'Magento\Handler\Class\Name',
-                        'method' => 'methodName'
-                    ]
-                ]
+                        'method' => 'methodName',
+                    ],
+                ],
             ],
             'instance_type' => 'Magento\Consumer\Instance',
             'consumer_type' => 'async',
             'max_messages' => '512',
             'connection' => 'db',
-            'queue' => 'q.04'
+            'queue' => 'q.04',
         ],
         'cons.05' => [
             'name' => 'cons.05',
@@ -105,15 +107,15 @@ return [
                 'top.04' => [
                     '0' => [
                         'type' => 'Magento\Handler\Class\Name',
-                        'method' => 'methodName'
-                    ]
-                ]
+                        'method' => 'methodName',
+                    ],
+                ],
             ],
             'instance_type' => 'Magento\Consumer\Instance',
             'consumer_type' => 'async',
             'max_messages' => '512',
             'connection' => 'db',
-            'queue' => 'q.05'
+            'queue' => 'q.05',
         ],
         'cons.06' => [
             'name' => 'cons.06',
@@ -121,15 +123,15 @@ return [
                 'top.04' => [
                     '0' => [
                         'type' => 'Magento\Handler\Class\Name',
-                        'method' => 'methodName'
-                    ]
-                ]
+                        'method' => 'methodName',
+                    ],
+                ],
             ],
             'instance_type' => 'Magento\Consumer\Instance',
             'consumer_type' => 'async',
             'max_messages' => '512',
             'connection' => 'db',
-            'queue' => 'q.06'
+            'queue' => 'q.06',
         ],
         'cons.07' => [
             'name' => 'cons.07',
@@ -143,13 +145,13 @@ return [
                         'type' => CustomerRepositoryInterface::class,
                         'method' => 'delete',
                     ],
-                ]
+                ],
             ],
             'instance_type' => 'Magento\Framework\MessageQueue\ConsumerInterface',
             'consumer_type' => 'async',
             'max_messages' => null,
             'connection' => null,
-            'queue' => 'q.04'
+            'queue' => 'q.04',
         ],
         'cons.logger' => [
             'name' => 'cons.logger',
@@ -157,15 +159,15 @@ return [
                 'product.created.local' => [
                     '0' => [
                         'type' => 'Magento\Handler\Class\Name',
-                        'method' => 'logger'
-                    ]
-                ]
+                        'method' => 'logger',
+                    ],
+                ],
             ],
             'instance_type' => 'Magento\Framework\MessageQueue\ConsumerInterface',
             'consumer_type' => 'async',
             'max_messages' => null,
             'connection' => null,
-            'queue' => 'q.log'
+            'queue' => 'q.log',
         ],
     ],
     'topics' => [
@@ -173,11 +175,11 @@ return [
             'name' => 'top.01',
             'schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'response_schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'publisher' => 'amqp-ex.01',
             'is_synchronous' => false,
@@ -186,11 +188,11 @@ return [
             'name' => 'top.03',
             'schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'response_schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'publisher' => '-magento',
             'is_synchronous' => false,
@@ -199,11 +201,11 @@ return [
             'name' => 'top.04',
             'schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'response_schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'publisher' => 'db-magento',
             'is_synchronous' => false,
@@ -212,11 +214,11 @@ return [
             'name' => 'user.created.remote',
             'schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'response_schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'publisher' => '-magento',
             'is_synchronous' => false,
@@ -225,15 +227,15 @@ return [
             'name' => 'product.created.local',
             'schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'response_schema' => [
                 'schema_type' => 'object',
-                'schema_value' => CustomerInterface::class
+                'schema_value' => CustomerInterface::class,
             ],
             'publisher' => '-magento',
             'is_synchronous' => false,
         ],
-    ]
+    ],
 
 ];

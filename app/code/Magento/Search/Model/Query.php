@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Search\Model;
 
-use Magento\Search\Model\ResourceModel\Query\Collection as QueryCollection;
-use Magento\Search\Model\ResourceModel\Query\CollectionFactory as QueryCollectionFactory;
-use Magento\Search\Model\SearchCollectionInterface as Collection;
-use Magento\Search\Model\SearchCollectionFactory as CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection\AbstractDb as DbCollection;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
+use Magento\Search\Model\ResourceModel\Query\Collection as QueryCollection;
+use Magento\Search\Model\ResourceModel\Query\CollectionFactory as QueryCollectionFactory;
+use Magento\Search\Model\SearchCollectionFactory as CollectionFactory;
+use Magento\Search\Model\SearchCollectionInterface as Collection;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
@@ -57,11 +60,11 @@ class Query extends AbstractModel implements QueryInterface
      */
     protected $_eventObject = 'search_query';
 
-    const CACHE_TAG = 'SEARCH_QUERY';
+    public const CACHE_TAG = 'SEARCH_QUERY';
 
-    const XML_PATH_MIN_QUERY_LENGTH = 'catalog/search/min_query_length';
+    public const XML_PATH_MIN_QUERY_LENGTH = 'catalog/search/min_query_length';
 
-    const XML_PATH_MAX_QUERY_LENGTH = 'catalog/search/max_query_length';
+    public const XML_PATH_MAX_QUERY_LENGTH = 'catalog/search/max_query_length';
 
     /**
      * Core store config

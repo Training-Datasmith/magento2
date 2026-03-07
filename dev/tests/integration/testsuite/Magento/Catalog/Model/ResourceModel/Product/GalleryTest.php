@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Catalog\Model\ResourceModel\Product;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product\Gallery\ReadHandler;
+use Magento\Framework\App\ResourceConnection;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\ResourceConnection;
 
 /**
  * Test for \Magento\Catalog\Model\ResourceModel\Product\Gallery.

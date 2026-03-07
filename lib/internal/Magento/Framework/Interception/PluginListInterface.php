@@ -1,4 +1,5 @@
 <?php
+
 /**
  * List of plugins configured in application
  *

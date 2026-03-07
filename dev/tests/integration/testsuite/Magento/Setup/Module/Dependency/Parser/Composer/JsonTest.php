@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Dependency\Parser\Composer;
 
 class JsonTest extends \PHPUnit\Framework\TestCase
@@ -38,7 +41,7 @@ class JsonTest extends \PHPUnit\Framework\TestCase
                 'name' => 'magento/module-module2',
                 'dependencies' => [
                     ['module' => 'magento/module-module3', 'type' => 'hard'],
-                ]
+                ],
             ],
         ];
 

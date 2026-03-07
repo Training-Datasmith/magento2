@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class EnumLookupTest extends TestCase
                 'not_active' => '2',
                 'unsubscribed' => '3',
                 'unconfirmed' => '4',
-            ]
+            ],
         ];
 
         $this->values = [

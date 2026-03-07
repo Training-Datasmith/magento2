@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\AsynchronousOperations\Model\ResourceModel\Operation;
 
 use Magento\AsynchronousOperations\Model\Operation;

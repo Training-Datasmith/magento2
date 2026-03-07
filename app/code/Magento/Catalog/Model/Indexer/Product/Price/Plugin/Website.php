@@ -1,18 +1,21 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Indexer\Product\Price\Plugin;
 
 use Magento\Catalog\Model\Indexer\Product\Price\DimensionModeConfiguration;
 use Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer;
+use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
 use Magento\Framework\Indexer\Dimension;
 use Magento\Framework\Indexer\DimensionFactory;
-use Magento\Customer\Model\Indexer\CustomerGroupDimensionProvider;
-use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
 
 class Website
 {
@@ -120,7 +123,7 @@ class Website
             foreach ($this->customerGroupDimensionProvider as $customerGroupDimension) {
                 $dimensions[] = [
                     $customerGroupDimension,
-                    $websiteDimension
+                    $websiteDimension,
                 ];
             }
         } else {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\GroupedProductGraphQl\Model\Resolver;
 
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Deferred\Product;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
+use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Magento\GroupedProduct\Model\Product\Initialization\Helper\ProductLinks\Plugin\Grouped;
 
 /**
@@ -58,7 +59,7 @@ class GroupedItems implements ResolverInterface
             $data[] = [
                 'position' => (int)$link->getPosition(),
                 'qty' => $link->getExtensionAttributes()->getQty(),
-                'sku' => $link->getLinkedProductSku()
+                'sku' => $link->getLinkedProductSku(),
             ];
         }
 

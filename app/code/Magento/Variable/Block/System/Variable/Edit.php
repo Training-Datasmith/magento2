@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Block\System\Variable;
 
 /**
@@ -73,7 +76,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
                 'class' => 'save',
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'saveAndContinueEdit', 'target' => '#edit_form']],
-                ]
+                ],
             ],
             100
         );

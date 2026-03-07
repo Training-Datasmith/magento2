@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -39,17 +40,17 @@ class PricesTest extends TestCase
     {
         $expected = [
             'baseOldPrice' => [
-                'amount' => 1000
+                'amount' => 1000,
             ],
             'oldPrice' => [
-                'amount' => 500
+                'amount' => 500,
             ],
             'basePrice' => [
-                'amount' => 1000
+                'amount' => 1000,
             ],
             'finalPrice' => [
-                'amount' => 500
-            ]
+                'amount' => 500,
+            ],
         ];
         $priceInfoMock = $this->createMock(Base::class);
         $priceMock = $this->createMock(PriceInterface::class);
@@ -62,7 +63,7 @@ class PricesTest extends TestCase
 
         $this->localeFormatMock->expects($this->atLeastOnce())
             ->method('getNumber')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 [1000] => 1000,
                 [500] => 500
             });

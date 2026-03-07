@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Factory that creates cache frontend instances based on options
  */
+
 namespace Magento\Framework\App\Cache\Frontend;
 
 use Exception;

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,27 +24,13 @@ class Index extends Action implements HttpGetActionInterface
     public const ADMIN_RESOURCE = 'Magento_Logging::system_magento_logging_bulk_operations';
 
     /**
-     * @var PageFactory
-     */
-    private $resultPageFactory;
-
-    /**
-     * @var string
-     */
-    private $menuId;
-
-    /**
-     * @param Context $context
-     * @param PageFactory $resultPageFactory
      * @param string $menuId
      */
     public function __construct(
         Context $context,
-        PageFactory $resultPageFactory,
-        $menuId = 'Magento_AsynchronousOperations::system_magento_logging_bulk_operations'
+        private readonly PageFactory $resultPageFactory,
+        private $menuId = 'Magento_AsynchronousOperations::system_magento_logging_bulk_operations'
     ) {
-        $this->resultPageFactory = $resultPageFactory;
-        $this->menuId = $menuId;
         parent::__construct($context);
     }
 

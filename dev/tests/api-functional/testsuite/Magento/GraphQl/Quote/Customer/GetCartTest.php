@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Customer;
 
-use Exception;
 use Magento\Customer\Model\CustomerAuthUpdate;
 use Magento\Customer\Model\CustomerRegistry;
 use Magento\GraphQl\Quote\GetMaskedQuoteIdByReservedOrderId;
@@ -251,7 +251,7 @@ QUERY;
         $query = $this->getQuery($maskedQuoteId);
 
         $this->expectExceptionMessage(
-            "The account is locked"
+            'The account is locked'
         );
         $this->graphQlQuery($query, [], '', $this->getHeaderMap());
     }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Ddl;
 
 /**
@@ -18,7 +21,7 @@ class TriggerFactory
     /**
      * @var string
      */
-    const INSTANCE_NAME = \Magento\Framework\DB\Ddl\Trigger::class;
+    public const INSTANCE_NAME = \Magento\Framework\DB\Ddl\Trigger::class;
 
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager

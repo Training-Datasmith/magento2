@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,7 +60,7 @@ class FlatTest extends TestCase
             [
                 'productFlatIndexerRow' => $this->productFlatIndexerRow,
                 'productFlatIndexerRows' => $this->productFlatIndexerRows,
-                'productFlatIndexerFull' => $this->productFlatIndexerFull
+                'productFlatIndexerFull' => $this->productFlatIndexerFull,
             ]
         );
 
@@ -102,7 +103,7 @@ class FlatTest extends TestCase
             ->with(
                 [
                     Category::CACHE_TAG,
-                    Product::CACHE_TAG
+                    Product::CACHE_TAG,
                 ]
             );
 

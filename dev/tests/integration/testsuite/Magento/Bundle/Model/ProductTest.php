@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
  * As far none class is present as separate bundle product,
  * this test is clone of \Magento\Catalog\Model\Product with product type "bundle"
  */
+
 namespace Magento\Bundle\Model;
 
 use Magento\Bundle\Model\Product\Price;
@@ -246,7 +249,7 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                                 $isInStock,
                                 $manageStock,
                                 $backorders,
-                                $isSalable
+                                $isSalable,
                             ];
                         }
                     }
@@ -321,32 +324,32 @@ class ProductTest extends \PHPUnit\Framework\TestCase
                 true,
                 'outOfStockConfig' => [
                     'simple1' => [
-                        'is_in_stock' => false
+                        'is_in_stock' => false,
                     ],
                 ],
                 'inStockConfig' => [
                     'simple1' => [
-                        'is_in_stock' => true
-                    ]
-                ]
+                        'is_in_stock' => true,
+                    ],
+                ],
             ],
             'all options are optional' => [
                 false,
                 false,
                 'outOfStockConfig' => [
                     'simple1' => [
-                        'is_in_stock' => false
+                        'is_in_stock' => false,
                     ],
                     'simple2' => [
-                        'is_in_stock' => false
+                        'is_in_stock' => false,
                     ],
                 ],
                 'inStockConfig' => [
                     'simple1' => [
-                        'is_in_stock' => true
-                    ]
-                ]
-            ]
+                        'is_in_stock' => true,
+                    ],
+                ],
+            ],
         ];
     }
 

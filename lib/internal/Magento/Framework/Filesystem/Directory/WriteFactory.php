@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class WriteFactory
 
         $validators = [
             'pathValidator' => new PathValidator($driver),
-            'denyListPathValidator' => $this->denyListPathValidator
+            'denyListPathValidator' => $this->denyListPathValidator,
         ];
 
         $pathValidator = new CompositePathValidator($validators);

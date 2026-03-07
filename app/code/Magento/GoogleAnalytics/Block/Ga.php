@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -86,7 +88,7 @@ class Ga extends \Magento\Framework\View\Element\Template
      */
     public function getPageTrackingCode($accountId)
     {
-        $anonymizeIp = "";
+        $anonymizeIp = '';
         if ($this->_googleAnalyticsData->isAnonymizedIpActive()) {
             $anonymizeIp = "\nga('set', 'anonymizeIp', true);";
         }
@@ -209,7 +211,7 @@ class Ga extends \Magento\Framework\View\Element\Template
         return [
             'optPageUrl' => $this->getOptPageUrl(),
             'isAnonymizedIpActive' => $this->_googleAnalyticsData->isAnonymizedIpActive(),
-            'accountId' => $this->escapeHtmlAttr($accountId, false)
+            'accountId' => $this->escapeHtmlAttr($accountId, false),
         ];
     }
 

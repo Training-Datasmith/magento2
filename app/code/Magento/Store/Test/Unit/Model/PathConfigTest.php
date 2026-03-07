@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -132,7 +133,7 @@ class PathConfigTest extends TestCase
     {
         return [
             ['https://base.url', true],
-            ['http://base.url', false]
+            ['http://base.url', false],
         ];
     }
 }

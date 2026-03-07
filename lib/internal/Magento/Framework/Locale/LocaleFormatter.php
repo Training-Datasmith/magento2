@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -40,7 +41,7 @@ class LocaleFormatter
      */
     public function getLocaleJs(): string
     {
-        return str_replace("_", "-", $this->localeResolver->getLocale());
+        return str_replace('_', '-', $this->localeResolver->getLocale());
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -22,7 +23,6 @@ interface SaveMultipleOperationsInterface
      * Save Operations for Bulk
      *
      * @param OperationInterface[] $operations
-     * @return void
      * @since 100.4.0
      */
     public function execute(array $operations): void;

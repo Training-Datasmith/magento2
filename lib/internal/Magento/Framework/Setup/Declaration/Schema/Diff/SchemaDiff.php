@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -98,7 +100,7 @@ class SchemaDiff
         $diff = $this->diffFactory->create(
             [
                 'tableIndexes' => $this->createTableIndex($tableNames, $generatedTableNames),
-                'destructiveOperations' => $this->operationsExecutor->getDestructiveOperations()
+                'destructiveOperations' => $this->operationsExecutor->getDestructiveOperations(),
             ]
         );
 

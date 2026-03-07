@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GiftMessage\Model\Plugin;
 
-use Magento\Sales\Api\Data\OrderItemInterface;
 use Magento\GiftMessage\Helper\Message as MessageHelper;
-use Magento\Quote\Model\Quote\Item\ToOrderItem;
 use Magento\Quote\Model\Quote\Item\AbstractItem;
+use Magento\Quote\Model\Quote\Item\ToOrderItem;
+use Magento\Sales\Api\Data\OrderItemInterface;
 
 class QuoteItem
 {

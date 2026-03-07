@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -29,7 +31,7 @@ $categories = [
         'available_sort_by' => 'name',
         'default_sort_by' => 'name',
         'is_active' => true,
-        'position' => 1
+        'position' => 1,
     ],
     [
         'id' => 402,
@@ -40,7 +42,7 @@ $categories = [
         'available_sort_by' => 'name',
         'default_sort_by' => 'name',
         'is_active' => true,
-        'position' => 1
+        'position' => 1,
     ],
 ];
 foreach ($categories as $data) {

@@ -1,23 +1,25 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Address;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Model\Address;
 use Magento\Customer\Model\AddressRegistry;
+use Magento\Customer\Model\AttributeMetadataResolver;
+use Magento\Customer\Model\FileUploaderDataResolver;
 use Magento\Customer\Model\ResourceModel\Address\Attribute\Collection as AddressAttributeCollection;
 use Magento\Customer\Model\ResourceModel\Address\CollectionFactory;
 use Magento\Eav\Model\Config;
-use Magento\Eav\Model\Entity\Type;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Eav\Model\Entity\Type;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Customer\Model\Address;
-use Magento\Customer\Model\FileUploaderDataResolver;
-use Magento\Customer\Model\AttributeMetadataResolver;
 use Magento\Ui\Component\Form\Element\Multiline;
 
 /**
@@ -63,7 +65,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         'vat_is_valid',
         'vat_request_date',
         'vat_request_id',
-        'vat_request_success'
+        'vat_request_success',
     ];
 
     /**
@@ -206,7 +208,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $data = [
             'parent_id' => $parentId,
             'firstname' => $customer->getFirstname(),
-            'lastname' => $customer->getLastname()
+            'lastname' => $customer->getLastname(),
         ];
 
         return $data;
@@ -250,8 +252,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             );
             if ($attribute->getAttributeCode() === 'street' && $entityId) {
                 $customerAddressStreet = $this->addressRegistry->retrieve($entityId)->getStreet();
-                $meta[$attribute->getAttributeCode()]["arguments"]["data"]["config"]["size"] = max(
-                    $meta[$attribute->getAttributeCode()]["arguments"]["data"]["config"]["size"],
+                $meta[$attribute->getAttributeCode()]['arguments']['data']['config']['size'] = max(
+                    $meta[$attribute->getAttributeCode()]['arguments']['data']['config']['size'],
                     count($customerAddressStreet)
                 );
             }

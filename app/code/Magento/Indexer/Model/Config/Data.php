@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Indexer\Model\Config;
 
 use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\App\ObjectManager;
 
 /**
  * Provides indexer configuration

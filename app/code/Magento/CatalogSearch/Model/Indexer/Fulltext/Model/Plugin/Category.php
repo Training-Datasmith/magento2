@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -38,7 +39,7 @@ class Category
      * @return Resource
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterDelete(Resource $subjectCategory, Resource $resultCategory, DataObject $object) : Resource
+    public function afterDelete(Resource $subjectCategory, Resource $resultCategory, DataObject $object): Resource
     {
         if ($object->getIsActive() || $object->getDeletedChildrenIds()) {
             $this->fulltextIndexerProcessor->markIndexerAsInvalid();

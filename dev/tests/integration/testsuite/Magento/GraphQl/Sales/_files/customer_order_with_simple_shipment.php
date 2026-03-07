@@ -1,18 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Framework\DB\Transaction;
+use Magento\Sales\Api\ShipmentCommentRepositoryInterface;
+use Magento\Sales\Api\ShipmentTrackRepositoryInterface;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Shipment\Comment;
+use Magento\Sales\Model\Order\Shipment\Track;
+use Magento\Sales\Model\Order\ShipmentFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Sales\Api\ShipmentCommentRepositoryInterface;
-use Magento\Sales\Model\Order\Shipment\Comment;
-use Magento\Sales\Model\Order\ShipmentFactory;
-use Magento\Sales\Model\Order\Shipment\Track;
-use Magento\Framework\DB\Transaction;
-use Magento\Sales\Api\ShipmentTrackRepositoryInterface;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/customer_order_with_two_items.php');
 

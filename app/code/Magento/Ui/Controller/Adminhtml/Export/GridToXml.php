@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Controller\Adminhtml\Export;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Ui\Model\Export\ConvertToXml;
-use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Response\Http\FileFactory;
 use Magento\Ui\Component\MassAction\Filter;
+use Magento\Ui\Model\Export\ConvertToXml;
 use Psr\Log\LoggerInterface;
 
 /**

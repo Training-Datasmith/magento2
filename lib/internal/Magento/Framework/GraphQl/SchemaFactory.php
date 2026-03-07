@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,7 +19,7 @@ class SchemaFactory
      * @param array $config
      * @return Schema
      */
-    public function create(array $config) : Schema
+    public function create(array $config): Schema
     {
         return new Schema($config);
     }

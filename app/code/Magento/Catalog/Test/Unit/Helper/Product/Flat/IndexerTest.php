@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -103,7 +104,7 @@ class IndexerTest extends TestCase
                 'attributeFactory' => $eavFactoryMock,
                 'storeManager' => $this->_storeManagerMock,
                 'changelog' => $this->_changelogMock,
-                'flatAttributeGroups' => ['catalog_product']
+                'flatAttributeGroups' => ['catalog_product'],
             ]
         );
     }

@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Model;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Model\InfoInterface;
-use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\Hostedpro\Request;
 use Magento\Sales\Model\Order;
 
@@ -20,17 +22,17 @@ class Hostedpro extends Direct
     /**
      * Button code
      */
-    const BM_BUTTON_CODE = 'TOKEN';
+    public const BM_BUTTON_CODE = 'TOKEN';
 
     /**
      * Button type
      */
-    const BM_BUTTON_TYPE = 'PAYMENT';
+    public const BM_BUTTON_TYPE = 'PAYMENT';
 
     /**
      * Paypal API method name for button creation
      */
-    const BM_BUTTON_METHOD = 'BMCreateButton';
+    public const BM_BUTTON_METHOD = 'BMCreateButton';
 
     /**
      * Payment method code
@@ -318,7 +320,7 @@ class Hostedpro extends Direct
         $store = $this->_storeManager->getStore($storeId);
         return $this->_urlBuilder->getUrl(
             $path,
-            ["_secure" => $secure === null ? $store->isCurrentlySecure() : $secure]
+            ['_secure' => $secure === null ? $store->isCurrentlySecure() : $secure]
         );
     }
 }

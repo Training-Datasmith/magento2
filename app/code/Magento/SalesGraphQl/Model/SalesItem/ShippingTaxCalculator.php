@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\SalesGraphQl\Model\SalesItem;
 
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Quote\Model\Quote\Address;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\EntityInterface;
 use Magento\Tax\Api\Data\OrderTaxDetailsItemInterface;
 use Magento\Tax\Api\OrderTaxManagementInterface;
-use Magento\Quote\Model\Quote\Address;
-use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Calculates shipping taxes for sales items (Invoices, Credit memo)

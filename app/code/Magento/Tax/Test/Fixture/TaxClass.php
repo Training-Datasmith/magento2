@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -58,7 +59,7 @@ class TaxClass implements RevertibleDataFixtureInterface
         $service = $this->serviceFactory->create(TaxClassRepositoryInterface::class, 'save');
         $taxClassId = $service->execute(
             [
-                'taxClass' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data))
+                'taxClass' => $this->dataProcessor->process($this, array_merge(self::DEFAULT_DATA, $data)),
             ]
         );
 

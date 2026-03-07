@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for  Magento\Framework\Session\Config\Validator\CookieLifetimeValidator
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Session\Config\Validator;
 
 class CookieLifetimeValidatorTest extends \PHPUnit\Framework\TestCase

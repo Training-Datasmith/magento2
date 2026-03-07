@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action;
 
 /**
@@ -40,7 +43,7 @@ class UrlBuilder
                 [
                     '_current' => false,
                     '_nosid' => true,
-                    '_query' => [\Magento\Store\Model\StoreManagerInterface::PARAM_NAME => $store]
+                    '_query' => [\Magento\Store\Model\StoreManagerInterface::PARAM_NAME => $store],
                 ]
             );
         } else {
@@ -48,7 +51,7 @@ class UrlBuilder
                 $routePath,
                 [
                     '_current' => false,
-                    '_nosid' => true
+                    '_nosid' => true,
                 ]
             );
         }

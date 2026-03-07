@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Catalog textarea attribute WYSIWYG button
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Helper\Form;
 
 use Magento\Framework\App\ObjectManager;
@@ -103,7 +106,7 @@ class Wysiwyg extends \Magento\Framework\Data\Form\Element\Textarea
                         'onclick' => 'catalogWysiwygEditor.open(\'' . $this->_backendData->getUrl(
                             'catalog/product/wysiwyg'
                         ) . '\', \'' . $this->getHtmlId() . '\')',
-                    ]
+                    ],
                 ]
             )->toHtml();
             $scriptString = <<<HTML

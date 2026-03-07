@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ class Color implements OptionSourceInterface
             ['value' => 'white-no-border', 'label' => __('White No Border')],
             ['value' => 'gray', 'label' => __('Gray')],
             ['value' => 'monochrome', 'label' => __('Monochrome')],
-            ['value' => 'grayscale', 'label' => __('Grayscale')]
+            ['value' => 'grayscale', 'label' => __('Grayscale')],
         ];
     }
 }

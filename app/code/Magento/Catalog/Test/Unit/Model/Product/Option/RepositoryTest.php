@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -287,7 +288,7 @@ class RepositoryTest extends TestCase
         $this->productMock->expects($this->once())->method('getOptions')->willReturn([]);
         $this->optionMock->expects($this->once())->method('getData')->with('values')->willReturn([
             ['option_type_id' => 4],
-            ['option_type_id' => 5]
+            ['option_type_id' => 5],
         ]);
         $optionCollection = $this->createMock(Collection::class);
         $optionCollection->expects($this->once())->method('getProductOptions')->willReturn([$this->optionMock]);
@@ -295,7 +296,7 @@ class RepositoryTest extends TestCase
         $this->optionMock->expects($this->exactly(2))->method('getValues')->willReturn([
             $originalValue1,
             $originalValue2,
-            $originalValue3
+            $originalValue3,
         ]);
         $this->assertEquals($this->optionMock, $this->optionRepository->save($this->optionMock));
     }
@@ -317,7 +318,7 @@ class RepositoryTest extends TestCase
         $this->productMock->expects($this->once())->method('getOptions')->willReturn([]);
         $this->optionMock->expects($this->once())->method('getData')->with('values')->willReturn([
             ['option_type_id' => 4],
-            ['option_type_id' => 5]
+            ['option_type_id' => 5],
         ]);
         $optionCollection = $this->createMock(Collection::class);
         $optionCollection->expects($this->once())->method('getProductOptions')->willReturn([$this->optionMock]);

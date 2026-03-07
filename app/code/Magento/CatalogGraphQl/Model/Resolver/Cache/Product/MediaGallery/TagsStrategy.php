@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -36,7 +37,7 @@ class TagsStrategy implements StrategyInterface
             $this->mediaGalleryChangeDetector->isChanged($object)
         ) {
             return [
-                sprintf('%s_%s', ResolverCacheIdentity::CACHE_TAG, $object->getId())
+                sprintf('%s_%s', ResolverCacheIdentity::CACHE_TAG, $object->getId()),
             ];
         }
 

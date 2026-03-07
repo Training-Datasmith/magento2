@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ConditionProcessor;
 
-use Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\CustomConditionInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\Api\Filter;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\CustomConditionInterface;
 use Magento\Framework\Exception\NoSuchEntityException as CategoryDoesNotExistException;
 
 /**
@@ -67,7 +68,7 @@ class ProductCategoryCondition implements CustomConditionInterface
             );
 
         $selectCondition = [
-            $this->mapConditionType($filter->getConditionType()) => $categorySelect
+            $this->mapConditionType($filter->getConditionType()) => $categorySelect,
         ];
 
         return $this->resourceConnection->getConnection()

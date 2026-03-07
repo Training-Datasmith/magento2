@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -8,38 +9,31 @@ declare(strict_types=1);
 namespace Magento\ApplicationPerformanceMonitor\Plugin;
 
 use Magento\ApplicationPerformanceMonitor\Profiler\Profiler;
-use Magento\Framework\AppInterface as Application;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\AppInterface as Application;
 
 /**
  * Plugin that uses profiler to get performance metrics from Application
  */
 class ApplicationPerformanceMonitor
 {
-    /**
-     * @param Profiler $profiler
-     */
-    public function __construct(private Profiler $profiler)
+    public function __construct(private readonly Profiler $profiler)
     {
     }
 
     /**
      * Plugin that uses profiler to get performance metrics for application
-     *
-     * @param Application $subject
-     * @param callable $proceed
-     * @return ResponseInterface
      */
     public function aroundLaunch(
         Application $subject,
         callable $proceed,
-    ) : ResponseInterface {
+    ): ResponseInterface {
         if (!$this->profiler->isEnabled()) {
             return $proceed();
         }
         $returnValue = null;
         $this->profiler->doProfile(
-            function () use ($proceed, &$returnValue) {
+            function () use ($proceed, &$returnValue): void {
                 $returnValue = $proceed();
             },
             $subject

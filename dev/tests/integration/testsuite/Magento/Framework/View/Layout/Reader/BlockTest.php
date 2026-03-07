@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout\Reader;
 
 class BlockTest extends \PHPUnit\Framework\TestCase
 {
-    const IDX_TYPE = 0;
-    const IDX_PARENT = 2;
+    public const IDX_TYPE = 0;
+    public const IDX_PARENT = 2;
 
     /**
      * @var Block

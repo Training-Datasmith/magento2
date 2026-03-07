@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -68,12 +69,12 @@ class SnapshotTest extends TestCase
             'id' => $entityId,
             'name' => 'test',
             'description' => '',
-            'custom_not_present_attribute' => ''
+            'custom_not_present_attribute' => '',
         ];
         $fields = [
             'id' => [],
             'name' => [],
-            'description' => []
+            'description' => [],
         ];
         $this->assertTrue($this->entitySnapshot->isModified($this->model));
         $this->model->setData($data);
@@ -96,13 +97,13 @@ class SnapshotTest extends TestCase
             'name' => 'test',
             'description' => '',
             'custom_not_present_attribute' => '',
-            'options' => json_encode($options)
+            'options' => json_encode($options),
         ];
         $fields = [
             'id' => [],
             'name' => [],
             'description' => [],
-            'options' => []
+            'options' => [],
         ];
         $modifiedData = array_merge($data, ['name' => 'newName']);
         $this->model->expects($this->any())->method('getId')->willReturn($entityId);
@@ -130,12 +131,12 @@ class SnapshotTest extends TestCase
             'id' => $entityId,
             'name' => 'test',
             'description' => '',
-            'custom_not_present_attribute' => ''
+            'custom_not_present_attribute' => '',
         ];
         $fields = [
             'id' => [],
             'name' => [],
-            'description' => []
+            'description' => [],
         ];
         $this->assertTrue($this->entitySnapshot->isModified($this->model));
         $this->model->setData($data);

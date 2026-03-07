@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\View\Test\Unit\Asset\NotationResolver;
 use Magento\Framework\View\Asset\File\FallbackContext;
 use Magento\Framework\View\Asset\NotationResolver\Variable;
 use Magento\Framework\View\Asset\Repository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class VariableTest extends TestCase
 {

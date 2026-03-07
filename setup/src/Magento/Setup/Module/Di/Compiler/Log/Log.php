@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\Di\Compiler\Log;
 
 class Log
 {
-    const GENERATION_ERROR = 1;
+    public const GENERATION_ERROR = 1;
 
-    const GENERATION_SUCCESS = 2;
+    public const GENERATION_SUCCESS = 2;
 
-    const COMPILATION_ERROR = 3;
+    public const COMPILATION_ERROR = 3;
 
-    const CONFIGURATION_ERROR = 4;
+    public const CONFIGURATION_ERROR = 4;
 
     /**
      * Success log writer

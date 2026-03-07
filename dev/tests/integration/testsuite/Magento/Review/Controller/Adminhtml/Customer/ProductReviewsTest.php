@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Review\Controller\Adminhtml\Customer;
 
-use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\TestCase\AbstractBackendController;

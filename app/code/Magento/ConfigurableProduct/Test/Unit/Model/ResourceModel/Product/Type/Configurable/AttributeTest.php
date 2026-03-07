@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,11 +14,11 @@ use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\At
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Select;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AttributeTest extends TestCase
 {
@@ -123,7 +124,7 @@ class AttributeTest extends TestCase
             $select,
             [
                 'product_super_attribute_id' => $attributeId,
-                'store_id' => Store::DEFAULT_STORE_ID
+                'store_id' => Store::DEFAULT_STORE_ID,
             ]
         )->willReturn(1);
 
@@ -133,7 +134,7 @@ class AttributeTest extends TestCase
                 'product_super_attribute_id' => $attributeId,
                 'use_default' => 0,
                 'store_id' => 1,
-                'value' => 'test'
+                'value' => 'test',
             ]
         );
         $attributeMock = $this->createPartialMockWithReflection(

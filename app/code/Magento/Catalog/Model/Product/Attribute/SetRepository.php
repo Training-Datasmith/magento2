@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Catalog\Model\Product\Attribute;
 
-use Magento\Framework\Exception\InputException;
+namespace Magento\Catalog\Model\Product\Attribute;
 
 class SetRepository implements \Magento\Catalog\Api\AttributeSetRepositoryInterface
 {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -23,7 +25,7 @@ class CompositeStaleCacheNotifierTest extends TestCase implements StaleCacheNoti
 
         $this->assertEquals([], $this->notifications);
     }
-    
+
     /** @test */
     public function testNotifiesAllRegisteredNotifiersOfStaleContent()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -79,7 +80,7 @@ class MaskedCartId implements ResolverInterface
     private function getQuoteMaskId(int $quoteId): string
     {
         try {
-            $maskedId =$this->ensureQuoteMaskExist($quoteId);
+            $maskedId = $this->ensureQuoteMaskExist($quoteId);
         } catch (NoSuchEntityException $exception) {
             throw new GraphQlNoSuchEntityException(__('Current user does not have an active cart.'));
         }

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Model;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -61,7 +64,7 @@ class ExportTest extends \PHPUnit\Framework\TestCase
             'customer address' => [
                 'entity' => 'customer_address',
                 'expectedEntityType' => \Magento\CustomerImportExport\Model\Export\Address::class,
-            ]
+            ],
         ];
     }
 

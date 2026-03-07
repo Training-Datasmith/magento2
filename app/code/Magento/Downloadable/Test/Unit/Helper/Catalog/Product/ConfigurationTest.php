@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class ConfigurationTest extends TestCase
             Configuration::class,
             [
                 'context' => $this->context,
-                'productConfig' => $this->productConfig
+                'productConfig' => $this->productConfig,
             ]
         );
     }

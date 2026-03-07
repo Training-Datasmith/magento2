@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\GraphQl\Customer;
 
 use Exception;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Registry;
 use Magento\Customer\Test\Fixture\Customer as CustomerFixture;
+use Magento\Framework\Registry;
 use Magento\TestFramework\Fixture\Config;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
@@ -139,7 +140,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'lastname' => 'Rowe',
             'email' => $email,
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ]));
 
         $expected = [
@@ -148,9 +149,9 @@ class CreateCustomerV2Test extends GraphQlAbstract
                     'firstname' => 'Richard',
                     'lastname' => 'Rowe',
                     'email' => $email,
-                    'is_subscribed' => true
-                ]
-            ]
+                    'is_subscribed' => true,
+                ],
+            ],
         ];
         $this->assertEquals($expected, $response);
     }
@@ -162,7 +163,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'firstname' => 'Richard',
             'lastname' => 'Rowe',
             'email' => $email,
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ]));
 
         $expected = [
@@ -171,9 +172,9 @@ class CreateCustomerV2Test extends GraphQlAbstract
                     'firstname' => 'Richard',
                     'lastname' => 'Rowe',
                     'email' => $email,
-                    'is_subscribed' => true
-                ]
-            ]
+                    'is_subscribed' => true,
+                ],
+            ],
         ];
         $this->assertEquals($expected, $response);
     }
@@ -195,7 +196,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'firstname' => 'Richard',
             'lastname' => 'Rowe',
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ]));
     }
 
@@ -213,7 +214,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'lastname' => 'Rowe',
             'email' => $email,
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ]));
     }
 
@@ -232,7 +233,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             ['email.example.com'],
             ['email@example@example.com'],
             ['email@example.com (Joe Smith)'],
-            ['email@example']
+            ['email@example'],
         ];
     }
 
@@ -276,7 +277,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'firstname' => '',
             'lastname' => 'Rowe',
             'password' => 'test123#',
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ]));
     }
 
@@ -288,16 +289,16 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'firstname' => 'Richard',
             'lastname' => 'Rowe',
             'email' => $email,
-            'is_subscribed' => true
+            'is_subscribed' => true,
         ], ['email', 'is_subscribed']));
 
         $expected = [
             'createCustomerV2' => [
                 'customer' => [
                     'email' => $email,
-                    'is_subscribed' => false
-                ]
-            ]
+                    'is_subscribed' => false,
+                ],
+            ],
         ];
         $this->assertEquals($expected, $response);
     }
@@ -315,7 +316,7 @@ class CreateCustomerV2Test extends GraphQlAbstract
             'email' => $existingCustomer->getEmail(),
             'password' => 'test123#',
             'firstname' => 'John',
-            'lastname' => 'Smith'
+            'lastname' => 'Smith',
         ], ['firstname', 'lastname', 'email']));
     }
 

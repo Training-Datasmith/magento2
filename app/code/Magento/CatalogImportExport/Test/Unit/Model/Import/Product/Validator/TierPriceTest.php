@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\CatalogImportExport\Test\Unit\Model\Import\Product\Validator;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\CatalogImportExport\Model\Import\Product\StoreResolver;
 use Magento\CatalogImportExport\Model\Import\Product\Validator\TierPrice;
 use Magento\Customer\Api\Data\GroupSearchResultsInterface;
@@ -17,6 +17,7 @@ use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -55,7 +56,7 @@ class TierPriceTest extends TestCase
             [
                 'groupRepository' => $this->groupRepositoryInterface,
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilder,
-                'storeResolver' => $this->storeResolver
+                'storeResolver' => $this->storeResolver,
             ]
         );
     }
@@ -120,7 +121,7 @@ class TierPriceTest extends TestCase
                     '_tier_price_website' => 'all',
                     '_tier_price_customer_group' => '1',
                     '_tier_price_qty' => '1',
-                    '_tier_price_price' => '1'
+                    '_tier_price_price' => '1',
                 ],
                 1,
                 null,
@@ -131,7 +132,7 @@ class TierPriceTest extends TestCase
                     '_tier_price_website' => '1',
                     '_tier_price_customer_group' => '1',
                     '_tier_price_qty' => '1',
-                    '_tier_price_price' => '1'
+                    '_tier_price_price' => '1',
                 ],
                 1,
                 null,
@@ -139,7 +140,7 @@ class TierPriceTest extends TestCase
             ],
             'invalidIncomplete1' => [
                 [
-                    '_tier_price_qty' => '1'
+                    '_tier_price_qty' => '1',
                 ],
                 1,
                 null,
@@ -147,7 +148,7 @@ class TierPriceTest extends TestCase
             ],
             'invalidIncomplete2' => [
                 [
-                    '_tier_price_customer_group' => '1'
+                    '_tier_price_customer_group' => '1',
                 ],
                 1,
                 null,
@@ -155,7 +156,7 @@ class TierPriceTest extends TestCase
             ],
             'invalidIncomplete3' => [
                 [
-                    '_tier_price_price' => '1'
+                    '_tier_price_price' => '1',
                 ],
                 1,
                 null,
@@ -166,7 +167,7 @@ class TierPriceTest extends TestCase
                     '_tier_price_website' => '1',
                     '_tier_price_customer_group' => 'all',
                     '_tier_price_qty' => '1',
-                    '_tier_price_price' => '1'
+                    '_tier_price_price' => '1',
                 ],
                 1,
                 null,
@@ -177,7 +178,7 @@ class TierPriceTest extends TestCase
                     '_tier_price_website' => 'all',
                     '_tier_price_customer_group' => '1',
                     '_tier_price_qty' => '1',
-                    '_tier_price_price' => '1'
+                    '_tier_price_price' => '1',
                 ],
                 2,
                 null,
@@ -188,7 +189,7 @@ class TierPriceTest extends TestCase
                     '_tier_price_website' => 'all',
                     '_tier_price_customer_group' => '1',
                     '_tier_price_qty' => '-1',
-                    '_tier_price_price' => '-1'
+                    '_tier_price_price' => '-1',
                 ],
                 1,
                 null,

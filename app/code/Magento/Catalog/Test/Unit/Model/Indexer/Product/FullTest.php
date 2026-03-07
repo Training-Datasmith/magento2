@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class FullTest extends TestCase
             'product_indexer',
             'stock_indexer',
             'price_indexer',
-            'search_indexer'
+            'search_indexer',
         ];
         $this->configMock = $this->createMock(ConfigInterface::class);
 

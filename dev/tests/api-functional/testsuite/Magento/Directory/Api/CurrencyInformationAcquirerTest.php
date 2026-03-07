@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Api;
 
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class CurrencyInformationAcquirerTest extends WebapiAbstract
 {
-    const SERVICE_NAME = 'directoryCurrencyInformationAcquirerV1';
-    const RESOURCE_PATH = '/V1/directory/currency';
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_NAME = 'directoryCurrencyInformationAcquirerV1';
+    public const RESOURCE_PATH = '/V1/directory/currency';
+    public const SERVICE_VERSION = 'V1';
 
-    const STORE_CODE_FROM_FIXTURE = 'fixturestore';
+    public const STORE_CODE_FROM_FIXTURE = 'fixturestore';
 
     /**
      * @magentoApiDataFixture Magento/Store/_files/core_fixturestore.php

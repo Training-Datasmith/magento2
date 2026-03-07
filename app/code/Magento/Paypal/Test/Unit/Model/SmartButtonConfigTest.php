@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -12,8 +13,6 @@ use Magento\Framework\Locale\ResolverInterface;
 use Magento\Paypal\Model\Config;
 use Magento\Paypal\Model\ConfigFactory;
 use Magento\Paypal\Model\SmartButtonConfig;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -110,8 +109,8 @@ class SmartButtonConfigTest extends TestCase
                 [
                     $page . '_page_button_' . $installmentPeriodLocale . '_installment_period',
                     null,
-                    $installmentPeriod
-                ]
+                    $installmentPeriod,
+                ],
             ]
         );
 

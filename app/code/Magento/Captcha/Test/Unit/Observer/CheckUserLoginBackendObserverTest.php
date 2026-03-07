@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class CheckUserLoginBackendObserverTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 

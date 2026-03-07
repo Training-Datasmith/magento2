@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Weee\Model\Config
  */
+
 namespace Magento\Weee\Test\Unit\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -64,38 +66,38 @@ class ConfigTest extends TestCase
                 'getListPriceDisplayType',
                 Config::XML_PATH_FPT_DISPLAY_PRODUCT_LIST,
                 true,
-                true
+                true,
             ],
             [
                 'getSalesPriceDisplayType',
                 Config::XML_PATH_FPT_DISPLAY_SALES,
                 true,
-                true
+                true,
             ],
             [
                 'getEmailPriceDisplayType',
                 Config::XML_PATH_FPT_DISPLAY_EMAIL,
                 true,
-                true
+                true,
             ],
             [
                 'includeInSubtotal',
                 Config::XML_PATH_FPT_INCLUDE_IN_SUBTOTAL,
                 true,
-                true
+                true,
             ],
             [
                 'isTaxable',
                 Config::XML_PATH_FPT_TAXABLE,
                 true,
-                true
+                true,
             ],
             [
                 'isEnabled',
                 Config::XML_PATH_FPT_ENABLED,
                 true,
-                true
-            ]
+                true,
+            ],
         ];
     }
 }

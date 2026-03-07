@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product attribute source input types
  */
+
 namespace Magento\Catalog\Model\Product\Attribute\Source;
 
 class Inputtype extends \Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype

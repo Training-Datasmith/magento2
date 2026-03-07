@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Bundle\Model\ResourceModel\Selection;
 
-use Magento\Framework\DataObject;
-use Magento\Framework\DB\Select;
 use Magento\Catalog\Model\ResourceModel\Product\Collection\ProductLimitationFactory;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\DataObject;
+use Magento\Framework\DB\Select;
 
 /**
  * Bundle Selections Resource Collection
@@ -208,7 +211,7 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Product\Collection
                 'selection_price_type' => $priceType,
                 'selection_price_value' => $priceValue,
                 'parent_product_id' => 'price.parent_product_id',
-                'price_scope' => 'price.website_id'
+                'price_scope' => 'price.website_id',
             ]
         );
         $this->websiteScopePriceJoined = true;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -8,12 +9,12 @@ declare(strict_types=1);
 namespace Magento\Deploy\Test\Unit\Package\Processor\PreProcessor;
 
 use Magento\Deploy\Console\DeployStaticOptions;
-use Magento\Deploy\Package\Processor\PreProcessor\Css;
 use Magento\Deploy\Package\Package;
 use Magento\Deploy\Package\PackageFile;
-use Magento\Framework\View\Asset\Minification;
+use Magento\Deploy\Package\Processor\PreProcessor\Css;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
+use Magento\Framework\View\Asset\Minification;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -77,7 +78,7 @@ class CssTest extends TestCase
     public function testProcessWithNonExistingFile(): void
     {
         $options = [
-            DeployStaticOptions::NO_CSS => false
+            DeployStaticOptions::NO_CSS => false,
         ];
         $nonReadableFile = 'nonReadableFile';
 

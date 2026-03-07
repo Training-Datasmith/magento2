@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\CustomOptionInterface;
 use Magento\Catalog\Api\Data\ProductOptionExtensionInterface;
 use Magento\Catalog\Api\Data\ProductOptionInterface;
@@ -17,17 +17,17 @@ use Magento\Catalog\Model\Product\Option\UrlBuilder;
 use Magento\Catalog\Model\ProductOptionProcessor;
 use Magento\Framework\DataObject;
 use Magento\Framework\DataObject\Factory as DataObjectFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class ProductOptionProcessorTest extends TestCase
 {
-
     use MockCreationTrait;
     /**
      * @var ProductOptionProcessor
@@ -129,7 +129,7 @@ class ProductOptionProcessorTest extends TestCase
                 'getBundleOptions', 'setBundleOptions',
                 'getDownloadableOption', 'setDownloadableOption',
                 'getConfigurableItemOptions', 'setConfigurableItemOptions',
-                'getGiftcardItemOption', 'setGiftcardItemOption'
+                'getGiftcardItemOption', 'setGiftcardItemOption',
             ]
         );
         $customOptions = [];
@@ -239,8 +239,8 @@ class ProductOptionProcessorTest extends TestCase
                         2,
                         'url' => [
                             'route' => 'route',
-                            'params' => ['id' => 20, 'key' => '8175c7c36ef69432347e']
-                        ]
+                            'params' => ['id' => 20, 'key' => '8175c7c36ef69432347e'],
+                        ],
                     ],
                 ],
                 'expected' => 'custom_options',

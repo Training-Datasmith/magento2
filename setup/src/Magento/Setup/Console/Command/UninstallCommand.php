@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Setup\Console\Command;
 
+use Magento\Framework\Setup\ConsoleLogger;
+use Magento\Setup\Model\InstallerFactory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
-use Magento\Setup\Model\InstallerFactory;
-use Magento\Framework\Setup\ConsoleLogger;
 
 class UninstallCommand extends AbstractSetupCommand
 {

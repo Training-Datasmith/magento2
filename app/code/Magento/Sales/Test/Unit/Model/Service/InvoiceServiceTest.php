@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -11,22 +12,22 @@ use Magento\Framework\Api\Filter;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteria;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Data\Collection;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\InvoiceCommentRepositoryInterface;
 use Magento\Sales\Api\InvoiceRepositoryInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\AbstractModel;
+use Magento\Sales\Model\Convert\Order as ConvertOrder;
+use Magento\Sales\Model\Order as SalesOrder;
 use Magento\Sales\Model\Order\Invoice;
+use Magento\Sales\Model\Order\Invoice as InvoiceModel;
 use Magento\Sales\Model\Order\InvoiceNotifier;
 use Magento\Sales\Model\Service\InvoiceService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Sales\Api\OrderRepositoryInterface;
-use Magento\Sales\Model\Convert\Order as ConvertOrder;
-use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Sales\Model\Order as SalesOrder;
-use Magento\Sales\Model\Order\Invoice as InvoiceModel;
-use Magento\Framework\Data\Collection;
-use Magento\Sales\Api\Data\InvoiceInterface;
 
 /**
  *
@@ -34,7 +35,6 @@ use Magento\Sales\Api\Data\InvoiceInterface;
  */
 class InvoiceServiceTest extends TestCase
 {
-
     /**
      * Repository
      *
@@ -104,7 +104,7 @@ class InvoiceServiceTest extends TestCase
                 'commentRepository' => $this->commentRepositoryMock,
                 'criteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'filterBuilder' => $this->filterBuilderMock,
-                'notifier' => $this->invoiceNotifierMock
+                'notifier' => $this->invoiceNotifierMock,
             ]
         );
     }

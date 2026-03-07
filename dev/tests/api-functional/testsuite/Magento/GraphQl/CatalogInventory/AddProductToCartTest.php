@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class AddProductToCartTest extends GraphQlAbstract
      * @param float $quantity
      * @return string
      */
-    private function getQuery(string $maskedQuoteId, string $sku, float $quantity) : string
+    private function getQuery(string $maskedQuoteId, string $sku, float $quantity): string
     {
         return <<<QUERY
 mutation {

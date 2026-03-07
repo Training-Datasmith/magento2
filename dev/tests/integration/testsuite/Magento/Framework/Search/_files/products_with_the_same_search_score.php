@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -27,7 +29,7 @@ foreach (range(1, $howManyProducts) as $productId) {
         ->setName('Cool short' . $productId)
         ->setSku('cool_shorts_' . $productId)
         ->setPrice(42)
-        ->setShortDescription("Some description about shorts")
+        ->setShortDescription('Some description about shorts')
         ->setTaxClassId(0)
         ->setDescription('Some description about <b>shorts</b>')
         ->setVisibility(Visibility::VISIBILITY_BOTH)

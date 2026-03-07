@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model;
 
 /**
@@ -24,7 +27,7 @@ class CurrencyInformationAcquirer implements \Magento\Directory\Api\CurrencyInfo
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $storeManager;
-    
+
     /**
      * @param \Magento\Directory\Model\Data\CurrencyInformationFactory $currencyInformationFactory
      * @param \Magento\Directory\Model\Data\ExchangeRateFactory $exchangeRateFactory

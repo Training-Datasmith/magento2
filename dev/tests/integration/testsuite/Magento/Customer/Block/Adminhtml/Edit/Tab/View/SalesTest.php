@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Tab\View;
 
 use Magento\Customer\Controller\RegistryConstants;
@@ -15,7 +18,7 @@ use Magento\TestFramework\Helper\Bootstrap;
  */
 class SalesTest extends \PHPUnit\Framework\TestCase
 {
-    const MAIN_WEBSITE = 1;
+    public const MAIN_WEBSITE = 1;
 
     /**
      * Sales block under test.

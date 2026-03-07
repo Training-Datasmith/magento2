@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -330,8 +331,8 @@ class EditTest extends TestCase
                     'reset_button' => false,
                     'delete_button' => false,
                     'form' => ['category' => $category, 'url_rewrite' => $urlRewrite],
-                    'categories_tree' => false
-                ]
+                    'categories_tree' => false,
+                ],
             ],
             // Creating URL rewrite when category not selected
             [
@@ -344,8 +345,8 @@ class EditTest extends TestCase
                     'reset_button' => false,
                     'delete_button' => false,
                     'form' => false,
-                    'categories_tree' => true
-                ]
+                    'categories_tree' => true,
+                ],
             ],
             // Editing URL rewrite with category
             [
@@ -357,9 +358,9 @@ class EditTest extends TestCase
                     'reset_button' => true,
                     'delete_button' => true,
                     'form' => ['category' => $category, 'url_rewrite' => $existingUrlRewrite],
-                    'categories_tree' => false
-                ]
-            ]
+                    'categories_tree' => false,
+                ],
+            ],
         ];
     }
 }

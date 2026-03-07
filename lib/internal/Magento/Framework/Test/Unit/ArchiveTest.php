@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -163,7 +164,7 @@ class ArchiveTest extends TestCase
             ['archive.bz', 'bz2'],
             ['archive.bzip', 'bz2'],
             ['archive.bzip2', 'bz2'],
-            ['archive.bz2', 'bz2']
+            ['archive.bz2', 'bz2'],
         ];
     }
 
@@ -224,7 +225,7 @@ class ArchiveTest extends TestCase
             ['archive.tbz', 'bz2'],
             ['archive.tbzip', 'bz2'],
             ['archive.tbz2', 'bz2'],
-            ['archive.tbzip2', 'bz2']
+            ['archive.tbzip2', 'bz2'],
         ];
     }
 }

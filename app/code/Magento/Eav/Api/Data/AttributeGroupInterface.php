@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Eav\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -14,11 +17,11 @@ use Magento\Framework\Api\ExtensibleDataInterface;
  */
 interface AttributeGroupInterface extends ExtensibleDataInterface
 {
-    const GROUP_ID = 'attribute_group_id';
+    public const GROUP_ID = 'attribute_group_id';
 
-    const GROUP_NAME = 'attribute_group_name';
+    public const GROUP_NAME = 'attribute_group_name';
 
-    const ATTRIBUTE_SET_ID = 'attribute_set_id';
+    public const ATTRIBUTE_SET_ID = 'attribute_set_id';
 
     /**
      * Retrieve id

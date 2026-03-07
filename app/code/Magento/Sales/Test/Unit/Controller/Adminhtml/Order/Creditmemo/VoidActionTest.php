@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -21,6 +22,7 @@ use Magento\Framework\DB\Transaction;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Sales\Controller\Adminhtml\Order\Creditmemo\AddComment;
 use Magento\Sales\Controller\Adminhtml\Order\Creditmemo\VoidAction;
@@ -31,7 +33,6 @@ use Magento\Sales\Model\Order\Email\Sender\CreditmemoSender;
 use Magento\Sales\Model\Order\Invoice;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -148,7 +149,7 @@ class VoidActionTest extends TestCase
                     'getHelper',
                     'getActionFlag',
                     'getMessageManager',
-                    'getResultRedirectFactory'
+                    'getResultRedirectFactory',
                 ]
             )
             ->disableOriginalConstructor()
@@ -199,7 +200,7 @@ class VoidActionTest extends TestCase
             [
                 'context' => $this->contextMock,
                 'creditmemoLoader' => $this->loaderMock,
-                'resultForwardFactory' => $this->resultForwardFactoryMock
+                'resultForwardFactory' => $this->resultForwardFactoryMock,
             ]
         );
     }

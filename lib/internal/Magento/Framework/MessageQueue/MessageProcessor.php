@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue;
 
 use Magento\Framework\App\ResourceConnection;
@@ -15,7 +18,7 @@ class MessageProcessor implements MessageProcessorInterface
     /**
      * Maximum number of transaction retries
      */
-    const MAX_TRANSACTION_RETRIES = 10;
+    public const MAX_TRANSACTION_RETRIES = 10;
 
     /**
      * @var \Magento\Framework\MessageQueue\MessageStatusProcessor

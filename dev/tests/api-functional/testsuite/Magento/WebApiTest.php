@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,11 +12,11 @@ use Magento\TestFramework\SkippableInterface;
 use Magento\TestFramework\Workaround\Override\Config;
 use Magento\TestFramework\Workaround\Override\WrapperGenerator;
 use PHPUnit\Framework\TestSuite;
-use PHPUnit\TextUI\XmlConfiguration\TestSuiteMapper;
-use PHPUnit\TextUI\XmlConfiguration\Configuration;
-use PHPUnit\TextUI\XmlConfiguration\Loader;
 use PHPUnit\TextUI\Configuration\TestSuite as TestSuiteConfiguration;
 use PHPUnit\TextUI\Configuration\TestSuiteCollection;
+use PHPUnit\TextUI\XmlConfiguration\Configuration;
+use PHPUnit\TextUI\XmlConfiguration\Loader;
+use PHPUnit\TextUI\XmlConfiguration\TestSuiteMapper;
 
 /**
  * Web API tests wrapper.
@@ -91,8 +92,11 @@ class WebApiTest extends TestSuite
      */
     private static function getSuites($suiteConfig)
     {
-        return (new TestSuiteMapper())->map(self::getConfigurationFile(),
-            TestSuiteCollection::fromArray([$suiteConfig]),'', ''
+        return (new TestSuiteMapper())->map(
+            self::getConfigurationFile(),
+            TestSuiteCollection::fromArray([$suiteConfig]),
+            '',
+            ''
         );
     }
 }

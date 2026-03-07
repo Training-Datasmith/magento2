@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -355,7 +357,7 @@ class Stock extends AbstractDb implements QtyCounterInterface
             ],
             [
                 $connection->prepareSqlCondition('invtr.use_config_manage_stock', 0),
-                $connection->prepareSqlCondition('invtr.manage_stock', 1)
+                $connection->prepareSqlCondition('invtr.manage_stock', 1),
             ],
         ];
 

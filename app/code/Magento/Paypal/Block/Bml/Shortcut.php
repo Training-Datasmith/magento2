@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,10 +9,10 @@
 namespace Magento\Paypal\Block\Bml;
 
 use Magento\Catalog\Block as CatalogBlock;
-use Magento\Paypal\Helper\Shortcut\ValidatorInterface;
-use Magento\Paypal\Model\ConfigFactory;
-use Magento\Paypal\Model\Config;
 use Magento\Framework\App\ObjectManager;
+use Magento\Paypal\Helper\Shortcut\ValidatorInterface;
+use Magento\Paypal\Model\Config;
+use Magento\Paypal\Model\ConfigFactory;
 
 /**
  * Class shortcut
@@ -65,7 +67,7 @@ class Shortcut extends \Magento\Framework\View\Element\Template implements Catal
     /**
      * Shortcut image path
      */
-    const SHORTCUT_IMAGE = 'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-medium.png';
+    public const SHORTCUT_IMAGE = 'https://www.paypalobjects.com/webstatic/en_US/i/buttons/ppcredit-logo-medium.png';
 
     /**
      * @var ValidatorInterface

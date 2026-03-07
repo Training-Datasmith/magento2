@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -17,10 +19,8 @@ class SelectHydrator
 {
     /**
      * Array of supported Select parts
-     *
-     * @var array
      */
-    private $predefinedSelectParts =
+    private array $predefinedSelectParts =
         [
             Select::DISTINCT,
             Select::COLUMNS,
@@ -32,45 +32,20 @@ class SelectHydrator
             Select::ORDER,
             Select::LIMIT_COUNT,
             Select::LIMIT_OFFSET,
-            Select::FOR_UPDATE
+            Select::FOR_UPDATE,
         ];
 
     /**
-     * @var array
-     */
-    private $selectParts;
-
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    /**
-     * @param ResourceConnection $resourceConnection
-     * @param ObjectManagerInterface $objectManager
      * @param array $selectParts
      */
-    public function __construct(
-        ResourceConnection $resourceConnection,
-        ObjectManagerInterface $objectManager,
-        $selectParts = []
-    ) {
-        $this->resourceConnection = $resourceConnection;
-        $this->objectManager = $objectManager;
-        $this->selectParts = $selectParts;
+    public function __construct(private readonly ResourceConnection $resourceConnection, private readonly ObjectManagerInterface $objectManager, private $selectParts = [])
+    {
     }
 
     /**
      * Perform merge of parts
-     *
-     * @return array
      */
-    private function getSelectParts()
+    private function getSelectParts(): array
     {
         return array_merge($this->predefinedSelectParts, $this->selectParts);
     }
@@ -78,11 +53,9 @@ class SelectHydrator
     /**
      * Extracts Select metadata parts
      *
-     * @param Select $select
-     * @return array
      * @throws \Zend_Db_Select_Exception
      */
-    public function extract(Select $select)
+    public function extract(Select $select): array
     {
         $parts = [];
         foreach ($this->getSelectParts() as $partName) {
@@ -94,7 +67,6 @@ class SelectHydrator
     /**
      * Set parts to the select object
      *
-     * @param array $selectParts
      * @return Select
      */
     public function recreate(array $selectParts)
@@ -115,22 +87,18 @@ class SelectHydrator
      *
      * If each column contains information about select expression
      * an object with the type of this expression going to be created and assigned to this column.
-     *
-     * @param Select $select
-     * @param array $selectParts
-     * @return Select
      */
-    private function processColumns(Select $select, array &$selectParts)
+    private function processColumns(Select $select, array &$selectParts): Select
     {
         if (!empty($selectParts[Select::COLUMNS]) && is_array($selectParts[Select::COLUMNS])) {
             $part = [];
 
             foreach ($selectParts[Select::COLUMNS] as $columnEntry) {
-                list($correlationName, $column, $alias) = $columnEntry;
-                if (is_array($column) && !empty($column['class'])) {
+                [$correlationName, $column, $alias] = $columnEntry;
+                if (!empty($column['class'])) {
                     $expression = $this->objectManager->create(
                         $column['class'],
-                        isset($column['arguments']) ? $column['arguments'] : []
+                        $column['arguments'] ?? []
                     );
                     $part[] = [$correlationName, $expression, $alias];
                 } else {

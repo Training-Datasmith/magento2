@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -13,9 +14,6 @@ interface BatchReportProviderInterface
 
     /**
      * Returns one batch of the report data
-     *
-     * @param string $name
-     * @return \IteratorIterator
      */
     public function getBatchReport(string $name): \IteratorIterator;
 }

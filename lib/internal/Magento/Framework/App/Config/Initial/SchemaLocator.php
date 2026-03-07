@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Logging schema locator
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config\Initial;
 
 use Magento\Framework\Module\Dir;

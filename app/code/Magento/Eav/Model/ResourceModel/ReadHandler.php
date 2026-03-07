@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -200,10 +202,10 @@ class ReadHandler implements AttributeInterface
                     }
                 } else {
                     $this->logger->warning(
-                        "Attempt to load value of nonexistent EAV attribute",
+                        'Attempt to load value of nonexistent EAV attribute',
                         [
                             'attribute_id' => $attributeValue['attribute_id'],
-                            'entity_type' => $entityType
+                            'entity_type' => $entityType,
                         ]
                     );
                 }

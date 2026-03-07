@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Amqp;
 
-use Magento\Framework\MessageQueue\ConnectionTypeResolverInterface;
 use Magento\Framework\App\DeploymentConfig;
+use Magento\Framework\MessageQueue\ConnectionTypeResolverInterface;
 
 /**
  * Amqp connection type resolver.

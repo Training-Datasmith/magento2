@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -14,7 +15,6 @@ use Magento\ProductAlert\Model\StockFactory;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-
 
 $objectManager = Bootstrap::getObjectManager();
 /** @var ProductRepositoryInterface $peoductRepository */
@@ -40,7 +40,6 @@ try {
 } catch (NoSuchEntityException $e) {
     //already removed
 }
-
 
 $stockAlert = $stockFactory->create();
 $stockAlert->deleteCustomer((int)$customer->getId(), (int)$secondWebsite->getId());

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -31,7 +32,7 @@ class SaveTest extends GenericTest
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save']],
                     'form-role' => 'save',
-                ]
+                ],
             ],
             $this->getModel()->getButtonData()
         );

@@ -1,18 +1,21 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * \Magento\Framework\DB\Helper\AbstractHelper test case
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB\Test\Unit\Helper;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Helper\AbstractHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class AbstractHelperTest extends TestCase
 {
@@ -88,15 +91,15 @@ class AbstractHelperTest extends TestCase
                 '',
                 [
                     'value' => '',
-                    'options' => []
+                    'options' => [],
                 ],
             ],
             [
                 'LIKE \%string\_end',
                 [
                     'value' => 'LIKE %string_end',
-                    'options' => []
-                ]
+                    'options' => [],
+                ],
             ],
             [
                 'LIKE \%string_end',
@@ -104,8 +107,8 @@ class AbstractHelperTest extends TestCase
                     'value' => 'LIKE %string_end',
                     'options' => [
                         'allow_symbol_mask' => true,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'LIKE %string\_end',
@@ -113,8 +116,8 @@ class AbstractHelperTest extends TestCase
                     'value' => 'LIKE %string_end',
                     'options' => [
                         'allow_string_mask' => true,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'LIKE %string_end',
@@ -123,8 +126,8 @@ class AbstractHelperTest extends TestCase
                     'options' => [
                         'allow_symbol_mask' => true,
                         'allow_string_mask' => true,
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 '%string%',
@@ -132,8 +135,8 @@ class AbstractHelperTest extends TestCase
                     'value' => 'string',
                     'options' => [
                         'position' => 'any',
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'string%',
@@ -141,8 +144,8 @@ class AbstractHelperTest extends TestCase
                     'value' => 'string',
                     'options' => [
                         'position' => 'start',
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 '%string',
@@ -150,9 +153,9 @@ class AbstractHelperTest extends TestCase
                     'value' => 'string',
                     'options' => [
                         'position' => 'end',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -15,7 +16,7 @@ use Magento\GraphQlCache\Model\CacheId\CacheIdFactorProviderInterface;
  */
 class StoreProvider implements CacheIdFactorProviderInterface
 {
-    const NAME = "STORE";
+    public const NAME = 'STORE';
 
     /**
      * @inheritdoc

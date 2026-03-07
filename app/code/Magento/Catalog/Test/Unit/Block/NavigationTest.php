@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class NavigationTest extends TestCase
                 'registry' => $this->registry,
                 'storeManager' => $this->storeManager,
                 'design' => $this->design,
-                'httpContext' => $this->httpContext
+                'httpContext' => $this->httpContext,
             ]
         );
     }
@@ -131,7 +132,7 @@ class NavigationTest extends TestCase
             'name' => 'block_name',
             60,
             'category_path' => 60,
-            'short_cache_id' => 'c3de6d1160d1e7730b04d6cad409a2b4'
+            'short_cache_id' => 'c3de6d1160d1e7730b04d6cad409a2b4',
         ];
 
         $this->assertEquals($expectedResult, $this->block->getCacheKeyInfo());

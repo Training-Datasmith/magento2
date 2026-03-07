@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -60,7 +61,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'sku' => 'bundle-product-fixed-price',
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
-                '_options' => ['$opt1$', '$opt2$']
+                '_options' => ['$opt1$', '$opt2$'],
             ],
             'bundle_product_1'
         ),
@@ -71,7 +72,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -82,7 +83,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -91,7 +92,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -116,7 +117,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 10,
-                'price_type' => LinkInterface::PRICE_TYPE_FIXED
+                'price_type' => LinkInterface::PRICE_TYPE_FIXED,
             ],
             'selection2'
         ),
@@ -139,7 +140,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -150,7 +151,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -159,7 +160,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -183,7 +184,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product1.sku$',
                 'price' => 20,
-                'price_type' => LinkInterface::PRICE_TYPE_FIXED
+                'price_type' => LinkInterface::PRICE_TYPE_FIXED,
             ],
             'selection1'
         ),
@@ -192,7 +193,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 10,
-                'price_type' => LinkInterface::PRICE_TYPE_FIXED
+                'price_type' => LinkInterface::PRICE_TYPE_FIXED,
             ],
             'selection2'
         ),
@@ -215,7 +216,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -226,7 +227,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -235,7 +236,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -260,7 +261,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 20,
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection2'
         ),
@@ -283,7 +284,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -294,7 +295,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -303,7 +304,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -327,7 +328,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product1.sku$',
                 'price' => 10,
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection1'
         ),
@@ -336,7 +337,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 20,
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection2'
         ),
@@ -359,7 +360,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -370,7 +371,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -379,7 +380,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -403,7 +404,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product1.sku$',
                 'price' => 10,
-                'price_type' => LinkInterface::PRICE_TYPE_FIXED
+                'price_type' => LinkInterface::PRICE_TYPE_FIXED,
             ],
             'selection1'
         ),
@@ -412,7 +413,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
             [
                 'sku' => '$product2.sku$',
                 'price' => 20,
-                'price_type' => LinkInterface::PRICE_TYPE_PERCENT
+                'price_type' => LinkInterface::PRICE_TYPE_PERCENT,
             ],
             'selection2'
         ),
@@ -435,7 +436,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'price' => 15,
                 'price_type' => Price::PRICE_TYPE_FIXED,
                 '_options' => ['$opt1$', '$opt2$'],
-                'special_price' => 90 // it is the 90% of the original price
+                'special_price' => 90, // it is the 90% of the original price
             ],
             'bundle_product_2'
         ),
@@ -446,7 +447,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         ),
         DataFixture(
@@ -455,7 +456,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_2.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -493,7 +494,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -505,30 +506,30 @@ class BundleProductCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "items" => [
+            'cart' =>  [
+                'items' => [
                     0 => [
-                        "prices" => [
-                            "price" => [
-                                "value" => 30,
-                                "currency" => "USD"
+                        'prices' => [
+                            'price' => [
+                                'value' => 30,
+                                'currency' => 'USD',
                             ],
-                            "row_total" => [
-                                "value" => 60,
-                                "currency" => "USD"
+                            'row_total' => [
+                                'value' => 60,
+                                'currency' => 'USD',
                             ],
-                            "original_row_total" => [
-                                "value" => 60,
-                                "currency" => "USD"
+                            'original_row_total' => [
+                                'value' => 60,
+                                'currency' => 'USD',
                             ],
-                            "original_item_price" => [
-                                "value" => 30,
-                                "currency" => "USD"
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            'original_item_price' => [
+                                'value' => 30,
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -556,7 +557,7 @@ class BundleProductCartPricesTest extends GraphQlAbstract
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
                 'selections' => [['$product1.id$'], ['$product2.id$']],
-                'qty' => 2
+                'qty' => 2,
             ]
         )
     ]
@@ -568,30 +569,30 @@ class BundleProductCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "items" => [
+            'cart' =>  [
+                'items' => [
                     0 => [
-                        "prices" => [
-                            "price" => [
-                                "value" => 25,
-                                "currency" => "USD"
+                        'prices' => [
+                            'price' => [
+                                'value' => 25,
+                                'currency' => 'USD',
                             ],
-                            "row_total" => [
-                                "value" => 50,
-                                "currency" => "USD"
+                            'row_total' => [
+                                'value' => 50,
+                                'currency' => 'USD',
                             ],
-                            "original_row_total" => [
-                                "value" => 60,
-                                "currency" => "USD"
+                            'original_row_total' => [
+                                'value' => 60,
+                                'currency' => 'USD',
                             ],
-                            "original_item_price" => [
-                                "value" => 30, // product 1 price(20) + product 2 price (10)
-                                "currency" => "USD"
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            'original_item_price' => [
+                                'value' => 30, // product 1 price(20) + product 2 price (10)
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -653,50 +654,50 @@ QUERY;
         $originalItemPriceProduct2
     ): array {
         return [
-            "cart" =>  [
-                "items" => [
+            'cart' =>  [
+                'items' => [
                     0 => [
-                        "prices" => [
-                            "price" => [
-                                "value" => $price,
-                                "currency" => "USD"
+                        'prices' => [
+                            'price' => [
+                                'value' => $price,
+                                'currency' => 'USD',
                             ],
-                            "row_total" => [
-                                "value" => $rowTotal,
-                                "currency" => "USD"
+                            'row_total' => [
+                                'value' => $rowTotal,
+                                'currency' => 'USD',
                             ],
-                            "original_row_total" => [
-                                "value" => $originalRowTotal,
-                                "currency" => "USD"
+                            'original_row_total' => [
+                                'value' => $originalRowTotal,
+                                'currency' => 'USD',
                             ],
-                            "original_item_price" => [
-                                "value" => $originalItemPriceProduct1,
-                                "currency" => "USD"
-                            ]
-                        ]
+                            'original_item_price' => [
+                                'value' => $originalItemPriceProduct1,
+                                'currency' => 'USD',
+                            ],
+                        ],
                     ],
                     1 => [
-                        "prices" => [
-                            "price" => [
-                                "value" => $specialPrice,
-                                "currency" => "USD"
+                        'prices' => [
+                            'price' => [
+                                'value' => $specialPrice,
+                                'currency' => 'USD',
                             ],
-                            "row_total" => [
-                                "value" => $specialRowTotal,
-                                "currency" => "USD"
+                            'row_total' => [
+                                'value' => $specialRowTotal,
+                                'currency' => 'USD',
                             ],
-                            "original_row_total" => [
-                                "value" => $originalRowTotal,
-                                "currency" => "USD"
+                            'original_row_total' => [
+                                'value' => $originalRowTotal,
+                                'currency' => 'USD',
                             ],
-                            "original_item_price" => [
-                                "value" => $originalItemPriceProduct2,
-                                "currency" => "USD"
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            'original_item_price' => [
+                                'value' => $originalItemPriceProduct2,
+                                'currency' => 'USD',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

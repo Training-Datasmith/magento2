@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -16,7 +17,6 @@ use Magento\Security\Api\Data\UserExpirationInterface;
  */
 class UserExpiration extends AbstractExtensibleModel implements UserExpirationInterface
 {
-
     /**
      * Resource initialization
      *

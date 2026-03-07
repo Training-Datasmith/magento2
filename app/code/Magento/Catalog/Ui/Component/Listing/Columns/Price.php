@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Ui\Component\Listing\Columns;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
 
 /**
  * @api
@@ -77,7 +80,7 @@ class Price extends \Magento\Ui\Component\Listing\Columns\Column
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item[$fieldName])) {
                     $item[$fieldName] = $this->priceCurrency->format(
-                        sprintf("%F", $item[$fieldName]),
+                        sprintf('%F', $item[$fieldName]),
                         false,
                         PriceCurrencyInterface::DEFAULT_PRECISION,
                         $store

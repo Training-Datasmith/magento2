@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\UrlRewrite\Block;
 
 /**
@@ -120,7 +123,7 @@ class Edit extends \Magento\Backend\Block\Widget\Container
                 'label' => __('Reset'),
                 'onclick' => 'location.reload();',
                 'class' => 'scalable',
-                'level' => -1
+                'level' => -1,
             ]
         );
     }
@@ -138,7 +141,7 @@ class Edit extends \Magento\Backend\Block\Widget\Container
                 'label' => __('Back'),
                 'onclick' => 'setLocation(\'' . $this->_adminhtmlData->getUrl('adminhtml/*/') . '\')',
                 'class' => 'back',
-                'level' => -1
+                'level' => -1,
             ]
         );
     }
@@ -175,7 +178,7 @@ class Edit extends \Magento\Backend\Block\Widget\Container
                     )
                     . ', {data: {}})',
                 'class' => 'scalable delete',
-                'level' => -1
+                'level' => -1,
             ]
         );
     }
@@ -195,7 +198,7 @@ class Edit extends \Magento\Backend\Block\Widget\Container
                 'level' => -1,
                 'data_attribute' => [
                     'mage-init' => ['button' => ['event' => 'save', 'target' => '#edit_form']],
-                ]
+                ],
             ]
         );
     }

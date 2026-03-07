@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Websites;
@@ -16,7 +16,6 @@ use Magento\Store\Api\GroupRepositoryInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Magento\Store\Api\WebsiteRepositoryInterface;
 use Magento\Store\Model\Group;
-use Magento\Store\Model\ResourceModel\Group\Collection;
 use Magento\Store\Model\Store as StoreView;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\Website;
@@ -108,12 +107,12 @@ class WebsitesTest extends AbstractModifierTestCase
         $this->storeRepositoryMock = $this->createMock(StoreRepositoryInterface::class);
         $this->storeManagerMock = $this->createMock(StoreManagerInterface::class);
         $this->storeManagerMock->method('isSingleStoreMode')->willReturn(false);
-        
+
         $this->groupMock = $this->createPartialMockWithReflection(
             Group::class,
             ['setWebsiteId', 'getWebsiteId', 'setId', 'getId']
         );
-        
+
         $this->groupMock->method('setWebsiteId')->willReturnSelf();
         $this->groupMock->method('getWebsiteId')->willReturn(self::WEBSITE_ID);
         $this->groupMock->method('setId')->willReturnSelf();
@@ -129,60 +128,60 @@ class WebsitesTest extends AbstractModifierTestCase
         $this->storeRepositoryMock->method('getList')->willReturn([$this->storeViewMock]);
         $this->secondWebsiteMock->method('getId')->willReturn($this->assignedWebsites[0]);
         $this->websiteMock->method('getId')->willReturn(self::WEBSITE_ID);
-        
+
         $productData = ['id' => $this->productId];
-        
+
         $this->productMock = $this->createPartialMockWithReflection(
             Product::class,
             ['setId', 'getId']
         );
-        
+
         $this->productMock->method('setId')->willReturnCallback(
             function ($id) use (&$productData) {
                 $productData['id'] = $id;
             }
         );
-        
+
         $this->productMock->method('getId')->willReturnCallback(
             function () use (&$productData) {
                 return $productData['id'];
             }
         );
-        
+
         $locatorData = [
             'websiteIds' => $this->assignedWebsites,
-            'product' => null
+            'product' => null,
         ];
-        
+
         $this->locatorMock = $this->createPartialMockWithReflection(
             LocatorInterface::class,
             ['setWebsiteIds', 'setProduct', 'getProduct', 'getStore', 'getWebsiteIds', 'getBaseCurrencyCode']
         );
-        
+
         $this->locatorMock->method('setWebsiteIds')->willReturnCallback(
             function ($websiteIds) use (&$locatorData) {
                 $locatorData['websiteIds'] = $websiteIds;
             }
         );
-        
+
         $this->locatorMock->method('setProduct')->willReturnCallback(
             function ($product) use (&$locatorData) {
                 $locatorData['product'] = $product;
             }
         );
-        
+
         $this->locatorMock->method('getProduct')->willReturnCallback(
             function () use (&$locatorData) {
                 return $locatorData['product'] ?? $this->productMock;
             }
         );
-        
+
         $this->locatorMock->method('getWebsiteIds')->willReturnCallback(
             function () use (&$locatorData) {
                 return $locatorData['websiteIds'];
             }
         );
-        
+
         $this->locatorMock->method('getStore')->willReturn($this->storeMock);
         $this->locatorMock->method('getBaseCurrencyCode')->willReturn('USD');
     }
@@ -251,10 +250,10 @@ class WebsitesTest extends AbstractModifierTestCase
                                 'storeView' => self::STORE_VIEW_NAME,
                                 'copy_from' => 0,
                                 'copy_to' => self::STORE_VIEW_ID,
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
         $this->init();

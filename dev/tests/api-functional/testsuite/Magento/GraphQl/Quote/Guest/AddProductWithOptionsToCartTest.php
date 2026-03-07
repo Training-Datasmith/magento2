@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -7,17 +8,17 @@ declare(strict_types=1);
 
 namespace Magento\GraphQl\Quote\Guest;
 
-use Magento\Indexer\Test\Fixture\Indexer;
-use Magento\Framework\GraphQl\Query\Uid;
-use Magento\Quote\Test\Fixture\QuoteIdMask;
-use Magento\Quote\Test\Fixture\GuestCart;
-use Magento\GraphQl\Quote\GetCustomOptionsWithUIDForQueryBySku;
+use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
 use Magento\Catalog\Test\Fixture\Product;
+use Magento\Framework\GraphQl\Query\Uid;
+use Magento\GraphQl\Quote\GetCustomOptionsWithUIDForQueryBySku;
+use Magento\Indexer\Test\Fixture\Indexer;
+use Magento\Quote\Test\Fixture\GuestCart;
+use Magento\Quote\Test\Fixture\QuoteIdMask;
 use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test adding purchase order items to the shopping cart
@@ -37,14 +38,14 @@ class AddProductWithOptionsToCartTest extends GraphQlAbstract
                     'type' => ProductCustomOptionInterface::OPTION_TYPE_DROP_DOWN,
                     'values' => [
                         [
-                            'title' => 'option1_value1'
+                            'title' => 'option1_value1',
                         ],
                         [
-                            'title' => 'option1_value2'
-                        ]
-                    ]
-                ]
-            ]
+                            'title' => 'option1_value2',
+                        ],
+                    ],
+                ],
+            ],
             ],
             'product1'
         ),
@@ -66,7 +67,7 @@ class AddProductWithOptionsToCartTest extends GraphQlAbstract
                 'title' => $value->getTitle(),
                 'uid' => $uidEncoder->encode(
                     'custom-option' . '/' . $option[0]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $optionUid = $uidEncoder->encode(
@@ -107,8 +108,8 @@ class AddProductWithOptionsToCartTest extends GraphQlAbstract
                     [
                         'title' => 'option1',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product1'
         ),
@@ -180,7 +181,7 @@ class AddProductWithOptionsToCartTest extends GraphQlAbstract
                     'price' => 20.0,
                     'price_type' => 'percent',
                     'sku' => 'sku2',
-                    'max_characters' => 20
+                    'max_characters' => 20,
                 ],
                 [
                     'title' => 'drop_down option',
@@ -233,9 +234,9 @@ class AddProductWithOptionsToCartTest extends GraphQlAbstract
                     'price_type' => 'fixed',
                     'sku' => 'date option sku',
                     'is_require' => false,
-                    'sort_order' => 6
-                ]
-            ]
+                    'sort_order' => 6,
+                ],
+            ],
             ],
             'product1'
         ),
@@ -522,30 +523,30 @@ MUTATION;
     {
         return [
             [
-                "quantity" => 1,
-                "product" =>
+                'quantity' => 1,
+                'product' =>
                     [
-                        "sku" => "simple1",
-                        "options" =>
+                        'sku' => 'simple1',
+                        'options' =>
                             [
                                 [
-                                    "title" => "option1",
-                                    "uid" => "{$selectedOptionUid}",
-                                    "value" =>
+                                    'title' => 'option1',
+                                    'uid' => "{$selectedOptionUid}",
+                                    'value' =>
                                         [
                                             [
-                                                "title" => "option1_value1",
-                                                "uid" => "{$productOptions[0]['uid']}",
+                                                'title' => 'option1_value1',
+                                                'uid' => "{$productOptions[0]['uid']}",
                                             ],
                                             [
-                                                "title" => "option1_value2",
-                                                "uid" => "{$productOptions[1]['uid']}",
-                                            ]
-                                        ]
-                                ]
-                            ]
-                    ]
-            ]
+                                                'title' => 'option1_value2',
+                                                'uid' => "{$productOptions[1]['uid']}",
+                                            ],
+                                        ],
+                                ],
+                            ],
+                    ],
+            ],
         ];
     }
 
@@ -560,36 +561,36 @@ MUTATION;
     {
         return [
             0 => [
-                "quantity" => 1,
-                "product" => ["sku" => "{$sku}"],
-                "customizable_options" => [
+                'quantity' => 1,
+                'product' => ['sku' => "{$sku}"],
+                'customizable_options' => [
                     0 => [
-                        "customizable_option_uid" => "{$optionUid}",
-                        "label" => "option1",
-                        "values" => [
+                        'customizable_option_uid' => "{$optionUid}",
+                        'label' => 'option1',
+                        'values' => [
                             0 => [
-                                "customizable_option_value_uid" => "{$optionUid}",
-                                "value" => "value1"
-                            ]
-                        ]
-                    ]
-                ]
+                                'customizable_option_value_uid' => "{$optionUid}",
+                                'value' => 'value1',
+                            ],
+                        ],
+                    ],
+                ],
             ],
             1 => [
-                "quantity" => 1,
-                "product" => ["sku" => "{$sku}"],
-                "customizable_options" => [
+                'quantity' => 1,
+                'product' => ['sku' => "{$sku}"],
+                'customizable_options' => [
                     0 => [
-                        "customizable_option_uid" => "{$optionUid}",
-                        "label" => "option1",
-                        "values" => [
+                        'customizable_option_uid' => "{$optionUid}",
+                        'label' => 'option1',
+                        'values' => [
                             0 => [
-                                "customizable_option_value_uid" => "{$optionUid}",
-                                "value" => "value2"
-                            ]
-                        ]
-                    ]
-                ]
+                                'customizable_option_value_uid' => "{$optionUid}",
+                                'value' => 'value2',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
     }

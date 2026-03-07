@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,10 +15,10 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Filesystem\Directory\WriteInterface as DirectoryWriteInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class FileFactoryTest extends TestCase
 {
@@ -141,8 +142,8 @@ class FileFactoryTest extends TestCase
                     'contentType' => 'application/octet-stream',
                     'contentLength' => $fileSize,
                     'directoryCode' => DirectoryList::ROOT,
-                    'remove' => false
-                ]
+                    'remove' => false,
+                ],
             ])
             ->willReturn($responseMock);
         $this->dirMock->expects($this->once())
@@ -179,8 +180,8 @@ class FileFactoryTest extends TestCase
                     'contentType' => 'application/octet-stream',
                     'contentLength' => $fileSize,
                     'directoryCode' => DirectoryList::ROOT,
-                    'remove' => true
-                ]
+                    'remove' => true,
+                ],
             ])
             ->willReturn($responseMock);
         $this->dirMock->expects($this->once())

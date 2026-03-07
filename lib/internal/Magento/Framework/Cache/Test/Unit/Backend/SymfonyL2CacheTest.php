@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -150,7 +151,7 @@ class SymfonyL2CacheTest extends TestCase
             ->method('load')
             ->willReturnMap([
                 [$cacheId . ':hash', $remoteHash],
-                [$cacheId, $remoteData]
+                [$cacheId, $remoteData],
             ]);
 
         // Should save fresh data to local cache
@@ -185,7 +186,7 @@ class SymfonyL2CacheTest extends TestCase
             ->method('save')
             ->willReturnMap([
                 [$cacheData, $cacheId, [], null, true],
-                [$cacheHash, $cacheId . ':hash', [], null, true]
+                [$cacheHash, $cacheId . ':hash', [], null, true],
             ]);
 
         // Local save

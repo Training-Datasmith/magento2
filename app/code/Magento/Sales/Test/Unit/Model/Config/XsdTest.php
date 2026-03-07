@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Sales\Test\Unit\Model\Config;
 
 use Magento\Framework\Config\Dom;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class XsdTest extends TestCase
 {
@@ -23,7 +24,7 @@ class XsdTest extends TestCase
         if (!function_exists('libxml_set_external_entity_loader')) {
             $this->markTestSkipped('Skipped on HHVM. Will be fixed in MAGETWO-45033');
         }
-        $this->_xsdFile = "urn:magento:module:Magento_Sales:etc/sales.xsd";
+        $this->_xsdFile = 'urn:magento:module:Magento_Sales:etc/sales.xsd';
     }
 
     /**
@@ -77,22 +78,22 @@ class XsdTest extends TestCase
                 [
                     "Element 'section', attribute 'wrongName': The attribute 'wrongName' is not allowed.\nLine: 9\n" .
                     "The xml was: \n4: * All Rights Reserved.\n5: */\n6:-->\n" .
-                    "7:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    '7:<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
                     "<section wrongName=\"section1\">\n9:        <wrongGroup wrongName=\"group1\"/>\n" .
                     "10:    </section>\n11:</config>\n12:\n",
                     "Element 'section': The attribute 'name' is required but missing.\nLine: 9\n" .
                     "The xml was: \n4: * All Rights Reserved.\n5: */\n6:-->\n" .
-                    "7:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    '7:<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
                     "<section wrongName=\"section1\">\n9:        <wrongGroup wrongName=\"group1\"/>\n" .
                     "10:    </section>\n11:</config>\n12:\n",
                     "Element 'wrongGroup': This element is not expected. Expected is ( group ).\nLine: 10\n" .
                     "The xml was: \n5: */\n6:-->\n" .
-                    "7:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    '7:<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
                     "<section wrongName=\"section1\">\n9:        <wrongGroup wrongName=\"group1\"/>\n" .
-                    "10:    </section>\n11:</config>\n12:\n"
+                    "10:    </section>\n11:</config>\n12:\n",
                 ],
             ],
             [
@@ -129,15 +130,15 @@ class XsdTest extends TestCase
                     "Element 'available_product_type': Duplicate key-sequence ['a1'] in unique " .
                     "identity-constraint 'uniqueProductTypeName'.\nLine: 28\nThe xml was: \n23:        </group>\n" .
                     "24:    </section>\n25:    <order>\n26:        <available_product_type name=\"a1\"/>\n" .
-                    "27:        <available_product_type name=\"a1\"/>\n28:    </order>\n29:</config>\n30:\n"
-                ]
+                    "27:        <available_product_type name=\"a1\"/>\n28:    </order>\n29:</config>\n30:\n",
+                ],
             ],
             [
                 'sales_invalid_without_attributes.xml',
                 [
                     "Element 'section': The attribute 'name' is required but missing.\nLine: 9\nThe xml was: \n" .
                     "4: * All Rights Reserved.\n5: */\n6:-->\n7:<config " .
-                    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
                     "<section>\n9:        <group>\n10:            <item>\n11:                " .
                     "<renderer/>\n12:            </item>\n13:        </group>\n",
@@ -153,7 +154,7 @@ class XsdTest extends TestCase
                     "<renderer/>\n12:            </item>\n13:        </group>\n14:    </section>\n" .
                     "15:    <order>\n",
                     "Element 'renderer': The attribute 'name' is required but missing.\nLine: 12\nThe xml was: \n" .
-                    "7:<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    '7:<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
                     "<section>\n9:        <group>\n10:            <item>\n11:                " .
                     "<renderer/>\n12:            </item>\n13:        </group>\n14:    </section>\n" .
@@ -166,19 +167,19 @@ class XsdTest extends TestCase
                     "15:    <order>\n16:        <available_product_type/>\n",
                     "Element 'available_product_type': The attribute 'name' is required but missing.\nLine: 17\n" .
                     "The xml was: \n12:            </item>\n13:        </group>\n14:    </section>\n15:    " .
-                    "<order>\n16:        <available_product_type/>\n17:    </order>\n18:</config>\n19:\n"
-                ]
+                    "<order>\n16:        <available_product_type/>\n17:    </order>\n18:</config>\n19:\n",
+                ],
             ],
             [
                 'sales_invalid_root_node.xml',
                 [
                     "Element 'wrong': This element is not expected. Expected is one of ( section, order ).\n" .
                     "Line: 9\nThe xml was: \n4: * All Rights Reserved.\n5: */\n6:-->\n7:<config " .
-                    "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " .
+                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                     "xsi:noNamespaceSchemaLocation=\"urn:magento:module:Magento_Sales:etc/sales.xsd\">\n8:    " .
-                    "<wrong/>\n9:</config>\n10:\n"
-                ]
-            ]
+                    "<wrong/>\n9:</config>\n10:\n",
+                ],
+            ],
         ];
     }
 }

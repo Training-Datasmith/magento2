@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block;
 
 use Magento\Framework\View\Element\Template;
@@ -49,7 +52,7 @@ class QuoteShortcutButtons extends \Magento\Catalog\Block\ShortcutButtons
                 'is_catalog_product' => $this->_isCatalogProduct,
                 'or_position' => $this->_orPosition,
                 'checkout_session' => $this->_checkoutSession,
-                'is_shopping_cart' => true
+                'is_shopping_cart' => true,
             ]
         );
         return $this;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Multishipping\Model\Cart;
 
 use Magento\Checkout\Controller\Cart;
 use Magento\Checkout\Controller\Sidebar\UpdateItemQty;
-use Magento\Checkout\Model\Session;
 use Magento\Checkout\Model\Cart as CartModel;
+use Magento\Checkout\Model\Session;
 use Magento\Customer\Api\AddressRepositoryInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -163,6 +164,6 @@ class MultishippingClearItemAddress
      */
     private function isDisableMultishippingRequired(RequestInterface $request, Quote $quote): bool
     {
-        return $request->getActionName() !== "add" && $quote->getIsMultiShipping();
+        return $request->getActionName() !== 'add' && $quote->getIsMultiShipping();
     }
 }

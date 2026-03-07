@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\ValueTransformer;
 
+use Magento\Elasticsearch\SearchAdapter\Query\ValueTransformer\TextTransformer;
 use Magento\Framework\Search\Adapter\Preprocessor\PreprocessorInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Elasticsearch\SearchAdapter\Query\ValueTransformer\TextTransformer;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test value transformer
@@ -40,7 +41,7 @@ class TextTransformerTest extends TestCase
             TextTransformer::class,
             [
                 'preprocessors' => [
-                    $this->processorMock
+                    $this->processorMock,
                 ],
             ]
         );

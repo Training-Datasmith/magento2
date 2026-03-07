@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Framework\MessageQueue\Test\Unit\Consumer\Config\Validator;
 use Magento\Framework\MessageQueue\Consumer\Config\Validator\Handlers as HandlersValidator;
 use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class HandlersTest extends TestCase
 {
@@ -66,9 +67,9 @@ class HandlersTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
-                ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
+                ],
             ],
             'valid, empty handlers' => [
                 [
@@ -81,9 +82,9 @@ class HandlersTest extends TestCase
                         'maxMessages' => null,
                         'maxIdleTime' => '500',
                         'sleep' => null,
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
-                ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
+                ],
             ],
         ];
     }
@@ -116,11 +117,11 @@ class HandlersTest extends TestCase
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => false
-                    ]
+                        'onlySpawnWhenMessageAvailable' => false,
+                    ],
                 ],
                 "'consumer1' consumer declaration is invalid. Every handler element must be an array."
-                . " It must contain 'type' and 'method' elements."
+                . " It must contain 'type' and 'method' elements.",
             ],
             'invalid, no required fields' => [
                 [
@@ -129,17 +130,17 @@ class HandlersTest extends TestCase
                         'queue' => 'queue1',
                         'consumerInstance' => 'consumerClass1',
                         'handlers' => [
-                            ['handlerClassOne::handlerMethodOne']
+                            ['handlerClassOne::handlerMethodOne'],
                         ],
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
                 "'consumer1' consumer declaration is invalid. Every handler element must be an array."
-                . " It must contain 'type' and 'method' elements."
+                . " It must contain 'type' and 'method' elements.",
             ],
             'invalid, no method' => [
                 [
@@ -148,17 +149,17 @@ class HandlersTest extends TestCase
                         'queue' => 'queue1',
                         'consumerInstance' => 'consumerClass1',
                         'handlers' => [
-                            ['type' => 'handlerClassOne']
+                            ['type' => 'handlerClassOne'],
                         ],
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
                 "'consumer1' consumer declaration is invalid. Every handler element must be an array."
-                . " It must contain 'type' and 'method' elements."
+                . " It must contain 'type' and 'method' elements.",
             ],
             'invalid, no type' => [
                 [
@@ -167,18 +168,18 @@ class HandlersTest extends TestCase
                         'queue' => 'queue1',
                         'consumerInstance' => 'consumerClass1',
                         'handlers' => [
-                            ['method' => 'handlerMethodOne']
+                            ['method' => 'handlerMethodOne'],
                         ],
                         'connection' => 'connection1',
                         'maxMessages' => '100',
                         'maxIdleTime' => '500',
                         'sleep' => '10',
-                        'onlySpawnWhenMessageAvailable' => true
-                    ]
+                        'onlySpawnWhenMessageAvailable' => true,
+                    ],
                 ],
                 "'consumer1' consumer declaration is invalid. Every handler element must be an array."
-                . " It must contain 'type' and 'method' elements."
-            ]
+                . " It must contain 'type' and 'method' elements.",
+            ],
         ];
     }
 
@@ -196,8 +197,8 @@ class HandlersTest extends TestCase
                 'maxMessages' => '100',
                 'maxIdleTime' => '500',
                 'sleep' => '10',
-                'onlySpawnWhenMessageAvailable' => true
-            ]
+                'onlySpawnWhenMessageAvailable' => true,
+            ],
         ];
         $expectedExceptionMessage = 'Service method specified as handler for of consumer "consumer1" is not available.'
         . ' Given "handlerClassOne::handlerMethodOne"';

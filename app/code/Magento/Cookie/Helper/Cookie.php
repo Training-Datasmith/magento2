@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Cookie\Helper;
 
 /**
@@ -15,17 +18,17 @@ class Cookie extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Cookie name for users who allowed cookie save
      */
-    const IS_USER_ALLOWED_SAVE_COOKIE = 'user_allowed_save_cookie';
+    public const IS_USER_ALLOWED_SAVE_COOKIE = 'user_allowed_save_cookie';
 
     /**
      * Path to configuration, check is enable cookie restriction mode
      */
-    const XML_PATH_COOKIE_RESTRICTION = 'web/cookie/cookie_restriction';
+    public const XML_PATH_COOKIE_RESTRICTION = 'web/cookie/cookie_restriction';
 
     /**
      * Cookie restriction lifetime configuration path
      */
-    const XML_PATH_COOKIE_RESTRICTION_LIFETIME = 'web/cookie/cookie_restriction_lifetime';
+    public const XML_PATH_COOKIE_RESTRICTION_LIFETIME = 'web/cookie/cookie_restriction_lifetime';
 
     /**
      * @var \Magento\Store\Model\Store

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,6 +10,7 @@
 
 namespace Magento\ConfigurableProduct\Model\Product\Type;
 
+use Magento\Catalog\Api\Data\ProductCustomOptionInterfaceFactory;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
@@ -19,7 +22,6 @@ use Magento\TestFramework\Fixture\DataFixture;
 use Magento\TestFramework\Fixture\DataFixtureStorageManager;
 use Magento\TestFramework\Fixture\DbIsolation;
 use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Catalog\Api\Data\ProductCustomOptionInterfaceFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -356,7 +358,7 @@ class ConfigurableTest extends TestCase
             $this->product
         );
         $this->assertInstanceOf(\Magento\Catalog\Model\Product::class, $product);
-        $this->assertEquals("simple_10", $product->getSku());
+        $this->assertEquals('simple_10', $product->getSku());
     }
 
     /**
@@ -374,7 +376,8 @@ class ConfigurableTest extends TestCase
         $attribute = reset($attributes);
         $optionValueId = $attribute['values'][0]['value_index'];
 
-        $product->addCustomOption('attributes',
+        $product->addCustomOption(
+            'attributes',
             $serializer->serialize([$attribute['attribute_id'] => $optionValueId])
         );
 
@@ -575,8 +578,8 @@ class ConfigurableTest extends TestCase
         self::assertEquals(
             [
                 [
-                    $oneChildId => $oneChildId
-                ]
+                    $oneChildId => $oneChildId,
+                ],
             ],
             $this->model->getChildrenIds($this->product->getId())
         );
@@ -603,7 +606,7 @@ class ConfigurableTest extends TestCase
 
         self::assertEquals(
             [
-                []
+                [],
             ],
             $this->model->getChildrenIds($this->product->getId())
         );
@@ -695,7 +698,7 @@ class ConfigurableTest extends TestCase
             ConfigurableProductFixture::class,
             [
                 '_options' => ['$attribute$'],
-                '_links' => ['$configurable_product_child$']
+                '_links' => ['$configurable_product_child$'],
             ],
             'configurable_product'
         ),
@@ -711,19 +714,19 @@ class ConfigurableTest extends TestCase
         $nameInStoreView2 = 'Child Product Name in Store View 2';
         $nameInStoreView3 = 'Child Product Name in Store View 3';
         $attributes = [
-            $attribute->getId() => $attribute->getData('option_1')
+            $attribute->getId() => $attribute->getData('option_1'),
         ];
-        
+
         // Update child product name in store view 2
         $childProduct = $this->productRepository->get($configurableChildProductSku, true, $storeView2->getId(), true);
         $childProduct->setName($nameInStoreView2);
         $this->productRepository->save($childProduct);
-        
+
         // Update child product name in store view 3
         $childProduct = $this->productRepository->get($configurableChildProductSku, true, $storeView3->getId(), true);
         $childProduct->setName($nameInStoreView3);
         $this->productRepository->save($childProduct);
-        
+
         // Load configurable product in store view 2
         $configurableProduct = $this->productRepository->get($configurableProductSku, true, $storeView2->getId(), true);
         // Load child product by attributes

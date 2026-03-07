@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MysqlMq\Model;
 
 /**
@@ -13,7 +16,7 @@ namespace Magento\MysqlMq\Model;
  */
 class Queue extends \Magento\Framework\Model\AbstractModel
 {
-    const KEY_NAME = 'name';
+    public const KEY_NAME = 'name';
 
     /**
      * {@inheritdoc}

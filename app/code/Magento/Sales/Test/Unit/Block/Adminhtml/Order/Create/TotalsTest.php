@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,12 +8,12 @@ declare(strict_types=1);
 
 namespace Magento\Sales\Test\Unit\Block\Adminhtml\Order\Create;
 
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Backend\Model\Session\Quote as SessionQuote;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Quote\Model\Quote;
 use Magento\Sales\Block\Adminhtml\Order\Create\Totals;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -56,7 +57,7 @@ class TotalsTest extends TestCase
         $this->totals = $this->objectManager->getObject(
             Totals::class,
             [
-                'sessionQuote' => $this->sessionQuoteMock
+                'sessionQuote' => $this->sessionQuoteMock,
             ]
         );
     }
@@ -85,7 +86,7 @@ class TotalsTest extends TestCase
             [1, true],
             ['0', false],
             ['1', true],
-            [null, true]
+            [null, true],
         ];
     }
 }

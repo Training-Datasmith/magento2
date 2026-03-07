@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\Theme\Controller\Result;
 
 use Magento\Csp\Api\InlineUtilInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\Response\HttpInterface as HttpResponseInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\View\Result\Layout;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Plugin for asynchronous CSS loading.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Model\Product\Filter;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Model\Product\Filter\DateTime;
 use Magento\Framework\Locale\Resolver;
 use Magento\Framework\Locale\ResolverInterface;
 use Magento\Framework\Stdlib\DateTime\Intl\DateFormatterFactory;
 use Magento\Framework\Stdlib\DateTime\Timezone;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeTest extends TestCase
@@ -54,7 +55,7 @@ class DateTimeTest extends TestCase
         $this->model = $objectManager->getObject(
             DateTime::class,
             [
-                'stdlibDateTimeFilter' => $stdlibDateTimeFilter
+                'stdlibDateTimeFilter' => $stdlibDateTimeFilter,
             ]
         );
     }

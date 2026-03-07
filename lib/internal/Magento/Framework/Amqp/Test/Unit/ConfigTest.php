@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -48,8 +49,8 @@ class ConfigTest extends TestCase
         $objects = [
             [
                 ConnectionFactory::class,
-                $this->createMock(ConnectionFactory::class)
-            ]
+                $this->createMock(ConnectionFactory::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->deploymentConfigMock = $this->getMockBuilder(DeploymentConfig::class)
@@ -107,7 +108,7 @@ class ConfigTest extends TestCase
                     'ssl' => $expectedSsl,
                     'ssl_options' => $expectedSslOptions,
                     'randomKey' => 'randomValue',
-                ]
+                ],
             ]);
 
         $this->assertEquals($expectedHost, $this->amqpConfig->getValue(Config::HOST));
@@ -143,8 +144,8 @@ class ConfigTest extends TestCase
                         'virtualhost' => $expectedVirtualHost,
                         'ssl' => $expectedSsl,
                         'randomKey' => 'randomValue',
-                    ]
-                ]
+                    ],
+                ],
             ]);
 
         $this->assertEquals($expectedHost, $amqpConfig->getValue(Config::HOST));
@@ -169,7 +170,7 @@ class ConfigTest extends TestCase
             ->with(Config::QUEUE_CONFIG)
             ->willReturn(
                 [
-                    Config::AMQP_CONFIG => $config
+                    Config::AMQP_CONFIG => $config,
                 ]
             );
         $this->connectionFactory->expects($this->once())
@@ -197,15 +198,15 @@ class ConfigTest extends TestCase
             [
                 self::DEFAULT_CONFIG,
                 [
-                    'isSslEnabled' => false
-                ]
+                    'isSslEnabled' => false,
+                ],
             ],
             [
                 self::DEFAULT_CONFIG + [Config::SSL => ' true '],
                 [
-                    'isSslEnabled' => true
-                ]
-            ]
+                    'isSslEnabled' => true,
+                ],
+            ],
         ];
     }
 

@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
 
 namespace Magento\Framework\App\Cache;
-
-use Magento\Framework\App;
 
 /**
  * Cache status manager

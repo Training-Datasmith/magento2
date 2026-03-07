@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,17 +20,17 @@ class GenericSchemaLocator implements SchemaLocatorInterface
      * @var ModuleDirReader
      */
     private $moduleDirReader;
-    
+
     /**
      * @var string
      */
     private $moduleName;
-    
+
     /**
      * @var string
      */
     private $perFileSchema;
-    
+
     /**
      * @var string|null
      */

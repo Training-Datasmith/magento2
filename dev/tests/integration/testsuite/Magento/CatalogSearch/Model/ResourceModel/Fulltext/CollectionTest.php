@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogSearch\Model\ResourceModel\Fulltext;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -15,7 +18,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
 {
     protected function setUp(): void
     {
-        $this->markTestSkipped("MC-18332: Mysql Search Engine is deprecated and will be removed");
+        $this->markTestSkipped('MC-18332: Mysql Search Engine is deprecated and will be removed');
     }
 
     /**
@@ -107,14 +110,14 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             $this->assertGreaterThan(
                 0,
                 count($items),
-                sprintf("Search #%s result must not be empty", $i)
+                sprintf('Search #%s result must not be empty', $i)
             );
 
             if ($previousResult) {
                 $this->assertEquals(
                     $previousResult,
                     array_keys($items),
-                    "Search result must be the same for the same requests"
+                    'Search result must be the same for the same requests'
                 );
             }
 
@@ -212,39 +215,39 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         return [
             [
                 [],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 1'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 2'],
-                true
+                true,
             ],
             [
                 ['test_configurable_2' => 'Option 1'],
-                true
+                true,
             ],
             [
                 ['test_configurable_2' => 'Option 2'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 1', 'test_configurable_2' => 'Option 1'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 1', 'test_configurable_2' => 'Option 2'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 2', 'test_configurable_2' => 'Option 1'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 2', 'test_configurable_2' => 'Option 2'],
-                true
+                true,
             ],
             [
                 ['test_configurable' => 'Option 2', 'test_configurable_2' => 'Option 2'],
@@ -252,7 +255,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 [
                     'configurable2_option_12',
                     'configurable2_option_22',
-                ]
+                ],
             ],
             [
                 ['test_configurable' => 'Option 2', 'test_configurable_2' => 'Option 2'],
@@ -260,7 +263,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 [
                     'configurable2_option_21',
                     'configurable2_option_22',
-                ]
+                ],
             ],
             [
                 ['test_configurable' => 'Option 2'],
@@ -268,7 +271,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                 [
                     'configurable2_option_21',
                     'configurable2_option_22',
-                ]
+                ],
             ],
             [
                 [],
@@ -278,7 +281,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
                     'configurable2_option_12',
                     'configurable2_option_21',
                     'configurable2_option_22',
-                ]
+                ],
             ],
         ];
     }

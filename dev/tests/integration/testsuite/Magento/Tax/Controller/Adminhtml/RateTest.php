@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -75,8 +77,8 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_to' => '20000',
                     'tax_postcode' => '*',
                 ],
-                ['zip_is_range' => null, 'zip_from' => null, 'zip_to' => null, 'tax_postcode' => '*']
-            ]
+                ['zip_is_range' => null, 'zip_from' => null, 'zip_to' => null, 'tax_postcode' => '*'],
+            ],
         ];
     }
 
@@ -126,7 +128,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_is_range' => '1',
                     'zip_from' => '',
                     'zip_to' => '',
-                    'tax_postcode' => '*'
+                    'tax_postcode' => '*',
                 ],
                 $expectedData,
             ],
@@ -142,7 +144,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_to' => '20000',
                     'tax_postcode' => '*',
                 ],
-                $expectedData
+                $expectedData,
             ],
             // Country ID empty
             [
@@ -156,7 +158,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_to' => '20000',
                     'tax_postcode' => '*',
                 ],
-                $expectedData
+                $expectedData,
             ],
             // Tax zip code is empty
             [
@@ -170,7 +172,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_to' => '20000',
                     'tax_postcode' => '',
                 ],
-                $expectedData
+                $expectedData,
             ],
             // All params empty
             [
@@ -184,8 +186,8 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
                     'zip_to' => '',
                     'tax_postcode' => '',
                 ],
-                $expectedData
-            ]
+                $expectedData,
+            ],
         ];
     }
 
@@ -218,7 +220,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 
         $rateClass->save($rateClass);
 
-        $rateClassId=$rateClass->getTaxCalculationRateId();
+        $rateClassId = $rateClass->getTaxCalculationRateId();
         /** @var $class \Magento\Tax\Model\Calculation\Rate */
         $class = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()
             ->create(\Magento\Tax\Model\Calculation\Rate::class)
@@ -228,8 +230,8 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
         $this->assertEquals($rateClassData['tax_region_id'], $class->getTaxRegionId());
         $this->assertEquals($rateClassData['code'], $class->getCode());
         $this->assertEquals($rateClassData['rate'], $class->getRate());
-        $this->assertEquals($rateClassData['zip_is_range']==1 ? 1 : 0, $class->getZipIsRange() ? 1 : 0);
-        if ($rateClassData['zip_is_range']=='1') {
+        $this->assertEquals($rateClassData['zip_is_range'] == 1 ? 1 : 0, $class->getZipIsRange() ? 1 : 0);
+        if ($rateClassData['zip_is_range'] == '1') {
             $this->assertEquals($rateClassData['zip_from'], $class->getZipFrom());
             $this->assertEquals($rateClassData['zip_to'], $class->getZipTo());
         }
@@ -256,7 +258,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
         $this->assertEquals($result['result']['code'], $class->getCode());
         $this->assertEquals($result['result']['rate'], $class->getRate());
 
-        $expectedZipIsRange=$result['result']['zip_is_range'] == 1  ? 1 : 0;
+        $expectedZipIsRange = $result['result']['zip_is_range'] == 1 ? 1 : 0;
         $this->assertEquals($expectedZipIsRange, $class->getZipIsRange() ? 1 : 0);
         if ($expectedZipIsRange) {
             $this->assertEquals($result['result']['zip_from'], $class->getZipFrom());
@@ -286,7 +288,7 @@ class RateTest extends \Magento\TestFramework\TestCase\AbstractBackendController
         $this->assertTrue($result['success'] == false);
         $this->assertTrue(!array_key_exists('result', $result));
         $this->assertArrayHasKey('error_message', $result);
-        $this->assertTrue(strlen($result['error_message'])>0);
+        $this->assertTrue(strlen($result['error_message']) > 0);
     }
 
     /** Test Delete Tax Rate

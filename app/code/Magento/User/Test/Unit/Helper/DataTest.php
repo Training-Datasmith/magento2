@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class DataTest extends TestCase
             Data::class,
             [
                 'config' => $this->configMock,
-                'mathRandom' => $this->mathRandomMock
+                'mathRandom' => $this->mathRandomMock,
             ]
         );
     }

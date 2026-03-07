@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class Cache implements ParserInterface
             $args = $attribute->getArguments();
             $fixtures[] = [
                 'type' => $args[0],
-                'status' => $args[1]
+                'status' => $args[1],
             ];
         }
         return $fixtures;

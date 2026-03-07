@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CheckoutAgreements\Block\Adminhtml\Agreement;
 
 class Edit extends \Magento\Backend\Block\Widget\Form\Container

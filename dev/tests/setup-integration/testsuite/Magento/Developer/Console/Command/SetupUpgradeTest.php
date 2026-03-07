@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -190,7 +191,7 @@ class SetupUpgradeTest extends SetupTestCase
                     '_files',
                     'SetupUpgrade',
                     str_replace('Magento_', '', $moduleName),
-                    'db_schema_' . $suffix . '.xml'
+                    'db_schema_' . $suffix . '.xml',
                 ]
             );
 
@@ -210,7 +211,7 @@ class SetupUpgradeTest extends SetupTestCase
         $this->assertEquals(
             $expectedSchema->saveXML(),
             $generatedSchema->saveXML(),
-            "The generated db_schema.xml does not match the expected schema after upgrade."
+            'The generated db_schema.xml does not match the expected schema after upgrade.'
         );
     }
 }

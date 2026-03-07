@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Query;
 
 use Magento\TestFramework\Fixture\Config;
-use Magento\TestFramework\TestCase\GraphQlAbstract;
 use Magento\TestFramework\TestCase\GraphQl\ResponseContainsErrorsException;
+use Magento\TestFramework\TestCase\GraphQlAbstract;
 
 /**
  * Test to validate input of Graphql requests
@@ -100,7 +101,7 @@ class QueryComplexityLimiterTest extends GraphQlAbstract
     ]
     public function testQueryWithinAliasLimitDisabled()
     {
-        
+
         $query = <<<QUERY
         {
             productOne: products(filter: {sku: {eq: "1"}}) {

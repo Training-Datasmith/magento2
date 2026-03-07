@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Obsolete namespaces
  *
@@ -152,11 +154,11 @@ return [
     ['Magento\Cms\Test\Unit\Model\Resource', 'Magento\Cms\Test\Unit\Model\ResourceModel'],
     [
         'Magento\ConfigurableProduct\Test\Unit\Model\Resource',
-        'Magento\ConfigurableProduct\Test\Unit\Model\ResourceModel'
+        'Magento\ConfigurableProduct\Test\Unit\Model\ResourceModel',
     ],
     [
         'Magento\CustomerImportExport\Test\Unit\Model\Resource',
-        'Magento\CustomerImportExport\Test\Unit\Model\ResourceModel'
+        'Magento\CustomerImportExport\Test\Unit\Model\ResourceModel',
     ],
     ['Magento\Customer\Test\Unit\Model\Resource', 'Magento\Customer\Test\Unit\Model\ResourceModel'],
     ['Magento\Directory\Test\Unit\Model\Resource', 'Magento\Directory\Test\Unit\Model\ResourceModel'],

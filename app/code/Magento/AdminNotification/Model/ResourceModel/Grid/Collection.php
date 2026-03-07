@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * AdminNotification Inbox model
  */
+
 namespace Magento\AdminNotification\Model\ResourceModel\Grid;
 
 /**
@@ -20,7 +23,7 @@ class Collection extends \Magento\AdminNotification\Model\ResourceModel\Inbox\Co
      *
      * @return Collection|\Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
      */
-    protected function _initSelect()
+    protected function _initSelect(): static
     {
         parent::_initSelect();
         $this->addRemoveFilter();

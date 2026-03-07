@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\GraphQl\Service;
 
 use Magento\Framework\App\Request\Http;
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\GraphQl\Controller\GraphQl;
 use Magento\Framework\App\Response\Http as HttpResponse;
-use Magento\TestFramework\ObjectManager;
+use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\Webapi\Request;
+use Magento\GraphQl\Controller\GraphQl;
+use Magento\TestFramework\ObjectManager;
 
 /**
  * Service class to simplify GraphQl requests for integration tests
@@ -138,7 +139,7 @@ class GraphQlRequest
         $content = [
             'query' => $query,
             'variables' => !empty($variables) ? $this->json->serialize($variables) : null,
-            'operationName' => !empty($operation) ? $operation : null
+            'operationName' => !empty($operation) ? $operation : null,
         ];
         $this->httpRequest->setContent($this->json->serialize($content));
 

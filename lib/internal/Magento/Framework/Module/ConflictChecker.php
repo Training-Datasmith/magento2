@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Module;
 
 use Composer\Package\Version\VersionParser;
@@ -48,7 +51,7 @@ class ConflictChecker
      */
     public function checkConflictsWhenEnableModules($moduleNames, $currentlyEnabledModules = null)
     {
-        $masterList = isset($currentlyEnabledModules) ? $currentlyEnabledModules: $this->list->getNames();
+        $masterList = isset($currentlyEnabledModules) ? $currentlyEnabledModules : $this->list->getNames();
         // union of currently enabled modules and to-be-enabled modules
         $enabledModules = array_unique(array_merge($masterList, $moduleNames));
         $conflictsAll = [];

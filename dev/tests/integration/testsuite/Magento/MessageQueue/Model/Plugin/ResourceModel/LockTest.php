@@ -1,12 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
 
 namespace Magento\MessageQueue\Model\Plugin\ResourceModel;
-
-use Magento\TestFramework\Event\Magento;
 
 class LockTest extends \PHPUnit\Framework\TestCase
 {

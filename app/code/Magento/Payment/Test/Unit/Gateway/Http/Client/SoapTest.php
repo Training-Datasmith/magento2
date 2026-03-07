@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -81,7 +82,7 @@ class SoapTest extends TestCase
     public function testPlaceRequest(): void
     {
         $expectedResult = [
-            'result' => []
+            'result' => [],
         ];
         $soapResult = new StdClass();
 
@@ -170,7 +171,7 @@ class SoapTest extends TestCase
                 'getUri',
                 'getAuthUsername',
                 'getAuthPassword',
-                '__setSoapHeaders'
+                '__setSoapHeaders',
             ]
         );
 

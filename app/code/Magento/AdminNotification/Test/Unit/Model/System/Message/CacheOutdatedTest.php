@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -96,7 +97,7 @@ class CacheOutdatedTest extends TestCase
 
         return [
             ['c13cfaddc2c53e8d32f59bfe89719beb', [$cacheTypeMock1]],
-            ['69aacdf14d1d5fcef7168b9ac308215e', [$cacheTypeMock1, $cacheTypeMock2]]
+            ['69aacdf14d1d5fcef7168b9ac308215e', [$cacheTypeMock1, $cacheTypeMock2]],
         ];
     }
 
@@ -132,7 +133,7 @@ class CacheOutdatedTest extends TestCase
             [false, false, []],
             [false, false, $cacheTypes],
             [false, true, []],
-            [true, true, $cacheTypes]
+            [true, true, $cacheTypes],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Block\Adminhtml;
 
 use Magento\Framework\App\Rss\DataProviderInterface;
@@ -61,7 +64,7 @@ class Rss extends \Magento\Backend\Block\AbstractBlock implements DataProviderIn
                 [
                     'id' => $item->getReviewId(),
                     '_secure' => true,
-                    '_nosecret' => true
+                    '_nosecret' => true,
                 ]
             );
 

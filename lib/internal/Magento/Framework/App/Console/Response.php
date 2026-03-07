@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -26,12 +27,12 @@ class Response implements \Magento\Framework\App\ResponseInterface
     /**
      * Success code
      */
-    const SUCCESS = 0;
+    public const SUCCESS = 0;
 
     /**
      * Error code
      */
-    const ERROR = 255;
+    public const ERROR = 255;
 
     /**
      * Text to output on send response

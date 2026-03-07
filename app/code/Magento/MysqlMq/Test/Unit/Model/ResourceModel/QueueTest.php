@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\MysqlMq\Test\Unit\Model\ResourceModel;
 
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Adapter\Pdo\Mysql;
 use Magento\Framework\DB\Select;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
@@ -154,12 +154,12 @@ class QueueTest extends TestCase
                 [
                     $queueIds[0],
                     $messageId,
-                    QueueManagement::MESSAGE_STATUS_NEW
+                    QueueManagement::MESSAGE_STATUS_NEW,
                 ],
                 [
                     $queueIds[1],
                     $messageId,
-                    QueueManagement::MESSAGE_STATUS_NEW
+                    QueueManagement::MESSAGE_STATUS_NEW,
                 ],
             ]
         )->willReturn(4);
@@ -203,7 +203,7 @@ class QueueTest extends TestCase
             ['queue_message' => $tableNames[0]],
             [
                 QueueManagement::MESSAGE_TOPIC => 'topic_name',
-                QueueManagement::MESSAGE_BODY => 'body'
+                QueueManagement::MESSAGE_BODY => 'body',
             ]
         )->willReturnSelf();
         $select->expects($this->exactly(2))->method('join')
@@ -217,7 +217,7 @@ class QueueTest extends TestCase
                             QueueManagement::MESSAGE_ID => 'message_id',
                             QueueManagement::MESSAGE_STATUS => 'status',
                             QueueManagement::MESSAGE_UPDATED_AT => 'updated_at',
-                            QueueManagement::MESSAGE_NUMBER_OF_TRIALS => 'number_of_trials'
+                            QueueManagement::MESSAGE_NUMBER_OF_TRIALS => 'number_of_trials',
                         ]
                     ) {
                         return $select;
@@ -356,7 +356,7 @@ class QueueTest extends TestCase
             $tableName,
             [
                 'status' => QueueManagement::MESSAGE_STATUS_RETRY_REQUIRED,
-                'number_of_trials' => new \Zend_Db_Expr('number_of_trials+1')
+                'number_of_trials' => new \Zend_Db_Expr('number_of_trials+1'),
             ],
             ['id = ?' => $relationId]
         )->willReturn(1);

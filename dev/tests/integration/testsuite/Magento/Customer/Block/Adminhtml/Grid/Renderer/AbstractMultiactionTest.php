@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -76,7 +77,7 @@ abstract class AbstractMultiactionTest extends TestCase
             [
                 'caption' => 'delete',
                 'url' => 'url_removeItem',
-                'onclick' => 'return cartControl.removeItem($item_id);'
+                'onclick' => 'return cartControl.removeItem($item_id);',
             ],
         ];
         $this->blockColumn->addData(['actions' => $actions]);

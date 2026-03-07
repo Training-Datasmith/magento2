@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class AbstractFileTest extends TestCase
             ->setConstructorArgs([$this->_factoryMock])
             ->onlyMethods(['_openFile', '_closeFile', '_readFile'])
             ->getMock();
-        
+
         $abstractLoaderMock->method('_openFile')
             ->willThrowException(new \InvalidArgumentException('Cannot open dictionary file: "wrong_file.csv".'));
 
@@ -93,14 +94,14 @@ class AbstractFileTest extends TestCase
                             'phrase' => 'phrase1',
                             'translation' => 'translation1',
                             'context_type' => '',
-                            'context_value' => ''
+                            'context_value' => '',
                         ]) {
                         return $phraseFirstMock;
                     } elseif ($args == [
                             'phrase' => 'phrase2',
                             'translation' => 'translation2',
                             'context_type' => 'context_type2',
-                            'context_value' => 'context_value2'
+                            'context_value' => 'context_value2',
                         ]) {
                         return $phraseSecondMock;
                     }

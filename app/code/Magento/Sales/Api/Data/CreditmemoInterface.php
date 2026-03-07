@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -23,203 +25,203 @@ interface CreditmemoInterface extends \Magento\Framework\Api\ExtensibleDataInter
     /*
      * Entity ID.
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
     /*
      * Store ID.
      */
-    const STORE_ID = 'store_id';
+    public const STORE_ID = 'store_id';
     /*
      * Positive adjustment.
      */
-    const ADJUSTMENT_POSITIVE = 'adjustment_positive';
+    public const ADJUSTMENT_POSITIVE = 'adjustment_positive';
     /*
      * Base shipping tax amount.
      */
-    const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
+    public const BASE_SHIPPING_TAX_AMOUNT = 'base_shipping_tax_amount';
     /*
      * Store-to-order rate.
      */
-    const STORE_TO_ORDER_RATE = 'store_to_order_rate';
+    public const STORE_TO_ORDER_RATE = 'store_to_order_rate';
     /*
      * Base discount rate.
      */
-    const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
+    public const BASE_DISCOUNT_AMOUNT = 'base_discount_amount';
     /*
      * Base-to-order rate.
      */
-    const BASE_TO_ORDER_RATE = 'base_to_order_rate';
+    public const BASE_TO_ORDER_RATE = 'base_to_order_rate';
     /*
      * Grand total.
      */
-    const GRAND_TOTAL = 'grand_total';
+    public const GRAND_TOTAL = 'grand_total';
     /*
      * Negative base adjustment.
      */
-    const BASE_ADJUSTMENT_NEGATIVE = 'base_adjustment_negative';
+    public const BASE_ADJUSTMENT_NEGATIVE = 'base_adjustment_negative';
     /*
      * Base subtotal including tax.
      */
-    const BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
+    public const BASE_SUBTOTAL_INCL_TAX = 'base_subtotal_incl_tax';
     /*
      * Shipping amount.
      */
-    const SHIPPING_AMOUNT = 'shipping_amount';
+    public const SHIPPING_AMOUNT = 'shipping_amount';
     /*
      * Subtotal including tax.
      */
-    const SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
+    public const SUBTOTAL_INCL_TAX = 'subtotal_incl_tax';
     /*
      * Negative adjustment.
      */
-    const ADJUSTMENT_NEGATIVE = 'adjustment_negative';
+    public const ADJUSTMENT_NEGATIVE = 'adjustment_negative';
     /*
      * Base shipping amount.
      */
-    const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
+    public const BASE_SHIPPING_AMOUNT = 'base_shipping_amount';
     /*
      * Store-to-base rate.
      */
-    const STORE_TO_BASE_RATE = 'store_to_base_rate';
+    public const STORE_TO_BASE_RATE = 'store_to_base_rate';
     /*
      * Base-to-global rate.
      */
-    const BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
+    public const BASE_TO_GLOBAL_RATE = 'base_to_global_rate';
     /*
      * Base adjustment.
      */
-    const BASE_ADJUSTMENT = 'base_adjustment';
+    public const BASE_ADJUSTMENT = 'base_adjustment';
     /*
      * Base subtotal.
      */
-    const BASE_SUBTOTAL = 'base_subtotal';
+    public const BASE_SUBTOTAL = 'base_subtotal';
     /*
      * Discount amount.
      */
-    const DISCOUNT_AMOUNT = 'discount_amount';
+    public const DISCOUNT_AMOUNT = 'discount_amount';
     /*
      * Subtotal.
      */
-    const SUBTOTAL = 'subtotal';
+    public const SUBTOTAL = 'subtotal';
     /*
      * Subtotal.
      */
-    const ADJUSTMENT = 'adjustment';
+    public const ADJUSTMENT = 'adjustment';
     /*
      * Base grand total.
      */
-    const BASE_GRAND_TOTAL = 'base_grand_total';
+    public const BASE_GRAND_TOTAL = 'base_grand_total';
     /*
      * Positive base adjustment.
      */
-    const BASE_ADJUSTMENT_POSITIVE = 'base_adjustment_positive';
+    public const BASE_ADJUSTMENT_POSITIVE = 'base_adjustment_positive';
     /*
      * Base tax amount.
      */
-    const BASE_TAX_AMOUNT = 'base_tax_amount';
+    public const BASE_TAX_AMOUNT = 'base_tax_amount';
     /*
      * Shipping tax amount.
      */
-    const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
+    public const SHIPPING_TAX_AMOUNT = 'shipping_tax_amount';
     /*
      * Tax amount.
      */
-    const TAX_AMOUNT = 'tax_amount';
+    public const TAX_AMOUNT = 'tax_amount';
     /*
      * Order ID.
      */
-    const ORDER_ID = 'order_id';
+    public const ORDER_ID = 'order_id';
     /*
      * Email sent flag.
      */
-    const EMAIL_SENT = 'email_sent';
+    public const EMAIL_SENT = 'email_sent';
     /*
      * Credit memo status.
      */
-    const CREDITMEMO_STATUS = 'creditmemo_status';
+    public const CREDITMEMO_STATUS = 'creditmemo_status';
     /*
      * Credit memo state.
      */
-    const STATE = 'state';
+    public const STATE = 'state';
     /*
      * Shipping address ID.
      */
-    const SHIPPING_ADDRESS_ID = 'shipping_address_id';
+    public const SHIPPING_ADDRESS_ID = 'shipping_address_id';
     /*
      * Billing address ID.
      */
-    const BILLING_ADDRESS_ID = 'billing_address_id';
+    public const BILLING_ADDRESS_ID = 'billing_address_id';
     /*
      * Invoice ID.
      */
-    const INVOICE_ID = 'invoice_id';
+    public const INVOICE_ID = 'invoice_id';
     /*
      * Store currency code.
      */
-    const STORE_CURRENCY_CODE = 'store_currency_code';
+    public const STORE_CURRENCY_CODE = 'store_currency_code';
     /*
      * Order currency code.
      */
-    const ORDER_CURRENCY_CODE = 'order_currency_code';
+    public const ORDER_CURRENCY_CODE = 'order_currency_code';
     /*
      * Base currency code.
      */
-    const BASE_CURRENCY_CODE = 'base_currency_code';
+    public const BASE_CURRENCY_CODE = 'base_currency_code';
     /*
      * Global currency code.
      */
-    const GLOBAL_CURRENCY_CODE = 'global_currency_code';
+    public const GLOBAL_CURRENCY_CODE = 'global_currency_code';
     /*
      * Transaction ID.
      */
-    const TRANSACTION_ID = 'transaction_id';
+    public const TRANSACTION_ID = 'transaction_id';
     /*
      * Increment ID.
      */
-    const INCREMENT_ID = 'increment_id';
+    public const INCREMENT_ID = 'increment_id';
     /*
      * Created-at timestamp.
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
     /*
      * Updated-at timestamp.
      */
-    const UPDATED_AT = 'updated_at';
+    public const UPDATED_AT = 'updated_at';
     /*
      * Discount tax compensation amount.
      */
-    const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
+    public const DISCOUNT_TAX_COMPENSATION_AMOUNT = 'discount_tax_compensation_amount';
     /*
      * Base discount tax compensation amount.
      */
-    const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
+    public const BASE_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'base_discount_tax_compensation_amount';
     /*
      * Shipping discount tax compensation amount.
      */
-    const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
+    public const SHIPPING_DISCOUNT_TAX_COMPENSATION_AMOUNT = 'shipping_discount_tax_compensation_amount';
     /*
      * Base shipping discount tax compensation amount.
      */
-    const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
+    public const BASE_SHIPPING_DISCOUNT_TAX_COMPENSATION_AMNT = 'base_shipping_discount_tax_compensation_amnt';
     /*
      * Shipping including tax.
      */
-    const SHIPPING_INCL_TAX = 'shipping_incl_tax';
+    public const SHIPPING_INCL_TAX = 'shipping_incl_tax';
     /*
      * Base shipping including tax.
      */
-    const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
+    public const BASE_SHIPPING_INCL_TAX = 'base_shipping_incl_tax';
     /*
      * Discount description.
      */
-    const DISCOUNT_DESCRIPTION = 'discount_description';
+    public const DISCOUNT_DESCRIPTION = 'discount_description';
     /*
      * Credit memo items.
      */
-    const ITEMS = 'items';
+    public const ITEMS = 'items';
     /*
      * Credit memo comments.
      */
-    const COMMENTS = 'comments';
+    public const COMMENTS = 'comments';
 
     /**
      * Gets the credit memo adjustment.

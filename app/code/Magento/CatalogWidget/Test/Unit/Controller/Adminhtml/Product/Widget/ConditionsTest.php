@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -64,7 +65,7 @@ class ConditionsTest extends TestCase
             Conditions::class,
             [
                 'rule' => $this->rule,
-                'response' => $this->response
+                'response' => $this->response,
             ]
         );
         $this->request = $arguments['context']->getRequest();
@@ -84,7 +85,7 @@ class ConditionsTest extends TestCase
         $type = 'Magento\CatalogWidget\Model\Rule\Condition\Product|attribute_set_id';
         $this->request
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['id'] => '1--1',
                 ['type'] => $type,
                 ['form'] => 'request_form_param_value'
@@ -99,7 +100,7 @@ class ConditionsTest extends TestCase
                 'setRule',
                 'setPrefix',
                 'setAttribute',
-                'setJsFormObject'
+                'setJsFormObject',
             ]
         );
         $condition->expects($this->once())

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,19 +8,18 @@ declare(strict_types=1);
 
 namespace Magento\Framework\Setup\Declaration\Schema\Db\MySQL;
 
-use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\DB\Adapter\ConnectionException;
 use Magento\Framework\DB\Adapter\SqlVersionProvider;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Setup\Declaration\Schema\Db\DbSchemaWriterInterface;
 use Magento\Framework\Setup\Declaration\Schema\Db\Statement;
 use Magento\Framework\Setup\Declaration\Schema\Db\StatementAggregator;
 use Magento\Framework\Setup\Declaration\Schema\Db\StatementFactory;
+use Magento\Framework\Setup\Declaration\Schema\DryRunLogger;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Column;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Constraint;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Constraints\Reference;
-use Magento\Framework\Setup\Declaration\Schema\DryRunLogger;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 
 /**
@@ -37,7 +37,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
     private $statementDirectives = [
         self::ALTER_TYPE => 'ALTER TABLE %s %s',
         self::CREATE_TYPE => 'CREATE TABLE %s %s',
-        self::DROP_TYPE => 'DROP TABLE %s'
+        self::DROP_TYPE => 'DROP TABLE %s',
     ];
 
     /**
@@ -49,7 +49,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
         'charset' => 'DEFAULT CHARSET',
         'collation' => 'DEFAULT COLLATE',
         'engine' => 'ENGINE',
-        'comment' => 'COMMENT'
+        'comment' => 'COMMENT',
     ];
 
     /**
@@ -327,7 +327,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
                     sprintf(
                         $this->statementDirectives[$statement->getType()],
                         $adapter->quoteIdentifier($statement->getTableName()),
-                        implode(", ", $statementsSql)
+                        implode(', ', $statementsSql)
                     )
                 );
             } else {
@@ -350,7 +350,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
      * @return bool
      * @throws ConnectionException
      */
-    private function isNeedToSplitSql() : bool
+    private function isNeedToSplitSql(): bool
     {
         return str_contains($this->sqlVersionProvider->getSqlVersion(), SqlVersionProvider::MARIA_DB_10_4_VERSION) ||
             str_contains($this->sqlVersionProvider->getSqlVersion(), SqlVersionProvider::MARIA_DB_10_6_VERSION) ||
@@ -367,7 +367,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
      */
     private function doQuery(
         array $statementBank
-    ) : void {
+    ): void {
         if (empty($statementBank)) {
             return;
         }
@@ -387,7 +387,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
                     sprintf(
                         $this->statementDirectives[$statement->getType()],
                         $adapter->quoteIdentifier($statement->getTableName()),
-                        implode(", ", $preparedStatements['canBeCombinedStatements'])
+                        implode(', ', $preparedStatements['canBeCombinedStatements'])
                     )
                 );
             }
@@ -405,7 +405,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
                 sprintf(
                     $this->statementDirectives[$statement->getType()],
                     $adapter->quoteIdentifier($statement->getTableName()),
-                    implode(", ", $statementsSql)
+                    implode(', ', $statementsSql)
                 )
             );
         }
@@ -440,7 +440,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
      * @param array $statementBank
      * @return array
      */
-    private function getModifiedColumns(array $statementBank) : array
+    private function getModifiedColumns(array $statementBank): array
     {
         $columns = [];
         foreach ($statementBank as $statement) {
@@ -458,7 +458,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
      * @param array $statementBank
      * @return array
      */
-    private function getPreparedStatements(array $statementBank) : array
+    private function getPreparedStatements(array $statementBank): array
     {
         $statementsSql = [];
         foreach ($statementBank as $statement) {
@@ -501,7 +501,7 @@ class DbSchemaWriter implements DbSchemaWriterInterface
         $columnLevelConfig = 'CHARACTER SET ' . $charset . ' COLLATE ' . $collate;
         $columnsAttribute  = explode(' ', $columnDefinition);
         array_splice($columnsAttribute, 2, 0, $columnLevelConfig);
-        return implode(" ", $columnsAttribute);
+        return implode(' ', $columnsAttribute);
     }
 
     /**

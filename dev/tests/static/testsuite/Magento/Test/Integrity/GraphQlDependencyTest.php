@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -51,15 +52,15 @@ class GraphQlDependencyTest extends TestCase
     {
         $invoker = new AggregateInvoker($this);
         $invoker(
-        /**
-         * Check undeclared modules dependencies for specified file
-         *
-         * @param string $fileType
-         * @param string $file
-         * @throws LocalizedException
-         * @throws InspectionException
-         * @throws AssertionFailedError
-         */
+            /**
+             * Check undeclared modules dependencies for specified file
+             *
+             * @param string $fileType
+             * @param string $file
+             * @throws LocalizedException
+             * @throws InspectionException
+             * @throws AssertionFailedError
+             */
             function ($file) {
                 $componentRegistrar = new ComponentRegistrar();
                 $foundModuleName = '';

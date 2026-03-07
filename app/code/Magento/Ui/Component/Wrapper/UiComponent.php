@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Wrapper;
 
 use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\UiComponentInterface;
-use Magento\Framework\View\Element\UiComponent\ContainerInterface;
 use Magento\Framework\View\Element\Template\Context as TemplateContext;
+use Magento\Framework\View\Element\UiComponent\ContainerInterface;
+use Magento\Framework\View\Element\UiComponentInterface;
 
 /**
  * Class UiComponent
@@ -62,8 +65,8 @@ class UiComponent extends Template implements ContainerInterface
                 $wrapper = $this->blockWrapperFactory->create([
                     'block' => $childBlock,
                     'data' => [
-                        'name' => 'block_' . $childName
-                    ]
+                        'name' => 'block_' . $childName,
+                    ],
                 ]);
                 $this->component->addComponent('block_' . $childName, $wrapper);
             }

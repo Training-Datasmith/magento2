@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class BackupFactoryTest extends TestCase
             'time' => 1385661590,
             'path' => 'C:\test\test\var\backups',
             'name' => '',
-            'type' => 'snapshot'
+            'type' => 'snapshot',
         ];
         $this->fsCollection = $this->createMock(Collection::class);
         $this->fsCollection

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class AttributeTextAreaTest extends AbstractAttributeTest
         return [
             [
                 'productSku' => 'simple2',
-            ]
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -478,7 +480,7 @@ class Item
             'toolTip' => $this->_tooltip,
             'title' => $this->_title,
             'target' => $this->target,
-            'sub_menu' => isset($this->_submenu) ? $this->_submenu->toArray() : null
+            'sub_menu' => isset($this->_submenu) ? $this->_submenu->toArray() : null,
         ];
     }
 

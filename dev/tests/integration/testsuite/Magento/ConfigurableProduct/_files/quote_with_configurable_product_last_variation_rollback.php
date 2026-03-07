@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Rollback for quote_with_configurable_product_last_variation.php fixture.
  *

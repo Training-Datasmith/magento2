@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class ModuleIteratorTest extends TestCase
             ModuleIterator::class,
             [
                 'moduleManager' => $this->moduleManagerMock,
-                'iterator' => new \ArrayIterator([0 => ['module_name' => 'Coco_Module']])
+                'iterator' => new \ArrayIterator([0 => ['module_name' => 'Coco_Module']]),
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Editor
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form;
@@ -16,14 +18,14 @@ use Magento\Framework\Data\Form\Element\Editor;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\Math\Random;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class EditorTest extends TestCase
 {
@@ -77,16 +79,16 @@ class EditorTest extends TestCase
     protected function setUp(): void
     {
         $this->objectManager = new ObjectManager($this);
-        
+
         $this->factoryMock = $this->createMock(Factory::class);
         $this->collectionFactoryMock = $this->createMock(CollectionFactory::class);
         $this->escaperMock = $this->createMock(Escaper::class);
         $this->configMock = $this->createPartialMock(DataObject::class, ['getData']);
-        
+
         // Create mocks that will be needed by AbstractElement constructor via ObjectManager
         $randomMock = $this->createMock(Random::class);
         $randomMock->method('getRandomString')->willReturn('some-rando-string');
-        
+
         $secureRendererMock = $this->createMock(SecureHtmlRenderer::class);
         $secureRendererMock->method('renderEventListenerAsTag')
             ->willReturnCallback(
@@ -109,7 +111,7 @@ class EditorTest extends TestCase
         } catch (\RuntimeException $e) {
             $this->originalObjectManager = null;
         }
-        
+
         $objectManagerMock = $this->createMock(\Magento\Framework\App\ObjectManager::class);
         $objectManagerMock->method('get')
             ->willReturnCallback(function ($className) use ($randomMock, $secureRendererMock) {
@@ -134,7 +136,7 @@ class EditorTest extends TestCase
                 'data' => ['config' => $this->configMock],
                 'serializer' => $this->serializer,
                 'random' => $randomMock,
-                'secureRenderer' => $secureRendererMock
+                'secureRenderer' => $secureRendererMock,
             ]
         );
 
@@ -169,7 +171,7 @@ class EditorTest extends TestCase
                 'factoryElement' => $this->factoryMock,
                 'factoryCollection' => $this->collectionFactoryMock,
                 'escaper' => $this->escaperMock,
-                'data' => ['config' => $this->configMock]
+                'data' => ['config' => $this->configMock],
             ]
         );
 
@@ -190,7 +192,7 @@ class EditorTest extends TestCase
             ->willReturnMap(
                 [
                     ['enabled', null, true],
-                    ['hidden', null, null]
+                    ['hidden', null, null],
                 ]
             );
         $html = $this->model->getElementHtml();
@@ -202,7 +204,7 @@ class EditorTest extends TestCase
                     ['enabled', null, null],
                     ['widget_window_url', null, 'localhost'],
                     ['add_widgets', null, true],
-                    ['hidden', null, null]
+                    ['hidden', null, null],
                 ]
             );
         $html = $this->model->getElementHtml();
@@ -241,7 +243,7 @@ class EditorTest extends TestCase
 
             'Global enabled, attribute isnt set' => [true, true],
             'Global enabled, attribute disabled' => [false, true, false],
-            'Global enabled, attribute enabled' => [true, true, true]
+            'Global enabled, attribute enabled' => [true, true, true],
         ];
     }
 

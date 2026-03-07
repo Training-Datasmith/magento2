@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
@@ -15,7 +17,7 @@ return [
             'request' => CustomerInterface::class,
             'request_type' => 'object_interface',
             'response' => CustomerInterface::class,
-        ]
+        ],
     ],
     [
         'top.03',
@@ -33,8 +35,8 @@ return [
                     'type' => CustomerRepositoryInterface::class,
                     'method' => 'delete',
                 ],
-            ]
-        ]
+            ],
+        ],
     ],
     [
         'top.04',
@@ -43,7 +45,7 @@ return [
             'request' => CustomerInterface::class,
             'request_type' => 'object_interface',
             'response' => CustomerInterface::class,
-        ]
+        ],
     ],
     [
         'top.05',
@@ -52,7 +54,7 @@ return [
             'request' => CustomerInterface::class,
             'request_type' => 'object_interface',
             'response' => CustomerInterface::class,
-        ]
+        ],
     ],
     [
         'user.created.remote',
@@ -61,7 +63,7 @@ return [
             'request' => CustomerInterface::class,
             'request_type' => 'object_interface',
             'response' => CustomerInterface::class,
-        ]
+        ],
     ],
     [
         'product.created.local',
@@ -70,6 +72,6 @@ return [
             'request' => CustomerInterface::class,
             'request_type' => 'object_interface',
             'response' => CustomerInterface::class,
-        ]
+        ],
     ],
 ];

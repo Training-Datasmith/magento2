@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -28,7 +29,7 @@ $product->setData(
     [
         'attribute_set_id' => $product->getDefaultAttributeSetId(),
         'website_ids' => [
-            $defaultWebsiteId
+            $defaultWebsiteId,
         ],
         'name' => 'Simple product with child category',
         'sku' => 'simple_with_child_category',
@@ -41,9 +42,9 @@ $product->setData(
             'use_config_manage_stock' => 1,
             'qty' => 100,
             'is_qty_decimal' => 0,
-            'is_in_stock' => 1
+            'is_in_stock' => 1,
         ],
-        'url_key' => 'simple-with-child-category'
+        'url_key' => 'simple-with-child-category',
     ]
 );
 $productRepository->save($product);

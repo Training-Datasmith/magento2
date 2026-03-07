@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,9 +10,9 @@ namespace Magento\Sales\Test\Unit\Model\Order\Shipment\Track;
 
 use Magento\Sales\Model\Order\Shipment\Track;
 use Magento\Sales\Model\Order\Shipment\Track\Validator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class ValidatorTest extends TestCase
 {
@@ -76,7 +77,7 @@ class ValidatorTest extends TestCase
                     'parent_id' => 25,
                     'order_id' => 12,
                     'track_number' => 125,
-                    'carrier_code' => 'custom'
+                    'carrier_code' => 'custom',
                 ],
                 [],
             ],
@@ -91,15 +92,15 @@ class ValidatorTest extends TestCase
                     'parent_id' => 0,
                     'order_id' => null,
                     'track_number' => '',
-                    'carrier_code' => null
+                    'carrier_code' => null,
                 ],
                 [
                     'parent_id' => 'Parent Track Id can not be empty',
                     'order_id' => '"Order Id" is required. Enter and try again.',
                     'track_number' => 'Number can not be empty',
-                    'carrier_code' => '"Carrier Code" is required. Enter and try again.'
-                ]
-            ]
+                    'carrier_code' => '"Carrier Code" is required. Enter and try again.',
+                ],
+            ],
         ];
     }
 }

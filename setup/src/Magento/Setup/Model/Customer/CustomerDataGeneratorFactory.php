@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model\Customer;
 
 /**
@@ -37,7 +40,7 @@ class CustomerDataGeneratorFactory
                 'addressGenerator' => $this->objectManager->create(
                     \Magento\Setup\Model\Address\AddressDataGenerator::class
                 ),
-                'config' => $config
+                'config' => $config,
             ]
         );
     }

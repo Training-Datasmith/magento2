@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Quote\Api;
 
 use Magento\Catalog\Api\Data\ProductCustomOptionInterface;
@@ -81,7 +84,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                 'price' => $item->getPrice(),
                 'qty' => $item->getQty(),
                 'product_type' => $item->getProductType(),
-                'quote_id' => $item->getQuoteId()
+                'quote_id' => $item->getQuoteId(),
             ];
 
             $output[] = $data;
@@ -98,7 +101,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
             ],
         ];
 
-        $requestData = ["cartId" => $cartId];
+        $requestData = ['cartId' => $cartId];
         $this->assertEquals($output, $this->_webApiCall($serviceInfo, $requestData));
     }
 
@@ -187,8 +190,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
         ];
 
         $requestData = [
-            "cartId" => $cartId,
-            "itemId" => $itemId,
+            'cartId' => $cartId,
+            'itemId' => $itemId,
         ];
         $this->assertTrue($this->_webApiCall($serviceInfo, $requestData));
         $quote = $this->objectManager->create(Quote::class);
@@ -316,7 +319,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
     {
         return [
             [
-                []
+                [],
             ],
             [
                 [
@@ -326,7 +329,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                     'manage_stock' => 1,
                     'use_config_backorders' => 0,
                     'backorders' => Stock::BACKORDERS_YES_NOTIFY,
-                ]
+                ],
             ],
             [
                 [
@@ -337,7 +340,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                     'use_config_backorders' => 0,
                     'backorders' => Stock::BACKORDERS_NO,
                 ],
-                'There are no source items with the in stock status'
+                'There are no source items with the in stock status',
             ],
             [
                 [
@@ -348,8 +351,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                     'use_config_backorders' => 0,
                     'backorders' => Stock::BACKORDERS_NO,
                 ],
-                'Not enough items for sale'
-            ]
+                'Not enough items for sale',
+            ],
         ];
     }
 
@@ -365,8 +368,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'file_extension' => 'png, jpg, gif',
                         'image_size_x' => 300,
                         'image_size_y' => 300,
-                    ]
-                ]
+                    ],
+                ],
             ],
             as: 'product1'
         ),
@@ -381,8 +384,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'image_size_x' => 300,
                         'image_size_y' => 300,
                         'is_require' => false,
-                    ]
-                ]
+                    ],
+                ],
             ],
             as: 'product2'
         ),
@@ -402,9 +405,9 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
         $item = $this->addProductToCart((int)$cart->getId(), $product->getSku(), [
             'product_option' => [
                 'extension_attributes' => [
-                    'custom_options' => $this->prepareCustomOptions($product->getOptions(), $customOptions)
-                ]
-            ]
+                    'custom_options' => $this->prepareCustomOptions($product->getOptions(), $customOptions),
+                ],
+            ],
         ]);
         $this->assertNotEmpty($item);
         $optionsIds = [];
@@ -439,8 +442,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'title' => 'field_opt',
                         'is_require' => false,
-                    ]
-                ]
+                    ],
+                ],
             ],
             as: 'product1'
         ),
@@ -452,8 +455,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'title' => 'field_opt',
                         'is_require' => false,
-                    ]
-                ]
+                    ],
+                ],
             ],
             as: 'product2'
         ),
@@ -474,9 +477,9 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
             $this->addProductToCart((int)$cart->getId(), $product->getSku(), [
                 'product_option' => [
                     'extension_attributes' => [
-                        'custom_options' => $this->prepareCustomOptions($product->getOptions(), $customOptions)
-                    ]
-                ]
+                        'custom_options' => $this->prepareCustomOptions($product->getOptions(), $customOptions),
+                    ],
+                ],
             ]);
         } catch (\Throwable $exception) {
             $actualException = $exception->getMessage();
@@ -516,13 +519,13 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [100, 100, 'image/jpeg'],
                                 'type' => 'image/jpeg',
-                                'name' => 'valid_file1.jpg'
-                            ]
-                        ]
-                    ]
+                                'name' => 'valid_file1.jpg',
+                            ],
+                        ],
+                    ],
                 ],
                 ['file_opt'],
-                ['custom_options/quote/v/a/valid_file1.jpg']
+                ['custom_options/quote/v/a/valid_file1.jpg'],
             ],
             'optional file option missing extension_attributes' => [
                 'product2',
@@ -530,7 +533,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                     [
                         'option_id' => 'file_opt',
                         'option_value' => 'this value should not matter',
-                    ]
+                    ],
                 ],
             ],
             'optional file option with file_info NULL' => [
@@ -540,9 +543,9 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'option_id' => 'file_opt',
                         'option_value' => 'this value should not matter',
                         'extension_attributes' => [
-                            'file_info' => null
-                        ]
-                    ]
+                            'file_info' => null,
+                        ],
+                    ],
                 ],
             ],
         ];
@@ -562,11 +565,11 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                         'option_id' => 'file_opt',
                         'option_value' => 'file',
                         'extension_attributes' => [
-                            'file_info' => null
-                        ]
-                    ]
+                            'file_info' => null,
+                        ],
+                    ],
                 ],
-                'The product\'s required option(s) weren\'t entered. Make sure the options are entered and try again.'
+                'The product\'s required option(s) weren\'t entered. Make sure the options are entered and try again.',
             ],
             'invalid extension' => [
                 'product1',
@@ -578,12 +581,12 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [100, 100, 'image/jpeg'],
                                 'type' => 'image/jpeg',
-                                'name' => 'invalid_file1.html'
-                            ]
-                        ]
-                    ]
+                                'name' => 'invalid_file1.html',
+                            ],
+                        ],
+                    ],
                 ],
-                'The file \'invalid_file1.html\' for \'file_opt\' has an invalid extension.'
+                'The file \'invalid_file1.html\' for \'file_opt\' has an invalid extension.',
             ],
             'invalid file name' => [
                 'product1',
@@ -595,12 +598,12 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [100, 100, 'image/jpeg'],
                                 'type' => 'image/jpeg',
-                                'name' => 'path/invalid_file2.jpeg'
-                            ]
-                        ]
-                    ]
+                                'name' => 'path/invalid_file2.jpeg',
+                            ],
+                        ],
+                    ],
                 ],
-                'Provided image name contains forbidden characters.'
+                'Provided image name contains forbidden characters.',
             ],
             'image is too big' => [
                 'product1',
@@ -612,12 +615,12 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [1000, 100, 'image/jpeg'],
                                 'type' => 'image/jpeg',
-                                'name' => 'invalid_file3.jpg'
-                            ]
-                        ]
-                    ]
+                                'name' => 'invalid_file3.jpg',
+                            ],
+                        ],
+                    ],
                 ],
-                'The maximum allowed image size for \'file_opt\' is 300x300 px.'
+                'The maximum allowed image size for \'file_opt\' is 300x300 px.',
             ],
             'option_id provided is not a file' => [
                 'product2',
@@ -629,13 +632,13 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [100, 100, 'image/jpeg'],
                                 'type' => 'image/jpeg',
-                                'name' => 'valid_file2.jpeg'
-                            ]
-                        ]
-                    ]
+                                'name' => 'valid_file2.jpeg',
+                            ],
+                        ],
+                    ],
                 ],
                 // no exception will be thrown and the file will not be saved
-                ''
+                '',
             ],
             'option_id provided does not exist' => [
                 'product3',
@@ -647,13 +650,13 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                             'file_info' => [
                                 'base64_encoded_data' => [100, 100, 'image/jpeg'],
                                 'type' => 'image/gif',
-                                'name' => 'invalid_file5.html'
-                            ]
-                        ]
-                    ]
+                                'name' => 'invalid_file5.html',
+                            ],
+                        ],
+                    ],
                 ],
-                'No such entity with option_id = 1'
-            ]
+                'No such entity with option_id = 1',
+            ],
         ];
     }
 
@@ -685,7 +688,7 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH . $maskedQuoteId . '/items',
                 'httpMethod' => Request::HTTP_METHOD_POST,
-            ]
+            ],
         ];
 
         $requestData = [
@@ -693,8 +696,8 @@ class GuestCartItemRepositoryTest extends WebapiAbstract
                 'quote_id' => $maskedQuoteId,
                 'sku' => $sku,
                 'qty' => 1,
-                ...$data
-            ]
+                ...$data,
+            ],
         ];
 
         return $this->_webApiCall($serviceInfoForAddingProduct, $requestData);

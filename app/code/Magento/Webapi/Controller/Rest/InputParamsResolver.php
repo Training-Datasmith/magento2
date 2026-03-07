@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Reflection\MethodsMap;
 use Magento\Framework\Webapi\Exception;
-use Magento\Framework\Webapi\ServiceInputProcessor;
 use Magento\Framework\Webapi\Rest\Request as RestRequest;
+use Magento\Framework\Webapi\ServiceInputProcessor;
 use Magento\Framework\Webapi\Validator\EntityArrayValidator\InputArraySizeLimitValue;
 use Magento\Webapi\Controller\Rest\Router\Route;
 
@@ -159,7 +160,7 @@ class InputParamsResolver
         $result = [];
 
         $data = array_filter($inputData, function ($k) use (&$result) {
-            $key = is_string($k) ? strtolower(str_replace('_', "", $k)) : $k;
+            $key = is_string($k) ? strtolower(str_replace('_', '', $k)) : $k;
             return !isset($result[$key]) && ($result[$key] = true);
         }, ARRAY_FILTER_USE_KEY);
 

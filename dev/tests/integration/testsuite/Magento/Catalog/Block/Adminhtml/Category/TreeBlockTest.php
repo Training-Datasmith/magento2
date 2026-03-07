@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use Magento\TestFramework\TestCase\AbstractBackendController;
  */
 class TreeBlockTest extends AbstractBackendController
 {
-
     /**
      * @var DataFixtureStorage
      */

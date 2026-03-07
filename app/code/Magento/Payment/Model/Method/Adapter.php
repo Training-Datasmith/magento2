@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -291,13 +293,13 @@ class Adapter implements MethodInterface, SaleOperationInterface
                 $validator = $this->getValidatorPool()->get('availability');
                 $result = $validator->validate(
                     [
-                        'payment' => $this->paymentDataObjectFactory->create($infoInstance)
+                        'payment' => $this->paymentDataObjectFactory->create($infoInstance),
                     ]
                 );
 
                 $checkResult->setData('is_available', $result->isValid());
             }
-        // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+            // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
         } catch (\Exception $e) {
             // pass
         }
@@ -308,7 +310,7 @@ class Adapter implements MethodInterface, SaleOperationInterface
             [
                 'result' => $checkResult,
                 'method_instance' => $this,
-                'quote' => $quote
+                'quote' => $quote,
             ]
         );
 
@@ -375,7 +377,7 @@ class Adapter implements MethodInterface, SaleOperationInterface
     {
         $handler = $this->valueHandlerPool->get($field);
         $subject = [
-            'field' => $field
+            'field' => $field,
         ];
 
         if ($this->getInfoInstance()) {
@@ -625,7 +627,7 @@ class Adapter implements MethodInterface, SaleOperationInterface
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -634,7 +636,7 @@ class Adapter implements MethodInterface, SaleOperationInterface
             [
                 AbstractDataAssignObserver::METHOD_CODE => $this,
                 AbstractDataAssignObserver::MODEL_CODE => $this->getInfoInstance(),
-                AbstractDataAssignObserver::DATA_CODE => $data
+                AbstractDataAssignObserver::DATA_CODE => $data,
             ]
         );
 
@@ -652,7 +654,7 @@ class Adapter implements MethodInterface, SaleOperationInterface
             [
                 'payment' => $this->getInfoInstance(),
                 'paymentAction' => $paymentAction,
-                'stateObject' => $stateObject
+                'stateObject' => $stateObject,
             ]
         );
         return $this;

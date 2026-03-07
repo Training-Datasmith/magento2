@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Email\Controller\Adminhtml\Email\Template;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Action\HttpPostActionInterface;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -77,8 +80,8 @@ class DefaultTemplate extends \Magento\Email\Controller\Adminhtml\Email\Template
                 'template_edit',
                 [
                     'data' => [
-                        'email_template' => $template
-                    ]
+                        'email_template' => $template,
+                    ],
                 ]
             );
             $template->setData('orig_template_currently_used_for', $templateBlock->getCurrentlyUsedForPaths(false));

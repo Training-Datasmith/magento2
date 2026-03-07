@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,9 +22,9 @@ use Magento\Sales\Controller\Adminhtml\Order\AddComment;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Email\Sender\OrderCommentSender;
 use Magento\Sales\Model\Order\Status\History;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -114,7 +115,7 @@ class AddCommentTest extends TestCase
                 'orderRepository' => $this->orderRepositoryMock,
                 '_authorization' => $this->authorizationMock,
                 '_objectManager' => $this->objectManagerMock,
-                'resultJsonFactory' => $this->jsonFactory
+                'resultJsonFactory' => $this->jsonFactory,
             ]
         );
     }
@@ -135,31 +136,31 @@ class AddCommentTest extends TestCase
         bool $expectedNotify,
         string $expectedOrderStatus
     ) {
-         $orderId = 30;
-         $this->requestMock->expects($this->once())->method('getParam')->with('order_id')->willReturn($orderId);
-         $this->orderMock->expects($this->any())->method('getDataByKey')
-            ->with('status')->willReturn($orderStatus);
-         $this->orderRepositoryMock->expects($this->once())
-            ->method('get')
-            ->willReturn($this->orderMock);
-         $this->requestMock->expects($this->once())->method('getPost')->with('history')->willReturn($historyData);
-         $this->authorizationMock->expects($this->any())->method('isAllowed')->willReturn($userHasResource);
-         $this->orderMock->expects($this->once())
-            ->method('addStatusHistoryComment')
-            ->willReturn($this->statusHistoryCommentMock);
-         $this->statusHistoryCommentMock->expects($this->once())
-            ->method('setIsCustomerNotified')
-            ->with($expectedNotify);
-         $this->objectManagerMock->expects($this->once())->method('create')->willReturn(
-             $this->createMock(OrderCommentSender::class)
-         );
+        $orderId = 30;
+        $this->requestMock->expects($this->once())->method('getParam')->with('order_id')->willReturn($orderId);
+        $this->orderMock->expects($this->any())->method('getDataByKey')
+           ->with('status')->willReturn($orderStatus);
+        $this->orderRepositoryMock->expects($this->once())
+           ->method('get')
+           ->willReturn($this->orderMock);
+        $this->requestMock->expects($this->once())->method('getPost')->with('history')->willReturn($historyData);
+        $this->authorizationMock->expects($this->any())->method('isAllowed')->willReturn($userHasResource);
+        $this->orderMock->expects($this->once())
+           ->method('addStatusHistoryComment')
+           ->willReturn($this->statusHistoryCommentMock);
+        $this->statusHistoryCommentMock->expects($this->once())
+           ->method('setIsCustomerNotified')
+           ->with($expectedNotify);
+        $this->objectManagerMock->expects($this->once())->method('create')->willReturn(
+            $this->createMock(OrderCommentSender::class)
+        );
 
         // Verify the getOrderStatus method call
-         $this->orderMock->expects($this->once())->method('setStatus')->with($expectedOrderStatus);
-         $this->orderMock->expects($this->once())->method('save');
-         $this->statusHistoryCommentMock->expects($this->once())->method('save');
+        $this->orderMock->expects($this->once())->method('setStatus')->with($expectedOrderStatus);
+        $this->orderMock->expects($this->once())->method('save');
+        $this->statusHistoryCommentMock->expects($this->once())->method('save');
 
-         $this->addCommentController->execute();
+        $this->addCommentController->execute();
     }
 
     /**
@@ -172,65 +173,65 @@ class AddCommentTest extends TestCase
                 'historyData' => [
                     'comment' => 'Great Product!',
                     'is_customer_notified' => true,
-                    'status' => 'processing'
+                    'status' => 'processing',
                 ],
                 'orderStatus' => 'processing',
                 'userHasResource' => true,
                 'expectedNotify' => true,
-                'expectedOrderStatus' => 'processing'
+                'expectedOrderStatus' => 'processing',
             ],
             'User Has Access - Notify False' => [
                 'historyData' => [
                     'comment' => 'Great Product!',
                     'is_customer_notified' => false,
-                    'status' => 'processing'
+                    'status' => 'processing',
                 ],
                 'orderStatus' => 'processing',
                 'userHasResource' => true,
                 'expectedNotify' => false,
-                'expectedOrderStatus' => 'processing'
+                'expectedOrderStatus' => 'processing',
             ],
             'User Has Access - Notify Unset' => [
                 'historyData' => [
                     'comment' => 'Great Product!',
-                    'status' => 'processing'
+                    'status' => 'processing',
                 ],
                 'orderStatus' => 'fraud',
                 'userHasResource' => true,
                 'expectedNotify' => false,
-                'expectedOrderStatus' => 'processing'
+                'expectedOrderStatus' => 'processing',
             ],
             'User No Access - Notify True' => [
                 'historyData' => [
                     'comment' => 'Great Product!',
                     'is_customer_notified' => true,
-                    'status' => 'fraud'
+                    'status' => 'fraud',
                 ],
                 'orderStatus' => 'processing',
                 'userHasResource' => false,
                 'expectedNotify' => false,
-                'expectedOrderStatus' => 'fraud'
+                'expectedOrderStatus' => 'fraud',
             ],
             'User No Access - Notify False' => [
                 'historyData' => [
                     'comment' => 'Great Product!',
                     'is_customer_notified' => false,
-                    'status' => 'processing'
+                    'status' => 'processing',
                 ],
                 'orderStatus' => 'complete',
                 'userHasResource' => false,
                 'expectedNotify' => false,
-                'expectedOrderStatus' => 'processing'
+                'expectedOrderStatus' => 'processing',
             ],
             'User No Access - Notify Unset' => [
                 'historyData' => [
                     'comment' => 'Great Product!',
-                    'status' => 'processing'
+                    'status' => 'processing',
                 ],
                 'orderStatus' => 'complete',
                 'userHasResource' => false,
                 'expectedNotify' => false,
-                'expectedOrderStatus' => 'processing'
+                'expectedOrderStatus' => 'processing',
             ],
         ];
     }
@@ -247,7 +248,7 @@ class AddCommentTest extends TestCase
         $historyData = [
             'comment' => '',
             'is_customer_notified' => false,
-            'status' => 'processing'
+            'status' => 'processing',
         ];
 
         $this->requestMock->expects($this->once())->method('getParam')->with('order_id')->willReturn($orderId);
@@ -264,7 +265,7 @@ class AddCommentTest extends TestCase
                 [
                     'error' => true,
                     'message' => 'Please provide a comment text or ' .
-                        'update the order status to be able to submit a comment for this order.'
+                        'update the order status to be able to submit a comment for this order.',
                 ]
             )
             ->willReturnSelf();

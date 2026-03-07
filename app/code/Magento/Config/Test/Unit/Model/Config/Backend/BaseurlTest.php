@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -12,14 +13,13 @@ use Magento\Config\Model\ResourceModel\Config\Data;
 use Magento\Framework\App\Cache\Type\Config;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager as AppObjectManager;
 use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\Model\Context;
+use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use Magento\Framework\View\Asset\MergeService;
 use Magento\Framework\Validator\Url as UrlValidator;
-use Magento\Framework\App\ObjectManager as AppObjectManager;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\View\Asset\MergeService;
 use Magento\Store\Model\Store;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +40,7 @@ class BaseurlTest extends TestCase
         $coreRegistry = $this->createMock(Registry::class);
         $coreConfig = $this->createMock(ScopeConfigInterface::class);
         $cacheTypeListMock = $this->createMock(TypeListInterface::class);
-        
+
         $cacheTypeListMock->expects($this->once())
             ->method('invalidate')
             ->with(Config::TYPE_IDENTIFIER);

@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ImportExport\Controller\Adminhtml\History;
 
-use Magento\ImportExport\Controller\Adminhtml\History as HistoryController;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\ImportExport\Controller\Adminhtml\History as HistoryController;
 
 class Index extends HistoryController
 {

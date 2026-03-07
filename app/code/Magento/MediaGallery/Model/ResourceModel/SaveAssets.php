@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -9,8 +10,6 @@ namespace Magento\MediaGallery\Model\ResourceModel;
 
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\MediaGalleryApi\Api\Data\AssetInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsInterface;
 use Psr\Log\LoggerInterface;
 
@@ -89,7 +88,7 @@ class SaveAssets implements SaveAssetsInterface
                 __(
                     'Could not save the media assets: %assets',
                     [
-                        'assets' => implode(' ,', $failedAssets)
+                        'assets' => implode(' ,', $failedAssets),
                     ]
                 )
             );

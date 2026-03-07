@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -87,8 +88,8 @@ class ModuleRegistryUninstallerTest extends TestCase
             ->with(
                 [
                     ConfigFilePool::APP_CONFIG => [
-                        ConfigOptionsListConstants::KEY_MODULES => ['moduleC' => 1, 'moduleD' => 1]
-                    ]
+                        ConfigOptionsListConstants::KEY_MODULES => ['moduleC' => 1, 'moduleD' => 1],
+                    ],
                 ]
             );
         $this->moduleRegistryUninstaller->removeModulesFromDeploymentConfig($this->output, ['moduleA', 'moduleB']);

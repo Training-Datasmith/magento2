@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -13,6 +14,7 @@ use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Phrase;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\SalesRule\Api\Data\CouponInterface;
 use Magento\SalesRule\Api\Data\CouponSearchResultInterface;
@@ -23,7 +25,6 @@ use Magento\SalesRule\Model\CouponRepository;
 use Magento\SalesRule\Model\ResourceModel\Coupon;
 use Magento\SalesRule\Model\ResourceModel\Coupon\Collection;
 use Magento\SalesRule\Model\ResourceModel\Coupon\CollectionFactory;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\SalesRule\Model\Rule;
 use Magento\SalesRule\Model\RuleFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -203,13 +204,13 @@ class CouponRepositoryTest extends TestCase
                 new LocalizedException($phrase),
                 LocalizedException::class,
                 $msg,
-                1
+                1,
             ],
             [
                 null, LocalizedException::class,
                 'Error occurred when saving coupon: No such entity with rule_id = ',
-                false
-            ]
+                false,
+            ],
         ];
     }
 

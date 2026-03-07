@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Product\View;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Catalog\Block\Product\Context;
+use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Stdlib\ArrayUtils;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * Gallery options block.
@@ -57,17 +60,17 @@ class GalleryOptions extends AbstractView implements ArgumentInterface
         $optionItems = null;
 
         //Special case for gallery/nav which can be the string "thumbs/false/dots"
-        if (is_bool($this->getVar("gallery/nav"))) {
-            $optionItems['nav'] = $this->getVar("gallery/nav") ? 'true' : 'false';
+        if (is_bool($this->getVar('gallery/nav'))) {
+            $optionItems['nav'] = $this->getVar('gallery/nav') ? 'true' : 'false';
         } else {
-            $optionItems['nav'] = $this->escapeHtml($this->getVar("gallery/nav"));
+            $optionItems['nav'] = $this->escapeHtml($this->getVar('gallery/nav'));
         }
 
-        $optionItems['loop'] = $this->getVar("gallery/loop");
-        $optionItems['keyboard'] = $this->getVar("gallery/keyboard");
-        $optionItems['arrows'] = $this->getVar("gallery/arrows");
-        $optionItems['allowfullscreen'] = $this->getVar("gallery/allowfullscreen");
-        $optionItems['showCaption'] = $this->getVar("gallery/caption");
+        $optionItems['loop'] = $this->getVar('gallery/loop');
+        $optionItems['keyboard'] = $this->getVar('gallery/keyboard');
+        $optionItems['arrows'] = $this->getVar('gallery/arrows');
+        $optionItems['allowfullscreen'] = $this->getVar('gallery/allowfullscreen');
+        $optionItems['showCaption'] = $this->getVar('gallery/caption');
         $optionItems['width'] = (int)$this->escapeHtml(
             $this->gallery->getImageAttribute('product_page_image_medium', 'width')
         );
@@ -91,23 +94,23 @@ class GalleryOptions extends AbstractView implements ArgumentInterface
             );
         }
 
-        if ($this->getVar("gallery/transition/duration")) {
+        if ($this->getVar('gallery/transition/duration')) {
             $optionItems['transitionduration'] =
-                (int)$this->escapeHtml($this->getVar("gallery/transition/duration"));
+                (int)$this->escapeHtml($this->getVar('gallery/transition/duration'));
         }
 
-        $optionItems['transition'] = $this->escapeHtml($this->getVar("gallery/transition/effect"));
-        $optionItems['navarrows'] = $this->getVar("gallery/navarrows");
-        $optionItems['navtype'] = $this->escapeHtml($this->getVar("gallery/navtype"));
-        $optionItems['navdir'] = $this->escapeHtml($this->getVar("gallery/navdir"));
+        $optionItems['transition'] = $this->escapeHtml($this->getVar('gallery/transition/effect'));
+        $optionItems['navarrows'] = $this->getVar('gallery/navarrows');
+        $optionItems['navtype'] = $this->escapeHtml($this->getVar('gallery/navtype'));
+        $optionItems['navdir'] = $this->escapeHtml($this->getVar('gallery/navdir'));
 
-        if ($this->getVar("gallery/thumbmargin")) {
-            $optionItems['thumbmargin'] = (int)$this->escapeHtml($this->getVar("gallery/thumbmargin"));
+        if ($this->getVar('gallery/thumbmargin')) {
+            $optionItems['thumbmargin'] = (int)$this->escapeHtml($this->getVar('gallery/thumbmargin'));
         }
 
-        if ($this->getVar("product_image_white_borders")) {
+        if ($this->getVar('product_image_white_borders')) {
             $optionItems['whiteBorders'] =
-                (int)$this->escapeHtml($this->getVar("product_image_white_borders"));
+                (int)$this->escapeHtml($this->getVar('product_image_white_borders'));
         }
 
         return $this->jsonSerializer->serialize($optionItems);
@@ -126,39 +129,39 @@ class GalleryOptions extends AbstractView implements ArgumentInterface
         $fsOptionItems = null;
 
         //Special case for gallery/nav which can be the string "thumbs/false/dots"
-        if (is_bool($this->getVar("gallery/fullscreen/nav"))) {
-            $fsOptionItems['nav'] = $this->getVar("gallery/fullscreen/nav") ? 'true' : 'false';
+        if (is_bool($this->getVar('gallery/fullscreen/nav'))) {
+            $fsOptionItems['nav'] = $this->getVar('gallery/fullscreen/nav') ? 'true' : 'false';
         } else {
-            $fsOptionItems['nav'] = $this->escapeHtml($this->getVar("gallery/fullscreen/nav"));
+            $fsOptionItems['nav'] = $this->escapeHtml($this->getVar('gallery/fullscreen/nav'));
         }
 
-        $fsOptionItems['loop'] = $this->getVar("gallery/fullscreen/loop");
-        $fsOptionItems['navdir'] = $this->escapeHtml($this->getVar("gallery/fullscreen/navdir"));
-        $fsOptionItems['navarrows'] = $this->getVar("gallery/fullscreen/navarrows");
-        $fsOptionItems['navtype'] = $this->escapeHtml($this->getVar("gallery/fullscreen/navtype"));
-        $fsOptionItems['arrows'] = $this->getVar("gallery/fullscreen/arrows");
-        $fsOptionItems['showCaption'] = $this->getVar("gallery/fullscreen/caption");
+        $fsOptionItems['loop'] = $this->getVar('gallery/fullscreen/loop');
+        $fsOptionItems['navdir'] = $this->escapeHtml($this->getVar('gallery/fullscreen/navdir'));
+        $fsOptionItems['navarrows'] = $this->getVar('gallery/fullscreen/navarrows');
+        $fsOptionItems['navtype'] = $this->escapeHtml($this->getVar('gallery/fullscreen/navtype'));
+        $fsOptionItems['arrows'] = $this->getVar('gallery/fullscreen/arrows');
+        $fsOptionItems['showCaption'] = $this->getVar('gallery/fullscreen/caption');
 
-        if ($this->getVar("gallery/fullscreen/transition/duration")) {
+        if ($this->getVar('gallery/fullscreen/transition/duration')) {
             $fsOptionItems['transitionduration'] = (int)$this->escapeHtml(
-                $this->getVar("gallery/fullscreen/transition/duration")
+                $this->getVar('gallery/fullscreen/transition/duration')
             );
         }
 
-        $fsOptionItems['transition'] = $this->escapeHtml($this->getVar("gallery/fullscreen/transition/effect"));
+        $fsOptionItems['transition'] = $this->escapeHtml($this->getVar('gallery/fullscreen/transition/effect'));
 
-        if ($this->getVar("gallery/fullscreen/keyboard")) {
-            $fsOptionItems['keyboard'] = $this->getVar("gallery/fullscreen/keyboard");
+        if ($this->getVar('gallery/fullscreen/keyboard')) {
+            $fsOptionItems['keyboard'] = $this->getVar('gallery/fullscreen/keyboard');
         }
 
-        if ($this->getVar("gallery/fullscreen/thumbmargin")) {
+        if ($this->getVar('gallery/fullscreen/thumbmargin')) {
             $fsOptionItems['thumbmargin'] =
-                (int)$this->escapeHtml($this->getVar("gallery/fullscreen/thumbmargin"));
+                (int)$this->escapeHtml($this->getVar('gallery/fullscreen/thumbmargin'));
         }
 
-        if ($this->getVar("product_image_white_borders")) {
+        if ($this->getVar('product_image_white_borders')) {
             $fsOptionItems['whiteBorders'] =
-                (int)$this->escapeHtml($this->getVar("product_image_white_borders"));
+                (int)$this->escapeHtml($this->getVar('product_image_white_borders'));
         }
 
         return $this->jsonSerializer->serialize($fsOptionItems);

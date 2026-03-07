@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -186,7 +187,7 @@ class AbstractDataTest extends TestCase
             [true, true, false],
             ['string', 'string', false],
             ['2014/01/23', '2014-01-23', 'date'],
-            ['<tag>internal text</tag>', 'internal text', 'striptags']
+            ['<tag>internal text</tag>', 'internal text', 'striptags'],
         ];
     }
 
@@ -253,7 +254,7 @@ class AbstractDataTest extends TestCase
             [true, true, false],
             ['string', 'string', false],
             ['2014/01/23', '2014-01-23', 'date'],
-            ['internal text', 'internal text', 'striptags']
+            ['internal text', 'internal text', 'striptags'],
         ];
     }
 
@@ -299,16 +300,16 @@ class AbstractDataTest extends TestCase
                 'mylabel',
                 'alphanumeric',
                 [
-                    Alnum::NOT_ALNUM => '"mylabel" contains non-alphabetic or non-numeric characters.'
-                ]
+                    Alnum::NOT_ALNUM => '"mylabel" contains non-alphabetic or non-numeric characters.',
+                ],
             ],
             [
                 'abc qaz',
                 'mylabel',
                 'alphanumeric',
                 [
-                    Alnum::NOT_ALNUM => '"mylabel" contains non-alphabetic or non-numeric characters.'
-                ]
+                    Alnum::NOT_ALNUM => '"mylabel" contains non-alphabetic or non-numeric characters.',
+                ],
             ],
             ['abcqaz', 'mylabel', 'alphanumeric', true],
             ['abc qaz', 'mylabel', 'alphanum-with-spaces', true],
@@ -316,13 +317,13 @@ class AbstractDataTest extends TestCase
                 '!@#$',
                 'mylabel',
                 'numeric',
-                [Digits::NOT_DIGITS => '"mylabel" contains non-numeric characters.']
+                [Digits::NOT_DIGITS => '"mylabel" contains non-numeric characters.'],
             ],
             [
                 '1234',
                 'mylabel',
                 'alpha',
-                [Alpha::NOT_ALPHA => '"mylabel" contains non-alphabetic characters.']
+                [Alpha::NOT_ALPHA => '"mylabel" contains non-alphabetic characters.'],
             ],
             [
                 '!@#$',
@@ -332,9 +333,9 @@ class AbstractDataTest extends TestCase
                     // @codingStandardsIgnoreStart
                     EmailAddress::INVALID_HOSTNAME => '"mylabel" is not a valid hostname.',
                     Hostname::INVALID_HOSTNAME => "'#\$' does not match the expected structure for a DNS hostname",
-                    Hostname::INVALID_LOCAL_NAME => "'#\$' does not look like a valid local network name."
+                    Hostname::INVALID_LOCAL_NAME => "'#\$' does not look like a valid local network name.",
                     // @codingStandardsIgnoreEnd
-                ]
+                ],
             ],
             ['1234', 'mylabel', 'url', ['"mylabel" is not a valid URL.']],
             ['http://.com', 'mylabel', 'url', ['"mylabel" is not a valid URL.']],
@@ -342,8 +343,8 @@ class AbstractDataTest extends TestCase
                 '1234',
                 'mylabel',
                 'date',
-                [Date::INVALID_DATE => '"mylabel" is not a valid date.']
-            ]
+                [Date::INVALID_DATE => '"mylabel" is not a valid date.'],
+            ],
         ];
     }
 
@@ -409,7 +410,7 @@ class AbstractDataTest extends TestCase
             ->willReturnCallback(
                 function ($arg) use ($expectedValue) {
                     static $callCount = 0;
-                    if ($arg == 'ATTR_CODE' && $callCount ==0) {
+                    if ($arg == 'ATTR_CODE' && $callCount == 0) {
                         $callCount++;
                         return $expectedValue;
                     } elseif ($arg == 'REQUEST_SCOPE' && $callCount == 1) {
@@ -429,7 +430,7 @@ class AbstractDataTest extends TestCase
 
         return [
             'requestMock' => $requestMock,
-            'requestMockHttp' => $requestMockHttp
+            'requestMockHttp' => $requestMockHttp,
         ];
     }
 
@@ -446,29 +447,29 @@ class AbstractDataTest extends TestCase
                 'ATTR_CODE',
                 false,
                 false,
-                $expectedValue
+                $expectedValue,
             ],
             [
                 static fn (self $testCase) => $testCase->getRequestMock($expectedValue)['requestMock'],
                 'ATTR_CODE',
                 'REQUEST_SCOPE',
                 false,
-                $expectedValue
+                $expectedValue,
             ],
             [
                 static fn (self $testCase) => $testCase->getRequestMock($expectedValue)['requestMockHttp'],
                 'ATTR_CODE',
                 'REQUEST_SCOPE',
                 false,
-                false
+                false,
             ],
             [
                 static fn (self $testCase) => $testCase->getRequestMock($expectedValue)['requestMockHttp'],
                 'ATTR_CODE',
                 'REQUEST/SCOPE',
                 false,
-                $expectedValue
-            ]
+                $expectedValue,
+            ],
         ];
     }
 }

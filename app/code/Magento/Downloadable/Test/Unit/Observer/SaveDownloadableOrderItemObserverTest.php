@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -135,7 +136,7 @@ class SaveDownloadableOrderItemObserverTest extends TestCase
                 'productFactory' => $this->productFactory,
                 'itemFactory' => $this->itemFactory,
                 'itemsFactory' => $this->itemsFactory,
-                'objectCopyService' => $this->objectCopyService
+                'objectCopyService' => $this->objectCopyService,
             ]
         );
     }
@@ -209,7 +210,7 @@ class SaveDownloadableOrderItemObserverTest extends TestCase
         );
         $observer = new Observer(
             [
-                'event' => $event
+                'event' => $event,
             ]
         );
         $this->saveDownloadableOrderItemObserver->execute($observer);
@@ -230,7 +231,7 @@ class SaveDownloadableOrderItemObserverTest extends TestCase
         );
         $observer = new Observer(
             [
-                'event' => $event
+                'event' => $event,
             ]
         );
         $this->saveDownloadableOrderItemObserver->execute($observer);
@@ -247,7 +248,7 @@ class SaveDownloadableOrderItemObserverTest extends TestCase
         );
         $observer = new Observer(
             [
-                'event' => $event
+                'event' => $event,
             ]
         );
         $result = $this->saveDownloadableOrderItemObserver->execute($observer);
@@ -283,7 +284,7 @@ class SaveDownloadableOrderItemObserverTest extends TestCase
         );
         $observer = new Observer(
             [
-                'event' => $event
+                'event' => $event,
             ]
         );
         $this->saveDownloadableOrderItemObserver->execute($observer);

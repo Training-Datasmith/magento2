@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -67,7 +68,7 @@ class IsEmailAvailable implements ResolverInterface
         }
 
         return [
-            'is_email_available' => $isEmailAvailable
+            'is_email_available' => $isEmailAvailable,
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class StoreDimensionProvider implements DimensionProviderInterface
      * Hold the name of Store dimension. Uses for retrieve dimension value.
      * Used "scope" name for support current indexer implementation
      */
-    const DIMENSION_NAME = 'scope';
+    public const DIMENSION_NAME = 'scope';
 
     /**
      * @var StoreManagerInterface

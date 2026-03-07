@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -199,7 +200,7 @@ QUERY;
         $customerToken = $this->customerTokenService->createCustomerAccessToken($username, $password);
 
         return [
-            'Authorization' => 'Bearer ' . $customerToken
+            'Authorization' => 'Bearer ' . $customerToken,
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -20,9 +21,9 @@ use Magento\Sales\Model\ResourceModel\Order\Rss\OrderStatusFactory;
 use Magento\Sales\Model\Rss\OrderStatus;
 use Magento\Sales\Model\Rss\Signature;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  *
@@ -30,7 +31,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
  */
 class OrderStatusTest extends TestCase
 {
-
     /**
      * @var OrderStatus
      */
@@ -103,7 +103,7 @@ class OrderStatusTest extends TestCase
             [
                 'title' => 'Order #100000001 created at ',
                 'link' => 'http://magento.com/sales/order/view/order_id/1',
-                'description' => '<p>Current Status: Pending<br/>Total: 15.00<br/></p>'
+                'description' => '<p>Current Status: Pending<br/>Total: 15.00<br/></p>',
             ],
         ],
     ];
@@ -304,7 +304,7 @@ class OrderStatusTest extends TestCase
         // phpcs:disable
         return [
             [base64_encode('{"order_id":1,"increment_id":"100000001","customer_id":1}'), md5('11000000011')],
-            [base64_encode('{"order_id":"1","increment_id":true,"customer_id":true}'), '']
+            [base64_encode('{"order_id":"1","increment_id":true,"customer_id":true}'), ''],
         ];
         // phpcs:enable
     }

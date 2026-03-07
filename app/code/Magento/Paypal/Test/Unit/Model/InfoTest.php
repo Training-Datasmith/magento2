@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -188,7 +189,7 @@ class InfoTest extends TestCase
                     Info::BUYER_TAX_ID_TYPE => [
                         'label' => 'Buyer\'s Tax ID Type',
                         'value' => 'CNPJ',
-                    ]
+                    ],
                 ],
             ],
             [
@@ -205,9 +206,9 @@ class InfoTest extends TestCase
                     Info::BUYER_TAX_ID => [
                         'label' => 'Buyer\'s Tax ID',
                         'value' => Info::BUYER_TAX_ID,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -252,9 +253,9 @@ class InfoTest extends TestCase
                     Info::BUYER_TAX_ID_TYPE => Info::BUYER_TAX_ID_TYPE,
                     Info::PAYMENT_STATUS_GLOBAL => Info::PAYMENT_STATUS_GLOBAL,
                     Info::PENDING_REASON_GLOBAL => Info::PENDING_REASON_GLOBAL,
-                    Info::IS_FRAUD_GLOBAL => Info::IS_FRAUD_GLOBAL
+                    Info::IS_FRAUD_GLOBAL => Info::IS_FRAUD_GLOBAL,
                 ],
-            ]
+            ],
         ];
     }
 }

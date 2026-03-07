@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\DownloadableImportExport\Helper;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -106,7 +109,7 @@ class Uploader extends \Magento\Framework\App\Helper\AbstractHelper
                 __('File directory \'%1\' is not readable.', $tmpPath)
             );
         }
-        $destinationDir = "downloadable/files/" . $type;
+        $destinationDir = 'downloadable/files/' . $type;
         $destinationPath = $dirAddon . '/' . $this->mediaDirectory->getRelativePath($destinationDir);
 
         $this->mediaDirectory->create($destinationPath);

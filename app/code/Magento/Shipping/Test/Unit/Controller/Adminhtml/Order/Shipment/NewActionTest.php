@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Shipping\Test\Unit\Controller\Adminhtml\Order\Shipment;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Helper\Data;
 use Magento\Backend\Block\Menu as MenuBlock;
+use Magento\Backend\Helper\Data;
 use Magento\Backend\Model\Menu;
 use Magento\Backend\Model\Session;
 use Magento\Framework\App\ActionFlag;
@@ -20,8 +21,8 @@ use Magento\Framework\App\ViewInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Message\Manager;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
@@ -30,7 +31,6 @@ use Magento\Sales\Model\Order\Shipment;
 use Magento\Shipping\Controller\Adminhtml\Order\Shipment\NewAction;
 use Magento\Shipping\Controller\Adminhtml\Order\ShipmentLoader;
 use Magento\Shipping\Model\ShipmentProviderInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -128,7 +128,7 @@ class NewActionTest extends TestCase
         $this->objectManager = $this->createMock(ObjectManagerInterface::class);
         $this->context = $this->createPartialMock(Context::class, [
             'getRequest', 'getResponse', 'getMessageManager', 'getRedirect', 'getObjectManager',
-            'getSession', 'getActionFlag', 'getHelper', 'getView'
+            'getSession', 'getActionFlag', 'getHelper', 'getView',
         ]);
         $this->response = $this->createMock(ResponseInterface::class);
         $this->request = $this->createMock(Http::class);
@@ -173,7 +173,7 @@ class NewActionTest extends TestCase
             NewAction::class,
             [
                 'context' => $this->context, 'shipmentLoader' => $this->shipmentLoader, 'request' => $this->request,
-                'response' => $this->response, 'view' => $this->view, 'shipmentProvider' => $this->shipmentProviderMock
+                'response' => $this->response, 'view' => $this->view, 'shipmentProvider' => $this->shipmentProviderMock,
             ]
         );
     }

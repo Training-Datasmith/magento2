@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -15,8 +16,8 @@ use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
 use Magento\MediaGalleryApi\Api\GetAssetsKeywordsInterface;
 use Magento\MediaGalleryApi\Api\SaveAssetsKeywordsInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Testing assets keywords operation
@@ -92,7 +93,7 @@ class AssetKeywordsTest extends TestCase
         $assetKeywords = $this->assetsKeywordsFactory->create(
             [
                 'assetId' => $assetId,
-                'keywords' => $this->getKeywords($keywords)
+                'keywords' => $this->getKeywords($keywords),
             ]
         );
 
@@ -141,7 +142,7 @@ class AssetKeywordsTest extends TestCase
             [['plum', 'pear','grape'],['orange']],
             [['plum', 'pear','grape'],[]],
             [['plum', 'pear'],['plum', 'pear','grape','mango','orange']],
-            [[],[]]
+            [[],[]],
         ];
     }
 
@@ -157,7 +158,7 @@ class AssetKeywordsTest extends TestCase
         foreach ($keywords as $keyword) {
             $keywordObjects[] = $this->keywordFactory->create(
                 [
-                    'keyword' => $keyword
+                    'keyword' => $keyword,
                 ]
             );
         }

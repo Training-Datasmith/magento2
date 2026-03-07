@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class LengthTest extends TestCase
      */
     public function testMeasureSetWithNoLocale()
     {
-        $this->expectException( \Error::class );
+        $this->expectException(\Error::class);
 
         $value = new Length('100', Length::STANDARD, 'en_US');
         $value->setValue('200', Length::STANDARD);

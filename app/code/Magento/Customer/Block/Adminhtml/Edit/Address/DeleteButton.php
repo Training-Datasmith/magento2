@@ -1,13 +1,15 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Block\Adminhtml\Edit\Address;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Customer\Ui\Component\Listing\Address\Column\Actions;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Delete button on edit customer address form
@@ -38,12 +40,12 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                                         $this->getDeleteUrl(),
                                     ],
 
-                                ]
+                                ],
                             ],
                         ],
                     ],
                 ],
-                'sort_order' => 20
+                'sort_order' => 20,
             ];
         }
         return $data;

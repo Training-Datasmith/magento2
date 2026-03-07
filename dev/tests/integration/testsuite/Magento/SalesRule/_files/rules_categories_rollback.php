@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-use Magento\TestFramework\Helper\Bootstrap;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Catalog\Api\CategoryListInterface;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\TestFramework\Helper\Bootstrap;
 
 $objectManager = Bootstrap::getObjectManager();
 

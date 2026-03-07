@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Quote\Test\Unit\Model\Quote;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Serialize\JsonValidator;
@@ -19,6 +19,7 @@ use Magento\Payment\Model\MethodInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Payment;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 
 use PHPUnit\Framework\TestCase;
@@ -75,7 +76,7 @@ class PaymentTest extends TestCase
                 'methodSpecificationFactory' => $this->specificationFactory,
                 'eventDispatcher' => $this->eventManager,
                 'serializer' => $serializer,
-                'jsonValidator' => $this->jsonValidatorMock
+                'jsonValidator' => $this->jsonValidatorMock,
             ]
         );
     }
@@ -140,7 +141,7 @@ class PaymentTest extends TestCase
                 'sales_quote_payment_import_data_before',
                 [
                     'payment' => $this->model,
-                    'input' => new DataObject($convertedData)
+                    'input' => new DataObject($convertedData),
                 ]
             );
         $quote->expects(static::once())
@@ -199,24 +200,24 @@ class PaymentTest extends TestCase
             [
                 ['field1' => 'value1', 'field2' => 'value2'],
                 ['field1' => 'value1', 'field2' => 'value2'],
-                0
+                0,
             ],
             [
                 ['field1' => 'value1', 'field2' => 'value2'],
                 '{"field1":"value1","field2":"value2"}',
                 1,
-                true
+                true,
             ],
             [
                 null,
                 '{"field1":field2":"value2"}',
                 1,
-                false
+                false,
             ],
             [
                 null,
                 123,
-                0
+                0,
             ],
         ];
     }
@@ -232,7 +233,7 @@ class PaymentTest extends TestCase
                     PaymentInterface::KEY_METHOD => 'payment_method_code',
                     'cc_number' => '1111',
                     'cc_type' => 'VI',
-                    'cc_owner' => 'John Doe'
+                    'cc_owner' => 'John Doe',
                 ],
                 [
                     PaymentInterface::KEY_METHOD => 'payment_method_code',
@@ -240,9 +241,9 @@ class PaymentTest extends TestCase
                     PaymentInterface::KEY_ADDITIONAL_DATA => [
                         'cc_number' => '1111',
                         'cc_type' => 'VI',
-                        'cc_owner' => 'John Doe'
+                        'cc_owner' => 'John Doe',
                     ],
-                    'checks' => []
+                    'checks' => [],
                 ],
                 [
                     PaymentInterface::KEY_METHOD => 'payment_method_code',
@@ -250,11 +251,11 @@ class PaymentTest extends TestCase
                     PaymentInterface::KEY_ADDITIONAL_DATA => [
                         'cc_number' => '1111',
                         'cc_type' => 'VI',
-                        'cc_owner' => 'John Doe'
+                        'cc_owner' => 'John Doe',
                     ],
-                    'checks' => []
+                    'checks' => [],
                 ],
-                []
+                [],
             ],
             [
                 [
@@ -262,7 +263,7 @@ class PaymentTest extends TestCase
                     'cc_number' => '1111',
                     'cc_type' => 'VI',
                     'cc_owner' => 'John Doe',
-                    'checks' => ['check_code1', 'check_code2']
+                    'checks' => ['check_code1', 'check_code2'],
                 ],
                 [
                     PaymentInterface::KEY_METHOD => 'payment_method_code',
@@ -270,9 +271,9 @@ class PaymentTest extends TestCase
                     PaymentInterface::KEY_ADDITIONAL_DATA => [
                         'cc_number' => '1111',
                         'cc_type' => 'VI',
-                        'cc_owner' => 'John Doe'
+                        'cc_owner' => 'John Doe',
                     ],
-                    'checks' => ['check_code1', 'check_code2']
+                    'checks' => ['check_code1', 'check_code2'],
                 ],
                 [
                     PaymentInterface::KEY_METHOD => 'payment_method_code',
@@ -280,12 +281,12 @@ class PaymentTest extends TestCase
                     PaymentInterface::KEY_ADDITIONAL_DATA => [
                         'cc_number' => '1111',
                         'cc_type' => 'VI',
-                        'cc_owner' => 'John Doe'
+                        'cc_owner' => 'John Doe',
                     ],
-                    'checks' => ['check_code1', 'check_code2']
+                    'checks' => ['check_code1', 'check_code2'],
                 ],
-                ['check_code1', 'check_code2']
-            ]
+                ['check_code1', 'check_code2'],
+            ],
         ];
     }
 }

@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Config;
 
-use Magento\TestFramework\Helper\CacheCleaner;
-use Magento\TestFramework\ObjectManager;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\Config\Initial as Config;
+use Magento\TestFramework\Helper\Bootstrap;
+use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class InitialTest extends \PHPUnit\Framework\TestCase
@@ -48,7 +50,7 @@ class InitialTest extends \PHPUnit\Framework\TestCase
         return [
             ['default'],
             ['stores|default'],
-            ['websites|default']
+            ['websites|default'],
         ];
     }
 }

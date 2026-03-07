@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Cron\Model;
 
-use Magento\Framework\Exception\CronException;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\Exception\CronException;
 use Magento\Framework\Intl\DateTimeFactory;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 
 /**
  * Crontab schedule model

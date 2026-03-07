@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Downloadable\Test\Unit\Ui\DataProvider\Product\Form\Modifier;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Downloadable\Api\Data\ProductAttributeInterface;
@@ -15,6 +15,7 @@ use Magento\Downloadable\Model\Product\Type;
 use Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\DownloadablePanel;
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -61,7 +62,7 @@ class DownloadablePanelTest extends TestCase
             DownloadablePanel::class,
             [
                 'locator' => $this->locatorMock,
-                'arrayManager' => $this->arrayManagerMock
+                'arrayManager' => $this->arrayManagerMock,
             ]
         );
     }
@@ -86,8 +87,8 @@ class DownloadablePanelTest extends TestCase
             ->willReturn($typeId);
         $resultData = [
             $productId => [
-                ProductAttributeInterface::CODE_IS_DOWNLOADABLE => $isDownloadable
-            ]
+                ProductAttributeInterface::CODE_IS_DOWNLOADABLE => $isDownloadable,
+            ],
         ];
 
         $this->assertEquals($resultData, $this->downloadablePanel->modifyData([]));

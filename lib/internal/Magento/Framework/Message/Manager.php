@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Message;
 
-use Magento\Framework\Event;
-use Psr\Log\LoggerInterface;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Debug;
+use Magento\Framework\Event;
+use Psr\Log\LoggerInterface;
 
 /**
  * Message manager model

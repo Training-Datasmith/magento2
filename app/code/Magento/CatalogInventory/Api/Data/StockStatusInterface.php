@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\CatalogInventory\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
@@ -21,19 +24,19 @@ interface StockStatusInterface extends ExtensibleDataInterface
     /**#@+
      * Stock Status values.
      */
-    const STATUS_OUT_OF_STOCK = 0;
+    public const STATUS_OUT_OF_STOCK = 0;
 
-    const STATUS_IN_STOCK = 1;
+    public const STATUS_IN_STOCK = 1;
     /**#@-*/
 
     /**#@+
      * Stock status object data keys
      */
-    const PRODUCT_ID = 'product_id';
-    const STOCK_ID = 'stock_id';
-    const QTY = 'qty';
-    const STOCK_STATUS = 'stock_status';
-    const STOCK_ITEM = 'stock_item';
+    public const PRODUCT_ID = 'product_id';
+    public const STOCK_ID = 'stock_id';
+    public const QTY = 'qty';
+    public const STOCK_STATUS = 'stock_status';
+    public const STOCK_ITEM = 'stock_item';
 
     /**#@-*/
 

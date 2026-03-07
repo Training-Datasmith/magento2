@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,8 +11,8 @@ namespace Magento\Indexer\Test\Unit\Console\Command;
 use Magento\Backend\App\Area\FrontNameResolver;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Indexer\Console\Command\IndexerSetModeCommand;
-use Symfony\Component\Console\Tester\CommandTester;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * Command for updating installed application after the code base has changed
@@ -125,7 +126,7 @@ class IndexerSetModeCommandTest extends AbstractIndexerCommandCommonSetup
                 false,
                 'realtime',
                 'Index mode for Indexer Title_indexerOne was changed from \'Update by Schedule\' to \'Update on Save\''
-                . PHP_EOL
+                . PHP_EOL,
             ],
             [
                 false,
@@ -133,7 +134,7 @@ class IndexerSetModeCommandTest extends AbstractIndexerCommandCommonSetup
                 false,
                 'realtime',
                 'Index mode for Indexer Title_indexerOne has not been changed'
-                . PHP_EOL
+                . PHP_EOL,
             ],
             [
                 true,
@@ -141,7 +142,7 @@ class IndexerSetModeCommandTest extends AbstractIndexerCommandCommonSetup
                 true,
                 'schedule',
                 'Index mode for Indexer Title_indexerOne has not been changed'
-                . PHP_EOL
+                . PHP_EOL,
             ],
             [
                 true,
@@ -149,7 +150,7 @@ class IndexerSetModeCommandTest extends AbstractIndexerCommandCommonSetup
                 true,
                 'schedule',
                 'Index mode for Indexer Title_indexerOne was changed from \'Update on Save\' to \'Update by Schedule\''
-                . PHP_EOL
+                . PHP_EOL,
             ],
         ];
     }

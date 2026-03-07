@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Helper;
 
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -39,7 +42,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
             ['firstname', 'required-entry'],
             ['lastname', 'required-entry'],
             ['middlename', ''],
-            ['postcode', '']
+            ['postcode', ''],
         ];
     }
 }

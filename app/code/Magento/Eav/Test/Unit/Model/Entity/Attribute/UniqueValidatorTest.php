@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -7,11 +8,11 @@ declare(strict_types=1);
 
 namespace Magento\Eav\Test\Unit\Model\Entity\Attribute;
 
-use PHPUnit\Framework\TestCase;
-use Magento\Eav\Model\Entity\Attribute\UniqueValidator;
-use Magento\Framework\DataObject;
 use Magento\Eav\Model\Entity\AbstractEntity;
 use Magento\Eav\Model\Entity\Attribute\AbstractAttribute;
+use Magento\Eav\Model\Entity\Attribute\UniqueValidator;
+use Magento\Framework\DataObject;
+use PHPUnit\Framework\TestCase;
 
 class UniqueValidatorTest extends TestCase
 {

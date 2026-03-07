@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -19,7 +20,7 @@ class InfoCurrencyListCommandTest extends TestCase
     public function testExecute()
     {
         $currencies = [
-            'CUR' => 'Currency description'
+            'CUR' => 'Currency description',
         ];
 
         $table = $this->createMock(Table::class);

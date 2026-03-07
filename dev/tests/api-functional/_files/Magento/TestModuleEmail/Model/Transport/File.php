@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,16 +8,16 @@ declare(strict_types=1);
 
 namespace Magento\TestModuleEmail\Model\Transport;
 
-use Symfony\Component\Mime\Message as SymfonyMessage;
-use Symfony\Component\Mailer\Transport\TransportInterface;
-use Symfony\Component\Mailer\SentMessage;
-use Symfony\Component\Mailer\Envelope;
-use Symfony\Component\Mime\RawMessage;
-use Symfony\Component\Mailer\Transport\SendmailTransport;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Serialize\Serializer\Json;
+use Symfony\Component\Mailer\Envelope;
+use Symfony\Component\Mailer\SentMessage;
+use Symfony\Component\Mailer\Transport\SendmailTransport;
+use Symfony\Component\Mailer\Transport\TransportInterface;
+use Symfony\Component\Mime\Message as SymfonyMessage;
+use Symfony\Component\Mime\RawMessage;
 
 class File implements TransportInterface
 {
@@ -35,7 +36,7 @@ class File implements TransportInterface
     /**
      * @var SendmailTransport|null
      */
-    private ?SendmailTransport $transport=null;
+    private ?SendmailTransport $transport = null;
 
     /**
      * @param Filesystem $filesystem

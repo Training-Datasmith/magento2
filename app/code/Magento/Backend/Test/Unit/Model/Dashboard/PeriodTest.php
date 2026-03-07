@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class PeriodTest extends TestCase
                 Period::PERIOD_7_DAYS => (string)__('Last 7 Days'),
                 Period::PERIOD_1_MONTH => (string)__('Current Month'),
                 Period::PERIOD_1_YEAR => (string)__('YTD'),
-                Period::PERIOD_2_YEARS => (string)__('2YTD')
+                Period::PERIOD_2_YEARS => (string)__('2YTD'),
             ],
             $this->model->getDatePeriods()
         );

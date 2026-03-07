@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -69,7 +70,7 @@ class TemplateHintsStatusCommand extends Command
             ($this->isTemplateHintsEnabled())
                 ? 'enabled'
                 : 'disabled';
-        $templateHintsMessage = __("Template hints are %status", ['status' => $templateHintsStatus]);
+        $templateHintsMessage = __('Template hints are %status', ['status' => $templateHintsStatus]);
         $output->writeln("<info>$templateHintsMessage</info>");
 
         return Cli::RETURN_SUCCESS;

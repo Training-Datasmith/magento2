@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Directory\Model\Data;
 
 /**
@@ -13,12 +16,12 @@ namespace Magento\Directory\Model\Data;
 class CountryInformation extends \Magento\Framework\Api\AbstractExtensibleObject implements
     \Magento\Directory\Api\Data\CountryInformationInterface
 {
-    const KEY_COUNTRY_ID = 'country_id';
-    const KEY_COUNTRY_TWO_LETTER_ABBREVIATION = 'country_abbreviation2';
-    const KEY_COUNTRY_THREE_LETTER_ABBREVIATION = 'country_abbreviation3';
-    const KEY_COUNTRY_FULL_NAME_LOCALE = 'country_full_name_locale';
-    const KEY_COUNTRY_FULL_NAME_ENGLISH = 'country_full_name_english';
-    const KEY_COUNTRY_AVAILABLE_REGIONS = 'country_available_regions';
+    public const KEY_COUNTRY_ID = 'country_id';
+    public const KEY_COUNTRY_TWO_LETTER_ABBREVIATION = 'country_abbreviation2';
+    public const KEY_COUNTRY_THREE_LETTER_ABBREVIATION = 'country_abbreviation3';
+    public const KEY_COUNTRY_FULL_NAME_LOCALE = 'country_full_name_locale';
+    public const KEY_COUNTRY_FULL_NAME_ENGLISH = 'country_full_name_english';
+    public const KEY_COUNTRY_AVAILABLE_REGIONS = 'country_available_regions';
 
     /**
      * @inheritDoc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -42,7 +43,7 @@ class TruncateFilterTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expectedRemainder, $result->getRemainder());
     }
 
-    public static function truncateDataProvider() : array
+    public static function truncateDataProvider(): array
     {
         return [
             '1' => [
@@ -56,8 +57,8 @@ class TruncateFilterTest extends \PHPUnit\Framework\TestCase
                 '123 456 789',
                 8,
                 '..',
-                false
-            ]
+                false,
+            ],
         ];
     }
 }

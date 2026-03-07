@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -57,9 +58,9 @@ class LabelTest extends TestCase
     {
         $this->_label->setValue('Label Text');
         $html = $this->_label->getElementHtml();
-        $this->assertStringContainsString("<div class=\"control-value\">Label Text", $html);
+        $this->assertStringContainsString('<div class="control-value">Label Text', $html);
         $this->_label->setBold(true);
         $html = $this->_label->getElementHtml();
-        $this->assertStringContainsString("<div class=\"control-value special\">Label Text", $html);
+        $this->assertStringContainsString('<div class="control-value special">Label Text', $html);
     }
 }

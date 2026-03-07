@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -90,7 +91,7 @@ class ProblemTest extends TestCase
                 'subscriberFactory' => $this->subscriberFactoryMock,
                 'resource' => $this->resourceModelMock,
                 'resourceCollection' => $this->abstractDbMock,
-                'data' => []
+                'data' => [],
             ]
         );
     }

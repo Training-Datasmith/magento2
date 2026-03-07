@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,7 @@ declare(strict_types=1);
 /**
  * Tests for \Magento\Framework\Data\Form\Element\Link
  */
+
 namespace Magento\Framework\Data\Test\Unit\Form\Element;
 
 use Magento\Framework\Data\Form\Element\CollectionFactory;
@@ -15,11 +17,11 @@ use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Link;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
+use Magento\Framework\Math\Random;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
 
 class LinkTest extends TestCase
 {
@@ -77,7 +79,7 @@ class LinkTest extends TestCase
         $this->_link->setValue('Link Text');
         $html = $this->_link->getElementHtml();
         $this->assertEquals(
-            "link_before<a id=\"link_id\" formelementhookid=\"elemId" .self::RANDOM_STRING
+            'link_before<a id="link_id" formelementhookid="elemId' .self::RANDOM_STRING
             ."\" data-ui-id=\"form-element-\">Link Text</a>\nlink_after",
             $html
         );

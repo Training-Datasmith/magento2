@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -23,13 +24,13 @@ class Config extends DataObject
     /**
      * Shipping origin settings
      */
-    const XML_PATH_ORIGIN_COUNTRY_ID = 'shipping/origin/country_id';
+    public const XML_PATH_ORIGIN_COUNTRY_ID = 'shipping/origin/country_id';
 
-    const XML_PATH_ORIGIN_REGION_ID = 'shipping/origin/region_id';
+    public const XML_PATH_ORIGIN_REGION_ID = 'shipping/origin/region_id';
 
-    const XML_PATH_ORIGIN_CITY = 'shipping/origin/city';
+    public const XML_PATH_ORIGIN_CITY = 'shipping/origin/city';
 
-    const XML_PATH_ORIGIN_POSTCODE = 'shipping/origin/postcode';
+    public const XML_PATH_ORIGIN_POSTCODE = 'shipping/origin/postcode';
 
     /**
      * Core store config

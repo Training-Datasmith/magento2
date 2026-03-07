@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ namespace Magento\Cms\Command;
 use Magento\Cms\Model\Wysiwyg\Validator;
 use Magento\Framework\App\Config\ReinitableConfigInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
@@ -53,7 +54,7 @@ class WysiwygRestrictCommandTest extends TestCase
         return [
             'yes' => ['y', true],
             'no' => ['n', false],
-            'no-but-different' => ['what', false]
+            'no-but-different' => ['what', false],
         ];
     }
 

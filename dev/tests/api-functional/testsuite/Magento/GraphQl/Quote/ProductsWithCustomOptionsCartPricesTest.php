@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -65,20 +66,20 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                     [
                         'title' => 'option1',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
-                        'price' => 10
+                        'price' => 10,
                     ],
                     [
                         'title' => 'option2',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price' => 40,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
-                        'price' => 0
+                        'price' => 0,
                     ],
-                ]
+                ],
             ],
             'product'
         )
@@ -105,32 +106,32 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "itemsV2" => [
-                    "items" => [
+            'cart' =>  [
+                'itemsV2' => [
+                    'items' => [
                         0 => [
-                            "prices" => [
-                                "price" => [
-                                    "value" => 25,
-                                    "currency" => "USD"
+                            'prices' => [
+                                'price' => [
+                                    'value' => 25,
+                                    'currency' => 'USD',
                                 ],
-                                "row_total" => [
-                                    "value" => 50,
-                                    "currency" => "USD"
+                                'row_total' => [
+                                    'value' => 50,
+                                    'currency' => 'USD',
                                 ],
-                                "original_row_total" => [
-                                    "value" => 80,
-                                    "currency" => "USD"
+                                'original_row_total' => [
+                                    'value' => 80,
+                                    'currency' => 'USD',
                                 ],
-                                "original_item_price" => [
-                                    "value" => 40,
-                                    "currency" => "USD"
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'original_item_price' => [
+                                    'value' => 40,
+                                    'currency' => 'USD',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -155,14 +156,14 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                         'title' => 'option2',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price' => 40,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
-                        'price' => 0
+                        'price' => 0,
                     ],
-                ]
+                ],
             ],
             'product'
         )
@@ -190,32 +191,32 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "itemsV2" => [
-                    "items" => [
+            'cart' =>  [
+                'itemsV2' => [
+                    'items' => [
                         0 => [
-                            "prices" => [
-                                "price" => [
-                                    "value" => 16.5,
-                                    "currency" => "USD"
+                            'prices' => [
+                                'price' => [
+                                    'value' => 16.5,
+                                    'currency' => 'USD',
                                 ],
-                                "row_total" => [
-                                    "value" => 33,
-                                    "currency" => "USD"
+                                'row_total' => [
+                                    'value' => 33,
+                                    'currency' => 'USD',
                                 ],
-                                "original_row_total" => [
-                                    "value" => 66,
-                                    "currency" => "USD"
+                                'original_row_total' => [
+                                    'value' => 66,
+                                    'currency' => 'USD',
                                 ],
-                                "original_item_price" => [
-                                    "value" => 33,
-                                    "currency" => "USD"
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'original_item_price' => [
+                                    'value' => 33,
+                                    'currency' => 'USD',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -240,14 +241,14 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                         'title' => 'option2',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'is_require' => false,
-                        'price' => 40.0
+                        'price' => 40.0,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
-                        'price' => 50.0
-                    ]
-                ]
+                        'price' => 50.0,
+                    ],
+                ],
             ],
             'product'
         )
@@ -275,32 +276,32 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "itemsV2" => [
-                    "items" => [
+            'cart' =>  [
+                'itemsV2' => [
+                    'items' => [
                         0 => [
-                            "prices" => [
-                                "price" => [
-                                    "value" => 66.5,
-                                    "currency" => "USD"
+                            'prices' => [
+                                'price' => [
+                                    'value' => 66.5,
+                                    'currency' => 'USD',
                                 ],
-                                "row_total" => [
-                                    "value" => 133,
-                                    "currency" => "USD"
+                                'row_total' => [
+                                    'value' => 133,
+                                    'currency' => 'USD',
                                 ],
-                                "original_row_total" => [
-                                    "value" => 166,
-                                    "currency" => "USD"
+                                'original_row_total' => [
+                                    'value' => 166,
+                                    'currency' => 'USD',
                                 ],
-                                "original_item_price" => [
-                                    "value" => 83,
-                                    "currency" => "USD"
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'original_item_price' => [
+                                    'value' => 83,
+                                    'currency' => 'USD',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);
@@ -320,13 +321,13 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
                         'price' => 10,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'option3',
                         'type' => ProductCustomOptionInterface::OPTION_TYPE_FIELD,
                         'price' => 0,
-                        'is_require' => false
+                        'is_require' => false,
                     ],
                     [
                         'title' => 'dropdown',
@@ -337,8 +338,8 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                                 'title' => 'option1_value1',
                                 'price' => 10,
                                 'price_type' => ProductPriceOptionsInterface::VALUE_PERCENT,
-                            ]
-                        ]
+                            ],
+                        ],
                     ],
                     [
                         'title' => 'multiple option',
@@ -360,8 +361,8 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
                                 'sort_order' => 2,
                             ],
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'product'
         )
@@ -388,7 +389,7 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
             $productOptions[] = [
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[2]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
 
@@ -399,7 +400,7 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
             $productOptions[] = [
                 'uid' => $this->uidEncoder->encode(
                     'custom-option' . '/' . $options[3]->getData()['option_id'] . '/' . $value->getId()
-                )
+                ),
             ];
         }
         $multiOptionId = $productOptions[0]['uid'];
@@ -420,32 +421,32 @@ class ProductsWithCustomOptionsCartPricesTest extends GraphQlAbstract
         $response = $this->graphQlQuery($query);
 
         $expectedResponse = [
-            "cart" =>  [
-                "itemsV2" => [
-                    "items" => [
+            'cart' =>  [
+                'itemsV2' => [
+                    'items' => [
                         0 => [
-                            "prices" => [
-                                "price" => [
-                                    "value" => 22,
-                                    "currency" => "USD"
+                            'prices' => [
+                                'price' => [
+                                    'value' => 22,
+                                    'currency' => 'USD',
                                 ],
-                                "row_total" => [
-                                    "value" => 44,
-                                    "currency" => "USD"
+                                'row_total' => [
+                                    'value' => 44,
+                                    'currency' => 'USD',
                                 ],
-                                "original_row_total" => [
-                                    "value" => 92,
-                                    "currency" => "USD"
+                                'original_row_total' => [
+                                    'value' => 92,
+                                    'currency' => 'USD',
                                 ],
-                                "original_item_price" => [
-                                    "value" => 46,
-                                    "currency" => "USD"
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'original_item_price' => [
+                                    'value' => 46,
+                                    'currency' => 'USD',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $this->assertEquals($expectedResponse, $response);

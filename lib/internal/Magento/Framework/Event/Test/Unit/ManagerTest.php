@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -66,7 +67,7 @@ class ManagerTest extends TestCase
             EventManager::class,
             [
                 'invoker' => $this->invokerMock,
-                'eventConfig' => $this->eventConfigMock
+                'eventConfig' => $this->eventConfigMock,
             ]
         );
     }

@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Image;
 
 use Magento\Catalog\Helper\Image as ImageHelper;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Theme\Model\ResourceModel\Theme\Collection as ThemeCollection;
 use Magento\Framework\App\Area;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
 use Magento\Framework\View\ConfigInterface;
+use Magento\Theme\Model\ResourceModel\Theme\Collection as ThemeCollection;
 
 class Cache implements ResetAfterRequestInterface
 {

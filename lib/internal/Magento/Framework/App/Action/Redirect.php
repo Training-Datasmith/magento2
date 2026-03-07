@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Redirect action class
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Action;
 
 use Magento\Framework\App\RequestInterface;

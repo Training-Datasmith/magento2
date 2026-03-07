@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -111,7 +112,7 @@ class MagentoDatabaseAdapterTest extends TestCase
             'tags' => ['tag1'],
             'tag_versions' => ['tag1' => 'version1'],
             'mtime' => time(),
-            'expire' => time() + 3600
+            'expire' => time() + 3600,
         ];
 
         // Use Magento serializer to prepare test data
@@ -186,7 +187,7 @@ class MagentoDatabaseAdapterTest extends TestCase
         $oldFormatData = [
             'value' => 'old_value',
             'tags' => ['tag1', 'tag2'],
-            'expire' => time() + 3600
+            'expire' => time() + 3600,
         ];
 
         // Use Magento serializer to prepare test data
@@ -525,7 +526,7 @@ class MagentoDatabaseAdapterTest extends TestCase
         // Set newMetadata with tags (simulates TagAwareAdapter)
         $newMetadataProperty = $reflection->getProperty('newMetadata');
         $newMetadataProperty->setValue($item, [
-            CacheItem::METADATA_TAGS => ['tag1' => 'version1', 'tag2' => 'version2']
+            CacheItem::METADATA_TAGS => ['tag1' => 'version1', 'tag2' => 'version2'],
         ]);
 
         $backendMock = $this->getMockBuilder(Database::class)

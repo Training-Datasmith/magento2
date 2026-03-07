@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -6,10 +8,10 @@
 
 namespace Magento\Framework\Oauth;
 
-use Magento\Framework\Oauth\Helper\Utility;
 use Magento\Framework\Encryption\Helper\Security;
-use Magento\Framework\Phrase;
 use Magento\Framework\Oauth\Exception as AuthException;
+use Magento\Framework\Oauth\Helper\Utility;
+use Magento\Framework\Phrase;
 
 /**
  * Authorization service.
@@ -145,7 +147,7 @@ class Oauth implements OauthInterface
         $signatureMethod = self::SIGNATURE_SHA256,
         $httpMethod = 'POST'
     ) {
-        $required = ["oauth_consumer_key", "oauth_consumer_secret", "oauth_token", "oauth_token_secret"];
+        $required = ['oauth_consumer_key', 'oauth_consumer_secret', 'oauth_token', 'oauth_token_secret'];
         $this->_checkRequiredParams($params, $required);
         $consumer = $this->_tokenProvider->getConsumerByKey($params['oauth_consumer_key']);
         $headerParameters = [
@@ -211,11 +213,11 @@ class Oauth implements OauthInterface
     private function processNonRequiredParams(array $params): array
     {
         $requiredParams = [
-            "oauth_consumer_key",
-            "oauth_consumer_secret",
-            "oauth_token",
-            "oauth_token_secret",
-            "oauth_signature"
+            'oauth_consumer_key',
+            'oauth_consumer_secret',
+            'oauth_token',
+            'oauth_token_secret',
+            'oauth_signature',
         ];
         foreach ($params as $key => $value) {
             if (!in_array($key, $requiredParams)) {
@@ -259,11 +261,11 @@ class Oauth implements OauthInterface
         // Required parameters validation. Default to minimum required params if not provided.
         if (empty($requiredParams)) {
             $requiredParams = [
-                "oauth_consumer_key",
-                "oauth_signature",
-                "oauth_signature_method",
-                "oauth_nonce",
-                "oauth_timestamp",
+                'oauth_consumer_key',
+                'oauth_signature',
+                'oauth_signature_method',
+                'oauth_nonce',
+                'oauth_timestamp',
             ];
         }
         $this->_checkRequiredParams($protocolParams, $requiredParams);

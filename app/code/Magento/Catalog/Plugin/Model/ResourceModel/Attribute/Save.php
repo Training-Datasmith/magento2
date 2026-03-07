@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,8 +9,8 @@
 namespace Magento\Catalog\Plugin\Model\ResourceModel\Attribute;
 
 use Magento\Catalog\Model\ResourceModel\Attribute;
-use Magento\PageCache\Model\Config;
 use Magento\Framework\App\Cache\TypeListInterface;
+use Magento\PageCache\Model\Config;
 
 class Save
 {

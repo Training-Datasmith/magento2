@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Variable\Ui\Component;
 
 use Magento\Framework\Api\FilterBuilder;
@@ -136,7 +139,7 @@ class VariablesDataProvider extends \Magento\Framework\View\Element\UiComponent\
         }
 
         return [
-            'items' => $items
+            'items' => $items,
         ];
     }
 }

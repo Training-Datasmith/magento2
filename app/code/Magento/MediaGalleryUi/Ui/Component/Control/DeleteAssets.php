@@ -1,19 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\MediaGalleryUi\Ui\Component\Control;
 
-use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Framework\AuthorizationInterface;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Delete images button
  */
 class DeleteAssets implements ButtonProviderInterface
 {
-    private const ACL_DELETE_ASSETS= 'Magento_MediaGalleryUiApi::delete_assets';
+    private const ACL_DELETE_ASSETS = 'Magento_MediaGalleryUiApi::delete_assets';
 
     /**
      * @var AuthorizationInterface

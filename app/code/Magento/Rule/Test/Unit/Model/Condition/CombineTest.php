@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -53,8 +54,8 @@ class CombineTest extends TestCase
         $this->combine = (new ObjectManagerHelper($this))->getObject(
             Combine::class,
             [
-                "conditionFactory"    => $this->conditionFactoryMock,
-                "logger"    => $this->loggerMock,
+                'conditionFactory'    => $this->conditionFactoryMock,
+                'logger'    => $this->loggerMock,
             ]
         );
     }

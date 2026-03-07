@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -11,18 +12,18 @@ use Magento\Analytics\Model\Config\Backend\Baseurl\SubscriptionUpdateHandler;
 use Magento\Analytics\Model\Plugin\BaseUrlConfigPlugin;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Value;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class BaseUrlConfigPluginTest extends TestCase
 {
     use MockCreationTrait;
-    
+
     /**
      * @var SubscriptionUpdateHandler|MockObject
      */
@@ -99,21 +100,21 @@ class BaseUrlConfigPluginTest extends TestCase
                 'configValueData' => [
                     'isValueChanged' => false,
                     'path' => Store::XML_PATH_SECURE_BASE_URL,
-                    'scope' => ScopeConfigInterface::SCOPE_TYPE_DEFAULT
+                    'scope' => ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                 ],
             ],
             'Unsecure URL has been changed' => [
                 'configValueData' => [
                     'isValueChanged' => true,
                     'path' => Store::XML_PATH_UNSECURE_BASE_URL,
-                    'scope' => ScopeConfigInterface::SCOPE_TYPE_DEFAULT
+                    'scope' => ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
                 ],
             ],
             'Secure URL has been changed not in the Default scope' => [
                 'configValueData' => [
                     'isValueChanged' => true,
                     'path' => Store::XML_PATH_SECURE_BASE_URL,
-                    'scope' => ScopeInterface::SCOPE_STORES
+                    'scope' => ScopeInterface::SCOPE_STORES,
                 ],
             ],
         ];

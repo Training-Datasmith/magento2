@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
 declare(strict_types=1);
-
 
 namespace Magento\GroupedImportExport\Test\Unit\Model\Import\Product\Type\Grouped;
 
@@ -60,7 +60,7 @@ class LinksTest extends TestCase
             [
                 'productLink' => $this->link,
                 'resource' => $this->resource,
-                'importFactory' => $this->importFactory
+                'importFactory' => $this->importFactory,
             ]
         );
         $this->productImport = $this->createMock(ProductImport::class);
@@ -77,9 +77,9 @@ class LinksTest extends TestCase
                 'linksData' => [
                     'product_ids' => [1, 2],
                     'relation' => [],
-                    'attr_product_ids' => []
-                ]
-            ]
+                    'attr_product_ids' => [],
+                ],
+            ],
         ];
     }
 
@@ -133,26 +133,26 @@ class LinksTest extends TestCase
         return [
             [
                 'dbAttributes' => [],
-                'returnedAttributes' => null
+                'returnedAttributes' => null,
             ],
             [
                 'dbAttributes' => [
-                    ['code' => 2, 'id' => 6, 'type' => 'sometable']
+                    ['code' => 2, 'id' => 6, 'type' => 'sometable'],
                 ],
                 'returnedAttributes' => [
-                    2 => ['id' => 6, 'table' => 'table_name']
-                ]
+                    2 => ['id' => 6, 'table' => 'table_name'],
+                ],
             ],
             [
                 'dbAttributes' => [
                     ['code' => 8, 'id' => 11, 'type' => 'sometable1'],
-                    ['code' => 4, 'id' => 7, 'type' => 'sometable2']
+                    ['code' => 4, 'id' => 7, 'type' => 'sometable2'],
                 ],
                 'returnedAttributes' => [
                     4 => ['id' => 7, 'table' => 'table_name'],
-                    8 => ['id' => 11, 'table' => 'table_name']
-                ]
-            ]
+                    8 => ['id' => 11, 'table' => 'table_name'],
+                ],
+            ],
         ];
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -70,11 +72,11 @@ class FillSalesRuleProductAttributeTable implements DataPatchInterface, PatchVer
     public function apply()
     {
         $this->moduleDataSetup->getConnection()->startSetup();
-            $this->appState->emulateAreaCode(
-                \Magento\Backend\App\Area\FrontNameResolver::AREA_CODE,
-                [$this, 'fillSalesRuleProductAttributeTable']
-            );
-            $this->fillSalesRuleProductAttributeTable();
+        $this->appState->emulateAreaCode(
+            \Magento\Backend\App\Area\FrontNameResolver::AREA_CODE,
+            [$this, 'fillSalesRuleProductAttributeTable']
+        );
+        $this->fillSalesRuleProductAttributeTable();
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
@@ -107,7 +109,7 @@ class FillSalesRuleProductAttributeTable implements DataPatchInterface, PatchVer
     public static function getDependencies()
     {
         return [
-            ConvertSerializedDataToJson::class
+            ConvertSerializedDataToJson::class,
         ];
     }
 

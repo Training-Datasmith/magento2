@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute;
 
+use Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute as AttributeAction;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute as AttributeAction;
 use Magento\Framework\App\ObjectManager;
 
 class Validate extends AttributeAction implements HttpGetActionInterface, HttpPostActionInterface

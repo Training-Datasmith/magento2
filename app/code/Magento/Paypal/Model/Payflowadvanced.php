@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Payments Advanced gateway model
  */
+
 namespace Magento\Paypal\Model;
 
 class Payflowadvanced extends \Magento\Paypal\Model\Payflowlink

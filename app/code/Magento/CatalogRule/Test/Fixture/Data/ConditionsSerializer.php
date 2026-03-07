@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -44,7 +45,7 @@ class ConditionsSerializer
      * @param array $data
      * @return array
      */
-    private function normalize(array $data) : array
+    private function normalize(array $data): array
     {
         $conditions = $data;
         if (array_is_list($conditions)) {

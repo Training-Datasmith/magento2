@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Captcha\Block\Adminhtml\Captcha;
 
 class DefaultCaptchaTest extends \PHPUnit\Framework\TestCase

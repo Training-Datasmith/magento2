@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -51,11 +52,11 @@ class SynonymAnalyzerTest extends TestCase
     {
         $phrase = 'Elizabeth/Angela is the british queen';
         $expected = [
-            0 => [ 0 => "Elizabeth/Angela" ],
-            1 => [ 0 => "is" ],
-            2 => [ 0 => "the" ],
-            3 => [ 0 => "british", 1 => "english" ],
-            4 => [ 0 => "queen", 1 => "monarch" ],
+            0 => [ 0 => 'Elizabeth/Angela' ],
+            1 => [ 0 => 'is' ],
+            2 => [ 0 => 'the' ],
+            3 => [ 0 => 'british', 1 => 'english' ],
+            4 => [ 0 => 'queen', 1 => 'monarch' ],
         ];
         $this->synReaderModel->expects($this->once())
             ->method('loadByPhrase')
@@ -94,19 +95,19 @@ class SynonymAnalyzerTest extends TestCase
     {
         $phrase = 'LSS 3/8"X3/4"X25\' EZ-PULL 1/2" INS SWEAT LINESET W/90 END BEND SUCTION LINE INSULATED';
         $expected = [
-            0 => [ 0 => "LSS" ],
+            0 => [ 0 => 'LSS' ],
             1 => [ 0 => "3/8\"X3/4\"X25'" ],
-            2 => [ 0 => "EZ-PULL" ],
-            3 => [ 0 => "1/2\"" ],
-            4 => [ 0 => "INS" ],
-            5 => [ 0 => "SWEAT" ],
-            6 => [ 0 => "LINESET" ],
-            7 => [ 0 => "W/90" ],
-            8 => [ 0 => "END" ],
-            9 => [ 0 => "BEND", 1 => "TWIST" ],
-            10 => [ 0 => "SUCTION", 1 => "WEIGHT" ],
-            11 => [ 0 => "LINE" ],
-            12 => [ 0 => "INSULATED" ]
+            2 => [ 0 => 'EZ-PULL' ],
+            3 => [ 0 => '1/2"' ],
+            4 => [ 0 => 'INS' ],
+            5 => [ 0 => 'SWEAT' ],
+            6 => [ 0 => 'LINESET' ],
+            7 => [ 0 => 'W/90' ],
+            8 => [ 0 => 'END' ],
+            9 => [ 0 => 'BEND', 1 => 'TWIST' ],
+            10 => [ 0 => 'SUCTION', 1 => 'WEIGHT' ],
+            11 => [ 0 => 'LINE' ],
+            12 => [ 0 => 'INSULATED' ],
         ];
         $this->synReaderModel->expects($this->once())
             ->method('loadByPhrase')

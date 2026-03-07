@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -6,13 +8,14 @@
 
 namespace Magento\Deploy\Console;
 
+use function array_key_exists;
+
 use InvalidArgumentException;
 use Magento\Deploy\Console\DeployStaticOptions as Options;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Validator\Locale;
 use Magento\Framework\Validator\RegexFactory;
 use Symfony\Component\Console\Input\InputInterface;
-use function array_key_exists;
 
 /**
  * Command input arguments validator class
@@ -180,7 +183,7 @@ class InputValidator
         if ($contentVersion) {
             $versionValidator = $this->versionValidatorFactory->create(
                 [
-                    'pattern' => '/^[A-Za-z0-9_.]+$/'
+                    'pattern' => '/^[A-Za-z0-9_.]+$/',
                 ]
             );
 

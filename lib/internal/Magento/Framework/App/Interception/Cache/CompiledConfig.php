@@ -1,25 +1,28 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\App\Interception\Cache;
 
+use Magento\Framework\App\Cache\Type\FrontendPool;
 use Magento\Framework\Cache\Frontend\Decorator\TagScope;
 use Magento\Framework\Config\CacheInterface;
-use Magento\Framework\App\Cache\Type\FrontendPool;
 
 class CompiledConfig extends TagScope implements CacheInterface
 {
     /**
      * Cache type code unique among all cache types
      */
-    const TYPE_IDENTIFIER = 'compiled_config';
+    public const TYPE_IDENTIFIER = 'compiled_config';
 
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
-    const CACHE_TAG = 'COMPILED_CONFIG';
+    public const CACHE_TAG = 'COMPILED_CONFIG';
 
     /**
      * @param FrontendPool $cacheFrontendPool

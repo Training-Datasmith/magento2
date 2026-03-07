@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -77,7 +78,7 @@ class QuickSearchTest extends AbstractController
             SelectAttributeFixture::class,
             [
                 'is_searchable' => true,
-                'options' => ['black', 'gray']
+                'options' => ['black', 'gray'],
             ],
             'fabric_color'
         ),
@@ -85,7 +86,7 @@ class QuickSearchTest extends AbstractController
             ProductFixture::class,
             [
                 'name' => 'Pullover Hoodie',
-                '$fabric_color.attribute_code$' => '$fabric_color.black$'
+                '$fabric_color.attribute_code$' => '$fabric_color.black$',
             ],
             'hoodie'
         ),
@@ -93,7 +94,7 @@ class QuickSearchTest extends AbstractController
             ProductFixture::class,
             [
                 'name' => 'Gym Jacket',
-                '$fabric_color.attribute_code$' => '$fabric_color.black$'
+                '$fabric_color.attribute_code$' => '$fabric_color.black$',
             ],
             'jacket'
         ),
@@ -132,7 +133,7 @@ class QuickSearchTest extends AbstractController
                 'is_filterable' => true,
                 'is_filterable_in_search' => true,
                 'is_searchable' => false,
-                'options' => ['black', 'gray']
+                'options' => ['black', 'gray'],
             ],
             'fabric_color'
         ),
@@ -140,7 +141,7 @@ class QuickSearchTest extends AbstractController
             ProductFixture::class,
             [
                 'name' => 'Pullover Hoodie',
-                '$fabric_color.attribute_code$' => '$fabric_color.black$'
+                '$fabric_color.attribute_code$' => '$fabric_color.black$',
             ],
             'hoodie'
         ),
@@ -148,7 +149,7 @@ class QuickSearchTest extends AbstractController
             ProductFixture::class,
             [
                 'name' => 'Gym Jacket',
-                '$fabric_color.attribute_code$' => '$fabric_color.black$'
+                '$fabric_color.attribute_code$' => '$fabric_color.black$',
             ],
             'jacket'
         ),

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class EntryConverterPoolTest extends TestCase
         $converterPool = $objectManager->getObject(
             EntryConverterPool::class,
             [
-                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock]
+                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock],
             ]
         );
 
@@ -70,7 +71,7 @@ class EntryConverterPoolTest extends TestCase
         $converterPool = $objectManager->getObject(
             EntryConverterPool::class,
             [
-                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock]
+                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock],
             ]
         );
 
@@ -87,7 +88,7 @@ class EntryConverterPoolTest extends TestCase
         $converterPool = $objectManager->getObject(
             EntryConverterPool::class,
             [
-                'mediaGalleryEntryConvertersCollection' => [$this->dataObjectMock]
+                'mediaGalleryEntryConvertersCollection' => [$this->dataObjectMock],
             ]
         );
 
@@ -101,7 +102,7 @@ class EntryConverterPoolTest extends TestCase
         $converterPool = $objectManager->getObject(
             EntryConverterPool::class,
             [
-                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock]
+                'mediaGalleryEntryConvertersCollection' => [$this->imageMock, $this->videoMock],
             ]
         );
 

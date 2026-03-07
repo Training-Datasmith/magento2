@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,13 +16,13 @@ use Magento\Framework\EntityManager\MetadataPool;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\ObjectManager\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Setup\Fixtures\CatalogPriceRulesFixture;
 use Magento\Setup\Fixtures\FixtureModel;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\Website;
 use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -98,7 +99,7 @@ class CatalogPriceRulesFixtureTest extends TestCase
         $valueMap = [
             [Rule::class, $modelMock],
             [Category::class, $categoryMock],
-            [MetadataPool::class, $metadataPoolMock]
+            [MetadataPool::class, $metadataPoolMock],
         ];
         $metadataPoolMock
             ->expects($this->once())
@@ -156,7 +157,7 @@ class CatalogPriceRulesFixtureTest extends TestCase
     public function testIntroduceParamLabels()
     {
         $this->assertSame([
-            'catalog_price_rules' => 'Catalog Price Rules'
+            'catalog_price_rules' => 'Catalog Price Rules',
         ], $this->model->introduceParamLabels());
     }
 }

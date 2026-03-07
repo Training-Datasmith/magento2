@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Model\Export;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -114,7 +117,7 @@ class ConvertToCsv
         return [
             'type' => 'filename',
             'value' => $file,
-            'rm' => true  // can delete file after use
+            'rm' => true,  // can delete file after use
         ];
     }
 }

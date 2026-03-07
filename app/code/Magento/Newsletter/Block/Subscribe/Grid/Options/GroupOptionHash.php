@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Newsletter\Block\Subscribe\Grid\Options;
 
 class GroupOptionHash implements \Magento\Framework\Option\ArrayInterface

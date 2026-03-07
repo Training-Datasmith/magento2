@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -76,7 +77,6 @@ class NonTransactionableDataPatch implements
     \Magento\Framework\Setup\Patch\DataPatchInterface,
     \Magento\Framework\Setup\Patch\NonTransactionableInterface
 {
-
     /**
      * {@inheritdoc}
      */

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -16,7 +18,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 class GroupRepositoryTest extends \PHPUnit\Framework\TestCase
 {
     /** The group id of the "NOT LOGGED IN" group */
-    const NOT_LOGGED_IN_GROUP_ID = 0;
+    public const NOT_LOGGED_IN_GROUP_ID = 0;
 
     /** @var \Magento\Customer\Api\GroupRepositoryInterface */
     private $groupRepository;
@@ -245,7 +247,7 @@ class GroupRepositoryTest extends \PHPUnit\Framework\TestCase
                 ],
                 [
                     1 => [GroupInterface::CODE => 'General', GroupInterface::TAX_CLASS_ID => 3],
-                    2 => [GroupInterface::CODE => 'Wholesale', GroupInterface::TAX_CLASS_ID => 3]
+                    2 => [GroupInterface::CODE => 'Wholesale', GroupInterface::TAX_CLASS_ID => 3],
                 ],
             ],
             'like' => [
@@ -256,7 +258,7 @@ class GroupRepositoryTest extends \PHPUnit\Framework\TestCase
                 [],
                 [
                     1 => [GroupInterface::CODE => 'General', GroupInterface::TAX_CLASS_ID => 3],
-                    3 => [GroupInterface::CODE => 'Retailer', GroupInterface::TAX_CLASS_ID => 3]
+                    3 => [GroupInterface::CODE => 'Retailer', GroupInterface::TAX_CLASS_ID => 3],
                 ],
             ],
             'like_tax_name' => [
@@ -339,13 +341,13 @@ class GroupRepositoryTest extends \PHPUnit\Framework\TestCase
                 GroupInterface::TAX_CLASS_NAME,
                 'ASC',
                 'getTaxClassName',
-                ['Retail Customer', 'Retail Customer', 'Retail Customer', 'Retail Customer']
+                ['Retail Customer', 'Retail Customer', 'Retail Customer', 'Retail Customer'],
             ],
             [
                 GroupInterface::TAX_CLASS_NAME,
                 'DESC',
                 'getTaxClassName',
-                ['Retail Customer', 'Retail Customer', 'Retail Customer', 'Retail Customer']
+                ['Retail Customer', 'Retail Customer', 'Retail Customer', 'Retail Customer'],
             ],
         ];
     }

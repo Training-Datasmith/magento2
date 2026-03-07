@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Core layout utility
  */
+
 namespace Magento\Framework\View\Utility;
 
 /**
@@ -47,17 +50,17 @@ class Layout
         // Use reflection to call protected getMockBuilder from TestCase (PHPUnit 12 compatibility)
         $reflection = new \ReflectionClass($this->_testCase);
         $getMockBuilderMethod = $reflection->getMethod('getMockBuilder');
-        
+
         $fileSourceBuilder = $getMockBuilderMethod->invoke($this->_testCase, \Magento\Framework\View\File\CollectorInterface::class);
         $fileSourceBuilder->disableOriginalConstructor();
         $fileSource = $fileSourceBuilder->getMock();
         $fileSource->method('getFiles')->willReturn($files);
-        
+
         $pageLayoutFileSourceBuilder = $getMockBuilderMethod->invoke($this->_testCase, \Magento\Framework\View\File\CollectorInterface::class);
         $pageLayoutFileSourceBuilder->disableOriginalConstructor();
         $pageLayoutFileSource = $pageLayoutFileSourceBuilder->getMock();
         $pageLayoutFileSource->method('getFiles')->willReturn([]);
-        
+
         $cacheBuilder = $getMockBuilderMethod->invoke($this->_testCase, \Magento\Framework\Cache\FrontendInterface::class);
         $cacheBuilder->disableOriginalConstructor();
         $cache = $cacheBuilder->getMock();
@@ -79,7 +82,7 @@ class Layout
         $reflection = new \ReflectionClass($this->_testCase);
         $getMockBuilderMethod = $reflection->getMethod('getMockBuilder');
         $mockBuilder = $getMockBuilderMethod->invoke($this->_testCase, \Magento\Framework\View\Layout::class);
-        
+
         $mockBuilder->onlyMethods(['getUpdate'])
             ->setConstructorArgs($args);
         $layout = $mockBuilder->getMock();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\Cms\Model\Page\CustomLayout;
 
+use Magento\Cms\Model\PageRepository;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\ManagerInterface;
-use Magento\Cms\Model\PageRepository;
 
 /**
  * Class for layout update validation
@@ -46,7 +47,7 @@ class CustomLayoutValidator
      * @return bool
      * @throws LocalizedException
      */
-    public function validate(array $data) : bool
+    public function validate(array $data): bool
     {
         [$layoutUpdate, $customLayoutUpdate, $oldLayoutUpdate, $oldCustomLayoutUpdate] = $this->getLayoutUpdates($data);
         if (isset($data['page_id'])) {
@@ -70,7 +71,7 @@ class CustomLayoutValidator
      * @return array
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    private function getLayoutUpdates(array $data) : array
+    private function getLayoutUpdates(array $data): array
     {
         $layoutUpdate = $data['layout_update_xml'] ?? null;
         $customLayoutUpdate = $data['custom_layout_update_xml'] ?? null;

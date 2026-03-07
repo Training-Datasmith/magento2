@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,11 +8,11 @@
 
 namespace Magento\Framework\Reflection;
 
-use Magento\Framework\Serialize\SerializerInterface;
 use Laminas\Code\Reflection\ClassReflection;
 use Laminas\Code\Reflection\MethodReflection;
 use Laminas\Code\Reflection\ParameterReflection;
 use Magento\Framework\App\Cache\Type\Reflection as ReflectionCache;
+use Magento\Framework\Serialize\SerializerInterface;
 
 /**
  * Gathers method metadata information.
@@ -18,14 +20,14 @@ use Magento\Framework\App\Cache\Type\Reflection as ReflectionCache;
  */
 class MethodsMap
 {
-    const SERVICE_METHOD_PARAMS_CACHE_PREFIX = 'service_method_params_';
-    const SERVICE_INTERFACE_METHODS_CACHE_PREFIX = 'serviceInterfaceMethodsMap';
-    const BASE_MODEL_CLASS = \Magento\Framework\Model\AbstractExtensibleModel::class;
+    public const SERVICE_METHOD_PARAMS_CACHE_PREFIX = 'service_method_params_';
+    public const SERVICE_INTERFACE_METHODS_CACHE_PREFIX = 'serviceInterfaceMethodsMap';
+    public const BASE_MODEL_CLASS = \Magento\Framework\Model\AbstractExtensibleModel::class;
 
-    const METHOD_META_NAME = 'name';
-    const METHOD_META_TYPE = 'type';
-    const METHOD_META_HAS_DEFAULT_VALUE = 'isDefaultValueAvailable';
-    const METHOD_META_DEFAULT_VALUE = 'defaultValue';
+    public const METHOD_META_NAME = 'name';
+    public const METHOD_META_TYPE = 'type';
+    public const METHOD_META_HAS_DEFAULT_VALUE = 'isDefaultValueAvailable';
+    public const METHOD_META_DEFAULT_VALUE = 'defaultValue';
 
     /**
      * @var \Magento\Framework\Cache\FrontendInterface
@@ -106,7 +108,7 @@ class MethodsMap
     public function getMethodsMap($interfaceName)
     {
         //phpcs:ignore Magento2.Security.InsecureFunction
-        $key = self::SERVICE_INTERFACE_METHODS_CACHE_PREFIX . "-" . md5($interfaceName);
+        $key = self::SERVICE_INTERFACE_METHODS_CACHE_PREFIX . '-' . md5($interfaceName);
         if (!isset($this->serviceInterfaceMethodsMap[$key])) {
             $methodMap = $this->cache->load($key);
             if ($methodMap) {
@@ -145,7 +147,7 @@ class MethodsMap
                 self::METHOD_META_NAME => $paramReflection->getName(),
                 self::METHOD_META_TYPE => $this->typeProcessor->getParamType($paramReflection),
                 self::METHOD_META_HAS_DEFAULT_VALUE => $isDefaultValueAvailable,
-                self::METHOD_META_DEFAULT_VALUE => $isDefaultValueAvailable ? $paramReflection->getDefaultValue() : null
+                self::METHOD_META_DEFAULT_VALUE => $isDefaultValueAvailable ? $paramReflection->getDefaultValue() : null,
             ];
         }
         $this->cache->save($this->getSerializer()->serialize($params), $cacheId, [ReflectionCache::CACHE_TAG]);

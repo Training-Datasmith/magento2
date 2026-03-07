@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,9 +13,9 @@ use Magento\Eav\Model\Entity\Attribute\FrontendLabel;
 use Magento\Eav\Model\Entity\Attribute\FrontendLabelFactory;
 use Magento\Eav\Model\ResourceModel\Entity\Attribute as AttributeResource;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test for EAV Entity attribute model
@@ -72,7 +73,7 @@ class AttributeTest extends TestCase
             ['select', 'int'],
             ['boolean', 'int'],
             ['price', 'decimal'],
-            ['weight', 'decimal']
+            ['weight', 'decimal'],
         ];
     }
 
@@ -104,7 +105,7 @@ class AttributeTest extends TestCase
             ['textarea', 'default_value_textarea'],
             ['date', 'default_value_date'],
             ['datetime', 'default_value_datetime'],
-            ['boolean', 'default_value_yesno']
+            ['boolean', 'default_value_yesno'],
         ];
     }
 
@@ -132,7 +133,7 @@ class AttributeTest extends TestCase
             'group sort and sort' => [
                 'sortWeights' => ['group_sort' => 7, 'sort' => 5],
                 'expected' => 7000.0005,
-            ]
+            ],
         ];
     }
 

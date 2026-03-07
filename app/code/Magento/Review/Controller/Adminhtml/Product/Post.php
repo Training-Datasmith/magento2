@@ -1,16 +1,19 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\Review\Controller\Adminhtml\Product as ProductController;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Store\Model\Store;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Review\Controller\Adminhtml\Product as ProductController;
 use Magento\Review\Model\Review;
+use Magento\Store\Model\Store;
 
 /**
  * Review admin controller for POST request.

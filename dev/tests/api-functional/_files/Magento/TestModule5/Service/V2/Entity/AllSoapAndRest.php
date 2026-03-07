@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\TestModule5\Service\V2\Entity;
 
 /**
@@ -16,7 +19,7 @@ class AllSoapAndRest extends \Magento\TestModule5\Service\V2\AllSoapAndRest
     /**
      * Price field
      */
-    const PRICE = 'price';
+    public const PRICE = 'price';
 
     /**
      * @return int

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,10 +10,10 @@ namespace Magento\Framework\Validator\Test\Unit;
 
 use Laminas\Validator\Callback;
 use Laminas\Validator\Identical;
-use Magento\Framework\Validator\StringLength;
 use Magento\Framework\Validator\DataObject;
-use PHPUnit\Framework\TestCase;
+use Magento\Framework\Validator\StringLength;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ObjectTest extends TestCase
 {
@@ -125,9 +126,9 @@ class ObjectTest extends TestCase
                     "'field_one' does not match expected value",
                     "'two' is less than 5 characters long",
                     "'field_two' does not match expected value",
-                    'Entity is not valid.'
+                    'Entity is not valid.',
                 ],
-            ]
+            ],
         ];
     }
 }

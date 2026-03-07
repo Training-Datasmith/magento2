@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -94,7 +95,7 @@ class ValueProviderTest extends TestCase
                 'searchCriteriaBuilder' => $this->searchCriteriaBuilderMock,
                 'objectConverter' => $this->dataObjectMock,
                 'salesRuleFactory' => $this->ruleFactoryMock,
-                'simpleActionOptionsProvider' => $this->simpleActionOptionsProviderMock
+                'simpleActionOptionsProvider' => $this->simpleActionOptionsProviderMock,
             ]
         );
     }
@@ -120,7 +121,7 @@ class ValueProviderTest extends TestCase
             ->method('getStoreLabels')
             ->willReturn(
                 [
-                    'label0'
+                    'label0',
                 ]
             );
         $test = $this->model->getMetadataValues($ruleMock);

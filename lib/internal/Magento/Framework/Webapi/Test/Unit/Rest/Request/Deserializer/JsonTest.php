@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class JsonTest extends TestCase
         $inputInvalidJson = '{"key1":"test1"."key2":"test2"}';
         try {
             $this->_jsonDeserializer->deserialize($inputInvalidJson);
-            $this->fail("Exception is expected to be raised");
+            $this->fail('Exception is expected to be raised');
         } catch (Exception $e) {
             $this->assertInstanceOf(Exception::class, $e, 'Exception type is invalid');
             $this->assertEquals('Decoding error.', $e->getMessage(), 'Exception message is invalid');
@@ -135,7 +136,7 @@ class JsonTest extends TestCase
         $inputInvalidJson = '{"key1":"test1"."key2":"test2"}';
         try {
             $this->_jsonDeserializer->deserialize($inputInvalidJson);
-            $this->fail("Exception is expected to be raised");
+            $this->fail('Exception is expected to be raised');
         } catch (Exception $e) {
             $this->assertInstanceOf(Exception::class, $e, 'Exception type is invalid');
             $this->assertStringContainsString('Decoding error:', $e->getMessage(), 'Exception message is invalid');

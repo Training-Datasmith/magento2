@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -68,10 +69,10 @@ class CmsPageTest extends TestCase
                     new DataObject([
                         'url' => 'http://dummy.url',
                         'id' => '/url',
-                        'updated_at' => '2017-01-01 23:59:59'
-                    ])
-                ]
-            ]
+                        'updated_at' => '2017-01-01 23:59:59',
+                    ]),
+                ],
+            ],
         ];
     }
 

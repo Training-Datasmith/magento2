@@ -1,12 +1,14 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\View\Layout;
 
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\View;
 
 /**
  * Class BuilderFactory
@@ -16,8 +18,8 @@ class BuilderFactory
     /**#@+
      * Allowed builder types
      */
-    const TYPE_LAYOUT = 'layout';
-    const TYPE_PAGE   = 'page';
+    public const TYPE_LAYOUT = 'layout';
+    public const TYPE_PAGE   = 'page';
     /**#@-*/
 
     /**#@-*/

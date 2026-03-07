@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\Catalog\Test\Unit\Model\ResourceModel\Product\Indexer\Price;
 
 use Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator;
+use Magento\Framework\App\DeploymentConfig;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Indexer\BatchSizeManagementInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\App\DeploymentConfig;
 
 class BatchSizeCalculatorTest extends TestCase
 {

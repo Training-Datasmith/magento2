@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Plugin\Model\Product\Action;
 
 use Magento\Catalog\Model\Product\Action;
-use Magento\Framework\Indexer\CacheContext;
 use Magento\Framework\Event\ManagerInterface as EventManager;
+use Magento\Framework\Indexer\CacheContext;
 
 class UpdateAttributesFlushCache
 {

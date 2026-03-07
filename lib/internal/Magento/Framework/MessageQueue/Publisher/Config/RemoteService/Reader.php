@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Publisher\Config\RemoteService;
 
 use Magento\Framework\Communication\Config\ReflectionGenerator;
@@ -69,7 +72,7 @@ class Reader implements ReaderInterface
                 'name' => 'amqp',
                 'exchange' => $this->defaultValueProvider->getExchange(),
                 'disabled' => false,
-            ]
+            ],
         ];
         foreach ($this->getRemoteServices() as $serviceInterface => $remoteImplementation) {
             try {

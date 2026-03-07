@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -72,29 +73,29 @@ class UrlBuilderTest extends TestCase
                 'version',
                 'edition',
                 'locale',
-                'https://content/url/example/version/edition/locale.json'
+                'https://content/url/example/version/edition/locale.json',
             ],
             'no-edition' => [
                 'content/url/example',
                 'version',
                 '',
                 'locale',
-                'https://content/url/example/version/locale.json'
+                'https://content/url/example/version/locale.json',
             ],
             'no-locale' => [
                 'content/url/example',
                 'version',
                 'edition',
                 '',
-                'https://content/url/example/version/edition.json'
+                'https://content/url/example/version/edition.json',
             ],
             'no-content-url' => [
                 '',
                 'version',
                 'edition',
                 'locale',
-                ''
-            ]
+                '',
+            ],
         ];
     }
 }

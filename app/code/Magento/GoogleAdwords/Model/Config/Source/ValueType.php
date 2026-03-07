@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\GoogleAdwords\Model\Config\Source;
 
 /**
@@ -25,8 +28,8 @@ class ValueType implements \Magento\Framework\Option\ArrayInterface
             ],
             [
                 'value' => \Magento\GoogleAdwords\Helper\Data::CONVERSION_VALUE_TYPE_CONSTANT,
-                'label' => __('Constant')
-            ]
+                'label' => __('Constant'),
+            ],
         ];
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -91,7 +92,7 @@ class BulkSummaryMapperTest extends TestCase
         $this->connectionMock->expects($this->once())->method('select')->willReturn($this->selectMock);
         $this->entityMetadataMock->expects($this->once())->method('getEntityTable')->willReturn($entityTable);
         $this->selectMock->expects($this->once())->method('from')->with($entityTable, 'id')->willReturnSelf();
-        $this->selectMock->expects($this->once())->method('where')->with("uuid = ?", 'bulk-1')->willReturnSelf();
+        $this->selectMock->expects($this->once())->method('where')->with('uuid = ?', 'bulk-1')->willReturnSelf();
         $this->connectionMock
             ->expects($this->once())
             ->method('fetchOne')
@@ -108,7 +109,7 @@ class BulkSummaryMapperTest extends TestCase
     {
         return [
             [1, ['uuid' => 'bulk-1', 'id' => 1]],
-            [false, ['uuid' => 'bulk-1']]
+            [false, ['uuid' => 'bulk-1']],
         ];
     }
 }

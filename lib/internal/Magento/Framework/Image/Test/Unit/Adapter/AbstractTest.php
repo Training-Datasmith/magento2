@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,16 +9,17 @@ declare(strict_types=1);
 /**
  * Test class for \Magento\Framework\Image\Adapter\AbstractAdapter.
  */
+
 namespace Magento\Framework\Image\Test\Unit\Adapter;
 
 use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\Write;
 use Magento\Framework\Image\Adapter\AbstractAdapter;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Log\LoggerInterface;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class AbstractTest extends TestCase
 {
@@ -126,7 +128,7 @@ class AbstractTest extends TestCase
             [__DIR__, 'name.txt', __DIR__ . '/name.txt'],
             [__DIR__ . '/name.txt', null, __DIR__ . '/name.txt'],
             [null, 'name.txt', '_fileSrcPath' . '/name.txt'],
-            [null, null, '_fileSrcPath' . '/_fileSrcName']
+            [null, null, '_fileSrcPath' . '/_fileSrcName'],
         ];
     }
 }

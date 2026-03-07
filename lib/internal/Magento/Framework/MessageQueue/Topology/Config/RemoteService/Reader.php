@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\Topology\Config\RemoteService;
 
 use Magento\Framework\Communication\Config\ReflectionGenerator;
@@ -73,7 +76,7 @@ class Reader implements ReaderInterface
                 'internal' => false,
                 'bindings' => $this->generateBindings(),
                 'arguments' => [],
-            ]
+            ],
         ];
     }
 
@@ -106,7 +109,7 @@ class Reader implements ReaderInterface
                     'destination' => $destination,
                     'disabled' => false,
                     'topic' => $topic,
-                    'arguments' => []
+                    'arguments' => [],
                 ];
             }
         }

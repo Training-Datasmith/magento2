@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -106,7 +107,7 @@ class SwitchActionTest extends TestCase
                 '_request' => $this->requestMock,
                 '_response' => $this->responseMock,
                 '_redirect' => $this->redirectMock,
-                'storeSwitcher' => $this->storeSwitcher
+                'storeSwitcher' => $this->storeSwitcher,
             ]
         );
     }
@@ -127,7 +128,7 @@ class SwitchActionTest extends TestCase
         $this->requestMock->expects($this->any())->method('getParam')->willReturnMap(
             [
                 [StoreResolver::PARAM_NAME, null, $storeToSwitchToCode],
-                ['___from_store', null, $defaultStoreViewCode]
+                ['___from_store', null, $defaultStoreViewCode],
             ]
         );
         $this->storeRepositoryMock

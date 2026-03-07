@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -9,11 +10,11 @@ namespace Magento\GroupedProductGraphQl\Model\Resolver\Product\Price;
 
 use Magento\Catalog\Pricing\Price\FinalPrice;
 use Magento\Catalog\Pricing\Price\RegularPrice;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Framework\Pricing\PriceInfoInterface;
-use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\SaleableInterface;
 use Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderInterface;
+use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Pricing\Amount\AmountInterface;
+use Magento\Framework\Pricing\PriceInfoInterface;
+use Magento\Framework\Pricing\SaleableInterface;
 
 /**
  * Provides product prices for configurable products

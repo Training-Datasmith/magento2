@@ -1,11 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
-use Magento\Framework\Module\FullModuleList;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Setup\UninstallInterface;
 use Magento\Setup\Module\DataSetupFactory;

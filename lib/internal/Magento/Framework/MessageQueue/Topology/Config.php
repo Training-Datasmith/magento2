@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +9,9 @@
 namespace Magento\Framework\MessageQueue\Topology;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Phrase;
 use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\Iterator as ExchangeIterator;
 use Magento\Framework\MessageQueue\Topology\Config\QueueConfigItem\Iterator as QueueIterator;
+use Magento\Framework\Phrase;
 
 /**
  * Topology config provides access to data declared in etc/queue_topology.xml
@@ -54,7 +56,7 @@ class Config implements ConfigInterface
                     'The "%exchange" exchange is not declared for the "%connection" connection. Verify and try again.',
                     [
                         'exchange' => $name,
-                        'connection' => $connection
+                        'connection' => $connection,
                     ]
                 )
             );

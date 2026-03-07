@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -120,21 +121,21 @@ class ShellTest extends TestCase
                 'php -r %s',
                 ['fwrite(STDERR, 27182);'],
                 '27182',
-                ['php -r `fwrite(STDERR, 27182);` 2>&1', '27182']
+                ['php -r `fwrite(STDERR, 27182);` 2>&1', '27182'],
             ],
             'piping STDERR -> STDOUT' => [
                 // intentionally no spaces around the pipe symbol
                 'php -r %s|php -r %s',
                 ['fwrite(STDERR, 27183);', 'echo fgets(STDIN);'],
                 '27183',
-                ['php -r `fwrite(STDERR, 27183);` 2>&1|php -r `echo fgets(STDIN);` 2>&1', '27183']
+                ['php -r `fwrite(STDERR, 27183);` 2>&1|php -r `echo fgets(STDIN);` 2>&1', '27183'],
             ],
             'piping STDERR -> STDERR' => [
                 'php -r %s | php -r %s',
                 ['fwrite(STDERR, 27184);', 'fwrite(STDERR, fgets(STDIN));'],
                 '27184',
-                ['php -r `fwrite(STDERR, 27184);` 2>&1 | php -r `fwrite(STDERR, fgets(STDIN));` 2>&1', '27184']
-            ]
+                ['php -r `fwrite(STDERR, 27184);` 2>&1 | php -r `fwrite(STDERR, fgets(STDIN));` 2>&1', '27184'],
+            ],
         ];
     }
 

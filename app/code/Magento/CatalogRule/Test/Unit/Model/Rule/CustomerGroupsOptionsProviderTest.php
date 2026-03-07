@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -55,7 +56,7 @@ class CustomerGroupsOptionsProviderTest extends TestCase
         $customerGroups = ['group1', 'group2'];
 
         $options = [
-            ['label' => 'label', 'value' => 'value']
+            ['label' => 'label', 'value' => 'value'],
         ];
 
         $searchCriteriaMock = $this->createMock(SearchCriteria::class);

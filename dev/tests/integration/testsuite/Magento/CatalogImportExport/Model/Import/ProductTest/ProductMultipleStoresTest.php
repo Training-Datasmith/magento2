@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -33,7 +34,7 @@ class ProductMultipleStoresTest extends ProductTestBase
         $products = [
             'simple1',
             'simple2',
-            'simple3'
+            'simple3',
         ];
 
         $importExportData = $this->getMockBuilder(\Magento\ImportExport\Helper\Data::class)
@@ -53,7 +54,7 @@ class ProductMultipleStoresTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_multiple_store.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
@@ -176,7 +177,7 @@ class ProductMultipleStoresTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_multiple_stores.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(
@@ -222,7 +223,7 @@ class ProductMultipleStoresTest extends ProductTestBase
             \Magento\ImportExport\Model\Import\Source\Csv::class,
             [
                 'file' => __DIR__ . '/../_files/products_to_import_with_two_stores.csv',
-                'directory' => $directory
+                'directory' => $directory,
             ]
         );
         $errors = $this->_model->setParameters(

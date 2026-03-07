@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,21 +8,17 @@
 
 namespace Magento\AdvancedPricingImportExport\Controller\Adminhtml\Export;
 
+use Magento\AdvancedPricingImportExport\Model\Export\AdvancedPricing as ExportAdvancedPricing;
 use Magento\Backend\App\Action\Context;
+use Magento\Catalog\Model\Product as CatalogProduct;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
-use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\AdvancedPricingImportExport\Model\Export\AdvancedPricing as ExportAdvancedPricing;
-use Magento\Catalog\Model\Product as CatalogProduct;
+use Magento\ImportExport\Controller\Adminhtml\Export as ExportController;
 use Magento\ImportExport\Model\Export\EntityFiltersProviderInterface;
 
 class GetFilter extends ExportController implements HttpGetActionInterface, HttpPostActionInterface
 {
-    /**
-     * @param Context $context
-     * @param EntityFiltersProviderInterface $filtersProvider
-     */
     public function __construct(
         Context $context,
         private readonly EntityFiltersProviderInterface $filtersProvider

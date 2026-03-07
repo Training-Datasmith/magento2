@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-namespace Magento\Test\Integrity\Modular;
 
-use Magento\Framework\Module\Dir;
+namespace Magento\Test\Integrity\Modular;
 
 class MenuConfigFilesTest extends \PHPUnit\Framework\TestCase
 {

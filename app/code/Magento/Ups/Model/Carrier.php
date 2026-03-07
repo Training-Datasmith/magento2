@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Ups\Model;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Laminas\Http\Client;
 use Magento\CatalogInventory\Api\StockRegistryInterface;
 use Magento\Directory\Helper\Data;
@@ -47,7 +47,6 @@ use Magento\Shipping\Model\Tracking\Result\StatusFactory as TrackStatusFactory;
 use Magento\Shipping\Model\Tracking\ResultFactory as TrackFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Ups\Helper\Config;
-use Magento\Ups\Model\UpsAuth;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Throwable;
@@ -282,7 +281,7 @@ class Carrier extends AbstractCarrierOnline implements CarrierInterface
                         $this->_updateFreeMethodQuote($request);
                         return $this->getResult();
                     }
-                )
+                ),
             ]
         );
     }
@@ -653,7 +652,7 @@ class Carrier extends AbstractCarrierOnline implements CarrierInterface
         $priceArr = [];
         if ($response !== null && strlen(trim($response)) > 0) {
             $rRows = explode("\n", $response);
-            $allowedMethods = explode(",", (string)$this->getConfigData('allowed_methods'));
+            $allowedMethods = explode(',', (string)$this->getConfigData('allowed_methods'));
             foreach ($rRows as $rRow) {
                 $row = explode('%', $rRow);
                 switch (substr($row[0], -1)) {
@@ -751,10 +750,10 @@ class Carrier extends AbstractCarrierOnline implements CarrierInterface
 XMLRequest;
 
         if ($serviceCode !== null) {
-            $xmlParams .= "<Service>" .
+            $xmlParams .= '<Service>' .
                 "<Code>{$serviceCode}</Code>" .
                 "<Description>{$serviceDescription}</Description>" .
-                "</Service>";
+                '</Service>';
         }
 
         $xmlParams .= <<<XMLRequest
@@ -828,10 +827,10 @@ XMLRequest;
         }
 
         if ($this->getConfigFlag('negotiated_active')) {
-            $xmlParams .= "<RateInformation><NegotiatedRatesIndicator/></RateInformation>";
+            $xmlParams .= '<RateInformation><NegotiatedRatesIndicator/></RateInformation>';
         }
         if ($this->getConfigFlag('include_taxes')) {
-            $xmlParams .= "<TaxInformationIndicator/>";
+            $xmlParams .= '<TaxInformationIndicator/>';
         }
 
         $xmlParams .= <<<XMLRequest
@@ -865,7 +864,7 @@ XMLRequest;
 
                         return $this->_parseXmlResponse($xmlResponse);
                     }
-                )
+                ),
             ]
         );
     }
@@ -899,7 +898,7 @@ XMLRequest;
     {
         $currencyMapping = [
             'RMB' => 'CNY',
-            'CNH' => 'CNY'
+            'CNH' => 'CNY',
         ];
 
         return $currencyMapping[$code] ?? $code;
@@ -922,14 +921,14 @@ XMLRequest;
         if ($xmlResponse !== null && strlen(trim($xmlResponse)) > 0) {
             $xml = new \Magento\Framework\Simplexml\Config();
             $xml->loadString($xmlResponse);
-            $arr = $xml->getXpath("//RatingServiceSelectionResponse/Response/ResponseStatusCode/text()");
+            $arr = $xml->getXpath('//RatingServiceSelectionResponse/Response/ResponseStatusCode/text()');
             $success = (int)$arr[0];
             if ($success === 1) {
-                $arr = $xml->getXpath("//RatingServiceSelectionResponse/RatedShipment");
-                $allowedMethods = explode(",", $this->getConfigData('allowed_methods') ?? '');
+                $arr = $xml->getXpath('//RatingServiceSelectionResponse/RatedShipment');
+                $allowedMethods = explode(',', $this->getConfigData('allowed_methods') ?? '');
 
                 // Negotiated rates
-                $negotiatedArr = $xml->getXpath("//RatingServiceSelectionResponse/RatedShipment/NegotiatedRates");
+                $negotiatedArr = $xml->getXpath('//RatingServiceSelectionResponse/RatedShipment/NegotiatedRates');
                 $negotiatedActive = $this->getConfigFlag('negotiated_active')
                     && $this->getConfigData('shipper_number')
                     && !empty($negotiatedArr);
@@ -947,7 +946,7 @@ XMLRequest;
                     );
                 }
             } else {
-                $arr = $xml->getXpath("//RatingServiceSelectionResponse/Response/Error/ErrorDescription/text()");
+                $arr = $xml->getXpath('//RatingServiceSelectionResponse/Response/Error/ErrorDescription/text()');
                 $errorTitle = (string)$arr[0][0];
                 $error = $this->_rateErrorFactory->create();
                 $error->setCarrier('ups');
@@ -986,8 +985,8 @@ XMLRequest;
             // depending on whether we are using negotiated rates or not
             if ($negotiatedActive) {
                 $includeTaxesArr = $xml->getXpath(
-                    "//RatingServiceSelectionResponse/RatedShipment/NegotiatedRates"
-                    . "/NetSummaryCharges/TotalChargesWithTaxes"
+                    '//RatingServiceSelectionResponse/RatedShipment/NegotiatedRates'
+                    . '/NetSummaryCharges/TotalChargesWithTaxes'
                 );
                 $includeTaxesActive = $this->getConfigFlag('include_taxes') && !empty($includeTaxesArr);
                 if ($includeTaxesActive) {
@@ -1010,7 +1009,7 @@ XMLRequest;
                 }
             } else {
                 $includeTaxesArr = $xml->getXpath(
-                    "//RatingServiceSelectionResponse/RatedShipment/TotalChargesWithTaxes"
+                    '//RatingServiceSelectionResponse/RatedShipment/TotalChargesWithTaxes'
                 );
                 $includeTaxesActive = $this->getConfigFlag('include_taxes') && !empty($includeTaxesArr);
                 if ($includeTaxesActive) {
@@ -1093,44 +1092,44 @@ XMLRequest;
         }
 
         $rateParams = [
-            "RateRequest" => [
-                "Request" => [
-                    "TransactionReference" => [
-                        "CustomerContext" => "Rating and Service"
-                    ]
+            'RateRequest' => [
+                'Request' => [
+                    'TransactionReference' => [
+                        'CustomerContext' => 'Rating and Service',
+                    ],
                 ],
-                "Shipment" => [
-                    "Shipper" => [
-                        "Name" => "UPS",
-                        "ShipperNumber" => "{$shipperNumber}",
-                        "Address" => [
-                            "AddressLine" => [
+                'Shipment' => [
+                    'Shipper' => [
+                        'Name' => 'UPS',
+                        'ShipperNumber' => "{$shipperNumber}",
+                        'Address' => [
+                            'AddressLine' => [
                                 "{$residentialAddressIndicator}",
                             ],
-                            "City" => "{$shipperCity}",
-                            "StateProvinceCode" => "{$shipperStateProvince}",
-                            "PostalCode" => "{$shipperPostalCode}",
-                            "CountryCode" => "{$shipperCountryCode}"
-                        ]
+                            'City' => "{$shipperCity}",
+                            'StateProvinceCode' => "{$shipperStateProvince}",
+                            'PostalCode' => "{$shipperPostalCode}",
+                            'CountryCode' => "{$shipperCountryCode}",
+                        ],
                     ],
-                    "ShipTo" => [
-                        "Address" => [
-                            "AddressLine" => ["{$params['49_residential']}"],
-                            "StateProvinceCode" => "{$params['destRegionCode']}",
-                            "PostalCode" => "{$params['19_destPostal']}",
-                            "CountryCode" => "{$params['22_destCountry']}"
-                        ]
+                    'ShipTo' => [
+                        'Address' => [
+                            'AddressLine' => ["{$params['49_residential']}"],
+                            'StateProvinceCode' => "{$params['destRegionCode']}",
+                            'PostalCode' => "{$params['19_destPostal']}",
+                            'CountryCode' => "{$params['22_destCountry']}",
+                        ],
                     ],
-                    "ShipFrom" => [
-                        "Address" => [
-                            "AddressLine" => [],
-                            "StateProvinceCode" => "{$params['origRegionCode']}",
-                            "PostalCode" => "{$params['15_origPostal']}",
-                            "CountryCode" => "{$params['14_origCountry']}"
-                        ]
+                    'ShipFrom' => [
+                        'Address' => [
+                            'AddressLine' => [],
+                            'StateProvinceCode' => "{$params['origRegionCode']}",
+                            'PostalCode' => "{$params['15_origPostal']}",
+                            'CountryCode' => "{$params['14_origCountry']}",
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
 
         if ($params['49_residential'] === '01') {
@@ -1139,11 +1138,11 @@ XMLRequest;
         }
 
         if ($this->getConfigFlag('negotiated_active')) {
-            $rateParams['RateRequest']['Shipment']['ShipmentRatingOptions']['TPFCNegotiatedRatesIndicator'] = "Y";
-            $rateParams['RateRequest']['Shipment']['ShipmentRatingOptions']['NegotiatedRatesIndicator'] = "Y";
+            $rateParams['RateRequest']['Shipment']['ShipmentRatingOptions']['TPFCNegotiatedRatesIndicator'] = 'Y';
+            $rateParams['RateRequest']['Shipment']['ShipmentRatingOptions']['NegotiatedRatesIndicator'] = 'Y';
         }
         if ($this->getConfigFlag('include_taxes')) {
-            $rateParams['RateRequest']['Shipment']['TaxInformationIndicator'] = "Y";
+            $rateParams['RateRequest']['Shipment']['TaxInformationIndicator'] = 'Y';
         }
 
         if ($serviceCode !== null) {
@@ -1157,38 +1156,38 @@ XMLRequest;
 
         foreach ($rowRequest->getPackages() as $package) {
             $rateParams['RateRequest']['Shipment']['Package'][] = [
-                "PackagingType" => [
-                    "Code" => "{$params['48_container']}",
-                    "Description" => "Packaging"
+                'PackagingType' => [
+                    'Code' => "{$params['48_container']}",
+                    'Description' => 'Packaging',
                 ],
-                "Dimensions" => [
-                    "UnitOfMeasurement" => [
-                        "Code" => "{$rowRequest->getUnitDimensions()}",
-                        "Description" => "{$rowRequest->getUnitDimensionsDescription()}"
+                'Dimensions' => [
+                    'UnitOfMeasurement' => [
+                        'Code' => "{$rowRequest->getUnitDimensions()}",
+                        'Description' => "{$rowRequest->getUnitDimensionsDescription()}",
                     ],
-                    "Length" => "{$length}",
-                    "Width" => "{$width}",
-                    "Height" => "{$height}"
+                    'Length' => "{$length}",
+                    'Width' => "{$width}",
+                    'Height' => "{$height}",
                 ],
-                "PackageWeight" => [
-                    "UnitOfMeasurement" => [
-                        "Code" => "{$rowRequest->getUnitMeasure()}"
+                'PackageWeight' => [
+                    'UnitOfMeasurement' => [
+                        'Code' => "{$rowRequest->getUnitMeasure()}",
                     ],
-                    "Weight" => "{$this->_getCorrectWeight($package['weight'])}"
-                ]
+                    'Weight' => "{$this->_getCorrectWeight($package['weight'])}",
+                ],
             ];
         }
 
         $ratePayload = json_encode($rateParams, JSON_PRETTY_PRINT);
         /** Rest API Payload */
-        $version = "v1";
+        $version = 'v1';
         $requestOption = $params['10_action'];
         $headers = [
-            "Authorization" => "Bearer " . $accessToken,
-            "Content-Type" => "application/json"
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
         ];
         $httpResponse = $this->asyncHttpClient->request(
-            new Request($url.$version . "/" . $requestOption, Request::METHOD_POST, $headers, $ratePayload)
+            new Request($url.$version . '/' . $requestOption, Request::METHOD_POST, $headers, $ratePayload)
         );
 
         $debugData['request'] = $ratePayload;
@@ -1212,7 +1211,7 @@ XMLRequest;
 
                         return $this->_parseRestResponse($jsonResponse);
                     }
-                )
+                ),
             ]
         );
     }
@@ -1275,7 +1274,7 @@ XMLRequest;
             $rateResponseData = json_decode($rateResponse, true);
             if ($rateResponseData['RateResponse']['Response']['ResponseStatus']['Description'] === 'Success') {
                 $arr = $rateResponseData['RateResponse']['RatedShipment'] ?? [];
-                $allowedMethods = explode(",", $this->getConfigData('allowed_methods') ?? '');
+                $allowedMethods = explode(',', $this->getConfigData('allowed_methods') ?? '');
 
                 $allowedCurrencies = $this->_currencyFactory->create()->getConfigAllowCurrencies();
                 foreach ($arr as $shipElement) {
@@ -1539,9 +1538,9 @@ XMLAuth;
             $status->setTracking($tracking);
             $status->setPopup(1);
             $status->setUrl(
-                "http://wwwapps.ups.com/WebTracking/processInputRequest?HTMLVersion=5.0&error_carried=true" .
+                'http://wwwapps.ups.com/WebTracking/processInputRequest?HTMLVersion=5.0&error_carried=true' .
                 "&tracknums_displayed=5&TypeOfInquiryNumber=T&loc=en_US&InquiryNumber1={$tracking}" .
-                "&AgreeToTermsAndConditions=yes"
+                '&AgreeToTermsAndConditions=yes'
             );
             $result->append($status);
         }
@@ -1621,25 +1620,25 @@ XMLAuth;
         if ($xmlResponse) {
             $xml = new \Magento\Framework\Simplexml\Config();
             $xml->loadString($xmlResponse);
-            $arr = $xml->getXpath("//TrackResponse/Response/ResponseStatusCode/text()");
+            $arr = $xml->getXpath('//TrackResponse/Response/ResponseStatusCode/text()');
             $success = (int)$arr[0][0];
 
             if ($success === 1) {
-                $arr = $xml->getXpath("//TrackResponse/Shipment/Service/Description/text()");
+                $arr = $xml->getXpath('//TrackResponse/Shipment/Service/Description/text()');
                 $resultArr['service'] = (string)$arr[0];
 
-                $arr = $xml->getXpath("//TrackResponse/Shipment/PickupDate/text()");
+                $arr = $xml->getXpath('//TrackResponse/Shipment/PickupDate/text()');
                 $resultArr['shippeddate'] = (string)$arr[0];
 
-                $arr = $xml->getXpath("//TrackResponse/Shipment/Package/PackageWeight/Weight/text()");
+                $arr = $xml->getXpath('//TrackResponse/Shipment/Package/PackageWeight/Weight/text()');
                 $weight = (string)$arr[0];
 
-                $arr = $xml->getXpath("//TrackResponse/Shipment/Package/PackageWeight/UnitOfMeasurement/Code/text()");
+                $arr = $xml->getXpath('//TrackResponse/Shipment/Package/PackageWeight/UnitOfMeasurement/Code/text()');
                 $unit = (string)$arr[0];
 
                 $resultArr['weight'] = "{$weight} {$unit}";
 
-                $activityTags = $xml->getXpath("//TrackResponse/Shipment/Package/Activity");
+                $activityTags = $xml->getXpath('//TrackResponse/Shipment/Package/Activity');
                 if ($activityTags) {
                     $index = 1;
                     foreach ($activityTags as $activityTag) {
@@ -1648,7 +1647,7 @@ XMLAuth;
                     $resultArr['progressdetail'] = $packageProgress;
                 }
             } else {
-                $arr = $xml->getXpath("//TrackResponse/Response/Error/ErrorDescription/text()");
+                $arr = $xml->getXpath('//TrackResponse/Response/Error/ErrorDescription/text()');
                 $errorTitle = (string)$arr[0][0];
             }
         }
@@ -1740,23 +1739,23 @@ XMLAuth;
              * RequestOption==>'1' to request all activities
              */
             $queryParams = [
-                "locale" => "en_US",
-                "returnSignature" => "false"
+                'locale' => 'en_US',
+                'returnSignature' => 'false',
             ];
             $trackParams = (object)[];
             $trackPayload = json_encode($trackParams);
             $transid = 'track'.uniqid();
             $headers = [
-                "Authorization" => "Bearer " . $accessToken,
-                "Content-Type" => "application/json",
-                "transId" => $transid,
-                "transactionSrc" => "testing"
+                'Authorization' => 'Bearer ' . $accessToken,
+                'Content-Type' => 'application/json',
+                'transId' => $transid,
+                'transactionSrc' => 'testing',
             ];
 
             $debugData[$tracking] = ['request' => $trackPayload];
             $trackingResponses[$tracking] = $this->asyncHttpClient->request(
                 new Request(
-                    $url.'v1/details/'. $tracking . "?" . http_build_query($queryParams),
+                    $url.'v1/details/'. $tracking . '?' . http_build_query($queryParams),
                     Request::METHOD_GET,
                     $headers,
                     $trackPayload
@@ -2359,7 +2358,7 @@ XMLAuth;
             $debugRequest = $this->filterDebugData($this->_xmlAccessRequest) . $xmlRequest->asXml();
             $this->_debug(
                 [
-                    'request_shipment' => $debugRequest
+                    'request_shipment' => $debugRequest,
                 ]
             );
             $shippingRequests[] = $this->asyncHttpClient->request(
@@ -2551,26 +2550,26 @@ XMLAuth;
         /**  Shipment API Payload */
 
         $shipParams = [
-            "ShipmentRequest" => [
-                "Request" => [
-                    "SubVersion" => "1801",
-                    "RequestOption" => "nonvalidate",
-                    "TransactionReference" => [
-                        "CustomerContext" => "Shipment Request"
-                    ]
+            'ShipmentRequest' => [
+                'Request' => [
+                    'SubVersion' => '1801',
+                    'RequestOption' => 'nonvalidate',
+                    'TransactionReference' => [
+                        'CustomerContext' => 'Shipment Request',
+                    ],
                 ],
-                "Shipment" => [
-                    "Description" => "{$this->generateShipmentDescription($shipmentItems)}",
-                    "Shipper" => [],
-                    "ShipTo" => [],
-                    "ShipFrom" => [],
-                    "PaymentInformation" => [],
-                    "Service" => [],
-                    "Package" => [],
-                    "ShipmentServiceOptions" => []
+                'Shipment' => [
+                    'Description' => "{$this->generateShipmentDescription($shipmentItems)}",
+                    'Shipper' => [],
+                    'ShipTo' => [],
+                    'ShipFrom' => [],
+                    'PaymentInformation' => [],
+                    'Service' => [],
+                    'Package' => [],
+                    'ShipmentServiceOptions' => [],
                 ],
-                "LabelSpecification" => []
-            ]
+                'LabelSpecification' => [],
+            ],
         ];
 
         if ($request->getIsReturn()) {
@@ -2729,7 +2728,7 @@ XMLAuth;
                 = $deliveryConfirmation;
         }
 
-        $shipParams['ShipmentRequest']['Shipment']['PaymentInformation']['ShipmentCharge']['Type'] = "01";
+        $shipParams['ShipmentRequest']['Shipment']['PaymentInformation']['ShipmentCharge']['Type'] = '01';
         $shipParams['ShipmentRequest']['Shipment']['PaymentInformation']['ShipmentCharge']['BillShipper']
         ['AccountNumber'] = $this->getConfigData('shipper_number');
 
@@ -3000,7 +2999,7 @@ XMLAuth;
     {
         if (empty($packages)) {
             $dividedWeight = $this->getTotalNumOfBoxes($totalWeight);
-            for ($i=0; $i < $this->_numBoxes; $i++) {
+            for ($i = 0; $i < $this->_numBoxes; $i++) {
                 $packages[$i]['weight'] = $this->_getCorrectWeight($dividedWeight);
             }
         }

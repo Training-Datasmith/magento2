@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -85,7 +86,7 @@ class SaveTest extends TestCase
             [
                 'request' => $this->request,
                 'messageManager' => $this->messageManager,
-                'resultRedirectFactory' => $this->redirectFactory
+                'resultRedirectFactory' => $this->redirectFactory,
             ]
         );
         $this->designConfig = $this->createMock(DesignConfigInterface::class);
@@ -129,8 +130,8 @@ class SaveTest extends TestCase
             ->willReturn([
                 'header_logo' => [
                     'tmp_name' => '',
-                    'error' => 4
-                ]
+                    'error' => 4,
+                ],
             ]);
         $this->configFactory->expects($this->once())
             ->method('create')
@@ -167,7 +168,7 @@ class SaveTest extends TestCase
             ->willReturn($this->redirect);
         $this->request->expects($this->exactly(2))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['scope'] => $scope,
                 ['scope_id'] => $scopeId
             });
@@ -184,8 +185,8 @@ class SaveTest extends TestCase
             ->willReturn([
                 'header_logo' => [
                     'tmp_name' => '',
-                    'error' => 4
-                ]
+                    'error' => 4,
+                ],
             ]);
         $this->configFactory->expects($this->once())
             ->method('create')
@@ -218,7 +219,7 @@ class SaveTest extends TestCase
             ->willReturn($this->redirect);
         $this->request->expects($this->exactly(2))
             ->method('getParam')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['scope'] => $scope,
                 ['scope_id'] => $scopeId
             });
@@ -234,8 +235,8 @@ class SaveTest extends TestCase
             ->willReturn([
                 'header_logo' => [
                     'tmp_name' => '',
-                    'error' => 4
-                ]
+                    'error' => 4,
+                ],
             ]);
         $this->configFactory->expects($this->once())
             ->method('create')

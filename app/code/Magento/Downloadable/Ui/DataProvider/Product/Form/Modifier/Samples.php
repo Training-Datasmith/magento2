@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -151,7 +153,7 @@ class Samples extends AbstractModifier
             'columnsHeader' => true,
             'additionalClasses' => 'admin__field-wide',
             'dataScope' => 'downloadable',
-            'deleteProperty'=> 'is_delete',
+            'deleteProperty' => 'is_delete',
             'deleteValue' => '1',
         ];
 

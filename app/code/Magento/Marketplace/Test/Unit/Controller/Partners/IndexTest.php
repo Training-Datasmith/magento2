@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -29,7 +30,7 @@ class IndexTest extends TestCase
             [
                 'getRequest',
                 'getResponse',
-                'getLayoutFactory'
+                'getLayoutFactory',
             ]
         );
     }

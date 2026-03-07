@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Reports\Block\Adminhtml\Product\Downloads;
 
 /**
@@ -94,7 +97,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Product'),
                 'index' => 'name',
                 'header_css_class' => 'col-product',
-                'column_css_class' => 'col-product'
+                'column_css_class' => 'col-product',
             ]
         );
 
@@ -104,7 +107,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('Link'),
                 'index' => 'link_title',
                 'header_css_class' => 'col-link',
-                'column_css_class' => 'col-link'
+                'column_css_class' => 'col-link',
             ]
         );
 
@@ -114,7 +117,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header' => __('SKU'),
                 'index' => 'sku',
                 'header_css_class' => 'col-sku',
-                'column_css_class' => 'col-sku'
+                'column_css_class' => 'col-sku',
             ]
         );
 
@@ -129,7 +132,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'type' => 'number',
                 'renderer' => \Magento\Reports\Block\Adminhtml\Product\Downloads\Renderer\Purchases::class,
                 'header_css_class' => 'col-purchases',
-                'column_css_class' => 'col-purchases'
+                'column_css_class' => 'col-purchases',
             ]
         );
 
@@ -143,7 +146,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'downloads',
                 'type' => 'number',
                 'header_css_class' => 'col-qty',
-                'column_css_class' => 'col-qty'
+                'column_css_class' => 'col-qty',
             ]
         );
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -15,11 +16,11 @@ use Magento\Authorization\Model\Acl\Role\User as RoleUser;
 use Magento\Authorization\Model\UserContextInterface;
 use Magento\Framework\Acl\Data\CacheInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\User\Model\Backend\Config\ObserverConfig;
 use Magento\User\Model\User as ModelUser;
-use Magento\Framework\Encryption\EncryptorInterface;
 
 /**
  * ACL user resource
@@ -123,7 +124,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             'logdate' => (new \DateTime())->format(\Magento\Framework\Stdlib\DateTime::DATETIME_PHP_FORMAT),
             'lognum' => $user->getLognum() + 1,
         ];
-        
+
         $user->setLogdate($data['logdate']);
         $user->setLognum($data['lognum']);
 
@@ -177,7 +178,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
                 ->where('user_type = :user_type');
 
             $binds = ['parent_id' => 0, 'user_id' => $userId,
-                      'user_type' => UserContextInterface::USER_TYPE_ADMIN
+                      'user_type' => UserContextInterface::USER_TYPE_ADMIN,
             ];
 
             return $connection->fetchAll($select, $binds);
@@ -348,7 +349,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         );
 
         $binds = ['user_id' => (int)$user->getId(),
-                  'user_type' => UserContextInterface::USER_TYPE_ADMIN
+                  'user_type' => UserContextInterface::USER_TYPE_ADMIN,
         ];
 
         $roles = $connection->fetchCol($select, $binds);
@@ -380,7 +381,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $condition = [
             'user_id = ?' => (int)$user->getId(),
             'parent_id = ?' => (int)$user->getRoleId(),
-            'user_type = ?' => UserContextInterface::USER_TYPE_ADMIN
+            'user_type = ?' => UserContextInterface::USER_TYPE_ADMIN,
         ];
 
         $dbh->delete($this->getTable('authorization_role'), $condition);
@@ -403,7 +404,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $binds = [
                 'parent_id' => $user->getRoleId(),
                 'user_id' => $user->getUserId(),
-                'user_type' => UserContextInterface::USER_TYPE_ADMIN
+                'user_type' => UserContextInterface::USER_TYPE_ADMIN,
             ];
 
             $select = $dbh->select()->from($roleTable)
@@ -617,7 +618,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         );
         $where = [
             'user_id = ?' => $userId,
-            'last_updated <= ?' => time() - $this->observerConfig->getAdminPasswordLifetime()
+            'last_updated <= ?' => time() - $this->observerConfig->getAdminPasswordLifetime(),
         ];
         if ($retainPasswordIds) {
             $where['password_id NOT IN (?)'] = $retainPasswordIds;
@@ -653,7 +654,7 @@ class User extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             [
                 'user_id' => $user->getId(),
                 'password_hash' => $passwordHash,
-                'last_updated' => time()
+                'last_updated' => time(),
             ]
         );
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,15 +12,15 @@ use Magento\Customer\Helper\Address;
 use Magento\Customer\Model\Address\AbstractAddress;
 use Magento\Framework\Event;
 use Magento\Framework\Event\Observer;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Api\Data\ShippingInterface;
 use Magento\Quote\Model\Quote;
+use Magento\Quote\Model\Quote\Address as QuoteAddress;
 use Magento\Sales\Observer\Frontend\RestoreCustomerGroupId;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Quote\Model\Quote\Address as QuoteAddress;
 
 /**
  * Tests Magento\Sales\Observer\Frontend\RestoreCustomerGroupIdTest
@@ -67,7 +68,7 @@ class RestoreCustomerGroupIdTest extends TestCase
                 'getPrevQuoteCustomerGroupId',
                 'unsPrevQuoteCustomerGroupId',
                 'hasPrevQuoteCustomerGroupId',
-                'setCustomerGroupId'
+                'setCustomerGroupId',
             ], ['getQuote']));
         $shippingMock->expects($this->once())->method('getAddress')->willReturn($quoteAddress);
 

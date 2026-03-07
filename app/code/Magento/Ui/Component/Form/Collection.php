@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Ui\Component\Form;
 
-use Magento\Ui\Component\AbstractComponent;
 use Magento\Framework\View\Element\UiComponentInterface;
+use Magento\Ui\Component\AbstractComponent;
 
 /**
  * @api
@@ -14,7 +17,7 @@ use Magento\Framework\View\Element\UiComponentInterface;
  */
 class Collection extends AbstractComponent implements UiComponentInterface
 {
-    const NAME = 'collection';
+    public const NAME = 'collection';
 
     /**
      * Get component name

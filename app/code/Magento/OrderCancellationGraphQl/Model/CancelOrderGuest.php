@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -52,11 +53,11 @@ class CancelOrderGuest
             $this->sendConfirmationKeyEmail($order, $input['reason']);
 
             return [
-                'order' => $this->orderFormatter->format($order)
+                'order' => $this->orderFormatter->format($order),
             ];
         } catch (LocalizedException $exception) {
             return [
-                'error' => __($exception->getMessage())
+                'error' => __($exception->getMessage()),
             ];
         }
     }
@@ -81,7 +82,7 @@ class CancelOrderGuest
                     $order->getBillingAddress()->getEmail(),
                     $order->getBillingAddress()->getLastname()
                 ),
-                'action' => 'cancel'
+                'action' => 'cancel',
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Model;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -52,7 +55,7 @@ class WeeeConfigProvider implements ConfigProviderInterface
             'isDisplayFinalPrice' => $this->isDisplayFinalPrice(),
             'isWeeeEnabled' => $this->isWeeeEnabled(),
             'isIncludedInSubtotal' => $this->isIncludedInSubtotal(),
-            'getIncludeWeeeFlag' => $this->getIncludeWeeeFlag()
+            'getIncludeWeeeFlag' => $this->getIncludeWeeeFlag(),
         ];
     }
 

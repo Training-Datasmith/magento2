@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -21,33 +22,33 @@ use Magento\SalesRule\Api\Data\RuleLabelInterface;
  */
 class Rule extends AbstractExtensibleObject implements RuleInterface
 {
-    const KEY_RULE_ID = 'rule_id';
-    const KEY_NAME = 'name';
-    const KEY_STORE_LABELS = 'store_labels';
-    const KEY_DESCRIPTION = 'description';
-    const KEY_FROM_DATE = 'from_date';
-    const KEY_TO_DATE = 'to_date';
-    const KEY_USES_PER_CUSTOMER = 'uses_per_customer';
-    const KEY_IS_ACTIVE = 'is_active';
-    const KEY_CONDITION = 'condition';
-    const KEY_ACTION_CONDITION = 'action_condition';
-    const KEY_STOP_RULES_PROCESSING = 'stop_rules_processing';
-    const KEY_IS_ADVANCED = 'is_advanced';
-    const KEY_WEBSITES = 'website_ids';
-    const KEY_PRODUCT_IDS = 'product_ids';
-    const KEY_CUSTOMER_GROUPS = 'customer_group_ids';
-    const KEY_SORT_ORDER = 'sort_order';
-    const KEY_SIMPLE_ACTION = 'simple_action';
-    const KEY_DISCOUNT_AMOUNT = 'discount_amount';
-    const KEY_DISCOUNT_QTY = 'discount_qty';
-    const KEY_DISCOUNT_STEP = 'discount_step';
-    const KEY_APPLY_TO_SHIPPING = 'apply_to_shipping';
-    const KEY_TIMES_USED = 'times_used';
-    const KEY_IS_RSS = 'is_rss';
-    const KEY_COUPON_TYPE = 'coupon_type';
-    const KEY_USE_AUTO_GENERATION = 'use_auto_generation';
-    const KEY_USES_PER_COUPON = 'uses_per_coupon';
-    const KEY_SIMPLE_FREE_SHIPPING = 'simple_free_shipping';
+    public const KEY_RULE_ID = 'rule_id';
+    public const KEY_NAME = 'name';
+    public const KEY_STORE_LABELS = 'store_labels';
+    public const KEY_DESCRIPTION = 'description';
+    public const KEY_FROM_DATE = 'from_date';
+    public const KEY_TO_DATE = 'to_date';
+    public const KEY_USES_PER_CUSTOMER = 'uses_per_customer';
+    public const KEY_IS_ACTIVE = 'is_active';
+    public const KEY_CONDITION = 'condition';
+    public const KEY_ACTION_CONDITION = 'action_condition';
+    public const KEY_STOP_RULES_PROCESSING = 'stop_rules_processing';
+    public const KEY_IS_ADVANCED = 'is_advanced';
+    public const KEY_WEBSITES = 'website_ids';
+    public const KEY_PRODUCT_IDS = 'product_ids';
+    public const KEY_CUSTOMER_GROUPS = 'customer_group_ids';
+    public const KEY_SORT_ORDER = 'sort_order';
+    public const KEY_SIMPLE_ACTION = 'simple_action';
+    public const KEY_DISCOUNT_AMOUNT = 'discount_amount';
+    public const KEY_DISCOUNT_QTY = 'discount_qty';
+    public const KEY_DISCOUNT_STEP = 'discount_step';
+    public const KEY_APPLY_TO_SHIPPING = 'apply_to_shipping';
+    public const KEY_TIMES_USED = 'times_used';
+    public const KEY_IS_RSS = 'is_rss';
+    public const KEY_COUPON_TYPE = 'coupon_type';
+    public const KEY_USE_AUTO_GENERATION = 'use_auto_generation';
+    public const KEY_USES_PER_COUPON = 'uses_per_coupon';
+    public const KEY_SIMPLE_FREE_SHIPPING = 'simple_free_shipping';
 
     /**
      * Return rule id

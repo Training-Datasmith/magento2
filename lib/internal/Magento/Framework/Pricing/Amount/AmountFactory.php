@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -17,7 +19,7 @@ class AmountFactory
     /**
      * Default amount class
      */
-    const DEFAULT_PRICE_AMOUNT_CLASS = \Magento\Framework\Pricing\Amount\AmountInterface::class;
+    public const DEFAULT_PRICE_AMOUNT_CLASS = \Magento\Framework\Pricing\Amount\AmountInterface::class;
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface
@@ -48,7 +50,7 @@ class AmountFactory
             self::DEFAULT_PRICE_AMOUNT_CLASS,
             [
                 'amount' => $amount,
-                'adjustmentAmounts' => $adjustmentAmounts
+                'adjustmentAmounts' => $adjustmentAmounts,
             ]
         );
 

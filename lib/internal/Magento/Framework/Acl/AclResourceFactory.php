@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Acl;
 
 use Magento\Framework\ObjectManagerInterface;
@@ -14,7 +17,7 @@ use Magento\Framework\ObjectManagerInterface;
  */
 class AclResourceFactory
 {
-    const RESOURCE_CLASS_NAME = \Magento\Framework\Acl\AclResource::class;
+    public const RESOURCE_CLASS_NAME = \Magento\Framework\Acl\AclResource::class;
 
     /**
      * @var ObjectManagerInterface

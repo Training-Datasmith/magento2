@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -20,7 +21,6 @@ use Magento\MediaGalleryMetadataApi\Model\ReadMetadataInterface;
  */
 class ExtractMetadata implements ExtractMetadataInterface
 {
-
     /**
      * @var MetadataInterfaceFactory
      */
@@ -108,7 +108,7 @@ class ExtractMetadata implements ExtractMetadataInterface
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => empty($keywords) ? null : array_unique($keywords)
+            'keywords' => empty($keywords) ? null : array_unique($keywords),
         ]);
     }
 }

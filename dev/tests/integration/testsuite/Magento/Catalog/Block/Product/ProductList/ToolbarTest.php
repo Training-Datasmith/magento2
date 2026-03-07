@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\Element\Text;
 use Magento\Framework\View\LayoutInterface;
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use Magento\TestFramework\Helper\Xpath;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Checks product list toolbar.

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -7,9 +9,9 @@
 use Magento\Framework\Registry;
 use Magento\Store\Model\Store;
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\UrlRewrite\Model\ResourceModel\UrlRewrite;
 use Magento\UrlRewrite\Model\ResourceModel\UrlRewriteCollection;
 use Magento\UrlRewrite\Model\ResourceModel\UrlRewriteCollectionFactory;
-use Magento\UrlRewrite\Model\ResourceModel\UrlRewrite;
 
 $objectManager = Bootstrap::getObjectManager();
 

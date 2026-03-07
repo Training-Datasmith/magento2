@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -37,12 +38,12 @@ class InfoTest extends TestCase
         $objects = [
             [
                 JsonHelper::class,
-                $this->createMock(JsonHelper::class)
+                $this->createMock(JsonHelper::class),
             ],
             [
                 DirectoryHelper::class,
-                $this->createMock(DirectoryHelper::class)
-            ]
+                $this->createMock(DirectoryHelper::class),
+            ],
         ];
         $objectManager->prepareObjectManager($objects);
         $this->formFactoryMock = $this->createMock(FormFactory::class);
@@ -57,7 +58,7 @@ class InfoTest extends TestCase
             [
                 'formFactory' => $this->formFactoryMock,
                 'data' => ['role' => $roleMock],
-                'creator' => $creatorStub
+                'creator' => $creatorStub,
             ]
         );
     }
@@ -98,7 +99,7 @@ class InfoTest extends TestCase
                         'role_id',
                         'in_role_user',
                         'in_role_user_old',
-                        'current_password'
+                        'current_password',
                     ];
                     if ($arg == $expectedArgs[$callCount]) {
                         $callCount++;

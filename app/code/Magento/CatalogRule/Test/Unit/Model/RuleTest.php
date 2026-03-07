@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -107,7 +108,7 @@ class RuleTest extends TestCase
         $this->combineFactory = $this->createPartialMock(
             CombineFactory::class,
             [
-                'create'
+                'create',
             ]
         );
         $this->productModel = $this->createPartialMock(
@@ -115,7 +116,7 @@ class RuleTest extends TestCase
             [
                 '__wakeup',
                 'getId',
-                'setData'
+                'setData',
             ]
         );
         $this->condition = $this->createPartialMockWithReflection(
@@ -127,7 +128,7 @@ class RuleTest extends TestCase
             [
                 '__wakeup',
                 'getId',
-                'getDefaultStore'
+                'getDefaultStore',
             ]
         );
         $this->ruleProductProcessor = $this->createMock(
@@ -160,7 +161,7 @@ class RuleTest extends TestCase
                 'extensionFactory' => $extensionFactoryMock,
                 'customAttributeFactory' => $attributeValueFactoryMock,
                 'serializer' => $this->getSerializerMock(),
-                'ruleResourceModel' => $this->ruleResourceModel
+                'ruleResourceModel' => $this->ruleResourceModel,
             ]
         );
     }
@@ -216,7 +217,7 @@ class RuleTest extends TestCase
             'has_options' => '0',
             'required_options' => '0',
             'created_at' => '2014-06-25 13:14:30',
-            'updated_at' => '2014-06-25 14:37:15'
+            'updated_at' => '2014-06-25 14:37:15',
         ];
 
         $website1 = $this->createPartialMock(Website::class, ['getId', 'getDefaultStore']);
@@ -270,7 +271,7 @@ class RuleTest extends TestCase
     {
         return [
             [false],
-            [true]
+            [true],
         ];
     }
 
@@ -300,53 +301,53 @@ class RuleTest extends TestCase
             [
                 [
                     'simple_action' => 'by_fixed',
-                    'discount_amount' => '123'
+                    'discount_amount' => '123',
                 ],
-                true
+                true,
             ],
             [
                 [
                     'simple_action' => 'by_percent',
-                    'discount_amount' => '9.99'
+                    'discount_amount' => '9.99',
                 ],
-                true
+                true,
             ],
             [
                 [
                     'simple_action' => 'by_percent',
-                    'discount_amount' => '123.12'
+                    'discount_amount' => '123.12',
                 ],
                 [
-                    'Percentage discount should be between 0 and 100.'
-                ]
+                    'Percentage discount should be between 0 and 100.',
+                ],
             ],
             [
                 [
                     'simple_action' => 'to_percent',
-                    'discount_amount' => '-12'
+                    'discount_amount' => '-12',
                 ],
                 [
-                    'Percentage discount should be between 0 and 100.'
-                ]
+                    'Percentage discount should be between 0 and 100.',
+                ],
             ],
             [
                 [
                     'simple_action' => 'to_fixed',
-                    'discount_amount' => '-1234567890'
+                    'discount_amount' => '-1234567890',
                 ],
                 [
-                    'Discount value should be 0 or greater.'
-                ]
+                    'Discount value should be 0 or greater.',
+                ],
             ],
             [
                 [
                     'simple_action' => 'invalid action',
-                    'discount_amount' => '12'
+                    'discount_amount' => '12',
                 ],
                 [
-                    'Unknown action.'
-                ]
-            ]
+                    'Unknown action.',
+                ],
+            ],
         ];
     }
 
@@ -404,7 +405,7 @@ class RuleTest extends TestCase
     {
         return [
             ['active' => 0],
-            ['active' => 1]
+            ['active' => 1],
         ];
     }
 
@@ -455,7 +456,7 @@ class RuleTest extends TestCase
             [['name', 'important_data'], ['name', 'important_data'], false, false],
             [['name', 'new important_data'], ['name', 'important_data'], false, true],
             [['name', 'description'], ['name', 'description'], true, true],
-            [['name', 'description'], ['name', 'important_data'], true, true]
+            [['name', 'description'], ['name', 'important_data'], true, true],
         ];
     }
 

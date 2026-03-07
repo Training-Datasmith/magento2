@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -46,7 +47,7 @@ class LogTest extends TestCase
                 'customerId' => $this->logData['customer_id'],
                 'lastLoginAt' => $this->logData['last_login_at'],
                 'lastVisitAt' => $this->logData['last_visit_at'],
-                'lastLogoutAt' => $this->logData['last_logout_at']
+                'lastLogoutAt' => $this->logData['last_logout_at'],
             ]
         );
     }

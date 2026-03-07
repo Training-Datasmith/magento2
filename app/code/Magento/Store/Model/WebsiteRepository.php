@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -78,7 +79,7 @@ class WebsiteRepository implements \Magento\Store\Api\WebsiteRepositoryInterface
 
         $websiteData = $this->appConfig->get('scopes', "websites/$code", []);
         $website = $this->factory->create([
-            'data' => $websiteData
+            'data' => $websiteData,
         ]);
 
         if ($website->getId() === null) {
@@ -102,7 +103,7 @@ class WebsiteRepository implements \Magento\Store\Api\WebsiteRepositoryInterface
 
         $websiteData = $this->appConfig->get('scopes', "websites/$id", []);
         $website = $this->factory->create([
-            'data' => $websiteData
+            'data' => $websiteData,
         ]);
 
         if ($website->getId() === null) {
@@ -124,7 +125,7 @@ class WebsiteRepository implements \Magento\Store\Api\WebsiteRepositoryInterface
             $websites = $this->appConfig->get('scopes', 'websites', []);
             foreach ($websites as $data) {
                 $website = $this->factory->create([
-                    'data' => $data
+                    'data' => $data,
                 ]);
                 $this->entities[$website->getCode()] = $website;
                 $this->entitiesById[$website->getId()] = $website;
@@ -184,7 +185,7 @@ class WebsiteRepository implements \Magento\Store\Api\WebsiteRepositoryInterface
                     );
                 }
                 $website = $this->factory->create([
-                    'data' => $data
+                    'data' => $data,
                 ]);
                 $this->default = $website;
                 $websiteCode = $this->default->getCode() ?? '';

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -16,11 +18,11 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
     /**#@+
      * Constants
      */
-    const PRICE = 'price';
-    const STORE_ID = 'store_id';
-    const SKU = 'sku';
-    const PRICE_FROM = 'price_from';
-    const PRICE_TO = 'price_to';
+    public const PRICE = 'price';
+    public const STORE_ID = 'store_id';
+    public const SKU = 'sku';
+    public const PRICE_FROM = 'price_from';
+    public const PRICE_TO = 'price_to';
     /**#@-*/
 
     /**

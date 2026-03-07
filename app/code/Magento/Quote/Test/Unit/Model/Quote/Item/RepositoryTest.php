@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -11,16 +12,16 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\CustomOptions\CustomOptionProcessor;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Quote\Api\Data\CartItemInterfaceFactory;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address;
 use Magento\Quote\Model\Quote\Item;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Quote\Model\Quote\Item\CartItemOptionsProcessor;
-use Magento\Quote\Model\Quote\Item\Repository;
 use Magento\Quote\Model\Quote\Item\CartItemValidatorInterface;
 use Magento\Quote\Model\Quote\Item\CartItemValidatorResultInterface;
+use Magento\Quote\Model\Quote\Item\Repository;
 use Magento\Quote\Model\QuoteMutexInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;

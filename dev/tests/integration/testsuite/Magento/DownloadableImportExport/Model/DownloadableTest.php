@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\DownloadableImportExport\Model;
 
-use Magento\CatalogImportExport\Model\AbstractProductExportImportTestCase;
 use Magento\Catalog\Model\Product;
+use Magento\CatalogImportExport\Model\AbstractProductExportImportTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
@@ -22,7 +25,7 @@ class DownloadableTest extends AbstractProductExportImportTestCase
         return [
             'downloadable-product' => [
                 [
-                    'Magento/Downloadable/_files/product_downloadable_with_link_url_and_sample_url.php'
+                    'Magento/Downloadable/_files/product_downloadable_with_link_url_and_sample_url.php',
                 ],
                 [
                     'downloadable-product',

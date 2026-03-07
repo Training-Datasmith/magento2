@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -21,7 +23,6 @@ use Magento\Framework\Validator\ValidatorChain;
 use Magento\Tax\Api\Data\TaxRateInterface;
 use Magento\Tax\Api\Data\TaxRuleSearchResultsInterfaceFactory;
 use Magento\Tax\Api\TaxRateRepositoryInterface;
-use Magento\Tax\Model\Api\SearchCriteria\TaxRateCollectionProcessor;
 use Magento\Tax\Model\Calculation\Rate\Converter;
 use Magento\Tax\Model\ResourceModel\Calculation\Rate\Collection;
 
@@ -226,7 +227,7 @@ class RateRepository implements TaxRateRepositoryInterface
             case Rate::KEY_REGION_NAME:
                 return 'region_table.code';
             default:
-                return "main_table." . $field;
+                return 'main_table.' . $field;
         }
     }
 
@@ -255,7 +256,7 @@ class RateRepository implements TaxRateRepositoryInterface
                 'Invalid value of "%value" provided for the %fieldName field.',
                 [
                     'fieldName' => 'country_id',
-                    'value' => $countryCode
+                    'value' => $countryCode,
                 ]
             ));
         }
@@ -263,14 +264,14 @@ class RateRepository implements TaxRateRepositoryInterface
         $regionCode = $taxRate->getTaxRegionId();
         // if regionCode eq 0 (all regions *), do not validate with existing region list
         if (ValidatorChain::is($regionCode, NotEmpty::class)
-            && $regionCode != "0"
+            && $regionCode != '0'
             && !ValidatorChain::is($this->regionFactory->create()->load($regionCode)->getId(), NotEmpty::class)
         ) {
             $exception->addError(__(
                 'Invalid value of "%value" provided for the %fieldName field.',
                 [
                     'fieldName' => 'region_id',
-                    'value' => $regionCode
+                    'value' => $regionCode,
                 ]
             ));
         }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -28,7 +30,7 @@ class Ftp
     {
         if (!$this->_conn) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception(__CLASS__ . " - no connection established with server");
+            throw new \Exception(__CLASS__ . ' - no connection established with server');
         }
     }
 
@@ -54,13 +56,13 @@ class Ftp
     public function mkdirRecursive($path, $mode = 0777)
     {
         $this->checkConnected();
-        $dir = explode("/", (string)$path);
-        $path = "";
+        $dir = explode('/', (string)$path);
+        $path = '';
         $ret = true;
         for ($i = 0, $count = count($dir); $i < $count; $i++) {
-            $path .= "/" . $dir[$i];
+            $path .= '/' . $dir[$i];
             if (!@ftp_chdir($this->_conn, $path)) {
-                @ftp_chdir($this->_conn, "/");
+                @ftp_chdir($this->_conn, '/');
                 if (!@ftp_mkdir($this->_conn, $path)) {
                     $ret = false;
                     break;
@@ -80,13 +82,13 @@ class Ftp
      * @return bool
      * @throws \Exception on invalid login credentials
      */
-    public function login($login = "anonymous", $password = "test@gmail.com")
+    public function login($login = 'anonymous', $password = 'test@gmail.com')
     {
         $this->checkConnected();
         $res = @ftp_login($this->_conn, $login, $password);
         if (!$res) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception("Invalid login credentials");
+            throw new \Exception('Invalid login credentials');
         }
         return $res;
     }
@@ -189,8 +191,8 @@ class Ftp
      */
     public function getcwd()
     {
-        $d = $this->raw("pwd");
-        $data = explode(" ", $d[0] ?? '', 3);
+        $d = $this->raw('pwd');
+        $data = explode(' ', $d[0] ?? '', 3);
         if (empty($data[1])) {
             return false;
         }
@@ -198,8 +200,8 @@ class Ftp
             return false;
         }
         $out = trim($data[1], '"');
-        if ($out !== "/") {
-            $out = rtrim($out, "/");
+        if ($out !== '/') {
+            $out = rtrim($out, '/');
         }
         return $out;
     }
@@ -246,17 +248,17 @@ class Ftp
             throw new \Exception("Directory given instead of file: {$local}");
         }
 
-        $globalPathMode = substr((string)$remote, 0, 1) == "/";
+        $globalPathMode = substr((string)$remote, 0, 1) == '/';
         $dirname = dirname($remote);
         $cwd = $this->getcwd();
         if (false === $cwd) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
-            throw new \Exception("Server returns something awful on PWD command");
+            throw new \Exception('Server returns something awful on PWD command');
         }
 
         if (!$globalPathMode) {
-            $dirname = $cwd . "/" . $dirname;
-            $remote = $cwd . "/" . $remote;
+            $dirname = $cwd . '/' . $dirname;
+            $remote = $cwd . '/' . $remote;
         }
         $res = $this->mkdirRecursive($dirname, $dirMode);
         $this->chdir($cwd);
@@ -364,7 +366,7 @@ class Ftp
      * @param string $dir
      * @return bool
      */
-    public function nlist($dir = "/")
+    public function nlist($dir = '/')
     {
         $this->checkConnected();
         $dir = $this->correctFilePath($dir);
@@ -378,7 +380,7 @@ class Ftp
      * @param bool $recursive
      * @return array an array where each element corresponds to one line of text.
      */
-    public function rawlist($dir = "/", $recursive = false)
+    public function rawlist($dir = '/', $recursive = false)
     {
         $this->checkConnected();
         $dir = $this->correctFilePath($dir);
@@ -422,10 +424,10 @@ class Ftp
     public function fileExists($path, $excludeIfIsDir = true)
     {
         $path = $this->correctFilePath($path);
-        $globalPathMode = substr($path, 0, 1) == "/";
+        $globalPathMode = substr($path, 0, 1) == '/';
 
         $file = basename($path);
-        $dir = $globalPathMode ? dirname($path) : $this->getcwd() . "/" . $path;
+        $dir = $globalPathMode ? dirname($path) : $this->getcwd() . '/' . $path;
         $data = $this->ls($dir);
         foreach ($data as $row) {
             if ($file == $row['name']) {
@@ -446,7 +448,7 @@ class Ftp
      * @return array
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function ls($dir = "/", $recursive = false)
+    public function ls($dir = '/', $recursive = false)
     {
         $dir = $this->correctFilePath($dir);
         $rawfiles = (array)$this->rawlist($dir, $recursive);
@@ -491,8 +493,8 @@ class Ftp
             return '';
         }
 
-        $str = str_replace("\\", "/", $str);
-        $str = preg_replace("/^.\//", "", $str);
+        $str = str_replace('\\', '/', $str);
+        $str = preg_replace("/^.\//", '', $str);
         return $str;
     }
 

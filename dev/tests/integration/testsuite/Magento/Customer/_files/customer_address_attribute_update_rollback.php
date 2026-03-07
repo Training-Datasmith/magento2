@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -19,8 +20,8 @@ $model->loadByCode($entityType, $attributeCode);
 $validationRules = $model->getValidationRules();
 
 try {
-    if(!empty($validationRules['input_validation'])){
-        if(in_array('alphanum-with-spaces', $validationRules)){
+    if (!empty($validationRules['input_validation'])) {
+        if (in_array('alphanum-with-spaces', $validationRules)) {
             unset($validationRules['input_validation']);
         }
     }

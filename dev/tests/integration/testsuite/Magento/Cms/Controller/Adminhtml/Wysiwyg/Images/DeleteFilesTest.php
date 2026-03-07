@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -173,14 +174,14 @@ class DeleteFilesTest extends \PHPUnit\Framework\TestCase
      */
     public function testDeleteHtaccess()
     {
-        $testDir = $this->imagesHelper->getStorageRoot() . "directory1";
+        $testDir = $this->imagesHelper->getStorageRoot() . 'directory1';
         $this->mediaDirectory->create($this->mediaDirectory->getRelativePath($testDir));
         $path = $testDir . '/.htaccess';
         $denyListPathValidator = $this->objectManager
             ->create(DenyListPathValidator::class, ['driver' => $this->mediaDirectory->getDriver()]);
         $denyListPathValidator->addException($path);
         $bypassDenyListWriteFactory = $this->objectManager->create(WriteFactory::class, [
-            'denyListPathValidator' => $denyListPathValidator
+            'denyListPathValidator' => $denyListPathValidator,
         ]);
         $this->bypassDenyListWrite = $bypassDenyListWriteFactory->create(
             $this->mediaDirectory->getAbsolutePath(),

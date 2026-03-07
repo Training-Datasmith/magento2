@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,8 +12,8 @@ use Magento\Framework\App\Backpressure\ContextInterface;
 use Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger;
 use Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger\RedisClient;
 use Magento\Framework\App\DeploymentConfig;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class RedisRequestLoggerTest extends TestCase
 {

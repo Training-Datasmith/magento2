@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -63,7 +64,7 @@ class GetDirectoryTree
         $tree = [
             'name' => 'root',
             'path' => '/',
-            'children' => []
+            'children' => [],
         ];
         $directories = $this->getDirectories();
         foreach ($directories as $idx => &$node) {
@@ -130,7 +131,7 @@ class GetDirectoryTree
             'id' => $path,
             'li_attr' => ['data-id' => $path],
             'path' => $path,
-            'path_array' => $pathArray
+            'path_array' => $pathArray,
         ];
     }
 
@@ -159,7 +160,7 @@ class GetDirectoryTree
             while ($level < $tNodePathLength) {
                 $found = $node['path_array'][$level] === $tnode['path_array'][$level];
                 if ($found) {
-                    $level ++;
+                    $level++;
                 } else {
                     break;
                 }

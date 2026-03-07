@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -14,7 +16,7 @@ $bookmarks = [
         'identifier' => 'first',
         'current' => 1,
         'config' => '{}',
-        'title' => 'Bb'
+        'title' => 'Bb',
     ],
     [
         'user_id' => 1,
@@ -22,7 +24,7 @@ $bookmarks = [
         'identifier' => 'second',
         'current' => 0,
         'config' => '{1}',
-        'title' => 'Aa'
+        'title' => 'Aa',
     ],
     [
         'user_id' => 1,
@@ -30,7 +32,7 @@ $bookmarks = [
         'identifier' => 'third',
         'current' => 1,
         'config' => '{}',
-        'title' => 'Default View'
+        'title' => 'Default View',
     ],
 ];
 

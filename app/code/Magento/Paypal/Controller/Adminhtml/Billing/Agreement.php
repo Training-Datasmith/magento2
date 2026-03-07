@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Controller\Adminhtml\Billing;
 
 /**
@@ -15,7 +18,7 @@ abstract class Agreement extends \Magento\Backend\App\Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement';
+    public const ADMIN_RESOURCE = 'Magento_Paypal::billing_agreement';
 
     /**
      * Core registry

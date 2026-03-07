@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Webapi\Product\Option\Type\File;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -71,7 +74,7 @@ class ProcessorTest extends \PHPUnit\Framework\TestCase
                     DirectoryList::MEDIA => [DirectoryList::URL_PATH => 'media'],
                     DirectoryList::STATIC_VIEW => [DirectoryList::URL_PATH => 'static'],
                     DirectoryList::UPLOAD => [DirectoryList::URL_PATH => 'media/upload'],
-                ]
+                ],
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -127,7 +128,7 @@ class CreateHandler implements ExtensionInterface
     private $mediaAttributesWithLabels = [
         'image',
         'small_image',
-        'thumbnail'
+        'thumbnail',
     ];
 
     /**
@@ -363,7 +364,7 @@ class CreateHandler implements ExtensionInterface
             'position' => ['type' => 'int', 'default' => null],
             'disabled' => ['type' => 'int', 'default' => 0],
         ];
-        
+
         foreach ($fields as $field => $meta) {
             $value = $image[$field] ?? null;
             if ($storeId === Store::DEFAULT_STORE_ID) {

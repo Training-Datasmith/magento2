@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SampleData\Model;
 
-use Magento\Framework\Composer\ComposerInformation;
 use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Filesystem;
+use Magento\Framework\Composer\ComposerInformation;
 use Magento\Framework\Config\Composer\PackageFactory;
+use Magento\Framework\Filesystem;
 
 class DependencyTest extends \PHPUnit\Framework\TestCase
 {
@@ -45,7 +48,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
                 'composerInformation' => $this->composerInformationMock,
                 'filesystem' => $objectManager->get(Filesystem::class),
                 'packageFactory' => $objectManager->get(PackageFactory::class),
-                'componentRegistrar' => $this->componentRegistrarMock
+                'componentRegistrar' => $this->componentRegistrarMock,
             ]
         );
     }
@@ -62,7 +65,7 @@ class DependencyTest extends \PHPUnit\Framework\TestCase
                 __DIR__ . '/../_files/Modules/FirstModule',
                 __DIR__ . '/../_files/Modules/SecondModule',
                 __DIR__ . '/../_files/Modules/ThirdModule',
-                __DIR__ . '/../_files/Modules/FourthModule'
+                __DIR__ . '/../_files/Modules/FourthModule',
             ]);
 
         $this->assertSame(

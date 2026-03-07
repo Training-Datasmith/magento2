@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -8,15 +9,15 @@ declare(strict_types=1);
 namespace Magento\Catalog\Controller\Adminhtml\Product;
 
 use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Catalog\Model\ProductFactory;
-use Magento\Cms\Model\Wysiwyg as WysiwygModel;
-use Magento\Framework\App\RequestInterface;
-use Magento\Store\Model\StoreFactory;
-use Psr\Log\LoggerInterface as Logger;
-use Magento\Framework\Registry;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type as ProductTypes;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Cms\Model\Wysiwyg as WysiwygModel;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Registry;
+use Magento\Store\Model\StoreFactory;
+use Psr\Log\LoggerInterface as Logger;
 
 /**
  * Build a product based on a request

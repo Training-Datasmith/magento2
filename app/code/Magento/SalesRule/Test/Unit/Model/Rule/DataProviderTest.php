@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -82,7 +83,7 @@ class DataProviderTest extends TestCase
                 'requestFieldName' => 'Request',
                 'collectionFactory' => $this->collectionFactoryMock,
                 'registry' => $registryMock,
-                'metadataValueProvider' => $metaDataValueProviderMock
+                'metadataValueProvider' => $metaDataValueProviderMock,
             ]
         );
     }
@@ -102,7 +103,7 @@ class DataProviderTest extends TestCase
                 'load',
                 'getId',
                 'getData',
-                'getStoreLabels'
+                'getStoreLabels',
             ]
         );
         $this->collectionMock->expects($this->once())->method('getItems')->willReturn([$ruleMock]);
@@ -114,7 +115,7 @@ class DataProviderTest extends TestCase
         $ruleMock->expects($this->once())->method('setDiscountAmount')->with(50)->willReturn($ruleMock);
         $ruleMock->expects($this->once())->method('getDiscountQty')->willReturn(20.010);
         $ruleMock->expects($this->once())->method('setDiscountQty')->with(20.01)->willReturn($ruleMock);
-        $ruleMock->expects($this->once())->method('getStoreLabels')->willReturn(["1" => "Store Label"]);
+        $ruleMock->expects($this->once())->method('getStoreLabels')->willReturn(['1' => 'Store Label']);
 
         $this->assertEquals([$ruleId => $ruleData], $this->model->getData());
         // Load from object-cache the second time

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -65,15 +66,15 @@ class AttributesForm implements ResolverInterface
                 'errors' => [
                     [
                         'type' => 'ENTITY_NOT_FOUND',
-                        'message' => (string) __('Form "%form" could not be found.', ['form' => $formCode])
-                    ]
-                ]
+                        'message' => (string) __('Form "%form" could not be found.', ['form' => $formCode]),
+                    ],
+                ],
             ];
         }
 
         return array_merge(
             [
-                'formCode' => $formCode
+                'formCode' => $formCode,
             ],
             $this->getAttributesMetadata->execute(
                 $attributes,

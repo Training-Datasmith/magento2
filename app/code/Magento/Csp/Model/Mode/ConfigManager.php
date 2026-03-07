@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -7,13 +8,13 @@ declare(strict_types=1);
 
 namespace Magento\Csp\Model\Mode;
 
-use Magento\Framework\App\Request\Http;
-use Magento\Framework\App\ObjectManager;
 use Magento\Csp\Api\Data\ModeConfiguredInterface;
 use Magento\Csp\Api\ModeConfigManagerInterface;
 use Magento\Csp\Model\Mode\Data\ModeConfiguredFactory;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Request\Http;
 use Magento\Framework\App\State;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
@@ -129,7 +130,7 @@ class ConfigManager implements ModeConfigManagerInterface
 
         return $this->modeConfiguredFactory->create([
             'reportOnly' => (bool) $reportOnly,
-            'reportUri' => !empty($reportUri) ? (string)$reportUri : null
+            'reportUri' => !empty($reportUri) ? (string)$reportUri : null,
         ]);
     }
 }

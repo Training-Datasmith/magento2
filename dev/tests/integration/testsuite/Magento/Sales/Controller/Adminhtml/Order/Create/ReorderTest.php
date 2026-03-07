@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -249,15 +250,15 @@ class ReorderTest extends AbstractBackendController
             'cart_id' => '$quote.id$',
             'address' => [
                 'customer_id' => '$customer.id$',
-                'save_in_address_book' => 1
-            ]
+                'save_in_address_book' => 1,
+            ],
         ]),
         DataFixture(SetShippingAddress::class, [
             'cart_id' => '$quote.id$',
             'address' => [
                 'customer_id' => '$customer.id$',
-                'save_in_address_book' => 1
-            ]
+                'save_in_address_book' => 1,
+            ],
         ]),
         DataFixture(SetDeliveryMethodFixture::class, ['cart_id' => '$quote.id$']),
         DataFixture(SetPaymentMethodFixture::class, ['cart_id' => '$quote.id$']),

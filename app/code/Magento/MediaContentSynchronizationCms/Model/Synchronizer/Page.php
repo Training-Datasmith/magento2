@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -73,7 +74,7 @@ class Page implements SynchronizeInterface
         $columns =  array_merge(
             [
                 self::CMS_PAGE_TABLE_ENTITY_ID,
-                self::CMS_PAGE_TABLE_UPDATED_AT_FIELD
+                self::CMS_PAGE_TABLE_UPDATED_AT_FIELD,
             ],
             array_values($this->fields)
         );
@@ -97,7 +98,7 @@ class Page implements SynchronizeInterface
                     [
                         self::TYPE => self::CONTENT_TYPE,
                         self::FIELD => $field,
-                        self::ENTITY_ID => $item[self::CMS_PAGE_TABLE_ENTITY_ID]
+                        self::ENTITY_ID => $item[self::CMS_PAGE_TABLE_ENTITY_ID],
                     ]
                 ),
                 (string) $item[$field]

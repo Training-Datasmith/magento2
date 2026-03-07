@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -105,7 +106,7 @@ class AddBundleProductToWishlistTest extends GraphQlAbstract
             [
                 'label' => 'Simple Product',
                 'quantity' => 1,
-                'price' => 2.75
+                'price' => 2.75,
             ]
         );
     }
@@ -118,14 +119,14 @@ class AddBundleProductToWishlistTest extends GraphQlAbstract
      */
     public function testAddingBundleItemWithCustomOptionQuantity()
     {
-        $response = $this->graphQlQuery($this->getProductQuery("bundle-product"));
+        $response = $this->graphQlQuery($this->getProductQuery('bundle-product'));
         $bundleItem = $response['products']['items'][0];
         $sku = $bundleItem['sku'];
         $bundleOptions = $bundleItem['items'];
         $customerId = 1;
         $uId0 = $bundleOptions[0]['options'][0]['uid'];
         $uId1 = $bundleOptions[1]['options'][0]['uid'];
-        $query= $this->getQueryWithCustomOptionQuantity($sku, 5, $uId0, $uId1);
+        $query = $this->getQueryWithCustomOptionQuantity($sku, 5, $uId0, $uId1);
         $response = $this->graphQlMutation($query, [], '', $this->getHeaderMap());
         $wishlist = $this->wishlistFactory->create()->loadByCustomerId($customerId, true);
         /** @var Item $item */

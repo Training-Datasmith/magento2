@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Reader responsible for retrieving provided scope of configuration from storage
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Config;
 
 /**

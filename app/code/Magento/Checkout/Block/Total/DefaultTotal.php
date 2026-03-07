@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Total;
 
+use Magento\Checkout\Helper\Data as CheckoutHelper;
 use Magento\Framework\App\ObjectManager;
 use Magento\Sales\Model\ConfigInterface;
-use Magento\Checkout\Helper\Data as CheckoutHelper;
 
 /**
  * Default Total Row Renderer

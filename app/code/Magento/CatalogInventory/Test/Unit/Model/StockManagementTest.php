@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -19,7 +20,6 @@ use Magento\CatalogInventory\Model\StockRegistryStorage;
 use Magento\CatalogInventory\Model\StockState;
 use Magento\CatalogInventory\Model\StockStateException;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -93,7 +93,7 @@ class StockManagementTest extends TestCase
             Item::class,
             ['hasAdminArea', 'getWebsiteId', 'getItemId']
         );
-        
+
         // Use getMockBuilder for partial mock with constructor args
         $mockBuilder = $this->getMockBuilder(StockManagement::class);
         $mockBuilder->onlyMethods(['getResource', 'canSubtractQty']);

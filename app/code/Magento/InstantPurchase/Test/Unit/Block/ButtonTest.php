@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class ButtonTest extends TestCase
             ->setConstructorArgs(
                 [
                     'context' => $this->context,
-                    'instantPurchaseConfig' => $this->config
+                    'instantPurchaseConfig' => $this->config,
                 ]
             )
             ->onlyMethods(['getUrl'])
@@ -107,13 +108,13 @@ class ButtonTest extends TestCase
             'Store With ID = 1 and enable module' => [
                 1,
                 true,
-                true
+                true,
             ],
             'Store With ID = 1 and disable module' => [
                 1,
                 false,
-                false
-            ]
+                false,
+            ],
         ];
     }
 

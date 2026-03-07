@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -11,6 +12,6 @@ return [
     'Magento\LiveSearch' => [
         'Magento\Elasticsearch',
         'Magento\Elasticsearch8',
-        'Magento\OpenSearch'
+        'Magento\OpenSearch',
     ],
 ];

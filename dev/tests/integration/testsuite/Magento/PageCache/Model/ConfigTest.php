@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\PageCache\Model;
 
 class ConfigTest extends \PHPUnit\Framework\TestCase
@@ -51,7 +54,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'accessList' =>  explode(',', '127.0.0.1,192.168.0.1,127.0.0.2'),
             'designExceptions' => json_decode('{"_":{"regexp":"\/firefox\/i","value":"Magento\/blank"}}', true),
             'sslOffloadedHeader' => 'X-Forwarded-Proto',
-            'gracePeriod' => 1234
+            'gracePeriod' => 1234,
         ];
         $vclGeneratorFactory->expects($this->any())
             ->method('create')
@@ -68,7 +71,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $this->config = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
             \Magento\PageCache\Model\Config::class,
             [
-                'vclGeneratorFactory' => $vclGeneratorFactory
+                'vclGeneratorFactory' => $vclGeneratorFactory,
             ]
         );
     }

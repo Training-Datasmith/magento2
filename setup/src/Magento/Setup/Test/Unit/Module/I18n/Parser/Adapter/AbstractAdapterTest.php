@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -56,8 +57,8 @@ class AbstractAdapterTest extends TestCase
                 'phrase' => $phrase,
                 'file' => null,
                 'line' => $line,
-                'quote' => ''
-            ]
+                'quote' => '',
+            ],
         ];
         $this->_adapterReflection->invoke($this->_adapterMock, $phrase, $line);
         $actual = $this->_adapterMock->getPhrases();

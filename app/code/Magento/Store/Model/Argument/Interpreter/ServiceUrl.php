@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Store\Model\Argument\Interpreter;
 
 use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Store\Model\StoreRepository;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\StoreRepository;
 
 /**
  * Interpreter that builds Service URL by input path and optional parameters
@@ -50,8 +53,8 @@ class ServiceUrl implements InterpreterInterface
         \Magento\Framework\Url $url,
         StoreManagerInterface $storeManager,
         StoreRepository $storeRepository,
-        $service = "rest",
-        $version = "V1"
+        $service = 'rest',
+        $version = 'V1'
     ) {
         $this->url = $url;
         $this->service = $service;
@@ -69,7 +72,7 @@ class ServiceUrl implements InterpreterInterface
     {
         $store = $this->storeRepository->getById($this->storeManager->getStore()->getId());
         return $this->url->getUrl(
-            $this->service . "/" . $store->getCode() . "/" . $this->version
+            $this->service . '/' . $store->getCode() . '/' . $this->version
         );
     }
 
@@ -87,13 +90,13 @@ class ServiceUrl implements InterpreterInterface
         }
 
         if (isset($data['service'])) {
-            $this->service = "rest";
+            $this->service = 'rest';
         }
 
-        if (isset($data["version"])) {
-            $this->version = $data["version"];
+        if (isset($data['version'])) {
+            $this->version = $data['version'];
         }
 
-        return $this->getServiceUrl() . ltrim($data["path"], "/");
+        return $this->getServiceUrl() . ltrim($data['path'], '/');
     }
 }

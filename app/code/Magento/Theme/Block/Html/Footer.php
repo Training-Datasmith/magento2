@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Theme\Block\Html;
 
 use Magento\Customer\Model\Context;
@@ -76,7 +79,7 @@ class Footer extends \Magento\Framework\View\Element\Template implements \Magent
             $this->_design->getDesignTheme()->getId(),
             $this->httpContext->getValue(Context::CONTEXT_AUTH),
             $this->getTemplateFile(),
-            'template' => $this->getTemplate()
+            'template' => $this->getTemplate(),
         ];
     }
 

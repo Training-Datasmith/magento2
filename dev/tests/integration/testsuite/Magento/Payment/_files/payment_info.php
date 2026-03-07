@@ -1,17 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Paypal\Model\Config;
 use Magento\Quote\Api\CartRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Quote\Model\Quote;
+use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address;
 use Magento\Sales\Model\Order\Payment;
-use Magento\Paypal\Model\Config;
-use Magento\Sales\Model\Order;
-use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\Quote\Payment as PaymentQuote;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /** @var $objectManager \Magento\TestFramework\ObjectManager */
 $objectManager = Bootstrap::getObjectManager();
@@ -25,7 +26,7 @@ $addressData = [
     'region' => 'CA',
     'postcode' => '1',
     'country_id' => 'US',
-    'telephone' => '1'
+    'telephone' => '1',
 ];
 $billingAddress = $objectManager->create(
     Address::class,
@@ -62,8 +63,6 @@ $order->setCustomerEmail('co@co.co')
     ->setPayment($paymentOrder);
 $order->save();
 
-
-
 /** @var Quote $quote */
 $quote = $objectManager->create(Quote::class);
 $quote->setStoreId(1)
@@ -76,7 +75,6 @@ $quote->getPayment()
     ->setAdditionalInformation('testing', 'testing additional data');
 
 $quote->collectTotals();
-
 
 /** @var CartRepositoryInterface $repository */
 $repository = $objectManager->get(CartRepositoryInterface::class);

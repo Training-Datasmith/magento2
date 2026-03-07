@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -8,11 +9,11 @@ declare(strict_types=1);
 namespace Magento\ProductAlert\Controller\Add;
 
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Model\Session;
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\ObjectManagerInterface;
-use Magento\Framework\App\Action\Action;
 use Magento\Framework\Url\Helper\Data;
-use Magento\Customer\Model\Session;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\AbstractController;
@@ -99,7 +100,7 @@ class StockTest extends AbstractController
      *
      * @return string
      */
-    private function getUrlEncodedParameter($productId):string
+    private function getUrlEncodedParameter($productId): string
     {
         $baseUrl = $this->objectManager->get(StoreManagerInterface::class)->getStore()->getBaseUrl();
         $encodedParameterValue = urlencode(

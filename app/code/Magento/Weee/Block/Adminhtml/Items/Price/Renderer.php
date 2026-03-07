@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Weee\Block\Adminhtml\Items\Price;
 
+use Magento\Quote\Model\Quote\Item\AbstractItem as QuoteItem;
 use Magento\Sales\Model\Order\Creditmemo\Item as CreditmemoItem;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;
 use Magento\Sales\Model\Order\Item;
-use Magento\Quote\Model\Quote\Item\AbstractItem as QuoteItem;
 use Magento\Weee\Block\Item\Price\Renderer as ItemPriceRenderer;
 
 /**

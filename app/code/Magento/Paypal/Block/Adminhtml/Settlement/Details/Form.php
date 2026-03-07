@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Paypal\Block\Adminhtml\Settlement\Details;
 
 /**
@@ -139,7 +142,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                         'name' => $id,
                         'label' => $info['label'],
                         'title' => $info['label'],
-                        'value' => isset($info['value']) ? $info['value'] : $model->getData($id)
+                        'value' => isset($info['value']) ? $info['value'] : $model->getData($id),
                     ]
                 );
             }

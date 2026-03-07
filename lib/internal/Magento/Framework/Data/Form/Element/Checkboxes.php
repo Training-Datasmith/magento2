@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Escaper;
@@ -46,7 +49,7 @@ class Checkboxes extends AbstractElement
             'onchange',
             'disabled',
             'data-role',
-            'data-action'
+            'data-action',
         ];
     }
 

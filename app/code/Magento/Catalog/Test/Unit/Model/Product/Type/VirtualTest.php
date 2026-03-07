@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class VirtualTest extends TestCase
                 'filesystem' => $filesystem,
                 'coreRegistry' => $coreRegistryMock,
                 'logger' => $logger,
-                'productFactory' => $productFactoryMock
+                'productFactory' => $productFactoryMock,
             ]
         );
     }

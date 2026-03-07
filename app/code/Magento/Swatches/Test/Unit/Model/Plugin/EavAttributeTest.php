@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,6 +10,7 @@ namespace Magento\Swatches\Test\Unit\Model\Plugin;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
+use Magento\Framework\Exception\InputException;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Swatches\Helper\Data;
@@ -19,10 +21,9 @@ use Magento\Swatches\Model\ResourceModel\Swatch\CollectionFactory;
 use Magento\Swatches\Model\Swatch;
 use Magento\Swatches\Model\SwatchAttributeType;
 use Magento\Swatches\Model\SwatchFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\Exception\InputException;
 
 /**
  * Test plugin model for Catalog Resource Attribute
@@ -42,7 +43,7 @@ class EavAttributeTest extends TestCase
     private const SECOND_STORE_ID = 2;
     private const NEW_OPTION_KEY = 'option_2';
     private const ATTRIBUTE_DEFAULT_VALUE = [
-        0 => self::NEW_OPTION_KEY
+        0 => self::NEW_OPTION_KEY,
     ];
     private const VISUAL_ATTRIBUTE_OPTIONS = [
         'value' => [
@@ -54,13 +55,13 @@ class EavAttributeTest extends TestCase
                 self::ADMIN_STORE_ID => 'White',
                 self::DEFAULT_STORE_ID => 'White',
             ],
-        ]
+        ],
     ];
     private const VISUAL_SWATCH_OPTIONS = [
         'value' => [
             self::OPTION_1_ID => '#000000',
             self::NEW_OPTION_KEY => '#ffffff',
-        ]
+        ],
     ];
     private const VISUAL_SAVED_OPTIONS = [
         [
@@ -70,7 +71,7 @@ class EavAttributeTest extends TestCase
         [
             'value' => self::OPTION_2_ID,
             'label' => 'White',
-        ]
+        ],
     ];
     private const TEXT_ATTRIBUTE_OPTIONS = [
         'value' => [
@@ -82,7 +83,7 @@ class EavAttributeTest extends TestCase
                 self::ADMIN_STORE_ID => 'Medium',
                 self::DEFAULT_STORE_ID => 'Medium',
             ],
-        ]
+        ],
     ];
     private const TEXT_SWATCH_OPTIONS = [
         'value' => [
@@ -96,7 +97,7 @@ class EavAttributeTest extends TestCase
                 self::DEFAULT_STORE_ID => 'M',
                 self::SECOND_STORE_ID => '0',
             ],
-        ]
+        ],
     ];
     private const TEXT_SAVED_OPTIONS = [
         [
@@ -106,7 +107,7 @@ class EavAttributeTest extends TestCase
         [
             'value' => self::OPTION_2_ID,
             'label' => 'Medium',
-        ]
+        ],
     ];
 
     /** @var EavAttribute */
@@ -152,7 +153,7 @@ class EavAttributeTest extends TestCase
         $this->swatchHelperMock = $objectManager->getObject(
             Data::class,
             [
-                'swatchTypeChecker' => $objectManager->getObject(SwatchAttributeType::class)
+                'swatchTypeChecker' => $objectManager->getObject(SwatchAttributeType::class),
             ]
         );
         $this->swatchResourceMock = $this->createMock(SwatchResource::class);
@@ -267,7 +268,7 @@ class EavAttributeTest extends TestCase
         $additionalData = [
             Swatch::SWATCH_INPUT_TYPE_KEY => Swatch::SWATCH_INPUT_TYPE_VISUAL,
             'update_product_preview_image' => 1,
-            'use_product_image_for_swatch' => 0
+            'use_product_image_for_swatch' => 0,
         ];
 
         $this->attributeMock->setData(
@@ -745,7 +746,7 @@ class EavAttributeTest extends TestCase
                     } elseif ($arg1 === 'value' && $arg2 === $value) {
                         return null;
                     } else {
-                         return null;
+                        return null;
                     }
                 });
         }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -35,6 +37,7 @@ use Magento\Framework\Module\ModuleResource;
 use Magento\Framework\Mview\TriggerCleaner;
 use Magento\Framework\Setup\ConsoleLoggerInterface;
 use Magento\Framework\Setup\Declaration\Schema\DryRunLogger;
+use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 use Magento\Framework\Setup\FilePermissions;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
@@ -49,6 +52,7 @@ use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Validation\ValidationException;
 use Magento\Indexer\Model\Indexer\Collection;
 use Magento\RemoteStorage\Driver\DriverException;
+use Magento\RemoteStorage\Setup\ConfigOptionsList as RemoteStorageValidator;
 use Magento\Setup\Console\Command\InstallCommand;
 use Magento\Setup\Controller\ResponseTypeInterface;
 use Magento\Setup\Exception;
@@ -58,9 +62,7 @@ use Magento\Setup\Module\DataSetupFactory;
 use Magento\Setup\Module\SetupFactory;
 use Magento\Setup\Validator\DbValidator;
 use Magento\Store\Model\Store;
-use Magento\RemoteStorage\Setup\ConfigOptionsList as RemoteStorageValidator;
 use ReflectionException;
-use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoFactoriesTable;
 
 /**
  * Class Installer contains the logic to install Magento application.
@@ -380,7 +382,7 @@ class Installer
         $script[] = [
             'Validating remote storage configuration...',
             'validateRemoteStorageConfiguration',
-            [$request]
+            [$request],
         ];
         $script[] = ['Installing user configuration...', 'installUserConfig', [$request]];
         $script[] = ['Enabling caches:', 'enableCaches', [true]];
@@ -1045,7 +1047,7 @@ class Installer
     private function throwExceptionForNotWritablePaths(array $paths)
     {
         if ($paths) {
-            $errorMsg = "Missing write permissions to the following paths:" . PHP_EOL . implode(PHP_EOL, $paths);
+            $errorMsg = 'Missing write permissions to the following paths:' . PHP_EOL . implode(PHP_EOL, $paths);
             // phpcs:ignore Magento2.Exceptions.DirectThrow
             throw new \Exception($errorMsg);
         }
@@ -1082,7 +1084,7 @@ class Installer
         $this->patchApplierFactory = $this->objectManagerProvider->get()->create(
             PatchApplierFactory::class,
             [
-                'objectManager' => $this->objectManagerProvider->get()
+                'objectManager' => $this->objectManagerProvider->get(),
             ]
         );
 
@@ -1640,7 +1642,7 @@ class Installer
 
             ConfigOptionsListConstants::KEY_MYSQL_SSL_VERIFY =>
                 ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTION_DEFAULT_DRIVER_OPTIONS . '/' .
-                ConfigOptionsListConstants::KEY_MYSQL_SSL_VERIFY
+                ConfigOptionsListConstants::KEY_MYSQL_SSL_VERIFY,
         ];
         $driverOptions = [];
         foreach ($driverOptionKeys as $driverOptionKey => $driverOptionConfig) {
@@ -1879,7 +1881,7 @@ class Installer
         } catch (LocalizedException $e) {
             $this->log->log($e->getMessage());
         } catch (\Exception $e) {
-            $this->log->log(__("Indexing Error: ".$e->getMessage()));
+            $this->log->log(__('Indexing Error: '.$e->getMessage()));
         }
     }
 
@@ -1891,11 +1893,11 @@ class Installer
      * @param AdapterInterface $connection
      * @return void
      */
-    private function setDefaultCharsetAndCollation(string $tableName, array $columns, $connection) : void
+    private function setDefaultCharsetAndCollation(string $tableName, array $columns, $connection): void
     {
         $charset = $this->columnConfig->getDefaultCharset();
         $collate = $this->columnConfig->getDefaultCollation();
-        $encoding = " CHARACTER SET ".$charset." COLLATE ".$collate;
+        $encoding = ' CHARACTER SET '.$charset.' COLLATE '.$collate;
         $qry = sprintf('ALTER TABLE %s ', $tableName);
         foreach ($columns as $key => $prop) {
             $qry .= "MODIFY COLUMN `$key` $prop[0] $encoding $prop[1], ";

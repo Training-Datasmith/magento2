@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -57,7 +58,7 @@ class Minsaleqty extends \Magento\Config\Block\System\Config\Form\Field\FieldArr
             'min_sale_qty',
             [
                 'label' => __('Minimum Qty'),
-                'class' => 'required-entry validate-number validate-greater-than-zero admin__control-text'
+                'class' => 'required-entry validate-number validate-greater-than-zero admin__control-text',
             ]
         );
         $this->_addAfter = false;

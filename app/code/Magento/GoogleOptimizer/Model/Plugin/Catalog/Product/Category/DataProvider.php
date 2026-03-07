@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -6,7 +8,7 @@
 
 namespace Magento\GoogleOptimizer\Model\Plugin\Catalog\Product\Category;
 
-use \Magento\Catalog\Ui\DataProvider\Product\Form\NewCategoryDataProvider;
+use Magento\Catalog\Ui\DataProvider\Product\Form\NewCategoryDataProvider;
 
 class DataProvider
 {
@@ -38,20 +40,20 @@ class DataProvider
             'arguments' => [
                 'data' => [
                     'config' => [
-                        'componentDisabled' => $isDisabled
-                    ]
-                ]
-            ]
+                        'componentDisabled' => $isDisabled,
+                    ],
+                ],
+            ],
         ];
 
         $codeIdFieldConfig = [
             'arguments' => [
                 'data' => [
                     'config' => [
-                        'componentDisabled' => $isDisabled
-                    ]
-                ]
-            ]
+                        'componentDisabled' => $isDisabled,
+                    ],
+                ],
+            ],
         ];
         $result['data']['children']['experiment_script'] = $experimentScriptFieldConfig;
         $result['data']['children']['code_id'] = $codeIdFieldConfig;

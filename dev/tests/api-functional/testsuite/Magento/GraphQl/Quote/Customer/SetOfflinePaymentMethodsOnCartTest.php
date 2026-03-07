@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -150,7 +151,7 @@ QUERY;
     private function getQuery(
         string $maskedQuoteId,
         string $methodCode
-    ) : string {
+    ): string {
         return <<<QUERY
 mutation {
   setPaymentMethodOnCart(input: {

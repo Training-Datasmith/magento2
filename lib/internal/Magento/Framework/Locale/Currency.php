@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Locale;
 
 class Currency implements \Magento\Framework\Locale\CurrencyInterface
@@ -10,18 +13,18 @@ class Currency implements \Magento\Framework\Locale\CurrencyInterface
     /**
      * Default currency
      */
-    const DEFAULT_CURRENCY = 'USD';
+    public const DEFAULT_CURRENCY = 'USD';
 
     /**#@+
      * Currency Options
      */
-    const CURRENCY_OPTION_SYMBOL = 'symbol';
+    public const CURRENCY_OPTION_SYMBOL = 'symbol';
 
-    const CURRENCY_OPTION_CURRENCY = 'currency';
+    public const CURRENCY_OPTION_CURRENCY = 'currency';
 
-    const CURRENCY_OPTION_NAME = 'name';
+    public const CURRENCY_OPTION_NAME = 'name';
 
-    const CURRENCY_OPTION_DISPLAY = 'display';
+    public const CURRENCY_OPTION_DISPLAY = 'display';
 
     /**
      * @var array

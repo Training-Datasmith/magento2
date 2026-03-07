@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Block\Dashboard\Orders;
 
 use Magento\Backend\Block\Template\Context;
@@ -137,7 +140,7 @@ class Grid extends \Magento\Backend\Block\Dashboard\Grid
                 'header' => __('Items'),
                 'type' => 'number',
                 'sortable' => false,
-                'index' => 'items_count'
+                'index' => 'items_count',
             ]
         );
 
@@ -152,7 +155,7 @@ class Grid extends \Magento\Backend\Block\Dashboard\Grid
                 'sortable' => false,
                 'type' => 'currency',
                 'currency_code' => $this->escapeHtml($baseCurrencyCode),
-                'index' => 'revenue'
+                'index' => 'revenue',
             ]
         );
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\UseCase;
 
 use Magento\Framework\MessageQueue\DefaultValueProvider;
@@ -29,7 +32,7 @@ class AsyncMultipleHandlersTest extends QueueTestCaseAbstract
      */
     private $topicValueMap = [
         'mtmh.topic.1' => 'mtmh.topic.1',
-        'mtmh.topic.2' => ['mtmh.topic.2-1', 'mtmh.topic.2-2']
+        'mtmh.topic.2' => ['mtmh.topic.2-1', 'mtmh.topic.2-2'],
     ];
 
     /**
@@ -41,7 +44,7 @@ class AsyncMultipleHandlersTest extends QueueTestCaseAbstract
         'array-mtmh.topic.2-1',
         'array-mtmh.topic.2-2',
         'mixed-mtmh.topic.2-1',
-        'mixed-mtmh.topic.2-2'
+        'mixed-mtmh.topic.2-2',
     ];
 
     /**

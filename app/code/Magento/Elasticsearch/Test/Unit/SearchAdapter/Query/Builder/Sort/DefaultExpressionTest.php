@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,13 +9,12 @@ declare(strict_types=1);
 namespace Magento\Elasticsearch\Test\Unit\SearchAdapter\Query\Builder\Sort;
 
 use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\AttributeAdapter;
-use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface
-    as FieldNameResolver;
+use Magento\Elasticsearch\Model\Adapter\FieldMapper\Product\FieldProvider\FieldName\ResolverInterface as FieldNameResolver;
 use Magento\Elasticsearch\SearchAdapter\Query\Builder\Sort\DefaultExpression;
 use Magento\Framework\Search\RequestInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class DefaultExpressionTest extends TestCase
 {
@@ -133,8 +133,8 @@ class DefaultExpressionTest extends TestCase
                 false,
                 false,
                 true,
-                ['color_value.sort_color' => ['order' => 'desc']]
-            ]
+                ['color_value.sort_color' => ['order' => 'desc']],
+            ],
         ];
     }
 }

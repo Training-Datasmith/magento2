@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Product\Gallery;
 
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
 use Magento\Catalog\Model\Product;
+use Magento\Framework\EntityManager\Operation\ExtensionInterface;
 
 /**
  * Read handler for catalog product gallery.
@@ -89,7 +92,7 @@ class ReadHandler implements ExtensionInterface
             $this->getAttribute()->getAttributeCode(),
             [
                 'images' => array_column($mediaEntries, null, 'value_id'),
-                'values' => []
+                'values' => [],
             ]
         );
     }

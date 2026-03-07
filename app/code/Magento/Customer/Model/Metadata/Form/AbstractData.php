@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -310,6 +312,7 @@ abstract class AbstractData
                 case 'alphanum-with-spaces':
                     $allowWhiteSpace = true;
                     // Continue to alphanumeric validation
+                    // no break
                 case 'alphanumeric':
                     $validator = new Alnum($allowWhiteSpace);
                     $validator->setMessage(__('"%1" invalid type entered.', $label), Alnum::INVALID);

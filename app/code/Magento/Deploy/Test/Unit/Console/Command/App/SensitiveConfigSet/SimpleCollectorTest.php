@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class SimpleCollectorTest extends TestCase
     {
         $configPaths = [
             'some/config/path1',
-            'some/config/path2'
+            'some/config/path2',
         ];
 
         $pathQuestionMock = $this->getMockBuilder(Question::class)
@@ -118,7 +119,7 @@ class SimpleCollectorTest extends TestCase
         $this->expectExceptionMessage('A configuration with this path does not exist or is not sensitive');
         $configPaths = [
             'some/config/path1',
-            'some/config/path2'
+            'some/config/path2',
         ];
 
         $pathQuestionMock = $this->getMockBuilder(Question::class)
@@ -145,7 +146,7 @@ class SimpleCollectorTest extends TestCase
         $this->expectException('Magento\Framework\Exception\LocalizedException');
         $configPaths = [
             'some/config/path1',
-            'some/config/path2'
+            'some/config/path2',
         ];
         $message = 'exception message';
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -59,10 +60,10 @@ class CcConfigProviderTest extends TestCase
                             'width' => getimagesize($imagesDirectoryPath . 'ae.png')[0],
                             'height' => getimagesize($imagesDirectoryPath . 'ae.png')[1],
                             'title' => __('American Express'),
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         $ccAvailableTypesMock = [
@@ -70,14 +71,14 @@ class CcConfigProviderTest extends TestCase
                 'title' => 'Visa',
                 'fileId' => 'Magento_Payment::images/cc/vi.png',
                 'path' => $imagesDirectoryPath . 'vi.png',
-                'url' => 'http://cc.card/vi.png'
+                'url' => 'http://cc.card/vi.png',
             ],
             'ae' => [
                 'title' => 'American Express',
                 'fileId' => 'Magento_Payment::images/cc/ae.png',
                 'path' => $imagesDirectoryPath . 'ae.png',
-                'url' => 'http://cc.card/ae.png'
-            ]
+                'url' => 'http://cc.card/ae.png',
+            ],
         ];
         $assetMock = $this->createMock(File::class);
 
@@ -91,7 +92,7 @@ class CcConfigProviderTest extends TestCase
             ->method('createAsset')
             ->willReturnCallback(function ($arg1) use ($ccAvailableTypesMock, $assetMock) {
                 if ($arg1 == $ccAvailableTypesMock['vi']['fileId'] || $arg1 == $ccAvailableTypesMock['ae']['fileId']) {
-                     return $assetMock;
+                    return $assetMock;
                 }
             });
         $this->assetSourceMock->expects($this->atLeastOnce())

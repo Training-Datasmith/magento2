@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ExecuteTest extends TestCase
         $this->typeList->expects($this->never())->method('invalidate');
 
         $actualResult = $this->execute->afterExecute($subject, $result);
-        
+
         $this->assertEquals($result, $actualResult);
     }
 
@@ -56,7 +57,7 @@ class ExecuteTest extends TestCase
         $this->typeList->expects($this->once())->method('invalidate')->with('full_page');
 
         $actualResult = $this->execute->afterExecute($subject, $result);
-        
+
         $this->assertEquals($result, $actualResult);
     }
 }

@@ -123,7 +123,7 @@ class TabsTest extends TestCase
             'null_block' => ['title', null, 'template'],
             'empty_template' => ['title', 'block', ''],
             'null_template' => ['title', 'block', null],
-            'zero_values' => ['0', '0', '0']
+            'zero_values' => ['0', '0', '0'],
         ];
     }
 
@@ -151,7 +151,7 @@ class TabsTest extends TestCase
 
         $expectedTabs = [
             ['alias' => 'alias1', 'title' => 'title1', 'header' => 'header1'],
-            ['alias' => 'alias2', 'title' => 'title2', 'header' => 'header2']
+            ['alias' => 'alias2', 'title' => 'title2', 'header' => 'header2'],
         ];
         $this->assertSame($expectedTabs, $this->block->getTabs());
     }
@@ -177,7 +177,7 @@ class TabsTest extends TestCase
     public function testAddTabWithNullLayoutCausesError(): void
     {
         $this->expectException(\TypeError::class);
-        
+
         // Create block with null layout - getLayout() will return null
         /** @var Tabs $block */
         $block = $this->helper->getObject(Tabs::class, ['layout' => null]);
@@ -239,7 +239,7 @@ class TabsTest extends TestCase
             'whitespace_block' => ['title', '   ', 'template'],
             'whitespace_template' => ['title', 'block', '   '],
             'tab_title' => ["\t", 'block', 'template'],
-            'newline_title' => ["\n", 'block', 'template']
+            'newline_title' => ["\n", 'block', 'template'],
         ];
     }
 

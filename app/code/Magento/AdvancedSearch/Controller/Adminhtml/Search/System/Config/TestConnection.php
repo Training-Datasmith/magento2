@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,9 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\AdvancedSearch\Controller\Adminhtml\Search\System\Config;
 
+use Magento\AdvancedSearch\Model\Client\ClientResolver;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\AdvancedSearch\Model\Client\ClientResolver;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
@@ -25,37 +26,13 @@ class TestConnection extends Action implements HttpPostActionInterface
      */
     public const ADMIN_RESOURCE = 'Magento_Catalog::config_catalog';
 
-    /**
-     * @var ClientResolver
-     */
-    private $clientResolver;
-
-    /**
-     * @var JsonFactory
-     */
-    private $resultJsonFactory;
-
-    /**
-     * @var StripTags
-     */
-    private $tagFilter;
-
-    /**
-     * @param Context           $context
-     * @param ClientResolver    $clientResolver
-     * @param JsonFactory       $resultJsonFactory
-     * @param StripTags         $tagFilter
-     */
     public function __construct(
         Context $context,
-        ClientResolver $clientResolver,
-        JsonFactory $resultJsonFactory,
-        StripTags $tagFilter
+        private readonly ClientResolver $clientResolver,
+        private readonly JsonFactory $resultJsonFactory,
+        private readonly StripTags $tagFilter
     ) {
         parent::__construct($context);
-        $this->clientResolver = $clientResolver;
-        $this->resultJsonFactory = $resultJsonFactory;
-        $this->tagFilter = $tagFilter;
     }
 
     /**

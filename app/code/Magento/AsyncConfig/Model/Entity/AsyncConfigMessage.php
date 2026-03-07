@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2022 Adobe
  * All Rights Reserved.
@@ -27,7 +28,7 @@ class AsyncConfigMessage implements AsyncConfigMessageInterface
     /**
      * @inheritDoc
      */
-    public function setConfigData($data)
+    public function setConfigData($data): void
     {
         $this->data = $data;
     }

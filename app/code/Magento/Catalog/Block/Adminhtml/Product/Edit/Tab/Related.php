@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab;
 
 use Magento\Backend\Block\Widget\Grid\Column;
@@ -200,7 +203,7 @@ class Related extends Extended
                     'align' => 'center',
                     'index' => 'entity_id',
                     'header_css_class' => 'col-select',
-                    'column_css_class' => 'col-select'
+                    'column_css_class' => 'col-select',
                 ]
             );
         }
@@ -212,7 +215,7 @@ class Related extends Extended
                 'sortable' => true,
                 'index' => 'entity_id',
                 'header_css_class' => 'col-id',
-                'column_css_class' => 'col-id'
+                'column_css_class' => 'col-id',
             ]
         );
 
@@ -222,7 +225,7 @@ class Related extends Extended
                 'header' => __('Name'),
                 'index' => 'name',
                 'header_css_class' => 'col-name',
-                'column_css_class' => 'col-name'
+                'column_css_class' => 'col-name',
             ]
         );
 
@@ -234,7 +237,7 @@ class Related extends Extended
                 'type' => 'options',
                 'options' => $this->_type->getOptionArray(),
                 'header_css_class' => 'col-type',
-                'column_css_class' => 'col-type'
+                'column_css_class' => 'col-type',
             ]
         );
 
@@ -250,7 +253,7 @@ class Related extends Extended
                 'type' => 'options',
                 'options' => $sets,
                 'header_css_class' => 'col-attr-name',
-                'column_css_class' => 'col-attr-name'
+                'column_css_class' => 'col-attr-name',
             ]
         );
 
@@ -262,7 +265,7 @@ class Related extends Extended
                 'type' => 'options',
                 'options' => $this->_status->getOptionArray(),
                 'header_css_class' => 'col-status',
-                'column_css_class' => 'col-status'
+                'column_css_class' => 'col-status',
             ]
         );
 
@@ -274,7 +277,7 @@ class Related extends Extended
                 'type' => 'options',
                 'options' => $this->_visibility->getOptionArray(),
                 'header_css_class' => 'col-visibility',
-                'column_css_class' => 'col-visibility'
+                'column_css_class' => 'col-visibility',
             ]
         );
 
@@ -284,7 +287,7 @@ class Related extends Extended
                 'header' => __('SKU'),
                 'index' => 'sku',
                 'header_css_class' => 'col-sku',
-                'column_css_class' => 'col-sku'
+                'column_css_class' => 'col-sku',
             ]
         );
 
@@ -299,7 +302,7 @@ class Related extends Extended
                 ),
                 'index' => 'price',
                 'header_css_class' => 'col-price',
-                'column_css_class' => 'col-price'
+                'column_css_class' => 'col-price',
             ]
         );
 
@@ -314,7 +317,7 @@ class Related extends Extended
                 'editable' => !$this->getProduct()->getRelatedReadonly(),
                 'edit_only' => !$this->getProduct()->getId(),
                 'header_css_class' => 'col-position',
-                'column_css_class' => 'col-position'
+                'column_css_class' => 'col-position',
             ]
         );
 

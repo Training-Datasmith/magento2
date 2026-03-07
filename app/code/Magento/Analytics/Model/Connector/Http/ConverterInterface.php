@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Connector\Http;
 
 /**
@@ -25,7 +28,6 @@ interface ConverterInterface
     /**
      * Serialize data
      *
-     * @param array $data
      * @return string
      * @since 100.2.0
      */
@@ -42,7 +44,6 @@ interface ConverterInterface
     /**
      * Retrieve content media
      *
-     * @return string
      * @since 100.3.0
      */
     public function getContentMediaType(): string;

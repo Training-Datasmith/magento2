@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Analytics\Model\Config\Backend\Enabled;
 
 use Magento\Analytics\Model\AnalyticsToken;
@@ -39,61 +42,29 @@ class SubscriptionHandler
 
     /**
      * Max value for reserve counter of attempts to subscribe.
-     *
-     * @var int
      */
-    private $attemptsInitValue = 24;
+    private int $attemptsInitValue = 24;
 
-    /**
-     * Service which allows to write values into config.
-     *
-     * @var WriterInterface
-     */
-    private $configWriter;
-
-    /**
-     * @var FlagManager
-     */
-    private $flagManager;
-
-    /**
-     * Model for handling Magento BI token value.
-     *
-     * @var AnalyticsToken
-     */
-    private $analyticsToken;
-
-    /**
-     * @var ReinitableConfigInterface
-     */
-    private $reinitableConfig;
-
-    /**
-     * @param WriterInterface $configWriter
-     * @param FlagManager $flagManager
-     * @param AnalyticsToken $analyticsToken
-     * @param ReinitableConfigInterface $reinitableConfig
-     */
     public function __construct(
-        WriterInterface $configWriter,
-        FlagManager $flagManager,
-        AnalyticsToken $analyticsToken,
-        ReinitableConfigInterface $reinitableConfig
+        /**
+         * Service which allows to write values into config.
+         */
+        private readonly WriterInterface $configWriter,
+        private readonly FlagManager $flagManager,
+        /**
+         * Model for handling Magento BI token value.
+         */
+        private readonly AnalyticsToken $analyticsToken,
+        private readonly ReinitableConfigInterface $reinitableConfig
     ) {
-        $this->configWriter = $configWriter;
-        $this->flagManager = $flagManager;
-        $this->analyticsToken = $analyticsToken;
-        $this->reinitableConfig = $reinitableConfig;
     }
 
     /**
      * Processing of activation MBI subscription.
      *
      * Activate process of subscription handling if Analytics token is not received.
-     *
-     * @return bool
      */
-    public function processEnabled()
+    public function processEnabled(): bool
     {
         if (!$this->analyticsToken->isTokenExist()) {
             $this->setCronSchedule();
@@ -106,10 +77,8 @@ class SubscriptionHandler
 
     /**
      * Set cron schedule setting into config for activation of subscription process.
-     *
-     * @return bool
      */
-    private function setCronSchedule()
+    private function setCronSchedule(): bool
     {
         $this->configWriter->save(self::CRON_STRING_PATH, join(' ', self::CRON_EXPR_ARRAY));
         return true;
@@ -131,10 +100,8 @@ class SubscriptionHandler
      *
      * Disable data collection
      * and interrupt subscription handling if Analytics token is not received.
-     *
-     * @return bool
      */
-    public function processDisabled()
+    public function processDisabled(): bool
     {
         $this->disableCollectionData();
 
@@ -158,10 +125,8 @@ class SubscriptionHandler
 
     /**
      * Unset schedule of collection data cron.
-     *
-     * @return bool
      */
-    private function disableCollectionData()
+    private function disableCollectionData(): bool
     {
         $this->configWriter->delete(CollectionTime::CRON_SCHEDULE_PATH);
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -10,7 +11,7 @@ namespace Magento\Framework\App\ObjectManager\ConfigWriter;
 
 class FilesystemTest extends \PHPUnit\Framework\TestCase
 {
-    const CACHE_KEY = 'filesystemtest';
+    public const CACHE_KEY = 'filesystemtest';
 
     /**
      * @var \Magento\Framework\App\ObjectManager\ConfigWriter\Filesystem

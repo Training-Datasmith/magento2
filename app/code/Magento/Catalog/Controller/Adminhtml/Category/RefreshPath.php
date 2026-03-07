@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Controller\Adminhtml\Category;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -46,7 +49,7 @@ class RefreshPath extends \Magento\Catalog\Controller\Adminhtml\Category impleme
                 'id' => $categoryId,
                 'path' => $category->getPath(),
                 'parentId' => $category->getParentId(),
-                'level' => $category->getLevel()
+                'level' => $category->getLevel(),
             ]);
         }
     }

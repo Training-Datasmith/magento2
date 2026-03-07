@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\DB;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
@@ -16,8 +19,8 @@ use Magento\Framework\DB\Adapter\AdapterInterface;
  */
 class TemporaryTableService
 {
-    const INDEX_METHOD_HASH = 'HASH';
-    const DB_ENGINE_INNODB = 'INNODB';
+    public const INDEX_METHOD_HASH = 'HASH';
+    public const DB_ENGINE_INNODB = 'INNODB';
 
     /**
      * @var string[]

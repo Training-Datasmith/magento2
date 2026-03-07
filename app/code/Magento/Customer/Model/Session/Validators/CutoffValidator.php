@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2021 Adobe
  * All Rights Reserved.
@@ -10,9 +12,9 @@ use Magento\Customer\Model\ResourceModel\Customer as ResourceCustomer;
 use Magento\Customer\Model\ResourceModel\Visitor as ResourceVisitor;
 use Magento\Framework\Exception\SessionException;
 use Magento\Framework\Phrase;
+use Magento\Framework\Session\Generic;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\Session\ValidatorInterface;
-use Magento\Framework\Session\Generic;
 
 /**
  * Session Validator

@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Api;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Api\SortOrderBuilder;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ProductRenderListInterfaceTest extends WebapiAbstract
 {
@@ -46,7 +49,7 @@ class ProductRenderListInterfaceTest extends WebapiAbstract
 
         $filter1 = $filterBuilder
             ->setField('entity_id')
-            ->setValue(implode(",", $expectedIds))
+            ->setValue(implode(',', $expectedIds))
             ->setConditionType('in')
             ->create();
 
@@ -59,7 +62,7 @@ class ProductRenderListInterfaceTest extends WebapiAbstract
 
         $serviceInfo = [
             'rest' => [
-                'resourcePath' => self::RESOURCE_PATH . "?" . http_build_query($searchData),
+                'resourcePath' => self::RESOURCE_PATH . '?' . http_build_query($searchData),
                 'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_GET,
             ],
             'soap' => [
@@ -101,7 +104,7 @@ class ProductRenderListInterfaceTest extends WebapiAbstract
                         'is_salable' => true,
                         'store_id' => 1,
                         'currency_code' => 'USD',
-                        'final_price' => '<span class="price">$10.00</span>'
+                        'final_price' => '<span class="price">$10.00</span>',
                     ],
                     [
                         'id' => 31,
@@ -110,10 +113,10 @@ class ProductRenderListInterfaceTest extends WebapiAbstract
                         'is_salable' => true,
                         'store_id' => 1,
                         'currency_code' => 'USD',
-                        'final_price' => '<span class="price">$5.99</span>'
-                    ]
-                ]
-            ]
+                        'final_price' => '<span class="price">$5.99</span>',
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +9,6 @@
 namespace Magento\Catalog\Api;
 
 use Magento\Authorization\Model\Role;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Authorization\Model\RoleFactory;
 use Magento\Authorization\Model\Rules;
 use Magento\Authorization\Model\RulesFactory;
@@ -25,6 +26,7 @@ use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 use Magento\UrlRewrite\Model\Storage\DbStorage;
 use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test repository web API.
@@ -169,7 +171,7 @@ class CategoryRepositoryTest extends WebapiAbstract
         $categoryId = $this->modelId;
         $data = [
             UrlRewrite::ENTITY_ID => $categoryId,
-            UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE
+            UrlRewrite::ENTITY_TYPE => CategoryUrlRewriteGenerator::ENTITY_TYPE,
         ];
         /** @var \Magento\UrlRewrite\Service\V1\Data\UrlRewrite $urlRewrite */
         $urlRewrite = $storage->findOneByData($data);
@@ -253,7 +255,7 @@ class CategoryRepositoryTest extends WebapiAbstract
             'custom_attributes' => [
                 [
                     'attribute_code' => 'description',
-                    'value' => "Update Category Description Test",
+                    'value' => 'Update Category Description Test',
                 ],
             ],
         ];
@@ -263,8 +265,8 @@ class CategoryRepositoryTest extends WebapiAbstract
         $model = Bootstrap::getObjectManager()->get(Category::class);
         $category = $model->load($categoryId);
         $this->assertFalse((bool)$category->getIsActive(), 'Category "is_active" must equal to false');
-        $this->assertEquals("Update Category Test", $category->getName());
-        $this->assertEquals("Update Category Description Test", $category->getDescription());
+        $this->assertEquals('Update Category Test', $category->getName());
+        $this->assertEquals('Update Category Description Test', $category->getDescription());
         $this->createdCategories = [$categoryId];
     }
 
@@ -278,11 +280,11 @@ class CategoryRepositoryTest extends WebapiAbstract
         $categoryData = [
             'name' => 'Update Category Test With default_sort_by Attribute',
             'is_active' => true,
-            "available_sort_by" => [],
+            'available_sort_by' => [],
             'custom_attributes' => [
                 [
                     'attribute_code' => 'default_sort_by',
-                    'value' => "price"
+                    'value' => 'price',
                 ],
             ],
         ];
@@ -292,8 +294,8 @@ class CategoryRepositoryTest extends WebapiAbstract
         $model = Bootstrap::getObjectManager()->get(Category::class);
         $category = $model->load($categoryId);
         $this->assertTrue((bool)$category->getIsActive(), 'Category "is_active" must equal to true');
-        $this->assertEquals("Update Category Test With default_sort_by Attribute", $category->getName());
-        $this->assertEquals("price", $category->getDefaultSortBy());
+        $this->assertEquals('Update Category Test With default_sort_by Attribute', $category->getName());
+        $this->assertEquals('price', $category->getDefaultSortBy());
         $this->createdCategories = [$categoryId];
     }
 
@@ -310,7 +312,7 @@ class CategoryRepositoryTest extends WebapiAbstract
             'custom_attributes' => [
                 [
                     'attribute_code' => 'url_key',
-                    'value' => "Update Category Test Old Name",
+                    'value' => 'Update Category Test Old Name',
                 ],
             ],
         ];
@@ -322,7 +324,7 @@ class CategoryRepositoryTest extends WebapiAbstract
             'custom_attributes' => [
                 [
                     'attribute_code' => 'url_key',
-                    'value' => "Update Category Test New Name",
+                    'value' => 'Update Category Test New Name',
                 ],
                 [
                     'attribute_code' => 'save_rewrites_history',
@@ -335,7 +337,7 @@ class CategoryRepositoryTest extends WebapiAbstract
         /** @var Category $model */
         $model = Bootstrap::getObjectManager()->get(Category::class);
         $category = $model->load($categoryId);
-        $this->assertEquals("Update Category Test New Name", $category->getName());
+        $this->assertEquals('Update Category Test New Name', $category->getName());
 
         // check for the url rewrite for the new name
         $storage = Bootstrap::getObjectManager()->get(DbStorage::class);
@@ -397,7 +399,7 @@ class CategoryRepositoryTest extends WebapiAbstract
                 ['attribute_code' => 'custom_design_from', 'value' => ''],
                 ['attribute_code' => 'custom_design_to', 'value' => ''],
                 ['attribute_code' => 'page_layout', 'value' => ''],
-            ]
+            ],
         ];
     }
 
@@ -413,7 +415,7 @@ class CategoryRepositoryTest extends WebapiAbstract
         $serviceInfo = [
             'rest' => [
                 'resourcePath' => self::RESOURCE_PATH,
-                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_POST,
             ],
             'soap' => [
                 'service' => self::SERVICE_NAME,

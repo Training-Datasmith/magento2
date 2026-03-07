@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -24,5 +25,5 @@ interface HttpRequestValidatorInterface
      * @return void
      * @throws GraphQlInputException
      */
-    public function validate(HttpRequestInterface $request) : void;
+    public function validate(HttpRequestInterface $request): void;
 }

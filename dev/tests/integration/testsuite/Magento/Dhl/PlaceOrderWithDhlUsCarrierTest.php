@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -143,7 +144,7 @@ class PlaceOrderWithDhlUsCarrierTest extends TestCase
             [
                 'sku' => 'bundle-product-fixed-price',
                 'price_type' => Price::PRICE_TYPE_DYNAMIC,
-                '_options' => ['$opt1$', '$opt2$']
+                '_options' => ['$opt1$', '$opt2$'],
             ],
             'bundle_product_1'
         ),
@@ -157,7 +158,7 @@ class PlaceOrderWithDhlUsCarrierTest extends TestCase
                 'cart_id' => '$cart.id$',
                 'product_id' => '$cp1.id$',
                 'child_product_id' => '$p2.id$',
-                'qty' => 1
+                'qty' => 1,
             ]
         ),
         DataFixture(
@@ -165,7 +166,7 @@ class PlaceOrderWithDhlUsCarrierTest extends TestCase
             [
                 'cart_id' => '$cart.id$',
                 'product_id' => '$bundle_product_1.id$',
-                'selections' => [['$product1.id$'], ['$product2.id$']]
+                'selections' => [['$product1.id$'], ['$product2.id$']],
             ]
         ),
     ]

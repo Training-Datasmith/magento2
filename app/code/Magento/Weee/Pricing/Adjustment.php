@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -20,7 +22,7 @@ class Adjustment implements AdjustmentInterface
     /**
      * Adjustment code weee
      */
-    const ADJUSTMENT_CODE = 'weee';
+    public const ADJUSTMENT_CODE = 'weee';
 
     /**
      * Weee helper

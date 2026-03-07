@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,6 +9,8 @@ declare(strict_types=1);
 namespace Magento\Customer\Test\Unit\Model\Address;
 
 use Magento\Customer\Model\Address\AbstractAddress;
+use Magento\Customer\Model\Address\AbstractAddress\CountryModelsCache;
+use Magento\Customer\Model\Address\AbstractAddress\RegionModelsCache;
 use Magento\Customer\Model\Address\CompositeValidator;
 use Magento\Customer\Model\ResourceModel\Customer;
 use Magento\Directory\Helper\Data;
@@ -17,19 +20,16 @@ use Magento\Directory\Model\Region;
 use Magento\Directory\Model\RegionFactory;
 use Magento\Directory\Model\ResourceModel\Region\Collection;
 use Magento\Eav\Model\Config;
-use Magento\Framework\Api\AttributeInterface;
 use Magento\Framework\Api\AttributeValue;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\DataObject;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Customer\Model\Address\AbstractAddress\RegionModelsCache;
-use Magento\Customer\Model\Address\AbstractAddress\CountryModelsCache;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -115,8 +115,8 @@ class AbstractAddressTest extends TestCase
                 'resource' => $this->resourceMock,
                 'resourceCollection' => $this->resourceCollectionMock,
                 'compositeValidator' => $this->compositeValidatorMock,
-                'countryModelsCache' => new CountryModelsCache,
-                'regionModelsCache' => new RegionModelsCache,
+                'countryModelsCache' => new CountryModelsCache(),
+                'regionModelsCache' => new RegionModelsCache(),
             ]
         );
     }
@@ -268,7 +268,7 @@ class AbstractAddressTest extends TestCase
     public function testSetData()
     {
         $key = [
-            'key' => 'value'
+            'key' => 'value',
         ];
 
         $this->model->setData($key);
@@ -291,7 +291,7 @@ class AbstractAddressTest extends TestCase
             'key' => 'value',
             'street' => [
                 'key1' => 'value1',
-            ]
+            ],
         ];
 
         $this->model->setData($key);
@@ -325,8 +325,8 @@ class AbstractAddressTest extends TestCase
         ];
         $expected = [
             'key' => [
-                'key' => new DataObject()
-            ]
+                'key' => new DataObject(),
+            ],
         ];
         $this->model->setData('key', $value);
         $this->assertEquals($expected, $this->model->getData());
@@ -366,7 +366,7 @@ class AbstractAddressTest extends TestCase
             'postcode' => 07201,
             'region_id' => 1,
             'company' => 'Magento',
-            'fax' => '222-22-22'
+            'fax' => '222-22-22',
         ];
         return [
             'firstname' => [
@@ -455,12 +455,12 @@ class AbstractAddressTest extends TestCase
         $data = [
             'customer_attribute1' => new AttributeValue([
                 'attribute_code' => 'customer_attribute1',
-                'value' => 'customer_attribute1_value'
+                'value' => 'customer_attribute1_value',
             ]),
             'customer_attribute2' => new AttributeValue([
                 'attribute_code' => 'customer_attribute2',
-                'value' => ['customer_attribute2_value1', 'customer_attribute2_value2']
-            ])
+                'value' => ['customer_attribute2_value1', 'customer_attribute2_value2'],
+            ]),
         ];
         $model->method('getCustomAttributesCodes')->willReturn(array_keys($data));
         $this->objectManager->setBackwardCompatibleProperty(
@@ -473,12 +473,12 @@ class AbstractAddressTest extends TestCase
             [
                 [
                     'attribute_code' => 'customer_attribute1',
-                    'value' => 'customer_attribute1_value'
+                    'value' => 'customer_attribute1_value',
                 ],
                 [
                     'attribute_code' => 'customer_attribute2',
-                    'value' => "customer_attribute2_value1\ncustomer_attribute2_value2"
-                ]
+                    'value' => "customer_attribute2_value1\ncustomer_attribute2_value2",
+                ],
             ],
             array_map(
                 fn ($attr) => ['attribute_code' => $attr->getAttributeCode(), 'value' => $attr->getValue()],

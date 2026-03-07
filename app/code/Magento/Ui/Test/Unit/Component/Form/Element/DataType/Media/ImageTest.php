@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -68,7 +69,7 @@ class ImageTest extends MediaTest
         $this->image = $this->objectManager->getObject(Image::class, [
             'context' => $this->context,
             'storeManager' => $this->storeManager,
-            'fileSize' => $this->fileSize
+            'fileSize' => $this->fileSize,
         ]);
 
         $this->image->setData([

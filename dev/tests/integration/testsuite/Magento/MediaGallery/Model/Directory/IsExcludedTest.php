@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\MediaGallery\Model\Directory;
 
 use Magento\TestFramework\Helper\Bootstrap;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for @see \Magento\MediaGallery\Model\Directory\IsExcluded.
@@ -49,19 +50,19 @@ class IsExcludedTest extends TestCase
         return [
             [
                 'catalog',
-                true
+                true,
             ],
             [
                 'catalog/category',
-                false
+                false,
             ],
             [
                 'customer',
-                true
+                true,
             ],
             [
                 'catalog/../customer',
-                true
+                true,
             ],
         ];
     }

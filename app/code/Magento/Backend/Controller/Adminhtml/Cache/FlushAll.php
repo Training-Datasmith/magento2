@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Backend\Controller\Adminhtml\Cache;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
@@ -29,7 +32,7 @@ class FlushAll extends \Magento\Backend\Controller\Adminhtml\Cache implements Ht
             // FlushAll clears the entire backend storage, not just frontend-owned data
             $cacheFrontend->getBackend()->clear();
         }
-        $this->messageManager->addSuccessMessage(__("You flushed the cache storage."));
+        $this->messageManager->addSuccessMessage(__('You flushed the cache storage.'));
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         return $resultRedirect->setPath('adminhtml/*');

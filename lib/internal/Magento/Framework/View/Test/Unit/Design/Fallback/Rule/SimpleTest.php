@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\View\Test\Unit\Design\Fallback\Rule;
 
 use Magento\Framework\View\Design\Fallback\Rule\Simple;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class SimpleTest extends TestCase
 {
@@ -50,7 +51,7 @@ class SimpleTest extends TestCase
                 $patternOptional,
                 'optional_parameter',
                 ['optional_parameter required_parameter other text'],
-            ]
+            ],
         ];
     }
 }

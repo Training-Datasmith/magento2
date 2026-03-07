@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Builder;
 
+use Magento\Catalog\Controller\Adminhtml\Product\Builder as CatalogProductBuilder;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\ConfigurableProduct\Model\Product\Type;
-use Magento\Catalog\Model\Product;
-use Magento\Catalog\Controller\Adminhtml\Product\Builder as CatalogProductBuilder;
 use Magento\Framework\App\RequestInterface;
 
 class Plugin
@@ -57,7 +60,7 @@ class Plugin
 
         // Required attributes of simple product for configurable creation
         if ($request->getParam('popup') && ($requiredAttributes = $request->getParam('required'))) {
-            $requiredAttributes = explode(",", $requiredAttributes);
+            $requiredAttributes = explode(',', $requiredAttributes);
             foreach ($product->getAttributes() as $attribute) {
                 if (in_array($attribute->getId(), $requiredAttributes)) {
                     $attribute->setIsRequired(1);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -37,8 +38,8 @@ class FrontendStorageConfigurationPoolTest extends TestCase
             [
                 'storageConfigurations' => [
                     'default' => $this->defaultStorageConfiguration,
-                    'product' => $productStorageConfiguration
-                ]
+                    'product' => $productStorageConfiguration,
+                ],
             ]
         );
     }

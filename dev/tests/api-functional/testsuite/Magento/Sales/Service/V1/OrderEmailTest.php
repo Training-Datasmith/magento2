@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +12,9 @@ use Magento\TestFramework\TestCase\WebapiAbstract;
 
 class OrderEmailTest extends WebapiAbstract
 {
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
-    const SERVICE_NAME = 'salesOrderManagementV1';
+    public const SERVICE_NAME = 'salesOrderManagementV1';
 
     /**
      * @magentoApiDataFixture Magento/Sales/_files/order.php

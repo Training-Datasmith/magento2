@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -22,17 +23,17 @@ class ShipmentAddTrackTest extends WebapiAbstract
     /**
      * Read name of service
      */
-    const SERVICE_READ_NAME = 'salesShipmentTrackRepositoryV1';
+    public const SERVICE_READ_NAME = 'salesShipmentTrackRepositoryV1';
 
     /**
      * Version of service
      */
-    const SERVICE_VERSION = 'V1';
+    public const SERVICE_VERSION = 'V1';
 
     /**
      * Increment id for shipment
      */
-    const SHIPMENT_INCREMENT_ID = '100000001';
+    public const SHIPMENT_INCREMENT_ID = '100000001';
 
     /**
      * @var \Magento\Framework\ObjectManagerInterface

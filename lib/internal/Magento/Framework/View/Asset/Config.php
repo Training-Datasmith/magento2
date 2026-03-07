@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -6,8 +8,8 @@
 
 namespace Magento\Framework\View\Asset;
 
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * View asset configuration interface
@@ -17,22 +19,22 @@ class Config implements \Magento\Framework\View\Asset\ConfigInterface
     /**
      * XML path for CSS files merge configuration
      */
-    const XML_PATH_MERGE_CSS_FILES = 'dev/css/merge_css_files';
+    public const XML_PATH_MERGE_CSS_FILES = 'dev/css/merge_css_files';
 
     /**
      * XML path for JavaScript files merge configuration
      */
-    const XML_PATH_MERGE_JS_FILES = 'dev/js/merge_files';
+    public const XML_PATH_MERGE_JS_FILES = 'dev/js/merge_files';
 
     /**
      * XML path for asset minification adapter configuration
      */
-    const XML_PATH_JS_BUNDLING = 'dev/js/enable_js_bundling';
+    public const XML_PATH_JS_BUNDLING = 'dev/js/enable_js_bundling';
 
     /**
      * XML path for HTML minification configuration
      */
-    const XML_PATH_MINIFICATION_HTML = 'dev/template/minify_html';
+    public const XML_PATH_MINIFICATION_HTML = 'dev/template/minify_html';
 
     /**
      * @var ScopeConfigInterface

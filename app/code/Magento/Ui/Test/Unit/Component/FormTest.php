@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -218,7 +219,7 @@ class FormTest extends TestCase
         ];
         $dataSource = [
             'data' => [
-                'general' => $row
+                'general' => $row,
             ],
         ];
 

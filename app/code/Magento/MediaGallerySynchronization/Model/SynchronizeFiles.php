@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -14,9 +15,9 @@ use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Stdlib\DateTime\DateTimeFactory;
 use Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface;
-use Magento\MediaGallerySynchronizationApi\Model\ImportFilesInterface;
-use Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface;
 use Magento\MediaGallerySynchronization\Model\Filesystem\GetFileInfo;
+use Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface;
+use Magento\MediaGallerySynchronizationApi\Model\ImportFilesInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -106,7 +107,7 @@ class SynchronizeFiles implements SynchronizeFilesInterface
                 __(
                     'Could not import media assets for files: %files',
                     [
-                        'files' => implode(', ', $paths)
+                        'files' => implode(', ', $paths),
                     ]
                 )
             );

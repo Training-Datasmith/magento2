@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -22,7 +23,7 @@ class Enum extends EnumType
     {
         $config = [
             'name' => $configElement->getName(),
-            'description' => $configElement->getDescription()
+            'description' => $configElement->getDescription(),
         ];
 
         if (empty($configElement->getValues())) {
@@ -33,7 +34,7 @@ class Enum extends EnumType
             $config['values'][$value->getValue()] = [
                 'value' => $value->getValue(),
                 'description' => $value->getDescription(),
-                'deprecationReason' => $value->getDeprecatedReason() ?: null
+                'deprecationReason' => $value->getDeprecatedReason() ?: null,
             ];
         }
         parent::__construct($config);

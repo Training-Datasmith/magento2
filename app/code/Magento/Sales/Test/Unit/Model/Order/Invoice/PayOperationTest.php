@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,20 +10,19 @@ namespace Magento\Sales\Test\Unit\Model\Order\Invoice;
 
 use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\Context;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Payment\Model\MethodInterface;
 use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\Data\InvoiceItemInterface;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Invoice;
 use Magento\Sales\Model\Order\Invoice\Item as InvoiceItem;
 use Magento\Sales\Model\Order\Invoice\PayOperation;
 use Magento\Sales\Model\Order\Payment;
-use PHPUnit\Framework\MockObject\MockObject;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for Invoice pay operation.
@@ -89,7 +89,7 @@ class PayOperationTest extends TestCase
                 'setShippingInvoiced', 'getShippingInvoiced', 'setBaseShippingInvoiced',
                 'getBaseShippingInvoiced', 'setDiscountInvoiced', 'getDiscountInvoiced',
                 'setBaseDiscountInvoiced', 'getBaseDiscountInvoiced', 'setBaseTotalInvoicedCost',
-                'getBaseTotalInvoicedCost'
+                'getBaseTotalInvoicedCost',
             ]
         );
         $this->orderMock->expects($this->any())
@@ -145,7 +145,7 @@ class PayOperationTest extends TestCase
                 'getBaseGrandTotal', 'getSubtotal', 'getBaseSubtotal', 'getTaxAmount', 'getBaseTaxAmount',
                 'getDiscountTaxCompensationAmount', 'getBaseDiscountTaxCompensationAmount',
                 'getShippingTaxAmount', 'getBaseShippingTaxAmount', 'getShippingAmount',
-                'getBaseShippingAmount', 'getDiscountAmount', 'getBaseDiscountAmount', 'getBaseCost'
+                'getBaseShippingAmount', 'getDiscountAmount', 'getBaseDiscountAmount', 'getBaseCost',
             ]
         );
         $this->invoiceMock->expects($this->any())

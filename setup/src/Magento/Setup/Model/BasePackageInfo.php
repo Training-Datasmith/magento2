@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Model;
 
 use Magento\Framework\FileSystem\Directory\ReadFactory;
@@ -13,11 +16,11 @@ use Magento\Framework\FileSystem\Directory\ReadFactory;
  */
 class BasePackageInfo
 {
-    const MAGENTO_BASE_PACKAGE_COMPOSER_JSON_FILE = 'magento/magento2-base/composer.json';
+    public const MAGENTO_BASE_PACKAGE_COMPOSER_JSON_FILE = 'magento/magento2-base/composer.json';
 
-    const COMPOSER_KEY_EXTRA = 'extra';
+    public const COMPOSER_KEY_EXTRA = 'extra';
 
-    const COMPOSER_KEY_MAP = 'map';
+    public const COMPOSER_KEY_MAP = 'map';
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\ReadInterface $reader

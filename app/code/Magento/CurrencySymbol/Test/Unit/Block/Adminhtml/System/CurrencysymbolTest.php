@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\CurrencySymbol\Test\Unit\Block\Adminhtml\System;
 use Magento\Backend\Block\Widget\Button;
 use Magento\CurrencySymbol\Block\Adminhtml\System\Currencysymbol;
 use Magento\CurrencySymbol\Model\System\CurrencysymbolFactory;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\BlockInterface;
 use Magento\Framework\View\LayoutInterface;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class CurrencysymbolTest extends TestCase
 {
@@ -61,7 +62,7 @@ class CurrencysymbolTest extends TestCase
                     'class' => 'save primary save-currency-symbols',
                     'data_attribute' => [
                         'mage-init' => ['button' => ['event' => 'save', 'target' => '#currency-symbols-form']],
-                    ]
+                    ],
                 ]
             );
 
@@ -70,7 +71,7 @@ class CurrencysymbolTest extends TestCase
             Currencysymbol::class,
             [
                 'symbolSystemFactory' => $symbolSystemFactoryMock,
-                'layout' => $layoutMock
+                'layout' => $layoutMock,
             ]
         );
         $block->setLayout($layoutMock);

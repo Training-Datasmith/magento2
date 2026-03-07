@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
@@ -9,8 +10,8 @@ namespace Magento\Customer\Controller\Adminhtml\Address;
 
 use Magento\Customer\Api\AccountManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\TestFramework\Helper\Bootstrap;
 use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\TestFramework\Helper\Bootstrap;
 
 /**
  * @magentoAppArea adminhtml
@@ -121,7 +122,7 @@ class SaveTest extends \Magento\TestFramework\TestCase\AbstractBackendController
             'postcode' => '01001',
             'telephone' => '+7000000001',
             'default_billing' => true,
-            'default_shipping' => true
+            'default_shipping' => true,
         ];
         $this->getRequest()->setPostValue($post)->setMethod(HttpRequest::METHOD_POST);
 

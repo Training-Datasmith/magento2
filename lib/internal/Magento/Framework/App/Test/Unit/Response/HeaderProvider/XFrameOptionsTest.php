@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -14,12 +15,12 @@ use PHPUnit\Framework\TestCase;
 class XFrameOptionsTest extends TestCase
 {
     /** X-Frame-Option Header name */
-    const HEADER_NAME = 'X-Frame-Options';
+    public const HEADER_NAME = 'X-Frame-Options';
 
     /**
      * X-Frame-Option header value
      */
-    const HEADER_VALUE = 'TEST_OPTION';
+    public const HEADER_VALUE = 'TEST_OPTION';
 
     /**
      * @var XFrameOptions

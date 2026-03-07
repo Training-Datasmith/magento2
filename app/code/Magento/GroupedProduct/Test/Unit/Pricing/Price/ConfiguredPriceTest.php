@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -155,7 +156,7 @@ class ConfiguredPriceTest extends TestCase
         $this->saleableItem->method('getStore')->willReturn($store);
         $this->saleableItem->method('getCustomOption')->willReturnMap([
             ['associated_product_1', $customOptionOne],
-            ['associated_product_2', $customOptionTwo]
+            ['associated_product_2', $customOptionTwo],
         ]);
 
         $item = $this->createMock(ItemInterface::class);

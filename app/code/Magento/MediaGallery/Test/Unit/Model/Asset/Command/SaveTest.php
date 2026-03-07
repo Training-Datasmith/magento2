@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
@@ -104,7 +105,7 @@ class SaveTest extends TestCase
             ResourceConnection::class,
             [
                 'getConnection' => $this->adapterMock,
-                'getTableName'  => self::PREFIXED_TABLE_MEDIA_GALLERY_ASSET
+                'getTableName'  => self::PREFIXED_TABLE_MEDIA_GALLERY_ASSET,
             ]
         );
 
@@ -114,7 +115,7 @@ class SaveTest extends TestCase
             [
                 'resourceConnection' => $this->resourceConnectionMock,
                 'objectProcessor'    => $this->objectProcessor,
-                'logger'             => $this->loggerMock
+                'logger'             => $this->loggerMock,
             ]
         );
     }

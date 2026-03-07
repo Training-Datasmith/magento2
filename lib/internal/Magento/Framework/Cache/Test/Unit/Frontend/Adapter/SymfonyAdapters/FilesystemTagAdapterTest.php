@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -189,7 +190,7 @@ class FilesystemTagAdapterTest extends TestCase
         $lines = explode("\n", trim($content));
 
         // Should only appear once
-        $count = count(array_filter($lines, fn($line) => trim($line) === $id));
+        $count = count(array_filter($lines, fn ($line) => trim($line) === $id));
         $this->assertEquals(1, $count);
     }
 

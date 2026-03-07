@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -12,7 +13,6 @@ use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order\Email\Container\InvoiceCommentIdentity;
 use Magento\Sales\Model\Order\Email\Sender\InvoiceCommentSender;
 use Magento\Sales\Model\Order\Invoice as InvoiceModel;
-use Magento\Sales\Model\ResourceModel\Order\Invoice;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class InvoiceCommentSenderTest extends AbstractSenderTestCase
@@ -105,8 +105,8 @@ class InvoiceCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -154,8 +154,8 @@ class InvoiceCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');
@@ -197,8 +197,8 @@ class InvoiceCommentSenderTest extends AbstractSenderTestCase
                     'formattedBillingAddress' => 1,
                     'order_data' => [
                         'customer_name' => $customerName,
-                        'frontend_status_label' => $frontendStatusLabel
-                    ]
+                        'frontend_status_label' => $frontendStatusLabel,
+                    ],
                 ]
             );
         $this->appEmulator->expects($this->once())->method('startEnvironmentEmulation');

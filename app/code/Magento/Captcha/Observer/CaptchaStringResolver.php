@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,9 +9,9 @@ declare(strict_types=1);
 
 namespace Magento\Captcha\Observer;
 
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Captcha\Helper\Data as CaptchaHelper;
+use Magento\Framework\App\Request\Http as HttpRequest;
+use Magento\Framework\App\RequestInterface;
 
 /**
  * Extract given captcha word.

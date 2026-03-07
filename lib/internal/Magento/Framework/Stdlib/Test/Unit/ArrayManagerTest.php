@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -9,8 +10,8 @@ namespace Magento\Framework\Stdlib\Test\Unit;
 
 use Magento\Framework\Stdlib\ArrayManager;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ArrayManagerTest extends TestCase
 {
@@ -49,18 +50,18 @@ class ArrayManagerTest extends TestCase
             0 => [
                 'path' => 'some/path',
                 'data' => ['some' => ['path' => null]],
-                'result' => true
+                'result' => true,
             ],
             1 => [
                 'path' => '0/0/test',
                 'data' => [[['test' => false]]],
-                'result' => true
+                'result' => true,
             ],
             2 => [
                 'path' => 'invalid/path',
                 'data' => ['valid' => ['path' => 0]],
-                'result' => false
-            ]
+                'result' => false,
+            ],
         ];
     }
 
@@ -91,18 +92,18 @@ class ArrayManagerTest extends TestCase
             0 => [
                 'path' => 'nested/path/0',
                 'data' => ['nested' => ['path' => ['value1']]],
-                'result' => 'value1'
+                'result' => 'value1',
             ],
             1 => [
                 'path' => '0',
                 'data' => [false],
-                'result' => false
+                'result' => false,
             ],
             2 => [
                 'path' => 'invalid/path/0',
                 'data' => [],
-                'result' => null
-            ]
+                'result' => null,
+            ],
         ];
     }
 
@@ -127,26 +128,26 @@ class ArrayManagerTest extends TestCase
                 'path' => '0/1',
                 'data' => [[false, false]],
                 'value' => true,
-                'result' => [[false, true]]
+                'result' => [[false, true]],
             ],
             1 => [
                 'path' => 'test',
                 'data' => ['test' => ['lost data']],
                 'value' => 'found data',
-                'result' => ['test' => 'found data']
+                'result' => ['test' => 'found data'],
             ],
             2 => [
                 'path' => 'new/path/2',
                 'data' => ['existing' => ['path' => 1]],
                 'value' => 'valuable data',
-                'result' => ['existing' => ['path' => 1], 'new' => ['path' => [2 => 'valuable data']]]
+                'result' => ['existing' => ['path' => 1], 'new' => ['path' => [2 => 'valuable data']]],
             ],
             3 => [
                 'path' => ['new', 'path/2'],
                 'data' => ['existing' => ['path' => 1]],
                 'value' => 'valuable data',
-                'result' => ['existing' => ['path' => 1], 'new' => ['path' => [2 => 'valuable data']]]
-            ]
+                'result' => ['existing' => ['path' => 1], 'new' => ['path' => [2 => 'valuable data']]],
+            ],
         ];
     }
 
@@ -171,26 +172,26 @@ class ArrayManagerTest extends TestCase
                 'path' => '0/1',
                 'data' => [[false, false]],
                 'value' => true,
-                'result' => [[false, true]]
+                'result' => [[false, true]],
             ],
             1 => [
                 'path' => 'test',
                 'data' => ['test' => ['lost data']],
                 'value' => 'found data',
-                'result' => ['test' => 'found data']
+                'result' => ['test' => 'found data'],
             ],
             2 => [
                 'path' => 'new/path/2',
                 'data' => ['existing' => ['path' => 1]],
                 'value' => 'valuable data',
-                'result' => ['existing' => ['path' => 1]]
+                'result' => ['existing' => ['path' => 1]],
             ],
             3 => [
                 'path' => ['new', 'path', '2'],
                 'data' => ['existing' => ['path' => 1]],
                 'value' => 'valuable data',
-                'result' => ['existing' => ['path' => 1]]
-            ]
+                'result' => ['existing' => ['path' => 1]],
+            ],
         ];
     }
 
@@ -217,36 +218,36 @@ class ArrayManagerTest extends TestCase
                 'targetPath' => 'target/path',
                 'data' => ['valid' => ['path' => 'value']],
                 'overwrite' => false,
-                'result' => ['valid' => ['path' => 'value']]
+                'result' => ['valid' => ['path' => 'value']],
             ],
             1 => [
                 'path' => 'valid/path',
                 'targetPath' => 'target/path',
                 'data' => ['valid' => ['path' => 'value']],
                 'overwrite' => false,
-                'result' => ['valid' => [], 'target' => ['path' => 'value']]
+                'result' => ['valid' => [], 'target' => ['path' => 'value']],
             ],
             2 => [
                 'path' => 'valid/path',
                 'targetPath' => 'target/path',
                 'data' => ['valid' => ['path' => 'value'], 'target' => ['path' => 'exists']],
                 'overwrite' => false,
-                'result' => ['valid' => ['path' => 'value'], 'target' => ['path' => 'exists']]
+                'result' => ['valid' => ['path' => 'value'], 'target' => ['path' => 'exists']],
             ],
             3 => [
                 'path' => 'valid/path',
                 'targetPath' => 'target/path',
                 'data' => ['valid' => ['path' => 'value'], 'target' => ['path' => 'exists']],
                 'overwrite' => true,
-                'result' => ['valid' => [], 'target' => ['path' => 'value']]
+                'result' => ['valid' => [], 'target' => ['path' => 'value']],
             ],
             4 => [
                 'path' => ['valid', 'path'],
                 'targetPath' => 'target/path',
                 'data' => ['valid' => ['path' => 'value'], 'target' => ['path' => 'exists']],
                 'overwrite' => true,
-                'result' => ['valid' => [], 'target' => ['path' => 'value']]
-            ]
+                'result' => ['valid' => [], 'target' => ['path' => 'value']],
+            ],
         ];
     }
 
@@ -271,25 +272,25 @@ class ArrayManagerTest extends TestCase
                 'path' => '0/path/1',
                 'data' => [['path' => [false, ['value' => false]]]],
                 'value' => ['value' => true, 'new_value' => false],
-                'result' => [['path' => [false, ['value' => true, 'new_value' => false]]]]
+                'result' => [['path' => [false, ['value' => true, 'new_value' => false]]]],
             ],
             1 => [
                 'path' => 0,
                 'data' => [['nested' => ['test' => 2, 'test2' => 1]]],
                 'value' => ['nested' => ['test' => 3], 'more' => 4],
-                'result' => [['nested' => ['test' => 3, 'test2' => 1], 'more' => 4]]
+                'result' => [['nested' => ['test' => 3, 'test2' => 1], 'more' => 4]],
             ],
             2 => [
                 'path' => 'invalid/path',
                 'data' => [],
                 'value' => [true],
-                'result' => []
+                'result' => [],
             ],
             3 => [
                 'path' => ['0', 'path/1'],
                 'data' => [['path' => [false, ['value' => false]]]],
                 'value' => ['value' => true, 'new_value' => false],
-                'result' => [['path' => [false, ['value' => true, 'new_value' => false]]]]
+                'result' => [['path' => [false, ['value' => true, 'new_value' => false]]]],
             ],
         ];
     }
@@ -313,18 +314,18 @@ class ArrayManagerTest extends TestCase
             0 => [
                 'path' => 'some/is/not/array',
                 'data' => ['some' => true],
-                'result' => ['some' => true]
+                'result' => ['some' => true],
             ],
             1 => [
                 'path' => 0,
                 'data' => [],
-                'result' => [[]]
+                'result' => [[]],
             ],
             2 => [
                 'path' => 'nested/1/array',
                 'data' => ['nested' => [true]],
-                'result' => ['nested' => [true, ['array' => []]]]
-            ]
+                'result' => ['nested' => [true, ['array' => []]]],
+            ],
         ];
     }
 
@@ -347,22 +348,22 @@ class ArrayManagerTest extends TestCase
             0 => [
                 'path' => '0/0/0/0',
                 'data' => [[[[null]]]],
-                'result' => [[[[]]]]
+                'result' => [[[[]]]],
             ],
             1 => [
                 'path' => 'simple',
                 'data' => ['simple' => true, 'complex' => false],
-                'result' => ['complex' => false]
+                'result' => ['complex' => false],
             ],
             2 => [
                 'path' => 'invalid',
                 'data' => [true],
-                'result' => [true]
+                'result' => [true],
             ],
             3 => [
                 'path' => ['simple'],
                 'data' => ['simple' => true, 'complex' => false],
-                'result' => ['complex' => false]
+                'result' => ['complex' => false],
             ],
         ];
     }
@@ -388,23 +389,23 @@ class ArrayManagerTest extends TestCase
             'element1' => [
                 'children' => [
                     'element11' => [
-                        'children' => [true, true]
+                        'children' => [true, true],
                     ],
                     'element12' => [
                         'config' => [
                             'argument' => [
-                                'data' => true
-                            ]
-                        ]
-                    ]
-                ]
+                                'data' => true,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'element2' => [
-                'children' => [true, true, true]
+                'children' => [true, true, true],
             ],
             '' => [
-                [[[[]]]]
-            ]
+                [[[[]]]],
+            ],
         ];
 
         return [
@@ -413,36 +414,36 @@ class ArrayManagerTest extends TestCase
                 'data' => $data,
                 'startPath' => 'element2',
                 'internalPath' => null,
-                'result' => ['element2/children/0', 'element2/children/2']
+                'result' => ['element2/children/0', 'element2/children/2'],
             ],
             1 => [
                 'indexes' => 0,
                 'data' => $data,
                 'startPath' => ['', '0'],
                 'internalPath' => '0',
-                'result' => ['/0/0', '/0/0/0/0']
+                'result' => ['/0/0', '/0/0/0/0'],
             ],
             2 => [
                 'indexes' => 0,
                 'data' => $data,
                 'startPath' => '',
                 'internalPath' => ['0', '0'],
-                'result' => ['/0', '/0/0/0/0']
+                'result' => ['/0', '/0/0/0/0'],
             ],
             3 => [
                 'indexes' => 'data',
                 'data' => $data,
                 'startPath' => 'element1/children',
                 'internalPath' => 'config/argument',
-                'result' => ['element1/children/element12/config/argument/data']
+                'result' => ['element1/children/element12/config/argument/data'],
             ],
             4 => [
                 'indexes' => 1,
                 'data' => $data,
                 'startPath' => null,
                 'internalPath' => 'elements',
-                'result' => []
-            ]
+                'result' => [],
+            ],
         ];
     }
 
@@ -467,23 +468,23 @@ class ArrayManagerTest extends TestCase
             'element1' => [
                 'children' => [
                     'element11' => [
-                        'children' => [true, true]
+                        'children' => [true, true],
                     ],
                     'element12' => [
                         'config' => [
                             'argument' => [
-                                'data' => true
-                            ]
-                        ]
-                    ]
-                ]
+                                'data' => true,
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'element2' => [
-                'children' => [true, true, true]
+                'children' => [true, true, true],
             ],
             '' => [
-                [[[[]]]]
-            ]
+                [[[[]]]],
+            ],
         ];
 
         return [
@@ -492,36 +493,36 @@ class ArrayManagerTest extends TestCase
                 'data' => $data,
                 'startPath' => 'element2',
                 'internalPath' => null,
-                'result' => 'element2/children/0'
+                'result' => 'element2/children/0',
             ],
             1 => [
                 'indexes' => 0,
                 'data' => $data,
                 'startPath' => ['', '0'],
                 'internalPath' => '0',
-                'result' => '/0/0'
+                'result' => '/0/0',
             ],
             2 => [
                 'indexes' => 0,
                 'data' => $data,
                 'startPath' => '',
                 'internalPath' => ['0', '0'],
-                'result' => '/0'
+                'result' => '/0',
             ],
             3 => [
                 'indexes' => 'data',
                 'data' => $data,
                 'startPath' => 'element1/children',
                 'internalPath' => 'config/argument',
-                'result' => 'element1/children/element12/config/argument/data'
+                'result' => 'element1/children/element12/config/argument/data',
             ],
             4 => [
                 'indexes' => 1,
                 'data' => $data,
                 'startPath' => null,
                 'internalPath' => 'elements',
-                'result' => null
-            ]
+                'result' => null,
+            ],
         ];
     }
 
@@ -548,31 +549,31 @@ class ArrayManagerTest extends TestCase
                 'path' => $path,
                 'offset' => 3,
                 'length' => null,
-                'result' => 'long/path/0/goes/1/3/here'
+                'result' => 'long/path/0/goes/1/3/here',
             ],
             1 => [
                 'path' => $path,
                 'offset' => -3,
                 'length' => null,
-                'result' => '1/3/here'
+                'result' => '1/3/here',
             ],
             2 => [
                 'path' => $path,
                 'offset' => 500,
                 'length' => null,
-                'result' => ''
+                'result' => '',
             ],
             3 => [
                 'path' => $path,
                 'offset' => 2,
                 'length' => 2,
-                'result' => 'very/long'
+                'result' => 'very/long',
             ],
             4 => [
                 'path' => $path,
                 'offset' => -6,
                 'length' => 3,
-                'result' => 'path/0/goes'
+                'result' => 'path/0/goes',
             ],
         ];
     }

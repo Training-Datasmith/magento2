@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -18,6 +19,7 @@ use Magento\Framework\Event\ManagerInterface;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Reports\Model\ResourceModel\Order\Collection;
 use Magento\Sales\Model\Order\Config;
 use Magento\Sales\Model\ResourceModel\Report\Order;
@@ -25,12 +27,10 @@ use Magento\Sales\Model\ResourceModel\Report\OrderFactory;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
-use PHPUnit\Framework\MockObject\Matcher\InvokedCount;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -429,7 +429,7 @@ class CollectionTest extends TestCase
         $this->connectionMock
             ->method('prepareSqlCondition')
             ->willReturnCallback(function ($arg1, $arg2) use ($fromDate, $toDate) {
-                if ($arg1 == "`created_at`" && $arg2 == ['from' => $fromDate, 'to' => $toDate]) {
+                if ($arg1 == '`created_at`' && $arg2 == ['from' => $fromDate, 'to' => $toDate]) {
                     return null;
                 }
             });
@@ -467,7 +467,7 @@ class CollectionTest extends TestCase
         return [
             [1, 'sales_order_aggregated_created', 0, 'never'],
             [0, 'sales_order', 0, 'exactly_7'],
-            [0, 'sales_order', 1, 'exactly_6']
+            [0, 'sales_order', 1, 'exactly_6'],
         ];
     }
 
@@ -479,7 +479,7 @@ class CollectionTest extends TestCase
         return [
             ['', '', '', ['0 0 0 23:59:59', '0 0 1 0:59:59', '0 0 0 22:59:59']],
             ['24h', '', '', ['0 0 1 0:0:0', '0 0 1 1:0:0', '0 0 0 23:0:0']],
-            ['7d', '', '', ['0 0 6 23:59:59', '0 0 7 0:59:59', '0 0 6 22:59:59']]
+            ['7d', '', '', ['0 0 6 23:59:59', '0 0 7 0:59:59', '0 0 6 22:59:59']],
         ];
     }
 
@@ -495,7 +495,7 @@ class CollectionTest extends TestCase
         return [
             ['1m', 1, 10, 'reports/dashboard/mtd_start', $expectedYear],
             ['1y', 1, 10, 'reports/dashboard/ytd_start', $expectedYear],
-            ['2y', 1, 10, 'reports/dashboard/ytd_start', $expected2YTDYear]
+            ['2y', 1, 10, 'reports/dashboard/ytd_start', $expected2YTDYear],
         ];
     }
 
@@ -508,7 +508,7 @@ class CollectionTest extends TestCase
             [1, 1, 'sales_order_aggregated_created', 'never'],
             [0, 1, 'sales_order_aggregated_created', 'never'],
             [1, 0, 'sales_order', 'exactly_10'],
-            [0, 0, 'sales_order', 'exactly_11']
+            [0, 0, 'sales_order', 'exactly_11'],
         ];
     }
 
@@ -521,7 +521,7 @@ class CollectionTest extends TestCase
             [1, 1, 'sales_order_aggregated_created'],
             [0, 1, 'sales_order_aggregated_created'],
             [1, 0, 'sales_order'],
-            [0, 0, 'sales_order']
+            [0, 0, 'sales_order'],
         ];
     }
 
@@ -551,12 +551,12 @@ class CollectionTest extends TestCase
             'total' => 'SUM(main_table.base_grand_total)',
             'invoiced' => 'SUM(main_table.base_total_paid)',
             'refunded' => 'SUM(main_table.base_total_refunded)',
-            'profit' => 'SUM(text) + SUM(text) - SUM(text) - SUM(text) - SUM(text)'
+            'profit' => 'SUM(text) + SUM(text) - SUM(text) - SUM(text) - SUM(text)',
         ];
 
         return [
             [[], $firstReturn],
-            [[1], $secondReturn]
+            [[1], $secondReturn],
         ];
     }
 }

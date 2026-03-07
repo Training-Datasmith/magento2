@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -70,7 +71,7 @@ class CountryTest extends \PHPUnit\Framework\TestCase
         $countryOptions = $this->factory->create($attribute->getSourceModel())
             ->setAttribute($attribute)->getAllOptions();
 
-        $countryOptions = array_map(fn($countryOption) => $countryOption['value'], $countryOptions);
+        $countryOptions = array_map(fn ($countryOption) => $countryOption['value'], $countryOptions);
         $this->assertEquals($expectedCountryCont, count($countryOptions));
         $this->assertContains($expectedCountryCode, $countryOptions);
     }

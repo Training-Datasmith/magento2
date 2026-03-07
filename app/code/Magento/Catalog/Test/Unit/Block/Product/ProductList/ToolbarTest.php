@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\Block\Product\ProductList;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Block\Product\ProductList\Toolbar;
 use Magento\Catalog\Helper\Product\ProductList;
 use Magento\Catalog\Model\Config;
@@ -20,6 +20,7 @@ use Magento\Framework\Url\EncoderInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Layout;
 use Magento\Theme\Block\Html\Pager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -86,7 +87,7 @@ class ToolbarTest extends TestCase
             'getOrder',
             'getMode',
             'getLimit',
-            'getCurrentPage'
+            'getCurrentPage',
         ]);
         $this->memorizer = $this->createPartialMock(
             ToolbarMemorizer::class,
@@ -95,7 +96,7 @@ class ToolbarTest extends TestCase
                 'getOrder',
                 'getMode',
                 'getLimit',
-                'isMemorizingAllowed'
+                'isMemorizingAllowed',
             ]
         );
         $this->layout = $this->createPartialMock(Layout::class, ['getChildName', 'getBlock']);
@@ -112,7 +113,7 @@ class ToolbarTest extends TestCase
             [ProductList::XML_PATH_LIST_MODE, null, 'grid-list'],
             ['catalog/frontend/list_per_page_values', null, '10,20,30'],
             ['catalog/frontend/grid_per_page_values', null, '10,20,30'],
-            ['catalog/frontend/list_allow_all', null, false]
+            ['catalog/frontend/list_allow_all', null, false],
         ];
 
         $this->scopeConfig->expects($this->any())
@@ -143,7 +144,7 @@ class ToolbarTest extends TestCase
                 'toolbarModel' => $this->model,
                 'toolbarMemorizer' => $this->memorizer,
                 'urlEncoder' => $this->urlEncoder,
-                'productListHelper' => $this->productListHelper
+                'productListHelper' => $this->productListHelper,
             ]
         );
     }

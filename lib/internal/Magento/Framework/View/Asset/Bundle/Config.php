@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -9,8 +11,8 @@ namespace Magento\Framework\View\Asset\Bundle;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\View;
 use Magento\Framework\View\Asset\Bundle;
-use Magento\Framework\View\Design\Theme\ListInterface;
 use Magento\Framework\View\Asset\File\FallbackContext;
+use Magento\Framework\View\Design\Theme\ListInterface;
 use Magento\Framework\View\Design\Theme\ThemeProviderInterface;
 
 /**
@@ -23,8 +25,8 @@ class Config implements Bundle\ConfigInterface
     /**#@+
      * Bundle config info
      */
-    const VIEW_CONFIG_MODULE = 'Js_Bundle';
-    const VIEW_CONFIG_BUNDLE_SIZE_NAME = 'bundle_size';
+    public const VIEW_CONFIG_MODULE = 'Js_Bundle';
+    public const VIEW_CONFIG_BUNDLE_SIZE_NAME = 'bundle_size';
     /**#@-*/
 
     /**#@-*/
@@ -78,7 +80,7 @@ class Config implements Bundle\ConfigInterface
                 'area' => $assetContext->getAreaCode(),
                 'themeModel' => $this->getThemeProvider()->getThemeByFullPath(
                     $themePath
-                )
+                ),
             ]);
         }
 

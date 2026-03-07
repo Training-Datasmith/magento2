@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,11 +8,9 @@ declare(strict_types=1);
 
 namespace Magento\ConfigurableProduct\Test\Unit\Model;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\ConfigurableProduct\Api\Data\OptionInterface;
-use Magento\ConfigurableProduct\Api\Data\OptionValueInterface;
 use Magento\ConfigurableProduct\Helper\Product\Options\Loader;
 use Magento\ConfigurableProduct\Model\OptionRepository;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
@@ -19,6 +18,7 @@ use Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable\OptionValue;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -80,7 +80,7 @@ class OptionRepositoryTest extends TestCase
                 'productRepository' => $this->productRepositoryMock,
                 'configurableTypeResource' => $this->configurableTypeResource,
                 'optionResource' => $this->optionResource,
-                'optionLoader' => $this->optionLoader
+                'optionLoader' => $this->optionLoader,
             ]
         );
     }
@@ -88,7 +88,7 @@ class OptionRepositoryTest extends TestCase
     public function testGet()
     {
         $optionId = 3;
-        $productSku = "configurable";
+        $productSku = 'configurable';
 
         $this->productMock->expects(self::once())
             ->method('getTypeId')
@@ -119,7 +119,7 @@ class OptionRepositoryTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('This is implemented for the "configurable" configurable product only.');
-        $productSku = "configurable";
+        $productSku = 'configurable';
         $optionId = 3;
 
         $this->productMock->expects(self::once())
@@ -273,7 +273,7 @@ class OptionRepositoryTest extends TestCase
             'The "3" entity that was requested doesn\'t exist. Verify the entity and try again.'
         );
         $optionId = 3;
-        $productSku = "configurable";
+        $productSku = 'configurable';
 
         $this->productMock->expects(self::once())
             ->method('getTypeId')
@@ -298,7 +298,7 @@ class OptionRepositoryTest extends TestCase
 
     public function testGetList()
     {
-        $productSku = "configurable";
+        $productSku = 'configurable';
 
         $this->productMock->expects(self::once())
             ->method('getTypeId')
@@ -323,7 +323,7 @@ class OptionRepositoryTest extends TestCase
     {
         $this->expectException('Magento\Framework\Exception\InputException');
         $this->expectExceptionMessage('This is implemented for the "configurable" configurable product only.');
-        $productSku = "configurable";
+        $productSku = 'configurable';
 
         $this->productRepositoryMock->expects($this->once())
             ->method('get')

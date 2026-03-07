@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -8,13 +9,13 @@ declare(strict_types=1);
 namespace Magento\MediaGalleryMetadata\Model\Jpeg\Segment;
 
 use Magento\Framework\App\ObjectManager;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\MediaGalleryMetadata\Model\ExifReader;
 use Magento\MediaGalleryMetadataApi\Api\Data\MetadataInterface;
 use Magento\MediaGalleryMetadataApi\Api\Data\MetadataInterfaceFactory;
 use Magento\MediaGalleryMetadataApi\Model\FileInterface;
 use Magento\MediaGalleryMetadataApi\Model\ReadMetadataInterface;
 use Magento\MediaGalleryMetadataApi\Model\SegmentInterface;
-use Magento\Framework\Exception\LocalizedException;
 
 /**
  * Jpeg EXIF Reader
@@ -67,7 +68,7 @@ class ReadExif implements ReadMetadataInterface
         return $this->metadataFactory->create([
             'title' => null,
             'description' => null,
-            'keywords' => null
+            'keywords' => null,
         ]);
     }
 
@@ -92,7 +93,7 @@ class ReadExif implements ReadMetadataInterface
         return $this->metadataFactory->create([
             'title' => $title,
             'description' => $description,
-            'keywords' => $keywords
+            'keywords' => $keywords,
         ]);
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Sales\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -125,7 +128,7 @@ class EmailSenderHandler
                 'email_sent',
                 [
                     ['null' => true],
-                    ['lteq' => -1]
+                    ['lteq' => -1],
                 ]
             );
             $this->filterCollectionByStartFromDate($this->entityCollection);

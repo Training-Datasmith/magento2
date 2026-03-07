@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -53,7 +54,7 @@ class StockTest extends TestCase
         $collectionMock->expects($this->atLeastOnce())->method('getSelect')->willReturn($selectMock);
         $collectionMock->expects($this->atLeastOnce())->method('getTable')->willReturn('cataloginventory_stock_item');
         $collectionMock->expects($this->exactly(3))->method('joinField')
-            ->willReturnCallback(fn($param) => match ([$param]) {
+            ->willReturnCallback(fn ($param) => match ([$param]) {
                 ['child_id'] => $collectionMock,
                 ['child_stock'] => $collectionMock,
                 ['parent_stock'] => $collectionMock

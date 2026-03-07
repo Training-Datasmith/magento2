@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types = 1);
+declare(strict_types=1);
+
 namespace Magento\Swatches\ViewModel\Product\Renderer;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;

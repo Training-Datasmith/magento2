@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -65,7 +66,7 @@ class ThumbnailTest extends TestCase
             ],
         ];
         $data = [
-            'name' => 'test'
+            'name' => 'test',
         ];
         $storeId = 1;
         $this->context->expects($this->once())
@@ -98,10 +99,10 @@ class ThumbnailTest extends TestCase
                             'test_src' => 'http://example.com/images',
                             'test_alt' => 'label',
                             'test_link' => 'http://example.com/catalog/product/edit?id=1&store=1',
-                            'test_orig_src' => 'http://example.com/images'
-                        ]
-                    ]
-                ]
+                            'test_orig_src' => 'http://example.com/images',
+                        ],
+                    ],
+                ],
             ],
             $result
         );

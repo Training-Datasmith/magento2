@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Setup\Module\I18n\Dictionary;
 
 /**
@@ -15,14 +18,14 @@ class Phrase
      *
      * @var string
      */
-    const QUOTE_SINGLE = "'";
+    public const QUOTE_SINGLE = "'";
 
     /**
      * Double quote that enclose the phrase
      *
      * @var string
      */
-    const QUOTE_DOUBLE = '"';
+    public const QUOTE_DOUBLE = '"';
 
     /**
      * Phrase

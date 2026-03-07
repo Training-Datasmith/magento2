@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -138,7 +139,7 @@ class SaveAssetLinks
                 ),
                 [
                     self::FIELD_KEYWORD_ID . ' in (?)' => $obsoleteKeywordIds,
-                    self::FIELD_ASSET_ID . ' = ?' => $assetId
+                    self::FIELD_ASSET_ID . ' = ?' => $assetId,
                 ]
             );
         } catch (\Exception $exception) {

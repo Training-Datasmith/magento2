@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Customer\Model\Indexer;
 
 use Magento\Customer\Model\Attribute;
@@ -105,13 +108,13 @@ class AttributeProvider implements FieldsetInterface, ResetAfterRequestInterface
                         'filters' => [],
                         'entity' => static::ENTITY,
                         'bind' => $fieldset['references']['customer']['to'] ?? null,
-                        'index' => $this->hasIndex($attribute)
+                        'index' => $this->hasIndex($attribute),
                     ];
                 }
             } else {
                 $fields[$attribute->getName()] = [
                     'type' => $this->getType($attribute),
-                    'index' => $this->hasIndex($attribute)
+                    'index' => $this->hasIndex($attribute),
                 ];
             }
         }

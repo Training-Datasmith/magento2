@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Newsletter subscribers grid checkbox item renderer
  */
+
 namespace Magento\Newsletter\Block\Adminhtml\Problem\Grid\Renderer;
 
 class Checkbox extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer

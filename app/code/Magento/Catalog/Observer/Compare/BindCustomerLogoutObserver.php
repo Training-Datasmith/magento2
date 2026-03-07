@@ -1,12 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Observer\Compare;
 
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Catalog\Model\Product\Compare\Item;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Catalog Compare Item Model

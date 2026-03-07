@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -267,9 +268,9 @@ class BulkStatusTest extends TestCase
                 null,
                 [
                     OperationInterface::STATUS_TYPE_RETRIABLY_FAILED,
-                    OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED
-                ]
-            ]
+                    OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,
+                ],
+            ],
         ];
     }
 

@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Integration test for \Magento\Framework\Filesystem\FileResolver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Filesystem;
 
 use Magento\TestFramework\Helper\Bootstrap;
@@ -14,12 +17,12 @@ class FileResolverTest extends \PHPUnit\Framework\TestCase
     /**
      * Path to add to include path
      */
-    const FIRST_PATH = '/path/to/code/1/';
+    public const FIRST_PATH = '/path/to/code/1/';
 
     /**
      * Path to add to include path
      */
-    const SECOND_PATH = '/path/to/code/2/';
+    public const SECOND_PATH = '/path/to/code/2/';
 
     /**
      * @var \Magento\Framework\Filesystem\FileResolver

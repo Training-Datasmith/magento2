@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -74,9 +75,9 @@ class ConverterTest extends TestCase
                     'operator' => 'child-operator',
                     'value' => 'child-value',
                     'is_value_processed' => 1,
-                    'aggregator' => 'all'
-                ]
-            ]
+                    'aggregator' => 'all',
+                ],
+            ],
         ];
         $this->assertEquals($expectedResult, $this->model->dataModelToArray($dataModelMock));
     }
@@ -100,9 +101,9 @@ class ConverterTest extends TestCase
                     'operator' => 'child-operator',
                     'value' => 'child-value',
                     'is_value_parsed' => false,
-                    'aggregator' => 'any'
-                ]
-            ]
+                    'aggregator' => 'any',
+                ],
+            ],
         ];
 
         $conditionMock = $this->createMock(ConditionInterface::class);

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Magento model for performance tests
  */
+
 namespace Magento\Setup\Fixtures;
 
 use Magento\Indexer\Console\Command\IndexerReindexCommand;
@@ -130,7 +133,7 @@ class FixtureModel
      *
      * @return array
      */
-    private function getFixturesFromRegistry() : array
+    private function getFixturesFromRegistry(): array
     {
         $fixtureRegistry = $this->getObjectManager()->create(FixtureRegistry::class);
         $fixtures = [];

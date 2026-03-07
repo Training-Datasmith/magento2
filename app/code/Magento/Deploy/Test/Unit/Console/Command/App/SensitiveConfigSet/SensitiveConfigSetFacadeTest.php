@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -144,7 +145,7 @@ class SensitiveConfigSetFacadeTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'some/config/path1',
-                'some/config/path2'
+                'some/config/path2',
             ]);
         $collectorMock = $this->createMock(CollectorInterface::class);
         $collectorMock->expects($this->once())
@@ -205,7 +206,7 @@ class SensitiveConfigSetFacadeTest extends TestCase
             ->method('execute')
             ->willReturn([
                 'some/config/path1',
-                'some/config/path2'
+                'some/config/path2',
             ]);
         $collectorMock = $this->createMock(CollectorInterface::class);
         $collectorMock->expects($this->once())
@@ -244,7 +245,7 @@ class SensitiveConfigSetFacadeTest extends TestCase
             ->willReturn([
                 'some/config/path1',
                 'some/config/path2',
-                'some/config/path3'
+                'some/config/path3',
             ]);
         $collectorMock = $this->createMock(CollectorInterface::class);
         $collectorMock->expects($this->once())

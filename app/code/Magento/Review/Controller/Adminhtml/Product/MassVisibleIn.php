@@ -1,21 +1,23 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Review\Controller\Adminhtml\Product;
 
 use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Review\Controller\Adminhtml\Product as ProductController;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Review\Controller\Adminhtml\Product as ProductController;
 
 /**
  * Class MassVisibleIn
  */
 class MassVisibleIn extends ProductController implements HttpPostActionInterface
 {
-
     /**
      * Execute action
      *

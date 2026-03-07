@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -7,17 +9,18 @@
 /**
  * Test to ensure that readme file present in specified directories
  */
+
 namespace Magento\Test\Integrity\Readme;
 
 use Magento\Framework\App\Utility\Files;
 
 class ReadmeTest extends \PHPUnit\Framework\TestCase
 {
-    const README_FILENAME = 'README.md';
+    public const README_FILENAME = 'README.md';
 
-    const BLACKLIST_FILES_PATTERN = '_files/blacklist/*.txt';
+    public const BLACKLIST_FILES_PATTERN = '_files/blacklist/*.txt';
 
-    const SCAN_LIST_FILE = '_files/scan_list.txt';
+    public const SCAN_LIST_FILE = '_files/scan_list.txt';
 
     /** @var array Blacklisted files and directories */
     private $blacklist = [];

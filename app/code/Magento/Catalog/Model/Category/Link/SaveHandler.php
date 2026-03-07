@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Catalog\Model\Category\Link;
 
 use Magento\Catalog\Api\Data\CategoryLinkInterface;
@@ -13,7 +16,6 @@ use Magento\Framework\EntityManager\Operation\ExtensionInterface;
  */
 class SaveHandler implements ExtensionInterface
 {
-
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Product\CategoryLink
      */

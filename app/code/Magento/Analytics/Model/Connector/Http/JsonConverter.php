@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -26,17 +27,8 @@ class JsonConverter implements ConverterInterface
      */
     public const CONTENT_MEDIA_TYPE = 'application/json';
 
-    /**
-     * @var Json
-     */
-    private $serializer;
-
-    /**
-     * @param Json $serializer
-     */
-    public function __construct(Json $serializer)
+    public function __construct(private readonly Json $serializer)
     {
-        $this->serializer = $serializer;
     }
 
     /**
@@ -45,7 +37,7 @@ class JsonConverter implements ConverterInterface
     public function fromBody($body)
     {
         $decodedBody = $this->serializer->unserialize($body);
-        return $decodedBody === null ? [$body] : $decodedBody;
+        return $decodedBody ?? [$body];
     }
 
     /**
@@ -59,7 +51,7 @@ class JsonConverter implements ConverterInterface
     /**
      * @inheritdoc
      */
-    public function getContentTypeHeader()
+    public function getContentTypeHeader(): string
     {
         return sprintf('Content-Type: %s', self::CONTENT_MEDIA_TYPE);
     }

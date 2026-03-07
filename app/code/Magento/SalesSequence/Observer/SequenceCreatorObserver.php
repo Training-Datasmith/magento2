@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\SalesSequence\Observer;
 
 use Magento\Framework\Event\Observer as EventObserver;
-use Magento\SalesSequence\Model\Builder;
-use Magento\SalesSequence\Model\EntityPool;
-use Magento\SalesSequence\Model\Config;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\SalesSequence\Model\Builder;
+use Magento\SalesSequence\Model\Config;
+use Magento\SalesSequence\Model\EntityPool;
 
 /**
  * Class CreateSequence

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -21,17 +23,17 @@ class Boolean implements DbDefinitionProcessorInterface
     /**
      * Type the column is persisted with.
      */
-    const TYPE = 'BOOLEAN';
+    public const TYPE = 'BOOLEAN';
 
     /**
      * Type of integer that is used in MySQL for boolean.
      */
-    const INTEGER_TYPE = 'tinyint';
+    public const INTEGER_TYPE = 'tinyint';
 
     /**
      * Padding for integer described below.
      */
-    const INTEGER_PADDING = '1';
+    public const INTEGER_PADDING = '1';
 
     /**
      * @var Nullable

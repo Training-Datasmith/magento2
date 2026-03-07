@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -14,14 +15,14 @@ namespace Magento\Framework\Api;
  */
 interface CriteriaInterface
 {
-    const PART_FIELDS = 'fields';
-    const PART_FILTERS = 'filters';
-    const PART_ORDERS = 'orders';
-    const PART_CRITERIA_LIST = 'criteria_list';
-    const PART_LIMIT = 'limit';
+    public const PART_FIELDS = 'fields';
+    public const PART_FILTERS = 'filters';
+    public const PART_ORDERS = 'orders';
+    public const PART_CRITERIA_LIST = 'criteria_list';
+    public const PART_LIMIT = 'limit';
 
-    const SORT_ORDER_ASC = 'ASC';
-    const SORT_ORDER_DESC = 'DESC';
+    public const SORT_ORDER_ASC = 'ASC';
+    public const SORT_ORDER_DESC = 'DESC';
 
     /**
      * Get associated Mapper Interface name

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,9 +11,9 @@ namespace Magento\Persistent\Test\Unit\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Persistent\Helper\Data;
 use Magento\Persistent\Helper\Session;
+use Magento\Persistent\Model\Session as PersistentSession;
 use Magento\Persistent\Model\SessionFactory;
 use Magento\Persistent\Observer\SynchronizePersistentOnLogoutObserver;
-use Magento\Persistent\Model\Session as PersistentSession;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

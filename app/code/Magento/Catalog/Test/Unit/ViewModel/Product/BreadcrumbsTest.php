@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\Catalog\Test\Unit\ViewModel\Product;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use Magento\Catalog\Helper\Data as CatalogHelper;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\ViewModel\Product\Breadcrumbs;
@@ -16,6 +16,7 @@ use Magento\Framework\Escaper;
 use Magento\Framework\Serialize\Serializer\JsonHexTag;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Store\Model\ScopeInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -71,7 +72,7 @@ class BreadcrumbsTest extends TestCase
                 'catalogData' => $this->catalogHelperMock,
                 'scopeConfig' => $this->scopeConfigMock,
                 'escaper' => $escaper,
-                'jsonSerializer' => $this->serializerMock
+                'jsonSerializer' => $this->serializerMock,
             ]
         );
     }
@@ -79,7 +80,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * @return void
      */
-    public function testGetCategoryUrlSuffix() : void
+    public function testGetCategoryUrlSuffix(): void
     {
         $this->scopeConfigMock->expects($this->once())
             ->method('getValue')
@@ -92,7 +93,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * @return void
      */
-    public function testIsCategoryUsedInProductUrl() : void
+    public function testIsCategoryUsedInProductUrl(): void
     {
         $this->scopeConfigMock->expects($this->once())
             ->method('isSetFlag')
@@ -109,9 +110,9 @@ class BreadcrumbsTest extends TestCase
      * @return void
      */
     #[DataProvider('productDataProvider')]
-    public function testGetProductName($product, string $expectedName) : void
+    public function testGetProductName($product, string $expectedName): void
     {
-        if ($product!=null) {
+        if ($product != null) {
             $product = $product($this);
         }
         $this->catalogHelperMock->expects($this->atLeastOnce())
@@ -124,7 +125,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * @return array
      */
-    public static function productDataProvider() : array
+    public static function productDataProvider(): array
     {
         return [
             [
@@ -132,7 +133,7 @@ class BreadcrumbsTest extends TestCase
                     Product::class,
                     ['data' => ['name' => 'Test']]
                 ),
-                'Test'
+                'Test',
             ],
             [null, ''],
         ];
@@ -145,9 +146,9 @@ class BreadcrumbsTest extends TestCase
      * @return void
      */
     #[DataProvider('productJsonEncodeDataProvider')]
-    public function testGetJsonConfigurationHtmlEscaped($product, string $expectedJson) : void
+    public function testGetJsonConfigurationHtmlEscaped($product, string $expectedJson): void
     {
-        if ($product!=null) {
+        if ($product != null) {
             $product = $product($this);
         }
         $this->catalogHelperMock->expects($this->atLeastOnce())
@@ -170,7 +171,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * @return array
      */
-    public static function productJsonEncodeDataProvider() : array
+    public static function productJsonEncodeDataProvider(): array
     {
         return [
             [
@@ -201,7 +202,7 @@ class BreadcrumbsTest extends TestCase
                     ['data' => ['name' => 'Test \'abc\'']]
                 ),
                 '{"breadcrumbs":'
-                . '{"categoryUrlSuffix":".&quot;html","useCategoryPathInUrl":0,"product":"Test &#039;abc&#039;"}}'
+                . '{"categoryUrlSuffix":".&quot;html","useCategoryPathInUrl":0,"product":"Test &#039;abc&#039;"}}',
             ],
         ];
     }
@@ -209,7 +210,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * @return ObjectManager
      */
-    protected function getObjectManager() : ObjectManager
+    protected function getObjectManager(): ObjectManager
     {
         if (null === $this->objectManager) {
             $this->objectManager = new ObjectManager($this);

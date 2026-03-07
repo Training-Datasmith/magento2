@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -61,7 +62,7 @@ class Orders extends Dashboard implements HttpPostActionInterface
                 $this->_request->getParam('website'),
                 $this->_request->getParam('group')
             ),
-            'label' => __('Quantity')
+            'label' => __('Quantity'),
         ];
 
         return $this->resultJsonFactory->create()

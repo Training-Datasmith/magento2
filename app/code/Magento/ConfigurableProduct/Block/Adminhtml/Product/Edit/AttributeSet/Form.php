@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,6 +9,7 @@
 /**
  * Product attribute set selector form
  */
+
 namespace Magento\ConfigurableProduct\Block\Adminhtml\Product\Edit\AttributeSet;
 
 /**
@@ -68,7 +71,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'class' => 'admin__control-radio',
                 'css_class' => 'admin__field-option',
                 'checked' => true,
-                'value' => 'current'
+                'value' => 'current',
             ]
         );
         $fieldset->addField(
@@ -79,7 +82,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'affected-attribute-set',
                 'class' => 'admin__control-radio',
                 'css_class' => 'admin__field-option',
-                'value' => 'new'
+                'value' => 'new',
             ]
         );
         $fieldset->addField(
@@ -91,7 +94,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'css_class' => 'no-display',
                 'field_extra_attributes' => 'data-role="affected-attribute-set-new-name-container"',
-                'value' => ''
+                'value' => '',
             ]
         );
         $fieldset->addField(
@@ -103,7 +106,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'class' => 'admin__control-radio no-display',
                 'css_class' => 'admin__field-option',
-                'value' => 'existing'
+                'value' => 'existing',
             ]
         );
         $fieldset->addField(
@@ -115,7 +118,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'required' => true,
                 'css_class' => 'no-display',
                 'field_extra_attributes' => 'data-role="affected-attribute-set-existing-name-container"',
-                'values' => $this->attributeSetOptions->toOptionArray()
+                'values' => $this->attributeSetOptions->toOptionArray(),
             ]
         );
 

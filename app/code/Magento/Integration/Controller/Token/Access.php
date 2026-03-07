@@ -1,17 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Integration\Controller\Token;
 
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
-use Magento\Integration\Model\Integration as IntegrationModel;
 use Magento\Integration\Api\IntegrationServiceInterface as IntegrationService;
 use Magento\Integration\Api\OauthServiceInterface as IntegrationOauthService;
-use Magento\Framework\App\Action\Action;
+use Magento\Integration\Model\Integration as IntegrationModel;
 
 class Access extends Action implements CsrfAwareActionInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -206,7 +207,7 @@ class TreeTest extends TestCase
                 'eventManager' => $eventManager,
                 'attributeConfig' => $attributeConfig,
                 'collectionFactory' => $collectionFactory,
-                'metadataPool' => $this->metadataPoolMock
+                'metadataPool' => $this->metadataPoolMock,
             ]
         );
 

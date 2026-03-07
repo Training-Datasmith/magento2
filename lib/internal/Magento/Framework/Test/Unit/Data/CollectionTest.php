@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -47,7 +48,7 @@ class CollectionTest extends TestCase
         $expectedNames = [
             'test prefix one',
             'test prefix two',
-            'test prefix three'
+            'test prefix three',
         ];
 
         $this->assertEquals(
@@ -74,7 +75,7 @@ class CollectionTest extends TestCase
         $expectedNames = [
             'test prefix firstElement',
             'test prefix secondElement',
-            'test prefix thirdElement'
+            'test prefix thirdElement',
         ];
         $this->assertEquals($expectedNames, $this->collection->getColumnValues('name'));
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
@@ -61,73 +62,73 @@ class AccountLockTest extends TestCase
                 'lockExpirationDate' => [
                     'data' => [
                         'items' => [['lock_expires' => null]],
-                    ]
+                    ],
                 ],
                 'expectedResult' => [
                     'data' => [
                         'items' => [
                             [
-                                'lock_expires' => new Phrase('Unlocked')
+                                'lock_expires' => new Phrase('Unlocked'),
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             [
                 'lockExpirationDate' => [
                     'data' => [
-                        'items' => [[]]//Non exist lock_expires data
-                    ]
+                        'items' => [[]],//Non exist lock_expires data
+                    ],
                 ],
                 'expectedResult' => [
                     'data' => [
                         'items' => [
                             [
-                                'lock_expires' => new Phrase('Unlocked')
+                                'lock_expires' => new Phrase('Unlocked'),
                             ],
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'lockExpirationDate' => [
-                    'data' => [
-                        'items' => [
-                            [
-                                'lock_expires' => date("F j, Y", strtotime('-1 days'))
-                            ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
-                'expectedResult' => [
-                    'data' => [
-                        'items' => [
-                            [
-                                'lock_expires' => new Phrase('Unlocked')
-                            ],
-                        ]
-                    ]
-                ]
             ],
             [
                 'lockExpirationDate' => [
                     'data' => [
                         'items' => [
                             [
-                                'lock_expires' => date("F j, Y", strtotime('+1 days'))
+                                'lock_expires' => date('F j, Y', strtotime('-1 days')),
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 'expectedResult' => [
                     'data' => [
                         'items' => [
                             [
-                                'lock_expires' => new Phrase('Locked')
+                                'lock_expires' => new Phrase('Unlocked'),
                             ],
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'lockExpirationDate' => [
+                    'data' => [
+                        'items' => [
+                            [
+                                'lock_expires' => date('F j, Y', strtotime('+1 days')),
+                            ],
+                        ],
+                    ],
+                ],
+                'expectedResult' => [
+                    'data' => [
+                        'items' => [
+                            [
+                                'lock_expires' => new Phrase('Locked'),
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
     }

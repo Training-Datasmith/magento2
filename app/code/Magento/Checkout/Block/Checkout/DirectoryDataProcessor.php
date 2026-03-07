@@ -1,14 +1,17 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Checkout\Block\Checkout;
 
 use Magento\Directory\Helper\Data as DirectoryHelper;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Store\Api\StoreResolverInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Store\Api\StoreResolverInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Directory data processor.

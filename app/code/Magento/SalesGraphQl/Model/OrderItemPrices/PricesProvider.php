@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2024 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\SalesGraphQl\Model\OrderItemPrices;
 
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Sales\Model\Order\Item;
 use Magento\QuoteGraphQl\Model\GetOptionsRegularPrice;
+use Magento\Sales\Model\Order\Item;
 
 /**
  * Prices data provider for order item
@@ -41,40 +42,40 @@ class PricesProvider
             'model' => $orderItem,
             'price' => [
                 'currency' => $currency,
-                'value' => $orderItem->getPrice() ?? 0
+                'value' => $orderItem->getPrice() ?? 0,
             ],
             'price_including_tax' => [
                 'currency' => $currency,
-                'value' => $orderItem->getPriceInclTax() ?? 0
+                'value' => $orderItem->getPriceInclTax() ?? 0,
             ],
             'row_total' => [
                 'currency' => $currency,
-                'value' => $orderItem->getRowTotal() ?? 0
+                'value' => $orderItem->getRowTotal() ?? 0,
             ],
             'row_total_including_tax' => [
                 'currency' => $currency,
-                'value' => $orderItem->getRowTotalInclTax() ?? 0
+                'value' => $orderItem->getRowTotalInclTax() ?? 0,
             ],
             'total_item_discount' => [
                 'currency' => $currency,
-                'value' => $orderItem->getDiscountAmount() ?? 0
+                'value' => $orderItem->getDiscountAmount() ?? 0,
             ],
             'original_price' => [
                 'currency' => $currency,
-                'value' => $orderItem->getOriginalPrice()
+                'value' => $orderItem->getOriginalPrice(),
             ],
             'original_price_including_tax' => [
                 'currency' => $currency,
-                'value' => $this->getOriginalPriceInclTax($orderItem)
+                'value' => $this->getOriginalPriceInclTax($orderItem),
             ],
             'original_row_total' => [
                 'currency' => $currency,
-                'value' => $this->getOriginalRowTotal($orderItem)
+                'value' => $this->getOriginalRowTotal($orderItem),
             ],
             'original_row_total_including_tax' => [
                 'currency' => $currency,
-                'value' => $this->getOriginalRowTotalInclTax($orderItem)
-            ]
+                'value' => $this->getOriginalRowTotalInclTax($orderItem),
+            ],
         ];
     }
 
@@ -133,7 +134,7 @@ class PricesProvider
                 $price += $productOption->getRegularPrice();
             } elseif (!empty($option['option_value'])) {
                 $price += $this->getOptionsRegularPrice
-                    ->execute(explode(",", $option['option_value']), $productOption);
+                    ->execute(explode(',', $option['option_value']), $productOption);
             }
         }
         return $price;

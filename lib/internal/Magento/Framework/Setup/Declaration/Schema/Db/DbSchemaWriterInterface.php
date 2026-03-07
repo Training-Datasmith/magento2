@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
@@ -18,17 +19,17 @@ interface DbSchemaWriterInterface
     /**
      * Type for all alter statements.
      */
-    const ALTER_TYPE = 'alter';
+    public const ALTER_TYPE = 'alter';
 
     /**
      * Type for all create statements.
      */
-    const CREATE_TYPE = 'create';
+    public const CREATE_TYPE = 'create';
 
     /**
      * Type for all drop statements.
      */
-    const DROP_TYPE = 'drop';
+    public const DROP_TYPE = 'drop';
 
     /**
      * Create table from SQL fragments, like columns, constraints, foreign keys, indexes, etc.

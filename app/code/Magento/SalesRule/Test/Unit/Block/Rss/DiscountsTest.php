@@ -15,8 +15,8 @@ use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 use Magento\Framework\UrlInterface;
-use Magento\SalesRule\Model\Rss\Discounts;
 use Magento\SalesRule\Block\Rss\Discounts as DiscountsBlock;
+use Magento\SalesRule\Model\Rss\Discounts;
 use Magento\SalesRule\Model\Rule;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
@@ -94,7 +94,7 @@ class DiscountsTest extends TestCase
         $this->rssModel = $this->createPartialMock(
             Discounts::class,
             [
-                'getDiscountCollection'
+                'getDiscountCollection',
             ]
         );
         $this->storeModel = $this->createPartialMock(
@@ -103,7 +103,7 @@ class DiscountsTest extends TestCase
                 'getId',
                 'getWebsiteId',
                 'getName',
-                'getFrontendName'
+                'getFrontendName',
             ]
         );
 
@@ -121,7 +121,7 @@ class DiscountsTest extends TestCase
                 'request' => $this->requestInterface,
                 'scopeConfig' => $this->scopeConfigInterface,
                 'rssModel' => $this->rssModel,
-                'localeDate' => $this->timezoneInterface
+                'localeDate' => $this->timezoneInterface,
             ]
         );
     }
@@ -227,7 +227,7 @@ class DiscountsTest extends TestCase
     {
         return [
             [true],
-            [false]
+            [false],
         ];
     }
 

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationRules;
 
 use Magento\Framework\Setup\Declaration\Schema\Declaration\ValidationInterface;
@@ -19,12 +22,12 @@ class RealTypes implements ValidationInterface
     /**
      * Error code.
      */
-    const ERROR_TYPE = 'real_type_basis_error';
+    public const ERROR_TYPE = 'real_type_basis_error';
 
     /**
      * Error message, that will be shown.
      */
-    const ERROR_MESSAGE = 'Real type "precision" must be greater or equal to "scale". %s(%s,%s) is invalid in %s.';
+    public const ERROR_MESSAGE = 'Real type "precision" must be greater or equal to "scale". %s(%s,%s) is invalid in %s.';
 
     /**
      * @inheritdoc
@@ -44,7 +47,7 @@ class RealTypes implements ValidationInterface
                                 $column->getPrecision(),
                                 $column->getScale(),
                                 $table->getName() . '.' . $column->getName()
-                            )
+                            ),
                         ];
                     }
                 }

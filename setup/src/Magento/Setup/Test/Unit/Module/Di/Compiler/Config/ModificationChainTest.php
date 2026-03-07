@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -45,15 +46,15 @@ class ModificationChainTest extends TestCase
     public function testModify()
     {
         $inputArray = [
-            'data' => [1, 2, 3]
+            'data' => [1, 2, 3],
         ];
 
         $expectedArray1 = [
-            'data' => [1, 2, 3, 1]
+            'data' => [1, 2, 3, 1],
         ];
 
         $expectedArray2 = [
-            'data' => [1, 2, 3, 1, 1]
+            'data' => [1, 2, 3, 1, 1],
         ];
 
         $modifier1 = $this->getMockBuilder(ModificationInterface::class)

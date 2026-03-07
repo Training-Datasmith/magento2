@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -54,7 +55,7 @@ class AddressTest extends TestCase
             ['real+email@magento.com', 'real+email@magento.com'],
             ['not.a.real.email', false],
             [null, false],
-            ['', false]
+            ['', false],
         ];
     }
 }

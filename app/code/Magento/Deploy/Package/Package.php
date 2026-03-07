@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Deploy\Package;
 
 use Magento\Deploy\Package\Processor\ProcessorInterface;
-use Magento\Framework\View\Design\ThemeInterface;
 use Magento\Framework\View\Asset\PreProcessor\FileNameResolver;
+use Magento\Framework\View\Design\ThemeInterface;
 
 /**
  * Deployment Package
@@ -89,27 +92,27 @@ class Package
     /**
      * Deployment state identifier for "in progress" state
      */
-    const STATE_PROGRESS = 0;
+    public const STATE_PROGRESS = 0;
 
     /**
      * Deployment state identifier for "completed" state
      */
-    const STATE_COMPLETED = 1;
+    public const STATE_COMPLETED = 1;
 
     /**
      * Base area code
      */
-    const BASE_AREA = 'base';
+    public const BASE_AREA = 'base';
 
     /**
      * Base theme code
      */
-    const BASE_THEME = 'Magento/base';
+    public const BASE_THEME = 'Magento/base';
 
     /**
      * Base locale code
      */
-    const BASE_LOCALE = 'default';
+    public const BASE_LOCALE = 'default';
 
     /**
      * @var array
@@ -117,7 +120,7 @@ class Package
     private $packageDefaultValues = [
         'area' => self::BASE_AREA,
         'theme' => self::BASE_THEME,
-        'locale' => self::BASE_LOCALE
+        'locale' => self::BASE_LOCALE,
     ];
 
     /**
@@ -291,7 +294,7 @@ class Package
         $this->map[$fileId] = [
             'area' => $this->getArea(),
             'theme' => $this->getTheme(),
-            'locale' => $this->getLocale()
+            'locale' => $this->getLocale(),
         ];
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -43,7 +44,7 @@ class ValidatorTest extends TestCase
             [
                 'scopeConfig' => $this->scopeConfigMock,
                 'engineValidators' => ['otherEngine' => $this->otherEngineValidatorMock],
-                'excludedEngineList' => ['badEngine' => 'Bad Engine']
+                'excludedEngineList' => ['badEngine' => 'Bad Engine'],
             ]
         );
     }
@@ -73,8 +74,8 @@ class ValidatorTest extends TestCase
 
         $expectedErrors = [
             "Your current search engine, 'Bad Engine', is not supported."
-            . " You must install a supported search engine before upgrading."
-            . " See the System Upgrade Guide for more information."
+            . ' You must install a supported search engine before upgrading.'
+            . ' See the System Upgrade Guide for more information.',
         ];
 
         $this->assertEquals($expectedErrors, $this->validator->validate());

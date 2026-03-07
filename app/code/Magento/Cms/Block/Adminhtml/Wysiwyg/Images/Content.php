@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
@@ -51,7 +52,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
                 'class' => 'cancel action-quaternary',
                 'label' => __('Cancel'),
                 'type' => 'button',
-                'onclick' => 'MediabrowserUtility.closeDialog();'
+                'onclick' => 'MediabrowserUtility.closeDialog();',
             ],
             0,
             0,
@@ -63,7 +64,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
             [
                 'class' => 'delete no-display action-quaternary',
                 'label' => __('Delete Folder'),
-                'type' => 'button'
+                'type' => 'button',
             ],
             0,
             0,
@@ -75,7 +76,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
             [
                 'class' => 'delete no-display action-quaternary',
                 'label' => __('Delete Selected'),
-                'type' => 'button'
+                'type' => 'button',
             ],
             0,
             0,
@@ -87,7 +88,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
             [
                 'class' => 'save new_folder',
                 'label' => __('Create Folder'),
-                'type' => 'button'
+                'type' => 'button',
             ],
             0,
             0,
@@ -99,7 +100,7 @@ class Content extends \Magento\Backend\Block\Widget\Container
             [
                 'class' => 'save no-display action-primary',
                 'label' => __('Add Selected'),
-                'type' => 'button'
+                'type' => 'button',
             ],
             0,
             100,

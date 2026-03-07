@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2023 Adobe
  * All Rights Reserved.
@@ -12,20 +13,15 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 interface OutputInterface
 {
-
     /**
      * Whether this output is currently enabled
-     *
-     * @return bool
      */
-    public function isEnabled() : bool;
+    public function isEnabled(): bool;
 
     /**
      * Output our metrics and other information
      *
      * @param Metric[] $metrics
-     * @param array $information
-     * @return void
      */
-    public function doOutput(array $metrics, array $information) : void;
+    public function doOutput(array $metrics, array $information): void;
 }

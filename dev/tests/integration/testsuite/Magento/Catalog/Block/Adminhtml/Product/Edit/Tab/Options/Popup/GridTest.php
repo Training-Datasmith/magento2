@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -8,7 +9,6 @@ declare(strict_types=1);
 namespace Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\Popup;
 
 use Magento\Backend\App\Area\FrontNameResolver;
-use Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Options\Popup\Grid;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Framework\App\RequestInterface;

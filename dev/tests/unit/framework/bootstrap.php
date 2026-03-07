@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
@@ -49,10 +51,10 @@ function setCustomErrorHandler()
                     E_USER_DEPRECATED => 'User Deprecated',
                 ];
 
-                $errName = $errorNames[$errNo] ?? "";
+                $errName = $errorNames[$errNo] ?? '';
 
                 throw new \PHPUnit\Framework\Exception(
-                    sprintf("%s: %s in %s:%s.", $errName, $errStr, $errFile, $errLine),
+                    sprintf('%s: %s in %s:%s.', $errName, $errStr, $errFile, $errLine),
                     $errNo
                 );
             }

@@ -1,14 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
 
+use Magento\Framework\DB\Transaction;
 use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\ShipmentFactory;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\Workaround\Override\Fixture\Resolver;
-use Magento\Framework\DB\Transaction;
-use Magento\Sales\Model\Order\ShipmentFactory;
 
 Resolver::getInstance()->requireDataFixture('Magento/Sales/_files/order_with_customer.php');
 
@@ -30,7 +32,7 @@ foreach ($order->getItems() as $orderItem) {
 $tracking = [
     'carrier_code' => 'ups',
     'title' => 'United Parcel Service',
-    'number' => '987654321'
+    'number' => '987654321',
 ];
 
 $shipment = $objectManager->get(ShipmentFactory::class)->create($order, $shipmentItems, [$tracking]);

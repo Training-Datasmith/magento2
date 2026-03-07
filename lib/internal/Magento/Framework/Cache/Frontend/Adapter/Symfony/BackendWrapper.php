@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2026 Adobe
  * All Rights Reserved.
@@ -116,7 +117,7 @@ class BackendWrapper implements BackendInterface
         return match ($mode) {
             CacheConstants::CLEANING_MODE_ALL, 'all' => $this->clear(),
             CacheConstants::CLEANING_MODE_OLD, 'old' => true,
-            default => throw new InvalidArgumentException("Backend clean only supports ALL and OLD modes")
+            default => throw new InvalidArgumentException('Backend clean only supports ALL and OLD modes')
         };
     }
 

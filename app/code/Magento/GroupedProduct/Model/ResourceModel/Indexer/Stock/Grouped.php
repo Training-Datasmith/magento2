@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -7,10 +9,11 @@
 /**
  * Grouped Products Stock Status Indexer Resource Model
  */
+
 namespace Magento\GroupedProduct\Model\ResourceModel\Indexer\Stock;
 
-use Magento\Framework\App\ObjectManager;
 use Magento\CatalogInventory\Model\Indexer\Stock\Action\Full;
+use Magento\Framework\App\ObjectManager;
 
 /**
  * Stock indexer for grouped product.
@@ -86,7 +89,7 @@ class Grouped extends \Magento\CatalogInventory\Model\ResourceModel\Indexer\Stoc
 
         $statusExpression = $this->getStatusExpression($connection);
 
-        $optExpr = $connection->getCheckSql("le.required_options = 0", 'i.stock_status', 0);
+        $optExpr = $connection->getCheckSql('le.required_options = 0', 'i.stock_status', 0);
         $stockStatusExpr = $connection->getLeastSql(["MAX({$optExpr})", "MIN({$statusExpression})"]);
 
         $select->columns(['status' => $stockStatusExpr]);

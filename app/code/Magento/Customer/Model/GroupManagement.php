@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -24,13 +26,13 @@ use Magento\Store\Model\StoreManagerInterface;
  */
 class GroupManagement implements \Magento\Customer\Api\GroupManagementInterface
 {
-    const XML_PATH_DEFAULT_ID = 'customer/create_account/default_group';
+    public const XML_PATH_DEFAULT_ID = 'customer/create_account/default_group';
 
-    const NOT_LOGGED_IN_ID = 0;
+    public const NOT_LOGGED_IN_ID = 0;
 
-    const CUST_GROUP_ALL = 32000;
+    public const CUST_GROUP_ALL = 32000;
 
-    const GROUP_CODE_MAX_LENGTH = 32;
+    public const GROUP_CODE_MAX_LENGTH = 32;
 
     /**
      * @var StoreManagerInterface

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
@@ -38,7 +40,7 @@ class Rules extends \Magento\Framework\Model\AbstractModel
      * @return $this
      * @deprecated Method was never implemented and used.
      */
-    public function update()
+    public function update(): static
     {
         // phpcs:disable Magento2.Functions.DiscouragedFunction
         trigger_error('Method was never implemented and used.', E_USER_DEPRECATED);
@@ -51,7 +53,7 @@ class Rules extends \Magento\Framework\Model\AbstractModel
      *
      * @return $this
      */
-    public function saveRel()
+    public function saveRel(): static
     {
         $this->getResource()->saveRel($this);
         return $this;

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\Framework\MessageQueue\UseCase\DeprecatedFormat;
 
 use Magento\Framework\MessageQueue\DefaultValueProvider;
@@ -27,7 +30,7 @@ class AsyncMultiTopicsSeparateQueuesTest extends QueueTestCaseAbstract
      */
     protected $consumers = [
         'queue.for.multiple.topics.test.c.deprecated',
-        'queue.for.multiple.topics.test.d.deprecated'
+        'queue.for.multiple.topics.test.d.deprecated',
     ];
 
     /**
@@ -72,7 +75,7 @@ class AsyncMultiTopicsSeparateQueuesTest extends QueueTestCaseAbstract
         foreach ($this->topics as $topic) {
             // phpcs:ignore Magento2.Security.InsecureFunction
             $this->uniqueID[$topic] = md5(uniqid($topic));
-            $this->msgObject->setValue($this->uniqueID[$topic] . "_" . $topic);
+            $this->msgObject->setValue($this->uniqueID[$topic] . '_' . $topic);
             $this->msgObject->setTextFilePath($this->logFilePath);
             $this->publisher->publish($topic, $this->msgObject);
         }
@@ -82,7 +85,7 @@ class AsyncMultiTopicsSeparateQueuesTest extends QueueTestCaseAbstract
         //assertions
         foreach ($this->topics as $item) {
             $this->assertStringContainsString(
-                $this->uniqueID[$item] . "_" . $item,
+                $this->uniqueID[$item] . '_' . $item,
                 file_get_contents($this->logFilePath)
             );
         }

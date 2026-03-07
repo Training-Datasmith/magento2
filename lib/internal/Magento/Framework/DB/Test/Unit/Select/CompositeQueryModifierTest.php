@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,8 +42,8 @@ class CompositeQueryModifierTest extends TestCase
             [
                 'queryModifiers' => [
                     $queryModifierMockOne,
-                    $queryModifierMockTwo
-                ]
+                    $queryModifierMockTwo,
+                ],
             ]
         );
         $compositeQueryModifier->modify($selectMock);

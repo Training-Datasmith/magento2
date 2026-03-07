@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2025 Adobe
  * All Rights Reserved.
@@ -16,8 +17,8 @@ use Magento\Backend\Model\View\Result\RedirectFactory;
 use Magento\Catalog\Helper\Product;
 use Magento\Customer\Model\Customer;
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Request\Http;
+use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\Raw;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Escaper;
@@ -27,6 +28,7 @@ use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\RegexValidator;
 use Magento\Framework\Registry;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use Magento\Framework\View\Layout;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
@@ -39,7 +41,6 @@ use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 /**
  * Unit test for LoadBlock controller
@@ -343,7 +344,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, 'true']
+                ['as_js_varname', null, 'true'],
             ]);
 
         // Setup page factory and layout
@@ -415,7 +416,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, false],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, 'true']
+                ['as_js_varname', null, 'true'],
             ]);
 
         // Setup page factory and layout
@@ -478,7 +479,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, false]
+                ['as_js_varname', null, false],
             ]);
 
         // Setup page factory and layout
@@ -532,7 +533,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, false]
+                ['as_js_varname', null, false],
             ]);
 
         // RegexValidator should reject the block parameter
@@ -565,7 +566,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, $blocks],
-                ['as_js_varname', null, false]
+                ['as_js_varname', null, false],
             ]);
 
         $this->resultPageFactory->expects($this->once())
@@ -643,7 +644,7 @@ class LoadBlockTest extends TestCase
                 $forwardFactory,
                 $this->resultRawFactory,
                 $this->storeManager,
-                $this->regexValidator
+                $this->regexValidator,
             ])
             ->onlyMethods(['_initSession', '_processData', '_reloadQuote'])
             ->getMock();
@@ -655,7 +656,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, false]
+                ['as_js_varname', null, false],
             ]);
 
         // _initSession returns $this
@@ -723,7 +724,7 @@ class LoadBlockTest extends TestCase
                 $forwardFactory,
                 $this->resultRawFactory,
                 $this->storeManager,
-                $this->regexValidator
+                $this->regexValidator,
             ])
             ->onlyMethods(['_initSession', '_processData', '_reloadQuote'])
             ->getMock();
@@ -735,7 +736,7 @@ class LoadBlockTest extends TestCase
                 ['store_id', null, '1'],
                 ['json', null, true],
                 ['block', null, 'sidebar'],
-                ['as_js_varname', null, false]
+                ['as_js_varname', null, false],
             ]);
 
         // _initSession returns $this

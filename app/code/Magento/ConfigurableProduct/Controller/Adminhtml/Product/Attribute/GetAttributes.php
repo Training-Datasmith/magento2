@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+
 namespace Magento\ConfigurableProduct\Controller\Adminhtml\Product\Attribute;
 
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Backend\App\Action;
 use Magento\ConfigurableProduct\Model\AttributesListInterface;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 
 class GetAttributes extends Action implements HttpGetActionInterface
 {
@@ -16,7 +19,7 @@ class GetAttributes extends Action implements HttpGetActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Catalog::products';
+    public const ADMIN_RESOURCE = 'Magento_Catalog::products';
 
     /**
      * Store manager

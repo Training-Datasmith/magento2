@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -119,7 +120,7 @@ class MassgeneratorTest extends TestCase
                 'setCreatedAt',
                 'setType',
                 'setCode',
-                'save'
+                'save',
             ]
         );
 
@@ -143,7 +144,7 @@ class MassgeneratorTest extends TestCase
                 'date' => $dateMock,
                 'resource' => $resourceMock,
                 'data' => $data,
-                'salesRuleCoupon' => $salesRuleCouponMock
+                'salesRuleCoupon' => $salesRuleCouponMock,
             ]
         );
 
@@ -200,7 +201,7 @@ class MassgeneratorTest extends TestCase
                 'date' => $dateMock,
                 'resource' => $resourceMock,
                 'data' => $data,
-                'salesRuleCoupon' => $salesRuleCouponMock
+                'salesRuleCoupon' => $salesRuleCouponMock,
             ]
         );
 
@@ -257,7 +258,7 @@ class MassgeneratorTest extends TestCase
                     'length' => 15,
                     'format' => 'test-format',
                 ],
-                'result' => false
+                'result' => false,
             ],
             [
                 'data' => [
@@ -266,15 +267,15 @@ class MassgeneratorTest extends TestCase
                     'length' => 15,
                     'format' => '',
                 ],
-                'result' => false
+                'result' => false,
             ],
             [
                 'data' => [
                     'qty' => 2,
                     'length' => 15,
                 ],
-                'result' => false
-            ]
+                'result' => false,
+            ],
         ];
     }
 
@@ -292,8 +293,8 @@ class MassgeneratorTest extends TestCase
                 ],
             ],
             [
-                'data' => []
-            ]
+                'data' => [],
+            ],
         ];
     }
 
@@ -319,8 +320,8 @@ class MassgeneratorTest extends TestCase
                     'dash' => 6,
                     'delimiter' => '-',
                 ],
-                'length' => 20
-            ]
+                'length' => 20,
+            ],
         ];
     }
 }

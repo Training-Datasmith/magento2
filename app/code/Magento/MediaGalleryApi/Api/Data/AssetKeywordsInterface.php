@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
@@ -7,7 +8,6 @@ declare(strict_types=1);
 
 namespace Magento\MediaGalleryApi\Api\Data;
 
-use Magento\MediaGalleryApi\Api\Data\AssetKeywordsExtensionInterface;
 use Magento\Framework\Api\ExtensibleDataInterface;
 
 /**

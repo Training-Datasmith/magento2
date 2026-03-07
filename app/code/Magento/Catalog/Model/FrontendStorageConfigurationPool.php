@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
@@ -41,7 +42,7 @@ class FrontendStorageConfigurationPool
         }
         if (!$storageConfiguration instanceof FrontendStorageConfigurationInterface) {
             throw new LocalizedException(
-                __("Invalid pool type with namespace: %1", $namespace)
+                __('Invalid pool type with namespace: %1', $namespace)
             );
         }
 

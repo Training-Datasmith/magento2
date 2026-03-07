@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -10,11 +11,11 @@ namespace Magento\Framework\Cache\Test\Unit\Backend;
 use Magento\Framework\Cache\Backend\MongoDb;
 use Magento\Framework\Cache\CacheConstants;
 use Magento\Framework\Cache\Exception\CacheException;
-use PHPUnit\Framework\MockObject\MockObject;
+use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Magento\Framework\TestFramework\Unit\Helper\MockCreationTrait;
 
 class MongoDbTest extends TestCase
 {
@@ -49,7 +50,7 @@ class MongoDbTest extends TestCase
      * @param array $ids
      * @param array $expected
      */
-     #[DataProvider('getIdsDataProvider')]
+    #[DataProvider('getIdsDataProvider')]
     public function testGetIds(array $ids, array $expected)
     {
         $result = new \ArrayIterator($ids);
@@ -65,14 +66,14 @@ class MongoDbTest extends TestCase
     {
         return [
             'empty db' => [[], []],
-            'multiple records' => [['id1' => 'id1', 'id2' => 'id2'], ['id1', 'id2']]
+            'multiple records' => [['id1' => 'id1', 'id2' => 'id2'], ['id1', 'id2']],
         ];
     }
 
     /**
      * @param array $tags
      */
-     #[DataProvider('getTagsDataProvider')]
+    #[DataProvider('getTagsDataProvider')]
     public function testGetTags(array $tags)
     {
         $this->_collection->expects($this->once())->method('distinct')->with('tags')->willReturn($tags);
@@ -93,7 +94,7 @@ class MongoDbTest extends TestCase
      * @covers \Magento\Framework\Cache\Backend\MongoDb::getIdsNotMatchingTags
      * @covers \Magento\Framework\Cache\Backend\MongoDb::getIdsMatchingAnyTags
      */
-     #[DataProvider('getIdsMatchingTagsDataProvider')]
+    #[DataProvider('getIdsMatchingTagsDataProvider')]
     public function testGetIdsMatchingTags($method, $tags, $expectedInput)
     {
         $expectedOutput = new \ArrayIterator(['test1' => 'test1', 'test2' => 'test2']);
@@ -146,7 +147,7 @@ class MongoDbTest extends TestCase
                 'getIdsMatchingAnyTags',
                 ['tag1', 'tag2'],
                 ['$or' => [['tags' => 'tag1'], ['tags' => 'tag2']]],
-            ]
+            ],
         ];
     }
 
@@ -176,7 +177,7 @@ class MongoDbTest extends TestCase
      * @param array|null $mongoOutput
      * @param array|bool $expected
      */
-     #[DataProvider('getMetadatasDataProvider')]
+    #[DataProvider('getMetadatasDataProvider')]
     public function testGetMetadatas($cacheId, $expectedInput, $mongoOutput, $expected)
     {
         $this->_collection->expects(
@@ -211,7 +212,7 @@ class MongoDbTest extends TestCase
                 ['_id' => '10'],
                 ['_id' => 'test_id', 'data' => 'data', 'tags' => [], 'expire' => $time, 'mtime' => $time],
                 ['_id' => 'test_id', 'data' => 'data', 'tags' => [], 'expire' => $time, 'mtime' => $time],
-            ]
+            ],
         ];
     }
 
@@ -236,7 +237,7 @@ class MongoDbTest extends TestCase
     /**
      * @param bool $doNotTestValidity
      */
-     #[DataProvider('loadDataProvider')]
+    #[DataProvider('loadDataProvider')]
     public function testLoad($doNotTestValidity)
     {
         include_once __DIR__ . '/_files/MongoBinData.txt';
@@ -342,7 +343,7 @@ class MongoDbTest extends TestCase
      * @param array $tags
      * @param array $expectedQuery
      */
-     #[DataProvider('cleanDataProvider')]
+    #[DataProvider('cleanDataProvider')]
     public function testClean($mode, $tags, $expectedQuery)
     {
         $this->_collection->expects($this->once())->method('remove')->with($expectedQuery);
@@ -401,7 +402,7 @@ class MongoDbTest extends TestCase
                 CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG,
                 ['tag1', 'tag2'],
                 ['$or' => [['tags' => 'tag1'], ['tags' => 'tag2']]],
-            ]
+            ],
         ];
     }
 

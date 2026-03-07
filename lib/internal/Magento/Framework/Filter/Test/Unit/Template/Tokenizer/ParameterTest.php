@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
@@ -8,8 +9,8 @@ declare(strict_types=1);
 namespace Magento\Framework\Filter\Test\Unit\Template\Tokenizer;
 
 use Magento\Framework\Filter\Template\Tokenizer\Parameter;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
@@ -52,7 +53,7 @@ class ParameterTest extends TestCase
             ["%20direct_url='about-magento-demo-store'", ['direct_url' => 'about-magento-demo-store']],
             [" direct_url='about-magento-demo-store\\[newDemo]",
                 ['direct_url' => 'about-magento-demo-store\\[newDemo]']],
-            ["   ", []]
+            ['   ', []],
         ];
     }
 
@@ -64,7 +65,7 @@ class ParameterTest extends TestCase
         return [
             [" direct_url='about-magento-demo-store'", "direct_url='about-magento-demo-store'"],
             [" direct_url='about-magento-demo-store\\[newDemo]", "direct_url='about-magento-demo-store\\[newDemo]"],
-            ['   ', '']
+            ['   ', ''],
         ];
     }
 }
